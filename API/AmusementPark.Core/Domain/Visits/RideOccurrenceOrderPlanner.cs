@@ -1,13 +1,5 @@
 namespace AmusementPark.Core.Domain.Visits;
 
-public enum RideOccurrencePlacement
-{
-    First = 1,
-    Last = 2,
-    Before = 3,
-    After = 4,
-}
-
 /// <summary>
 /// Calcule les positions techniques sans faire dépendre l'ordre visible d'un rang persisté.
 /// </summary>

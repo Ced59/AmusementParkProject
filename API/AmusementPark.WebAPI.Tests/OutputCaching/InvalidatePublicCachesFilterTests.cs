@@ -386,13 +386,7 @@ public sealed class InvalidatePublicCachesFilterTests
         };
     }
 
-    private sealed class VisibilityRequest
-    {
-        public bool IsVisible { get; init; }
-    }
 
-    private sealed class ReviewStatusRequest
-    {
-        public string AdminReviewStatus { get; init; } = string.Empty;
-    }
+
+
 }

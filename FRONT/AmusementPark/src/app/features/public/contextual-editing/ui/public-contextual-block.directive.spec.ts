@@ -4,19 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PublicContextualBlockMarker } from '../models/public-contextual-block-marker.model';
 import { PublicContextualBlockMarkerRegistry } from '../state/public-contextual-block-marker.registry';
 import { PublicContextualBlockDirective } from './public-contextual-block.directive';
-
-@Component({
-  template: '<section [appPublicContextualBlock]="marker">Public block</section>',
-  imports: [PublicContextualBlockDirective]
-})
-class HostComponent {
-  marker: PublicContextualBlockMarker | null = {
-    type: 'park.description',
-    parkId: 'park-1',
-    contextLabel: 'Phantasialand',
-    languageCode: 'fr'
-  };
-}
+import { HostComponent } from './test-helpers/public-contextual-block.directive/host-component';
 
 describe('PublicContextualBlockDirective', () => {
   let fixture: ComponentFixture<HostComponent>;

@@ -94,9 +94,3 @@ public sealed class AdminFieldModeController : ControllerBase
 
     private IMongoCollection<BsonDocument> Collection => this.mongoDatabase.GetCollection<BsonDocument>(CollectionName);
 }
-
-public sealed record AdminFieldModeProcessedItemsDto(string ParkId, IReadOnlyCollection<string> ItemIds);
-
-public sealed record AdminFieldModeProcessedItemDto(string ParkId, string ItemId, bool IsProcessed);
-
-public sealed record AdminFieldModeProcessedUpdateDto(bool IsProcessed);

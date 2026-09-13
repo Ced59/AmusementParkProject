@@ -5,7 +5,7 @@ import {
   SeoStaticDocumentResponse,
   SeoStaticSnapshotPublisher,
   SeoStaticSnapshotPublishResult,
-} from './seo-static-snapshot';
+} from './seo-static-snapshot-publisher';
 
 describe('SeoStaticSnapshotPublisher', () => {
   const temporaryDirectories: string[] = [];

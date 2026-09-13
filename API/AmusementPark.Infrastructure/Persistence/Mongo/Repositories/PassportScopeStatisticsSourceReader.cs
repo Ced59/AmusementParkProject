@@ -318,7 +318,3 @@ public sealed class PassportScopeStatisticsSourceReader
             date.IsApproximate);
     }
 }
-
-internal sealed record PassportScopeRideSources(
-    IReadOnlyCollection<PassportScopeOccurrenceSourceDocument> Occurrences,
-    IReadOnlyDictionary<string, string> CurrentCategories);

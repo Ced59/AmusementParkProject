@@ -9,21 +9,7 @@ import {
   AdminUsersStateUsersApiServicePort,
 } from './admin-users-state-data.ports';
 import { AdminUsersStateFacade } from './admin-users-state.facade';
-
-class FakeUsersPort implements AdminUsersStateUsersApiServicePort {
-  public response$: Observable<UsersApiResponse> = of(
-    createResponse([createUser('user-1')], createPagination(1, 10, 1)),
-  );
-  public readonly calls: {
-    page: number;
-    size: number;
-  }[] = [];
-
-  getUsers(page: number, size: number): Observable<UsersApiResponse> {
-    this.calls.push({ page, size });
-    return this.response$;
-  }
-}
+import { FakeUsersPort } from './test-helpers/admin-users-state.facade/fake-users-port';
 
 function createUser(id: string): UserDto {
   return {

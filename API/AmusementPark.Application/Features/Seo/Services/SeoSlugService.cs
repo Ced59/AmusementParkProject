@@ -7,7 +7,7 @@ namespace AmusementPark.Application.Features.Seo.Services;
 /// <summary>
 /// Génération déterministe des slugs publics utilisés par le sitemap seed.
 /// </summary>
-public static partial class SeoSlugService
+public static class SeoSlugService
 {
     public static string ToSlug(string? value, string fallback = "item")
     {
@@ -33,6 +33,10 @@ public static partial class SeoSlugService
         return string.IsNullOrWhiteSpace(slug) ? fallback : slug;
     }
 
-    [GeneratedRegex(@"[^a-z0-9]+", RegexOptions.Compiled)]
-    private static partial Regex NonSlugCharactersRegex();
+    private static readonly Regex NonSlugCharactersPattern = new Regex(@"[^a-z0-9]+", RegexOptions.Compiled);
+
+    private static Regex NonSlugCharactersRegex()
+    {
+        return NonSlugCharactersPattern;
+    }
 }

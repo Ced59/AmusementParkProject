@@ -277,11 +277,3 @@ public sealed class SearchLocalizedContentTargetsQueryHandler : IQueryHandler<Se
         return string.IsNullOrWhiteSpace(context) ? null : context;
     }
 }
-
-internal static class LocalizedContentPagedResultExtensions
-{
-    public static PagedResult<TTarget> Map<TSource, TTarget>(this PagedResult<TSource> source, Func<TSource, TTarget> mapper)
-    {
-        return new PagedResult<TTarget>(source.Items.Select(mapper).ToList(), source.Page, source.PageSize, source.TotalItems);
-    }
-}

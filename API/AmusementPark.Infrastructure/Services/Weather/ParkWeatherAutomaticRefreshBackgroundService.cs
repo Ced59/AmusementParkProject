@@ -106,5 +106,5 @@ public sealed class ParkWeatherAutomaticRefreshBackgroundService : BackgroundSer
         }
     }
 
-    private sealed record ScheduledWeatherRun(DateOnly LocalDate, TimeSpan Delay);
+
 }

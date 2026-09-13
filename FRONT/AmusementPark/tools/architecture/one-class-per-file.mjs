@@ -240,7 +240,11 @@ export function findFileNameMismatches(path, classes) {
 
   if (extension === '.cs') {
     const normalizedFileStem = fileStem.normalize('NFC');
-    return classes.filter((className) => className.normalize('NFC') !== normalizedFileStem);
+    return classes.filter((className) => {
+      const normalizedClassName = className.normalize('NFC');
+      return normalizedClassName !== normalizedFileStem
+        && `${normalizedClassName}OfT` !== normalizedFileStem;
+    });
   }
 
   const normalizedFileStem = normalizeTypeScriptFileIdentity(fileStem);

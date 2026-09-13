@@ -38,7 +38,5 @@ public sealed class MongoGeolocatedDocumentBaseTests
         Assert.Null(document.Location);
     }
 
-    private sealed class TestMongoGeolocatedDocument : MongoGeolocatedDocumentBase
-    {
-    }
+
 }

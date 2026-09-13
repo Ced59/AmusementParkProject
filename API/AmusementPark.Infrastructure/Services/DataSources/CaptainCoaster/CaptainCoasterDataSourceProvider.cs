@@ -9,32 +9,43 @@ using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
 using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
+using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Application.Features.Ratings.Models;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+using MongoDB.Bson;
+using System.Globalization;
+using System.Threading.Channels;
+using System.Text;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using AmusementPark.Application.Features.Search;
 
 namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
 
-internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProvider, IDataSourceImportExecutor
+internal sealed class CaptainCoasterDataSourceProvider : IDataSourceProvider, IDataSourceImportExecutor
 {
-    private const string SourceKeyValue = "captain-coaster";
-    private const string DisplayNameValue = "Captain Coaster";
-    private const string LegacyExternalSourceValue = "CaptainCoaster";
-
-    private readonly IMongoCollection<CaptainCoasterSettingsDocument> settingsCollection;
-    private readonly IMongoCollection<CaptainCoasterParkSnapshotDocument> parksCollection;
-    private readonly IMongoCollection<CaptainCoasterCoasterSnapshotDocument> coastersCollection;
-    private readonly IMongoCollection<CaptainCoasterDiscoveredUrlDocument> discoveredUrlsCollection;
-    private readonly IMongoCollection<CaptainCoasterSyncSessionDocument> sessionsCollection;
-    private readonly IMongoCollection<CaptainCoasterComparisonResultDocument> comparisonCollection;
-    private readonly IMongoCollection<ParkDocument> localParksCollection;
-    private readonly IMongoCollection<ParkItemDocument> localParkItemsCollection;
-    private readonly IMongoCollection<AttractionManufacturerDocument> manufacturersCollection;
-    private readonly IDataSourceImportJobQueue queue;
-    private readonly IDataAcquisitionHttpFetcher dataAcquisitionHttpFetcher;
-    private readonly IXmlSitemapUrlDiscoveryService xmlSitemapUrlDiscoveryService;
-    private readonly ICaptainCoasterCoasterPageParser coasterPageParser;
-    private readonly ICaptainCoasterMapPageParser mapPageParser;
-    private readonly ISearchProjectionWriter searchProjectionWriter;
-    private readonly IRatingRankingSourceChangeCoordinator rankingSourceChangeCoordinator;
-    private readonly ILogger<CaptainCoasterDataSourceProvider> logger;
+    internal const string SourceKeyValue = "captain-coaster";
+    internal const string DisplayNameValue = "Captain Coaster";
+    internal const string LegacyExternalSourceValue = "CaptainCoaster";
+    internal readonly IMongoCollection<CaptainCoasterSettingsDocument> settingsCollection;
+    internal readonly IMongoCollection<CaptainCoasterParkSnapshotDocument> parksCollection;
+    internal readonly IMongoCollection<CaptainCoasterCoasterSnapshotDocument> coastersCollection;
+    internal readonly IMongoCollection<CaptainCoasterDiscoveredUrlDocument> discoveredUrlsCollection;
+    internal readonly IMongoCollection<CaptainCoasterSyncSessionDocument> sessionsCollection;
+    internal readonly IMongoCollection<CaptainCoasterComparisonResultDocument> comparisonCollection;
+    internal readonly IMongoCollection<ParkDocument> localParksCollection;
+    internal readonly IMongoCollection<ParkItemDocument> localParkItemsCollection;
+    internal readonly IMongoCollection<AttractionManufacturerDocument> manufacturersCollection;
+    internal readonly IDataSourceImportJobQueue queue;
+    internal readonly IDataAcquisitionHttpFetcher dataAcquisitionHttpFetcher;
+    internal readonly IXmlSitemapUrlDiscoveryService xmlSitemapUrlDiscoveryService;
+    internal readonly ICaptainCoasterCoasterPageParser coasterPageParser;
+    internal readonly ICaptainCoasterMapPageParser mapPageParser;
+    internal readonly ISearchProjectionWriter searchProjectionWriter;
+    internal readonly IRatingRankingSourceChangeCoordinator rankingSourceChangeCoordinator;
+    internal readonly ILogger<CaptainCoasterDataSourceProvider> logger;
 
     public CaptainCoasterDataSourceProvider(
         IMongoDatabase database,
@@ -88,52 +99,52 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
     public async Task<DataSourceSettingsResult> GetSettingsAsync(CancellationToken cancellationToken)
     {
         CaptainCoasterSettingsDocument settings = await this.GetOrCreateSettingsAsync();
-        return MapSettings(settings);
+        return this.MapSettings(settings);
     }
 
     public async Task<DataSourceSettingsResult> UpdateSettingsAsync(DataSourceSettingsResult settings, CancellationToken cancellationToken)
     {
         CaptainCoasterSettingsDocument document = await this.GetOrCreateSettingsAsync();
         document.IsEnabled = settings.IsEnabled;
-        document.DataDirectoryPath = GetOption(settings.Options, "dataDirectoryPath");
-        document.HtmlDirectoryPath = GetOption(settings.Options, "htmlDirectoryPath");
-        document.UseOfflineMode = TryParseBool(GetOption(settings.Options, "useOfflineMode"));
+        document.DataDirectoryPath = this.GetOption(settings.Options, "dataDirectoryPath");
+        document.HtmlDirectoryPath = this.GetOption(settings.Options, "htmlDirectoryPath");
+        document.UseOfflineMode = this.TryParseBool(this.GetOption(settings.Options, "useOfflineMode"));
 
-        string? baseUrl = GetOption(settings.Options, "baseUrl");
+        string? baseUrl = this.GetOption(settings.Options, "baseUrl");
         if (!string.IsNullOrWhiteSpace(baseUrl))
         {
             document.BaseUrl = baseUrl.Trim();
         }
 
-        string? apiKey = GetOption(settings.Options, "apiKey");
+        string? apiKey = this.GetOption(settings.Options, "apiKey");
         if (apiKey != null)
         {
             document.ApiKey = apiKey;
         }
 
-        document.SitemapUrl = GetOption(settings.Options, "sitemapUrl") ?? document.SitemapUrl ?? "https://captaincoaster.com/sitemap.xml";
-        document.MapPageUrl = GetOption(settings.Options, "mapPageUrl") ?? document.MapPageUrl ?? "https://captaincoaster.com/fr/map/";
-        document.DelayBetweenRequestsMs = Math.Max(0, TryParseInt(GetOption(settings.Options, "delayBetweenRequestsMs")) ?? document.DelayBetweenRequestsMs);
-        document.HttpTimeoutSeconds = Math.Max(5, TryParseInt(GetOption(settings.Options, "httpTimeoutSeconds")) ?? document.HttpTimeoutSeconds);
-        document.MaxRetryCount = Math.Max(1, TryParseInt(GetOption(settings.Options, "maxRetryCount")) ?? document.MaxRetryCount);
-        document.MaxConcurrentRequests = Math.Clamp(TryParseInt(GetOption(settings.Options, "maxConcurrentRequests")) ?? document.MaxConcurrentRequests, 1, 16);
-        document.CoasterWriteBatchSize = Math.Clamp(TryParseInt(GetOption(settings.Options, "coasterWriteBatchSize")) ?? document.CoasterWriteBatchSize, 5, 500);
-        document.ProgressSaveInterval = Math.Clamp(TryParseInt(GetOption(settings.Options, "progressSaveInterval")) ?? document.ProgressSaveInterval, 1, 500);
-        document.MaxCoasterCount = TryParseInt(GetOption(settings.Options, "maxCoasterCount")) ?? document.MaxCoasterCount;
-        document.SkipCoasterCount = Math.Max(0, TryParseInt(GetOption(settings.Options, "skipCoasterCount")) ?? document.SkipCoasterCount);
-        document.EnrichParkCoordinates = GetOption(settings.Options, "enrichParkCoordinates") is string enrichValue ? TryParseBool(enrichValue) : document.EnrichParkCoordinates;
-        document.MapMarkersAttributeName = GetOption(settings.Options, "mapMarkersAttributeName") ?? document.MapMarkersAttributeName;
-        document.CoasterTitleXPath = GetOption(settings.Options, "coasterTitleXPath") ?? document.CoasterTitleXPath;
-        document.CharacteristicsItemXPath = GetOption(settings.Options, "characteristicsItemXPath") ?? document.CharacteristicsItemXPath;
-        document.CharacteristicLabelXPath = GetOption(settings.Options, "characteristicLabelXPath") ?? document.CharacteristicLabelXPath;
-        document.CharacteristicValueXPath = GetOption(settings.Options, "characteristicValueXPath") ?? document.CharacteristicValueXPath;
-        document.TopMetricXPath = GetOption(settings.Options, "topMetricXPath") ?? document.TopMetricXPath;
+        document.SitemapUrl = this.GetOption(settings.Options, "sitemapUrl") ?? document.SitemapUrl ?? "https://captaincoaster.com/sitemap.xml";
+        document.MapPageUrl = this.GetOption(settings.Options, "mapPageUrl") ?? document.MapPageUrl ?? "https://captaincoaster.com/fr/map/";
+        document.DelayBetweenRequestsMs = Math.Max(0, this.TryParseInt(this.GetOption(settings.Options, "delayBetweenRequestsMs")) ?? document.DelayBetweenRequestsMs);
+        document.HttpTimeoutSeconds = Math.Max(5, this.TryParseInt(this.GetOption(settings.Options, "httpTimeoutSeconds")) ?? document.HttpTimeoutSeconds);
+        document.MaxRetryCount = Math.Max(1, this.TryParseInt(this.GetOption(settings.Options, "maxRetryCount")) ?? document.MaxRetryCount);
+        document.MaxConcurrentRequests = Math.Clamp(this.TryParseInt(this.GetOption(settings.Options, "maxConcurrentRequests")) ?? document.MaxConcurrentRequests, 1, 16);
+        document.CoasterWriteBatchSize = Math.Clamp(this.TryParseInt(this.GetOption(settings.Options, "coasterWriteBatchSize")) ?? document.CoasterWriteBatchSize, 5, 500);
+        document.ProgressSaveInterval = Math.Clamp(this.TryParseInt(this.GetOption(settings.Options, "progressSaveInterval")) ?? document.ProgressSaveInterval, 1, 500);
+        document.MaxCoasterCount = this.TryParseInt(this.GetOption(settings.Options, "maxCoasterCount")) ?? document.MaxCoasterCount;
+        document.SkipCoasterCount = Math.Max(0, this.TryParseInt(this.GetOption(settings.Options, "skipCoasterCount")) ?? document.SkipCoasterCount);
+        document.EnrichParkCoordinates = this.GetOption(settings.Options, "enrichParkCoordinates") is string enrichValue ? this.TryParseBool(enrichValue) : document.EnrichParkCoordinates;
+        document.MapMarkersAttributeName = this.GetOption(settings.Options, "mapMarkersAttributeName") ?? document.MapMarkersAttributeName;
+        document.CoasterTitleXPath = this.GetOption(settings.Options, "coasterTitleXPath") ?? document.CoasterTitleXPath;
+        document.CharacteristicsItemXPath = this.GetOption(settings.Options, "characteristicsItemXPath") ?? document.CharacteristicsItemXPath;
+        document.CharacteristicLabelXPath = this.GetOption(settings.Options, "characteristicLabelXPath") ?? document.CharacteristicLabelXPath;
+        document.CharacteristicValueXPath = this.GetOption(settings.Options, "characteristicValueXPath") ?? document.CharacteristicValueXPath;
+        document.TopMetricXPath = this.GetOption(settings.Options, "topMetricXPath") ?? document.TopMetricXPath;
 
         document.Source = LegacyExternalSourceValue;
         document.UpdatedAt = DateTime.UtcNow;
         ReplaceOptions options = new ReplaceOptions { IsUpsert = true };
         await this.settingsCollection.ReplaceOneAsync(item => item.Id == document.Id, document, options, cancellationToken);
-        return MapSettings(document);
+        return this.MapSettings(document);
     }
 
     public async Task<DataSourceSessionResult?> GetLatestSessionAsync(CancellationToken cancellationToken)
@@ -143,7 +154,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             .SortByDescending(item => item.StartedAtUtc)
             .FirstOrDefaultAsync(cancellationToken);
 
-        return session == null ? null : MapSession(session);
+        return session == null ? null : this.MapSession(session);
     }
 
     public async Task<DataSourceSessionResult?> GetSessionByIdAsync(string sessionId, CancellationToken cancellationToken)
@@ -152,7 +163,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             .Find(item => item.Id == sessionId && item.SourceKey == SourceKeyValue)
             .FirstOrDefaultAsync(cancellationToken);
 
-        return session == null ? null : MapSession(session);
+        return session == null ? null : this.MapSession(session);
     }
 
     public async Task<DataSourceComparisonPageResult> GetComparisonResultsAsync(
@@ -231,7 +242,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
         return new DataSourceComparisonPageResult
         {
-            Items = items.Select(MapComparison).ToList(),
+            Items = items.Select(this.MapComparison).ToList(),
             TotalCount = (int)totalTask.Result,
             Page = effectivePage,
             PageSize = effectivePageSize,
@@ -246,8 +257,8 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
     {
         ArgumentNullException.ThrowIfNull(importDescriptor);
 
-        string importKind = NormalizeImportKind(importDescriptor.ImportKind);
-        if (!IsSupportedImportKind(importKind))
+        string importKind = this.NormalizeImportKind(importDescriptor.ImportKind);
+        if (!this.IsSupportedImportKind(importKind))
         {
             throw new ArgumentException($"Le mode d'import '{importKind}' n'est pas supporté.", nameof(importDescriptor));
         }
@@ -277,9 +288,9 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             session.CompletedAtUtc = null;
             session.ImportKind = importKind;
             session.CanResume = true;
-            session.AvailableSteps = GetAvailableSteps(importKind).ToList();
+            session.AvailableSteps = this.GetAvailableSteps(importKind).ToList();
             session.UpdatedAt = DateTime.UtcNow;
-            AddLog(session, "Info", "Reprise du workflow planifiée.");
+            this.AddLog(session, "Info", "Reprise du workflow planifiée.");
             await this.PersistSessionAsync(session, cancellationToken);
         }
         else
@@ -301,18 +312,18 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 Message = "Import mis en file d'attente.",
                 ProgressPercentage = 0,
                 ImportKind = importKind,
-                AvailableSteps = GetAvailableSteps(importKind).ToList(),
+                AvailableSteps = this.GetAvailableSteps(importKind).ToList(),
                 CanResume = true,
                 StartedAtUtc = DateTime.UtcNow,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
             };
-            AddLog(session, "Info", $"Import Captain Coaster planifié en mode '{importKind}'.");
+            this.AddLog(session, "Info", $"Import Captain Coaster planifié en mode '{importKind}'.");
             await this.sessionsCollection.InsertOneAsync(session, cancellationToken: cancellationToken);
         }
 
         await this.queue.EnqueueAsync(new DataSourceImportJob(SourceKeyValue, session.Id, importDescriptor), cancellationToken);
-        return MapSession(session);
+        return this.MapSession(session);
     }
 
     public async Task<DataSourceApplyResult> ApplyComparisonAsync(DataSourceApplyRequest request, CancellationToken cancellationToken)
@@ -392,14 +403,14 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             .ToDictionary(group => group.Key, group => group.Last(), StringComparer.Ordinal);
 
         List<CaptainCoasterComparisonResultDocument> orderedResults = results
-            .OrderBy(item => GetEntityApplyPriority(item.EntityType))
+            .OrderBy(item => this.GetEntityApplyPriority(item.EntityType))
             .ThenBy(item => item.RequiresManualResolution ? 1 : 0)
             .ThenBy(item => item.DisplayName)
             .ToList();
 
         CaptainCoasterSettingsDocument settings = await this.GetOrCreateSettingsAsync();
-        int batchSize = NormalizePositiveBounded(settings.CoasterWriteBatchSize, 100, 10, 500);
-        int progressSaveInterval = NormalizePositiveBounded(settings.ProgressSaveInterval, 25, 1, 500);
+        int batchSize = this.NormalizePositiveBounded(settings.CoasterWriteBatchSize, 100, 10, 500);
+        int progressSaveInterval = this.NormalizePositiveBounded(settings.ProgressSaveInterval, 25, 1, 500);
         CaptainCoasterApplyExecutionContext context = await this.BuildApplyExecutionContextAsync(session.Id, cancellationToken);
 
         int startingAppliedChanges = session.Metrics.AppliedChanges;
@@ -415,7 +426,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         session.CanResume = false;
         session.CompletedAtUtc = null;
         session.UpdatedAt = DateTime.UtcNow;
-        AddLog(session, "Info", $"Application métier démarrée : {totalCount} changement(s) à traiter.");
+        this.AddLog(session, "Info", $"Application métier démarrée : {totalCount} changement(s) à traiter.");
         await this.PersistSessionAsync(session, cancellationToken);
 
         try
@@ -452,10 +463,10 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 {
                     failedCount++;
                     this.logger.LogWarning(exception, "Unable to apply Captain Coaster comparison result {ComparisonResultId} for session {SessionId}.", result.Id, session.Id);
-                    AddLog(session, "Warn", $"Échec de l'application pour '{result.DisplayName}' : {exception.Message}");
+                    this.AddLog(session, "Warn", $"Échec de l'application pour '{result.DisplayName}' : {exception.Message}");
                 }
 
-                if (HasPendingApplyWrites(context, batchSize))
+                if (this.HasPendingApplyWrites(context, batchSize))
                 {
                     await this.FlushApplyWritesAsync(context, cancellationToken);
                 }
@@ -467,7 +478,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                     session.ProgressPercentage = (int)Math.Round((double)processedCount * 100d / Math.Max(1, totalCount));
                     session.Message = $"Application métier en cours : {processedCount}/{totalCount} élément(s) traité(s), {appliedCount} appliqué(s), {failedCount} en échec.";
                     session.UpdatedAt = DateTime.UtcNow;
-                    AddLog(session, "Info", session.Message);
+                    this.AddLog(session, "Info", session.Message);
                     await this.PersistSessionAsync(session, cancellationToken);
                 }
             }
@@ -478,7 +489,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             session.Message = "Rafraîchissement de l'index de recherche après application métier.";
             session.ProgressPercentage = 99;
             session.UpdatedAt = DateTime.UtcNow;
-            AddLog(session, "Info", session.Message);
+            this.AddLog(session, "Info", session.Message);
             await this.PersistSessionAsync(session, cancellationToken);
 
             await this.RefreshSearchProjectionAsync(
@@ -496,7 +507,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             session.CompletedAtUtc = DateTime.UtcNow;
             session.UpdatedAt = DateTime.UtcNow;
             session.CanResume = true;
-            AddLog(session, "Info", session.Message);
+            this.AddLog(session, "Info", session.Message);
             await this.PersistSessionAsync(session, cancellationToken);
 
             return new DataSourceApplyResult { AppliedCount = appliedCount };
@@ -516,7 +527,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             session.UpdatedAt = DateTime.UtcNow;
             session.CanResume = true;
             session.Metrics.AppliedChanges = startingAppliedChanges + appliedCount;
-            AddLog(session, "Error", $"Échec de l'application métier : {exception.Message}");
+            this.AddLog(session, "Error", $"Échec de l'application métier : {exception.Message}");
             await this.PersistSessionAsync(session, cancellationToken);
             throw;
         }
@@ -526,13 +537,13 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
     {
         ArgumentNullException.ThrowIfNull(job);
 
-        string importKind = NormalizeImportKind(job.ImportDescriptor.ImportKind);
+        string importKind = this.NormalizeImportKind(job.ImportDescriptor.ImportKind);
         CaptainCoasterSyncSessionDocument session = await this.sessionsCollection.Find(item => item.Id == job.SessionId).FirstAsync(cancellationToken);
 
         try
         {
             session.ImportKind = importKind;
-            session.AvailableSteps = GetAvailableSteps(importKind).ToList();
+            session.AvailableSteps = this.GetAvailableSteps(importKind).ToList();
             session.CanResume = true;
             await this.PersistSessionAsync(session, cancellationToken);
 
@@ -542,42 +553,42 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 return;
             }
 
-            CaptainCoasterImportFiles inputFiles = ResolveInputFiles(job.ImportDescriptor);
+            CaptainCoasterImportFiles inputFiles = this.ResolveInputFiles(job.ImportDescriptor);
             byte[] parksBytes = await File.ReadAllBytesAsync(inputFiles.ParksFilePath, cancellationToken);
             byte[] coastersBytes = await File.ReadAllBytesAsync(inputFiles.CoastersFilePath, cancellationToken);
 
             await this.UpdateSessionAsync(session, "ParsingParks", "Analyse du fichier detected-parks.json.", 10, cancellationToken);
-            List<CaptainCoasterParkSnapshotDocument> parks = ParseParksFromJson(job.SessionId, parksBytes);
+            List<CaptainCoasterParkSnapshotDocument> parks = this.ParseParksFromJson(job.SessionId, parksBytes);
             await this.parksCollection.DeleteManyAsync(item => item.SyncSessionId == job.SessionId, cancellationToken);
             if (parks.Count > 0)
             {
                 await this.parksCollection.InsertManyAsync(parks, cancellationToken: cancellationToken);
             }
             session.Metrics.ParksFetched = parks.Count;
-            int parkDuplicateGroups = CountDuplicateGroups(parks.Select(item => item.CaptainCoasterId));
+            int parkDuplicateGroups = this.CountDuplicateGroups(parks.Select(item => item.CaptainCoasterId));
             if (parkDuplicateGroups > 0)
             {
-                AddLog(session, "Warn", $"{parkDuplicateGroups} doublon(s) d'identifiant parc détecté(s) dans le staging. Une résolution humaine sera demandée.");
+                this.AddLog(session, "Warn", $"{parkDuplicateGroups} doublon(s) d'identifiant parc détecté(s) dans le staging. Une résolution humaine sera demandée.");
             }
             session.LastCompletedStep = "ParsingParks";
-            AddLog(session, "Info", $"{parks.Count} parc(s) parsé(s).");
+            this.AddLog(session, "Info", $"{parks.Count} parc(s) parsé(s).");
             await this.PersistSessionAsync(session, cancellationToken);
 
             await this.UpdateSessionAsync(session, "ParsingCoasters", "Analyse du fichier coasters.json.", 40, cancellationToken);
-            List<CaptainCoasterCoasterSnapshotDocument> coasters = ParseCoastersFromJson(job.SessionId, coastersBytes);
+            List<CaptainCoasterCoasterSnapshotDocument> coasters = this.ParseCoastersFromJson(job.SessionId, coastersBytes);
             await this.coastersCollection.DeleteManyAsync(item => item.SyncSessionId == job.SessionId, cancellationToken);
             if (coasters.Count > 0)
             {
                 await this.coastersCollection.InsertManyAsync(coasters, cancellationToken: cancellationToken);
             }
             session.Metrics.CoastersFetched = coasters.Count;
-            int coasterDuplicateGroups = CountDuplicateGroups(coasters.Select(item => item.CaptainCoasterId));
+            int coasterDuplicateGroups = this.CountDuplicateGroups(coasters.Select(item => item.CaptainCoasterId));
             if (coasterDuplicateGroups > 0)
             {
-                AddLog(session, "Warn", $"{coasterDuplicateGroups} doublon(s) d'identifiant coaster détecté(s) dans le staging. Une résolution humaine sera demandée.");
+                this.AddLog(session, "Warn", $"{coasterDuplicateGroups} doublon(s) d'identifiant coaster détecté(s) dans le staging. Une résolution humaine sera demandée.");
             }
             session.LastCompletedStep = "ParsingCoasters";
-            AddLog(session, "Info", $"{coasters.Count} coaster(s) parsé(s).");
+            this.AddLog(session, "Info", $"{coasters.Count} coaster(s) parsé(s).");
             await this.PersistSessionAsync(session, cancellationToken);
 
             await this.UpdateSessionAsync(session, "BuildingComparison", "Construction du rapport de comparaison.", 70, cancellationToken);
@@ -590,7 +601,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             session.Metrics.ComparisonResults = comparisonResults.Count;
             session.Metrics.DuplicateConflicts = comparisonResults.Count(item => item.RequiresManualResolution);
             session.LastCompletedStep = "BuildComparison";
-            AddLog(session, "Info", $"{comparisonResults.Count} différence(s) détectée(s), dont {session.Metrics.DuplicateConflicts} conflit(s) nécessitant une résolution humaine.");
+            this.AddLog(session, "Info", $"{comparisonResults.Count} différence(s) détectée(s), dont {session.Metrics.DuplicateConflicts} conflit(s) nécessitant une résolution humaine.");
             await this.PersistSessionAsync(session, cancellationToken);
 
             CaptainCoasterSettingsDocument settings = await this.GetOrCreateSettingsAsync();
@@ -605,7 +616,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             session.CompletedAtUtc = DateTime.UtcNow;
             session.UpdatedAt = DateTime.UtcNow;
             session.CanResume = true;
-            AddLog(session, "Info", $"Terminé : {session.Metrics.ParksFetched} parcs, {session.Metrics.CoastersFetched} coasters, {session.Metrics.ComparisonResults} résultats. Les changements restent en attente de validation manuelle avant intégration métier.");
+            this.AddLog(session, "Info", $"Terminé : {session.Metrics.ParksFetched} parcs, {session.Metrics.CoastersFetched} coasters, {session.Metrics.ComparisonResults} résultats. Les changements restent en attente de validation manuelle avant intégration métier.");
             await this.PersistSessionAsync(session, cancellationToken);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -616,7 +627,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             session.CompletedAtUtc = DateTime.UtcNow;
             session.UpdatedAt = DateTime.UtcNow;
             session.CanResume = true;
-            AddLog(session, "Warn", session.Message);
+            this.AddLog(session, "Warn", session.Message);
             await this.PersistSessionAsync(session, CancellationToken.None);
             throw;
         }
@@ -629,12 +640,12 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             session.CompletedAtUtc = DateTime.UtcNow;
             session.UpdatedAt = DateTime.UtcNow;
             session.CanResume = true;
-            AddLog(session, "Error", $"Échec de l'import : {exception.Message}");
+            this.AddLog(session, "Error", $"Échec de l'import : {exception.Message}");
             await this.PersistSessionAsync(session, cancellationToken);
         }
         finally
         {
-            DeleteWorkingDirectorySafe(job.ImportDescriptor.WorkingDirectoryPath);
+            this.DeleteWorkingDirectorySafe(job.ImportDescriptor.WorkingDirectoryPath);
         }
     }
 }

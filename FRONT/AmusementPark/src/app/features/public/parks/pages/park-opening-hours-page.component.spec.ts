@@ -23,15 +23,7 @@ import {
 } from '@app/testing/common-test-providers';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkOpeningHoursPageComponent } from './park-opening-hours-page.component';
-
-class FakeTranslationService {
-  public readonly languageChanged: EventEmitter<string> =
-    new EventEmitter<string>();
-
-  getCurrentLang(): string {
-    return 'fr';
-  }
-}
+import { FakeTranslationService } from './test-helpers/park-opening-hours-page.component/fake-translation-service';
 
 describe('ParkOpeningHoursPageComponent', () => {
   let fixture: ComponentFixture<ParkOpeningHoursPageComponent>;

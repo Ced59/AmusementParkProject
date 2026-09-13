@@ -391,7 +391,3 @@ internal sealed class RatingAggregateSynchronizer
         return value is BsonDateTime dateTime ? dateTime.ToUniversalTime() : null;
     }
 }
-
-internal sealed record RatingAggregatePendingMutation(
-    long Version,
-    RatingAggregateTarget Target);

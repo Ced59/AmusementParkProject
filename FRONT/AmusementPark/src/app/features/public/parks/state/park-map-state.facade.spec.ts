@@ -11,39 +11,8 @@ import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
 
 import { PARK_MAP_PARKS_PORT, ParkMapHttpOptions, ParkMapParksPort } from './park-map-data.ports';
 import { ParkMapStateFacade } from './park-map-state.facade';
-
-class FakeParksPort implements ParkMapParksPort {
-  public summaryResponse$: Observable<ParkDetailSummary> = of(createSummary('Operating', 1));
-  public mapItemsResponse$: Observable<ParkMapItems> = of(createMapItems(createPark('Operating')));
-  public summaryResponses$: Observable<ParkDetailSummary>[] = [];
-  public mapItemsResponses$: Observable<ParkMapItems>[] = [];
-  public readonly summaryCalls: Array<{ id: string; closedFilter?: ClosedEntityFilter }> = [];
-  public readonly mapItemsCalls: Array<{ id: string; closedFilter?: ClosedEntityFilter }> = [];
-  public readonly officialMapFileCalls: Array<{ url: string; skipsAuthorization: boolean }> = [];
-
-  getParkDetailSummary(id: string, options?: ParkMapHttpOptions): Observable<ParkDetailSummary> {
-    this.summaryCalls.push({ id, closedFilter: options?.closedFilter });
-    return this.summaryResponses$.shift() ?? this.summaryResponse$;
-  }
-
-  getParkMapItems(id: string, options?: ParkMapHttpOptions): Observable<ParkMapItems> {
-    this.mapItemsCalls.push({ id, closedFilter: options?.closedFilter });
-    return this.mapItemsResponses$.shift() ?? this.mapItemsResponse$;
-  }
-
-  getParkOfficialMapFile(url: string, options?: AnonymousHttpOptions): Observable<Blob> {
-    this.officialMapFileCalls.push({
-      url,
-      skipsAuthorization: options?.context.get(SKIP_AUTHORIZATION_HEADER) ?? false
-    });
-    return of(new Blob(['map'], { type: 'application/pdf' }));
-  }
-}
-
-class FakeSsrHttpStatusService {
-  setNotFound(): void {
-  }
-}
+import { FakeParksPort } from './test-helpers/park-map-state.facade/fake-parks-port';
+import { FakeSsrHttpStatusService } from './test-helpers/park-map-state.facade/fake-ssr-http-status-service';
 
 function createPark(status: Park['status'] = 'Operating'): Park {
   return {

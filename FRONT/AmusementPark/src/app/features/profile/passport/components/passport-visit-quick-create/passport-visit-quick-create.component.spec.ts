@@ -6,22 +6,7 @@ import { Router } from '@angular/router';
 import { PassportVisit } from '@app/models/passport/passport-visit.models';
 import { PassportVisitQuickCreateStateFacade } from '../../state/passport-visit-quick-create-state.facade';
 import { PassportVisitQuickCreateComponent } from './passport-visit-quick-create.component';
-
-@Component({
-  template: `
-    <main class="app-layout-main">
-      <app-passport-visit-quick-create
-        [visible]="visible"
-        (visitCreated)="createdVisit = $event">
-      </app-passport-visit-quick-create>
-    </main>
-  `,
-  imports: [PassportVisitQuickCreateComponent]
-})
-class PassportVisitQuickCreateHostComponent {
-  visible: boolean = true;
-  createdVisit: PassportVisit | null = null;
-}
+import { PassportVisitQuickCreateHostComponent } from './test-helpers/passport-visit-quick-create.component/passport-visit-quick-create-host-component';
 
 const fakeFacade = {
   parkOptions: signal([]),

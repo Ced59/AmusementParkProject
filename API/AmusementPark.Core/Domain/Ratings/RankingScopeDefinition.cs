@@ -2,23 +2,6 @@ using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Core.Domain.Ratings;
 
-public enum RankingTargetFamily
-{
-    Parks,
-    ParkItems,
-}
-
-public enum RankingScopeFilterKind
-{
-    Global,
-    ParkItemCategory,
-}
-
-public enum RankingPublicationMode
-{
-    DurableSnapshot,
-}
-
 /// <summary>
 /// Définition immuable d'un classement pouvant être matérialisé.
 /// </summary>

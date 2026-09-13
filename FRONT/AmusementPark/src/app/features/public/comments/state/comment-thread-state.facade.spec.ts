@@ -16,121 +16,12 @@ import { ToastMessageService } from '@app/services/messages/toast-message.servic
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { CommentDataPort } from './comment-data.ports';
 import { CommentThreadStateFacade } from './comment-thread-state.facade';
-
-class FakeDestroyRef implements DestroyRef {
-  readonly destroyed = false;
-
-  onDestroy(callback: () => void): () => void {
-    void callback;
-    return (): void => undefined;
-  }
-}
-
-class FakeCommentDataPort implements CommentDataPort {
-  thread: CommentThread = createThread([
-    createComment('regular', false, '2026-07-02T10:00:00Z'),
-    createComment('official', true, '2026-07-01T10:00:00Z')
-  ]);
-  createdComment: PublicComment = createComment('created', false, '2026-07-03T10:00:00Z');
-  updatedComment: PublicComment = createComment('regular', true, '2026-07-04T10:00:00Z');
-  threadResponse: Observable<CommentThread> | null = null;
-  updateResponse: Observable<PublicComment> | null = null;
-  deleteResponse: Observable<void> | null = null;
-  readonly getThreadCalls: Array<{ targetType: CommentTargetType; targetId: string }> = [];
-  readonly createCalls: CreateCommentRequest[] = [];
-  readonly updateCalls: UpdateCommentRequest[] = [];
-  readonly deleteCalls: Array<{ commentId: string; revision: number }> = [];
-
-  getSummary(
-    targetType: CommentTargetType,
-    targetId: string,
-    languageCode: string
-  ): Observable<CommentSummary> {
-    return of({
-      targetType,
-      targetId,
-      commentCount: this.thread.comments.length,
-      languageCode,
-      languageCommentCount: this.thread.comments.length,
-      officialComment: this.thread.comments.find((comment: PublicComment) => comment.isOfficial) ?? null
-    });
-  }
-
-  getThread(targetType: CommentTargetType, targetId: string): Observable<CommentThread> {
-    this.getThreadCalls.push({ targetType, targetId });
-    return this.threadResponse ?? of(this.thread);
-  }
-
-  createComment(request: CreateCommentRequest): Observable<PublicComment> {
-    this.createCalls.push(request);
-    return of(this.createdComment);
-  }
-
-  uploadCommentImage(): Observable<{ id: string; url: string }> {
-    return of({
-      id: '0123456789abcdef0123456789abcdef',
-      url: '/images/0123456789abcdef0123456789abcdef'
-    });
-  }
-
-  deleteCommentImage(): Observable<void> {
-    return of(undefined);
-  }
-
-  updateComment(request: UpdateCommentRequest): Observable<PublicComment> {
-    this.updateCalls.push(request);
-    return this.updateResponse ?? of(this.updatedComment);
-  }
-
-  deleteComment(commentId: string, revision: number): Observable<void> {
-    this.deleteCalls.push({ commentId, revision });
-    return this.deleteResponse ?? of(undefined);
-  }
-}
-
-class FakeAuthService {
-  token: string | null = null;
-  roles: string[] = [];
-
-  ensureValidAccessToken(_forceRefreshAttempt: boolean): Observable<string | null> {
-    return of(this.token);
-  }
-
-  hasRole(expectedRole: string): boolean {
-    return this.roles.includes(expectedRole);
-  }
-}
-
-class FakeToastMessageService {
-  readonly messages: string[] = [];
-
-  add(
-    _severity: 'success' | 'info' | 'warn' | 'error',
-    _summary: string,
-    detail: string
-  ): void {
-    this.messages.push(detail);
-  }
-}
-
-class FakeTranslateService {
-  instant(key: string): string {
-    return key;
-  }
-}
-
-class FakeSsrHttpStatusService {
-  readonly statuses: number[] = [];
-  notFoundCallCount: number = 0;
-
-  setNotFound(): void {
-    this.notFoundCallCount += 1;
-  }
-
-  setStatus(status: number): void {
-    this.statuses.push(status);
-  }
-}
+import { FakeDestroyRef } from './test-helpers/comment-thread-state.facade/fake-destroy-ref';
+import { FakeCommentDataPort } from './test-helpers/comment-thread-state.facade/fake-comment-data-port';
+import { FakeAuthService } from './test-helpers/comment-thread-state.facade/fake-auth-service';
+import { FakeToastMessageService } from './test-helpers/comment-thread-state.facade/fake-toast-message-service';
+import { FakeTranslateService } from './test-helpers/comment-thread-state.facade/fake-translate-service';
+import { FakeSsrHttpStatusService } from './test-helpers/comment-thread-state.facade/fake-ssr-http-status-service';
 
 describe('CommentThreadStateFacade', () => {
   it('sorts the official review before newer regular comments', () => {

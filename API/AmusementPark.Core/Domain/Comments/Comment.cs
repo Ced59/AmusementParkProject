@@ -69,23 +69,3 @@ public sealed class Comment : AuditableEntity
         return actor.HasRole(Role.Admin) || actor.HasRole(Role.Moderator);
     }
 }
-
-/// <summary>
-/// Type de contenu pouvant recevoir un commentaire.
-/// </summary>
-public enum CommentTargetType
-{
-    Park = 1,
-    ParkItem = 2,
-}
-
-/// <summary>
-/// État éditorial prévu pour l'ouverture future des commentaires aux utilisateurs.
-/// Les commentaires d'administrateurs et de modérateurs sont publiés directement.
-/// </summary>
-public enum CommentModerationStatus
-{
-    PendingReview = 1,
-    Published = 2,
-    Rejected = 3,
-}

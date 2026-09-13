@@ -139,12 +139,5 @@ public sealed class LocalAccountEmailService : ILocalAccountEmailService
         return $"{baseUrl}/{language}/{routeSegment}?token={encodedToken}";
     }
 
-    private sealed record LocalAccountEmailCopy(
-        string Subject,
-        string Badge,
-        string Title,
-        string Preheader,
-        IReadOnlyCollection<string> Paragraphs,
-        string ActionLabel,
-        string FooterNote);
+
 }

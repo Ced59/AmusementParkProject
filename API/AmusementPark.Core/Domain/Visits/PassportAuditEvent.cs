@@ -5,66 +5,6 @@ using AmusementPark.Core.Domain.Identifiers;
 namespace AmusementPark.Core.Domain.Visits;
 
 /// <summary>
-/// Nature d'une preuve privée et immuable produite par une mutation du passeport.
-/// </summary>
-public enum PassportAuditEventType
-{
-    VisitCreated = 1,
-    VisitDateChanged = 2,
-    VisitCompleted = 3,
-    VisitReopened = 4,
-    VisitArchived = 5,
-    VisitDeleted = 6,
-    ParkAssessmentCreated = 7,
-    ParkAssessmentChanged = 8,
-    ParkAssessmentDeleted = 9,
-    RideOccurrenceAdded = 10,
-    RideOccurrenceChanged = 11,
-    RideOccurrenceDeleted = 12,
-    RideAssessmentCreated = 13,
-    RideAssessmentChanged = 14,
-    RideAssessmentDeleted = 15,
-    VisitMetadataChanged = 16,
-}
-
-public enum PassportAuditEntityType
-{
-    Visit = 1,
-    ParkAssessment = 2,
-    RideOccurrence = 3,
-    RideAssessment = 4,
-}
-
-public enum PassportAuditOrigin
-{
-    User = 1,
-    Import = 2,
-    System = 3,
-}
-
-public enum PassportAuditChangedField
-{
-    Visit = 1,
-    Date = 2,
-    Status = 3,
-    ParkAssessmentRating = 4,
-    ParkAssessmentPrivateComment = 5,
-    RideOccurrence = 6,
-    Moment = 7,
-    HistoricalConsistency = 8,
-    HistoricalTarget = 9,
-    PrivateNote = 10,
-    SortPosition = 11,
-    DeletedAtUtc = 12,
-    RideAssessmentRating = 13,
-    RideAssessmentPrivateComment = 14,
-    AssessmentRevision = 15,
-    TimeZone = 16,
-    ServiceDayConvention = 17,
-    Title = 18,
-}
-
-/// <summary>
 /// Preuve d'audit minimisée. Les textes privés et les heures locales ne sont jamais copiés.
 /// </summary>
 public sealed class PassportAuditEvent

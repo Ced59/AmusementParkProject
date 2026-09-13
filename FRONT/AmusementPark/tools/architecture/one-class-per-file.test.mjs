@@ -136,6 +136,8 @@ test('findCSharpClasses includes nested and implicit reference record declaratio
 
 test('findFileNameMismatches respects C# and Angular filename conventions', () => {
   assert.deepEqual(findFileNameMismatches('RankingSnapshotHeader.cs', ['RankingSnapshotHeader']), []);
+  assert.deepEqual(findFileNameMismatches('ApplicationResultOfT.cs', ['ApplicationResult']), []);
+  assert.deepEqual(findFileNameMismatches('ApplicationResultOfT.cs', ['DifferentResult']), ['DifferentResult']);
   assert.deepEqual(findFileNameMismatches('Café.cs', ['Café']), []);
   assert.deepEqual(
     findFileNameMismatches('public-rating-state.facade.ts', ['PublicRatingStateFacade']),

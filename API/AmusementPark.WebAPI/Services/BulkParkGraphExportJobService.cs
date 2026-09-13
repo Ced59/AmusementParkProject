@@ -9,81 +9,6 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 
 namespace AmusementPark.WebAPI.Services;
 
-public enum BulkParkGraphExportJobStatus
-{
-    Queued,
-    Running,
-    Completed,
-    Failed,
-    Expired,
-}
-
-public sealed class BulkParkGraphExportJobSnapshot
-{
-    public string JobId { get; init; } = string.Empty;
-
-    public BulkParkGraphExportJobStatus Status { get; init; }
-
-    public int ProgressPercentage { get; init; }
-
-    public string? Message { get; init; }
-
-    public int? ExportedParkCount { get; init; }
-
-    public int? ProcessedParkCount { get; init; }
-
-    public string? FileName { get; init; }
-
-    public long? ContentLength { get; init; }
-
-    public string? DownloadToken { get; init; }
-
-    public DateTime CreatedAtUtc { get; init; }
-
-    public DateTime? StartedAtUtc { get; init; }
-
-    public DateTime? CompletedAtUtc { get; init; }
-
-    public DateTime ExpiresAtUtc { get; init; }
-
-    public string? Error { get; init; }
-
-    public string RequestedByClientId { get; init; } = string.Empty;
-}
-
-public sealed class BulkParkGraphExportJobStartResult
-{
-    public BulkParkGraphExportJobSnapshot? Snapshot { get; init; }
-
-    public int RetryAfterSeconds { get; init; }
-
-    public bool IsAccepted => this.Snapshot is not null;
-}
-
-public sealed class BulkParkGraphExportDownload
-{
-    public string FilePath { get; init; } = string.Empty;
-
-    public string FileName { get; init; } = string.Empty;
-
-    public string ContentType { get; init; } = "application/octet-stream";
-}
-
-public interface IBulkParkGraphExportJobService
-{
-    Task<BulkParkGraphExportJobStartResult> TryStartAsync(
-        ParkGraphBulkExportRequest request,
-        string requestedByUserId,
-        string requestedByClientId,
-        CancellationToken cancellationToken = default);
-
-    BulkParkGraphExportJobSnapshot? GetSnapshot(string jobId, string requestedByUserId);
-
-    IReadOnlyCollection<BulkParkGraphExportJobSnapshot> GetActiveSnapshots();
-
-    BulkParkGraphExportDownload? GetDownload(string jobId, string token);
-}
-
 public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobService
 {
     private static readonly TimeSpan PendingJobLifetime = TimeSpan.FromHours(1);
@@ -515,61 +440,7 @@ public sealed class BulkParkGraphExportJobService : IBulkParkGraphExportJobServi
         }
     }
 
-    private sealed class BulkParkGraphExportJobState
-    {
-        public object SyncRoot { get; } = new object();
 
-        public string JobId { get; init; } = string.Empty;
 
-        public string RequestedByUserId { get; init; } = string.Empty;
 
-        public string RequestedByClientId { get; init; } = string.Empty;
-
-        public string DownloadToken { get; init; } = string.Empty;
-
-        public ParkGraphBulkExportRequest Request { get; init; } = new ParkGraphBulkExportRequest();
-
-        public string FilePath { get; set; } = string.Empty;
-
-        public BulkParkGraphExportJobStatus Status { get; set; } = BulkParkGraphExportJobStatus.Queued;
-
-        public int ProgressPercentage { get; set; }
-
-        public string? Message { get; set; }
-
-        public int? ExportedParkCount { get; set; }
-
-        public int? ProcessedParkCount { get; set; }
-
-        public string? FileName { get; set; }
-
-        public long? ContentLength { get; set; }
-
-        public DateTime CreatedAtUtc { get; init; }
-
-        public DateTime? StartedAtUtc { get; set; }
-
-        public DateTime? CompletedAtUtc { get; set; }
-
-        public DateTime ExpiresAtUtc { get; set; }
-
-        public string? Error { get; set; }
-
-        public ParkDataEditorOperationLease? CoordinationLease { get; set; }
-    }
-
-    private sealed class InlineProgress<TProgress> : IProgress<TProgress>
-    {
-        private readonly Action<TProgress> handler;
-
-        public InlineProgress(Action<TProgress> handler)
-        {
-            this.handler = handler;
-        }
-
-        public void Report(TProgress value)
-        {
-            this.handler(value);
-        }
-    }
 }

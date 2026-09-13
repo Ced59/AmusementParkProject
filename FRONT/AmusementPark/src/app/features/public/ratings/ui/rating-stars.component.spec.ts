@@ -10,26 +10,7 @@ import {
 } from '@app/testing/common-test-providers';
 import { PublicRatingStateFacade } from '../state/public-rating-state.facade';
 import { RatingStarsComponent } from './rating-stars.component';
-
-class FakePublicRatingStateFacade {
-  readonly methodology: WritableSignal<RatingMethodology | null> = signal<RatingMethodology | null>(
-    createMethodology(),
-  );
-  readonly summary: WritableSignal<RatingSummary | null> = signal<RatingSummary | null>({
-    targetType: 'ParkItem',
-    targetId: 'item-1',
-    ratingCount: 2,
-    averageRating: 4,
-    bayesianScore: 3.5,
-    rank: 4,
-  });
-  readonly saving: WritableSignal<boolean> = signal<boolean>(false);
-  readonly messageKey: WritableSignal<string | null> = signal<string | null>(null);
-  readonly userRatingValue: WritableSignal<number | null> = signal<number | null>(3.5);
-  readonly configure = vi.fn();
-  readonly rate = vi.fn();
-  readonly removeRating = vi.fn();
-}
+import { FakePublicRatingStateFacade } from './test-helpers/rating-stars.component/fake-public-rating-state-facade';
 
 describe('RatingStarsComponent', () => {
   let fixture: ComponentFixture<RatingStarsComponent>;

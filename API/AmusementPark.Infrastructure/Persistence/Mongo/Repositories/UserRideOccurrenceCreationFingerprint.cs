@@ -51,22 +51,7 @@ internal static class UserRideOccurrenceCreationFingerprint
         return Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
     }
 
-    private sealed record CreationItemPayload(
-        string VisitId,
-        string UserId,
-        string ParkItemId,
-        TimeOnly? LocalTime,
-        bool IsApproximate,
-        RideOccurrenceStatus Status,
-        RideLogSource Source,
-        string? PrivateNote,
-        bool ConfirmHistoricalConflict);
 
-    private sealed record ReorderPayload(
-        string VisitId,
-        string UserId,
-        string OccurrenceId,
-        long ExpectedVersion,
-        string? AnchorOccurrenceId,
-        RideOccurrencePlacement Placement);
+
+
 }

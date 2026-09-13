@@ -18,67 +18,9 @@ import {
   HomeStateSearchApiServicePort,
 } from './home-state-data.ports';
 import { HomeStateFacade } from './home-state.facade';
-
-class FakeSearchPort implements HomeStateSearchApiServicePort {
-  public response$: Observable<SearchApiResponse> = of(
-    createSearchResponse([createSearchResult()], createPagination(1, 10, 1)),
-  );
-  public readonly calls: {
-    term: string;
-    categories: string[];
-    page: number;
-    size: number;
-  }[] = [];
-
-  getSearch(
-    term: string,
-    categories: string[],
-    page: number,
-    size: number,
-  ): Observable<SearchApiResponse> {
-    this.calls.push({ term, categories, page, size });
-    return this.response$;
-  }
-}
-
-class FakeParksPort implements HomeStateParksApiServicePort {
-  public response$: Observable<Park[]> = of([createPark('park-1')]);
-  public readonly calls: number[] = [];
-
-  getRandomVisibleParks(limit: number): Observable<Park[]> {
-    this.calls.push(limit);
-    return this.response$;
-  }
-}
-
-class FakeHomePort implements HomeStateHomeApiServicePort {
-  public statsResponse$: Observable<HomeStatsModel> = of({
-    parksCount: 10,
-    attractionsCount: 40,
-    countriesCount: 3,
-  });
-  public featuredResponse$: Observable<HomeFeaturedParkModel[]> = of([
-    createFeaturedPark('park-2'),
-  ]);
-  public readonly statsCalls: number[] = [];
-  public readonly featuredCalls: {
-    excludedParkIds: readonly string[];
-    limit: number;
-  }[] = [];
-
-  getHomeStats(): Observable<HomeStatsModel> {
-    this.statsCalls.push(1);
-    return this.statsResponse$;
-  }
-
-  getFeaturedParks(
-    excludedParkIds: readonly string[],
-    limit: number,
-  ): Observable<HomeFeaturedParkModel[]> {
-    this.featuredCalls.push({ excludedParkIds, limit });
-    return this.featuredResponse$;
-  }
-}
+import { FakeSearchPort } from './test-helpers/home-state.facade/fake-search-port';
+import { FakeParksPort } from './test-helpers/home-state.facade/fake-parks-port';
+import { FakeHomePort } from './test-helpers/home-state.facade/fake-home-port';
 
 function createPark(id: string): Park {
   return {

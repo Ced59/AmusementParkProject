@@ -324,11 +324,3 @@ public sealed class StandaloneAttractionsController : ControllerBase
         return this.HttpContext.UserCanSeeNonVisibleInPublicView();
     }
 }
-
-file static class StandaloneAttractionsControllerMappings
-{
-    public static ParkItemType ToDomainForStandaloneController(this ParkItemTypeDto value)
-    {
-        return Enum.TryParse(value.ToString(), out ParkItemType parsed) ? parsed : ParkItemType.Attraction;
-    }
-}

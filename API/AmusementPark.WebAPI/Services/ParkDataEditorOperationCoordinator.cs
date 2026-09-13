@@ -1,89 +1,5 @@
 namespace AmusementPark.WebAPI.Services;
 
-public enum ParkDataEditorOperationKind
-{
-    Read,
-    ResourceIntensive,
-}
-
-public sealed class ParkDataEditorActiveRequestSnapshot
-{
-    public string OperationId { get; init; } = string.Empty;
-
-    public ParkDataEditorOperationKind Kind { get; init; }
-
-    public string Method { get; init; } = string.Empty;
-
-    public string Path { get; init; } = string.Empty;
-
-    public DateTime StartedAtUtc { get; init; }
-
-    public bool InitiatedByCurrentClient { get; init; }
-}
-
-public sealed class ParkDataEditorOperationCoordinationSnapshot
-{
-    public DateTime ServerTimeUtc { get; init; }
-
-    public bool IsBusy { get; init; }
-
-    public bool HasActiveExport { get; init; }
-
-    public bool CanStartResourceIntensiveOperation { get; init; }
-
-    public int ActiveRequestCount { get; init; }
-
-    public int ActiveExportCount { get; init; }
-
-    public int MaxConcurrentRequests { get; init; }
-
-    public int MaxConcurrentResourceIntensiveOperations { get; init; }
-
-    public int RecommendedPollIntervalSeconds { get; init; }
-
-    public int RetryAfterSeconds { get; init; }
-
-    public IReadOnlyCollection<ParkDataEditorActiveRequestSnapshot> ActiveRequests { get; init; } =
-        Array.Empty<ParkDataEditorActiveRequestSnapshot>();
-}
-
-public interface IParkDataEditorOperationCoordinator
-{
-    int RetryAfterSeconds { get; }
-
-    ParkDataEditorOperationLease? TryBeginRequest(
-        string clientId,
-        ParkDataEditorOperationKind kind,
-        string method,
-        string path);
-
-    ParkDataEditorOperationLease? TryBeginExport(string jobId, string clientId);
-
-    ParkDataEditorOperationCoordinationSnapshot GetSnapshot(string clientId);
-}
-
-public sealed class ParkDataEditorOperationLease : IDisposable
-{
-    private readonly Action<string> release;
-    private int isDisposed;
-
-    internal ParkDataEditorOperationLease(string operationId, Action<string> release)
-    {
-        this.OperationId = operationId;
-        this.release = release;
-    }
-
-    public string OperationId { get; }
-
-    public void Dispose()
-    {
-        if (Interlocked.Exchange(ref this.isDisposed, 1) == 0)
-        {
-            this.release(this.OperationId);
-        }
-    }
-}
-
 public sealed class ParkDataEditorOperationCoordinator : IParkDataEditorOperationCoordinator
 {
     public const int ConcurrentRequestLimit = 2;
@@ -225,18 +141,5 @@ public sealed class ParkDataEditorOperationCoordinator : IParkDataEditorOperatio
         }
     }
 
-    private sealed class ActiveOperationState
-    {
-        public string OperationId { get; init; } = string.Empty;
 
-        public string ClientId { get; init; } = string.Empty;
-
-        public ParkDataEditorOperationKind Kind { get; init; }
-
-        public string Method { get; init; } = string.Empty;
-
-        public string Path { get; init; } = string.Empty;
-
-        public DateTime StartedAtUtc { get; init; }
-    }
 }

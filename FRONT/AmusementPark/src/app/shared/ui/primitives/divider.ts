@@ -1,1 +1,1 @@
-export { DividerModule } from './primitives';
+export { DividerModule } from './divider-module';

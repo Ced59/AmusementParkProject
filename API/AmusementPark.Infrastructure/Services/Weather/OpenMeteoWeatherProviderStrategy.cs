@@ -367,56 +367,9 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
         return exception is not OperationCanceledException || !cancellationToken.IsCancellationRequested;
     }
 
-    private sealed record DateRange(DateOnly Start, DateOnly End);
 
-    private sealed class OpenMeteoResponse
-    {
-        [JsonPropertyName("latitude")]
-        public double? Latitude { get; set; }
 
-        [JsonPropertyName("longitude")]
-        public double? Longitude { get; set; }
 
-        [JsonPropertyName("timezone")]
-        public string? TimeZone { get; set; }
 
-        [JsonPropertyName("utc_offset_seconds")]
-        public int? UtcOffsetSeconds { get; set; }
 
-        [JsonPropertyName("daily")]
-        public OpenMeteoDailyResponse? Daily { get; set; }
-    }
-
-    private sealed class OpenMeteoDailyResponse
-    {
-        [JsonPropertyName("time")]
-        public List<string>? Time { get; set; }
-
-        [JsonPropertyName("weather_code")]
-        public List<int?>? WeatherCode { get; set; }
-
-        [JsonPropertyName("temperature_2m_min")]
-        public List<double?>? TemperatureMinCelsius { get; set; }
-
-        [JsonPropertyName("temperature_2m_max")]
-        public List<double?>? TemperatureMaxCelsius { get; set; }
-
-        [JsonPropertyName("apparent_temperature_min")]
-        public List<double?>? ApparentTemperatureMinCelsius { get; set; }
-
-        [JsonPropertyName("apparent_temperature_max")]
-        public List<double?>? ApparentTemperatureMaxCelsius { get; set; }
-
-        [JsonPropertyName("precipitation_probability_max")]
-        public List<int?>? PrecipitationProbabilityMaxPercent { get; set; }
-
-        [JsonPropertyName("precipitation_sum")]
-        public List<double?>? PrecipitationSumMillimeters { get; set; }
-
-        [JsonPropertyName("wind_speed_10m_max")]
-        public List<double?>? WindSpeedMaxKilometersPerHour { get; set; }
-
-        [JsonPropertyName("wind_gusts_10m_max")]
-        public List<double?>? WindGustsMaxKilometersPerHour { get; set; }
-    }
 }

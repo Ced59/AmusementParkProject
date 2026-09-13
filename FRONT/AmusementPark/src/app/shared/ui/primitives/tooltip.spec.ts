@@ -3,16 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { Tooltip } from './primitives';
-
-@Component({
-  standalone: true,
-  imports: [Tooltip],
-  template:
-    '<button type="button" [appUiTooltip]="text" tooltipPosition="bottom">?</button>',
-})
-class TooltipHostComponent {
-  text = 'Helpful details';
-}
+import { TooltipHostComponent } from './test-helpers/tooltip/tooltip-host-component';
 
 describe('Tooltip primitive', () => {
   afterEach(() => {

@@ -4,7 +4,7 @@ import { firstValueFrom } from 'rxjs';
 
 import { ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
-import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events';
 import {
   ADMIN_CONTEXTUAL_BLOCK_PARK_GRAPH_UPSERT_DATA_PORT,
   AdminContextualBlockParkGraphUpsertDataPort

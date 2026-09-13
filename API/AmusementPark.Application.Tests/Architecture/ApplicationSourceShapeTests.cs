@@ -60,5 +60,5 @@ public sealed class ApplicationSourceShapeTests
         return $"{relativePath} has {file.LineCount} lines. Maximum allowed: {maximumLineCount}.";
     }
 
-    private sealed record SourceFileLineCount(string Path, int LineCount);
+
 }

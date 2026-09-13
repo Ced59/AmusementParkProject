@@ -51,18 +51,3 @@ public sealed class RatingRankingSourceRevisionDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public long? HighestCacheConvergedSourceRevision { get; set; }
 }
-
-public sealed class RatingRankingMutationRecoveryTargetDocument
-{
-    [BsonElement("targetType")]
-    public string TargetType { get; set; } = string.Empty;
-
-    [BsonElement("targetId")]
-    public string TargetId { get; set; } = string.Empty;
-
-    [BsonElement("userId")]
-    public string UserId { get; set; } = string.Empty;
-
-    [BsonElement("mutationToken")]
-    public string MutationToken { get; set; } = string.Empty;
-}

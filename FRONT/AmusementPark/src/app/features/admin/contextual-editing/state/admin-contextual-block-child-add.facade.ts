@@ -13,7 +13,7 @@ import {
   AdminContextualBlockChildAddParkItemsDataPort,
   AdminContextualBlockChildAddParkZonesDataPort
 } from './admin-contextual-block-child-add-data.ports';
-import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events';
 
 export interface AdminContextualBlockChildAddZoneOption {
   readonly id: string;

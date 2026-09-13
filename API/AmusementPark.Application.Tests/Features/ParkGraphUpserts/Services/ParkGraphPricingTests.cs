@@ -38,7 +38,7 @@ public sealed class ParkGraphPricingTests
         pricingRepository
             .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync((ParkPricingEntity?)null);
-        ProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: false);
+        ParkGraphPricingTestsProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: false);
         ParkGraphUpsertRequest request = CreateRequest(CreatePricingDocumentJson());
 
         ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.PreviewAsync(
@@ -73,7 +73,7 @@ public sealed class ParkGraphPricingTests
         Park park = CreateOperatingPark();
         park.Status = status;
         Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
-        ProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: false);
+        ParkGraphPricingTestsProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: false);
 
         ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.PreviewAsync(
             CreateRequest(CreatePricingDocumentJson()),
@@ -106,7 +106,7 @@ public sealed class ParkGraphPricingTests
             .Setup(repository => repository.UpsertAsync(It.IsAny<ParkPricingEntity>(), It.IsAny<CancellationToken>()))
             .Callback<ParkPricingEntity, CancellationToken>((pricing, _) => savedPricing = pricing)
             .ReturnsAsync((ParkPricingEntity pricing, CancellationToken _) => pricing);
-        ProcessorContext context = CreateProcessorContext(park, importPricingRepository, apply: true);
+        ParkGraphPricingTestsProcessorContext context = CreateProcessorContext(park, importPricingRepository, apply: true);
 
         ApplicationResult<ParkGraphUpsertResult> applyResult = await context.Processor.ApplyAsync(
             CreateRequest(firstExport),
@@ -147,7 +147,7 @@ public sealed class ParkGraphPricingTests
             .Setup(repository => repository.UpsertAsync(It.IsAny<ParkPricingEntity>(), It.IsAny<CancellationToken>()))
             .Callback<ParkPricingEntity, CancellationToken>((pricing, _) => savedPricing = pricing)
             .ReturnsAsync((ParkPricingEntity pricing, CancellationToken _) => pricing);
-        ProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: true);
+        ParkGraphPricingTestsProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: true);
 
         ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.ApplyAsync(
             CreateRequest(CreatePricingDocumentJson()),
@@ -175,7 +175,7 @@ public sealed class ParkGraphPricingTests
             .Setup(repository => repository.UpsertAsync(It.IsAny<ParkPricingEntity>(), It.IsAny<CancellationToken>()))
             .Callback<ParkPricingEntity, CancellationToken>((pricing, _) => savedPricing = pricing)
             .ReturnsAsync((ParkPricingEntity pricing, CancellationToken _) => pricing);
-        ProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: true);
+        ParkGraphPricingTestsProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: true);
         string json = CreatePricingDocumentJson().Replace(
             "\"parkingOffers\": []",
             "\"parkingOffers\": [], \"historicalSnapshots\": []",
@@ -202,7 +202,7 @@ public sealed class ParkGraphPricingTests
         Assert.Equal(JsonValueKind.Null, exportedDocument.RootElement.GetProperty("pricing").ValueKind);
 
         Mock<IParkPricingRepository> importPricingRepository = new(MockBehavior.Strict);
-        ProcessorContext context = CreateProcessorContext(park, importPricingRepository, apply: false);
+        ParkGraphPricingTestsProcessorContext context = CreateProcessorContext(park, importPricingRepository, apply: false);
 
         ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.PreviewAsync(
             CreateRequest(exportedJson),
@@ -228,7 +228,7 @@ public sealed class ParkGraphPricingTests
         Assert.Equal(JsonValueKind.Null, exportedDocument.RootElement.GetProperty("pricing").ValueKind);
 
         Mock<IParkPricingRepository> importPricingRepository = new(MockBehavior.Strict);
-        ProcessorContext context = CreateProcessorContext(park, importPricingRepository, apply: false);
+        ParkGraphPricingTestsProcessorContext context = CreateProcessorContext(park, importPricingRepository, apply: false);
 
         ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.PreviewAsync(
             CreateRequest(exportedJson),
@@ -249,7 +249,7 @@ public sealed class ParkGraphPricingTests
     {
         Park park = CreateOperatingPark();
         Mock<IParkPricingRepository> pricingRepository = new(MockBehavior.Strict);
-        ProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: false);
+        ParkGraphPricingTestsProcessorContext context = CreateProcessorContext(park, pricingRepository, apply: false);
 
         ApplicationResult<ParkGraphUpsertResult> result = await context.Processor.PreviewAsync(
             CreateRequest("""{ "mode": "merge", "pricing": 42 }"""),
@@ -305,7 +305,7 @@ public sealed class ParkGraphPricingTests
         return result.Value.Json;
     }
 
-    private static ProcessorContext CreateProcessorContext(
+    private static ParkGraphPricingTestsProcessorContext CreateProcessorContext(
         Park park,
         Mock<IParkPricingRepository> pricingRepository,
         bool apply)
@@ -354,7 +354,7 @@ public sealed class ParkGraphPricingTests
             pricingRepository.Object,
             Mock.Of<IImageBinaryStorage>(MockBehavior.Strict));
 
-        return new ProcessorContext(
+        return new ParkGraphPricingTestsProcessorContext(
             processor,
             parkRepository,
             searchProjectionWriter,
@@ -522,38 +522,5 @@ public sealed class ParkGraphPricingTests
             .ToList();
     }
 
-    private sealed class ProcessorContext
-    {
-        public ProcessorContext(
-            ParkGraphUpsertProcessor processor,
-            Mock<IParkRepository> parkRepository,
-            Mock<ISearchProjectionWriter> searchProjectionWriter,
-            Mock<IParkGraphUpsertHistoryRepository> historyRepository,
-            Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier)
-        {
-            this.Processor = processor;
-            this.ParkRepository = parkRepository;
-            this.SearchProjectionWriter = searchProjectionWriter;
-            this.HistoryRepository = historyRepository;
-            this.PublicSeoUpdateNotifier = publicSeoUpdateNotifier;
-        }
 
-        public ParkGraphUpsertProcessor Processor { get; }
-
-        private Mock<IParkRepository> ParkRepository { get; }
-
-        private Mock<ISearchProjectionWriter> SearchProjectionWriter { get; }
-
-        private Mock<IParkGraphUpsertHistoryRepository> HistoryRepository { get; }
-
-        private Mock<IPublicSeoUpdateNotifier> PublicSeoUpdateNotifier { get; }
-
-        public void VerifyAll()
-        {
-            this.ParkRepository.VerifyAll();
-            this.SearchProjectionWriter.VerifyAll();
-            this.HistoryRepository.VerifyAll();
-            this.PublicSeoUpdateNotifier.VerifyAll();
-        }
-    }
 }

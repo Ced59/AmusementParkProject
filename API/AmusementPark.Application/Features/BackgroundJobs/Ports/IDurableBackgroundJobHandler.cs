@@ -10,10 +10,3 @@ public interface IDurableBackgroundJobHandler
         DurableBackgroundJobExecutionContext context,
         CancellationToken cancellationToken);
 }
-
-public interface IDurableBackgroundJobHandlerResolver
-{
-    IReadOnlyCollection<DurableBackgroundJobHandlerDefinition> Definitions { get; }
-
-    bool TryResolve(string kind, out IDurableBackgroundJobHandler? handler);
-}

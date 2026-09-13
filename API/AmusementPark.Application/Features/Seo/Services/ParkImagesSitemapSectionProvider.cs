@@ -41,17 +41,17 @@ public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
             this.parkRepository,
             cancellationToken);
 
-        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> parkImageSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
+        IReadOnlyDictionary<string, PublishedImageOwnerSummary> parkImageSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
             this.imageRepository,
             ImageOwnerType.Park,
             ImageCategory.Park,
             cancellationToken);
-        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> parkLogoSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
+        IReadOnlyDictionary<string, PublishedImageOwnerSummary> parkLogoSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
             this.imageRepository,
             ImageOwnerType.Park,
             ImageCategory.Logo,
             cancellationToken);
-        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> itemImageSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
+        IReadOnlyDictionary<string, PublishedImageOwnerSummary> itemImageSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
             this.imageRepository,
             ImageOwnerType.ParkItem,
             ImageCategory.ParkItem,
@@ -59,14 +59,14 @@ public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
         IReadOnlyCollection<ParkItem> publicItems = await ParkItemListsSitemapSectionProvider.LoadPublicItemsAsync(
             this.parkItemRepository,
             cancellationToken);
-        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> itemImageSummariesByParkId = BuildItemImageSummariesByParkId(publicItems, itemImageSummaries);
+        IReadOnlyDictionary<string, PublishedImageOwnerSummary> itemImageSummariesByParkId = BuildItemImageSummariesByParkId(publicItems, itemImageSummaries);
 
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (Park park in publicParks)
         {
-            ParksSitemapSectionProvider.PublishedImageOwnerSummary? parkImages = parkImageSummaries.GetValueOrDefault(park.Id!);
-            ParksSitemapSectionProvider.PublishedImageOwnerSummary? parkLogos = parkLogoSummaries.GetValueOrDefault(park.Id!);
-            ParksSitemapSectionProvider.PublishedImageOwnerSummary? itemImages = itemImageSummariesByParkId.GetValueOrDefault(park.Id!);
+            PublishedImageOwnerSummary? parkImages = parkImageSummaries.GetValueOrDefault(park.Id!);
+            PublishedImageOwnerSummary? parkLogos = parkLogoSummaries.GetValueOrDefault(park.Id!);
+            PublishedImageOwnerSummary? itemImages = itemImageSummariesByParkId.GetValueOrDefault(park.Id!);
             int totalImageCount = (parkImages?.Count ?? 0) + (parkLogos?.Count ?? 0) + (itemImages?.Count ?? 0);
             if (!SeoPageValuePolicy.IsImageGalleryIndexable(totalImageCount))
             {
@@ -86,24 +86,24 @@ public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
         return urls;
     }
 
-    private static IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> BuildItemImageSummariesByParkId(
+    private static IReadOnlyDictionary<string, PublishedImageOwnerSummary> BuildItemImageSummariesByParkId(
         IReadOnlyCollection<ParkItem> publicItems,
-        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> itemImageSummaries)
+        IReadOnlyDictionary<string, PublishedImageOwnerSummary> itemImageSummaries)
     {
-        Dictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> summariesByParkId = new Dictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary>(StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, PublishedImageOwnerSummary> summariesByParkId = new Dictionary<string, PublishedImageOwnerSummary>(StringComparer.OrdinalIgnoreCase);
         foreach (ParkItem item in publicItems)
         {
             if (string.IsNullOrWhiteSpace(item.Id) ||
                 string.IsNullOrWhiteSpace(item.ParkId) ||
-                !itemImageSummaries.TryGetValue(item.Id, out ParksSitemapSectionProvider.PublishedImageOwnerSummary? itemSummary))
+                !itemImageSummaries.TryGetValue(item.Id, out PublishedImageOwnerSummary? itemSummary))
             {
                 continue;
             }
 
-            ParksSitemapSectionProvider.PublishedImageOwnerSummary current = summariesByParkId.GetValueOrDefault(item.ParkId)
-                ?? new ParksSitemapSectionProvider.PublishedImageOwnerSummary(0, null);
+            PublishedImageOwnerSummary current = summariesByParkId.GetValueOrDefault(item.ParkId)
+                ?? new PublishedImageOwnerSummary(0, null);
             DateTime? itemLastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(item.UpdatedAtUtc, itemSummary.LastModifiedUtc);
-            summariesByParkId[item.ParkId] = new ParksSitemapSectionProvider.PublishedImageOwnerSummary(
+            summariesByParkId[item.ParkId] = new PublishedImageOwnerSummary(
                 current.Count + itemSummary.Count,
                 ParkItemListsSitemapSectionProvider.ResolveLatest(current.LastModifiedUtc, itemLastModifiedUtc));
         }

@@ -10,8 +10,3 @@ public interface IParkDataEditorTokenProtector
 
     bool Verify(string plainTextToken, ParkDataEditorAccessToken token);
 }
-
-public sealed record ParkDataEditorTokenMaterial(
-    string PlainTextToken,
-    string TokenHash,
-    string DisplayPrefix);

@@ -3,31 +3,6 @@ using System.Text;
 
 namespace AmusementPark.Infrastructure.Services.Email;
 
-public sealed record BrandedEmailAction(string Label, string Url);
-
-public sealed record BrandedEmailMetric(string Label, string Value);
-
-public sealed record BrandedEmailHighlight(string Label, string Text);
-
-public sealed class BrandedEmailTemplateModel
-{
-    public string Preheader { get; init; } = string.Empty;
-
-    public string Badge { get; init; } = "Amusement Park";
-
-    public string Title { get; init; } = string.Empty;
-
-    public IReadOnlyCollection<string> Paragraphs { get; init; } = Array.Empty<string>();
-
-    public BrandedEmailAction? Action { get; init; }
-
-    public IReadOnlyCollection<BrandedEmailMetric> Metrics { get; init; } = Array.Empty<BrandedEmailMetric>();
-
-    public BrandedEmailHighlight? Highlight { get; init; }
-
-    public string FooterNote { get; init; } = "Amusement Park";
-}
-
 public sealed class BrandedEmailTemplateRenderer
 {
     public string Render(BrandedEmailTemplateModel model)

@@ -17,92 +17,9 @@ import {
   ParkImagesParksPort,
 } from './park-images-data.ports';
 import { ParkImagesStateFacade } from './park-images-state.facade';
-
-class FakeParksPort implements ParkImagesParksPort {
-  public response$: Observable<ParkDetailSummary> = of(createSummary());
-  public readonly calls: string[] = [];
-
-  getParkDetailSummary(id: string): Observable<ParkDetailSummary> {
-    this.calls.push(id);
-    return this.response$;
-  }
-}
-
-class FakeImagesPort implements ParkImagesImagesPort {
-  public firstPage$: Observable<PagedResult<ImageDto>> = of(
-    createImagePage([createImage('image-1')], 1, 2, 2),
-  );
-  public nextPage$: Observable<PagedResult<ImageDto>> = of(
-    createImagePage([createImage('image-2')], 2, 2, 2),
-  );
-  public logoPage$: Observable<PagedResult<ImageDto>> = of(
-    createImagePage([], 1, 0, 0),
-  );
-  public itemProbePage$: Observable<PagedResult<ParkItemImageDto>> = of(
-    createImagePage([], 1, 0, 0),
-  );
-  public firstItemPage$: Observable<PagedResult<ParkItemImageDto>> = of(
-    createImagePage([createParkItemImage('item-image-1')], 1, 2, 2),
-  );
-  public nextItemPage$: Observable<PagedResult<ParkItemImageDto>> = of(
-    createImagePage([createParkItemImage('item-image-2')], 2, 2, 2),
-  );
-  public tags$: Observable<ImageTagDto[]> = of([createImageTag()]);
-  public readonly pageCalls: {
-    ownerType: ImageOwnerType;
-    ownerId: string;
-    category: ImageCategory;
-    page?: number;
-    size?: number;
-  }[] = [];
-  public readonly itemImageCalls: {
-    parkId: string;
-    page?: number;
-    size?: number;
-  }[] = [];
-  public tagCallCount: number = 0;
-
-  getImagesPage(
-    ownerType: ImageOwnerType,
-    ownerId: string,
-    category: ImageCategory,
-    page?: number,
-    size?: number,
-  ): Observable<PagedResult<ImageDto>> {
-    this.pageCalls.push({ ownerType, ownerId, category, page, size });
-    if (category === ImageCategory.LOGO) {
-      return this.logoPage$;
-    }
-
-    return page === 2 ? this.nextPage$ : this.firstPage$;
-  }
-
-  getParkItemImagesByPark(
-    parkId: string,
-    page?: number,
-    size?: number,
-  ): Observable<PagedResult<ParkItemImageDto>> {
-    this.itemImageCalls.push({ parkId, page, size });
-    if (size === 1) {
-      return this.itemProbePage$;
-    }
-
-    return page === 2 ? this.nextItemPage$ : this.firstItemPage$;
-  }
-
-  getImageTags(): Observable<ImageTagDto[]> {
-    this.tagCallCount += 1;
-    return this.tags$;
-  }
-}
-
-class FakeSsrHttpStatusService {
-  public notFoundCallCount: number = 0;
-
-  setNotFound(): void {
-    this.notFoundCallCount += 1;
-  }
-}
+import { FakeParksPort } from './test-helpers/park-images-state.facade/fake-parks-port';
+import { FakeImagesPort } from './test-helpers/park-images-state.facade/fake-images-port';
+import { FakeSsrHttpStatusService } from './test-helpers/park-images-state.facade/fake-ssr-http-status-service';
 
 function createPark(): Park {
   return {

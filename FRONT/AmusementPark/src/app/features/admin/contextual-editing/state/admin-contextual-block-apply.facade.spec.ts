@@ -9,7 +9,7 @@ import { AdminContextualBlockInstance } from '../models/admin-contextual-block.m
 import { ADMIN_CONTEXTUAL_BLOCK_APPLY_DATA_PORT } from './admin-contextual-block-apply-data.ports';
 import { AdminContextualBlockApplyFacade } from './admin-contextual-block-apply.facade';
 import { AdminContextualBlockPreviewFacade } from './admin-contextual-block-preview.facade';
-import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events';
 
 describe('AdminContextualBlockApplyFacade', () => {
   let facade: AdminContextualBlockApplyFacade;

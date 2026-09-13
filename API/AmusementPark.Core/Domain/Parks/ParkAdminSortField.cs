@@ -12,21 +12,3 @@ public enum ParkAdminSortField
     OpeningHoursStatus = 4,
     DataCompletenessScore = 5,
 }
-
-public enum ParkOpeningHoursAdminStatus
-{
-    NotConfigured = 0,
-    Expired = 1,
-    NeedsUpdate = 2,
-    UpToDate = 3,
-}
-
-public enum ParkOpeningHoursAdminFilter
-{
-    All = 0,
-    Configured = 1,
-    NotConfigured = 2,
-    UpToDate = 3,
-    NeedsUpdate = 4,
-    Expired = 5,
-}

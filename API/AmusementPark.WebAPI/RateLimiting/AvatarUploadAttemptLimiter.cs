@@ -2,13 +2,6 @@ using System.Collections.Concurrent;
 
 namespace AmusementPark.WebAPI.RateLimiting;
 
-public readonly record struct AvatarUploadAttemptLease(bool IsAcquired, TimeSpan RetryAfter);
-
-public interface IAvatarUploadAttemptLimiter
-{
-    AvatarUploadAttemptLease TryAcquire(string userId, DateTime nowUtc);
-}
-
 /// <summary>
 /// Limite en mémoire les tentatives d'upload d'avatar par compte authentifié.
 /// </summary>

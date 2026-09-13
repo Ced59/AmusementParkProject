@@ -7,24 +7,7 @@ import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { RATING_METHODOLOGY_PORT, RatingMethodologyPort } from './rating-methodology-state-data.ports';
 import { RatingMethodologyStateFacade } from './rating-methodology-state.facade';
-
-class FakeRatingMethodologyPort implements RatingMethodologyPort {
-  readonly missingResponse = new Subject<RatingMethodology>();
-  requestedVersion: string | null = null;
-
-  getCurrentMethodology(_options?: AnonymousHttpOptions): Observable<RatingMethodology> {
-    return of(createMethodology());
-  }
-
-  getMethodology(version: string, _options?: AnonymousHttpOptions): Observable<RatingMethodology> {
-    this.requestedVersion = version;
-    return this.missingResponse.asObservable();
-  }
-
-  getMethodologyHistory(_options?: AnonymousHttpOptions): Observable<RatingMethodology[]> {
-    return of([createMethodology()]);
-  }
-}
+import { FakeRatingMethodologyPort } from './test-helpers/rating-methodology-state.facade/fake-rating-methodology-port';
 
 describe('RatingMethodologyStateFacade', () => {
   let facade: RatingMethodologyStateFacade;

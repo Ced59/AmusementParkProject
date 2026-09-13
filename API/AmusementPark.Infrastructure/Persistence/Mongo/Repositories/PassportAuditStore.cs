@@ -308,7 +308,7 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
                     .Include(static document => document.ContentMutationFenceToken)
                     .Include(static document => document.PendingAuditEvents))
             .ToListAsync(cancellationToken);
-        IReadOnlyDictionary<string, CurrentContentFence> currentFences =
+        IReadOnlyDictionary<string, PassportAuditStoreCurrentContentFence> currentFences =
             await this.LoadCurrentFencesAsync(
                 sources.Select(static source => (source.UserId, source.VisitId)),
                 cancellationToken);
@@ -349,7 +349,7 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
                         .Include(static document => document.ContentMutationFenceToken)
                         .Include(static document => document.PendingAuditEvents))
                 .ToListAsync(cancellationToken);
-        IReadOnlyDictionary<string, CurrentContentFence> currentFences =
+        IReadOnlyDictionary<string, PassportAuditStoreCurrentContentFence> currentFences =
             await this.LoadCurrentFencesAsync(
                 sources
                     .Where(static source => !string.IsNullOrWhiteSpace(source.VisitId))
@@ -367,7 +367,7 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
             maximumEventCount);
     }
 
-    private async Task<IReadOnlyDictionary<string, CurrentContentFence>>
+    private async Task<IReadOnlyDictionary<string, PassportAuditStoreCurrentContentFence>>
         LoadCurrentFencesAsync(
         IEnumerable<(string UserId, string VisitId)> scopes,
         CancellationToken cancellationToken)
@@ -377,7 +377,7 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
             .ToArray();
         if (uniqueScopes.Length == 0)
         {
-            return new Dictionary<string, CurrentContentFence>(StringComparer.Ordinal);
+            return new Dictionary<string, PassportAuditStoreCurrentContentFence>(StringComparer.Ordinal);
         }
 
         FilterDefinition<UserVisitDocument>[] scopeFilters = uniqueScopes
@@ -396,7 +396,7 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
             .ToListAsync(cancellationToken);
         return visits.ToDictionary(
             static visit => BuildFenceScopeKey(visit.UserId, visit.Id),
-            static visit => new CurrentContentFence(
+            static visit => new PassportAuditStoreCurrentContentFence(
                 visit.ContentMutationFenceToken,
                 visit.ContentMutationFenceReady,
                 visit.ContentMutationFenceStableToken),
@@ -404,14 +404,14 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
     }
 
     private static bool CurrentFenceMatches(
-        IReadOnlyDictionary<string, CurrentContentFence> currentFences,
+        IReadOnlyDictionary<string, PassportAuditStoreCurrentContentFence> currentFences,
         string userId,
         string visitId,
         long? sourceFence)
     {
         return currentFences.TryGetValue(
                 BuildFenceScopeKey(userId, visitId),
-                out CurrentContentFence? currentFence)
+                out PassportAuditStoreCurrentContentFence? currentFence)
             && currentFence.Matches(sourceFence);
     }
 
@@ -441,20 +441,7 @@ internal sealed class PassportAuditStore : IPassportAuditPublisher, IPassportAud
             : !sourceFence.HasValue || sourceFence is >= 1 && sourceFence <= token;
     }
 
-    private sealed record CurrentContentFence(
-        long? Token,
-        bool IsReady,
-        long? StableToken)
-    {
-        public bool Matches(long? sourceFence)
-        {
-            return ContentFenceAllowsAuditDelivery(
-                this.Token,
-                this.IsReady,
-                this.StableToken,
-                sourceFence);
-        }
-    }
+
 
     private async Task<IReadOnlyDictionary<string, PassportAuditEvent>> LoadDurableEventsAsync(
         IReadOnlyCollection<string> requestedEventIds,

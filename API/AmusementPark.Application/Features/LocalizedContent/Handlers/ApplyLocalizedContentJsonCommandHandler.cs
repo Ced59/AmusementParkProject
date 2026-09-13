@@ -1,7 +1,6 @@
 using System.Text.Json;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Contracts;
-using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.AttractionAccessConditionTypes;
 using AmusementPark.Application.Features.AttractionAccessConditionTypes.Contracts;
 using AmusementPark.Application.Features.AttractionAccessConditionTypes.Ports;
@@ -22,38 +21,26 @@ using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
 using AmusementPark.Core.Localization;
+using AmusementPark.Application.Common.Measurements;
 
 namespace AmusementPark.Application.Features.LocalizedContent.Handlers;
-
 /// <summary>
 /// Handler d'application d'un JSON localisé sur une entité administrable.
 /// </summary>
-public sealed partial class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<ApplyLocalizedContentJsonCommand, ApplicationResult<LocalizedContentApplyResult>>
+public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<ApplyLocalizedContentJsonCommand, ApplicationResult<LocalizedContentApplyResult>>
 {
-    private readonly IParkRepository parkRepository;
-    private readonly IParkZoneRepository parkZoneRepository;
-    private readonly IParkItemRepository parkItemRepository;
-    private readonly IParkOperatorRepository parkOperatorRepository;
-    private readonly IParkFounderRepository parkFounderRepository;
-    private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
-    private readonly IImageRepository imageRepository;
-    private readonly IImageTagRepository imageTagRepository;
-    private readonly IAttractionAccessConditionTypeDefinitionRepository accessConditionTypeDefinitionRepository;
-    private readonly ISearchProjectionWriter searchProjectionWriter;
-    private readonly IMeasurementConversionService measurementConversionService;
-
-    public ApplyLocalizedContentJsonCommandHandler(
-        IParkRepository parkRepository,
-        IParkZoneRepository parkZoneRepository,
-        IParkItemRepository parkItemRepository,
-        IParkOperatorRepository parkOperatorRepository,
-        IParkFounderRepository parkFounderRepository,
-        IAttractionManufacturerRepository attractionManufacturerRepository,
-        IImageRepository imageRepository,
-        IImageTagRepository imageTagRepository,
-        IAttractionAccessConditionTypeDefinitionRepository accessConditionTypeDefinitionRepository,
-        ISearchProjectionWriter searchProjectionWriter,
-        IMeasurementConversionService measurementConversionService)
+    internal readonly IParkRepository parkRepository;
+    internal readonly IParkZoneRepository parkZoneRepository;
+    internal readonly IParkItemRepository parkItemRepository;
+    internal readonly IParkOperatorRepository parkOperatorRepository;
+    internal readonly IParkFounderRepository parkFounderRepository;
+    internal readonly IAttractionManufacturerRepository attractionManufacturerRepository;
+    internal readonly IImageRepository imageRepository;
+    internal readonly IImageTagRepository imageTagRepository;
+    internal readonly IAttractionAccessConditionTypeDefinitionRepository accessConditionTypeDefinitionRepository;
+    internal readonly ISearchProjectionWriter searchProjectionWriter;
+    internal readonly IMeasurementConversionService measurementConversionService;
+    public ApplyLocalizedContentJsonCommandHandler(IParkRepository parkRepository, IParkZoneRepository parkZoneRepository, IParkItemRepository parkItemRepository, IParkOperatorRepository parkOperatorRepository, IParkFounderRepository parkFounderRepository, IAttractionManufacturerRepository attractionManufacturerRepository, IImageRepository imageRepository, IImageTagRepository imageTagRepository, IAttractionAccessConditionTypeDefinitionRepository accessConditionTypeDefinitionRepository, ISearchProjectionWriter searchProjectionWriter, IMeasurementConversionService measurementConversionService)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -80,7 +67,7 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler : ICommandHa
             return ApplicationResult<LocalizedContentApplyResult>.Failure(ApplicationErrors.Required(nameof(command.EntityId)));
         }
 
-        if (!TryParsePatch(command.Json, out LocalizedContentPatch? patch) || patch is null)
+        if (!ApplyLocalizedContentJsonCommandHandlerParsingExtensions.TryParsePatch(command.Json, out LocalizedContentPatch? patch) || patch is null)
         {
             return ApplicationResult<LocalizedContentApplyResult>.Failure(LocalizedContentApplicationErrors.InvalidJson());
         }
@@ -98,8 +85,6 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler : ICommandHa
             LocalizedContentEntityType.AccessConditionType => await this.ApplyToAccessConditionTypeAsync(command.EntityId.Trim(), patch, cancellationToken),
             _ => ApplicationResult<LocalizedContentApplyResult>.Failure(LocalizedContentApplicationErrors.InvalidEntityType(command.EntityType)),
         };
-
         return result;
     }
-
 }

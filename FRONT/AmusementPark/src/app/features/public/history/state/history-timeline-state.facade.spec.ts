@@ -9,71 +9,8 @@ import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { HISTORY_DATA_PORT, HistoryDataPort } from './history-data.ports';
 import { HistoryTimelineStateFacade } from './history-timeline-state.facade';
-
-class FakeHistoryDataPort implements HistoryDataPort {
-  public parkTimelineResponses$: Observable<HistoryTimeline>[] = [
-    of(createTimeline()),
-  ];
-  public readonly parkTimelineCalls: {
-    parkId: string;
-    includeParkItems?: boolean;
-    parkItemIds?: readonly string[];
-    page?: number;
-  }[] = [];
-  public readonly standaloneTimelineCalls: { standaloneAttractionId: string; page?: number }[] = [];
-
-  getParkTimeline(
-    parkId: string,
-    includeParkItems?: boolean,
-    parkItemIds?: readonly string[],
-    _options?: AnonymousHttpOptions,
-    page?: number,
-  ): Observable<HistoryTimeline> {
-    this.parkTimelineCalls.push({
-      parkId,
-      includeParkItems,
-      parkItemIds,
-      page,
-    });
-    return this.parkTimelineResponses$.shift() ?? of(createTimeline());
-  }
-
-  getParkItemTimeline(
-    _parkItemId: string,
-    _options?: AnonymousHttpOptions,
-  ): Observable<HistoryTimeline> {
-    return of(createTimeline('ParkItem'));
-  }
-
-  getStandaloneAttractionTimeline(
-    standaloneAttractionId: string,
-    _options?: AnonymousHttpOptions,
-    page?: number,
-  ): Observable<HistoryTimeline> {
-    this.standaloneTimelineCalls.push({ standaloneAttractionId, page });
-    return of(createTimeline('StandaloneAttraction'));
-  }
-
-  getArticle(
-    _eventId: string,
-    _options?: AnonymousHttpOptions,
-  ): Observable<HistoryArticle> {
-    throw new Error('Not implemented in this spec');
-  }
-}
-
-class FakeSsrHttpStatusService {
-  public notFoundCallCount = 0;
-  public readonly statusCodes: number[] = [];
-
-  setNotFound(): void {
-    this.notFoundCallCount += 1;
-  }
-
-  setStatus(statusCode: number): void {
-    this.statusCodes.push(statusCode);
-  }
-}
+import { FakeHistoryDataPort } from './test-helpers/history-timeline-state.facade/fake-history-data-port';
+import { FakeSsrHttpStatusService } from './test-helpers/history-timeline-state.facade/fake-ssr-http-status-service';
 
 function createTimeline(
   entityType: 'Park' | 'ParkItem' | 'StandaloneAttraction' = 'Park',

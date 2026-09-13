@@ -179,18 +179,5 @@ public sealed class IndexNowSubmitter : IIndexNowSubmitter
         return normalized;
     }
 
-    private sealed class IndexNowPayload
-    {
-        [JsonPropertyName("host")]
-        public string Host { get; init; } = string.Empty;
 
-        [JsonPropertyName("key")]
-        public string Key { get; init; } = string.Empty;
-
-        [JsonPropertyName("keyLocation")]
-        public string KeyLocation { get; init; } = string.Empty;
-
-        [JsonPropertyName("urlList")]
-        public IReadOnlyCollection<string> UrlList { get; init; } = Array.Empty<string>();
-    }
 }

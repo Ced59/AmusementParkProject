@@ -13,16 +13,8 @@ import { SharedService } from '@app/services/shared/shared.service';
 import { AdminPublicViewModeFacade } from '@features/admin/contextual-editing/state/admin-public-view-mode.facade';
 import { PublicParkNavigationTreeFacade } from '@features/public/navigation/state/public-park-navigation-tree.facade';
 import { PublicAppLayoutComponent } from './public-app-layout.component';
-
-class PublicParkNavigationTreeFacadeStub {
-  public readonly initialize = vi.fn();
-}
-
-@Component({
-  selector: 'app-test-admin-public-view-toolbar',
-  template: '<div class="admin-public-view-toolbar"></div>',
-})
-class TestAdminPublicViewToolbarComponent {}
+import { PublicParkNavigationTreeFacadeStub } from './test-helpers/public-app-layout.component/public-park-navigation-tree-facade-stub';
+import { TestAdminPublicViewToolbarComponent } from './test-helpers/public-app-layout.component/test-admin-public-view-toolbar-component';
 
 describe('PublicAppLayoutComponent', () => {
   let authService: MockedObject<AuthService>;

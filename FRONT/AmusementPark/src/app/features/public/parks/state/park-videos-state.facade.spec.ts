@@ -19,77 +19,9 @@ import {
   ParkVideosVideosPort,
 } from './park-videos-data.ports';
 import { ParkVideosStateFacade } from './park-videos-state.facade';
-
-class FakeParksPort implements ParkVideosParksPort {
-  public response$: Observable<ParkDetailSummary> = of(createSummary());
-  public readonly calls: string[] = [];
-
-  getParkDetailSummary(id: string): Observable<ParkDetailSummary> {
-    this.calls.push(id);
-    return this.response$;
-  }
-}
-
-class FakeVideosPort implements ParkVideosVideosPort {
-  public firstParkPage$: Observable<PagedResult<VideoDto>> = of(
-    createPage([createParkVideo('park-video-1')], 1, 2, 2),
-  );
-  public nextParkPage$: Observable<PagedResult<VideoDto>> = of(
-    createPage([createParkVideo('park-video-2')], 2, 2, 2),
-  );
-  public itemProbePage$: Observable<PagedResult<ParkItemVideoDto>> = of(
-    createPage([], 1, 0, 0),
-  );
-  public firstItemPage$: Observable<PagedResult<ParkItemVideoDto>> = of(
-    createPage([createParkItemVideo('item-video-1')], 1, 2, 2),
-  );
-  public nextItemPage$: Observable<PagedResult<ParkItemVideoDto>> = of(
-    createPage([createParkItemVideo('item-video-2')], 2, 2, 2),
-  );
-  public tags$: Observable<VideoTagDto[]> = of([createVideoTag()]);
-  public readonly pageCalls: VideoSearchQuery[] = [];
-  public readonly itemVideoCalls: {
-    parkId: string;
-    query: VideoSearchQuery;
-  }[] = [];
-  public tagCallCount: number = 0;
-
-  getVideosPage(
-    query: VideoSearchQuery = {},
-  ): Observable<PagedResult<VideoDto>> {
-    this.pageCalls.push(query);
-    return query.page === 2 ? this.nextParkPage$ : this.firstParkPage$;
-  }
-
-  getParkItemVideosByPark(
-    parkId: string,
-    query: VideoSearchQuery = {},
-  ): Observable<PagedResult<ParkItemVideoDto>> {
-    this.itemVideoCalls.push({ parkId, query });
-    if (query.size === 1) {
-      return this.itemProbePage$;
-    }
-
-    return query.page === 2 ? this.nextItemPage$ : this.firstItemPage$;
-  }
-
-  getVideoById(): Observable<VideoDto> {
-    return of(createParkVideo('video-1'));
-  }
-
-  getVideoTags(): Observable<VideoTagDto[]> {
-    this.tagCallCount += 1;
-    return this.tags$;
-  }
-}
-
-class FakeSsrHttpStatusService {
-  public notFoundCallCount: number = 0;
-
-  setNotFound(): void {
-    this.notFoundCallCount += 1;
-  }
-}
+import { FakeParksPort } from './test-helpers/park-videos-state.facade/fake-parks-port';
+import { FakeVideosPort } from './test-helpers/park-videos-state.facade/fake-videos-port';
+import { FakeSsrHttpStatusService } from './test-helpers/park-videos-state.facade/fake-ssr-http-status-service';
 
 function createPark(): Park {
   return {

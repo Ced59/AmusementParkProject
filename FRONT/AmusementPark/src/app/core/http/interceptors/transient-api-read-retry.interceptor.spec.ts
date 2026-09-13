@@ -10,25 +10,7 @@ import { defer, firstValueFrom, Observable, of, throwError } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import { TransientApiReadRetryInterceptor } from './transient-api-read-retry.interceptor';
-
-class HttpHandlerFake implements HttpHandler {
-  public subscriptionCount: number = 0;
-
-  constructor(
-    private readonly responseFactory: (
-      attempt: number,
-      request: HttpRequest<unknown>
-    ) => Observable<HttpEvent<unknown>>
-  ) {
-  }
-
-  handle(request: HttpRequest<unknown>): Observable<HttpEvent<unknown>> {
-    return defer(() => {
-      this.subscriptionCount += 1;
-      return this.responseFactory(this.subscriptionCount, request);
-    });
-  }
-}
+import { HttpHandlerFake } from './test-helpers/transient-api-read-retry.interceptor/http-handler-fake';
 
 describe('TransientApiReadRetryInterceptor', () => {
   const apiUrl: string = `${environment.apiBaseUrl}parks/park-1/detail-summary`;

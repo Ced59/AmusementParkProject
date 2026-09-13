@@ -9,20 +9,7 @@ import {
 } from '@app/testing/common-test-providers';
 import { CommentSummaryStateFacade } from '../state/comment-summary-state.facade';
 import { CommentSummaryLinkComponent } from './comment-summary-link.component';
-
-class FakeCommentSummaryStateFacade {
-  readonly summary: WritableSignal<CommentSummary | null> = signal<CommentSummary | null>({
-    targetType: 'Park',
-    targetId: 'park-1',
-    commentCount: 0,
-    languageCode: 'fr',
-    languageCommentCount: 0,
-    officialComment: null,
-  });
-  readonly canWrite: WritableSignal<boolean> = signal<boolean>(true);
-  readonly initializeAuthorAccess = vi.fn();
-  readonly load = vi.fn();
-}
+import { FakeCommentSummaryStateFacade } from './test-helpers/comment-summary-link.component/fake-comment-summary-state-facade';
 
 describe('CommentSummaryLinkComponent', () => {
   let fixture: ComponentFixture<CommentSummaryLinkComponent>;

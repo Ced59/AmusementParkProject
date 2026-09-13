@@ -449,96 +449,21 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
             .FirstOrDefault();
     }
 
-    private sealed record VideoUrlReference(
-        VideoHostingProvider HostingProvider,
-        string OriginalUrl,
-        string CanonicalUrl,
-        string? EmbedUrl,
-        string? ExternalId);
 
-    private sealed class OEmbedResponse
-    {
-        [JsonPropertyName("title")]
-        public string? Title { get; init; }
 
-        [JsonPropertyName("author_name")]
-        public string? AuthorName { get; init; }
 
-        [JsonPropertyName("author_url")]
-        public string? AuthorUrl { get; init; }
 
-        [JsonPropertyName("thumbnail_url")]
-        public string? ThumbnailUrl { get; init; }
-    }
 
-    private sealed class YouTubeVideoListResponse
-    {
-        [JsonPropertyName("items")]
-        public List<YouTubeVideoItem>? Items { get; init; }
-    }
 
-    private sealed class YouTubeVideoItem
-    {
-        [JsonPropertyName("snippet")]
-        public YouTubeSnippet? Snippet { get; init; }
 
-        [JsonPropertyName("contentDetails")]
-        public YouTubeContentDetails? ContentDetails { get; init; }
 
-        [JsonPropertyName("statistics")]
-        public YouTubeStatistics? Statistics { get; init; }
-    }
 
-    private sealed class YouTubeSnippet
-    {
-        [JsonPropertyName("publishedAt")]
-        public DateTime? PublishedAt { get; init; }
 
-        [JsonPropertyName("channelId")]
-        public string? ChannelId { get; init; }
 
-        [JsonPropertyName("title")]
-        public string? Title { get; init; }
 
-        [JsonPropertyName("description")]
-        public string? Description { get; init; }
 
-        [JsonPropertyName("thumbnails")]
-        public Dictionary<string, YouTubeThumbnail>? Thumbnails { get; init; }
 
-        [JsonPropertyName("channelTitle")]
-        public string? ChannelTitle { get; init; }
 
-        [JsonPropertyName("defaultLanguage")]
-        public string? DefaultLanguage { get; init; }
-
-        [JsonPropertyName("defaultAudioLanguage")]
-        public string? DefaultAudioLanguage { get; init; }
-    }
-
-    private sealed class YouTubeContentDetails
-    {
-        [JsonPropertyName("duration")]
-        public string? Duration { get; init; }
-    }
-
-    private sealed class YouTubeStatistics
-    {
-        [JsonPropertyName("viewCount")]
-        public string? ViewCount { get; init; }
-    }
-
-    private sealed class YouTubeThumbnail
-    {
-        [JsonPropertyName("url")]
-        public string? Url { get; init; }
-
-        [JsonPropertyName("width")]
-        public int? Width { get; init; }
-
-        [JsonPropertyName("height")]
-        public int? Height { get; init; }
-    }
 
     private static string? NormalizeLanguageCode(string? languageCode)
     {

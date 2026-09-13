@@ -425,24 +425,5 @@ public sealed class RemoteImageImporter : IRemoteImageImporter
         };
     }
 
-    private sealed class DownloadedImage : IDisposable
-    {
-        public DownloadedImage(MemoryStream content, string fileName, string contentType)
-        {
-            this.Content = content;
-            this.FileName = fileName;
-            this.ContentType = contentType;
-        }
 
-        public MemoryStream Content { get; }
-
-        public string FileName { get; }
-
-        public string ContentType { get; }
-
-        public void Dispose()
-        {
-            this.Content.Dispose();
-        }
-    }
 }

@@ -14,26 +14,7 @@ import {
   AdminVideoCreateVideosApiServicePort
 } from './admin-video-create-state-data.ports';
 import { AdminVideoCreateStateFacade } from './admin-video-create-state.facade';
-
-class FakeVideosPort implements AdminVideoCreateVideosApiServicePort {
-  public tagsResponse$: Observable<VideoTagDto[]> = of([createTag('official')]);
-  public metadataResponse$: Observable<ResolvedVideoMetadataDto> = of(createMetadata());
-  public createResponse$: Observable<VideoDto> = of(createVideo('video-1'));
-  public lastCreateRequest: VideoWriteRequest | null = null;
-
-  getVideoTags(): Observable<VideoTagDto[]> {
-    return this.tagsResponse$;
-  }
-
-  resolveVideoMetadata(videoUrl: string): Observable<ResolvedVideoMetadataDto> {
-    return this.metadataResponse$;
-  }
-
-  createVideo(request: VideoWriteRequest): Observable<VideoDto> {
-    this.lastCreateRequest = request;
-    return this.createResponse$;
-  }
-}
+import { FakeVideosPort } from './test-helpers/admin-video-create-state.facade/fake-videos-port';
 
 function createTag(id: string): VideoTagDto {
   return {

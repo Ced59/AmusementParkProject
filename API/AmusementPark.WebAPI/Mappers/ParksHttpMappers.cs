@@ -491,34 +491,9 @@ internal static class ParksHttpMappers
         return new ParkExplorerBucketCounts(totalItems, countsByCategory, countsByType);
     }
 
-    private sealed class ParkItemsByZoneGrouping
-    {
-        public ParkItemsByZoneGrouping(Dictionary<string, List<ParkItem>> itemsByZoneId, List<ParkItem> unassignedItems)
-        {
-            this.ItemsByZoneId = itemsByZoneId;
-            this.UnassignedItems = unassignedItems;
-        }
 
-        public Dictionary<string, List<ParkItem>> ItemsByZoneId { get; }
 
-        public List<ParkItem> UnassignedItems { get; }
-    }
 
-    private sealed class ParkExplorerBucketCounts
-    {
-        public ParkExplorerBucketCounts(int totalItems, Dictionary<string, int> countsByCategory, Dictionary<string, int> countsByType)
-        {
-            this.TotalItems = totalItems;
-            this.CountsByCategory = countsByCategory;
-            this.CountsByType = countsByType;
-        }
-
-        public int TotalItems { get; }
-
-        public Dictionary<string, int> CountsByCategory { get; }
-
-        public Dictionary<string, int> CountsByType { get; }
-    }
 
     private static List<ParkZoneSummaryCountDto> ToOrderedCountDtos(Dictionary<string, int> counts)
     {

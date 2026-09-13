@@ -12,33 +12,7 @@ import {
   AdminRatingRankingStatePort
 } from './admin-rating-ranking-state-data.ports';
 import { AdminRatingRankingStateFacade } from './admin-rating-ranking-state.facade';
-
-class FakeAdminRatingRankingPort implements AdminRatingRankingStatePort {
-  public readonly previewRequests: RatingRankingPolicyCandidateRequest[] = [];
-  public dashboardCallCount: number = 0;
-  public rebuildCallCount: number = 0;
-  public previewResult: Observable<RatingRankingPolicyImpact> | null = null;
-  public rebuildResult: Observable<RatingRankingRebuildRequestResult> | null = null;
-
-  getDashboard(): Observable<RatingRankingAdministration> {
-    this.dashboardCallCount++;
-    return of(createDashboard());
-  }
-
-  previewImpact(request: RatingRankingPolicyCandidateRequest): Observable<RatingRankingPolicyImpact> {
-    this.previewRequests.push(request);
-    return this.previewResult ?? of(createImpact(request));
-  }
-
-  rebuild(): Observable<RatingRankingRebuildRequestResult> {
-    this.rebuildCallCount++;
-    return this.rebuildResult ?? of({
-      requestedAtUtc: '2026-09-02T12:00:00Z',
-      scheduledScopeCount: 1,
-      scopes: [{ scopeKey: 'parks:global', requestedSourceRevision: 8 }]
-    });
-  }
-}
+import { FakeAdminRatingRankingPort } from './test-helpers/admin-rating-ranking-state.facade/fake-admin-rating-ranking-port';
 
 describe('AdminRatingRankingStateFacade', () => {
   let facade: AdminRatingRankingStateFacade;

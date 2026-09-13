@@ -12,20 +12,7 @@ import { JsonLdService } from '@core/seo/json-ld.service';
 import { SeoService } from '@core/seo/seo.service';
 import { RATING_METHODOLOGY_PORT, RatingMethodologyPort } from '../state/rating-methodology-state-data.ports';
 import { RatingMethodologyPageComponent } from './rating-methodology-page.component';
-
-class FakeRatingMethodologyPort implements RatingMethodologyPort {
-  getCurrentMethodology(_options?: AnonymousHttpOptions): Observable<RatingMethodology> {
-    return of(createMethodology());
-  }
-
-  getMethodology(_version: string, _options?: AnonymousHttpOptions): Observable<RatingMethodology> {
-    return of(createMethodology());
-  }
-
-  getMethodologyHistory(_options?: AnonymousHttpOptions): Observable<RatingMethodology[]> {
-    return of([createMethodology()]);
-  }
-}
+import { FakeRatingMethodologyPort } from './test-helpers/rating-methodology-page.component/fake-rating-methodology-port';
 
 describe('RatingMethodologyPageComponent', () => {
   let fixture: ComponentFixture<RatingMethodologyPageComponent>;

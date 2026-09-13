@@ -5,13 +5,6 @@ using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
-internal enum RideOccurrenceOrderGuardValidationStatus
-{
-    Validated = 1,
-    Stale = 2,
-    Unavailable = 3,
-}
-
 internal sealed class UserRideOccurrenceOrderGuardValidator
 {
     private const string PendingOperationState = "pending";

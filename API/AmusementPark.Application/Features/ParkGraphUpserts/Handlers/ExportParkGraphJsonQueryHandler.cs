@@ -1,65 +1,50 @@
 using System.Globalization;
 using System.Text;
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.ParkFounders.Ports;
+using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
+using AmusementPark.Application.Features.ParkGraphUpserts.Results;
+using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Core.Domain.Images;
+using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Localization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
-using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.Images.Ports;
-using AmusementPark.Application.Features.ParkFounders.Ports;
-using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
 using AmusementPark.Application.Features.ParkGraphUpserts.Queries;
-using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.Application.Features.ParkGraphUpserts.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
-using AmusementPark.Application.Features.ParkOperators.Ports;
-using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkPricing.Ports;
 using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.History;
-using AmusementPark.Core.Domain.Images;
-using AmusementPark.Core.Domain.Parks;
-using AmusementPark.Core.Localization;
+using AmusementPark.Application.Common.Results;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Handlers;
-
-public sealed partial class ExportParkGraphJsonQueryHandler :
-    IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>,
-    IQueryHandler<ExportStandaloneAttractionGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>
+public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>, IQueryHandler<ExportStandaloneAttractionGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>>
 {
-    private static readonly JsonSerializerOptions ExportJsonOptions = BuildExportJsonOptions();
-    private static readonly IReadOnlySet<ParkGraphExportSection> AllExportSections = Enum.GetValues<ParkGraphExportSection>().ToHashSet();
-    private const string OpeningHoursDateFormat = "yyyy-MM-dd";
-    private const string OpeningHoursTimeFormat = "HH:mm";
-
-    private readonly IParkRepository parkRepository;
-    private readonly IParkZoneRepository parkZoneRepository;
-    private readonly IParkItemRepository parkItemRepository;
-    private readonly IParkFounderRepository parkFounderRepository;
-    private readonly IParkOperatorRepository parkOperatorRepository;
-    private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
-    private readonly IImageRepository imageRepository;
-    private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
-    private readonly IParkOpeningHoursRepository? openingHoursRepository;
-    private readonly IHistoryEventRepository? historyEventRepository;
-    private readonly IParkPricingRepository? pricingRepository;
-
-    public ExportParkGraphJsonQueryHandler(
-        IParkRepository parkRepository,
-        IParkZoneRepository parkZoneRepository,
-        IParkItemRepository parkItemRepository,
-        IParkFounderRepository parkFounderRepository,
-        IParkOperatorRepository parkOperatorRepository,
-        IAttractionManufacturerRepository attractionManufacturerRepository,
-        IImageRepository imageRepository,
-        IParkOpeningHoursRepository? openingHoursRepository = null,
-        IHistoryEventRepository? historyEventRepository = null,
-        IStandaloneAttractionRepository? standaloneAttractionRepository = null,
-        IParkPricingRepository? pricingRepository = null)
+    internal static readonly JsonSerializerOptions ExportJsonOptions = ExportParkGraphJsonQueryHandler.BuildExportJsonOptions();
+    internal static readonly IReadOnlySet<ParkGraphExportSection> AllExportSections = Enum.GetValues<ParkGraphExportSection>().ToHashSet();
+    internal const string OpeningHoursDateFormat = "yyyy-MM-dd";
+    internal const string OpeningHoursTimeFormat = "HH:mm";
+    internal readonly IParkRepository parkRepository;
+    internal readonly IParkZoneRepository parkZoneRepository;
+    internal readonly IParkItemRepository parkItemRepository;
+    internal readonly IParkFounderRepository parkFounderRepository;
+    internal readonly IParkOperatorRepository parkOperatorRepository;
+    internal readonly IAttractionManufacturerRepository attractionManufacturerRepository;
+    internal readonly IImageRepository imageRepository;
+    internal readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
+    internal readonly IParkOpeningHoursRepository? openingHoursRepository;
+    internal readonly IHistoryEventRepository? historyEventRepository;
+    internal readonly IParkPricingRepository? pricingRepository;
+    public ExportParkGraphJsonQueryHandler(IParkRepository parkRepository, IParkZoneRepository parkZoneRepository, IParkItemRepository parkItemRepository, IParkFounderRepository parkFounderRepository, IParkOperatorRepository parkOperatorRepository, IAttractionManufacturerRepository attractionManufacturerRepository, IImageRepository imageRepository, IParkOpeningHoursRepository? openingHoursRepository = null, IHistoryEventRepository? historyEventRepository = null, IStandaloneAttractionRepository? standaloneAttractionRepository = null, IParkPricingRepository? pricingRepository = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -90,14 +75,10 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         return await this.ExportResolvedParkAsync(park, query.Sections, cancellationToken);
     }
 
-    private async Task<ApplicationResult<ParkGraphJsonExportResult>> ExportResolvedParkAsync(
-        Park park,
-        IReadOnlyCollection<ParkGraphExportSection>? requestedSections,
-        CancellationToken cancellationToken = default)
+    internal async Task<ApplicationResult<ParkGraphJsonExportResult>> ExportResolvedParkAsync(Park park, IReadOnlyCollection<ParkGraphExportSection>? requestedSections, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(park);
-
-        IReadOnlySet<ParkGraphExportSection> sections = ResolveSections(requestedSections);
+        IReadOnlySet<ParkGraphExportSection> sections = ExportParkGraphJsonQueryHandler.ResolveSections(requestedSections);
         bool includeZones = sections.Contains(ParkGraphExportSection.Zones);
         bool includeItems = sections.Contains(ParkGraphExportSection.Items);
         bool includeReferences = sections.Contains(ParkGraphExportSection.References);
@@ -106,73 +87,25 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         bool includePricing = sections.Contains(ParkGraphExportSection.Pricing);
         bool includeHistory = sections.Contains(ParkGraphExportSection.History);
         bool needsItems = includeItems || includeReferences || includeHistory;
-
-        Task<IReadOnlyCollection<ParkZone>> zonesTask = includeZones
-            ? this.parkZoneRepository.GetByParkIdAsync(park.Id, cancellationToken)
-            : Task.FromResult<IReadOnlyCollection<ParkZone>>(Array.Empty<ParkZone>());
-        Task<IReadOnlyCollection<ParkItem>> itemsTask = needsItems
-            ? this.parkItemRepository.GetByParkIdAsync(park.Id, true, cancellationToken)
-            : Task.FromResult<IReadOnlyCollection<ParkItem>>(Array.Empty<ParkItem>());
+        Task<IReadOnlyCollection<ParkZone>> zonesTask = includeZones ? this.parkZoneRepository.GetByParkIdAsync(park.Id, cancellationToken) : Task.FromResult<IReadOnlyCollection<ParkZone>>(Array.Empty<ParkZone>());
+        Task<IReadOnlyCollection<ParkItem>> itemsTask = needsItems ? this.parkItemRepository.GetByParkIdAsync(park.Id, true, cancellationToken) : Task.FromResult<IReadOnlyCollection<ParkItem>>(Array.Empty<ParkItem>());
         await Task.WhenAll(zonesTask, itemsTask);
-
         IReadOnlyCollection<ParkZone> zones = await zonesTask;
         IReadOnlyCollection<ParkItem> items = await itemsTask;
-        List<string> itemIds = items
-            .Select(static item => item.Id)
-            .Where(static itemId => !string.IsNullOrWhiteSpace(itemId))
-            .Distinct(StringComparer.Ordinal)
-            .ToList();
-        List<string> founderIds = BuildDistinctIds(new[] { park.FounderId });
-        List<string> operatorIds = BuildDistinctIds(new[] { park.OperatorId });
-        List<string> manufacturerIds = items
-            .Select(static item => item.AttractionDetails?.ManufacturerId)
-            .Where(static manufacturerId => !string.IsNullOrWhiteSpace(manufacturerId))
-            .Select(static manufacturerId => manufacturerId ?? string.Empty)
-            .Distinct(StringComparer.Ordinal)
-            .OrderBy(static manufacturerId => manufacturerId, StringComparer.Ordinal)
-            .ToList();
-
-        Task<IReadOnlyCollection<Image>> parkImagesTask = includeImages
-            ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.Park, new[] { park.Id }, null, cancellationToken)
-            : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
-        Task<IReadOnlyCollection<Image>> itemImagesTask = includeImages && includeItems && itemIds.Count > 0
-            ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkItem, itemIds, null, cancellationToken)
-            : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
-        Task<IReadOnlyCollection<Image>> founderImagesTask = includeImages && includeReferences && founderIds.Count > 0
-            ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkFounder, founderIds, null, cancellationToken)
-            : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
-        Task<IReadOnlyCollection<Image>> operatorImagesTask = includeImages && includeReferences && operatorIds.Count > 0
-            ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkOperator, operatorIds, null, cancellationToken)
-            : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
-        Task<IReadOnlyCollection<Image>> manufacturerImagesTask = includeImages && includeReferences && manufacturerIds.Count > 0
-            ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, manufacturerIds, null, cancellationToken)
-            : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
-        Task<ParkOpeningHoursSchedule?> openingHoursTask = !includeOpeningHours || this.openingHoursRepository is null
-            ? Task.FromResult<ParkOpeningHoursSchedule?>(null)
-            : this.openingHoursRepository.GetByParkIdAsync(park.Id, cancellationToken);
-        Task<ParkPricingEntity?> pricingTask = !includePricing
-            || this.pricingRepository is null
-            || !park.Status.IsOpenToVisitors()
-            ? Task.FromResult<ParkPricingEntity?>(null)
-            : this.pricingRepository.GetByParkIdAsync(park.Id, cancellationToken);
-        Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = !includeHistory || this.historyEventRepository is null
-            ? Task.FromResult<IReadOnlyCollection<HistoryEvent>>(Array.Empty<HistoryEvent>())
-            : this.historyEventRepository.GetParkTimelineAsync(park.Id, true, true, itemIds, cancellationToken);
-        Task<ParkGraphExportReferences?> referencesTask = includeReferences
-            ? this.MapOptionalReferencesAsync(park, manufacturerIds, cancellationToken)
-            : Task.FromResult<ParkGraphExportReferences?>(null);
-
-        await Task.WhenAll(
-            parkImagesTask,
-            itemImagesTask,
-            founderImagesTask,
-            operatorImagesTask,
-            manufacturerImagesTask,
-            openingHoursTask,
-            pricingTask,
-            historyEventsTask,
-            referencesTask);
-
+        List<string> itemIds = items.Select(static item => item.Id).Where(static itemId => !string.IsNullOrWhiteSpace(itemId)).Distinct(StringComparer.Ordinal).ToList();
+        List<string> founderIds = ExportParkGraphJsonQueryHandlerMappingExtensions.BuildDistinctIds(new[] { park.FounderId });
+        List<string> operatorIds = ExportParkGraphJsonQueryHandlerMappingExtensions.BuildDistinctIds(new[] { park.OperatorId });
+        List<string> manufacturerIds = items.Select(static item => item.AttractionDetails?.ManufacturerId).Where(static manufacturerId => !string.IsNullOrWhiteSpace(manufacturerId)).Select(static manufacturerId => manufacturerId ?? string.Empty).Distinct(StringComparer.Ordinal).OrderBy(static manufacturerId => manufacturerId, StringComparer.Ordinal).ToList();
+        Task<IReadOnlyCollection<Image>> parkImagesTask = includeImages ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.Park, new[] { park.Id }, null, cancellationToken) : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
+        Task<IReadOnlyCollection<Image>> itemImagesTask = includeImages && includeItems && itemIds.Count > 0 ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkItem, itemIds, null, cancellationToken) : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
+        Task<IReadOnlyCollection<Image>> founderImagesTask = includeImages && includeReferences && founderIds.Count > 0 ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkFounder, founderIds, null, cancellationToken) : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
+        Task<IReadOnlyCollection<Image>> operatorImagesTask = includeImages && includeReferences && operatorIds.Count > 0 ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkOperator, operatorIds, null, cancellationToken) : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
+        Task<IReadOnlyCollection<Image>> manufacturerImagesTask = includeImages && includeReferences && manufacturerIds.Count > 0 ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, manufacturerIds, null, cancellationToken) : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
+        Task<ParkOpeningHoursSchedule?> openingHoursTask = !includeOpeningHours || this.openingHoursRepository is null ? Task.FromResult<ParkOpeningHoursSchedule?>(null) : this.openingHoursRepository.GetByParkIdAsync(park.Id, cancellationToken);
+        Task<ParkPricingEntity?> pricingTask = !includePricing || this.pricingRepository is null || !park.Status.IsOpenToVisitors() ? Task.FromResult<ParkPricingEntity?>(null) : this.pricingRepository.GetByParkIdAsync(park.Id, cancellationToken);
+        Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = !includeHistory || this.historyEventRepository is null ? Task.FromResult<IReadOnlyCollection<HistoryEvent>>(Array.Empty<HistoryEvent>()) : this.historyEventRepository.GetParkTimelineAsync(park.Id, true, true, itemIds, cancellationToken);
+        Task<ParkGraphExportReferences?> referencesTask = includeReferences ? this.MapOptionalReferencesAsync(park, manufacturerIds, cancellationToken) : Task.FromResult<ParkGraphExportReferences?>(null);
+        await Task.WhenAll(parkImagesTask, itemImagesTask, founderImagesTask, operatorImagesTask, manufacturerImagesTask, openingHoursTask, pricingTask, historyEventsTask, referencesTask);
         IReadOnlyCollection<Image> parkImages = await parkImagesTask;
         IReadOnlyCollection<Image> itemImages = await itemImagesTask;
         IReadOnlyCollection<Image> founderImages = await founderImagesTask;
@@ -182,17 +115,15 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         ParkPricingEntity? pricing = await pricingTask;
         IReadOnlyCollection<HistoryEvent> historyEvents = await historyEventsTask;
         ParkGraphExportReferences? references = await referencesTask;
-
         DateTime exportedAtUtc = DateTime.UtcNow;
         Dictionary<string, object?> document = new Dictionary<string, object?>
         {
             ["documentType"] = "AmusementParkParkGraphUpsert",
             ["schemaVersion"] = "2026-09-05",
             ["mode"] = "merge",
-            ["identity"] = MapIdentity(park),
+            ["identity"] = ExportParkGraphJsonQueryHandler.MapIdentity(park),
         };
-
-        Dictionary<string, object?> parkPatch = MapParkPatch(park, sections);
+        Dictionary<string, object?> parkPatch = ExportParkGraphJsonQueryHandler.MapParkPatch(park, sections);
         if (parkPatch.Count > 0)
         {
             document["park"] = parkPatch;
@@ -205,66 +136,43 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
 
         if (includeZones)
         {
-            document["zones"] = zones
-                .OrderBy(static zone => zone.SortOrder)
-                .ThenBy(static zone => zone.Name, StringComparer.OrdinalIgnoreCase)
-                .Select(static zone => MapZone(zone))
-                .ToList();
+            document["zones"] = zones.OrderBy(static zone => zone.SortOrder).ThenBy(static zone => zone.Name, StringComparer.OrdinalIgnoreCase).Select(static zone => ExportParkGraphJsonQueryHandler.MapZone(zone)).ToList();
         }
 
         if (includeItems)
         {
-            document["items"] = items
-                .OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
-                .Select(static item => MapItem(item))
-                .ToList();
+            document["items"] = items.OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase).Select(static item => ExportParkGraphJsonQueryHandler.MapItem(item)).ToList();
         }
 
         if (includeImages)
         {
-            document["images"] = parkImages
-                .Concat(itemImages)
-                .Concat(operatorImages)
-                .Concat(founderImages)
-                .Concat(manufacturerImages)
-                .OrderBy(static image => image.OwnerType.ToString(), StringComparer.Ordinal)
-                .ThenBy(static image => image.OwnerId, StringComparer.Ordinal)
-                .ThenBy(static image => image.OriginalFileName, StringComparer.OrdinalIgnoreCase)
-                .Select(image => MapImage(image, park.Id))
-                .ToList();
+            document["images"] = parkImages.Concat(itemImages).Concat(operatorImages).Concat(founderImages).Concat(manufacturerImages).OrderBy(static image => image.OwnerType.ToString(), StringComparer.Ordinal).ThenBy(static image => image.OwnerId, StringComparer.Ordinal).ThenBy(static image => image.OriginalFileName, StringComparer.OrdinalIgnoreCase).Select(image => ExportParkGraphJsonQueryHandler.MapImage(image, park.Id)).ToList();
         }
 
         if (includeOpeningHours)
         {
-            document["openingHours"] = openingHours is null ? null : MapOpeningHours(openingHours);
+            document["openingHours"] = openingHours is null ? null : ExportParkGraphJsonQueryHandlerMappingExtensions.MapOpeningHours(openingHours);
         }
 
         if (includePricing)
         {
-            document["pricing"] = park.Status.IsOpenToVisitors() && pricing is not null
-                ? ParkGraphPricingExportMapper.Map(pricing)
-                : null;
+            document["pricing"] = park.Status.IsOpenToVisitors() && pricing is not null ? ParkGraphPricingExportMapper.Map(pricing) : null;
         }
 
         if (includeHistory)
         {
-            document["history"] = MapHistory(historyEvents);
+            document["history"] = ExportParkGraphJsonQueryHandlerHistoryMappingExtensions.MapHistory(historyEvents);
         }
 
         document["metadata"] = new ParkGraphExportMetadata
         {
             ExportedAtUtc = exportedAtUtc,
         };
-
-        byte[] content = JsonSerializer.SerializeToUtf8Bytes(document, ExportJsonOptions);
-        return ApplicationResult<ParkGraphJsonExportResult>.Success(new ParkGraphJsonExportResult
-        {
-            FileName = BuildFileName(park, exportedAtUtc),
-            Content = content,
-        });
+        byte[] content = JsonSerializer.SerializeToUtf8Bytes(document, ExportParkGraphJsonQueryHandler.ExportJsonOptions);
+        return ApplicationResult<ParkGraphJsonExportResult>.Success(new ParkGraphJsonExportResult { FileName = ExportParkGraphJsonQueryHandlerMappingExtensions.BuildFileName(park, exportedAtUtc), Content = content, });
     }
 
-    private static JsonSerializerOptions BuildExportJsonOptions()
+    internal static JsonSerializerOptions BuildExportJsonOptions()
     {
         JsonSerializerOptions options = new JsonSerializerOptions(JsonSerializerDefaults.Web)
         {
@@ -274,27 +182,24 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         return options;
     }
 
-    private static IReadOnlySet<ParkGraphExportSection> ResolveSections(IReadOnlyCollection<ParkGraphExportSection>? sections)
+    internal static IReadOnlySet<ParkGraphExportSection> ResolveSections(IReadOnlyCollection<ParkGraphExportSection>? sections)
     {
         if (sections is null)
         {
-            return AllExportSections;
+            return ExportParkGraphJsonQueryHandler.AllExportSections;
         }
 
-        return sections
-            .Distinct()
-            .ToHashSet();
+        return sections.Distinct().ToHashSet();
     }
 
-    private async Task<ParkGraphExportReferences?> MapOptionalReferencesAsync(Park park, IReadOnlyCollection<string> manufacturerIds, CancellationToken cancellationToken)
+    internal async Task<ParkGraphExportReferences?> MapOptionalReferencesAsync(Park park, IReadOnlyCollection<string> manufacturerIds, CancellationToken cancellationToken)
     {
         return await this.MapReferencesAsync(park, manufacturerIds, cancellationToken);
     }
 
-    private static Dictionary<string, object?> MapParkPatch(Park park, IReadOnlySet<ParkGraphExportSection> sections)
+    internal static Dictionary<string, object?> MapParkPatch(Park park, IReadOnlySet<ParkGraphExportSection> sections)
     {
         Dictionary<string, object?> patch = new Dictionary<string, object?>();
-
         if (sections.Contains(ParkGraphExportSection.ParkBasics))
         {
             patch["id"] = park.Id;
@@ -336,7 +241,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
 
         if (sections.Contains(ParkGraphExportSection.ParkDescriptions))
         {
-            patch["descriptions"] = CopyLocalizedTexts(park.Descriptions);
+            patch["descriptions"] = ExportParkGraphJsonQueryHandlerMappingExtensions.CopyLocalizedTexts(park.Descriptions);
         }
 
         if (sections.Contains(ParkGraphExportSection.ParkHomeFeature))
@@ -354,35 +259,24 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         return patch;
     }
 
-    private async Task<ParkGraphExportReferences> MapReferencesAsync(Park park, IReadOnlyCollection<string> manufacturerIds, CancellationToken cancellationToken)
+    internal async Task<ParkGraphExportReferences> MapReferencesAsync(Park park, IReadOnlyCollection<string> manufacturerIds, CancellationToken cancellationToken)
     {
-        Task<ParkFounder?> founderTask = string.IsNullOrWhiteSpace(park.FounderId)
-            ? Task.FromResult<ParkFounder?>(null)
-            : this.parkFounderRepository.GetByIdAsync(park.FounderId, cancellationToken);
-        Task<ParkOperator?> operatorTask = string.IsNullOrWhiteSpace(park.OperatorId)
-            ? Task.FromResult<ParkOperator?>(null)
-            : this.parkOperatorRepository.GetByIdAsync(park.OperatorId, cancellationToken);
-        Task<IReadOnlyCollection<AttractionManufacturer>> manufacturersTask = manufacturerIds.Count == 0
-            ? Task.FromResult<IReadOnlyCollection<AttractionManufacturer>>(Array.Empty<AttractionManufacturer>())
-            : this.attractionManufacturerRepository.GetByIdsAsync(manufacturerIds, cancellationToken);
-
+        Task<ParkFounder?> founderTask = string.IsNullOrWhiteSpace(park.FounderId) ? Task.FromResult<ParkFounder?>(null) : this.parkFounderRepository.GetByIdAsync(park.FounderId, cancellationToken);
+        Task<ParkOperator?> operatorTask = string.IsNullOrWhiteSpace(park.OperatorId) ? Task.FromResult<ParkOperator?>(null) : this.parkOperatorRepository.GetByIdAsync(park.OperatorId, cancellationToken);
+        Task<IReadOnlyCollection<AttractionManufacturer>> manufacturersTask = manufacturerIds.Count == 0 ? Task.FromResult<IReadOnlyCollection<AttractionManufacturer>>(Array.Empty<AttractionManufacturer>()) : this.attractionManufacturerRepository.GetByIdsAsync(manufacturerIds, cancellationToken);
         await Task.WhenAll(founderTask, operatorTask, manufacturersTask);
-
         ParkFounder? founder = await founderTask;
         ParkOperator? parkOperator = await operatorTask;
         IReadOnlyCollection<AttractionManufacturer> manufacturerEntities = await manufacturersTask;
-
-        List<ParkGraphExportFounder> founders = founder is null
-            ? new List<ParkGraphExportFounder>()
-            : new List<ParkGraphExportFounder> { MapFounder(founder) };
-        List<ParkGraphExportOperator> operators = parkOperator is null
-            ? new List<ParkGraphExportOperator>()
-            : new List<ParkGraphExportOperator> { MapOperator(parkOperator) };
-        List<ParkGraphExportManufacturer> manufacturers = manufacturerEntities
-            .OrderBy(static manufacturer => manufacturer.Id, StringComparer.Ordinal)
-            .Select(static manufacturer => MapManufacturer(manufacturer))
-            .ToList();
-
+        List<ParkGraphExportFounder> founders = founder is null ? new List<ParkGraphExportFounder>() : new List<ParkGraphExportFounder>
+        {
+            ExportParkGraphJsonQueryHandlerMappingExtensions.MapFounder(founder)
+        };
+        List<ParkGraphExportOperator> operators = parkOperator is null ? new List<ParkGraphExportOperator>() : new List<ParkGraphExportOperator>
+        {
+            ExportParkGraphJsonQueryHandlerMappingExtensions.MapOperator(parkOperator)
+        };
+        List<ParkGraphExportManufacturer> manufacturers = manufacturerEntities.OrderBy(static manufacturer => manufacturer.Id, StringComparer.Ordinal).Select(static manufacturer => ExportParkGraphJsonQueryHandlerMappingExtensions.MapManufacturer(manufacturer)).ToList();
         return new ParkGraphExportReferences
         {
             Founders = founders,
@@ -391,7 +285,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         };
     }
 
-    private static ParkGraphExportIdentity MapIdentity(Park park)
+    internal static ParkGraphExportIdentity MapIdentity(Park park)
     {
         return new ParkGraphExportIdentity
         {
@@ -402,16 +296,16 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         };
     }
 
-    private static ParkGraphExportZone MapZone(ParkZone zone)
+    internal static ParkGraphExportZone MapZone(ParkZone zone)
     {
         return new ParkGraphExportZone
         {
             Key = zone.Id,
             Id = zone.Id,
             Name = zone.Name,
-            Names = CopyLocalizedTexts(zone.Names),
+            Names = ExportParkGraphJsonQueryHandlerMappingExtensions.CopyLocalizedTexts(zone.Names),
             Slug = zone.Slug,
-            Descriptions = CopyLocalizedTexts(zone.Descriptions),
+            Descriptions = ExportParkGraphJsonQueryHandlerMappingExtensions.CopyLocalizedTexts(zone.Descriptions),
             IsVisible = zone.IsVisible,
             SortOrder = zone.SortOrder,
             Latitude = zone.Position?.Latitude,
@@ -419,7 +313,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         };
     }
 
-    private static ParkGraphExportItem MapItem(ParkItem item)
+    internal static ParkGraphExportItem MapItem(ParkItem item)
     {
         return new ParkGraphExportItem
         {
@@ -431,8 +325,8 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
             Subtype = item.Subtype,
             ZoneId = item.ZoneId,
             ZoneKey = item.ZoneId,
-            Descriptions = CopyLocalizedTexts(item.Descriptions),
-            AttractionDetails = item.AttractionDetails is null ? null : MapAttractionDetails(item.AttractionDetails),
+            Descriptions = ExportParkGraphJsonQueryHandlerMappingExtensions.CopyLocalizedTexts(item.Descriptions),
+            AttractionDetails = item.AttractionDetails is null ? null : ExportParkGraphJsonQueryHandler.MapAttractionDetails(item.AttractionDetails),
             AttractionLocations = item.AttractionLocations,
             IsVisible = item.IsVisible,
             AdminReviewStatus = item.AdminReviewStatus,
@@ -441,7 +335,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         };
     }
 
-    private static ParkGraphExportAttractionDetails MapAttractionDetails(AttractionDetails details, bool includeReferenceKey = true)
+    internal static ParkGraphExportAttractionDetails MapAttractionDetails(AttractionDetails details, bool includeReferenceKey = true)
     {
         return new ParkGraphExportAttractionDetails
         {
@@ -484,7 +378,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         };
     }
 
-    private static ParkGraphExportImage MapImage(Image image, string parkId)
+    internal static ParkGraphExportImage MapImage(Image image, string parkId)
     {
         return new ParkGraphExportImage
         {
@@ -492,7 +386,7 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
             Id = image.Id,
             OwnerType = image.OwnerType,
             OwnerId = image.OwnerId,
-            OwnerKey = BuildImageOwnerKey(image, parkId),
+            OwnerKey = ExportParkGraphJsonQueryHandlerMappingExtensions.BuildImageOwnerKey(image, parkId),
             Category = image.Category,
             IsPublished = image.IsPublished,
             IsCurrent = image.IsCurrent,
@@ -500,11 +394,11 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
             WithWatermark = false,
             IsWatermarked = image.IsWatermarked,
             SourceUrl = image.SourceUrl,
-            InternalUrl = BuildInternalImageUrl(image.Id),
+            InternalUrl = ExportParkGraphJsonQueryHandlerMappingExtensions.BuildInternalImageUrl(image.Id),
             Description = image.Description,
-            AltTexts = CopyLocalizedTexts(image.AltTexts),
-            Captions = CopyLocalizedTexts(image.Captions),
-            Credits = CopyLocalizedTexts(image.Credits),
+            AltTexts = ExportParkGraphJsonQueryHandlerMappingExtensions.CopyLocalizedTexts(image.AltTexts),
+            Captions = ExportParkGraphJsonQueryHandlerMappingExtensions.CopyLocalizedTexts(image.Captions),
+            Credits = ExportParkGraphJsonQueryHandlerMappingExtensions.CopyLocalizedTexts(image.Credits),
             TagIds = image.TagIds.ToList(),
             GeoLocation = image.GeoLocation,
             OriginalFileName = image.OriginalFileName,
@@ -515,4 +409,8 @@ public sealed partial class ExportParkGraphJsonQueryHandler :
         };
     }
 
+    public Task<ApplicationResult<ParkGraphJsonExportResult>> HandleAsync(ExportStandaloneAttractionGraphJsonQuery query, CancellationToken cancellationToken = default)
+    {
+        return ExportParkGraphJsonQueryHandlerStandaloneAttractionExtensions.HandleAsync(this, query, cancellationToken);
+    }
 }

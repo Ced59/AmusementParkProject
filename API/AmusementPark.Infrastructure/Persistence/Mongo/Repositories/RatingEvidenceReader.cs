@@ -378,7 +378,4 @@ public sealed class RatingEvidenceReader : IRatingEvidenceReader
         return true;
     }
 
-    internal sealed record PublicParkItemEvidenceReadResult(
-        IReadOnlyCollection<PublicParkItemEvidenceFact> Facts,
-        IReadOnlyCollection<string> IncompleteParkIds);
 }

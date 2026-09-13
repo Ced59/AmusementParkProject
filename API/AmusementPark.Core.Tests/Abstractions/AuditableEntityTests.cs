@@ -32,7 +32,5 @@ public sealed class AuditableEntityTests
         Assert.True(entity.UpdatedAtUtc > previousUpdatedAtUtc);
     }
 
-    private sealed class TestAuditableEntity : AuditableEntity
-    {
-    }
+
 }

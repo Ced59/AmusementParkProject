@@ -1,0 +1,29 @@
+using AmusementPark.Application.Features.Passport.Models;
+using AmusementPark.Core.Domain.Ratings;
+
+namespace AmusementPark.Application.Features.Passport.Ports;
+
+public interface IGlobalRatingSuggestionStateRepository
+{
+    Task<bool> IsEnabledAsync(string userId, CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<GlobalRatingSuggestionTargetState>> GetStatesAsync(
+        string userId,
+        IReadOnlyCollection<GlobalRatingSuggestionTargetKey> targets,
+        CancellationToken cancellationToken);
+
+    Task SetEnabledAsync(
+        string userId,
+        bool isEnabled,
+        DateTime updatedAtUtc,
+        CancellationToken cancellationToken);
+
+    Task<bool> TryRecordInteractionAsync(
+        string userId,
+        RatingTargetType targetType,
+        string targetId,
+        DateTime? expectedLastPresentedAtUtc,
+        GlobalRatingSuggestionInteractionType interactionType,
+        DateTime occurredAtUtc,
+        CancellationToken cancellationToken);
+}

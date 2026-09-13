@@ -133,48 +133,14 @@ public sealed class RemoteImageImporterTests
         HttpClient httpClient = new HttpClient(httpMessageHandler);
 
         return new RemoteImageImporter(
-            new StubHttpClientFactory(httpClient),
+            new RemoteImageImporterTestsStubHttpClientFactory(httpClient),
             imageRepository.Object,
             imageProcessingPipeline.Object,
             imageBinaryStorage.Object,
             NullLogger<RemoteImageImporter>.Instance);
     }
 
-    private sealed class StubHttpClientFactory : IHttpClientFactory
-    {
-        private readonly HttpClient httpClient;
 
-        public StubHttpClientFactory(HttpClient httpClient)
-        {
-            this.httpClient = httpClient;
-        }
 
-        public HttpClient CreateClient(string name)
-        {
-            return this.httpClient;
-        }
-    }
 
-    private sealed class CapturingHttpMessageHandler : HttpMessageHandler
-    {
-        private readonly byte[] content;
-
-        public CapturingHttpMessageHandler(byte[] content)
-        {
-            this.content = content;
-        }
-
-        public HttpRequestMessage? Request { get; private set; }
-
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            this.Request = request;
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new ByteArrayContent(this.content),
-            };
-            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
-            return Task.FromResult(response);
-        }
-    }
 }

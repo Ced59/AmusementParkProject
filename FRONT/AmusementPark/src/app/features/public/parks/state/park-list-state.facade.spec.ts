@@ -22,76 +22,9 @@ import { SearchApiResponse } from '@app/models/search/search-api-response';
 import { StandaloneAttractionMapPoint } from '@app/models/standalone-attractions/standalone-attraction-map-point';
 import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 import { ParkStatus } from '@app/models/parks/park-status';
-
-class FakeParksPort implements ParkListStateParksApiServicePort {
-  public parkResponse$: Observable<Park> = of(createPark('park-2'));
-  public pageResponse$: Observable<ParksApiResponse> = of(createResponse([createPark('park-1')], createPagination(1, 9, 1)));
-  public searchResponse$: Observable<ParksApiResponse> = of(createResponse([createPark('searched-park')], createPagination(1, 9, 1)));
-  public mapPointsResponse$: Observable<ParkMapPoint[]> = of([createMapPoint('park-1')]);
-  public readonly pageCalls: { page: number; size: number; visibleOnly: boolean; region: ParkRegionFilter | null; filters: ParkAdminListFilters | null }[] = [];
-  public readonly searchCalls: { term: string; page: number; size: number; visibleOnly: boolean; region: ParkRegionFilter | null; filters: ParkAdminListFilters | null }[] = [];
-  public readonly mapCalls: {
-    term: string | null;
-    region: ParkRegionFilter | null;
-    closedFilter: ClosedEntityFilter | null;
-    status: ParkStatus | null;
-    audienceClassificationFilter: ParkAudienceClassificationFilter | null;
-  }[] = [];
-  public readonly parkByIdCalls: string[] = [];
-
-  getParkById(id: string): Observable<Park> {
-    this.parkByIdCalls.push(id);
-    return this.parkResponse$;
-  }
-
-  getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
-    this.pageCalls.push({ page, size, visibleOnly, region, filters });
-    return this.pageResponse$;
-  }
-
-  getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null, options: {
-    closedFilter?: ClosedEntityFilter;
-    status?: ParkStatus | null;
-    audienceClassificationFilter?: ParkAudienceClassificationFilter | null;
-  } = {}): Observable<ParkMapPoint[]> {
-    this.mapCalls.push({
-      term: query,
-      region,
-      closedFilter: options.closedFilter ?? null,
-      status: options.status ?? null,
-      audienceClassificationFilter: options.audienceClassificationFilter ?? null
-    });
-    return this.mapPointsResponse$;
-  }
-
-  searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
-    this.searchCalls.push({ term: query, page, size, visibleOnly, region, filters });
-    return this.searchResponse$;
-  }
-}
-
-class FakeSearchPort implements ParkListStateSearchApiServicePort {
-  public response$: Observable<SearchApiResponse> = of({
-    data: [{ originalId: 'standaloneAttraction_standalone-1', category: 'standaloneAttraction', title: 'Pendolino', description: 'Description' }],
-    pagination: createPagination(1, 9, 1)
-  });
-  public readonly calls: Array<{ query: string; categories: string[]; page: number; size: number; region: ParkRegionFilter | null }> = [];
-
-  getSearch(query: string, categories: string[], page: number, size: number, _options: object = {}, region: ParkRegionFilter | null = null): Observable<SearchApiResponse> {
-    this.calls.push({ query, categories, page, size, region });
-    return this.response$;
-  }
-}
-
-class FakeStandaloneAttractionsPort implements ParkListStateStandaloneAttractionsApiServicePort {
-  public response$: Observable<StandaloneAttractionMapPoint[]> = of([createStandaloneMapPoint()]);
-  public readonly calls: Array<{ query: string; region: ParkRegionFilter | null }> = [];
-
-  getVisibleMapPoints(query: string = '', region: ParkRegionFilter | null = null): Observable<StandaloneAttractionMapPoint[]> {
-    this.calls.push({ query, region });
-    return this.response$;
-  }
-}
+import { FakeParksPort } from './test-helpers/park-list-state.facade/fake-parks-port';
+import { FakeSearchPort } from './test-helpers/park-list-state.facade/fake-search-port';
+import { FakeStandaloneAttractionsPort } from './test-helpers/park-list-state.facade/fake-standalone-attractions-port';
 
 function createPark(id: string): Park {
   return {

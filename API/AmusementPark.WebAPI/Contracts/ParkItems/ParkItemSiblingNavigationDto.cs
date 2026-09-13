@@ -16,10 +16,3 @@ public sealed class ParkItemSiblingNavigationDto
 
     public ParkItemSiblingNavigationItemDto? Next { get; init; }
 }
-
-public sealed class ParkItemSiblingNavigationItemDto
-{
-    public string Id { get; init; } = string.Empty;
-
-    public string Name { get; init; } = string.Empty;
-}

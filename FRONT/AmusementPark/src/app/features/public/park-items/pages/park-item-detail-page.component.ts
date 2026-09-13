@@ -10,7 +10,7 @@ import { ParkItemDetailStateFacade } from '../state/park-item-detail-state.facad
 import { ParkItemDetailViewComponent } from '../ui/park-item-detail-view.component';
 import { SeoService } from '@core/seo/seo.service';
 import { LcpImagePreloadService } from '@core/performance/lcp-image-preload.service';
-import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events';
 
 @Component({
   selector: 'app-park-item-detail-page',

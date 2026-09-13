@@ -47,12 +47,5 @@ public sealed class SsrInvalidationInputReaderTests
         Assert.Null(SsrInvalidationInputReader.ParseEnum<ParkType>("unknown"));
     }
 
-    private sealed class InputDto
-    {
-        public string ParkId { get; init; } = string.Empty;
 
-        public bool IsVisible { get; init; }
-
-        public IReadOnlyCollection<string> Ids { get; init; } = Array.Empty<string>();
-    }
 }

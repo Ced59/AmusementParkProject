@@ -216,41 +216,7 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         historyRepository.VerifyNoOtherCalls();
     }
 
-    private sealed class FakeSitemapSectionProvider : ISitemapSectionProvider
-    {
-        private readonly IReadOnlyCollection<SitemapUrlEntry> urls;
 
-        public FakeSitemapSectionProvider(string key, string fileName, string displayName, IReadOnlyCollection<SitemapUrlEntry> urls)
-        {
-            this.Key = key;
-            this.FileName = fileName;
-            this.DisplayName = displayName;
-            this.urls = urls;
-        }
 
-        public string Key { get; }
 
-        public string FileName { get; }
-
-        public string DisplayName { get; }
-
-        public Task<IReadOnlyCollection<SitemapUrlEntry>> GetUrlsAsync(SitemapGenerationContext context, CancellationToken cancellationToken)
-        {
-            return Task.FromResult(this.urls);
-        }
-    }
-
-    private sealed class CancelingSitemapSectionProvider : ISitemapSectionProvider
-    {
-        public string Key => SitemapSectionKeys.Parks;
-
-        public string FileName => "parks.xml";
-
-        public string DisplayName => "Parcs";
-
-        public Task<IReadOnlyCollection<SitemapUrlEntry>> GetUrlsAsync(SitemapGenerationContext context, CancellationToken cancellationToken)
-        {
-            throw new OperationCanceledException();
-        }
-    }
 }

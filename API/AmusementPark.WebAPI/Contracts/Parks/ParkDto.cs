@@ -65,26 +65,3 @@ public sealed class ParkDto
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DataCompletenessScoreDto? DataCompleteness { get; set; }
 }
-
-public sealed class ParkOpeningHoursAdminSummaryDto
-{
-    public bool HasOpeningHours { get; set; }
-
-    public string Status { get; set; } = "NotConfigured";
-
-    public string? TimeZoneId { get; set; }
-
-    public string? FirstDate { get; set; }
-
-    public string? LastDate { get; set; }
-
-    public string? CompleteUntilDate { get; set; }
-
-    public int? CompleteForDays { get; set; }
-
-    public int WarningThresholdDays { get; set; } = 30;
-
-    public DateTime? LastVerifiedAtUtc { get; set; }
-
-    public DateTime? UpdatedAtUtc { get; set; }
-}

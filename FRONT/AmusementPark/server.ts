@@ -63,8 +63,9 @@ import {
   isRatingRankingDependentCacheKey,
   RATING_RANKING_PAGE_GROUP,
   SsrPageCacheGenerationTracker,
-} from './src/server/ssr/rating-ranking-cache-generation';
-import type { SsrPageCacheGenerationStamp } from './src/server/ssr/rating-ranking-cache-generation';
+} from './src/server/ssr/ssr-page-cache-generation-tracker';
+import type { SsrPageCacheGenerationStamp } from './src/server/ssr/ssr-page-cache-generation-tracker';
+import { SsrRenderQueueFullError } from './src/server/ssr/ssr-render-queue-full-error';
 import {
   buildPreferredLanguageHomeUrl,
   resolveLanguagePreferenceCookie,
@@ -73,7 +74,7 @@ import {
   SeoStaticDocumentResponse,
   SeoStaticSnapshotPublisher,
   SeoStaticSnapshotPublishResult,
-} from './src/server/seo/seo-static-snapshot';
+} from './src/server/seo/seo-static-snapshot-publisher';
 
 const defaultApiInternalOrigin = 'http://api:8080';
 const apiInternalOrigin = normalizeOrigin(process.env['SSR_API_INTERNAL_URL'] ?? defaultApiInternalOrigin);
@@ -453,13 +454,6 @@ interface SeoDocumentCacheEntry {
 type SeoDocumentCacheStatus = 'HIT' | 'MISS' | 'BYPASS';
 
 type SeoDocumentCacheCallback = (error: Error | null, entry: SeoDocumentCacheEntry | null) => void;
-
-class SsrRenderQueueFullError extends Error {
-  constructor() {
-    super('SSR render queue is full.');
-    this.name = 'SsrRenderQueueFullError';
-  }
-}
 
 export function app(): express.Express {
   const server = express();

@@ -49,7 +49,7 @@ public sealed class ParkItemImagesSitemapSectionProvider : ISitemapSectionProvid
             static pair => pair.Key,
             static pair => SeoSlugService.ToSlug(pair.Value.Name, "park"),
             StringComparer.OrdinalIgnoreCase);
-        IReadOnlyDictionary<string, ParksSitemapSectionProvider.PublishedImageOwnerSummary> itemImageSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
+        IReadOnlyDictionary<string, PublishedImageOwnerSummary> itemImageSummaries = await ParksSitemapSectionProvider.LoadPublishedImageOwnerSummariesAsync(
             this.imageRepository,
             ImageOwnerType.ParkItem,
             ImageCategory.ParkItem,
@@ -59,7 +59,7 @@ public sealed class ParkItemImagesSitemapSectionProvider : ISitemapSectionProvid
         foreach (ParkItem item in publicItems)
         {
             if (!visibleParkById.TryGetValue(item.ParkId, out Park? parentPark) ||
-                !itemImageSummaries.TryGetValue(item.Id!, out ParksSitemapSectionProvider.PublishedImageOwnerSummary? imageSummary) ||
+                !itemImageSummaries.TryGetValue(item.Id!, out PublishedImageOwnerSummary? imageSummary) ||
                 !SeoPageValuePolicy.IsImageGalleryIndexable(imageSummary.Count))
             {
                 continue;

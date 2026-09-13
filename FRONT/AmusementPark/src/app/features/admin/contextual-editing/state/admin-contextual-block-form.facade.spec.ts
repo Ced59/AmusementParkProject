@@ -14,7 +14,7 @@ import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-bl
 import { AdminContextualBlockInstance } from '../models/admin-contextual-block.model';
 import { ADMIN_CONTEXTUAL_BLOCK_FORM_DATA_PORT } from './admin-contextual-block-form-data.ports';
 import { AdminContextualBlockFormFacade } from './admin-contextual-block-form.facade';
-import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events.service';
+import { AdminContextualBlockRefreshEvents } from './admin-contextual-block-refresh-events';
 
 describe('AdminContextualBlockFormFacade', () => {
   let facade: AdminContextualBlockFormFacade;

@@ -12,12 +12,3 @@ public sealed record ParkDistanceResult(
     IReadOnlyCollection<string> UnavailableTargetParkIds,
     string DistanceUnit,
     string CalculationKind);
-
-/// <summary>
-/// Résultat applicatif de distance vers un parc cible.
-/// </summary>
-public sealed record ParkDistanceTargetResult(
-    Park Park,
-    double DistanceKilometers,
-    int EstimatedTravelDurationMinutes,
-    int ProximityRank);

@@ -759,7 +759,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string userId,
         CancellationToken cancellationToken)
     {
-        CurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
+        UserRideOccurrenceRepositoryCurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
             visitId.Value,
             userId,
             cancellationToken);
@@ -791,7 +791,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 $"The ride occurrence list size must be between 1 and {MaximumListSize}.");
         }
 
-        CurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
+        UserRideOccurrenceRepositoryCurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
             criteria.VisitId.Value,
             criteria.UserId,
             cancellationToken);
@@ -838,7 +838,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             return null;
         }
 
-        CurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
+        UserRideOccurrenceRepositoryCurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
             document.VisitId,
             userId,
             cancellationToken);
@@ -857,7 +857,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         string relatedCreationOperationKeyHash =
             UserRideOccurrenceCreationFingerprint.HashOperationKey(
                 NormalizeRequired(clientOperationId, nameof(clientOperationId)));
-        CurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
+        UserRideOccurrenceRepositoryCurrentContentFence currentFence = await this.LoadCurrentContentFenceAsync(
             visitId.Value,
             normalizedUserId,
             cancellationToken);
@@ -2920,22 +2920,22 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             : updates.Set(fieldName, value));
     }
 
-    private async Task<CurrentContentFence> LoadCurrentContentFenceAsync(
+    private async Task<UserRideOccurrenceRepositoryCurrentContentFence> LoadCurrentContentFenceAsync(
         string visitId,
         string userId,
         CancellationToken cancellationToken)
     {
         if (this.visitCollection is null)
         {
-            return new CurrentContentFence(true, false, null);
+            return new UserRideOccurrenceRepositoryCurrentContentFence(true, false, null);
         }
 
         UserVisitDocument? visit = await this.visitCollection
             .Find(UserVisitMongoDefinitions.BuildOwnedVisitFilter(visitId, userId))
             .FirstOrDefaultAsync(cancellationToken);
         return visit is null
-            ? new CurrentContentFence(false, true, null)
-            : new CurrentContentFence(
+            ? new UserRideOccurrenceRepositoryCurrentContentFence(false, true, null)
+            : new UserRideOccurrenceRepositoryCurrentContentFence(
                 true,
                 visit.ContentMutationFenceToken.HasValue
                     && visit.ContentMutationFenceReady,
@@ -2958,7 +2958,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             return result;
         }
 
-        CurrentContentFence current = await this.LoadCurrentContentFenceAsync(
+        UserRideOccurrenceRepositoryCurrentContentFence current = await this.LoadCurrentContentFenceAsync(
             request.VisitId.Value,
             request.UserId,
             cancellationToken);
@@ -2971,7 +2971,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
 
     private static FilterDefinition<UserRideOccurrenceDocument> WithCurrentContentFence(
         FilterDefinition<UserRideOccurrenceDocument> filter,
-        CurrentContentFence currentFence)
+        UserRideOccurrenceRepositoryCurrentContentFence currentFence)
     {
         FilterDefinitionBuilder<UserRideOccurrenceDocument> filters =
             Builders<UserRideOccurrenceDocument>.Filter;
@@ -3055,29 +3055,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         return new DateTime(ticks, DateTimeKind.Utc);
     }
 
-    private sealed record BatchScope(string UserId, VisitId VisitId);
 
-    private sealed record CurrentContentFence(
-        bool VisitExists,
-        bool IsEnforced,
-        long? Token,
-        long? StableToken = null)
-    {
-        public bool Matches(long? token)
-        {
-            if (!this.Token.HasValue)
-            {
-                return !token.HasValue;
-            }
 
-            if (this.IsEnforced)
-            {
-                return token == this.Token;
-            }
 
-            return this.StableToken.HasValue
-                ? token >= this.StableToken && token <= this.Token
-                : !token.HasValue || token is >= 1 && token <= this.Token;
-        }
-    }
 }

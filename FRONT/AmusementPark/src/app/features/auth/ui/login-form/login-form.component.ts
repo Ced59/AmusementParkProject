@@ -3,7 +3,7 @@ import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { UserCredentials } from '@app/models/users/user_credentials';
+import { UserCredentials } from '@app/models/users/user-credentials';
 import { UserToken } from '@app/models/users/user_token';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { AuthService } from '@app/services/auth/auth.service';
