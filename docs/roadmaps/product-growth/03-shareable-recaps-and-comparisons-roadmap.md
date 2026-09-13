@@ -479,7 +479,9 @@ privé déjà borné de l'export afin de rester présents même si la politique 
 statistiques géographiques du snapshot public ; une cible historique introuvable
 reçoit un libellé neutre et jamais son identifiant.
 Le correctif 5.3.9 conserve en priorité les noms figés dans un snapshot approuvé :
-un renommage ultérieur du catalogue ne réécrit pas l'historique exporté.
+un renommage ultérieur du catalogue ne réécrit pas l'historique exporté. Il complète
+ensuite cette liste avec les parcs sélectionnés hors des années retenues, afin que
+le périmètre choisi reste exhaustif sans attribuer de statistiques inexistantes.
 Les lectures MongoDB réutilisent le
 budget de taille commun aux visites et passages ; un export trop volumineux échoue
 donc avant de saturer la mémoire du worker lourd. Un index participant est ajouté

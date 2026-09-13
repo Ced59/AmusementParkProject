@@ -234,7 +234,10 @@ libellé neutre `Unavailable park`, jamais son identifiant persistant.
 Lorsque le snapshot contient ses propres libellés de parc, ceux-ci restent
 prioritaires : un renommage ultérieur dans le catalogue ne réécrit donc pas le
 contenu précédemment approuvé. La résolution privée sert uniquement de repli aux
-politiques qui ont volontairement omis les statistiques géographiques.
+politiques qui ont volontairement omis les statistiques géographiques et aux
+parcs sélectionnés qui n'ont aucune visite dans les années retenues. Ces choix
+hors intersection temporelle restent ainsi lisibles sans être confondus avec les
+statistiques figées.
 
 ## Preuves automatisées
 
