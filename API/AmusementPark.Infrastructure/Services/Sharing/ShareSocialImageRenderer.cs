@@ -39,7 +39,13 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
             "Fonts",
             "noto-sans-jp-unicode.ttf");
         FontFamily unicodeFontFamily = collection.Add(unicodeFontPath);
-        this.fallbackFontFamilies = new[] { unicodeFontFamily }
+        string symbolFontPath = System.IO.Path.Combine(
+            AppContext.BaseDirectory,
+            "Assets",
+            "Fonts",
+            "noto-emoji-symbols.ttf");
+        FontFamily symbolFontFamily = collection.Add(symbolFontPath);
+        this.fallbackFontFamilies = new[] { unicodeFontFamily, symbolFontFamily }
             .Concat(SystemFonts.Families
                 .Where(static family => ShareSocialImageFontFamilyComparer.IsSupported(family.Name))
                 .OrderBy(ShareSocialImageFontFamilyComparer.GetPriority)
@@ -61,7 +67,8 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
             {
                 rendering = new Lazy<Task<ShareSocialImageRenderResult>>(
                     () => this.renderConcurrencyGate.RunAsync(
-                        () => this.RenderCoreAsync(model)),
+                        () => this.RenderCoreAsync(model),
+                        cancellationToken),
                     LazyThreadSafetyMode.ExecutionAndPublication);
                 this.cache.Set(
                     cacheKey,
@@ -81,7 +88,7 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
         }
         catch
         {
-            if (renderingTask.IsFaulted)
+            if (renderingTask.IsFaulted || renderingTask.IsCanceled)
             {
                 this.cache.Remove(cacheKey);
             }

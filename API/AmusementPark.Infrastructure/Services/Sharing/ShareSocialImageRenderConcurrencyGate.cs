@@ -7,10 +7,12 @@ internal sealed class ShareSocialImageRenderConcurrencyGate
         MaximumConcurrentRenders,
         MaximumConcurrentRenders);
 
-    public async Task<TValue> RunAsync<TValue>(Func<Task<TValue>> operation)
+    public async Task<TValue> RunAsync<TValue>(
+        Func<Task<TValue>> operation,
+        CancellationToken queueCancellationToken)
     {
         ArgumentNullException.ThrowIfNull(operation);
-        await this.semaphore.WaitAsync(CancellationToken.None);
+        await this.semaphore.WaitAsync(queueCancellationToken);
         try
         {
             return await operation();

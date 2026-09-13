@@ -35,15 +35,15 @@ public sealed class ShareSocialImageRendererTests
             Interlocked.Decrement(ref activeRenders);
             return active;
         };
-        Task<int> first = gate.RunAsync(operation);
-        Task<int> second = gate.RunAsync(operation);
+        Task<int> first = gate.RunAsync(operation, CancellationToken.None);
+        Task<int> second = gate.RunAsync(operation, CancellationToken.None);
         await twoRendersStarted.Task.WaitAsync(TimeSpan.FromSeconds(2));
         using CancellationTokenSource callerCancellation = new CancellationTokenSource();
         callerCancellation.Cancel();
 
         await Assert.ThrowsAnyAsync<OperationCanceledException>(
             () => first.WaitAsync(callerCancellation.Token));
-        Task<int> third = gate.RunAsync(operation);
+        Task<int> third = gate.RunAsync(operation, CancellationToken.None);
         await Task.Delay(50);
 
         Assert.Equal(2, Volatile.Read(ref activeRenders));
@@ -52,6 +52,43 @@ public sealed class ShareSocialImageRendererTests
         release.SetResult();
         await Task.WhenAll(first, second, third);
         Assert.Equal(2, maximumActiveRenders);
+    }
+
+    [Fact]
+    public async Task RenderConcurrencyGate_WhenQueuedCallerDisconnects_ShouldCancelItsPendingRender()
+    {
+        ShareSocialImageRenderConcurrencyGate gate = new ShareSocialImageRenderConcurrencyGate();
+        TaskCompletionSource release = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource twoRendersStarted = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        int activeRenders = 0;
+        Func<Task<int>> operation = async () =>
+        {
+            int active = Interlocked.Increment(ref activeRenders);
+            if (active == 2)
+            {
+                twoRendersStarted.TrySetResult();
+            }
+
+            await release.Task;
+            Interlocked.Decrement(ref activeRenders);
+            return active;
+        };
+        Task<int> first = gate.RunAsync(operation, CancellationToken.None);
+        Task<int> second = gate.RunAsync(operation, CancellationToken.None);
+        await twoRendersStarted.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        using CancellationTokenSource queuedCancellation = new CancellationTokenSource();
+        Task<int> abandoned = gate.RunAsync(operation, queuedCancellation.Token);
+
+        queuedCancellation.Cancel();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => abandoned);
+        Assert.Equal(2, Volatile.Read(ref activeRenders));
+        Task<int> replacement = gate.RunAsync(operation, CancellationToken.None);
+        release.SetResult();
+        await Task.WhenAll(first, second, replacement);
+        Assert.Equal(0, Volatile.Read(ref activeRenders));
     }
 
     [Fact]
@@ -117,6 +154,25 @@ public sealed class ShareSocialImageRendererTests
             Assert.True(isAvailable, $"The embedded Unicode fallback is missing '{character}'.");
             Assert.NotEmpty(glyphs ?? Array.Empty<Glyph>());
         }
+    }
+
+    [Fact]
+    public void EmbeddedSymbolFallback_ShouldCoverAllowedPublicNameSymbols()
+    {
+        FontCollection collection = new FontCollection();
+        FontFamily family = collection.Add(System.IO.Path.Combine(
+            AppContext.BaseDirectory,
+            "Assets",
+            "Fonts",
+            "noto-emoji-symbols.ttf"));
+        Font font = family.CreateFont(24, FontStyle.Regular);
+
+        bool isAvailable = font.TryGetGlyphs(
+            new CodePoint(0x1F3A2),
+            out IReadOnlyList<Glyph>? glyphs);
+
+        Assert.True(isAvailable, "The embedded symbol fallback is missing the roller coaster glyph.");
+        Assert.NotEmpty(glyphs ?? Array.Empty<Glyph>());
     }
 
     [Theory]

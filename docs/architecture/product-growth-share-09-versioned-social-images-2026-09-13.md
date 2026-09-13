@@ -72,9 +72,10 @@ flowchart LR
   graphique dépourvu d'identifiants de parc, d'attraction, de visite ou de membre.
 - **Infrastructure** dessine le PNG de façon déterministe avec la police Bangers
   déjà utilisée par le projet et distribuée sous licence SIL OFL 1.1. Une police
-  Noto Sans JP embarquée et testée, complétée par les familles système Noto/DejaVu,
-  assure le rendu des noms publics en écritures non latines. Cette couche gère
-  ensuite le cache mémoire.
+  Noto Sans JP et une police Noto Emoji embarquées et testées, complétées par les
+  familles système Noto/DejaVu, assurent le rendu des noms publics en écritures
+  non latines et de leurs symboles autorisés. Cette couche gère ensuite le cache
+  mémoire.
 - **WebAPI** valide la variante d'URL et pose les en-têtes HTTP.
 - **Angular** produit l'URL Open Graph exacte à partir de la version renvoyée par
   le contrat public ; il ne calcule aucune règle de confidentialité.
@@ -97,7 +98,8 @@ L'API n'accepte que deux rendus simultanés et une file de quatre demandes. Une
 rafale de variantes froides ne peut donc pas monopoliser le processeur du VPS.
 Une seconde barrière dans le renderer conserve son permis jusqu'à la fin réelle du
 PNG : l'abandon d'une requête HTTP ne permet pas de lancer des calculs détachés en
-parallèle au-delà de cette limite.
+parallèle au-delà de cette limite. Si le rendu attend encore un permis, l'abandon
+annule aussi cette attente : aucun arriéré de calculs détachés ne peut s'accumuler.
 
 La réponse utilise `Cache-Control: public,max-age=300,must-revalidate`, un `ETag`,
 `Content-Language`, `Referrer-Policy: no-referrer` et
