@@ -169,10 +169,10 @@ public sealed class MongoPassportShareLifecycleExportSource : IPassportShareLife
         PassportExportSourceBudget sourceBudget,
         CancellationToken cancellationToken)
     {
-        IReadOnlyCollection<string> documentIds = BuildSnapshotDocumentIds(
+        IReadOnlyDictionary<string, long> publicationVersions = BuildSnapshotVersionBounds(
             loadedPublications,
             SharePublicationType.VisitRecap);
-        if (documentIds.Count == 0)
+        if (publicationVersions.Count == 0)
         {
             return Array.Empty<VisitRecapShareSnapshot>();
         }
@@ -180,8 +180,8 @@ public sealed class MongoPassportShareLifecycleExportSource : IPassportShareLife
         List<VisitRecapShareSnapshot> result = new List<VisitRecapShareSnapshot>();
         FilterDefinition<VisitRecapShareSnapshotDocument> filter =
             Builders<VisitRecapShareSnapshotDocument>.Filter.In(
-                static document => document.Id,
-                documentIds);
+                static document => document.PublicationId,
+                publicationVersions.Keys);
         using IAsyncCursor<VisitRecapShareSnapshotDocument> cursor = await this.visitSnapshots
             .Find(filter)
             .ToCursorAsync(cancellationToken);
@@ -194,10 +194,12 @@ public sealed class MongoPassportShareLifecycleExportSource : IPassportShareLife
             }
         }
 
-        return result
-            .OrderBy(static snapshot => snapshot.CreatedAtUtc)
-            .ThenBy(static snapshot => snapshot.PublicationId.Value, StringComparer.Ordinal)
-            .ToArray();
+        return PassportShareSnapshotExportSelector.SelectLatestRetained(
+            result,
+            publicationVersions,
+            static snapshot => snapshot.PublicationId.Value,
+            static snapshot => snapshot.PublicationVersion,
+            static snapshot => snapshot.CreatedAtUtc);
     }
 
     private async Task<IReadOnlyCollection<YearRecapShareSnapshot>> LoadYearSnapshotsAsync(
@@ -205,10 +207,10 @@ public sealed class MongoPassportShareLifecycleExportSource : IPassportShareLife
         PassportExportSourceBudget sourceBudget,
         CancellationToken cancellationToken)
     {
-        IReadOnlyCollection<string> documentIds = BuildSnapshotDocumentIds(
+        IReadOnlyDictionary<string, long> publicationVersions = BuildSnapshotVersionBounds(
             loadedPublications,
             SharePublicationType.YearRecap);
-        if (documentIds.Count == 0)
+        if (publicationVersions.Count == 0)
         {
             return Array.Empty<YearRecapShareSnapshot>();
         }
@@ -216,8 +218,8 @@ public sealed class MongoPassportShareLifecycleExportSource : IPassportShareLife
         List<YearRecapShareSnapshot> result = new List<YearRecapShareSnapshot>();
         FilterDefinition<YearRecapShareSnapshotDocument> filter =
             Builders<YearRecapShareSnapshotDocument>.Filter.In(
-                static document => document.Id,
-                documentIds);
+                static document => document.PublicationId,
+                publicationVersions.Keys);
         using IAsyncCursor<YearRecapShareSnapshotDocument> cursor = await this.yearSnapshots
             .Find(filter)
             .ToCursorAsync(cancellationToken);
@@ -230,10 +232,12 @@ public sealed class MongoPassportShareLifecycleExportSource : IPassportShareLife
             }
         }
 
-        return result
-            .OrderBy(static snapshot => snapshot.CreatedAtUtc)
-            .ThenBy(static snapshot => snapshot.PublicationId.Value, StringComparer.Ordinal)
-            .ToArray();
+        return PassportShareSnapshotExportSelector.SelectLatestRetained(
+            result,
+            publicationVersions,
+            static snapshot => snapshot.PublicationId.Value,
+            static snapshot => snapshot.PublicationVersion,
+            static snapshot => snapshot.CreatedAtUtc);
     }
 
     private async Task<IReadOnlyCollection<PassportProfileShareSnapshot>> LoadPassportSnapshotsAsync(
@@ -241,10 +245,10 @@ public sealed class MongoPassportShareLifecycleExportSource : IPassportShareLife
         PassportExportSourceBudget sourceBudget,
         CancellationToken cancellationToken)
     {
-        IReadOnlyCollection<string> documentIds = BuildSnapshotDocumentIds(
+        IReadOnlyDictionary<string, long> publicationVersions = BuildSnapshotVersionBounds(
             loadedPublications,
             SharePublicationType.PassportProfile);
-        if (documentIds.Count == 0)
+        if (publicationVersions.Count == 0)
         {
             return Array.Empty<PassportProfileShareSnapshot>();
         }
@@ -252,8 +256,8 @@ public sealed class MongoPassportShareLifecycleExportSource : IPassportShareLife
         List<PassportProfileShareSnapshot> result = new List<PassportProfileShareSnapshot>();
         FilterDefinition<PassportProfileShareSnapshotDocument> filter =
             Builders<PassportProfileShareSnapshotDocument>.Filter.In(
-                static document => document.Id,
-                documentIds);
+                static document => document.PublicationId,
+                publicationVersions.Keys);
         using IAsyncCursor<PassportProfileShareSnapshotDocument> cursor = await this.passportSnapshots
             .Find(filter)
             .ToCursorAsync(cancellationToken);
@@ -266,13 +270,15 @@ public sealed class MongoPassportShareLifecycleExportSource : IPassportShareLife
             }
         }
 
-        return result
-            .OrderBy(static snapshot => snapshot.CreatedAtUtc)
-            .ThenBy(static snapshot => snapshot.PublicationId.Value, StringComparer.Ordinal)
-            .ToArray();
+        return PassportShareSnapshotExportSelector.SelectLatestRetained(
+            result,
+            publicationVersions,
+            static snapshot => snapshot.PublicationId.Value,
+            static snapshot => snapshot.PublicationVersion,
+            static snapshot => snapshot.CreatedAtUtc);
     }
 
-    private static IReadOnlyCollection<string> BuildSnapshotDocumentIds(
+    private static IReadOnlyDictionary<string, long> BuildSnapshotVersionBounds(
         IEnumerable<SharePublication> loadedPublications,
         SharePublicationType publicationType)
     {
@@ -280,26 +286,10 @@ public sealed class MongoPassportShareLifecycleExportSource : IPassportShareLife
             .Where(publication =>
                 publication.Type == publicationType &&
                 publication.PublicationVersion > 0)
-            .Select(publication => publicationType switch
-            {
-                SharePublicationType.VisitRecap =>
-                    VisitRecapShareSnapshotMongoMapper.CreateDocumentId(
-                        publication.Id.Value,
-                        publication.PublicationVersion),
-                SharePublicationType.YearRecap =>
-                    YearRecapShareSnapshotMongoMapper.CreateDocumentId(
-                        publication.Id.Value,
-                        publication.PublicationVersion),
-                SharePublicationType.PassportProfile =>
-                    PassportProfileShareSnapshotMongoMapper.CreateDocumentId(
-                        publication.Id.Value,
-                        publication.PublicationVersion),
-                _ => throw new ArgumentOutOfRangeException(
-                    nameof(publicationType),
-                    publicationType,
-                    "Unsupported snapshot publication type."),
-            })
-            .ToArray();
+            .ToDictionary(
+                static publication => publication.Id.Value,
+                static publication => publication.PublicationVersion,
+                StringComparer.Ordinal);
     }
 
     private static void Consume(PassportExportSourceBudget sourceBudget, long bytes)

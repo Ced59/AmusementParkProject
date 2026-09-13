@@ -104,8 +104,11 @@ sequenceDiagram
 
 Les six lectures sont séquentielles. Les publications, invitations et comparaisons
 sont lues par leurs index de participants sans tri bloquant côté serveur, puis
-ordonnées en mémoire après consommation du budget. Chaque snapshot actif est recherché
-par son `_id` exact et indexé. Chaque document BSON consomme le même
+ordonnées en mémoire après consommation du budget. Les snapshots conservés sont
+recherchés par le préfixe indexé `publicationId`, puis le plus récent dont la version
+ne dépasse pas celle de la publication est retenu. Une révocation ou un passage en
+« à revoir » ne fait ainsi pas disparaître le dernier contenu approuvé de l'export.
+Chaque document BSON consomme le même
 `PassportExportSourceBudget` que les visites et passages. Le worker conserve sa
 concurrence maximale à un et l'artefact final reste borné à 64 Mio.
 
@@ -232,7 +235,9 @@ reste nulle : la clé technique n'est jamais utilisée comme repli.
   clé technique ;
 - le job partage une seule instance de budget entre visites, passages et partages ;
 - les filtres MongoDB couvrent propriétaire, créateur et accepteur, tandis que les
-  snapshots sont résolus par leur identifiant indexé exact ;
+  snapshots sont résolus par leur préfixe de publication indexé ;
+- les états publié, révoqué et « à revoir » conservent tous le dernier snapshot
+  approuvé compatible avec leur borne de version ;
 - l'index accepteur est partiel et ne surcharge pas les invitations en attente ;
 - l'enregistrement DI résout le port Application vers son implémentation Infrastructure.
 

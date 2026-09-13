@@ -479,7 +479,9 @@ Les lectures MongoDB réutilisent le
 budget de taille commun aux visites et passages ; un export trop volumineux échoue
 donc avant de saturer la mémoire du worker lourd. Un index participant est ajouté
 automatiquement aux invitations pour les recherches côté accepteur, sans opération
-MongoDB manuelle. Les preuves et le schéma sont détaillés dans
+MongoDB manuelle. Le dernier snapshot réellement approuvé reste exporté après une
+révocation ou un passage en « à revoir », même lorsque la version de cycle de vie a
+continué d'avancer. Les preuves et le schéma sont détaillés dans
 [`product-growth-share-14a-passport-share-export-2026-09-13.md`](../../architecture/product-growth-share-14a-passport-share-export-2026-09-13.md).
 
 `SHARE-14B` doit maintenant traiter la révocation puis la purge lors de la suppression
