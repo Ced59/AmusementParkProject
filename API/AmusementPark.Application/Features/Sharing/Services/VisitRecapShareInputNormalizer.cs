@@ -35,8 +35,7 @@ public static class VisitRecapShareInputNormalizer
 
         string? caption = NormalizeOptional(input?.PublicCaption);
         if (caption?.Length > MaximumCaptionLength
-            || caption?.Any(static character => char.IsControl(character)
-                && character is not '\r' and not '\n' and not '\t') == true
+            || !PublicShareTextSafetyPolicy.IsSafePlainText(caption)
             || caption is not null && !contentPolicy.Includes(ShareContentField.PublicCaption))
         {
             return Invalid();

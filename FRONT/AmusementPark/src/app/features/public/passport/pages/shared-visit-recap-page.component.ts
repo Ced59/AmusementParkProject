@@ -16,6 +16,7 @@ import { buildShareSocialImageUrl } from '@data-access/sharing/share-social-imag
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { PublicShareReportComponent } from '@ui/sharing/public-share-report/public-share-report.component';
 import { UiButtonDirective } from '@ui/primitives';
 import { SharedVisitRecapStateFacade } from '../state/shared-visit-recap-state.facade';
 
@@ -25,7 +26,7 @@ import { SharedVisitRecapStateFacade } from '../state/shared-visit-recap-state.f
   styleUrl: './shared-visit-recap-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [SharedVisitRecapStateFacade],
-  imports: [PublicSharePanelComponent, RouterLink, TranslateModule, UiButtonDirective]
+  imports: [PublicSharePanelComponent, PublicShareReportComponent, RouterLink, TranslateModule, UiButtonDirective]
 })
 export class SharedVisitRecapPageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');

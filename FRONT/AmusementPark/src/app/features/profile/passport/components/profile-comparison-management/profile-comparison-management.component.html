@@ -31,6 +31,12 @@
               <h3>{{ otherName(comparison) }}</h3>
             </div>
           </div>
+          @if (comparison.isModerationSuspended) {
+            <p class="comparison-management__moderation" role="status">
+              <i class="pi pi-shield" aria-hidden="true"></i>
+              {{ "shareModeration.status.PublicationSuspended" | translate }}
+            </p>
+          }
           <ul>
             @for (category of comparison.categories; track category) {
               <li>{{ categoryKey(category) | translate }}</li>
@@ -40,12 +46,13 @@
             <button
               appUiButton="primary"
               type="button"
+              [disabled]="comparison.isModerationSuspended"
               (click)="open(comparison)"
             >
               <i class="pi pi-eye" aria-hidden="true"></i
               >{{ "profileComparison.management.open" | translate }}
             </button>
-            <button appUiButton="soft" type="button" (click)="copy(comparison)">
+            <button appUiButton="soft" type="button" [disabled]="comparison.isModerationSuspended" (click)="copy(comparison)">
               <i class="pi pi-copy" aria-hidden="true"></i
               >{{
                 (copiedShareId() === comparison.shareId

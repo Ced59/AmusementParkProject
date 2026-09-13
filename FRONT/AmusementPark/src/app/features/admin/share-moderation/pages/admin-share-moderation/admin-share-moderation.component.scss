@@ -1,0 +1,22 @@
+.share-moderation { display: grid; gap: 1.5rem; min-width: 0; }
+.share-moderation__header h1, .share-moderation__header p { margin-bottom: .5rem; }
+.share-moderation__filters { background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: 1rem; display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 1rem; }
+label { display: grid; gap: .45rem; min-width: 0; }
+select, textarea { background: var(--surface-ground); border: 1px solid var(--surface-border); border-radius: .75rem; box-sizing: border-box; color: inherit; font: inherit; max-width: 100%; padding: .75rem; width: 100%; }
+textarea { resize: vertical; }
+.share-moderation__filter-actions, .share-moderation__actions, .share-moderation__pagination { align-items: center; display: flex; flex-wrap: wrap; gap: .75rem; }
+.share-moderation__filter-actions { grid-column: 1 / -1; }
+.share-moderation__grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); min-width: 0; }
+.share-moderation__card { background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: 1rem; display: grid; gap: 1rem; min-width: 0; overflow: hidden; padding: 1rem; }
+.share-moderation__card header { align-items: flex-start; display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; }
+.share-moderation__card header strong { background: color-mix(in srgb, var(--primary-color) 18%, transparent); border-radius: 999px; padding: .35rem .65rem; }
+dl, dl div { display: grid; gap: .25rem; margin: 0; }
+dl { gap: .75rem; }
+dt { color: var(--text-color-secondary); font-size: .8rem; font-weight: 700; text-transform: uppercase; }
+dd, blockquote, .share-moderation__decision-note { margin: 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+blockquote { border-left: 3px solid var(--primary-color); padding-left: .75rem; }
+.share-moderation__state { border-radius: 1rem; padding: 1rem; }
+.share-moderation__state--error { color: var(--pink-300); }
+.share-moderation__pagination { justify-content: center; }
+@media (max-width: 48rem) { .share-moderation__filters { grid-template-columns: 1fr; } .share-moderation__filter-actions { grid-column: auto; } }
+@media (max-width: 30rem) { .share-moderation__actions > *, .share-moderation__filter-actions > *, .share-moderation__pagination button { flex: 1 1 100%; } .share-moderation__pagination span { text-align: center; width: 100%; } }

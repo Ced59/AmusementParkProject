@@ -132,6 +132,7 @@
           <a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']">{{ 'visitRecapShare.public.createMine' | translate }}</a>
         </div>
       </aside>
+      <app-public-share-report targetType="VisitRecap" [shareId]="shareId()"></app-public-share-report>
     </section>
   } @else {
     <section class="shared-visit__state" role="status">

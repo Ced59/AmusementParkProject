@@ -39,8 +39,7 @@ public static class PassportProfileShareInputNormalizer
             || ratingKeys.Length > MaximumSelectedRatings
             || value.Visibility is not ShareVisibility.Unlisted and not ShareVisibility.Public
             || caption?.Length > VisitRecapShareInputNormalizer.MaximumCaptionLength
-            || caption?.Any(static character => char.IsControl(character)
-                && character is not '\r' and not '\n' and not '\t') == true
+            || !PublicShareTextSafetyPolicy.IsSafePlainText(caption)
             || caption is not null && !contentPolicy.Includes(ShareContentField.PublicCaption)
             || ratingKeys.Length > 0 && !contentPolicy.Includes(ShareContentField.GlobalRatings);
         if (invalid)

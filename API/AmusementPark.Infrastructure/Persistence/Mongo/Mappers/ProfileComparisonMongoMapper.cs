@@ -24,6 +24,7 @@ internal static class ProfileComparisonMongoMapper
             RevokedByUserId = comparison.RevokedByUserId,
             RevokedAtUtc = comparison.RevokedAtUtc,
             Version = comparison.Version,
+            IsModerationSuspended = comparison.IsModerationSuspended,
             CreatedAt = comparison.CreatedAtUtc,
             UpdatedAt = comparison.UpdatedAtUtc,
         };
@@ -48,7 +49,8 @@ internal static class ProfileComparisonMongoMapper
             document.RevokedAtUtc,
             document.CreatedAt,
             document.UpdatedAt,
-            document.Version);
+            document.Version,
+            document.IsModerationSuspended);
     }
 
     private static ProfileComparisonCalculationDocument ToDocument(

@@ -604,6 +604,14 @@ private readonly IMongoDatabase database;
         IMongoCollection<SharePublicationDocument> sharePublicationsCollection =
             this.database.GetCollection<SharePublicationDocument>(
                 this.settings.SharePublicationsCollectionName);
+        await sharePublicationsCollection.UpdateManyAsync(
+            Builders<SharePublicationDocument>.Filter.Exists(
+                "isModerationSuspended",
+                false),
+            Builders<SharePublicationDocument>.Update.Set(
+                static document => document.IsModerationSuspended,
+                false),
+            cancellationToken: cancellationToken);
         await sharePublicationsCollection.Indexes.CreateManyAsync(
             SharePublicationMongoDefinitions.BuildIndexes(),
             cancellationToken);
@@ -622,6 +630,14 @@ private readonly IMongoDatabase database;
         IMongoCollection<ProfileComparisonDocument> comparisonsCollection =
             this.database.GetCollection<ProfileComparisonDocument>(
                 this.settings.ProfileComparisonsCollectionName);
+        await comparisonsCollection.UpdateManyAsync(
+            Builders<ProfileComparisonDocument>.Filter.Exists(
+                "isModerationSuspended",
+                false),
+            Builders<ProfileComparisonDocument>.Update.Set(
+                static document => document.IsModerationSuspended,
+                false),
+            cancellationToken: cancellationToken);
         await this.DropIndexIfExistsAsync(
             comparisonsCollection,
             ProfileComparisonMongoDefinitions.LegacyCreatorIndexName,
@@ -632,6 +648,15 @@ private readonly IMongoDatabase database;
             cancellationToken);
         await comparisonsCollection.Indexes.CreateManyAsync(
             ProfileComparisonMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.ShareModerationReportsCollectionName,
+            cancellationToken);
+        IMongoCollection<ShareModerationReportDocument> moderationReportsCollection =
+            this.database.GetCollection<ShareModerationReportDocument>(
+                this.settings.ShareModerationReportsCollectionName);
+        await moderationReportsCollection.Indexes.CreateManyAsync(
+            ShareModerationReportMongoDefinitions.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
             this.settings.SharePublicationSnapshotsCollectionName,

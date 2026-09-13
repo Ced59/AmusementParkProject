@@ -29,6 +29,7 @@ describe('ADMIN_NAVIGATION_ITEMS', () => {
       'passport-beta',
       'social-publications',
       'rating-rankings',
+      'share-moderation',
       'technical-stats'
     ]);
     expect(new Set(routes).size).toBe(routes.length);

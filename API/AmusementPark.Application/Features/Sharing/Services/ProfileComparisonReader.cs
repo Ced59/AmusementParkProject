@@ -36,7 +36,7 @@ public sealed class ProfileComparisonReader
         ProfileComparison? comparison = await this.comparisonRepository.GetByShareTokenAsync(
             shareToken,
             cancellationToken);
-        if (comparison?.IsActive != true
+        if (comparison?.IsPubliclyResolvable != true
             || !await this.PassportsRemainAvailableAsync(comparison, cancellationToken))
         {
             return NotFound();
@@ -51,7 +51,7 @@ public sealed class ProfileComparisonReader
             await this.comparisonRepository.GetByShareTokenAsync(
                 shareToken,
                 cancellationToken);
-        if (currentComparison?.IsActive != true
+        if (currentComparison?.IsPubliclyResolvable != true
             || currentComparison.Id != comparison.Id
             || currentComparison.Version != comparison.Version)
         {
@@ -105,7 +105,8 @@ public sealed class ProfileComparisonReader
                         ? comparison.Calculation.AcceptorDisplayName
                         : comparison.Calculation.CreatorDisplayName,
                     comparison.CreatedAtUtc,
-                    comparison.Calculation.Categories));
+                    comparison.Calculation.Categories,
+                    comparison.IsModerationSuspended));
                 if (results.Count == ManagementListLimit)
                 {
                     break;

@@ -68,6 +68,7 @@ public static class ProfileComparisonHttpMapper
             OtherDisplayName = result.OtherDisplayName,
             CreatedAtUtc = result.CreatedAtUtc,
             Categories = result.Categories.Select(static value => value.ToString()).ToList(),
+            IsModerationSuspended = result.IsModerationSuspended,
         };
     }
 

@@ -64,6 +64,9 @@ public static class RateLimitingServiceCollectionExtensions
         FixedWindowRateLimitSettings sharePublicationConfirmationSettings = configuration
             .GetSection("RateLimiting:Sharing:Confirmations")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(6, 60);
+        FixedWindowRateLimitSettings shareModerationReportSettings = configuration
+            .GetSection("RateLimiting:Sharing:Reports")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 3600);
 
         services.AddRateLimiter(options =>
         {
@@ -113,6 +116,10 @@ public static class RateLimitingServiceCollectionExtensions
                 RateLimitPartition.GetFixedWindowLimiter(
                     partitionKey: GetSharePublicationConfirmationPartitionKey(context),
                     factory: _ => CreateFixedWindowOptions(sharePublicationConfirmationSettings)));
+            AddFixedWindowIpPolicy(
+                options,
+                RateLimitPolicyNames.ShareModerationReports,
+                shareModerationReportSettings);
             options.AddConcurrencyLimiter(RateLimitPolicyNames.ImageUploadProcessing, limiterOptions =>
             {
                 limiterOptions.PermitLimit = 1;
@@ -130,6 +137,12 @@ public static class RateLimitingServiceCollectionExtensions
                 limiterOptions.PermitLimit = ShareSocialImageRenderConcurrency;
                 limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
                 limiterOptions.QueueLimit = ShareSocialImageRenderQueueLimit;
+            });
+            options.AddConcurrencyLimiter(RateLimitPolicyNames.ShareModerationAdministration, limiterOptions =>
+            {
+                limiterOptions.PermitLimit = 1;
+                limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                limiterOptions.QueueLimit = 0;
             });
             options.AddPolicy(RateLimitPolicyNames.ParkDataEditorOperationStatus, context =>
                 RateLimitPartition.Get(

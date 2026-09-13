@@ -25,7 +25,8 @@ public sealed class SharePublication
         DateTime? publishedAtUtc,
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
-        DateTime updatedAtUtc)
+        DateTime updatedAtUtc,
+        bool isModerationSuspended)
     {
         _ = id.Value;
         ValidatePublicationType(type);
@@ -54,6 +55,12 @@ public sealed class SharePublication
             version,
             publishedAtUtc,
             revokedAtUtc);
+        if (isModerationSuspended && status == SharePublicationStatus.Revoked)
+        {
+            throw CreateValidationException(
+                SharePublicationErrorCodes.InvalidRestoredState,
+                "A revoked share publication cannot remain suspended by moderation.");
+        }
 
         this.Id = id;
         this.OwnerUserId = normalizedOwnerUserId;
@@ -71,6 +78,7 @@ public sealed class SharePublication
         this.RevokedAtUtc = revokedAtUtc;
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
+        this.IsModerationSuspended = isModerationSuspended;
     }
 
     public SharePublicationId Id { get; }
@@ -109,7 +117,10 @@ public sealed class SharePublication
 
     public DateTime UpdatedAtUtc { get; private set; }
 
+    public bool IsModerationSuspended { get; private set; }
+
     public bool IsResolvable => this.Status == SharePublicationStatus.Published
+        && !this.IsModerationSuspended
         && this.Visibility is ShareVisibility.Unlisted or ShareVisibility.Public
         && this.ShareToken is not null;
 
@@ -139,7 +150,8 @@ public sealed class SharePublication
             null,
             null,
             nowUtc,
-            nowUtc);
+            nowUtc,
+            false);
     }
 
     public static SharePublication Restore(
@@ -158,7 +170,8 @@ public sealed class SharePublication
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        string contentFingerprint = "")
+        string contentFingerprint = "",
+        bool isModerationSuspended = false)
     {
         return new SharePublication(
             id,
@@ -176,7 +189,8 @@ public sealed class SharePublication
             publishedAtUtc,
             revokedAtUtc,
             createdAtUtc,
-            updatedAtUtc);
+            updatedAtUtc,
+            isModerationSuspended);
     }
 
     public void ReplaceContentPolicy(
@@ -402,7 +416,42 @@ public sealed class SharePublication
         this.Status = SharePublicationStatus.Revoked;
         this.Visibility = ShareVisibility.Private;
         this.ShareToken = null;
+        this.IsModerationSuspended = false;
         this.RevokedAtUtc = nowUtc;
+        this.UpdatedAtUtc = nowUtc;
+    }
+
+    public void SuspendByModeration(DateTime nowUtc)
+    {
+        if (this.Status != SharePublicationStatus.Published
+            || this.ShareToken is null
+            || this.IsModerationSuspended)
+        {
+            throw CreateValidationException(
+                SharePublicationErrorCodes.InvalidTransition,
+                "Only a currently published share can be suspended by moderation.");
+        }
+
+        this.ValidateMutationTimestamp(nowUtc);
+        this.EnsureVersionCanIncrement();
+        this.IsModerationSuspended = true;
+        this.Version++;
+        this.UpdatedAtUtc = nowUtc;
+    }
+
+    public void RestoreAfterModeration(DateTime nowUtc)
+    {
+        if (!this.IsModerationSuspended)
+        {
+            throw CreateValidationException(
+                SharePublicationErrorCodes.InvalidTransition,
+                "Only a moderation-suspended share can be restored.");
+        }
+
+        this.ValidateMutationTimestamp(nowUtc);
+        this.EnsureVersionCanIncrement();
+        this.IsModerationSuspended = false;
+        this.Version++;
         this.UpdatedAtUtc = nowUtc;
     }
 

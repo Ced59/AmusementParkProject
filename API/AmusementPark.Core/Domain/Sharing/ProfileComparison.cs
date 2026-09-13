@@ -20,7 +20,8 @@ public sealed class ProfileComparison
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        long version)
+        long version,
+        bool isModerationSuspended)
     {
         _ = id.Value;
         _ = invitationId.Value;
@@ -56,6 +57,7 @@ public sealed class ProfileComparison
 
         bool hasRevocation = !string.IsNullOrWhiteSpace(revokedByUserId) && revokedAtUtc.HasValue;
         if ((status == ProfileComparisonStatus.Revoked) != hasRevocation
+            || isModerationSuspended && status == ProfileComparisonStatus.Revoked
             || hasRevocation && (!IsParticipant(
                 normalizedCreatorUserId,
                 normalizedAcceptorUserId,
@@ -82,6 +84,7 @@ public sealed class ProfileComparison
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
         this.Version = version;
+        this.IsModerationSuspended = isModerationSuspended;
     }
 
     public ProfileComparisonId Id { get; }
@@ -116,7 +119,11 @@ public sealed class ProfileComparison
 
     public long Version { get; private set; }
 
+    public bool IsModerationSuspended { get; private set; }
+
     public bool IsActive => this.Status == ProfileComparisonStatus.Active;
+
+    public bool IsPubliclyResolvable => this.IsActive && !this.IsModerationSuspended;
 
     public static ProfileComparison Create(
         ProfileComparisonId id,
@@ -147,7 +154,8 @@ public sealed class ProfileComparison
             null,
             createdAtUtc,
             createdAtUtc,
-            0);
+            0,
+            false);
     }
 
     public static ProfileComparison Restore(
@@ -166,7 +174,8 @@ public sealed class ProfileComparison
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        long version)
+        long version,
+        bool isModerationSuspended = false)
     {
         return new ProfileComparison(
             id,
@@ -184,7 +193,8 @@ public sealed class ProfileComparison
             revokedAtUtc,
             createdAtUtc,
             updatedAtUtc,
-            version);
+            version,
+            isModerationSuspended);
     }
 
     public bool HasParticipant(string userId)
@@ -217,9 +227,48 @@ public sealed class ProfileComparison
         }
 
         this.Status = ProfileComparisonStatus.Revoked;
+        this.IsModerationSuspended = false;
         this.RevokedByUserId = normalizedUserId;
         this.RevokedAtUtc = revokedAtUtc;
         this.UpdatedAtUtc = revokedAtUtc;
+        this.Version++;
+    }
+
+    public void SuspendByModeration(DateTime suspendedAtUtc)
+    {
+        ValidateUtc(suspendedAtUtc, nameof(suspendedAtUtc));
+        if (!this.IsActive || this.IsModerationSuspended)
+        {
+            throw new ProfileComparisonValidationException(
+                ProfileComparisonErrorCodes.InvalidState,
+                "Only an active public comparison can be suspended by moderation.");
+        }
+
+        this.AdvanceModerationState(suspendedAtUtc, true);
+    }
+
+    public void RestoreAfterModeration(DateTime restoredAtUtc)
+    {
+        ValidateUtc(restoredAtUtc, nameof(restoredAtUtc));
+        if (!this.IsActive || !this.IsModerationSuspended)
+        {
+            throw new ProfileComparisonValidationException(
+                ProfileComparisonErrorCodes.InvalidState,
+                "Only a moderation-suspended comparison can be restored.");
+        }
+
+        this.AdvanceModerationState(restoredAtUtc, false);
+    }
+
+    private void AdvanceModerationState(DateTime changedAtUtc, bool isSuspended)
+    {
+        if (changedAtUtc < this.UpdatedAtUtc || this.Version == long.MaxValue)
+        {
+            throw InvalidState();
+        }
+
+        this.IsModerationSuspended = isSuspended;
+        this.UpdatedAtUtc = changedAtUtc;
         this.Version++;
     }
 

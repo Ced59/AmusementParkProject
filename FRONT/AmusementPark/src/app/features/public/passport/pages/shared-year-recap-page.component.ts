@@ -11,6 +11,7 @@ import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { buildShareSocialImageUrl } from '@data-access/sharing/share-social-image-url';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { PublicShareReportComponent } from '@ui/sharing/public-share-report/public-share-report.component';
 import { UiButtonDirective } from '@ui/primitives';
 import { SharedYearRecapStateFacade } from '../state/shared-year-recap-state.facade';
 
@@ -20,7 +21,7 @@ import { SharedYearRecapStateFacade } from '../state/shared-year-recap-state.fac
   styleUrl: './shared-year-recap-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [SharedYearRecapStateFacade],
-  imports: [PublicSharePanelComponent, RouterLink, TranslateModule, UiButtonDirective]
+  imports: [PublicSharePanelComponent, PublicShareReportComponent, RouterLink, TranslateModule, UiButtonDirective]
 })
 export class SharedYearRecapPageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');

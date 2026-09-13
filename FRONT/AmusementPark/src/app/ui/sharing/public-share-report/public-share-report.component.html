@@ -1,0 +1,49 @@
+<aside class="public-share-report">
+  @if (facade.submitted()) {
+    <div class="public-share-report__confirmation" role="status">
+      <i class="pi pi-check-circle" aria-hidden="true"></i>
+      <div>
+        <strong>{{ 'shareModeration.public.confirmationTitle' | translate }}</strong>
+        <p>{{ 'shareModeration.public.confirmationDescription' | translate }}</p>
+      </div>
+    </div>
+  } @else {
+    <details>
+      <summary>
+        <i class="pi pi-flag" aria-hidden="true"></i>
+        {{ 'shareModeration.public.openAction' | translate }}
+      </summary>
+      <div class="public-share-report__form">
+        <p>{{ 'shareModeration.public.description' | translate }}</p>
+        <label>
+          <span>{{ 'shareModeration.public.reasonLabel' | translate }}</span>
+          <select [value]="reason()" (change)="selectReason($any($event.target).value)">
+            @for (option of reasons; track option.value) {
+              <option [value]="option.value">{{ option.labelKey | translate }}</option>
+            }
+          </select>
+        </label>
+        <label>
+          <span>{{ 'shareModeration.public.detailsLabel' | translate }}</span>
+          <textarea
+            rows="4"
+            maxlength="500"
+            [value]="details()"
+            [placeholder]="'shareModeration.public.detailsPlaceholder' | translate"
+            (input)="updateDetails($any($event.target).value)"></textarea>
+          <small>{{ 'shareModeration.public.characters' | translate:{ count: details().length } }}</small>
+        </label>
+        @if (reason() === 'Other' && details().trim().length === 0) {
+          <p class="public-share-report__hint">{{ 'shareModeration.public.otherRequired' | translate }}</p>
+        }
+        @if (facade.error()) {
+          <p class="public-share-report__error" role="alert">{{ 'shareModeration.public.error' | translate }}</p>
+        }
+        <button appUiButton="ghost" type="button" [disabled]="!canSubmit()" (click)="submit()">
+          <i class="pi pi-send" aria-hidden="true"></i>
+          {{ (facade.submitting() ? 'shareModeration.public.submitting' : 'shareModeration.public.submitAction') | translate }}
+        </button>
+      </div>
+    </details>
+  }
+</aside>

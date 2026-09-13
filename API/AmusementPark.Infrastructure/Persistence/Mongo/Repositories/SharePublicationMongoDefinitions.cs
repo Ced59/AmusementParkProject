@@ -14,6 +14,14 @@ internal static class SharePublicationMongoDefinitions
     public const string ActiveOwnerSourceUniqueIndexName =
         "idx_share_publication_active_owner_source_unique";
 
+    public static FilterDefinition<SharePublicationDocument> BuildIdFilter(
+        string publicationId)
+    {
+        return Builders<SharePublicationDocument>.Filter.Eq(
+            static document => document.Id,
+            publicationId);
+    }
+
     public static FilterDefinition<SharePublicationDocument> BuildOwnedFilter(
         string publicationId,
         string ownerUserId)
@@ -67,6 +75,9 @@ internal static class SharePublicationMongoDefinitions
             & Builders<SharePublicationDocument>.Filter.Eq(
                 static document => document.Status,
                 SharePublicationStatus.Published)
+            & Builders<SharePublicationDocument>.Filter.Eq(
+                static document => document.IsModerationSuspended,
+                false)
             & Builders<SharePublicationDocument>.Filter.In(
                 static document => document.Visibility,
                 new[] { ShareVisibility.Unlisted, ShareVisibility.Public });

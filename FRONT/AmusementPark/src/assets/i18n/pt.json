@@ -6540,5 +6540,71 @@
     "subtitle": "Lotes pré-pagos utilizados para aceder às atrações",
     "quantity": "{{ quantity }} × {{ unit }}",
     "historyKind": "Fichas / créditos"
+  },
+  "shareModeration": {
+    "public": {
+      "openAction": "Denunciar este conteúdo",
+      "description": "Ajuda-nos a proteger as partilhas públicas. O proprietário não verá a tua denúncia.",
+      "reasonLabel": "Motivo",
+      "detailsLabel": "Detalhes opcionais",
+      "detailsPlaceholder": "Descreve brevemente o problema sem adicionar ligações.",
+      "characters": "{{ count }} / 500 caracteres",
+      "otherRequired": "Adiciona um detalhe para este motivo.",
+      "submitAction": "Enviar denúncia",
+      "submitting": "A enviar…",
+      "confirmationTitle": "Denúncia enviada",
+      "confirmationDescription": "A equipa já pode analisar esta partilha.",
+      "error": "Não foi possível enviar a denúncia. Tenta mais tarde."
+    },
+    "admin": {
+      "kicker": "Confiança e segurança",
+      "title": "Moderação de partilhas",
+      "navTitle": "Partilhas denunciadas",
+      "subtitle": "Analisa denúncias sem expor identificadores técnicos nem dados privados.",
+      "shortcut": "Tratar denúncias sobre conteúdos partilhados",
+      "filters": "Filtros de moderação",
+      "statusFilter": "Estado",
+      "targetFilter": "Tipo de partilha",
+      "reasonFilter": "Motivo",
+      "all": "Todos",
+      "apply": "Aplicar",
+      "reset": "Repor",
+      "loading": "A carregar denúncias…",
+      "error": "Não foi possível carregar ou tratar as denúncias.",
+      "empty": "Nenhuma denúncia corresponde aos filtros.",
+      "reason": "Motivo",
+      "submittedAt": "Denunciado em",
+      "decisionNote": "Decisão: ",
+      "noteLabel": "Nota interna opcional",
+      "dismiss": "Arquivar",
+      "suspend": "Suspender partilha",
+      "restore": "Restabelecer partilha",
+      "pagination": "Paginação",
+      "previous": "Anterior",
+      "next": "Seguinte",
+      "page": "Página {{ page }} de {{ total }}"
+    },
+    "reasons": {
+      "PersonalData": "Dados pessoais visíveis",
+      "HarassmentOrHate": "Assédio ou ódio",
+      "Impersonation": "Usurpação de identidade",
+      "InappropriateContent": "Conteúdo impróprio",
+      "SpamOrUnsafeLink": "Spam ou ligação perigosa",
+      "MisleadingContent": "Conteúdo enganador",
+      "Other": "Outro"
+    },
+    "targets": {
+      "VisitRecap": "Resumo da visita",
+      "YearRecap": "Resumo anual",
+      "PassportProfile": "Passaporte público",
+      "PersonalRanking": "Classificação pessoal",
+      "ProfileComparison": "Comparação de passaportes"
+    },
+    "status": {
+      "Pending": "Por analisar",
+      "Dismissed": "Arquivada",
+      "PublicationSuspended": "Partilha suspensa",
+      "PublicationRestored": "Partilha restabelecida"
+    }
   }
 }

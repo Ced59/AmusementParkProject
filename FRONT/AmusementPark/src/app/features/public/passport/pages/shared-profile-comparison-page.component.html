@@ -451,6 +451,7 @@
         <i class="pi pi-shield" aria-hidden="true"></i
         >{{ "profileComparison.result.proof" | translate }}
       </p>
+      <app-public-share-report targetType="ProfileComparison" [shareId]="shareId()"></app-public-share-report>
     </article>
   } @else if (loading()) {
     <section class="profile-comparison__state" role="status">

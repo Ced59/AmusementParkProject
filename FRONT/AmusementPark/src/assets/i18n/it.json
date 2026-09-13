@@ -6540,5 +6540,71 @@
     "subtitle": "Pacchetti prepagati utilizzati per accedere alle attrazioni",
     "quantity": "{{ quantity }} × {{ unit }}",
     "historyKind": "Gettoni / crediti"
+  },
+  "shareModeration": {
+    "public": {
+      "openAction": "Segnala questo contenuto",
+      "description": "Aiutaci a proteggere le condivisioni pubbliche. Il proprietario non vedrà la tua segnalazione.",
+      "reasonLabel": "Motivo",
+      "detailsLabel": "Dettagli facoltativi",
+      "detailsPlaceholder": "Descrivi brevemente il problema senza aggiungere link.",
+      "characters": "{{ count }} / 500 caratteri",
+      "otherRequired": "Aggiungi un dettaglio per questo motivo.",
+      "submitAction": "Invia segnalazione",
+      "submitting": "Invio…",
+      "confirmationTitle": "Segnalazione inviata",
+      "confirmationDescription": "Il team può ora esaminare questa condivisione.",
+      "error": "Impossibile inviare la segnalazione. Riprova più tardi."
+    },
+    "admin": {
+      "kicker": "Fiducia e sicurezza",
+      "title": "Moderazione delle condivisioni",
+      "navTitle": "Condivisioni segnalate",
+      "subtitle": "Esamina le segnalazioni senza esporre identificativi tecnici o dati privati.",
+      "shortcut": "Gestisci le segnalazioni sui contenuti condivisi",
+      "filters": "Filtri di moderazione",
+      "statusFilter": "Stato",
+      "targetFilter": "Tipo di condivisione",
+      "reasonFilter": "Motivo",
+      "all": "Tutti",
+      "apply": "Applica",
+      "reset": "Reimposta",
+      "loading": "Caricamento segnalazioni…",
+      "error": "Impossibile caricare o gestire le segnalazioni.",
+      "empty": "Nessuna segnalazione corrisponde ai filtri.",
+      "reason": "Motivo",
+      "submittedAt": "Segnalato il",
+      "decisionNote": "Decisione: ",
+      "noteLabel": "Nota interna facoltativa",
+      "dismiss": "Archivia",
+      "suspend": "Sospendi condivisione",
+      "restore": "Ripristina condivisione",
+      "pagination": "Paginazione",
+      "previous": "Precedente",
+      "next": "Successiva",
+      "page": "Pagina {{ page }} di {{ total }}"
+    },
+    "reasons": {
+      "PersonalData": "Dati personali visibili",
+      "HarassmentOrHate": "Molestie o odio",
+      "Impersonation": "Furto d’identità",
+      "InappropriateContent": "Contenuto inappropriato",
+      "SpamOrUnsafeLink": "Spam o link non sicuro",
+      "MisleadingContent": "Contenuto ingannevole",
+      "Other": "Altro"
+    },
+    "targets": {
+      "VisitRecap": "Riepilogo visita",
+      "YearRecap": "Riepilogo annuale",
+      "PassportProfile": "Passaporto pubblico",
+      "PersonalRanking": "Classifica personale",
+      "ProfileComparison": "Confronto passaporti"
+    },
+    "status": {
+      "Pending": "Da esaminare",
+      "Dismissed": "Archiviata",
+      "PublicationSuspended": "Condivisione sospesa",
+      "PublicationRestored": "Condivisione ripristinata"
+    }
   }
 }

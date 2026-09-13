@@ -24,6 +24,7 @@ public sealed class SharePublicationMongoDefinitionsTests
         Assert.Contains("\"visibility\"", json, StringComparison.Ordinal);
         Assert.Contains("\"Unlisted\"", json, StringComparison.Ordinal);
         Assert.Contains("\"Public\"", json, StringComparison.Ordinal);
+        Assert.Contains("\"isModerationSuspended\" : false", json, StringComparison.Ordinal);
         Assert.DoesNotContain("ownerUserId", json, StringComparison.Ordinal);
     }
 

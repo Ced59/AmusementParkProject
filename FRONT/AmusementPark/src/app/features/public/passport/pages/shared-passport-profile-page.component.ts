@@ -13,6 +13,7 @@ import { buildShareSocialImageUrl } from '@data-access/sharing/share-social-imag
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { PublicShareReportComponent } from '@ui/sharing/public-share-report/public-share-report.component';
 import { SharedPassportProfileStateFacade } from '../state/shared-passport-profile-state.facade';
 
 @Component({
@@ -21,7 +22,7 @@ import { SharedPassportProfileStateFacade } from '../state/shared-passport-profi
   styleUrl: './shared-passport-profile-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [SharedPassportProfileStateFacade],
-  imports: [TranslateModule, RouterLink, UiButtonDirective, PublicSharePanelComponent]
+  imports: [TranslateModule, RouterLink, UiButtonDirective, PublicSharePanelComponent, PublicShareReportComponent]
 })
 export class SharedPassportProfilePageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');

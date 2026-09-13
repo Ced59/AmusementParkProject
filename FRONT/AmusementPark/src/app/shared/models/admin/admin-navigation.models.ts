@@ -201,6 +201,14 @@ export const ADMIN_NAVIGATION_ITEMS: readonly AdminNavigationItem[] = [
     exact: false
   },
   {
+    id: 'share-moderation',
+    segments: ['share-moderation'],
+    iconClass: 'pi pi-flag',
+    titleKey: 'shareModeration.admin.navTitle',
+    descriptionKey: 'shareModeration.admin.shortcut',
+    exact: false
+  },
+  {
     id: 'technical-stats',
     segments: ['technical-stats'],
     iconClass: 'pi pi-server',

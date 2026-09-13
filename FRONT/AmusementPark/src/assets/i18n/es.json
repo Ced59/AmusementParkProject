@@ -6540,5 +6540,71 @@
     "subtitle": "Lotes prepago utilizados para acceder a las atracciones",
     "quantity": "{{ quantity }} × {{ unit }}",
     "historyKind": "Fichas / créditos"
+  },
+  "shareModeration": {
+    "public": {
+      "openAction": "Denunciar este contenido",
+      "description": "Ayúdanos a proteger los contenidos públicos. El propietario no verá tu denuncia.",
+      "reasonLabel": "Motivo",
+      "detailsLabel": "Detalles opcionales",
+      "detailsPlaceholder": "Describe brevemente el problema sin añadir enlaces.",
+      "characters": "{{ count }} / 500 caracteres",
+      "otherRequired": "Añade un detalle para este motivo.",
+      "submitAction": "Enviar denuncia",
+      "submitting": "Enviando…",
+      "confirmationTitle": "Denuncia enviada",
+      "confirmationDescription": "El equipo ya puede revisar este contenido.",
+      "error": "No se ha podido enviar la denuncia. Inténtalo más tarde."
+    },
+    "admin": {
+      "kicker": "Confianza y seguridad",
+      "title": "Moderación de contenidos compartidos",
+      "navTitle": "Contenidos denunciados",
+      "subtitle": "Revisa las denuncias sin exponer identificadores técnicos ni datos privados.",
+      "shortcut": "Gestionar denuncias sobre contenidos compartidos",
+      "filters": "Filtros de moderación",
+      "statusFilter": "Estado",
+      "targetFilter": "Tipo de contenido",
+      "reasonFilter": "Motivo",
+      "all": "Todos",
+      "apply": "Aplicar",
+      "reset": "Restablecer",
+      "loading": "Cargando denuncias…",
+      "error": "No se han podido cargar o procesar las denuncias.",
+      "empty": "Ninguna denuncia coincide con los filtros.",
+      "reason": "Motivo",
+      "submittedAt": "Denunciado el",
+      "decisionNote": "Decisión: ",
+      "noteLabel": "Nota interna opcional",
+      "dismiss": "Descartar",
+      "suspend": "Suspender contenido",
+      "restore": "Restablecer contenido",
+      "pagination": "Paginación",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "page": "Página {{ page }} de {{ total }}"
+    },
+    "reasons": {
+      "PersonalData": "Datos personales visibles",
+      "HarassmentOrHate": "Acoso u odio",
+      "Impersonation": "Suplantación de identidad",
+      "InappropriateContent": "Contenido inapropiado",
+      "SpamOrUnsafeLink": "Spam o enlace peligroso",
+      "MisleadingContent": "Contenido engañoso",
+      "Other": "Otro"
+    },
+    "targets": {
+      "VisitRecap": "Resumen de visita",
+      "YearRecap": "Resumen anual",
+      "PassportProfile": "Pasaporte público",
+      "PersonalRanking": "Clasificación personal",
+      "ProfileComparison": "Comparación de pasaportes"
+    },
+    "status": {
+      "Pending": "Por revisar",
+      "Dismissed": "Descartada",
+      "PublicationSuspended": "Contenido suspendido",
+      "PublicationRestored": "Contenido restablecido"
+    }
   }
 }
