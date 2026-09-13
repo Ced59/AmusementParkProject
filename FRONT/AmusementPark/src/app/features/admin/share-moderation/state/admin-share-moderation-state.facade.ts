@@ -1,6 +1,6 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { finalize } from 'rxjs';
+import { Observable, concat, finalize, interval, of, switchMap, takeWhile, tap, timer } from 'rxjs';
 
 import {
   ReviewShareModerationReportRequest,
@@ -17,6 +17,8 @@ import {
 
 @Injectable()
 export class AdminShareModerationStateFacade {
+  private static readonly DECISION_REFRESH_INTERVAL_MS: number = 30_000;
+
   private readonly reportsState = signal<ShareModerationReport[]>([]);
   private readonly paginationState = signal<PaginationContract | null>(null);
   private readonly loadingState = signal<boolean>(false);
@@ -72,12 +74,45 @@ export class AdminShareModerationStateFacade {
     this.errorState.set(false);
     this.port.review(reportId, request)
       .pipe(
+        switchMap((): Observable<PagedResult<ShareModerationReport>> =>
+          this.refreshUntilDecisionSettles(reportId)),
         takeUntilDestroyed(this.destroyRef),
         finalize((): void => this.reviewingReportIdState.set(null)),
       )
       .subscribe({
-        next: (): void => this.load(this.lastQueryState()),
         error: (): void => this.errorState.set(true),
       });
+  }
+
+  private refreshUntilDecisionSettles(
+    reportId: string,
+  ): Observable<PagedResult<ShareModerationReport>> {
+    const query: ShareModerationReportQuery = this.lastQueryState();
+    return concat(
+      of(0),
+      timer(2_000),
+      timer(3_000),
+      timer(10_000),
+      interval(AdminShareModerationStateFacade.DECISION_REFRESH_INTERVAL_MS),
+    ).pipe(
+      switchMap((): Observable<PagedResult<ShareModerationReport>> => this.port.search(query)),
+      tap((response: PagedResult<ShareModerationReport>): void => {
+        if (this.lastQueryState() !== query) {
+          return;
+        }
+
+        this.reportsState.set(response.items);
+        this.paginationState.set(response.pagination);
+      }),
+      takeWhile(
+        (response: PagedResult<ShareModerationReport>): boolean =>
+          this.lastQueryState() === query
+          && response.items.some(
+            (report: ShareModerationReport): boolean =>
+              report.reportId === reportId && report.status === 'Pending',
+          ),
+        true,
+      ),
+    );
   }
 }

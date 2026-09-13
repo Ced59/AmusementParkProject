@@ -14,7 +14,12 @@ import {
 import { AdminShareModerationStateFacade } from './admin-share-moderation-state.facade';
 
 describe('AdminShareModerationStateFacade', (): void => {
-  it('loads reports and refreshes the active filter after a decision', (): void => {
+  afterEach((): void => {
+    vi.useRealTimers();
+  });
+
+  it('polls the active filter until a queued decision has converged', async (): Promise<void> => {
+    vi.useFakeTimers();
     const report: ShareModerationReport = {
       reportId: 'report-1', targetType: 'VisitRecap', reason: 'PersonalData',
       details: 'A phone number is visible.', status: 'Pending',
@@ -25,8 +30,9 @@ describe('AdminShareModerationStateFacade', (): void => {
     const port: AdminShareModerationStatePort = {
       search: (query: ShareModerationReportQuery): Observable<PagedResult<ShareModerationReport>> => {
         queries.push(query);
-        return of({ items: [report], pagination: {
-          totalItems: 1, totalPages: 1, currentPage: 1, itemsPerPage: 20,
+        const items: ShareModerationReport[] = queries.length < 3 ? [report] : [];
+        return of({ items, pagination: {
+          totalItems: items.length, totalPages: items.length, currentPage: 1, itemsPerPage: 20,
         } });
       },
       review: (_: string, request: ReviewShareModerationReportRequest): Observable<void> => {
@@ -45,7 +51,14 @@ describe('AdminShareModerationStateFacade', (): void => {
     facade.review('report-1', 'Suspend', ' Confirmed ');
 
     expect(facade.reports()).toEqual([report]);
+    expect(facade.reviewingReportId()).toBe('report-1');
     expect(reviewRequest).toEqual({ decision: 'Suspend', note: 'Confirmed' });
     expect(queries).toEqual([query, query]);
+
+    await vi.advanceTimersByTimeAsync(2_000);
+
+    expect(facade.reports()).toEqual([]);
+    expect(facade.reviewingReportId()).toBeNull();
+    expect(queries).toEqual([query, query, query]);
   });
 });
