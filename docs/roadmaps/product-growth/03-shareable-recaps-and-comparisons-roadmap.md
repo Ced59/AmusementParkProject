@@ -462,16 +462,20 @@ cycle de vie.
 L'export privé du passeport couvre en version 5.3.8 l'historique des publications,
 leurs politiques exactes, leurs versions et dates de publication ou de révocation,
 ainsi que les invitations et les résultats de comparaison auxquels le membre a
-participé. Le JSON versionné passe au schéma 3 ; le ZIP CSV fournit treize tables
-reliées, dont des tables distinctes pour les parcs, notes, années et expériences
-manquées d'une comparaison.
+participé. Le JSON versionné passe au schéma 3 ; le ZIP CSV fournit quinze tables
+reliées, snapshots publics figés inclus : des tables distinctes
+couvrent les parcs, notes, années et expériences manquées d'une comparaison, ainsi
+que les légendes publiques et la sélection lisible du passeport partagé.
 
 L'export ne recopie aucun identifiant MongoDB, identifiant de membre, jeton de lien,
 empreinte de contenu ou identifiant de signalement. Des références éphémères comme
 `publication-0001`, `invitation-0001` et `comparison-0001` préservent les relations
 à l'intérieur du fichier. Les résultats sont orientés depuis le point de vue du
 membre (`your...` / `otherMember...`) afin de rester compréhensibles sans révéler
-la structure technique créateur/accepteur. Les lectures MongoDB réutilisent le
+la structure technique créateur/accepteur. Les identifiants de parc et les clés de
+notes conservés dans une sélection ne quittent jamais MongoDB : l'export les remplace
+par les années, noms de parc et noms de notes effectivement affichés dans le snapshot.
+Les lectures MongoDB réutilisent le
 budget de taille commun aux visites et passages ; un export trop volumineux échoue
 donc avant de saturer la mémoire du worker lourd. Un index participant est ajouté
 automatiquement aux invitations pour les recherches côté accepteur, sans opération

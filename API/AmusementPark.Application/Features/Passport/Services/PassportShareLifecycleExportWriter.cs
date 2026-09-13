@@ -22,7 +22,7 @@ internal static class PassportShareLifecycleExportWriter
         "comparison-ratings.csv",
         "comparison-years.csv",
         "comparison-missed-items.csv",
-    };
+    }.Concat(PassportShareSnapshotExportWriter.CsvFileNames).ToArray();
 
     public static void WriteJson(
         Utf8JsonWriter writer,
@@ -50,6 +50,10 @@ internal static class PassportShareLifecycleExportWriter
         }
 
         writer.WriteEndArray();
+        PassportShareSnapshotExportWriter.WriteJson(
+            writer,
+            request.ShareLifecycle,
+            references);
     }
 
     public static void WriteCsvEntries(
@@ -63,6 +67,10 @@ internal static class PassportShareLifecycleExportWriter
         PassportShareLifecycleComparisonCsvWriter.WriteCsvEntries(
             archive,
             request,
+            references);
+        PassportShareSnapshotExportWriter.WriteCsvEntries(
+            archive,
+            request.ShareLifecycle,
             references);
     }
 

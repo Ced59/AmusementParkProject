@@ -9,6 +9,8 @@ L'export du passeport restitue désormais, en plus des visites et notes privées
 - les dates de création, mise à jour, publication et révocation ;
 - les invitations de comparaison créées ou acceptées par le membre ;
 - les comparaisons matérialisées, actives ou révoquées, avec leurs résultats complets.
+- les légendes publiques et la sélection lisible figées dans les snapshots de
+  récapitulatif et de passeport.
 
 Le fichier reste privé, authentifié et temporaire. Cette évolution ne rend aucune
 donnée publique et ne modifie pas le contenu d'un partage existant.
@@ -31,6 +33,9 @@ classDiagram
       +Publications
       +Invitations
       +Comparisons
+      +VisitSnapshots
+      +YearSnapshots
+      +PassportSnapshots
     }
     class CanonicalVisitExportWriter {
       +Write(request)
@@ -41,6 +46,10 @@ classDiagram
     }
     class PassportShareLifecycleComparisonCsvWriter {
       +WriteCsvEntries(archive, request, references)
+    }
+    class PassportShareSnapshotExportWriter {
+      +WriteJson(writer, lifecycle, references)
+      +WriteCsvEntries(archive, lifecycle, references)
     }
     class PassportExportReferenceMap {
       +Publication(id)
@@ -54,6 +63,7 @@ classDiagram
     PassportExportJobHandler --> CanonicalVisitExportWriter
     CanonicalVisitExportWriter --> PassportShareLifecycleExportWriter
     PassportShareLifecycleExportWriter --> PassportShareLifecycleComparisonCsvWriter
+    PassportShareLifecycleExportWriter --> PassportShareSnapshotExportWriter
     CanonicalVisitExportWriter --> PassportExportReferenceMap
 ```
 
@@ -84,14 +94,18 @@ sequenceDiagram
     S->>M: publications du propriétaire
     S->>M: invitations créateur ou accepteur
     S->>M: comparaisons créateur ou accepteur
-    S-->>H: entités de domaine restaurées
+    S->>M: snapshots actifs par identifiant indexé
+    S-->>H: entités de domaine et snapshots restaurés
     H->>W: écrire le schéma v3 JSON ou CSV ZIP
     W->>W: remplacer les identifiants par des références d'export
     W-->>H: artefact borné + empreinte SHA-256
     H->>R: persister les fragments et l'expiration
 ```
 
-Les trois lectures sont séquentielles. Chaque document BSON consomme le même
+Les six lectures sont séquentielles. Les publications, invitations et comparaisons
+sont lues par leurs index de participants sans tri bloquant côté serveur, puis
+ordonnées en mémoire après consommation du budget. Chaque snapshot actif est recherché
+par son `_id` exact et indexé. Chaque document BSON consomme le même
 `PassportExportSourceBudget` que les visites et passages. Le worker conserve sa
 concurrence maximale à un et l'artefact final reste borné à 64 Mio.
 
@@ -134,8 +148,18 @@ erDiagram
       string status
       date revokedAtUtc
     }
+    SHARE_PUBLICATION_SNAPSHOTS {
+      string _id "jamais exporté"
+      string publicationId "référence d'export"
+      long publicationVersion
+      long publicationStateVersion
+      string contentFingerprint "jamais exporté"
+      string publicCaption "contenu choisi"
+      object passportSelection "convertie en libellés"
+    }
 
     PROFILE_COMPARISON_INVITATIONS ||--o| PROFILE_COMPARISONS : matérialise
+    SHARE_PUBLICATIONS ||--o| SHARE_PUBLICATION_SNAPSHOTS : fige
 ```
 
 MongoDB crée automatiquement l'index partiel
@@ -153,11 +177,13 @@ Les nouvelles racines sont :
 - `sharePublications` ;
 - `comparisonInvitations` ;
 - `comparisons`, avec `results.parks`, `results.ratings`, `results.years` et
-  `results.missedItems`.
+  `results.missedItems` ;
+- `shareSnapshots`, avec la légende publique et, pour le passeport, les années,
+  parcs et notes sélectionnés sous forme lisible.
 
 ### CSV ZIP
 
-Les six tables historiques sont conservées et sept tables sont ajoutées :
+Les six tables historiques sont conservées et neuf tables sont ajoutées :
 
 | Fichier | Contenu |
 | --- | --- |
@@ -168,6 +194,8 @@ Les six tables historiques sont conservées et sept tables sont ajoutées :
 | `comparison-ratings.csv` | notes consenties, écart et affinité |
 | `comparison-years.csv` | activité comparée par année |
 | `comparison-missed-items.csv` | expériences manquées comparées |
+| `share-snapshots.csv` | métadonnées figées et légendes publiques |
+| `passport-share-selections.csv` | années, noms de parcs et notes choisies, sans clé interne |
 
 Chaque table enfant porte uniquement une `comparisonReference` propre à l'archive.
 La neutralisation des formules CSV reste appliquée aux cellules commençant par
@@ -182,10 +210,12 @@ La neutralisation des formules CSV reste appliquée aux cellules commençant par
 | jeton de publication/invitation/comparaison | non | aucune valeur de remplacement |
 | clé de scope source | non | type lisible, année ou référence de visite |
 | empreinte de contenu | non | jamais nécessaire à l'utilisateur |
+| identifiants et clés de sélection du passeport | non | années et libellés publics du snapshot |
 | identifiants de signalements | non | booléen `isModerationSuspended` seulement |
 | politique de partage | oui | précision de date et champs inclus |
 | versions consenties | oui | nombres de versions métier |
 | résultats de comparaison | oui | orientation `your...` / `otherMember...` |
+| légende publique figée | oui | texte effectivement approuvé par le membre |
 | dates de cycle de vie | oui | horodatages UTC ISO 8601 |
 
 Un identifiant de visite contenu dans un scope n'est converti que s'il appartient
@@ -198,8 +228,11 @@ reste nulle : la clé technique n'est jamais utilisée comme repli.
 - quatre types de jetons et tous les identifiants techniques injectés dans les
   fixtures sont absents du contenu final ;
 - l'orientation des résultats reste celle du membre exporteur ;
+- les légendes et sélections publiques figées sont présentes sans identifiant ni
+  clé technique ;
 - le job partage une seule instance de budget entre visites, passages et partages ;
-- les filtres MongoDB couvrent propriétaire, créateur et accepteur ;
+- les filtres MongoDB couvrent propriétaire, créateur et accepteur, tandis que les
+  snapshots sont résolus par leur identifiant indexé exact ;
 - l'index accepteur est partiel et ne surcharge pas les invitations en attente ;
 - l'enregistrement DI résout le port Application vers son implémentation Infrastructure.
 

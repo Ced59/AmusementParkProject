@@ -3,6 +3,8 @@ using System.Text;
 using System.Text.Json;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Application.Features.Sharing.Models;
+using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
@@ -64,7 +66,7 @@ public sealed class CanonicalVisitExportWriterTests
     }
 
     [Fact]
-    public void Write_CsvCreatesThirteenIndependentTablesAndSchemaMetadata()
+    public void Write_CsvCreatesFifteenIndependentTablesAndSchemaMetadata()
     {
         CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
         PassportExportWriteRequest request = CreateRequest(PassportExportFormat.Csv);
@@ -85,10 +87,12 @@ public sealed class CanonicalVisitExportWriterTests
                 "comparisons.csv",
                 "park-items.csv",
                 "parks.csv",
+                "passport-share-selections.csv",
                 "ride-assessments.csv",
                 "ride-occurrences.csv",
                 "schema.json",
                 "share-publications.csv",
+                "share-snapshots.csv",
                 "visit-assessments.csv",
                 "visits.csv",
             },
@@ -146,11 +150,19 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.Contains("Other member", content, StringComparison.Ordinal);
         Assert.Contains("Revoked", content, StringComparison.Ordinal);
         Assert.Contains("2026-09-04", content, StringComparison.Ordinal);
+        Assert.Contains("Public visit caption", content, StringComparison.Ordinal);
+        Assert.Contains("Public passport caption", content, StringComparison.Ordinal);
+        Assert.Contains("Selected Park", content, StringComparison.Ordinal);
+        Assert.Contains("Selected Ride", content, StringComparison.Ordinal);
         Assert.DoesNotContain("publication-internal-visit", content, StringComparison.Ordinal);
         Assert.DoesNotContain("publication-internal-passport", content, StringComparison.Ordinal);
         Assert.DoesNotContain("invitation-internal", content, StringComparison.Ordinal);
         Assert.DoesNotContain("comparison-internal", content, StringComparison.Ordinal);
         Assert.DoesNotContain("other-passport-internal", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("park-internal-selection", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("rating-internal-selection", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("visit-content-fingerprint", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("passport-content-fingerprint", content, StringComparison.Ordinal);
         Assert.DoesNotContain("user-1", content, StringComparison.Ordinal);
         Assert.DoesNotContain("user-2", content, StringComparison.Ordinal);
         Assert.DoesNotContain(VisitShareToken, content, StringComparison.Ordinal);
@@ -385,12 +397,96 @@ public sealed class CanonicalVisitExportWriterTests
             calculation,
             NowUtc.AddMinutes(3));
         comparison.Revoke(source.UserId, NowUtc.AddMinutes(4));
+        VisitRecapShareSnapshot visitSnapshot = new VisitRecapShareSnapshot(
+            visitPublication.Id,
+            visitPublication.PublicationVersion,
+            visitPublication.Version,
+            visitPublication.SourceVersion,
+            visitPolicy.SchemaVersion,
+            visitPolicy.DatePrecision,
+            visitPolicy.IncludedFields,
+            "visit-content-fingerprint",
+            new VisitRecapSharePreviewResult(
+                "park-internal-selection",
+                "Europa Park",
+                null,
+                1,
+                2,
+                new[] { "Attraction" },
+                4.5,
+                null,
+                null,
+                Array.Empty<VisitRecapShareItemResult>(),
+                "Public visit caption",
+                true,
+                false,
+                false),
+            NowUtc.AddMinutes(1));
+        PassportProfileShareInput passportSelection = new PassportProfileShareInput(
+            new[] { 2026 },
+            new[] { "park-internal-selection" },
+            new[] { "rating-internal-selection" },
+            "Public passport caption",
+            ShareVisibility.Public,
+            true);
+        PassportProfileShareSnapshot passportSnapshot = new PassportProfileShareSnapshot(
+            passportPublication.Id,
+            passportPublication.PublicationVersion,
+            passportPublication.Version,
+            passportPublication.SourceVersion,
+            passportPolicy.SchemaVersion,
+            passportPolicy.DatePrecision,
+            passportPolicy.IncludedFields,
+            "passport-content-fingerprint",
+            passportSelection,
+            new PassportProfileSharePreviewResult(
+                "You",
+                null,
+                "Public passport caption",
+                ShareVisibility.Public,
+                true,
+                1,
+                2,
+                4,
+                1,
+                null,
+                null,
+                Array.Empty<PassportProfileShareCountryResult>(),
+                Array.Empty<PassportProfileShareYearResult>(),
+                new[]
+                {
+                    new PassportProfileShareParkResult(
+                        "Selected Park",
+                        "FR",
+                        2,
+                        2026,
+                        2026,
+                        4,
+                        null),
+                },
+                new[]
+                {
+                    new PassportProfileShareRatingResult(
+                        "ParkItem",
+                        "Selected Ride",
+                        "Selected Park",
+                        "Attraction",
+                        4.5),
+                },
+                Array.Empty<PassportProfileShareMissedItemResult>(),
+                false,
+                "passport-profile-v1",
+                false),
+            NowUtc.AddMinutes(1));
         return source with
         {
             ShareLifecycle = new PassportShareLifecycleExportData(
                 new[] { visitPublication, passportPublication },
                 new[] { invitation },
-                new[] { comparison }),
+                new[] { comparison },
+                new[] { visitSnapshot },
+                Array.Empty<YearRecapShareSnapshot>(),
+                new[] { passportSnapshot }),
         };
     }
 
