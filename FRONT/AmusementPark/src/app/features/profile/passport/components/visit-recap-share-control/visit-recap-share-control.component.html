@@ -13,6 +13,13 @@
       <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
       {{ 'visitRecapShare.manage.loading' | translate }}
     </p>
+  } @else if (settings()?.isModerationSuspended) {
+    <app-owner-share-moderation-notice></app-owner-share-moderation-notice>
+    @if (settings()?.isPublic) {
+      <div class="visit-share__actions">
+        <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="revoke()"><i class="pi pi-lock" aria-hidden="true"></i>{{ 'visitRecapShare.manage.revoke' | translate }}</button>
+      </div>
+    }
   } @else if (editorOpen()) {
     <section class="visit-share-editor" aria-labelledby="visit-share-editor-title">
       <header>
@@ -167,12 +174,7 @@
       </div>
     </section>
   } @else if (settings()?.isPublic) {
-    @if (settings()?.isModerationSuspended) {
-      <app-owner-share-moderation-notice></app-owner-share-moderation-notice>
-      <div class="visit-share__actions">
-        <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="revoke()"><i class="pi pi-lock" aria-hidden="true"></i>{{ 'visitRecapShare.manage.revoke' | translate }}</button>
-      </div>
-    } @else if (publicPath(); as path) {
+    @if (publicPath(); as path) {
       <div class="visit-share__actions">
         <a appUiButton="primary" [routerLink]="path"><i class="pi pi-external-link" aria-hidden="true"></i>{{ 'visitRecapShare.manage.open' | translate }}</a>
         <button appUiButton="ghost" type="button" (click)="openEditor()"><i class="pi pi-sliders-h" aria-hidden="true"></i>{{ 'visitRecapShare.manage.edit' | translate }}</button>

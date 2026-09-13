@@ -24,7 +24,9 @@ internal static class ProfileComparisonMongoMapper
             RevokedByUserId = comparison.RevokedByUserId,
             RevokedAtUtc = comparison.RevokedAtUtc,
             Version = comparison.Version,
-            ModerationSuspensionReportId = comparison.ModerationSuspensionReportId?.Value,
+            ModerationSuspensionReportIds = comparison.ModerationSuspensionReportIds
+                .Select(static value => value.Value)
+                .ToList(),
             CreatedAt = comparison.CreatedAtUtc,
             UpdatedAt = comparison.UpdatedAtUtc,
         };
@@ -50,9 +52,8 @@ internal static class ProfileComparisonMongoMapper
             document.CreatedAt,
             document.UpdatedAt,
             document.Version,
-            document.ModerationSuspensionReportId is null
-                ? null
-                : ShareModerationReportId.Parse(document.ModerationSuspensionReportId));
+            document.ModerationSuspensionReportIds.Select(
+                static value => ShareModerationReportId.Parse(value)));
     }
 
     private static ProfileComparisonCalculationDocument ToDocument(

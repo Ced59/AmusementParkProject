@@ -31,15 +31,10 @@ public sealed class ShareModerationPublicationTargetExecutor
             return ShareModerationDecisionExecutionOutcome.TargetNotFound;
         }
 
-        if (publication.ModerationSuspensionReportId == report.Id)
+        if (publication.HasModerationSuspension(report.Id))
         {
             await this.ScheduleInvalidationAsync(publication, cancellationToken);
             return ShareModerationDecisionExecutionOutcome.Succeeded;
-        }
-
-        if (publication.IsModerationSuspended)
-        {
-            return ShareModerationDecisionExecutionOutcome.RetryableConflict;
         }
 
         long expectedVersion = publication.Version;
@@ -82,8 +77,7 @@ public sealed class ShareModerationPublicationTargetExecutor
             return ShareModerationDecisionExecutionOutcome.TargetNotFound;
         }
 
-        if (!publication.IsModerationSuspended
-            || publication.ModerationSuspensionReportId != report.Id)
+        if (!publication.HasModerationSuspension(report.Id))
         {
             await this.ScheduleInvalidationAsync(publication, cancellationToken);
             return ShareModerationDecisionExecutionOutcome.Succeeded;

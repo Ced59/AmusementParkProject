@@ -9,8 +9,7 @@ internal static class SharePublicationSettingsMapper
         SharePublication? publication,
         bool isSourceCurrent = true)
     {
-        bool isModerationSuspended = publication?.Status == SharePublicationStatus.Published
-            && publication.IsModerationSuspended;
+        bool isModerationSuspended = publication?.IsModerationSuspended == true;
         bool hasOwnerPublicationControls = publication?.Status == SharePublicationStatus.Published
             && (isSourceCurrent || isModerationSuspended);
         return new SharePublicationSettingsResult(

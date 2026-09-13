@@ -109,7 +109,7 @@ public sealed class ShareModerationServiceTests
             .ReturnsAsync(publication);
         publications.Setup(value => value.ReplaceAsync(
                 It.Is<SharePublication>(candidate =>
-                    candidate.ModerationSuspensionReportId == report.Id
+                    candidate.HasModerationSuspension(report.Id)
                     && !candidate.IsResolvable),
                 1,
                 CancellationToken.None))
@@ -255,15 +255,28 @@ public sealed class ShareModerationServiceTests
             new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
         reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
             .ReturnsAsync(report);
+        reports.Setup(value => value.ReplaceAsync(
+                It.Is<ShareModerationReport>(candidate =>
+                    candidate.Status == ShareModerationReportStatus.PublicationSuspended),
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(ShareModerationReportWriteOutcome.Success);
         Mock<ISharePublicationRepository> publications =
             new Mock<ISharePublicationRepository>(MockBehavior.Strict);
         publications.Setup(value => value.GetByIdAsync(publication.Id, CancellationToken.None))
             .ReturnsAsync(publication);
+        publications.Setup(value => value.ReplaceAsync(
+                It.Is<SharePublication>(candidate =>
+                    candidate.HasModerationSuspension(
+                        ShareModerationReportId.Parse("report-active"))
+                    && candidate.HasModerationSuspension(report.Id)),
+                2,
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
         jobs.Setup(value => value.EnqueueExactAsync(
-                It.Is<EnqueueExactBackgroundJobRequest>(request =>
-                    request.Kind == ShareModerationDecisionJob.Kind),
+                It.IsAny<EnqueueExactBackgroundJobRequest>(),
                 CancellationToken.None))
             .ReturnsAsync((DurableBackgroundJob)null!);
         ShareModerationService service = CreateService(reports, publications, jobs);
@@ -277,9 +290,10 @@ public sealed class ShareModerationServiceTests
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
-        Assert.Equal(
-            ShareModerationReportId.Parse("report-active"),
-            publication.ModerationSuspensionReportId);
+        Assert.True(publication.HasModerationSuspension(
+            ShareModerationReportId.Parse("report-active")));
+        Assert.True(publication.HasModerationSuspension(report.Id));
+        Assert.False(publication.IsResolvable);
         jobs.VerifyAll();
         publications.VerifyAll();
         reports.VerifyAll();

@@ -50,6 +50,6 @@ public sealed class ProfileComparisonDocument : MongoDocumentBase
     [BsonElement("version")]
     public long Version { get; set; }
 
-    [BsonElement("moderationSuspensionReportId")]
-    public string? ModerationSuspensionReportId { get; set; }
+    [BsonElement("moderationSuspensionReportIds")]
+    public List<string> ModerationSuspensionReportIds { get; set; } = new();
 }

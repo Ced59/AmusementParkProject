@@ -22,19 +22,14 @@ public sealed class ShareModerationComparisonTargetExecutor
         CancellationToken cancellationToken)
     {
         ProfileComparison? comparison = await this.GetTargetAsync(report, cancellationToken);
-        if (comparison is null || !comparison.IsActive)
+        if (comparison is null)
         {
             return ShareModerationDecisionExecutionOutcome.TargetNotFound;
         }
 
-        if (comparison.ModerationSuspensionReportId == report.Id)
+        if (comparison.HasModerationSuspension(report.Id))
         {
             return ShareModerationDecisionExecutionOutcome.Succeeded;
-        }
-
-        if (comparison.IsModerationSuspended)
-        {
-            return ShareModerationDecisionExecutionOutcome.RetryableConflict;
         }
 
         long expectedVersion = comparison.Version;
@@ -68,8 +63,7 @@ public sealed class ShareModerationComparisonTargetExecutor
             return ShareModerationDecisionExecutionOutcome.TargetNotFound;
         }
 
-        if (!comparison.IsModerationSuspended
-            || comparison.ModerationSuspensionReportId != report.Id)
+        if (!comparison.HasModerationSuspension(report.Id))
         {
             return ShareModerationDecisionExecutionOutcome.Succeeded;
         }

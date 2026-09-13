@@ -9,6 +9,8 @@ public sealed class SharePublication
 {
     public const int MaximumContentFingerprintLength = 128;
 
+    private IReadOnlyList<ShareModerationReportId> moderationSuspensionReportIds;
+
     private SharePublication(
         SharePublicationId id,
         string ownerUserId,
@@ -26,7 +28,7 @@ public sealed class SharePublication
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        ShareModerationReportId? moderationSuspensionReportId)
+        IEnumerable<ShareModerationReportId>? moderationSuspensionReportIds)
     {
         _ = id.Value;
         ValidatePublicationType(type);
@@ -55,18 +57,8 @@ public sealed class SharePublication
             version,
             publishedAtUtc,
             revokedAtUtc);
-        if (moderationSuspensionReportId.HasValue)
-        {
-            _ = moderationSuspensionReportId.Value.Value;
-        }
-
-        if (moderationSuspensionReportId.HasValue
-            && status == SharePublicationStatus.Revoked)
-        {
-            throw CreateValidationException(
-                SharePublicationErrorCodes.InvalidRestoredState,
-                "A revoked share publication cannot remain suspended by moderation.");
-        }
+        ShareModerationReportId[] normalizedModerationSuspensions =
+            NormalizeModerationSuspensions(moderationSuspensionReportIds);
 
         this.Id = id;
         this.OwnerUserId = normalizedOwnerUserId;
@@ -84,7 +76,8 @@ public sealed class SharePublication
         this.RevokedAtUtc = revokedAtUtc;
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
-        this.ModerationSuspensionReportId = moderationSuspensionReportId;
+        this.moderationSuspensionReportIds =
+            Array.AsReadOnly(normalizedModerationSuspensions);
     }
 
     public SharePublicationId Id { get; }
@@ -123,9 +116,10 @@ public sealed class SharePublication
 
     public DateTime UpdatedAtUtc { get; private set; }
 
-    public ShareModerationReportId? ModerationSuspensionReportId { get; private set; }
+    public IReadOnlyList<ShareModerationReportId> ModerationSuspensionReportIds =>
+        this.moderationSuspensionReportIds;
 
-    public bool IsModerationSuspended => this.ModerationSuspensionReportId.HasValue;
+    public bool IsModerationSuspended => this.moderationSuspensionReportIds.Count > 0;
 
     public bool IsResolvable => this.Status == SharePublicationStatus.Published
         && !this.IsModerationSuspended
@@ -179,7 +173,7 @@ public sealed class SharePublication
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         string contentFingerprint = "",
-        ShareModerationReportId? moderationSuspensionReportId = null)
+        IEnumerable<ShareModerationReportId>? moderationSuspensionReportIds = null)
     {
         return new SharePublication(
             id,
@@ -198,7 +192,7 @@ public sealed class SharePublication
             revokedAtUtc,
             createdAtUtc,
             updatedAtUtc,
-            moderationSuspensionReportId);
+            moderationSuspensionReportIds);
     }
 
     public void ReplaceContentPolicy(
@@ -315,6 +309,13 @@ public sealed class SharePublication
         DateTime nowUtc,
         string approvedContentFingerprint = "")
     {
+        if (this.IsModerationSuspended)
+        {
+            throw CreateValidationException(
+                SharePublicationErrorCodes.InvalidTransition,
+                "A publication suspended by moderation cannot be published.");
+        }
+
         if (this.Status is not SharePublicationStatus.Draft and not SharePublicationStatus.NeedsReview)
         {
             throw CreateValidationException(
@@ -424,7 +425,6 @@ public sealed class SharePublication
         this.Status = SharePublicationStatus.Revoked;
         this.Visibility = ShareVisibility.Private;
         this.ShareToken = null;
-        this.ModerationSuspensionReportId = null;
         this.RevokedAtUtc = nowUtc;
         this.UpdatedAtUtc = nowUtc;
     }
@@ -434,18 +434,25 @@ public sealed class SharePublication
         DateTime nowUtc)
     {
         _ = reportId.Value;
-        if (this.Status != SharePublicationStatus.Published
-            || this.ShareToken is null
-            || this.IsModerationSuspended)
+        if (this.Status == SharePublicationStatus.Draft)
         {
             throw CreateValidationException(
                 SharePublicationErrorCodes.InvalidTransition,
-                "Only a currently published share can be suspended by moderation.");
+                "A publication that has never been public cannot be suspended by moderation.");
         }
 
         this.ValidateMutationTimestamp(nowUtc);
+        if (this.HasModerationSuspension(reportId))
+        {
+            return;
+        }
+
         this.EnsureVersionCanIncrement();
-        this.ModerationSuspensionReportId = reportId;
+        this.moderationSuspensionReportIds = Array.AsReadOnly(
+            this.moderationSuspensionReportIds
+                .Append(reportId)
+                .OrderBy(static value => value.Value, StringComparer.Ordinal)
+                .ToArray());
         this.Version++;
         this.UpdatedAtUtc = nowUtc;
     }
@@ -455,18 +462,43 @@ public sealed class SharePublication
         DateTime nowUtc)
     {
         _ = reportId.Value;
-        if (this.ModerationSuspensionReportId != reportId)
+        if (!this.HasModerationSuspension(reportId))
         {
             throw CreateValidationException(
                 SharePublicationErrorCodes.InvalidTransition,
-                "Only the report that suspended a share can restore it.");
+                "Only a report that suspended a share can restore its own block.");
         }
 
         this.ValidateMutationTimestamp(nowUtc);
         this.EnsureVersionCanIncrement();
-        this.ModerationSuspensionReportId = null;
+        this.moderationSuspensionReportIds = Array.AsReadOnly(
+            this.moderationSuspensionReportIds
+                .Where(value => value != reportId)
+                .ToArray());
         this.Version++;
         this.UpdatedAtUtc = nowUtc;
+    }
+
+    public bool HasModerationSuspension(ShareModerationReportId reportId)
+    {
+        _ = reportId.Value;
+        return this.moderationSuspensionReportIds.Contains(reportId);
+    }
+
+    private static ShareModerationReportId[] NormalizeModerationSuspensions(
+        IEnumerable<ShareModerationReportId>? reportIds)
+    {
+        ShareModerationReportId[] normalized = (reportIds
+                ?? Array.Empty<ShareModerationReportId>())
+            .Distinct()
+            .OrderBy(static value => value.Value, StringComparer.Ordinal)
+            .ToArray();
+        foreach (ShareModerationReportId reportId in normalized)
+        {
+            _ = reportId.Value;
+        }
+
+        return normalized;
     }
 
     private static void ValidatePublicationType(SharePublicationType type)

@@ -37,14 +37,14 @@ classDiagram
     +MarkPublicationRestored()
   }
   class SharePublication {
-    +ShareModerationReportId ModerationSuspensionReportId
+    +ShareModerationReportId[] ModerationSuspensionReportIds
     +bool IsModerationSuspended
     +bool IsResolvable
     +SuspendByModeration()
     +RestoreAfterModeration()
   }
   class ProfileComparison {
-    +ShareModerationReportId ModerationSuspensionReportId
+    +ShareModerationReportId[] ModerationSuspensionReportIds
     +bool IsModerationSuspended
     +bool IsPubliclyResolvable
     +SuspendByModeration()
@@ -146,18 +146,20 @@ sequenceDiagram
   end
 ```
 
-Le rétablissement effectue la transition inverse uniquement depuis le rapport qui
-a posé la suspension. Un ancien rapport ne peut donc pas lever une suspension plus
-récente. Le jeton, le snapshot et `PublicationVersion` sont conservés : le contenu
-revient à l'identique sans créer un second système de partage. MongoDB fonctionne
-en instance simple en production ; la tâche durable, créée avant toute mutation,
-assure la compensation et la convergence sans supposer des transactions
-multi-documents indisponibles.
-Deux suspensions visant la même cible sont elles aussi sérialisées par l'état
-métier : tant qu'un rapport plus ancien est encore attaché à la cible, la décision
-suivante reste rejouable au lieu d'être abandonnée. Dès que le rétablissement
-antérieur termine, le worker applique la suspension suivante et empêche une
-réouverture publique entre deux décisions pourtant acceptées.
+Le rétablissement retire uniquement le blocage posé par son propre rapport. Les
+autres blocages actifs restent attachés à la cible : un rapport ancien ne peut donc
+pas lever une suspension plus récente. Le jeton, le snapshot et
+`PublicationVersion` sont conservés : le contenu revient à l'identique sans créer
+un second système de partage. Une révocation demandée par le propriétaire conserve
+également ces blocages ; il ne peut pas contourner la modération en révoquant puis
+en recréant immédiatement le même partage. MongoDB fonctionne en instance simple
+en production ; la tâche durable, créée avant toute mutation, assure la
+compensation et la convergence sans supposer des transactions multi-documents
+indisponibles.
+Deux suspensions visant la même cible coexistent donc dans la même autorité métier.
+Les remplacements optimistes et le rejeu durable convergent vers leur liste
+commune, et la cible ne redevient publiquement résoluble que lorsque chaque rapport
+actif a été explicitement rétabli.
 Une fois la tâche durable enregistrée, un conflit ou une indisponibilité pendant
 la première tentative reste une décision acceptée : l'API répond avec succès afin
 que l'action administrative et son auteur soient bien inscrits dans l'audit HTTP,
@@ -184,7 +186,7 @@ erDiagram
     string shareToken UK
     string type
     string status
-    string moderationSuspensionReportId FK
+    stringArray moderationSuspensionReportIds FK
     long publicationVersion
     long version
   }
@@ -192,7 +194,7 @@ erDiagram
     string _id PK
     string shareToken UK
     string status
-    string moderationSuspensionReportId FK
+    stringArray moderationSuspensionReportIds FK
     long version
   }
   SHARE_MODERATION_REPORTS {
@@ -216,13 +218,13 @@ Index :
 
 - `status + submittedAtUtc desc + _id desc` pour la file stable ;
 - `targetType + targetRecordId + submittedAtUtc desc` pour l'historique ;
-- les recherches publiques existantes exigent
-  `moderationSuspensionReportId = null`.
+- les recherches publiques existantes exigent une liste
+  `moderationSuspensionReportIds` vide.
 
-Au démarrage, `MongoDatabaseInitializer` ajoute à `null` la référence de suspension
-absente sur les publications et comparaisons existantes avant de créer les index.
-Il s'agit d'une migration de l'autorité existante, pas d'un adaptateur ou d'une
-double lecture.
+Au démarrage, `MongoDatabaseInitializer` ajoute une liste vide lorsque le champ de
+suspension est absent sur les publications et comparaisons existantes avant de
+créer les index. Il s'agit d'une migration de l'autorité existante, pas d'un
+adaptateur ou d'une double lecture.
 
 ## Contrats et interface
 
@@ -246,10 +248,11 @@ nouvelle publication qui serait refusée par la règle de modération.
 - transitions, conservation des versions et séparation public/privé dans le Core ;
 - rejet des balises et liens dangereux ;
 - orchestration de la résolution, de la suspension et de l'invalidation ;
-- liaison de la suspension à son rapport exact, rejeu après conflit et compensation
-  d'une décision concurrente ;
-- maintien en rejeu d'une suspension concurrente jusqu'au rétablissement du rapport
-  précédent, pour les publications comme pour les comparaisons ;
+- liaison de chaque suspension à son rapport exact, rejeu après conflit et
+  compensation d'une décision concurrente ;
+- coexistence de plusieurs blocages, restauration ciblée et conservation des
+  blocages pendant une révocation, pour les publications comme pour les
+  comparaisons ;
 - reprogrammation de l'invalidation après une panne intermédiaire et audit
   d'achèvement idempotent par le worker ;
 - acquittement auditable d'une décision durable et refus explicite de republier

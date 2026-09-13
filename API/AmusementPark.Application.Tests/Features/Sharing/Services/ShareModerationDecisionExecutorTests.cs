@@ -41,7 +41,7 @@ public sealed class ShareModerationDecisionExecutorTests
             .ReturnsAsync(publication);
         publications.Setup(value => value.ReplaceAsync(
                 It.Is<SharePublication>(candidate =>
-                    candidate.ModerationSuspensionReportId == firstRead.Id),
+                    candidate.HasModerationSuspension(firstRead.Id)),
                 1,
                 CancellationToken.None))
             .ReturnsAsync(SharePublicationWriteOutcome.Success);
@@ -61,7 +61,7 @@ public sealed class ShareModerationDecisionExecutorTests
             ShareModerationDecisionExecutionOutcome.RetryableConflict,
             firstOutcome);
         Assert.Equal(ShareModerationDecisionExecutionOutcome.Succeeded, retryOutcome);
-        Assert.Equal(firstRead.Id, publication.ModerationSuspensionReportId);
+        Assert.True(publication.HasModerationSuspension(firstRead.Id));
         publications.Verify(value => value.ReplaceAsync(
             It.IsAny<SharePublication>(),
             It.IsAny<long>(),
@@ -110,7 +110,7 @@ public sealed class ShareModerationDecisionExecutorTests
             await executor.ExecuteAsync(payload, CancellationToken.None);
 
         Assert.Equal(ShareModerationDecisionExecutionOutcome.Succeeded, outcome);
-        Assert.Equal(newerReportId, publication.ModerationSuspensionReportId);
+        Assert.True(publication.HasModerationSuspension(newerReportId));
         publications.Verify(value => value.ReplaceAsync(
             It.IsAny<SharePublication>(),
             It.IsAny<long>(),
@@ -121,7 +121,7 @@ public sealed class ShareModerationDecisionExecutorTests
     }
 
     [Fact]
-    public async Task ExecuteAsync_CompetingSuspension_ShouldRetryUntilOlderRestoreCompletes()
+    public async Task ExecuteAsync_CompetingSuspension_ShouldPreventGapDuringOlderRestore()
     {
         SharePublication publication = CreatePublishedPublication();
         ShareModerationReportId olderReportId =
@@ -144,8 +144,9 @@ public sealed class ShareModerationDecisionExecutorTests
             .ReturnsAsync(publication);
         publications.Setup(value => value.ReplaceAsync(
                 It.Is<SharePublication>(candidate =>
-                    candidate.ModerationSuspensionReportId == pendingReport.Id),
-                3,
+                    candidate.HasModerationSuspension(olderReportId)
+                    && candidate.HasModerationSuspension(pendingReport.Id)),
+                2,
                 CancellationToken.None))
             .ReturnsAsync(SharePublicationWriteOutcome.Success);
         Mock<IDurableBackgroundJobRepository> jobs = CreateCacheJobRepository();
@@ -155,26 +156,23 @@ public sealed class ShareModerationDecisionExecutorTests
             jobs);
         ShareModerationDecisionJobPayload payload = CreatePayload(pendingReport.Id);
 
-        ShareModerationDecisionExecutionOutcome blockedOutcome =
+        ShareModerationDecisionExecutionOutcome suspensionOutcome =
             await executor.ExecuteAsync(payload, CancellationToken.None);
-        publication.RestoreAfterModeration(olderReportId, NowUtc.AddMinutes(-1));
-        ShareModerationDecisionExecutionOutcome replayedOutcome =
-            await executor.ExecuteAsync(payload, CancellationToken.None);
+        publication.RestoreAfterModeration(olderReportId, NowUtc);
 
         Assert.Equal(
-            ShareModerationDecisionExecutionOutcome.RetryableConflict,
-            blockedOutcome);
-        Assert.Equal(
             ShareModerationDecisionExecutionOutcome.Succeeded,
-            replayedOutcome);
-        Assert.Equal(pendingReport.Id, publication.ModerationSuspensionReportId);
+            suspensionOutcome);
+        Assert.False(publication.HasModerationSuspension(olderReportId));
+        Assert.True(publication.HasModerationSuspension(pendingReport.Id));
+        Assert.False(publication.IsResolvable);
         reports.VerifyAll();
         publications.VerifyAll();
         jobs.VerifyAll();
     }
 
     [Fact]
-    public async Task ComparisonTarget_CompetingSuspension_ShouldRemainRetryable()
+    public async Task ComparisonTarget_CompetingSuspension_ShouldPreventRestorationGap()
     {
         ProfileComparison comparison = CreateComparison();
         ShareModerationReportId olderReportId =
@@ -193,6 +191,13 @@ public sealed class ShareModerationDecisionExecutorTests
                 comparison.Id,
                 CancellationToken.None))
             .ReturnsAsync(comparison);
+        comparisons.Setup(value => value.ReplaceAsync(
+                It.Is<ProfileComparison>(candidate =>
+                    candidate.HasModerationSuspension(olderReportId)
+                    && candidate.HasModerationSuspension(pendingReport.Id)),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(ProfileComparisonWriteOutcome.Success);
         ShareModerationComparisonTargetExecutor executor =
             new ShareModerationComparisonTargetExecutor(
                 comparisons.Object,
@@ -203,9 +208,12 @@ public sealed class ShareModerationDecisionExecutorTests
             CancellationToken.None);
 
         Assert.Equal(
-            ShareModerationDecisionExecutionOutcome.RetryableConflict,
+            ShareModerationDecisionExecutionOutcome.Succeeded,
             outcome);
-        Assert.Equal(olderReportId, comparison.ModerationSuspensionReportId);
+        comparison.RestoreAfterModeration(olderReportId, NowUtc);
+        Assert.False(comparison.HasModerationSuspension(olderReportId));
+        Assert.True(comparison.HasModerationSuspension(pendingReport.Id));
+        Assert.False(comparison.IsPubliclyResolvable);
         comparisons.VerifyAll();
     }
 
@@ -243,7 +251,7 @@ public sealed class ShareModerationDecisionExecutorTests
             ShareModerationDecisionExecutionOutcome.InvalidTransition,
             outcome);
         Assert.True(publication.IsResolvable);
-        Assert.Null(publication.ModerationSuspensionReportId);
+        Assert.Empty(publication.ModerationSuspensionReportIds);
         reports.VerifyAll();
         publications.VerifyAll();
         jobs.VerifyAll();
@@ -272,7 +280,7 @@ public sealed class ShareModerationDecisionExecutorTests
             .ReturnsAsync(publication);
         publications.Setup(value => value.ReplaceAsync(
                 It.Is<SharePublication>(candidate =>
-                    candidate.ModerationSuspensionReportId == firstRead.Id),
+                    candidate.HasModerationSuspension(firstRead.Id)),
                 1,
                 CancellationToken.None))
             .ReturnsAsync(SharePublicationWriteOutcome.Success);
@@ -296,7 +304,7 @@ public sealed class ShareModerationDecisionExecutorTests
             await executor.ExecuteAsync(payload, CancellationToken.None);
 
         Assert.Equal(ShareModerationDecisionExecutionOutcome.Succeeded, retryOutcome);
-        Assert.Equal(firstRead.Id, publication.ModerationSuspensionReportId);
+        Assert.True(publication.HasModerationSuspension(firstRead.Id));
         jobs.Verify(value => value.EnqueueExactAsync(
             It.IsAny<EnqueueExactBackgroundJobRequest>(),
             CancellationToken.None), Times.Exactly(2));

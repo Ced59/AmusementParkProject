@@ -40,7 +40,7 @@ public sealed class ProfileComparisonMongoMapperTests
 
         Assert.True(restored.IsActive);
         Assert.True(restored.IsModerationSuspended);
-        Assert.Equal(reportId, restored.ModerationSuspensionReportId);
+        Assert.True(restored.HasModerationSuspension(reportId));
         Assert.False(restored.IsPubliclyResolvable);
     }
 

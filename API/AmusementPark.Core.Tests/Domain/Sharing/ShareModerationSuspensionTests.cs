@@ -20,7 +20,7 @@ public sealed class ShareModerationSuspensionTests
 
         Assert.False(publication.IsResolvable);
         Assert.True(publication.IsModerationSuspended);
-        Assert.Equal(reportId, publication.ModerationSuspensionReportId);
+        Assert.True(publication.HasModerationSuspension(reportId));
         Assert.Equal(publicationVersion, publication.PublicationVersion);
         Assert.Equal(token, publication.ShareToken);
 
@@ -63,8 +63,65 @@ public sealed class ShareModerationSuspensionTests
                 ShareModerationReportId.Parse("older-report"),
                 NowUtc.AddMinutes(2)));
 
-        Assert.Equal(activeReportId, publication.ModerationSuspensionReportId);
+        Assert.True(publication.HasModerationSuspension(activeReportId));
         Assert.False(publication.IsResolvable);
+    }
+
+    [Fact]
+    public void SharePublication_MultipleSuspensions_ShouldRestoreOnlyNamedBlock()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        ShareModerationReportId firstReportId =
+            ShareModerationReportId.Parse("report-1");
+        ShareModerationReportId secondReportId =
+            ShareModerationReportId.Parse("report-2");
+        publication.SuspendByModeration(firstReportId, NowUtc.AddMinutes(1));
+        publication.SuspendByModeration(secondReportId, NowUtc.AddMinutes(2));
+
+        publication.RestoreAfterModeration(firstReportId, NowUtc.AddMinutes(3));
+
+        Assert.False(publication.IsResolvable);
+        Assert.False(publication.HasModerationSuspension(firstReportId));
+        Assert.True(publication.HasModerationSuspension(secondReportId));
+    }
+
+    [Fact]
+    public void SharePublication_RevokeWhileSuspended_ShouldPreserveSourceBlock()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        ShareModerationReportId reportId = ShareModerationReportId.Parse("report-1");
+        publication.SuspendByModeration(reportId, NowUtc.AddMinutes(1));
+
+        publication.Revoke(publication.PublicationVersion, NowUtc.AddMinutes(2));
+
+        Assert.Equal(SharePublicationStatus.Revoked, publication.Status);
+        Assert.True(publication.HasModerationSuspension(reportId));
+        Assert.True(publication.IsModerationSuspended);
+
+        publication.RestoreAfterModeration(reportId, NowUtc.AddMinutes(3));
+
+        Assert.False(publication.IsModerationSuspended);
+        Assert.Equal(SharePublicationStatus.Revoked, publication.Status);
+    }
+
+    [Fact]
+    public void ProfileComparison_RevokeAndRestoreOneReport_ShouldKeepOtherBlock()
+    {
+        ProfileComparison comparison = CreateComparison();
+        ShareModerationReportId firstReportId =
+            ShareModerationReportId.Parse("report-1");
+        ShareModerationReportId secondReportId =
+            ShareModerationReportId.Parse("report-2");
+        comparison.SuspendByModeration(firstReportId, NowUtc.AddMinutes(1));
+        comparison.SuspendByModeration(secondReportId, NowUtc.AddMinutes(2));
+
+        comparison.Revoke("creator-1", NowUtc.AddMinutes(3));
+        comparison.RestoreAfterModeration(firstReportId, NowUtc.AddMinutes(4));
+
+        Assert.Equal(ProfileComparisonStatus.Revoked, comparison.Status);
+        Assert.False(comparison.HasModerationSuspension(firstReportId));
+        Assert.True(comparison.HasModerationSuspension(secondReportId));
+        Assert.False(comparison.IsPubliclyResolvable);
     }
 
     private static SharePublication CreatePublishedPublication()
