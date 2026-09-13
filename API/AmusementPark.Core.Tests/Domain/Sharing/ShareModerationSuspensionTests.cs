@@ -105,6 +105,44 @@ public sealed class ShareModerationSuspensionTests
     }
 
     [Fact]
+    public void SharePublication_DraftReplacement_ShouldKeepSourceBlockedUntilRestored()
+    {
+        ShareContentPolicy policy = ShareContentPolicy.CreatePrivateDefault(
+            SharePublicationType.VisitRecap);
+        SharePublication publication = SharePublication.Create(
+            SharePublicationId.New(),
+            "owner-1",
+            SharePublicationType.VisitRecap,
+            "visit-1",
+            policy,
+            1,
+            NowUtc);
+        ShareModerationReportId reportId = ShareModerationReportId.Parse("report-1");
+
+        publication.SuspendByModeration(reportId, NowUtc.AddMinutes(1));
+
+        Assert.True(publication.HasModerationSuspension(reportId));
+        Assert.Throws<SharePublicationValidationException>(() => publication.Publish(
+            ShareToken.Parse("AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8"),
+            ShareVisibility.Unlisted,
+            1,
+            policy,
+            0,
+            NowUtc.AddMinutes(2)));
+
+        publication.RestoreAfterModeration(reportId, NowUtc.AddMinutes(3));
+        publication.Publish(
+            ShareToken.Parse("AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8"),
+            ShareVisibility.Unlisted,
+            1,
+            policy,
+            0,
+            NowUtc.AddMinutes(4));
+
+        Assert.True(publication.IsResolvable);
+    }
+
+    [Fact]
     public void ProfileComparison_RevokeAndRestoreOneReport_ShouldKeepOtherBlock()
     {
         ProfileComparison comparison = CreateComparison();

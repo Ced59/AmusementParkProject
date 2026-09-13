@@ -73,8 +73,11 @@ public sealed class ShareModerationDecisionExecutorTests
         jobs.VerifyAll();
     }
 
-    [Fact]
-    public async Task ExecuteAsync_WhenReportedPublicationWasReplaced_ShouldSuspendTheReplacement()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task ExecuteAsync_WhenReportedPublicationWasReplaced_ShouldSuspendTheReplacement(
+        bool replacementWasPublished)
     {
         SharePublication reportedPublication = CreatePublishedPublication();
         ShareModerationReport report = CreatePendingReport(reportedPublication);
@@ -87,13 +90,18 @@ public sealed class ShareModerationDecisionExecutorTests
             reportedPublication.ContentPolicy,
             reportedPublication.SourceVersion,
             NowUtc.AddMinutes(-3));
-        replacement.Publish(
-            ShareToken.Parse(ReplacementTokenValue),
-            ShareVisibility.Unlisted,
-            replacement.SourceVersion,
-            replacement.ContentPolicy,
-            0,
-            NowUtc.AddMinutes(-2));
+        if (replacementWasPublished)
+        {
+            replacement.Publish(
+                ShareToken.Parse(ReplacementTokenValue),
+                ShareVisibility.Unlisted,
+                replacement.SourceVersion,
+                replacement.ContentPolicy,
+                0,
+                NowUtc.AddMinutes(-2));
+        }
+
+        long replacementVersion = replacement.Version;
         Mock<IShareModerationReportRepository> reports =
             new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
         reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
@@ -120,10 +128,12 @@ public sealed class ShareModerationDecisionExecutorTests
                 It.Is<SharePublication>(candidate =>
                     candidate.Id == replacement.Id
                     && candidate.HasModerationSuspension(report.Id)),
-                1,
+                replacementVersion,
                 CancellationToken.None))
             .ReturnsAsync(SharePublicationWriteOutcome.Success);
-        Mock<IDurableBackgroundJobRepository> jobs = CreateCacheJobRepository();
+        Mock<IDurableBackgroundJobRepository> jobs = replacementWasPublished
+            ? CreateCacheJobRepository()
+            : new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
         ShareModerationDecisionExecutor executor = CreateExecutor(
             reports,
             publications,

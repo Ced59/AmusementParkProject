@@ -434,13 +434,6 @@ public sealed class SharePublication
         DateTime nowUtc)
     {
         _ = reportId.Value;
-        if (this.Status == SharePublicationStatus.Draft)
-        {
-            throw CreateValidationException(
-                SharePublicationErrorCodes.InvalidTransition,
-                "A publication that has never been public cannot be suspended by moderation.");
-        }
-
         this.ValidateMutationTimestamp(nowUtc);
         if (this.HasModerationSuspension(reportId))
         {
