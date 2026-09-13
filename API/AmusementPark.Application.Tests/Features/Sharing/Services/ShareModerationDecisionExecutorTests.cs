@@ -14,6 +14,8 @@ public sealed class ShareModerationDecisionExecutorTests
 {
     private const string TokenValue =
         "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8";
+    private const string ReplacementTokenValue =
+        "ISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0-P0A";
     private static readonly DateTime NowUtc =
         new DateTime(2026, 9, 13, 20, 0, 0, DateTimeKind.Utc);
 
@@ -66,6 +68,75 @@ public sealed class ShareModerationDecisionExecutorTests
             It.IsAny<SharePublication>(),
             It.IsAny<long>(),
             CancellationToken.None), Times.Once);
+        reports.VerifyAll();
+        publications.VerifyAll();
+        jobs.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_WhenReportedPublicationWasReplaced_ShouldSuspendTheReplacement()
+    {
+        SharePublication reportedPublication = CreatePublishedPublication();
+        ShareModerationReport report = CreatePendingReport(reportedPublication);
+        reportedPublication.Revoke(1, NowUtc.AddMinutes(-4));
+        SharePublication replacement = SharePublication.Create(
+            SharePublicationId.Parse("publication-2"),
+            reportedPublication.OwnerUserId,
+            reportedPublication.Type,
+            reportedPublication.SourceScopeKey,
+            reportedPublication.ContentPolicy,
+            reportedPublication.SourceVersion,
+            NowUtc.AddMinutes(-3));
+        replacement.Publish(
+            ShareToken.Parse(ReplacementTokenValue),
+            ShareVisibility.Unlisted,
+            replacement.SourceVersion,
+            replacement.ContentPolicy,
+            0,
+            NowUtc.AddMinutes(-2));
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
+            .ReturnsAsync(report);
+        reports.Setup(value => value.ReplaceAsync(
+                It.Is<ShareModerationReport>(candidate =>
+                    candidate.Status == ShareModerationReportStatus.PublicationSuspended),
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(ShareModerationReportWriteOutcome.Success);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetByIdAsync(
+                reportedPublication.Id,
+                CancellationToken.None))
+            .ReturnsAsync(reportedPublication);
+        publications.Setup(value => value.GetOwnedBySourceAsync(
+                reportedPublication.OwnerUserId,
+                reportedPublication.Type,
+                reportedPublication.SourceScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync(replacement);
+        publications.Setup(value => value.ReplaceAsync(
+                It.Is<SharePublication>(candidate =>
+                    candidate.Id == replacement.Id
+                    && candidate.HasModerationSuspension(report.Id)),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        Mock<IDurableBackgroundJobRepository> jobs = CreateCacheJobRepository();
+        ShareModerationDecisionExecutor executor = CreateExecutor(
+            reports,
+            publications,
+            jobs);
+
+        ShareModerationDecisionExecutionOutcome outcome = await executor.ExecuteAsync(
+            CreatePayload(report.Id),
+            CancellationToken.None);
+
+        Assert.Equal(ShareModerationDecisionExecutionOutcome.Succeeded, outcome);
+        Assert.False(reportedPublication.IsModerationSuspended);
+        Assert.True(replacement.HasModerationSuspension(report.Id));
+        Assert.False(replacement.IsResolvable);
         reports.VerifyAll();
         publications.VerifyAll();
         jobs.VerifyAll();

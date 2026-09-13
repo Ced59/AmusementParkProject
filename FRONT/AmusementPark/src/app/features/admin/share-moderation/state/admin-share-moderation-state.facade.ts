@@ -75,7 +75,7 @@ export class AdminShareModerationStateFacade {
     this.port.review(reportId, request)
       .pipe(
         switchMap((): Observable<PagedResult<ShareModerationReport>> =>
-          this.refreshUntilDecisionSettles(reportId)),
+          this.refreshUntilDecisionSettles(reportId, decision)),
         takeUntilDestroyed(this.destroyRef),
         finalize((): void => this.reviewingReportIdState.set(null)),
       )
@@ -86,8 +86,11 @@ export class AdminShareModerationStateFacade {
 
   private refreshUntilDecisionSettles(
     reportId: string,
+    decision: ShareModerationDecision,
   ): Observable<PagedResult<ShareModerationReport>> {
     const query: ShareModerationReportQuery = this.lastQueryState();
+    const statusBeforeDecision: ShareModerationReport['status'] =
+      decision === 'Restore' ? 'PublicationSuspended' : 'Pending';
     return concat(
       of(0),
       timer(2_000),
@@ -109,7 +112,7 @@ export class AdminShareModerationStateFacade {
           this.lastQueryState() === query
           && response.items.some(
             (report: ShareModerationReport): boolean =>
-              report.reportId === reportId && report.status === 'Pending',
+              report.reportId === reportId && report.status === statusBeforeDecision,
           ),
         true,
       ),

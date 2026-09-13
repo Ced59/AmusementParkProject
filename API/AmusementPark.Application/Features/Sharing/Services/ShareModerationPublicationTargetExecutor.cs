@@ -128,7 +128,30 @@ public sealed class ShareModerationPublicationTargetExecutor
         SharePublication? publication = await this.publicationRepository.GetByIdAsync(
             publicationId,
             cancellationToken);
-        return publication?.Type == publicationType ? publication : null;
+        if (publication?.Type != publicationType
+            || publication.Status != SharePublicationStatus.Revoked
+            || publication.HasModerationSuspension(report.Id))
+        {
+            return publication?.Type == publicationType ? publication : null;
+        }
+
+        SharePublication? currentPublication =
+            await this.publicationRepository.GetOwnedBySourceAsync(
+                publication.OwnerUserId,
+                publication.Type,
+                publication.SourceScopeKey,
+                cancellationToken);
+        return currentPublication?.Type == publicationType
+            && string.Equals(
+                currentPublication.OwnerUserId,
+                publication.OwnerUserId,
+                StringComparison.Ordinal)
+            && string.Equals(
+                currentPublication.SourceScopeKey,
+                publication.SourceScopeKey,
+                StringComparison.Ordinal)
+                ? currentPublication
+                : publication;
     }
 
     private DateTime NextTimestamp(DateTime updatedAtUtc)
