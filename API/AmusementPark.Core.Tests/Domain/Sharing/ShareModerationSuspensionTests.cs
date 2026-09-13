@@ -12,17 +12,19 @@ public sealed class ShareModerationSuspensionTests
     public void SharePublication_SuspendAndRestore_ShouldPreservePublicVersionAndToken()
     {
         SharePublication publication = CreatePublishedPublication();
+        ShareModerationReportId reportId = ShareModerationReportId.Parse("report-1");
         long publicationVersion = publication.PublicationVersion;
         ShareToken token = publication.ShareToken!.Value;
 
-        publication.SuspendByModeration(NowUtc.AddMinutes(1));
+        publication.SuspendByModeration(reportId, NowUtc.AddMinutes(1));
 
         Assert.False(publication.IsResolvable);
         Assert.True(publication.IsModerationSuspended);
+        Assert.Equal(reportId, publication.ModerationSuspensionReportId);
         Assert.Equal(publicationVersion, publication.PublicationVersion);
         Assert.Equal(token, publication.ShareToken);
 
-        publication.RestoreAfterModeration(NowUtc.AddMinutes(2));
+        publication.RestoreAfterModeration(reportId, NowUtc.AddMinutes(2));
 
         Assert.True(publication.IsResolvable);
         Assert.False(publication.IsModerationSuspended);
@@ -34,17 +36,35 @@ public sealed class ShareModerationSuspensionTests
     public void ProfileComparison_SuspendAndRestore_ShouldOnlyChangePublicResolution()
     {
         ProfileComparison comparison = CreateComparison();
+        ShareModerationReportId reportId = ShareModerationReportId.Parse("report-1");
 
-        comparison.SuspendByModeration(NowUtc.AddMinutes(1));
+        comparison.SuspendByModeration(reportId, NowUtc.AddMinutes(1));
 
         Assert.True(comparison.IsActive);
         Assert.False(comparison.IsPubliclyResolvable);
         Assert.True(comparison.IsModerationSuspended);
 
-        comparison.RestoreAfterModeration(NowUtc.AddMinutes(2));
+        comparison.RestoreAfterModeration(reportId, NowUtc.AddMinutes(2));
 
         Assert.True(comparison.IsPubliclyResolvable);
         Assert.False(comparison.IsModerationSuspended);
+    }
+
+    [Fact]
+    public void SharePublication_RestoreFromAnotherReport_ShouldKeepSuspension()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        ShareModerationReportId activeReportId =
+            ShareModerationReportId.Parse("active-report");
+        publication.SuspendByModeration(activeReportId, NowUtc.AddMinutes(1));
+
+        Assert.Throws<SharePublicationValidationException>(() =>
+            publication.RestoreAfterModeration(
+                ShareModerationReportId.Parse("older-report"),
+                NowUtc.AddMinutes(2)));
+
+        Assert.Equal(activeReportId, publication.ModerationSuspensionReportId);
+        Assert.False(publication.IsResolvable);
     }
 
     private static SharePublication CreatePublishedPublication()

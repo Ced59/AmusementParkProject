@@ -24,8 +24,11 @@ public sealed class GetShareModerationReportsQueryHandler
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(query);
+        long skip = ((long)query.Criteria.Paging.Page - 1L)
+            * query.Criteria.Paging.PageSize;
         if (query.Criteria.Paging.Page < 1
             || query.Criteria.Paging.PageSize is < 1 or > 100
+            || skip > int.MaxValue
             || query.Criteria.Status.HasValue && !Enum.IsDefined(query.Criteria.Status.Value)
             || query.Criteria.TargetType.HasValue && !Enum.IsDefined(query.Criteria.TargetType.Value)
             || query.Criteria.Reason.HasValue && !Enum.IsDefined(query.Criteria.Reason.Value))

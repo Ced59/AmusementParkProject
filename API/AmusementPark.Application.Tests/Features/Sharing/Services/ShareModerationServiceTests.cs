@@ -109,15 +109,20 @@ public sealed class ShareModerationServiceTests
             .ReturnsAsync(publication);
         publications.Setup(value => value.ReplaceAsync(
                 It.Is<SharePublication>(candidate =>
-                    candidate.IsModerationSuspended && !candidate.IsResolvable),
+                    candidate.ModerationSuspensionReportId == report.Id
+                    && !candidate.IsResolvable),
                 1,
                 CancellationToken.None))
             .ReturnsAsync(SharePublicationWriteOutcome.Success);
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        List<EnqueueExactBackgroundJobRequest> enqueuedJobs =
+            new List<EnqueueExactBackgroundJobRequest>();
         jobs.Setup(value => value.EnqueueExactAsync(
                 It.IsAny<EnqueueExactBackgroundJobRequest>(),
                 CancellationToken.None))
+            .Callback<EnqueueExactBackgroundJobRequest, CancellationToken>(
+                (request, _) => enqueuedJobs.Add(request))
             .ReturnsAsync((DurableBackgroundJob)null!);
         ShareModerationService service = CreateService(reports, publications, jobs);
 
@@ -131,6 +136,13 @@ public sealed class ShareModerationServiceTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal(1, publication.PublicationVersion);
+        Assert.Equal(
+            new[]
+            {
+                ShareModerationDecisionJob.Kind,
+                SharePublicationCacheInvalidationJob.Kind,
+            },
+            enqueuedJobs.Select(static request => request.Kind));
         jobs.VerifyAll();
         publications.VerifyAll();
         reports.VerifyAll();
@@ -145,12 +157,28 @@ public sealed class ShareModerationServiceTests
             new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
         Mock<IDurableBackgroundJobRepository> jobRepository = jobs
             ?? new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        SharePublicationCacheInvalidationScheduler invalidationScheduler =
+            new SharePublicationCacheInvalidationScheduler(jobRepository.Object);
+        ShareModerationDecisionScheduler decisionScheduler =
+            new ShareModerationDecisionScheduler(jobRepository.Object);
+        TimeProvider timeProvider = new SharePublicationFixedTimeProvider(NowUtc);
+        ShareModerationDecisionExecutor decisionExecutor =
+            new ShareModerationDecisionExecutor(
+                reports.Object,
+                new ShareModerationPublicationTargetExecutor(
+                    publications.Object,
+                    invalidationScheduler,
+                    timeProvider),
+                new ShareModerationComparisonTargetExecutor(
+                    comparisons.Object,
+                    timeProvider));
         return new ShareModerationService(
             reports.Object,
             publications.Object,
             comparisons.Object,
-            new SharePublicationCacheInvalidationScheduler(jobRepository.Object),
-            new SharePublicationFixedTimeProvider(NowUtc));
+            decisionScheduler,
+            decisionExecutor,
+            timeProvider);
     }
 
     private static SharePublication CreatePublishedPublication()

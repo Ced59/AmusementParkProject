@@ -21,7 +21,7 @@ public sealed class ProfileComparison
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         long version,
-        bool isModerationSuspended)
+        ShareModerationReportId? moderationSuspensionReportId)
     {
         _ = id.Value;
         _ = invitationId.Value;
@@ -56,8 +56,14 @@ public sealed class ProfileComparison
         }
 
         bool hasRevocation = !string.IsNullOrWhiteSpace(revokedByUserId) && revokedAtUtc.HasValue;
+        if (moderationSuspensionReportId.HasValue)
+        {
+            _ = moderationSuspensionReportId.Value.Value;
+        }
+
         if ((status == ProfileComparisonStatus.Revoked) != hasRevocation
-            || isModerationSuspended && status == ProfileComparisonStatus.Revoked
+            || moderationSuspensionReportId.HasValue
+                && status == ProfileComparisonStatus.Revoked
             || hasRevocation && (!IsParticipant(
                 normalizedCreatorUserId,
                 normalizedAcceptorUserId,
@@ -84,7 +90,7 @@ public sealed class ProfileComparison
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
         this.Version = version;
-        this.IsModerationSuspended = isModerationSuspended;
+        this.ModerationSuspensionReportId = moderationSuspensionReportId;
     }
 
     public ProfileComparisonId Id { get; }
@@ -119,7 +125,9 @@ public sealed class ProfileComparison
 
     public long Version { get; private set; }
 
-    public bool IsModerationSuspended { get; private set; }
+    public ShareModerationReportId? ModerationSuspensionReportId { get; private set; }
+
+    public bool IsModerationSuspended => this.ModerationSuspensionReportId.HasValue;
 
     public bool IsActive => this.Status == ProfileComparisonStatus.Active;
 
@@ -155,7 +163,7 @@ public sealed class ProfileComparison
             createdAtUtc,
             createdAtUtc,
             0,
-            false);
+            null);
     }
 
     public static ProfileComparison Restore(
@@ -175,7 +183,7 @@ public sealed class ProfileComparison
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         long version,
-        bool isModerationSuspended = false)
+        ShareModerationReportId? moderationSuspensionReportId = null)
     {
         return new ProfileComparison(
             id,
@@ -194,7 +202,7 @@ public sealed class ProfileComparison
             createdAtUtc,
             updatedAtUtc,
             version,
-            isModerationSuspended);
+            moderationSuspensionReportId);
     }
 
     public bool HasParticipant(string userId)
@@ -227,15 +235,18 @@ public sealed class ProfileComparison
         }
 
         this.Status = ProfileComparisonStatus.Revoked;
-        this.IsModerationSuspended = false;
+        this.ModerationSuspensionReportId = null;
         this.RevokedByUserId = normalizedUserId;
         this.RevokedAtUtc = revokedAtUtc;
         this.UpdatedAtUtc = revokedAtUtc;
         this.Version++;
     }
 
-    public void SuspendByModeration(DateTime suspendedAtUtc)
+    public void SuspendByModeration(
+        ShareModerationReportId reportId,
+        DateTime suspendedAtUtc)
     {
+        _ = reportId.Value;
         ValidateUtc(suspendedAtUtc, nameof(suspendedAtUtc));
         if (!this.IsActive || this.IsModerationSuspended)
         {
@@ -244,30 +255,35 @@ public sealed class ProfileComparison
                 "Only an active public comparison can be suspended by moderation.");
         }
 
-        this.AdvanceModerationState(suspendedAtUtc, true);
+        this.AdvanceModerationState(suspendedAtUtc, reportId);
     }
 
-    public void RestoreAfterModeration(DateTime restoredAtUtc)
+    public void RestoreAfterModeration(
+        ShareModerationReportId reportId,
+        DateTime restoredAtUtc)
     {
+        _ = reportId.Value;
         ValidateUtc(restoredAtUtc, nameof(restoredAtUtc));
-        if (!this.IsActive || !this.IsModerationSuspended)
+        if (!this.IsActive || this.ModerationSuspensionReportId != reportId)
         {
             throw new ProfileComparisonValidationException(
                 ProfileComparisonErrorCodes.InvalidState,
-                "Only a moderation-suspended comparison can be restored.");
+                "Only the report that suspended a comparison can restore it.");
         }
 
-        this.AdvanceModerationState(restoredAtUtc, false);
+        this.AdvanceModerationState(restoredAtUtc, null);
     }
 
-    private void AdvanceModerationState(DateTime changedAtUtc, bool isSuspended)
+    private void AdvanceModerationState(
+        DateTime changedAtUtc,
+        ShareModerationReportId? moderationSuspensionReportId)
     {
         if (changedAtUtc < this.UpdatedAtUtc || this.Version == long.MaxValue)
         {
             throw InvalidState();
         }
 
-        this.IsModerationSuspended = isSuspended;
+        this.ModerationSuspensionReportId = moderationSuspensionReportId;
         this.UpdatedAtUtc = changedAtUtc;
         this.Version++;
     }

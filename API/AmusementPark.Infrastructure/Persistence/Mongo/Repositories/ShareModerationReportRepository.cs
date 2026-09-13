@@ -43,7 +43,8 @@ public sealed class ShareModerationReportRepository : IShareModerationReportRepo
         long totalItems = await this.collection.CountDocumentsAsync(
             filter,
             cancellationToken: cancellationToken);
-        int skip = checked((criteria.Paging.Page - 1) * criteria.Paging.PageSize);
+        int skip = checked((int)(((long)criteria.Paging.Page - 1L)
+            * criteria.Paging.PageSize));
         List<ShareModerationReportDocument> documents = await this.collection
             .Find(filter)
             .SortByDescending(static document => document.SubmittedAtUtc)

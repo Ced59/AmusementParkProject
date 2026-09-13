@@ -54,6 +54,6 @@ public sealed class SharePublicationDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? RevokedAtUtc { get; set; }
 
-    [BsonElement("isModerationSuspended")]
-    public bool IsModerationSuspended { get; set; }
+    [BsonElement("moderationSuspensionReportId")]
+    public string? ModerationSuspensionReportId { get; set; }
 }

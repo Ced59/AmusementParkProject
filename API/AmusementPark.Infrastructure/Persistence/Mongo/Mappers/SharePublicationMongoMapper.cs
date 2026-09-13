@@ -29,7 +29,7 @@ internal static class SharePublicationMongoMapper
             Version = publication.Version,
             PublishedAtUtc = publication.PublishedAtUtc,
             RevokedAtUtc = publication.RevokedAtUtc,
-            IsModerationSuspended = publication.IsModerationSuspended,
+            ModerationSuspensionReportId = publication.ModerationSuspensionReportId?.Value,
             CreatedAt = publication.CreatedAtUtc,
             UpdatedAt = publication.UpdatedAtUtc,
         };
@@ -60,6 +60,8 @@ internal static class SharePublicationMongoMapper
             document.CreatedAt,
             document.UpdatedAt,
             document.ContentFingerprint,
-            document.IsModerationSuspended);
+            document.ModerationSuspensionReportId is null
+                ? null
+                : ShareModerationReportId.Parse(document.ModerationSuspensionReportId));
     }
 }

@@ -606,11 +606,11 @@ private readonly IMongoDatabase database;
                 this.settings.SharePublicationsCollectionName);
         await sharePublicationsCollection.UpdateManyAsync(
             Builders<SharePublicationDocument>.Filter.Exists(
-                "isModerationSuspended",
+                "moderationSuspensionReportId",
                 false),
             Builders<SharePublicationDocument>.Update.Set(
-                static document => document.IsModerationSuspended,
-                false),
+                static document => document.ModerationSuspensionReportId,
+                null),
             cancellationToken: cancellationToken);
         await sharePublicationsCollection.Indexes.CreateManyAsync(
             SharePublicationMongoDefinitions.BuildIndexes(),
@@ -632,11 +632,11 @@ private readonly IMongoDatabase database;
                 this.settings.ProfileComparisonsCollectionName);
         await comparisonsCollection.UpdateManyAsync(
             Builders<ProfileComparisonDocument>.Filter.Exists(
-                "isModerationSuspended",
+                "moderationSuspensionReportId",
                 false),
             Builders<ProfileComparisonDocument>.Update.Set(
-                static document => document.IsModerationSuspended,
-                false),
+                static document => document.ModerationSuspensionReportId,
+                null),
             cancellationToken: cancellationToken);
         await this.DropIndexIfExistsAsync(
             comparisonsCollection,

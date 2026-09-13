@@ -76,8 +76,8 @@ internal static class SharePublicationMongoDefinitions
                 static document => document.Status,
                 SharePublicationStatus.Published)
             & Builders<SharePublicationDocument>.Filter.Eq(
-                static document => document.IsModerationSuspended,
-                false)
+                static document => document.ModerationSuspensionReportId,
+                null)
             & Builders<SharePublicationDocument>.Filter.In(
                 static document => document.Visibility,
                 new[] { ShareVisibility.Unlisted, ShareVisibility.Public });

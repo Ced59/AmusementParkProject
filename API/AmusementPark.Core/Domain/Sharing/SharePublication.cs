@@ -26,7 +26,7 @@ public sealed class SharePublication
         DateTime? revokedAtUtc,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        bool isModerationSuspended)
+        ShareModerationReportId? moderationSuspensionReportId)
     {
         _ = id.Value;
         ValidatePublicationType(type);
@@ -55,7 +55,13 @@ public sealed class SharePublication
             version,
             publishedAtUtc,
             revokedAtUtc);
-        if (isModerationSuspended && status == SharePublicationStatus.Revoked)
+        if (moderationSuspensionReportId.HasValue)
+        {
+            _ = moderationSuspensionReportId.Value.Value;
+        }
+
+        if (moderationSuspensionReportId.HasValue
+            && status == SharePublicationStatus.Revoked)
         {
             throw CreateValidationException(
                 SharePublicationErrorCodes.InvalidRestoredState,
@@ -78,7 +84,7 @@ public sealed class SharePublication
         this.RevokedAtUtc = revokedAtUtc;
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
-        this.IsModerationSuspended = isModerationSuspended;
+        this.ModerationSuspensionReportId = moderationSuspensionReportId;
     }
 
     public SharePublicationId Id { get; }
@@ -117,7 +123,9 @@ public sealed class SharePublication
 
     public DateTime UpdatedAtUtc { get; private set; }
 
-    public bool IsModerationSuspended { get; private set; }
+    public ShareModerationReportId? ModerationSuspensionReportId { get; private set; }
+
+    public bool IsModerationSuspended => this.ModerationSuspensionReportId.HasValue;
 
     public bool IsResolvable => this.Status == SharePublicationStatus.Published
         && !this.IsModerationSuspended
@@ -151,7 +159,7 @@ public sealed class SharePublication
             null,
             nowUtc,
             nowUtc,
-            false);
+            null);
     }
 
     public static SharePublication Restore(
@@ -171,7 +179,7 @@ public sealed class SharePublication
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         string contentFingerprint = "",
-        bool isModerationSuspended = false)
+        ShareModerationReportId? moderationSuspensionReportId = null)
     {
         return new SharePublication(
             id,
@@ -190,7 +198,7 @@ public sealed class SharePublication
             revokedAtUtc,
             createdAtUtc,
             updatedAtUtc,
-            isModerationSuspended);
+            moderationSuspensionReportId);
     }
 
     public void ReplaceContentPolicy(
@@ -416,13 +424,16 @@ public sealed class SharePublication
         this.Status = SharePublicationStatus.Revoked;
         this.Visibility = ShareVisibility.Private;
         this.ShareToken = null;
-        this.IsModerationSuspended = false;
+        this.ModerationSuspensionReportId = null;
         this.RevokedAtUtc = nowUtc;
         this.UpdatedAtUtc = nowUtc;
     }
 
-    public void SuspendByModeration(DateTime nowUtc)
+    public void SuspendByModeration(
+        ShareModerationReportId reportId,
+        DateTime nowUtc)
     {
+        _ = reportId.Value;
         if (this.Status != SharePublicationStatus.Published
             || this.ShareToken is null
             || this.IsModerationSuspended)
@@ -434,23 +445,26 @@ public sealed class SharePublication
 
         this.ValidateMutationTimestamp(nowUtc);
         this.EnsureVersionCanIncrement();
-        this.IsModerationSuspended = true;
+        this.ModerationSuspensionReportId = reportId;
         this.Version++;
         this.UpdatedAtUtc = nowUtc;
     }
 
-    public void RestoreAfterModeration(DateTime nowUtc)
+    public void RestoreAfterModeration(
+        ShareModerationReportId reportId,
+        DateTime nowUtc)
     {
-        if (!this.IsModerationSuspended)
+        _ = reportId.Value;
+        if (this.ModerationSuspensionReportId != reportId)
         {
             throw CreateValidationException(
                 SharePublicationErrorCodes.InvalidTransition,
-                "Only a moderation-suspended share can be restored.");
+                "Only the report that suspended a share can restore it.");
         }
 
         this.ValidateMutationTimestamp(nowUtc);
         this.EnsureVersionCanIncrement();
-        this.IsModerationSuspended = false;
+        this.ModerationSuspensionReportId = null;
         this.Version++;
         this.UpdatedAtUtc = nowUtc;
     }

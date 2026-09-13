@@ -33,12 +33,14 @@ public sealed class ProfileComparisonMongoMapperTests
     public void Mapping_ShouldRoundTripModerationSuspensionWithoutRevokingComparison()
     {
         ProfileComparison comparison = CreateComparison();
-        comparison.SuspendByModeration(NowUtc.AddMinutes(1));
+        ShareModerationReportId reportId = ShareModerationReportId.Parse("report-1");
+        comparison.SuspendByModeration(reportId, NowUtc.AddMinutes(1));
 
         ProfileComparison restored = comparison.ToDocument().ToDomain();
 
         Assert.True(restored.IsActive);
         Assert.True(restored.IsModerationSuspended);
+        Assert.Equal(reportId, restored.ModerationSuspensionReportId);
         Assert.False(restored.IsPubliclyResolvable);
     }
 

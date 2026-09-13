@@ -37,12 +37,14 @@ classDiagram
     +MarkPublicationRestored()
   }
   class SharePublication {
+    +ShareModerationReportId ModerationSuspensionReportId
     +bool IsModerationSuspended
     +bool IsResolvable
     +SuspendByModeration()
     +RestoreAfterModeration()
   }
   class ProfileComparison {
+    +ShareModerationReportId ModerationSuspensionReportId
     +bool IsModerationSuspended
     +bool IsPubliclyResolvable
     +SuspendByModeration()
@@ -52,6 +54,12 @@ classDiagram
     +SubmitAsync()
     +ReviewAsync()
   }
+  class ShareModerationDecisionScheduler
+  class ShareModerationDecisionExecutor
+  class ShareModerationPublicationTargetExecutor
+  class ShareModerationComparisonTargetExecutor
+  class ShareModerationDecisionJobHandler
+  class IDurableBackgroundJobRepository
   class IShareModerationReportRepository
   class ISharePublicationRepository
   class IProfileComparisonRepository
@@ -59,9 +67,15 @@ classDiagram
 
   ShareModerationService --> ShareModerationReport
   ShareModerationService --> IShareModerationReportRepository
-  ShareModerationService --> ISharePublicationRepository
-  ShareModerationService --> IProfileComparisonRepository
-  ShareModerationService --> SharePublicationCacheInvalidationScheduler
+  ShareModerationService --> ShareModerationDecisionScheduler
+  ShareModerationService --> ShareModerationDecisionExecutor
+  ShareModerationDecisionScheduler --> IDurableBackgroundJobRepository
+  ShareModerationDecisionJobHandler --> ShareModerationDecisionExecutor
+  ShareModerationDecisionExecutor --> ShareModerationPublicationTargetExecutor
+  ShareModerationDecisionExecutor --> ShareModerationComparisonTargetExecutor
+  ShareModerationPublicationTargetExecutor --> ISharePublicationRepository
+  ShareModerationPublicationTargetExecutor --> SharePublicationCacheInvalidationScheduler
+  ShareModerationComparisonTargetExecutor --> IProfileComparisonRepository
   ISharePublicationRepository --> SharePublication
   IProfileComparisonRepository --> ProfileComparison
 ```
@@ -106,6 +120,8 @@ sequenceDiagram
   participant UI as File de modération
   participant API as PUT /admin/share-moderation/reports/{reportId}
   participant S as ShareModerationService
+  participant J as Tâche durable de décision
+  participant E as ShareModerationDecisionExecutor
   participant T as Publication ou comparaison
   participant R as Rapport
   participant C as Invalidation des caches
@@ -114,17 +130,31 @@ sequenceDiagram
   UI->>API: décision Suspend + note facultative
   API->>S: Review(command, adminId)
   S->>R: recharge Pending avec version
-  S->>T: SuspendByModeration(now)
-  T-->>S: IsResolvable = false
-  S->>C: purge les caches publics si publication
-  S->>R: MarkPublicationSuspended(adminId)
+  S->>J: enregistre la décision avant toute mutation
+  S->>E: première tentative synchrone
+  E->>T: SuspendByModeration(reportId, now)
+  T-->>E: IsResolvable = false + reportId actif
+  E->>C: purge les caches publics si publication
+  E->>R: MarkPublicationSuspended(adminId)
   R-->>API: écriture optimiste réussie
   API-->>UI: 204 puis rechargement de la file
+  opt panne ou conflit entre les deux écritures
+    J->>E: rejoue la même décision idempotente
+    E->>T: complète ou compense l'état manquant
+    E->>R: complète l'audit manquant
+  end
 ```
 
-Le rétablissement effectue la transition inverse depuis le même rapport. Le jeton,
-le snapshot et `PublicationVersion` sont conservés : le contenu revient à l'identique
-sans créer un second système de partage.
+Le rétablissement effectue la transition inverse uniquement depuis le rapport qui
+a posé la suspension. Un ancien rapport ne peut donc pas lever une suspension plus
+récente. Le jeton, le snapshot et `PublicationVersion` sont conservés : le contenu
+revient à l'identique sans créer un second système de partage. MongoDB fonctionne
+en instance simple en production ; la tâche durable, créée avant toute mutation,
+assure la compensation et la convergence sans supposer des transactions
+multi-documents indisponibles.
+Si une dépendance reste indisponible pendant toute la fenêtre de rejeu, la tâche
+crée une continuation durable avant de terminer : la convergence n'est donc pas
+abandonnée après un nombre fixe de tentatives.
 
 ## Schéma MongoDB
 
@@ -135,7 +165,7 @@ erDiagram
     string shareToken UK
     string type
     string status
-    boolean isModerationSuspended
+    string moderationSuspensionReportId FK
     long publicationVersion
     long version
   }
@@ -143,7 +173,7 @@ erDiagram
     string _id PK
     string shareToken UK
     string status
-    boolean isModerationSuspended
+    string moderationSuspensionReportId FK
     long version
   }
   SHARE_MODERATION_REPORTS {
@@ -159,19 +189,21 @@ erDiagram
     string decisionNote
     long version
   }
-  SHARE_PUBLICATIONS ||--o{ SHARE_MODERATION_REPORTS : "référence interne selon targetType"
-  PROFILE_COMPARISONS ||--o{ SHARE_MODERATION_REPORTS : "référence interne selon targetType"
+  SHARE_PUBLICATIONS o|--o{ SHARE_MODERATION_REPORTS : "suspension active et historique"
+  PROFILE_COMPARISONS o|--o{ SHARE_MODERATION_REPORTS : "suspension active et historique"
 ```
 
 Index :
 
 - `status + submittedAtUtc desc + _id desc` pour la file stable ;
 - `targetType + targetRecordId + submittedAtUtc desc` pour l'historique ;
-- les recherches publiques existantes ajoutent `isModerationSuspended = false`.
+- les recherches publiques existantes exigent
+  `moderationSuspensionReportId = null`.
 
-Au démarrage, `MongoDatabaseInitializer` met à `false` le champ absent sur les
-publications et comparaisons existantes avant de créer les index. Il s'agit d'une
-migration de l'autorité existante, pas d'un adaptateur ou d'une double lecture.
+Au démarrage, `MongoDatabaseInitializer` ajoute à `null` la référence de suspension
+absente sur les publications et comparaisons existantes avant de créer les index.
+Il s'agit d'une migration de l'autorité existante, pas d'un adaptateur ou d'une
+double lecture.
 
 ## Contrats et interface
 
@@ -190,7 +222,10 @@ en lazy loading et n'alourdit pas le bundle public initial.
 - transitions, conservation des versions et séparation public/privé dans le Core ;
 - rejet des balises et liens dangereux ;
 - orchestration de la résolution, de la suspension et de l'invalidation ;
+- liaison de la suspension à son rapport exact, rejeu après conflit et compensation
+  d'une décision concurrente ;
 - aller-retour Mongo, index de file et absence de jeton dans les rapports ;
+- rejet d'une pagination dont le décalage dépasserait la limite MongoDB ;
 - mappings HTTP sans références internes ;
 - façades Angular, prévention des doubles envois et contrats responsive ;
 - validation des huit catalogues de traduction et de l'architecture des ports.

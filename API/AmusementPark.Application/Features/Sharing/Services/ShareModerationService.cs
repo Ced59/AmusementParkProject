@@ -1,5 +1,6 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Sharing.Commands;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Core.Domain.Sharing;
 
@@ -10,14 +11,16 @@ public sealed class ShareModerationService
     private readonly IShareModerationReportRepository reportRepository;
     private readonly ISharePublicationRepository publicationRepository;
     private readonly IProfileComparisonRepository comparisonRepository;
-    private readonly SharePublicationCacheInvalidationScheduler invalidationScheduler;
+    private readonly ShareModerationDecisionScheduler decisionScheduler;
+    private readonly ShareModerationDecisionExecutor decisionExecutor;
     private readonly TimeProvider timeProvider;
 
     public ShareModerationService(
         IShareModerationReportRepository reportRepository,
         ISharePublicationRepository publicationRepository,
         IProfileComparisonRepository comparisonRepository,
-        SharePublicationCacheInvalidationScheduler invalidationScheduler,
+        ShareModerationDecisionScheduler decisionScheduler,
+        ShareModerationDecisionExecutor decisionExecutor,
         TimeProvider? timeProvider = null)
     {
         this.reportRepository = reportRepository
@@ -26,8 +29,10 @@ public sealed class ShareModerationService
             ?? throw new ArgumentNullException(nameof(publicationRepository));
         this.comparisonRepository = comparisonRepository
             ?? throw new ArgumentNullException(nameof(comparisonRepository));
-        this.invalidationScheduler = invalidationScheduler
-            ?? throw new ArgumentNullException(nameof(invalidationScheduler));
+        this.decisionScheduler = decisionScheduler
+            ?? throw new ArgumentNullException(nameof(decisionScheduler));
+        this.decisionExecutor = decisionExecutor
+            ?? throw new ArgumentNullException(nameof(decisionExecutor));
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -83,6 +88,8 @@ public sealed class ShareModerationService
     {
         if (string.IsNullOrWhiteSpace(command.ReviewerUserId)
             || !Enum.IsDefined(command.Decision)
+            || command.Note?.Trim().Length > ShareModerationReport.MaximumDecisionNoteLength
+            || !PublicShareTextSafetyPolicy.IsSafePlainText(command.Note)
             || !ShareModerationReportId.TryParse(command.ReportId, out ShareModerationReportId reportId))
         {
             return ApplicationResult.Failure(
@@ -98,53 +105,77 @@ public sealed class ShareModerationService
                 SharingApplicationErrors.ModerationReportNotFound());
         }
 
-        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        long expectedReportVersion = report.Version;
-        try
+        DateTime requestedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        if (command.Decision == ShareModerationDecision.Dismiss)
         {
-            if (command.Decision == ShareModerationDecision.Dismiss)
+            long expectedReportVersion = report.Version;
+            try
             {
-                report.Dismiss(command.ReviewerUserId, command.Note, nowUtc);
+                report.Dismiss(command.ReviewerUserId, command.Note, requestedAtUtc);
             }
-            else
+            catch (ShareModerationValidationException)
             {
-                ApplicationResult targetResult = command.Decision == ShareModerationDecision.Suspend
-                    ? await this.SuspendTargetAsync(report, nowUtc, cancellationToken)
-                    : await this.RestoreTargetAsync(report, nowUtc, cancellationToken);
-                if (!targetResult.IsSuccess)
-                {
-                    return targetResult;
-                }
+                return ApplicationResult.Failure(
+                    SharingApplicationErrors.InvalidModerationTransition());
+            }
 
-                if (command.Decision == ShareModerationDecision.Suspend)
-                {
-                    report.MarkPublicationSuspended(
-                        command.ReviewerUserId,
-                        command.Note,
-                        nowUtc);
-                }
-                else
-                {
-                    report.MarkPublicationRestored(
-                        command.ReviewerUserId,
-                        command.Note,
-                        nowUtc);
-                }
-            }
+            ShareModerationReportWriteOutcome dismissOutcome =
+                await this.reportRepository.ReplaceAsync(
+                    report,
+                    expectedReportVersion,
+                    cancellationToken);
+            return dismissOutcome == ShareModerationReportWriteOutcome.Success
+                ? ApplicationResult.Success()
+                : ApplicationResult.Failure(SharingApplicationErrors.ModerationConflict());
         }
-        catch (ShareModerationValidationException)
+
+        bool isExpectedTransition = command.Decision switch
+        {
+            ShareModerationDecision.Suspend =>
+                report.Status == ShareModerationReportStatus.Pending,
+            ShareModerationDecision.Restore =>
+                report.Status == ShareModerationReportStatus.PublicationSuspended,
+            _ => false,
+        };
+        if (!isExpectedTransition)
         {
             return ApplicationResult.Failure(
                 SharingApplicationErrors.InvalidModerationTransition());
         }
 
-        ShareModerationReportWriteOutcome outcome = await this.reportRepository.ReplaceAsync(
-            report,
-            expectedReportVersion,
-            cancellationToken);
-        return outcome == ShareModerationReportWriteOutcome.Success
-            ? ApplicationResult.Success()
-            : ApplicationResult.Failure(SharingApplicationErrors.ModerationConflict());
+        ShareModerationDecisionJobPayload payload = new ShareModerationDecisionJobPayload(
+            report.Id.Value,
+            command.Decision,
+            command.ReviewerUserId,
+            command.Note,
+            requestedAtUtc);
+        await this.decisionScheduler.ScheduleAsync(payload, cancellationToken);
+
+        ShareModerationDecisionExecutionOutcome outcome;
+        try
+        {
+            outcome = await this.decisionExecutor.ExecuteAsync(payload, cancellationToken);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
+        {
+            return ApplicationResult.Failure(SharingApplicationErrors.ModerationConflict());
+        }
+
+        return outcome switch
+        {
+            ShareModerationDecisionExecutionOutcome.Succeeded => ApplicationResult.Success(),
+            ShareModerationDecisionExecutionOutcome.ReportNotFound =>
+                ApplicationResult.Failure(SharingApplicationErrors.ModerationReportNotFound()),
+            ShareModerationDecisionExecutionOutcome.TargetNotFound =>
+                ApplicationResult.Failure(SharingApplicationErrors.ModerationTargetNotFound()),
+            ShareModerationDecisionExecutionOutcome.InvalidTransition =>
+                ApplicationResult.Failure(SharingApplicationErrors.InvalidModerationTransition()),
+            _ => ApplicationResult.Failure(SharingApplicationErrors.ModerationConflict()),
+        };
     }
 
     private async Task<string?> ResolvePublicTargetIdAsync(
@@ -171,154 +202,6 @@ public sealed class ShareModerationService
             shareToken,
             cancellationToken);
         return publication?.Type == publicationType ? publication.Id.Value : null;
-    }
-
-    private async Task<ApplicationResult> SuspendTargetAsync(
-        ShareModerationReport report,
-        DateTime nowUtc,
-        CancellationToken cancellationToken)
-    {
-        if (report.Status != ShareModerationReportStatus.Pending)
-        {
-            return ApplicationResult.Failure(
-                SharingApplicationErrors.InvalidModerationTransition());
-        }
-
-        return report.TargetType == ShareModerationTargetType.ProfileComparison
-            ? await this.SetComparisonSuspensionAsync(report.TargetRecordId, true, nowUtc, cancellationToken)
-            : await this.SetPublicationSuspensionAsync(report, true, nowUtc, cancellationToken);
-    }
-
-    private async Task<ApplicationResult> RestoreTargetAsync(
-        ShareModerationReport report,
-        DateTime nowUtc,
-        CancellationToken cancellationToken)
-    {
-        if (report.Status != ShareModerationReportStatus.PublicationSuspended)
-        {
-            return ApplicationResult.Failure(
-                SharingApplicationErrors.InvalidModerationTransition());
-        }
-
-        return report.TargetType == ShareModerationTargetType.ProfileComparison
-            ? await this.SetComparisonSuspensionAsync(report.TargetRecordId, false, nowUtc, cancellationToken)
-            : await this.SetPublicationSuspensionAsync(report, false, nowUtc, cancellationToken);
-    }
-
-    private async Task<ApplicationResult> SetPublicationSuspensionAsync(
-        ShareModerationReport report,
-        bool isSuspended,
-        DateTime nowUtc,
-        CancellationToken cancellationToken)
-    {
-        if (!TryMapPublicationType(report.TargetType, out SharePublicationType publicationType)
-            || !SharePublicationId.TryParse(report.TargetRecordId, out SharePublicationId publicationId))
-        {
-            return ApplicationResult.Failure(
-                SharingApplicationErrors.ModerationTargetNotFound());
-        }
-
-        SharePublication? publication = await this.publicationRepository.GetByIdAsync(
-            publicationId,
-            cancellationToken);
-        if (publication is null || publication.Type != publicationType)
-        {
-            return ApplicationResult.Failure(
-                SharingApplicationErrors.ModerationTargetNotFound());
-        }
-
-        string? shareId = publication.ShareToken?.Value;
-        if (publication.IsModerationSuspended == isSuspended)
-        {
-            return ApplicationResult.Success();
-        }
-
-        long expectedVersion = publication.Version;
-        try
-        {
-            if (isSuspended)
-            {
-                publication.SuspendByModeration(nowUtc);
-            }
-            else
-            {
-                publication.RestoreAfterModeration(nowUtc);
-            }
-        }
-        catch (SharePublicationValidationException)
-        {
-            return ApplicationResult.Failure(
-                SharingApplicationErrors.InvalidModerationTransition());
-        }
-
-        SharePublicationWriteOutcome outcome = await this.publicationRepository.ReplaceAsync(
-            publication,
-            expectedVersion,
-            cancellationToken);
-        if (outcome != SharePublicationWriteOutcome.Success)
-        {
-            return ApplicationResult.Failure(SharingApplicationErrors.ModerationConflict());
-        }
-
-        await this.invalidationScheduler.ScheduleAsync(
-            publication,
-            publication.Version,
-            cancellationToken,
-            shareId);
-        return ApplicationResult.Success();
-    }
-
-    private async Task<ApplicationResult> SetComparisonSuspensionAsync(
-        string targetRecordId,
-        bool isSuspended,
-        DateTime nowUtc,
-        CancellationToken cancellationToken)
-    {
-        if (!ProfileComparisonId.TryParse(targetRecordId, out ProfileComparisonId comparisonId))
-        {
-            return ApplicationResult.Failure(
-                SharingApplicationErrors.ModerationTargetNotFound());
-        }
-
-        ProfileComparison? comparison = await this.comparisonRepository.GetByIdAsync(
-            comparisonId,
-            cancellationToken);
-        if (comparison is null || !comparison.IsActive)
-        {
-            return ApplicationResult.Failure(
-                SharingApplicationErrors.ModerationTargetNotFound());
-        }
-
-        if (comparison.IsModerationSuspended == isSuspended)
-        {
-            return ApplicationResult.Success();
-        }
-
-        long expectedVersion = comparison.Version;
-        try
-        {
-            if (isSuspended)
-            {
-                comparison.SuspendByModeration(nowUtc);
-            }
-            else
-            {
-                comparison.RestoreAfterModeration(nowUtc);
-            }
-        }
-        catch (ProfileComparisonValidationException)
-        {
-            return ApplicationResult.Failure(
-                SharingApplicationErrors.InvalidModerationTransition());
-        }
-
-        ProfileComparisonWriteOutcome outcome = await this.comparisonRepository.ReplaceAsync(
-            comparison,
-            expectedVersion,
-            cancellationToken);
-        return outcome == ProfileComparisonWriteOutcome.Success
-            ? ApplicationResult.Success()
-            : ApplicationResult.Failure(SharingApplicationErrors.ModerationConflict());
     }
 
     private static bool TryMapPublicationType(
