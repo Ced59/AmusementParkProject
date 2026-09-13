@@ -38,6 +38,20 @@ public static class PersonalRankingShareSourceScope
             Convert.ToHexString(System.Text.Encoding.UTF8.GetBytes(normalizedSelectionKey)));
     }
 
+    public static string CreateRatingOwnerPrefix(string ownerUserId)
+    {
+        string normalizedOwner = ownerUserId?.Trim() ?? string.Empty;
+        if (normalizedOwner.Length == 0)
+        {
+            throw new ArgumentException("A share owner identifier is required.", nameof(ownerUserId));
+        }
+
+        return string.Concat(
+            RatingPrefix,
+            Convert.ToHexString(System.Text.Encoding.UTF8.GetBytes(normalizedOwner)),
+            ":");
+    }
+
     public static bool TryParse(string sourceScopeKey, out string ownerUserId)
     {
         ownerUserId = string.Empty;

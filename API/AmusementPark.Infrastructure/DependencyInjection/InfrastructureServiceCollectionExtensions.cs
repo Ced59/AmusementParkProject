@@ -228,6 +228,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IProfileComparisonInvitationRepository,
             ProfileComparisonInvitationRepository>();
         services.AddScoped<IProfileComparisonRepository, ProfileComparisonRepository>();
+        services.AddScoped<IShareAccountDeletionStore, MongoShareAccountDeletionStore>();
         services.AddScoped<IShareModerationReportRepository, ShareModerationReportRepository>();
         services.AddScoped<IVisitRecapShareSnapshotRepository,
             VisitRecapShareSnapshotRepository>();

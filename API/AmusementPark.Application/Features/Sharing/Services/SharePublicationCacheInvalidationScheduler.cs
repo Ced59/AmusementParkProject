@@ -95,6 +95,21 @@ public sealed class SharePublicationCacheInvalidationScheduler
         return this.EnqueueAsync(continuation, cancellationToken);
     }
 
+    public Task ScheduleProfileComparisonAsync(
+        ProfileComparison comparison,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(comparison);
+        SharePublicationCacheInvalidationJobPayload payload =
+            new SharePublicationCacheInvalidationJobPayload(
+                comparison.Id.Value,
+                comparison.RevokedByUserId ?? comparison.CreatorUserId,
+                SharePublicationType.ProfileComparison,
+                comparison.Version,
+                new[] { comparison.ShareToken.Value });
+        return this.EnqueueAsync(payload, cancellationToken);
+    }
+
     private async Task EnqueueAsync(
         SharePublicationCacheInvalidationJobPayload payload,
         CancellationToken cancellationToken)

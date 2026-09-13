@@ -26,6 +26,10 @@ public interface ISharePublicationRepository
         ShareToken shareToken,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<SharePublication>> ListOwnedAsync(
+        string ownerUserId,
+        CancellationToken cancellationToken);
+
     Task<SharePublicationWriteOutcome> CreateAsync(
         SharePublication publication,
         CancellationToken cancellationToken);

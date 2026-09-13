@@ -97,6 +97,21 @@ public sealed class SharePublicationRepository : ISharePublicationRepository
         return document?.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<SharePublication>> ListOwnedAsync(
+        string ownerUserId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedOwnerUserId = IdentifierRules.NormalizeRequired(
+            ownerUserId,
+            nameof(ownerUserId));
+        List<SharePublicationDocument> documents = await this.collection
+            .Find(Builders<SharePublicationDocument>.Filter.Eq(
+                static document => document.OwnerUserId,
+                normalizedOwnerUserId))
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<SharePublicationWriteOutcome> CreateAsync(
         SharePublication publication,
         CancellationToken cancellationToken)
