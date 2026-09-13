@@ -68,4 +68,26 @@ public sealed class ShareModerationReportTests
         Assert.Throws<ShareModerationValidationException>(() =>
             report.Dismiss("admin-1", null, NowUtc.AddMinutes(2)));
     }
+
+    [Fact]
+    public void Restore_BeforePreviousReview_ShouldReject()
+    {
+        ShareModerationReport report = ShareModerationReport.Create(
+            ShareModerationReportId.New(),
+            ShareModerationTargetType.VisitRecap,
+            "publication-1",
+            ShareModerationReason.PersonalData,
+            "Une donnée personnelle est visible.",
+            NowUtc);
+        report.MarkPublicationSuspended(
+            "admin-1",
+            "Suspension confirmée.",
+            NowUtc.AddMinutes(2));
+
+        Assert.Throws<ShareModerationValidationException>(() =>
+            report.MarkPublicationRestored(
+                "admin-2",
+                "Restauration demandée.",
+                NowUtc.AddMinutes(1)));
+    }
 }

@@ -104,7 +104,11 @@ public sealed class SharePublicationMongoDefinitionsTests
         Assert.Contains("Draft", activeFilter, StringComparison.Ordinal);
         Assert.Contains("Published", activeFilter, StringComparison.Ordinal);
         Assert.Contains("NeedsReview", activeFilter, StringComparison.Ordinal);
-        Assert.DoesNotContain("Revoked", activeFilter, StringComparison.Ordinal);
+        Assert.Contains(
+            "moderationSuspensionReportIds.0",
+            activeFilter,
+            StringComparison.Ordinal);
+        Assert.Contains("$exists", activeFilter, StringComparison.Ordinal);
         Assert.All(indexes, static index => Assert.Null(index.Options.ExpireAfter));
         Assert.DoesNotContain(
             indexes,

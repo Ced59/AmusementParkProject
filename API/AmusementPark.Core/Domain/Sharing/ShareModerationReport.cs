@@ -196,7 +196,11 @@ public sealed class ShareModerationReport
             nameof(reviewerUserId));
         string? normalizedNote = NormalizeOptional(note, MaximumDecisionNoteLength);
         ValidateUtc(reviewedAtUtc);
-        if (reviewedAtUtc < this.SubmittedAtUtc
+        DateTime earliestReviewAtUtc = this.ReviewedAtUtc.HasValue
+            && this.ReviewedAtUtc.Value > this.SubmittedAtUtc
+                ? this.ReviewedAtUtc.Value
+                : this.SubmittedAtUtc;
+        if (reviewedAtUtc < earliestReviewAtUtc
             || !PublicShareTextSafetyPolicy.IsSafePlainText(normalizedNote))
         {
             throw InvalidState();

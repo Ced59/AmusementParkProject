@@ -155,8 +155,13 @@ un second système de partage. Une révocation demandée par le propriétaire co
 en recréant immédiatement le même partage. Si la révocation ou le remplacement a
 lieu avant l'exécution du signalement, l'exécuteur retrouve la publication active
 de la même source et lui transmet le blocage. Un remplacement encore en brouillon
-ne peut pas être publié avant son rétablissement explicite. MongoDB fonctionne en instance simple
-en production ; la tâche durable, créée avant toute mutation, assure la
+ne peut pas être publié avant son rétablissement explicite. Un index MongoDB unique
+sur `(propriétaire, type, source)` considère à la fois la publication active et
+toute publication historique qui porte un blocage : une republication et une
+suspension concurrentes ne peuvent donc pas gagner ensemble. Le conflit est rejoué
+avant que le rapport ne soit déclaré suspendu, puis le blocage converge vers le
+remplacement éventuel. MongoDB fonctionne en instance simple en production ; la
+tâche durable, créée avant toute mutation, assure la
 compensation et la convergence sans supposer des transactions multi-documents
 indisponibles.
 Deux suspensions visant la même cible coexistent donc dans la même autorité métier.
@@ -179,7 +184,8 @@ worker. La clé durable réunit le signalement et sa version métier, sans inclu
 décision : deux décisions opposées soumises sur la même version ne créent jamais
 deux jobs concurrents. La première reste canonique et la seconde reçoit un conflit
 explicite. Le rétablissement utilise la version suivante et reste donc un nouveau
-jalon autorisé du cycle de vie.
+jalon autorisé du cycle de vie. Son horodatage ne peut jamais précéder celui de la
+suspension, même si l'horloge de l'hôte recule entre les deux décisions.
 Chaque rejeu programme aussi l'invalidation du cache public, y compris lorsque la
 cible porte déjà la décision attendue : une coupure entre l'écriture MongoDB et la
 création de cette invalidation ne peut donc pas laisser durablement une ancienne
@@ -233,11 +239,15 @@ Index :
 - `targetType + targetRecordId + submittedAtUtc desc` pour l'historique ;
 - les recherches publiques existantes exigent une liste
   `moderationSuspensionReportIds` vide.
+- l'unicité `(ownerUserId, type, sourceScopeKey)` couvre une publication active ou
+  une ancienne publication qui porte encore un blocage de modération.
 
 Au démarrage, `MongoDatabaseInitializer` ajoute une liste vide lorsque le champ de
 suspension est absent sur les publications et comparaisons existantes avant de
-créer les index. Il s'agit d'une migration de l'autorité existante, pas d'un
-adaptateur ou d'une double lecture.
+créer les index. La migration consolide aussi les éventuels blocages historiques
+sur l'unique publication active de leur source, puis remplace l'ancien index limité
+aux seuls statuts actifs. Il s'agit d'une migration de l'autorité existante, pas
+d'un adaptateur ou d'une double lecture.
 
 ## Contrats et interface
 
@@ -275,6 +285,8 @@ nouvelle publication qui serait refusée par la règle de modération.
   classement sans suite déjà appliqué ;
 - sérialisation des décisions opposées par version du rapport, transfert du blocage
   vers un remplacement publié ou en brouillon et refus de publication du brouillon ;
+- verrou MongoDB au niveau de la source pendant une course entre remplacement et
+  suspension, et horodatage monotone entre suspension et restauration ;
 - reprogrammation de l'invalidation après une panne intermédiaire et audit
   d'achèvement idempotent par le worker ;
 - acquittement auditable d'une décision durable et refus explicite de republier

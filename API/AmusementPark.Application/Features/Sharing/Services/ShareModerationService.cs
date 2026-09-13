@@ -122,8 +122,12 @@ public sealed class ShareModerationService
         }
 
         DateTime currentUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        DateTime requestedAtUtc = currentUtc < report.SubmittedAtUtc
-            ? report.SubmittedAtUtc
+        DateTime earliestDecisionUtc = report.ReviewedAtUtc.HasValue
+            && report.ReviewedAtUtc.Value > report.SubmittedAtUtc
+                ? report.ReviewedAtUtc.Value
+                : report.SubmittedAtUtc;
+        DateTime requestedAtUtc = currentUtc < earliestDecisionUtc
+            ? earliestDecisionUtc
             : currentUtc;
         ShareModerationDecisionJobPayload requestedPayload = new ShareModerationDecisionJobPayload(
             report.Id.Value,

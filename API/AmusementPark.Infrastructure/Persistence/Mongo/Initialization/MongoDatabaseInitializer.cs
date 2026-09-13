@@ -612,6 +612,9 @@ private readonly IMongoDatabase database;
                 static document => document.ModerationSuspensionReportIds,
                 new List<string>()),
             cancellationToken: cancellationToken);
+        SharePublicationModerationSourceLockMigration moderationSourceLockMigration =
+            new SharePublicationModerationSourceLockMigration(sharePublicationsCollection);
+        await moderationSourceLockMigration.MigrateAsync(cancellationToken);
         await sharePublicationsCollection.Indexes.CreateManyAsync(
             SharePublicationMongoDefinitions.BuildIndexes(),
             cancellationToken);

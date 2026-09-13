@@ -11,8 +11,11 @@ internal static class SharePublicationMongoDefinitions
 
     public const string OwnerLifecycleIndexName = "idx_share_publication_owner_type_updated";
 
-    public const string ActiveOwnerSourceUniqueIndexName =
+    public const string LegacyActiveOwnerSourceUniqueIndexName =
         "idx_share_publication_active_owner_source_unique";
+
+    public const string ActiveOwnerSourceUniqueIndexName =
+        "idx_share_publication_active_or_blocked_owner_source_unique_v2";
 
     public static FilterDefinition<SharePublicationDocument> BuildIdFilter(
         string publicationId)
@@ -122,15 +125,23 @@ internal static class SharePublicationMongoDefinitions
                 Name = ActiveOwnerSourceUniqueIndexName,
                 Unique = true,
                 PartialFilterExpression = new BsonDocument(
-                    "status",
-                    new BsonDocument(
-                        "$in",
-                        new BsonArray
-                        {
-                            nameof(SharePublicationStatus.Draft),
-                            nameof(SharePublicationStatus.Published),
-                            nameof(SharePublicationStatus.NeedsReview),
-                        })),
+                    "$or",
+                    new BsonArray
+                    {
+                        new BsonDocument(
+                            "status",
+                            new BsonDocument(
+                                "$in",
+                                new BsonArray
+                                {
+                                    nameof(SharePublicationStatus.Draft),
+                                    nameof(SharePublicationStatus.Published),
+                                    nameof(SharePublicationStatus.NeedsReview),
+                                })),
+                        new BsonDocument(
+                            "moderationSuspensionReportIds.0",
+                            new BsonDocument("$exists", true)),
+                    }),
             };
         CreateIndexModel<SharePublicationDocument> ownerSource =
             new CreateIndexModel<SharePublicationDocument>(

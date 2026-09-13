@@ -153,6 +153,107 @@ public sealed class ShareModerationDecisionExecutorTests
     }
 
     [Fact]
+    public async Task ExecuteAsync_WhenReplacementWinsTheSourceLock_ShouldRetryBeforeAuditingSuspension()
+    {
+        SharePublication firstReportedPublication = CreatePublishedPublication();
+        firstReportedPublication.Revoke(1, NowUtc.AddMinutes(-4));
+        SharePublication retryReportedPublication = SharePublication.Restore(
+            firstReportedPublication.Id,
+            firstReportedPublication.OwnerUserId,
+            firstReportedPublication.Type,
+            firstReportedPublication.SourceScopeKey,
+            null,
+            firstReportedPublication.Status,
+            firstReportedPublication.Visibility,
+            firstReportedPublication.ContentPolicy,
+            firstReportedPublication.SourceVersion,
+            firstReportedPublication.PublicationVersion,
+            firstReportedPublication.Version,
+            firstReportedPublication.PublishedAtUtc,
+            firstReportedPublication.RevokedAtUtc,
+            firstReportedPublication.CreatedAtUtc,
+            firstReportedPublication.UpdatedAtUtc,
+            firstReportedPublication.ContentFingerprint);
+        SharePublication replacement = SharePublication.Create(
+            SharePublicationId.Parse("publication-race-winner"),
+            firstReportedPublication.OwnerUserId,
+            firstReportedPublication.Type,
+            firstReportedPublication.SourceScopeKey,
+            firstReportedPublication.ContentPolicy,
+            firstReportedPublication.SourceVersion,
+            NowUtc.AddMinutes(-3));
+        replacement.Publish(
+            ShareToken.Parse(ReplacementTokenValue),
+            ShareVisibility.Unlisted,
+            replacement.SourceVersion,
+            replacement.ContentPolicy,
+            0,
+            NowUtc.AddMinutes(-2));
+        ShareModerationReport report = CreatePendingReport(firstReportedPublication);
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
+            .ReturnsAsync(report);
+        reports.Setup(value => value.ReplaceAsync(
+                It.Is<ShareModerationReport>(candidate =>
+                    candidate.Status == ShareModerationReportStatus.PublicationSuspended),
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(ShareModerationReportWriteOutcome.Success);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.SetupSequence(value => value.GetByIdAsync(
+                firstReportedPublication.Id,
+                CancellationToken.None))
+            .ReturnsAsync(firstReportedPublication)
+            .ReturnsAsync(retryReportedPublication);
+        publications.SetupSequence(value => value.GetOwnedBySourceAsync(
+                firstReportedPublication.OwnerUserId,
+                firstReportedPublication.Type,
+                firstReportedPublication.SourceScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync(firstReportedPublication)
+            .ReturnsAsync(replacement);
+        publications.Setup(value => value.ReplaceAsync(
+                It.Is<SharePublication>(candidate =>
+                    candidate.Id == firstReportedPublication.Id),
+                2,
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Conflict);
+        long replacementVersion = replacement.Version;
+        publications.Setup(value => value.ReplaceAsync(
+                It.Is<SharePublication>(candidate =>
+                    candidate.Id == replacement.Id
+                    && candidate.HasModerationSuspension(report.Id)),
+                replacementVersion,
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        Mock<IDurableBackgroundJobRepository> jobs = CreateCacheJobRepository();
+        ShareModerationDecisionExecutor executor = CreateExecutor(
+            reports,
+            publications,
+            jobs);
+
+        ShareModerationDecisionExecutionOutcome firstOutcome = await executor.ExecuteAsync(
+            CreatePayload(report.Id),
+            CancellationToken.None);
+        ShareModerationDecisionExecutionOutcome retryOutcome = await executor.ExecuteAsync(
+            CreatePayload(report.Id),
+            CancellationToken.None);
+
+        Assert.Equal(
+            ShareModerationDecisionExecutionOutcome.RetryableConflict,
+            firstOutcome);
+        Assert.Equal(ShareModerationDecisionExecutionOutcome.Succeeded, retryOutcome);
+        Assert.True(replacement.HasModerationSuspension(report.Id));
+        Assert.False(replacement.IsResolvable);
+        Assert.Equal(ShareModerationReportStatus.PublicationSuspended, report.Status);
+        reports.VerifyAll();
+        publications.VerifyAll();
+        jobs.VerifyAll();
+    }
+
+    [Fact]
     public async Task ExecuteAsync_RestoreFromOlderReport_ShouldNotClearNewerSuspension()
     {
         SharePublication publication = CreatePublishedPublication();

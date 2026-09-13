@@ -458,6 +458,66 @@ public sealed class ShareModerationServiceTests
         jobs.VerifyAll();
     }
 
+    [Fact]
+    public async Task ReviewAsync_WhenClockMovedBackAfterSuspension_ShouldKeepRestorationChronological()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        ShareModerationReport report = ShareModerationReport.Create(
+            ShareModerationReportId.Parse("report-restore-clock"),
+            ShareModerationTargetType.VisitRecap,
+            publication.Id.Value,
+            ShareModerationReason.PersonalData,
+            "Personal data is visible.",
+            NowUtc.AddMinutes(-1));
+        DateTime suspendedAtUtc = NowUtc.AddMinutes(1);
+        report.MarkPublicationSuspended("admin-1", "Confirmed.", suspendedAtUtc);
+        publication.SuspendByModeration(report.Id, suspendedAtUtc);
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
+            .ReturnsAsync(report);
+        reports.Setup(value => value.ReplaceAsync(
+                It.Is<ShareModerationReport>(candidate =>
+                    candidate.Status == ShareModerationReportStatus.PublicationRestored
+                    && candidate.ReviewedAtUtc == suspendedAtUtc),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(ShareModerationReportWriteOutcome.Success);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetByIdAsync(publication.Id, CancellationToken.None))
+            .ReturnsAsync(publication);
+        publications.Setup(value => value.ReplaceAsync(
+                It.Is<SharePublication>(candidate =>
+                    !candidate.HasModerationSuspension(report.Id)),
+                2,
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.IsAny<EnqueueExactBackgroundJobRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+                CreateQueuedJob(request));
+        ShareModerationService service = CreateService(reports, publications, jobs);
+
+        ApplicationResult result = await service.ReviewAsync(
+            new ReviewShareModerationReportCommand(
+                "admin-2",
+                report.Id.Value,
+                ShareModerationDecision.Restore,
+                "Restored."),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(suspendedAtUtc, report.ReviewedAtUtc);
+        Assert.False(publication.IsModerationSuspended);
+        reports.VerifyAll();
+        publications.VerifyAll();
+        jobs.VerifyAll();
+    }
+
     private static ShareModerationService CreateService(
         Mock<IShareModerationReportRepository> reports,
         Mock<ISharePublicationRepository> publications,
