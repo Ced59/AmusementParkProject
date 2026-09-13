@@ -13,6 +13,48 @@ namespace AmusementPark.Infrastructure.Tests.Services.Sharing;
 public sealed class ShareSocialImageRendererTests
 {
     [Fact]
+    public async Task RenderConcurrencyGate_WhenCallerStopsWaiting_ShouldRetainItsPermitUntilRenderingEnds()
+    {
+        ShareSocialImageRenderConcurrencyGate gate = new ShareSocialImageRenderConcurrencyGate();
+        TaskCompletionSource release = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource twoRendersStarted = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        int activeRenders = 0;
+        int maximumActiveRenders = 0;
+        Func<Task<int>> operation = async () =>
+        {
+            int active = Interlocked.Increment(ref activeRenders);
+            UpdateMaximum(ref maximumActiveRenders, active);
+            if (active == 2)
+            {
+                twoRendersStarted.TrySetResult();
+            }
+
+            await release.Task;
+            Interlocked.Decrement(ref activeRenders);
+            return active;
+        };
+        Task<int> first = gate.RunAsync(operation);
+        Task<int> second = gate.RunAsync(operation);
+        await twoRendersStarted.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        using CancellationTokenSource callerCancellation = new CancellationTokenSource();
+        callerCancellation.Cancel();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(
+            () => first.WaitAsync(callerCancellation.Token));
+        Task<int> third = gate.RunAsync(operation);
+        await Task.Delay(50);
+
+        Assert.Equal(2, Volatile.Read(ref activeRenders));
+        Assert.Equal(2, Volatile.Read(ref maximumActiveRenders));
+        Assert.False(third.IsCompleted);
+        release.SetResult();
+        await Task.WhenAll(first, second, third);
+        Assert.Equal(2, maximumActiveRenders);
+    }
+
+    [Fact]
     public void UnicodeFallbacks_ShouldPreferTheProductionCjkFamily()
     {
         int japanesePriority = ShareSocialImageFontFamilyComparer.GetPriority("Noto Sans CJK JP");
@@ -158,5 +200,20 @@ public sealed class ShareSocialImageRendererTests
             },
             "Le Galion",
             7);
+    }
+
+    private static void UpdateMaximum(ref int maximum, int candidate)
+    {
+        int observed = Volatile.Read(ref maximum);
+        while (candidate > observed)
+        {
+            int exchanged = Interlocked.CompareExchange(ref maximum, candidate, observed);
+            if (exchanged == observed)
+            {
+                return;
+            }
+
+            observed = exchanged;
+        }
     }
 }

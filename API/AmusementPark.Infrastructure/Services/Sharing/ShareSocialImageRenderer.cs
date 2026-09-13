@@ -21,6 +21,8 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
         SizeLimit = CacheSizeLimit,
     });
     private readonly object cacheLock = new object();
+    private readonly ShareSocialImageRenderConcurrencyGate renderConcurrencyGate =
+        new ShareSocialImageRenderConcurrencyGate();
 
     public ShareSocialImageRenderer()
     {
@@ -58,7 +60,8 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
             if (!this.cache.TryGetValue(cacheKey, out rendering!))
             {
                 rendering = new Lazy<Task<ShareSocialImageRenderResult>>(
-                    () => this.RenderCoreAsync(model),
+                    () => this.renderConcurrencyGate.RunAsync(
+                        () => this.RenderCoreAsync(model)),
                     LazyThreadSafetyMode.ExecutionAndPublication);
                 this.cache.Set(
                     cacheKey,

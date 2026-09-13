@@ -95,6 +95,9 @@ au renderer.
 
 L'API n'accepte que deux rendus simultanés et une file de quatre demandes. Une
 rafale de variantes froides ne peut donc pas monopoliser le processeur du VPS.
+Une seconde barrière dans le renderer conserve son permis jusqu'à la fin réelle du
+PNG : l'abandon d'une requête HTTP ne permet pas de lancer des calculs détachés en
+parallèle au-delà de cette limite.
 
 La réponse utilise `Cache-Control: public,max-age=300,must-revalidate`, un `ETag`,
 `Content-Language`, `Referrer-Policy: no-referrer` et
