@@ -34,7 +34,7 @@ Une traduction issue d’un moteur, d’une API, d’un navigateur ou d’un aut
 
 La validation personnelle de Codex couvre au minimum : sens et faits inchangés, naturel de chaque phrase, vocabulaire propre au parc, accords et ponctuation, absence de calque du français ou de l’anglais, cohérence des noms officiels et parité de tous les blocs. Si Codex ne peut pas garantir cette qualité dans une langue, le lot reste incomplet et n’est pas appliqué.
 
-### Encodage des caractères publics
+### Encodage Unicode obligatoire
 
 Écrire directement en Unicode tout caractère qui doit être lu par le visiteur, dans les huit langues et dans chaque famille de texte : descriptions, noms localisés, titres, sous-titres, résumés, paragraphes, libellés, raisons, conditions, textes d’images et cartes officielles. Une apostrophe typographique doit donc être `’`, jamais `&rsquo;` ou `&#8217;` ; un caractère accentué doit être littéral, jamais une entité telle que `&eacute;`.
 
@@ -43,6 +43,8 @@ Dans un champ de texte brut, aucune entité HTML nommée ou numérique n’est a
 Les textes des blocs d’articles historiques sont des champs de texte brut, car l’interface les affiche par interpolation : ils suivent donc la règle « zéro entité ». Les séquences doublement encodées telles que `&amp;rsquo;`, `&amp;#8217;` ou `&amp;amp;` sont toujours interdites, y compris dans le HTML riche.
 
 Avant chaque `Preview`, analyser le JSON brut, avant tout décodage ou retrait des balises, avec le motif `&(?:#[0-9]+|#x[0-9A-Fa-f]+|[A-Za-z][A-Za-z0-9]+);`, puis rechercher aussi les références masquées derrière `&amp;`. Toute occurrence doit être relue : zéro entité est attendu dans les champs de texte brut et, dans le HTML riche, toute occurrence autre qu’un échappement structurel simple parmi les trois autorisés bloque le lot. Ne jamais considérer un affichage correct dans un autre composant ou un contrôle effectué après `HtmlDecode` comme une preuve de conformité.
+
+Si un script ou un shell oblige ponctuellement à écrire une entité pour éviter un conflit de syntaxe, le script doit la décoder exactement une fois avant la sérialisation JSON. Il faut ensuite reparcourir la valeur réellement sérialisée, pas seulement le littéral du script. Les fichiers de travail, requêtes et registres sont écrits explicitement en UTF-8 ; aucune conversion implicite entre pages de codes, aucun double encodage et aucune réparation par remplacement global ne sont autorisés.
 
 ## Découpage anti-saturation
 
@@ -238,6 +240,8 @@ Sections possibles :
 - Chaque traduction finale a été rédigée ou substantiellement réécrite et validée par Codex ; aucune sortie automatique brute ne subsiste.
 - Le français public utilise un ton direct et informel quand le contexte s’y prête.
 - Les textes localisés utilisent les accents, diacritiques, ponctuations et caractères propres à chaque langue.
+- Le JSON réellement envoyé contient les caractères Unicode attendus et aucune entité HTML textuelle, séquence de mojibake (`Ã…`, `Â…`, `â€™`, etc.) ni caractère de remplacement `�` dans le corpus public.
+- Les textes sont reparsés depuis le fichier UTF-8 sérialisé avant `Preview` ; un contrôle limité aux variables en mémoire ou au rendu du navigateur ne suffit pas.
 - Aucun texte ne réemploie mécaniquement la même structure d’un item à l’autre.
 - Pour un parc majeur, la description du parc respecte normalement `3 h2 / 5 p` et chaque parkItem publiable `2 h2 / 3 p`, avec toute exception plus courte sourcée et inscrite dans les lacunes.
 - Le corpus mesure les mots visibles après décodage HTML : signaler les fiches du parc hors de la bande 280–500 mots et les parkItems hors de la bande 120–200 mots, puis relire au lieu de les gonfler mécaniquement.
