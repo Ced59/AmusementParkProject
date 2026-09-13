@@ -124,9 +124,16 @@ Vérifier :
 - les restrictions, tailles, horaires, dates, tarifs et coordonnées sont absents des descriptions narratives.
 - les textes alternatifs, légendes et descriptions d’images sont naturels et éditoriaux ; ils ne contiennent aucune formulation technique, mécanique, justificative ou liée à l’outil d’import.
 - les descriptions, timelines et articles ne déroulent ni tracé, ni rotations, ni accélérations, ni principe de fonctionnement et ne réinjectent pas vitesse, durée, capacité ou nombre de sièges et de véhicules depuis les données structurées.
+- le corpus public stocké utilise de vrais caractères Unicode : aucune entité HTML textuelle (`&rsquo;`, `&#8217;`, `&eacute;`, etc.), aucune séquence de mojibake (`Ã…`, `Â…`, `â€™`, etc.) et aucun caractère de remplacement `�` ne subsistent ; les balises HTML éditoriales autorisées restent inchangées.
 - l’appel final de complétude ne renvoie aucun `publicationBlockers`. La clé `public-text.forbidden-editorial-language` est bloquante et plafonne le score à 95 ; elle interdit Preview de publication tant que le corpus concerné n’a pas été réécrit puis contrôlé à nouveau.
 
+### Audit d’encodage et aller-retour UTF-8
+
 Le contrôle d’encodage s’effectue sur les valeurs brutes du dernier export, avant `HtmlDecode`, normalisation du HTML ou extraction du texte visible. Un audit effectué uniquement après décodage masquerait précisément les chaînes qui s’affichent littéralement dans les composants de texte brut. Toute occurrence non autorisée impose une correction ciblée de l’étape qui possède le champ, un nouveau `Preview`/`Apply`, puis un nouveau contrôle brut.
+
+Le contrôle d’encodage est bloquant et porte sur le fichier d’export complet frais, puis sur le JSON final réellement sérialisé. Il parcourt toutes les chaînes publiques dans les huit langues : descriptions, titres, résumés, articles, textes alternatifs, légendes, noms et libellés visibles. Il recherche au minimum les entités HTML nommées ou numériques employées comme texte, `U+FFFD`, les signatures usuelles de double encodage UTF-8 et les pertes de diacritiques. Les URLs et les champs purement techniques sont contrôlés séparément afin de ne pas confondre un séparateur de requête légitime avec une entité affichable.
+
+Avant `Preview`, reparsir le fichier JSON en UTF-8 et comparer des chaînes sentinelles comportant apostrophes, accents et caractères propres aux huit langues avec les valeurs attendues. Après Apply, la réponse validée et, au plus tard, l’export complet frais de l’étape 9 doivent restituer exactement ces caractères. Toute différence, entité littérale, séquence illisible ou translittération non intentionnelle impose une correction ciblée et un nouvel audit ; ni un score de 100, ni un Preview sans avertissement, ni un affichage correct dans un autre champ ne permettent de continuer.
 
 ### Audit transversal anti-gabarit
 
@@ -137,6 +144,7 @@ Auditer ensemble, dans chacune des huit langues : descriptions du parc, zones, p
 - relire aussi les phrases uniques : les formulations taxonomiques telles que « appartient à l'univers de », les conclusions sur « l'identité du parc » et les phrases de catégorie telles que « prolonge l'atmosphère par son architecture et son offre » restent bloquantes sans avoir besoin d'un doublon ;
 - rechercher les conseils d’itinéraire, les classements internes, les descriptions de « rôle dans la journée », les pauses suggérées entre files et tout remplissage de catégorie ;
 - vérifier qu’aucune langue n’est plus générique, plus technique ou moins contextualisée que les autres ;
+- vérifier sur le JSON UTF-8 reparsé qu’aucune langue n’a perdu ses diacritiques, transformé sa ponctuation en entités HTML ou subi un double encodage ;
 - rechercher par langue les familles de termes liées aux rails, voies, véhicules, sièges, structures, rotations, accélérations et trajectoires, puis relire manuellement chaque groupe dense. Un terme concret isolé peut être légitime ; une accumulation ou une succession opératoire est bloquante.
 - rechercher les nombres et unités de vitesse, durée, capacité ou comptage dans les descriptions et articles ; ne conserver que ceux dont la valeur historique ou éditoriale est démontrée.
 - relire manuellement les groupes détectés et corriger l’étape 4, 5 ou 7 correspondante avant publication ;

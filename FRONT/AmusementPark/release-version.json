@@ -1,6 +1,20 @@
 {
-  "version": "5.3.5",
+  "version": "5.3.6",
   "history": [
+    {
+      "version": "5.3.6",
+      "releasedAt": "2026-09-13",
+      "labels": {
+        "fr": "Les contenus des parcs gagnent en qualité et en fidélité typographique.",
+        "en": "Park content is now more complete and typographically faithful.",
+        "de": "Parkinhalte sind jetzt vollständiger und typografisch zuverlässiger.",
+        "nl": "Parkinhoud is nu vollediger en typografisch nauwkeuriger.",
+        "it": "I contenuti dei parchi sono ora più completi e tipograficamente fedeli.",
+        "es": "Los contenidos de los parques son ahora más completos y respetan mejor la tipografía.",
+        "pl": "Treści parków są teraz pełniejsze i wierniejsze typograficznie.",
+        "pt": "Os conteúdos dos parques estão agora mais completos e fiéis à tipografia."
+      }
+    },
     {
       "version": "5.3.5",
       "releasedAt": "2026-09-13",
