@@ -2,4 +2,5 @@ namespace AmusementPark.Application.Features.Sharing.Results;
 
 public sealed record SharedVisitRecapResult(
     DateTime PublishedAtUtc,
-    VisitRecapSharePreviewResult Content);
+    VisitRecapSharePreviewResult Content,
+    long PublicationVersion);

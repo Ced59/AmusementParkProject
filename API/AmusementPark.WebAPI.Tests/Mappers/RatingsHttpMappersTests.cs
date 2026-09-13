@@ -257,10 +257,12 @@ public sealed class RatingsHttpMappersTests
             "private-owner-id",
             "Camille",
             new DateTime(2026, 9, 7, 0, 0, 0, DateTimeKind.Utc),
-            stats);
+            stats,
+            7);
 
         SharedUserRankingProfileDto dto = profile.ToHttp(null);
 
+        Assert.Equal(7, dto.PublicationVersion);
         Assert.Equal(2, dto.Stats.TotalRatings);
         Assert.Equal(4.25d, dto.Stats.AverageRating);
         Assert.Null(typeof(SharedUserRatingStatsDto).GetProperty("ByPark"));

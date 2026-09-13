@@ -40,6 +40,7 @@ public sealed class SharedPassportProfilesController : ControllerBase
             ? this.Ok(new SharedPassportProfileDto
             {
                 PublishedAtUtc = result.Value.PublishedAtUtc,
+                PublicationVersion = result.Value.PublicationVersion,
                 PassportProfile = result.Value.Content.ToHttp(),
             })
             : this.ToActionResult(result);

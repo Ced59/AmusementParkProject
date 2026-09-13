@@ -8,4 +8,7 @@ namespace AmusementPark.Application.Features.Ratings.Queries;
 public sealed record GetSharedUserRankingPreviewQuery(
     string ShareId,
     ParkItemCategory? ParkItemCategory = null,
-    ParkItemType? ParkItemType = null) : IQuery<ApplicationResult<UserRankingSharePreviewFileResult>>;
+    ParkItemType? ParkItemType = null,
+    long? PublicationVersion = null,
+    int? TemplateVersion = null,
+    string? Language = null) : IQuery<ApplicationResult<UserRankingSharePreviewFileResult>>;

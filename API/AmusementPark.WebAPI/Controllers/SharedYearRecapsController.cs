@@ -40,6 +40,7 @@ public sealed class SharedYearRecapsController : ControllerBase
             ? this.Ok(new SharedYearRecapDto
             {
                 PublishedAtUtc = result.Value.PublishedAtUtc,
+                PublicationVersion = result.Value.PublicationVersion,
                 YearRecap = result.Value.Content.ToHttp(),
             })
             : this.ToActionResult(result);

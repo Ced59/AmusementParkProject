@@ -5,8 +5,10 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Ratings.Queries;
 using AmusementPark.Application.Features.Ratings.Results;
+using AmusementPark.Application.Features.Sharing;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Sharing.Ports;
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Core.Domain.Sharing;
 
 namespace AmusementPark.Application.Features.Ratings.Handlers;
@@ -15,6 +17,9 @@ public sealed class GetSharedUserRankingPreviewQueryHandler
     : IQueryHandler<GetSharedUserRankingPreviewQuery, ApplicationResult<UserRankingSharePreviewFileResult>>
 {
     private const int PreviewItemCount = 5;
+    private static readonly IReadOnlySet<string> SupportedLanguages = new HashSet<string>(
+        new[] { "de", "en", "es", "fr", "it", "nl", "pl", "pt" },
+        StringComparer.Ordinal);
 
     private readonly ISharePublicationAccessResolver accessResolver;
     private readonly IQueryHandler<GetUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>> parkRankingsHandler;
@@ -44,6 +49,27 @@ public sealed class GetSharedUserRankingPreviewQueryHandler
         if (!ownerResult.IsSuccess || ownerResult.Value is null)
         {
             return ApplicationResult<UserRankingSharePreviewFileResult>.Failure(ownerResult.Errors);
+        }
+
+        if (query.PublicationVersion.HasValue
+            && query.PublicationVersion.Value != ownerResult.Value.PublicationVersion)
+        {
+            return ApplicationResult<UserRankingSharePreviewFileResult>.Failure(
+                SharingApplicationErrors.SocialImageNotAvailable());
+        }
+
+        if (query.TemplateVersion.HasValue
+            && query.TemplateVersion.Value != ShareSocialImageTemplate.Version)
+        {
+            return ApplicationResult<UserRankingSharePreviewFileResult>.Failure(
+                SharingApplicationErrors.SocialImageNotAvailable());
+        }
+
+        string? language = query.Language?.Trim().ToLowerInvariant();
+        if (language is not null && !SupportedLanguages.Contains(language))
+        {
+            return ApplicationResult<UserRankingSharePreviewFileResult>.Failure(
+                SharingApplicationErrors.InvalidSocialImageLanguage());
         }
 
         IReadOnlyCollection<UserRankingSharePreviewItemResult> items = query.ParkItemCategory.HasValue

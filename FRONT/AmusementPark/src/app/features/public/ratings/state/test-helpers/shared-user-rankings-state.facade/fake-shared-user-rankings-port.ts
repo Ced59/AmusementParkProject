@@ -11,6 +11,7 @@ function createProfile(): SharedUserRankingProfile {
     displayName: 'Camille',
     publishedAtUtc: '2026-08-20T18:00:00Z',
     isOwner: false,
+    publicationVersion: 7,
     stats: {
       totalRatings: 2,
       averageRating: 4.5,

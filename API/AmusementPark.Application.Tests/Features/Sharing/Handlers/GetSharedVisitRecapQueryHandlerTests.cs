@@ -48,6 +48,7 @@ public sealed class GetSharedVisitRecapQueryHandlerTests
         Assert.True(result.IsSuccess);
         Assert.Equal("Denain Évasion", result.Value!.Content.ParkName);
         Assert.Equal(snapshot.Content, result.Value.Content);
+        Assert.Equal(3, result.Value.PublicationVersion);
         resolver.VerifyAll();
         snapshots.VerifyAll();
     }

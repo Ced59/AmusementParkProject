@@ -31,11 +31,13 @@ describe('SharedUserRankingsPageComponent', () => {
   let routeSnapshot: { paramMap: ParamMap; queryParamMap: ParamMap };
   let loggedIn: boolean;
   let openModal: ReturnType<typeof vi.fn>;
+  let applySharedUserRankingSeo: ReturnType<typeof vi.fn>;
 
   beforeEach(async () => {
     port = new FakeSharedRankingsPagePort();
     loggedIn = false;
     openModal = vi.fn();
+    applySharedUserRankingSeo = vi.fn();
     routeSnapshot = {
       paramMap: convertToParamMap({ lang: 'fr', shareId: 'opaque-share-id' }),
       queryParamMap: convertToParamMap({}),
@@ -63,7 +65,7 @@ describe('SharedUserRankingsPageComponent', () => {
           provide: SeoService,
           useValue: {
             applyRouteDefaults: vi.fn(),
-            applySharedUserRankingSeo: vi.fn(),
+            applySharedUserRankingSeo,
             applyNotFoundSeo: vi.fn(),
           },
         },
@@ -140,6 +142,21 @@ describe('SharedUserRankingsPageComponent', () => {
     expect(styles).toContain('max-width: calc(100vw - 1rem)');
     expect(styles).toContain('grid-template-columns: repeat(2, minmax(0, 1fr))');
     expect(styles).toContain('overflow-wrap: anywhere');
+  });
+
+  it('versions the social preview URL with the current publication and language', () => {
+    fixture = TestBed.createComponent(SharedUserRankingsPageComponent);
+    fixture.detectChanges();
+
+    expect(applySharedUserRankingSeo).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.any(String),
+      expect.any(String),
+      expect.stringContaining(
+        'ratings/shared/opaque-share-id/preview.png?v=7&t=1&language=fr',
+      ),
+      expect.any(String),
+    );
   });
 });
 

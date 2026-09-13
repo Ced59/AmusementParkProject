@@ -49,7 +49,8 @@ public sealed class SharedVisitRecapsControllerTests
                 "Un beau souvenir",
                 false,
                 false,
-                false));
+                false),
+            3);
         Mock<IQueryHandler<GetSharedVisitRecapQuery, ApplicationResult<SharedVisitRecapResult>>> handler =
             new Mock<IQueryHandler<GetSharedVisitRecapQuery, ApplicationResult<SharedVisitRecapResult>>>(MockBehavior.Strict);
         handler.Setup(value => value.HandleAsync(
@@ -71,6 +72,7 @@ public sealed class SharedVisitRecapsControllerTests
         OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
         SharedVisitRecapDto response = Assert.IsType<SharedVisitRecapDto>(ok.Value);
         Assert.Equal("Denain Évasion", response.VisitRecap.ParkName);
+        Assert.Equal(3, response.PublicationVersion);
         Assert.Equal("Le Galion", Assert.Single(response.VisitRecap.Items).Name);
         Assert.Equal("no-referrer", controller.Response.Headers["Referrer-Policy"]);
         Assert.Null(typeof(SharedVisitRecapDto).GetProperty("OwnerUserId"));

@@ -8,6 +8,7 @@ import { TranslationService } from '@app/services/translation.service';
 import { CanonicalUrlService } from '@core/seo/canonical-url.service';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { buildShareSocialImageUrl } from '@data-access/sharing/share-social-image-url';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { UiButtonDirective } from '@ui/primitives';
@@ -43,7 +44,7 @@ export class SharedYearRecapPageComponent implements OnInit {
     effect((): void => {
       const shared: SharedYearRecap | null = this.result();
       if (shared) {
-        this.applySeo(shared.yearRecap.year);
+        this.applySeo(shared);
       }
       if (this.notFound()) {
         this.ssrHttpStatusService.setNotFound();
@@ -71,7 +72,7 @@ export class SharedYearRecapPageComponent implements OnInit {
       this.currentLang.set(lang);
       const shared: SharedYearRecap | null = this.result();
       if (shared) {
-        this.applySeo(shared.yearRecap.year);
+        this.applySeo(shared);
       }
     });
   }
@@ -94,10 +95,17 @@ export class SharedYearRecapPageComponent implements OnInit {
     return `ratings.categories.${category}`;
   }
 
-  private applySeo(year: number): void {
+  private applySeo(shared: SharedYearRecap): void {
+    const year: number = shared.yearRecap.year;
     const params: Record<string, number> = { year };
     const title: string = this.translateService.instant('yearRecapShare.public.seoTitle', params);
     const description: string = this.translateService.instant('yearRecapShare.public.seoDescription', params);
+    const socialImageUrl: string = buildShareSocialImageUrl(
+      'year',
+      this.shareId(),
+      shared.publicationVersion,
+      this.currentLang()
+    );
     const currentUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(this.router.url);
     const homePath: string = `/${this.currentLang()}/home`;
     const breadcrumbs: unknown[] = [{
@@ -118,6 +126,13 @@ export class SharedYearRecapPageComponent implements OnInit {
         }
       ]
     }];
-    this.seoService.applySharedVisitRecapSeo(title, description, this.router.url, title, breadcrumbs);
+    this.seoService.applySharedVisitRecapSeo(
+      title,
+      description,
+      this.router.url,
+      socialImageUrl,
+      title,
+      breadcrumbs
+    );
   }
 }

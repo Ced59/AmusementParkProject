@@ -1,6 +1,20 @@
 {
-  "version": "5.3.0",
+  "version": "5.3.1",
   "history": [
+    {
+      "version": "5.3.1",
+      "releasedAt": "2026-09-13",
+      "labels": {
+        "fr": "Tes partages affichent désormais un aperçu visuel personnalisé.",
+        "en": "Your shares now display a personalized visual preview.",
+        "de": "Deine geteilten Inhalte zeigen jetzt eine persönliche Bildvorschau.",
+        "nl": "Je gedeelde verhalen tonen nu een persoonlijke visuele preview.",
+        "it": "Le tue condivisioni mostrano ora un’anteprima visiva personalizzata.",
+        "es": "Tus contenidos compartidos muestran ahora una vista previa visual personalizada.",
+        "pl": "Udostępniane treści mają teraz spersonalizowany podgląd graficzny.",
+        "pt": "As tuas partilhas mostram agora uma pré-visualização personalizada."
+      }
+    },
     {
       "version": "5.3.0",
       "releasedAt": "2026-09-13",

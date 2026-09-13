@@ -327,6 +327,33 @@ préparé de partage ne créent aucune révision supplémentaire. `SHARE-09` peu
 maintenant produire des images sociales à partir de ce snapshot,
 sans relire le passeport privé.
 
+### État de `SHARE-09` au 13 septembre 2026
+
+Les récapitulatifs de visite, bilans annuels et passeports publics disposent en
+version 5.3.1 d'une carte sociale 1 200 × 630 propre au contenu publié. Le rendu
+sans photo reprend l'identité du site, la langue de la page, le sujet, au plus
+trois indicateurs déjà autorisés et un temps fort déjà public. La date conserve
+strictement la précision choisie : une publication limitée au mois ou à l'année
+ne peut pas réintroduire le jour dans son image.
+
+Le générateur applicatif reçoit seulement le DTO public revalidé et jamais le
+passeport, la visite ou les commentaires privés. Les identifiants internes ne
+sont pas transmis au moteur graphique. Une URL encode le jeton opaque, la version
+de publication, la version du gabarit et la langue ; une ancienne version retourne
+donc 404 après republication. Le partage de classement préexistant utilise lui
+aussi sa version de publication dans l'URL d'aperçu, sans second cycle de vie.
+
+Les images sont déterministes, tronquent les textes longs, utilisent une police
+embarquée autorisée et disposent d'un texte alternatif calculé sur les mêmes
+données. Un cache mémoire borné à 128 rendus protège le VPS, tandis que la réponse
+HTTP impose une revalidation au bout de cinq minutes et fournit un ETag. La
+révocation reste autoritative avant chaque rendu : elle coupe les nouvelles
+lectures même si une copie déjà téléchargée peut subsister dans le cache d'un
+réseau social. Les tests couvrent les huit langues, le snapshot visuel, les
+dimensions, les métadonnées Open Graph/Twitter, les versions obsolètes et
+l'absence des champs masqués. `SHARE-10` peut maintenant centraliser la rotation
+des liens et l'invalidation explicite des caches dérivés.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

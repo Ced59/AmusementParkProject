@@ -71,7 +71,8 @@ public sealed class GetSharedYearRecapQueryHandler
             ? ApplicationResult<SharedYearRecapResult>.Success(
                 new SharedYearRecapResult(
                     publication.PublishedAtUtc,
-                    snapshot.Content))
+                    snapshot.Content,
+                    publication.PublicationVersion))
             : ApplicationResult<SharedYearRecapResult>.Failure(revalidation.Errors);
     }
 

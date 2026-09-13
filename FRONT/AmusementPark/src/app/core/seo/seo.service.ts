@@ -1944,15 +1944,18 @@ export class SeoService {
     title: string,
     description: string,
     url: string,
+    imageUrl: string,
     imageAlt: string,
     breadcrumbs: unknown[]
   ): void {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
     this.apply({
       title: truncateSeoText(normalizeSeoText(title, SITE_NAME), 70),
       description: truncateSeoText(normalizeSeoText(description, title), 170),
-      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      canonicalUrl,
       robots: 'noindex,nofollow,noarchive',
       alternates: [],
+      imageUrl: new URL(imageUrl, canonicalUrl).href,
       imageAlt: normalizeSeoText(imageAlt, title),
       jsonLd: breadcrumbs
     });
@@ -2773,6 +2776,15 @@ export class SeoService {
       }
 
       if (/^\/api\/ratings\/shared\/[^/]+\/preview\.png$/i.test(normalizedPath)) {
+        return {
+          url: parsedUrl.href,
+          width: 1200,
+          height: 630,
+          contentType: 'image/png'
+        };
+      }
+
+      if (/^\/api\/sharing\/social-images\/(?:visit|year|passport)\/[^/]+\/v[1-9]\d*\/t[1-9]\d*\/(?:de|en|es|fr|it|nl|pl|pt)\.png$/i.test(normalizedPath)) {
         return {
           url: parsedUrl.href,
           width: 1200,

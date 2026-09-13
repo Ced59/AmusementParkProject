@@ -49,6 +49,7 @@ describe('SharedYearRecapStateFacade', () => {
 function createRecap(): SharedYearRecap {
   return {
     publishedAtUtc: '2026-09-11T08:00:00Z',
+    publicationVersion: 3,
     yearRecap: {
       year: 2026,
       visitCount: 2,

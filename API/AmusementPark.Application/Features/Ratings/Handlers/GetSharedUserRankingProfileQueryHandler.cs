@@ -55,6 +55,7 @@ public sealed class GetSharedUserRankingProfileQueryHandler
                 ownerResult.Value.OwnerUserId,
                 ownerResult.Value.DisplayName,
                 ownerResult.Value.PublishedAtUtc,
-                stats));
+                stats,
+                ownerResult.Value.PublicationVersion));
     }
 }
