@@ -60,10 +60,10 @@ internal static class PassportShareLifecycleExportWriter
         WritePublicationsCsv(archive, request, references);
         WriteInvitationsCsv(archive, request, references);
         WriteComparisonsCsv(archive, request, references);
-        WriteComparisonParksCsv(archive, request, references);
-        WriteComparisonRatingsCsv(archive, request, references);
-        WriteComparisonYearsCsv(archive, request, references);
-        WriteComparisonMissedItemsCsv(archive, request, references);
+        PassportShareLifecycleComparisonCsvWriter.WriteCsvEntries(
+            archive,
+            request,
+            references);
     }
 
     private static void WritePublication(
@@ -406,118 +406,6 @@ internal static class PassportShareLifecycleExportWriter
         }
     }
 
-    private static void WriteComparisonParksCsv(
-        ZipArchive archive,
-        PassportExportWriteRequest request,
-        PassportExportReferenceMap references)
-    {
-        using StreamWriter writer = CreateCsvWriter(archive, "comparison-parks.csv");
-        WriteCsvRow(writer, new[]
-        {
-            "comparisonReference", "name", "countryCode", "yourVisitCount",
-            "otherMemberVisitCount",
-        });
-        foreach (ProfileComparison comparison in request.ShareLifecycle.Comparisons)
-        {
-            bool isCreator = IsCreator(request.UserId, comparison.CreatorUserId);
-            foreach (ProfileComparisonParkResult park in comparison.Calculation.Parks)
-            {
-                WriteCsvRow(writer, new[]
-                {
-                    references.Comparison(comparison.Id), park.Name, park.CountryCode,
-                    NullableInteger(isCreator ? park.CreatorVisitCount : park.AcceptorVisitCount),
-                    NullableInteger(isCreator ? park.AcceptorVisitCount : park.CreatorVisitCount),
-                });
-            }
-        }
-    }
-
-    private static void WriteComparisonRatingsCsv(
-        ZipArchive archive,
-        PassportExportWriteRequest request,
-        PassportExportReferenceMap references)
-    {
-        using StreamWriter writer = CreateCsvWriter(archive, "comparison-ratings.csv");
-        WriteCsvRow(writer, new[]
-        {
-            "comparisonReference", "targetType", "name", "parkName", "category",
-            "yourRating", "otherMemberRating", "absoluteDifference", "affinity",
-        });
-        foreach (ProfileComparison comparison in request.ShareLifecycle.Comparisons)
-        {
-            bool isCreator = IsCreator(request.UserId, comparison.CreatorUserId);
-            foreach (ProfileComparisonRatingResult rating in comparison.Calculation.Ratings)
-            {
-                WriteCsvRow(writer, new[]
-                {
-                    references.Comparison(comparison.Id), rating.TargetType, rating.Name,
-                    rating.ParkName, rating.Category,
-                    Double(isCreator ? rating.CreatorRating : rating.AcceptorRating),
-                    Double(isCreator ? rating.AcceptorRating : rating.CreatorRating),
-                    Double(rating.AbsoluteDifference), rating.Affinity.ToString(),
-                });
-            }
-        }
-    }
-
-    private static void WriteComparisonYearsCsv(
-        ZipArchive archive,
-        PassportExportWriteRequest request,
-        PassportExportReferenceMap references)
-    {
-        using StreamWriter writer = CreateCsvWriter(archive, "comparison-years.csv");
-        WriteCsvRow(writer, new[]
-        {
-            "comparisonReference", "year", "yourVisitCount", "otherMemberVisitCount",
-            "yourRideCount", "otherMemberRideCount",
-        });
-        foreach (ProfileComparison comparison in request.ShareLifecycle.Comparisons)
-        {
-            bool isCreator = IsCreator(request.UserId, comparison.CreatorUserId);
-            foreach (ProfileComparisonYearResult year in comparison.Calculation.Years)
-            {
-                WriteCsvRow(writer, new[]
-                {
-                    references.Comparison(comparison.Id), Integer(year.Year),
-                    Integer(isCreator ? year.CreatorVisitCount : year.AcceptorVisitCount),
-                    Integer(isCreator ? year.AcceptorVisitCount : year.CreatorVisitCount),
-                    NullableInteger(isCreator ? year.CreatorRideCount : year.AcceptorRideCount),
-                    NullableInteger(isCreator ? year.AcceptorRideCount : year.CreatorRideCount),
-                });
-            }
-        }
-    }
-
-    private static void WriteComparisonMissedItemsCsv(
-        ZipArchive archive,
-        PassportExportWriteRequest request,
-        PassportExportReferenceMap references)
-    {
-        using StreamWriter writer = CreateCsvWriter(archive, "comparison-missed-items.csv");
-        WriteCsvRow(writer, new[]
-        {
-            "comparisonReference", "name", "status", "yourOccurrenceCount",
-            "otherMemberOccurrenceCount",
-        });
-        foreach (ProfileComparison comparison in request.ShareLifecycle.Comparisons)
-        {
-            bool isCreator = IsCreator(request.UserId, comparison.CreatorUserId);
-            foreach (ProfileComparisonMissedItemResult item in comparison.Calculation.MissedItems)
-            {
-                WriteCsvRow(writer, new[]
-                {
-                    references.Comparison(comparison.Id), item.Name, item.Status,
-                    NullableInteger(isCreator
-                        ? item.CreatorOccurrenceCount
-                        : item.AcceptorOccurrenceCount),
-                    NullableInteger(isCreator
-                        ? item.AcceptorOccurrenceCount
-                        : item.CreatorOccurrenceCount),
-                });
-            }
-        }
-    }
-
     private static void ResolveSource(
         string userId,
         SharePublication publication,
@@ -584,12 +472,12 @@ internal static class PassportShareLifecycleExportWriter
         writer.WriteEndArray();
     }
 
-    private static bool IsCreator(string userId, string creatorUserId)
+    internal static bool IsCreator(string userId, string creatorUserId)
     {
         return string.Equals(userId, creatorUserId, StringComparison.Ordinal);
     }
 
-    private static StreamWriter CreateCsvWriter(ZipArchive archive, string fileName)
+    internal static StreamWriter CreateCsvWriter(ZipArchive archive, string fileName)
     {
         ZipArchiveEntry entry = archive.CreateEntry(fileName, CompressionLevel.Optimal);
         return new StreamWriter(entry.Open(), Utf8WithoutBom, 16 * 1024, leaveOpen: false)
@@ -598,7 +486,7 @@ internal static class PassportShareLifecycleExportWriter
         };
     }
 
-    private static void WriteCsvRow(StreamWriter writer, IReadOnlyCollection<string?> values)
+    internal static void WriteCsvRow(StreamWriter writer, IReadOnlyCollection<string?> values)
     {
         writer.WriteLine(string.Join(",", values.Select(EscapeCsv)));
     }
@@ -631,17 +519,17 @@ internal static class PassportShareLifecycleExportWriter
         return value.HasValue ? FormatUtc(value.Value) : null;
     }
 
-    private static string Integer(long value)
+    internal static string Integer(long value)
     {
         return value.ToString(CultureInfo.InvariantCulture);
     }
 
-    private static string NullableInteger(long? value)
+    internal static string NullableInteger(long? value)
     {
         return value?.ToString(CultureInfo.InvariantCulture) ?? string.Empty;
     }
 
-    private static string Double(double value)
+    internal static string Double(double value)
     {
         return value.ToString("R", CultureInfo.InvariantCulture);
     }

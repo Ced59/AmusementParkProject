@@ -39,6 +39,9 @@ classDiagram
       +WriteJson(writer, request, references)
       +WriteCsvEntries(archive, request, references)
     }
+    class PassportShareLifecycleComparisonCsvWriter {
+      +WriteCsvEntries(archive, request, references)
+    }
     class PassportExportReferenceMap {
       +Publication(id)
       +Invitation(id)
@@ -50,6 +53,7 @@ classDiagram
     IPassportShareLifecycleExportSource --> PassportShareLifecycleExportData
     PassportExportJobHandler --> CanonicalVisitExportWriter
     CanonicalVisitExportWriter --> PassportShareLifecycleExportWriter
+    PassportShareLifecycleExportWriter --> PassportShareLifecycleComparisonCsvWriter
     CanonicalVisitExportWriter --> PassportExportReferenceMap
 ```
 
