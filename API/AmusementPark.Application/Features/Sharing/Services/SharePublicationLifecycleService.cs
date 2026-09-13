@@ -142,13 +142,26 @@ public sealed class SharePublicationLifecycleService
                     SharingApplicationErrors.PublicationChangedConcurrently());
             }
 
-            ApplicationResult<long> confirmedSourceVersion = await source.GetCurrentSourceVersionAsync(
-                new SharePublicationSourceVersionRequest(
-                    publication.SourceScopeKey,
-                    publication.ContentPolicy,
-                    publication.Id,
-                    publication.PublicationVersion),
-                cancellationToken);
+            ApplicationResult<long> confirmedSourceVersion;
+            try
+            {
+                confirmedSourceVersion = await source.GetCurrentSourceVersionAsync(
+                    new SharePublicationSourceVersionRequest(
+                        publication.SourceScopeKey,
+                        publication.ContentPolicy,
+                        publication.Id,
+                        publication.PublicationVersion),
+                    cancellationToken);
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                return Success(publication);
+            }
+
             if (!confirmedSourceVersion.IsSuccess
                 || confirmedSourceVersion.Value != publication.SourceVersion)
             {

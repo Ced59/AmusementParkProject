@@ -70,7 +70,11 @@ successives ne font pas croître indéfiniment les collections de snapshots.
 
 Une seconde lecture de la version source après l'écriture ferme la petite fenêtre
 de concurrence. Si la source a changé pendant la rotation, le nouveau lien est
-révoqué avant de renvoyer un échec.
+révoqué avant de renvoyer un échec. Si cette vérification secondaire est elle-même
+indisponible après l'écriture, la commande retourne la rotation réellement acquise :
+le nouveau lien ne contient que le snapshot exact déjà approuvé et ne peut donc pas
+révéler la source courante. Une panne de lecture ne provoque ainsi ni faux échec ni
+rotation répétée par le client.
 
 ## Révocation
 
@@ -155,6 +159,8 @@ et aucun contrôle n'impose de largeur minimale supérieure au viewport de 320 p
 - clonage du snapshot exact avant rotation ;
 - refus si la source approuvée a changé ;
 - remplacement atomique du jeton et incrément des versions ;
+- succès cohérent si la vérification secondaire devient indisponible après le
+  remplacement atomique ;
 - persistance de la purge avant la révocation et attente de la version autoritative ;
 - reprise durable après redémarrage ou échec SSR ;
 - continuation durable au-delà du budget d'un job individuel, y compris après

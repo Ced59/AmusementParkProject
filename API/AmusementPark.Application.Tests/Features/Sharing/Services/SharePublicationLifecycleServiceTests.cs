@@ -158,6 +158,50 @@ public sealed class SharePublicationLifecycleServiceTests
     }
 
     [Fact]
+    public async Task RotateAsync_WhenPostCommitSourceReadFails_ShouldReturnTheCommittedRotation()
+    {
+        SharePublication publication = CreatePublishedPublication(
+            SharePublicationType.PersonalRanking);
+        Mock<ISharePublicationRepository> repository = CreateOwnedRepository(publication);
+        repository.Setup(value => value.ReplaceAsync(
+                It.Is<SharePublication>(candidate =>
+                    candidate.PublicationVersion == 2
+                    && candidate.ShareToken == ShareToken.Parse(RotatedToken)),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        Mock<IShareTokenFactory> tokenFactory = new Mock<IShareTokenFactory>(MockBehavior.Strict);
+        tokenFactory.Setup(value => value.Generate()).Returns(ShareToken.Parse(RotatedToken));
+        Mock<ISharePublicationSourceDescriptor> source =
+            new Mock<ISharePublicationSourceDescriptor>(MockBehavior.Strict);
+        source.SetupGet(value => value.PublicationType)
+            .Returns(SharePublicationType.PersonalRanking);
+        source.SetupSequence(value => value.GetCurrentSourceVersionAsync(
+                It.IsAny<SharePublicationSourceVersionRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<long>.Success(7))
+            .ThrowsAsync(new TimeoutException("Source unavailable after commit."));
+        SharePublicationLifecycleService service = CreateService(
+            repository.Object,
+            tokenFactory.Object,
+            new[] { source.Object },
+            Array.Empty<ISharePublicationSnapshotWriter>(),
+            null);
+
+        ApplicationResult<SharePublicationSettingsResult> result = await service.RotateAsync(
+            OwnerId,
+            PublicationId,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(RotatedToken, result.Value!.ShareId);
+        Assert.Equal(2, result.Value.PublicationVersion);
+        repository.VerifyAll();
+        tokenFactory.VerifyAll();
+        source.VerifyAll();
+    }
+
+    [Fact]
     public async Task RevokeByIdAsync_ShouldPersistThePurgeBeforeTheRevocation()
     {
         SharePublication publication = CreatePublishedPublication(SharePublicationType.PersonalRanking);
