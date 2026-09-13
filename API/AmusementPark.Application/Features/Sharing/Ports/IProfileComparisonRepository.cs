@@ -14,6 +14,7 @@ public interface IProfileComparisonRepository
 
     Task<IReadOnlyCollection<ProfileComparison>> ListActiveByParticipantAsync(
         string userId,
+        int skip,
         int limit,
         CancellationToken cancellationToken);
 

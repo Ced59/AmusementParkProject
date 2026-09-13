@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Sharing;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Application.Features.Sharing.Results;
@@ -22,6 +23,7 @@ public sealed class ProfileComparisonReaderTests
             new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
         repository.Setup(value => value.ListActiveByParticipantAsync(
                 "creator-1",
+                0,
                 ProfileComparisonReader.ManagementListLimit,
                 CancellationToken.None))
             .ReturnsAsync(new[] { comparison });
@@ -40,7 +42,8 @@ public sealed class ProfileComparisonReaderTests
         ProfileComparisonReader reader = CreateReader(
             repository.Object,
             publications.Object,
-            snapshots.Object);
+            snapshots.Object,
+            CreateAccessResolver(creator, acceptor).Object);
 
         ApplicationResult<IReadOnlyCollection<ProfileComparisonSummaryResult>> result =
             await reader.ListForParticipantAsync("creator-1", CancellationToken.None);
@@ -65,6 +68,7 @@ public sealed class ProfileComparisonReaderTests
             new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
         repository.Setup(value => value.ListActiveByParticipantAsync(
                 "creator-1",
+                0,
                 ProfileComparisonReader.ManagementListLimit,
                 CancellationToken.None))
             .ReturnsAsync(new[] { comparison });
@@ -91,6 +95,66 @@ public sealed class ProfileComparisonReaderTests
         Assert.Empty(result.Value!);
         repository.VerifyAll();
         publications.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ListForParticipantAsync_WhenNewestPageIsUnavailable_ShouldFillFromNextPage()
+    {
+        ProfileComparison stale = CreateComparison(
+            "stale-creator-passport",
+            "stale-acceptor-passport",
+            "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhg");
+        ProfileComparison available = CreateComparison();
+        Mock<IProfileComparisonRepository> repository =
+            new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.ListActiveByParticipantAsync(
+                "creator-1",
+                0,
+                ProfileComparisonReader.ManagementListLimit,
+                CancellationToken.None))
+            .ReturnsAsync(Enumerable.Repeat(stale, 25).ToArray());
+        repository.Setup(value => value.ListActiveByParticipantAsync(
+                "creator-1",
+                25,
+                ProfileComparisonReader.ManagementListLimit,
+                CancellationToken.None))
+            .ReturnsAsync(new[] { available });
+        SharePublication creator = CreatePublishedPassport(
+            available.CreatorPassportPublicationId,
+            available.CreatorUserId);
+        SharePublication acceptor = CreatePublishedPassport(
+            available.AcceptorPassportPublicationId,
+            available.AcceptorUserId);
+        Mock<ISharePublicationRepository> publications = CreatePublicationRepository(
+            creator,
+            acceptor);
+        publications.Setup(value => value.GetOwnedAsync(
+                stale.CreatorPassportPublicationId,
+                stale.CreatorUserId,
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null);
+        publications.Setup(value => value.GetOwnedAsync(
+                stale.AcceptorPassportPublicationId,
+                stale.AcceptorUserId,
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null);
+        Mock<IPassportProfileShareSnapshotRepository> snapshots = CreateSnapshotRepository(
+            CreateSnapshot(creator, "Camille"),
+            CreateSnapshot(acceptor, "Alex"));
+        ProfileComparisonReader reader = CreateReader(
+            repository.Object,
+            publications.Object,
+            snapshots.Object,
+            CreateAccessResolver(creator, acceptor).Object);
+
+        ApplicationResult<IReadOnlyCollection<ProfileComparisonSummaryResult>> result =
+            await reader.ListForParticipantAsync("creator-1", CancellationToken.None);
+
+        ProfileComparisonSummaryResult summary = Assert.Single(result.Value!);
+        Assert.Equal(available.ShareToken.Value, summary.ShareId);
+        repository.VerifyAll();
+        publications.VerifyAll();
+        snapshots.VerifyAll();
     }
 
     [Fact]
@@ -161,7 +225,96 @@ public sealed class ProfileComparisonReaderTests
         ProfileComparisonReader reader = CreateReader(
             comparisons.Object,
             publications.Object,
-            snapshots.Object);
+            snapshots.Object,
+            CreateAccessResolver(creator, acceptor).Object);
+
+        ApplicationResult<SharedProfileComparisonResult> result = await reader.GetSharedAsync(
+            comparison.ShareToken.Value,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "profile-comparison.not-found");
+        comparisons.VerifyAll();
+        publications.VerifyAll();
+        snapshots.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetSharedAsync_WhenAuthoritativePassportAccessIsRejected_ShouldReturnNotFound()
+    {
+        ProfileComparison comparison = CreateComparison();
+        SharePublication creator = CreatePublishedPassport(
+            comparison.CreatorPassportPublicationId,
+            comparison.CreatorUserId);
+        SharePublication acceptor = CreatePublishedPassport(
+            comparison.AcceptorPassportPublicationId,
+            comparison.AcceptorUserId);
+        Mock<IProfileComparisonRepository> comparisons =
+            new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
+        comparisons.Setup(value => value.GetByShareTokenAsync(
+                comparison.ShareToken,
+                CancellationToken.None))
+            .ReturnsAsync(comparison);
+        Mock<ISharePublicationRepository> publications = CreatePublicationRepository(
+            creator,
+            acceptor);
+        Mock<ISharePublicationAccessResolver> access = CreateAccessResolver(acceptor);
+        access.Setup(value => value.ResolveAsync(
+                creator.ShareToken!.Value.Value,
+                SharePublicationType.PassportProfile,
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<ResolvedSharePublicationResult>.Failure(
+                SharingApplicationErrors.SharedPublicationNotFound()));
+        Mock<IPassportProfileShareSnapshotRepository> snapshots = CreateSnapshotRepository(
+            CreateSnapshot(acceptor, "Alex"));
+        ProfileComparisonReader reader = CreateReader(
+            comparisons.Object,
+            publications.Object,
+            snapshots.Object,
+            access.Object);
+
+        ApplicationResult<SharedProfileComparisonResult> result = await reader.GetSharedAsync(
+            comparison.ShareToken.Value,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "profile-comparison.not-found");
+        comparisons.VerifyAll();
+        publications.VerifyAll();
+        access.VerifyAll();
+        snapshots.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetSharedAsync_WhenComparisonIsRevokedDuringRead_ShouldReturnNotFound()
+    {
+        ProfileComparison comparison = CreateComparison();
+        ProfileComparison revoked = CreateComparison();
+        revoked.Revoke("creator-1", NowUtc.AddMinutes(1));
+        SharePublication creator = CreatePublishedPassport(
+            comparison.CreatorPassportPublicationId,
+            comparison.CreatorUserId);
+        SharePublication acceptor = CreatePublishedPassport(
+            comparison.AcceptorPassportPublicationId,
+            comparison.AcceptorUserId);
+        Mock<IProfileComparisonRepository> comparisons =
+            new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
+        comparisons.SetupSequence(value => value.GetByShareTokenAsync(
+                comparison.ShareToken,
+                CancellationToken.None))
+            .ReturnsAsync(comparison)
+            .ReturnsAsync(revoked);
+        Mock<ISharePublicationRepository> publications = CreatePublicationRepository(
+            creator,
+            acceptor);
+        Mock<IPassportProfileShareSnapshotRepository> snapshots = CreateSnapshotRepository(
+            CreateSnapshot(creator, "Camille"),
+            CreateSnapshot(acceptor, "Alex"));
+        ProfileComparisonReader reader = CreateReader(
+            comparisons.Object,
+            publications.Object,
+            snapshots.Object,
+            CreateAccessResolver(creator, acceptor).Object);
 
         ApplicationResult<SharedProfileComparisonResult> result = await reader.GetSharedAsync(
             comparison.ShareToken.Value,
@@ -185,11 +338,13 @@ public sealed class ProfileComparisonReaderTests
     private static ProfileComparisonReader CreateReader(
         IProfileComparisonRepository repository,
         ISharePublicationRepository publications,
-        IPassportProfileShareSnapshotRepository snapshots)
+        IPassportProfileShareSnapshotRepository snapshots,
+        ISharePublicationAccessResolver? accessResolver = null)
     {
         ProfileComparisonPassportResolver resolver = new ProfileComparisonPassportResolver(
             publications,
-            snapshots);
+            snapshots,
+            accessResolver ?? Mock.Of<ISharePublicationAccessResolver>(MockBehavior.Strict));
         return new ProfileComparisonReader(repository, resolver);
     }
 
@@ -211,7 +366,9 @@ public sealed class ProfileComparisonReaderTests
             NowUtc,
             "fingerprint");
         publication.Publish(
-            ShareToken.Parse("AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhA"),
+            ShareToken.Parse(ownerUserId == "creator-1"
+                ? "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhA"
+                : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhQ"),
             ShareVisibility.Unlisted,
             9,
             policy,
@@ -300,17 +457,48 @@ public sealed class ProfileComparisonReaderTests
         return repository;
     }
 
-    private static ProfileComparison CreateComparison()
+    private static Mock<ISharePublicationAccessResolver> CreateAccessResolver(
+        params SharePublication[] publications)
+    {
+        Mock<ISharePublicationAccessResolver> resolver =
+            new Mock<ISharePublicationAccessResolver>(MockBehavior.Strict);
+        foreach (SharePublication publication in publications)
+        {
+            resolver.Setup(value => value.ResolveAsync(
+                    publication.ShareToken!.Value.Value,
+                    SharePublicationType.PassportProfile,
+                    CancellationToken.None))
+                .ReturnsAsync(ApplicationResult<ResolvedSharePublicationResult>.Success(
+                    new ResolvedSharePublicationResult(
+                        publication.OwnerUserId,
+                        null,
+                        publication.Type,
+                        publication.ContentPolicy,
+                        publication.PublishedAtUtc!.Value,
+                        publication.SourceScopeKey,
+                        publication.SourceVersion,
+                        publication.PublicationVersion,
+                        publication.Id.Value,
+                        publication.ContentFingerprint)));
+        }
+
+        return resolver;
+    }
+
+    private static ProfileComparison CreateComparison(
+        string creatorPassportId = "creator-passport",
+        string acceptorPassportId = "acceptor-passport",
+        string shareToken = "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8")
     {
         return ProfileComparison.Create(
             ProfileComparisonId.Parse("comparison-1"),
             ProfileComparisonInvitationId.Parse("invitation-1"),
-            ShareToken.Parse("AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8"),
+            ShareToken.Parse(shareToken),
             "creator-1",
             "acceptor-1",
-            SharePublicationId.Parse("creator-passport"),
+            SharePublicationId.Parse(creatorPassportId),
             1,
-            SharePublicationId.Parse("acceptor-passport"),
+            SharePublicationId.Parse(acceptorPassportId),
             1,
             new ProfileComparisonCalculation(
                 "Camille",

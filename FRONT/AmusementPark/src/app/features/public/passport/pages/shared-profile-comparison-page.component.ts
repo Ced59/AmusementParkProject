@@ -24,7 +24,10 @@ import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective } from '@ui/primitives';
 import { SharedProfileComparisonStateFacade } from '../state/shared-profile-comparison-state.facade';
-import { resolveProfileComparisonMissedStatusTranslationKey } from './profile-comparison-view.helpers';
+import {
+  resolveProfileComparisonCorrelationTranslationKey,
+  resolveProfileComparisonMissedStatusTranslationKey,
+} from './profile-comparison-view.helpers';
 
 @Component({
   selector: 'app-shared-profile-comparison-page',
@@ -161,17 +164,16 @@ export class SharedProfileComparisonPageComponent implements OnInit {
     }
   }
 
-  protected correlationKey(value: number | null): string {
-    if (value == null) {
-      return 'profileComparison.result.correlation.pending';
-    }
-    if (value >= 0.65) {
-      return 'profileComparison.result.correlation.aligned';
-    }
-    if (value <= -0.65) {
-      return 'profileComparison.result.correlation.contrasting';
-    }
-    return 'profileComparison.result.correlation.mixed';
+  protected correlationKey(
+    value: number | null,
+    commonRatingCount: number,
+    minimumRatingsForCorrelation: number,
+  ): string {
+    return resolveProfileComparisonCorrelationTranslationKey(
+      value,
+      commonRatingCount,
+      minimumRatingsForCorrelation,
+    );
   }
 
   protected ratingWidth(value: number): string {

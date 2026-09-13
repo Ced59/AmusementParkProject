@@ -63,7 +63,11 @@
           <p>
             <i class="pi pi-chart-line" aria-hidden="true"></i>
             {{
-              correlationKey(comparison.ratingCorrelation)
+              correlationKey(
+                comparison.ratingCorrelation,
+                comparison.commonRatingCount,
+                comparison.minimumRatingsForCorrelation
+              )
                 | translate
                   : {
                       current: comparison.commonRatingCount,

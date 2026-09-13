@@ -299,7 +299,9 @@ sequenceDiagram
   READ->>DB: Résoudre le jeton opaque
   READ->>PUB: Revalider publication A + version + politique
   READ->>PUB: Revalider publication B + version + politique
+  READ->>PUB: Vérifier sources actuelles + comptes actifs
   READ->>PUB: Contrôle final parallèle des deux versions exactes
+  READ->>DB: Relire la comparaison et confirmer sa version active
   alt comparaison active et deux passeports inchangés
     READ-->>API: snapshot comparatif public
     API-->>V: 200 + no-store + no-referrer
@@ -327,6 +329,11 @@ sequenceDiagram
 
 Un tiers reçoit le même `404` qu'un jeton inconnu. Il ne peut donc pas utiliser
 l'endpoint de révocation pour confirmer l'existence d'une comparaison.
+
+La même validation autoritative est appliquée à l'atelier authentifié. Sa lecture
+avance par pages de résultats MongoDB jusqu'à réunir au plus 25 comparaisons encore
+accessibles : des enregistrements récents devenus obsolètes ne masquent donc pas
+des comparaisons valides plus anciennes.
 
 ## 8. Contrats publics et confidentialité
 

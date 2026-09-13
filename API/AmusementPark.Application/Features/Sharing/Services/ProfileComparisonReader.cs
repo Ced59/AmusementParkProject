@@ -9,6 +9,7 @@ namespace AmusementPark.Application.Features.Sharing.Services;
 public sealed class ProfileComparisonReader
 {
     public const int ManagementListLimit = 25;
+    private const int ManagementPageSize = 25;
     private readonly IProfileComparisonRepository comparisonRepository;
     private readonly ProfileComparisonPassportResolver passportResolver;
 
@@ -45,10 +46,21 @@ public sealed class ProfileComparisonReader
             return NotFound();
         }
 
+        ProfileComparison? currentComparison =
+            await this.comparisonRepository.GetByShareTokenAsync(
+                shareToken,
+                cancellationToken);
+        if (currentComparison?.IsActive != true
+            || currentComparison.Id != comparison.Id
+            || currentComparison.Version != comparison.Version)
+        {
+            return NotFound();
+        }
+
         return ApplicationResult<SharedProfileComparisonResult>.Success(
             new SharedProfileComparisonResult(
-                comparison.CreatedAtUtc,
-                comparison.Calculation));
+                currentComparison.CreatedAtUtc,
+                currentComparison.Calculation));
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<ProfileComparisonSummaryResult>>>
@@ -61,29 +73,46 @@ public sealed class ProfileComparisonReader
                 SharingApplicationErrors.ComparisonNotFound());
         }
 
-        IReadOnlyCollection<ProfileComparison> comparisons =
-            await this.comparisonRepository.ListActiveByParticipantAsync(
-                normalizedUserId,
-                ManagementListLimit,
-                cancellationToken);
         List<ProfileComparisonSummaryResult> results = new();
-        foreach (ProfileComparison comparison in comparisons)
+        int skip = 0;
+        while (results.Count < ManagementListLimit)
         {
-            if (!await this.PassportsRemainAvailableAsync(comparison, cancellationToken))
+            IReadOnlyCollection<ProfileComparison> comparisons =
+                await this.comparisonRepository.ListActiveByParticipantAsync(
+                    normalizedUserId,
+                    skip,
+                    ManagementPageSize,
+                    cancellationToken);
+            foreach (ProfileComparison comparison in comparisons)
             {
-                continue;
+                if (!await this.PassportsRemainAvailableAsync(comparison, cancellationToken))
+                {
+                    continue;
+                }
+
+                results.Add(new ProfileComparisonSummaryResult(
+                    comparison.ShareToken.Value,
+                    string.Equals(
+                        comparison.CreatorUserId,
+                        normalizedUserId,
+                        StringComparison.Ordinal)
+                        ? comparison.Calculation.AcceptorDisplayName
+                        : comparison.Calculation.CreatorDisplayName,
+                    comparison.CreatedAtUtc,
+                    comparison.Calculation.Categories));
+                if (results.Count == ManagementListLimit)
+                {
+                    break;
+                }
             }
 
-            results.Add(new ProfileComparisonSummaryResult(
-                comparison.ShareToken.Value,
-                string.Equals(
-                    comparison.CreatorUserId,
-                    normalizedUserId,
-                    StringComparison.Ordinal)
-                    ? comparison.Calculation.AcceptorDisplayName
-                    : comparison.Calculation.CreatorDisplayName,
-                comparison.CreatedAtUtc,
-                comparison.Calculation.Categories));
+            if (comparisons.Count < ManagementPageSize
+                || skip > int.MaxValue - comparisons.Count)
+            {
+                break;
+            }
+
+            skip += comparisons.Count;
         }
 
         return ApplicationResult<IReadOnlyCollection<ProfileComparisonSummaryResult>>.Success(

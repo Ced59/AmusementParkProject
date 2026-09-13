@@ -43,12 +43,18 @@ public sealed class ProfileComparisonRepository : IProfileComparisonRepository
 
     public async Task<IReadOnlyCollection<ProfileComparison>> ListActiveByParticipantAsync(
         string userId,
+        int skip,
         int limit,
         CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(userId))
         {
             throw new ArgumentException("A user identifier is required.", nameof(userId));
+        }
+
+        if (skip < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(skip));
         }
 
         if (limit is < 1 or > 100)
@@ -59,6 +65,8 @@ public sealed class ProfileComparisonRepository : IProfileComparisonRepository
         List<ProfileComparisonDocument> documents = await this.collection
             .Find(ProfileComparisonMongoDefinitions.BuildActiveParticipantFilter(userId.Trim()))
             .SortByDescending(static document => document.CreatedAt)
+            .ThenByDescending(static document => document.Id)
+            .Skip(skip)
             .Limit(limit)
             .ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToArray();

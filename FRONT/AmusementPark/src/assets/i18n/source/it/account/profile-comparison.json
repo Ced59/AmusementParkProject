@@ -19,6 +19,7 @@
       "commonRatings": "valutazioni in comune",
       "correlation": {
         "pending": "{{current}} valutazione/i in comune sulle {{minimum}} necessarie: non viene ancora mostrata una tendenza generale.",
+        "noVariance": "La soglia è raggiunta, ma uno dei passaporti usa sempre lo stesso voto, quindi non è possibile calcolare una tendenza.",
         "aligned": "Nelle valutazioni comuni, i vostri punteggi si muovono spesso nella stessa direzione.",
         "contrasting": "Nelle valutazioni comuni, i vostri punteggi si muovono spesso in direzioni opposte.",
         "mixed": "Nelle valutazioni comuni, l’andamento rivela gusti ricchi di sfumature."

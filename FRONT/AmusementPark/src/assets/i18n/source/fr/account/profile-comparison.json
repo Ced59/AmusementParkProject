@@ -19,6 +19,7 @@
       "commonRatings": "notes communes",
       "correlation": {
         "pending": "{{current}} note(s) commune(s) sur {{minimum}} requises : aucune tendance globale n’est encore affichée.",
+        "noVariance": "Le seuil est atteint, mais l’un des passeports utilise la même note partout : aucune tendance de variation ne peut être calculée.",
         "aligned": "Sur les notes communes, vos variations suivent souvent la même direction.",
         "contrasting": "Sur les notes communes, vos variations suivent souvent des directions opposées.",
         "mixed": "Sur les notes communes, vos variations dessinent des goûts nuancés."

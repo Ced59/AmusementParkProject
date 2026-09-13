@@ -82,7 +82,8 @@ public sealed class ProfileComparisonMaterializerTests
     {
         ProfileComparisonPassportResolver resolver = new ProfileComparisonPassportResolver(
             publications,
-            snapshots);
+            snapshots,
+            Mock.Of<ISharePublicationAccessResolver>(MockBehavior.Strict));
         return new ProfileComparisonMaterializer(
             comparisons,
             resolver,

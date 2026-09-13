@@ -19,6 +19,7 @@
       "commonRatings": "ratings in common",
       "correlation": {
         "pending": "{{current}} common rating(s) out of {{minimum}} required: no overall trend is shown yet.",
+        "noVariance": "The threshold is met, but one passport uses the same rating throughout, so no score trend can be calculated.",
         "aligned": "Across your common ratings, your scores often move in the same direction.",
         "contrasting": "Across your common ratings, your scores often move in opposite directions.",
         "mixed": "Across your common ratings, your score patterns reveal nuanced tastes."
