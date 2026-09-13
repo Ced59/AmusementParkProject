@@ -30,7 +30,7 @@ export interface ProfileComparisonInvitationPreview {
 }
 
 export interface ProfileComparisonInvitationAcceptance {
-  comparisonId: string;
+  shareId: string;
   acceptedAtUtc: string;
   categories: ProfileComparisonCategory[];
 }

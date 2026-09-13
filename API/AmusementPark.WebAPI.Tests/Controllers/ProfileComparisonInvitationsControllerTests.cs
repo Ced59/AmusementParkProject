@@ -94,6 +94,38 @@ public sealed class ProfileComparisonInvitationsControllerTests
         handler.VerifyAll();
     }
 
+    [Fact]
+    public async Task AcceptAsync_ShouldPreserveComparisonIdAsOpaqueShareTokenAlias()
+    {
+        DateTime acceptedAtUtc = new DateTime(2026, 9, 13, 12, 0, 0, DateTimeKind.Utc);
+        Mock<ICommandHandler<AcceptProfileComparisonInvitationCommand,
+            ApplicationResult<ProfileComparisonInvitationAcceptanceResult>>> handler = new(
+                MockBehavior.Strict);
+        handler.Setup(value => value.HandleAsync(
+                It.Is<AcceptProfileComparisonInvitationCommand>(command =>
+                    command.UserId == "user-1" && command.Token == "opaque-token"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<ProfileComparisonInvitationAcceptanceResult>.Success(
+                new ProfileComparisonInvitationAcceptanceResult(
+                    "opaque-share-token",
+                    acceptedAtUtc,
+                    new[] { ProfileComparisonCategory.VisitedParks })));
+        ProfileComparisonInvitationsController controller = CreateController(
+            acceptHandler: handler.Object);
+
+        IActionResult result = await controller.AcceptAsync(
+            "opaque-token",
+            CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        ProfileComparisonInvitationAcceptanceDto response =
+            Assert.IsType<ProfileComparisonInvitationAcceptanceDto>(ok.Value);
+        Assert.Equal("opaque-share-token", response.ShareId);
+        Assert.Equal(response.ShareId, response.ComparisonId);
+        Assert.Equal(acceptedAtUtc, response.AcceptedAtUtc);
+        handler.VerifyAll();
+    }
+
     [Theory]
     [InlineData(nameof(ProfileComparisonInvitationsController.CreateAsync),
         RateLimitPolicyNames.SharePublicationConfirmations)]
@@ -123,7 +155,9 @@ public sealed class ProfileComparisonInvitationsControllerTests
         ICommandHandler<CreateProfileComparisonInvitationCommand,
             ApplicationResult<ProfileComparisonInvitationCreationResult>>? createHandler = null,
         IQueryHandler<GetProfileComparisonInvitationPreviewQuery,
-            ApplicationResult<ProfileComparisonInvitationPreviewResult>>? previewHandler = null)
+            ApplicationResult<ProfileComparisonInvitationPreviewResult>>? previewHandler = null,
+        ICommandHandler<AcceptProfileComparisonInvitationCommand,
+            ApplicationResult<ProfileComparisonInvitationAcceptanceResult>>? acceptHandler = null)
     {
         ProfileComparisonInvitationsController controller =
             new ProfileComparisonInvitationsController(
@@ -131,7 +165,7 @@ public sealed class ProfileComparisonInvitationsControllerTests
                     ApplicationResult<ProfileComparisonInvitationCreationResult>>>(MockBehavior.Strict),
                 previewHandler ?? Mock.Of<IQueryHandler<GetProfileComparisonInvitationPreviewQuery,
                     ApplicationResult<ProfileComparisonInvitationPreviewResult>>>(MockBehavior.Strict),
-                Mock.Of<ICommandHandler<AcceptProfileComparisonInvitationCommand,
+                acceptHandler ?? Mock.Of<ICommandHandler<AcceptProfileComparisonInvitationCommand,
                     ApplicationResult<ProfileComparisonInvitationAcceptanceResult>>>(MockBehavior.Strict),
                 Options.Create(new SharePublicationRolloutSettings { Enabled = true }));
         ClaimsIdentity identity = new ClaimsIdentity(

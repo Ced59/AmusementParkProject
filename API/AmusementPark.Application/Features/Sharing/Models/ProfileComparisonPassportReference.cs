@@ -6,4 +6,5 @@ public sealed record ProfileComparisonPassportReference(
     SharePublicationId PublicationId,
     long PublicationVersion,
     string? DisplayName,
-    ShareContentPolicy ContentPolicy);
+    ShareContentPolicy ContentPolicy,
+    PassportProfileShareSnapshot Snapshot);

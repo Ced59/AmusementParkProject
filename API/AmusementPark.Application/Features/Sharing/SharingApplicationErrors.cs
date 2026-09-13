@@ -222,4 +222,32 @@ public static class SharingApplicationErrors
             "profile-comparison.invitation-unavailable",
             "L’invitation n’a pas pu être créée. Réessaie.");
     }
+
+    public static ApplicationError ComparisonPassportsChanged()
+    {
+        return ApplicationError.RuleViolation(
+            "profile-comparison.passports-changed",
+            "Un des passeports publics a changé. Crée une nouvelle invitation.");
+    }
+
+    public static ApplicationError ComparisonUnavailable()
+    {
+        return ApplicationError.Technical(
+            "profile-comparison.unavailable",
+            "La comparaison n’a pas pu être préparée. Réessaie.");
+    }
+
+    public static ApplicationError ComparisonNotFound()
+    {
+        return ApplicationError.NotFound(
+            "profile-comparison.not-found",
+            "Cette comparaison est introuvable ou n’est plus disponible.");
+    }
+
+    public static ApplicationError ComparisonChangedConcurrently()
+    {
+        return ApplicationError.Conflict(
+            "profile-comparison.concurrent-modification",
+            "Cette comparaison vient d’être modifiée. Recharge la page.");
+    }
 }

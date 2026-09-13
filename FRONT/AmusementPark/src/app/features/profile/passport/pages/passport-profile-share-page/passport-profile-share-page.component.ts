@@ -13,6 +13,7 @@ import { PageStateComponent } from '@shared/components/page-state/page-state.com
 import { UiButtonDirective, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PassportProfileShareStateFacade } from '../../state/passport-profile-share-state.facade';
 import { ProfileComparisonInvitationCreatorComponent } from '../../components/profile-comparison-invitation-creator/profile-comparison-invitation-creator.component';
+import { ProfileComparisonManagementComponent } from '../../components/profile-comparison-management/profile-comparison-management.component';
 
 @Component({
   selector: 'app-passport-profile-share-page',
@@ -20,7 +21,7 @@ import { ProfileComparisonInvitationCreatorComponent } from '../../components/pr
   styleUrl: './passport-profile-share-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PassportProfileShareStateFacade],
-  imports: [TranslateModule, PageStateComponent, UiButtonDirective, UiKickerComponent, UiSurfaceDirective, ProfileComparisonInvitationCreatorComponent]
+  imports: [TranslateModule, PageStateComponent, UiButtonDirective, UiKickerComponent, UiSurfaceDirective, ProfileComparisonInvitationCreatorComponent, ProfileComparisonManagementComponent]
 })
 export class PassportProfileSharePageComponent implements OnInit {
   private readonly router = inject(Router);

@@ -414,6 +414,34 @@ en colonne et contiennent les liens longs sur mobile ; leur contrat responsive e
 automatisé. `SHARE-12` peut maintenant construire le résultat, les seuils et la
 révocation de la comparaison à partir de ce consentement figé.
 
+### État de `SHARE-12` au 13 septembre 2026
+
+Le résultat de comparaison est livré en version 5.3.4. Une invitation acceptée
+matérialise maintenant un passeport croisé figé depuis les deux versions publiques
+exactement consenties. Le récit distingue les parcs communs, les éléments visibles
+dans une seule sélection sans inventer une absence de visite, les accords, nuances
+et divergences de notes globales, les années communes et les expériences manquées
+partagées. Aucun identifiant technique n'est exposé et aucune note temporelle ne
+devient une voix communautaire.
+
+Le nombre de notes communes reste visible. Une corrélation n'est calculée qu'à
+partir de cinq cibles communes et variées ; elle est restituée qualitativement et
+ne devient jamais un pourcentage de compatibilité. Les deux participants peuvent
+retrouver, ouvrir, copier ou arrêter leurs comparaisons depuis l'atelier du
+passeport. Une révocation coupe immédiatement le lien pour les deux. Une rotation,
+une republication ou une réduction de la politique de l'un des passeports rend
+également le résultat inaccessible lors de la lecture suivante.
+
+La collection `profile-comparisons`, son jeton unique, sa preuve d'invitation et
+ses indexes participants sont créés automatiquement au démarrage. L'API publique
+répond sans cache et sans référent, la page Angular est rendue côté serveur mais
+reste non indexable, et les surfaces sont explicitement contenues sur mobile.
+La preuve détaillée, les diagrammes de classes, séquences et schéma MongoDB sont
+documentés dans
+[`product-growth-share-12-profile-comparison-results-2026-09-13.md`](../../architecture/product-growth-share-12-profile-comparison-results-2026-09-13.md).
+`SHARE-13` peut maintenant ajouter le signalement et la modération minimale sans
+modifier le consentement ou le calcul.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :
@@ -756,8 +784,9 @@ GET    /api/shared/{shareId}
 POST   /api/me/comparisons/invitations
 GET    /api/me/comparisons/invitations/{token}/preview
 POST   /api/me/comparisons/invitations/{token}/accept
-DELETE /api/me/comparisons/{comparisonId}
-GET    /api/shared/comparisons/{shareId}
+GET    /api/me/profile-comparisons
+DELETE /api/me/profile-comparisons/{shareId}
+GET    /api/passport/shared/comparisons/{shareId}
 ```
 
 ### 11.3 Cas d’usage

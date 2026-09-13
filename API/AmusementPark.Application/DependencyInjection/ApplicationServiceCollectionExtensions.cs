@@ -151,6 +151,9 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<SharePublicationLifecycleService>();
         services.AddScoped<ProfileComparisonPassportResolver>();
         services.AddScoped<ProfileComparisonInvitationService>();
+        services.AddScoped<ProfileComparisonMaterializer>();
+        services.AddScoped<ProfileComparisonReader>();
+        services.AddScoped<ProfileComparisonLifecycleService>();
         services.AddScoped<SharePublicationCacheInvalidationScheduler>();
         services.AddScoped<SharePublicationSourceCacheInvalidator>();
         services.AddDurableBackgroundJobHandler<SharePublicationCacheInvalidationJobHandler>();

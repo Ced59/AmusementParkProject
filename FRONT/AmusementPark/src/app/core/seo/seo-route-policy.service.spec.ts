@@ -100,5 +100,7 @@ describe('SeoRoutePolicyService', (): void => {
     expect(service.isSharedPassportProfileRoute('/fr/passport/shared/profiles/opaque-token?from=copy')).toBe(true);
     expect(service.isSharedPassportProfileRoute('/fr/passport/shared/profiles')).toBe(false);
     expect(service.isAccountRoute('/fr/passport/shared/profiles/opaque-token')).toBe(false);
+    expect(service.isSharedProfileComparisonRoute('/fr/passport/shared/comparisons/opaque-token')).toBe(true);
+    expect(service.isAccountRoute('/fr/passport/shared/comparisons/opaque-token')).toBe(false);
   });
 });

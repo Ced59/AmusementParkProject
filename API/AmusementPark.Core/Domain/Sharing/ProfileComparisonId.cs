@@ -28,6 +28,25 @@ public readonly record struct ProfileComparisonId
             IdentifierRules.NormalizeRequired(value, nameof(value)));
     }
 
+    public static bool TryParse(string? value, out ProfileComparisonId comparisonId)
+    {
+        try
+        {
+            comparisonId = Parse(value);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            comparisonId = default;
+            return false;
+        }
+        catch (InvalidOperationException)
+        {
+            comparisonId = default;
+            return false;
+        }
+    }
+
     public override string ToString()
     {
         return this.Value;

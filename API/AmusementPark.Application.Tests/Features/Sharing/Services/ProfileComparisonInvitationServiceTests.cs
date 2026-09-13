@@ -129,16 +129,29 @@ public sealed class ProfileComparisonInvitationServiceTests
             CreatePublicationRepository(creator, invitee);
         Mock<IPassportProfileShareSnapshotRepository> snapshots =
             CreateSnapshotRepository(creatorSnapshot, inviteeSnapshot);
+        Mock<IProfileComparisonRepository> comparisons =
+            new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
+        comparisons.Setup(value => value.GetByIdAsync(
+                It.IsAny<ProfileComparisonId>(),
+                CancellationToken.None))
+            .ReturnsAsync((ProfileComparison?)null);
+        comparisons.Setup(value => value.CreateAsync(
+                It.Is<ProfileComparison>(comparison =>
+                    comparison.CreatorUserId == CreatorId
+                    && comparison.AcceptorUserId == InviteeId),
+                CancellationToken.None))
+            .ReturnsAsync(ProfileComparisonWriteOutcome.Success);
         ProfileComparisonInvitationService service = CreateService(
             invitations.Object,
             publications.Object,
-            snapshots.Object);
+            snapshots.Object,
+            comparisons.Object);
 
         ApplicationResult<ProfileComparisonInvitationAcceptanceResult> result =
             await service.AcceptAsync(InviteeId, Token, CancellationToken.None);
 
         Assert.True(result.IsSuccess);
-        Assert.NotEmpty(result.Value!.ComparisonId);
+        Assert.Equal(Token, result.Value!.ShareId);
         Assert.Equal(NowUtc, result.Value.AcceptedAtUtc);
         invitations.VerifyAll();
     }
@@ -192,13 +205,22 @@ public sealed class ProfileComparisonInvitationServiceTests
     private static ProfileComparisonInvitationService CreateService(
         IProfileComparisonInvitationRepository invitations,
         ISharePublicationRepository publications,
-        IPassportProfileShareSnapshotRepository snapshots)
+        IPassportProfileShareSnapshotRepository snapshots,
+        IProfileComparisonRepository? comparisons = null)
     {
         Mock<IShareTokenFactory> tokens = new Mock<IShareTokenFactory>(MockBehavior.Strict);
         tokens.Setup(value => value.Generate()).Returns(ShareToken.Parse(Token));
+        ProfileComparisonPassportResolver resolver =
+            new ProfileComparisonPassportResolver(publications, snapshots);
+        ProfileComparisonMaterializer materializer = new ProfileComparisonMaterializer(
+            comparisons ?? Mock.Of<IProfileComparisonRepository>(MockBehavior.Strict),
+            resolver,
+            tokens.Object,
+            new SharePublicationFixedTimeProvider(NowUtc));
         return new ProfileComparisonInvitationService(
             invitations,
-            new ProfileComparisonPassportResolver(publications, snapshots),
+            resolver,
+            materializer,
             tokens.Object,
             new SharePublicationFixedTimeProvider(NowUtc));
     }

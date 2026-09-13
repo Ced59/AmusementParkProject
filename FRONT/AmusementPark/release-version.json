@@ -1,6 +1,20 @@
 {
-  "version": "5.3.3",
+  "version": "5.3.4",
   "history": [
+    {
+      "version": "5.3.4",
+      "releasedAt": "2026-09-13",
+      "labels": {
+        "fr": "Tu peux maintenant découvrir et arrêter tes comparaisons de passeports.",
+        "en": "You can now explore and stop your passport comparisons.",
+        "de": "Du kannst deine Passvergleiche jetzt ansehen und beenden.",
+        "nl": "Je kunt je paspoortvergelijkingen nu bekijken en stoppen.",
+        "it": "Ora puoi esplorare e interrompere i tuoi confronti tra passaporti.",
+        "es": "Ahora puedes descubrir y detener tus comparaciones de pasaportes.",
+        "pl": "Możesz teraz przeglądać i kończyć swoje porównania paszportów.",
+        "pt": "Agora podes explorar e terminar as tuas comparações entre passaportes."
+      }
+    },
     {
       "version": "5.3.3",
       "releasedAt": "2026-09-13",

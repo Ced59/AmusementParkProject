@@ -227,6 +227,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ISharePublicationRepository, SharePublicationRepository>();
         services.AddScoped<IProfileComparisonInvitationRepository,
             ProfileComparisonInvitationRepository>();
+        services.AddScoped<IProfileComparisonRepository, ProfileComparisonRepository>();
         services.AddScoped<IVisitRecapShareSnapshotRepository,
             VisitRecapShareSnapshotRepository>();
         services.AddScoped<IYearRecapShareSnapshotRepository,

@@ -1,0 +1,111 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.comparison-management,
+.comparison-management * {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}
+.comparison-management {
+  display: grid;
+  gap: 1rem;
+  overflow-x: clip;
+}
+.comparison-management__heading {
+  display: grid;
+  gap: 0.35rem;
+}
+h2,
+h3,
+p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.comparison-management__heading p,
+.comparison-management__state {
+  color: var(--app-text-muted);
+}
+.comparison-management__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 0.75rem;
+}
+.comparison-management__list > article {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
+}
+.comparison-management__identity {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+}
+.comparison-management__identity > i {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  color: var(--c-sky);
+  background: color-mix(in srgb, var(--c-sky) 10%, transparent);
+}
+.comparison-management__identity span {
+  color: var(--app-text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+.comparison-management ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.comparison-management li {
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c-lime) 8%, transparent);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+.comparison-management__actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.comparison-management__actions > button:last-of-type {
+  grid-column: 1 / -1;
+}
+.comparison-management__confirm {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  background: color-mix(in srgb, var(--color-danger, #ff4f87) 8%, transparent);
+}
+.comparison-management__confirm p {
+  grid-column: 1 / -1;
+}
+.comparison-management__error {
+  color: var(--color-danger, #ff4f87);
+}
+@media (max-width: 420px) {
+  .comparison-management__actions,
+  .comparison-management__confirm {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .comparison-management__actions > button,
+  .comparison-management__confirm > * {
+    grid-column: 1;
+    width: 100%;
+  }
+}

@@ -189,6 +189,7 @@ export const routes: Routes = [
           { path: 'passport/shared/visits/:shareId', loadComponent: () => import('@features/public/passport/pages/shared-visit-recap-page.component').then((m) => m.SharedVisitRecapPageComponent) },
           { path: 'passport/shared/years/:shareId', loadComponent: () => import('@features/public/passport/pages/shared-year-recap-page.component').then((m) => m.SharedYearRecapPageComponent) },
           { path: 'passport/shared/profiles/:shareId', loadComponent: () => import('@features/public/passport/pages/shared-passport-profile-page.component').then((m) => m.SharedPassportProfilePageComponent) },
+          { path: 'passport/shared/comparisons/:shareId', loadComponent: () => import('@features/public/passport/pages/shared-profile-comparison-page.component').then((m) => m.SharedProfileComparisonPageComponent) },
           { path: 'passport/local/:draftId', loadComponent: () => import('@features/profile/passport/anonymous-drafts/pages/passport-anonymous-draft-editor-page/passport-anonymous-draft-editor-page.component').then((m) => m.PassportAnonymousDraftEditorPageComponent) },
           { path: 'passport/local', loadComponent: () => import('@features/profile/passport/anonymous-drafts/pages/passport-anonymous-drafts-page/passport-anonymous-drafts-page.component').then((m) => m.PassportAnonymousDraftsPageComponent) },
           { path: 'about', loadComponent: () => import('@features/public/about/pages/about.component').then((m) => m.AboutComponent) },

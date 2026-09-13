@@ -1,0 +1,97 @@
+<section
+  class="comparison-management"
+  appUiSurface="panel"
+  appUiSurfacePadding="spacious"
+>
+  <app-ui-kicker tone="sky" iconClass="pi pi-users">{{
+    "profileComparison.management.kicker" | translate
+  }}</app-ui-kicker>
+  <div class="comparison-management__heading">
+    <h2>{{ "profileComparison.management.title" | translate }}</h2>
+    <p>{{ "profileComparison.management.description" | translate }}</p>
+  </div>
+
+  @if (facade.loading()) {
+    <p class="comparison-management__state">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i
+      >{{ "profileComparison.management.loading" | translate }}
+    </p>
+  } @else if (facade.comparisons().length === 0) {
+    <p class="comparison-management__state">
+      {{ "profileComparison.management.empty" | translate }}
+    </p>
+  } @else {
+    <div class="comparison-management__list">
+      @for (comparison of facade.comparisons(); track comparison.shareId) {
+        <article>
+          <div class="comparison-management__identity">
+            <i class="pi pi-user" aria-hidden="true"></i>
+            <div>
+              <span>{{ "profileComparison.management.with" | translate }}</span>
+              <h3>{{ otherName(comparison) }}</h3>
+            </div>
+          </div>
+          <ul>
+            @for (category of comparison.categories; track category) {
+              <li>{{ categoryKey(category) | translate }}</li>
+            }
+          </ul>
+          <div class="comparison-management__actions">
+            <button
+              appUiButton="primary"
+              type="button"
+              (click)="open(comparison)"
+            >
+              <i class="pi pi-eye" aria-hidden="true"></i
+              >{{ "profileComparison.management.open" | translate }}
+            </button>
+            <button appUiButton="soft" type="button" (click)="copy(comparison)">
+              <i class="pi pi-copy" aria-hidden="true"></i
+              >{{
+                (copiedShareId() === comparison.shareId
+                  ? "profileComparison.management.copied"
+                  : "profileComparison.management.copy"
+                ) | translate
+              }}
+            </button>
+            @if (pendingRevocation() !== comparison.shareId) {
+              <button
+                appUiButton="ghost"
+                type="button"
+                (click)="confirmRevocation(comparison.shareId)"
+              >
+                <i class="pi pi-times-circle" aria-hidden="true"></i
+                >{{ "profileComparison.management.stop" | translate }}
+              </button>
+            } @else {
+              <div class="comparison-management__confirm" role="alert">
+                <p>{{ "profileComparison.management.confirm" | translate }}</p>
+                <button
+                  appUiButton="rose"
+                  type="button"
+                  [disabled]="facade.revokingShareId() === comparison.shareId"
+                  (click)="revoke(comparison.shareId)"
+                >
+                  {{
+                    "profileComparison.management.confirmAction" | translate
+                  }}</button
+                ><button
+                  appUiButton="ghost"
+                  type="button"
+                  (click)="cancelRevocation()"
+                >
+                  {{ "profileComparison.management.cancel" | translate }}
+                </button>
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  }
+  @if (facade.error()) {
+    <p class="comparison-management__error" role="alert">
+      {{ "profileComparison.management.error" | translate }}
+    </p>
+  }
+</section>

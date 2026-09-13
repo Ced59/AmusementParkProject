@@ -62,7 +62,8 @@ public static class ProfileComparisonInvitationHttpMapper
     {
         return new ProfileComparisonInvitationAcceptanceDto
         {
-            ComparisonId = result.ComparisonId,
+            ShareId = result.ShareId,
+            ComparisonId = result.ShareId,
             AcceptedAtUtc = result.AcceptedAtUtc,
             Categories = result.Categories.Select(static value => value.ToString()).ToList(),
         };
