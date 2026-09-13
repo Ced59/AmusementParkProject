@@ -172,6 +172,127 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.DoesNotContain(ComparisonShareToken, content, StringComparison.Ordinal);
     }
 
+    [Theory]
+    [InlineData(PassportExportFormat.Json)]
+    [InlineData(PassportExportFormat.Csv)]
+    public void Write_WhenSelectedParkWasRenamed_PreservesFrozenSnapshotLabel(
+        PassportExportFormat format)
+    {
+        PassportExportWriteRequest source = CreateRequestWithShareLifecycle(format);
+        PassportProfileShareSnapshot snapshot = source.ShareLifecycle.PassportSnapshots.Single();
+        PassportProfileShareSnapshot frozenSnapshot = snapshot with
+        {
+            Selection = snapshot.Selection with
+            {
+                SelectedParkIds = new[] { "park-1" },
+            },
+            SelectedParks = new[]
+            {
+                new PassportProfileShareSelectedParkSnapshot(
+                    "park-1",
+                    "Frozen Selected Park",
+                    "FR"),
+            },
+            Content = snapshot.Content with
+            {
+                Parks = new[]
+                {
+                    new PassportProfileShareParkResult(
+                        "Frozen Selected Park",
+                        "FR",
+                        2,
+                        2026,
+                        2026,
+                        4,
+                        null),
+                },
+            },
+        };
+        source.Parks["park-1"].Name = "Current Renamed Park";
+        PassportExportWriteRequest request = source with
+        {
+            ShareLifecycle = source.ShareLifecycle with
+            {
+                PassportSnapshots = new[] { frozenSnapshot },
+            },
+        };
+        CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
+
+        PassportExportArtifact artifact = writer.Write(request);
+
+        IReadOnlyCollection<string> selectionNames = ReadPassportSelectionParkNames(artifact);
+        Assert.Equal(new[] { "Frozen Selected Park" }, selectionNames);
+        Assert.DoesNotContain("Current Renamed Park", selectionNames);
+    }
+
+    [Theory]
+    [InlineData(PassportExportFormat.Json)]
+    [InlineData(PassportExportFormat.Csv)]
+    public void Write_WhenCurrentVisitsChangedAfterSnapshot_UsesFrozenCompleteSelection(
+        PassportExportFormat format)
+    {
+        PassportExportWriteRequest source = CreateRequestWithShareLifecycle(format);
+        Visit olderVisit = Visit.Create(
+            VisitId.Parse("01JTESTVISIT00000000000001"),
+            source.UserId,
+            "park-internal-selection",
+            VisitDate.ForDay(2025, 8, 31),
+            "Europe/Paris",
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            NowUtc.AddYears(-1));
+        PassportProfileShareSnapshot snapshot = source.ShareLifecycle.PassportSnapshots.Single();
+        PassportProfileShareSnapshot frozenSnapshot = snapshot with
+        {
+            Selection = snapshot.Selection with
+            {
+                SelectedParkIds = new[] { "park-1", "park-internal-selection" },
+            },
+            SelectedParks = new[]
+            {
+                new PassportProfileShareSelectedParkSnapshot(
+                    "park-1",
+                    "Frozen In-Year Park",
+                    "DE"),
+                new PassportProfileShareSelectedParkSnapshot(
+                    "park-internal-selection",
+                    "Frozen Outside-Year Park",
+                    "FR"),
+            },
+            Content = snapshot.Content with
+            {
+                Parks = new[]
+                {
+                    new PassportProfileShareParkResult(
+                        "Frozen In-Year Park",
+                        "DE",
+                        1,
+                        2026,
+                        2026,
+                        2,
+                        null),
+                },
+            },
+        };
+        PassportExportWriteRequest request = source with
+        {
+            Visits = source.Visits.Concat(new[] { olderVisit }).ToArray(),
+            ShareLifecycle = source.ShareLifecycle with
+            {
+                PassportSnapshots = new[] { frozenSnapshot },
+            },
+        };
+        CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
+
+        PassportExportArtifact artifact = writer.Write(request);
+
+        IReadOnlyCollection<string> selectionNames = ReadPassportSelectionParkNames(artifact);
+        Assert.Equal(
+            new[] { "Frozen In-Year Park", "Frozen Outside-Year Park" },
+            selectionNames);
+    }
+
     [Fact]
     public void Write_WhenCatalogDataIsUnavailable_ShouldNotFallBackToInternalIdentifiers()
     {
@@ -290,6 +411,38 @@ public sealed class CanonicalVisitExportWriterTests
             new Dictionary<string, Park>(StringComparer.Ordinal) { [park.Id] = park },
             new Dictionary<string, VisitTarget>(StringComparer.Ordinal) { [target.ParkItemId] = target },
             PassportShareLifecycleExportData.Empty);
+    }
+
+    private static IReadOnlyCollection<string> ReadPassportSelectionParkNames(
+        PassportExportArtifact artifact)
+    {
+        if (artifact.ContentType.StartsWith("application/json", StringComparison.Ordinal))
+        {
+            using JsonDocument document = JsonDocument.Parse(artifact.Content);
+            JsonElement passportSnapshot = document.RootElement
+                .GetProperty("shareSnapshots")
+                .EnumerateArray()
+                .Single(snapshot => string.Equals(
+                    snapshot.GetProperty("type").GetString(),
+                    "PassportProfile",
+                    StringComparison.Ordinal));
+            return passportSnapshot.GetProperty("selection").GetProperty("parks")
+                .EnumerateArray()
+                .Select(static park => park.GetProperty("name").GetString()!)
+                .ToArray();
+        }
+
+        using MemoryStream stream = new MemoryStream(artifact.Content);
+        using ZipArchive archive = new ZipArchive(stream, ZipArchiveMode.Read);
+        ZipArchiveEntry entry = archive.GetEntry("passport-share-selections.csv")!;
+        using StreamReader reader = new StreamReader(entry.Open(), Encoding.UTF8);
+        return reader.ReadToEnd()
+            .Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries)
+            .Skip(1)
+            .Select(static row => row.Split(','))
+            .Where(static columns => string.Equals(columns[1], "Park", StringComparison.Ordinal))
+            .Select(static columns => columns[4])
+            .ToArray();
     }
 
     private static PassportExportWriteRequest CreateRequestWithShareLifecycle(
@@ -468,7 +621,16 @@ public sealed class CanonicalVisitExportWriterTests
                 false,
                 "passport-profile-v1",
                 false),
-            NowUtc.AddMinutes(1));
+            NowUtc.AddMinutes(1))
+        {
+            SelectedParks = new[]
+            {
+                new PassportProfileShareSelectedParkSnapshot(
+                    "park-internal-selection",
+                    "Selected Park",
+                    "FR"),
+            },
+        };
         Dictionary<string, Park> parks = source.Parks.ToDictionary(
             static pair => pair.Key,
             static pair => pair.Value,

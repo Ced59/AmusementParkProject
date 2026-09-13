@@ -667,6 +667,16 @@ private readonly IMongoDatabase database;
         IMongoCollection<VisitRecapShareSnapshotDocument> shareSnapshotsCollection =
             this.database.GetCollection<VisitRecapShareSnapshotDocument>(
                 this.settings.SharePublicationSnapshotsCollectionName);
+        IMongoCollection<PassportProfileShareSnapshotDocument> passportShareSnapshotsCollection =
+            this.database.GetCollection<PassportProfileShareSnapshotDocument>(
+                this.settings.SharePublicationSnapshotsCollectionName);
+        IMongoCollection<ParkDocument> passportShareParksCollection =
+            this.database.GetCollection<ParkDocument>(this.settings.ParksCollectionName);
+        PassportProfileShareSelectedParksMigration passportSelectedParksMigration =
+            new PassportProfileShareSelectedParksMigration(
+                passportShareSnapshotsCollection,
+                passportShareParksCollection);
+        await passportSelectedParksMigration.MigrateAsync(cancellationToken);
         await shareSnapshotsCollection.Indexes.CreateManyAsync(
             VisitRecapShareSnapshotMongoDefinitions.BuildIndexes(),
             cancellationToken);

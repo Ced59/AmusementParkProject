@@ -1,6 +1,20 @@
 {
-  "version": "5.3.8",
+  "version": "5.3.9",
   "history": [
+    {
+      "version": "5.3.9",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Les exports de ton passeport conservent fidèlement les noms partagés.",
+        "en": "Your passport exports now faithfully preserve shared names.",
+        "de": "Deine Pass-Exporte bewahren geteilte Namen jetzt zuverlässig.",
+        "nl": "Je paspoortexport bewaart gedeelde namen nu betrouwbaar.",
+        "it": "Le esportazioni del passaporto conservano fedelmente i nomi condivisi.",
+        "es": "Las exportaciones de tu pasaporte conservan fielmente los nombres compartidos.",
+        "pl": "Eksporty paszportu wiernie zachowują teraz udostępnione nazwy.",
+        "pt": "As exportações do teu passaporte preservam fielmente os nomes partilhados."
+      }
+    },
     {
       "version": "5.3.8",
       "releasedAt": "2026-09-14",

@@ -209,8 +209,15 @@ public sealed class PassportProfileSharePreviewBuilder
         }
 
         string fingerprint = PassportProfileShareInputNormalizer.CreateFingerprint(normalizedInput);
-        return ApplicationResult<SharePublicationPreviewResult>.Success(
-            new SharePublicationPreviewResult(
+        PassportProfileShareSelectedParkSnapshot[] selectedParks =
+            (normalizedInput.SelectedParkIds ?? Array.Empty<string>())
+                .Select(parkId => publicParks[parkId])
+                .Select(static park => new PassportProfileShareSelectedParkSnapshot(
+                    park.Id,
+                    park.Name!.Trim(),
+                    NormalizeCountryCode(park.CountryCode)))
+                .ToArray();
+        SharePublicationPreviewResult preview = new SharePublicationPreviewResult(
                 this.PublicationType,
                 versionAfter.Value.Version,
                 contentPolicy.SchemaVersion,
@@ -218,7 +225,11 @@ public sealed class PassportProfileSharePreviewBuilder
                 contentPolicy.IncludedFields,
                 null,
                 PassportProfile: contentResult.Value,
-                ContentFingerprint: fingerprint));
+                ContentFingerprint: fingerprint)
+        {
+            PassportProfileSelectedParks = selectedParks,
+        };
+        return ApplicationResult<SharePublicationPreviewResult>.Success(preview);
     }
 
     private ApplicationResult<PassportProfileSharePreviewResult> BuildContent(

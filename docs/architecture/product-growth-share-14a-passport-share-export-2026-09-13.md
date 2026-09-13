@@ -51,6 +51,14 @@ classDiagram
       +WriteJson(writer, lifecycle, references)
       +WriteCsvEntries(archive, lifecycle, references)
     }
+    class PassportProfileShareSelectedParkSnapshot {
+      +ParkId "privé"
+      +Name "figé"
+      +CountryCode "figé"
+    }
+    class PassportProfileShareSelectedParksMigration {
+      +MigrateAsync(cancellationToken)
+    }
     class PassportExportReferenceMap {
       +Publication(id)
       +Invitation(id)
@@ -64,6 +72,8 @@ classDiagram
     CanonicalVisitExportWriter --> PassportShareLifecycleExportWriter
     PassportShareLifecycleExportWriter --> PassportShareLifecycleComparisonCsvWriter
     PassportShareLifecycleExportWriter --> PassportShareSnapshotExportWriter
+    PassportShareSnapshotExportWriter --> PassportProfileShareSelectedParkSnapshot
+    PassportProfileShareSelectedParksMigration --> PassportProfileShareSelectedParkSnapshot
     CanonicalVisitExportWriter --> PassportExportReferenceMap
 ```
 
@@ -159,6 +169,7 @@ erDiagram
       string contentFingerprint "jamais exporté"
       string publicCaption "contenu choisi"
       object passportSelection "convertie en libellés"
+      array selectedParks "id privé + libellés figés"
     }
 
     PROFILE_COMPARISON_INVITATIONS ||--o| PROFILE_COMPARISONS : matérialise
@@ -168,8 +179,12 @@ erDiagram
 MongoDB crée automatiquement l'index partiel
 `idx_profile_comparison_invitation_acceptor_created` sur
 `acceptorUserId + createdAt`. Les index propriétaire des publications et participants
-des comparaisons existaient déjà. Aucune migration de document ni intervention
-manuelle n'est requise.
+des comparaisons existaient déjà. Une migration idempotente au démarrage ajoute
+`selectedParks` aux anciens snapshots de passeport : elle associe une seule fois
+chaque identifiant sélectionné au meilleur libellé figé disponible, puis au
+catalogue si le snapshot historique ne contenait pas ce parc. Après cette migration,
+les snapshots anciens et nouveaux suivent exactement le même chemin de lecture.
+Aucune intervention MongoDB manuelle n'est requise.
 
 ## Contrat d'export v3
 
@@ -213,7 +228,7 @@ La neutralisation des formules CSV reste appliquée aux cellules commençant par
 | jeton de publication/invitation/comparaison | non | aucune valeur de remplacement |
 | clé de scope source | non | type lisible, année ou référence de visite |
 | empreinte de contenu | non | jamais nécessaire à l'utilisateur |
-| identifiants et clés de sélection du passeport | non | années et libellés résolus depuis le catalogue privé borné de l'export |
+| identifiants et clés de sélection du passeport | non | années et libellés figés au consentement dans le snapshot privé |
 | identifiants de signalements | non | booléen `isModerationSuspended` seulement |
 | politique de partage | oui | précision de date et champs inclus |
 | versions consenties | oui | nombres de versions métier |
@@ -227,9 +242,19 @@ reste nulle : la clé technique n'est jamais utilisée comme repli.
 
 Les parcs choisis restent exportés même lorsque la politique ne publie pas les
 statistiques géographiques et que le snapshot public omet donc volontairement sa
-liste de parcs. Le writer résout leurs identifiants depuis le catalogue privé déjà
-chargé et borné pour l'export. Une cible historique devenue introuvable produit le
-libellé neutre `Unavailable park`, jamais son identifiant persistant.
+liste de parcs. Dès la prévisualisation consentie, `selectedParks` fige séparément
+l'association complète `identifiant privé → nom + pays` pour tous les parcs choisis,
+y compris ceux sans visite dans les années retenues. Le writer exporte uniquement
+ces libellés figés : il ne consulte ni les visites ni le catalogue courants. Un
+renommage, un ajout ou une suppression de visite ne peut donc plus réécrire ou
+dupliquer la sélection approuvée.
+
+Pour les snapshots créés avant ce stockage explicite, la migration associe d'abord
+les libellés historiques aux parcs encore reconnaissables, conserve ensuite les
+libellés figés restants dans l'ordre de sélection et n'utilise le catalogue qu'au
+moment unique du basculement pour compléter les parcs absents du contenu public.
+Une cible alors introuvable reçoit `Unavailable park`. L'identifiant sert uniquement
+à conserver l'association dans MongoDB privé et n'est jamais sérialisé dans l'export.
 
 ## Preuves automatisées
 
@@ -241,6 +266,10 @@ libellé neutre `Unavailable park`, jamais son identifiant persistant.
   clé technique ;
 - une sélection de parc reste lisible lorsque les statistiques géographiques sont
   exclues du snapshot public ;
+- une sélection complète reste stable quand les visites courantes diffèrent de
+  celles qui existaient au moment du partage ;
+- la migration conserve les libellés historiques, complète les parcs hors période,
+  déduplique la sélection et n'utilise jamais un identifiant comme libellé ;
 - le job partage une seule instance de budget entre visites, passages et partages ;
 - les filtres MongoDB couvrent propriétaire, créateur et accepteur, tandis que les
   snapshots sont résolus par leur préfixe de publication indexé ;

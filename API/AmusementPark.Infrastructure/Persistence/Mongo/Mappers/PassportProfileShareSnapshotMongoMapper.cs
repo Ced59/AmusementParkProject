@@ -23,6 +23,7 @@ internal static class PassportProfileShareSnapshotMongoMapper
             IncludedFields = snapshot.IncludedFields.ToList(),
             ContentFingerprint = snapshot.ContentFingerprint,
             Selection = ToDocument(snapshot.Selection),
+            SelectedParks = snapshot.SelectedParks.Select(ToDocument).ToList(),
             Content = ToDocument(snapshot.Content),
             CreatedAt = snapshot.CreatedAtUtc,
             UpdatedAt = snapshot.CreatedAtUtc,
@@ -46,7 +47,10 @@ internal static class PassportProfileShareSnapshotMongoMapper
             document.ContentFingerprint,
             ToInput(document.Selection),
             ToResult(document.Content),
-            document.CreatedAt);
+            document.CreatedAt)
+        {
+            SelectedParks = document.SelectedParks.Select(ToModel).ToArray(),
+        };
     }
 
     public static string CreateDocumentId(string publicationId, long publicationVersion)
@@ -66,6 +70,26 @@ internal static class PassportProfileShareSnapshotMongoMapper
             Visibility = value.Visibility,
             AllowsComparisons = value.AllowsComparisons,
         };
+    }
+
+    private static PassportProfileShareSelectedParkDocument ToDocument(
+        PassportProfileShareSelectedParkSnapshot value)
+    {
+        return new PassportProfileShareSelectedParkDocument
+        {
+            ParkId = value.ParkId,
+            Name = value.Name,
+            CountryCode = value.CountryCode,
+        };
+    }
+
+    private static PassportProfileShareSelectedParkSnapshot ToModel(
+        PassportProfileShareSelectedParkDocument value)
+    {
+        return new PassportProfileShareSelectedParkSnapshot(
+            value.ParkId,
+            value.Name,
+            value.CountryCode);
     }
 
     private static PassportProfileShareInput ToInput(

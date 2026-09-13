@@ -121,14 +121,21 @@ public sealed class PassportProfileSharePreviewBuilderTests
         Assert.True(profile.AllowsComparisons);
         Assert.False(profile.HasIncompleteCatalog);
         Assert.False(profile.IsEmpty);
+        PassportProfileShareSelectedParkSnapshot selectedPark = Assert.Single(
+            result.Value.PassportProfileSelectedParks);
+        Assert.Equal("park-public-id", selectedPark.ParkId);
+        Assert.Equal("Parc public", selectedPark.Name);
+        Assert.Equal("FR", selectedPark.CountryCode);
 
         string serialized = JsonSerializer.Serialize(profile);
+        string serializedPreview = JsonSerializer.Serialize(result.Value);
         Assert.DoesNotContain("owner-technical-id", serialized, StringComparison.Ordinal);
         Assert.DoesNotContain("park-public-id", serialized, StringComparison.Ordinal);
         Assert.DoesNotContain("visit-public-id", serialized, StringComparison.Ordinal);
         Assert.DoesNotContain("item-technical-id", serialized, StringComparison.Ordinal);
         Assert.DoesNotContain("rating-private-id", serialized, StringComparison.Ordinal);
         Assert.DoesNotContain("2026-06-14", serialized, StringComparison.Ordinal);
+        Assert.DoesNotContain("park-public-id", serializedPreview, StringComparison.Ordinal);
         sourceReader.VerifyAll();
         sourceReader.Verify(value => value.ReadOwnedCompletedPassportAsync(
             "owner-technical-id",
@@ -246,6 +253,53 @@ public sealed class PassportProfileSharePreviewBuilderTests
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, error =>
             error.Code == "share-publication.passport-profile-selection-invalid");
+    }
+
+    [Fact]
+    public async Task BuildAsync_ShouldFreezeSelectedParksOutsideThePublishedYearBreakdown()
+    {
+        PassportProfileSourceData source = new PassportProfileSourceData(
+            new[]
+            {
+                new PassportVisitStatisticsObservation(
+                    "visit-first-id",
+                    "park-public-id",
+                    VisitDate.ForDay(2026, 6, 14),
+                    null),
+                new PassportVisitStatisticsObservation(
+                    "visit-second-id",
+                    "park-second-id",
+                    VisitDate.ForDay(2025, 6, 14),
+                    null),
+            },
+            Array.Empty<PassportRideStatisticsObservation>(),
+            "stable-fingerprint",
+            true);
+
+        ApplicationResult<SharePublicationPreviewResult> result =
+            await CreateBuilderWithoutOptionalContent(source).BuildAsync(
+                "owner-technical-id",
+                ShareContentPolicy.Create(
+                    SharePublicationType.PassportProfile,
+                    ShareDatePrecision.Year,
+                    new[] { ShareContentField.RideCount }),
+                new PassportProfileShareInput(
+                    new[] { 2026 },
+                    new[] { "park-public-id", "park-second-id" },
+                    Array.Empty<string>(),
+                    null,
+                    ShareVisibility.Unlisted,
+                    false),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        PassportProfileShareSelectedParkSnapshot[] selectedParks = result.Value!
+            .PassportProfileSelectedParks
+            .ToArray();
+        Assert.Equal(
+            new[] { "Parc public", "Second parc public" },
+            selectedParks.Select(static park => park.Name));
+        Assert.Empty(result.Value.PassportProfile!.Parks);
     }
 
     [Fact]

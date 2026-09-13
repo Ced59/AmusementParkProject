@@ -61,7 +61,16 @@ public sealed class PassportProfileShareSnapshotMongoMapperTests
                 ShareVisibility.Unlisted,
                 true),
             content,
-            new DateTime(2026, 9, 12, 0, 0, 0, DateTimeKind.Utc));
+            new DateTime(2026, 9, 12, 0, 0, 0, DateTimeKind.Utc))
+        {
+            SelectedParks = new[]
+            {
+                new PassportProfileShareSelectedParkSnapshot(
+                    "private-park-id",
+                    "Denain Évasion",
+                    "FR"),
+            },
+        };
 
         PassportProfileShareSnapshotDocument document = snapshot.ToDocument();
         PassportProfileShareSnapshot restored = document.ToDomain();
@@ -79,6 +88,11 @@ public sealed class PassportProfileShareSnapshotMongoMapperTests
         Assert.Equal(snapshot.Selection.SelectedYears, restored.Selection.SelectedYears);
         Assert.Equal(snapshot.Selection.SelectedParkIds, restored.Selection.SelectedParkIds);
         Assert.Equal(snapshot.Selection.Visibility, restored.Selection.Visibility);
+        Assert.Equal(snapshot.SelectedParks, restored.SelectedParks);
+        PassportProfileShareSelectedParkDocument selectedPark = Assert.Single(
+            document.SelectedParks);
+        Assert.Equal("private-park-id", selectedPark.ParkId);
+        Assert.Equal("Denain Évasion", selectedPark.Name);
         Assert.True(publicContent.Contains("parks"));
         Assert.DoesNotContain("private-park-id", serializedPublicContent, StringComparison.Ordinal);
         Assert.DoesNotContain("parkId", serializedPublicContent, StringComparison.OrdinalIgnoreCase);
