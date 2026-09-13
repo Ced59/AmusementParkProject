@@ -358,6 +358,19 @@ internal static class PassportShareSnapshotExportWriter
         PassportProfileShareSnapshot snapshot,
         IReadOnlyDictionary<string, Park> parks)
     {
+        if (snapshot.Content.Parks.Count > 0)
+        {
+            foreach (PassportProfileShareParkResult park in snapshot.Content.Parks)
+            {
+                string name = string.IsNullOrWhiteSpace(park.Name)
+                    ? "Unavailable park"
+                    : park.Name.Trim();
+                yield return (name, NormalizeOptional(park.CountryCode));
+            }
+
+            yield break;
+        }
+
         foreach (string parkId in snapshot.Selection.SelectedParkIds ?? Array.Empty<string>())
         {
             if (parks.TryGetValue(parkId, out Park? park)

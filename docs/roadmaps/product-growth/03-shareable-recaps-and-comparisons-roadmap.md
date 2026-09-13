@@ -478,6 +478,8 @@ par les années et les libellés lisibles. Les parcs sont résolus depuis le cat
 privé déjà borné de l'export afin de rester présents même si la politique masque les
 statistiques géographiques du snapshot public ; une cible historique introuvable
 reçoit un libellé neutre et jamais son identifiant.
+Le correctif 5.3.9 conserve en priorité les noms figés dans un snapshot approuvé :
+un renommage ultérieur du catalogue ne réécrit pas l'historique exporté.
 Les lectures MongoDB réutilisent le
 budget de taille commun aux visites et passages ; un export trop volumineux échoue
 donc avant de saturer la mémoire du worker lourd. Un index participant est ajouté

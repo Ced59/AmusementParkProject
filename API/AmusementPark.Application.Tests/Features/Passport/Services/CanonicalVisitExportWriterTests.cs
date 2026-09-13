@@ -172,6 +172,49 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.DoesNotContain(ComparisonShareToken, content, StringComparison.Ordinal);
     }
 
+    [Theory]
+    [InlineData(PassportExportFormat.Json)]
+    [InlineData(PassportExportFormat.Csv)]
+    public void Write_WhenSelectedParkWasRenamed_PreservesFrozenSnapshotLabel(
+        PassportExportFormat format)
+    {
+        PassportExportWriteRequest source = CreateRequestWithShareLifecycle(format);
+        PassportProfileShareSnapshot snapshot = source.ShareLifecycle.PassportSnapshots.Single();
+        PassportProfileShareSnapshot frozenSnapshot = snapshot with
+        {
+            Content = snapshot.Content with
+            {
+                Parks = new[]
+                {
+                    new PassportProfileShareParkResult(
+                        "Frozen Selected Park",
+                        "FR",
+                        2,
+                        2026,
+                        2026,
+                        4,
+                        null),
+                },
+            },
+        };
+        source.Parks["park-internal-selection"].Name = "Current Renamed Park";
+        PassportExportWriteRequest request = source with
+        {
+            ShareLifecycle = source.ShareLifecycle with
+            {
+                PassportSnapshots = new[] { frozenSnapshot },
+            },
+        };
+        CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
+
+        PassportExportArtifact artifact = writer.Write(request);
+
+        string content = ReadAllText(artifact);
+        Assert.Contains("Frozen Selected Park", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("Current Renamed Park", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("park-internal-selection", content, StringComparison.Ordinal);
+    }
+
     [Fact]
     public void Write_WhenCatalogDataIsUnavailable_ShouldNotFallBackToInternalIdentifiers()
     {

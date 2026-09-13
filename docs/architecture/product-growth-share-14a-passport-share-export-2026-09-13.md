@@ -231,6 +231,11 @@ liste de parcs. Le writer résout leurs identifiants depuis le catalogue privé 
 chargé et borné pour l'export. Une cible historique devenue introuvable produit le
 libellé neutre `Unavailable park`, jamais son identifiant persistant.
 
+Lorsque le snapshot contient ses propres libellés de parc, ceux-ci restent
+prioritaires : un renommage ultérieur dans le catalogue ne réécrit donc pas le
+contenu précédemment approuvé. La résolution privée sert uniquement de repli aux
+politiques qui ont volontairement omis les statistiques géographiques.
+
 ## Preuves automatisées
 
 - les sorties JSON et CSV contiennent les nouvelles sections et références ;
