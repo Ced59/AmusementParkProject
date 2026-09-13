@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
 - 59 parcs atteignent le niveau `Excellent` : 57 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **55 parcs** : 0 au niveau `Publishable`, 53 au niveau `Good` et 2 au niveau `Excellent`.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **54 parcs** : 0 au niveau `Publishable`, 52 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,11 +22,10 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (53)
+## Priorité 2 — niveau `Good` (52)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 85 | `Good` | Six Flags Mexico | MX | `Operating` | `National` | 88/104 | `bea9e0c4-2945-4cf6-b3f7-83c84b140519` |
 | 86 | `Good` | Agorix Temapark | TR | `Operating` | `Regional` | 79/92 | `c4e0f032-4708-493a-9596-c46d5f9908e4` |
 | 86 | `Good` | Akashi Park | JP | `Operating` | `Local` | 79/92 | `a8f161a8-79ed-4b83-ad9b-7369223b90d4` |
 | 86 | `Good` | AltınPark Bursa | TR | `Operating` | `Regional` | 79/92 | `4845bdeb-374e-453b-b71a-c904a8db8900` |
