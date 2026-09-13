@@ -33,6 +33,7 @@ public sealed class ShareModerationPublicationTargetExecutor
 
         if (publication.ModerationSuspensionReportId == report.Id)
         {
+            await this.ScheduleInvalidationAsync(publication, cancellationToken);
             return ShareModerationDecisionExecutionOutcome.Succeeded;
         }
 
@@ -84,6 +85,7 @@ public sealed class ShareModerationPublicationTargetExecutor
         if (!publication.IsModerationSuspended
             || publication.ModerationSuspensionReportId != report.Id)
         {
+            await this.ScheduleInvalidationAsync(publication, cancellationToken);
             return ShareModerationDecisionExecutionOutcome.Succeeded;
         }
 
@@ -139,6 +141,17 @@ public sealed class ShareModerationPublicationTargetExecutor
     {
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         return nowUtc < updatedAtUtc ? updatedAtUtc : nowUtc;
+    }
+
+    private Task ScheduleInvalidationAsync(
+        SharePublication publication,
+        CancellationToken cancellationToken)
+    {
+        return this.invalidationScheduler.ScheduleAsync(
+            publication,
+            publication.Version,
+            cancellationToken,
+            publication.ShareToken?.Value);
     }
 
     private static bool TryMapPublicationType(

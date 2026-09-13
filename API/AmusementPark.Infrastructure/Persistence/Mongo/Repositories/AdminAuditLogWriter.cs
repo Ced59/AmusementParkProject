@@ -14,8 +14,13 @@ public sealed class AdminAuditLogWriter : IAdminAuditLogWriter
     private readonly IMongoCollection<AdminAuditLogDocument> collection;
 
     public AdminAuditLogWriter(IMongoDatabase database, MongoDbSettings settings)
+        : this(GetCollection(database, settings))
     {
-        this.collection = database.GetCollection<AdminAuditLogDocument>(settings.AdminAuditLogsCollectionName);
+    }
+
+    internal AdminAuditLogWriter(IMongoCollection<AdminAuditLogDocument> collection)
+    {
+        this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
     }
 
     public async Task WriteAsync(AdminAuditLogEntry entry, CancellationToken cancellationToken)
@@ -43,6 +48,24 @@ public sealed class AdminAuditLogWriter : IAdminAuditLogWriter
             Metadata = new Dictionary<string, string>(entry.Metadata, StringComparer.OrdinalIgnoreCase),
         };
 
-        await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
+        try
+        {
+            await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            // A deterministic audit identifier makes a replay after a worker crash idempotent.
+        }
+    }
+
+    private static IMongoCollection<AdminAuditLogDocument> GetCollection(
+        IMongoDatabase database,
+        MongoDbSettings settings)
+    {
+        ArgumentNullException.ThrowIfNull(database);
+        ArgumentNullException.ThrowIfNull(settings);
+        return database.GetCollection<AdminAuditLogDocument>(
+            settings.AdminAuditLogsCollectionName);
     }
 }

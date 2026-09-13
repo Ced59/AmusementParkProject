@@ -160,6 +160,12 @@ puis le worker converge vers cette décision. Cela inclut le cas où un autre
 signalement suspend déjà temporairement la même cible : la nouvelle décision reste
 explicitement acceptée au lieu de renvoyer un conflit tout en laissant sa tâche
 exécutable. Une cible ou un rapport définitivement absent reste en revanche refusé.
+Chaque rejeu programme aussi l'invalidation du cache public, y compris lorsque la
+cible porte déjà la décision attendue : une coupure entre l'écriture MongoDB et la
+création de cette invalidation ne peut donc pas laisser durablement une ancienne
+page publique en cache. Le worker écrit enfin une trace d'achèvement idempotente,
+indépendante du cycle de vie de la requête HTTP, afin de conserver la preuve de la
+mutation même si le navigateur admin s'est déconnecté après sa mise en file.
 Si une dépendance reste indisponible pendant toute la fenêtre de rejeu, la tâche
 crée une continuation durable avant de terminer : la convergence n'est donc pas
 abandonnée après un nombre fixe de tentatives.
@@ -232,6 +238,8 @@ en lazy loading et n'alourdit pas le bundle public initial.
 - orchestration de la résolution, de la suspension et de l'invalidation ;
 - liaison de la suspension à son rapport exact, rejeu après conflit et compensation
   d'une décision concurrente ;
+- reprogrammation de l'invalidation après une panne intermédiaire et audit
+  d'achèvement idempotent par le worker ;
 - acquittement auditable d'une décision durable et refus explicite de republier
   un partage encore suspendu ;
 - aller-retour Mongo, index de file et absence de jeton dans les rapports ;

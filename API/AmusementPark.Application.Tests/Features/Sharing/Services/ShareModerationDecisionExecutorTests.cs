@@ -94,8 +94,7 @@ public sealed class ShareModerationDecisionExecutorTests
             new Mock<ISharePublicationRepository>(MockBehavior.Strict);
         publications.Setup(value => value.GetByIdAsync(publication.Id, CancellationToken.None))
             .ReturnsAsync(publication);
-        Mock<IDurableBackgroundJobRepository> jobs =
-            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IDurableBackgroundJobRepository> jobs = CreateCacheJobRepository();
         ShareModerationDecisionExecutor executor = CreateExecutor(
             reports,
             publications,
@@ -118,7 +117,7 @@ public sealed class ShareModerationDecisionExecutorTests
             CancellationToken.None), Times.Never);
         reports.VerifyAll();
         publications.VerifyAll();
-        jobs.VerifyNoOtherCalls();
+        jobs.VerifyAll();
     }
 
     [Fact]
@@ -156,6 +155,62 @@ public sealed class ShareModerationDecisionExecutorTests
             outcome);
         Assert.True(publication.IsResolvable);
         Assert.Null(publication.ModerationSuspensionReportId);
+        reports.VerifyAll();
+        publications.VerifyAll();
+        jobs.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_AfterInvalidationSchedulingFailure_ShouldScheduleAgainOnReplay()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        ShareModerationReport firstRead = CreatePendingReport(publication);
+        ShareModerationReport retryRead = CreatePendingReport(publication);
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.SetupSequence(value => value.GetAsync(firstRead.Id, CancellationToken.None))
+            .ReturnsAsync(firstRead)
+            .ReturnsAsync(retryRead);
+        reports.Setup(value => value.ReplaceAsync(
+                It.Is<ShareModerationReport>(candidate =>
+                    candidate.Status == ShareModerationReportStatus.PublicationSuspended),
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(ShareModerationReportWriteOutcome.Success);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetByIdAsync(publication.Id, CancellationToken.None))
+            .ReturnsAsync(publication);
+        publications.Setup(value => value.ReplaceAsync(
+                It.Is<SharePublication>(candidate =>
+                    candidate.ModerationSuspensionReportId == firstRead.Id),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Success);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.SetupSequence(value => value.EnqueueExactAsync(
+                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+                    request.Kind == SharePublicationCacheInvalidationJob.Kind),
+                CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("Job storage unavailable."))
+            .ReturnsAsync((DurableBackgroundJob)null!);
+        ShareModerationDecisionExecutor executor = CreateExecutor(
+            reports,
+            publications,
+            jobs);
+        ShareModerationDecisionJobPayload payload = CreatePayload(firstRead.Id);
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            executor.ExecuteAsync(payload, CancellationToken.None));
+        ShareModerationDecisionExecutionOutcome retryOutcome =
+            await executor.ExecuteAsync(payload, CancellationToken.None);
+
+        Assert.Equal(ShareModerationDecisionExecutionOutcome.Succeeded, retryOutcome);
+        Assert.Equal(firstRead.Id, publication.ModerationSuspensionReportId);
+        jobs.Verify(value => value.EnqueueExactAsync(
+            It.IsAny<EnqueueExactBackgroundJobRequest>(),
+            CancellationToken.None), Times.Exactly(2));
         reports.VerifyAll();
         publications.VerifyAll();
         jobs.VerifyAll();
