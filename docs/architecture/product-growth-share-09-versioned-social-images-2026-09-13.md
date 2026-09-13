@@ -99,7 +99,9 @@ rafale de variantes froides ne peut donc pas monopoliser le processeur du VPS.
 Une seconde barrière dans le renderer conserve son permis jusqu'à la fin réelle du
 PNG : l'abandon d'une requête HTTP ne permet pas de lancer des calculs détachés en
 parallèle au-delà de cette limite. Si le rendu attend encore un permis, l'abandon
-annule aussi cette attente : aucun arriéré de calculs détachés ne peut s'accumuler.
+de tous ses consommateurs annule aussi cette attente : aucun arriéré de calculs
+détachés ne peut s'accumuler, sans pénaliser un autre consommateur encore connecté
+à la même image coalescée.
 
 La réponse utilise `Cache-Control: public,max-age=300,must-revalidate`, un `ETag`,
 `Content-Language`, `Referrer-Policy: no-referrer` et

@@ -95,6 +95,19 @@ public sealed class SharedPublicationSocialImagesController : ControllerBase
         return candidates
             .SelectMany(static value => value?.Split(',', StringSplitOptions.TrimEntries)
                 ?? Array.Empty<string>())
-            .Any(value => string.Equals(value, expected, StringComparison.Ordinal));
+            .Any(value => MatchesEntityTag(value, expected));
+    }
+
+    private static bool MatchesEntityTag(string candidate, string expected)
+    {
+        if (string.Equals(candidate, "*", StringComparison.Ordinal))
+        {
+            return true;
+        }
+
+        string normalized = candidate.StartsWith("W/", StringComparison.Ordinal)
+            ? candidate[2..].TrimStart()
+            : candidate;
+        return string.Equals(normalized, expected, StringComparison.Ordinal);
     }
 }

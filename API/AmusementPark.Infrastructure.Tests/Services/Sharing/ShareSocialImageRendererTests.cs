@@ -92,6 +92,50 @@ public sealed class ShareSocialImageRendererTests
     }
 
     [Fact]
+    public async Task RenderWork_WhenOneOfSeveralWaitersDisconnects_ShouldKeepTheSharedRenderQueued()
+    {
+        ShareSocialImageRenderConcurrencyGate gate = new ShareSocialImageRenderConcurrencyGate();
+        TaskCompletionSource releaseActiveRenders = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource activeRendersStarted = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        int activeRenders = 0;
+        Func<Task<ShareSocialImageRenderResult>> blockingOperation = async () =>
+        {
+            if (Interlocked.Increment(ref activeRenders) == 2)
+            {
+                activeRendersStarted.TrySetResult();
+            }
+
+            await releaseActiveRenders.Task;
+            return CreateRenderResult();
+        };
+        Task<ShareSocialImageRenderResult> firstActive = gate.RunAsync(
+            blockingOperation,
+            CancellationToken.None);
+        Task<ShareSocialImageRenderResult> secondActive = gate.RunAsync(
+            blockingOperation,
+            CancellationToken.None);
+        await activeRendersStarted.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        ShareSocialImageRenderWork work = new ShareSocialImageRenderWork(
+            gate,
+            () => Task.FromResult(CreateRenderResult()));
+        using CancellationTokenSource disconnectedCaller = new CancellationTokenSource();
+        Task<ShareSocialImageRenderResult> disconnectedWaiter = work.WaitAsync(
+            disconnectedCaller.Token);
+        Task<ShareSocialImageRenderResult> connectedWaiter = work.WaitAsync(CancellationToken.None);
+
+        disconnectedCaller.Cancel();
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => disconnectedWaiter);
+
+        Assert.False(connectedWaiter.IsCompleted);
+        releaseActiveRenders.SetResult();
+        await Task.WhenAll(firstActive, secondActive);
+        ShareSocialImageRenderResult result = await connectedWaiter.WaitAsync(TimeSpan.FromSeconds(2));
+        Assert.NotEmpty(result.Content);
+    }
+
+    [Fact]
     public void UnicodeFallbacks_ShouldPreferTheProductionCjkFamily()
     {
         int japanesePriority = ShareSocialImageFontFamilyComparer.GetPriority("Noto Sans CJK JP");
@@ -256,6 +300,15 @@ public sealed class ShareSocialImageRendererTests
             },
             "Le Galion",
             7);
+    }
+
+    private static ShareSocialImageRenderResult CreateRenderResult()
+    {
+        return new ShareSocialImageRenderResult(
+            new byte[] { 1 },
+            "image/png",
+            "alternative text",
+            "\"etag\"");
     }
 
     private static void UpdateMaximum(ref int maximum, int candidate)

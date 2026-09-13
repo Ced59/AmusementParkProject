@@ -60,40 +60,47 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
     {
         ArgumentNullException.ThrowIfNull(model);
         string cacheKey = ShareSocialImageCacheKeyFactory.Create(model);
-        Lazy<Task<ShareSocialImageRenderResult>> rendering;
-        lock (this.cacheLock)
+        while (true)
         {
-            if (!this.cache.TryGetValue(cacheKey, out rendering!))
+            ShareSocialImageRenderWork rendering;
+            Task<ShareSocialImageRenderResult> waitingTask;
+            lock (this.cacheLock)
             {
-                rendering = new Lazy<Task<ShareSocialImageRenderResult>>(
-                    () => this.renderConcurrencyGate.RunAsync(
-                        () => this.RenderCoreAsync(model),
-                        cancellationToken),
-                    LazyThreadSafetyMode.ExecutionAndPublication);
-                this.cache.Set(
-                    cacheKey,
-                    rendering,
-                    new MemoryCacheEntryOptions
-                    {
-                        AbsoluteExpirationRelativeToNow = CacheDuration,
-                        Size = 1,
-                    });
-            }
-        }
+                if (!this.cache.TryGetValue(cacheKey, out rendering!))
+                {
+                    rendering = new ShareSocialImageRenderWork(
+                        this.renderConcurrencyGate,
+                        () => this.RenderCoreAsync(model));
+                    this.cache.Set(
+                        cacheKey,
+                        rendering,
+                        new MemoryCacheEntryOptions
+                        {
+                            AbsoluteExpirationRelativeToNow = CacheDuration,
+                            Size = 1,
+                        });
+                }
 
-        Task<ShareSocialImageRenderResult> renderingTask = rendering.Value;
-        try
-        {
-            return await renderingTask.WaitAsync(cancellationToken);
-        }
-        catch
-        {
-            if (renderingTask.IsFaulted || renderingTask.IsCanceled)
-            {
-                this.cache.Remove(cacheKey);
+                waitingTask = rendering.WaitAsync(cancellationToken);
             }
 
-            throw;
+            try
+            {
+                return await waitingTask;
+            }
+            catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+            {
+                this.RemoveIfCurrent(cacheKey, rendering);
+            }
+            catch
+            {
+                if (rendering.IsCanceledOrFaulted)
+                {
+                    this.RemoveIfCurrent(cacheKey, rendering);
+                }
+
+                throw;
+            }
         }
     }
 
@@ -132,5 +139,17 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
             "image/png",
             alternativeText,
             $"\"{digest}\"");
+    }
+
+    private void RemoveIfCurrent(string cacheKey, ShareSocialImageRenderWork rendering)
+    {
+        lock (this.cacheLock)
+        {
+            if (this.cache.TryGetValue(cacheKey, out ShareSocialImageRenderWork? current)
+                && ReferenceEquals(current, rendering))
+            {
+                this.cache.Remove(cacheKey);
+            }
+        }
     }
 }

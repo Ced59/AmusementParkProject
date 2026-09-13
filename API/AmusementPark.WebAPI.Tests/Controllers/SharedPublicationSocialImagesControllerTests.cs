@@ -85,6 +85,38 @@ public sealed class SharedPublicationSocialImagesControllerTests
     }
 
     [Theory]
+    [InlineData("W/\"etag-1\"")]
+    [InlineData("*")]
+    public async Task GetAsync_WhenTheBrowserUsesAValidConditionalTag_ShouldReturnNotModified(
+        string conditionalTag)
+    {
+        ShareSocialImageRenderResult image = new ShareSocialImageRenderResult(
+            new byte[] { 1, 2, 3 },
+            "image/png",
+            "My visit recap",
+            "\"etag-1\"");
+        Mock<IQueryHandler<GetSharedPublicationSocialImageQuery, ApplicationResult<ShareSocialImageRenderResult>>> handler =
+            new Mock<IQueryHandler<GetSharedPublicationSocialImageQuery, ApplicationResult<ShareSocialImageRenderResult>>>(MockBehavior.Strict);
+        handler.Setup(value => value.HandleAsync(
+                It.IsAny<GetSharedPublicationSocialImageQuery>(),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<ShareSocialImageRenderResult>.Success(image));
+        SharedPublicationSocialImagesController controller = CreateController(handler);
+        controller.Request.Headers.IfNoneMatch = conditionalTag;
+
+        IActionResult result = await controller.GetAsync(
+            "passport",
+            "opaque-token",
+            7,
+            1,
+            "en",
+            CancellationToken.None);
+
+        StatusCodeResult notModified = Assert.IsType<StatusCodeResult>(result);
+        Assert.Equal(StatusCodes.Status304NotModified, notModified.StatusCode);
+    }
+
+    [Theory]
     [InlineData("comparison", 7, 1)]
     [InlineData("visit", 0, 1)]
     [InlineData("visit", 7, 2)]
