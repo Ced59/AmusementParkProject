@@ -174,7 +174,7 @@ public sealed class ShareModerationService
             ShareModerationDecisionExecutionOutcome.TargetNotFound =>
                 ApplicationResult.Failure(SharingApplicationErrors.ModerationTargetNotFound()),
             ShareModerationDecisionExecutionOutcome.InvalidTransition =>
-                ApplicationResult.Failure(SharingApplicationErrors.InvalidModerationTransition()),
+                ApplicationResult.Success(),
             _ => ApplicationResult.Failure(SharingApplicationErrors.ModerationConflict()),
         };
     }

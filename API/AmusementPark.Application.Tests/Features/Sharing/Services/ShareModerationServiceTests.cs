@@ -237,6 +237,54 @@ public sealed class ShareModerationServiceTests
         reports.VerifyAll();
     }
 
+    [Fact]
+    public async Task ReviewAsync_WhenAnotherReportCurrentlySuspendsTarget_ShouldKeepQueuedDecisionAuditable()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        publication.SuspendByModeration(
+            ShareModerationReportId.Parse("report-active"),
+            NowUtc.AddSeconds(-30));
+        ShareModerationReport report = ShareModerationReport.Create(
+            ShareModerationReportId.Parse("report-queued-after-active"),
+            ShareModerationTargetType.VisitRecap,
+            publication.Id.Value,
+            ShareModerationReason.PersonalData,
+            "Another disclosure is visible.",
+            NowUtc.AddMinutes(-1));
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
+            .ReturnsAsync(report);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetByIdAsync(publication.Id, CancellationToken.None))
+            .ReturnsAsync(publication);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+                    request.Kind == ShareModerationDecisionJob.Kind),
+                CancellationToken.None))
+            .ReturnsAsync((DurableBackgroundJob)null!);
+        ShareModerationService service = CreateService(reports, publications, jobs);
+
+        ApplicationResult result = await service.ReviewAsync(
+            new ReviewShareModerationReportCommand(
+                "admin-2",
+                report.Id.Value,
+                ShareModerationDecision.Suspend,
+                "Confirmed separately."),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(
+            ShareModerationReportId.Parse("report-active"),
+            publication.ModerationSuspensionReportId);
+        jobs.VerifyAll();
+        publications.VerifyAll();
+        reports.VerifyAll();
+    }
+
     private static ShareModerationService CreateService(
         Mock<IShareModerationReportRepository> reports,
         Mock<ISharePublicationRepository> publications,

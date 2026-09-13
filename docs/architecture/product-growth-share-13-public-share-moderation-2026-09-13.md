@@ -156,8 +156,10 @@ multi-documents indisponibles.
 Une fois la tâche durable enregistrée, un conflit ou une indisponibilité pendant
 la première tentative reste une décision acceptée : l'API répond avec succès afin
 que l'action administrative et son auteur soient bien inscrits dans l'audit HTTP,
-puis le worker converge vers cette décision. Une cible absente ou une transition
-réellement invalide reste en revanche refusée.
+puis le worker converge vers cette décision. Cela inclut le cas où un autre
+signalement suspend déjà temporairement la même cible : la nouvelle décision reste
+explicitement acceptée au lieu de renvoyer un conflit tout en laissant sa tâche
+exécutable. Une cible ou un rapport définitivement absent reste en revanche refusé.
 Si une dépendance reste indisponible pendant toute la fenêtre de rejeu, la tâche
 crée une continuation durable avant de terminer : la convergence n'est donc pas
 abandonnée après un nombre fixe de tentatives.
