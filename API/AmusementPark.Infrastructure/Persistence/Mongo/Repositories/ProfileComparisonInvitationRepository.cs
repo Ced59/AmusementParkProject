@@ -81,6 +81,25 @@ public sealed class ProfileComparisonInvitationRepository
             : ProfileComparisonInvitationWriteOutcome.ConcurrencyConflict;
     }
 
+    public async Task<bool> DeleteAcceptedAsync(
+        ProfileComparisonInvitationId invitationId,
+        long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        _ = invitationId.Value;
+        if (expectedVersion < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(expectedVersion));
+        }
+
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            ProfileComparisonInvitationMongoDefinitions.BuildAcceptedVersionFilter(
+                invitationId.Value,
+                expectedVersion),
+            cancellationToken);
+        return result.DeletedCount == 1;
+    }
+
     private static IMongoCollection<ProfileComparisonInvitationDocument> GetCollection(
         IMongoDatabase database,
         MongoDbSettings settings)

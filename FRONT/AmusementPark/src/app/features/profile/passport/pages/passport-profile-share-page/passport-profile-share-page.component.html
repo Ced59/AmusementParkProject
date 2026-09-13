@@ -27,7 +27,7 @@
         </div>
       </section>
       @if (facade.canInviteComparison()) {
-        <app-profile-comparison-invitation-creator [includedFields]="facade.includedFields()"></app-profile-comparison-invitation-creator>
+        <app-profile-comparison-invitation-creator [includedFields]="facade.publishedIncludedFields()"></app-profile-comparison-invitation-creator>
       }
     }
 

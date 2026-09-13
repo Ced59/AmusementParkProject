@@ -256,6 +256,21 @@ public sealed class ProfileComparisonInvitationService
                 cancellationToken);
         if (outcome == ProfileComparisonInvitationWriteOutcome.Success)
         {
+            bool passportsRemainCurrent = await this.PassportsRemainCurrentAsync(
+                invitation,
+                cancellationToken);
+            if (!passportsRemainCurrent)
+            {
+                bool compensated = await this.invitationRepository.DeleteAcceptedAsync(
+                    invitation.Id,
+                    invitation.Version,
+                    cancellationToken);
+                return compensated
+                    ? AcceptanceNotAcceptable()
+                    : ApplicationResult<ProfileComparisonInvitationAcceptanceResult>.Failure(
+                        SharingApplicationErrors.ComparisonInvitationChangedConcurrently());
+            }
+
             return Accepted(invitation);
         }
 
@@ -269,6 +284,43 @@ public sealed class ProfileComparisonInvitationService
 
         return ApplicationResult<ProfileComparisonInvitationAcceptanceResult>.Failure(
             SharingApplicationErrors.ComparisonInvitationChangedConcurrently());
+    }
+
+    private async Task<bool> PassportsRemainCurrentAsync(
+        ProfileComparisonInvitation invitation,
+        CancellationToken cancellationToken)
+    {
+        if (!invitation.AcceptorPassportPublicationId.HasValue
+            || !invitation.AcceptorPassportPublicationVersion.HasValue
+            || string.IsNullOrWhiteSpace(invitation.AcceptorUserId))
+        {
+            return false;
+        }
+
+        ProfileComparisonPassportReference? creatorPassport =
+            await this.passportResolver.ResolveExactAsync(
+                invitation.CreatorPassportPublicationId,
+                invitation.CreatorUserId,
+                invitation.CreatorPassportPublicationVersion,
+                cancellationToken);
+        if (creatorPassport is null
+            || !ProfileComparisonCategoryPolicy.AllowsAll(
+                creatorPassport.ContentPolicy,
+                invitation.Categories))
+        {
+            return false;
+        }
+
+        ProfileComparisonPassportReference? acceptorPassport =
+            await this.passportResolver.ResolveExactAsync(
+                invitation.AcceptorPassportPublicationId.Value,
+                invitation.AcceptorUserId,
+                invitation.AcceptorPassportPublicationVersion.Value,
+                cancellationToken);
+        return acceptorPassport is not null
+            && ProfileComparisonCategoryPolicy.AllowsAll(
+                acceptorPassport.ContentPolicy,
+                invitation.Categories);
     }
 
     private static ProfileComparisonCategory[] NormalizeCategories(

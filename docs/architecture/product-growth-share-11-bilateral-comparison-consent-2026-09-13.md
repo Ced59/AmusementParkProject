@@ -138,13 +138,22 @@ sequenceDiagram
     APP->>PUB: revalide les deux périmètres
     APP->>INV: Replace si version = 0
     INV-->>APP: succès ou conflit atomique
+    APP->>PUB: revalide les deux versions après l'écriture
+    alt une publication a changé pendant l'acceptation
+        APP->>INV: supprime uniquement la version Accepted écrite
+        APP-->>UI: accord refusé, invitation à recharger
+    end
     APP-->>UI: accord bilatéral enregistré
 ```
 
 L'acceptation est idempotente pour le même membre : une réponse perdue peut être
 réessayée sans créer un second accord ni un second identifiant de comparaison.
 Deux destinataires concurrents ne peuvent pas gagner simultanément, car le
-remplacement Mongo exige la version de persistance attendue.
+remplacement Mongo exige la version de persistance attendue. Comme MongoDB est
+déployé sans transaction multi-collection, une seconde lecture exacte clôt la
+fenêtre entre validation et écriture : si un passeport change dans cet intervalle,
+le service compense en supprimant uniquement l'invitation `Accepted` qu'il vient
+d'écrire, protégée par son identifiant, son état et sa nouvelle version.
 
 ## Schéma MongoDB
 
@@ -194,6 +203,8 @@ indexes de façon idempotente.
 - La rotation, la révocation ou la republication du passeport de A change sa
   version ou son état et invalide l'invitation en attente.
 - Le passeport de B est vérifié au moment de l'aperçu puis de l'acceptation.
+- Les deux versions sont relues après l'écriture ; un changement concurrent
+  retire immédiatement l'accord invalide au lieu de laisser une preuve trompeuse.
 - Les endpoints réutilisent les limites de débit de prévisualisation et de
   confirmation, interdisent le cache HTTP et exigent un compte activé.
 - La page est une route de compte rendue côté client et `noindex`, jamais une
@@ -220,8 +231,8 @@ horizontal. Un test responsive inspecte ces contrats.
 | Niveau | Preuve |
 |---|---|
 | Core | catégories normalisées, expiration, refus de l'auto-acceptation, état restauré cohérent |
-| Application | passeport comparable obligatoire, invalidation après rotation, double référence persistée |
-| Infrastructure | aller-retour Mongo, conservation de l'accord, TTL limité aux invitations en attente, filtre de version |
+| Application | passeport comparable obligatoire, invalidation après rotation, double référence persistée, compensation d'une modification concurrente |
+| Infrastructure | aller-retour Mongo, conservation de l'accord, TTL limité aux invitations en attente, filtres de version et d'état pour la compensation |
 | WebAPI | identité authentifiée imposée, aucun identifiant interne dans l'aperçu, rate limits et no-store |
 | Angular | création, aperçu avant acceptation, même jeton utilisé, contrat responsive étroit |
 | Architecture | façades derrière des ports et zéro fichier contenant plusieurs classes |

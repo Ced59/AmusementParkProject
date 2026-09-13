@@ -16,4 +16,9 @@ public interface IProfileComparisonInvitationRepository
         ProfileComparisonInvitation invitation,
         long expectedVersion,
         CancellationToken cancellationToken);
+
+    Task<bool> DeleteAcceptedAsync(
+        ProfileComparisonInvitationId invitationId,
+        long expectedVersion,
+        CancellationToken cancellationToken);
 }

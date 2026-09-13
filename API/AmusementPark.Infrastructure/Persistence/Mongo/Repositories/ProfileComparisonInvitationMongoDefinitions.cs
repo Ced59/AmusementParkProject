@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using MongoDB.Driver;
 
@@ -27,6 +28,16 @@ internal static class ProfileComparisonInvitationMongoDefinitions
             & Builders<ProfileComparisonInvitationDocument>.Filter.Eq(
                 static document => document.Version,
                 version);
+    }
+
+    public static FilterDefinition<ProfileComparisonInvitationDocument> BuildAcceptedVersionFilter(
+        string id,
+        long version)
+    {
+        return BuildVersionFilter(id, version)
+            & Builders<ProfileComparisonInvitationDocument>.Filter.Eq(
+                static document => document.Status,
+                ProfileComparisonInvitationStatus.Accepted);
     }
 
     public static IReadOnlyCollection<CreateIndexModel<ProfileComparisonInvitationDocument>>

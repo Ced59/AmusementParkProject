@@ -47,6 +47,11 @@ export class PassportProfileShareStateFacade {
   public readonly publicCaption: Signal<string> = this.publicCaptionSignal.asReadonly();
   public readonly visibility: Signal<ShareVisibility> = this.visibilitySignal.asReadonly();
   public readonly allowsComparisons: Signal<boolean> = this.allowsComparisonsSignal.asReadonly();
+  public readonly publishedIncludedFields: Signal<ShareContentField[]> = computed(
+    () => this.settingsSignal()?.isPublic === true
+      ? this.settingsSignal()?.includedFields ?? []
+      : []
+  );
   public readonly canInviteComparison: Signal<boolean> = computed(
     () => this.settingsSignal()?.isPublic === true && this.publishedComparisonsAllowedSignal()
   );

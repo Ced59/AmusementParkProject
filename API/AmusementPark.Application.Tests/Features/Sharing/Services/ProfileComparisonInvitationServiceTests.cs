@@ -143,6 +143,52 @@ public sealed class ProfileComparisonInvitationServiceTests
         invitations.VerifyAll();
     }
 
+    [Fact]
+    public async Task AcceptAsync_WhenCreatorPassportChangesDuringAcceptance_ShouldRemoveInvalidConsent()
+    {
+        SharePublication creator = CreatePublishedPassport(CreatorId, "creator-passport");
+        SharePublication invitee = CreatePublishedPassport(InviteeId, "invitee-passport");
+        PassportProfileShareSnapshot creatorSnapshot = CreateSnapshot(creator, "Camille", true);
+        PassportProfileShareSnapshot inviteeSnapshot = CreateSnapshot(invitee, "Alex", true);
+        ProfileComparisonInvitation invitation = CreateInvitation(creator);
+        Mock<IProfileComparisonInvitationRepository> invitations =
+            new Mock<IProfileComparisonInvitationRepository>(MockBehavior.Strict);
+        invitations.Setup(value => value.GetByTokenAsync(
+                invitation.Token,
+                CancellationToken.None))
+            .ReturnsAsync(invitation);
+        invitations.Setup(value => value.ReplaceAsync(
+                It.Is<ProfileComparisonInvitation>(candidate => candidate.IsAccepted),
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(ProfileComparisonInvitationWriteOutcome.Success);
+        invitations.Setup(value => value.DeleteAcceptedAsync(
+                invitation.Id,
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<ISharePublicationRepository> publications =
+            CreatePublicationRepository(creator, invitee);
+        publications.SetupSequence(value => value.GetOwnedAsync(
+                creator.Id,
+                CreatorId,
+                CancellationToken.None))
+            .ReturnsAsync(creator)
+            .ReturnsAsync((SharePublication?)null);
+        ProfileComparisonInvitationService service = CreateService(
+            invitations.Object,
+            publications.Object,
+            CreateSnapshotRepository(creatorSnapshot, inviteeSnapshot).Object);
+
+        ApplicationResult<ProfileComparisonInvitationAcceptanceResult> result =
+            await service.AcceptAsync(InviteeId, Token, CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error =>
+            error.Code == "profile-comparison.invitation-not-acceptable");
+        invitations.VerifyAll();
+    }
+
     private static ProfileComparisonInvitationService CreateService(
         IProfileComparisonInvitationRepository invitations,
         ISharePublicationRepository publications,

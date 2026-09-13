@@ -42,6 +42,19 @@ public sealed class ProfileComparisonInvitationMongoDefinitionsTests
         Assert.Equal(3, filter["version"].AsInt64);
     }
 
+    [Fact]
+    public void BuildAcceptedVersionFilter_ShouldCompensateOnlyTheJustAcceptedVersion()
+    {
+        BsonDocument filter = Render(
+            ProfileComparisonInvitationMongoDefinitions.BuildAcceptedVersionFilter(
+                "invitation-1",
+                4));
+
+        Assert.Equal("invitation-1", filter["_id"].AsString);
+        Assert.Equal(4, filter["version"].AsInt64);
+        Assert.Equal("Accepted", filter["status"].AsString);
+    }
+
     private static BsonDocument Render(
         FilterDefinition<ProfileComparisonInvitationDocument> filter)
     {
