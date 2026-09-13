@@ -173,4 +173,53 @@ public static class SharingApplicationErrors
             "share-publication.social-image-not-found",
             "Cette image sociale n’est plus disponible.");
     }
+
+    public static ApplicationError InvalidComparisonCategories()
+    {
+        return ApplicationError.Validation(
+            "profile-comparison.categories-invalid",
+            "Choisis au moins une rubrique comparable de ton passeport public.");
+    }
+
+    public static ApplicationError ComparisonPassportUnavailable()
+    {
+        return ApplicationError.RuleViolation(
+            "profile-comparison.passport-unavailable",
+            "Ton passeport doit être public et autoriser les comparaisons.");
+    }
+
+    public static ApplicationError ComparisonCategoriesUnavailable()
+    {
+        return ApplicationError.RuleViolation(
+            "profile-comparison.categories-unavailable",
+            "Ton passeport public ne partage pas toutes les rubriques sélectionnées.");
+    }
+
+    public static ApplicationError ComparisonInvitationNotFound()
+    {
+        return ApplicationError.NotFound(
+            "profile-comparison.invitation-not-found",
+            "Cette invitation est introuvable ou n’est plus disponible.");
+    }
+
+    public static ApplicationError ComparisonInvitationNotAcceptable()
+    {
+        return ApplicationError.RuleViolation(
+            "profile-comparison.invitation-not-acceptable",
+            "Cette invitation ne peut pas être acceptée dans son état actuel.");
+    }
+
+    public static ApplicationError ComparisonInvitationChangedConcurrently()
+    {
+        return ApplicationError.Conflict(
+            "profile-comparison.invitation-concurrent-modification",
+            "Cette invitation vient d’être utilisée. Recharge la page.");
+    }
+
+    public static ApplicationError ComparisonInvitationUnavailable()
+    {
+        return ApplicationError.Technical(
+            "profile-comparison.invitation-unavailable",
+            "L’invitation n’a pas pu être créée. Réessaie.");
+    }
 }

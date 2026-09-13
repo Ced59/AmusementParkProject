@@ -1,0 +1,61 @@
+<section class="comparison-invite" appUiSurface="panel" appUiSurfacePadding="spacious">
+  <app-ui-kicker tone="lime" iconClass="pi pi-users">
+    {{ 'profileComparisonInvitation.creator.kicker' | translate }}
+  </app-ui-kicker>
+  <div class="comparison-invite__heading">
+    <div>
+      <h2>{{ 'profileComparisonInvitation.creator.title' | translate }}</h2>
+      <p>{{ 'profileComparisonInvitation.creator.description' | translate }}</p>
+    </div>
+    <span class="comparison-invite__consent">
+      <i class="pi pi-shield" aria-hidden="true"></i>
+      {{ 'profileComparisonInvitation.creator.consent' | translate }}
+    </span>
+  </div>
+
+  <div class="comparison-invite__categories" role="group" [attr.aria-label]="'profileComparisonInvitation.creator.categories' | translate">
+    @for (category of categories; track category) {
+      <label [class.comparison-invite__category--unavailable]="!isAvailable(category)">
+        <input
+          type="checkbox"
+          [checked]="isSelected(category)"
+          [disabled]="!isAvailable(category) || facade.loading()"
+          (change)="facade.toggle(category)">
+        <span>
+          <strong>{{ ('profileComparisonInvitation.categories.' + category + '.title') | translate }}</strong>
+          <small>{{ ('profileComparisonInvitation.categories.' + category + '.description') | translate }}</small>
+        </span>
+      </label>
+    }
+  </div>
+
+  @if (facade.invitation(); as invitation) {
+    <div class="comparison-invite__result" role="status">
+      <strong>{{ 'profileComparisonInvitation.creator.ready' | translate }}</strong>
+      <p>{{ 'profileComparisonInvitation.creator.expires' | translate:{ date: (invitation.expiresAtUtc | date:'medium') } }}</p>
+      <div class="comparison-invite__link-row">
+        <input type="text" readonly [value]="invitationLink()" [attr.aria-label]="'profileComparisonInvitation.creator.linkLabel' | translate">
+        <button appUiButton="soft" type="button" (click)="copyInvitation()">
+          <i class="pi" [class.pi-copy]="!copied()" [class.pi-check]="copied()" aria-hidden="true"></i>
+          {{ (copied() ? 'profileComparisonInvitation.creator.copied' : 'profileComparisonInvitation.creator.copy') | translate }}
+        </button>
+      </div>
+    </div>
+  } @else {
+    <button
+      appUiButton="primary"
+      type="button"
+      [disabled]="facade.selected().length === 0 || facade.loading()"
+      (click)="facade.create()">
+      @if (facade.loading()) { <i class="pi pi-spin pi-spinner" aria-hidden="true"></i> }
+      {{ 'profileComparisonInvitation.creator.create' | translate }}
+    </button>
+  }
+
+  @if (facade.error()) {
+    <p class="comparison-invite__error" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      {{ 'profileComparisonInvitation.creator.error' | translate }}
+    </p>
+  }
+</section>

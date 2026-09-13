@@ -960,6 +960,69 @@
       "seoDescription": "Découvre les parcs, visites et souvenirs que {{name}} a choisi de partager."
     }
   },
+  "profileComparisonInvitation": {
+    "creator": {
+      "kicker": "Comparaison sur invitation",
+      "title": "Invite un membre à croiser vos passeports",
+      "description": "Choisis les rubriques à comparer. L’autre membre verra précisément la demande avant de donner son accord.",
+      "consent": "Deux accords obligatoires",
+      "categories": "Rubriques proposées",
+      "ready": "Ton invitation est prête",
+      "expires": "Ce lien reste valable jusqu’au {{date}}.",
+      "linkLabel": "Lien privé d’invitation",
+      "copy": "Copier le lien",
+      "copied": "Lien copié",
+      "create": "Créer l’invitation",
+      "error": "L’invitation n’a pas pu être créée. Vérifie les rubriques publiques de ton passeport."
+    },
+    "categories": {
+      "VisitedParks": {
+        "title": "Parcs visités",
+        "description": "Compare les parcs et pays présents dans vos sélections publiques."
+      },
+      "PersonalRatings": {
+        "title": "Préférences",
+        "description": "Compare uniquement les notes personnelles que chacun a choisi de publier."
+      },
+      "YearlyActivity": {
+        "title": "Années et activité",
+        "description": "Croise le rythme des visites et passages partagés par année."
+      },
+      "MissedItems": {
+        "title": "Attractions manquées",
+        "description": "Retrouve les expériences publiques que vous avez manquées."
+      }
+    },
+    "accept": {
+      "back": "Retour au passeport",
+      "kicker": "Accord privé",
+      "title": "Vérifie avant de comparer",
+      "description": "Rien n’est comparé tant que vous n’avez pas tous les deux accepté les mêmes rubriques.",
+      "loadError": "Cette invitation est introuvable ou n’est plus disponible.",
+      "acceptedTitle": "Vos deux accords sont enregistrés",
+      "acceptedDescription": "La comparaison peut maintenant être préparée à partir des versions de passeport que vous avez validées.",
+      "inviter": "Invitation de",
+      "member": "Un membre",
+      "alreadyConsented": "Accord déjà donné",
+      "you": "Toi",
+      "awaitingConsent": "Ton accord est attendu",
+      "sharedCategories": "Ce qui sera comparé",
+      "expires": "Invitation valable jusqu’au {{date}}.",
+      "proof": "Seules les rubriques publiques ci-dessus seront utilisées. Les données privées et les identifiants techniques restent exclus.",
+      "confirm": "J’accepte cette comparaison",
+      "unavailableTitle": "Cette comparaison ne peut pas démarrer",
+      "status": {
+        "Ready": "L’invitation est prête.",
+        "Accepted": "Cette invitation a déjà reçu les deux accords.",
+        "Expired": "Cette invitation a expiré.",
+        "OwnInvitation": "Tu ne peux pas accepter ta propre invitation.",
+        "InviterPassportUnavailable": "Le passeport public à l’origine de l’invitation a changé ou n’est plus disponible.",
+        "InviteePassportUnavailable": "Rends d’abord ton passeport public et autorise les comparaisons.",
+        "InviteeCategoriesUnavailable": "Ton passeport public ne partage pas encore toutes les rubriques demandées."
+      },
+      "acceptError": "Ton accord n’a pas pu être enregistré. Recharge l’invitation avant de réessayer."
+    }
+  },
   "user-profile": {
     "title": "Profil de l'utilisateur",
     "name": "Nom",

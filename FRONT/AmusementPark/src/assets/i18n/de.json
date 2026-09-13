@@ -960,6 +960,69 @@
       "seoDescription": "Entdecke die Parks, Besuche und Erinnerungen, die {{name}} teilen möchte."
     }
   },
+  "profileComparisonInvitation": {
+    "creator": {
+      "kicker": "Vergleich per Einladung",
+      "title": "Lade ein Mitglied zum Passvergleich ein",
+      "description": "Wähle die Bereiche für den Vergleich. Das andere Mitglied sieht die genaue Anfrage, bevor es zustimmt.",
+      "consent": "Zwei Zustimmungen nötig",
+      "categories": "Vorgeschlagene Bereiche",
+      "ready": "Deine Einladung ist bereit",
+      "expires": "Dieser Link ist bis {{date}} gültig.",
+      "linkLabel": "Privater Einladungslink",
+      "copy": "Link kopieren",
+      "copied": "Link kopiert",
+      "create": "Einladung erstellen",
+      "error": "Die Einladung konnte nicht erstellt werden. Prüfe die öffentlichen Bereiche deines Passes."
+    },
+    "categories": {
+      "VisitedParks": {
+        "title": "Besuchte Parks",
+        "description": "Vergleicht die Parks und Länder in euren öffentlichen Auswahlen."
+      },
+      "PersonalRatings": {
+        "title": "Vorlieben",
+        "description": "Vergleicht nur persönliche Bewertungen, die ihr veröffentlicht habt."
+      },
+      "YearlyActivity": {
+        "title": "Jahre und Aktivität",
+        "description": "Vergleicht veröffentlichte Besuche und Fahrten nach Jahr."
+      },
+      "MissedItems": {
+        "title": "Verpasste Attraktionen",
+        "description": "Zeigt die öffentlichen Erlebnisse, die ihr verpasst habt."
+      }
+    },
+    "accept": {
+      "back": "Zurück zum Pass",
+      "kicker": "Private Zustimmung",
+      "title": "Vor dem Vergleich prüfen",
+      "description": "Es wird nichts verglichen, bevor ihr beide denselben Bereichen zugestimmt habt.",
+      "loadError": "Diese Einladung wurde nicht gefunden oder ist nicht mehr verfügbar.",
+      "acceptedTitle": "Beide Zustimmungen sind gespeichert",
+      "acceptedDescription": "Der Vergleich kann nun aus den bestätigten Passversionen erstellt werden.",
+      "inviter": "Einladung von",
+      "member": "Ein Mitglied",
+      "alreadyConsented": "Bereits zugestimmt",
+      "you": "Du",
+      "awaitingConsent": "Deine Zustimmung fehlt noch",
+      "sharedCategories": "Das wird verglichen",
+      "expires": "Einladung gültig bis {{date}}.",
+      "proof": "Nur die öffentlichen Bereiche oben werden verwendet. Private Daten und technische Kennungen bleiben ausgeschlossen.",
+      "confirm": "Ich stimme diesem Vergleich zu",
+      "unavailableTitle": "Dieser Vergleich kann nicht starten",
+      "status": {
+        "Ready": "Die Einladung ist bereit.",
+        "Accepted": "Für diese Einladung liegen bereits beide Zustimmungen vor.",
+        "Expired": "Diese Einladung ist abgelaufen.",
+        "OwnInvitation": "Du kannst deine eigene Einladung nicht annehmen.",
+        "InviterPassportUnavailable": "Der öffentliche Pass dieser Einladung wurde geändert oder ist nicht mehr verfügbar.",
+        "InviteePassportUnavailable": "Veröffentliche zuerst deinen Pass und erlaube Vergleiche.",
+        "InviteeCategoriesUnavailable": "Dein öffentlicher Pass teilt noch nicht alle angefragten Bereiche."
+      },
+      "acceptError": "Deine Zustimmung konnte nicht gespeichert werden. Lade die Einladung neu und versuche es erneut."
+    }
+  },
   "user-profile": {
     "title": "Benutzerprofil",
     "name": "Nachname",

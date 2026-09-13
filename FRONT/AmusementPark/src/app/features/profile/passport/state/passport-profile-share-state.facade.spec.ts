@@ -60,6 +60,7 @@ describe('PassportProfileShareStateFacade', () => {
     const facade: PassportProfileShareStateFacade = TestBed.inject(PassportProfileShareStateFacade);
 
     facade.load();
+    expect(facade.canInviteComparison()).toBe(false);
     facade.toggleField('GlobalRatings');
     facade.toggleField('PublicCaption');
     facade.previewPublication();
@@ -77,12 +78,14 @@ describe('PassportProfileShareStateFacade', () => {
     expect(publishRequests[0].approvalToken).toBe('approved-preview');
     expect(publishRequests[0].passportProfile).toEqual(previewRequests[0].passportProfile);
     expect(facade.settings()?.shareId).toBe('opaque-share-id');
+    expect(facade.canInviteComparison()).toBe(true);
 
     facade.previewPublication();
     expect(facade.canPublish()).toBe(true);
     facade.revoke();
 
     expect(facade.canPublish()).toBe(false);
+    expect(facade.canInviteComparison()).toBe(false);
   });
 
   it('filters obsolete saved choices and clears hidden ranking choices', () => {

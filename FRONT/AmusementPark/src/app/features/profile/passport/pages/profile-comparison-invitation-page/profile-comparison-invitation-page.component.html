@@ -1,0 +1,61 @@
+<main class="comparison-consent">
+  <header class="comparison-consent__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <button appUiButton="ghost" type="button" (click)="backToPassport()">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      {{ 'profileComparisonInvitation.accept.back' | translate }}
+    </button>
+    <app-ui-kicker tone="lime" iconClass="pi pi-users">
+      {{ 'profileComparisonInvitation.accept.kicker' | translate }}
+    </app-ui-kicker>
+    <h1>{{ 'profileComparisonInvitation.accept.title' | translate }}</h1>
+    <p>{{ 'profileComparisonInvitation.accept.description' | translate }}</p>
+  </header>
+
+  @if (facade.loading()) {
+    <app-page-state state="loading"></app-page-state>
+  } @else if (facade.error() && !facade.preview()) {
+    <app-page-state state="error" [errorMessageKey]="'profileComparisonInvitation.accept.loadError'"></app-page-state>
+  } @else if (facade.acceptance()) {
+    <section class="comparison-consent__success" appUiSurface="panel" appUiSurfacePadding="spacious" role="status">
+      <i class="pi pi-check-circle" aria-hidden="true"></i>
+      <div>
+        <h2>{{ 'profileComparisonInvitation.accept.acceptedTitle' | translate }}</h2>
+        <p>{{ 'profileComparisonInvitation.accept.acceptedDescription' | translate }}</p>
+      </div>
+      <button appUiButton="primary" type="button" (click)="backToPassport()">
+        {{ 'profileComparisonInvitation.accept.back' | translate }}
+      </button>
+    </section>
+  } @else if (facade.preview(); as preview) {
+    <section class="comparison-consent__card" appUiSurface="panel" appUiSurfacePadding="spacious">
+      @if (preview.status === 'Ready') {
+        <div class="comparison-consent__people" [attr.aria-label]="'profileComparisonInvitation.creator.consent' | translate">
+          <article><i class="pi pi-user" aria-hidden="true"></i><span>{{ 'profileComparisonInvitation.accept.inviter' | translate }}</span><strong>{{ preview.creatorDisplayName || ('profileComparisonInvitation.accept.member' | translate) }}</strong><small>{{ 'profileComparisonInvitation.accept.alreadyConsented' | translate }}</small></article>
+          <i class="pi pi-arrows-h comparison-consent__arrow" aria-hidden="true"></i>
+          <article><i class="pi pi-user" aria-hidden="true"></i><span>{{ 'profileComparisonInvitation.accept.you' | translate }}</span><strong>{{ preview.inviteeDisplayName || ('profileComparisonInvitation.accept.you' | translate) }}</strong><small>{{ 'profileComparisonInvitation.accept.awaitingConsent' | translate }}</small></article>
+        </div>
+        <div class="comparison-consent__categories">
+          <h2>{{ 'profileComparisonInvitation.accept.sharedCategories' | translate }}</h2>
+          <ul>
+            @for (category of preview.categories; track category) {
+              <li><i class="pi pi-check" aria-hidden="true"></i>{{ categoryKey(category) | translate }}</li>
+            }
+          </ul>
+        </div>
+        <p class="comparison-consent__expiry"><i class="pi pi-clock" aria-hidden="true"></i>{{ 'profileComparisonInvitation.accept.expires' | translate:{ date: (preview.expiresAtUtc | date:'medium') } }}</p>
+        <p class="comparison-consent__proof"><i class="pi pi-shield" aria-hidden="true"></i>{{ 'profileComparisonInvitation.accept.proof' | translate }}</p>
+        <button appUiButton="primary" type="button" [disabled]="facade.accepting()" (click)="facade.accept()">
+          @if (facade.accepting()) { <i class="pi pi-spin pi-spinner" aria-hidden="true"></i> }
+          {{ 'profileComparisonInvitation.accept.confirm' | translate }}
+        </button>
+      } @else {
+        <div class="comparison-consent__blocked" role="status">
+          <i class="pi pi-info-circle" aria-hidden="true"></i>
+          <div><h2>{{ 'profileComparisonInvitation.accept.unavailableTitle' | translate }}</h2><p>{{ ('profileComparisonInvitation.accept.status.' + preview.status) | translate }}</p></div>
+        </div>
+        <button appUiButton="soft" type="button" (click)="backToPassport()">{{ 'profileComparisonInvitation.accept.back' | translate }}</button>
+      }
+      @if (facade.error()) { <p class="comparison-consent__error" role="alert">{{ 'profileComparisonInvitation.accept.acceptError' | translate }}</p> }
+    </section>
+  }
+</main>

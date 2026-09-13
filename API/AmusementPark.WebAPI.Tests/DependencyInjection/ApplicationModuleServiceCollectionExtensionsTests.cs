@@ -17,6 +17,7 @@ using AmusementPark.Application.Features.ParkPricing.Commands;
 using AmusementPark.Application.Features.ParkPricing.Queries;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Sharing.Queries;
+using AmusementPark.Application.Features.Sharing.Commands;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.TechnicalPages.Commands;
 using AmusementPark.Application.Features.TechnicalPages.Queries;
@@ -74,6 +75,9 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetPassportParkStatisticsQuery, ApplicationResult<PassportParkStatisticsResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetPassportYearStatisticsQuery, ApplicationResult<PassportYearStatisticsResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<CreateProfileComparisonInvitationCommand, ApplicationResult<ProfileComparisonInvitationCreationResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetProfileComparisonInvitationPreviewQuery, ApplicationResult<ProfileComparisonInvitationPreviewResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<AcceptProfileComparisonInvitationCommand, ApplicationResult<ProfileComparisonInvitationAcceptanceResult>>));
     }
 
     [Fact]

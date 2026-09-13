@@ -19,6 +19,9 @@ public sealed class SharePublicationRegistrationTests
 
         Assert.Equal("share-publications", settings.SharePublicationsCollectionName);
         Assert.Equal(
+            "profile-comparison-invitations",
+            settings.ProfileComparisonInvitationsCollectionName);
+        Assert.Equal(
             "share-publication-migrations",
             settings.SharePublicationMigrationsCollectionName);
         Assert.Equal("share-source-revisions", settings.ShareSourceRevisionsCollectionName);
@@ -40,6 +43,14 @@ public sealed class SharePublicationRegistrationTests
             static service => service.ServiceType == typeof(ISharePublicationRepository));
         Assert.Equal(typeof(SharePublicationRepository), repository.ImplementationType);
         Assert.Equal(ServiceLifetime.Scoped, repository.Lifetime);
+        ServiceDescriptor comparisonInvitations = Assert.Single(
+            services,
+            static service => service.ServiceType
+                == typeof(IProfileComparisonInvitationRepository));
+        Assert.Equal(
+            typeof(ProfileComparisonInvitationRepository),
+            comparisonInvitations.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, comparisonInvitations.Lifetime);
         ServiceDescriptor sourceRevisionRepository = Assert.Single(
             services,
             static service => service.ServiceType == typeof(IShareSourceRevisionRepository));
