@@ -88,9 +88,10 @@ public sealed class SharePublicationLifecycleService
 
             long sourcePublicationVersion = publication.PublicationVersion;
             long targetPublicationVersion = checked(sourcePublicationVersion + 1);
+            ISharePublicationSnapshotWriter? snapshotWriter = null;
             if (this.snapshotWriters.TryGetValue(
                     publication.Type,
-                    out ISharePublicationSnapshotWriter? snapshotWriter))
+                    out snapshotWriter))
             {
                 ApplicationResult<bool> cloneResult = await snapshotWriter.CloneAsync(
                     new SharePublicationSnapshotCloneRequest(
@@ -153,6 +154,19 @@ public sealed class SharePublicationLifecycleService
                 await this.RevokeIfCurrentAsync(publication, cancellationToken);
                 return ApplicationResult<SharePublicationSettingsResult>.Failure(
                     SharingApplicationErrors.ApprovedPreviewExpired());
+            }
+
+            if (snapshotWriter is not null)
+            {
+                ApplicationResult<bool> cleanupResult = await snapshotWriter.DeleteSupersededAsync(
+                    publication.Id,
+                    publication.PublicationVersion,
+                    cancellationToken);
+                if (!cleanupResult.IsSuccess)
+                {
+                    return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                        cleanupResult.Errors);
+                }
             }
 
             return Success(publication);

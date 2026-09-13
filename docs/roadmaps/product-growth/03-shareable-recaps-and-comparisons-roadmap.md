@@ -374,7 +374,8 @@ Avant la transition autoritative, un job idempotent est persisté dans la file M
 existante avec la version de publication attendue. Le worker attend cette version,
 évince ensuite les images sociales et invalide les routes SSR des huit langues pour
 l'ancien et le nouveau lien. Une purge non confirmée survit aux redémarrages et est
-rejouée sans annuler la décision du propriétaire. La suppression d'une visite porte
+rejouée par une chaîne de continuations durables sans limite temporelle. Les anciens
+snapshots sont nettoyés après une rotation réussie. La suppression d'une visite porte
 le même marqueur de convergence et reprend son année canonique afin de ne jamais
 oublier le bilan annuel lors d'un rejeu. Les interfaces expliquent honnêtement qu'une copie déjà téléchargée
 par un réseau social externe peut subsister hors du site, tout en garantissant que

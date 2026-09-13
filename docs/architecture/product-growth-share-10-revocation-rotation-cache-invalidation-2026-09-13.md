@@ -63,6 +63,10 @@ avant de recopier le DTO public déjà validé. Le classement personnel, qui est
 résolu depuis sa source publique versionnée et ne possède pas de snapshot, suit
 la même transition de jeton sans clonage.
 
+Après confirmation de la source, les versions de snapshot antérieures à la version
+active sont supprimées. Des rotations successives ne font donc pas croître
+indéfiniment les collections de snapshots.
+
 Une seconde lecture de la version source après l'écriture ferme la petite fenêtre
 de concurrence. Si la source a changé pendant la rotation, le nouveau lien est
 révoqué avant de renvoyer un échec.
@@ -109,7 +113,10 @@ attendue. Il ne purge qu'après avoir relu cette version dans MongoDB. Une panne
 processus après la décision métier ne peut donc pas faire disparaître le travail,
 et une exécution trop rapide ne peut pas vider le cache avant que l'ancien lien
 cesse d'être autoritaire. L'exécuteur de purge est résolu dans la portée du worker,
-comme les clients SSR dont il dépend.
+comme les clients SSR dont il dépend. À mi-budget de tentatives, le handler crée
+une continuation durable idempotente puis termine le job courant. Cette chaîne n'a
+pas de limite temporelle : une longue panne SSR ne peut pas transformer une purge
+de confidentialité en échec définitif.
 
 Les chemins SSR sont calculés selon le type de publication et envoyés avec
 `allowStale=false` et `refresh=false`. Une indisponibilité du moteur SSR ne remet
@@ -146,6 +153,8 @@ et aucun contrôle n'impose de largeur minimale supérieure au viewport de 320 p
 - remplacement atomique du jeton et incrément des versions ;
 - persistance de la purge avant la révocation et attente de la version autoritative ;
 - reprise durable après redémarrage ou échec SSR ;
+- continuation durable au-delà du budget d'un job individuel ;
+- nettoyage des anciens snapshots après une rotation réussie ;
 - purge de l'ancien et du nouveau lien lors d'une republication ;
 - purge des récapitulatifs affectés lors de la suppression d'une visite source,
   bilan annuel compris après rejeu ;

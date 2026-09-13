@@ -52,6 +52,11 @@ public sealed class SharePublicationLifecycleServiceTests
                     && request.SourceVersion == 7),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<bool>.Success(true));
+        snapshotWriter.Setup(value => value.DeleteSupersededAsync(
+                publication.Id,
+                2,
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<bool>.Success(true));
         Mock<IDurableBackgroundJobRepository> jobs = CreateJobRepository(
             request =>
             {

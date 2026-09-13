@@ -9,16 +9,21 @@ namespace AmusementPark.Application.Features.Sharing.Services;
 
 public sealed class SharePublicationCacheInvalidationJobHandler : IDurableBackgroundJobHandler
 {
+    private const int MaximumAttempts = 100;
+    private const int ContinuationAttemptThreshold = MaximumAttempts / 2;
     private readonly ISharePublicationRepository publicationRepository;
     private readonly ISharePublicationCacheInvalidationExecutor executor;
+    private readonly SharePublicationCacheInvalidationScheduler scheduler;
 
     public SharePublicationCacheInvalidationJobHandler(
         ISharePublicationRepository publicationRepository,
-        ISharePublicationCacheInvalidationExecutor executor)
+        ISharePublicationCacheInvalidationExecutor executor,
+        SharePublicationCacheInvalidationScheduler scheduler)
     {
         this.publicationRepository = publicationRepository
             ?? throw new ArgumentNullException(nameof(publicationRepository));
         this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
+        this.scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
     }
 
     public DurableBackgroundJobHandlerDefinition Definition { get; } =
@@ -27,7 +32,7 @@ public sealed class SharePublicationCacheInvalidationJobHandler : IDurableBackgr
             DurableBackgroundJobWorkload.Light,
             new[] { SharePublicationCacheInvalidationJob.PayloadVersion },
             TimeSpan.FromMinutes(1),
-            maximumAttempts: 100,
+            maximumAttempts: MaximumAttempts,
             initialRetryDelay: TimeSpan.FromSeconds(10),
             maximumRetryDelay: TimeSpan.FromMinutes(5),
             maximumConcurrency: 2);
@@ -42,6 +47,7 @@ public sealed class SharePublicationCacheInvalidationJobHandler : IDurableBackgr
             || string.IsNullOrWhiteSpace(payload.OwnerUserId)
             || !Enum.IsDefined(payload.PublicationType)
             || payload.MinimumPublicationStateVersion < 0
+            || payload.Continuation < 0
             || payload.ShareIds is null
             || payload.ShareIds.Count == 0)
         {
@@ -66,10 +72,31 @@ public sealed class SharePublicationCacheInvalidationJobHandler : IDurableBackgr
                 payload.PublicationType,
                 payload.ShareIds),
             cancellationToken);
-        return succeeded
-            ? DurableBackgroundJobHandlerResult.Success()
-            : DurableBackgroundJobHandlerResult.Retry(
-                "sharing-cache-invalidation.not-confirmed");
+        if (succeeded)
+        {
+            return DurableBackgroundJobHandlerResult.Success();
+        }
+
+        return await this.RetryOrContinueAsync(
+            payload,
+            context.AttemptCount,
+            "sharing-cache-invalidation.not-confirmed",
+            cancellationToken);
+    }
+
+    private async Task<DurableBackgroundJobHandlerResult> RetryOrContinueAsync(
+        SharePublicationCacheInvalidationJobPayload payload,
+        int attemptCount,
+        string retryErrorCode,
+        CancellationToken cancellationToken)
+    {
+        if (attemptCount < ContinuationAttemptThreshold)
+        {
+            return DurableBackgroundJobHandlerResult.Retry(retryErrorCode);
+        }
+
+        await this.scheduler.ScheduleContinuationAsync(payload, cancellationToken);
+        return DurableBackgroundJobHandlerResult.Success();
     }
 
     private static SharePublicationCacheInvalidationJobPayload? Deserialize(

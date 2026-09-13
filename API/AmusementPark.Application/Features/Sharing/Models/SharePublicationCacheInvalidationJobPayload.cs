@@ -7,4 +7,5 @@ public sealed record SharePublicationCacheInvalidationJobPayload(
     string OwnerUserId,
     SharePublicationType PublicationType,
     long MinimumPublicationStateVersion,
-    IReadOnlyCollection<string> ShareIds);
+    IReadOnlyCollection<string> ShareIds,
+    int Continuation = 0);

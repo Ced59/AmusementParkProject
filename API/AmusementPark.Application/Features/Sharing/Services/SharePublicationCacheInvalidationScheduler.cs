@@ -47,14 +47,34 @@ public sealed class SharePublicationCacheInvalidationScheduler
                 publication.OwnerUserId,
                 publication.Type,
                 minimumPublicationStateVersion,
-                normalizedShareIds);
+                normalizedShareIds,
+                0);
+        await this.EnqueueAsync(payload, cancellationToken);
+    }
+
+    public Task ScheduleContinuationAsync(
+        SharePublicationCacheInvalidationJobPayload completedPayload,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(completedPayload);
+        SharePublicationCacheInvalidationJobPayload continuation = completedPayload with
+        {
+            Continuation = checked(completedPayload.Continuation + 1),
+        };
+        return this.EnqueueAsync(continuation, cancellationToken);
+    }
+
+    private async Task EnqueueAsync(
+        SharePublicationCacheInvalidationJobPayload payload,
+        CancellationToken cancellationToken)
+    {
         string digest = Convert.ToHexString(
-            SHA256.HashData(Encoding.UTF8.GetBytes(string.Join('\n', normalizedShareIds))))
+            SHA256.HashData(Encoding.UTF8.GetBytes(string.Join('\n', payload.ShareIds))))
             .ToLowerInvariant()[..16];
         await this.jobRepository.EnqueueExactAsync(
             new EnqueueExactBackgroundJobRequest(
                 SharePublicationCacheInvalidationJob.Kind,
-                $"share-cache:{publication.Id.Value}:{minimumPublicationStateVersion}:{digest}",
+                $"share-cache:{payload.PublicationId}:{payload.MinimumPublicationStateVersion}:{digest}:continuation:{payload.Continuation}",
                 SharePublicationCacheInvalidationJob.PayloadVersion,
                 JsonSerializer.SerializeToElement(payload)),
             cancellationToken);
