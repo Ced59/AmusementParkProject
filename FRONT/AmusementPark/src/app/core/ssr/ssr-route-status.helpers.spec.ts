@@ -40,6 +40,7 @@ describe('SSR route status helpers', () => {
       '/fr/rankings/methodology',
       '/fr/rankings/methodology/ratings-2026-01',
       '/fr/rankings/shared/opaque-token',
+      '/fr/passport/shared/comparisons/opaque-token',
       '/fr/manufacturers',
       '/fr/technical',
       '/fr/technical/chain-lift',
@@ -101,6 +102,13 @@ describe('SSR route status helpers', () => {
 
   it('keeps public passport profile links valid but excludes them from indexing and archiving', () => {
     const url: string = '/fr/passport/shared/profiles/opaque-token';
+
+    expect(resolveSsrRouteStatusCode(url)).toBe(200);
+    expect(resolveXRobotsTagHeader(url)).toBe('noindex, nofollow, noarchive');
+  });
+
+  it('keeps public profile comparison links valid but excludes them from indexing and archiving', () => {
+    const url: string = '/fr/passport/shared/comparisons/opaque-token';
 
     expect(resolveSsrRouteStatusCode(url)).toBe(200);
     expect(resolveXRobotsTagHeader(url)).toBe('noindex, nofollow, noarchive');

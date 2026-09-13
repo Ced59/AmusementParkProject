@@ -39,6 +39,7 @@ import { isPublicSharedUserRankingSsrRoute } from './src/server/ssr/public-share
 import { isPublicSharedVisitRecapSsrRoute } from './src/server/ssr/public-shared-visit-recap-ssr-route-policy';
 import { isPublicSharedYearRecapSsrRoute } from './src/server/ssr/public-shared-year-recap-ssr-route-policy';
 import { isPublicSharedPassportProfileSsrRoute } from './src/server/ssr/public-shared-passport-profile-ssr-route-policy';
+import { isPublicSharedProfileComparisonSsrRoute } from './src/server/ssr/public-shared-profile-comparison-ssr-route-policy';
 import { isPublicRatingMethodologySsrRoute } from './src/server/ssr/public-rating-methodology-ssr-route-policy';
 import {
   isCriticalPublicPricingSsrRoute,
@@ -1921,7 +1922,8 @@ function resolveCacheMissRenderDecision(req: Request, warmupRequest: boolean): C
     && (isPublicSharedUserRankingSsrRoute(getPathOnly(req.originalUrl))
       || isPublicSharedVisitRecapSsrRoute(getPathOnly(req.originalUrl))
       || isPublicSharedYearRecapSsrRoute(getPathOnly(req.originalUrl))
-      || isPublicSharedPassportProfileSsrRoute(getPathOnly(req.originalUrl)))
+      || isPublicSharedPassportProfileSsrRoute(getPathOnly(req.originalUrl))
+      || isPublicSharedProfileComparisonSsrRoute(getPathOnly(req.originalUrl)))
   ) {
     return {
       shouldRender: true,
@@ -3376,6 +3378,7 @@ function applySecurityHeaders(req: Request, res: Response, next: NextFunction): 
     isPublicSharedVisitRecapSsrRoute(getPathOnly(req.originalUrl))
       || isPublicSharedYearRecapSsrRoute(getPathOnly(req.originalUrl))
       || isPublicSharedPassportProfileSsrRoute(getPathOnly(req.originalUrl))
+      || isPublicSharedProfileComparisonSsrRoute(getPathOnly(req.originalUrl))
       ? 'no-referrer'
       : 'strict-origin-when-cross-origin'
   );

@@ -18,7 +18,8 @@ export function resolveXRobotsTagHeader(url: string): string | null {
   if (isSharedUserRankingRoute(path)
       || isSharedVisitRecapRoute(path)
       || isSharedYearRecapRoute(path)
-      || isSharedPassportProfileRoute(path)) {
+      || isSharedPassportProfileRoute(path)
+      || isSharedProfileComparisonRoute(path)) {
     return 'noindex, nofollow, noarchive';
   }
 
@@ -62,6 +63,7 @@ function isKnownPublicPageRoute(path: string): boolean {
     || isSharedVisitRecapRoute(path)
     || isSharedYearRecapRoute(path)
     || isSharedPassportProfileRoute(path)
+    || isSharedProfileComparisonRoute(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path)
@@ -90,6 +92,10 @@ function isSharedYearRecapRoute(path: string): boolean {
 
 function isSharedPassportProfileRoute(path: string): boolean {
   return /^\/[a-z]{2}\/passport\/shared\/profiles\/[^/]+\/?$/i.test(path);
+}
+
+function isSharedProfileComparisonRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/passport\/shared\/comparisons\/[^/]+\/?$/i.test(path);
 }
 
 function isKnownPrivateClientRoute(path: string): boolean {

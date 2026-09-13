@@ -46,9 +46,10 @@ public sealed class ProfileComparisonMaterializer
             cancellationToken);
         if (existing is not null)
         {
-            return existing.InvitationId == invitation.Id
-                ? ApplicationResult<ProfileComparison>.Success(existing)
-                : Unavailable();
+            return await this.ValidateExistingAsync(
+                existing,
+                invitation,
+                cancellationToken);
         }
 
         ProfileComparisonPassportReference? creatorPassport =
@@ -101,9 +102,10 @@ public sealed class ProfileComparisonMaterializer
                 cancellationToken);
             if (concurrentlyCreated is not null)
             {
-                return concurrentlyCreated.InvitationId == invitation.Id
-                    ? ApplicationResult<ProfileComparison>.Success(concurrentlyCreated)
-                    : Unavailable();
+                return await this.ValidateExistingAsync(
+                    concurrentlyCreated,
+                    invitation,
+                    cancellationToken);
             }
 
             if (outcome != ProfileComparisonWriteOutcome.TokenCollision)
@@ -113,6 +115,38 @@ public sealed class ProfileComparisonMaterializer
         }
 
         return Unavailable();
+    }
+
+    private async Task<ApplicationResult<ProfileComparison>> ValidateExistingAsync(
+        ProfileComparison comparison,
+        ProfileComparisonInvitation invitation,
+        CancellationToken cancellationToken)
+    {
+        if (comparison.InvitationId != invitation.Id || !comparison.IsActive)
+        {
+            return Unavailable();
+        }
+
+        ProfileComparisonPassportReference? creatorPassport =
+            await this.passportResolver.ResolveExactAsync(
+                comparison.CreatorPassportPublicationId,
+                comparison.CreatorUserId,
+                comparison.CreatorPassportPublicationVersion,
+                cancellationToken);
+        ProfileComparisonPassportReference? acceptorPassport =
+            await this.passportResolver.ResolveExactAsync(
+                comparison.AcceptorPassportPublicationId,
+                comparison.AcceptorUserId,
+                comparison.AcceptorPassportPublicationVersion,
+                cancellationToken);
+        if (!IsUsable(creatorPassport, comparison.Calculation.Categories)
+            || !IsUsable(acceptorPassport, comparison.Calculation.Categories))
+        {
+            return ApplicationResult<ProfileComparison>.Failure(
+                SharingApplicationErrors.ComparisonPassportsChanged());
+        }
+
+        return ApplicationResult<ProfileComparison>.Success(comparison);
     }
 
     private static bool IsUsable(
