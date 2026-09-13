@@ -162,12 +162,13 @@ public sealed class ShareModerationService
         }
         catch (Exception)
         {
-            return ApplicationResult.Failure(SharingApplicationErrors.ModerationConflict());
+            return ApplicationResult.Success();
         }
 
         return outcome switch
         {
             ShareModerationDecisionExecutionOutcome.Succeeded => ApplicationResult.Success(),
+            ShareModerationDecisionExecutionOutcome.RetryableConflict => ApplicationResult.Success(),
             ShareModerationDecisionExecutionOutcome.ReportNotFound =>
                 ApplicationResult.Failure(SharingApplicationErrors.ModerationReportNotFound()),
             ShareModerationDecisionExecutionOutcome.TargetNotFound =>

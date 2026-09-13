@@ -148,6 +148,95 @@ public sealed class ShareModerationServiceTests
         reports.VerifyAll();
     }
 
+    [Fact]
+    public async Task ReviewAsync_WhenImmediateExecutionFailsAfterScheduling_ShouldAcknowledgeAuditableDecision()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        ShareModerationReport report = ShareModerationReport.Create(
+            ShareModerationReportId.Parse("report-queued"),
+            ShareModerationTargetType.VisitRecap,
+            publication.Id.Value,
+            ShareModerationReason.PersonalData,
+            "Personal data is visible.",
+            NowUtc.AddMinutes(-1));
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
+            .ReturnsAsync(report);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetByIdAsync(publication.Id, CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("MongoDB unavailable"));
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+                    request.Kind == ShareModerationDecisionJob.Kind),
+                CancellationToken.None))
+            .ReturnsAsync((DurableBackgroundJob)null!);
+        ShareModerationService service = CreateService(reports, publications, jobs);
+
+        ApplicationResult result = await service.ReviewAsync(
+            new ReviewShareModerationReportCommand(
+                "admin-1",
+                report.Id.Value,
+                ShareModerationDecision.Suspend,
+                "Confirmed."),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        jobs.VerifyAll();
+        publications.VerifyAll();
+        reports.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReviewAsync_WhenImmediateExecutionConflictsAfterScheduling_ShouldAcknowledgeAuditableDecision()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        ShareModerationReport report = ShareModerationReport.Create(
+            ShareModerationReportId.Parse("report-conflict"),
+            ShareModerationTargetType.VisitRecap,
+            publication.Id.Value,
+            ShareModerationReason.PersonalData,
+            "Personal data is visible.",
+            NowUtc.AddMinutes(-1));
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
+            .ReturnsAsync(report);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetByIdAsync(publication.Id, CancellationToken.None))
+            .ReturnsAsync(publication);
+        publications.Setup(value => value.ReplaceAsync(
+                It.IsAny<SharePublication>(),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(SharePublicationWriteOutcome.Conflict);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+                    request.Kind == ShareModerationDecisionJob.Kind),
+                CancellationToken.None))
+            .ReturnsAsync((DurableBackgroundJob)null!);
+        ShareModerationService service = CreateService(reports, publications, jobs);
+
+        ApplicationResult result = await service.ReviewAsync(
+            new ReviewShareModerationReportCommand(
+                "admin-1",
+                report.Id.Value,
+                ShareModerationDecision.Suspend,
+                "Confirmed."),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        jobs.VerifyAll();
+        publications.VerifyAll();
+        reports.VerifyAll();
+    }
+
     private static ShareModerationService CreateService(
         Mock<IShareModerationReportRepository> reports,
         Mock<ISharePublicationRepository> publications,

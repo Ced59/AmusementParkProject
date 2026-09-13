@@ -139,9 +139,10 @@ sequenceDiagram
   R-->>API: écriture optimiste réussie
   API-->>UI: 204 puis rechargement de la file
   opt panne ou conflit entre les deux écritures
+    API-->>UI: 204 car la décision durable est acceptée et auditée
     J->>E: rejoue la même décision idempotente
     E->>T: complète ou compense l'état manquant
-    E->>R: complète l'audit manquant
+    E->>R: complète l'état métier manquant
   end
 ```
 
@@ -152,6 +153,11 @@ revient à l'identique sans créer un second système de partage. MongoDB foncti
 en instance simple en production ; la tâche durable, créée avant toute mutation,
 assure la compensation et la convergence sans supposer des transactions
 multi-documents indisponibles.
+Une fois la tâche durable enregistrée, un conflit ou une indisponibilité pendant
+la première tentative reste une décision acceptée : l'API répond avec succès afin
+que l'action administrative et son auteur soient bien inscrits dans l'audit HTTP,
+puis le worker converge vers cette décision. Une cible absente ou une transition
+réellement invalide reste en revanche refusée.
 Si une dépendance reste indisponible pendant toute la fenêtre de rejeu, la tâche
 crée une continuation durable avant de terminer : la convergence n'est donc pas
 abandonnée après un nombre fixe de tentatives.
@@ -224,6 +230,8 @@ en lazy loading et n'alourdit pas le bundle public initial.
 - orchestration de la résolution, de la suspension et de l'invalidation ;
 - liaison de la suspension à son rapport exact, rejeu après conflit et compensation
   d'une décision concurrente ;
+- acquittement auditable d'une décision durable et refus explicite de republier
+  un partage encore suspendu ;
 - aller-retour Mongo, index de file et absence de jeton dans les rapports ;
 - rejet d'une pagination dont le décalage dépasserait la limite MongoDB ;
 - mappings HTTP sans références internes ;

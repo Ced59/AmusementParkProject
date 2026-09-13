@@ -59,6 +59,12 @@ public sealed class SharePublicationPublisher
                 SharingApplicationErrors.ApprovedPreviewExpired());
         }
 
+        if (publication?.IsModerationSuspended == true)
+        {
+            return ApplicationResult<SharePublicationSettingsResult>.Failure(
+                SharingApplicationErrors.PublicationSuspendedByModeration());
+        }
+
         bool alreadyPublished = publication?.IsResolvable == true
             && publication.SourceVersion == sourceVersion
             && publication.ContentPolicy.HasSameSelectionAs(contentPolicy)

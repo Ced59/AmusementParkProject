@@ -69,6 +69,13 @@ public static class SharingApplicationErrors
             "Les données ont changé depuis l’aperçu. Vérifie le nouvel aperçu avant de publier.");
     }
 
+    public static ApplicationError PublicationSuspendedByModeration()
+    {
+        return ApplicationError.RuleViolation(
+            "share-publication.moderation-suspended",
+            "Ce partage est temporairement suspendu et ne peut pas être republié.");
+    }
+
     public static ApplicationError PreviewApprovalRequired()
     {
         return ApplicationError.RuleViolation(
