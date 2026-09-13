@@ -16,11 +16,17 @@ public sealed class ShareSocialImageRendererTests
     public void UnicodeFallbacks_ShouldPreferTheProductionCjkFamily()
     {
         int japanesePriority = ShareSocialImageFontFamilyComparer.GetPriority("Noto Sans CJK JP");
-        int genericUnicodePriority = ShareSocialImageFontFamilyComparer.GetPriority("Noto Sans");
+        int genericUnicodePriority = ShareSocialImageFontFamilyComparer.GetPriority("Noto Sans Arabic");
+        int dejavuPriority = ShareSocialImageFontFamilyComparer.GetPriority("DejaVu Sans");
         int unknownPriority = ShareSocialImageFontFamilyComparer.GetPriority("Another system font");
 
         Assert.True(japanesePriority < genericUnicodePriority);
-        Assert.True(genericUnicodePriority < unknownPriority);
+        Assert.True(genericUnicodePriority < dejavuPriority);
+        Assert.True(dejavuPriority < unknownPriority);
+        Assert.True(ShareSocialImageFontFamilyComparer.IsSupported("Noto Sans Arabic"));
+        Assert.True(ShareSocialImageFontFamilyComparer.IsSupported("DejaVu Sans"));
+        Assert.False(ShareSocialImageFontFamilyComparer.IsSupported("Noto Color Emoji"));
+        Assert.False(ShareSocialImageFontFamilyComparer.IsSupported("Another system font"));
     }
 
     [Fact]
@@ -46,6 +52,28 @@ public sealed class ShareSocialImageRendererTests
 
             Assert.True(isAvailable, $"The embedded social-image font is missing '{character}'.");
             Assert.NotEmpty(availableGlyphs);
+        }
+    }
+
+    [Fact]
+    public void EmbeddedUnicodeFallback_ShouldCoverJapanesePublicNames()
+    {
+        FontCollection collection = new FontCollection();
+        FontFamily family = collection.Add(System.IO.Path.Combine(
+            AppContext.BaseDirectory,
+            "Assets",
+            "Fonts",
+            "noto-sans-jp-unicode.ttf"));
+        Font font = family.CreateFont(24, FontStyle.Regular);
+
+        foreach (char character in "東京")
+        {
+            bool isAvailable = font.TryGetGlyphs(
+                new CodePoint(character),
+                out IReadOnlyList<Glyph>? glyphs);
+
+            Assert.True(isAvailable, $"The embedded Unicode fallback is missing '{character}'.");
+            Assert.NotEmpty(glyphs ?? Array.Empty<Glyph>());
         }
     }
 

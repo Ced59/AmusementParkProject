@@ -71,9 +71,10 @@ flowchart LR
 - **Application** choisit uniquement les champs publics et construit un modèle
   graphique dépourvu d'identifiants de parc, d'attraction, de visite ou de membre.
 - **Infrastructure** dessine le PNG de façon déterministe avec la police Bangers
-  déjà utilisée par le projet et distribuée sous licence SIL OFL 1.1. Une chaîne de
-  polices système Noto/DejaVu complète le rendu des noms publics en écritures non
-  latines. Cette couche gère ensuite le cache mémoire.
+  déjà utilisée par le projet et distribuée sous licence SIL OFL 1.1. Une police
+  Noto Sans JP embarquée et testée, complétée par les familles système Noto/DejaVu,
+  assure le rendu des noms publics en écritures non latines. Cette couche gère
+  ensuite le cache mémoire.
 - **WebAPI** valide la variante d'URL et pose les en-têtes HTTP.
 - **Angular** produit l'URL Open Graph exacte à partir de la version renvoyée par
   le contrat public ; il ne calcule aucune règle de confidentialité.

@@ -33,7 +33,6 @@ RUN apt-get update \
         fontconfig \
         fonts-dejavu-core \
         fonts-noto-core \
-        fonts-noto-cjk \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd --system amusementpark \
     && useradd --system --gid amusementpark --home-dir /app --no-create-home amusementpark

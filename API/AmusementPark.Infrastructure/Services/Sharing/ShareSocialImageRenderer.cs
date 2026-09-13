@@ -31,9 +31,18 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
             "Fonts",
             "bangers-latin-complete.ttf");
         this.fontFamily = collection.Add(fontPath);
-        this.fallbackFontFamilies = SystemFonts.Families
-            .OrderBy(ShareSocialImageFontFamilyComparer.GetPriority)
-            .ThenBy(static family => family.Name, StringComparer.Ordinal)
+        string unicodeFontPath = System.IO.Path.Combine(
+            AppContext.BaseDirectory,
+            "Assets",
+            "Fonts",
+            "noto-sans-jp-unicode.ttf");
+        FontFamily unicodeFontFamily = collection.Add(unicodeFontPath);
+        this.fallbackFontFamilies = new[] { unicodeFontFamily }
+            .Concat(SystemFonts.Families
+                .Where(static family => ShareSocialImageFontFamilyComparer.IsSupported(family.Name))
+                .OrderBy(ShareSocialImageFontFamilyComparer.GetPriority)
+                .ThenBy(static family => family.Name, StringComparer.Ordinal))
+            .DistinctBy(static family => family.Name, StringComparer.OrdinalIgnoreCase)
             .ToList();
     }
 

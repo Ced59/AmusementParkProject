@@ -9,8 +9,6 @@ internal static class ShareSocialImageFontFamilyComparer
         "Noto Sans CJK JP",
         "Noto Sans CJK SC",
         "Noto Sans CJK TC",
-        "Noto Sans",
-        "DejaVu Sans",
     };
 
     public static int GetPriority(FontFamily family)
@@ -23,6 +21,22 @@ internal static class ShareSocialImageFontFamilyComparer
         int index = Array.FindIndex(
             PreferredUnicodeFamilies,
             name => string.Equals(name, familyName, StringComparison.OrdinalIgnoreCase));
-        return index >= 0 ? index : PreferredUnicodeFamilies.Length;
+        if (index >= 0)
+        {
+            return index;
+        }
+
+        return familyName.StartsWith("Noto Sans", StringComparison.OrdinalIgnoreCase)
+            ? PreferredUnicodeFamilies.Length
+            : string.Equals(familyName, "DejaVu Sans", StringComparison.OrdinalIgnoreCase)
+                ? PreferredUnicodeFamilies.Length + 1
+                : PreferredUnicodeFamilies.Length + 2;
+    }
+
+    public static bool IsSupported(string familyName)
+    {
+        return string.Equals(familyName, "DejaVu Sans", StringComparison.OrdinalIgnoreCase)
+            || (familyName.StartsWith("Noto Sans", StringComparison.OrdinalIgnoreCase)
+                && !familyName.Contains("Emoji", StringComparison.OrdinalIgnoreCase));
     }
 }
