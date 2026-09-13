@@ -454,17 +454,7 @@ public sealed class CanonicalVisitExportWriterTests
                 null,
                 Array.Empty<PassportProfileShareCountryResult>(),
                 Array.Empty<PassportProfileShareYearResult>(),
-                new[]
-                {
-                    new PassportProfileShareParkResult(
-                        "Selected Park",
-                        "FR",
-                        2,
-                        2026,
-                        2026,
-                        4,
-                        null),
-                },
+                Array.Empty<PassportProfileShareParkResult>(),
                 new[]
                 {
                     new PassportProfileShareRatingResult(
@@ -479,8 +469,20 @@ public sealed class CanonicalVisitExportWriterTests
                 "passport-profile-v1",
                 false),
             NowUtc.AddMinutes(1));
+        Dictionary<string, Park> parks = source.Parks.ToDictionary(
+            static pair => pair.Key,
+            static pair => pair.Value,
+            StringComparer.Ordinal);
+        parks["park-internal-selection"] = new Park
+        {
+            Id = "park-internal-selection",
+            Name = "Selected Park",
+            CountryCode = "FR",
+            Status = ParkStatus.Operating,
+        };
         return source with
         {
+            Parks = parks,
             ShareLifecycle = new PassportShareLifecycleExportData(
                 new[] { visitPublication, passportPublication },
                 new[] { invitation },

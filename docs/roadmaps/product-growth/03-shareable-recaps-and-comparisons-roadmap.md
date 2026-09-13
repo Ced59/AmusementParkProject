@@ -474,7 +474,10 @@ empreinte de contenu ou identifiant de signalement. Des références éphémère
 membre (`your...` / `otherMember...`) afin de rester compréhensibles sans révéler
 la structure technique créateur/accepteur. Les identifiants de parc et les clés de
 notes conservés dans une sélection ne quittent jamais MongoDB : l'export les remplace
-par les années, noms de parc et noms de notes effectivement affichés dans le snapshot.
+par les années et les libellés lisibles. Les parcs sont résolus depuis le catalogue
+privé déjà borné de l'export afin de rester présents même si la politique masque les
+statistiques géographiques du snapshot public ; une cible historique introuvable
+reçoit un libellé neutre et jamais son identifiant.
 Les lectures MongoDB réutilisent le
 budget de taille commun aux visites et passages ; un export trop volumineux échoue
 donc avant de saturer la mémoire du worker lourd. Un index participant est ajouté

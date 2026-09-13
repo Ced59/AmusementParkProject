@@ -213,7 +213,7 @@ La neutralisation des formules CSV reste appliquée aux cellules commençant par
 | jeton de publication/invitation/comparaison | non | aucune valeur de remplacement |
 | clé de scope source | non | type lisible, année ou référence de visite |
 | empreinte de contenu | non | jamais nécessaire à l'utilisateur |
-| identifiants et clés de sélection du passeport | non | années et libellés publics du snapshot |
+| identifiants et clés de sélection du passeport | non | années et libellés résolus depuis le catalogue privé borné de l'export |
 | identifiants de signalements | non | booléen `isModerationSuspended` seulement |
 | politique de partage | oui | précision de date et champs inclus |
 | versions consenties | oui | nombres de versions métier |
@@ -225,6 +225,12 @@ Un identifiant de visite contenu dans un scope n'est converti que s'il appartien
 au même propriétaire et correspond à une visite du fichier. Sinon, la référence
 reste nulle : la clé technique n'est jamais utilisée comme repli.
 
+Les parcs choisis restent exportés même lorsque la politique ne publie pas les
+statistiques géographiques et que le snapshot public omet donc volontairement sa
+liste de parcs. Le writer résout leurs identifiants depuis le catalogue privé déjà
+chargé et borné pour l'export. Une cible historique devenue introuvable produit le
+libellé neutre `Unavailable park`, jamais son identifiant persistant.
+
 ## Preuves automatisées
 
 - les sorties JSON et CSV contiennent les nouvelles sections et références ;
@@ -233,6 +239,8 @@ reste nulle : la clé technique n'est jamais utilisée comme repli.
 - l'orientation des résultats reste celle du membre exporteur ;
 - les légendes et sélections publiques figées sont présentes sans identifiant ni
   clé technique ;
+- une sélection de parc reste lisible lorsque les statistiques géographiques sont
+  exclues du snapshot public ;
 - le job partage une seule instance de budget entre visites, passages et partages ;
 - les filtres MongoDB couvrent propriétaire, créateur et accepteur, tandis que les
   snapshots sont résolus par leur préfixe de publication indexé ;

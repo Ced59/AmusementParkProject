@@ -52,7 +52,7 @@ internal static class PassportShareLifecycleExportWriter
         writer.WriteEndArray();
         PassportShareSnapshotExportWriter.WriteJson(
             writer,
-            request.ShareLifecycle,
+            request,
             references);
     }
 
@@ -70,7 +70,7 @@ internal static class PassportShareLifecycleExportWriter
             references);
         PassportShareSnapshotExportWriter.WriteCsvEntries(
             archive,
-            request.ShareLifecycle,
+            request,
             references);
     }
 
