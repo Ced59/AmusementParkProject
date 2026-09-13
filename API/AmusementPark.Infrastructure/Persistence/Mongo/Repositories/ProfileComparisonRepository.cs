@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Ports;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -43,6 +44,7 @@ public sealed class ProfileComparisonRepository : IProfileComparisonRepository
 
     public async Task<IReadOnlyCollection<ProfileComparison>> ListActiveByParticipantAsync(
         string userId,
+        ProfileComparisonListCursor? after,
         int limit,
         CancellationToken cancellationToken)
     {
@@ -57,8 +59,11 @@ public sealed class ProfileComparisonRepository : IProfileComparisonRepository
         }
 
         List<ProfileComparisonDocument> documents = await this.collection
-            .Find(ProfileComparisonMongoDefinitions.BuildActiveParticipantFilter(userId.Trim()))
+            .Find(ProfileComparisonMongoDefinitions.BuildActiveParticipantPageFilter(
+                userId.Trim(),
+                after))
             .SortByDescending(static document => document.CreatedAt)
+            .ThenByDescending(static document => document.Id)
             .Limit(limit)
             .ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToArray();

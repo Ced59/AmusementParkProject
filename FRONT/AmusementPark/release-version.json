@@ -1,6 +1,20 @@
 {
-  "version": "5.3.4",
+  "version": "5.3.5",
   "history": [
+    {
+      "version": "5.3.5",
+      "releasedAt": "2026-09-13",
+      "labels": {
+        "fr": "Les comparaisons de passeports restent fiables quand un partage évolue.",
+        "en": "Passport comparisons remain reliable when a shared passport changes.",
+        "de": "Passvergleiche bleiben zuverlässig, wenn sich ein geteilter Pass ändert.",
+        "nl": "Paspoortvergelijkingen blijven betrouwbaar wanneer een gedeeld paspoort verandert.",
+        "it": "I confronti tra passaporti restano affidabili quando un passaporto condiviso cambia.",
+        "es": "Las comparaciones de pasaportes siguen siendo fiables cuando cambia un pasaporte compartido.",
+        "pl": "Porównania paszportów pozostają wiarygodne, gdy udostępniony paszport się zmienia.",
+        "pt": "As comparações entre passaportes mantêm-se fiáveis quando um passaporte partilhado muda."
+      }
+    },
     {
       "version": "5.3.4",
       "releasedAt": "2026-09-13",

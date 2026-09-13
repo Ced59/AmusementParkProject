@@ -1043,6 +1043,7 @@
       "commonRatings": "gemeinsame Bewertungen",
       "correlation": {
         "pending": "{{current}} gemeinsame Bewertung(en) von {{minimum}} benötigten: Noch wird kein Gesamttrend angezeigt.",
+        "noVariance": "Der Schwellenwert ist erreicht, aber ein Pass verwendet durchgehend dieselbe Wertung. Daher lässt sich kein Bewertungstrend berechnen.",
         "aligned": "Bei euren gemeinsamen Bewertungen bewegen sich die Wertungen oft in dieselbe Richtung.",
         "contrasting": "Bei euren gemeinsamen Bewertungen bewegen sich die Wertungen oft in entgegengesetzte Richtungen.",
         "mixed": "Bei euren gemeinsamen Bewertungen zeigen die Verläufe differenzierte Vorlieben."

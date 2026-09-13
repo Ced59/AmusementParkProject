@@ -1043,6 +1043,7 @@
       "commonRatings": "gedeelde beoordelingen",
       "correlation": {
         "pending": "{{current}} gedeelde beoordeling(en) van de vereiste {{minimum}}: er wordt nog geen algemene trend getoond.",
+        "noVariance": "De drempel is bereikt, maar één pas gebruikt overal dezelfde beoordeling. Daardoor kan geen scoretrend worden berekend.",
         "aligned": "Bij jullie gedeelde beoordelingen bewegen de scores vaak in dezelfde richting.",
         "contrasting": "Bij jullie gedeelde beoordelingen bewegen de scores vaak in tegengestelde richtingen.",
         "mixed": "Bij jullie gedeelde beoordelingen laten de patronen genuanceerde smaken zien."

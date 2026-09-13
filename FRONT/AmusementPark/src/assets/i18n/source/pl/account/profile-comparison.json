@@ -19,6 +19,7 @@
       "commonRatings": "wspólne oceny",
       "correlation": {
         "pending": "{{current}} wspólna ocena / wspólne oceny z wymaganych {{minimum}}: ogólny trend nie jest jeszcze wyświetlany.",
+        "noVariance": "Próg został osiągnięty, ale w jednym paszporcie wszystkie oceny są takie same, więc nie można obliczyć trendu.",
         "aligned": "Wśród wspólnych ocen wasze noty często zmieniają się w tym samym kierunku.",
         "contrasting": "Wśród wspólnych ocen wasze noty często zmieniają się w przeciwnych kierunkach.",
         "mixed": "Wśród wspólnych ocen układ not pokazuje zróżnicowane gusta."

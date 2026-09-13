@@ -1043,6 +1043,7 @@
       "commonRatings": "valoraciones en común",
       "correlation": {
         "pending": "{{current}} valoración(es) en común de las {{minimum}} necesarias: todavía no se muestra una tendencia global.",
+        "noVariance": "Se ha alcanzado el mínimo, pero uno de los pasaportes usa siempre la misma nota, así que no se puede calcular una tendencia.",
         "aligned": "En las valoraciones comunes, vuestras puntuaciones suelen avanzar en la misma dirección.",
         "contrasting": "En las valoraciones comunes, vuestras puntuaciones suelen avanzar en direcciones opuestas.",
         "mixed": "En las valoraciones comunes, vuestros patrones revelan gustos matizados."

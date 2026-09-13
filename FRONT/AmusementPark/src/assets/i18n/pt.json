@@ -1043,6 +1043,7 @@
       "commonRatings": "avaliações em comum",
       "correlation": {
         "pending": "{{current}} avaliação/avaliações em comum das {{minimum}} necessárias: ainda não é apresentada uma tendência geral.",
+        "noVariance": "O limiar foi atingido, mas um dos passaportes usa sempre a mesma avaliação, por isso não é possível calcular uma tendência.",
         "aligned": "Nas avaliações em comum, as vossas notas seguem muitas vezes a mesma direção.",
         "contrasting": "Nas avaliações em comum, as vossas notas seguem muitas vezes direções opostas.",
         "mixed": "Nas avaliações em comum, os padrões revelam gostos com várias nuances."

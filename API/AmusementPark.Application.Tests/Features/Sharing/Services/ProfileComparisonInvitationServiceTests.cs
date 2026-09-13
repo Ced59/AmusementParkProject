@@ -37,7 +37,8 @@ public sealed class ProfileComparisonInvitationServiceTests
         ProfileComparisonInvitationService service = CreateService(
             invitations.Object,
             CreatePublicationRepository(creator).Object,
-            CreateSnapshotRepository(creatorSnapshot).Object);
+            CreateSnapshotRepository(creatorSnapshot).Object,
+            availablePublications: new[] { creator });
 
         ApplicationResult<ProfileComparisonInvitationCreationResult> result =
             await service.CreateAsync(CreatorId, Categories, CancellationToken.None);
@@ -56,7 +57,8 @@ public sealed class ProfileComparisonInvitationServiceTests
         ProfileComparisonInvitationService service = CreateService(
             Mock.Of<IProfileComparisonInvitationRepository>(MockBehavior.Strict),
             CreatePublicationRepository(creator).Object,
-            CreateSnapshotRepository(snapshot).Object);
+            CreateSnapshotRepository(snapshot).Object,
+            availablePublications: new[] { creator });
 
         ApplicationResult<ProfileComparisonInvitationCreationResult> result =
             await service.CreateAsync(CreatorId, Categories, CancellationToken.None);
@@ -72,7 +74,7 @@ public sealed class ProfileComparisonInvitationServiceTests
         SharePublication creator = CreatePublishedPassport(CreatorId, "creator-passport");
         ProfileComparisonInvitation invitation = CreateInvitation(creator);
         creator.RotateToken(
-            ShareToken.Parse("AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhA"),
+            ShareToken.Parse("AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhQ"),
             1,
             NowUtc.AddMinutes(1));
         Mock<IProfileComparisonInvitationRepository> invitations =
@@ -145,7 +147,8 @@ public sealed class ProfileComparisonInvitationServiceTests
             invitations.Object,
             publications.Object,
             snapshots.Object,
-            comparisons.Object);
+            comparisons.Object,
+            new[] { creator, invitee });
 
         ApplicationResult<ProfileComparisonInvitationAcceptanceResult> result =
             await service.AcceptAsync(InviteeId, Token, CancellationToken.None);
@@ -191,7 +194,8 @@ public sealed class ProfileComparisonInvitationServiceTests
         ProfileComparisonInvitationService service = CreateService(
             invitations.Object,
             publications.Object,
-            CreateSnapshotRepository(creatorSnapshot, inviteeSnapshot).Object);
+            CreateSnapshotRepository(creatorSnapshot, inviteeSnapshot).Object,
+            availablePublications: new[] { creator, invitee });
 
         ApplicationResult<ProfileComparisonInvitationAcceptanceResult> result =
             await service.AcceptAsync(InviteeId, Token, CancellationToken.None);
@@ -206,12 +210,16 @@ public sealed class ProfileComparisonInvitationServiceTests
         IProfileComparisonInvitationRepository invitations,
         ISharePublicationRepository publications,
         IPassportProfileShareSnapshotRepository snapshots,
-        IProfileComparisonRepository? comparisons = null)
+        IProfileComparisonRepository? comparisons = null,
+        IReadOnlyCollection<SharePublication>? availablePublications = null)
     {
         Mock<IShareTokenFactory> tokens = new Mock<IShareTokenFactory>(MockBehavior.Strict);
         tokens.Setup(value => value.Generate()).Returns(ShareToken.Parse(Token));
         ProfileComparisonPassportResolver resolver =
-            new ProfileComparisonPassportResolver(publications, snapshots);
+            new ProfileComparisonPassportResolver(
+                publications,
+                snapshots,
+                CreateAccessResolver(availablePublications ?? Array.Empty<SharePublication>()).Object);
         ProfileComparisonMaterializer materializer = new ProfileComparisonMaterializer(
             comparisons ?? Mock.Of<IProfileComparisonRepository>(MockBehavior.Strict),
             resolver,
@@ -265,6 +273,34 @@ public sealed class ProfileComparisonInvitationServiceTests
         return repository;
     }
 
+    private static Mock<ISharePublicationAccessResolver> CreateAccessResolver(
+        IEnumerable<SharePublication> publications)
+    {
+        Mock<ISharePublicationAccessResolver> resolver =
+            new Mock<ISharePublicationAccessResolver>(MockBehavior.Strict);
+        foreach (SharePublication publication in publications)
+        {
+            resolver.Setup(value => value.ResolveAsync(
+                    publication.ShareToken!.Value.Value,
+                    SharePublicationType.PassportProfile,
+                    CancellationToken.None))
+                .ReturnsAsync(ApplicationResult<ResolvedSharePublicationResult>.Success(
+                    new ResolvedSharePublicationResult(
+                        publication.OwnerUserId,
+                        null,
+                        publication.Type,
+                        publication.ContentPolicy,
+                        publication.PublishedAtUtc!.Value,
+                        publication.SourceScopeKey,
+                        publication.SourceVersion,
+                        publication.PublicationVersion,
+                        publication.Id.Value,
+                        publication.ContentFingerprint)));
+        }
+
+        return resolver;
+    }
+
     private static SharePublication CreatePublishedPassport(string userId, string id)
     {
         ShareContentPolicy policy = ShareContentPolicy.Create(
@@ -281,7 +317,9 @@ public sealed class ProfileComparisonInvitationServiceTests
             NowUtc,
             "fingerprint");
         publication.Publish(
-            ShareToken.Parse(Token),
+            ShareToken.Parse(userId == CreatorId
+                ? "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhA"
+                : "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhQ"),
             ShareVisibility.Unlisted,
             9,
             policy,

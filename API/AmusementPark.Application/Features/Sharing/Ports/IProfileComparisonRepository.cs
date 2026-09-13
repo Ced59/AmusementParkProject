@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Core.Domain.Sharing;
 
 namespace AmusementPark.Application.Features.Sharing.Ports;
@@ -14,6 +15,7 @@ public interface IProfileComparisonRepository
 
     Task<IReadOnlyCollection<ProfileComparison>> ListActiveByParticipantAsync(
         string userId,
+        ProfileComparisonListCursor? after,
         int limit,
         CancellationToken cancellationToken);
 

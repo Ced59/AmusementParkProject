@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using MongoDB.Driver;
@@ -8,8 +9,10 @@ internal static class ProfileComparisonMongoDefinitions
 {
     public const string ShareTokenUniqueIndexName = "idx_profile_comparison_share_token_unique";
     public const string InvitationUniqueIndexName = "idx_profile_comparison_invitation_unique";
-    public const string CreatorIndexName = "idx_profile_comparison_creator_status_created";
-    public const string AcceptorIndexName = "idx_profile_comparison_acceptor_status_created";
+    public const string LegacyCreatorIndexName = "idx_profile_comparison_creator_status_created";
+    public const string LegacyAcceptorIndexName = "idx_profile_comparison_acceptor_status_created";
+    public const string CreatorIndexName = "idx_profile_comparison_creator_status_created_id";
+    public const string AcceptorIndexName = "idx_profile_comparison_acceptor_status_created_id";
 
     public static FilterDefinition<ProfileComparisonDocument> BuildIdFilter(string id)
     {
@@ -38,6 +41,26 @@ internal static class ProfileComparisonMongoDefinitions
         return participant & Builders<ProfileComparisonDocument>.Filter.Eq(
             static document => document.Status,
             ProfileComparisonStatus.Active);
+    }
+
+    public static FilterDefinition<ProfileComparisonDocument> BuildActiveParticipantPageFilter(
+        string userId,
+        ProfileComparisonListCursor? after)
+    {
+        FilterDefinition<ProfileComparisonDocument> active =
+            BuildActiveParticipantFilter(userId);
+        if (after is null)
+        {
+            return active;
+        }
+
+        FilterDefinitionBuilder<ProfileComparisonDocument> filters =
+            Builders<ProfileComparisonDocument>.Filter;
+        FilterDefinition<ProfileComparisonDocument> beforeCursor =
+            filters.Lt(static document => document.CreatedAt, after.CreatedAtUtc)
+            | filters.Eq(static document => document.CreatedAt, after.CreatedAtUtc)
+                & filters.Lt(static document => document.Id, after.ComparisonId);
+        return active & beforeCursor;
     }
 
     public static FilterDefinition<ProfileComparisonDocument> BuildVersionFilter(
@@ -72,13 +95,15 @@ internal static class ProfileComparisonMongoDefinitions
             Builders<ProfileComparisonDocument>.IndexKeys
                 .Ascending(static document => document.CreatorUserId)
                 .Ascending(static document => document.Status)
-                .Descending(static document => document.CreatedAt),
+                .Descending(static document => document.CreatedAt)
+                .Descending(static document => document.Id),
             new CreateIndexOptions { Name = CreatorIndexName });
         CreateIndexModel<ProfileComparisonDocument> acceptor = new(
             Builders<ProfileComparisonDocument>.IndexKeys
                 .Ascending(static document => document.AcceptorUserId)
                 .Ascending(static document => document.Status)
-                .Descending(static document => document.CreatedAt),
+                .Descending(static document => document.CreatedAt)
+                .Descending(static document => document.Id),
             new CreateIndexOptions { Name = AcceptorIndexName });
         return new[] { shareToken, invitation, creator, acceptor };
     }

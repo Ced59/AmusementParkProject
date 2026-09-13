@@ -9,6 +9,8 @@ namespace AmusementPark.Application.Features.Sharing.Services;
 public sealed class ProfileComparisonReader
 {
     public const int ManagementListLimit = 25;
+    public const int ManagementScanLimit = 100;
+    private const int ManagementPageSize = 25;
     private readonly IProfileComparisonRepository comparisonRepository;
     private readonly ProfileComparisonPassportResolver passportResolver;
 
@@ -45,10 +47,21 @@ public sealed class ProfileComparisonReader
             return NotFound();
         }
 
+        ProfileComparison? currentComparison =
+            await this.comparisonRepository.GetByShareTokenAsync(
+                shareToken,
+                cancellationToken);
+        if (currentComparison?.IsActive != true
+            || currentComparison.Id != comparison.Id
+            || currentComparison.Version != comparison.Version)
+        {
+            return NotFound();
+        }
+
         return ApplicationResult<SharedProfileComparisonResult>.Success(
             new SharedProfileComparisonResult(
-                comparison.CreatedAtUtc,
-                comparison.Calculation));
+                currentComparison.CreatedAtUtc,
+                currentComparison.Calculation));
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<ProfileComparisonSummaryResult>>>
@@ -61,29 +74,53 @@ public sealed class ProfileComparisonReader
                 SharingApplicationErrors.ComparisonNotFound());
         }
 
-        IReadOnlyCollection<ProfileComparison> comparisons =
-            await this.comparisonRepository.ListActiveByParticipantAsync(
-                normalizedUserId,
-                ManagementListLimit,
-                cancellationToken);
         List<ProfileComparisonSummaryResult> results = new();
-        foreach (ProfileComparison comparison in comparisons)
+        int scannedCount = 0;
+        ProfileComparisonListCursor? after = null;
+        while (results.Count < ManagementListLimit
+            && scannedCount < ManagementScanLimit)
         {
-            if (!await this.PassportsRemainAvailableAsync(comparison, cancellationToken))
+            int remainingScanBudget = ManagementScanLimit - scannedCount;
+            int pageSize = Math.Min(ManagementPageSize, remainingScanBudget);
+            IReadOnlyCollection<ProfileComparison> comparisons =
+                await this.comparisonRepository.ListActiveByParticipantAsync(
+                    normalizedUserId,
+                    after,
+                    pageSize,
+                    cancellationToken);
+            foreach (ProfileComparison comparison in comparisons)
             {
-                continue;
+                scannedCount++;
+                if (!await this.PassportsRemainAvailableAsync(comparison, cancellationToken))
+                {
+                    continue;
+                }
+
+                results.Add(new ProfileComparisonSummaryResult(
+                    comparison.ShareToken.Value,
+                    string.Equals(
+                        comparison.CreatorUserId,
+                        normalizedUserId,
+                        StringComparison.Ordinal)
+                        ? comparison.Calculation.AcceptorDisplayName
+                        : comparison.Calculation.CreatorDisplayName,
+                    comparison.CreatedAtUtc,
+                    comparison.Calculation.Categories));
+                if (results.Count == ManagementListLimit)
+                {
+                    break;
+                }
             }
 
-            results.Add(new ProfileComparisonSummaryResult(
-                comparison.ShareToken.Value,
-                string.Equals(
-                    comparison.CreatorUserId,
-                    normalizedUserId,
-                    StringComparison.Ordinal)
-                    ? comparison.Calculation.AcceptorDisplayName
-                    : comparison.Calculation.CreatorDisplayName,
-                comparison.CreatedAtUtc,
-                comparison.Calculation.Categories));
+            if (comparisons.Count < pageSize || scannedCount >= ManagementScanLimit)
+            {
+                break;
+            }
+
+            ProfileComparison lastComparison = comparisons.Last();
+            after = new ProfileComparisonListCursor(
+                lastComparison.CreatedAtUtc,
+                lastComparison.Id.Value);
         }
 
         return ApplicationResult<IReadOnlyCollection<ProfileComparisonSummaryResult>>.Success(
