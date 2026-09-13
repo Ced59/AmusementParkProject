@@ -337,8 +337,9 @@ statuts publics d'expériences manquées, couverture et version de calcul.
 Il ne contient pas : identifiant membre, identifiant de publication, identifiant
 de comparaison interne, identifiant de parc ou d'attraction, adresse électronique,
 commentaire privé, date précise de visite ou texte privé. La réponse d'acceptation
-expose désormais le `shareId` opaque à la place de l'ancien `comparisonId`
-technique.
+expose désormais le `shareId` opaque. L'ancien champ `comparisonId` reste présent
+comme alias de compatibilité du même jeton public pour les clients déjà installés :
+il ne contient plus aucun identifiant technique interne.
 
 La page est rendue côté serveur mais reste non indexable. Elle utilise des entêtes
 `no-store` et `Referrer-Policy: no-referrer`, une URL canonique localisée et un fil

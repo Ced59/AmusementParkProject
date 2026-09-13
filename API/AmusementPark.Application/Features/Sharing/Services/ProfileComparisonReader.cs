@@ -66,8 +66,15 @@ public sealed class ProfileComparisonReader
                 normalizedUserId,
                 ManagementListLimit,
                 cancellationToken);
-        ProfileComparisonSummaryResult[] results = comparisons.Select(comparison =>
-            new ProfileComparisonSummaryResult(
+        List<ProfileComparisonSummaryResult> results = new();
+        foreach (ProfileComparison comparison in comparisons)
+        {
+            if (!await this.PassportsRemainAvailableAsync(comparison, cancellationToken))
+            {
+                continue;
+            }
+
+            results.Add(new ProfileComparisonSummaryResult(
                 comparison.ShareToken.Value,
                 string.Equals(
                     comparison.CreatorUserId,
@@ -76,7 +83,9 @@ public sealed class ProfileComparisonReader
                     ? comparison.Calculation.AcceptorDisplayName
                     : comparison.Calculation.CreatorDisplayName,
                 comparison.CreatedAtUtc,
-                comparison.Calculation.Categories)).ToArray();
+                comparison.Calculation.Categories));
+        }
+
         return ApplicationResult<IReadOnlyCollection<ProfileComparisonSummaryResult>>.Success(
             results);
     }
