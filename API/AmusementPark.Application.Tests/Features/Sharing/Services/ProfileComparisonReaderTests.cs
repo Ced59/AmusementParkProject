@@ -23,7 +23,7 @@ public sealed class ProfileComparisonReaderTests
             new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
         repository.Setup(value => value.ListActiveByParticipantAsync(
                 "creator-1",
-                0,
+                null,
                 ProfileComparisonReader.ManagementListLimit,
                 CancellationToken.None))
             .ReturnsAsync(new[] { comparison });
@@ -68,7 +68,7 @@ public sealed class ProfileComparisonReaderTests
             new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
         repository.Setup(value => value.ListActiveByParticipantAsync(
                 "creator-1",
-                0,
+                null,
                 ProfileComparisonReader.ManagementListLimit,
                 CancellationToken.None))
             .ReturnsAsync(new[] { comparison });
@@ -109,13 +109,16 @@ public sealed class ProfileComparisonReaderTests
             new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
         repository.Setup(value => value.ListActiveByParticipantAsync(
                 "creator-1",
-                0,
+                null,
                 ProfileComparisonReader.ManagementListLimit,
                 CancellationToken.None))
             .ReturnsAsync(Enumerable.Repeat(stale, 25).ToArray());
         repository.Setup(value => value.ListActiveByParticipantAsync(
                 "creator-1",
-                25,
+                It.Is<ProfileComparisonListCursor?>(cursor =>
+                    cursor != null
+                    && cursor.CreatedAtUtc == stale.CreatedAtUtc
+                    && cursor.ComparisonId == stale.Id.Value),
                 ProfileComparisonReader.ManagementListLimit,
                 CancellationToken.None))
             .ReturnsAsync(new[] { available });
@@ -155,6 +158,55 @@ public sealed class ProfileComparisonReaderTests
         repository.VerifyAll();
         publications.VerifyAll();
         snapshots.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ListForParticipantAsync_WhenAllCandidatesAreUnavailable_ShouldBoundWork()
+    {
+        ProfileComparison stale = CreateComparison(
+            "stale-creator-passport",
+            "stale-acceptor-passport",
+            "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHhg");
+        Mock<IProfileComparisonRepository> repository =
+            new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.ListActiveByParticipantAsync(
+                "creator-1",
+                It.IsAny<ProfileComparisonListCursor?>(),
+                ProfileComparisonReader.ManagementListLimit,
+                CancellationToken.None))
+            .ReturnsAsync(Enumerable.Repeat(stale, 25).ToArray());
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        publications.Setup(value => value.GetOwnedAsync(
+                stale.CreatorPassportPublicationId,
+                stale.CreatorUserId,
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null);
+        publications.Setup(value => value.GetOwnedAsync(
+                stale.AcceptorPassportPublicationId,
+                stale.AcceptorUserId,
+                CancellationToken.None))
+            .ReturnsAsync((SharePublication?)null);
+        ProfileComparisonReader reader = CreateReader(
+            repository.Object,
+            publications.Object,
+            Mock.Of<IPassportProfileShareSnapshotRepository>(MockBehavior.Strict));
+
+        ApplicationResult<IReadOnlyCollection<ProfileComparisonSummaryResult>> result =
+            await reader.ListForParticipantAsync("creator-1", CancellationToken.None);
+
+        Assert.Empty(result.Value!);
+        repository.Verify(value => value.ListActiveByParticipantAsync(
+            "creator-1",
+            It.IsAny<ProfileComparisonListCursor?>(),
+            ProfileComparisonReader.ManagementListLimit,
+            CancellationToken.None), Times.Exactly(4));
+        publications.Verify(value => value.GetOwnedAsync(
+            It.IsAny<SharePublicationId>(),
+            It.IsAny<string>(),
+            CancellationToken.None), Times.Exactly(ProfileComparisonReader.ManagementScanLimit * 2));
+        repository.VerifyAll();
+        publications.VerifyAll();
     }
 
     [Fact]

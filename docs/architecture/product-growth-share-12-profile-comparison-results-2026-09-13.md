@@ -331,9 +331,11 @@ Un tiers reçoit le même `404` qu'un jeton inconnu. Il ne peut donc pas utilise
 l'endpoint de révocation pour confirmer l'existence d'une comparaison.
 
 La même validation autoritative est appliquée à l'atelier authentifié. Sa lecture
-avance par pages de résultats MongoDB jusqu'à réunir au plus 25 comparaisons encore
-accessibles : des enregistrements récents devenus obsolètes ne masquent donc pas
-des comparaisons valides plus anciennes.
+avance avec un curseur stable `(CreatedAt, Id)` et réunit au plus 25 comparaisons
+encore accessibles. Un budget dur de 100 comparaisons inspectées borne les lectures
+de publication, de source, de compte et de snapshot sur le VPS ; dans cette fenêtre,
+des enregistrements récents devenus obsolètes ne masquent pas les comparaisons
+valides plus anciennes.
 
 ## 8. Contrats publics et confidentialité
 

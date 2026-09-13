@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
@@ -37,6 +38,23 @@ public sealed class ProfileComparisonMongoDefinitionsTests
 
         Assert.Equal("comparison-1", filter["_id"].AsString);
         Assert.Equal(2, filter["version"].AsInt64);
+    }
+
+    [Fact]
+    public void BuildActiveParticipantPageFilter_WithCursor_ShouldUseStableSortTuple()
+    {
+        DateTime createdAtUtc = new DateTime(2026, 9, 13, 12, 0, 0, DateTimeKind.Utc);
+
+        BsonDocument filter = Render(
+            ProfileComparisonMongoDefinitions.BuildActiveParticipantPageFilter(
+                "user-1",
+                new ProfileComparisonListCursor(createdAtUtc, "comparison-9")));
+        string json = filter.ToJson();
+
+        Assert.Contains("createdAt", json, StringComparison.Ordinal);
+        Assert.Contains("$lt", json, StringComparison.Ordinal);
+        Assert.Contains("comparison-9", json, StringComparison.Ordinal);
+        Assert.Contains("_id", json, StringComparison.Ordinal);
     }
 
     private static BsonDocument Render(FilterDefinition<ProfileComparisonDocument> filter)

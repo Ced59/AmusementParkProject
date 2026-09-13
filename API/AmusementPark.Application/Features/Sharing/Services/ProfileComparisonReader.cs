@@ -9,6 +9,7 @@ namespace AmusementPark.Application.Features.Sharing.Services;
 public sealed class ProfileComparisonReader
 {
     public const int ManagementListLimit = 25;
+    public const int ManagementScanLimit = 100;
     private const int ManagementPageSize = 25;
     private readonly IProfileComparisonRepository comparisonRepository;
     private readonly ProfileComparisonPassportResolver passportResolver;
@@ -74,17 +75,22 @@ public sealed class ProfileComparisonReader
         }
 
         List<ProfileComparisonSummaryResult> results = new();
-        int skip = 0;
-        while (results.Count < ManagementListLimit)
+        int scannedCount = 0;
+        ProfileComparisonListCursor? after = null;
+        while (results.Count < ManagementListLimit
+            && scannedCount < ManagementScanLimit)
         {
+            int remainingScanBudget = ManagementScanLimit - scannedCount;
+            int pageSize = Math.Min(ManagementPageSize, remainingScanBudget);
             IReadOnlyCollection<ProfileComparison> comparisons =
                 await this.comparisonRepository.ListActiveByParticipantAsync(
                     normalizedUserId,
-                    skip,
-                    ManagementPageSize,
+                    after,
+                    pageSize,
                     cancellationToken);
             foreach (ProfileComparison comparison in comparisons)
             {
+                scannedCount++;
                 if (!await this.PassportsRemainAvailableAsync(comparison, cancellationToken))
                 {
                     continue;
@@ -106,13 +112,15 @@ public sealed class ProfileComparisonReader
                 }
             }
 
-            if (comparisons.Count < ManagementPageSize
-                || skip > int.MaxValue - comparisons.Count)
+            if (comparisons.Count < pageSize || scannedCount >= ManagementScanLimit)
             {
                 break;
             }
 
-            skip += comparisons.Count;
+            ProfileComparison lastComparison = comparisons.Last();
+            after = new ProfileComparisonListCursor(
+                lastComparison.CreatedAtUtc,
+                lastComparison.Id.Value);
         }
 
         return ApplicationResult<IReadOnlyCollection<ProfileComparisonSummaryResult>>.Success(

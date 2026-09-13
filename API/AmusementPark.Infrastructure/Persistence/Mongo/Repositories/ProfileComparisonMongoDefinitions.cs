@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using MongoDB.Driver;
@@ -38,6 +39,26 @@ internal static class ProfileComparisonMongoDefinitions
         return participant & Builders<ProfileComparisonDocument>.Filter.Eq(
             static document => document.Status,
             ProfileComparisonStatus.Active);
+    }
+
+    public static FilterDefinition<ProfileComparisonDocument> BuildActiveParticipantPageFilter(
+        string userId,
+        ProfileComparisonListCursor? after)
+    {
+        FilterDefinition<ProfileComparisonDocument> active =
+            BuildActiveParticipantFilter(userId);
+        if (after is null)
+        {
+            return active;
+        }
+
+        FilterDefinitionBuilder<ProfileComparisonDocument> filters =
+            Builders<ProfileComparisonDocument>.Filter;
+        FilterDefinition<ProfileComparisonDocument> beforeCursor =
+            filters.Lt(static document => document.CreatedAt, after.CreatedAtUtc)
+            | filters.Eq(static document => document.CreatedAt, after.CreatedAtUtc)
+                & filters.Lt(static document => document.Id, after.ComparisonId);
+        return active & beforeCursor;
     }
 
     public static FilterDefinition<ProfileComparisonDocument> BuildVersionFilter(
