@@ -622,6 +622,14 @@ private readonly IMongoDatabase database;
         IMongoCollection<ProfileComparisonDocument> comparisonsCollection =
             this.database.GetCollection<ProfileComparisonDocument>(
                 this.settings.ProfileComparisonsCollectionName);
+        await this.DropIndexIfExistsAsync(
+            comparisonsCollection,
+            ProfileComparisonMongoDefinitions.LegacyCreatorIndexName,
+            cancellationToken);
+        await this.DropIndexIfExistsAsync(
+            comparisonsCollection,
+            ProfileComparisonMongoDefinitions.LegacyAcceptorIndexName,
+            cancellationToken);
         await comparisonsCollection.Indexes.CreateManyAsync(
             ProfileComparisonMongoDefinitions.BuildIndexes(),
             cancellationToken);

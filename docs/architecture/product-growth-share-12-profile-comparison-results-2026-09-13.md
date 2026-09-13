@@ -331,8 +331,10 @@ Un tiers reçoit le même `404` qu'un jeton inconnu. Il ne peut donc pas utilise
 l'endpoint de révocation pour confirmer l'existence d'une comparaison.
 
 La même validation autoritative est appliquée à l'atelier authentifié. Sa lecture
-avance avec un curseur stable `(CreatedAt, Id)` et réunit au plus 25 comparaisons
-encore accessibles. Un budget dur de 100 comparaisons inspectées borne les lectures
+avance avec un curseur stable `(CreatedAt, Id)`, couvert jusqu'à `_id` par les deux
+index participants, et réunit au plus 25 comparaisons encore accessibles. La
+migration idempotente de démarrage remplace les anciens index arrêtés à
+`createdAt`. Un budget dur de 100 comparaisons inspectées borne les lectures
 de publication, de source, de compte et de snapshot sur le VPS ; dans cette fenêtre,
 des enregistrements récents devenus obsolètes ne masquent pas les comparaisons
 valides plus anciennes.

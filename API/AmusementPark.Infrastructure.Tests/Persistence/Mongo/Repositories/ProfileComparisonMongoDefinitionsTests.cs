@@ -28,6 +28,32 @@ public sealed class ProfileComparisonMongoDefinitionsTests
             static index => index.Options.Name
                 == ProfileComparisonMongoDefinitions.InvitationUniqueIndexName);
         Assert.True(invitation.Options.Unique);
+        CreateIndexModel<ProfileComparisonDocument> creator = Assert.Single(
+            indexes,
+            static index => index.Options.Name
+                == ProfileComparisonMongoDefinitions.CreatorIndexName);
+        Assert.Equal(
+            new BsonDocument
+            {
+                { "creatorUserId", 1 },
+                { "status", 1 },
+                { "createdAt", -1 },
+                { "_id", -1 },
+            },
+            Render(creator.Keys));
+        CreateIndexModel<ProfileComparisonDocument> acceptor = Assert.Single(
+            indexes,
+            static index => index.Options.Name
+                == ProfileComparisonMongoDefinitions.AcceptorIndexName);
+        Assert.Equal(
+            new BsonDocument
+            {
+                { "acceptorUserId", 1 },
+                { "status", 1 },
+                { "createdAt", -1 },
+                { "_id", -1 },
+            },
+            Render(acceptor.Keys));
     }
 
     [Fact]

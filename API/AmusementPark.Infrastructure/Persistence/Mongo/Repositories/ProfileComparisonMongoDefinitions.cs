@@ -9,8 +9,10 @@ internal static class ProfileComparisonMongoDefinitions
 {
     public const string ShareTokenUniqueIndexName = "idx_profile_comparison_share_token_unique";
     public const string InvitationUniqueIndexName = "idx_profile_comparison_invitation_unique";
-    public const string CreatorIndexName = "idx_profile_comparison_creator_status_created";
-    public const string AcceptorIndexName = "idx_profile_comparison_acceptor_status_created";
+    public const string LegacyCreatorIndexName = "idx_profile_comparison_creator_status_created";
+    public const string LegacyAcceptorIndexName = "idx_profile_comparison_acceptor_status_created";
+    public const string CreatorIndexName = "idx_profile_comparison_creator_status_created_id";
+    public const string AcceptorIndexName = "idx_profile_comparison_acceptor_status_created_id";
 
     public static FilterDefinition<ProfileComparisonDocument> BuildIdFilter(string id)
     {
@@ -93,13 +95,15 @@ internal static class ProfileComparisonMongoDefinitions
             Builders<ProfileComparisonDocument>.IndexKeys
                 .Ascending(static document => document.CreatorUserId)
                 .Ascending(static document => document.Status)
-                .Descending(static document => document.CreatedAt),
+                .Descending(static document => document.CreatedAt)
+                .Descending(static document => document.Id),
             new CreateIndexOptions { Name = CreatorIndexName });
         CreateIndexModel<ProfileComparisonDocument> acceptor = new(
             Builders<ProfileComparisonDocument>.IndexKeys
                 .Ascending(static document => document.AcceptorUserId)
                 .Ascending(static document => document.Status)
-                .Descending(static document => document.CreatedAt),
+                .Descending(static document => document.CreatedAt)
+                .Descending(static document => document.Id),
             new CreateIndexOptions { Name = AcceptorIndexName });
         return new[] { shareToken, invitation, creator, acceptor };
     }
