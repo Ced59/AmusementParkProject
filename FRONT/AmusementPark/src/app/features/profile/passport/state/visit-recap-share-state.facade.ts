@@ -290,15 +290,20 @@ export class VisitRecapShareStateFacade {
     });
   }
 
-  revoke(visitId: string): void {
+  revoke(_visitId: string): void {
     if (this.savingSignal()) {
+      return;
+    }
+
+    const publicationId: string = this.settingsSignal()?.publicationId?.trim() ?? '';
+    if (publicationId.length === 0) {
       return;
     }
 
     const generation: number = ++this.mutationGeneration;
     this.savingSignal.set(true);
     this.errorSignal.set(false);
-    this.sharePort.revoke(visitId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.sharePort.revoke(publicationId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (settings: SharePublicationSettings): void => {
         if (generation !== this.mutationGeneration) {
           return;
@@ -319,6 +324,38 @@ export class VisitRecapShareStateFacade {
         this.savingSignal.set(false);
         this.errorSignal.set(true);
         this.toast('error', 'visitRecapShare.toast.revokeError');
+      }
+    });
+  }
+
+  rotate(): void {
+    const publicationId: string = this.settingsSignal()?.publicationId?.trim() ?? '';
+    if (this.savingSignal() || publicationId.length === 0) {
+      return;
+    }
+
+    const generation: number = ++this.mutationGeneration;
+    this.savingSignal.set(true);
+    this.errorSignal.set(false);
+    this.sharePort.rotate(publicationId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (settings: SharePublicationSettings): void => {
+        if (generation !== this.mutationGeneration) {
+          return;
+        }
+
+        this.settingsSignal.set(settings);
+        this.savingSignal.set(false);
+        this.toast('success', 'visitRecapShare.toast.rotated');
+      },
+      error: (error: unknown): void => {
+        if (generation !== this.mutationGeneration) {
+          return;
+        }
+
+        console.error('Error rotating visit recap link', error);
+        this.savingSignal.set(false);
+        this.errorSignal.set(true);
+        this.toast('error', 'visitRecapShare.toast.rotateError');
       }
     });
   }

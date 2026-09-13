@@ -20,10 +20,14 @@ describe('VisitRecapShareStateFacade', () => {
   let settings: SharePublicationSettings;
   let candidates: VisitRecapShareCandidates;
   let publishResponse: Observable<SharePublicationSettings>;
+  let rotatedPublicationIds: string[];
+  let revokedPublicationIds: string[];
 
   beforeEach(() => {
     previewRequests = [];
     publishRequests = [];
+    rotatedPublicationIds = [];
+    revokedPublicationIds = [];
     settings = { isPublic: false, includedFields: [] };
     candidates = {
       items: [{
@@ -57,7 +61,14 @@ describe('VisitRecapShareStateFacade', () => {
         publishRequests.push(request);
         return publishResponse;
       },
-      revoke: (_visitId: string): Observable<SharePublicationSettings> => of({ isPublic: false, includedFields: [] })
+      rotate: (publicationId: string): Observable<SharePublicationSettings> => {
+        rotatedPublicationIds.push(publicationId);
+        return of({ ...settings, shareId: 'rotated-share-id' });
+      },
+      revoke: (publicationId: string): Observable<SharePublicationSettings> => {
+        revokedPublicationIds.push(publicationId);
+        return of({ isPublic: false, publicationId, includedFields: [] });
+      }
     };
     TestBed.configureTestingModule({
       providers: [
@@ -191,6 +202,26 @@ describe('VisitRecapShareStateFacade', () => {
       publicCaption: 'A public memory only'
     });
     expect(facade.settings()?.shareId).toBe('opaque-share-id');
+  });
+
+  it('rotates and revokes the central publication identified by the loaded settings', () => {
+    settings = {
+      isPublic: true,
+      publicationId: 'publication-1',
+      shareId: 'current-share-id',
+      includedFields: []
+    };
+
+    facade.load('visit-1');
+    facade.rotate();
+
+    expect(rotatedPublicationIds).toEqual(['publication-1']);
+    expect(facade.settings()?.shareId).toBe('rotated-share-id');
+
+    facade.revoke('visit-1');
+
+    expect(revokedPublicationIds).toEqual(['publication-1']);
+    expect(facade.settings()?.isPublic).toBe(false);
   });
 });
 

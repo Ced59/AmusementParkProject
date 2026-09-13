@@ -8,7 +8,9 @@
       "loading": "Wczytywanie udostępnienia...",
       "open": "Zobacz publiczne podsumowanie",
       "edit": "Edytuj udostępnienie",
+      "rotate": "Zastąp link",
       "revoke": "Ustaw jako prywatne",
+      "cacheNote": "Stary link zostaje wyłączony natychmiast. Obraz skopiowany wcześniej przez serwis społecznościowy może jednak przez pewien czas pozostać widoczny poza witryną.",
       "start": "Utwórz podsumowanie do udostępnienia"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "Twoje publiczne podsumowanie roku jest gotowe.",
       "publishError": "Nie udało się opublikować podsumowania roku.",
       "revoked": "Publiczny link do tego podsumowania jest teraz wyłączony.",
-      "revokeError": "Nie udało się ustawić podsumowania jako prywatnego."
+      "revokeError": "Nie udało się ustawić podsumowania jako prywatnego.",
+      "rotated": "Nowy link zastąpił stary.",
+      "rotateError": "Nie udało się zastąpić linku."
     },
     "social": {
       "title": "Mój rok {{year}} w parkach",

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.1",
+  "version": "5.3.2",
   "history": [
+    {
+      "version": "5.3.2",
+      "releasedAt": "2026-09-13",
+      "labels": {
+        "fr": "Tu peux maintenant remplacer ou désactiver immédiatement les liens de tes partages.",
+        "en": "You can now replace or immediately disable your share links.",
+        "de": "Du kannst die Links deiner geteilten Inhalte jetzt ersetzen oder sofort deaktivieren.",
+        "nl": "Je kunt de links van je gedeelde verhalen nu vervangen of meteen uitschakelen.",
+        "it": "Ora puoi sostituire o disattivare subito i link delle tue condivisioni.",
+        "es": "Ahora puedes sustituir o desactivar de inmediato los enlaces de tus contenidos compartidos.",
+        "pl": "Możesz teraz zastąpić lub natychmiast wyłączyć linki do udostępnionych treści.",
+        "pt": "Agora podes substituir ou desativar imediatamente as ligações das tuas partilhas."
+      }
+    },
     {
       "version": "5.3.1",
       "releasedAt": "2026-09-13",

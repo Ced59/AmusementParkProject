@@ -25,9 +25,8 @@ public sealed class SharePublicationLifecycleHandlersTests
         Mock<ISharePublicationRepository> repository = new Mock<ISharePublicationRepository>(MockBehavior.Strict);
         ISharePublicationSourceDescriptor source = CreateSourceDescriptor(7);
         SetSharePublicationVisibilityCommandHandler handler = new SetSharePublicationVisibilityCommandHandler(
-            repository.Object,
             new[] { source },
-            new SharePublicationFixedTimeProvider(Now));
+            CreateLifecycleService(repository.Object, new[] { source }));
 
         ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
             new SetSharePublicationVisibilityCommand(
@@ -63,9 +62,8 @@ public sealed class SharePublicationLifecycleHandlersTests
                 CancellationToken.None))
             .ReturnsAsync(SharePublicationWriteOutcome.Success);
         SetSharePublicationVisibilityCommandHandler handler = new SetSharePublicationVisibilityCommandHandler(
-            repository.Object,
             new[] { CreateSourceDescriptor(7) },
-            new SharePublicationFixedTimeProvider(Now));
+            CreateLifecycleService(repository.Object, new[] { CreateSourceDescriptor(7) }));
 
         ApplicationResult<SharePublicationSettingsResult> result = await handler.HandleAsync(
             new SetSharePublicationVisibilityCommand(
@@ -172,6 +170,19 @@ public sealed class SharePublicationLifecycleHandlersTests
             null,
             Now.AddDays(-2),
             Now.AddDays(-1));
+    }
+
+    private static SharePublicationLifecycleService CreateLifecycleService(
+        ISharePublicationRepository repository,
+        IEnumerable<ISharePublicationSourceDescriptor> sources)
+    {
+        return new SharePublicationLifecycleService(
+            repository,
+            Mock.Of<IShareTokenFactory>(MockBehavior.Strict),
+            sources,
+            Array.Empty<ISharePublicationSnapshotWriter>(),
+            null,
+            new SharePublicationFixedTimeProvider(Now));
     }
 
     private static ShareContentPolicy CreatePolicy()

@@ -8,7 +8,9 @@
       "loading": "A carregar a partilha...",
       "open": "Ver o resumo público",
       "edit": "Editar a partilha",
+      "rotate": "Substituir a ligação",
       "revoke": "Tornar privado",
+      "cacheNote": "A ligação antiga é desativada imediatamente. Uma imagem já copiada por uma rede social pode continuar visível fora do site durante algum tempo.",
       "start": "Criar um resumo para partilhar"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "O teu resumo anual público está pronto.",
       "publishError": "Não foi possível publicar o resumo anual.",
       "revoked": "A ligação pública deste resumo está agora desativada.",
-      "revokeError": "Não foi possível tornar o resumo privado."
+      "revokeError": "Não foi possível tornar o resumo privado.",
+      "rotated": "Uma nova ligação substituiu a anterior.",
+      "rotateError": "Não foi possível substituir a ligação."
     },
     "social": {
       "title": "O meu ano {{year}} nos parques",

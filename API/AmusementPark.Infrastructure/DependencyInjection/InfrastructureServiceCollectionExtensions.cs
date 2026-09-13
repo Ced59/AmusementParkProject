@@ -326,7 +326,11 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddSingleton<ISharePublicationPreviewApprovalProtector,
             HmacSharePublicationPreviewApprovalProtector>();
         services.AddSingleton<IUserRankingSharePreviewRenderer, UserRankingSharePreviewRenderer>();
-        services.AddSingleton<IShareSocialImageRenderer, ShareSocialImageRenderer>();
+        services.AddSingleton<ShareSocialImageRenderer>();
+        services.AddSingleton<IShareSocialImageRenderer>(provider =>
+            provider.GetRequiredService<ShareSocialImageRenderer>());
+        services.AddSingleton<IShareSocialImageCacheInvalidator>(provider =>
+            provider.GetRequiredService<ShareSocialImageRenderer>());
         services.AddSingleton<IParkDataEditorTokenProtector, ParkDataEditorTokenProtector>();
         services.AddScoped<ITokenService, JwtTokenService>();
         services.AddScoped<ILocalAccountEmailService, LocalAccountEmailService>();

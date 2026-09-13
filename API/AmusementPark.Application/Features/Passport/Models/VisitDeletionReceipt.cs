@@ -6,4 +6,6 @@ public sealed record VisitDeletionReceipt(
     DateTime PurgeScheduledForUtc,
     long DeletionVersion,
     bool WasReplayed,
-    bool IsExportInvalidationEnsured = false);
+    bool IsExportInvalidationEnsured = false,
+    int? VisitYear = null,
+    bool IsShareCacheInvalidationEnsured = false);

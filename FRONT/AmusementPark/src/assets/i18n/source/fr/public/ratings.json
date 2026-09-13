@@ -188,9 +188,12 @@
         "error": "Le réglage de partage n’a pas pu être mis à jour. Réessaie dans un instant.",
         "publishedToast": "Ton classement est maintenant prêt à être partagé.",
         "privateToast": "Ton classement est de nouveau privé.",
+        "rotatedToast": "Un nouveau lien a remplacé l’ancien.",
+        "rotateError": "Le lien n’a pas pu être remplacé.",
         "open": "Voir la page partagée",
+        "rotate": "Remplacer le lien",
         "makePrivate": "Rendre privé",
-        "privacyNote": "Tu gardes le contrôle : rendre le classement privé désactive immédiatement son lien public.",
+        "privacyNote": "Tu gardes le contrôle : l’ancien lien est désactivé immédiatement. Une image déjà copiée par un réseau social peut rester visible quelque temps hors du site.",
         "publishing": "Publication...",
         "publish": "Rendre public"
       },

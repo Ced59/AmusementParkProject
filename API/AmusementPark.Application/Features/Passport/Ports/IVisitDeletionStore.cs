@@ -49,6 +49,13 @@ public interface IVisitDeletionStore
         DateTime ensuredAtUtc,
         CancellationToken cancellationToken);
 
+    Task<bool> MarkShareCacheInvalidationEnsuredAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        DateTime ensuredAtUtc,
+        CancellationToken cancellationToken);
+
     Task<VisitDeletionPurgeResult> PurgeBatchAsync(
         VisitId visitId,
         string userId,

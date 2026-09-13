@@ -8,7 +8,9 @@
       "loading": "Chargement du partage...",
       "open": "Voir le récapitulatif",
       "edit": "Modifier le partage",
+      "rotate": "Remplacer le lien",
       "revoke": "Rendre privé",
+      "cacheNote": "L’ancien lien est désactivé immédiatement. Une image déjà copiée par un réseau social peut toutefois rester visible quelque temps hors du site.",
       "start": "Créer le récapitulatif"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "Le récapitulatif public de la visite est prêt.",
       "publishError": "Le récapitulatif n’a pas pu être publié.",
       "revoked": "Le lien public de cette visite est désormais désactivé.",
-      "revokeError": "Le partage n’a pas pu être rendu privé."
+      "revokeError": "Le partage n’a pas pu être rendu privé.",
+      "rotated": "Un nouveau lien a remplacé l’ancien.",
+      "rotateError": "Le lien n’a pas pu être remplacé."
     },
     "social": {
       "title": "Un souvenir de parc à partager",

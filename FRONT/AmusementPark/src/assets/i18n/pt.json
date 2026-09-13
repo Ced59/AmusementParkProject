@@ -869,6 +869,7 @@
     "noPark": "Sem parque associado",
     "caption": "A tua mensagem pública",
     "allowComparisons": "Permitir convites para comparar este passaporte com outro passaporte público",
+    "cacheNote": "A ligação antiga é desativada imediatamente. Uma imagem já copiada por uma rede social pode continuar visível fora do site durante algum tempo.",
     "steps": {
       "scopeTitle": "Delimita a tua história",
       "scopeDescription": "Seleciona os anos e os parques que podem aparecer.",
@@ -897,6 +898,7 @@
       "open": "Ver a página pública",
       "preview": "Ver exatamente o que será público",
       "publish": "Publicar esta seleção",
+      "rotate": "Substituir a ligação",
       "revoke": "Desativar a ligação pública"
     },
     "preview": {
@@ -912,7 +914,9 @@
       "published": "O teu passaporte público está atualizado.",
       "publishError": "A publicação não foi concluída. Cria novamente a pré-visualização e tenta outra vez.",
       "revoked": "A ligação pública está desativada.",
-      "revokeError": "Não foi possível desativar a ligação."
+      "revokeError": "Não foi possível desativar a ligação.",
+      "rotated": "Uma nova ligação substituiu a anterior.",
+      "rotateError": "Não foi possível substituir a ligação."
     },
     "public": {
       "anonymous": "Apaixonado por parques",
@@ -1016,7 +1020,9 @@
       "loading": "A carregar opções de partilha...",
       "open": "Ver o resumo",
       "edit": "Editar a partilha",
+      "rotate": "Substituir a ligação",
       "revoke": "Tornar privado",
+      "cacheNote": "A ligação antiga é desativada imediatamente. Uma imagem já copiada por uma rede social pode continuar visível fora do site durante algum tempo.",
       "start": "Criar o resumo"
     },
     "editor": {
@@ -1070,7 +1076,9 @@
       "published": "O resumo público da visita está pronto.",
       "publishError": "Não foi possível publicar o resumo.",
       "revoked": "A ligação pública desta visita está agora desativada.",
-      "revokeError": "Não foi possível tornar a partilha privada."
+      "revokeError": "Não foi possível tornar a partilha privada.",
+      "rotated": "Uma nova ligação substituiu a anterior.",
+      "rotateError": "Não foi possível substituir a ligação."
     },
     "social": {
       "title": "Uma memória do parque para partilhar",
@@ -1111,7 +1119,9 @@
       "loading": "A carregar a partilha...",
       "open": "Ver o resumo público",
       "edit": "Editar a partilha",
+      "rotate": "Substituir a ligação",
       "revoke": "Tornar privado",
+      "cacheNote": "A ligação antiga é desativada imediatamente. Uma imagem já copiada por uma rede social pode continuar visível fora do site durante algum tempo.",
       "start": "Criar um resumo para partilhar"
     },
     "editor": {
@@ -1165,7 +1175,9 @@
       "published": "O teu resumo anual público está pronto.",
       "publishError": "Não foi possível publicar o resumo anual.",
       "revoked": "A ligação pública deste resumo está agora desativada.",
-      "revokeError": "Não foi possível tornar o resumo privado."
+      "revokeError": "Não foi possível tornar o resumo privado.",
+      "rotated": "Uma nova ligação substituiu a anterior.",
+      "rotateError": "Não foi possível substituir a ligação."
     },
     "social": {
       "title": "O meu ano {{year}} nos parques",
@@ -6149,9 +6161,12 @@
         "error": "Não foi possível atualizar a partilha. Tenta novamente dentro de instantes.",
         "publishedToast": "A tua classificação está pronta para ser partilhada.",
         "privateToast": "A tua classificação voltou a ser privada.",
+        "rotatedToast": "Uma nova ligação substituiu a anterior.",
+        "rotateError": "Não foi possível substituir a ligação.",
         "open": "Ver a página partilhada",
+        "rotate": "Substituir a ligação",
         "makePrivate": "Tornar privada",
-        "privacyNote": "Manténs o controlo: ao tornar a classificação privada, o link público é desativado de imediato.",
+        "privacyNote": "Manténs o controlo: a ligação antiga é desativada imediatamente. Uma imagem já copiada por uma rede social pode continuar visível fora do site durante algum tempo.",
         "publishing": "A publicar...",
         "publish": "Tornar pública"
       },

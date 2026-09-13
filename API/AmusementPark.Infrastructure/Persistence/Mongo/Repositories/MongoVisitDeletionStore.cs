@@ -29,6 +29,9 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
         UserVisitMongoDefinitions.ExportInvalidationClaimTokenPath;
     internal const string ExportInvalidationClaimExpiresAtUtcPath =
         UserVisitMongoDefinitions.ExportInvalidationClaimExpiresAtUtcPath;
+    internal const string VisitYearPath = "date.year";
+    internal const string ShareCacheInvalidationEnsuredAtUtcPath =
+        "shareCacheInvalidationEnsuredAtUtc";
     private readonly IMongoCollection<UserVisitDocument> visits;
     private readonly IMongoCollection<BsonDocument> rawVisits;
     private readonly IMongoCollection<UserRideOccurrenceDocument> occurrences;
@@ -105,7 +108,9 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             document[PurgeScheduledForUtcPath].ToUniversalTime(),
             document["version"].AsInt64,
             true,
-            HasTimestamp(document, ExportInvalidationEnsuredAtUtcPath));
+            HasTimestamp(document, ExportInvalidationEnsuredAtUtcPath),
+            ReadVisitYear(document),
+            HasTimestamp(document, ShareCacheInvalidationEnsuredAtUtcPath));
     }
 
     public async Task<bool> TryTombstoneAsync(
@@ -182,7 +187,9 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
                 document[DeletedAtUtcPath].ToUniversalTime(),
                 document[PurgeScheduledForUtcPath].ToUniversalTime(),
                 HasTimestamp(document, ExportInvalidationEnsuredAtUtcPath),
-                HasTimestamp(document, PurgeJobEnsuredAtUtcPath)))
+                HasTimestamp(document, PurgeJobEnsuredAtUtcPath),
+                ReadVisitYear(document),
+                HasTimestamp(document, ShareCacheInvalidationEnsuredAtUtcPath)))
             .ToArray();
     }
 
@@ -300,6 +307,22 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             userId,
             deletionVersion,
             PurgeJobEnsuredAtUtcPath,
+            ensuredAtUtc,
+            cancellationToken);
+    }
+
+    public Task<bool> MarkShareCacheInvalidationEnsuredAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        DateTime ensuredAtUtc,
+        CancellationToken cancellationToken)
+    {
+        return this.MarkDeletionSideEffectEnsuredAsync(
+            visitId,
+            userId,
+            deletionVersion,
+            ShareCacheInvalidationEnsuredAtUtcPath,
             ensuredAtUtc,
             cancellationToken);
     }
@@ -688,6 +711,8 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             .Include(DeletedAtUtcPath)
             .Include(PurgeScheduledForUtcPath)
             .Include(ExportInvalidationEnsuredAtUtcPath)
+            .Include(VisitYearPath)
+            .Include(ShareCacheInvalidationEnsuredAtUtcPath)
             .Include("version");
     }
 
@@ -701,6 +726,7 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             & filters.Gt("version", 0)
             & filters.Or(
                 BuildMissingTimestampFilter(filters, ExportInvalidationEnsuredAtUtcPath),
+                BuildMissingTimestampFilter(filters, ShareCacheInvalidationEnsuredAtUtcPath),
                 BuildMissingTimestampFilter(filters, PurgeJobEnsuredAtUtcPath),
                 filters.Lte(PurgeScheduledForUtcPath, nowUtc));
     }
@@ -715,6 +741,8 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             .Include(DeletedAtUtcPath)
             .Include(PurgeScheduledForUtcPath)
             .Include(ExportInvalidationEnsuredAtUtcPath)
+            .Include(VisitYearPath)
+            .Include(ShareCacheInvalidationEnsuredAtUtcPath)
             .Include(PurgeJobEnsuredAtUtcPath);
     }
 
@@ -776,6 +804,18 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
     {
         return document.TryGetValue(path, out BsonValue? value)
             && value.IsBsonDateTime;
+    }
+
+    internal static int? ReadVisitYear(BsonDocument document)
+    {
+        return document.TryGetValue("date", out BsonValue? dateValue)
+            && dateValue.IsBsonDocument
+            && dateValue.AsBsonDocument.TryGetValue("year", out BsonValue? value)
+            && value.IsInt32
+            && value.AsInt32 >= DateOnly.MinValue.Year
+            && value.AsInt32 <= DateOnly.MaxValue.Year
+                ? value.AsInt32
+                : null;
     }
 
     private static void ValidateUtc(DateTime value, string parameterName)

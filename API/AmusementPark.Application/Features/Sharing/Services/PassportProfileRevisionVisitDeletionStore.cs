@@ -154,6 +154,21 @@ public sealed class PassportProfileRevisionVisitDeletionStore : IVisitDeletionSt
             cancellationToken);
     }
 
+    public Task<bool> MarkShareCacheInvalidationEnsuredAsync(
+        VisitId visitId,
+        string userId,
+        long deletionVersion,
+        DateTime ensuredAtUtc,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.MarkShareCacheInvalidationEnsuredAsync(
+            visitId,
+            userId,
+            deletionVersion,
+            ensuredAtUtc,
+            cancellationToken);
+    }
+
     public Task<VisitDeletionPurgeResult> PurgeBatchAsync(
         VisitId visitId,
         string userId,

@@ -174,9 +174,12 @@
         "error": "Não foi possível atualizar a partilha. Tenta novamente dentro de instantes.",
         "publishedToast": "A tua classificação está pronta para ser partilhada.",
         "privateToast": "A tua classificação voltou a ser privada.",
+        "rotatedToast": "Uma nova ligação substituiu a anterior.",
+        "rotateError": "Não foi possível substituir a ligação.",
         "open": "Ver a página partilhada",
+        "rotate": "Substituir a ligação",
         "makePrivate": "Tornar privada",
-        "privacyNote": "Manténs o controlo: ao tornar a classificação privada, o link público é desativado de imediato.",
+        "privacyNote": "Manténs o controlo: a ligação antiga é desativada imediatamente. Uma imagem já copiada por uma rede social pode continuar visível fora do site durante algum tempo.",
         "publishing": "A publicar...",
         "publish": "Tornar pública"
       },

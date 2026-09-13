@@ -8,7 +8,9 @@
       "loading": "Freigabe wird geladen...",
       "open": "Rückblick ansehen",
       "edit": "Freigabe bearbeiten",
+      "rotate": "Link ersetzen",
       "revoke": "Privat machen",
+      "cacheNote": "Der alte Link wird sofort deaktiviert. Ein bereits von einem sozialen Netzwerk kopiertes Bild kann außerhalb der Website noch eine Weile sichtbar bleiben.",
       "start": "Rückblick erstellen"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "Der öffentliche Besuchsrückblick ist bereit.",
       "publishError": "Der Rückblick konnte nicht veröffentlicht werden.",
       "revoked": "Der öffentliche Link dieses Besuchs ist nun deaktiviert.",
-      "revokeError": "Die Freigabe konnte nicht privat gemacht werden."
+      "revokeError": "Die Freigabe konnte nicht privat gemacht werden.",
+      "rotated": "Ein neuer Link hat den alten ersetzt.",
+      "rotateError": "Der Link konnte nicht ersetzt werden."
     },
     "social": {
       "title": "Eine Parkerinnerung zum Teilen",

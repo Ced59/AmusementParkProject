@@ -9,4 +9,6 @@ public sealed record SharePublicationSettingsResult(
     int? PolicySchemaVersion,
     ShareDatePrecision? DatePrecision,
     IReadOnlyCollection<ShareContentField> IncludedFields,
-    ShareVisibility? Visibility = null);
+    ShareVisibility? Visibility = null,
+    string? PublicationId = null,
+    long? PublicationVersion = null);

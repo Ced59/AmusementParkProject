@@ -315,11 +315,17 @@ describe('ProfileRatingsPanelComponent', () => {
     const actionButtons: NodeListOf<HTMLButtonElement> = fixture.nativeElement.querySelectorAll(
       '.ranking-share__actions button',
     );
-    const revokeButton: HTMLButtonElement = actionButtons[1];
+    const rotateButton: HTMLButtonElement = actionButtons[1];
+    rotateButton.click();
+    fixture.detectChanges();
+    expect(sharePort.rotatedPublicationIds).toEqual(['publication-1']);
+
+    const revokeButton: HTMLButtonElement = actionButtons[actionButtons.length - 1];
     revokeButton.click();
     fixture.detectChanges();
 
-    expect(sharePort.visibilityCalls).toEqual([false]);
+    expect(sharePort.revokedPublicationIds).toEqual(['publication-1']);
+    expect(sharePort.visibilityCalls).toEqual([]);
     expect(fixture.nativeElement.querySelector('app-public-share-panel')).toBeNull();
   });
 

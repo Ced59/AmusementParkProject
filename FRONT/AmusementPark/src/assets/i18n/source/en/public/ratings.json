@@ -188,9 +188,12 @@
         "error": "The sharing setting could not be updated. Please try again shortly.",
         "publishedToast": "Your ranking is now ready to share.",
         "privateToast": "Your ranking is private again.",
+        "rotatedToast": "A new link has replaced the old one.",
+        "rotateError": "The link could not be replaced.",
         "open": "View shared page",
+        "rotate": "Replace link",
         "makePrivate": "Make private",
-        "privacyNote": "You stay in control: making the ranking private immediately disables its public link.",
+        "privacyNote": "You stay in control: the old link is disabled immediately. An image already copied by a social network may remain visible outside the site for a while.",
         "publishing": "Publishing...",
         "publish": "Make public"
       },

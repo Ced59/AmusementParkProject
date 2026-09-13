@@ -354,6 +354,38 @@ dimensions, les métadonnées Open Graph/Twitter, les versions obsolètes et
 l'absence des champs masqués. `SHARE-10` peut maintenant centraliser la rotation
 des liens et l'invalidation explicite des caches dérivés.
 
+### État de `SHARE-10` au 13 septembre 2026
+
+La révocation et la rotation des liens sont centralisées en version 5.3.2 pour
+les classements personnels, récapitulatifs de visite, bilans annuels et
+passeports publics. Le propriétaire peut désactiver un partage ou remplacer son
+lien depuis chaque atelier. L'ancien jeton opaque cesse immédiatement d'être
+résolu par l'autorité `SharePublication`, sans dépendre d'une purge de cache.
+
+Une rotation ne reconstruit pas le récit depuis les données privées : le snapshot
+public exact déjà approuvé est cloné sous la nouvelle version avant le remplacement
+atomique du jeton. Si la source a changé ou si ce snapshot manque, la rotation est
+refusée et impose un nouvel aperçu. Les anciens points d'entrée de révocation
+restent compatibles côté HTTP, mais délèguent au même service de cycle de vie ; le
+frontend utilise désormais exclusivement les commandes centrales par identifiant
+de publication.
+
+Avant la transition autoritative, un job idempotent est persisté dans la file MongoDB
+existante avec la version de publication attendue. Le worker attend cette version,
+évince ensuite les images sociales et invalide les routes SSR des huit langues pour
+l'ancien et le nouveau lien. Une convergence non confirmée, y compris pendant la
+relecture MongoDB, survit aux redémarrages et est rejouée par une chaîne de
+continuations durables sans limite temporelle. Le même job nettoie les anciens
+snapshots après une rotation réussie, sans pouvoir changer en échec la rotation déjà
+enregistrée. La suppression d'une visite porte
+le même marqueur de convergence et reprend son année canonique afin de ne jamais
+oublier le bilan annuel lors d'un rejeu. Les interfaces expliquent honnêtement qu'une copie déjà téléchargée
+par un réseau social externe peut subsister hors du site, tout en garantissant que
+les pages et images servies par Amusement Parks ne résolvent plus l'ancien jeton.
+Les groupes d'actions et notes explicatives restent contenus et passent en colonne
+sur les petits écrans. `SHARE-11` peut maintenant construire les invitations de
+comparaison sur des liens publics dont le cycle de vie est sûr et unifié.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :

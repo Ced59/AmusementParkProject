@@ -187,6 +187,82 @@ public sealed class SharePublicationsControllerTests
     }
 
     [Fact]
+    public async Task RotateLinkAsync_ShouldUseTheAuthenticatedOwnerAndReturnTheNewOpaqueLink()
+    {
+        SharePublicationSettingsResult settings = new SharePublicationSettingsResult(
+            true,
+            "new-opaque-share-id",
+            new DateTime(2026, 9, 13, 8, 0, 0, DateTimeKind.Utc),
+            1,
+            ShareDatePrecision.Hidden,
+            Array.Empty<ShareContentField>(),
+            ShareVisibility.Unlisted,
+            "publication-1",
+            2);
+        Mock<ICommandHandler<RotateShareIdCommand, ApplicationResult<SharePublicationSettingsResult>>> rotateHandler =
+            new Mock<ICommandHandler<RotateShareIdCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict);
+        rotateHandler.Setup(value => value.HandleAsync(
+                It.Is<RotateShareIdCommand>(command =>
+                    command.UserId == "owner-1"
+                    && command.PublicationId == "publication-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<SharePublicationSettingsResult>.Success(settings));
+        SharePublicationsController controller = CreateController(
+            Mock.Of<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>>(MockBehavior.Strict),
+            rotateHandler: rotateHandler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.RotateLinkAsync(
+            "publication-1",
+            CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        SharePublicationSettingsDto response = Assert.IsType<SharePublicationSettingsDto>(ok.Value);
+        Assert.Equal("new-opaque-share-id", response.ShareId);
+        Assert.Equal("publication-1", response.PublicationId);
+        Assert.Equal(2, response.PublicationVersion);
+        rotateHandler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RevokeAsync_ShouldUseTheAuthenticatedOwnerAndReturnAPrivatePublication()
+    {
+        SharePublicationSettingsResult settings = new SharePublicationSettingsResult(
+            false,
+            null,
+            null,
+            1,
+            ShareDatePrecision.Hidden,
+            Array.Empty<ShareContentField>(),
+            ShareVisibility.Private,
+            "publication-1",
+            2);
+        Mock<ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>> revokeHandler =
+            new Mock<ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict);
+        revokeHandler.Setup(value => value.HandleAsync(
+                It.Is<RevokeSharePublicationCommand>(command =>
+                    command.UserId == "owner-1"
+                    && command.PublicationId == "publication-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<SharePublicationSettingsResult>.Success(settings));
+        SharePublicationsController controller = CreateController(
+            Mock.Of<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>>(MockBehavior.Strict),
+            revokeHandler: revokeHandler.Object);
+        controller.ControllerContext = CreateControllerContext("owner-1");
+
+        IActionResult result = await controller.RevokeAsync(
+            "publication-1",
+            CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        SharePublicationSettingsDto response = Assert.IsType<SharePublicationSettingsDto>(ok.Value);
+        Assert.False(response.IsPublic);
+        Assert.Null(response.ShareId);
+        Assert.Equal("publication-1", response.PublicationId);
+        revokeHandler.VerifyAll();
+    }
+
+    [Fact]
     public void PreviewEndpoint_ShouldRequireAnActivatedAccountDisableCachingAndApplyTargetedRateLimit()
     {
         MethodInfo action = typeof(SharePublicationsController).GetMethod(
@@ -250,11 +326,15 @@ public sealed class SharePublicationsControllerTests
     private static SharePublicationsController CreateController(
         IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>> handler,
         bool enabled = true,
-        ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>? publishHandler = null)
+        ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>? publishHandler = null,
+        ICommandHandler<RotateShareIdCommand, ApplicationResult<SharePublicationSettingsResult>>? rotateHandler = null,
+        ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>? revokeHandler = null)
     {
         return new SharePublicationsController(
             handler,
             publishHandler ?? Mock.Of<ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict),
+            rotateHandler ?? Mock.Of<ICommandHandler<RotateShareIdCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict),
+            revokeHandler ?? Mock.Of<ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict),
             Options.Create(new SharePublicationRolloutSettings { Enabled = enabled }));
     }
 }

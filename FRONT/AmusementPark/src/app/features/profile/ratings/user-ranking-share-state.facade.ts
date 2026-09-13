@@ -208,9 +208,17 @@ export class UserRankingShareStateFacade {
       return;
     }
 
+    const publicationId: string = this.settingsSignal()?.publicationId?.trim() ?? '';
+    if (!isPublic && publicationId.length === 0) {
+      return;
+    }
+
     this.savingSignal.set(true);
     this.errorSignal.set(false);
-    this.sharePort.setMyShareVisibility(isPublic).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    const mutation = isPublic
+      ? this.sharePort.setMyShareVisibility(true)
+      : this.sharePort.revoke(publicationId);
+    mutation.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (settings: UserRankingShareSettings): void => {
         this.settingsSignal.set(settings);
         this.savingSignal.set(false);
@@ -230,6 +238,37 @@ export class UserRankingShareStateFacade {
           'error',
           this.translateService.instant('common.error'),
           this.translateService.instant('ratings.share.manage.error')
+        );
+      }
+    });
+  }
+
+  rotate(): void {
+    const publicationId: string = this.settingsSignal()?.publicationId?.trim() ?? '';
+    if (this.savingSignal() || publicationId.length === 0) {
+      return;
+    }
+
+    this.savingSignal.set(true);
+    this.errorSignal.set(false);
+    this.sharePort.rotate(publicationId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (settings: SharePublicationSettings): void => {
+        this.settingsSignal.set(settings);
+        this.savingSignal.set(false);
+        this.toastMessageService.add(
+          'success',
+          this.translateService.instant('common.success'),
+          this.translateService.instant('ratings.share.manage.rotatedToast')
+        );
+      },
+      error: (error: unknown): void => {
+        console.error('Error rotating user ranking share link', error);
+        this.savingSignal.set(false);
+        this.errorSignal.set(true);
+        this.toastMessageService.add(
+          'error',
+          this.translateService.instant('common.error'),
+          this.translateService.instant('ratings.share.manage.rotateError')
         );
       }
     });

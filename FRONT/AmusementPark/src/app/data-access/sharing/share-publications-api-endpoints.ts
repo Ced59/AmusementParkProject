@@ -1,6 +1,10 @@
 export const SHARE_PUBLICATIONS_API_ENDPOINTS = {
   preview: 'me/shares/preview',
   publish: 'me/shares/publish',
+  rotate: (publicationId: string): string =>
+    `me/shares/${encodeURIComponent(publicationId)}/rotate-link`,
+  revoke: (publicationId: string): string =>
+    `me/shares/${encodeURIComponent(publicationId)}`,
   visitSettings: (visitId: string): string => `me/passport/visits/${encodeURIComponent(visitId)}/share`,
   visitCandidates: (visitId: string, includeMissedItems: boolean): string =>
     `me/passport/visits/${encodeURIComponent(visitId)}/share/candidates?includeMissedItems=${includeMissedItems}`,

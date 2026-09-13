@@ -148,6 +148,10 @@ public static class ApplicationServiceCollectionExtensions
             provider.GetRequiredService<PassportProfileSharePreviewBuilder>());
         services.AddScoped<ISharePublicationSnapshotWriter, PassportProfileShareSnapshotWriter>();
         services.AddScoped<SharePublicationPublisher>();
+        services.AddScoped<SharePublicationLifecycleService>();
+        services.AddScoped<SharePublicationCacheInvalidationScheduler>();
+        services.AddScoped<SharePublicationSourceCacheInvalidator>();
+        services.AddDurableBackgroundJobHandler<SharePublicationCacheInvalidationJobHandler>();
         services.AddScoped<IPassportProfileShareSourceRevisionGuard,
             PassportProfileShareSourceRevisionGuard>();
         services.AddScoped<IPersonalRankingShareSourceRevisionGuard, PersonalRankingShareSourceRevisionGuard>();

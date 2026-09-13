@@ -15,7 +15,8 @@ export interface YearRecapSharePort {
   getSelection(year: number): Observable<YearRecapShareSelection>;
   preview(request: SharePublicationPreviewRequest): Observable<SharePublicationPreview>;
   publish(request: SharePublicationPublishRequest): Observable<SharePublicationSettings>;
-  revoke(year: number): Observable<SharePublicationSettings>;
+  rotate(publicationId: string): Observable<SharePublicationSettings>;
+  revoke(publicationId: string): Observable<SharePublicationSettings>;
 }
 
 export const YEAR_RECAP_SHARE_PORT = new InjectionToken<YearRecapSharePort>('YEAR_RECAP_SHARE_PORT', {
@@ -27,7 +28,8 @@ export const YEAR_RECAP_SHARE_PORT = new InjectionToken<YearRecapSharePort>('YEA
       getSelection: (year: number): Observable<YearRecapShareSelection> => apiService.getYearSelection(year),
       preview: (request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> => apiService.preview(request),
       publish: (request: SharePublicationPublishRequest): Observable<SharePublicationSettings> => apiService.publish(request),
-      revoke: (year: number): Observable<SharePublicationSettings> => apiService.revokeYear(year)
+      rotate: (publicationId: string): Observable<SharePublicationSettings> => apiService.rotate(publicationId),
+      revoke: (publicationId: string): Observable<SharePublicationSettings> => apiService.revoke(publicationId)
     };
   }
 });

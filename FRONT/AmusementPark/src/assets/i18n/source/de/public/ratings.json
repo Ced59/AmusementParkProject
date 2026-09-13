@@ -174,9 +174,12 @@
         "error": "Die Freigabe konnte nicht geändert werden. Versuche es gleich noch einmal.",
         "publishedToast": "Deine Rangliste kann jetzt geteilt werden.",
         "privateToast": "Deine Rangliste ist wieder privat.",
+        "rotatedToast": "Ein neuer Link hat den alten ersetzt.",
+        "rotateError": "Der Link konnte nicht ersetzt werden.",
         "open": "Geteilte Seite ansehen",
+        "rotate": "Link ersetzen",
         "makePrivate": "Privat machen",
-        "privacyNote": "Du behältst die Kontrolle: Wenn du die Rangliste privat machst, wird der öffentliche Link sofort deaktiviert.",
+        "privacyNote": "Du behältst die Kontrolle: Der alte Link wird sofort deaktiviert. Ein bereits von einem sozialen Netzwerk kopiertes Bild kann außerhalb der Website noch eine Weile sichtbar bleiben.",
         "publishing": "Wird veröffentlicht...",
         "publish": "Öffentlich machen"
       },

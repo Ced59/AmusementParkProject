@@ -8,7 +8,9 @@
       "loading": "Loading sharing settings...",
       "open": "View public recap",
       "edit": "Edit sharing",
+      "rotate": "Replace link",
       "revoke": "Make private",
+      "cacheNote": "The old link is disabled immediately. An image already copied by a social network may still remain visible outside the site for a while.",
       "start": "Create a recap to share"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "Your public annual recap is ready.",
       "publishError": "The annual recap could not be published.",
       "revoked": "The public link to this recap is now disabled.",
-      "revokeError": "The recap could not be made private."
+      "revokeError": "The recap could not be made private.",
+      "rotated": "A new link has replaced the old one.",
+      "rotateError": "The link could not be replaced."
     },
     "social": {
       "title": "My {{year}} park year",

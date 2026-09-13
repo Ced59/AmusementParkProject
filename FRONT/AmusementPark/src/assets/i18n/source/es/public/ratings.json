@@ -174,9 +174,12 @@
         "error": "No se ha podido actualizar la configuración. Vuelve a intentarlo en un momento.",
         "publishedToast": "Tu clasificación ya está lista para compartir.",
         "privateToast": "Tu clasificación vuelve a ser privada.",
+        "rotatedToast": "Un nuevo enlace ha sustituido al anterior.",
+        "rotateError": "No se pudo sustituir el enlace.",
         "open": "Ver la página compartida",
+        "rotate": "Sustituir el enlace",
         "makePrivate": "Hacer privada",
-        "privacyNote": "Tú mantienes el control: al hacerla privada, su enlace público se desactiva de inmediato.",
+        "privacyNote": "Tú mantienes el control: el enlace anterior se desactiva de inmediato. Una imagen ya copiada por una red social puede seguir visible fuera del sitio durante un tiempo.",
         "publishing": "Publicando...",
         "publish": "Hacer pública"
       },

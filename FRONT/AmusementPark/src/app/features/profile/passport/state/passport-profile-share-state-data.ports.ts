@@ -15,7 +15,8 @@ export interface PassportProfileSharePort {
   getSelection(): Observable<PassportProfileShareSelection>;
   preview(request: SharePublicationPreviewRequest): Observable<SharePublicationPreview>;
   publish(request: SharePublicationPublishRequest): Observable<SharePublicationSettings>;
-  revoke(): Observable<SharePublicationSettings>;
+  rotate(publicationId: string): Observable<SharePublicationSettings>;
+  revoke(publicationId: string): Observable<SharePublicationSettings>;
 }
 
 export const PASSPORT_PROFILE_SHARE_PORT = new InjectionToken<PassportProfileSharePort>(
@@ -29,7 +30,8 @@ export const PASSPORT_PROFILE_SHARE_PORT = new InjectionToken<PassportProfileSha
         getSelection: (): Observable<PassportProfileShareSelection> => apiService.getPassportProfileSelection(),
         preview: (request: SharePublicationPreviewRequest): Observable<SharePublicationPreview> => apiService.preview(request),
         publish: (request: SharePublicationPublishRequest): Observable<SharePublicationSettings> => apiService.publish(request),
-        revoke: (): Observable<SharePublicationSettings> => apiService.revokePassportProfile()
+        rotate: (publicationId: string): Observable<SharePublicationSettings> => apiService.rotate(publicationId),
+        revoke: (publicationId: string): Observable<SharePublicationSettings> => apiService.revoke(publicationId)
       };
     }
   }

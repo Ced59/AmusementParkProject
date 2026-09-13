@@ -11,21 +11,17 @@ namespace AmusementPark.Application.Features.Sharing.Handlers;
 public sealed class SetSharePublicationVisibilityCommandHandler
     : ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>
 {
-    private const int MaximumWriteAttempts = 5;
-
-    private readonly ISharePublicationRepository repository;
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSourceDescriptor> sources;
-    private readonly TimeProvider timeProvider;
+    private readonly SharePublicationLifecycleService lifecycleService;
 
     public SetSharePublicationVisibilityCommandHandler(
-        ISharePublicationRepository repository,
         IEnumerable<ISharePublicationSourceDescriptor> sources,
-        TimeProvider? timeProvider = null)
+        SharePublicationLifecycleService lifecycleService)
     {
-        this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         ArgumentNullException.ThrowIfNull(sources);
         this.sources = sources.ToDictionary(static source => source.PublicationType);
-        this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.lifecycleService = lifecycleService
+            ?? throw new ArgumentNullException(nameof(lifecycleService));
     }
 
     public async Task<ApplicationResult<SharePublicationSettingsResult>> HandleAsync(
@@ -61,54 +57,10 @@ public sealed class SetSharePublicationVisibilityCommandHandler
                 SharingApplicationErrors.PreviewApprovalRequired());
         }
 
-        return await this.RevokeAsync(
+        return await this.lifecycleService.RevokeBySourceAsync(
             ownerUserId,
             command.PublicationType,
             scopeResult.Value,
             cancellationToken);
-    }
-
-    private async Task<ApplicationResult<SharePublicationSettingsResult>> RevokeAsync(
-        string ownerUserId,
-        SharePublicationType publicationType,
-        string sourceScopeKey,
-        CancellationToken cancellationToken)
-    {
-        for (int attempt = 0; attempt < MaximumWriteAttempts; attempt++)
-        {
-            SharePublication? publication = await this.repository.GetOwnedBySourceAsync(
-                ownerUserId,
-                publicationType,
-                sourceScopeKey,
-                cancellationToken);
-            if (publication is null
-                || publication.Status is SharePublicationStatus.Draft or SharePublicationStatus.Revoked)
-            {
-                return Success(null);
-            }
-
-            long expectedVersion = publication.Version;
-            publication.Revoke(
-                publication.PublicationVersion,
-                this.timeProvider.GetUtcNow().UtcDateTime);
-            SharePublicationWriteOutcome outcome = await this.repository.ReplaceAsync(
-                publication,
-                expectedVersion,
-                cancellationToken);
-            if (outcome == SharePublicationWriteOutcome.Success)
-            {
-                return Success(publication);
-            }
-        }
-
-        return ApplicationResult<SharePublicationSettingsResult>.Failure(
-            SharingApplicationErrors.PublicationChangedConcurrently());
-    }
-
-    private static ApplicationResult<SharePublicationSettingsResult> Success(
-        SharePublication? publication)
-    {
-        return ApplicationResult<SharePublicationSettingsResult>.Success(
-            SharePublicationSettingsMapper.ToResult(publication));
     }
 }

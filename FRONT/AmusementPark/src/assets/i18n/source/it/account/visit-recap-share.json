@@ -8,7 +8,9 @@
       "loading": "Caricamento della condivisione...",
       "open": "Vedi il riepilogo",
       "edit": "Modifica la condivisione",
+      "rotate": "Sostituisci il link",
       "revoke": "Rendi privato",
+      "cacheNote": "Il vecchio link viene disattivato subito. Un’immagine già copiata da un social network può però restare visibile fuori dal sito per un po’ di tempo.",
       "start": "Crea il riepilogo"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "Il riepilogo pubblico della visita è pronto.",
       "publishError": "Impossibile pubblicare il riepilogo.",
       "revoked": "Il link pubblico di questa visita è ora disattivato.",
-      "revokeError": "Impossibile rendere privata la condivisione."
+      "revokeError": "Impossibile rendere privata la condivisione.",
+      "rotated": "Un nuovo link ha sostituito quello precedente.",
+      "rotateError": "Impossibile sostituire il link."
     },
     "social": {
       "title": "Un ricordo del parco da condividere",

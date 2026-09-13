@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Passport.Commands;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Handlers;
@@ -21,6 +22,7 @@ public sealed class DeleteVisitCommandHandler
     private readonly VisitPurgeScheduler purgeScheduler;
     private readonly IPassportAuditPublisher auditPublisher;
     private readonly IPassportClock clock;
+    private readonly SharePublicationSourceCacheInvalidator? shareCacheInvalidator;
 
     public DeleteVisitCommandHandler(
         IUserVisitRepository visitRepository,
@@ -31,7 +33,8 @@ public sealed class DeleteVisitCommandHandler
         IRideOccurrenceRepository occurrenceRepository,
         VisitPurgeScheduler purgeScheduler,
         IPassportAuditPublisher auditPublisher,
-        IPassportClock clock)
+        IPassportClock clock,
+        SharePublicationSourceCacheInvalidator? shareCacheInvalidator = null)
     {
         this.visitRepository = visitRepository;
         this.deletionStore = deletionStore;
@@ -42,6 +45,7 @@ public sealed class DeleteVisitCommandHandler
         this.purgeScheduler = purgeScheduler;
         this.auditPublisher = auditPublisher;
         this.clock = clock;
+        this.shareCacheInvalidator = shareCacheInvalidator;
     }
 
     public async Task<ApplicationResult<VisitDeletionReceipt>> HandleAsync(
@@ -76,6 +80,8 @@ public sealed class DeleteVisitCommandHandler
                 replay.DeletionVersion,
                 replay.PurgeScheduledForUtc,
                 replay.IsExportInvalidationEnsured,
+                replay.VisitYear,
+                replay.IsShareCacheInvalidationEnsured,
                 cancellationToken);
             return ApplicationResult<VisitDeletionReceipt>.Success(
                 replay with { WasReplayed = true });
@@ -193,6 +199,8 @@ public sealed class DeleteVisitCommandHandler
                     concurrentReplay.DeletionVersion,
                     concurrentReplay.PurgeScheduledForUtc,
                     concurrentReplay.IsExportInvalidationEnsured,
+                    concurrentReplay.VisitYear ?? visit.Date.Year,
+                    concurrentReplay.IsShareCacheInvalidationEnsured,
                     cancellationToken);
                 return ApplicationResult<VisitDeletionReceipt>.Success(
                     concurrentReplay with { WasReplayed = true });
@@ -211,6 +219,8 @@ public sealed class DeleteVisitCommandHandler
             visit.Version + 1,
             purgeScheduledForUtc,
             false,
+            visit.Date.Year,
+            false,
             cancellationToken);
 
         await PassportAuditDelivery.PublishAsync(
@@ -224,7 +234,9 @@ public sealed class DeleteVisitCommandHandler
                 purgeScheduledForUtc,
                 visit.Version + 1,
                 false,
-                true));
+                true,
+                visit.Date.Year,
+                this.shareCacheInvalidator is not null));
     }
 
     private async Task EnsureDeletionSideEffectsAsync(
@@ -233,6 +245,8 @@ public sealed class DeleteVisitCommandHandler
         long deletionVersion,
         DateTime purgeScheduledForUtc,
         bool isExportInvalidationEnsured,
+        int? visitYear,
+        bool isShareCacheInvalidationEnsured,
         CancellationToken cancellationToken)
     {
         if (!isExportInvalidationEnsured)
@@ -263,6 +277,21 @@ public sealed class DeleteVisitCommandHandler
                     this.clock.UtcNow,
                     cancellationToken);
             }
+        }
+
+        if (!isShareCacheInvalidationEnsured && this.shareCacheInvalidator is not null)
+        {
+            await this.shareCacheInvalidator.InvalidateVisitDeletionAsync(
+                userId,
+                visitId.Value,
+                visitYear,
+                cancellationToken);
+            _ = await this.deletionStore.MarkShareCacheInvalidationEnsuredAsync(
+                visitId,
+                userId,
+                deletionVersion,
+                this.clock.UtcNow,
+                cancellationToken);
         }
 
         await this.purgeScheduler.ScheduleAsync(

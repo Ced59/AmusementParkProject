@@ -8,7 +8,9 @@
       "loading": "Cargando el uso compartido...",
       "open": "Ver el resumen público",
       "edit": "Editar el uso compartido",
+      "rotate": "Sustituir el enlace",
       "revoke": "Hacer privado",
+      "cacheNote": "El enlace anterior se desactiva de inmediato. Una imagen ya copiada por una red social puede seguir visible fuera del sitio durante un tiempo.",
       "start": "Crear un resumen para compartir"
     },
     "editor": {
@@ -62,7 +64,9 @@
       "published": "Tu resumen anual público está listo.",
       "publishError": "No se pudo publicar el resumen anual.",
       "revoked": "El enlace público de este resumen está desactivado.",
-      "revokeError": "No se pudo hacer privado el resumen."
+      "revokeError": "No se pudo hacer privado el resumen.",
+      "rotated": "Un nuevo enlace ha sustituido al anterior.",
+      "rotateError": "No se pudo sustituir el enlace."
     },
     "social": {
       "title": "Mi año {{year}} en los parques",

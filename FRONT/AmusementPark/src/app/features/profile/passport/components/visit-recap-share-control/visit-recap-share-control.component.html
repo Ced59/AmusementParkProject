@@ -170,6 +170,7 @@
     <div class="visit-share__actions">
       <a appUiButton="primary" [routerLink]="path"><i class="pi pi-external-link" aria-hidden="true"></i>{{ 'visitRecapShare.manage.open' | translate }}</a>
       <button appUiButton="ghost" type="button" (click)="openEditor()"><i class="pi pi-sliders-h" aria-hidden="true"></i>{{ 'visitRecapShare.manage.edit' | translate }}</button>
+      <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="rotate()"><i class="pi pi-refresh" aria-hidden="true"></i>{{ 'visitRecapShare.manage.rotate' | translate }}</button>
       <button appUiButton="ghost" type="button" [disabled]="saving()" (click)="revoke()"><i class="pi pi-lock" aria-hidden="true"></i>{{ 'visitRecapShare.manage.revoke' | translate }}</button>
     </div>
     <app-public-share-panel
@@ -181,6 +182,7 @@
       descriptionKey="visitRecapShare.social.description"
       textKey="visitRecapShare.social.text">
     </app-public-share-panel>
+    <p class="visit-share__cache-note"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ 'visitRecapShare.manage.cacheNote' | translate }}</p>
   } @else {
     <button appUiButton="primary" type="button" (click)="openEditor()">
       <i class="pi pi-wand" aria-hidden="true"></i>

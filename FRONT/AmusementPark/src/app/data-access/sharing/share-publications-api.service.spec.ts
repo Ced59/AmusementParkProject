@@ -70,7 +70,7 @@ describe('SharePublicationsApiService', () => {
     });
   });
 
-  it('loads and revokes the share settings for one owned visit', () => {
+  it('loads the share settings for one owned visit', () => {
     service.getVisitSettings('visit/with spaces').subscribe();
 
     const readRequest = httpTestingController.expectOne(
@@ -79,13 +79,23 @@ describe('SharePublicationsApiService', () => {
     expect(readRequest.request.method).toBe('GET');
     readRequest.flush({ isPublic: false, includedFields: [] });
 
-    service.revokeVisit('visit/with spaces').subscribe();
+  });
 
+  it('rotates and revokes every publication through the central lifecycle', () => {
+    service.rotate('publication/with spaces').subscribe();
+    const rotateRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}me/shares/publication%2Fwith%20spaces/rotate-link`
+    );
+    expect(rotateRequest.request.method).toBe('POST');
+    expect(rotateRequest.request.body).toEqual({});
+    rotateRequest.flush({ isPublic: true, shareId: 'new-token', includedFields: [] });
+
+    service.revoke('publication/with spaces').subscribe();
     const revokeRequest = httpTestingController.expectOne(
-      `${environment.apiBaseUrl}me/passport/visits/visit%2Fwith%20spaces/share`
+      `${environment.apiBaseUrl}me/shares/publication%2Fwith%20spaces`
     );
     expect(revokeRequest.request.method).toBe('DELETE');
-    revokeRequest.flush({ isPublic: false, includedFields: [] });
+    revokeRequest.flush({ isPublic: false, shareId: null, includedFields: [] });
   });
 
   it('loads a bounded candidate list before previewing a visit recap', () => {
@@ -119,7 +129,7 @@ describe('SharePublicationsApiService', () => {
     });
   });
 
-  it('loads, revokes and publicly resolves the selected passport profile', () => {
+  it('loads and publicly resolves the selected passport profile', () => {
     service.getPassportProfileSelection().subscribe();
     const selection = httpTestingController.expectOne(`${environment.apiBaseUrl}me/passport/share/selection`);
     expect(selection.request.method).toBe('GET');
@@ -129,11 +139,6 @@ describe('SharePublicationsApiService', () => {
     const settings = httpTestingController.expectOne(`${environment.apiBaseUrl}me/passport/share`);
     expect(settings.request.method).toBe('GET');
     settings.flush({ isPublic: false, includedFields: [] });
-
-    service.revokePassportProfile().subscribe();
-    const revoke = httpTestingController.expectOne(`${environment.apiBaseUrl}me/passport/share`);
-    expect(revoke.request.method).toBe('DELETE');
-    revoke.flush({ isPublic: false, includedFields: [] });
 
     service.getSharedPassportProfile('opaque/token').subscribe();
     const publicProfile = httpTestingController.expectOne(

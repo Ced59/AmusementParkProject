@@ -113,6 +113,10 @@ export class VisitRecapShareControlComponent implements OnChanges {
     this.facade.revoke(this.visitId);
   }
 
+  protected rotate(): void {
+    this.facade.rotate();
+  }
+
   protected closeEditor(): void {
     this.facade.closeEditor();
   }

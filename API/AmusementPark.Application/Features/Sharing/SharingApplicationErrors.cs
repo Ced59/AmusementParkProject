@@ -153,6 +153,13 @@ public static class SharingApplicationErrors
             "Ce partage est introuvable ou n’est plus public.");
     }
 
+    public static ApplicationError PublicationNotRotatable()
+    {
+        return ApplicationError.RuleViolation(
+            "share-publication.rotation-unavailable",
+            "Seul un lien public actif peut être remplacé.");
+    }
+
     public static ApplicationError InvalidSocialImageLanguage()
     {
         return ApplicationError.Validation(

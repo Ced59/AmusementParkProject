@@ -40,6 +40,20 @@ export class SharePublicationsApiService {
     return this.http.post<SharePublicationSettings>(url, request, this.jsonHttpOptions);
   }
 
+  rotate(publicationId: string): Observable<SharePublicationSettings> {
+    const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.rotate(publicationId);
+    return this.http.post<SharePublicationSettings>(
+      `${environment.apiBaseUrl}${endpoint}`,
+      {},
+      this.jsonHttpOptions
+    );
+  }
+
+  revoke(publicationId: string): Observable<SharePublicationSettings> {
+    const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.revoke(publicationId);
+    return this.http.delete<SharePublicationSettings>(`${environment.apiBaseUrl}${endpoint}`);
+  }
+
   getVisitSettings(visitId: string): Observable<SharePublicationSettings> {
     const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.visitSettings(visitId);
     return this.http.get<SharePublicationSettings>(`${environment.apiBaseUrl}${endpoint}`);
@@ -54,11 +68,6 @@ export class SharePublicationsApiService {
       includeMissedItems
     );
     return this.http.get<VisitRecapShareCandidates>(`${environment.apiBaseUrl}${endpoint}`);
-  }
-
-  revokeVisit(visitId: string): Observable<SharePublicationSettings> {
-    const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.visitSettings(visitId);
-    return this.http.delete<SharePublicationSettings>(`${environment.apiBaseUrl}${endpoint}`);
   }
 
   getSharedVisit(shareId: string): Observable<SharedVisitRecap> {
@@ -76,11 +85,6 @@ export class SharePublicationsApiService {
     return this.http.get<YearRecapShareSelection>(`${environment.apiBaseUrl}${endpoint}`);
   }
 
-  revokeYear(year: number): Observable<SharePublicationSettings> {
-    const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.yearSettings(year);
-    return this.http.delete<SharePublicationSettings>(`${environment.apiBaseUrl}${endpoint}`);
-  }
-
   getSharedYear(shareId: string): Observable<SharedYearRecap> {
     const endpoint: string = SHARE_PUBLICATIONS_API_ENDPOINTS.sharedYear(shareId);
     return this.http.get<SharedYearRecap>(`${environment.apiBaseUrl}${endpoint}`);
@@ -95,12 +99,6 @@ export class SharePublicationsApiService {
   getPassportProfileSelection(): Observable<PassportProfileShareSelection> {
     return this.http.get<PassportProfileShareSelection>(
       `${environment.apiBaseUrl}${SHARE_PUBLICATIONS_API_ENDPOINTS.passportProfileSelection}`
-    );
-  }
-
-  revokePassportProfile(): Observable<SharePublicationSettings> {
-    return this.http.delete<SharePublicationSettings>(
-      `${environment.apiBaseUrl}${SHARE_PUBLICATIONS_API_ENDPOINTS.passportProfileSettings}`
     );
   }
 
