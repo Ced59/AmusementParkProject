@@ -130,7 +130,7 @@ sequenceDiagram
   UI->>API: décision Suspend + note facultative
   API->>S: Review(command, adminId)
   S->>R: recharge Pending avec version
-  S->>J: enregistre la décision avant toute mutation
+  S->>J: enregistre la décision (rapport + version) avant toute mutation
   S->>E: première tentative synchrone
   E->>T: SuspendByModeration(reportId, now)
   T-->>E: IsResolvable = false + reportId actif
@@ -152,7 +152,10 @@ pas lever une suspension plus récente. Le jeton, le snapshot et
 `PublicationVersion` sont conservés : le contenu revient à l'identique sans créer
 un second système de partage. Une révocation demandée par le propriétaire conserve
 également ces blocages ; il ne peut pas contourner la modération en révoquant puis
-en recréant immédiatement le même partage. MongoDB fonctionne en instance simple
+en recréant immédiatement le même partage. Si la révocation ou le remplacement a
+lieu avant l'exécution du signalement, l'exécuteur retrouve la publication active
+de la même source et lui transmet le blocage. Un remplacement encore en brouillon
+ne peut pas être publié avant son rétablissement explicite. MongoDB fonctionne en instance simple
 en production ; la tâche durable, créée avant toute mutation, assure la
 compensation et la convergence sans supposer des transactions multi-documents
 indisponibles.
@@ -172,7 +175,11 @@ après l'écriture du rapport, le worker retrouve l'état déjà appliqué et in
 preuve d'achèvement manquante. Lorsqu'une même décision est soumise deux fois, le
 scheduler restitue le payload réellement persisté par la première demande : auteur,
 note et horodatage ne peuvent donc pas diverger entre le rapport et l'audit du
-worker.
+worker. La clé durable réunit le signalement et sa version métier, sans inclure la
+décision : deux décisions opposées soumises sur la même version ne créent jamais
+deux jobs concurrents. La première reste canonique et la seconde reçoit un conflit
+explicite. Le rétablissement utilise la version suivante et reste donc un nouveau
+jalon autorisé du cycle de vie.
 Chaque rejeu programme aussi l'invalidation du cache public, y compris lorsque la
 cible porte déjà la décision attendue : une coupure entre l'écriture MongoDB et la
 création de cette invalidation ne peut donc pas laisser durablement une ancienne
@@ -243,6 +250,11 @@ Le composant public est replié par défaut. La page admin utilise des cartes qu
 s'adaptent à 320 px, des champs à largeur bornée, du retour à la ligne pour les
 textes et des actions empilées sur les écrans étroits. Le module admin reste chargé
 en lazy loading et n'alourdit pas le bundle public initial.
+Après l'acquittement d'une décision durable, la façade relit immédiatement la file,
+puis utilise un backoff léger jusqu'à ce que `Pending` ou `PublicationSuspended`
+ait réellement changé. L'action devenue obsolète reste verrouillée pendant cette
+convergence et le suivi s'arrête au changement de filtre ou à la destruction de la
+page.
 Dans l'espace propriétaire, une publication suspendue reste identifiée comme une
 publication existante : un encart explique que seul son accès public est coupé,
 masque les actions inapplicables et conserve la révocation. Le propriétaire ne peut
@@ -261,6 +273,8 @@ nouvelle publication qui serait refusée par la règle de modération.
   comparaisons ;
 - payload d'audit canonique lors d'une décision dupliquée et preuve durable d'un
   classement sans suite déjà appliqué ;
+- sérialisation des décisions opposées par version du rapport, transfert du blocage
+  vers un remplacement publié ou en brouillon et refus de publication du brouillon ;
 - reprogrammation de l'invalidation après une panne intermédiaire et audit
   d'achèvement idempotent par le worker ;
 - acquittement auditable d'une décision durable et refus explicite de republier
@@ -268,5 +282,6 @@ nouvelle publication qui serait refusée par la règle de modération.
 - aller-retour Mongo, index de file et absence de jeton dans les rapports ;
 - rejet d'une pagination dont le décalage dépasserait la limite MongoDB ;
 - mappings HTTP sans références internes ;
-- façades Angular, prévention des doubles envois et contrats responsive ;
+- façades Angular, suivi différé des trois décisions, prévention des doubles envois
+  et contrats responsive ;
 - validation des huit catalogues de traduction et de l'architecture des ports.

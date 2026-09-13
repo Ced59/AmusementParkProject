@@ -127,9 +127,15 @@ public sealed class ShareModerationService
             command.Decision,
             command.ReviewerUserId,
             command.Note,
-            requestedAtUtc);
+            requestedAtUtc,
+            report.Version);
         ShareModerationDecisionJobPayload persistedPayload =
             await this.decisionScheduler.ScheduleAsync(requestedPayload, cancellationToken);
+        if (persistedPayload.Decision != requestedPayload.Decision)
+        {
+            return ApplicationResult.Failure(
+                SharingApplicationErrors.ModerationConflict());
+        }
 
         ShareModerationDecisionExecutionOutcome outcome;
         try

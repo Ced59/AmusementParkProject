@@ -22,7 +22,7 @@ public sealed class ShareModerationDecisionScheduler
         DurableBackgroundJob job = await this.jobRepository.EnqueueExactAsync(
             new EnqueueExactBackgroundJobRequest(
                 ShareModerationDecisionJob.Kind,
-                $"share-moderation:{payload.ReportId}:{payload.Decision}:continuation:{payload.Continuation}",
+                $"share-moderation:{payload.ReportId}:report-version:{payload.ReportVersion}:continuation:{payload.Continuation}",
                 ShareModerationDecisionJob.PayloadVersion,
                 JsonSerializer.SerializeToElement(payload)),
             cancellationToken);
@@ -45,7 +45,7 @@ public sealed class ShareModerationDecisionScheduler
                     persistedPayload.ReportId,
                     payload.ReportId,
                     StringComparison.Ordinal)
-                || persistedPayload.Decision != payload.Decision
+                || persistedPayload.ReportVersion != payload.ReportVersion
                 || persistedPayload.Continuation != payload.Continuation)
             {
                 throw new InvalidOperationException(

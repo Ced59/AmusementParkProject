@@ -359,6 +359,58 @@ public sealed class ShareModerationServiceTests
         jobs.VerifyAll();
     }
 
+    [Fact]
+    public async Task ReviewAsync_ContradictoryDecisionOnSameReportVersion_ShouldRejectSecondJob()
+    {
+        ShareModerationReport report = ShareModerationReport.Create(
+            ShareModerationReportId.Parse("report-serialized"),
+            ShareModerationTargetType.VisitRecap,
+            "publication-1",
+            ShareModerationReason.PersonalData,
+            "Needs a decision.",
+            NowUtc.AddMinutes(-1));
+        ShareModerationDecisionJobPayload acceptedPayload =
+            new ShareModerationDecisionJobPayload(
+                report.Id.Value,
+                ShareModerationDecision.Suspend,
+                "admin-original",
+                "Confirmed disclosure.",
+                NowUtc.AddSeconds(-10),
+                report.Version);
+        Mock<IShareModerationReportRepository> reports =
+            new Mock<IShareModerationReportRepository>(MockBehavior.Strict);
+        reports.Setup(value => value.GetAsync(report.Id, CancellationToken.None))
+            .ReturnsAsync(report);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.Is<EnqueueExactBackgroundJobRequest>(request =>
+                    request.Kind == ShareModerationDecisionJob.Kind
+                    && request.IdempotencyKey ==
+                        "share-moderation:report-serialized:report-version:0:continuation:0"),
+                CancellationToken.None))
+            .ReturnsAsync((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+                CreateQueuedJob(request, acceptedPayload));
+        ShareModerationService service = CreateService(reports, publications, jobs);
+
+        ApplicationResult result = await service.ReviewAsync(
+            new ReviewShareModerationReportCommand(
+                "admin-second",
+                report.Id.Value,
+                ShareModerationDecision.Dismiss,
+                "Dismiss instead."),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error =>
+            error.Code == "share-moderation.concurrent-modification");
+        reports.VerifyAll();
+        publications.VerifyNoOtherCalls();
+        jobs.VerifyAll();
+    }
+
     private static ShareModerationService CreateService(
         Mock<IShareModerationReportRepository> reports,
         Mock<ISharePublicationRepository> publications,

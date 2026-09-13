@@ -50,6 +50,7 @@ public sealed class ShareModerationDecisionJobHandler : IDurableBackgroundJobHan
                 and not ShareModerationDecision.Restore
             || string.IsNullOrWhiteSpace(payload.ReviewerUserId)
             || payload.RequestedAtUtc.Kind != DateTimeKind.Utc
+            || payload.ReportVersion < 0
             || payload.Continuation < 0)
         {
             return DurableBackgroundJobHandlerResult.DeadLetter(

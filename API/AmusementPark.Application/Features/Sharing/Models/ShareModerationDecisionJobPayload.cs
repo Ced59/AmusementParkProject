@@ -8,4 +8,5 @@ public sealed record ShareModerationDecisionJobPayload(
     string ReviewerUserId,
     string? Note,
     DateTime RequestedAtUtc,
+    long ReportVersion = 0,
     int Continuation = 0);
