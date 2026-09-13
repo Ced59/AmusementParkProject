@@ -14,4 +14,8 @@ public sealed record PassportProfileShareSnapshot(
     string ContentFingerprint,
     PassportProfileShareInput Selection,
     PassportProfileSharePreviewResult Content,
-    DateTime CreatedAtUtc);
+    DateTime CreatedAtUtc)
+{
+    public IReadOnlyCollection<PassportProfileShareSelectedParkSnapshot> SelectedParks
+        { get; init; } = Array.Empty<PassportProfileShareSelectedParkSnapshot>();
+}

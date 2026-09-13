@@ -4,9 +4,7 @@ using System.Text.Json;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Results;
-using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Sharing;
-using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Services;
 
@@ -60,7 +58,7 @@ internal static class PassportShareSnapshotExportWriter
 
         foreach (PassportProfileShareSnapshot snapshot in request.ShareLifecycle.PassportSnapshots)
         {
-            WritePassportSnapshot(writer, references, snapshot, request);
+            WritePassportSnapshot(writer, references, snapshot);
         }
 
         writer.WriteEndArray();
@@ -75,7 +73,6 @@ internal static class PassportShareSnapshotExportWriter
         WritePassportSelectionsCsv(
             archive,
             request.ShareLifecycle.PassportSnapshots,
-            request,
             references);
     }
 
@@ -113,8 +110,7 @@ internal static class PassportShareSnapshotExportWriter
     private static void WritePassportSnapshot(
         Utf8JsonWriter writer,
         PassportExportReferenceMap references,
-        PassportProfileShareSnapshot snapshot,
-        PassportExportWriteRequest request)
+        PassportProfileShareSnapshot snapshot)
     {
         writer.WriteStartObject();
         WriteSnapshotMetadata(
@@ -139,7 +135,7 @@ internal static class PassportShareSnapshotExportWriter
 
         writer.WriteEndArray();
         writer.WriteStartArray("parks");
-        foreach ((string Name, string? CountryCode) park in ResolveSelectedParks(snapshot, request))
+        foreach ((string Name, string? CountryCode) park in ResolveSelectedParks(snapshot))
         {
             writer.WriteStartObject();
             writer.WriteString("name", park.Name);
@@ -297,7 +293,6 @@ internal static class PassportShareSnapshotExportWriter
     private static void WritePassportSelectionsCsv(
         ZipArchive archive,
         IEnumerable<PassportProfileShareSnapshot> snapshots,
-        PassportExportWriteRequest request,
         PassportExportReferenceMap references)
     {
         using StreamWriter writer = PassportShareLifecycleExportWriter.CreateCsvWriter(
@@ -311,15 +306,14 @@ internal static class PassportShareSnapshotExportWriter
         });
         foreach (PassportProfileShareSnapshot snapshot in snapshots)
         {
-            WritePassportSelectionRows(writer, references, snapshot, request);
+            WritePassportSelectionRows(writer, references, snapshot);
         }
     }
 
     private static void WritePassportSelectionRows(
         StreamWriter writer,
         PassportExportReferenceMap references,
-        PassportProfileShareSnapshot snapshot,
-        PassportExportWriteRequest request)
+        PassportProfileShareSnapshot snapshot)
     {
         string publicationReference = references.Publication(snapshot.PublicationId);
         string visibility = snapshot.Selection.Visibility.ToString();
@@ -334,7 +328,7 @@ internal static class PassportShareSnapshotExportWriter
             });
         }
 
-        foreach ((string Name, string? CountryCode) park in ResolveSelectedParks(snapshot, request))
+        foreach ((string Name, string? CountryCode) park in ResolveSelectedParks(snapshot))
         {
             PassportShareLifecycleExportWriter.WriteCsvRow(writer, new[]
             {
@@ -356,49 +350,14 @@ internal static class PassportShareSnapshotExportWriter
     }
 
     private static IEnumerable<(string Name, string? CountryCode)> ResolveSelectedParks(
-        PassportProfileShareSnapshot snapshot,
-        PassportExportWriteRequest request)
+        PassportProfileShareSnapshot snapshot)
     {
-        HashSet<string> selectedParkIds = new HashSet<string>(
-            snapshot.Selection.SelectedParkIds ?? Array.Empty<string>(),
-            StringComparer.Ordinal);
-        HashSet<int> selectedYears = new HashSet<int>(
-            snapshot.Selection.SelectedYears ?? Array.Empty<int>());
-        HashSet<string> parksRepresentedByFrozenStatistics = snapshot.Content.Parks.Count == 0
-            ? new HashSet<string>(StringComparer.Ordinal)
-            : request.Visits
-                .Where(visit => selectedYears.Contains(visit.Date.Year)
-                    && selectedParkIds.Contains(visit.ParkId))
-                .Select(static visit => visit.ParkId)
-                .ToHashSet(StringComparer.Ordinal);
-        if (snapshot.Content.Parks.Count > 0)
+        foreach (PassportProfileShareSelectedParkSnapshot park in snapshot.SelectedParks)
         {
-            foreach (PassportProfileShareParkResult park in snapshot.Content.Parks)
-            {
-                string name = string.IsNullOrWhiteSpace(park.Name)
-                    ? "Unavailable park"
-                    : park.Name.Trim();
-                yield return (name, NormalizeOptional(park.CountryCode));
-            }
-
-        }
-
-        foreach (string parkId in snapshot.Selection.SelectedParkIds ?? Array.Empty<string>())
-        {
-            if (parksRepresentedByFrozenStatistics.Contains(parkId))
-            {
-                continue;
-            }
-
-            if (request.Parks.TryGetValue(parkId, out Park? park)
-                && !string.IsNullOrWhiteSpace(park.Name))
-            {
-                yield return (park.Name.Trim(), NormalizeOptional(park.CountryCode));
-            }
-            else
-            {
-                yield return ("Unavailable park", null);
-            }
+            string name = string.IsNullOrWhiteSpace(park.Name)
+                ? "Unavailable park"
+                : park.Name.Trim();
+            yield return (name, NormalizeOptional(park.CountryCode));
         }
     }
 

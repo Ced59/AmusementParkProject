@@ -186,6 +186,13 @@ public sealed class CanonicalVisitExportWriterTests
             {
                 SelectedParkIds = new[] { "park-1" },
             },
+            SelectedParks = new[]
+            {
+                new PassportProfileShareSelectedParkSnapshot(
+                    "park-1",
+                    "Frozen Selected Park",
+                    "FR"),
+            },
             Content = snapshot.Content with
             {
                 Parks = new[]
@@ -221,7 +228,7 @@ public sealed class CanonicalVisitExportWriterTests
     [Theory]
     [InlineData(PassportExportFormat.Json)]
     [InlineData(PassportExportFormat.Csv)]
-    public void Write_WhenSelectedParkIsOutsideFilteredYears_ExportsEverySelection(
+    public void Write_WhenCurrentVisitsChangedAfterSnapshot_UsesFrozenCompleteSelection(
         PassportExportFormat format)
     {
         PassportExportWriteRequest source = CreateRequestWithShareLifecycle(format);
@@ -241,6 +248,17 @@ public sealed class CanonicalVisitExportWriterTests
             Selection = snapshot.Selection with
             {
                 SelectedParkIds = new[] { "park-1", "park-internal-selection" },
+            },
+            SelectedParks = new[]
+            {
+                new PassportProfileShareSelectedParkSnapshot(
+                    "park-1",
+                    "Frozen In-Year Park",
+                    "DE"),
+                new PassportProfileShareSelectedParkSnapshot(
+                    "park-internal-selection",
+                    "Frozen Outside-Year Park",
+                    "FR"),
             },
             Content = snapshot.Content with
             {
@@ -270,7 +288,9 @@ public sealed class CanonicalVisitExportWriterTests
         PassportExportArtifact artifact = writer.Write(request);
 
         IReadOnlyCollection<string> selectionNames = ReadPassportSelectionParkNames(artifact);
-        Assert.Equal(new[] { "Frozen In-Year Park", "Selected Park" }, selectionNames);
+        Assert.Equal(
+            new[] { "Frozen In-Year Park", "Frozen Outside-Year Park" },
+            selectionNames);
     }
 
     [Fact]
@@ -601,7 +621,16 @@ public sealed class CanonicalVisitExportWriterTests
                 false,
                 "passport-profile-v1",
                 false),
-            NowUtc.AddMinutes(1));
+            NowUtc.AddMinutes(1))
+        {
+            SelectedParks = new[]
+            {
+                new PassportProfileShareSelectedParkSnapshot(
+                    "park-internal-selection",
+                    "Selected Park",
+                    "FR"),
+            },
+        };
         Dictionary<string, Park> parks = source.Parks.ToDictionary(
             static pair => pair.Key,
             static pair => pair.Value,

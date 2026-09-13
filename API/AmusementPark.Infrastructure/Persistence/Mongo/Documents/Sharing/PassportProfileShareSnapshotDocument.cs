@@ -38,6 +38,9 @@ public sealed class PassportProfileShareSnapshotDocument : MongoDocumentBase
     public PassportProfileShareSelectionDocument Selection { get; set; } =
         new PassportProfileShareSelectionDocument();
 
+    [BsonElement("selectedParks")]
+    public List<PassportProfileShareSelectedParkDocument> SelectedParks { get; set; } = new();
+
     [BsonElement("content")]
     public PassportProfileShareContentDocument Content { get; set; } =
         new PassportProfileShareContentDocument();

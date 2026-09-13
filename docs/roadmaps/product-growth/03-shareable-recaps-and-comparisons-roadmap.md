@@ -474,14 +474,14 @@ empreinte de contenu ou identifiant de signalement. Des références éphémère
 membre (`your...` / `otherMember...`) afin de rester compréhensibles sans révéler
 la structure technique créateur/accepteur. Les identifiants de parc et les clés de
 notes conservés dans une sélection ne quittent jamais MongoDB : l'export les remplace
-par les années et les libellés lisibles. Les parcs sont résolus depuis le catalogue
-privé déjà borné de l'export afin de rester présents même si la politique masque les
-statistiques géographiques du snapshot public ; une cible historique introuvable
-reçoit un libellé neutre et jamais son identifiant.
-Le correctif 5.3.9 conserve en priorité les noms figés dans un snapshot approuvé :
-un renommage ultérieur du catalogue ne réécrit pas l'historique exporté. Il complète
-ensuite cette liste avec les parcs sélectionnés hors des années retenues, afin que
-le périmètre choisi reste exhaustif sans attribuer de statistiques inexistantes.
+par les années et les libellés lisibles. Le correctif 5.3.9 fige dans chaque snapshot
+l'association privée complète entre les parcs sélectionnés et leurs noms/pays,
+indépendamment des statistiques géographiques et des années publiées. L'export ne
+reconstruit plus cette association depuis les visites ou le catalogue courants : un
+renommage, un ajout ou une suppression de visite ne réécrit donc pas l'historique
+consenti. Une migration idempotente complète les anciens snapshots au démarrage,
+puis le système n'utilise qu'un seul chemin de lecture ; une cible introuvable au
+basculement reçoit un libellé neutre et jamais son identifiant.
 Les lectures MongoDB réutilisent le
 budget de taille commun aux visites et passages ; un export trop volumineux échoue
 donc avant de saturer la mémoire du worker lourd. Un index participant est ajouté

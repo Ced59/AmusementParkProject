@@ -74,7 +74,10 @@ public sealed class PassportProfileShareSnapshotWriter : ISharePublicationSnapsh
             request.ContentFingerprint,
             request.PassportProfile,
             preview.PassportProfile,
-            this.timeProvider.GetUtcNow().UtcDateTime);
+            this.timeProvider.GetUtcNow().UtcDateTime)
+        {
+            SelectedParks = preview.PassportProfileSelectedParks,
+        };
         bool persisted = await this.snapshotRepository.UpsertAsync(snapshot, cancellationToken);
         return persisted
             ? ApplicationResult<bool>.Success(true)
