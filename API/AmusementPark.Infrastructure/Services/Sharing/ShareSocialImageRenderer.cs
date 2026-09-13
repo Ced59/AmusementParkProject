@@ -63,14 +63,19 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
         while (true)
         {
             ShareSocialImageRenderWork rendering;
-            Task<ShareSocialImageRenderResult> waitingTask;
             lock (this.cacheLock)
             {
-                if (!this.cache.TryGetValue(cacheKey, out rendering!))
+                if (!this.cache.TryGetValue(cacheKey, out rendering!)
+                    || !rendering.TryAttachWaiter())
                 {
                     rendering = new ShareSocialImageRenderWork(
                         this.renderConcurrencyGate,
                         () => this.RenderCoreAsync(model));
+                    if (!rendering.TryAttachWaiter())
+                    {
+                        throw new InvalidOperationException("A new social image render work must accept its first waiter.");
+                    }
+
                     this.cache.Set(
                         cacheKey,
                         rendering,
@@ -80,9 +85,9 @@ public sealed class ShareSocialImageRenderer : IShareSocialImageRenderer, IDispo
                             Size = 1,
                         });
                 }
-
-                waitingTask = rendering.WaitAsync(cancellationToken);
             }
+
+            Task<ShareSocialImageRenderResult> waitingTask = rendering.WaitAsync(cancellationToken);
 
             try
             {

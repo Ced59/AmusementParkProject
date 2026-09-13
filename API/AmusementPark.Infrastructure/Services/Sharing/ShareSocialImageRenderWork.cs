@@ -6,7 +6,9 @@ internal sealed class ShareSocialImageRenderWork
 {
     private readonly CancellationTokenSource queueCancellation = new CancellationTokenSource();
     private readonly Lazy<Task<ShareSocialImageRenderResult>> rendering;
+    private readonly object waiterLock = new object();
     private int waiterCount;
+    private bool abandoned;
 
     public ShareSocialImageRenderWork(
         ShareSocialImageRenderConcurrencyGate concurrencyGate,
@@ -28,9 +30,22 @@ internal sealed class ShareSocialImageRenderWork
         }
     }
 
+    public bool TryAttachWaiter()
+    {
+        lock (this.waiterLock)
+        {
+            if (this.abandoned)
+            {
+                return false;
+            }
+
+            this.waiterCount++;
+            return true;
+        }
+    }
+
     public async Task<ShareSocialImageRenderResult> WaitAsync(CancellationToken cancellationToken)
     {
-        Interlocked.Increment(ref this.waiterCount);
         Task<ShareSocialImageRenderResult> renderingTask = this.rendering.Value;
         try
         {
@@ -38,7 +53,18 @@ internal sealed class ShareSocialImageRenderWork
         }
         finally
         {
-            if (Interlocked.Decrement(ref this.waiterCount) == 0 && !renderingTask.IsCompleted)
+            bool cancelQueuedRender = false;
+            lock (this.waiterLock)
+            {
+                this.waiterCount--;
+                if (this.waiterCount == 0 && !renderingTask.IsCompleted)
+                {
+                    this.abandoned = true;
+                    cancelQueuedRender = true;
+                }
+            }
+
+            if (cancelQueuedRender)
             {
                 this.queueCancellation.Cancel();
             }

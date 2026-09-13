@@ -121,8 +121,10 @@ public sealed class ShareSocialImageRendererTests
             gate,
             () => Task.FromResult(CreateRenderResult()));
         using CancellationTokenSource disconnectedCaller = new CancellationTokenSource();
+        Assert.True(work.TryAttachWaiter());
         Task<ShareSocialImageRenderResult> disconnectedWaiter = work.WaitAsync(
             disconnectedCaller.Token);
+        Assert.True(work.TryAttachWaiter());
         Task<ShareSocialImageRenderResult> connectedWaiter = work.WaitAsync(CancellationToken.None);
 
         disconnectedCaller.Cancel();
