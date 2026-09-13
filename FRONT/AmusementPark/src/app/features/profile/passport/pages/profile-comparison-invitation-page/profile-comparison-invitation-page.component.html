@@ -22,8 +22,8 @@
         <h2>{{ 'profileComparisonInvitation.accept.acceptedTitle' | translate }}</h2>
         <p>{{ 'profileComparisonInvitation.accept.acceptedDescription' | translate }}</p>
       </div>
-      <button appUiButton="primary" type="button" (click)="backToPassport()">
-        {{ 'profileComparisonInvitation.accept.back' | translate }}
+      <button appUiButton="primary" type="button" (click)="openComparison()">
+        {{ 'profileComparison.management.open' | translate }}
       </button>
     </section>
   } @else if (facade.preview(); as preview) {

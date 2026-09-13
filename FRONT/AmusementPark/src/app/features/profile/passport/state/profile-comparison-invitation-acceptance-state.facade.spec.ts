@@ -26,7 +26,7 @@ describe('ProfileComparisonInvitationAcceptanceStateFacade', () => {
       canAccept: true
     };
     const acceptance: ProfileComparisonInvitationAcceptance = {
-      comparisonId: 'opaque-comparison',
+      shareId: 'opaque-comparison',
       acceptedAtUtc: '2026-09-13T12:00:00Z',
       categories: ['VisitedParks']
     };

@@ -82,6 +82,7 @@ public sealed class ProfileComparisonPassportResolver
             publication.Id,
             publication.PublicationVersion,
             snapshot.Content.DisplayName,
-            publication.ContentPolicy);
+            publication.ContentPolicy,
+            snapshot);
     }
 }

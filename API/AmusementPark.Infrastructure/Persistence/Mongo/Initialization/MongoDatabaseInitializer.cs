@@ -617,6 +617,15 @@ private readonly IMongoDatabase database;
             ProfileComparisonInvitationMongoDefinitions.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.ProfileComparisonsCollectionName,
+            cancellationToken);
+        IMongoCollection<ProfileComparisonDocument> comparisonsCollection =
+            this.database.GetCollection<ProfileComparisonDocument>(
+                this.settings.ProfileComparisonsCollectionName);
+        await comparisonsCollection.Indexes.CreateManyAsync(
+            ProfileComparisonMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.SharePublicationSnapshotsCollectionName,
             cancellationToken);
         IMongoCollection<VisitRecapShareSnapshotDocument> shareSnapshotsCollection =

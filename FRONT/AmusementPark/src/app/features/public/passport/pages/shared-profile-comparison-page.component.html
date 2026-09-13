@@ -1,0 +1,401 @@
+<main class="profile-comparison public-page">
+  @if (notFound()) {
+    <section class="profile-comparison__state" role="status">
+      <i class="pi pi-link" aria-hidden="true"></i>
+      <h1>{{ "profileComparison.result.notFoundTitle" | translate }}</h1>
+      <p>{{ "profileComparison.result.notFoundDescription" | translate }}</p>
+      <a appUiButton="primary" [routerLink]="['/', currentLang(), 'home']">{{
+        "profileComparison.result.home" | translate
+      }}</a>
+    </section>
+  } @else if (error()) {
+    <section class="profile-comparison__state" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <h1>{{ "profileComparison.result.errorTitle" | translate }}</h1>
+      <p>{{ "profileComparison.result.errorDescription" | translate }}</p>
+    </section>
+  } @else if (result(); as comparison) {
+    <nav
+      class="profile-comparison__breadcrumb"
+      [attr.aria-label]="'profileComparison.result.breadcrumbLabel' | translate"
+    >
+      <a [routerLink]="['/', currentLang(), 'home']">{{
+        "profileComparison.result.home" | translate
+      }}</a>
+      <i class="pi pi-angle-right" aria-hidden="true"></i>
+      <span aria-current="page">{{
+        "profileComparison.result.breadcrumb" | translate
+      }}</span>
+    </nav>
+
+    <article class="profile-comparison__story">
+      <header class="profile-comparison__hero">
+        <span class="profile-comparison__kicker"
+          ><i class="pi pi-users" aria-hidden="true"></i
+          >{{ "profileComparison.result.kicker" | translate }}</span
+        >
+        <div class="profile-comparison__people">
+          <div>
+            <span>{{ "profileComparison.result.passportOf" | translate }}</span
+            ><strong>{{ displayName(comparison.creatorDisplayName) }}</strong>
+          </div>
+          <i class="pi pi-sparkles" aria-hidden="true"></i>
+          <div>
+            <span>{{ "profileComparison.result.passportOf" | translate }}</span
+            ><strong>{{ displayName(comparison.acceptorDisplayName) }}</strong>
+          </div>
+        </div>
+        <h1>{{ "profileComparison.result.title" | translate }}</h1>
+        <p>{{ "profileComparison.result.subtitle" | translate }}</p>
+      </header>
+
+      @if (comparison.categories.includes("PersonalRatings")) {
+        <section class="profile-comparison__signal">
+          <div>
+            <span>{{
+              "profileComparison.result.ratingCoverage" | translate
+            }}</span>
+            <strong>{{ comparison.commonRatingCount }}</strong>
+            <small>{{
+              "profileComparison.result.commonRatings" | translate
+            }}</small>
+          </div>
+          <p>
+            <i class="pi pi-chart-line" aria-hidden="true"></i>
+            {{
+              correlationKey(comparison.ratingCorrelation)
+                | translate
+                  : {
+                      current: comparison.commonRatingCount,
+                      minimum: comparison.minimumRatingsForCorrelation,
+                    }
+            }}
+          </p>
+        </section>
+      }
+
+      @if (
+        comparison.categories.includes("VisitedParks") &&
+        comparison.parks.length > 0
+      ) {
+        <section class="profile-comparison__section">
+          <div class="profile-comparison__heading">
+            <span>01</span>
+            <div>
+              <h2>{{ "profileComparison.result.parksTitle" | translate }}</h2>
+              <p>
+                {{ "profileComparison.result.parksDescription" | translate }}
+              </p>
+            </div>
+          </div>
+          @if (commonParks().length > 0) {
+            <div class="profile-comparison__park-grid">
+              @for (park of commonParks(); track park.name + park.countryCode) {
+                <article>
+                  <i class="pi pi-map-marker" aria-hidden="true"></i>
+                  <div>
+                    <h3>{{ park.name }}</h3>
+                    <small>{{ countryName(park.countryCode) }}</small>
+                  </div>
+                  <dl>
+                    <div>
+                      <dt>{{ displayName(comparison.creatorDisplayName) }}</dt>
+                      <dd>{{ park.creatorVisitCount }}</dd>
+                    </div>
+                    <div>
+                      <dt>{{ displayName(comparison.acceptorDisplayName) }}</dt>
+                      <dd>{{ park.acceptorVisitCount }}</dd>
+                    </div>
+                  </dl>
+                </article>
+              }
+            </div>
+          } @else {
+            <p class="profile-comparison__empty">
+              {{ "profileComparison.result.noCommonPark" | translate }}
+            </p>
+          }
+          @if (
+            creatorDiscoveries().length > 0 || acceptorDiscoveries().length > 0
+          ) {
+            <div class="profile-comparison__discoveries">
+              @if (creatorDiscoveries().length > 0) {
+                <div>
+                  <h3>
+                    {{
+                      "profileComparison.result.visibleFor"
+                        | translate
+                          : { name: displayName(comparison.creatorDisplayName) }
+                    }}
+                  </h3>
+                  <p>
+                    {{
+                      "profileComparison.result.discoveryCaution" | translate
+                    }}
+                  </p>
+                  <ul>
+                    @for (
+                      park of creatorDiscoveries();
+                      track park.name + park.countryCode
+                    ) {
+                      <li>{{ park.name }}</li>
+                    }
+                  </ul>
+                </div>
+              }
+              @if (acceptorDiscoveries().length > 0) {
+                <div>
+                  <h3>
+                    {{
+                      "profileComparison.result.visibleFor"
+                        | translate
+                          : {
+                              name: displayName(comparison.acceptorDisplayName),
+                            }
+                    }}
+                  </h3>
+                  <p>
+                    {{
+                      "profileComparison.result.discoveryCaution" | translate
+                    }}
+                  </p>
+                  <ul>
+                    @for (
+                      park of acceptorDiscoveries();
+                      track park.name + park.countryCode
+                    ) {
+                      <li>{{ park.name }}</li>
+                    }
+                  </ul>
+                </div>
+              }
+            </div>
+          }
+        </section>
+      }
+
+      @if (
+        comparison.categories.includes("PersonalRatings") &&
+        comparison.ratings.length > 0
+      ) {
+        <section class="profile-comparison__section">
+          <div class="profile-comparison__heading">
+            <span>02</span>
+            <div>
+              <h2>{{ "profileComparison.result.ratingsTitle" | translate }}</h2>
+              <p>
+                {{ "profileComparison.result.ratingsDescription" | translate }}
+              </p>
+            </div>
+          </div>
+          @if (closeRatings().length > 0) {
+            <h3 class="profile-comparison__subheading">
+              <i class="pi pi-heart" aria-hidden="true"></i
+              >{{ "profileComparison.result.closeTitle" | translate }}
+            </h3>
+          }
+          <div class="profile-comparison__rating-list">
+            @for (
+              rating of closeRatings();
+              track rating.targetType + rating.name + rating.parkName
+            ) {
+              <article>
+                <div>
+                  <h3>{{ rating.name }}</h3>
+                  <p>
+                    {{
+                      rating.parkName || rating.category || rating.targetType
+                    }}
+                  </p>
+                </div>
+                <div class="profile-comparison__rating-bars">
+                  <span
+                    ><i
+                      [style.width]="ratingWidth(rating.creatorRating)"
+                    ></i></span
+                  ><small
+                    >{{ displayName(comparison.creatorDisplayName) }} ·
+                    {{ formatRating(rating.creatorRating) }}/5</small
+                  ><span
+                    ><i
+                      [style.width]="ratingWidth(rating.acceptorRating)"
+                    ></i></span
+                  ><small
+                    >{{ displayName(comparison.acceptorDisplayName) }} ·
+                    {{ formatRating(rating.acceptorRating) }}/5</small
+                  >
+                </div>
+              </article>
+            }
+          </div>
+          @if (neutralRatings().length > 0) {
+            <h3
+              class="profile-comparison__subheading profile-comparison__subheading--neutral"
+            >
+              <i class="pi pi-sliders-h" aria-hidden="true"></i
+              >{{ "profileComparison.result.neutralTitle" | translate }}
+            </h3>
+          }
+          <div class="profile-comparison__rating-list">
+            @for (
+              rating of neutralRatings();
+              track rating.targetType + rating.name + rating.parkName
+            ) {
+              <article>
+                <div>
+                  <h3>{{ rating.name }}</h3>
+                  <p>
+                    {{
+                      rating.parkName || rating.category || rating.targetType
+                    }}
+                  </p>
+                </div>
+                <div class="profile-comparison__rating-bars">
+                  <span
+                    ><i
+                      [style.width]="ratingWidth(rating.creatorRating)"
+                    ></i></span
+                  ><small
+                    >{{ displayName(comparison.creatorDisplayName) }} ·
+                    {{ formatRating(rating.creatorRating) }}/5</small
+                  ><span
+                    ><i
+                      [style.width]="ratingWidth(rating.acceptorRating)"
+                    ></i></span
+                  ><small
+                    >{{ displayName(comparison.acceptorDisplayName) }} ·
+                    {{ formatRating(rating.acceptorRating) }}/5</small
+                  >
+                </div>
+              </article>
+            }
+          </div>
+          @if (divergentRatings().length > 0) {
+            <h3
+              class="profile-comparison__subheading profile-comparison__subheading--contrast"
+            >
+              <i class="pi pi-compass" aria-hidden="true"></i
+              >{{ "profileComparison.result.divergentTitle" | translate }}
+            </h3>
+          }
+          <div class="profile-comparison__rating-list">
+            @for (
+              rating of divergentRatings();
+              track rating.targetType + rating.name + rating.parkName
+            ) {
+              <article>
+                <div>
+                  <h3>{{ rating.name }}</h3>
+                  <p>
+                    {{
+                      rating.parkName || rating.category || rating.targetType
+                    }}
+                  </p>
+                </div>
+                <div class="profile-comparison__rating-bars">
+                  <span
+                    ><i
+                      [style.width]="ratingWidth(rating.creatorRating)"
+                    ></i></span
+                  ><small
+                    >{{ displayName(comparison.creatorDisplayName) }} ·
+                    {{ formatRating(rating.creatorRating) }}/5</small
+                  ><span
+                    ><i
+                      [style.width]="ratingWidth(rating.acceptorRating)"
+                    ></i></span
+                  ><small
+                    >{{ displayName(comparison.acceptorDisplayName) }} ·
+                    {{ formatRating(rating.acceptorRating) }}/5</small
+                  >
+                </div>
+              </article>
+            }
+          </div>
+        </section>
+      }
+
+      @if (
+        comparison.categories.includes("YearlyActivity") &&
+        comparison.years.length > 0
+      ) {
+        <section class="profile-comparison__section">
+          <div class="profile-comparison__heading">
+            <span>03</span>
+            <div>
+              <h2>{{ "profileComparison.result.yearsTitle" | translate }}</h2>
+              <p>
+                {{ "profileComparison.result.yearsDescription" | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="profile-comparison__year-strip">
+            @for (year of comparison.years; track year.year) {
+              <article>
+                <strong>{{ year.year }}</strong>
+                <p>
+                  {{ displayName(comparison.creatorDisplayName) }} ·
+                  {{
+                    "profileComparison.result.visitCount"
+                      | translate: { count: year.creatorVisitCount }
+                  }}
+                </p>
+                <p>
+                  {{ displayName(comparison.acceptorDisplayName) }} ·
+                  {{
+                    "profileComparison.result.visitCount"
+                      | translate: { count: year.acceptorVisitCount }
+                  }}
+                </p>
+              </article>
+            }
+          </div>
+        </section>
+      }
+
+      @if (
+        comparison.categories.includes("MissedItems") &&
+        comparison.missedItems.length > 0
+      ) {
+        <section class="profile-comparison__section">
+          <div class="profile-comparison__heading">
+            <span>04</span>
+            <div>
+              <h2>{{ "profileComparison.result.missedTitle" | translate }}</h2>
+              <p>
+                {{ "profileComparison.result.missedDescription" | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="profile-comparison__chips">
+            @for (
+              item of comparison.missedItems;
+              track item.name + item.status
+            ) {
+              <span
+                ><i class="pi pi-bookmark" aria-hidden="true"></i
+                >{{ item.name }}</span
+              >
+            }
+          </div>
+        </section>
+      }
+
+      @if (comparison.hasIncompleteCatalog) {
+        <p class="profile-comparison__notice">
+          <i class="pi pi-eye-slash" aria-hidden="true"></i
+          >{{ "profileComparison.result.incompleteCatalog" | translate }}
+        </p>
+      }
+      <p class="profile-comparison__proof">
+        <i class="pi pi-shield" aria-hidden="true"></i
+        >{{ "profileComparison.result.proof" | translate }}
+      </p>
+    </article>
+  } @else if (loading()) {
+    <section class="profile-comparison__state" role="status">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <p>{{ "profileComparison.result.loading" | translate }}</p>
+    </section>
+  }
+</main>

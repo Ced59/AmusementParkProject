@@ -1,0 +1,62 @@
+{
+  "profileComparison": {
+    "result": {
+      "member": "Ein Mitglied",
+      "seoTitle": "Passvergleich von {{creator}} und {{acceptor}}",
+      "seoDescription": "Entdecke Gemeinsamkeiten und Unterschiede zwischen den öffentlichen Pässen von {{creator}} und {{acceptor}}.",
+      "home": "Startseite",
+      "breadcrumb": "Verglichene Pässe",
+      "breadcrumbLabel": "Brotkrümelnavigation",
+      "notFoundTitle": "Dieser Vergleich ist nicht mehr verfügbar",
+      "notFoundDescription": "Ein Mitglied hat ihn möglicherweise beendet oder den Pass neu veröffentlicht.",
+      "errorTitle": "Der Vergleich kann nicht geladen werden",
+      "errorDescription": "Versuche es in einigen Augenblicken erneut.",
+      "kicker": "Verglichene Pässe",
+      "passportOf": "Pass von",
+      "title": "Eure Abenteuer treffen aufeinander",
+      "subtitle": "Hier erscheinen nur die Informationen, deren Vergleich ihr beide zugestimmt habt.",
+      "ratingCoverage": "Datengrundlage",
+      "commonRatings": "gemeinsame Bewertungen",
+      "correlation": {
+        "pending": "{{current}} gemeinsame Bewertung(en) von {{minimum}} benötigten: Noch wird kein Gesamttrend angezeigt.",
+        "aligned": "Bei euren gemeinsamen Bewertungen bewegen sich die Wertungen oft in dieselbe Richtung.",
+        "contrasting": "Bei euren gemeinsamen Bewertungen bewegen sich die Wertungen oft in entgegengesetzte Richtungen.",
+        "mixed": "Bei euren gemeinsamen Bewertungen zeigen die Verläufe differenzierte Vorlieben."
+      },
+      "parksTitle": "Eure gemeinsamen Orte",
+      "parksDescription": "Parks in beiden öffentlichen Auswahlen mit den jeweils geteilten Besuchszahlen.",
+      "noCommonPark": "Noch erscheint kein Park in beiden öffentlichen Auswahlen.",
+      "visibleFor": "Im Pass von {{name}} entdecken",
+      "discoveryCaution": "Das bedeutet nur, dass der Park in der anderen öffentlichen Auswahl nicht sichtbar ist.",
+      "ratingsTitle": "Wo eure Vorlieben zusammenfinden – oder abbiegen",
+      "ratingsDescription": "Verglichen werden nur Ziele, die beide Mitglieder öffentlich bewertet haben.",
+      "closeTitle": "Eure spontanen Übereinstimmungen",
+      "neutralTitle": "Eure Nuancen",
+      "divergentTitle": "Gesprächsstoff, der schon bereitliegt",
+      "yearsTitle": "Eure gemeinsamen Jahre",
+      "yearsDescription": "Eine Gegenüberstellung der veröffentlichten Aktivität in denselben Jahren.",
+      "visitCount": "{{count}} Besuch(e)",
+      "missedTitle": "Eure gemeinsamen Gelegenheiten",
+      "missedDescription": "Verpasste Erlebnisse, die in beiden öffentlichen Pässen erscheinen.",
+      "incompleteCatalog": "Einige ältere Referenzen sind nicht mehr mit dem Katalog verknüpft; das Ergebnis kann unvollständig sein.",
+      "proof": "Das Ergebnis wird aus den bestätigten Versionen eingefroren. Es verschwindet, wenn sich ein Pass ändert oder ein Mitglied den Vergleich beendet.",
+      "loading": "Pässe werden verglichen…"
+    },
+    "management": {
+      "kicker": "Aktive Vergleiche",
+      "title": "Eure verglichenen Pässe wiederfinden",
+      "description": "Öffne einen bestätigten Vergleich oder beende ihn jederzeit. Das andere Mitglied verliert dann ebenfalls sofort den Zugriff.",
+      "loading": "Deine Vergleiche werden geladen…",
+      "empty": "Noch kein bestätigter Vergleich.",
+      "with": "Mit",
+      "open": "Öffnen",
+      "copy": "Link kopieren",
+      "copied": "Link kopiert",
+      "stop": "Vergleich beenden",
+      "confirm": "Dadurch wird der Link sofort für beide Mitglieder deaktiviert.",
+      "confirmAction": "Ja, beenden",
+      "cancel": "Abbrechen",
+      "error": "Deine Vergleiche konnten nicht aktualisiert werden. Versuche es erneut."
+    }
+  }
+}

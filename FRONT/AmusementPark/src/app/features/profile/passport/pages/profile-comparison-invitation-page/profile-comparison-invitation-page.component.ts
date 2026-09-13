@@ -35,4 +35,20 @@ export class ProfileComparisonInvitationPageComponent implements OnInit {
     const language: string = this.translationService.getCurrentLang() || 'fr';
     void this.router.navigate(['/', language, 'profile', 'passport']);
   }
+
+  protected openComparison(): void {
+    const shareId: string | undefined = this.facade.acceptance()?.shareId;
+    if (!shareId) {
+      return;
+    }
+    const language: string = this.translationService.getCurrentLang() || 'fr';
+    void this.router.navigate([
+      '/',
+      language,
+      'passport',
+      'shared',
+      'comparisons',
+      shareId
+    ]);
+  }
 }

@@ -12,6 +12,7 @@ public sealed class ProfileComparisonInvitationService
 
     private const int MaximumTokenAttempts = 5;
     private readonly IProfileComparisonInvitationRepository invitationRepository;
+    private readonly ProfileComparisonMaterializer comparisonMaterializer;
     private readonly ProfileComparisonPassportResolver passportResolver;
     private readonly IShareTokenFactory tokenFactory;
     private readonly TimeProvider timeProvider;
@@ -19,6 +20,7 @@ public sealed class ProfileComparisonInvitationService
     public ProfileComparisonInvitationService(
         IProfileComparisonInvitationRepository invitationRepository,
         ProfileComparisonPassportResolver passportResolver,
+        ProfileComparisonMaterializer comparisonMaterializer,
         IShareTokenFactory tokenFactory,
         TimeProvider? timeProvider = null)
     {
@@ -26,6 +28,8 @@ public sealed class ProfileComparisonInvitationService
             ?? throw new ArgumentNullException(nameof(invitationRepository));
         this.passportResolver = passportResolver
             ?? throw new ArgumentNullException(nameof(passportResolver));
+        this.comparisonMaterializer = comparisonMaterializer
+            ?? throw new ArgumentNullException(nameof(comparisonMaterializer));
         this.tokenFactory = tokenFactory ?? throw new ArgumentNullException(nameof(tokenFactory));
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
@@ -213,7 +217,7 @@ public sealed class ProfileComparisonInvitationService
                     invitation.AcceptorUserId,
                     normalizedUserId,
                     StringComparison.Ordinal)
-                ? Accepted(invitation)
+                ? await this.AcceptedAsync(invitation, cancellationToken)
                 : AcceptanceNotAcceptable();
         }
 
@@ -271,7 +275,7 @@ public sealed class ProfileComparisonInvitationService
                         SharingApplicationErrors.ComparisonInvitationChangedConcurrently());
             }
 
-            return Accepted(invitation);
+            return await this.AcceptedAsync(invitation, cancellationToken);
         }
 
         ProfileComparisonInvitation? current =
@@ -279,7 +283,7 @@ public sealed class ProfileComparisonInvitationService
         if (current?.IsAccepted == true
             && string.Equals(current.AcceptorUserId, normalizedUserId, StringComparison.Ordinal))
         {
-            return Accepted(current);
+            return await this.AcceptedAsync(current, cancellationToken);
         }
 
         return ApplicationResult<ProfileComparisonInvitationAcceptanceResult>.Failure(
@@ -362,12 +366,21 @@ public sealed class ProfileComparisonInvitationService
             SharingApplicationErrors.ComparisonInvitationNotFound());
     }
 
-    private static ApplicationResult<ProfileComparisonInvitationAcceptanceResult> Accepted(
-        ProfileComparisonInvitation invitation)
+    private async Task<ApplicationResult<ProfileComparisonInvitationAcceptanceResult>> AcceptedAsync(
+        ProfileComparisonInvitation invitation,
+        CancellationToken cancellationToken)
     {
+        ApplicationResult<ProfileComparison> materialization =
+            await this.comparisonMaterializer.MaterializeAsync(invitation, cancellationToken);
+        if (!materialization.IsSuccess || materialization.Value is null)
+        {
+            return ApplicationResult<ProfileComparisonInvitationAcceptanceResult>.Failure(
+                materialization.Errors);
+        }
+
         return ApplicationResult<ProfileComparisonInvitationAcceptanceResult>.Success(
             new ProfileComparisonInvitationAcceptanceResult(
-                invitation.ComparisonId!.Value.Value,
+                materialization.Value.ShareToken.Value,
                 invitation.AcceptedAtUtc!.Value,
                 invitation.Categories));
     }

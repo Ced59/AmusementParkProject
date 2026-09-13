@@ -1,0 +1,62 @@
+{
+  "profileComparison": {
+    "result": {
+      "member": "Un membre",
+      "seoTitle": "Passeports croisés de {{creator}} et {{acceptor}}",
+      "seoDescription": "Découvre les points communs et les différences entre les passeports publics de {{creator}} et {{acceptor}}.",
+      "home": "Accueil",
+      "breadcrumb": "Passeports croisés",
+      "breadcrumbLabel": "Fil d’Ariane",
+      "notFoundTitle": "Cette comparaison n’est plus disponible",
+      "notFoundDescription": "Un des membres a peut-être arrêté la comparaison ou republié son passeport.",
+      "errorTitle": "La comparaison ne peut pas être chargée",
+      "errorDescription": "Réessaie dans quelques instants.",
+      "kicker": "Passeports croisés",
+      "passportOf": "Passeport de",
+      "title": "Vos aventures se répondent",
+      "subtitle": "Voici uniquement les informations que vous avez tous les deux accepté de rapprocher.",
+      "ratingCoverage": "Base de lecture",
+      "commonRatings": "notes communes",
+      "correlation": {
+        "pending": "{{current}} note(s) commune(s) sur {{minimum}} requises : aucune tendance globale n’est encore affichée.",
+        "aligned": "Sur les notes communes, vos variations suivent souvent la même direction.",
+        "contrasting": "Sur les notes communes, vos variations suivent souvent des directions opposées.",
+        "mixed": "Sur les notes communes, vos variations dessinent des goûts nuancés."
+      },
+      "parksTitle": "Vos terrains communs",
+      "parksDescription": "Les parcs présents dans vos deux sélections publiques, avec le nombre de visites partagé.",
+      "noCommonPark": "Aucun parc n’apparaît dans vos deux sélections publiques pour le moment.",
+      "visibleFor": "À découvrir dans le passeport de {{name}}",
+      "discoveryCaution": "Cela signifie seulement que ce parc n’est pas visible dans l’autre sélection publique.",
+      "ratingsTitle": "Là où vos goûts se rejoignent… ou bifurquent",
+      "ratingsDescription": "Seules les cibles notées publiquement par vous deux sont rapprochées.",
+      "closeTitle": "Vos accords spontanés",
+      "neutralTitle": "Vos nuances",
+      "divergentTitle": "Vos débats tout trouvés",
+      "yearsTitle": "Les années que vous partagez",
+      "yearsDescription": "Une lecture côte à côte de l’activité rendue publique pour les mêmes années.",
+      "visitCount": "{{count}} visite(s)",
+      "missedTitle": "Vos occasions communes",
+      "missedDescription": "Les expériences manquées qui apparaissent dans vos deux passeports publics.",
+      "incompleteCatalog": "Certaines anciennes références ne sont plus reliées au catalogue : le résultat peut être partiel.",
+      "proof": "Le résultat est figé à partir des versions acceptées. Il disparaît si un des deux passeports change ou si un membre arrête la comparaison.",
+      "loading": "Croisement des passeports…"
+    },
+    "management": {
+      "kicker": "Comparaisons actives",
+      "title": "Retrouve tes passeports croisés",
+      "description": "Ouvre une comparaison acceptée ou arrête-la à tout moment. L’autre membre perdra alors immédiatement l’accès.",
+      "loading": "Chargement de tes comparaisons…",
+      "empty": "Aucune comparaison acceptée pour le moment.",
+      "with": "Avec",
+      "open": "Ouvrir",
+      "copy": "Copier le lien",
+      "copied": "Lien copié",
+      "stop": "Arrêter la comparaison",
+      "confirm": "Cette action coupe immédiatement le lien pour les deux membres.",
+      "confirmAction": "Oui, arrêter",
+      "cancel": "Annuler",
+      "error": "Tes comparaisons n’ont pas pu être mises à jour. Réessaie."
+    }
+  }
+}
