@@ -29,7 +29,11 @@ public sealed class UserRankingSharePreviewRenderer : IUserRankingSharePreviewRe
     public UserRankingSharePreviewRenderer()
     {
         FontCollection collection = new FontCollection();
-        string fontPath = System.IO.Path.Combine(AppContext.BaseDirectory, "Assets", "Fonts", "bebas-neue-latin.ttf");
+        string fontPath = System.IO.Path.Combine(
+            AppContext.BaseDirectory,
+            "Assets",
+            "Fonts",
+            "bangers-latin-complete.ttf");
         this.fontFamily = collection.Add(fontPath);
     }
 

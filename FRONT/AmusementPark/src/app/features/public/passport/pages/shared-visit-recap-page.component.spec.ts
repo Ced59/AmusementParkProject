@@ -65,13 +65,21 @@ describe('SharedVisitRecapPageComponent', () => {
     expect(host.textContent).not.toContain('park-technical-id');
     expect(host.textContent).not.toContain('item-technical-id');
     expect(host.querySelector('.shared-visit__breadcrumb a')).not.toBeNull();
-    expect(applySeo).toHaveBeenCalled();
+    expect(applySeo).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.any(String),
+      expect.any(String),
+      expect.stringContaining('sharing/social-images/visit/opaque-share-id/v3/t1/fr.png'),
+      'Denain Évasion',
+      expect.any(Array)
+    );
   });
 });
 
 function createSharedVisit(): SharedVisitRecap {
   return {
     publishedAtUtc: '2026-09-07T08:00:00Z',
+    publicationVersion: 3,
     visitRecap: {
       parkId: 'park-technical-id',
       parkName: 'Denain Évasion',

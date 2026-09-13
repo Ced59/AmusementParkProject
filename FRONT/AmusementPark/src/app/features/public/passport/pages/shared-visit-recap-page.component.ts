@@ -12,6 +12,7 @@ import { TranslationService } from '@app/services/translation.service';
 import { CanonicalUrlService } from '@core/seo/canonical-url.service';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { buildShareSocialImageUrl } from '@data-access/sharing/share-social-image-url';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
@@ -58,7 +59,7 @@ export class SharedVisitRecapPageComponent implements OnInit {
     effect((): void => {
       const currentResult: SharedVisitRecap | null = this.result();
       if (currentResult) {
-        this.applySeo(currentResult.visitRecap);
+        this.applySeo(currentResult);
       }
 
       if (this.notFound()) {
@@ -89,7 +90,7 @@ export class SharedVisitRecapPageComponent implements OnInit {
       this.currentLang.set(lang);
       const currentResult: SharedVisitRecap | null = this.result();
       if (currentResult) {
-        this.applySeo(currentResult.visitRecap);
+        this.applySeo(currentResult);
       }
     });
   }
@@ -121,12 +122,19 @@ export class SharedVisitRecapPageComponent implements OnInit {
     return item.category ? `ratings.categories.${item.category}` : 'visitRecapShare.preview.unknownCategory';
   }
 
-  private applySeo(recap: SharedVisitRecapContent): void {
+  private applySeo(shared: SharedVisitRecap): void {
+    const recap: SharedVisitRecapContent = shared.visitRecap;
     const parkName: string = recap.parkName?.trim()
       || (this.translateService.instant('visitRecapShare.preview.unknownPark') as string);
     const params: Record<string, string> = { park: parkName };
     const title: string = this.translateService.instant('visitRecapShare.public.seoTitle', params);
     const description: string = this.translateService.instant('visitRecapShare.public.seoDescription', params);
+    const socialImageUrl: string = buildShareSocialImageUrl(
+      'visit',
+      this.shareId(),
+      shared.publicationVersion,
+      this.currentLang()
+    );
     const currentUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(this.router.url);
     const homePath: string = `/${this.currentLang()}/home`;
     const parkCommands: string[] | null = this.parkRoute();
@@ -157,6 +165,7 @@ export class SharedVisitRecapPageComponent implements OnInit {
       title,
       description,
       this.router.url,
+      socialImageUrl,
       parkName,
       [{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: breadcrumbItems }]
     );

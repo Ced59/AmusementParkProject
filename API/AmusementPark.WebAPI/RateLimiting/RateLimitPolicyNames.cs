@@ -20,4 +20,5 @@ public static class RateLimitPolicyNames
     public const string PassportExportDownloads = "passport-export-downloads";
     public const string SharePublicationPreviews = "share-publication-previews";
     public const string SharePublicationConfirmations = "share-publication-confirmations";
+    public const string ShareSocialImageRendering = "share-social-image-rendering";
 }

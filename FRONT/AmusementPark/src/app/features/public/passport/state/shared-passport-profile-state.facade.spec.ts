@@ -37,6 +37,7 @@ describe('SharedPassportProfileStateFacade', () => {
 function createProfile(): SharedPassportProfile {
   return {
     publishedAtUtc: '2026-09-12T00:00:00Z',
+    publicationVersion: 3,
     passportProfile: {
       displayName: 'Alex', visibility: 'Unlisted', allowsComparisons: true,
       countries: [], years: [], parks: [], personalRanking: [], missedItems: [],

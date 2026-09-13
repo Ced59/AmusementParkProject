@@ -67,13 +67,21 @@ describe('SharedYearRecapPageComponent', () => {
     expect(host.textContent).not.toContain('park-technical-id');
     expect(host.textContent).not.toContain('item-technical-id');
     expect(host.querySelector('.shared-year__breadcrumb a')).not.toBeNull();
-    expect(applySeo).toHaveBeenCalled();
+    expect(applySeo).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.any(String),
+      expect.any(String),
+      expect.stringContaining('sharing/social-images/year/opaque-share-id/v3/t1/fr.png'),
+      expect.any(String),
+      expect.any(Array)
+    );
   });
 });
 
 function createSharedYear(): SharedYearRecap {
   return {
     publishedAtUtc: '2026-09-11T08:00:00Z',
+    publicationVersion: 3,
     yearRecap: {
       year: 2026,
       parkCount: 1,

@@ -98,6 +98,39 @@ public sealed class UserRankingSharesControllerTests
         Assert.Equal(ResponseCacheLocation.None, noStore.Location);
     }
 
+    [Fact]
+    public async Task GetSharedPreviewAsync_ShouldForwardTheVersionedLocalizedVariant()
+    {
+        UserRankingSharePreviewFileResult preview = new UserRankingSharePreviewFileResult(
+            new byte[] { 1, 2, 3 },
+            "image/png");
+        Mock<IQueryHandler<GetSharedUserRankingPreviewQuery, ApplicationResult<UserRankingSharePreviewFileResult>>> handler =
+            new Mock<IQueryHandler<GetSharedUserRankingPreviewQuery, ApplicationResult<UserRankingSharePreviewFileResult>>>(MockBehavior.Strict);
+        handler.Setup(value => value.HandleAsync(
+                It.Is<GetSharedUserRankingPreviewQuery>(query =>
+                    query.ShareId == "share-1"
+                    && query.PublicationVersion == 7
+                    && query.TemplateVersion == 1
+                    && query.Language == "fr"
+                    && query.ParkItemCategory == null
+                    && query.ParkItemType == null),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<UserRankingSharePreviewFileResult>.Success(preview));
+        UserRankingSharesController controller = CreateController(handler);
+
+        IActionResult result = await controller.GetSharedPreviewAsync(
+            "share-1",
+            publicationVersion: 7,
+            templateVersion: 1,
+            language: "fr",
+            cancellationToken: CancellationToken.None);
+
+        FileContentResult file = Assert.IsType<FileContentResult>(result);
+        Assert.Equal(preview.Content, file.FileContents);
+        Assert.Equal(preview.ContentType, file.ContentType);
+        handler.VerifyAll();
+    }
+
     private static MethodInfo GetAction(string name)
     {
         return typeof(UserRankingSharesController).GetMethod(name)
@@ -132,5 +165,17 @@ public sealed class UserRankingSharesControllerTests
             new Mock<IQueryHandler<GetSharedUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>>>(MockBehavior.Strict).Object,
             new Mock<IQueryHandler<GetSharedUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>>>(MockBehavior.Strict).Object,
             new Mock<IQueryHandler<GetSharedUserRankingPreviewQuery, ApplicationResult<UserRankingSharePreviewFileResult>>>(MockBehavior.Strict).Object);
+    }
+
+    private static UserRankingSharesController CreateController(
+        Mock<IQueryHandler<GetSharedUserRankingPreviewQuery, ApplicationResult<UserRankingSharePreviewFileResult>>> previewHandler)
+    {
+        return new UserRankingSharesController(
+            new Mock<IQueryHandler<GetSharePublicationSettingsQuery, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict).Object,
+            new Mock<ICommandHandler<SetSharePublicationVisibilityCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict).Object,
+            new Mock<IQueryHandler<GetSharedUserRankingProfileQuery, ApplicationResult<SharedUserRankingProfileResult>>>(MockBehavior.Strict).Object,
+            new Mock<IQueryHandler<GetSharedUserParkRatingRankingsQuery, ApplicationResult<PagedResult<UserParkRatingRankingResult>>>>(MockBehavior.Strict).Object,
+            new Mock<IQueryHandler<GetSharedUserParkItemRatingRankingsQuery, ApplicationResult<PagedResult<UserParkItemRatingRankingResult>>>>(MockBehavior.Strict).Object,
+            previewHandler.Object);
     }
 }

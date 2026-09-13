@@ -4,4 +4,5 @@ public sealed record SharedUserRankingProfileResult(
     string OwnerUserId,
     string? DisplayName,
     DateTime PublishedAtUtc,
-    UserRatingStatsResult Stats);
+    UserRatingStatsResult Stats,
+    long PublicationVersion);

@@ -205,6 +205,7 @@ export interface PassportProfileSharePreview {
 
 export interface SharedPassportProfile {
   publishedAtUtc: string;
+  publicationVersion: number;
   passportProfile: PassportProfileSharePreview;
 }
 
@@ -289,6 +290,7 @@ export interface SharedVisitRecapContent {
 
 export interface SharedVisitRecap {
   publishedAtUtc: string;
+  publicationVersion: number;
   visitRecap: SharedVisitRecapContent;
 }
 
@@ -356,5 +358,6 @@ export interface YearRecapSharePreview {
 
 export interface SharedYearRecap {
   publishedAtUtc: string;
+  publicationVersion: number;
   yearRecap: YearRecapSharePreview;
 }

@@ -48,7 +48,8 @@ public sealed class SharedPassportProfilesControllerTests
             false);
         SharedPassportProfileResult shared = new SharedPassportProfileResult(
             new DateTime(2026, 9, 12, 0, 0, 0, DateTimeKind.Utc),
-            content);
+            content,
+            3);
         Mock<IQueryHandler<GetSharedPassportProfileQuery, ApplicationResult<SharedPassportProfileResult>>> handler =
             new Mock<IQueryHandler<GetSharedPassportProfileQuery, ApplicationResult<SharedPassportProfileResult>>>(MockBehavior.Strict);
         handler.Setup(value => value.HandleAsync(
@@ -65,6 +66,7 @@ public sealed class SharedPassportProfilesControllerTests
         OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
         SharedPassportProfileDto response = Assert.IsType<SharedPassportProfileDto>(ok.Value);
         Assert.Equal("Denain Évasion", Assert.Single(response.PassportProfile.Parks).Name);
+        Assert.Equal(3, response.PublicationVersion);
         Assert.Equal("no-referrer", controller.Response.Headers["Referrer-Policy"]);
         Assert.Null(typeof(PassportProfileSharePreviewDto).GetProperty("OwnerUserId"));
         Assert.Null(typeof(PassportProfileShareParkDto).GetProperty("ParkId"));

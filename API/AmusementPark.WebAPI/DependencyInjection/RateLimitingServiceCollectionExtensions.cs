@@ -30,6 +30,8 @@ public static class RateLimitingServiceCollectionExtensions
     private const int PublicReadPermitLimit = 120;
     private const int PublicReadWindowSeconds = 1;
     private const int PassportExportDownloadConcurrency = 1;
+    private const int ShareSocialImageRenderConcurrency = 2;
+    private const int ShareSocialImageRenderQueueLimit = 4;
 
     public static IServiceCollection AddApiRateLimiting(this IServiceCollection services, IConfiguration configuration)
     {
@@ -122,6 +124,12 @@ public static class RateLimitingServiceCollectionExtensions
                 limiterOptions.PermitLimit = 1;
                 limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
                 limiterOptions.QueueLimit = 0;
+            });
+            options.AddConcurrencyLimiter(RateLimitPolicyNames.ShareSocialImageRendering, limiterOptions =>
+            {
+                limiterOptions.PermitLimit = ShareSocialImageRenderConcurrency;
+                limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                limiterOptions.QueueLimit = ShareSocialImageRenderQueueLimit;
             });
             options.AddPolicy(RateLimitPolicyNames.ParkDataEditorOperationStatus, context =>
                 RateLimitPartition.Get(

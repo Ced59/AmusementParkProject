@@ -40,6 +40,7 @@ public sealed class SharedVisitRecapsController : ControllerBase
             ? this.Ok(new SharedVisitRecapDto
             {
                 PublishedAtUtc = result.Value.PublishedAtUtc,
+                PublicationVersion = result.Value.PublicationVersion,
                 VisitRecap = result.Value.Content.ToPublicHttp(),
             })
             : this.ToActionResult(result);

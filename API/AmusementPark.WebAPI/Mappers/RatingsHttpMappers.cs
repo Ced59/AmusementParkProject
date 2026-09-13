@@ -261,6 +261,7 @@ internal static class RatingsHttpMappers
         {
             DisplayName = value.DisplayName,
             PublishedAtUtc = value.PublishedAtUtc,
+            PublicationVersion = value.PublicationVersion,
             IsOwner = !string.IsNullOrWhiteSpace(currentUserId)
                 && string.Equals(value.OwnerUserId, currentUserId, StringComparison.Ordinal),
             Stats = value.Stats.ToSharedHttp(),

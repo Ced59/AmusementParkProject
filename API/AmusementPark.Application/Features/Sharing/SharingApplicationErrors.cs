@@ -152,4 +152,18 @@ public static class SharingApplicationErrors
             "share-publication.not-found",
             "Ce partage est introuvable ou n’est plus public.");
     }
+
+    public static ApplicationError InvalidSocialImageLanguage()
+    {
+        return ApplicationError.Validation(
+            "share-publication.social-image-language-invalid",
+            "La langue demandée pour l’image sociale n’est pas prise en charge.");
+    }
+
+    public static ApplicationError SocialImageNotAvailable()
+    {
+        return ApplicationError.NotFound(
+            "share-publication.social-image-not-found",
+            "Cette image sociale n’est plus disponible.");
+    }
 }

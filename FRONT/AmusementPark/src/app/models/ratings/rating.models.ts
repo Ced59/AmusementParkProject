@@ -114,6 +114,7 @@ export interface UserRankingShareVisibilityRequest {
 export interface SharedUserRankingProfile {
   displayName?: string | null;
   publishedAtUtc: string;
+  publicationVersion: number;
   isOwner: boolean;
   stats: SharedUserRatingStats;
 }

@@ -4,6 +4,8 @@ public sealed class SharedPassportProfileDto
 {
     public DateTime PublishedAtUtc { get; set; }
 
+    public long PublicationVersion { get; set; }
+
     public PassportProfileSharePreviewDto PassportProfile { get; set; } =
         new PassportProfileSharePreviewDto();
 }

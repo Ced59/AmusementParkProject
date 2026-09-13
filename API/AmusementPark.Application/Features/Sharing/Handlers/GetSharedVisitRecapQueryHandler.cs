@@ -71,7 +71,8 @@ public sealed class GetSharedVisitRecapQueryHandler
             ? ApplicationResult<SharedVisitRecapResult>.Success(
                 new SharedVisitRecapResult(
                     publication.PublishedAtUtc,
-                    snapshot.Content))
+                    snapshot.Content,
+                    publication.PublicationVersion))
             : ApplicationResult<SharedVisitRecapResult>.Failure(revalidation.Errors);
     }
 

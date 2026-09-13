@@ -268,12 +268,15 @@ export class SharedUserRankingsPageComponent implements OnInit {
     const title: string = this.translateService.instant('ratings.share.public.seoTitle', params);
     const description: string = this.translateService.instant('ratings.share.public.seoDescription', params);
     const imageAlt: string = this.translateService.instant('ratings.share.public.imageAlt', params);
-    const previewEndpoint: string = `${environment.apiBaseUrl}${this.buildPreviewPath()}`;
+    const previewEndpoint: string = `${environment.apiBaseUrl}${this.buildPreviewPath(profile)}`;
     this.seoService.applySharedUserRankingSeo(title, description, this.router.url, previewEndpoint, imageAlt);
   }
 
-  private buildPreviewPath(): string {
+  private buildPreviewPath(profile: SharedUserRankingProfile): string {
     const params: URLSearchParams = new URLSearchParams();
+    params.set('v', String(profile.publicationVersion));
+    params.set('t', '1');
+    params.set('language', this.currentLang());
     const category: ParkItemCategory | null = this.currentFilter().category;
     const type: ParkItemType | null = this.selectedAttractionType();
     if (category) {

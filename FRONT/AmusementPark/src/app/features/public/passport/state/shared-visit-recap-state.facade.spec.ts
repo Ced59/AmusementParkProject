@@ -48,6 +48,7 @@ describe('SharedVisitRecapStateFacade', () => {
 function createRecap(): SharedVisitRecap {
   return {
     publishedAtUtc: '2026-09-07T08:00:00Z',
+    publicationVersion: 3,
     visitRecap: {
       parkId: 'park-1',
       parkName: 'Denain Évasion',

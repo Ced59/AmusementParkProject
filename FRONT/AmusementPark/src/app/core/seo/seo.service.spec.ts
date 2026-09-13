@@ -2001,6 +2001,31 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:image:type"]')).toBe('image/png');
   });
 
+  it('exposes the versioned social image of a private-by-link passport story', () => {
+    service.applySharedVisitRecapSeo(
+      'Mon récap de visite',
+      'Un souvenir public de Denain Évasion.',
+      '/fr/passport/shared/visits/opaque-token',
+      '/api/sharing/social-images/visit/opaque-token/v7/t1/fr.png',
+      'Mon récap de visite à Denain Évasion',
+      [],
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,nofollow,noarchive');
+    expect(readMetaContent('meta[property="og:image"]')).toBe(
+      'http://localhost:4200/api/sharing/social-images/visit/opaque-token/v7/t1/fr.png',
+    );
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe(
+      'http://localhost:4200/api/sharing/social-images/visit/opaque-token/v7/t1/fr.png',
+    );
+    expect(readMetaContent('meta[property="og:image:alt"]')).toBe(
+      'Mon récap de visite à Denain Évasion',
+    );
+    expect(readMetaContent('meta[property="og:image:width"]')).toBe('1200');
+    expect(readMetaContent('meta[property="og:image:height"]')).toBe('630');
+    expect(readMetaContent('meta[property="og:image:type"]')).toBe('image/png');
+  });
+
   function readMetaContent(selector: string): string | null {
     return (
       documentRef.head.querySelector<HTMLMetaElement>(selector)?.content ?? null

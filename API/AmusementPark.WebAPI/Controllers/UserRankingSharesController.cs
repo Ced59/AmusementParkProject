@@ -175,6 +175,9 @@ public sealed class UserRankingSharesController : ControllerBase
         [FromRoute] string shareId,
         [FromQuery] string? category = null,
         [FromQuery] string? type = null,
+        [FromQuery(Name = "v")] long? publicationVersion = null,
+        [FromQuery(Name = "t")] int? templateVersion = null,
+        [FromQuery] string? language = null,
         CancellationToken cancellationToken = default)
     {
         ParkItemCategory? parsedCategory = string.IsNullOrWhiteSpace(category)
@@ -189,7 +192,10 @@ public sealed class UserRankingSharesController : ControllerBase
             new GetSharedUserRankingPreviewQuery(
                 shareId,
                 parsedCategory,
-                type.ToParkItemTypeFilter()),
+                type.ToParkItemTypeFilter(),
+                publicationVersion,
+                templateVersion,
+                language),
             cancellationToken);
         return result.IsSuccess && result.Value is not null
             ? this.File(result.Value.Content, result.Value.ContentType)

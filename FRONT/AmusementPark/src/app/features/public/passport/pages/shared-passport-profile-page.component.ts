@@ -9,6 +9,7 @@ import { CanonicalUrlService } from '@core/seo/canonical-url.service';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { ImagesApiService } from '@data-access/images/images-api.service';
+import { buildShareSocialImageUrl } from '@data-access/sharing/share-social-image-url';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective } from '@ui/primitives';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
@@ -101,6 +102,12 @@ export class SharedPassportProfilePageComponent implements OnInit {
     const params: Record<string, string> = { name: displayName };
     const title: string = this.translateService.instant('passportProfileShare.public.seoTitle', params);
     const description: string = this.translateService.instant('passportProfileShare.public.seoDescription', params);
+    const socialImageUrl: string = buildShareSocialImageUrl(
+      'passport',
+      this.shareId(),
+      shared.publicationVersion,
+      this.currentLang()
+    );
     const currentUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(this.router.url);
     const homePath: string = `/${this.currentLang()}/home`;
     const breadcrumbs: unknown[] = [{
@@ -111,6 +118,13 @@ export class SharedPassportProfilePageComponent implements OnInit {
         { '@type': 'ListItem', position: 2, name: this.translateService.instant('passportProfileShare.public.breadcrumb', params), item: currentUrl }
       ]
     }];
-    this.seoService.applySharedVisitRecapSeo(title, description, this.router.url, title, breadcrumbs);
+    this.seoService.applySharedVisitRecapSeo(
+      title,
+      description,
+      this.router.url,
+      socialImageUrl,
+      title,
+      breadcrumbs
+    );
   }
 }

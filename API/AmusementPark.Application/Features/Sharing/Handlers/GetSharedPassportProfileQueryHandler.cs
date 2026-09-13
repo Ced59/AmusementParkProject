@@ -70,7 +70,8 @@ public sealed class GetSharedPassportProfileQueryHandler
             ? ApplicationResult<SharedPassportProfileResult>.Success(
                 new SharedPassportProfileResult(
                     publication.PublishedAtUtc,
-                    snapshot.Content))
+                    snapshot.Content,
+                    publication.PublicationVersion))
             : ApplicationResult<SharedPassportProfileResult>.Failure(revalidation.Errors);
     }
 
