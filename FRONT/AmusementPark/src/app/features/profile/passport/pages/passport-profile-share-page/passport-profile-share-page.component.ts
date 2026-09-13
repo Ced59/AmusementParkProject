@@ -10,6 +10,7 @@ import {
 import { TranslationService } from '@app/services/translation.service';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
+import { OwnerShareModerationNoticeComponent } from '@ui/sharing/owner-share-moderation-notice/owner-share-moderation-notice.component';
 import { UiButtonDirective, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PassportProfileShareStateFacade } from '../../state/passport-profile-share-state.facade';
 import { ProfileComparisonInvitationCreatorComponent } from '../../components/profile-comparison-invitation-creator/profile-comparison-invitation-creator.component';
@@ -21,7 +22,7 @@ import { ProfileComparisonManagementComponent } from '../../components/profile-c
   styleUrl: './passport-profile-share-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PassportProfileShareStateFacade],
-  imports: [TranslateModule, PageStateComponent, UiButtonDirective, UiKickerComponent, UiSurfaceDirective, ProfileComparisonInvitationCreatorComponent, ProfileComparisonManagementComponent]
+  imports: [TranslateModule, PageStateComponent, OwnerShareModerationNoticeComponent, UiButtonDirective, UiKickerComponent, UiSurfaceDirective, ProfileComparisonInvitationCreatorComponent, ProfileComparisonManagementComponent]
 })
 export class PassportProfileSharePageComponent implements OnInit {
   private readonly router = inject(Router);

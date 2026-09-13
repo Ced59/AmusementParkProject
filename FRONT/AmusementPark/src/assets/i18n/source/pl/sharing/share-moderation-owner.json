@@ -1,0 +1,8 @@
+{
+  "shareModeration": {
+    "owner": {
+      "title": "To udostępnienie jest tymczasowo wstrzymane",
+      "description": "Publiczny link jest niedostępny podczas weryfikacji. Twoje prywatne dane pozostają bez zmian, a udostępnienie nadal możesz cofnąć."
+    }
+  }
+}

@@ -6542,6 +6542,10 @@
     "historyKind": "Fichas / créditos"
   },
   "shareModeration": {
+    "owner": {
+      "title": "Esta partilha está temporariamente suspensa",
+      "description": "A ligação pública fica indisponível durante a análise. Os teus dados privados permanecem intactos e ainda podes revogar a partilha."
+    },
     "public": {
       "openAction": "Denunciar este conteúdo",
       "description": "Ajuda-nos a proteger as partilhas públicas. O proprietário não verá a tua denúncia.",

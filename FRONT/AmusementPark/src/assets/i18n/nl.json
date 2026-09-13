@@ -6542,6 +6542,10 @@
     "historyKind": "Tokens / tegoeden"
   },
   "shareModeration": {
+    "owner": {
+      "title": "Deze gedeelde inhoud is tijdelijk opgeschort",
+      "description": "De openbare link is tijdens de beoordeling niet beschikbaar. Je privégegevens blijven intact en je kunt het delen nog steeds intrekken."
+    },
     "public": {
       "openAction": "Deze inhoud melden",
       "description": "Help ons openbare gedeelde inhoud veilig te houden. De eigenaar ziet je melding niet.",

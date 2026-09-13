@@ -6542,6 +6542,10 @@
     "historyKind": "Token / Guthaben"
   },
   "shareModeration": {
+    "owner": {
+      "title": "Diese Freigabe ist vorübergehend gesperrt",
+      "description": "Ihr öffentlicher Link ist während der Prüfung nicht erreichbar. Deine privaten Daten bleiben unverändert und du kannst die Freigabe weiterhin widerrufen."
+    },
     "public": {
       "openAction": "Inhalt melden",
       "description": "Hilf uns, öffentliche Freigaben zu schützen. Der Eigentümer sieht deine Meldung nicht.",

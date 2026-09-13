@@ -11,4 +11,5 @@ public sealed record SharePublicationSettingsResult(
     IReadOnlyCollection<ShareContentField> IncludedFields,
     ShareVisibility? Visibility = null,
     string? PublicationId = null,
-    long? PublicationVersion = null);
+    long? PublicationVersion = null,
+    bool IsModerationSuspended = false);

@@ -100,6 +100,7 @@ export interface UserRatingStats {
 
 export interface UserRankingShareSettings {
   isPublic: boolean;
+  isModerationSuspended?: boolean;
   publicationId?: string | null;
   publicationVersion?: number | null;
   shareId?: string | null;

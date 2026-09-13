@@ -125,6 +125,7 @@ public static class SharingHttpMappers
         return new SharePublicationSettingsDto
         {
             IsPublic = value.IsPublic,
+            IsModerationSuspended = value.IsModerationSuspended,
             PublicationId = value.PublicationId,
             PublicationVersion = value.PublicationVersion,
             ShareId = value.ShareId,

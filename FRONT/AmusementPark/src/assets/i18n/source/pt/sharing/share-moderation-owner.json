@@ -1,0 +1,8 @@
+{
+  "shareModeration": {
+    "owner": {
+      "title": "Esta partilha está temporariamente suspensa",
+      "description": "A ligação pública fica indisponível durante a análise. Os teus dados privados permanecem intactos e ainda podes revogar a partilha."
+    }
+  }
+}

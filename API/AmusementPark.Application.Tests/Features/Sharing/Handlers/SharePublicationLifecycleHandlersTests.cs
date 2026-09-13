@@ -107,6 +107,41 @@ public sealed class SharePublicationLifecycleHandlersTests
     }
 
     [Fact]
+    public async Task GetSettings_WhenModerationSuspended_ShouldKeepOwnerRevocationControls()
+    {
+        SharePublication publication = CreatePublishedPublication();
+        publication.SuspendByModeration(
+            ShareModerationReportId.Parse("report-1"),
+            Now);
+        Mock<ISharePublicationRepository> repository =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetOwnedBySourceAsync(
+                OwnerId,
+                SharePublicationType.PersonalRanking,
+                ScopeKey,
+                CancellationToken.None))
+            .ReturnsAsync(publication);
+        GetSharePublicationSettingsQueryHandler handler =
+            new GetSharePublicationSettingsQueryHandler(
+                repository.Object,
+                new[] { CreateSourceDescriptor(8) });
+
+        ApplicationResult<SharePublicationSettingsResult> result =
+            await handler.HandleAsync(
+                new GetSharePublicationSettingsQuery(
+                    OwnerId,
+                    SharePublicationType.PersonalRanking),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.IsPublic);
+        Assert.True(result.Value.IsModerationSuspended);
+        Assert.Equal(TokenValue, result.Value.ShareId);
+        Assert.Equal(Now.AddDays(-1), result.Value.PublishedAtUtc);
+        repository.VerifyAll();
+    }
+
+    [Fact]
     public async Task GetSettings_WhenApprovedSourceHasChanged_ShouldPresentTheShareAsPrivate()
     {
         SharePublication publication = CreatePublishedPublication();

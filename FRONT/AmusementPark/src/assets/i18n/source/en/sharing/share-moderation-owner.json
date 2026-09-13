@@ -1,0 +1,8 @@
+{
+  "shareModeration": {
+    "owner": {
+      "title": "This share is temporarily suspended",
+      "description": "Its public link is unavailable while it is reviewed. Your private data remains intact and you can still revoke the share."
+    }
+  }
+}

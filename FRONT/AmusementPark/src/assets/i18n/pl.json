@@ -6542,6 +6542,10 @@
     "historyKind": "Żetony / kredyty"
   },
   "shareModeration": {
+    "owner": {
+      "title": "To udostępnienie jest tymczasowo wstrzymane",
+      "description": "Publiczny link jest niedostępny podczas weryfikacji. Twoje prywatne dane pozostają bez zmian, a udostępnienie nadal możesz cofnąć."
+    },
     "public": {
       "openAction": "Zgłoś tę treść",
       "description": "Pomóż nam chronić publiczne udostępnienia. Właściciel nie zobaczy twojego zgłoszenia.",

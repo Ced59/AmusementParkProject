@@ -243,6 +243,7 @@ internal static class RatingsHttpMappers
         return new UserRankingShareSettingsDto
         {
             IsPublic = value.IsPublic,
+            IsModerationSuspended = value.IsModerationSuspended,
             PublicationId = value.PublicationId,
             PublicationVersion = value.PublicationVersion,
             ShareId = value.ShareId,

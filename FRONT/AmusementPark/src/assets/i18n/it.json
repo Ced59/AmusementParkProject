@@ -6542,6 +6542,10 @@
     "historyKind": "Gettoni / crediti"
   },
   "shareModeration": {
+    "owner": {
+      "title": "Questa condivisione è temporaneamente sospesa",
+      "description": "Il link pubblico non è disponibile durante la verifica. I tuoi dati privati restano intatti e puoi comunque revocare la condivisione."
+    },
     "public": {
       "openAction": "Segnala questo contenuto",
       "description": "Aiutaci a proteggere le condivisioni pubbliche. Il proprietario non vedrà la tua segnalazione.",

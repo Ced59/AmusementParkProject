@@ -1,0 +1,8 @@
+{
+  "shareModeration": {
+    "owner": {
+      "title": "Ce partage est temporairement suspendu",
+      "description": "Son lien public est inaccessible pendant son examen. Tes données privées restent intactes et tu peux toujours révoquer le partage."
+    }
+  }
+}

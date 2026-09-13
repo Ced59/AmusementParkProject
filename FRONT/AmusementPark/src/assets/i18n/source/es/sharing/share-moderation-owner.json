@@ -1,0 +1,8 @@
+{
+  "shareModeration": {
+    "owner": {
+      "title": "Este contenido está suspendido temporalmente",
+      "description": "Su enlace público no está disponible mientras se revisa. Tus datos privados permanecen intactos y aún puedes revocar el contenido compartido."
+    }
+  }
+}

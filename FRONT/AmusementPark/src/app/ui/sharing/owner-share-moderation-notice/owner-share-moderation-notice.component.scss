@@ -1,0 +1,37 @@
+:host {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.owner-moderation {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  min-width: 0;
+  max-width: 100%;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--c-gold) 52%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  color: var(--app-text);
+  background: color-mix(in srgb, var(--c-gold) 10%, var(--app-surface-2));
+  overflow: hidden;
+}
+
+.owner-moderation > i {
+  margin-top: 0.15rem;
+  color: var(--c-gold);
+}
+
+.owner-moderation strong,
+.owner-moderation p {
+  display: block;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.owner-moderation p {
+  margin-top: 0.2rem;
+  color: var(--app-text-muted);
+}

@@ -6542,6 +6542,10 @@
     "historyKind": "Fichas / créditos"
   },
   "shareModeration": {
+    "owner": {
+      "title": "Este contenido está suspendido temporalmente",
+      "description": "Su enlace público no está disponible mientras se revisa. Tus datos privados permanecen intactos y aún puedes revocar el contenido compartido."
+    },
     "public": {
       "openAction": "Denunciar este contenido",
       "description": "Ayúdanos a proteger los contenidos públicos. El propietario no verá tu denuncia.",

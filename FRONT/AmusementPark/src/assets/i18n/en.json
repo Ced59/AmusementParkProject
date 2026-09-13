@@ -6542,6 +6542,10 @@
     "historyKind": "Tokens / credits"
   },
   "shareModeration": {
+    "owner": {
+      "title": "This share is temporarily suspended",
+      "description": "Its public link is unavailable while it is reviewed. Your private data remains intact and you can still revoke the share."
+    },
     "public": {
       "openAction": "Report this content",
       "description": "Help us keep public shares safe. The owner will not see your report.",

@@ -230,6 +230,11 @@ Le composant public est replié par défaut. La page admin utilise des cartes qu
 s'adaptent à 320 px, des champs à largeur bornée, du retour à la ligne pour les
 textes et des actions empilées sur les écrans étroits. Le module admin reste chargé
 en lazy loading et n'alourdit pas le bundle public initial.
+Dans l'espace propriétaire, une publication suspendue reste identifiée comme une
+publication existante : un encart explique que seul son accès public est coupé,
+masque les actions inapplicables et conserve la révocation. Le propriétaire ne peut
+donc ni confondre la suspension avec une mise en privé, ni être poussé vers une
+nouvelle publication qui serait refusée par la règle de modération.
 
 ## Preuves automatisées
 
