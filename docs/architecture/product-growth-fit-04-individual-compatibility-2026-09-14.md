@@ -221,7 +221,7 @@ aucune dépendance supplémentaire n'est introduite.
 
 ## 10. Preuves automatisées
 
-Quatre-vingt-dix scénarios FIT-04 couvrent notamment :
+Quatre-vingt-quatorze scénarios FIT-04 couvrent notamment :
 
 - absence, expiration et futur des règles ;
 - minimum, maximum et égalité exacte aux seuils ;
@@ -241,6 +241,8 @@ Quatre-vingt-dix scénarios FIT-04 couvrent notamment :
 - départage déterministe des seuils égaux par l'exigence d'accompagnement la plus stricte ;
 - incohérence explicite entre âge d'accompagnateur et absence d'accompagnement ;
 - accompagnement inévitable et indisponible évalué avant une taille ou une tranche d'âge manquante ;
+- accompagnateur certainement trop jeune évalué avant une taille ou une tranche d'âge manquante ;
+- accompagnement porté par une taille maximale évalué même sans taille personnelle ;
 - âge d'accompagnateur extérieur au domaine accepté ;
 - seuil d'âge visiteur extérieur au domaine accepté ;
 - contradiction entre sources actives pour un même seuil de taille ou d'âge ;

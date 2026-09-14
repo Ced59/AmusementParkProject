@@ -118,6 +118,25 @@ internal static class AttractionPhysicalRestrictionEvaluator
 
         if (!profile.HeightCentimeters.HasValue)
         {
+            List<AttractionAccessCondition> unavoidableAccompanimentConditions = maximums
+                .Where(static condition => condition.RequiresAccompaniment == true)
+                .Concat(accompanimentIsUnavoidable
+                    ? accompaniedMinimums
+                    : Array.Empty<AttractionAccessCondition>())
+                .Distinct()
+                .ToList();
+            if (unavoidableAccompanimentConditions.Count > 0)
+            {
+                AttractionAccompanimentEvaluator.Evaluate(
+                    profile,
+                    unavoidableAccompanimentConditions,
+                    context);
+                if (context.HasViolation)
+                {
+                    return;
+                }
+            }
+
             context.AddUnknown(
                 AttractionCompatibilityReasonCode.HeightMissing,
                 SelectStableCondition(heightConditions));
@@ -298,6 +317,18 @@ internal static class AttractionPhysicalRestrictionEvaluator
         AttractionAccessCondition representative = accompaniedMinimum ?? aloneMinimum!;
         if (ageRange is null)
         {
+            if (accompanimentIsUnavoidable)
+            {
+                AttractionAccompanimentEvaluator.Evaluate(
+                    profile,
+                    accompaniedMinimums,
+                    context);
+                if (context.HasViolation)
+                {
+                    return;
+                }
+            }
+
             context.AddUnknown(
                 AttractionCompatibilityReasonCode.AgeRangeMissing,
                 representative);

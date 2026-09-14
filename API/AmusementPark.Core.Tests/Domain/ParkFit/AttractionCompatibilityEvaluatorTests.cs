@@ -1025,6 +1025,50 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Theory]
+    [InlineData(true, false, null)]
+    [InlineData(true, true, 15)]
+    [InlineData(false, true, 15)]
+    public void Evaluate_WhenHeightIsMissingButAccompanimentMustFail_ShouldReject(
+        bool useMaximum,
+        bool canBeAccompanied,
+        int? companionMaximumAge)
+    {
+        ParkFitMemberProfile profile = new ParkFitMemberProfile(
+            canBeAccompanied: canBeAccompanied,
+            availableCompanionAgeRange: companionMaximumAge.HasValue
+                ? new ParkFitAgeRange(12, companionMaximumAge.Value)
+                : null);
+        AttractionAccessCondition condition = useMaximum
+            ? BuildHeightCondition(AttractionAccessConditionType.MaxHeight, 200)
+            : BuildAccompaniedHeightCondition(100, minimumCompanionAge: 16);
+        condition.RequiresAccompaniment = true;
+        condition.MinimumCompanionAge = 16;
+
+        AttractionCompatibility result = this.Evaluate(profile, condition);
+
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code is AttractionCompatibilityReasonCode.AccompanimentUnavailable
+                or AttractionCompatibilityReasonCode.CompanionTooYoung);
+    }
+
+    [Fact]
+    public void Evaluate_WhenAgeIsMissingButCompanionIsTooYoung_ShouldReject()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                canBeAccompanied: true,
+                availableCompanionAgeRange: new ParkFitAgeRange(12, 15)),
+            BuildAccompaniedAgeCondition(10, minimumCompanionAge: 16));
+
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.CompanionTooYoung);
+    }
+
+    [Theory]
     [InlineData(AttractionAccessConditionType.PregnancyRestriction)]
     [InlineData(AttractionAccessConditionType.HeartRestriction)]
     [InlineData(AttractionAccessConditionType.BackNeckRestriction)]
