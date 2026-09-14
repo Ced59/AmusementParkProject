@@ -1,6 +1,20 @@
 {
-  "version": "5.3.23",
+  "version": "5.3.24",
   "history": [
+    {
+      "version": "5.3.24",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Les validations de déploiement gagnent en stabilité.",
+        "en": "Deployment validation is now more stable.",
+        "de": "Die Bereitstellungsprüfung ist jetzt stabiler.",
+        "nl": "De validatie van implementaties is nu stabieler.",
+        "it": "La convalida della distribuzione è ora più stabile.",
+        "es": "La validación del despliegue es ahora más estable.",
+        "pl": "Weryfikacja wdrożenia jest teraz stabilniejsza.",
+        "pt": "A validação da implementação está agora mais estável."
+      }
+    },
     {
       "version": "5.3.23",
       "releasedAt": "2026-09-14",
