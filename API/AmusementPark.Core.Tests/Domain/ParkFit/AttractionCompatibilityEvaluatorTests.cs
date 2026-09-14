@@ -611,6 +611,24 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenVisitorAgeThresholdExceedsTheSupportedDomain_ShouldReturnUnknown()
+    {
+        AttractionAccessCondition condition = BuildAgeCondition(
+            AttractionAccessConditionType.MinAge,
+            131);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(ageRange: new ParkFitAgeRange(18, 70)),
+            condition);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.SemanticIssues.Contains(
+                AttractionAccessConditionSemanticIssue.InvalidValue));
+    }
+
+    [Fact]
     public void Evaluate_WhenConditionTargetsOneVehicle_ShouldNotPromiseAttractionWideAccess()
     {
         AttractionAccessCondition condition = BuildHeightCondition(

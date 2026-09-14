@@ -36,6 +36,7 @@ public static class AttractionAccessConditionSemanticEvaluator
                     static unit => unit is AttractionAccessConditionUnit.Centimeter
                         or AttractionAccessConditionUnit.Inch,
                     requireWholeValue: false,
+                    maximumValue: null,
                     issues);
                 break;
             case AttractionAccessConditionType.MinAge:
@@ -44,6 +45,7 @@ public static class AttractionAccessConditionSemanticEvaluator
                     condition,
                     static unit => unit == AttractionAccessConditionUnit.Year,
                     requireWholeValue: true,
+                    maximumValue: MaximumSupportedAgeYears,
                     issues);
                 break;
             case AttractionAccessConditionType.Custom:
@@ -78,6 +80,7 @@ public static class AttractionAccessConditionSemanticEvaluator
         AttractionAccessCondition condition,
         Func<AttractionAccessConditionUnit, bool> isAllowedUnit,
         bool requireWholeValue,
+        double? maximumValue,
         ICollection<AttractionAccessConditionSemanticIssue> issues)
     {
         if (!condition.Value.HasValue)
@@ -86,6 +89,7 @@ public static class AttractionAccessConditionSemanticEvaluator
         }
         else if (!double.IsFinite(condition.Value.Value)
             || condition.Value.Value <= 0
+            || (maximumValue.HasValue && condition.Value.Value > maximumValue.Value)
             || (requireWholeValue && condition.Value.Value != Math.Truncate(condition.Value.Value)))
         {
             issues.Add(AttractionAccessConditionSemanticIssue.InvalidValue);
