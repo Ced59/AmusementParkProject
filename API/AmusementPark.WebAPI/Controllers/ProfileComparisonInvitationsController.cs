@@ -4,7 +4,6 @@ using AmusementPark.Application.Features.Sharing.Commands;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.WebAPI.Authorization;
-using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Contracts.Sharing;
 using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
@@ -15,7 +14,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using Microsoft.Extensions.Options;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -32,7 +30,6 @@ public sealed class ProfileComparisonInvitationsController : ControllerBase
         ApplicationResult<ProfileComparisonInvitationPreviewResult>> previewHandler;
     private readonly ICommandHandler<AcceptProfileComparisonInvitationCommand,
         ApplicationResult<ProfileComparisonInvitationAcceptanceResult>> acceptHandler;
-    private readonly SharePublicationRolloutSettings rolloutSettings;
 
     public ProfileComparisonInvitationsController(
         ICommandHandler<CreateProfileComparisonInvitationCommand,
@@ -40,13 +37,11 @@ public sealed class ProfileComparisonInvitationsController : ControllerBase
         IQueryHandler<GetProfileComparisonInvitationPreviewQuery,
             ApplicationResult<ProfileComparisonInvitationPreviewResult>> previewHandler,
         ICommandHandler<AcceptProfileComparisonInvitationCommand,
-            ApplicationResult<ProfileComparisonInvitationAcceptanceResult>> acceptHandler,
-        IOptions<SharePublicationRolloutSettings> rolloutSettings)
+            ApplicationResult<ProfileComparisonInvitationAcceptanceResult>> acceptHandler)
     {
         this.createHandler = createHandler;
         this.previewHandler = previewHandler;
         this.acceptHandler = acceptHandler;
-        this.rolloutSettings = rolloutSettings.Value;
     }
 
     [HttpPost]
@@ -57,11 +52,6 @@ public sealed class ProfileComparisonInvitationsController : ControllerBase
         [FromBody] CreateProfileComparisonInvitationRequestDto request,
         CancellationToken cancellationToken = default)
     {
-        if (!this.rolloutSettings.Enabled)
-        {
-            return this.StatusCode(StatusCodes.Status503ServiceUnavailable);
-        }
-
         string? userId = this.User.GetUserId();
         if (string.IsNullOrWhiteSpace(userId))
         {
@@ -88,11 +78,6 @@ public sealed class ProfileComparisonInvitationsController : ControllerBase
         [FromRoute] string token,
         CancellationToken cancellationToken = default)
     {
-        if (!this.rolloutSettings.Enabled)
-        {
-            return this.StatusCode(StatusCodes.Status503ServiceUnavailable);
-        }
-
         string? userId = this.User.GetUserId();
         if (string.IsNullOrWhiteSpace(userId))
         {
@@ -116,11 +101,6 @@ public sealed class ProfileComparisonInvitationsController : ControllerBase
         [FromRoute] string token,
         CancellationToken cancellationToken = default)
     {
-        if (!this.rolloutSettings.Enabled)
-        {
-            return this.StatusCode(StatusCodes.Status503ServiceUnavailable);
-        }
-
         string? userId = this.User.GetUserId();
         if (string.IsNullOrWhiteSpace(userId))
         {

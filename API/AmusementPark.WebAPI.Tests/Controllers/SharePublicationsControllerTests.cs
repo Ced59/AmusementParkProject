@@ -6,7 +6,6 @@ using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Commands;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Sharing;
-using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.Contracts.Sharing;
 using AmusementPark.WebAPI.Filters;
@@ -16,7 +15,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using Microsoft.Extensions.Options;
 using Moq;
 using Xunit;
 
@@ -122,23 +120,6 @@ public sealed class SharePublicationsControllerTests
     }
 
     [Fact]
-    public async Task PreviewAsync_WhenRollingCandidateIsNotCompatible_ShouldReturnServiceUnavailable()
-    {
-        Mock<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>> handler =
-            new Mock<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>>(MockBehavior.Strict);
-        SharePublicationsController controller = CreateController(handler.Object, false);
-        controller.ControllerContext = CreateControllerContext("owner-1");
-
-        IActionResult result = await controller.PreviewAsync(
-            new SharePublicationPreviewRequestDto(),
-            CancellationToken.None);
-
-        StatusCodeResult unavailable = Assert.IsType<StatusCodeResult>(result);
-        Assert.Equal(StatusCodes.Status503ServiceUnavailable, unavailable.StatusCode);
-        handler.VerifyNoOtherCalls();
-    }
-
-    [Fact]
     public async Task PublishAsync_ShouldForwardOnlyTheAuthenticatedApprovedPreview()
     {
         SharePublicationSettingsResult settings = new SharePublicationSettingsResult(
@@ -162,8 +143,7 @@ public sealed class SharePublicationsControllerTests
             .ReturnsAsync(ApplicationResult<SharePublicationSettingsResult>.Success(settings));
         SharePublicationsController controller = CreateController(
             Mock.Of<IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>>>(MockBehavior.Strict),
-            true,
-            publishHandler.Object);
+            publishHandler: publishHandler.Object);
         controller.ControllerContext = CreateControllerContext("owner-1");
 
         IActionResult result = await controller.PublishAsync(
@@ -305,6 +285,21 @@ public sealed class SharePublicationsControllerTests
         Assert.Equal(RateLimitPolicyNames.SharePublicationConfirmations, rateLimit.PolicyName);
     }
 
+    [Theory]
+    [InlineData(nameof(SharePublicationsController.PreviewAsync))]
+    [InlineData(nameof(SharePublicationsController.PublishAsync))]
+    [InlineData(nameof(SharePublicationsController.RotateLinkAsync))]
+    [InlineData(nameof(SharePublicationsController.RevokeAsync))]
+    public void Endpoint_ShouldNotAdvertiseTheRetiredRolloutFailure(string actionName)
+    {
+        MethodInfo action = typeof(SharePublicationsController).GetMethod(actionName)
+            ?? throw new InvalidOperationException("Share publication action not found.");
+
+        Assert.DoesNotContain(
+            action.GetCustomAttributes<ProducesResponseTypeAttribute>(),
+            static response => response.StatusCode == StatusCodes.Status503ServiceUnavailable);
+    }
+
     private static ControllerContext CreateControllerContext(string userId)
     {
         ClaimsIdentity identity = new ClaimsIdentity(
@@ -325,7 +320,6 @@ public sealed class SharePublicationsControllerTests
 
     private static SharePublicationsController CreateController(
         IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>> handler,
-        bool enabled = true,
         ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>? publishHandler = null,
         ICommandHandler<RotateShareIdCommand, ApplicationResult<SharePublicationSettingsResult>>? rotateHandler = null,
         ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>? revokeHandler = null)
@@ -334,7 +328,6 @@ public sealed class SharePublicationsControllerTests
             handler,
             publishHandler ?? Mock.Of<ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict),
             rotateHandler ?? Mock.Of<ICommandHandler<RotateShareIdCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict),
-            revokeHandler ?? Mock.Of<ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict),
-            Options.Create(new SharePublicationRolloutSettings { Enabled = enabled }));
+            revokeHandler ?? Mock.Of<ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>>>(MockBehavior.Strict));
     }
 }

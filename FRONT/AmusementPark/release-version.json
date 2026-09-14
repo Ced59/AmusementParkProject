@@ -1,6 +1,20 @@
 {
-  "version": "5.3.12",
+  "version": "5.3.13",
   "history": [
+    {
+      "version": "5.3.13",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Les récits partagés sont désormais pleinement disponibles.",
+        "en": "Shared stories are now fully available.",
+        "de": "Geteilte Geschichten sind jetzt vollständig verfügbar.",
+        "nl": "Gedeelde verhalen zijn nu volledig beschikbaar.",
+        "it": "I racconti condivisi sono ora pienamente disponibili.",
+        "es": "Las historias compartidas ya están plenamente disponibles.",
+        "pl": "Udostępniane historie są teraz w pełni dostępne.",
+        "pt": "As histórias partilhadas estão agora totalmente disponíveis."
+      }
+    },
     {
       "version": "5.3.12",
       "releasedAt": "2026-09-14",

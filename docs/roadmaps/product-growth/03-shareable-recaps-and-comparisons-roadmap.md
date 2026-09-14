@@ -536,6 +536,22 @@ Les preuves, la matrice métier et le diagramme du flux sont détaillés dans
 mise en production et retirer les protections transitoires sans dépendre d'une
 cohorte réelle.
 
+### État de `SHARE-15` au 14 septembre 2026
+
+Le partage est généralisé techniquement en version 5.3.13. Le flag transitoire
+`Sharing:SharePublicationPreview` est supprimé de l'API, de l'injection de
+dépendances, de Compose et du déploiement candidat : aucune configuration dormante
+ne peut désormais remplacer les règles métier par une indisponibilité `503`.
+
+Les protections permanentes restent inchangées : compte activé, rate limiting,
+aperçu exact, approbation versionnée, privé par défaut, jetons opaques, rotation,
+révocation, caches convergents et consentement bilatéral des comparaisons. La phase
+communautaire est explicitement non bloquante conformément à la décision produit ;
+aucune observation de cohorte réelle n'est inventée. Les preuves sont détaillées
+dans
+[`product-growth-share-15-general-availability-2026-09-14.md`](../../architecture/product-growth-share-15-general-availability-2026-09-14.md).
+Le gate technique `SHARE-G` est franchi et la roadmap SHARE est complète.
+
 ## 1. Vision produit
 
 Après avoir enregistré une visite ou une année de visites, l’utilisateur peut générer un récit synthétique :
@@ -1135,9 +1151,13 @@ Ne pas mesurer dans un outil tiers :
 | `SHARE-12` | Résultat de comparaison et seuils | Pas de pourcentage sous seuil |
 | `SHARE-13` | Signalement/modération minimale | Champs publics opérables |
 | `SHARE-14` | Export/suppression/analytics | Cycle de vie complet |
-| `SHARE-15` | Cohorte bêta et retrait des flags | Gate franchie |
+| `SHARE-15` | Généralisation technique et retrait du flag transitoire | Gate franchie |
 
 ## 21. Gate finale `SHARE-G`
+
+> État au 14 septembre 2026 : gate technique franchi en 5.3.13. La validation par
+> cohorte réelle est volontairement ignorée sur décision produit, sans prétendre
+> disposer de résultats utilisateurs qui n'ont pas été collectés.
 
 - aucun objet n’est public par défaut ;
 - chaque champ visible résulte d’une politique explicite ;

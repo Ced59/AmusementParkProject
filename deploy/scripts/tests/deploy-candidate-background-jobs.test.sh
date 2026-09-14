@@ -3,6 +3,7 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 deploy_script="$(cd "${script_dir}/.." && pwd)/deploy.sh"
+compose_file="$(cd "${script_dir}/../.." && pwd)/compose.prod.yml"
 candidate_function="$(sed -n '/^start_deploy_candidate() {$/,/^}$/p' "${deploy_script}")"
 
 if ! grep -Fq 'if [ "${service_name}" = "api" ]; then' <<< "${candidate_function}"; then
@@ -15,8 +16,13 @@ if ! grep -Fq -- '-e DurableBackgroundJobs__Worker__Enabled=false' <<< "${candid
   exit 1
 fi
 
-if ! grep -Fq -- '-e Sharing__SharePublicationPreview__Enabled=false' <<< "${candidate_function}"; then
-  echo 'The API deployment candidate must disable share previews until legacy writers are gone.' >&2
+if grep -Fq -- 'Sharing__SharePublicationPreview__Enabled' <<< "${candidate_function}"; then
+  echo 'The deployment candidate must not resurrect the retired share preview flag.' >&2
+  exit 1
+fi
+
+if grep -Fq -- 'Sharing__SharePublicationPreview__Enabled' "${compose_file}"; then
+  echo 'The production composition must not expose the retired share preview flag.' >&2
   exit 1
 fi
 
