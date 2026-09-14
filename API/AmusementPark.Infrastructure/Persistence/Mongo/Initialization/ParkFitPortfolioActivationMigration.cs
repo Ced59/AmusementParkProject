@@ -1,5 +1,4 @@
 using AmusementPark.Core.Domain.ParkFit;
-using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkFit;
 using MongoDB.Driver;
@@ -7,8 +6,8 @@ using MongoDB.Driver;
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
 
 /// <summary>
-/// Fige une seule fois le portefeuille historique en créant un statut actif explicite.
-/// Les parcs créés ensuite restent non activés tant qu'un administrateur ne les valide pas.
+/// Initialise une seule fois les états absents en non activés.
+/// Une activation reste ainsi toujours une décision administrative explicite.
 /// </summary>
 internal sealed class ParkFitPortfolioActivationMigration
 {
@@ -41,14 +40,9 @@ internal sealed class ParkFitPortfolioActivationMigration
             .FirstOrDefaultAsync(cancellationToken);
         if (migration is null)
         {
-            List<string> candidateParkIds = await this.parks
-                .Find(BuildLegacyParkFilter())
-                .Project(static park => park.Id)
-                .ToListAsync(cancellationToken);
             DateTime startedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
             await TryCreateMigrationPlanAsync(
                 this.migrations,
-                candidateParkIds,
                 startedAtUtc,
                 cancellationToken);
             migration = await this.migrations
@@ -69,24 +63,31 @@ internal sealed class ParkFitPortfolioActivationMigration
             return 0;
         }
 
-        long activatedParkCount = 0;
+        long initializedParkCount = 0;
         DateTime migratedAtUtc = migration.StartedAtUtc;
-        foreach (string[] batchParkIds in migration.CandidateParkIds
-            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
-            .Distinct(StringComparer.Ordinal)
-            .Chunk(BatchSize))
+        IFindFluent<ParkDocument, ParkDocument> find = this.parks
+            .Find(BuildPortfolioParkFilter())
+            .Project(static park => new ParkDocument { Id = park.Id });
+        find.Options.BatchSize = BatchSize;
+        using IAsyncCursor<ParkDocument> cursor = await find.ToCursorAsync(cancellationToken);
+        while (await cursor.MoveNextAsync(cancellationToken))
         {
-            List<WriteModel<ParkFitOperationalStatusDocument>> writes = batchParkIds
-                .Select(parkId => new UpdateOneModel<ParkFitOperationalStatusDocument>(
+            List<WriteModel<ParkFitOperationalStatusDocument>> writes = cursor.Current
+                .Where(static park => !string.IsNullOrWhiteSpace(park.Id))
+                .Select(park => new UpdateOneModel<ParkFitOperationalStatusDocument>(
                     Builders<ParkFitOperationalStatusDocument>.Filter.Eq(
                         static status => status.Id,
-                        parkId),
-                    BuildLegacyStatusUpsert(migratedAtUtc))
+                        park.Id),
+                    BuildDefaultStatusUpsert(migratedAtUtc))
                 {
                     IsUpsert = true,
                 })
                 .Cast<WriteModel<ParkFitOperationalStatusDocument>>()
                 .ToList();
+            if (writes.Count == 0)
+            {
+                continue;
+            }
 
             try
             {
@@ -95,7 +96,7 @@ internal sealed class ParkFitPortfolioActivationMigration
                         writes,
                         new BulkWriteOptions { IsOrdered = false },
                         cancellationToken);
-                activatedParkCount += result.Upserts.Count;
+                initializedParkCount += result.Upserts.Count;
             }
             catch (MongoBulkWriteException<ParkFitOperationalStatusDocument> exception)
                 when (exception.WriteErrors.Count > 0
@@ -116,17 +117,16 @@ internal sealed class ParkFitPortfolioActivationMigration
                 static value => value.CompletedAtUtc,
                 completedAtUtc),
             cancellationToken: cancellationToken);
-        return activatedParkCount;
+        return initializedParkCount;
     }
 
     internal static async Task TryCreateMigrationPlanAsync(
         IMongoCollection<ParkFitPortfolioMigrationDocument> migrations,
-        IReadOnlyCollection<string> candidateParkIds,
         DateTime startedAtUtc,
         CancellationToken cancellationToken)
     {
         UpdateDefinition<ParkFitPortfolioMigrationDocument> update =
-            BuildMigrationPlanUpsert(candidateParkIds, startedAtUtc);
+            BuildMigrationPlanUpsert(startedAtUtc);
         try
         {
             await migrations.UpdateOneAsync(
@@ -140,45 +140,28 @@ internal sealed class ParkFitPortfolioActivationMigration
         catch (MongoWriteException exception)
             when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
         {
-            // Une autre instance a figé la cohorte entre-temps. La lecture qui
-            // suit réutilisera obligatoirement ses identifiants persistés.
+            // Une autre instance a démarré la même migration. La lecture qui
+            // suit réutilisera son plan idempotent.
         }
     }
 
     internal static UpdateDefinition<ParkFitPortfolioMigrationDocument>
-        BuildMigrationPlanUpsert(
-            IReadOnlyCollection<string> candidateParkIds,
-            DateTime startedAtUtc)
+        BuildMigrationPlanUpsert(DateTime startedAtUtc)
     {
-        List<string> normalizedParkIds = candidateParkIds
-            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
-            .Distinct(StringComparer.Ordinal)
-            .ToList();
         return Builders<ParkFitPortfolioMigrationDocument>.Update
-            .SetOnInsert(
-                static migration => migration.CandidateParkIds,
-                normalizedParkIds)
             .SetOnInsert(static migration => migration.StartedAtUtc, startedAtUtc);
     }
 
-    internal static FilterDefinition<ParkDocument> BuildLegacyParkFilter()
+    internal static FilterDefinition<ParkDocument> BuildPortfolioParkFilter()
     {
-        return Builders<ParkDocument>.Filter.Eq(static park => park.IsVisible, true)
-            & Builders<ParkDocument>.Filter.Eq(
-                static park => park.Status,
-                ParkStatus.Operating)
-            & Builders<ParkDocument>.Filter.Ne(static park => park.Latitude, null)
-            & Builders<ParkDocument>.Filter.Ne(static park => park.Longitude, null)
-            & Builders<ParkDocument>.Filter.Or(
-                Builders<ParkDocument>.Filter.Ne(static park => park.Latitude, 0d),
-                Builders<ParkDocument>.Filter.Ne(static park => park.Longitude, 0d));
+        return Builders<ParkDocument>.Filter.Ne(static park => park.Id, string.Empty);
     }
 
-    internal static UpdateDefinition<ParkFitOperationalStatusDocument> BuildLegacyStatusUpsert(
+    internal static UpdateDefinition<ParkFitOperationalStatusDocument> BuildDefaultStatusUpsert(
         DateTime migratedAtUtc)
     {
         return Builders<ParkFitOperationalStatusDocument>.Update
-            .SetOnInsert(static status => status.State, ParkFitRecommendationState.Active)
+            .SetOnInsert(static status => status.State, ParkFitRecommendationState.NotActivated)
             .SetOnInsert(static status => status.Revision, 0)
             .SetOnInsert(
                 static status => status.Decisions,

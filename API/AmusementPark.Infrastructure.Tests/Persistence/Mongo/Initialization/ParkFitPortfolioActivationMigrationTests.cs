@@ -15,27 +15,23 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Initialization;
 public sealed class ParkFitPortfolioActivationMigrationTests
 {
     [Fact]
-    public void BuildLegacyParkFilter_ShouldPreserveOnlyThePreviouslyEligiblePortfolio()
+    public void BuildPortfolioParkFilter_ShouldSelectPersistedParks()
     {
         BsonDocument filter = Render(
-            ParkFitPortfolioActivationMigration.BuildLegacyParkFilter());
+            ParkFitPortfolioActivationMigration.BuildPortfolioParkFilter());
 
-        Assert.True(filter["isVisible"].AsBoolean);
-        Assert.Equal("Operating", filter["status"].AsString);
-        Assert.True(filter.Contains("latitude"));
-        Assert.True(filter.Contains("longitude"));
-        Assert.True(filter.Contains("$or"));
+        Assert.Equal(string.Empty, filter["_id"]["$ne"].AsString);
     }
 
     [Fact]
-    public void BuildLegacyStatusUpsert_ShouldCreateAnExplicitUnversionedActiveState()
+    public void BuildDefaultStatusUpsert_ShouldCreateAnExplicitNotActivatedState()
     {
         DateTime migratedAtUtc = new DateTime(2026, 9, 14, 12, 0, 0, DateTimeKind.Utc);
         BsonDocument update = Render(
-            ParkFitPortfolioActivationMigration.BuildLegacyStatusUpsert(migratedAtUtc));
+            ParkFitPortfolioActivationMigration.BuildDefaultStatusUpsert(migratedAtUtc));
         BsonDocument inserted = update["$setOnInsert"].AsBsonDocument;
 
-        Assert.Equal("Active", inserted["state"].AsString);
+        Assert.Equal("NotActivated", inserted["state"].AsString);
         Assert.Equal(0, inserted["revision"].AsInt64);
         Assert.Empty(inserted["decisions"].AsBsonArray);
         Assert.Equal(migratedAtUtc, inserted["createdAt"].ToUniversalTime());
@@ -56,7 +52,6 @@ public sealed class ParkFitPortfolioActivationMigrationTests
 
         await ParkFitPortfolioActivationMigration.TryCreateMigrationPlanAsync(
             migrations.Object,
-            new[] { "park-1" },
             new DateTime(2026, 9, 14, 12, 0, 0, DateTimeKind.Utc),
             CancellationToken.None);
 
@@ -64,18 +59,14 @@ public sealed class ParkFitPortfolioActivationMigrationTests
     }
 
     [Fact]
-    public void BuildMigrationPlanUpsert_ShouldFreezeNormalizedCandidateIds()
+    public void BuildMigrationPlanUpsert_ShouldPersistTheStartTime()
     {
         DateTime startedAtUtc = new DateTime(2026, 9, 14, 12, 0, 0, DateTimeKind.Utc);
         BsonDocument update = Render(
             ParkFitPortfolioActivationMigration.BuildMigrationPlanUpsert(
-                new[] { "park-1", "", "park-1", "park-2" },
                 startedAtUtc));
         BsonDocument inserted = update["$setOnInsert"].AsBsonDocument;
 
-        Assert.Equal(
-            new[] { "park-1", "park-2" },
-            inserted["candidateParkIds"].AsBsonArray.Select(static value => value.AsString));
         Assert.Equal(startedAtUtc, inserted["startedAtUtc"].ToUniversalTime());
     }
 

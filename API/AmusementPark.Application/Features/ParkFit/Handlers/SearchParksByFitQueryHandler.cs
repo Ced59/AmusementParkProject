@@ -1,15 +1,12 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
-using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkFit.Models;
-using AmusementPark.Application.Features.ParkFit.Ports;
 using AmusementPark.Application.Features.ParkFit.Queries;
 using AmusementPark.Application.Features.ParkFit.Results;
 using AmusementPark.Application.Features.ParkFit.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
-using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.ParkFit;
 using AmusementPark.Core.Domain.Parks;
@@ -22,10 +19,9 @@ namespace AmusementPark.Application.Features.ParkFit.Handlers;
 public sealed class SearchParksByFitQueryHandler
     : IQueryHandler<SearchParksByFitQuery, ApplicationResult<ParkFitSearchResult>>
 {
-    private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IParkOpeningHoursRepository openingHoursRepository;
-    private readonly IParkFitOperationalStatusRepository operationalStatusRepository;
+    private readonly ParkFitCandidatePortfolioLoader candidatePortfolioLoader;
     private readonly IApplicationValidator<SearchParksByFitQuery> validator;
     private readonly ParkFitSearchParkEvaluator parkEvaluator;
     private readonly TimeProvider timeProvider;
@@ -33,18 +29,16 @@ public sealed class SearchParksByFitQueryHandler
         new ParkFitDataQualityAssessor();
 
     public SearchParksByFitQueryHandler(
-        IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IParkOpeningHoursRepository openingHoursRepository,
-        IParkFitOperationalStatusRepository operationalStatusRepository,
+        ParkFitCandidatePortfolioLoader candidatePortfolioLoader,
         IApplicationValidator<SearchParksByFitQuery> validator,
         ParkFitSearchParkEvaluator parkEvaluator,
         TimeProvider? timeProvider = null)
     {
-        this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.openingHoursRepository = openingHoursRepository;
-        this.operationalStatusRepository = operationalStatusRepository;
+        this.candidatePortfolioLoader = candidatePortfolioLoader;
         this.validator = validator;
         this.parkEvaluator = parkEvaluator;
         this.timeProvider = timeProvider ?? TimeProvider.System;
@@ -63,50 +57,28 @@ public sealed class SearchParksByFitQueryHandler
         string? countryCode = string.IsNullOrWhiteSpace(query.CountryCode)
             ? null
             : query.CountryCode.Trim().ToUpperInvariant();
-        PagedResult<Park> candidatePage = await this.parkRepository.GetPageAsync(
-            1,
-            ParkFitSearchLimits.MaximumInspectedCandidateCount,
-            includeHidden: false,
-            isVisible: true,
-            adminReviewStatus: null,
-            type: null,
-            countryCode: countryCode,
-            hasValidCoordinates: true,
-            closedFilter: ClosedEntityFilter.OpenOnly,
-            cancellationToken: cancellationToken,
-            sortField: ParkAdminSortField.Name);
-        List<string> parkIds = candidatePage.Items
+        ParkFitCandidatePortfolio portfolio = await this.candidatePortfolioLoader.LoadAsync(
+            countryCode,
+            cancellationToken);
+        List<string> activeParkIds = portfolio.ActiveCandidates
             .Select(static park => park.Id)
             .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
             .Distinct(StringComparer.Ordinal)
             .ToList();
         DateTime evaluatedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
 
-        if (parkIds.Count == 0)
+        if (portfolio.InspectedCandidateCount == 0)
         {
             return ApplicationResult<ParkFitSearchResult>.Success(new ParkFitSearchResult
             {
                 MethodVersion = ParkFitScoreEvaluator.MethodVersion,
                 EvaluationDate = query.EvaluationDate,
                 EvaluatedAtUtc = evaluatedAtUtc,
-                TotalCandidateCount = candidatePage.TotalItems,
-                CandidatePoolTruncated = candidatePage.TotalItems > 0,
+                TotalCandidateCount = portfolio.TotalCandidateCount,
+                CandidatePoolTruncated = portfolio.CandidatePoolTruncated,
             });
         }
 
-        IReadOnlyDictionary<string, ParkFitOperationalStatus> operationalStatuses =
-            await this.operationalStatusRepository.GetByParkIdsAsync(parkIds, cancellationToken);
-        List<string> activeParkIds = parkIds
-            .Where(parkId => operationalStatuses.TryGetValue(
-                    parkId,
-                    out ParkFitOperationalStatus? status)
-                && status.State == ParkFitRecommendationState.Active)
-            .ToList();
-        int operationallySuspendedCandidateCount = operationalStatuses.Values.Count(
-            static status => status.State == ParkFitRecommendationState.Suspended);
-        int notActivatedCandidateCount = parkIds.Count
-            - activeParkIds.Count
-            - operationallySuspendedCandidateCount;
         if (activeParkIds.Count == 0)
         {
             return ApplicationResult<ParkFitSearchResult>.Success(new ParkFitSearchResult
@@ -114,11 +86,12 @@ public sealed class SearchParksByFitQueryHandler
                 MethodVersion = ParkFitScoreEvaluator.MethodVersion,
                 EvaluationDate = query.EvaluationDate,
                 EvaluatedAtUtc = evaluatedAtUtc,
-                TotalCandidateCount = candidatePage.TotalItems,
-                InspectedCandidateCount = candidatePage.Items.Count,
-                OperationallySuspendedCandidateCount = operationallySuspendedCandidateCount,
-                NotActivatedCandidateCount = notActivatedCandidateCount,
-                CandidatePoolTruncated = candidatePage.TotalItems > candidatePage.Items.Count,
+                TotalCandidateCount = portfolio.TotalCandidateCount,
+                InspectedCandidateCount = portfolio.InspectedCandidateCount,
+                OperationallySuspendedCandidateCount =
+                    portfolio.OperationallySuspendedCandidateCount,
+                NotActivatedCandidateCount = portfolio.NotActivatedCandidateCount,
+                CandidatePoolTruncated = portfolio.CandidatePoolTruncated,
             });
         }
 
@@ -150,16 +123,8 @@ public sealed class SearchParksByFitQueryHandler
         Dictionary<ParkFitDataQualityIssue, int> qualityIssueCounts =
             new Dictionary<ParkFitDataQualityIssue, int>();
 
-        foreach (Park park in candidatePage.Items)
+        foreach (Park park in portfolio.ActiveCandidates)
         {
-            if (!operationalStatuses.TryGetValue(
-                    park.Id,
-                    out ParkFitOperationalStatus? operationalStatus)
-                || operationalStatus.State != ParkFitRecommendationState.Active)
-            {
-                continue;
-            }
-
             IReadOnlyCollection<ParkItem> attractions = itemsByParkId.TryGetValue(
                 park.Id,
                 out IReadOnlyCollection<ParkItem>? parkItems)
@@ -239,16 +204,15 @@ public sealed class SearchParksByFitQueryHandler
             MethodVersion = ParkFitScoreEvaluator.MethodVersion,
             EvaluationDate = query.EvaluationDate,
             EvaluatedAtUtc = evaluatedAtUtc,
-            TotalCandidateCount = candidatePage.TotalItems,
-            InspectedCandidateCount = candidatePage.Items.Count,
+            TotalCandidateCount = portfolio.TotalCandidateCount,
+            InspectedCandidateCount = portfolio.InspectedCandidateCount,
             QualityEligibleCandidateCount = eligibleCandidateCount,
-            QualityRejectedCandidateCount = candidatePage.Items.Count
-                - eligibleCandidateCount
-                - operationallySuspendedCandidateCount
-                - notActivatedCandidateCount,
-            OperationallySuspendedCandidateCount = operationallySuspendedCandidateCount,
-            NotActivatedCandidateCount = notActivatedCandidateCount,
-            CandidatePoolTruncated = candidatePage.TotalItems > candidatePage.Items.Count,
+            QualityRejectedCandidateCount = portfolio.ActiveCandidates.Count
+                - eligibleCandidateCount,
+            OperationallySuspendedCandidateCount =
+                portfolio.OperationallySuspendedCandidateCount,
+            NotActivatedCandidateCount = portfolio.NotActivatedCandidateCount,
+            CandidatePoolTruncated = portfolio.CandidatePoolTruncated,
             QualityStatusCounts = qualityStatusCounts,
             QualityIssueCounts = qualityIssueCounts,
             Parks = orderedResults,

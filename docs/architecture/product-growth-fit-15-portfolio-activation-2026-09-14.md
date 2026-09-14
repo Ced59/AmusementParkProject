@@ -78,6 +78,7 @@ classDiagram
     }
     class ParkFitOperationalStatusRepository
     class SearchParksByFitQueryHandler
+    class ParkFitCandidatePortfolioLoader
     class AdminParkFitOperationalControlsComponent
     class AdminParkFitDataQualityFacade
     class AdminParkFitDataQualityStatePort {
@@ -91,7 +92,8 @@ classDiagram
     ChangeParkFitOperationalStatusCommandHandler --> ParkFitDataQualityAssessor
     ChangeParkFitOperationalStatusCommandHandler --> IParkFitOperationalStatusRepository
     IParkFitOperationalStatusRepository <|.. ParkFitOperationalStatusRepository
-    SearchParksByFitQueryHandler --> IParkFitOperationalStatusRepository
+    SearchParksByFitQueryHandler --> ParkFitCandidatePortfolioLoader
+    ParkFitCandidatePortfolioLoader --> IParkFitOperationalStatusRepository
     AdminParkFitOperationalControlsComponent --> AdminParkFitDataQualityFacade
     AdminParkFitDataQualityFacade --> AdminParkFitDataQualityStatePort
     AdminParkFitDataQualityStatePort <|.. AdminParkFitDataQualityApiService
@@ -155,35 +157,32 @@ Collection `park-fit-portfolio-migrations` :
 ```javascript
 {
   _id: "fit-15-portfolio-activation-v1",
-  candidateParkIds: ["park-1", "park-2"],
   startedAtUtc: ISODate("2026-09-14T19:55:00Z"),
   completedAtUtc: ISODate("2026-09-14T20:00:00Z")
 }
 ```
 
-La liste exacte des identifiants éligibles est matérialisée puis écrite atomiquement
-avant toute activation. Elle fige la cohorte historique même si plusieurs instances
-démarrent, si une instance redémarre ou si un parc est modifié pendant l'activation.
-Le marqueur ne remplace pas l'état canonique et ne participe jamais à une recherche.
+Le plan rend la normalisation reprenable et idempotente. Il ne remplace pas l'état
+canonique et ne participe jamais à une recherche.
 
 ## 5. Migration sans second système
 
-Avant FIT-15, l'absence de document signifiait implicitement « actif ». Une simple
-modification de lecture aurait donc retiré tous les parcs historiques. Au premier
-démarrage de FIT-15, la migration :
+Avant FIT-15, l'absence de document signifiait implicitement « actif ». Pour supprimer
+ce raccourci sans créer un second système, le premier démarrage normalise les données :
 
-1. sélectionne les identifiants des parcs visibles, `Operating` et dotés de
-   coordonnées valides, soit l'ancien portefeuille implicite ;
-2. crée ou relit cette liste de cohorte unique et persistée ;
-3. crée pour chacun un document `Active`, révision `0`, seulement s'il n'existe pas ;
+1. crée ou relit un plan de migration unique ;
+2. parcourt tous les parcs par lots de 500 ;
+3. crée pour chaque état absent un document `NotActivated`, révision `0` ;
 4. ne modifie aucun état `Active` ou `Suspended` déjà piloté ;
 5. date l'achèvement uniquement après les lots idempotents ;
-6. tolère les collisions d'identifiant si deux instances démarrent ensemble.
+6. tolère les collisions si deux instances démarrent ensemble.
 
-Après le marqueur, une absence signifie définitivement `NotActivated`. Il n'existe
-donc pas d'adaptateur de compatibilité ni deux interprétations concurrentes. Les
-collections et la migration sont exécutées par l'initialiseur de production :
-aucune commande ou mise à jour MongoDB manuelle n'est requise.
+Un parc créé pendant la migration est soit écrit explicitement `NotActivated`, soit
+reste absent ; ces deux cas ont strictement la même sémantique sûre. Aucun état absent
+n'est auto-activé et chaque passage vers `Active` exige l'action admin et la gate de
+qualité. Il n'existe donc pas d'adaptateur qui conserverait l'ancien « absent = actif ».
+Les collections et la migration sont exécutées par l'initialiseur de production :
+aucune mise à jour MongoDB manuelle n'est requise.
 
 ```mermaid
 sequenceDiagram
@@ -194,14 +193,11 @@ sequenceDiagram
     participant M as park-fit-portfolio-migrations
 
     D->>I: démarrer la version FIT-15
-    I->>M: lire un éventuel plan persistant
+    I->>M: créer ou relire le plan idempotent
     alt migration non terminée
-      opt premier démarrage
-        I->>P: matérialiser les identifiants visibles Operating
-        I->>M: figer atomiquement la liste exacte
-      end
+      I->>P: parcourir les identifiants par lots de 500
       loop chaque lot
-        I->>S: upsert les identifiants figés Active / révision 0
+        I->>S: upsert $setOnInsert NotActivated / révision 0
       end
       I->>M: dater l'achèvement
     else migration déjà terminée
@@ -212,10 +208,11 @@ sequenceDiagram
 
 ## 6. Recherche publique
 
-La recherche charge d'abord les états du portefeuille en un appel groupé. Elle ne
-charge attractions et calendriers que pour les identifiants explicitement
-`Active`, ce qui réduit les lectures quand le portefeuille est volontairement
-restreint.
+La recherche parcourt les candidats publics par pages légères et filtre leur état
+avant d'appliquer la limite de 200 parcs actifs. Des parcs non activés placés avant un
+parc actif dans l'ordre alphabétique ne peuvent donc plus masquer ce dernier. Elle ne
+charge attractions et calendriers que pour les identifiants explicitement `Active`,
+ce qui borne les faits lourds même si le catalogue public est plus grand.
 
 ```mermaid
 sequenceDiagram
@@ -227,9 +224,11 @@ sequenceDiagram
     participant C as Core
 
     V->>Q: recherche anonyme
-    Q->>P: au plus 200 candidats publics
-    Q->>O: états par identifiants
-    Q->>Q: garder uniquement Active
+    loop pages légères jusqu'à 200 actifs ou fin du catalogue
+      Q->>P: page de candidats publics
+      Q->>O: états de la page
+      Q->>Q: compter les états et retenir Active
+    end
     Q->>F: attractions + synthèses pour les seuls actifs
     Q->>C: audit puis score explicable
     C-->>Q: résultats éligibles
@@ -261,8 +260,8 @@ espagnol, polonais et portugais.
 - Core : transitions, retrait pendant une suspension, versions et historique
   tronqué ;
 - Application : activation éligible, refus d'une qualité insuffisante, exclusion
-  d'un état absent, compteurs séparés et lectures groupées ;
-- Infrastructure : filtre exact de l'ancien portefeuille, document inséré et noms
+  d'un état absent, compteurs séparés, pagination après activation et lectures groupées ;
+- Infrastructure : normalisation explicite en `NotActivated`, reprise concurrente et noms
   des collections ;
 - WebAPI : mapping additif du compteur `notActivatedCandidateCount` et validation
   de l'enum central ;

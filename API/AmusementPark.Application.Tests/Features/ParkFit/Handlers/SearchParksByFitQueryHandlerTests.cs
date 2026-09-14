@@ -346,6 +346,74 @@ public sealed class SearchParksByFitQueryHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_ShouldApplyTheInspectionCapAfterOperationalActivation()
+    {
+        List<Park> inactiveParks = Enumerable.Range(1, 200)
+            .Select(index => BuildPark($"inactive-{index:D3}", $"Inactif {index:D3}"))
+            .ToList();
+        Park activePark = BuildPark("park-active", "Parc actif");
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetPageAsync(
+                1, 200, false, true, null, null, "FR", true,
+                ClosedEntityFilter.OpenOnly, It.IsAny<CancellationToken>(),
+                ParkAdminSortField.Name, false, null))
+            .ReturnsAsync(new PagedResult<Park>(inactiveParks, 1, 200, 201));
+        parks.Setup(repository => repository.GetPageAsync(
+                2, 200, false, true, null, null, "FR", true,
+                ClosedEntityFilter.OpenOnly, It.IsAny<CancellationToken>(),
+                ParkAdminSortField.Name, false, null))
+            .ReturnsAsync(new PagedResult<Park>(new[] { activePark }, 2, 200, 201));
+        Mock<IParkFitOperationalStatusRepository> operationalStatuses =
+            new Mock<IParkFitOperationalStatusRepository>(MockBehavior.Strict);
+        operationalStatuses.Setup(repository => repository.GetByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((IReadOnlyCollection<string> ids, CancellationToken _) =>
+                ids.Contains(activePark.Id, StringComparer.Ordinal)
+                    ? new Dictionary<string, ParkFitOperationalStatus>(StringComparer.Ordinal)
+                    {
+                        [activePark.Id] = ParkFitOperationalStatus.CreateActive(activePark.Id),
+                    }
+                    : new Dictionary<string, ParkFitOperationalStatus>(StringComparer.Ordinal));
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        items.Setup(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(
+                    new[] { activePark.Id })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { BuildAttraction(activePark.Id) });
+        Mock<IParkOpeningHoursRepository> openingHours =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        openingHours.Setup(repository => repository.GetSummariesByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(
+                    new[] { activePark.Id })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>
+            {
+                [activePark.Id] = BuildSummary(activePark.Id),
+            });
+        openingHours.Setup(repository => repository.GetByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(
+                    new[] { activePark.Id })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { BuildSchedule(activePark.Id, isClosed: false) });
+        SearchParksByFitQueryHandler handler = BuildHandler(
+            parks.Object,
+            items.Object,
+            openingHours.Object,
+            operationalStatuses.Object);
+
+        ApplicationResult<ParkFitSearchResult> result = await handler.HandleAsync(BuildQuery());
+
+        ParkFitSearchResult value = Assert.IsType<ParkFitSearchResult>(result.Value);
+        Assert.Equal(activePark.Id, Assert.Single(value.Parks).Park.Id);
+        Assert.Equal(201, value.InspectedCandidateCount);
+        Assert.Equal(200, value.NotActivatedCandidateCount);
+        Assert.False(value.CandidatePoolTruncated);
+        parks.VerifyAll();
+        operationalStatuses.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenQueryIsInvalid_ShouldNotReadRepositories()
     {
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
@@ -387,11 +455,14 @@ public sealed class SearchParksByFitQueryHandlerTests
                     static id => id,
                     static id => ParkFitOperationalStatus.CreateActive(id),
                     StringComparer.Ordinal));
+        ParkFitCandidatePortfolioLoader candidatePortfolioLoader =
+            new ParkFitCandidatePortfolioLoader(
+                parks,
+                operationalStatuses ?? defaultStatuses.Object);
         return new SearchParksByFitQueryHandler(
-            parks,
             items,
             openingHours,
-            operationalStatuses ?? defaultStatuses.Object,
+            candidatePortfolioLoader,
             new SearchParksByFitQueryValidator(),
             new ParkFitSearchParkEvaluator(),
             new SearchParksByFitQueryHandlerTestsFixedTimeProvider(EvaluationTimestamp));
@@ -404,7 +475,7 @@ public sealed class SearchParksByFitQueryHandlerTests
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
         parks.Setup(repository => repository.GetPageAsync(
                 1,
-                ParkFitSearchLimits.MaximumInspectedCandidateCount,
+                ParkFitSearchLimits.CandidatePageSize,
                 false,
                 true,
                 null,
@@ -419,7 +490,7 @@ public sealed class SearchParksByFitQueryHandlerTests
             .ReturnsAsync(new PagedResult<Park>(
                 candidates,
                 1,
-                ParkFitSearchLimits.MaximumInspectedCandidateCount,
+                ParkFitSearchLimits.CandidatePageSize,
                 totalItems));
         return parks;
     }

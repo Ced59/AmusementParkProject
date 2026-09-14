@@ -289,13 +289,13 @@ rétablissement, suspension et retrait exigent une justification et restent
 versionnés. Une activation ou un rétablissement est refusé tant que le même audit
 factuel que celui du moteur public n'atteint pas `EligibleForFitComparison`.
 
-La migration MongoDB unique fige d'abord la liste persistée du portefeuille
-historique, crée ses états actifs manquants, préserve les décisions déjà enregistrées,
-puis marque son achèvement. Une modification pendant l'activation ne change pas
-cette cohorte. Après elle, tout nouveau parc doit être activé
-volontairement : aucun adaptateur ni second système ne subsiste. La recherche exclut
-états absents, non activés et suspendus avant de charger les faits lourds, tout en
-exposant des compteurs agrégés distincts.
+La migration MongoDB unique normalise tous les états absents en `NotActivated`,
+préserve les décisions déjà enregistrées, puis marque son achèvement. Aucun parc
+n'est donc auto-activé, y compris s'il est créé pendant la migration : chaque passage
+à `Active` exige la gate qualité et une décision admin. Aucun adaptateur conservant
+l'ancien « absent = actif » ne subsiste. La recherche pagine les faits publics jusqu'à
+avoir appliqué la limite aux parcs réellement actifs, puis exclut les états suspendus
+avant de charger attractions et calendriers.
 
 L'administration distingue les quatre actions métier, explique les blocages de
 qualité et reste contenue sur mobile dans les huit langues. L'architecture, les
