@@ -3,9 +3,9 @@ import { ActivatedRoute, Router, convertToParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 
-import { ParkFitSearchPark } from '@app/models/park-fit/park-fit-search.models';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
+import { ParkFitComparisonSelection } from '../models/park-fit-comparison.models';
 import { ParkFitSearchFacade } from '../state/park-fit-search.facade';
 import { ParkFitComparisonPageComponent } from './park-fit-comparison-page.component';
 
@@ -52,7 +52,7 @@ describe('ParkFitComparisonPageComponent', () => {
 function createComponent(
   seoService: Pick<SeoService, 'applyParkFitComparisonSeo'> = { applyParkFitComparisonSeo: vi.fn() }
 ): ParkFitComparisonPageComponent {
-  const comparisonParks: Signal<ParkFitSearchPark[]> = signal([]).asReadonly();
+  const comparisonSelections: Signal<ParkFitComparisonSelection[]> = signal([]).asReadonly();
   const route = {
     snapshot: { paramMap: convertToParamMap({}) },
     parent: { snapshot: { paramMap: convertToParamMap({ lang: 'fr' }) }, parent: null }
@@ -67,7 +67,7 @@ function createComponent(
   return new ParkFitComparisonPageComponent(
     route as ActivatedRoute,
     { url: '/fr/park-fit/compare' } as Router,
-    { comparisonParks } as unknown as ParkFitSearchFacade,
+    { comparisonSelections } as unknown as ParkFitSearchFacade,
     translationService as unknown as TranslationService,
     translateService as TranslateService,
     seoService as SeoService,

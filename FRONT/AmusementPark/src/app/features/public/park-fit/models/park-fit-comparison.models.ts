@@ -1,3 +1,10 @@
+import { ParkFitSearchPark } from '@app/models/park-fit/park-fit-search.models';
+
+export interface ParkFitComparisonSelection {
+  park: ParkFitSearchPark;
+  resultRank: number;
+}
+
 export interface ParkFitComparisonCell {
   parkId: string;
   primaryKey: string;

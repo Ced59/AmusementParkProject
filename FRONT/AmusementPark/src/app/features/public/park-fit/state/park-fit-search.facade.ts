@@ -7,6 +7,7 @@ import {
   ParkFitSearchRequest,
   ParkFitSearchResponse
 } from '@app/models/park-fit/park-fit-search.models';
+import { ParkFitComparisonSelection } from '../models/park-fit-comparison.models';
 import { PARK_FIT_SEARCH_DATA_PORT, ParkFitSearchDataPort } from './park-fit-search-data.ports';
 
 export type ParkFitSearchStatus = 'idle' | 'loading' | 'success' | 'error';
@@ -32,10 +33,18 @@ export class ParkFitSearchFacade {
   public readonly firstPark: Signal<ParkFitSearchPark | null> = computed(() =>
     this.visibleParks()[0] ?? null
   );
-  public readonly comparisonParks: Signal<ParkFitSearchPark[]> = computed(() => {
+  public readonly comparisonSelections: Signal<ParkFitComparisonSelection[]> = computed(() => {
     const selectedIds: ReadonlySet<string> = new Set(this.comparisonParkIdsSignal());
-    return this.visibleParks().filter((park: ParkFitSearchPark): boolean => selectedIds.has(park.parkId));
+    return this.visibleParks()
+      .map((park: ParkFitSearchPark, index: number): ParkFitComparisonSelection => ({
+        park,
+        resultRank: index + 1
+      }))
+      .filter((selection: ParkFitComparisonSelection): boolean => selectedIds.has(selection.park.parkId));
   });
+  public readonly comparisonParks: Signal<ParkFitSearchPark[]> = computed(() =>
+    this.comparisonSelections().map((selection: ParkFitComparisonSelection): ParkFitSearchPark => selection.park)
+  );
   public readonly canCompare: Signal<boolean> = computed(() => {
     const count: number = this.comparisonParks().length;
     return count >= 2 && count <= 4;

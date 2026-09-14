@@ -68,20 +68,21 @@ describe('ParkFitSearchFacade', () => {
 
     facade.search(buildRequest());
     facade.toggleComparisonPark('park-2');
-    facade.toggleComparisonPark('park-1');
+    facade.toggleComparisonPark('park-5');
 
     expect(facade.canCompare()).toBe(true);
-    expect(facade.comparisonParks().map((park) => park.parkId)).toEqual(['park-1', 'park-2']);
+    expect(facade.comparisonParks().map((park) => park.parkId)).toEqual(['park-2', 'park-5']);
+    expect(facade.comparisonSelections().map((selection) => selection.resultRank)).toEqual([2, 5]);
 
+    facade.toggleComparisonPark('park-1');
     facade.toggleComparisonPark('park-3');
     facade.toggleComparisonPark('park-4');
-    facade.toggleComparisonPark('park-5');
 
     expect(facade.comparisonLimitReached()).toBe(true);
     expect(facade.comparisonParks()).toHaveLength(4);
 
     facade.toggleComparisonPark('park-2');
-    expect(facade.comparisonParks().map((park) => park.parkId)).toEqual(['park-1', 'park-3', 'park-4']);
+    expect(facade.comparisonParks().map((park) => park.parkId)).toEqual(['park-1', 'park-3', 'park-5']);
   });
 
   it('clears the comparison selection when a new private search starts', () => {

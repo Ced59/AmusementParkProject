@@ -11,7 +11,7 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { buildParkFitComparisonSections } from '../mappers/park-fit-comparison.mapper';
 import { formatParkFitDate } from '../mappers/park-fit-result-display.helpers';
-import { ParkFitComparisonSection } from '../models/park-fit-comparison.models';
+import { ParkFitComparisonSection, ParkFitComparisonSelection } from '../models/park-fit-comparison.models';
 import { ParkFitSearchFacade } from '../state/park-fit-search.facade';
 
 @Component({
@@ -24,7 +24,10 @@ import { ParkFitSearchFacade } from '../state/park-fit-search.facade';
 export class ParkFitComparisonPageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');
   protected readonly showOnlyDifferences = signal<boolean>(false);
-  protected readonly parks: Signal<ParkFitSearchPark[]> = this.facade.comparisonParks;
+  protected readonly selections: Signal<ParkFitComparisonSelection[]> = this.facade.comparisonSelections;
+  protected readonly parks: Signal<ParkFitSearchPark[]> = computed(() =>
+    this.selections().map((selection: ParkFitComparisonSelection): ParkFitSearchPark => selection.park)
+  );
   protected readonly sections: Signal<ParkFitComparisonSection[]> = computed(() => {
     const sections: ParkFitComparisonSection[] = buildParkFitComparisonSections(
       this.parks(),

@@ -31,16 +31,16 @@
     </aside>
 
     <section class="park-fit-comparison__parks" [attr.aria-label]="'parkFit.comparison.selectedParks' | translate">
-      @for (park of parks(); track park.parkId; let rank = $index) {
+      @for (selection of selections(); track selection.park.parkId) {
         <article appUiSurface="panel" appUiSurfacePadding="regular">
-          <span>{{ 'parkFit.comparison.rank' | translate:{ rank: rank + 1 } }}</span>
-          <h2>{{ park.parkName }}</h2>
-          @if (park.comparativeScore !== null) {
-            <strong>{{ rounded(park.comparativeScore) }}<small>/100</small></strong>
+          <span>{{ 'parkFit.comparison.rank' | translate:{ rank: selection.resultRank } }}</span>
+          <h2>{{ selection.park.parkName }}</h2>
+          @if (selection.park.comparativeScore !== null) {
+            <strong>{{ rounded(selection.park.comparativeScore) }}<small>/100</small></strong>
           } @else {
             <strong>—</strong>
           }
-          @if (parkRoute(park); as routeCommands) {
+          @if (parkRoute(selection.park); as routeCommands) {
             <a [routerLink]="routeCommands">{{ 'parkFit.comparison.openPark' | translate }}<i class="pi pi-arrow-right" aria-hidden="true"></i></a>
           }
         </article>
