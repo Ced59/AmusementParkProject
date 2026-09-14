@@ -118,6 +118,13 @@ public static class AttractionAccessConditionEvidenceEvaluator
         if (!condition.VerifiedAtUtc.HasValue)
         {
             issues.Add(AttractionAccessConditionEvidenceIssue.MissingVerificationTimestamp);
+
+            if (condition.CollectedAtUtc.HasValue
+                && condition.CollectedAtUtc.Value.Kind != DateTimeKind.Utc)
+            {
+                issues.Add(AttractionAccessConditionEvidenceIssue.TimestampNotUtc);
+            }
+
             return;
         }
 
