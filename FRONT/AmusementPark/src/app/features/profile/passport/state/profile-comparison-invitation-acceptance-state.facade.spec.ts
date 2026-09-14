@@ -7,6 +7,8 @@ import {
   ProfileComparisonInvitationCreation,
   ProfileComparisonInvitationPreview
 } from '@app/models/sharing/profile-comparison-invitation.models';
+import { SHARE_PRODUCT_ANALYTICS_PORT } from '@core/analytics/share-product-analytics.port';
+import { ShareProductEvent } from '@core/analytics/share-product-event.model';
 import {
   PROFILE_COMPARISON_INVITATION_PORT,
   ProfileComparisonInvitationPort
@@ -15,6 +17,7 @@ import { ProfileComparisonInvitationAcceptanceStateFacade } from './profile-comp
 
 describe('ProfileComparisonInvitationAcceptanceStateFacade', () => {
   it('loads the consent preview before accepting the same token', () => {
+    const analyticsEvents: ShareProductEvent[] = [];
     const calls: string[] = [];
     const preview: ProfileComparisonInvitationPreview = {
       status: 'Ready',
@@ -45,7 +48,15 @@ describe('ProfileComparisonInvitationAcceptanceStateFacade', () => {
     };
     TestBed.configureTestingModule({ providers: [
       ProfileComparisonInvitationAcceptanceStateFacade,
-      { provide: PROFILE_COMPARISON_INVITATION_PORT, useValue: port }
+      { provide: PROFILE_COMPARISON_INVITATION_PORT, useValue: port },
+      {
+        provide: SHARE_PRODUCT_ANALYTICS_PORT,
+        useValue: {
+          track: (event: ShareProductEvent): void => {
+            analyticsEvents.push(event);
+          }
+        }
+      }
     ] });
     const facade: ProfileComparisonInvitationAcceptanceStateFacade =
       TestBed.inject(ProfileComparisonInvitationAcceptanceStateFacade);
@@ -56,5 +67,8 @@ describe('ProfileComparisonInvitationAcceptanceStateFacade', () => {
     expect(calls).toEqual(['preview:opaque-token', 'accept:opaque-token']);
     expect(facade.acceptance()).toEqual(acceptance);
     expect(facade.accepting()).toBe(false);
+    expect(analyticsEvents).toEqual([
+      { type: 'share_published', recapType: 'profile-comparison' }
+    ]);
   });
 });

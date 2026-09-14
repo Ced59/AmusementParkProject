@@ -9,6 +9,10 @@ import {
   SharedUserParkRatingRankingsPage,
   SharedUserRankingProfile
 } from '@app/models/ratings/rating.models';
+import {
+  SHARE_PRODUCT_ANALYTICS_PORT,
+  ShareProductAnalyticsPort
+} from '@core/analytics/share-product-analytics.port';
 import { PaginationContract } from '@shared/models/contracts';
 import { SHARED_USER_RANKINGS_PORT, SharedUserRankingsPort } from './shared-user-rankings-state-data.ports';
 
@@ -29,6 +33,8 @@ export class SharedUserRankingsStateFacade {
   private readonly typeSignal = signal<string | null>(null);
   private readonly searchSignal = signal<string | null>(null);
   private rankingRequestSequence: number = 0;
+  private openedTracked: boolean = false;
+  private renderFailureTracked: boolean = false;
 
   public readonly profile: Signal<SharedUserRankingProfile | null> = this.profileSignal.asReadonly();
   public readonly parkRankings: Signal<SharedUserParkRatingRanking[]> = this.parkRankingsSignal.asReadonly();
@@ -50,7 +56,9 @@ export class SharedUserRankingsStateFacade {
 
   constructor(
     @Inject(SHARED_USER_RANKINGS_PORT) private readonly ratingsPort: SharedUserRankingsPort,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 
@@ -75,6 +83,7 @@ export class SharedUserRankingsStateFacade {
         this.loadingSignal.set(false);
         this.notFoundSignal.set(error?.status === 404);
         this.errorSignal.set(error?.status !== 404);
+        this.trackRenderFailure(error?.status);
       }
     });
   }
@@ -154,6 +163,13 @@ export class SharedUserRankingsStateFacade {
           }
           this.paginationSignal.set(result.pagination);
           this.loadingSignal.set(false);
+          if (!this.openedTracked) {
+            this.openedTracked = true;
+            this.productAnalytics.track({
+              type: 'share_opened',
+              recapType: 'personal-ranking'
+            });
+          }
         },
         error: (error: { status?: number }): void => {
           if (requestSequence !== this.rankingRequestSequence) {
@@ -166,6 +182,7 @@ export class SharedUserRankingsStateFacade {
           this.loadingSignal.set(false);
           this.notFoundSignal.set(error?.status === 404);
           this.errorSignal.set(error?.status !== 404);
+          this.trackRenderFailure(error?.status);
         }
       });
   }
@@ -187,6 +204,18 @@ export class SharedUserRankingsStateFacade {
         search
       )
       : this.ratingsPort.getSharedParkRankings(shareId, page, SHARED_RANKINGS_PAGE_SIZE, search);
+  }
+
+  private trackRenderFailure(status?: number): void {
+    if (status === 404 || this.openedTracked || this.renderFailureTracked) {
+      return;
+    }
+
+    this.renderFailureTracked = true;
+    this.productAnalytics.track({
+      type: 'share_render_failed',
+      recapType: 'personal-ranking'
+    });
   }
 }
 

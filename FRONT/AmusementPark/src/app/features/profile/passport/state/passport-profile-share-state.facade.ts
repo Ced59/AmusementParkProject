@@ -16,6 +16,10 @@ import {
   ShareVisibility
 } from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import {
+  SHARE_PRODUCT_ANALYTICS_PORT,
+  ShareProductAnalyticsPort
+} from '@core/analytics/share-product-analytics.port';
 import { PASSPORT_PROFILE_SHARE_PORT, PassportProfileSharePort } from './passport-profile-share-state-data.ports';
 
 @Injectable()
@@ -76,7 +80,9 @@ export class PassportProfileShareStateFacade {
     @Inject(PASSPORT_PROFILE_SHARE_PORT) private readonly port: PassportProfileSharePort,
     private readonly toastMessageService: ToastMessageService,
     private readonly translateService: TranslateService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 
@@ -202,6 +208,10 @@ export class PassportProfileShareStateFacade {
     if (!this.canPreview()) {
       return;
     }
+    this.productAnalytics.track({
+      type: 'share_activation_started',
+      recapType: 'passport-profile'
+    });
     const generation: number = ++this.requestGeneration;
     this.previewingSignal.set(true);
     this.errorSignal.set(false);
@@ -213,6 +223,10 @@ export class PassportProfileShareStateFacade {
         }
         this.previewSignal.set(preview);
         this.previewingSignal.set(false);
+        this.productAnalytics.track({
+          type: 'share_preview_created',
+          recapType: 'passport-profile'
+        });
       },
       error: (): void => {
         if (generation !== this.requestGeneration) {
@@ -250,6 +264,10 @@ export class PassportProfileShareStateFacade {
         this.publishedComparisonsAllowedSignal.set(this.allowsComparisonsSignal());
         this.previewSignal.set(null);
         this.savingSignal.set(false);
+        this.productAnalytics.track({
+          type: 'share_published',
+          recapType: 'passport-profile'
+        });
         this.toast('success', 'passportProfileShare.toast.published');
       },
       error: (): void => {
@@ -286,6 +304,10 @@ export class PassportProfileShareStateFacade {
         this.publishedComparisonsAllowedSignal.set(false);
         this.previewSignal.set(null);
         this.savingSignal.set(false);
+        this.productAnalytics.track({
+          type: 'share_revoked',
+          recapType: 'passport-profile'
+        });
         this.toast('success', 'passportProfileShare.toast.revoked');
       },
       error: (): void => {
@@ -314,6 +336,10 @@ export class PassportProfileShareStateFacade {
 
         this.settingsSignal.set(settings);
         this.savingSignal.set(false);
+        this.productAnalytics.track({
+          type: 'share_rotated',
+          recapType: 'passport-profile'
+        });
         this.toast('success', 'passportProfileShare.toast.rotated');
       },
       error: (): void => {

@@ -9,12 +9,15 @@ import {
   SharePublicationSettings
 } from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { SHARE_PRODUCT_ANALYTICS_PORT } from '@core/analytics/share-product-analytics.port';
+import { ShareProductEvent } from '@core/analytics/share-product-event.model';
 import { TranslateService } from '@ngx-translate/core';
 import { PASSPORT_PROFILE_SHARE_PORT, PassportProfileSharePort } from './passport-profile-share-state-data.ports';
 import { PassportProfileShareStateFacade } from './passport-profile-share-state.facade';
 
 describe('PassportProfileShareStateFacade', () => {
   it('restores the private selection and publishes only the exact preview', () => {
+    const analyticsEvents: ShareProductEvent[] = [];
     const previewRequests: SharePublicationPreviewRequest[] = [];
     const publishRequests: SharePublicationPublishRequest[] = [];
     const settings: SharePublicationSettings = { isPublic: false, includedFields: [] };
@@ -54,6 +57,14 @@ describe('PassportProfileShareStateFacade', () => {
     TestBed.configureTestingModule({ providers: [
       PassportProfileShareStateFacade,
       { provide: PASSPORT_PROFILE_SHARE_PORT, useValue: port },
+      {
+        provide: SHARE_PRODUCT_ANALYTICS_PORT,
+        useValue: {
+          track: (event: ShareProductEvent): void => {
+            analyticsEvents.push(event);
+          }
+        }
+      },
       { provide: ToastMessageService, useValue: { add: vi.fn() } },
       { provide: TranslateService, useValue: { instant: (key: string): string => key } }
     ] });
@@ -79,6 +90,11 @@ describe('PassportProfileShareStateFacade', () => {
     expect(publishRequests[0].passportProfile).toEqual(previewRequests[0].passportProfile);
     expect(facade.settings()?.shareId).toBe('opaque-share-id');
     expect(facade.canInviteComparison()).toBe(true);
+    expect(analyticsEvents).toEqual([
+      { type: 'share_activation_started', recapType: 'passport-profile' },
+      { type: 'share_preview_created', recapType: 'passport-profile' },
+      { type: 'share_published', recapType: 'passport-profile' }
+    ]);
 
     facade.previewPublication();
     expect(facade.canPublish()).toBe(true);
@@ -86,6 +102,10 @@ describe('PassportProfileShareStateFacade', () => {
 
     expect(facade.canPublish()).toBe(false);
     expect(facade.canInviteComparison()).toBe(false);
+    expect(analyticsEvents.at(-1)).toEqual({
+      type: 'share_revoked',
+      recapType: 'passport-profile'
+    });
   });
 
   it('filters obsolete saved choices and clears hidden ranking choices', () => {

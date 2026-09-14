@@ -2,6 +2,10 @@ import { DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { SharedPassportProfile } from '@app/models/sharing/share-publication.models';
+import {
+  SHARE_PRODUCT_ANALYTICS_PORT,
+  ShareProductAnalyticsPort
+} from '@core/analytics/share-product-analytics.port';
 import { SHARED_PASSPORT_PROFILE_PORT, SharedPassportProfilePort } from './shared-passport-profile-state-data.ports';
 
 @Injectable()
@@ -11,6 +15,8 @@ export class SharedPassportProfileStateFacade {
   private readonly notFoundSignal = signal<boolean>(false);
   private readonly errorSignal = signal<boolean>(false);
   private requestGeneration: number = 0;
+  private openedTracked: boolean = false;
+  private renderFailureTracked: boolean = false;
 
   public readonly profile: Signal<SharedPassportProfile | null> = this.profileSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
@@ -19,7 +25,9 @@ export class SharedPassportProfileStateFacade {
 
   constructor(
     @Inject(SHARED_PASSPORT_PROFILE_PORT) private readonly port: SharedPassportProfilePort,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 
@@ -36,6 +44,10 @@ export class SharedPassportProfileStateFacade {
         }
         this.profileSignal.set(profile);
         this.loadingSignal.set(false);
+        if (!this.openedTracked) {
+          this.openedTracked = true;
+          this.productAnalytics.track({ type: 'share_opened', recapType: 'passport-profile' });
+        }
       },
       error: (error: { status?: number }): void => {
         if (generation !== this.requestGeneration) {
@@ -44,7 +56,18 @@ export class SharedPassportProfileStateFacade {
         this.loadingSignal.set(false);
         this.notFoundSignal.set(error?.status === 404);
         this.errorSignal.set(error?.status !== 404);
+        if (error?.status !== 404 && !this.renderFailureTracked) {
+          this.renderFailureTracked = true;
+          this.productAnalytics.track({ type: 'share_render_failed', recapType: 'passport-profile' });
+        }
       }
+    });
+  }
+
+  public trackPassportCta(): void {
+    this.productAnalytics.track({
+      type: 'share_cta_passport_started',
+      recapType: 'passport-profile'
     });
   }
 }

@@ -3,6 +3,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ProfileComparisonSummary } from '@app/models/sharing/profile-comparison.models';
 import {
+  SHARE_PRODUCT_ANALYTICS_PORT,
+  ShareProductAnalyticsPort,
+} from '@core/analytics/share-product-analytics.port';
+import {
   PROFILE_COMPARISON_MANAGEMENT_PORT,
   ProfileComparisonManagementPort,
 } from './profile-comparison-management-data.ports';
@@ -25,6 +29,8 @@ export class ProfileComparisonManagementStateFacade {
     @Inject(PROFILE_COMPARISON_MANAGEMENT_PORT)
     private readonly port: ProfileComparisonManagementPort,
     private readonly destroyRef: DestroyRef,
+    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined },
   ) {}
 
   public load(): void {
@@ -67,6 +73,10 @@ export class ProfileComparisonManagementStateFacade {
               ),
           );
           this.revokingShareIdSignal.set(null);
+          this.productAnalytics.track({
+            type: 'share_revoked',
+            recapType: 'profile-comparison',
+          });
         },
         error: (): void => {
           this.revokingShareIdSignal.set(null);

@@ -513,7 +513,28 @@ sessions et compte ; aucune suppression partielle trompeuse n'est exposée en HT
 Les preuves et diagrammes sont détaillés dans
 [`product-growth-share-14b-account-deletion-2026-09-14.md`](../../architecture/product-growth-share-14b-account-deletion-2026-09-14.md).
 
-`SHARE-14C` peut maintenant ajouter les mesures de cycle de vie minimisées.
+### État de `SHARE-14C` au 14 septembre 2026
+
+Le parcours de partage est mesurable en version 5.3.11 sans envoyer son contenu à
+l'outil d'analytics. Les cinq familles de récits (`visit-recap`, `year-recap`,
+`passport-profile`, `personal-ranking`, `profile-comparison`) émettent uniquement
+un nom d'événement borné et leur famille. Le démarrage, l'aperçu accepté, la
+publication réussie, la révocation, la rotation, l'ouverture publique, le CTA vers
+le Passeport et les erreurs de rendu peuvent ainsi former un funnel lisible.
+
+La collecte reste désactivée en SSR, lorsque Matomo est coupé et tant que les
+cookies facultatifs ne sont pas acceptés. Aucun identifiant de partage, de visite,
+de parc ou de membre, aucune date, note, attraction, légende ou identité comparée
+n'est transmis. Un lien inconnu ou révoqué (`404`) n'est pas classé comme une erreur
+de rendu. L'événement de publication n'est produit qu'après la réponse de succès de
+l'API ; pour une comparaison, l'invitation marque le démarrage et son acceptation
+bilatérale marque la publication.
+
+Les preuves, la matrice métier et le diagramme du flux sont détaillés dans
+[`product-growth-share-14c-lifecycle-analytics-2026-09-14.md`](../../architecture/product-growth-share-14c-lifecycle-analytics-2026-09-14.md).
+`SHARE-14` est complet ; `SHARE-15` peut maintenant valider le gate technique de
+mise en production et retirer les protections transitoires sans dépendre d'une
+cohorte réelle.
 
 ## 1. Vision produit
 

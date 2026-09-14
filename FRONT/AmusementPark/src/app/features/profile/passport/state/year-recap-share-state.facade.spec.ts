@@ -9,6 +9,8 @@ import {
   YearRecapShareSelection
 } from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { SHARE_PRODUCT_ANALYTICS_PORT } from '@core/analytics/share-product-analytics.port';
+import { ShareProductEvent } from '@core/analytics/share-product-event.model';
 import { TranslateService } from '@ngx-translate/core';
 import { YEAR_RECAP_SHARE_PORT, YearRecapSharePort } from './year-recap-share-state-data.ports';
 import { YearRecapShareStateFacade } from './year-recap-share-state.facade';
@@ -23,6 +25,7 @@ describe('YearRecapShareStateFacade', () => {
   let previewIsEmpty: boolean;
   let rotatedPublicationIds: string[];
   let revokedPublicationIds: string[];
+  let analyticsEvents: ShareProductEvent[];
 
   beforeEach(() => {
     settings = { isPublic: false, includedFields: [] };
@@ -31,6 +34,7 @@ describe('YearRecapShareStateFacade', () => {
     publishRequests = [];
     rotatedPublicationIds = [];
     revokedPublicationIds = [];
+    analyticsEvents = [];
     previewIsEmpty = false;
     publishResponse = of({
       isPublic: true,
@@ -63,6 +67,14 @@ describe('YearRecapShareStateFacade', () => {
       providers: [
         YearRecapShareStateFacade,
         { provide: YEAR_RECAP_SHARE_PORT, useValue: port },
+        {
+          provide: SHARE_PRODUCT_ANALYTICS_PORT,
+          useValue: {
+            track: (event: ShareProductEvent): void => {
+              analyticsEvents.push(event);
+            }
+          }
+        },
         { provide: ToastMessageService, useValue: { add: vi.fn() } },
         { provide: TranslateService, useValue: { instant: (key: string): string => key } }
       ]
@@ -111,6 +123,10 @@ describe('YearRecapShareStateFacade', () => {
       includedFields: ['RideCount', 'TemporalRatings', 'GeographicStatistics', 'PublicCaption'],
       yearRecap: { publicCaption: 'Une année mémorable' }
     });
+    expect(analyticsEvents).toEqual([
+      { type: 'share_activation_started', recapType: 'year-recap' },
+      { type: 'share_preview_created', recapType: 'year-recap' }
+    ]);
 
     facade.publish(2026);
     facade.setPublicCaption('Texte modifié trop tard');
@@ -119,6 +135,12 @@ describe('YearRecapShareStateFacade', () => {
     expect(facade.publicCaption()).toBe('  Une année mémorable  ');
     expect(publishRequests[0].approvalToken).toBe('approved-preview');
     expect(publishRequests[0].yearRecap?.publicCaption).toBe('Une année mémorable');
+
+    pending.next({ isPublic: true, includedFields: [] });
+    expect(analyticsEvents.at(-1)).toEqual({
+      type: 'share_published',
+      recapType: 'year-recap'
+    });
   });
 
   it('does not allow publication when the selected year has no completed visit', () => {
@@ -144,11 +166,19 @@ describe('YearRecapShareStateFacade', () => {
 
     expect(rotatedPublicationIds).toEqual(['publication-1']);
     expect(facade.settings()?.shareId).toBe('rotated-share-id');
+    expect(analyticsEvents).toContainEqual({
+      type: 'share_rotated',
+      recapType: 'year-recap'
+    });
 
     facade.revoke(2026);
 
     expect(revokedPublicationIds).toEqual(['publication-1']);
     expect(facade.settings()?.isPublic).toBe(false);
+    expect(analyticsEvents).toContainEqual({
+      type: 'share_revoked',
+      recapType: 'year-recap'
+    });
   });
 });
 

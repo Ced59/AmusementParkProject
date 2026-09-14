@@ -7,6 +7,8 @@ import {
   ProfileComparisonInvitationCreation,
   ProfileComparisonInvitationPreview
 } from '@app/models/sharing/profile-comparison-invitation.models';
+import { SHARE_PRODUCT_ANALYTICS_PORT } from '@core/analytics/share-product-analytics.port';
+import { ShareProductEvent } from '@core/analytics/share-product-event.model';
 import {
   PROFILE_COMPARISON_INVITATION_PORT,
   ProfileComparisonInvitationPort
@@ -15,6 +17,7 @@ import { ProfileComparisonInvitationCreatorStateFacade } from './profile-compari
 
 describe('ProfileComparisonInvitationCreatorStateFacade', () => {
   it('keeps only available categories and exposes the opaque invitation', () => {
+    const analyticsEvents: ShareProductEvent[] = [];
     const requests: ProfileComparisonCategory[][] = [];
     const creation: ProfileComparisonInvitationCreation = {
       token: 'opaque-token',
@@ -35,7 +38,15 @@ describe('ProfileComparisonInvitationCreatorStateFacade', () => {
     };
     TestBed.configureTestingModule({ providers: [
       ProfileComparisonInvitationCreatorStateFacade,
-      { provide: PROFILE_COMPARISON_INVITATION_PORT, useValue: port }
+      { provide: PROFILE_COMPARISON_INVITATION_PORT, useValue: port },
+      {
+        provide: SHARE_PRODUCT_ANALYTICS_PORT,
+        useValue: {
+          track: (event: ShareProductEvent): void => {
+            analyticsEvents.push(event);
+          }
+        }
+      }
     ] });
     const facade: ProfileComparisonInvitationCreatorStateFacade =
       TestBed.inject(ProfileComparisonInvitationCreatorStateFacade);
@@ -47,5 +58,8 @@ describe('ProfileComparisonInvitationCreatorStateFacade', () => {
     expect(requests).toEqual([['VisitedParks']]);
     expect(facade.invitation()).toEqual(creation);
     expect(facade.loading()).toBe(false);
+    expect(analyticsEvents).toEqual([
+      { type: 'share_activation_started', recapType: 'profile-comparison' }
+    ]);
   });
 });

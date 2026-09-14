@@ -88,7 +88,7 @@
 
     <section class="shared-year__footer">
       <app-public-share-panel targetType="Page" [targetId]="shareId()" [targetTitle]="'yearRecapShare.social.title' | translate:{ year: shared.yearRecap.year }" titleKey="yearRecapShare.social.title" descriptionKey="yearRecapShare.social.description" textKey="yearRecapShare.social.text"></app-public-share-panel>
-      <aside><span aria-hidden="true"><i class="pi pi-passport"></i></span><div><h2>{{ 'yearRecapShare.public.ctaTitle' | translate }}</h2><p>{{ 'yearRecapShare.public.ctaDescription' | translate }}</p><a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']">{{ 'yearRecapShare.public.createMine' | translate }}</a></div></aside>
+      <aside><span aria-hidden="true"><i class="pi pi-passport"></i></span><div><h2>{{ 'yearRecapShare.public.ctaTitle' | translate }}</h2><p>{{ 'yearRecapShare.public.ctaDescription' | translate }}</p><a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']" (click)="trackPassportCta()">{{ 'yearRecapShare.public.createMine' | translate }}</a></div></aside>
       <app-public-share-report targetType="YearRecap" [shareId]="shareId()"></app-public-share-report>
     </section>
   } @else {

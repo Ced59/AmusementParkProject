@@ -14,6 +14,10 @@ import {
   VisitRecapSharePreview
 } from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import {
+  SHARE_PRODUCT_ANALYTICS_PORT,
+  ShareProductAnalyticsPort
+} from '@core/analytics/share-product-analytics.port';
 import { VISIT_RECAP_SHARE_PORT, VisitRecapSharePort } from './visit-recap-share-state-data.ports';
 
 @Injectable()
@@ -76,7 +80,9 @@ export class VisitRecapShareStateFacade {
     @Inject(VISIT_RECAP_SHARE_PORT) private readonly sharePort: VisitRecapSharePort,
     private readonly toastMessageService: ToastMessageService,
     private readonly translateService: TranslateService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 
@@ -125,6 +131,10 @@ export class VisitRecapShareStateFacade {
     this.errorSignal.set(false);
     this.editorOpenSignal.set(true);
     this.editorStateHydrated = false;
+    this.productAnalytics.track({
+      type: 'share_activation_started',
+      recapType: 'visit-recap'
+    });
     this.loadCandidates();
   }
 
@@ -232,6 +242,10 @@ export class VisitRecapShareStateFacade {
         this.previewingSignal.set(false);
         this.mergeCandidateItems(preview.visitRecap?.items ?? []);
         this.previewSignal.set(preview);
+        this.productAnalytics.track({
+          type: 'share_preview_created',
+          recapType: 'visit-recap'
+        });
       },
       error: (error: unknown): void => {
         if (generation !== this.previewGeneration) {
@@ -274,6 +288,10 @@ export class VisitRecapShareStateFacade {
         this.savingSignal.set(false);
         this.editorOpenSignal.set(false);
         this.previewSignal.set(null);
+        this.productAnalytics.track({
+          type: 'share_published',
+          recapType: 'visit-recap'
+        });
         this.toast('success', 'visitRecapShare.toast.published');
       },
       error: (error: unknown): void => {
@@ -313,6 +331,10 @@ export class VisitRecapShareStateFacade {
         this.savingSignal.set(false);
         this.editorOpenSignal.set(false);
         this.previewSignal.set(null);
+        this.productAnalytics.track({
+          type: 'share_revoked',
+          recapType: 'visit-recap'
+        });
         this.toast('success', 'visitRecapShare.toast.revoked');
       },
       error: (error: unknown): void => {
@@ -345,6 +367,10 @@ export class VisitRecapShareStateFacade {
 
         this.settingsSignal.set(settings);
         this.savingSignal.set(false);
+        this.productAnalytics.track({
+          type: 'share_rotated',
+          recapType: 'visit-recap'
+        });
         this.toast('success', 'visitRecapShare.toast.rotated');
       },
       error: (error: unknown): void => {

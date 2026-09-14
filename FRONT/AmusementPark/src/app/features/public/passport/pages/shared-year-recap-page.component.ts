@@ -96,6 +96,10 @@ export class SharedYearRecapPageComponent implements OnInit {
     return `ratings.categories.${category}`;
   }
 
+  protected trackPassportCta(): void {
+    this.facade.trackPassportCta();
+  }
+
   private applySeo(shared: SharedYearRecap): void {
     const year: number = shared.yearRecap.year;
     const params: Record<string, number> = { year };

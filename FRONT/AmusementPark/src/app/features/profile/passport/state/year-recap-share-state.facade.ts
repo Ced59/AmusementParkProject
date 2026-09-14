@@ -14,6 +14,10 @@ import {
   YearRecapShareSelection
 } from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import {
+  SHARE_PRODUCT_ANALYTICS_PORT,
+  ShareProductAnalyticsPort
+} from '@core/analytics/share-product-analytics.port';
 import { YEAR_RECAP_SHARE_PORT, YearRecapSharePort } from './year-recap-share-state-data.ports';
 
 @Injectable()
@@ -62,7 +66,9 @@ export class YearRecapShareStateFacade {
     @Inject(YEAR_RECAP_SHARE_PORT) private readonly sharePort: YearRecapSharePort,
     private readonly toastMessageService: ToastMessageService,
     private readonly translateService: TranslateService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 
@@ -107,6 +113,10 @@ export class YearRecapShareStateFacade {
     this.previewSignal.set(null);
     this.errorSignal.set(false);
     this.editorOpenSignal.set(true);
+    this.productAnalytics.track({
+      type: 'share_activation_started',
+      recapType: 'year-recap'
+    });
   }
 
   closeEditor(): void {
@@ -151,6 +161,10 @@ export class YearRecapShareStateFacade {
         }
         this.previewingSignal.set(false);
         this.previewSignal.set(preview);
+        this.productAnalytics.track({
+          type: 'share_preview_created',
+          recapType: 'year-recap'
+        });
       },
       error: (error: unknown): void => {
         if (generation !== this.previewGeneration) {
@@ -192,6 +206,10 @@ export class YearRecapShareStateFacade {
         this.savingSignal.set(false);
         this.editorOpenSignal.set(false);
         this.previewSignal.set(null);
+        this.productAnalytics.track({
+          type: 'share_published',
+          recapType: 'year-recap'
+        });
         this.toast('success', 'yearRecapShare.toast.published');
       },
       error: (error: unknown): void => {
@@ -226,6 +244,10 @@ export class YearRecapShareStateFacade {
         this.settingsSignal.set(settings);
         this.savingSignal.set(false);
         this.editorOpenSignal.set(false);
+        this.productAnalytics.track({
+          type: 'share_revoked',
+          recapType: 'year-recap'
+        });
         this.toast('success', 'yearRecapShare.toast.revoked');
       },
       error: (error: unknown): void => {
@@ -257,6 +279,10 @@ export class YearRecapShareStateFacade {
 
         this.settingsSignal.set(settings);
         this.savingSignal.set(false);
+        this.productAnalytics.track({
+          type: 'share_rotated',
+          recapType: 'year-recap'
+        });
         this.toast('success', 'yearRecapShare.toast.rotated');
       },
       error: (error: unknown): void => {

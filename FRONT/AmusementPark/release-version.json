@@ -1,6 +1,20 @@
 {
-  "version": "5.3.10",
+  "version": "5.3.11",
   "history": [
+    {
+      "version": "5.3.11",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Le parcours de partage peut désormais être amélioré dans le respect de ta vie privée.",
+        "en": "The sharing journey can now be improved while respecting your privacy.",
+        "de": "Der Freigabeprozess kann jetzt unter Wahrung deiner Privatsphäre verbessert werden.",
+        "nl": "Het deeltraject kan nu worden verbeterd met respect voor je privacy.",
+        "it": "Il percorso di condivisione può ora essere migliorato nel rispetto della tua privacy.",
+        "es": "El recorrido para compartir ahora puede mejorarse respetando tu privacidad.",
+        "pl": "Proces udostępniania można teraz ulepszać z poszanowaniem twojej prywatności.",
+        "pt": "O percurso de partilha pode agora ser melhorado respeitando a tua privacidade."
+      }
+    },
     {
       "version": "5.3.10",
       "releasedAt": "2026-09-14",

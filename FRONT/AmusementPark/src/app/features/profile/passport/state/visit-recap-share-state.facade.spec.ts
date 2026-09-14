@@ -9,6 +9,8 @@ import {
   VisitRecapShareCandidates
 } from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { SHARE_PRODUCT_ANALYTICS_PORT } from '@core/analytics/share-product-analytics.port';
+import { ShareProductEvent } from '@core/analytics/share-product-event.model';
 import { TranslateService } from '@ngx-translate/core';
 import { VISIT_RECAP_SHARE_PORT, VisitRecapSharePort } from './visit-recap-share-state-data.ports';
 import { VisitRecapShareStateFacade } from './visit-recap-share-state.facade';
@@ -22,12 +24,14 @@ describe('VisitRecapShareStateFacade', () => {
   let publishResponse: Observable<SharePublicationSettings>;
   let rotatedPublicationIds: string[];
   let revokedPublicationIds: string[];
+  let analyticsEvents: ShareProductEvent[];
 
   beforeEach(() => {
     previewRequests = [];
     publishRequests = [];
     rotatedPublicationIds = [];
     revokedPublicationIds = [];
+    analyticsEvents = [];
     settings = { isPublic: false, includedFields: [] };
     candidates = {
       items: [{
@@ -74,6 +78,14 @@ describe('VisitRecapShareStateFacade', () => {
       providers: [
         VisitRecapShareStateFacade,
         { provide: VISIT_RECAP_SHARE_PORT, useValue: port },
+        {
+          provide: SHARE_PRODUCT_ANALYTICS_PORT,
+          useValue: {
+            track: (event: ShareProductEvent): void => {
+              analyticsEvents.push(event);
+            }
+          }
+        },
         { provide: ToastMessageService, useValue: { add: vi.fn() } },
         { provide: TranslateService, useValue: { instant: (key: string): string => key } }
       ]
@@ -202,6 +214,12 @@ describe('VisitRecapShareStateFacade', () => {
       publicCaption: 'A public memory only'
     });
     expect(facade.settings()?.shareId).toBe('opaque-share-id');
+    expect(analyticsEvents).toEqual([
+      { type: 'share_activation_started', recapType: 'visit-recap' },
+      { type: 'share_preview_created', recapType: 'visit-recap' },
+      { type: 'share_preview_created', recapType: 'visit-recap' },
+      { type: 'share_published', recapType: 'visit-recap' }
+    ]);
   });
 
   it('rotates and revokes the central publication identified by the loaded settings', () => {
@@ -222,6 +240,10 @@ describe('VisitRecapShareStateFacade', () => {
 
     expect(revokedPublicationIds).toEqual(['publication-1']);
     expect(facade.settings()?.isPublic).toBe(false);
+    expect(analyticsEvents).toEqual([
+      { type: 'share_rotated', recapType: 'visit-recap' },
+      { type: 'share_revoked', recapType: 'visit-recap' }
+    ]);
   });
 });
 

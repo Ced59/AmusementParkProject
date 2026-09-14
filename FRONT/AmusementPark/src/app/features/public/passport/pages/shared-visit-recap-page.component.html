@@ -129,7 +129,7 @@
         <div>
           <h2>{{ 'visitRecapShare.public.ctaTitle' | translate }}</h2>
           <p>{{ 'visitRecapShare.public.ctaDescription' | translate }}</p>
-          <a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']">{{ 'visitRecapShare.public.createMine' | translate }}</a>
+          <a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']" (click)="trackPassportCta()">{{ 'visitRecapShare.public.createMine' | translate }}</a>
         </div>
       </aside>
       <app-public-share-report targetType="VisitRecap" [shareId]="shareId()"></app-public-share-report>

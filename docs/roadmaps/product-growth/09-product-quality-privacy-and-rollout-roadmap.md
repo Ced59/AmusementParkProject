@@ -217,11 +217,19 @@ Ne pas transmettre : `VisitId`, `ParkId`, liste des éléments, commentaire, val
 
 ### SHARE
 
-- `share_preview_opened` ;
+- `share_activation_started` ;
+- `share_preview_created` ;
 - `share_published` ;
 - `share_revoked` ;
+- `share_rotated` ;
 - `share_opened` ;
-- `share_cta_passport_started`.
+- `share_cta_passport_started` ;
+- `share_render_failed`.
+
+Pour SHARE, le démarrage d'activation correspond à l'entrée dans la préparation
+d'un partage. Sa réussite correspond à `share_published`, émis seulement après la
+confirmation de l'API. Le label autorisé est limité à la famille de récit ; aucun
+identifiant ni contenu du partage n'est une propriété analytics.
 
 ### FIT/WATCH/TRIP/HIST/LIVE
 
