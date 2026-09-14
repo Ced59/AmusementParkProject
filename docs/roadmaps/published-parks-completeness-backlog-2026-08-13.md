@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
 - 67 parcs atteignent le niveau `Excellent` : 65 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **48 parcs** : 0 au niveau `Publishable`, 46 au niveau `Good` et 2 au niveau `Excellent`.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **47 parcs** : 0 au niveau `Publishable`, 45 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,11 +22,10 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (46)
+## Priorité 2 — niveau `Good` (45)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 86 | `Good` | Artesina | IT | `Operating` | `Regional` | 79/92 | `9eca776f-9301-4b68-a52c-e76682486e7b` |
 | 86 | `Good` | Aspen Snowmass Ski Resort | US | `Operating` | `International` | 89/103 | `352bd57a-a355-46b3-a588-eb05bca70633` |
 | 86 | `Good` | Athisayam | IN | `Operating` | `Regional` | 79/92 | `f45829bf-5837-4a46-9276-7e02c552b045` |
 | 86 | `Good` | Plopsa Indoor Hasselt | BE | `Operating` | `Regional` | 76/88 | `4273e070-ca9e-4239-89ab-a47e96846a68` |
