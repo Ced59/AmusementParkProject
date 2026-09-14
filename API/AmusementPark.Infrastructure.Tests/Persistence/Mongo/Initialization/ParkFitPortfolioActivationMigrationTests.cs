@@ -4,6 +4,10 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using MongoDB.Driver.Core.Clusters;
+using MongoDB.Driver.Core.Connections;
+using MongoDB.Driver.Core.Servers;
+using Moq;
 using Xunit;
 
 namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Initialization;
@@ -38,6 +42,27 @@ public sealed class ParkFitPortfolioActivationMigrationTests
         Assert.Equal(migratedAtUtc, inserted["updatedAt"].ToUniversalTime());
     }
 
+    [Fact]
+    public async Task WriteCompletionMarkerAsync_WhenAnotherInstanceWins_ShouldRemainIdempotent()
+    {
+        Mock<IMongoCollection<ParkFitPortfolioMigrationDocument>> migrations =
+            new Mock<IMongoCollection<ParkFitPortfolioMigrationDocument>>(MockBehavior.Strict);
+        migrations.Setup(collection => collection.ReplaceOneAsync(
+                It.IsAny<FilterDefinition<ParkFitPortfolioMigrationDocument>>(),
+                It.Is<ParkFitPortfolioMigrationDocument>(marker =>
+                    marker.Id == ParkFitPortfolioActivationMigration.MigrationId),
+                It.Is<ReplaceOptions>(options => options.IsUpsert),
+                CancellationToken.None))
+            .ThrowsAsync(CreateDuplicateKeyException());
+
+        await ParkFitPortfolioActivationMigration.WriteCompletionMarkerAsync(
+            migrations.Object,
+            new DateTime(2026, 9, 14, 12, 0, 0, DateTimeKind.Utc),
+            CancellationToken.None);
+
+        migrations.VerifyAll();
+    }
+
     private static BsonDocument Render(FilterDefinition<ParkDocument> filter)
     {
         IBsonSerializer<ParkDocument> serializer =
@@ -55,5 +80,28 @@ public sealed class ParkFitPortfolioActivationMigrationTests
         return update.Render(new RenderArgs<ParkFitOperationalStatusDocument>(
             serializer,
             BsonSerializer.SerializerRegistry)).AsBsonDocument;
+    }
+
+    private static MongoWriteException CreateDuplicateKeyException()
+    {
+        ClusterId clusterId = new ClusterId();
+        ServerId serverId = new ServerId(
+            clusterId,
+            new System.Net.DnsEndPoint("localhost", 27017));
+        ConnectionId connectionId = new ConnectionId(serverId);
+        WriteError error = (WriteError)Activator.CreateInstance(
+            typeof(WriteError),
+            System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.NonPublic,
+            null,
+            new object[]
+            {
+                ServerErrorCategory.DuplicateKey,
+                11000,
+                "duplicate key",
+                new BsonDocument(),
+            },
+            null)!;
+        return new MongoWriteException(connectionId, error, null, null);
     }
 }

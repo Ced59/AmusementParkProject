@@ -89,19 +89,39 @@ internal sealed class ParkFitPortfolioActivationMigration
             }
         }
 
+        await WriteCompletionMarkerAsync(
+            this.migrations,
+            migratedAtUtc,
+            cancellationToken);
+        return activatedParkCount;
+    }
+
+    internal static async Task WriteCompletionMarkerAsync(
+        IMongoCollection<ParkFitPortfolioMigrationDocument> migrations,
+        DateTime migratedAtUtc,
+        CancellationToken cancellationToken)
+    {
         ParkFitPortfolioMigrationDocument marker = new ParkFitPortfolioMigrationDocument
         {
             Id = MigrationId,
             CompletedAtUtc = migratedAtUtc,
         };
-        await this.migrations.ReplaceOneAsync(
-            Builders<ParkFitPortfolioMigrationDocument>.Filter.Eq(
-                static migration => migration.Id,
-                MigrationId),
-            marker,
-            new ReplaceOptions { IsUpsert = true },
-            cancellationToken);
-        return activatedParkCount;
+        try
+        {
+            await migrations.ReplaceOneAsync(
+                Builders<ParkFitPortfolioMigrationDocument>.Filter.Eq(
+                    static migration => migration.Id,
+                    MigrationId),
+                marker,
+                new ReplaceOptions { IsUpsert = true },
+                cancellationToken);
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            // Une autre instance a terminé la même migration entre la lecture
+            // initiale et cet upsert. Le marqueur unique prouve son achèvement.
+        }
     }
 
     internal static FilterDefinition<ParkDocument> BuildLegacyParkFilter()
