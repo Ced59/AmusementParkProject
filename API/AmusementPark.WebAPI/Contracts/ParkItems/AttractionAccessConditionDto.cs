@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using AmusementPark.WebAPI.Contracts.Common;
 
 namespace AmusementPark.WebAPI.Contracts.ParkItems;
@@ -7,7 +8,7 @@ namespace AmusementPark.WebAPI.Contracts.ParkItems;
 /// <summary>
 /// Contrainte d'accès HTTP d'une attraction.
 /// </summary>
-public sealed class AttractionAccessConditionDto
+public sealed class AttractionAccessConditionDto : IValidatableObject
 {
     public AttractionAccessConditionTypeDto Type { get; set; }
 
@@ -33,7 +34,9 @@ public sealed class AttractionAccessConditionDto
 
     public int? DisplayOrder { get; set; }
 
-    public int ProvenanceSchemaVersion { get; set; } = 1;
+    [Required]
+    [Range(1, 1)]
+    public int? ProvenanceSchemaVersion { get; set; }
 
     public AttractionAccessConditionSourceKindDto SourceKind { get; set; }
 
@@ -58,4 +61,42 @@ public sealed class AttractionAccessConditionDto
     public DateOnly? EffectiveFrom { get; set; }
 
     public DateOnly? EffectiveTo { get; set; }
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (this.CollectedAtUtc.HasValue && this.CollectedAtUtc.Value.Kind == DateTimeKind.Unspecified)
+        {
+            yield return new ValidationResult(
+                "CollectedAtUtc must include a timezone offset.",
+                new[] { nameof(this.CollectedAtUtc) });
+        }
+
+        if (this.VerifiedAtUtc.HasValue && this.VerifiedAtUtc.Value.Kind == DateTimeKind.Unspecified)
+        {
+            yield return new ValidationResult(
+                "VerifiedAtUtc must include a timezone offset.",
+                new[] { nameof(this.VerifiedAtUtc) });
+        }
+
+        if (!Enum.IsDefined(this.SourceKind))
+        {
+            yield return new ValidationResult(
+                "SourceKind is invalid.",
+                new[] { nameof(this.SourceKind) });
+        }
+
+        if (!Enum.IsDefined(this.SourceConfidence))
+        {
+            yield return new ValidationResult(
+                "SourceConfidence is invalid.",
+                new[] { nameof(this.SourceConfidence) });
+        }
+
+        if (!Enum.IsDefined(this.Scope))
+        {
+            yield return new ValidationResult(
+                "Scope is invalid.",
+                new[] { nameof(this.Scope) });
+        }
+    }
 }

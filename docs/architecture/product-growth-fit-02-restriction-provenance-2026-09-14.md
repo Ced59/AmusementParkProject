@@ -130,9 +130,14 @@ flowchart LR
 - l'Application nettoie les textes, codes de langue et instants UTC ;
 - l'Infrastructure persiste l'unique schéma et migre les documents ;
 - la WebAPI transporte chaque champ sans accepter une version de schéma cliente
-  arbitraire ;
+  arbitraire ; une ancienne écriture qui omet la version est refusée plutôt que de
+  risquer d'effacer une preuve existante ;
 - Angular préserve la preuve lors d'une édition, même avant l'écran d'audit de
   `FIT-03`.
+
+Un instant fourni sans fuseau est ambigu : l'API le refuse et l'import Park Graph
+ne le transforme pas artificiellement en UTC. Seul un instant portant `Z` ou un
+décalage explicite peut devenir une date de preuve.
 
 ## 7. Preuves automatisées
 

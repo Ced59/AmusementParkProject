@@ -254,7 +254,7 @@ internal static class ParkItemNormalization
         {
             DateTimeKind.Utc => value.Value,
             DateTimeKind.Local => value.Value.ToUniversalTime(),
-            _ => DateTime.SpecifyKind(value.Value, DateTimeKind.Utc),
+            _ => null,
         };
     }
 

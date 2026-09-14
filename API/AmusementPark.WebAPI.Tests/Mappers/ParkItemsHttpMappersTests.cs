@@ -118,7 +118,7 @@ public sealed class ParkItemsHttpMappersTests
                     new AttractionAccessConditionDto
                     {
                         Type = AttractionAccessConditionTypeDto.MinHeight,
-                        ProvenanceSchemaVersion = 99,
+                        ProvenanceSchemaVersion = AttractionAccessCondition.CurrentProvenanceSchemaVersion,
                         SourceKind = AttractionAccessConditionSourceKindDto.Official,
                         SourceUrl = "https://example.test/restrictions",
                         SourceReference = "safety-board-2026",

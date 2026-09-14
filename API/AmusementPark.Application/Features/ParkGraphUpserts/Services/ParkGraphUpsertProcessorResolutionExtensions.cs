@@ -100,18 +100,34 @@ internal static class ParkGraphUpsertProcessorResolutionExtensions
 
     private static DateTime? ReadUtcDate(JsonElement item, string propertyName)
     {
-        DateTime? value = ParkGraphUpsertProcessorJsonReadingExtensions.ReadDate(item, propertyName);
-        if (!value.HasValue)
+        string? value = ParkGraphUpsertProcessorJsonReadingExtensions.ReadString(item, propertyName);
+        if (string.IsNullOrWhiteSpace(value) || !HasExplicitTimezone(value))
         {
             return null;
         }
 
-        return value.Value.Kind switch
+        return DateTimeOffset.TryParse(
+            value,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.AllowWhiteSpaces,
+            out DateTimeOffset parsed)
+                ? parsed.UtcDateTime
+                : null;
+    }
+
+    private static bool HasExplicitTimezone(string value)
+    {
+        string trimmed = value.Trim();
+        if (trimmed.EndsWith("Z", StringComparison.OrdinalIgnoreCase))
         {
-            DateTimeKind.Utc => value.Value,
-            DateTimeKind.Local => value.Value.ToUniversalTime(),
-            _ => DateTime.SpecifyKind(value.Value, DateTimeKind.Utc),
-        };
+            return true;
+        }
+
+        int timeSeparatorIndex = trimmed.IndexOf("T", StringComparison.OrdinalIgnoreCase);
+        int lastPlusIndex = trimmed.LastIndexOf('+');
+        int lastMinusIndex = trimmed.LastIndexOf('-');
+        return timeSeparatorIndex >= 0
+            && (lastPlusIndex > timeSeparatorIndex || lastMinusIndex > timeSeparatorIndex);
     }
 
     private static DateOnly? ReadDateOnly(JsonElement item, string propertyName)

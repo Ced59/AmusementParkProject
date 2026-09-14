@@ -52,7 +52,7 @@ public sealed class ParkItemNormalizationRestrictionProvenanceTests
         Assert.Equal(AttractionAccessCondition.CurrentProvenanceSchemaVersion, condition.ProvenanceSchemaVersion);
         Assert.Equal("https://example.test/restrictions", condition.SourceUrl);
         Assert.Equal("safety-board-2026", condition.SourceReference);
-        Assert.Equal(DateTimeKind.Utc, condition.CollectedAtUtc!.Value.Kind);
+        Assert.Null(condition.CollectedAtUtc);
         Assert.Equal(DateTimeKind.Utc, condition.VerifiedAtUtc!.Value.Kind);
         Assert.Equal("fr", condition.SourceLanguageCode);
         LocalizedText summary = Assert.Single(condition.SourceSummary);
