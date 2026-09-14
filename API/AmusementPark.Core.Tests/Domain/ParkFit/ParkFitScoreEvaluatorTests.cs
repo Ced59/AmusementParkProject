@@ -148,6 +148,25 @@ public sealed class ParkFitScoreEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenRawScoreIsBelowConfidenceCeiling_ShouldNotClaimCapWasApplied()
+    {
+        List<ParkFitSubscore> subscores = BuildCompleteSubscores();
+        Replace(
+            subscores,
+            BuildKnown(
+                ParkFitSubscoreKind.TravelConvenience,
+                100m,
+                confidence: ParkFitDataConfidence.Medium));
+
+        ParkFitScore result = this.Evaluate(subscores);
+
+        Assert.Equal(ParkFitScoreState.Available, result.State);
+        Assert.Equal(73m, result.RawKnownScore);
+        Assert.Equal(73m, result.ComparativeScore);
+        Assert.DoesNotContain(ParkFitScoreReasonCode.DataConfidenceCapApplied, result.Reasons);
+    }
+
+    [Fact]
     public void Evaluate_WhenKnownSubscoreConfidenceIsUnknown_ShouldSuspendTheScore()
     {
         List<ParkFitSubscore> subscores = BuildCompleteSubscores();

@@ -26,6 +26,23 @@ public sealed class ParkFitSearchParkDto
 
     public string DateAvailabilityState { get; init; } = string.Empty;
 
+    public string CalendarState { get; init; } = string.Empty;
+
+    public IReadOnlyCollection<ParkFitOpeningTimeRangeDto> OpeningTimeRanges { get; init; } =
+        Array.Empty<ParkFitOpeningTimeRangeDto>();
+
+    public string? CalendarTimeZoneId { get; init; }
+
+    public string? CalendarSourceUrl { get; init; }
+
+    public DateTime? CalendarLastVerifiedAtUtc { get; init; }
+
+    public double? DistanceKilometers { get; init; }
+
+    public string? DistanceMethod { get; init; }
+
+    public DateTime? DistanceEvaluatedAtUtc { get; init; }
+
     public int UnknownCount { get; init; }
 
     public int EveryoneTogetherAttractionCount { get; init; }

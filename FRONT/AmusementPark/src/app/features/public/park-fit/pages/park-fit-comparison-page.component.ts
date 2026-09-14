@@ -3,14 +3,18 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { ParkFitSearchPark } from '@app/models/park-fit/park-fit-search.models';
+import { ParkFitOpeningTimeRange, ParkFitSearchPark } from '@app/models/park-fit/park-fit-search.models';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { buildParkFitComparisonSections } from '../mappers/park-fit-comparison.mapper';
-import { formatParkFitDate, parkFitScoreReasonKey } from '../mappers/park-fit-result-display.helpers';
+import {
+  formatParkFitDate,
+  formatParkFitOpeningTimeRange,
+  parkFitScoreReasonKey
+} from '../mappers/park-fit-result-display.helpers';
 import { ParkFitComparisonSection, ParkFitComparisonSelection } from '../models/park-fit-comparison.models';
 import { ParkFitSearchFacade } from '../state/park-fit-search.facade';
 
@@ -31,7 +35,9 @@ export class ParkFitComparisonPageComponent implements OnInit {
   protected readonly sections: Signal<ParkFitComparisonSection[]> = computed(() => {
     const sections: ParkFitComparisonSection[] = buildParkFitComparisonSections(
       this.parks(),
-      (value: string | null): string => this.verifiedDateLabel(value)
+      (value: string | null): string => this.verifiedDateLabel(value),
+      (value: number): string => this.distanceLabel(value),
+      (range: ParkFitOpeningTimeRange): string => this.openingRangeLabel(range)
     );
     if (!this.showOnlyDifferences()) {
       return sections;
@@ -107,6 +113,20 @@ export class ParkFitComparisonPageComponent implements OnInit {
     return value
       ? formatParkFitDate(value, this.currentLang()) ?? this.translateService.instant('parkFit.results.proofs.unknownDate')
       : this.translateService.instant('parkFit.results.proofs.unknownDate');
+  }
+
+  private distanceLabel(value: number): string {
+    return new Intl.NumberFormat(this.currentLang(), {
+      maximumFractionDigits: 1
+    }).format(value);
+  }
+
+  private openingRangeLabel(range: ParkFitOpeningTimeRange): string {
+    return formatParkFitOpeningTimeRange(
+      range,
+      (key: string, params?: Record<string, string | number>): string =>
+        this.translateService.instant(key, params)
+    );
   }
 
   private applySeo(): void {

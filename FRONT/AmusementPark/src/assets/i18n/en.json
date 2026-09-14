@@ -4848,6 +4848,22 @@
       "label": "Date of your visit",
       "required": "Choose a date to start the search."
     },
+    "location": {
+      "title": "Add your starting point if you wish",
+      "text": "Distance will help order the parks without excluding farther destinations.",
+      "privacy": "Your position is rounded, used for this search and never saved.",
+      "action": "Use my position",
+      "loading": "Locating…",
+      "readyTitle": "Starting point included",
+      "readyText": "Results will show a direct distance, not a journey time.",
+      "remove": "Stop using it",
+      "errors": {
+        "denied": "You did not allow access to your position. You can still search without it.",
+        "timeout": "Your position could not be obtained in time. Try again or continue without it.",
+        "unsupported": "Location is not available on this device.",
+        "unavailable": "Your position is temporarily unavailable. You can still search without it."
+      }
+    },
     "group": {
       "title": "Describe the group",
       "text": "One row per person is enough. Leave a field empty when you do not know the answer.",
@@ -4943,6 +4959,36 @@
         "organized": "attractions possible with group planning",
         "date": "known situation on your chosen date"
       },
+      "practical": {
+        "title": "Date and distance, without false precision"
+      },
+      "distance": {
+        "title": "Distance from your starting point",
+        "value": "About {{distance}} km",
+        "notRequested": "Add your position to the criteria to calculate distance.",
+        "methods": {
+          "DirectGeodesic": "Direct as-the-crow-flies distance · this is not a road route",
+          "Unknown": "Unknown distance method"
+        }
+      },
+      "calendar": {
+        "title": "Calendar for your chosen day",
+        "states": {
+          "OpenConfirmed": "Opening confirmed",
+          "ClosedConfirmed": "Closure confirmed",
+          "CalendarNotPublished": "Calendar not published yet",
+          "CalendarIncomplete": "Calendar incomplete for this date",
+          "ExceptionalClosure": "Exceptional closure confirmed",
+          "OpeningHoursUnknown": "Opening indicated, hours unknown",
+          "Unknown": "Calendar status unknown"
+        },
+        "timeRange": "{{opensAt}} – {{closesAt}}{{nextDay}}",
+        "nextDay": " the next day",
+        "lastAdmission": "Last admission: {{time}}{{nextDay}}",
+        "timeZone": "Park local time · {{timezone}}",
+        "verified": "Calendar checked on {{date}}",
+        "source": "Open the source calendar"
+      },
       "unknowns": {
         "title": "Some facts are still unknown",
         "text": "Unknown attractions: {{attractions}} · unknown calculation factors: {{factors}}. They are never counted as negative.",
@@ -4988,6 +5034,7 @@
         "UnknownFactsExcluded": "Unknown facts are excluded from the calculation.",
         "MinimumMemberBoundApplied": "The result is limited by the least well-served person in the group.",
         "NoKnownFact": "No known fact can assess this factor.",
+        "DirectDistanceCalculated": "Proximity uses a direct distance, not a journey time.",
         "Unknown": "An explanation for this factor is not translated yet."
       },
       "scoreStates": {
@@ -5050,6 +5097,7 @@
       },
       "method": {
         "parkFit202601": "Park Fit method 2026 · version 1",
+        "parkFit202602": "Park Fit method 2026 · version 2 with detailed distance and calendar",
         "versioned": "Versioned comparison method"
       },
       "openPark": "Explore this park",

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.27",
+  "version": "5.3.28",
   "history": [
+    {
+      "version": "5.3.28",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Park Fit indique désormais la distance directe et le calendrier détaillé pour la date choisie.",
+        "en": "Park Fit now shows the direct distance and detailed calendar for your chosen date.",
+        "de": "Park Fit zeigt jetzt die direkte Entfernung und den detaillierten Kalender für dein gewähltes Datum.",
+        "nl": "Park Fit toont nu de rechtstreekse afstand en de gedetailleerde kalender voor je gekozen datum.",
+        "it": "Park Fit ora mostra la distanza diretta e il calendario dettagliato per la data scelta.",
+        "es": "Park Fit ahora muestra la distancia directa y el calendario detallado para la fecha elegida.",
+        "pl": "Park Fit pokazuje teraz bezpośrednią odległość i szczegółowy kalendarz dla wybranej daty.",
+        "pt": "O Park Fit mostra agora a distância direta e o calendário detalhado para a data escolhida."
+      }
+    },
     {
       "version": "5.3.27",
       "releasedAt": "2026-09-14",

@@ -53,11 +53,37 @@ describe('mapParkFitFormToRequest', () => {
       preferredAttractionTypes: ['FamilyRide', 'DarkRide'],
       preferIndoor: true,
       countryCode: null,
+      originLatitude: null,
+      originLongitude: null,
       unknownDataPolicy: 'KeepWithWarning',
       maximumResults: 10
     });
     expect(JSON.stringify(request)).not.toContain('name');
     expect(JSON.stringify(request)).not.toContain('alias');
     expect(JSON.stringify(request)).not.toContain('profile-1');
+  });
+
+  it('includes only the explicitly supplied rounded origin coordinates', () => {
+    const formValue: ParkFitSearchFormValue = {
+      evaluationDate: '2026-10-10',
+      members: [{
+        sourceProfileId: null,
+        sourceAlias: null,
+        heightCentimeters: null,
+        ageYears: null,
+        canBeAccompanied: false,
+        companionAgeYears: null
+      }],
+      preferredAttractionTypes: [],
+      preferIndoor: false
+    };
+
+    const request: ParkFitSearchRequest = mapParkFitFormToRequest(
+      formValue,
+      { latitude: 50.6292, longitude: 3.0573 }
+    );
+
+    expect(request.originLatitude).toBe(50.6292);
+    expect(request.originLongitude).toBe(3.0573);
   });
 });

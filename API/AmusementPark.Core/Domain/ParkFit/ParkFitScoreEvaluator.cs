@@ -5,7 +5,7 @@ namespace AmusementPark.Core.Domain.ParkFit;
 /// </summary>
 public sealed class ParkFitScoreEvaluator
 {
-    public const string MethodVersion = AttractionCompatibilityEvaluator.MethodVersion;
+    public const string MethodVersion = "park-fit-2026-02";
     public const decimal GroupCompatibilityWeightPercent = 45m;
     public const decimal PreferenceCoverageWeightPercent = 25m;
     public const decimal TravelConvenienceWeightPercent = 15m;
@@ -213,6 +213,7 @@ public sealed class ParkFitScoreEvaluator
             : ParkFitScoreState.Available;
         List<ParkFitScoreReasonCode> reasons = BuildScoreReasons(
             state,
+            rawKnownScore,
             coveragePercent,
             confidenceCeiling,
             hasCriticalUnknown,
@@ -374,6 +375,7 @@ public sealed class ParkFitScoreEvaluator
 
     private static List<ParkFitScoreReasonCode> BuildScoreReasons(
         ParkFitScoreState state,
+        decimal rawKnownScore,
         decimal coveragePercent,
         decimal confidenceCeiling,
         bool hasCriticalUnknown,
@@ -390,7 +392,7 @@ public sealed class ParkFitScoreEvaluator
             reasons.Add(ParkFitScoreReasonCode.IncompleteCoverageCapApplied);
         }
 
-        if (confidenceCeiling < 100m)
+        if (confidenceCeiling < rawKnownScore)
         {
             reasons.Add(ParkFitScoreReasonCode.DataConfidenceCapApplied);
         }

@@ -20,8 +20,11 @@ public static class GeoDistanceCalculator
 
         double haversine = Math.Pow(Math.Sin(latitudeDeltaRadians / 2d), 2d)
             + Math.Cos(sourceLatitudeRadians) * Math.Cos(targetLatitudeRadians) * Math.Pow(Math.Sin(longitudeDeltaRadians / 2d), 2d);
+        double boundedHaversine = Math.Clamp(haversine, 0d, 1d);
 
-        double angularDistance = 2d * Math.Atan2(Math.Sqrt(haversine), Math.Sqrt(1d - haversine));
+        double angularDistance = 2d * Math.Atan2(
+            Math.Sqrt(boundedHaversine),
+            Math.Sqrt(1d - boundedHaversine));
         return EarthRadiusKilometers * angularDistance;
     }
 

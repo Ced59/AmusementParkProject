@@ -1,6 +1,7 @@
-import { ParkFitCriticalSource } from '@app/models/park-fit/park-fit-search.models';
+import { ParkFitCriticalSource, ParkFitOpeningTimeRange } from '@app/models/park-fit/park-fit-search.models';
 import {
   formatParkFitDate,
+  formatParkFitOpeningTimeRange,
   parkFitComponentKindKey,
   parkFitScoreReasonKey,
   resolveParkFitSourceSummary,
@@ -42,6 +43,33 @@ describe('park fit result display helpers', () => {
     expect(dateTimeFormat).toHaveBeenCalledWith('fr', expect.objectContaining({ timeZone: 'UTC' }));
 
     dateTimeFormat.mockRestore();
+  });
+
+  it('keeps the last-admission cutoff and next-day marker in a displayed range', () => {
+    const range: ParkFitOpeningTimeRange = {
+      opensAt: '20:00',
+      closesAt: '01:00',
+      closesNextDay: true,
+      lastAdmissionAt: '00:15',
+      lastAdmissionNextDay: true
+    };
+    const translate = (
+      key: string,
+      params: Record<string, string | number> = {}
+    ): string => {
+      if (key.endsWith('.nextDay')) {
+        return ' le lendemain';
+      }
+
+      if (key.endsWith('.timeRange')) {
+        return `${params['opensAt']} – ${params['closesAt']}${params['nextDay']}`;
+      }
+
+      return `Dernière admission : ${params['time']}${params['nextDay']}`;
+    };
+
+    expect(formatParkFitOpeningTimeRange(range, translate))
+      .toBe('20:00 – 01:00 le lendemain · Dernière admission : 00:15 le lendemain');
   });
 });
 

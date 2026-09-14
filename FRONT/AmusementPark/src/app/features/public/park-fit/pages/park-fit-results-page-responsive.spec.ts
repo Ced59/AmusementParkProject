@@ -14,5 +14,6 @@ describe('Park Fit results page responsive contract', () => {
     expect(styles).toContain('@media (max-width: 520px)');
     expect(styles).toContain('@media (max-width: 360px)');
     expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
+    expect(styles).toContain('.park-fit-result-card__practical-grid');
   });
 });

@@ -10,6 +10,8 @@ public sealed class ParkOpeningHoursDay
 
     public bool IsDefined { get; init; }
 
+    public bool IsClosureExplicitlyDeclared { get; init; }
+
     public string SourceKind { get; init; } = string.Empty;
 
     public IReadOnlyCollection<LocalizedText> Labels { get; init; } = Array.Empty<LocalizedText>();

@@ -62,7 +62,11 @@ public sealed class SearchParksByFitQueryHandlerTests
             items.Object,
             openingHours.Object);
 
-        ApplicationResult<ParkFitSearchResult> result = await handler.HandleAsync(BuildQuery());
+        ApplicationResult<ParkFitSearchResult> result = await handler.HandleAsync(BuildQuery() with
+        {
+            OriginLatitude = 50d,
+            OriginLongitude = 3d,
+        });
 
         Assert.True(result.IsSuccess);
         ParkFitSearchResult value = Assert.IsType<ParkFitSearchResult>(result.Value);
@@ -74,7 +78,7 @@ public sealed class SearchParksByFitQueryHandlerTests
         Assert.Equal(1, value.QualityIssueCounts[ParkFitDataQualityIssue.NoVisibleAttractions]);
         ParkFitSearchParkResult parkResult = Assert.Single(value.Parks);
         Assert.Equal(eligiblePark.Id, parkResult.Park.Id);
-        Assert.Equal(ParkFitScoreState.Available, parkResult.Score.State);
+        Assert.Equal(ParkFitScoreState.Capped, parkResult.Score.State);
         Assert.Equal(ParkFitDateAvailabilityState.Available, parkResult.Score.DateAvailabilityState);
         Assert.Equal(1, parkResult.EveryoneTogetherAttractionCount);
         ParkFitSearchMemberSummaryResult memberSummary = Assert.Single(parkResult.MemberSummaries);
@@ -82,6 +86,11 @@ public sealed class SearchParksByFitQueryHandlerTests
         Assert.Equal(1, memberSummary.CompatibleAloneAttractionCount);
         Assert.Equal(0, memberSummary.UnknownAttractionCount);
         Assert.NotEmpty(parkResult.CriticalSources);
+        Assert.Equal(ParkFitCalendarState.OpenConfirmed, parkResult.DateAvailability.CalendarState);
+        Assert.Equal(0d, parkResult.TravelDistance!.DistanceKilometers);
+        ParkFitWeightedSubscore travel = parkResult.Score.Components.Single(static component =>
+            component.Kind == ParkFitSubscoreKind.TravelConvenience);
+        Assert.Equal(ParkFitSubscoreState.Known, travel.State);
         parks.VerifyAll();
         items.VerifyAll();
         openingHours.VerifyAll();
@@ -122,6 +131,63 @@ public sealed class SearchParksByFitQueryHandlerTests
             result.Value).Parks);
         Assert.Equal(ParkFitScoreState.Excluded, parkResult.Score.State);
         Assert.Equal(ParkFitDateAvailabilityState.Unavailable, parkResult.Score.DateAvailabilityState);
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenScoresReachSameConfidenceCeiling_ShouldUseRawScoreBeforeName()
+    {
+        Park fartherPark = BuildPark("park-farther", "Alpha", 51d, 3d);
+        Park nearerPark = BuildPark("park-nearer", "Zulu", 50d, 3d);
+        ParkItem fartherAttraction = BuildAttraction(fartherPark.Id, "item-farther");
+        ParkItem nearerAttraction = BuildAttraction(nearerPark.Id, "item-nearer");
+        Mock<IParkRepository> parks = BuildParkRepository(
+            new[] { fartherPark, nearerPark },
+            totalItems: 2);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHours =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        items.Setup(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { fartherAttraction, nearerAttraction });
+        openingHours.Setup(repository => repository.GetByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                BuildSchedule(fartherPark.Id, isClosed: false),
+                BuildSchedule(nearerPark.Id, isClosed: false),
+            });
+        openingHours.Setup(repository => repository.GetSummariesByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>
+            {
+                [fartherPark.Id] = BuildSummary(fartherPark.Id),
+                [nearerPark.Id] = BuildSummary(nearerPark.Id),
+            });
+        SearchParksByFitQueryHandler handler = BuildHandler(
+            parks.Object,
+            items.Object,
+            openingHours.Object);
+
+        ApplicationResult<ParkFitSearchResult> result = await handler.HandleAsync(BuildQuery() with
+        {
+            OriginLatitude = 50d,
+            OriginLongitude = 3d,
+        });
+
+        IReadOnlyCollection<ParkFitSearchParkResult> orderedParks =
+            Assert.IsType<ParkFitSearchResult>(result.Value).Parks;
+        Assert.Equal(
+            new[] { nearerPark.Id, fartherPark.Id },
+            orderedParks.Select(static park => park.Park.Id));
+        Assert.All(
+            orderedParks,
+            static park => Assert.Equal(85m, park.Score.ComparativeScore));
+        Assert.True(
+            orderedParks.First().Score.RawKnownScore
+                > orderedParks.Last().Score.RawKnownScore);
     }
 
     [Fact]
@@ -264,7 +330,11 @@ public sealed class SearchParksByFitQueryHandlerTests
             10);
     }
 
-    private static Park BuildPark(string id, string name)
+    private static Park BuildPark(
+        string id,
+        string name,
+        double latitude = 50d,
+        double longitude = 3d)
     {
         Park park = new Park
         {
@@ -280,7 +350,7 @@ public sealed class SearchParksByFitQueryHandlerTests
                 new LocalizedText("fr", $"Présentation publique de {name}."),
             },
         };
-        park.SetPosition(50, 3);
+        park.SetPosition(latitude, longitude);
         return park;
     }
 

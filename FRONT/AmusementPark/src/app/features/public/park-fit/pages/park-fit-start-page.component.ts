@@ -24,8 +24,13 @@ import {
   ParkFitMemberForm,
   ParkFitPreferenceOption,
   ParkFitSearchForm,
-  ParkFitSearchFormValue
+  ParkFitSearchFormValue,
+  ParkFitSearchOrigin
 } from '../models/park-fit-search-form.models';
+import {
+  ParkFitBrowserLocationFacade,
+  ParkFitBrowserLocationStatus
+} from '../state/park-fit-browser-location.facade';
 import { ParkFitSearchFacade, ParkFitSearchStatus } from '../state/park-fit-search.facade';
 import {
   ParkFitSavedProfilesFacade,
@@ -39,7 +44,7 @@ const MAXIMUM_MEMBER_COUNT = 8;
   templateUrl: './park-fit-start-page.component.html',
   styleUrl: './park-fit-start-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ParkFitSavedProfilesFacade],
+  providers: [ParkFitSavedProfilesFacade, ParkFitBrowserLocationFacade],
   imports: [
     ReactiveFormsModule,
     RouterLink,
@@ -61,6 +66,12 @@ export class ParkFitStartPageComponent implements OnInit {
   protected readonly savedProfilesStatus: Signal<ParkFitSavedProfilesStatus> =
     this.savedProfilesFacade.status;
   protected readonly isAuthenticated = signal<boolean>(false);
+  protected readonly locationStatus: Signal<ParkFitBrowserLocationStatus> =
+    this.locationFacade.status;
+  protected readonly location: Signal<ParkFitSearchOrigin | null> =
+    this.locationFacade.position;
+  protected readonly locationErrorKey: Signal<string | null> =
+    this.locationFacade.errorKey;
   protected readonly parkRoute: Signal<string[] | null> = computed(() => {
     const park: ParkFitSearchPark | null = this.firstPark();
     return park
@@ -99,6 +110,7 @@ export class ParkFitStartPageComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly sharedService: SharedService,
     private readonly savedProfilesFacade: ParkFitSavedProfilesFacade,
+    private readonly locationFacade: ParkFitBrowserLocationFacade,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -194,13 +206,29 @@ export class ParkFitStartPageComponent implements OnInit {
   }
 
   protected submit(): void {
+    if (this.locationStatus() === 'loading') {
+      return;
+    }
+
     if (this.form.invalid || this.members.length === 0) {
       this.form.markAllAsTouched();
       return;
     }
 
     const value: ParkFitSearchFormValue = this.form.getRawValue();
-    this.facade.search(mapParkFitFormToRequest(value));
+    const origin: ParkFitSearchOrigin | null = this.location();
+    this.facade.search(mapParkFitFormToRequest(value, origin));
+    if (origin) {
+      this.locationFacade.clear();
+    }
+  }
+
+  protected requestLocation(): void {
+    this.locationFacade.request();
+  }
+
+  protected clearLocation(): void {
+    this.locationFacade.clear();
   }
 
   protected countryName(countryCode: string | null): string {
@@ -236,6 +264,7 @@ export class ParkFitStartPageComponent implements OnInit {
       preferredAttractionTypes: [...request.preferredAttractionTypes],
       preferIndoor: request.preferIndoor
     });
+
   }
 
   private applySeo(): void {

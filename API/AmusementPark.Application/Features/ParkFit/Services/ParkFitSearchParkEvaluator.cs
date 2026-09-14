@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.ParkFit.Queries;
 using AmusementPark.Application.Features.ParkFit.Results;
 using AmusementPark.Core.Domain.ParkFit;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Geo;
 
 namespace AmusementPark.Application.Features.ParkFit.Services;
 
@@ -23,6 +24,8 @@ public sealed class ParkFitSearchParkEvaluator
         new ParkFitIndoorResilienceSubscoreEvaluator();
     private readonly ParkFitDateAvailabilityEvaluator availabilityEvaluator =
         new ParkFitDateAvailabilityEvaluator();
+    private readonly ParkFitTravelConvenienceSubscoreEvaluator travelEvaluator =
+        new ParkFitTravelConvenienceSubscoreEvaluator();
     private readonly ParkFitScoreEvaluator scoreEvaluator = new ParkFitScoreEvaluator();
 
     public ParkFitSearchParkResult Evaluate(
@@ -51,11 +54,18 @@ public sealed class ParkFitSearchParkEvaluator
         ParkFitSubscore groupSubscore = this.groupSubscoreEvaluator.Evaluate(
             groupCompatibilities,
             query.EvaluationDate);
+        GeoPoint? origin = query.OriginLatitude.HasValue && query.OriginLongitude.HasValue
+            ? new GeoPoint(query.OriginLatitude.Value, query.OriginLongitude.Value)
+            : null;
+        ParkFitTravelEvaluation travel = this.travelEvaluator.Evaluate(
+            origin,
+            park.Position,
+            evaluatedAtUtc);
         IReadOnlyCollection<ParkFitSubscore> subscores = new[]
         {
             groupSubscore,
             this.preferenceEvaluator.Evaluate(query.PreferredAttractionTypes, attractions),
-            BuildNotApplicable(ParkFitSubscoreKind.TravelConvenience),
+            travel.Subscore,
             this.indoorEvaluator.Evaluate(query.PreferIndoor, attractions),
             BuildNotApplicable(ParkFitSubscoreKind.BudgetFit),
         };
@@ -79,6 +89,8 @@ public sealed class ParkFitSearchParkEvaluator
             Park = park,
             DataQuality = quality,
             Score = score,
+            DateAvailability = availability,
+            TravelDistance = travel.Distance,
             EveryoneTogetherAttractionCount = CountState(
                 groupCompatibilities,
                 GroupAttractionCompatibilityState.EveryoneTogether),

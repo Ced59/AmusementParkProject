@@ -1,4 +1,9 @@
-import { ParkFitSearchMemberSummary, ParkFitSearchPark, ParkFitScoreComponent } from '@app/models/park-fit/park-fit-search.models';
+import {
+  ParkFitOpeningTimeRange,
+  ParkFitSearchMemberSummary,
+  ParkFitSearchPark,
+  ParkFitScoreComponent
+} from '@app/models/park-fit/park-fit-search.models';
 import {
   ParkFitComparisonCell,
   ParkFitComparisonRow,
@@ -6,12 +11,15 @@ import {
 } from '../models/park-fit-comparison.models';
 import {
   parkFitAvailabilityKey,
+  parkFitCalendarStateKey,
   parkFitComponentStateKey,
   parkFitConfidenceKey,
+  parkFitDistanceMethodKey,
   parkFitQualityKey,
   parkFitScoreReasonKey,
   parkFitScoreStateKey,
   parkFitSubscoreReasonKey,
+  resolveParkFitHttpsUrl,
   resolveParkFitSourceUrl
 } from './park-fit-result-display.helpers';
 
@@ -19,7 +27,9 @@ type CellBuilder = (park: ParkFitSearchPark) => ParkFitComparisonCell;
 
 export function buildParkFitComparisonSections(
   parks: ParkFitSearchPark[],
-  formatDate: (value: string | null) => string
+  formatDate: (value: string | null) => string,
+  formatDistance: (value: number) => string = (value: number): string => String(value),
+  formatOpeningRange: (range: ParkFitOpeningTimeRange) => string = defaultOpeningRange
 ): ParkFitComparisonSection[] {
   const memberNumbers: number[] = Array.from(new Set(
     parks.flatMap((park: ParkFitSearchPark): number[] =>
@@ -69,8 +79,11 @@ export function buildParkFitComparisonSections(
       id: 'practical',
       titleKey: 'parkFit.comparison.sections.practical',
       rows: [
-        buildRow('travel', 'parkFit.comparison.rows.travel', 'pi pi-car', parks, (park: ParkFitSearchPark): ParkFitComparisonCell => buildComponentCell(park, 'TravelConvenience')),
-        buildRow('schedule', 'parkFit.comparison.rows.schedule', 'pi pi-clock', parks, buildScheduleCell),
+        buildRow('travel', 'parkFit.comparison.rows.travel', 'pi pi-car', parks,
+          (park: ParkFitSearchPark): ParkFitComparisonCell => buildTravelCell(park, formatDistance)),
+        buildRow('schedule', 'parkFit.comparison.rows.schedule', 'pi pi-clock', parks,
+          (park: ParkFitSearchPark): ParkFitComparisonCell =>
+            buildScheduleCell(park, formatOpeningRange, formatDate)),
         buildRow('budget', 'parkFit.comparison.rows.budget', 'pi pi-wallet', parks, (park: ParkFitSearchPark): ParkFitComparisonCell => buildComponentCell(park, 'BudgetFit'))
       ]
     },
@@ -160,7 +173,34 @@ function buildUnknownCell(park: ParkFitSearchPark): ParkFitComparisonCell {
 }
 
 function buildOpeningCell(park: ParkFitSearchPark): ParkFitComparisonCell {
-  return cell(park, parkFitAvailabilityKey(park.dateAvailabilityState), {}, null, {}, null, park.dateAvailabilityState);
+  return cell(
+    park,
+    parkFitCalendarStateKey(park.calendarState),
+    {},
+    parkFitAvailabilityKey(park.dateAvailabilityState),
+    {},
+    null,
+    `${park.calendarState}|${park.dateAvailabilityState}`
+  );
+}
+
+function buildTravelCell(
+  park: ParkFitSearchPark,
+  formatDistance: (value: number) => string
+): ParkFitComparisonCell {
+  if (park.distanceKilometers === null) {
+    return buildComponentCell(park, 'TravelConvenience');
+  }
+
+  return cell(
+    park,
+    'parkFit.results.distance.value',
+    { distance: formatDistance(park.distanceKilometers) },
+    parkFitDistanceMethodKey(park.distanceMethod),
+    {},
+    null,
+    `${park.distanceKilometers}|${park.distanceMethod}`
+  );
 }
 
 function buildMemberCell(park: ParkFitSearchPark, memberNumber: number): ParkFitComparisonCell {
@@ -213,16 +253,39 @@ function buildComponentCell(park: ParkFitSearchPark, componentKind: string): Par
   );
 }
 
-function buildScheduleCell(park: ParkFitSearchPark): ParkFitComparisonCell {
+function buildScheduleCell(
+  park: ParkFitSearchPark,
+  formatOpeningRange: (range: ParkFitOpeningTimeRange) => string,
+  formatDate: (value: string | null) => string
+): ParkFitComparisonCell {
+  const ranges: string = park.openingTimeRanges
+    .map(formatOpeningRange)
+    .join(', ');
+  const schedule: string = ranges && park.calendarTimeZoneId
+    ? `${ranges} · ${park.calendarTimeZoneId}`
+    : ranges;
   return cell(
     park,
-    'parkFit.comparison.values.scheduleNotExposed',
+    parkFitCalendarStateKey(park.calendarState),
     {},
-    parkFitAvailabilityKey(park.dateAvailabilityState),
-    {},
-    null,
-    `not-exposed|${park.dateAvailabilityState}`
+    schedule ? 'parkFit.comparison.values.verified' : parkFitAvailabilityKey(park.dateAvailabilityState),
+    schedule ? { date: schedule } : {},
+    resolveParkFitHttpsUrl(park.calendarSourceUrl),
+    `${park.calendarState}|${ranges}|${park.calendarTimeZoneId ?? ''}|${park.calendarLastVerifiedAtUtc ?? ''}|${park.calendarSourceUrl ?? ''}`,
+    park.calendarLastVerifiedAtUtc ? 'parkFit.results.calendar.verified' : null,
+    park.calendarLastVerifiedAtUtc
+      ? { date: formatDate(park.calendarLastVerifiedAtUtc) }
+      : {}
   );
+}
+
+function defaultOpeningRange(range: ParkFitOpeningTimeRange): string {
+  const hours: string = `${range.opensAt}–${range.closesAt}${range.closesNextDay ? ' (+1)' : ''}`;
+  if (!range.lastAdmissionAt) {
+    return hours;
+  }
+
+  return `${hours} · ${range.lastAdmissionAt}${range.lastAdmissionNextDay ? ' (+1)' : ''}`;
 }
 
 function buildQualityCell(park: ParkFitSearchPark): ParkFitComparisonCell {

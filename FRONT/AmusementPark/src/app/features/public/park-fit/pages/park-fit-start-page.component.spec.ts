@@ -14,6 +14,7 @@ import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { ParkFitMemberForm, ParkFitSearchForm } from '../models/park-fit-search-form.models';
 import { ParkFitSearchFacade, ParkFitSearchStatus } from '../state/park-fit-search.facade';
+import { ParkFitBrowserLocationFacade } from '../state/park-fit-browser-location.facade';
 import { ParkFitSavedProfilesFacade } from '../state/park-fit-saved-profiles.facade';
 import { AuthService } from '@app/services/auth/auth.service';
 import { SharedService } from '@app/services/shared/shared.service';
@@ -77,6 +78,61 @@ describe('ParkFitStartPageComponent', () => {
     page.removeMember(0);
 
     expect(page.members.length).toBe(1);
+  });
+
+  it('consumes an explicitly requested position after one search', () => {
+    const search = vi.fn();
+    const clear = vi.fn();
+    const locationFacade = {
+      status: signal('ready').asReadonly(),
+      position: signal({ latitude: 50.6292, longitude: 3.0573 }).asReadonly(),
+      errorKey: signal(null).asReadonly(),
+      request: vi.fn(),
+      clear
+    } as unknown as ParkFitBrowserLocationFacade;
+    const component: ParkFitStartPageComponent = createComponent(
+      search,
+      null,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      locationFacade
+    );
+    const page: ParkFitPageTestSurface = component as unknown as ParkFitPageTestSurface;
+    page.form.controls.evaluationDate.setValue('2026-10-10');
+
+    page.submit();
+
+    const request: ParkFitSearchRequest = search.mock.calls[0]![0] as ParkFitSearchRequest;
+    expect(request.originLatitude).toBe(50.6292);
+    expect(request.originLongitude).toBe(3.0573);
+    expect(clear).toHaveBeenCalledOnce();
+  });
+
+  it('waits for a pending location request before submitting', () => {
+    const search = vi.fn();
+    const locationFacade = {
+      status: signal('loading').asReadonly(),
+      position: signal(null).asReadonly(),
+      errorKey: signal(null).asReadonly(),
+      request: vi.fn(),
+      clear: vi.fn()
+    } as unknown as ParkFitBrowserLocationFacade;
+    const component: ParkFitStartPageComponent = createComponent(
+      search,
+      null,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      locationFacade
+    );
+    const page: ParkFitPageTestSurface = component as unknown as ParkFitPageTestSurface;
+
+    page.submit();
+
+    expect(search).not.toHaveBeenCalled();
   });
 
   it('restores only the in-memory criteria and applies private SEO metadata', () => {
@@ -168,7 +224,14 @@ function createComponent(
     profiles: signal<ParkFitGroupProfile[]>([]).asReadonly(),
     status: signal('idle').asReadonly(),
     load: vi.fn()
-  } as unknown as ParkFitSavedProfilesFacade
+  } as unknown as ParkFitSavedProfilesFacade,
+  locationFacade: ParkFitBrowserLocationFacade = {
+    status: signal('idle').asReadonly(),
+    position: signal(null).asReadonly(),
+    errorKey: signal(null).asReadonly(),
+    request: vi.fn(),
+    clear: vi.fn()
+  } as unknown as ParkFitBrowserLocationFacade
 ): ParkFitStartPageComponent {
   const status: Signal<ParkFitSearchStatus> = signal<ParkFitSearchStatus>('idle').asReadonly();
   const response: Signal<ParkFitSearchResponse | null> = signal<ParkFitSearchResponse | null>(null).asReadonly();
@@ -203,7 +266,6 @@ function createComponent(
     destroyed: false,
     onDestroy: (): (() => void) => (): void => undefined
   };
-
   return new ParkFitStartPageComponent(
     route as ActivatedRoute,
     { url: '/fr/park-fit' } as Router,
@@ -214,6 +276,7 @@ function createComponent(
     { isLoggedIn } as AuthService,
     { getLoginStatusListener: (): Subject<void> => loginStatus } as unknown as SharedService,
     savedProfilesFacade,
+    locationFacade,
     destroyRef
   );
 }
@@ -232,6 +295,8 @@ function buildRequest(): ParkFitSearchRequest {
     preferredAttractionTypes: ['FamilyRide'],
     preferIndoor: true,
     countryCode: null,
+    originLatitude: null,
+    originLongitude: null,
     unknownDataPolicy: 'KeepWithWarning',
     maximumResults: 10
   };

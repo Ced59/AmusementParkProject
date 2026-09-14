@@ -17,5 +17,7 @@ public sealed record SearchParksByFitQuery(
     bool PreferIndoor,
     string? CountryCode,
     ParkFitUnknownDataPolicy UnknownDataPolicy,
-    int MaximumResults)
+    int MaximumResults,
+    double? OriginLatitude = null,
+    double? OriginLongitude = null)
     : IQuery<ApplicationResult<ParkFitSearchResult>>;

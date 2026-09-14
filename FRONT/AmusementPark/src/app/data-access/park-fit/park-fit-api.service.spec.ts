@@ -56,6 +56,8 @@ function buildRequest(): ParkFitSearchRequest {
     preferredAttractionTypes: ['FamilyRide'],
     preferIndoor: false,
     countryCode: null,
+    originLatitude: null,
+    originLongitude: null,
     unknownDataPolicy: 'KeepWithWarning',
     maximumResults: 10
   };

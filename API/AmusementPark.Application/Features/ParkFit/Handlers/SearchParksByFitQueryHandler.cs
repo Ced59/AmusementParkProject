@@ -185,6 +185,7 @@ public sealed class SearchParksByFitQueryHandler
         IReadOnlyCollection<ParkFitSearchParkResult> orderedResults = eligibleResults
             .OrderBy(static result => GetStateOrder(result.Score.State))
             .ThenByDescending(static result => result.Score.ComparativeScore)
+            .ThenByDescending(static result => result.Score.RawKnownScore)
             .ThenByDescending(static result => result.Score.CoveragePercent)
             .ThenBy(static result => result.Park.Name, StringComparer.OrdinalIgnoreCase)
             .ThenBy(static result => result.Park.Id, StringComparer.Ordinal)

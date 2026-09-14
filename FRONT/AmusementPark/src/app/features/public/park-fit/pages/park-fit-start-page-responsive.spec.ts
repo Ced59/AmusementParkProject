@@ -14,5 +14,8 @@ describe('Park Fit start page responsive contract', () => {
     expect(styles).toContain('@media (max-width: 560px)');
     expect(styles).toContain('@media (max-width: 360px)');
     expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
+    expect(styles).toContain('.park-fit-location');
+    expect(styles).toContain('> button');
+    expect(styles).toContain('grid-column: 1/-1');
   });
 });

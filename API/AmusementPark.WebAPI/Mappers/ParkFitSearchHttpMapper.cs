@@ -41,7 +41,9 @@ public static class ParkFitSearchHttpMapper
             request.PreferIndoor,
             request.CountryCode,
             (ParkFitUnknownDataPolicy)(int)request.UnknownDataPolicy,
-            request.MaximumResults);
+            request.MaximumResults,
+            request.OriginLatitude,
+            request.OriginLongitude);
     }
 
     public static ParkFitSearchResponseDto ToHttp(this ParkFitSearchResult result)
@@ -91,6 +93,22 @@ public static class ParkFitSearchHttpMapper
             ScoreCeilingPercent = result.Score.ScoreCeilingPercent,
             Confidence = result.Score.Confidence.ToString(),
             DateAvailabilityState = result.Score.DateAvailabilityState.ToString(),
+            CalendarState = result.DateAvailability.CalendarState.ToString(),
+            OpeningTimeRanges = result.DateAvailability.TimeRanges.Select(static range =>
+                new ParkFitOpeningTimeRangeDto
+                {
+                    OpensAt = range.OpensAt.ToString("HH:mm"),
+                    ClosesAt = range.ClosesAt.ToString("HH:mm"),
+                    ClosesNextDay = range.ClosesNextDay,
+                    LastAdmissionAt = range.LastAdmissionAt?.ToString("HH:mm"),
+                    LastAdmissionNextDay = range.LastAdmissionNextDay,
+                }).ToList(),
+            CalendarTimeZoneId = result.DateAvailability.TimeZoneId,
+            CalendarSourceUrl = ResolveHttpsUrl(result.DateAvailability.SourceUrl),
+            CalendarLastVerifiedAtUtc = result.DateAvailability.LastVerifiedAtUtc,
+            DistanceKilometers = result.TravelDistance?.DistanceKilometers,
+            DistanceMethod = result.TravelDistance?.Method.ToString(),
+            DistanceEvaluatedAtUtc = result.TravelDistance?.EvaluatedAtUtc,
             UnknownCount = unknownCount,
             EveryoneTogetherAttractionCount = result.EveryoneTogetherAttractionCount,
             SplitRequiredAttractionCount = result.SplitRequiredAttractionCount,
@@ -138,5 +156,13 @@ public static class ParkFitSearchHttpMapper
                     Summaries = source.Summaries.ToHttp(),
                 }).ToList(),
         };
+    }
+
+    private static string? ResolveHttpsUrl(string? value)
+    {
+        return Uri.TryCreate(value, UriKind.Absolute, out Uri? uri)
+            && string.Equals(uri.Scheme, Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase)
+            ? uri.AbsoluteUri
+            : null;
     }
 }

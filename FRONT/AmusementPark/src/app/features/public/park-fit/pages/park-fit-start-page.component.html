@@ -34,6 +34,35 @@
       @if (form.controls.evaluationDate.touched && form.controls.evaluationDate.invalid) {
         <p class="park-fit-inline-error" role="alert">{{ 'parkFit.date.required' | translate }}</p>
       }
+
+      <section class="park-fit-location" [class.park-fit-location--ready]="locationStatus() === 'ready'">
+        <div class="park-fit-location__icon" aria-hidden="true">
+          <i [class]="locationStatus() === 'ready' ? 'pi pi-check' : 'pi pi-map-marker'"></i>
+        </div>
+        <div class="park-fit-location__copy" aria-live="polite">
+          <strong>{{ (locationStatus() === 'ready' ? 'parkFit.location.readyTitle' : 'parkFit.location.title') | translate }}</strong>
+          <span>{{ (locationStatus() === 'ready' ? 'parkFit.location.readyText' : 'parkFit.location.text') | translate }}</span>
+          <small>{{ 'parkFit.location.privacy' | translate }}</small>
+        </div>
+        @if (locationStatus() === 'ready') {
+          <button type="button" appUiButton="ghost" (click)="clearLocation()">
+            <i class="pi pi-times" aria-hidden="true"></i>
+            <span>{{ 'parkFit.location.remove' | translate }}</span>
+          </button>
+        } @else {
+          <button
+            type="button"
+            appUiButton="ghost"
+            [disabled]="locationStatus() === 'loading'"
+            (click)="requestLocation()">
+            <i [class]="locationStatus() === 'loading' ? 'pi pi-spin pi-spinner' : 'pi pi-crosshairs'" aria-hidden="true"></i>
+            <span>{{ (locationStatus() === 'loading' ? 'parkFit.location.loading' : 'parkFit.location.action') | translate }}</span>
+          </button>
+        }
+      </section>
+      @if (locationErrorKey()) {
+        <p class="park-fit-inline-error" role="alert">{{ locationErrorKey()! | translate }}</p>
+      }
     </section>
 
     <section class="park-fit-step" appUiSurface="panel" appUiSurfacePadding="regular">
@@ -216,7 +245,10 @@
         <strong>{{ 'parkFit.submit.title' | translate }}</strong>
         <span>{{ 'parkFit.submit.text' | translate }}</span>
       </div>
-      <button type="submit" appUiButton="primary" [disabled]="status() === 'loading'">
+      <button
+        type="submit"
+        appUiButton="primary"
+        [disabled]="status() === 'loading' || locationStatus() === 'loading'">
         @if (status() === 'loading') {
           <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
           <span>{{ 'parkFit.submit.loading' | translate }}</span>

@@ -9,4 +9,5 @@ public enum ParkFitSubscoreReasonCode
     UnknownFactsExcluded,
     MinimumMemberBoundApplied,
     NoKnownFact,
+    DirectDistanceCalculated,
 }
