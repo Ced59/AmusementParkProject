@@ -45,6 +45,9 @@ distanceKm = rayonTerrestre × angle(origin, parc)
 scoreTrajet = 100 × (1 000 - min(distanceKm, 1 000)) / 1 000
 ```
 
+L'intermédiaire flottant de Haversine est borné entre 0 et 1 avant les racines afin
+qu'un antipode exact ou approché ne produise jamais une distance invalide.
+
 La valeur est une préférence souple, pas un filtre éliminatoire. Elle porte une
 confiance `Medium`, car une ligne droite ne représente ni les routes, ni les
 frontières, ni le trafic. Le plafond de confiance de la méthode empêche donc le score

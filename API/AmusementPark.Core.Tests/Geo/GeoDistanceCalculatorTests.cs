@@ -27,6 +27,18 @@ public sealed class GeoDistanceCalculatorTests
     }
 
     [Fact]
+    public void CalculateKilometers_WhenPointsAreAntipodal_ShouldReturnFiniteDistance()
+    {
+        GeoPoint source = new GeoPoint(45d, 45d);
+        GeoPoint antipode = new GeoPoint(-45d, -135d);
+
+        double result = GeoDistanceCalculator.CalculateKilometers(source, antipode);
+
+        Assert.True(double.IsFinite(result));
+        Assert.InRange(result, 20015d, 20016d);
+    }
+
+    [Fact]
     public void CalculateKilometers_WhenSourceIsNull_ShouldThrow()
     {
         Assert.Throws<ArgumentNullException>(() => GeoDistanceCalculator.CalculateKilometers(null!, new GeoPoint(0d, 0d)));
