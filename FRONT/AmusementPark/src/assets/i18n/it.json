@@ -4772,6 +4772,94 @@
       "dropTower": "Torri a caduta"
     }
   },
+  "parkFit": {
+    "seo": {
+      "title": "Trova un parco adatto al tuo gruppo — Amusement Parks",
+      "description": "Confronta i parchi documentati in base a gruppo, data e preferenze, senza account né criteri salvati."
+    },
+    "entryCta": "Trova un parco per il mio gruppo",
+    "kicker": "Bussola per la giornata",
+    "title": "Quale parco è adatto al tuo gruppo?",
+    "lead": "Indica solo ciò che conta per la vostra giornata. La bussola confronta i parchi ben documentati senza trasformare le informazioni mancanti in promesse.",
+    "privacy": {
+      "title": "I tuoi criteri restano su questa schermata",
+      "text": "Non servono nome o account. La ricerca viene calcolata senza salvare il gruppo sul server."
+    },
+    "date": {
+      "title": "Scegli la data",
+      "text": "Una chiusura nota esclude il parco per quel giorno. Senza orari pubblicati, la data resta semplicemente sconosciuta.",
+      "label": "Data della visita",
+      "required": "Scegli una data per avviare la ricerca."
+    },
+    "group": {
+      "title": "Descrivi il gruppo",
+      "text": "Basta una riga per persona. Lascia vuoto un campo se non conosci la risposta.",
+      "memberTitle": "Persona {{number}}",
+      "removeMember": "Rimuovi",
+      "removeMemberLabel": "Rimuovi la persona {{number}}",
+      "height": "Altezza",
+      "heightPlaceholder": "Es. 120",
+      "age": "Età",
+      "agePlaceholder": "Es. 8",
+      "optional": "Facoltativo: un valore assente resterà sconosciuto.",
+      "accompanied": "Questa persona può essere accompagnata",
+      "accompaniedHint": "Seleziona solo se un accompagnatore può davvero partecipare con lei.",
+      "companionAge": "Età dell’accompagnatore",
+      "companionAgePlaceholder": "Es. 35",
+      "companionAgeHint": "Facoltativo. Senza età, alcune regole di accompagnamento resteranno sconosciute.",
+      "invalidMember": "Controlla l’altezza o l’età inserita per questa persona.",
+      "addMember": "Aggiungi una persona",
+      "limit": "Profili aggiunti: {{count}} / 8"
+    },
+    "preferences": {
+      "title": "Aggiungi i tuoi desideri",
+      "text": "Queste scelte orientano l’ordine senza escludere automaticamente le altre esperienze.",
+      "ariaLabel": "Tipi di attrazioni preferiti",
+      "indoor": "Preferisci esperienze al coperto",
+      "indoorHint": "Utile se vuoi una giornata meno dipendente dal meteo.",
+      "types": {
+        "familyRide": "Attrazioni per famiglie",
+        "rollerCoaster": "Montagne russe",
+        "darkRide": "Percorsi scenografici",
+        "waterRide": "Attrazioni acquatiche",
+        "thrillRide": "Attrazioni adrenaliniche",
+        "playground": "Aree gioco"
+      }
+    },
+    "submit": {
+      "title": "Pronto per un primo suggerimento?",
+      "text": "Il risultato confronta solo i parchi che raggiungono la qualità minima dei dati.",
+      "action": "Cerca un parco adatto",
+      "loading": "Confronto dei parchi…"
+    },
+    "feedback": {
+      "errorTitle": "La ricerca non è riuscita",
+      "invalid": "Alcuni criteri non possono essere usati. Controlla il gruppo e la data.",
+      "rateLimited": "Hai avviato troppe ricerche consecutive. Riprova tra poco.",
+      "error": "Il motore non è momentaneamente disponibile. I tuoi criteri non sono stati salvati."
+    },
+    "result": {
+      "kicker": "Prima corrispondenza",
+      "whyTitle": "Perché questo parco emerge",
+      "together": "attrazioni possibili insieme",
+      "flexible": "attrazioni che richiedono organizzazione",
+      "unknown": "attrazioni ancora sconosciute",
+      "openPark": "Vedi il parco",
+      "detailNext": "Le informazioni sconosciute restano visibili: il risultato aiuta a decidere, ma non garantisce l’accesso.",
+      "evaluated": "Parchi esaminati: {{count}}",
+      "states": {
+        "Available": "Corrispondenza disponibile",
+        "Capped": "Corrispondenza prudente",
+        "Suspended": "Risultato da verificare",
+        "Excluded": "Parco escluso",
+        "Unknown": "Stato sconosciuto"
+      }
+    },
+    "empty": {
+      "title": "Nessun parco affidabile per questi criteri",
+      "text": "Il motore preferisce non promettere nulla se un parco è chiuso o poco documentato. Prova un’altra data o completa il gruppo."
+    }
+  },
   "parkItems": {
     "actions": {
       "viewDetails": "Vedi scheda",

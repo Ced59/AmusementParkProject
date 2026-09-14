@@ -46,6 +46,20 @@ describe('SeoService', () => {
     expect(readOpenGraphLocaleAlternates()).toEqual([]);
   });
 
+  it('keeps private Park Fit criteria out of indexed and alternate pages', () => {
+    service.applyParkFitSeo(
+      'Trouve un parc adapté à ton groupe',
+      'Compare les parcs sans enregistrer tes critères.',
+      '/fr/park-fit'
+    );
+
+    expect(documentRef.title).toBe('Trouve un parc adapté à ton groupe');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,nofollow,noarchive');
+    expect(readMetaContent('meta[name="googlebot"]')).toBe('noindex,nofollow,noarchive');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/park-fit');
+    expect(readOpenGraphLocaleAlternates()).toEqual([]);
+  });
+
   it('uses the park primary photo as the Open Graph image', () => {
     const park: ParkDetailViewModel = buildParkDetail({
       primaryPhoto: {

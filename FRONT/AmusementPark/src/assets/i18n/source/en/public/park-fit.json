@@ -1,0 +1,90 @@
+{
+  "parkFit": {
+    "seo": {
+      "title": "Find a park that fits your group — Amusement Parks",
+      "description": "Compare documented parks for your group, date and preferences without an account or saved criteria."
+    },
+    "entryCta": "Find a park for my group",
+    "kicker": "Day-out compass",
+    "title": "Which park fits your group?",
+    "lead": "Share only what matters for your day out. The compass compares sufficiently documented parks without turning unknowns into promises.",
+    "privacy": {
+      "title": "Your criteria stay on this screen",
+      "text": "No name or account is required. The search is calculated without saving your group on the server."
+    },
+    "date": {
+      "title": "Choose the date",
+      "text": "A known closure excludes a park for that day. A date without published hours simply stays unknown.",
+      "label": "Date of your visit",
+      "required": "Choose a date to start the search."
+    },
+    "group": {
+      "title": "Describe the group",
+      "text": "One row per person is enough. Leave a field empty when you do not know the answer.",
+      "memberTitle": "Person {{number}}",
+      "removeMember": "Remove",
+      "removeMemberLabel": "Remove person {{number}}",
+      "height": "Height",
+      "heightPlaceholder": "E.g. 120",
+      "age": "Age",
+      "agePlaceholder": "E.g. 8",
+      "optional": "Optional — a missing value will stay unknown.",
+      "accompanied": "This person can be accompanied",
+      "accompaniedHint": "Select this only when a companion can actually ride with them.",
+      "companionAge": "Companion’s age",
+      "companionAgePlaceholder": "E.g. 35",
+      "companionAgeHint": "Optional. Without an age, some companion rules will stay unknown.",
+      "invalidMember": "Check the height or age entered for this person.",
+      "addMember": "Add a person",
+      "limit": "Profiles added: {{count}} / 8"
+    },
+    "preferences": {
+      "title": "Add your wishes",
+      "text": "These choices guide the result order without automatically excluding other experiences.",
+      "ariaLabel": "Preferred attraction types",
+      "indoor": "Prefer indoor experiences",
+      "indoorHint": "Useful when you want a day out that depends less on the weather.",
+      "types": {
+        "familyRide": "Family rides",
+        "rollerCoaster": "Roller coasters",
+        "darkRide": "Dark rides",
+        "waterRide": "Water rides",
+        "thrillRide": "Thrill rides",
+        "playground": "Playgrounds"
+      }
+    },
+    "submit": {
+      "title": "Ready for a first lead?",
+      "text": "The result compares only parks that pass the minimum data-quality level.",
+      "action": "Find a suitable park",
+      "loading": "Comparing parks…"
+    },
+    "feedback": {
+      "errorTitle": "The search did not complete",
+      "invalid": "Some criteria cannot be used. Check the group and date.",
+      "rateLimited": "Too many searches were started in a row. Try again in a moment.",
+      "error": "The engine is temporarily unavailable. Your criteria were not saved."
+    },
+    "result": {
+      "kicker": "First match",
+      "whyTitle": "Why this park stands out",
+      "together": "attractions possible together",
+      "flexible": "attractions needing group planning",
+      "unknown": "attractions still unknown",
+      "openPark": "View the park",
+      "detailNext": "Unknowns remain visible: this result helps your decision but does not guarantee access.",
+      "evaluated": "Parks inspected: {{count}}",
+      "states": {
+        "Available": "Match available",
+        "Capped": "Cautious match",
+        "Suspended": "Result needs checking",
+        "Excluded": "Park excluded",
+        "Unknown": "Unknown state"
+      }
+    },
+    "empty": {
+      "title": "No reliable park for these criteria",
+      "text": "The engine would rather promise nothing when a park is closed or insufficiently documented. Try another date or add more group details."
+    }
+  }
+}

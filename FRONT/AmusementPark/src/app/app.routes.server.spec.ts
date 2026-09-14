@@ -104,6 +104,18 @@ describe('Server routes', () => {
     }
   });
 
+  it('keeps anonymous park-fit criteria out of server-rendered HTML', () => {
+    const route: ServerRoute | undefined = serverRoutes.find(
+      (candidate: ServerRoute): boolean => candidate.path === ':lang/park-fit'
+    );
+    const fallbackIndex: number = serverRoutes.findIndex(
+      (candidate: ServerRoute): boolean => candidate.path === '**'
+    );
+
+    expect(route?.renderMode).toBe(RenderMode.Client);
+    expect(serverRoutes.indexOf(route as ServerRoute)).toBeLessThan(fallbackIndex);
+  });
+
   it('server-renders current and historical rating methodology pages', () => {
     const expectedPaths: string[] = [
       ':lang/rankings/methodology',

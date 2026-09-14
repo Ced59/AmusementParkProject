@@ -137,9 +137,29 @@ n'est ajoutée. L'architecture, le contrat, les diagrammes et les preuves sont
 documentés dans
 [`product-growth-fit-07-anonymous-search-api-2026-09-14.md`](../../architecture/product-growth-fit-07-anonymous-search-api-2026-09-14.md).
 
-`FIT-08` est le prochain jalon : il donnera accès à cette recherche dans un
-formulaire Web mobile-first, utilisable sans compte et sans exposer les critères
-privés dans l'URL ou le HTML public.
+### État de `FIT-08` au 14 septembre 2026
+
+La recherche devient accessible depuis la page des parcs grâce à un formulaire
+Web mobile-first. Une personne choisit une date, décrit de un à huit membres sans
+nom ni alias, puis ajoute des préférences souples. Les champs inconnus peuvent
+rester vides et ne sont jamais transformés en compatibilité supposée.
+
+Le premier parc renvoyé est présenté avec son nom public, son pays, l'état prudent
+du résultat et trois volumes concrets : expériences possibles ensemble,
+organisation du groupe nécessaire et attractions encore inconnues. L'identifiant
+technique ne sert qu'à construire le lien vers la fiche du parc. Les critères ne
+sont ni stockés, ni placés dans l'URL, ni rendus côté serveur ; seule la dernière
+recherche de l'onglet courant reste en mémoire pour éviter une ressaisie immédiate.
+
+La page est traduite dans les huit langues, exclue de l'indexation et protégée par
+des contrats responsive jusqu'à 360 px. Elle réutilise un port de données et une
+façade dédiés : le composant ne connaît ni l'URL de l'API ni l'orchestration HTTP.
+L'architecture et les preuves sont documentées dans
+[`product-growth-fit-08-anonymous-web-form-2026-09-14.md`](../../architecture/product-growth-fit-08-anonymous-web-form-2026-09-14.md).
+
+`FIT-09` est le prochain jalon : il transformera la réponse complète en une page
+de résultats et d'explications où les facteurs, limites, inconnues et preuves
+officielles seront directement consultables.
 
 ## 1. Vision produit
 

@@ -4772,6 +4772,94 @@
       "dropTower": "Torres de caída"
     }
   },
+  "parkFit": {
+    "seo": {
+      "title": "Encuentra un parque para tu grupo — Amusement Parks",
+      "description": "Compara parques documentados según tu grupo, fecha y preferencias, sin cuenta ni criterios guardados."
+    },
+    "entryCta": "Encontrar un parque para mi grupo",
+    "kicker": "Brújula de escapadas",
+    "title": "¿Qué parque encaja con tu grupo?",
+    "lead": "Indica solo lo que importa para vuestra salida. La brújula compara parques bien documentados sin convertir los datos desconocidos en promesas.",
+    "privacy": {
+      "title": "Tus criterios se quedan en esta pantalla",
+      "text": "No necesitas nombre ni cuenta. La búsqueda se calcula sin guardar tu grupo en el servidor."
+    },
+    "date": {
+      "title": "Elige la fecha",
+      "text": "Un cierre conocido excluye el parque ese día. Si no hay horarios publicados, la fecha queda como desconocida.",
+      "label": "Fecha de la visita",
+      "required": "Elige una fecha para iniciar la búsqueda."
+    },
+    "group": {
+      "title": "Describe el grupo",
+      "text": "Basta una línea por persona. Deja un campo vacío si no conoces la respuesta.",
+      "memberTitle": "Persona {{number}}",
+      "removeMember": "Quitar",
+      "removeMemberLabel": "Quitar a la persona {{number}}",
+      "height": "Altura",
+      "heightPlaceholder": "Ej. 120",
+      "age": "Edad",
+      "agePlaceholder": "Ej. 8",
+      "optional": "Opcional: un valor ausente seguirá siendo desconocido.",
+      "accompanied": "Esta persona puede ir acompañada",
+      "accompaniedHint": "Márcalo solo si un acompañante puede participar realmente con ella.",
+      "companionAge": "Edad del acompañante",
+      "companionAgePlaceholder": "Ej. 35",
+      "companionAgeHint": "Opcional. Sin edad, algunas reglas de acompañamiento quedarán sin confirmar.",
+      "invalidMember": "Revisa la altura o la edad de esta persona.",
+      "addMember": "Añadir una persona",
+      "limit": "Perfiles añadidos: {{count}} / 8"
+    },
+    "preferences": {
+      "title": "Añade tus preferencias",
+      "text": "Estas opciones orientan el orden sin excluir automáticamente otras experiencias.",
+      "ariaLabel": "Tipos de atracciones preferidos",
+      "indoor": "Priorizar experiencias cubiertas",
+      "indoorHint": "Útil si quieres que la salida dependa menos del tiempo.",
+      "types": {
+        "familyRide": "Atracciones familiares",
+        "rollerCoaster": "Montañas rusas",
+        "darkRide": "Recorridos escénicos",
+        "waterRide": "Atracciones acuáticas",
+        "thrillRide": "Emociones fuertes",
+        "playground": "Zonas de juegos"
+      }
+    },
+    "submit": {
+      "title": "¿Listo para una primera pista?",
+      "text": "El resultado solo compara parques que superan el nivel mínimo de calidad de datos.",
+      "action": "Buscar un parque adecuado",
+      "loading": "Comparando parques…"
+    },
+    "feedback": {
+      "errorTitle": "La búsqueda no se ha completado",
+      "invalid": "Algunos criterios no se pueden utilizar. Revisa el grupo y la fecha.",
+      "rateLimited": "Has iniciado demasiadas búsquedas seguidas. Inténtalo de nuevo en un momento.",
+      "error": "El motor no está disponible temporalmente. Tus criterios no se han guardado."
+    },
+    "result": {
+      "kicker": "Primera coincidencia",
+      "whyTitle": "Por qué destaca este parque",
+      "together": "atracciones posibles en grupo",
+      "flexible": "atracciones que requieren organizarse",
+      "unknown": "atracciones aún desconocidas",
+      "openPark": "Ver el parque",
+      "detailNext": "Los datos desconocidos siguen visibles: el resultado ayuda a decidir, pero no garantiza el acceso.",
+      "evaluated": "Parques examinados: {{count}}",
+      "states": {
+        "Available": "Coincidencia disponible",
+        "Capped": "Coincidencia prudente",
+        "Suspended": "Resultado por verificar",
+        "Excluded": "Parque descartado",
+        "Unknown": "Estado desconocido"
+      }
+    },
+    "empty": {
+      "title": "Ningún parque fiable para estos criterios",
+      "text": "El motor prefiere no prometer nada si un parque está cerrado o poco documentado. Prueba otra fecha o completa el grupo."
+    }
+  },
   "parkItems": {
     "actions": {
       "viewDetails": "Ver ficha",

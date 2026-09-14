@@ -15,7 +15,8 @@ export function shouldApplyNoindexFollowHeader(url: string): boolean {
 export function resolveXRobotsTagHeader(url: string): string | null {
   const path: string = normalizeSsrPath(url);
 
-  if (isSharedUserRankingRoute(path)
+  if (isParkFitRoute(path)
+      || isSharedUserRankingRoute(path)
       || isSharedVisitRecapRoute(path)
       || isSharedYearRecapRoute(path)
       || isSharedPassportProfileRoute(path)
@@ -98,8 +99,13 @@ function isSharedProfileComparisonRoute(path: string): boolean {
   return /^\/[a-z]{2}\/passport\/shared\/comparisons\/[^/]+\/?$/i.test(path);
 }
 
+function isParkFitRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park-fit\/?$/i.test(path);
+}
+
 function isKnownPrivateClientRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/admin(?:\/.*)?$/i.test(path)
+  return isParkFitRoute(path)
+    || /^\/[a-z]{2}\/admin(?:\/.*)?$/i.test(path)
     || /^\/[a-z]{2}\/passport\/local(?:\/[^/]+)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/(?:profile|confirm-account|forgot-password|reset-password)(?:\/.*)?$/i.test(path);
 }

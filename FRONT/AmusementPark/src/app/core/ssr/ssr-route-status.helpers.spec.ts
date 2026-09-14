@@ -126,6 +126,12 @@ describe('SSR route status helpers', () => {
     ).toBe(200);
   });
 
+  it('serves Park Fit through the CSR shell while excluding its private criteria page from indexing', () => {
+    expect(resolveSsrRouteStatusCode('/fr/park-fit')).toBe(200);
+    expect(resolveSsrRouteStatusCode('/fr/park-fit/')).toBe(200);
+    expect(resolveXRobotsTagHeader('/fr/park-fit')).toBe('noindex, nofollow, noarchive');
+  });
+
   it('keeps park and park item comment routes available for SSR', () => {
     const commentRoutes: string[] = [
       '/fr/park/123/parc-test/comments',

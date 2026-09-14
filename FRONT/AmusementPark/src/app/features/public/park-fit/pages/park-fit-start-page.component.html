@@ -1,0 +1,256 @@
+<section class="park-fit-page public-page">
+  <section class="park-fit-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <div class="park-fit-hero__copy">
+      <app-ui-kicker tone="sky" iconClass="pi pi-compass">
+        {{ 'parkFit.kicker' | translate }}
+      </app-ui-kicker>
+      <h1>{{ 'parkFit.title' | translate }}</h1>
+      <p>{{ 'parkFit.lead' | translate }}</p>
+    </div>
+
+    <aside class="park-fit-privacy" aria-labelledby="park-fit-privacy-title">
+      <i class="pi pi-shield" aria-hidden="true"></i>
+      <div>
+        <strong id="park-fit-privacy-title">{{ 'parkFit.privacy.title' | translate }}</strong>
+        <span>{{ 'parkFit.privacy.text' | translate }}</span>
+      </div>
+    </aside>
+  </section>
+
+  <form class="park-fit-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <section class="park-fit-step" appUiSurface="panel" appUiSurfacePadding="regular">
+      <div class="park-fit-step__heading">
+        <span>1</span>
+        <div>
+          <h2>{{ 'parkFit.date.title' | translate }}</h2>
+          <p>{{ 'parkFit.date.text' | translate }}</p>
+        </div>
+      </div>
+
+      <label class="park-fit-field" for="park-fit-date">
+        <span>{{ 'parkFit.date.label' | translate }}</span>
+        <input id="park-fit-date" type="date" formControlName="evaluationDate">
+      </label>
+      @if (form.controls.evaluationDate.touched && form.controls.evaluationDate.invalid) {
+        <p class="park-fit-inline-error" role="alert">{{ 'parkFit.date.required' | translate }}</p>
+      }
+    </section>
+
+    <section class="park-fit-step" appUiSurface="panel" appUiSurfacePadding="regular">
+      <div class="park-fit-step__heading">
+        <span>2</span>
+        <div>
+          <h2>{{ 'parkFit.group.title' | translate }}</h2>
+          <p>{{ 'parkFit.group.text' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="park-fit-members" formArrayName="members">
+        @for (member of members.controls; track $index) {
+          <article class="park-fit-member" [formGroupName]="$index">
+            <header>
+              <div>
+                <span class="park-fit-member__number">{{ $index + 1 }}</span>
+                <h3>{{ 'parkFit.group.memberTitle' | translate:{ number: $index + 1 } }}</h3>
+              </div>
+              @if (members.length > 1) {
+                <button
+                  type="button"
+                  class="park-fit-member__remove"
+                  [attr.aria-label]="'parkFit.group.removeMemberLabel' | translate:{ number: $index + 1 }"
+                  (click)="removeMember($index)">
+                  <i class="pi pi-trash" aria-hidden="true"></i>
+                  <span>{{ 'parkFit.group.removeMember' | translate }}</span>
+                </button>
+              }
+            </header>
+
+            <div class="park-fit-member__fields">
+              <label class="park-fit-field">
+                <span>{{ 'parkFit.group.height' | translate }}</span>
+                <div class="park-fit-field__unit">
+                  <input
+                    type="number"
+                    inputmode="numeric"
+                    min="40"
+                    max="260"
+                    formControlName="heightCentimeters"
+                    [placeholder]="'parkFit.group.heightPlaceholder' | translate">
+                  <span>cm</span>
+                </div>
+                <small>{{ 'parkFit.group.optional' | translate }}</small>
+              </label>
+
+              <label class="park-fit-field">
+                <span>{{ 'parkFit.group.age' | translate }}</span>
+                <input
+                  type="number"
+                  inputmode="numeric"
+                  min="0"
+                  max="130"
+                  formControlName="ageYears"
+                  [placeholder]="'parkFit.group.agePlaceholder' | translate">
+                <small>{{ 'parkFit.group.optional' | translate }}</small>
+              </label>
+            </div>
+
+            <label class="park-fit-check">
+              <input type="checkbox" formControlName="canBeAccompanied">
+              <span>
+                <strong>{{ 'parkFit.group.accompanied' | translate }}</strong>
+                <small>{{ 'parkFit.group.accompaniedHint' | translate }}</small>
+              </span>
+            </label>
+
+            @if (member.controls.canBeAccompanied.value) {
+              <label class="park-fit-field park-fit-field--companion">
+                <span>{{ 'parkFit.group.companionAge' | translate }}</span>
+                <input
+                  type="number"
+                  inputmode="numeric"
+                  min="0"
+                  max="130"
+                  formControlName="companionAgeYears"
+                  [placeholder]="'parkFit.group.companionAgePlaceholder' | translate">
+                <small>{{ 'parkFit.group.companionAgeHint' | translate }}</small>
+              </label>
+            }
+
+            @if (member.invalid && member.touched) {
+              <p class="park-fit-inline-error" role="alert">{{ 'parkFit.group.invalidMember' | translate }}</p>
+            }
+          </article>
+        }
+      </div>
+
+      <div class="park-fit-group-actions">
+        <button
+          type="button"
+          appUiButton="ghost"
+          [disabled]="members.length >= 8"
+          (click)="addMember()">
+          <i class="pi pi-plus" aria-hidden="true"></i>
+          <span>{{ 'parkFit.group.addMember' | translate }}</span>
+        </button>
+        <span>{{ 'parkFit.group.limit' | translate:{ count: members.length } }}</span>
+      </div>
+    </section>
+
+    <section class="park-fit-step" appUiSurface="panel" appUiSurfacePadding="regular">
+      <div class="park-fit-step__heading">
+        <span>3</span>
+        <div>
+          <h2>{{ 'parkFit.preferences.title' | translate }}</h2>
+          <p>{{ 'parkFit.preferences.text' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="park-fit-preferences" role="group" [attr.aria-label]="'parkFit.preferences.ariaLabel' | translate">
+        @for (option of preferenceOptions; track option.value) {
+          <button
+            type="button"
+            class="park-fit-preference"
+            [class.park-fit-preference--selected]="hasPreference(option.value)"
+            [attr.aria-pressed]="hasPreference(option.value)"
+            (click)="togglePreference(option.value)">
+            <i [class]="option.iconClass" aria-hidden="true"></i>
+            <span>{{ option.labelKey | translate }}</span>
+          </button>
+        }
+      </div>
+
+      <label class="park-fit-check park-fit-check--indoor">
+        <input type="checkbox" formControlName="preferIndoor">
+        <span>
+          <strong>{{ 'parkFit.preferences.indoor' | translate }}</strong>
+          <small>{{ 'parkFit.preferences.indoorHint' | translate }}</small>
+        </span>
+      </label>
+    </section>
+
+    <section class="park-fit-submit" appUiSurface="shell" appUiSurfacePadding="regular">
+      <div>
+        <strong>{{ 'parkFit.submit.title' | translate }}</strong>
+        <span>{{ 'parkFit.submit.text' | translate }}</span>
+      </div>
+      <button type="submit" appUiButton="primary" [disabled]="status() === 'loading'">
+        @if (status() === 'loading') {
+          <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+          <span>{{ 'parkFit.submit.loading' | translate }}</span>
+        } @else {
+          <i class="pi pi-compass" aria-hidden="true"></i>
+          <span>{{ 'parkFit.submit.action' | translate }}</span>
+        }
+      </button>
+    </section>
+  </form>
+
+  @if (status() === 'error') {
+    <section class="park-fit-feedback park-fit-feedback--error" role="alert" appUiSurface="panel" appUiSurfacePadding="regular">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <div>
+        <h2>{{ 'parkFit.feedback.errorTitle' | translate }}</h2>
+        <p>{{ (errorKey() ?? 'parkFit.feedback.error') | translate }}</p>
+      </div>
+    </section>
+  }
+
+  @if (firstPark(); as park) {
+    <section class="park-fit-result" appUiSurface="hero" appUiSurfacePadding="spacious" aria-live="polite">
+      <header class="park-fit-result__header">
+        <div>
+          <app-ui-kicker tone="lime" iconClass="pi pi-sparkles">
+            {{ 'parkFit.result.kicker' | translate }}
+          </app-ui-kicker>
+          <h2>{{ park.parkName }}</h2>
+          @if (countryName(park.countryCode)) {
+            <p><i class="pi pi-map-marker" aria-hidden="true"></i>{{ countryName(park.countryCode) }}</p>
+          }
+        </div>
+        <app-ui-chip tone="lime" iconClass="pi pi-check-circle">
+          {{ scoreStateKey(park.scoreState) | translate }}
+        </app-ui-chip>
+      </header>
+
+      <div class="park-fit-result__reasons" aria-labelledby="park-fit-reasons-title">
+        <h3 id="park-fit-reasons-title">{{ 'parkFit.result.whyTitle' | translate }}</h3>
+        <div class="park-fit-result__metrics">
+          <article>
+            <strong>{{ park.everyoneTogetherAttractionCount }}</strong>
+            <span>{{ 'parkFit.result.together' | translate }}</span>
+          </article>
+          <article>
+            <strong>{{ park.splitRequiredAttractionCount + park.partialAttractionCount }}</strong>
+            <span>{{ 'parkFit.result.flexible' | translate }}</span>
+          </article>
+          <article>
+            <strong>{{ park.unknownAttractionCount }}</strong>
+            <span>{{ 'parkFit.result.unknown' | translate }}</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="park-fit-result__actions">
+        @if (parkRoute(); as routeCommands) {
+          <a appUiButton="primary" [routerLink]="routeCommands">
+            <span>{{ 'parkFit.result.openPark' | translate }}</span>
+            <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          </a>
+        }
+        <span>{{ 'parkFit.result.detailNext' | translate }}</span>
+      </div>
+
+      <footer>
+        <span>{{ 'parkFit.result.evaluated' | translate:{ count: response()?.inspectedCandidateCount ?? 0 } }}</span>
+      </footer>
+    </section>
+  } @else if (status() === 'success') {
+    <section class="park-fit-feedback" appUiSurface="panel" appUiSurfacePadding="regular" aria-live="polite">
+      <i class="pi pi-info-circle" aria-hidden="true"></i>
+      <div>
+        <h2>{{ 'parkFit.empty.title' | translate }}</h2>
+        <p>{{ 'parkFit.empty.text' | translate }}</p>
+      </div>
+    </section>
+  }
+</section>

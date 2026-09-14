@@ -1,0 +1,90 @@
+{
+  "parkFit": {
+    "seo": {
+      "title": "Vind een park dat bij je groep past — Amusement Parks",
+      "description": "Vergelijk gedocumenteerde parken op basis van je groep, datum en voorkeuren, zonder account en zonder je criteria op te slaan."
+    },
+    "entryCta": "Een park voor mijn groep vinden",
+    "kicker": "Uitstapkompas",
+    "title": "Welk park past bij je groep?",
+    "lead": "Vul alleen in wat belangrijk is voor jullie uitstap. Het kompas vergelijkt voldoende gedocumenteerde parken zonder onbekende gegevens als beloften te presenteren.",
+    "privacy": {
+      "title": "Je criteria blijven op dit scherm",
+      "text": "Er is geen naam of account nodig. De zoekopdracht wordt berekend zonder je groep op de server op te slaan."
+    },
+    "date": {
+      "title": "Kies de datum",
+      "text": "Een bekende sluiting sluit het park voor die dag uit. Zonder gepubliceerde openingstijden blijft de datum onbekend.",
+      "label": "Datum van de uitstap",
+      "required": "Kies een datum om de zoekopdracht te starten."
+    },
+    "group": {
+      "title": "Beschrijf de groep",
+      "text": "Eén regel per persoon volstaat. Laat een veld leeg als je het antwoord niet weet.",
+      "memberTitle": "Persoon {{number}}",
+      "removeMember": "Verwijderen",
+      "removeMemberLabel": "Persoon {{number}} verwijderen",
+      "height": "Lengte",
+      "heightPlaceholder": "Bijv. 120",
+      "age": "Leeftijd",
+      "agePlaceholder": "Bijv. 8",
+      "optional": "Optioneel — een ontbrekende waarde blijft onbekend.",
+      "accompanied": "Deze persoon kan begeleid worden",
+      "accompaniedHint": "Vink dit alleen aan als een begeleider echt samen kan deelnemen.",
+      "companionAge": "Leeftijd van de begeleider",
+      "companionAgePlaceholder": "Bijv. 35",
+      "companionAgeHint": "Optioneel. Zonder leeftijd blijven sommige begeleidingsregels onbekend.",
+      "invalidMember": "Controleer de ingevoerde lengte of leeftijd voor deze persoon.",
+      "addMember": "Persoon toevoegen",
+      "limit": "Toegevoegde profielen: {{count}} / 8"
+    },
+    "preferences": {
+      "title": "Voeg je voorkeuren toe",
+      "text": "Deze keuzes beïnvloeden de volgorde zonder andere ervaringen automatisch uit te sluiten.",
+      "ariaLabel": "Voorkeurstypen attracties",
+      "indoor": "Geef de voorkeur aan binnenervaringen",
+      "indoorHint": "Handig als je een uitstap wilt die minder afhankelijk is van het weer.",
+      "types": {
+        "familyRide": "Familieattracties",
+        "rollerCoaster": "Achtbanen",
+        "darkRide": "Darkrides",
+        "waterRide": "Waterattracties",
+        "thrillRide": "Spectaculaire attracties",
+        "playground": "Speeltuinen"
+      }
+    },
+    "submit": {
+      "title": "Klaar voor een eerste suggestie?",
+      "text": "Het resultaat vergelijkt alleen parken die aan de minimale gegevenskwaliteit voldoen.",
+      "action": "Een passend park zoeken",
+      "loading": "Vergelijking wordt uitgevoerd…"
+    },
+    "feedback": {
+      "errorTitle": "De zoekopdracht is niet gelukt",
+      "invalid": "Sommige criteria kunnen niet worden gebruikt. Controleer de groep en de datum.",
+      "rateLimited": "Er zijn te veel zoekopdrachten na elkaar gestart. Probeer het zo opnieuw.",
+      "error": "De zoekfunctie is tijdelijk niet beschikbaar. Je criteria zijn niet opgeslagen."
+    },
+    "result": {
+      "kicker": "Beste eerste match",
+      "whyTitle": "Waarom dit park naar voren komt",
+      "together": "attracties die samen mogelijk zijn",
+      "flexible": "attracties waarvoor de groep zich moet organiseren",
+      "unknown": "attracties die nog onbekend zijn",
+      "openPark": "Bekijk het park",
+      "detailNext": "Onbekende gegevens blijven zichtbaar: dit resultaat helpt bij je keuze, maar garandeert geen toegang.",
+      "evaluated": "Onderzochte parken: {{count}}",
+      "states": {
+        "Available": "Match beschikbaar",
+        "Capped": "Voorzichtige match",
+        "Suspended": "Resultaat te controleren",
+        "Excluded": "Park uitgesloten",
+        "Unknown": "Onbekende status"
+      }
+    },
+    "empty": {
+      "title": "Geen betrouwbaar park voor deze criteria",
+      "text": "De zoekfunctie doet liever geen belofte wanneer een park gesloten of onvoldoende gedocumenteerd is. Probeer een andere datum of vul de groep verder aan."
+    }
+  }
+}
