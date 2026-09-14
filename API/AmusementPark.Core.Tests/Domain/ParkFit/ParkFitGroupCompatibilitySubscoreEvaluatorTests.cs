@@ -230,6 +230,45 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenPartialOutcomeContainsUnknownMember_ShouldKeepKnownFactConfidence()
+    {
+        GroupAttractionCompatibility partial = this.groupEvaluator.Evaluate(
+            new[]
+            {
+                BuildMember(
+                    "a",
+                    AttractionCompatibilityState.CompatibleAlone,
+                    ParkFitDataConfidence.High),
+                BuildMember(
+                    "b",
+                    AttractionCompatibilityState.Incompatible,
+                    ParkFitDataConfidence.Medium),
+                BuildMember(
+                    "c",
+                    AttractionCompatibilityState.Unknown,
+                    ParkFitDataConfidence.Unknown),
+            },
+            GroupAttractionParticipationConfiguration.Unknown);
+        GroupAttractionCompatibility together = this.groupEvaluator.Evaluate(
+            new[]
+            {
+                BuildMember("a", AttractionCompatibilityState.CompatibleAlone),
+                BuildMember("b", AttractionCompatibilityState.CompatibleAlone),
+                BuildMember("c", AttractionCompatibilityState.CompatibleAlone),
+            },
+            GroupAttractionParticipationConfiguration.EveryoneTogether);
+
+        ParkFitSubscore result = this.evaluator.Evaluate(
+            new[] { partial, together },
+            EvaluationDate);
+
+        Assert.Equal(ParkFitSubscoreState.Known, result.State);
+        Assert.Equal(50m, result.Value);
+        Assert.Equal(50m, result.CoveragePercent);
+        Assert.Equal(ParkFitDataConfidence.Medium, result.Confidence);
+    }
+
+    [Fact]
     public void Evaluate_ShouldBeInvariantToAttractionOrder()
     {
         GroupAttractionCompatibility together = this.BuildGroup(

@@ -80,10 +80,12 @@ CompatibilitéGroupe = min(
 
 Si un membre ne possède aucun résultat connu, la composante devient `Unknown`.
 Sa couverture est le minimum entre la couverture des états de groupe et celle du
-membre le moins documenté. La confiance est la plus faible de tous les faits
-connus qui contribuent à la moyenne du groupe ou à la borne individuelle, même
-si l'organisation collective d'une attraction reste inconnue. L'ordre des
-attractions ne modifie jamais le résultat.
+membre le moins documenté. La confiance est la plus faible de tous les verdicts
+individuels connus qui contribuent à la moyenne du groupe ou à la borne
+individuelle, même si l'organisation collective d'une attraction reste inconnue.
+Un autre verdict individuel inconnu réduit la couverture sans contaminer
+artificiellement la confiance des faits connus. L'ordre des attractions ne
+modifie jamais le résultat.
 
 ## 4. Inconnue, non-applicabilité et filtres
 
@@ -275,12 +277,13 @@ sans déplacer les règles dans le contrôleur.
 
 ## 11. Preuves automatisées
 
-Les 71 scénarios ciblés couvrent notamment :
+Les 72 scénarios ciblés couvrent notamment :
 
 - les cinq normalisations de groupe et le minimum individuel ;
 - les attractions inconnues exclues sans devenir zéro ;
 - la couverture du membre le moins documenté ;
 - la confiance d'un fait individuel qui borne le score malgré un groupe inconnu ;
+- la séparation entre confiance connue et couverture partielle d'un groupe ;
 - la formule publique, les poids et les contributions recomposables ;
 - la renormalisation d'un budget non applicable ;
 - les plafonds de couverture et de confiance ;
@@ -294,7 +297,7 @@ Les 71 scénarios ciblés couvrent notamment :
 - les collections incomplètes, dupliquées, incohérentes ou invalides ;
 - l'invariance à l'ordre et la copie défensive des entrées.
 
-La suite Core complète contient 989 tests verts après ce jalon.
+La suite Core complète contient 990 tests verts après ce jalon.
 
 ## 12. Stockage, confidentialité et performance
 

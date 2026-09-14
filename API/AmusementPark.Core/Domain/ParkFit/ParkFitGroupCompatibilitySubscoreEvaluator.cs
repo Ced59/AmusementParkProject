@@ -78,18 +78,15 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluator
             ParkFitSubscoreState.Known,
             Round(value),
             Round(coveragePercent),
-            ResolveContributingConfidence(snapshot, knownGroupOutcomes),
+            ResolveContributingConfidence(snapshot),
             reasons,
             evaluationDate);
     }
 
     private static ParkFitDataConfidence ResolveContributingConfidence(
-        IEnumerable<GroupAttractionCompatibility> compatibilities,
-        IEnumerable<GroupAttractionCompatibility> knownGroupOutcomes)
+        IEnumerable<GroupAttractionCompatibility> compatibilities)
     {
-        IEnumerable<ParkFitDataConfidence> groupOutcomeConfidences = knownGroupOutcomes
-            .Select(static compatibility => compatibility.Confidence);
-        IEnumerable<ParkFitDataConfidence> memberBoundConfidences = compatibilities
+        IEnumerable<ParkFitDataConfidence> contributingConfidences = compatibilities
             .SelectMany(static compatibility => compatibility.Members)
             .Where(static member => member.Compatibility.State
                 is AttractionCompatibilityState.CompatibleAlone
@@ -97,9 +94,7 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluator
                     or AttractionCompatibilityState.Incompatible)
             .Select(static member => member.Compatibility.Confidence);
 
-        return groupOutcomeConfidences
-            .Concat(memberBoundConfidences)
-            .Min();
+        return contributingConfidences.Min();
     }
 
     private static void ValidateCompatibilitySet(

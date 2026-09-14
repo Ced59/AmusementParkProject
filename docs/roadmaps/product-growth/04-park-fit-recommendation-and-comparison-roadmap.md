@@ -108,7 +108,8 @@ faible et une inconnue critique plafonnent le nombre affichable. Selon la politi
 choisie, une inconnue critique peut aussi suspendre ou exclure le résultat. La
 preuve conserve la date et le nombre exact de filtres critiques inconnus, ainsi
 que la date source de la disponibilité. La confiance tient compte de chaque fait
-qui borne réellement le résultat. La formule, les diagrammes et 71 scénarios
+connu qui borne réellement le résultat, tandis que les autres manques réduisent
+sa couverture. La formule, les diagrammes et 72 scénarios
 métier sont documentés dans
 [`product-growth-fit-06-versioned-subscores-2026-09-14.md`](../../architecture/product-growth-fit-06-versioned-subscores-2026-09-14.md).
 
