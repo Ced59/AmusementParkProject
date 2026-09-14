@@ -155,15 +155,16 @@ Collection `park-fit-portfolio-migrations` :
 ```javascript
 {
   _id: "fit-15-portfolio-activation-v1",
-  cutoffAtUtc: ISODate("2026-09-14T19:55:00Z"),
+  candidateParkIds: ["park-1", "park-2"],
+  startedAtUtc: ISODate("2026-09-14T19:55:00Z"),
   completedAtUtc: ISODate("2026-09-14T20:00:00Z")
 }
 ```
 
-La borne est écrite atomiquement avant de lire les parcs. Elle fige la cohorte
-historique même si plusieurs instances démarrent, si une instance redémarre pendant
-la migration ou si un parc est publié durant le déploiement. Le marqueur ne remplace
-pas l'état canonique et ne participe jamais à une recherche.
+La liste exacte des identifiants éligibles est matérialisée puis écrite atomiquement
+avant toute activation. Elle fige la cohorte historique même si plusieurs instances
+démarrent, si une instance redémarre ou si un parc est modifié pendant l'activation.
+Le marqueur ne remplace pas l'état canonique et ne participe jamais à une recherche.
 
 ## 5. Migration sans second système
 
@@ -171,9 +172,9 @@ Avant FIT-15, l'absence de document signifiait implicitement « actif ». Une si
 modification de lecture aurait donc retiré tous les parcs historiques. Au premier
 démarrage de FIT-15, la migration :
 
-1. crée ou relit une borne de cohorte unique et persistée ;
-2. sélectionne les parcs visibles, `Operating`, dotés de coordonnées valides et dont
-   la dernière mutation précède cette borne, soit l'ancien portefeuille implicite ;
+1. sélectionne les identifiants des parcs visibles, `Operating` et dotés de
+   coordonnées valides, soit l'ancien portefeuille implicite ;
+2. crée ou relit cette liste de cohorte unique et persistée ;
 3. crée pour chacun un document `Active`, révision `0`, seulement s'il n'existe pas ;
 4. ne modifie aucun état `Active` ou `Suspended` déjà piloté ;
 5. date l'achèvement uniquement après les lots idempotents ;
@@ -193,11 +194,14 @@ sequenceDiagram
     participant M as park-fit-portfolio-migrations
 
     D->>I: démarrer la version FIT-15
-    I->>M: créer ou relire la borne persistée
+    I->>M: lire un éventuel plan persistant
     alt migration non terminée
-      I->>P: lire les parcs visibles Operating antérieurs à la borne
+      opt premier démarrage
+        I->>P: matérialiser les identifiants visibles Operating
+        I->>M: figer atomiquement la liste exacte
+      end
       loop chaque lot
-        I->>S: upsert $setOnInsert Active / révision 0
+        I->>S: upsert les identifiants figés Active / révision 0
       end
       I->>M: dater l'achèvement
     else migration déjà terminée

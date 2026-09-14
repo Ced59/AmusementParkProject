@@ -289,10 +289,10 @@ rétablissement, suspension et retrait exigent une justification et restent
 versionnés. Une activation ou un rétablissement est refusé tant que le même audit
 factuel que celui du moteur public n'atteint pas `EligibleForFitComparison`.
 
-La migration MongoDB unique fige d'abord une borne de cohorte persistée, conserve le
-portefeuille antérieur en créant les états actifs manquants, préserve les décisions
-déjà enregistrées, puis marque son achèvement. Un parc publié pendant ou après cette
-borne reste donc non activé. Après elle, tout nouveau parc doit être activé
+La migration MongoDB unique fige d'abord la liste persistée du portefeuille
+historique, crée ses états actifs manquants, préserve les décisions déjà enregistrées,
+puis marque son achèvement. Une modification pendant l'activation ne change pas
+cette cohorte. Après elle, tout nouveau parc doit être activé
 volontairement : aucun adaptateur ni second système ne subsiste. La recherche exclut
 états absents, non activés et suspendus avant de charger les faits lourds, tout en
 exposant des compteurs agrégés distincts.

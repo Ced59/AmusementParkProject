@@ -34,16 +34,30 @@ internal sealed class ParkFitPortfolioActivationMigration
 
     public async Task<long> MigrateAsync(CancellationToken cancellationToken)
     {
-        DateTime requestedCutoffAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        await TryCreateMigrationPlanAsync(
-            this.migrations,
-            requestedCutoffAtUtc,
-            cancellationToken);
         ParkFitPortfolioMigrationDocument? migration = await this.migrations
             .Find(Builders<ParkFitPortfolioMigrationDocument>.Filter.Eq(
                 static migration => migration.Id,
                 MigrationId))
             .FirstOrDefaultAsync(cancellationToken);
+        if (migration is null)
+        {
+            List<string> candidateParkIds = await this.parks
+                .Find(BuildLegacyParkFilter())
+                .Project(static park => park.Id)
+                .ToListAsync(cancellationToken);
+            DateTime startedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+            await TryCreateMigrationPlanAsync(
+                this.migrations,
+                candidateParkIds,
+                startedAtUtc,
+                cancellationToken);
+            migration = await this.migrations
+                .Find(Builders<ParkFitPortfolioMigrationDocument>.Filter.Eq(
+                    static value => value.Id,
+                    MigrationId))
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
         if (migration is null)
         {
             throw new InvalidOperationException(
@@ -55,31 +69,24 @@ internal sealed class ParkFitPortfolioActivationMigration
             return 0;
         }
 
-        DateTime cutoffAtUtc = migration.CutoffAtUtc;
         long activatedParkCount = 0;
-        IFindFluent<ParkDocument, ParkDocument> find = this.parks
-            .Find(BuildLegacyParkFilter(cutoffAtUtc))
-            .Project(static park => new ParkDocument { Id = park.Id });
-        find.Options.BatchSize = BatchSize;
-        using IAsyncCursor<ParkDocument> cursor = await find.ToCursorAsync(cancellationToken);
-        while (await cursor.MoveNextAsync(cancellationToken))
+        DateTime migratedAtUtc = migration.StartedAtUtc;
+        foreach (string[] batchParkIds in migration.CandidateParkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Distinct(StringComparer.Ordinal)
+            .Chunk(BatchSize))
         {
-            List<WriteModel<ParkFitOperationalStatusDocument>> writes = cursor.Current
-                .Where(static park => !string.IsNullOrWhiteSpace(park.Id))
-                .Select(park => new UpdateOneModel<ParkFitOperationalStatusDocument>(
+            List<WriteModel<ParkFitOperationalStatusDocument>> writes = batchParkIds
+                .Select(parkId => new UpdateOneModel<ParkFitOperationalStatusDocument>(
                     Builders<ParkFitOperationalStatusDocument>.Filter.Eq(
                         static status => status.Id,
-                        park.Id),
-                    BuildLegacyStatusUpsert(cutoffAtUtc))
+                        parkId),
+                    BuildLegacyStatusUpsert(migratedAtUtc))
                 {
                     IsUpsert = true,
                 })
                 .Cast<WriteModel<ParkFitOperationalStatusDocument>>()
                 .ToList();
-            if (writes.Count == 0)
-            {
-                continue;
-            }
 
             try
             {
@@ -114,17 +121,19 @@ internal sealed class ParkFitPortfolioActivationMigration
 
     internal static async Task TryCreateMigrationPlanAsync(
         IMongoCollection<ParkFitPortfolioMigrationDocument> migrations,
-        DateTime cutoffAtUtc,
+        IReadOnlyCollection<string> candidateParkIds,
+        DateTime startedAtUtc,
         CancellationToken cancellationToken)
     {
+        UpdateDefinition<ParkFitPortfolioMigrationDocument> update =
+            BuildMigrationPlanUpsert(candidateParkIds, startedAtUtc);
         try
         {
             await migrations.UpdateOneAsync(
                 Builders<ParkFitPortfolioMigrationDocument>.Filter.Eq(
                     static migration => migration.Id,
                     MigrationId),
-                Builders<ParkFitPortfolioMigrationDocument>.Update
-                    .SetOnInsert(static migration => migration.CutoffAtUtc, cutoffAtUtc),
+                update,
                 new UpdateOptions { IsUpsert = true },
                 cancellationToken);
         }
@@ -132,12 +141,27 @@ internal sealed class ParkFitPortfolioActivationMigration
             when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
         {
             // Une autre instance a figé la cohorte entre-temps. La lecture qui
-            // suit réutilisera obligatoirement sa borne persistée.
+            // suit réutilisera obligatoirement ses identifiants persistés.
         }
     }
 
-    internal static FilterDefinition<ParkDocument> BuildLegacyParkFilter(
-        DateTime cutoffAtUtc)
+    internal static UpdateDefinition<ParkFitPortfolioMigrationDocument>
+        BuildMigrationPlanUpsert(
+            IReadOnlyCollection<string> candidateParkIds,
+            DateTime startedAtUtc)
+    {
+        List<string> normalizedParkIds = candidateParkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+        return Builders<ParkFitPortfolioMigrationDocument>.Update
+            .SetOnInsert(
+                static migration => migration.CandidateParkIds,
+                normalizedParkIds)
+            .SetOnInsert(static migration => migration.StartedAtUtc, startedAtUtc);
+    }
+
+    internal static FilterDefinition<ParkDocument> BuildLegacyParkFilter()
     {
         return Builders<ParkDocument>.Filter.Eq(static park => park.IsVisible, true)
             & Builders<ParkDocument>.Filter.Eq(
@@ -147,10 +171,7 @@ internal sealed class ParkFitPortfolioActivationMigration
             & Builders<ParkDocument>.Filter.Ne(static park => park.Longitude, null)
             & Builders<ParkDocument>.Filter.Or(
                 Builders<ParkDocument>.Filter.Ne(static park => park.Latitude, 0d),
-                Builders<ParkDocument>.Filter.Ne(static park => park.Longitude, 0d))
-            & Builders<ParkDocument>.Filter.Lt(
-                static park => park.UpdatedAt,
-                cutoffAtUtc);
+                Builders<ParkDocument>.Filter.Ne(static park => park.Longitude, 0d));
     }
 
     internal static UpdateDefinition<ParkFitOperationalStatusDocument> BuildLegacyStatusUpsert(

@@ -8,8 +8,11 @@ public sealed class ParkFitPortfolioMigrationDocument
     [BsonId]
     public string Id { get; set; } = string.Empty;
 
-    [BsonElement("cutoffAtUtc")]
-    public DateTime CutoffAtUtc { get; set; }
+    [BsonElement("candidateParkIds")]
+    public List<string> CandidateParkIds { get; set; } = new List<string>();
+
+    [BsonElement("startedAtUtc")]
+    public DateTime StartedAtUtc { get; set; }
 
     [BsonElement("completedAtUtc")]
     [BsonIgnoreIfNull]

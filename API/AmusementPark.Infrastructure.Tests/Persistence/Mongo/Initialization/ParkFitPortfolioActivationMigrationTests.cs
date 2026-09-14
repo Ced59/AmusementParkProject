@@ -17,16 +17,14 @@ public sealed class ParkFitPortfolioActivationMigrationTests
     [Fact]
     public void BuildLegacyParkFilter_ShouldPreserveOnlyThePreviouslyEligiblePortfolio()
     {
-        DateTime cutoffAtUtc = new DateTime(2026, 9, 14, 12, 0, 0, DateTimeKind.Utc);
         BsonDocument filter = Render(
-            ParkFitPortfolioActivationMigration.BuildLegacyParkFilter(cutoffAtUtc));
+            ParkFitPortfolioActivationMigration.BuildLegacyParkFilter());
 
         Assert.True(filter["isVisible"].AsBoolean);
         Assert.Equal("Operating", filter["status"].AsString);
         Assert.True(filter.Contains("latitude"));
         Assert.True(filter.Contains("longitude"));
         Assert.True(filter.Contains("$or"));
-        Assert.Equal(cutoffAtUtc, filter["updatedAt"]["$lt"].ToUniversalTime());
     }
 
     [Fact]
@@ -58,10 +56,27 @@ public sealed class ParkFitPortfolioActivationMigrationTests
 
         await ParkFitPortfolioActivationMigration.TryCreateMigrationPlanAsync(
             migrations.Object,
+            new[] { "park-1" },
             new DateTime(2026, 9, 14, 12, 0, 0, DateTimeKind.Utc),
             CancellationToken.None);
 
         migrations.VerifyAll();
+    }
+
+    [Fact]
+    public void BuildMigrationPlanUpsert_ShouldFreezeNormalizedCandidateIds()
+    {
+        DateTime startedAtUtc = new DateTime(2026, 9, 14, 12, 0, 0, DateTimeKind.Utc);
+        BsonDocument update = Render(
+            ParkFitPortfolioActivationMigration.BuildMigrationPlanUpsert(
+                new[] { "park-1", "", "park-1", "park-2" },
+                startedAtUtc));
+        BsonDocument inserted = update["$setOnInsert"].AsBsonDocument;
+
+        Assert.Equal(
+            new[] { "park-1", "park-2" },
+            inserted["candidateParkIds"].AsBsonArray.Select(static value => value.AsString));
+        Assert.Equal(startedAtUtc, inserted["startedAtUtc"].ToUniversalTime());
     }
 
     private static BsonDocument Render(FilterDefinition<ParkDocument> filter)
@@ -79,6 +94,17 @@ public sealed class ParkFitPortfolioActivationMigrationTests
         IBsonSerializer<ParkFitOperationalStatusDocument> serializer =
             BsonSerializer.SerializerRegistry.GetSerializer<ParkFitOperationalStatusDocument>();
         return update.Render(new RenderArgs<ParkFitOperationalStatusDocument>(
+            serializer,
+            BsonSerializer.SerializerRegistry)).AsBsonDocument;
+    }
+
+    private static BsonDocument Render(
+        UpdateDefinition<ParkFitPortfolioMigrationDocument> update)
+    {
+        IBsonSerializer<ParkFitPortfolioMigrationDocument> serializer =
+            BsonSerializer.SerializerRegistry
+                .GetSerializer<ParkFitPortfolioMigrationDocument>();
+        return update.Render(new RenderArgs<ParkFitPortfolioMigrationDocument>(
             serializer,
             BsonSerializer.SerializerRegistry)).AsBsonDocument;
     }
