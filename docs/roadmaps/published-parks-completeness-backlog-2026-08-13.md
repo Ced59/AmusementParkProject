@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
 - 67 parcs atteignent le niveau `Excellent` : 65 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **45 parcs** : 0 au niveau `Publishable`, 43 au niveau `Good` et 2 au niveau `Excellent`.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **44 parcs** : 0 au niveau `Publishable`, 42 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,12 +22,11 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (44)
+## Priorité 2 — niveau `Good` (42)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 | 86 | `Good` | Plopsa Indoor Hasselt | BE | `Operating` | `Regional` | 76/88 | `4273e070-ca9e-4239-89ab-a47e96846a68` |
-| 86 | `Good` | Six Flags Fiesta Texas | US | `Operating` | `National` | 89/104 | `47aa49f8-8cce-41dc-9fc4-034b649e2142` |
 | 86 | `Good` | Six Flags Great America | US | `Operating` | `National` | 89/104 | `dea1bc65-f203-466a-bdf3-3bc9fca35109` |
 | 86 | `Good` | Six Flags Magic Mountain | US | `Operating` | `International` | 89/104 | `72e9f95c-155c-4413-824b-8ca45933dc45` |
 | 86 | `Good` | Six Flags New England | US | `Operating` | `National` | 89/104 | `dbb59396-d53c-430d-811e-42011335d332` |
