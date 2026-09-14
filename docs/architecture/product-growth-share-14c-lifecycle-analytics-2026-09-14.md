@@ -103,7 +103,10 @@ ne seraient pas transmis dans l'en-tête de provenance.
 La mesure générique des pages applique la même minimisation fonctionnelle : les
 cinq routes publiques contenant un jeton sont remplacées avant collecte par
 `/<langue>/product/share/<famille>`. Paramètres de requête, fragment et jeton sont
-donc absents tant des événements produits que des pages vues Matomo.
+donc absents tant des événements produits que des pages vues Matomo. Le titre
+éditorial est remplacé par un libellé générique, car il peut contenir le nom d'un
+membre, d'un parc ou une année. Le pixel générique interdit également l'en-tête
+`Referer` afin qu'aucune donnée privée ne contourne ces paramètres nettoyés.
 
 Les types TypeScript ferment les valeurs possibles avant l'adaptateur. Les tests
 inspectent l'URL réellement construite et interdisent les marqueurs d'identifiants,
@@ -147,7 +150,8 @@ membres ou le contenu d'un partage.
 
 - contrat typé des huit événements et cinq familles ;
 - URL Matomo limitée aux valeurs catégorielles ;
-- remplacement des cinq routes publiques à jeton par une URL de page synthétique ;
+- remplacement des cinq routes publiques à jeton et de leur titre éditorial par
+  un payload de page synthétique ;
 - refus de collecte sans consentement et en SSR ;
 - succès, révocation et rotation émis après réponse API ;
 - ouverture, CTA et erreur couverts sur les façades publiques ;

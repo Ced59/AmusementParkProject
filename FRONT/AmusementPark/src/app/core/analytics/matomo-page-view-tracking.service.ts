@@ -5,7 +5,8 @@ import { filter } from 'rxjs/operators';
 
 import { CookieConsentService } from '@core/privacy/cookie-consent.service';
 import { environment } from '../../../environments/environment';
-import { sanitizeMatomoPageViewUrl } from './matomo-page-view-url';
+import { createMatomoPageViewData } from './matomo-page-view-url';
+import type { MatomoPageViewData } from './matomo-page-view-url';
 
 type MatomoQueueCommand = [string, ...unknown[]];
 
@@ -87,16 +88,16 @@ export class MatomoPageViewTrackingService {
 
     this.ensureTrackerLoaded();
 
-    const currentUrl: string = sanitizeMatomoPageViewUrl(this.document.location.href);
+    const pageView: MatomoPageViewData = createMatomoPageViewData(
+      this.document.location.href,
+      this.document.title
+    );
+    const currentUrl: string = pageView.url;
     if (currentUrl === this.lastTrackedUrl) {
       return;
     }
 
-    const pageTitle: string = new URL(currentUrl).pathname.endsWith('/product/passport')
-      ? 'Passport'
-      : this.document.title || 'AmusementPark';
-
-    this.trackWithHttpApi(currentUrl, pageTitle, this.lastTrackedUrl);
+    this.trackWithHttpApi(currentUrl, pageView.title, this.lastTrackedUrl);
 
     this.lastTrackedUrl = currentUrl;
   }
@@ -157,7 +158,7 @@ export class MatomoPageViewTrackingService {
     }
 
     const trackingPixel: HTMLImageElement = new Image(1, 1);
-    trackingPixel.referrerPolicy = 'strict-origin-when-cross-origin';
+    trackingPixel.referrerPolicy = 'no-referrer';
     trackingPixel.src = trackingUrl.toString();
   }
 
