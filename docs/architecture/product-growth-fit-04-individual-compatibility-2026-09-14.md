@@ -221,7 +221,7 @@ aucune dépendance supplémentaire n'est introduite.
 
 ## 10. Preuves automatisées
 
-Quatre-vingt-deux scénarios FIT-04 couvrent notamment :
+Quatre-vingt-cinq scénarios FIT-04 couvrent notamment :
 
 - absence, expiration et futur des règles ;
 - minimum, maximum et égalité exacte aux seuils ;
@@ -233,6 +233,7 @@ Quatre-vingt-deux scénarios FIT-04 couvrent notamment :
 - preuve périmée, source secondaire et définition invalide ;
 - contradiction min/max et seuil accompagné incohérent ;
 - portée véhicule non généralisable ;
+- portée siège ou véhicule bloquant toute promesse globale malgré une autre voie satisfaite ;
 - priorité d'une violation fiable sur une autre inconnue ;
 - conservation d'une alternative accompagnée inconnue avant tout rejet sur le seuil seul ;
 - tranche d'âge chevauchant le seuil seul sans faux rejet faute d'accompagnateur ;
@@ -258,6 +259,7 @@ Quatre-vingt-deux scénarios FIT-04 couvrent notamment :
 - fusion déterministe de tous les résumés citant une même source ;
 - ordre déterministe de sources distinctes partageant la même adresse ;
 - distinction déterministe des sources dont les horodatages partagent les ticks mais pas le fuseau logique ;
+- ordre stable de raisons partageant le même seuil mais pas les mêmes anomalies ;
 - validation des bornes du profil privé.
 
 Les tests FIT-03 sont rejoués avec les évaluateurs partagés afin de prouver que

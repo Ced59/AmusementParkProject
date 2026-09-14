@@ -957,6 +957,27 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Theory]
+    [InlineData(AttractionAccessConditionScope.Vehicle)]
+    [InlineData(AttractionAccessConditionScope.Seat)]
+    public void Evaluate_WhenScopedAccompaniedRuleExists_ShouldNotGeneralizeASoloSuccess(
+        AttractionAccessConditionScope scope)
+    {
+        AttractionAccessCondition scoped = BuildAccompaniedHeightCondition(80);
+        scoped.Scope = scope;
+        scoped.ScopeDetail = "configuration-a";
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 110),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 100),
+            scoped);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration);
+    }
+
+    [Theory]
     [InlineData(AttractionAccessConditionType.PregnancyRestriction)]
     [InlineData(AttractionAccessConditionType.HeartRestriction)]
     [InlineData(AttractionAccessConditionType.BackNeckRestriction)]
@@ -1111,6 +1132,32 @@ public sealed class AttractionCompatibilityEvaluatorTests
                 CollectedKind = source.CollectedAtUtc?.Kind,
                 VerifiedKind = source.VerifiedAtUtc?.Kind,
             }));
+    }
+
+    [Fact]
+    public void Evaluate_WhenIssueBearingReasonsShareAThreshold_ShouldOrderThemDeterministically()
+    {
+        AttractionAccessCondition stale = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            100);
+        stale.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+        AttractionAccessCondition secondary = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            100);
+        secondary.SourceKind = AttractionAccessConditionSourceKind.VerifiedSecondary;
+
+        AttractionCompatibility first = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            stale,
+            secondary);
+        AttractionCompatibility second = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            secondary,
+            stale);
+
+        Assert.Equal(
+            first.Reasons.Select(SerializeReason),
+            second.Reasons.Select(SerializeReason));
     }
 
     [Fact]

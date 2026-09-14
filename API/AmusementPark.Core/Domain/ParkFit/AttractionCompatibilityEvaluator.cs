@@ -102,15 +102,9 @@ public sealed class AttractionCompatibilityEvaluator
 
             if (condition.Scope != AttractionAccessConditionScope.Attraction)
             {
-                if (!context.TryAddUnresolvedAlternative(
-                        AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration,
-                        condition))
-                {
-                    context.AddUnknown(
-                        AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration,
-                        condition);
-                }
-
+                context.AddUnknown(
+                    AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration,
+                    condition);
                 continue;
             }
 
@@ -200,6 +194,14 @@ public sealed class AttractionCompatibilityEvaluator
             .ThenBy(static reason => reason.Unit)
             .ThenBy(static reason => reason.Scope)
             .ThenBy(static reason => reason.ScopeDetail, StringComparer.Ordinal)
+            .ThenBy(static reason => string.Join(
+                ',',
+                reason.EvidenceIssues.OrderBy(static issue => issue)),
+                StringComparer.Ordinal)
+            .ThenBy(static reason => string.Join(
+                ',',
+                reason.SemanticIssues.OrderBy(static issue => issue)),
+                StringComparer.Ordinal)
             .ToList();
         IReadOnlyCollection<AttractionCompatibilitySourceReference> sources = activeConditions
             .Where(static condition => !string.IsNullOrWhiteSpace(condition.SourceUrl)
