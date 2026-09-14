@@ -1,0 +1,90 @@
+{
+  "parkFit": {
+    "seo": {
+      "title": "Finde einen Park für deine Gruppe — Amusement Parks",
+      "description": "Vergleiche dokumentierte Parks nach Gruppe, Datum und Vorlieben – ohne Konto und ohne gespeicherte Kriterien."
+    },
+    "entryCta": "Park für meine Gruppe finden",
+    "kicker": "Ausflugs-Kompass",
+    "title": "Welcher Park passt zu deiner Gruppe?",
+    "lead": "Gib nur an, was für euren Ausflug wichtig ist. Der Kompass vergleicht ausreichend dokumentierte Parks, ohne aus unbekannten Angaben Versprechen zu machen.",
+    "privacy": {
+      "title": "Deine Kriterien bleiben auf diesem Bildschirm",
+      "text": "Weder Name noch Konto sind nötig. Die Suche wird berechnet, ohne deine Gruppe auf dem Server zu speichern."
+    },
+    "date": {
+      "title": "Datum auswählen",
+      "text": "Eine bekannte Schließung schließt den Park für diesen Tag aus. Ohne veröffentlichte Öffnungszeiten bleibt das Datum unbekannt.",
+      "label": "Besuchsdatum",
+      "required": "Wähle ein Datum, um die Suche zu starten."
+    },
+    "group": {
+      "title": "Gruppe beschreiben",
+      "text": "Eine Zeile pro Person reicht. Lass ein Feld leer, wenn du die Antwort nicht kennst.",
+      "memberTitle": "Person {{number}}",
+      "removeMember": "Entfernen",
+      "removeMemberLabel": "Person {{number}} entfernen",
+      "height": "Größe",
+      "heightPlaceholder": "Z. B. 120",
+      "age": "Alter",
+      "agePlaceholder": "Z. B. 8",
+      "optional": "Optional – ein fehlender Wert bleibt unbekannt.",
+      "accompanied": "Diese Person kann begleitet werden",
+      "accompaniedHint": "Nur auswählen, wenn eine Begleitperson wirklich mitfahren kann.",
+      "companionAge": "Alter der Begleitperson",
+      "companionAgePlaceholder": "Z. B. 35",
+      "companionAgeHint": "Optional. Ohne Alter bleiben manche Begleitregeln unbekannt.",
+      "invalidMember": "Prüfe Größe oder Alter dieser Person.",
+      "addMember": "Person hinzufügen",
+      "limit": "Hinzugefügte Profile: {{count}} / 8"
+    },
+    "preferences": {
+      "title": "Wünsche hinzufügen",
+      "text": "Diese Auswahl beeinflusst die Reihenfolge, ohne andere Erlebnisse automatisch auszuschließen.",
+      "ariaLabel": "Bevorzugte Attraktionstypen",
+      "indoor": "Indoor-Erlebnisse bevorzugen",
+      "indoorHint": "Hilfreich, wenn euer Ausflug weniger vom Wetter abhängen soll.",
+      "types": {
+        "familyRide": "Familienattraktionen",
+        "rollerCoaster": "Achterbahnen",
+        "darkRide": "Darkrides",
+        "waterRide": "Wasserattraktionen",
+        "thrillRide": "Thrill-Rides",
+        "playground": "Spielplätze"
+      }
+    },
+    "submit": {
+      "title": "Bereit für einen ersten Vorschlag?",
+      "text": "Das Ergebnis vergleicht nur Parks, die die Mindestqualität der Daten erreichen.",
+      "action": "Passenden Park suchen",
+      "loading": "Parks werden verglichen…"
+    },
+    "feedback": {
+      "errorTitle": "Die Suche konnte nicht abgeschlossen werden",
+      "invalid": "Einige Kriterien können nicht verwendet werden. Prüfe Gruppe und Datum.",
+      "rateLimited": "Zu viele Suchen wurden direkt nacheinander gestartet. Versuche es gleich noch einmal.",
+      "error": "Die Suche ist vorübergehend nicht verfügbar. Deine Kriterien wurden nicht gespeichert."
+    },
+    "result": {
+      "kicker": "Erste Übereinstimmung",
+      "whyTitle": "Warum dieser Park hervorsticht",
+      "together": "gemeinsam mögliche Attraktionen",
+      "flexible": "Attraktionen mit Gruppenplanung",
+      "unknown": "noch unbekannte Attraktionen",
+      "openPark": "Park ansehen",
+      "detailNext": "Unbekannte Angaben bleiben sichtbar: Das Ergebnis hilft bei der Entscheidung, garantiert aber keinen Zugang.",
+      "evaluated": "Geprüfte Parks: {{count}}",
+      "states": {
+        "Available": "Übereinstimmung verfügbar",
+        "Capped": "Vorsichtige Übereinstimmung",
+        "Suspended": "Ergebnis prüfen",
+        "Excluded": "Park ausgeschlossen",
+        "Unknown": "Unbekannter Status"
+      }
+    },
+    "empty": {
+      "title": "Kein verlässlicher Park für diese Kriterien",
+      "text": "Bei einer Schließung oder unzureichenden Daten macht die Suche lieber kein Versprechen. Probiere ein anderes Datum oder ergänze die Gruppe."
+    }
+  }
+}

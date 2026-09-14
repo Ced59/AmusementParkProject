@@ -2,8 +2,22 @@
   display: block;
 }
 
+.parks-hero__fit-cta {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 1rem;
+}
+
 .parks-results__discovery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
   gap: 1rem;
+}
+
+@media (max-width: 520px) {
+  .parks-hero__fit-cta {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
 }

@@ -4772,6 +4772,94 @@
       "dropTower": "Wieże swobodnego spadania"
     }
   },
+  "parkFit": {
+    "seo": {
+      "title": "Znajdź park dopasowany do twojej grupy — Amusement Parks",
+      "description": "Porównaj udokumentowane parki według grupy, daty i preferencji, bez konta i bez zapisywania kryteriów."
+    },
+    "entryCta": "Znajdź park dla mojej grupy",
+    "kicker": "Kompas wyjazdu",
+    "title": "Który park pasuje do twojej grupy?",
+    "lead": "Podaj tylko to, co ma znaczenie dla waszego wyjazdu. Kompas porównuje wystarczająco udokumentowane parki i nie przedstawia brakujących danych jako obietnic.",
+    "privacy": {
+      "title": "Twoje kryteria pozostają na tym ekranie",
+      "text": "Nie potrzebujesz imienia ani konta. Wyszukiwanie jest obliczane bez zapisywania grupy na serwerze."
+    },
+    "date": {
+      "title": "Wybierz datę",
+      "text": "Potwierdzone zamknięcie wyklucza park w danym dniu. Bez opublikowanych godzin otwarcia data pozostaje nieznana.",
+      "label": "Data wyjazdu",
+      "required": "Wybierz datę, aby rozpocząć wyszukiwanie."
+    },
+    "group": {
+      "title": "Opisz grupę",
+      "text": "Wystarczy jeden wiersz na osobę. Zostaw pole puste, jeśli nie znasz odpowiedzi.",
+      "memberTitle": "Osoba {{number}}",
+      "removeMember": "Usuń",
+      "removeMemberLabel": "Usuń osobę {{number}}",
+      "height": "Wzrost",
+      "heightPlaceholder": "Np. 120",
+      "age": "Wiek",
+      "agePlaceholder": "Np. 8",
+      "optional": "Opcjonalne — brakująca wartość pozostanie nieznana.",
+      "accompanied": "Ta osoba może korzystać z opiekunem",
+      "accompaniedHint": "Zaznacz tylko wtedy, gdy opiekun rzeczywiście może uczestniczyć razem z tą osobą.",
+      "companionAge": "Wiek opiekuna",
+      "companionAgePlaceholder": "Np. 35",
+      "companionAgeHint": "Opcjonalne. Bez wieku część zasad dotyczących opiekuna pozostanie nieznana.",
+      "invalidMember": "Sprawdź wzrost lub wiek podany dla tej osoby.",
+      "addMember": "Dodaj osobę",
+      "limit": "Dodane profile: {{count}} / 8"
+    },
+    "preferences": {
+      "title": "Dodaj swoje preferencje",
+      "text": "Te wybory wpływają na kolejność wyników, ale nie wykluczają automatycznie innych atrakcji.",
+      "ariaLabel": "Preferowane typy atrakcji",
+      "indoor": "Preferuj atrakcje pod dachem",
+      "indoorHint": "Przydatne, jeśli chcesz wyjazdu mniej zależnego od pogody.",
+      "types": {
+        "familyRide": "Atrakcje rodzinne",
+        "rollerCoaster": "Kolejki górskie",
+        "darkRide": "Przejażdżki tematyczne",
+        "waterRide": "Atrakcje wodne",
+        "thrillRide": "Mocne wrażenia",
+        "playground": "Place zabaw"
+      }
+    },
+    "submit": {
+      "title": "Gotowi na pierwszą propozycję?",
+      "text": "Wynik porównuje tylko parki spełniające minimalny poziom jakości danych.",
+      "action": "Znajdź dopasowany park",
+      "loading": "Trwa porównywanie…"
+    },
+    "feedback": {
+      "errorTitle": "Wyszukiwanie nie powiodło się",
+      "invalid": "Niektórych kryteriów nie można użyć. Sprawdź grupę i datę.",
+      "rateLimited": "Uruchomiono zbyt wiele wyszukiwań z rzędu. Spróbuj ponownie za chwilę.",
+      "error": "Wyszukiwarka jest chwilowo niedostępna. Twoje kryteria nie zostały zapisane."
+    },
+    "result": {
+      "kicker": "Pierwsze dopasowanie",
+      "whyTitle": "Dlaczego ten park jest na czele",
+      "together": "atrakcje dostępne razem",
+      "flexible": "atrakcje wymagające organizacji grupy",
+      "unknown": "atrakcje z brakującymi danymi",
+      "openPark": "Zobacz park",
+      "detailNext": "Brakujące dane pozostają widoczne: wynik pomaga podjąć decyzję, ale nie gwarantuje wstępu.",
+      "evaluated": "Sprawdzone parki: {{count}}",
+      "states": {
+        "Available": "Dopasowanie dostępne",
+        "Capped": "Ostrożne dopasowanie",
+        "Suspended": "Wynik do sprawdzenia",
+        "Excluded": "Park wykluczony",
+        "Unknown": "Nieznany stan"
+      }
+    },
+    "empty": {
+      "title": "Brak wiarygodnego parku dla tych kryteriów",
+      "text": "Wyszukiwarka nie składa obietnic, gdy park jest zamknięty lub ma za mało danych. Spróbuj innej daty albo uzupełnij informacje o grupie."
+    }
+  },
   "parkItems": {
     "actions": {
       "viewDetails": "Zobacz stronę",

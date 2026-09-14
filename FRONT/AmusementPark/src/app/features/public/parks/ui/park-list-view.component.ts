@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed } from '@angular/core';
 import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { PaginationComponent } from '@shared/components/pagination/pagination.component';
@@ -28,7 +29,7 @@ import { getParkStatusPresentation, ParkStatusPresentation } from '@shared/utils
   templateUrl: './park-list-view.component.html',
   styleUrls: ['./park-list-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, PaginationComponent, NgFor, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective, UiSearchPanelComponent, UiParkCardComponent, UiSearchResultCardComponent, ParkListMapComponent, PublicSharePanelComponent, LocalizedPluralPipe]
+  imports: [PageStateComponent, PaginationComponent, NgFor, RouterLink, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective, UiSearchPanelComponent, UiParkCardComponent, UiSearchResultCardComponent, ParkListMapComponent, PublicSharePanelComponent, LocalizedPluralPipe]
 })
 export class ParkListViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;

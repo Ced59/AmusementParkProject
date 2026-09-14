@@ -1919,6 +1919,17 @@ export class SeoService {
     this.apply(this.buildStaticRouteData('home', language, url, 'index,follow'));
   }
 
+  applyParkFitSeo(title: string, description: string, url: string): void {
+    this.apply({
+      title: truncateSeoText(normalizeSeoText(title, SITE_NAME), 70),
+      description: truncateSeoText(normalizeSeoText(description, DEFAULT_DESCRIPTION), 170),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: 'noindex,nofollow,noarchive',
+      alternates: [],
+      jsonLd: []
+    });
+  }
+
   applySharedUserRankingSeo(
     title: string,
     description: string,
