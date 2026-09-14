@@ -8,6 +8,7 @@ const paths = (process.env.SEO_SMOKE_PATHS ?? '/en/home,/en/parks,/fr/parks,/en/
 const userAgent = process.env.SEO_SMOKE_USER_AGENT
   ?? 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)';
 const minimumBodyTextLength = normalizePositiveInteger(process.env.SEO_SMOKE_MIN_BODY_TEXT_LENGTH, 500);
+const expectFullHtml = /googlebot|adsbot-google|mediapartners-google|googleother|google-inspectiontool|google-agent|googleagent-mariner|google-gemininotebook|google-notebooklm/i.test(userAgent);
 
 let failed = false;
 
@@ -37,8 +38,15 @@ for (const path of paths) {
     [Boolean(canonical && canonical.startsWith(baseUrl.origin)), 'canonical'],
     [hasAppRootContent, 'SSR app-root content'],
     [bodyTextLength >= minimumBodyTextLength, `body text length ${bodyTextLength}`],
-    [executableScriptCount === 0, `${executableScriptCount} executable script(s)`],
-    [scriptLikeLinkCount === 0, `${scriptLikeLinkCount} script preload/prefetch link(s)`]
+    ...(expectFullHtml ? [
+      [/<script\b[^>]*\bsrc=["'][^"']+\.m?js(?:[?#][^"']*)?["']/i.test(html), 'Google SSR executable scripts'],
+      [/<script\b[^>]*\bid=["']ng-state["']/i.test(html), 'Google SSR Angular transfer state'],
+      [/<style\b|<link\b[^>]*\brel=["']stylesheet["']/i.test(html), 'Google SSR styles'],
+      [/\bclass=["'][^"']+/i.test(html), 'Google SSR presentation classes']
+    ] : [
+      [executableScriptCount === 0, `${executableScriptCount} executable script(s)`],
+      [scriptLikeLinkCount === 0, `${scriptLikeLinkCount} script preload/prefetch link(s)`]
+    ])
   ];
 
   const failedChecks = checks.filter(([ok]) => !ok).map(([, label]) => label);
@@ -50,7 +58,7 @@ for (const path of paths) {
     continue;
   }
 
-  console.log(`OK ${url} (${bodyTextLength} body chars, no executable JS)`);
+  console.log(`OK ${url} (${bodyTextLength} body chars, ${expectFullHtml ? 'complete Google SSR with rendering assets' : 'no executable JS'})`);
 }
 
 if (failed) {

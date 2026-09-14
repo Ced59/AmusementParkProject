@@ -89,6 +89,17 @@ const socialPreviewRobotFamilies: ReadonlySet<RobotFamily> = new Set<RobotFamily
   'TwitterBot'
 ]);
 
+// Google renders pages in a browser and must receive the same scripts, hydration
+// state and presentation as visitors. This does not change cold-render eligibility.
+const fullHtmlRobotFamilies: ReadonlySet<RobotFamily> = new Set<RobotFamily>([
+  'Googlebot',
+  'GoogleOther',
+  'Google-InspectionTool',
+  'Google-Agent',
+  'GoogleAgent-Mariner',
+  'Google-GeminiNotebook'
+]);
+
 const robotFamilyMatchers: ReadonlyArray<readonly [RobotFamily, ReadonlyArray<string>]> = [
   ['OAI-SearchBot', ['oai-searchbot']],
   ['ChatGPT-User', ['chatgpt-user']],
@@ -167,7 +178,7 @@ export function shouldAllowRobotCacheMissSsrRender(robotFamily: RobotFamily | nu
 }
 
 export function shouldServeRobotOptimizedNoJsHtml(robotFamily: RobotFamily | null): boolean {
-  return robotFamily !== null && robotFamily !== 'GoogleAgent-Mariner';
+  return robotFamily !== null && !fullHtmlRobotFamilies.has(robotFamily);
 }
 
 export function getRobotFamilyCategory(robotFamily: string): string {

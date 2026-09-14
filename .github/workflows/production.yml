@@ -236,6 +236,9 @@ jobs:
           npm run architecture:one-class-per-file:test
           npm run architecture:one-class-per-file
 
+      - name: Test crawler SSR smoke checks
+        run: node --test tools/seo-ssr-smoke.test.mjs
+
       - name: Run frontend tests
         run: npm run test:ci
 

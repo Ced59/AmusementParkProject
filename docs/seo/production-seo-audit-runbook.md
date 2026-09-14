@@ -584,7 +584,7 @@ $env:SEO_AUDIT_USER_AGENTS = @(
     [pscustomobject]@{
         name = 'Googlebot'
         value = $robotAgents.Googlebot
-        expectNoJs = $true
+        expectNoJs = $false
     }
 ) | ConvertTo-Json -Compress
 
@@ -682,6 +682,12 @@ for (const agent of agents) {
       if (invalidJsonLd.length > 0) errors.push('invalid JSON-LD');
       if (agent.expectNoJs && executableScripts > 0) {
         errors.push(`${executableScripts} executable scripts in no-js robot HTML`);
+      }
+      if (agent.expectNoJs === false) {
+        if (!/<script\b[^>]*\bsrc=["'][^"']+\.m?js(?:[?#][^"']*)?["']/i.test(html)) errors.push('missing rendering scripts');
+        if (!/<script\b[^>]*\bid=["']ng-state["']/i.test(html)) errors.push('missing Angular transfer state');
+        if (!/<style\b|<link\b[^>]*\brel=["']stylesheet["']/i.test(html)) errors.push('missing presentation styles');
+        if (!/\bclass=["'][^"']+/i.test(html)) errors.push('missing presentation classes');
       }
 
       record = {
@@ -832,7 +838,8 @@ quatorze familles et utiliser :
 
 ```powershell
 $env:SEO_AUDIT_USER_AGENTS = @(
-    [pscustomobject]@{ name = 'Googlebot'; value = $robotAgents.Googlebot; expectNoJs = $true }
+    [pscustomobject]@{ name = 'Googlebot'; value = $robotAgents.Googlebot; expectNoJs = $false }
+    [pscustomobject]@{ name = 'Google-InspectionTool'; value = 'Mozilla/5.0 (compatible; Google-InspectionTool/1.0;)'; expectNoJs = $false }
     [pscustomobject]@{ name = 'Bingbot'; value = $robotAgents.Bingbot; expectNoJs = $true }
     [pscustomobject]@{ name = 'YandexBot'; value = $robotAgents.YandexBot; expectNoJs = $true }
     [pscustomobject]@{ name = 'AhrefsBot'; value = $robotAgents.AhrefsBot; expectNoJs = $true }
@@ -867,9 +874,9 @@ $env:SEO_AUDIT_USER_AGENTS = @(
 Réexécuter ensuite le bloc Node. Les agents d’entraînement interdits doivent être
 testés séparément contre `robots.txt`; ne pas les inclure dans un crawl de pages.
 
-## 9. Smoke test no-JavaScript existant
+## 9. Smoke test du HTML SSR selon le robot
 
-Le dépôt fournit déjà un contrôle du HTML SSR sans JavaScript exécutable. Depuis
+Le dépôt contrôle le contenu SSR et les ressources attendues pour chaque robot. Depuis
 `FRONT/AmusementPark` :
 
 ```powershell
@@ -880,9 +887,12 @@ $env:SEO_SMOKE_MIN_BODY_TEXT_LENGTH = '500'
 npm run seo:ssr-smoke
 ```
 
-Répéter avec Googlebot, YandexBot et Ahrefs sur l’échantillon court. Mariner fait
-exception : il doit être reconnu comme robot et recevoir du SSR froid, mais
-conserver son JavaScript interactif.
+Répéter avec Googlebot, Google-InspectionTool, YandexBot et Ahrefs sur l’échantillon
+court. Toutes les familles Google conservent le HTML SSR complet : JavaScript,
+état Angular, styles et classes CSS. Le test vérifie leur présence pour Google et
+maintient l’absence de JavaScript pour les autres robots. GoogleOther reste limité
+au cache lors d’un cache miss ; les règles de rendu froid des autres familles,
+les contrôles SEO-ready et les réponses d’indisponibilité SSR sont inchangés.
 
 ## 10. Passage froid, passage chaud et résilience
 
