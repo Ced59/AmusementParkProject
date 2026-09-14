@@ -20,6 +20,16 @@ internal static class AttractionAccompanimentEvaluator
         AttractionAccessCondition? representative = conditions
             .OrderByDescending(static condition => condition.MinimumCompanionAge ?? 0)
             .ThenBy(static condition => condition.Type)
+            .ThenByDescending(static condition => condition.Value)
+            .ThenBy(static condition => condition.Unit)
+            .ThenBy(static condition => condition.Scope)
+            .ThenBy(static condition => condition.ScopeDetail, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceKind)
+            .ThenBy(static condition => condition.SourceUrl, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceReference, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceLanguageCode, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.EffectiveFrom)
+            .ThenBy(static condition => condition.EffectiveTo)
             .FirstOrDefault();
         if (representative is null)
         {

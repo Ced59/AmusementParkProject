@@ -649,6 +649,36 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenSourceLocationsMatch_ShouldOrderDistinctLanguagesDeterministically()
+    {
+        AttractionAccessCondition french = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            100);
+        french.SourceLanguageCode = "fr";
+        AttractionAccessCondition english = BuildHeightCondition(
+            AttractionAccessConditionType.MaxHeight,
+            200);
+        english.SourceUrl = french.SourceUrl;
+        english.SourceLanguageCode = "en";
+
+        AttractionCompatibility first = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            french,
+            english);
+        AttractionCompatibility second = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            english,
+            french);
+
+        Assert.Equal(
+            new[] { "en", "fr" },
+            first.Sources.Select(static source => source.LanguageCode));
+        Assert.Equal(
+            first.Sources.Select(static source => source.LanguageCode),
+            second.Sources.Select(static source => source.LanguageCode));
+    }
+
+    [Fact]
     public void Evaluate_ShouldBeInvariantToConditionOrder()
     {
         ParkFitMemberProfile profile = new ParkFitMemberProfile(
@@ -665,8 +695,8 @@ public sealed class AttractionCompatibilityEvaluatorTests
 
         Assert.Equal(first.State, second.State);
         Assert.Equal(
-            first.Reasons.Select(static reason => reason.Code),
-            second.Reasons.Select(static reason => reason.Code));
+            first.Reasons.Select(SerializeReason),
+            second.Reasons.Select(SerializeReason));
     }
 
     [Fact]
@@ -764,6 +794,21 @@ public sealed class AttractionCompatibilityEvaluatorTests
             EvaluationDate,
             EvaluationTimestamp,
             MaximumEvidenceAge);
+    }
+
+    private static string SerializeReason(AttractionCompatibilityReason reason)
+    {
+        return string.Join(
+            '|',
+            reason.Code,
+            reason.ConditionType,
+            reason.RequiredValue,
+            reason.MinimumCompanionAge,
+            reason.Unit,
+            reason.Scope,
+            reason.ScopeDetail,
+            string.Join(',', reason.EvidenceIssues),
+            string.Join(',', reason.SemanticIssues));
     }
 
     private static AttractionAccessCondition BuildHeightCondition(

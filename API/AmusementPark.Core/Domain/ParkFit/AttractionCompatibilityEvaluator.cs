@@ -174,6 +174,10 @@ public sealed class AttractionCompatibilityEvaluator
             .OrderBy(static reason => reason.Code)
             .ThenBy(static reason => reason.ConditionType)
             .ThenBy(static reason => reason.RequiredValue)
+            .ThenBy(static reason => reason.MinimumCompanionAge)
+            .ThenBy(static reason => reason.Unit)
+            .ThenBy(static reason => reason.Scope)
+            .ThenBy(static reason => reason.ScopeDetail, StringComparer.Ordinal)
             .ToList();
         IReadOnlyCollection<AttractionCompatibilitySourceReference> sources = activeConditions
             .Where(static condition => !string.IsNullOrWhiteSpace(condition.SourceUrl)
@@ -192,6 +196,10 @@ public sealed class AttractionCompatibilityEvaluator
             .OrderBy(static source => source.Kind)
             .ThenBy(static source => source.Url, StringComparer.Ordinal)
             .ThenBy(static source => source.Reference, StringComparer.Ordinal)
+            .ThenBy(static source => source.LanguageCode, StringComparer.Ordinal)
+            .ThenBy(static source => source.CollectedAtUtc)
+            .ThenBy(static source => source.VerifiedAtUtc)
+            .ThenBy(static source => source.Confidence)
             .ToList();
         ParkFitDataConfidence confidence = ResolveConfidence(state, usableConditions);
         DateTime? lastVerifiedAtUtc = activeConditions
