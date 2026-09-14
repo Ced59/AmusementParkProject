@@ -94,9 +94,27 @@ Le calcul est pur, linéaire, sans stockage ni dépendance aux visites. La table
 décision, les diagrammes et 30 scénarios métier sont documentés dans
 [`product-growth-fit-05-group-compatibility-2026-09-14.md`](../../architecture/product-growth-fit-05-group-compatibility-2026-09-14.md).
 
-`FIT-06` est le prochain jalon : il construira les sous-scores versionnés après les
-filtres durs, sans transformer les inconnues en zéros ni masquer le membre le moins
-bien servi.
+### État de `FIT-06` au 14 septembre 2026
+
+Le Core produit désormais le score comparatif versionné `park-fit-2026-01` après
+les filtres durs. Les cinq composantes pondérées, leur couverture, leur confiance,
+leur poids applicable, leur poids parmi les seules données connues et leur
+contribution restent inspectables. Une inconnue n'est jamais transformée en zéro ;
+une composante facultative non applicable quitte explicitement le dénominateur.
+
+La compatibilité du groupe normalise les états de FIT-05 et borne sa moyenne par
+le membre le moins bien servi. La couverture factuelle, une confiance moyenne ou
+faible et une inconnue critique plafonnent le nombre affichable. Selon la politique
+choisie, une inconnue critique peut aussi suspendre ou exclure le résultat. La
+preuve conserve la date et le nombre exact de filtres critiques inconnus, ainsi
+que la date source de la disponibilité. La confiance tient compte de chaque fait
+connu qui borne réellement le résultat, tandis que les autres manques réduisent
+sa couverture. La formule, les diagrammes et 72 scénarios
+métier sont documentés dans
+[`product-growth-fit-06-versioned-subscores-2026-09-14.md`](../../architecture/product-growth-fit-06-versioned-subscores-2026-09-14.md).
+
+`FIT-07` est le prochain jalon : il exposera ce moteur dans une API de recherche
+anonyme, bornée et non persistante, avec un contrat minimal et explicable.
 
 ## 1. Vision produit
 
