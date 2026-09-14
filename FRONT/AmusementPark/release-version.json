@@ -1,6 +1,20 @@
 {
-  "version": "5.3.19",
+  "version": "5.3.20",
   "history": [
+    {
+      "version": "5.3.20",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "La future comparaison sait désormais expliquer la compatibilité de tout un groupe.",
+        "en": "The future comparison can now explain compatibility for an entire group.",
+        "de": "Die künftige Vergleichsfunktion kann nun die Kompatibilität einer ganzen Gruppe erklären.",
+        "nl": "De toekomstige vergelijkingsfunctie kan nu de geschiktheid voor een hele groep uitleggen.",
+        "it": "Il futuro confronto ora può spiegare la compatibilità di un intero gruppo.",
+        "es": "La futura comparación ya puede explicar la compatibilidad de todo un grupo.",
+        "pl": "Przyszły mechanizm porównywania potrafi już wyjaśnić zgodność dla całej grupy.",
+        "pt": "A futura comparação já consegue explicar a compatibilidade de todo um grupo."
+      }
+    },
     {
       "version": "5.3.19",
       "releasedAt": "2026-09-14",
