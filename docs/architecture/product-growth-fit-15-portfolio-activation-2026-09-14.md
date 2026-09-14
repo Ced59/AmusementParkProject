@@ -160,11 +160,13 @@ pas désérialiser cette valeur.
 
 Le déploiement est donc ordonné en deux PR :
 
-1. la présente PR déploie le nouveau modèle, la lecture sûre, les actions admin et la
-   pagination après activation ;
-2. après disparition vérifiée des anciennes instances, une PR de migration dédiée
-   matérialise chaque état absent en `NotActivated`, par lots idempotents, sans
-   modifier les états `Active` ou `Suspended` déjà pilotés.
+1. la présente PR déploie le nouveau modèle de lecture, comprend les futures valeurs
+   d'état et de décision, applique la lecture sûre et pagine les seuls états actifs ;
+   elle conserve uniquement les écritures historiques `Suspend` et `Restore` ;
+2. après disparition vérifiée des anciennes instances, une PR dédiée ouvre les
+   actions `Activate` et `Deactivate`, puis matérialise chaque état absent en
+   `NotActivated`, par lots idempotents, sans modifier les états `Active` ou
+   `Suspended` déjà pilotés.
 
 Il n'existe déjà plus de comportement applicatif « absent = actif ». La seconde phase
 ne changera donc aucun résultat métier : elle alignera physiquement MongoDB sur la
@@ -178,11 +180,11 @@ sequenceDiagram
     participant S as park-fit-operational-statuses
 
     D->>A1: démarrer le candidat compatible
-    Note over A0,A1: aucune nouvelle valeur Mongo écrite en masse
+    Note over A0,A1: aucune nouvelle valeur d'état ou décision n'est écrite
     D->>A1: vérifier santé et tests candidats
     D->>A0: retirer l'ancienne instance
     D->>A1: rendre canonique
-    Note over A1,S: PR suivante : backfill NotActivated désormais lisible partout
+    Note over A1,S: PR suivante : actions + backfill désormais lisibles partout
 ```
 
 ## 6. Recherche publique
@@ -219,8 +221,12 @@ Elle ne révèle ni justification, ni acteur, ni historique administratif.
 
 ## 7. Interface admin et responsive
 
-Dans l'audit « Qualité du comparateur », chaque carte présente l'état et sa
-conséquence avant les actions :
+Dans l'audit « Qualité du comparateur », chaque carte présente déjà l'état et sa
+conséquence. Pendant la première phase compatible, seules les actions historiques
+`Suspend` et `Restore` restent proposées : aucune interface ne peut encore écrire
+`NotActivated` ou une décision d'activation pendant que l'ancienne API peut servir.
+
+Après la seconde phase, les actions deviennent :
 
 - actif : suspendre temporairement ou retirer du portefeuille ;
 - suspendu : rétablir si la qualité le permet, ou retirer directement ;
@@ -238,16 +244,19 @@ espagnol, polonais et portugais.
 
 - Core : transitions, retrait pendant une suspension, versions et historique
   tronqué ;
-- Application : activation éligible, refus d'une qualité insuffisante, exclusion
-  d'un état absent, compteurs séparés, pagination après activation et lectures groupées ;
+- Application : refus d'une activation pendant la phase lecteur, rétablissement
+  soumis à la qualité, exclusion d'un état absent, compteurs séparés, pagination
+  après filtrage d'activation et lectures groupées ;
 - Infrastructure : lecture des états explicites sans écriture d'un enum incompatible
   pendant le premier basculement ;
 - WebAPI : mapping additif du compteur `notActivatedCandidateCount` et validation
   de l'enum central ;
-- Angular : activation verrouillée, contrats responsive, façade/port et huit
+- Angular : aucune écriture anticipée des nouveaux états, fermeture d'une
+  confirmation devenue obsolète, contrats responsive, façade/port et huit
   dictionnaires cohérents.
 
-La fonctionnalité FIT-15 est complète côté métier. Sa PR technique suivante réalise
-uniquement le backfill compatible après ce premier déploiement. La gate FIT-G vérifie
-ensuite l'ensemble des invariants déjà automatisables ; les observations terrain
-restent un outil d'amélioration et ne bloquent pas l'achèvement technique demandé.
+La présente livraison termine la phase lecteur de FIT-15. Sa PR immédiatement
+suivante ouvre les écritures explicites et réalise le backfill compatible après ce
+premier déploiement. La gate FIT-G vérifie ensuite l'ensemble des invariants déjà
+automatisables ; les observations terrain restent un outil d'amélioration et ne
+bloquent pas l'achèvement technique demandé.

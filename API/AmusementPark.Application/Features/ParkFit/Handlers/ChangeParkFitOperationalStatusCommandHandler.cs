@@ -47,8 +47,7 @@ public sealed class ChangeParkFitOperationalStatusCommandHandler
             || string.IsNullOrWhiteSpace(command.Reason)
             || command.ExpectedRevision < 0
             || command.TargetState is not ParkFitRecommendationState.Active
-                and not ParkFitRecommendationState.Suspended
-                and not ParkFitRecommendationState.NotActivated)
+                and not ParkFitRecommendationState.Suspended)
         {
             return ApplicationResult.Failure(ParkFitOperationsApplicationErrors.InvalidReport());
         }
@@ -68,6 +67,12 @@ public sealed class ChangeParkFitOperationalStatusCommandHandler
         if (status.Revision != command.ExpectedRevision)
         {
             return ApplicationResult.Failure(ParkFitOperationsApplicationErrors.Conflict());
+        }
+
+        if (command.TargetState == ParkFitRecommendationState.Active
+            && status.State != ParkFitRecommendationState.Suspended)
+        {
+            return ApplicationResult.Failure(ParkFitOperationsApplicationErrors.InvalidTransition());
         }
 
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
@@ -106,17 +111,9 @@ public sealed class ChangeParkFitOperationalStatusCommandHandler
             {
                 status.Suspend(command.ActorUserId, command.Reason, decidedAtUtc);
             }
-            else if (command.TargetState == ParkFitRecommendationState.NotActivated)
-            {
-                status.Deactivate(command.ActorUserId, command.Reason, decidedAtUtc);
-            }
-            else if (status.State == ParkFitRecommendationState.Suspended)
-            {
-                status.RestoreRecommendations(command.ActorUserId, command.Reason, decidedAtUtc);
-            }
             else
             {
-                status.Activate(command.ActorUserId, command.Reason, decidedAtUtc);
+                status.RestoreRecommendations(command.ActorUserId, command.Reason, decidedAtUtc);
             }
         }
         catch (ArgumentException)

@@ -31,7 +31,7 @@ describe('AdminParkFitOperationalControlsComponent', () => {
   it('closes a pending transition when the refreshed operational revision arrives', () => {
     const fixture: ComponentFixture<AdminParkFitOperationalControlsComponent> =
       TestBed.createComponent(AdminParkFitOperationalControlsComponent);
-    fixture.componentRef.setInput('park', createPark('NotActivated', 0));
+    fixture.componentRef.setInput('park', createPark('Suspended', 1));
     fixture.detectChanges();
 
     fixture.debugElement.query(By.css('.park-fit-operational-controls__actions button'))
@@ -40,21 +40,54 @@ describe('AdminParkFitOperationalControlsComponent', () => {
 
     expect(fixture.debugElement.query(By.css('form'))).not.toBeNull();
 
-    fixture.componentRef.setInput('park', createPark('Active', 1));
+    fixture.componentRef.setInput('park', createPark('Active', 2));
     fixture.detectChanges();
 
     expect(fixture.debugElement.query(By.css('form'))).toBeNull();
+  });
+
+  it('closes a pending restoration when refreshed quality becomes ineligible', () => {
+    const fixture: ComponentFixture<AdminParkFitOperationalControlsComponent> =
+      TestBed.createComponent(AdminParkFitOperationalControlsComponent);
+    fixture.componentRef.setInput('park', createPark('Suspended', 1));
+    fixture.detectChanges();
+
+    fixture.debugElement.query(By.css('.park-fit-operational-controls__actions button'))
+      .nativeElement.click();
+    fixture.detectChanges();
+
+    expect(fixture.debugElement.query(By.css('form'))).not.toBeNull();
+
+    fixture.componentRef.setInput(
+      'park',
+      createPark('Suspended', 1, 'Insufficient')
+    );
+    fixture.detectChanges();
+
+    expect(fixture.debugElement.query(By.css('form'))).toBeNull();
+  });
+
+  it('does not expose activation writes during the compatible-reader rollout', () => {
+    const fixture: ComponentFixture<AdminParkFitOperationalControlsComponent> =
+      TestBed.createComponent(AdminParkFitOperationalControlsComponent);
+    fixture.componentRef.setInput('park', createPark('NotActivated', 0));
+    fixture.detectChanges();
+
+    expect(
+      fixture.debugElement.queryAll(By.css('.park-fit-operational-controls__actions button'))
+    ).toHaveLength(0);
   });
 });
 
 function createPark(
   recommendationState: ParkFitDataQuality['recommendationState'],
-  operationalRevision: number
+  operationalRevision: number,
+  status: ParkFitDataQuality['status'] = 'EligibleForFitComparison'
 ): ParkFitDataQuality {
   return {
     parkId: 'park-1',
     parkName: 'Parc des essais',
-    status: 'EligibleForFitComparison',
+    status,
     coveragePercent: 100,
     visibleAttractionCount: 1,
     attractionWithConditionsCount: 1,

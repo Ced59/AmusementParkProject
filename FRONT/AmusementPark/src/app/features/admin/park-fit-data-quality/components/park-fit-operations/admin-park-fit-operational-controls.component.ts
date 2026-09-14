@@ -42,7 +42,8 @@ export class AdminParkFitOperationalControlsComponent implements OnChanges {
 
     if (
       previousPark.recommendationState !== currentPark.recommendationState ||
-      previousPark.operationalRevision !== currentPark.operationalRevision
+      previousPark.operationalRevision !== currentPark.operationalRevision ||
+      previousPark.status !== currentPark.status
     ) {
       this.cancel();
     }
@@ -90,17 +91,17 @@ export class AdminParkFitOperationalControlsComponent implements OnChanges {
       return 'Suspend';
     }
 
-    if (targetState === 'NotActivated') {
-      return 'Deactivate';
-    }
-
-    return this.park.recommendationState === 'Suspended' ? 'Restore' : 'Activate';
+    return 'Restore';
   }
 
   protected confirm(): void {
     const reason: string = this.reason.value.trim();
     const targetState: ParkFitRecommendationState | null = this.selectedTarget();
-    if (reason.length === 0 || targetState === null) {
+    if (
+      reason.length === 0 ||
+      targetState === null ||
+      (targetState === 'Active' && !this.activationAllowed)
+    ) {
       return;
     }
 

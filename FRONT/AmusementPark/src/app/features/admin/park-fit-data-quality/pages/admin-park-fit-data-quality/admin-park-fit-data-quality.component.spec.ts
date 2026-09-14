@@ -60,7 +60,7 @@ describe('AdminParkFitDataQualityComponent', () => {
     );
   });
 
-  it('keeps activation unavailable until the park is ready for comparison', () => {
+  it('does not expose activation writes during the compatible-reader rollout', () => {
     const page: ParkFitDataQualityPage = createPage();
     page.items[0].recommendationState = 'NotActivated';
     port.getPage.mockReturnValue(of(page));
@@ -72,11 +72,11 @@ describe('AdminParkFitDataQualityComponent', () => {
     const activationButton = fixture.debugElement.query(
       By.css('.park-fit-operational-controls__actions button')
     );
-    const qualityWarning = fixture.debugElement.query(
-      By.css('.park-fit-operational-controls__quality-warning')
+    const inactiveState = fixture.debugElement.query(
+      By.css('.park-fit-operational-controls--inactive')
     );
-    expect(activationButton.nativeElement.disabled).toBe(true);
-    expect(qualityWarning).not.toBeNull();
+    expect(activationButton).toBeNull();
+    expect(inactiveState).not.toBeNull();
   });
 });
 
