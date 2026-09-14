@@ -68,16 +68,20 @@ flowchart TD
 
 Pour une personne et un élément :
 
-1. une incohérence du modèle ou une source décisionnelle inutilisable produit
-   `Unknown`, jamais une conclusion opportuniste ;
-2. une règle dure applicable et violée produit `Incompatible` ;
-3. une règle d'accompagnement satisfaite produit `CompatibleWithCompanion` ;
-4. toutes les règles applicables satisfaites produisent `CompatibleAlone` ;
-5. l'absence structurelle de règle applicable produit `NotApplicable`.
+1. déterminer les règles structurellement applicables ; si aucune ne s'applique, le
+   résultat est `NotApplicable` ;
+2. évaluer chaque règle applicable comme satisfaite, violée ou inconnue ; une
+   incohérence ou une source inutilisable rend la règle concernée inconnue ;
+3. si au moins une règle fiable est violée, le résultat est `Incompatible`, même si
+   une autre règle reste inconnue : le refus est déjà démontré ;
+4. sans violation, si au moins une règle critique reste inconnue, le résultat est
+   `Unknown` ;
+5. sans violation ni inconnue, une exigence d'accompagnement produit
+   `CompatibleWithCompanion`, sinon le résultat est `CompatibleAlone`.
 
 Quand plusieurs règles applicables existent, elles sont combinées par conjonction.
-Une règle violée suffit à rendre l'élément incompatible. Une donnée critique inconnue
-empêche une conclusion positive, même si les autres règles sont satisfaites.
+Une donnée critique inconnue empêche donc toute conclusion positive, mais elle
+n'efface pas une incompatibilité déjà démontrée par une autre règle fiable.
 
 ### 3.2 Politique des inconnues
 
