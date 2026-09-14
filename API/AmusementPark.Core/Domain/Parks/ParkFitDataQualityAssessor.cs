@@ -114,7 +114,7 @@ public sealed class ParkFitDataQualityAssessor
             issues.Add(ParkFitDataQualityIssue.NotPubliclyDiscoverable);
         }
 
-        if (park.Position is null)
+        if (!DataCompletenessScoringRules.HasValidPosition(park.Position))
         {
             issues.Add(ParkFitDataQualityIssue.MissingCoordinates);
         }
@@ -174,7 +174,7 @@ public sealed class ParkFitDataQualityAssessor
             return ParkFitDataQualityStatus.NotAssessed;
         }
 
-        if (park.Position is null || attractionCount == 0)
+        if (!DataCompletenessScoringRules.HasValidPosition(park.Position) || attractionCount == 0)
         {
             return ParkFitDataQualityStatus.Insufficient;
         }

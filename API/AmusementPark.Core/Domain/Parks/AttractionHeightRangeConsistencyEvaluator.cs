@@ -8,15 +8,6 @@ internal static class AttractionHeightRangeConsistencyEvaluator
 {
     private const double CentimetersPerInch = 2.54d;
 
-    public static bool HasUnusableHeightCondition(
-        IReadOnlyCollection<AttractionAccessCondition> conditions)
-    {
-        ArgumentNullException.ThrowIfNull(conditions);
-
-        return conditions.Any(condition => IsHeightCondition(condition)
-            && !TryConvertToCentimeters(condition, out double _));
-    }
-
     public static bool HasContradiction(
         IReadOnlyCollection<AttractionAccessCondition> conditions)
     {
@@ -125,13 +116,6 @@ internal static class AttractionHeightRangeConsistencyEvaluator
         return condition.EffectiveFrom.HasValue
             && condition.EffectiveTo.HasValue
             && condition.EffectiveTo.Value < condition.EffectiveFrom.Value;
-    }
-
-    private static bool IsHeightCondition(AttractionAccessCondition condition)
-    {
-        return condition.Type is AttractionAccessConditionType.MinHeight
-            or AttractionAccessConditionType.MinHeightAccompanied
-            or AttractionAccessConditionType.MaxHeight;
     }
 
     private static string? NormalizeScopeDetail(string? value)

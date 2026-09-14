@@ -62,7 +62,14 @@ internal sealed class ParkFitDataQualityItemAssessor
                     condition,
                     evaluatedAtUtc,
                     maximumVerificationAge);
-            if (evidenceIssues.Count == 0)
+            IReadOnlyCollection<AttractionAccessConditionSemanticIssue> semanticIssues =
+                AttractionAccessConditionSemanticEvaluator.Evaluate(condition);
+            if (semanticIssues.Count > 0)
+            {
+                issues.Add(ParkFitDataQualityIssue.AmbiguousRestriction);
+            }
+
+            if (evidenceIssues.Count == 0 && semanticIssues.Count == 0)
             {
                 decisionEligibleConditionCount++;
             }
@@ -70,8 +77,7 @@ internal sealed class ParkFitDataQualityItemAssessor
             AddMappedIssues(evidenceIssues, issues);
         }
 
-        if (AttractionHeightRangeConsistencyEvaluator.HasUnusableHeightCondition(conditions)
-            || AttractionHeightRangeConsistencyEvaluator.HasContradiction(conditions))
+        if (AttractionHeightRangeConsistencyEvaluator.HasContradiction(conditions))
         {
             issues.Add(ParkFitDataQualityIssue.AmbiguousRestriction);
         }

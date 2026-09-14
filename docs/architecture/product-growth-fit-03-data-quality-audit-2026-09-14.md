@@ -39,10 +39,13 @@ Elle utilise exclusivement les données éditoriales canoniques du parc.
 Une attraction est comptée comme exploitable uniquement lorsque son type est
 précis, que sa classification intérieure/extérieure est connue, qu'elle possède au
 moins une condition d'accès et que toutes ses conditions franchissent l'évaluateur
-de preuve de `FIT-02`. Une information d'accessibilité renseignée doit avoir une
+de preuve de `FIT-02` ainsi que l'évaluateur sémantique. Ce dernier refuse notamment
+un âge sans valeur ou exprimé dans une unité de taille, une taille sans unité et une
+règle personnalisée sans définition stable. Une information d'accessibilité renseignée doit avoir une
 source générale et une plage de taille dont le minimum dépasse le maximum est
 signalée comme ambiguë. Le parc doit lui-même avoir un type et au moins une langue
-publique documentée.
+publique documentée. Les coordonnées utilisent le validateur canonique du domaine :
+le point factice `(0, 0)` ne satisfait jamais la gate.
 
 Les plages de taille sont converties en centimètres avant comparaison. Une règle en
 pouces ne peut donc pas créer ou masquer une contradiction par sa seule unité. Deux
@@ -99,6 +102,10 @@ classDiagram
         +Evaluate(condition, evaluatedAtUtc, maxAge)
         +IsDecisionEligible(condition, evaluatedAtUtc, maxAge)
     }
+    class AttractionAccessConditionSemanticEvaluator {
+        +Evaluate(condition)
+        +IsDecisionUsable(condition)
+    }
     class GetParkFitDataQualityPageQueryHandler
     class AdminParkFitDataQualityController
     class AdminParkFitDataQualityFacade
@@ -106,6 +113,7 @@ classDiagram
     GetParkFitDataQualityPageQueryHandler --> ParkFitDataQualityAssessor
     ParkFitDataQualityAssessor --> ParkFitDataQualityItemAssessor
     ParkFitDataQualityItemAssessor --> AttractionAccessConditionEvidenceEvaluator
+    ParkFitDataQualityItemAssessor --> AttractionAccessConditionSemanticEvaluator
     ParkFitDataQualityItemAssessor --> AttractionHeightRangeConsistencyEvaluator
     ParkFitDataQualityAssessor --> ParkFitDataQualityAssessment
     ParkFitDataQualityAssessment *-- ParkFitDataQualityItemAssessment
@@ -194,7 +202,9 @@ Le premier contrat conserve donc une source unique de vérité.
 
 ## 7. Responsive et accessibilité
 
-L'écran utilise des cartes et non un tableau large. Chaque grille repose sur
+L'écran utilise des cartes et non un tableau large. Le compteur « Parcs à compléter »
+repose sur l'état global du parc : une coordonnée ou un calendrier manquant reste
+donc visible même lorsqu'aucune attraction individuelle n'est en erreur. Chaque grille repose sur
 `minmax(0, 1fr)`, les contenus longs peuvent se couper, les composants ont une
 largeur maximale de 100 %, et les colonnes deviennent uniques sur téléphone. Les
 boutons de pagination et d'actualisation occupent toute la largeur sous 480 px.
@@ -207,7 +217,7 @@ ARIA de progression. Les statuts ne reposent pas uniquement sur la couleur.
 
 | Niveau | Comportements couverts |
 |---|---|
-| Core | parc prêt, type/langue/classification manquants, accessibilité non sourcée, règles manquantes, calendrier absent, preuves périmées, unités mixtes et contradiction min/max limitée aux portées/périodes compatibles |
+| Core | parc prêt, coordonnées factices, type/langue/classification manquants, accessibilité non sourcée, règle sémantiquement inutilisable, calendrier absent, preuves périmées, unités mixtes et contradiction min/max limitée aux portées/périodes compatibles |
 | Application | pagination, lectures par lots, agrégation, rejet d'une pagination invalide avant accès aux données |
 | WebAPI | contrat paginé, mapping des noms et anomalies, authentification et autorisation admin |
 | Angular | contrat HTTP, résumé métier de la façade, pagination, conservation des données sur erreur, liens d'édition, reflow mobile |

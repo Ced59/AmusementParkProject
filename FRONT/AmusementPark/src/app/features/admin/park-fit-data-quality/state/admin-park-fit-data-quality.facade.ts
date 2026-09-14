@@ -34,7 +34,8 @@ export class AdminParkFitDataQualityFacade {
     this.assessments().filter((item: ParkFitDataQuality) =>
       item.status === 'EligibleForFitComparison').length);
   public readonly actionRequiredCount: Signal<number> = computed(() =>
-    this.assessments().filter((item: ParkFitDataQuality) => item.issueItemCount > 0).length);
+    this.assessments().filter((item: ParkFitDataQuality) =>
+      item.status !== 'EligibleForFitComparison').length);
   public readonly averageCoveragePercent: Signal<number> = computed(() => {
     const assessments: readonly ParkFitDataQuality[] = this.assessments();
     if (assessments.length === 0) {

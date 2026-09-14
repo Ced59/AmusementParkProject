@@ -97,6 +97,26 @@ describe('AdminParkFitDataQualityFacade', () => {
     expect(port.getPage).toHaveBeenLastCalledWith(2, 12);
   });
 
+  it('counts a park-level correction even when no attraction sample is affected', () => {
+    const parkLevelIssuePage: ParkFitDataQualityPage = {
+      items: [
+        {
+          ...page.items[0],
+          parkId: 'missing-coordinates',
+          status: 'Insufficient',
+          issueItemCount: 0,
+          issues: ['MissingCoordinates']
+        }
+      ],
+      pagination: { totalItems: 1, totalPages: 1, currentPage: 1, itemsPerPage: 12 }
+    };
+    port.getPage.mockReturnValue(of(parkLevelIssuePage));
+
+    facade.load();
+
+    expect(facade.actionRequiredCount()).toBe(1);
+  });
+
   it('keeps the previous page visible when refresh fails', () => {
     port.getPage.mockReturnValue(of(page));
     facade.load();

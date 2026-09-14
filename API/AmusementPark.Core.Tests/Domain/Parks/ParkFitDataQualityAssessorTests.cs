@@ -215,6 +215,43 @@ public sealed class ParkFitDataQualityAssessorTests
         Assert.Equal(1, result.MissingSourceItemCount);
     }
 
+    [Fact]
+    public void Assess_WhenAccessConditionCannotBeInterpreted_ShouldNotCountItAsEligible()
+    {
+        AttractionAccessCondition condition = BuildCondition();
+        condition.Type = AttractionAccessConditionType.MinAge;
+        condition.Value = null;
+        condition.Unit = AttractionAccessConditionUnit.Year;
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { BuildAttraction(condition) },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.Insufficient, result.Status);
+        Assert.Equal(0, result.DecisionEligibleConditionCount);
+        Assert.Contains(ParkFitDataQualityIssue.AmbiguousRestriction, result.Issues);
+    }
+
+    [Fact]
+    public void Assess_WhenCoordinatesUsePlaceholderOrigin_ShouldTreatThemAsMissing()
+    {
+        Park park = BuildDiscoverablePark();
+        park.SetPosition(0, 0);
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            park,
+            new[] { BuildAttraction(BuildCondition()) },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.Insufficient, result.Status);
+        Assert.Contains(ParkFitDataQualityIssue.MissingCoordinates, result.Issues);
+    }
+
     private static Park BuildDiscoverablePark()
     {
         Park park = new Park

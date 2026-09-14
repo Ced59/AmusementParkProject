@@ -1,0 +1,104 @@
+namespace AmusementPark.Core.Domain.Parks;
+
+/// <summary>
+/// Vérifie qu'une condition possède les faits nécessaires pour être interprétée.
+/// </summary>
+public static class AttractionAccessConditionSemanticEvaluator
+{
+    public static IReadOnlyCollection<AttractionAccessConditionSemanticIssue> Evaluate(
+        AttractionAccessCondition condition)
+    {
+        ArgumentNullException.ThrowIfNull(condition);
+
+        List<AttractionAccessConditionSemanticIssue> issues =
+            new List<AttractionAccessConditionSemanticIssue>();
+        if (!Enum.IsDefined(condition.Type))
+        {
+            issues.Add(AttractionAccessConditionSemanticIssue.UnsupportedType);
+            return issues;
+        }
+
+        if (condition.MinimumCompanionAge.HasValue && condition.MinimumCompanionAge.Value <= 0)
+        {
+            issues.Add(AttractionAccessConditionSemanticIssue.InvalidCompanionAge);
+        }
+
+        switch (condition.Type)
+        {
+            case AttractionAccessConditionType.MinHeight:
+            case AttractionAccessConditionType.MinHeightAccompanied:
+            case AttractionAccessConditionType.MaxHeight:
+                AddNumericIssues(
+                    condition,
+                    static unit => unit is AttractionAccessConditionUnit.Centimeter
+                        or AttractionAccessConditionUnit.Inch,
+                    requireWholeValue: false,
+                    issues);
+                break;
+            case AttractionAccessConditionType.MinAge:
+            case AttractionAccessConditionType.MinAgeAccompanied:
+                AddNumericIssues(
+                    condition,
+                    static unit => unit == AttractionAccessConditionUnit.Year,
+                    requireWholeValue: true,
+                    issues);
+                break;
+            case AttractionAccessConditionType.Custom:
+                if (!HasStableCustomDefinition(condition))
+                {
+                    issues.Add(AttractionAccessConditionSemanticIssue.MissingCustomDefinition);
+                }
+
+                break;
+        }
+
+        if (condition.Type is AttractionAccessConditionType.MinHeightAccompanied
+                or AttractionAccessConditionType.MinAgeAccompanied
+            && condition.RequiresAccompaniment == false)
+        {
+            issues.Add(AttractionAccessConditionSemanticIssue.InconsistentAccompaniment);
+        }
+
+        return issues;
+    }
+
+    public static bool IsDecisionUsable(AttractionAccessCondition condition)
+    {
+        return Evaluate(condition).Count == 0;
+    }
+
+    private static void AddNumericIssues(
+        AttractionAccessCondition condition,
+        Func<AttractionAccessConditionUnit, bool> isAllowedUnit,
+        bool requireWholeValue,
+        ICollection<AttractionAccessConditionSemanticIssue> issues)
+    {
+        if (!condition.Value.HasValue)
+        {
+            issues.Add(AttractionAccessConditionSemanticIssue.MissingValue);
+        }
+        else if (!double.IsFinite(condition.Value.Value)
+            || condition.Value.Value <= 0
+            || (requireWholeValue && condition.Value.Value != Math.Truncate(condition.Value.Value)))
+        {
+            issues.Add(AttractionAccessConditionSemanticIssue.InvalidValue);
+        }
+
+        if (!condition.Unit.HasValue)
+        {
+            issues.Add(AttractionAccessConditionSemanticIssue.MissingUnit);
+        }
+        else if (!Enum.IsDefined(condition.Unit.Value)
+            || !isAllowedUnit(condition.Unit.Value))
+        {
+            issues.Add(AttractionAccessConditionSemanticIssue.InvalidUnit);
+        }
+    }
+
+    private static bool HasStableCustomDefinition(AttractionAccessCondition condition)
+    {
+        return !string.IsNullOrWhiteSpace(condition.TypeKey)
+            || !string.IsNullOrWhiteSpace(condition.CustomTypeKey)
+            || condition.CustomTypeLabel.Any(static text => !string.IsNullOrWhiteSpace(text.Value));
+    }
+}
