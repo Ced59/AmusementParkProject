@@ -1,210 +1,121 @@
 import { DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Observable, Subscription, of, switchMap, throwError } from 'rxjs';
 
 import { PublicHtmlSitemapNode } from '@app/models/seo/public-html-sitemap-node';
+import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { PUBLIC_SITEMAP_DATA_PORT, PublicSitemapDataPort } from './public-sitemap-data.ports';
+import { PUBLIC_SITEMAP_PAGE_SIZE, PublicSitemapLocation, buildPublicSitemapQuery } from './public-sitemap-location';
+
+export interface PublicSitemapBreadcrumb {
+  readonly label: string;
+  readonly queryParams: Record<string, string | number>;
+}
+
+export interface PublicSitemapPageNode extends PublicHtmlSitemapNode {
+  readonly branchQueryParams: Record<string, string | number> | null;
+}
+
+interface PublicSitemapBranch {
+  readonly nodes: readonly PublicHtmlSitemapNode[];
+  readonly breadcrumbs: readonly PublicSitemapBreadcrumb[];
+}
 
 @Injectable()
 export class PublicSitemapStateFacade {
-  private readonly rootNodesSignal = signal<PublicHtmlSitemapNode[]>([]);
-  private readonly childrenByNodeIdSignal = signal<Record<string, PublicHtmlSitemapNode[]>>({});
-  private readonly expandedNodeIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
-  private readonly loadedNodeIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
-  private readonly loadingNodeIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
-  private readonly errorNodeIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
-  private readonly loadingSignal = signal<boolean>(false);
+  private readonly nodesSignal = signal<readonly PublicSitemapPageNode[]>([]);
+  private readonly breadcrumbsSignal = signal<readonly PublicSitemapBreadcrumb[]>([]);
+  private readonly loadingSignal = signal(false);
   private readonly errorKeySignal = signal<string | null>(null);
-  private currentLanguage: string = 'en';
-  private rootLoadSequence: number = 0;
+  private readonly pageSignal = signal(1);
+  private readonly pageCountSignal = signal(1);
+  private loadSubscription: Subscription | null = null;
 
-  public readonly rootNodes: Signal<PublicHtmlSitemapNode[]> = this.rootNodesSignal.asReadonly();
+  public readonly nodes: Signal<readonly PublicSitemapPageNode[]> = this.nodesSignal.asReadonly();
+  public readonly breadcrumbs: Signal<readonly PublicSitemapBreadcrumb[]> = this.breadcrumbsSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
+  public readonly page: Signal<number> = this.pageSignal.asReadonly();
+  public readonly pageCount: Signal<number> = this.pageCountSignal.asReadonly();
 
   constructor(
     @Inject(PUBLIC_SITEMAP_DATA_PORT) private readonly dataPort: PublicSitemapDataPort,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
   }
 
-  loadRoot(language: string, includeDescendants: boolean = false, loadDescendantsInInitialRequest: boolean = false): void {
-    const normalizedLanguage: string = language || 'en';
-    const includeDescendantsInRootRequest: boolean = includeDescendants && loadDescendantsInInitialRequest;
-    const sequence: number = this.rootLoadSequence + 1;
-    this.rootLoadSequence = sequence;
-    this.currentLanguage = normalizedLanguage;
-    this.rootNodesSignal.set([]);
-    this.childrenByNodeIdSignal.set({});
-    this.expandedNodeIdsSignal.set(new Set<string>());
-    this.loadedNodeIdsSignal.set(new Set<string>());
-    this.loadingNodeIdsSignal.set(new Set<string>());
-    this.errorNodeIdsSignal.set(new Set<string>());
-    this.loadingSignal.set(true);
+  loadPage(language: string, location: PublicSitemapLocation): void {
+    this.loadSubscription?.unsubscribe();
+    this.nodesSignal.set([]);
+    this.breadcrumbsSignal.set([]);
+    this.pageSignal.set(location.page);
+    this.pageCountSignal.set(1);
     this.errorKeySignal.set(null);
+    this.loadingSignal.set(location.isValid);
 
-    this.dataPort.getNodes(normalizedLanguage, null, includeDescendantsInRootRequest)
+    if (!location.isValid) {
+      this.setNotFound();
+      return;
+    }
+
+    this.loadSubscription = this.loadBranch(language || 'en', location.nodeIds, 0, [])
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (nodes: PublicHtmlSitemapNode[]): void => {
-          if (sequence !== this.rootLoadSequence) {
+        next: (branch: PublicSitemapBranch): void => {
+          const pageCount: number = Math.max(1, Math.ceil(branch.nodes.length / PUBLIC_SITEMAP_PAGE_SIZE));
+          this.loadingSignal.set(false);
+          if (location.page > pageCount) {
+            this.setNotFound();
             return;
           }
 
-          this.rootNodesSignal.set(nodes);
-          this.applyEmbeddedChildren(nodes);
-          this.loadingSignal.set(false);
-
-          if (includeDescendants && !includeDescendantsInRootRequest) {
-            this.loadEmbeddedDescendants(normalizedLanguage, sequence);
-          }
+          this.breadcrumbsSignal.set(branch.breadcrumbs);
+          this.pageCountSignal.set(pageCount);
+          const start: number = (location.page - 1) * PUBLIC_SITEMAP_PAGE_SIZE;
+          this.nodesSignal.set(branch.nodes.slice(start, start + PUBLIC_SITEMAP_PAGE_SIZE).map((node: PublicHtmlSitemapNode): PublicSitemapPageNode => ({
+            ...node,
+            branchQueryParams: node.hasChildren ? buildPublicSitemapQuery([...location.nodeIds, node.id]) : null
+          })));
         },
         error: (error: unknown): void => {
-          if (sequence !== this.rootLoadSequence) {
-            return;
-          }
-
-          console.error('Error loading public sitemap root nodes', error);
-          this.rootNodesSignal.set([]);
           this.loadingSignal.set(false);
+          applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
           this.errorKeySignal.set('sitemapPage.error');
         }
       });
   }
 
-  private loadEmbeddedDescendants(language: string, sequence: number): void {
-    this.dataPort.getNodes(language, null, true)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (nodes: PublicHtmlSitemapNode[]): void => {
-          if (sequence !== this.rootLoadSequence || nodes.length === 0) {
-            return;
-          }
-
-          this.rootNodesSignal.set([...this.rootNodesSignal(), ...nodes]);
-          this.applyEmbeddedChildren(this.rootNodesSignal());
-        },
-        error: (error: unknown): void => {
-          if (sequence !== this.rootLoadSequence) {
-            return;
-          }
-
-          console.error('Error loading public sitemap crawl links', error);
+  private loadBranch(
+    language: string,
+    nodeIds: readonly string[],
+    depth: number,
+    breadcrumbs: readonly PublicSitemapBreadcrumb[]
+  ): Observable<PublicSitemapBranch> {
+    const parentNodeId: string | null = depth === 0 ? null : nodeIds[depth - 1];
+    // Load one sibling collection at a time. The full snapshot is never needed.
+    return this.dataPort.getNodes(language, parentNodeId, false).pipe(
+      switchMap((nodes: PublicHtmlSitemapNode[]): Observable<PublicSitemapBranch> => {
+        if (depth === nodeIds.length) {
+          return of({ nodes, breadcrumbs });
         }
-      });
-  }
 
-  toggleNode(node: PublicHtmlSitemapNode): void {
-    if (!node.hasChildren) {
-      return;
-    }
-
-    if (this.isExpanded(node.id)) {
-      this.expandedNodeIdsSignal.update((expandedNodeIds: ReadonlySet<string>) => {
-        const next: Set<string> = new Set<string>(expandedNodeIds);
-        next.delete(node.id);
-        return next;
-      });
-      return;
-    }
-
-    this.expandedNodeIdsSignal.update((expandedNodeIds: ReadonlySet<string>) => new Set<string>(expandedNodeIds).add(node.id));
-
-    if (!this.loadedNodeIdsSignal().has(node.id) && !this.loadingNodeIdsSignal().has(node.id)) {
-      this.loadChildren(node.id);
-    }
-  }
-
-  childrenFor(nodeId: string): PublicHtmlSitemapNode[] {
-    return this.childrenByNodeIdSignal()[nodeId] ?? [];
-  }
-
-  isExpanded(nodeId: string): boolean {
-    return this.expandedNodeIdsSignal().has(nodeId);
-  }
-
-  isNodeLoading(nodeId: string): boolean {
-    return this.loadingNodeIdsSignal().has(nodeId);
-  }
-
-  hasNodeError(nodeId: string): boolean {
-    return this.errorNodeIdsSignal().has(nodeId);
-  }
-
-  private loadChildren(nodeId: string): void {
-    const languageSnapshot: string = this.currentLanguage;
-    this.loadingNodeIdsSignal.update((loadingNodeIds: ReadonlySet<string>) => new Set<string>(loadingNodeIds).add(nodeId));
-    this.errorNodeIdsSignal.update((errorNodeIds: ReadonlySet<string>) => {
-      const next: Set<string> = new Set<string>(errorNodeIds);
-      next.delete(nodeId);
-      return next;
-    });
-
-    this.dataPort.getNodes(languageSnapshot, nodeId, false)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (nodes: PublicHtmlSitemapNode[]): void => {
-          if (languageSnapshot !== this.currentLanguage) {
-            return;
-          }
-
-          this.childrenByNodeIdSignal.update((childrenByNodeId: Record<string, PublicHtmlSitemapNode[]>) => ({
-            ...childrenByNodeId,
-            [nodeId]: nodes
-          }));
-          this.loadedNodeIdsSignal.update((loadedNodeIds: ReadonlySet<string>) => new Set<string>(loadedNodeIds).add(nodeId));
-          this.loadingNodeIdsSignal.update((loadingNodeIds: ReadonlySet<string>) => {
-            const next: Set<string> = new Set<string>(loadingNodeIds);
-            next.delete(nodeId);
-            return next;
-          });
-        },
-        error: (error: unknown): void => {
-          if (languageSnapshot !== this.currentLanguage) {
-            return;
-          }
-
-          console.error('Error loading public sitemap child nodes', error);
-          this.loadingNodeIdsSignal.update((loadingNodeIds: ReadonlySet<string>) => {
-            const next: Set<string> = new Set<string>(loadingNodeIds);
-            next.delete(nodeId);
-            return next;
-          });
-          this.errorNodeIdsSignal.update((errorNodeIds: ReadonlySet<string>) => new Set<string>(errorNodeIds).add(nodeId));
+        const selectedNode: PublicHtmlSitemapNode | undefined = nodes.find((node: PublicHtmlSitemapNode): boolean => node.id === nodeIds[depth] && node.hasChildren);
+        if (!selectedNode) {
+          return throwError(() => ({ status: 404 }));
         }
-      });
+
+        return this.loadBranch(language, nodeIds, depth + 1, [
+          ...breadcrumbs,
+          { label: selectedNode.label, queryParams: buildPublicSitemapQuery(nodeIds.slice(0, depth + 1)) }
+        ]);
+      })
+    );
   }
 
-  private applyEmbeddedChildren(nodes: readonly PublicHtmlSitemapNode[]): void {
-    const childrenByNodeId: Record<string, PublicHtmlSitemapNode[]> = {};
-    const loadedNodeIds: Set<string> = new Set<string>();
-    const expandedNodeIds: Set<string> = new Set<string>();
-
-    this.collectEmbeddedChildren(nodes, childrenByNodeId, loadedNodeIds, expandedNodeIds);
-
-    this.childrenByNodeIdSignal.set(childrenByNodeId);
-    this.loadedNodeIdsSignal.set(loadedNodeIds);
-    this.expandedNodeIdsSignal.set(expandedNodeIds);
-  }
-
-  private collectEmbeddedChildren(
-    nodes: readonly PublicHtmlSitemapNode[],
-    childrenByNodeId: Record<string, PublicHtmlSitemapNode[]>,
-    loadedNodeIds: Set<string>,
-    expandedNodeIds: Set<string>
-  ): void {
-    for (const node of nodes) {
-      if (!node.hasChildren || !Array.isArray(node.children)) {
-        continue;
-      }
-
-      const children: PublicHtmlSitemapNode[] = [...node.children];
-      childrenByNodeId[node.id] = children;
-      loadedNodeIds.add(node.id);
-
-      if (children.length > 0) {
-        expandedNodeIds.add(node.id);
-        this.collectEmbeddedChildren(children, childrenByNodeId, loadedNodeIds, expandedNodeIds);
-      }
-    }
+  private setNotFound(): void {
+    this.ssrHttpStatusService.setNotFound();
+    this.errorKeySignal.set('sitemapPage.empty');
   }
 }

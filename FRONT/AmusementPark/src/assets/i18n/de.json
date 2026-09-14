@@ -7119,14 +7119,16 @@
     "title": "Öffentliche Sitemap",
     "subtitle": "Finde Parks, interaktive Karten, Technik-Guides und öffentliche Referenzseiten in der aktuellen Sprache.",
     "treeTitle": "Öffentliche Seiten",
-    "treeSubtitle": "Der Baum folgt denselben öffentlichen Routen wie die sichtbaren Seiten der Website.",
+    "treeSubtitle": "Öffne einen Bereich, um seine Seiten zu erkunden und die Einzelheiten zu jedem Park zu entdecken.",
     "loading": "Sitemap wird geladen",
     "error": "Die Sitemap konnte nicht geladen werden.",
     "empty": "Derzeit ist keine öffentliche Seite verfügbar.",
     "childrenLoading": "Wird geladen",
     "childrenError": "Dieser Zweig konnte nicht geladen werden.",
     "expand": "{{label}} öffnen",
-    "collapse": "{{label}} schließen"
+    "collapse": "{{label}} schließen",
+    "browse": "Seiten zu {{label}}",
+    "page": "Seite {{page}} von {{total}}"
   },
   "technicalPages": {
     "list": {

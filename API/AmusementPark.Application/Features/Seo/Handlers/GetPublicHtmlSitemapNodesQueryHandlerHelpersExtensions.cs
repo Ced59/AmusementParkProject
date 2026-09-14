@@ -205,6 +205,47 @@ internal static class GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions
         return park.Position is not null;
     }
 
+    internal static IReadOnlyCollection<PublicHtmlSitemapNode> BuildRootNodes(string language)
+    {
+        return new List<PublicHtmlSitemapNode>
+        {
+            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("home", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "home"), $"/{language}/home"),
+            new PublicHtmlSitemapNode
+            {
+                Id = "parks",
+                Label = GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "parks"),
+                RelativeUrl = $"/{language}/parks",
+                HasChildren = true
+            },
+            new PublicHtmlSitemapNode
+            {
+                Id = "technical",
+                Label = GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "technical"),
+                RelativeUrl = $"/{language}/technical",
+                HasChildren = true
+            },
+            new PublicHtmlSitemapNode
+            {
+                Id = "references",
+                Label = GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "references"),
+                HasChildren = true
+            },
+            new PublicHtmlSitemapNode
+            {
+                Id = "snapshot-sections",
+                Label = PublicHtmlSitemapSnapshotLabels.AllPages(language),
+                HasChildren = true
+            },
+            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("rankings", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "rankings"), $"/{language}/rankings"),
+            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("rating-methodology", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "ratingMethodology"), $"/{language}/rankings/methodology"),
+            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("about", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "about"), $"/{language}/about"),
+            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("contact", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "contact"), $"/{language}/contact"),
+            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("versions", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "versions"), $"/{language}/versions"),
+            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("privacy", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "privacy"), $"/{language}/privacy"),
+            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("sitemap", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "sitemap"), $"/{language}/sitemap"),
+        };
+    }
+
     internal static PublicHtmlSitemapNode CreateLeaf(string id, string label, string relativeUrl)
     {
         return new PublicHtmlSitemapNode

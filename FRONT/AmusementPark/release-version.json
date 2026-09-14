@@ -1,8 +1,8 @@
 {
-  "version": "5.3.32",
+  "version": "5.3.33",
   "history": [
     {
-      "version": "5.3.32",
+      "version": "5.3.33",
       "releasedAt": "2026-09-15",
       "labels": {
         "fr": "Park Fit s’étend maintenant aux parcs de façon contrôlée.",
@@ -13,6 +13,20 @@
         "es": "Park Fit ahora puede ampliarse a más parques de forma controlada.",
         "pl": "Park Fit można teraz w kontrolowany sposób rozszerzać na kolejne parki.",
         "pt": "O Park Fit pode agora ser alargado a mais parques de forma controlada."
+      }
+    },
+    {
+      "version": "5.3.32",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Tu peux parcourir plus facilement les pages du site.",
+        "en": "You can now browse the site’s pages more easily.",
+        "de": "Du kannst die Seiten der Website jetzt leichter erkunden.",
+        "nl": "Je kunt nu gemakkelijker door de pagina’s van de site bladeren.",
+        "it": "Ora puoi esplorare più facilmente le pagine del sito.",
+        "es": "Ahora puedes explorar las páginas del sitio más fácilmente.",
+        "pl": "Teraz możesz łatwiej przeglądać strony serwisu.",
+        "pt": "Agora podes explorar as páginas do site mais facilmente."
       }
     },
     {

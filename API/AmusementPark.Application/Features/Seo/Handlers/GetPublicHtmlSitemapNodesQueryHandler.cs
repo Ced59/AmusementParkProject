@@ -299,6 +299,11 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandler : IQueryHandler<GetPub
             return ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>.Success(sitemapNodes);
         }
 
+        if (parentNodeId == "snapshot-sections" || parentNodeId.StartsWith("sitemap-section:", StringComparison.Ordinal))
+        {
+            return await this.BuildSnapshotBranchAsync(language, parentNodeId, query.SupportedLanguages, cancellationToken);
+        }
+
         IReadOnlyCollection<PublicHtmlSitemapNode> nodes = await this.BuildNodesForParentAsync(language, parentNodeId, cancellationToken);
         return ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>.Success(nodes);
     }
@@ -307,7 +312,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandler : IQueryHandler<GetPub
     {
         return parentNodeId switch
         {
-            "root" => GetPublicHtmlSitemapNodesQueryHandler.BuildRootNodes(language),
+            "root" => GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.BuildRootNodes(language),
             "parks" => await this.BuildParkNodesAsync(language, cancellationToken),
             "technical" => await this.BuildTechnicalPageNodesAsync(language, cancellationToken),
             "references" => GetPublicHtmlSitemapNodesQueryHandlerReferencesExtensions.BuildReferenceGroupNodes(language),
@@ -323,7 +328,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandler : IQueryHandler<GetPub
         SitemapSnapshot? snapshot = await this.sitemapSnapshotRepository.GetLatestAsync(cancellationToken);
         if (snapshot is null || snapshot.Sections.Count == 0)
         {
-            return GetPublicHtmlSitemapNodesQueryHandler.BuildRootNodes(language);
+            return GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.BuildRootNodes(language);
         }
 
         List<PublicHtmlSitemapNode> sectionNodes = new List<PublicHtmlSitemapNode>();
@@ -346,7 +351,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandler : IQueryHandler<GetPub
             sectionNodes.Add(new PublicHtmlSitemapNode { Id = $"sitemap-section:{section.Key}", Label = section.DisplayName, HasChildren = true, Children = linkNodes, });
         }
 
-        return sectionNodes.Count == 0 ? GetPublicHtmlSitemapNodesQueryHandler.BuildRootNodes(language) : sectionNodes;
+        return sectionNodes.Count == 0 ? GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.BuildRootNodes(language) : sectionNodes;
     }
 
     internal static IReadOnlyCollection<string> NormalizeSupportedLanguages(IReadOnlyCollection<string> supportedLanguages)
@@ -500,41 +505,6 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandler : IQueryHandler<GetPub
         }
 
         return Array.Empty<PublicHtmlSitemapNode>();
-    }
-
-    internal static IReadOnlyCollection<PublicHtmlSitemapNode> BuildRootNodes(string language)
-    {
-        return new List<PublicHtmlSitemapNode>
-        {
-            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("home", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "home"), $"/{language}/home"),
-            new PublicHtmlSitemapNode
-            {
-                Id = "parks",
-                Label = GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "parks"),
-                RelativeUrl = $"/{language}/parks",
-                HasChildren = true
-            },
-            new PublicHtmlSitemapNode
-            {
-                Id = "technical",
-                Label = GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "technical"),
-                RelativeUrl = $"/{language}/technical",
-                HasChildren = true
-            },
-            new PublicHtmlSitemapNode
-            {
-                Id = "references",
-                Label = GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "references"),
-                HasChildren = true
-            },
-            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("rankings", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "rankings"), $"/{language}/rankings"),
-            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("rating-methodology", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "ratingMethodology"), $"/{language}/rankings/methodology"),
-            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("about", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "about"), $"/{language}/about"),
-            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("contact", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "contact"), $"/{language}/contact"),
-            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("versions", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "versions"), $"/{language}/versions"),
-            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("privacy", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "privacy"), $"/{language}/privacy"),
-            GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("sitemap", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "sitemap"), $"/{language}/sitemap"),
-        };
     }
 
     internal static string NormalizeParentNodeId(string? parentNodeId)

@@ -7119,14 +7119,16 @@
     "title": "Publiczna mapa strony",
     "subtitle": "Znajdź parki, interaktywne mapy, przewodniki techniczne i publiczne strony referencyjne w bieżącym języku.",
     "treeTitle": "Publiczne strony",
-    "treeSubtitle": "Drzewo korzysta z tych samych publicznych tras co widoczne strony serwisu.",
+    "treeSubtitle": "Otwórz sekcję, aby przejrzeć jej strony i poznać szczegóły każdego parku.",
     "loading": "Ładowanie mapy strony",
     "error": "Nie udało się załadować mapy strony.",
     "empty": "Nie ma jeszcze dostępnej strony publicznej.",
     "childrenLoading": "Ładowanie",
     "childrenError": "Nie udało się załadować tej gałęzi.",
     "expand": "Otwórz {{label}}",
-    "collapse": "Zamknij {{label}}"
+    "collapse": "Zamknij {{label}}",
+    "browse": "Strony dotyczące {{label}}",
+    "page": "Strona {{page}} z {{total}}"
   },
   "technicalPages": {
     "list": {
