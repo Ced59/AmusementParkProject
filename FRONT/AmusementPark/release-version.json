@@ -1,6 +1,20 @@
 {
-  "version": "5.3.17",
+  "version": "5.3.18",
   "history": [
+    {
+      "version": "5.3.18",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Le moteur de comparaison comprend mieux les conditions d’accès individuelles.",
+        "en": "The comparison engine now better understands individual access conditions.",
+        "de": "Die Vergleichsfunktion versteht individuelle Zugangsbedingungen jetzt besser.",
+        "nl": "De vergelijkingsfunctie begrijpt individuele toegangsvoorwaarden nu beter.",
+        "it": "Il motore di confronto comprende meglio le condizioni di accesso individuali.",
+        "es": "El motor de comparación comprende mejor las condiciones de acceso individuales.",
+        "pl": "Mechanizm porównywania lepiej rozumie teraz indywidualne warunki dostępu.",
+        "pt": "O motor de comparação compreende melhor as condições de acesso individuais."
+      }
+    },
     {
       "version": "5.3.17",
       "releasedAt": "2026-09-14",

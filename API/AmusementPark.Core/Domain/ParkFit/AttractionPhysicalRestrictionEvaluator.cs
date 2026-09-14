@@ -1,0 +1,572 @@
+using AmusementPark.Core.Domain.Parks;
+
+namespace AmusementPark.Core.Domain.ParkFit;
+
+/// <summary>
+/// Évalue les seuils physiques connus en conservant les tranches ambiguës.
+/// </summary>
+internal static class AttractionPhysicalRestrictionEvaluator
+{
+    private const double HeightComparisonToleranceCentimeters = 0.01;
+
+    public static void EvaluateHeight(
+        ParkFitMemberProfile profile,
+        IReadOnlyCollection<AttractionAccessCondition> conditions,
+        AttractionCompatibilityEvaluationContext context)
+    {
+        List<AttractionAccessCondition> heightConditions = conditions
+            .Where(static condition => condition.Type is AttractionAccessConditionType.MinHeight
+                or AttractionAccessConditionType.MinHeightAccompanied
+                or AttractionAccessConditionType.MaxHeight)
+            .ToList();
+        if (heightConditions.Count == 0)
+        {
+            if (context.HasUnresolvedHeightAccompaniedAlternative
+                || context.HasUnresolvedHeightAloneAlternative)
+            {
+                context.ActivateUnresolvedAlternative();
+            }
+
+            return;
+        }
+
+        List<AttractionAccessCondition> maximums = heightConditions
+            .Where(static condition => condition.Type == AttractionAccessConditionType.MaxHeight)
+            .ToList();
+        List<AttractionAccessCondition> aloneMinimums = heightConditions
+            .Where(static condition => condition.Type == AttractionAccessConditionType.MinHeight
+                && condition.RequiresAccompaniment != true)
+            .ToList();
+        List<AttractionAccessCondition> accompaniedMinimums = heightConditions
+            .Where(static condition => condition.Type == AttractionAccessConditionType.MinHeightAccompanied
+                || (condition.Type == AttractionAccessConditionType.MinHeight
+                    && condition.RequiresAccompaniment == true))
+            .ToList();
+        IReadOnlyCollection<AttractionAccessCondition>? conflictingMaximums =
+            FindConflictingHeightThresholds(maximums);
+        IReadOnlyCollection<AttractionAccessCondition>? conflictingAloneMinimums =
+            FindConflictingHeightThresholds(aloneMinimums);
+        IReadOnlyCollection<AttractionAccessCondition>? conflictingAccompaniedMinimums =
+            FindConflictingHeightThresholds(accompaniedMinimums);
+        if (conflictingMaximums is not null)
+        {
+            context.AddConflictingConditions(conflictingMaximums);
+        }
+
+        if (conflictingAloneMinimums is not null)
+        {
+            context.AddUnresolvedAlternativeConflictingConditions(
+                conflictingAloneMinimums);
+        }
+
+        if (conflictingAccompaniedMinimums is not null)
+        {
+            context.AddUnresolvedAlternativeConflictingConditions(
+                conflictingAccompaniedMinimums);
+        }
+
+        AttractionAccessCondition? maximum = null;
+        double maximumCentimeters = double.MaxValue;
+        bool hasMaximum = conflictingMaximums is null
+            && TrySelectHeightThreshold(
+                maximums,
+                selectHighest: false,
+                out maximum,
+                out maximumCentimeters);
+        AttractionAccessCondition? aloneMinimum = null;
+        double aloneMinimumCentimeters = double.MinValue;
+        bool hasAloneMinimum = conflictingAloneMinimums is null
+            && TrySelectHeightThreshold(
+                aloneMinimums,
+                selectHighest: true,
+                out aloneMinimum,
+                out aloneMinimumCentimeters);
+        AttractionAccessCondition? accompaniedMinimum = null;
+        double accompaniedMinimumCentimeters = double.MinValue;
+        bool hasAccompaniedMinimum = conflictingAccompaniedMinimums is null
+            && TrySelectHeightThreshold(
+                accompaniedMinimums,
+                selectHighest: true,
+                out accompaniedMinimum,
+                out accompaniedMinimumCentimeters);
+
+        bool alonePathContradictsMaximum = hasMaximum
+            && hasAloneMinimum
+            && aloneMinimumCentimeters > maximumCentimeters;
+        bool accompaniedPathContradictsMaximum = hasMaximum
+            && hasAccompaniedMinimum
+            && accompaniedMinimumCentimeters > maximumCentimeters;
+        bool everyMinimumPathContradictsMaximum = (hasAloneMinimum || hasAccompaniedMinimum)
+            && (!hasAloneMinimum || alonePathContradictsMaximum)
+            && (!hasAccompaniedMinimum || accompaniedPathContradictsMaximum);
+        if (everyMinimumPathContradictsMaximum)
+        {
+            context.AddConflictingConditions(heightConditions);
+            return;
+        }
+
+        bool accompanimentIsUnavoidable = aloneMinimums.Count == 0
+            && !context.HasUnresolvedHeightAloneAlternative
+            && accompaniedMinimums.Count > 0;
+        if (accompanimentIsUnavoidable && profile.CanBeAccompanied == false)
+        {
+            context.AddViolation(
+                AttractionCompatibilityReasonCode.AccompanimentUnavailable,
+                SelectStableCondition(accompaniedMinimums));
+            return;
+        }
+
+        if (!profile.HeightCentimeters.HasValue)
+        {
+            List<AttractionAccessCondition> unavoidableAccompanimentConditions = maximums
+                .Where(static condition => condition.RequiresAccompaniment == true)
+                .Concat(accompanimentIsUnavoidable
+                    ? accompaniedMinimums
+                    : Array.Empty<AttractionAccessCondition>())
+                .Distinct()
+                .ToList();
+            if (unavoidableAccompanimentConditions.Count > 0)
+            {
+                AttractionAccompanimentEvaluator.Evaluate(
+                    profile,
+                    unavoidableAccompanimentConditions,
+                    context);
+                if (context.HasViolation)
+                {
+                    return;
+                }
+            }
+
+            context.AddUnknown(
+                AttractionCompatibilityReasonCode.HeightMissing,
+                SelectStableCondition(heightConditions));
+            return;
+        }
+
+        int heightCentimeters = profile.HeightCentimeters.Value;
+        if (hasMaximum)
+        {
+            if (heightCentimeters > maximumCentimeters)
+            {
+                context.AddViolation(AttractionCompatibilityReasonCode.AboveMaximumHeight, maximum!);
+            }
+            else
+            {
+                context.AddSatisfied(AttractionCompatibilityReasonCode.HeightRequirementMet, maximum!);
+                EvaluateExplicitAccompaniment(profile, maximums, context);
+            }
+        }
+
+        bool canUseAlonePath = hasAloneMinimum && !alonePathContradictsMaximum;
+        bool canUseAccompaniedPath = hasAccompaniedMinimum
+            && !accompaniedPathContradictsMaximum;
+
+        if (canUseAlonePath
+            && canUseAccompaniedPath
+            && accompaniedMinimumCentimeters > aloneMinimumCentimeters)
+        {
+            context.AddConflictingConditions(new[] { aloneMinimum!, accompaniedMinimum! });
+            return;
+        }
+
+        if (canUseAlonePath && heightCentimeters >= aloneMinimumCentimeters)
+        {
+            if (!context.HasUnresolvedHeightAloneAlternative)
+            {
+                context.AddSatisfied(
+                    AttractionCompatibilityReasonCode.HeightRequirementMet,
+                    aloneMinimum!);
+                return;
+            }
+        }
+
+        if (canUseAccompaniedPath && heightCentimeters >= accompaniedMinimumCentimeters)
+        {
+            if (context.HasUnresolvedHeightAccompaniedAlternative)
+            {
+                context.ActivateUnresolvedAlternative();
+                return;
+            }
+
+            context.AddSatisfied(
+                AttractionCompatibilityReasonCode.HeightRequirementMet,
+                accompaniedMinimum!);
+            AttractionAccompanimentEvaluator.Evaluate(
+                profile,
+                accompaniedMinimums,
+                context,
+                hasUnresolvedAloneAlternative:
+                    context.HasUnresolvedHeightAloneAlternative);
+            return;
+        }
+
+        if (!canUseAlonePath
+            && !canUseAccompaniedPath
+            && (context.HasUnresolvedHeightAccompaniedAlternative
+                || context.HasUnresolvedHeightAloneAlternative))
+        {
+            context.ActivateUnresolvedAlternative();
+            return;
+        }
+
+        if (context.HasUnresolvedHeightAloneAlternative)
+        {
+            context.ActivateUnresolvedAlternative();
+            return;
+        }
+
+        if (context.HasUnresolvedHeightAccompaniedAlternative
+            && profile.CanBeAccompanied != false)
+        {
+            context.ActivateUnresolvedAlternative();
+            return;
+        }
+
+        if (canUseAccompaniedPath)
+        {
+            context.AddViolation(
+                AttractionCompatibilityReasonCode.BelowMinimumHeight,
+                accompaniedMinimum!);
+        }
+        else if (canUseAlonePath)
+        {
+            context.AddViolation(
+                AttractionCompatibilityReasonCode.BelowMinimumHeight,
+                aloneMinimum!);
+        }
+    }
+
+    public static void EvaluateAge(
+        ParkFitMemberProfile profile,
+        IReadOnlyCollection<AttractionAccessCondition> conditions,
+        AttractionCompatibilityEvaluationContext context)
+    {
+        List<AttractionAccessCondition> aloneMinimums = conditions
+            .Where(static condition => condition.Type == AttractionAccessConditionType.MinAge
+                && condition.RequiresAccompaniment != true)
+            .ToList();
+        List<AttractionAccessCondition> accompaniedMinimums = conditions
+            .Where(static condition => condition.Type == AttractionAccessConditionType.MinAgeAccompanied
+                || (condition.Type == AttractionAccessConditionType.MinAge
+                    && condition.RequiresAccompaniment == true))
+            .ToList();
+        if (aloneMinimums.Count == 0 && accompaniedMinimums.Count == 0)
+        {
+            if (context.HasUnresolvedAgeAccompaniedAlternative
+                || context.HasUnresolvedAgeAloneAlternative)
+            {
+                context.ActivateUnresolvedAlternative();
+            }
+
+            return;
+        }
+
+        IReadOnlyCollection<AttractionAccessCondition>? conflictingAloneMinimums =
+            FindConflictingAgeThresholds(aloneMinimums);
+        IReadOnlyCollection<AttractionAccessCondition>? conflictingAccompaniedMinimums =
+            FindConflictingAgeThresholds(accompaniedMinimums);
+        if (conflictingAloneMinimums is not null)
+        {
+            context.AddUnresolvedAlternativeConflictingConditions(
+                conflictingAloneMinimums);
+        }
+
+        if (conflictingAccompaniedMinimums is not null)
+        {
+            context.AddUnresolvedAlternativeConflictingConditions(
+                conflictingAccompaniedMinimums);
+        }
+
+        AttractionAccessCondition? aloneMinimum = conflictingAloneMinimums is null
+            ? SelectHighestAgeThreshold(aloneMinimums)
+            : null;
+        AttractionAccessCondition? accompaniedMinimum = conflictingAccompaniedMinimums is null
+            ? SelectHighestAgeThreshold(accompaniedMinimums)
+            : null;
+        bool accompanimentIsUnavoidable = aloneMinimums.Count == 0
+            && !context.HasUnresolvedAgeAloneAlternative
+            && accompaniedMinimums.Count > 0;
+        if (accompanimentIsUnavoidable && profile.CanBeAccompanied == false)
+        {
+            context.AddViolation(
+                AttractionCompatibilityReasonCode.AccompanimentUnavailable,
+                SelectStableCondition(accompaniedMinimums));
+            return;
+        }
+
+        if (aloneMinimum is null && accompaniedMinimum is null)
+        {
+            if (context.HasUnresolvedAgeAccompaniedAlternative
+                || context.HasUnresolvedAgeAloneAlternative)
+            {
+                context.ActivateUnresolvedAlternative();
+            }
+
+            return;
+        }
+
+        if (aloneMinimum is not null
+            && accompaniedMinimum is not null
+            && accompaniedMinimum.Value!.Value > aloneMinimum.Value!.Value)
+        {
+            context.AddConflictingConditions(new[] { aloneMinimum, accompaniedMinimum });
+            return;
+        }
+
+        ParkFitAgeRange? ageRange = profile.AgeRange;
+        AttractionAccessCondition representative = accompaniedMinimum ?? aloneMinimum!;
+        if (ageRange is null)
+        {
+            if (accompanimentIsUnavoidable)
+            {
+                AttractionAccompanimentEvaluator.Evaluate(
+                    profile,
+                    accompaniedMinimums,
+                    context);
+                if (context.HasViolation)
+                {
+                    return;
+                }
+            }
+
+            context.AddUnknown(
+                AttractionCompatibilityReasonCode.AgeRangeMissing,
+                representative);
+            return;
+        }
+
+        if (aloneMinimum is not null && ageRange.MinimumYears >= aloneMinimum.Value!.Value)
+        {
+            if (!context.HasUnresolvedAgeAloneAlternative)
+            {
+                context.AddSatisfied(
+                    AttractionCompatibilityReasonCode.AgeRequirementMet,
+                    aloneMinimum);
+                return;
+            }
+        }
+
+        if (accompaniedMinimum is not null
+            && ageRange.MinimumYears >= accompaniedMinimum.Value!.Value)
+        {
+            if (context.HasUnresolvedAgeAccompaniedAlternative)
+            {
+                context.ActivateUnresolvedAlternative();
+                return;
+            }
+
+            context.AddSatisfied(
+                AttractionCompatibilityReasonCode.AgeRequirementMet,
+                accompaniedMinimum);
+            AttractionAccessCondition? uncertainAloneThreshold = aloneMinimum is not null
+                && ageRange.MaximumYears >= aloneMinimum.Value!.Value
+                    ? aloneMinimum
+                    : null;
+            AttractionAccompanimentEvaluator.Evaluate(
+                profile,
+                accompaniedMinimums,
+                context,
+                uncertainAloneThreshold,
+                context.HasUnresolvedAgeAloneAlternative);
+            return;
+        }
+
+        if (context.HasUnresolvedAgeAloneAlternative)
+        {
+            context.ActivateUnresolvedAlternative();
+            return;
+        }
+
+        if (context.HasUnresolvedAgeAccompaniedAlternative
+            && profile.CanBeAccompanied != false)
+        {
+            context.ActivateUnresolvedAlternative();
+            return;
+        }
+
+        if (accompaniedMinimum is not null)
+        {
+            if (ageRange.MaximumYears < accompaniedMinimum.Value!.Value)
+            {
+                context.AddViolation(
+                    AttractionCompatibilityReasonCode.BelowMinimumAge,
+                    accompaniedMinimum);
+            }
+            else
+            {
+                AttractionAccessCondition? uncertainAloneThreshold = aloneMinimum is not null
+                    && ageRange.MaximumYears >= aloneMinimum.Value!.Value
+                        ? aloneMinimum
+                        : null;
+                AttractionAccompanimentEvaluator.Evaluate(
+                    profile,
+                    accompaniedMinimums,
+                    context,
+                    uncertainAloneThreshold,
+                    context.HasUnresolvedAgeAloneAlternative);
+                if (!context.HasViolation)
+                {
+                    context.AddUnknown(
+                        AttractionCompatibilityReasonCode.AgeRangeCrossesThreshold,
+                        accompaniedMinimum);
+                }
+            }
+
+            return;
+        }
+
+        if (ageRange.MaximumYears < aloneMinimum!.Value!.Value)
+        {
+            context.AddViolation(
+                AttractionCompatibilityReasonCode.BelowMinimumAge,
+                aloneMinimum);
+        }
+        else
+        {
+            context.AddUnknown(
+                AttractionCompatibilityReasonCode.AgeRangeCrossesThreshold,
+                aloneMinimum);
+        }
+    }
+
+    private static void EvaluateExplicitAccompaniment(
+        ParkFitMemberProfile profile,
+        IReadOnlyCollection<AttractionAccessCondition> conditions,
+        AttractionCompatibilityEvaluationContext context)
+    {
+        List<AttractionAccessCondition> requiringAccompaniment = conditions
+            .Where(static condition => condition.RequiresAccompaniment == true)
+            .ToList();
+        AttractionAccompanimentEvaluator.Evaluate(profile, requiringAccompaniment, context);
+    }
+
+    private static bool TrySelectHeightThreshold(
+        IReadOnlyCollection<AttractionAccessCondition> conditions,
+        bool selectHighest,
+        out AttractionAccessCondition? selectedCondition,
+        out double selectedCentimeters)
+    {
+        List<(AttractionAccessCondition Condition, double Centimeters)> candidates =
+            new List<(AttractionAccessCondition Condition, double Centimeters)>();
+        foreach (AttractionAccessCondition condition in conditions)
+        {
+            if (!AttractionHeightUnitConverter.TryConvertToCentimeters(
+                    condition,
+                    out double centimeters))
+            {
+                continue;
+            }
+
+            candidates.Add((condition, centimeters));
+        }
+
+        if (candidates.Count == 0)
+        {
+            selectedCondition = null;
+            selectedCentimeters = selectHighest ? double.MinValue : double.MaxValue;
+            return false;
+        }
+
+        IOrderedEnumerable<(AttractionAccessCondition Condition, double Centimeters)> ordered =
+            selectHighest
+                ? candidates.OrderByDescending(static candidate => candidate.Centimeters)
+                : candidates.OrderBy(static candidate => candidate.Centimeters);
+        (AttractionAccessCondition Condition, double Centimeters) selected = ordered
+            .ThenByDescending(static candidate => candidate.Condition.MinimumCompanionAge ?? -1)
+            .ThenBy(static candidate => candidate.Condition.Type)
+            .ThenBy(static candidate => candidate.Condition.Unit)
+            .ThenBy(static candidate => candidate.Condition.Value)
+            .ThenBy(static candidate => candidate.Condition.RequiresAccompaniment)
+            .ThenBy(static candidate => candidate.Condition.Scope)
+            .ThenBy(static candidate => candidate.Condition.ScopeDetail, StringComparer.Ordinal)
+            .ThenBy(static candidate => candidate.Condition.SourceKind)
+            .ThenBy(static candidate => candidate.Condition.SourceUrl, StringComparer.Ordinal)
+            .ThenBy(static candidate => candidate.Condition.SourceReference, StringComparer.Ordinal)
+            .ThenBy(static candidate => candidate.Condition.SourceLanguageCode, StringComparer.Ordinal)
+            .ThenBy(static candidate => candidate.Condition.EffectiveFrom)
+            .ThenBy(static candidate => candidate.Condition.EffectiveTo)
+            .First();
+        selectedCondition = selected.Condition;
+        selectedCentimeters = selected.Centimeters;
+        return true;
+    }
+
+    private static AttractionAccessCondition? SelectHighestAgeThreshold(
+        IEnumerable<AttractionAccessCondition> conditions)
+    {
+        return conditions
+            .OrderByDescending(static condition => condition.Value)
+            .ThenByDescending(static condition => condition.MinimumCompanionAge ?? -1)
+            .ThenBy(static condition => condition.Type)
+            .ThenBy(static condition => condition.Unit)
+            .ThenBy(static condition => condition.RequiresAccompaniment)
+            .ThenBy(static condition => condition.Scope)
+            .ThenBy(static condition => condition.ScopeDetail, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceKind)
+            .ThenBy(static condition => condition.SourceUrl, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceReference, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceLanguageCode, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.EffectiveFrom)
+            .ThenBy(static condition => condition.EffectiveTo)
+            .FirstOrDefault();
+    }
+
+    private static AttractionAccessCondition SelectStableCondition(
+        IEnumerable<AttractionAccessCondition> conditions)
+    {
+        return conditions
+            .OrderBy(static condition => condition.Type)
+            .ThenBy(static condition => condition.Value)
+            .ThenBy(static condition => condition.Unit)
+            .ThenByDescending(static condition => condition.MinimumCompanionAge ?? -1)
+            .ThenBy(static condition => condition.RequiresAccompaniment)
+            .ThenBy(static condition => condition.Scope)
+            .ThenBy(static condition => condition.ScopeDetail, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceKind)
+            .ThenBy(static condition => condition.SourceUrl, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceReference, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceLanguageCode, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.EffectiveFrom)
+            .ThenBy(static condition => condition.EffectiveTo)
+            .First();
+    }
+
+    private static IReadOnlyCollection<AttractionAccessCondition>? FindConflictingHeightThresholds(
+        IReadOnlyCollection<AttractionAccessCondition> conditions)
+    {
+        double? firstThresholdCentimeters = null;
+        foreach (AttractionAccessCondition condition in conditions)
+        {
+            if (!AttractionHeightUnitConverter.TryConvertToCentimeters(
+                    condition,
+                    out double thresholdCentimeters))
+            {
+                continue;
+            }
+
+            if (!firstThresholdCentimeters.HasValue)
+            {
+                firstThresholdCentimeters = thresholdCentimeters;
+                continue;
+            }
+
+            if (Math.Abs(firstThresholdCentimeters.Value - thresholdCentimeters)
+                > HeightComparisonToleranceCentimeters)
+            {
+                return conditions;
+            }
+        }
+
+        return null;
+    }
+
+    private static IReadOnlyCollection<AttractionAccessCondition>? FindConflictingAgeThresholds(
+        IReadOnlyCollection<AttractionAccessCondition> conditions)
+    {
+        double? firstThreshold = conditions.FirstOrDefault()?.Value;
+        return firstThreshold.HasValue
+            && conditions.Any(condition => condition.Value != firstThreshold.Value)
+                ? conditions
+                : null;
+    }
+}

@@ -5,6 +5,12 @@ namespace AmusementPark.Core.Domain.Parks;
 /// </summary>
 public static class AttractionAccessConditionSemanticEvaluator
 {
+    public const int MaximumSupportedAgeYears = 130;
+
+    public const int MinimumSupportedHeightCentimeters = 1;
+
+    public const int MaximumSupportedHeightCentimeters = 300;
+
     public static IReadOnlyCollection<AttractionAccessConditionSemanticIssue> Evaluate(
         AttractionAccessCondition condition)
     {
@@ -18,7 +24,8 @@ public static class AttractionAccessConditionSemanticEvaluator
             return issues;
         }
 
-        if (condition.MinimumCompanionAge.HasValue && condition.MinimumCompanionAge.Value <= 0)
+        if (condition.MinimumCompanionAge.HasValue
+            && condition.MinimumCompanionAge.Value is <= 0 or > MaximumSupportedAgeYears)
         {
             issues.Add(AttractionAccessConditionSemanticIssue.InvalidCompanionAge);
         }
@@ -33,7 +40,9 @@ public static class AttractionAccessConditionSemanticEvaluator
                     static unit => unit is AttractionAccessConditionUnit.Centimeter
                         or AttractionAccessConditionUnit.Inch,
                     requireWholeValue: false,
+                    maximumValue: null,
                     issues);
+                AddHeightDomainIssue(condition, issues);
                 break;
             case AttractionAccessConditionType.MinAge:
             case AttractionAccessConditionType.MinAgeAccompanied:
@@ -41,6 +50,7 @@ public static class AttractionAccessConditionSemanticEvaluator
                     condition,
                     static unit => unit == AttractionAccessConditionUnit.Year,
                     requireWholeValue: true,
+                    maximumValue: MaximumSupportedAgeYears,
                     issues);
                 break;
             case AttractionAccessConditionType.Custom:
@@ -52,9 +62,13 @@ public static class AttractionAccessConditionSemanticEvaluator
                 break;
         }
 
-        if (condition.Type is AttractionAccessConditionType.MinHeightAccompanied
-                or AttractionAccessConditionType.MinAgeAccompanied
-            && condition.RequiresAccompaniment == false)
+        bool typeRequiresAccompaniment = condition.Type is
+            AttractionAccessConditionType.MinHeightAccompanied
+            or AttractionAccessConditionType.MinAgeAccompanied;
+        if ((typeRequiresAccompaniment && condition.RequiresAccompaniment == false)
+            || (!typeRequiresAccompaniment
+                && condition.MinimumCompanionAge.HasValue
+                && condition.RequiresAccompaniment != true))
         {
             issues.Add(AttractionAccessConditionSemanticIssue.InconsistentAccompaniment);
         }
@@ -71,6 +85,7 @@ public static class AttractionAccessConditionSemanticEvaluator
         AttractionAccessCondition condition,
         Func<AttractionAccessConditionUnit, bool> isAllowedUnit,
         bool requireWholeValue,
+        double? maximumValue,
         ICollection<AttractionAccessConditionSemanticIssue> issues)
     {
         if (!condition.Value.HasValue)
@@ -79,6 +94,7 @@ public static class AttractionAccessConditionSemanticEvaluator
         }
         else if (!double.IsFinite(condition.Value.Value)
             || condition.Value.Value <= 0
+            || (maximumValue.HasValue && condition.Value.Value > maximumValue.Value)
             || (requireWholeValue && condition.Value.Value != Math.Truncate(condition.Value.Value)))
         {
             issues.Add(AttractionAccessConditionSemanticIssue.InvalidValue);
@@ -100,5 +116,27 @@ public static class AttractionAccessConditionSemanticEvaluator
         return !string.IsNullOrWhiteSpace(condition.TypeKey)
             || !string.IsNullOrWhiteSpace(condition.CustomTypeKey)
             || condition.CustomTypeLabel.Any(static text => !string.IsNullOrWhiteSpace(text.Value));
+    }
+
+    private static void AddHeightDomainIssue(
+        AttractionAccessCondition condition,
+        ICollection<AttractionAccessConditionSemanticIssue> issues)
+    {
+        if (issues.Contains(AttractionAccessConditionSemanticIssue.InvalidValue)
+            || issues.Contains(AttractionAccessConditionSemanticIssue.MissingValue)
+            || issues.Contains(AttractionAccessConditionSemanticIssue.InvalidUnit)
+            || issues.Contains(AttractionAccessConditionSemanticIssue.MissingUnit))
+        {
+            return;
+        }
+
+        if (AttractionHeightUnitConverter.TryConvertToCentimeters(
+                condition,
+                out double centimeters)
+            && (centimeters < MinimumSupportedHeightCentimeters
+                || centimeters > MaximumSupportedHeightCentimeters))
+        {
+            issues.Add(AttractionAccessConditionSemanticIssue.InvalidValue);
+        }
     }
 }

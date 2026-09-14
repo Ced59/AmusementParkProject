@@ -62,15 +62,28 @@ Il présente la couverture, les anomalies et jusqu'à huit attractions à corrig
 parc, avec un accès direct à leur édition. Le traitement charge une page de parcs
 puis ses attractions visibles, ouvertes et actuellement concernées par leurs règles,
 ainsi que les calendriers, par lots parallèles. La lecture des attractions est filtrée
-et projetée en base ; aucune collection MongoDB
-ou projection concurrente n'a été créée. Le détail, les diagrammes et les preuves
+et projetée en base ; aucune collection MongoDB ni vue matérialisée concurrente
+n'a été créée. Le détail, les diagrammes et les preuves
 automatisées sont documentés dans
 [`product-growth-fit-03-data-quality-audit-2026-09-14.md`](../../architecture/product-growth-fit-03-data-quality-audit-2026-09-14.md).
 
-`FIT-04` est le prochain jalon : il évaluera une attraction pour une personne en
-distinguant compatible seul, compatible accompagné, incompatible, inconnu et non
-applicable, avec des raisons et des sources. Il n'est pas conditionné par des
-visites réelles.
+### État de `FIT-04` au 14 septembre 2026
+
+Le Core évalue désormais une attraction pour un profil individuel minimal et privé.
+Il distingue compatible seul, compatible accompagné, incompatible, inconnu et non
+applicable en respectant les seuils exacts, unités, tranches d'âge, conditions
+d'accompagnement, périodes, portées, sources et dates de vérification. Une règle
+personnelle non vérifiable reste inconnue et aucun diagnostic n'est collecté.
+
+Les raisons structurées exposent les seuils et anomalies exactes ; les sources, la
+confiance, les dates et la version `park-fit-2026-01` accompagnent le verdict. Le
+calcul est pur, déterministe, sans stockage ni dépendance aux visites. Les détails,
+diagrammes et 94 scénarios métier sont documentés dans
+[`product-growth-fit-04-individual-compatibility-2026-09-14.md`](../../architecture/product-growth-fit-04-individual-compatibility-2026-09-14.md).
+
+`FIT-05` est le prochain jalon : il combinera les verdicts par personne sans inventer
+la capacité d'un véhicule ou d'un accompagnateur, et distinguera groupe ensemble,
+séparation, participation partielle, aucun participant et inconnu.
 
 ## 1. Vision produit
 
