@@ -71,6 +71,7 @@
       "together": "attractions possible together",
       "flexible": "attractions needing group planning",
       "unknown": "attractions still unknown",
+      "openResults": "See all {{count}} explained results",
       "openPark": "View the park",
       "detailNext": "Unknowns remain visible: this result helps your decision but does not guarantee access.",
       "evaluated": "Parks inspected: {{count}}",
@@ -85,6 +86,136 @@
     "empty": {
       "title": "No reliable park for these criteria",
       "text": "The engine would rather promise nothing when a park is closed or insufficiently documented. Try another date or add more group details."
+    },
+    "results": {
+      "seo": {
+        "title": "Explained Park Fit results — Amusement Parks",
+        "description": "See which parks suit your group, the limits of each result, and the sources used."
+      },
+      "kicker": "Explained results",
+      "title": "Parks that suit your group",
+      "lead": "For {{date}}, {{count}} sufficiently documented park(s) remain in the comparison.",
+      "changeCriteria": "Change my criteria",
+      "rankLabel": "Result number {{rank}}",
+      "reading": {
+        "title": "Read the reasons before the score",
+        "text": "The score only orders these parks against each other. It is neither a probability of success nor an access guarantee."
+      },
+      "strengths": {
+        "title": "What works for your group",
+        "together": "attractions possible all together",
+        "organized": "attractions possible with group planning",
+        "date": "known situation on your chosen date"
+      },
+      "unknowns": {
+        "title": "Some facts are still unknown",
+        "text": "{{attractions}} attraction(s) and {{factors}} calculation factor(s) remain unknown. They are never counted as negative.",
+        "clearTitle": "No unknowns detected",
+        "clearText": "The attractions and factors used for this result have the expected data."
+      },
+      "members": {
+        "title": "Compatibility for each person",
+        "person": "Person {{number}}",
+        "alone": "{{count}} independently",
+        "withCompanion": "{{count}} with a companion",
+        "unavailable": "{{count}} incompatible",
+        "unknown": "{{count}} unknown"
+      },
+      "limits": { "title": "What limits or qualifies this result" },
+      "score": {
+        "title": "Comparative score",
+        "notProbability": "It orders parks for this same search; it does not predict your day out.",
+        "unavailable": "Score not published",
+        "coverage": "Calculation coverage",
+        "confidence": "Confidence"
+      },
+      "components": { "title": "Score breakdown" },
+      "componentKinds": {
+        "GroupCompatibility": "Group compatibility",
+        "PreferenceCoverage": "Preference coverage",
+        "TravelConvenience": "Travel convenience",
+        "IndoorResilience": "Indoor experiences",
+        "BudgetFit": "Budget fit",
+        "Unknown": "Unrecognized factor"
+      },
+      "componentStates": {
+        "Known": "Data available",
+        "Unknown": "Data unknown",
+        "NotApplicable": "Not requested"
+      },
+      "scoreStates": {
+        "Available": "Comparison available",
+        "Capped": "Cautious comparison",
+        "Suspended": "Result needs checking",
+        "Unknown": "Unknown state"
+      },
+      "confidenceLevels": {
+        "High": "High",
+        "Medium": "Medium",
+        "Low": "Low",
+        "Unknown": "Unknown"
+      },
+      "availabilityStates": {
+        "Available": "Opening confirmed",
+        "Unavailable": "Known closure",
+        "NotRequested": "Date not requested",
+        "Unknown": "Opening hours unknown"
+      },
+      "qualityStates": {
+        "NotAssessed": "Quality not assessed",
+        "Insufficient": "Insufficient data",
+        "EligibleForDiscoveryOnly": "Discovery only",
+        "EligibleForFitComparison": "Data admitted for comparison",
+        "TemporarilyStale": "Data needs refreshing",
+        "Suspended": "Data suspended",
+        "Unknown": "Unknown quality"
+      },
+      "scoreReasons": {
+        "ScoreAvailable": "Known factors allow a comparison.",
+        "HardFilterFailed": "A required criterion is not met.",
+        "DateUnavailable": "The park is listed as closed on this date.",
+        "CriticalDataExcluded": "Critical data prevents this park from being compared.",
+        "CriticalDataSuspended": "Critical data needs checking before reaching a conclusion.",
+        "NoKnownSubscore": "No sufficiently known factor can produce a score.",
+        "DataConfidenceUnknown": "Overall confidence in the data remains unknown.",
+        "IncompleteCoverageCapApplied": "The score is capped because coverage is incomplete.",
+        "DataConfidenceCapApplied": "The score is cautiously capped due to data reliability.",
+        "CriticalUnknownCapApplied": "The score is capped because an important unknown remains.",
+        "OptionalSubscoreNotApplicable": "An optional factor you did not request does not lower the result.",
+        "Unknown": "An additional result limitation is not translated yet."
+      },
+      "proofs": {
+        "title": "Evidence and freshness",
+        "text": "These references support the access conditions used for your group.",
+        "unknownDate": "unknown date",
+        "summaryFallback": "Documented access condition.",
+        "lastVerified": "Park data last checked: {{date}}.",
+        "checked": "Checked on {{date}}",
+        "openSource": "Open source",
+        "noSource": "No critical reference is needed to explain this result."
+      },
+      "sourceKinds": {
+        "Official": "Official source",
+        "OperatorProvided": "Operator information",
+        "VerifiedSecondary": "Verified secondary source",
+        "CommunityUnverified": "Unverified contribution",
+        "Unknown": "Unknown source type"
+      },
+      "method": {
+        "parkFit202601": "Park Fit method 2026 · version 1",
+        "versioned": "Versioned comparison method"
+      },
+      "openPark": "Explore this park",
+      "empty": {
+        "title": "No comparable result",
+        "text": "Closed or insufficiently documented parks are not presented as matches."
+      },
+      "missing": {
+        "lead": "This page keeps results only while you navigate.",
+        "title": "Start with a search",
+        "text": "Private criteria and results are not stored in your browser or attached to an account.",
+        "action": "Describe my group"
+      }
     }
   }
 }

@@ -1,0 +1,215 @@
+<section class="park-fit-results public-page">
+  <header class="park-fit-results__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <div>
+      <app-ui-kicker tone="sky" iconClass="pi pi-sparkles">
+        {{ 'parkFit.results.kicker' | translate }}
+      </app-ui-kicker>
+      <h1>{{ 'parkFit.results.title' | translate }}</h1>
+      @if (response(); as search) {
+        <p>{{ 'parkFit.results.lead' | translate:{ date: evaluationDateLabel(search.evaluationDate), count: parks().length } }}</p>
+      } @else {
+        <p>{{ 'parkFit.results.missing.lead' | translate }}</p>
+      }
+    </div>
+    <a appUiButton="ghost" [routerLink]="criteriaRoute()">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'parkFit.results.changeCriteria' | translate }}</span>
+    </a>
+  </header>
+
+  @if (response(); as search) {
+    @if (parks().length > 0) {
+      <aside class="park-fit-results__reading" appUiSurface="panel" appUiSurfacePadding="regular">
+        <i class="pi pi-info-circle" aria-hidden="true"></i>
+        <div>
+          <strong>{{ 'parkFit.results.reading.title' | translate }}</strong>
+          <span>{{ 'parkFit.results.reading.text' | translate }}</span>
+        </div>
+      </aside>
+
+      <div class="park-fit-results__list">
+        @for (park of parks(); track park.parkId; let rank = $index) {
+          <article class="park-fit-result-card" appUiSurface="panel" appUiSurfacePadding="regular">
+            <header class="park-fit-result-card__header">
+              <div class="park-fit-result-card__identity">
+                <span class="park-fit-result-card__rank" [attr.aria-label]="'parkFit.results.rankLabel' | translate:{ rank: rank + 1 }">
+                  {{ rank + 1 }}
+                </span>
+                <div>
+                  <h2>{{ park.parkName }}</h2>
+                  @if (countryName(park.countryCode)) {
+                    <p><i class="pi pi-map-marker" aria-hidden="true"></i>{{ countryName(park.countryCode) }}</p>
+                  }
+                </div>
+              </div>
+              <app-ui-chip [tone]="rank === 0 ? 'lime' : 'sky'" iconClass="pi pi-compass">
+                {{ scoreStateKey(park.scoreState) | translate }}
+              </app-ui-chip>
+            </header>
+
+            <section class="park-fit-result-card__section" [attr.aria-labelledby]="'strengths-' + rank">
+              <h3 [id]="'strengths-' + rank">{{ 'parkFit.results.strengths.title' | translate }}</h3>
+              <div class="park-fit-result-card__metrics">
+                <article>
+                  <i class="pi pi-users" aria-hidden="true"></i>
+                  <strong>{{ park.everyoneTogetherAttractionCount }}</strong>
+                  <span>{{ 'parkFit.results.strengths.together' | translate }}</span>
+                </article>
+                <article>
+                  <i class="pi pi-sitemap" aria-hidden="true"></i>
+                  <strong>{{ park.splitRequiredAttractionCount + park.partialAttractionCount }}</strong>
+                  <span>{{ 'parkFit.results.strengths.organized' | translate }}</span>
+                </article>
+                <article>
+                  <i class="pi pi-calendar" aria-hidden="true"></i>
+                  <strong>{{ availabilityKey(park.dateAvailabilityState) | translate }}</strong>
+                  <span>{{ 'parkFit.results.strengths.date' | translate }}</span>
+                </article>
+              </div>
+            </section>
+
+            <section class="park-fit-result-card__unknowns" [class.park-fit-result-card__unknowns--clear]="park.unknownAttractionCount === 0 && park.unknownCount === 0">
+              <i [class]="park.unknownAttractionCount === 0 && park.unknownCount === 0 ? 'pi pi-check-circle' : 'pi pi-exclamation-triangle'" aria-hidden="true"></i>
+              <div>
+                <strong>{{ (park.unknownAttractionCount === 0 && park.unknownCount === 0 ? 'parkFit.results.unknowns.clearTitle' : 'parkFit.results.unknowns.title') | translate }}</strong>
+                <span>{{ (park.unknownAttractionCount === 0 && park.unknownCount === 0 ? 'parkFit.results.unknowns.clearText' : 'parkFit.results.unknowns.text') | translate:{ attractions: park.unknownAttractionCount, factors: park.unknownCount } }}</span>
+              </div>
+            </section>
+
+            @if (park.memberSummaries.length > 0) {
+              <section class="park-fit-result-card__section" [attr.aria-labelledby]="'members-' + rank">
+                <h3 [id]="'members-' + rank">{{ 'parkFit.results.members.title' | translate }}</h3>
+                <div class="park-fit-result-card__members">
+                  @for (member of park.memberSummaries; track member.memberNumber) {
+                    <article>
+                      <strong>{{ 'parkFit.results.members.person' | translate:{ number: member.memberNumber } }}</strong>
+                      <span>{{ 'parkFit.results.members.alone' | translate:{ count: member.compatibleAloneAttractionCount } }}</span>
+                      <span>{{ 'parkFit.results.members.withCompanion' | translate:{ count: member.compatibleWithCompanionAttractionCount } }}</span>
+                      <span>{{ 'parkFit.results.members.unavailable' | translate:{ count: member.incompatibleAttractionCount } }}</span>
+                      <span class="park-fit-result-card__member-unknown">{{ 'parkFit.results.members.unknown' | translate:{ count: member.unknownAttractionCount } }}</span>
+                    </article>
+                  }
+                </div>
+              </section>
+            }
+
+            @if (park.reasons.length > 0) {
+              <section class="park-fit-result-card__section" [attr.aria-labelledby]="'limits-' + rank">
+                <h3 [id]="'limits-' + rank">{{ 'parkFit.results.limits.title' | translate }}</h3>
+                <ul class="park-fit-result-card__reason-list">
+                  @for (reason of park.reasons; track reason) {
+                    <li>{{ scoreReasonKey(reason) | translate }}</li>
+                  }
+                </ul>
+              </section>
+            }
+
+            <section class="park-fit-result-card__score" [attr.aria-labelledby]="'score-' + rank">
+              <div>
+                <h3 [id]="'score-' + rank">{{ 'parkFit.results.score.title' | translate }}</h3>
+                <p>{{ 'parkFit.results.score.notProbability' | translate }}</p>
+              </div>
+              @if (park.comparativeScore !== null) {
+                <div class="park-fit-result-card__score-value">
+                  <strong>{{ rounded(park.comparativeScore) }}</strong><span>/ 100</span>
+                </div>
+              } @else {
+                <strong class="park-fit-result-card__score-unavailable">{{ 'parkFit.results.score.unavailable' | translate }}</strong>
+              }
+              <dl>
+                <div>
+                  <dt>{{ 'parkFit.results.score.coverage' | translate }}</dt>
+                  <dd>{{ rounded(park.coveragePercent) }} %</dd>
+                </div>
+                <div>
+                  <dt>{{ 'parkFit.results.score.confidence' | translate }}</dt>
+                  <dd>{{ confidenceKey(park.confidence) | translate }}</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="park-fit-result-card__section" [attr.aria-labelledby]="'components-' + rank">
+              <h3 [id]="'components-' + rank">{{ 'parkFit.results.components.title' | translate }}</h3>
+              <div class="park-fit-result-card__components">
+                @for (component of park.components; track component.kind) {
+                  <article>
+                    <div>
+                      <strong>{{ componentKindKey(component) | translate }}</strong>
+                      <span>{{ componentStateKey(component) | translate }}</span>
+                    </div>
+                    @if (component.value !== null) {
+                      <strong>{{ rounded(component.value) }} / 100</strong>
+                    } @else {
+                      <strong>—</strong>
+                    }
+                  </article>
+                }
+              </div>
+            </section>
+
+            <section class="park-fit-result-card__proofs" [attr.aria-labelledby]="'proofs-' + rank">
+              <div class="park-fit-result-card__proof-heading">
+                <div>
+                  <h3 [id]="'proofs-' + rank">{{ 'parkFit.results.proofs.title' | translate }}</h3>
+                  <p>{{ 'parkFit.results.proofs.text' | translate }}</p>
+                </div>
+                <app-ui-chip tone="sky" iconClass="pi pi-shield">
+                  {{ qualityKey(park.dataQualityStatus) | translate }} · {{ rounded(park.dataQualityCoveragePercent) }} %
+                </app-ui-chip>
+              </div>
+              <p class="park-fit-result-card__freshness">
+                {{ 'parkFit.results.proofs.lastVerified' | translate:{ date: verifiedDateLabel(park.lastVerifiedAtUtc) } }}
+              </p>
+              @if (park.criticalSources.length > 0) {
+                <ul class="park-fit-result-card__sources">
+                  @for (source of park.criticalSources; track $index) {
+                    <li>
+                      <i class="pi pi-verified" aria-hidden="true"></i>
+                      <div>
+                        <strong>{{ sourceKindKey(source.kind) | translate }}</strong>
+                        <span>{{ sourceSummary(source) }}</span>
+                        <small>{{ 'parkFit.results.proofs.checked' | translate:{ date: verifiedDateLabel(source.verifiedAtUtc) } }}</small>
+                      </div>
+                      @if (sourceUrl(source); as url) {
+                        <a [href]="url" target="_blank" rel="noopener noreferrer">
+                          {{ 'parkFit.results.proofs.openSource' | translate }}
+                          <i class="pi pi-external-link" aria-hidden="true"></i>
+                        </a>
+                      }
+                    </li>
+                  }
+                </ul>
+              } @else {
+                <p class="park-fit-result-card__no-source">{{ 'parkFit.results.proofs.noSource' | translate }}</p>
+              }
+            </section>
+
+            <footer class="park-fit-result-card__footer">
+              <span>{{ methodLabelKey(search.methodVersion) | translate }}</span>
+              @if (parkRoute(park); as routeCommands) {
+                <a appUiButton="primary" [routerLink]="routeCommands">
+                  <span>{{ 'parkFit.results.openPark' | translate }}</span>
+                  <i class="pi pi-arrow-right" aria-hidden="true"></i>
+                </a>
+              }
+            </footer>
+          </article>
+        }
+      </div>
+    } @else {
+      <section class="park-fit-results__empty" appUiSurface="panel" appUiSurfacePadding="spacious">
+        <i class="pi pi-info-circle" aria-hidden="true"></i>
+        <h2>{{ 'parkFit.results.empty.title' | translate }}</h2>
+        <p>{{ 'parkFit.results.empty.text' | translate }}</p>
+        <a appUiButton="primary" [routerLink]="criteriaRoute()">{{ 'parkFit.results.changeCriteria' | translate }}</a>
+      </section>
+    }
+  } @else {
+    <section class="park-fit-results__empty" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <i class="pi pi-compass" aria-hidden="true"></i>
+      <h2>{{ 'parkFit.results.missing.title' | translate }}</h2>
+      <p>{{ 'parkFit.results.missing.text' | translate }}</p>
+      <a appUiButton="primary" [routerLink]="criteriaRoute()">{{ 'parkFit.results.missing.action' | translate }}</a>
+    </section>
+  }
+</section>

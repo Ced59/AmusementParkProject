@@ -231,10 +231,13 @@
       </div>
 
       <div class="park-fit-result__actions">
+        <a appUiButton="primary" [routerLink]="['/', currentLang(), 'park-fit', 'results']">
+          <span>{{ 'parkFit.result.openResults' | translate:{ count: visibleParks().length } }}</span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </a>
         @if (parkRoute(); as routeCommands) {
-          <a appUiButton="primary" [routerLink]="routeCommands">
+          <a appUiButton="ghost" [routerLink]="routeCommands">
             <span>{{ 'parkFit.result.openPark' | translate }}</span>
-            <i class="pi pi-arrow-right" aria-hidden="true"></i>
           </a>
         }
         <span>{{ 'parkFit.result.detailNext' | translate }}</span>

@@ -79,6 +79,14 @@ public sealed class ParkFitSearchHttpMapperTests
                     DataQuality = quality,
                     Score = BuildScore(),
                     EveryoneTogetherAttractionCount = 1,
+                    MemberSummaries = new[]
+                    {
+                        new ParkFitSearchMemberSummaryResult
+                        {
+                            MemberNumber = 1,
+                            CompatibleAloneAttractionCount = 1,
+                        },
+                    },
                     CriticalSources = new[]
                     {
                         new AttractionCompatibilitySourceReference(evidence),
@@ -95,6 +103,9 @@ public sealed class ParkFitSearchHttpMapperTests
         Assert.Equal("Available", parkDto.ScoreState);
         Assert.Equal("Available", parkDto.DateAvailabilityState);
         Assert.Contains("ScoreAvailable", parkDto.Reasons);
+        ParkFitSearchMemberSummaryDto member = Assert.Single(parkDto.MemberSummaries);
+        Assert.Equal(1, member.MemberNumber);
+        Assert.Equal(1, member.CompatibleAloneAttractionCount);
         ParkFitCriticalSourceDto source = Assert.Single(parkDto.CriticalSources);
         Assert.Equal("https://example.test/access", source.Url);
         Assert.Equal(EvaluationTimestamp.AddDays(-10), source.VerifiedAtUtc);

@@ -49,6 +49,9 @@ public sealed class ParkFitSearchParkDto
     public IReadOnlyCollection<ParkFitScoreComponentDto> Components { get; init; } =
         Array.Empty<ParkFitScoreComponentDto>();
 
+    public IReadOnlyCollection<ParkFitSearchMemberSummaryDto> MemberSummaries { get; init; } =
+        Array.Empty<ParkFitSearchMemberSummaryDto>();
+
     public IReadOnlyCollection<ParkFitCriticalSourceDto> CriticalSources { get; init; } =
         Array.Empty<ParkFitCriticalSourceDto>();
 }

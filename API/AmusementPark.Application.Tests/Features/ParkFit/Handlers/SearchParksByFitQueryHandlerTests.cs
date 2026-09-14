@@ -77,6 +77,10 @@ public sealed class SearchParksByFitQueryHandlerTests
         Assert.Equal(ParkFitScoreState.Available, parkResult.Score.State);
         Assert.Equal(ParkFitDateAvailabilityState.Available, parkResult.Score.DateAvailabilityState);
         Assert.Equal(1, parkResult.EveryoneTogetherAttractionCount);
+        ParkFitSearchMemberSummaryResult memberSummary = Assert.Single(parkResult.MemberSummaries);
+        Assert.Equal(1, memberSummary.MemberNumber);
+        Assert.Equal(1, memberSummary.CompatibleAloneAttractionCount);
+        Assert.Equal(0, memberSummary.UnknownAttractionCount);
         Assert.NotEmpty(parkResult.CriticalSources);
         parks.VerifyAll();
         items.VerifyAll();

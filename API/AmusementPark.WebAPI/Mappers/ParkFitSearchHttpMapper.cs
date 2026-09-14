@@ -115,6 +115,16 @@ public static class ParkFitSearchHttpMapper
                     Contribution = component.Contribution,
                     Reasons = component.Reasons.Select(static reason => reason.ToString()).ToList(),
                 }).ToList(),
+            MemberSummaries = result.MemberSummaries.Select(static member =>
+                new ParkFitSearchMemberSummaryDto
+                {
+                    MemberNumber = member.MemberNumber,
+                    CompatibleAloneAttractionCount = member.CompatibleAloneAttractionCount,
+                    CompatibleWithCompanionAttractionCount = member.CompatibleWithCompanionAttractionCount,
+                    IncompatibleAttractionCount = member.IncompatibleAttractionCount,
+                    UnknownAttractionCount = member.UnknownAttractionCount,
+                    NotApplicableAttractionCount = member.NotApplicableAttractionCount,
+                }).ToList(),
             CriticalSources = result.CriticalSources.Select(static source =>
                 new ParkFitCriticalSourceDto
                 {

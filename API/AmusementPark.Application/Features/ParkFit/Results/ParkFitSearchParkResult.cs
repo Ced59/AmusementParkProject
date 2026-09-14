@@ -24,6 +24,9 @@ public sealed class ParkFitSearchParkResult
 
     public int UnknownAttractionCount { get; init; }
 
+    public IReadOnlyCollection<ParkFitSearchMemberSummaryResult> MemberSummaries { get; init; } =
+        Array.Empty<ParkFitSearchMemberSummaryResult>();
+
     public IReadOnlyCollection<AttractionCompatibilitySourceReference> CriticalSources { get; init; } =
         Array.Empty<AttractionCompatibilitySourceReference>();
 }

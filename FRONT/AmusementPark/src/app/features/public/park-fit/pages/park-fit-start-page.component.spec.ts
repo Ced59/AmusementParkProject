@@ -101,12 +101,14 @@ function createComponent(
   const status: Signal<ParkFitSearchStatus> = signal<ParkFitSearchStatus>('idle').asReadonly();
   const response: Signal<ParkFitSearchResponse | null> = signal<ParkFitSearchResponse | null>(null).asReadonly();
   const park: Signal<ParkFitSearchPark | null> = signal<ParkFitSearchPark | null>(null).asReadonly();
+  const visibleParks: Signal<ParkFitSearchPark[]> = signal<ParkFitSearchPark[]>([]).asReadonly();
   const errorKey: Signal<string | null> = signal<string | null>(null).asReadonly();
   const lastRequestSignal: Signal<ParkFitSearchRequest | null> = signal(lastRequest).asReadonly();
   const facade = {
     status,
     response,
     firstPark: park,
+    visibleParks,
     errorKey,
     lastRequest: lastRequestSignal,
     search

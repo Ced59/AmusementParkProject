@@ -71,6 +71,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/profile/**', renderMode: RenderMode.Client },
   { path: ':lang/passport/local', renderMode: RenderMode.Client },
   { path: ':lang/passport/local/:draftId', renderMode: RenderMode.Client },
+  { path: ':lang/park-fit/results', renderMode: RenderMode.Client },
   { path: ':lang/park-fit', renderMode: RenderMode.Client },
   { path: ':lang/confirm-account', renderMode: RenderMode.Client },
   { path: ':lang/forgot-password', renderMode: RenderMode.Client },

@@ -47,6 +47,7 @@ export class ParkFitStartPageComponent implements OnInit {
   protected readonly status: Signal<ParkFitSearchStatus> = this.facade.status;
   protected readonly response: Signal<ParkFitSearchResponse | null> = this.facade.response;
   protected readonly firstPark: Signal<ParkFitSearchPark | null> = this.facade.firstPark;
+  protected readonly visibleParks: Signal<ParkFitSearchPark[]> = this.facade.visibleParks;
   protected readonly errorKey: Signal<string | null> = this.facade.errorKey;
   protected readonly parkRoute: Signal<string[] | null> = computed(() => {
     const park: ParkFitSearchPark | null = this.firstPark();

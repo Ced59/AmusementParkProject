@@ -94,6 +94,7 @@ public sealed class ParkFitSearchParkEvaluator
             UnknownAttractionCount = CountState(
                 groupCompatibilities,
                 GroupAttractionCompatibilityState.Unknown),
+            MemberSummaries = BuildMemberSummaries(profiles, groupCompatibilities),
             CriticalSources = BuildCriticalSources(groupCompatibilities),
         };
     }
@@ -153,5 +154,50 @@ public sealed class ParkFitSearchParkEvaluator
         GroupAttractionCompatibilityState state)
     {
         return compatibilities.Count(compatibility => compatibility.State == state);
+    }
+
+    private static IReadOnlyCollection<ParkFitSearchMemberSummaryResult> BuildMemberSummaries(
+        IReadOnlyCollection<ParkFitEvaluatedMemberProfile> profiles,
+        IReadOnlyCollection<GroupAttractionCompatibility> compatibilities)
+    {
+        Dictionary<string, List<AttractionCompatibilityState>> statesByMember = profiles
+            .ToDictionary(
+                static profile => profile.MemberKey,
+                static _ => new List<AttractionCompatibilityState>(),
+                StringComparer.Ordinal);
+        foreach (GroupAttractionCompatibility compatibility in compatibilities)
+        {
+            foreach (GroupAttractionMemberCompatibility member in compatibility.Members)
+            {
+                if (statesByMember.TryGetValue(
+                    member.MemberKey,
+                    out List<AttractionCompatibilityState>? states))
+                {
+                    states.Add(member.Compatibility.State);
+                }
+            }
+        }
+
+        return profiles
+            .Select((profile, index) =>
+            {
+                List<AttractionCompatibilityState> states = statesByMember[profile.MemberKey];
+
+                return new ParkFitSearchMemberSummaryResult
+                {
+                    MemberNumber = index + 1,
+                    CompatibleAloneAttractionCount = states.Count(static state =>
+                        state == AttractionCompatibilityState.CompatibleAlone),
+                    CompatibleWithCompanionAttractionCount = states.Count(static state =>
+                        state == AttractionCompatibilityState.CompatibleWithCompanion),
+                    IncompatibleAttractionCount = states.Count(static state =>
+                        state == AttractionCompatibilityState.Incompatible),
+                    UnknownAttractionCount = states.Count(static state =>
+                        state == AttractionCompatibilityState.Unknown),
+                    NotApplicableAttractionCount = states.Count(static state =>
+                        state == AttractionCompatibilityState.NotApplicable),
+                };
+            })
+            .ToList();
     }
 }

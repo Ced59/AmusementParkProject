@@ -71,6 +71,7 @@
       "together": "attracties die samen mogelijk zijn",
       "flexible": "attracties waarvoor de groep zich moet organiseren",
       "unknown": "attracties die nog onbekend zijn",
+      "openResults": "Bekijk alle {{count}} uitgelegde resultaten",
       "openPark": "Bekijk het park",
       "detailNext": "Onbekende gegevens blijven zichtbaar: dit resultaat helpt bij je keuze, maar garandeert geen toegang.",
       "evaluated": "Onderzochte parken: {{count}}",
@@ -85,6 +86,136 @@
     "empty": {
       "title": "Geen betrouwbaar park voor deze criteria",
       "text": "De zoekfunctie doet liever geen belofte wanneer een park gesloten of onvoldoende gedocumenteerd is. Probeer een andere datum of vul de groep verder aan."
+    },
+    "results": {
+      "seo": {
+        "title": "Uitgelegde Park Fit-resultaten — Amusement Parks",
+        "description": "Bekijk welke parken bij je groep passen, de grenzen van elk resultaat en de gebruikte bronnen."
+      },
+      "kicker": "Uitgelegde resultaten",
+      "title": "Parken die bij je groep passen",
+      "lead": "Voor {{date}} blijven {{count}} voldoende gedocumenteerde parken in de vergelijking.",
+      "changeCriteria": "Mijn criteria wijzigen",
+      "rankLabel": "Resultaat nummer {{rank}}",
+      "reading": {
+        "title": "Lees eerst de redenen, daarna de score",
+        "text": "De score rangschikt deze parken alleen ten opzichte van elkaar. Het is geen kans op succes en geen toegangsgarantie."
+      },
+      "strengths": {
+        "title": "Wat werkt voor je groep",
+        "together": "attracties die iedereen samen kan doen",
+        "organized": "attracties die met groepsplanning mogelijk zijn",
+        "date": "bekende situatie op de gekozen datum"
+      },
+      "unknowns": {
+        "title": "Sommige gegevens zijn nog onbekend",
+        "text": "{{attractions}} attractie(s) en {{factors}} rekenfactor(en) blijven onbekend. Ze tellen nooit als negatief.",
+        "clearTitle": "Geen onbekende gegevens gevonden",
+        "clearText": "De attracties en factoren in dit resultaat bevatten de verwachte gegevens."
+      },
+      "members": {
+        "title": "Geschiktheid per persoon",
+        "person": "Persoon {{number}}",
+        "alone": "{{count}} zelfstandig",
+        "withCompanion": "{{count}} met begeleider",
+        "unavailable": "{{count}} niet geschikt",
+        "unknown": "{{count}} onbekend"
+      },
+      "limits": { "title": "Wat dit resultaat beperkt of nuanceert" },
+      "score": {
+        "title": "Vergelijkingsscore",
+        "notProbability": "Deze rangschikt parken voor dezelfde zoekopdracht; hij voorspelt je uitstap niet.",
+        "unavailable": "Score niet gepubliceerd",
+        "coverage": "Dekking van de berekening",
+        "confidence": "Betrouwbaarheid"
+      },
+      "components": { "title": "Opbouw van de score" },
+      "componentKinds": {
+        "GroupCompatibility": "Geschiktheid van de groep",
+        "PreferenceCoverage": "Dekking van je voorkeuren",
+        "TravelConvenience": "Bereikbaarheid",
+        "IndoorResilience": "Indoorbelevingen",
+        "BudgetFit": "Passend bij het budget",
+        "Unknown": "Onbekende factor"
+      },
+      "componentStates": {
+        "Known": "Gegevens beschikbaar",
+        "Unknown": "Gegevens onbekend",
+        "NotApplicable": "Niet gevraagd"
+      },
+      "scoreStates": {
+        "Available": "Vergelijking beschikbaar",
+        "Capped": "Voorzichtige vergelijking",
+        "Suspended": "Resultaat moet worden gecontroleerd",
+        "Unknown": "Onbekende status"
+      },
+      "confidenceLevels": {
+        "High": "Hoog",
+        "Medium": "Gemiddeld",
+        "Low": "Laag",
+        "Unknown": "Onbekend"
+      },
+      "availabilityStates": {
+        "Available": "Opening bevestigd",
+        "Unavailable": "Bekende sluiting",
+        "NotRequested": "Datum niet gevraagd",
+        "Unknown": "Openingstijden onbekend"
+      },
+      "qualityStates": {
+        "NotAssessed": "Kwaliteit niet beoordeeld",
+        "Insufficient": "Onvoldoende gegevens",
+        "EligibleForDiscoveryOnly": "Alleen ter ontdekking",
+        "EligibleForFitComparison": "Gegevens toegelaten tot vergelijking",
+        "TemporarilyStale": "Gegevens moeten worden vernieuwd",
+        "Suspended": "Gegevens opgeschort",
+        "Unknown": "Onbekende kwaliteit"
+      },
+      "scoreReasons": {
+        "ScoreAvailable": "De bekende factoren maken een vergelijking mogelijk.",
+        "HardFilterFailed": "Een noodzakelijk criterium is niet vervuld.",
+        "DateUnavailable": "Het park staat op deze datum als gesloten vermeld.",
+        "CriticalDataExcluded": "Kritieke gegevens verhinderen de vergelijking van dit park.",
+        "CriticalDataSuspended": "Kritieke gegevens moeten worden gecontroleerd voordat er een conclusie volgt.",
+        "NoKnownSubscore": "Geen voldoende bekende factor kan een score opleveren.",
+        "DataConfidenceUnknown": "De algemene betrouwbaarheid van de gegevens blijft onbekend.",
+        "IncompleteCoverageCapApplied": "De score is begrensd door onvolledige dekking.",
+        "DataConfidenceCapApplied": "De score is uit voorzorg begrensd door de betrouwbaarheid van de gegevens.",
+        "CriticalUnknownCapApplied": "De score is begrensd omdat een belangrijk gegeven onbekend blijft.",
+        "OptionalSubscoreNotApplicable": "Een niet-gevraagde optionele factor verlaagt het resultaat niet.",
+        "Unknown": "Een extra beperking is nog niet vertaald."
+      },
+      "proofs": {
+        "title": "Bewijs en actualiteit",
+        "text": "Deze bronnen onderbouwen de toegangsvoorwaarden voor je groep.",
+        "unknownDate": "datum onbekend",
+        "summaryFallback": "Gedocumenteerde toegangsvoorwaarde.",
+        "lastVerified": "Parkgegevens voor het laatst gecontroleerd: {{date}}.",
+        "checked": "Gecontroleerd op {{date}}",
+        "openSource": "Bron openen",
+        "noSource": "Er is geen kritieke bron nodig om dit resultaat uit te leggen."
+      },
+      "sourceKinds": {
+        "Official": "Officiële bron",
+        "OperatorProvided": "Informatie van de exploitant",
+        "VerifiedSecondary": "Geverifieerde secundaire bron",
+        "CommunityUnverified": "Niet-geverifieerde bijdrage",
+        "Unknown": "Onbekend brontype"
+      },
+      "method": {
+        "parkFit202601": "Park Fit-methode 2026 · versie 1",
+        "versioned": "Geversioneerde vergelijkingsmethode"
+      },
+      "openPark": "Ontdek dit park",
+      "empty": {
+        "title": "Geen vergelijkbaar resultaat",
+        "text": "Gesloten of onvoldoende gedocumenteerde parken worden niet als match getoond."
+      },
+      "missing": {
+        "lead": "Deze pagina bewaart resultaten alleen tijdens het navigeren.",
+        "title": "Start eerst een zoekopdracht",
+        "text": "Privécriteria en resultaten worden niet in je browser opgeslagen of aan een account gekoppeld.",
+        "action": "Mijn groep beschrijven"
+      }
     }
   }
 }

@@ -71,6 +71,7 @@
       "together": "atrakcje dostępne razem",
       "flexible": "atrakcje wymagające organizacji grupy",
       "unknown": "atrakcje z brakującymi danymi",
+      "openResults": "Zobacz wszystkie wyjaśnione wyniki ({{count}})",
       "openPark": "Zobacz park",
       "detailNext": "Brakujące dane pozostają widoczne: wynik pomaga podjąć decyzję, ale nie gwarantuje wstępu.",
       "evaluated": "Sprawdzone parki: {{count}}",
@@ -85,6 +86,136 @@
     "empty": {
       "title": "Brak wiarygodnego parku dla tych kryteriów",
       "text": "Wyszukiwarka nie składa obietnic, gdy park jest zamknięty lub ma za mało danych. Spróbuj innej daty albo uzupełnij informacje o grupie."
+    },
+    "results": {
+      "seo": {
+        "title": "Wyjaśnione wyniki Park Fit — Amusement Parks",
+        "description": "Sprawdź, które parki pasują do twojej grupy, poznaj ograniczenia wyników i wykorzystane źródła."
+      },
+      "kicker": "Wyjaśnione wyniki",
+      "title": "Parki dopasowane do twojej grupy",
+      "lead": "Dla daty {{date}} w porównaniu pozostało {{count}} wystarczająco opisanych parków.",
+      "changeCriteria": "Zmień moje kryteria",
+      "rankLabel": "Wynik numer {{rank}}",
+      "reading": {
+        "title": "Najpierw przeczytaj uzasadnienie, potem wynik",
+        "text": "Wynik jedynie porządkuje te parki względem siebie. Nie jest prawdopodobieństwem sukcesu ani gwarancją wstępu."
+      },
+      "strengths": {
+        "title": "Co sprawdzi się dla twojej grupy",
+        "together": "atrakcje dostępne dla wszystkich razem",
+        "organized": "atrakcje możliwe po podziale grupy",
+        "date": "znana sytuacja w wybranym dniu"
+      },
+      "unknowns": {
+        "title": "Niektórych danych nadal brakuje",
+        "text": "Dane o {{attractions}} atrakcjach i {{factors}} czynnikach obliczenia są nieznane. Nigdy nie są liczone na niekorzyść.",
+        "clearTitle": "Nie wykryto brakujących danych",
+        "clearText": "Atrakcje i czynniki użyte w tym wyniku mają oczekiwane dane."
+      },
+      "members": {
+        "title": "Dopasowanie dla każdej osoby",
+        "person": "Osoba {{number}}",
+        "alone": "{{count}} samodzielnie",
+        "withCompanion": "{{count}} z opiekunem",
+        "unavailable": "{{count}} niedostępnych",
+        "unknown": "{{count}} nieznanych"
+      },
+      "limits": { "title": "Co ogranicza lub uściśla ten wynik" },
+      "score": {
+        "title": "Wynik porównawczy",
+        "notProbability": "Porządkuje parki dla tego samego wyszukiwania; nie przewiduje przebiegu wizyty.",
+        "unavailable": "Wynik nieopublikowany",
+        "coverage": "Pokrycie obliczenia",
+        "confidence": "Wiarygodność"
+      },
+      "components": { "title": "Skład wyniku" },
+      "componentKinds": {
+        "GroupCompatibility": "Dopasowanie grupy",
+        "PreferenceCoverage": "Uwzględnienie preferencji",
+        "TravelConvenience": "Wygoda dojazdu",
+        "IndoorResilience": "Atrakcje pod dachem",
+        "BudgetFit": "Dopasowanie do budżetu",
+        "Unknown": "Nierozpoznany czynnik"
+      },
+      "componentStates": {
+        "Known": "Dane dostępne",
+        "Unknown": "Dane nieznane",
+        "NotApplicable": "Nie wybrano"
+      },
+      "scoreStates": {
+        "Available": "Porównanie dostępne",
+        "Capped": "Ostrożne porównanie",
+        "Suspended": "Wynik wymaga sprawdzenia",
+        "Unknown": "Nieznany stan"
+      },
+      "confidenceLevels": {
+        "High": "Wysoka",
+        "Medium": "Średnia",
+        "Low": "Niska",
+        "Unknown": "Nieznana"
+      },
+      "availabilityStates": {
+        "Available": "Otwarcie potwierdzone",
+        "Unavailable": "Znane zamknięcie",
+        "NotRequested": "Nie wskazano daty",
+        "Unknown": "Godziny otwarcia nieznane"
+      },
+      "qualityStates": {
+        "NotAssessed": "Jakość nieoceniona",
+        "Insufficient": "Niewystarczające dane",
+        "EligibleForDiscoveryOnly": "Tylko do odkrywania",
+        "EligibleForFitComparison": "Dane dopuszczone do porównania",
+        "TemporarilyStale": "Dane wymagają odświeżenia",
+        "Suspended": "Dane wstrzymane",
+        "Unknown": "Nieznana jakość"
+      },
+      "scoreReasons": {
+        "ScoreAvailable": "Znane czynniki pozwalają na porównanie.",
+        "HardFilterFailed": "Nie spełniono niezbędnego kryterium.",
+        "DateUnavailable": "Park jest oznaczony jako zamknięty w tym dniu.",
+        "CriticalDataExcluded": "Krytyczne dane uniemożliwiają porównanie parku.",
+        "CriticalDataSuspended": "Krytyczne dane wymagają sprawdzenia przed wyciągnięciem wniosku.",
+        "NoKnownSubscore": "Żaden wystarczająco znany czynnik nie pozwala wyliczyć wyniku.",
+        "DataConfidenceUnknown": "Ogólna wiarygodność danych pozostaje nieznana.",
+        "IncompleteCoverageCapApplied": "Wynik ograniczono z powodu niepełnego pokrycia danych.",
+        "DataConfidenceCapApplied": "Wynik ograniczono ostrożnościowo ze względu na wiarygodność danych.",
+        "CriticalUnknownCapApplied": "Wynik ograniczono, ponieważ brakuje ważnej informacji.",
+        "OptionalSubscoreNotApplicable": "Niewybrany opcjonalny czynnik nie obniża wyniku.",
+        "Unknown": "Dodatkowe ograniczenie wyniku nie zostało jeszcze przetłumaczone."
+      },
+      "proofs": {
+        "title": "Dowody i aktualność",
+        "text": "Te źródła potwierdzają warunki dostępu użyte dla twojej grupy.",
+        "unknownDate": "data nieznana",
+        "summaryFallback": "Udokumentowany warunek dostępu.",
+        "lastVerified": "Ostatnia weryfikacja danych parku: {{date}}.",
+        "checked": "Sprawdzono {{date}}",
+        "openSource": "Otwórz źródło",
+        "noSource": "Do wyjaśnienia tego wyniku nie jest potrzebne żadne krytyczne źródło."
+      },
+      "sourceKinds": {
+        "Official": "Źródło oficjalne",
+        "OperatorProvided": "Informacja operatora",
+        "VerifiedSecondary": "Zweryfikowane źródło wtórne",
+        "CommunityUnverified": "Niezweryfikowany wkład",
+        "Unknown": "Nieznany typ źródła"
+      },
+      "method": {
+        "parkFit202601": "Metoda Park Fit 2026 · wersja 1",
+        "versioned": "Wersjonowana metoda porównania"
+      },
+      "openPark": "Odkryj ten park",
+      "empty": {
+        "title": "Brak porównywalnych wyników",
+        "text": "Zamknięte lub niewystarczająco opisane parki nie są pokazywane jako dopasowania."
+      },
+      "missing": {
+        "lead": "Ta strona przechowuje wyniki tylko podczas nawigacji.",
+        "title": "Najpierw rozpocznij wyszukiwanie",
+        "text": "Prywatne kryteria i wyniki nie są zapisywane w przeglądarce ani przypisywane do konta.",
+        "action": "Opisz moją grupę"
+      }
     }
   }
 }
