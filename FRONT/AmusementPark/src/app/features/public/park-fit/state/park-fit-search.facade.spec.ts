@@ -56,6 +56,44 @@ describe('ParkFitSearchFacade', () => {
     expect(facade.status()).toBe('error');
     expect(facade.errorKey()).toBe('parkFit.feedback.rateLimited');
   });
+
+  it('keeps an ordered comparison selection between two and four visible parks', () => {
+    const response: ParkFitSearchResponse = buildResponse();
+    response.parks = [1, 2, 3, 4, 5].map((index: number): ParkFitSearchResponse['parks'][number] => ({
+      ...response.parks[0]!,
+      parkId: `park-${index}`,
+      parkName: `Parc ${index}`
+    }));
+    const facade: ParkFitSearchFacade = createFacade({ search: () => of(response) });
+
+    facade.search(buildRequest());
+    facade.toggleComparisonPark('park-2');
+    facade.toggleComparisonPark('park-5');
+
+    expect(facade.canCompare()).toBe(true);
+    expect(facade.comparisonParks().map((park) => park.parkId)).toEqual(['park-2', 'park-5']);
+    expect(facade.comparisonSelections().map((selection) => selection.resultRank)).toEqual([2, 5]);
+
+    facade.toggleComparisonPark('park-1');
+    facade.toggleComparisonPark('park-3');
+    facade.toggleComparisonPark('park-4');
+
+    expect(facade.comparisonLimitReached()).toBe(true);
+    expect(facade.comparisonParks()).toHaveLength(4);
+
+    facade.toggleComparisonPark('park-2');
+    expect(facade.comparisonParks().map((park) => park.parkId)).toEqual(['park-1', 'park-3', 'park-5']);
+  });
+
+  it('clears the comparison selection when a new private search starts', () => {
+    const facade: ParkFitSearchFacade = createFacade({ search: () => of(buildResponse()) });
+
+    facade.search(buildRequest());
+    facade.toggleComparisonPark('park-1');
+    facade.search(buildRequest());
+
+    expect(facade.comparisonParks()).toEqual([]);
+  });
 });
 
 function createFacade(port: ParkFitSearchDataPort): ParkFitSearchFacade {

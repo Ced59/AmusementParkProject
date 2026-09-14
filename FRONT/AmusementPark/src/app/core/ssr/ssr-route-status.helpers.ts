@@ -100,7 +100,7 @@ function isSharedProfileComparisonRoute(path: string): boolean {
 }
 
 function isParkFitRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park-fit(?:\/results)?\/?$/i.test(path);
+  return /^\/[a-z]{2}\/park-fit(?:\/(?:results|compare))?\/?$/i.test(path);
 }
 
 function isKnownPrivateClientRoute(path: string): boolean {

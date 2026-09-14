@@ -49,6 +49,9 @@ export class ParkFitResultsPageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');
   protected readonly response: Signal<ParkFitSearchResponse | null> = this.facade.response;
   protected readonly parks: Signal<ParkFitSearchPark[]> = this.facade.visibleParks;
+  protected readonly comparisonParks: Signal<ParkFitSearchPark[]> = this.facade.comparisonParks;
+  protected readonly canCompare: Signal<boolean> = this.facade.canCompare;
+  protected readonly comparisonLimitReached: Signal<boolean> = this.facade.comparisonLimitReached;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -82,6 +85,18 @@ export class ParkFitResultsPageComponent implements OnInit {
 
   protected homeRoute(): string[] {
     return ['/', this.currentLang(), 'home'];
+  }
+
+  protected comparisonRoute(): string[] {
+    return ['/', this.currentLang(), 'park-fit', 'compare'];
+  }
+
+  protected isSelectedForComparison(parkId: string): boolean {
+    return this.comparisonParks().some((park: ParkFitSearchPark): boolean => park.parkId === parkId);
+  }
+
+  protected toggleComparison(parkId: string): void {
+    this.facade.toggleComparisonPark(parkId);
   }
 
   protected parkRoute(park: ParkFitSearchPark): string[] | null {

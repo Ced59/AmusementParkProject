@@ -57,7 +57,10 @@ function createComponent(
 ): ParkFitResultsPageComponent {
   const response: Signal<ParkFitSearchResponse | null> = signal(responseValue).asReadonly();
   const visibleParks: Signal<ParkFitSearchPark[]> = signal(responseValue?.parks ?? []).asReadonly();
-  const facade = { response, visibleParks };
+  const comparisonParks: Signal<ParkFitSearchPark[]> = signal([]).asReadonly();
+  const canCompare: Signal<boolean> = signal(false).asReadonly();
+  const comparisonLimitReached: Signal<boolean> = signal(false).asReadonly();
+  const facade = { response, visibleParks, comparisonParks, canCompare, comparisonLimitReached, toggleComparisonPark: vi.fn() };
   const route = {
     snapshot: { paramMap: convertToParamMap({}) },
     parent: {

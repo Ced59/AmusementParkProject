@@ -84,6 +84,15 @@ describe('App routes', () => {
     expect(route?.canActivate).toBeUndefined();
   });
 
+  it('exposes the in-memory park-fit comparison without an authentication guard', () => {
+    const route: Route | undefined = getPublicRoutes().find(
+      (candidate: Route): boolean => candidate.path === 'park-fit/compare'
+    );
+
+    expect(route).toBeDefined();
+    expect(route?.canActivate).toBeUndefined();
+  });
+
   it('redirects legacy video share routes to canonical video routes', () => {
     const publicRoutes: Route[] = getPublicRoutes();
     const expectedRedirects: Record<string, string> = {

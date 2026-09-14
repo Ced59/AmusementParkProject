@@ -1,6 +1,20 @@
 {
-  "version": "5.3.25",
+  "version": "5.3.26",
   "history": [
+    {
+      "version": "5.3.26",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Tu peux maintenant comparer côte à côte jusqu’à quatre résultats Park Fit.",
+        "en": "You can now compare up to four Park Fit results side by side.",
+        "de": "Du kannst jetzt bis zu vier Park-Fit-Ergebnisse direkt vergleichen.",
+        "nl": "Je kunt nu maximaal vier Park Fit-resultaten naast elkaar vergelijken.",
+        "it": "Ora puoi confrontare fianco a fianco fino a quattro risultati Park Fit.",
+        "es": "Ahora puedes comparar en paralelo hasta cuatro resultados Park Fit.",
+        "pl": "Możesz teraz porównać obok siebie maksymalnie cztery wyniki Park Fit.",
+        "pt": "Agora podes comparar lado a lado até quatro resultados Park Fit."
+      }
+    },
     {
       "version": "5.3.25",
       "releasedAt": "2026-09-14",

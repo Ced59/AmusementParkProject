@@ -94,7 +94,7 @@
       },
       "kicker": "Erklärte Ergebnisse",
       "title": "Parks, die zu deiner Gruppe passen",
-      "lead": "Für den {{date}} bleiben {{count}} ausreichend dokumentierte Parks im Vergleich.",
+      "lead": "Datum: {{date}} · ausreichend dokumentierte Ergebnisse: {{count}}.",
       "changeCriteria": "Meine Kriterien ändern",
       "rankLabel": "Ergebnis Nummer {{rank}}",
       "breadcrumb": {
@@ -115,17 +115,17 @@
       },
       "unknowns": {
         "title": "Einige Angaben sind noch unbekannt",
-        "text": "{{attractions}} Attraktion(en) und {{factors}} Berechnungsfaktor(en) bleiben unbekannt. Sie werden nie negativ gewertet.",
+        "text": "Unbekannte Attraktionen: {{attractions}} · unbekannte Berechnungsfaktoren: {{factors}}. Sie werden nie negativ gewertet.",
         "clearTitle": "Keine Unbekannten erkannt",
         "clearText": "Für die Attraktionen und Faktoren dieses Ergebnisses liegen die erwarteten Daten vor."
       },
       "members": {
         "title": "Eignung pro Person",
         "person": "Person {{number}}",
-        "alone": "{{count}} selbstständig",
-        "withCompanion": "{{count}} mit Begleitung",
-        "unavailable": "{{count}} nicht geeignet",
-        "unknown": "{{count}} unbekannt"
+        "alone": "Selbstständig: {{count}}",
+        "withCompanion": "Mit Begleitung: {{count}}",
+        "unavailable": "Nicht geeignet: {{count}}",
+        "unknown": "Unbekannt: {{count}}"
       },
       "limits": { "title": "Was dieses Ergebnis begrenzt oder relativiert" },
       "score": {
@@ -148,6 +148,13 @@
         "Known": "Daten vorhanden",
         "Unknown": "Daten unbekannt",
         "NotApplicable": "Nicht angefragt"
+      },
+      "subscoreReasons": {
+        "KnownFactsNormalized": "Aus den bekannten Angaben berechnet.",
+        "UnknownFactsExcluded": "Unbekannte Angaben sind von der Berechnung ausgeschlossen.",
+        "MinimumMemberBoundApplied": "Das Ergebnis wird durch die am wenigsten berücksichtigte Person der Gruppe begrenzt.",
+        "NoKnownFact": "Keine bekannte Angabe erlaubt die Bewertung dieses Faktors.",
+        "Unknown": "Eine Erklärung dieses Faktors ist noch nicht übersetzt."
       },
       "scoreStates": {
         "Available": "Vergleich verfügbar",
@@ -221,7 +228,35 @@
         "title": "Starte zuerst eine Suche",
         "text": "Private Kriterien und Ergebnisse werden weder im Browser gespeichert noch einem Konto zugeordnet.",
         "action": "Meine Gruppe beschreiben"
+      },
+      "compare": {
+        "title": "Stelle deinen Vergleich zusammen",
+        "text": "Wähle zwei bis vier Parks. Die nächste Seite stellt ihre Unterschiede gegenüber, ohne deine privaten Kriterien zu kopieren.",
+        "count": "Auswahl: {{count}} / 4",
+        "minimum": "Wähle weitere Parks aus, bis es mindestens zwei sind.",
+        "limit": "Vier Parks sind ausgewählt. Entferne einen, um einen anderen zu wählen.",
+        "add": "Zum Vergleich hinzufügen",
+        "remove": "Aus dem Vergleich entfernen",
+        "action": "{{count}} Parks vergleichen"
       }
+    },
+    "comparison": {
+      "seo": { "title": "Meine Park-Fit-Ergebnisse vergleichen — Amusement Parks", "description": "Vergleiche zwei bis vier Parks übersichtlich nach deiner Gruppe, deinen Wünschen und der Datenqualität." },
+      "breadcrumb": { "current": "Vergleich" },
+      "kicker": "Direkter Vergleich",
+      "title": "Was diese Parks wirklich unterscheidet",
+      "lead": "{{count}} Parks werden anhand derselben Kriterien betrachtet. Wichtige Unterschiede sind beschriftet und nie nur farblich markiert.",
+      "changeSelection": "Auswahl ändern",
+      "selectedParks": "Ausgewählte Parks",
+      "rank": "Ergebnis Nr. {{rank}}",
+      "openPark": "Park entdecken",
+      "difference": "Unterschied",
+      "reading": { "title": "Vergleiche Zeile für Zeile, nicht nur die Punktzahl", "text": "Fehlende Angaben bleiben unverfügbar. Sie werden nie als Vorteil oder Nachteil gewertet." },
+      "filter": { "title": "Konzentriere dich auf die Unterschiede", "text": "Du kannst identische Zeilen ausblenden und jederzeit wieder anzeigen.", "differencesOnly": "Nur Unterschiede anzeigen", "showAll": "Alle Zeilen wieder anzeigen", "noneTitle": "Keine Unterschiede in den verfügbaren Zeilen", "noneText": "Zeige alle Zeilen wieder an, um Gemeinsamkeiten zu sehen." },
+      "sections": { "decision": "Gesamtentscheidung", "people": "Jede Person der Gruppe", "preferences": "Wünsche und Art des Ausflugs", "practical": "Praktische Informationen", "trust": "Zuverlässigkeit der Daten" },
+      "rows": { "overall": "Gesamtübereinstimmung", "groupCompatibility": "Kompatibilität der ganzen Gruppe", "together": "Gemeinsame Erlebnisse", "unknowns": "Unbekannte Angaben", "opening": "Öffnung am gewählten Tag", "member": "Person {{number}}", "preferences": "Bevorzugte Kategorien", "indoor": "Drinnen / draußen", "travel": "Anreise", "schedule": "Genaue Öffnungszeiten", "budget": "Budget", "quality": "Vollständigkeit", "verified": "Letzte Prüfung", "official": "Offizieller Link" },
+      "values": { "score": "{{score}}/100 · {{coverage}} % Abdeckung", "scoreUnavailable": "Punktzahl nicht veröffentlicht · {{coverage}} % Abdeckung", "cappedState": "Vorsichtiger Vergleich · Obergrenze {{ceiling}}/100", "together": "Gemeinsam möglich: {{count}}", "organized": "Mit Aufteilung für alle: {{split}} · teilweise Teilnahme: {{partial}} · für niemanden geeignet: {{unavailable}}", "unknowns": "Unbekannte Attraktionen: {{attractions}} · unbekannte Faktoren: {{factors}}", "member": "Selbstständig: {{alone}} · mit Begleitung: {{accompanied}} · nicht möglich: {{unavailable}} · unbekannt: {{unknown}} · nicht anwendbar: {{notApplicable}}", "componentScore": "{{score}}/100", "componentCoverage": "{{coverage}} % Abdeckung", "qualityCoverage": "{{coverage}} % Abdeckung", "verified": "{{date}}", "scheduleNotExposed": "Genaue Uhrzeiten sind in diesem Ergebnis nicht verfügbar", "officialAvailable": "Öffentlicher offizieller Link verfügbar", "officialUnavailable": "Kein öffentlicher offizieller Link in diesem Ergebnis", "openOfficial": "Offizielle Website öffnen", "unavailable": "Angabe nicht verfügbar" },
+      "missing": { "title": "Wähle zuerst mindestens zwei Parks", "text": "Deine Auswahl bleibt privat und nur während der Navigation im Speicher.", "action": "Zurück zu den Ergebnissen", "restart": "Neue Suche starten" }
     }
   }
 }

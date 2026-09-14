@@ -1963,6 +1963,32 @@ export class SeoService {
     });
   }
 
+  applyParkFitComparisonSeo(
+    title: string,
+    description: string,
+    url: string,
+    language: string,
+    homeLabel: string,
+    parkFitLabel: string,
+    resultsLabel: string,
+    comparisonLabel: string
+  ): void {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    this.apply({
+      title: truncateSeoText(normalizeSeoText(title, SITE_NAME), 70),
+      description: truncateSeoText(normalizeSeoText(description, DEFAULT_DESCRIPTION), 170),
+      canonicalUrl,
+      robots: 'noindex,nofollow,noarchive',
+      alternates: [],
+      jsonLd: [this.buildBreadcrumbJsonLd([
+        { name: normalizeSeoText(homeLabel, 'Home'), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+        { name: normalizeSeoText(parkFitLabel, 'Park Fit'), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/park-fit`) },
+        { name: normalizeSeoText(resultsLabel, 'Results'), url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/park-fit/results`) },
+        { name: normalizeSeoText(comparisonLabel, title), url: canonicalUrl }
+      ])]
+    });
+  }
+
   applySharedUserRankingSeo(
     title: string,
     description: string,

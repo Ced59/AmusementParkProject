@@ -80,6 +80,28 @@ describe('SeoService', () => {
     ]);
   });
 
+  it('adds the complete private breadcrumb to the Park Fit comparison page', () => {
+    service.applyParkFitComparisonSeo(
+      'Comparaison Park Fit',
+      'Compare les différences entre les parcs.',
+      '/fr/park-fit/compare',
+      'fr',
+      'Accueil',
+      'Park Fit',
+      'Résultats',
+      'Comparaison'
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,nofollow,noarchive');
+    expect(readOpenGraphLocaleAlternates()).toEqual([]);
+    expect(readBreadcrumbElements()).toEqual([
+      expect.objectContaining({ position: 1, name: 'Accueil', item: 'http://localhost:4200/fr/home' }),
+      expect.objectContaining({ position: 2, name: 'Park Fit', item: 'http://localhost:4200/fr/park-fit' }),
+      expect.objectContaining({ position: 3, name: 'Résultats', item: 'http://localhost:4200/fr/park-fit/results' }),
+      expect.objectContaining({ position: 4, name: 'Comparaison', item: 'http://localhost:4200/fr/park-fit/compare' })
+    ]);
+  });
+
   it('uses the park primary photo as the Open Graph image', () => {
     const park: ParkDetailViewModel = buildParkDetail({
       primaryPhoto: {

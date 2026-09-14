@@ -94,7 +94,7 @@
       },
       "kicker": "Explained results",
       "title": "Parks that suit your group",
-      "lead": "For {{date}}, {{count}} sufficiently documented park(s) remain in the comparison.",
+      "lead": "Date: {{date}} · sufficiently documented results: {{count}}.",
       "changeCriteria": "Change my criteria",
       "rankLabel": "Result number {{rank}}",
       "breadcrumb": {
@@ -115,17 +115,17 @@
       },
       "unknowns": {
         "title": "Some facts are still unknown",
-        "text": "{{attractions}} attraction(s) and {{factors}} calculation factor(s) remain unknown. They are never counted as negative.",
+        "text": "Unknown attractions: {{attractions}} · unknown calculation factors: {{factors}}. They are never counted as negative.",
         "clearTitle": "No unknowns detected",
         "clearText": "The attractions and factors used for this result have the expected data."
       },
       "members": {
         "title": "Compatibility for each person",
         "person": "Person {{number}}",
-        "alone": "{{count}} independently",
-        "withCompanion": "{{count}} with a companion",
-        "unavailable": "{{count}} incompatible",
-        "unknown": "{{count}} unknown"
+        "alone": "Independently: {{count}}",
+        "withCompanion": "With a companion: {{count}}",
+        "unavailable": "Incompatible: {{count}}",
+        "unknown": "Unknown: {{count}}"
       },
       "limits": { "title": "What limits or qualifies this result" },
       "score": {
@@ -148,6 +148,13 @@
         "Known": "Data available",
         "Unknown": "Data unknown",
         "NotApplicable": "Not requested"
+      },
+      "subscoreReasons": {
+        "KnownFactsNormalized": "Calculated from the known facts.",
+        "UnknownFactsExcluded": "Unknown facts are excluded from the calculation.",
+        "MinimumMemberBoundApplied": "The result is limited by the least well-served person in the group.",
+        "NoKnownFact": "No known fact can assess this factor.",
+        "Unknown": "An explanation for this factor is not translated yet."
       },
       "scoreStates": {
         "Available": "Comparison available",
@@ -221,6 +228,90 @@
         "title": "Start with a search",
         "text": "Private criteria and results are not stored in your browser or attached to an account.",
         "action": "Describe my group"
+      },
+      "compare": {
+        "title": "Build your comparison",
+        "text": "Choose two to four parks. The next screen will align their differences without copying your private criteria.",
+        "count": "Selection: {{count}} / 4",
+        "minimum": "Select more parks until you have at least two.",
+        "limit": "Four parks are selected. Remove one to choose another.",
+        "add": "Add to comparison",
+        "remove": "Remove from comparison",
+        "action": "Compare {{count}} parks"
+      }
+    },
+    "comparison": {
+      "seo": {
+        "title": "Compare my Park Fit results — Amusement Parks",
+        "description": "Clearly compare two to four parks for your group, wishes, and data reliability."
+      },
+      "breadcrumb": { "current": "Comparison" },
+      "kicker": "Head-to-head",
+      "title": "What really sets these parks apart",
+      "lead": "{{count}} parks are read against the same criteria. Useful differences are marked with text, never by colour alone.",
+      "changeSelection": "Change my selection",
+      "selectedParks": "Selected parks",
+      "rank": "Result no. {{rank}}",
+      "openPark": "Explore the park",
+      "difference": "Difference",
+      "reading": {
+        "title": "Compare each line, not just the score",
+        "text": "Missing data stays unavailable. It is never turned into an advantage or a drawback."
+      },
+      "filter": {
+        "title": "Focus on what changes",
+        "text": "You can hide identical lines and show them again at any time.",
+        "differencesOnly": "Show differences only",
+        "showAll": "Show all lines again",
+        "noneTitle": "No differences in the available lines",
+        "noneText": "Show every line again to review the common ground."
+      },
+      "sections": {
+        "decision": "Overall decision",
+        "people": "Each person in the group",
+        "preferences": "Wishes and type of day out",
+        "practical": "Practical information",
+        "trust": "Data reliability"
+      },
+      "rows": {
+        "overall": "Overall match",
+        "groupCompatibility": "Whole-group compatibility",
+        "together": "Experiences together",
+        "unknowns": "Unknowns",
+        "opening": "Opening on the chosen date",
+        "member": "Person {{number}}",
+        "preferences": "Preferred categories",
+        "indoor": "Indoor / outdoor",
+        "travel": "Journey",
+        "schedule": "Detailed opening hours",
+        "budget": "Budget",
+        "quality": "Completeness level",
+        "verified": "Last verification",
+        "official": "Official link"
+      },
+      "values": {
+        "score": "{{score}}/100 · {{coverage}}% coverage",
+        "scoreUnavailable": "Score not published · {{coverage}}% coverage",
+        "cappedState": "Cautious comparison · ceiling {{ceiling}}/100",
+        "together": "Possible together: {{count}}",
+        "organized": "With everyone split up: {{split}} · partial participation: {{partial}} · suitable for no one: {{unavailable}}",
+        "unknowns": "Unknown attractions: {{attractions}} · unknown factors: {{factors}}",
+        "member": "Independently: {{alone}} · with a companion: {{accompanied}} · incompatible: {{unavailable}} · unknown: {{unknown}} · outside scope: {{notApplicable}}",
+        "componentScore": "{{score}}/100",
+        "componentCoverage": "Coverage {{coverage}}%",
+        "qualityCoverage": "{{coverage}}% coverage",
+        "verified": "{{date}}",
+        "scheduleNotExposed": "Exact hours are not available in this result",
+        "officialAvailable": "Public official link available",
+        "officialUnavailable": "No public official link in this result",
+        "openOfficial": "Open official website",
+        "unavailable": "Data unavailable"
+      },
+      "missing": {
+        "title": "Choose at least two parks first",
+        "text": "Your selection stays private and only in memory while you navigate.",
+        "action": "Back to results",
+        "restart": "Start a new search"
       }
     }
   }

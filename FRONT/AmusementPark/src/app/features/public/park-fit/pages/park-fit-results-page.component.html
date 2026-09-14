@@ -35,6 +35,37 @@
         </div>
       </aside>
 
+      <section class="park-fit-results__compare-tray" appUiSurface="panel" appUiSurfacePadding="regular" aria-labelledby="park-fit-compare-title">
+        <div>
+          <span class="park-fit-results__compare-step" aria-hidden="true">2–4</span>
+          <div>
+            <h2 id="park-fit-compare-title">{{ 'parkFit.results.compare.title' | translate }}</h2>
+            <p>{{ 'parkFit.results.compare.text' | translate }}</p>
+          </div>
+        </div>
+        <div class="park-fit-results__compare-selection" aria-live="polite">
+          <strong>{{ 'parkFit.results.compare.count' | translate:{ count: comparisonParks().length } }}</strong>
+          @if (comparisonParks().length > 0) {
+            <ul>
+              @for (selectedPark of comparisonParks(); track selectedPark.parkId) {
+                <li>{{ selectedPark.parkName }}</li>
+              }
+            </ul>
+          }
+        </div>
+        @if (comparisonLimitReached()) {
+          <p class="park-fit-results__compare-limit"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ 'parkFit.results.compare.limit' | translate }}</p>
+        }
+        @if (canCompare()) {
+          <a appUiButton="primary" [routerLink]="comparisonRoute()">
+            <span>{{ 'parkFit.results.compare.action' | translate:{ count: comparisonParks().length } }}</span>
+            <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          </a>
+        } @else {
+          <span class="park-fit-results__compare-help">{{ 'parkFit.results.compare.minimum' | translate }}</span>
+        }
+      </section>
+
       <div class="park-fit-results__list">
         @for (park of parks(); track park.parkId; let rank = $index) {
           <article class="park-fit-result-card" appUiSurface="panel" appUiSurfacePadding="regular">
@@ -194,16 +225,34 @@
 
             <footer class="park-fit-result-card__footer">
               <span>{{ methodLabelKey(search.methodVersion) | translate }}</span>
-              @if (parkRoute(park); as routeCommands) {
-                <a appUiButton="primary" [routerLink]="routeCommands">
-                  <span>{{ 'parkFit.results.openPark' | translate }}</span>
-                  <i class="pi pi-arrow-right" aria-hidden="true"></i>
-                </a>
-              }
+              <div class="park-fit-result-card__actions">
+                <button
+                  type="button"
+                  appUiButton="ghost"
+                  [attr.aria-pressed]="isSelectedForComparison(park.parkId)"
+                  [disabled]="comparisonLimitReached() && !isSelectedForComparison(park.parkId)"
+                  (click)="toggleComparison(park.parkId)">
+                  <i [class]="isSelectedForComparison(park.parkId) ? 'pi pi-check' : 'pi pi-plus'" aria-hidden="true"></i>
+                  <span>{{ (isSelectedForComparison(park.parkId) ? 'parkFit.results.compare.remove' : 'parkFit.results.compare.add') | translate }}</span>
+                </button>
+                @if (parkRoute(park); as routeCommands) {
+                  <a appUiButton="primary" [routerLink]="routeCommands">
+                    <span>{{ 'parkFit.results.openPark' | translate }}</span>
+                    <i class="pi pi-arrow-right" aria-hidden="true"></i>
+                  </a>
+                }
+              </div>
             </footer>
           </article>
         }
       </div>
+
+      @if (canCompare()) {
+        <a class="park-fit-results__compare-final" appUiButton="primary" [routerLink]="comparisonRoute()">
+          <span>{{ 'parkFit.results.compare.action' | translate:{ count: comparisonParks().length } }}</span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </a>
+      }
     } @else {
       <section class="park-fit-results__empty" appUiSurface="panel" appUiSurfacePadding="spacious">
         <i class="pi pi-info-circle" aria-hidden="true"></i>

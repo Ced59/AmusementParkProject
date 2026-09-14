@@ -4867,7 +4867,7 @@
       },
       "kicker": "Uitgelegde resultaten",
       "title": "Parken die bij je groep passen",
-      "lead": "Voor {{date}} blijven {{count}} voldoende gedocumenteerde parken in de vergelijking.",
+      "lead": "Datum: {{date}} · voldoende gedocumenteerde resultaten: {{count}}.",
       "changeCriteria": "Mijn criteria wijzigen",
       "rankLabel": "Resultaat nummer {{rank}}",
       "breadcrumb": {
@@ -4888,17 +4888,17 @@
       },
       "unknowns": {
         "title": "Sommige gegevens zijn nog onbekend",
-        "text": "{{attractions}} attractie(s) en {{factors}} rekenfactor(en) blijven onbekend. Ze tellen nooit als negatief.",
+        "text": "Onbekende attracties: {{attractions}} · onbekende rekenfactoren: {{factors}}. Ze tellen nooit als negatief.",
         "clearTitle": "Geen onbekende gegevens gevonden",
         "clearText": "De attracties en factoren in dit resultaat bevatten de verwachte gegevens."
       },
       "members": {
         "title": "Geschiktheid per persoon",
         "person": "Persoon {{number}}",
-        "alone": "{{count}} zelfstandig",
-        "withCompanion": "{{count}} met begeleider",
-        "unavailable": "{{count}} niet geschikt",
-        "unknown": "{{count}} onbekend"
+        "alone": "Zelfstandig: {{count}}",
+        "withCompanion": "Met begeleider: {{count}}",
+        "unavailable": "Niet geschikt: {{count}}",
+        "unknown": "Onbekend: {{count}}"
       },
       "limits": {
         "title": "Wat dit resultaat beperkt of nuanceert"
@@ -4925,6 +4925,13 @@
         "Known": "Gegevens beschikbaar",
         "Unknown": "Gegevens onbekend",
         "NotApplicable": "Niet gevraagd"
+      },
+      "subscoreReasons": {
+        "KnownFactsNormalized": "Berekend op basis van de bekende gegevens.",
+        "UnknownFactsExcluded": "Onbekende gegevens tellen niet mee in de berekening.",
+        "MinimumMemberBoundApplied": "Het resultaat wordt begrensd door de minst goed bediende persoon in de groep.",
+        "NoKnownFact": "Geen bekend gegeven maakt een beoordeling van deze factor mogelijk.",
+        "Unknown": "Een verklaring voor deze factor is nog niet vertaald."
       },
       "scoreStates": {
         "Available": "Vergelijking beschikbaar",
@@ -4998,6 +5005,92 @@
         "title": "Start eerst een zoekopdracht",
         "text": "Privécriteria en resultaten worden niet in je browser opgeslagen of aan een account gekoppeld.",
         "action": "Mijn groep beschrijven"
+      },
+      "compare": {
+        "title": "Stel je vergelijking samen",
+        "text": "Kies twee tot vier parken. Het volgende scherm zet de verschillen naast elkaar zonder je privécriteria te kopiëren.",
+        "count": "Selectie: {{count}} / 4",
+        "minimum": "Selecteer nog parken totdat je er minstens twee hebt.",
+        "limit": "Vier parken zijn geselecteerd. Verwijder er een om een ander te kiezen.",
+        "add": "Aan vergelijking toevoegen",
+        "remove": "Uit vergelijking verwijderen",
+        "action": "{{count}} parken vergelijken"
+      }
+    },
+    "comparison": {
+      "seo": {
+        "title": "Mijn Park Fit-resultaten vergelijken — Amusement Parks",
+        "description": "Vergelijk twee tot vier parken helder op basis van je groep, wensen en de betrouwbaarheid van de gegevens."
+      },
+      "breadcrumb": {
+        "current": "Vergelijking"
+      },
+      "kicker": "Naast elkaar",
+      "title": "Wat deze parken echt onderscheidt",
+      "lead": "{{count}} parken worden met dezelfde criteria bekeken. Belangrijke verschillen krijgen een tekstlabel en worden nooit alleen met kleur aangegeven.",
+      "changeSelection": "Mijn selectie wijzigen",
+      "selectedParks": "Geselecteerde parken",
+      "rank": "Resultaat nr. {{rank}}",
+      "openPark": "Park ontdekken",
+      "difference": "Verschil",
+      "reading": {
+        "title": "Vergelijk regel voor regel, niet alleen de score",
+        "text": "Ontbrekende gegevens blijven onbeschikbaar. Ze worden nooit als voordeel of nadeel behandeld."
+      },
+      "filter": {
+        "title": "Richt je op wat verschilt",
+        "text": "Je kunt gelijke regels verbergen en ze altijd weer tonen.",
+        "differencesOnly": "Alleen verschillen tonen",
+        "showAll": "Alle regels weer tonen",
+        "noneTitle": "Geen verschillen in de beschikbare regels",
+        "noneText": "Toon alle regels opnieuw om de overeenkomsten te bekijken."
+      },
+      "sections": {
+        "decision": "Algemene afweging",
+        "people": "Iedere persoon in de groep",
+        "preferences": "Wensen en type uitstap",
+        "practical": "Praktische informatie",
+        "trust": "Betrouwbaarheid van gegevens"
+      },
+      "rows": {
+        "overall": "Algemene match",
+        "groupCompatibility": "Compatibiliteit van de hele groep",
+        "together": "Ervaringen samen",
+        "unknowns": "Onbekende gegevens",
+        "opening": "Open op de gekozen datum",
+        "member": "Persoon {{number}}",
+        "preferences": "Voorkeurscategorieën",
+        "indoor": "Binnen / buiten",
+        "travel": "Reis",
+        "schedule": "Gedetailleerde openingstijden",
+        "budget": "Budget",
+        "quality": "Volledigheidsniveau",
+        "verified": "Laatst gecontroleerd",
+        "official": "Officiële link"
+      },
+      "values": {
+        "score": "{{score}}/100 · {{coverage}}% dekking",
+        "scoreUnavailable": "Score niet gepubliceerd · {{coverage}}% dekking",
+        "cappedState": "Voorzichtige vergelijking · plafond {{ceiling}}/100",
+        "together": "Samen mogelijk: {{count}}",
+        "organized": "Met opsplitsing voor iedereen: {{split}} · gedeeltelijke deelname: {{partial}} · voor niemand geschikt: {{unavailable}}",
+        "unknowns": "Onbekende attracties: {{attractions}} · onbekende factoren: {{factors}}",
+        "member": "Zelfstandig: {{alone}} · met begeleider: {{accompanied}} · niet mogelijk: {{unavailable}} · onbekend: {{unknown}} · niet van toepassing: {{notApplicable}}",
+        "componentScore": "{{score}}/100",
+        "componentCoverage": "{{coverage}}% dekking",
+        "qualityCoverage": "{{coverage}}% dekking",
+        "verified": "{{date}}",
+        "scheduleNotExposed": "Exacte tijden zijn niet beschikbaar in dit resultaat",
+        "officialAvailable": "Openbare officiële link beschikbaar",
+        "officialUnavailable": "Geen openbare officiële link in dit resultaat",
+        "openOfficial": "Officiële website openen",
+        "unavailable": "Gegevens niet beschikbaar"
+      },
+      "missing": {
+        "title": "Kies eerst minstens twee parken",
+        "text": "Je selectie blijft privé en alleen tijdens het navigeren in het geheugen.",
+        "action": "Terug naar de resultaten",
+        "restart": "Nieuwe zoekopdracht starten"
       }
     }
   },
