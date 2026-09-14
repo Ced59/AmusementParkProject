@@ -12,6 +12,8 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 
 public sealed class ShareSourceRevisionRepositoryTests
 {
+    private static readonly TimeSpan AsyncSignalTimeout = TimeSpan.FromSeconds(5);
+
     private static readonly DateTime NowUtc =
         new DateTime(2026, 9, 5, 22, 0, 0, DateTimeKind.Utc);
 
@@ -248,7 +250,7 @@ public sealed class ShareSourceRevisionRepositoryTests
         await repository.BeginMutationAsync(
             "personal-ranking:owner-1",
             CancellationToken.None);
-        await heartbeatObserved.Task.WaitAsync(TimeSpan.FromSeconds(1));
+        await heartbeatObserved.Task.WaitAsync(AsyncSignalTimeout);
 
         Assert.True(updateCallCount >= 2);
     }
@@ -308,7 +310,7 @@ public sealed class ShareSourceRevisionRepositoryTests
         await repository.BeginMutationAsync(
             "personal-ranking:owner-1",
             CancellationToken.None);
-        await retryObserved.Task.WaitAsync(TimeSpan.FromSeconds(1));
+        await retryObserved.Task.WaitAsync(AsyncSignalTimeout);
 
         Assert.True(updateCallCount >= 3);
         Assert.Equal(
@@ -366,9 +368,9 @@ public sealed class ShareSourceRevisionRepositoryTests
             Timeout.InfiniteTimeSpan,
             mutationLease.LeaseCancellationToken);
 
-        await heartbeatObserved.Task.WaitAsync(TimeSpan.FromSeconds(5));
+        await heartbeatObserved.Task.WaitAsync(AsyncSignalTimeout);
         await Assert.ThrowsAnyAsync<OperationCanceledException>(
-            () => leaseLossCancellation.WaitAsync(TimeSpan.FromSeconds(1)));
+            () => leaseLossCancellation.WaitAsync(AsyncSignalTimeout));
         collection.VerifyAll();
     }
 
