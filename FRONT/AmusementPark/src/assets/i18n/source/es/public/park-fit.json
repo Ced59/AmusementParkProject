@@ -97,6 +97,12 @@
       "lead": "Para el {{date}}, quedan {{count}} parques suficientemente documentados en la comparación.",
       "changeCriteria": "Cambiar mis criterios",
       "rankLabel": "Resultado número {{rank}}",
+      "breadcrumb": {
+        "label": "Ruta de navegación",
+        "home": "Inicio",
+        "parkFit": "Buscar un parque",
+        "current": "Resultados explicados"
+      },
       "reading": {
         "title": "Lee primero los motivos y después la puntuación",
         "text": "La puntuación solo ordena estos parques entre sí. No es una probabilidad de éxito ni una garantía de acceso."

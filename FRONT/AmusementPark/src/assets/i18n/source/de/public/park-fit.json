@@ -97,6 +97,12 @@
       "lead": "Für den {{date}} bleiben {{count}} ausreichend dokumentierte Parks im Vergleich.",
       "changeCriteria": "Meine Kriterien ändern",
       "rankLabel": "Ergebnis Nummer {{rank}}",
+      "breadcrumb": {
+        "label": "Breadcrumb-Navigation",
+        "home": "Startseite",
+        "parkFit": "Park finden",
+        "current": "Erklärte Ergebnisse"
+      },
       "reading": {
         "title": "Lies zuerst die Gründe, dann die Punktzahl",
         "text": "Die Punktzahl ordnet diese Parks nur untereinander. Sie ist weder eine Erfolgswahrscheinlichkeit noch eine Zugangsgarantie."

@@ -100,6 +100,20 @@ export function parkFitMethodLabelKey(methodVersion: string): string {
     : 'parkFit.results.method.versioned';
 }
 
+export function formatParkFitDate(value: string, language: string): string | null {
+  const day: Date = new Date(value.includes('T') ? value : `${value}T12:00:00Z`);
+  if (Number.isNaN(day.getTime())) {
+    return null;
+  }
+
+  return new Intl.DateTimeFormat(language, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC'
+  }).format(day);
+}
+
 function enumTranslationKey(prefix: string, value: string, knownValues: readonly string[]): string {
   return knownValues.includes(value) ? `${prefix}.${value}` : `${prefix}.Unknown`;
 }

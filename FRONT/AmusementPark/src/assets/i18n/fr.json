@@ -4870,6 +4870,12 @@
       "lead": "Pour le {{date}}, {{count}} parc(s) assez documenté(s) restent dans la comparaison.",
       "changeCriteria": "Modifier mes critères",
       "rankLabel": "Résultat numéro {{rank}}",
+      "breadcrumb": {
+        "label": "Fil d’Ariane",
+        "home": "Accueil",
+        "parkFit": "Trouver un parc",
+        "current": "Résultats expliqués"
+      },
       "reading": {
         "title": "Lis d’abord les raisons, puis le score",
         "text": "Le score sert uniquement à ordonner ces parcs entre eux. Ce n’est ni une probabilité de réussite ni une garantie d’accès."

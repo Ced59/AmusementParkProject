@@ -11,6 +11,7 @@ import { ParkFitResultsPageComponent } from './park-fit-results-page.component';
 
 interface ParkFitResultsTestSurface {
   criteriaRoute(): string[];
+  homeRoute(): string[];
   countryName(countryCode: string | null): string;
   sourceUrl(source: ParkFitSearchPark['criticalSources'][number]): string | null;
   scoreReasonKey(value: string): string;
@@ -18,18 +19,23 @@ interface ParkFitResultsTestSurface {
 
 describe('ParkFitResultsPageComponent', () => {
   it('keeps the result page private and exposes visitor-facing routes', () => {
-    const seoService: Pick<SeoService, 'applyParkFitSeo'> = { applyParkFitSeo: vi.fn() };
+    const seoService: Pick<SeoService, 'applyParkFitResultsSeo'> = { applyParkFitResultsSeo: vi.fn() };
     const component: ParkFitResultsPageComponent = createComponent(buildResponse(), seoService);
     const page: ParkFitResultsTestSurface = component as unknown as ParkFitResultsTestSurface;
 
     component.ngOnInit();
 
     expect(page.criteriaRoute()).toEqual(['/', 'fr', 'park-fit']);
+    expect(page.homeRoute()).toEqual(['/', 'fr', 'home']);
     expect(page.countryName('FR')).toBeTruthy();
-    expect(seoService.applyParkFitSeo).toHaveBeenCalledWith(
+    expect(seoService.applyParkFitResultsSeo).toHaveBeenCalledWith(
       'parkFit.results.seo.title',
       'parkFit.results.seo.description',
-      '/fr/park-fit/results'
+      '/fr/park-fit/results',
+      'fr',
+      'parkFit.results.breadcrumb.home',
+      'parkFit.results.breadcrumb.parkFit',
+      'parkFit.results.breadcrumb.current'
     );
   });
 
@@ -47,7 +53,7 @@ describe('ParkFitResultsPageComponent', () => {
 
 function createComponent(
   responseValue: ParkFitSearchResponse | null,
-  seoService: Pick<SeoService, 'applyParkFitSeo'> = { applyParkFitSeo: vi.fn() }
+  seoService: Pick<SeoService, 'applyParkFitResultsSeo'> = { applyParkFitResultsSeo: vi.fn() }
 ): ParkFitResultsPageComponent {
   const response: Signal<ParkFitSearchResponse | null> = signal(responseValue).asReadonly();
   const visibleParks: Signal<ParkFitSearchPark[]> = signal(responseValue?.parks ?? []).asReadonly();

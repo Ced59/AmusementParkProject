@@ -4870,6 +4870,12 @@
       "lead": "Dla daty {{date}} w porównaniu pozostało {{count}} wystarczająco opisanych parków.",
       "changeCriteria": "Zmień moje kryteria",
       "rankLabel": "Wynik numer {{rank}}",
+      "breadcrumb": {
+        "label": "Nawigacja okruszkowa",
+        "home": "Strona główna",
+        "parkFit": "Znajdź park",
+        "current": "Wyjaśnione wyniki"
+      },
       "reading": {
         "title": "Najpierw przeczytaj uzasadnienie, potem wynik",
         "text": "Wynik jedynie porządkuje te parki względem siebie. Nie jest prawdopodobieństwem sukcesu ani gwarancją wstępu."

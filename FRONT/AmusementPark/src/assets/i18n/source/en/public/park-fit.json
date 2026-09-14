@@ -97,6 +97,12 @@
       "lead": "For {{date}}, {{count}} sufficiently documented park(s) remain in the comparison.",
       "changeCriteria": "Change my criteria",
       "rankLabel": "Result number {{rank}}",
+      "breadcrumb": {
+        "label": "Breadcrumb",
+        "home": "Home",
+        "parkFit": "Find a park",
+        "current": "Explained results"
+      },
       "reading": {
         "title": "Read the reasons before the score",
         "text": "The score only orders these parks against each other. It is neither a probability of success nor an access guarantee."

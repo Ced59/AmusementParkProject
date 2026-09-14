@@ -27,6 +27,29 @@
   max-width: 100%;
 }
 
+.park-fit-results__breadcrumb {
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.park-fit-results__breadcrumb a {
+  color: var(--c-sky);
+  font-weight: 800;
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+}
+
+.park-fit-results__breadcrumb span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .park-fit-results,
 .park-fit-results__list,
 .park-fit-result-card,

@@ -1,5 +1,6 @@
 import { ParkFitCriticalSource } from '@app/models/park-fit/park-fit-search.models';
 import {
+  formatParkFitDate,
   parkFitComponentKindKey,
   parkFitScoreReasonKey,
   resolveParkFitSourceSummary,
@@ -27,6 +28,20 @@ describe('park fit result display helpers', () => {
     expect(resolveParkFitSourceUrl(buildSource())).toBe('https://example.test/access');
     expect(resolveParkFitSourceUrl({ ...buildSource(), url: 'javascript:alert(1)' })).toBeNull();
     expect(resolveParkFitSourceUrl({ ...buildSource(), url: null })).toBeNull();
+  });
+
+  it('formats verification timestamps against their UTC calendar date', () => {
+    const formatter = { format: vi.fn().mockReturnValue('1 septembre 2026') };
+    const dateTimeFormat = vi.spyOn(Intl, 'DateTimeFormat').mockImplementation(
+      function (): Intl.DateTimeFormat {
+        return formatter as unknown as Intl.DateTimeFormat;
+      }
+    );
+
+    expect(formatParkFitDate('2026-09-01T00:00:00Z', 'fr')).toBe('1 septembre 2026');
+    expect(dateTimeFormat).toHaveBeenCalledWith('fr', expect.objectContaining({ timeZone: 'UTC' }));
+
+    dateTimeFormat.mockRestore();
   });
 });
 

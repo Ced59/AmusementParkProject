@@ -60,6 +60,26 @@ describe('SeoService', () => {
     expect(readOpenGraphLocaleAlternates()).toEqual([]);
   });
 
+  it('adds localized parent breadcrumbs to the private Park Fit results page', () => {
+    service.applyParkFitResultsSeo(
+      'Résultats Park Fit',
+      'Résultats expliqués.',
+      '/fr/park-fit/results',
+      'fr',
+      'Accueil',
+      'Park Fit',
+      'Résultats'
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,nofollow,noarchive');
+    expect(readOpenGraphLocaleAlternates()).toEqual([]);
+    expect(readBreadcrumbElements()).toEqual([
+      expect.objectContaining({ position: 1, name: 'Accueil', item: 'http://localhost:4200/fr/home' }),
+      expect.objectContaining({ position: 2, name: 'Park Fit', item: 'http://localhost:4200/fr/park-fit' }),
+      expect.objectContaining({ position: 3, name: 'Résultats', item: 'http://localhost:4200/fr/park-fit/results' })
+    ]);
+  });
+
   it('uses the park primary photo as the Open Graph image', () => {
     const park: ParkDetailViewModel = buildParkDetail({
       primaryPhoto: {

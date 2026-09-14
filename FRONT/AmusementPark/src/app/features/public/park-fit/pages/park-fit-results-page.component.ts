@@ -16,6 +16,7 @@ import { resolveLocalizedCountryName } from '@shared/utils/display/country-displ
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import {
+  formatParkFitDate,
   parkFitAvailabilityKey,
   parkFitComponentKindKey,
   parkFitComponentStateKey,
@@ -77,6 +78,10 @@ export class ParkFitResultsPageComponent implements OnInit {
 
   protected criteriaRoute(): string[] {
     return ['/', this.currentLang(), 'park-fit'];
+  }
+
+  protected homeRoute(): string[] {
+    return ['/', this.currentLang(), 'home'];
   }
 
   protected parkRoute(park: ParkFitSearchPark): string[] | null {
@@ -149,23 +154,19 @@ export class ParkFitResultsPageComponent implements OnInit {
   }
 
   private formatDate(value: string): string {
-    const day: Date = new Date(value.includes('T') ? value : `${value}T12:00:00`);
-    if (Number.isNaN(day.getTime())) {
-      return this.translateService.instant('parkFit.results.proofs.unknownDate');
-    }
-
-    return new Intl.DateTimeFormat(this.currentLang(), {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    }).format(day);
+    return formatParkFitDate(value, this.currentLang())
+      ?? this.translateService.instant('parkFit.results.proofs.unknownDate');
   }
 
   private applySeo(): void {
-    this.seoService.applyParkFitSeo(
+    this.seoService.applyParkFitResultsSeo(
       this.translateService.instant('parkFit.results.seo.title'),
       this.translateService.instant('parkFit.results.seo.description'),
-      this.router.url
+      this.router.url,
+      this.currentLang(),
+      this.translateService.instant('parkFit.results.breadcrumb.home'),
+      this.translateService.instant('parkFit.results.breadcrumb.parkFit'),
+      this.translateService.instant('parkFit.results.breadcrumb.current')
     );
   }
 }

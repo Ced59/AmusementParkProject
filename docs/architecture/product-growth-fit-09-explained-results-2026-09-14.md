@@ -36,6 +36,8 @@ flowchart LR
 Un rechargement direct de la page de résultats ne tente pas de reconstruire des
 critères privés. Il propose de relancer la recherche. La page et le formulaire sont
 rendus uniquement côté client et portent `noindex, nofollow, noarchive`.
+La page profonde conserve néanmoins un fil d'Ariane visible et un `BreadcrumbList`
+localisé reliant l'accueil, le formulaire Park Fit et les résultats.
 
 ## Architecture
 
@@ -117,6 +119,8 @@ Les identifiants de parc servent uniquement à fabriquer les routes publiques. L
 références internes d'une preuve ne sont jamais affichées. Seules les URL HTTPS
 validées deviennent des liens ; le résumé privilégie la langue active, puis
 l'anglais, puis la première traduction non vide.
+Les horodatages de vérification sont formatés dans le fuseau UTC afin de conserver
+la date factuelle publiée, indépendamment du fuseau du visiteur.
 
 ## MongoDB
 

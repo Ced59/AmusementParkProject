@@ -97,6 +97,12 @@
       "lead": "Voor {{date}} blijven {{count}} voldoende gedocumenteerde parken in de vergelijking.",
       "changeCriteria": "Mijn criteria wijzigen",
       "rankLabel": "Resultaat nummer {{rank}}",
+      "breadcrumb": {
+        "label": "Kruimelpad",
+        "home": "Home",
+        "parkFit": "Een park zoeken",
+        "current": "Uitgelegde resultaten"
+      },
       "reading": {
         "title": "Lees eerst de redenen, daarna de score",
         "text": "De score rangschikt deze parken alleen ten opzichte van elkaar. Het is geen kans op succes en geen toegangsgarantie."
