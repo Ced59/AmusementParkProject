@@ -199,6 +199,37 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenUnknownGroupOutcomeChangesMemberBound_ShouldUseItsKnownFactConfidence()
+    {
+        GroupAttractionCompatibility together = this.BuildGroup(
+            GroupAttractionCompatibilityState.EveryoneTogether,
+            ParkFitDataConfidence.High);
+        GroupAttractionCompatibility unknown = this.groupEvaluator.Evaluate(
+            new[]
+            {
+                BuildMember(
+                    "a",
+                    AttractionCompatibilityState.Incompatible,
+                    ParkFitDataConfidence.Low),
+                BuildMember(
+                    "b",
+                    AttractionCompatibilityState.Unknown,
+                    ParkFitDataConfidence.Unknown),
+            },
+            GroupAttractionParticipationConfiguration.Unknown);
+
+        ParkFitSubscore result = this.evaluator.Evaluate(
+            new[] { together, unknown },
+            EvaluationDate);
+
+        Assert.Equal(50m, result.Value);
+        Assert.Equal(ParkFitDataConfidence.Low, result.Confidence);
+        Assert.Contains(
+            ParkFitSubscoreReasonCode.MinimumMemberBoundApplied,
+            result.Reasons);
+    }
+
+    [Fact]
     public void Evaluate_ShouldBeInvariantToAttractionOrder()
     {
         GroupAttractionCompatibility together = this.BuildGroup(

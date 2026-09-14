@@ -107,7 +107,8 @@ le membre le moins bien servi. La couverture factuelle, une confiance moyenne ou
 faible et une inconnue critique plafonnent le nombre affichable. Selon la politique
 choisie, une inconnue critique peut aussi suspendre ou exclure le résultat. La
 preuve conserve la date et le nombre exact de filtres critiques inconnus, ainsi
-que la date source de la disponibilité. La formule, les diagrammes et 70 scénarios
+que la date source de la disponibilité. La confiance tient compte de chaque fait
+qui borne réellement le résultat. La formule, les diagrammes et 71 scénarios
 métier sont documentés dans
 [`product-growth-fit-06-versioned-subscores-2026-09-14.md`](../../architecture/product-growth-fit-06-versioned-subscores-2026-09-14.md).
 
