@@ -12,6 +12,25 @@ Les profils, recherches sauvegardées et résultats utilisent des identifiants c
 
 Une projection ou un job de pré-calcul n’est ajouté qu’après mesure d’un p95 insuffisant malgré les indexes et la réduction du portefeuille. Les données inconnues restent `Unknown` pendant tout cache ou calcul différé ; une projection ne peut pas transformer une absence en compatibilité.
 
+### État de `FIT-01` au 14 septembre 2026
+
+Le contrat [`product-growth-fit-01-decision-contract-2026-09-14.md`](../../architecture/product-growth-fit-01-decision-contract-2026-09-14.md)
+fige la sémantique avant toute implémentation : cinq états individuels, cinq états de
+groupe, politique explicite des inconnues, séparation des filtres durs et des
+préférences, profil privé minimal, hiérarchie des sources et score comparatif
+versionné borné par la confiance.
+
+L'audit du modèle existant confirme que les attractions possèdent déjà une liste de
+conditions et plusieurs types de seuils. `FIT-02` enrichira et migrera ce modèle
+canonique avec ses preuves et sa fraîcheur ; aucun adaptateur permanent ni second
+système de restrictions ne sera créé. Cette PR documentaire ne crée encore ni
+stockage MongoDB, ni endpoint, ni écran de recommandation.
+
+Conformément à la décision produit, aucune cohorte réelle ne bloque les jalons
+techniques suivants. Les preuves automatisées, la confidentialité, le responsive et
+la probité restent des gates obligatoires ; aucun résultat d'usage réel n'est
+revendiqué sans observation.
+
 ## 1. Vision produit
 
 La recherche actuelle permet de retrouver une entité connue. Le nouveau moteur doit répondre à une question de décision :
