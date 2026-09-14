@@ -48,7 +48,7 @@ public sealed class ParkFitScoreEvaluator
         }
 
         List<ParkFitSubscore> snapshot = subscores.ToList();
-        ValidateSubscores(snapshot, subscores);
+        ValidateSubscores(snapshot, subscores, evaluationDate);
 
         decimal applicableWeight = snapshot
             .Where(static subscore => subscore.State != ParkFitSubscoreState.NotApplicable)
@@ -235,7 +235,8 @@ public sealed class ParkFitScoreEvaluator
 
     private static void ValidateSubscores(
         IReadOnlyCollection<ParkFitSubscore> snapshot,
-        IReadOnlyCollection<ParkFitSubscore> subscores)
+        IReadOnlyCollection<ParkFitSubscore> subscores,
+        DateOnly evaluationDate)
     {
         if (snapshot.Any(static subscore => subscore is null))
         {
@@ -266,6 +267,14 @@ public sealed class ParkFitScoreEvaluator
         {
             throw new ArgumentException(
                 "Group compatibility and preference coverage must remain explicit.",
+                nameof(subscores));
+        }
+
+        if (!groupCompatibility.EvaluationDate.HasValue
+            || groupCompatibility.EvaluationDate.Value != evaluationDate)
+        {
+            throw new ArgumentException(
+                "Group compatibility must match the score evaluation date.",
                 nameof(subscores));
         }
 

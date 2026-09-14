@@ -11,7 +11,8 @@ public sealed class ParkFitSubscore
         decimal? value,
         decimal coveragePercent,
         ParkFitDataConfidence confidence,
-        IReadOnlyCollection<ParkFitSubscoreReasonCode>? reasons = null)
+        IReadOnlyCollection<ParkFitSubscoreReasonCode>? reasons = null,
+        DateOnly? evaluationDate = null)
     {
         if (!Enum.IsDefined(kind))
         {
@@ -77,6 +78,7 @@ public sealed class ParkFitSubscore
         this.CoveragePercent = coveragePercent;
         this.Confidence = confidence;
         this.Reasons = reasonSnapshot.Distinct().OrderBy(static reason => reason).ToList();
+        this.EvaluationDate = evaluationDate;
     }
 
     public ParkFitSubscoreKind Kind { get; }
@@ -90,4 +92,6 @@ public sealed class ParkFitSubscore
     public ParkFitDataConfidence Confidence { get; }
 
     public IReadOnlyCollection<ParkFitSubscoreReasonCode> Reasons { get; }
+
+    public DateOnly? EvaluationDate { get; }
 }

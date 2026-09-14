@@ -18,12 +18,14 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
     public void Evaluate_WhenThereIsNoAttraction_ShouldReturnUnknown()
     {
         ParkFitSubscore result = this.evaluator.Evaluate(
-            Array.Empty<GroupAttractionCompatibility>());
+            Array.Empty<GroupAttractionCompatibility>(),
+            EvaluationDate);
 
         Assert.Equal(ParkFitSubscoreState.Unknown, result.State);
         Assert.Null(result.Value);
         Assert.Equal(0m, result.CoveragePercent);
         Assert.Equal(ParkFitDataConfidence.Unknown, result.Confidence);
+        Assert.Equal(EvaluationDate, result.EvaluationDate);
         Assert.Contains(ParkFitSubscoreReasonCode.NoKnownFact, result.Reasons);
     }
 
@@ -37,7 +39,9 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
     {
         GroupAttractionCompatibility compatibility = this.BuildGroup(state);
 
-        ParkFitSubscore result = this.evaluator.Evaluate(new[] { compatibility });
+        ParkFitSubscore result = this.evaluator.Evaluate(
+            new[] { compatibility },
+            EvaluationDate);
 
         Assert.Equal(ParkFitSubscoreState.Known, result.State);
         Assert.Equal(expectedValue, result.Value);
@@ -62,7 +66,9 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
             },
             GroupAttractionParticipationConfiguration.Unknown);
 
-        ParkFitSubscore result = this.evaluator.Evaluate(new[] { first, second });
+        ParkFitSubscore result = this.evaluator.Evaluate(
+            new[] { first, second },
+            EvaluationDate);
 
         Assert.Equal(ParkFitGroupCompatibilitySubscoreEvaluator.PartialValue, result.Value);
     }
@@ -70,11 +76,13 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
     [Fact]
     public void Evaluate_ShouldAverageKnownGroupOutcomes()
     {
-        ParkFitSubscore result = this.evaluator.Evaluate(new[]
-        {
-            this.BuildGroup(GroupAttractionCompatibilityState.EveryoneTogether),
-            this.BuildGroup(GroupAttractionCompatibilityState.PossibleWithSplit),
-        });
+        ParkFitSubscore result = this.evaluator.Evaluate(
+            new[]
+            {
+                this.BuildGroup(GroupAttractionCompatibilityState.EveryoneTogether),
+                this.BuildGroup(GroupAttractionCompatibilityState.PossibleWithSplit),
+            },
+            EvaluationDate);
 
         Assert.Equal(87.5m, result.Value);
         Assert.Equal(100m, result.CoveragePercent);
@@ -101,7 +109,9 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
             },
             GroupAttractionParticipationConfiguration.EveryoneTogether);
 
-        ParkFitSubscore result = this.evaluator.Evaluate(new[] { partial, together });
+        ParkFitSubscore result = this.evaluator.Evaluate(
+            new[] { partial, together },
+            EvaluationDate);
 
         Assert.Equal(50m, result.Value);
         Assert.Contains(
@@ -122,7 +132,9 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
         GroupAttractionCompatibility together = this.BuildGroup(
             GroupAttractionCompatibilityState.EveryoneTogether);
 
-        ParkFitSubscore result = this.evaluator.Evaluate(new[] { unknown, together });
+        ParkFitSubscore result = this.evaluator.Evaluate(
+            new[] { unknown, together },
+            EvaluationDate);
 
         Assert.Equal(100m, result.Value);
         Assert.Equal(50m, result.CoveragePercent);
@@ -140,7 +152,9 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
             },
             GroupAttractionParticipationConfiguration.Unknown);
 
-        ParkFitSubscore result = this.evaluator.Evaluate(new[] { unknown });
+        ParkFitSubscore result = this.evaluator.Evaluate(
+            new[] { unknown },
+            EvaluationDate);
 
         Assert.Equal(ParkFitSubscoreState.Unknown, result.State);
         Assert.Null(result.Value);
@@ -158,7 +172,9 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
             },
             GroupAttractionParticipationConfiguration.Unknown);
 
-        ParkFitSubscore result = this.evaluator.Evaluate(new[] { compatibility });
+        ParkFitSubscore result = this.evaluator.Evaluate(
+            new[] { compatibility },
+            EvaluationDate);
 
         Assert.Equal(ParkFitSubscoreState.Unknown, result.State);
         Assert.Null(result.Value);
@@ -175,7 +191,9 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
             GroupAttractionCompatibilityState.EveryoneTogether,
             ParkFitDataConfidence.Low);
 
-        ParkFitSubscore result = this.evaluator.Evaluate(new[] { high, low });
+        ParkFitSubscore result = this.evaluator.Evaluate(
+            new[] { high, low },
+            EvaluationDate);
 
         Assert.Equal(ParkFitDataConfidence.Low, result.Confidence);
     }
@@ -188,8 +206,12 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
         GroupAttractionCompatibility split = this.BuildGroup(
             GroupAttractionCompatibilityState.PossibleWithSplit);
 
-        ParkFitSubscore first = this.evaluator.Evaluate(new[] { together, split });
-        ParkFitSubscore second = this.evaluator.Evaluate(new[] { split, together });
+        ParkFitSubscore first = this.evaluator.Evaluate(
+            new[] { together, split },
+            EvaluationDate);
+        ParkFitSubscore second = this.evaluator.Evaluate(
+            new[] { split, together },
+            EvaluationDate);
 
         Assert.Equal(first.State, second.State);
         Assert.Equal(first.Value, second.Value);
@@ -207,7 +229,8 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
             GroupAttractionParticipationConfiguration.EveryoneTogether);
 
         Assert.Throws<ArgumentException>(() => this.evaluator.Evaluate(
-            new[] { first, second }));
+            new[] { first, second },
+            EvaluationDate));
     }
 
     [Fact]
@@ -230,20 +253,24 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluatorTests
             GroupAttractionParticipationConfiguration.EveryoneTogether);
 
         Assert.Throws<ArgumentException>(() => this.evaluator.Evaluate(
-            new[] { first, second }));
+            new[] { first, second },
+            EvaluationDate));
     }
 
     [Fact]
     public void Evaluate_WhenCollectionIsNull_ShouldRejectTheInput()
     {
-        Assert.Throws<ArgumentNullException>(() => this.evaluator.Evaluate(null!));
+        Assert.Throws<ArgumentNullException>(() => this.evaluator.Evaluate(
+            null!,
+            EvaluationDate));
     }
 
     [Fact]
     public void Evaluate_WhenCollectionContainsNull_ShouldRejectTheInput()
     {
         Assert.Throws<ArgumentException>(() => this.evaluator.Evaluate(
-            new GroupAttractionCompatibility[] { null! }));
+            new GroupAttractionCompatibility[] { null! },
+            EvaluationDate));
     }
 
     private GroupAttractionCompatibility BuildGroup(

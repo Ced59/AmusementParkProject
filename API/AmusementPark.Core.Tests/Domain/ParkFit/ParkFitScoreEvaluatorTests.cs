@@ -340,6 +340,20 @@ public sealed class ParkFitScoreEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenGroupSubscoreUsesAnotherDate_ShouldRejectTheInput()
+    {
+        List<ParkFitSubscore> subscores = BuildCompleteSubscores();
+        Replace(
+            subscores,
+            BuildKnown(
+                ParkFitSubscoreKind.GroupCompatibility,
+                50m,
+                evaluationDate: EvaluationDate.AddDays(-1)));
+
+        Assert.Throws<ArgumentException>(() => this.Evaluate(subscores));
+    }
+
+    [Fact]
     public void Evaluate_WhenSubscoreCollectionIsNull_ShouldRejectTheInput()
     {
         Assert.Throws<ArgumentNullException>(() => this.evaluator.Evaluate(
@@ -426,7 +440,8 @@ public sealed class ParkFitScoreEvaluatorTests
         ParkFitSubscoreKind kind,
         decimal value,
         decimal coveragePercent = 100m,
-        ParkFitDataConfidence confidence = ParkFitDataConfidence.High)
+        ParkFitDataConfidence confidence = ParkFitDataConfidence.High,
+        DateOnly? evaluationDate = null)
     {
         return new ParkFitSubscore(
             kind,
@@ -434,7 +449,10 @@ public sealed class ParkFitScoreEvaluatorTests
             value,
             coveragePercent,
             confidence,
-            new[] { ParkFitSubscoreReasonCode.KnownFactsNormalized });
+            new[] { ParkFitSubscoreReasonCode.KnownFactsNormalized },
+            evaluationDate ?? (kind == ParkFitSubscoreKind.GroupCompatibility
+                ? EvaluationDate
+                : null));
     }
 
     private static ParkFitSubscore BuildUnknown(ParkFitSubscoreKind kind)
@@ -445,7 +463,8 @@ public sealed class ParkFitScoreEvaluatorTests
             null,
             0m,
             ParkFitDataConfidence.Unknown,
-            new[] { ParkFitSubscoreReasonCode.NoKnownFact });
+            new[] { ParkFitSubscoreReasonCode.NoKnownFact },
+            kind == ParkFitSubscoreKind.GroupCompatibility ? EvaluationDate : null);
     }
 
     private static ParkFitSubscore BuildNotApplicable(ParkFitSubscoreKind kind)

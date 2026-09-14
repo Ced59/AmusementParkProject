@@ -11,13 +11,14 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluator
     public const decimal NoneValue = 0m;
 
     public ParkFitSubscore Evaluate(
-        IReadOnlyCollection<GroupAttractionCompatibility> attractionCompatibilities)
+        IReadOnlyCollection<GroupAttractionCompatibility> attractionCompatibilities,
+        DateOnly evaluationDate)
     {
         ArgumentNullException.ThrowIfNull(attractionCompatibilities);
 
         if (attractionCompatibilities.Count == 0)
         {
-            return BuildUnknown();
+            return BuildUnknown(evaluationDate);
         }
 
         List<GroupAttractionCompatibility> snapshot = attractionCompatibilities.ToList();
@@ -28,7 +29,7 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluator
                 nameof(attractionCompatibilities));
         }
 
-        ValidateCompatibilitySet(snapshot, attractionCompatibilities);
+        ValidateCompatibilitySet(snapshot, attractionCompatibilities, evaluationDate);
 
         List<GroupAttractionCompatibility> knownGroupOutcomes = snapshot
             .Where(static compatibility =>
@@ -36,7 +37,7 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluator
             .ToList();
         if (knownGroupOutcomes.Count == 0)
         {
-            return BuildUnknown();
+            return BuildUnknown(evaluationDate);
         }
 
         decimal groupOutcomeAverage = knownGroupOutcomes.Average(
@@ -50,7 +51,8 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluator
                 null,
                 CalculateCoveragePercent(snapshot, knownGroupOutcomes.Count),
                 ParkFitDataConfidence.Unknown,
-                new[] { ParkFitSubscoreReasonCode.NoKnownFact });
+                new[] { ParkFitSubscoreReasonCode.NoKnownFact },
+                evaluationDate);
         }
 
         decimal coveragePercent = CalculateCoveragePercent(
@@ -77,12 +79,14 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluator
             Round(value),
             Round(coveragePercent),
             knownGroupOutcomes.Min(static compatibility => compatibility.Confidence),
-            reasons);
+            reasons,
+            evaluationDate);
     }
 
     private static void ValidateCompatibilitySet(
         IReadOnlyCollection<GroupAttractionCompatibility> snapshot,
-        IReadOnlyCollection<GroupAttractionCompatibility> attractionCompatibilities)
+        IReadOnlyCollection<GroupAttractionCompatibility> attractionCompatibilities,
+        DateOnly evaluationDate)
     {
         GroupAttractionCompatibility first = snapshot.First();
         IReadOnlyCollection<string> expectedMemberKeys = first.Members
@@ -101,10 +105,10 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluator
                     nameof(attractionCompatibilities));
             }
 
-            if (compatibility.EvaluationDate != first.EvaluationDate)
+            if (compatibility.EvaluationDate != evaluationDate)
             {
                 throw new ArgumentException(
-                    "Group compatibilities must share one evaluation date.",
+                    "Group compatibilities must match the requested evaluation date.",
                     nameof(attractionCompatibilities));
             }
 
@@ -194,7 +198,7 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluator
         };
     }
 
-    private static ParkFitSubscore BuildUnknown()
+    private static ParkFitSubscore BuildUnknown(DateOnly evaluationDate)
     {
         return new ParkFitSubscore(
             ParkFitSubscoreKind.GroupCompatibility,
@@ -202,7 +206,8 @@ public sealed class ParkFitGroupCompatibilitySubscoreEvaluator
             null,
             0m,
             ParkFitDataConfidence.Unknown,
-            new[] { ParkFitSubscoreReasonCode.NoKnownFact });
+            new[] { ParkFitSubscoreReasonCode.NoKnownFact },
+            evaluationDate);
     }
 
     private static decimal Round(decimal value)

@@ -249,7 +249,7 @@ sans déplacer les règles dans le contrôleur.
 
 ## 11. Preuves automatisées
 
-Les 59 scénarios ciblés couvrent notamment :
+Les 60 scénarios ciblés couvrent notamment :
 
 - les cinq normalisations de groupe et le minimum individuel ;
 - les attractions inconnues exclues sans devenir zéro ;
@@ -259,12 +259,13 @@ Les 59 scénarios ciblés couvrent notamment :
 - les plafonds de couverture et de confiance ;
 - les trois politiques face à une inconnue critique ;
 - la suspension obligatoire lorsque plusieurs faits critiques sont inconnus ;
+- la conservation et la cohérence de la date source du sous-score de groupe ;
 - les exclusions par filtre ou calendrier ;
 - la suspension sans donnée connue ou avec confiance inconnue ;
 - les collections incomplètes, dupliquées, incohérentes ou invalides ;
 - l'invariance à l'ordre et la copie défensive des entrées.
 
-La suite Core complète contient 977 tests verts après ce jalon.
+La suite Core complète contient 978 tests verts après ce jalon.
 
 ## 12. Stockage, confidentialité et performance
 
