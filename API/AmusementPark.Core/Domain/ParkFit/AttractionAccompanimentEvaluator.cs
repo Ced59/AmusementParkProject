@@ -10,7 +10,8 @@ internal static class AttractionAccompanimentEvaluator
     public static void Evaluate(
         ParkFitMemberProfile profile,
         IReadOnlyCollection<AttractionAccessCondition> conditions,
-        AttractionCompatibilityEvaluationContext context)
+        AttractionCompatibilityEvaluationContext context,
+        AttractionAccessCondition? uncertainAloneThreshold = null)
     {
         ArgumentNullException.ThrowIfNull(profile);
         ArgumentNullException.ThrowIfNull(conditions);
@@ -35,9 +36,11 @@ internal static class AttractionAccompanimentEvaluator
 
         if (!profile.CanBeAccompanied.Value)
         {
-            context.AddViolation(
+            AddUnavailableResult(
                 AttractionCompatibilityReasonCode.AccompanimentUnavailable,
-                representative);
+                representative,
+                uncertainAloneThreshold,
+                context);
             return;
         }
 
@@ -59,9 +62,11 @@ internal static class AttractionAccompanimentEvaluator
 
         if (companionAgeRange.MaximumYears < requiredCompanionAge)
         {
-            context.AddViolation(
+            AddUnavailableResult(
                 AttractionCompatibilityReasonCode.CompanionTooYoung,
-                representative);
+                representative,
+                uncertainAloneThreshold,
+                context);
             return;
         }
 
@@ -74,5 +79,23 @@ internal static class AttractionAccompanimentEvaluator
         }
 
         context.AddCompanionRequirementMet(representative);
+    }
+
+    private static void AddUnavailableResult(
+        AttractionCompatibilityReasonCode reasonCode,
+        AttractionAccessCondition accompaniedCondition,
+        AttractionAccessCondition? uncertainAloneThreshold,
+        AttractionCompatibilityEvaluationContext context)
+    {
+        if (uncertainAloneThreshold is null)
+        {
+            context.AddViolation(reasonCode, accompaniedCondition);
+            return;
+        }
+
+        context.AddInformational(reasonCode, accompaniedCondition);
+        context.AddUnknown(
+            AttractionCompatibilityReasonCode.AgeRangeCrossesThreshold,
+            uncertainAloneThreshold);
     }
 }

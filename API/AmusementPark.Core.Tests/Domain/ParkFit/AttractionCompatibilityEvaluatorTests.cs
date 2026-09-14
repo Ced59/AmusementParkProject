@@ -233,6 +233,25 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenAgeBandCrossesTheAloneThresholdAndCompanionIsUnavailable_ShouldRemainUnknown()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                ageRange: new ParkFitAgeRange(10, 15),
+                canBeAccompanied: false),
+            BuildAgeCondition(AttractionAccessConditionType.MinAge, 14),
+            BuildAccompaniedAgeCondition(10, minimumCompanionAge: 18));
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.AgeRangeCrossesThreshold);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.AccompanimentUnavailable);
+    }
+
+    [Fact]
     public void Evaluate_WhenAgeRangeIsMissing_ShouldReturnUnknown()
     {
         AttractionCompatibility result = this.Evaluate(
@@ -562,6 +581,52 @@ public sealed class AttractionCompatibilityEvaluatorTests
         Assert.Equal(
             first.Reasons.Select(static reason => reason.Code),
             second.Reasons.Select(static reason => reason.Code));
+    }
+
+    [Fact]
+    public void Evaluate_EqualHeightThresholds_ShouldUseTheStrictestCompanionAgeDeterministically()
+    {
+        ParkFitMemberProfile profile = new ParkFitMemberProfile(
+            110,
+            canBeAccompanied: true,
+            availableCompanionAgeRange: new ParkFitAgeRange(18, 70));
+        AttractionAccessCondition minimumAge16 = BuildAccompaniedHeightCondition(100, 16);
+        AttractionAccessCondition minimumAge18 = BuildAccompaniedHeightCondition(100, 18);
+
+        AttractionCompatibility first = this.Evaluate(profile, minimumAge16, minimumAge18);
+        AttractionCompatibility second = this.Evaluate(profile, minimumAge18, minimumAge16);
+
+        Assert.Equal(
+            18,
+            first.Reasons.Single(
+                reason => reason.Code == AttractionCompatibilityReasonCode.HeightRequirementMet)
+                .MinimumCompanionAge);
+        Assert.Equal(
+            first.Reasons.Select(static reason => reason.MinimumCompanionAge),
+            second.Reasons.Select(static reason => reason.MinimumCompanionAge));
+    }
+
+    [Fact]
+    public void Evaluate_EqualAgeThresholds_ShouldUseTheStrictestCompanionAgeDeterministically()
+    {
+        ParkFitMemberProfile profile = new ParkFitMemberProfile(
+            ageRange: new ParkFitAgeRange(10, 10),
+            canBeAccompanied: true,
+            availableCompanionAgeRange: new ParkFitAgeRange(18, 70));
+        AttractionAccessCondition minimumAge16 = BuildAccompaniedAgeCondition(10, 16);
+        AttractionAccessCondition minimumAge18 = BuildAccompaniedAgeCondition(10, 18);
+
+        AttractionCompatibility first = this.Evaluate(profile, minimumAge16, minimumAge18);
+        AttractionCompatibility second = this.Evaluate(profile, minimumAge18, minimumAge16);
+
+        Assert.Equal(
+            18,
+            first.Reasons.Single(
+                reason => reason.Code == AttractionCompatibilityReasonCode.AgeRequirementMet)
+                .MinimumCompanionAge);
+        Assert.Equal(
+            first.Reasons.Select(static reason => reason.MinimumCompanionAge),
+            second.Reasons.Select(static reason => reason.MinimumCompanionAge));
     }
 
     [Theory]

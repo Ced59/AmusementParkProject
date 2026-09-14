@@ -28,6 +28,13 @@ internal sealed class AttractionCompatibilityEvaluationContext
         this.reasons.Add(new AttractionCompatibilityReason(code, condition));
     }
 
+    public void AddInformational(
+        AttractionCompatibilityReasonCode code,
+        AttractionAccessCondition condition)
+    {
+        this.reasons.Add(new AttractionCompatibilityReason(code, condition));
+    }
+
     public void AddViolation(
         AttractionCompatibilityReasonCode code,
         AttractionAccessCondition condition)

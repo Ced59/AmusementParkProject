@@ -180,7 +180,15 @@ internal static class AttractionPhysicalRestrictionEvaluator
             context.AddSatisfied(
                 AttractionCompatibilityReasonCode.AgeRequirementMet,
                 accompaniedMinimum);
-            AttractionAccompanimentEvaluator.Evaluate(profile, accompaniedMinimums, context);
+            AttractionAccessCondition? uncertainAloneThreshold = aloneMinimum is not null
+                && ageRange.MaximumYears >= aloneMinimum.Value!.Value
+                    ? aloneMinimum
+                    : null;
+            AttractionAccompanimentEvaluator.Evaluate(
+                profile,
+                accompaniedMinimums,
+                context,
+                uncertainAloneThreshold);
             return;
         }
 
@@ -238,8 +246,8 @@ internal static class AttractionPhysicalRestrictionEvaluator
         out AttractionAccessCondition? selectedCondition,
         out double selectedCentimeters)
     {
-        selectedCondition = null;
-        selectedCentimeters = selectHighest ? double.MinValue : double.MaxValue;
+        List<(AttractionAccessCondition Condition, double Centimeters)> candidates =
+            new List<(AttractionAccessCondition Condition, double Centimeters)>();
         foreach (AttractionAccessCondition condition in conditions)
         {
             if (!AttractionHeightUnitConverter.TryConvertToCentimeters(
@@ -249,17 +257,38 @@ internal static class AttractionPhysicalRestrictionEvaluator
                 continue;
             }
 
-            bool shouldSelect = selectedCondition is null
-                || (selectHighest && centimeters > selectedCentimeters)
-                || (!selectHighest && centimeters < selectedCentimeters);
-            if (shouldSelect)
-            {
-                selectedCondition = condition;
-                selectedCentimeters = centimeters;
-            }
+            candidates.Add((condition, centimeters));
         }
 
-        return selectedCondition is not null;
+        if (candidates.Count == 0)
+        {
+            selectedCondition = null;
+            selectedCentimeters = selectHighest ? double.MinValue : double.MaxValue;
+            return false;
+        }
+
+        IOrderedEnumerable<(AttractionAccessCondition Condition, double Centimeters)> ordered =
+            selectHighest
+                ? candidates.OrderByDescending(static candidate => candidate.Centimeters)
+                : candidates.OrderBy(static candidate => candidate.Centimeters);
+        (AttractionAccessCondition Condition, double Centimeters) selected = ordered
+            .ThenByDescending(static candidate => candidate.Condition.MinimumCompanionAge ?? -1)
+            .ThenBy(static candidate => candidate.Condition.Type)
+            .ThenBy(static candidate => candidate.Condition.Unit)
+            .ThenBy(static candidate => candidate.Condition.Value)
+            .ThenBy(static candidate => candidate.Condition.RequiresAccompaniment)
+            .ThenBy(static candidate => candidate.Condition.Scope)
+            .ThenBy(static candidate => candidate.Condition.ScopeDetail, StringComparer.Ordinal)
+            .ThenBy(static candidate => candidate.Condition.SourceKind)
+            .ThenBy(static candidate => candidate.Condition.SourceUrl, StringComparer.Ordinal)
+            .ThenBy(static candidate => candidate.Condition.SourceReference, StringComparer.Ordinal)
+            .ThenBy(static candidate => candidate.Condition.SourceLanguageCode, StringComparer.Ordinal)
+            .ThenBy(static candidate => candidate.Condition.EffectiveFrom)
+            .ThenBy(static candidate => candidate.Condition.EffectiveTo)
+            .First();
+        selectedCondition = selected.Condition;
+        selectedCentimeters = selected.Centimeters;
+        return true;
     }
 
     private static AttractionAccessCondition? SelectHighestAgeThreshold(
@@ -267,7 +296,18 @@ internal static class AttractionPhysicalRestrictionEvaluator
     {
         return conditions
             .OrderByDescending(static condition => condition.Value)
+            .ThenByDescending(static condition => condition.MinimumCompanionAge ?? -1)
             .ThenBy(static condition => condition.Type)
+            .ThenBy(static condition => condition.Unit)
+            .ThenBy(static condition => condition.RequiresAccompaniment)
+            .ThenBy(static condition => condition.Scope)
+            .ThenBy(static condition => condition.ScopeDetail, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceKind)
+            .ThenBy(static condition => condition.SourceUrl, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceReference, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceLanguageCode, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.EffectiveFrom)
+            .ThenBy(static condition => condition.EffectiveTo)
             .FirstOrDefault();
     }
 }
