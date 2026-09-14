@@ -221,7 +221,7 @@ aucune dépendance supplémentaire n'est introduite.
 
 ## 10. Preuves automatisées
 
-Quatre-vingt-cinq scénarios FIT-04 couvrent notamment :
+Quatre-vingt-six scénarios FIT-04 couvrent notamment :
 
 - absence, expiration et futur des règles ;
 - minimum, maximum et égalité exacte aux seuils ;
@@ -257,6 +257,7 @@ Quatre-vingt-cinq scénarios FIT-04 couvrent notamment :
 - invariance à l'ordre des conditions ;
 - version, confiance, dates et sources ;
 - fusion déterministe de tous les résumés citant une même source ;
+- départage ordinal des codes langue de résumés qui ne diffèrent que par la casse ;
 - ordre déterministe de sources distinctes partageant la même adresse ;
 - distinction déterministe des sources dont les horodatages partagent les ticks mais pas le fuseau logique ;
 - ordre stable de raisons partageant le même seuil mais pas les mêmes anomalies ;

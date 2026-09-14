@@ -1065,6 +1065,41 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenSummaryLanguagesDifferOnlyByCase_ShouldOrderThemDeterministically()
+    {
+        AttractionAccessCondition lowerCase = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            100);
+        lowerCase.SourceSummary = new List<LocalizedText>
+        {
+            new LocalizedText("en", "Official threshold."),
+        };
+        AttractionAccessCondition upperCase = BuildHeightCondition(
+            AttractionAccessConditionType.MaxHeight,
+            200);
+        upperCase.SourceUrl = lowerCase.SourceUrl;
+        upperCase.SourceSummary = new List<LocalizedText>
+        {
+            new LocalizedText("EN", "Official threshold."),
+        };
+
+        AttractionCompatibility first = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            lowerCase,
+            upperCase);
+        AttractionCompatibility second = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            upperCase,
+            lowerCase);
+
+        AttractionCompatibilitySourceReference firstSource = Assert.Single(first.Sources);
+        AttractionCompatibilitySourceReference secondSource = Assert.Single(second.Sources);
+        Assert.Equal(
+            firstSource.Summaries.Select(static summary => summary.LanguageCode),
+            secondSource.Summaries.Select(static summary => summary.LanguageCode));
+    }
+
+    [Fact]
     public void Evaluate_WhenSourceLocationsMatch_ShouldOrderDistinctLanguagesDeterministically()
     {
         AttractionAccessCondition french = BuildHeightCondition(

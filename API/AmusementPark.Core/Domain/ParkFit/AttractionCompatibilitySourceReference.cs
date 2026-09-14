@@ -34,6 +34,7 @@ public sealed class AttractionCompatibilitySourceReference
             .Select(static summary => new LocalizedText(summary.LanguageCode, summary.Value))
             .DistinctBy(static summary => new { summary.LanguageCode, summary.Value })
             .OrderBy(static summary => summary.LanguageCode, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(static summary => summary.LanguageCode, StringComparer.Ordinal)
             .ThenBy(static summary => summary.Value, StringComparer.Ordinal)
             .ToList();
     }
