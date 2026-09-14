@@ -197,8 +197,29 @@ aucun défilement horizontal et reste contenue à 360 px. La page en rendu clien
 rechargement sans sélection. L'architecture et les preuves sont documentées dans
 [`product-growth-fit-10-side-by-side-comparison-2026-09-14.md`](../../architecture/product-growth-fit-10-side-by-side-comparison-2026-09-14.md).
 
-`FIT-11` est le prochain jalon : les membres connectés pourront sauvegarder leurs
-profils de groupe privés et exercer l'export et la suppression associés.
+### État de `FIT-11` au 14 septembre 2026
+
+Les membres connectés disposent désormais d'une bibliothèque privée de profils Park
+Fit. Chaque alias regroupe uniquement les faits déjà compris par le moteur — taille,
+âge et accompagnement — et peut être ajouté en un geste au groupe courant. L'alias et
+l'identifiant du profil restent des repères d'interface : le contrat de recherche ne
+reçoit que les faits minimisés.
+
+La création, la modification et la suppression sont isolées par propriétaire et
+protégées contre l'écrasement concurrent. Un alias normalisé est unique par membre.
+Chaque compte est limité à 32 profils et les lectures sont bornées à la même limite.
+L'export JSON reste lisible et retire les identifiants utilisateur, profil, version
+et autres références internes. La collection et ses index sont créés automatiquement,
+sans migration MongoDB manuelle.
+
+La bibliothèque authentifiée et la sélection rapide sont traduites dans les huit
+langues et restent contenues jusque 360 px. Les visiteurs anonymes conservent le
+premier résultat sans compte. L'architecture, le schéma MongoDB, les diagrammes et
+les preuves sont documentés dans
+[`product-growth-fit-11-private-group-profiles-2026-09-14.md`](../../architecture/product-growth-fit-11-private-group-profiles-2026-09-14.md).
+
+`FIT-12` est le prochain jalon : la recommandation intégrera la distance et le
+calendrier avec des résultats honnêtes lorsque ces données ne sont pas disponibles.
 
 ## 1. Vision produit
 

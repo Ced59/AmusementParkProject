@@ -1,0 +1,50 @@
+{
+  "parkFitProfiles": {
+    "kicker": "Profils privés Park Fit",
+    "title": "Les personnes de ton groupe",
+    "description": "Enregistre les critères utiles une fois, puis compose tes prochaines sorties en quelques gestes.",
+    "privacy": "Ces profils restent liés à ton compte. Ils ne sont ni publics ni inclus automatiquement dans une recherche.",
+    "form": {
+      "createTitle": "Ajouter une personne",
+      "editTitle": "Mettre à jour ce profil",
+      "description": "Seuls les faits déjà compris par Park Fit sont conservés.",
+      "alias": "Alias privé",
+      "aliasPlaceholder": "Ex. Moi, Lina, Enfant 8 ans",
+      "aliasHint": "Cet alias sert uniquement à reconnaître la personne dans ton compte.",
+      "height": "Taille",
+      "age": "Âge déclaré",
+      "accompanied": "Cette personne peut être accompagnée",
+      "accompaniedHint": "Active cette option seulement si un accompagnateur peut réellement participer avec elle.",
+      "companionAge": "Âge de l’accompagnateur"
+    },
+    "library": {
+      "title": "Ta bibliothèque privée",
+      "description": "Réutilise, corrige ou supprime chaque personne indépendamment.",
+      "loading": "Chargement de tes profils…",
+      "emptyTitle": "Ta bibliothèque est vide",
+      "emptyText": "Crée un premier profil pour accélérer la composition de ton groupe.",
+      "factCount": "{{count}} critères utiles",
+      "accompaniment": "Accompagnement possible",
+      "yes": "Oui",
+      "no": "Non"
+    },
+    "actions": {
+      "back": "Retour à Park Fit",
+      "new": "Nouveau profil",
+      "create": "Enregistrer ce profil",
+      "update": "Enregistrer les changements",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "confirmDelete": "Confirmer la suppression",
+      "cancel": "Annuler",
+      "export": "Exporter mes profils"
+    },
+    "feedback": {
+      "invalid": "Vérifie l’alias, la taille et les âges saisis.",
+      "loadError": "Tes profils ne peuvent pas être chargés pour le moment.",
+      "saveError": "Le profil n’a pas pu être enregistré. Recharge la page s’il a été modifié ailleurs.",
+      "deleteError": "Le profil n’a pas pu être supprimé. Recharge la page puis réessaie.",
+      "exportError": "L’export n’a pas pu être préparé."
+    }
+  }
+}

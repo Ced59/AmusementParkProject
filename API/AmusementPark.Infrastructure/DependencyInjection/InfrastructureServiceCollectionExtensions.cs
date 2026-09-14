@@ -19,6 +19,7 @@ using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkPricing.Ports;
+using AmusementPark.Application.Features.ParkFit.Ports;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Search.Ports;
@@ -228,6 +229,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IProfileComparisonInvitationRepository,
             ProfileComparisonInvitationRepository>();
         services.AddScoped<IProfileComparisonRepository, ProfileComparisonRepository>();
+        services.AddScoped<IParkFitGroupProfileRepository, ParkFitGroupProfileRepository>();
         services.AddScoped<IShareAccountDeletionStore, MongoShareAccountDeletionStore>();
         services.AddScoped<IShareModerationReportRepository, ShareModerationReportRepository>();
         services.AddScoped<IVisitRecapShareSnapshotRepository,

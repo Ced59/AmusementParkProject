@@ -51,4 +51,17 @@ describe('profile routes', () => {
       PROFILE_ROUTES.findIndex((candidate: Route): boolean => candidate.path === 'passport')
     );
   });
+
+  it('keeps private Park Fit profiles lazy, authenticated and ahead of the profile root', () => {
+    const route: Route | undefined = PROFILE_ROUTES.find(
+      (candidate: Route): boolean => candidate.path === 'park-fit/profiles'
+    );
+    const rootIndex: number = PROFILE_ROUTES.findIndex(
+      (candidate: Route): boolean => candidate.path === ''
+    );
+
+    expect(route?.loadComponent).toBeDefined();
+    expect(route?.canActivate).toContain(authGuard);
+    expect(PROFILE_ROUTES.indexOf(route!)).toBeLessThan(rootIndex);
+  });
 });

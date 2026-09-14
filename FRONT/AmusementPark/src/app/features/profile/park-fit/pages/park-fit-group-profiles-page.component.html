@@ -1,0 +1,162 @@
+<main class="park-fit-profiles">
+  <header class="park-fit-profiles__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a appUiButton="ghost" [routerLink]="['/', currentLang(), 'park-fit']">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'parkFitProfiles.actions.back' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="sky" iconClass="pi pi-users">
+      {{ 'parkFitProfiles.kicker' | translate }}
+    </app-ui-kicker>
+    <h1>{{ 'parkFitProfiles.title' | translate }}</h1>
+    <p>{{ 'parkFitProfiles.description' | translate }}</p>
+    <div class="park-fit-profiles__privacy" role="note">
+      <i class="pi pi-lock" aria-hidden="true"></i>
+      <span>{{ 'parkFitProfiles.privacy' | translate }}</span>
+    </div>
+  </header>
+
+  <section class="park-fit-profiles__composer" appUiSurface="panel" appUiSurfacePadding="regular">
+    <div class="park-fit-profiles__heading">
+      <div>
+        <h2>{{ (editingId() ? 'parkFitProfiles.form.editTitle' : 'parkFitProfiles.form.createTitle') | translate }}</h2>
+        <p>{{ 'parkFitProfiles.form.description' | translate }}</p>
+      </div>
+      @if (editingId()) {
+        <button type="button" appUiButton="ghost" (click)="newProfile()">
+          <i class="pi pi-plus" aria-hidden="true"></i>
+          <span>{{ 'parkFitProfiles.actions.new' | translate }}</span>
+        </button>
+      }
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <label class="park-fit-profiles__field park-fit-profiles__field--alias">
+        <span>{{ 'parkFitProfiles.form.alias' | translate }}</span>
+        <input type="text" maxlength="60" formControlName="alias" [placeholder]="'parkFitProfiles.form.aliasPlaceholder' | translate">
+        <small>{{ 'parkFitProfiles.form.aliasHint' | translate }}</small>
+      </label>
+
+      <div class="park-fit-profiles__facts">
+        <label class="park-fit-profiles__field">
+          <span>{{ 'parkFitProfiles.form.height' | translate }}</span>
+          <div class="park-fit-profiles__unit">
+            <input type="number" inputmode="numeric" min="40" max="260" formControlName="heightCentimeters">
+            <span>cm</span>
+          </div>
+        </label>
+        <label class="park-fit-profiles__field">
+          <span>{{ 'parkFitProfiles.form.age' | translate }}</span>
+          <input type="number" inputmode="numeric" min="0" max="130" formControlName="ageYears">
+        </label>
+      </div>
+
+      <label class="park-fit-profiles__check">
+        <input type="checkbox" formControlName="canBeAccompanied">
+        <span>
+          <strong>{{ 'parkFitProfiles.form.accompanied' | translate }}</strong>
+          <small>{{ 'parkFitProfiles.form.accompaniedHint' | translate }}</small>
+        </span>
+      </label>
+
+      @if (form.controls.canBeAccompanied.value) {
+        <label class="park-fit-profiles__field">
+          <span>{{ 'parkFitProfiles.form.companionAge' | translate }}</span>
+          <input type="number" inputmode="numeric" min="0" max="130" formControlName="companionAgeYears">
+        </label>
+      }
+
+      @if (form.touched && form.invalid) {
+        <p class="park-fit-profiles__error" role="alert">{{ 'parkFitProfiles.feedback.invalid' | translate }}</p>
+      }
+
+      <button type="submit" appUiButton="primary" [disabled]="saving()">
+        @if (saving()) {
+          <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+        } @else {
+          <i class="pi pi-check" aria-hidden="true"></i>
+        }
+        <span>{{ (editingId() ? 'parkFitProfiles.actions.update' : 'parkFitProfiles.actions.create') | translate }}</span>
+      </button>
+    </form>
+  </section>
+
+  <section class="park-fit-profiles__library" appUiSurface="panel" appUiSurfacePadding="regular">
+    <div class="park-fit-profiles__heading">
+      <div>
+        <h2>{{ 'parkFitProfiles.library.title' | translate }}</h2>
+        <p>{{ 'parkFitProfiles.library.description' | translate }}</p>
+      </div>
+      <button type="button" appUiButton="ghost" [disabled]="exporting()" (click)="facade.export()">
+        <i class="pi pi-download" aria-hidden="true"></i>
+        <span>{{ 'parkFitProfiles.actions.export' | translate }}</span>
+      </button>
+    </div>
+
+    @if (errorKey()) {
+      <p class="park-fit-profiles__error" role="alert">{{ errorKey()! | translate }}</p>
+    }
+
+    @if (status() === 'loading') {
+      <p class="park-fit-profiles__status" aria-live="polite">{{ 'parkFitProfiles.library.loading' | translate }}</p>
+    } @else if (profiles().length === 0) {
+      <div class="park-fit-profiles__empty">
+        <i class="pi pi-user-plus" aria-hidden="true"></i>
+        <strong>{{ 'parkFitProfiles.library.emptyTitle' | translate }}</strong>
+        <span>{{ 'parkFitProfiles.library.emptyText' | translate }}</span>
+      </div>
+    } @else {
+      <div class="park-fit-profiles__cards">
+        @for (profile of profiles(); track profile.profileId) {
+          <article class="park-fit-profiles__card">
+            <header>
+              <div>
+                <span class="park-fit-profiles__avatar" aria-hidden="true">{{ profile.alias.slice(0, 1) }}</span>
+                <div>
+                  <h3>{{ profile.alias }}</h3>
+                  <small>{{ 'parkFitProfiles.library.factCount' | translate:{ count: factCount(profile) } }}</small>
+                </div>
+              </div>
+            </header>
+
+            <dl>
+              @if (profile.heightCentimeters !== null) {
+                <div><dt>{{ 'parkFitProfiles.form.height' | translate }}</dt><dd>{{ profile.heightCentimeters }} cm</dd></div>
+              }
+              @if (profile.ageYears !== null) {
+                <div><dt>{{ 'parkFitProfiles.form.age' | translate }}</dt><dd>{{ profile.ageYears }}</dd></div>
+              }
+              <div>
+                <dt>{{ 'parkFitProfiles.library.accompaniment' | translate }}</dt>
+                <dd>{{ (profile.canBeAccompanied ? 'parkFitProfiles.library.yes' : 'parkFitProfiles.library.no') | translate }}</dd>
+              </div>
+              @if (profile.companionAgeYears !== null) {
+                <div><dt>{{ 'parkFitProfiles.form.companionAge' | translate }}</dt><dd>{{ profile.companionAgeYears }}</dd></div>
+              }
+            </dl>
+
+            <div class="park-fit-profiles__card-actions">
+              <button type="button" appUiButton="ghost" (click)="edit(profile)">
+                <i class="pi pi-pencil" aria-hidden="true"></i>
+                <span>{{ 'parkFitProfiles.actions.edit' | translate }}</span>
+              </button>
+              <button
+                type="button"
+                appUiButton="ghost"
+                class="park-fit-profiles__delete"
+                [disabled]="deletingId() === profile.profileId"
+                (click)="requestDelete(profile)">
+                <i class="pi pi-trash" aria-hidden="true"></i>
+                <span>{{ (confirmingDeleteId() === profile.profileId ? 'parkFitProfiles.actions.confirmDelete' : 'parkFitProfiles.actions.delete') | translate }}</span>
+              </button>
+              @if (confirmingDeleteId() === profile.profileId) {
+                <button type="button" appUiButton="ghost" (click)="cancelDelete()">
+                  {{ 'parkFitProfiles.actions.cancel' | translate }}
+                </button>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </section>
+</main>

@@ -1,0 +1,50 @@
+{
+  "parkFitProfiles": {
+    "kicker": "Private Park Fit profiles",
+    "title": "The people in your group",
+    "description": "Save useful criteria once, then build your next days out in a few taps.",
+    "privacy": "These profiles stay linked to your account. They are never public or automatically included in a search.",
+    "form": {
+      "createTitle": "Add a person",
+      "editTitle": "Update this profile",
+      "description": "Only facts already understood by Park Fit are stored.",
+      "alias": "Private alias",
+      "aliasPlaceholder": "E.g. Me, Lina, Child aged 8",
+      "aliasHint": "This alias is only used to recognize the person in your account.",
+      "height": "Height",
+      "age": "Declared age",
+      "accompanied": "This person can be accompanied",
+      "accompaniedHint": "Enable this only when a companion can actually take part with them.",
+      "companionAge": "Companion’s age"
+    },
+    "library": {
+      "title": "Your private library",
+      "description": "Reuse, correct or remove each person independently.",
+      "loading": "Loading your profiles…",
+      "emptyTitle": "Your library is empty",
+      "emptyText": "Create a first profile to build your group faster.",
+      "factCount": "{{count}} useful criteria",
+      "accompaniment": "Accompaniment possible",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "actions": {
+      "back": "Back to Park Fit",
+      "new": "New profile",
+      "create": "Save this profile",
+      "update": "Save changes",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirmDelete": "Confirm deletion",
+      "cancel": "Cancel",
+      "export": "Export my profiles"
+    },
+    "feedback": {
+      "invalid": "Check the alias, height and ages entered.",
+      "loadError": "Your profiles cannot be loaded right now.",
+      "saveError": "The profile could not be saved. Reload the page if it was changed elsewhere.",
+      "deleteError": "The profile could not be deleted. Reload the page and try again.",
+      "exportError": "The export could not be prepared."
+    }
+  }
+}

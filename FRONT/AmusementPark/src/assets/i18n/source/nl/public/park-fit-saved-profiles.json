@@ -1,0 +1,13 @@
+{
+  "parkFit": {
+    "savedProfiles": {
+      "title": "Je groep met één tik",
+      "text": "Voeg een opgeslagen persoon toe zonder de criteria opnieuw in te voeren.",
+      "manage": "Mijn profielen beheren",
+      "loading": "Je privéprofielen worden geladen…",
+      "error": "Je privéprofielen kunnen nu niet worden geladen.",
+      "empty": "Je hebt nog geen Park Fit-profiel opgeslagen.",
+      "add": "Aan groep toevoegen"
+    }
+  }
+}

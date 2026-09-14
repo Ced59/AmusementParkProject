@@ -7,6 +7,54 @@
     "languages": "Lingue",
     "profile": "Profilo"
   },
+  "parkFitProfiles": {
+    "kicker": "Profili Park Fit privati",
+    "title": "Le persone del tuo gruppo",
+    "description": "Salva una volta i criteri utili e componi le prossime uscite in pochi tocchi.",
+    "privacy": "Questi profili restano collegati al tuo account. Non sono mai pubblici né aggiunti automaticamente a una ricerca.",
+    "form": {
+      "createTitle": "Aggiungi una persona",
+      "editTitle": "Aggiorna questo profilo",
+      "description": "Vengono conservati solo i dati che Park Fit sa già utilizzare.",
+      "alias": "Alias privato",
+      "aliasPlaceholder": "Es. Io, Lina, Bambino di 8 anni",
+      "aliasHint": "Questo alias serve solo a riconoscere la persona nel tuo account.",
+      "height": "Altezza",
+      "age": "Età dichiarata",
+      "accompanied": "Questa persona può essere accompagnata",
+      "accompaniedHint": "Attiva l’opzione solo se un accompagnatore può davvero partecipare con lei.",
+      "companionAge": "Età dell’accompagnatore"
+    },
+    "library": {
+      "title": "La tua raccolta privata",
+      "description": "Riutilizza, correggi o elimina ogni persona separatamente.",
+      "loading": "Caricamento dei tuoi profili…",
+      "emptyTitle": "La tua raccolta è vuota",
+      "emptyText": "Crea un primo profilo per comporre il gruppo più velocemente.",
+      "factCount": "{{count}} criteri utili",
+      "accompaniment": "Accompagnamento possibile",
+      "yes": "Sì",
+      "no": "No"
+    },
+    "actions": {
+      "back": "Torna a Park Fit",
+      "new": "Nuovo profilo",
+      "create": "Salva questo profilo",
+      "update": "Salva le modifiche",
+      "edit": "Modifica",
+      "delete": "Elimina",
+      "confirmDelete": "Conferma eliminazione",
+      "cancel": "Annulla",
+      "export": "Esporta i miei profili"
+    },
+    "feedback": {
+      "invalid": "Controlla l’alias, l’altezza e le età inserite.",
+      "loadError": "Al momento non è possibile caricare i tuoi profili.",
+      "saveError": "Non è stato possibile salvare il profilo. Ricarica la pagina se è stato modificato altrove.",
+      "deleteError": "Non è stato possibile eliminare il profilo. Ricarica la pagina e riprova.",
+      "exportError": "Non è stato possibile preparare l’esportazione."
+    }
+  },
   "passport": {
     "overview": {
       "actions": {
@@ -4773,6 +4821,15 @@
     }
   },
   "parkFit": {
+    "savedProfiles": {
+      "title": "Il tuo gruppo con un tocco",
+      "text": "Aggiungi una persona salvata senza reinserire i suoi criteri.",
+      "manage": "Gestisci i miei profili",
+      "loading": "Caricamento dei tuoi profili privati…",
+      "error": "Al momento non è possibile caricare i tuoi profili privati.",
+      "empty": "Non hai ancora salvato un profilo Park Fit.",
+      "add": "Aggiungi al gruppo"
+    },
     "seo": {
       "title": "Trova un parco adatto al tuo gruppo — Amusement Parks",
       "description": "Confronta i parchi documentati in base a gruppo, data e preferenze, senza account né criteri salvati."

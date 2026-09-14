@@ -12,6 +12,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Countries;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkFit;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.TechnicalPages;
@@ -651,6 +652,15 @@ private readonly IMongoDatabase database;
             cancellationToken);
         await comparisonsCollection.Indexes.CreateManyAsync(
             ProfileComparisonMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.UserGroupProfilesCollectionName,
+            cancellationToken);
+        IMongoCollection<ParkFitGroupProfileDocument> groupProfilesCollection =
+            this.database.GetCollection<ParkFitGroupProfileDocument>(
+                this.settings.UserGroupProfilesCollectionName);
+        await groupProfilesCollection.Indexes.CreateManyAsync(
+            ParkFitGroupProfileMongoDefinitions.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
             this.settings.ShareModerationReportsCollectionName,

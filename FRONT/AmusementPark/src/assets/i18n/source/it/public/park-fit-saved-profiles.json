@@ -1,0 +1,13 @@
+{
+  "parkFit": {
+    "savedProfiles": {
+      "title": "Il tuo gruppo con un tocco",
+      "text": "Aggiungi una persona salvata senza reinserire i suoi criteri.",
+      "manage": "Gestisci i miei profili",
+      "loading": "Caricamento dei tuoi profili privati…",
+      "error": "Al momento non è possibile caricare i tuoi profili privati.",
+      "empty": "Non hai ancora salvato un profilo Park Fit.",
+      "add": "Aggiungi al gruppo"
+    }
+  }
+}

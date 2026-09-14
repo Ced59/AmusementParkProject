@@ -7,6 +7,54 @@
     "languages": "Sprachen",
     "profile": "Profil"
   },
+  "parkFitProfiles": {
+    "kicker": "Private Park-Fit-Profile",
+    "title": "Die Personen in deiner Gruppe",
+    "description": "Speichere nützliche Kriterien einmal und stelle künftige Ausflüge mit wenigen Tipps zusammen.",
+    "privacy": "Diese Profile bleiben mit deinem Konto verknüpft. Sie sind nie öffentlich und werden keiner Suche automatisch hinzugefügt.",
+    "form": {
+      "createTitle": "Person hinzufügen",
+      "editTitle": "Dieses Profil aktualisieren",
+      "description": "Gespeichert werden nur Fakten, die Park Fit bereits versteht.",
+      "alias": "Privater Alias",
+      "aliasPlaceholder": "Z. B. Ich, Lina, Kind 8 Jahre",
+      "aliasHint": "Dieser Alias hilft dir nur, die Person in deinem Konto zu erkennen.",
+      "height": "Größe",
+      "age": "Angegebenes Alter",
+      "accompanied": "Diese Person kann begleitet werden",
+      "accompaniedHint": "Aktiviere dies nur, wenn eine Begleitperson tatsächlich mitmachen kann.",
+      "companionAge": "Alter der Begleitperson"
+    },
+    "library": {
+      "title": "Deine private Bibliothek",
+      "description": "Verwende, korrigiere oder lösche jede Person unabhängig.",
+      "loading": "Deine Profile werden geladen…",
+      "emptyTitle": "Deine Bibliothek ist leer",
+      "emptyText": "Erstelle ein erstes Profil, um deine Gruppe schneller zusammenzustellen.",
+      "factCount": "{{count}} nützliche Kriterien",
+      "accompaniment": "Begleitung möglich",
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "actions": {
+      "back": "Zurück zu Park Fit",
+      "new": "Neues Profil",
+      "create": "Profil speichern",
+      "update": "Änderungen speichern",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "confirmDelete": "Löschen bestätigen",
+      "cancel": "Abbrechen",
+      "export": "Meine Profile exportieren"
+    },
+    "feedback": {
+      "invalid": "Prüfe Alias, Größe und Altersangaben.",
+      "loadError": "Deine Profile können gerade nicht geladen werden.",
+      "saveError": "Das Profil konnte nicht gespeichert werden. Lade die Seite neu, falls es woanders geändert wurde.",
+      "deleteError": "Das Profil konnte nicht gelöscht werden. Lade die Seite neu und versuche es erneut.",
+      "exportError": "Der Export konnte nicht vorbereitet werden."
+    }
+  },
   "passport": {
     "overview": {
       "actions": {
@@ -4773,6 +4821,15 @@
     }
   },
   "parkFit": {
+    "savedProfiles": {
+      "title": "Deine Gruppe mit einem Tippen",
+      "text": "Füge eine gespeicherte Person hinzu, ohne ihre Kriterien erneut einzugeben.",
+      "manage": "Meine Profile verwalten",
+      "loading": "Deine privaten Profile werden geladen…",
+      "error": "Deine privaten Profile können gerade nicht geladen werden.",
+      "empty": "Du hast noch kein Park-Fit-Profil gespeichert.",
+      "add": "Zur Gruppe hinzufügen"
+    },
     "seo": {
       "title": "Finde einen Park für deine Gruppe — Amusement Parks",
       "description": "Vergleiche dokumentierte Parks nach Gruppe, Datum und Vorlieben – ohne Konto und ohne gespeicherte Kriterien."

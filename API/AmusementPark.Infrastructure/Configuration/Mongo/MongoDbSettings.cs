@@ -119,6 +119,8 @@ public sealed class MongoDbSettings
 
     public string ProfileComparisonsCollectionName { get; set; } = "profile-comparisons";
 
+    public string UserGroupProfilesCollectionName { get; set; } = "user-group-profiles";
+
     public string ShareModerationReportsCollectionName { get; set; } =
         "share-moderation-reports";
 

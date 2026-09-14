@@ -8,12 +8,16 @@ describe('mapParkFitFormToRequest', () => {
       evaluationDate: '2026-10-10',
       members: [
         {
+          sourceProfileId: 'profile-1',
+          sourceAlias: 'Enfant',
           heightCentimeters: 121.8,
           ageYears: 8,
           canBeAccompanied: true,
           companionAgeYears: 42
         },
         {
+          sourceProfileId: null,
+          sourceAlias: null,
           heightCentimeters: null,
           ageYears: null,
           canBeAccompanied: false,
@@ -54,5 +58,6 @@ describe('mapParkFitFormToRequest', () => {
     });
     expect(JSON.stringify(request)).not.toContain('name');
     expect(JSON.stringify(request)).not.toContain('alias');
+    expect(JSON.stringify(request)).not.toContain('profile-1');
   });
 });

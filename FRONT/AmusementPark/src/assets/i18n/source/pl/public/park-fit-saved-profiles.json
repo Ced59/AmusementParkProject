@@ -1,0 +1,13 @@
+{
+  "parkFit": {
+    "savedProfiles": {
+      "title": "Twoja grupa jednym dotknięciem",
+      "text": "Dodaj zapisaną osobę bez ponownego wpisywania jej kryteriów.",
+      "manage": "Zarządzaj profilami",
+      "loading": "Wczytywanie prywatnych profili…",
+      "error": "Nie można teraz wczytać prywatnych profili.",
+      "empty": "Nie masz jeszcze zapisanego profilu Park Fit.",
+      "add": "Dodaj do grupy"
+    }
+  }
+}
