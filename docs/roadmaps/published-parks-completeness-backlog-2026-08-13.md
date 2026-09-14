@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
 - 67 parcs atteignent le niveau `Excellent` : 65 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **50 parcs** : 0 au niveau `Publishable`, 48 au niveau `Good` et 2 au niveau `Excellent`.
+- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **49 parcs** : 0 au niveau `Publishable`, 47 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,11 +22,10 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (48)
+## Priorité 2 — niveau `Good` (47)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 86 | `Good` | Animal Farm Adventure Park | GB | `Operating` | `Regional` | 80/93 | `c1b0b210-d6d5-4740-ad72-cea2c52c3923` |
 | 86 | `Good` | Antic's Land | AE | `Operating` | `Local` | 79/92 | `3171222e-919f-4d77-8766-f2b083047ecc` |
 | 86 | `Good` | Artesina | IT | `Operating` | `Regional` | 79/92 | `9eca776f-9301-4b68-a52c-e76682486e7b` |
 | 86 | `Good` | Aspen Snowmass Ski Resort | US | `Operating` | `International` | 89/103 | `352bd57a-a355-46b3-a588-eb05bca70633` |
