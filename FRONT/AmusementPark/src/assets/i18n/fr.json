@@ -1495,6 +1495,7 @@
         "videos": "Gérer la vidéothèque, ses rattachements et ses métadonnées.",
         "socialShare": "Consulter les statistiques d’utilisation des outils de partage.",
         "technicalStats": "Suivre le cache SSR, les robots, le rendu et les purges.",
+        "parkFitDataQuality": "Vérifier si les données des parcs sont prêtes pour la comparaison.",
         "socialPublishing": "Composez, publiez et suivez les annonces envoyées sur les réseaux sociaux.",
         "parkWeather": "Suivre les rafraichissements planifiés de données publiques."
       },
@@ -1917,6 +1918,69 @@
       "subtitle": "Référentiel des exploitants utilisés par les fiches de parc.",
       "reviewStatus": "Statut admin",
       "loadError": "Impossible de charger les exploitants."
+    },
+    "parkFitDataQuality": {
+      "navTitle": "Qualité du comparateur",
+      "kicker": "Préparation des données",
+      "title": "Parcs prêts pour la comparaison",
+      "subtitle": "Repère les règles d’accès fiables, les preuves à renouveler et les attractions à compléter avant qu’un parc entre dans le comparateur.",
+      "loading": "Vérification des données des parcs...",
+      "loadError": "Impossible de charger l’audit de préparation des parcs.",
+      "empty": "Aucun parc à auditer sur cette page.",
+      "metrics": {
+        "ariaLabel": "Résumé de préparation des parcs affichés",
+        "eligible": "Prêts à comparer",
+        "actionRequired": "Parcs à compléter",
+        "averageCoverage": "Couverture moyenne",
+        "currentPage": "sur la page actuelle"
+      },
+      "coverage": {
+        "attractions": "attractions utilisables",
+        "ariaLabel": "Couverture des attractions utilisables"
+      },
+      "facts": {
+        "conditions": "Règles fiables",
+        "missingSources": "Sources manquantes",
+        "missingDates": "Dates manquantes",
+        "stale": "Preuves anciennes",
+        "ambiguous": "Règles ambiguës",
+        "lastVerified": "Dernière vérification",
+        "never": "Jamais"
+      },
+      "status": {
+        "NotAssessed": "Non évalué",
+        "Insufficient": "Données insuffisantes",
+        "EligibleForDiscoveryOnly": "Visible, non comparable",
+        "EligibleForFitComparison": "Prêt pour la comparaison",
+        "TemporarilyStale": "Vérification à renouveler",
+        "Suspended": "Suspendu"
+      },
+      "issue": {
+        "NotPubliclyDiscoverable": "Parc non visible publiquement",
+        "MissingCoordinates": "Coordonnées manquantes",
+        "MissingParkType": "Type de parc manquant",
+        "MissingSupportedLanguageContent": "Contenu localisé manquant",
+        "MissingOpeningCalendar": "Calendrier d’ouverture manquant",
+        "OpeningCalendarStale": "Calendrier d’ouverture à renouveler",
+        "NoVisibleAttractions": "Aucune attraction visible",
+        "MissingPreciseAttractionType": "Type d’attraction imprécis",
+        "MissingIndoorOutdoorClassification": "Classement intérieur ou extérieur manquant",
+        "MissingAccessibilitySource": "Source d’accessibilité manquante",
+        "MissingAccessConditions": "Règles d’accès manquantes",
+        "MissingAuthoritativeSource": "Source officielle manquante",
+        "MissingEvidenceTimestamp": "Date de preuve manquante",
+        "StaleEvidence": "Preuve trop ancienne",
+        "AmbiguousRestriction": "Règle incohérente ou ambiguë",
+        "IncompleteRestrictionCoverage": "Couverture des règles incomplète"
+      },
+      "samples": {
+        "title": "Attractions à corriger ({{count}})"
+      },
+      "openParkItems": "Ouvrir les attractions du parc",
+      "pagination": {
+        "ariaLabel": "Pages de l’audit de préparation",
+        "label": "Page {{current}} sur {{total}}"
+      }
     },
     "parkFounders": {
       "editPage": {

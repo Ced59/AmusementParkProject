@@ -1,0 +1,190 @@
+<app-ui-card styleClass="admin-list-card admin-park-fit-data-quality-card">
+  <ng-template appUiTemplate="header">
+    <div class="admin-list-header admin-park-fit-data-quality-header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.parkFitDataQuality.kicker' | translate }}</span>
+        <h2>{{ 'admin.parkFitDataQuality.title' | translate }}</h2>
+        <p>{{ 'admin.parkFitDataQuality.subtitle' | translate }}</p>
+      </div>
+
+      <button
+        appUiButton
+        type="button"
+        class="p-button-secondary"
+        icon="pi pi-refresh"
+        [disabled]="loading()"
+        [label]="'actions.refresh' | translate"
+        (click)="refresh()">
+      </button>
+    </div>
+  </ng-template>
+
+  <app-page-state
+    [state]="state()"
+    loadingMessageKey="admin.parkFitDataQuality.loading"
+    errorMessageKey="admin.parkFitDataQuality.loadError"
+    emptyMessageKey="admin.parkFitDataQuality.empty">
+    @if (assessments().length > 0) {
+      <section
+        class="admin-park-fit-data-quality-kpis"
+        [attr.aria-label]="'admin.parkFitDataQuality.metrics.ariaLabel' | translate">
+        <article>
+          <span>{{ 'admin.parkFitDataQuality.metrics.eligible' | translate }}</span>
+          <strong>{{ eligibleCount() }}</strong>
+          <small>{{ 'admin.parkFitDataQuality.metrics.currentPage' | translate }}</small>
+        </article>
+        <article>
+          <span>{{ 'admin.parkFitDataQuality.metrics.actionRequired' | translate }}</span>
+          <strong>{{ actionRequiredCount() }}</strong>
+          <small>{{ 'admin.parkFitDataQuality.metrics.currentPage' | translate }}</small>
+        </article>
+        <article>
+          <span>{{ 'admin.parkFitDataQuality.metrics.averageCoverage' | translate }}</span>
+          <strong>{{ averageCoveragePercent() }}&nbsp;%</strong>
+          <small>{{ 'admin.parkFitDataQuality.metrics.currentPage' | translate }}</small>
+        </article>
+      </section>
+
+      <section class="admin-park-fit-data-quality-list">
+        @for (assessment of assessments(); track assessment.parkId) {
+          <article class="admin-park-fit-data-quality-park">
+            <header>
+              <div>
+                <h3>{{ assessment.parkName }}</h3>
+                <p>
+                  {{ assessment.decisionEligibleAttractionCount }} /
+                  {{ assessment.visibleAttractionCount }}
+                  {{ 'admin.parkFitDataQuality.coverage.attractions' | translate }}
+                </p>
+              </div>
+              <app-ui-tag
+                [value]="statusLabelKey(assessment.status) | translate"
+                [severity]="statusSeverity(assessment.status)">
+              </app-ui-tag>
+            </header>
+
+            <div class="admin-park-fit-data-quality-progress">
+              <div
+                class="admin-park-fit-data-quality-progress__track"
+                role="progressbar"
+                [attr.aria-label]="'admin.parkFitDataQuality.coverage.ariaLabel' | translate"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                [attr.aria-valuenow]="assessment.coveragePercent">
+                <span [style.width.%]="assessment.coveragePercent"></span>
+              </div>
+              <strong>{{ assessment.coveragePercent }}&nbsp;%</strong>
+            </div>
+
+            <dl class="admin-park-fit-data-quality-facts">
+              <div>
+                <dt>{{ 'admin.parkFitDataQuality.facts.conditions' | translate }}</dt>
+                <dd>{{ assessment.decisionEligibleConditionCount }} / {{ assessment.conditionCount }}</dd>
+              </div>
+              <div>
+                <dt>{{ 'admin.parkFitDataQuality.facts.missingSources' | translate }}</dt>
+                <dd>{{ assessment.missingSourceItemCount }}</dd>
+              </div>
+              <div>
+                <dt>{{ 'admin.parkFitDataQuality.facts.missingDates' | translate }}</dt>
+                <dd>{{ assessment.missingTimestampItemCount }}</dd>
+              </div>
+              <div>
+                <dt>{{ 'admin.parkFitDataQuality.facts.stale' | translate }}</dt>
+                <dd>{{ assessment.staleEvidenceItemCount }}</dd>
+              </div>
+              <div>
+                <dt>{{ 'admin.parkFitDataQuality.facts.ambiguous' | translate }}</dt>
+                <dd>{{ assessment.ambiguousItemCount }}</dd>
+              </div>
+              <div>
+                <dt>{{ 'admin.parkFitDataQuality.facts.lastVerified' | translate }}</dt>
+                <dd>
+                  {{ assessment.lastVerifiedAtUtc
+                    ? (assessment.lastVerifiedAtUtc | date:'mediumDate':'UTC')
+                    : ('admin.parkFitDataQuality.facts.never' | translate) }}
+                </dd>
+              </div>
+            </dl>
+
+            @if (assessment.issues.length > 0) {
+              <div class="admin-park-fit-data-quality-issues">
+                @for (issue of assessment.issues; track issue) {
+                  <span>{{ issueLabelKey(issue) | translate }}</span>
+                }
+              </div>
+            }
+
+            @if (assessment.issueSamples.length > 0) {
+              <details class="admin-park-fit-data-quality-samples">
+                <summary>
+                  {{ 'admin.parkFitDataQuality.samples.title' | translate:{ count: assessment.issueItemCount } }}
+                </summary>
+                <ul>
+                  @for (item of assessment.issueSamples; track item.parkItemId) {
+                    <li>
+                      <div>
+                        <a [routerLink]="parkItemRoute(assessment.parkId, item.parkItemId)">
+                          {{ item.parkItemName }}
+                        </a>
+                        <span>
+                          @for (issue of item.issues; track issue; let last = $last) {
+                            {{ issueLabelKey(issue) | translate }}@if (!last) { · }
+                          }
+                        </span>
+                      </div>
+                    </li>
+                  }
+                </ul>
+              </details>
+            }
+
+            <a
+              appUiButton
+              class="p-button-secondary admin-park-fit-data-quality-park__action"
+              icon="pi pi-arrow-right"
+              [routerLink]="parkItemsRoute(assessment.parkId)">
+              {{ 'admin.parkFitDataQuality.openParkItems' | translate }}
+            </a>
+          </article>
+        }
+      </section>
+
+      @if (pagination().totalPages > 1) {
+        <nav
+          class="admin-park-fit-data-quality-pagination"
+          [attr.aria-label]="'admin.parkFitDataQuality.pagination.ariaLabel' | translate">
+          <button
+            appUiButton
+            type="button"
+            class="p-button-secondary"
+            icon="pi pi-chevron-left"
+            [disabled]="loading() || pagination().currentPage <= 1"
+            [label]="'pagination.previous' | translate"
+            (click)="previousPage()">
+          </button>
+          <span>
+            {{ 'admin.parkFitDataQuality.pagination.label' | translate:{
+              current: pagination().currentPage,
+              total: pagination().totalPages
+            } }}
+          </span>
+          <button
+            appUiButton
+            type="button"
+            class="p-button-secondary"
+            icon="pi pi-chevron-right"
+            iconPos="right"
+            [disabled]="loading() || pagination().currentPage >= pagination().totalPages"
+            [label]="'pagination.next' | translate"
+            (click)="nextPage()">
+          </button>
+        </nav>
+      }
+    } @else if (!loading()) {
+      <p class="admin-park-fit-data-quality-empty">
+        {{ 'admin.parkFitDataQuality.empty' | translate }}
+      </p>
+    }
+  </app-page-state>
+</app-ui-card>

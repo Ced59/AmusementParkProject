@@ -1,0 +1,30 @@
+{
+  "admin": {
+    "dashboard": { "shortcuts": { "parkFitDataQuality": "Verifica se os dados dos parques estão prontos para comparação." } },
+    "parkFitDataQuality": {
+      "navTitle": "Qualidade dos dados de comparação",
+      "kicker": "Preparação dos dados",
+      "title": "Parques prontos para comparação",
+      "subtitle": "Identifica regras de acesso fiáveis, provas a rever e atrações a completar antes de incluir um parque no comparador.",
+      "loading": "A verificar os dados dos parques...",
+      "loadError": "Não foi possível carregar a auditoria de preparação dos parques.",
+      "empty": "Não existem parques para auditar nesta página.",
+      "metrics": {
+        "ariaLabel": "Resumo da preparação dos parques apresentados", "eligible": "Prontos para comparar", "actionRequired": "Parques a completar", "averageCoverage": "Cobertura média", "currentPage": "na página atual"
+      },
+      "coverage": { "attractions": "atrações utilizáveis", "ariaLabel": "Cobertura das atrações utilizáveis" },
+      "facts": {
+        "conditions": "Regras fiáveis", "missingSources": "Fontes em falta", "missingDates": "Datas em falta", "stale": "Provas antigas", "ambiguous": "Regras ambíguas", "lastVerified": "Última verificação", "never": "Nunca"
+      },
+      "status": {
+        "NotAssessed": "Não avaliado", "Insufficient": "Dados insuficientes", "EligibleForDiscoveryOnly": "Visível, não comparável", "EligibleForFitComparison": "Pronto para comparar", "TemporarilyStale": "Verificação a renovar", "Suspended": "Suspenso"
+      },
+      "issue": {
+        "NotPubliclyDiscoverable": "Parque não visível publicamente", "MissingCoordinates": "Coordenadas em falta", "MissingParkType": "Falta o tipo de parque", "MissingSupportedLanguageContent": "Falta conteúdo localizado", "MissingOpeningCalendar": "Calendário de abertura em falta", "OpeningCalendarStale": "Calendário de abertura a renovar", "NoVisibleAttractions": "Sem atrações visíveis", "MissingPreciseAttractionType": "O tipo de atração é demasiado genérico", "MissingIndoorOutdoorClassification": "Falta a classificação interior ou exterior", "MissingAccessibilitySource": "Falta a fonte de acessibilidade", "MissingAccessConditions": "Regras de acesso em falta", "MissingAuthoritativeSource": "Fonte oficial em falta", "MissingEvidenceTimestamp": "Data da prova em falta", "StaleEvidence": "Prova demasiado antiga", "AmbiguousRestriction": "Regra incoerente ou ambígua", "IncompleteRestrictionCoverage": "Cobertura das regras incompleta"
+      },
+      "samples": { "title": "Atrações a corrigir ({{count}})" },
+      "openParkItems": "Abrir as atrações do parque",
+      "pagination": { "ariaLabel": "Páginas da auditoria de preparação", "label": "Página {{current}} de {{total}}" }
+    }
+  }
+}

@@ -125,6 +125,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/passport-beta/pages/admin-passport-beta/admin-passport-beta.component').then((m) => m.AdminPassportBetaComponent)
           },
           {
+            path: 'park-fit-data-quality',
+            loadComponent: () => import('@features/admin/park-fit-data-quality/pages/admin-park-fit-data-quality/admin-park-fit-data-quality.component').then((m) => m.AdminParkFitDataQualityComponent)
+          },
+          {
             path: 'social-publications',
             loadComponent: () => import('@features/admin/social-publishing/pages/admin-social-publishing/admin-social-publishing.component').then((m) => m.AdminSocialPublishingComponent)
           },
