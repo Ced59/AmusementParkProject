@@ -130,9 +130,6 @@ public sealed class MongoDbSettings
     public string ParkFitOperationalStatusesCollectionName { get; set; } =
         "park-fit-operational-statuses";
 
-    public string ParkFitPortfolioMigrationsCollectionName { get; set; } =
-        "park-fit-portfolio-migrations";
-
     public string ShareModerationReportsCollectionName { get; set; } =
         "share-moderation-reports";
 

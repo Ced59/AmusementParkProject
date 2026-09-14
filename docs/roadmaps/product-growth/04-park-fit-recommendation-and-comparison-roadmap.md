@@ -289,13 +289,14 @@ rétablissement, suspension et retrait exigent une justification et restent
 versionnés. Une activation ou un rétablissement est refusé tant que le même audit
 factuel que celui du moteur public n'atteint pas `EligibleForFitComparison`.
 
-La migration MongoDB unique normalise tous les états absents en `NotActivated`,
-préserve les décisions déjà enregistrées, puis marque son achèvement. Aucun parc
-n'est donc auto-activé, y compris s'il est créé pendant la migration : chaque passage
-à `Active` exige la gate qualité et une décision admin. Aucun adaptateur conservant
-l'ancien « absent = actif » ne subsiste. La recherche pagine les faits publics jusqu'à
-avoir appliqué la limite aux parcs réellement actifs, puis exclut les états suspendus
-avant de charger attractions et calendriers.
+Le code compatible donne déjà à tout état absent la sémantique `NotActivated` :
+chaque passage à `Active` exige la gate qualité et une décision admin. Pour préserver
+le déploiement sans interruption, cette PR n'écrit pas encore la nouvelle valeur enum
+pendant qu'une ancienne instance peut la lire. La PR technique immédiatement suivante
+réalisera le backfill physique après le retrait vérifié de ces anciennes instances ;
+aucun adaptateur conservant l'ancien « absent = actif » ne subsistera. La recherche
+pagine les faits publics jusqu'à avoir appliqué la limite aux parcs réellement actifs,
+puis exclut les états suspendus avant de charger attractions et calendriers.
 
 L'administration distingue les quatre actions métier, explique les blocages de
 qualité et reste contenue sur mobile dans les huit langues. L'architecture, les
@@ -303,8 +304,9 @@ schémas MongoDB, les diagrammes de classes et de séquence ainsi que les preuve
 documentés dans
 [`product-growth-fit-15-portfolio-activation-2026-09-14.md`](../../architecture/product-growth-fit-15-portfolio-activation-2026-09-14.md).
 
-`FIT-G` est la prochaine étape : consolider les preuves finales de toute la roadmap
-sans rendre son achèvement technique dépendant d'un volume de visites réel.
+La migration physique compatible est la prochaine livraison de FIT-15. `FIT-G`
+consolidera ensuite les preuves finales sans rendre son achèvement technique dépendant
+d'un volume de visites réel.
 
 ## 1. Vision produit
 

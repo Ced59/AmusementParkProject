@@ -150,60 +150,39 @@ L'index `{ state: 1, updatedAt: -1 }` sert au pilotage. `_id` est l'identifiant 
 parc et garantit un état unique. Les raisons et acteurs sont réservés à
 l'administration ; la recherche publique ne les renvoie pas.
 
-### 4.2 Marqueur de migration
+## 5. Déploiement compatible avant migration physique
 
-Collection `park-fit-portfolio-migrations` :
+Avant FIT-15, l'absence de document signifiait implicitement « actif ». Le nouveau
+code lui donne immédiatement la sémantique sûre `NotActivated`, mais cette première
+livraison n'écrit pas encore la nouvelle valeur enum en masse. C'est volontaire :
+pendant le basculement sans interruption, l'ancienne API encore en service ne sait
+pas désérialiser cette valeur.
 
-```javascript
-{
-  _id: "fit-15-portfolio-activation-v1",
-  startedAtUtc: ISODate("2026-09-14T19:55:00Z"),
-  completedAtUtc: ISODate("2026-09-14T20:00:00Z")
-}
-```
+Le déploiement est donc ordonné en deux PR :
 
-Le plan rend la normalisation reprenable et idempotente. Il ne remplace pas l'état
-canonique et ne participe jamais à une recherche.
+1. la présente PR déploie le nouveau modèle, la lecture sûre, les actions admin et la
+   pagination après activation ;
+2. après disparition vérifiée des anciennes instances, une PR de migration dédiée
+   matérialise chaque état absent en `NotActivated`, par lots idempotents, sans
+   modifier les états `Active` ou `Suspended` déjà pilotés.
 
-## 5. Migration sans second système
-
-Avant FIT-15, l'absence de document signifiait implicitement « actif ». Pour supprimer
-ce raccourci sans créer un second système, le premier démarrage normalise les données :
-
-1. crée ou relit un plan de migration unique ;
-2. parcourt tous les parcs par lots de 500 ;
-3. crée pour chaque état absent un document `NotActivated`, révision `0` ;
-4. ne modifie aucun état `Active` ou `Suspended` déjà piloté ;
-5. date l'achèvement uniquement après les lots idempotents ;
-6. tolère les collisions si deux instances démarrent ensemble.
-
-Un parc créé pendant la migration est soit écrit explicitement `NotActivated`, soit
-reste absent ; ces deux cas ont strictement la même sémantique sûre. Aucun état absent
-n'est auto-activé et chaque passage vers `Active` exige l'action admin et la gate de
-qualité. Il n'existe donc pas d'adaptateur qui conserverait l'ancien « absent = actif ».
-Les collections et la migration sont exécutées par l'initialiseur de production :
-aucune mise à jour MongoDB manuelle n'est requise.
+Il n'existe déjà plus de comportement applicatif « absent = actif ». La seconde phase
+ne changera donc aucun résultat métier : elle alignera physiquement MongoDB sur la
+sémantique déjà déployée, sans adaptateur durable ni intervention manuelle.
 
 ```mermaid
 sequenceDiagram
     participant D as Déploiement
-    participant I as MongoDatabaseInitializer
-    participant P as parks
+    participant A0 as Ancienne API
+    participant A1 as API compatible FIT-15
     participant S as park-fit-operational-statuses
-    participant M as park-fit-portfolio-migrations
 
-    D->>I: démarrer la version FIT-15
-    I->>M: créer ou relire le plan idempotent
-    alt migration non terminée
-      I->>P: parcourir les identifiants par lots de 500
-      loop chaque lot
-        I->>S: upsert $setOnInsert NotActivated / révision 0
-      end
-      I->>M: dater l'achèvement
-    else migration déjà terminée
-      M-->>I: aucune écriture
-    end
-    I-->>D: application prête
+    D->>A1: démarrer le candidat compatible
+    Note over A0,A1: aucune nouvelle valeur Mongo écrite en masse
+    D->>A1: vérifier santé et tests candidats
+    D->>A0: retirer l'ancienne instance
+    D->>A1: rendre canonique
+    Note over A1,S: PR suivante : backfill NotActivated désormais lisible partout
 ```
 
 ## 6. Recherche publique
@@ -261,13 +240,14 @@ espagnol, polonais et portugais.
   tronqué ;
 - Application : activation éligible, refus d'une qualité insuffisante, exclusion
   d'un état absent, compteurs séparés, pagination après activation et lectures groupées ;
-- Infrastructure : normalisation explicite en `NotActivated`, reprise concurrente et noms
-  des collections ;
+- Infrastructure : lecture des états explicites sans écriture d'un enum incompatible
+  pendant le premier basculement ;
 - WebAPI : mapping additif du compteur `notActivatedCandidateCount` et validation
   de l'enum central ;
 - Angular : activation verrouillée, contrats responsive, façade/port et huit
   dictionnaires cohérents.
 
-FIT-15 termine l'extension contrôlée du portefeuille. La gate finale FIT-G vérifie
+La fonctionnalité FIT-15 est complète côté métier. Sa PR technique suivante réalise
+uniquement le backfill compatible après ce premier déploiement. La gate FIT-G vérifie
 ensuite l'ensemble des invariants déjà automatisables ; les observations terrain
 restent un outil d'amélioration et ne bloquent pas l'achèvement technique demandé.
