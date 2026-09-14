@@ -212,7 +212,7 @@ public sealed class PublicParkFitControllerTests
                 ResultBand = "TwoToFour",
                 UnknownLevel = "Limited",
                 DurationBand = "UnderOneAndHalfSeconds",
-                MethodVersion = "park-fit-2026-01",
+                MethodVersion = ParkFitScoreEvaluator.MethodVersion,
                 QualityIssues = ["StaleEvidence"],
             },
             CancellationToken.None);

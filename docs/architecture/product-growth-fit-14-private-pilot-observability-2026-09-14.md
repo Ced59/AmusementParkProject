@@ -25,7 +25,8 @@ Le navigateur ne transmet que des catégories fermées :
 - durée : quatre tranches, jamais une durée exacte ;
 - échec : validation, limitation de débit ou problème technique ;
 - comparaison : deux, trois ou quatre parcs ;
-- version de méthode et codes publics de qualité déjà présents dans la réponse.
+- version de méthode issue d'une liste fermée côté domaine et codes publics de
+  qualité déjà présents dans la réponse.
 
 Le contrat interdit les identifiants de membre, session, recherche ou parc, les
 coordonnées, la date demandée, les tailles, les âges, les préférences et tout texte
@@ -199,6 +200,8 @@ pas prouver seul la compréhension ou l'utilité du produit.
 La route admin lazy-loadée `/admin/park-fit-pilot` présente :
 
 - une période filtrable de 30 jours par défaut et 180 jours au maximum ;
+- ces périodes sont des journées UTC inclusives et alignées, soit exactement 30
+  ou 180 buckets quotidiens ;
 - huit indicateurs immédiatement lisibles ;
 - un graphique quotidien sans dépendance graphique lourde ;
 - les répartitions de résultats, inconnues et lacunes ;

@@ -11,8 +11,8 @@ namespace AmusementPark.Application.Features.ParkFit.Handlers;
 public sealed class GetParkFitPilotMetricsQueryHandler
     : IQueryHandler<GetParkFitPilotMetricsQuery, ApplicationResult<ParkFitPilotMetricsResult>>
 {
-    private static readonly TimeSpan DefaultRange = TimeSpan.FromDays(30);
-    private static readonly TimeSpan MaximumRange = TimeSpan.FromDays(180);
+    private const int DefaultRangeDays = 30;
+    private const int MaximumRangeDays = 180;
 
     private readonly IParkFitPilotMetricsRepository repository;
     private readonly TimeProvider timeProvider;
@@ -32,24 +32,26 @@ public sealed class GetParkFitPilotMetricsQueryHandler
         ArgumentNullException.ThrowIfNull(query);
 
         DateTime generatedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        DateTime toUtc = NormalizeUtc(query.ToUtc) ?? generatedAtUtc;
+        DateTime requestedToUtc = NormalizeUtc(query.ToUtc) ?? generatedAtUtc;
         DateTime? requestedFromUtc = NormalizeUtc(query.FromUtc);
-        if (!requestedFromUtc.HasValue && toUtc < DateTime.MinValue.Add(DefaultRange))
+        if (requestedFromUtc.HasValue && requestedFromUtc.Value > requestedToUtc)
         {
             return ApplicationResult<ParkFitPilotMetricsResult>.Failure(
                 ParkFitPilotApplicationErrors.InvalidMetricsRange());
         }
 
-        DateTime fromUtc = requestedFromUtc ?? toUtc.Subtract(DefaultRange);
-        if (fromUtc > toUtc)
+        DateTime toDayUtc = StartOfUtcDay(requestedToUtc);
+        DateTime toUtc = EndOfUtcDay(toDayUtc);
+        DateTime defaultFromUtc = SubtractWholeDaysOrMinimum(toDayUtc, DefaultRangeDays - 1);
+        DateTime fromUtc = requestedFromUtc.HasValue
+            ? StartOfUtcDay(requestedFromUtc.Value)
+            : defaultFromUtc;
+        DateTime earliestAllowedUtc = SubtractWholeDaysOrMinimum(
+            toDayUtc,
+            MaximumRangeDays - 1);
+        if (fromUtc < earliestAllowedUtc)
         {
-            return ApplicationResult<ParkFitPilotMetricsResult>.Failure(
-                ParkFitPilotApplicationErrors.InvalidMetricsRange());
-        }
-
-        if (toUtc.Subtract(fromUtc) > MaximumRange)
-        {
-            fromUtc = toUtc.Subtract(MaximumRange);
+            fromUtc = earliestAllowedUtc;
         }
 
         ParkFitPilotMetricsSnapshot snapshot = await this.repository.ReadAsync(
@@ -130,5 +132,25 @@ public sealed class GetParkFitPilotMetricsQueryHandler
         return value.Value.Kind == DateTimeKind.Utc
             ? value.Value
             : value.Value.ToUniversalTime();
+    }
+
+    private static DateTime StartOfUtcDay(DateTime value)
+    {
+        return DateTime.SpecifyKind(value.Date, DateTimeKind.Utc);
+    }
+
+    private static DateTime EndOfUtcDay(DateTime startOfDayUtc)
+    {
+        return startOfDayUtc == DateTime.SpecifyKind(DateTime.MaxValue.Date, DateTimeKind.Utc)
+            ? DateTime.SpecifyKind(DateTime.MaxValue, DateTimeKind.Utc)
+            : startOfDayUtc.AddDays(1).AddTicks(-1);
+    }
+
+    private static DateTime SubtractWholeDaysOrMinimum(DateTime value, int days)
+    {
+        DateTime minimumUtc = DateTime.SpecifyKind(DateTime.MinValue, DateTimeKind.Utc);
+        return value < minimumUtc.AddDays(days)
+            ? minimumUtc
+            : value.AddDays(-days);
     }
 }

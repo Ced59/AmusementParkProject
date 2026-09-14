@@ -21,7 +21,12 @@ interface ParkFitResultsTestSurface {
 describe('ParkFitResultsPageComponent', () => {
   it('keeps the result page private and exposes visitor-facing routes', () => {
     const seoService: Pick<SeoService, 'applyParkFitResultsSeo'> = { applyParkFitResultsSeo: vi.fn() };
-    const component: ParkFitResultsPageComponent = createComponent(buildResponse(), seoService);
+    const trackExplanationViewed = vi.fn();
+    const component: ParkFitResultsPageComponent = createComponent(
+      buildResponse(),
+      seoService,
+      trackExplanationViewed
+    );
     const page: ParkFitResultsTestSurface = component as unknown as ParkFitResultsTestSurface;
 
     component.ngOnInit();
@@ -29,6 +34,7 @@ describe('ParkFitResultsPageComponent', () => {
     expect(page.criteriaRoute()).toEqual(['/', 'fr', 'park-fit']);
     expect(page.homeRoute()).toEqual(['/', 'fr', 'home']);
     expect(page.countryName('FR')).toBeTruthy();
+    expect(trackExplanationViewed).toHaveBeenCalledOnce();
     expect(seoService.applyParkFitResultsSeo).toHaveBeenCalledWith(
       'parkFit.results.seo.title',
       'parkFit.results.seo.description',
@@ -38,6 +44,19 @@ describe('ParkFitResultsPageComponent', () => {
       'parkFit.results.breadcrumb.parkFit',
       'parkFit.results.breadcrumb.current'
     );
+  });
+
+  it('does not record an explanation when no search result can be displayed', () => {
+    const trackExplanationViewed = vi.fn();
+    const component: ParkFitResultsPageComponent = createComponent(
+      null,
+      { applyParkFitResultsSeo: vi.fn() },
+      trackExplanationViewed
+    );
+
+    component.ngOnInit();
+
+    expect(trackExplanationViewed).not.toHaveBeenCalled();
   });
 
   it('does not turn an internal source reference or an unknown reason into public text', () => {
@@ -58,14 +77,23 @@ describe('ParkFitResultsPageComponent', () => {
 
 function createComponent(
   responseValue: ParkFitSearchResponse | null,
-  seoService: Pick<SeoService, 'applyParkFitResultsSeo'> = { applyParkFitResultsSeo: vi.fn() }
+  seoService: Pick<SeoService, 'applyParkFitResultsSeo'> = { applyParkFitResultsSeo: vi.fn() },
+  trackExplanationViewed: () => void = vi.fn()
 ): ParkFitResultsPageComponent {
   const response: Signal<ParkFitSearchResponse | null> = signal(responseValue).asReadonly();
   const visibleParks: Signal<ParkFitSearchPark[]> = signal(responseValue?.parks ?? []).asReadonly();
   const comparisonParks: Signal<ParkFitSearchPark[]> = signal([]).asReadonly();
   const canCompare: Signal<boolean> = signal(false).asReadonly();
   const comparisonLimitReached: Signal<boolean> = signal(false).asReadonly();
-  const facade = { response, visibleParks, comparisonParks, canCompare, comparisonLimitReached, toggleComparisonPark: vi.fn() };
+  const facade = {
+    response,
+    visibleParks,
+    comparisonParks,
+    canCompare,
+    comparisonLimitReached,
+    toggleComparisonPark: vi.fn(),
+    trackExplanationViewed
+  };
   const route = {
     snapshot: { paramMap: convertToParamMap({}) },
     parent: {

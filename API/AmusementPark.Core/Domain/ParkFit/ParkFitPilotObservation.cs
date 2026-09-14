@@ -4,7 +4,6 @@ namespace AmusementPark.Core.Domain.ParkFit;
 
 public sealed class ParkFitPilotObservation
 {
-    private const int MaximumMethodVersionLength = 40;
     private const int MaximumQualityIssueCount = 16;
 
     private ParkFitPilotObservation(
@@ -81,7 +80,11 @@ public sealed class ParkFitPilotObservation
         string? normalizedVersion = string.IsNullOrWhiteSpace(methodVersion)
             ? null
             : methodVersion.Trim();
-        if (normalizedVersion?.Length > MaximumMethodVersionLength)
+        if (normalizedVersion is not null
+            && !string.Equals(
+                normalizedVersion,
+                ParkFitScoreEvaluator.MethodVersion,
+                StringComparison.Ordinal))
         {
             throw new ArgumentOutOfRangeException(nameof(methodVersion));
         }

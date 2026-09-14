@@ -16,7 +16,8 @@ public sealed class GetParkFitPilotMetricsQueryHandlerTests
     public async Task HandleAsync_ShouldAggregateDailyCountersIntoBusinessRates()
     {
         DateTime fromUtc = new(2026, 9, 1, 0, 0, 0, DateTimeKind.Utc);
-        DateTime toUtc = new(2026, 9, 14, 23, 59, 59, DateTimeKind.Utc);
+        DateTime toUtc = new DateTime(2026, 9, 15, 0, 0, 0, DateTimeKind.Utc)
+            .AddTicks(-1);
         ParkFitPilotDailyMetrics day = new(
             "2026-09-14",
             new Dictionary<string, long>
@@ -71,5 +72,33 @@ public sealed class GetParkFitPilotMetricsQueryHandlerTests
 
         Assert.False(result.IsSuccess);
         repository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WithoutBounds_ShouldReadExactlyThirtyInclusiveUtcDays()
+    {
+        DateTime expectedFromUtc = new(2026, 8, 17, 0, 0, 0, DateTimeKind.Utc);
+        DateTime expectedToUtc = new(2026, 9, 15, 23, 59, 59, 999, DateTimeKind.Utc);
+        expectedToUtc = expectedToUtc.AddTicks(9999);
+        Mock<IParkFitPilotMetricsRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(value => value.ReadAsync(
+                expectedFromUtc,
+                expectedToUtc,
+                CancellationToken.None))
+            .ReturnsAsync(new ParkFitPilotMetricsSnapshot([]));
+        GetParkFitPilotMetricsQueryHandler handler = new(
+            repository.Object,
+            new FixedParkFitPilotTimeProvider(
+                new DateTimeOffset(2026, 9, 15, 12, 34, 56, TimeSpan.Zero)));
+
+        ApplicationResult<ParkFitPilotMetricsResult> result = await handler.HandleAsync(
+            new GetParkFitPilotMetricsQuery(null, null),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Equal(expectedFromUtc, result.Value.FromUtc);
+        Assert.Equal(expectedToUtc, result.Value.ToUtc);
+        repository.VerifyAll();
     }
 }

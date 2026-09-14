@@ -35,7 +35,7 @@ public sealed class CaptureParkFitPilotObservationCommandHandlerTests
             ParkFitPilotDurationBand.UnderHalfSecond,
             null,
             null,
-            "park-fit-2026-01",
+            ParkFitScoreEvaluator.MethodVersion,
             [ParkFitDataQualityIssue.MissingOpeningCalendar]));
 
         Assert.True(result.IsSuccess);

@@ -16,10 +16,10 @@ public sealed class ParkFitPilotObservationTests
             ParkFitPilotDurationBand.UnderOneAndHalfSeconds,
             null,
             null,
-            " park-fit-2026-01 ",
+            $" {ParkFitScoreEvaluator.MethodVersion} ",
             [ParkFitDataQualityIssue.StaleEvidence, ParkFitDataQualityIssue.StaleEvidence]);
 
-        Assert.Equal("park-fit-2026-01", observation.MethodVersion);
+        Assert.Equal(ParkFitScoreEvaluator.MethodVersion, observation.MethodVersion);
         Assert.Equal(ParkFitDataQualityIssue.StaleEvidence, Assert.Single(observation.QualityIssues));
     }
 
@@ -34,6 +34,20 @@ public sealed class ParkFitPilotObservationTests
             null,
             null,
             null,
+            []));
+    }
+
+    [Fact]
+    public void CreateCompleted_WithUnknownMethodVersion_ShouldRejectUnboundedCounterKey()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => ParkFitPilotObservation.Create(
+            ParkFitPilotEventKind.SearchCompleted,
+            ParkFitPilotResultBand.One,
+            ParkFitPilotUnknownLevel.None,
+            ParkFitPilotDurationBand.UnderHalfSecond,
+            null,
+            null,
+            "caller-controlled-version",
             []));
     }
 }
