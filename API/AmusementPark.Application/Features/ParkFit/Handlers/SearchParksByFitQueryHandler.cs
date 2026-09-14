@@ -67,7 +67,7 @@ public sealed class SearchParksByFitQueryHandler
             .ToList();
         DateTime evaluatedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
 
-        if (portfolio.InspectedCandidateCount == 0)
+        if (portfolio.TotalCandidateCount == 0)
         {
             return ApplicationResult<ParkFitSearchResult>.Success(new ParkFitSearchResult
             {

@@ -79,6 +79,11 @@ classDiagram
     class ParkFitOperationalStatusRepository
     class SearchParksByFitQueryHandler
     class ParkFitCandidatePortfolioLoader
+    class IParkFitCandidatePortfolioReadRepository {
+      <<interface>>
+      +LoadAsync(countryCode, maximumActiveCandidateCount)
+    }
+    class ParkFitCandidatePortfolioReadRepository
     class AdminParkFitOperationalControlsComponent
     class AdminParkFitDataQualityFacade
     class AdminParkFitDataQualityStatePort {
@@ -93,7 +98,8 @@ classDiagram
     ChangeParkFitOperationalStatusCommandHandler --> IParkFitOperationalStatusRepository
     IParkFitOperationalStatusRepository <|.. ParkFitOperationalStatusRepository
     SearchParksByFitQueryHandler --> ParkFitCandidatePortfolioLoader
-    ParkFitCandidatePortfolioLoader --> IParkFitOperationalStatusRepository
+    ParkFitCandidatePortfolioLoader --> IParkFitCandidatePortfolioReadRepository
+    IParkFitCandidatePortfolioReadRepository <|.. ParkFitCandidatePortfolioReadRepository
     AdminParkFitOperationalControlsComponent --> AdminParkFitDataQualityFacade
     AdminParkFitDataQualityFacade --> AdminParkFitDataQualityStatePort
     AdminParkFitDataQualityStatePort <|.. AdminParkFitDataQualityApiService
@@ -189,27 +195,31 @@ sequenceDiagram
 
 ## 6. Recherche publique
 
-La recherche parcourt les candidats publics par pages légères et filtre leur état
-avant d'appliquer la limite de 200 parcs actifs. Des parcs non activés placés avant un
-parc actif dans l'ordre alphabétique ne peuvent donc plus masquer ce dernier. Elle ne
-charge attractions et calendriers que pour les identifiants explicitement `Active`,
-ce qui borne les faits lourds même si le catalogue public est plus grand.
+La recherche interroge directement la cohorte pilotée avec une projection MongoDB
+dédiée. Elle part de l'index des seuls états `Active` et `Suspended`, joint les fiches
+de parc, puis applique visibilité, cycle de vie, pays et coordonnées. La limite de
+200 ne s'applique qu'aux documents déjà `Active`. Un facet calcule les volumes actifs
+et suspendus ; un comptage léger du catalogue public permet d'en déduire exactement
+les non-activés, sans les joindre ni les remonter dans l'Application. Chaque requête
+est limitée à dix secondes.
+
+Des milliers de parcs non activés n'entraînent donc plus une pagination applicative
+non bornée et ne peuvent pas masquer un parc actif. Attractions et calendriers ne
+sont chargés que pour les identifiants actifs effectivement retenus.
 
 ```mermaid
 sequenceDiagram
     actor V as Visiteur
     participant Q as SearchParksByFitQueryHandler
-    participant P as Parcs publics
-    participant O as États opérationnels
+    participant R as Projection portefeuille MongoDB
     participant F as Faits FIT
     participant C as Core
 
     V->>Q: recherche anonyme
-    loop pages légères jusqu'à 200 actifs ou fin du catalogue
-      Q->>P: page de candidats publics
-      Q->>O: états de la page
-      Q->>Q: compter les états et retenir Active
-    end
+    Q->>R: pays + limite de 200 actifs
+    R->>R: index Active/Suspended puis jointure des parcs publics
+    R->>R: facet actifs bornés + compteurs exacts
+    R-->>Q: parcs Active + agrégats
     Q->>F: attractions + synthèses pour les seuls actifs
     Q->>C: audit puis score explicable
     C-->>Q: résultats éligibles
@@ -245,10 +255,10 @@ espagnol, polonais et portugais.
 - Core : transitions, retrait pendant une suspension, versions et historique
   tronqué ;
 - Application : refus d'une activation pendant la phase lecteur, rétablissement
-  soumis à la qualité, exclusion d'un état absent, compteurs séparés, pagination
-  après filtrage d'activation et lectures groupées ;
-- Infrastructure : lecture des états explicites sans écriture d'un enum incompatible
-  pendant le premier basculement ;
+  soumis à la qualité, exclusion d'un état absent, compteurs séparés et lectures
+  groupées des seuls actifs ;
+- Infrastructure : lecture des états explicites sans écriture d'un enum incompatible,
+  projection active bornée après filtres publics et compteurs par facet ;
 - WebAPI : mapping additif du compteur `notActivatedCandidateCount` et validation
   de l'enum central ;
 - Angular : aucune écriture anticipée des nouveaux états, fermeture d'une

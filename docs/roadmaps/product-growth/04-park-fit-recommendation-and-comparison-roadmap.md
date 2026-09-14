@@ -296,9 +296,12 @@ peut les lire. Seules les actions historiques de suspension et de rétablissemen
 restent ouvertes, ce dernier exigeant déjà la gate qualité. La PR immédiatement
 suivante ouvrira l'activation et le retrait puis réalisera le backfill physique après
 le retrait vérifié des anciennes instances ; aucun adaptateur conservant l'ancien
-« absent = actif » ne subsistera. La recherche pagine les faits publics jusqu'à avoir
-appliqué la limite aux parcs réellement actifs, puis exclut les états suspendus avant
-de charger attractions et calendriers.
+« absent = actif » ne subsistera. La recherche utilise une projection MongoDB dédiée :
+elle part de l'index des états actifs ou suspendus, joint leurs fiches publiques,
+borne uniquement la cohorte active à 200 et complète les compteurs par un comptage
+léger du catalogue. Le catalogue inactif ne participe plus à la jointure et ne
+provoque plus de pagination applicative non bornée ; attractions et calendriers ne
+sont chargés que pour les actifs retenus.
 
 L'administration distingue déjà les trois états, explique les blocages de qualité et
 reste contenue sur mobile dans les huit langues. Les quatre actions métier seront
