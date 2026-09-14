@@ -9,6 +9,7 @@ import {
   parkFitComponentStateKey,
   parkFitConfidenceKey,
   parkFitQualityKey,
+  parkFitScoreStateKey,
   resolveParkFitSourceUrl
 } from './park-fit-result-display.helpers';
 
@@ -97,6 +98,12 @@ function buildRow(
 
 function buildOverallCell(park: ParkFitSearchPark): ParkFitComparisonCell {
   const score: number | null = park.comparativeScore === null ? null : Math.round(park.comparativeScore);
+  const scoreCeiling: number | null = park.scoreCeilingPercent === null
+    ? null
+    : Math.round(park.scoreCeilingPercent);
+  const statusKey: string = park.scoreState === 'Capped' && scoreCeiling !== null
+    ? 'parkFit.comparison.values.cappedState'
+    : parkFitScoreStateKey(park.scoreState);
   return cell(
     park,
     score === null ? 'parkFit.comparison.values.scoreUnavailable' : 'parkFit.comparison.values.score',
@@ -106,7 +113,9 @@ function buildOverallCell(park: ParkFitSearchPark): ParkFitComparisonCell {
     parkFitConfidenceKey(park.confidence),
     {},
     null,
-    `${score ?? 'unknown'}|${Math.round(park.coveragePercent)}|${park.confidence}`
+    `${score ?? 'unknown'}|${Math.round(park.coveragePercent)}|${park.confidence}|${park.scoreState}|${scoreCeiling ?? 'none'}`,
+    statusKey,
+    scoreCeiling === null ? {} : { ceiling: scoreCeiling }
   );
 }
 
@@ -244,7 +253,19 @@ function cell(
   secondaryKey: string | null,
   secondaryParams: Record<string, string | number>,
   linkUrl: string | null,
-  fingerprint: string
+  fingerprint: string,
+  statusKey: string | null = null,
+  statusParams: Record<string, string | number> = {}
 ): ParkFitComparisonCell {
-  return { parkId: park.parkId, primaryKey, primaryParams, secondaryKey, secondaryParams, linkUrl, fingerprint };
+  return {
+    parkId: park.parkId,
+    primaryKey,
+    primaryParams,
+    secondaryKey,
+    secondaryParams,
+    statusKey,
+    statusParams,
+    linkUrl,
+    fingerprint
+  };
 }

@@ -75,6 +75,12 @@
                 <div class="park-fit-comparison__cell" [attr.aria-label]="parks()[parkIndex]!.parkName">
                   <span class="park-fit-comparison__cell-park">{{ parks()[parkIndex]!.parkName }}</span>
                   <strong>{{ cell.primaryKey | translate:cell.primaryParams }}</strong>
+                  @if (cell.statusKey) {
+                    <span class="park-fit-comparison__cell-status">
+                      <i class="pi pi-info-circle" aria-hidden="true"></i>
+                      {{ cell.statusKey | translate:cell.statusParams }}
+                    </span>
+                  }
                   @if (cell.secondaryKey) {
                     <span>{{ cell.secondaryKey | translate:cell.secondaryParams }}</span>
                   }

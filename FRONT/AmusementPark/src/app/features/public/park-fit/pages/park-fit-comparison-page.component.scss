@@ -210,12 +210,20 @@
 }
 
 .park-fit-comparison__cell-park {
-  display: none;
+  display: block;
   color: var(--c-sky) !important;
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.park-fit-comparison__cell-status {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  color: var(--c-gold) !important;
+  font-weight: 800;
 }
 
 .park-fit-comparison__missing,
@@ -245,9 +253,6 @@
     border-bottom: 0;
   }
 
-  .park-fit-comparison__cell-park {
-    display: block;
-  }
 }
 
 @media (max-width: 700px) {

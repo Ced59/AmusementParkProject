@@ -44,6 +44,22 @@ describe('buildParkFitComparisonSections', () => {
     expect(overallRow?.cells.map((comparisonCell) => comparisonCell.primaryParams['coverage'])).toEqual([60, 80]);
   });
 
+  it('keeps a capped score visibly distinct from the same available score', () => {
+    const available: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const capped: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    capped.scoreState = 'Capped';
+    capped.scoreCeilingPercent = 82;
+
+    const overallRow = buildParkFitComparisonSections([available, capped], (): string => 'date')
+      .flatMap((section) => section.rows)
+      .find((row) => row.id === 'overall');
+
+    expect(overallRow?.isDifferent).toBe(true);
+    expect(overallRow?.cells[0]?.statusKey).toBe('parkFit.results.scoreStates.Available');
+    expect(overallRow?.cells[1]?.statusKey).toBe('parkFit.comparison.values.cappedState');
+    expect(overallRow?.cells[1]?.statusParams['ceiling']).toBe(82);
+  });
+
   it('only exposes a verified HTTPS source URL in the official-link row', () => {
     const unsafe: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
     unsafe.criticalSources = [{

@@ -14,5 +14,7 @@ describe('Park Fit comparison responsive contract', () => {
     expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
     expect(styles).toContain('@media (max-width: 360px)');
     expect(styles).toContain('overflow-wrap: anywhere');
+    expect(styles).toContain('.park-fit-comparison__cell-park');
+    expect(styles).not.toContain('.park-fit-comparison__cell-park {\n  display: none');
   });
 });

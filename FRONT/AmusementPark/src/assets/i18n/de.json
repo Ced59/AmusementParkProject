@@ -5063,6 +5063,7 @@
       "values": {
         "score": "{{score}}/100 · {{coverage}} % Abdeckung",
         "scoreUnavailable": "Punktzahl nicht veröffentlicht · {{coverage}} % Abdeckung",
+        "cappedState": "Vorsichtiger Vergleich · Obergrenze {{ceiling}}/100",
         "together": "Gemeinsam möglich: {{count}}",
         "organized": "Mit Gruppenorganisation: {{count}}",
         "unknowns": "Unbekannte Attraktionen: {{attractions}} · unbekannte Faktoren: {{factors}}",

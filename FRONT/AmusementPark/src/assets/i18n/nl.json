@@ -5063,6 +5063,7 @@
       "values": {
         "score": "{{score}}/100 · {{coverage}}% dekking",
         "scoreUnavailable": "Score niet gepubliceerd · {{coverage}}% dekking",
+        "cappedState": "Voorzichtige vergelijking · plafond {{ceiling}}/100",
         "together": "Samen mogelijk: {{count}}",
         "organized": "Met groepsplanning: {{count}}",
         "unknowns": "Onbekende attracties: {{attractions}} · onbekende factoren: {{factors}}",
