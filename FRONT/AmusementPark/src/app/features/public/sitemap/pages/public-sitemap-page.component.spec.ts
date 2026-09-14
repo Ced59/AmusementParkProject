@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { Router, provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { of, Subject } from 'rxjs';
@@ -83,6 +83,36 @@ describe('PublicSitemapPageComponent crawlable navigation', () => {
     expect(harness.routeNativeElement?.querySelectorAll('.sitemap-tree__item')).toHaveLength(5);
     expect(new URL(readLink(harness, 'a[rel="prev"]'), 'https://example.test').searchParams.has('page')).toBe(false);
     expect(harness.routeNativeElement?.querySelector('a[rel="next"]')).toBeNull();
+  });
+
+  it.each([false, true])('resets language-scoped snapshot navigation when changing locale (header event: %s)', async (emitHeaderEvent: boolean) => {
+    dataPort.getNodes.mockImplementation((language: string, parent: string | null) => {
+      if (parent === null) {
+        return of([{ id: 'snapshot-sections', label: 'Toutes les pages', hasChildren: true }]);
+      }
+      if (parent === 'snapshot-sections') {
+        return of([{ id: `sitemap-section:parks-${language}`, label: `Parcs ${language}`, hasChildren: true }]);
+      }
+      return of(Array.from({ length: 105 }, (_, index): PublicHtmlSitemapNode => ({
+        id: `park:${index}`, label: `Parc ${index}`, relativeUrl: `/${language}/park/${index}/parc`, hasChildren: false
+      })));
+    });
+    const harness: RouterTestingHarness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/fr/sitemap?node=snapshot-sections%2Fsitemap-section:parks-fr&page=2', PublicSitemapPageComponent);
+    expect(harness.routeNativeElement?.querySelectorAll('.sitemap-tree__item')).toHaveLength(5);
+    dataPort.getNodes.mockClear();
+
+    if (emitHeaderEvent) {
+      TestBed.inject(TranslationService).languageChanged.next('en');
+    }
+    await harness.navigateByUrl('/en/sitemap?node=snapshot-sections%2Fsitemap-section:parks-fr&page=2', PublicSitemapPageComponent);
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+
+    expect(TestBed.inject(Router).url).toBe('/en/sitemap?node=snapshot-sections');
+    expect(harness.routeNativeElement?.querySelector('.sitemap-tree__item')?.textContent).toContain('Parcs en');
+    expect(new URL(readLink(harness, '.sitemap-tree__toggle'), 'https://example.test').searchParams.get('node')).toBe('snapshot-sections/sitemap-section:parks-en');
+    expect(dataPort.getNodes).not.toHaveBeenCalledWith('en', 'sitemap-section:parks-fr', false);
   });
 });
 

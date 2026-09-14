@@ -32,6 +32,7 @@ export class PublicSitemapPageComponent implements OnInit {
   protected readonly previousQueryParams = computed(() => buildPublicSitemapQuery(this.location().nodeIds, this.page() - 1));
   protected readonly nextQueryParams = computed(() => buildPublicSitemapQuery(this.location().nodeIds, this.page() + 1));
   private activeLanguage: string | null = null;
+  private snapshotLanguageResetPending = false;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -61,12 +62,26 @@ export class PublicSitemapPageComponent implements OnInit {
     const languageRoute: ActivatedRoute | null = findNearestLanguageActivatedRoute(this.route);
     languageRoute?.paramMap.pipe(skip(1), takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap): void => {
       this.applyLanguage(resolveLanguageFromParamMap(params, this.currentLang()));
+      if (this.snapshotLanguageResetPending) {
+        this.snapshotLanguageResetPending = false;
+        void this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: buildPublicSitemapQuery(this.location().nodeIds),
+          replaceUrl: true
+        });
+      }
     });
   }
 
   private applyLanguage(language: string): void {
     if (this.activeLanguage === language) {
       return;
+    }
+
+    if (this.activeLanguage !== null && this.location().isValid && this.location().nodeIds[0] === 'snapshot-sections') {
+      this.location.set({ nodeIds: ['snapshot-sections'], page: 1, isValid: true });
+      // The header emits its language change before navigating to the localized URL.
+      this.snapshotLanguageResetPending = true;
     }
 
     this.activeLanguage = language;

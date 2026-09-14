@@ -33,11 +33,12 @@ Chaque niveau et chaque page de résultats possède un véritable lien `href`. C
 - Le chemin est limité à six niveaux. Chaque nœud doit appartenir aux enfants réellement retournés par le niveau précédent avant qu’une requête soit adressée à sa branche.
 - Les clés du cache SSR distinguent les paramètres `node` et `page`. Les réponses en erreur ne remplacent pas la racine et ne sont pas enregistrées comme des pages réussies.
 - Les liens générés omettent `page=1` et les paramètres vides. Aucune permission supplémentaire de parcours de `/api/` n’est nécessaire.
+- Un changement de langue depuis une section publiée revient à la liste des sections de la langue choisie : aucun identifiant de section de l’ancienne langue n’est conservé dans l’URL.
 - Le cache des réponses API et les protections existantes de taille du cache HTML restent actifs. Aucun rendu récursif de l’ensemble du site n’est introduit.
 
 ## Vérification
 
-Les tests couvrent les véritables `href`, le chargement direct d’une branche, les liens vers les attractions et articles, la pagination, les changements de paramètres sur un composant réutilisé, l’annulation des requêtes obsolètes et les erreurs 404/503. Les tests du complément par sections vérifient la conservation des familles de pages fournies par les snapshots publics.
+Les tests couvrent les véritables `href`, le chargement direct d’une branche, les liens vers les attractions et articles, la pagination, les changements de paramètres et de langue sur un composant réutilisé, l’annulation des requêtes obsolètes et les erreurs 404/503. Les tests du complément par sections vérifient la conservation des familles de pages fournies par les snapshots publics.
 
 Après déploiement, vérifier une racine, une rubrique de parcs, un parc, une liste d’attractions, un historique et une section complémentaire avec et sans identification Googlebot. Vérifier que les liens détaillés sont présents dans la réponse HTML initiale, que les pages suivantes sont accessibles par `href` et que les anciennes réponses 404/503 ne sont pas masquées.
 
