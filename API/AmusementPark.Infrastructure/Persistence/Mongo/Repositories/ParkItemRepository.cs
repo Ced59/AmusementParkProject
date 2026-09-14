@@ -117,18 +117,9 @@ public sealed class ParkItemRepository : IParkItemRepository
             totalItems);
     }
 
-    public Task<IReadOnlyCollection<ParkItem>> GetByParkIdsAsync(
-        IReadOnlyCollection<string> parkIds,
-        bool includeHidden,
-        CancellationToken cancellationToken)
-    {
-        return this.GetByParkIdsAsync(parkIds, includeHidden, ClosedEntityFilter.All, cancellationToken);
-    }
-
     public async Task<IReadOnlyCollection<ParkItem>> GetByParkIdsAsync(
         IReadOnlyCollection<string> parkIds,
         bool includeHidden,
-        ClosedEntityFilter closedFilter,
         CancellationToken cancellationToken)
     {
         List<string> normalizedParkIds = NormalizeParkIds(parkIds);
@@ -144,13 +135,49 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
 
-        filter &= ParkItemClosedEntityMongoFilter.Build(closedFilter);
-
         List<ParkItemDocument> documents = await this.collection.Find(filter)
             .SortBy(document => document.ParkId)
             .ThenBy(document => document.Category)
             .ThenBy(document => document.Type)
             .ThenBy(document => document.Name)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
+    public async Task<IReadOnlyCollection<ParkItem>> GetVisibleOpenAttractionsByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkIds = NormalizeParkIds(parkIds);
+        if (normalizedParkIds.Count == 0)
+        {
+            return Array.Empty<ParkItem>();
+        }
+
+        FilterDefinition<ParkItemDocument> filter =
+            Builders<ParkItemDocument>.Filter.In(document => document.ParkId, normalizedParkIds)
+            & Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true)
+            & Builders<ParkItemDocument>.Filter.Eq(
+                document => document.Category,
+                ParkItemCategory.Attraction)
+            & ParkItemClosedEntityMongoFilter.Build(ClosedEntityFilter.OpenOnly);
+        ProjectionDefinition<ParkItemDocument> projection = Builders<ParkItemDocument>.Projection
+            .Include(document => document.Id)
+            .Include(document => document.ParkId)
+            .Include(document => document.Name)
+            .Include(document => document.Category)
+            .Include(document => document.Type)
+            .Include(document => document.IsVisible)
+            .Include("attractionDetails.sourceUrl")
+            .Include("attractionDetails.isAccessibleForReducedMobility")
+            .Include("attractionDetails.isIndoor")
+            .Include("attractionDetails.accessConditions");
+        List<ParkItemDocument> documents = await this.collection.Find(filter)
+            .Project<ParkItemDocument>(projection)
+            .SortBy(document => document.ParkId)
+            .ThenBy(document => document.Name)
+            .ThenBy(document => document.Id)
             .ToListAsync(cancellationToken);
 
         return documents.Select(document => document.ToDomain()).ToList();

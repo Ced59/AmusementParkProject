@@ -119,7 +119,7 @@ public sealed class ParkFitDataQualityAssessor
             issues.Add(ParkFitDataQualityIssue.MissingCoordinates);
         }
 
-        if (!park.Type.HasValue)
+        if (!HasValidParkType(park))
         {
             issues.Add(ParkFitDataQualityIssue.MissingParkType);
         }
@@ -174,7 +174,9 @@ public sealed class ParkFitDataQualityAssessor
             return ParkFitDataQualityStatus.NotAssessed;
         }
 
-        if (!DataCompletenessScoringRules.HasValidPosition(park.Position) || attractionCount == 0)
+        if (!DataCompletenessScoringRules.HasValidPosition(park.Position)
+            || !HasValidParkType(park)
+            || attractionCount == 0)
         {
             return ParkFitDataQualityStatus.Insufficient;
         }
@@ -207,6 +209,11 @@ public sealed class ParkFitDataQualityAssessor
     {
         HashSet<ParkFitDataQualityIssue> issueSet = issues.ToHashSet();
         return itemAssessments.Count(item => item.Issues.Any(issueSet.Contains));
+    }
+
+    private static bool HasValidParkType(Park park)
+    {
+        return park.Type.HasValue && Enum.IsDefined(park.Type.Value);
     }
 
 }

@@ -43,9 +43,13 @@ internal sealed class ParkFitDataQualityItemAssessor
     {
         ArgumentNullException.ThrowIfNull(item);
 
-        IReadOnlyCollection<AttractionAccessCondition> conditions = item.AttractionDetails is null
+        IReadOnlyCollection<AttractionAccessCondition> allConditions = item.AttractionDetails is null
             ? Array.Empty<AttractionAccessCondition>()
             : item.AttractionDetails.AccessConditions;
+        DateOnly evaluationDate = DateOnly.FromDateTime(evaluatedAtUtc);
+        IReadOnlyCollection<AttractionAccessCondition> conditions = allConditions
+            .Where(condition => IsApplicableOn(condition, evaluationDate))
+            .ToList();
         HashSet<ParkFitDataQualityIssue> issues = new HashSet<ParkFitDataQualityIssue>();
         int decisionEligibleConditionCount = 0;
 
@@ -141,6 +145,19 @@ internal sealed class ParkFitDataQualityItemAssessor
         {
             issues.Add(ParkFitDataQualityIssue.AmbiguousRestriction);
         }
+    }
+
+    private static bool IsApplicableOn(AttractionAccessCondition condition, DateOnly evaluationDate)
+    {
+        if (condition.EffectiveFrom.HasValue
+            && condition.EffectiveTo.HasValue
+            && condition.EffectiveTo.Value < condition.EffectiveFrom.Value)
+        {
+            return true;
+        }
+
+        return (!condition.EffectiveFrom.HasValue || condition.EffectiveFrom.Value <= evaluationDate)
+            && (!condition.EffectiveTo.HasValue || condition.EffectiveTo.Value >= evaluationDate);
     }
 
 }

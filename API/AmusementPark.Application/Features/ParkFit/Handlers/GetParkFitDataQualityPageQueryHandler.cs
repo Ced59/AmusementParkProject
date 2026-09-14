@@ -83,10 +83,8 @@ public sealed class GetParkFitDataQualityPageQueryHandler
         }
 
         Task<IReadOnlyCollection<ParkItem>> itemsTask =
-            this.parkItemRepository.GetByParkIdsAsync(
+            this.parkItemRepository.GetVisibleOpenAttractionsByParkIdsAsync(
                 parkIds,
-                true,
-                ClosedEntityFilter.OpenOnly,
                 cancellationToken);
         Task<IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary>> openingHoursTask =
             this.openingHoursRepository.GetSummariesByParkIdsAsync(parkIds, cancellationToken);

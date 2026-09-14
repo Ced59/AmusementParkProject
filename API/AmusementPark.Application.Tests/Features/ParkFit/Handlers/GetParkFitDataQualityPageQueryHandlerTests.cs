@@ -56,10 +56,8 @@ public sealed class GetParkFitDataQualityPageQueryHandlerTests
                 false,
                 null))
             .ReturnsAsync(new PagedResult<Park>(new[] { park }, 2, 10, 21));
-        items.Setup(repository => repository.GetByParkIdsAsync(
+        items.Setup(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { park.Id })),
-                true,
-                ClosedEntityFilter.OpenOnly,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { attraction });
         openingHours.Setup(repository => repository.GetSummariesByParkIdsAsync(

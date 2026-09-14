@@ -315,6 +315,72 @@ public sealed class ParkFitDataQualityAssessorTests
         Assert.Contains(ParkFitDataQualityIssue.MissingCoordinates, result.Issues);
     }
 
+    [Fact]
+    public void Assess_WhenParkTypeIsUndefined_ShouldTreatItAsMissing()
+    {
+        Park park = BuildDiscoverablePark();
+        park.Type = (ParkType)999;
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            park,
+            new[] { BuildAttraction(BuildCondition()) },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.Insufficient, result.Status);
+        Assert.Contains(ParkFitDataQualityIssue.MissingParkType, result.Issues);
+    }
+
+    [Theory]
+    [InlineData(-30, -1)]
+    [InlineData(1, 30)]
+    public void Assess_WhenEveryRestrictionIsOutsideTheAuditDate_ShouldRequireCurrentConditions(
+        int effectiveFromOffsetDays,
+        int effectiveToOffsetDays)
+    {
+        DateOnly evaluationDate = DateOnly.FromDateTime(EvaluationTimestamp);
+        AttractionAccessCondition condition = BuildCondition();
+        condition.EffectiveFrom = evaluationDate.AddDays(effectiveFromOffsetDays);
+        condition.EffectiveTo = evaluationDate.AddDays(effectiveToOffsetDays);
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { BuildAttraction(condition) },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.Insufficient, result.Status);
+        Assert.Equal(0, result.ConditionCount);
+        Assert.Equal(0, result.DecisionEligibleConditionCount);
+        Assert.Contains(ParkFitDataQualityIssue.MissingAccessConditions, result.Issues);
+    }
+
+    [Theory]
+    [InlineData(0, 30)]
+    [InlineData(-30, 0)]
+    public void Assess_WhenRestrictionStartsOrEndsOnAuditDate_ShouldIncludeIt(
+        int effectiveFromOffsetDays,
+        int effectiveToOffsetDays)
+    {
+        DateOnly evaluationDate = DateOnly.FromDateTime(EvaluationTimestamp);
+        AttractionAccessCondition condition = BuildCondition();
+        condition.EffectiveFrom = evaluationDate.AddDays(effectiveFromOffsetDays);
+        condition.EffectiveTo = evaluationDate.AddDays(effectiveToOffsetDays);
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { BuildAttraction(condition) },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.EligibleForFitComparison, result.Status);
+        Assert.Equal(1, result.ConditionCount);
+        Assert.Equal(1, result.DecisionEligibleConditionCount);
+    }
+
     private static Park BuildDiscoverablePark()
     {
         Park park = new Park

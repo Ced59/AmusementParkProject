@@ -38,9 +38,9 @@ internal sealed class UpdateParksBulkAdministrationCommandHandlerTestsFakeParkIt
         return Task.FromResult<IReadOnlyCollection<ParkItem>>(Array.Empty<ParkItem>());
     }
 
-    public Task<IReadOnlyCollection<ParkItem>> GetByParkIdsAsync(IReadOnlyCollection<string> parkIds, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
+    public Task<IReadOnlyCollection<ParkItem>> GetVisibleOpenAttractionsByParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken)
     {
-        return this.GetByParkIdsAsync(parkIds, includeHidden, cancellationToken);
+        return this.GetByParkIdsAsync(parkIds, true, cancellationToken);
     }
 
     public Task<IReadOnlyList<ParkItemSiblingNavigationItem>> GetNavigationItemsByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)

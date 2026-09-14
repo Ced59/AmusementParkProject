@@ -60,7 +60,9 @@ explicites. Aucune visite membre ni cohorte réelle n'entre dans ce calcul.
 L'administration possède un écran paginé et responsive « Qualité du comparateur ».
 Il présente la couverture, les anomalies et jusqu'à huit attractions à corriger par
 parc, avec un accès direct à leur édition. Le traitement charge une page de parcs
-puis ses attractions ouvertes et calendriers par lots parallèles ; aucune collection MongoDB
+puis ses attractions visibles, ouvertes et actuellement concernées par leurs règles,
+ainsi que les calendriers, par lots parallèles. La lecture des attractions est filtrée
+et projetée en base ; aucune collection MongoDB
 ou projection concurrente n'a été créée. Le détail, les diagrammes et les preuves
 automatisées sont documentés dans
 [`product-growth-fit-03-data-quality-audit-2026-09-14.md`](../../architecture/product-growth-fit-03-data-quality-audit-2026-09-14.md).

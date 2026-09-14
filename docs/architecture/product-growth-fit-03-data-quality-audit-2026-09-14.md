@@ -40,13 +40,14 @@ Une attraction visible mais fermée ou retirée est conservée dans l'historique
 pénaliser la préparation du parc. Une attraction actuellement ouverte est comptée
 comme exploitable uniquement lorsque son type est précis et compatible avec sa
 catégorie, que sa classification intérieure/extérieure est connue, qu'elle possède au
-moins une condition d'accès et que toutes ses conditions franchissent l'évaluateur
+moins une condition d'accès applicable à la date UTC de l'audit et que toutes ses conditions actuelles franchissent l'évaluateur
 de preuve de `FIT-02` ainsi que l'évaluateur sémantique. Ce dernier refuse notamment
 un âge sans valeur ou exprimé dans une unité de taille, une taille sans unité et une
 règle personnalisée sans définition stable. Une information d'accessibilité renseignée doit avoir une
 URL HTTP(S) absolue consultable et une plage de taille dont le minimum dépasse le maximum est
 signalée comme ambiguë. Le parc doit lui-même avoir un type et au moins une langue
-publique documentée. Les coordonnées utilisent le validateur canonique du domaine :
+publique documentée. Une valeur numérique inconnue de l'énumération des types de
+parc est refusée comme une valeur absente. Les coordonnées utilisent le validateur canonique du domaine :
 le point factice `(0, 0)` ne satisfait jamais la gate.
 
 Les plages de taille sont converties en centimètres avant comparaison. Une règle en
@@ -193,13 +194,16 @@ affiche les noms du parc et de l'attraction.
 
 - la page est bornée à 12 parcs dans l'interface ;
 - une page de parcs déclenche deux lectures par lots, exécutées en parallèle, et
-  non une requête par attraction ;
+  non une requête par attraction ; la lecture MongoDB dédiée filtre en base les
+  attractions visibles et ouvertes puis ne projette que leur identité, leur type,
+  leurs classifications et leurs conditions d'accès ;
 - le calcul est pur, synchrone et borné aux données de cette page ;
 - aucune nouvelle dépendance frontend et aucun calcul sur les pages publiques ;
 - l'endpoint exige le rôle administrateur et le statut de compte autorisé ;
 - les réponses sont `no-store` car elles décrivent l'état éditorial interne.
 
-Une projection MongoDB ne sera justifiée que par une mesure de latence insuffisante.
+Les descriptions, positions et détails techniques inutiles ne sont pas transférés
+par cette projection d'audit.
 Le premier contrat conserve donc une source unique de vérité.
 
 ## 7. Responsive et accessibilité
@@ -219,8 +223,8 @@ ARIA de progression. Les statuts ne reposent pas uniquement sur la couleur.
 
 | Niveau | Comportements couverts |
 |---|---|
-| Core | parc prêt, coordonnées factices, type/langue/classification manquants ou incohérents, URL d'accessibilité invalide, règle sémantiquement inutilisable, calendrier absent, preuves périmées, unités mixtes et contradiction min/max limitée aux portées/périodes compatibles |
-| Application | pagination, lectures ouvertes par lots, agrégation, rejet d'une pagination invalide avant accès aux données |
+| Core | parc prêt, coordonnées factices, type de parc absent ou indéfini, type/langue/classification manquants ou incohérents, URL d'accessibilité invalide, règle sémantiquement inutilisable, condition expirée/future, calendrier absent, preuves périmées, unités mixtes et contradiction min/max limitée aux portées/périodes compatibles |
+| Application | pagination, lecture projetée des seules attractions visibles et ouvertes par lots, agrégation, rejet d'une pagination invalide avant accès aux données |
 | WebAPI | contrat paginé, mapping des noms et anomalies, authentification et autorisation admin |
 | Angular | contrat HTTP, résumé métier de la façade, pagination, conservation des données sur erreur, liens d'édition, reflow mobile |
 
