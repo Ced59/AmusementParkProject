@@ -13,7 +13,8 @@ describe('buildParkFitComparisonSections', () => {
     expect(rows.find((row) => row.id === 'group-compatibility')).toBeDefined();
     expect(rows.find((row) => row.id === 'member-1')?.isDifferent).toBe(true);
     expect(rows.find((row) => row.id === 'member-1')?.cells[0]?.primaryParams['notApplicable']).toBe(0);
-    expect(rows.find((row) => row.id === 'together')?.cells[0]?.secondaryParams['unavailable']).toBe(1);
+    expect(rows.find((row) => row.id === 'together')?.cells[0]?.secondaryParams)
+      .toEqual({ split: 1, partial: 0, unavailable: 1 });
     expect(rows.find((row) => row.id === 'schedule')?.cells).toHaveLength(2);
   });
 
@@ -75,6 +76,23 @@ describe('buildParkFitComparisonSections', () => {
       .toEqual(['parkFit.results.subscoreReasons.KnownFactsNormalized']);
     expect(preferenceRow?.cells[1]?.reasonKeys)
       .toEqual(['parkFit.results.subscoreReasons.MinimumMemberBoundApplied']);
+  });
+
+  it('distinguishes splitting the whole group from partial participation', () => {
+    const split: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const partial: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    split.splitRequiredAttractionCount = 5;
+    split.partialAttractionCount = 0;
+    partial.splitRequiredAttractionCount = 0;
+    partial.partialAttractionCount = 5;
+
+    const togetherRow = buildParkFitComparisonSections([split, partial], (): string => 'date')
+      .flatMap((section) => section.rows)
+      .find((row) => row.id === 'together');
+
+    expect(togetherRow?.isDifferent).toBe(true);
+    expect(togetherRow?.cells[0]?.secondaryParams).toEqual({ split: 5, partial: 0, unavailable: 1 });
+    expect(togetherRow?.cells[1]?.secondaryParams).toEqual({ split: 0, partial: 5, unavailable: 1 });
   });
 
   it('compares the verification date exactly as visitors see it', () => {

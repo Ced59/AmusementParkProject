@@ -132,15 +132,18 @@ function buildOverallCell(park: ParkFitSearchPark): ParkFitComparisonCell {
 }
 
 function buildTogetherCell(park: ParkFitSearchPark): ParkFitComparisonCell {
-  const organizedCount: number = park.splitRequiredAttractionCount + park.partialAttractionCount;
   return cell(
     park,
     'parkFit.comparison.values.together',
     { count: park.everyoneTogetherAttractionCount },
     'parkFit.comparison.values.organized',
-    { count: organizedCount, unavailable: park.noCompatibleMemberAttractionCount },
+    {
+      split: park.splitRequiredAttractionCount,
+      partial: park.partialAttractionCount,
+      unavailable: park.noCompatibleMemberAttractionCount
+    },
     null,
-    `${park.everyoneTogetherAttractionCount}|${organizedCount}|${park.noCompatibleMemberAttractionCount}`
+    `${park.everyoneTogetherAttractionCount}|${park.splitRequiredAttractionCount}|${park.partialAttractionCount}|${park.noCompatibleMemberAttractionCount}`
   );
 }
 

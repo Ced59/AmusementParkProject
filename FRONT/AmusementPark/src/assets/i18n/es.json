@@ -5073,7 +5073,7 @@
         "scoreUnavailable": "Puntuación no publicada · cobertura del {{coverage}}%",
         "cappedState": "Comparación prudente · límite {{ceiling}}/100",
         "together": "Posibles juntos: {{count}}",
-        "organized": "Con organización del grupo: {{count}} · aptas para nadie: {{unavailable}}",
+        "organized": "Separando a todo el grupo: {{split}} · participación parcial: {{partial}} · aptas para nadie: {{unavailable}}",
         "unknowns": "Atracciones desconocidas: {{attractions}} · factores desconocidos: {{factors}}",
         "member": "De forma autónoma: {{alone}} · con acompañante: {{accompanied}} · incompatibles: {{unavailable}} · desconocidas: {{unknown}} · no aplicables: {{notApplicable}}",
         "componentScore": "{{score}}/100",

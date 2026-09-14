@@ -5073,7 +5073,7 @@
         "scoreUnavailable": "Score niet gepubliceerd · {{coverage}}% dekking",
         "cappedState": "Voorzichtige vergelijking · plafond {{ceiling}}/100",
         "together": "Samen mogelijk: {{count}}",
-        "organized": "Met groepsplanning: {{count}} · voor niemand geschikt: {{unavailable}}",
+        "organized": "Met opsplitsing voor iedereen: {{split}} · gedeeltelijke deelname: {{partial}} · voor niemand geschikt: {{unavailable}}",
         "unknowns": "Onbekende attracties: {{attractions}} · onbekende factoren: {{factors}}",
         "member": "Zelfstandig: {{alone}} · met begeleider: {{accompanied}} · niet mogelijk: {{unavailable}} · onbekend: {{unknown}} · niet van toepassing: {{notApplicable}}",
         "componentScore": "{{score}}/100",
