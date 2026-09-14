@@ -6,6 +6,10 @@ import {
   ProfileComparisonInvitationCreation
 } from '@app/models/sharing/profile-comparison-invitation.models';
 import {
+  SHARE_PRODUCT_ANALYTICS_PORT,
+  ShareProductAnalyticsPort
+} from '@core/analytics/share-product-analytics.port';
+import {
   PROFILE_COMPARISON_INVITATION_PORT,
   ProfileComparisonInvitationPort
 } from './profile-comparison-invitation-data.ports';
@@ -26,7 +30,9 @@ export class ProfileComparisonInvitationCreatorStateFacade {
   constructor(
     @Inject(PROFILE_COMPARISON_INVITATION_PORT)
     private readonly port: ProfileComparisonInvitationPort,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 
@@ -54,6 +60,10 @@ export class ProfileComparisonInvitationCreatorStateFacade {
 
     this.loadingSignal.set(true);
     this.errorSignal.set(false);
+    this.productAnalytics.track({
+      type: 'share_activation_started',
+      recapType: 'profile-comparison'
+    });
     this.port.create(this.selectedSignal())
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({

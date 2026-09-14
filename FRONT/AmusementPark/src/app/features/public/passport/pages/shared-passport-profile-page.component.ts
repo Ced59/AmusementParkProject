@@ -97,6 +97,10 @@ export class SharedPassportProfilePageComponent implements OnInit {
     }
   }
 
+  protected trackPassportCta(): void {
+    this.facade.trackPassportCta();
+  }
+
   private applySeo(shared: SharedPassportProfile): void {
     const displayName: string = shared.passportProfile.displayName
       || this.translateService.instant('passportProfileShare.public.anonymous');

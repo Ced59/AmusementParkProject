@@ -6,6 +6,8 @@ import {
   UserParkItemRatingRankingsPage,
   UserParkRatingRankingsPage,
 } from '@app/models/ratings/rating.models';
+import { SHARE_PRODUCT_ANALYTICS_PORT } from '@core/analytics/share-product-analytics.port';
+import { ShareProductEvent } from '@core/analytics/share-product-event.model';
 import { DEFAULT_PAGINATION } from '@shared/models/contracts';
 import {
   SHARED_USER_RANKINGS_PORT,
@@ -17,13 +19,23 @@ import { FakeSharedUserRankingsPort } from './test-helpers/shared-user-rankings-
 describe('SharedUserRankingsStateFacade', () => {
   let facade: SharedUserRankingsStateFacade;
   let port: FakeSharedUserRankingsPort;
+  let analyticsEvents: ShareProductEvent[];
 
   beforeEach(() => {
     port = new FakeSharedUserRankingsPort();
+    analyticsEvents = [];
     TestBed.configureTestingModule({
       providers: [
         SharedUserRankingsStateFacade,
         { provide: SHARED_USER_RANKINGS_PORT, useValue: port },
+        {
+          provide: SHARE_PRODUCT_ANALYTICS_PORT,
+          useValue: {
+            track: (event: ShareProductEvent): void => {
+              analyticsEvents.push(event);
+            }
+          },
+        },
       ],
     });
     facade = TestBed.inject(SharedUserRankingsStateFacade);
@@ -36,6 +48,9 @@ describe('SharedUserRankingsStateFacade', () => {
     expect(facade.parkRankings().map(item => item.parkId)).toEqual(['park-1']);
     expect(port.parkCalls).toEqual([
       { shareId: 'opaque-share-id', page: 1, search: null },
+    ]);
+    expect(analyticsEvents).toEqual([
+      { type: 'share_opened', recapType: 'personal-ranking' },
     ]);
 
     facade.loadMore();
@@ -72,6 +87,18 @@ describe('SharedUserRankingsStateFacade', () => {
     expect(facade.error()).toBe(false);
     expect(facade.profile()).toBeNull();
     expect(port.parkCalls).toEqual([]);
+    expect(analyticsEvents).toEqual([]);
+  });
+
+  it('tracks a public ranking render failure without any technical identifier', () => {
+    port.profileResponse = throwError(() => ({ status: 503 }));
+
+    facade.loadProfile('opaque-share-id');
+
+    expect(facade.error()).toBe(true);
+    expect(analyticsEvents).toEqual([
+      { type: 'share_render_failed', recapType: 'personal-ranking' },
+    ]);
   });
 });
 

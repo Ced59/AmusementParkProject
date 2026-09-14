@@ -123,6 +123,10 @@ export class SharedVisitRecapPageComponent implements OnInit {
     return item.category ? `ratings.categories.${item.category}` : 'visitRecapShare.preview.unknownCategory';
   }
 
+  protected trackPassportCta(): void {
+    this.facade.trackPassportCta();
+  }
+
   private applySeo(shared: SharedVisitRecap): void {
     const recap: SharedVisitRecapContent = shared.visitRecap;
     const parkName: string = recap.parkName?.trim()
