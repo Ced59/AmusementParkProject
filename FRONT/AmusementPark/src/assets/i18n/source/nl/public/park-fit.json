@@ -149,6 +149,13 @@
         "Unknown": "Gegevens onbekend",
         "NotApplicable": "Niet gevraagd"
       },
+      "subscoreReasons": {
+        "KnownFactsNormalized": "Berekend op basis van de bekende gegevens.",
+        "UnknownFactsExcluded": "Onbekende gegevens tellen niet mee in de berekening.",
+        "MinimumMemberBoundApplied": "Het resultaat wordt begrensd door de minst goed bediende persoon in de groep.",
+        "NoKnownFact": "Geen bekend gegeven maakt een beoordeling van deze factor mogelijk.",
+        "Unknown": "Een verklaring voor deze factor is nog niet vertaald."
+      },
       "scoreStates": {
         "Available": "Vergelijking beschikbaar",
         "Capped": "Voorzichtige vergelijking",

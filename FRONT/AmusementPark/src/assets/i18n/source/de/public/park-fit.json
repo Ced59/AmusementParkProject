@@ -149,6 +149,13 @@
         "Unknown": "Daten unbekannt",
         "NotApplicable": "Nicht angefragt"
       },
+      "subscoreReasons": {
+        "KnownFactsNormalized": "Aus den bekannten Angaben berechnet.",
+        "UnknownFactsExcluded": "Unbekannte Angaben sind von der Berechnung ausgeschlossen.",
+        "MinimumMemberBoundApplied": "Das Ergebnis wird durch die am wenigsten berücksichtigte Person der Gruppe begrenzt.",
+        "NoKnownFact": "Keine bekannte Angabe erlaubt die Bewertung dieses Faktors.",
+        "Unknown": "Eine Erklärung dieses Faktors ist noch nicht übersetzt."
+      },
       "scoreStates": {
         "Available": "Vergleich verfügbar",
         "Capped": "Vorsichtiger Vergleich",

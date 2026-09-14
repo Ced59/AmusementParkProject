@@ -11,6 +11,7 @@ import {
   parkFitQualityKey,
   parkFitScoreReasonKey,
   parkFitScoreStateKey,
+  parkFitSubscoreReasonKey,
   resolveParkFitSourceUrl
 } from './park-fit-result-display.helpers';
 
@@ -194,6 +195,7 @@ function buildComponentCell(park: ParkFitSearchPark, componentKind: string): Par
 
   const value: number | null = component.value === null ? null : Math.round(component.value);
   const coverage: number = Math.round(component.coveragePercent);
+  const reasonKeys: string[] = component.reasons.map(parkFitSubscoreReasonKey);
   return cell(
     park,
     value === null ? parkFitComponentStateKey(component.state) : 'parkFit.comparison.values.componentScore',
@@ -201,9 +203,10 @@ function buildComponentCell(park: ParkFitSearchPark, componentKind: string): Par
     parkFitConfidenceKey(component.confidence),
     {},
     null,
-    `${component.state}|${value ?? 'unknown'}|${coverage}|${component.confidence}`,
+    `${component.state}|${value ?? 'unknown'}|${coverage}|${component.confidence}|${reasonKeys.join(',')}`,
     'parkFit.comparison.values.componentCoverage',
-    { coverage }
+    { coverage },
+    reasonKeys
   );
 }
 

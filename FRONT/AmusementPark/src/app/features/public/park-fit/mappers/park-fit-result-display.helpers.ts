@@ -19,6 +19,12 @@ const COMPONENT_KINDS: readonly string[] = [
   'BudgetFit'
 ];
 const COMPONENT_STATES: readonly string[] = ['Known', 'Unknown', 'NotApplicable'];
+const SUBSCORE_REASONS: readonly string[] = [
+  'KnownFactsNormalized',
+  'UnknownFactsExcluded',
+  'MinimumMemberBoundApplied',
+  'NoKnownFact'
+];
 const SCORE_REASONS: readonly string[] = [
   'ScoreAvailable',
   'HardFilterFailed',
@@ -62,6 +68,10 @@ export function parkFitComponentKindKey(value: string): string {
 
 export function parkFitComponentStateKey(value: string): string {
   return enumTranslationKey('parkFit.results.componentStates', value, COMPONENT_STATES);
+}
+
+export function parkFitSubscoreReasonKey(value: string): string {
+  return enumTranslationKey('parkFit.results.subscoreReasons', value, SUBSCORE_REASONS);
 }
 
 export function parkFitScoreReasonKey(value: string): string {

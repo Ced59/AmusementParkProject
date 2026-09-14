@@ -60,6 +60,23 @@ describe('buildParkFitComparisonSections', () => {
     expect(preferenceRow?.cells[1]?.secondaryKey).toBe('parkFit.results.confidenceLevels.Low');
   });
 
+  it('keeps component business reasons visible and comparable', () => {
+    const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    first.components[0]!.reasons = ['KnownFactsNormalized'];
+    second.components[0]!.reasons = ['MinimumMemberBoundApplied'];
+
+    const preferenceRow = buildParkFitComparisonSections([first, second], (): string => 'date')
+      .flatMap((section) => section.rows)
+      .find((row) => row.id === 'preferences');
+
+    expect(preferenceRow?.isDifferent).toBe(true);
+    expect(preferenceRow?.cells[0]?.reasonKeys)
+      .toEqual(['parkFit.results.subscoreReasons.KnownFactsNormalized']);
+    expect(preferenceRow?.cells[1]?.reasonKeys)
+      .toEqual(['parkFit.results.subscoreReasons.MinimumMemberBoundApplied']);
+  });
+
   it('compares the verification date exactly as visitors see it', () => {
     const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
     const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);

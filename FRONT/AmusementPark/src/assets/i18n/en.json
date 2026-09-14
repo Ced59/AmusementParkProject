@@ -4926,6 +4926,13 @@
         "Unknown": "Data unknown",
         "NotApplicable": "Not requested"
       },
+      "subscoreReasons": {
+        "KnownFactsNormalized": "Calculated from the known facts.",
+        "UnknownFactsExcluded": "Unknown facts are excluded from the calculation.",
+        "MinimumMemberBoundApplied": "The result is limited by the least well-served person in the group.",
+        "NoKnownFact": "No known fact can assess this factor.",
+        "Unknown": "An explanation for this factor is not translated yet."
+      },
       "scoreStates": {
         "Available": "Comparison available",
         "Capped": "Cautious comparison",
