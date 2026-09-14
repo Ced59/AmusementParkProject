@@ -102,12 +102,18 @@ internal sealed class AttractionCompatibilityEvaluationContext
         IEnumerable<AttractionAccessCondition> conditions)
     {
         this.HasUnknown = true;
+        this.AddConflictingConditionReasons(conditions);
+    }
+
+    public void AddUnresolvedAccompaniedConflictingConditions(
+        IReadOnlyCollection<AttractionAccessCondition> conditions)
+    {
         foreach (AttractionAccessCondition condition in conditions)
         {
-            this.reasons.Add(new AttractionCompatibilityReason(
-                AttractionCompatibilityReasonCode.ConflictingConditions,
-                condition));
+            this.MarkUnresolvedAccompaniedAlternative(condition);
         }
+
+        this.AddConflictingConditionReasons(conditions);
     }
 
     public void AddCompanionRequirementMet(AttractionAccessCondition condition)
@@ -143,5 +149,16 @@ internal sealed class AttractionCompatibilityEvaluationContext
             || (condition.Type is AttractionAccessConditionType.MinHeight
                     or AttractionAccessConditionType.MinAge
                 && condition.RequiresAccompaniment == true);
+    }
+
+    private void AddConflictingConditionReasons(
+        IEnumerable<AttractionAccessCondition> conditions)
+    {
+        foreach (AttractionAccessCondition condition in conditions)
+        {
+            this.reasons.Add(new AttractionCompatibilityReason(
+                AttractionCompatibilityReasonCode.ConflictingConditions,
+                condition));
+        }
     }
 }

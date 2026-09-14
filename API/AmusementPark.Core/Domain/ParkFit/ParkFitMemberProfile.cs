@@ -1,3 +1,5 @@
+using AmusementPark.Core.Domain.Parks;
+
 namespace AmusementPark.Core.Domain.ParkFit;
 
 /// <summary>
@@ -5,7 +7,8 @@ namespace AmusementPark.Core.Domain.ParkFit;
 /// </summary>
 public sealed class ParkFitMemberProfile
 {
-    public const int MaximumSupportedHeightCentimeters = 300;
+    public const int MaximumSupportedHeightCentimeters =
+        AttractionAccessConditionSemanticEvaluator.MaximumSupportedHeightCentimeters;
 
     public ParkFitMemberProfile(
         int? heightCentimeters = null,

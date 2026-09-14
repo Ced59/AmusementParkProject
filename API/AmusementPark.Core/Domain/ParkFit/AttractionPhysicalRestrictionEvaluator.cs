@@ -51,10 +51,15 @@ internal static class AttractionPhysicalRestrictionEvaluator
         {
             conflictingMaximums,
             conflictingAloneMinimums,
-            conflictingAccompaniedMinimums,
         }.OfType<IReadOnlyCollection<AttractionAccessCondition>>())
         {
             context.AddConflictingConditions(conflict);
+        }
+
+        if (conflictingAccompaniedMinimums is not null)
+        {
+            context.AddUnresolvedAccompaniedConflictingConditions(
+                conflictingAccompaniedMinimums);
         }
 
         AttractionAccessCondition? maximum = null;
@@ -155,6 +160,16 @@ internal static class AttractionPhysicalRestrictionEvaluator
             return;
         }
 
+        if (!canUseAlonePath
+            && conflictingAccompaniedMinimums is not null
+            && profile.CanBeAccompanied == false)
+        {
+            context.AddViolation(
+                AttractionCompatibilityReasonCode.AccompanimentUnavailable,
+                SelectStableCondition(conflictingAccompaniedMinimums));
+            return;
+        }
+
         if (canUseAccompaniedPath)
         {
             context.AddViolation(
@@ -204,7 +219,8 @@ internal static class AttractionPhysicalRestrictionEvaluator
 
         if (conflictingAccompaniedMinimums is not null)
         {
-            context.AddConflictingConditions(conflictingAccompaniedMinimums);
+            context.AddUnresolvedAccompaniedConflictingConditions(
+                conflictingAccompaniedMinimums);
         }
 
         AttractionAccessCondition? aloneMinimum = conflictingAloneMinimums is null
@@ -215,6 +231,19 @@ internal static class AttractionPhysicalRestrictionEvaluator
             : null;
         if (aloneMinimum is null && accompaniedMinimum is null)
         {
+            if (context.HasUnresolvedAgeAccompaniedAlternative
+                && profile.CanBeAccompanied != false)
+            {
+                context.ActivateUnresolvedAccompaniedAlternative();
+            }
+            else if (conflictingAccompaniedMinimums is not null
+                && profile.CanBeAccompanied == false)
+            {
+                context.AddViolation(
+                    AttractionCompatibilityReasonCode.AccompanimentUnavailable,
+                    SelectStableCondition(conflictingAccompaniedMinimums));
+            }
+
             return;
         }
 

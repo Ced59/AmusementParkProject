@@ -7,6 +7,8 @@ public static class AttractionAccessConditionSemanticEvaluator
 {
     public const int MaximumSupportedAgeYears = 130;
 
+    public const int MaximumSupportedHeightCentimeters = 300;
+
     public static IReadOnlyCollection<AttractionAccessConditionSemanticIssue> Evaluate(
         AttractionAccessCondition condition)
     {
@@ -38,6 +40,7 @@ public static class AttractionAccessConditionSemanticEvaluator
                     requireWholeValue: false,
                     maximumValue: null,
                     issues);
+                AddHeightDomainIssue(condition, issues);
                 break;
             case AttractionAccessConditionType.MinAge:
             case AttractionAccessConditionType.MinAgeAccompanied:
@@ -111,5 +114,26 @@ public static class AttractionAccessConditionSemanticEvaluator
         return !string.IsNullOrWhiteSpace(condition.TypeKey)
             || !string.IsNullOrWhiteSpace(condition.CustomTypeKey)
             || condition.CustomTypeLabel.Any(static text => !string.IsNullOrWhiteSpace(text.Value));
+    }
+
+    private static void AddHeightDomainIssue(
+        AttractionAccessCondition condition,
+        ICollection<AttractionAccessConditionSemanticIssue> issues)
+    {
+        if (issues.Contains(AttractionAccessConditionSemanticIssue.InvalidValue)
+            || issues.Contains(AttractionAccessConditionSemanticIssue.MissingValue)
+            || issues.Contains(AttractionAccessConditionSemanticIssue.InvalidUnit)
+            || issues.Contains(AttractionAccessConditionSemanticIssue.MissingUnit))
+        {
+            return;
+        }
+
+        if (AttractionHeightUnitConverter.TryConvertToCentimeters(
+                condition,
+                out double centimeters)
+            && centimeters > MaximumSupportedHeightCentimeters)
+        {
+            issues.Add(AttractionAccessConditionSemanticIssue.InvalidValue);
+        }
     }
 }

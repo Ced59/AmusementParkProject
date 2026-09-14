@@ -8,6 +8,7 @@ public sealed class AttractionAccessConditionSemanticEvaluatorTests
 {
     [Theory]
     [InlineData(AttractionAccessConditionType.MinHeight, 120d, AttractionAccessConditionUnit.Centimeter)]
+    [InlineData(AttractionAccessConditionType.MinHeight, 300d, AttractionAccessConditionUnit.Centimeter)]
     [InlineData(AttractionAccessConditionType.MaxHeight, 48d, AttractionAccessConditionUnit.Inch)]
     [InlineData(AttractionAccessConditionType.MinAge, 8d, AttractionAccessConditionUnit.Year)]
     public void Evaluate_WhenNumericRuleIsUsable_ShouldReturnNoIssue(
@@ -141,6 +142,28 @@ public sealed class AttractionAccessConditionSemanticEvaluatorTests
             Type = AttractionAccessConditionType.MinAge,
             Value = 131,
             Unit = AttractionAccessConditionUnit.Year,
+        };
+
+        IReadOnlyCollection<AttractionAccessConditionSemanticIssue> issues =
+            AttractionAccessConditionSemanticEvaluator.Evaluate(condition);
+
+        Assert.Equal(
+            AttractionAccessConditionSemanticIssue.InvalidValue,
+            Assert.Single(issues));
+    }
+
+    [Theory]
+    [InlineData(301d, AttractionAccessConditionUnit.Centimeter)]
+    [InlineData(119d, AttractionAccessConditionUnit.Inch)]
+    public void Evaluate_WhenHeightThresholdExceedsTheSupportedDomain_ShouldReturnIssue(
+        double value,
+        AttractionAccessConditionUnit unit)
+    {
+        AttractionAccessCondition condition = new AttractionAccessCondition
+        {
+            Type = AttractionAccessConditionType.MinHeight,
+            Value = value,
+            Unit = unit,
         };
 
         IReadOnlyCollection<AttractionAccessConditionSemanticIssue> issues =

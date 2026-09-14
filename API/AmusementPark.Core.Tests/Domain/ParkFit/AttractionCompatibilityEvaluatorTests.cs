@@ -153,6 +153,35 @@ public sealed class AttractionCompatibilityEvaluatorTests
             reason => reason.Code == AttractionCompatibilityReasonCode.AboveMaximumHeight);
     }
 
+    [Fact]
+    public void Evaluate_WhenAccompaniedHeightThresholdsConflict_ShouldNotRejectFromTheSoloPath()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                heightCentimeters: 105,
+                canBeAccompanied: true),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 120),
+            BuildAccompaniedHeightCondition(100),
+            BuildAccompaniedHeightCondition(110));
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.DoesNotContain(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.BelowMinimumHeight);
+    }
+
+    [Fact]
+    public void Evaluate_WhenSoloHeightPathIsSatisfied_ShouldIgnoreConflictingAccompaniedThresholds()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 130),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 120),
+            BuildAccompaniedHeightCondition(100),
+            BuildAccompaniedHeightCondition(110));
+
+        Assert.Equal(AttractionCompatibilityState.CompatibleAlone, result.State);
+    }
+
     [Theory]
     [InlineData(99, AttractionCompatibilityState.Incompatible)]
     [InlineData(100, AttractionCompatibilityState.CompatibleWithCompanion)]
@@ -326,6 +355,61 @@ public sealed class AttractionCompatibilityEvaluatorTests
                     reason.Code == AttractionCompatibilityReasonCode.ConflictingConditions)
                 .Select(static reason => reason.RequiredValue!.Value)
                 .OrderBy(static value => value));
+    }
+
+    [Fact]
+    public void Evaluate_WhenAccompaniedAgeThresholdsConflict_ShouldNotRejectFromTheSoloPath()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                ageRange: new ParkFitAgeRange(11, 11),
+                canBeAccompanied: true),
+            BuildAgeCondition(AttractionAccessConditionType.MinAge, 14),
+            BuildAccompaniedAgeCondition(10),
+            BuildAccompaniedAgeCondition(12));
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.DoesNotContain(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.BelowMinimumAge);
+    }
+
+    [Fact]
+    public void Evaluate_WhenSoloAgePathIsSatisfied_ShouldIgnoreConflictingAccompaniedThresholds()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(ageRange: new ParkFitAgeRange(14, 14)),
+            BuildAgeCondition(AttractionAccessConditionType.MinAge, 14),
+            BuildAccompaniedAgeCondition(10),
+            BuildAccompaniedAgeCondition(12));
+
+        Assert.Equal(AttractionCompatibilityState.CompatibleAlone, result.State);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void Evaluate_WhenOnlyAccompaniedThresholdsConflictAndAccompanimentIsUnavailable_ShouldReject(
+        bool useAge)
+    {
+        AttractionCompatibility result = useAge
+            ? this.Evaluate(
+                new ParkFitMemberProfile(
+                    ageRange: new ParkFitAgeRange(11, 11),
+                    canBeAccompanied: false),
+                BuildAccompaniedAgeCondition(10),
+                BuildAccompaniedAgeCondition(12))
+            : this.Evaluate(
+                new ParkFitMemberProfile(
+                    heightCentimeters: 105,
+                    canBeAccompanied: false),
+                BuildAccompaniedHeightCondition(100),
+                BuildAccompaniedHeightCondition(110));
+
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.AccompanimentUnavailable);
     }
 
     [Fact]
@@ -685,6 +769,24 @@ public sealed class AttractionCompatibilityEvaluatorTests
 
         AttractionCompatibility result = this.Evaluate(
             new ParkFitMemberProfile(ageRange: new ParkFitAgeRange(18, 70)),
+            condition);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.SemanticIssues.Contains(
+                AttractionAccessConditionSemanticIssue.InvalidValue));
+    }
+
+    [Fact]
+    public void Evaluate_WhenHeightThresholdExceedsTheSupportedDomain_ShouldReturnUnknown()
+    {
+        AttractionAccessCondition condition = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            301);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 150),
             condition);
 
         Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
