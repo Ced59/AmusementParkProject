@@ -100,6 +100,11 @@ Le pixel utilise en plus la politique navigateur `no-referrer`. Même si l'adres
 du collecteur devenait un jour de même origine, l'URL publique et son jeton opaque
 ne seraient pas transmis dans l'en-tête de provenance.
 
+La mesure générique des pages applique la même minimisation fonctionnelle : les
+cinq routes publiques contenant un jeton sont remplacées avant collecte par
+`/<langue>/product/share/<famille>`. Paramètres de requête, fragment et jeton sont
+donc absents tant des événements produits que des pages vues Matomo.
+
 Les types TypeScript ferment les valeurs possibles avant l'adaptateur. Les tests
 inspectent l'URL réellement construite et interdisent les marqueurs d'identifiants,
 notes et commentaires. Ils prouvent aussi l'absence d'envoi sans consentement et
@@ -139,6 +144,7 @@ membres ou le contenu d'un partage.
 
 - contrat typé des huit événements et cinq familles ;
 - URL Matomo limitée aux valeurs catégorielles ;
+- remplacement des cinq routes publiques à jeton par une URL de page synthétique ;
 - refus de collecte sans consentement et en SSR ;
 - succès, révocation et rotation émis après réponse API ;
 - ouverture, CTA et erreur couverts sur les façades publiques ;
