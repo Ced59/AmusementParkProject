@@ -153,20 +153,18 @@ internal static class AttractionPhysicalRestrictionEvaluator
             return;
         }
 
-        if (context.HasUnresolvedHeightAccompaniedAlternative
-            && profile.CanBeAccompanied != false)
+        if (!canUseAlonePath
+            && !canUseAccompaniedPath
+            && context.HasUnresolvedHeightAccompaniedAlternative)
         {
             context.ActivateUnresolvedAccompaniedAlternative();
             return;
         }
 
-        if (!canUseAlonePath
-            && conflictingAccompaniedMinimums is not null
-            && profile.CanBeAccompanied == false)
+        if (context.HasUnresolvedHeightAccompaniedAlternative
+            && profile.CanBeAccompanied != false)
         {
-            context.AddViolation(
-                AttractionCompatibilityReasonCode.AccompanimentUnavailable,
-                SelectStableCondition(conflictingAccompaniedMinimums));
+            context.ActivateUnresolvedAccompaniedAlternative();
             return;
         }
 
@@ -231,17 +229,9 @@ internal static class AttractionPhysicalRestrictionEvaluator
             : null;
         if (aloneMinimum is null && accompaniedMinimum is null)
         {
-            if (context.HasUnresolvedAgeAccompaniedAlternative
-                && profile.CanBeAccompanied != false)
+            if (context.HasUnresolvedAgeAccompaniedAlternative)
             {
                 context.ActivateUnresolvedAccompaniedAlternative();
-            }
-            else if (conflictingAccompaniedMinimums is not null
-                && profile.CanBeAccompanied == false)
-            {
-                context.AddViolation(
-                    AttractionCompatibilityReasonCode.AccompanimentUnavailable,
-                    SelectStableCondition(conflictingAccompaniedMinimums));
             }
 
             return;

@@ -7,6 +7,7 @@ namespace AmusementPark.Core.Tests.Domain.Parks;
 public sealed class AttractionAccessConditionSemanticEvaluatorTests
 {
     [Theory]
+    [InlineData(AttractionAccessConditionType.MinHeight, 1d, AttractionAccessConditionUnit.Centimeter)]
     [InlineData(AttractionAccessConditionType.MinHeight, 120d, AttractionAccessConditionUnit.Centimeter)]
     [InlineData(AttractionAccessConditionType.MinHeight, 300d, AttractionAccessConditionUnit.Centimeter)]
     [InlineData(AttractionAccessConditionType.MaxHeight, 48d, AttractionAccessConditionUnit.Inch)]
@@ -153,6 +154,8 @@ public sealed class AttractionAccessConditionSemanticEvaluatorTests
     }
 
     [Theory]
+    [InlineData(0.5d, AttractionAccessConditionUnit.Centimeter)]
+    [InlineData(0.03d, AttractionAccessConditionUnit.Inch)]
     [InlineData(301d, AttractionAccessConditionUnit.Centimeter)]
     [InlineData(119d, AttractionAccessConditionUnit.Inch)]
     public void Evaluate_WhenHeightThresholdExceedsTheSupportedDomain_ShouldReturnIssue(

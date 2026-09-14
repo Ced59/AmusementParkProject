@@ -389,7 +389,7 @@ public sealed class AttractionCompatibilityEvaluatorTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void Evaluate_WhenOnlyAccompaniedThresholdsConflictAndAccompanimentIsUnavailable_ShouldReject(
+    public void Evaluate_WhenOnlyAccompaniedThresholdsConflictAndAccompanimentIsUnavailable_ShouldRemainUnknown(
         bool useAge)
     {
         AttractionCompatibility result = useAge
@@ -406,10 +406,26 @@ public sealed class AttractionCompatibilityEvaluatorTests
                 BuildAccompaniedHeightCondition(100),
                 BuildAccompaniedHeightCondition(110));
 
-        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+    }
+
+    [Fact]
+    public void Evaluate_WhenOnlyAccompaniedHeightRuleIsStale_ShouldNotInferAccessFromAMaximum()
+    {
+        AttractionAccessCondition accompanied = BuildAccompaniedHeightCondition(100);
+        accompanied.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                heightCentimeters: 150,
+                canBeAccompanied: false),
+            BuildHeightCondition(AttractionAccessConditionType.MaxHeight, 200),
+            accompanied);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
         Assert.Contains(
             result.Reasons,
-            reason => reason.Code == AttractionCompatibilityReasonCode.AccompanimentUnavailable);
+            reason => reason.Code == AttractionCompatibilityReasonCode.ConditionEvidenceUnusable);
     }
 
     [Fact]

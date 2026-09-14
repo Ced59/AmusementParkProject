@@ -7,6 +7,9 @@ namespace AmusementPark.Core.Domain.ParkFit;
 /// </summary>
 public sealed class ParkFitMemberProfile
 {
+    public const int MinimumSupportedHeightCentimeters =
+        AttractionAccessConditionSemanticEvaluator.MinimumSupportedHeightCentimeters;
+
     public const int MaximumSupportedHeightCentimeters =
         AttractionAccessConditionSemanticEvaluator.MaximumSupportedHeightCentimeters;
 
@@ -16,7 +19,8 @@ public sealed class ParkFitMemberProfile
         bool? canBeAccompanied = null,
         ParkFitAgeRange? availableCompanionAgeRange = null)
     {
-        if (heightCentimeters is <= 0 or > MaximumSupportedHeightCentimeters)
+        if (heightCentimeters is < MinimumSupportedHeightCentimeters
+            or > MaximumSupportedHeightCentimeters)
         {
             throw new ArgumentOutOfRangeException(nameof(heightCentimeters));
         }

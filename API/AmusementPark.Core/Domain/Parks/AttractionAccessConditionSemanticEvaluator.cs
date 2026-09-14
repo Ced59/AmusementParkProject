@@ -7,6 +7,8 @@ public static class AttractionAccessConditionSemanticEvaluator
 {
     public const int MaximumSupportedAgeYears = 130;
 
+    public const int MinimumSupportedHeightCentimeters = 1;
+
     public const int MaximumSupportedHeightCentimeters = 300;
 
     public static IReadOnlyCollection<AttractionAccessConditionSemanticIssue> Evaluate(
@@ -131,7 +133,8 @@ public static class AttractionAccessConditionSemanticEvaluator
         if (AttractionHeightUnitConverter.TryConvertToCentimeters(
                 condition,
                 out double centimeters)
-            && centimeters > MaximumSupportedHeightCentimeters)
+            && (centimeters < MinimumSupportedHeightCentimeters
+                || centimeters > MaximumSupportedHeightCentimeters))
         {
             issues.Add(AttractionAccessConditionSemanticIssue.InvalidValue);
         }
