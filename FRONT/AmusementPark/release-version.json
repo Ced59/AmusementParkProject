@@ -1,6 +1,20 @@
 {
-  "version": "5.3.15",
+  "version": "5.3.16",
   "history": [
+    {
+      "version": "5.3.16",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Le contrôle des informations d’accès signale désormais toutes les anomalies en une seule vérification.",
+        "en": "Access information checks now report every issue in a single review.",
+        "de": "Die Prüfung von Zugangsinformationen meldet jetzt alle Probleme in einem Durchgang.",
+        "nl": "De controle van toegangsinformatie meldt nu alle problemen in één keer.",
+        "it": "Il controllo delle informazioni di accesso ora segnala tutte le anomalie in una sola verifica.",
+        "es": "La comprobación de la información de acceso ahora señala todas las anomalías en una sola revisión.",
+        "pl": "Kontrola informacji o dostępie zgłasza teraz wszystkie problemy podczas jednej weryfikacji.",
+        "pt": "A verificação das informações de acesso assinala agora todas as anomalias numa única revisão."
+      }
+    },
     {
       "version": "5.3.15",
       "releasedAt": "2026-09-14",

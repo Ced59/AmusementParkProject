@@ -140,6 +140,23 @@ public sealed class AttractionAccessConditionEvidenceEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenVerificationIsMissingAndCollectionTimestampIsNotUtc_ShouldReportBothIssues()
+    {
+        AttractionAccessCondition condition = BuildDecisionEligibleCondition();
+        condition.CollectedAtUtc = new DateTime(2026, 9, 1, 10, 0, 0, DateTimeKind.Unspecified);
+        condition.VerifiedAtUtc = null;
+
+        IReadOnlyCollection<AttractionAccessConditionEvidenceIssue> issues =
+            AttractionAccessConditionEvidenceEvaluator.Evaluate(
+                condition,
+                EvaluationTimestamp,
+                TimeSpan.FromDays(365));
+
+        Assert.Contains(AttractionAccessConditionEvidenceIssue.MissingVerificationTimestamp, issues);
+        Assert.Contains(AttractionAccessConditionEvidenceIssue.TimestampNotUtc, issues);
+    }
+
+    [Fact]
     public void Evaluate_WhenEnumValuesAreUnknown_ShouldNotMakeEvidenceEligible()
     {
         AttractionAccessCondition condition = BuildDecisionEligibleCondition();
