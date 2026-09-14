@@ -61,6 +61,84 @@ describe('buildParkFitComparisonSections', () => {
     expect(preferenceRow?.cells[1]?.secondaryKey).toBe('parkFit.results.confidenceLevels.Low');
   });
 
+  it('compares direct distance and exact calendar details without inventing travel time', () => {
+    const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    first.distanceKilometers = 42.6;
+    first.distanceMethod = 'DirectGeodesic';
+    first.openingTimeRanges = [{
+      opensAt: '10:00',
+      closesAt: '19:00',
+      closesNextDay: false,
+      lastAdmissionAt: '18:00',
+      lastAdmissionNextDay: false
+    }];
+    second.calendarState = 'CalendarNotPublished';
+    second.calendarSourceUrl = 'http://unsafe.test/calendar';
+
+    const rows = buildParkFitComparisonSections(
+      [first, second],
+      (): string => 'date',
+      (value: number): string => String(value).replace('.', ','),
+      (range): string => `${range.opensAt}–${range.closesAt} · dernière admission ${range.lastAdmissionAt}`
+    )
+      .flatMap((section) => section.rows);
+    const travelRow = rows.find((row) => row.id === 'travel');
+    const scheduleRow = rows.find((row) => row.id === 'schedule');
+
+    expect(travelRow?.cells[0]?.primaryParams['distance']).toBe('42,6');
+    expect(travelRow?.cells[0]?.secondaryKey)
+      .toBe('parkFit.results.distance.methods.DirectGeodesic');
+    expect(scheduleRow?.cells[0]?.secondaryParams['date'])
+      .toBe('10:00–19:00 · dernière admission 18:00 · Europe/Paris');
+    expect(scheduleRow?.cells[0]?.linkUrl).toBe('https://example.test/calendar');
+    expect(scheduleRow?.cells[1]?.primaryKey)
+      .toBe('parkFit.results.calendar.states.CalendarNotPublished');
+    expect(scheduleRow?.cells[1]?.linkUrl).toBeNull();
+  });
+
+  it('keeps schedules with different local time zones visible as a difference', () => {
+    const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    const timeRange = {
+      opensAt: '10:00',
+      closesAt: '19:00',
+      closesNextDay: false,
+      lastAdmissionAt: null,
+      lastAdmissionNextDay: false
+    };
+    first.openingTimeRanges = [timeRange];
+    second.openingTimeRanges = [timeRange];
+    second.calendarTimeZoneId = 'America/New_York';
+
+    const scheduleRow = buildParkFitComparisonSections([first, second], (): string => 'date')
+      .flatMap((section) => section.rows)
+      .find((row) => row.id === 'schedule');
+
+    expect(scheduleRow?.isDifferent).toBe(true);
+  });
+
+  it('displays and compares the calendar verification freshness', () => {
+    const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    first.calendarLastVerifiedAtUtc = '2026-09-01T00:00:00Z';
+    second.calendarLastVerifiedAtUtc = '2026-09-14T00:00:00Z';
+
+    const scheduleRow = buildParkFitComparisonSections(
+      [first, second],
+      (value: string | null): string => value === first.calendarLastVerifiedAtUtc
+        ? '1 septembre 2026'
+        : '14 septembre 2026'
+    )
+      .flatMap((section) => section.rows)
+      .find((row) => row.id === 'schedule');
+
+    expect(scheduleRow?.isDifferent).toBe(true);
+    expect(scheduleRow?.cells[0]?.statusKey).toBe('parkFit.results.calendar.verified');
+    expect(scheduleRow?.cells[0]?.statusParams['date']).toBe('1 septembre 2026');
+    expect(scheduleRow?.cells[1]?.statusParams['date']).toBe('14 septembre 2026');
+  });
+
   it('keeps component business reasons visible and comparable', () => {
     const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
     const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
@@ -195,6 +273,14 @@ function buildPark(id: string, score: number, together: number, incompatible: nu
     scoreCeilingPercent: null,
     confidence: 'High',
     dateAvailabilityState: 'Available',
+    calendarState: 'OpenConfirmed',
+    openingTimeRanges: [],
+    calendarTimeZoneId: 'Europe/Paris',
+    calendarSourceUrl: 'https://example.test/calendar',
+    calendarLastVerifiedAtUtc: '2026-09-14T00:00:00Z',
+    distanceKilometers: null,
+    distanceMethod: null,
+    distanceEvaluatedAtUtc: null,
     unknownCount: 0,
     everyoneTogetherAttractionCount: together,
     splitRequiredAttractionCount: 1,

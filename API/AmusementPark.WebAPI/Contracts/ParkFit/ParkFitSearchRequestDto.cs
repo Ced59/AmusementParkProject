@@ -16,6 +16,10 @@ public sealed class ParkFitSearchRequestDto
 
     public string? CountryCode { get; set; }
 
+    public double? OriginLatitude { get; set; }
+
+    public double? OriginLongitude { get; set; }
+
     public ParkFitUnknownDataPolicyDto UnknownDataPolicy { get; set; } =
         ParkFitUnknownDataPolicyDto.KeepWithWarning;
 

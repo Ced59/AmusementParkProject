@@ -5,7 +5,7 @@ namespace AmusementPark.Core.Domain.ParkFit;
 /// </summary>
 public sealed class ParkFitScoreEvaluator
 {
-    public const string MethodVersion = AttractionCompatibilityEvaluator.MethodVersion;
+    public const string MethodVersion = "park-fit-2026-02";
     public const decimal GroupCompatibilityWeightPercent = 45m;
     public const decimal PreferenceCoverageWeightPercent = 25m;
     public const decimal TravelConvenienceWeightPercent = 15m;

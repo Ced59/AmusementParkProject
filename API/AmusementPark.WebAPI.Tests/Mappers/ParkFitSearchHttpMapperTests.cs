@@ -21,6 +21,8 @@ public sealed class ParkFitSearchHttpMapperTests
         ParkFitSearchRequestDto request = new ParkFitSearchRequestDto
         {
             EvaluationDate = EvaluationDate,
+            OriginLatitude = 50.6292d,
+            OriginLongitude = 3.0573d,
             Members = new[]
             {
                 new ParkFitSearchMemberCriteriaDto { HeightCentimeters = 120 },
@@ -32,6 +34,8 @@ public sealed class ParkFitSearchHttpMapperTests
 
         Assert.Equal(new[] { "member-1", "member-2" },
             query.Members.Select(static member => member.MemberKey));
+        Assert.Equal(50.6292d, query.OriginLatitude);
+        Assert.Equal(3.0573d, query.OriginLongitude);
     }
 
     [Fact]
@@ -53,6 +57,21 @@ public sealed class ParkFitSearchHttpMapperTests
             LastVerifiedAtUtc = EvaluationTimestamp.AddDays(-10),
         };
         AttractionAccessCondition evidence = BuildEvidence();
+        ParkFitDateAvailability availability = new ParkFitDateAvailability(
+            ParkFitDateAvailabilityState.Available,
+            EvaluationDate,
+            ParkFitCalendarState.OpenConfirmed,
+            new[]
+            {
+                new ParkOpeningHoursTimeRange
+                {
+                    OpensAt = new TimeOnly(10, 0),
+                    ClosesAt = new TimeOnly(19, 0),
+                },
+            },
+            "Europe/Paris",
+            "https://example.test/calendar",
+            EvaluationTimestamp.AddDays(-2));
         ParkFitSearchResult result = new ParkFitSearchResult
         {
             MethodVersion = ParkFitScoreEvaluator.MethodVersion,
@@ -78,6 +97,11 @@ public sealed class ParkFitSearchHttpMapperTests
                     Park = park,
                     DataQuality = quality,
                     Score = BuildScore(),
+                    DateAvailability = availability,
+                    TravelDistance = new ParkFitTravelDistance(
+                        42.56d,
+                        ParkFitDistanceMethod.DirectGeodesic,
+                        EvaluationTimestamp),
                     EveryoneTogetherAttractionCount = 1,
                     MemberSummaries = new[]
                     {
@@ -102,6 +126,13 @@ public sealed class ParkFitSearchHttpMapperTests
         Assert.Equal("Parc des preuves", parkDto.ParkName);
         Assert.Equal("Available", parkDto.ScoreState);
         Assert.Equal("Available", parkDto.DateAvailabilityState);
+        Assert.Equal("OpenConfirmed", parkDto.CalendarState);
+        ParkFitOpeningTimeRangeDto timeRange = Assert.Single(parkDto.OpeningTimeRanges);
+        Assert.Equal("10:00", timeRange.OpensAt);
+        Assert.Equal("19:00", timeRange.ClosesAt);
+        Assert.Equal("https://example.test/calendar", parkDto.CalendarSourceUrl);
+        Assert.Equal(42.6d, parkDto.DistanceKilometers);
+        Assert.Equal("DirectGeodesic", parkDto.DistanceMethod);
         Assert.Contains("ScoreAvailable", parkDto.Reasons);
         ParkFitSearchMemberSummaryDto member = Assert.Single(parkDto.MemberSummaries);
         Assert.Equal(1, member.MemberNumber);

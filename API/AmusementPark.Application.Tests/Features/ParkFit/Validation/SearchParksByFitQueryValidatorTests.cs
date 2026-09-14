@@ -101,6 +101,39 @@ public sealed class SearchParksByFitQueryValidatorTests
         Assert.Contains(result, error => error.Details?.ContainsKey("CanBeAccompanied") == true);
     }
 
+    [Theory]
+    [InlineData(91d, 2d)]
+    [InlineData(45d, 181d)]
+    [InlineData(45d, null)]
+    public void Validate_WhenOriginIsIncompleteOrOutOfRange_ShouldRejectIt(
+        double? latitude,
+        double? longitude)
+    {
+        SearchParksByFitQuery query = BuildValidQuery() with
+        {
+            OriginLatitude = latitude,
+            OriginLongitude = longitude,
+        };
+
+        IReadOnlyCollection<ApplicationError> result = this.validator.Validate(query);
+
+        Assert.Contains(result, error => error.Details?.ContainsKey("OriginLatitude") == true);
+    }
+
+    [Fact]
+    public void Validate_WhenOriginIsCompleteAndValid_ShouldAcceptIt()
+    {
+        SearchParksByFitQuery query = BuildValidQuery() with
+        {
+            OriginLatitude = 50.6292d,
+            OriginLongitude = 3.0573d,
+        };
+
+        IReadOnlyCollection<ApplicationError> result = this.validator.Validate(query);
+
+        Assert.Empty(result);
+    }
+
     private static SearchParksByFitQuery BuildValidQuery()
     {
         return new SearchParksByFitQuery(

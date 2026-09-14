@@ -18,7 +18,8 @@ public sealed class ParkFitDateAvailabilityEvaluator
         {
             return new ParkFitDateAvailability(
                 ParkFitDateAvailabilityState.Unknown,
-                evaluationDate);
+                evaluationDate,
+                ParkFitCalendarState.CalendarNotPublished);
         }
 
         ParkOpeningHoursCalendar calendar = this.calendarBuilder.BuildCalendar(
@@ -30,13 +31,70 @@ public sealed class ParkFitDateAvailabilityEvaluator
         {
             return new ParkFitDateAvailability(
                 ParkFitDateAvailabilityState.Unknown,
-                evaluationDate);
+                evaluationDate,
+                ResolveMissingCalendarState(schedule, evaluationDate),
+                timeZoneId: schedule.TimeZoneId,
+                sourceUrl: schedule.SourceUrl,
+                lastVerifiedAtUtc: schedule.LastVerifiedAtUtc);
         }
 
+        ParkFitCalendarState calendarState = ResolveDefinedCalendarState(day);
+        ParkFitDateAvailabilityState availabilityState = calendarState switch
+        {
+            ParkFitCalendarState.OpenConfirmed => ParkFitDateAvailabilityState.Available,
+            ParkFitCalendarState.ClosedConfirmed => ParkFitDateAvailabilityState.Unavailable,
+            ParkFitCalendarState.ExceptionalClosure => ParkFitDateAvailabilityState.Unavailable,
+            _ => ParkFitDateAvailabilityState.Unknown,
+        };
+
         return new ParkFitDateAvailability(
-            day.IsClosed
-                ? ParkFitDateAvailabilityState.Unavailable
-                : ParkFitDateAvailabilityState.Available,
-            evaluationDate);
+            availabilityState,
+            evaluationDate,
+            calendarState,
+            day.TimeRanges,
+            schedule.TimeZoneId,
+            schedule.SourceUrl,
+            schedule.LastVerifiedAtUtc);
+    }
+
+    private static ParkFitCalendarState ResolveMissingCalendarState(
+        ParkOpeningHoursSchedule schedule,
+        DateOnly evaluationDate)
+    {
+        List<DateOnly> firstDates = schedule.RegularRules
+            .Select(static rule => rule.StartDate)
+            .Concat(schedule.DateOverrides.Select(static dateOverride => dateOverride.LocalDate))
+            .ToList();
+        List<DateOnly> lastDates = schedule.RegularRules
+            .Select(static rule => rule.EndDate)
+            .Concat(schedule.DateOverrides.Select(static dateOverride => dateOverride.LocalDate))
+            .ToList();
+        if (firstDates.Count == 0 || lastDates.Count == 0)
+        {
+            return ParkFitCalendarState.CalendarNotPublished;
+        }
+
+        return evaluationDate < firstDates.Min() || evaluationDate > lastDates.Max()
+            ? ParkFitCalendarState.CalendarNotPublished
+            : ParkFitCalendarState.CalendarIncomplete;
+    }
+
+    private static ParkFitCalendarState ResolveDefinedCalendarState(ParkOpeningHoursDay day)
+    {
+        if (day.IsClosed)
+        {
+            if (!day.IsClosureExplicitlyDeclared)
+            {
+                return ParkFitCalendarState.OpeningHoursUnknown;
+            }
+
+            return string.Equals(day.SourceKind, "override", StringComparison.Ordinal)
+                ? ParkFitCalendarState.ExceptionalClosure
+                : ParkFitCalendarState.ClosedConfirmed;
+        }
+
+        return day.TimeRanges.Count == 0
+            ? ParkFitCalendarState.OpeningHoursUnknown
+            : ParkFitCalendarState.OpenConfirmed;
     }
 }

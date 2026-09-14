@@ -4848,6 +4848,22 @@
       "label": "Datum van de uitstap",
       "required": "Kies een datum om de zoekopdracht te starten."
     },
+    "location": {
+      "title": "Voeg desgewenst je vertrekpunt toe",
+      "text": "De afstand helpt de parken te rangschikken zonder verder gelegen bestemmingen uit te sluiten.",
+      "privacy": "Je positie wordt afgerond, alleen voor deze zoekopdracht gebruikt en nooit opgeslagen.",
+      "action": "Mijn positie gebruiken",
+      "loading": "Positie bepalen…",
+      "readyTitle": "Vertrekpunt meegenomen",
+      "readyText": "De resultaten tonen een rechtstreekse afstand, geen reistijd.",
+      "remove": "Niet meer gebruiken",
+      "errors": {
+        "denied": "Je hebt geen toegang tot je positie toegestaan. Zoeken kan ook zonder.",
+        "timeout": "Je positie kon niet op tijd worden bepaald. Probeer opnieuw of ga verder zonder.",
+        "unsupported": "Locatie is niet beschikbaar op dit apparaat.",
+        "unavailable": "Je positie is tijdelijk niet beschikbaar. Zoeken kan ook zonder."
+      }
+    },
     "group": {
       "title": "Beschrijf de groep",
       "text": "Eén regel per persoon volstaat. Laat een veld leeg als je het antwoord niet weet.",
@@ -4943,6 +4959,36 @@
         "organized": "attracties die met groepsplanning mogelijk zijn",
         "date": "bekende situatie op de gekozen datum"
       },
+      "practical": {
+        "title": "Datum en afstand, zonder schijnnauwkeurigheid"
+      },
+      "distance": {
+        "title": "Afstand vanaf je vertrekpunt",
+        "value": "Ongeveer {{distance}} km",
+        "notRequested": "Voeg je positie toe aan de criteria om de afstand te berekenen.",
+        "methods": {
+          "DirectGeodesic": "Rechtstreekse afstand in vogelvlucht · dit is geen route over de weg",
+          "Unknown": "Onbekende afstandsmethode"
+        }
+      },
+      "calendar": {
+        "title": "Kalender voor de gekozen dag",
+        "states": {
+          "OpenConfirmed": "Opening bevestigd",
+          "ClosedConfirmed": "Sluiting bevestigd",
+          "CalendarNotPublished": "Kalender nog niet gepubliceerd",
+          "CalendarIncomplete": "Kalender onvolledig voor deze datum",
+          "ExceptionalClosure": "Uitzonderlijke sluiting bevestigd",
+          "OpeningHoursUnknown": "Opening aangegeven, uren onbekend",
+          "Unknown": "Kalenderstatus onbekend"
+        },
+        "timeRange": "{{opensAt}} – {{closesAt}}{{nextDay}}",
+        "nextDay": " de volgende dag",
+        "lastAdmission": "Laatste toegang: {{time}}{{nextDay}}",
+        "timeZone": "Lokale tijd van het park · {{timezone}}",
+        "verified": "Kalender gecontroleerd op {{date}}",
+        "source": "Bronkalender openen"
+      },
       "unknowns": {
         "title": "Sommige gegevens zijn nog onbekend",
         "text": "Onbekende attracties: {{attractions}} · onbekende rekenfactoren: {{factors}}. Ze tellen nooit als negatief.",
@@ -4988,6 +5034,7 @@
         "UnknownFactsExcluded": "Onbekende gegevens tellen niet mee in de berekening.",
         "MinimumMemberBoundApplied": "Het resultaat wordt begrensd door de minst goed bediende persoon in de groep.",
         "NoKnownFact": "Geen bekend gegeven maakt een beoordeling van deze factor mogelijk.",
+        "DirectDistanceCalculated": "Nabijheid gebruikt een rechtstreekse afstand, geen reistijd.",
         "Unknown": "Een verklaring voor deze factor is nog niet vertaald."
       },
       "scoreStates": {
@@ -5050,6 +5097,7 @@
       },
       "method": {
         "parkFit202601": "Park Fit-methode 2026 · versie 1",
+        "parkFit202602": "Park Fit-methode 2026 · versie 2 met afstand en kalender",
         "versioned": "Geversioneerde vergelijkingsmethode"
       },
       "openPark": "Ontdek dit park",

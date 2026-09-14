@@ -1,7 +1,10 @@
 import { ParkFitSearchRequest } from '@app/models/park-fit/park-fit-search.models';
-import { ParkFitSearchFormValue } from '../models/park-fit-search-form.models';
+import { ParkFitSearchFormValue, ParkFitSearchOrigin } from '../models/park-fit-search-form.models';
 
-export function mapParkFitFormToRequest(value: ParkFitSearchFormValue): ParkFitSearchRequest {
+export function mapParkFitFormToRequest(
+  value: ParkFitSearchFormValue,
+  origin: ParkFitSearchOrigin | null = null
+): ParkFitSearchRequest {
   return {
     evaluationDate: value.evaluationDate,
     members: value.members.map((member) => ({
@@ -19,6 +22,8 @@ export function mapParkFitFormToRequest(value: ParkFitSearchFormValue): ParkFitS
     preferredAttractionTypes: [...value.preferredAttractionTypes],
     preferIndoor: value.preferIndoor,
     countryCode: null,
+    originLatitude: origin?.latitude ?? null,
+    originLongitude: origin?.longitude ?? null,
     unknownDataPolicy: 'KeepWithWarning',
     maximumResults: 10
   };

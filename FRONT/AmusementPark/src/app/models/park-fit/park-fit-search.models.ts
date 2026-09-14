@@ -32,8 +32,18 @@ export interface ParkFitSearchRequest {
   preferredAttractionTypes: ParkFitAttractionType[];
   preferIndoor: boolean;
   countryCode: string | null;
+  originLatitude: number | null;
+  originLongitude: number | null;
   unknownDataPolicy: ParkFitUnknownDataPolicy;
   maximumResults: number;
+}
+
+export interface ParkFitOpeningTimeRange {
+  opensAt: string;
+  closesAt: string;
+  closesNextDay: boolean;
+  lastAdmissionAt: string | null;
+  lastAdmissionNextDay: boolean;
 }
 
 export interface ParkFitScoreComponent {
@@ -87,6 +97,14 @@ export interface ParkFitSearchPark {
   scoreCeilingPercent: number | null;
   confidence: string;
   dateAvailabilityState: string;
+  calendarState: string;
+  openingTimeRanges: ParkFitOpeningTimeRange[];
+  calendarTimeZoneId: string | null;
+  calendarSourceUrl: string | null;
+  calendarLastVerifiedAtUtc: string | null;
+  distanceKilometers: number | null;
+  distanceMethod: string | null;
+  distanceEvaluatedAtUtc: string | null;
   unknownCount: number;
   everyoneTogetherAttractionCount: number;
   splitRequiredAttractionCount: number;

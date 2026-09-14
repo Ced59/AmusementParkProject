@@ -27,6 +27,7 @@ public sealed class SearchParksByFitQueryValidator
 
         ValidateMembers(request.Members, errors);
         ValidatePreferences(request.PreferredAttractionTypes, errors);
+        ValidateOrigin(request, errors);
 
         if (!string.IsNullOrWhiteSpace(request.CountryCode)
             && !IsCountryCode(request.CountryCode))
@@ -168,6 +169,36 @@ public sealed class SearchParksByFitQueryValidator
             errors.Add(ParkFitApplicationErrors.InvalidSearch(
                 nameof(SearchParksByFitQuery.PreferredAttractionTypes),
                 "Attraction preferences must be unique precise attraction types."));
+        }
+    }
+
+    private static void ValidateOrigin(
+        SearchParksByFitQuery request,
+        ICollection<ApplicationError> errors)
+    {
+        bool hasLatitude = request.OriginLatitude.HasValue;
+        bool hasLongitude = request.OriginLongitude.HasValue;
+        if (hasLatitude != hasLongitude)
+        {
+            errors.Add(ParkFitApplicationErrors.InvalidSearch(
+                nameof(request.OriginLatitude),
+                "Origin latitude and longitude must be provided together."));
+            return;
+        }
+
+        if (!hasLatitude)
+        {
+            return;
+        }
+
+        double latitude = request.OriginLatitude!.Value;
+        double longitude = request.OriginLongitude!.Value;
+        if (!double.IsFinite(latitude) || latitude is < -90d or > 90d
+            || !double.IsFinite(longitude) || longitude is < -180d or > 180d)
+        {
+            errors.Add(ParkFitApplicationErrors.InvalidSearch(
+                nameof(request.OriginLatitude),
+                "Origin coordinates are outside the supported geographic range."));
         }
     }
 

@@ -17,6 +17,7 @@ public sealed class ParkFitDateAvailabilityEvaluatorTests
 
         Assert.Equal(ParkFitDateAvailabilityState.Unknown, result.State);
         Assert.Equal(EvaluationDate, result.EvaluationDate);
+        Assert.Equal(ParkFitCalendarState.CalendarNotPublished, result.CalendarState);
     }
 
     [Theory]
@@ -56,6 +57,10 @@ public sealed class ParkFitDateAvailabilityEvaluatorTests
             EvaluationDate);
 
         Assert.Equal(expectedState, result.State);
+        Assert.Equal(
+            isClosed ? ParkFitCalendarState.ClosedConfirmed : ParkFitCalendarState.OpenConfirmed,
+            result.CalendarState);
+        Assert.Equal(isClosed ? 0 : 1, result.TimeRanges.Count);
     }
 
     [Fact]
@@ -71,5 +76,83 @@ public sealed class ParkFitDateAvailabilityEvaluatorTests
             EvaluationDate);
 
         Assert.Equal(ParkFitDateAvailabilityState.Unknown, result.State);
+        Assert.Equal(ParkFitCalendarState.CalendarNotPublished, result.CalendarState);
+    }
+
+    [Fact]
+    public void Evaluate_WhenDateIsMissingInsidePublishedRange_ShouldReturnIncomplete()
+    {
+        ParkOpeningHoursSchedule schedule = new ParkOpeningHoursSchedule
+        {
+            ParkId = "park-1",
+            RegularRules = new List<ParkOpeningHoursRule>
+            {
+                new ParkOpeningHoursRule
+                {
+                    StartDate = EvaluationDate.AddDays(-1),
+                    EndDate = EvaluationDate.AddDays(1),
+                    DaysOfWeek = new List<DayOfWeek> { EvaluationDate.AddDays(-1).DayOfWeek },
+                    TimeRanges = new List<ParkOpeningHoursTimeRange>
+                    {
+                        new ParkOpeningHoursTimeRange
+                        {
+                            OpensAt = new TimeOnly(10, 0),
+                            ClosesAt = new TimeOnly(18, 0),
+                        },
+                    },
+                },
+            },
+        };
+
+        ParkFitDateAvailability result = this.evaluator.Evaluate(schedule, EvaluationDate);
+
+        Assert.Equal(ParkFitDateAvailabilityState.Unknown, result.State);
+        Assert.Equal(ParkFitCalendarState.CalendarIncomplete, result.CalendarState);
+    }
+
+    [Fact]
+    public void Evaluate_WhenClosedOverrideExists_ShouldIdentifyExceptionalClosure()
+    {
+        ParkOpeningHoursSchedule schedule = new ParkOpeningHoursSchedule
+        {
+            ParkId = "park-1",
+            DateOverrides = new List<ParkOpeningHoursDateOverride>
+            {
+                new ParkOpeningHoursDateOverride
+                {
+                    LocalDate = EvaluationDate,
+                    IsClosed = true,
+                },
+            },
+        };
+
+        ParkFitDateAvailability result = this.evaluator.Evaluate(schedule, EvaluationDate);
+
+        Assert.Equal(ParkFitDateAvailabilityState.Unavailable, result.State);
+        Assert.Equal(ParkFitCalendarState.ExceptionalClosure, result.CalendarState);
+    }
+
+    [Fact]
+    public void Evaluate_WhenRuleHasNoHoursAndNoExplicitClosure_ShouldKeepHoursUnknown()
+    {
+        ParkOpeningHoursSchedule schedule = new ParkOpeningHoursSchedule
+        {
+            ParkId = "park-1",
+            RegularRules = new List<ParkOpeningHoursRule>
+            {
+                new ParkOpeningHoursRule
+                {
+                    StartDate = EvaluationDate,
+                    EndDate = EvaluationDate,
+                    DaysOfWeek = new List<DayOfWeek> { EvaluationDate.DayOfWeek },
+                    IsClosed = false,
+                },
+            },
+        };
+
+        ParkFitDateAvailability result = this.evaluator.Evaluate(schedule, EvaluationDate);
+
+        Assert.Equal(ParkFitDateAvailabilityState.Unknown, result.State);
+        Assert.Equal(ParkFitCalendarState.OpeningHoursUnknown, result.CalendarState);
     }
 }

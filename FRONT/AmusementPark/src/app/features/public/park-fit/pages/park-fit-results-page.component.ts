@@ -5,6 +5,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import {
   ParkFitCriticalSource,
+  ParkFitOpeningTimeRange,
   ParkFitSearchPark,
   ParkFitSearchResponse,
   ParkFitScoreComponent
@@ -17,16 +18,20 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import {
   formatParkFitDate,
+  formatParkFitOpeningTimeRange,
   parkFitAvailabilityKey,
+  parkFitCalendarStateKey,
   parkFitComponentKindKey,
   parkFitComponentStateKey,
   parkFitConfidenceKey,
+  parkFitDistanceMethodKey,
   parkFitMethodLabelKey,
   parkFitQualityKey,
   parkFitScoreReasonKey,
   parkFitScoreStateKey,
   parkFitSourceKindKey,
   resolveParkFitSourceSummary,
+  resolveParkFitHttpsUrl,
   resolveParkFitSourceUrl
 } from '../mappers/park-fit-result-display.helpers';
 import { ParkFitSearchFacade } from '../state/park-fit-search.facade';
@@ -142,6 +147,32 @@ export class ParkFitResultsPageComponent implements OnInit {
 
   protected availabilityKey(value: string): string {
     return parkFitAvailabilityKey(value);
+  }
+
+  protected calendarStateKey(value: string): string {
+    return parkFitCalendarStateKey(value);
+  }
+
+  protected distanceMethodKey(value: string | null): string {
+    return parkFitDistanceMethodKey(value);
+  }
+
+  protected distanceLabel(value: number): string {
+    return new Intl.NumberFormat(this.currentLang(), {
+      maximumFractionDigits: 1
+    }).format(value);
+  }
+
+  protected openingRangeLabel(range: ParkFitOpeningTimeRange): string {
+    return formatParkFitOpeningTimeRange(
+      range,
+      (key: string, params?: Record<string, string | number>): string =>
+        this.translateService.instant(key, params)
+    );
+  }
+
+  protected calendarSourceUrl(value: string | null): string | null {
+    return resolveParkFitHttpsUrl(value);
   }
 
   protected qualityKey(value: string): string {

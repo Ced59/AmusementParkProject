@@ -114,6 +114,8 @@ function resolveErrorKey(error: unknown): string {
 function copyRequest(request: ParkFitSearchRequest): ParkFitSearchRequest {
   return {
     ...request,
+    originLatitude: null,
+    originLongitude: null,
     members: request.members.map((member) => ({ ...member })),
     preferredAttractionTypes: [...request.preferredAttractionTypes]
   };

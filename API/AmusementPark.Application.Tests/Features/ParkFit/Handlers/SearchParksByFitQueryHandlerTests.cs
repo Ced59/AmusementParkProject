@@ -62,7 +62,11 @@ public sealed class SearchParksByFitQueryHandlerTests
             items.Object,
             openingHours.Object);
 
-        ApplicationResult<ParkFitSearchResult> result = await handler.HandleAsync(BuildQuery());
+        ApplicationResult<ParkFitSearchResult> result = await handler.HandleAsync(BuildQuery() with
+        {
+            OriginLatitude = 50d,
+            OriginLongitude = 3d,
+        });
 
         Assert.True(result.IsSuccess);
         ParkFitSearchResult value = Assert.IsType<ParkFitSearchResult>(result.Value);
@@ -74,7 +78,7 @@ public sealed class SearchParksByFitQueryHandlerTests
         Assert.Equal(1, value.QualityIssueCounts[ParkFitDataQualityIssue.NoVisibleAttractions]);
         ParkFitSearchParkResult parkResult = Assert.Single(value.Parks);
         Assert.Equal(eligiblePark.Id, parkResult.Park.Id);
-        Assert.Equal(ParkFitScoreState.Available, parkResult.Score.State);
+        Assert.Equal(ParkFitScoreState.Capped, parkResult.Score.State);
         Assert.Equal(ParkFitDateAvailabilityState.Available, parkResult.Score.DateAvailabilityState);
         Assert.Equal(1, parkResult.EveryoneTogetherAttractionCount);
         ParkFitSearchMemberSummaryResult memberSummary = Assert.Single(parkResult.MemberSummaries);
@@ -82,6 +86,11 @@ public sealed class SearchParksByFitQueryHandlerTests
         Assert.Equal(1, memberSummary.CompatibleAloneAttractionCount);
         Assert.Equal(0, memberSummary.UnknownAttractionCount);
         Assert.NotEmpty(parkResult.CriticalSources);
+        Assert.Equal(ParkFitCalendarState.OpenConfirmed, parkResult.DateAvailability.CalendarState);
+        Assert.Equal(0d, parkResult.TravelDistance!.DistanceKilometers);
+        ParkFitWeightedSubscore travel = parkResult.Score.Components.Single(static component =>
+            component.Kind == ParkFitSubscoreKind.TravelConvenience);
+        Assert.Equal(ParkFitSubscoreState.Known, travel.State);
         parks.VerifyAll();
         items.VerifyAll();
         openingHours.VerifyAll();

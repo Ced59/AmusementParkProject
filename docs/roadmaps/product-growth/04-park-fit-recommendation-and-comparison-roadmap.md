@@ -218,8 +218,33 @@ premier résultat sans compte. L'architecture, le schéma MongoDB, les diagramme
 les preuves sont documentés dans
 [`product-growth-fit-11-private-group-profiles-2026-09-14.md`](../../architecture/product-growth-fit-11-private-group-profiles-2026-09-14.md).
 
-`FIT-12` est le prochain jalon : la recommandation intégrera la distance et le
-calendrier avec des résultats honnêtes lorsque ces données ne sont pas disponibles.
+### État de `FIT-12` au 14 septembre 2026
+
+Une personne peut désormais demander explicitement sa position depuis le formulaire
+Park Fit. Le navigateur réduit la précision à quatre décimales, la transmet seulement
+pour la recherche courante et ne l'enregistre ni dans l'URL, ni dans un stockage, ni
+dans MongoDB. Le Core calcule une distance géodésique datée, libellée sans ambiguïté
+comme distance directe et jamais comme temps ou itinéraire routier. Une position non
+demandée rend ce critère non applicable ; des coordonnées de parc manquantes restent
+inconnues.
+
+Pour la date choisie, chaque résultat distingue maintenant ouverture confirmée,
+fermeture confirmée, calendrier non publié, calendrier incomplet, fermeture
+exceptionnelle et horaires inconnus. Les plages horaires, le fuseau, la date de
+vérification et la source officielle HTTPS disponible accompagnent cette conclusion.
+L'absence de calendrier n'est donc jamais transformée en ouverture ou fermeture.
+
+La méthode comparative passe à `park-fit-2026-02`. La distance directe constitue une
+préférence souple et sa confiance moyenne borne honnêtement le score final. Le calcul
+reste local, déterministe et borné : aucun fournisseur de trajet, nouvel appel réseau,
+cache, quota, collection ou migration MongoDB n'est requis. Les résultats et la
+comparaison sont traduits dans les huit langues et restent contenus jusque 360 px.
+L'architecture, le schéma de lecture, les diagrammes et les preuves sont documentés
+dans
+[`product-growth-fit-12-distance-calendar-2026-09-14.md`](../../architecture/product-growth-fit-12-distance-calendar-2026-09-14.md).
+
+`FIT-13` est le prochain jalon : rendre les sources, signalements et suspensions
+opérationnels de bout en bout.
 
 ## 1. Vision produit
 

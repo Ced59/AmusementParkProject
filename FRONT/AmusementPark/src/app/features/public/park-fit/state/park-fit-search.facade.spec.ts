@@ -12,6 +12,8 @@ describe('ParkFitSearchFacade', () => {
     const search = vi.fn().mockReturnValue(of(response));
     const facade: ParkFitSearchFacade = createFacade({ search });
     const request: ParkFitSearchRequest = buildRequest();
+    request.originLatitude = 50.6292;
+    request.originLongitude = 3.0573;
 
     facade.search(request);
     request.members[0]!.heightCentimeters = 190;
@@ -21,6 +23,9 @@ describe('ParkFitSearchFacade', () => {
     expect(facade.firstPark()?.parkName).toBe('Parc Démo');
     expect(facade.visibleParks()).toHaveLength(1);
     expect(facade.lastRequest()?.members[0]?.heightCentimeters).toBe(120);
+    expect(facade.lastRequest()?.originLatitude).toBeNull();
+    expect(facade.lastRequest()?.originLongitude).toBeNull();
+    expect(search.mock.calls[0]?.[0].originLatitude).toBe(50.6292);
   });
 
   it('prevents a duplicate calculation while a search is running', () => {
@@ -121,6 +126,8 @@ function buildRequest(): ParkFitSearchRequest {
     preferredAttractionTypes: ['FamilyRide'],
     preferIndoor: false,
     countryCode: null,
+    originLatitude: null,
+    originLongitude: null,
     unknownDataPolicy: 'KeepWithWarning',
     maximumResults: 10
   };
@@ -151,6 +158,14 @@ function buildResponse(): ParkFitSearchResponse {
       scoreCeilingPercent: null,
       confidence: 'High',
       dateAvailabilityState: 'Available',
+      calendarState: 'OpenConfirmed',
+      openingTimeRanges: [],
+      calendarTimeZoneId: 'Europe/Paris',
+      calendarSourceUrl: null,
+      calendarLastVerifiedAtUtc: null,
+      distanceKilometers: null,
+      distanceMethod: null,
+      distanceEvaluatedAtUtc: null,
       unknownCount: 0,
       everyoneTogetherAttractionCount: 12,
       splitRequiredAttractionCount: 2,

@@ -18,6 +18,22 @@
       "label": "Data della visita",
       "required": "Scegli una data per avviare la ricerca."
     },
+    "location": {
+      "title": "Aggiungi il punto di partenza se vuoi",
+      "text": "La distanza aiuta a ordinare i parchi senza escludere le destinazioni più lontane.",
+      "privacy": "La tua posizione viene arrotondata, usata solo per questa ricerca e mai salvata.",
+      "action": "Usa la mia posizione",
+      "loading": "Localizzazione…",
+      "readyTitle": "Punto di partenza considerato",
+      "readyText": "I risultati mostrano una distanza diretta, non un tempo di viaggio.",
+      "remove": "Non usarla più",
+      "errors": {
+        "denied": "Non hai autorizzato l’accesso alla posizione. Puoi cercare anche senza.",
+        "timeout": "Non è stato possibile ottenere la posizione in tempo. Riprova o continua senza.",
+        "unsupported": "La localizzazione non è disponibile su questo dispositivo.",
+        "unavailable": "La tua posizione non è temporaneamente disponibile. Puoi cercare anche senza."
+      }
+    },
     "group": {
       "title": "Descrivi il gruppo",
       "text": "Basta una riga per persona. Lascia vuoto un campo se non conosci la risposta.",
@@ -113,6 +129,34 @@
         "organized": "attrazioni possibili organizzando il gruppo",
         "date": "situazione nota nella data scelta"
       },
+      "practical": { "title": "Data e distanza, senza falsa precisione" },
+      "distance": {
+        "title": "Distanza dal punto di partenza",
+        "value": "Circa {{distance}} km",
+        "notRequested": "Aggiungi la posizione ai criteri per calcolare la distanza.",
+        "methods": {
+          "DirectGeodesic": "Distanza diretta in linea d’aria · non è un itinerario stradale",
+          "Unknown": "Metodo di distanza sconosciuto"
+        }
+      },
+      "calendar": {
+        "title": "Calendario del giorno scelto",
+        "states": {
+          "OpenConfirmed": "Apertura confermata",
+          "ClosedConfirmed": "Chiusura confermata",
+          "CalendarNotPublished": "Calendario non ancora pubblicato",
+          "CalendarIncomplete": "Calendario incompleto per questa data",
+          "ExceptionalClosure": "Chiusura eccezionale confermata",
+          "OpeningHoursUnknown": "Apertura indicata, orari sconosciuti",
+          "Unknown": "Stato del calendario sconosciuto"
+        },
+        "timeRange": "{{opensAt}} – {{closesAt}}{{nextDay}}",
+        "nextDay": " il giorno successivo",
+        "lastAdmission": "Ultimo ingresso: {{time}}{{nextDay}}",
+        "timeZone": "Ora locale del parco · {{timezone}}",
+        "verified": "Calendario verificato il {{date}}",
+        "source": "Apri il calendario fonte"
+      },
       "unknowns": {
         "title": "Restano alcune informazioni sconosciute",
         "text": "Attrazioni sconosciute: {{attractions}} · fattori di calcolo sconosciuti: {{factors}}. Non vengono mai considerati negativi.",
@@ -154,6 +198,7 @@
         "UnknownFactsExcluded": "I dati sconosciuti sono esclusi dal calcolo.",
         "MinimumMemberBoundApplied": "Il risultato è limitato dalla persona meno favorita del gruppo.",
         "NoKnownFact": "Nessun dato conosciuto permette di valutare questo fattore.",
+        "DirectDistanceCalculated": "La vicinanza usa una distanza diretta, non un tempo di viaggio.",
         "Unknown": "Una spiegazione di questo fattore non è ancora tradotta."
       },
       "scoreStates": {
@@ -216,6 +261,7 @@
       },
       "method": {
         "parkFit202601": "Metodo Park Fit 2026 · versione 1",
+        "parkFit202602": "Metodo Park Fit 2026 · versione 2 con distanza e calendario",
         "versioned": "Metodo di confronto versionato"
       },
       "openPark": "Scopri questo parco",

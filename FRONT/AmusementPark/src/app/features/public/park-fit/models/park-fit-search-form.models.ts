@@ -43,3 +43,8 @@ export interface ParkFitPreferenceOption {
   labelKey: string;
   iconClass: string;
 }
+
+export interface ParkFitSearchOrigin {
+  latitude: number;
+  longitude: number;
+}

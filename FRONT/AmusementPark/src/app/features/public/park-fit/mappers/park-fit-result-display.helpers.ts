@@ -1,8 +1,25 @@
-import { ParkFitCriticalSource } from '@app/models/park-fit/park-fit-search.models';
+import {
+  ParkFitCriticalSource,
+  ParkFitOpeningTimeRange
+} from '@app/models/park-fit/park-fit-search.models';
+
+type ParkFitTranslationFormatter = (
+  key: string,
+  params?: Record<string, string | number>
+) => string;
 
 const SCORE_STATES: readonly string[] = ['Available', 'Capped', 'Suspended'];
 const CONFIDENCE_LEVELS: readonly string[] = ['Unknown', 'Low', 'Medium', 'High'];
 const AVAILABILITY_STATES: readonly string[] = ['NotRequested', 'Available', 'Unavailable', 'Unknown'];
+const CALENDAR_STATES: readonly string[] = [
+  'OpenConfirmed',
+  'ClosedConfirmed',
+  'CalendarNotPublished',
+  'CalendarIncomplete',
+  'ExceptionalClosure',
+  'OpeningHoursUnknown'
+];
+const DISTANCE_METHODS: readonly string[] = ['DirectGeodesic'];
 const QUALITY_STATES: readonly string[] = [
   'NotAssessed',
   'Insufficient',
@@ -23,7 +40,8 @@ const SUBSCORE_REASONS: readonly string[] = [
   'KnownFactsNormalized',
   'UnknownFactsExcluded',
   'MinimumMemberBoundApplied',
-  'NoKnownFact'
+  'NoKnownFact',
+  'DirectDistanceCalculated'
 ];
 const SCORE_REASONS: readonly string[] = [
   'ScoreAvailable',
@@ -56,6 +74,14 @@ export function parkFitConfidenceKey(value: string): string {
 
 export function parkFitAvailabilityKey(value: string): string {
   return enumTranslationKey('parkFit.results.availabilityStates', value, AVAILABILITY_STATES);
+}
+
+export function parkFitCalendarStateKey(value: string): string {
+  return enumTranslationKey('parkFit.results.calendar.states', value, CALENDAR_STATES);
+}
+
+export function parkFitDistanceMethodKey(value: string | null): string {
+  return enumTranslationKey('parkFit.results.distance.methods', value ?? '', DISTANCE_METHODS);
 }
 
 export function parkFitQualityKey(value: string): string {
@@ -104,10 +130,45 @@ export function resolveParkFitSourceUrl(source: ParkFitCriticalSource): string |
   return /^https:\/\//i.test(value) ? value : null;
 }
 
+export function resolveParkFitHttpsUrl(value: string | null): string | null {
+  const normalized: string = value?.trim() ?? '';
+  return /^https:\/\//i.test(normalized) ? normalized : null;
+}
+
 export function parkFitMethodLabelKey(methodVersion: string): string {
+  if (methodVersion === 'park-fit-2026-02') {
+    return 'parkFit.results.method.parkFit202602';
+  }
+
   return methodVersion === 'park-fit-2026-01'
     ? 'parkFit.results.method.parkFit202601'
     : 'parkFit.results.method.versioned';
+}
+
+export function formatParkFitOpeningTimeRange(
+  range: ParkFitOpeningTimeRange,
+  translate: ParkFitTranslationFormatter
+): string {
+  const nextDay: string = range.closesNextDay
+    ? translate('parkFit.results.calendar.nextDay')
+    : '';
+  const hours: string = translate('parkFit.results.calendar.timeRange', {
+    opensAt: range.opensAt,
+    closesAt: range.closesAt,
+    nextDay
+  });
+  if (!range.lastAdmissionAt) {
+    return hours;
+  }
+
+  const lastAdmissionNextDay: string = range.lastAdmissionNextDay
+    ? translate('parkFit.results.calendar.nextDay')
+    : '';
+  const lastAdmission: string = translate('parkFit.results.calendar.lastAdmission', {
+    time: range.lastAdmissionAt,
+    nextDay: lastAdmissionNextDay
+  });
+  return `${hours} · ${lastAdmission}`;
 }
 
 export function formatParkFitDate(value: string, language: string): string | null {

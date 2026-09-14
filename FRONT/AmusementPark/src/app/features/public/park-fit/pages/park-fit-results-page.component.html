@@ -107,6 +107,55 @@
               </div>
             </section>
 
+            <section class="park-fit-result-card__practical" [attr.aria-labelledby]="'practical-' + rank">
+              <h3 [id]="'practical-' + rank">{{ 'parkFit.results.practical.title' | translate }}</h3>
+              <div class="park-fit-result-card__practical-grid">
+                <article>
+                  <i class="pi pi-map-marker" aria-hidden="true"></i>
+                  <div>
+                    <strong>{{ 'parkFit.results.distance.title' | translate }}</strong>
+                    @if (park.distanceKilometers !== null) {
+                      <span class="park-fit-result-card__practical-value">
+                        {{ 'parkFit.results.distance.value' | translate:{ distance: distanceLabel(park.distanceKilometers) } }}
+                      </span>
+                      <small>{{ distanceMethodKey(park.distanceMethod) | translate }}</small>
+                    } @else {
+                      <span>{{ 'parkFit.results.distance.notRequested' | translate }}</span>
+                    }
+                  </div>
+                </article>
+
+                <article>
+                  <i class="pi pi-calendar" aria-hidden="true"></i>
+                  <div>
+                    <strong>{{ 'parkFit.results.calendar.title' | translate }}</strong>
+                    <span class="park-fit-result-card__practical-value">
+                      {{ calendarStateKey(park.calendarState) | translate }}
+                    </span>
+                    @if (park.openingTimeRanges.length > 0) {
+                      <ul class="park-fit-result-card__hours">
+                        @for (range of park.openingTimeRanges; track $index) {
+                          <li>{{ openingRangeLabel(range) }}</li>
+                        }
+                      </ul>
+                    }
+                    @if (park.calendarTimeZoneId) {
+                      <small>{{ 'parkFit.results.calendar.timeZone' | translate:{ timezone: park.calendarTimeZoneId } }}</small>
+                    }
+                    @if (park.calendarLastVerifiedAtUtc) {
+                      <small>{{ 'parkFit.results.calendar.verified' | translate:{ date: verifiedDateLabel(park.calendarLastVerifiedAtUtc) } }}</small>
+                    }
+                    @if (calendarSourceUrl(park.calendarSourceUrl); as sourceUrl) {
+                      <a [href]="sourceUrl" target="_blank" rel="noopener noreferrer">
+                        {{ 'parkFit.results.calendar.source' | translate }}
+                        <i class="pi pi-external-link" aria-hidden="true"></i>
+                      </a>
+                    }
+                  </div>
+                </article>
+              </div>
+            </section>
+
             <section class="park-fit-result-card__unknowns" [class.park-fit-result-card__unknowns--clear]="park.unknownAttractionCount === 0 && park.unknownCount === 0">
               <i [class]="park.unknownAttractionCount === 0 && park.unknownCount === 0 ? 'pi pi-check-circle' : 'pi pi-exclamation-triangle'" aria-hidden="true"></i>
               <div>

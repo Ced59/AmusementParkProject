@@ -14,6 +14,10 @@ public sealed class ParkFitSearchParkResult
 
     public required ParkFitScore Score { get; init; }
 
+    public required ParkFitDateAvailability DateAvailability { get; init; }
+
+    public ParkFitTravelDistance? TravelDistance { get; init; }
+
     public int EveryoneTogetherAttractionCount { get; init; }
 
     public int SplitRequiredAttractionCount { get; init; }
