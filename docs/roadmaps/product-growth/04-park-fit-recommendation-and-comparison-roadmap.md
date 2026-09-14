@@ -81,9 +81,22 @@ calcul est pur, déterministe, sans stockage ni dépendance aux visites. Les dé
 diagrammes et 97 scénarios métier sont documentés dans
 [`product-growth-fit-04-individual-compatibility-2026-09-14.md`](../../architecture/product-growth-fit-04-individual-compatibility-2026-09-14.md).
 
-`FIT-05` est le prochain jalon : il combinera les verdicts par personne sans inventer
-la capacité d'un véhicule ou d'un accompagnateur, et distinguera groupe ensemble,
-séparation, participation partielle, aucun participant et inconnu.
+### État de `FIT-05` au 14 septembre 2026
+
+Le Core agrège désormais les verdicts individuels pour un groupe non vide. Il
+distingue tout le monde ensemble, séparation nécessaire, participation partielle,
+personne compatible et situation inconnue. Chaque ligne membre, chaque compteur et
+le niveau de confiance le plus faible restent visibles ; l'ordre des membres ne
+change pas le résultat. Une capacité de véhicule ou d'accompagnateur n'est jamais
+supposée : une organisation ensemble ou séparée doit être fournie comme fait connu.
+
+Le calcul est pur, linéaire, sans stockage ni dépendance aux visites. La table de
+décision, les diagrammes et 30 scénarios métier sont documentés dans
+[`product-growth-fit-05-group-compatibility-2026-09-14.md`](../../architecture/product-growth-fit-05-group-compatibility-2026-09-14.md).
+
+`FIT-06` est le prochain jalon : il construira les sous-scores versionnés après les
+filtres durs, sans transformer les inconnues en zéros ni masquer le membre le moins
+bien servi.
 
 ## 1. Vision produit
 
