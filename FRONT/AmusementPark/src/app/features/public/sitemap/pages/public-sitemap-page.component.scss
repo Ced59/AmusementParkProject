@@ -114,6 +114,26 @@
   gap: 1.15rem;
 }
 
+.sitemap-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--app-text-muted);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.sitemap-navigation a {
+  color: var(--app-primary);
+  text-underline-offset: 0.2em;
+}
+
+.sitemap-navigation--pages {
+  justify-content: center;
+  gap: 1.25rem;
+}
+
 .sitemap-shell__head {
   display: flex;
   flex-wrap: wrap;
@@ -213,6 +233,7 @@
 }
 
 .sitemap-tree__toggle {
+  text-decoration: none;
   border: 1px solid var(--app-border);
   background: var(--app-surface);
   color: var(--app-heading);

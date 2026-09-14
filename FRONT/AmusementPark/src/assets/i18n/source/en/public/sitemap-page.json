@@ -4,13 +4,15 @@
     "title": "Public site map",
     "subtitle": "Find parks, interactive maps, technical guides and public reference pages in the current language.",
     "treeTitle": "Public pages",
-    "treeSubtitle": "The tree follows the same public routes as the searchable site pages.",
+    "treeSubtitle": "Open a section to explore its pages and discover the details of each park.",
     "loading": "Loading the sitemap",
     "error": "Unable to load the sitemap.",
     "empty": "No public page is available yet.",
     "childrenLoading": "Loading",
     "childrenError": "This branch could not be loaded.",
     "expand": "Open {{label}}",
-    "collapse": "Close {{label}}"
+    "collapse": "Close {{label}}",
+    "browse": "Pages for {{label}}",
+    "page": "Page {{page}} of {{total}}"
   }
 }

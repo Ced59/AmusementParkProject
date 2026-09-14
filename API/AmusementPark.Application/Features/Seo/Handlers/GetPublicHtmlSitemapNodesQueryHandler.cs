@@ -299,6 +299,11 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandler : IQueryHandler<GetPub
             return ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>.Success(sitemapNodes);
         }
 
+        if (parentNodeId == "snapshot-sections" || parentNodeId.StartsWith("sitemap-section:", StringComparison.Ordinal))
+        {
+            return await this.BuildSnapshotBranchAsync(language, parentNodeId, query.SupportedLanguages, cancellationToken);
+        }
+
         IReadOnlyCollection<PublicHtmlSitemapNode> nodes = await this.BuildNodesForParentAsync(language, parentNodeId, cancellationToken);
         return ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>.Success(nodes);
     }
@@ -525,6 +530,12 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandler : IQueryHandler<GetPub
             {
                 Id = "references",
                 Label = GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "references"),
+                HasChildren = true
+            },
+            new PublicHtmlSitemapNode
+            {
+                Id = "snapshot-sections",
+                Label = PublicHtmlSitemapSnapshotLabels.AllPages(language),
                 HasChildren = true
             },
             GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions.CreateLeaf("rankings", GetPublicHtmlSitemapNodesQueryHandlerLabelsExtensions.Label(language, "rankings"), $"/{language}/rankings"),
