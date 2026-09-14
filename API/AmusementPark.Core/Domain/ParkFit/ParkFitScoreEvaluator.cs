@@ -106,9 +106,23 @@ public sealed class ParkFitScoreEvaluator
 
         ParkFitSubscore groupCompatibility = snapshot.Single(static subscore =>
             subscore.Kind == ParkFitSubscoreKind.GroupCompatibility);
-        bool hasCriticalUnknown = hardFilterState == ParkFitHardFilterState.Unknown
-            || dateAvailabilityState == ParkFitDateAvailabilityState.Unknown
-            || groupCompatibility.State == ParkFitSubscoreState.Unknown;
+        int criticalUnknownCount = 0;
+        if (hardFilterState == ParkFitHardFilterState.Unknown)
+        {
+            criticalUnknownCount++;
+        }
+
+        if (dateAvailabilityState == ParkFitDateAvailabilityState.Unknown)
+        {
+            criticalUnknownCount++;
+        }
+
+        if (groupCompatibility.State == ParkFitSubscoreState.Unknown)
+        {
+            criticalUnknownCount++;
+        }
+
+        bool hasCriticalUnknown = criticalUnknownCount > 0;
         if (hasCriticalUnknown
             && unknownDataPolicy == ParkFitUnknownDataPolicy.ExcludeUnknown)
         {
@@ -128,7 +142,8 @@ public sealed class ParkFitScoreEvaluator
         }
 
         if (hasCriticalUnknown
-            && unknownDataPolicy == ParkFitUnknownDataPolicy.KnownOnly)
+            && (unknownDataPolicy == ParkFitUnknownDataPolicy.KnownOnly
+                || criticalUnknownCount > 1))
         {
             return BuildWithoutScore(
                 ParkFitScoreState.Suspended,

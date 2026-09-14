@@ -115,10 +115,12 @@ ou une compatibilité de groupe inconnue.
 |---|---|
 | `ExcludeUnknown` | résultat `Excluded`, sans score |
 | `KnownOnly` | résultat `Suspended`, sans score |
-| `KeepWithWarning` | score calculé mais plafonné à 60 |
+| `KeepWithWarning` | avec une seule inconnue critique, score calculé mais plafonné à 60 |
 
 Une inconnue non critique ne reçoit aucun point et ne suspend pas à elle seule le
 mode `KnownOnly`. Elle réduit toutefois la couverture et donc le plafond possible.
+À partir de deux faits critiques inconnus, le score est toujours suspendu, y compris
+avec `KeepWithWarning` : un nombre ne serait plus suffisamment étayé.
 
 ## 6. Plafonds de probité
 
@@ -247,7 +249,7 @@ sans déplacer les règles dans le contrôleur.
 
 ## 11. Preuves automatisées
 
-Les 58 scénarios ciblés couvrent notamment :
+Les 59 scénarios ciblés couvrent notamment :
 
 - les cinq normalisations de groupe et le minimum individuel ;
 - les attractions inconnues exclues sans devenir zéro ;
@@ -256,12 +258,13 @@ Les 58 scénarios ciblés couvrent notamment :
 - la renormalisation d'un budget non applicable ;
 - les plafonds de couverture et de confiance ;
 - les trois politiques face à une inconnue critique ;
+- la suspension obligatoire lorsque plusieurs faits critiques sont inconnus ;
 - les exclusions par filtre ou calendrier ;
 - la suspension sans donnée connue ou avec confiance inconnue ;
 - les collections incomplètes, dupliquées, incohérentes ou invalides ;
 - l'invariance à l'ordre et la copie défensive des entrées.
 
-La suite Core complète contient 976 tests verts après ce jalon.
+La suite Core complète contient 977 tests verts après ce jalon.
 
 ## 12. Stockage, confidentialité et performance
 

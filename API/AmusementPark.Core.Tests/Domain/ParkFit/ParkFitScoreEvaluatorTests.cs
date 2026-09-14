@@ -206,6 +206,24 @@ public sealed class ParkFitScoreEvaluatorTests
         Assert.Contains(ParkFitScoreReasonCode.CriticalUnknownCapApplied, result.Reasons);
     }
 
+    [Fact]
+    public void Evaluate_WhenMultipleCriticalFactsAreUnknown_ShouldSuspendEvenWithWarnings()
+    {
+        List<ParkFitSubscore> subscores = BuildKnownSubscores(100m);
+        Replace(
+            subscores,
+            BuildUnknown(ParkFitSubscoreKind.GroupCompatibility));
+
+        ParkFitScore result = this.Evaluate(
+            subscores,
+            hardFilterState: ParkFitHardFilterState.Unknown,
+            unknownDataPolicy: ParkFitUnknownDataPolicy.KeepWithWarning);
+
+        Assert.Equal(ParkFitScoreState.Suspended, result.State);
+        Assert.Null(result.ComparativeScore);
+        Assert.Contains(ParkFitScoreReasonCode.CriticalDataSuspended, result.Reasons);
+    }
+
     [Theory]
     [InlineData(ParkFitHardFilterState.Unknown, ParkFitDateAvailabilityState.Available)]
     [InlineData(ParkFitHardFilterState.Passed, ParkFitDateAvailabilityState.Unknown)]
