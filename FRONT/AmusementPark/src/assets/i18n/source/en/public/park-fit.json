@@ -94,7 +94,7 @@
       },
       "kicker": "Explained results",
       "title": "Parks that suit your group",
-      "lead": "For {{date}}, {{count}} sufficiently documented park(s) remain in the comparison.",
+      "lead": "Date: {{date}} · sufficiently documented results: {{count}}.",
       "changeCriteria": "Change my criteria",
       "rankLabel": "Result number {{rank}}",
       "breadcrumb": {
@@ -115,17 +115,17 @@
       },
       "unknowns": {
         "title": "Some facts are still unknown",
-        "text": "{{attractions}} attraction(s) and {{factors}} calculation factor(s) remain unknown. They are never counted as negative.",
+        "text": "Unknown attractions: {{attractions}} · unknown calculation factors: {{factors}}. They are never counted as negative.",
         "clearTitle": "No unknowns detected",
         "clearText": "The attractions and factors used for this result have the expected data."
       },
       "members": {
         "title": "Compatibility for each person",
         "person": "Person {{number}}",
-        "alone": "{{count}} independently",
-        "withCompanion": "{{count}} with a companion",
-        "unavailable": "{{count}} incompatible",
-        "unknown": "{{count}} unknown"
+        "alone": "Independently: {{count}}",
+        "withCompanion": "With a companion: {{count}}",
+        "unavailable": "Incompatible: {{count}}",
+        "unknown": "Unknown: {{count}}"
       },
       "limits": { "title": "What limits or qualifies this result" },
       "score": {
@@ -225,7 +225,7 @@
       "compare": {
         "title": "Build your comparison",
         "text": "Choose two to four parks. The next screen will align their differences without copying your private criteria.",
-        "count": "{{count}} park(s) selected out of 4",
+        "count": "Selection: {{count}} / 4",
         "minimum": "Select more parks until you have at least two.",
         "limit": "Four parks are selected. Remove one to choose another.",
         "add": "Add to comparison",
@@ -284,10 +284,10 @@
       "values": {
         "score": "{{score}}/100 · {{coverage}}% coverage",
         "scoreUnavailable": "Score not published",
-        "together": "{{count}} attraction(s) possible together",
-        "organized": "{{count}} with group planning",
-        "unknowns": "{{attractions}} attraction(s) · {{factors}} factor(s)",
-        "member": "{{alone}} independently · {{accompanied}} with a companion · {{unavailable}} incompatible · {{unknown}} unknown",
+        "together": "Possible together: {{count}}",
+        "organized": "With group planning: {{count}}",
+        "unknowns": "Unknown attractions: {{attractions}} · unknown factors: {{factors}}",
+        "member": "Independently: {{alone}} · with a companion: {{accompanied}} · incompatible: {{unavailable}} · unknown: {{unknown}} · outside scope: {{notApplicable}}",
         "componentScore": "{{score}}/100",
         "qualityCoverage": "{{coverage}}% coverage",
         "verified": "{{date}}",

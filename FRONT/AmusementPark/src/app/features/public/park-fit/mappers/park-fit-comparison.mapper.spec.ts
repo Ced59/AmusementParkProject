@@ -11,7 +11,21 @@ describe('buildParkFitComparisonSections', () => {
 
     expect(rows.find((row) => row.id === 'overall')?.isDifferent).toBe(true);
     expect(rows.find((row) => row.id === 'member-1')?.isDifferent).toBe(true);
+    expect(rows.find((row) => row.id === 'member-1')?.cells[0]?.primaryParams['notApplicable']).toBe(0);
     expect(rows.find((row) => row.id === 'schedule')?.cells).toHaveLength(2);
+  });
+
+  it('compares the verification date exactly as visitors see it', () => {
+    const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    first.lastVerifiedAtUtc = '2026-09-14T01:00:00Z';
+    second.lastVerifiedAtUtc = '2026-09-14T22:00:00Z';
+
+    const verifiedRow = buildParkFitComparisonSections([first, second], (): string => '14/09/2026')
+      .flatMap((section) => section.rows)
+      .find((row) => row.id === 'verified');
+
+    expect(verifiedRow?.isDifferent).toBe(false);
   });
 
   it('only exposes a verified HTTPS source URL in the official-link row', () => {

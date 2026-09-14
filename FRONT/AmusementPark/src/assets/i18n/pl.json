@@ -4867,7 +4867,7 @@
       },
       "kicker": "Wyjaśnione wyniki",
       "title": "Parki dopasowane do twojej grupy",
-      "lead": "Dla daty {{date}} w porównaniu pozostało {{count}} wystarczająco opisanych parków.",
+      "lead": "Data: {{date}} · wystarczająco opisane wyniki: {{count}}.",
       "changeCriteria": "Zmień moje kryteria",
       "rankLabel": "Wynik numer {{rank}}",
       "breadcrumb": {
@@ -4888,17 +4888,17 @@
       },
       "unknowns": {
         "title": "Niektórych danych nadal brakuje",
-        "text": "Dane o {{attractions}} atrakcjach i {{factors}} czynnikach obliczenia są nieznane. Nigdy nie są liczone na niekorzyść.",
+        "text": "Nieznane atrakcje: {{attractions}} · nieznane czynniki obliczenia: {{factors}}. Nigdy nie są liczone na niekorzyść.",
         "clearTitle": "Nie wykryto brakujących danych",
         "clearText": "Atrakcje i czynniki użyte w tym wyniku mają oczekiwane dane."
       },
       "members": {
         "title": "Dopasowanie dla każdej osoby",
         "person": "Osoba {{number}}",
-        "alone": "{{count}} samodzielnie",
-        "withCompanion": "{{count}} z opiekunem",
-        "unavailable": "{{count}} niedostępnych",
-        "unknown": "{{count}} nieznanych"
+        "alone": "Samodzielnie: {{count}}",
+        "withCompanion": "Z opiekunem: {{count}}",
+        "unavailable": "Niedostępne: {{count}}",
+        "unknown": "Nieznane: {{count}}"
       },
       "limits": {
         "title": "Co ogranicza lub uściśla ten wynik"
@@ -5002,7 +5002,7 @@
       "compare": {
         "title": "Utwórz porównanie",
         "text": "Wybierz od dwóch do czterech parków. Następny ekran zestawi różnice bez kopiowania prywatnych kryteriów.",
-        "count": "Wybrano {{count}} z 4 parków",
+        "count": "Wybór: {{count}} / 4",
         "minimum": "Wybierz kolejne parki, aż będą co najmniej dwa.",
         "limit": "Wybrano cztery parki. Usuń jeden, aby wybrać inny.",
         "add": "Dodaj do porównania",
@@ -5063,10 +5063,10 @@
       "values": {
         "score": "{{score}}/100 · pokrycie {{coverage}}%",
         "scoreUnavailable": "Wynik nieopublikowany",
-        "together": "{{count}} atrakcji możliwych razem",
-        "organized": "{{count}} przy organizacji grupy",
-        "unknowns": "Atrakcje: {{attractions}} · czynniki: {{factors}}",
-        "member": "{{alone}} samodzielnie · {{accompanied}} z opiekunem · {{unavailable}} niedostępnych · {{unknown}} nieznanych",
+        "together": "Możliwe razem: {{count}}",
+        "organized": "Przy organizacji grupy: {{count}}",
+        "unknowns": "Nieznane atrakcje: {{attractions}} · nieznane czynniki: {{factors}}",
+        "member": "Samodzielnie: {{alone}} · z opiekunem: {{accompanied}} · niedostępne: {{unavailable}} · nieznane: {{unknown}} · nie dotyczy: {{notApplicable}}",
         "componentScore": "{{score}}/100",
         "qualityCoverage": "Pokrycie {{coverage}}%",
         "verified": "{{date}}",

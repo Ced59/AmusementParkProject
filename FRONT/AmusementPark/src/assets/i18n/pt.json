@@ -4867,7 +4867,7 @@
       },
       "kicker": "Resultados explicados",
       "title": "Os parques adequados ao teu grupo",
-      "lead": "Para {{date}}, permanecem na comparação {{count}} parques suficientemente documentados.",
+      "lead": "Data: {{date}} · resultados suficientemente documentados: {{count}}.",
       "changeCriteria": "Alterar os meus critérios",
       "rankLabel": "Resultado número {{rank}}",
       "breadcrumb": {
@@ -4888,17 +4888,17 @@
       },
       "unknowns": {
         "title": "Ainda faltam alguns dados",
-        "text": "{{attractions}} atração(ões) e {{factors}} fator(es) do cálculo permanecem desconhecidos. Nunca contam como negativos.",
+        "text": "Atrações desconhecidas: {{attractions}} · fatores de cálculo desconhecidos: {{factors}}. Nunca contam como negativos.",
         "clearTitle": "Não foram detetados dados desconhecidos",
         "clearText": "As atrações e os fatores usados neste resultado dispõem dos dados esperados."
       },
       "members": {
         "title": "Compatibilidade por pessoa",
         "person": "Pessoa {{number}}",
-        "alone": "{{count}} de forma autónoma",
-        "withCompanion": "{{count}} com acompanhante",
-        "unavailable": "{{count}} incompatíveis",
-        "unknown": "{{count}} desconhecidas"
+        "alone": "De forma autónoma: {{count}}",
+        "withCompanion": "Com acompanhante: {{count}}",
+        "unavailable": "Incompatíveis: {{count}}",
+        "unknown": "Desconhecidas: {{count}}"
       },
       "limits": {
         "title": "O que limita ou contextualiza este resultado"
@@ -5002,7 +5002,7 @@
       "compare": {
         "title": "Cria a tua comparação",
         "text": "Escolhe entre dois e quatro parques. O ecrã seguinte alinha as diferenças sem copiar os teus critérios privados.",
-        "count": "{{count}} parque(s) selecionado(s) de 4",
+        "count": "Seleção: {{count}} / 4",
         "minimum": "Seleciona mais parques até teres pelo menos dois.",
         "limit": "Selecionaste quatro parques. Retira um para escolher outro.",
         "add": "Adicionar à comparação",
@@ -5063,10 +5063,10 @@
       "values": {
         "score": "{{score}}/100 · cobertura de {{coverage}}%",
         "scoreUnavailable": "Pontuação não publicada",
-        "together": "{{count}} atração/atrações possível/possíveis em conjunto",
-        "organized": "{{count}} com organização do grupo",
-        "unknowns": "{{attractions}} atração/atrações · {{factors}} fator(es)",
-        "member": "{{alone}} autonomamente · {{accompanied}} com acompanhante · {{unavailable}} incompatível/incompatíveis · {{unknown}} desconhecida(s)",
+        "together": "Possíveis em conjunto: {{count}}",
+        "organized": "Com organização do grupo: {{count}}",
+        "unknowns": "Atrações desconhecidas: {{attractions}} · fatores desconhecidos: {{factors}}",
+        "member": "Autonomamente: {{alone}} · com acompanhante: {{accompanied}} · incompatíveis: {{unavailable}} · desconhecidas: {{unknown}} · não aplicáveis: {{notApplicable}}",
         "componentScore": "{{score}}/100",
         "qualityCoverage": "Cobertura de {{coverage}}%",
         "verified": "{{date}}",

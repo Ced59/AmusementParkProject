@@ -4867,7 +4867,7 @@
       },
       "kicker": "Résultats expliqués",
       "title": "Les parcs qui correspondent à ton groupe",
-      "lead": "Pour le {{date}}, {{count}} parc(s) assez documenté(s) restent dans la comparaison.",
+      "lead": "Date : {{date}} · résultats assez documentés : {{count}}.",
       "changeCriteria": "Modifier mes critères",
       "rankLabel": "Résultat numéro {{rank}}",
       "breadcrumb": {
@@ -4888,17 +4888,17 @@
       },
       "unknowns": {
         "title": "Des inconnues subsistent",
-        "text": "{{attractions}} attraction(s) et {{factors}} facteur(s) du calcul restent inconnus. Ils ne sont jamais comptés comme défavorables.",
+        "text": "Attractions inconnues : {{attractions}} · facteurs inconnus : {{factors}}. Ils ne sont jamais comptés comme défavorables.",
         "clearTitle": "Aucune inconnue détectée",
         "clearText": "Les attractions et les facteurs utilisés par ce résultat disposent des données attendues."
       },
       "members": {
         "title": "Compatibilité par personne",
         "person": "Personne {{number}}",
-        "alone": "{{count}} seule ou seul",
-        "withCompanion": "{{count}} avec accompagnateur",
-        "unavailable": "{{count}} incompatible(s)",
-        "unknown": "{{count}} inconnue(s)"
+        "alone": "En autonomie : {{count}}",
+        "withCompanion": "Avec accompagnateur : {{count}}",
+        "unavailable": "Incompatibles : {{count}}",
+        "unknown": "Inconnues : {{count}}"
       },
       "limits": {
         "title": "Ce qui limite ou nuance ce résultat"
@@ -5002,7 +5002,7 @@
       "compare": {
         "title": "Construis ta comparaison",
         "text": "Choisis de deux à quatre parcs. Le prochain écran alignera leurs différences sans recopier tes critères privés.",
-        "count": "{{count}} parc(s) sélectionné(s) sur 4",
+        "count": "Sélection : {{count}} / 4",
         "minimum": "Sélectionne encore des parcs pour en avoir au moins deux.",
         "limit": "Quatre parcs sont sélectionnés. Retire-en un pour en choisir un autre.",
         "add": "Ajouter à la comparaison",
@@ -5063,10 +5063,10 @@
       "values": {
         "score": "{{score}}/100 · couverture {{coverage}} %",
         "scoreUnavailable": "Score non publié",
-        "together": "{{count}} attraction(s) possible(s) ensemble",
-        "organized": "{{count}} avec organisation du groupe",
-        "unknowns": "{{attractions}} attraction(s) · {{factors}} facteur(s)",
-        "member": "{{alone}} en autonomie · {{accompanied}} avec accompagnateur · {{unavailable}} incompatible(s) · {{unknown}} inconnue(s)",
+        "together": "Possibles ensemble : {{count}}",
+        "organized": "Avec organisation du groupe : {{count}}",
+        "unknowns": "Attractions inconnues : {{attractions}} · facteurs inconnus : {{factors}}",
+        "member": "En autonomie : {{alone}} · avec accompagnateur : {{accompanied}} · incompatibles : {{unavailable}} · inconnues : {{unknown}} · hors périmètre : {{notApplicable}}",
         "componentScore": "{{score}}/100",
         "qualityCoverage": "Couverture {{coverage}} %",
         "verified": "{{date}}",

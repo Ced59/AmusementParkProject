@@ -94,7 +94,7 @@
       },
       "kicker": "Resultados explicados",
       "title": "Os parques adequados ao teu grupo",
-      "lead": "Para {{date}}, permanecem na comparação {{count}} parques suficientemente documentados.",
+      "lead": "Data: {{date}} · resultados suficientemente documentados: {{count}}.",
       "changeCriteria": "Alterar os meus critérios",
       "rankLabel": "Resultado número {{rank}}",
       "breadcrumb": {
@@ -115,17 +115,17 @@
       },
       "unknowns": {
         "title": "Ainda faltam alguns dados",
-        "text": "{{attractions}} atração(ões) e {{factors}} fator(es) do cálculo permanecem desconhecidos. Nunca contam como negativos.",
+        "text": "Atrações desconhecidas: {{attractions}} · fatores de cálculo desconhecidos: {{factors}}. Nunca contam como negativos.",
         "clearTitle": "Não foram detetados dados desconhecidos",
         "clearText": "As atrações e os fatores usados neste resultado dispõem dos dados esperados."
       },
       "members": {
         "title": "Compatibilidade por pessoa",
         "person": "Pessoa {{number}}",
-        "alone": "{{count}} de forma autónoma",
-        "withCompanion": "{{count}} com acompanhante",
-        "unavailable": "{{count}} incompatíveis",
-        "unknown": "{{count}} desconhecidas"
+        "alone": "De forma autónoma: {{count}}",
+        "withCompanion": "Com acompanhante: {{count}}",
+        "unavailable": "Incompatíveis: {{count}}",
+        "unknown": "Desconhecidas: {{count}}"
       },
       "limits": { "title": "O que limita ou contextualiza este resultado" },
       "score": {
@@ -225,7 +225,7 @@
       "compare": {
         "title": "Cria a tua comparação",
         "text": "Escolhe entre dois e quatro parques. O ecrã seguinte alinha as diferenças sem copiar os teus critérios privados.",
-        "count": "{{count}} parque(s) selecionado(s) de 4",
+        "count": "Seleção: {{count}} / 4",
         "minimum": "Seleciona mais parques até teres pelo menos dois.",
         "limit": "Selecionaste quatro parques. Retira um para escolher outro.",
         "add": "Adicionar à comparação",
@@ -248,7 +248,7 @@
       "filter": { "title": "Concentra-te no que muda", "text": "Podes ocultar as linhas idênticas e voltar a mostrá-las a qualquer momento.", "differencesOnly": "Mostrar apenas as diferenças", "showAll": "Voltar a mostrar todas as linhas", "noneTitle": "Sem diferenças nas linhas disponíveis", "noneText": "Volta a mostrar todas as linhas para rever os pontos em comum." },
       "sections": { "decision": "Decisão global", "people": "Cada pessoa do grupo", "preferences": "Preferências e tipo de visita", "practical": "Informações práticas", "trust": "Fiabilidade dos dados" },
       "rows": { "overall": "Correspondência global", "together": "Experiências em conjunto", "unknowns": "Dados desconhecidos", "opening": "Abertura na data escolhida", "member": "Pessoa {{number}}", "preferences": "Categorias preferidas", "indoor": "Interior / exterior", "travel": "Trajeto", "schedule": "Horários detalhados", "budget": "Orçamento", "quality": "Nível de completude", "verified": "Última verificação", "official": "Ligação oficial" },
-      "values": { "score": "{{score}}/100 · cobertura de {{coverage}}%", "scoreUnavailable": "Pontuação não publicada", "together": "{{count}} atração/atrações possível/possíveis em conjunto", "organized": "{{count}} com organização do grupo", "unknowns": "{{attractions}} atração/atrações · {{factors}} fator(es)", "member": "{{alone}} autonomamente · {{accompanied}} com acompanhante · {{unavailable}} incompatível/incompatíveis · {{unknown}} desconhecida(s)", "componentScore": "{{score}}/100", "qualityCoverage": "Cobertura de {{coverage}}%", "verified": "{{date}}", "scheduleNotExposed": "Os horários exatos não estão disponíveis neste resultado", "officialAvailable": "Ligação pública verificada disponível", "officialUnavailable": "Sem ligação oficial pública neste resultado", "openOfficial": "Abrir o site oficial", "unavailable": "Dado indisponível" },
+      "values": { "score": "{{score}}/100 · cobertura de {{coverage}}%", "scoreUnavailable": "Pontuação não publicada", "together": "Possíveis em conjunto: {{count}}", "organized": "Com organização do grupo: {{count}}", "unknowns": "Atrações desconhecidas: {{attractions}} · fatores desconhecidos: {{factors}}", "member": "Autonomamente: {{alone}} · com acompanhante: {{accompanied}} · incompatíveis: {{unavailable}} · desconhecidas: {{unknown}} · não aplicáveis: {{notApplicable}}", "componentScore": "{{score}}/100", "qualityCoverage": "Cobertura de {{coverage}}%", "verified": "{{date}}", "scheduleNotExposed": "Os horários exatos não estão disponíveis neste resultado", "officialAvailable": "Ligação pública verificada disponível", "officialUnavailable": "Sem ligação oficial pública neste resultado", "openOfficial": "Abrir o site oficial", "unavailable": "Dado indisponível" },
       "missing": { "title": "Escolhe primeiro pelo menos dois parques", "text": "A tua seleção permanece privada e apenas em memória durante a navegação.", "action": "Voltar aos resultados", "restart": "Iniciar uma nova pesquisa" }
     }
   }

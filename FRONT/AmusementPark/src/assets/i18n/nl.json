@@ -4867,7 +4867,7 @@
       },
       "kicker": "Uitgelegde resultaten",
       "title": "Parken die bij je groep passen",
-      "lead": "Voor {{date}} blijven {{count}} voldoende gedocumenteerde parken in de vergelijking.",
+      "lead": "Datum: {{date}} · voldoende gedocumenteerde resultaten: {{count}}.",
       "changeCriteria": "Mijn criteria wijzigen",
       "rankLabel": "Resultaat nummer {{rank}}",
       "breadcrumb": {
@@ -4888,17 +4888,17 @@
       },
       "unknowns": {
         "title": "Sommige gegevens zijn nog onbekend",
-        "text": "{{attractions}} attractie(s) en {{factors}} rekenfactor(en) blijven onbekend. Ze tellen nooit als negatief.",
+        "text": "Onbekende attracties: {{attractions}} · onbekende rekenfactoren: {{factors}}. Ze tellen nooit als negatief.",
         "clearTitle": "Geen onbekende gegevens gevonden",
         "clearText": "De attracties en factoren in dit resultaat bevatten de verwachte gegevens."
       },
       "members": {
         "title": "Geschiktheid per persoon",
         "person": "Persoon {{number}}",
-        "alone": "{{count}} zelfstandig",
-        "withCompanion": "{{count}} met begeleider",
-        "unavailable": "{{count}} niet geschikt",
-        "unknown": "{{count}} onbekend"
+        "alone": "Zelfstandig: {{count}}",
+        "withCompanion": "Met begeleider: {{count}}",
+        "unavailable": "Niet geschikt: {{count}}",
+        "unknown": "Onbekend: {{count}}"
       },
       "limits": {
         "title": "Wat dit resultaat beperkt of nuanceert"
@@ -5002,7 +5002,7 @@
       "compare": {
         "title": "Stel je vergelijking samen",
         "text": "Kies twee tot vier parken. Het volgende scherm zet de verschillen naast elkaar zonder je privécriteria te kopiëren.",
-        "count": "{{count}} van 4 parken geselecteerd",
+        "count": "Selectie: {{count}} / 4",
         "minimum": "Selecteer nog parken totdat je er minstens twee hebt.",
         "limit": "Vier parken zijn geselecteerd. Verwijder er een om een ander te kiezen.",
         "add": "Aan vergelijking toevoegen",
@@ -5063,10 +5063,10 @@
       "values": {
         "score": "{{score}}/100 · {{coverage}}% dekking",
         "scoreUnavailable": "Score niet gepubliceerd",
-        "together": "{{count}} attractie(s) samen mogelijk",
-        "organized": "{{count}} met organisatie van de groep",
-        "unknowns": "{{attractions}} attractie(s) · {{factors}} factor(en)",
-        "member": "{{alone}} zelfstandig · {{accompanied}} met begeleider · {{unavailable}} niet mogelijk · {{unknown}} onbekend",
+        "together": "Samen mogelijk: {{count}}",
+        "organized": "Met groepsplanning: {{count}}",
+        "unknowns": "Onbekende attracties: {{attractions}} · onbekende factoren: {{factors}}",
+        "member": "Zelfstandig: {{alone}} · met begeleider: {{accompanied}} · niet mogelijk: {{unavailable}} · onbekend: {{unknown}} · niet van toepassing: {{notApplicable}}",
         "componentScore": "{{score}}/100",
         "qualityCoverage": "{{coverage}}% dekking",
         "verified": "{{date}}",

@@ -152,12 +152,13 @@ function buildMemberCell(park: ParkFitSearchPark, memberNumber: number): ParkFit
       alone: member.compatibleAloneAttractionCount,
       accompanied: member.compatibleWithCompanionAttractionCount,
       unavailable: member.incompatibleAttractionCount,
-      unknown: member.unknownAttractionCount
+      unknown: member.unknownAttractionCount,
+      notApplicable: member.notApplicableAttractionCount
     },
     null,
     {},
     null,
-    `${member.compatibleAloneAttractionCount}|${member.compatibleWithCompanionAttractionCount}|${member.incompatibleAttractionCount}|${member.unknownAttractionCount}`
+    `${member.compatibleAloneAttractionCount}|${member.compatibleWithCompanionAttractionCount}|${member.incompatibleAttractionCount}|${member.unknownAttractionCount}|${member.notApplicableAttractionCount}`
   );
 }
 
@@ -214,7 +215,7 @@ function buildVerifiedCell(park: ParkFitSearchPark, formatDate: (value: string |
     null,
     {},
     null,
-    park.lastVerifiedAtUtc ?? 'unknown'
+    formattedDate
   );
 }
 
