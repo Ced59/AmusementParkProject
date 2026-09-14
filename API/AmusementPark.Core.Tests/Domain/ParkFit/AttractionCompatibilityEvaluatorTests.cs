@@ -524,6 +524,28 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenMalformedSoloRuleCarriesCompanionAge_ShouldKeepAccompaniedPathUnknown()
+    {
+        AttractionAccessCondition malformed = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            120);
+        malformed.MinimumCompanionAge = 18;
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                heightCentimeters: 110,
+                canBeAccompanied: true,
+                availableCompanionAgeRange: new ParkFitAgeRange(15, 15)),
+            malformed,
+            BuildAccompaniedHeightCondition(100));
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ConditionDefinitionUnusable);
+    }
+
+    [Fact]
     public void Evaluate_WhenAgeBandCrossesAccompaniedThresholdButEveryPathFails_ShouldReject()
     {
         AttractionCompatibility result = this.Evaluate(
@@ -614,6 +636,21 @@ public sealed class AttractionCompatibilityEvaluatorTests
         Assert.Contains(
             result.Reasons,
             reason => reason.Code == AttractionCompatibilityReasonCode.ConflictingConditions);
+    }
+
+    [Fact]
+    public void Evaluate_WhenOnlyViableHeightPathRequiresUnavailableCompanion_ShouldReject()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(canBeAccompanied: false),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 150),
+            BuildAccompaniedHeightCondition(100),
+            BuildHeightCondition(AttractionAccessConditionType.MaxHeight, 120));
+
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.AccompanimentUnavailable);
     }
 
     [Theory]
@@ -1305,6 +1342,35 @@ public sealed class AttractionCompatibilityEvaluatorTests
         Assert.Equal(
             first.Reasons.Select(SerializeReason),
             second.Reasons.Select(SerializeReason));
+    }
+
+    [Fact]
+    public void Evaluate_FuzzyHeightThresholdConflict_ShouldBeInvariantToConditionOrder()
+    {
+        ParkFitMemberProfile profile = new ParkFitMemberProfile(heightCentimeters: 101);
+        AttractionAccessCondition lower = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            100.994);
+        AttractionAccessCondition middle = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            101.000);
+        AttractionAccessCondition upper = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            101.006);
+
+        AttractionCompatibility first = this.Evaluate(profile, middle, lower, upper);
+        AttractionCompatibility second = this.Evaluate(profile, lower, upper, middle);
+        AttractionCompatibility third = this.Evaluate(profile, upper, middle, lower);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, first.State);
+        Assert.Equal(first.State, second.State);
+        Assert.Equal(first.State, third.State);
+        Assert.Equal(
+            first.Reasons.Select(SerializeReason),
+            second.Reasons.Select(SerializeReason));
+        Assert.Equal(
+            first.Reasons.Select(SerializeReason),
+            third.Reasons.Select(SerializeReason));
     }
 
     [Fact]

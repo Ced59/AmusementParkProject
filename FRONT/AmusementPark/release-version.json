@@ -1,6 +1,20 @@
 {
-  "version": "5.3.18",
+  "version": "5.3.19",
   "history": [
+    {
+      "version": "5.3.19",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Le moteur de comparaison reste fiable face aux conditions d’accès ambiguës.",
+        "en": "The comparison engine remains reliable when access conditions are ambiguous.",
+        "de": "Die Vergleichsfunktion bleibt auch bei mehrdeutigen Zugangsbedingungen zuverlässig.",
+        "nl": "De vergelijkingsfunctie blijft betrouwbaar bij onduidelijke toegangsvoorwaarden.",
+        "it": "Il motore di confronto resta affidabile anche con condizioni di accesso ambigue.",
+        "es": "El motor de comparación sigue siendo fiable ante condiciones de acceso ambiguas.",
+        "pl": "Mechanizm porównywania pozostaje wiarygodny także przy niejednoznacznych warunkach dostępu.",
+        "pt": "O motor de comparação mantém-se fiável perante condições de acesso ambíguas."
+      }
+    },
     {
       "version": "5.3.18",
       "releasedAt": "2026-09-14",
