@@ -7105,14 +7105,16 @@
     "title": "Mapa público do site",
     "subtitle": "Encontra parques, mapas interativos, guias técnicos e páginas públicas de referência no idioma atual.",
     "treeTitle": "Páginas públicas",
-    "treeSubtitle": "A árvore segue as mesmas rotas públicas que as páginas visíveis do site.",
+    "treeSubtitle": "Abre uma secção para explorar as suas páginas e descobrir os detalhes de cada parque.",
     "loading": "A carregar o mapa do site",
     "error": "Não foi possível carregar o mapa do site.",
     "empty": "Ainda não há nenhuma página pública disponível.",
     "childrenLoading": "A carregar",
     "childrenError": "Não foi possível carregar este ramo.",
     "expand": "Abrir {{label}}",
-    "collapse": "Fechar {{label}}"
+    "collapse": "Fechar {{label}}",
+    "browse": "Páginas de {{label}}",
+    "page": "Página {{page}} de {{total}}"
   },
   "technicalPages": {
     "list": {

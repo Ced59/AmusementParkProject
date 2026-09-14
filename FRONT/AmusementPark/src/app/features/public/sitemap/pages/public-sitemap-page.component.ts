@@ -1,18 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { skip } from 'rxjs/operators';
 
-import { PublicHtmlSitemapNode } from '@app/models/seo/public-html-sitemap-node';
 import { TranslationService } from '@app/services/translation.service';
-import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
 import { SeoService } from '@core/seo/seo.service';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
 import { UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSitemapStateFacade } from '../state/public-sitemap-state.facade';
-import { PublicSitemapLoadOptions, resolvePublicSitemapLoadOptions } from './public-sitemap-load-options';
+import { PublicSitemapLocation, buildPublicSitemapQuery, resolvePublicSitemapLocation } from '../state/public-sitemap-location';
 
 @Component({
   selector: 'app-public-sitemap-page',
@@ -20,74 +18,58 @@ import { PublicSitemapLoadOptions, resolvePublicSitemapLoadOptions } from './pub
   styleUrls: ['./public-sitemap-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PublicSitemapStateFacade],
-  imports: [
-    CommonModule,
-    RouterLink,
-    TranslateModule,
-    UiKickerComponent,
-    UiSurfaceDirective
-  ]
+  imports: [CommonModule, RouterLink, TranslateModule, UiKickerComponent, UiSurfaceDirective]
 })
 export class PublicSitemapPageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');
-  protected readonly rootNodes: Signal<PublicHtmlSitemapNode[]> = this.stateFacade.rootNodes;
-  protected readonly loading: Signal<boolean> = this.stateFacade.loading;
-  protected readonly errorKey: Signal<string | null> = this.stateFacade.errorKey;
+  protected readonly nodes = this.stateFacade.nodes;
+  protected readonly breadcrumbs = this.stateFacade.breadcrumbs;
+  protected readonly loading = this.stateFacade.loading;
+  protected readonly errorKey = this.stateFacade.errorKey;
+  protected readonly page = this.stateFacade.page;
+  protected readonly pageCount = this.stateFacade.pageCount;
+  private readonly location = signal<PublicSitemapLocation>({ nodeIds: [], page: 1, isValid: true });
+  protected readonly previousQueryParams = computed(() => buildPublicSitemapQuery(this.location().nodeIds, this.page() - 1));
+  protected readonly nextQueryParams = computed(() => buildPublicSitemapQuery(this.location().nodeIds, this.page() + 1));
   private activeLanguage: string | null = null;
+  private snapshotLanguageResetPending = false;
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly seoService: SeoService,
-    private readonly ssrRuntimeService: SsrRuntimeService,
     private readonly stateFacade: PublicSitemapStateFacade,
     private readonly destroyRef: DestroyRef
   ) {
   }
 
   ngOnInit(): void {
-    const initialLanguage: string = resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en');
-    this.applyLanguage(initialLanguage);
+    this.location.set(resolvePublicSitemapLocation(this.route.snapshot.queryParamMap));
+    this.applyLanguage(resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en'));
     this.watchRouteLanguageChanges();
 
+    this.route.queryParamMap.pipe(skip(1), takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap): void => {
+      this.location.set(resolvePublicSitemapLocation(params));
+      this.loadPage();
+    });
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string): void => {
       this.applyLanguage(language);
     });
   }
 
-  protected toggleNode(node: PublicHtmlSitemapNode): void {
-    this.stateFacade.toggleNode(node);
-  }
-
-  protected childrenFor(nodeId: string): PublicHtmlSitemapNode[] {
-    return this.stateFacade.childrenFor(nodeId);
-  }
-
-  protected isExpanded(nodeId: string): boolean {
-    return this.stateFacade.isExpanded(nodeId);
-  }
-
-  protected isNodeLoading(nodeId: string): boolean {
-    return this.stateFacade.isNodeLoading(nodeId);
-  }
-
-  protected hasNodeError(nodeId: string): boolean {
-    return this.stateFacade.hasNodeError(nodeId);
-  }
-
-  protected trackNode(_: number, node: PublicHtmlSitemapNode): string {
-    return node.id;
-  }
-
   private watchRouteLanguageChanges(): void {
     const languageRoute: ActivatedRoute | null = findNearestLanguageActivatedRoute(this.route);
-
-    languageRoute?.paramMap.pipe(
-      skip(1),
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe((params: ParamMap): void => {
+    languageRoute?.paramMap.pipe(skip(1), takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap): void => {
       this.applyLanguage(resolveLanguageFromParamMap(params, this.currentLang()));
+      if (this.snapshotLanguageResetPending) {
+        this.snapshotLanguageResetPending = false;
+        void this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: buildPublicSitemapQuery(this.location().nodeIds),
+          replaceUrl: true
+        });
+      }
     });
   }
 
@@ -96,10 +78,19 @@ export class PublicSitemapPageComponent implements OnInit {
       return;
     }
 
+    if (this.activeLanguage !== null && this.location().isValid && this.location().nodeIds[0] === 'snapshot-sections') {
+      this.location.set({ nodeIds: ['snapshot-sections'], page: 1, isValid: true });
+      // The header emits its language change before navigating to the localized URL.
+      this.snapshotLanguageResetPending = true;
+    }
+
     this.activeLanguage = language;
     this.currentLang.set(language);
+    this.loadPage();
+  }
+
+  private loadPage(): void {
     this.seoService.applyRouteDefaults(this.router.url);
-    const loadOptions: PublicSitemapLoadOptions = resolvePublicSitemapLoadOptions(this.ssrRuntimeService.isServerSideRender());
-    this.stateFacade.loadRoot(language, loadOptions.includeDescendants, loadOptions.loadDescendantsInInitialRequest);
+    this.stateFacade.loadPage(this.currentLang(), this.location());
   }
 }

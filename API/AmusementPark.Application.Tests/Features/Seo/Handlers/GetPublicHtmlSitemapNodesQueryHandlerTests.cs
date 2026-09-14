@@ -45,6 +45,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         Assert.Contains(result.Value, static node => node.Id == "sitemap" && node.RelativeUrl == "/fr/sitemap");
         Assert.Contains(result.Value, static node => node.Id == "parks" && node.RelativeUrl == "/fr/parks" && node.HasChildren);
         Assert.Contains(result.Value, static node => node.Id == "technical" && node.RelativeUrl == "/fr/technical" && node.HasChildren);
+        Assert.Contains(result.Value, static node => node.Id == "snapshot-sections" && node.Label == "Toutes les pages" && node.HasChildren);
         Assert.Contains(result.Value, static node => node.Id == "rating-methodology" && node.Label == "Méthodologie des classements" && node.RelativeUrl == "/fr/rankings/methodology");
         Assert.DoesNotContain(result.Value, static node => node.Id.Contains("admin", StringComparison.OrdinalIgnoreCase));
         Assert.DoesNotContain(result.Value, static node => node.RelativeUrl?.Contains("/login", StringComparison.OrdinalIgnoreCase) == true);
@@ -327,6 +328,177 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         videoRepository.VerifyAll();
         historyRepository.VerifyAll();
         pricingRepository.VerifyNoOtherCalls();
+    }
+
+    [Theory]
+    [InlineData("fr", "Attractions indépendantes", "Histoire · Partie 2")]
+    [InlineData("en", "Standalone attractions", "History · Part 2")]
+    [InlineData("es", "Atracciones independientes", "Historia · Parte 2")]
+    [InlineData("de", "Eigenständige Attraktionen", "Geschichte · Teil 2")]
+    [InlineData("it", "Attrazioni indipendenti", "Storia · Parte 2")]
+    [InlineData("nl", "Zelfstandige attracties", "Geschiedenis · Deel 2")]
+    [InlineData("pl", "Samodzielne atrakcje", "Historia · Część 2")]
+    [InlineData("pt", "Atrações independentes", "História · Parte 2")]
+    public async Task HandleAsync_WhenBrowsingSnapshotSections_ShouldReadOnlyCurrentLanguageMetadata(
+        string language, string attractionLabel, string historyLabel)
+    {
+        string otherLanguage = language == "fr" ? "en" : "fr";
+        SitemapSnapshot snapshot = new SitemapSnapshot
+        {
+            Sections = new[]
+            {
+                new SitemapSectionStats($"standalone-attractions-{language}", "unused.xml", "Internal name", 2, null),
+                new SitemapSectionStats($"history-{language}-2", "unused.xml", "Internal name", 1000, null),
+                new SitemapSectionStats($"parks-{otherLanguage}", "unused.xml", "Foreign language", 3, null),
+                new SitemapSectionStats($"static-{language}", "unused.xml", "Empty", 0, null),
+                new SitemapSectionStats($"park-items-{language}", "unused.xml", "Unbounded", 1001, null),
+            },
+        };
+        Mock<ISeoSitemapSnapshotRepository> repository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetLatestAsync(It.IsAny<CancellationToken>())).ReturnsAsync(snapshot);
+
+        ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await CreateHandler(repository).HandleAsync(
+            new GetPublicHtmlSitemapNodesQuery(language, "snapshot-sections", new[] { language, otherLanguage }), CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Equal(2, result.Value.Count);
+        Assert.Contains(result.Value, node => node.Id == $"sitemap-section:standalone-attractions-{language}" && node.Label == attractionLabel);
+        Assert.Contains(result.Value, node => node.Id == $"sitemap-section:history-{language}-2" && node.Label == historyLabel);
+        Assert.All(result.Value, static node => { Assert.True(node.HasChildren); Assert.Null(node.Children); });
+        repository.Verify(value => value.GetSectionXmlAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+        repository.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData("standalone-attractions-fr", "/fr/attraction/72f8d4e5-099d-4c76-afb3-5cd6e2d2f149/grande-roue", "Grande roue")]
+    [InlineData("history-fr-2", "/fr/attraction/72f8d4e5-099d-4c76-afb3-5cd6e2d2f149/grande-roue/history", "Grande roue · Histoire")]
+    [InlineData("history-articles-fr", "/fr/attraction/72f8d4e5-099d-4c76-afb3-5cd6e2d2f149/grande-roue/history/67df0fa2-aadb-4e0d-805b-c18100519998/un-grand-changement", "Un grand changement")]
+    [InlineData("standalone-attractions-fr", "/fr/attraction/72f8d4e5-099d-4c76-afb3-5cd6e2d2f149/history", "History")]
+    public async Task HandleAsync_WhenBrowsingOneSnapshotSection_ShouldPreservePreviouslyEmbeddedLinks(
+        string sectionKey, string relativeUrl, string label)
+    {
+        SitemapSnapshot snapshot = new SitemapSnapshot
+        {
+            Sections = new[] { new SitemapSectionStats(sectionKey, $"{sectionKey}.xml", "Internal", 3, null) },
+        };
+        Mock<ISeoSitemapSnapshotRepository> repository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetLatestAsync(It.IsAny<CancellationToken>())).ReturnsAsync(snapshot);
+        repository.Setup(value => value.GetSectionXmlAsync(sectionKey, It.IsAny<CancellationToken>())).ReturnsAsync($"""
+            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+              <url><loc>https://amusement-parks.fun{relativeUrl}</loc></url>
+              <url><loc>https://amusement-parks.fun{relativeUrl}</loc></url>
+              <url><loc>https://amusement-parks.fun/en/attraction/other/another-wheel</loc></url>
+            </urlset>
+            """);
+
+        ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await CreateHandler(repository).HandleAsync(
+            new GetPublicHtmlSitemapNodesQuery("fr", $"sitemap-section:{sectionKey}", new[] { "fr", "en" }), CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        PublicHtmlSitemapNode node = Assert.Single(result.Value!);
+        Assert.Equal(relativeUrl, node.RelativeUrl);
+        Assert.Equal(label, node.Label);
+        Assert.False(node.HasChildren);
+        Assert.DoesNotContain("72f8d4e5", node.Label, StringComparison.Ordinal);
+        repository.Verify(value => value.GetSectionXmlAsync(sectionKey, It.IsAny<CancellationToken>()), Times.Once);
+        repository.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData("sitemap-section:missing-fr")]
+    [InlineData("sitemap-section:parks-en")]
+    [InlineData("sitemap-section:parks-fr")]
+    [InlineData("sitemap-section:../sitemap.xml")]
+    public async Task HandleAsync_WhenSnapshotSectionIsUnlistedForeignOrUnbounded_ShouldNotReadXml(string parentNodeId)
+    {
+        SitemapSnapshot snapshot = new SitemapSnapshot
+        {
+            Sections = new[]
+            {
+                new SitemapSectionStats("parks-en", "parks-en.xml", "Parks", 2, null),
+                new SitemapSectionStats("parks-fr", "parks-fr.xml", "Parcs", 1001, null),
+            },
+        };
+        Mock<ISeoSitemapSnapshotRepository> repository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetLatestAsync(It.IsAny<CancellationToken>())).ReturnsAsync(snapshot);
+
+        ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await CreateHandler(repository).HandleAsync(
+            new GetPublicHtmlSitemapNodesQuery("fr", parentNodeId, new[] { "fr", "en" }), CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Type == ApplicationErrorType.NotFound);
+        repository.Verify(value => value.GetSectionXmlAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+        repository.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("<urlset>")]
+    public async Task HandleAsync_WhenSelectedSnapshotXmlIsUnavailable_ShouldReportTemporaryFailure(string? xml)
+    {
+        SitemapSnapshot snapshot = new SitemapSnapshot
+        {
+            Sections = new[] { new SitemapSectionStats("parks-fr", "parks-fr.xml", "Parcs", 2, null) },
+        };
+        Mock<ISeoSitemapSnapshotRepository> repository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetLatestAsync(It.IsAny<CancellationToken>())).ReturnsAsync(snapshot);
+        repository.Setup(value => value.GetSectionXmlAsync("parks-fr", It.IsAny<CancellationToken>())).ReturnsAsync(xml);
+
+        ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await CreateHandler(repository).HandleAsync(
+            new GetPublicHtmlSitemapNodesQuery("fr", "sitemap-section:parks-fr", new[] { "fr", "en" }), CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Type == ApplicationErrorType.Technical);
+        repository.VerifyAll();
+    }
+
+    [Theory]
+    [InlineData(1000, true)]
+    [InlineData(1001, false)]
+    public async Task HandleAsync_WhenSelectedSnapshotContainsManyLinks_ShouldEnforceSectionBound(int count, bool isSuccess)
+    {
+        SitemapSnapshot snapshot = new SitemapSnapshot
+        {
+            Sections = new[] { new SitemapSectionStats("standalone-attractions-fr", "unused.xml", "Internal", 1000, null) },
+        };
+        string entries = string.Concat(Enumerable.Range(1, count).Select(index =>
+            $"<url><loc>https://amusement-parks.fun/fr/attraction/attraction-{index}/grande-roue-{index}</loc></url>"));
+        string xml = $"<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">{entries}</urlset>";
+        Mock<ISeoSitemapSnapshotRepository> repository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetLatestAsync(It.IsAny<CancellationToken>())).ReturnsAsync(snapshot);
+        repository.Setup(value => value.GetSectionXmlAsync("standalone-attractions-fr", It.IsAny<CancellationToken>())).ReturnsAsync(xml);
+
+        ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await CreateHandler(repository).HandleAsync(
+            new GetPublicHtmlSitemapNodesQuery("fr", "sitemap-section:standalone-attractions-fr", new[] { "fr", "en" }), CancellationToken.None);
+
+        Assert.Equal(isSuccess, result.IsSuccess);
+        if (isSuccess)
+        {
+            Assert.Equal(count, result.Value!.Count);
+        }
+        else
+        {
+            Assert.Contains(result.Errors, static error => error.Type == ApplicationErrorType.Technical);
+        }
+
+        repository.Verify(value => value.GetSectionXmlAsync("standalone-attractions-fr", It.IsAny<CancellationToken>()), Times.Once);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenSnapshotMetadataIsUnavailable_ShouldReportTemporaryFailure()
+    {
+        Mock<ISeoSitemapSnapshotRepository> repository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetLatestAsync(It.IsAny<CancellationToken>())).ReturnsAsync((SitemapSnapshot?)null);
+
+        ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await CreateHandler(repository).HandleAsync(
+            new GetPublicHtmlSitemapNodesQuery("fr", "snapshot-sections", new[] { "fr", "en" }), CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Type == ApplicationErrorType.Technical);
+        repository.Verify(value => value.GetSectionXmlAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+        repository.VerifyAll();
     }
 
     private static GetPublicHtmlSitemapNodesQueryHandler CreateHandler(Mock<ISeoSitemapSnapshotRepository>? sitemapSnapshotRepository = null)
