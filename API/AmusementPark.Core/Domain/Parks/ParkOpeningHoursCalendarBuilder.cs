@@ -24,12 +24,17 @@ public sealed class ParkOpeningHoursCalendarBuilder
         }
 
         List<ParkOpeningHoursDay> days = new List<ParkOpeningHoursDay>();
-        for (DateOnly date = effectiveFromDate; date <= effectiveToDate; date = date.AddDays(1))
+        for (DateOnly date = effectiveFromDate; ; date = date.AddDays(1))
         {
             ParkOpeningHoursDay? day = ResolveDay(schedule, date);
             if (day is not null)
             {
                 days.Add(day);
+            }
+
+            if (date == effectiveToDate)
+            {
+                break;
             }
         }
 

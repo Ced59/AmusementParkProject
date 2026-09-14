@@ -33,6 +33,26 @@ public sealed class ParkFitDataQualityAssessorTests
     }
 
     [Fact]
+    public void Assess_WhenApplicabilityDateIsProvided_ShouldAuditThatRequestedDate()
+    {
+        DateOnly requestedDate = new DateOnly(2026, 10, 1);
+        AttractionAccessCondition condition = BuildCondition();
+        condition.EffectiveFrom = requestedDate;
+        condition.EffectiveTo = requestedDate;
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { BuildAttraction(condition) },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365),
+            applicabilityDate: requestedDate);
+
+        Assert.Equal(ParkFitDataQualityStatus.EligibleForFitComparison, result.Status);
+        Assert.Equal(1, result.DecisionEligibleConditionCount);
+    }
+
+    [Fact]
     public void Assess_WhenAttractionHasNoConditions_ShouldExposeActionableMissingData()
     {
         Park park = BuildDiscoverablePark();

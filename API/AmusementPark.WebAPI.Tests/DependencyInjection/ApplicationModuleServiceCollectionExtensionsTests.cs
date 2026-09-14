@@ -9,8 +9,11 @@ using AmusementPark.Application.Features.Comments.Results;
 using AmusementPark.Application.Features.Contact.Commands;
 using AmusementPark.Application.Features.Contact.Contracts;
 using AmusementPark.Application.Features.Contact.Queries;
+using AmusementPark.Application.Features.ParkFit.Handlers;
 using AmusementPark.Application.Features.ParkFit.Queries;
+using AmusementPark.Application.Features.ParkFit.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.Passport.Commands;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
@@ -70,6 +73,7 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpdateTechnicalStatsSettingsCommand, ApplicationResult<TechnicalStatsSettings>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetParkPricingQuery, ApplicationResult<AmusementPark.Core.Domain.Parks.ParkPricing>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetParkFitDataQualityPageQuery, ApplicationResult<PagedResult<ParkFitDataQualityAssessment>>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<SearchParksByFitQuery, ApplicationResult<ParkFitSearchResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpsertParkPricingCommand, ApplicationResult<AmusementPark.Core.Domain.Parks.ParkPricing>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>));
@@ -109,5 +113,25 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.IsType<CreateCommentCommandHandler>(createHandler);
         Assert.IsType<GetCommentSummaryQueryHandler>(summaryHandler);
         Assert.IsType<GetCommentThreadQueryHandler>(threadHandler);
+    }
+
+    [Fact]
+    public void AddApplicationModules_WhenCalled_ShouldResolveAnonymousParkFitSearch()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+        services.AddApplicationModules(configuration);
+        services.AddSingleton(Mock.Of<IParkRepository>());
+        services.AddSingleton(Mock.Of<IParkItemRepository>());
+        services.AddSingleton(Mock.Of<IParkOpeningHoursRepository>());
+
+        using ServiceProvider serviceProvider = services.BuildServiceProvider();
+
+        IQueryHandler<SearchParksByFitQuery, ApplicationResult<ParkFitSearchResult>> handler =
+            serviceProvider.GetRequiredService<IQueryHandler<
+                SearchParksByFitQuery,
+                ApplicationResult<ParkFitSearchResult>>>();
+
+        Assert.IsType<SearchParksByFitQueryHandler>(handler);
     }
 }

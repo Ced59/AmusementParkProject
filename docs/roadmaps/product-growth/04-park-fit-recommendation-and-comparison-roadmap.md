@@ -113,8 +113,33 @@ sa couverture. La formule, les diagrammes et 72 scénarios
 métier sont documentés dans
 [`product-growth-fit-06-versioned-subscores-2026-09-14.md`](../../architecture/product-growth-fit-06-versioned-subscores-2026-09-14.md).
 
-`FIT-07` est le prochain jalon : il exposera ce moteur dans une API de recherche
-anonyme, bornée et non persistante, avec un contrat minimal et explicable.
+### État de `FIT-07` au 14 septembre 2026
+
+La WebAPI expose désormais `POST /api/public/park-fit/search` sans imposer de
+compte. Le client transmet une date, un à huit profils strictement structurés, des
+types d'attractions préférés, une préférence intérieure facultative et au plus un
+pays. Aucun nom, alias, texte libre, origine précise ou identifiant utilisateur
+n'entre dans le contrat HTTP ; des clés éphémères sont générées uniquement pendant
+le calcul et rien n'est persisté.
+
+L'Application réutilise les gates et évaluateurs `FIT-03` à `FIT-06`. Elle inspecte
+au plus 200 parcs publics en une page, charge les attractions et les synthèses de
+calendrier par lots, puis ne charge le calendrier complet que pour les candidats
+ayant franchi la qualité. La réponse est limitée à 20 parcs et rend visibles la
+méthode, la date, le score comparatif facultatif, ses composantes, la confiance,
+les inconnues, les causes de rejet agrégées, la fraîcheur et les preuves critiques
+localisées. Une fermeture connue exclut le parc ; une absence ne devient jamais
+une ouverture.
+
+L'endpoint est `no-store` et protégé par une fenêtre IP configurable, à six
+recherches par minute par défaut. Aucune collection, migration ou écriture MongoDB
+n'est ajoutée. L'architecture, le contrat, les diagrammes et les preuves sont
+documentés dans
+[`product-growth-fit-07-anonymous-search-api-2026-09-14.md`](../../architecture/product-growth-fit-07-anonymous-search-api-2026-09-14.md).
+
+`FIT-08` est le prochain jalon : il donnera accès à cette recherche dans un
+formulaire Web mobile-first, utilisable sans compte et sans exposer les critères
+privés dans l'URL ou le HTML public.
 
 ## 1. Vision produit
 

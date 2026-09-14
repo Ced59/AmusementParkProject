@@ -23,4 +23,5 @@ public static class RateLimitPolicyNames
     public const string ShareModerationReports = "share-moderation-reports";
     public const string ShareModerationAdministration = "share-moderation-administration";
     public const string ShareSocialImageRendering = "share-social-image-rendering";
+    public const string ParkFitSearch = "park-fit-search";
 }
