@@ -81,6 +81,8 @@ public sealed class ParkFitSearchHttpMapperTests
             InspectedCandidateCount = 3,
             QualityEligibleCandidateCount = 1,
             QualityRejectedCandidateCount = 2,
+            OperationallySuspendedCandidateCount = 4,
+            NotActivatedCandidateCount = 5,
             QualityStatusCounts = new Dictionary<ParkFitDataQualityStatus, int>
             {
                 [ParkFitDataQualityStatus.EligibleForFitComparison] = 1,
@@ -122,6 +124,8 @@ public sealed class ParkFitSearchHttpMapperTests
         ParkFitSearchResponseDto dto = result.ToHttp();
 
         Assert.Equal(2, dto.QualityIssueCounts["MissingAccessConditions"]);
+        Assert.Equal(4, dto.OperationallySuspendedCandidateCount);
+        Assert.Equal(5, dto.NotActivatedCandidateCount);
         ParkFitSearchParkDto parkDto = Assert.Single(dto.Parks);
         Assert.Equal("Parc des preuves", parkDto.ParkName);
         Assert.Equal("Available", parkDto.ScoreState);

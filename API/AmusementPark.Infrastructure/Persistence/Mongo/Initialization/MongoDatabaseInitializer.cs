@@ -789,7 +789,6 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.ParksCollectionName, cancellationToken);
         await this.InitializeParksIndexesAsync(cancellationToken);
-
         await this.EnsureCollectionExistsAsync(this.settings.ParkOpeningHoursCollectionName, cancellationToken);
         await this.InitializeParkOpeningHoursIndexesAsync(cancellationToken);
 

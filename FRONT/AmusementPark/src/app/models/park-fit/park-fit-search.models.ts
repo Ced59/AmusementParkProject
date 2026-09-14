@@ -129,6 +129,7 @@ export interface ParkFitSearchResponse {
   qualityEligibleCandidateCount: number;
   qualityRejectedCandidateCount: number;
   operationallySuspendedCandidateCount: number;
+  notActivatedCandidateCount: number;
   candidatePoolTruncated: boolean;
   qualityStatusCounts: Record<string, number>;
   qualityIssueCounts: Record<string, number>;

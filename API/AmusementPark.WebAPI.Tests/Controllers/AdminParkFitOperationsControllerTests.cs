@@ -141,6 +141,35 @@ public sealed class AdminParkFitOperationsControllerTests
     }
 
     [Fact]
+    public async Task ChangeOperationalStatusAsync_ShouldAcceptPortfolioDeactivation()
+    {
+        Mock<ICommandHandler<ChangeParkFitOperationalStatusCommand, ApplicationResult>> handler =
+            new Mock<ICommandHandler<ChangeParkFitOperationalStatusCommand, ApplicationResult>>(
+                MockBehavior.Strict);
+        handler.Setup(value => value.HandleAsync(
+                It.Is<ChangeParkFitOperationalStatusCommand>(command =>
+                    command.TargetState == ParkFitRecommendationState.NotActivated
+                    && command.Reason == "Retrait du portefeuille"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult.Success());
+        AdminParkFitOperationsController controller = CreateController(statusHandler: handler.Object);
+        SetAuthenticatedUser(controller, "admin-1");
+
+        IActionResult response = await controller.ChangeOperationalStatusAsync(
+            "park-1",
+            new ChangeParkFitOperationalStatusRequestDto
+            {
+                TargetState = "NotActivated",
+                Reason = "Retrait du portefeuille",
+                ExpectedRevision = 2,
+            },
+            CancellationToken.None);
+
+        Assert.IsType<NoContentResult>(response);
+        handler.VerifyAll();
+    }
+
+    [Fact]
     public void Controller_ShouldBeAdminOnlyNoStoreRateLimitedAndAudited()
     {
         AuthorizeAttribute authorization = Assert.Single(

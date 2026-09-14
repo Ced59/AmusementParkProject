@@ -2,6 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkFit.Commands;
 using AmusementPark.Application.Features.ParkFit.Ports;
+using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.ParkFit;
 using AmusementPark.Core.Domain.Parks;
@@ -12,17 +14,26 @@ public sealed class ChangeParkFitOperationalStatusCommandHandler
     : ICommandHandler<ChangeParkFitOperationalStatusCommand, ApplicationResult>
 {
     private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
+    private readonly IParkOpeningHoursRepository openingHoursRepository;
     private readonly IParkFitOperationalStatusRepository statusRepository;
     private readonly TimeProvider timeProvider;
+    private readonly ParkFitDataQualityAssessor qualityAssessor;
 
     public ChangeParkFitOperationalStatusCommandHandler(
         IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository,
+        IParkOpeningHoursRepository openingHoursRepository,
         IParkFitOperationalStatusRepository statusRepository,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        ParkFitDataQualityAssessor? qualityAssessor = null)
     {
         this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
+        this.openingHoursRepository = openingHoursRepository;
         this.statusRepository = statusRepository;
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.qualityAssessor = qualityAssessor ?? new ParkFitDataQualityAssessor();
     }
 
     public async Task<ApplicationResult> HandleAsync(
@@ -52,13 +63,45 @@ public sealed class ChangeParkFitOperationalStatusCommandHandler
 
         ParkFitOperationalStatus status = await this.statusRepository.GetAsync(
             parkId,
-            cancellationToken) ?? ParkFitOperationalStatus.CreateActive(parkId);
+            cancellationToken) ?? ParkFitOperationalStatus.CreateNotActivated(parkId);
         if (status.Revision != command.ExpectedRevision)
         {
             return ApplicationResult.Failure(ParkFitOperationsApplicationErrors.Conflict());
         }
 
+        if (command.TargetState == ParkFitRecommendationState.Active
+            && status.State != ParkFitRecommendationState.Suspended)
+        {
+            return ApplicationResult.Failure(ParkFitOperationsApplicationErrors.InvalidTransition());
+        }
+
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        if (command.TargetState == ParkFitRecommendationState.Active)
+        {
+            Task<IReadOnlyCollection<ParkItem>> itemsTask =
+                this.parkItemRepository.GetVisibleOpenAttractionsByParkIdsAsync(
+                    new[] { parkId },
+                    cancellationToken);
+            Task<IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary>> summaryTask =
+                this.openingHoursRepository.GetSummariesByParkIdsAsync(
+                    new[] { parkId },
+                    cancellationToken);
+            await Task.WhenAll(itemsTask, summaryTask);
+            IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary> summaries =
+                await summaryTask;
+            ParkFitDataQualityAssessment assessment = this.qualityAssessor.Assess(
+                park,
+                await itemsTask,
+                summaries.GetValueOrDefault(parkId),
+                nowUtc,
+                ParkFitSearchLimits.MaximumVerificationAge);
+            if (assessment.Status != ParkFitDataQualityStatus.EligibleForFitComparison)
+            {
+                return ApplicationResult.Failure(
+                    ParkFitOperationsApplicationErrors.ActivationQualityRequired());
+            }
+        }
+
         DateTime decidedAtUtc = status.UpdatedAtUtc.HasValue && nowUtc < status.UpdatedAtUtc.Value
             ? status.UpdatedAtUtc.Value
             : nowUtc;

@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  signal
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -16,33 +23,88 @@ import { AdminParkFitDataQualityFacade } from '../../state/admin-park-fit-data-q
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule, TranslateModule, ButtonDirective]
 })
-export class AdminParkFitOperationalControlsComponent {
+export class AdminParkFitOperationalControlsComponent implements OnChanges {
   @Input({ required: true }) public park!: ParkFitDataQuality;
 
-  protected readonly expanded = signal<boolean>(false);
+  protected readonly selectedTarget = signal<ParkFitRecommendationState | null>(null);
   protected readonly reason = new FormControl<string>('', { nonNullable: true });
 
   constructor(private readonly facade: AdminParkFitDataQualityFacade) {
   }
 
-  protected get targetState(): ParkFitRecommendationState {
-    return this.park.recommendationState === 'Active' ? 'Suspended' : 'Active';
+  public ngOnChanges(changes: SimpleChanges): void {
+    const parkChange = changes['park'];
+    const previousPark: ParkFitDataQuality | undefined = parkChange?.previousValue;
+    const currentPark: ParkFitDataQuality | undefined = parkChange?.currentValue;
+    if (previousPark === undefined || currentPark === undefined) {
+      return;
+    }
+
+    if (
+      previousPark.recommendationState !== currentPark.recommendationState ||
+      previousPark.operationalRevision !== currentPark.operationalRevision ||
+      previousPark.status !== currentPark.status
+    ) {
+      this.cancel();
+    }
+  }
+
+  protected get activationAllowed(): boolean {
+    return this.park.status === 'EligibleForFitComparison';
+  }
+
+  protected get stateIcon(): string {
+    if (this.park.recommendationState === 'Active') {
+      return 'pi pi-check-circle';
+    }
+
+    return this.park.recommendationState === 'Suspended'
+      ? 'pi pi-pause-circle'
+      : 'pi pi-circle';
+  }
+
+  protected get confirmationSeverity(): 'success' | 'warning' | 'danger' {
+    const targetState: ParkFitRecommendationState | null = this.selectedTarget();
+    if (targetState === 'Active') {
+      return 'success';
+    }
+
+    return targetState === 'Suspended' ? 'warning' : 'danger';
   }
 
   protected get processing(): boolean {
     return this.facade.isProcessing(`park:${this.park.parkId}`);
   }
 
-  protected toggle(): void {
-    this.expanded.update((value: boolean): boolean => !value);
+  protected open(targetState: ParkFitRecommendationState): void {
+    this.reason.setValue('');
+    this.selectedTarget.set(targetState);
+  }
+
+  protected cancel(): void {
+    this.selectedTarget.set(null);
+    this.reason.setValue('');
+  }
+
+  protected actionKey(targetState: ParkFitRecommendationState): string {
+    if (targetState === 'Suspended') {
+      return 'Suspend';
+    }
+
+    return 'Restore';
   }
 
   protected confirm(): void {
     const reason: string = this.reason.value.trim();
-    if (reason.length === 0) {
+    const targetState: ParkFitRecommendationState | null = this.selectedTarget();
+    if (
+      reason.length === 0 ||
+      targetState === null ||
+      (targetState === 'Active' && !this.activationAllowed)
+    ) {
       return;
     }
 
-    this.facade.changeOperationalStatus(this.park, this.targetState, reason);
+    this.facade.changeOperationalStatus(this.park, targetState, reason);
   }
 }

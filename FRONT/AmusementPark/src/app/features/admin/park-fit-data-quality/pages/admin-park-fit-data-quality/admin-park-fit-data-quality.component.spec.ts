@@ -59,6 +59,25 @@ describe('AdminParkFitDataQualityComponent', () => {
       '/fr/admin/parks/edit/park-1/items/item-1'
     );
   });
+
+  it('does not expose activation writes during the compatible-reader rollout', () => {
+    const page: ParkFitDataQualityPage = createPage();
+    page.items[0].recommendationState = 'NotActivated';
+    port.getPage.mockReturnValue(of(page));
+    const fixture: ComponentFixture<AdminParkFitDataQualityComponent> =
+      TestBed.createComponent(AdminParkFitDataQualityComponent);
+
+    fixture.detectChanges();
+
+    const activationButton = fixture.debugElement.query(
+      By.css('.park-fit-operational-controls__actions button')
+    );
+    const inactiveState = fixture.debugElement.query(
+      By.css('.park-fit-operational-controls--inactive')
+    );
+    expect(activationButton).toBeNull();
+    expect(inactiveState).not.toBeNull();
+  });
 });
 
 function createPage(): ParkFitDataQualityPage {

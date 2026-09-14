@@ -21,14 +21,19 @@
   background: color-mix(in srgb, var(--app-danger) 7%, transparent);
 }
 
-.park-fit-operational-controls > div {
+.park-fit-operational-controls--inactive {
+  border-color: var(--app-border);
+  background: color-mix(in srgb, var(--app-surface-muted) 55%, transparent);
+}
+
+.park-fit-operational-controls__status {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 0.6rem;
   align-items: start;
 }
 
-.park-fit-operational-controls > div > div,
+.park-fit-operational-controls__status > div,
 .park-fit-operational-controls form,
 .park-fit-operational-controls label {
   display: grid;
@@ -52,7 +57,33 @@
   resize: vertical;
 }
 
-.park-fit-operational-controls > button,
+.park-fit-operational-controls__actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 0.6rem;
+}
+
+.park-fit-operational-controls__actions > button,
 .park-fit-operational-controls form > button {
   width: 100%;
+}
+
+.park-fit-operational-controls__quality-warning {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin: 0;
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 30rem) {
+  .park-fit-operational-controls {
+    padding: 0.7rem;
+  }
+
+  .park-fit-operational-controls__actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

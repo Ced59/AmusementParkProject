@@ -1997,24 +1997,38 @@
       "operations": {
         "state": {
           "Active": "Rekomendacje aktywne",
-          "Suspended": "Rekomendacje wstrzymane"
+          "Suspended": "Rekomendacje wstrzymane",
+          "NotActivated": "Nieaktywny w Park Fit"
         },
         "stateHelp": {
-          "Active": "Ten park może pojawiać się w Park Fit, jeśli jakość danych jest wystarczająca.",
-          "Suspended": "Park pozostaje publiczny, ale jest wykluczony z Park Fit."
+          "Active": "Ten park należy do Park Fit, dopóki jego dane pozostają odpowiednie.",
+          "Suspended": "Park pozostaje publiczny, ale jest tymczasowo wykluczony z Park Fit.",
+          "NotActivated": "Publikacja parku nie dodaje go automatycznie do Park Fit."
         },
         "action": {
-          "Active": "Przywróć w Park Fit",
-          "Suspended": "Wstrzymaj w Park Fit"
+          "Activate": "Aktywuj Park Fit",
+          "Restore": "Przywróć rekomendacje",
+          "Suspend": "Wstrzymaj tymczasowo",
+          "Deactivate": "Usuń z Park Fit"
         },
+        "confirmTitle": {
+          "Activate": "Aktywuj ten park",
+          "Restore": "Przywróć ten park",
+          "Suspend": "Wstrzymaj ten park",
+          "Deactivate": "Usuń ten park"
+        },
+        "qualityRequired": "Aktywacja będzie dostępna, gdy jakość danych osiągnie stan Gotowy do porównania.",
         "reasonLabel": "Wymagane uzasadnienie",
         "reasonPlaceholder": "Opisz potrzebną weryfikację lub poprawkę…",
         "confirm": "Potwierdź decyzję",
+        "cancel": "Anuluj",
         "saving": "Zapisywanie…",
         "history": "Ostatnie decyzje",
         "decision": {
           "Suspended": "Wstrzymano",
-          "Restored": "Przywrócono"
+          "Restored": "Przywrócono",
+          "Activated": "Aktywowano",
+          "Deactivated": "Usunięto"
         },
         "error": "Nie udało się zapisać decyzji. Odśwież dane i spróbuj ponownie."
       },

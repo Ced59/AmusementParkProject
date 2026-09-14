@@ -82,6 +82,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ParkOpeningHoursCoverageNotificationProcessor>();
         services.AddSingleton<ParkOpeningHoursCalendarBuilder>();
         services.AddSingleton<ParkFitSearchParkEvaluator>();
+        services.AddScoped<ParkFitCandidatePortfolioLoader>();
         services.AddScoped<ParkFitEvidenceSourceResolver>();
         services.AddScoped<ParkFitGroupProfileLifecycleService>();
         services.AddScoped<ParkWeatherRefreshStarter>();

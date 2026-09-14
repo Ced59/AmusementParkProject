@@ -182,7 +182,7 @@
                 <ul>
                   @for (decision of assessment.recentDecisions; track decision.revision) {
                     <li>
-                      <strong>{{ ('admin.parkFitDataQuality.operations.decision.' + decision.type) | translate }}</strong>
+                      <strong>{{ decisionLabelKey(decision.type) | translate }}</strong>
                       <span>{{ decision.decidedAtUtc | date:'short':'UTC' }} · {{ decision.reason }}</span>
                     </li>
                   }

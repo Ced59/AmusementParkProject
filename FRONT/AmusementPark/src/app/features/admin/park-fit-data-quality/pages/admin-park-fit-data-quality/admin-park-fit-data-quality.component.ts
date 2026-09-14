@@ -5,7 +5,8 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import {
   ParkFitDataQualityIssue,
-  ParkFitDataQualityStatus
+  ParkFitDataQualityStatus,
+  ParkFitOperationalDecision
 } from '@app/models/admin/park-fit/park-fit-data-quality.models';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { UiTemplate } from '@shared/ui/primitives/api';
@@ -75,6 +76,13 @@ export class AdminParkFitDataQualityComponent implements OnInit {
 
   protected issueLabelKey(issue: ParkFitDataQualityIssue): string {
     return `admin.parkFitDataQuality.issue.${issue}`;
+  }
+
+  protected decisionLabelKey(type: ParkFitOperationalDecision['type']): string {
+    const labelType: string = type === 'DeactivatedDuringSuspension'
+      ? 'Deactivated'
+      : type;
+    return `admin.parkFitDataQuality.operations.decision.${labelType}`;
   }
 
   protected statusSeverity(

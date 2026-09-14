@@ -32,6 +32,13 @@ public static class ParkFitOperationsApplicationErrors
             "The requested Park Fit transition is not allowed.");
     }
 
+    public static ApplicationError ActivationQualityRequired()
+    {
+        return ApplicationError.RuleViolation(
+            "park-fit.operations.activation-quality-required",
+            "The park must pass the Park Fit quality assessment before activation.");
+    }
+
     public static ApplicationError Conflict()
     {
         return ApplicationError.Conflict(

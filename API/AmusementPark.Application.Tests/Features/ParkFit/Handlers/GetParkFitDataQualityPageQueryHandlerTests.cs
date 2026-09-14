@@ -99,7 +99,7 @@ public sealed class GetParkFitDataQualityPageQueryHandlerTests
         Assert.Equal(1, assessment.IssueItemCount);
         Assert.Contains(ParkFitDataQualityIssue.MissingAccessConditions, assessment.Issues);
         Assert.Equal(2, operations.PendingReportCount);
-        Assert.Equal(ParkFitRecommendationState.Active, operations.RecommendationState);
+        Assert.Equal(ParkFitRecommendationState.NotActivated, operations.RecommendationState);
         parks.VerifyAll();
         items.VerifyAll();
         openingHours.VerifyAll();

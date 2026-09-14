@@ -26,7 +26,8 @@ public sealed class ParkFitOperationalStatus
             || normalizedDecisions.Any(static decision => decision is null)
             || normalizedDecisions.Count == 0
                 && (revision != 0
-                    || state != ParkFitRecommendationState.Active
+                    || state is not ParkFitRecommendationState.Active
+                        and not ParkFitRecommendationState.NotActivated
                     || updatedAtUtc.HasValue)
             || normalizedDecisions.Count > 0
                 && (normalizedDecisions[^1].Revision != revision
@@ -35,25 +36,19 @@ public sealed class ParkFitOperationalStatus
             throw new ArgumentException("The Park Fit operational status is invalid.");
         }
 
-        ParkFitRecommendationState expectedState = normalizedDecisions.FirstOrDefault()?.Type
-            == ParkFitOperationalDecisionType.Restored
-                ? ParkFitRecommendationState.Suspended
-                : ParkFitRecommendationState.Active;
+        ParkFitRecommendationState expectedState = normalizedDecisions.Count == 0
+            ? state
+            : GetRequiredState(normalizedDecisions[0].Type);
         long expectedRevision = Math.Max(1, revision - normalizedDecisions.Count + 1);
         foreach (ParkFitOperationalDecision decision in normalizedDecisions)
         {
             if (decision.Revision != expectedRevision
-                || decision.Type == ParkFitOperationalDecisionType.Suspended
-                    && expectedState != ParkFitRecommendationState.Active
-                || decision.Type == ParkFitOperationalDecisionType.Restored
-                    && expectedState != ParkFitRecommendationState.Suspended)
+                || GetRequiredState(decision.Type) != expectedState)
             {
                 throw new ArgumentException("The Park Fit operational history is invalid.");
             }
 
-            expectedState = decision.Type == ParkFitOperationalDecisionType.Suspended
-                ? ParkFitRecommendationState.Suspended
-                : ParkFitRecommendationState.Active;
+            expectedState = GetTargetState(decision.Type);
             expectedRevision++;
         }
 
@@ -89,6 +84,16 @@ public sealed class ParkFitOperationalStatus
             Array.Empty<ParkFitOperationalDecision>());
     }
 
+    public static ParkFitOperationalStatus CreateNotActivated(string parkId)
+    {
+        return new ParkFitOperationalStatus(
+            parkId,
+            ParkFitRecommendationState.NotActivated,
+            0,
+            null,
+            Array.Empty<ParkFitOperationalDecision>());
+    }
+
     public static ParkFitOperationalStatus Restore(
         string parkId,
         ParkFitRecommendationState state,
@@ -116,6 +121,35 @@ public sealed class ParkFitOperationalStatus
             ParkFitRecommendationState.Suspended,
             ParkFitRecommendationState.Active,
             ParkFitOperationalDecisionType.Restored,
+            actorUserId,
+            reason,
+            decidedAtUtc);
+    }
+
+    public void Activate(string actorUserId, string reason, DateTime decidedAtUtc)
+    {
+        this.Apply(
+            ParkFitRecommendationState.NotActivated,
+            ParkFitRecommendationState.Active,
+            ParkFitOperationalDecisionType.Activated,
+            actorUserId,
+            reason,
+            decidedAtUtc);
+    }
+
+    public void Deactivate(string actorUserId, string reason, DateTime decidedAtUtc)
+    {
+        ParkFitRecommendationState requiredState = this.State == ParkFitRecommendationState.Suspended
+            ? ParkFitRecommendationState.Suspended
+            : ParkFitRecommendationState.Active;
+        ParkFitOperationalDecisionType decisionType =
+            requiredState == ParkFitRecommendationState.Suspended
+                ? ParkFitOperationalDecisionType.DeactivatedDuringSuspension
+                : ParkFitOperationalDecisionType.Deactivated;
+        this.Apply(
+            requiredState,
+            ParkFitRecommendationState.NotActivated,
+            decisionType,
             actorUserId,
             reason,
             decidedAtUtc);
@@ -157,5 +191,35 @@ public sealed class ParkFitOperationalStatus
         this.State = targetState;
         this.Revision = nextRevision;
         this.UpdatedAtUtc = decidedAtUtc;
+    }
+
+    private static ParkFitRecommendationState GetRequiredState(
+        ParkFitOperationalDecisionType decisionType)
+    {
+        return decisionType switch
+        {
+            ParkFitOperationalDecisionType.Suspended => ParkFitRecommendationState.Active,
+            ParkFitOperationalDecisionType.Restored => ParkFitRecommendationState.Suspended,
+            ParkFitOperationalDecisionType.Activated => ParkFitRecommendationState.NotActivated,
+            ParkFitOperationalDecisionType.Deactivated => ParkFitRecommendationState.Active,
+            ParkFitOperationalDecisionType.DeactivatedDuringSuspension =>
+                ParkFitRecommendationState.Suspended,
+            _ => throw new ArgumentOutOfRangeException(nameof(decisionType)),
+        };
+    }
+
+    private static ParkFitRecommendationState GetTargetState(
+        ParkFitOperationalDecisionType decisionType)
+    {
+        return decisionType switch
+        {
+            ParkFitOperationalDecisionType.Suspended => ParkFitRecommendationState.Suspended,
+            ParkFitOperationalDecisionType.Restored => ParkFitRecommendationState.Active,
+            ParkFitOperationalDecisionType.Activated => ParkFitRecommendationState.Active,
+            ParkFitOperationalDecisionType.Deactivated => ParkFitRecommendationState.NotActivated,
+            ParkFitOperationalDecisionType.DeactivatedDuringSuspension =>
+                ParkFitRecommendationState.NotActivated,
+            _ => throw new ArgumentOutOfRangeException(nameof(decisionType)),
+        };
     }
 }

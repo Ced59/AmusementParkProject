@@ -32,10 +32,10 @@ export interface ParkFitDataQualityItem {
   issues: ParkFitDataQualityIssue[];
 }
 
-export type ParkFitRecommendationState = 'Active' | 'Suspended';
+export type ParkFitRecommendationState = 'Active' | 'Suspended' | 'NotActivated';
 
 export interface ParkFitOperationalDecision {
-  type: 'Suspended' | 'Restored';
+  type: 'Suspended' | 'Restored' | 'Activated' | 'Deactivated' | 'DeactivatedDuringSuspension';
   reason: string;
   decidedAtUtc: string;
   revision: number;

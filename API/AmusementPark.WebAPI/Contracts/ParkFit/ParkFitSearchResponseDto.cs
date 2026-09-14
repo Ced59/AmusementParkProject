@@ -18,6 +18,8 @@ public sealed class ParkFitSearchResponseDto
 
     public int OperationallySuspendedCandidateCount { get; init; }
 
+    public int NotActivatedCandidateCount { get; init; }
+
     public bool CandidatePoolTruncated { get; init; }
 
     public IReadOnlyDictionary<string, int> QualityStatusCounts { get; init; } =

@@ -281,8 +281,37 @@ contenu jusque 360 px. L'architecture, le schéma, les séquences et les preuves
 documentés dans
 [`product-growth-fit-14-private-pilot-observability-2026-09-14.md`](../../architecture/product-growth-fit-14-private-pilot-observability-2026-09-14.md).
 
-`FIT-15` est le prochain jalon : organiser l'extension du portefeuille et
-l'activation explicite des parcs, sans attendre un volume communautaire réel.
+### État de `FIT-15` au 14 septembre 2026
+
+Park Fit possède désormais un portefeuille explicite, indépendant de la visibilité
+générale des parcs. Chaque parc est non activé, actif ou suspendu ; activation,
+rétablissement, suspension et retrait exigent une justification et restent
+versionnés. Une activation ou un rétablissement est refusé tant que le même audit
+factuel que celui du moteur public n'atteint pas `EligibleForFitComparison`.
+
+Le code compatible donne déjà à tout état absent la sémantique `NotActivated`. Pour
+préserver le déploiement sans interruption, cette première phase n'écrit encore ni la
+nouvelle valeur enum, ni les nouvelles décisions, pendant qu'une ancienne instance
+peut les lire. Seules les actions historiques de suspension et de rétablissement
+restent ouvertes, ce dernier exigeant déjà la gate qualité. La PR immédiatement
+suivante ouvrira l'activation et le retrait puis réalisera le backfill physique après
+le retrait vérifié des anciennes instances ; aucun adaptateur conservant l'ancien
+« absent = actif » ne subsistera. La recherche utilise une projection MongoDB dédiée :
+elle part de l'index des états actifs ou suspendus, joint leurs fiches publiques,
+borne uniquement la cohorte active à 200 et complète les compteurs par un comptage
+léger du catalogue. Le catalogue inactif ne participe plus à la jointure et ne
+provoque plus de pagination applicative non bornée ; attractions et calendriers ne
+sont chargés que pour les actifs retenus.
+
+L'administration distingue déjà les trois états, explique les blocages de qualité et
+reste contenue sur mobile dans les huit langues. Les quatre actions métier seront
+réunies après la seconde phase. L'architecture, les schémas MongoDB, les diagrammes de
+classes et de séquence ainsi que les preuves sont documentés dans
+[`product-growth-fit-15-portfolio-activation-2026-09-14.md`](../../architecture/product-growth-fit-15-portfolio-activation-2026-09-14.md).
+
+L'ouverture sûre des nouvelles actions et la migration physique compatible sont la
+prochaine livraison de FIT-15. `FIT-G` consolidera ensuite les preuves finales sans
+rendre son achèvement technique dépendant d'un volume de visites réel.
 
 ## 1. Vision produit
 

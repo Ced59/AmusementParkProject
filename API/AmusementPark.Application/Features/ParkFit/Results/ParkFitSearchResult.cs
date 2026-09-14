@@ -23,6 +23,8 @@ public sealed class ParkFitSearchResult
 
     public int OperationallySuspendedCandidateCount { get; init; }
 
+    public int NotActivatedCandidateCount { get; init; }
+
     public bool CandidatePoolTruncated { get; init; }
 
     public IReadOnlyDictionary<ParkFitDataQualityStatus, int> QualityStatusCounts { get; init; } =

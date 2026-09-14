@@ -1997,24 +1997,38 @@
       "operations": {
         "state": {
           "Active": "Recommendations active",
-          "Suspended": "Recommendations suspended"
+          "Suspended": "Recommendations suspended",
+          "NotActivated": "Not enabled for Park Fit"
         },
         "stateHelp": {
-          "Active": "This park can appear in Park Fit when its data quality is sufficient.",
-          "Suspended": "This park remains public but is excluded from Park Fit."
+          "Active": "This park is part of the Park Fit portfolio while its data remains eligible.",
+          "Suspended": "This park remains public but is temporarily excluded from Park Fit.",
+          "NotActivated": "Making a park public does not automatically add it to Park Fit."
         },
         "action": {
-          "Active": "Restore in Park Fit",
-          "Suspended": "Suspend in Park Fit"
+          "Activate": "Enable Park Fit",
+          "Restore": "Restore recommendations",
+          "Suspend": "Temporarily suspend",
+          "Deactivate": "Remove from Park Fit"
         },
+        "confirmTitle": {
+          "Activate": "Enable this park",
+          "Restore": "Restore this park",
+          "Suspend": "Suspend this park",
+          "Deactivate": "Remove this park"
+        },
+        "qualityRequired": "Activation becomes available once the data quality status is Ready for comparison.",
         "reasonLabel": "Required justification",
         "reasonPlaceholder": "Explain the verification or correction that is needed…",
         "confirm": "Confirm decision",
+        "cancel": "Cancel",
         "saving": "Saving…",
         "history": "Recent decision history",
         "decision": {
           "Suspended": "Suspended",
-          "Restored": "Restored"
+          "Restored": "Restored",
+          "Activated": "Enabled",
+          "Deactivated": "Removed"
         },
         "error": "The decision could not be saved. The data may have changed; refresh and try again."
       },
