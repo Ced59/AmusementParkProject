@@ -6,8 +6,6 @@ namespace AmusementPark.Core.Domain.Parks;
 /// </summary>
 internal static class AttractionHeightRangeConsistencyEvaluator
 {
-    private const double CentimetersPerInch = 2.54d;
-
     public static bool HasContradiction(
         IReadOnlyCollection<AttractionAccessCondition> conditions)
     {
@@ -23,7 +21,9 @@ internal static class AttractionHeightRangeConsistencyEvaluator
 
         foreach (AttractionAccessCondition minimum in minimums)
         {
-            if (!TryConvertToCentimeters(minimum, out double minimumCentimeters))
+            if (!AttractionHeightUnitConverter.TryConvertToCentimeters(
+                    minimum,
+                    out double minimumCentimeters))
             {
                 continue;
             }
@@ -31,7 +31,9 @@ internal static class AttractionHeightRangeConsistencyEvaluator
             foreach (AttractionAccessCondition maximum in maximums)
             {
                 if (!CanApplyTogether(minimum, maximum)
-                    || !TryConvertToCentimeters(maximum, out double maximumCentimeters))
+                    || !AttractionHeightUnitConverter.TryConvertToCentimeters(
+                        maximum,
+                        out double maximumCentimeters))
                 {
                     continue;
                 }
@@ -41,33 +43,6 @@ internal static class AttractionHeightRangeConsistencyEvaluator
                     return true;
                 }
             }
-        }
-
-        return false;
-    }
-
-    private static bool TryConvertToCentimeters(
-        AttractionAccessCondition condition,
-        out double centimeters)
-    {
-        centimeters = 0;
-        if (!condition.Value.HasValue
-            || !double.IsFinite(condition.Value.Value)
-            || condition.Value.Value <= 0)
-        {
-            return false;
-        }
-
-        if (condition.Unit == AttractionAccessConditionUnit.Centimeter)
-        {
-            centimeters = condition.Value.Value;
-            return true;
-        }
-
-        if (condition.Unit == AttractionAccessConditionUnit.Inch)
-        {
-            centimeters = condition.Value.Value * CentimetersPerInch;
-            return true;
         }
 
         return false;
