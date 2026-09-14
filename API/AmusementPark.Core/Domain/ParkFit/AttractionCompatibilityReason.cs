@@ -16,6 +16,7 @@ public sealed class AttractionCompatibilityReason
         this.Code = code;
         this.ConditionType = condition?.Type;
         this.RequiredValue = condition?.Value;
+        this.MinimumCompanionAge = condition?.MinimumCompanionAge;
         this.Unit = condition?.Unit;
         this.Scope = condition?.Scope;
         this.ScopeDetail = Normalize(condition?.ScopeDetail);
@@ -32,6 +33,8 @@ public sealed class AttractionCompatibilityReason
     public AttractionAccessConditionType? ConditionType { get; }
 
     public double? RequiredValue { get; }
+
+    public int? MinimumCompanionAge { get; }
 
     public AttractionAccessConditionUnit? Unit { get; }
 

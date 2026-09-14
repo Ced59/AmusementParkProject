@@ -184,6 +184,9 @@ public sealed class AttractionCompatibilityEvaluatorTests
             BuildAccompaniedHeightCondition(100, minimumCompanionAge: 16));
 
         Assert.Equal(expectedState, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.MinimumCompanionAge == 16);
     }
 
     [Fact]
@@ -456,6 +459,42 @@ public sealed class AttractionCompatibilityEvaluatorTests
         Assert.Equal(EvaluationTimestamp, result.EvaluatedAtUtc);
         Assert.Equal(EvaluationDate, result.EvaluationDate);
         Assert.Equal(2, result.Sources.Count);
+    }
+
+    [Fact]
+    public void Evaluate_WhenConditionsShareASource_ShouldMergeEveryDistinctSummaryDeterministically()
+    {
+        AttractionAccessCondition minimum = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            100);
+        minimum.SourceSummary = new List<LocalizedText>
+        {
+            new LocalizedText("fr", "Taille minimale officielle."),
+        };
+        AttractionAccessCondition maximum = BuildHeightCondition(
+            AttractionAccessConditionType.MaxHeight,
+            200);
+        maximum.SourceUrl = minimum.SourceUrl;
+        maximum.SourceSummary = new List<LocalizedText>
+        {
+            new LocalizedText("fr", "Taille maximale officielle."),
+        };
+
+        AttractionCompatibility first = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            minimum,
+            maximum);
+        AttractionCompatibility second = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            maximum,
+            minimum);
+
+        AttractionCompatibilitySourceReference firstSource = Assert.Single(first.Sources);
+        AttractionCompatibilitySourceReference secondSource = Assert.Single(second.Sources);
+        Assert.Equal(2, firstSource.Summaries.Count);
+        Assert.Equal(
+            firstSource.Summaries.Select(static summary => summary.Value),
+            secondSource.Summaries.Select(static summary => summary.Value));
     }
 
     [Fact]

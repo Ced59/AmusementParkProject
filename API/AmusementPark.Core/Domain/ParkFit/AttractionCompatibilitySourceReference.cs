@@ -9,8 +9,18 @@ namespace AmusementPark.Core.Domain.ParkFit;
 public sealed class AttractionCompatibilitySourceReference
 {
     public AttractionCompatibilitySourceReference(AttractionAccessCondition condition)
+        : this(new[] { condition ?? throw new ArgumentNullException(nameof(condition)) })
     {
-        ArgumentNullException.ThrowIfNull(condition);
+    }
+
+    internal AttractionCompatibilitySourceReference(
+        IReadOnlyCollection<AttractionAccessCondition> conditions)
+    {
+        ArgumentNullException.ThrowIfNull(conditions);
+        AttractionAccessCondition condition = conditions.FirstOrDefault()
+            ?? throw new ArgumentException(
+                "At least one condition is required.",
+                nameof(conditions));
 
         this.Kind = condition.SourceKind;
         this.Url = Normalize(condition.SourceUrl);
@@ -19,8 +29,12 @@ public sealed class AttractionCompatibilitySourceReference
         this.CollectedAtUtc = condition.CollectedAtUtc;
         this.VerifiedAtUtc = condition.VerifiedAtUtc;
         this.Confidence = condition.SourceConfidence;
-        this.Summaries = condition.SourceSummary
+        this.Summaries = conditions
+            .SelectMany(static item => item.SourceSummary)
             .Select(static summary => new LocalizedText(summary.LanguageCode, summary.Value))
+            .DistinctBy(static summary => new { summary.LanguageCode, summary.Value })
+            .OrderBy(static summary => summary.LanguageCode, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(static summary => summary.Value, StringComparer.Ordinal)
             .ToList();
     }
 

@@ -24,7 +24,8 @@ Le moteur retourne exactement un des cinq états normatifs :
 | `NotApplicable` | aucune condition ne concerne la date évaluée |
 
 Chaque résultat contient des codes de raisons stables, les seuils concernés, les
-anomalies exactes de définition ou de preuve, les sources disponibles, la date de
+âges minimaux d'accompagnateur, les anomalies exactes de définition ou de preuve,
+les sources disponibles, la date de
 calcul, la date métier, la plus ancienne vérification active et la version de
 méthode.
 
@@ -158,6 +159,7 @@ classDiagram
         +ReasonCode Code
         +ConditionType? ConditionType
         +double? RequiredValue
+        +int? MinimumCompanionAge
         +Unit? Unit
         +EvidenceIssues[]
         +SemanticIssues[]
@@ -219,7 +221,7 @@ aucune dépendance supplémentaire n'est introduite.
 
 ## 10. Preuves automatisées
 
-Quarante-six scénarios FIT-04 couvrent notamment :
+Quarante-sept scénarios FIT-04 couvrent notamment :
 
 - absence, expiration et futur des règles ;
 - minimum, maximum et égalité exacte aux seuils ;
@@ -234,6 +236,7 @@ Quarante-six scénarios FIT-04 couvrent notamment :
 - priorité d'une violation fiable sur une autre inconnue ;
 - invariance à l'ordre des conditions ;
 - version, confiance, dates et sources ;
+- fusion déterministe de tous les résumés citant une même source ;
 - validation des bornes du profil privé.
 
 Les tests FIT-03 sont rejoués avec les évaluateurs partagés afin de prouver que

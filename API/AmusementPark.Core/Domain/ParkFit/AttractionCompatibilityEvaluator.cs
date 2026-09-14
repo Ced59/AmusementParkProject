@@ -164,6 +164,7 @@ public sealed class AttractionCompatibilityEvaluator
                 reason.Code,
                 reason.ConditionType,
                 reason.RequiredValue,
+                reason.MinimumCompanionAge,
                 reason.Unit,
                 reason.Scope,
                 reason.ScopeDetail,
@@ -177,17 +178,17 @@ public sealed class AttractionCompatibilityEvaluator
         IReadOnlyCollection<AttractionCompatibilitySourceReference> sources = activeConditions
             .Where(static condition => !string.IsNullOrWhiteSpace(condition.SourceUrl)
                 || !string.IsNullOrWhiteSpace(condition.SourceReference))
-            .Select(static condition => new AttractionCompatibilitySourceReference(condition))
-            .DistinctBy(static source => new
+            .GroupBy(static condition => new
             {
-                source.Kind,
-                source.Url,
-                source.Reference,
-                source.LanguageCode,
-                source.CollectedAtUtc,
-                source.VerifiedAtUtc,
-                source.Confidence,
+                condition.SourceKind,
+                SourceUrl = Normalize(condition.SourceUrl),
+                SourceReference = Normalize(condition.SourceReference),
+                SourceLanguageCode = Normalize(condition.SourceLanguageCode),
+                condition.CollectedAtUtc,
+                condition.VerifiedAtUtc,
+                condition.SourceConfidence,
             })
+            .Select(static group => new AttractionCompatibilitySourceReference(group.ToList()))
             .OrderBy(static source => source.Kind)
             .ThenBy(static source => source.Url, StringComparer.Ordinal)
             .ThenBy(static source => source.Reference, StringComparer.Ordinal)
@@ -231,5 +232,10 @@ public sealed class AttractionCompatibilityEvaluator
             AttractionAccessConditionConfidence.Low => ParkFitDataConfidence.Low,
             _ => ParkFitDataConfidence.Unknown,
         };
+    }
+
+    private static string? Normalize(string? value)
+    {
+        return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
     }
 }
