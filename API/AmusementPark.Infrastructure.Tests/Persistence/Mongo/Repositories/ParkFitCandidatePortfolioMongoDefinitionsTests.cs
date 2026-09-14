@@ -25,6 +25,9 @@ public sealed class ParkFitCandidatePortfolioMongoDefinitionsTests
         Assert.Contains(conditions, static value =>
             value.AsBsonDocument.TryGetValue("park.countryCode", out BsonValue? country)
             && country == "FR");
+        Assert.Contains(conditions, static value =>
+            value.AsBsonDocument.TryGetValue("park.status", out BsonValue? status)
+            && status == "Operating");
 
         BsonDocument lookup = pipeline[1]["$lookup"].AsBsonDocument;
         Assert.Equal("parks", lookup["from"].AsString);

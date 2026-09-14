@@ -82,9 +82,9 @@ internal static class ParkFitCandidatePortfolioMongoDefinitions
         BsonArray conditions =
         [
             new BsonDocument($"{prefix}isVisible", true),
-            new BsonDocument($"{prefix}status", new BsonDocument(
-                "$ne",
-                ParkStatus.ClosedDefinitively.ToString())),
+            new BsonDocument(
+                $"{prefix}status",
+                ParkStatus.Operating.ToString()),
             new BsonDocument($"{prefix}latitude", new BsonDocument
             {
                 ["$exists"] = true,
