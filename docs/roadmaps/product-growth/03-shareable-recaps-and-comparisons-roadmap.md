@@ -491,8 +491,29 @@ révocation ou un passage en « à revoir », même lorsque la version de cycle 
 continué d'avancer. Les preuves et le schéma sont détaillés dans
 [`product-growth-share-14a-passport-share-export-2026-09-13.md`](../../architecture/product-growth-share-14a-passport-share-export-2026-09-13.md).
 
-`SHARE-14B` doit maintenant traiter la révocation puis la purge lors de la suppression
-du compte ; `SHARE-14C` ajoutera ensuite les mesures de cycle de vie minimisées.
+Après l'export de `SHARE-14A`, le cycle de vie se poursuit avec la suppression et
+les mesures minimisées.
+
+### État de `SHARE-14B` au 14 septembre 2026
+
+Le participant du partage à la suppression d'un compte est livré en version 5.3.10.
+Après verrouillage du compte par le coordinateur transversal, il révoque d'abord
+toutes les publications et comparaisons, expire les invitations en attente, réserve
+des invalidations durables pour chaque jeton puis vide immédiatement les images
+sociales et les caches SSR/SEO. Une concurrence persistante arrête l'opération avant
+toute purge.
+
+Les snapshots, signalements liés, invitations, comparaisons, registres et révisions
+de scopes, sauvegardes gelées de l'ancien classement et publications centrales sont
+ensuite supprimés dans un ordre dépendant. Les pages partagées n'appartiennent à
+aucun sitemap indexable et l'invalidation globale retire aussi les documents SEO
+dérivés. Le service reste un port interne tant que l'application ne propose pas un
+workflow transversal capable de supprimer également visites, notes, commentaires,
+sessions et compte ; aucune suppression partielle trompeuse n'est exposée en HTTP.
+Les preuves et diagrammes sont détaillés dans
+[`product-growth-share-14b-account-deletion-2026-09-14.md`](../../architecture/product-growth-share-14b-account-deletion-2026-09-14.md).
+
+`SHARE-14C` peut maintenant ajouter les mesures de cycle de vie minimisées.
 
 ## 1. Vision produit
 

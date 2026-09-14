@@ -71,6 +71,7 @@ public sealed class SharePublicationCacheInvalidationExecutor
             SharePublicationType.VisitRecap => "passport/shared/visits",
             SharePublicationType.YearRecap => "passport/shared/years",
             SharePublicationType.PassportProfile => "passport/shared/profiles",
+            SharePublicationType.ProfileComparison => "passport/shared/comparisons",
             _ => string.Empty,
         };
         if (routeSegment.Length == 0)

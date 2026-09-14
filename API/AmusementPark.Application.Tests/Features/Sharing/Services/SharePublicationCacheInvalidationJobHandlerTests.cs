@@ -77,6 +77,75 @@ public sealed class SharePublicationCacheInvalidationJobHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenComparisonRevocationIsNotCommitted_ShouldRetryWithoutPurging()
+    {
+        ProfileComparison comparison = CreateComparison(isRevoked: false);
+        ShareModerationReportId reportId = ShareModerationReportId.Parse("report-1");
+        comparison.SuspendByModeration(reportId, NowUtc.AddMinutes(1));
+        comparison.RestoreAfterModeration(reportId, NowUtc.AddMinutes(2));
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        Mock<IProfileComparisonRepository> comparisons =
+            new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
+        comparisons.Setup(value => value.GetByIdAsync(
+                comparison.Id,
+                CancellationToken.None))
+            .ReturnsAsync(comparison);
+        Mock<ISharePublicationCacheInvalidationExecutor> executor =
+            new Mock<ISharePublicationCacheInvalidationExecutor>(MockBehavior.Strict);
+        SharePublicationCacheInvalidationJobHandler handler = CreateHandler(
+            publications.Object,
+            executor.Object,
+            comparisonRepository: comparisons.Object);
+
+        DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
+            CreateComparisonContext(comparison, minimumVersion: comparison.Version),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Retry, result.Outcome);
+        Assert.Equal("sharing-cache-invalidation.state-not-committed", result.ErrorCode);
+        publications.VerifyNoOtherCalls();
+        comparisons.VerifyAll();
+        executor.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenComparisonRevocationIsCommitted_ShouldPurgeItsShareId()
+    {
+        ProfileComparison comparison = CreateComparison(isRevoked: true);
+        Mock<ISharePublicationRepository> publications =
+            new Mock<ISharePublicationRepository>(MockBehavior.Strict);
+        Mock<IProfileComparisonRepository> comparisons =
+            new Mock<IProfileComparisonRepository>(MockBehavior.Strict);
+        comparisons.Setup(value => value.GetByIdAsync(
+                comparison.Id,
+                CancellationToken.None))
+            .ReturnsAsync(comparison);
+        Mock<ISharePublicationCacheInvalidationExecutor> executor =
+            new Mock<ISharePublicationCacheInvalidationExecutor>(MockBehavior.Strict);
+        executor.Setup(value => value.TryInvalidateAsync(
+                It.Is<SharePublicationCacheInvalidationRequest>(request =>
+                    request.PublicationId == comparison.Id.Value
+                    && request.PublicationType == SharePublicationType.ProfileComparison
+                    && request.ShareIds.SequenceEqual(new[] { comparison.ShareToken.Value })),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        SharePublicationCacheInvalidationJobHandler handler = CreateHandler(
+            publications.Object,
+            executor.Object,
+            comparisonRepository: comparisons.Object);
+
+        DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
+            CreateComparisonContext(comparison, minimumVersion: 1),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        publications.VerifyNoOtherCalls();
+        comparisons.VerifyAll();
+        executor.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenPublicationWasRemoved_ShouldStillPurgeTheRecordedShareId()
     {
         SharePublication publication = CreatePublication(version: 2);
@@ -305,16 +374,39 @@ public sealed class SharePublicationCacheInvalidationJobHandlerTests
             null);
     }
 
+    private static DurableBackgroundJobExecutionContext CreateComparisonContext(
+        ProfileComparison comparison,
+        long minimumVersion)
+    {
+        SharePublicationCacheInvalidationJobPayload payload =
+            new SharePublicationCacheInvalidationJobPayload(
+                comparison.Id.Value,
+                OwnerId,
+                SharePublicationType.ProfileComparison,
+                minimumVersion,
+                new[] { comparison.ShareToken.Value });
+        return new DurableBackgroundJobExecutionContext(
+            "job-comparison-1",
+            SharePublicationCacheInvalidationJob.PayloadVersion,
+            JsonSerializer.SerializeToElement(payload),
+            null,
+            1,
+            null);
+    }
+
     private static SharePublicationCacheInvalidationJobHandler CreateHandler(
         ISharePublicationRepository repository,
         ISharePublicationCacheInvalidationExecutor executor,
         IDurableBackgroundJobRepository? jobs = null,
-        IEnumerable<ISharePublicationSnapshotWriter>? snapshotWriters = null)
+        IEnumerable<ISharePublicationSnapshotWriter>? snapshotWriters = null,
+        IProfileComparisonRepository? comparisonRepository = null)
     {
         IDurableBackgroundJobRepository jobRepository = jobs
             ?? new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict).Object;
         return new SharePublicationCacheInvalidationJobHandler(
             repository,
+            comparisonRepository
+                ?? new Mock<IProfileComparisonRepository>(MockBehavior.Strict).Object,
             executor,
             new SharePublicationCacheInvalidationScheduler(jobRepository),
             snapshotWriters ?? Array.Empty<ISharePublicationSnapshotWriter>());
@@ -338,5 +430,39 @@ public sealed class SharePublicationCacheInvalidationJobHandlerTests
             null,
             NowUtc,
             NowUtc);
+    }
+
+    private static ProfileComparison CreateComparison(bool isRevoked)
+    {
+        ProfileComparison comparison = ProfileComparison.Create(
+            ProfileComparisonId.New(),
+            ProfileComparisonInvitationId.New(),
+            ShareToken.Parse(ShareId),
+            OwnerId,
+            "acceptor-1",
+            SharePublicationId.New(),
+            1,
+            SharePublicationId.New(),
+            1,
+            new ProfileComparisonCalculation(
+                "Camille",
+                "Alex",
+                new[] { ProfileComparisonCategory.VisitedParks },
+                Array.Empty<ProfileComparisonParkResult>(),
+                Array.Empty<ProfileComparisonRatingResult>(),
+                Array.Empty<ProfileComparisonYearResult>(),
+                Array.Empty<ProfileComparisonMissedItemResult>(),
+                0,
+                ProfileComparisonCalculator.MinimumRatingsForCorrelation,
+                null,
+                false,
+                ProfileComparisonCalculator.CalculationVersion),
+            NowUtc);
+        if (isRevoked)
+        {
+            comparison.Revoke(OwnerId, NowUtc.AddMinutes(1));
+        }
+
+        return comparison;
     }
 }

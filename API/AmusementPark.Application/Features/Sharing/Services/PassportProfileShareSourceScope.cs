@@ -77,6 +77,17 @@ public static class PassportProfileShareSourceScope
         return string.Concat(FingerprintPrefix, Encode(normalizedOwner), ":", digest);
     }
 
+    public static string CreateFingerprintOwnerPrefix(string ownerUserId)
+    {
+        string normalizedOwner = ownerUserId?.Trim() ?? string.Empty;
+        if (normalizedOwner.Length == 0)
+        {
+            throw new ArgumentException("A share owner identifier is required.", nameof(ownerUserId));
+        }
+
+        return string.Concat(FingerprintPrefix, Encode(normalizedOwner), ":");
+    }
+
     public static bool TryParse(string? sourceScopeKey, out string ownerUserId)
     {
         ownerUserId = string.Empty;

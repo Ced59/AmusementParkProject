@@ -11,10 +11,19 @@ public static class YearRecapShareSourceScope
     public static string Create(string ownerUserId, int year)
     {
         return string.Concat(
-            Prefix,
-            Encode(ownerUserId?.Trim() ?? string.Empty),
-            ":",
+            CreateOwnerPrefix(ownerUserId),
             year.ToString(System.Globalization.CultureInfo.InvariantCulture));
+    }
+
+    public static string CreateOwnerPrefix(string ownerUserId)
+    {
+        string normalizedOwner = ownerUserId?.Trim() ?? string.Empty;
+        if (normalizedOwner.Length == 0)
+        {
+            throw new ArgumentException("A share owner identifier is required.", nameof(ownerUserId));
+        }
+
+        return string.Concat(Prefix, Encode(normalizedOwner), ":");
     }
 
     public static bool TryParse(

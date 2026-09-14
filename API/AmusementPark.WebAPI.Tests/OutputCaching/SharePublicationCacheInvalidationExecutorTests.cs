@@ -16,6 +16,7 @@ public sealed class SharePublicationCacheInvalidationExecutorTests
     [InlineData(SharePublicationType.VisitRecap, "passport/shared/visits")]
     [InlineData(SharePublicationType.YearRecap, "passport/shared/years")]
     [InlineData(SharePublicationType.PassportProfile, "passport/shared/profiles")]
+    [InlineData(SharePublicationType.ProfileComparison, "passport/shared/comparisons")]
     public void BuildSsrRequest_ShouldPurgeOldAndNewLocalizedPublicRoutes(
         SharePublicationType publicationType,
         string routeSegment)

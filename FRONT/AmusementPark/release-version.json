@@ -1,6 +1,20 @@
 {
-  "version": "5.3.9",
+  "version": "5.3.10",
   "history": [
+    {
+      "version": "5.3.10",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "La suppression d’un compte coupe désormais ses partages avant leur effacement.",
+        "en": "Deleting an account now disables its shares before removing them.",
+        "de": "Beim Löschen eines Kontos werden Freigaben jetzt vor dem Entfernen deaktiviert.",
+        "nl": "Bij het verwijderen van een account worden gedeelde links eerst uitgeschakeld.",
+        "it": "L’eliminazione di un account ora disattiva le condivisioni prima di rimuoverle.",
+        "es": "Al eliminar una cuenta, sus contenidos compartidos se desactivan antes de borrarse.",
+        "pl": "Usunięcie konta najpierw wyłącza udostępnienia, a dopiero potem je usuwa.",
+        "pt": "Ao eliminar uma conta, as partilhas são desativadas antes de serem removidas."
+      }
+    },
     {
       "version": "5.3.9",
       "releasedAt": "2026-09-14",

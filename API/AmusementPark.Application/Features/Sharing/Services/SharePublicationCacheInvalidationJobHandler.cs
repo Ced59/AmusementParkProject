@@ -13,6 +13,7 @@ public sealed class SharePublicationCacheInvalidationJobHandler : IDurableBackgr
     private const int MaximumAttempts = 100;
     private const int ContinuationAttemptThreshold = MaximumAttempts / 2;
     private readonly ISharePublicationRepository publicationRepository;
+    private readonly IProfileComparisonRepository comparisonRepository;
     private readonly ISharePublicationCacheInvalidationExecutor executor;
     private readonly SharePublicationCacheInvalidationScheduler scheduler;
     private readonly IReadOnlyDictionary<SharePublicationType, ISharePublicationSnapshotWriter>
@@ -20,12 +21,15 @@ public sealed class SharePublicationCacheInvalidationJobHandler : IDurableBackgr
 
     public SharePublicationCacheInvalidationJobHandler(
         ISharePublicationRepository publicationRepository,
+        IProfileComparisonRepository comparisonRepository,
         ISharePublicationCacheInvalidationExecutor executor,
         SharePublicationCacheInvalidationScheduler scheduler,
         IEnumerable<ISharePublicationSnapshotWriter> snapshotWriters)
     {
         this.publicationRepository = publicationRepository
             ?? throw new ArgumentNullException(nameof(publicationRepository));
+        this.comparisonRepository = comparisonRepository
+            ?? throw new ArgumentNullException(nameof(comparisonRepository));
         this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
         this.scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
         ArgumentNullException.ThrowIfNull(snapshotWriters);
@@ -65,15 +69,34 @@ public sealed class SharePublicationCacheInvalidationJobHandler : IDurableBackgr
 
         try
         {
-            SharePublication? publication = await this.publicationRepository.GetOwnedAsync(
-                publicationId,
-                payload.OwnerUserId,
-                cancellationToken);
-            if (publication is not null
-                && publication.Version < payload.MinimumPublicationStateVersion)
+            SharePublication? publication = null;
+            if (payload.PublicationType == SharePublicationType.ProfileComparison)
             {
-                return DurableBackgroundJobHandlerResult.Retry(
-                    "sharing-cache-invalidation.state-not-committed");
+                ProfileComparisonId comparisonId = ProfileComparisonId.Parse(
+                    payload.PublicationId);
+                ProfileComparison? comparison = await this.comparisonRepository.GetByIdAsync(
+                    comparisonId,
+                    cancellationToken);
+                if (comparison is not null
+                    && (comparison.Version < payload.MinimumPublicationStateVersion
+                        || comparison.IsActive))
+                {
+                    return DurableBackgroundJobHandlerResult.Retry(
+                        "sharing-cache-invalidation.state-not-committed");
+                }
+            }
+            else
+            {
+                publication = await this.publicationRepository.GetOwnedAsync(
+                    publicationId,
+                    payload.OwnerUserId,
+                    cancellationToken);
+                if (publication is not null
+                    && publication.Version < payload.MinimumPublicationStateVersion)
+                {
+                    return DurableBackgroundJobHandlerResult.Retry(
+                        "sharing-cache-invalidation.state-not-committed");
+                }
             }
 
             bool succeeded = await this.executor.TryInvalidateAsync(

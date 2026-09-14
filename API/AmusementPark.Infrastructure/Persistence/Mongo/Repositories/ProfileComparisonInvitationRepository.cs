@@ -100,6 +100,30 @@ public sealed class ProfileComparisonInvitationRepository
         return result.DeletedCount == 1;
     }
 
+    public async Task<long> DeletePendingCreatedByAsync(
+        string creatorUserId,
+        CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(creatorUserId))
+        {
+            throw new ArgumentException(
+                "A creator user identifier is required.",
+                nameof(creatorUserId));
+        }
+
+        FilterDefinitionBuilder<ProfileComparisonInvitationDocument> filters =
+            Builders<ProfileComparisonInvitationDocument>.Filter;
+        DeleteResult result = await this.collection.DeleteManyAsync(
+            filters.Eq(
+                static document => document.CreatorUserId,
+                creatorUserId.Trim())
+            & filters.Eq(
+                static document => document.Status,
+                ProfileComparisonInvitationStatus.Pending),
+            cancellationToken);
+        return result.DeletedCount;
+    }
+
     private static IMongoCollection<ProfileComparisonInvitationDocument> GetCollection(
         IMongoDatabase database,
         MongoDbSettings settings)

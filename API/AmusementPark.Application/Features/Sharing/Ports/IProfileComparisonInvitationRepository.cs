@@ -21,4 +21,8 @@ public interface IProfileComparisonInvitationRepository
         ProfileComparisonInvitationId invitationId,
         long expectedVersion,
         CancellationToken cancellationToken);
+
+    Task<long> DeletePendingCreatedByAsync(
+        string creatorUserId,
+        CancellationToken cancellationToken);
 }

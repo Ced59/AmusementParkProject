@@ -299,4 +299,11 @@ public static class SharingApplicationErrors
             "share-moderation.search-invalid",
             "Les filtres de modération sont invalides.");
     }
+
+    public static ApplicationError AccountShareDeletionConflict()
+    {
+        return ApplicationError.Conflict(
+            "sharing.account-deletion-conflict",
+            "Les partages ont changé pendant la suppression du compte. Réessaie.");
+    }
 }
