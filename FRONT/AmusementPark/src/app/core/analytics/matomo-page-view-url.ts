@@ -1,3 +1,26 @@
+export interface MatomoPageViewData {
+  readonly url: string;
+  readonly title: string;
+}
+
+export function createMatomoPageViewData(
+  pageUrl: string,
+  documentTitle: string
+): MatomoPageViewData {
+  const sanitizedUrl: string = sanitizeMatomoPageViewUrl(pageUrl);
+  const pathname: string = new URL(sanitizedUrl).pathname;
+
+  if (pathname.endsWith('/product/passport')) {
+    return { url: sanitizedUrl, title: 'Passport' };
+  }
+
+  if (pathname.includes('/product/share/')) {
+    return { url: sanitizedUrl, title: 'Shared experience' };
+  }
+
+  return { url: sanitizedUrl, title: documentTitle || 'AmusementPark' };
+}
+
 export function sanitizeMatomoPageViewUrl(pageUrl: string): string {
   const url: URL = new URL(pageUrl);
   url.search = '';
