@@ -1,6 +1,20 @@
 {
-  "version": "5.3.20",
+  "version": "5.3.21",
   "history": [
+    {
+      "version": "5.3.21",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "La future comparaison détaille désormais un score transparent et ses limites.",
+        "en": "The future comparison now details a transparent score and its limits.",
+        "de": "Die künftige Vergleichsfunktion erläutert nun eine transparente Bewertung und ihre Grenzen.",
+        "nl": "De toekomstige vergelijking licht nu een transparante score en de grenzen ervan toe.",
+        "it": "Il futuro confronto ora descrive un punteggio trasparente e i suoi limiti.",
+        "es": "La futura comparación ahora detalla una puntuación transparente y sus límites.",
+        "pl": "Przyszłe porównanie przedstawia teraz przejrzysty wynik i jego ograniczenia.",
+        "pt": "A futura comparação apresenta agora uma pontuação transparente e os respetivos limites."
+      }
+    },
     {
       "version": "5.3.20",
       "releasedAt": "2026-09-14",
