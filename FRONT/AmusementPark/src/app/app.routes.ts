@@ -129,6 +129,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/park-fit-data-quality/pages/admin-park-fit-data-quality/admin-park-fit-data-quality.component').then((m) => m.AdminParkFitDataQualityComponent)
           },
           {
+            path: 'park-fit-pilot',
+            loadComponent: () => import('@features/admin/park-fit-pilot/pages/admin-park-fit-pilot/admin-park-fit-pilot.component').then((m) => m.AdminParkFitPilotComponent)
+          },
+          {
             path: 'social-publications',
             loadComponent: () => import('@features/admin/social-publishing/pages/admin-social-publishing/admin-social-publishing.component').then((m) => m.AdminSocialPublishingComponent)
           },

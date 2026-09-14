@@ -1,0 +1,23 @@
+{
+  "admin": {
+    "dashboard": { "shortcuts": { "parkFitPilot": "Mesurer l’utilité de Park Fit avec des indicateurs anonymes et agrégés." } },
+    "parkFitPilot": {
+      "navTitle": "Pilote Park Fit",
+      "kicker": "Observabilité produit",
+      "title": "Pilotage de Park Fit",
+      "subtitle": "Repère les recherches utiles, les résultats vides et les données à améliorer sans enregistrer les critères des visiteurs.",
+      "loading": "Chargement des indicateurs Park Fit…",
+      "loadError": "Impossible de charger les indicateurs Park Fit.",
+      "empty": "Aucune activité Park Fit sur cette période.",
+      "filters": { "fromUtc": "Du", "toUtc": "Au" },
+      "decision": { "kicker": "Santé du pilote", "description": "Ce signal aide à prioriser les corrections ; il doit toujours être complété par une vérification qualitative." },
+      "signal": { "AwaitingObservations": "En attente d’observations", "NeedsAttention": "Attention requise", "Monitor": "À surveiller", "Encouraging": "Signal encourageant" },
+      "metrics": { "ariaLabel": "Indicateurs agrégés du pilote Park Fit", "started": "Recherches lancées", "completed": "Recherches abouties", "abandoned": "Recherches abandonnées", "noResult": "Sans résultat", "unknown": "Inconnues importantes", "explanations": "Explications ouvertes", "comparisons": "Comparaisons ouvertes", "reports": "Sources signalées", "outdated": "Sources dépassées" },
+      "chart": { "title": "Activité quotidienne", "subtitle": "Recherches abouties et signalements de source, regroupés par jour.", "completed": "Recherches abouties", "reports": "Signalements" },
+      "breakdown": { "results": "Volume de résultats", "unknown": "Niveau d’inconnues", "issues": "Lacunes de données rencontrées", "zeroResultIssues": "Causes des résultats vides", "empty": "Aucun signal sur cette période." },
+      "resultBand": { "None": "Aucun parc", "One": "Un parc", "TwoToFour": "Deux à quatre parcs", "FiveOrMore": "Cinq parcs ou plus" },
+      "unknownLevel": { "None": "Aucune inconnue", "Limited": "Inconnues limitées", "Significant": "Inconnues importantes" },
+      "privacy": { "title": "Agrégé dès l’écriture", "description": "MongoDB ne reçoit que des compteurs quotidiens partagés. Aucun identifiant, critère, parc recherché, coordonnée, session ou parcours individuel n’est conservé." }
+    }
+  }
+}

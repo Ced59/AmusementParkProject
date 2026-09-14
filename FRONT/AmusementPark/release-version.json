@@ -1,6 +1,20 @@
 {
-  "version": "5.3.29",
+  "version": "5.3.30",
   "history": [
+    {
+      "version": "5.3.30",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Park Fit s’améliore grâce à des indicateurs anonymes et agrégés.",
+        "en": "Park Fit now improves through anonymous aggregate indicators.",
+        "de": "Park Fit verbessert sich jetzt mithilfe anonymer, aggregierter Kennzahlen.",
+        "nl": "Park Fit verbetert nu met anonieme, geaggregeerde indicatoren.",
+        "it": "Park Fit ora migliora grazie a indicatori anonimi e aggregati.",
+        "es": "Park Fit ahora mejora gracias a indicadores anónimos y agregados.",
+        "pl": "Park Fit jest teraz ulepszany dzięki anonimowym danym zbiorczym.",
+        "pt": "O Park Fit melhora agora através de indicadores anónimos e agregados."
+      }
+    },
     {
       "version": "5.3.29",
       "releasedAt": "2026-09-14",

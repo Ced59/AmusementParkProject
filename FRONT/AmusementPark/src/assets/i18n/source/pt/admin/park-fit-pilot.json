@@ -1,0 +1,16 @@
+{
+  "admin": {
+    "dashboard": { "shortcuts": { "parkFitPilot": "Medir a utilidade do Park Fit com indicadores anónimos e agregados." } },
+    "parkFitPilot": {
+      "navTitle": "Piloto Park Fit", "kicker": "Observabilidade do produto", "title": "Acompanhamento do piloto Park Fit", "subtitle": "Identifica pesquisas úteis, resultados vazios e dados a melhorar sem guardar os critérios dos visitantes.",
+      "loading": "A carregar os indicadores Park Fit…", "loadError": "Não foi possível carregar os indicadores Park Fit.", "empty": "Não há atividade Park Fit neste período.",
+      "filters": { "fromUtc": "De", "toUtc": "Até" }, "decision": { "kicker": "Estado do piloto", "description": "Este sinal ajuda a priorizar correções e deve ser sempre complementado por uma análise qualitativa." },
+      "signal": { "AwaitingObservations": "A aguardar observações", "NeedsAttention": "Requer atenção", "Monitor": "A acompanhar", "Encouraging": "Sinal encorajador" },
+      "metrics": { "ariaLabel": "Indicadores agregados do piloto Park Fit", "started": "Pesquisas iniciadas", "completed": "Pesquisas concluídas", "abandoned": "Pesquisas abandonadas", "noResult": "Sem resultado", "unknown": "Dados desconhecidos relevantes", "explanations": "Explicações abertas", "comparisons": "Comparações abertas", "reports": "Fontes sinalizadas", "outdated": "Fontes desatualizadas" },
+      "chart": { "title": "Atividade diária", "subtitle": "Pesquisas concluídas e sinalizações de fontes, agrupadas por dia.", "completed": "Pesquisas concluídas", "reports": "Sinalizações" },
+      "breakdown": { "results": "Quantidade de resultados", "unknown": "Nível de dados desconhecidos", "issues": "Lacunas de dados encontradas", "zeroResultIssues": "Causas dos resultados vazios", "empty": "Sem sinais neste período." },
+      "resultBand": { "None": "Nenhum parque", "One": "Um parque", "TwoToFour": "Dois a quatro parques", "FiveOrMore": "Cinco parques ou mais" }, "unknownLevel": { "None": "Sem dados desconhecidos", "Limited": "Poucos dados desconhecidos", "Significant": "Dados desconhecidos relevantes" },
+      "privacy": { "title": "Agregado no momento do registo", "description": "O MongoDB recebe apenas contadores diários partilhados. Não são guardados identificadores, critérios, parques pesquisados, coordenadas, sessões nem percursos individuais." }
+    }
+  }
+}

@@ -124,6 +124,9 @@ public sealed class MongoDbSettings
     public string ParkFitSourceReportsCollectionName { get; set; } =
         "park-fit-source-reports";
 
+    public string ParkFitPilotDailyMetricsCollectionName { get; set; } =
+        "park-fit-pilot-daily-metrics";
+
     public string ParkFitOperationalStatusesCollectionName { get; set; } =
         "park-fit-operational-statuses";
 

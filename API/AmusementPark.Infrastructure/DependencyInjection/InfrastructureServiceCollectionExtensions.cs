@@ -231,6 +231,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IProfileComparisonRepository, ProfileComparisonRepository>();
         services.AddScoped<IParkFitGroupProfileRepository, ParkFitGroupProfileRepository>();
         services.AddScoped<IParkFitSourceReportRepository, ParkFitSourceReportRepository>();
+        services.AddScoped<IParkFitPilotMetricsRepository, ParkFitPilotMetricsRepository>();
         services.AddScoped<IParkFitOperationalStatusRepository, ParkFitOperationalStatusRepository>();
         services.AddScoped<IShareAccountDeletionStore, MongoShareAccountDeletionStore>();
         services.AddScoped<IShareModerationReportRepository, ShareModerationReportRepository>();

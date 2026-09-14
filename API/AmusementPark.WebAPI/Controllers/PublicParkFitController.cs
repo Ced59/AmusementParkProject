@@ -28,15 +28,20 @@ public sealed class PublicParkFitController : ControllerBase
         ApplicationResult<ParkFitSearchResult>> searchHandler;
     private readonly ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult>
         reportHandler;
+    private readonly ICommandHandler<CaptureParkFitPilotObservationCommand, ApplicationResult>
+        pilotObservationHandler;
 
     public PublicParkFitController(
         IQueryHandler<
             SearchParksByFitQuery,
             ApplicationResult<ParkFitSearchResult>> searchHandler,
-        ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult> reportHandler)
+        ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult> reportHandler,
+        ICommandHandler<CaptureParkFitPilotObservationCommand, ApplicationResult>
+            pilotObservationHandler)
     {
         this.searchHandler = searchHandler;
         this.reportHandler = reportHandler;
+        this.pilotObservationHandler = pilotObservationHandler;
     }
 
     [HttpPost("search")]
@@ -76,6 +81,27 @@ public sealed class PublicParkFitController : ControllerBase
         }
 
         ApplicationResult result = await this.reportHandler.HandleAsync(command, cancellationToken);
+        return result.IsSuccess ? this.Accepted() : this.ToActionResult(result);
+    }
+
+    [HttpPost("pilot-events")]
+    [EnableRateLimiting(RateLimitPolicyNames.ParkFitPilotEvents)]
+    [ProducesResponseType(StatusCodes.Status202Accepted)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status429TooManyRequests)]
+    public async Task<IActionResult> CapturePilotObservationAsync(
+        [FromBody] CaptureParkFitPilotObservationRequestDto request,
+        CancellationToken cancellationToken = default)
+    {
+        if (!request.TryToCommand(out CaptureParkFitPilotObservationCommand? command)
+            || command is null)
+        {
+            return this.BadRequest();
+        }
+
+        ApplicationResult result = await this.pilotObservationHandler.HandleAsync(
+            command,
+            cancellationToken);
         return result.IsSuccess ? this.Accepted() : this.ToActionResult(result);
     }
 }

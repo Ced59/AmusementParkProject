@@ -1544,6 +1544,7 @@
         "socialShare": "Review usage statistics for social sharing tools.",
         "technicalStats": "Monitor SSR cache, crawlers, rendering and purges.",
         "parkFitDataQuality": "Check whether park data is ready for comparison.",
+        "parkFitPilot": "Measure Park Fit usefulness through anonymous aggregate indicators.",
         "socialPublishing": "Compose, publish and track announcements sent to social networks.",
         "parkWeather": "Monitor scheduled public data refreshes."
       },
@@ -2077,6 +2078,69 @@
       "pagination": {
         "ariaLabel": "Readiness audit pages",
         "label": "Page {{current}} of {{total}}"
+      }
+    },
+    "parkFitPilot": {
+      "navTitle": "Park Fit pilot",
+      "kicker": "Product observability",
+      "title": "Park Fit pilot cockpit",
+      "subtitle": "Spot useful searches, empty results and data to improve without recording visitor criteria.",
+      "loading": "Loading Park Fit indicators…",
+      "loadError": "Park Fit indicators could not be loaded.",
+      "empty": "No Park Fit activity during this period.",
+      "filters": {
+        "fromUtc": "From",
+        "toUtc": "To"
+      },
+      "decision": {
+        "kicker": "Pilot health",
+        "description": "This signal helps prioritise corrections and must always be completed by a qualitative review."
+      },
+      "signal": {
+        "AwaitingObservations": "Awaiting observations",
+        "NeedsAttention": "Attention required",
+        "Monitor": "Monitor",
+        "Encouraging": "Encouraging signal"
+      },
+      "metrics": {
+        "ariaLabel": "Aggregate Park Fit pilot indicators",
+        "started": "Searches started",
+        "completed": "Searches completed",
+        "abandoned": "Searches abandoned",
+        "noResult": "No result",
+        "unknown": "Significant unknowns",
+        "explanations": "Explanations opened",
+        "comparisons": "Comparisons opened",
+        "reports": "Sources reported",
+        "outdated": "Outdated sources"
+      },
+      "chart": {
+        "title": "Daily activity",
+        "subtitle": "Completed searches and source reports, grouped by day.",
+        "completed": "Completed searches",
+        "reports": "Reports"
+      },
+      "breakdown": {
+        "results": "Result volume",
+        "unknown": "Unknown-data level",
+        "issues": "Data gaps encountered",
+        "zeroResultIssues": "Causes of empty results",
+        "empty": "No signal during this period."
+      },
+      "resultBand": {
+        "None": "No park",
+        "One": "One park",
+        "TwoToFour": "Two to four parks",
+        "FiveOrMore": "Five parks or more"
+      },
+      "unknownLevel": {
+        "None": "No unknowns",
+        "Limited": "Limited unknowns",
+        "Significant": "Significant unknowns"
+      },
+      "privacy": {
+        "title": "Aggregated on write",
+        "description": "MongoDB receives shared daily counters only. No identifier, criterion, searched park, coordinate, session or individual journey is retained."
       }
     },
     "parkFounders": {

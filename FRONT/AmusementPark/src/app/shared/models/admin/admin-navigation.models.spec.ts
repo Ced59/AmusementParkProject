@@ -28,6 +28,7 @@ describe('ADMIN_NAVIGATION_ITEMS', () => {
       'social-share',
       'passport-beta',
       'park-fit-data-quality',
+      'park-fit-pilot',
       'social-publications',
       'rating-rankings',
       'share-moderation',

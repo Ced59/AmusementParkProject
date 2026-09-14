@@ -47,7 +47,8 @@ public sealed class PublicParkFitControllerTests
                 MockBehavior.Strict);
         PublicParkFitController controller = new PublicParkFitController(
             handler.Object,
-            reportHandler.Object);
+            reportHandler.Object,
+            BuildPilotHandler().Object);
         ParkFitSearchRequestDto request = new ParkFitSearchRequestDto
         {
             EvaluationDate = evaluationDate,
@@ -93,7 +94,8 @@ public sealed class PublicParkFitControllerTests
             .ReturnsAsync(ApplicationResult.Success());
         PublicParkFitController controller = new PublicParkFitController(
             searchHandler.Object,
-            reportHandler.Object);
+            reportHandler.Object,
+            BuildPilotHandler().Object);
         SubmitParkFitSourceReportRequestDto request = new SubmitParkFitSourceReportRequestDto
         {
             ParkId = "park-1",
@@ -123,7 +125,8 @@ public sealed class PublicParkFitControllerTests
                 MockBehavior.Strict);
         PublicParkFitController controller = new PublicParkFitController(
             searchHandler.Object,
-            reportHandler.Object);
+            reportHandler.Object,
+            BuildPilotHandler().Object);
 
         IActionResult response = await controller.ReportAsync(
             new SubmitParkFitSourceReportRequestDto
@@ -167,5 +170,61 @@ public sealed class PublicParkFitControllerTests
         EnableRateLimitingAttribute reportRateLimit = Assert.IsType<EnableRateLimitingAttribute>(
             reportAction.GetCustomAttribute<EnableRateLimitingAttribute>());
         Assert.Equal(RateLimitPolicyNames.ParkFitReports, reportRateLimit.PolicyName);
+
+        MethodInfo pilotAction = typeof(PublicParkFitController).GetMethod(
+            nameof(PublicParkFitController.CapturePilotObservationAsync))!;
+        HttpPostAttribute pilotPost = Assert.IsType<HttpPostAttribute>(
+            pilotAction.GetCustomAttribute<HttpPostAttribute>());
+        Assert.Equal("pilot-events", pilotPost.Template);
+        EnableRateLimitingAttribute pilotRateLimit = Assert.IsType<EnableRateLimitingAttribute>(
+            pilotAction.GetCustomAttribute<EnableRateLimitingAttribute>());
+        Assert.Equal(RateLimitPolicyNames.ParkFitPilotEvents, pilotRateLimit.PolicyName);
+    }
+
+    [Fact]
+    public async Task CapturePilotObservationAsync_ShouldAcceptOnlyAggregateDimensions()
+    {
+        Mock<IQueryHandler<
+            SearchParksByFitQuery,
+            ApplicationResult<ParkFitSearchResult>>> searchHandler =
+            new(MockBehavior.Strict);
+        Mock<ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult>> reportHandler =
+            new(MockBehavior.Strict);
+        Mock<ICommandHandler<CaptureParkFitPilotObservationCommand, ApplicationResult>> pilotHandler =
+            BuildPilotHandler();
+        pilotHandler.Setup(handler => handler.HandleAsync(
+                It.Is<CaptureParkFitPilotObservationCommand>(command =>
+                    command.EventKind == ParkFitPilotEventKind.SearchCompleted
+                    && command.ResultBand == ParkFitPilotResultBand.TwoToFour
+                    && command.QualityIssues.Single()
+                        == AmusementPark.Core.Domain.Parks.ParkFitDataQualityIssue.StaleEvidence),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult.Success());
+        PublicParkFitController controller = new(
+            searchHandler.Object,
+            reportHandler.Object,
+            pilotHandler.Object);
+
+        IActionResult response = await controller.CapturePilotObservationAsync(
+            new CaptureParkFitPilotObservationRequestDto
+            {
+                EventKind = "SearchCompleted",
+                ResultBand = "TwoToFour",
+                UnknownLevel = "Limited",
+                DurationBand = "UnderOneAndHalfSeconds",
+                MethodVersion = "park-fit-2026-01",
+                QualityIssues = ["StaleEvidence"],
+            },
+            CancellationToken.None);
+
+        Assert.IsType<AcceptedResult>(response);
+        pilotHandler.VerifyAll();
+    }
+
+    private static Mock<ICommandHandler<CaptureParkFitPilotObservationCommand, ApplicationResult>>
+        BuildPilotHandler()
+    {
+        return new Mock<ICommandHandler<CaptureParkFitPilotObservationCommand, ApplicationResult>>(
+            MockBehavior.Strict);
     }
 }

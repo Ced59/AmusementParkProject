@@ -1,0 +1,16 @@
+{
+  "admin": {
+    "dashboard": { "shortcuts": { "parkFitPilot": "Meet het nut van Park Fit met anonieme, geaggregeerde indicatoren." } },
+    "parkFitPilot": {
+      "navTitle": "Park Fit-pilot", "kicker": "Productobservatie", "title": "Sturing van de Park Fit-pilot", "subtitle": "Herken nuttige zoekopdrachten, lege resultaten en te verbeteren gegevens zonder bezoekerscriteria op te slaan.",
+      "loading": "Park Fit-indicatoren laden…", "loadError": "De Park Fit-indicatoren konden niet worden geladen.", "empty": "Geen Park Fit-activiteit in deze periode.",
+      "filters": { "fromUtc": "Van", "toUtc": "Tot" }, "decision": { "kicker": "Gezondheid van de pilot", "description": "Dit signaal helpt correcties te prioriteren en moet altijd kwalitatief worden gecontroleerd." },
+      "signal": { "AwaitingObservations": "Wachten op observaties", "NeedsAttention": "Aandacht nodig", "Monitor": "Volgen", "Encouraging": "Bemoedigend signaal" },
+      "metrics": { "ariaLabel": "Geaggregeerde indicatoren van de Park Fit-pilot", "started": "Gestarte zoekopdrachten", "completed": "Voltooide zoekopdrachten", "abandoned": "Afgebroken zoekopdrachten", "noResult": "Zonder resultaat", "unknown": "Veel onbekende gegevens", "explanations": "Geopende uitleg", "comparisons": "Geopende vergelijkingen", "reports": "Gemelde bronnen", "outdated": "Verouderde bronnen" },
+      "chart": { "title": "Dagelijkse activiteit", "subtitle": "Voltooide zoekopdrachten en bronmeldingen per dag.", "completed": "Voltooide zoekopdrachten", "reports": "Meldingen" },
+      "breakdown": { "results": "Aantal resultaten", "unknown": "Niveau onbekende gegevens", "issues": "Aangetroffen gegevenshiaten", "zeroResultIssues": "Oorzaken van lege resultaten", "empty": "Geen signalen in deze periode." },
+      "resultBand": { "None": "Geen park", "One": "Eén park", "TwoToFour": "Twee tot vier parken", "FiveOrMore": "Vijf parken of meer" }, "unknownLevel": { "None": "Geen onbekende gegevens", "Limited": "Beperkt onbekende gegevens", "Significant": "Veel onbekende gegevens" },
+      "privacy": { "title": "Direct geaggregeerd", "description": "MongoDB ontvangt alleen gedeelde dagtellers. Identificatoren, criteria, gezochte parken, coördinaten, sessies en individuele trajecten worden niet bewaard." }
+    }
+  }
+}
