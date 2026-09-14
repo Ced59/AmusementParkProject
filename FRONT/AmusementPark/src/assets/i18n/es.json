@@ -5047,6 +5047,7 @@
       },
       "rows": {
         "overall": "Correspondencia general",
+        "groupCompatibility": "Compatibilidad de todo el grupo",
         "together": "Experiencias en común",
         "unknowns": "Datos desconocidos",
         "opening": "Apertura en la fecha elegida",

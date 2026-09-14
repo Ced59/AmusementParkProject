@@ -10,7 +10,7 @@ import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detai
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { buildParkFitComparisonSections } from '../mappers/park-fit-comparison.mapper';
-import { formatParkFitDate } from '../mappers/park-fit-result-display.helpers';
+import { formatParkFitDate, parkFitScoreReasonKey } from '../mappers/park-fit-result-display.helpers';
 import { ParkFitComparisonSection, ParkFitComparisonSelection } from '../models/park-fit-comparison.models';
 import { ParkFitSearchFacade } from '../state/park-fit-search.facade';
 
@@ -97,6 +97,10 @@ export class ParkFitComparisonPageComponent implements OnInit {
 
   protected rounded(value: number): number {
     return Math.round(value);
+  }
+
+  protected scoreReasonKey(reason: string): string {
+    return parkFitScoreReasonKey(reason);
   }
 
   private verifiedDateLabel(value: string | null): string {

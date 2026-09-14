@@ -149,6 +149,35 @@
   display: inline-flex;
   gap: 0.35rem;
   align-items: center;
+  min-height: 44px;
+  padding-block: 0.55rem;
+}
+
+.park-fit-comparison__reasons,
+.park-fit-comparison__cell-reasons {
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.park-fit-comparison__reasons {
+  display: grid;
+  gap: 0.25rem;
+  padding-block: 0.35rem;
+}
+
+.park-fit-comparison__reasons > strong {
+  color: var(--c-gold);
+  font-size: 0.85rem;
+}
+
+.park-fit-comparison__reasons ul,
+.park-fit-comparison__cell-reasons {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.park-fit-comparison__cell-reasons {
+  font-size: 0.9rem;
 }
 
 .park-fit-comparison__toolbar {

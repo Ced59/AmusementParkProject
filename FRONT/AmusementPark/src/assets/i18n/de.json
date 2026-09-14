@@ -5047,6 +5047,7 @@
       },
       "rows": {
         "overall": "Gesamtübereinstimmung",
+        "groupCompatibility": "Kompatibilität der ganzen Gruppe",
         "together": "Gemeinsame Erlebnisse",
         "unknowns": "Unbekannte Angaben",
         "opening": "Öffnung am gewählten Tag",

@@ -13,6 +13,7 @@ export interface ParkFitComparisonCell {
   secondaryParams: Record<string, string | number>;
   statusKey: string | null;
   statusParams: Record<string, string | number>;
+  reasonKeys: string[];
   linkUrl: string | null;
   fingerprint: string;
 }

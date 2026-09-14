@@ -10,9 +10,36 @@ describe('buildParkFitComparisonSections', () => {
     const rows = sections.flatMap((section) => section.rows);
 
     expect(rows.find((row) => row.id === 'overall')?.isDifferent).toBe(true);
+    expect(rows.find((row) => row.id === 'group-compatibility')).toBeDefined();
     expect(rows.find((row) => row.id === 'member-1')?.isDifferent).toBe(true);
     expect(rows.find((row) => row.id === 'member-1')?.cells[0]?.primaryParams['notApplicable']).toBe(0);
     expect(rows.find((row) => row.id === 'schedule')?.cells).toHaveLength(2);
+  });
+
+  it('maps global group compatibility and score reasons explicitly', () => {
+    const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    first.reasons = ['IncompleteCoverageCapApplied'];
+    first.components.unshift({
+      kind: 'GroupCompatibility',
+      state: 'Known',
+      value: 88,
+      coveragePercent: 100,
+      confidence: 'High',
+      baseWeightPercent: 60,
+      applicableWeightPercent: 60,
+      knownScoreWeightPercent: 60,
+      contribution: 52.8,
+      reasons: []
+    });
+
+    const rows = buildParkFitComparisonSections([first, second], (): string => 'date')
+      .flatMap((section) => section.rows);
+
+    expect(rows.find((row) => row.id === 'group-compatibility')?.cells[0]?.primaryParams['score']).toBe(88);
+    expect(rows.find((row) => row.id === 'overall')?.cells[0]?.reasonKeys)
+      .toEqual(['parkFit.results.scoreReasons.IncompleteCoverageCapApplied']);
+    expect(rows.find((row) => row.id === 'overall')?.isDifferent).toBe(true);
   });
 
   it('compares the verification date exactly as visitors see it', () => {

@@ -270,6 +270,7 @@
       },
       "rows": {
         "overall": "Correspondance globale",
+        "groupCompatibility": "Compatibilité de tout le groupe",
         "together": "Expériences en commun",
         "unknowns": "Inconnues",
         "opening": "Ouverture à la date choisie",

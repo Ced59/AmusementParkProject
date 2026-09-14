@@ -5047,6 +5047,7 @@
       },
       "rows": {
         "overall": "Overall match",
+        "groupCompatibility": "Whole-group compatibility",
         "together": "Experiences together",
         "unknowns": "Unknowns",
         "opening": "Opening on the chosen date",

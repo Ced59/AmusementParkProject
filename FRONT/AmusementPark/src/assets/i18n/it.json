@@ -5047,6 +5047,7 @@
       },
       "rows": {
         "overall": "Corrispondenza complessiva",
+        "groupCompatibility": "Compatibilità dell'intero gruppo",
         "together": "Esperienze insieme",
         "unknowns": "Dati sconosciuti",
         "opening": "Apertura nella data scelta",

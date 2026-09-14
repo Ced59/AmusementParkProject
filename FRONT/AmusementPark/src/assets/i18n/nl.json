@@ -5047,6 +5047,7 @@
       },
       "rows": {
         "overall": "Algemene match",
+        "groupCompatibility": "Compatibiliteit van de hele groep",
         "together": "Ervaringen samen",
         "unknowns": "Onbekende gegevens",
         "opening": "Open op de gekozen datum",

@@ -9,6 +9,7 @@ import {
   parkFitComponentStateKey,
   parkFitConfidenceKey,
   parkFitQualityKey,
+  parkFitScoreReasonKey,
   parkFitScoreStateKey,
   resolveParkFitSourceUrl
 } from './park-fit-result-display.helpers';
@@ -31,6 +32,13 @@ export function buildParkFitComparisonSections(
       titleKey: 'parkFit.comparison.sections.decision',
       rows: [
         buildRow('overall', 'parkFit.comparison.rows.overall', 'pi pi-compass', parks, buildOverallCell),
+        buildRow(
+          'group-compatibility',
+          'parkFit.comparison.rows.groupCompatibility',
+          'pi pi-sitemap',
+          parks,
+          (park: ParkFitSearchPark): ParkFitComparisonCell => buildComponentCell(park, 'GroupCompatibility')
+        ),
         buildRow('together', 'parkFit.comparison.rows.together', 'pi pi-users', parks, buildTogetherCell),
         buildRow('unknowns', 'parkFit.comparison.rows.unknowns', 'pi pi-question-circle', parks, buildUnknownCell),
         buildRow('opening', 'parkFit.comparison.rows.opening', 'pi pi-calendar', parks, buildOpeningCell)
@@ -105,6 +113,7 @@ function buildOverallCell(park: ParkFitSearchPark): ParkFitComparisonCell {
   const statusKey: string = renderedScoreCeiling !== null
     ? 'parkFit.comparison.values.cappedState'
     : parkFitScoreStateKey(park.scoreState);
+  const reasonKeys: string[] = park.reasons.map(parkFitScoreReasonKey);
   return cell(
     park,
     score === null ? 'parkFit.comparison.values.scoreUnavailable' : 'parkFit.comparison.values.score',
@@ -114,9 +123,10 @@ function buildOverallCell(park: ParkFitSearchPark): ParkFitComparisonCell {
     parkFitConfidenceKey(park.confidence),
     {},
     null,
-    `${score ?? 'unknown'}|${Math.round(park.coveragePercent)}|${park.confidence}|${park.scoreState}|${renderedScoreCeiling ?? 'none'}`,
+    `${score ?? 'unknown'}|${Math.round(park.coveragePercent)}|${park.confidence}|${park.scoreState}|${renderedScoreCeiling ?? 'none'}|${reasonKeys.join(',')}`,
     statusKey,
-    renderedScoreCeiling === null ? {} : { ceiling: renderedScoreCeiling }
+    renderedScoreCeiling === null ? {} : { ceiling: renderedScoreCeiling },
+    reasonKeys
   );
 }
 
@@ -256,7 +266,8 @@ function cell(
   linkUrl: string | null,
   fingerprint: string,
   statusKey: string | null = null,
-  statusParams: Record<string, string | number> = {}
+  statusParams: Record<string, string | number> = {},
+  reasonKeys: string[] = []
 ): ParkFitComparisonCell {
   return {
     parkId: park.parkId,
@@ -266,6 +277,7 @@ function cell(
     secondaryParams,
     statusKey,
     statusParams,
+    reasonKeys,
     linkUrl,
     fingerprint
   };
