@@ -70,7 +70,8 @@ internal sealed class ParkFitDataQualityItemAssessor
             AddMappedIssues(evidenceIssues, issues);
         }
 
-        if (HasContradictoryHeightRange(conditions))
+        if (AttractionHeightRangeConsistencyEvaluator.HasUnusableHeightCondition(conditions)
+            || AttractionHeightRangeConsistencyEvaluator.HasContradiction(conditions))
         {
             issues.Add(ParkFitDataQualityIssue.AmbiguousRestriction);
         }
@@ -133,25 +134,4 @@ internal sealed class ParkFitDataQualityItemAssessor
         }
     }
 
-    private static bool HasContradictoryHeightRange(
-        IReadOnlyCollection<AttractionAccessCondition> conditions)
-    {
-        double? minimum = conditions
-            .Where(static condition => condition.Type is AttractionAccessConditionType.MinHeight
-                or AttractionAccessConditionType.MinHeightAccompanied)
-            .Where(static condition => condition.Value.HasValue)
-            .Select(static condition => condition.Value!.Value)
-            .DefaultIfEmpty()
-            .Max();
-        double? maximum = conditions
-            .Where(static condition => condition.Type == AttractionAccessConditionType.MaxHeight)
-            .Where(static condition => condition.Value.HasValue)
-            .Select(static condition => condition.Value!.Value)
-            .DefaultIfEmpty()
-            .Min();
-
-        return minimum.GetValueOrDefault() > 0
-            && maximum.GetValueOrDefault() > 0
-            && minimum.Value > maximum.Value;
-    }
 }

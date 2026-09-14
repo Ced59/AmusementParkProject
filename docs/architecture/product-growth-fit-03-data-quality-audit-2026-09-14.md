@@ -44,6 +44,12 @@ source générale et une plage de taille dont le minimum dépasse le maximum est
 signalée comme ambiguë. Le parc doit lui-même avoir un type et au moins une langue
 publique documentée.
 
+Les plages de taille sont converties en centimètres avant comparaison. Une règle en
+pouces ne peut donc pas créer ou masquer une contradiction par sa seule unité. Deux
+règles ne sont comparées que si leurs portées peuvent s'appliquer ensemble et si
+leurs périodes d'effet se chevauchent ; des véhicules, sièges ou périodes distincts
+ne produisent pas de faux blocage.
+
 ```mermaid
 flowchart TD
     P[Parc] --> V{Découvrable publiquement ?}
@@ -80,6 +86,10 @@ classDiagram
     class ParkFitDataQualityItemAssessor {
         +Assess(item, evaluatedAtUtc, maxAge)
     }
+    class AttractionHeightRangeConsistencyEvaluator {
+        +HasUnusableHeightCondition(conditions)
+        +HasContradiction(conditions)
+    }
     class ParkFitDataQualityItemAssessment {
         +ParkItemId
         +ParkItemName
@@ -96,6 +106,7 @@ classDiagram
     GetParkFitDataQualityPageQueryHandler --> ParkFitDataQualityAssessor
     ParkFitDataQualityAssessor --> ParkFitDataQualityItemAssessor
     ParkFitDataQualityItemAssessor --> AttractionAccessConditionEvidenceEvaluator
+    ParkFitDataQualityItemAssessor --> AttractionHeightRangeConsistencyEvaluator
     ParkFitDataQualityAssessor --> ParkFitDataQualityAssessment
     ParkFitDataQualityAssessment *-- ParkFitDataQualityItemAssessment
     AdminParkFitDataQualityController --> GetParkFitDataQualityPageQueryHandler
@@ -196,7 +207,7 @@ ARIA de progression. Les statuts ne reposent pas uniquement sur la couleur.
 
 | Niveau | Comportements couverts |
 |---|---|
-| Core | parc prêt, type/langue/classification manquants, accessibilité non sourcée, règles manquantes, calendrier absent, preuves périmées, contradiction min/max |
+| Core | parc prêt, type/langue/classification manquants, accessibilité non sourcée, règles manquantes, calendrier absent, preuves périmées, unités mixtes et contradiction min/max limitée aux portées/périodes compatibles |
 | Application | pagination, lectures par lots, agrégation, rejet d'une pagination invalide avant accès aux données |
 | WebAPI | contrat paginé, mapping des noms et anomalies, authentification et autorisation admin |
 | Angular | contrat HTTP, résumé métier de la façade, pagination, conservation des données sur erreur, liens d'édition, reflow mobile |

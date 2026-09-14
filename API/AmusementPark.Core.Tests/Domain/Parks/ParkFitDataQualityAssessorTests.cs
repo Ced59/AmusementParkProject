@@ -98,6 +98,96 @@ public sealed class ParkFitDataQualityAssessorTests
     }
 
     [Fact]
+    public void Assess_WhenMixedHeightUnitsDescribeAValidRange_ShouldNotFlagAmbiguity()
+    {
+        AttractionAccessCondition minimum = BuildCondition();
+        minimum.Value = 130;
+        AttractionAccessCondition maximum = BuildCondition();
+        maximum.Type = AttractionAccessConditionType.MaxHeight;
+        maximum.Value = 55;
+        maximum.Unit = AttractionAccessConditionUnit.Inch;
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { BuildAttraction(minimum, maximum) },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.EligibleForFitComparison, result.Status);
+        Assert.DoesNotContain(ParkFitDataQualityIssue.AmbiguousRestriction, result.Issues);
+    }
+
+    [Fact]
+    public void Assess_WhenMixedHeightUnitsDescribeAContradiction_ShouldFlagAmbiguity()
+    {
+        AttractionAccessCondition minimum = BuildCondition();
+        minimum.Value = 55;
+        minimum.Unit = AttractionAccessConditionUnit.Inch;
+        AttractionAccessCondition maximum = BuildCondition();
+        maximum.Type = AttractionAccessConditionType.MaxHeight;
+        maximum.Value = 130;
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { BuildAttraction(minimum, maximum) },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.Insufficient, result.Status);
+        Assert.Contains(ParkFitDataQualityIssue.AmbiguousRestriction, result.Issues);
+    }
+
+    [Fact]
+    public void Assess_WhenContradictoryHeightRulesTargetDifferentVehicles_ShouldNotFlagAmbiguity()
+    {
+        AttractionAccessCondition minimum = BuildCondition();
+        minimum.Value = 150;
+        minimum.Scope = AttractionAccessConditionScope.Vehicle;
+        minimum.ScopeDetail = "vehicle-a";
+        AttractionAccessCondition maximum = BuildCondition();
+        maximum.Type = AttractionAccessConditionType.MaxHeight;
+        maximum.Value = 120;
+        maximum.Scope = AttractionAccessConditionScope.Vehicle;
+        maximum.ScopeDetail = "vehicle-b";
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { BuildAttraction(minimum, maximum) },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.EligibleForFitComparison, result.Status);
+        Assert.DoesNotContain(ParkFitDataQualityIssue.AmbiguousRestriction, result.Issues);
+    }
+
+    [Fact]
+    public void Assess_WhenContradictoryHeightRulesHaveDisjointPeriods_ShouldNotFlagAmbiguity()
+    {
+        AttractionAccessCondition minimum = BuildCondition();
+        minimum.Value = 150;
+        minimum.EffectiveFrom = new DateOnly(2026, 1, 1);
+        minimum.EffectiveTo = new DateOnly(2026, 6, 30);
+        AttractionAccessCondition maximum = BuildCondition();
+        maximum.Type = AttractionAccessConditionType.MaxHeight;
+        maximum.Value = 120;
+        maximum.EffectiveFrom = new DateOnly(2026, 7, 1);
+        maximum.EffectiveTo = new DateOnly(2026, 12, 31);
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { BuildAttraction(minimum, maximum) },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.EligibleForFitComparison, result.Status);
+        Assert.DoesNotContain(ParkFitDataQualityIssue.AmbiguousRestriction, result.Issues);
+    }
+
+    [Fact]
     public void Assess_WhenRecommendationStructureIsIncomplete_ShouldRemainInsufficient()
     {
         Park park = BuildDiscoverablePark();
