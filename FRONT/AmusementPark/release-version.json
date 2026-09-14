@@ -1,6 +1,20 @@
 {
-  "version": "5.3.13",
+  "version": "5.3.14",
   "history": [
+    {
+      "version": "5.3.14",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "La future aide au choix d’un parc repose désormais sur des règles transparentes.",
+        "en": "The future park finder now rests on transparent rules.",
+        "de": "Die künftige Parkauswahl basiert jetzt auf transparenten Regeln.",
+        "nl": "De toekomstige parkhulp is nu gebaseerd op transparante regels.",
+        "it": "La futura guida alla scelta del parco si basa ora su regole trasparenti.",
+        "es": "La futura ayuda para elegir parque se basa ahora en reglas transparentes.",
+        "pl": "Przyszła pomoc w wyborze parku opiera się teraz na przejrzystych zasadach.",
+        "pt": "A futura ajuda para escolher um parque assenta agora em regras transparentes."
+      }
+    },
     {
       "version": "5.3.13",
       "releasedAt": "2026-09-14",
