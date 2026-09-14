@@ -1,6 +1,20 @@
 {
-  "version": "5.3.11",
+  "version": "5.3.12",
   "history": [
+    {
+      "version": "5.3.12",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "La mesure des partages protège désormais aussi leurs titres personnalisés.",
+        "en": "Share measurement now also protects personalized titles.",
+        "de": "Die Messung geteilter Inhalte schützt jetzt auch personalisierte Titel.",
+        "nl": "De meting van gedeelde inhoud beschermt nu ook gepersonaliseerde titels.",
+        "it": "La misurazione delle condivisioni ora protegge anche i titoli personalizzati.",
+        "es": "La medición de los contenidos compartidos ahora también protege los títulos personalizados.",
+        "pl": "Pomiar udostępnień chroni teraz także spersonalizowane tytuły.",
+        "pt": "A medição das partilhas protege agora também os títulos personalizados."
+      }
+    },
     {
       "version": "5.3.11",
       "releasedAt": "2026-09-14",
