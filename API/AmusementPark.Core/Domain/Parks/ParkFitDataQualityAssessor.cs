@@ -18,7 +18,8 @@ public sealed class ParkFitDataQualityAssessor
         ParkOpeningHoursScheduleSummary? openingHoursSummary,
         DateTime evaluatedAtUtc,
         TimeSpan maximumVerificationAge,
-        bool suspended = false)
+        bool suspended = false,
+        DateOnly? applicabilityDate = null)
     {
         ArgumentNullException.ThrowIfNull(park);
         ArgumentNullException.ThrowIfNull(parkItems);
@@ -38,7 +39,11 @@ public sealed class ParkFitDataQualityAssessor
             .OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
             .ToList();
         List<ParkFitDataQualityItemAssessment> itemAssessments = attractions
-            .Select(item => this.itemAssessor.Assess(item, evaluatedAtUtc, maximumVerificationAge))
+            .Select(item => this.itemAssessor.Assess(
+                item,
+                evaluatedAtUtc,
+                maximumVerificationAge,
+                applicabilityDate ?? DateOnly.FromDateTime(evaluatedAtUtc)))
             .ToList();
 
         int withConditionsCount = itemAssessments.Count(static item => item.ConditionCount > 0);

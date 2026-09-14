@@ -57,4 +57,32 @@ public sealed class ParkOpeningHoursCalendarBuilderTests
         Assert.Empty(day.TimeRanges);
         Assert.Equal("Maintenance", Assert.Single(day.Reasons).Value);
     }
+
+    [Fact]
+    public void BuildCalendar_WhenSingleDayIsMaximumDate_ShouldNotOverflow()
+    {
+        ParkOpeningHoursSchedule schedule = new ParkOpeningHoursSchedule
+        {
+            ParkId = "park-1",
+            TimeZoneId = "UTC",
+            DateOverrides = new List<ParkOpeningHoursDateOverride>
+            {
+                new ParkOpeningHoursDateOverride
+                {
+                    LocalDate = DateOnly.MaxValue,
+                    IsClosed = true,
+                },
+            },
+        };
+        ParkOpeningHoursCalendarBuilder builder = new ParkOpeningHoursCalendarBuilder();
+
+        ParkOpeningHoursCalendar calendar = builder.BuildCalendar(
+            schedule,
+            DateOnly.MaxValue,
+            DateOnly.MaxValue);
+
+        ParkOpeningHoursDay day = Assert.Single(calendar.Days);
+        Assert.Equal(DateOnly.MaxValue, day.LocalDate);
+        Assert.True(day.IsClosed);
+    }
 }

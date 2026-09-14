@@ -39,18 +39,18 @@ internal sealed class ParkFitDataQualityItemAssessor
     public ParkFitDataQualityItemAssessment Assess(
         ParkItem item,
         DateTime evaluatedAtUtc,
-        TimeSpan maximumVerificationAge)
+        TimeSpan maximumVerificationAge,
+        DateOnly applicabilityDate)
     {
         ArgumentNullException.ThrowIfNull(item);
 
         IReadOnlyCollection<AttractionAccessCondition> allConditions = item.AttractionDetails is null
             ? Array.Empty<AttractionAccessCondition>()
             : item.AttractionDetails.AccessConditions;
-        DateOnly evaluationDate = DateOnly.FromDateTime(evaluatedAtUtc);
         IReadOnlyCollection<AttractionAccessCondition> conditions = allConditions
             .Where(condition => AttractionAccessConditionApplicabilityEvaluator.IsApplicableOn(
                 condition,
-                evaluationDate))
+                applicabilityDate))
             .ToList();
         HashSet<ParkFitDataQualityIssue> issues = new HashSet<ParkFitDataQualityIssue>();
         int decisionEligibleConditionCount = 0;

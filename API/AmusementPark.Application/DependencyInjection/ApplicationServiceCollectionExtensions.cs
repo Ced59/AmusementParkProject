@@ -15,6 +15,7 @@ using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.Application.Features.ParkWeather.Services;
+using AmusementPark.Application.Features.ParkFit.Services;
 using AmusementPark.Application.Features.Parks.Services;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
@@ -80,6 +81,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<ParkOpeningHoursAdminStatusResolver>();
         services.AddScoped<ParkOpeningHoursCoverageNotificationProcessor>();
         services.AddSingleton<ParkOpeningHoursCalendarBuilder>();
+        services.AddSingleton<ParkFitSearchParkEvaluator>();
         services.AddScoped<ParkWeatherRefreshStarter>();
         services.AddScoped<ParkWeatherRefreshOrchestrator>();
         services.AddSingleton<ParkWeatherLocalDateResolver>();
