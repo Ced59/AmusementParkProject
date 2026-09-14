@@ -1997,24 +1997,38 @@
       "operations": {
         "state": {
           "Active": "Recommandations actives",
-          "Suspended": "Recommandations suspendues"
+          "Suspended": "Recommandations suspendues",
+          "NotActivated": "Non activé dans Park Fit"
         },
         "stateHelp": {
-          "Active": "Ce parc peut apparaître dans Park Fit si sa qualité est suffisante.",
-          "Suspended": "Ce parc reste public, mais il est exclu de Park Fit."
+          "Active": "Ce parc fait partie de Park Fit tant que ses données restent éligibles.",
+          "Suspended": "Ce parc reste public, mais il est temporairement exclu de Park Fit.",
+          "NotActivated": "Publier un parc ne l’ajoute pas automatiquement à Park Fit."
         },
         "action": {
-          "Active": "Réactiver dans Park Fit",
-          "Suspended": "Suspendre dans Park Fit"
+          "Activate": "Activer Park Fit",
+          "Restore": "Rétablir les recommandations",
+          "Suspend": "Suspendre temporairement",
+          "Deactivate": "Retirer de Park Fit"
         },
+        "confirmTitle": {
+          "Activate": "Activer ce parc",
+          "Restore": "Rétablir ce parc",
+          "Suspend": "Suspendre ce parc",
+          "Deactivate": "Retirer ce parc"
+        },
+        "qualityRequired": "L’activation sera disponible quand la qualité des données atteindra le statut Prêt pour la comparaison.",
         "reasonLabel": "Justification obligatoire",
         "reasonPlaceholder": "Explique la vérification ou la correction attendue…",
         "confirm": "Confirmer la décision",
+        "cancel": "Annuler",
         "saving": "Enregistrement…",
         "history": "Historique récent des décisions",
         "decision": {
           "Suspended": "Suspendu",
-          "Restored": "Réactivé"
+          "Restored": "Rétabli",
+          "Activated": "Activé",
+          "Deactivated": "Retiré"
         },
         "error": "La décision n’a pas pu être enregistrée. Les données ont peut-être changé ; actualise puis réessaie."
       },

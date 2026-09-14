@@ -286,7 +286,60 @@ public sealed class SearchParksByFitQueryHandlerTests
         ParkFitSearchResult value = Assert.IsType<ParkFitSearchResult>(result.Value);
         Assert.Empty(value.Parks);
         Assert.Equal(1, value.OperationallySuspendedCandidateCount);
+        Assert.Equal(0, value.NotActivatedCandidateCount);
         Assert.Equal(0, value.QualityRejectedCandidateCount);
+        items.Verify(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
+            It.IsAny<IReadOnlyCollection<string>>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        openingHours.Verify(repository => repository.GetSummariesByParkIdsAsync(
+            It.IsAny<IReadOnlyCollection<string>>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        openingHours.Verify(repository => repository.GetByParkIdsAsync(
+            It.IsAny<IReadOnlyCollection<string>>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenParkHasNoExplicitStatus_ShouldKeepItOutsideThePortfolio()
+    {
+        Park park = BuildPark("park-1", "Parc non activé");
+        Mock<IParkRepository> parks = BuildParkRepository(new[] { park }, totalItems: 1);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHours =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<IParkFitOperationalStatusRepository> operationalStatuses =
+            new Mock<IParkFitOperationalStatusRepository>(MockBehavior.Strict);
+        items.Setup(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        openingHours.Setup(repository => repository.GetSummariesByParkIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>());
+        operationalStatuses.Setup(repository => repository.GetByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkFitOperationalStatus>());
+        SearchParksByFitQueryHandler handler = BuildHandler(
+            parks.Object,
+            items.Object,
+            openingHours.Object,
+            operationalStatuses.Object);
+
+        ApplicationResult<ParkFitSearchResult> result = await handler.HandleAsync(BuildQuery());
+
+        ParkFitSearchResult value = Assert.IsType<ParkFitSearchResult>(result.Value);
+        Assert.Empty(value.Parks);
+        Assert.Equal(1, value.NotActivatedCandidateCount);
+        Assert.Equal(0, value.OperationallySuspendedCandidateCount);
+        Assert.Equal(0, value.QualityRejectedCandidateCount);
+        items.Verify(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
+            It.IsAny<IReadOnlyCollection<string>>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        openingHours.Verify(repository => repository.GetSummariesByParkIdsAsync(
+            It.IsAny<IReadOnlyCollection<string>>(),
+            It.IsAny<CancellationToken>()), Times.Never);
         openingHours.Verify(repository => repository.GetByParkIdsAsync(
             It.IsAny<IReadOnlyCollection<string>>(),
             It.IsAny<CancellationToken>()), Times.Never);
@@ -329,7 +382,11 @@ public sealed class SearchParksByFitQueryHandlerTests
         defaultStatuses.Setup(repository => repository.GetByParkIdsAsync(
                 It.IsAny<IReadOnlyCollection<string>>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dictionary<string, ParkFitOperationalStatus>(StringComparer.Ordinal));
+            .ReturnsAsync((IReadOnlyCollection<string> ids, CancellationToken _) => ids
+                .ToDictionary(
+                    static id => id,
+                    static id => ParkFitOperationalStatus.CreateActive(id),
+                    StringComparer.Ordinal));
         return new SearchParksByFitQueryHandler(
             parks,
             items,

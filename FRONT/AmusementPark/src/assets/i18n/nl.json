@@ -1997,24 +1997,38 @@
       "operations": {
         "state": {
           "Active": "Aanbevelingen actief",
-          "Suspended": "Aanbevelingen opgeschort"
+          "Suspended": "Aanbevelingen opgeschort",
+          "NotActivated": "Niet geactiveerd voor Park Fit"
         },
         "stateHelp": {
-          "Active": "Dit park kan in Park Fit verschijnen als de gegevenskwaliteit voldoende is.",
-          "Suspended": "Het park blijft openbaar, maar wordt uitgesloten van Park Fit."
+          "Active": "Dit park maakt deel uit van Park Fit zolang de gegevens geschikt blijven.",
+          "Suspended": "Het park blijft openbaar, maar is tijdelijk uitgesloten van Park Fit.",
+          "NotActivated": "Een park publiceren voegt het niet automatisch toe aan Park Fit."
         },
         "action": {
-          "Active": "Herstellen in Park Fit",
-          "Suspended": "Opschorten in Park Fit"
+          "Activate": "Park Fit activeren",
+          "Restore": "Aanbevelingen herstellen",
+          "Suspend": "Tijdelijk opschorten",
+          "Deactivate": "Uit Park Fit verwijderen"
         },
+        "confirmTitle": {
+          "Activate": "Dit park activeren",
+          "Restore": "Dit park herstellen",
+          "Suspend": "Dit park opschorten",
+          "Deactivate": "Dit park verwijderen"
+        },
+        "qualityRequired": "Activeren kan zodra de gegevenskwaliteit de status Klaar om te vergelijken heeft.",
         "reasonLabel": "Verplichte motivering",
         "reasonPlaceholder": "Leg uit welke controle of correctie nodig is…",
         "confirm": "Beslissing bevestigen",
+        "cancel": "Annuleren",
         "saving": "Opslaan…",
         "history": "Recente beslissingen",
         "decision": {
           "Suspended": "Opgeschort",
-          "Restored": "Hersteld"
+          "Restored": "Hersteld",
+          "Activated": "Geactiveerd",
+          "Deactivated": "Verwijderd"
         },
         "error": "De beslissing kon niet worden opgeslagen. Vernieuw de gegevens en probeer opnieuw."
       },

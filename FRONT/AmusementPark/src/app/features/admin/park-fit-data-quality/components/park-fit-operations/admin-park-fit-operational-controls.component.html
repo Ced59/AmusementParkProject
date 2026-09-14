@@ -1,24 +1,50 @@
 <section
   class="park-fit-operational-controls"
-  [class.park-fit-operational-controls--suspended]="park.recommendationState === 'Suspended'">
-  <div>
-    <i [class]="park.recommendationState === 'Suspended' ? 'pi pi-pause-circle' : 'pi pi-check-circle'" aria-hidden="true"></i>
+  [class.park-fit-operational-controls--suspended]="park.recommendationState === 'Suspended'"
+  [class.park-fit-operational-controls--inactive]="park.recommendationState === 'NotActivated'">
+  <div class="park-fit-operational-controls__status">
+    <i [class]="stateIcon" aria-hidden="true"></i>
     <div>
       <strong>{{ ('admin.parkFitDataQuality.operations.state.' + park.recommendationState) | translate }}</strong>
       <span>{{ ('admin.parkFitDataQuality.operations.stateHelp.' + park.recommendationState) | translate }}</span>
     </div>
   </div>
-  <button
-    appUiButton
-    type="button"
-    [severity]="park.recommendationState === 'Active' ? 'danger' : 'success'"
-    [disabled]="processing"
-    (click)="toggle()">
-    {{ ('admin.parkFitDataQuality.operations.action.' + targetState) | translate }}
-  </button>
 
-  @if (expanded()) {
+  <div class="park-fit-operational-controls__actions">
+    @if (park.recommendationState === 'Active') {
+      <button appUiButton type="button" severity="warning" [disabled]="processing" (click)="open('Suspended')">
+        {{ 'admin.parkFitDataQuality.operations.action.Suspend' | translate }}
+      </button>
+      <button appUiButton type="button" severity="danger" [disabled]="processing" (click)="open('NotActivated')">
+        {{ 'admin.parkFitDataQuality.operations.action.Deactivate' | translate }}
+      </button>
+    } @else {
+      <button
+        appUiButton
+        type="button"
+        severity="success"
+        [disabled]="processing || !activationAllowed"
+        (click)="open('Active')">
+        {{ ('admin.parkFitDataQuality.operations.action.' + actionKey('Active')) | translate }}
+      </button>
+      @if (park.recommendationState === 'Suspended') {
+        <button appUiButton type="button" severity="danger" [disabled]="processing" (click)="open('NotActivated')">
+          {{ 'admin.parkFitDataQuality.operations.action.Deactivate' | translate }}
+        </button>
+      }
+    }
+  </div>
+
+  @if (park.recommendationState !== 'Active' && !activationAllowed) {
+    <p class="park-fit-operational-controls__quality-warning">
+      <i class="pi pi-lock" aria-hidden="true"></i>
+      {{ 'admin.parkFitDataQuality.operations.qualityRequired' | translate }}
+    </p>
+  }
+
+  @if (selectedTarget(); as targetState) {
     <form (ngSubmit)="confirm()">
+      <strong>{{ ('admin.parkFitDataQuality.operations.confirmTitle.' + actionKey(targetState)) | translate }}</strong>
       <label>
         <span>{{ 'admin.parkFitDataQuality.operations.reasonLabel' | translate }}</span>
         <textarea
@@ -31,9 +57,12 @@
       <button
         appUiButton
         type="submit"
-        [severity]="targetState === 'Suspended' ? 'danger' : 'success'"
+        [severity]="confirmationSeverity"
         [disabled]="processing || reason.value.trim().length === 0">
         {{ (processing ? 'admin.parkFitDataQuality.operations.saving' : 'admin.parkFitDataQuality.operations.confirm') | translate }}
+      </button>
+      <button appUiButton type="button" severity="secondary" [disabled]="processing" (click)="cancel()">
+        {{ 'admin.parkFitDataQuality.operations.cancel' | translate }}
       </button>
     </form>
   }

@@ -22,8 +22,6 @@ public sealed class GetParkFitDataQualityPageQueryHandler
         GetParkFitDataQualityPageQuery,
         ApplicationResult<PagedResult<ParkFitDataQualityOperationsResult>>>
 {
-    public static readonly TimeSpan MaximumVerificationAge = TimeSpan.FromDays(365);
-
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IParkOpeningHoursRepository openingHoursRepository;
@@ -131,7 +129,7 @@ public sealed class GetParkFitDataQualityPageQueryHandler
                         ? summary
                         : null,
                     evaluatedAtUtc,
-                    MaximumVerificationAge),
+                    ParkFitSearchLimits.MaximumVerificationAge),
                 operationalStatuses.GetValueOrDefault(park.Id),
                 pendingReports.GetValueOrDefault(park.Id)))
             .ToList();
@@ -150,7 +148,7 @@ public sealed class GetParkFitDataQualityPageQueryHandler
         int pendingReportCount)
     {
         ParkFitOperationalStatus status = operationalStatus
-            ?? ParkFitOperationalStatus.CreateActive(assessment.ParkId);
+            ?? ParkFitOperationalStatus.CreateNotActivated(assessment.ParkId);
         return new ParkFitDataQualityOperationsResult
         {
             Assessment = assessment,

@@ -1997,24 +1997,38 @@
       "operations": {
         "state": {
           "Active": "Recomendações ativas",
-          "Suspended": "Recomendações suspensas"
+          "Suspended": "Recomendações suspensas",
+          "NotActivated": "Não ativado no Park Fit"
         },
         "stateHelp": {
-          "Active": "Este parque pode aparecer no Park Fit se a qualidade dos dados for suficiente.",
-          "Suspended": "O parque continua público, mas fica excluído do Park Fit."
+          "Active": "Este parque faz parte do Park Fit enquanto os dados continuarem aptos.",
+          "Suspended": "O parque continua público, mas fica temporariamente excluído do Park Fit.",
+          "NotActivated": "Publicar um parque não o adiciona automaticamente ao Park Fit."
         },
         "action": {
-          "Active": "Reativar no Park Fit",
-          "Suspended": "Suspender no Park Fit"
+          "Activate": "Ativar Park Fit",
+          "Restore": "Restaurar recomendações",
+          "Suspend": "Suspender temporariamente",
+          "Deactivate": "Remover do Park Fit"
         },
+        "confirmTitle": {
+          "Activate": "Ativar este parque",
+          "Restore": "Restaurar este parque",
+          "Suspend": "Suspender este parque",
+          "Deactivate": "Remover este parque"
+        },
+        "qualityRequired": "A ativação ficará disponível quando a qualidade dos dados atingir o estado Pronto para comparar.",
         "reasonLabel": "Justificação obrigatória",
         "reasonPlaceholder": "Explica a verificação ou correção necessária…",
         "confirm": "Confirmar decisão",
+        "cancel": "Cancelar",
         "saving": "A guardar…",
-        "history": "Histórico recente de decisões",
+        "history": "Histórico recente das decisões",
         "decision": {
           "Suspended": "Suspenso",
-          "Restored": "Reativado"
+          "Restored": "Restaurado",
+          "Activated": "Ativado",
+          "Deactivated": "Removido"
         },
         "error": "Não foi possível guardar a decisão. Atualiza os dados e tenta novamente."
       },

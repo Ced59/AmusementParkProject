@@ -690,6 +690,9 @@ private readonly IMongoDatabase database;
             ParkFitOperationalStatusMongoDefinitions.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.ParkFitPortfolioMigrationsCollectionName,
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.ShareModerationReportsCollectionName,
             cancellationToken);
         IMongoCollection<ShareModerationReportDocument> moderationReportsCollection =
@@ -789,6 +792,20 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.ParksCollectionName, cancellationToken);
         await this.InitializeParksIndexesAsync(cancellationToken);
+        ParkFitPortfolioActivationMigration parkFitPortfolioActivationMigration =
+            new ParkFitPortfolioActivationMigration(
+                this.database.GetCollection<ParkDocument>(this.settings.ParksCollectionName),
+                parkFitOperationalStatusesCollection,
+                this.database.GetCollection<ParkFitPortfolioMigrationDocument>(
+                    this.settings.ParkFitPortfolioMigrationsCollectionName));
+        long activatedParkFitParkCount =
+            await parkFitPortfolioActivationMigration.MigrateAsync(cancellationToken);
+        if (activatedParkFitParkCount > 0)
+        {
+            this.logger.LogInformation(
+                "Park Fit portfolio migration activated {ParkCount} legacy parks.",
+                activatedParkFitParkCount);
+        }
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkOpeningHoursCollectionName, cancellationToken);
         await this.InitializeParkOpeningHoursIndexesAsync(cancellationToken);

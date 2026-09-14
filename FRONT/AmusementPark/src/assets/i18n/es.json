@@ -1997,24 +1997,38 @@
       "operations": {
         "state": {
           "Active": "Recomendaciones activas",
-          "Suspended": "Recomendaciones suspendidas"
+          "Suspended": "Recomendaciones suspendidas",
+          "NotActivated": "No activado para Park Fit"
         },
         "stateHelp": {
-          "Active": "Este parque puede aparecer en Park Fit si la calidad de sus datos es suficiente.",
-          "Suspended": "El parque sigue siendo público, pero queda excluido de Park Fit."
+          "Active": "Este parque forma parte de Park Fit mientras sus datos sigan siendo aptos.",
+          "Suspended": "El parque sigue siendo público, pero queda excluido temporalmente de Park Fit.",
+          "NotActivated": "Publicar un parque no lo añade automáticamente a Park Fit."
         },
         "action": {
-          "Active": "Reactivar en Park Fit",
-          "Suspended": "Suspender en Park Fit"
+          "Activate": "Activar Park Fit",
+          "Restore": "Restaurar recomendaciones",
+          "Suspend": "Suspender temporalmente",
+          "Deactivate": "Retirar de Park Fit"
         },
+        "confirmTitle": {
+          "Activate": "Activar este parque",
+          "Restore": "Restaurar este parque",
+          "Suspend": "Suspender este parque",
+          "Deactivate": "Retirar este parque"
+        },
+        "qualityRequired": "La activación estará disponible cuando la calidad de los datos alcance el estado Listo para comparar.",
         "reasonLabel": "Justificación obligatoria",
         "reasonPlaceholder": "Explica qué verificación o corrección hace falta…",
         "confirm": "Confirmar decisión",
+        "cancel": "Cancelar",
         "saving": "Guardando…",
         "history": "Historial reciente de decisiones",
         "decision": {
           "Suspended": "Suspendido",
-          "Restored": "Reactivado"
+          "Restored": "Restaurado",
+          "Activated": "Activado",
+          "Deactivated": "Retirado"
         },
         "error": "No se pudo guardar la decisión. Actualiza los datos e inténtalo de nuevo."
       },

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.30",
+  "version": "5.3.31",
   "history": [
+    {
+      "version": "5.3.31",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Park Fit s’étend maintenant aux parcs de façon contrôlée.",
+        "en": "Park Fit can now expand to parks in a controlled way.",
+        "de": "Park Fit kann jetzt kontrolliert auf weitere Parks ausgeweitet werden.",
+        "nl": "Park Fit kan nu gecontroleerd naar meer parken worden uitgebreid.",
+        "it": "Park Fit può ora estendersi ai parchi in modo controllato.",
+        "es": "Park Fit ahora puede ampliarse a más parques de forma controlada.",
+        "pl": "Park Fit można teraz w kontrolowany sposób rozszerzać na kolejne parki.",
+        "pt": "O Park Fit pode agora ser alargado a mais parques de forma controlada."
+      }
+    },
     {
       "version": "5.3.30",
       "releasedAt": "2026-09-14",

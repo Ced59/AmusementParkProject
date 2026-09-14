@@ -1997,24 +1997,38 @@
       "operations": {
         "state": {
           "Active": "Consigli attivi",
-          "Suspended": "Consigli sospesi"
+          "Suspended": "Consigli sospesi",
+          "NotActivated": "Non attivato per Park Fit"
         },
         "stateHelp": {
-          "Active": "Questo parco può apparire in Park Fit se la qualità dei dati è sufficiente.",
-          "Suspended": "Il parco resta pubblico, ma è escluso da Park Fit."
+          "Active": "Questo parco fa parte di Park Fit finché i suoi dati restano idonei.",
+          "Suspended": "Il parco resta pubblico, ma è temporaneamente escluso da Park Fit.",
+          "NotActivated": "Pubblicare un parco non lo aggiunge automaticamente a Park Fit."
         },
         "action": {
-          "Active": "Riattiva in Park Fit",
-          "Suspended": "Sospendi in Park Fit"
+          "Activate": "Attiva Park Fit",
+          "Restore": "Ripristina i consigli",
+          "Suspend": "Sospendi temporaneamente",
+          "Deactivate": "Rimuovi da Park Fit"
         },
+        "confirmTitle": {
+          "Activate": "Attiva questo parco",
+          "Restore": "Ripristina questo parco",
+          "Suspend": "Sospendi questo parco",
+          "Deactivate": "Rimuovi questo parco"
+        },
+        "qualityRequired": "L’attivazione sarà disponibile quando la qualità dei dati raggiungerà lo stato Pronto per il confronto.",
         "reasonLabel": "Motivazione obbligatoria",
         "reasonPlaceholder": "Spiega la verifica o la correzione necessaria…",
         "confirm": "Conferma la decisione",
+        "cancel": "Annulla",
         "saving": "Salvataggio…",
         "history": "Cronologia recente delle decisioni",
         "decision": {
           "Suspended": "Sospeso",
-          "Restored": "Riattivato"
+          "Restored": "Ripristinato",
+          "Activated": "Attivato",
+          "Deactivated": "Rimosso"
         },
         "error": "Non è stato possibile salvare la decisione. Aggiorna i dati e riprova."
       },

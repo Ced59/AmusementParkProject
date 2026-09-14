@@ -94,15 +94,41 @@ public sealed class SearchParksByFitQueryHandler
             });
         }
 
+        IReadOnlyDictionary<string, ParkFitOperationalStatus> operationalStatuses =
+            await this.operationalStatusRepository.GetByParkIdsAsync(parkIds, cancellationToken);
+        List<string> activeParkIds = parkIds
+            .Where(parkId => operationalStatuses.TryGetValue(
+                    parkId,
+                    out ParkFitOperationalStatus? status)
+                && status.State == ParkFitRecommendationState.Active)
+            .ToList();
+        int operationallySuspendedCandidateCount = operationalStatuses.Values.Count(
+            static status => status.State == ParkFitRecommendationState.Suspended);
+        int notActivatedCandidateCount = parkIds.Count
+            - activeParkIds.Count
+            - operationallySuspendedCandidateCount;
+        if (activeParkIds.Count == 0)
+        {
+            return ApplicationResult<ParkFitSearchResult>.Success(new ParkFitSearchResult
+            {
+                MethodVersion = ParkFitScoreEvaluator.MethodVersion,
+                EvaluationDate = query.EvaluationDate,
+                EvaluatedAtUtc = evaluatedAtUtc,
+                TotalCandidateCount = candidatePage.TotalItems,
+                InspectedCandidateCount = candidatePage.Items.Count,
+                OperationallySuspendedCandidateCount = operationallySuspendedCandidateCount,
+                NotActivatedCandidateCount = notActivatedCandidateCount,
+                CandidatePoolTruncated = candidatePage.TotalItems > candidatePage.Items.Count,
+            });
+        }
+
         Task<IReadOnlyCollection<ParkItem>> itemsTask =
             this.parkItemRepository.GetVisibleOpenAttractionsByParkIdsAsync(
-                parkIds,
+                activeParkIds,
                 cancellationToken);
         Task<IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary>> summariesTask =
-            this.openingHoursRepository.GetSummariesByParkIdsAsync(parkIds, cancellationToken);
-        Task<IReadOnlyDictionary<string, ParkFitOperationalStatus>> operationalStatusesTask =
-            this.operationalStatusRepository.GetByParkIdsAsync(parkIds, cancellationToken);
-        await Task.WhenAll(itemsTask, summariesTask, operationalStatusesTask);
+            this.openingHoursRepository.GetSummariesByParkIdsAsync(activeParkIds, cancellationToken);
+        await Task.WhenAll(itemsTask, summariesTask);
 
         IReadOnlyDictionary<string, IReadOnlyCollection<ParkItem>> itemsByParkId =
             (await itemsTask)
@@ -113,8 +139,6 @@ public sealed class SearchParksByFitQueryHandler
                     StringComparer.Ordinal);
         IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary> summariesByParkId =
             await summariesTask;
-        IReadOnlyDictionary<string, ParkFitOperationalStatus> operationalStatuses =
-            await operationalStatusesTask;
         IReadOnlyCollection<ParkFitEvaluatedMemberProfile> profiles =
             BuildProfiles(query.Members);
         List<(
@@ -125,16 +149,14 @@ public sealed class SearchParksByFitQueryHandler
             new Dictionary<ParkFitDataQualityStatus, int>();
         Dictionary<ParkFitDataQualityIssue, int> qualityIssueCounts =
             new Dictionary<ParkFitDataQualityIssue, int>();
-        int operationallySuspendedCandidateCount = 0;
 
         foreach (Park park in candidatePage.Items)
         {
-            if (operationalStatuses.TryGetValue(
+            if (!operationalStatuses.TryGetValue(
                     park.Id,
                     out ParkFitOperationalStatus? operationalStatus)
-                && operationalStatus.State == ParkFitRecommendationState.Suspended)
+                || operationalStatus.State != ParkFitRecommendationState.Active)
             {
-                operationallySuspendedCandidateCount++;
                 continue;
             }
 
@@ -222,8 +244,10 @@ public sealed class SearchParksByFitQueryHandler
             QualityEligibleCandidateCount = eligibleCandidateCount,
             QualityRejectedCandidateCount = candidatePage.Items.Count
                 - eligibleCandidateCount
-                - operationallySuspendedCandidateCount,
+                - operationallySuspendedCandidateCount
+                - notActivatedCandidateCount,
             OperationallySuspendedCandidateCount = operationallySuspendedCandidateCount,
+            NotActivatedCandidateCount = notActivatedCandidateCount,
             CandidatePoolTruncated = candidatePage.TotalItems > candidatePage.Items.Count,
             QualityStatusCounts = qualityStatusCounts,
             QualityIssueCounts = qualityIssueCounts,

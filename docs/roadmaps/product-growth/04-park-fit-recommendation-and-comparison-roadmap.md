@@ -281,8 +281,29 @@ contenu jusque 360 px. L'architecture, le schéma, les séquences et les preuves
 documentés dans
 [`product-growth-fit-14-private-pilot-observability-2026-09-14.md`](../../architecture/product-growth-fit-14-private-pilot-observability-2026-09-14.md).
 
-`FIT-15` est le prochain jalon : organiser l'extension du portefeuille et
-l'activation explicite des parcs, sans attendre un volume communautaire réel.
+### État de `FIT-15` au 14 septembre 2026
+
+Park Fit possède désormais un portefeuille explicite, indépendant de la visibilité
+générale des parcs. Chaque parc est non activé, actif ou suspendu ; activation,
+rétablissement, suspension et retrait exigent une justification et restent
+versionnés. Une activation ou un rétablissement est refusé tant que le même audit
+factuel que celui du moteur public n'atteint pas `EligibleForFitComparison`.
+
+La migration MongoDB unique conserve le portefeuille historique en créant les états
+actifs manquants, préserve les décisions déjà enregistrées, puis marque son
+achèvement. Après elle, tout nouveau parc doit être activé volontairement : aucun
+adaptateur ni second système ne subsiste. La recherche exclut états absents, non
+activés et suspendus avant de charger les faits lourds, tout en exposant des
+compteurs agrégés distincts.
+
+L'administration distingue les quatre actions métier, explique les blocages de
+qualité et reste contenue sur mobile dans les huit langues. L'architecture, les
+schémas MongoDB, les diagrammes de classes et de séquence ainsi que les preuves sont
+documentés dans
+[`product-growth-fit-15-portfolio-activation-2026-09-14.md`](../../architecture/product-growth-fit-15-portfolio-activation-2026-09-14.md).
+
+`FIT-G` est la prochaine étape : consolider les preuves finales de toute la roadmap
+sans rendre son achèvement technique dépendant d'un volume de visites réel.
 
 ## 1. Vision produit
 

@@ -19,30 +19,68 @@ import { AdminParkFitDataQualityFacade } from '../../state/admin-park-fit-data-q
 export class AdminParkFitOperationalControlsComponent {
   @Input({ required: true }) public park!: ParkFitDataQuality;
 
-  protected readonly expanded = signal<boolean>(false);
+  protected readonly selectedTarget = signal<ParkFitRecommendationState | null>(null);
   protected readonly reason = new FormControl<string>('', { nonNullable: true });
 
   constructor(private readonly facade: AdminParkFitDataQualityFacade) {
   }
 
-  protected get targetState(): ParkFitRecommendationState {
-    return this.park.recommendationState === 'Active' ? 'Suspended' : 'Active';
+  protected get activationAllowed(): boolean {
+    return this.park.status === 'EligibleForFitComparison';
+  }
+
+  protected get stateIcon(): string {
+    if (this.park.recommendationState === 'Active') {
+      return 'pi pi-check-circle';
+    }
+
+    return this.park.recommendationState === 'Suspended'
+      ? 'pi pi-pause-circle'
+      : 'pi pi-circle';
+  }
+
+  protected get confirmationSeverity(): 'success' | 'warning' | 'danger' {
+    const targetState: ParkFitRecommendationState | null = this.selectedTarget();
+    if (targetState === 'Active') {
+      return 'success';
+    }
+
+    return targetState === 'Suspended' ? 'warning' : 'danger';
   }
 
   protected get processing(): boolean {
     return this.facade.isProcessing(`park:${this.park.parkId}`);
   }
 
-  protected toggle(): void {
-    this.expanded.update((value: boolean): boolean => !value);
+  protected open(targetState: ParkFitRecommendationState): void {
+    this.reason.setValue('');
+    this.selectedTarget.set(targetState);
+  }
+
+  protected cancel(): void {
+    this.selectedTarget.set(null);
+    this.reason.setValue('');
+  }
+
+  protected actionKey(targetState: ParkFitRecommendationState): string {
+    if (targetState === 'Suspended') {
+      return 'Suspend';
+    }
+
+    if (targetState === 'NotActivated') {
+      return 'Deactivate';
+    }
+
+    return this.park.recommendationState === 'Suspended' ? 'Restore' : 'Activate';
   }
 
   protected confirm(): void {
     const reason: string = this.reason.value.trim();
-    if (reason.length === 0) {
+    const targetState: ParkFitRecommendationState | null = this.selectedTarget();
+    if (reason.length === 0 || targetState === null) {
       return;
     }
 
-    this.facade.changeOperationalStatus(this.park, this.targetState, reason);
+    this.facade.changeOperationalStatus(this.park, targetState, reason);
   }
 }
