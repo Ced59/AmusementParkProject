@@ -146,6 +146,12 @@ internal static class AttractionPhysicalRestrictionEvaluator
 
         if (canUseAccompaniedPath && heightCentimeters >= accompaniedMinimumCentimeters)
         {
+            if (context.HasUnresolvedHeightAccompaniedAlternative)
+            {
+                context.ActivateUnresolvedAccompaniedAlternative();
+                return;
+            }
+
             context.AddSatisfied(
                 AttractionCompatibilityReasonCode.HeightRequirementMet,
                 accompaniedMinimum!);
@@ -266,6 +272,12 @@ internal static class AttractionPhysicalRestrictionEvaluator
         if (accompaniedMinimum is not null
             && ageRange.MinimumYears >= accompaniedMinimum.Value!.Value)
         {
+            if (context.HasUnresolvedAgeAccompaniedAlternative)
+            {
+                context.ActivateUnresolvedAccompaniedAlternative();
+                return;
+            }
+
             context.AddSatisfied(
                 AttractionCompatibilityReasonCode.AgeRequirementMet,
                 accompaniedMinimum);
@@ -298,9 +310,21 @@ internal static class AttractionPhysicalRestrictionEvaluator
             }
             else
             {
-                context.AddUnknown(
-                    AttractionCompatibilityReasonCode.AgeRangeCrossesThreshold,
-                    accompaniedMinimum);
+                AttractionAccessCondition? uncertainAloneThreshold = aloneMinimum is not null
+                    && ageRange.MaximumYears >= aloneMinimum.Value!.Value
+                        ? aloneMinimum
+                        : null;
+                AttractionAccompanimentEvaluator.Evaluate(
+                    profile,
+                    accompaniedMinimums,
+                    context,
+                    uncertainAloneThreshold);
+                if (!context.HasViolation)
+                {
+                    context.AddUnknown(
+                        AttractionCompatibilityReasonCode.AgeRangeCrossesThreshold,
+                        accompaniedMinimum);
+                }
             }
 
             return;

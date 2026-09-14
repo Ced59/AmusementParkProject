@@ -221,7 +221,7 @@ aucune dépendance supplémentaire n'est introduite.
 
 ## 10. Preuves automatisées
 
-Soixante-quatorze scénarios FIT-04 couvrent notamment :
+Soixante-dix-huit scénarios FIT-04 couvrent notamment :
 
 - absence, expiration et futur des règles ;
 - minimum, maximum et égalité exacte aux seuils ;
@@ -246,6 +246,8 @@ Soixante-quatorze scénarios FIT-04 couvrent notamment :
 - voie accompagnée conflictuelle ignorée lorsque la voie seule est déjà satisfaite ;
 - taille décisionnelle hors du domaine 1–300 cm, y compris après conversion des pouces ;
 - maximum connu insuffisant à valider l'accès lorsque l'unique minimum accompagné est périmé ;
+- règle accompagnée fiable insuffisante lorsqu'une règle de la même voie reste plus stricte et périmée ;
+- tranche d'âge entièrement incompatible lorsque seuil et accompagnement couvrent tous les cas d'échec ;
 - voie accompagnée valide malgré une voie seule impossible ;
 - alternative accompagnée incertaine ignorée lorsqu'une voie seule est satisfaite ;
 - choix stable de la règle expliquant une donnée de taille manquante ;

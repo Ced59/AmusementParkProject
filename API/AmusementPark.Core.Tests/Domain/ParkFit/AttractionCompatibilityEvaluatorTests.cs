@@ -429,6 +429,71 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenAStricterAccompaniedHeightRuleIsStale_ShouldNotUseTheWeakerRule()
+    {
+        AttractionAccessCondition staleStricterRule = BuildAccompaniedHeightCondition(120);
+        staleStricterRule.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                heightCentimeters: 110,
+                canBeAccompanied: true),
+            BuildAccompaniedHeightCondition(100),
+            staleStricterRule);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+    }
+
+    [Fact]
+    public void Evaluate_WhenAStricterAccompaniedAgeRuleIsStale_ShouldNotUseTheWeakerRule()
+    {
+        AttractionAccessCondition staleStricterRule = BuildAccompaniedAgeCondition(12);
+        staleStricterRule.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                ageRange: new ParkFitAgeRange(11, 11),
+                canBeAccompanied: true),
+            BuildAccompaniedAgeCondition(10),
+            staleStricterRule);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+    }
+
+    [Fact]
+    public void Evaluate_WhenAgeBandCrossesAccompaniedThresholdButEveryPathFails_ShouldReject()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                ageRange: new ParkFitAgeRange(9, 13),
+                canBeAccompanied: false),
+            BuildAgeCondition(AttractionAccessConditionType.MinAge, 14),
+            BuildAccompaniedAgeCondition(10));
+
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.AccompanimentUnavailable);
+    }
+
+    [Fact]
+    public void Evaluate_WhenAgeBandCrossesAccompaniedThresholdAndCompanionIsTooYoung_ShouldReject()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                ageRange: new ParkFitAgeRange(9, 13),
+                canBeAccompanied: true,
+                availableCompanionAgeRange: new ParkFitAgeRange(12, 15)),
+            BuildAgeCondition(AttractionAccessConditionType.MinAge, 14),
+            BuildAccompaniedAgeCondition(10, minimumCompanionAge: 16));
+
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.CompanionTooYoung);
+    }
+
+    [Fact]
     public void Evaluate_PairedAgeThresholds_ShouldAllowTheWholeBandWithCompanion()
     {
         AttractionCompatibility result = this.Evaluate(
