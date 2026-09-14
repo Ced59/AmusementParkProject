@@ -221,7 +221,7 @@ aucune dépendance supplémentaire n'est introduite.
 
 ## 10. Preuves automatisées
 
-Quarante-sept scénarios FIT-04 couvrent notamment :
+Quarante-neuf scénarios FIT-04 couvrent notamment :
 
 - absence, expiration et futur des règles ;
 - minimum, maximum et égalité exacte aux seuils ;
@@ -234,6 +234,7 @@ Quarante-sept scénarios FIT-04 couvrent notamment :
 - contradiction min/max et seuil accompagné incohérent ;
 - portée véhicule non généralisable ;
 - priorité d'une violation fiable sur une autre inconnue ;
+- conservation d'une alternative accompagnée inconnue avant tout rejet sur le seuil seul ;
 - invariance à l'ordre des conditions ;
 - version, confiance, dates et sources ;
 - fusion déterministe de tous les résumés citant une même source ;

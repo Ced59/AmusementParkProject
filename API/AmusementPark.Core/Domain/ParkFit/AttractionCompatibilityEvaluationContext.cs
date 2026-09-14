@@ -15,6 +15,10 @@ internal sealed class AttractionCompatibilityEvaluationContext
 
     public bool RequiresCompanion { get; private set; }
 
+    public bool HasUnresolvedHeightAccompaniedAlternative { get; private set; }
+
+    public bool HasUnresolvedAgeAccompaniedAlternative { get; private set; }
+
     public IReadOnlyCollection<AttractionCompatibilityReason> Reasons => this.reasons;
 
     public void AddSatisfied(
@@ -37,6 +41,7 @@ internal sealed class AttractionCompatibilityEvaluationContext
         AttractionAccessCondition condition)
     {
         this.HasUnknown = true;
+        this.MarkUnresolvedAccompaniedAlternative(condition);
         this.reasons.Add(new AttractionCompatibilityReason(code, condition));
     }
 
@@ -47,6 +52,7 @@ internal sealed class AttractionCompatibilityEvaluationContext
         IReadOnlyCollection<AttractionAccessConditionSemanticIssue> semanticIssues)
     {
         this.HasUnknown = true;
+        this.MarkUnresolvedAccompaniedAlternative(condition);
         this.reasons.Add(new AttractionCompatibilityReason(
             code,
             condition,
@@ -66,5 +72,23 @@ internal sealed class AttractionCompatibilityEvaluationContext
         this.reasons.Add(new AttractionCompatibilityReason(
             AttractionCompatibilityReasonCode.AccompanimentRequirementMet,
             condition));
+    }
+
+    private void MarkUnresolvedAccompaniedAlternative(AttractionAccessCondition condition)
+    {
+        bool requiresAccompaniment = condition.RequiresAccompaniment == true;
+        if (condition.Type == AttractionAccessConditionType.MinHeightAccompanied
+            || (condition.Type == AttractionAccessConditionType.MinHeight
+                && requiresAccompaniment))
+        {
+            this.HasUnresolvedHeightAccompaniedAlternative = true;
+        }
+
+        if (condition.Type == AttractionAccessConditionType.MinAgeAccompanied
+            || (condition.Type == AttractionAccessConditionType.MinAge
+                && requiresAccompaniment))
+        {
+            this.HasUnresolvedAgeAccompaniedAlternative = true;
+        }
     }
 }

@@ -311,6 +311,52 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenAccompaniedHeightFallbackIsStale_ShouldNotRejectFromTheAloneThreshold()
+    {
+        AttractionAccessCondition accompanied = BuildAccompaniedHeightCondition(100, 16);
+        accompanied.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                110,
+                canBeAccompanied: true,
+                availableCompanionAgeRange: new ParkFitAgeRange(18, 70)),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 120),
+            accompanied);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ConditionEvidenceUnusable);
+        Assert.DoesNotContain(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.BelowMinimumHeight);
+    }
+
+    [Fact]
+    public void Evaluate_WhenAccompaniedAgeFallbackIsStale_ShouldNotRejectFromTheAloneThreshold()
+    {
+        AttractionAccessCondition accompanied = BuildAccompaniedAgeCondition(10, 18);
+        accompanied.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                ageRange: new ParkFitAgeRange(12, 12),
+                canBeAccompanied: true,
+                availableCompanionAgeRange: new ParkFitAgeRange(18, 70)),
+            BuildAgeCondition(AttractionAccessConditionType.MinAge, 14),
+            accompanied);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ConditionEvidenceUnusable);
+        Assert.DoesNotContain(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.BelowMinimumAge);
+    }
+
+    [Fact]
     public void Evaluate_WhenASecondarySourceIsTheOnlyEvidence_ShouldReturnUnknown()
     {
         AttractionAccessCondition condition = BuildHeightCondition(

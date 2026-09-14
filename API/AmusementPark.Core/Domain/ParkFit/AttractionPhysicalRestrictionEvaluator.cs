@@ -106,6 +106,11 @@ internal static class AttractionPhysicalRestrictionEvaluator
             return;
         }
 
+        if (context.HasUnresolvedHeightAccompaniedAlternative)
+        {
+            return;
+        }
+
         if (hasAccompaniedMinimum)
         {
             context.AddViolation(
@@ -176,6 +181,11 @@ internal static class AttractionPhysicalRestrictionEvaluator
                 AttractionCompatibilityReasonCode.AgeRequirementMet,
                 accompaniedMinimum);
             AttractionAccompanimentEvaluator.Evaluate(profile, accompaniedMinimums, context);
+            return;
+        }
+
+        if (context.HasUnresolvedAgeAccompaniedAlternative)
+        {
             return;
         }
 
