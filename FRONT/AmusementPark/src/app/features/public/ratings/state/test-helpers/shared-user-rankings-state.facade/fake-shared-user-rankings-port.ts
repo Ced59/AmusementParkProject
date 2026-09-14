@@ -23,6 +23,7 @@ function createProfile(): SharedUserRankingProfile {
 
 export class FakeSharedUserRankingsPort implements SharedUserRankingsPort {
   profileResponse: Observable<SharedUserRankingProfile> = of(createProfile());
+  parkResponse: Observable<UserParkRatingRankingsPage> | null = null;
   readonly parkCalls: Array<{ shareId: string; page: number; search: string | null }> = [];
   readonly itemCalls: Array<{
     shareId: string;
@@ -43,6 +44,10 @@ export class FakeSharedUserRankingsPort implements SharedUserRankingsPort {
     search: string | null,
   ): Observable<UserParkRatingRankingsPage> {
     this.parkCalls.push({ shareId, page, search });
+    if (this.parkResponse) {
+      return this.parkResponse;
+    }
+
     return of({
       items: [{
         rank: page,

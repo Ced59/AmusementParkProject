@@ -100,6 +100,18 @@ describe('SharedUserRankingsStateFacade', () => {
       { type: 'share_render_failed', recapType: 'personal-ranking' },
     ]);
   });
+
+  it('does not turn a later filtering failure into an initial render failure', () => {
+    facade.loadProfile('opaque-share-id');
+    port.parkResponse = throwError(() => ({ status: 503 }));
+
+    facade.load(null, 'another filter', null);
+
+    expect(facade.error()).toBe(true);
+    expect(analyticsEvents).toEqual([
+      { type: 'share_opened', recapType: 'personal-ranking' }
+    ]);
+  });
 });
 
 function createProfile(): SharedUserRankingProfile {

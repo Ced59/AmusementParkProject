@@ -135,7 +135,6 @@ export class SharedUserRankingsStateFacade {
 
         this.loadingMoreSignal.set(false);
         this.errorSignal.set(true);
-        this.trackRenderFailure();
       }
     });
   }
@@ -208,7 +207,7 @@ export class SharedUserRankingsStateFacade {
   }
 
   private trackRenderFailure(status?: number): void {
-    if (status === 404 || this.renderFailureTracked) {
+    if (status === 404 || this.openedTracked || this.renderFailureTracked) {
       return;
     }
 

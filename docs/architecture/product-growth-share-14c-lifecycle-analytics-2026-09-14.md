@@ -118,7 +118,10 @@ utile de son instance afin que pagination et filtres ne gonflent pas les ouvertu
 
 Un `404` signifie qu'un lien est inconnu, révoqué ou volontairement indisponible :
 il conserve le comportement fonctionnel « introuvable » sans devenir une panne.
-Les autres erreurs produisent au plus un `share_render_failed` par instance.
+Son CTA de repli n'entre pas non plus dans le funnel d'un partage valide. Les autres
+erreurs produisent au plus un `share_render_failed` par instance et seulement avant
+la première ouverture réussie : un filtre ou une pagination en échec ne transforme
+pas rétroactivement un récit affiché en erreur de rendu.
 
 ## Conversion vers le Passeport
 

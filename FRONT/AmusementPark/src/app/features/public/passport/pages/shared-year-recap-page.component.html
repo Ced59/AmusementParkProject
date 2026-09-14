@@ -4,7 +4,7 @@
       <i class="pi pi-link" aria-hidden="true"></i>
       <h1>{{ 'yearRecapShare.public.notFoundTitle' | translate }}</h1>
       <p>{{ 'yearRecapShare.public.notFoundDescription' | translate }}</p>
-      <a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']" (click)="trackPassportCta()">{{ 'yearRecapShare.public.createMine' | translate }}</a>
+      <a appUiButton="primary" [routerLink]="['/', currentLang(), 'passport', 'local']">{{ 'yearRecapShare.public.createMine' | translate }}</a>
     </section>
   } @else if (error()) {
     <section class="shared-year__state" role="alert">
