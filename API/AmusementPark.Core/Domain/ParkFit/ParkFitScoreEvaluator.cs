@@ -213,6 +213,7 @@ public sealed class ParkFitScoreEvaluator
             : ParkFitScoreState.Available;
         List<ParkFitScoreReasonCode> reasons = BuildScoreReasons(
             state,
+            rawKnownScore,
             coveragePercent,
             confidenceCeiling,
             hasCriticalUnknown,
@@ -374,6 +375,7 @@ public sealed class ParkFitScoreEvaluator
 
     private static List<ParkFitScoreReasonCode> BuildScoreReasons(
         ParkFitScoreState state,
+        decimal rawKnownScore,
         decimal coveragePercent,
         decimal confidenceCeiling,
         bool hasCriticalUnknown,
@@ -390,7 +392,7 @@ public sealed class ParkFitScoreEvaluator
             reasons.Add(ParkFitScoreReasonCode.IncompleteCoverageCapApplied);
         }
 
-        if (confidenceCeiling < 100m)
+        if (confidenceCeiling < rawKnownScore)
         {
             reasons.Add(ParkFitScoreReasonCode.DataConfidenceCapApplied);
         }

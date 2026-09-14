@@ -60,6 +60,8 @@ comparatif d'afficher une certitude supérieure à la nature de ce fait. À part
 Le score visible reste soumis au plafond de confiance. Si plusieurs parcs atteignent
 le même plafond, leur score brut connu les départage avant la couverture et le nom :
 la prudence affichée ne détruit donc pas l'ordre de pertinence calculé.
+L'explication « plafond de confiance appliqué » n'est émise que lorsque ce plafond
+réduit effectivement le score brut.
 
 ## Décision sur le calendrier
 
