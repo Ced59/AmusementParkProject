@@ -60,6 +60,21 @@ describe('buildParkFitComparisonSections', () => {
     expect(overallRow?.cells[1]?.statusParams['ceiling']).toBe(82);
   });
 
+  it('ignores an unapplied ceiling that is not visible on available scores', () => {
+    const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    first.scoreCeilingPercent = 90;
+    second.scoreCeilingPercent = 95;
+
+    const overallRow = buildParkFitComparisonSections([first, second], (): string => 'date')
+      .flatMap((section) => section.rows)
+      .find((row) => row.id === 'overall');
+
+    expect(overallRow?.isDifferent).toBe(false);
+    expect(overallRow?.cells.every((comparisonCell) => comparisonCell.statusParams['ceiling'] === undefined))
+      .toBe(true);
+  });
+
   it('only exposes a verified HTTPS source URL in the official-link row', () => {
     const unsafe: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
     unsafe.criticalSources = [{

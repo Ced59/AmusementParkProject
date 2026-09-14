@@ -101,7 +101,8 @@ function buildOverallCell(park: ParkFitSearchPark): ParkFitComparisonCell {
   const scoreCeiling: number | null = park.scoreCeilingPercent === null
     ? null
     : Math.round(park.scoreCeilingPercent);
-  const statusKey: string = park.scoreState === 'Capped' && scoreCeiling !== null
+  const renderedScoreCeiling: number | null = park.scoreState === 'Capped' ? scoreCeiling : null;
+  const statusKey: string = renderedScoreCeiling !== null
     ? 'parkFit.comparison.values.cappedState'
     : parkFitScoreStateKey(park.scoreState);
   return cell(
@@ -113,9 +114,9 @@ function buildOverallCell(park: ParkFitSearchPark): ParkFitComparisonCell {
     parkFitConfidenceKey(park.confidence),
     {},
     null,
-    `${score ?? 'unknown'}|${Math.round(park.coveragePercent)}|${park.confidence}|${park.scoreState}|${scoreCeiling ?? 'none'}`,
+    `${score ?? 'unknown'}|${Math.round(park.coveragePercent)}|${park.confidence}|${park.scoreState}|${renderedScoreCeiling ?? 'none'}`,
     statusKey,
-    scoreCeiling === null ? {} : { ceiling: scoreCeiling }
+    renderedScoreCeiling === null ? {} : { ceiling: renderedScoreCeiling }
   );
 }
 
