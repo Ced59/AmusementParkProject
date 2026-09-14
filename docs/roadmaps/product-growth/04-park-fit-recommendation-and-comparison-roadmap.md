@@ -53,14 +53,14 @@ cohorte réelle n'empêche pas son implémentation ni les jalons techniques suiv
 
 Le Core calcule désormais, sans accès à la base ni règle dupliquée dans l'interface,
 si les faits d'un parc sont suffisamment complets et fiables pour le futur
-comparateur. Coordonnées, calendrier, attractions visibles, conditions d'accès,
+comparateur. Coordonnées, calendrier, attractions visibles actuellement ouvertes, conditions d'accès,
 sources, dates, fraîcheur et contradictions sont audités avec six états métier
 explicites. Aucune visite membre ni cohorte réelle n'entre dans ce calcul.
 
 L'administration possède un écran paginé et responsive « Qualité du comparateur ».
 Il présente la couverture, les anomalies et jusqu'à huit attractions à corriger par
 parc, avec un accès direct à leur édition. Le traitement charge une page de parcs
-puis ses attractions et calendriers par lots parallèles ; aucune collection MongoDB
+puis ses attractions ouvertes et calendriers par lots parallèles ; aucune collection MongoDB
 ou projection concurrente n'a été créée. Le détail, les diagrammes et les preuves
 automatisées sont documentés dans
 [`product-growth-fit-03-data-quality-audit-2026-09-14.md`](../../architecture/product-growth-fit-03-data-quality-audit-2026-09-14.md).

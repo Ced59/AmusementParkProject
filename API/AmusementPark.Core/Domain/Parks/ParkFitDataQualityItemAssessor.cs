@@ -98,7 +98,10 @@ internal sealed class ParkFitDataQualityItemAssessor
 
     private static void AddStructuralIssues(ParkItem item, ISet<ParkFitDataQualityIssue> issues)
     {
-        if (item.Type is ParkItemType.Attraction or ParkItemType.Other)
+        if (!ParkItemAdministrationDefaults.IsTypeAllowedForCategory(
+                ParkItemCategory.Attraction,
+                item.Type)
+            || item.Type is ParkItemType.Attraction or ParkItemType.Other)
         {
             issues.Add(ParkFitDataQualityIssue.MissingPreciseAttractionType);
         }
@@ -109,7 +112,7 @@ internal sealed class ParkFitDataQualityItemAssessor
         }
 
         if (item.AttractionDetails?.IsAccessibleForReducedMobility is not null
-            && string.IsNullOrWhiteSpace(item.AttractionDetails.SourceUrl))
+            && !DecisionEvidenceUrlValidator.IsValid(item.AttractionDetails.SourceUrl))
         {
             issues.Add(ParkFitDataQualityIssue.MissingAccessibilitySource);
         }

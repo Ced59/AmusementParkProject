@@ -235,6 +235,69 @@ public sealed class ParkFitDataQualityAssessorTests
         Assert.Contains(ParkFitDataQualityIssue.AmbiguousRestriction, result.Issues);
     }
 
+    [Theory]
+    [InlineData(ParkItemType.Restaurant)]
+    [InlineData((ParkItemType)999)]
+    public void Assess_WhenAttractionTypeIsIncompatibleWithItsCategory_ShouldRequireCorrection(
+        ParkItemType invalidType)
+    {
+        ParkItem attraction = BuildAttraction(BuildCondition());
+        attraction.Type = invalidType;
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { attraction },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.Insufficient, result.Status);
+        Assert.Contains(ParkFitDataQualityIssue.MissingPreciseAttractionType, result.Issues);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("unknown")]
+    [InlineData("ftp://example.test/accessibility")]
+    public void Assess_WhenAccessibilitySourceIsNotAConsultableHttpUrl_ShouldRequireCorrection(
+        string? sourceUrl)
+    {
+        ParkItem attraction = BuildAttraction(BuildCondition());
+        attraction.AttractionDetails!.IsAccessibleForReducedMobility = true;
+        attraction.AttractionDetails.SourceUrl = sourceUrl;
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { attraction },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.Insufficient, result.Status);
+        Assert.Contains(ParkFitDataQualityIssue.MissingAccessibilitySource, result.Issues);
+    }
+
+    [Theory]
+    [InlineData("https://example.test/accessibility")]
+    [InlineData("http://example.test/accessibility")]
+    public void Assess_WhenAccessibilitySourceIsAConsultableHttpUrl_ShouldAcceptIt(string sourceUrl)
+    {
+        ParkItem attraction = BuildAttraction(BuildCondition());
+        attraction.AttractionDetails!.IsAccessibleForReducedMobility = true;
+        attraction.AttractionDetails.SourceUrl = sourceUrl;
+
+        ParkFitDataQualityAssessment result = this.assessor.Assess(
+            BuildDiscoverablePark(),
+            new[] { attraction },
+            BuildCurrentCalendar(),
+            EvaluationTimestamp,
+            TimeSpan.FromDays(365));
+
+        Assert.Equal(ParkFitDataQualityStatus.EligibleForFitComparison, result.Status);
+        Assert.DoesNotContain(ParkFitDataQualityIssue.MissingAccessibilitySource, result.Issues);
+    }
+
     [Fact]
     public void Assess_WhenCoordinatesUsePlaceholderOrigin_ShouldTreatThemAsMissing()
     {

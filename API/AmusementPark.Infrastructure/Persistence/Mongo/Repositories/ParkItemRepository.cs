@@ -117,7 +117,19 @@ public sealed class ParkItemRepository : IParkItemRepository
             totalItems);
     }
 
-    public async Task<IReadOnlyCollection<ParkItem>> GetByParkIdsAsync(IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
+    public Task<IReadOnlyCollection<ParkItem>> GetByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        bool includeHidden,
+        CancellationToken cancellationToken)
+    {
+        return this.GetByParkIdsAsync(parkIds, includeHidden, ClosedEntityFilter.All, cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<ParkItem>> GetByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        bool includeHidden,
+        ClosedEntityFilter closedFilter,
+        CancellationToken cancellationToken)
     {
         List<string> normalizedParkIds = NormalizeParkIds(parkIds);
         if (normalizedParkIds.Count == 0)
@@ -131,6 +143,8 @@ public sealed class ParkItemRepository : IParkItemRepository
         {
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
         }
+
+        filter &= ParkItemClosedEntityMongoFilter.Build(closedFilter);
 
         List<ParkItemDocument> documents = await this.collection.Find(filter)
             .SortBy(document => document.ParkId)

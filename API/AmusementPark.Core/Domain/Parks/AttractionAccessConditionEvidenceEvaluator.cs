@@ -78,7 +78,7 @@ public static class AttractionAccessConditionEvidenceEvaluator
         {
             issues.Add(AttractionAccessConditionEvidenceIssue.MissingSourceReference);
         }
-        else if (hasSourceUrl && !IsValidSourceUrl(condition.SourceUrl!))
+        else if (hasSourceUrl && !DecisionEvidenceUrlValidator.IsValid(condition.SourceUrl))
         {
             issues.Add(AttractionAccessConditionEvidenceIssue.InvalidSourceUrl);
         }
@@ -164,12 +164,6 @@ public static class AttractionAccessConditionEvidenceEvaluator
         {
             issues.Add(AttractionAccessConditionEvidenceIssue.MissingScopeDetail);
         }
-    }
-
-    private static bool IsValidSourceUrl(string value)
-    {
-        return Uri.TryCreate(value, UriKind.Absolute, out Uri? uri)
-            && (uri.Scheme == Uri.UriSchemeHttps || uri.Scheme == Uri.UriSchemeHttp);
     }
 
     private static bool IsValidLanguageCode(string value)

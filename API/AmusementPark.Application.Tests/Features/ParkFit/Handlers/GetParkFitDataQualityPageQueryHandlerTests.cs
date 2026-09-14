@@ -59,6 +59,7 @@ public sealed class GetParkFitDataQualityPageQueryHandlerTests
         items.Setup(repository => repository.GetByParkIdsAsync(
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { park.Id })),
                 true,
+                ClosedEntityFilter.OpenOnly,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { attraction });
         openingHours.Setup(repository => repository.GetSummariesByParkIdsAsync(

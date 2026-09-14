@@ -32,17 +32,19 @@ Elle utilise exclusivement les données éditoriales canoniques du parc.
 | `NotAssessed` | le parc n'est pas publiquement découvrable |
 | `Insufficient` | il manque une base indispensable, ou aucune attraction n'est entièrement fiable |
 | `EligibleForDiscoveryOnly` | une partie est fiable, mais le parc ne doit pas encore être comparé |
-| `EligibleForFitComparison` | coordonnées, calendrier actuel et toutes les attractions visibles sont exploitables |
+| `EligibleForFitComparison` | coordonnées, calendrier actuel et toutes les attractions visibles actuellement ouvertes sont exploitables |
 | `TemporarilyStale` | la structure est complète, mais des preuves ou le calendrier doivent être renouvelés |
 | `Suspended` | état réservé à la suspension opérationnelle de `FIT-13` |
 
-Une attraction est comptée comme exploitable uniquement lorsque son type est
-précis, que sa classification intérieure/extérieure est connue, qu'elle possède au
+Une attraction visible mais fermée ou retirée est conservée dans l'historique sans
+pénaliser la préparation du parc. Une attraction actuellement ouverte est comptée
+comme exploitable uniquement lorsque son type est précis et compatible avec sa
+catégorie, que sa classification intérieure/extérieure est connue, qu'elle possède au
 moins une condition d'accès et que toutes ses conditions franchissent l'évaluateur
 de preuve de `FIT-02` ainsi que l'évaluateur sémantique. Ce dernier refuse notamment
 un âge sans valeur ou exprimé dans une unité de taille, une taille sans unité et une
 règle personnalisée sans définition stable. Une information d'accessibilité renseignée doit avoir une
-source générale et une plage de taille dont le minimum dépasse le maximum est
+URL HTTP(S) absolue consultable et une plage de taille dont le minimum dépasse le maximum est
 signalée comme ambiguë. Le parc doit lui-même avoir un type et au moins une langue
 publique documentée. Les coordonnées utilisent le validateur canonique du domaine :
 le point factice `(0, 0)` ne satisfait jamais la gate.
@@ -123,7 +125,7 @@ classDiagram
 
 - le Core calcule l'état, la couverture et les anomalies ;
 - l'Application valide la pagination, collecte une page de parcs puis charge les
-  attractions et calendriers correspondants par lots ;
+  attractions ouvertes et calendriers correspondants par lots ;
 - la WebAPI expose un endpoint de lecture réservé aux administrateurs activés et
   non bloqués, avec cache interdit ;
 - Angular orchestre l'état d'écran via une façade et un port, sans injecter le
@@ -217,8 +219,8 @@ ARIA de progression. Les statuts ne reposent pas uniquement sur la couleur.
 
 | Niveau | Comportements couverts |
 |---|---|
-| Core | parc prêt, coordonnées factices, type/langue/classification manquants, accessibilité non sourcée, règle sémantiquement inutilisable, calendrier absent, preuves périmées, unités mixtes et contradiction min/max limitée aux portées/périodes compatibles |
-| Application | pagination, lectures par lots, agrégation, rejet d'une pagination invalide avant accès aux données |
+| Core | parc prêt, coordonnées factices, type/langue/classification manquants ou incohérents, URL d'accessibilité invalide, règle sémantiquement inutilisable, calendrier absent, preuves périmées, unités mixtes et contradiction min/max limitée aux portées/périodes compatibles |
+| Application | pagination, lectures ouvertes par lots, agrégation, rejet d'une pagination invalide avant accès aux données |
 | WebAPI | contrat paginé, mapping des noms et anomalies, authentification et autorisation admin |
 | Angular | contrat HTTP, résumé métier de la façade, pagination, conservation des données sur erreur, liens d'édition, reflow mobile |
 
