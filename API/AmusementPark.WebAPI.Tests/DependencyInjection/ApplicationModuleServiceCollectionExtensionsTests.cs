@@ -130,7 +130,7 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         services.AddSingleton(Mock.Of<IParkRepository>());
         services.AddSingleton(Mock.Of<IParkItemRepository>());
         services.AddSingleton(Mock.Of<IParkOpeningHoursRepository>());
-        services.AddSingleton(Mock.Of<IParkFitOperationalStatusRepository>());
+        services.AddSingleton(Mock.Of<IParkFitCandidatePortfolioReadRepository>());
 
         using ServiceProvider serviceProvider = services.BuildServiceProvider();
 
