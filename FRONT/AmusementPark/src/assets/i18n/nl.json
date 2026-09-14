@@ -5070,6 +5070,7 @@
         "unknowns": "Onbekende attracties: {{attractions}} · onbekende factoren: {{factors}}",
         "member": "Zelfstandig: {{alone}} · met begeleider: {{accompanied}} · niet mogelijk: {{unavailable}} · onbekend: {{unknown}} · niet van toepassing: {{notApplicable}}",
         "componentScore": "{{score}}/100",
+        "componentCoverage": "{{coverage}}% dekking",
         "qualityCoverage": "{{coverage}}% dekking",
         "verified": "{{date}}",
         "scheduleNotExposed": "Exacte tijden zijn niet beschikbaar in dit resultaat",

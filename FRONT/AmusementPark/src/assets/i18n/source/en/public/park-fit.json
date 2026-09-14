@@ -291,6 +291,7 @@
         "unknowns": "Unknown attractions: {{attractions}} · unknown factors: {{factors}}",
         "member": "Independently: {{alone}} · with a companion: {{accompanied}} · incompatible: {{unavailable}} · unknown: {{unknown}} · outside scope: {{notApplicable}}",
         "componentScore": "{{score}}/100",
+        "componentCoverage": "Coverage {{coverage}}%",
         "qualityCoverage": "{{coverage}}% coverage",
         "verified": "{{date}}",
         "scheduleNotExposed": "Exact hours are not available in this result",

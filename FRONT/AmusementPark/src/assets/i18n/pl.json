@@ -5070,6 +5070,7 @@
         "unknowns": "Nieznane atrakcje: {{attractions}} · nieznane czynniki: {{factors}}",
         "member": "Samodzielnie: {{alone}} · z opiekunem: {{accompanied}} · niedostępne: {{unavailable}} · nieznane: {{unknown}} · nie dotyczy: {{notApplicable}}",
         "componentScore": "{{score}}/100",
+        "componentCoverage": "Pokrycie {{coverage}}%",
         "qualityCoverage": "Pokrycie {{coverage}}%",
         "verified": "{{date}}",
         "scheduleNotExposed": "Dokładne godziny nie są dostępne w tym wyniku",

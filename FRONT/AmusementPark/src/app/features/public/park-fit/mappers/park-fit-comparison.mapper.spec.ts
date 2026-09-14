@@ -42,6 +42,23 @@ describe('buildParkFitComparisonSections', () => {
     expect(rows.find((row) => row.id === 'overall')?.isDifferent).toBe(true);
   });
 
+  it('keeps component reliability visible and comparable', () => {
+    const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    second.components[0]!.coveragePercent = 65;
+    second.components[0]!.confidence = 'Low';
+
+    const preferenceRow = buildParkFitComparisonSections([first, second], (): string => 'date')
+      .flatMap((section) => section.rows)
+      .find((row) => row.id === 'preferences');
+
+    expect(preferenceRow?.isDifferent).toBe(true);
+    expect(preferenceRow?.cells[0]?.statusParams['coverage']).toBe(100);
+    expect(preferenceRow?.cells[0]?.secondaryKey).toBe('parkFit.results.confidenceLevels.High');
+    expect(preferenceRow?.cells[1]?.statusParams['coverage']).toBe(65);
+    expect(preferenceRow?.cells[1]?.secondaryKey).toBe('parkFit.results.confidenceLevels.Low');
+  });
+
   it('compares the verification date exactly as visitors see it', () => {
     const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
     const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);

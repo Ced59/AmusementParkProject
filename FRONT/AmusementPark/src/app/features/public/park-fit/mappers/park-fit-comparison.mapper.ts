@@ -193,14 +193,17 @@ function buildComponentCell(park: ParkFitSearchPark, componentKind: string): Par
   }
 
   const value: number | null = component.value === null ? null : Math.round(component.value);
+  const coverage: number = Math.round(component.coveragePercent);
   return cell(
     park,
     value === null ? parkFitComponentStateKey(component.state) : 'parkFit.comparison.values.componentScore',
     value === null ? {} : { score: value },
-    value === null ? null : parkFitComponentStateKey(component.state),
+    parkFitConfidenceKey(component.confidence),
     {},
     null,
-    `${component.state}|${value ?? 'unknown'}`
+    `${component.state}|${value ?? 'unknown'}|${coverage}|${component.confidence}`,
+    'parkFit.comparison.values.componentCoverage',
+    { coverage }
   );
 }
 

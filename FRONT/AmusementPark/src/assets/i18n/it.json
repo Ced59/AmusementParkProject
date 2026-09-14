@@ -5070,6 +5070,7 @@
         "unknowns": "Attrazioni sconosciute: {{attractions}} · fattori sconosciuti: {{factors}}",
         "member": "In autonomia: {{alone}} · con accompagnatore: {{accompanied}} · non compatibili: {{unavailable}} · sconosciute: {{unknown}} · non applicabili: {{notApplicable}}",
         "componentScore": "{{score}}/100",
+        "componentCoverage": "Copertura {{coverage}}%",
         "qualityCoverage": "Copertura {{coverage}}%",
         "verified": "{{date}}",
         "scheduleNotExposed": "Gli orari esatti non sono disponibili in questo risultato",
