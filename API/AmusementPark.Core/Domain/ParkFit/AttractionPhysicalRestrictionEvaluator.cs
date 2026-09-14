@@ -105,7 +105,8 @@ internal static class AttractionPhysicalRestrictionEvaluator
             return;
         }
 
-        bool accompanimentIsUnavoidable = aloneMinimums.Count == 0
+        bool hasViableAlonePath = hasAloneMinimum && !alonePathContradictsMaximum;
+        bool accompanimentIsUnavoidable = !hasViableAlonePath
             && !context.HasUnresolvedHeightAloneAlternative
             && accompaniedMinimums.Count > 0;
         if (accompanimentIsUnavoidable && profile.CanBeAccompanied == false)
@@ -534,7 +535,8 @@ internal static class AttractionPhysicalRestrictionEvaluator
     private static IReadOnlyCollection<AttractionAccessCondition>? FindConflictingHeightThresholds(
         IReadOnlyCollection<AttractionAccessCondition> conditions)
     {
-        double? firstThresholdCentimeters = null;
+        double? minimumThresholdCentimeters = null;
+        double? maximumThresholdCentimeters = null;
         foreach (AttractionAccessCondition condition in conditions)
         {
             if (!AttractionHeightUnitConverter.TryConvertToCentimeters(
@@ -544,20 +546,22 @@ internal static class AttractionPhysicalRestrictionEvaluator
                 continue;
             }
 
-            if (!firstThresholdCentimeters.HasValue)
-            {
-                firstThresholdCentimeters = thresholdCentimeters;
-                continue;
-            }
-
-            if (Math.Abs(firstThresholdCentimeters.Value - thresholdCentimeters)
-                > HeightComparisonToleranceCentimeters)
-            {
-                return conditions;
-            }
+            minimumThresholdCentimeters = !minimumThresholdCentimeters.HasValue
+                || thresholdCentimeters < minimumThresholdCentimeters.Value
+                    ? thresholdCentimeters
+                    : minimumThresholdCentimeters;
+            maximumThresholdCentimeters = !maximumThresholdCentimeters.HasValue
+                || thresholdCentimeters > maximumThresholdCentimeters.Value
+                    ? thresholdCentimeters
+                    : maximumThresholdCentimeters;
         }
 
-        return null;
+        return minimumThresholdCentimeters.HasValue
+            && maximumThresholdCentimeters.HasValue
+            && maximumThresholdCentimeters.Value - minimumThresholdCentimeters.Value
+                > HeightComparisonToleranceCentimeters
+                    ? conditions
+                    : null;
     }
 
     private static IReadOnlyCollection<AttractionAccessCondition>? FindConflictingAgeThresholds(

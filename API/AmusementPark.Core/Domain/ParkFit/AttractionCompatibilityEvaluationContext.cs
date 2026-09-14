@@ -128,7 +128,8 @@ internal sealed class AttractionCompatibilityEvaluationContext
 
     private void MarkUnresolvedAlternative(AttractionAccessCondition condition)
     {
-        bool requiresAccompaniment = condition.RequiresAccompaniment == true;
+        bool requiresAccompaniment = condition.RequiresAccompaniment == true
+            || condition.MinimumCompanionAge.HasValue;
         if (condition.Type == AttractionAccessConditionType.MinHeightAccompanied
             || (condition.Type == AttractionAccessConditionType.MinHeight
                 && requiresAccompaniment))
