@@ -221,7 +221,35 @@
         "title": "Najpierw rozpocznij wyszukiwanie",
         "text": "Prywatne kryteria i wyniki nie są zapisywane w przeglądarce ani przypisywane do konta.",
         "action": "Opisz moją grupę"
+      },
+      "compare": {
+        "title": "Utwórz porównanie",
+        "text": "Wybierz od dwóch do czterech parków. Następny ekran zestawi różnice bez kopiowania prywatnych kryteriów.",
+        "count": "Wybrano {{count}} z 4 parków",
+        "minimum": "Wybierz kolejne parki, aż będą co najmniej dwa.",
+        "limit": "Wybrano cztery parki. Usuń jeden, aby wybrać inny.",
+        "add": "Dodaj do porównania",
+        "remove": "Usuń z porównania",
+        "action": "Porównaj {{count}} parki"
       }
+    },
+    "comparison": {
+      "seo": { "title": "Porównaj moje wyniki Park Fit — Amusement Parks", "description": "Przejrzyście porównaj od dwóch do czterech parków pod kątem grupy, preferencji i wiarygodności danych." },
+      "breadcrumb": { "current": "Porównanie" },
+      "kicker": "Bezpośrednie zestawienie",
+      "title": "Co naprawdę odróżnia te parki",
+      "lead": "{{count}} parki są oceniane według tych samych kryteriów. Ważne różnice mają opis tekstowy i nigdy nie są oznaczone wyłącznie kolorem.",
+      "changeSelection": "Zmień wybór",
+      "selectedParks": "Wybrane parki",
+      "rank": "Wynik nr {{rank}}",
+      "openPark": "Odkryj park",
+      "difference": "Różnica",
+      "reading": { "title": "Porównuj wiersz po wierszu, nie tylko wynik", "text": "Brakujące dane pozostają niedostępne. Nigdy nie stają się zaletą ani wadą." },
+      "filter": { "title": "Skup się na różnicach", "text": "Możesz ukryć identyczne wiersze i w każdej chwili wyświetlić je ponownie.", "differencesOnly": "Pokaż tylko różnice", "showAll": "Pokaż ponownie wszystkie wiersze", "noneTitle": "Brak różnic w dostępnych wierszach", "noneText": "Pokaż wszystkie wiersze, aby przejrzeć elementy wspólne." },
+      "sections": { "decision": "Ogólna decyzja", "people": "Każda osoba w grupie", "preferences": "Preferencje i rodzaj wyjazdu", "practical": "Informacje praktyczne", "trust": "Wiarygodność danych" },
+      "rows": { "overall": "Ogólne dopasowanie", "together": "Wspólne atrakcje", "unknowns": "Nieznane dane", "opening": "Otwarcie w wybranym dniu", "member": "Osoba {{number}}", "preferences": "Preferowane kategorie", "indoor": "Wewnątrz / na zewnątrz", "travel": "Dojazd", "schedule": "Szczegółowe godziny", "budget": "Budżet", "quality": "Poziom kompletności", "verified": "Ostatnia weryfikacja", "official": "Oficjalny link" },
+      "values": { "score": "{{score}}/100 · pokrycie {{coverage}}%", "scoreUnavailable": "Wynik nieopublikowany", "together": "{{count}} atrakcji możliwych razem", "organized": "{{count}} przy organizacji grupy", "unknowns": "Atrakcje: {{attractions}} · czynniki: {{factors}}", "member": "{{alone}} samodzielnie · {{accompanied}} z opiekunem · {{unavailable}} niedostępnych · {{unknown}} nieznanych", "componentScore": "{{score}}/100", "qualityCoverage": "Pokrycie {{coverage}}%", "verified": "{{date}}", "scheduleNotExposed": "Dokładne godziny nie są dostępne w tym wyniku", "officialAvailable": "Dostępny zweryfikowany link publiczny", "officialUnavailable": "Brak publicznego oficjalnego linku w tym wyniku", "openOfficial": "Otwórz oficjalną stronę", "unavailable": "Dane niedostępne" },
+      "missing": { "title": "Najpierw wybierz co najmniej dwa parki", "text": "Wybór pozostaje prywatny i tylko w pamięci podczas nawigacji.", "action": "Wróć do wyników", "restart": "Rozpocznij nowe wyszukiwanie" }
     }
   }
 }

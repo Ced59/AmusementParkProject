@@ -4998,6 +4998,89 @@
         "title": "Starte zuerst eine Suche",
         "text": "Private Kriterien und Ergebnisse werden weder im Browser gespeichert noch einem Konto zugeordnet.",
         "action": "Meine Gruppe beschreiben"
+      },
+      "compare": {
+        "title": "Stelle deinen Vergleich zusammen",
+        "text": "Wähle zwei bis vier Parks. Die nächste Seite stellt ihre Unterschiede gegenüber, ohne deine privaten Kriterien zu kopieren.",
+        "count": "{{count}} von 4 Parks ausgewählt",
+        "minimum": "Wähle weitere Parks aus, bis es mindestens zwei sind.",
+        "limit": "Vier Parks sind ausgewählt. Entferne einen, um einen anderen zu wählen.",
+        "add": "Zum Vergleich hinzufügen",
+        "remove": "Aus dem Vergleich entfernen",
+        "action": "{{count}} Parks vergleichen"
+      }
+    },
+    "comparison": {
+      "seo": {
+        "title": "Meine Park-Fit-Ergebnisse vergleichen — Amusement Parks",
+        "description": "Vergleiche zwei bis vier Parks übersichtlich nach deiner Gruppe, deinen Wünschen und der Datenqualität."
+      },
+      "breadcrumb": {
+        "current": "Vergleich"
+      },
+      "kicker": "Direkter Vergleich",
+      "title": "Was diese Parks wirklich unterscheidet",
+      "lead": "{{count}} Parks werden anhand derselben Kriterien betrachtet. Wichtige Unterschiede sind beschriftet und nie nur farblich markiert.",
+      "changeSelection": "Auswahl ändern",
+      "selectedParks": "Ausgewählte Parks",
+      "rank": "Ergebnis Nr. {{rank}}",
+      "openPark": "Park entdecken",
+      "difference": "Unterschied",
+      "reading": {
+        "title": "Vergleiche Zeile für Zeile, nicht nur die Punktzahl",
+        "text": "Fehlende Angaben bleiben unverfügbar. Sie werden nie als Vorteil oder Nachteil gewertet."
+      },
+      "filter": {
+        "title": "Konzentriere dich auf die Unterschiede",
+        "text": "Du kannst identische Zeilen ausblenden und jederzeit wieder anzeigen.",
+        "differencesOnly": "Nur Unterschiede anzeigen",
+        "showAll": "Alle Zeilen wieder anzeigen",
+        "noneTitle": "Keine Unterschiede in den verfügbaren Zeilen",
+        "noneText": "Zeige alle Zeilen wieder an, um Gemeinsamkeiten zu sehen."
+      },
+      "sections": {
+        "decision": "Gesamtentscheidung",
+        "people": "Jede Person der Gruppe",
+        "preferences": "Wünsche und Art des Ausflugs",
+        "practical": "Praktische Informationen",
+        "trust": "Zuverlässigkeit der Daten"
+      },
+      "rows": {
+        "overall": "Gesamtübereinstimmung",
+        "together": "Gemeinsame Erlebnisse",
+        "unknowns": "Unbekannte Angaben",
+        "opening": "Öffnung am gewählten Tag",
+        "member": "Person {{number}}",
+        "preferences": "Bevorzugte Kategorien",
+        "indoor": "Drinnen / draußen",
+        "travel": "Anreise",
+        "schedule": "Genaue Öffnungszeiten",
+        "budget": "Budget",
+        "quality": "Vollständigkeit",
+        "verified": "Letzte Prüfung",
+        "official": "Offizieller Link"
+      },
+      "values": {
+        "score": "{{score}}/100 · {{coverage}} % Abdeckung",
+        "scoreUnavailable": "Punktzahl nicht veröffentlicht",
+        "together": "{{count}} Attraktion(en) gemeinsam möglich",
+        "organized": "{{count}} mit Gruppenorganisation",
+        "unknowns": "{{attractions}} Attraktion(en) · {{factors}} Faktor(en)",
+        "member": "{{alone}} selbstständig · {{accompanied}} mit Begleitung · {{unavailable}} nicht möglich · {{unknown}} unbekannt",
+        "componentScore": "{{score}}/100",
+        "qualityCoverage": "{{coverage}} % Abdeckung",
+        "verified": "{{date}}",
+        "scheduleNotExposed": "Genaue Uhrzeiten sind in diesem Ergebnis nicht verfügbar",
+        "officialAvailable": "Geprüfter öffentlicher Link verfügbar",
+        "officialUnavailable": "Kein öffentlicher offizieller Link in diesem Ergebnis",
+        "openOfficial": "Offizielle Website öffnen",
+        "unavailable": "Angabe nicht verfügbar"
+      },
+      "missing": {
+        "title": "Wähle zuerst mindestens zwei Parks",
+        "text": "Deine Auswahl bleibt privat und nur während der Navigation im Speicher.",
+        "action": "Zurück zu den Ergebnissen",
+        "restart": "Neue Suche starten"
       }
     }
   },

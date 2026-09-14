@@ -17,11 +17,13 @@ export class ParkFitSearchFacade {
   private readonly responseSignal = signal<ParkFitSearchResponse | null>(null);
   private readonly errorKeySignal = signal<string | null>(null);
   private readonly lastRequestSignal = signal<ParkFitSearchRequest | null>(null);
+  private readonly comparisonParkIdsSignal = signal<string[]>([]);
 
   public readonly status: Signal<ParkFitSearchStatus> = this.statusSignal.asReadonly();
   public readonly response: Signal<ParkFitSearchResponse | null> = this.responseSignal.asReadonly();
   public readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
   public readonly lastRequest: Signal<ParkFitSearchRequest | null> = this.lastRequestSignal.asReadonly();
+  public readonly comparisonParkIds: Signal<string[]> = this.comparisonParkIdsSignal.asReadonly();
   public readonly visibleParks: Signal<ParkFitSearchPark[]> = computed(() =>
     this.responseSignal()?.parks.filter(
       (park: ParkFitSearchPark): boolean => park.scoreState !== 'Excluded'
@@ -30,6 +32,15 @@ export class ParkFitSearchFacade {
   public readonly firstPark: Signal<ParkFitSearchPark | null> = computed(() =>
     this.visibleParks()[0] ?? null
   );
+  public readonly comparisonParks: Signal<ParkFitSearchPark[]> = computed(() => {
+    const selectedIds: ReadonlySet<string> = new Set(this.comparisonParkIdsSignal());
+    return this.visibleParks().filter((park: ParkFitSearchPark): boolean => selectedIds.has(park.parkId));
+  });
+  public readonly canCompare: Signal<boolean> = computed(() => {
+    const count: number = this.comparisonParks().length;
+    return count >= 2 && count <= 4;
+  });
+  public readonly comparisonLimitReached: Signal<boolean> = computed(() => this.comparisonParks().length >= 4);
 
   constructor(
     @Inject(PARK_FIT_SEARCH_DATA_PORT) private readonly dataPort: ParkFitSearchDataPort,
@@ -43,6 +54,7 @@ export class ParkFitSearchFacade {
     }
 
     this.lastRequestSignal.set(copyRequest(request));
+    this.comparisonParkIdsSignal.set([]);
     this.responseSignal.set(null);
     this.errorKeySignal.set(null);
     this.statusSignal.set('loading');
@@ -60,6 +72,21 @@ export class ParkFitSearchFacade {
           this.statusSignal.set('error');
         }
       });
+  }
+
+  toggleComparisonPark(parkId: string): void {
+    const selectedIds: string[] = this.comparisonParkIdsSignal();
+    if (selectedIds.includes(parkId)) {
+      this.comparisonParkIdsSignal.set(selectedIds.filter((selectedId: string): boolean => selectedId !== parkId));
+      return;
+    }
+
+    const isVisible: boolean = this.visibleParks().some((park: ParkFitSearchPark): boolean => park.parkId === parkId);
+    if (!isVisible || selectedIds.length >= 4) {
+      return;
+    }
+
+    this.comparisonParkIdsSignal.set([...selectedIds, parkId]);
   }
 }
 

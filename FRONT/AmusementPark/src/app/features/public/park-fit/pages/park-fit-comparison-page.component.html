@@ -1,0 +1,109 @@
+<section class="park-fit-comparison public-page">
+  <nav class="park-fit-comparison__breadcrumb" [attr.aria-label]="'parkFit.results.breadcrumb.label' | translate">
+    <a [routerLink]="homeRoute()">{{ 'parkFit.results.breadcrumb.home' | translate }}</a>
+    <i class="pi pi-angle-right" aria-hidden="true"></i>
+    <a [routerLink]="criteriaRoute()">{{ 'parkFit.results.breadcrumb.parkFit' | translate }}</a>
+    <i class="pi pi-angle-right" aria-hidden="true"></i>
+    <a [routerLink]="resultsRoute()">{{ 'parkFit.results.breadcrumb.current' | translate }}</a>
+    <i class="pi pi-angle-right" aria-hidden="true"></i>
+    <span aria-current="page">{{ 'parkFit.comparison.breadcrumb.current' | translate }}</span>
+  </nav>
+
+  <header class="park-fit-comparison__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <div>
+      <app-ui-kicker tone="lime" iconClass="pi pi-clone">{{ 'parkFit.comparison.kicker' | translate }}</app-ui-kicker>
+      <h1>{{ 'parkFit.comparison.title' | translate }}</h1>
+      <p>{{ 'parkFit.comparison.lead' | translate:{ count: parks().length } }}</p>
+    </div>
+    <a appUiButton="ghost" [routerLink]="resultsRoute()">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'parkFit.comparison.changeSelection' | translate }}</span>
+    </a>
+  </header>
+
+  @if (parks().length >= 2 && parks().length <= 4) {
+    <aside class="park-fit-comparison__reading" appUiSurface="panel" appUiSurfacePadding="regular">
+      <i class="pi pi-lightbulb" aria-hidden="true"></i>
+      <div>
+        <strong>{{ 'parkFit.comparison.reading.title' | translate }}</strong>
+        <span>{{ 'parkFit.comparison.reading.text' | translate }}</span>
+      </div>
+    </aside>
+
+    <section class="park-fit-comparison__parks" [attr.aria-label]="'parkFit.comparison.selectedParks' | translate">
+      @for (park of parks(); track park.parkId; let rank = $index) {
+        <article appUiSurface="panel" appUiSurfacePadding="regular">
+          <span>{{ 'parkFit.comparison.rank' | translate:{ rank: rank + 1 } }}</span>
+          <h2>{{ park.parkName }}</h2>
+          @if (park.comparativeScore !== null) {
+            <strong>{{ rounded(park.comparativeScore) }}<small>/100</small></strong>
+          } @else {
+            <strong>—</strong>
+          }
+          @if (parkRoute(park); as routeCommands) {
+            <a [routerLink]="routeCommands">{{ 'parkFit.comparison.openPark' | translate }}<i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+          }
+        </article>
+      }
+    </section>
+
+    <div class="park-fit-comparison__toolbar" appUiSurface="panel" appUiSurfacePadding="compact">
+      <div>
+        <strong>{{ 'parkFit.comparison.filter.title' | translate }}</strong>
+        <span>{{ 'parkFit.comparison.filter.text' | translate }}</span>
+      </div>
+      <button type="button" appUiButton="ghost" [attr.aria-pressed]="showOnlyDifferences()" (click)="toggleDifferences()">
+        <i [class]="showOnlyDifferences() ? 'pi pi-check-square' : 'pi pi-stop'" aria-hidden="true"></i>
+        <span>{{ (showOnlyDifferences() ? 'parkFit.comparison.filter.showAll' : 'parkFit.comparison.filter.differencesOnly') | translate }}</span>
+      </button>
+    </div>
+
+    <div class="park-fit-comparison__matrix" [style.--park-count]="parks().length">
+      @for (section of sections(); track section.id) {
+        <section class="park-fit-comparison__section" [attr.aria-labelledby]="'comparison-section-' + section.id">
+          <h2 [id]="'comparison-section-' + section.id">{{ section.titleKey | translate }}</h2>
+          @for (row of section.rows; track row.id) {
+            <article class="park-fit-comparison__row" [class.park-fit-comparison__row--different]="row.isDifferent">
+              <header>
+                <i [class]="row.iconClass" aria-hidden="true"></i>
+                <strong>{{ row.labelKey | translate:row.labelParams }}</strong>
+                @if (row.isDifferent) {
+                  <app-ui-chip tone="gold" iconClass="pi pi-arrows-h">{{ 'parkFit.comparison.difference' | translate }}</app-ui-chip>
+                }
+              </header>
+              @for (cell of row.cells; track cell.parkId; let parkIndex = $index) {
+                <div class="park-fit-comparison__cell" [attr.aria-label]="parks()[parkIndex]!.parkName">
+                  <span class="park-fit-comparison__cell-park">{{ parks()[parkIndex]!.parkName }}</span>
+                  <strong>{{ cell.primaryKey | translate:cell.primaryParams }}</strong>
+                  @if (cell.secondaryKey) {
+                    <span>{{ cell.secondaryKey | translate:cell.secondaryParams }}</span>
+                  }
+                  @if (cell.linkUrl) {
+                    <a [href]="cell.linkUrl" target="_blank" rel="noopener noreferrer">
+                      {{ 'parkFit.comparison.values.openOfficial' | translate }}
+                      <i class="pi pi-external-link" aria-hidden="true"></i>
+                    </a>
+                  }
+                </div>
+              }
+            </article>
+          }
+        </section>
+      } @empty {
+        <section class="park-fit-comparison__no-difference" appUiSurface="panel" appUiSurfacePadding="regular">
+          <i class="pi pi-equals" aria-hidden="true"></i>
+          <strong>{{ 'parkFit.comparison.filter.noneTitle' | translate }}</strong>
+          <span>{{ 'parkFit.comparison.filter.noneText' | translate }}</span>
+        </section>
+      }
+    </div>
+  } @else {
+    <section class="park-fit-comparison__missing" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <i class="pi pi-clone" aria-hidden="true"></i>
+      <h2>{{ 'parkFit.comparison.missing.title' | translate }}</h2>
+      <p>{{ 'parkFit.comparison.missing.text' | translate }}</p>
+      <a appUiButton="primary" [routerLink]="resultsRoute()">{{ 'parkFit.comparison.missing.action' | translate }}</a>
+      <a appUiButton="ghost" [routerLink]="criteriaRoute()">{{ 'parkFit.comparison.missing.restart' | translate }}</a>
+    </section>
+  }
+</section>

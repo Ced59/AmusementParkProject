@@ -177,8 +177,28 @@ langues, rendue côté client, non indexable et structurée en cartes responsive
 360 px. L'architecture, les diagrammes et les preuves sont documentés dans
 [`product-growth-fit-09-explained-results-2026-09-14.md`](../../architecture/product-growth-fit-09-explained-results-2026-09-14.md).
 
-`FIT-10` est le prochain jalon : il permettra de sélectionner de deux à quatre parcs
-et de comparer leurs différences sur un même écran accessible.
+### État de `FIT-10` au 14 septembre 2026
+
+Les résultats expliqués permettent désormais de sélectionner explicitement de deux
+à quatre parcs, de retirer un choix et d'ouvrir une matrice comparative sans nouveau
+calcul. La sélection reste dans la façade en mémoire, est vidée à chaque nouvelle
+recherche et ne place aucun critère privé dans l'URL ou le stockage du navigateur.
+
+La comparaison aligne le score et sa couverture, les expériences possibles ensemble,
+les inconnues, l'ouverture, la compatibilité de chaque personne, les préférences,
+l'intérieur/extérieur, le trajet, les horaires, le budget, la complétude, la date de
+vérification et les liens officiels HTTPS disponibles. Les données encore absentes
+sont dites indisponibles plutôt qu'inventées. Un mode masque les lignes identiques ;
+chaque différence porte aussi un pictogramme et un libellé, sans dépendre de la couleur.
+
+La grille côte à côte devient une succession de cartes nommées sous 960 px, ne crée
+aucun défilement horizontal et reste contenue à 360 px. La page en rendu client reste
+`noindex`, possède un fil d'Ariane visible et JSON-LD, et gère honnêtement le
+rechargement sans sélection. L'architecture et les preuves sont documentées dans
+[`product-growth-fit-10-side-by-side-comparison-2026-09-14.md`](../../architecture/product-growth-fit-10-side-by-side-comparison-2026-09-14.md).
+
+`FIT-11` est le prochain jalon : les membres connectés pourront sauvegarder leurs
+profils de groupe privés et exercer l'export et la suppression associés.
 
 ## 1. Vision produit
 

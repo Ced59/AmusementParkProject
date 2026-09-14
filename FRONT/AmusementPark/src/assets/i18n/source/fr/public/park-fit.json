@@ -223,6 +223,87 @@
         "title": "Lance d’abord une recherche",
         "text": "Les critères privés et les résultats ne sont pas stockés dans ton navigateur ni rattachés à un compte.",
         "action": "Décrire mon groupe"
+      },
+      "compare": {
+        "title": "Construis ta comparaison",
+        "text": "Choisis de deux à quatre parcs. Le prochain écran alignera leurs différences sans recopier tes critères privés.",
+        "count": "{{count}} parc(s) sélectionné(s) sur 4",
+        "minimum": "Sélectionne encore des parcs pour en avoir au moins deux.",
+        "limit": "Quatre parcs sont sélectionnés. Retire-en un pour en choisir un autre.",
+        "add": "Ajouter à la comparaison",
+        "remove": "Retirer de la comparaison",
+        "action": "Comparer les {{count}} parcs"
+      }
+    },
+    "comparison": {
+      "seo": {
+        "title": "Comparer mes résultats Park Fit — Amusement Parks",
+        "description": "Compare clairement de deux à quatre parcs selon ton groupe, tes envies et la fiabilité des données."
+      },
+      "breadcrumb": { "current": "Comparaison" },
+      "kicker": "Face-à-face",
+      "title": "Ce qui distingue vraiment ces parcs",
+      "lead": "{{count}} parcs sont lus avec les mêmes critères. Les différences utiles sont signalées par un libellé, jamais par la couleur seule.",
+      "changeSelection": "Modifier ma sélection",
+      "selectedParks": "Parcs sélectionnés",
+      "rank": "Résultat n° {{rank}}",
+      "openPark": "Découvrir le parc",
+      "difference": "Différence",
+      "reading": {
+        "title": "Compare ligne par ligne, pas seulement le score",
+        "text": "Une donnée absente reste indisponible. Elle n’est jamais transformée en avantage ou en défaut."
+      },
+      "filter": {
+        "title": "Concentre-toi sur ce qui change",
+        "text": "Tu peux masquer les lignes identiques puis les réafficher à tout moment.",
+        "differencesOnly": "Voir seulement les différences",
+        "showAll": "Réafficher toutes les lignes",
+        "noneTitle": "Aucune différence sur les lignes disponibles",
+        "noneText": "Réaffiche toutes les lignes pour revoir les points communs."
+      },
+      "sections": {
+        "decision": "Décision d’ensemble",
+        "people": "Chaque personne du groupe",
+        "preferences": "Envies et type de sortie",
+        "practical": "Informations pratiques",
+        "trust": "Fiabilité des données"
+      },
+      "rows": {
+        "overall": "Correspondance globale",
+        "together": "Expériences en commun",
+        "unknowns": "Inconnues",
+        "opening": "Ouverture à la date choisie",
+        "member": "Personne {{number}}",
+        "preferences": "Catégories préférées",
+        "indoor": "Intérieur / extérieur",
+        "travel": "Trajet",
+        "schedule": "Horaires détaillés",
+        "budget": "Budget",
+        "quality": "Niveau de complétude",
+        "verified": "Dernière vérification",
+        "official": "Lien officiel"
+      },
+      "values": {
+        "score": "{{score}}/100 · couverture {{coverage}} %",
+        "scoreUnavailable": "Score non publié",
+        "together": "{{count}} attraction(s) possible(s) ensemble",
+        "organized": "{{count}} avec organisation du groupe",
+        "unknowns": "{{attractions}} attraction(s) · {{factors}} facteur(s)",
+        "member": "{{alone}} en autonomie · {{accompanied}} avec accompagnateur · {{unavailable}} incompatible(s) · {{unknown}} inconnue(s)",
+        "componentScore": "{{score}}/100",
+        "qualityCoverage": "Couverture {{coverage}} %",
+        "verified": "{{date}}",
+        "scheduleNotExposed": "Horaire exact non disponible dans ce résultat",
+        "officialAvailable": "Lien public vérifié disponible",
+        "officialUnavailable": "Aucun lien officiel public dans ce résultat",
+        "openOfficial": "Ouvrir le site officiel",
+        "unavailable": "Donnée indisponible"
+      },
+      "missing": {
+        "title": "Choisis d’abord au moins deux parcs",
+        "text": "La sélection reste privée et uniquement en mémoire pendant ta navigation.",
+        "action": "Revenir aux résultats",
+        "restart": "Relancer la recherche"
       }
     }
   }

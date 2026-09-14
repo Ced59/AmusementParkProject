@@ -221,7 +221,35 @@
         "title": "Inicia primero una búsqueda",
         "text": "Los criterios privados y los resultados no se guardan en tu navegador ni se vinculan a una cuenta.",
         "action": "Describir mi grupo"
+      },
+      "compare": {
+        "title": "Prepara tu comparación",
+        "text": "Elige entre dos y cuatro parques. La siguiente pantalla alineará sus diferencias sin copiar tus criterios privados.",
+        "count": "{{count}} parque(s) seleccionado(s) de 4",
+        "minimum": "Selecciona más parques hasta tener al menos dos.",
+        "limit": "Has seleccionado cuatro parques. Quita uno para elegir otro.",
+        "add": "Añadir a la comparación",
+        "remove": "Quitar de la comparación",
+        "action": "Comparar {{count}} parques"
       }
+    },
+    "comparison": {
+      "seo": { "title": "Comparar mis resultados Park Fit — Amusement Parks", "description": "Compara claramente entre dos y cuatro parques según tu grupo, tus preferencias y la fiabilidad de los datos." },
+      "breadcrumb": { "current": "Comparación" },
+      "kicker": "Cara a cara",
+      "title": "Lo que realmente distingue a estos parques",
+      "lead": "Se analizan {{count}} parques con los mismos criterios. Las diferencias útiles se indican con texto, nunca solo mediante el color.",
+      "changeSelection": "Cambiar mi selección",
+      "selectedParks": "Parques seleccionados",
+      "rank": "Resultado n.º {{rank}}",
+      "openPark": "Descubrir el parque",
+      "difference": "Diferencia",
+      "reading": { "title": "Compara línea por línea, no solo la puntuación", "text": "Un dato ausente sigue sin estar disponible. Nunca se convierte en una ventaja ni en una desventaja." },
+      "filter": { "title": "Concéntrate en lo que cambia", "text": "Puedes ocultar las líneas idénticas y volver a mostrarlas en cualquier momento.", "differencesOnly": "Mostrar solo las diferencias", "showAll": "Volver a mostrar todas las líneas", "noneTitle": "No hay diferencias en las líneas disponibles", "noneText": "Vuelve a mostrar todas las líneas para revisar los puntos en común." },
+      "sections": { "decision": "Decisión general", "people": "Cada persona del grupo", "preferences": "Preferencias y tipo de visita", "practical": "Información práctica", "trust": "Fiabilidad de los datos" },
+      "rows": { "overall": "Correspondencia general", "together": "Experiencias en común", "unknowns": "Datos desconocidos", "opening": "Apertura en la fecha elegida", "member": "Persona {{number}}", "preferences": "Categorías preferidas", "indoor": "Interior / exterior", "travel": "Trayecto", "schedule": "Horarios detallados", "budget": "Presupuesto", "quality": "Nivel de integridad", "verified": "Última verificación", "official": "Enlace oficial" },
+      "values": { "score": "{{score}}/100 · cobertura del {{coverage}}%", "scoreUnavailable": "Puntuación no publicada", "together": "{{count}} atracción/atracciones posible(s) juntos", "organized": "{{count}} con organización del grupo", "unknowns": "{{attractions}} atracción/atracciones · {{factors}} factor(es)", "member": "{{alone}} de forma autónoma · {{accompanied}} con acompañante · {{unavailable}} incompatible(s) · {{unknown}} desconocida(s)", "componentScore": "{{score}}/100", "qualityCoverage": "Cobertura del {{coverage}}%", "verified": "{{date}}", "scheduleNotExposed": "Los horarios exactos no están disponibles en este resultado", "officialAvailable": "Enlace público verificado disponible", "officialUnavailable": "No hay enlace oficial público en este resultado", "openOfficial": "Abrir el sitio oficial", "unavailable": "Dato no disponible" },
+      "missing": { "title": "Elige primero al menos dos parques", "text": "Tu selección permanece privada y solo en memoria durante la navegación.", "action": "Volver a los resultados", "restart": "Iniciar otra búsqueda" }
     }
   }
 }
