@@ -21,9 +21,10 @@ internal static class AttractionPhysicalRestrictionEvaluator
             .ToList();
         if (heightConditions.Count == 0)
         {
-            if (context.HasUnresolvedHeightAccompaniedAlternative)
+            if (context.HasUnresolvedHeightAccompaniedAlternative
+                || context.HasUnresolvedHeightAloneAlternative)
             {
-                context.ActivateUnresolvedAccompaniedAlternative();
+                context.ActivateUnresolvedAlternative();
             }
 
             return;
@@ -47,18 +48,20 @@ internal static class AttractionPhysicalRestrictionEvaluator
             FindConflictingHeightThresholds(aloneMinimums);
         IReadOnlyCollection<AttractionAccessCondition>? conflictingAccompaniedMinimums =
             FindConflictingHeightThresholds(accompaniedMinimums);
-        foreach (IReadOnlyCollection<AttractionAccessCondition> conflict in new[]
+        if (conflictingMaximums is not null)
         {
-            conflictingMaximums,
-            conflictingAloneMinimums,
-        }.OfType<IReadOnlyCollection<AttractionAccessCondition>>())
+            context.AddConflictingConditions(conflictingMaximums);
+        }
+
+        if (conflictingAloneMinimums is not null)
         {
-            context.AddConflictingConditions(conflict);
+            context.AddUnresolvedAlternativeConflictingConditions(
+                conflictingAloneMinimums);
         }
 
         if (conflictingAccompaniedMinimums is not null)
         {
-            context.AddUnresolvedAccompaniedConflictingConditions(
+            context.AddUnresolvedAlternativeConflictingConditions(
                 conflictingAccompaniedMinimums);
         }
 
@@ -138,39 +141,54 @@ internal static class AttractionPhysicalRestrictionEvaluator
 
         if (canUseAlonePath && heightCentimeters >= aloneMinimumCentimeters)
         {
-            context.AddSatisfied(
-                AttractionCompatibilityReasonCode.HeightRequirementMet,
-                aloneMinimum!);
-            return;
+            if (!context.HasUnresolvedHeightAloneAlternative)
+            {
+                context.AddSatisfied(
+                    AttractionCompatibilityReasonCode.HeightRequirementMet,
+                    aloneMinimum!);
+                return;
+            }
         }
 
         if (canUseAccompaniedPath && heightCentimeters >= accompaniedMinimumCentimeters)
         {
             if (context.HasUnresolvedHeightAccompaniedAlternative)
             {
-                context.ActivateUnresolvedAccompaniedAlternative();
+                context.ActivateUnresolvedAlternative();
                 return;
             }
 
             context.AddSatisfied(
                 AttractionCompatibilityReasonCode.HeightRequirementMet,
                 accompaniedMinimum!);
-            AttractionAccompanimentEvaluator.Evaluate(profile, accompaniedMinimums, context);
+            AttractionAccompanimentEvaluator.Evaluate(
+                profile,
+                accompaniedMinimums,
+                context,
+                hasUnresolvedAloneAlternative:
+                    context.HasUnresolvedHeightAloneAlternative);
             return;
         }
 
         if (!canUseAlonePath
             && !canUseAccompaniedPath
-            && context.HasUnresolvedHeightAccompaniedAlternative)
+            && (context.HasUnresolvedHeightAccompaniedAlternative
+                || context.HasUnresolvedHeightAloneAlternative))
         {
-            context.ActivateUnresolvedAccompaniedAlternative();
+            context.ActivateUnresolvedAlternative();
+            return;
+        }
+
+        if (context.HasUnresolvedHeightAloneAlternative)
+        {
+            context.ActivateUnresolvedAlternative();
             return;
         }
 
         if (context.HasUnresolvedHeightAccompaniedAlternative
             && profile.CanBeAccompanied != false)
         {
-            context.ActivateUnresolvedAccompaniedAlternative();
+            context.ActivateUnresolvedAlternative();
             return;
         }
 
@@ -204,9 +222,10 @@ internal static class AttractionPhysicalRestrictionEvaluator
             .ToList();
         if (aloneMinimums.Count == 0 && accompaniedMinimums.Count == 0)
         {
-            if (context.HasUnresolvedAgeAccompaniedAlternative)
+            if (context.HasUnresolvedAgeAccompaniedAlternative
+                || context.HasUnresolvedAgeAloneAlternative)
             {
-                context.ActivateUnresolvedAccompaniedAlternative();
+                context.ActivateUnresolvedAlternative();
             }
 
             return;
@@ -218,12 +237,13 @@ internal static class AttractionPhysicalRestrictionEvaluator
             FindConflictingAgeThresholds(accompaniedMinimums);
         if (conflictingAloneMinimums is not null)
         {
-            context.AddConflictingConditions(conflictingAloneMinimums);
+            context.AddUnresolvedAlternativeConflictingConditions(
+                conflictingAloneMinimums);
         }
 
         if (conflictingAccompaniedMinimums is not null)
         {
-            context.AddUnresolvedAccompaniedConflictingConditions(
+            context.AddUnresolvedAlternativeConflictingConditions(
                 conflictingAccompaniedMinimums);
         }
 
@@ -235,9 +255,10 @@ internal static class AttractionPhysicalRestrictionEvaluator
             : null;
         if (aloneMinimum is null && accompaniedMinimum is null)
         {
-            if (context.HasUnresolvedAgeAccompaniedAlternative)
+            if (context.HasUnresolvedAgeAccompaniedAlternative
+                || context.HasUnresolvedAgeAloneAlternative)
             {
-                context.ActivateUnresolvedAccompaniedAlternative();
+                context.ActivateUnresolvedAlternative();
             }
 
             return;
@@ -263,10 +284,13 @@ internal static class AttractionPhysicalRestrictionEvaluator
 
         if (aloneMinimum is not null && ageRange.MinimumYears >= aloneMinimum.Value!.Value)
         {
-            context.AddSatisfied(
-                AttractionCompatibilityReasonCode.AgeRequirementMet,
-                aloneMinimum);
-            return;
+            if (!context.HasUnresolvedAgeAloneAlternative)
+            {
+                context.AddSatisfied(
+                    AttractionCompatibilityReasonCode.AgeRequirementMet,
+                    aloneMinimum);
+                return;
+            }
         }
 
         if (accompaniedMinimum is not null
@@ -274,7 +298,7 @@ internal static class AttractionPhysicalRestrictionEvaluator
         {
             if (context.HasUnresolvedAgeAccompaniedAlternative)
             {
-                context.ActivateUnresolvedAccompaniedAlternative();
+                context.ActivateUnresolvedAlternative();
                 return;
             }
 
@@ -289,14 +313,21 @@ internal static class AttractionPhysicalRestrictionEvaluator
                 profile,
                 accompaniedMinimums,
                 context,
-                uncertainAloneThreshold);
+                uncertainAloneThreshold,
+                context.HasUnresolvedAgeAloneAlternative);
+            return;
+        }
+
+        if (context.HasUnresolvedAgeAloneAlternative)
+        {
+            context.ActivateUnresolvedAlternative();
             return;
         }
 
         if (context.HasUnresolvedAgeAccompaniedAlternative
             && profile.CanBeAccompanied != false)
         {
-            context.ActivateUnresolvedAccompaniedAlternative();
+            context.ActivateUnresolvedAlternative();
             return;
         }
 
@@ -318,7 +349,8 @@ internal static class AttractionPhysicalRestrictionEvaluator
                     profile,
                     accompaniedMinimums,
                     context,
-                    uncertainAloneThreshold);
+                    uncertainAloneThreshold,
+                    context.HasUnresolvedAgeAloneAlternative);
                 if (!context.HasViolation)
                 {
                     context.AddUnknown(

@@ -17,7 +17,11 @@ internal sealed class AttractionCompatibilityEvaluationContext
 
     public bool HasUnresolvedHeightAccompaniedAlternative { get; private set; }
 
+    public bool HasUnresolvedHeightAloneAlternative { get; private set; }
+
     public bool HasUnresolvedAgeAccompaniedAlternative { get; private set; }
+
+    public bool HasUnresolvedAgeAloneAlternative { get; private set; }
 
     public IReadOnlyCollection<AttractionCompatibilityReason> Reasons => this.reasons;
 
@@ -48,7 +52,6 @@ internal sealed class AttractionCompatibilityEvaluationContext
         AttractionAccessCondition condition)
     {
         this.HasUnknown = true;
-        this.MarkUnresolvedAccompaniedAlternative(condition);
         this.reasons.Add(new AttractionCompatibilityReason(code, condition));
     }
 
@@ -59,7 +62,6 @@ internal sealed class AttractionCompatibilityEvaluationContext
         IReadOnlyCollection<AttractionAccessConditionSemanticIssue> semanticIssues)
     {
         this.HasUnknown = true;
-        this.MarkUnresolvedAccompaniedAlternative(condition);
         this.reasons.Add(new AttractionCompatibilityReason(
             code,
             condition,
@@ -73,18 +75,18 @@ internal sealed class AttractionCompatibilityEvaluationContext
         this.reasons.Add(new AttractionCompatibilityReason(code));
     }
 
-    public bool TryAddUnresolvedAccompaniedAlternative(
+    public bool TryAddUnresolvedAlternative(
         AttractionCompatibilityReasonCode code,
         AttractionAccessCondition condition,
         IReadOnlyCollection<AttractionAccessConditionEvidenceIssue>? evidenceIssues = null,
         IReadOnlyCollection<AttractionAccessConditionSemanticIssue>? semanticIssues = null)
     {
-        if (!IsAccompaniedAlternative(condition))
+        if (!IsDecisionAlternative(condition))
         {
             return false;
         }
 
-        this.MarkUnresolvedAccompaniedAlternative(condition);
+        this.MarkUnresolvedAlternative(condition);
         this.reasons.Add(new AttractionCompatibilityReason(
             code,
             condition,
@@ -93,7 +95,7 @@ internal sealed class AttractionCompatibilityEvaluationContext
         return true;
     }
 
-    public void ActivateUnresolvedAccompaniedAlternative()
+    public void ActivateUnresolvedAlternative()
     {
         this.HasUnknown = true;
     }
@@ -105,12 +107,12 @@ internal sealed class AttractionCompatibilityEvaluationContext
         this.AddConflictingConditionReasons(conditions);
     }
 
-    public void AddUnresolvedAccompaniedConflictingConditions(
+    public void AddUnresolvedAlternativeConflictingConditions(
         IReadOnlyCollection<AttractionAccessCondition> conditions)
     {
         foreach (AttractionAccessCondition condition in conditions)
         {
-            this.MarkUnresolvedAccompaniedAlternative(condition);
+            this.MarkUnresolvedAlternative(condition);
         }
 
         this.AddConflictingConditionReasons(conditions);
@@ -124,7 +126,7 @@ internal sealed class AttractionCompatibilityEvaluationContext
             condition));
     }
 
-    private void MarkUnresolvedAccompaniedAlternative(AttractionAccessCondition condition)
+    private void MarkUnresolvedAlternative(AttractionAccessCondition condition)
     {
         bool requiresAccompaniment = condition.RequiresAccompaniment == true;
         if (condition.Type == AttractionAccessConditionType.MinHeightAccompanied
@@ -133,6 +135,10 @@ internal sealed class AttractionCompatibilityEvaluationContext
         {
             this.HasUnresolvedHeightAccompaniedAlternative = true;
         }
+        else if (condition.Type == AttractionAccessConditionType.MinHeight)
+        {
+            this.HasUnresolvedHeightAloneAlternative = true;
+        }
 
         if (condition.Type == AttractionAccessConditionType.MinAgeAccompanied
             || (condition.Type == AttractionAccessConditionType.MinAge
@@ -140,15 +146,18 @@ internal sealed class AttractionCompatibilityEvaluationContext
         {
             this.HasUnresolvedAgeAccompaniedAlternative = true;
         }
+        else if (condition.Type == AttractionAccessConditionType.MinAge)
+        {
+            this.HasUnresolvedAgeAloneAlternative = true;
+        }
     }
 
-    private static bool IsAccompaniedAlternative(AttractionAccessCondition condition)
+    private static bool IsDecisionAlternative(AttractionAccessCondition condition)
     {
-        return condition.Type is AttractionAccessConditionType.MinHeightAccompanied
-                or AttractionAccessConditionType.MinAgeAccompanied
-            || (condition.Type is AttractionAccessConditionType.MinHeight
-                    or AttractionAccessConditionType.MinAge
-                && condition.RequiresAccompaniment == true);
+        return condition.Type is AttractionAccessConditionType.MinHeight
+            or AttractionAccessConditionType.MinHeightAccompanied
+            or AttractionAccessConditionType.MinAge
+            or AttractionAccessConditionType.MinAgeAccompanied;
     }
 
     private void AddConflictingConditionReasons(

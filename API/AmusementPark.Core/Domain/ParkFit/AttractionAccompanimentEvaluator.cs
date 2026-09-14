@@ -11,7 +11,8 @@ internal static class AttractionAccompanimentEvaluator
         ParkFitMemberProfile profile,
         IReadOnlyCollection<AttractionAccessCondition> conditions,
         AttractionCompatibilityEvaluationContext context,
-        AttractionAccessCondition? uncertainAloneThreshold = null)
+        AttractionAccessCondition? uncertainAloneThreshold = null,
+        bool hasUnresolvedAloneAlternative = false)
     {
         ArgumentNullException.ThrowIfNull(profile);
         ArgumentNullException.ThrowIfNull(conditions);
@@ -50,6 +51,7 @@ internal static class AttractionAccompanimentEvaluator
                 AttractionCompatibilityReasonCode.AccompanimentUnavailable,
                 representative,
                 uncertainAloneThreshold,
+                hasUnresolvedAloneAlternative,
                 context);
             return;
         }
@@ -76,6 +78,7 @@ internal static class AttractionAccompanimentEvaluator
                 AttractionCompatibilityReasonCode.CompanionTooYoung,
                 representative,
                 uncertainAloneThreshold,
+                hasUnresolvedAloneAlternative,
                 context);
             return;
         }
@@ -95,17 +98,25 @@ internal static class AttractionAccompanimentEvaluator
         AttractionCompatibilityReasonCode reasonCode,
         AttractionAccessCondition accompaniedCondition,
         AttractionAccessCondition? uncertainAloneThreshold,
+        bool hasUnresolvedAloneAlternative,
         AttractionCompatibilityEvaluationContext context)
     {
-        if (uncertainAloneThreshold is null)
+        if (uncertainAloneThreshold is null && !hasUnresolvedAloneAlternative)
         {
             context.AddViolation(reasonCode, accompaniedCondition);
             return;
         }
 
         context.AddInformational(reasonCode, accompaniedCondition);
-        context.AddUnknown(
-            AttractionCompatibilityReasonCode.AgeRangeCrossesThreshold,
-            uncertainAloneThreshold);
+        if (uncertainAloneThreshold is not null)
+        {
+            context.AddUnknown(
+                AttractionCompatibilityReasonCode.AgeRangeCrossesThreshold,
+                uncertainAloneThreshold);
+        }
+        else
+        {
+            context.ActivateUnresolvedAlternative();
+        }
     }
 }

@@ -66,7 +66,7 @@ public sealed class AttractionCompatibilityEvaluator
                     maximumVerificationAge);
             if (semanticIssues.Count > 0)
             {
-                if (!context.TryAddUnresolvedAccompaniedAlternative(
+                if (!context.TryAddUnresolvedAlternative(
                         AttractionCompatibilityReasonCode.ConditionDefinitionUnusable,
                         condition,
                         evidenceIssues,
@@ -84,7 +84,7 @@ public sealed class AttractionCompatibilityEvaluator
 
             if (evidenceIssues.Count > 0)
             {
-                if (!context.TryAddUnresolvedAccompaniedAlternative(
+                if (!context.TryAddUnresolvedAlternative(
                         AttractionCompatibilityReasonCode.ConditionEvidenceUnusable,
                         condition,
                         evidenceIssues,
@@ -102,7 +102,7 @@ public sealed class AttractionCompatibilityEvaluator
 
             if (condition.Scope != AttractionAccessConditionScope.Attraction)
             {
-                if (!context.TryAddUnresolvedAccompaniedAlternative(
+                if (!context.TryAddUnresolvedAlternative(
                         AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration,
                         condition))
                 {
@@ -211,7 +211,9 @@ public sealed class AttractionCompatibilityEvaluator
                 SourceReference = Normalize(condition.SourceReference),
                 SourceLanguageCode = Normalize(condition.SourceLanguageCode),
                 condition.CollectedAtUtc,
+                CollectedAtUtcKind = condition.CollectedAtUtc?.Kind,
                 condition.VerifiedAtUtc,
+                VerifiedAtUtcKind = condition.VerifiedAtUtc?.Kind,
                 condition.SourceConfidence,
             })
             .Select(static group => new AttractionCompatibilitySourceReference(group.ToList()))
@@ -220,7 +222,9 @@ public sealed class AttractionCompatibilityEvaluator
             .ThenBy(static source => source.Reference, StringComparer.Ordinal)
             .ThenBy(static source => source.LanguageCode, StringComparer.Ordinal)
             .ThenBy(static source => source.CollectedAtUtc)
+            .ThenBy(static source => source.CollectedAtUtc?.Kind)
             .ThenBy(static source => source.VerifiedAtUtc)
+            .ThenBy(static source => source.VerifiedAtUtc?.Kind)
             .ThenBy(static source => source.Confidence)
             .ToList();
         ParkFitDataConfidence confidence = ResolveConfidence(state, usableConditions);

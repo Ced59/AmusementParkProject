@@ -461,6 +461,66 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenSoloHeightRuleIsStale_ShouldAllowAnIndependentAccompaniedPath()
+    {
+        AttractionAccessCondition staleSoloRule = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            120);
+        staleSoloRule.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                heightCentimeters: 110,
+                canBeAccompanied: true),
+            staleSoloRule,
+            BuildAccompaniedHeightCondition(100));
+
+        Assert.Equal(AttractionCompatibilityState.CompatibleWithCompanion, result.State);
+    }
+
+    [Fact]
+    public void Evaluate_WhenSoloAgeRuleIsStale_ShouldAllowAnIndependentAccompaniedPath()
+    {
+        AttractionAccessCondition staleSoloRule = BuildAgeCondition(
+            AttractionAccessConditionType.MinAge,
+            14);
+        staleSoloRule.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                ageRange: new ParkFitAgeRange(11, 11),
+                canBeAccompanied: true),
+            staleSoloRule,
+            BuildAccompaniedAgeCondition(10));
+
+        Assert.Equal(AttractionCompatibilityState.CompatibleWithCompanion, result.State);
+    }
+
+    [Fact]
+    public void Evaluate_WhenSoloRuleIsStaleAndAccompanimentFails_ShouldRemainUnknown()
+    {
+        AttractionAccessCondition staleSoloRule = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            120);
+        staleSoloRule.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                heightCentimeters: 110,
+                canBeAccompanied: false),
+            staleSoloRule,
+            BuildAccompaniedHeightCondition(100));
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.AccompanimentUnavailable);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ConditionEvidenceUnusable);
+    }
+
+    [Fact]
     public void Evaluate_WhenAgeBandCrossesAccompaniedThresholdButEveryPathFails_ShouldReject()
     {
         AttractionCompatibility result = this.Evaluate(
@@ -1011,6 +1071,46 @@ public sealed class AttractionCompatibilityEvaluatorTests
         Assert.Equal(
             first.Sources.Select(static source => source.LanguageCode),
             second.Sources.Select(static source => source.LanguageCode));
+    }
+
+    [Fact]
+    public void Evaluate_WhenSourceTimestampsShareTicksButNotKind_ShouldRemainDeterministic()
+    {
+        AttractionAccessCondition utc = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            100);
+        AttractionAccessCondition local = BuildHeightCondition(
+            AttractionAccessConditionType.MaxHeight,
+            200);
+        local.SourceUrl = utc.SourceUrl;
+        local.CollectedAtUtc = DateTime.SpecifyKind(
+            utc.CollectedAtUtc!.Value,
+            DateTimeKind.Local);
+        local.VerifiedAtUtc = DateTime.SpecifyKind(
+            utc.VerifiedAtUtc!.Value,
+            DateTimeKind.Local);
+
+        AttractionCompatibility first = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            utc,
+            local);
+        AttractionCompatibility second = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            local,
+            utc);
+
+        Assert.Equal(2, first.Sources.Count);
+        Assert.Equal(
+            first.Sources.Select(static source => new
+            {
+                CollectedKind = source.CollectedAtUtc?.Kind,
+                VerifiedKind = source.VerifiedAtUtc?.Kind,
+            }),
+            second.Sources.Select(static source => new
+            {
+                CollectedKind = source.CollectedAtUtc?.Kind,
+                VerifiedKind = source.VerifiedAtUtc?.Kind,
+            }));
     }
 
     [Fact]
