@@ -66,29 +66,51 @@ public sealed class AttractionCompatibilityEvaluator
                     maximumVerificationAge);
             if (semanticIssues.Count > 0)
             {
-                context.AddUnknown(
-                    AttractionCompatibilityReasonCode.ConditionDefinitionUnusable,
-                    condition,
-                    evidenceIssues,
-                    semanticIssues);
+                if (!context.TryAddUnresolvedAccompaniedAlternative(
+                        AttractionCompatibilityReasonCode.ConditionDefinitionUnusable,
+                        condition,
+                        evidenceIssues,
+                        semanticIssues))
+                {
+                    context.AddUnknown(
+                        AttractionCompatibilityReasonCode.ConditionDefinitionUnusable,
+                        condition,
+                        evidenceIssues,
+                        semanticIssues);
+                }
+
                 continue;
             }
 
             if (evidenceIssues.Count > 0)
             {
-                context.AddUnknown(
-                    AttractionCompatibilityReasonCode.ConditionEvidenceUnusable,
-                    condition,
-                    evidenceIssues,
-                    semanticIssues);
+                if (!context.TryAddUnresolvedAccompaniedAlternative(
+                        AttractionCompatibilityReasonCode.ConditionEvidenceUnusable,
+                        condition,
+                        evidenceIssues,
+                        semanticIssues))
+                {
+                    context.AddUnknown(
+                        AttractionCompatibilityReasonCode.ConditionEvidenceUnusable,
+                        condition,
+                        evidenceIssues,
+                        semanticIssues);
+                }
+
                 continue;
             }
 
             if (condition.Scope != AttractionAccessConditionScope.Attraction)
             {
-                context.AddUnknown(
-                    AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration,
-                    condition);
+                if (!context.TryAddUnresolvedAccompaniedAlternative(
+                        AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration,
+                        condition))
+                {
+                    context.AddUnknown(
+                        AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration,
+                        condition);
+                }
+
                 continue;
             }
 

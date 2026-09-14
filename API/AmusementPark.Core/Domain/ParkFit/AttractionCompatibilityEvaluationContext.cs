@@ -73,6 +73,43 @@ internal sealed class AttractionCompatibilityEvaluationContext
         this.reasons.Add(new AttractionCompatibilityReason(code));
     }
 
+    public bool TryAddUnresolvedAccompaniedAlternative(
+        AttractionCompatibilityReasonCode code,
+        AttractionAccessCondition condition,
+        IReadOnlyCollection<AttractionAccessConditionEvidenceIssue>? evidenceIssues = null,
+        IReadOnlyCollection<AttractionAccessConditionSemanticIssue>? semanticIssues = null)
+    {
+        if (!IsAccompaniedAlternative(condition))
+        {
+            return false;
+        }
+
+        this.MarkUnresolvedAccompaniedAlternative(condition);
+        this.reasons.Add(new AttractionCompatibilityReason(
+            code,
+            condition,
+            evidenceIssues,
+            semanticIssues));
+        return true;
+    }
+
+    public void ActivateUnresolvedAccompaniedAlternative()
+    {
+        this.HasUnknown = true;
+    }
+
+    public void AddConflictingConditions(
+        IEnumerable<AttractionAccessCondition> conditions)
+    {
+        this.HasUnknown = true;
+        foreach (AttractionAccessCondition condition in conditions)
+        {
+            this.reasons.Add(new AttractionCompatibilityReason(
+                AttractionCompatibilityReasonCode.ConflictingConditions,
+                condition));
+        }
+    }
+
     public void AddCompanionRequirementMet(AttractionAccessCondition condition)
     {
         this.RequiresCompanion = true;
@@ -97,5 +134,14 @@ internal sealed class AttractionCompatibilityEvaluationContext
         {
             this.HasUnresolvedAgeAccompaniedAlternative = true;
         }
+    }
+
+    private static bool IsAccompaniedAlternative(AttractionAccessCondition condition)
+    {
+        return condition.Type is AttractionAccessConditionType.MinHeightAccompanied
+                or AttractionAccessConditionType.MinAgeAccompanied
+            || (condition.Type is AttractionAccessConditionType.MinHeight
+                    or AttractionAccessConditionType.MinAge
+                && condition.RequiresAccompaniment == true);
     }
 }

@@ -126,6 +126,31 @@ public sealed class AttractionCompatibilityEvaluatorTests
         Assert.Contains(
             result.Reasons,
             reason => reason.Code == AttractionCompatibilityReasonCode.ConflictingConditions);
+        Assert.Equal(
+            new[] { firstThreshold, secondThreshold }.OrderBy(static value => value),
+            result.Reasons
+                .Where(static reason =>
+                    reason.Code == AttractionCompatibilityReasonCode.ConflictingConditions)
+                .Select(static reason => reason.RequiredValue!.Value)
+                .OrderBy(static value => value));
+    }
+
+    [Fact]
+    public void Evaluate_WhenMinimumsConflict_ShouldKeepAnIndependentMaximumViolation()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 201),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 100),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 120),
+            BuildHeightCondition(AttractionAccessConditionType.MaxHeight, 200));
+
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ConflictingConditions);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.AboveMaximumHeight);
     }
 
     [Theory]
@@ -294,6 +319,13 @@ public sealed class AttractionCompatibilityEvaluatorTests
         Assert.Contains(
             result.Reasons,
             reason => reason.Code == AttractionCompatibilityReasonCode.ConflictingConditions);
+        Assert.Equal(
+            new[] { 10d, 14d },
+            result.Reasons
+                .Where(static reason =>
+                    reason.Code == AttractionCompatibilityReasonCode.ConflictingConditions)
+                .Select(static reason => reason.RequiredValue!.Value)
+                .OrderBy(static value => value));
     }
 
     [Fact]
@@ -451,6 +483,40 @@ public sealed class AttractionCompatibilityEvaluatorTests
         Assert.DoesNotContain(
             result.Reasons,
             reason => reason.Code == AttractionCompatibilityReasonCode.BelowMinimumAge);
+    }
+
+    [Fact]
+    public void Evaluate_WhenSoloHeightPathIsSatisfied_ShouldIgnoreAStaleAccompaniedFallback()
+    {
+        AttractionAccessCondition accompanied = BuildAccompaniedHeightCondition(100, 16);
+        accompanied.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 130),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 120),
+            accompanied);
+
+        Assert.Equal(AttractionCompatibilityState.CompatibleAlone, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ConditionEvidenceUnusable);
+    }
+
+    [Fact]
+    public void Evaluate_WhenSoloAgePathIsSatisfied_ShouldIgnoreAStaleAccompaniedFallback()
+    {
+        AttractionAccessCondition accompanied = BuildAccompaniedAgeCondition(10, 18);
+        accompanied.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(ageRange: new ParkFitAgeRange(14, 14)),
+            BuildAgeCondition(AttractionAccessConditionType.MinAge, 14),
+            accompanied);
+
+        Assert.Equal(AttractionCompatibilityState.CompatibleAlone, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ConditionEvidenceUnusable);
     }
 
     [Fact]

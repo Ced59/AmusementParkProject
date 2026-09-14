@@ -21,6 +21,11 @@ internal static class AttractionPhysicalRestrictionEvaluator
             .ToList();
         if (heightConditions.Count == 0)
         {
+            if (context.HasUnresolvedHeightAccompaniedAlternative)
+            {
+                context.ActivateUnresolvedAccompaniedAlternative();
+            }
+
             return;
         }
 
@@ -36,33 +41,46 @@ internal static class AttractionPhysicalRestrictionEvaluator
                 || (condition.Type == AttractionAccessConditionType.MinHeight
                     && condition.RequiresAccompaniment == true))
             .ToList();
-        IReadOnlyCollection<AttractionAccessCondition>? conflictingConditions =
-            FindConflictingHeightThresholds(maximums)
-            ?? FindConflictingHeightThresholds(aloneMinimums)
-            ?? FindConflictingHeightThresholds(accompaniedMinimums);
-        if (conflictingConditions is not null)
+        IReadOnlyCollection<AttractionAccessCondition>? conflictingMaximums =
+            FindConflictingHeightThresholds(maximums);
+        IReadOnlyCollection<AttractionAccessCondition>? conflictingAloneMinimums =
+            FindConflictingHeightThresholds(aloneMinimums);
+        IReadOnlyCollection<AttractionAccessCondition>? conflictingAccompaniedMinimums =
+            FindConflictingHeightThresholds(accompaniedMinimums);
+        foreach (IReadOnlyCollection<AttractionAccessCondition> conflict in new[]
         {
-            context.AddUnknown(
-                AttractionCompatibilityReasonCode.ConflictingConditions,
-                SelectStableCondition(conflictingConditions));
-            return;
+            conflictingMaximums,
+            conflictingAloneMinimums,
+            conflictingAccompaniedMinimums,
+        }.OfType<IReadOnlyCollection<AttractionAccessCondition>>())
+        {
+            context.AddConflictingConditions(conflict);
         }
 
-        bool hasMaximum = TrySelectHeightThreshold(
-            maximums,
-            selectHighest: false,
-            out AttractionAccessCondition? maximum,
-            out double maximumCentimeters);
-        bool hasAloneMinimum = TrySelectHeightThreshold(
-            aloneMinimums,
-            selectHighest: true,
-            out AttractionAccessCondition? aloneMinimum,
-            out double aloneMinimumCentimeters);
-        bool hasAccompaniedMinimum = TrySelectHeightThreshold(
-            accompaniedMinimums,
-            selectHighest: true,
-            out AttractionAccessCondition? accompaniedMinimum,
-            out double accompaniedMinimumCentimeters);
+        AttractionAccessCondition? maximum = null;
+        double maximumCentimeters = double.MaxValue;
+        bool hasMaximum = conflictingMaximums is null
+            && TrySelectHeightThreshold(
+                maximums,
+                selectHighest: false,
+                out maximum,
+                out maximumCentimeters);
+        AttractionAccessCondition? aloneMinimum = null;
+        double aloneMinimumCentimeters = double.MinValue;
+        bool hasAloneMinimum = conflictingAloneMinimums is null
+            && TrySelectHeightThreshold(
+                aloneMinimums,
+                selectHighest: true,
+                out aloneMinimum,
+                out aloneMinimumCentimeters);
+        AttractionAccessCondition? accompaniedMinimum = null;
+        double accompaniedMinimumCentimeters = double.MinValue;
+        bool hasAccompaniedMinimum = conflictingAccompaniedMinimums is null
+            && TrySelectHeightThreshold(
+                accompaniedMinimums,
+                selectHighest: true,
+                out accompaniedMinimum,
+                out accompaniedMinimumCentimeters);
 
         bool alonePathContradictsMaximum = hasMaximum
             && hasAloneMinimum
@@ -75,9 +93,7 @@ internal static class AttractionPhysicalRestrictionEvaluator
             && (!hasAccompaniedMinimum || accompaniedPathContradictsMaximum);
         if (everyMinimumPathContradictsMaximum)
         {
-            context.AddUnknown(
-                AttractionCompatibilityReasonCode.ConflictingConditions,
-                SelectStableCondition(heightConditions));
+            context.AddConflictingConditions(heightConditions);
             return;
         }
 
@@ -111,9 +127,7 @@ internal static class AttractionPhysicalRestrictionEvaluator
             && canUseAccompaniedPath
             && accompaniedMinimumCentimeters > aloneMinimumCentimeters)
         {
-            context.AddUnknown(
-                AttractionCompatibilityReasonCode.ConflictingConditions,
-                accompaniedMinimum!);
+            context.AddConflictingConditions(new[] { aloneMinimum!, accompaniedMinimum! });
             return;
         }
 
@@ -137,6 +151,7 @@ internal static class AttractionPhysicalRestrictionEvaluator
         if (context.HasUnresolvedHeightAccompaniedAlternative
             && profile.CanBeAccompanied != false)
         {
+            context.ActivateUnresolvedAccompaniedAlternative();
             return;
         }
 
@@ -170,29 +185,44 @@ internal static class AttractionPhysicalRestrictionEvaluator
             .ToList();
         if (aloneMinimums.Count == 0 && accompaniedMinimums.Count == 0)
         {
+            if (context.HasUnresolvedAgeAccompaniedAlternative)
+            {
+                context.ActivateUnresolvedAccompaniedAlternative();
+            }
+
             return;
         }
 
-        IReadOnlyCollection<AttractionAccessCondition>? conflictingConditions =
-            FindConflictingAgeThresholds(aloneMinimums)
-            ?? FindConflictingAgeThresholds(accompaniedMinimums);
-        if (conflictingConditions is not null)
+        IReadOnlyCollection<AttractionAccessCondition>? conflictingAloneMinimums =
+            FindConflictingAgeThresholds(aloneMinimums);
+        IReadOnlyCollection<AttractionAccessCondition>? conflictingAccompaniedMinimums =
+            FindConflictingAgeThresholds(accompaniedMinimums);
+        if (conflictingAloneMinimums is not null)
         {
-            context.AddUnknown(
-                AttractionCompatibilityReasonCode.ConflictingConditions,
-                SelectStableCondition(conflictingConditions));
+            context.AddConflictingConditions(conflictingAloneMinimums);
+        }
+
+        if (conflictingAccompaniedMinimums is not null)
+        {
+            context.AddConflictingConditions(conflictingAccompaniedMinimums);
+        }
+
+        AttractionAccessCondition? aloneMinimum = conflictingAloneMinimums is null
+            ? SelectHighestAgeThreshold(aloneMinimums)
+            : null;
+        AttractionAccessCondition? accompaniedMinimum = conflictingAccompaniedMinimums is null
+            ? SelectHighestAgeThreshold(accompaniedMinimums)
+            : null;
+        if (aloneMinimum is null && accompaniedMinimum is null)
+        {
             return;
         }
 
-        AttractionAccessCondition? aloneMinimum = SelectHighestAgeThreshold(aloneMinimums);
-        AttractionAccessCondition? accompaniedMinimum = SelectHighestAgeThreshold(accompaniedMinimums);
         if (aloneMinimum is not null
             && accompaniedMinimum is not null
             && accompaniedMinimum.Value!.Value > aloneMinimum.Value!.Value)
         {
-            context.AddUnknown(
-                AttractionCompatibilityReasonCode.ConflictingConditions,
-                accompaniedMinimum);
+            context.AddConflictingConditions(new[] { aloneMinimum, accompaniedMinimum });
             return;
         }
 
@@ -235,6 +265,7 @@ internal static class AttractionPhysicalRestrictionEvaluator
         if (context.HasUnresolvedAgeAccompaniedAlternative
             && profile.CanBeAccompanied != false)
         {
+            context.ActivateUnresolvedAccompaniedAlternative();
             return;
         }
 
