@@ -5066,7 +5066,7 @@
         "scoreUnavailable": "Score niet gepubliceerd · {{coverage}}% dekking",
         "cappedState": "Voorzichtige vergelijking · plafond {{ceiling}}/100",
         "together": "Samen mogelijk: {{count}}",
-        "organized": "Met groepsplanning: {{count}}",
+        "organized": "Met groepsplanning: {{count}} · voor niemand geschikt: {{unavailable}}",
         "unknowns": "Onbekende attracties: {{attractions}} · onbekende factoren: {{factors}}",
         "member": "Zelfstandig: {{alone}} · met begeleider: {{accompanied}} · niet mogelijk: {{unavailable}} · onbekend: {{unknown}} · niet van toepassing: {{notApplicable}}",
         "componentScore": "{{score}}/100",
@@ -5074,7 +5074,7 @@
         "qualityCoverage": "{{coverage}}% dekking",
         "verified": "{{date}}",
         "scheduleNotExposed": "Exacte tijden zijn niet beschikbaar in dit resultaat",
-        "officialAvailable": "Gecontroleerde openbare link beschikbaar",
+        "officialAvailable": "Openbare officiële link beschikbaar",
         "officialUnavailable": "Geen openbare officiële link in dit resultaat",
         "openOfficial": "Officiële website openen",
         "unavailable": "Gegevens niet beschikbaar"

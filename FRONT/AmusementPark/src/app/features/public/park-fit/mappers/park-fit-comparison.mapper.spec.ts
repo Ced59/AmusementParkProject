@@ -13,6 +13,7 @@ describe('buildParkFitComparisonSections', () => {
     expect(rows.find((row) => row.id === 'group-compatibility')).toBeDefined();
     expect(rows.find((row) => row.id === 'member-1')?.isDifferent).toBe(true);
     expect(rows.find((row) => row.id === 'member-1')?.cells[0]?.primaryParams['notApplicable']).toBe(0);
+    expect(rows.find((row) => row.id === 'together')?.cells[0]?.secondaryParams['unavailable']).toBe(1);
     expect(rows.find((row) => row.id === 'schedule')?.cells).toHaveLength(2);
   });
 
@@ -119,7 +120,7 @@ describe('buildParkFitComparisonSections', () => {
       .toBe(true);
   });
 
-  it('only exposes a verified HTTPS source URL in the official-link row', () => {
+  it('only exposes an official HTTPS source URL with neutral availability wording', () => {
     const unsafe: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
     unsafe.criticalSources = [{
       kind: 'Official',
@@ -140,6 +141,7 @@ describe('buildParkFitComparisonSections', () => {
 
     expect(officialRow?.cells[0]?.linkUrl).toBeNull();
     expect(officialRow?.cells[1]?.linkUrl).toBe('https://example.com/rules');
+    expect(officialRow?.cells[1]?.primaryKey).toBe('parkFit.comparison.values.officialAvailable');
     expect(JSON.stringify(officialRow)).not.toContain('technical-id');
   });
 });

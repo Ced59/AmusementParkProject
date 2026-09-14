@@ -137,9 +137,9 @@ function buildTogetherCell(park: ParkFitSearchPark): ParkFitComparisonCell {
     'parkFit.comparison.values.together',
     { count: park.everyoneTogetherAttractionCount },
     'parkFit.comparison.values.organized',
-    { count: organizedCount },
+    { count: organizedCount, unavailable: park.noCompatibleMemberAttractionCount },
     null,
-    `${park.everyoneTogetherAttractionCount}|${organizedCount}`
+    `${park.everyoneTogetherAttractionCount}|${organizedCount}|${park.noCompatibleMemberAttractionCount}`
   );
 }
 

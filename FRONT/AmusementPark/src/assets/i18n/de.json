@@ -5066,7 +5066,7 @@
         "scoreUnavailable": "Punktzahl nicht veröffentlicht · {{coverage}} % Abdeckung",
         "cappedState": "Vorsichtiger Vergleich · Obergrenze {{ceiling}}/100",
         "together": "Gemeinsam möglich: {{count}}",
-        "organized": "Mit Gruppenorganisation: {{count}}",
+        "organized": "Mit Gruppenorganisation: {{count}} · für niemanden geeignet: {{unavailable}}",
         "unknowns": "Unbekannte Attraktionen: {{attractions}} · unbekannte Faktoren: {{factors}}",
         "member": "Selbstständig: {{alone}} · mit Begleitung: {{accompanied}} · nicht möglich: {{unavailable}} · unbekannt: {{unknown}} · nicht anwendbar: {{notApplicable}}",
         "componentScore": "{{score}}/100",
@@ -5074,7 +5074,7 @@
         "qualityCoverage": "{{coverage}} % Abdeckung",
         "verified": "{{date}}",
         "scheduleNotExposed": "Genaue Uhrzeiten sind in diesem Ergebnis nicht verfügbar",
-        "officialAvailable": "Geprüfter öffentlicher Link verfügbar",
+        "officialAvailable": "Öffentlicher offizieller Link verfügbar",
         "officialUnavailable": "Kein öffentlicher offizieller Link in diesem Ergebnis",
         "openOfficial": "Offizielle Website öffnen",
         "unavailable": "Angabe nicht verfügbar"
