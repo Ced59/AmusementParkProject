@@ -13,8 +13,8 @@ public sealed class ParkFitScore
         decimal coveragePercent,
         decimal? scoreCeilingPercent,
         ParkFitDataConfidence confidence,
-        ParkFitHardFilterState hardFilterState,
-        ParkFitDateAvailabilityState dateAvailabilityState,
+        ParkFitHardFilterEvaluation hardFilters,
+        ParkFitDateAvailability dateAvailability,
         ParkFitUnknownDataPolicy unknownDataPolicy,
         IReadOnlyCollection<ParkFitWeightedSubscore> components,
         IReadOnlyCollection<ParkFitScoreReasonCode> reasons,
@@ -29,8 +29,11 @@ public sealed class ParkFitScore
         this.CoveragePercent = coveragePercent;
         this.ScoreCeilingPercent = scoreCeilingPercent;
         this.Confidence = confidence;
-        this.HardFilterState = hardFilterState;
-        this.DateAvailabilityState = dateAvailabilityState;
+        this.HardFilterState = hardFilters.State;
+        this.EvaluatedHardFilterCount = hardFilters.EvaluatedFilterCount;
+        this.FailedHardFilterCount = hardFilters.FailedFilterCount;
+        this.UnknownHardFilterCount = hardFilters.UnknownFilterCount;
+        this.DateAvailabilityState = dateAvailability.State;
         this.UnknownDataPolicy = unknownDataPolicy;
         this.Components = components.ToList();
         this.Reasons = reasons.ToList();
@@ -55,6 +58,12 @@ public sealed class ParkFitScore
     public ParkFitDataConfidence Confidence { get; }
 
     public ParkFitHardFilterState HardFilterState { get; }
+
+    public int EvaluatedHardFilterCount { get; }
+
+    public int FailedHardFilterCount { get; }
+
+    public int UnknownHardFilterCount { get; }
 
     public ParkFitDateAvailabilityState DateAvailabilityState { get; }
 

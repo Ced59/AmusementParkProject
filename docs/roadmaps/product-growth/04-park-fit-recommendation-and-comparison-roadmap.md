@@ -106,7 +106,9 @@ La compatibilité du groupe normalise les états de FIT-05 et borne sa moyenne p
 le membre le moins bien servi. La couverture factuelle, une confiance moyenne ou
 faible et une inconnue critique plafonnent le nombre affichable. Selon la politique
 choisie, une inconnue critique peut aussi suspendre ou exclure le résultat. La
-formule, les diagrammes et 60 scénarios métier sont documentés dans
+preuve conserve la date et le nombre exact de filtres critiques inconnus, ainsi
+que la date source de la disponibilité. La formule, les diagrammes et 70 scénarios
+métier sont documentés dans
 [`product-growth-fit-06-versioned-subscores-2026-09-14.md`](../../architecture/product-growth-fit-06-versioned-subscores-2026-09-14.md).
 
 `FIT-07` est le prochain jalon : il exposera ce moteur dans une API de recherche

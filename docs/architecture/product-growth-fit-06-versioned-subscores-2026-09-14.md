@@ -106,10 +106,18 @@ Les filtres sont traités avant le score final :
 | filtre et date acceptés | calcul autorisé |
 | fait critique inconnu | application de la politique d'inconnu |
 
+Le moteur ne reçoit pas un simple drapeau global pour les filtres durs. Il reçoit
+une évaluation immuable avec sa date, le nombre total de filtres, le nombre
+échoué et le nombre inconnu. Deux seuils non vérifiables restent donc deux faits
+critiques distincts. La disponibilité est elle aussi portée par un objet daté ;
+le score refuse tout filtre, calendrier ou sous-score de groupe calculé pour une
+autre date que celle annoncée dans le résultat.
+
 ## 5. Politiques d'inconnu
 
-Un fait critique inconnu est un filtre dur inconnu, une disponibilité datée inconnue
-ou une compatibilité de groupe inconnue.
+Un fait critique inconnu est chaque filtre dur inconnu, une disponibilité datée
+inconnue ou une compatibilité de groupe inconnue. Le compteur porte sur les faits,
+pas seulement sur ces trois catégories.
 
 | Politique | Effet d'une inconnue critique |
 |---|---|
@@ -167,7 +175,7 @@ FIT-09 les traduira côté Angular sans recalculer la décision.
 
 ```mermaid
 flowchart TD
-    A[Filtres + date + 5 sous-scores] --> B{Filtre dur échoué ?}
+    A[Filtres comptés et datés + disponibilité datée + 5 sous-scores] --> B{Filtre dur échoué ?}
     B -- Oui --> X[Excluded sans score]
     B -- Non --> C{Date indisponible ?}
     C -- Oui --> X
@@ -190,7 +198,18 @@ classDiagram
       +Evaluate(attractions) ParkFitSubscore
     }
     class ParkFitScoreEvaluator {
-      +Evaluate(subscores, filters, policy, dates) ParkFitScore
+      +Evaluate(subscores, filters, availability, policy, dates) ParkFitScore
+    }
+    class ParkFitHardFilterEvaluation {
+      +DateOnly EvaluationDate
+      +int EvaluatedFilterCount
+      +int FailedFilterCount
+      +int UnknownFilterCount
+      +ParkFitHardFilterState State
+    }
+    class ParkFitDateAvailability {
+      +ParkFitDateAvailabilityState State
+      +DateOnly EvaluationDate
     }
     class ParkFitSubscore {
       +ParkFitSubscoreKind Kind
@@ -214,11 +233,16 @@ classDiagram
       +decimal KnownWeightPercent
       +decimal CoveragePercent
       +decimal? ScoreCeilingPercent
+      +int EvaluatedHardFilterCount
+      +int FailedHardFilterCount
+      +int UnknownHardFilterCount
       +IReadOnlyCollection Components
       +IReadOnlyCollection Reasons
     }
     ParkFitGroupCompatibilitySubscoreEvaluator --> ParkFitSubscore
     ParkFitScoreEvaluator --> ParkFitSubscore
+    ParkFitScoreEvaluator --> ParkFitHardFilterEvaluation
+    ParkFitScoreEvaluator --> ParkFitDateAvailability
     ParkFitScoreEvaluator --> ParkFitScore
     ParkFitScore o-- ParkFitWeightedSubscore
 ```
@@ -238,7 +262,7 @@ sequenceDiagram
     Individual-->>App: verdicts sourcés
     App->>Group: agréger chaque attraction
     Group-->>App: états de groupe détaillés
-    App->>Score: sous-scores + filtres + politique
+    App->>Score: sous-scores + filtres datés et comptés + disponibilité datée + politique
     Score->>Score: renormaliser les seules valeurs connues
     Score->>Score: borner par couverture et confiance
     Score-->>App: résultat versionné et explicable
@@ -249,7 +273,7 @@ sans déplacer les règles dans le contrôleur.
 
 ## 11. Preuves automatisées
 
-Les 60 scénarios ciblés couvrent notamment :
+Les 70 scénarios ciblés couvrent notamment :
 
 - les cinq normalisations de groupe et le minimum individuel ;
 - les attractions inconnues exclues sans devenir zéro ;
@@ -259,13 +283,15 @@ Les 60 scénarios ciblés couvrent notamment :
 - les plafonds de couverture et de confiance ;
 - les trois politiques face à une inconnue critique ;
 - la suspension obligatoire lorsque plusieurs faits critiques sont inconnus ;
-- la conservation et la cohérence de la date source du sous-score de groupe ;
+- le comptage de plusieurs filtres durs inconnus sans les agréger en un seul fait ;
+- la conservation et la cohérence des dates sources du sous-score de groupe, des
+  filtres durs et de la disponibilité ;
 - les exclusions par filtre ou calendrier ;
 - la suspension sans donnée connue ou avec confiance inconnue ;
 - les collections incomplètes, dupliquées, incohérentes ou invalides ;
 - l'invariance à l'ordre et la copie défensive des entrées.
 
-La suite Core complète contient 978 tests verts après ce jalon.
+La suite Core complète contient 988 tests verts après ce jalon.
 
 ## 12. Stockage, confidentialité et performance
 

@@ -224,6 +224,21 @@ public sealed class ParkFitScoreEvaluatorTests
         Assert.Contains(ParkFitScoreReasonCode.CriticalDataSuspended, result.Reasons);
     }
 
+    [Fact]
+    public void Evaluate_WhenMultipleHardFiltersAreUnknown_ShouldSuspendEvenWithWarnings()
+    {
+        ParkFitScore result = this.Evaluate(
+            BuildKnownSubscores(100m),
+            hardFilterState: ParkFitHardFilterState.Unknown,
+            unknownHardFilterCount: 2);
+
+        Assert.Equal(ParkFitScoreState.Suspended, result.State);
+        Assert.Null(result.ComparativeScore);
+        Assert.Equal(2, result.EvaluatedHardFilterCount);
+        Assert.Equal(2, result.UnknownHardFilterCount);
+        Assert.Contains(ParkFitScoreReasonCode.CriticalDataSuspended, result.Reasons);
+    }
+
     [Theory]
     [InlineData(ParkFitHardFilterState.Unknown, ParkFitDateAvailabilityState.Available)]
     [InlineData(ParkFitHardFilterState.Passed, ParkFitDateAvailabilityState.Unknown)]
@@ -354,12 +369,46 @@ public sealed class ParkFitScoreEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenHardFiltersUseAnotherDate_ShouldRejectTheInput()
+    {
+        ParkFitHardFilterEvaluation hardFilters = new ParkFitHardFilterEvaluation(
+            EvaluationDate.AddDays(-1),
+            1,
+            0,
+            0);
+
+        Assert.Throws<ArgumentException>(() => this.evaluator.Evaluate(
+            BuildCompleteSubscores(),
+            hardFilters,
+            BuildDateAvailability(ParkFitDateAvailabilityState.Available),
+            ParkFitUnknownDataPolicy.KeepWithWarning,
+            EvaluationDate,
+            EvaluationTimestamp));
+    }
+
+    [Fact]
+    public void Evaluate_WhenDateAvailabilityUsesAnotherDate_ShouldRejectTheInput()
+    {
+        ParkFitDateAvailability dateAvailability = new ParkFitDateAvailability(
+            ParkFitDateAvailabilityState.Available,
+            EvaluationDate.AddDays(-1));
+
+        Assert.Throws<ArgumentException>(() => this.evaluator.Evaluate(
+            BuildCompleteSubscores(),
+            BuildHardFilters(ParkFitHardFilterState.Passed),
+            dateAvailability,
+            ParkFitUnknownDataPolicy.KeepWithWarning,
+            EvaluationDate,
+            EvaluationTimestamp));
+    }
+
+    [Fact]
     public void Evaluate_WhenSubscoreCollectionIsNull_ShouldRejectTheInput()
     {
         Assert.Throws<ArgumentNullException>(() => this.evaluator.Evaluate(
             null!,
-            ParkFitHardFilterState.Passed,
-            ParkFitDateAvailabilityState.Available,
+            BuildHardFilters(ParkFitHardFilterState.Passed),
+            BuildDateAvailability(ParkFitDateAvailabilityState.Available),
             ParkFitUnknownDataPolicy.KeepWithWarning,
             EvaluationDate,
             EvaluationTimestamp));
@@ -374,20 +423,12 @@ public sealed class ParkFitScoreEvaluatorTests
         Assert.Throws<ArgumentException>(() => this.Evaluate(subscores));
     }
 
-    [Theory]
-    [InlineData(99, 0, 0)]
-    [InlineData(0, 99, 0)]
-    [InlineData(0, 0, 99)]
-    public void Evaluate_WhenAnInputEnumIsInvalid_ShouldRejectTheInput(
-        int hardFilterState,
-        int dateAvailabilityState,
-        int unknownDataPolicy)
+    [Fact]
+    public void Evaluate_WhenUnknownDataPolicyIsInvalid_ShouldRejectTheInput()
     {
         Assert.Throws<ArgumentOutOfRangeException>(() => this.Evaluate(
             BuildCompleteSubscores(),
-            (ParkFitHardFilterState)hardFilterState,
-            (ParkFitDateAvailabilityState)dateAvailabilityState,
-            (ParkFitUnknownDataPolicy)unknownDataPolicy));
+            unknownDataPolicy: (ParkFitUnknownDataPolicy)99));
     }
 
     [Fact]
@@ -395,8 +436,8 @@ public sealed class ParkFitScoreEvaluatorTests
     {
         Assert.Throws<ArgumentException>(() => this.evaluator.Evaluate(
             BuildCompleteSubscores(),
-            ParkFitHardFilterState.Passed,
-            ParkFitDateAvailabilityState.Available,
+            BuildHardFilters(ParkFitHardFilterState.Passed),
+            BuildDateAvailability(ParkFitDateAvailabilityState.Available),
             ParkFitUnknownDataPolicy.KeepWithWarning,
             EvaluationDate,
             DateTime.SpecifyKind(EvaluationTimestamp, DateTimeKind.Local)));
@@ -406,15 +447,47 @@ public sealed class ParkFitScoreEvaluatorTests
         IReadOnlyCollection<ParkFitSubscore> subscores,
         ParkFitHardFilterState hardFilterState = ParkFitHardFilterState.Passed,
         ParkFitDateAvailabilityState dateAvailabilityState = ParkFitDateAvailabilityState.Available,
-        ParkFitUnknownDataPolicy unknownDataPolicy = ParkFitUnknownDataPolicy.KeepWithWarning)
+        ParkFitUnknownDataPolicy unknownDataPolicy = ParkFitUnknownDataPolicy.KeepWithWarning,
+        int? unknownHardFilterCount = null)
     {
         return this.evaluator.Evaluate(
             subscores,
-            hardFilterState,
-            dateAvailabilityState,
+            BuildHardFilters(hardFilterState, unknownHardFilterCount),
+            BuildDateAvailability(dateAvailabilityState),
             unknownDataPolicy,
             EvaluationDate,
             EvaluationTimestamp);
+    }
+
+    private static ParkFitHardFilterEvaluation BuildHardFilters(
+        ParkFitHardFilterState state,
+        int? unknownFilterCount = null)
+    {
+        return state switch
+        {
+            ParkFitHardFilterState.Passed => new ParkFitHardFilterEvaluation(
+                EvaluationDate,
+                1,
+                0,
+                0),
+            ParkFitHardFilterState.Failed => new ParkFitHardFilterEvaluation(
+                EvaluationDate,
+                1,
+                1,
+                0),
+            ParkFitHardFilterState.Unknown => new ParkFitHardFilterEvaluation(
+                EvaluationDate,
+                unknownFilterCount ?? 1,
+                0,
+                unknownFilterCount ?? 1),
+            _ => throw new ArgumentOutOfRangeException(nameof(state)),
+        };
+    }
+
+    private static ParkFitDateAvailability BuildDateAvailability(
+        ParkFitDateAvailabilityState state)
+    {
+        return new ParkFitDateAvailability(state, EvaluationDate);
     }
 
     private static List<ParkFitSubscore> BuildCompleteSubscores()

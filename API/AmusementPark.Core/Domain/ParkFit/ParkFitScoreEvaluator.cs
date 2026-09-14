@@ -17,23 +17,15 @@ public sealed class ParkFitScoreEvaluator
 
     public ParkFitScore Evaluate(
         IReadOnlyCollection<ParkFitSubscore> subscores,
-        ParkFitHardFilterState hardFilterState,
-        ParkFitDateAvailabilityState dateAvailabilityState,
+        ParkFitHardFilterEvaluation hardFilters,
+        ParkFitDateAvailability dateAvailability,
         ParkFitUnknownDataPolicy unknownDataPolicy,
         DateOnly evaluationDate,
         DateTime evaluatedAtUtc)
     {
         ArgumentNullException.ThrowIfNull(subscores);
-
-        if (!Enum.IsDefined(hardFilterState))
-        {
-            throw new ArgumentOutOfRangeException(nameof(hardFilterState));
-        }
-
-        if (!Enum.IsDefined(dateAvailabilityState))
-        {
-            throw new ArgumentOutOfRangeException(nameof(dateAvailabilityState));
-        }
+        ArgumentNullException.ThrowIfNull(hardFilters);
+        ArgumentNullException.ThrowIfNull(dateAvailability);
 
         if (!Enum.IsDefined(unknownDataPolicy))
         {
@@ -45,6 +37,20 @@ public sealed class ParkFitScoreEvaluator
             throw new ArgumentException(
                 "The score evaluation timestamp must use UTC.",
                 nameof(evaluatedAtUtc));
+        }
+
+        if (hardFilters.EvaluationDate != evaluationDate)
+        {
+            throw new ArgumentException(
+                "Hard filters must match the score evaluation date.",
+                nameof(hardFilters));
+        }
+
+        if (dateAvailability.EvaluationDate != evaluationDate)
+        {
+            throw new ArgumentException(
+                "Date availability must match the score evaluation date.",
+                nameof(dateAvailability));
         }
 
         List<ParkFitSubscore> snapshot = subscores.ToList();
@@ -70,7 +76,7 @@ public sealed class ParkFitScoreEvaluator
         bool hasOptionalNotApplicable = snapshot.Any(static subscore =>
             subscore.State == ParkFitSubscoreState.NotApplicable);
 
-        if (hardFilterState == ParkFitHardFilterState.Failed)
+        if (hardFilters.State == ParkFitHardFilterState.Failed)
         {
             return BuildWithoutScore(
                 ParkFitScoreState.Excluded,
@@ -78,8 +84,8 @@ public sealed class ParkFitScoreEvaluator
                 knownWeightPercent,
                 coveragePercent,
                 confidence,
-                hardFilterState,
-                dateAvailabilityState,
+                hardFilters,
+                dateAvailability,
                 unknownDataPolicy,
                 components,
                 hasOptionalNotApplicable,
@@ -87,7 +93,7 @@ public sealed class ParkFitScoreEvaluator
                 evaluatedAtUtc);
         }
 
-        if (dateAvailabilityState == ParkFitDateAvailabilityState.Unavailable)
+        if (dateAvailability.State == ParkFitDateAvailabilityState.Unavailable)
         {
             return BuildWithoutScore(
                 ParkFitScoreState.Excluded,
@@ -95,8 +101,8 @@ public sealed class ParkFitScoreEvaluator
                 knownWeightPercent,
                 coveragePercent,
                 confidence,
-                hardFilterState,
-                dateAvailabilityState,
+                hardFilters,
+                dateAvailability,
                 unknownDataPolicy,
                 components,
                 hasOptionalNotApplicable,
@@ -106,13 +112,9 @@ public sealed class ParkFitScoreEvaluator
 
         ParkFitSubscore groupCompatibility = snapshot.Single(static subscore =>
             subscore.Kind == ParkFitSubscoreKind.GroupCompatibility);
-        int criticalUnknownCount = 0;
-        if (hardFilterState == ParkFitHardFilterState.Unknown)
-        {
-            criticalUnknownCount++;
-        }
+        int criticalUnknownCount = hardFilters.UnknownFilterCount;
 
-        if (dateAvailabilityState == ParkFitDateAvailabilityState.Unknown)
+        if (dateAvailability.State == ParkFitDateAvailabilityState.Unknown)
         {
             criticalUnknownCount++;
         }
@@ -132,8 +134,8 @@ public sealed class ParkFitScoreEvaluator
                 knownWeightPercent,
                 coveragePercent,
                 confidence,
-                hardFilterState,
-                dateAvailabilityState,
+                hardFilters,
+                dateAvailability,
                 unknownDataPolicy,
                 components,
                 hasOptionalNotApplicable,
@@ -151,8 +153,8 @@ public sealed class ParkFitScoreEvaluator
                 knownWeightPercent,
                 coveragePercent,
                 confidence,
-                hardFilterState,
-                dateAvailabilityState,
+                hardFilters,
+                dateAvailability,
                 unknownDataPolicy,
                 components,
                 hasOptionalNotApplicable,
@@ -168,8 +170,8 @@ public sealed class ParkFitScoreEvaluator
                 knownWeightPercent,
                 coveragePercent,
                 confidence,
-                hardFilterState,
-                dateAvailabilityState,
+                hardFilters,
+                dateAvailability,
                 unknownDataPolicy,
                 components,
                 hasOptionalNotApplicable,
@@ -185,8 +187,8 @@ public sealed class ParkFitScoreEvaluator
                 knownWeightPercent,
                 coveragePercent,
                 confidence,
-                hardFilterState,
-                dateAvailabilityState,
+                hardFilters,
+                dateAvailability,
                 unknownDataPolicy,
                 components,
                 hasOptionalNotApplicable,
@@ -224,8 +226,8 @@ public sealed class ParkFitScoreEvaluator
             coveragePercent,
             scoreCeiling < 100m ? Round(scoreCeiling) : null,
             confidence,
-            hardFilterState,
-            dateAvailabilityState,
+            hardFilters,
+            dateAvailability,
             unknownDataPolicy,
             components,
             reasons,
@@ -336,8 +338,8 @@ public sealed class ParkFitScoreEvaluator
         decimal knownWeightPercent,
         decimal coveragePercent,
         ParkFitDataConfidence confidence,
-        ParkFitHardFilterState hardFilterState,
-        ParkFitDateAvailabilityState dateAvailabilityState,
+        ParkFitHardFilterEvaluation hardFilters,
+        ParkFitDateAvailability dateAvailability,
         ParkFitUnknownDataPolicy unknownDataPolicy,
         IReadOnlyCollection<ParkFitWeightedSubscore> components,
         bool hasOptionalNotApplicable,
@@ -361,8 +363,8 @@ public sealed class ParkFitScoreEvaluator
             coveragePercent,
             null,
             confidence,
-            hardFilterState,
-            dateAvailabilityState,
+            hardFilters,
+            dateAvailability,
             unknownDataPolicy,
             components,
             reasons,
