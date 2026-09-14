@@ -193,6 +193,14 @@ export const ADMIN_NAVIGATION_ITEMS: readonly AdminNavigationItem[] = [
     exact: false
   },
   {
+    id: 'park-fit-pilot',
+    segments: ['park-fit-pilot'],
+    iconClass: 'pi pi-chart-bar',
+    titleKey: 'admin.parkFitPilot.navTitle',
+    descriptionKey: 'admin.dashboard.shortcuts.parkFitPilot',
+    exact: false
+  },
+  {
     id: 'social-publications',
     segments: ['social-publications'],
     iconClass: 'pi pi-send',

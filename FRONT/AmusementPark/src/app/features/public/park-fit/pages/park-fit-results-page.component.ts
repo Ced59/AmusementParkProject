@@ -77,6 +77,9 @@ export class ParkFitResultsPageComponent implements OnInit {
       this.translationService.getCurrentLang() || 'en'
     ));
     this.applySeo();
+    if (this.response()) {
+      this.facade.trackExplanationViewed();
+    }
 
     this.translationService.languageChanged
       .pipe(takeUntilDestroyed(this.destroyRef))

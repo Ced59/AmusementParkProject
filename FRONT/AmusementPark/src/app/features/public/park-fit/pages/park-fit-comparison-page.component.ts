@@ -68,6 +68,7 @@ export class ParkFitComparisonPageComponent implements OnInit {
       this.translationService.getCurrentLang() || 'en'
     ));
     this.applySeo();
+    this.facade.trackComparisonOpened?.();
 
     this.translationService.languageChanged
       .pipe(takeUntilDestroyed(this.destroyRef))

@@ -5,6 +5,8 @@ import { Subject, of, throwError } from 'rxjs';
 import { ParkFitSearchRequest, ParkFitSearchResponse } from '@app/models/park-fit/park-fit-search.models';
 import { ParkFitSearchDataPort, PARK_FIT_SEARCH_DATA_PORT } from './park-fit-search-data.ports';
 import { ParkFitSearchFacade } from './park-fit-search.facade';
+import { PARK_FIT_PILOT_TELEMETRY_PORT } from './park-fit-pilot-telemetry.port';
+import { ParkFitPilotTelemetryPort } from './park-fit-pilot-telemetry.port';
 
 describe('ParkFitSearchFacade', () => {
   it('keeps the latest anonymous search in memory and exposes the first result', () => {
@@ -43,13 +45,22 @@ describe('ParkFitSearchFacade', () => {
   it('does not present an explicitly excluded park as a match', () => {
     const response: ParkFitSearchResponse = buildResponse();
     response.parks[0]!.scoreState = 'Excluded';
-    const facade: ParkFitSearchFacade = createFacade({ search: () => of(response) });
+    response.qualityEligibleCandidateCount = 5;
+    const track = vi.fn();
+    const facade: ParkFitSearchFacade = createFacade(
+      { search: () => of(response) },
+      { track }
+    );
 
     facade.search(buildRequest());
 
     expect(facade.status()).toBe('success');
     expect(facade.firstPark()).toBeNull();
     expect(facade.visibleParks()).toEqual([]);
+    expect(track.mock.calls[1]?.[0]).toMatchObject({
+      eventKind: 'SearchCompleted',
+      resultBand: 'None'
+    });
   });
 
   it('turns public throttling into a dedicated visitor message', () => {
@@ -99,14 +110,43 @@ describe('ParkFitSearchFacade', () => {
 
     expect(facade.comparisonParks()).toEqual([]);
   });
+
+  it('emits only bounded aggregate pilot observations', () => {
+    const track = vi.fn();
+    const facade: ParkFitSearchFacade = createFacade(
+      { search: () => of(buildResponse()) },
+      { track }
+    );
+
+    facade.search(buildRequest());
+    facade.trackExplanationViewed();
+    facade.toggleComparisonPark('park-1');
+    facade.trackComparisonOpened();
+
+    expect(track.mock.calls[0]?.[0]).toEqual({ eventKind: 'SearchStarted' });
+    expect(track.mock.calls[1]?.[0]).toMatchObject({
+      eventKind: 'SearchCompleted',
+      resultBand: 'One',
+      unknownLevel: 'None',
+      methodVersion: 'park-fit-2026-01'
+    });
+    expect(track.mock.calls[1]?.[0]).not.toHaveProperty('parkId');
+    expect(track.mock.calls[1]?.[0]).not.toHaveProperty('originLatitude');
+    expect(track.mock.calls[2]?.[0]).toEqual({ eventKind: 'ExplanationViewed' });
+    expect(track).toHaveBeenCalledTimes(3);
+  });
 });
 
-function createFacade(port: ParkFitSearchDataPort): ParkFitSearchFacade {
+function createFacade(
+  port: ParkFitSearchDataPort,
+  telemetry: ParkFitPilotTelemetryPort = { track: vi.fn() }
+): ParkFitSearchFacade {
   TestBed.resetTestingModule();
   TestBed.configureTestingModule({
     providers: [
       ParkFitSearchFacade,
-      { provide: PARK_FIT_SEARCH_DATA_PORT, useValue: port }
+      { provide: PARK_FIT_SEARCH_DATA_PORT, useValue: port },
+      { provide: PARK_FIT_PILOT_TELEMETRY_PORT, useValue: telemetry }
     ]
   });
   return TestBed.inject(ParkFitSearchFacade);

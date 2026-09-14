@@ -1544,6 +1544,7 @@
         "socialShare": "Przeglądaj statystyki użycia narzędzi udostępniania.",
         "technicalStats": "Monitoruj pamięć podręczną SSR, roboty, renderowanie i czyszczenie.",
         "parkFitDataQuality": "Sprawdź, czy dane parków są gotowe do porównania.",
+        "parkFitPilot": "Mierz użyteczność Park Fit za pomocą anonimowych danych zbiorczych.",
         "socialPublishing": "Twórz, publikuj i monitoruj ogłoszenia wysyłane do sieci społecznościowych.",
         "parkWeather": "Monitoruj zaplanowane odświeżanie danych publicznych."
       },
@@ -2077,6 +2078,69 @@
       "pagination": {
         "ariaLabel": "Strony audytu gotowości",
         "label": "Strona {{current}} z {{total}}"
+      }
+    },
+    "parkFitPilot": {
+      "navTitle": "Pilotaż Park Fit",
+      "kicker": "Obserwowalność produktu",
+      "title": "Panel pilotażu Park Fit",
+      "subtitle": "Rozpoznawaj przydatne wyszukiwania, puste wyniki i dane do poprawy bez zapisywania kryteriów odwiedzających.",
+      "loading": "Wczytywanie wskaźników Park Fit…",
+      "loadError": "Nie udało się wczytać wskaźników Park Fit.",
+      "empty": "Brak aktywności Park Fit w tym okresie.",
+      "filters": {
+        "fromUtc": "Od",
+        "toUtc": "Do"
+      },
+      "decision": {
+        "kicker": "Stan pilotażu",
+        "description": "Ten sygnał pomaga ustalać priorytety poprawek i zawsze wymaga oceny jakościowej."
+      },
+      "signal": {
+        "AwaitingObservations": "Oczekiwanie na obserwacje",
+        "NeedsAttention": "Wymaga uwagi",
+        "Monitor": "Do obserwacji",
+        "Encouraging": "Obiecujący sygnał"
+      },
+      "metrics": {
+        "ariaLabel": "Zbiorcze wskaźniki pilotażu Park Fit",
+        "started": "Rozpoczęte wyszukiwania",
+        "completed": "Ukończone wyszukiwania",
+        "abandoned": "Porzucone wyszukiwania",
+        "noResult": "Bez wyniku",
+        "unknown": "Znaczące braki danych",
+        "explanations": "Otwarte wyjaśnienia",
+        "comparisons": "Otwarte porównania",
+        "reports": "Zgłoszone źródła",
+        "outdated": "Nieaktualne źródła"
+      },
+      "chart": {
+        "title": "Aktywność dzienna",
+        "subtitle": "Ukończone wyszukiwania i zgłoszenia źródeł według dnia.",
+        "completed": "Ukończone wyszukiwania",
+        "reports": "Zgłoszenia"
+      },
+      "breakdown": {
+        "results": "Liczba wyników",
+        "unknown": "Poziom braków danych",
+        "issues": "Napotkane luki w danych",
+        "zeroResultIssues": "Przyczyny pustych wyników",
+        "empty": "Brak sygnałów w tym okresie."
+      },
+      "resultBand": {
+        "None": "Brak parku",
+        "One": "Jeden park",
+        "TwoToFour": "Od dwóch do czterech parków",
+        "FiveOrMore": "Pięć parków lub więcej"
+      },
+      "unknownLevel": {
+        "None": "Brak luk",
+        "Limited": "Niewielkie luki",
+        "Significant": "Znaczące luki"
+      },
+      "privacy": {
+        "title": "Agregacja przy zapisie",
+        "description": "MongoDB otrzymuje wyłącznie wspólne liczniki dzienne. Nie są przechowywane identyfikatory, kryteria, wyszukiwane parki, współrzędne, sesje ani indywidualne ścieżki."
       }
     },
     "parkFounders": {

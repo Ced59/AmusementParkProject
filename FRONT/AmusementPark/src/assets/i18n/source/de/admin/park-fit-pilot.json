@@ -1,0 +1,16 @@
+{
+  "admin": {
+    "dashboard": { "shortcuts": { "parkFitPilot": "Den Nutzen von Park Fit mit anonymen, aggregierten Kennzahlen messen." } },
+    "parkFitPilot": {
+      "navTitle": "Park-Fit-Pilot", "kicker": "Produktbeobachtung", "title": "Steuerung des Park-Fit-Piloten", "subtitle": "Erkenne hilfreiche Suchen, leere Ergebnisse und verbesserungsbedürftige Daten, ohne Besucherkriterien zu speichern.",
+      "loading": "Park-Fit-Kennzahlen werden geladen…", "loadError": "Die Park-Fit-Kennzahlen konnten nicht geladen werden.", "empty": "Keine Park-Fit-Aktivität in diesem Zeitraum.",
+      "filters": { "fromUtc": "Von", "toUtc": "Bis" }, "decision": { "kicker": "Zustand des Piloten", "description": "Dieses Signal hilft bei der Priorisierung von Korrekturen und muss stets qualitativ geprüft werden." },
+      "signal": { "AwaitingObservations": "Beobachtungen ausstehend", "NeedsAttention": "Handlungsbedarf", "Monitor": "Beobachten", "Encouraging": "Ermutigendes Signal" },
+      "metrics": { "ariaLabel": "Aggregierte Kennzahlen des Park-Fit-Piloten", "started": "Gestartete Suchen", "completed": "Abgeschlossene Suchen", "abandoned": "Abgebrochene Suchen", "noResult": "Ohne Ergebnis", "unknown": "Viele unbekannte Daten", "explanations": "Geöffnete Erklärungen", "comparisons": "Geöffnete Vergleiche", "reports": "Gemeldete Quellen", "outdated": "Veraltete Quellen" },
+      "chart": { "title": "Tägliche Aktivität", "subtitle": "Abgeschlossene Suchen und Quellenmeldungen pro Tag.", "completed": "Abgeschlossene Suchen", "reports": "Meldungen" },
+      "breakdown": { "results": "Ergebnisumfang", "unknown": "Anteil unbekannter Daten", "issues": "Festgestellte Datenlücken", "zeroResultIssues": "Ursachen leerer Ergebnisse", "empty": "Kein Signal in diesem Zeitraum." },
+      "resultBand": { "None": "Kein Park", "One": "Ein Park", "TwoToFour": "Zwei bis vier Parks", "FiveOrMore": "Fünf Parks oder mehr" }, "unknownLevel": { "None": "Keine unbekannten Daten", "Limited": "Wenige unbekannte Daten", "Significant": "Viele unbekannte Daten" },
+      "privacy": { "title": "Sofort aggregiert", "description": "MongoDB erhält nur gemeinsame Tageszähler. Kennungen, Kriterien, gesuchte Parks, Koordinaten, Sitzungen oder individuelle Abläufe werden nicht gespeichert." }
+    }
+  }
+}

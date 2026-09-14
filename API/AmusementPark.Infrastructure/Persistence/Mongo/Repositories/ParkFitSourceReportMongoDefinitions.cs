@@ -9,6 +9,7 @@ internal static class ParkFitSourceReportMongoDefinitions
 {
     public const string StatusQueueIndexName = "idx_park_fit_reports_status_submitted";
     public const string ParkStatusIndexName = "idx_park_fit_reports_park_status";
+    public const string SubmittedIndexName = "idx_park_fit_reports_submitted";
 
     public static FilterDefinition<ParkFitSourceReportDocument> BuildIdFilter(string id)
     {
@@ -65,6 +66,10 @@ internal static class ParkFitSourceReportMongoDefinitions
                 .Ascending(static document => document.Status)
                 .Descending(static document => document.SubmittedAtUtc),
             new CreateIndexOptions { Name = ParkStatusIndexName });
-        return new[] { queue, parkQueue };
+        CreateIndexModel<ParkFitSourceReportDocument> submitted = new(
+            Builders<ParkFitSourceReportDocument>.IndexKeys
+                .Descending(static document => document.SubmittedAtUtc),
+            new CreateIndexOptions { Name = SubmittedIndexName });
+        return new[] { queue, parkQueue, submitted };
     }
 }

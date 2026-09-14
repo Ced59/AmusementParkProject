@@ -1,0 +1,159 @@
+:host {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.admin-park-fit-pilot-header {
+  align-items: flex-start;
+  min-width: 0;
+
+  > div { min-width: 0; }
+}
+
+.admin-park-fit-pilot-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  gap: 0.85rem;
+  align-items: end;
+  min-width: 0;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: rgba(56, 189, 248, 0.045);
+
+  label { display: grid; gap: 0.35rem; min-width: 0; }
+  label > span { color: var(--app-text-muted); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; }
+  input { width: 100%; min-width: 0; max-width: 100%; }
+}
+
+.admin-park-fit-pilot-filters__actions { display: flex; gap: 0.6rem; flex-wrap: wrap; min-width: 0; }
+
+.admin-park-fit-pilot-decision {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--app-success) 42%, var(--app-border));
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-success) 8%, transparent);
+
+  > div { min-width: 0; }
+  span { color: var(--app-success); font-size: 0.75rem; font-weight: 900; text-transform: uppercase; }
+  h3, p { margin: 0; }
+  h3 { color: var(--app-heading); font-size: 1.1rem; }
+  p { margin-top: 0.35rem; color: var(--app-text-muted); overflow-wrap: anywhere; }
+  > strong { color: var(--app-heading); font-size: clamp(1.65rem, 4vw, 2.4rem); white-space: nowrap; }
+}
+
+.admin-park-fit-pilot-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  min-width: 0;
+  margin-bottom: 1rem;
+
+  article { display: grid; gap: 0.35rem; min-width: 0; padding: 1rem; border: 1px solid var(--app-border); border-radius: var(--radius-lg); background: rgba(255, 255, 255, 0.045); }
+  span { color: var(--app-text-muted); font-size: 0.8rem; font-weight: 800; overflow-wrap: anywhere; }
+  strong { color: var(--app-heading); font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1; }
+}
+
+.admin-park-fit-pilot-chart,
+.admin-park-fit-pilot-breakdowns > article,
+.admin-park-fit-pilot-privacy {
+  min-width: 0;
+  max-width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.admin-park-fit-pilot-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+  h3, p { margin: 0; }
+  h3 { color: var(--app-heading); font-size: 1.05rem; }
+  p, > span { color: var(--app-text-muted); font-size: 0.82rem; }
+  p { margin-top: 0.25rem; }
+  > span { white-space: nowrap; }
+}
+
+.admin-park-fit-pilot-legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; color: var(--app-text-muted); font-size: 0.78rem; font-weight: 800; }
+.admin-park-fit-pilot-legend span::before { display: inline-block; width: 0.7rem; height: 0.7rem; margin-right: 0.35rem; border-radius: 0.2rem; content: ''; }
+.admin-park-fit-pilot-legend__completed::before { background: var(--app-primary); }
+.admin-park-fit-pilot-legend__reports::before { background: var(--app-warning); }
+
+.admin-park-fit-pilot-bars {
+  display: flex;
+  align-items: end;
+  gap: 0.35rem;
+  min-height: 13rem;
+  max-width: 100%;
+  padding-top: 0.5rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.admin-park-fit-pilot-bar {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  flex: 0 0 2.6rem;
+  height: 12rem;
+  gap: 0.35rem;
+  text-align: center;
+  color: var(--app-text-muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.admin-park-fit-pilot-bar__plot { display: flex; align-items: end; justify-content: center; gap: 0.18rem; height: 100%; }
+.admin-park-fit-pilot-bar__fill { --bar-height: 0%; display: block; width: 42%; height: var(--bar-height); border-radius: 0.35rem 0.35rem 0.1rem 0.1rem; }
+.admin-park-fit-pilot-bar__fill--completed { background: linear-gradient(180deg, #ff7a45, #ff4d1f); }
+.admin-park-fit-pilot-bar__fill--reports { background: linear-gradient(180deg, #facc15, #a16207); }
+
+.admin-park-fit-pilot-breakdowns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.85rem; margin-top: 1rem; min-width: 0; }
+.admin-park-fit-pilot-breakdowns h3 { margin: 0 0 0.85rem; color: var(--app-heading); font-size: 1rem; }
+.admin-park-fit-pilot-breakdowns p { color: var(--app-text-muted); }
+.admin-park-fit-pilot-breakdown { display: grid; gap: 0.3rem; margin-top: 0.65rem; min-width: 0; }
+.admin-park-fit-pilot-breakdown > div { display: flex; justify-content: space-between; gap: 0.5rem; min-width: 0; }
+.admin-park-fit-pilot-breakdown span { color: var(--app-text-muted); overflow-wrap: anywhere; }
+.admin-park-fit-pilot-breakdown strong { color: var(--app-heading); }
+.admin-park-fit-pilot-breakdown__track { display: block; height: 0.35rem; overflow: hidden; border-radius: 999px; background: rgba(255, 255, 255, 0.08); }
+.admin-park-fit-pilot-breakdown__track > span { --bar-width: 0%; display: block; width: var(--bar-width); height: 100%; background: var(--app-primary); }
+
+.admin-park-fit-pilot-privacy { display: flex; align-items: flex-start; gap: 0.75rem; margin-top: 1rem; }
+.admin-park-fit-pilot-privacy i { flex: 0 0 auto; color: var(--app-success); font-size: 1.35rem; }
+.admin-park-fit-pilot-privacy h3, .admin-park-fit-pilot-privacy p { margin: 0; }
+.admin-park-fit-pilot-privacy h3 { color: var(--app-heading); font-size: 1rem; }
+.admin-park-fit-pilot-privacy p { margin-top: 0.3rem; color: var(--app-text-muted); overflow-wrap: anywhere; }
+
+@media (max-width: 1020px) {
+  .admin-park-fit-pilot-filters, .admin-park-fit-pilot-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .admin-park-fit-pilot-filters__actions { grid-column: 1 / -1; }
+  .admin-park-fit-pilot-breakdowns { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .admin-park-fit-pilot-filters, .admin-park-fit-pilot-kpis { grid-template-columns: minmax(0, 1fr); }
+  .admin-park-fit-pilot-filters__actions, .admin-park-fit-pilot-decision, .admin-park-fit-pilot-section-head { align-items: stretch; flex-direction: column; }
+  .admin-park-fit-pilot-filters__actions > button { width: 100%; }
+  .admin-park-fit-pilot-decision > strong, .admin-park-fit-pilot-section-head > span { white-space: normal; }
+}
+
+@media (max-width: 390px) {
+  .admin-park-fit-pilot-filters, .admin-park-fit-pilot-chart, .admin-park-fit-pilot-breakdowns > article, .admin-park-fit-pilot-privacy, .admin-park-fit-pilot-kpis article, .admin-park-fit-pilot-decision { padding: 0.78rem; }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .admin-park-fit-pilot-bars { min-height: 9rem; }
+  .admin-park-fit-pilot-bar { height: 8rem; }
+}

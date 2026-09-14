@@ -1,0 +1,124 @@
+<app-ui-card styleClass="admin-list-card admin-park-fit-pilot-card">
+  <ng-template appUiTemplate="header">
+    <div class="admin-list-header admin-park-fit-pilot-header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.parkFitPilot.kicker' | translate }}</span>
+        <h2>{{ 'admin.parkFitPilot.title' | translate }}</h2>
+        <p>{{ 'admin.parkFitPilot.subtitle' | translate }}</p>
+      </div>
+      @if (metrics()) {
+        <app-ui-tag
+          [value]="signalLabel(signal()) | translate"
+          [severity]="signalSeverity(signal())">
+        </app-ui-tag>
+      }
+    </div>
+  </ng-template>
+
+  <form class="admin-park-fit-pilot-filters" [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
+    <label>
+      <span>{{ 'admin.parkFitPilot.filters.fromUtc' | translate }}</span>
+      <input appUiInputText type="date" formControlName="fromUtc" />
+    </label>
+    <label>
+      <span>{{ 'admin.parkFitPilot.filters.toUtc' | translate }}</span>
+      <input appUiInputText type="date" formControlName="toUtc" />
+    </label>
+    <div class="admin-park-fit-pilot-filters__actions">
+      <button appUiButton type="submit" icon="pi pi-search" [label]="'actions.search' | translate"></button>
+      <button appUiButton type="button" class="p-button-secondary" icon="pi pi-filter-slash"
+        [label]="'actions.reset' | translate" (click)="resetFilters()"></button>
+    </div>
+  </form>
+
+  <app-page-state
+    [state]="state()"
+    loadingMessageKey="admin.parkFitPilot.loading"
+    errorMessageKey="admin.parkFitPilot.loadError"
+    emptyMessageKey="admin.parkFitPilot.empty">
+    @if (metrics(); as currentMetrics) {
+      <section class="admin-park-fit-pilot-decision" aria-labelledby="park-fit-pilot-decision-title">
+        <div>
+          <span>{{ 'admin.parkFitPilot.decision.kicker' | translate }}</span>
+          <h3 id="park-fit-pilot-decision-title">{{ signalLabel(currentMetrics.health.signal) | translate }}</h3>
+          <p>{{ 'admin.parkFitPilot.decision.description' | translate }}</p>
+        </div>
+        <strong>{{ currentMetrics.health.completionRatePercent | number:'1.0-1' }}&nbsp;%</strong>
+      </section>
+
+      <section class="admin-park-fit-pilot-kpis" [attr.aria-label]="'admin.parkFitPilot.metrics.ariaLabel' | translate">
+        <article><span>{{ 'admin.parkFitPilot.metrics.started' | translate }}</span><strong>{{ currentMetrics.searchesStarted | number }}</strong></article>
+        <article><span>{{ 'admin.parkFitPilot.metrics.completed' | translate }}</span><strong>{{ currentMetrics.searchesCompleted | number }}</strong></article>
+        <article><span>{{ 'admin.parkFitPilot.metrics.abandoned' | translate }}</span><strong>{{ currentMetrics.searchesAbandoned | number }}</strong></article>
+        <article><span>{{ 'admin.parkFitPilot.metrics.noResult' | translate }}</span><strong>{{ currentMetrics.health.noResultRatePercent | number:'1.0-1' }} %</strong></article>
+        <article><span>{{ 'admin.parkFitPilot.metrics.unknown' | translate }}</span><strong>{{ currentMetrics.health.significantUnknownRatePercent | number:'1.0-1' }} %</strong></article>
+        <article><span>{{ 'admin.parkFitPilot.metrics.explanations' | translate }}</span><strong>{{ currentMetrics.explanationsViewed | number }}</strong></article>
+        <article><span>{{ 'admin.parkFitPilot.metrics.comparisons' | translate }}</span><strong>{{ currentMetrics.comparisonsOpened | number }}</strong></article>
+        <article><span>{{ 'admin.parkFitPilot.metrics.reports' | translate }}</span><strong>{{ currentMetrics.sourceReports | number }}</strong></article>
+        <article><span>{{ 'admin.parkFitPilot.metrics.outdated' | translate }}</span><strong>{{ currentMetrics.outdatedSourceReports | number }}</strong></article>
+      </section>
+
+      <section class="admin-park-fit-pilot-chart" aria-labelledby="park-fit-pilot-chart-title">
+        <div class="admin-park-fit-pilot-section-head">
+          <div>
+            <h3 id="park-fit-pilot-chart-title">{{ 'admin.parkFitPilot.chart.title' | translate }}</h3>
+            <p>{{ 'admin.parkFitPilot.chart.subtitle' | translate }}</p>
+          </div>
+          <span>{{ currentMetrics.fromUtc | date:'yyyy-MM-dd':'UTC' }} – {{ currentMetrics.toUtc | date:'yyyy-MM-dd':'UTC' }}</span>
+        </div>
+        <div class="admin-park-fit-pilot-legend" aria-hidden="true">
+          <span class="admin-park-fit-pilot-legend__completed">{{ 'admin.parkFitPilot.chart.completed' | translate }}</span>
+          <span class="admin-park-fit-pilot-legend__reports">{{ 'admin.parkFitPilot.chart.reports' | translate }}</span>
+        </div>
+        <div class="admin-park-fit-pilot-bars" aria-hidden="true">
+          @for (point of chartPoints(); track point.date) {
+            <div class="admin-park-fit-pilot-bar">
+              <div class="admin-park-fit-pilot-bar__plot">
+                <span class="admin-park-fit-pilot-bar__fill admin-park-fit-pilot-bar__fill--completed"
+                  [style.--bar-height]="point.completedHeightPercent + '%'"></span>
+                <span class="admin-park-fit-pilot-bar__fill admin-park-fit-pilot-bar__fill--reports"
+                  [style.--bar-height]="point.reportsHeightPercent + '%'"></span>
+              </div>
+              <span>{{ point.date | date:'MM-dd':'UTC' }}</span>
+            </div>
+          }
+        </div>
+      </section>
+
+      <section class="admin-park-fit-pilot-breakdowns">
+        <article>
+          <h3>{{ 'admin.parkFitPilot.breakdown.results' | translate }}</h3>
+          @for (item of resultBreakdown(); track item.key) {
+            <div class="admin-park-fit-pilot-breakdown">
+              <div><span>{{ resultLabel(item.key) | translate }}</span><strong>{{ item.count | number }}</strong></div>
+              <span class="admin-park-fit-pilot-breakdown__track"><span [style.--bar-width]="item.widthPercent + '%'"></span></span>
+            </div>
+          } @empty { <p>{{ 'admin.parkFitPilot.breakdown.empty' | translate }}</p> }
+        </article>
+        <article>
+          <h3>{{ 'admin.parkFitPilot.breakdown.unknown' | translate }}</h3>
+          @for (item of unknownBreakdown(); track item.key) {
+            <div class="admin-park-fit-pilot-breakdown">
+              <div><span>{{ unknownLabel(item.key) | translate }}</span><strong>{{ item.count | number }}</strong></div>
+              <span class="admin-park-fit-pilot-breakdown__track"><span [style.--bar-width]="item.widthPercent + '%'"></span></span>
+            </div>
+          } @empty { <p>{{ 'admin.parkFitPilot.breakdown.empty' | translate }}</p> }
+        </article>
+        <article>
+          <h3>{{ 'admin.parkFitPilot.breakdown.zeroResultIssues' | translate }}</h3>
+          @for (item of issueBreakdown(); track item.key) {
+            <div class="admin-park-fit-pilot-breakdown">
+              <div><span>{{ issueLabel(item.key) | translate }}</span><strong>{{ item.count | number }}</strong></div>
+              <span class="admin-park-fit-pilot-breakdown__track"><span [style.--bar-width]="item.widthPercent + '%'"></span></span>
+            </div>
+          } @empty { <p>{{ 'admin.parkFitPilot.breakdown.empty' | translate }}</p> }
+        </article>
+      </section>
+
+      <aside class="admin-park-fit-pilot-privacy">
+        <i class="pi pi-shield" aria-hidden="true"></i>
+        <div><h3>{{ 'admin.parkFitPilot.privacy.title' | translate }}</h3><p>{{ 'admin.parkFitPilot.privacy.description' | translate }}</p></div>
+      </aside>
+    }
+  </app-page-state>
+</app-ui-card>

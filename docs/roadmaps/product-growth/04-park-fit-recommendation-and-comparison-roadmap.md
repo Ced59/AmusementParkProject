@@ -264,8 +264,25 @@ les huit langues sont contenues jusque 360 px. L'architecture, les schémas, les
 séquences et les preuves sont documentés dans
 [`product-growth-fit-13-sources-reports-suspension-2026-09-14.md`](../../architecture/product-growth-fit-13-sources-reports-suspension-2026-09-14.md).
 
-`FIT-14` est le prochain jalon : instrumenter le pilote de façon agrégée, privée et
-indépendante d'un volume réel de visites.
+### État de `FIT-14` au 14 septembre 2026
+
+Le pilote mesure désormais les recherches lancées, abouties ou échouées, les volumes
+de résultats, les niveaux d'inconnues, la latence par tranche, les explications et
+comparaisons ouvertes, ainsi que les lacunes et sources signalées. Le cockpit admin
+filtre une période bornée, affiche les taux, répartitions et tendances quotidiennes,
+et rappelle qu'une validation qualitative reste obligatoire.
+
+La collecte est agrégée dès l'écriture dans un document MongoDB partagé par jour.
+Aucun événement individuel, identifiant, critère, parc recherché, coordonnée ou
+session n'est conservé. Les agrégats expirent automatiquement après 400 jours. La
+nouvelle collection et ses index sont initialisés au déploiement sans intervention
+MongoDB manuelle. L'écran admin lazy-loadé, traduit dans les huit langues, reste
+contenu jusque 360 px. L'architecture, le schéma, les séquences et les preuves sont
+documentés dans
+[`product-growth-fit-14-private-pilot-observability-2026-09-14.md`](../../architecture/product-growth-fit-14-private-pilot-observability-2026-09-14.md).
+
+`FIT-15` est le prochain jalon : organiser l'extension du portefeuille et
+l'activation explicite des parcs, sans attendre un volume communautaire réel.
 
 ## 1. Vision produit
 
