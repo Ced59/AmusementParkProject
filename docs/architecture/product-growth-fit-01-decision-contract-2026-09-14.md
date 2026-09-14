@@ -204,13 +204,19 @@ ne sera conservé après la bascule.
 
 Le calcul individuel précède toujours le calcul du groupe.
 
-| État groupe | Condition minimale |
-|---|---|
-| `EveryoneTogether` | Tous les membres peuvent participer dans une même configuration connue. |
-| `PossibleWithSplit` | Tous peuvent participer, mais une séparation ou plusieurs configurations sont nécessaires et réalisables avec les accompagnateurs renseignés. |
-| `Partial` | Au moins un membre est incompatible, tandis qu'un autre est compatible. |
-| `None` | Aucun membre n'est compatible selon les faits connus. |
-| `Unknown` | Une donnée critique empêche de conclure pour le groupe. |
+| Priorité | État groupe | Condition exclusive |
+|---:|---|---|
+| 1 | `EveryoneTogether` | Tous les membres sont conclus compatibles dans une même configuration connue. |
+| 2 | `PossibleWithSplit` | Tous les membres sont conclus compatibles, mais seulement avec une séparation ou plusieurs configurations dont la faisabilité est connue. |
+| 3 | `Partial` | Au moins un membre est conclu compatible et au moins un autre est conclu incompatible. Les membres encore inconnus restent signalés individuellement sans effacer ce constat. |
+| 4 | `None` | Tous les membres sont conclus incompatibles ; aucun membre ne reste inconnu. |
+| 5 | `Unknown` | Tous les autres cas comportant au moins un membre inconnu, notamment compatible + inconnu ou incompatible + inconnu sans membre compatible. |
+
+La requête sans membre est invalide et n'entre pas dans cette agrégation. Les lignes
+sont évaluées dans l'ordre du tableau, mais leurs conditions sont volontairement
+exclusives. Ainsi, compatible + incompatible + inconnu produit `Partial`, alors
+qu'incompatible + inconnu produit `Unknown` : dans le second cas, les faits ne
+permettent pas encore de choisir entre `None` et `Partial`.
 
 Le moteur ne suppose ni capacité d'un véhicule, ni nombre d'enfants par
 accompagnateur, ni échange d'accompagnateurs entre deux attractions. Sans fait
