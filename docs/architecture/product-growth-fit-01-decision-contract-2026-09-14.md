@@ -50,13 +50,13 @@ flowchart TD
     A[Parc candidat] --> B{Gate de données franchie ?}
     B -- Non --> C[Non recommandé<br/>raison de qualité visible]
     B -- Oui --> D[Évaluer les filtres durs]
-    D --> E{Fait critique inconnu ?}
+    D --> I{Violation fiable ?}
+    I -- Oui --> J[Incompatible ou écarté<br/>raison visible]
+    I -- Non --> E{Fait critique inconnu ?}
     E -- Oui --> F{Politique choisie}
     F -- Exclure --> G[Écarté comme inconnu]
     F -- Conserver --> H[Résultat partiel averti]
-    E -- Non --> I{Filtre violé ?}
-    I -- Oui --> J[Incompatible ou écarté<br/>raison visible]
-    I -- Non --> K[Calculer les préférences souples]
+    E -- Non --> K[Calculer les préférences souples]
     H --> K
     K --> L[Explications + confiance]
     L --> M{Couverture suffisante ?}
