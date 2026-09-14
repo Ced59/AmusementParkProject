@@ -72,6 +72,10 @@ Une fermeture connue continue d'exclure le parc pour la date. Une donnée inconn
 suit la politique Park Fit déjà choisie (`KeepWithWarning`, `KnownOnly` ou
 `ExcludeUnknown`) ; elle ne devient jamais une ouverture par défaut.
 
+Dans la comparaison, le fuseau et la date de vérification font partie de
+l'empreinte de différence afin que le filtre dédié ne masque pas deux calendriers
+visuellement proches, mais factuellement distincts.
+
 ## Architecture applicative
 
 ```mermaid
