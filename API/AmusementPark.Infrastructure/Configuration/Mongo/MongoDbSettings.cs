@@ -121,6 +121,12 @@ public sealed class MongoDbSettings
 
     public string UserGroupProfilesCollectionName { get; set; } = "user-group-profiles";
 
+    public string ParkFitSourceReportsCollectionName { get; set; } =
+        "park-fit-source-reports";
+
+    public string ParkFitOperationalStatusesCollectionName { get; set; } =
+        "park-fit-operational-statuses";
+
     public string ShareModerationReportsCollectionName { get; set; } =
         "share-moderation-reports";
 

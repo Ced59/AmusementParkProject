@@ -3,6 +3,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkFit.Queries;
+using AmusementPark.Application.Features.ParkFit.Results;
+using AmusementPark.Core.Domain.ParkFit;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.Common;
@@ -44,16 +46,24 @@ public sealed class AdminParkFitDataQualityControllerTests
         };
         Mock<IQueryHandler<
             GetParkFitDataQualityPageQuery,
-            ApplicationResult<PagedResult<ParkFitDataQualityAssessment>>>> handler =
+            ApplicationResult<PagedResult<ParkFitDataQualityOperationsResult>>>> handler =
             new Mock<IQueryHandler<
                 GetParkFitDataQualityPageQuery,
-                ApplicationResult<PagedResult<ParkFitDataQualityAssessment>>>>(MockBehavior.Strict);
+                ApplicationResult<PagedResult<ParkFitDataQualityOperationsResult>>>>(MockBehavior.Strict);
         handler.Setup(value => value.HandleAsync(
                 It.Is<GetParkFitDataQualityPageQuery>(query =>
                     query.Paging.Page == 2 && query.Paging.PageSize == 10),
                 CancellationToken.None))
-            .ReturnsAsync(ApplicationResult<PagedResult<ParkFitDataQualityAssessment>>.Success(
-                new PagedResult<ParkFitDataQualityAssessment>(new[] { assessment }, 2, 10, 21)));
+            .ReturnsAsync(ApplicationResult<PagedResult<ParkFitDataQualityOperationsResult>>.Success(
+                new PagedResult<ParkFitDataQualityOperationsResult>(new[]
+                {
+                    new ParkFitDataQualityOperationsResult
+                    {
+                        Assessment = assessment,
+                        RecommendationState = ParkFitRecommendationState.Active,
+                        PendingReportCount = 2,
+                    },
+                }, 2, 10, 21)));
         AdminParkFitDataQualityController controller = new AdminParkFitDataQualityController(handler.Object);
 
         IActionResult response = await controller.GetAsync(
@@ -66,6 +76,8 @@ public sealed class AdminParkFitDataQualityControllerTests
         ParkFitDataQualityDto dto = Assert.Single(body.Data);
         Assert.Equal("EligibleForDiscoveryOnly", dto.Status);
         Assert.Equal(75, dto.CoveragePercent);
+        Assert.Equal("Active", dto.RecommendationState);
+        Assert.Equal(2, dto.PendingReportCount);
         Assert.Equal("MissingAuthoritativeSource", Assert.Single(dto.IssueSamples).Issues.Single());
         Assert.Equal(21, body.Pagination?.TotalItems);
         handler.VerifyAll();

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.28",
+  "version": "5.3.29",
   "history": [
+    {
+      "version": "5.3.29",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Tu peux maintenant signaler une source Park Fit à vérifier.",
+        "en": "You can now report a Park Fit source that needs checking.",
+        "de": "Du kannst jetzt eine Park-Fit-Quelle zur Prüfung melden.",
+        "nl": "Je kunt nu een Park Fit-bron melden die gecontroleerd moet worden.",
+        "it": "Ora puoi segnalare una fonte Park Fit da verificare.",
+        "es": "Ahora puedes señalar una fuente de Park Fit que deba revisarse.",
+        "pl": "Możesz teraz zgłosić źródło Park Fit wymagające sprawdzenia.",
+        "pt": "Agora podes assinalar uma fonte do Park Fit que deva ser verificada."
+      }
+    },
     {
       "version": "5.3.28",
       "releasedAt": "2026-09-14",

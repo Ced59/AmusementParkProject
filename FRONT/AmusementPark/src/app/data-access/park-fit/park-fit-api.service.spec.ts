@@ -1,7 +1,11 @@
 import { HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { ParkFitSearchRequest, ParkFitSearchResponse } from '@app/models/park-fit/park-fit-search.models';
+import {
+  ParkFitSearchRequest,
+  ParkFitSearchResponse,
+  ParkFitSourceReportRequest
+} from '@app/models/park-fit/park-fit-search.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
 import { environment } from '../../../environments/environment';
@@ -40,6 +44,27 @@ describe('ParkFitApiService', () => {
 
     expect(actual).toEqual(response);
   });
+
+  it('submits a source report anonymously without transfer cache', () => {
+    const request: ParkFitSourceReportRequest = {
+      parkId: 'park-1',
+      evidenceKind: 'OpeningCalendar',
+      sourceUrl: 'https://example.org/calendar',
+      sourceReference: null,
+      reason: 'Outdated',
+      details: null
+    };
+
+    service.submitReport(request).subscribe();
+
+    const pending = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}public/park-fit/reports`
+    );
+    expect(pending.request.method).toBe('POST');
+    expect(pending.request.body).toEqual(request);
+    expect(pending.request.context.get(SKIP_AUTHORIZATION_HEADER)).toBe(true);
+    pending.flush(null);
+  });
 });
 
 function buildRequest(): ParkFitSearchRequest {
@@ -72,6 +97,7 @@ function buildResponse(): ParkFitSearchResponse {
     inspectedCandidateCount: 1,
     qualityEligibleCandidateCount: 1,
     qualityRejectedCandidateCount: 0,
+    operationallySuspendedCandidateCount: 0,
     candidatePoolTruncated: false,
     qualityStatusCounts: { Eligible: 1 },
     qualityIssueCounts: {},

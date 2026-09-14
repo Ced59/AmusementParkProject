@@ -4,6 +4,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkFit;
 using AmusementPark.Application.Features.ParkFit.Handlers;
 using AmusementPark.Application.Features.ParkFit.Models;
+using AmusementPark.Application.Features.ParkFit.Ports;
 using AmusementPark.Application.Features.ParkFit.Queries;
 using AmusementPark.Application.Features.ParkFit.Results;
 using AmusementPark.Application.Features.ParkFit.Services;
@@ -242,6 +243,56 @@ public sealed class SearchParksByFitQueryHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenParkIsOperationallySuspended_ShouldExcludeItFromResults()
+    {
+        Park park = BuildPark("park-1", "Parc suspendu");
+        ParkFitOperationalStatus status = ParkFitOperationalStatus.CreateActive(park.Id);
+        status.Suspend(
+            "admin-1",
+            "Preuve à revérifier",
+            EvaluationTimestamp);
+        Mock<IParkRepository> parks = BuildParkRepository(new[] { park }, totalItems: 1);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHours =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<IParkFitOperationalStatusRepository> operationalStatuses =
+            new Mock<IParkFitOperationalStatusRepository>(MockBehavior.Strict);
+        items.Setup(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { BuildAttraction(park.Id) });
+        openingHours.Setup(repository => repository.GetSummariesByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>
+            {
+                [park.Id] = BuildSummary(park.Id),
+            });
+        operationalStatuses.Setup(repository => repository.GetByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkFitOperationalStatus>
+            {
+                [park.Id] = status,
+            });
+        SearchParksByFitQueryHandler handler = BuildHandler(
+            parks.Object,
+            items.Object,
+            openingHours.Object,
+            operationalStatuses.Object);
+
+        ApplicationResult<ParkFitSearchResult> result = await handler.HandleAsync(BuildQuery());
+
+        ParkFitSearchResult value = Assert.IsType<ParkFitSearchResult>(result.Value);
+        Assert.Empty(value.Parks);
+        Assert.Equal(1, value.OperationallySuspendedCandidateCount);
+        Assert.Equal(0, value.QualityRejectedCandidateCount);
+        openingHours.Verify(repository => repository.GetByParkIdsAsync(
+            It.IsAny<IReadOnlyCollection<string>>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenQueryIsInvalid_ShouldNotReadRepositories()
     {
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
@@ -270,12 +321,20 @@ public sealed class SearchParksByFitQueryHandlerTests
     private static SearchParksByFitQueryHandler BuildHandler(
         IParkRepository parks,
         IParkItemRepository items,
-        IParkOpeningHoursRepository openingHours)
+        IParkOpeningHoursRepository openingHours,
+        IParkFitOperationalStatusRepository? operationalStatuses = null)
     {
+        Mock<IParkFitOperationalStatusRepository> defaultStatuses =
+            new Mock<IParkFitOperationalStatusRepository>(MockBehavior.Strict);
+        defaultStatuses.Setup(repository => repository.GetByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkFitOperationalStatus>(StringComparer.Ordinal));
         return new SearchParksByFitQueryHandler(
             parks,
             items,
             openingHours,
+            operationalStatuses ?? defaultStatuses.Object,
             new SearchParksByFitQueryValidator(),
             new ParkFitSearchParkEvaluator(),
             new SearchParksByFitQueryHandlerTestsFixedTimeProvider(EvaluationTimestamp));

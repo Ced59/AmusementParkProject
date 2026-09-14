@@ -59,6 +59,7 @@ public static class ParkFitSearchHttpMapper
             InspectedCandidateCount = result.InspectedCandidateCount,
             QualityEligibleCandidateCount = result.QualityEligibleCandidateCount,
             QualityRejectedCandidateCount = result.QualityRejectedCandidateCount,
+            OperationallySuspendedCandidateCount = result.OperationallySuspendedCandidateCount,
             CandidatePoolTruncated = result.CandidatePoolTruncated,
             QualityStatusCounts = result.QualityStatusCounts.ToDictionary(
                 static item => item.Key.ToString(),

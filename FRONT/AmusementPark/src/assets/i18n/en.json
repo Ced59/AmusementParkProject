@@ -1968,6 +1968,55 @@
       "loadError": "Unable to load operators."
     },
     "parkFitDataQuality": {
+      "reports": {
+        "kicker": "Visitor feedback",
+        "title": "Reports to verify",
+        "subtitle": "Pending across the whole portfolio: {{count}}. Check the evidence before deciding.",
+        "pendingMetric": "Open reports",
+        "globalMetric": "across the whole portfolio",
+        "forPark": "Pending for this park: {{count}}",
+        "kind": {
+          "GeneralParkData": "General park data",
+          "AccessCondition": "Access condition",
+          "OpeningCalendar": "Opening calendar"
+        },
+        "reason": {
+          "Outdated": "The data appears outdated",
+          "Incorrect": "The data appears incorrect",
+          "Unavailable": "The source is no longer available",
+          "Incomplete": "The data appears incomplete",
+          "Other": "Other issue"
+        },
+        "sourceReference": "Displayed reference: {{reference}}",
+        "openSource": "Open the reported evidence",
+        "noteLabel": "Optional decision note",
+        "resolve": "Mark as corrected",
+        "dismiss": "Dismiss report"
+      },
+      "operations": {
+        "state": {
+          "Active": "Recommendations active",
+          "Suspended": "Recommendations suspended"
+        },
+        "stateHelp": {
+          "Active": "This park can appear in Park Fit when its data quality is sufficient.",
+          "Suspended": "This park remains public but is excluded from Park Fit."
+        },
+        "action": {
+          "Active": "Restore in Park Fit",
+          "Suspended": "Suspend in Park Fit"
+        },
+        "reasonLabel": "Required justification",
+        "reasonPlaceholder": "Explain the verification or correction that is needed…",
+        "confirm": "Confirm decision",
+        "saving": "Saving…",
+        "history": "Recent decision history",
+        "decision": {
+          "Suspended": "Suspended",
+          "Restored": "Restored"
+        },
+        "error": "The decision could not be saved. The data may have changed; refresh and try again."
+      },
       "navTitle": "Comparison data quality",
       "kicker": "Data preparation",
       "title": "Parks ready for comparison",
@@ -4829,6 +4878,24 @@
       "error": "Your private profiles cannot be loaded right now.",
       "empty": "You have not saved a Park Fit profile yet.",
       "add": "Add to group"
+    },
+    "reports": {
+      "open": "Report this data",
+      "reasonLabel": "What seems wrong?",
+      "reasons": {
+        "Outdated": "The data is outdated",
+        "Incorrect": "The data is incorrect",
+        "Unavailable": "The source no longer opens",
+        "Incomplete": "Important information is missing",
+        "Other": "Other issue"
+      },
+      "detailsLabel": "Optional details",
+      "detailsPlaceholder": "Say what should be checked, without including personal data…",
+      "send": "Send report",
+      "sending": "Sending…",
+      "success": "Thank you, the report has been sent to the team.",
+      "rateLimited": "Too many reports were sent from this device. Try again later.",
+      "error": "The report could not be sent. Try again in a moment."
     },
     "seo": {
       "title": "Find a park that fits your group — Amusement Parks",

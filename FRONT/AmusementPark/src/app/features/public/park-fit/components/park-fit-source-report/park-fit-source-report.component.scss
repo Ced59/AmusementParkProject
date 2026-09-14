@@ -1,0 +1,90 @@
+:host,
+.park-fit-source-report,
+.park-fit-source-report form,
+.park-fit-source-report label {
+  display: grid;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.park-fit-source-report {
+  gap: 0.55rem;
+}
+
+.park-fit-source-report__toggle {
+  display: inline-flex;
+  min-height: 44px;
+  width: fit-content;
+  max-width: 100%;
+  gap: 0.4rem;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  color: var(--text-muted);
+  background: transparent;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.park-fit-source-report form {
+  gap: 0.7rem;
+  border-left: 3px solid var(--c-gold);
+  padding: 0.8rem;
+  background: color-mix(in srgb, var(--c-gold) 6%, transparent);
+}
+
+.park-fit-source-report label {
+  gap: 0.3rem;
+  color: var(--heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.park-fit-source-report select,
+.park-fit-source-report textarea {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  padding: 0.7rem;
+  color: var(--text);
+  background: var(--app-surface);
+  font: inherit;
+}
+
+.park-fit-source-report textarea {
+  resize: vertical;
+  overflow-wrap: anywhere;
+}
+
+.park-fit-source-report form > button {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.park-fit-source-report p {
+  min-height: 1.2em;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.park-fit-source-report__success {
+  color: var(--c-lime);
+}
+
+.park-fit-source-report__error {
+  color: var(--app-danger);
+}
+
+@media (max-width: 420px) {
+  .park-fit-source-report form > button,
+  .park-fit-source-report__toggle {
+    width: 100%;
+    justify-content: center;
+  }
+}

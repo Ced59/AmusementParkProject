@@ -24,6 +24,29 @@
     loadingMessageKey="admin.parkFitDataQuality.loading"
     errorMessageKey="admin.parkFitDataQuality.loadError"
     emptyMessageKey="admin.parkFitDataQuality.empty">
+    @if (actionErrorKey()) {
+      <p class="admin-park-fit-data-quality-action-error" role="alert">
+        {{ actionErrorKey()! | translate }}
+      </p>
+    }
+
+    @if (reports().length > 0) {
+      <section class="admin-park-fit-data-quality-reports" aria-labelledby="park-fit-reports-title">
+        <header>
+          <div>
+            <span class="admin-kicker">{{ 'admin.parkFitDataQuality.reports.kicker' | translate }}</span>
+            <h3 id="park-fit-reports-title">{{ 'admin.parkFitDataQuality.reports.title' | translate }}</h3>
+            <p>{{ 'admin.parkFitDataQuality.reports.subtitle' | translate:{ count: pendingReportTotal() } }}</p>
+          </div>
+        </header>
+        <div class="admin-park-fit-data-quality-reports__list">
+          @for (report of reports(); track report.reportId) {
+            <app-admin-park-fit-report-review [report]="report"></app-admin-park-fit-report-review>
+          }
+        </div>
+      </section>
+    }
+
     @if (assessments().length > 0) {
       <section
         class="admin-park-fit-data-quality-kpis"
@@ -32,6 +55,11 @@
           <span>{{ 'admin.parkFitDataQuality.metrics.eligible' | translate }}</span>
           <strong>{{ eligibleCount() }}</strong>
           <small>{{ 'admin.parkFitDataQuality.metrics.currentPage' | translate }}</small>
+        </article>
+        <article>
+          <span>{{ 'admin.parkFitDataQuality.reports.pendingMetric' | translate }}</span>
+          <strong>{{ pendingReportTotal() }}</strong>
+          <small>{{ 'admin.parkFitDataQuality.reports.globalMetric' | translate }}</small>
         </article>
         <article>
           <span>{{ 'admin.parkFitDataQuality.metrics.actionRequired' | translate }}</span>
@@ -133,6 +161,29 @@
                           }
                         </span>
                       </div>
+                    </li>
+                  }
+                </ul>
+              </details>
+            }
+
+            @if (assessment.pendingReportCount > 0) {
+              <p class="admin-park-fit-data-quality-park__reports">
+                <i class="pi pi-flag" aria-hidden="true"></i>
+                {{ 'admin.parkFitDataQuality.reports.forPark' | translate:{ count: assessment.pendingReportCount } }}
+              </p>
+            }
+
+            <app-admin-park-fit-operational-controls [park]="assessment"></app-admin-park-fit-operational-controls>
+
+            @if (assessment.recentDecisions.length > 0) {
+              <details class="admin-park-fit-data-quality-history">
+                <summary>{{ 'admin.parkFitDataQuality.operations.history' | translate }}</summary>
+                <ul>
+                  @for (decision of assessment.recentDecisions; track decision.revision) {
+                    <li>
+                      <strong>{{ ('admin.parkFitDataQuality.operations.decision.' + decision.type) | translate }}</strong>
+                      <span>{{ decision.decidedAtUtc | date:'short':'UTC' }} · {{ decision.reason }}</span>
                     </li>
                   }
                 </ul>

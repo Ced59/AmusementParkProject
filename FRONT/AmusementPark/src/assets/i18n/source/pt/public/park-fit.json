@@ -1,5 +1,6 @@
 {
   "parkFit": {
+    "reports": { "open": "Assinalar estes dados", "reasonLabel": "O que parece incorreto?", "reasons": { "Outdated": "Os dados estão desatualizados", "Incorrect": "Os dados estão incorretos", "Unavailable": "A fonte já não abre", "Incomplete": "Falta uma informação importante", "Other": "Outro problema" }, "detailsLabel": "Detalhe opcional", "detailsPlaceholder": "Indica o que deve ser verificado, sem dados pessoais…", "send": "Enviar aviso", "sending": "A enviar…", "success": "Obrigado, o aviso foi enviado à equipa.", "rateLimited": "Foram enviados demasiados avisos a partir deste dispositivo. Tenta mais tarde.", "error": "Não foi possível enviar o aviso. Tenta novamente dentro de instantes." },
     "seo": {
       "title": "Encontra um parque adequado ao teu grupo — Amusement Parks",
       "description": "Compara parques documentados segundo o teu grupo, a data e as preferências, sem conta e sem guardar os critérios."

@@ -1,0 +1,40 @@
+<section
+  class="park-fit-operational-controls"
+  [class.park-fit-operational-controls--suspended]="park.recommendationState === 'Suspended'">
+  <div>
+    <i [class]="park.recommendationState === 'Suspended' ? 'pi pi-pause-circle' : 'pi pi-check-circle'" aria-hidden="true"></i>
+    <div>
+      <strong>{{ ('admin.parkFitDataQuality.operations.state.' + park.recommendationState) | translate }}</strong>
+      <span>{{ ('admin.parkFitDataQuality.operations.stateHelp.' + park.recommendationState) | translate }}</span>
+    </div>
+  </div>
+  <button
+    appUiButton
+    type="button"
+    [severity]="park.recommendationState === 'Active' ? 'danger' : 'success'"
+    [disabled]="processing"
+    (click)="toggle()">
+    {{ ('admin.parkFitDataQuality.operations.action.' + targetState) | translate }}
+  </button>
+
+  @if (expanded()) {
+    <form (ngSubmit)="confirm()">
+      <label>
+        <span>{{ 'admin.parkFitDataQuality.operations.reasonLabel' | translate }}</span>
+        <textarea
+          rows="3"
+          maxlength="500"
+          [formControl]="reason"
+          [placeholder]="'admin.parkFitDataQuality.operations.reasonPlaceholder' | translate">
+        </textarea>
+      </label>
+      <button
+        appUiButton
+        type="submit"
+        [severity]="targetState === 'Suspended' ? 'danger' : 'success'"
+        [disabled]="processing || reason.value.trim().length === 0">
+        {{ (processing ? 'admin.parkFitDataQuality.operations.saving' : 'admin.parkFitDataQuality.operations.confirm') | translate }}
+      </button>
+    </form>
+  }
+</section>

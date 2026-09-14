@@ -4,7 +4,11 @@ import { Observable, map } from 'rxjs';
 
 import {
   ParkFitDataQuality,
-  ParkFitDataQualityPage
+  ParkFitDataQualityPage,
+  ParkFitOperationalStatusRequest,
+  ParkFitSourceReport,
+  ParkFitSourceReportPage,
+  ParkFitSourceReportReviewRequest
 } from '@app/models/admin/park-fit/park-fit-data-quality.models';
 import {
   PagedCollectionResponse,
@@ -27,5 +31,26 @@ export class AdminParkFitDataQualityApiService {
     return this.http.get<PagedCollectionResponse<ParkFitDataQuality>>(this.baseUrl, { params })
       .pipe(map((response: PagedCollectionResponse<ParkFitDataQuality>) =>
         unwrapPagedCollection(response)));
+  }
+
+  getPendingReports(page: number, size: number): Observable<ParkFitSourceReportPage> {
+    const params: HttpParams = new HttpParams()
+      .set('page', page)
+      .set('size', size)
+      .set('status', 'Pending');
+    const url: string = `${environment.apiBaseUrl}admin/park-fit/reports`;
+    return this.http.get<PagedCollectionResponse<ParkFitSourceReport>>(url, { params })
+      .pipe(map((response: PagedCollectionResponse<ParkFitSourceReport>) =>
+        unwrapPagedCollection(response)));
+  }
+
+  reviewReport(reportId: string, request: ParkFitSourceReportReviewRequest): Observable<void> {
+    const url: string = `${environment.apiBaseUrl}admin/park-fit/reports/${encodeURIComponent(reportId)}`;
+    return this.http.put<void>(url, request);
+  }
+
+  changeOperationalStatus(parkId: string, request: ParkFitOperationalStatusRequest): Observable<void> {
+    const url: string = `${environment.apiBaseUrl}admin/park-fit/parks/${encodeURIComponent(parkId)}/operational-status`;
+    return this.http.put<void>(url, request);
   }
 }

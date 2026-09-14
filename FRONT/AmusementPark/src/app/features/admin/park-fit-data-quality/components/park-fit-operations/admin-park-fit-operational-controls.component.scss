@@ -1,0 +1,58 @@
+:host,
+.park-fit-operational-controls,
+.park-fit-operational-controls > div,
+.park-fit-operational-controls form,
+.park-fit-operational-controls label {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.park-fit-operational-controls {
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--app-success) 42%, var(--app-border));
+  border-radius: var(--radius-md);
+  padding: 0.8rem;
+  background: color-mix(in srgb, var(--app-success) 7%, transparent);
+}
+
+.park-fit-operational-controls--suspended {
+  border-color: color-mix(in srgb, var(--app-danger) 48%, var(--app-border));
+  background: color-mix(in srgb, var(--app-danger) 7%, transparent);
+}
+
+.park-fit-operational-controls > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: start;
+}
+
+.park-fit-operational-controls > div > div,
+.park-fit-operational-controls form,
+.park-fit-operational-controls label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.park-fit-operational-controls strong,
+.park-fit-operational-controls span {
+  overflow-wrap: anywhere;
+}
+
+.park-fit-operational-controls span {
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+}
+
+.park-fit-operational-controls textarea {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  resize: vertical;
+}
+
+.park-fit-operational-controls > button,
+.park-fit-operational-controls form > button {
+  width: 100%;
+}

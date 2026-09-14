@@ -36,4 +36,15 @@ public sealed class ParkFitDataQualityDto
 
     public IReadOnlyCollection<ParkFitDataQualityItemDto> IssueSamples { get; init; } =
         Array.Empty<ParkFitDataQualityItemDto>();
+
+    public string RecommendationState { get; init; } = string.Empty;
+
+    public long OperationalRevision { get; init; }
+
+    public DateTime? OperationalUpdatedAtUtc { get; init; }
+
+    public int PendingReportCount { get; init; }
+
+    public IReadOnlyCollection<ParkFitOperationalDecisionDto> RecentDecisions { get; init; } =
+        Array.Empty<ParkFitOperationalDecisionDto>();
 }

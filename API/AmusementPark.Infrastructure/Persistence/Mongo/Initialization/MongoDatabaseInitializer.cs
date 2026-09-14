@@ -663,6 +663,24 @@ private readonly IMongoDatabase database;
             ParkFitGroupProfileMongoDefinitions.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.ParkFitSourceReportsCollectionName,
+            cancellationToken);
+        IMongoCollection<ParkFitSourceReportDocument> parkFitSourceReportsCollection =
+            this.database.GetCollection<ParkFitSourceReportDocument>(
+                this.settings.ParkFitSourceReportsCollectionName);
+        await parkFitSourceReportsCollection.Indexes.CreateManyAsync(
+            ParkFitSourceReportMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.ParkFitOperationalStatusesCollectionName,
+            cancellationToken);
+        IMongoCollection<ParkFitOperationalStatusDocument> parkFitOperationalStatusesCollection =
+            this.database.GetCollection<ParkFitOperationalStatusDocument>(
+                this.settings.ParkFitOperationalStatusesCollectionName);
+        await parkFitOperationalStatusesCollection.Indexes.CreateManyAsync(
+            ParkFitOperationalStatusMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.ShareModerationReportsCollectionName,
             cancellationToken);
         IMongoCollection<ShareModerationReportDocument> moderationReportsCollection =

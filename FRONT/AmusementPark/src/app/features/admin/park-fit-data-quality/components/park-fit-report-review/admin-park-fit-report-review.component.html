@@ -1,0 +1,38 @@
+<article class="park-fit-report-review">
+  <header>
+    <div>
+      <strong>{{ report.parkName }}</strong>
+      <span>{{ ('admin.parkFitDataQuality.reports.kind.' + report.evidenceKind) | translate }}</span>
+    </div>
+    <time [attr.datetime]="report.submittedAtUtc">{{ report.submittedAtUtc | date:'short':'UTC' }}</time>
+  </header>
+  <p class="park-fit-report-review__reason">
+    {{ ('admin.parkFitDataQuality.reports.reason.' + report.reason) | translate }}
+  </p>
+  @if (report.details) {
+    <p>{{ report.details }}</p>
+  }
+  @if (report.sourceReference) {
+    <p class="park-fit-report-review__source-reference">
+      {{ 'admin.parkFitDataQuality.reports.sourceReference' | translate:{ reference: report.sourceReference } }}
+    </p>
+  }
+  @if (report.sourceUrl) {
+    <a [href]="report.sourceUrl" target="_blank" rel="noopener noreferrer">
+      {{ 'admin.parkFitDataQuality.reports.openSource' | translate }}
+      <i class="pi pi-external-link" aria-hidden="true"></i>
+    </a>
+  }
+  <label>
+    <span>{{ 'admin.parkFitDataQuality.reports.noteLabel' | translate }}</span>
+    <textarea rows="2" maxlength="500" [formControl]="note"></textarea>
+  </label>
+  <div class="park-fit-report-review__actions">
+    <button appUiButton type="button" class="p-button-success" [disabled]="processing" (click)="review('Resolved')">
+      {{ 'admin.parkFitDataQuality.reports.resolve' | translate }}
+    </button>
+    <button appUiButton type="button" class="p-button-secondary" [disabled]="processing" (click)="review('Dismissed')">
+      {{ 'admin.parkFitDataQuality.reports.dismiss' | translate }}
+    </button>
+  </div>
+</article>

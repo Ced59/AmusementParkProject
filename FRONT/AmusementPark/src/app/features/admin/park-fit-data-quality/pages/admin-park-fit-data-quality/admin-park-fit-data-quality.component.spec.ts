@@ -19,9 +19,16 @@ describe('AdminParkFitDataQualityComponent', () => {
 
   beforeEach(async () => {
     port = {
-      getPage: vi.fn().mockName('AdminParkFitDataQualityStatePort.getPage')
+      getPage: vi.fn().mockName('AdminParkFitDataQualityStatePort.getPage'),
+      getPendingReports: vi.fn().mockName('AdminParkFitDataQualityStatePort.getPendingReports'),
+      reviewReport: vi.fn().mockName('AdminParkFitDataQualityStatePort.reviewReport'),
+      changeOperationalStatus: vi.fn().mockName('AdminParkFitDataQualityStatePort.changeOperationalStatus')
     } as unknown as MockedObject<AdminParkFitDataQualityStatePort>;
     port.getPage.mockReturnValue(of(createPage()));
+    port.getPendingReports.mockReturnValue(of({
+      items: [],
+      pagination: { totalItems: 0, totalPages: 0, currentPage: 1, itemsPerPage: 12 }
+    }));
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, AdminParkFitDataQualityComponent],
@@ -79,7 +86,11 @@ function createPage(): ParkFitDataQualityPage {
             parkItemName: 'Montagnes russes',
             issues: ['MissingAuthoritativeSource']
           }
-        ]
+        ],
+        recommendationState: 'Active',
+        operationalRevision: 0,
+        pendingReportCount: 0,
+        recentDecisions: []
       }
     ],
     pagination: {

@@ -1,5 +1,6 @@
 {
   "parkFit": {
+    "reports": { "open": "Report this data", "reasonLabel": "What seems wrong?", "reasons": { "Outdated": "The data is outdated", "Incorrect": "The data is incorrect", "Unavailable": "The source no longer opens", "Incomplete": "Important information is missing", "Other": "Other issue" }, "detailsLabel": "Optional details", "detailsPlaceholder": "Say what should be checked, without including personal data…", "send": "Send report", "sending": "Sending…", "success": "Thank you, the report has been sent to the team.", "rateLimited": "Too many reports were sent from this device. Try again later.", "error": "The report could not be sent. Try again in a moment." },
     "seo": {
       "title": "Find a park that fits your group — Amusement Parks",
       "description": "Compare documented parks for your group, date and preferences without an account or saved criteria."

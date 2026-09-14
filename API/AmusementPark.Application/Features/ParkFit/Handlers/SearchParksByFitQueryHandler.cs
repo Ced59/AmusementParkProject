@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkFit.Models;
+using AmusementPark.Application.Features.ParkFit.Ports;
 using AmusementPark.Application.Features.ParkFit.Queries;
 using AmusementPark.Application.Features.ParkFit.Results;
 using AmusementPark.Application.Features.ParkFit.Services;
@@ -24,6 +25,7 @@ public sealed class SearchParksByFitQueryHandler
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IParkOpeningHoursRepository openingHoursRepository;
+    private readonly IParkFitOperationalStatusRepository operationalStatusRepository;
     private readonly IApplicationValidator<SearchParksByFitQuery> validator;
     private readonly ParkFitSearchParkEvaluator parkEvaluator;
     private readonly TimeProvider timeProvider;
@@ -34,6 +36,7 @@ public sealed class SearchParksByFitQueryHandler
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IParkOpeningHoursRepository openingHoursRepository,
+        IParkFitOperationalStatusRepository operationalStatusRepository,
         IApplicationValidator<SearchParksByFitQuery> validator,
         ParkFitSearchParkEvaluator parkEvaluator,
         TimeProvider? timeProvider = null)
@@ -41,6 +44,7 @@ public sealed class SearchParksByFitQueryHandler
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.openingHoursRepository = openingHoursRepository;
+        this.operationalStatusRepository = operationalStatusRepository;
         this.validator = validator;
         this.parkEvaluator = parkEvaluator;
         this.timeProvider = timeProvider ?? TimeProvider.System;
@@ -96,7 +100,9 @@ public sealed class SearchParksByFitQueryHandler
                 cancellationToken);
         Task<IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary>> summariesTask =
             this.openingHoursRepository.GetSummariesByParkIdsAsync(parkIds, cancellationToken);
-        await Task.WhenAll(itemsTask, summariesTask);
+        Task<IReadOnlyDictionary<string, ParkFitOperationalStatus>> operationalStatusesTask =
+            this.operationalStatusRepository.GetByParkIdsAsync(parkIds, cancellationToken);
+        await Task.WhenAll(itemsTask, summariesTask, operationalStatusesTask);
 
         IReadOnlyDictionary<string, IReadOnlyCollection<ParkItem>> itemsByParkId =
             (await itemsTask)
@@ -107,6 +113,8 @@ public sealed class SearchParksByFitQueryHandler
                     StringComparer.Ordinal);
         IReadOnlyDictionary<string, ParkOpeningHoursScheduleSummary> summariesByParkId =
             await summariesTask;
+        IReadOnlyDictionary<string, ParkFitOperationalStatus> operationalStatuses =
+            await operationalStatusesTask;
         IReadOnlyCollection<ParkFitEvaluatedMemberProfile> profiles =
             BuildProfiles(query.Members);
         List<(
@@ -117,9 +125,19 @@ public sealed class SearchParksByFitQueryHandler
             new Dictionary<ParkFitDataQualityStatus, int>();
         Dictionary<ParkFitDataQualityIssue, int> qualityIssueCounts =
             new Dictionary<ParkFitDataQualityIssue, int>();
+        int operationallySuspendedCandidateCount = 0;
 
         foreach (Park park in candidatePage.Items)
         {
+            if (operationalStatuses.TryGetValue(
+                    park.Id,
+                    out ParkFitOperationalStatus? operationalStatus)
+                && operationalStatus.State == ParkFitRecommendationState.Suspended)
+            {
+                operationallySuspendedCandidateCount++;
+                continue;
+            }
+
             IReadOnlyCollection<ParkItem> attractions = itemsByParkId.TryGetValue(
                 park.Id,
                 out IReadOnlyCollection<ParkItem>? parkItems)
@@ -202,7 +220,10 @@ public sealed class SearchParksByFitQueryHandler
             TotalCandidateCount = candidatePage.TotalItems,
             InspectedCandidateCount = candidatePage.Items.Count,
             QualityEligibleCandidateCount = eligibleCandidateCount,
-            QualityRejectedCandidateCount = candidatePage.Items.Count - eligibleCandidateCount,
+            QualityRejectedCandidateCount = candidatePage.Items.Count
+                - eligibleCandidateCount
+                - operationallySuspendedCandidateCount,
+            OperationallySuspendedCandidateCount = operationallySuspendedCandidateCount,
             CandidatePoolTruncated = candidatePage.TotalItems > candidatePage.Items.Count,
             QualityStatusCounts = qualityStatusCounts,
             QualityIssueCounts = qualityIssueCounts,

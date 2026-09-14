@@ -128,8 +128,22 @@ export interface ParkFitSearchResponse {
   inspectedCandidateCount: number;
   qualityEligibleCandidateCount: number;
   qualityRejectedCandidateCount: number;
+  operationallySuspendedCandidateCount: number;
   candidatePoolTruncated: boolean;
   qualityStatusCounts: Record<string, number>;
   qualityIssueCounts: Record<string, number>;
   parks: ParkFitSearchPark[];
+}
+
+export type ParkFitEvidenceKind = 'GeneralParkData' | 'AccessCondition' | 'OpeningCalendar';
+
+export type ParkFitSourceReportReason = 'Outdated' | 'Incorrect' | 'Unavailable' | 'Incomplete' | 'Other';
+
+export interface ParkFitSourceReportRequest {
+  parkId: string;
+  evidenceKind: ParkFitEvidenceKind;
+  sourceUrl: string | null;
+  sourceReference: string | null;
+  reason: ParkFitSourceReportReason;
+  details: string | null;
 }

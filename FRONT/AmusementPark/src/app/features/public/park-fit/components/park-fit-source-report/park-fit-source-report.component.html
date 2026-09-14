@@ -1,0 +1,50 @@
+<div class="park-fit-source-report">
+  <button
+    type="button"
+    class="park-fit-source-report__toggle"
+    [attr.aria-expanded]="expanded()"
+    (click)="toggle()">
+    <i class="pi pi-flag" aria-hidden="true"></i>
+    <span>{{ 'parkFit.reports.open' | translate }}</span>
+  </button>
+
+  @if (expanded()) {
+    <form (ngSubmit)="submit()">
+      <label>
+        <span>{{ 'parkFit.reports.reasonLabel' | translate }}</span>
+        <select [formControl]="form.controls.reason">
+          <option value="Outdated">{{ 'parkFit.reports.reasons.Outdated' | translate }}</option>
+          <option value="Incorrect">{{ 'parkFit.reports.reasons.Incorrect' | translate }}</option>
+          <option value="Unavailable">{{ 'parkFit.reports.reasons.Unavailable' | translate }}</option>
+          <option value="Incomplete">{{ 'parkFit.reports.reasons.Incomplete' | translate }}</option>
+          <option value="Other">{{ 'parkFit.reports.reasons.Other' | translate }}</option>
+        </select>
+      </label>
+      <label>
+        <span>{{ 'parkFit.reports.detailsLabel' | translate }}</span>
+        <textarea
+          rows="3"
+          maxlength="500"
+          [formControl]="form.controls.details"
+          [placeholder]="'parkFit.reports.detailsPlaceholder' | translate">
+        </textarea>
+      </label>
+      <button
+        type="submit"
+        appUiButton="ghost"
+        [disabled]="status() === 'submitting' || status() === 'success' || (form.controls.reason.value === 'Other' && form.controls.details.value.trim().length === 0)">
+        <i class="pi pi-send" aria-hidden="true"></i>
+        <span>{{ (status() === 'submitting' ? 'parkFit.reports.sending' : 'parkFit.reports.send') | translate }}</span>
+      </button>
+      <p aria-live="polite">
+        @if (status() === 'success') {
+          <span class="park-fit-source-report__success">{{ 'parkFit.reports.success' | translate }}</span>
+        } @else if (status() === 'rateLimited') {
+          <span class="park-fit-source-report__error">{{ 'parkFit.reports.rateLimited' | translate }}</span>
+        } @else if (status() === 'error') {
+          <span class="park-fit-source-report__error">{{ 'parkFit.reports.error' | translate }}</span>
+        }
+      </p>
+    </form>
+  }
+</div>

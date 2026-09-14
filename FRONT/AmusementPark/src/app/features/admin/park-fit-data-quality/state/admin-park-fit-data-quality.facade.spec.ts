@@ -2,7 +2,10 @@ import type { MockedObject } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { Observable, of, throwError } from 'rxjs';
 
-import { ParkFitDataQualityPage } from '@app/models/admin/park-fit/park-fit-data-quality.models';
+import {
+  ParkFitDataQualityPage,
+  ParkFitSourceReportPage
+} from '@app/models/admin/park-fit/park-fit-data-quality.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import {
   ADMIN_PARK_FIT_DATA_QUALITY_STATE_PORT,
@@ -32,7 +35,11 @@ describe('AdminParkFitDataQualityFacade', () => {
         staleEvidenceItemCount: 0,
         ambiguousItemCount: 0,
         issues: [],
-        issueSamples: []
+        issueSamples: [],
+        recommendationState: 'Active',
+        operationalRevision: 0,
+        pendingReportCount: 0,
+        recentDecisions: []
       },
       {
         parkId: 'work',
@@ -50,7 +57,11 @@ describe('AdminParkFitDataQualityFacade', () => {
         staleEvidenceItemCount: 0,
         ambiguousItemCount: 0,
         issues: ['MissingAccessConditions'],
-        issueSamples: []
+        issueSamples: [],
+        recommendationState: 'Suspended',
+        operationalRevision: 1,
+        pendingReportCount: 1,
+        recentDecisions: []
       }
     ],
     pagination: { totalItems: 14, totalPages: 2, currentPage: 1, itemsPerPage: 12 }
@@ -58,8 +69,12 @@ describe('AdminParkFitDataQualityFacade', () => {
 
   beforeEach(() => {
     port = {
-      getPage: vi.fn().mockName('AdminParkFitDataQualityStatePort.getPage')
+      getPage: vi.fn().mockName('AdminParkFitDataQualityStatePort.getPage'),
+      getPendingReports: vi.fn().mockName('AdminParkFitDataQualityStatePort.getPendingReports'),
+      reviewReport: vi.fn().mockName('AdminParkFitDataQualityStatePort.reviewReport'),
+      changeOperationalStatus: vi.fn().mockName('AdminParkFitDataQualityStatePort.changeOperationalStatus')
     } as unknown as MockedObject<AdminParkFitDataQualityStatePort>;
+    port.getPendingReports.mockReturnValue(of(emptyReportPage()));
     TestBed.configureTestingModule({
       providers: [
         provideCommonTestDependencies(),
@@ -129,4 +144,57 @@ describe('AdminParkFitDataQualityFacade', () => {
     expect(facade.state().kind).toBe('error');
     expect(facade.assessments()).toHaveLength(2);
   });
+
+  it('reviews a report with optimistic concurrency then refreshes the queue', () => {
+    const reportPage: ParkFitSourceReportPage = {
+      items: [{
+        reportId: 'report-1',
+        parkId: 'eligible',
+        parkName: 'Parc prêt',
+        evidenceKind: 'OpeningCalendar',
+        reason: 'Outdated',
+        status: 'Pending',
+        submittedAtUtc: '2026-09-14T08:00:00Z',
+        revision: 4
+      }],
+      pagination: { totalItems: 1, totalPages: 1, currentPage: 1, itemsPerPage: 12 }
+    };
+    port.getPage.mockReturnValue(of(page));
+    port.getPendingReports.mockReturnValue(of(reportPage));
+    port.reviewReport.mockReturnValue(of(undefined));
+    facade.load();
+
+    facade.reviewReport(reportPage.items[0], 'Resolved', 'Source corrigée');
+
+    expect(port.reviewReport).toHaveBeenCalledWith('report-1', {
+      decision: 'Resolved',
+      decisionNote: 'Source corrigée',
+      expectedRevision: 4
+    });
+    expect(port.getPendingReports).toHaveBeenCalledTimes(2);
+    expect(facade.isProcessing('report:report-1')).toBe(false);
+  });
+
+  it('suspends recommendations without changing the park visibility contract', () => {
+    port.getPage.mockReturnValue(of(page));
+    port.changeOperationalStatus.mockReturnValue(of(undefined));
+    facade.load();
+
+    facade.changeOperationalStatus(page.items[0], 'Suspended', 'Preuves à vérifier');
+
+    expect(port.changeOperationalStatus).toHaveBeenCalledWith('eligible', {
+      targetState: 'Suspended',
+      reason: 'Preuves à vérifier',
+      expectedRevision: 0
+    });
+    expect(port.getPage).toHaveBeenCalledTimes(2);
+    expect(facade.isProcessing('park:eligible')).toBe(false);
+  });
 });
+
+function emptyReportPage(): ParkFitSourceReportPage {
+  return {
+    items: [],
+    pagination: { totalItems: 0, totalPages: 0, currentPage: 1, itemsPerPage: 12 }
+  };
+}

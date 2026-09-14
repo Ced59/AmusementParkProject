@@ -243,8 +243,29 @@ L'architecture, le schéma de lecture, les diagrammes et les preuves sont docume
 dans
 [`product-growth-fit-12-distance-calendar-2026-09-14.md`](../../architecture/product-growth-fit-12-distance-calendar-2026-09-14.md).
 
-`FIT-13` est le prochain jalon : rendre les sources, signalements et suspensions
-opérationnels de bout en bout.
+### État de `FIT-13` au 14 septembre 2026
+
+Les visiteurs peuvent désormais signaler, directement depuis une preuve affichée,
+une source dépassée, incorrecte, inaccessible ou incomplète. Le signalement reste
+anonyme, borné et indépendant des critères privés de recherche. Le serveur résout le
+nom réel du parc et n'accepte comme lien qu'une source HTTPS sûre.
+
+L'administration dispose d'une file de traitement intégrée à l'audit de qualité.
+Elle peut classer un signalement comme corrigé ou sans suite, puis suspendre ou
+réactiver les recommandations d'un parc avec une justification obligatoire. La
+suspension ne masque jamais la fiche publique du parc et ne modifie aucune donnée
+éditoriale. Les décisions sont versionnées, auditées et protégées contre les
+écrasements concurrents.
+
+La recherche charge les états par lot et exclut les parcs suspendus avant le calcul
+des compatibilités. Les deux nouvelles collections et leurs index sont initialisés
+automatiquement ; aucun document existant ne doit être migré. Les interfaces dans
+les huit langues sont contenues jusque 360 px. L'architecture, les schémas, les
+séquences et les preuves sont documentés dans
+[`product-growth-fit-13-sources-reports-suspension-2026-09-14.md`](../../architecture/product-growth-fit-13-sources-reports-suspension-2026-09-14.md).
+
+`FIT-14` est le prochain jalon : instrumenter le pilote de façon agrégée, privée et
+indépendante d'un volume réel de visites.
 
 ## 1. Vision produit
 

@@ -70,6 +70,9 @@ public static class RateLimitingServiceCollectionExtensions
         FixedWindowRateLimitSettings parkFitSearchSettings = configuration
             .GetSection("RateLimiting:ParkFit:Search")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(6, 60);
+        FixedWindowRateLimitSettings parkFitReportSettings = configuration
+            .GetSection("RateLimiting:ParkFit:Reports")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 3600);
 
         services.AddRateLimiter(options =>
         {
@@ -127,6 +130,10 @@ public static class RateLimitingServiceCollectionExtensions
                 options,
                 RateLimitPolicyNames.ParkFitSearch,
                 parkFitSearchSettings);
+            AddFixedWindowIpPolicy(
+                options,
+                RateLimitPolicyNames.ParkFitReports,
+                parkFitReportSettings);
             options.AddConcurrencyLimiter(RateLimitPolicyNames.ImageUploadProcessing, limiterOptions =>
             {
                 limiterOptions.PermitLimit = 1;
@@ -146,6 +153,12 @@ public static class RateLimitingServiceCollectionExtensions
                 limiterOptions.QueueLimit = ShareSocialImageRenderQueueLimit;
             });
             options.AddConcurrencyLimiter(RateLimitPolicyNames.ShareModerationAdministration, limiterOptions =>
+            {
+                limiterOptions.PermitLimit = 1;
+                limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                limiterOptions.QueueLimit = 0;
+            });
+            options.AddConcurrencyLimiter(RateLimitPolicyNames.ParkFitAdministration, limiterOptions =>
             {
                 limiterOptions.PermitLimit = 1;
                 limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
