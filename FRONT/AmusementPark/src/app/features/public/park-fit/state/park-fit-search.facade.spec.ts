@@ -19,6 +19,7 @@ describe('ParkFitSearchFacade', () => {
     expect(search).toHaveBeenCalledOnce();
     expect(facade.status()).toBe('success');
     expect(facade.firstPark()?.parkName).toBe('Parc Démo');
+    expect(facade.visibleParks()).toHaveLength(1);
     expect(facade.lastRequest()?.members[0]?.heightCentimeters).toBe(120);
   });
 
@@ -43,6 +44,7 @@ describe('ParkFitSearchFacade', () => {
 
     expect(facade.status()).toBe('success');
     expect(facade.firstPark()).toBeNull();
+    expect(facade.visibleParks()).toEqual([]);
   });
 
   it('turns public throttling into a dedicated visitor message', () => {
@@ -122,6 +124,14 @@ function buildResponse(): ParkFitSearchResponse {
       lastVerifiedAtUtc: '2026-09-01T00:00:00Z',
       reasons: [],
       components: [],
+      memberSummaries: [{
+        memberNumber: 1,
+        compatibleAloneAttractionCount: 12,
+        compatibleWithCompanionAttractionCount: 0,
+        incompatibleAttractionCount: 1,
+        unknownAttractionCount: 0,
+        notApplicableAttractionCount: 0
+      }],
       criticalSources: []
     }]
   };

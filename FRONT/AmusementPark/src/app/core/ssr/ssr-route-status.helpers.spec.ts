@@ -129,7 +129,9 @@ describe('SSR route status helpers', () => {
   it('serves Park Fit through the CSR shell while excluding its private criteria page from indexing', () => {
     expect(resolveSsrRouteStatusCode('/fr/park-fit')).toBe(200);
     expect(resolveSsrRouteStatusCode('/fr/park-fit/')).toBe(200);
+    expect(resolveSsrRouteStatusCode('/fr/park-fit/results')).toBe(200);
     expect(resolveXRobotsTagHeader('/fr/park-fit')).toBe('noindex, nofollow, noarchive');
+    expect(resolveXRobotsTagHeader('/fr/park-fit/results')).toBe('noindex, nofollow, noarchive');
   });
 
   it('keeps park and park item comment routes available for SSR', () => {

@@ -65,6 +65,15 @@ export interface ParkFitLocalizedText {
   value: string | null;
 }
 
+export interface ParkFitSearchMemberSummary {
+  memberNumber: number;
+  compatibleAloneAttractionCount: number;
+  compatibleWithCompanionAttractionCount: number;
+  incompatibleAttractionCount: number;
+  unknownAttractionCount: number;
+  notApplicableAttractionCount: number;
+}
+
 export interface ParkFitSearchPark {
   parkId: string;
   parkName: string;
@@ -89,6 +98,7 @@ export interface ParkFitSearchPark {
   lastVerifiedAtUtc: string | null;
   reasons: string[];
   components: ParkFitScoreComponent[];
+  memberSummaries: ParkFitSearchMemberSummary[];
   criticalSources: ParkFitCriticalSource[];
 }
 

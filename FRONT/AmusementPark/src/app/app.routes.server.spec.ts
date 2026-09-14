@@ -114,6 +114,11 @@ describe('Server routes', () => {
 
     expect(route?.renderMode).toBe(RenderMode.Client);
     expect(serverRoutes.indexOf(route as ServerRoute)).toBeLessThan(fallbackIndex);
+    const resultsRoute: ServerRoute | undefined = serverRoutes.find(
+      (candidate: ServerRoute): boolean => candidate.path === ':lang/park-fit/results'
+    );
+    expect(resultsRoute?.renderMode).toBe(RenderMode.Client);
+    expect(serverRoutes.indexOf(resultsRoute as ServerRoute)).toBeLessThan(fallbackIndex);
   });
 
   it('server-renders current and historical rating methodology pages', () => {

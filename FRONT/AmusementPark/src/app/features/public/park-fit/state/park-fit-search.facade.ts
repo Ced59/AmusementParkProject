@@ -22,8 +22,13 @@ export class ParkFitSearchFacade {
   public readonly response: Signal<ParkFitSearchResponse | null> = this.responseSignal.asReadonly();
   public readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
   public readonly lastRequest: Signal<ParkFitSearchRequest | null> = this.lastRequestSignal.asReadonly();
+  public readonly visibleParks: Signal<ParkFitSearchPark[]> = computed(() =>
+    this.responseSignal()?.parks.filter(
+      (park: ParkFitSearchPark): boolean => park.scoreState !== 'Excluded'
+    ) ?? []
+  );
   public readonly firstPark: Signal<ParkFitSearchPark | null> = computed(() =>
-    this.responseSignal()?.parks.find((park: ParkFitSearchPark): boolean => park.scoreState !== 'Excluded') ?? null
+    this.visibleParks()[0] ?? null
   );
 
   constructor(

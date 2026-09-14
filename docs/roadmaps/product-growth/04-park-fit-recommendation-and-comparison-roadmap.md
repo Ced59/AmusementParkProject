@@ -157,9 +157,28 @@ façade dédiés : le composant ne connaît ni l'URL de l'API ni l'orchestration
 L'architecture et les preuves sont documentées dans
 [`product-growth-fit-08-anonymous-web-form-2026-09-14.md`](../../architecture/product-growth-fit-08-anonymous-web-form-2026-09-14.md).
 
-`FIT-09` est le prochain jalon : il transformera la réponse complète en une page
-de résultats et d'explications où les facteurs, limites, inconnues et preuves
-officielles seront directement consultables.
+### État de `FIT-09` au 14 septembre 2026
+
+La première piste ouvre désormais une page de décision contenant tous les parcs
+comparables. Pour chaque parc, les raisons métier apparaissent avant le score :
+expériences possibles ensemble, organisation du groupe, disponibilité à la date
+choisie, inconnues, limites et synthèse anonyme pour chaque personne. Le score est
+explicitement présenté comme un ordre comparatif et jamais comme une probabilité.
+
+La couverture, la confiance, les composantes du calcul, la qualité et la fraîcheur
+des données accompagnent le résultat. Les preuves critiques privilégient leur résumé
+localisé et seules les URL HTTPS deviennent des liens ; aucune référence interne,
+clé membre, taille ou âge n'est réexposé. Un code backend futur et inconnu obtient un
+libellé neutre au lieu d'être montré au visiteur.
+
+La page reste en mémoire, sans compte ni écriture MongoDB, et un rechargement direct
+invite honnêtement à relancer la recherche. Elle est disponible dans les huit
+langues, rendue côté client, non indexable et structurée en cartes responsive jusque
+360 px. L'architecture, les diagrammes et les preuves sont documentés dans
+[`product-growth-fit-09-explained-results-2026-09-14.md`](../../architecture/product-growth-fit-09-explained-results-2026-09-14.md).
+
+`FIT-10` est le prochain jalon : il permettra de sélectionner de deux à quatre parcs
+et de comparer leurs différences sur un même écran accessible.
 
 ## 1. Vision produit
 

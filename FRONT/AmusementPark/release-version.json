@@ -1,6 +1,20 @@
 {
-  "version": "5.3.24",
+  "version": "5.3.25",
   "history": [
+    {
+      "version": "5.3.25",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Les résultats Park Fit expliquent désormais leurs points forts, leurs limites et leurs sources.",
+        "en": "Park Fit results now explain their strengths, limits, and sources.",
+        "de": "Park-Fit-Ergebnisse erklären jetzt ihre Stärken, Grenzen und Quellen.",
+        "nl": "Park Fit-resultaten leggen nu hun sterke punten, beperkingen en bronnen uit.",
+        "it": "I risultati Park Fit ora spiegano punti di forza, limiti e fonti.",
+        "es": "Los resultados Park Fit ahora explican sus puntos fuertes, límites y fuentes.",
+        "pl": "Wyniki Park Fit wyjaśniają teraz swoje mocne strony, ograniczenia i źródła.",
+        "pt": "Os resultados Park Fit explicam agora os seus pontos fortes, limites e fontes."
+      }
+    },
     {
       "version": "5.3.24",
       "releasedAt": "2026-09-14",
