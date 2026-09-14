@@ -5,6 +5,8 @@ namespace AmusementPark.Core.Domain.Parks;
 /// </summary>
 public static class AttractionAccessConditionSemanticEvaluator
 {
+    public const int MaximumSupportedAgeYears = 130;
+
     public static IReadOnlyCollection<AttractionAccessConditionSemanticIssue> Evaluate(
         AttractionAccessCondition condition)
     {
@@ -18,7 +20,8 @@ public static class AttractionAccessConditionSemanticEvaluator
             return issues;
         }
 
-        if (condition.MinimumCompanionAge.HasValue && condition.MinimumCompanionAge.Value <= 0)
+        if (condition.MinimumCompanionAge.HasValue
+            && condition.MinimumCompanionAge.Value is <= 0 or > MaximumSupportedAgeYears)
         {
             issues.Add(AttractionAccessConditionSemanticIssue.InvalidCompanionAge);
         }

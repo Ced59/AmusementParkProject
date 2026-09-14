@@ -109,6 +109,26 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Theory]
+    [InlineData(AttractionAccessConditionType.MinHeight, 100, 120, 110)]
+    [InlineData(AttractionAccessConditionType.MaxHeight, 180, 200, 190)]
+    public void Evaluate_WhenSameKindHeightSourcesDisagree_ShouldReturnUnknown(
+        AttractionAccessConditionType type,
+        double firstThreshold,
+        double secondThreshold,
+        int heightCentimeters)
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: heightCentimeters),
+            BuildHeightCondition(type, firstThreshold),
+            BuildHeightCondition(type, secondThreshold));
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ConflictingConditions);
+    }
+
+    [Theory]
     [InlineData(99, AttractionCompatibilityState.Incompatible)]
     [InlineData(100, AttractionCompatibilityState.CompatibleWithCompanion)]
     public void Evaluate_OnlyAccompaniedMinimum_ShouldApplyItsInclusiveLowerBound(
@@ -145,6 +165,21 @@ public sealed class AttractionCompatibilityEvaluatorTests
             BuildAccompaniedHeightCondition(100, minimumCompanionAge: 16));
 
         Assert.Equal(expectedState, result.State);
+    }
+
+    [Fact]
+    public void Evaluate_WhenSoloHeightPathIsImpossible_ShouldStillUseAValidAccompaniedPath()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                105,
+                canBeAccompanied: true,
+                availableCompanionAgeRange: new ParkFitAgeRange(18, 70)),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 120),
+            BuildAccompaniedHeightCondition(100, 18),
+            BuildHeightCondition(AttractionAccessConditionType.MaxHeight, 110));
+
+        Assert.Equal(AttractionCompatibilityState.CompatibleWithCompanion, result.State);
     }
 
     [Theory]
@@ -245,6 +280,20 @@ public sealed class AttractionCompatibilityEvaluatorTests
             BuildAgeCondition(AttractionAccessConditionType.MinAge, 14));
 
         Assert.Equal(expectedState, result.State);
+    }
+
+    [Fact]
+    public void Evaluate_WhenSameKindAgeSourcesDisagree_ShouldReturnUnknown()
+    {
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(ageRange: new ParkFitAgeRange(12, 12)),
+            BuildAgeCondition(AttractionAccessConditionType.MinAge, 10),
+            BuildAgeCondition(AttractionAccessConditionType.MinAge, 14));
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ConflictingConditions);
     }
 
     [Fact]
@@ -540,6 +589,25 @@ public sealed class AttractionCompatibilityEvaluatorTests
             result.Reasons,
             reason => reason.SemanticIssues.Contains(
                 AttractionAccessConditionSemanticIssue.InconsistentAccompaniment));
+    }
+
+    [Fact]
+    public void Evaluate_WhenCompanionAgeExceedsTheSupportedDomain_ShouldReturnUnknown()
+    {
+        AttractionAccessCondition condition = BuildAccompaniedHeightCondition(100, 131);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                110,
+                canBeAccompanied: true,
+                availableCompanionAgeRange: new ParkFitAgeRange(18, 70)),
+            condition);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.SemanticIssues.Contains(
+                AttractionAccessConditionSemanticIssue.InvalidCompanionAge));
     }
 
     [Fact]

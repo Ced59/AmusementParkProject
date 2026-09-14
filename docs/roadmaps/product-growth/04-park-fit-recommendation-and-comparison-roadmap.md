@@ -78,7 +78,7 @@ personnelle non vérifiable reste inconnue et aucun diagnostic n'est collecté.
 Les raisons structurées exposent les seuils et anomalies exactes ; les sources, la
 confiance, les dates et la version `park-fit-2026-01` accompagnent le verdict. Le
 calcul est pur, déterministe, sans stockage ni dépendance aux visites. Les détails,
-diagrammes et 57 scénarios métier sont documentés dans
+diagrammes et 62 scénarios métier sont documentés dans
 [`product-growth-fit-04-individual-compatibility-2026-09-14.md`](../../architecture/product-growth-fit-04-individual-compatibility-2026-09-14.md).
 
 `FIT-05` est le prochain jalon : il combinera les verdicts par personne sans inventer

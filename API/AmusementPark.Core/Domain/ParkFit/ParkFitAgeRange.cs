@@ -1,3 +1,5 @@
+using AmusementPark.Core.Domain.Parks;
+
 namespace AmusementPark.Core.Domain.ParkFit;
 
 /// <summary>
@@ -5,7 +7,8 @@ namespace AmusementPark.Core.Domain.ParkFit;
 /// </summary>
 public sealed class ParkFitAgeRange
 {
-    public const int MaximumSupportedAgeYears = 130;
+    public const int MaximumSupportedAgeYears =
+        AttractionAccessConditionSemanticEvaluator.MaximumSupportedAgeYears;
 
     public ParkFitAgeRange(int minimumYears, int maximumYears)
     {
