@@ -64,6 +64,16 @@ public sealed class AttractionCompatibilityEvaluator
                     condition,
                     evaluatedAtUtc,
                     maximumVerificationAge);
+            if (condition.Scope != AttractionAccessConditionScope.Attraction)
+            {
+                context.AddUnknown(
+                    AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration,
+                    condition,
+                    evidenceIssues,
+                    semanticIssues);
+                continue;
+            }
+
             if (semanticIssues.Count > 0)
             {
                 if (!context.TryAddUnresolvedAlternative(
@@ -97,14 +107,6 @@ public sealed class AttractionCompatibilityEvaluator
                         semanticIssues);
                 }
 
-                continue;
-            }
-
-            if (condition.Scope != AttractionAccessConditionScope.Attraction)
-            {
-                context.AddUnknown(
-                    AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration,
-                    condition);
                 continue;
             }
 

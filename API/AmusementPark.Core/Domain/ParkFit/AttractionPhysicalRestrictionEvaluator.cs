@@ -105,6 +105,17 @@ internal static class AttractionPhysicalRestrictionEvaluator
             return;
         }
 
+        bool accompanimentIsUnavoidable = aloneMinimums.Count == 0
+            && !context.HasUnresolvedHeightAloneAlternative
+            && accompaniedMinimums.Count > 0;
+        if (accompanimentIsUnavoidable && profile.CanBeAccompanied == false)
+        {
+            context.AddViolation(
+                AttractionCompatibilityReasonCode.AccompanimentUnavailable,
+                SelectStableCondition(accompaniedMinimums));
+            return;
+        }
+
         if (!profile.HeightCentimeters.HasValue)
         {
             context.AddUnknown(
@@ -253,6 +264,17 @@ internal static class AttractionPhysicalRestrictionEvaluator
         AttractionAccessCondition? accompaniedMinimum = conflictingAccompaniedMinimums is null
             ? SelectHighestAgeThreshold(accompaniedMinimums)
             : null;
+        bool accompanimentIsUnavoidable = aloneMinimums.Count == 0
+            && !context.HasUnresolvedAgeAloneAlternative
+            && accompaniedMinimums.Count > 0;
+        if (accompanimentIsUnavoidable && profile.CanBeAccompanied == false)
+        {
+            context.AddViolation(
+                AttractionCompatibilityReasonCode.AccompanimentUnavailable,
+                SelectStableCondition(accompaniedMinimums));
+            return;
+        }
+
         if (aloneMinimum is null && accompaniedMinimum is null)
         {
             if (context.HasUnresolvedAgeAccompaniedAlternative

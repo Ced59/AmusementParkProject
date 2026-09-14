@@ -389,7 +389,7 @@ public sealed class AttractionCompatibilityEvaluatorTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void Evaluate_WhenOnlyAccompaniedThresholdsConflictAndAccompanimentIsUnavailable_ShouldRemainUnknown(
+    public void Evaluate_WhenOnlyAccompaniedThresholdsConflictAndAccompanimentIsUnavailable_ShouldReject(
         bool useAge)
     {
         AttractionCompatibility result = useAge
@@ -406,7 +406,10 @@ public sealed class AttractionCompatibilityEvaluatorTests
                 BuildAccompaniedHeightCondition(100),
                 BuildAccompaniedHeightCondition(110));
 
-        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.AccompanimentUnavailable);
     }
 
     [Fact]
@@ -975,6 +978,50 @@ public sealed class AttractionCompatibilityEvaluatorTests
         Assert.Contains(
             result.Reasons,
             reason => reason.Code == AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration);
+    }
+
+    [Theory]
+    [InlineData(AttractionAccessConditionScope.Vehicle)]
+    [InlineData(AttractionAccessConditionScope.Seat)]
+    public void Evaluate_WhenScopedAccompaniedRuleIsStale_ShouldStillBlockGeneralization(
+        AttractionAccessConditionScope scope)
+    {
+        AttractionAccessCondition scoped = BuildAccompaniedHeightCondition(80);
+        scoped.Scope = scope;
+        scoped.ScopeDetail = "configuration-a";
+        scoped.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 110),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 100),
+            scoped);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.ScopedConditionRequiresConfiguration
+                && reason.EvidenceIssues.Contains(
+                    AttractionAccessConditionEvidenceIssue.VerificationStale));
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void Evaluate_WhenOnlyAccompaniedRuleAppliesAndMeasurementIsMissing_ShouldRejectUnavailableAccompaniment(
+        bool useAge)
+    {
+        AttractionCompatibility result = useAge
+            ? this.Evaluate(
+                new ParkFitMemberProfile(canBeAccompanied: false),
+                BuildAccompaniedAgeCondition(10))
+            : this.Evaluate(
+                new ParkFitMemberProfile(canBeAccompanied: false),
+                BuildAccompaniedHeightCondition(100));
+
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.AccompanimentUnavailable);
     }
 
     [Theory]
