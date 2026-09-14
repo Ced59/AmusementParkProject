@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import re
 import time
 from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from typing import Callable, Iterable, Iterator, Protocol, TypeVar
@@ -34,6 +35,30 @@ def build_html_request_headers(refresh: bool) -> dict[str, str]:
         headers['X-AmusementPark-SSR-Warmup-Refresh'] = '1'
 
     return headers
+
+
+def validate_bot_html_assets(html: str, user_agent: str, robot_html: str) -> list[str]:
+    expects_full_html = re.search(
+        r'googlebot|adsbot-google|mediapartners-google|googleother|google-inspectiontool'
+        r'|google-agent|googleagent-mariner|google-gemininotebook|google-notebooklm',
+        user_agent,
+        re.I,
+    ) is not None
+    if not expects_full_html:
+        return [] if robot_html.lower() == 'no-js' else [f"robot-html-{robot_html or 'missing'}"]
+
+    failures: list[str] = []
+    if robot_html.lower() == 'no-js':
+        failures.append('google-html-stripped')
+    if not re.search(r'<script\b[^>]*\bsrc=["\'][^"\']+\.m?js(?:[?#][^"\']*)?["\']', html, re.I):
+        failures.append('missing-google-scripts')
+    if not re.search(r'<script\b[^>]*\bid=["\']ng-state["\']', html, re.I):
+        failures.append('missing-google-transfer-state')
+    if not re.search(r'<style\b|<link\b[^>]*\brel=["\']stylesheet["\']', html, re.I):
+        failures.append('missing-google-styles')
+    if not re.search(r'\bclass=["\'][^"\']+', html, re.I):
+        failures.append('missing-google-presentation-classes')
+    return failures
 
 
 def drain_response(response: ReadableResponse, chunk_bytes: int = 64 * 1024) -> int:

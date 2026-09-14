@@ -156,6 +156,7 @@ from scripts.ssr_warmup_support import (
     build_html_request_headers,
     drain_response,
     map_bounded,
+    validate_bot_html_assets,
     wait_for_available_capacity,
 )
 
@@ -582,8 +583,7 @@ def validate_bot_url(url: str) -> dict[str, str]:
             failure_reasons.append(f"seo-ready-{seo_ready_reason or 'false'}")
         if ssr_mode.upper().startswith('CSR') or ssr_cache.upper().startswith('CSR'):
             failure_reasons.append('csr-fallback')
-        if robot_html.lower() != 'no-js':
-            failure_reasons.append(f"robot-html-{robot_html or 'missing'}")
+        failure_reasons.extend(validate_bot_html_assets(html, bot_user_agent, robot_html))
         if not title:
             failure_reasons.append('missing-title')
         if not meta_description:
