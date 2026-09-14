@@ -18,6 +18,8 @@ parc reste consultable et aucune donnée éditoriale n'est supprimée.
 - signalement public au plus près du calendrier et des conditions d'accès critiques ;
 - cinq motifs structurés et une précision libre bornée à 500 caractères ;
 - résolution du nom du parc côté serveur, sans faire confiance au navigateur ;
+- recoupement de la source avec les horaires ou conditions d'accès actuellement
+  publiés par le serveur, sans accepter une preuve arbitraire du navigateur ;
 - file admin des signalements en attente avec preuve, motif et commentaire ;
 - décision « corrigé » ou « sans suite », versionnée et auditée ;
 - état Park Fit `Active` ou `Suspended`, séparé du statut public du parc ;
@@ -49,7 +51,9 @@ concurrentes : une seule écriture peut gagner.
 
 Le motif `Other` exige une précision. Les autres motifs acceptent une précision
 facultative. Les URLs de source doivent être absolues, en HTTPS, sans identifiant
-embarqué. Les textes rejettent les balises et caractères de contrôle dangereux.
+embarqué. Une source fournie doit correspondre exactement à une preuve actuellement
+publiée pour le parc ; un signalement sans source reste possible pour remonter une
+lacune générale. Les textes rejettent les balises et caractères de contrôle dangereux.
 
 ### Cycle opérationnel d'un parc
 
@@ -79,6 +83,9 @@ flowchart LR
     ReportFacade --> PublicAPI[API publique no-store]
     PublicAPI --> SubmitHandler[Cas d'usage de dépôt]
     SubmitHandler --> Parks[Port des parcs]
+    SubmitHandler --> Evidence[Résolution des preuves publiées]
+    Evidence --> Hours[Port des horaires]
+    Evidence --> Items[Port des attractions]
     SubmitHandler --> Reports[Port des signalements]
     Reports --> MongoReports[(park-fit-source-reports)]
 
@@ -178,6 +185,7 @@ sequenceDiagram
     participant A as API publique
     participant H as SubmitReportHandler
     participant P as Port parcs
+    participant E as Résolveur des preuves
     participant R as Port signalements
 
     V->>UI: Signale la donnée affichée
@@ -187,6 +195,8 @@ sequenceDiagram
     A->>H: commande sans identité visiteur
     H->>P: charge le parc public par son identifiant
     P-->>H: identifiant et nom de référence
+    H->>E: recoupe la source avec les données publiques actuelles
+    E-->>H: source serveur validée ou refus
     H->>H: crée le rapport Pending et valide les textes
     H->>R: insertion
     R-->>H: succès ou conflit
@@ -303,7 +313,8 @@ adapter ou à conserver.
 - aucun critère de groupe, position ou résultat complet n'est persisté avec le
   signalement ;
 - seules la cible, la catégorie de preuve, la source déjà visible, le motif et la
-  précision volontaire sont conservés ;
+  précision volontaire sont conservés ; l'Application remplace la source reçue par
+  la valeur recoupée dans les horaires ou conditions d'accès publics actuels ;
 - la route publique est `no-store` et limitée par adresse IP à trois dépôts par
   heure par défaut ;
 - les sources non HTTPS et les chaînes contenant du balisage sont refusées ;

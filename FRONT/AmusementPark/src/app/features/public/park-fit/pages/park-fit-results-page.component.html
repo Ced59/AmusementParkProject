@@ -154,7 +154,7 @@
                     <app-park-fit-source-report
                       [parkId]="park.parkId"
                       evidenceKind="OpeningCalendar"
-                      [sourceUrl]="park.calendarSourceUrl">
+                      [sourceUrl]="calendarSourceUrl(park.calendarSourceUrl)">
                     </app-park-fit-source-report>
                   </div>
                 </article>
@@ -265,7 +265,7 @@
                         <app-park-fit-source-report
                           [parkId]="park.parkId"
                           evidenceKind="AccessCondition"
-                          [sourceUrl]="source.url"
+                          [sourceUrl]="sourceUrl(source)"
                           [sourceReference]="source.reference">
                         </app-park-fit-source-report>
                       </div>
