@@ -122,7 +122,8 @@ MongoDB manuelle n'est attendue.
 
 Les signalements de sources viennent de la collection canonique
 `park-fit-source-reports`, agrégée côté base par jour et par raison. Ils ne sont pas
-recopiés dans un second système.
+recopiés dans un second système. L'index `idx_park_fit_reports_submitted` sur
+`submittedAtUtc` borne le coût de cette lecture à la période demandée.
 
 ## 5. Séquences
 

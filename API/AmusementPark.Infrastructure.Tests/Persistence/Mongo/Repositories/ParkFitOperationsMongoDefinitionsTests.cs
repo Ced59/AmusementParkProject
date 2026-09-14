@@ -11,7 +11,7 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class ParkFitOperationsMongoDefinitionsTests
 {
     [Fact]
-    public void SourceReportIndexes_ShouldSupportTheQueueAndParkCounters()
+    public void SourceReportIndexes_ShouldSupportTheQueueParkCountersAndPilotPeriod()
     {
         IReadOnlyCollection<CreateIndexModel<ParkFitSourceReportDocument>> indexes =
             ParkFitSourceReportMongoDefinitions.BuildIndexes();
@@ -40,6 +40,13 @@ public sealed class ParkFitOperationsMongoDefinitionsTests
                 { "submittedAtUtc", -1 },
             },
             Render(byPark.Keys));
+        CreateIndexModel<ParkFitSourceReportDocument> bySubmission = Assert.Single(
+            indexes,
+            static index => index.Options.Name
+                == ParkFitSourceReportMongoDefinitions.SubmittedIndexName);
+        Assert.Equal(
+            new BsonDocument { { "submittedAtUtc", -1 } },
+            Render(bySubmission.Keys));
     }
 
     [Fact]

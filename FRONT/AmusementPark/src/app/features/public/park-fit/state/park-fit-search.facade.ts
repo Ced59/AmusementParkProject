@@ -94,7 +94,7 @@ export class ParkFitSearchFacade {
           );
           this.telemetryPort.track({
             eventKind: 'SearchCompleted',
-            resultBand: resultBand(response.qualityEligibleCandidateCount),
+            resultBand: resultBand(visibleParks.length),
             unknownLevel: unknownLevel(visibleParks),
             durationBand: durationBand(Date.now() - startedAt),
             methodVersion: response.methodVersion,

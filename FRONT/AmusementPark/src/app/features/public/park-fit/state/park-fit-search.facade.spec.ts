@@ -45,13 +45,22 @@ describe('ParkFitSearchFacade', () => {
   it('does not present an explicitly excluded park as a match', () => {
     const response: ParkFitSearchResponse = buildResponse();
     response.parks[0]!.scoreState = 'Excluded';
-    const facade: ParkFitSearchFacade = createFacade({ search: () => of(response) });
+    response.qualityEligibleCandidateCount = 5;
+    const track = vi.fn();
+    const facade: ParkFitSearchFacade = createFacade(
+      { search: () => of(response) },
+      { track }
+    );
 
     facade.search(buildRequest());
 
     expect(facade.status()).toBe('success');
     expect(facade.firstPark()).toBeNull();
     expect(facade.visibleParks()).toEqual([]);
+    expect(track.mock.calls[1]?.[0]).toMatchObject({
+      eventKind: 'SearchCompleted',
+      resultBand: 'None'
+    });
   });
 
   it('turns public throttling into a dedicated visitor message', () => {
