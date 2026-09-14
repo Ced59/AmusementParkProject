@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  signal
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -16,13 +23,29 @@ import { AdminParkFitDataQualityFacade } from '../../state/admin-park-fit-data-q
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule, TranslateModule, ButtonDirective]
 })
-export class AdminParkFitOperationalControlsComponent {
+export class AdminParkFitOperationalControlsComponent implements OnChanges {
   @Input({ required: true }) public park!: ParkFitDataQuality;
 
   protected readonly selectedTarget = signal<ParkFitRecommendationState | null>(null);
   protected readonly reason = new FormControl<string>('', { nonNullable: true });
 
   constructor(private readonly facade: AdminParkFitDataQualityFacade) {
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    const parkChange = changes['park'];
+    const previousPark: ParkFitDataQuality | undefined = parkChange?.previousValue;
+    const currentPark: ParkFitDataQuality | undefined = parkChange?.currentValue;
+    if (previousPark === undefined || currentPark === undefined) {
+      return;
+    }
+
+    if (
+      previousPark.recommendationState !== currentPark.recommendationState ||
+      previousPark.operationalRevision !== currentPark.operationalRevision
+    ) {
+      this.cancel();
+    }
   }
 
   protected get activationAllowed(): boolean {
