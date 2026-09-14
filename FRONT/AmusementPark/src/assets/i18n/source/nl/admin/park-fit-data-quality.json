@@ -1,0 +1,30 @@
+{
+  "admin": {
+    "dashboard": { "shortcuts": { "parkFitDataQuality": "Controleer of parkgegevens klaar zijn voor vergelijking." } },
+    "parkFitDataQuality": {
+      "navTitle": "Gegevenskwaliteit vergelijking",
+      "kicker": "Gegevens voorbereiden",
+      "title": "Parken klaar voor vergelijking",
+      "subtitle": "Vind betrouwbare toegangsregels, bewijs dat opnieuw moet worden bekeken en attracties die nog moeten worden aangevuld.",
+      "loading": "Parkgegevens worden gecontroleerd...",
+      "loadError": "De controle van de parkgegevens kon niet worden geladen.",
+      "empty": "Er zijn geen parken om op deze pagina te controleren.",
+      "metrics": {
+        "ariaLabel": "Overzicht van de gereedheid van de getoonde parken", "eligible": "Klaar om te vergelijken", "actionRequired": "Parken aan te vullen", "averageCoverage": "Gemiddelde dekking", "currentPage": "op de huidige pagina"
+      },
+      "coverage": { "attractions": "bruikbare attracties", "ariaLabel": "Dekking van bruikbare attracties" },
+      "facts": {
+        "conditions": "Betrouwbare regels", "missingSources": "Ontbrekende bronnen", "missingDates": "Ontbrekende datums", "stale": "Oud bewijs", "ambiguous": "Onduidelijke regels", "lastVerified": "Laatst gecontroleerd", "never": "Nooit"
+      },
+      "status": {
+        "NotAssessed": "Niet beoordeeld", "Insufficient": "Onvoldoende gegevens", "EligibleForDiscoveryOnly": "Zichtbaar, niet vergelijkbaar", "EligibleForFitComparison": "Klaar voor vergelijking", "TemporarilyStale": "Nieuwe controle nodig", "Suspended": "Opgeschort"
+      },
+      "issue": {
+        "NotPubliclyDiscoverable": "Park niet openbaar zichtbaar", "MissingCoordinates": "Coördinaten ontbreken", "MissingParkType": "Parktype ontbreekt", "MissingSupportedLanguageContent": "Gelokaliseerde inhoud ontbreekt", "MissingOpeningCalendar": "Openingskalender ontbreekt", "OpeningCalendarStale": "Openingskalender moet worden bijgewerkt", "NoVisibleAttractions": "Geen zichtbare attracties", "MissingPreciseAttractionType": "Attractietype is te algemeen", "MissingIndoorOutdoorClassification": "Classificatie binnen of buiten ontbreekt", "MissingAccessibilitySource": "Bron voor toegankelijkheid ontbreekt", "MissingAccessConditions": "Toegangsregels ontbreken", "MissingAuthoritativeSource": "Officiële bron ontbreekt", "MissingEvidenceTimestamp": "Bewijsdatum ontbreekt", "StaleEvidence": "Bewijs is te oud", "AmbiguousRestriction": "Tegenstrijdige of onduidelijke regel", "IncompleteRestrictionCoverage": "Onvolledige regeldekking"
+      },
+      "samples": { "title": "Attracties om te corrigeren ({{count}})" },
+      "openParkItems": "Attracties van het park openen",
+      "pagination": { "ariaLabel": "Pagina's van de gegevenscontrole", "label": "Pagina {{current}} van {{total}}" }
+    }
+  }
+}

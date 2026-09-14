@@ -185,6 +185,14 @@ export const ADMIN_NAVIGATION_ITEMS: readonly AdminNavigationItem[] = [
     exact: false
   },
   {
+    id: 'park-fit-data-quality',
+    segments: ['park-fit-data-quality'],
+    iconClass: 'pi pi-check-square',
+    titleKey: 'admin.parkFitDataQuality.navTitle',
+    descriptionKey: 'admin.dashboard.shortcuts.parkFitDataQuality',
+    exact: false
+  },
+  {
     id: 'social-publications',
     segments: ['social-publications'],
     iconClass: 'pi pi-send',

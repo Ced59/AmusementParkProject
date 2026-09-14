@@ -1,0 +1,30 @@
+{
+  "admin": {
+    "dashboard": { "shortcuts": { "parkFitDataQuality": "Sprawdź, czy dane parków są gotowe do porównania." } },
+    "parkFitDataQuality": {
+      "navTitle": "Jakość danych porównania",
+      "kicker": "Przygotowanie danych",
+      "title": "Parki gotowe do porównania",
+      "subtitle": "Znajdź wiarygodne zasady dostępu, dowody wymagające przeglądu i atrakcje do uzupełnienia przed dodaniem parku do porównywarki.",
+      "loading": "Sprawdzanie danych parków...",
+      "loadError": "Nie udało się wczytać audytu gotowości parków.",
+      "empty": "Na tej stronie nie ma parków do sprawdzenia.",
+      "metrics": {
+        "ariaLabel": "Podsumowanie gotowości wyświetlanych parków", "eligible": "Gotowe do porównania", "actionRequired": "Parki do uzupełnienia", "averageCoverage": "Średnie pokrycie", "currentPage": "na bieżącej stronie"
+      },
+      "coverage": { "attractions": "atrakcje możliwe do oceny", "ariaLabel": "Pokrycie atrakcji możliwych do oceny" },
+      "facts": {
+        "conditions": "Wiarygodne zasady", "missingSources": "Brakujące źródła", "missingDates": "Brakujące daty", "stale": "Nieaktualne dowody", "ambiguous": "Niejednoznaczne zasady", "lastVerified": "Ostatnia weryfikacja", "never": "Nigdy"
+      },
+      "status": {
+        "NotAssessed": "Nie oceniono", "Insufficient": "Niewystarczające dane", "EligibleForDiscoveryOnly": "Widoczny, bez porównania", "EligibleForFitComparison": "Gotowy do porównania", "TemporarilyStale": "Wymaga ponownej weryfikacji", "Suspended": "Wstrzymany"
+      },
+      "issue": {
+        "NotPubliclyDiscoverable": "Park nie jest publicznie widoczny", "MissingCoordinates": "Brak współrzędnych", "MissingParkType": "Brak typu parku", "MissingSupportedLanguageContent": "Brak zlokalizowanej treści", "MissingOpeningCalendar": "Brak kalendarza otwarcia", "OpeningCalendarStale": "Kalendarz otwarcia wymaga aktualizacji", "NoVisibleAttractions": "Brak widocznych atrakcji", "MissingPreciseAttractionType": "Typ atrakcji jest zbyt ogólny", "MissingIndoorOutdoorClassification": "Brak klasyfikacji wewnątrz lub na zewnątrz", "MissingAccessibilitySource": "Brak źródła informacji o dostępności", "MissingAccessConditions": "Brak zasad dostępu", "MissingAuthoritativeSource": "Brak oficjalnego źródła", "MissingEvidenceTimestamp": "Brak daty dowodu", "StaleEvidence": "Dowód jest zbyt stary", "AmbiguousRestriction": "Sprzeczna lub niejednoznaczna zasada", "IncompleteRestrictionCoverage": "Niepełne pokrycie zasad"
+      },
+      "samples": { "title": "Atrakcje do poprawy ({{count}})" },
+      "openParkItems": "Otwórz atrakcje parku",
+      "pagination": { "ariaLabel": "Strony audytu gotowości", "label": "Strona {{current}} z {{total}}" }
+    }
+  }
+}

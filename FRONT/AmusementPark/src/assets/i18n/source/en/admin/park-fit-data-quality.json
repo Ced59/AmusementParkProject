@@ -1,0 +1,60 @@
+{
+  "admin": {
+    "dashboard": { "shortcuts": { "parkFitDataQuality": "Check whether park data is ready for comparison." } },
+    "parkFitDataQuality": {
+      "navTitle": "Comparison data quality",
+      "kicker": "Data preparation",
+      "title": "Parks ready for comparison",
+      "subtitle": "Find reliable access rules, evidence that needs review, and attractions to complete before a park enters the comparison tool.",
+      "loading": "Checking park data...",
+      "loadError": "The park readiness audit could not be loaded.",
+      "empty": "There are no parks to audit on this page.",
+      "metrics": {
+        "ariaLabel": "Readiness summary for the displayed parks",
+        "eligible": "Ready to compare",
+        "actionRequired": "Parks to complete",
+        "averageCoverage": "Average coverage",
+        "currentPage": "on the current page"
+      },
+      "coverage": { "attractions": "usable attractions", "ariaLabel": "Coverage of usable attractions" },
+      "facts": {
+        "conditions": "Reliable rules",
+        "missingSources": "Missing sources",
+        "missingDates": "Missing dates",
+        "stale": "Old evidence",
+        "ambiguous": "Ambiguous rules",
+        "lastVerified": "Last checked",
+        "never": "Never"
+      },
+      "status": {
+        "NotAssessed": "Not assessed",
+        "Insufficient": "Insufficient data",
+        "EligibleForDiscoveryOnly": "Visible, not comparable",
+        "EligibleForFitComparison": "Ready for comparison",
+        "TemporarilyStale": "Review required",
+        "Suspended": "Suspended"
+      },
+      "issue": {
+        "NotPubliclyDiscoverable": "Park not publicly visible",
+        "MissingCoordinates": "Missing coordinates",
+        "MissingParkType": "Missing park type",
+        "MissingSupportedLanguageContent": "Missing localized content",
+        "MissingOpeningCalendar": "Missing opening calendar",
+        "OpeningCalendarStale": "Opening calendar needs review",
+        "NoVisibleAttractions": "No visible attractions",
+        "MissingPreciseAttractionType": "Attraction type is too broad",
+        "MissingIndoorOutdoorClassification": "Indoor or outdoor classification is missing",
+        "MissingAccessibilitySource": "Accessibility source is missing",
+        "MissingAccessConditions": "Missing access rules",
+        "MissingAuthoritativeSource": "Missing official source",
+        "MissingEvidenceTimestamp": "Missing evidence date",
+        "StaleEvidence": "Evidence is too old",
+        "AmbiguousRestriction": "Inconsistent or ambiguous rule",
+        "IncompleteRestrictionCoverage": "Incomplete rule coverage"
+      },
+      "samples": { "title": "Attractions to fix ({{count}})" },
+      "openParkItems": "Open park attractions",
+      "pagination": { "ariaLabel": "Readiness audit pages", "label": "Page {{current}} of {{total}}" }
+    }
+  }
+}

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.16",
+  "version": "5.3.17",
   "history": [
+    {
+      "version": "5.3.17",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "L’administration des données gagne un nouveau suivi de préparation.",
+        "en": "Data administration now includes a new readiness overview.",
+        "de": "Die Datenverwaltung bietet jetzt eine neue Übersicht zur Vorbereitung.",
+        "nl": "Het gegevensbeheer bevat nu een nieuw overzicht van de voorbereiding.",
+        "it": "L’amministrazione dei dati include ora una nuova panoramica di preparazione.",
+        "es": "La administración de datos incorpora ahora un nuevo resumen de preparación.",
+        "pl": "Administracja danych zawiera teraz nowy przegląd przygotowania.",
+        "pt": "A administração de dados inclui agora uma nova visão geral da preparação."
+      }
+    },
     {
       "version": "5.3.16",
       "releasedAt": "2026-09-14",

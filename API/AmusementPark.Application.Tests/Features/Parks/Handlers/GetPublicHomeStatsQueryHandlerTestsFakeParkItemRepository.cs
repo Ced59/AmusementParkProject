@@ -50,6 +50,11 @@ internal sealed class GetPublicHomeStatsQueryHandlerTestsFakeParkItemRepository 
         throw new NotImplementedException();
     }
 
+    public Task<IReadOnlyCollection<ParkItem>> GetVisibleOpenAttractionsByParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<IReadOnlyList<ParkItemSiblingNavigationItem>> GetNavigationItemsByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();

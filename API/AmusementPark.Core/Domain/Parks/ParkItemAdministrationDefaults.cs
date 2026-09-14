@@ -45,7 +45,7 @@ public static class ParkItemAdministrationDefaults
         };
     }
 
-    private static bool IsTypeAllowedForCategory(ParkItemCategory category, ParkItemType type)
+    public static bool IsTypeAllowedForCategory(ParkItemCategory category, ParkItemType type)
     {
         return category switch
         {
