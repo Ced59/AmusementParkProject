@@ -155,13 +155,15 @@ Collection `park-fit-portfolio-migrations` :
 ```javascript
 {
   _id: "fit-15-portfolio-activation-v1",
+  cutoffAtUtc: ISODate("2026-09-14T19:55:00Z"),
   completedAtUtc: ISODate("2026-09-14T20:00:00Z")
 }
 ```
 
-Ce marqueur empêche qu'un parc publié après FIT-15 soit activé au prochain
-redémarrage. Il ne remplace pas l'état canonique et ne participe jamais à une
-recherche.
+La borne est écrite atomiquement avant de lire les parcs. Elle fige la cohorte
+historique même si plusieurs instances démarrent, si une instance redémarre pendant
+la migration ou si un parc est publié durant le déploiement. Le marqueur ne remplace
+pas l'état canonique et ne participe jamais à une recherche.
 
 ## 5. Migration sans second système
 
@@ -169,12 +171,13 @@ Avant FIT-15, l'absence de document signifiait implicitement « actif ». Une si
 modification de lecture aurait donc retiré tous les parcs historiques. Au premier
 démarrage de FIT-15, la migration :
 
-1. sélectionne les parcs visibles, `Operating` et dotés de coordonnées valides,
-   soit exactement l'ancien portefeuille implicite de la recherche ;
-2. crée pour chacun un document `Active`, révision `0`, seulement s'il n'existe pas ;
-3. ne modifie aucun état `Active` ou `Suspended` déjà piloté ;
-4. écrit le marqueur uniquement après les lots idempotents ;
-5. tolère les collisions d'identifiant si deux instances démarrent ensemble.
+1. crée ou relit une borne de cohorte unique et persistée ;
+2. sélectionne les parcs visibles, `Operating`, dotés de coordonnées valides et dont
+   la dernière mutation précède cette borne, soit l'ancien portefeuille implicite ;
+3. crée pour chacun un document `Active`, révision `0`, seulement s'il n'existe pas ;
+4. ne modifie aucun état `Active` ou `Suspended` déjà piloté ;
+5. date l'achèvement uniquement après les lots idempotents ;
+6. tolère les collisions d'identifiant si deux instances démarrent ensemble.
 
 Après le marqueur, une absence signifie définitivement `NotActivated`. Il n'existe
 donc pas d'adaptateur de compatibilité ni deux interprétations concurrentes. Les
@@ -190,13 +193,13 @@ sequenceDiagram
     participant M as park-fit-portfolio-migrations
 
     D->>I: démarrer la version FIT-15
-    I->>M: marqueur présent ?
-    alt première exécution
-      I->>P: lire les parcs visibles Operating par lots de 500
+    I->>M: créer ou relire la borne persistée
+    alt migration non terminée
+      I->>P: lire les parcs visibles Operating antérieurs à la borne
       loop chaque lot
         I->>S: upsert $setOnInsert Active / révision 0
       end
-      I->>M: écrire le marqueur terminé
+      I->>M: dater l'achèvement
     else migration déjà terminée
       M-->>I: aucune écriture
     end

@@ -34,20 +34,31 @@ internal sealed class ParkFitPortfolioActivationMigration
 
     public async Task<long> MigrateAsync(CancellationToken cancellationToken)
     {
-        bool alreadyCompleted = await this.migrations
+        DateTime requestedCutoffAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        await TryCreateMigrationPlanAsync(
+            this.migrations,
+            requestedCutoffAtUtc,
+            cancellationToken);
+        ParkFitPortfolioMigrationDocument? migration = await this.migrations
             .Find(Builders<ParkFitPortfolioMigrationDocument>.Filter.Eq(
                 static migration => migration.Id,
                 MigrationId))
-            .AnyAsync(cancellationToken);
-        if (alreadyCompleted)
+            .FirstOrDefaultAsync(cancellationToken);
+        if (migration is null)
+        {
+            throw new InvalidOperationException(
+                "The Park Fit portfolio migration plan could not be persisted.");
+        }
+
+        if (migration.CompletedAtUtc.HasValue)
         {
             return 0;
         }
 
-        DateTime migratedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        DateTime cutoffAtUtc = migration.CutoffAtUtc;
         long activatedParkCount = 0;
         IFindFluent<ParkDocument, ParkDocument> find = this.parks
-            .Find(BuildLegacyParkFilter())
+            .Find(BuildLegacyParkFilter(cutoffAtUtc))
             .Project(static park => new ParkDocument { Id = park.Id });
         find.Options.BatchSize = BatchSize;
         using IAsyncCursor<ParkDocument> cursor = await find.ToCursorAsync(cancellationToken);
@@ -59,7 +70,7 @@ internal sealed class ParkFitPortfolioActivationMigration
                     Builders<ParkFitOperationalStatusDocument>.Filter.Eq(
                         static status => status.Id,
                         park.Id),
-                    BuildLegacyStatusUpsert(migratedAtUtc))
+                    BuildLegacyStatusUpsert(cutoffAtUtc))
                 {
                     IsUpsert = true,
                 })
@@ -89,42 +100,44 @@ internal sealed class ParkFitPortfolioActivationMigration
             }
         }
 
-        await WriteCompletionMarkerAsync(
-            this.migrations,
-            migratedAtUtc,
-            cancellationToken);
+        DateTime completedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        await this.migrations.UpdateOneAsync(
+            Builders<ParkFitPortfolioMigrationDocument>.Filter.Eq(
+                static value => value.Id,
+                MigrationId),
+            Builders<ParkFitPortfolioMigrationDocument>.Update.Set(
+                static value => value.CompletedAtUtc,
+                completedAtUtc),
+            cancellationToken: cancellationToken);
         return activatedParkCount;
     }
 
-    internal static async Task WriteCompletionMarkerAsync(
+    internal static async Task TryCreateMigrationPlanAsync(
         IMongoCollection<ParkFitPortfolioMigrationDocument> migrations,
-        DateTime migratedAtUtc,
+        DateTime cutoffAtUtc,
         CancellationToken cancellationToken)
     {
-        ParkFitPortfolioMigrationDocument marker = new ParkFitPortfolioMigrationDocument
-        {
-            Id = MigrationId,
-            CompletedAtUtc = migratedAtUtc,
-        };
         try
         {
-            await migrations.ReplaceOneAsync(
+            await migrations.UpdateOneAsync(
                 Builders<ParkFitPortfolioMigrationDocument>.Filter.Eq(
                     static migration => migration.Id,
                     MigrationId),
-                marker,
-                new ReplaceOptions { IsUpsert = true },
+                Builders<ParkFitPortfolioMigrationDocument>.Update
+                    .SetOnInsert(static migration => migration.CutoffAtUtc, cutoffAtUtc),
+                new UpdateOptions { IsUpsert = true },
                 cancellationToken);
         }
         catch (MongoWriteException exception)
             when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
         {
-            // Une autre instance a terminé la même migration entre la lecture
-            // initiale et cet upsert. Le marqueur unique prouve son achèvement.
+            // Une autre instance a figé la cohorte entre-temps. La lecture qui
+            // suit réutilisera obligatoirement sa borne persistée.
         }
     }
 
-    internal static FilterDefinition<ParkDocument> BuildLegacyParkFilter()
+    internal static FilterDefinition<ParkDocument> BuildLegacyParkFilter(
+        DateTime cutoffAtUtc)
     {
         return Builders<ParkDocument>.Filter.Eq(static park => park.IsVisible, true)
             & Builders<ParkDocument>.Filter.Eq(
@@ -134,7 +147,10 @@ internal sealed class ParkFitPortfolioActivationMigration
             & Builders<ParkDocument>.Filter.Ne(static park => park.Longitude, null)
             & Builders<ParkDocument>.Filter.Or(
                 Builders<ParkDocument>.Filter.Ne(static park => park.Latitude, 0d),
-                Builders<ParkDocument>.Filter.Ne(static park => park.Longitude, 0d));
+                Builders<ParkDocument>.Filter.Ne(static park => park.Longitude, 0d))
+            & Builders<ParkDocument>.Filter.Lte(
+                static park => park.UpdatedAt,
+                cutoffAtUtc);
     }
 
     internal static UpdateDefinition<ParkFitOperationalStatusDocument> BuildLegacyStatusUpsert(

@@ -17,14 +17,16 @@ public sealed class ParkFitPortfolioActivationMigrationTests
     [Fact]
     public void BuildLegacyParkFilter_ShouldPreserveOnlyThePreviouslyEligiblePortfolio()
     {
+        DateTime cutoffAtUtc = new DateTime(2026, 9, 14, 12, 0, 0, DateTimeKind.Utc);
         BsonDocument filter = Render(
-            ParkFitPortfolioActivationMigration.BuildLegacyParkFilter());
+            ParkFitPortfolioActivationMigration.BuildLegacyParkFilter(cutoffAtUtc));
 
         Assert.True(filter["isVisible"].AsBoolean);
         Assert.Equal("Operating", filter["status"].AsString);
         Assert.True(filter.Contains("latitude"));
         Assert.True(filter.Contains("longitude"));
         Assert.True(filter.Contains("$or"));
+        Assert.Equal(cutoffAtUtc, filter["updatedAt"]["$lte"].ToUniversalTime());
     }
 
     [Fact]
@@ -43,19 +45,18 @@ public sealed class ParkFitPortfolioActivationMigrationTests
     }
 
     [Fact]
-    public async Task WriteCompletionMarkerAsync_WhenAnotherInstanceWins_ShouldRemainIdempotent()
+    public async Task TryCreateMigrationPlanAsync_WhenAnotherInstanceWins_ShouldReuseItsCohort()
     {
         Mock<IMongoCollection<ParkFitPortfolioMigrationDocument>> migrations =
             new Mock<IMongoCollection<ParkFitPortfolioMigrationDocument>>(MockBehavior.Strict);
-        migrations.Setup(collection => collection.ReplaceOneAsync(
+        migrations.Setup(collection => collection.UpdateOneAsync(
                 It.IsAny<FilterDefinition<ParkFitPortfolioMigrationDocument>>(),
-                It.Is<ParkFitPortfolioMigrationDocument>(marker =>
-                    marker.Id == ParkFitPortfolioActivationMigration.MigrationId),
-                It.Is<ReplaceOptions>(options => options.IsUpsert),
+                It.IsAny<UpdateDefinition<ParkFitPortfolioMigrationDocument>>(),
+                It.Is<UpdateOptions>(options => options.IsUpsert),
                 CancellationToken.None))
             .ThrowsAsync(CreateDuplicateKeyException());
 
-        await ParkFitPortfolioActivationMigration.WriteCompletionMarkerAsync(
+        await ParkFitPortfolioActivationMigration.TryCreateMigrationPlanAsync(
             migrations.Object,
             new DateTime(2026, 9, 14, 12, 0, 0, DateTimeKind.Utc),
             CancellationToken.None);
