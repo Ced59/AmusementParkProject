@@ -34,7 +34,7 @@ describe('PublicSitemapPageComponent crawlable navigation', () => {
     TestBed.configureTestingModule({
       imports: [PublicSitemapPageComponent, TranslateModule.forRoot()],
       providers: [
-        provideRouter([{ path: ':lang/sitemap', component: PublicSitemapPageComponent }]),
+        provideRouter([{ path: ':lang', children: [{ path: 'sitemap', component: PublicSitemapPageComponent }] }]),
         { provide: PUBLIC_SITEMAP_DATA_PORT, useValue: dataPort },
         { provide: TranslationService, useValue: { getCurrentLang: () => 'fr', languageChanged: new Subject<string>() } },
         { provide: SeoService, useValue: { applyRouteDefaults: vi.fn() } }
