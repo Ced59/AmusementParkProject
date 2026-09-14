@@ -23,6 +23,7 @@ public sealed class ParkFitGroupProfileMongoMapperTests
         source.Update("Enfant", 126, 9, true, 42, nowUtc.AddMinutes(1));
 
         ParkFitGroupProfileDocument document = source.ToDocument();
+        document.OwnerSlot = 7;
         ParkFitGroupProfile restored = document.ToDomain();
 
         Assert.Equal(source.Id, restored.Id);
@@ -32,5 +33,6 @@ public sealed class ParkFitGroupProfileMongoMapperTests
         Assert.Equal(9, restored.AgeYears);
         Assert.Equal(42, restored.CompanionAgeYears);
         Assert.Equal(2, restored.Version);
+        Assert.Equal(7, document.OwnerSlot);
     }
 }

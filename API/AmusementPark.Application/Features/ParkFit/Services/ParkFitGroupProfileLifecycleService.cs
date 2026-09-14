@@ -31,15 +31,6 @@ public sealed class ParkFitGroupProfileLifecycleService
             string normalizedOwnerUserId = IdentifierRules.NormalizeRequired(
                 ownerUserId,
                 nameof(ownerUserId));
-            long ownedProfileCount = await this.repository.CountOwnedAsync(
-                normalizedOwnerUserId,
-                cancellationToken);
-            if (ownedProfileCount >= ParkFitGroupProfile.MaximumProfilesPerOwner)
-            {
-                return ApplicationResult<ParkFitGroupProfileResult>.Failure(
-                    ParkFitGroupProfileApplicationErrors.ProfileLimitReached());
-            }
-
             ParkFitGroupProfile profile = ParkFitGroupProfile.Create(
                 ParkFitGroupProfileId.New(),
                 normalizedOwnerUserId,
@@ -52,10 +43,16 @@ public sealed class ParkFitGroupProfileLifecycleService
             ParkFitGroupProfileWriteOutcome outcome = await this.repository.CreateAsync(
                 profile,
                 cancellationToken);
-            return outcome == ParkFitGroupProfileWriteOutcome.Success
-                ? ApplicationResult<ParkFitGroupProfileResult>.Success(profile.ToResult())
-                : ApplicationResult<ParkFitGroupProfileResult>.Failure(
-                    ParkFitGroupProfileApplicationErrors.AliasConflict());
+            return outcome switch
+            {
+                ParkFitGroupProfileWriteOutcome.Success =>
+                    ApplicationResult<ParkFitGroupProfileResult>.Success(profile.ToResult()),
+                ParkFitGroupProfileWriteOutcome.LimitReached =>
+                    ApplicationResult<ParkFitGroupProfileResult>.Failure(
+                        ParkFitGroupProfileApplicationErrors.ProfileLimitReached()),
+                _ => ApplicationResult<ParkFitGroupProfileResult>.Failure(
+                    ParkFitGroupProfileApplicationErrors.AliasConflict()),
+            };
         }
         catch (ParkFitGroupProfileValidationException exception)
         {

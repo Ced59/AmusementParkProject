@@ -23,6 +23,14 @@ public sealed class ParkFitGroupProfileMongoDefinitionsTests
         Assert.Equal(
             new BsonDocument { { "ownerUserId", 1 }, { "normalizedAlias", 1 } },
             Render(alias.Keys));
+        CreateIndexModel<ParkFitGroupProfileDocument> ownerSlot = Assert.Single(
+            indexes,
+            static index => index.Options.Name
+                == ParkFitGroupProfileMongoDefinitions.OwnerSlotUniqueIndexName);
+        Assert.True(ownerSlot.Options.Unique);
+        Assert.Equal(
+            new BsonDocument { { "ownerUserId", 1 }, { "ownerSlot", 1 } },
+            Render(ownerSlot.Keys));
         CreateIndexModel<ParkFitGroupProfileDocument> ordering = Assert.Single(
             indexes,
             static index => index.Options.Name

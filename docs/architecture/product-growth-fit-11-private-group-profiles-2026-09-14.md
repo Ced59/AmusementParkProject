@@ -159,6 +159,7 @@ erDiagram
       string ownerUserId FK
       string alias
       string normalizedAlias
+      int ownerSlot "0 à 31, interne"
       int heightCentimeters "optionnel"
       int ageYears "optionnel"
       bool canBeAccompanied
@@ -169,19 +170,22 @@ erDiagram
     }
 ```
 
-La collection `user-group-profiles` possède deux index :
+La collection `user-group-profiles` possède trois index :
 
 - `(ownerUserId, normalizedAlias)` unique, afin qu'un membre ne crée pas deux alias
   équivalents malgré la casse ou les espaces ;
+- `(ownerUserId, ownerSlot)` unique, afin de réserver atomiquement l'un des 32
+  emplacements possibles même lors de créations concurrentes ;
 - `(ownerUserId, updatedAt desc, _id)`, afin d'afficher efficacement la bibliothèque
   privée dans un ordre stable.
 
 Les filtres de lecture, remplacement et suppression contiennent tous
 `ownerUserId`. Les mutations contiennent également `version` : une action fondée sur
 un écran périmé reçoit un conflit au lieu d'écraser l'état courant.
-La création contrôle le quota avant toute écriture et le dépôt borne aussi ses
-lectures à 32 documents, afin qu'un compte ne puisse pas produire une réponse ou un
-rendu sans limite sur le VPS.
+La création essaie chaque emplacement encore disponible. L'index unique arbitre les
+concurrences au niveau MongoDB : deux requêtes ne peuvent jamais occuper le même
+dernier emplacement. Le dépôt borne aussi ses lectures à 32 documents, afin qu'un
+compte ne puisse pas produire une réponse ou un rendu sans limite sur le VPS.
 
 ## Confidentialité et minimisation
 

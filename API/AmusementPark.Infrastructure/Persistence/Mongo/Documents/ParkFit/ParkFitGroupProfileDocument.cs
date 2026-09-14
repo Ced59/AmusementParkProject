@@ -15,6 +15,9 @@ public sealed class ParkFitGroupProfileDocument : MongoDocumentBase
     [BsonElement("normalizedAlias")]
     public string NormalizedAlias { get; set; } = string.Empty;
 
+    [BsonElement("ownerSlot")]
+    public int OwnerSlot { get; set; }
+
     [BsonElement("heightCentimeters")]
     [BsonIgnoreIfNull]
     public int? HeightCentimeters { get; set; }

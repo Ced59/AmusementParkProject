@@ -20,8 +20,6 @@ public sealed class ParkFitGroupProfileLifecycleServiceTests
     {
         Mock<IParkFitGroupProfileRepository> repository =
             new Mock<IParkFitGroupProfileRepository>(MockBehavior.Strict);
-        repository.Setup(value => value.CountOwnedAsync("user-1", CancellationToken.None))
-            .ReturnsAsync(0);
         repository.Setup(value => value.CreateAsync(
                 It.Is<ParkFitGroupProfile>(profile =>
                     profile.OwnerUserId == "user-1"
@@ -47,8 +45,10 @@ public sealed class ParkFitGroupProfileLifecycleServiceTests
     {
         Mock<IParkFitGroupProfileRepository> repository =
             new Mock<IParkFitGroupProfileRepository>(MockBehavior.Strict);
-        repository.Setup(value => value.CountOwnedAsync("user-1", CancellationToken.None))
-            .ReturnsAsync(ParkFitGroupProfile.MaximumProfilesPerOwner);
+        repository.Setup(value => value.CreateAsync(
+                It.Is<ParkFitGroupProfile>(profile => profile.OwnerUserId == "user-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ParkFitGroupProfileWriteOutcome.LimitReached);
         ParkFitGroupProfileLifecycleService service = CreateService(repository.Object);
 
         ApplicationResult<ParkFitGroupProfileResult> result = await service.CreateAsync(
