@@ -148,7 +148,7 @@ internal sealed class ParkFitPortfolioActivationMigration
             & Builders<ParkDocument>.Filter.Or(
                 Builders<ParkDocument>.Filter.Ne(static park => park.Latitude, 0d),
                 Builders<ParkDocument>.Filter.Ne(static park => park.Longitude, 0d))
-            & Builders<ParkDocument>.Filter.Lte(
+            & Builders<ParkDocument>.Filter.Lt(
                 static park => park.UpdatedAt,
                 cutoffAtUtc);
     }

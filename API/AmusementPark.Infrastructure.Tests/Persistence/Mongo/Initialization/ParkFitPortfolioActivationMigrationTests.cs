@@ -26,7 +26,7 @@ public sealed class ParkFitPortfolioActivationMigrationTests
         Assert.True(filter.Contains("latitude"));
         Assert.True(filter.Contains("longitude"));
         Assert.True(filter.Contains("$or"));
-        Assert.Equal(cutoffAtUtc, filter["updatedAt"]["$lte"].ToUniversalTime());
+        Assert.Equal(cutoffAtUtc, filter["updatedAt"]["$lt"].ToUniversalTime());
     }
 
     [Fact]
