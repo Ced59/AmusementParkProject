@@ -783,6 +783,19 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(this.settings.StandaloneAttractionsCollectionName, cancellationToken);
         await this.InitializeStandaloneAttractionsIndexesAsync(cancellationToken);
 
+        AttractionAccessConditionProvenanceMigration parkItemAccessConditionMigration =
+            new AttractionAccessConditionProvenanceMigration(
+                this.database.GetCollection<BsonDocument>(this.settings.ParkItemsCollectionName));
+        long migratedParkItemCount = await parkItemAccessConditionMigration.MigrateAsync(cancellationToken);
+        AttractionAccessConditionProvenanceMigration standaloneAccessConditionMigration =
+            new AttractionAccessConditionProvenanceMigration(
+                this.database.GetCollection<BsonDocument>(this.settings.StandaloneAttractionsCollectionName));
+        long migratedStandaloneCount = await standaloneAccessConditionMigration.MigrateAsync(cancellationToken);
+        this.logger.LogInformation(
+            "Migrated access-condition provenance on {ParkItemCount} park items and {StandaloneCount} standalone attractions.",
+            migratedParkItemCount,
+            migratedStandaloneCount);
+
         await this.EnsureCollectionExistsAsync(AdminFieldModeItemProgressCollectionName, cancellationToken);
         await this.InitializeAdminFieldModeItemProgressAsync(cancellationToken);
 

@@ -3,6 +3,9 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AttractionAccessCondition } from '@app/models/parks/attraction-access-condition';
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
 import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';
+import { AttractionAccessConditionSourceKind } from '@app/models/parks/attraction-access-condition-source-kind';
+import { AttractionAccessConditionConfidence } from '@app/models/parks/attraction-access-condition-confidence';
+import { AttractionAccessConditionScope } from '@app/models/parks/attraction-access-condition-scope';
 import { AttractionDetails } from '@app/models/parks/attraction-details';
 import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
 import { AttractionLocations } from '@app/models/parks/attraction-locations';
@@ -245,6 +248,7 @@ function buildAttractionAccessCondition(
   const label: LocalizedItem<string>[] | null = toLocalizedItems(raw?.label);
   const description: LocalizedItem<string>[] | null = toLocalizedItems(raw?.description);
   const customTypeLabel: LocalizedItem<string>[] | null = toLocalizedItems(raw?.customTypeLabel);
+  const sourceSummary: LocalizedItem<string>[] | null = toLocalizedItems(raw?.sourceSummary);
   const condition: AttractionAccessCondition = {
     type,
     typeKey,
@@ -257,7 +261,20 @@ function buildAttractionAccessCondition(
     minimumCompanionAge: toNullableInteger(raw?.minimumCompanionAge),
     label,
     description,
-    displayOrder: index + 1
+    displayOrder: index + 1,
+    provenanceSchemaVersion: toNullableInteger(raw?.provenanceSchemaVersion) ?? 1,
+    sourceKind: (raw?.sourceKind as AttractionAccessConditionSourceKind) ?? 'Unknown',
+    sourceUrl: toNullableText(raw?.sourceUrl),
+    sourceReference: toNullableText(raw?.sourceReference),
+    collectedAtUtc: toNullableText(raw?.collectedAtUtc),
+    verifiedAtUtc: toNullableText(raw?.verifiedAtUtc),
+    sourceLanguageCode: toNullableText(raw?.sourceLanguageCode)?.toLowerCase() ?? null,
+    sourceSummary,
+    sourceConfidence: (raw?.sourceConfidence as AttractionAccessConditionConfidence) ?? 'Unknown',
+    scope: (raw?.scope as AttractionAccessConditionScope) ?? 'Attraction',
+    scopeDetail: toNullableText(raw?.scopeDetail),
+    effectiveFrom: toNullableText(raw?.effectiveFrom),
+    effectiveTo: toNullableText(raw?.effectiveTo)
   };
 
   if (!hasAtLeastOneAccessConditionValue(condition)) {
@@ -503,6 +520,19 @@ interface AdminAttractionAccessConditionFormValue {
   minimumCompanionAge?: unknown;
   label?: unknown;
   description?: unknown;
+  provenanceSchemaVersion?: unknown;
+  sourceKind?: AttractionAccessConditionSourceKind | string | null;
+  sourceUrl?: unknown;
+  sourceReference?: unknown;
+  collectedAtUtc?: unknown;
+  verifiedAtUtc?: unknown;
+  sourceLanguageCode?: unknown;
+  sourceSummary?: unknown;
+  sourceConfidence?: AttractionAccessConditionConfidence | string | null;
+  scope?: AttractionAccessConditionScope | string | null;
+  scopeDetail?: unknown;
+  effectiveFrom?: unknown;
+  effectiveTo?: unknown;
 }
 
 interface AdminAttractionDetailsFormValue {

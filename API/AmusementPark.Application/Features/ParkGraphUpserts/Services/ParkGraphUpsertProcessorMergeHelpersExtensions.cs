@@ -319,6 +319,19 @@ internal static class ParkGraphUpsertProcessorMergeHelpersExtensions
             Label = ParkGraphUpsertProcessorMergeHelpersExtensions.CloneLocalizedTexts(value.Label),
             Description = ParkGraphUpsertProcessorMergeHelpersExtensions.CloneLocalizedTexts(value.Description),
             DisplayOrder = value.DisplayOrder,
+            ProvenanceSchemaVersion = value.ProvenanceSchemaVersion,
+            SourceKind = value.SourceKind,
+            SourceUrl = value.SourceUrl,
+            SourceReference = value.SourceReference,
+            CollectedAtUtc = value.CollectedAtUtc,
+            VerifiedAtUtc = value.VerifiedAtUtc,
+            SourceLanguageCode = value.SourceLanguageCode,
+            SourceSummary = ParkGraphUpsertProcessorMergeHelpersExtensions.CloneLocalizedTexts(value.SourceSummary),
+            SourceConfidence = value.SourceConfidence,
+            Scope = value.Scope,
+            ScopeDetail = value.ScopeDetail,
+            EffectiveFrom = value.EffectiveFrom,
+            EffectiveTo = value.EffectiveTo,
         };
     }
 

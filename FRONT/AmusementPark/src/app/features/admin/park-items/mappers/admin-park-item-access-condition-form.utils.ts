@@ -182,7 +182,20 @@ export function createAdminParkItemAccessConditionGroup(
     minimumCompanionAge: [condition?.minimumCompanionAge ?? null],
     label: [condition?.label ?? []],
     description: [condition?.description ?? []],
-    displayOrder: [condition?.displayOrder ?? null]
+    displayOrder: [condition?.displayOrder ?? null],
+    provenanceSchemaVersion: [condition?.provenanceSchemaVersion ?? 1],
+    sourceKind: [condition?.sourceKind ?? 'Unknown'],
+    sourceUrl: [condition?.sourceUrl ?? null],
+    sourceReference: [condition?.sourceReference ?? null],
+    collectedAtUtc: [condition?.collectedAtUtc ?? null],
+    verifiedAtUtc: [condition?.verifiedAtUtc ?? null],
+    sourceLanguageCode: [condition?.sourceLanguageCode ?? null],
+    sourceSummary: [condition?.sourceSummary ?? []],
+    sourceConfidence: [condition?.sourceConfidence ?? 'Unknown'],
+    scope: [condition?.scope ?? 'Attraction'],
+    scopeDetail: [condition?.scopeDetail ?? null],
+    effectiveFrom: [condition?.effectiveFrom ?? null],
+    effectiveTo: [condition?.effectiveTo ?? null]
   });
 }
 
@@ -469,7 +482,12 @@ function buildAdminParkItemDefaultAccessCondition(
     minimumCompanionAge: null,
     label: labels && labels.length > 0 ? labels : buildDefaultLocalizedLabel(type),
     description: [],
-    displayOrder
+    displayOrder,
+    provenanceSchemaVersion: 1,
+    sourceKind: 'Unknown',
+    sourceSummary: [],
+    sourceConfidence: 'Unknown',
+    scope: 'Attraction'
   };
 }
 

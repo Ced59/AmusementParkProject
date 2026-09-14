@@ -128,6 +128,20 @@ public sealed class ParkItemDataCompletenessScoreTests
         Assert.NotEqual("public-text.forbidden-editorial-language", score.PublicationBlocker);
     }
 
+    [Fact]
+    public void CalculateDataCompletenessScore_WhenRestrictionSourceSummaryContainsEditorialBoilerplate_ShouldExposeBlocker()
+    {
+        ParkItem attraction = CreateMechanicalAttraction();
+        attraction.AttractionDetails!.AccessConditions[0].SourceSummary = new List<LocalizedText>
+        {
+            new LocalizedText("fr", "Audit admin à compléter"),
+        };
+
+        DataCompletenessScore score = attraction.CalculateDataCompletenessScore(CreateRichParkItemContext());
+
+        Assert.Equal("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
     private static ParkItem CreateMechanicalAttraction()
     {
         ParkItem item = new ParkItem

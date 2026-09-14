@@ -143,7 +143,8 @@ public sealed class ParkItem : GeolocatedEntityBase
             || this.AttractionDetails?.AccessConditions.Any(static condition =>
                 condition.CustomTypeLabel.Any(static label => DataCompletenessScoringRules.HasForbiddenPlainPublicText(label.Value))
                 || condition.Label.Any(static label => DataCompletenessScoringRules.HasForbiddenPlainPublicText(label.Value))
-                || condition.Description.Any(static description => DataCompletenessScoringRules.HasForbiddenPlainPublicText(description.Value))) == true
+                || condition.Description.Any(static description => DataCompletenessScoringRules.HasForbiddenPlainPublicText(description.Value))
+                || condition.SourceSummary.Any(static summary => DataCompletenessScoringRules.HasForbiddenPlainPublicText(summary.Value))) == true
             || !scoreContext.HasNoForbiddenPublicText;
 
         score.AddPublicationBlocker(

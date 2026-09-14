@@ -3476,7 +3476,21 @@ public sealed class ParkGraphUpsertProcessorTests
                   {
                     "type": "MinHeight",
                     "value": 48,
-                    "unit": "Inch"
+                    "unit": "Inch",
+                    "sourceKind": "Official",
+                    "sourceUrl": "https://example.test/restrictions",
+                    "sourceReference": "safety-board-2026",
+                    "collectedAtUtc": "2026-08-01T08:30:00Z",
+                    "verifiedAtUtc": "2026-09-01T09:45:00Z",
+                    "sourceLanguageCode": "FR",
+                    "sourceSummary": [
+                      { "languageCode": "fr", "value": "Taille minimale de 48 pouces." }
+                    ],
+                    "sourceConfidence": "High",
+                    "scope": "Seat",
+                    "scopeDetail": "Rangée arrière",
+                    "effectiveFrom": "2026-04-01",
+                    "effectiveTo": "2026-11-02"
                   }
                 ]
               }
@@ -3506,6 +3520,19 @@ public sealed class ParkGraphUpsertProcessorTests
         AttractionAccessCondition condition = Assert.Single(createdItem.AttractionDetails.AccessConditions);
         Assert.Equal(121.92d, condition.Value);
         Assert.Equal(AttractionAccessConditionUnit.Centimeter, condition.Unit);
+        Assert.Equal(AttractionAccessCondition.CurrentProvenanceSchemaVersion, condition.ProvenanceSchemaVersion);
+        Assert.Equal(AttractionAccessConditionSourceKind.Official, condition.SourceKind);
+        Assert.Equal("https://example.test/restrictions", condition.SourceUrl);
+        Assert.Equal("safety-board-2026", condition.SourceReference);
+        Assert.Equal(new DateTime(2026, 8, 1, 8, 30, 0, DateTimeKind.Utc), condition.CollectedAtUtc);
+        Assert.Equal(new DateTime(2026, 9, 1, 9, 45, 0, DateTimeKind.Utc), condition.VerifiedAtUtc);
+        Assert.Equal("fr", condition.SourceLanguageCode);
+        Assert.Equal("Taille minimale de 48 pouces.", Assert.Single(condition.SourceSummary).Value);
+        Assert.Equal(AttractionAccessConditionConfidence.High, condition.SourceConfidence);
+        Assert.Equal(AttractionAccessConditionScope.Seat, condition.Scope);
+        Assert.Equal("Rangée arrière", condition.ScopeDetail);
+        Assert.Equal(new DateOnly(2026, 4, 1), condition.EffectiveFrom);
+        Assert.Equal(new DateOnly(2026, 11, 2), condition.EffectiveTo);
         Assert.Contains(result.Value!.Changes.SelectMany(change => change.Fields), field => field.Field == "attractionDetails.heightInMeters" && field.NewValue == "60.96");
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();

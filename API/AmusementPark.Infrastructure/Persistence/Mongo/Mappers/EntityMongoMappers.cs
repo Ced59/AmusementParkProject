@@ -1485,6 +1485,19 @@ public static Park ToDomain(this ParkDocument document)
             Label = CommonMongoMappers.ToDomain(document.Label),
             Description = CommonMongoMappers.ToDomain(document.Description),
             DisplayOrder = document.DisplayOrder,
+            ProvenanceSchemaVersion = document.ProvenanceSchemaVersion,
+            SourceKind = document.SourceKind,
+            SourceUrl = document.SourceUrl,
+            SourceReference = document.SourceReference,
+            CollectedAtUtc = document.CollectedAtUtc,
+            VerifiedAtUtc = document.VerifiedAtUtc,
+            SourceLanguageCode = document.SourceLanguageCode,
+            SourceSummary = CommonMongoMappers.ToDomain(document.SourceSummary),
+            SourceConfidence = document.SourceConfidence,
+            Scope = document.Scope,
+            ScopeDetail = document.ScopeDetail,
+            EffectiveFrom = ParseAccessConditionDate(document.EffectiveFrom),
+            EffectiveTo = ParseAccessConditionDate(document.EffectiveTo),
         };
     }
 
@@ -1504,7 +1517,37 @@ public static Park ToDomain(this ParkDocument document)
             Label = CommonMongoMappers.ToDocuments(entity.Label),
             Description = CommonMongoMappers.ToDocuments(entity.Description),
             DisplayOrder = entity.DisplayOrder,
+            ProvenanceSchemaVersion = entity.ProvenanceSchemaVersion,
+            SourceKind = entity.SourceKind,
+            SourceUrl = entity.SourceUrl,
+            SourceReference = entity.SourceReference,
+            CollectedAtUtc = entity.CollectedAtUtc,
+            VerifiedAtUtc = entity.VerifiedAtUtc,
+            SourceLanguageCode = entity.SourceLanguageCode,
+            SourceSummary = CommonMongoMappers.ToDocuments(entity.SourceSummary),
+            SourceConfidence = entity.SourceConfidence,
+            Scope = entity.Scope,
+            ScopeDetail = entity.ScopeDetail,
+            EffectiveFrom = FormatAccessConditionDate(entity.EffectiveFrom),
+            EffectiveTo = FormatAccessConditionDate(entity.EffectiveTo),
         };
+    }
+
+    private static string? FormatAccessConditionDate(DateOnly? value)
+    {
+        return value?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+    }
+
+    private static DateOnly? ParseAccessConditionDate(string? value)
+    {
+        return DateOnly.TryParseExact(
+            value,
+            "yyyy-MM-dd",
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.None,
+            out DateOnly parsed)
+                ? parsed
+                : null;
     }
 
     public static AttractionLocations ToDomain(this AttractionLocationsDocument document)

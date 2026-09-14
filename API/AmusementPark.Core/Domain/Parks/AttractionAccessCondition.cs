@@ -7,6 +7,8 @@ namespace AmusementPark.Core.Domain.Parks;
 /// </summary>
 public sealed class AttractionAccessCondition
 {
+    public const int CurrentProvenanceSchemaVersion = 1;
+
     /// <summary>
     /// Type de contrainte.
     /// </summary>
@@ -66,4 +68,69 @@ public sealed class AttractionAccessCondition
     /// Ordre d'affichage.
     /// </summary>
     public int? DisplayOrder { get; set; }
+
+    /// <summary>
+    /// Version du contrat de provenance embarqué.
+    /// </summary>
+    public int ProvenanceSchemaVersion { get; set; } = CurrentProvenanceSchemaVersion;
+
+    /// <summary>
+    /// Nature de la source qui atteste cette condition.
+    /// </summary>
+    public AttractionAccessConditionSourceKind SourceKind { get; set; } = AttractionAccessConditionSourceKind.Unknown;
+
+    /// <summary>
+    /// URL publique de la source, lorsqu'elle existe.
+    /// </summary>
+    public string? SourceUrl { get; set; }
+
+    /// <summary>
+    /// Référence interne ou éditoriale de la source.
+    /// </summary>
+    public string? SourceReference { get; set; }
+
+    /// <summary>
+    /// Date UTC de collecte de la source.
+    /// </summary>
+    public DateTime? CollectedAtUtc { get; set; }
+
+    /// <summary>
+    /// Date UTC de dernière vérification éditoriale.
+    /// </summary>
+    public DateTime? VerifiedAtUtc { get; set; }
+
+    /// <summary>
+    /// Langue du contenu source.
+    /// </summary>
+    public string? SourceLanguageCode { get; set; }
+
+    /// <summary>
+    /// Résumé fidèle et localisé de la règle attestée.
+    /// </summary>
+    public List<LocalizedText> SourceSummary { get; set; } = new();
+
+    /// <summary>
+    /// Confiance éditoriale accordée à la transcription.
+    /// </summary>
+    public AttractionAccessConditionConfidence SourceConfidence { get; set; } = AttractionAccessConditionConfidence.Unknown;
+
+    /// <summary>
+    /// Portée de la condition.
+    /// </summary>
+    public AttractionAccessConditionScope Scope { get; set; } = AttractionAccessConditionScope.Attraction;
+
+    /// <summary>
+    /// Précision de portée, obligatoire pour une portée autre que l'attraction entière.
+    /// </summary>
+    public string? ScopeDetail { get; set; }
+
+    /// <summary>
+    /// Premier jour local inclus pendant lequel la condition s'applique.
+    /// </summary>
+    public DateOnly? EffectiveFrom { get; set; }
+
+    /// <summary>
+    /// Dernier jour local inclus pendant lequel la condition s'applique.
+    /// </summary>
+    public DateOnly? EffectiveTo { get; set; }
 }

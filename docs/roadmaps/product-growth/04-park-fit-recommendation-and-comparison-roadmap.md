@@ -31,6 +31,24 @@ techniques suivants. Les preuves automatisées, la confidentialité, le responsi
 la probité restent des gates obligatoires ; aucun résultat d'usage réel n'est
 revendiqué sans observation.
 
+### État de `FIT-02` au 14 septembre 2026
+
+Le modèle canonique des conditions d'accès porte désormais la provenance complète,
+la fraîcheur, la confiance, la portée et l'éventuelle période d'effet. Le contrat
+est transporté par l'Application, MongoDB, la WebAPI et Angular sans créer un second
+système. La migration physique idempotente marque les données historiques comme
+inconnues sans inventer de preuve.
+
+L'évaluateur pur du Core décrit précisément pourquoi une restriction peut ou non
+soutenir une décision. Les preuves automatisées couvrent la règle, la migration et
+les allers-retours entre couches. Le détail d'architecture et le schéma MongoDB sont
+documentés dans
+[`product-growth-fit-02-restriction-provenance-2026-09-14.md`](../../architecture/product-growth-fit-02-restriction-provenance-2026-09-14.md).
+
+`FIT-03` est le prochain jalon : il calculera la couverture d'un parc et donnera à
+l'administration une liste responsive des données à compléter. L'absence d'une
+cohorte réelle n'empêche pas son implémentation ni les jalons techniques suivants.
+
 ## 1. Vision produit
 
 La recherche actuelle permet de retrouver une entité connue. Le nouveau moteur doit répondre à une question de décision :

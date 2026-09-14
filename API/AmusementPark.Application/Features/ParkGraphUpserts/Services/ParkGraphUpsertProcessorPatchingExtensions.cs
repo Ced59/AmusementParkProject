@@ -563,6 +563,19 @@ internal static class ParkGraphUpsertProcessorPatchingExtensions
             ParkGraphUpsertProcessorPatchingExtensions.DescribeLocalizedTextsForDiff(condition.Label),
             ParkGraphUpsertProcessorPatchingExtensions.DescribeLocalizedTextsForDiff(condition.Description),
             ParkGraphUpsertProcessorLocalizedTextExtensions.FormatValue(condition.DisplayOrder) ?? string.Empty,
+            condition.ProvenanceSchemaVersion.ToString(CultureInfo.InvariantCulture),
+            condition.SourceKind.ToString(),
+            condition.SourceUrl ?? string.Empty,
+            condition.SourceReference ?? string.Empty,
+            ParkGraphUpsertProcessorLocalizedTextExtensions.FormatValue(condition.CollectedAtUtc) ?? string.Empty,
+            ParkGraphUpsertProcessorLocalizedTextExtensions.FormatValue(condition.VerifiedAtUtc) ?? string.Empty,
+            condition.SourceLanguageCode ?? string.Empty,
+            ParkGraphUpsertProcessorPatchingExtensions.DescribeLocalizedTextsForDiff(condition.SourceSummary),
+            condition.SourceConfidence.ToString(),
+            condition.Scope.ToString(),
+            condition.ScopeDetail ?? string.Empty,
+            condition.EffectiveFrom?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) ?? string.Empty,
+            condition.EffectiveTo?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) ?? string.Empty,
         };
         return string.Join("|", parts);
     }
