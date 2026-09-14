@@ -1,0 +1,50 @@
+{
+  "parkFitProfiles": {
+    "kicker": "Perfiles privados de Park Fit",
+    "title": "Las personas de tu grupo",
+    "description": "Guarda una vez los criterios útiles y prepara tus próximas salidas con unos pocos toques.",
+    "privacy": "Estos perfiles permanecen vinculados a tu cuenta. Nunca son públicos ni se añaden automáticamente a una búsqueda.",
+    "form": {
+      "createTitle": "Añadir una persona",
+      "editTitle": "Actualizar este perfil",
+      "description": "Solo se guardan los datos que Park Fit ya sabe utilizar.",
+      "alias": "Alias privado",
+      "aliasPlaceholder": "P. ej., Yo, Lina, Niño de 8 años",
+      "aliasHint": "Este alias solo te ayuda a reconocer a la persona en tu cuenta.",
+      "height": "Altura",
+      "age": "Edad declarada",
+      "accompanied": "Esta persona puede ir acompañada",
+      "accompaniedHint": "Actívalo solo si un acompañante puede participar realmente con ella.",
+      "companionAge": "Edad del acompañante"
+    },
+    "library": {
+      "title": "Tu biblioteca privada",
+      "description": "Reutiliza, corrige o elimina cada persona de forma independiente.",
+      "loading": "Cargando tus perfiles…",
+      "emptyTitle": "Tu biblioteca está vacía",
+      "emptyText": "Crea un primer perfil para formar tu grupo más rápido.",
+      "factCount": "{{count}} criterios útiles",
+      "accompaniment": "Acompañamiento posible",
+      "yes": "Sí",
+      "no": "No"
+    },
+    "actions": {
+      "back": "Volver a Park Fit",
+      "new": "Nuevo perfil",
+      "create": "Guardar este perfil",
+      "update": "Guardar cambios",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "confirmDelete": "Confirmar eliminación",
+      "cancel": "Cancelar",
+      "export": "Exportar mis perfiles"
+    },
+    "feedback": {
+      "invalid": "Comprueba el alias, la altura y las edades introducidas.",
+      "loadError": "Tus perfiles no se pueden cargar ahora mismo.",
+      "saveError": "No se pudo guardar el perfil. Recarga la página si se modificó en otro lugar.",
+      "deleteError": "No se pudo eliminar el perfil. Recarga la página e inténtalo de nuevo.",
+      "exportError": "No se pudo preparar la exportación."
+    }
+  }
+}

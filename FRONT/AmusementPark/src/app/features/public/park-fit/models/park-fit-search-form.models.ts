@@ -3,6 +3,8 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ParkFitAttractionType } from '@app/models/park-fit/park-fit-search.models';
 
 export interface ParkFitMemberFormControls {
+  sourceProfileId: FormControl<string | null>;
+  sourceAlias: FormControl<string | null>;
   heightCentimeters: FormControl<number | null>;
   ageYears: FormControl<number | null>;
   canBeAccompanied: FormControl<boolean>;
@@ -21,6 +23,8 @@ export interface ParkFitSearchFormControls {
 export type ParkFitSearchForm = FormGroup<ParkFitSearchFormControls>;
 
 export interface ParkFitSearchFormMemberValue {
+  sourceProfileId: string | null;
+  sourceAlias: string | null;
   heightCentimeters: number | null;
   ageYears: number | null;
   canBeAccompanied: boolean;

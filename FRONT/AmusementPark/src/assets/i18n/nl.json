@@ -7,6 +7,54 @@
     "languages": "Talen",
     "profile": "Profiel"
   },
+  "parkFitProfiles": {
+    "kicker": "Privéprofielen voor Park Fit",
+    "title": "De personen in je groep",
+    "description": "Bewaar nuttige criteria één keer en stel volgende uitstapjes met een paar tikken samen.",
+    "privacy": "Deze profielen blijven aan je account gekoppeld. Ze zijn nooit openbaar en worden niet automatisch aan een zoekopdracht toegevoegd.",
+    "form": {
+      "createTitle": "Persoon toevoegen",
+      "editTitle": "Dit profiel bijwerken",
+      "description": "Alleen gegevens die Park Fit al kan gebruiken, worden bewaard.",
+      "alias": "Privé-alias",
+      "aliasPlaceholder": "Bijv. Ik, Lina, Kind van 8",
+      "aliasHint": "Deze alias helpt je alleen om de persoon in je account te herkennen.",
+      "height": "Lengte",
+      "age": "Opgegeven leeftijd",
+      "accompanied": "Deze persoon kan worden begeleid",
+      "accompaniedHint": "Activeer dit alleen als een begeleider echt samen kan deelnemen.",
+      "companionAge": "Leeftijd van de begeleider"
+    },
+    "library": {
+      "title": "Je privébibliotheek",
+      "description": "Hergebruik, corrigeer of verwijder elke persoon afzonderlijk.",
+      "loading": "Je profielen worden geladen…",
+      "emptyTitle": "Je bibliotheek is leeg",
+      "emptyText": "Maak een eerste profiel om je groep sneller samen te stellen.",
+      "factCount": "{{count}} nuttige criteria",
+      "accompaniment": "Begeleiding mogelijk",
+      "yes": "Ja",
+      "no": "Nee"
+    },
+    "actions": {
+      "back": "Terug naar Park Fit",
+      "new": "Nieuw profiel",
+      "create": "Dit profiel bewaren",
+      "update": "Wijzigingen bewaren",
+      "edit": "Bewerken",
+      "delete": "Verwijderen",
+      "confirmDelete": "Verwijderen bevestigen",
+      "cancel": "Annuleren",
+      "export": "Mijn profielen exporteren"
+    },
+    "feedback": {
+      "invalid": "Controleer de alias, lengte en ingevoerde leeftijden.",
+      "loadError": "Je profielen kunnen nu niet worden geladen.",
+      "saveError": "Het profiel kon niet worden bewaard. Vernieuw de pagina als het elders werd gewijzigd.",
+      "deleteError": "Het profiel kon niet worden verwijderd. Vernieuw de pagina en probeer opnieuw.",
+      "exportError": "De export kon niet worden voorbereid."
+    }
+  },
   "passport": {
     "overview": {
       "actions": {
@@ -4773,6 +4821,15 @@
     }
   },
   "parkFit": {
+    "savedProfiles": {
+      "title": "Je groep met één tik",
+      "text": "Voeg een opgeslagen persoon toe zonder de criteria opnieuw in te voeren.",
+      "manage": "Mijn profielen beheren",
+      "loading": "Je privéprofielen worden geladen…",
+      "error": "Je privéprofielen kunnen nu niet worden geladen.",
+      "empty": "Je hebt nog geen Park Fit-profiel opgeslagen.",
+      "add": "Aan groep toevoegen"
+    },
     "seo": {
       "title": "Vind een park dat bij je groep past — Amusement Parks",
       "description": "Vergelijk gedocumenteerde parken op basis van je groep, datum en voorkeuren, zonder account en zonder je criteria op te slaan."

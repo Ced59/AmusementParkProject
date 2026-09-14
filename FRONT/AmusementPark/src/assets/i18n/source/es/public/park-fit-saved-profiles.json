@@ -1,0 +1,13 @@
+{
+  "parkFit": {
+    "savedProfiles": {
+      "title": "Tu grupo con un solo toque",
+      "text": "Añade una persona guardada sin volver a introducir sus criterios.",
+      "manage": "Gestionar mis perfiles",
+      "loading": "Cargando tus perfiles privados…",
+      "error": "Tus perfiles privados no se pueden cargar ahora mismo.",
+      "empty": "Todavía no has guardado ningún perfil de Park Fit.",
+      "add": "Añadir al grupo"
+    }
+  }
+}

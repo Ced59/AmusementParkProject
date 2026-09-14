@@ -1,6 +1,20 @@
 {
-  "version": "5.3.26",
+  "version": "5.3.27",
   "history": [
+    {
+      "version": "5.3.27",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Tu peux maintenant enregistrer et réutiliser tes profils privés Park Fit.",
+        "en": "You can now save and reuse your private Park Fit profiles.",
+        "de": "Du kannst jetzt deine privaten Park-Fit-Profile speichern und wiederverwenden.",
+        "nl": "Je kunt nu je privéprofielen voor Park Fit bewaren en hergebruiken.",
+        "it": "Ora puoi salvare e riutilizzare i tuoi profili Park Fit privati.",
+        "es": "Ahora puedes guardar y reutilizar tus perfiles privados de Park Fit.",
+        "pl": "Możesz teraz zapisywać i ponownie wykorzystywać prywatne profile Park Fit.",
+        "pt": "Agora podes guardar e reutilizar os teus perfis privados Park Fit."
+      }
+    },
     {
       "version": "5.3.26",
       "releasedAt": "2026-09-14",

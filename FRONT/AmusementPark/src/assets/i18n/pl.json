@@ -7,6 +7,54 @@
     "languages": "Języki",
     "profile": "Profil"
   },
+  "parkFitProfiles": {
+    "kicker": "Prywatne profile Park Fit",
+    "title": "Osoby w Twojej grupie",
+    "description": "Zapisz przydatne kryteria raz, a kolejne wyjazdy ułożysz kilkoma dotknięciami.",
+    "privacy": "Te profile pozostają powiązane z Twoim kontem. Nigdy nie są publiczne ani automatycznie dodawane do wyszukiwania.",
+    "form": {
+      "createTitle": "Dodaj osobę",
+      "editTitle": "Zaktualizuj ten profil",
+      "description": "Przechowywane są wyłącznie dane, które Park Fit potrafi już wykorzystać.",
+      "alias": "Prywatny alias",
+      "aliasPlaceholder": "Np. Ja, Lina, Dziecko 8 lat",
+      "aliasHint": "Alias służy wyłącznie do rozpoznania osoby na Twoim koncie.",
+      "height": "Wzrost",
+      "age": "Podany wiek",
+      "accompanied": "Ta osoba może korzystać z opiekunem",
+      "accompaniedHint": "Włącz tylko wtedy, gdy opiekun może rzeczywiście uczestniczyć razem z nią.",
+      "companionAge": "Wiek opiekuna"
+    },
+    "library": {
+      "title": "Twoja prywatna biblioteka",
+      "description": "Używaj ponownie, poprawiaj lub usuwaj każdą osobę niezależnie.",
+      "loading": "Wczytywanie profili…",
+      "emptyTitle": "Twoja biblioteka jest pusta",
+      "emptyText": "Utwórz pierwszy profil, aby szybciej składać grupę.",
+      "factCount": "Przydatne kryteria: {{count}}",
+      "accompaniment": "Możliwy opiekun",
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "actions": {
+      "back": "Wróć do Park Fit",
+      "new": "Nowy profil",
+      "create": "Zapisz ten profil",
+      "update": "Zapisz zmiany",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "confirmDelete": "Potwierdź usunięcie",
+      "cancel": "Anuluj",
+      "export": "Eksportuj moje profile"
+    },
+    "feedback": {
+      "invalid": "Sprawdź alias, wzrost i podany wiek.",
+      "loadError": "Nie można teraz wczytać Twoich profili.",
+      "saveError": "Nie udało się zapisać profilu. Odśwież stronę, jeśli zmieniono go gdzie indziej.",
+      "deleteError": "Nie udało się usunąć profilu. Odśwież stronę i spróbuj ponownie.",
+      "exportError": "Nie udało się przygotować eksportu."
+    }
+  },
   "passport": {
     "overview": {
       "actions": {
@@ -4773,6 +4821,15 @@
     }
   },
   "parkFit": {
+    "savedProfiles": {
+      "title": "Twoja grupa jednym dotknięciem",
+      "text": "Dodaj zapisaną osobę bez ponownego wpisywania jej kryteriów.",
+      "manage": "Zarządzaj profilami",
+      "loading": "Wczytywanie prywatnych profili…",
+      "error": "Nie można teraz wczytać prywatnych profili.",
+      "empty": "Nie masz jeszcze zapisanego profilu Park Fit.",
+      "add": "Dodaj do grupy"
+    },
     "seo": {
       "title": "Znajdź park dopasowany do twojej grupy — Amusement Parks",
       "description": "Porównaj udokumentowane parki według grupy, daty i preferencji, bez konta i bez zapisywania kryteriów."

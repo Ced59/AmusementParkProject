@@ -10,6 +10,8 @@ import {
   ParkFitSearchRequest,
   ParkFitSearchResponse
 } from '@app/models/park-fit/park-fit-search.models';
+import { ParkFitGroupProfile } from '@app/models/park-fit/park-fit-group-profile.model';
+import { AuthService } from '@app/services/auth/auth.service';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
@@ -24,6 +26,10 @@ import {
   ParkFitSearchFormValue
 } from '../models/park-fit-search-form.models';
 import { ParkFitSearchFacade, ParkFitSearchStatus } from '../state/park-fit-search.facade';
+import {
+  ParkFitSavedProfilesFacade,
+  ParkFitSavedProfilesStatus
+} from '../state/park-fit-saved-profiles.facade';
 
 const MAXIMUM_MEMBER_COUNT = 8;
 
@@ -32,6 +38,7 @@ const MAXIMUM_MEMBER_COUNT = 8;
   templateUrl: './park-fit-start-page.component.html',
   styleUrl: './park-fit-start-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ParkFitSavedProfilesFacade],
   imports: [
     ReactiveFormsModule,
     RouterLink,
@@ -49,6 +56,10 @@ export class ParkFitStartPageComponent implements OnInit {
   protected readonly firstPark: Signal<ParkFitSearchPark | null> = this.facade.firstPark;
   protected readonly visibleParks: Signal<ParkFitSearchPark[]> = this.facade.visibleParks;
   protected readonly errorKey: Signal<string | null> = this.facade.errorKey;
+  protected readonly savedProfiles: Signal<ParkFitGroupProfile[]> = this.savedProfilesFacade.profiles;
+  protected readonly savedProfilesStatus: Signal<ParkFitSavedProfilesStatus> =
+    this.savedProfilesFacade.status;
+  protected readonly isAuthenticated: boolean;
   protected readonly parkRoute: Signal<string[] | null> = computed(() => {
     const park: ParkFitSearchPark | null = this.firstPark();
     return park
@@ -84,8 +95,11 @@ export class ParkFitStartPageComponent implements OnInit {
     private readonly translationService: TranslationService,
     private readonly translateService: TranslateService,
     private readonly seoService: SeoService,
+    private readonly authService: AuthService,
+    private readonly savedProfilesFacade: ParkFitSavedProfilesFacade,
     private readonly destroyRef: DestroyRef
   ) {
+    this.isAuthenticated = this.authService.isLoggedIn();
   }
 
   ngOnInit(): void {
@@ -96,6 +110,9 @@ export class ParkFitStartPageComponent implements OnInit {
     this.currentLang.set(language);
     this.restoreLastRequest(this.facade.lastRequest());
     this.applySeo();
+    if (this.isAuthenticated) {
+      this.savedProfilesFacade.load();
+    }
 
     this.translationService.languageChanged
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -123,6 +140,32 @@ export class ParkFitStartPageComponent implements OnInit {
     }
 
     this.members.removeAt(index);
+  }
+
+  protected addSavedProfile(profile: ParkFitGroupProfile): void {
+    if (this.isSavedProfileUsed(profile.profileId) || this.members.length >= MAXIMUM_MEMBER_COUNT) {
+      return;
+    }
+
+    const member: ParkFitMemberForm = createMemberForm({
+      sourceProfileId: profile.profileId,
+      sourceAlias: profile.alias,
+      heightCentimeters: profile.heightCentimeters,
+      ageYears: profile.ageYears,
+      canBeAccompanied: profile.canBeAccompanied,
+      companionAgeYears: profile.companionAgeYears
+    });
+    if (this.members.length === 1 && isEmptyMember(this.members.at(0))) {
+      this.members.setControl(0, member);
+      return;
+    }
+
+    this.members.push(member);
+  }
+
+  protected isSavedProfileUsed(profileId: string): boolean {
+    return this.members.controls.some((member: ParkFitMemberForm): boolean =>
+      member.controls.sourceProfileId.value === profileId);
   }
 
   protected togglePreference(type: ParkFitAttractionType): void {
@@ -168,6 +211,8 @@ export class ParkFitStartPageComponent implements OnInit {
     this.members.clear();
     for (const member of request.members) {
       this.members.push(createMemberForm({
+        sourceProfileId: null,
+        sourceAlias: null,
         heightCentimeters: member.heightCentimeters,
         ageYears: member.minimumAgeYears,
         canBeAccompanied: member.canBeAccompanied,
@@ -192,12 +237,16 @@ export class ParkFitStartPageComponent implements OnInit {
 }
 
 function createMemberForm(initial?: {
+  sourceProfileId: string | null;
+  sourceAlias: string | null;
   heightCentimeters: number | null;
   ageYears: number | null;
   canBeAccompanied: boolean;
   companionAgeYears: number | null;
 }): ParkFitMemberForm {
   return new FormGroup({
+    sourceProfileId: new FormControl<string | null>(initial?.sourceProfileId ?? null),
+    sourceAlias: new FormControl<string | null>(initial?.sourceAlias ?? null),
     heightCentimeters: new FormControl<number | null>(initial?.heightCentimeters ?? null, [
       Validators.min(40),
       Validators.max(260)
@@ -212,6 +261,15 @@ function createMemberForm(initial?: {
       Validators.max(130)
     ])
   });
+}
+
+function isEmptyMember(member: ParkFitMemberForm): boolean {
+  const value = member.getRawValue();
+  return value.sourceProfileId === null
+    && value.heightCentimeters === null
+    && value.ageYears === null
+    && !value.canBeAccompanied
+    && value.companionAgeYears === null;
 }
 
 function todayInputValue(): string {

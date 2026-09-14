@@ -45,13 +45,56 @@
         </div>
       </div>
 
+      @if (isAuthenticated) {
+        <section class="park-fit-saved" aria-labelledby="park-fit-saved-title">
+          <div class="park-fit-saved__heading">
+            <div>
+              <h3 id="park-fit-saved-title">{{ 'parkFit.savedProfiles.title' | translate }}</h3>
+              <p>{{ 'parkFit.savedProfiles.text' | translate }}</p>
+            </div>
+            <a appUiButton="ghost" [routerLink]="['/', currentLang(), 'profile', 'park-fit', 'profiles']">
+              <i class="pi pi-cog" aria-hidden="true"></i>
+              <span>{{ 'parkFit.savedProfiles.manage' | translate }}</span>
+            </a>
+          </div>
+          @if (savedProfilesStatus() === 'loading') {
+            <span class="park-fit-saved__status">{{ 'parkFit.savedProfiles.loading' | translate }}</span>
+          } @else if (savedProfilesStatus() === 'error') {
+            <span class="park-fit-saved__status park-fit-saved__status--error">
+              {{ 'parkFit.savedProfiles.error' | translate }}
+            </span>
+          } @else if (savedProfiles().length === 0) {
+            <span class="park-fit-saved__status">{{ 'parkFit.savedProfiles.empty' | translate }}</span>
+          } @else {
+            <div class="park-fit-saved__list">
+              @for (profile of savedProfiles(); track profile.profileId) {
+                <button
+                  type="button"
+                  class="park-fit-saved__profile"
+                  [disabled]="isSavedProfileUsed(profile.profileId) || members.length >= 8"
+                  (click)="addSavedProfile(profile)">
+                  <span class="park-fit-saved__avatar" aria-hidden="true">{{ profile.alias.slice(0, 1) }}</span>
+                  <span>
+                    <strong>{{ profile.alias }}</strong>
+                    <small>{{ 'parkFit.savedProfiles.add' | translate }}</small>
+                  </span>
+                  <i [class]="isSavedProfileUsed(profile.profileId) ? 'pi pi-check' : 'pi pi-plus'" aria-hidden="true"></i>
+                </button>
+              }
+            </div>
+          }
+        </section>
+      }
+
       <div class="park-fit-members" formArrayName="members">
         @for (member of members.controls; track $index) {
           <article class="park-fit-member" [formGroupName]="$index">
             <header>
               <div>
                 <span class="park-fit-member__number">{{ $index + 1 }}</span>
-                <h3>{{ 'parkFit.group.memberTitle' | translate:{ number: $index + 1 } }}</h3>
+                <h3>
+                  {{ member.controls.sourceAlias.value || ('parkFit.group.memberTitle' | translate:{ number: $index + 1 }) }}
+                </h3>
               </div>
               @if (members.length > 1) {
                 <button

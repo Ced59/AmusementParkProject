@@ -1,0 +1,278 @@
+:host {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.park-fit-profiles,
+.park-fit-profiles__hero,
+.park-fit-profiles__composer,
+.park-fit-profiles__library,
+.park-fit-profiles__heading,
+.park-fit-profiles form,
+.park-fit-profiles__cards,
+.park-fit-profiles__card,
+.park-fit-profiles__field {
+  min-width: 0;
+}
+
+.park-fit-profiles {
+  display: grid;
+  width: min(100%, 76rem);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: clamp(0.75rem, 3vw, 2rem);
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.park-fit-profiles__hero,
+.park-fit-profiles__composer,
+.park-fit-profiles__library,
+.park-fit-profiles form,
+.park-fit-profiles__card,
+.park-fit-profiles__empty {
+  display: grid;
+  gap: 1rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  max-width: 15ch;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  line-height: 0.96;
+}
+
+.park-fit-profiles__hero > p,
+.park-fit-profiles__heading p,
+.park-fit-profiles__status,
+.park-fit-profiles__empty span {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.park-fit-profiles__privacy {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  padding: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--c-sky) 34%, var(--app-border));
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--c-sky) 8%, transparent);
+  overflow-wrap: anywhere;
+}
+
+.park-fit-profiles__heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.park-fit-profiles__heading > div {
+  display: grid;
+  min-width: 0;
+  gap: 0.25rem;
+}
+
+.park-fit-profiles__facts,
+.park-fit-profiles__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  min-width: 0;
+  gap: 0.8rem;
+}
+
+.park-fit-profiles__field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.park-fit-profiles__field--alias {
+  max-width: 34rem;
+}
+
+.park-fit-profiles__field > span,
+.park-fit-profiles__check strong {
+  font-weight: 800;
+}
+
+.park-fit-profiles__field input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: var(--app-surface-2);
+  color: var(--text);
+  font: inherit;
+}
+
+.park-fit-profiles__field small,
+.park-fit-profiles__check small {
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.park-fit-profiles__unit {
+  position: relative;
+  min-width: 0;
+}
+
+.park-fit-profiles__unit input {
+  padding-right: 3.2rem;
+}
+
+.park-fit-profiles__unit span {
+  position: absolute;
+  top: 50%;
+  right: 0.85rem;
+  color: var(--text-muted);
+  transform: translateY(-50%);
+}
+
+.park-fit-profiles__check {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.park-fit-profiles__check input {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--c-orange);
+}
+
+.park-fit-profiles__check span {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+}
+
+.park-fit-profiles__card {
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--c-sky) 23%, var(--app-border));
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-surface-2) 90%, transparent);
+}
+
+.park-fit-profiles__card header > div {
+  display: flex;
+  min-width: 0;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.park-fit-profiles__card header div div {
+  min-width: 0;
+}
+
+.park-fit-profiles__avatar {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--c-sky) 18%, var(--app-surface));
+  color: var(--c-sky);
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.park-fit-profiles__card dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0;
+}
+
+.park-fit-profiles__card dl div {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+  padding: 0.65rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--app-surface) 84%, transparent);
+}
+
+.park-fit-profiles__card dt {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.park-fit-profiles__card dd {
+  margin: 0;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.park-fit-profiles__card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 0;
+  gap: 0.5rem;
+}
+
+.park-fit-profiles__card-actions button {
+  min-height: 44px;
+}
+
+.park-fit-profiles__delete,
+.park-fit-profiles__error {
+  color: var(--c-rose);
+}
+
+.park-fit-profiles__empty {
+  justify-items: start;
+  padding: 1.25rem;
+  border: 1px dashed var(--app-border);
+  border-radius: var(--radius-lg);
+}
+
+.park-fit-profiles__empty i {
+  color: var(--c-sky);
+  font-size: 1.6rem;
+}
+
+@media (max-width: 520px) {
+  .park-fit-profiles {
+    padding-inline: 0.7rem;
+  }
+
+  .park-fit-profiles__heading,
+  .park-fit-profiles__card-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .park-fit-profiles__heading button,
+  .park-fit-profiles form > button,
+  .park-fit-profiles__card-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .park-fit-profiles__card dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

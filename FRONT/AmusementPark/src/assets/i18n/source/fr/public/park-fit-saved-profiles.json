@@ -1,0 +1,13 @@
+{
+  "parkFit": {
+    "savedProfiles": {
+      "title": "Ton groupe en un geste",
+      "text": "Ajoute une personne enregistrée sans ressaisir ses critères.",
+      "manage": "Gérer mes profils",
+      "loading": "Chargement de tes profils privés…",
+      "error": "Tes profils privés ne peuvent pas être chargés pour le moment.",
+      "empty": "Tu n’as pas encore enregistré de profil Park Fit.",
+      "add": "Ajouter au groupe"
+    }
+  }
+}

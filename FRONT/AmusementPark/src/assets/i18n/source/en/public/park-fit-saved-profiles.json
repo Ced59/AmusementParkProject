@@ -1,0 +1,13 @@
+{
+  "parkFit": {
+    "savedProfiles": {
+      "title": "Build your group in one tap",
+      "text": "Add a saved person without entering their criteria again.",
+      "manage": "Manage my profiles",
+      "loading": "Loading your private profiles…",
+      "error": "Your private profiles cannot be loaded right now.",
+      "empty": "You have not saved a Park Fit profile yet.",
+      "add": "Add to group"
+    }
+  }
+}

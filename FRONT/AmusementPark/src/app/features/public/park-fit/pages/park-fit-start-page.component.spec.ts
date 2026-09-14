@@ -14,6 +14,9 @@ import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { ParkFitMemberForm, ParkFitSearchForm } from '../models/park-fit-search-form.models';
 import { ParkFitSearchFacade, ParkFitSearchStatus } from '../state/park-fit-search.facade';
+import { ParkFitSavedProfilesFacade } from '../state/park-fit-saved-profiles.facade';
+import { AuthService } from '@app/services/auth/auth.service';
+import { ParkFitGroupProfile } from '@app/models/park-fit/park-fit-group-profile.model';
 import { ParkFitStartPageComponent } from './park-fit-start-page.component';
 
 interface ParkFitPageTestSurface {
@@ -21,6 +24,8 @@ interface ParkFitPageTestSurface {
   members: FormArray<ParkFitMemberForm>;
   addMember(): void;
   removeMember(index: number): void;
+  addSavedProfile(profile: ParkFitGroupProfile): void;
+  isSavedProfileUsed(profileId: string): boolean;
   togglePreference(type: ParkFitAttractionType): void;
   submit(): void;
 }
@@ -91,6 +96,34 @@ describe('ParkFitStartPageComponent', () => {
       '/fr/park-fit'
     );
   });
+
+  it('injects one saved private profile without sending its alias or identifier', () => {
+    const search = vi.fn();
+    const component: ParkFitStartPageComponent = createComponent(search);
+    const page: ParkFitPageTestSurface = component as unknown as ParkFitPageTestSurface;
+    const profile: ParkFitGroupProfile = {
+      profileId: 'profile-1',
+      alias: 'Lina',
+      heightCentimeters: 121,
+      ageYears: 8,
+      canBeAccompanied: true,
+      companionAgeYears: 40,
+      createdAtUtc: '2026-09-14T14:00:00Z',
+      updatedAtUtc: '2026-09-14T14:00:00Z',
+      version: 1
+    };
+
+    page.addSavedProfile(profile);
+    page.form.controls.evaluationDate.setValue('2026-10-10');
+    page.submit();
+
+    expect(page.members.length).toBe(1);
+    expect(page.isSavedProfileUsed('profile-1')).toBe(true);
+    const request: ParkFitSearchRequest = search.mock.calls[0]![0] as ParkFitSearchRequest;
+    expect(request.members[0]?.heightCentimeters).toBe(121);
+    expect(JSON.stringify(request)).not.toContain('Lina');
+    expect(JSON.stringify(request)).not.toContain('profile-1');
+  });
 });
 
 function createComponent(
@@ -139,6 +172,12 @@ function createComponent(
     translationService as unknown as TranslationService,
     translateService as TranslateService,
     seoService as SeoService,
+    { isLoggedIn: (): boolean => false } as AuthService,
+    {
+      profiles: signal([]).asReadonly(),
+      status: signal('idle').asReadonly(),
+      load: vi.fn()
+    } as unknown as ParkFitSavedProfilesFacade,
     destroyRef
   );
 }
