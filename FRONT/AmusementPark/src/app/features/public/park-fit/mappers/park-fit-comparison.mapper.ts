@@ -100,7 +100,9 @@ function buildOverallCell(park: ParkFitSearchPark): ParkFitComparisonCell {
   return cell(
     park,
     score === null ? 'parkFit.comparison.values.scoreUnavailable' : 'parkFit.comparison.values.score',
-    score === null ? {} : { score, coverage: Math.round(park.coveragePercent) },
+    score === null
+      ? { coverage: Math.round(park.coveragePercent) }
+      : { score, coverage: Math.round(park.coveragePercent) },
     parkFitConfidenceKey(park.confidence),
     {},
     null,

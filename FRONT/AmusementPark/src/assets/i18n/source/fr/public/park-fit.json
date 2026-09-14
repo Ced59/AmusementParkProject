@@ -285,7 +285,7 @@
       },
       "values": {
         "score": "{{score}}/100 · couverture {{coverage}} %",
-        "scoreUnavailable": "Score non publié",
+        "scoreUnavailable": "Score non publié · couverture {{coverage}} %",
         "together": "Possibles ensemble : {{count}}",
         "organized": "Avec organisation du groupe : {{count}}",
         "unknowns": "Attractions inconnues : {{attractions}} · facteurs inconnus : {{factors}}",

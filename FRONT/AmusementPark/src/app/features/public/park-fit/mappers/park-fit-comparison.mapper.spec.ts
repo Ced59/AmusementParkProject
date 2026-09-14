@@ -28,6 +28,22 @@ describe('buildParkFitComparisonSections', () => {
     expect(verifiedRow?.isDifferent).toBe(false);
   });
 
+  it('shows coverage when suspended scores differ on that visible value', () => {
+    const first: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
+    const second: ParkFitSearchPark = buildPark('park-2', 82, 12, 1);
+    first.comparativeScore = null;
+    second.comparativeScore = null;
+    first.coveragePercent = 60;
+    second.coveragePercent = 80;
+
+    const overallRow = buildParkFitComparisonSections([first, second], (): string => 'date')
+      .flatMap((section) => section.rows)
+      .find((row) => row.id === 'overall');
+
+    expect(overallRow?.isDifferent).toBe(true);
+    expect(overallRow?.cells.map((comparisonCell) => comparisonCell.primaryParams['coverage'])).toEqual([60, 80]);
+  });
+
   it('only exposes a verified HTTPS source URL in the official-link row', () => {
     const unsafe: ParkFitSearchPark = buildPark('park-1', 82, 12, 1);
     unsafe.criticalSources = [{

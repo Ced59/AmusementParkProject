@@ -5062,7 +5062,7 @@
       },
       "values": {
         "score": "{{score}}/100 · cobertura del {{coverage}}%",
-        "scoreUnavailable": "Puntuación no publicada",
+        "scoreUnavailable": "Puntuación no publicada · cobertura del {{coverage}}%",
         "together": "Posibles juntos: {{count}}",
         "organized": "Con organización del grupo: {{count}}",
         "unknowns": "Atracciones desconocidas: {{attractions}} · factores desconocidos: {{factors}}",
