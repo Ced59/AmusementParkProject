@@ -1,0 +1,83 @@
+:host,
+.park-fit-report-review,
+.park-fit-report-review header,
+.park-fit-report-review header > div,
+.park-fit-report-review label,
+.park-fit-report-review__actions {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.park-fit-report-review {
+  display: grid;
+  gap: 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--app-warning) 45%, var(--app-border));
+  border-radius: var(--radius-lg);
+  padding: 0.9rem;
+  background: color-mix(in srgb, var(--app-warning) 7%, transparent);
+}
+
+.park-fit-report-review header {
+  display: flex;
+  gap: 0.6rem;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.park-fit-report-review header > div,
+.park-fit-report-review label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.park-fit-report-review p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.park-fit-report-review span,
+.park-fit-report-review time {
+  color: var(--app-text-muted);
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+.park-fit-report-review__reason {
+  color: var(--app-heading);
+  font-weight: 850;
+}
+
+.park-fit-report-review__source-reference {
+  color: var(--app-text-muted);
+  font-size: 0.85rem;
+}
+
+.park-fit-report-review a {
+  color: var(--app-primary);
+  overflow-wrap: anywhere;
+}
+
+.park-fit-report-review textarea {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  resize: vertical;
+}
+
+.park-fit-report-review__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+@media (max-width: 420px) {
+  .park-fit-report-review header,
+  .park-fit-report-review__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .park-fit-report-review__actions > button {
+    width: 100%;
+  }
+}

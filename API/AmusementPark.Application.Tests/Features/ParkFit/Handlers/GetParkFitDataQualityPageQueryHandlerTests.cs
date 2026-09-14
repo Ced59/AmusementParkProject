@@ -2,12 +2,15 @@ using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkFit.Handlers;
+using AmusementPark.Application.Features.ParkFit.Ports;
 using AmusementPark.Application.Features.ParkFit.Queries;
+using AmusementPark.Application.Features.ParkFit.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.ParkFit;
 using Moq;
 using Xunit;
 
@@ -41,6 +44,10 @@ public sealed class GetParkFitDataQualityPageQueryHandlerTests
         Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IParkOpeningHoursRepository> openingHours =
             new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<IParkFitOperationalStatusRepository> operationalStatuses =
+            new Mock<IParkFitOperationalStatusRepository>(MockBehavior.Strict);
+        Mock<IParkFitSourceReportRepository> reports =
+            new Mock<IParkFitSourceReportRepository>(MockBehavior.Strict);
         parks.Setup(repository => repository.GetPageAsync(
                 2,
                 10,
@@ -64,22 +71,35 @@ public sealed class GetParkFitDataQualityPageQueryHandlerTests
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { park.Id })),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>());
+        operationalStatuses.Setup(repository => repository.GetByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkFitOperationalStatus>());
+        reports.Setup(repository => repository.CountPendingByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, int> { [park.Id] = 2 });
         GetParkFitDataQualityPageQueryHandler handler = new GetParkFitDataQualityPageQueryHandler(
             parks.Object,
             items.Object,
             openingHours.Object,
+            operationalStatuses.Object,
+            reports.Object,
             new PagedQueryValidator());
 
-        ApplicationResult<PagedResult<ParkFitDataQualityAssessment>> result =
+        ApplicationResult<PagedResult<ParkFitDataQualityOperationsResult>> result =
             await handler.HandleAsync(new GetParkFitDataQualityPageQuery(new PagedQuery(2, 10)));
 
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
         Assert.Equal(21, result.Value.TotalItems);
-        ParkFitDataQualityAssessment assessment = Assert.Single(result.Value.Items);
+        ParkFitDataQualityOperationsResult operations = Assert.Single(result.Value.Items);
+        ParkFitDataQualityAssessment assessment = operations.Assessment;
         Assert.Equal(park.Id, assessment.ParkId);
         Assert.Equal(1, assessment.IssueItemCount);
         Assert.Contains(ParkFitDataQualityIssue.MissingAccessConditions, assessment.Issues);
+        Assert.Equal(2, operations.PendingReportCount);
+        Assert.Equal(ParkFitRecommendationState.Active, operations.RecommendationState);
         parks.VerifyAll();
         items.VerifyAll();
         openingHours.VerifyAll();
@@ -92,13 +112,19 @@ public sealed class GetParkFitDataQualityPageQueryHandlerTests
         Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IParkOpeningHoursRepository> openingHours =
             new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<IParkFitOperationalStatusRepository> operationalStatuses =
+            new Mock<IParkFitOperationalStatusRepository>(MockBehavior.Strict);
+        Mock<IParkFitSourceReportRepository> reports =
+            new Mock<IParkFitSourceReportRepository>(MockBehavior.Strict);
         GetParkFitDataQualityPageQueryHandler handler = new GetParkFitDataQualityPageQueryHandler(
             parks.Object,
             items.Object,
             openingHours.Object,
+            operationalStatuses.Object,
+            reports.Object,
             new PagedQueryValidator());
 
-        ApplicationResult<PagedResult<ParkFitDataQualityAssessment>> result =
+        ApplicationResult<PagedResult<ParkFitDataQualityOperationsResult>> result =
             await handler.HandleAsync(new GetParkFitDataQualityPageQuery(new PagedQuery(0, 10)));
 
         Assert.False(result.IsSuccess);
@@ -106,5 +132,7 @@ public sealed class GetParkFitDataQualityPageQueryHandlerTests
         parks.VerifyNoOtherCalls();
         items.VerifyNoOtherCalls();
         openingHours.VerifyNoOtherCalls();
+        operationalStatuses.VerifyNoOtherCalls();
+        reports.VerifyNoOtherCalls();
     }
 }

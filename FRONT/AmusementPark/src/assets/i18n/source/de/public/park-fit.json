@@ -1,5 +1,6 @@
 {
   "parkFit": {
+    "reports": { "open": "Diese Angabe melden", "reasonLabel": "Was scheint nicht zu stimmen?", "reasons": { "Outdated": "Die Angabe ist veraltet", "Incorrect": "Die Angabe ist falsch", "Unavailable": "Die Quelle lässt sich nicht mehr öffnen", "Incomplete": "Eine wichtige Angabe fehlt", "Other": "Anderes Problem" }, "detailsLabel": "Optionale Erläuterung", "detailsPlaceholder": "Beschreibe ohne persönliche Daten, was geprüft werden soll…", "send": "Meldung senden", "sending": "Wird gesendet…", "success": "Danke, die Meldung wurde an das Team gesendet.", "rateLimited": "Von diesem Gerät wurden zu viele Meldungen gesendet. Versuche es später erneut.", "error": "Die Meldung konnte nicht gesendet werden. Versuche es gleich noch einmal." },
     "seo": {
       "title": "Finde einen Park für deine Gruppe — Amusement Parks",
       "description": "Vergleiche dokumentierte Parks nach Gruppe, Datum und Vorlieben – ohne Konto und ohne gespeicherte Kriterien."

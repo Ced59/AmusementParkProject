@@ -1968,6 +1968,55 @@
       "loadError": "Impossibile caricare gli operatori."
     },
     "parkFitDataQuality": {
+      "reports": {
+        "kicker": "Segnalazioni dei visitatori",
+        "title": "Segnalazioni da verificare",
+        "subtitle": "In attesa nell’intero portafoglio: {{count}}. Controlla la prova prima di decidere.",
+        "pendingMetric": "Segnalazioni aperte",
+        "globalMetric": "nell’intero portafoglio",
+        "forPark": "In attesa per questo parco: {{count}}",
+        "kind": {
+          "GeneralParkData": "Dato generale del parco",
+          "AccessCondition": "Condizione di accesso",
+          "OpeningCalendar": "Calendario di apertura"
+        },
+        "reason": {
+          "Outdated": "Il dato sembra superato",
+          "Incorrect": "Il dato sembra errato",
+          "Unavailable": "La fonte non è più disponibile",
+          "Incomplete": "Il dato sembra incompleto",
+          "Other": "Altro problema"
+        },
+        "sourceReference": "Riferimento mostrato: {{reference}}",
+        "openSource": "Apri la prova segnalata",
+        "noteLabel": "Nota decisionale facoltativa",
+        "resolve": "Segna come corretto",
+        "dismiss": "Ignora la segnalazione"
+      },
+      "operations": {
+        "state": {
+          "Active": "Consigli attivi",
+          "Suspended": "Consigli sospesi"
+        },
+        "stateHelp": {
+          "Active": "Questo parco può apparire in Park Fit se la qualità dei dati è sufficiente.",
+          "Suspended": "Il parco resta pubblico, ma è escluso da Park Fit."
+        },
+        "action": {
+          "Active": "Riattiva in Park Fit",
+          "Suspended": "Sospendi in Park Fit"
+        },
+        "reasonLabel": "Motivazione obbligatoria",
+        "reasonPlaceholder": "Spiega la verifica o la correzione necessaria…",
+        "confirm": "Conferma la decisione",
+        "saving": "Salvataggio…",
+        "history": "Cronologia recente delle decisioni",
+        "decision": {
+          "Suspended": "Sospeso",
+          "Restored": "Riattivato"
+        },
+        "error": "Non è stato possibile salvare la decisione. Aggiorna i dati e riprova."
+      },
       "navTitle": "Qualità dati del confronto",
       "kicker": "Preparazione dei dati",
       "title": "Parchi pronti per il confronto",
@@ -4829,6 +4878,24 @@
       "error": "Al momento non è possibile caricare i tuoi profili privati.",
       "empty": "Non hai ancora salvato un profilo Park Fit.",
       "add": "Aggiungi al gruppo"
+    },
+    "reports": {
+      "open": "Segnala questo dato",
+      "reasonLabel": "Cosa sembra errato?",
+      "reasons": {
+        "Outdated": "Il dato è superato",
+        "Incorrect": "Il dato è errato",
+        "Unavailable": "La fonte non si apre più",
+        "Incomplete": "Manca un’informazione importante",
+        "Other": "Altro problema"
+      },
+      "detailsLabel": "Dettaglio facoltativo",
+      "detailsPlaceholder": "Indica cosa controllare, senza dati personali…",
+      "send": "Invia la segnalazione",
+      "sending": "Invio…",
+      "success": "Grazie, la segnalazione è stata inviata al team.",
+      "rateLimited": "Sono state inviate troppe segnalazioni da questo dispositivo. Riprova più tardi.",
+      "error": "Non è stato possibile inviare la segnalazione. Riprova tra poco."
     },
     "seo": {
       "title": "Trova un parco adatto al tuo gruppo — Amusement Parks",

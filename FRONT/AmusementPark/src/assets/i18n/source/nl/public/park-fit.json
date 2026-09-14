@@ -1,5 +1,6 @@
 {
   "parkFit": {
+    "reports": { "open": "Deze informatie melden", "reasonLabel": "Wat lijkt er niet te kloppen?", "reasons": { "Outdated": "De informatie is verouderd", "Incorrect": "De informatie is onjuist", "Unavailable": "De bron opent niet meer", "Incomplete": "Belangrijke informatie ontbreekt", "Other": "Ander probleem" }, "detailsLabel": "Optionele toelichting", "detailsPlaceholder": "Vertel wat gecontroleerd moet worden, zonder persoonsgegevens…", "send": "Melding versturen", "sending": "Versturen…", "success": "Bedankt, de melding is naar het team gestuurd.", "rateLimited": "Vanaf dit apparaat zijn te veel meldingen verstuurd. Probeer het later opnieuw.", "error": "De melding kon niet worden verstuurd. Probeer het zo opnieuw." },
     "seo": {
       "title": "Vind een park dat bij je groep past — Amusement Parks",
       "description": "Vergelijk gedocumenteerde parken op basis van je groep, datum en voorkeuren, zonder account en zonder je criteria op te slaan."

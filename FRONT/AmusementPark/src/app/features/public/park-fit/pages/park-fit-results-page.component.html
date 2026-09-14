@@ -151,6 +151,11 @@
                         <i class="pi pi-external-link" aria-hidden="true"></i>
                       </a>
                     }
+                    <app-park-fit-source-report
+                      [parkId]="park.parkId"
+                      evidenceKind="OpeningCalendar"
+                      [sourceUrl]="calendarSourceUrl(park.calendarSourceUrl)">
+                    </app-park-fit-source-report>
                   </div>
                 </article>
               </div>
@@ -257,6 +262,12 @@
                         <strong>{{ sourceKindKey(source.kind) | translate }}</strong>
                         <span>{{ sourceSummary(source) }}</span>
                         <small>{{ 'parkFit.results.proofs.checked' | translate:{ date: verifiedDateLabel(source.verifiedAtUtc) } }}</small>
+                        <app-park-fit-source-report
+                          [parkId]="park.parkId"
+                          evidenceKind="AccessCondition"
+                          [sourceUrl]="sourceUrl(source)"
+                          [sourceReference]="source.reference">
+                        </app-park-fit-source-report>
                       </div>
                       @if (sourceUrl(source); as url) {
                         <a [href]="url" target="_blank" rel="noopener noreferrer">

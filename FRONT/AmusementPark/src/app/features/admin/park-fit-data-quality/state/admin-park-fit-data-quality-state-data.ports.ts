@@ -4,7 +4,7 @@ import { AdminParkFitDataQualityApiService } from '@app/data-access/admin/admin-
 
 export interface AdminParkFitDataQualityStatePort extends Pick<
   AdminParkFitDataQualityApiService,
-  'getPage'> {
+  'getPage' | 'getPendingReports' | 'reviewReport' | 'changeOperationalStatus'> {
 }
 
 export const ADMIN_PARK_FIT_DATA_QUALITY_STATE_PORT =

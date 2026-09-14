@@ -32,6 +32,15 @@ export interface ParkFitDataQualityItem {
   issues: ParkFitDataQualityIssue[];
 }
 
+export type ParkFitRecommendationState = 'Active' | 'Suspended';
+
+export interface ParkFitOperationalDecision {
+  type: 'Suspended' | 'Restored';
+  reason: string;
+  decidedAtUtc: string;
+  revision: number;
+}
+
 export interface ParkFitDataQuality {
   parkId: string;
   parkName: string;
@@ -50,6 +59,50 @@ export interface ParkFitDataQuality {
   lastVerifiedAtUtc?: string | null;
   issues: ParkFitDataQualityIssue[];
   issueSamples: ParkFitDataQualityItem[];
+  recommendationState: ParkFitRecommendationState;
+  operationalRevision: number;
+  operationalUpdatedAtUtc?: string | null;
+  pendingReportCount: number;
+  recentDecisions: ParkFitOperationalDecision[];
 }
 
 export type ParkFitDataQualityPage = PagedResult<ParkFitDataQuality>;
+
+export type ParkFitSourceReportStatus = 'Pending' | 'Resolved' | 'Dismissed';
+export type ParkFitSourceReportReason = 'Outdated' | 'Incorrect' | 'Unavailable' | 'Incomplete' | 'Other';
+export type ParkFitEvidenceKind = 'GeneralParkData' | 'AccessCondition' | 'OpeningCalendar';
+
+export interface ParkFitSourceReport {
+  reportId: string;
+  parkId: string;
+  parkName: string;
+  evidenceKind: ParkFitEvidenceKind;
+  sourceUrl?: string | null;
+  sourceReference?: string | null;
+  reason: ParkFitSourceReportReason;
+  details?: string | null;
+  status: ParkFitSourceReportStatus;
+  submittedAtUtc: string;
+  reviewedAtUtc?: string | null;
+  decisionNote?: string | null;
+  revision: number;
+}
+
+export type ParkFitSourceReportPage = PagedResult<ParkFitSourceReport>;
+
+export interface ParkFitOperationsSnapshot {
+  quality: ParkFitDataQualityPage;
+  reports: ParkFitSourceReportPage;
+}
+
+export interface ParkFitSourceReportReviewRequest {
+  decision: 'Resolved' | 'Dismissed';
+  decisionNote: string | null;
+  expectedRevision: number;
+}
+
+export interface ParkFitOperationalStatusRequest {
+  targetState: ParkFitRecommendationState;
+  reason: string;
+  expectedRevision: number;
+}

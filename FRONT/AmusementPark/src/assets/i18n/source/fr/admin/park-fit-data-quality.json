@@ -2,6 +2,15 @@
   "admin": {
     "dashboard": { "shortcuts": { "parkFitDataQuality": "Vérifier si les données des parcs sont prêtes pour la comparaison." } },
     "parkFitDataQuality": {
+      "reports": {
+        "kicker": "Retours visiteurs", "title": "Signalements à vérifier", "subtitle": "En attente dans tout le portefeuille : {{count}}. Vérifie la preuve avant de décider.", "pendingMetric": "Signalements ouverts", "globalMetric": "sur l’ensemble du portefeuille", "forPark": "En attente pour ce parc : {{count}}",
+        "kind": { "GeneralParkData": "Donnée générale du parc", "AccessCondition": "Condition d’accès", "OpeningCalendar": "Calendrier d’ouverture" }, "reason": { "Outdated": "La donnée semble dépassée", "Incorrect": "La donnée semble incorrecte", "Unavailable": "La source n’est plus accessible", "Incomplete": "La donnée semble incomplète", "Other": "Autre problème" },
+        "sourceReference": "Référence affichée : {{reference}}", "openSource": "Ouvrir la preuve signalée", "noteLabel": "Note de décision facultative", "resolve": "Marquer comme corrigé", "dismiss": "Classer sans suite"
+      },
+      "operations": {
+        "state": { "Active": "Recommandations actives", "Suspended": "Recommandations suspendues" }, "stateHelp": { "Active": "Ce parc peut apparaître dans Park Fit si sa qualité est suffisante.", "Suspended": "Ce parc reste public, mais il est exclu de Park Fit." }, "action": { "Active": "Réactiver dans Park Fit", "Suspended": "Suspendre dans Park Fit" },
+        "reasonLabel": "Justification obligatoire", "reasonPlaceholder": "Explique la vérification ou la correction attendue…", "confirm": "Confirmer la décision", "saving": "Enregistrement…", "history": "Historique récent des décisions", "decision": { "Suspended": "Suspendu", "Restored": "Réactivé" }, "error": "La décision n’a pas pu être enregistrée. Les données ont peut-être changé ; actualise puis réessaie."
+      },
       "navTitle": "Qualité du comparateur",
       "kicker": "Préparation des données",
       "title": "Parcs prêts pour la comparaison",

@@ -142,6 +142,7 @@ function buildResponse(): ParkFitSearchResponse {
     inspectedCandidateCount: 1,
     qualityEligibleCandidateCount: 1,
     qualityRejectedCandidateCount: 0,
+    operationallySuspendedCandidateCount: 0,
     candidatePoolTruncated: false,
     qualityStatusCounts: { Eligible: 1 },
     qualityIssueCounts: {},

@@ -13,6 +13,8 @@ import { ButtonDirective } from '@shared/ui/primitives/button';
 import { Card } from '@shared/ui/primitives/card';
 import { Tag } from '@shared/ui/primitives/tag';
 import { AdminParkFitDataQualityFacade } from '../../state/admin-park-fit-data-quality.facade';
+import { AdminParkFitOperationalControlsComponent } from '../../components/park-fit-operations/admin-park-fit-operational-controls.component';
+import { AdminParkFitReportReviewComponent } from '../../components/park-fit-report-review/admin-park-fit-report-review.component';
 
 @Component({
   selector: 'app-admin-park-fit-data-quality',
@@ -28,7 +30,9 @@ import { AdminParkFitDataQualityFacade } from '../../state/admin-park-fit-data-q
     Card,
     UiTemplate,
     Tag,
-    PageStateComponent
+    PageStateComponent,
+    AdminParkFitOperationalControlsComponent,
+    AdminParkFitReportReviewComponent
   ]
 })
 export class AdminParkFitDataQualityComponent implements OnInit {
@@ -39,6 +43,9 @@ export class AdminParkFitDataQualityComponent implements OnInit {
   protected readonly eligibleCount = this.facade.eligibleCount;
   protected readonly actionRequiredCount = this.facade.actionRequiredCount;
   protected readonly averageCoveragePercent = this.facade.averageCoveragePercent;
+  protected readonly reports = this.facade.reports;
+  protected readonly pendingReportTotal = this.facade.pendingReportTotal;
+  protected readonly actionErrorKey = this.facade.actionErrorKey;
 
   constructor(
     private readonly facade: AdminParkFitDataQualityFacade,

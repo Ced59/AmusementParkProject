@@ -16,6 +16,8 @@ public sealed class ParkFitSearchResponseDto
 
     public int QualityRejectedCandidateCount { get; init; }
 
+    public int OperationallySuspendedCandidateCount { get; init; }
+
     public bool CandidatePoolTruncated { get; init; }
 
     public IReadOnlyDictionary<string, int> QualityStatusCounts { get; init; } =

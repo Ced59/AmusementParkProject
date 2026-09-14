@@ -2,7 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkFit.Queries;
-using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Application.Features.ParkFit.Results;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.ParkFit;
@@ -27,12 +27,12 @@ public sealed class AdminParkFitDataQualityController : ControllerBase
 {
     private readonly IQueryHandler<
         GetParkFitDataQualityPageQuery,
-        ApplicationResult<PagedResult<ParkFitDataQualityAssessment>>> handler;
+        ApplicationResult<PagedResult<ParkFitDataQualityOperationsResult>>> handler;
 
     public AdminParkFitDataQualityController(
         IQueryHandler<
             GetParkFitDataQualityPageQuery,
-            ApplicationResult<PagedResult<ParkFitDataQualityAssessment>>> handler)
+            ApplicationResult<PagedResult<ParkFitDataQualityOperationsResult>>> handler)
     {
         this.handler = handler;
     }
@@ -46,7 +46,7 @@ public sealed class AdminParkFitDataQualityController : ControllerBase
         [FromQuery] PaginationRequestDto pagination,
         CancellationToken cancellationToken = default)
     {
-        ApplicationResult<PagedResult<ParkFitDataQualityAssessment>> result =
+        ApplicationResult<PagedResult<ParkFitDataQualityOperationsResult>> result =
             await this.handler.HandleAsync(
                 new GetParkFitDataQualityPageQuery(pagination.ToApplication()),
                 cancellationToken);

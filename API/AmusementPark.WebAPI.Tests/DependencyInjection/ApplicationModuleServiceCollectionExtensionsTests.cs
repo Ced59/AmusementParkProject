@@ -10,6 +10,8 @@ using AmusementPark.Application.Features.Contact.Commands;
 using AmusementPark.Application.Features.Contact.Contracts;
 using AmusementPark.Application.Features.Contact.Queries;
 using AmusementPark.Application.Features.ParkFit.Handlers;
+using AmusementPark.Application.Features.ParkFit.Ports;
+using AmusementPark.Application.Features.ParkFit.Commands;
 using AmusementPark.Application.Features.ParkFit.Queries;
 using AmusementPark.Application.Features.ParkFit.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -72,8 +74,12 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetTechnicalStatsQuery, ApplicationResult<TechnicalStatsSnapshot>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpdateTechnicalStatsSettingsCommand, ApplicationResult<TechnicalStatsSettings>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetParkPricingQuery, ApplicationResult<AmusementPark.Core.Domain.Parks.ParkPricing>>));
-        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetParkFitDataQualityPageQuery, ApplicationResult<PagedResult<ParkFitDataQualityAssessment>>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetParkFitDataQualityPageQuery, ApplicationResult<PagedResult<ParkFitDataQualityOperationsResult>>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<SearchParksByFitQuery, ApplicationResult<ParkFitSearchResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<ReviewParkFitSourceReportCommand, ApplicationResult>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<ChangeParkFitOperationalStatusCommand, ApplicationResult>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetParkFitSourceReportsQuery, ApplicationResult<PagedResult<ParkFitSourceReportResult>>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<UpsertParkPricingCommand, ApplicationResult<AmusementPark.Core.Domain.Parks.ParkPricing>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<ListUserVisitsQuery, ApplicationResult<VisitPageResult>>));
@@ -124,6 +130,7 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         services.AddSingleton(Mock.Of<IParkRepository>());
         services.AddSingleton(Mock.Of<IParkItemRepository>());
         services.AddSingleton(Mock.Of<IParkOpeningHoursRepository>());
+        services.AddSingleton(Mock.Of<IParkFitOperationalStatusRepository>());
 
         using ServiceProvider serviceProvider = services.BuildServiceProvider();
 

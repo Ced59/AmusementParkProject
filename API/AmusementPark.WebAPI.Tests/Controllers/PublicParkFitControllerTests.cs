@@ -1,8 +1,10 @@
 using System.Reflection;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.ParkFit.Commands;
 using AmusementPark.Application.Features.ParkFit.Queries;
 using AmusementPark.Application.Features.ParkFit.Results;
+using AmusementPark.Core.Domain.ParkFit;
 using AmusementPark.WebAPI.Contracts.ParkFit;
 using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.RateLimiting;
@@ -40,7 +42,12 @@ public sealed class PublicParkFitControllerTests
                     && query.MaximumResults == 5),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<ParkFitSearchResult>.Success(applicationResult));
-        PublicParkFitController controller = new PublicParkFitController(handler.Object);
+        Mock<ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult>> reportHandler =
+            new Mock<ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult>>(
+                MockBehavior.Strict);
+        PublicParkFitController controller = new PublicParkFitController(
+            handler.Object,
+            reportHandler.Object);
         ParkFitSearchRequestDto request = new ParkFitSearchRequestDto
         {
             EvaluationDate = evaluationDate,
@@ -64,6 +71,74 @@ public sealed class PublicParkFitControllerTests
     }
 
     [Fact]
+    public async Task ReportAsync_WithValidRequest_ShouldSubmitAnAnonymousReport()
+    {
+        Mock<IQueryHandler<
+            SearchParksByFitQuery,
+            ApplicationResult<ParkFitSearchResult>>> searchHandler =
+            new Mock<IQueryHandler<
+                SearchParksByFitQuery,
+                ApplicationResult<ParkFitSearchResult>>>(MockBehavior.Strict);
+        Mock<ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult>> reportHandler =
+            new Mock<ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult>>(
+                MockBehavior.Strict);
+        reportHandler.Setup(value => value.HandleAsync(
+                It.Is<SubmitParkFitSourceReportCommand>(command =>
+                    command.ParkId == "park-1"
+                    && command.EvidenceKind == ParkFitEvidenceKind.OpeningCalendar
+                    && command.Reason == ParkFitSourceReportReason.Outdated
+                    && command.SourceUrl == "https://example.com/calendar"
+                    && command.Details == "Horaires anciens"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult.Success());
+        PublicParkFitController controller = new PublicParkFitController(
+            searchHandler.Object,
+            reportHandler.Object);
+        SubmitParkFitSourceReportRequestDto request = new SubmitParkFitSourceReportRequestDto
+        {
+            ParkId = "park-1",
+            EvidenceKind = "OpeningCalendar",
+            SourceUrl = "https://example.com/calendar",
+            Reason = "Outdated",
+            Details = "Horaires anciens",
+        };
+
+        IActionResult response = await controller.ReportAsync(request, CancellationToken.None);
+
+        Assert.IsType<AcceptedResult>(response);
+        reportHandler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReportAsync_WithUnknownTechnicalEnumValue_ShouldReturnBadRequest()
+    {
+        Mock<IQueryHandler<
+            SearchParksByFitQuery,
+            ApplicationResult<ParkFitSearchResult>>> searchHandler =
+            new Mock<IQueryHandler<
+                SearchParksByFitQuery,
+                ApplicationResult<ParkFitSearchResult>>>(MockBehavior.Strict);
+        Mock<ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult>> reportHandler =
+            new Mock<ICommandHandler<SubmitParkFitSourceReportCommand, ApplicationResult>>(
+                MockBehavior.Strict);
+        PublicParkFitController controller = new PublicParkFitController(
+            searchHandler.Object,
+            reportHandler.Object);
+
+        IActionResult response = await controller.ReportAsync(
+            new SubmitParkFitSourceReportRequestDto
+            {
+                ParkId = "park-1",
+                EvidenceKind = "999",
+                Reason = "Outdated",
+            },
+            CancellationToken.None);
+
+        Assert.IsType<BadRequestResult>(response);
+        reportHandler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public void Controller_ShouldBePublicNoStoreAndRateLimited()
     {
         RouteAttribute route = Assert.IsType<RouteAttribute>(
@@ -83,5 +158,14 @@ public sealed class PublicParkFitControllerTests
         EnableRateLimitingAttribute rateLimit = Assert.IsType<EnableRateLimitingAttribute>(
             action.GetCustomAttribute<EnableRateLimitingAttribute>());
         Assert.Equal(RateLimitPolicyNames.ParkFitSearch, rateLimit.PolicyName);
+
+        MethodInfo reportAction = typeof(PublicParkFitController).GetMethod(
+            nameof(PublicParkFitController.ReportAsync))!;
+        HttpPostAttribute reportPost = Assert.IsType<HttpPostAttribute>(
+            reportAction.GetCustomAttribute<HttpPostAttribute>());
+        Assert.Equal("reports", reportPost.Template);
+        EnableRateLimitingAttribute reportRateLimit = Assert.IsType<EnableRateLimitingAttribute>(
+            reportAction.GetCustomAttribute<EnableRateLimitingAttribute>());
+        Assert.Equal(RateLimitPolicyNames.ParkFitReports, reportRateLimit.PolicyName);
     }
 }

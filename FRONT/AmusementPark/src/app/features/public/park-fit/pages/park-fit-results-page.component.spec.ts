@@ -13,6 +13,7 @@ interface ParkFitResultsTestSurface {
   criteriaRoute(): string[];
   homeRoute(): string[];
   countryName(countryCode: string | null): string;
+  calendarSourceUrl(value: string | null): string | null;
   sourceUrl(source: ParkFitSearchPark['criticalSources'][number]): string | null;
   scoreReasonKey(value: string): string;
 }
@@ -47,6 +48,10 @@ describe('ParkFitResultsPageComponent', () => {
     component.ngOnInit();
 
     expect(page.sourceUrl(park.criticalSources[0]!)).toBeNull();
+    expect(page.calendarSourceUrl('http://example.test/calendar')).toBeNull();
+    expect(page.calendarSourceUrl('https://example.test/calendar')).toBe(
+      'https://example.test/calendar'
+    );
     expect(page.scoreReasonKey('FutureInternalReason')).toBe('parkFit.results.scoreReasons.Unknown');
   });
 });
@@ -98,6 +103,7 @@ function buildResponse(): ParkFitSearchResponse {
     inspectedCandidateCount: 1,
     qualityEligibleCandidateCount: 1,
     qualityRejectedCandidateCount: 0,
+    operationallySuspendedCandidateCount: 0,
     candidatePoolTruncated: false,
     qualityStatusCounts: {},
     qualityIssueCounts: {},
