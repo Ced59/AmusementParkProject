@@ -26,7 +26,7 @@ internal static class AttractionPhysicalRestrictionEvaluator
         {
             context.AddUnknown(
                 AttractionCompatibilityReasonCode.ConflictingConditions,
-                heightConditions[0]);
+                SelectStableCondition(heightConditions));
             return;
         }
 
@@ -34,7 +34,7 @@ internal static class AttractionPhysicalRestrictionEvaluator
         {
             context.AddUnknown(
                 AttractionCompatibilityReasonCode.HeightMissing,
-                heightConditions[0]);
+                SelectStableCondition(heightConditions));
             return;
         }
 
@@ -106,7 +106,8 @@ internal static class AttractionPhysicalRestrictionEvaluator
             return;
         }
 
-        if (context.HasUnresolvedHeightAccompaniedAlternative)
+        if (context.HasUnresolvedHeightAccompaniedAlternative
+            && profile.CanBeAccompanied != false)
         {
             return;
         }
@@ -192,7 +193,8 @@ internal static class AttractionPhysicalRestrictionEvaluator
             return;
         }
 
-        if (context.HasUnresolvedAgeAccompaniedAlternative)
+        if (context.HasUnresolvedAgeAccompaniedAlternative
+            && profile.CanBeAccompanied != false)
         {
             return;
         }
@@ -309,5 +311,25 @@ internal static class AttractionPhysicalRestrictionEvaluator
             .ThenBy(static condition => condition.EffectiveFrom)
             .ThenBy(static condition => condition.EffectiveTo)
             .FirstOrDefault();
+    }
+
+    private static AttractionAccessCondition SelectStableCondition(
+        IEnumerable<AttractionAccessCondition> conditions)
+    {
+        return conditions
+            .OrderBy(static condition => condition.Type)
+            .ThenBy(static condition => condition.Value)
+            .ThenBy(static condition => condition.Unit)
+            .ThenByDescending(static condition => condition.MinimumCompanionAge ?? -1)
+            .ThenBy(static condition => condition.RequiresAccompaniment)
+            .ThenBy(static condition => condition.Scope)
+            .ThenBy(static condition => condition.ScopeDetail, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceKind)
+            .ThenBy(static condition => condition.SourceUrl, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceReference, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.SourceLanguageCode, StringComparer.Ordinal)
+            .ThenBy(static condition => condition.EffectiveFrom)
+            .ThenBy(static condition => condition.EffectiveTo)
+            .First();
     }
 }

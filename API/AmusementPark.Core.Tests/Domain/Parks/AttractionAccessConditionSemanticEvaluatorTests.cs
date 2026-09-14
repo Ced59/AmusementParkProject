@@ -93,4 +93,23 @@ public sealed class AttractionAccessConditionSemanticEvaluatorTests
             AttractionAccessConditionSemanticIssue.InconsistentAccompaniment,
             Assert.Single(issues));
     }
+
+    [Fact]
+    public void Evaluate_WhenCompanionAgeHasNoAccompanimentSignal_ShouldReturnIssue()
+    {
+        AttractionAccessCondition condition = new AttractionAccessCondition
+        {
+            Type = AttractionAccessConditionType.MinHeight,
+            Value = 100,
+            Unit = AttractionAccessConditionUnit.Centimeter,
+            MinimumCompanionAge = 18,
+        };
+
+        IReadOnlyCollection<AttractionAccessConditionSemanticIssue> issues =
+            AttractionAccessConditionSemanticEvaluator.Evaluate(condition);
+
+        Assert.Equal(
+            AttractionAccessConditionSemanticIssue.InconsistentAccompaniment,
+            Assert.Single(issues));
+    }
 }

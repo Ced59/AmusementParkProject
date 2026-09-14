@@ -202,6 +202,35 @@ public sealed class AttractionCompatibilityEvaluatorTests
             reason => reason.Code == AttractionCompatibilityReasonCode.HeightMissing);
     }
 
+    [Fact]
+    public void Evaluate_WhenHeightIsMissing_ShouldSelectAStableReasonCondition()
+    {
+        ParkFitMemberProfile profile = new ParkFitMemberProfile();
+        AttractionAccessCondition minimum = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            100);
+        AttractionAccessCondition maximum = BuildHeightCondition(
+            AttractionAccessConditionType.MaxHeight,
+            200);
+
+        AttractionCompatibility first = this.Evaluate(profile, minimum, maximum);
+        AttractionCompatibility second = this.Evaluate(profile, maximum, minimum);
+
+        Assert.Equal(
+            first.Reasons.Select(static reason => new
+            {
+                reason.Code,
+                reason.ConditionType,
+                reason.RequiredValue,
+            }),
+            second.Reasons.Select(static reason => new
+            {
+                reason.Code,
+                reason.ConditionType,
+                reason.RequiredValue,
+            }));
+    }
+
     [Theory]
     [InlineData(12, 12, AttractionCompatibilityState.Incompatible)]
     [InlineData(12, 14, AttractionCompatibilityState.Unknown)]
@@ -376,6 +405,44 @@ public sealed class AttractionCompatibilityEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WhenStaleHeightFallbackCannotBeUsed_ShouldKeepTheCertainSoloRejection()
+    {
+        AttractionAccessCondition accompanied = BuildAccompaniedHeightCondition(100, 16);
+        accompanied.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                110,
+                canBeAccompanied: false),
+            BuildHeightCondition(AttractionAccessConditionType.MinHeight, 120),
+            accompanied);
+
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.BelowMinimumHeight);
+    }
+
+    [Fact]
+    public void Evaluate_WhenStaleAgeFallbackCannotBeUsed_ShouldKeepTheCertainSoloRejection()
+    {
+        AttractionAccessCondition accompanied = BuildAccompaniedAgeCondition(10, 18);
+        accompanied.VerifiedAtUtc = EvaluationTimestamp.AddDays(-400);
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(
+                ageRange: new ParkFitAgeRange(12, 12),
+                canBeAccompanied: false),
+            BuildAgeCondition(AttractionAccessConditionType.MinAge, 14),
+            accompanied);
+
+        Assert.Equal(AttractionCompatibilityState.Incompatible, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.Code == AttractionCompatibilityReasonCode.BelowMinimumAge);
+    }
+
+    [Fact]
     public void Evaluate_WhenASecondarySourceIsTheOnlyEvidence_ShouldReturnUnknown()
     {
         AttractionAccessCondition condition = BuildHeightCondition(
@@ -454,6 +521,25 @@ public sealed class AttractionCompatibilityEvaluatorTests
             reason => reason.Code == AttractionCompatibilityReasonCode.ConditionDefinitionUnusable
                 && reason.SemanticIssues.Contains(
                     AttractionAccessConditionSemanticIssue.InvalidUnit));
+    }
+
+    [Fact]
+    public void Evaluate_WhenCompanionAgeHasNoAccompanimentSignal_ShouldReturnUnknown()
+    {
+        AttractionAccessCondition condition = BuildHeightCondition(
+            AttractionAccessConditionType.MinHeight,
+            100);
+        condition.MinimumCompanionAge = 18;
+
+        AttractionCompatibility result = this.Evaluate(
+            new ParkFitMemberProfile(heightCentimeters: 120),
+            condition);
+
+        Assert.Equal(AttractionCompatibilityState.Unknown, result.State);
+        Assert.Contains(
+            result.Reasons,
+            reason => reason.SemanticIssues.Contains(
+                AttractionAccessConditionSemanticIssue.InconsistentAccompaniment));
     }
 
     [Fact]

@@ -52,9 +52,13 @@ public static class AttractionAccessConditionSemanticEvaluator
                 break;
         }
 
-        if (condition.Type is AttractionAccessConditionType.MinHeightAccompanied
-                or AttractionAccessConditionType.MinAgeAccompanied
-            && condition.RequiresAccompaniment == false)
+        bool typeRequiresAccompaniment = condition.Type is
+            AttractionAccessConditionType.MinHeightAccompanied
+            or AttractionAccessConditionType.MinAgeAccompanied;
+        if ((typeRequiresAccompaniment && condition.RequiresAccompaniment == false)
+            || (!typeRequiresAccompaniment
+                && condition.MinimumCompanionAge.HasValue
+                && condition.RequiresAccompaniment != true))
         {
             issues.Add(AttractionAccessConditionSemanticIssue.InconsistentAccompaniment);
         }
