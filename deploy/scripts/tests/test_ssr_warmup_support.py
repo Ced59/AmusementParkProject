@@ -7,6 +7,7 @@ from deploy.scripts.ssr_warmup_support import (
     build_html_request_headers,
     drain_response,
     map_bounded,
+    validate_bot_html_assets,
     wait_for_available_capacity,
 )
 
@@ -22,6 +23,43 @@ class FakeResponse:
 
 
 class SsrWarmupSupportTests(unittest.TestCase):
+    def test_google_bot_validation_requires_complete_rendering_assets(self) -> None:
+        html = (
+            '<html><head><style>.park{display:grid}</style></head><body>'
+            '<main class="park">Park content</main>'
+            '<script id="ng-state" type="application/json">{}</script>'
+            '<script src="main.js" type="module"></script></body></html>'
+        )
+        for user_agent in ['Googlebot/2.1', 'Google-InspectionTool/1.0', 'GoogleAgent-Mariner/1.0']:
+            with self.subTest(user_agent=user_agent):
+                self.assertEqual([], validate_bot_html_assets(html, user_agent, ''))
+                self.assertIn('google-html-stripped', validate_bot_html_assets(html, user_agent, 'no-js'))
+                self.assertIn(
+                    'missing-google-scripts',
+                    validate_bot_html_assets(html.replace('src="main.js"', ''), user_agent, ''),
+                )
+                self.assertIn(
+                    'missing-google-transfer-state',
+                    validate_bot_html_assets(html.replace('id="ng-state"', ''), user_agent, ''),
+                )
+                self.assertIn(
+                    'missing-google-styles',
+                    validate_bot_html_assets(html.replace('<style>.park{display:grid}</style>', ''), user_agent, ''),
+                )
+                self.assertIn(
+                    'missing-google-presentation-classes',
+                    validate_bot_html_assets(html.replace('class="park"', ''), user_agent, ''),
+                )
+
+    def test_other_bot_validation_keeps_the_existing_no_js_contract(self) -> None:
+        for user_agent in ['bingbot/2.0', 'YandexBot/3.0', 'AhrefsBot/7.0']:
+            with self.subTest(user_agent=user_agent):
+                self.assertEqual([], validate_bot_html_assets('<main>Park</main>', user_agent, 'no-js'))
+                self.assertEqual(
+                    ['robot-html-missing'],
+                    validate_bot_html_assets('<main>Park</main>', user_agent, ''),
+                )
+
     def test_html_headers_request_compressed_body_and_optional_refresh(self) -> None:
         regular_headers = build_html_request_headers(refresh=False)
         refresh_headers = build_html_request_headers(refresh=True)

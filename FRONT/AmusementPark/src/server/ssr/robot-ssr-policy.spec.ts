@@ -5,6 +5,25 @@ import {
   shouldServeRobotOptimizedNoJsHtml,
 } from './robot-ssr-policy';
 import type { RobotFamily } from './robot-ssr-policy';
+import { prepareRobotHtmlForResponse } from '../../app/core/ssr/robot-html-optimizer';
+
+const completeSsrHtml: string = [
+  '<html ng-server-context="ssr"><head>',
+  '<title>Discover the park</title>',
+  '<meta name="description" content="Discover the park, its history and its attractions.">',
+  '<link rel="canonical" href="https://amusement-parks.fun/fr/parks/example">',
+  '<link rel="stylesheet" href="styles.css">',
+  '<link rel="modulepreload" href="chunk.js">',
+  '<style ng-app-id="ng">.park{display:grid}</style>',
+  '<script type="application/ld+json">{"@context":"https://schema.org"}</script>',
+  '</head><body><app-root ngh="1"><main class="park" style="color:red">',
+  '<a href="/fr/parks">Parcs</a>',
+  'Discover the park and its attractions. '.repeat(20),
+  '</main></app-root>',
+  '<script id="ng-state" type="application/json">{"park":{"name":"Example"}}</script>',
+  '<script src="main.js" type="module"></script>',
+  '</body></html>',
+].join('');
 
 describe('robot SSR policy', () => {
   it('allows cold SSR for search, user-triggered, audit and social preview robots', () => {
@@ -176,8 +195,55 @@ describe('robot SSR policy', () => {
     expect(shouldServeRobotOptimizedNoJsHtml('GoogleAgent-Mariner')).toBe(
       false,
     );
-    expect(shouldServeRobotOptimizedNoJsHtml('Googlebot')).toBe(true);
   });
+
+  it.each([
+    'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+    'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+    'Mozilla/5.0 (compatible; Google-InspectionTool/1.0;)',
+    'AdsBot-Google (+http://www.google.com/adsbot.html)',
+    'Mediapartners-Google',
+    'GoogleOther',
+    'Google-Agent',
+    'GoogleAgent-Mariner/1.0',
+    'Google-GeminiNotebook',
+    'Google-NotebookLM',
+  ])('preserves complete SSR HTML and rendering assets for %s', (userAgent: string) => {
+    const family: RobotFamily | null = detectRobotFamilyFromUserAgent(userAgent);
+
+    expect(family).not.toBeNull();
+    expect(shouldServeRobotOptimizedNoJsHtml(family)).toBe(false);
+
+    const result = prepareRobotHtmlForResponse(completeSsrHtml, {
+      allowRobotNoJsOptimization: true,
+      robotNoJsHtmlEnabled: true,
+      isRobotRequest: shouldServeRobotOptimizedNoJsHtml(family),
+    });
+
+    expect(result.seoReady.isReady).toBe(true);
+    expect(result.html).toBe(completeSsrHtml);
+    expect(result.robotHtmlStatus).toBeNull();
+    expect(result.removedScriptCount).toBe(0);
+    expect(result.removedScriptLikeLinkCount).toBe(0);
+  });
+
+  it.each(['Bingbot', 'YandexBot', 'AhrefsBot', 'OAI-SearchBot', 'facebookexternalhit'])(
+    'preserves the existing no-JS policy for %s', (userAgent: string) => {
+      const family: RobotFamily | null = detectRobotFamilyFromUserAgent(userAgent);
+      const result = prepareRobotHtmlForResponse(completeSsrHtml, {
+        allowRobotNoJsOptimization: true,
+        robotNoJsHtmlEnabled: true,
+        isRobotRequest: shouldServeRobotOptimizedNoJsHtml(family),
+      });
+
+      expect(result.robotHtmlStatus).toBe('no-js');
+      expect(result.html).toContain('application/ld+json');
+      expect(result.html).toContain('<a href="/fr/parks">Parcs</a>');
+      expect(result.html).not.toContain('main.js');
+      expect(result.html).not.toContain('ng-state');
+      expect(result.html).not.toContain('class="park"');
+    },
+  );
 
   it('does not treat internal targeted refreshes as robot traffic', () => {
     const family: RobotFamily | null = detectRobotFamilyFromUserAgent(

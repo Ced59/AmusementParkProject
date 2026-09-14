@@ -1,9 +1,9 @@
 {
-  "version": "5.3.31",
+  "version": "5.3.32",
   "history": [
     {
-      "version": "5.3.31",
-      "releasedAt": "2026-09-14",
+      "version": "5.3.32",
+      "releasedAt": "2026-09-15",
       "labels": {
         "fr": "Park Fit s’étend maintenant aux parcs de façon contrôlée.",
         "en": "Park Fit can now expand to parks in a controlled way.",
@@ -13,6 +13,20 @@
         "es": "Park Fit ahora puede ampliarse a más parques de forma controlada.",
         "pl": "Park Fit można teraz w kontrolowany sposób rozszerzać na kolejne parki.",
         "pt": "O Park Fit pode agora ser alargado a mais parques de forma controlada."
+      }
+    },
+    {
+      "version": "5.3.31",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Pages plus faciles à lire pour Google.",
+        "en": "Pages are easier for Google to read.",
+        "de": "Seiten lassen sich für Google leichter lesen.",
+        "nl": "Pagina’s zijn beter leesbaar voor Google.",
+        "it": "Le pagine sono più facili da leggere per Google.",
+        "es": "Google puede leer las páginas con más facilidad.",
+        "pl": "Strony są teraz czytelniejsze dla Google.",
+        "pt": "As páginas são mais fáceis de ler para o Google."
       }
     },
     {
