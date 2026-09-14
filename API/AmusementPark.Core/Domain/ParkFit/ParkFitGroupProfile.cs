@@ -8,6 +8,7 @@ namespace AmusementPark.Core.Domain.ParkFit;
 public sealed class ParkFitGroupProfile
 {
     public const int MaximumAliasLength = 60;
+    public const int MaximumProfilesPerOwner = 32;
 
     private ParkFitGroupProfile(
         ParkFitGroupProfileId id,

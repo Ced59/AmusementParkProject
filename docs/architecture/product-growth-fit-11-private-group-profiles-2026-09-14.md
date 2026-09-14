@@ -22,6 +22,7 @@ FIT-08, sans friction ni persistance imposée.
 - suppression avec confirmation explicite ;
 - export JSON lisible, dépourvu d'identifiant de profil, d'identifiant utilisateur
   et de version technique ;
+- quota de 32 profils par membre et lectures bornées à cette même limite ;
 - isolation systématique par propriétaire et réponse introuvable en cas d'accès à
   un profil tiers ;
 - protection contre l'écrasement d'une modification plus récente ;
@@ -178,6 +179,9 @@ La collection `user-group-profiles` possède deux index :
 Les filtres de lecture, remplacement et suppression contiennent tous
 `ownerUserId`. Les mutations contiennent également `version` : une action fondée sur
 un écran périmé reçoit un conflit au lieu d'écraser l'état courant.
+La création contrôle le quota avant toute écriture et le dépôt borne aussi ses
+lectures à 32 documents, afin qu'un compte ne puisse pas produire une réponse ou un
+rendu sans limite sur le VPS.
 
 ## Confidentialité et minimisation
 

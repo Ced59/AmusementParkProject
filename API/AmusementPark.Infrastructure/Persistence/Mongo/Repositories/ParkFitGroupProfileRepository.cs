@@ -23,6 +23,20 @@ public sealed class ParkFitGroupProfileRepository : IParkFitGroupProfileReposito
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
     }
 
+    public Task<long> CountOwnedAsync(
+        string ownerUserId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedOwnerUserId = IdentifierRules.NormalizeRequired(
+            ownerUserId,
+            nameof(ownerUserId));
+        return this.collection.CountDocumentsAsync(
+            Builders<ParkFitGroupProfileDocument>.Filter.Eq(
+                static document => document.OwnerUserId,
+                normalizedOwnerUserId),
+            cancellationToken: cancellationToken);
+    }
+
     public async Task<IReadOnlyCollection<ParkFitGroupProfile>> ListOwnedAsync(
         string ownerUserId,
         CancellationToken cancellationToken)
@@ -36,6 +50,7 @@ public sealed class ParkFitGroupProfileRepository : IParkFitGroupProfileReposito
                 normalizedOwnerUserId))
             .SortByDescending(static document => document.UpdatedAt)
             .ThenBy(static document => document.Id)
+            .Limit(ParkFitGroupProfile.MaximumProfilesPerOwner)
             .ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToArray();
     }

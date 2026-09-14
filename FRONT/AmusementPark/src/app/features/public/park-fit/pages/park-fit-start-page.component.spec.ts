@@ -16,6 +16,7 @@ import { ParkFitMemberForm, ParkFitSearchForm } from '../models/park-fit-search-
 import { ParkFitSearchFacade, ParkFitSearchStatus } from '../state/park-fit-search.facade';
 import { ParkFitSavedProfilesFacade } from '../state/park-fit-saved-profiles.facade';
 import { AuthService } from '@app/services/auth/auth.service';
+import { SharedService } from '@app/services/shared/shared.service';
 import { ParkFitGroupProfile } from '@app/models/park-fit/park-fit-group-profile.model';
 import { ParkFitStartPageComponent } from './park-fit-start-page.component';
 
@@ -26,6 +27,7 @@ interface ParkFitPageTestSurface {
   removeMember(index: number): void;
   addSavedProfile(profile: ParkFitGroupProfile): void;
   isSavedProfileUsed(profileId: string): boolean;
+  isAuthenticated: Signal<boolean>;
   togglePreference(type: ParkFitAttractionType): void;
   submit(): void;
 }
@@ -124,12 +126,49 @@ describe('ParkFitStartPageComponent', () => {
     expect(JSON.stringify(request)).not.toContain('Lina');
     expect(JSON.stringify(request)).not.toContain('profile-1');
   });
+
+  it('loads saved profiles immediately after an in-page login', () => {
+    let authenticated: boolean = false;
+    const loginStatus: Subject<void> = new Subject<void>();
+    const load = vi.fn();
+    const savedProfilesFacade = {
+      profiles: signal<ParkFitGroupProfile[]>([]).asReadonly(),
+      status: signal('idle').asReadonly(),
+      load
+    } as unknown as ParkFitSavedProfilesFacade;
+    const component: ParkFitStartPageComponent = createComponent(
+      vi.fn(),
+      null,
+      { applyParkFitSeo: vi.fn() },
+      (): boolean => authenticated,
+      loginStatus,
+      savedProfilesFacade
+    );
+    const page: ParkFitPageTestSurface = component as unknown as ParkFitPageTestSurface;
+
+    component.ngOnInit();
+    expect(page.isAuthenticated()).toBe(false);
+    expect(load).not.toHaveBeenCalled();
+
+    authenticated = true;
+    loginStatus.next();
+
+    expect(page.isAuthenticated()).toBe(true);
+    expect(load).toHaveBeenCalledOnce();
+  });
 });
 
 function createComponent(
   search: ReturnType<typeof vi.fn>,
   lastRequest: ParkFitSearchRequest | null = null,
-  seoService: Pick<SeoService, 'applyParkFitSeo'> = { applyParkFitSeo: vi.fn() }
+  seoService: Pick<SeoService, 'applyParkFitSeo'> = { applyParkFitSeo: vi.fn() },
+  isLoggedIn: () => boolean = (): boolean => false,
+  loginStatus: Subject<void> = new Subject<void>(),
+  savedProfilesFacade: ParkFitSavedProfilesFacade = {
+    profiles: signal<ParkFitGroupProfile[]>([]).asReadonly(),
+    status: signal('idle').asReadonly(),
+    load: vi.fn()
+  } as unknown as ParkFitSavedProfilesFacade
 ): ParkFitStartPageComponent {
   const status: Signal<ParkFitSearchStatus> = signal<ParkFitSearchStatus>('idle').asReadonly();
   const response: Signal<ParkFitSearchResponse | null> = signal<ParkFitSearchResponse | null>(null).asReadonly();
@@ -172,12 +211,9 @@ function createComponent(
     translationService as unknown as TranslationService,
     translateService as TranslateService,
     seoService as SeoService,
-    { isLoggedIn: (): boolean => false } as AuthService,
-    {
-      profiles: signal([]).asReadonly(),
-      status: signal('idle').asReadonly(),
-      load: vi.fn()
-    } as unknown as ParkFitSavedProfilesFacade,
+    { isLoggedIn } as AuthService,
+    { getLoginStatusListener: (): Subject<void> => loginStatus } as unknown as SharedService,
+    savedProfilesFacade,
     destroyRef
   );
 }

@@ -4,6 +4,10 @@ namespace AmusementPark.Application.Features.ParkFit.Ports;
 
 public interface IParkFitGroupProfileRepository
 {
+    Task<long> CountOwnedAsync(
+        string ownerUserId,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<ParkFitGroupProfile>> ListOwnedAsync(
         string ownerUserId,
         CancellationToken cancellationToken);

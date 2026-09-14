@@ -20,6 +20,8 @@ public sealed class ParkFitGroupProfileLifecycleServiceTests
     {
         Mock<IParkFitGroupProfileRepository> repository =
             new Mock<IParkFitGroupProfileRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.CountOwnedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(0);
         repository.Setup(value => value.CreateAsync(
                 It.Is<ParkFitGroupProfile>(profile =>
                     profile.OwnerUserId == "user-1"
@@ -37,6 +39,26 @@ public sealed class ParkFitGroupProfileLifecycleServiceTests
         Assert.True(result.IsSuccess);
         Assert.NotEmpty(result.Value!.ProfileId);
         Assert.Equal(NowUtc, result.Value.CreatedAtUtc);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CreateAsync_AtOwnerLimit_ShouldRejectWithoutWriting()
+    {
+        Mock<IParkFitGroupProfileRepository> repository =
+            new Mock<IParkFitGroupProfileRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.CountOwnedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(ParkFitGroupProfile.MaximumProfilesPerOwner);
+        ParkFitGroupProfileLifecycleService service = CreateService(repository.Object);
+
+        ApplicationResult<ParkFitGroupProfileResult> result = await service.CreateAsync(
+            "user-1",
+            Input("Alex"),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error =>
+            error.Code == "park-fit.group-profile.limit-reached");
         repository.VerifyAll();
     }
 

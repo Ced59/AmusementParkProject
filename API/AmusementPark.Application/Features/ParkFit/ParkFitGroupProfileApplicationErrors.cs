@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Core.Domain.ParkFit;
 
 namespace AmusementPark.Application.Features.ParkFit;
 
@@ -21,6 +22,13 @@ public static class ParkFitGroupProfileApplicationErrors
         return ApplicationError.Conflict(
             "park-fit.group-profile.alias-conflict",
             "A Park Fit group profile already uses this alias.");
+    }
+
+    public static ApplicationError ProfileLimitReached()
+    {
+        return ApplicationError.RuleViolation(
+            "park-fit.group-profile.limit-reached",
+            $"At most {ParkFitGroupProfile.MaximumProfilesPerOwner} Park Fit group profiles are allowed per owner.");
     }
 
     public static ApplicationError ChangedConcurrently()

@@ -12,6 +12,7 @@ import {
 } from '@app/models/park-fit/park-fit-search.models';
 import { ParkFitGroupProfile } from '@app/models/park-fit/park-fit-group-profile.model';
 import { AuthService } from '@app/services/auth/auth.service';
+import { SharedService } from '@app/services/shared/shared.service';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
@@ -59,7 +60,7 @@ export class ParkFitStartPageComponent implements OnInit {
   protected readonly savedProfiles: Signal<ParkFitGroupProfile[]> = this.savedProfilesFacade.profiles;
   protected readonly savedProfilesStatus: Signal<ParkFitSavedProfilesStatus> =
     this.savedProfilesFacade.status;
-  protected readonly isAuthenticated: boolean;
+  protected readonly isAuthenticated = signal<boolean>(false);
   protected readonly parkRoute: Signal<string[] | null> = computed(() => {
     const park: ParkFitSearchPark | null = this.firstPark();
     return park
@@ -96,10 +97,10 @@ export class ParkFitStartPageComponent implements OnInit {
     private readonly translateService: TranslateService,
     private readonly seoService: SeoService,
     private readonly authService: AuthService,
+    private readonly sharedService: SharedService,
     private readonly savedProfilesFacade: ParkFitSavedProfilesFacade,
     private readonly destroyRef: DestroyRef
   ) {
-    this.isAuthenticated = this.authService.isLoggedIn();
   }
 
   ngOnInit(): void {
@@ -110,9 +111,11 @@ export class ParkFitStartPageComponent implements OnInit {
     this.currentLang.set(language);
     this.restoreLastRequest(this.facade.lastRequest());
     this.applySeo();
-    if (this.isAuthenticated) {
-      this.savedProfilesFacade.load();
-    }
+    this.refreshAuthenticationState();
+
+    this.sharedService.getLoginStatusListener()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((): void => this.refreshAuthenticationState());
 
     this.translationService.languageChanged
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -120,6 +123,14 @@ export class ParkFitStartPageComponent implements OnInit {
         this.currentLang.set(currentLanguage);
         this.applySeo();
       });
+  }
+
+  private refreshAuthenticationState(): void {
+    const authenticated: boolean = this.authService.isLoggedIn();
+    this.isAuthenticated.set(authenticated);
+    if (authenticated) {
+      this.savedProfilesFacade.load();
+    }
   }
 
   protected get members(): FormArray<ParkFitMemberForm> {

@@ -207,6 +207,7 @@ reçoit que les faits minimisés.
 
 La création, la modification et la suppression sont isolées par propriétaire et
 protégées contre l'écrasement concurrent. Un alias normalisé est unique par membre.
+Chaque compte est limité à 32 profils et les lectures sont bornées à la même limite.
 L'export JSON reste lisible et retire les identifiants utilisateur, profil, version
 et autres références internes. La collection et ses index sont créés automatiquement,
 sans migration MongoDB manuelle.

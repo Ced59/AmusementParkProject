@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, Signal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -37,14 +38,18 @@ export class ParkFitGroupProfilesPageComponent implements OnInit {
   protected readonly errorKey: Signal<string | null> = this.facade.errorKey;
   protected readonly editingId = signal<string | null>(null);
   protected readonly confirmingDeleteId = signal<string | null>(null);
-  protected readonly currentLang: string;
+  protected readonly currentLang = signal<string>('en');
   protected readonly form: ParkFitGroupProfileForm = createForm();
 
   constructor(
     protected readonly facade: ParkFitGroupProfileManagementFacade,
-    translationService: TranslationService
+    translationService: TranslationService,
+    destroyRef: DestroyRef
   ) {
-    this.currentLang = translationService.getCurrentLang() || 'en';
+    this.currentLang.set(translationService.getCurrentLang() || 'en');
+    translationService.languageChanged
+      .pipe(takeUntilDestroyed(destroyRef))
+      .subscribe((language: string): void => this.currentLang.set(language));
   }
 
   ngOnInit(): void {

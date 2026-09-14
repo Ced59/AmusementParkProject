@@ -28,9 +28,21 @@ public sealed class ParkFitGroupProfileLifecycleService
         ArgumentNullException.ThrowIfNull(input);
         try
         {
+            string normalizedOwnerUserId = IdentifierRules.NormalizeRequired(
+                ownerUserId,
+                nameof(ownerUserId));
+            long ownedProfileCount = await this.repository.CountOwnedAsync(
+                normalizedOwnerUserId,
+                cancellationToken);
+            if (ownedProfileCount >= ParkFitGroupProfile.MaximumProfilesPerOwner)
+            {
+                return ApplicationResult<ParkFitGroupProfileResult>.Failure(
+                    ParkFitGroupProfileApplicationErrors.ProfileLimitReached());
+            }
+
             ParkFitGroupProfile profile = ParkFitGroupProfile.Create(
                 ParkFitGroupProfileId.New(),
-                IdentifierRules.NormalizeRequired(ownerUserId, nameof(ownerUserId)),
+                normalizedOwnerUserId,
                 input.Alias,
                 input.HeightCentimeters,
                 input.AgeYears,
