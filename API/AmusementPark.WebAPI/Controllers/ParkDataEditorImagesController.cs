@@ -28,7 +28,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [Authorize(Policy = AuthorizationPolicyNames.ParkDataEditorToken)]
 [AllowParkDataEditorToken]
 [RequireActivatedUnblockedUser]
-[InvalidatesPublicCache(PublicCacheScope.Data, PublicCacheScope.ReferenceData)]
+[InvalidatesPublicCache(PublicCacheScope.Data, PublicCacheScope.ReferenceData, EvictOutputCache = false)]
 public sealed class ParkDataEditorImagesController : ControllerBase
 {
     private const long MaximumImageFileSizeInBytes = 10 * 1024 * 1024;

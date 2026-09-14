@@ -87,6 +87,10 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             "AttractionManufacturers" => await this.ResolveAttractionManufacturerAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "LocalizedContent" => await this.ResolveLocalizedContentAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "Images" => await this.ResolveImagesAsync(context, executedContext, includeSeoDocuments, cancellationToken),
+            "ParkDataEditorImages" => await ParkDataEditorImageInvalidationResolver.ResolveAsync(
+                context, executedContext, this.imageRepository,
+                (ownerType, ownerId, token) => this.ResolveEntityImpactAsync(ownerType, ownerId, includeSeoDocuments, token),
+                cancellationToken),
             "ParkGraphUpserts" => await this.ResolveParkGraphUpsertAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "ContextualBlocks" => await this.ResolveContextualBlocksAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             _ => SsrPageCacheInvalidationRequest.AllCaches(),

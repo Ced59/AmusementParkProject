@@ -1,6 +1,20 @@
 {
-  "version": "5.3.33",
+  "version": "5.3.34",
   "history": [
+    {
+      "version": "5.3.34",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Navigation plus fluide pendant les mises à jour du site.",
+        "en": "Smoother browsing while the site is updated.",
+        "de": "Flüssigeres Surfen während der Aktualisierung der Website.",
+        "nl": "Soepeler navigeren terwijl de site wordt bijgewerkt.",
+        "it": "Navigazione più fluida durante gli aggiornamenti del sito.",
+        "es": "Navegación más fluida durante las actualizaciones del sitio.",
+        "pl": "Płynniejsze przeglądanie podczas aktualizacji serwisu.",
+        "pt": "Navegação mais fluida durante as atualizações do site."
+      }
+    },
     {
       "version": "5.3.33",
       "releasedAt": "2026-09-15",
