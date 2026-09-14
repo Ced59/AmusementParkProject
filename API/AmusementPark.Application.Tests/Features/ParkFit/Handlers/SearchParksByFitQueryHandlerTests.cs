@@ -134,6 +134,63 @@ public sealed class SearchParksByFitQueryHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenScoresReachSameConfidenceCeiling_ShouldUseRawScoreBeforeName()
+    {
+        Park fartherPark = BuildPark("park-farther", "Alpha", 51d, 3d);
+        Park nearerPark = BuildPark("park-nearer", "Zulu", 50d, 3d);
+        ParkItem fartherAttraction = BuildAttraction(fartherPark.Id, "item-farther");
+        ParkItem nearerAttraction = BuildAttraction(nearerPark.Id, "item-nearer");
+        Mock<IParkRepository> parks = BuildParkRepository(
+            new[] { fartherPark, nearerPark },
+            totalItems: 2);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHours =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        items.Setup(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { fartherAttraction, nearerAttraction });
+        openingHours.Setup(repository => repository.GetByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                BuildSchedule(fartherPark.Id, isClosed: false),
+                BuildSchedule(nearerPark.Id, isClosed: false),
+            });
+        openingHours.Setup(repository => repository.GetSummariesByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>
+            {
+                [fartherPark.Id] = BuildSummary(fartherPark.Id),
+                [nearerPark.Id] = BuildSummary(nearerPark.Id),
+            });
+        SearchParksByFitQueryHandler handler = BuildHandler(
+            parks.Object,
+            items.Object,
+            openingHours.Object);
+
+        ApplicationResult<ParkFitSearchResult> result = await handler.HandleAsync(BuildQuery() with
+        {
+            OriginLatitude = 50d,
+            OriginLongitude = 3d,
+        });
+
+        IReadOnlyCollection<ParkFitSearchParkResult> orderedParks =
+            Assert.IsType<ParkFitSearchResult>(result.Value).Parks;
+        Assert.Equal(
+            new[] { nearerPark.Id, fartherPark.Id },
+            orderedParks.Select(static park => park.Park.Id));
+        Assert.All(
+            orderedParks,
+            static park => Assert.Equal(85m, park.Score.ComparativeScore));
+        Assert.True(
+            orderedParks.First().Score.RawKnownScore
+                > orderedParks.Last().Score.RawKnownScore);
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenSourcesShareUrlButDiffer_ShouldPreserveDistinctEvidence()
     {
         Park park = BuildPark("park-1", "Parc documenté");
@@ -273,7 +330,11 @@ public sealed class SearchParksByFitQueryHandlerTests
             10);
     }
 
-    private static Park BuildPark(string id, string name)
+    private static Park BuildPark(
+        string id,
+        string name,
+        double latitude = 50d,
+        double longitude = 3d)
     {
         Park park = new Park
         {
@@ -289,7 +350,7 @@ public sealed class SearchParksByFitQueryHandlerTests
                 new LocalizedText("fr", $"Présentation publique de {name}."),
             },
         };
-        park.SetPosition(50, 3);
+        park.SetPosition(latitude, longitude);
         return park;
     }
 

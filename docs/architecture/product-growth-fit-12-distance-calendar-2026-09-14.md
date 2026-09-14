@@ -57,6 +57,10 @@ comparatif d'afficher une certitude supérieure à la nature de ce fait. À part
 | position connue, parc sans coordonnées | `Unknown` | aucune | la couverture baisse, aucune distance n'est inventée |
 | deux positions connues | `Known` | distance directe datée | poids de 15 %, confiance moyenne |
 
+Le score visible reste soumis au plafond de confiance. Si plusieurs parcs atteignent
+le même plafond, leur score brut connu les départage avant la couverture et le nom :
+la prudence affichée ne détruit donc pas l'ordre de pertinence calculé.
+
 ## Décision sur le calendrier
 
 | Fait disponible à la date | État public | Disponibilité utilisée par le score |
