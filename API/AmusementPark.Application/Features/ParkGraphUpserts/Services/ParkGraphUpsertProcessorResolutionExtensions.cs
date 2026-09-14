@@ -69,11 +69,62 @@ internal static class ParkGraphUpsertProcessorResolutionExtensions
                 Label = ParkGraphUpsertProcessorLocalizedTextExtensions.ReadLocalizedTexts(ParkGraphUpsertProcessorJsonReadingExtensions.GetArray(item, "label")),
                 Description = ParkGraphUpsertProcessorLocalizedTextExtensions.ReadLocalizedTexts(ParkGraphUpsertProcessorJsonReadingExtensions.GetArray(item, "description")),
                 DisplayOrder = ParkGraphUpsertProcessorJsonReadingExtensions.ReadInt(item, "displayOrder"),
+                ProvenanceSchemaVersion = AttractionAccessCondition.CurrentProvenanceSchemaVersion,
+                SourceKind = ParkGraphUpsertProcessorJsonReadingExtensions.ReadEnum(
+                    item,
+                    "sourceKind",
+                    AttractionAccessConditionSourceKind.Unknown),
+                SourceUrl = ParkGraphUpsertProcessorJsonReadingExtensions.ReadString(item, "sourceUrl"),
+                SourceReference = ParkGraphUpsertProcessorJsonReadingExtensions.ReadString(item, "sourceReference"),
+                CollectedAtUtc = ReadUtcDate(item, "collectedAtUtc"),
+                VerifiedAtUtc = ReadUtcDate(item, "verifiedAtUtc"),
+                SourceLanguageCode = ParkGraphUpsertProcessorJsonReadingExtensions.ReadString(item, "sourceLanguageCode")?.ToLowerInvariant(),
+                SourceSummary = ParkGraphUpsertProcessorLocalizedTextExtensions.ReadLocalizedTexts(ParkGraphUpsertProcessorJsonReadingExtensions.GetArray(item, "sourceSummary")),
+                SourceConfidence = ParkGraphUpsertProcessorJsonReadingExtensions.ReadEnum(
+                    item,
+                    "sourceConfidence",
+                    AttractionAccessConditionConfidence.Unknown),
+                Scope = ParkGraphUpsertProcessorJsonReadingExtensions.ReadEnum(
+                    item,
+                    "scope",
+                    AttractionAccessConditionScope.Attraction),
+                ScopeDetail = ParkGraphUpsertProcessorJsonReadingExtensions.ReadString(item, "scopeDetail"),
+                EffectiveFrom = ReadDateOnly(item, "effectiveFrom"),
+                EffectiveTo = ReadDateOnly(item, "effectiveTo"),
             };
             conditions.Add(condition);
         }
 
         return conditions;
+    }
+
+    private static DateTime? ReadUtcDate(JsonElement item, string propertyName)
+    {
+        DateTime? value = ParkGraphUpsertProcessorJsonReadingExtensions.ReadDate(item, propertyName);
+        if (!value.HasValue)
+        {
+            return null;
+        }
+
+        return value.Value.Kind switch
+        {
+            DateTimeKind.Utc => value.Value,
+            DateTimeKind.Local => value.Value.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(value.Value, DateTimeKind.Utc),
+        };
+    }
+
+    private static DateOnly? ReadDateOnly(JsonElement item, string propertyName)
+    {
+        string? value = ParkGraphUpsertProcessorJsonReadingExtensions.ReadString(item, propertyName);
+        return DateOnly.TryParseExact(
+            value,
+            "yyyy-MM-dd",
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.None,
+            out DateOnly parsed)
+                ? parsed
+                : null;
     }
 
     internal static void ResolveImageOwner(JsonElement patch, Park park, Dictionary<string, string> itemKeys, string? ownerTypeText, string? ownerId, out ImageOwnerType ownerType, out string? resolvedOwnerId)

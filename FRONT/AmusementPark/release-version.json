@@ -1,6 +1,20 @@
 {
-  "version": "5.3.14",
+  "version": "5.3.15",
   "history": [
+    {
+      "version": "5.3.15",
+      "releasedAt": "2026-09-14",
+      "labels": {
+        "fr": "Les informations d’accès aux attractions peuvent désormais conserver leurs sources.",
+        "en": "Attraction access information can now retain its sources.",
+        "de": "Zugangsinformationen zu Attraktionen können jetzt ihre Quellen bewahren.",
+        "nl": "Toegangsinformatie voor attracties kan nu de bronnen bewaren.",
+        "it": "Le informazioni di accesso alle attrazioni possono ora conservare le proprie fonti.",
+        "es": "La información de acceso a las atracciones ahora puede conservar sus fuentes.",
+        "pl": "Informacje o dostępie do atrakcji mogą teraz zachowywać swoje źródła.",
+        "pt": "As informações de acesso às atrações podem agora conservar as respetivas fontes."
+      }
+    },
     {
       "version": "5.3.14",
       "releasedAt": "2026-09-14",

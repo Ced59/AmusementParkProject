@@ -55,4 +55,56 @@ public sealed class AttractionAccessConditionDocument
     [BsonElement("displayOrder")]
     [BsonIgnoreIfNull]
     public int? DisplayOrder { get; set; }
+
+    [BsonElement("provenanceSchemaVersion")]
+    public int ProvenanceSchemaVersion { get; set; } = AttractionAccessCondition.CurrentProvenanceSchemaVersion;
+
+    [BsonElement("sourceKind")]
+    [BsonRepresentation(BsonType.String)]
+    public AttractionAccessConditionSourceKind SourceKind { get; set; } = AttractionAccessConditionSourceKind.Unknown;
+
+    [BsonElement("sourceUrl")]
+    [BsonIgnoreIfNull]
+    public string? SourceUrl { get; set; }
+
+    [BsonElement("sourceReference")]
+    [BsonIgnoreIfNull]
+    public string? SourceReference { get; set; }
+
+    [BsonElement("collectedAtUtc")]
+    [BsonIgnoreIfNull]
+    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+    public DateTime? CollectedAtUtc { get; set; }
+
+    [BsonElement("verifiedAtUtc")]
+    [BsonIgnoreIfNull]
+    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+    public DateTime? VerifiedAtUtc { get; set; }
+
+    [BsonElement("sourceLanguageCode")]
+    [BsonIgnoreIfNull]
+    public string? SourceLanguageCode { get; set; }
+
+    [BsonElement("sourceSummary")]
+    public List<LocalizedTextDocument> SourceSummary { get; set; } = new();
+
+    [BsonElement("sourceConfidence")]
+    [BsonRepresentation(BsonType.String)]
+    public AttractionAccessConditionConfidence SourceConfidence { get; set; } = AttractionAccessConditionConfidence.Unknown;
+
+    [BsonElement("scope")]
+    [BsonRepresentation(BsonType.String)]
+    public AttractionAccessConditionScope Scope { get; set; } = AttractionAccessConditionScope.Attraction;
+
+    [BsonElement("scopeDetail")]
+    [BsonIgnoreIfNull]
+    public string? ScopeDetail { get; set; }
+
+    [BsonElement("effectiveFrom")]
+    [BsonIgnoreIfNull]
+    public string? EffectiveFrom { get; set; }
+
+    [BsonElement("effectiveTo")]
+    [BsonIgnoreIfNull]
+    public string? EffectiveTo { get; set; }
 }

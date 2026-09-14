@@ -99,4 +99,65 @@ public sealed class ParkItemsHttpMappersTests
         Assert.NotNull(parkItem.AttractionDetails);
         Assert.Equal("intamin", parkItem.AttractionDetails.ManufacturerId);
     }
+
+    [Fact]
+    public void ToDomainToHttp_WhenAccessConditionHasProvenance_ShouldPreserveTheEvidenceContract()
+    {
+        DateTime collectedAtUtc = new DateTime(2026, 8, 1, 8, 30, 0, DateTimeKind.Utc);
+        DateTime verifiedAtUtc = new DateTime(2026, 9, 1, 9, 45, 0, DateTimeKind.Utc);
+        ParkItemCreateDto dto = new ParkItemCreateDto
+        {
+            ParkId = "park-1",
+            Name = "Attraction",
+            Category = ParkItemCategoryDto.Attraction,
+            Type = ParkItemTypeDto.RollerCoaster,
+            AttractionDetails = new AttractionDetailsDto
+            {
+                AccessConditions = new List<AttractionAccessConditionDto>
+                {
+                    new AttractionAccessConditionDto
+                    {
+                        Type = AttractionAccessConditionTypeDto.MinHeight,
+                        ProvenanceSchemaVersion = 99,
+                        SourceKind = AttractionAccessConditionSourceKindDto.Official,
+                        SourceUrl = "https://example.test/restrictions",
+                        SourceReference = "safety-board-2026",
+                        CollectedAtUtc = collectedAtUtc,
+                        VerifiedAtUtc = verifiedAtUtc,
+                        SourceLanguageCode = "fr",
+                        SourceSummary = new List<LocalizedTextDto>
+                        {
+                            new LocalizedTextDto
+                            {
+                                LanguageCode = "fr",
+                                Value = "Taille minimale de 120 cm.",
+                            },
+                        },
+                        SourceConfidence = AttractionAccessConditionConfidenceDto.High,
+                        Scope = AttractionAccessConditionScopeDto.Seat,
+                        ScopeDetail = "Rangée arrière",
+                        EffectiveFrom = new DateOnly(2026, 4, 1),
+                        EffectiveTo = new DateOnly(2026, 11, 2),
+                    },
+                },
+            },
+        };
+
+        ParkItemDto result = dto.ToDomain().ToHttp();
+
+        AttractionAccessConditionDto condition = Assert.Single(result.AttractionDetails!.AccessConditions!);
+        Assert.Equal(AttractionAccessCondition.CurrentProvenanceSchemaVersion, condition.ProvenanceSchemaVersion);
+        Assert.Equal(AttractionAccessConditionSourceKindDto.Official, condition.SourceKind);
+        Assert.Equal("https://example.test/restrictions", condition.SourceUrl);
+        Assert.Equal("safety-board-2026", condition.SourceReference);
+        Assert.Equal(collectedAtUtc, condition.CollectedAtUtc);
+        Assert.Equal(verifiedAtUtc, condition.VerifiedAtUtc);
+        Assert.Equal("fr", condition.SourceLanguageCode);
+        Assert.Equal("Taille minimale de 120 cm.", Assert.Single(condition.SourceSummary!).Value);
+        Assert.Equal(AttractionAccessConditionConfidenceDto.High, condition.SourceConfidence);
+        Assert.Equal(AttractionAccessConditionScopeDto.Seat, condition.Scope);
+        Assert.Equal("Rangée arrière", condition.ScopeDetail);
+        Assert.Equal(new DateOnly(2026, 4, 1), condition.EffectiveFrom);
+        Assert.Equal(new DateOnly(2026, 11, 2), condition.EffectiveTo);
+    }
 }

@@ -154,6 +154,19 @@ internal static class ParkItemNormalization
             Label = NormalizeLocalizedTexts(value.Label),
             Description = NormalizeLocalizedTexts(value.Description),
             DisplayOrder = NormalizeNullableInt(value.DisplayOrder),
+            ProvenanceSchemaVersion = AttractionAccessCondition.CurrentProvenanceSchemaVersion,
+            SourceKind = value.SourceKind,
+            SourceUrl = NormalizeOptionalText(value.SourceUrl),
+            SourceReference = NormalizeOptionalText(value.SourceReference),
+            CollectedAtUtc = NormalizeUtcTimestamp(value.CollectedAtUtc),
+            VerifiedAtUtc = NormalizeUtcTimestamp(value.VerifiedAtUtc),
+            SourceLanguageCode = NormalizeOptionalText(value.SourceLanguageCode)?.ToLowerInvariant(),
+            SourceSummary = NormalizeLocalizedTexts(value.SourceSummary),
+            SourceConfidence = value.SourceConfidence,
+            Scope = value.Scope,
+            ScopeDetail = NormalizeOptionalText(value.ScopeDetail),
+            EffectiveFrom = value.EffectiveFrom,
+            EffectiveTo = value.EffectiveTo,
         };
 
         MeasurementConversionService.Instance.NormalizeAccessCondition(normalized);
@@ -228,6 +241,21 @@ internal static class ParkItemNormalization
     private static int? NormalizeNullableInt(int? value)
     {
         return value.HasValue && value.Value >= 0 ? value.Value : null;
+    }
+
+    private static DateTime? NormalizeUtcTimestamp(DateTime? value)
+    {
+        if (!value.HasValue)
+        {
+            return null;
+        }
+
+        return value.Value.Kind switch
+        {
+            DateTimeKind.Utc => value.Value,
+            DateTimeKind.Local => value.Value.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(value.Value, DateTimeKind.Utc),
+        };
     }
 
     private static double? NormalizeNullableDouble(double? value)

@@ -1,6 +1,7 @@
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 import { ParkItem } from '@app/models/parks/park-item';
+import { AttractionAccessCondition } from '@app/models/parks/attraction-access-condition';
 import {
   buildAdminParkItemEditSnapshot,
   createAdminParkItemEditForm,
@@ -195,6 +196,59 @@ describe('admin park item edit form mapper', () => {
     expect(
       item.attractionDetails?.accessConditions?.[0].minimumCompanionAge,
     ).toBe(16);
+  });
+
+  it('preserves restriction provenance through an admin edit round trip', () => {
+    const form: FormGroup = createAdminParkItemEditForm(formBuilder, 'park-1');
+    const item: ParkItem = {
+      parkId: 'park-1',
+      name: 'Attraction',
+      category: 'Attraction',
+      type: 'RollerCoaster',
+      latitude: 50.1,
+      longitude: 3.1,
+      isVisible: false,
+      adminReviewStatus: 'ToReview',
+      attractionDetails: {
+        accessConditions: [{
+          type: 'MinHeight',
+          typeKey: 'min-height',
+          value: 120,
+          unit: 'Centimeter',
+          provenanceSchemaVersion: 1,
+          sourceKind: 'Official',
+          sourceUrl: 'https://example.test/restrictions',
+          sourceReference: 'safety-board-2026',
+          collectedAtUtc: '2026-08-01T08:30:00Z',
+          verifiedAtUtc: '2026-09-01T09:45:00Z',
+          sourceLanguageCode: 'FR',
+          sourceSummary: [{ languageCode: 'fr', value: 'Taille minimale de 120 cm.' }],
+          sourceConfidence: 'High',
+          scope: 'Seat',
+          scopeDetail: 'Rangée arrière',
+          effectiveFrom: '2026-04-01',
+          effectiveTo: '2026-11-02'
+        }]
+      }
+    } as ParkItem;
+
+    patchAdminParkItemEditForm(formBuilder, form, item);
+    const result: ParkItem = mapAdminParkItemEditFormToParkItem(form);
+    const condition: AttractionAccessCondition | undefined = result.attractionDetails?.accessConditions?.[0];
+
+    expect(condition?.provenanceSchemaVersion).toBe(1);
+    expect(condition?.sourceKind).toBe('Official');
+    expect(condition?.sourceUrl).toBe('https://example.test/restrictions');
+    expect(condition?.sourceReference).toBe('safety-board-2026');
+    expect(condition?.collectedAtUtc).toBe('2026-08-01T08:30:00Z');
+    expect(condition?.verifiedAtUtc).toBe('2026-09-01T09:45:00Z');
+    expect(condition?.sourceLanguageCode).toBe('fr');
+    expect(condition?.sourceSummary).toEqual([{ languageCode: 'fr', value: 'Taille minimale de 120 cm.' }]);
+    expect(condition?.sourceConfidence).toBe('High');
+    expect(condition?.scope).toBe('Seat');
+    expect(condition?.scopeDetail).toBe('Rangée arrière');
+    expect(condition?.effectiveFrom).toBe('2026-04-01');
+    expect(condition?.effectiveTo).toBe('2026-11-02');
   });
 
   it('maps location points only when latitude and longitude are both finite', () => {

@@ -223,6 +223,19 @@ internal static class StandaloneAttractionsHttpMappers
             Label = dto.Label.ToDomain(),
             Description = dto.Description.ToDomain(),
             DisplayOrder = dto.DisplayOrder,
+            ProvenanceSchemaVersion = AttractionAccessCondition.CurrentProvenanceSchemaVersion,
+            SourceKind = dto.SourceKind.ToDomain(),
+            SourceUrl = dto.SourceUrl,
+            SourceReference = dto.SourceReference,
+            CollectedAtUtc = dto.CollectedAtUtc,
+            VerifiedAtUtc = dto.VerifiedAtUtc,
+            SourceLanguageCode = dto.SourceLanguageCode,
+            SourceSummary = dto.SourceSummary.ToDomain(),
+            SourceConfidence = dto.SourceConfidence.ToDomain(),
+            Scope = dto.Scope.ToDomain(),
+            ScopeDetail = dto.ScopeDetail,
+            EffectiveFrom = dto.EffectiveFrom,
+            EffectiveTo = dto.EffectiveTo,
         };
     }
 
@@ -242,6 +255,19 @@ internal static class StandaloneAttractionsHttpMappers
             Label = value.Label.Count > 0 ? value.Label.ToHttp() : null,
             Description = value.Description.Count > 0 ? value.Description.ToHttp() : null,
             DisplayOrder = value.DisplayOrder,
+            ProvenanceSchemaVersion = value.ProvenanceSchemaVersion,
+            SourceKind = value.SourceKind.ToHttp(),
+            SourceUrl = value.SourceUrl,
+            SourceReference = value.SourceReference,
+            CollectedAtUtc = value.CollectedAtUtc,
+            VerifiedAtUtc = value.VerifiedAtUtc,
+            SourceLanguageCode = value.SourceLanguageCode,
+            SourceSummary = value.SourceSummary.Count > 0 ? value.SourceSummary.ToHttp() : null,
+            SourceConfidence = value.SourceConfidence.ToHttp(),
+            Scope = value.Scope.ToHttp(),
+            ScopeDetail = value.ScopeDetail,
+            EffectiveFrom = value.EffectiveFrom,
+            EffectiveTo = value.EffectiveTo,
         };
     }
 
@@ -345,6 +371,36 @@ internal static class StandaloneAttractionsHttpMappers
     private static AttractionAccessConditionUnitDto ToHttp(this AttractionAccessConditionUnit value)
     {
         return Enum.TryParse(value.ToString(), out AttractionAccessConditionUnitDto parsed) ? parsed : AttractionAccessConditionUnitDto.Centimeter;
+    }
+
+    private static AttractionAccessConditionSourceKind ToDomain(this AttractionAccessConditionSourceKindDto value)
+    {
+        return Enum.TryParse(value.ToString(), out AttractionAccessConditionSourceKind parsed) ? parsed : AttractionAccessConditionSourceKind.Unknown;
+    }
+
+    private static AttractionAccessConditionSourceKindDto ToHttp(this AttractionAccessConditionSourceKind value)
+    {
+        return Enum.TryParse(value.ToString(), out AttractionAccessConditionSourceKindDto parsed) ? parsed : AttractionAccessConditionSourceKindDto.Unknown;
+    }
+
+    private static AttractionAccessConditionConfidence ToDomain(this AttractionAccessConditionConfidenceDto value)
+    {
+        return Enum.TryParse(value.ToString(), out AttractionAccessConditionConfidence parsed) ? parsed : AttractionAccessConditionConfidence.Unknown;
+    }
+
+    private static AttractionAccessConditionConfidenceDto ToHttp(this AttractionAccessConditionConfidence value)
+    {
+        return Enum.TryParse(value.ToString(), out AttractionAccessConditionConfidenceDto parsed) ? parsed : AttractionAccessConditionConfidenceDto.Unknown;
+    }
+
+    private static AttractionAccessConditionScope ToDomain(this AttractionAccessConditionScopeDto value)
+    {
+        return Enum.TryParse(value.ToString(), out AttractionAccessConditionScope parsed) ? parsed : AttractionAccessConditionScope.Attraction;
+    }
+
+    private static AttractionAccessConditionScopeDto ToHttp(this AttractionAccessConditionScope value)
+    {
+        return Enum.TryParse(value.ToString(), out AttractionAccessConditionScopeDto parsed) ? parsed : AttractionAccessConditionScopeDto.Attraction;
     }
 }
 

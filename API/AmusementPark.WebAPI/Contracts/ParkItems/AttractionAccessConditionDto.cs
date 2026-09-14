@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AmusementPark.WebAPI.Contracts.Common;
 
@@ -31,4 +32,30 @@ public sealed class AttractionAccessConditionDto
     public List<LocalizedTextDto>? Description { get; set; }
 
     public int? DisplayOrder { get; set; }
+
+    public int ProvenanceSchemaVersion { get; set; } = 1;
+
+    public AttractionAccessConditionSourceKindDto SourceKind { get; set; }
+
+    public string? SourceUrl { get; set; }
+
+    public string? SourceReference { get; set; }
+
+    public DateTime? CollectedAtUtc { get; set; }
+
+    public DateTime? VerifiedAtUtc { get; set; }
+
+    public string? SourceLanguageCode { get; set; }
+
+    public List<LocalizedTextDto>? SourceSummary { get; set; }
+
+    public AttractionAccessConditionConfidenceDto SourceConfidence { get; set; }
+
+    public AttractionAccessConditionScopeDto Scope { get; set; }
+
+    public string? ScopeDetail { get; set; }
+
+    public DateOnly? EffectiveFrom { get; set; }
+
+    public DateOnly? EffectiveTo { get; set; }
 }
