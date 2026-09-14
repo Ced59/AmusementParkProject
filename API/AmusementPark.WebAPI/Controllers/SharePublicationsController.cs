@@ -4,7 +4,6 @@ using AmusementPark.Application.Features.Sharing.Commands;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.WebAPI.Authorization;
-using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Contracts.Sharing;
 using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
@@ -16,7 +15,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using Microsoft.Extensions.Options;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -28,20 +26,17 @@ public sealed class SharePublicationsController : ControllerBase
     private readonly ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>> publishHandler;
     private readonly ICommandHandler<RotateShareIdCommand, ApplicationResult<SharePublicationSettingsResult>> rotateHandler;
     private readonly ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>> revokeHandler;
-    private readonly SharePublicationRolloutSettings rolloutSettings;
 
     public SharePublicationsController(
         IQueryHandler<PreviewSharePublicationQuery, ApplicationResult<SharePublicationPreviewResult>> previewHandler,
         ICommandHandler<PublishSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>> publishHandler,
         ICommandHandler<RotateShareIdCommand, ApplicationResult<SharePublicationSettingsResult>> rotateHandler,
-        ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>> revokeHandler,
-        IOptions<SharePublicationRolloutSettings> rolloutSettings)
+        ICommandHandler<RevokeSharePublicationCommand, ApplicationResult<SharePublicationSettingsResult>> revokeHandler)
     {
         this.previewHandler = previewHandler;
         this.publishHandler = publishHandler;
         this.rotateHandler = rotateHandler;
         this.revokeHandler = revokeHandler;
-        this.rolloutSettings = rolloutSettings.Value;
     }
 
     [HttpPost("preview")]
@@ -52,16 +47,10 @@ public sealed class SharePublicationsController : ControllerBase
     [ProducesResponseType(typeof(SharePublicationPreviewDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
-    [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     public async Task<IActionResult> PreviewAsync(
         [FromBody] SharePublicationPreviewRequestDto request,
         CancellationToken cancellationToken = default)
     {
-        if (!this.rolloutSettings.Enabled)
-        {
-            return this.StatusCode(StatusCodes.Status503ServiceUnavailable);
-        }
-
         string? userId = this.User.GetUserId();
         if (string.IsNullOrWhiteSpace(userId))
         {
@@ -90,16 +79,10 @@ public sealed class SharePublicationsController : ControllerBase
     [ProducesResponseType(typeof(SharePublicationSettingsDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
-    [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     public async Task<IActionResult> PublishAsync(
         [FromBody] PublishSharePublicationRequestDto request,
         CancellationToken cancellationToken = default)
     {
-        if (!this.rolloutSettings.Enabled)
-        {
-            return this.StatusCode(StatusCodes.Status503ServiceUnavailable);
-        }
-
         string? userId = this.User.GetUserId();
         if (string.IsNullOrWhiteSpace(userId))
         {
@@ -128,16 +111,10 @@ public sealed class SharePublicationsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
-    [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     public async Task<IActionResult> RotateLinkAsync(
         [FromRoute] string publicationId,
         CancellationToken cancellationToken = default)
     {
-        if (!this.rolloutSettings.Enabled)
-        {
-            return this.StatusCode(StatusCodes.Status503ServiceUnavailable);
-        }
-
         string? userId = this.User.GetUserId();
         if (string.IsNullOrWhiteSpace(userId))
         {
@@ -162,16 +139,10 @@ public sealed class SharePublicationsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
-    [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
     public async Task<IActionResult> RevokeAsync(
         [FromRoute] string publicationId,
         CancellationToken cancellationToken = default)
     {
-        if (!this.rolloutSettings.Enabled)
-        {
-            return this.StatusCode(StatusCodes.Status503ServiceUnavailable);
-        }
-
         string? userId = this.User.GetUserId();
         if (string.IsNullOrWhiteSpace(userId))
         {

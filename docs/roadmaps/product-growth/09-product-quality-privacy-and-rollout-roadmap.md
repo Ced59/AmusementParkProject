@@ -800,6 +800,16 @@ Avant merge d’une phase :
 
 Une roadmap n’est pas automatiquement mise à jour par le code : chaque phase prévoit une PR de clôture documentaire.
 
+#### État de généralisation de SHARE au 14 septembre 2026
+
+SHARE a franchi son gate technique en version 5.3.13. Son flag de préversion a été
+retiré sur toute la chaîne de configuration, sans créer d'adaptateur ni conserver
+de second mode. Les preuves de confidentialité, sécurité, responsive, export,
+suppression, observabilité et rollback sont regroupées dans
+[`product-growth-share-15-general-availability-2026-09-14.md`](../../architecture/product-growth-share-15-general-availability-2026-09-14.md).
+La cohorte communautaire n'est pas exigée par la décision produit et aucune preuve
+d'usage réel n'est donc revendiquée.
+
 ## 23. Cadence de revue
 
 - après chaque gate ;

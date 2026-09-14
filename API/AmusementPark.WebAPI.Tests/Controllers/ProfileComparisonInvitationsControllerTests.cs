@@ -6,7 +6,6 @@ using AmusementPark.Application.Features.Sharing.Commands;
 using AmusementPark.Application.Features.Sharing.Queries;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Core.Domain.Sharing;
-using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Contracts.Sharing;
 using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.Filters;
@@ -14,7 +13,6 @@ using AmusementPark.WebAPI.RateLimiting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using Microsoft.Extensions.Options;
 using Moq;
 using Xunit;
 
@@ -166,8 +164,7 @@ public sealed class ProfileComparisonInvitationsControllerTests
                 previewHandler ?? Mock.Of<IQueryHandler<GetProfileComparisonInvitationPreviewQuery,
                     ApplicationResult<ProfileComparisonInvitationPreviewResult>>>(MockBehavior.Strict),
                 acceptHandler ?? Mock.Of<ICommandHandler<AcceptProfileComparisonInvitationCommand,
-                    ApplicationResult<ProfileComparisonInvitationAcceptanceResult>>>(MockBehavior.Strict),
-                Options.Create(new SharePublicationRolloutSettings { Enabled = true }));
+                    ApplicationResult<ProfileComparisonInvitationAcceptanceResult>>>(MockBehavior.Strict));
         ClaimsIdentity identity = new ClaimsIdentity(
             new[] { new Claim(ClaimTypes.NameIdentifier, "user-1") },
             "Test");
