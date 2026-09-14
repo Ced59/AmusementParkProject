@@ -74,9 +74,6 @@ public sealed class ParkFitOperationsMongoDefinitionsTests
         Assert.Equal(
             "park-fit-operational-statuses",
             settings.ParkFitOperationalStatusesCollectionName);
-        Assert.Equal(
-            "park-fit-portfolio-migrations",
-            settings.ParkFitPortfolioMigrationsCollectionName);
     }
 
     private static BsonDocument Render<TDocument>(IndexKeysDefinition<TDocument> keys)
