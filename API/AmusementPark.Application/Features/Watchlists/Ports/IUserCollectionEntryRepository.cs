@@ -21,7 +21,7 @@ public interface IUserCollectionEntryRepository
         UserCollectionEntry entry,
         CancellationToken cancellationToken);
 
-    Task SynchronizeTargetStatusesAsync(
+    Task<bool> TrySynchronizeTargetStatusesAsync(
         IReadOnlyCollection<UserCollectionEntry> entries,
         CancellationToken cancellationToken);
 

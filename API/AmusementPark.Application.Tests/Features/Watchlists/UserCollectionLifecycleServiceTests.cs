@@ -121,6 +121,57 @@ public sealed class UserCollectionLifecycleServiceTests
     }
 
     [Fact]
+    public async Task AddAsync_RetriesStatusSynchronizationAfterCompetingVersionUpdate()
+    {
+        UserCollectionEntry initiallyRead = CreateAvailableParkFavorite();
+        DateTime concurrentUpdateUtc = DateTime.UtcNow.AddSeconds(-1);
+        UserCollectionEntry concurrentlyUpdated = UserCollectionEntry.Restore(
+            UserCollectionEntryId.Parse("entry-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.TemporarilyClosed,
+            null,
+            null,
+            null,
+            concurrentUpdateUtc.AddMinutes(-1),
+            concurrentUpdateUtc,
+            2);
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.SetupSequence(repository => repository.GetOwnedByIdentityAsync(
+                "user-1",
+                CollectionTargetType.Park,
+                "park-1",
+                UserCollectionKind.Favorite,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(initiallyRead)
+            .ReturnsAsync(concurrentlyUpdated);
+        collectionRepository.SetupSequence(repository => repository.TrySynchronizeTargetStatusesAsync(
+                It.IsAny<IReadOnlyCollection<UserCollectionEntry>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false)
+            .ReturnsAsync(true);
+        UserCollectionLifecycleService service = CreateService(
+            collectionRepository,
+            CreatePublicPark("park-1", "Closed park", ParkStatus.ClosedDefinitively));
+
+        AmusementPark.Application.Errors.ApplicationResult<UserCollectionEntryResult> result =
+            await service.AddAsync(
+                "user-1",
+                new UserCollectionTargetInput(
+                    CollectionTargetType.Park,
+                    "park-1",
+                    UserCollectionKind.Favorite),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(CollectionTargetStatus.PermanentlyClosed, result.Value?.TargetStatus);
+        Assert.Equal(3, result.Value?.Version);
+        collectionRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task AddAsync_SynchronizesEntryRecoveredAfterConcurrentCreation()
     {
         UserCollectionEntry concurrentEntry = CreateAvailableParkFavorite();
@@ -202,12 +253,12 @@ public sealed class UserCollectionLifecycleServiceTests
                 null,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { entry });
-        collectionRepository.Setup(repository => repository.SynchronizeTargetStatusesAsync(
+        collectionRepository.Setup(repository => repository.TrySynchronizeTargetStatusesAsync(
                 It.Is<IReadOnlyCollection<UserCollectionEntry>>(entries =>
                     entries.Count == 1
                     && entries.Single().TargetStatus == CollectionTargetStatus.PermanentlyClosed),
                 It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(true);
         UserCollectionLifecycleService service = CreateService(
             collectionRepository,
             CreatePublicPark("park-1", "Closed park", ParkStatus.ClosedDefinitively));
@@ -272,12 +323,12 @@ public sealed class UserCollectionLifecycleServiceTests
     private static void SetupPermanentStatusSynchronization(
         Mock<IUserCollectionEntryRepository> collectionRepository)
     {
-        collectionRepository.Setup(repository => repository.SynchronizeTargetStatusesAsync(
+        collectionRepository.Setup(repository => repository.TrySynchronizeTargetStatusesAsync(
                 It.Is<IReadOnlyCollection<UserCollectionEntry>>(entries =>
                     entries.Count == 1
                     && entries.Single().TargetStatus == CollectionTargetStatus.PermanentlyClosed),
                 It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(true);
     }
 
     private static Park CreatePublicPark(string id, string name, ParkStatus status)

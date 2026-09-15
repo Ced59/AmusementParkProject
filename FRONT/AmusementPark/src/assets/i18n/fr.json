@@ -11,6 +11,8 @@
       "wantToVisit": "Je veux y aller",
       "wantToExperience": "Je veux l’essayer",
       "intentActive": "Dans mes envies",
+      "planned": "Ajouter à mes projets",
+      "plannedActive": "Dans mes projets",
       "backToProfile": "Retour au profil",
       "openMine": "Mes favoris et envies",
       "retry": "Réessayer",

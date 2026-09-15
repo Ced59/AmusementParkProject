@@ -22,6 +22,17 @@
       <span>{{ labelKey(intentKind) | translate }}</span>
     </button>
 
+    <button
+      type="button"
+      appUiButton="ghost"
+      [class.collection-actions__button--active]="facade.has('Planned')"
+      [attr.aria-pressed]="facade.has('Planned')"
+      [disabled]="facade.loading() || facade.mutatingKind() !== null"
+      (click)="facade.toggle('Planned')">
+      <i [class]="icon('Planned')" aria-hidden="true"></i>
+      <span>{{ labelKey('Planned') | translate }}</span>
+    </button>
+
     @if (facade.error()) {
       <p class="collection-actions__error" role="alert">
         {{ 'collections.feedback.actionError' | translate }}

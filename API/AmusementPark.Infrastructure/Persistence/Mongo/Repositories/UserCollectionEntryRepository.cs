@@ -127,14 +127,14 @@ public sealed class UserCollectionEntryRepository : IUserCollectionEntryReposito
         return UserCollectionWriteOutcome.LimitReached;
     }
 
-    public async Task SynchronizeTargetStatusesAsync(
+    public async Task<bool> TrySynchronizeTargetStatusesAsync(
         IReadOnlyCollection<UserCollectionEntry> entries,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(entries);
         if (entries.Count == 0)
         {
-            return;
+            return true;
         }
 
         List<WriteModel<UserCollectionEntryDocument>> writes = entries.Select(entry =>
@@ -156,10 +156,11 @@ public sealed class UserCollectionEntryRepository : IUserCollectionEntryReposito
                     .Set(static document => document.Version, entry.Version);
             return new UpdateOneModel<UserCollectionEntryDocument>(filter, update);
         }).Cast<WriteModel<UserCollectionEntryDocument>>().ToList();
-        await this.collection.BulkWriteAsync(
+        BulkWriteResult<UserCollectionEntryDocument> result = await this.collection.BulkWriteAsync(
             writes,
             new BulkWriteOptions { IsOrdered = false },
             cancellationToken);
+        return result.MatchedCount == entries.Count;
     }
 
     public async Task DeleteOwnedByIdentityAsync(

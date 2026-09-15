@@ -38,6 +38,12 @@ export class UserCollectionActionsComponent implements OnChanges {
         : 'collections.actions.favorite';
     }
 
+    if (kind === 'Planned') {
+      return this.facade.has(kind)
+        ? 'collections.actions.plannedActive'
+        : 'collections.actions.planned';
+    }
+
     return this.facade.has(kind)
       ? 'collections.actions.intentActive'
       : this.targetType === 'Park'
@@ -48,6 +54,10 @@ export class UserCollectionActionsComponent implements OnChanges {
   protected icon(kind: UserCollectionKind): string {
     if (kind === 'Favorite') {
       return this.facade.has(kind) ? 'pi pi-heart-fill' : 'pi pi-heart';
+    }
+
+    if (kind === 'Planned') {
+      return this.facade.has(kind) ? 'pi pi-calendar' : 'pi pi-calendar-plus';
     }
 
     return this.facade.has(kind) ? 'pi pi-bookmark-fill' : 'pi pi-bookmark';

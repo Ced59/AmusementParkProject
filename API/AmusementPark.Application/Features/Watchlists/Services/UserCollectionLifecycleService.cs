@@ -9,6 +9,8 @@ namespace AmusementPark.Application.Features.Watchlists.Services;
 
 public sealed class UserCollectionLifecycleService
 {
+    private const int MaximumStatusSynchronizationAttempts = 3;
+
     private readonly IUserCollectionEntryRepository repository;
     private readonly UserCollectionTargetReader targetReader;
     private readonly TimeProvider timeProvider;
@@ -49,8 +51,15 @@ public sealed class UserCollectionLifecycleService
 
             if (existing is not null)
             {
-                await this.SynchronizeTargetStatusAsync(existing, snapshot, cancellationToken);
-                return ApplicationResult<UserCollectionEntryResult>.Success(ToResult(existing, snapshot));
+                UserCollectionEntry? synchronizedEntry = await this.EnsureTargetStatusSynchronizedAsync(
+                    existing,
+                    snapshot,
+                    cancellationToken);
+                return synchronizedEntry is not null
+                    ? ApplicationResult<UserCollectionEntryResult>.Success(
+                        ToResult(synchronizedEntry, snapshot))
+                    : ApplicationResult<UserCollectionEntryResult>.Failure(
+                        UserCollectionApplicationErrors.ChangedConcurrently());
             }
 
             UserCollectionEntry entry = UserCollectionEntry.Create(
@@ -83,12 +92,15 @@ public sealed class UserCollectionLifecycleService
                     cancellationToken);
                 if (concurrentEntry is not null)
                 {
-                    await this.SynchronizeTargetStatusAsync(
+                    UserCollectionEntry? synchronizedEntry = await this.EnsureTargetStatusSynchronizedAsync(
                         concurrentEntry,
                         snapshot,
                         cancellationToken);
-                    return ApplicationResult<UserCollectionEntryResult>.Success(
-                        ToResult(concurrentEntry, snapshot));
+                    return synchronizedEntry is not null
+                        ? ApplicationResult<UserCollectionEntryResult>.Success(
+                            ToResult(synchronizedEntry, snapshot))
+                        : ApplicationResult<UserCollectionEntryResult>.Failure(
+                            UserCollectionApplicationErrors.ChangedConcurrently());
                 }
 
                 return ApplicationResult<UserCollectionEntryResult>.Failure(
@@ -122,11 +134,11 @@ public sealed class UserCollectionLifecycleService
         try
         {
             string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
-            IReadOnlyCollection<UserCollectionEntry> entries = await this.repository.ListOwnedAsync(
+            List<UserCollectionEntry> entries = (await this.repository.ListOwnedAsync(
                 normalizedUserId,
                 targetType,
                 targetId,
-                cancellationToken);
+                cancellationToken)).ToList();
             Dictionary<CollectionTargetType, IReadOnlyDictionary<string, UserCollectionTargetSnapshot>>
                 snapshotsByType = new();
             foreach (IGrouping<CollectionTargetType, UserCollectionEntry> group in entries.GroupBy(
@@ -156,9 +168,34 @@ public sealed class UserCollectionLifecycleService
 
             if (synchronizedEntries.Count > 0)
             {
-                await this.repository.SynchronizeTargetStatusesAsync(
+                bool allStatusesSynchronized = await this.repository.TrySynchronizeTargetStatusesAsync(
                     synchronizedEntries,
                     cancellationToken);
+                if (!allStatusesSynchronized)
+                {
+                    foreach (UserCollectionEntry synchronizedEntry in synchronizedEntries)
+                    {
+                        UserCollectionTargetSnapshot snapshot = snapshotsByType[
+                            synchronizedEntry.TargetType][synchronizedEntry.TargetId];
+                        UserCollectionEntry? persistedEntry =
+                            await this.RetryTargetStatusSynchronizationAsync(
+                                synchronizedEntry,
+                                snapshot,
+                                cancellationToken);
+                        if (persistedEntry is null)
+                        {
+                            return ApplicationResult<IReadOnlyCollection<UserCollectionEntryResult>>
+                                .Failure(UserCollectionApplicationErrors.ChangedConcurrently());
+                        }
+
+                        int entryIndex = entries.FindIndex(entry =>
+                            entry.Id == synchronizedEntry.Id);
+                        if (entryIndex >= 0)
+                        {
+                            entries[entryIndex] = persistedEntry;
+                        }
+                    }
+                }
             }
 
             UserCollectionEntryResult[] results = entries.Select(entry =>
@@ -237,20 +274,64 @@ public sealed class UserCollectionLifecycleService
             entry.Version);
     }
 
-    private async Task SynchronizeTargetStatusAsync(
+    private async Task<UserCollectionEntry?> EnsureTargetStatusSynchronizedAsync(
         UserCollectionEntry entry,
         UserCollectionTargetSnapshot snapshot,
         CancellationToken cancellationToken)
     {
         if (!snapshot.IsAvailableForCreation || snapshot.Status == entry.TargetStatus)
         {
-            return;
+            return entry;
         }
 
-        entry.SynchronizeTargetStatus(snapshot.Status, this.timeProvider.GetUtcNow().UtcDateTime);
-        await this.repository.SynchronizeTargetStatusesAsync(
-            new[] { entry },
+        UserCollectionEntry currentEntry = entry;
+        for (int attempt = 0; attempt < MaximumStatusSynchronizationAttempts; attempt++)
+        {
+            currentEntry.SynchronizeTargetStatus(
+                snapshot.Status,
+                this.timeProvider.GetUtcNow().UtcDateTime);
+            bool synchronized = await this.repository.TrySynchronizeTargetStatusesAsync(
+                new[] { currentEntry },
+                cancellationToken);
+            if (synchronized)
+            {
+                return currentEntry;
+            }
+
+            UserCollectionEntry? persistedEntry = await this.repository.GetOwnedByIdentityAsync(
+                currentEntry.UserId,
+                currentEntry.TargetType,
+                currentEntry.TargetId,
+                currentEntry.Kind,
+                cancellationToken);
+            if (persistedEntry is null || persistedEntry.TargetStatus == snapshot.Status)
+            {
+                return persistedEntry;
+            }
+
+            currentEntry = persistedEntry;
+        }
+
+        return null;
+    }
+
+    private async Task<UserCollectionEntry?> RetryTargetStatusSynchronizationAsync(
+        UserCollectionEntry attemptedEntry,
+        UserCollectionTargetSnapshot snapshot,
+        CancellationToken cancellationToken)
+    {
+        UserCollectionEntry? persistedEntry = await this.repository.GetOwnedByIdentityAsync(
+            attemptedEntry.UserId,
+            attemptedEntry.TargetType,
+            attemptedEntry.TargetId,
+            attemptedEntry.Kind,
             cancellationToken);
+        return persistedEntry is null
+            ? null
+            : await this.EnsureTargetStatusSynchronizedAsync(
+                persistedEntry,
+                snapshot,
+                cancellationToken);
     }
 
     private static ApplicationResult<TResult> Invalid<TResult>(
