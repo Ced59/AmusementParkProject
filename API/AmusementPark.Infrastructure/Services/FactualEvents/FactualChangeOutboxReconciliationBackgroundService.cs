@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.FactualEvents.Models;
 using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -15,6 +16,7 @@ internal sealed class FactualChangeOutboxReconciliationBackgroundService : Backg
     private readonly ILogger<FactualChangeOutboxReconciliationBackgroundService> logger;
     private readonly TimeProvider timeProvider;
     private FactualChangeOutboxCursor? cursor;
+    private ParkOpeningHoursFactualChangeCursor? openingHoursCursor;
 
     public FactualChangeOutboxReconciliationBackgroundService(
         IServiceScopeFactory serviceScopeFactory,
@@ -42,7 +44,8 @@ internal sealed class FactualChangeOutboxReconciliationBackgroundService : Backg
                 using IServiceScope scope = this.serviceScopeFactory.CreateScope();
                 IParkOpeningHoursFactualChangeCapture openingHoursCapture =
                     scope.ServiceProvider.GetRequiredService<IParkOpeningHoursFactualChangeCapture>();
-                _ = await openingHoursCapture.ReconcilePendingAsync(
+                this.openingHoursCursor = await openingHoursCapture.ReconcilePendingAsync(
+                    this.openingHoursCursor,
                     100,
                     stoppingToken);
                 IFactualChangeMaterializationScheduler scheduler =

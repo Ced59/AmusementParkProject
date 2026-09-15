@@ -40,6 +40,7 @@ public sealed class ParkOpeningHoursFactualMarkerPersistenceTests
             ParkId = "park-1",
             TimeZoneId = "Europe/Paris",
             FactualRevision = 7,
+            WriteRevision = 11,
             PendingFactualChanges = new List<FactualChangeOutboxDocument>
             {
                 entry.ToDocument(),
@@ -51,6 +52,7 @@ public sealed class ParkOpeningHoursFactualMarkerPersistenceTests
             BsonSerializer.Deserialize<ParkOpeningHoursScheduleDocument>(bson);
 
         Assert.Equal(7, restored.FactualRevision);
+        Assert.Equal(11, restored.WriteRevision);
         Assert.Equal(entry, Assert.Single(restored.PendingFactualChanges).ToDomain());
     }
 
@@ -58,13 +60,46 @@ public sealed class ParkOpeningHoursFactualMarkerPersistenceTests
     public void PendingFilter_ShouldSelectOnlySchedulesWithDurableMarkers()
     {
         BsonDocument rendered = Render(
-            ParkOpeningHoursRepository.BuildPendingFactualChangeFilter());
+            ParkOpeningHoursRepository.BuildPendingFactualChangeFilter(null));
 
         Assert.Equal(
             new BsonDocument(
                 "pendingFactualChanges.0",
                 new BsonDocument("$exists", true)),
             rendered);
+    }
+
+    [Fact]
+    public void PendingFilter_WithCursor_ShouldPageByDateThenParkIdentifier()
+    {
+        DateTime sourceUpdatedAtUtc =
+            new DateTime(2026, 9, 15, 12, 0, 0, DateTimeKind.Utc);
+        ParkOpeningHoursFactualChangeCursor cursor =
+            new ParkOpeningHoursFactualChangeCursor(sourceUpdatedAtUtc, "park-100");
+
+        string json = Render(
+            ParkOpeningHoursRepository.BuildPendingFactualChangeFilter(cursor))
+            .ToJson();
+
+        Assert.Contains("$or", json, StringComparison.Ordinal);
+        Assert.Contains("updatedAt", json, StringComparison.Ordinal);
+        Assert.Contains("park-100", json, StringComparison.Ordinal);
+        Assert.Contains("parkId", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void WriteRevisionFilter_ForLegacyDocument_ShouldAcceptZeroOrMissingRevision()
+    {
+        string json = Render(
+            ParkOpeningHoursRepository.BuildWriteRevisionFilter(
+                "park-1",
+                "schedule-1",
+                0))
+            .ToJson();
+
+        Assert.Contains("schedule-1", json, StringComparison.Ordinal);
+        Assert.Contains("writeRevision", json, StringComparison.Ordinal);
+        Assert.Contains("$exists", json, StringComparison.Ordinal);
     }
 
     [Fact]

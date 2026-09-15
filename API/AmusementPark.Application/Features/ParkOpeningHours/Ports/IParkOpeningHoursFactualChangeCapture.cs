@@ -14,7 +14,8 @@ public interface IParkOpeningHoursFactualChangeCapture
         ParkOpeningHoursPendingFactualChange pendingFactualChange,
         CancellationToken cancellationToken);
 
-    Task<int> ReconcilePendingAsync(
+    Task<ParkOpeningHoursFactualChangeCursor?> ReconcilePendingAsync(
+        ParkOpeningHoursFactualChangeCursor? after,
         int maximumCount,
         CancellationToken cancellationToken);
 }

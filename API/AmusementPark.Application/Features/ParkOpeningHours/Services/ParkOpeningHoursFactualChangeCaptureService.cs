@@ -39,11 +39,6 @@ public sealed class ParkOpeningHoursFactualChangeCaptureService
 
         FactValue? previousValue = OpeningCalendarFactSnapshot.Create(previousSchedule);
         FactValue? newValue = OpeningCalendarFactSnapshot.Create(currentSchedule);
-        if (FactualChangeDiff.Detect(previousValue, newValue) is null)
-        {
-            return null;
-        }
-
         string parkName = park.Name!.Trim();
         DateTime verifiedAtUtc = currentSchedule.LastVerifiedAtUtc!.Value;
         SourceReference source = new SourceReference(
@@ -101,21 +96,21 @@ public sealed class ParkOpeningHoursFactualChangeCaptureService
         }
     }
 
-    public async Task<int> ReconcilePendingAsync(
+    public async Task<ParkOpeningHoursFactualChangeCursor?> ReconcilePendingAsync(
+        ParkOpeningHoursFactualChangeCursor? after,
         int maximumCount,
         CancellationToken cancellationToken)
     {
         IReadOnlyCollection<ParkOpeningHoursPendingFactualChange> pendingChanges =
             await this.openingHoursRepository.GetPendingFactualChangesAsync(
+                after,
                 maximumCount,
                 cancellationToken);
-        int reconciledCount = 0;
         foreach (ParkOpeningHoursPendingFactualChange pendingChange in pendingChanges)
         {
             try
             {
                 await this.CaptureAsync(pendingChange, cancellationToken);
-                reconciledCount += 1;
             }
             catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
             {
@@ -130,7 +125,24 @@ public sealed class ParkOpeningHoursFactualChangeCaptureService
             }
         }
 
-        return reconciledCount;
+        IReadOnlyCollection<ParkOpeningHoursPendingFactualChange> lastBySource =
+            pendingChanges
+                .GroupBy(static change => new
+                {
+                    change.SourceUpdatedAtUtc,
+                    change.ParkId,
+                })
+                .Select(static group => group.Last())
+                .ToList();
+        if (lastBySource.Count < maximumCount)
+        {
+            return null;
+        }
+
+        ParkOpeningHoursPendingFactualChange lastChange = lastBySource.Last();
+        return new ParkOpeningHoursFactualChangeCursor(
+            lastChange.SourceUpdatedAtUtc,
+            lastChange.ParkId);
     }
 
     private static bool CanCapture(Park park, ParkOpeningHoursSchedule schedule)

@@ -185,6 +185,9 @@ document, conformément à la contrainte MongoDB autonome. Une panne avant la co
 vers la collection d'outbox laisse donc une source de reprise durable. Plusieurs
 intentions peuvent rester embarquées et leur révision est strictement croissante :
 une nouvelle édition ne remplace pas une intention précédente non acquittée.
+Chaque remplacement utilise en plus une révision d'écriture comparée atomiquement.
+En cas de concurrence, le dépôt relit le calendrier, recalcule le véritable diff
+avant/après, attribue la révision factuelle suivante et retente au plus cinq fois.
 
 Une panne de planification n'annule donc pas le fait déjà enregistré. Une panne
 entre la création de l'événement et l'acquittement est rejouée : l'index unique
@@ -200,6 +203,9 @@ pas les événements suivants.
 ## Performance et exploitation
 
 - le scan de réparation est limité à 100 entrées par minute ;
+- le scan des sources avance lui aussi par curseur `(updatedAt, parkId)` puis
+  reboucle en fin de liste : des marqueurs conflictuels anciens ne peuvent pas
+  affamer les parcs suivants ;
 - un curseur `(createdAt, id)` avance entre les pages pleines puis reboucle en fin
   de liste : des jobs terminaux anciens ne peuvent donc pas affamer les faits plus
   récents ;
@@ -219,6 +225,9 @@ Les tests couvrent :
 - l'absence totale d'écriture quand le diff est vide ;
 - la conservation de l'outbox quand la mise en file échoue ;
 - la conservation d'un marqueur dans le calendrier quand l'insertion outbox échoue ;
+- le compare-and-swap qui préserve les marqueurs et réattribue une révision sous
+  écritures concurrentes ;
+- l'avancement du curseur source malgré un marqueur conflictuel ;
 - la clé de job déterministe et bornée même avec une clé métier maximale ;
 - la poursuite du reconciler lorsqu'une entrée échoue ;
 - l'acquittement terminal d'un job exact définitivement échoué ;

@@ -29,6 +29,7 @@ public interface IParkOpeningHoursRepository
         CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<ParkOpeningHoursPendingFactualChange>> GetPendingFactualChangesAsync(
+        ParkOpeningHoursFactualChangeCursor? after,
         int maximumCount,
         CancellationToken cancellationToken);
 

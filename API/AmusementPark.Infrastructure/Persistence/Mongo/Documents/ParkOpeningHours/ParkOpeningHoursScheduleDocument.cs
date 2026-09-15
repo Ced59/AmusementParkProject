@@ -56,6 +56,9 @@ public sealed class ParkOpeningHoursScheduleDocument : MongoDocumentBase
     [BsonElement("factualRevision")]
     public long FactualRevision { get; set; }
 
+    [BsonElement("writeRevision")]
+    public long WriteRevision { get; set; }
+
     [BsonElement("pendingFactualChanges")]
     public List<FactualChangeOutboxDocument> PendingFactualChanges { get; set; } = new();
 }
