@@ -1,6 +1,20 @@
 {
-  "version": "5.3.35",
+  "version": "5.3.36",
   "history": [
+    {
+      "version": "5.3.36",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Vérification de l’accès au plan du site.",
+        "en": "Checking access to the sitemap.",
+        "de": "Prüfung des Zugriffs auf die Sitemap.",
+        "nl": "Controle van de toegang tot de sitemap.",
+        "it": "Verifica dell’accesso alla mappa del sito.",
+        "es": "Comprobación del acceso al mapa del sitio.",
+        "pl": "Sprawdzenie dostępu do mapy witryny.",
+        "pt": "Verificação do acesso ao mapa do site."
+      }
+    },
     {
       "version": "5.3.35",
       "releasedAt": "2026-09-15",
