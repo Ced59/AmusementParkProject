@@ -7,4 +7,5 @@ public enum FactualChangeCaptureDisposition
     AlreadyRecorded = 2,
     RecordedPendingScheduling = 3,
     Conflict = 4,
+    RecordedTerminalSchedulingFailure = 5,
 }

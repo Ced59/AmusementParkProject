@@ -63,7 +63,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IDurableBackgroundJobHandlerResolver, DurableBackgroundJobHandlerRegistry>();
         services.AddSingleton<DurableBackgroundJobRetryDelayCalculator>();
         services.AddScoped<DurableBackgroundJobExecutionOrchestrator>();
-        services.AddScoped<FactualChangeCaptureService>();
+        services.AddScoped<IFactualChangeCaptureService, FactualChangeCaptureService>();
         services.AddScoped<IFactualChangeMaterializationScheduler, FactualChangeMaterializationScheduler>();
         services.AddDurableBackgroundJobHandler<FactualChangeMaterializationJobHandler>();
         services.AddScoped<ParkItemReferenceValidator>();
@@ -83,6 +83,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<SocialPublicationTargetResolver>();
         services.AddScoped<ISocialPublicationComposerService, SocialPublicationComposerService>();
         services.AddScoped<ParkOpeningHoursScheduleNormalizer>();
+        services.AddScoped<IParkOpeningHoursFactualChangeCapture, ParkOpeningHoursFactualChangeCaptureService>();
         services.AddSingleton<ParkOpeningHoursCoverageSegmentBuilder>();
         services.AddSingleton<ParkOpeningHoursAdminStatusResolver>();
         services.AddScoped<ParkOpeningHoursCoverageNotificationProcessor>();

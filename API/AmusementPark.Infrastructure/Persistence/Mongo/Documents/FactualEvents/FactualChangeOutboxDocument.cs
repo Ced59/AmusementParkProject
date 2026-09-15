@@ -46,6 +46,14 @@ public sealed class FactualChangeOutboxDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? MaterializedAtUtc { get; set; }
 
+    [BsonElement("terminalAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? TerminalAtUtc { get; set; }
+
+    [BsonElement("terminalErrorCode")]
+    [BsonIgnoreIfNull]
+    public string? TerminalErrorCode { get; set; }
+
     [BsonElement("version")]
     public long Version { get; set; }
 }

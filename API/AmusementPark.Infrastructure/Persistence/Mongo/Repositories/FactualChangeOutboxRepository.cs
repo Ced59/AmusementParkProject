@@ -126,11 +126,64 @@ public sealed class FactualChangeOutboxRepository : IFactualChangeOutboxReposito
                 expectedVersion)
             & Builders<FactualChangeOutboxDocument>.Filter.Eq(
                 static value => value.MaterializedAtUtc,
+                null)
+            & Builders<FactualChangeOutboxDocument>.Filter.Eq(
+                static value => value.TerminalAtUtc,
                 null);
         UpdateDefinition<FactualChangeOutboxDocument> update =
             Builders<FactualChangeOutboxDocument>.Update
                 .Set(static value => value.MaterializedAtUtc, materializedAtUtc)
                 .Set(static value => value.UpdatedAt, materializedAtUtc)
+                .Set(static value => value.Version, expectedVersion + 1);
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            filter,
+            update,
+            cancellationToken: cancellationToken);
+        return result.ModifiedCount == 1;
+    }
+
+    public async Task<bool> MarkTerminalAsync(
+        string entryId,
+        string eventId,
+        long expectedVersion,
+        DateTime terminalAtUtc,
+        string errorCode,
+        CancellationToken cancellationToken)
+    {
+        string normalizedEntryId = NormalizeIdentifier(entryId, nameof(entryId));
+        string normalizedEventId = NormalizeIdentifier(eventId, nameof(eventId));
+        string normalizedErrorCode = NormalizeIdentifier(errorCode, nameof(errorCode));
+        if (expectedVersion < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(expectedVersion));
+        }
+
+        if (terminalAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException("The terminal timestamp must be UTC.", nameof(terminalAtUtc));
+        }
+
+        FilterDefinition<FactualChangeOutboxDocument> filter =
+            Builders<FactualChangeOutboxDocument>.Filter.Eq(
+                static value => value.Id,
+                normalizedEntryId)
+            & Builders<FactualChangeOutboxDocument>.Filter.Eq(
+                static value => value.EventId,
+                normalizedEventId)
+            & Builders<FactualChangeOutboxDocument>.Filter.Eq(
+                static value => value.Version,
+                expectedVersion)
+            & Builders<FactualChangeOutboxDocument>.Filter.Eq(
+                static value => value.MaterializedAtUtc,
+                null)
+            & Builders<FactualChangeOutboxDocument>.Filter.Eq(
+                static value => value.TerminalAtUtc,
+                null);
+        UpdateDefinition<FactualChangeOutboxDocument> update =
+            Builders<FactualChangeOutboxDocument>.Update
+                .Set(static value => value.TerminalAtUtc, terminalAtUtc)
+                .Set(static value => value.TerminalErrorCode, normalizedErrorCode)
+                .Set(static value => value.UpdatedAt, terminalAtUtc)
                 .Set(static value => value.Version, expectedVersion + 1);
         UpdateResult result = await this.collection.UpdateOneAsync(
             filter,
@@ -156,8 +209,11 @@ public sealed class FactualChangeOutboxRepository : IFactualChangeOutboxReposito
     {
         FilterDefinition<FactualChangeOutboxDocument> pending =
             Builders<FactualChangeOutboxDocument>.Filter.Eq(
-            static value => value.MaterializedAtUtc,
-            null);
+                static value => value.MaterializedAtUtc,
+                null)
+            & Builders<FactualChangeOutboxDocument>.Filter.Eq(
+                static value => value.TerminalAtUtc,
+                null);
         if (after is null)
         {
             return pending;

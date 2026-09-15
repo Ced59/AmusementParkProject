@@ -78,6 +78,9 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > `WATCH-05` est livré en `5.3.49` : un diff structuré ignore les non-changements,
 > l'outbox Mongo conserve chaque révision avant sa mise en file, le worker matérialise
 > exactement un brouillon factuel et un reconciler borné répare les interruptions.
+> Les calendriers d'ouverture officiellement sourcés sont le premier flux métier
+> raccordé ; un job définitivement terminé sans acquittement est isolé explicitement
+> afin de ne jamais bloquer les faits suivants.
 
 ## 4.1 `UserCollectionEntry`
 

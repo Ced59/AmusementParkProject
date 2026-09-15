@@ -23,6 +23,8 @@ internal static class FactualEventMongoMapper
             DeduplicationKey = entry.DeduplicationKey,
             SourceRevision = entry.SourceRevision,
             MaterializedAtUtc = NormalizeToBsonPrecision(entry.MaterializedAtUtc),
+            TerminalAtUtc = NormalizeToBsonPrecision(entry.TerminalAtUtc),
+            TerminalErrorCode = entry.TerminalErrorCode,
             Version = entry.Version,
             CreatedAt = NormalizeToBsonPrecision(entry.RecordedAtUtc),
             UpdatedAt = NormalizeToBsonPrecision(
@@ -47,6 +49,8 @@ internal static class FactualEventMongoMapper
             document.SourceRevision,
             document.CreatedAt,
             document.MaterializedAtUtc,
+            document.TerminalAtUtc,
+            document.TerminalErrorCode,
             document.Version);
     }
 

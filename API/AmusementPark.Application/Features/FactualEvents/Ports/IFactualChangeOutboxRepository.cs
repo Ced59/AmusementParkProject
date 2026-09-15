@@ -23,4 +23,12 @@ public interface IFactualChangeOutboxRepository
         long expectedVersion,
         DateTime materializedAtUtc,
         CancellationToken cancellationToken);
+
+    Task<bool> MarkTerminalAsync(
+        string entryId,
+        string eventId,
+        long expectedVersion,
+        DateTime terminalAtUtc,
+        string errorCode,
+        CancellationToken cancellationToken);
 }

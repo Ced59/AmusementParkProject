@@ -59,7 +59,7 @@ public sealed class FactualChangeEventRepository : IFactualChangeEventRepository
             throw new ArgumentException("A deduplication key is required.", nameof(deduplicationKey));
         }
 
-        if (sourceRevision < 1 || sourceRevision > int.MaxValue)
+        if (sourceRevision < 1)
         {
             return null;
         }
@@ -70,7 +70,7 @@ public sealed class FactualChangeEventRepository : IFactualChangeEventRepository
                 normalizedKey)
             & Builders<FactualChangeEventDocument>.Filter.Eq(
                 static value => value.Revision,
-                (int)sourceRevision);
+                sourceRevision);
         FactualChangeEventDocument? document = await this.collection.Find(filter)
             .FirstOrDefaultAsync(cancellationToken);
         return document?.ToDomain();

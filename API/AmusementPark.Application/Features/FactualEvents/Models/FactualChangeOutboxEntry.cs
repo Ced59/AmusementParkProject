@@ -17,7 +17,11 @@ public sealed record FactualChangeOutboxEntry(
     long SourceRevision,
     DateTime RecordedAtUtc,
     DateTime? MaterializedAtUtc,
+    DateTime? TerminalAtUtc,
+    string? TerminalErrorCode,
     long Version)
 {
     public bool IsMaterialized => this.MaterializedAtUtc.HasValue;
+
+    public bool IsTerminal => this.TerminalAtUtc.HasValue;
 }

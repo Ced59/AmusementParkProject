@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.BackgroundJobs.Models;
 using AmusementPark.Application.Features.FactualEvents.Models;
 using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.FactualEvents.Services;
@@ -89,6 +90,40 @@ public sealed class FactualChangeCaptureServiceTests
 
         Assert.Equal(
             FactualChangeCaptureDisposition.RecordedPendingScheduling,
+            result.Disposition);
+        Assert.NotNull(result.OutboxEntryId);
+        outbox.VerifyAll();
+        scheduler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CaptureAfterCommitAsync_WhenSchedulingIsTerminal_ShouldExposeTerminalDisposition()
+    {
+        Mock<IFactualChangeOutboxRepository> outbox =
+            new Mock<IFactualChangeOutboxRepository>(MockBehavior.Strict);
+        Mock<IFactualChangeMaterializationScheduler> scheduler =
+            new Mock<IFactualChangeMaterializationScheduler>(MockBehavior.Strict);
+        outbox.Setup(value => value.RecordAsync(
+                It.IsAny<FactualChangeOutboxEntry>(),
+                CancellationToken.None))
+            .ReturnsAsync((FactualChangeOutboxEntry entry, CancellationToken _) =>
+                new FactualChangeOutboxWriteResult(
+                    FactualChangeOutboxWriteDisposition.Created,
+                    entry));
+        scheduler.Setup(value => value.ScheduleAsync(
+                It.IsAny<FactualChangeOutboxEntry>(),
+                CancellationToken.None))
+            .ThrowsAsync(new FactualChangeTerminalSchedulingException(
+                DurableBackgroundJobStatus.DeadLetter,
+                "factual-materialization.retry-exhausted"));
+        FactualChangeCaptureService service = CreateService(outbox, scheduler);
+
+        FactualChangeCaptureResult result = await service.CaptureAfterCommitAsync(
+            CreateRequest(FactValue.FromText("Ancien nom"), FactValue.FromText("Nouveau nom")),
+            CancellationToken.None);
+
+        Assert.Equal(
+            FactualChangeCaptureDisposition.RecordedTerminalSchedulingFailure,
             result.Disposition);
         Assert.NotNull(result.OutboxEntryId);
         outbox.VerifyAll();

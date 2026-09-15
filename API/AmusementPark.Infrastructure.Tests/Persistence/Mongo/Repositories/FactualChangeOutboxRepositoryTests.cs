@@ -17,7 +17,11 @@ public sealed class FactualChangeOutboxRepositoryTests
             FactualChangeOutboxRepository.BuildPendingFilter(null);
 
         Assert.Equal(
-            new BsonDocument("materializedAtUtc", BsonNull.Value),
+            new BsonDocument
+            {
+                { "materializedAtUtc", BsonNull.Value },
+                { "terminalAtUtc", BsonNull.Value },
+            },
             Render(filter));
     }
 

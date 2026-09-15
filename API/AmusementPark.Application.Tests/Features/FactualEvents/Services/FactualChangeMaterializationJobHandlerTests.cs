@@ -164,6 +164,8 @@ public sealed class FactualChangeMaterializationJobHandlerTests
             7,
             nowUtc,
             null,
+            null,
+            null,
             1);
     }
 }

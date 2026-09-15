@@ -16,19 +16,22 @@ public sealed class UpsertParkOpeningHoursScheduleCommandHandler : ICommandHandl
     private readonly ParkOpeningHoursScheduleNormalizer normalizer;
     private readonly ParkOpeningHoursCoverageSegmentBuilder coverageSegmentBuilder;
     private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
+    private readonly IParkOpeningHoursFactualChangeCapture factualChangeCapture;
 
     public UpsertParkOpeningHoursScheduleCommandHandler(
         IParkRepository parkRepository,
         IParkOpeningHoursRepository openingHoursRepository,
         ParkOpeningHoursScheduleNormalizer normalizer,
         ParkOpeningHoursCoverageSegmentBuilder coverageSegmentBuilder,
-        ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
+        ISeoSitemapRefreshScheduler sitemapRefreshScheduler,
+        IParkOpeningHoursFactualChangeCapture factualChangeCapture)
     {
         this.parkRepository = parkRepository;
         this.openingHoursRepository = openingHoursRepository;
         this.normalizer = normalizer;
         this.coverageSegmentBuilder = coverageSegmentBuilder;
         this.sitemapRefreshScheduler = sitemapRefreshScheduler;
+        this.factualChangeCapture = factualChangeCapture;
     }
 
     public async Task<ApplicationResult<ParkOpeningHoursSchedule>> HandleAsync(UpsertParkOpeningHoursScheduleCommand command, CancellationToken cancellationToken = default)
@@ -51,8 +54,17 @@ public sealed class UpsertParkOpeningHoursScheduleCommandHandler : ICommandHandl
             return ApplicationResult<ParkOpeningHoursSchedule>.Failure(ParkOpeningHoursApplicationErrors.ScheduleNotAllowed(park.Status));
         }
 
+        ParkOpeningHoursSchedule? previousSchedule =
+            await this.openingHoursRepository.GetByParkIdAsync(
+                normalizedSchedule.ParkId,
+                cancellationToken);
         normalizedSchedule.CoverageSegments = this.coverageSegmentBuilder.BuildSegments(normalizedSchedule).ToList();
         ParkOpeningHoursSchedule savedSchedule = await this.openingHoursRepository.UpsertAsync(normalizedSchedule, cancellationToken);
+        await this.factualChangeCapture.CaptureAsync(
+            park,
+            previousSchedule,
+            savedSchedule,
+            cancellationToken);
         await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
         return ApplicationResult<ParkOpeningHoursSchedule>.Success(savedSchedule);
     }

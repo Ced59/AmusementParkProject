@@ -37,7 +37,7 @@ public sealed class FactualChangeEventDocument : MongoDocumentBase
     public string DeduplicationKey { get; set; } = string.Empty;
 
     [BsonElement("revision")]
-    public int Revision { get; set; }
+    public long Revision { get; set; }
 
     [BsonElement("status")]
     public FactualChangeStatus Status { get; set; }

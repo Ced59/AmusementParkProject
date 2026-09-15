@@ -20,13 +20,25 @@ public sealed class ParkOpeningHoursCommandHandlersTests
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursFactualChangeCapture> factualChangeCapture =
+            new Mock<IParkOpeningHoursFactualChangeCapture>(MockBehavior.Strict);
 
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Park { Id = "park-1", Name = "Park" });
         openingHoursRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ParkOpeningHoursSchedule?)null);
+        openingHoursRepository
             .Setup(repository => repository.UpsertAsync(It.Is<ParkOpeningHoursSchedule>(candidate => candidate.ParkId == "park-1"), It.IsAny<CancellationToken>()))
             .ReturnsAsync((ParkOpeningHoursSchedule candidate, CancellationToken _) => candidate);
+        factualChangeCapture
+            .Setup(capture => capture.CaptureAsync(
+                It.Is<Park>(park => park.Id == "park-1"),
+                null,
+                It.Is<ParkOpeningHoursSchedule>(candidate => candidate.ParkId == "park-1"),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
         sitemapRefreshScheduler
             .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
@@ -36,7 +48,8 @@ public sealed class ParkOpeningHoursCommandHandlersTests
             openingHoursRepository.Object,
             new ParkOpeningHoursScheduleNormalizer(),
             new ParkOpeningHoursCoverageSegmentBuilder(),
-            sitemapRefreshScheduler.Object);
+            sitemapRefreshScheduler.Object,
+            factualChangeCapture.Object);
 
         ApplicationResult<ParkOpeningHoursSchedule> result = await handler.HandleAsync(
             new UpsertParkOpeningHoursScheduleCommand(schedule),
@@ -47,6 +60,7 @@ public sealed class ParkOpeningHoursCommandHandlersTests
         parkRepository.VerifyAll();
         openingHoursRepository.VerifyAll();
         sitemapRefreshScheduler.VerifyAll();
+        factualChangeCapture.VerifyAll();
     }
 
     [Theory]
@@ -63,12 +77,15 @@ public sealed class ParkOpeningHoursCommandHandlersTests
             .ReturnsAsync(new Park { Id = "park-1", Name = "Lifecycle Park", Status = status });
         Mock<IParkOpeningHoursRepository> openingHoursRepository = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursFactualChangeCapture> factualChangeCapture =
+            new Mock<IParkOpeningHoursFactualChangeCapture>(MockBehavior.Strict);
         UpsertParkOpeningHoursScheduleCommandHandler handler = new UpsertParkOpeningHoursScheduleCommandHandler(
             parkRepository.Object,
             openingHoursRepository.Object,
             new ParkOpeningHoursScheduleNormalizer(),
             new ParkOpeningHoursCoverageSegmentBuilder(),
-            sitemapRefreshScheduler.Object);
+            sitemapRefreshScheduler.Object,
+            factualChangeCapture.Object);
 
         ApplicationResult<ParkOpeningHoursSchedule> result = await handler.HandleAsync(
             new UpsertParkOpeningHoursScheduleCommand(CreateSchedule()),
@@ -82,6 +99,7 @@ public sealed class ParkOpeningHoursCommandHandlersTests
         sitemapRefreshScheduler.Verify(
             scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()),
             Times.Never);
+        factualChangeCapture.VerifyNoOtherCalls();
         parkRepository.VerifyAll();
     }
 

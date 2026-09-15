@@ -29,6 +29,7 @@ public sealed class MongoDatabaseInitializerFactualEventsTests
             new BsonDocument
             {
                 { "materializedAtUtc", 1 },
+                { "terminalAtUtc", 1 },
                 { "createdAt", 1 },
                 { "_id", 1 },
             },

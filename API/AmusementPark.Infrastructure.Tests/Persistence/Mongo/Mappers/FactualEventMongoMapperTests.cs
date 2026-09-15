@@ -77,6 +77,8 @@ public sealed class FactualEventMongoMapperTests
             7,
             recordedAtUtc,
             null,
+            null,
+            null,
             1);
 
         FactualChangeOutboxEntry restored = entry.ToDocument().ToDomain();
@@ -102,6 +104,8 @@ public sealed class FactualEventMongoMapperTests
             "park:park-1:ticket-price",
             7,
             NowUtc,
+            null,
+            null,
             null,
             1);
     }

@@ -8,6 +8,13 @@ ignore les sauvegardes sans changement réel et conserve la révision source ava
 programmer le traitement. Une même clé métier et une même révision ne peuvent créer
 qu'un seul événement logique.
 
+Le premier producteur réellement raccordé est le calendrier d'ouverture d'un parc.
+Après sa sauvegarde, et uniquement lorsqu'une URL officielle ainsi qu'une date de
+vérification sont présentes, une empreinte métier stable compare les horaires
+précédents aux nouveaux. Les identifiants de règles, les dates techniques, les
+notes internes et les simples retouches éditoriales ne provoquent pas de faux
+changement.
+
 Ce jalon ne notifie encore personne. Il prépare des brouillons factuels fiables pour
 la vérification administrative de `WATCH-06`, puis pour le centre Web de `WATCH-07`.
 
@@ -16,6 +23,7 @@ la vérification administrative de `WATCH-06`, puis pour le centre Web de `WATCH
 ```mermaid
 flowchart LR
     Mutation[Mutation métier validée et commitée]
+    Calendar[Calendrier officiel d'ouverture]
     Capture[FactualChangeCaptureService]
     Diff[FactualChangeDiff]
     Outbox[(factual-change-outbox)]
@@ -24,6 +32,7 @@ flowchart LR
     Events[(factual-change-events)]
     Reconciler[Reconciler borné]
 
+    Calendar --> Mutation
     Mutation -->|avant, après, source, révision| Capture
     Capture --> Diff
     Diff -->|aucun changement| Stop[Aucun événement]
@@ -64,13 +73,15 @@ erDiagram
         datetime occurredAtUtc
         datetime createdAt
         datetime materializedAtUtc
+        datetime terminalAtUtc
+        string terminalErrorCode
         long version
     }
 
     FACTUAL_CHANGE_EVENT {
         string id PK
         string deduplicationKey
-        int revision
+        long revision
         string type
         int definitionVersion
         object target
@@ -100,8 +111,8 @@ erDiagram
 Index critiques :
 
 - unicité outbox `(deduplicationKey, sourceRevision)` ;
-- lecture bornée des entrées avec `materializedAtUtc` nul grâce à un index composé
-  commençant par ce champ ;
+- lecture bornée des entrées avec `materializedAtUtc` et `terminalAtUtc` nuls grâce
+  à un index composé commençant par ces champs ;
 - unicité événement `(deduplicationKey, revision)` ;
 - lecture des événements par état et par cible ;
 - unicité du job exact grâce à une clé SHA-256 stable et bornée.
@@ -142,6 +153,10 @@ sequenceDiagram
         Repair->>Outbox: lire la prochaine page de 100 entrées en attente
         Repair->>Queue: recréer le job exact manquant
     end
+
+    opt job exact définitivement terminé sans acquittement
+        Repair->>Outbox: acquitter l'échec terminal et son code
+    end
 ```
 
 Une panne de planification n'annule donc pas le fait déjà enregistré. Une panne
@@ -149,6 +164,11 @@ entre la création de l'événement et l'acquittement est rejouée : l'index uni
 retrouve le même événement, puis l'acquittement reprend. Un contenu différent sous
 la même clé et la même révision est un conflit explicite et part en dead-letter ; il
 n'est jamais écrasé silencieusement.
+
+Un job exact déjà en dead-letter, annulé, supplanté ou terminé sans acquittement ne
+reste pas éternellement dans le scan. L'outbox reçoit atomiquement une date et un
+code terminaux. Cette anomalie reste donc visible pour l'exploitation et ne bloque
+pas les événements suivants.
 
 ## Performance et exploitation
 
@@ -173,7 +193,10 @@ Les tests couvrent :
 - la conservation de l'outbox quand la mise en file échoue ;
 - la clé de job déterministe et bornée même avec une clé métier maximale ;
 - la poursuite du reconciler lorsqu'une entrée échoue ;
+- l'acquittement terminal d'un job exact définitivement échoué ;
 - la matérialisation d'un seul brouillon et le rejeu sans doublon ;
 - la dead-letter en cas de collision sémantique ;
 - le round-trip Mongo des valeurs, sources et versions ;
-- la présence des index d'unicité et de reprise.
+- la présence des index d'unicité et de reprise ;
+- l'empreinte stable d'un calendrier malgré l'ordre des données ;
+- le raccordement post-commit du calendrier officiel avec source et confiance.

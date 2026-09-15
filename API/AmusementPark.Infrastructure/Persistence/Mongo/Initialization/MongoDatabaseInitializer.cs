@@ -234,6 +234,7 @@ private const string AdminFieldModeItemProgressCollectionName = "adminFieldModeI
             new CreateIndexModel<FactualChangeOutboxDocument>(
                 Builders<FactualChangeOutboxDocument>.IndexKeys
                     .Ascending(static value => value.MaterializedAtUtc)
+                    .Ascending(static value => value.TerminalAtUtc)
                     .Ascending(static value => value.CreatedAt)
                     .Ascending(static value => value.Id),
                 new CreateIndexOptions { Name = "idx_factual_outbox_pending" }),

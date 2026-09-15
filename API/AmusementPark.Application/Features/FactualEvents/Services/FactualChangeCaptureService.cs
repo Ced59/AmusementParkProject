@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AmusementPark.Application.Features.FactualEvents.Services;
 
-public sealed class FactualChangeCaptureService
+public sealed class FactualChangeCaptureService : IFactualChangeCaptureService
 {
     private readonly IFactualChangeOutboxRepository outboxRepository;
     private readonly IFactualChangeMaterializationScheduler scheduler;
@@ -26,7 +26,7 @@ public sealed class FactualChangeCaptureService
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
-        if (request.SourceRevision < 1 || request.SourceRevision > int.MaxValue)
+        if (request.SourceRevision < 1)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(request),
@@ -54,7 +54,7 @@ public sealed class FactualChangeCaptureService
             request.Confidence,
             request.OccurredAtUtc,
             request.DeduplicationKey,
-            checked((int)request.SourceRevision),
+            request.SourceRevision,
             request.RecordedAtUtc);
         FactualChangeOutboxEntry newEntry = new FactualChangeOutboxEntry(
             Guid.NewGuid().ToString("N"),
@@ -70,6 +70,8 @@ public sealed class FactualChangeCaptureService
             candidate.DeduplicationKey,
             request.SourceRevision,
             candidate.CreatedAtUtc,
+            null,
+            null,
             null,
             1);
         FactualChangeOutboxWriteResult write = await this.outboxRepository.RecordAsync(
@@ -92,6 +94,17 @@ public sealed class FactualChangeCaptureService
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
             throw;
+        }
+        catch (FactualChangeTerminalSchedulingException exception)
+        {
+            this.logger.LogError(
+                exception,
+                "Factual outbox entry {OutboxEntryId} reached a terminal materialization job.",
+                recordedEntry.Id);
+            return new FactualChangeCaptureResult(
+                FactualChangeCaptureDisposition.RecordedTerminalSchedulingFailure,
+                recordedEntry.Id,
+                recordedEntry.EventId);
         }
         catch (Exception exception)
         {

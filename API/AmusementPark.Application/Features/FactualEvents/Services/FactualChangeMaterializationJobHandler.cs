@@ -67,7 +67,7 @@ public sealed class FactualChangeMaterializationJobHandler : IDurableBackgroundJ
                 FactualChangeMaterializationErrorCodes.SourceConflict);
         }
 
-        if (entry.SourceRevision < 1 || entry.SourceRevision > int.MaxValue)
+        if (entry.SourceRevision < 1)
         {
             return DurableBackgroundJobHandlerResult.DeadLetter(
                 FactualChangeMaterializationErrorCodes.SourceConflict);
@@ -92,7 +92,7 @@ public sealed class FactualChangeMaterializationJobHandler : IDurableBackgroundJ
                 entry.Confidence,
                 entry.OccurredAtUtc,
                 entry.DeduplicationKey,
-                checked((int)entry.SourceRevision),
+                entry.SourceRevision,
                 FactualChangeStatus.Draft,
                 entry.RecordedAtUtc,
                 entry.RecordedAtUtc,

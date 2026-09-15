@@ -94,6 +94,52 @@ public sealed class FactualChangeMaterializationSchedulerTests
     }
 
     [Fact]
+    public async Task ScheduleAsync_WhenExactJobIsDeadLetter_ShouldAcknowledgeTerminalEntry()
+    {
+        DateTime terminalAtUtc = new DateTime(2026, 9, 15, 14, 0, 0, DateTimeKind.Utc);
+        FactualChangeOutboxEntry entry = CreateEntry("park:park-1:name");
+        Mock<IFactualChangeOutboxRepository> outbox =
+            new Mock<IFactualChangeOutboxRepository>(MockBehavior.Strict);
+        outbox.Setup(value => value.GetAsync(entry.Id, CancellationToken.None))
+            .ReturnsAsync(entry);
+        outbox.Setup(value => value.MarkTerminalAsync(
+                entry.Id,
+                entry.EventId,
+                entry.Version,
+                terminalAtUtc,
+                "factual-materialization.retry-exhausted",
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(value => value.EnqueueExactAsync(
+                It.IsAny<EnqueueExactBackgroundJobRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync((EnqueueExactBackgroundJobRequest request, CancellationToken _) =>
+                CreateJob(request) with
+                {
+                    Status = DurableBackgroundJobStatus.DeadLetter,
+                    LastErrorCode = "factual-materialization.retry-exhausted",
+                });
+        FactualChangeMaterializationScheduler scheduler =
+            new FactualChangeMaterializationScheduler(
+                outbox.Object,
+                jobs.Object,
+                NullLogger<FactualChangeMaterializationScheduler>.Instance,
+                new FactualChangeMaterializationSchedulerTestsTimeProvider(terminalAtUtc));
+
+        FactualChangeTerminalSchedulingException exception = await Assert.ThrowsAsync<
+            FactualChangeTerminalSchedulingException>(() => scheduler.ScheduleAsync(
+                entry,
+                CancellationToken.None));
+
+        Assert.Equal(DurableBackgroundJobStatus.DeadLetter, exception.Status);
+        Assert.Equal("factual-materialization.retry-exhausted", exception.ErrorCode);
+        outbox.VerifyAll();
+        jobs.VerifyAll();
+    }
+
+    [Fact]
     public void BuildNextCursor_WithFullBatch_ShouldContinueAfterLastEntry()
     {
         FactualChangeOutboxEntry[] entries = Enumerable.Range(
@@ -134,6 +180,8 @@ public sealed class FactualChangeMaterializationSchedulerTests
             deduplicationKey,
             7,
             nowUtc,
+            null,
+            null,
             null,
             1);
     }
