@@ -20,13 +20,13 @@ import {
   shouldApplyNoindexFollowHeader,
 } from './src/app/core/ssr/ssr-route-status.helpers';
 import {
-  enforceNoindexHtml,
   inspectSeoReadyHtml,
   RobotHtmlPreparationResult,
   shouldRetrySeoReadyHtmlRender,
   shouldReturnBotSsrUnavailable
 } from './src/app/core/ssr/robot-html-optimizer';
 import type { SeoReadyHtmlCheckResult } from './src/app/core/ssr/robot-html-optimizer';
+import { prepareSsrRobotsResponse } from './src/app/core/ssr/ssr-robots-response';
 import {
   detectRobotFamilyFromUserAgent,
   getRobotFamilyCategory,
@@ -2053,10 +2053,13 @@ function prepareHtmlForResponse(req: Request, res: Response, html: string, optio
     res.setHeader('X-AmusementPark-Robot-Html-Links-Removed', preparationResult.removedScriptLikeLinkCount.toString());
   }
 
-  const robotsDirective: string | null = resolveXRobotsTagHeader(req.originalUrl);
-  return robotsDirective !== null
-    ? enforceNoindexHtml(preparationResult.html, robotsDirective)
-    : preparationResult.html;
+  const robotsResponse = prepareSsrRobotsResponse(
+    preparationResult.html, req.originalUrl, res.statusCode, options.responseMode === 'CSR_FALLBACK'
+  );
+  if (robotsResponse.directive !== null) {
+    res.setHeader('X-Robots-Tag', robotsResponse.directive);
+  }
+  return robotsResponse.html;
 }
 
 function sendPreparedHtmlResponse(req: Request, res: Response, html: string, options: HtmlResponsePreparationOptions): void {

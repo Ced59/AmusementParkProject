@@ -6,7 +6,7 @@ import { PublicHtmlSitemapNode } from '@app/models/seo/public-html-sitemap-node'
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { PUBLIC_SITEMAP_DATA_PORT, PublicSitemapDataPort } from './public-sitemap-data.ports';
-import { PUBLIC_SITEMAP_PAGE_SIZE, PublicSitemapLocation, buildPublicSitemapQuery } from './public-sitemap-location';
+import { PUBLIC_SITEMAP_PAGE_SIZE, PublicSitemapLocation, buildPublicSitemapQuery } from '@shared/utils/routing/public-sitemap-location';
 
 export interface PublicSitemapBreadcrumb {
   readonly label: string;
@@ -22,6 +22,12 @@ interface PublicSitemapBranch {
   readonly breadcrumbs: readonly PublicSitemapBreadcrumb[];
 }
 
+export interface PublicSitemapResolvedPage {
+  readonly language: string;
+  readonly location: PublicSitemapLocation;
+  readonly breadcrumbLabels: readonly string[];
+}
+
 @Injectable()
 export class PublicSitemapStateFacade {
   private readonly nodesSignal = signal<readonly PublicSitemapPageNode[]>([]);
@@ -30,6 +36,7 @@ export class PublicSitemapStateFacade {
   private readonly errorKeySignal = signal<string | null>(null);
   private readonly pageSignal = signal(1);
   private readonly pageCountSignal = signal(1);
+  private readonly resolvedPageSignal = signal<PublicSitemapResolvedPage | null>(null);
   private loadSubscription: Subscription | null = null;
 
   public readonly nodes: Signal<readonly PublicSitemapPageNode[]> = this.nodesSignal.asReadonly();
@@ -38,6 +45,7 @@ export class PublicSitemapStateFacade {
   public readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
   public readonly page: Signal<number> = this.pageSignal.asReadonly();
   public readonly pageCount: Signal<number> = this.pageCountSignal.asReadonly();
+  public readonly resolvedPage: Signal<PublicSitemapResolvedPage | null> = this.resolvedPageSignal.asReadonly();
 
   constructor(
     @Inject(PUBLIC_SITEMAP_DATA_PORT) private readonly dataPort: PublicSitemapDataPort,
@@ -48,6 +56,7 @@ export class PublicSitemapStateFacade {
 
   loadPage(language: string, location: PublicSitemapLocation): void {
     this.loadSubscription?.unsubscribe();
+    this.resolvedPageSignal.set(null);
     this.nodesSignal.set([]);
     this.breadcrumbsSignal.set([]);
     this.pageSignal.set(location.page);
@@ -64,6 +73,7 @@ export class PublicSitemapStateFacade {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (branch: PublicSitemapBranch): void => {
+          this.resolvedPageSignal.set(null);
           const pageCount: number = Math.max(1, Math.ceil(branch.nodes.length / PUBLIC_SITEMAP_PAGE_SIZE));
           this.loadingSignal.set(false);
           if (location.page > pageCount) {
@@ -78,8 +88,12 @@ export class PublicSitemapStateFacade {
             ...node,
             branchQueryParams: node.hasChildren ? buildPublicSitemapQuery([...location.nodeIds, node.id]) : null
           })));
+          if (this.nodesSignal().length > 0) {
+            this.resolvedPageSignal.set({ language: language || 'en', location, breadcrumbLabels: branch.breadcrumbs.map(breadcrumb => breadcrumb.label) });
+          }
         },
         error: (error: unknown): void => {
+          this.resolvedPageSignal.set(null);
           this.loadingSignal.set(false);
           applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
           this.errorKeySignal.set('sitemapPage.error');
@@ -115,6 +129,7 @@ export class PublicSitemapStateFacade {
   }
 
   private setNotFound(): void {
+    this.resolvedPageSignal.set(null);
     this.ssrHttpStatusService.setNotFound();
     this.errorKeySignal.set('sitemapPage.empty');
   }

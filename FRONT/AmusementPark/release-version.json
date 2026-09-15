@@ -1,6 +1,20 @@
 {
-  "version": "5.3.34",
+  "version": "5.3.35",
   "history": [
+    {
+      "version": "5.3.35",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Le plan du site et ses rubriques peuvent apparaître dans les recherches.",
+        "en": "The sitemap and its sections can now appear in search results.",
+        "de": "Die Sitemap und ihre Bereiche können jetzt in Suchergebnissen erscheinen.",
+        "nl": "De sitemap en de rubrieken kunnen nu in zoekresultaten verschijnen.",
+        "it": "La mappa del sito e le sue sezioni possono ora comparire nei risultati di ricerca.",
+        "es": "El mapa del sitio y sus secciones pueden aparecer en los resultados de búsqueda.",
+        "pl": "Mapa witryny i jej sekcje mogą teraz pojawiać się w wynikach wyszukiwania.",
+        "pt": "O mapa do site e as suas secções podem agora aparecer nos resultados de pesquisa."
+      }
+    },
     {
       "version": "5.3.34",
       "releasedAt": "2026-09-15",

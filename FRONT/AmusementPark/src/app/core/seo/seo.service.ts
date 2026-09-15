@@ -30,6 +30,7 @@ import {
 } from './seo-page-value-policy';
 import { SeoRoutePolicyService } from './seo-route-policy.service';
 import { normalizeSeoText, truncateSeoText } from './seo-text.utils';
+import { buildPublicSitemapCanonicalUrl, resolvePublicSitemapSeoCopy } from './public-sitemap-seo.helpers';
 
 interface StaticSeoCopy {
   title: string;
@@ -1895,13 +1896,14 @@ export class SeoService {
     }
 
     const staticRouteKey: string | null = this.resolveStaticRouteKey(url);
-    if (staticRouteKey === 'notFound') {
+    if (staticRouteKey === 'notFound' || staticRouteKey === 'sitemap') {
+      // The HTML sitemap becomes indexable only after its requested branch/page has loaded.
       this.applyNoindexFallbackSeo(staticRouteKey, language);
       return;
     }
 
     if (staticRouteKey) {
-      const isIndexableStaticPage: boolean = staticRouteKey !== 'sitemap' && !this.hasQueryString(url);
+      const isIndexableStaticPage: boolean = !this.hasQueryString(url);
       const routeData: SeoRouteData = this.buildStaticRouteData(
         staticRouteKey,
         language,
@@ -1917,6 +1919,38 @@ export class SeoService {
 
   applyHomeSeo(language: string, url: string): void {
     this.apply(this.buildStaticRouteData('home', language, url, 'index,follow'));
+  }
+
+  /** Called only for a successfully resolved, nonempty HTML sitemap page. */
+  applyPublicSitemapSeo(language: string, nodeIds: readonly string[], page: number, breadcrumbLabels: readonly string[]): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const rootPath: string = `/${normalizedLanguage}/sitemap`;
+    const rootUrl: string = this.canonicalUrlService.buildAbsoluteUrl(rootPath);
+    const rootCopy: StaticSeoCopy = this.resolveStaticCopy('sitemap', normalizedLanguage);
+    const copy = resolvePublicSitemapSeoCopy(normalizedLanguage);
+    const context: string = breadcrumbLabels.map(label => normalizeSeoText(label, copy.label)).join(' · ');
+    const pageLabel: string = `${copy.pageLabel} ${page}`;
+    const canonicalUrl: string = buildPublicSitemapCanonicalUrl(rootUrl, nodeIds, page);
+    const breadcrumbs: Array<{ name: string; url: string }> = [
+      { name: copy.label, url: rootUrl },
+      ...breadcrumbLabels.map((label: string, index: number) => ({
+        name: label,
+        url: buildPublicSitemapCanonicalUrl(rootUrl, nodeIds.slice(0, index + 1))
+      })),
+      ...(page > 1 ? [{ name: pageLabel, url: canonicalUrl }] : [])
+    ];
+
+    this.apply({
+      title: context || page > 1
+        ? `${context ? `${context} — ` : ''}${copy.label}${page > 1 ? ` · ${pageLabel}` : ''} — ${SITE_NAME}`
+        : rootCopy.title,
+      description: `${context ? copy.description(context) : rootCopy.description}${page > 1 ? ` ${pageLabel}.` : ''}`,
+      canonicalUrl,
+      robots: 'index,follow',
+      // Branch IDs, translations and page counts do not establish real cross-language equivalents.
+      alternates: nodeIds.length === 0 && page === 1 ? this.hreflangService.buildAlternates(rootPath) : [],
+      jsonLd: [this.buildBreadcrumbJsonLd(breadcrumbs)]
+    });
   }
 
   applyParkFitSeo(title: string, description: string, url: string): void {

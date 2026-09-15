@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, ParamMap, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { skip } from 'rxjs/operators';
+import { filter, skip } from 'rxjs/operators';
 
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
 import { UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
-import { PublicSitemapStateFacade } from '../state/public-sitemap-state.facade';
-import { PublicSitemapLocation, buildPublicSitemapQuery, resolvePublicSitemapLocation } from '../state/public-sitemap-location';
+import { PublicSitemapResolvedPage, PublicSitemapStateFacade } from '../state/public-sitemap-state.facade';
+import { PublicSitemapLocation, buildPublicSitemapQuery, resolvePublicSitemapLocation } from '@shared/utils/routing/public-sitemap-location';
 
 @Component({
   selector: 'app-public-sitemap-page',
@@ -42,12 +42,17 @@ export class PublicSitemapPageComponent implements OnInit {
     private readonly stateFacade: PublicSitemapStateFacade,
     private readonly destroyRef: DestroyRef
   ) {
+    effect(() => this.applyResolvedPageSeo());
   }
 
   ngOnInit(): void {
     this.location.set(resolvePublicSitemapLocation(this.route.snapshot.queryParamMap));
     this.applyLanguage(resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en'));
     this.watchRouteLanguageChanges();
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe(() => this.applyResolvedPageSeo());
 
     this.route.queryParamMap.pipe(skip(1), takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap): void => {
       this.location.set(resolvePublicSitemapLocation(params));
@@ -92,5 +97,24 @@ export class PublicSitemapPageComponent implements OnInit {
   private loadPage(): void {
     this.seoService.applyRouteDefaults(this.router.url);
     this.stateFacade.loadPage(this.currentLang(), this.location());
+  }
+
+  private applyResolvedPageSeo(): void {
+    const resolved: PublicSitemapResolvedPage | null = this.stateFacade.resolvedPage();
+    const language: string = this.currentLang();
+    const path: string = this.router.url.split(/[?#]/)[0];
+    if (path !== `/${language}/sitemap` && path !== `/${language}/sitemap/`) {
+      return;
+    }
+
+    const actual: PublicSitemapLocation = resolvePublicSitemapLocation(this.router.parseUrl(this.router.url).queryParamMap);
+    if (!resolved || !actual.isValid || resolved.language !== language
+      || actual.page !== resolved.location.page || actual.nodeIds.join('/') !== resolved.location.nodeIds.join('/')) {
+      this.seoService.applyRouteDefaults(this.router.url);
+      return;
+    }
+
+    // AppComponent applies defaults on NavigationEnd, including with synchronous SSR TransferState.
+    this.seoService.applyPublicSitemapSeo(language, actual.nodeIds, actual.page, resolved.breadcrumbLabels);
   }
 }

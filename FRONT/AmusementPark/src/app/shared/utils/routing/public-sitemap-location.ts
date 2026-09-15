@@ -8,7 +8,7 @@ export interface PublicSitemapLocation {
 
 export const PUBLIC_SITEMAP_PAGE_SIZE = 100;
 
-export function resolvePublicSitemapLocation(params: ParamMap): PublicSitemapLocation {
+export function resolvePublicSitemapLocation(params: Pick<ParamMap, 'keys' | 'get' | 'getAll'>): PublicSitemapLocation {
   const rawNode: string = params.get('node') ?? '';
   const rawPage: string = params.get('page') ?? '1';
   const nodeIds: readonly string[] = rawNode.length > 0 ? rawNode.split('/') : [];

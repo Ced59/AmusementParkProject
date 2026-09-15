@@ -1,4 +1,5 @@
 import { LANGUAGES, LanguageOption } from '../../shared/models/localization';
+import { resolvePublicSitemapLocation } from '../../shared/utils/routing/public-sitemap-location';
 
 const SUPPORTED_ROUTE_LANGUAGES: ReadonlySet<string> = new Set<string>(
   LANGUAGES.map((language: LanguageOption): string => language.value)
@@ -12,7 +13,7 @@ export function shouldApplyNoindexFollowHeader(url: string): boolean {
   return resolveXRobotsTagHeader(url) !== null;
 }
 
-export function resolveXRobotsTagHeader(url: string): string | null {
+export function resolveXRobotsTagHeader(url: string, statusCode: number = 200, isCsrFallback: boolean = false): string | null {
   const path: string = normalizeSsrPath(url);
 
   if (isParkFitRoute(path)
@@ -24,7 +25,7 @@ export function resolveXRobotsTagHeader(url: string): string | null {
     return 'noindex, nofollow, noarchive';
   }
 
-  return isSsrNotFoundRoute(url) || isKnownPrivateClientRoute(path) || isNoindexPublicPageRoute(url)
+  return isSsrNotFoundRoute(url) || isKnownPrivateClientRoute(path) || isNoindexPublicPageRoute(url, statusCode, isCsrFallback)
     ? 'noindex, follow'
     : null;
 }
@@ -110,8 +111,25 @@ function isKnownPrivateClientRoute(path: string): boolean {
     || /^\/[a-z]{2}\/(?:profile|confirm-account|forgot-password|reset-password)(?:\/.*)?$/i.test(path);
 }
 
-function isNoindexPublicPageRoute(url: string): boolean {
+function isNoindexPublicPageRoute(url: string, statusCode: number, isCsrFallback: boolean): boolean {
   const path: string = normalizeSsrPath(url);
+
+  if (hasSupportedLanguagePrefix(path) && /^\/[a-z]{2}\/sitemap$/i.test(path)) {
+    try {
+      const params: URLSearchParams = new URL(url, 'https://amusement-parks.fun').searchParams;
+      const location = resolvePublicSitemapLocation({
+        keys: Array.from(params.keys()),
+        get: (key: string): string | null => params.get(key),
+        getAll: (key: string): string[] => params.getAll(key)
+      });
+      if (location.isValid) {
+        // Syntax alone never grants indexability: keep the loaded Angular meta directives.
+        return statusCode !== 200 || isCsrFallback;
+      }
+    } catch {
+      return true;
+    }
+  }
 
   return hasQueryString(url) && (path === '/' || isKnownPublicPageRoute(path));
 }
