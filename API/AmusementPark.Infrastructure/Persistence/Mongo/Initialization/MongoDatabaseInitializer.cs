@@ -266,6 +266,12 @@ private const string AdminFieldModeItemProgressCollectionName = "adminFieldModeI
                     .Ascending("target.targetId")
                     .Descending(static value => value.CreatedAt),
                 new CreateIndexOptions { Name = "idx_factual_events_target_created" }),
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending(static value => value.Status)
+                    .Ascending(static value => value.PublishedAtUtc)
+                    .Ascending(static value => value.Id),
+                new CreateIndexOptions { Name = "idx_factual_events_published_distribution" }),
         };
     }
 
@@ -741,6 +747,27 @@ private readonly IMongoDatabase database;
                 this.settings.UserCollectionEntriesCollectionName);
         await userCollectionEntries.Indexes.CreateManyAsync(
             UserCollectionEntryMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.WatchSubscriptionsCollectionName,
+            cancellationToken);
+        IMongoCollection<WatchSubscriptionDocument> watchSubscriptions =
+            this.database.GetCollection<WatchSubscriptionDocument>(
+                this.settings.WatchSubscriptionsCollectionName);
+        await watchSubscriptions.Indexes.CreateManyAsync(
+            WatchNotificationMongoDefinitions.BuildSubscriptionIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.UserNotificationsCollectionName,
+            cancellationToken);
+        IMongoCollection<UserNotificationDocument> userNotifications =
+            this.database.GetCollection<UserNotificationDocument>(
+                this.settings.UserNotificationsCollectionName);
+        await userNotifications.Indexes.CreateManyAsync(
+            WatchNotificationMongoDefinitions.BuildNotificationIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.FactualNotificationDistributionsCollectionName,
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
             this.settings.ParkFitSourceReportsCollectionName,

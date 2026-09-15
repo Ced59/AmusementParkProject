@@ -27,6 +27,7 @@ import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.c
 import { CommentSummaryLinkComponent } from '@features/public/comments/ui/comment-summary-link.component';
 import { ParkLifecycleNoticeComponent } from './park-lifecycle-notice.component';
 import { UserCollectionActionsComponent } from '@features/collections/ui/user-collection-actions.component';
+import { WatchSubscriptionActionComponent } from '@features/watchlists/ui/watch-subscription-action.component';
 
 @Component({
   selector: 'app-park-detail-view',
@@ -54,7 +55,8 @@ import { UserCollectionActionsComponent } from '@features/collections/ui/user-co
     CommentSummaryLinkComponent,
     ParkLifecycleNoticeComponent,
     PublicContextualBlockDirective,
-    UserCollectionActionsComponent
+    UserCollectionActionsComponent,
+    WatchSubscriptionActionComponent
   ]
 })
 export class ParkDetailViewComponent {

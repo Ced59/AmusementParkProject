@@ -112,11 +112,12 @@ describe('ProfilePageComponent', () => {
     stateFacade.setUser(createUser());
     fixture.detectChanges();
     const actions: NodeListOf<HTMLButtonElement> = fixture.nativeElement.querySelectorAll(
-      '.profile-passport-entry:not(.profile-passport-entry--collections) .profile-passport-entry__actions button'
+      '.profile-passport-entry:not(.profile-passport-entry--collections):not(.profile-passport-entry--notifications) .profile-passport-entry__actions button'
     );
 
     expect(actions).toHaveLength(2);
     expect(fixture.nativeElement.querySelector('.profile-passport-entry--collections button')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.profile-passport-entry--notifications button')).toBeTruthy();
   });
 
   it('navigates from the profile to the localized passport overview', () => {
@@ -135,6 +136,15 @@ describe('ProfilePageComponent', () => {
     component.openCollections();
 
     expect(router.navigate).toHaveBeenCalledWith(['/', 'en', 'profile', 'collections']);
+  });
+
+  it('navigates from the profile to the private notification center', () => {
+    const router: Router = TestBed.inject(Router);
+    vi.spyOn(router, 'navigate').mockResolvedValue(true);
+
+    component.openNotifications();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/', 'en', 'profile', 'notifications']);
   });
 });
 

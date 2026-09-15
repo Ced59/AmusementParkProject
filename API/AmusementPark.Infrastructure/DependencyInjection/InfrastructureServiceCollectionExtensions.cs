@@ -185,9 +185,14 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IDurableBackgroundJobRepository, DurableBackgroundJobRepository>();
         services.AddScoped<IFactualChangeOutboxRepository, FactualChangeOutboxRepository>();
         services.AddScoped<IFactualChangeEventRepository, FactualChangeEventRepository>();
+        services.AddScoped<IWatchSubscriptionRepository, WatchSubscriptionRepository>();
+        services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
+        services.AddScoped<IFactualNotificationDistributionReceiptRepository,
+            FactualNotificationDistributionReceiptRepository>();
         services.AddSingleton<DurableBackgroundJobMetrics>();
         services.AddHostedService<DurableBackgroundJobWorkerBackgroundService>();
         services.AddHostedService<FactualChangeOutboxReconciliationBackgroundService>();
+        services.AddHostedService<FactualNotificationDistributionReconciliationBackgroundService>();
         services.AddHostedService<RatingRankingRebuildReconciliationBackgroundService>();
 
         services.AddScoped<ICountryReadRepository, CountryReadRepository>();

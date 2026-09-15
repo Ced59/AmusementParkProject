@@ -62,6 +62,139 @@
     "languages": "Talen",
     "profile": "Profiel"
   },
+  "watchlists": {
+    "action": {
+      "label": "Wijzigingen volgen",
+      "paused": "Volgen gepauzeerd",
+      "active": "Volgen actief",
+      "follow": "Waarschuw me bij wijzigingen",
+      "update": "Bijwerken",
+      "start": "Volgen inschakelen",
+      "resume": "Hervatten",
+      "pause": "Pauzeren",
+      "stop": "Niet meer volgen"
+    },
+    "panel": {
+      "title": "Stel je radar samen",
+      "description": "Kies de gecontroleerde wijzigingen die jij belangrijk vindt.",
+      "privacy": "Dit volgen is privé en staat los van je favorieten."
+    },
+    "groups": {
+      "practical": {
+        "title": "Praktische informatie",
+        "description": "Kalender, seizoen, sluitingen, naam, exploitant en prijzen."
+      },
+      "attractions": {
+        "title": "Attractienieuws",
+        "description": "Aankondigingen, openingen, sluitingen en belangrijke wijzigingen."
+      },
+      "editorial": {
+        "title": "Gecontroleerde inhoud",
+        "description": "Geschiedenis, nieuwe bronnen en gedocumenteerde correcties."
+      },
+      "lifecycle": {
+        "title": "Levenscyclus",
+        "description": "Aankondiging, opening, sluiting, heropening en naamswijziging."
+      },
+      "details": {
+        "title": "Nuttige details",
+        "description": "Belangrijke beperkingen, locatie en categorie."
+      }
+    },
+    "feedback": {
+      "selectOne": "Kies minstens één wijzigingsgroep.",
+      "error": "Het volgen kon niet worden opgeslagen. Probeer het opnieuw."
+    }
+  },
+  "notifications": {
+    "kicker": "PERSOONLIJKE RADAR",
+    "title": "JE MELDINGEN",
+    "description": "Bekijk alleen de feitelijke wijzigingen die je bewust hebt gekozen om te volgen.",
+    "unreadLabel": "Ongelezen meldingen",
+    "unread": "ongelezen",
+    "privacy": "Privécentrum · meldingen worden {{days}} dagen bewaard.",
+    "listLabel": "Lijst met meldingen",
+    "targetUnavailable": "Item niet beschikbaar",
+    "profile": {
+      "title": "Je wijzigingsradar",
+      "description": "Bekijk gecontroleerde updates van parken en attracties die je volgt.",
+      "action": "Mijn meldingen openen"
+    },
+    "filters": {
+      "label": "Meldingen filteren",
+      "readState": "Leesstatus",
+      "all": "Alle",
+      "unreadOnly": "Ongelezen",
+      "park": "Park",
+      "allParks": "Alle parken",
+      "type": "Soort wijziging",
+      "allTypes": "Alle wijzigingen"
+    },
+    "status": {
+      "unread": "Nieuw",
+      "read": "Gelezen"
+    },
+    "actions": {
+      "backToProfile": "Terug naar profiel",
+      "markAllRead": "Alles als gelezen markeren",
+      "retry": "Opnieuw proberen",
+      "view": "Pagina bekijken",
+      "markRead": "Als gelezen markeren",
+      "dismiss": "Verbergen",
+      "unsubscribe": "Deze bron niet meer volgen",
+      "openSource": "Bron bekijken"
+    },
+    "feedback": {
+      "loading": "Je radar wordt geladen…",
+      "error": "Je meldingen konden niet worden geladen of bijgewerkt."
+    },
+    "empty": {
+      "title": "Je radar is rustig",
+      "description": "Geen wijziging past bij deze filters. Schakel volgen in op de pagina van een park of attractie."
+    },
+    "proof": {
+      "label": "Gecontroleerde wijziging",
+      "before": "Eerder",
+      "after": "Nu"
+    },
+    "source": {
+      "verified": "Gecontroleerde bron",
+      "internal": "Redactionele controle door AmusementPark",
+      "checkedOn": "Gecontroleerd op {{date}}"
+    },
+    "values": {
+      "notKnown": "Niet opgegeven",
+      "yes": "Ja",
+      "no": "Nee"
+    },
+    "events": {
+      "OpeningCalendarPublished": "Openingskalender gepubliceerd",
+      "OpeningCalendarChanged": "Openingskalender gewijzigd",
+      "SeasonOpeningConfirmed": "Seizoensopening bevestigd",
+      "SeasonClosingConfirmed": "Seizoenseinde bevestigd",
+      "ParkTemporaryClosureConfirmed": "Tijdelijke parksluiting",
+      "ParkPermanentClosureConfirmed": "Definitieve parksluiting",
+      "ParkReopeningConfirmed": "Heropening van het park bevestigd",
+      "ParkNameChanged": "Park hernoemd",
+      "OperatorChanged": "Exploitant gewijzigd",
+      "TicketPricePublishedOrChanged": "Ticketprijs gepubliceerd of gewijzigd",
+      "MajorDataCompletionImproved": "Parkinformatie uitgebreid",
+      "AttractionAnnouncedOfficially": "Attractie officieel aangekondigd",
+      "OpeningDateConfirmed": "Openingsdatum bevestigd",
+      "OpeningDateChanged": "Openingsdatum gewijzigd",
+      "OpenedConfirmed": "Opening bevestigd",
+      "TemporarilyClosedConfirmed": "Tijdelijke sluiting bevestigd",
+      "ReopenedConfirmed": "Heropening bevestigd",
+      "PermanentClosureConfirmed": "Definitieve sluiting bevestigd",
+      "Renamed": "Nieuwe naam bevestigd",
+      "MajorRestrictionChanged": "Belangrijke beperking gewijzigd",
+      "LocationOrCategoryCorrected": "Locatie of categorie gecorrigeerd",
+      "HistoryPublished": "Nieuwe geschiedenis gepubliceerd",
+      "MajorHistoryUpdate": "Geschiedenis uitgebreid",
+      "VerifiedSourceAdded": "Nieuwe gecontroleerde bron",
+      "CorrectionAfterUserReport": "Correctie na een gebruikersmelding"
+    }
+  },
   "parkFitProfiles": {
     "kicker": "Privéprofielen voor Park Fit",
     "title": "De personen in je groep",
