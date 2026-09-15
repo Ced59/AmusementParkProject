@@ -1,5 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { Location } from '@angular/common';
+import { provideLocationMocks } from '@angular/common/testing';
 import { PLATFORM_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { NavigationEnd, Router, provideRouter } from '@angular/router';
@@ -36,6 +38,7 @@ describe('Park directory URL navigation and resolved SEO', () => {
       imports: [ParkListPageComponent, TranslateModule.forRoot()],
       providers: [
         provideRouter([{ path: ':lang', children: [{ path: 'parks', component: ParkListPageComponent }] }]),
+        provideLocationMocks(),
         provideHttpClient(), provideHttpClientTesting(),
         { provide: PLATFORM_ID, useValue: 'server' },
         { provide: PARK_LIST_STATE_PARKS_API_SERVICE_PORT, useValue: parksPort },
@@ -115,6 +118,22 @@ describe('Park directory URL navigation and resolved SEO', () => {
     harness.detectChanges();
     expect(link(harness, 'a[rel="next"]')).toBe('/fr/parks?page=2');
     expect(parksPort.getVisibleParkMapPoints).toHaveBeenCalledOnce();
+  });
+
+  it('does not preserve a temporary filter-removal marker in browser history', async () => {
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/fr/parks', ParkListPageComponent);
+    const page = await harness.navigateByUrl('/fr/parks?page=2', ParkListPageComponent);
+    page.onStatusFilterChanged('Planned');
+    await harness.fixture.whenStable();
+    await harness.navigateByUrl('/fr/parks?page=3', ParkListPageComponent);
+    TestBed.inject(Location).back();
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+    expect(TestBed.inject(Router).url).toBe('/fr/parks');
+    expect(harness.routeDebugElement!.injector.get(ParkListStateFacade).selectedStatus()).toBe('Operating');
+    expect(harness.routeNativeElement?.querySelector('a[href="/fr/park/park-1/parc-1"]')).not.toBeNull();
+    expect(seo.applyParkListSeo).toHaveBeenLastCalledWith('fr', '/fr/parks', 1);
   });
 
   it.each([false, true])('keeps the requested page through a language change (header first: %s)', async headerFirst => {

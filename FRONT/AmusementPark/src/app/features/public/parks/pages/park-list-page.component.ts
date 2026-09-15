@@ -102,7 +102,9 @@ export class ParkListPageComponent implements OnInit {
     this.route.queryParamMap.pipe(skip(1), takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {
       this.location.set(resolvePublicParksLocation(params));
       // Removing the old page after an interactive filter/size change must not undo that selection.
-      if (this.router.getCurrentNavigation()?.extras.state?.['parksPreserveFilters']) {
+      const navigationInfo: unknown = this.router.getCurrentNavigation()?.extras.info;
+      if (navigationInfo && typeof navigationInfo === 'object' && 'parksPreserveFilters' in navigationInfo
+        && navigationInfo.parksPreserveFilters === true) {
         return;
       }
       const reloadMap: boolean = !this.standardFilters();
@@ -282,7 +284,7 @@ export class ParkListPageComponent implements OnInit {
     this.location.update(location => ({ ...location, page: 1, isValid: true }));
     void this.router.navigate([], {
       relativeTo: this.route, queryParams: { page: null }, queryParamsHandling: 'merge', replaceUrl: true,
-      state: { parksPreserveFilters: true }
+      info: { parksPreserveFilters: true }
     });
   }
 
