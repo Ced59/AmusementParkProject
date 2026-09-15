@@ -1,9 +1,11 @@
 import { DestroyRef, signal, Signal } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import {
   ActivatedRoute,
   convertToParamMap,
   ParamMap,
   Router,
+  provideRouter,
 } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -25,6 +27,7 @@ import { FakeParkListStateFacade } from './test-helpers/park-list-page.component
 import { FakeTranslationService } from './test-helpers/park-list-page.component/fake-translation-service';
 
 describe('ParkListPageComponent', () => {
+  beforeEach(() => TestBed.configureTestingModule({ providers: [provideRouter([])] }));
   it('loads visible map points only once during initial route setup', () => {
     const routeParams$: BehaviorSubject<ParamMap> =
       new BehaviorSubject<ParamMap>(convertToParamMap({ lang: 'fr' }));
@@ -117,7 +120,10 @@ function createComponent(
   stateFacade: FakeParkListStateFacade,
   routeParams$: BehaviorSubject<ParamMap>,
 ): ParkListPageComponent {
-  const route: Pick<ActivatedRoute, 'parent'> = {
+  const queryParams$ = new BehaviorSubject<ParamMap>(convertToParamMap({}));
+  const route: Pick<ActivatedRoute, 'parent' | 'snapshot' | 'queryParamMap'> = {
+    snapshot: { queryParamMap: queryParams$.value } as ActivatedRoute['snapshot'],
+    queryParamMap: queryParams$.asObservable(),
     parent: {
       snapshot: {
         paramMap: convertToParamMap({ lang: 'fr' }),
@@ -125,19 +131,19 @@ function createComponent(
       paramMap: routeParams$.asObservable(),
     } as ActivatedRoute,
   };
-  const router: Pick<Router, 'url'> = { url: '/fr/parks' };
+  const router: Router = TestBed.inject(Router);
   const translationService: FakeTranslationService =
     new FakeTranslationService();
   const seoService: Pick<SeoService, 'applyParkListSeo'> = {
     applyParkListSeo: vi.fn(),
   };
 
-  return new ParkListPageComponent(
+  return TestBed.runInInjectionContext(() => new ParkListPageComponent(
     route as ActivatedRoute,
     router as Router,
     stateFacade as unknown as ParkListStateFacade,
     translationService as unknown as TranslationService,
     seoService as SeoService,
     new FakeDestroyRef(),
-  );
+  ));
 }

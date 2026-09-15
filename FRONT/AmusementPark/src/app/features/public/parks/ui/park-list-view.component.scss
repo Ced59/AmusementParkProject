@@ -2,6 +2,20 @@
   display: block;
 }
 
+.parks-pagination-trail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.parks-pagination-trail > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .parks-hero__fit-cta {
   width: fit-content;
   max-width: 100%;

@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, effect, signal } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
 import { of, Subject, timer } from 'rxjs';
-import { debounce, skip } from 'rxjs/operators';
+import { debounce, filter, skip } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
@@ -9,6 +9,7 @@ import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, r
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ParkListStateFacade } from '../state/park-list-state.facade';
+import { PUBLIC_PARKS_PAGE_SIZE, PublicParksLocation, buildPublicParksPagePath, resolvePublicParksLocation } from '@shared/utils/routing/public-parks-location';
 import { ParkListViewComponent } from '../ui/park-list-view.component';
 import { SeoService } from '@core/seo/seo.service';
 import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
@@ -40,6 +41,19 @@ export class ParkListPageComponent implements OnInit {
   protected readonly discoveryScope = this.stateFacade.discoveryScope;
   protected readonly currentLang = signal<string>('en');
   protected readonly searchTerm = signal<string>('');
+  private readonly location = signal<PublicParksLocation>({ page: 1, isValid: true, isIndexable: true });
+  private readonly standardFilters = computed(() => this.discoveryScope() === 'parks'
+    && !this.searchTerm() && this.selectedRegion() === null && this.selectedStatus() === 'Operating'
+    && this.selectedAudienceClassificationFilter() === null);
+  protected readonly pageHref = computed<((page: number) => string) | null>(() => {
+    const resolved = this.stateFacade.resolvedPage();
+    const language: string = this.currentLang();
+    return this.standardFilters() && !this.selectedParkCard() && this.location().isIndexable
+      && this.stateFacade.pageSize() === PUBLIC_PARKS_PAGE_SIZE
+      && resolved?.language === language && resolved.page === this.location().page
+      ? (page: number): string => buildPublicParksPagePath(language, page + 1)
+      : null;
+  });
   protected readonly discoveryScopeFilterOptions = signal(PUBLIC_PLACE_DISCOVERY_SCOPE_OPTIONS.map((option: PublicSearchCategoryOption) => ({
     labelKey: option.labelKey,
     value: option.value
@@ -64,6 +78,7 @@ export class ParkListPageComponent implements OnInit {
 
   private readonly searchSubject: Subject<ParkSearchTrigger> = new Subject<ParkSearchTrigger>();
   private activeLanguage: string | null = null;
+  private searchGeneration = 0;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -73,13 +88,33 @@ export class ParkListPageComponent implements OnInit {
     private readonly seoService: SeoService,
     private readonly destroyRef: DestroyRef
   ) {
+    effect(() => this.applyResolvedPageSeo());
   }
 
   ngOnInit(): void {
+    this.location.set(resolvePublicParksLocation(this.route.snapshot.queryParamMap));
     const initialLanguage: string = resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en');
 
     this.applyLanguage(initialLanguage, false);
     this.watchRouteLanguageChanges();
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => this.applyResolvedPageSeo());
+    this.route.queryParamMap.pipe(skip(1), takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {
+      this.location.set(resolvePublicParksLocation(params));
+      // Removing the old page after an interactive filter/size change must not undo that selection.
+      if (this.router.getCurrentNavigation()?.extras.state?.['parksPreserveFilters']) {
+        return;
+      }
+      const reloadMap: boolean = !this.standardFilters();
+      ++this.searchGeneration;
+      this.searchTerm.set('');
+      this.stateFacade.setSelectedRegion(null);
+      this.stateFacade.setStatus('Operating');
+      this.stateFacade.setAudienceClassificationFilter(null);
+      this.stateFacade.setDiscoveryScope('parks');
+      this.stateFacade.clearSelectedPark();
+      this.loadLocation(reloadMap);
+    });
 
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
       this.applyLanguage(language, true);
@@ -89,11 +124,14 @@ export class ParkListPageComponent implements OnInit {
       debounce((trigger: ParkSearchTrigger) => trigger.immediate ? of(0) : timer(300)),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((trigger: ParkSearchTrigger) => {
+      if (trigger.generation !== this.searchGeneration) {
+        return;
+      }
       this.stateFacade.clearSelectedPark();
       this.reloadResults(1, this.stateFacade.pageSize(), trigger.term);
     });
 
-    this.reloadResults(1, this.stateFacade.pageSize(), this.searchTerm());
+    this.loadLocation(true);
   }
 
   private watchRouteLanguageChanges(): void {
@@ -119,38 +157,56 @@ export class ParkListPageComponent implements OnInit {
     this.seoService.applyParkListSeo(language, this.router.url);
 
     if (reloadVisibleMapPoints) {
-      this.reloadResults(this.stateFacade.currentPage(), this.stateFacade.pageSize(), this.searchTerm());
+      if (!this.location().isValid) {
+        this.stateFacade.rejectInvalidPage();
+      } else {
+        this.reloadResults(this.stateFacade.currentPage(), this.stateFacade.pageSize(), this.searchTerm());
+      }
     }
   }
 
   onSearchInput(value: string): void {
     const normalizedValue: string = value.trim();
     this.searchTerm.set(normalizedValue);
-    this.searchSubject.next({ term: normalizedValue, immediate: false });
+    this.clearPageQueryForClientState();
+    this.searchSubject.next({ term: normalizedValue, immediate: false, generation: ++this.searchGeneration });
   }
 
   onSearchSubmit(): void {
-    this.searchSubject.next({ term: this.searchTerm(), immediate: true });
+    this.clearPageQueryForClientState();
+    this.searchSubject.next({ term: this.searchTerm(), immediate: true, generation: ++this.searchGeneration });
   }
 
   clearSearch(): void {
     this.searchTerm.set('');
-    this.searchSubject.next({ term: '', immediate: false });
+    this.clearPageQueryForClientState();
+    this.searchSubject.next({ term: '', immediate: false, generation: ++this.searchGeneration });
   }
 
   onPageChange(event: { page?: number; rows?: number }): void {
     const page: number = (event.page ?? 0) + 1;
     const rows: number = event.rows ?? this.stateFacade.pageSize();
+    if (rows === PUBLIC_PARKS_PAGE_SIZE && this.standardFilters() && this.location().isIndexable) {
+      if (this.location().page === page) {
+        this.loadListResults(page, rows, this.searchTerm());
+      } else {
+        void this.router.navigate([], { relativeTo: this.route, queryParams: page > 1 ? { page } : {} });
+      }
+      return;
+    }
+    this.clearPageQueryForClientState();
     this.loadListResults(page, rows, this.searchTerm());
   }
 
   onRegionFilterChanged(region: ParkRegionFilter | null): void {
+    this.clearPageQueryForClientState();
     this.stateFacade.setSelectedRegion(region);
     this.stateFacade.clearSelectedPark();
     this.reloadResults(1, this.stateFacade.pageSize(), this.searchTerm());
   }
 
   onStatusFilterChanged(value: string | null): void {
+    this.clearPageQueryForClientState();
     const status: ParkStatus | null = normalizeParkStatus(value);
 
     this.stateFacade.setStatus(status);
@@ -159,6 +215,7 @@ export class ParkListPageComponent implements OnInit {
   }
 
   onAudienceClassificationFilterChanged(value: string | null): void {
+    this.clearPageQueryForClientState();
     const audienceClassificationFilter: ParkAudienceClassificationFilter | null = normalizeAudienceClassificationFilter(value);
 
     this.stateFacade.setAudienceClassificationFilter(audienceClassificationFilter);
@@ -167,6 +224,7 @@ export class ParkListPageComponent implements OnInit {
   }
 
   onDiscoveryScopeChanged(value: string | null): void {
+    this.clearPageQueryForClientState();
     const scope: PublicPlaceDiscoveryScope = normalizeDiscoveryScope(value);
     this.stateFacade.setDiscoveryScope(scope);
     this.stateFacade.clearSelectedPark();
@@ -198,17 +256,55 @@ export class ParkListPageComponent implements OnInit {
   private loadListResults(page: number, size: number, term: string): void {
     const scope: PublicPlaceDiscoveryScope = this.discoveryScope();
     if (scope === 'parks') {
-      this.stateFacade.loadParks(page, size, term, this.selectedRegion());
+      this.stateFacade.loadParks(page, size, term, this.selectedRegion(), this.standardFilters() && size === PUBLIC_PARKS_PAGE_SIZE);
       return;
     }
 
     this.stateFacade.loadDiscoveryResults(scope, page, size, term, this.selectedRegion());
+  }
+
+  private loadLocation(reloadMap: boolean): void {
+    this.seoService.applyParkListSeo(this.currentLang(), this.router.url);
+    if (!this.location().isValid) {
+      this.stateFacade.rejectInvalidPage();
+      return;
+    }
+    if (reloadMap) {
+      this.stateFacade.loadVisibleMapPoints('', null, 'parks');
+    }
+    this.loadListResults(this.location().page, PUBLIC_PARKS_PAGE_SIZE, '');
+  }
+
+  private clearPageQueryForClientState(): void {
+    if (this.location().page === 1 && this.location().isValid) {
+      return;
+    }
+    this.location.update(location => ({ ...location, page: 1, isValid: true }));
+    void this.router.navigate([], {
+      relativeTo: this.route, queryParams: { page: null }, queryParamsHandling: 'merge', replaceUrl: true,
+      state: { parksPreserveFilters: true }
+    });
+  }
+
+  private applyResolvedPageSeo(): void {
+    const language: string = this.currentLang();
+    const path: string = this.router.url.split(/[?#]/)[0];
+    if (path !== `/${language}/parks` && path !== `/${language}/parks/`) {
+      return;
+    }
+    const actual: PublicParksLocation = resolvePublicParksLocation(this.router.parseUrl(this.router.url).queryParamMap);
+    const resolved = this.stateFacade.resolvedPage();
+    const page: number | null = actual.isIndexable && this.standardFilters() && !this.selectedParkCard()
+      && this.stateFacade.pageSize() === PUBLIC_PARKS_PAGE_SIZE
+      && resolved?.language === language && resolved.page === actual.page ? actual.page : null;
+    this.seoService.applyParkListSeo(language, this.router.url, page);
   }
 }
 
 interface ParkSearchTrigger {
   term: string;
   immediate: boolean;
+  generation: number;
 }
 
 function normalizeParkStatus(value: string | null): ParkStatus | null {

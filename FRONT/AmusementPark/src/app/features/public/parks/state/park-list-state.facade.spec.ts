@@ -18,6 +18,7 @@ import {
   ParkListStateStandaloneAttractionsApiServicePort
 } from './park-list-state-data.ports';
 import { ParkListStateFacade } from './park-list-state.facade';
+import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { SearchApiResponse } from '@app/models/search/search-api-response';
 import { StandaloneAttractionMapPoint } from '@app/models/standalone-attractions/standalone-attraction-map-point';
 import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
@@ -81,12 +82,15 @@ function createResponse(data: Park[], pagination: Pagination): ParksApiResponse 
 }
 
 describe('ParkListStateFacade', () => {
+  const httpStatus = { setNotFound: vi.fn(), setStatus: vi.fn() };
   let facade: ParkListStateFacade;
   let port: FakeParksPort;
   let searchPort: FakeSearchPort;
   let standalonePort: FakeStandaloneAttractionsPort;
 
   beforeEach(() => {
+    httpStatus.setNotFound.mockClear();
+    httpStatus.setStatus.mockClear();
     port = new FakeParksPort();
     searchPort = new FakeSearchPort();
     standalonePort = new FakeStandaloneAttractionsPort();
@@ -94,6 +98,7 @@ describe('ParkListStateFacade', () => {
     TestBed.configureTestingModule({
       providers: [
         ParkListStateFacade,
+        { provide: SsrHttpStatusService, useValue: httpStatus },
         CountryDisplayService,
         { provide: PARK_LIST_STATE_PARKS_API_SERVICE_PORT, useValue: port },
         { provide: PARK_LIST_STATE_SEARCH_API_SERVICE_PORT, useValue: searchPort },
@@ -111,6 +116,81 @@ describe('ParkListStateFacade', () => {
     expect(port.searchCalls).toEqual([]);
     expect(facade.parks().map((park) => park.id)).toEqual(['park-1']);
     expect(facade.state().kind).toBe('ready');
+  });
+
+  it('validates only the requested standard page after receiving its data', () => {
+    facade.setCurrentLanguage('fr');
+    port.pageResponse$ = of(createResponse([createPark('page-2')], createPagination(2, 9, 10)));
+    facade.loadParks(2, 9, '', null, true);
+    expect(facade.resolvedPage()).toEqual({ language: 'fr', page: 2 });
+    expect(facade.parks().map(park => park.id)).toEqual(['page-2']);
+    expect(port.mapCalls).toEqual([]);
+  });
+
+  it('clears a resolved page while loading and ignores a late response after another page wins', () => {
+    facade.loadParks(1, 9, '', null, true);
+    const late = new Subject<ParksApiResponse>();
+    port.pageResponse$ = late;
+    facade.loadParks(2, 9, '', null, true);
+    expect(facade.resolvedPage()).toBeNull();
+    port.pageResponse$ = of(createResponse([createPark('page-3')], createPagination(3, 9, 19)));
+    facade.loadParks(3, 9, '', null, true);
+    late.next(createResponse([createPark('late-page-2')], createPagination(2, 9, 19)));
+    expect(facade.resolvedPage()?.page).toBe(3);
+    expect(facade.parks().map(park => park.id)).toEqual(['page-3']);
+  });
+
+  it('returns not found beyond the last page, without retaining earlier cards', () => {
+    facade.loadParks(1, 9, '', null, true);
+    port.pageResponse$ = of(createResponse([], createPagination(3, 9, 10)));
+    facade.loadParks(3, 9, '', null, true);
+    expect(httpStatus.setNotFound).toHaveBeenCalledOnce();
+    expect(facade.resolvedPage()).toBeNull();
+    expect(facade.parks()).toEqual([]);
+    expect(facade.state().kind).toBe('error');
+  });
+
+  it('keeps an empty first page unvalidated without declaring a missing directory', () => {
+    port.pageResponse$ = of(createResponse([], createPagination(1, 9, 0)));
+    facade.loadParks(1, 9, '', null, true);
+    expect(facade.resolvedPage()).toBeNull();
+    expect(facade.state().kind).toBe('empty');
+    expect(httpStatus.setNotFound).not.toHaveBeenCalled();
+  });
+
+  it('does not validate inconsistent API pagination', () => {
+    port.pageResponse$ = of(createResponse([createPark('wrong-page')], createPagination(2, 9, 19)));
+    facade.loadParks(1, 9, '', null, true);
+    expect(httpStatus.setStatus).toHaveBeenCalledWith(503);
+    expect(facade.resolvedPage()).toBeNull();
+    expect(facade.parks()).toEqual([]);
+  });
+
+  it.each([0, 500, 503])('propagates API failure %s as unavailable, not a false indexable success', status => {
+    port.pageResponse$ = throwError(() => ({ status }));
+    facade.loadParks(2, 9, '', null, true);
+    expect(httpStatus.setStatus).toHaveBeenCalledWith(503);
+    expect(facade.resolvedPage()).toBeNull();
+  });
+
+  it('does not grant standard-page metadata to custom sizes or active filters', () => {
+    facade.loadParks(1, 18, '', null, true);
+    expect(facade.resolvedPage()).toBeNull();
+    facade.setStatus('Planned');
+    facade.loadParks(1, 9, '', null, true);
+    expect(facade.resolvedPage()).toBeNull();
+    expect(httpStatus.setStatus).not.toHaveBeenCalled();
+  });
+
+  it('invalidates in-flight page metadata when its URL is rejected', () => {
+    const pending = new Subject<ParksApiResponse>();
+    port.pageResponse$ = pending;
+    facade.loadParks(1, 9, '', null, true);
+    facade.rejectInvalidPage();
+    pending.next(createResponse([createPark('old')], createPagination(1, 9, 1)));
+    expect(facade.resolvedPage()).toBeNull();
+    expect(facade.parks()).toEqual([]);
+    expect(httpStatus.setNotFound).toHaveBeenCalledOnce();
   });
 
   it('searches parks when a term is provided', () => {

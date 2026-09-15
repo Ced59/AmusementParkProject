@@ -31,6 +31,8 @@ import {
 import { SeoRoutePolicyService } from './seo-route-policy.service';
 import { normalizeSeoText, truncateSeoText } from './seo-text.utils';
 import { buildPublicSitemapCanonicalUrl, resolvePublicSitemapSeoCopy } from './public-sitemap-seo.helpers';
+import { buildPublicParksPagePath, resolvePublicParksLocation } from '@shared/utils/routing/public-parks-location';
+import { resolvePaginationLabels } from '@shared/utils/pagination/pagination-labels';
 
 interface StaticSeoCopy {
   title: string;
@@ -1896,8 +1898,8 @@ export class SeoService {
     }
 
     const staticRouteKey: string | null = this.resolveStaticRouteKey(url);
-    if (staticRouteKey === 'notFound' || staticRouteKey === 'sitemap') {
-      // The HTML sitemap becomes indexable only after its requested branch/page has loaded.
+    if (staticRouteKey === 'notFound' || staticRouteKey === 'sitemap' || staticRouteKey === 'parks') {
+      // Paginated public lists become indexable only after their requested page has loaded.
       this.applyNoindexFallbackSeo(staticRouteKey, language);
       return;
     }
@@ -2065,16 +2067,34 @@ export class SeoService {
     });
   }
 
-  applyParkListSeo(language: string, url: string): void {
-    const isIndexable: boolean = !this.hasQueryString(url);
-    const routeData: SeoRouteData = this.buildStaticRouteData(
-      'parks',
-      language,
-      url,
-      isIndexable ? 'index,follow' : 'noindex,follow'
-    );
+  applyParkListSeo(language: string, url: string, resolvedPage: number | null = null): void {
+    const params: URLSearchParams = new URL(url, 'https://amusement-parks.fun').searchParams;
+    const location = resolvePublicParksLocation({
+      keys: Array.from(params.keys()), get: key => params.get(key), getAll: key => params.getAll(key)
+    });
+    if (!location.isIndexable || resolvedPage === null || resolvedPage !== location.page) {
+      this.applyNoindexFallbackSeo('parks', language);
+      return;
+    }
 
-    this.apply(isIndexable ? routeData : { ...routeData, alternates: [], jsonLd: [] });
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const rootPath: string = buildPublicParksPagePath(normalizedLanguage, 1);
+    const rootUrl: string = this.canonicalUrlService.buildAbsoluteUrl(rootPath);
+    const canonicalUrl: string = `${rootUrl}${resolvedPage > 1 ? `?page=${resolvedPage}` : ''}`;
+    const routeData = this.buildStaticRouteData('parks', normalizedLanguage, rootPath, 'index,follow');
+    const pageLabel: string = `${resolvePaginationLabels(normalizedLanguage).page} ${resolvedPage}`;
+    const listLabel: string = this.resolveParksBreadcrumbLabel(normalizedLanguage);
+    this.apply({
+      ...routeData,
+      title: `${routeData.title}${resolvedPage > 1 ? ` · ${pageLabel}` : ''}`,
+      canonicalUrl,
+      alternates: resolvedPage === 1 ? routeData.alternates : [],
+      jsonLd: [this.buildBreadcrumbJsonLd([
+        { name: this.resolveHomeBreadcrumbLabel(normalizedLanguage), url: this.canonicalUrlService.buildAbsoluteUrl(`/${normalizedLanguage}/home`) },
+        { name: listLabel, url: rootUrl },
+        ...(resolvedPage > 1 ? [{ name: pageLabel, url: canonicalUrl }] : [])
+      ])]
+    });
   }
 
   applyTechnicalPageSeo(page: TechnicalPage, language: string, url: string): void {

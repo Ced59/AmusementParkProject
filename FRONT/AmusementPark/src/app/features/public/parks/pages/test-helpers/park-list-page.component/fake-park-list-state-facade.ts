@@ -19,6 +19,9 @@ import { PublicPlaceDiscoveryScope } from '@shared/models/search/public-search-c
 import { SearchResultItem } from '@app/models/search/search-result-item';
 
 export class FakeParkListStateFacade {
+  readonly resolvedPage = signal<{ language: string; page: number } | null>(null);
+
+  rejectInvalidPage(): void {}
   readonly state: Signal<ScreenState<unknown, string>> = signal<
     ScreenState<unknown, string>
   >({ kind: 'ready', data: { parks: [], pagination: null } }).asReadonly();

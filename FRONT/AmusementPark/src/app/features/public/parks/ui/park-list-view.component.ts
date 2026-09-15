@@ -23,6 +23,7 @@ import { getSearchCategoryTranslationKey } from '@shared/utils/display/display-l
 import { resolveLocalizedCountryName } from '@shared/utils/display/country-display.helpers';
 import { buildPublicStandaloneAttractionRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { getParkStatusPresentation, ParkStatusPresentation } from '@shared/utils/parks/park-status.presentation';
+import { resolvePaginationLabels } from '@shared/utils/pagination/pagination-labels';
 
 @Component({
   selector: 'app-park-list-view',
@@ -32,11 +33,13 @@ import { getParkStatusPresentation, ParkStatusPresentation } from '@shared/utils
   imports: [PageStateComponent, PaginationComponent, NgFor, RouterLink, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective, UiSearchPanelComponent, UiParkCardComponent, UiSearchResultCardComponent, ParkListMapComponent, PublicSharePanelComponent, LocalizedPluralPipe]
 })
 export class ParkListViewComponent {
+  protected readonly paginationLabels = computed(() => resolvePaginationLabels(this.currentLang()));
   @Input() state!: Signal<ScreenState<unknown, string>>;
   @Input() mapState!: Signal<ScreenState<ParkMapPointViewModel[], string>>;
   @Input() parks!: Signal<ParkCardModel[]>;
   @Input() searchResults!: Signal<SearchResultItem[]>;
   @Input() pagination!: Signal<PaginationContract | null>;
+  @Input() pageHref!: Signal<((page: number) => string) | null>;
   @Input() visibleMapPoints!: Signal<ParkMapPointViewModel[]>;
   @Input() visibleCountryCount!: Signal<number>;
   @Input() selectedMapParkId!: Signal<string | null>;

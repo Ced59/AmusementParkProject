@@ -6,6 +6,14 @@ import {
 } from './ssr-route-status.helpers';
 
 describe('SSR route status helpers', () => {
+  it.each(['/fr/parks', '/fr/parks?page=1', '/en/parks?page=2', '/pl/parks?page=99'])('defers valid parks page metadata to Angular: %s', url => {
+    expect(resolveXRobotsTagHeader(url)).toBeNull();
+    expect(resolveSsrRouteStatusCode(url)).toBe(200);
+  });
+
+  it.each(['/fr/parks?page=0', '/fr/parks?page=02', '/fr/parks?page=1&page=2', '/fr/parks?page=2&size=18', '/fr/parks?utm_source=mail'])('does not extend indexability to other parks queries: %s', url => {
+    expect(resolveXRobotsTagHeader(url)).toBe('noindex, follow');
+  });
   it.each([
     '/fr/sitemap?node=parks', '/en/sitemap?node=parks&page=2',
     '/pl/sitemap?node=snapshot-sections%2Fsitemap-section:history-pl-1&page=2',
