@@ -81,10 +81,7 @@ public sealed class FactualChangeOutboxRepository : IFactualChangeOutboxReposito
             throw new ArgumentOutOfRangeException(nameof(maximumCount));
         }
 
-        FilterDefinition<FactualChangeOutboxDocument> filter =
-            Builders<FactualChangeOutboxDocument>.Filter.Eq(
-                static value => value.MaterializedAtUtc,
-                null);
+        FilterDefinition<FactualChangeOutboxDocument> filter = BuildPendingFilter();
         List<FactualChangeOutboxDocument> documents = await this.collection.Find(filter)
             .SortBy(static value => value.CreatedAt)
             .ThenBy(static value => value.Id)
@@ -149,6 +146,13 @@ public sealed class FactualChangeOutboxRepository : IFactualChangeOutboxReposito
             & Builders<FactualChangeOutboxDocument>.Filter.Eq(
                 static value => value.SourceRevision,
                 sourceRevision);
+    }
+
+    internal static FilterDefinition<FactualChangeOutboxDocument> BuildPendingFilter()
+    {
+        return Builders<FactualChangeOutboxDocument>.Filter.Exists(
+            static value => value.MaterializedAtUtc,
+            false);
     }
 
     private static bool HasSameFact(
