@@ -17,7 +17,8 @@ empreinte métier stable compare les horaires précédents aux nouveaux. Les ide
 de règles, les dates techniques, les notes internes et les simples retouches
 éditoriales ne provoquent pas de faux changement. Une date de vérification future ou
 non UTC est refusée avant la persistance, aussi bien par l'édition administrative que
-par l'import.
+par l'import. Des métadonnées de source qui dépassent les bornes du contrat factuel
+rendent la capture inéligible sans faire échouer la sauvegarde du calendrier.
 
 Ce jalon ne notifie encore personne. Il prépare des brouillons factuels fiables pour
 la vérification administrative de `WATCH-06`, puis pour le centre Web de `WATCH-07`.

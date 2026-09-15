@@ -140,17 +140,26 @@ public sealed class ParkOpeningHoursFactualChangeCaptureService
 
     private static bool CanCapture(Park park, ParkOpeningHoursSchedule schedule)
     {
+        string parkName = park.Name?.Trim() ?? string.Empty;
+        string sourceTitle = $"Calendrier officiel — {parkName}";
+        string sourceUrl = schedule.SourceUrl?.Trim() ?? string.Empty;
         if (string.IsNullOrWhiteSpace(park.Id)
-            || string.IsNullOrWhiteSpace(park.Name)
-            || string.IsNullOrWhiteSpace(schedule.SourceUrl)
+            || parkName.Length == 0
+            || parkName.Length > SourceReference.MaximumPublisherNameLength
+            || parkName.Any(char.IsControl)
+            || sourceTitle.Length > SourceReference.MaximumTitleLength
+            || sourceUrl.Length == 0
+            || sourceUrl.Length > SourceReference.MaximumUrlLength
+            || sourceUrl.Any(char.IsControl)
             || !schedule.LastVerifiedAtUtc.HasValue
             || schedule.LastVerifiedAtUtc.Value.Kind != DateTimeKind.Utc)
         {
             return false;
         }
 
-        return Uri.TryCreate(schedule.SourceUrl.Trim(), UriKind.Absolute, out Uri? sourceUri)
+        return Uri.TryCreate(sourceUrl, UriKind.Absolute, out Uri? sourceUri)
             && (sourceUri.Scheme == Uri.UriSchemeHttp
-                || sourceUri.Scheme == Uri.UriSchemeHttps);
+                || sourceUri.Scheme == Uri.UriSchemeHttps)
+            && sourceUri.AbsoluteUri.Length <= SourceReference.MaximumUrlLength;
     }
 }

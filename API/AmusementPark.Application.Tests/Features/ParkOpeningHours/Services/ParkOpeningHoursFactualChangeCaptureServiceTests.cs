@@ -73,6 +73,32 @@ public sealed class ParkOpeningHoursFactualChangeCaptureServiceTests
         Assert.Null(draft);
     }
 
+    [Theory]
+    [InlineData(true, false)]
+    [InlineData(false, true)]
+    public void Prepare_WithOversizedSourceMetadata_ShouldNotThrowOrCreateDraft(
+        bool oversizedParkName,
+        bool oversizedSourceUrl)
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = oversizedParkName
+                ? new string('p', SourceReference.MaximumPublisherNameLength + 1)
+                : "Parc exemple",
+        };
+        ParkOpeningHoursSchedule current = CreateSchedule(new TimeOnly(18, 0));
+        current.SourceUrl = oversizedSourceUrl
+            ? $"https://example.com/{new string('a', SourceReference.MaximumUrlLength)}"
+            : "https://example.com/opening-hours";
+        current.LastVerifiedAtUtc = RecordedAtUtc;
+        ParkOpeningHoursFactualChangeCaptureService service = CreateService();
+
+        ParkOpeningHoursFactualChangeDraft? draft = service.Prepare(park, null, current);
+
+        Assert.Null(draft);
+    }
+
     [Fact]
     public void Prepare_WithUnchangedSourcedSchedule_ShouldKeepContextForRepositoryRebase()
     {
