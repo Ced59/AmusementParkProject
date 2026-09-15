@@ -47,6 +47,34 @@ public sealed class ParkFitSearchParkEvaluatorTests
         Assert.Equal("quality", exception.ParamName);
     }
 
+    [Fact]
+    public void Evaluate_WhenEligibleQualityBelongsToAnotherPark_ShouldRefuseToProduceAResult()
+    {
+        ParkFitSearchParkEvaluator evaluator = new ParkFitSearchParkEvaluator();
+        ParkFitDataQualityAssessment quality = new ParkFitDataQualityAssessment
+        {
+            ParkId = "park-other",
+            ParkName = "Autre parc",
+            Status = ParkFitDataQualityStatus.EligibleForFitComparison,
+        };
+
+        ArgumentException exception = Assert.Throws<ArgumentException>(() => evaluator.Evaluate(
+            new Park
+            {
+                Id = "park-1",
+                Name = "Parc témoin",
+            },
+            Array.Empty<ParkItem>(),
+            quality,
+            null,
+            Array.Empty<ParkFitEvaluatedMemberProfile>(),
+            BuildQuery(),
+            EvaluationTimestamp,
+            0));
+
+        Assert.Equal("quality", exception.ParamName);
+    }
+
     private static SearchParksByFitQuery BuildQuery()
     {
         return new SearchParksByFitQuery(

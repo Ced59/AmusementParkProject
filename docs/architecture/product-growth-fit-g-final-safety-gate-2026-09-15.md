@@ -24,9 +24,10 @@ La gate `FIT-G` ferme les quinze jalons en imposant quatre garanties lisibles :
 
 Le nouveau verrou de `ParkFitSearchParkEvaluator` constitue une seconde barrière :
 même si ce service d'Application était appelé par un futur handler, il refuserait une
-évaluation dont la qualité n'est pas `EligibleForFitComparison`. Le handler public
-continue de filtrer la cohorte auparavant afin de ne charger les calendriers complets
-que pour les candidats admis.
+évaluation dont la qualité n'est pas `EligibleForFitComparison` ou dont l'identifiant
+ne correspond pas exactement au parc évalué. Le handler public continue de filtrer
+la cohorte auparavant afin de ne charger les calendriers complets que pour les
+candidats admis.
 
 Le composant Angular `ParkFitTrustNoticeComponent` rend visibles deux garanties qui
 n'étaient auparavant qu'implicites dans la documentation :
