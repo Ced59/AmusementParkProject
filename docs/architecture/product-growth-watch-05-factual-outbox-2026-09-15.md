@@ -139,7 +139,7 @@ sequenceDiagram
     end
 
     opt panne après l'insertion outbox
-        Repair->>Outbox: lire au plus 100 entrées en attente
+        Repair->>Outbox: lire la prochaine page de 100 entrées en attente
         Repair->>Queue: recréer le job exact manquant
     end
 ```
@@ -153,6 +153,9 @@ n'est jamais écrasé silencieusement.
 ## Performance et exploitation
 
 - le scan de réparation est limité à 100 entrées par minute ;
+- un curseur `(createdAt, id)` avance entre les pages pleines puis reboucle en fin
+  de liste : des jobs terminaux anciens ne peuvent donc pas affamer les faits plus
+  récents ;
 - les lectures utilisent le préfixe d'un index composé et un prédicat Mongo `null`
   compatible avec les documents anciens où le champ est absent ;
 - le traitement est léger et limité à deux exécutions concurrentes ;

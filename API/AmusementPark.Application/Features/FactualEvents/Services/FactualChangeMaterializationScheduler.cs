@@ -48,10 +48,13 @@ public sealed class FactualChangeMaterializationScheduler : IFactualChangeMateri
         await this.jobRepository.EnqueueExactAsync(request, cancellationToken);
     }
 
-    public async Task ReconcilePendingAsync(CancellationToken cancellationToken)
+    public async Task<FactualChangeOutboxCursor?> ReconcilePendingAsync(
+        FactualChangeOutboxCursor? after,
+        CancellationToken cancellationToken)
     {
         IReadOnlyCollection<FactualChangeOutboxEntry> pendingEntries =
             await this.outboxRepository.ListPendingAsync(
+                after,
                 MaximumReconciliationBatchSize,
                 cancellationToken);
         foreach (FactualChangeOutboxEntry entry in pendingEntries)
@@ -72,5 +75,19 @@ public sealed class FactualChangeMaterializationScheduler : IFactualChangeMateri
                     entry.Id);
             }
         }
+
+        return BuildNextCursor(pendingEntries);
+    }
+
+    internal static FactualChangeOutboxCursor? BuildNextCursor(
+        IReadOnlyCollection<FactualChangeOutboxEntry> pendingEntries)
+    {
+        if (pendingEntries.Count < MaximumReconciliationBatchSize)
+        {
+            return null;
+        }
+
+        FactualChangeOutboxEntry lastEntry = pendingEntries.Last();
+        return new FactualChangeOutboxCursor(lastEntry.RecordedAtUtc, lastEntry.Id);
     }
 }

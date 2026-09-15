@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.FactualEvents.Models;
 using AmusementPark.Application.Features.FactualEvents.Ports;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,6 +13,7 @@ internal sealed class FactualChangeOutboxReconciliationBackgroundService : Backg
     private readonly IServiceScopeFactory serviceScopeFactory;
     private readonly ILogger<FactualChangeOutboxReconciliationBackgroundService> logger;
     private readonly TimeProvider timeProvider;
+    private FactualChangeOutboxCursor? cursor;
 
     public FactualChangeOutboxReconciliationBackgroundService(
         IServiceScopeFactory serviceScopeFactory,
@@ -39,7 +41,9 @@ internal sealed class FactualChangeOutboxReconciliationBackgroundService : Backg
                 using IServiceScope scope = this.serviceScopeFactory.CreateScope();
                 IFactualChangeMaterializationScheduler scheduler =
                     scope.ServiceProvider.GetRequiredService<IFactualChangeMaterializationScheduler>();
-                await scheduler.ReconcilePendingAsync(stoppingToken);
+                this.cursor = await scheduler.ReconcilePendingAsync(
+                    this.cursor,
+                    stoppingToken);
             }
             catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
             {

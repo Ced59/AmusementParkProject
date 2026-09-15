@@ -8,5 +8,7 @@ public interface IFactualChangeMaterializationScheduler
         FactualChangeOutboxEntry entry,
         CancellationToken cancellationToken);
 
-    Task ReconcilePendingAsync(CancellationToken cancellationToken);
+    Task<FactualChangeOutboxCursor?> ReconcilePendingAsync(
+        FactualChangeOutboxCursor? after,
+        CancellationToken cancellationToken);
 }

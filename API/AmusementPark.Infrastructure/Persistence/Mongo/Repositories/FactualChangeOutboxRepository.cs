@@ -75,6 +75,7 @@ public sealed class FactualChangeOutboxRepository : IFactualChangeOutboxReposito
     }
 
     public async Task<IReadOnlyCollection<FactualChangeOutboxEntry>> ListPendingAsync(
+        FactualChangeOutboxCursor? after,
         int maximumCount,
         CancellationToken cancellationToken)
     {
@@ -83,7 +84,7 @@ public sealed class FactualChangeOutboxRepository : IFactualChangeOutboxReposito
             throw new ArgumentOutOfRangeException(nameof(maximumCount));
         }
 
-        FilterDefinition<FactualChangeOutboxDocument> filter = BuildPendingFilter();
+        FilterDefinition<FactualChangeOutboxDocument> filter = BuildPendingFilter(after);
         List<FactualChangeOutboxDocument> documents = await this.collection.Find(filter)
             .SortBy(static value => value.CreatedAt)
             .ThenBy(static value => value.Id)
@@ -150,11 +151,29 @@ public sealed class FactualChangeOutboxRepository : IFactualChangeOutboxReposito
                 sourceRevision);
     }
 
-    internal static FilterDefinition<FactualChangeOutboxDocument> BuildPendingFilter()
+    internal static FilterDefinition<FactualChangeOutboxDocument> BuildPendingFilter(
+        FactualChangeOutboxCursor? after)
     {
-        return Builders<FactualChangeOutboxDocument>.Filter.Eq(
+        FilterDefinition<FactualChangeOutboxDocument> pending =
+            Builders<FactualChangeOutboxDocument>.Filter.Eq(
             static value => value.MaterializedAtUtc,
             null);
+        if (after is null)
+        {
+            return pending;
+        }
+
+        FilterDefinition<FactualChangeOutboxDocument> afterCursor =
+            Builders<FactualChangeOutboxDocument>.Filter.Gt(
+                static value => value.CreatedAt,
+                after.RecordedAtUtc)
+            | (Builders<FactualChangeOutboxDocument>.Filter.Eq(
+                    static value => value.CreatedAt,
+                    after.RecordedAtUtc)
+                & Builders<FactualChangeOutboxDocument>.Filter.Gt(
+                    static value => value.Id,
+                    after.EntryId));
+        return pending & afterCursor;
     }
 
     private static bool HasSameFact(

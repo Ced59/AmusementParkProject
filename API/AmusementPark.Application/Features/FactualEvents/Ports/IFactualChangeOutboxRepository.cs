@@ -13,6 +13,7 @@ public interface IFactualChangeOutboxRepository
         CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<FactualChangeOutboxEntry>> ListPendingAsync(
+        FactualChangeOutboxCursor? after,
         int maximumCount,
         CancellationToken cancellationToken);
 

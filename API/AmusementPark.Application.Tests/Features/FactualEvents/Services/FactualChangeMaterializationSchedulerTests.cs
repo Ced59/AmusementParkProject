@@ -61,6 +61,7 @@ public sealed class FactualChangeMaterializationSchedulerTests
         Mock<IFactualChangeOutboxRepository> outbox =
             new Mock<IFactualChangeOutboxRepository>(MockBehavior.Strict);
         outbox.Setup(value => value.ListPendingAsync(
+                null,
                 FactualChangeMaterializationScheduler.MaximumReconciliationBatchSize,
                 CancellationToken.None))
             .ReturnsAsync(new[] { first, second });
@@ -83,10 +84,30 @@ public sealed class FactualChangeMaterializationSchedulerTests
                 jobs.Object,
                 NullLogger<FactualChangeMaterializationScheduler>.Instance);
 
-        await scheduler.ReconcilePendingAsync(CancellationToken.None);
+        FactualChangeOutboxCursor? cursor = await scheduler.ReconcilePendingAsync(
+            null,
+            CancellationToken.None);
 
+        Assert.Null(cursor);
         outbox.VerifyAll();
         jobs.VerifyAll();
+    }
+
+    [Fact]
+    public void BuildNextCursor_WithFullBatch_ShouldContinueAfterLastEntry()
+    {
+        FactualChangeOutboxEntry[] entries = Enumerable.Range(
+                1,
+                FactualChangeMaterializationScheduler.MaximumReconciliationBatchSize)
+            .Select(index => CreateEntry($"park:park-{index}:name", $"outbox-{index:000}"))
+            .ToArray();
+
+        FactualChangeOutboxCursor? cursor =
+            FactualChangeMaterializationScheduler.BuildNextCursor(entries);
+
+        Assert.NotNull(cursor);
+        Assert.Equal(entries[^1].RecordedAtUtc, cursor.RecordedAtUtc);
+        Assert.Equal(entries[^1].Id, cursor.EntryId);
     }
 
     private static FactualChangeOutboxEntry CreateEntry(
