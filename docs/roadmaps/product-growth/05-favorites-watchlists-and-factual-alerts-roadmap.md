@@ -69,6 +69,9 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > livré en `5.3.43` : persistance Mongo bornée et sans doublons, API privée
 > idempotente, actions sur les fiches et bibliothèque responsive avec noms et images
 > réels. Favoris et envies n'activent toujours aucune surveillance implicite.
+> `WATCH-03` est livré en `5.3.45` : l'abonnement explicite porte sa cible, ses
+> événements choisis, sa fréquence, ses canaux externes facultatifs, sa pause et sa
+> version optimiste. Il reste distinct de toute entrée de collection.
 
 ## 4.1 `UserCollectionEntry`
 
@@ -592,7 +595,7 @@ Une hausse du taux de clic n’est pas une justification pour rendre les formula
 |---|---|---|
 | `WATCH-01` | Domaine collections — livré en `5.3.39` | Intentions distinctes |
 | `WATCH-02` | API/UI favoris et wishlist — livré en `5.3.43` | Usage privé fiable |
-| `WATCH-03` | Domaine abonnements/préférences | Portée explicite |
+| `WATCH-03` | Domaine abonnements/préférences — livré en `5.3.45` | Portée explicite |
 | `WATCH-04` | Catalogue d’événements et provenance | Types versionnés |
 | `WATCH-05` | Diff/outbox/déduplication | Un fait logique, une alerte |
 | `WATCH-06` | Administration de vérification | Rien de non vérifié distribué |
