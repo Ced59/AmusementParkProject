@@ -21,6 +21,7 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
     private readonly IMongoCollection<FactualChangeOutboxDocument> outbox;
     private readonly IMongoCollection<ParkOpeningHoursScheduleDocument> schedules;
     private readonly IMongoCollection<FactualEventMigrationDocument> migrations;
+    private readonly bool canComplete;
     private readonly TimeProvider timeProvider;
 
     public OpeningCalendarFactualEvidenceMigration(
@@ -28,12 +29,14 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
         IMongoCollection<FactualChangeOutboxDocument> outbox,
         IMongoCollection<ParkOpeningHoursScheduleDocument> schedules,
         IMongoCollection<FactualEventMigrationDocument> migrations,
+        bool canComplete = true,
         TimeProvider? timeProvider = null)
     {
         this.events = events ?? throw new ArgumentNullException(nameof(events));
         this.outbox = outbox ?? throw new ArgumentNullException(nameof(outbox));
         this.schedules = schedules ?? throw new ArgumentNullException(nameof(schedules));
         this.migrations = migrations ?? throw new ArgumentNullException(nameof(migrations));
+        this.canComplete = canComplete;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -63,6 +66,11 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
         long migratedEvents = await this.MigrateEventsAsync(cancellationToken);
         long migratedOutboxEntries = await this.MigrateOutboxAsync(cancellationToken);
         long migratedEmbeddedEntries = await this.MigrateEmbeddedOutboxAsync(cancellationToken);
+        if (!this.canComplete)
+        {
+            return migratedEvents + migratedOutboxEntries + migratedEmbeddedEntries;
+        }
+
         await this.migrations.UpdateOneAsync(
             Builders<FactualEventMigrationDocument>.Filter.Eq(
                 static value => value.Id,

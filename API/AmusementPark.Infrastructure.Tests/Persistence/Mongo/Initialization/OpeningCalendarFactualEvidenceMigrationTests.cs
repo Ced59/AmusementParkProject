@@ -3,6 +3,7 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FactualEvents;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkOpeningHours;
 using AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
+using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Driver;
 using Moq;
 using Xunit;
@@ -46,6 +47,117 @@ public sealed class OpeningCalendarFactualEvidenceMigrationTests
         schedules.VerifyNoOtherCalls();
         migrations.VerifyAll();
         migrationCursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task MigrateAsync_DuringRollingDeployment_ShouldMigrateLateWriteBeforeCompletion()
+    {
+        FactualEventMigrationDocument migrationPlan = new FactualEventMigrationDocument
+        {
+            Id = OpeningCalendarFactualEvidenceMigration.MigrationId,
+            StartedAtUtc = new DateTime(2026, 9, 15, 10, 0, 0, DateTimeKind.Utc),
+        };
+        ParkOpeningHoursSchedule schedule = CreateSchedule();
+        FactValue current = Assert.IsType<FactValue>(OpeningCalendarFactSnapshot.Create(schedule));
+        string hash = current.CanonicalValue.Split("sha256=")[1];
+        ParkOpeningHoursScheduleDocument lateSchedule = schedule.ToDocument();
+        lateSchedule.PendingFactualChanges.Add(new FactualChangeOutboxDocument
+        {
+            Type = FactualEventType.OpeningCalendarChanged,
+            NewValue = new FactValueDocument
+            {
+                Kind = FactValueKind.Text,
+                CanonicalValue =
+                    $"timezone=Europe/Paris;coverage=2026-07-01/2026-07-31;rules=1;overrides=0;sha256={hash}",
+            },
+        });
+        Mock<IAsyncCursor<FactualEventMigrationDocument>> candidateMigrationCursor =
+            CreateAsyncCursor(new[] { migrationPlan });
+        Mock<IAsyncCursor<FactualEventMigrationDocument>> canonicalMigrationCursor =
+            CreateAsyncCursor(new[] { migrationPlan });
+        Mock<IAsyncCursor<FactualChangeEventDocument>> candidateEventCursor =
+            CreateAsyncCursor(Array.Empty<FactualChangeEventDocument>());
+        Mock<IAsyncCursor<FactualChangeEventDocument>> canonicalEventCursor =
+            CreateAsyncCursor(Array.Empty<FactualChangeEventDocument>());
+        Mock<IAsyncCursor<FactualChangeOutboxDocument>> candidateOutboxCursor =
+            CreateAsyncCursor(Array.Empty<FactualChangeOutboxDocument>());
+        Mock<IAsyncCursor<FactualChangeOutboxDocument>> canonicalOutboxCursor =
+            CreateAsyncCursor(Array.Empty<FactualChangeOutboxDocument>());
+        Mock<IAsyncCursor<ParkOpeningHoursScheduleDocument>> candidateScheduleCursor =
+            CreateAsyncCursor(Array.Empty<ParkOpeningHoursScheduleDocument>());
+        Mock<IAsyncCursor<ParkOpeningHoursScheduleDocument>> canonicalScheduleCursor =
+            CreateAsyncCursor(new[] { lateSchedule });
+        Mock<IMongoCollection<FactualChangeEventDocument>> events =
+            new Mock<IMongoCollection<FactualChangeEventDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<FactualChangeOutboxDocument>> outbox =
+            new Mock<IMongoCollection<FactualChangeOutboxDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<ParkOpeningHoursScheduleDocument>> schedules =
+            new Mock<IMongoCollection<ParkOpeningHoursScheduleDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<FactualEventMigrationDocument>> migrations =
+            new Mock<IMongoCollection<FactualEventMigrationDocument>>(MockBehavior.Strict);
+        SetupFindSequence(migrations, candidateMigrationCursor, canonicalMigrationCursor);
+        SetupFindSequence(events, candidateEventCursor, canonicalEventCursor);
+        SetupFindSequence(outbox, candidateOutboxCursor, canonicalOutboxCursor);
+        SetupFindSequence(schedules, candidateScheduleCursor, canonicalScheduleCursor);
+        schedules.Setup(collection => collection.BulkWriteAsync(
+                It.IsAny<IEnumerable<WriteModel<ParkOpeningHoursScheduleDocument>>>(),
+                It.Is<BulkWriteOptions>(options => !options.IsOrdered),
+                CancellationToken.None))
+            .ReturnsAsync(new BulkWriteResult<ParkOpeningHoursScheduleDocument>.Acknowledged(
+                1,
+                1,
+                0,
+                0,
+                1,
+                Array.Empty<WriteModel<ParkOpeningHoursScheduleDocument>>(),
+                Array.Empty<BulkWriteUpsert>()));
+        migrations.Setup(collection => collection.UpdateOneAsync(
+                It.IsAny<FilterDefinition<FactualEventMigrationDocument>>(),
+                It.IsAny<UpdateDefinition<FactualEventMigrationDocument>>(),
+                null,
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        OpeningCalendarFactualEvidenceMigration candidateMigration =
+            new OpeningCalendarFactualEvidenceMigration(
+                events.Object,
+                outbox.Object,
+                schedules.Object,
+                migrations.Object,
+                false);
+        OpeningCalendarFactualEvidenceMigration canonicalMigration =
+            new OpeningCalendarFactualEvidenceMigration(
+                events.Object,
+                outbox.Object,
+                schedules.Object,
+                migrations.Object,
+                true);
+
+        long candidateCount = await candidateMigration.MigrateAsync(CancellationToken.None);
+        migrations.Verify(collection => collection.UpdateOneAsync(
+            It.IsAny<FilterDefinition<FactualEventMigrationDocument>>(),
+            It.IsAny<UpdateDefinition<FactualEventMigrationDocument>>(),
+            It.IsAny<UpdateOptions>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        long canonicalCount = await canonicalMigration.MigrateAsync(CancellationToken.None);
+
+        Assert.Equal(0, candidateCount);
+        Assert.Equal(1, canonicalCount);
+        Assert.Contains(
+            "snapshot=2",
+            Assert.IsType<FactValueDocument>(lateSchedule.PendingFactualChanges[0].NewValue)
+                .CanonicalValue);
+        events.VerifyAll();
+        outbox.VerifyAll();
+        schedules.VerifyAll();
+        migrations.VerifyAll();
+        candidateEventCursor.VerifyAll();
+        canonicalEventCursor.VerifyAll();
+        candidateOutboxCursor.VerifyAll();
+        canonicalOutboxCursor.VerifyAll();
+        candidateScheduleCursor.VerifyAll();
+        canonicalScheduleCursor.VerifyAll();
+        candidateMigrationCursor.VerifyAll();
+        canonicalMigrationCursor.VerifyAll();
     }
 
     [Fact]
@@ -138,5 +250,20 @@ public sealed class OpeningCalendarFactualEvidenceMigrationTests
         cursor.SetupGet(value => value.Current).Returns(() => batches[index]);
         cursor.Setup(value => value.Dispose());
         return cursor;
+    }
+
+    private static void SetupFindSequence<TDocument>(
+        Mock<IMongoCollection<TDocument>> collection,
+        params Mock<IAsyncCursor<TDocument>>[] cursors)
+    {
+        Moq.Language.ISetupSequentialResult<Task<IAsyncCursor<TDocument>>> sequence =
+            collection.SetupSequence(value => value.FindAsync(
+                It.IsAny<FilterDefinition<TDocument>>(),
+                It.IsAny<FindOptions<TDocument, TDocument>>(),
+                CancellationToken.None));
+        foreach (Mock<IAsyncCursor<TDocument>> cursor in cursors)
+        {
+            sequence = sequence.ReturnsAsync(cursor.Object);
+        }
     }
 }

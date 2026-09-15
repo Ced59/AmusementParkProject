@@ -94,13 +94,14 @@ export class AdminFactualEventsStateFacade {
           ? 'conflict'
           : 'failure');
         if (error instanceof HttpErrorResponse && error.status === 409) {
-          this.reloadAfterConflict(this.lastQueryState(), this.querySequence);
+          this.reloadAfterConflict(this.lastQueryState());
         }
       },
     });
   }
 
-  private reloadAfterConflict(query: FactualChangeEventQuery, querySequence: number): void {
+  private reloadAfterConflict(query: FactualChangeEventQuery): void {
+    const querySequence: number = ++this.querySequence;
     this.loadingState.set(true);
     this.port.search(query)
       .pipe(

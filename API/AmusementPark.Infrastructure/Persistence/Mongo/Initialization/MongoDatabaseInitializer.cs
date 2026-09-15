@@ -897,7 +897,8 @@ private readonly IMongoDatabase database;
             this.database.GetCollection<ParkOpeningHoursScheduleDocument>(
                 this.settings.ParkOpeningHoursCollectionName),
             this.database.GetCollection<FactualEventMigrationDocument>(
-                this.settings.FactualEventMigrationsCollectionName));
+                this.settings.FactualEventMigrationsCollectionName),
+            this.settings.CompleteFactualEventMigrationsOnStartup);
         long migratedOpeningCalendarEvidenceCount =
             await openingCalendarEvidenceMigration.MigrateAsync(cancellationToken);
         if (migratedOpeningCalendarEvidenceCount > 0)

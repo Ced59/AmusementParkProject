@@ -175,6 +175,30 @@ describe('AdminFactualEventsStateFacade', (): void => {
     expect(facade.loading()).toBe(false);
   });
 
+  it('does not let an older filter search overwrite a conflict refresh', (): void => {
+    const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
+    const mutation = new Subject<void>();
+    const pendingFilter = new Subject<PagedResult<FactualChangeEventAdmin>>();
+    const conflictRefresh = new Subject<PagedResult<FactualChangeEventAdmin>>();
+    port.search
+      .mockReturnValueOnce(of(createPage(draftEvent)))
+      .mockReturnValueOnce(pendingFilter)
+      .mockReturnValueOnce(conflictRefresh);
+    port.verify.mockReturnValue(mutation);
+    facade.load({ page: 1, size: 20, status: 'Draft' });
+    facade.changeStatus(draftEvent, 'verify');
+    facade.load({ page: 1, size: 20, status: 'Verified' });
+
+    mutation.error(new HttpErrorResponse({ status: 409 }));
+    conflictRefresh.next(createPage(createEvent('Verified', 5)));
+    conflictRefresh.complete();
+    pendingFilter.next(createPage(draftEvent));
+    pendingFilter.complete();
+
+    expect(port.search).toHaveBeenLastCalledWith({ page: 1, size: 20, status: 'Verified' });
+    expect(facade.events()[0]?.status).toBe('Verified');
+  });
+
   it('removes the stale actionable card when the conflict refresh fails', (): void => {
     const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
     port.search

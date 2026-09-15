@@ -32,6 +32,8 @@ public sealed class MongoDbSettings
 
     public string FactualEventMigrationsCollectionName { get; set; } = "factual-event-migrations";
 
+    public bool CompleteFactualEventMigrationsOnStartup { get; set; } = true;
+
     public string RefreshTokensCollectionName { get; set; } = "refreshTokens";
 
     public string ParkDataEditorAccessTokensCollectionName { get; set; } = "parkDataEditorAccessTokens";
