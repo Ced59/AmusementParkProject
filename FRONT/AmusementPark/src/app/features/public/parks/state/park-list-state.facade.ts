@@ -22,7 +22,7 @@ import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
-import { PUBLIC_PARKS_PAGE_SIZE } from '@shared/utils/routing/public-parks-location';
+import { PUBLIC_PARKS_PAGE_SIZE } from '@shared/utils/routing/public-directory-location';
 import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';

@@ -31,7 +31,7 @@ import {
 import { SeoRoutePolicyService } from './seo-route-policy.service';
 import { normalizeSeoText, truncateSeoText } from './seo-text.utils';
 import { buildPublicSitemapCanonicalUrl, resolvePublicSitemapSeoCopy } from './public-sitemap-seo.helpers';
-import { buildPublicParksPagePath, resolvePublicParksLocation } from '@shared/utils/routing/public-parks-location';
+import { PublicDirectoryKind, buildPublicDirectoryPagePath, resolvePublicDirectoryLocation } from '@shared/utils/routing/public-directory-location';
 import { resolvePaginationLabels } from '@shared/utils/pagination/pagination-labels';
 import { ParkItemSchemaType, resolveParkItemSchemaType } from './park-item-schema-type';
 
@@ -1899,7 +1899,7 @@ export class SeoService {
     }
 
     const staticRouteKey: string | null = this.resolveStaticRouteKey(url);
-    if (staticRouteKey === 'notFound' || staticRouteKey === 'sitemap' || staticRouteKey === 'parks') {
+    if (staticRouteKey === 'notFound' || staticRouteKey === 'sitemap' || staticRouteKey === 'parks' || staticRouteKey === 'manufacturers') {
       // Paginated public lists become indexable only after their requested page has loaded.
       this.applyNoindexFallbackSeo(staticRouteKey, language);
       return;
@@ -2069,22 +2069,32 @@ export class SeoService {
   }
 
   applyParkListSeo(language: string, url: string, resolvedPage: number | null = null): void {
+    this.applyPublicDirectorySeo('parks', language, url, resolvedPage);
+  }
+
+  applyManufacturersListSeo(language: string, url: string, resolvedPage: number | null = null): void {
+    this.applyPublicDirectorySeo('manufacturers', language, url, resolvedPage);
+  }
+
+  private applyPublicDirectorySeo(directory: PublicDirectoryKind, language: string, url: string, resolvedPage: number | null): void {
     const params: URLSearchParams = new URL(url, 'https://amusement-parks.fun').searchParams;
-    const location = resolvePublicParksLocation({
+    const location = resolvePublicDirectoryLocation({
       keys: Array.from(params.keys()), get: key => params.get(key), getAll: key => params.getAll(key)
     });
     if (!location.isValid || resolvedPage === null || resolvedPage !== location.page) {
-      this.applyNoindexFallbackSeo('parks', language);
+      this.applyNoindexFallbackSeo(directory, language);
       return;
     }
 
     const normalizedLanguage: string = this.normalizeLanguage(language);
-    const rootPath: string = buildPublicParksPagePath(normalizedLanguage, 1);
+    const rootPath: string = buildPublicDirectoryPagePath(normalizedLanguage, directory, 1);
     const rootUrl: string = this.canonicalUrlService.buildAbsoluteUrl(rootPath);
     const canonicalUrl: string = `${rootUrl}${resolvedPage > 1 ? `?page=${resolvedPage}` : ''}`;
-    const routeData = this.buildStaticRouteData('parks', normalizedLanguage, rootPath, location.isIndexable ? 'index,follow' : 'noindex,follow');
+    const routeData = this.buildStaticRouteData(directory, normalizedLanguage, rootPath, location.isIndexable ? 'index,follow' : 'noindex,follow');
     const pageLabel: string = `${resolvePaginationLabels(normalizedLanguage).page} ${resolvedPage}`;
-    const listLabel: string = this.resolveParksBreadcrumbLabel(normalizedLanguage);
+    const listLabel: string = directory === 'parks'
+      ? this.resolveParksBreadcrumbLabel(normalizedLanguage)
+      : this.resolveManufacturersBreadcrumbLabel(normalizedLanguage);
     this.apply({
       ...routeData,
       title: `${routeData.title}${resolvedPage > 1 ? ` · ${pageLabel}` : ''}`,
