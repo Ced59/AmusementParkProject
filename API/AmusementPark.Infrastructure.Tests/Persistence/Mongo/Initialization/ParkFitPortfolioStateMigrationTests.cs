@@ -1,6 +1,7 @@
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkFit;
 using AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
+using AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
@@ -14,6 +15,138 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Initialization;
 
 public sealed class ParkFitPortfolioStateMigrationTests
 {
+    [Fact]
+    public async Task MigrateAsync_WhenPlanIsIncomplete_ShouldPreserveExistingStatesAndCompleteAllBatches()
+    {
+        DateTime startedAtUtc = new DateTime(2026, 9, 15, 11, 0, 0, DateTimeKind.Utc);
+        DateTime completedAtUtc = startedAtUtc.AddMinutes(1);
+        ParkFitPortfolioMigrationDocument migrationPlan = new ParkFitPortfolioMigrationDocument
+        {
+            Id = ParkFitPortfolioStateMigration.MigrationId,
+            StartedAtUtc = startedAtUtc,
+        };
+        Mock<IAsyncCursor<ParkFitPortfolioMigrationDocument>> migrationCursor =
+            CreateAsyncCursor(new[] { migrationPlan });
+        Mock<IAsyncCursor<ParkDocument>> parkCursor = CreateAsyncCursor(
+            new[]
+            {
+                new ParkDocument { Id = "park-active" },
+                new ParkDocument { Id = "park-suspended" },
+            },
+            new[] { new ParkDocument { Id = "park-new" } });
+        Mock<IMongoCollection<ParkDocument>> parks =
+            new Mock<IMongoCollection<ParkDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<ParkFitOperationalStatusDocument>> statuses =
+            new Mock<IMongoCollection<ParkFitOperationalStatusDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<ParkFitPortfolioMigrationDocument>> migrations =
+            new Mock<IMongoCollection<ParkFitPortfolioMigrationDocument>>(MockBehavior.Strict);
+        SetupFind(migrations, migrationCursor);
+        SetupFind(parks, parkCursor);
+        List<IReadOnlyCollection<WriteModel<ParkFitOperationalStatusDocument>>> batches = new();
+        statuses.Setup(collection => collection.BulkWriteAsync(
+                It.IsAny<IEnumerable<WriteModel<ParkFitOperationalStatusDocument>>>(),
+                It.Is<BulkWriteOptions>(options => !options.IsOrdered),
+                CancellationToken.None))
+            .Callback((
+                IEnumerable<WriteModel<ParkFitOperationalStatusDocument>> writes,
+                BulkWriteOptions _,
+                CancellationToken _) => batches.Add(writes.ToArray()))
+            .ReturnsAsync(() => CreateBulkWriteResult(batches[^1].Count));
+        UpdateDefinition<ParkFitPortfolioMigrationDocument>? completionUpdate = null;
+        migrations.Setup(collection => collection.UpdateOneAsync(
+                It.IsAny<FilterDefinition<ParkFitPortfolioMigrationDocument>>(),
+                It.IsAny<UpdateDefinition<ParkFitPortfolioMigrationDocument>>(),
+                null,
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<ParkFitPortfolioMigrationDocument> _,
+                UpdateDefinition<ParkFitPortfolioMigrationDocument> update,
+                UpdateOptions? _,
+                CancellationToken _) =>
+            {
+                Assert.Equal(2, batches.Count);
+                completionUpdate = update;
+            })
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        ParkFitPortfolioStateMigration migration = new ParkFitPortfolioStateMigration(
+            parks.Object,
+            statuses.Object,
+            migrations.Object,
+            new FixedTimeProvider(completedAtUtc));
+
+        long migratedCount = await migration.MigrateAsync(CancellationToken.None);
+
+        Assert.Equal(3, migratedCount);
+        Assert.Equal(new[] { 2, 1 }, batches.Select(static batch => batch.Count));
+        Assert.All(batches.SelectMany(static batch => batch), write =>
+        {
+            UpdateOneModel<ParkFitOperationalStatusDocument> upsert =
+                Assert.IsType<UpdateOneModel<ParkFitOperationalStatusDocument>>(write);
+            Assert.True(upsert.IsUpsert);
+            BsonDocument renderedUpdate = Render(upsert.Update);
+            Assert.True(renderedUpdate.Contains("$setOnInsert"));
+            Assert.False(renderedUpdate.Contains("$set"));
+        });
+        Assert.NotNull(completionUpdate);
+        BsonDocument renderedCompletion = Render(completionUpdate);
+        Assert.Equal(
+            completedAtUtc,
+            renderedCompletion["$set"]["completedAtUtc"].ToUniversalTime());
+        parks.VerifyAll();
+        statuses.VerifyAll();
+        migrations.VerifyAll();
+        parkCursor.VerifyAll();
+        migrationCursor.VerifyAll();
+    }
+
+    [Fact]
+    public async Task MigrateAsync_WhenAStatusBatchFails_ShouldNotMarkThePlanComplete()
+    {
+        DateTime startedAtUtc = new DateTime(2026, 9, 15, 11, 0, 0, DateTimeKind.Utc);
+        Mock<IAsyncCursor<ParkFitPortfolioMigrationDocument>> migrationCursor =
+            CreateAsyncCursor(new[]
+            {
+                new ParkFitPortfolioMigrationDocument
+                {
+                    Id = ParkFitPortfolioStateMigration.MigrationId,
+                    StartedAtUtc = startedAtUtc,
+                },
+            });
+        Mock<IAsyncCursor<ParkDocument>> parkCursor = CreateAsyncCursor(
+            new[] { new ParkDocument { Id = "park-1" } });
+        Mock<IMongoCollection<ParkDocument>> parks =
+            new Mock<IMongoCollection<ParkDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<ParkFitOperationalStatusDocument>> statuses =
+            new Mock<IMongoCollection<ParkFitOperationalStatusDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<ParkFitPortfolioMigrationDocument>> migrations =
+            new Mock<IMongoCollection<ParkFitPortfolioMigrationDocument>>(MockBehavior.Strict);
+        SetupFind(migrations, migrationCursor);
+        SetupFind(parks, parkCursor);
+        statuses.Setup(collection => collection.BulkWriteAsync(
+                It.IsAny<IEnumerable<WriteModel<ParkFitOperationalStatusDocument>>>(),
+                It.IsAny<BulkWriteOptions>(),
+                CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("write failed"));
+        ParkFitPortfolioStateMigration migration = new ParkFitPortfolioStateMigration(
+            parks.Object,
+            statuses.Object,
+            migrations.Object,
+            new FixedTimeProvider(startedAtUtc.AddMinutes(1)));
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            migration.MigrateAsync(CancellationToken.None));
+
+        migrations.Verify(collection => collection.UpdateOneAsync(
+            It.IsAny<FilterDefinition<ParkFitPortfolioMigrationDocument>>(),
+            It.IsAny<UpdateDefinition<ParkFitPortfolioMigrationDocument>>(),
+            It.IsAny<UpdateOptions>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        parks.VerifyAll();
+        statuses.VerifyAll();
+        parkCursor.VerifyAll();
+        migrationCursor.VerifyAll();
+    }
+
     [Fact]
     public void BuildPortfolioParkFilter_ShouldSelectPersistedParks()
     {
@@ -98,6 +231,47 @@ public sealed class ParkFitPortfolioStateMigrationTests
         return update.Render(new RenderArgs<ParkFitPortfolioMigrationDocument>(
             serializer,
             BsonSerializer.SerializerRegistry)).AsBsonDocument;
+    }
+
+    private static void SetupFind<TDocument>(
+        Mock<IMongoCollection<TDocument>> collection,
+        Mock<IAsyncCursor<TDocument>> cursor)
+    {
+        collection.Setup(value => value.FindAsync(
+                It.IsAny<FilterDefinition<TDocument>>(),
+                It.IsAny<FindOptions<TDocument, TDocument>>(),
+                CancellationToken.None))
+            .ReturnsAsync(cursor.Object);
+    }
+
+    private static Mock<IAsyncCursor<TDocument>> CreateAsyncCursor<TDocument>(
+        params IReadOnlyCollection<TDocument>[] batches)
+    {
+        int index = -1;
+        Mock<IAsyncCursor<TDocument>> cursor =
+            new Mock<IAsyncCursor<TDocument>>(MockBehavior.Strict);
+        cursor.Setup(value => value.MoveNextAsync(CancellationToken.None))
+            .ReturnsAsync(() =>
+            {
+                index++;
+                return index < batches.Length;
+            });
+        cursor.SetupGet(value => value.Current).Returns(() => batches[index]);
+        cursor.Setup(value => value.Dispose());
+        return cursor;
+    }
+
+    private static BulkWriteResult<ParkFitOperationalStatusDocument> CreateBulkWriteResult(
+        int upsertCount)
+    {
+        return new BulkWriteResult<ParkFitOperationalStatusDocument>.Acknowledged(
+            upsertCount,
+            0,
+            0,
+            0,
+            0,
+            Array.Empty<WriteModel<ParkFitOperationalStatusDocument>>(),
+            new BulkWriteUpsert[upsertCount]);
     }
 
     private static MongoWriteException CreateDuplicateKeyException()
