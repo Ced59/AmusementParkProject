@@ -1785,7 +1785,7 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
   });
 
-  it('keeps the public HTML sitemap out of the search index', () => {
+  it('keeps the public HTML sitemap noindex without a canonical until its content is validated', () => {
     service.applyRouteDefaults('/fr/sitemap');
 
     expect(documentRef.title).toBe('Plan du site - Amusement Parks');
@@ -1794,7 +1794,58 @@ describe('SeoService', () => {
     );
     expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
     expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(readCanonicalHref()).toBeNull();
+  });
+
+  it('indexes the resolved sitemap root with its real language alternates', () => {
+    service.applyPublicSitemapSeo('fr', [], 1, []);
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readMetaContent('meta[name="googlebot"]')).toBe('index,follow');
     expect(readCanonicalHref()).toBe('http://localhost:4200/fr/sitemap');
+    expect(readMetaContent('meta[property="og:locale"]')).toBe('fr_FR');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"][hreflang]')).toHaveLength(9);
+    for (const language of ['fr', 'en', 'de', 'es', 'it', 'nl', 'pt', 'pl']) {
+      expect(documentRef.head.querySelector(`link[hreflang="${language}"]`)?.getAttribute('href')).toBe(`http://localhost:4200/${language}/sitemap`);
+    }
+  });
+
+  it('gives a resolved branch page its own canonical, contextual copy and breadcrumbs', () => {
+    service.applyPublicSitemapSeo('fr', ['parks', 'park:park-1'], 2, ['Parcs', 'Parc Démo']);
+
+    const canonical: string = 'http://localhost:4200/fr/sitemap?node=parks%2Fpark:park-1&page=2';
+    expect(readCanonicalHref()).toBe(canonical);
+    expect(readMetaContent('meta[property="og:url"]')).toBe(canonical);
+    expect(documentRef.title).toBe('Parcs · Parc Démo — Plan du site · Page 2 — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]')).toContain('Parcs · Parc Démo');
+    expect(readMetaContent('meta[name="description"]')).toContain('Page 2.');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(readBreadcrumbElements()).toEqual([
+      expect.objectContaining({ name: 'Plan du site', item: 'http://localhost:4200/fr/sitemap' }),
+      expect.objectContaining({ name: 'Parcs', item: 'http://localhost:4200/fr/sitemap?node=parks' }),
+      expect.objectContaining({ name: 'Parc Démo', item: 'http://localhost:4200/fr/sitemap?node=parks%2Fpark:park-1' }),
+      expect.objectContaining({ name: 'Page 2', item: canonical })
+    ]);
+  });
+
+  it.each([
+    ['en', 'Page'], ['fr', 'Page'], ['de', 'Seite'], ['es', 'Página'],
+    ['it', 'Pagina'], ['nl', 'Pagina'], ['pt', 'Página'], ['pl', 'Strona']
+  ])('localizes sitemap pagination in %s', (language: string, pageLabel: string) => {
+    service.applyPublicSitemapSeo(language, ['parks'], 2, ['Bellewaerde']);
+    expect(documentRef.title).toContain(`${pageLabel} 2`);
+    expect(readMetaContent('meta[name="description"]')).toContain(`${pageLabel} 2.`);
+    expect(readCanonicalHref()).toBe(`http://localhost:4200/${language}/sitemap?node=parks&page=2`);
+  });
+
+  it('clears resolved sitemap metadata while another sitemap location awaits validation', () => {
+    service.applyPublicSitemapSeo('fr', ['parks'], 2, ['Parcs']);
+    service.applyRouteDefaults('/fr/sitemap?node=unknown');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBeNull();
+    expect(readMetaContent('meta[property="og:url"]')).toBeNull();
+    expect(readJsonLdScripts()).toEqual([]);
   });
 
   it('keeps filtered park list variants out of the search index', () => {

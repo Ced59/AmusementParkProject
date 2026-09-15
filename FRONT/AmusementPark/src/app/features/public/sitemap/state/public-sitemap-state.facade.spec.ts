@@ -42,6 +42,7 @@ describe('PublicSitemapStateFacade', () => {
     expect(dataPort.getNodes.mock.calls).toEqual([['fr', null, false]]);
     expect(facade.nodes()[0].branchQueryParams).toEqual({ node: 'parks' });
     expect(facade.loading()).toBe(false);
+    expect(facade.resolvedPage()).toEqual({ language: 'fr', location: { nodeIds: [], page: 1, isValid: true }, breadcrumbLabels: [] });
   });
 
   it('resolves only the selected hierarchy with contextual breadcrumb labels', () => {
@@ -53,6 +54,7 @@ describe('PublicSitemapStateFacade', () => {
     expect(facade.breadcrumbs().map(breadcrumb => breadcrumb.label)).toEqual(['Parcs', 'Parc Démo', 'Attractions']);
     expect(facade.nodes()[0].label).toBe('Montagne russe');
     expect(facade.nodes()[0].branchQueryParams).toEqual({ node: 'parks/park:park-1/park-items:park-1/park-item:item-1' });
+    expect(facade.resolvedPage()?.breadcrumbLabels).toEqual(['Parcs', 'Parc Démo', 'Attractions']);
   });
 
   it('keeps article links as direct destinations', () => {
@@ -119,6 +121,7 @@ describe('PublicSitemapStateFacade', () => {
 
     expect(oldResponse.observed).toBe(false);
     expect(facade.nodes().map(value => value.label)).toEqual(['Parks']);
+    expect(facade.resolvedPage()?.language).toBe('en');
   });
 
   it('marks unavailable API responses as temporary server failures', () => {
@@ -128,5 +131,34 @@ describe('PublicSitemapStateFacade', () => {
     expect(status.setStatus).toHaveBeenCalledWith(503);
     expect(facade.errorKey()).toBe('sitemapPage.error');
     expect(facade.loading()).toBe(false);
+    expect(facade.resolvedPage()).toBeNull();
+  });
+
+  it('invalidates the previous resolved SEO context before another request finishes', () => {
+    facade.loadPage('fr', { nodeIds: [], page: 1, isValid: true });
+    expect(facade.resolvedPage()).not.toBeNull();
+    dataPort.getNodes.mockReturnValue(new Subject<PublicHtmlSitemapNode[]>());
+    facade.loadPage('fr', { nodeIds: ['parks'], page: 1, isValid: true });
+    expect(facade.resolvedPage()).toBeNull();
+  });
+
+  it('does not expose a resolved SEO context for empty or out-of-bounds content', () => {
+    dataPort.getNodes.mockReturnValue(of([]));
+    facade.loadPage('fr', { nodeIds: [], page: 1, isValid: true });
+    expect(facade.resolvedPage()).toBeNull();
+    facade.loadPage('fr', { nodeIds: [], page: 2, isValid: true });
+    expect(facade.resolvedPage()).toBeNull();
+    expect(status.setNotFound).toHaveBeenCalled();
+  });
+
+  it('clears a resolved SEO context if a data stream subsequently fails', () => {
+    const response = new Subject<PublicHtmlSitemapNode[]>();
+    dataPort.getNodes.mockReturnValue(response);
+    facade.loadPage('fr', { nodeIds: [], page: 1, isValid: true });
+    response.next(branches['root']);
+    expect(facade.resolvedPage()).not.toBeNull();
+    response.error(new Error('network'));
+    expect(facade.resolvedPage()).toBeNull();
+    expect(status.setStatus).toHaveBeenCalledWith(503);
   });
 });
