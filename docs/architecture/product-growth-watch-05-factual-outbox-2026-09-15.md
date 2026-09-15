@@ -15,7 +15,9 @@ Après la sauvegarde, même si la requête cliente est annulée, et uniquement l
 URL officielle, une date de vérification et au moins une règle sont présentes, une
 empreinte métier stable compare les horaires précédents aux nouveaux. Les identifiants
 de règles, les dates techniques, les notes internes et les simples retouches
-éditoriales ne provoquent pas de faux changement.
+éditoriales ne provoquent pas de faux changement. Une date de vérification future ou
+non UTC est refusée avant la persistance, aussi bien par l'édition administrative que
+par l'import.
 
 Ce jalon ne notifie encore personne. Il prépare des brouillons factuels fiables pour
 la vérification administrative de `WATCH-06`, puis pour le centre Web de `WATCH-07`.
@@ -203,9 +205,11 @@ pas les événements suivants.
 ## Performance et exploitation
 
 - le scan de réparation est limité à 100 entrées par minute ;
-- le scan des sources avance lui aussi par curseur `(updatedAt, parkId)` puis
-  reboucle en fin de liste : des marqueurs conflictuels anciens ne peuvent pas
-  affamer les parcs suivants ;
+- le scan des sources limite réellement chaque lot à 100 marqueurs, même lorsqu'un
+  seul calendrier en contient davantage ; son curseur
+  `(updatedAt, parkId, recordedAtUtc, entryId)` reprend à l'intérieur du même document,
+  puis reboucle en fin de liste : ni un parc très actif ni des marqueurs conflictuels
+  anciens ne peuvent affamer les faits suivants ;
 - un curseur `(createdAt, id)` avance entre les pages pleines puis reboucle en fin
   de liste : des jobs terminaux anciens ne peuvent donc pas affamer les faits plus
   récents ;
@@ -228,6 +232,8 @@ Les tests couvrent :
 - le compare-and-swap qui préserve les marqueurs et réattribue une révision sous
   écritures concurrentes ;
 - l'avancement du curseur source malgré un marqueur conflictuel ;
+- la reprise à l'intérieur d'un même calendrier lorsque son nombre de marqueurs
+  dépasse la taille maximale d'un lot ;
 - la clé de job déterministe et bornée même avec une clé métier maximale ;
 - la poursuite du reconciler lorsqu'une entrée échoue ;
 - l'acquittement terminal d'un job exact définitivement échoué ;
@@ -239,5 +245,8 @@ Les tests couvrent :
 - le refus d'un faux événement de publication pour un calendrier initial vide et
   la capture explicite de la suppression d'un calendrier existant ;
 - l'inclusion de la priorité des règles dans l'empreinte canonique ;
+- la conservation de l'ordre déterminant entre deux règles de même priorité et de
+  même date de début ;
+- le rejet applicatif d'une date de vérification future ;
 - le raccordement post-commit du calendrier officiel avec source et confiance,
   depuis l'édition comme depuis l'import, même après annulation de la requête.

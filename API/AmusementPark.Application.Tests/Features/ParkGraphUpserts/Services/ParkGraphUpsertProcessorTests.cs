@@ -4050,7 +4050,8 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
             MeasurementConversionService.Instance,
             openingHoursRepository.Object,
-            new ParkOpeningHoursScheduleNormalizer(),
+            new ParkOpeningHoursScheduleNormalizer(
+                new FixedTimeProvider(new DateTimeOffset(2026, 8, 1, 0, 0, 0, TimeSpan.Zero))),
             new ParkOpeningHoursCoverageSegmentBuilder());
 
         using JsonDocument document = JsonDocument.Parse("""
@@ -4290,7 +4291,8 @@ public sealed class ParkGraphUpsertProcessorTests
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
             openingHoursRepository.Object,
-            new ParkOpeningHoursScheduleNormalizer(),
+            new ParkOpeningHoursScheduleNormalizer(
+                new FixedTimeProvider(new DateTimeOffset(2026, 8, 1, 0, 0, 0, TimeSpan.Zero))),
             new ParkOpeningHoursCoverageSegmentBuilder(
                 new FixedTimeProvider(new DateTimeOffset(2026, 7, 2, 10, 0, 0, TimeSpan.Zero))),
             openingHoursFactualChangeCapture: factualChangeCapture.Object);
@@ -4403,7 +4405,8 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
             MeasurementConversionService.Instance,
             openingHoursRepository.Object,
-            new ParkOpeningHoursScheduleNormalizer(),
+            new ParkOpeningHoursScheduleNormalizer(
+                new FixedTimeProvider(new DateTimeOffset(2026, 8, 1, 0, 0, 0, TimeSpan.Zero))),
             new ParkOpeningHoursCoverageSegmentBuilder());
 
         using JsonDocument document = JsonDocument.Parse("""

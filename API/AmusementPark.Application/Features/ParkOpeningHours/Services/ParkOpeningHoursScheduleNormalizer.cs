@@ -9,6 +9,12 @@ public sealed class ParkOpeningHoursScheduleNormalizer
     private const int MaximumRegularRuleCount = 250;
     private const int MaximumDateOverrideCount = 1500;
     private const int MaximumTimeRangeCount = 8;
+    private readonly TimeProvider timeProvider;
+
+    public ParkOpeningHoursScheduleNormalizer(TimeProvider? timeProvider = null)
+    {
+        this.timeProvider = timeProvider ?? TimeProvider.System;
+    }
 
     public ApplicationResult<ParkOpeningHoursSchedule> Normalize(ParkOpeningHoursSchedule schedule)
     {
@@ -39,6 +45,18 @@ public sealed class ParkOpeningHoursScheduleNormalizer
         else if (!IsValidTimeZone(normalized.TimeZoneId))
         {
             errors[nameof(schedule.TimeZoneId)] = new[] { "invalid-time-zone" };
+        }
+
+        if (normalized.LastVerifiedAtUtc.HasValue)
+        {
+            if (normalized.LastVerifiedAtUtc.Value.Kind != DateTimeKind.Utc)
+            {
+                errors[nameof(schedule.LastVerifiedAtUtc)] = new[] { "must-be-utc" };
+            }
+            else if (normalized.LastVerifiedAtUtc.Value > this.timeProvider.GetUtcNow().UtcDateTime)
+            {
+                errors[nameof(schedule.LastVerifiedAtUtc)] = new[] { "future" };
+            }
         }
 
         if (schedule.RegularRules.Count > MaximumRegularRuleCount)

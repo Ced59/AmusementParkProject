@@ -81,7 +81,9 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > exactement un brouillon factuel et un reconciler borné répare les interruptions.
 > Les calendriers d'ouverture officiellement sourcés sont le premier flux métier
 > raccordé ; un job définitivement terminé sans acquittement est isolé explicitement
-> afin de ne jamais bloquer les faits suivants.
+> afin de ne jamais bloquer les faits suivants. La reprise est bornée par marqueur,
+> y compris à l'intérieur d'un même calendrier très actif, et les dates de
+> vérification futures sont rejetées avant toute écriture.
 
 ## 4.1 `UserCollectionEntry`
 

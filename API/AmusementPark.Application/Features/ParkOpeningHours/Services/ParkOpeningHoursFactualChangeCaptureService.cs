@@ -125,24 +125,17 @@ public sealed class ParkOpeningHoursFactualChangeCaptureService
             }
         }
 
-        IReadOnlyCollection<ParkOpeningHoursPendingFactualChange> lastBySource =
-            pendingChanges
-                .GroupBy(static change => new
-                {
-                    change.SourceUpdatedAtUtc,
-                    change.ParkId,
-                })
-                .Select(static group => group.Last())
-                .ToList();
-        if (lastBySource.Count < maximumCount)
+        if (pendingChanges.Count < maximumCount)
         {
             return null;
         }
 
-        ParkOpeningHoursPendingFactualChange lastChange = lastBySource.Last();
+        ParkOpeningHoursPendingFactualChange lastChange = pendingChanges.Last();
         return new ParkOpeningHoursFactualChangeCursor(
             lastChange.SourceUpdatedAtUtc,
-            lastChange.ParkId);
+            lastChange.ParkId,
+            lastChange.Entry.RecordedAtUtc,
+            lastChange.Entry.Id);
     }
 
     private static bool CanCapture(Park park, ParkOpeningHoursSchedule schedule)

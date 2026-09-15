@@ -224,7 +224,7 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
             .Find(filter)
             .SortBy(static document => document.UpdatedAt)
             .ThenBy(static document => document.ParkId)
-            .Limit(maximumCount)
+            .Limit(maximumCount + 1)
             .Project(static document => new ParkOpeningHoursScheduleDocument
             {
                 ParkId = document.ParkId,
@@ -233,11 +233,16 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
             })
             .ToListAsync(cancellationToken);
         return documents
-            .SelectMany(static document => document.PendingFactualChanges.Select(
-                entry => new ParkOpeningHoursPendingFactualChange(
+            .SelectMany(document => document.PendingFactualChanges
+                .Select(static entry => entry.ToDomain())
+                .OrderBy(static entry => entry.RecordedAtUtc)
+                .ThenBy(static entry => entry.Id, StringComparer.Ordinal)
+                .Where(entry => IsAfterCursor(document, entry, after))
+                .Select(entry => new ParkOpeningHoursPendingFactualChange(
                     document.ParkId,
-                    entry.ToDomain(),
+                    entry,
                     document.UpdatedAt)))
+            .Take(maximumCount)
             .ToList();
     }
 
@@ -350,10 +355,34 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
             | (Builders<ParkOpeningHoursScheduleDocument>.Filter.Eq(
                     static document => document.UpdatedAt,
                     after.SourceUpdatedAtUtc)
-                & Builders<ParkOpeningHoursScheduleDocument>.Filter.Gt(
+                & Builders<ParkOpeningHoursScheduleDocument>.Filter.Gte(
                     static document => document.ParkId,
                     after.ParkId));
         return pending & afterCursor;
+    }
+
+    internal static bool IsAfterCursor(
+        ParkOpeningHoursScheduleDocument document,
+        FactualChangeOutboxEntry entry,
+        ParkOpeningHoursFactualChangeCursor? after)
+    {
+        if (after is null
+            || document.UpdatedAt > after.SourceUpdatedAtUtc
+            || (document.UpdatedAt == after.SourceUpdatedAtUtc
+                && string.CompareOrdinal(document.ParkId, after.ParkId) > 0))
+        {
+            return true;
+        }
+
+        if (document.UpdatedAt != after.SourceUpdatedAtUtc
+            || !string.Equals(document.ParkId, after.ParkId, StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        return entry.RecordedAtUtc > after.EntryRecordedAtUtc
+            || (entry.RecordedAtUtc == after.EntryRecordedAtUtc
+                && string.CompareOrdinal(entry.Id, after.EntryId) > 0);
     }
 
     internal static FilterDefinition<ParkOpeningHoursScheduleDocument> BuildWriteRevisionFilter(

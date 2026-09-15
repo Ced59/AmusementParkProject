@@ -25,10 +25,18 @@ public static class OpeningCalendarFactSnapshot
             return null;
         }
 
-        List<string> canonicalRules = schedule.RegularRules
-            .Select(BuildCanonicalRule)
-            .OrderBy(static value => value, StringComparer.Ordinal)
-            .ToList();
+        Dictionary<(int SortOrder, DateOnly StartDate), int> tieOrders =
+            new Dictionary<(int SortOrder, DateOnly StartDate), int>();
+        List<string> canonicalRules = new List<string>();
+        foreach (ParkOpeningHoursRule rule in schedule.RegularRules)
+        {
+            (int SortOrder, DateOnly StartDate) key = (rule.SortOrder, rule.StartDate);
+            _ = tieOrders.TryGetValue(key, out int tieOrder);
+            canonicalRules.Add(BuildCanonicalRule(rule, tieOrder));
+            tieOrders[key] = tieOrder + 1;
+        }
+
+        canonicalRules.Sort(StringComparer.Ordinal);
         List<string> canonicalOverrides = schedule.DateOverrides
             .Select(BuildCanonicalOverride)
             .OrderBy(static value => value, StringComparer.Ordinal)
@@ -53,13 +61,16 @@ public static class OpeningCalendarFactSnapshot
             $"timezone={timeZoneId};coverage={coverage};rules={canonicalRules.Count};overrides={canonicalOverrides.Count};sha256={hashText}");
     }
 
-    private static string BuildCanonicalRule(ParkOpeningHoursRule rule)
+    private static string BuildCanonicalRule(
+        ParkOpeningHoursRule rule,
+        int tieOrder)
     {
         StringBuilder value = new StringBuilder();
         AppendField(value, rule.StartDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
         AppendField(value, rule.EndDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
         AppendField(value, rule.IsClosed ? "1" : "0");
         AppendField(value, rule.SortOrder.ToString(CultureInfo.InvariantCulture));
+        AppendField(value, tieOrder.ToString(CultureInfo.InvariantCulture));
         AppendField(
             value,
             string.Join(",", rule.DaysOfWeek.OrderBy(static day => day).Select(static day => (int)day)));

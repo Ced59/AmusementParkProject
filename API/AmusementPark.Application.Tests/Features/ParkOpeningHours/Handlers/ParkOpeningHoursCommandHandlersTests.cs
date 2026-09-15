@@ -17,6 +17,25 @@ namespace AmusementPark.Application.Tests.Features.ParkOpeningHours.Handlers;
 public sealed class ParkOpeningHoursCommandHandlersTests
 {
     [Fact]
+    public void Normalize_WhenVerificationDateIsFuture_ShouldReturnValidationFailure()
+    {
+        DateTimeOffset now = new DateTimeOffset(2026, 9, 15, 12, 0, 0, TimeSpan.Zero);
+        Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
+        timeProvider.Setup(value => value.GetUtcNow()).Returns(now);
+        ParkOpeningHoursSchedule schedule = CreateSchedule();
+        schedule.LastVerifiedAtUtc = now.AddMinutes(1).UtcDateTime;
+
+        ApplicationResult<ParkOpeningHoursSchedule> result =
+            new ParkOpeningHoursScheduleNormalizer(timeProvider.Object).Normalize(schedule);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "park-opening-hours.invalid");
+        timeProvider.VerifyAll();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenScheduleIsSaved_ShouldRefreshSitemap()
     {
         ParkOpeningHoursSchedule schedule = CreateSchedule();

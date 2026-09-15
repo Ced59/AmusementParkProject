@@ -199,7 +199,11 @@ public sealed class ParkOpeningHoursFactualChangeCaptureServiceTests
             CancellationToken.None);
 
         Assert.Equal(
-            new ParkOpeningHoursFactualChangeCursor(secondUpdatedAtUtc, "park-2"),
+            new ParkOpeningHoursFactualChangeCursor(
+                secondUpdatedAtUtc,
+                "park-2",
+                second.Entry.RecordedAtUtc,
+                second.Entry.Id),
             cursor);
         capture.VerifyAll();
         repository.VerifyAll();

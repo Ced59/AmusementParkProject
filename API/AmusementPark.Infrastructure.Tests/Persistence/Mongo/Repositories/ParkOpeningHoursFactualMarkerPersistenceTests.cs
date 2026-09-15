@@ -75,7 +75,11 @@ public sealed class ParkOpeningHoursFactualMarkerPersistenceTests
         DateTime sourceUpdatedAtUtc =
             new DateTime(2026, 9, 15, 12, 0, 0, DateTimeKind.Utc);
         ParkOpeningHoursFactualChangeCursor cursor =
-            new ParkOpeningHoursFactualChangeCursor(sourceUpdatedAtUtc, "park-100");
+            new ParkOpeningHoursFactualChangeCursor(
+                sourceUpdatedAtUtc,
+                "park-100",
+                sourceUpdatedAtUtc.AddMinutes(-1),
+                "outbox-100");
 
         string json = Render(
             ParkOpeningHoursRepository.BuildPendingFactualChangeFilter(cursor))
@@ -100,6 +104,28 @@ public sealed class ParkOpeningHoursFactualMarkerPersistenceTests
         Assert.Contains("schedule-1", json, StringComparison.Ordinal);
         Assert.Contains("writeRevision", json, StringComparison.Ordinal);
         Assert.Contains("$exists", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void MarkerCursor_ShouldContinueInsideTheSameSourceDocument()
+    {
+        DateTime recordedAtUtc = new DateTime(2026, 9, 15, 12, 0, 0, DateTimeKind.Utc);
+        ParkOpeningHoursScheduleDocument source = new ParkOpeningHoursScheduleDocument
+        {
+            ParkId = "park-1",
+            UpdatedAt = recordedAtUtc,
+        };
+        ParkOpeningHoursFactualChangeCursor cursor =
+            new ParkOpeningHoursFactualChangeCursor(
+                recordedAtUtc,
+                "park-1",
+                recordedAtUtc,
+                "outbox-100");
+        FactualChangeOutboxEntry after = CreateEntry("outbox-101", recordedAtUtc);
+        FactualChangeOutboxEntry before = CreateEntry("outbox-099", recordedAtUtc);
+
+        Assert.True(ParkOpeningHoursRepository.IsAfterCursor(source, after, cursor));
+        Assert.False(ParkOpeningHoursRepository.IsAfterCursor(source, before, cursor));
     }
 
     [Fact]
@@ -130,5 +156,34 @@ public sealed class ParkOpeningHoursFactualMarkerPersistenceTests
                 serializer,
                 BsonSerializer.SerializerRegistry);
         return filter.Render(arguments);
+    }
+
+    private static FactualChangeOutboxEntry CreateEntry(
+        string id,
+        DateTime recordedAtUtc)
+    {
+        return new FactualChangeOutboxEntry(
+            id,
+            $"event-{id}",
+            FactualEventType.OpeningCalendarChanged,
+            1,
+            ChangeTarget.ForPark("park-1"),
+            FactValue.FromText("before"),
+            FactValue.FromText("after"),
+            new SourceReference(
+                SourceReferenceType.OfficialWebsite,
+                "Park",
+                "Calendar",
+                "https://example.com/calendar",
+                recordedAtUtc),
+            DataConfidence.High,
+            recordedAtUtc,
+            "park:park-1:opening-calendar",
+            1,
+            recordedAtUtc,
+            null,
+            null,
+            null,
+            1);
     }
 }
