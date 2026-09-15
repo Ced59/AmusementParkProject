@@ -1795,7 +1795,7 @@ async function refreshSeoStaticSnapshot(): Promise<void> {
       return;
     }
 
-    console.log(`SSR static SEO snapshot ${result.status}: ${result.documentCount} documents / ${result.totalBytes} bytes (${reasons}).`);
+    console.log(`SSR static SEO snapshot ${result.status}: ${result.documentCount} documents / ${result.totalBytes} bytes; fetch control=${result.fetchControlStatus} (${reasons}).`);
   } catch (error: unknown) {
     console.warn(`SSR static SEO snapshot refresh failed (${reasons}); the last valid snapshot remains active.`, error);
     scheduleSeoStaticSnapshotRefresh('failed-refresh-retry', 60_000);
