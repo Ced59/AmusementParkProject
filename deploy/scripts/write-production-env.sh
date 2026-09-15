@@ -135,7 +135,7 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line SSR_RENDER_CRITICAL_ROUTES_ON_CACHE_MISS "$(value_or_default SSR_RENDER_CRITICAL_ROUTES_ON_CACHE_MISS 'true')"
   write_line SSR_ROBOT_NO_JS_HTML_ENABLED "$(value_or_default SSR_ROBOT_NO_JS_HTML_ENABLED 'true')"
   write_line SSR_CACHE_INVALIDATION_TOKEN "${SSR_CACHE_INVALIDATION_TOKEN:?SSR_CACHE_INVALIDATION_TOKEN is required}"
-  write_line SSR_INTERNAL_BASE_URL "$(value_or_default SSR_INTERNAL_BASE_URL 'http://front:4000')"
+  write_line SSR_INTERNAL_BASE_URL "$(value_or_default SSR_INTERNAL_BASE_URL 'http://amusementpark-edge:4000')"
   write_line SSR_PAGE_CACHE_SECONDS "$(value_or_default SSR_PAGE_CACHE_SECONDS '86400')"
   write_line SSR_PAGE_CACHE_MAX_ENTRIES "$(value_or_default SSR_PAGE_CACHE_MAX_ENTRIES '2000')"
   write_line SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL "$(value_or_default SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL 'no-store, max-age=0')"

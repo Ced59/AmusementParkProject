@@ -5,6 +5,9 @@ services:
     image: ${FRONT_IMAGE:?FRONT_IMAGE is required}
     container_name: amusementpark-front
     restart: unless-stopped
+    stop_grace_period: 190s
+    labels:
+      fun.amusement-parks.deployment-generation: ${DEPLOYMENT_GENERATION:-unmanaged}
     depends_on:
       api:
         condition: service_healthy
@@ -143,6 +146,9 @@ services:
     image: ${API_IMAGE:?API_IMAGE is required}
     container_name: amusementpark-api
     restart: unless-stopped
+    stop_grace_period: 190s
+    labels:
+      fun.amusement-parks.deployment-generation: ${DEPLOYMENT_GENERATION:-unmanaged}
     depends_on:
       mongodb:
         condition: service_healthy
@@ -204,7 +210,7 @@ services:
       Seo__SupportedLanguages__5: pl
       Seo__SupportedLanguages__6: nl
       Seo__SupportedLanguages__7: pt
-      Ssr__InternalBaseUrl: ${SSR_INTERNAL_BASE_URL:-http://front:4000}
+      Ssr__InternalBaseUrl: ${SSR_INTERNAL_BASE_URL:-http://amusementpark-edge:4000}
       Ssr__CacheInvalidationToken: ${SSR_CACHE_INVALIDATION_TOKEN:?SSR_CACHE_INVALIDATION_TOKEN is required}
       Authentication__RefreshTokenCookie__Name: amusementpark.refresh
       Authentication__RefreshTokenCookie__Path: /api/auth

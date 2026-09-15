@@ -6,13 +6,35 @@ import {
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
+import { Injector } from '@angular/core';
 import { defer, firstValueFrom, Observable, of, throwError } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import { ServerApiBaseUrlBackend } from './server-api-base-url.backend';
+import { SSR_API_ORIGIN } from '../../ssr/ssr-api-origin.token';
 import { FetchBackendFake } from './test-helpers/server-api-base-url.backend/fetch-backend-fake';
 
 describe('ServerApiBaseUrlBackend', () => {
+  it('inherits the per-render platform origin without changing the browser request/transfer-cache URL', () => {
+    const fetchBackend = new FetchBackendFake();
+    // CommonEngine provides these values on the platform; BootstrapContext
+    // makes that injector the parent of the application injector.
+    const platform = Injector.create({ providers: [
+      { provide: SSR_API_ORIGIN, useValue: 'http://api-candidate-unique:8080' },
+    ] });
+    const application = Injector.create({ parent: platform, providers: [
+      { provide: FetchBackend, useValue: fetchBackend },
+      ServerApiBaseUrlBackend,
+    ] });
+    const request = new HttpRequest('GET', `${environment.apiBaseUrl}api/parks?page=2`);
+
+    application.get(ServerApiBaseUrlBackend).handle(request).subscribe();
+
+    expect(fetchBackend.capturedUrl).toBe('http://api-candidate-unique:8080/api/parks?page=2');
+    expect(fetchBackend.capturedInternalSsrHeader).toBe('1');
+    expect(request.url).toBe(`${environment.apiBaseUrl}api/parks?page=2`);
+    expect(request.headers.has('X-AmusementPark-Internal-SSR')).toBe(false);
+  });
   function handleUrl(url: string): FetchBackendFake {
     const fetchBackend: FetchBackendFake = new FetchBackendFake();
     const backend: ServerApiBaseUrlBackend = new ServerApiBaseUrlBackend(

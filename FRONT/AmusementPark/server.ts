@@ -10,6 +10,8 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, statSync,
 import { fileURLToPath } from 'node:url';
 import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
+import { SSR_API_ORIGIN } from './src/app/core/ssr/ssr-api-origin.token';
+import { installGracefulShutdown } from './server-graceful-shutdown';
 import {
   isApiHeaderHiddenFromPublicProxy,
   isHopByHopHttpHeader,
@@ -625,7 +627,8 @@ export function app(): express.Express {
       publicPath: browserDistFolder,
       providers: [
         { provide: APP_BASE_HREF, useValue: req.baseUrl },
-        { provide: SSR_RESPONSE, useValue: res }
+        { provide: SSR_RESPONSE, useValue: res },
+        { provide: SSR_API_ORIGIN, useValue: apiInternalOrigin }
       ],
     });
 
@@ -1708,7 +1711,7 @@ function run(): void {
 
   startTechnicalStatsPersistenceTimers();
 
-  server.listen(port, () => {
+  const httpServer = server.listen(port, () => {
     console.log(`Angular SSR server listening on http://0.0.0.0:${port}`);
     console.log(`Application build version: ${currentBuildVersion}`);
     console.log(`SSR API internal origin: ${apiInternalOrigin}`);
@@ -1734,6 +1737,7 @@ function run(): void {
 
     startSeoStaticSnapshotPublishing();
   });
+  installGracefulShutdown(httpServer, persistTechnicalStatsBucket);
 }
 
 function startSeoStaticSnapshotPublishing(): void {

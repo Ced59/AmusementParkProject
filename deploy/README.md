@@ -53,8 +53,8 @@ ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;ap
 
 - `amusement-parks.fun` et `www.amusement-parks.fun` couvrent les domaines publics.
 - `localhost` et `127.0.0.1` couvrent les healthchecks internes.
-- `api` couvre l'appel Docker interne réellement utilisé par le SSR (`FRONT_SSR_API_INTERNAL_URL=http://api:8080`).
-- `amusementpark-api` reste accepté par compatibilité avec le nom de container.
+- `api` conserve la compatibilité avec la configuration initiale. Le déploiement transactionnel fixe le front canonique sur `amusementpark-api`, et chaque front candidat sur le nom unique de son API.
+- `amusementpark-api` couvre l’origine exacte de la paire canonique ; le coordinateur l’ajoute aussi lorsqu’une liste personnalisée l’omet, et ajoute uniquement le nom propre de chaque candidat à son API.
 
 Le script `write-production-env.sh` réinjecte automatiquement le host de `FRONT_SSR_API_INTERNAL_URL` ainsi que `localhost`/`127.0.0.1` dans `ALLOWED_HOSTS` si une variable GitHub personnalisée les oublie. Cela évite les boucles de `400 Invalid Hostname` pendant le SSR tout en gardant l'API privée derrière le réseau Docker.
 
@@ -189,11 +189,11 @@ En production, le déploiement utilise `Smtp` par défaut si `PROD_EMAIL_MODE` n
 - `PUBLIC_BASE_URL`, défaut `https://amusement-parks.fun`
 - `PUBLIC_DOMAIN`, défaut `amusement-parks.fun`
 - `ALLOWED_HOSTS`, défaut pipeline : `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;api;amusementpark-api`. Le host de `FRONT_SSR_API_INTERNAL_URL`, `localhost` et `127.0.0.1` sont ajoutés automatiquement au fichier généré si nécessaire.
-- `FRONT_SSR_API_INTERNAL_URL`, défaut `http://api:8080`
-- `SSR_INTERNAL_BASE_URL`, défaut `http://front:4000` pour les appels internes API vers le serveur SSR.
+- `FRONT_SSR_API_INTERNAL_URL`, défaut généré `http://api:8080` ; le coordinateur remplace cette valeur dans chaque conteneur par le nom exact de son API, sans modifier les URL publiques.
+- `SSR_INTERNAL_BASE_URL`, défaut `http://amusementpark-edge:4000` : les callbacks et statistiques internes suivent le front sélectionné. Une autre cible bloque le déploiement transactionnel.
 - `SSR_TECHNICAL_STATS_RETENTION_DAYS`, défaut `100`, ajustable ensuite depuis le panel admin des stats techniques.
 - `SSR_TECHNICAL_STATS_FLUSH_INTERVAL_SECONDS`, défaut `60`.
-- `DEPLOY_ZERO_DOWNTIME_ENABLED`, défaut `true`, maintient des candidats API/front sains pendant le remplacement des conteneurs canoniques.
+- `DEPLOY_ZERO_DOWNTIME_ENABLED`, défaut `true`. Le chemin transactionnel n’accepte pas `false` et ne retombe pas sur un démarrage global en cas d’échec. Voir le [protocole, la reprise et les limites](../docs/deploy/transactional-app-deployment.md).
 - `SSR_WARMUP_CONTINUOUS_ENABLED`, défaut `false`, relance périodiquement un warmup borné par verrou.
 - `SSR_WARMUP_CONTINUOUS_INTERVAL_SECONDS`, défaut `21600` entre deux cycles terminés.
 - `SSR_WARMUP_CONTINUOUS_RETRY_SECONDS`, défaut `300` après un échec ou un verrou de cycle occupé.

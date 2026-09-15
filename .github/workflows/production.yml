@@ -146,7 +146,7 @@ jobs:
         shell: bash
         run: |
           chmod +x deploy/scripts/*.sh deploy/scripts/tests/*.sh
-          bash -n deploy/scripts/deploy.sh deploy/scripts/cleanup-stale-deploy-candidates.sh deploy/scripts/seo-static-snapshot-policy.sh deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh deploy/scripts/verify-public-response-integrity.sh
+          bash -n deploy/scripts/deploy.sh deploy/scripts/seo-static-snapshot-policy.sh deploy/scripts/warmup-ssr-cache.sh deploy/scripts/warmup-ssr-cache-continuous.sh deploy/scripts/verify-public-response-integrity.sh
           for static_snapshot_policy in true false; do
             docker run --rm \
               --tmpfs /tmp \
@@ -156,12 +156,16 @@ jobs:
           done
           deploy/scripts/tests/seo-static-snapshot-policy.test.sh
           deploy/scripts/tests/static-seo-edge.test.sh
-          deploy/scripts/tests/stale-deploy-candidates.test.sh
-          deploy/scripts/tests/deploy-candidate-background-jobs.test.sh
           deploy/scripts/tests/personal-ranking-cutover.test.sh
           deploy/scripts/tests/social-publishing-env.test.sh
           deploy/scripts/tests/ssr-warmup-env.test.sh
           python3 -m unittest deploy/scripts/tests/test_ssr_warmup_support.py
+          python3 -m unittest discover -s deploy/scripts/tests -p 'test_deployment_*.py'
+          python3 -m unittest deploy/scripts/tests/test_install_deployment.py
+
+      - name: Exercise interrupted deployments and in-flight requests with real Docker containers
+        timeout-minutes: 12
+        run: python3 deploy/scripts/tests/deployment-transaction-docker.py
 
   backend:
     name: Backend build and tests
@@ -237,7 +241,7 @@ jobs:
           npm run architecture:one-class-per-file
 
       - name: Test crawler SSR smoke checks
-        run: node --test tools/seo-ssr-smoke.test.mjs
+        run: node --test tools/seo-ssr-smoke.test.mjs tools/server-graceful-shutdown.test.mjs
 
       - name: Run frontend tests
         run: npm run test:ci
@@ -418,8 +422,9 @@ jobs:
       - dependency-security
       - deployment-configuration-tests
     concurrency:
-      group: production-deploy-${{ github.ref_name }}
-      cancel-in-progress: true
+      # Preserve the previous master key during the first workflow handoff.
+      group: production-deploy-master
+      cancel-in-progress: false
     if: >-
       ${{
         github.event_name != 'pull_request' &&
@@ -612,7 +617,8 @@ jobs:
       - name: Prepare deployment bundle
         if: steps.deployment-freshness.outputs.should_deploy == 'true'
         run: |
-          tar -czf amusementpark-deploy.tgz \
+          umask 077
+          tar --exclude=nginx/runtime -czf amusementpark-deploy.tgz \
             -C deploy \
             compose.prod.yml \
             mongo-init.js \
@@ -669,8 +675,8 @@ jobs:
         run: |
           set -euo pipefail
           ssh -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" "mkdir -p '${VPS_DEPLOY_PATH}'"
-          scp -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -P "${VPS_SSH_PORT}" amusementpark-deploy.tgz "${VPS_SSH_USER}@${VPS_HOST}:/tmp/amusementpark-deploy.tgz"
-          ssh -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" "tar -xzf /tmp/amusementpark-deploy.tgz -C '${VPS_DEPLOY_PATH}' && rm /tmp/amusementpark-deploy.tgz && chmod +x '${VPS_DEPLOY_PATH}'/scripts/*.sh"
+          scp -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -P "${VPS_SSH_PORT}" amusementpark-deploy.tgz "${VPS_SSH_USER}@${VPS_HOST}:/tmp/amusementpark-deploy-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.tgz"
+          scp -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i ~/.ssh/amusementpark_deploy_key -P "${VPS_SSH_PORT}" deploy/scripts/install-deployment.py "${VPS_SSH_USER}@${VPS_HOST}:/tmp/amusementpark-install-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.py"
 
       - name: Deploy on VPS
         if: steps.deployment-freshness.outputs.should_deploy == 'true'
@@ -693,4 +699,5 @@ jobs:
              export GHCR_USERNAME GHCR_TOKEN; \
              if [ -n \"\${GHCR_USERNAME}\" ] && [ -n \"\${GHCR_TOKEN}\" ]; then echo \"\${GHCR_TOKEN}\" | docker login ghcr.io -u \"\${GHCR_USERNAME}\" --password-stdin; fi; \
              unset GHCR_USERNAME GHCR_TOKEN; \
-             cd '${VPS_DEPLOY_PATH}' && ./scripts/deploy.sh"
+             python3 '/tmp/amusementpark-install-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.py' '/tmp/amusementpark-deploy-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.tgz' '${VPS_DEPLOY_PATH}'; \
+             rm -f '/tmp/amusementpark-install-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.py' '/tmp/amusementpark-deploy-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.tgz'"

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.45",
+  "version": "5.3.46",
   "history": [
+    {
+      "version": "5.3.46",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Une navigation plus stable pendant les mises à jour du site.",
+        "en": "More reliable browsing during site updates.",
+        "de": "Stabileres Surfen während der Aktualisierung der Website.",
+        "nl": "Stabieler browsen tijdens updates van de website.",
+        "it": "Una navigazione più stabile durante gli aggiornamenti del sito.",
+        "es": "Una navegación más estable durante las actualizaciones del sitio.",
+        "pl": "Stabilniejsze przeglądanie podczas aktualizacji strony.",
+        "pt": "Uma navegação mais estável durante as atualizações do site."
+      }
+    },
     {
       "version": "5.3.45",
       "releasedAt": "2026-09-15",

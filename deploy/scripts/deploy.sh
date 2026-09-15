@@ -3,6 +3,25 @@ set -euo pipefail
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
+# The lock must precede .env/helper reads, not merely Docker mutations.
+deploy_lock_file="${DEPLOY_LOCK_FILE:-/tmp/amusementpark-deploy.lock}"
+deploy_lock_timeout_seconds="${DEPLOY_LOCK_TIMEOUT_SECONDS:-900}"
+command -v flock >/dev/null 2>&1 || { echo "Missing required flock." >&2; exit 1; }
+if [ "${DEPLOY_LOCK_INHERITED:-false}" = "true" ]; then
+  if [ ! /proc/self/fd/9 -ef "${deploy_lock_file}" ] || ! flock -n 9; then
+    echo "Invalid inherited deployment lock." >&2
+    exit 1
+  fi
+else
+  exec 9>"${deploy_lock_file}"
+  flock -w "${deploy_lock_timeout_seconds}" 9 || { echo "Deployment lock timeout." >&2; exit 1; }
+fi
+
+if [ -e .installation-pending.json ]; then
+  echo "Deployment bundle installation is incomplete; rerun the installer before reading active configuration." >&2
+  exit 1
+fi
+
 if [ ! -f .env ]; then
   echo "Missing .env file in $(pwd)." >&2
   exit 1
@@ -114,61 +133,6 @@ compose_logs() {
   compose_with_timeout "${deploy_compose_log_timeout_seconds}" logs --tail="${tail_lines}" "${service_name}"
 }
 
-reload_edge_configuration() {
-  echo "Validating the deployed Nginx edge configuration..."
-  if ! compose exec -T edge nginx -t -c /etc/nginx/amusementpark/edge.conf; then
-    echo "The deployed Nginx edge configuration is invalid." >&2
-    compose_logs 120 edge >&2 || true
-    return 1
-  fi
-
-  echo "Reloading the Nginx edge configuration..."
-  if ! compose exec -T edge nginx -s reload -c /etc/nginx/amusementpark/edge.conf; then
-    echo "The Nginx edge configuration could not be reloaded." >&2
-    compose_logs 120 edge >&2 || true
-    return 1
-  fi
-}
-
-if ! command -v flock >/dev/null 2>&1; then
-  echo "Missing required flock command; deployment locking cannot be enforced." >&2
-  exit 1
-fi
-
-exec 9>"${deploy_lock_file}"
-
-acquire_deployment_lock() {
-  local started_seconds="${SECONDS}"
-  local elapsed_seconds=0
-  local sleep_seconds=0
-
-  echo "Acquiring deployment lock ${deploy_lock_file}..."
-
-  while ! flock -n 9; do
-    elapsed_seconds=$((SECONDS - started_seconds))
-
-    if [ "${elapsed_seconds}" -ge "${deploy_lock_timeout_seconds}" ]; then
-      echo "Timed out while waiting for deployment lock after ${deploy_lock_timeout_seconds}s." >&2
-      return 1
-    fi
-
-    echo "Deployment lock is still held after ${elapsed_seconds}s; waiting up to ${deploy_lock_timeout_seconds}s..."
-    sleep_seconds="${deploy_lock_wait_log_interval_seconds}"
-    if [ "${sleep_seconds}" -lt 1 ]; then
-      sleep_seconds=1
-    fi
-    if [ $((elapsed_seconds + sleep_seconds)) -gt "${deploy_lock_timeout_seconds}" ]; then
-      sleep_seconds=$((deploy_lock_timeout_seconds - elapsed_seconds))
-    fi
-
-    sleep "${sleep_seconds}"
-  done
-
-  echo "Deployment lock acquired."
-}
-
-acquire_deployment_lock
-
 wait_for_service_healthy() {
   local service_name="$1"
   local timeout_seconds="${2:-120}"
@@ -207,94 +171,19 @@ wait_for_service_healthy() {
   return 1
 }
 
-service_is_healthy() {
-  local service_name="$1"
-  local container_id=""
-  local health_status=""
-
-  container_id="$(compose ps -q "${service_name}" 2>/dev/null || true)"
-  if [ -z "${container_id}" ]; then
-    return 1
-  fi
-
-  health_status="$(docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{else}}{{.State.Status}}{{end}}' "${container_id}" 2>/dev/null || true)"
-  [ "${health_status}" = "healthy" ]
-}
-
-wait_for_container_healthy() {
-  local container_name="$1"
-  local timeout_seconds="${2:-180}"
-  local elapsed_seconds=0
-  local health_status=""
-
-  while [ "${elapsed_seconds}" -lt "${timeout_seconds}" ]; do
-    health_status="$(docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{else}}{{.State.Status}}{{end}}' "${container_name}" 2>/dev/null || true)"
-    if [ "${health_status}" = "healthy" ]; then
-      echo "${container_name} is healthy."
-      return 0
-    fi
-    if [ "${health_status}" = "unhealthy" ] || [ "${health_status}" = "exited" ] || [ "${health_status}" = "dead" ]; then
-      echo "${container_name} reached status '${health_status}'." >&2
-      docker logs --tail=160 "${container_name}" >&2 || true
-      return 1
-    fi
-    sleep 2
-    elapsed_seconds=$((elapsed_seconds + 2))
-  done
-
-  echo "Timed out while waiting for ${container_name} after ${timeout_seconds}s." >&2
-  docker logs --tail=160 "${container_name}" >&2 || true
-  return 1
-}
-
-start_deploy_candidate() {
-  local service_name="$1"
-  local container_name="$2"
-
-  echo "Starting healthy ${service_name} deployment candidate ${container_name}..."
-  if [ "${service_name}" = "api" ]; then
-    compose run -d --no-deps --name "${container_name}" \
-      -e DurableBackgroundJobs__Worker__Enabled=false \
-      "${service_name}" >/dev/null
-  else
-    compose run -d --no-deps --name "${container_name}" "${service_name}" >/dev/null
-  fi
-  wait_for_container_healthy "${container_name}" 180
-}
-
-attach_candidate_aliases() {
-  local service_name="$1"
-  local container_name="$2"
-  local backend_network="${compose_project_name}_backend_private"
-
-  docker network disconnect "${backend_network}" "${container_name}"
-  if [ "${service_name}" = "api" ]; then
-    docker network connect --alias api --alias amusementpark-api "${backend_network}" "${container_name}"
-  else
-    docker network connect --alias front --alias amusementpark-front "${backend_network}" "${container_name}"
-  fi
-
-  wait_for_container_healthy "${container_name}" 30
-  echo "Production aliases attached to healthy ${container_name}."
-}
-
-api_candidate_name=""
-front_candidate_name=""
-
-cleanup_deploy_candidates() {
-  local candidate_name=""
-  for candidate_name in "${front_candidate_name}" "${api_candidate_name}"; do
-    if [ -n "${candidate_name}" ] && docker inspect "${candidate_name}" >/dev/null 2>&1; then
-      echo "Removing deployment candidate ${candidate_name}..."
-      docker rm -f "${candidate_name}" >/dev/null || true
-    fi
-  done
-}
-
 rollback_incomplete_personal_ranking_cutover() {
   if [ "${personal_ranking_cutover_started}" != "true" ]; then
     return 0
   fi
+
+  if ! python3 ./scripts/deployment_transaction.py rollback-safe; then
+    echo "New authority may be serving; preserving central ranking data and deployment pairs." >&2
+    return 0
+  fi
+
+  # A candidate may still be running its startup migration. Its front and API
+  # must stop before Mongo authority is restored, even after a lost response.
+  python3 ./scripts/deployment_transaction.py quiesce-unexposed
 
   echo "Deployment did not complete; restoring the legacy personal ranking share authority..." >&2
   compose exec -T \
@@ -305,10 +194,11 @@ rollback_incomplete_personal_ranking_cutover() {
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
       < ./scripts/rollback-ranking-shares-5.2.6.js
+  python3 ./scripts/deployment_transaction.py cutover-restored
+  personal_ranking_cutover_started=false
 }
 
 cleanup_deployment_attempt() {
-  cleanup_deploy_candidates
   rollback_incomplete_personal_ranking_cutover
 }
 
@@ -333,6 +223,7 @@ prepare_personal_ranking_cutover() {
   echo "Freezing legacy personal ranking share writes before zero-downtime cutover..."
   # Arm rollback before collMod: MongoDB may apply the validator even if the
   # client loses the command response and exits with an error.
+  python3 ./scripts/deployment_transaction.py arm-cutover
   personal_ranking_cutover_started=true
   compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
@@ -479,6 +370,15 @@ wait_for_static_seo_snapshot() {
 
 ./scripts/validate-production-env.sh .env
 
+if [ "${DEPLOY_ABANDON_UNEXPOSED:-false}" = "true" ]; then
+  if python3 ./scripts/deployment_transaction.py cutover-pending; then
+    personal_ranking_cutover_started=true
+    rollback_incomplete_personal_ranking_cutover
+  fi
+  python3 ./scripts/deployment_transaction.py abandon-unexposed
+  exit 0
+fi
+
 if ! docker network inspect "${npm_docker_network_name}" >/dev/null 2>&1; then
   echo "Missing external Docker network '${npm_docker_network_name}'." >&2
   echo "This VPS appears to use an existing Nginx Proxy Manager network. Create it or set NPM_DOCKER_NETWORK_NAME to the actual network name." >&2
@@ -496,47 +396,18 @@ fi
 echo "Pulling production images..."
 compose pull
 
-if compose ps --services --filter status=running | grep -qx 'mongodb'; then
-  prepare_personal_ranking_cutover
-fi
-
-rolling_deploy=false
-if [ "${deploy_zero_downtime_enabled}" = "true" ] && service_is_healthy api && service_is_healthy front; then
-  rolling_deploy=true
-  candidate_suffix="$(date -u +%Y%m%dT%H%M%SZ)-$$"
-  api_candidate_name="${compose_project_name}-api-candidate-${candidate_suffix}"
-  front_candidate_name="${compose_project_name}-front-candidate-${candidate_suffix}"
-  start_deploy_candidate api "${api_candidate_name}"
-  attach_candidate_aliases api "${api_candidate_name}"
-  start_deploy_candidate front "${front_candidate_name}"
-  attach_candidate_aliases front "${front_candidate_name}"
-else
-  echo "Healthy API/front stack not available or zero-downtime disabled; using the standard startup path."
-fi
-
-echo "Starting production stack..."
-if ! compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d; then
-  echo "Docker Compose failed while starting the production stack. Recent container status:" >&2
-  compose ps >&2 || true
-  echo "Recent API logs:" >&2
-  compose_logs 200 api >&2 || true
-  echo "Recent MongoDB logs:" >&2
-  compose_logs 120 mongodb >&2 || true
-  echo "Recent MinIO logs:" >&2
-  compose_logs 80 minio >&2 || true
-  echo "Recent Front SSR logs:" >&2
-  compose_logs 120 front >&2 || true
-  echo "Recent Nginx edge logs:" >&2
-  compose_logs 120 edge >&2 || true
+if [ "${deploy_zero_downtime_enabled}" != "true" ]; then
+  echo "This deployment requires transactional rolling mode; no implicit maintenance fallback is allowed." >&2
   exit 1
 fi
-
-if [ "${rolling_deploy}" = "true" ]; then
-  # The healthy API candidate has already committed the central cutover. From
-  # this point onward canonical services may run the new code, so storage must
-  # stay central even if a later, unrelated deployment check fails.
-  personal_ranking_cutover_started=false
+python3 ./scripts/deployment_transaction.py prepare
+if python3 ./scripts/deployment_transaction.py rollback-safe; then
+  prepare_personal_ranking_cutover
+else
+  echo "Recovering an exposed authority; the legacy cutover must not be reverted or frozen again."
 fi
+python3 ./scripts/deployment_transaction.py deploy
+personal_ranking_cutover_started=false
 
 compose ps
 
@@ -555,13 +426,8 @@ else
 fi
 
 wait_for_service_healthy api 180
-if [ "${rolling_deploy}" != "true" ]; then
-  # On the standard startup path the canonical API itself performs migration.
-  personal_ranking_cutover_started=false
-fi
 wait_for_service_healthy front 180
 wait_for_service_healthy edge 180
-reload_edge_configuration
 wait_for_service_healthy edge 60
 
 curl_with_retry \
@@ -582,17 +448,8 @@ else
   echo "Static SEO snapshot publishing is disabled; deployment validation keeps the SSR/API fallback path."
 fi
 
-if [ "${rolling_deploy}" = "true" ]; then
-  echo "Canonical services are healthy; removing deployment candidates."
-  cleanup_deploy_candidates
-  front_candidate_name=""
-  api_candidate_name=""
-  compose_with_timeout "${deploy_compose_up_timeout_seconds}" up -d --remove-orphans
-fi
-
-# A surviving candidate can still carry production aliases after an interrupted
-# rollout, so only remove stale candidates once the canonical stack is healthy.
-./scripts/cleanup-stale-deploy-candidates.sh "${compose_project_name}"
+# A completed, healthy canonical pair is mandatory, not a healthy fallback.
+python3 ./scripts/deployment_transaction.py assert-complete
 
 ./scripts/verify-public-response-integrity.sh \
   "${PUBLIC_BASE_URL%/}/fr/home"
