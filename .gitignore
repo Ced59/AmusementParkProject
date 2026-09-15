@@ -371,3 +371,6 @@ AmusementParkProject.zip
 /deploy/.env
 /deploy/backups/
 /deploy/*.tar.gz
+
+/deploy/nginx/runtime/
+/deploy/.installation-pending.json

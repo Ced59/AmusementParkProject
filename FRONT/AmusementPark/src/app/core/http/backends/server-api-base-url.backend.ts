@@ -1,9 +1,10 @@
 import { FetchBackend, HttpBackend, HttpEvent, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { SSR_API_ORIGIN } from '../../ssr/ssr-api-origin.token';
 import {
   resolveTransientHttpReadRetryDelay,
   TRANSIENT_HTTP_READ_RETRY_COUNT
@@ -27,7 +28,10 @@ import {
 export class ServerApiBaseUrlBackend implements HttpBackend {
   private static readonly InternalSsrHeaderName: string = 'X-AmusementPark-Internal-SSR';
 
-  constructor(private readonly fetchBackend: FetchBackend) {
+  constructor(
+    private readonly fetchBackend: FetchBackend,
+    @Optional() @Inject(SSR_API_ORIGIN) private readonly serverApiOrigin: string | null = null,
+  ) {
   }
 
   handle(request: HttpRequest<unknown>): Observable<HttpEvent<unknown>> {
@@ -54,7 +58,9 @@ export class ServerApiBaseUrlBackend implements HttpBackend {
 
   private rewriteApiUrl(url: string): string {
     const browserApiBaseUrl: string = ServerApiBaseUrlBackend.ensureTrailingSlash(environment.apiBaseUrl);
-    const serverApiBaseUrl: string = ServerApiBaseUrlBackend.ensureTrailingSlash(environment.ssrApiBaseUrl);
+    const serverApiBaseUrl: string = ServerApiBaseUrlBackend.ensureTrailingSlash(
+      this.serverApiOrigin ?? environment.ssrApiBaseUrl,
+    );
 
     if (browserApiBaseUrl === serverApiBaseUrl || !url.startsWith(browserApiBaseUrl)) {
       return url;
