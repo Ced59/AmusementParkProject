@@ -100,7 +100,8 @@ erDiagram
 Index critiques :
 
 - unicité outbox `(deduplicationKey, sourceRevision)` ;
-- lecture bornée des entrées sans `materializedAtUtc` ;
+- lecture bornée des entrées avec `materializedAtUtc` nul grâce à un index composé
+  commençant par ce champ ;
 - unicité événement `(deduplicationKey, revision)` ;
 - lecture des événements par état et par cible ;
 - unicité du job exact grâce à une clé SHA-256 stable et bornée.
@@ -152,7 +153,8 @@ n'est jamais écrasé silencieusement.
 ## Performance et exploitation
 
 - le scan de réparation est limité à 100 entrées par minute ;
-- les lectures utilisent un index partiel réservé aux entrées en attente ;
+- les lectures utilisent le préfixe d'un index composé et un prédicat Mongo `null`
+  compatible avec les documents anciens où le champ est absent ;
 - le traitement est léger et limité à deux exécutions concurrentes ;
 - les tentatives sont bornées à cinq avec backoff jusqu'à dix minutes ;
 - les conflits irréparables utilisent la dead-letter administrative déjà fournie

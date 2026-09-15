@@ -25,10 +25,15 @@ public sealed class MongoDatabaseInitializerFactualEventsTests
         Assert.Equal(
             new BsonDocument { { "deduplicationKey", 1 }, { "sourceRevision", 1 } },
             Render(logicalRevision.Keys));
-        Assert.Contains(
-            "materializedAtUtc",
-            Render(pending.Options.PartialFilterExpression!).ToJson(),
-            StringComparison.Ordinal);
+        Assert.Equal(
+            new BsonDocument
+            {
+                { "materializedAtUtc", 1 },
+                { "createdAt", 1 },
+                { "_id", 1 },
+            },
+            Render(pending.Keys));
+        Assert.Null(pending.Options.PartialFilterExpression);
     }
 
     [Fact]

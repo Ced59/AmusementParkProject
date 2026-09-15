@@ -27,14 +27,16 @@ public sealed class FactualChangeOutboxRepository : IFactualChangeOutboxReposito
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(entry);
+        FactualChangeOutboxDocument document = entry.ToDocument();
+        FactualChangeOutboxEntry canonicalEntry = document.ToDomain();
         try
         {
             await this.collection.InsertOneAsync(
-                entry.ToDocument(),
+                document,
                 cancellationToken: cancellationToken);
             return new FactualChangeOutboxWriteResult(
                 FactualChangeOutboxWriteDisposition.Created,
-                entry);
+                canonicalEntry);
         }
         catch (MongoWriteException exception)
             when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
@@ -50,7 +52,7 @@ public sealed class FactualChangeOutboxRepository : IFactualChangeOutboxReposito
             }
 
             FactualChangeOutboxEntry existing = existingDocument.ToDomain();
-            return HasSameFact(existing, entry)
+            return HasSameFact(existing, canonicalEntry)
                 ? new FactualChangeOutboxWriteResult(
                     FactualChangeOutboxWriteDisposition.AlreadyRecorded,
                     existing)
@@ -150,9 +152,9 @@ public sealed class FactualChangeOutboxRepository : IFactualChangeOutboxReposito
 
     internal static FilterDefinition<FactualChangeOutboxDocument> BuildPendingFilter()
     {
-        return Builders<FactualChangeOutboxDocument>.Filter.Exists(
+        return Builders<FactualChangeOutboxDocument>.Filter.Eq(
             static value => value.MaterializedAtUtc,
-            false);
+            null);
     }
 
     private static bool HasSameFact(

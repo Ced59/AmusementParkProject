@@ -51,6 +51,41 @@ public sealed class FactualEventMongoMapperTests
         Assert.Equal(factualEvent.Version, restored.Version);
     }
 
+    [Fact]
+    public void OutboxMapping_WithSubMillisecondDates_ShouldCanonicalizeToBsonPrecision()
+    {
+        DateTime recordedAtUtc = NowUtc.AddTicks(7);
+        DateTime occurredAtUtc = NowUtc.AddHours(-1).AddTicks(6);
+        DateTime publishedAtUtc = NowUtc.AddHours(-2).AddTicks(5);
+        FactualChangeOutboxEntry entry = new FactualChangeOutboxEntry(
+            "outbox-1",
+            "event-1",
+            FactualEventType.ParkNameChanged,
+            FactualEventCatalog.CurrentSchemaVersion,
+            ChangeTarget.ForPark("park-1"),
+            FactValue.FromText("Ancien nom"),
+            FactValue.FromText("Nouveau nom"),
+            new SourceReference(
+                SourceReferenceType.OfficialWebsite,
+                "Parc exemple",
+                "Nom officiel",
+                "https://example.com/news",
+                publishedAtUtc),
+            DataConfidence.High,
+            occurredAtUtc,
+            "park:park-1:name",
+            7,
+            recordedAtUtc,
+            null,
+            1);
+
+        FactualChangeOutboxEntry restored = entry.ToDocument().ToDomain();
+
+        Assert.Equal(0, restored.RecordedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
+        Assert.Equal(0, restored.OccurredAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
+        Assert.Equal(0, restored.Source.PublishedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
+    }
+
     private static FactualChangeOutboxEntry CreateOutboxEntry()
     {
         return new FactualChangeOutboxEntry(

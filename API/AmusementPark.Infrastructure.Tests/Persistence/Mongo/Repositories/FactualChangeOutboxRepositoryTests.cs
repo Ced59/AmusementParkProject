@@ -10,15 +10,13 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class FactualChangeOutboxRepositoryTests
 {
     [Fact]
-    public void BuildPendingFilter_ShouldMatchThePartialIndexPredicate()
+    public void BuildPendingFilter_ShouldMatchTheCompoundIndexPrefix()
     {
         FilterDefinition<FactualChangeOutboxDocument> filter =
             FactualChangeOutboxRepository.BuildPendingFilter();
 
         Assert.Equal(
-            new BsonDocument(
-                "materializedAtUtc",
-                new BsonDocument("$exists", false)),
+            new BsonDocument("materializedAtUtc", BsonNull.Value),
             Render(filter));
     }
 

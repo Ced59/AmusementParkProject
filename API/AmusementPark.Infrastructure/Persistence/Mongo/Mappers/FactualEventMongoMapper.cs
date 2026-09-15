@@ -19,13 +19,14 @@ internal static class FactualEventMongoMapper
             NewValue = ToDocument(entry.NewValue),
             Source = ToDocument(entry.Source),
             Confidence = entry.Confidence,
-            OccurredAtUtc = entry.OccurredAtUtc,
+            OccurredAtUtc = NormalizeToBsonPrecision(entry.OccurredAtUtc),
             DeduplicationKey = entry.DeduplicationKey,
             SourceRevision = entry.SourceRevision,
-            MaterializedAtUtc = entry.MaterializedAtUtc,
+            MaterializedAtUtc = NormalizeToBsonPrecision(entry.MaterializedAtUtc),
             Version = entry.Version,
-            CreatedAt = entry.RecordedAtUtc,
-            UpdatedAt = entry.MaterializedAtUtc ?? entry.RecordedAtUtc,
+            CreatedAt = NormalizeToBsonPrecision(entry.RecordedAtUtc),
+            UpdatedAt = NormalizeToBsonPrecision(
+                entry.MaterializedAtUtc ?? entry.RecordedAtUtc),
         };
     }
 
@@ -61,18 +62,18 @@ internal static class FactualEventMongoMapper
             NewValue = ToDocument(factualEvent.NewValue),
             Source = ToDocument(factualEvent.Source),
             Confidence = factualEvent.Confidence,
-            OccurredAtUtc = factualEvent.OccurredAtUtc,
+            OccurredAtUtc = NormalizeToBsonPrecision(factualEvent.OccurredAtUtc),
             DeduplicationKey = factualEvent.DeduplicationKey,
             Revision = factualEvent.Revision,
             Status = factualEvent.Status,
-            VerifiedAtUtc = factualEvent.VerifiedAtUtc,
-            PublishedAtUtc = factualEvent.PublishedAtUtc,
-            TerminalAtUtc = factualEvent.TerminalAtUtc,
+            VerifiedAtUtc = NormalizeToBsonPrecision(factualEvent.VerifiedAtUtc),
+            PublishedAtUtc = NormalizeToBsonPrecision(factualEvent.PublishedAtUtc),
+            TerminalAtUtc = NormalizeToBsonPrecision(factualEvent.TerminalAtUtc),
             SupersededByEventId = factualEvent.SupersededByEventId?.Value,
             ReasonCode = factualEvent.ReasonCode,
             Version = factualEvent.Version,
-            CreatedAt = factualEvent.CreatedAtUtc,
-            UpdatedAt = factualEvent.UpdatedAtUtc,
+            CreatedAt = NormalizeToBsonPrecision(factualEvent.CreatedAtUtc),
+            UpdatedAt = NormalizeToBsonPrecision(factualEvent.UpdatedAtUtc),
         };
     }
 
@@ -146,7 +147,7 @@ internal static class FactualEventMongoMapper
             PublisherName = source.PublisherName,
             Title = source.Title,
             Url = source.Url,
-            PublishedAtUtc = source.PublishedAtUtc,
+            PublishedAtUtc = NormalizeToBsonPrecision(source.PublishedAtUtc),
         };
     }
 
@@ -158,5 +159,16 @@ internal static class FactualEventMongoMapper
             document.Title,
             document.Url,
             document.PublishedAtUtc);
+    }
+
+    private static DateTime NormalizeToBsonPrecision(DateTime value)
+    {
+        long normalizedTicks = value.Ticks - (value.Ticks % TimeSpan.TicksPerMillisecond);
+        return new DateTime(normalizedTicks, value.Kind);
+    }
+
+    private static DateTime? NormalizeToBsonPrecision(DateTime? value)
+    {
+        return value.HasValue ? NormalizeToBsonPrecision(value.Value) : null;
     }
 }
