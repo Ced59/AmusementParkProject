@@ -13,6 +13,11 @@
       "title": "Twoje kryteria pozostają na tym ekranie",
       "text": "Nie potrzebujesz imienia ani konta. Wyszukiwanie jest obliczane bez zapisywania grupy na serwerze."
     },
+    "trust": {
+      "title": "Wskazówka, nie obietnica",
+      "independent": "Kolejność opiera się wyłącznie na twoich kryteriach, obliczonym dopasowaniu i jakości danych. Żadne partnerstwo ani płatność jej nie zmienia.",
+      "official": "Przed wizytą zawsze sprawdź zasady wstępu i godziny otwarcia na oficjalnej stronie parku."
+    },
     "date": {
       "title": "Wybierz datę",
       "text": "Potwierdzone zamknięcie wyklucza park w danym dniu. Bez opublikowanych godzin otwarcia data pozostaje nieznana.",

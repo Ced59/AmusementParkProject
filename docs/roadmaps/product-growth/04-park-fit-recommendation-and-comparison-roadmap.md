@@ -312,6 +312,25 @@ classes et de séquence ainsi que les preuves sont documentés dans
 FIT-15 est techniquement terminé. `FIT-G` consolide ensuite les preuves finales sans
 rendre son achèvement technique dépendant d'un volume de visites réel.
 
+### État de `FIT-G` au 15 septembre 2026
+
+La gate finale est techniquement franchie. Un verrou d'Application interdit désormais
+à l'évaluateur public de produire un résultat pour un parc dont l'audit canonique
+n'est pas `EligibleForFitComparison`, même si cet évaluateur était réutilisé hors du
+handler actuel. Le parcours Web rappelle sur le formulaire, les résultats et la
+comparaison que l'ordre est indépendant de tout partenariat ou paiement et qu'il
+faut confirmer les règles d'accès et les horaires auprès du parc.
+
+Les preuves des quinze jalons sont consolidées critère par critère dans
+[`product-growth-fit-g-final-safety-gate-2026-09-15.md`](../../architecture/product-growth-fit-g-final-safety-gate-2026-09-15.md),
+avec le schéma MongoDB complet, les diagrammes de classes et de séquence, les limites
+de confidentialité et les contrats responsive. La compréhension en situation réelle
+reste un indicateur d'amélioration du pilote, mais ne bloque pas la clôture technique
+demandée et aucun résultat terrain non observé n'est revendiqué.
+
+La roadmap `FIT` est terminée. La suite fonctionnelle est la roadmap `WATCH`, qui
+transforme les fiches publiques fiables en listes de suivi et alertes maîtrisées.
+
 ## 1. Vision produit
 
 La recherche actuelle permet de retrouver une entité connue. Le nouveau moteur doit répondre à une question de décision :
@@ -1056,6 +1075,9 @@ Ne pas journaliser tailles et besoins avec un identifiant analytics externe stab
 | `FIT-15` | Extension de portefeuille | Activation parc par parc |
 
 ## 22. Gate finale `FIT-G`
+
+**Statut technique : franchie le 15 septembre 2026.** Les observations terrain
+restent non bloquantes et ne sont pas présentées comme réalisées sans mesure réelle.
 
 - aucun parc n’est recommandé sans franchir la gate de données ;
 - compatible, incompatible et inconnu sont distincts ;

@@ -4987,6 +4987,11 @@
       "title": "Deine Kriterien bleiben auf diesem Bildschirm",
       "text": "Weder Name noch Konto sind nötig. Die Suche wird berechnet, ohne deine Gruppe auf dem Server zu speichern."
     },
+    "trust": {
+      "title": "Eine Orientierung, kein Versprechen",
+      "independent": "Die Reihenfolge beruht ausschließlich auf deinen Kriterien, der berechneten Eignung und der Datenqualität. Keine Partnerschaft und keine Zahlung verändert sie.",
+      "official": "Prüfe vor deinem Besuch die Zugangsregeln und Öffnungszeiten immer auf der offiziellen Website des Parks."
+    },
     "date": {
       "title": "Datum auswählen",
       "text": "Eine bekannte Schließung schließt den Park für diesen Tag aus. Ohne veröffentlichte Öffnungszeiten bleibt das Datum unbekannt.",

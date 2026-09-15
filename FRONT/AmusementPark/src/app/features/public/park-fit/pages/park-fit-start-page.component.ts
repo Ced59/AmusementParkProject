@@ -19,6 +19,7 @@ import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detai
 import { resolveLocalizedCountryName } from '@shared/utils/display/country-display.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { ParkFitTrustNoticeComponent } from '../components/park-fit-trust-notice/park-fit-trust-notice.component';
 import { mapParkFitFormToRequest } from '../mappers/park-fit-search-request.mapper';
 import {
   ParkFitMemberForm,
@@ -52,7 +53,8 @@ const MAXIMUM_MEMBER_COUNT = 8;
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    ParkFitTrustNoticeComponent
   ]
 })
 export class ParkFitStartPageComponent implements OnInit {

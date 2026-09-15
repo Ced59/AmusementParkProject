@@ -1,6 +1,20 @@
 {
-  "version": "5.3.37",
+  "version": "5.3.38",
   "history": [
+    {
+      "version": "5.3.38",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Park Fit explique plus clairement ses garanties et ses limites.",
+        "en": "Park Fit now explains its safeguards and limits more clearly.",
+        "de": "Park Fit erklärt seine Schutzmaßnahmen und Grenzen jetzt klarer.",
+        "nl": "Park Fit legt zijn waarborgen en beperkingen nu duidelijker uit.",
+        "it": "Park Fit spiega ora più chiaramente le proprie garanzie e i propri limiti.",
+        "es": "Park Fit explica ahora con más claridad sus garantías y límites.",
+        "pl": "Park Fit wyjaśnia teraz wyraźniej swoje zabezpieczenia i ograniczenia.",
+        "pt": "O Park Fit explica agora com mais clareza as suas garantias e limitações."
+      }
+    },
     {
       "version": "5.3.37",
       "releasedAt": "2026-09-15",

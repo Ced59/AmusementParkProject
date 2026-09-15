@@ -4987,6 +4987,11 @@
       "title": "Your criteria stay on this screen",
       "text": "No name or account is required. The search is calculated without saving your group on the server."
     },
+    "trust": {
+      "title": "A compass, not a promise",
+      "independent": "The order is based only on your criteria, calculated fit and data quality. No partnership or payment changes it.",
+      "official": "Before your visit, always check access rules and opening hours on the park’s official website."
+    },
     "date": {
       "title": "Choose the date",
       "text": "A known closure excludes a park for that day. A date without published hours simply stays unknown.",
