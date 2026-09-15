@@ -81,6 +81,18 @@
     var(--app-surface-2);
 }
 
+.profile-passport-entry--collections {
+  border-color: color-mix(in srgb, var(--c-rose) 38%, var(--app-border));
+  background:
+    radial-gradient(circle at 8% 20%, color-mix(in srgb, var(--c-rose) 14%, transparent), transparent 38%),
+    var(--app-surface-2);
+}
+
+.profile-passport-entry--collections .profile-passport-entry__icon {
+  background: color-mix(in srgb, var(--c-rose) 18%, var(--app-surface));
+  color: var(--c-rose);
+}
+
 .profile-passport-entry__icon {
   display: grid;
   width: 3rem;

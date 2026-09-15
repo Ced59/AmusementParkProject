@@ -1,4 +1,59 @@
 {
+  "collections": {
+    "kicker": "Tes envies",
+    "title": "Ta collection de parcs",
+    "description": "Garde sous la main les parcs et attractions qui te font vibrer ou que tu rêves encore de découvrir.",
+    "privacy": "Cette collection reste privée. Un favori ne déclenche aucune notification.",
+    "actions": {
+      "label": "Actions de collection",
+      "favorite": "Ajouter aux favoris",
+      "favoriteActive": "Dans mes favoris",
+      "wantToVisit": "Je veux y aller",
+      "wantToExperience": "Je veux l’essayer",
+      "intentActive": "Dans mes envies",
+      "planned": "Ajouter à mes projets",
+      "plannedActive": "Dans mes projets",
+      "backToProfile": "Retour au profil",
+      "openMine": "Mes favoris et envies",
+      "retry": "Réessayer",
+      "explore": "Explorer les parcs",
+      "view": "Voir la fiche",
+      "remove": "Retirer"
+    },
+    "filters": {
+      "label": "Filtrer ta collection",
+      "all": "Tout",
+      "favorite": "Favoris",
+      "wantToVisit": "Parcs à découvrir",
+      "wantToExperience": "Attractions à essayer",
+      "planned": "Projets"
+    },
+    "kinds": {
+      "favorite": "Favori",
+      "wantToVisit": "À découvrir",
+      "wantToExperience": "À essayer",
+      "planned": "Projet"
+    },
+    "status": {
+      "unknown": "État à confirmer",
+      "available": "Disponible",
+      "temporarilyClosed": "Fermeture temporaire",
+      "permanentlyClosed": "Fermé définitivement"
+    },
+    "feedback": {
+      "loading": "Ta collection arrive…",
+      "loadError": "Impossible de charger ta collection pour le moment.",
+      "actionError": "Cette action n’a pas pu être enregistrée. Réessaie dans un instant."
+    },
+    "empty": {
+      "title": "Ta prochaine découverte commence ici",
+      "description": "Ajoute un cœur ou une envie depuis la fiche d’un parc ou d’une attraction."
+    },
+    "unavailable": {
+      "title": "Fiche indisponible",
+      "description": "Ton choix est conservé, même si cette fiche n’est plus visible."
+    }
+  },
   "accountLayout": {
     "kicker": "Espace personnel",
     "title": "Ton passeport parcs",

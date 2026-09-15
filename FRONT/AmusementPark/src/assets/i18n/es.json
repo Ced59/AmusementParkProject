@@ -1,4 +1,59 @@
 {
+  "collections": {
+    "kicker": "Tus deseos",
+    "title": "Tu colección de parques",
+    "description": "Guarda cerca los parques y atracciones que te encantan o que aún sueñas con descubrir.",
+    "privacy": "Esta colección es privada. Un favorito nunca activa notificaciones.",
+    "actions": {
+      "label": "Acciones de la colección",
+      "favorite": "Añadir a favoritos",
+      "favoriteActive": "En mis favoritos",
+      "wantToVisit": "Quiero ir",
+      "wantToExperience": "Quiero probarla",
+      "intentActive": "En mis deseos",
+      "planned": "Añadir a mis planes",
+      "plannedActive": "En mis planes",
+      "backToProfile": "Volver al perfil",
+      "openMine": "Mis favoritos y deseos",
+      "retry": "Reintentar",
+      "explore": "Explorar parques",
+      "view": "Ver la ficha",
+      "remove": "Quitar"
+    },
+    "filters": {
+      "label": "Filtrar tu colección",
+      "all": "Todo",
+      "favorite": "Favoritos",
+      "wantToVisit": "Parques por descubrir",
+      "wantToExperience": "Atracciones por probar",
+      "planned": "Planes"
+    },
+    "kinds": {
+      "favorite": "Favorito",
+      "wantToVisit": "Por descubrir",
+      "wantToExperience": "Por probar",
+      "planned": "Plan"
+    },
+    "status": {
+      "unknown": "Estado por confirmar",
+      "available": "Disponible",
+      "temporarilyClosed": "Cierre temporal",
+      "permanentlyClosed": "Cerrado definitivamente"
+    },
+    "feedback": {
+      "loading": "Cargando tu colección…",
+      "loadError": "No se puede cargar tu colección ahora.",
+      "actionError": "No se ha podido guardar el cambio. Inténtalo de nuevo en un momento."
+    },
+    "empty": {
+      "title": "Tu próximo descubrimiento empieza aquí",
+      "description": "Añade un corazón o un deseo desde la ficha de cualquier parque o atracción."
+    },
+    "unavailable": {
+      "title": "Ficha no disponible",
+      "description": "Tu elección se conserva aunque esta ficha ya no sea visible."
+    }
+  },
   "accountLayout": {
     "kicker": "Espacio personal",
     "title": "Tu pasaporte de parques",

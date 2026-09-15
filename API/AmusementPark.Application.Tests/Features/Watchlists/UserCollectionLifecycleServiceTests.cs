@@ -1,0 +1,420 @@
+using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Watchlists.Models;
+using AmusementPark.Application.Features.Watchlists.Ports;
+using AmusementPark.Application.Features.Watchlists.Results;
+using AmusementPark.Application.Features.Watchlists.Services;
+using AmusementPark.Core.Domain.Images;
+using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Watchlists;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.Application.Tests.Features.Watchlists;
+
+public sealed class UserCollectionLifecycleServiceTests
+{
+    [Fact]
+    public async Task AddAsync_ReturnsExistingEntry_WhenIntentAlreadyExists()
+    {
+        UserCollectionEntry existing = UserCollectionEntry.Create(
+            UserCollectionEntryId.Parse("entry-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.Available,
+            null,
+            null,
+            null,
+            DateTime.UtcNow.AddMinutes(-1));
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.Setup(repository => repository.GetOwnedByIdentityAsync(
+                "user-1",
+                CollectionTargetType.Park,
+                "park-1",
+                UserCollectionKind.Favorite,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        UserCollectionLifecycleService service = CreateService(
+            collectionRepository,
+            CreatePublicPark("park-1", "Europa-Park", ParkStatus.Operating));
+
+        AmusementPark.Application.Errors.ApplicationResult<UserCollectionEntryResult> result =
+            await service.AddAsync(
+                "user-1",
+                new UserCollectionTargetInput(
+                    CollectionTargetType.Park,
+                    "park-1",
+                    UserCollectionKind.Favorite),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("entry-1", result.Value?.EntryId);
+        Assert.Equal("Europa-Park", result.Value?.TargetName);
+        collectionRepository.Verify(
+            repository => repository.CreateAsync(
+                It.IsAny<UserCollectionEntry>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+    }
+
+    [Fact]
+    public async Task AddAsync_RejectsHiddenTarget()
+    {
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.Setup(repository => repository.GetOwnedByIdentityAsync(
+                "user-1",
+                CollectionTargetType.Park,
+                "park-hidden",
+                UserCollectionKind.WantToVisit,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((UserCollectionEntry?)null);
+        Park hiddenPark = CreatePublicPark("park-hidden", "Hidden", ParkStatus.Operating);
+        hiddenPark.IsVisible = false;
+        UserCollectionLifecycleService service = CreateService(collectionRepository, hiddenPark);
+
+        AmusementPark.Application.Errors.ApplicationResult<UserCollectionEntryResult> result =
+            await service.AddAsync(
+                "user-1",
+                new UserCollectionTargetInput(
+                    CollectionTargetType.Park,
+                    "park-hidden",
+                    UserCollectionKind.WantToVisit),
+                CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, error => error.Code == "collection.target-not-found");
+    }
+
+    [Fact]
+    public async Task AddAsync_SynchronizesExistingEntryStatus()
+    {
+        UserCollectionEntry existing = CreateAvailableParkFavorite();
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.Setup(repository => repository.GetOwnedByIdentityAsync(
+                "user-1",
+                CollectionTargetType.Park,
+                "park-1",
+                UserCollectionKind.Favorite,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        SetupPermanentStatusSynchronization(collectionRepository);
+        UserCollectionLifecycleService service = CreateService(
+            collectionRepository,
+            CreatePublicPark("park-1", "Closed park", ParkStatus.ClosedDefinitively));
+
+        AmusementPark.Application.Errors.ApplicationResult<UserCollectionEntryResult> result =
+            await service.AddAsync(
+                "user-1",
+                new UserCollectionTargetInput(
+                    CollectionTargetType.Park,
+                    "park-1",
+                    UserCollectionKind.Favorite),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(CollectionTargetStatus.PermanentlyClosed, result.Value?.TargetStatus);
+        Assert.Equal(2, result.Value?.Version);
+        collectionRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task AddAsync_RetriesStatusSynchronizationAfterCompetingVersionUpdate()
+    {
+        UserCollectionEntry initiallyRead = CreateAvailableParkFavorite();
+        DateTime concurrentUpdateUtc = DateTime.UtcNow.AddSeconds(-1);
+        UserCollectionEntry concurrentlyUpdated = UserCollectionEntry.Restore(
+            UserCollectionEntryId.Parse("entry-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.TemporarilyClosed,
+            null,
+            null,
+            null,
+            concurrentUpdateUtc.AddMinutes(-1),
+            concurrentUpdateUtc,
+            2);
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.SetupSequence(repository => repository.GetOwnedByIdentityAsync(
+                "user-1",
+                CollectionTargetType.Park,
+                "park-1",
+                UserCollectionKind.Favorite,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(initiallyRead)
+            .ReturnsAsync(concurrentlyUpdated);
+        collectionRepository.SetupSequence(repository => repository.TrySynchronizeTargetStatusesAsync(
+                It.IsAny<IReadOnlyCollection<UserCollectionEntry>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false)
+            .ReturnsAsync(true);
+        UserCollectionLifecycleService service = CreateService(
+            collectionRepository,
+            CreatePublicPark("park-1", "Closed park", ParkStatus.ClosedDefinitively));
+
+        AmusementPark.Application.Errors.ApplicationResult<UserCollectionEntryResult> result =
+            await service.AddAsync(
+                "user-1",
+                new UserCollectionTargetInput(
+                    CollectionTargetType.Park,
+                    "park-1",
+                    UserCollectionKind.Favorite),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(CollectionTargetStatus.PermanentlyClosed, result.Value?.TargetStatus);
+        Assert.Equal(3, result.Value?.Version);
+        collectionRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task AddAsync_RefreshesFactualSnapshotBeforeRetryingAnOlderRequest()
+    {
+        DateTime initialUtc = DateTime.UtcNow.AddMinutes(-2);
+        UserCollectionEntry initiallyRead = UserCollectionEntry.Create(
+            UserCollectionEntryId.Parse("entry-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.Unknown,
+            null,
+            null,
+            null,
+            initialUtc);
+        UserCollectionEntry newerPersistedEntry = UserCollectionEntry.Restore(
+            UserCollectionEntryId.Parse("entry-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.PermanentlyClosed,
+            null,
+            null,
+            null,
+            initialUtc,
+            initialUtc.AddMinutes(1),
+            2);
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.SetupSequence(repository => repository.GetOwnedByIdentityAsync(
+                "user-1",
+                CollectionTargetType.Park,
+                "park-1",
+                UserCollectionKind.Favorite,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(initiallyRead)
+            .ReturnsAsync(newerPersistedEntry);
+        collectionRepository.Setup(repository => repository.TrySynchronizeTargetStatusesAsync(
+                It.Is<IReadOnlyCollection<UserCollectionEntry>>(entries =>
+                    entries.Single().TargetStatus == CollectionTargetStatus.Available),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        UserCollectionLifecycleService service = CreateService(
+            collectionRepository,
+            CreatePublicPark("park-1", "Open park", ParkStatus.Operating),
+            CreatePublicPark("park-1", "Closed park", ParkStatus.ClosedDefinitively));
+
+        AmusementPark.Application.Errors.ApplicationResult<UserCollectionEntryResult> result =
+            await service.AddAsync(
+                "user-1",
+                new UserCollectionTargetInput(
+                    CollectionTargetType.Park,
+                    "park-1",
+                    UserCollectionKind.Favorite),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(CollectionTargetStatus.PermanentlyClosed, result.Value?.TargetStatus);
+        Assert.Equal(2, result.Value?.Version);
+        collectionRepository.Verify(
+            repository => repository.TrySynchronizeTargetStatusesAsync(
+                It.IsAny<IReadOnlyCollection<UserCollectionEntry>>(),
+                It.IsAny<CancellationToken>()),
+            Times.Once);
+        collectionRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task AddAsync_SynchronizesEntryRecoveredAfterConcurrentCreation()
+    {
+        UserCollectionEntry concurrentEntry = CreateAvailableParkFavorite();
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.SetupSequence(repository => repository.GetOwnedByIdentityAsync(
+                "user-1",
+                CollectionTargetType.Park,
+                "park-1",
+                UserCollectionKind.Favorite,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((UserCollectionEntry?)null)
+            .ReturnsAsync(concurrentEntry);
+        collectionRepository.Setup(repository => repository.CreateAsync(
+                It.IsAny<UserCollectionEntry>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(UserCollectionWriteOutcome.AlreadyExists);
+        SetupPermanentStatusSynchronization(collectionRepository);
+        UserCollectionLifecycleService service = CreateService(
+            collectionRepository,
+            CreatePublicPark("park-1", "Closed park", ParkStatus.ClosedDefinitively));
+
+        AmusementPark.Application.Errors.ApplicationResult<UserCollectionEntryResult> result =
+            await service.AddAsync(
+                "user-1",
+                new UserCollectionTargetInput(
+                    CollectionTargetType.Park,
+                    "park-1",
+                    UserCollectionKind.Favorite),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(CollectionTargetStatus.PermanentlyClosed, result.Value?.TargetStatus);
+        Assert.Equal(2, result.Value?.Version);
+        collectionRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteAsync_IsIdempotent()
+    {
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.Setup(repository => repository.DeleteOwnedByIdentityAsync(
+                "user-1",
+                CollectionTargetType.ParkItem,
+                "item-1",
+                UserCollectionKind.Favorite,
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        UserCollectionLifecycleService service = CreateService(collectionRepository, null);
+
+        AmusementPark.Application.Errors.ApplicationResult result = await service.DeleteAsync(
+            "user-1",
+            new UserCollectionTargetInput(
+                CollectionTargetType.ParkItem,
+                "item-1",
+                UserCollectionKind.Favorite),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+    }
+
+    [Fact]
+    public async Task ListAsync_PersistsCurrentStatusBeforeUsingItAsFallback()
+    {
+        UserCollectionEntry entry = UserCollectionEntry.Create(
+            UserCollectionEntryId.Parse("entry-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.Available,
+            null,
+            null,
+            null,
+            DateTime.UtcNow.AddMinutes(-1));
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.Setup(repository => repository.ListOwnedAsync(
+                "user-1",
+                null,
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { entry });
+        collectionRepository.Setup(repository => repository.TrySynchronizeTargetStatusesAsync(
+                It.Is<IReadOnlyCollection<UserCollectionEntry>>(entries =>
+                    entries.Count == 1
+                    && entries.Single().TargetStatus == CollectionTargetStatus.PermanentlyClosed),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        UserCollectionLifecycleService service = CreateService(
+            collectionRepository,
+            CreatePublicPark("park-1", "Closed park", ParkStatus.ClosedDefinitively));
+
+        AmusementPark.Application.Errors.ApplicationResult<
+            IReadOnlyCollection<UserCollectionEntryResult>> result = await service.ListAsync(
+                "user-1",
+                null,
+                null,
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(CollectionTargetStatus.PermanentlyClosed, result.Value?.Single().TargetStatus);
+        Assert.Equal(2, result.Value?.Single().Version);
+        collectionRepository.VerifyAll();
+    }
+
+    private static UserCollectionLifecycleService CreateService(
+        Mock<IUserCollectionEntryRepository> collectionRepository,
+        Park? park,
+        Park? refreshedPark = null)
+    {
+        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new(MockBehavior.Strict);
+        if (park is not null)
+        {
+            int parkReadIndex = 0;
+            Park[] parkStates = refreshedPark is null
+                ? new[] { park }
+                : new[] { park, refreshedPark };
+            parkRepository.Setup(repository => repository.GetByIdsAsync(
+                    It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(() => new[]
+                {
+                    parkStates[Math.Min(parkReadIndex++, parkStates.Length - 1)],
+                });
+            imageRepository.Setup(repository => repository.GetMainImageIdsByOwnersAsync(
+                    ImageOwnerType.Park,
+                    It.IsAny<IReadOnlyCollection<string>>(),
+                    ImageCategory.Park,
+                    true,
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new Dictionary<string, string>());
+        }
+
+        UserCollectionTargetReader reader = new(
+            parkRepository.Object,
+            parkItemRepository.Object,
+            imageRepository.Object);
+        return new UserCollectionLifecycleService(collectionRepository.Object, reader);
+    }
+
+    private static UserCollectionEntry CreateAvailableParkFavorite()
+    {
+        return UserCollectionEntry.Create(
+            UserCollectionEntryId.Parse("entry-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.Available,
+            null,
+            null,
+            null,
+            DateTime.UtcNow.AddMinutes(-1));
+    }
+
+    private static void SetupPermanentStatusSynchronization(
+        Mock<IUserCollectionEntryRepository> collectionRepository)
+    {
+        collectionRepository.Setup(repository => repository.TrySynchronizeTargetStatusesAsync(
+                It.Is<IReadOnlyCollection<UserCollectionEntry>>(entries =>
+                    entries.Count == 1
+                    && entries.Single().TargetStatus == CollectionTargetStatus.PermanentlyClosed),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+    }
+
+    private static Park CreatePublicPark(string id, string name, ParkStatus status)
+    {
+        return new Park
+        {
+            Id = id,
+            Name = name,
+            IsVisible = true,
+            Status = status,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+    }
+}

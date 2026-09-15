@@ -33,6 +33,7 @@ using AmusementPark.Application.Features.TechnicalPages.Ports;
 using AmusementPark.Application.Features.TechnicalStats.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Videos.Ports;
+using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using AmusementPark.Infrastructure.Configuration.BackgroundJobs;
@@ -230,6 +231,7 @@ public static class InfrastructureServiceCollectionExtensions
             ProfileComparisonInvitationRepository>();
         services.AddScoped<IProfileComparisonRepository, ProfileComparisonRepository>();
         services.AddScoped<IParkFitGroupProfileRepository, ParkFitGroupProfileRepository>();
+        services.AddScoped<IUserCollectionEntryRepository, UserCollectionEntryRepository>();
         services.AddScoped<IParkFitSourceReportRepository, ParkFitSourceReportRepository>();
         services.AddScoped<IParkFitPilotMetricsRepository, ParkFitPilotMetricsRepository>();
         services.AddScoped<IParkFitCandidatePortfolioReadRepository,

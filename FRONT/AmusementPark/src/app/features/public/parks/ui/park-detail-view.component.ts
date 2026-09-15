@@ -26,6 +26,7 @@ import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public
 import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.component';
 import { CommentSummaryLinkComponent } from '@features/public/comments/ui/comment-summary-link.component';
 import { ParkLifecycleNoticeComponent } from './park-lifecycle-notice.component';
+import { UserCollectionActionsComponent } from '@features/collections/ui/user-collection-actions.component';
 
 @Component({
   selector: 'app-park-detail-view',
@@ -52,7 +53,8 @@ import { ParkLifecycleNoticeComponent } from './park-lifecycle-notice.component'
     RatingStarsComponent,
     CommentSummaryLinkComponent,
     ParkLifecycleNoticeComponent,
-    PublicContextualBlockDirective
+    PublicContextualBlockDirective,
+    UserCollectionActionsComponent
   ]
 })
 export class ParkDetailViewComponent {

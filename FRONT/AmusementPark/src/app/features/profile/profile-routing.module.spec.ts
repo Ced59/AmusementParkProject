@@ -64,4 +64,13 @@ describe('profile routes', () => {
     expect(route?.canActivate).toContain(authGuard);
     expect(PROFILE_ROUTES.indexOf(route!)).toBeLessThan(rootIndex);
   });
+
+  it('keeps personal collections lazy and authenticated', () => {
+    const route: Route | undefined = PROFILE_ROUTES.find(
+      (candidate: Route): boolean => candidate.path === 'collections'
+    );
+
+    expect(route?.loadComponent).toBeDefined();
+    expect(route?.canActivate).toContain(authGuard);
+  });
 });

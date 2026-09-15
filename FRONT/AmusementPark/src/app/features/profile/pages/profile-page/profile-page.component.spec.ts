@@ -112,10 +112,11 @@ describe('ProfilePageComponent', () => {
     stateFacade.setUser(createUser());
     fixture.detectChanges();
     const actions: NodeListOf<HTMLButtonElement> = fixture.nativeElement.querySelectorAll(
-      '.profile-passport-entry__actions button'
+      '.profile-passport-entry:not(.profile-passport-entry--collections) .profile-passport-entry__actions button'
     );
 
     expect(actions).toHaveLength(2);
+    expect(fixture.nativeElement.querySelector('.profile-passport-entry--collections button')).toBeTruthy();
   });
 
   it('navigates from the profile to the localized passport overview', () => {
@@ -125,6 +126,15 @@ describe('ProfilePageComponent', () => {
     component.openPassport();
 
     expect(router.navigate).toHaveBeenCalledWith(['/', 'en', 'profile', 'passport']);
+  });
+
+  it('navigates from the profile to personal collections', () => {
+    const router: Router = TestBed.inject(Router);
+    vi.spyOn(router, 'navigate').mockResolvedValue(true);
+
+    component.openCollections();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/', 'en', 'profile', 'collections']);
   });
 });
 

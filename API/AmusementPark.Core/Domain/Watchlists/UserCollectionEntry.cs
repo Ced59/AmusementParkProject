@@ -10,6 +10,7 @@ public sealed class UserCollectionEntry
     public const int MinimumPriority = 1;
     public const int MaximumPriority = 5;
     public const int MaximumPrivateNoteLength = 2000;
+    public const int MaximumEntriesPerUser = 500;
 
     private UserCollectionEntry(
         UserCollectionEntryId id,

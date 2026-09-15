@@ -5,6 +5,12 @@ import {authGuard} from "@core/guards/auth.guard";
 
 export const PROFILE_ROUTES: Routes = [
   {
+    path: 'collections',
+    loadComponent: () => import('../collections/pages/user-collections-page.component')
+      .then((module) => module.UserCollectionsPageComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'park-fit/profiles',
     loadComponent: () => import('./park-fit/pages/park-fit-group-profiles-page.component')
       .then((module) => module.ParkFitGroupProfilesPageComponent),

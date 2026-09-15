@@ -68,6 +68,7 @@ export class ProfilePageViewComponent {
   @Output() avatarDialogVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() avatarUploaded: EventEmitter<ImageDto> = new EventEmitter<ImageDto>();
   @Output() passportOpened: EventEmitter<void> = new EventEmitter<void>();
+  @Output() collectionsOpened: EventEmitter<void> = new EventEmitter<void>();
   @Output() passportVisitCreateClicked: EventEmitter<void> = new EventEmitter<void>();
 
   editField(field: string): void {
@@ -116,5 +117,9 @@ export class ProfilePageViewComponent {
 
   openPassport(): void {
     this.passportOpened.emit();
+  }
+
+  openCollections(): void {
+    this.collectionsOpened.emit();
   }
 }
