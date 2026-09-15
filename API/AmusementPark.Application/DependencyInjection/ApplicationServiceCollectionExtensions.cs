@@ -65,6 +65,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<DurableBackgroundJobExecutionOrchestrator>();
         services.AddScoped<IFactualChangeCaptureService, FactualChangeCaptureService>();
         services.AddScoped<IFactualChangeMaterializationScheduler, FactualChangeMaterializationScheduler>();
+        services.AddScoped<FactualChangeEventAdministrationService>();
         services.AddDurableBackgroundJobHandler<FactualChangeMaterializationJobHandler>();
         services.AddScoped<ParkItemReferenceValidator>();
         services.AddScoped<CommentTargetResolver>();

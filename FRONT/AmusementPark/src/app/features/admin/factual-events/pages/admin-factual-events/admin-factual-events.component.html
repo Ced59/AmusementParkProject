@@ -1,0 +1,98 @@
+<main class="factual-events admin-surface">
+  <header class="factual-events__header">
+    <span class="kicker kicker--sky">{{ 'factualEvents.admin.kicker' | translate }}</span>
+    <h1 class="admin-page-title">{{ 'factualEvents.admin.title' | translate }}</h1>
+    <p class="admin-muted">{{ 'factualEvents.admin.subtitle' | translate }}</p>
+  </header>
+
+  <ol class="factual-events__workflow" [attr.aria-label]="'factualEvents.admin.workflow.label' | translate">
+    <li><span>1</span><div><strong>{{ 'factualEvents.admin.workflow.detected' | translate }}</strong><small>{{ 'factualEvents.admin.workflow.detectedHelp' | translate }}</small></div></li>
+    <li><span>2</span><div><strong>{{ 'factualEvents.admin.workflow.verified' | translate }}</strong><small>{{ 'factualEvents.admin.workflow.verifiedHelp' | translate }}</small></div></li>
+    <li><span>3</span><div><strong>{{ 'factualEvents.admin.workflow.published' | translate }}</strong><small>{{ 'factualEvents.admin.workflow.publishedHelp' | translate }}</small></div></li>
+  </ol>
+
+  <section class="factual-events__safety" role="note">
+    <i class="pi pi-shield" aria-hidden="true"></i>
+    <div><strong>{{ 'factualEvents.admin.safetyTitle' | translate }}</strong><p>{{ 'factualEvents.admin.safetyText' | translate }}</p></div>
+  </section>
+
+  <section class="factual-events__filters" [attr.aria-label]="'factualEvents.admin.filters.label' | translate">
+    <label><span>{{ 'factualEvents.admin.filters.status' | translate }}</span><select [value]="status()" (change)="changeStatus($any($event.target).value)"><option value="">{{ 'factualEvents.admin.filters.all' | translate }}</option>@for (item of statuses; track item) {<option [value]="item">{{ ('factualEvents.status.' + item) | translate }}</option>}</select></label>
+    <label><span>{{ 'factualEvents.admin.filters.target' | translate }}</span><select [value]="targetType()" (change)="changeTargetType($any($event.target).value)"><option value="">{{ 'factualEvents.admin.filters.all' | translate }}</option>@for (item of targetTypes; track item) {<option [value]="item">{{ ('factualEvents.target.' + item) | translate }}</option>}</select></label>
+    <label><span>{{ 'factualEvents.admin.filters.event' | translate }}</span><select [value]="eventType()" (change)="changeEventType($any($event.target).value)"><option value="">{{ 'factualEvents.admin.filters.all' | translate }}</option>@for (item of eventTypes; track item) {<option [value]="item">{{ ('factualEvents.type.' + item) | translate }}</option>}</select></label>
+    <label><span>{{ 'factualEvents.admin.filters.confidence' | translate }}</span><select [value]="confidence()" (change)="changeConfidence($any($event.target).value)"><option value="">{{ 'factualEvents.admin.filters.all' | translate }}</option>@for (item of confidences; track item) {<option [value]="item">{{ ('factualEvents.confidence.' + item) | translate }}</option>}</select></label>
+    <div class="factual-events__filter-actions"><button appUiButton="primary" type="button" (click)="applyFilters()">{{ 'factualEvents.admin.filters.apply' | translate }}</button><button appUiButton="ghost" type="button" (click)="resetFilters()">{{ 'factualEvents.admin.filters.reset' | translate }}</button></div>
+  </section>
+
+  @if (facade.loadError()) {<p class="factual-events__state factual-events__state--error" role="alert">{{ 'factualEvents.admin.error' | translate }}</p>}
+  @if (facade.actionError() === 'conflict') {<p class="factual-events__state factual-events__state--warning" role="alert">{{ 'factualEvents.admin.conflict' | translate }}</p>}
+  @if (facade.actionError() === 'failure') {<p class="factual-events__state factual-events__state--error" role="alert">{{ 'factualEvents.admin.actionError' | translate }}</p>}
+  @if (facade.loading()) {<p class="factual-events__state" role="status"><i class="pi pi-spin pi-spinner" aria-hidden="true"></i>{{ 'factualEvents.admin.loading' | translate }}</p>}
+  @if (facade.isEmpty()) {<p class="factual-events__state">{{ 'factualEvents.admin.empty' | translate }}</p>}
+
+  <section class="factual-events__grid">
+    @for (event of facade.events(); track event.eventId) {
+      @let previousFact = fact(event.previousValue);
+      @let newFact = fact(event.newValue);
+      <article class="factual-event-card" [attr.aria-busy]="facade.actionEventId() === event.eventId">
+        <header class="factual-event-card__header">
+          <div class="factual-event-card__identity">
+            <span class="factual-event-card__target-type">{{ ('factualEvents.target.' + event.target.type) | translate }}</span>
+            <h2>{{ targetName(event) || ('factualEvents.admin.unknownTarget' | translate) }}</h2>
+            @if (event.target.parentParkName && event.target.name) {<p>{{ event.target.parentParkName }}</p>}
+          </div>
+          <span class="factual-event-card__status" [attr.data-status]="event.status">{{ ('factualEvents.status.' + event.status) | translate }}</span>
+        </header>
+
+        <div class="factual-event-card__summary">
+          <i class="pi pi-calendar" aria-hidden="true"></i>
+          <div><span>{{ 'factualEvents.admin.detectedChange' | translate }}</span><strong>{{ ('factualEvents.type.' + event.type) | translate }}</strong><small>{{ event.occurredAtUtc | date:'medium' }}</small></div>
+        </div>
+
+        <section class="factual-event-card__change" [attr.aria-label]="'factualEvents.admin.change.label' | translate">
+          <div class="factual-event-card__fact factual-event-card__fact--previous">
+            <span>{{ 'factualEvents.admin.change.before' | translate }}</span>
+            @if (!previousFact.isPresent) {<strong>{{ 'factualEvents.admin.change.notPublished' | translate }}</strong>}
+            @else if (previousFact.isOpeningCalendar) {
+              <strong>{{ previousFact.coverageStart | date:'mediumDate' }} → {{ previousFact.coverageEnd | date:'mediumDate' }}</strong>
+              <small>{{ 'factualEvents.admin.change.calendarSummary' | translate:{ rules: previousFact.rulesCount, exceptions: previousFact.overridesCount } }}</small>
+            } @else {<strong>{{ previousFact.rawValue }}</strong>}
+          </div>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          <div class="factual-event-card__fact factual-event-card__fact--new">
+            <span>{{ 'factualEvents.admin.change.after' | translate }}</span>
+            @if (!newFact.isPresent) {<strong>{{ 'factualEvents.admin.change.notPublished' | translate }}</strong>}
+            @else if (newFact.isOpeningCalendar) {
+              <strong>{{ newFact.coverageStart | date:'mediumDate' }} → {{ newFact.coverageEnd | date:'mediumDate' }}</strong>
+              <small>{{ 'factualEvents.admin.change.calendarSummary' | translate:{ rules: newFact.rulesCount, exceptions: newFact.overridesCount } }}</small>
+              <small>{{ 'factualEvents.admin.change.timeZone' | translate:{ timeZone: newFact.timeZone } }}</small>
+            } @else {<strong>{{ newFact.rawValue }}</strong>}
+          </div>
+        </section>
+
+        <aside class="factual-event-card__source">
+          <i class="pi pi-link" aria-hidden="true"></i>
+          <div><span>{{ 'factualEvents.admin.source.label' | translate }}</span><strong>{{ event.source.publisherName }}</strong><a [href]="event.source.url" target="_blank" rel="noopener noreferrer">{{ event.source.title }}<i class="pi pi-external-link" aria-hidden="true"></i></a><small>{{ event.source.publishedAtUtc | date:'mediumDate' }} · {{ ('factualEvents.confidence.' + event.confidence) | translate }}</small></div>
+        </aside>
+
+        <footer class="factual-event-card__footer">
+          @if (event.status === 'Draft') {
+            <p><i class="pi pi-lock" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.draftHelp' | translate }}</p>
+            <button appUiButton="primary" type="button" [disabled]="facade.actionEventId() !== null" (click)="verify(event)"><i class="pi pi-check" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.verify' | translate }}</button>
+          } @else if (event.status === 'Verified') {
+            <p><i class="pi pi-eye" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.verifiedHelp' | translate }}</p>
+            <button appUiButton="primary" type="button" [disabled]="facade.actionEventId() !== null" (click)="publish(event)"><i class="pi pi-send" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.publish' | translate }}</button>
+          } @else if (event.canBeDistributed) {
+            <p class="factual-event-card__distributed"><i class="pi pi-check-circle" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.publishedHelp' | translate }}</p>
+          } @else {
+            <p><i class="pi pi-ban" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.terminalHelp' | translate }}</p>
+          }
+        </footer>
+      </article>
+    }
+  </section>
+
+  @if (facade.pagination(); as pagination) {
+    <nav class="factual-events__pagination" [attr.aria-label]="'factualEvents.admin.pagination.label' | translate"><button appUiButton="ghost" type="button" [disabled]="pagination.currentPage <= 1 || facade.loading()" (click)="previousPage()">{{ 'factualEvents.admin.pagination.previous' | translate }}</button><span>{{ 'factualEvents.admin.pagination.page' | translate:{ page: pagination.currentPage, total: pagination.totalPages } }}</span><button appUiButton="ghost" type="button" [disabled]="pagination.currentPage >= pagination.totalPages || facade.loading()" (click)="nextPage()">{{ 'factualEvents.admin.pagination.next' | translate }}</button></nav>
+  }
+</main>

@@ -4031,6 +4031,112 @@
       }
     }
   },
+  "factualEvents": {
+    "admin": {
+      "navTitle": "Feiten controleren",
+      "shortcut": "Controleer onderbouwde wijzigingen vóór verspreiding.",
+      "kicker": "Monitoring · Vertrouwen",
+      "title": "Controlewerkplaats",
+      "subtitle": "Maak van elke gedetecteerde wijziging betrouwbare, begrijpelijke informatie die klaar is voor verspreiding.",
+      "safetyTitle": "Niets wordt zonder jouw goedkeuring verspreid",
+      "safetyText": "Een gedetecteerd of gecontroleerd feit blijft geblokkeerd. Alleen een uitdrukkelijk gepubliceerd feit kan later abonnementen voeden.",
+      "unknownTarget": "Doel nog te bepalen",
+      "detectedChange": "Gedetecteerde wijziging",
+      "loading": "Te controleren feiten laden…",
+      "empty": "Geen enkel feit past bij deze filters.",
+      "error": "De te controleren feiten konden niet worden geladen.",
+      "conflict": "Dit feit is tijdens je controle gewijzigd. De nieuwste versie is opnieuw geladen.",
+      "actionError": "De actie kon niet worden opgeslagen. Probeer het zo opnieuw.",
+      "workflow": {
+        "label": "Traject voor feitencontrole",
+        "detected": "Gedetecteerd",
+        "detectedHelp": "Een wijziging en de bron worden vastgelegd.",
+        "verified": "Gecontroleerd",
+        "verifiedHelp": "Je bevestigt dat het bewijs het feit ondersteunt.",
+        "published": "Gepubliceerd",
+        "publishedHelp": "Het feit wordt beschikbaar voor verspreiding."
+      },
+      "filters": {
+        "label": "Feitenfilters",
+        "status": "Fase",
+        "target": "Doel",
+        "event": "Soort wijziging",
+        "confidence": "Betrouwbaarheid",
+        "all": "Alle",
+        "apply": "Tonen",
+        "reset": "Opnieuw instellen"
+      },
+      "change": {
+        "label": "Wijziging van het feit",
+        "before": "Voor",
+        "after": "Na",
+        "notPublished": "Geen gepubliceerde gegevens",
+        "calendarSummary": "{{rules}} regels · {{exceptions}} uitzonderingen",
+        "timeZone": "Tijdzone: {{timeZone}}"
+      },
+      "source": {
+        "label": "Controleerbaar bewijs"
+      },
+      "actions": {
+        "draftHelp": "Nog geblokkeerd voor elke verspreiding.",
+        "verify": "Dit feit bevestigen",
+        "verifiedHelp": "Gecontroleerd, maar nog niet verspreid.",
+        "publish": "Verspreiding toestaan",
+        "publishedHelp": "Gepubliceerd en beschikbaar voor abonnementen.",
+        "terminalHelp": "Dit feit kan niet meer worden verspreid."
+      },
+      "pagination": {
+        "label": "Paginering van feiten",
+        "previous": "Vorige",
+        "next": "Volgende",
+        "page": "Pagina {{page}} van {{total}}"
+      }
+    },
+    "status": {
+      "Draft": "Te controleren",
+      "Verified": "Gecontroleerd",
+      "Published": "Gepubliceerd",
+      "Corrected": "Gecorrigeerd",
+      "Retracted": "Ingetrokken",
+      "Expired": "Verlopen"
+    },
+    "target": {
+      "Park": "Park",
+      "ParkItem": "Attractie of locatie"
+    },
+    "confidence": {
+      "Low": "Lage betrouwbaarheid",
+      "Medium": "Gemiddelde betrouwbaarheid",
+      "High": "Hoge betrouwbaarheid"
+    },
+    "type": {
+      "OpeningCalendarPublished": "Openingskalender gepubliceerd",
+      "OpeningCalendarChanged": "Openingskalender gewijzigd",
+      "SeasonOpeningConfirmed": "Seizoensopening bevestigd",
+      "SeasonClosingConfirmed": "Seizoenseinde bevestigd",
+      "ParkTemporaryClosureConfirmed": "Tijdelijke parksluiting bevestigd",
+      "ParkPermanentClosureConfirmed": "Definitieve parksluiting bevestigd",
+      "ParkReopeningConfirmed": "Heropening van het park bevestigd",
+      "ParkNameChanged": "Parknaam gewijzigd",
+      "OperatorChanged": "Exploitant gewijzigd",
+      "TicketPricePublishedOrChanged": "Ticketprijs gepubliceerd of gewijzigd",
+      "MajorDataCompletionImproved": "Belangrijke gegevens aangevuld",
+      "AttractionAnnouncedOfficially": "Attractie officieel aangekondigd",
+      "OpeningDateConfirmed": "Openingsdatum bevestigd",
+      "OpeningDateChanged": "Openingsdatum gewijzigd",
+      "OpenedConfirmed": "Opening bevestigd",
+      "TemporarilyClosedConfirmed": "Tijdelijke sluiting bevestigd",
+      "ReopenedConfirmed": "Heropening bevestigd",
+      "PermanentClosureConfirmed": "Definitieve sluiting bevestigd",
+      "Renamed": "Nieuwe naam bevestigd",
+      "MajorRestrictionChanged": "Belangrijke beperking gewijzigd",
+      "LocationOrCategoryCorrected": "Locatie of categorie gecorrigeerd",
+      "HistoryPublished": "Historische inhoud gepubliceerd",
+      "MajorHistoryUpdate": "Belangrijke historische update",
+      "VerifiedSourceAdded": "Gecontroleerde bron toegevoegd",
+      "CorrectionAfterUserReport": "Correctie na een gebruikersmelding"
+    }
+  },
   "adminParkPricing": {
     "tab": "Prijzen",
     "title": "Parkprijzen",

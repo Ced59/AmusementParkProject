@@ -84,6 +84,13 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > afin de ne jamais bloquer les faits suivants. La reprise est bornée par marqueur,
 > y compris à l'intérieur d'un même calendrier très actif, et les dates de
 > vérification futures sont rejetées avant toute écriture.
+> `WATCH-06` est livré en `5.3.50` : l'administration dispose d'un atelier
+> responsive qui présente le changement, sa cible lisible et sa preuve, sans
+> exposer les identifiants de cible ni l'empreinte technique des calendriers.
+> Le passage `Draft` → `Verified` → `Published` est explicite, audité, protégé
+> contre les validations concurrentes et limité en charge. Un fait détecté ou
+> vérifié reste techniquement non diffusable ; seule la publication volontaire
+> ouvre la distribution aux jalons suivants.
 
 ## 4.1 `UserCollectionEntry`
 
@@ -612,7 +619,7 @@ Une hausse du taux de clic n’est pas une justification pour rendre les formula
 | `WATCH-03` | Domaine abonnements/préférences — livré en `5.3.45` | Portée explicite |
 | `WATCH-04` | Catalogue d’événements et provenance — livré en `5.3.48` | Types versionnés |
 | `WATCH-05` | Diff/outbox/déduplication — livré en `5.3.49` | Un fait logique, une alerte |
-| `WATCH-06` | Administration de vérification | Rien de non vérifié distribué |
+| `WATCH-06` | Administration de vérification — livré en `5.3.50` | Rien de non vérifié distribué |
 | `WATCH-07` | Notifications Web | Centre accessible |
 | `WATCH-08` | Corrections/rétractations | Historique honnête |
 | `WATCH-09` | Digests | Groupement déterministe |

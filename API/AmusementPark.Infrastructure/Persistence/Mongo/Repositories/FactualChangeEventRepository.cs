@@ -1,3 +1,4 @@
+using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.FactualEvents.Models;
 using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Core.Domain.FactualEvents;
@@ -74,6 +75,97 @@ public sealed class FactualChangeEventRepository : IFactualChangeEventRepository
         FactualChangeEventDocument? document = await this.collection.Find(filter)
             .FirstOrDefaultAsync(cancellationToken);
         return document?.ToDomain();
+    }
+
+    public async Task<FactualChangeEvent?> GetAsync(
+        FactualChangeEventId eventId,
+        CancellationToken cancellationToken)
+    {
+        FactualChangeEventDocument? document = await this.collection
+            .Find(Builders<FactualChangeEventDocument>.Filter.Eq(
+                static value => value.Id,
+                eventId.Value))
+            .FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
+    public async Task<PagedResult<FactualChangeEvent>> SearchAsync(
+        FactualChangeEventSearchCriteria criteria,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(criteria);
+        FilterDefinition<FactualChangeEventDocument> filter = BuildSearchFilter(criteria);
+        long totalItems = await this.collection.CountDocumentsAsync(
+            filter,
+            cancellationToken: cancellationToken);
+        int skip = checked((criteria.Paging.Page - 1) * criteria.Paging.PageSize);
+        List<FactualChangeEventDocument> documents = await this.collection
+            .Find(filter)
+            .SortByDescending(static value => value.CreatedAt)
+            .ThenBy(static value => value.Id)
+            .Skip(skip)
+            .Limit(criteria.Paging.PageSize)
+            .ToListAsync(cancellationToken);
+        FactualChangeEvent[] items = documents
+            .Select(static document => document.ToDomain())
+            .ToArray();
+        return new PagedResult<FactualChangeEvent>(
+            items,
+            criteria.Paging.Page,
+            criteria.Paging.PageSize,
+            totalItems);
+    }
+
+    public async Task<FactualChangeEventMutationOutcome> ReplaceAsync(
+        FactualChangeEvent factualEvent,
+        long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(factualEvent);
+        FilterDefinition<FactualChangeEventDocument> filter =
+            Builders<FactualChangeEventDocument>.Filter.Eq(
+                static value => value.Id,
+                factualEvent.Id.Value)
+            & Builders<FactualChangeEventDocument>.Filter.Eq(
+                static value => value.Version,
+                expectedVersion);
+        ReplaceOneResult result = await this.collection.ReplaceOneAsync(
+            filter,
+            factualEvent.ToDocument(),
+            cancellationToken: cancellationToken);
+        return result.MatchedCount == 1
+            ? FactualChangeEventMutationOutcome.Success
+            : FactualChangeEventMutationOutcome.Conflict;
+    }
+
+    internal static FilterDefinition<FactualChangeEventDocument> BuildSearchFilter(
+        FactualChangeEventSearchCriteria criteria)
+    {
+        ArgumentNullException.ThrowIfNull(criteria);
+        FilterDefinitionBuilder<FactualChangeEventDocument> filters =
+            Builders<FactualChangeEventDocument>.Filter;
+        FilterDefinition<FactualChangeEventDocument> filter = filters.Empty;
+        if (criteria.Status.HasValue)
+        {
+            filter &= filters.Eq(static value => value.Status, criteria.Status.Value);
+        }
+
+        if (criteria.TargetType.HasValue)
+        {
+            filter &= filters.Eq(static value => value.Target.Type, criteria.TargetType.Value);
+        }
+
+        if (criteria.EventType.HasValue)
+        {
+            filter &= filters.Eq(static value => value.Type, criteria.EventType.Value);
+        }
+
+        if (criteria.Confidence.HasValue)
+        {
+            filter &= filters.Eq(static value => value.Confidence, criteria.Confidence.Value);
+        }
+
+        return filter;
     }
 
     private static bool HasSameFact(FactualChangeEvent left, FactualChangeEvent right)

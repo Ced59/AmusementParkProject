@@ -1,6 +1,20 @@
 {
-  "version": "5.3.49",
+  "version": "5.3.50",
   "history": [
+    {
+      "version": "5.3.50",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Améliorations de l’ergonomie administrative.",
+        "en": "Administrative usability improvements.",
+        "de": "Verbesserungen der Verwaltungsoberfläche.",
+        "nl": "Verbeteringen aan de beheeromgeving.",
+        "it": "Miglioramenti all’esperienza di amministrazione.",
+        "es": "Mejoras en la experiencia de administración.",
+        "pl": "Ulepszenia obsługi panelu administracyjnego.",
+        "pt": "Melhorias na experiência de administração."
+      }
+    },
     {
       "version": "5.3.49",
       "releasedAt": "2026-09-15",

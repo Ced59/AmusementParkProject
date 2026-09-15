@@ -145,6 +145,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/share-moderation/pages/admin-share-moderation/admin-share-moderation.component').then((m) => m.AdminShareModerationComponent)
           },
           {
+            path: 'factual-events',
+            loadComponent: () => import('@features/admin/factual-events/pages/admin-factual-events/admin-factual-events.component').then((m) => m.AdminFactualEventsComponent)
+          },
+          {
             path: 'technical-stats',
             loadComponent: () => import('@features/admin/technical-stats/pages/admin-technical-stats/admin-technical-stats.component').then((m) => m.AdminTechnicalStatsComponent)
           },
