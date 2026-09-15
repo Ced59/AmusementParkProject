@@ -4,6 +4,8 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FactualEvents;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkOpeningHours;
 using AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Moq;
 using Xunit;
@@ -161,6 +163,95 @@ public sealed class OpeningCalendarFactualEvidenceMigrationTests
     }
 
     [Fact]
+    public async Task MigrateAsync_WhenReviewWinsEventRace_ShouldReloadAndFenceItsReplacement()
+    {
+        ParkOpeningHoursSchedule schedule = CreateSchedule();
+        FactualChangeEventDocument beforeReview = CreateLegacyEvent(schedule, 4);
+        FactualChangeEventDocument afterReview = CreateLegacyEvent(schedule, 5);
+        Mock<IAsyncCursor<FactualEventMigrationDocument>> migrationCursor =
+            CreateAsyncCursor(new[]
+            {
+                new FactualEventMigrationDocument
+                {
+                    Id = OpeningCalendarFactualEvidenceMigration.MigrationId,
+                    StartedAtUtc = new DateTime(2026, 9, 15, 10, 0, 0, DateTimeKind.Utc),
+                },
+            });
+        Mock<IAsyncCursor<FactualChangeEventDocument>> firstEventCursor =
+            CreateAsyncCursor(new[] { beforeReview });
+        Mock<IAsyncCursor<FactualChangeEventDocument>> secondEventCursor =
+            CreateAsyncCursor(new[] { afterReview });
+        Mock<IAsyncCursor<FactualChangeOutboxDocument>> outboxCursor =
+            CreateAsyncCursor(Array.Empty<FactualChangeOutboxDocument>());
+        Mock<IAsyncCursor<ParkOpeningHoursScheduleDocument>> firstScheduleCursor =
+            CreateAsyncCursor(new[] { schedule.ToDocument() });
+        Mock<IAsyncCursor<ParkOpeningHoursScheduleDocument>> secondScheduleCursor =
+            CreateAsyncCursor(new[] { schedule.ToDocument() });
+        Mock<IAsyncCursor<ParkOpeningHoursScheduleDocument>> embeddedScheduleCursor =
+            CreateAsyncCursor(Array.Empty<ParkOpeningHoursScheduleDocument>());
+        Mock<IMongoCollection<FactualChangeEventDocument>> events =
+            new Mock<IMongoCollection<FactualChangeEventDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<FactualChangeOutboxDocument>> outbox =
+            new Mock<IMongoCollection<FactualChangeOutboxDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<ParkOpeningHoursScheduleDocument>> schedules =
+            new Mock<IMongoCollection<ParkOpeningHoursScheduleDocument>>(MockBehavior.Strict);
+        Mock<IMongoCollection<FactualEventMigrationDocument>> migrations =
+            new Mock<IMongoCollection<FactualEventMigrationDocument>>(MockBehavior.Strict);
+        SetupFind(migrations, migrationCursor);
+        SetupFindSequence(events, firstEventCursor, secondEventCursor);
+        SetupFind(outbox, outboxCursor);
+        SetupFindSequence(
+            schedules,
+            firstScheduleCursor,
+            secondScheduleCursor,
+            embeddedScheduleCursor);
+        List<IReadOnlyCollection<WriteModel<FactualChangeEventDocument>>> eventWrites = new();
+        events.Setup(collection => collection.BulkWriteAsync(
+                It.IsAny<IEnumerable<WriteModel<FactualChangeEventDocument>>>(),
+                It.Is<BulkWriteOptions>(options => !options.IsOrdered),
+                CancellationToken.None))
+            .Callback((
+                IEnumerable<WriteModel<FactualChangeEventDocument>> writes,
+                BulkWriteOptions _,
+                CancellationToken _) => eventWrites.Add(writes.ToArray()))
+            .ReturnsAsync(() => CreateBulkWriteResult<FactualChangeEventDocument>(
+                eventWrites[^1].Count,
+                eventWrites.Count == 1 ? 0 : 1));
+        migrations.Setup(collection => collection.UpdateOneAsync(
+                It.IsAny<FilterDefinition<FactualEventMigrationDocument>>(),
+                It.IsAny<UpdateDefinition<FactualEventMigrationDocument>>(),
+                null,
+                CancellationToken.None))
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        OpeningCalendarFactualEvidenceMigration migration =
+            new OpeningCalendarFactualEvidenceMigration(
+                events.Object,
+                outbox.Object,
+                schedules.Object,
+                migrations.Object);
+
+        long migratedCount = await migration.MigrateAsync(CancellationToken.None);
+
+        Assert.Equal(1, migratedCount);
+        Assert.Equal(2, eventWrites.Count);
+        UpdateOneModel<FactualChangeEventDocument> successfulWrite =
+            Assert.IsType<UpdateOneModel<FactualChangeEventDocument>>(eventWrites[1].Single());
+        BsonDocument update = Render(successfulWrite.Update);
+        Assert.Equal(6, update["$set"]["version"].AsInt64);
+        events.VerifyAll();
+        outbox.VerifyAll();
+        schedules.VerifyAll();
+        migrations.VerifyAll();
+        firstEventCursor.VerifyAll();
+        secondEventCursor.VerifyAll();
+        outboxCursor.VerifyAll();
+        firstScheduleCursor.VerifyAll();
+        secondScheduleCursor.VerifyAll();
+        embeddedScheduleCursor.VerifyAll();
+        migrationCursor.VerifyAll();
+    }
+
+    [Fact]
     public void MigrateValue_WithMatchingCurrentSchedule_ShouldPersistContextualEvidence()
     {
         ParkOpeningHoursSchedule schedule = CreateSchedule();
@@ -224,6 +315,40 @@ public sealed class OpeningCalendarFactualEvidenceMigrationTests
         };
     }
 
+    private static FactualChangeEventDocument CreateLegacyEvent(
+        ParkOpeningHoursSchedule schedule,
+        long version)
+    {
+        FactValue current = Assert.IsType<FactValue>(OpeningCalendarFactSnapshot.Create(schedule));
+        string hash = current.CanonicalValue.Split("sha256=")[1];
+        return new FactualChangeEventDocument
+        {
+            Id = "event-1",
+            Type = FactualEventType.OpeningCalendarChanged,
+            Target = new ChangeTargetDocument
+            {
+                Type = FactualTargetType.Park,
+                TargetId = schedule.ParkId,
+            },
+            NewValue = new FactValueDocument
+            {
+                Kind = FactValueKind.Text,
+                CanonicalValue =
+                    $"timezone=Europe/Paris;coverage=2026-07-01/2026-07-31;rules=1;overrides=0;sha256={hash}",
+            },
+            Version = version,
+        };
+    }
+
+    private static BsonDocument Render(UpdateDefinition<FactualChangeEventDocument> update)
+    {
+        IBsonSerializer<FactualChangeEventDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<FactualChangeEventDocument>();
+        return update.Render(new RenderArgs<FactualChangeEventDocument>(
+            serializer,
+            BsonSerializer.SerializerRegistry)).AsBsonDocument;
+    }
+
     private static void SetupFind<TDocument>(
         Mock<IMongoCollection<TDocument>> collection,
         Mock<IAsyncCursor<TDocument>> cursor)
@@ -265,5 +390,19 @@ public sealed class OpeningCalendarFactualEvidenceMigrationTests
         {
             sequence = sequence.ReturnsAsync(cursor.Object);
         }
+    }
+
+    private static BulkWriteResult<TDocument> CreateBulkWriteResult<TDocument>(
+        int requestCount,
+        long modifiedCount)
+    {
+        return new BulkWriteResult<TDocument>.Acknowledged(
+            requestCount,
+            modifiedCount,
+            0,
+            0,
+            modifiedCount,
+            Array.Empty<WriteModel<TDocument>>(),
+            Array.Empty<BulkWriteUpsert>());
     }
 }

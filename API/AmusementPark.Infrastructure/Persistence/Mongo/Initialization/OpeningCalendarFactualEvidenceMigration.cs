@@ -16,6 +16,7 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
 {
     internal const string MigrationId = "watch-06-opening-calendar-evidence-v2";
     private const int BatchSize = 100;
+    private const int MaximumConflictRetries = 5;
 
     private readonly IMongoCollection<FactualChangeEventDocument> events;
     private readonly IMongoCollection<FactualChangeOutboxDocument> outbox;
@@ -130,6 +131,25 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
 
     private async Task<long> MigrateEventsAsync(CancellationToken cancellationToken)
     {
+        long migratedCount = 0;
+        for (int attempt = 1; attempt <= MaximumConflictRetries; attempt += 1)
+        {
+            (long passCount, bool hasConflicts) =
+                await this.MigrateEventsPassAsync(cancellationToken);
+            migratedCount += passCount;
+            if (!hasConflicts)
+            {
+                return migratedCount;
+            }
+        }
+
+        throw new InvalidOperationException(
+            "Factual-event evidence migration conflicts exceeded the retry limit.");
+    }
+
+    private async Task<(long MigratedCount, bool HasConflicts)> MigrateEventsPassAsync(
+        CancellationToken cancellationToken)
+    {
         FilterDefinition<FactualChangeEventDocument> filter = BuildCandidateFilter<FactualChangeEventDocument>(
             static document => document.Type,
             "previousValue.canonicalValue",
@@ -137,6 +157,7 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
         IFindFluent<FactualChangeEventDocument, FactualChangeEventDocument> find = this.events.Find(filter);
         find.Options.BatchSize = BatchSize;
         long migratedCount = 0;
+        bool hasConflicts = false;
         using IAsyncCursor<FactualChangeEventDocument> cursor = await find.ToCursorAsync(cancellationToken);
         while (await cursor.MoveNextAsync(cancellationToken))
         {
@@ -161,13 +182,17 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
                     & Builders<FactualChangeEventDocument>.Filter.Eq(static candidate => candidate.Version, document.Version),
                     Builders<FactualChangeEventDocument>.Update
                         .Set(static candidate => candidate.PreviousValue, document.PreviousValue)
-                        .Set(static candidate => candidate.NewValue, document.NewValue)));
+                        .Set(static candidate => candidate.NewValue, document.NewValue)
+                        .Set(static candidate => candidate.Version, checked(document.Version + 1))));
             }
 
-            migratedCount += await BulkWriteAsync(this.events, writes, cancellationToken);
+            (long modifiedCount, bool batchHasConflicts) =
+                await BulkWriteAsync(this.events, writes, cancellationToken);
+            migratedCount += modifiedCount;
+            hasConflicts |= batchHasConflicts;
         }
 
-        return migratedCount;
+        return (migratedCount, hasConflicts);
     }
 
     private async Task<FactualEventMigrationDocument?> LoadMigrationAsync(
@@ -182,6 +207,25 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
 
     private async Task<long> MigrateOutboxAsync(CancellationToken cancellationToken)
     {
+        long migratedCount = 0;
+        for (int attempt = 1; attempt <= MaximumConflictRetries; attempt += 1)
+        {
+            (long passCount, bool hasConflicts) =
+                await this.MigrateOutboxPassAsync(cancellationToken);
+            migratedCount += passCount;
+            if (!hasConflicts)
+            {
+                return migratedCount;
+            }
+        }
+
+        throw new InvalidOperationException(
+            "Factual-outbox evidence migration conflicts exceeded the retry limit.");
+    }
+
+    private async Task<(long MigratedCount, bool HasConflicts)> MigrateOutboxPassAsync(
+        CancellationToken cancellationToken)
+    {
         FilterDefinition<FactualChangeOutboxDocument> filter = BuildCandidateFilter<FactualChangeOutboxDocument>(
             static document => document.Type,
             "previousValue.canonicalValue",
@@ -189,6 +233,7 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
         IFindFluent<FactualChangeOutboxDocument, FactualChangeOutboxDocument> find = this.outbox.Find(filter);
         find.Options.BatchSize = BatchSize;
         long migratedCount = 0;
+        bool hasConflicts = false;
         using IAsyncCursor<FactualChangeOutboxDocument> cursor = await find.ToCursorAsync(cancellationToken);
         while (await cursor.MoveNextAsync(cancellationToken))
         {
@@ -213,16 +258,39 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
                     & Builders<FactualChangeOutboxDocument>.Filter.Eq(static candidate => candidate.Version, document.Version),
                     Builders<FactualChangeOutboxDocument>.Update
                         .Set(static candidate => candidate.PreviousValue, document.PreviousValue)
-                        .Set(static candidate => candidate.NewValue, document.NewValue)));
+                        .Set(static candidate => candidate.NewValue, document.NewValue)
+                        .Set(static candidate => candidate.Version, checked(document.Version + 1))));
             }
 
-            migratedCount += await BulkWriteAsync(this.outbox, writes, cancellationToken);
+            (long modifiedCount, bool batchHasConflicts) =
+                await BulkWriteAsync(this.outbox, writes, cancellationToken);
+            migratedCount += modifiedCount;
+            hasConflicts |= batchHasConflicts;
         }
 
-        return migratedCount;
+        return (migratedCount, hasConflicts);
     }
 
     private async Task<long> MigrateEmbeddedOutboxAsync(CancellationToken cancellationToken)
+    {
+        long migratedCount = 0;
+        for (int attempt = 1; attempt <= MaximumConflictRetries; attempt += 1)
+        {
+            (long passCount, bool hasConflicts) =
+                await this.MigrateEmbeddedOutboxPassAsync(cancellationToken);
+            migratedCount += passCount;
+            if (!hasConflicts)
+            {
+                return migratedCount;
+            }
+        }
+
+        throw new InvalidOperationException(
+            "Embedded factual-outbox evidence migration conflicts exceeded the retry limit.");
+    }
+
+    private async Task<(long MigratedCount, bool HasConflicts)> MigrateEmbeddedOutboxPassAsync(
+        CancellationToken cancellationToken)
     {
         FilterDefinition<ParkOpeningHoursScheduleDocument> filter =
             Builders<ParkOpeningHoursScheduleDocument>.Filter.ElemMatch(
@@ -235,6 +303,7 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
             this.schedules.Find(filter);
         find.Options.BatchSize = BatchSize;
         long migratedCount = 0;
+        bool hasConflicts = false;
         using IAsyncCursor<ParkOpeningHoursScheduleDocument> cursor = await find.ToCursorAsync(cancellationToken);
         while (await cursor.MoveNextAsync(cancellationToken))
         {
@@ -265,13 +334,19 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
                         document.WriteRevision),
                     Builders<ParkOpeningHoursScheduleDocument>.Update.Set(
                         static candidate => candidate.PendingFactualChanges,
-                        document.PendingFactualChanges)));
+                        document.PendingFactualChanges)
+                    .Set(
+                        static candidate => candidate.WriteRevision,
+                        checked(document.WriteRevision + 1))));
             }
 
-            migratedCount += await BulkWriteAsync(this.schedules, writes, cancellationToken);
+            (long modifiedCount, bool batchHasConflicts) =
+                await BulkWriteAsync(this.schedules, writes, cancellationToken);
+            migratedCount += modifiedCount;
+            hasConflicts |= batchHasConflicts;
         }
 
-        return migratedCount;
+        return (migratedCount, hasConflicts);
     }
 
     private async Task<IReadOnlyDictionary<string, ParkOpeningHoursSchedule>> LoadSchedulesAsync(
@@ -333,20 +408,20 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
             or FactualEventType.OpeningCalendarChanged;
     }
 
-    private static async Task<long> BulkWriteAsync<TDocument>(
+    private static async Task<(long ModifiedCount, bool HasConflicts)> BulkWriteAsync<TDocument>(
         IMongoCollection<TDocument> collection,
         IReadOnlyCollection<WriteModel<TDocument>> writes,
         CancellationToken cancellationToken)
     {
         if (writes.Count == 0)
         {
-            return 0;
+            return (0, false);
         }
 
         BulkWriteResult<TDocument> result = await collection.BulkWriteAsync(
             writes,
             new BulkWriteOptions { IsOrdered = false },
             cancellationToken);
-        return result.ModifiedCount;
+        return (result.ModifiedCount, result.ModifiedCount != writes.Count);
     }
 }
