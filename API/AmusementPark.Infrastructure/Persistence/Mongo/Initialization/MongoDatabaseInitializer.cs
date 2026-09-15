@@ -1152,7 +1152,15 @@ private async Task InitializeParkOpeningHoursIndexesAsync(CancellationToken canc
         IMongoCollection<ParkOpeningHoursScheduleDocument> collection =
             this.database.GetCollection<ParkOpeningHoursScheduleDocument>(this.settings.ParkOpeningHoursCollectionName);
 
-        List<CreateIndexModel<ParkOpeningHoursScheduleDocument>> indexes = new List<CreateIndexModel<ParkOpeningHoursScheduleDocument>>
+        IReadOnlyCollection<CreateIndexModel<ParkOpeningHoursScheduleDocument>> indexes =
+            BuildParkOpeningHoursIndexes();
+
+        await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
+    }
+
+    internal static IReadOnlyCollection<CreateIndexModel<ParkOpeningHoursScheduleDocument>> BuildParkOpeningHoursIndexes()
+    {
+        return new List<CreateIndexModel<ParkOpeningHoursScheduleDocument>>
         {
             new CreateIndexModel<ParkOpeningHoursScheduleDocument>(
                 Builders<ParkOpeningHoursScheduleDocument>.IndexKeys.Ascending(item => item.ParkId),
@@ -1160,9 +1168,16 @@ private async Task InitializeParkOpeningHoursIndexesAsync(CancellationToken canc
             new CreateIndexModel<ParkOpeningHoursScheduleDocument>(
                 Builders<ParkOpeningHoursScheduleDocument>.IndexKeys.Descending(item => item.UpdatedAt),
                 new CreateIndexOptions { Name = "idx_park_opening_hours_updated" }),
+            new CreateIndexModel<ParkOpeningHoursScheduleDocument>(
+                Builders<ParkOpeningHoursScheduleDocument>.IndexKeys
+                    .Ascending(item => item.UpdatedAt)
+                    .Ascending(item => item.ParkId),
+                new CreateIndexOptions<ParkOpeningHoursScheduleDocument>
+                {
+                    Name = "idx_park_opening_hours_pending_factual_changes",
+                    PartialFilterExpression = ParkOpeningHoursRepository.BuildPendingFactualChangeFilter(null),
+                }),
         };
-
-        await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
     }
 
 private async Task InitializeParkPricingIndexesAsync(CancellationToken cancellationToken)

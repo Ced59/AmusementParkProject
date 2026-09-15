@@ -7,6 +7,8 @@ using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkOpeningHours;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FactualEvents;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System.Globalization;
 
@@ -14,6 +16,7 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
 {
+    private static readonly TimeSpan PendingFactualChangeQueryTimeout = TimeSpan.FromSeconds(10);
     private readonly IMongoCollection<ParkOpeningHoursScheduleDocument> collection;
 
     public ParkOpeningHoursRepository(IMongoDatabase database, MongoDbSettings settings)
@@ -218,31 +221,22 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
             throw new ArgumentOutOfRangeException(nameof(maximumCount));
         }
 
-        FilterDefinition<ParkOpeningHoursScheduleDocument> filter =
-            BuildPendingFactualChangeFilter(after);
-        List<ParkOpeningHoursScheduleDocument> documents = await this.collection
-            .Find(filter)
-            .SortBy(static document => document.UpdatedAt)
-            .ThenBy(static document => document.ParkId)
-            .Limit(maximumCount + 1)
-            .Project(static document => new ParkOpeningHoursScheduleDocument
-            {
-                ParkId = document.ParkId,
-                UpdatedAt = document.UpdatedAt,
-                PendingFactualChanges = document.PendingFactualChanges,
-            })
+        BsonDocument[] pipeline = BuildPendingFactualChangePipeline(after, maximumCount);
+        List<BsonDocument> documents = await this.collection
+            .Aggregate<BsonDocument>(
+                pipeline,
+                new AggregateOptions
+                {
+                    MaxTime = PendingFactualChangeQueryTimeout,
+                })
             .ToListAsync(cancellationToken);
         return documents
-            .SelectMany(document => document.PendingFactualChanges
-                .Select(static entry => entry.ToDomain())
-                .OrderBy(static entry => entry.RecordedAtUtc)
-                .ThenBy(static entry => entry.Id, StringComparer.Ordinal)
-                .Where(entry => IsAfterCursor(document, entry, after))
-                .Select(entry => new ParkOpeningHoursPendingFactualChange(
-                    document.ParkId,
-                    entry,
-                    document.UpdatedAt)))
-            .Take(maximumCount)
+            .Select(static document => new ParkOpeningHoursPendingFactualChange(
+                document["parkId"].AsString,
+                BsonSerializer.Deserialize<FactualChangeOutboxDocument>(
+                        document["entry"].AsBsonDocument)
+                    .ToDomain(),
+                document["sourceUpdatedAtUtc"].AsBsonDateTime.ToUniversalTime()))
             .ToList();
     }
 
@@ -339,50 +333,107 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
     internal static FilterDefinition<ParkOpeningHoursScheduleDocument> BuildPendingFactualChangeFilter(
         ParkOpeningHoursFactualChangeCursor? after)
     {
-        FilterDefinition<ParkOpeningHoursScheduleDocument> pending =
-            Builders<ParkOpeningHoursScheduleDocument>.Filter.Exists(
+        return new BsonDocumentFilterDefinition<ParkOpeningHoursScheduleDocument>(
+            BuildPendingFactualChangeSourceMatch(after));
+    }
+
+    internal static BsonDocument[] BuildPendingFactualChangePipeline(
+        ParkOpeningHoursFactualChangeCursor? after,
+        int maximumCount)
+    {
+        if (maximumCount < 1 || maximumCount > 1000)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumCount));
+        }
+
+        List<BsonDocument> pipeline = new List<BsonDocument>
+        {
+            new BsonDocument("$match", BuildPendingFactualChangeSourceMatch(after)),
+            new BsonDocument("$unwind", "$pendingFactualChanges"),
+        };
+        if (after is not null)
+        {
+            pipeline.Add(new BsonDocument(
+                "$match",
+                BuildPendingFactualChangeEntryMatch(after)));
+        }
+
+        pipeline.Add(new BsonDocument("$sort", new BsonDocument
+        {
+            ["updatedAt"] = 1,
+            ["parkId"] = 1,
+            ["pendingFactualChanges.createdAt"] = 1,
+            ["pendingFactualChanges._id"] = 1,
+        }));
+        pipeline.Add(new BsonDocument("$limit", maximumCount));
+        pipeline.Add(new BsonDocument("$project", new BsonDocument
+        {
+            ["_id"] = 0,
+            ["parkId"] = 1,
+            ["sourceUpdatedAtUtc"] = "$updatedAt",
+            ["entry"] = "$pendingFactualChanges",
+        }));
+        return pipeline.ToArray();
+    }
+
+    private static BsonDocument BuildPendingFactualChangeSourceMatch(
+        ParkOpeningHoursFactualChangeCursor? after)
+    {
+        BsonDocument pending = new BsonDocument(
             "pendingFactualChanges.0",
-            true);
+            new BsonDocument("$exists", true));
         if (after is null)
         {
             return pending;
         }
 
-        FilterDefinition<ParkOpeningHoursScheduleDocument> afterCursor =
-            Builders<ParkOpeningHoursScheduleDocument>.Filter.Gt(
-                static document => document.UpdatedAt,
-                after.SourceUpdatedAtUtc)
-            | (Builders<ParkOpeningHoursScheduleDocument>.Filter.Eq(
-                    static document => document.UpdatedAt,
-                    after.SourceUpdatedAtUtc)
-                & Builders<ParkOpeningHoursScheduleDocument>.Filter.Gte(
-                    static document => document.ParkId,
-                    after.ParkId));
-        return pending & afterCursor;
+        return new BsonDocument("$and", new BsonArray
+        {
+            pending,
+            new BsonDocument("$or", new BsonArray
+            {
+                new BsonDocument(
+                    "updatedAt",
+                    new BsonDocument("$gt", after.SourceUpdatedAtUtc)),
+                new BsonDocument
+                {
+                    ["updatedAt"] = after.SourceUpdatedAtUtc,
+                    ["parkId"] = new BsonDocument("$gte", after.ParkId),
+                },
+            }),
+        });
     }
 
-    internal static bool IsAfterCursor(
-        ParkOpeningHoursScheduleDocument document,
-        FactualChangeOutboxEntry entry,
-        ParkOpeningHoursFactualChangeCursor? after)
+    private static BsonDocument BuildPendingFactualChangeEntryMatch(
+        ParkOpeningHoursFactualChangeCursor after)
     {
-        if (after is null
-            || document.UpdatedAt > after.SourceUpdatedAtUtc
-            || (document.UpdatedAt == after.SourceUpdatedAtUtc
-                && string.CompareOrdinal(document.ParkId, after.ParkId) > 0))
+        return new BsonDocument("$or", new BsonArray
         {
-            return true;
-        }
-
-        if (document.UpdatedAt != after.SourceUpdatedAtUtc
-            || !string.Equals(document.ParkId, after.ParkId, StringComparison.Ordinal))
-        {
-            return false;
-        }
-
-        return entry.RecordedAtUtc > after.EntryRecordedAtUtc
-            || (entry.RecordedAtUtc == after.EntryRecordedAtUtc
-                && string.CompareOrdinal(entry.Id, after.EntryId) > 0);
+            new BsonDocument(
+                "updatedAt",
+                new BsonDocument("$gt", after.SourceUpdatedAtUtc)),
+            new BsonDocument
+            {
+                ["updatedAt"] = after.SourceUpdatedAtUtc,
+                ["parkId"] = new BsonDocument("$gt", after.ParkId),
+            },
+            new BsonDocument
+            {
+                ["updatedAt"] = after.SourceUpdatedAtUtc,
+                ["parkId"] = after.ParkId,
+                ["$or"] = new BsonArray
+                {
+                    new BsonDocument(
+                        "pendingFactualChanges.createdAt",
+                        new BsonDocument("$gt", after.EntryRecordedAtUtc)),
+                    new BsonDocument
+                    {
+                        ["pendingFactualChanges.createdAt"] = after.EntryRecordedAtUtc,
+                        ["pendingFactualChanges._id"] = new BsonDocument("$gt", after.EntryId),
+                    },
+                },
+            },
+        });
     }
 
     internal static FilterDefinition<ParkOpeningHoursScheduleDocument> BuildWriteRevisionFilter(

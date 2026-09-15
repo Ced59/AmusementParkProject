@@ -1,5 +1,7 @@
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FactualEvents;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkOpeningHours;
 using AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
+using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
@@ -9,6 +11,23 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Initialization;
 
 public sealed class MongoDatabaseInitializerFactualEventsTests
 {
+    [Fact]
+    public void BuildParkOpeningHoursIndexes_ShouldIndexPendingFactualChangeScan()
+    {
+        IReadOnlyCollection<CreateIndexModel<ParkOpeningHoursScheduleDocument>> indexes =
+            MongoDatabaseInitializer.BuildParkOpeningHoursIndexes();
+        CreateIndexModel<ParkOpeningHoursScheduleDocument> pending = Assert.Single(
+            indexes,
+            static index => index.Options.Name == "idx_park_opening_hours_pending_factual_changes");
+
+        Assert.Equal(
+            new BsonDocument { { "updatedAt", 1 }, { "parkId", 1 } },
+            Render(pending.Keys));
+        Assert.Equal(
+            Render(ParkOpeningHoursRepository.BuildPendingFactualChangeFilter(null)),
+            Render(pending.Options.PartialFilterExpression!));
+    }
+
     [Fact]
     public void BuildFactualChangeOutboxIndexes_ShouldEnforceOneSourceRevision()
     {

@@ -107,25 +107,28 @@ public sealed class ParkOpeningHoursFactualMarkerPersistenceTests
     }
 
     [Fact]
-    public void MarkerCursor_ShouldContinueInsideTheSameSourceDocument()
+    public void PendingPipeline_ShouldLimitProjectedMarkersAndContinueInsideTheSameSource()
     {
         DateTime recordedAtUtc = new DateTime(2026, 9, 15, 12, 0, 0, DateTimeKind.Utc);
-        ParkOpeningHoursScheduleDocument source = new ParkOpeningHoursScheduleDocument
-        {
-            ParkId = "park-1",
-            UpdatedAt = recordedAtUtc,
-        };
         ParkOpeningHoursFactualChangeCursor cursor =
             new ParkOpeningHoursFactualChangeCursor(
                 recordedAtUtc,
                 "park-1",
                 recordedAtUtc,
                 "outbox-100");
-        FactualChangeOutboxEntry after = CreateEntry("outbox-101", recordedAtUtc);
-        FactualChangeOutboxEntry before = CreateEntry("outbox-099", recordedAtUtc);
+        BsonDocument[] pipeline =
+            ParkOpeningHoursRepository.BuildPendingFactualChangePipeline(cursor, 100);
+        string json = new BsonArray(pipeline).ToJson();
 
-        Assert.True(ParkOpeningHoursRepository.IsAfterCursor(source, after, cursor));
-        Assert.False(ParkOpeningHoursRepository.IsAfterCursor(source, before, cursor));
+        Assert.Equal(6, pipeline.Length);
+        Assert.True(pipeline[1].Contains("$unwind"));
+        Assert.Equal(100, pipeline[4]["$limit"].AsInt32);
+        Assert.Contains("pendingFactualChanges.createdAt", json, StringComparison.Ordinal);
+        Assert.Contains("pendingFactualChanges._id", json, StringComparison.Ordinal);
+        Assert.Contains("outbox-100", json, StringComparison.Ordinal);
+        Assert.Equal(
+            "$pendingFactualChanges",
+            pipeline[5]["$project"].AsBsonDocument["entry"].AsString);
     }
 
     [Fact]

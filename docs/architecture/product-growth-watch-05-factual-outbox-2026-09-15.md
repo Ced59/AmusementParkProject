@@ -125,6 +125,8 @@ Index critiques :
 
 - unicité outbox `(deduplicationKey, sourceRevision)` ;
 - révision monotone et intentions en attente embarquées dans le document calendrier ;
+- index partiel `(updatedAt, parkId)` limité aux calendriers qui portent au moins
+  une intention en attente ;
 - lecture bornée des entrées avec `materializedAtUtc` et `terminalAtUtc` nuls grâce
   à un index composé commençant par ces champs ;
 - unicité événement `(deduplicationKey, revision)` ;
@@ -210,6 +212,8 @@ pas les événements suivants.
   `(updatedAt, parkId, recordedAtUtc, entryId)` reprend à l'intérieur du même document,
   puis reboucle en fin de liste : ni un parc très actif ni des marqueurs conflictuels
   anciens ne peuvent affamer les faits suivants ;
+- le dépliage et la limite sont exécutés dans MongoDB : le réseau et la mémoire du
+  processus ne reçoivent jamais tout le tableau d'un calendrier très actif ;
 - un curseur `(createdAt, id)` avance entre les pages pleines puis reboucle en fin
   de liste : des jobs terminaux anciens ne peuvent donc pas affamer les faits plus
   récents ;
@@ -234,6 +238,8 @@ Les tests couvrent :
 - l'avancement du curseur source malgré un marqueur conflictuel ;
 - la reprise à l'intérieur d'un même calendrier lorsque son nombre de marqueurs
   dépasse la taille maximale d'un lot ;
+- le pipeline Mongo qui déplie les marqueurs avant la limite et l'index partiel qui
+  évite de parcourir les calendriers sans reprise ;
 - la clé de job déterministe et bornée même avec une clé métier maximale ;
 - la poursuite du reconciler lorsqu'une entrée échoue ;
 - l'acquittement terminal d'un job exact définitivement échoué ;
