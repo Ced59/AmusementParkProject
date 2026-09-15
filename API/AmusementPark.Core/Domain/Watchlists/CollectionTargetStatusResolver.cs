@@ -33,7 +33,7 @@ public static class CollectionTargetStatusResolver
             return CollectionTargetStatus.PermanentlyClosed;
         }
 
-        if (parentCollectionStatus == CollectionTargetStatus.TemporarilyClosed)
+        if (parentCollectionStatus != CollectionTargetStatus.Available)
         {
             return parentCollectionStatus;
         }

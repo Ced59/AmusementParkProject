@@ -172,6 +172,73 @@ public sealed class UserCollectionLifecycleServiceTests
     }
 
     [Fact]
+    public async Task AddAsync_RefreshesFactualSnapshotBeforeRetryingAnOlderRequest()
+    {
+        DateTime initialUtc = DateTime.UtcNow.AddMinutes(-2);
+        UserCollectionEntry initiallyRead = UserCollectionEntry.Create(
+            UserCollectionEntryId.Parse("entry-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.Unknown,
+            null,
+            null,
+            null,
+            initialUtc);
+        UserCollectionEntry newerPersistedEntry = UserCollectionEntry.Restore(
+            UserCollectionEntryId.Parse("entry-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.PermanentlyClosed,
+            null,
+            null,
+            null,
+            initialUtc,
+            initialUtc.AddMinutes(1),
+            2);
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.SetupSequence(repository => repository.GetOwnedByIdentityAsync(
+                "user-1",
+                CollectionTargetType.Park,
+                "park-1",
+                UserCollectionKind.Favorite,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(initiallyRead)
+            .ReturnsAsync(newerPersistedEntry);
+        collectionRepository.Setup(repository => repository.TrySynchronizeTargetStatusesAsync(
+                It.Is<IReadOnlyCollection<UserCollectionEntry>>(entries =>
+                    entries.Single().TargetStatus == CollectionTargetStatus.Available),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        UserCollectionLifecycleService service = CreateService(
+            collectionRepository,
+            CreatePublicPark("park-1", "Open park", ParkStatus.Operating),
+            CreatePublicPark("park-1", "Closed park", ParkStatus.ClosedDefinitively));
+
+        AmusementPark.Application.Errors.ApplicationResult<UserCollectionEntryResult> result =
+            await service.AddAsync(
+                "user-1",
+                new UserCollectionTargetInput(
+                    CollectionTargetType.Park,
+                    "park-1",
+                    UserCollectionKind.Favorite),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(CollectionTargetStatus.PermanentlyClosed, result.Value?.TargetStatus);
+        Assert.Equal(2, result.Value?.Version);
+        collectionRepository.Verify(
+            repository => repository.TrySynchronizeTargetStatusesAsync(
+                It.IsAny<IReadOnlyCollection<UserCollectionEntry>>(),
+                It.IsAny<CancellationToken>()),
+            Times.Once);
+        collectionRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task AddAsync_SynchronizesEntryRecoveredAfterConcurrentCreation()
     {
         UserCollectionEntry concurrentEntry = CreateAvailableParkFavorite();
@@ -278,17 +345,25 @@ public sealed class UserCollectionLifecycleServiceTests
 
     private static UserCollectionLifecycleService CreateService(
         Mock<IUserCollectionEntryRepository> collectionRepository,
-        Park? park)
+        Park? park,
+        Park? refreshedPark = null)
     {
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = new(MockBehavior.Strict);
         if (park is not null)
         {
+            int parkReadIndex = 0;
+            Park[] parkStates = refreshedPark is null
+                ? new[] { park }
+                : new[] { park, refreshedPark };
             parkRepository.Setup(repository => repository.GetByIdsAsync(
                     It.IsAny<IEnumerable<string>>(),
                     It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new[] { park });
+                .ReturnsAsync(() => new[]
+                {
+                    parkStates[Math.Min(parkReadIndex++, parkStates.Length - 1)],
+                });
             imageRepository.Setup(repository => repository.GetMainImageIdsByOwnersAsync(
                     ImageOwnerType.Park,
                     It.IsAny<IReadOnlyCollection<string>>(),

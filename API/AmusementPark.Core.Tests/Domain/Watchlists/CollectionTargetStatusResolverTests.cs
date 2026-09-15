@@ -35,6 +35,24 @@ public sealed class CollectionTargetStatusResolverTests
     }
 
     [Theory]
+    [InlineData(ParkStatus.Planned)]
+    [InlineData(ParkStatus.UnderConstruction)]
+    public void Resolve_DoesNotExposeAnOperatingItemBeforeItsParentParkOpens(
+        ParkStatus parentStatus)
+    {
+        ParkItem item = new ParkItem
+        {
+            AttractionDetails = new AttractionDetails { Status = "Operating" },
+        };
+
+        CollectionTargetStatus result = CollectionTargetStatusResolver.Resolve(
+            item,
+            parentStatus);
+
+        Assert.Equal(CollectionTargetStatus.Unknown, result);
+    }
+
+    [Theory]
     [InlineData("ClosedDefinitively")]
     [InlineData("Removed")]
     public void Resolve_PreservesPermanentItemClosureOverTemporaryParentClosure(

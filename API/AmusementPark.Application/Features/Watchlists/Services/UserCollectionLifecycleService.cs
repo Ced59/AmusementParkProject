@@ -175,12 +175,9 @@ public sealed class UserCollectionLifecycleService
                 {
                     foreach (UserCollectionEntry synchronizedEntry in synchronizedEntries)
                     {
-                        UserCollectionTargetSnapshot snapshot = snapshotsByType[
-                            synchronizedEntry.TargetType][synchronizedEntry.TargetId];
                         UserCollectionEntry? persistedEntry =
                             await this.RetryTargetStatusSynchronizationAsync(
                                 synchronizedEntry,
-                                snapshot,
                                 cancellationToken);
                         if (persistedEntry is null)
                         {
@@ -260,7 +257,7 @@ public sealed class UserCollectionLifecycleService
             entry.TargetType,
             entry.TargetId,
             entry.Kind,
-            snapshot.IsAvailableForCreation ? snapshot.Status : entry.TargetStatus,
+            entry.TargetStatus,
             snapshot.Name,
             snapshot.ParentParkId,
             snapshot.ParentParkName,
@@ -285,10 +282,11 @@ public sealed class UserCollectionLifecycleService
         }
 
         UserCollectionEntry currentEntry = entry;
+        UserCollectionTargetSnapshot currentSnapshot = snapshot;
         for (int attempt = 0; attempt < MaximumStatusSynchronizationAttempts; attempt++)
         {
             currentEntry.SynchronizeTargetStatus(
-                snapshot.Status,
+                currentSnapshot.Status,
                 this.timeProvider.GetUtcNow().UtcDateTime);
             bool synchronized = await this.repository.TrySynchronizeTargetStatusesAsync(
                 new[] { currentEntry },
@@ -304,7 +302,17 @@ public sealed class UserCollectionLifecycleService
                 currentEntry.TargetId,
                 currentEntry.Kind,
                 cancellationToken);
-            if (persistedEntry is null || persistedEntry.TargetStatus == snapshot.Status)
+            if (persistedEntry is null)
+            {
+                return null;
+            }
+
+            currentSnapshot = await this.targetReader.ResolveAsync(
+                persistedEntry.TargetType,
+                persistedEntry.TargetId,
+                cancellationToken);
+            if (!currentSnapshot.IsAvailableForCreation
+                || persistedEntry.TargetStatus == currentSnapshot.Status)
             {
                 return persistedEntry;
             }
@@ -317,7 +325,6 @@ public sealed class UserCollectionLifecycleService
 
     private async Task<UserCollectionEntry?> RetryTargetStatusSynchronizationAsync(
         UserCollectionEntry attemptedEntry,
-        UserCollectionTargetSnapshot snapshot,
         CancellationToken cancellationToken)
     {
         UserCollectionEntry? persistedEntry = await this.repository.GetOwnedByIdentityAsync(
@@ -326,11 +333,20 @@ public sealed class UserCollectionLifecycleService
             attemptedEntry.TargetId,
             attemptedEntry.Kind,
             cancellationToken);
-        return persistedEntry is null
-            ? null
+        if (persistedEntry is null)
+        {
+            return null;
+        }
+
+        UserCollectionTargetSnapshot refreshedSnapshot = await this.targetReader.ResolveAsync(
+            persistedEntry.TargetType,
+            persistedEntry.TargetId,
+            cancellationToken);
+        return !refreshedSnapshot.IsAvailableForCreation
+            ? persistedEntry
             : await this.EnsureTargetStatusSynchronizedAsync(
                 persistedEntry,
-                snapshot,
+                refreshedSnapshot,
                 cancellationToken);
     }
 
