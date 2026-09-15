@@ -14,6 +14,23 @@ describe('SSR route status helpers', () => {
   it.each(['/fr/parks?page=0', '/fr/parks?page=02', '/fr/parks?page=1&page=2', '/fr/parks?page=2&size=18', '/fr/parks?utm_source=mail'])('does not extend indexability to other parks queries: %s', url => {
     expect(resolveXRobotsTagHeader(url)).toBe('noindex, follow');
   });
+  it.each(['/fr/manufacturers', '/fr/manufacturers?page=1', '/en/manufacturers?page=2', '/pl/manufacturers?page=99'])('defers valid manufacturers page metadata to Angular: %s', url => {
+    expect(resolveXRobotsTagHeader(url)).toBeNull();
+    expect(resolveSsrRouteStatusCode(url)).toBe(200);
+  });
+
+  it.each(['/fr/manufacturers?page=0', '/fr/manufacturers?page=02', '/fr/manufacturers?page=1&page=2', '/fr/manufacturers?page=2&size=18', '/fr/manufacturers?utm_source=mail'])('does not extend indexability to other manufacturers queries: %s', url => {
+    expect(resolveXRobotsTagHeader(url)).toBe('noindex, follow');
+  });
+  it.each([404, 503])('keeps manufacturers errors excluded with status %s', status => {
+    expect(resolveXRobotsTagHeader('/fr/manufacturers?page=2', status)).toBe('noindex, follow');
+    expect(resolveXRobotsTagHeader('/fr/manufacturers', status)).toBe('noindex, follow');
+  });
+
+  it('keeps the manufacturers CSR fallback excluded', () => {
+    expect(resolveXRobotsTagHeader('/fr/manufacturers?page=2', 200, true)).toBe('noindex, follow');
+  });
+
   it.each([
     '/fr/sitemap?node=parks', '/en/sitemap?node=parks&page=2',
     '/pl/sitemap?node=snapshot-sections%2Fsitemap-section:history-pl-1&page=2',

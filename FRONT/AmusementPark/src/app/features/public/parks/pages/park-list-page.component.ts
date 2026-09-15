@@ -9,7 +9,7 @@ import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, r
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ParkListStateFacade } from '../state/park-list-state.facade';
-import { PUBLIC_PARKS_PAGE_SIZE, PublicParksLocation, buildPublicParksPagePath, resolvePublicParksLocation } from '@shared/utils/routing/public-parks-location';
+import { PUBLIC_PARKS_PAGE_SIZE, PublicDirectoryLocation, buildPublicDirectoryPagePath, resolvePublicDirectoryLocation } from '@shared/utils/routing/public-directory-location';
 import { ParkListViewComponent } from '../ui/park-list-view.component';
 import { SeoService } from '@core/seo/seo.service';
 import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
@@ -41,7 +41,7 @@ export class ParkListPageComponent implements OnInit {
   protected readonly discoveryScope = this.stateFacade.discoveryScope;
   protected readonly currentLang = signal<string>('en');
   protected readonly searchTerm = signal<string>('');
-  private readonly location = signal<PublicParksLocation>({ page: 1, isValid: true, isIndexable: true });
+  private readonly location = signal<PublicDirectoryLocation>({ page: 1, isValid: true, isIndexable: true });
   private readonly standardFilters = computed(() => this.discoveryScope() === 'parks'
     && !this.searchTerm() && this.selectedRegion() === null && this.selectedStatus() === 'Operating'
     && this.selectedAudienceClassificationFilter() === null);
@@ -51,7 +51,7 @@ export class ParkListPageComponent implements OnInit {
     return this.standardFilters() && !this.selectedParkCard() && this.location().isIndexable
       && this.stateFacade.pageSize() === PUBLIC_PARKS_PAGE_SIZE
       && resolved?.language === language && resolved.page === this.location().page
-      ? (page: number): string => buildPublicParksPagePath(language, page + 1)
+      ? (page: number): string => buildPublicDirectoryPagePath(language, 'parks', page + 1)
       : null;
   });
   protected readonly discoveryScopeFilterOptions = signal(PUBLIC_PLACE_DISCOVERY_SCOPE_OPTIONS.map((option: PublicSearchCategoryOption) => ({
@@ -92,7 +92,7 @@ export class ParkListPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.location.set(resolvePublicParksLocation(this.route.snapshot.queryParamMap));
+    this.location.set(resolvePublicDirectoryLocation(this.route.snapshot.queryParamMap));
     const initialLanguage: string = resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en');
 
     this.applyLanguage(initialLanguage, false);
@@ -100,7 +100,7 @@ export class ParkListPageComponent implements OnInit {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd), takeUntilDestroyed(this.destroyRef))
       .subscribe(() => this.applyResolvedPageSeo());
     this.route.queryParamMap.pipe(skip(1), takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {
-      this.location.set(resolvePublicParksLocation(params));
+      this.location.set(resolvePublicDirectoryLocation(params));
       // Removing the old page after an interactive filter/size change must not undo that selection.
       const navigationInfo: unknown = this.router.getCurrentNavigation()?.extras.info;
       if (navigationInfo && typeof navigationInfo === 'object' && 'parksPreserveFilters' in navigationInfo
@@ -294,7 +294,7 @@ export class ParkListPageComponent implements OnInit {
     if (path !== `/${language}/parks` && path !== `/${language}/parks/`) {
       return;
     }
-    const actual: PublicParksLocation = resolvePublicParksLocation(this.router.parseUrl(this.router.url).queryParamMap);
+    const actual: PublicDirectoryLocation = resolvePublicDirectoryLocation(this.router.parseUrl(this.router.url).queryParamMap);
     const resolved = this.stateFacade.resolvedPage();
     const page: number | null = actual.isValid && this.standardFilters() && !this.selectedParkCard()
       && this.stateFacade.pageSize() === PUBLIC_PARKS_PAGE_SIZE

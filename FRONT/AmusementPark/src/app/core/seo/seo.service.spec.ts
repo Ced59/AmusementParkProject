@@ -1837,6 +1837,9 @@ describe('SeoService', () => {
 
   it('applies indexable localized metadata to the public manufacturers page', () => {
     service.applyRouteDefaults('/fr/manufacturers');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBeNull();
+    service.applyManufacturersListSeo('fr', '/fr/manufacturers', 1);
 
     expect(documentRef.title).toBe(
       "Constructeurs d'attractions - Amusement Parks",
@@ -1954,6 +1957,39 @@ describe('SeoService', () => {
     service.applyParkListSeo('fr', '/fr/parks?page=2&utm_source=mail', 2);
     expect(readCanonicalHref()).toBe('http://localhost:4200/fr/parks?page=2');
     expect(readMetaContent('meta[property="og:url"]')).toBe('http://localhost:4200/fr/parks?page=2');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(readJsonLdScripts()).toEqual([]);
+  });
+
+  it.each(['fr', 'en', 'de', 'nl', 'it', 'es', 'pl', 'pt'])('gives validated manufacturers page 2 its own canonical in %s', language => {
+    service.applyManufacturersListSeo(language, `/${language}/manufacturers?page=2`, 2);
+    const canonical = `http://localhost:4200/${language}/manufacturers?page=2`;
+    expect(readCanonicalHref()).toBe(canonical);
+    expect(readMetaContent('meta[property="og:url"]')).toBe(canonical);
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(readJsonLdScripts()[0]).toMatchObject({
+      '@type': 'BreadcrumbList',
+      itemListElement: [expect.objectContaining({ item: `http://localhost:4200/${language}/home` }), expect.objectContaining({ item: `http://localhost:4200/${language}/manufacturers` }), expect.objectContaining({ item: canonical })]
+    });
+  });
+
+  it('normalizes page one and removes metadata while a page awaits validation', () => {
+    service.applyManufacturersListSeo('fr', '/fr/manufacturers?page=1', 1);
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/manufacturers');
+    service.applyRouteDefaults('/fr/manufacturers?page=2');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBeNull();
+    expect(readJsonLdScripts()).toEqual([]);
+    service.applyManufacturersListSeo('fr', '/fr/manufacturers?page=2', 1);
+    expect(readCanonicalHref()).toBeNull();
+  });
+
+  it('keeps a clean canonical for validated tracking variants without granting indexability', () => {
+    service.applyManufacturersListSeo('fr', '/fr/manufacturers?page=2&utm_source=mail', 2);
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/manufacturers?page=2');
+    expect(readMetaContent('meta[property="og:url"]')).toBe('http://localhost:4200/fr/manufacturers?page=2');
     expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
     expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
     expect(readJsonLdScripts()).toEqual([]);

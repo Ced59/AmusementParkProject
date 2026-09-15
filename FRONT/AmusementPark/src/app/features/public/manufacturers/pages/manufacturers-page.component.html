@@ -1,4 +1,11 @@
 <section class="manufacturers-page public-page">
+  @if (pageHref() && currentPage() > 1) {
+    <nav class="manufacturers-pagination-trail" [attr.aria-label]="'manufacturersPage.title' | translate">
+      <a [routerLink]="['/', currentLang(), 'manufacturers']">{{ 'manufacturersPage.title' | translate }}</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">{{ pageLabel() }}</span>
+    </nav>
+  }
   <header class="manufacturers-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
     <app-ui-kicker tone="sky" iconClass="pi pi-building">
       {{ 'manufacturersPage.kicker' | translate }}
@@ -102,6 +109,8 @@
 
     <app-pagination
       [pagination]="pagination()"
+      [pageHref]="pageHref()"
+      [pageLanguage]="currentLang()"
       [first]="(currentPage() - 1) * pageSize()"
       [rows]="pageSize()"
       [rowsPerPageOptions]="[12, 24, 48, 96]"
