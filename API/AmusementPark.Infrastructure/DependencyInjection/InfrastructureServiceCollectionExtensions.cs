@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.Contact.Ports;
 using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.DataSources.Ports;
+using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
@@ -56,6 +57,7 @@ using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
 using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
 using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
 using AmusementPark.Infrastructure.Services.Email;
+using AmusementPark.Infrastructure.Services.FactualEvents;
 using AmusementPark.Infrastructure.Services.Comments;
 using AmusementPark.Infrastructure.Services.Images;
 using AmusementPark.Infrastructure.Services.Parks;
@@ -181,8 +183,11 @@ public static class InfrastructureServiceCollectionExtensions
         });
 
         services.AddScoped<IDurableBackgroundJobRepository, DurableBackgroundJobRepository>();
+        services.AddScoped<IFactualChangeOutboxRepository, FactualChangeOutboxRepository>();
+        services.AddScoped<IFactualChangeEventRepository, FactualChangeEventRepository>();
         services.AddSingleton<DurableBackgroundJobMetrics>();
         services.AddHostedService<DurableBackgroundJobWorkerBackgroundService>();
+        services.AddHostedService<FactualChangeOutboxReconciliationBackgroundService>();
         services.AddHostedService<RatingRankingRebuildReconciliationBackgroundService>();
 
         services.AddScoped<ICountryReadRepository, CountryReadRepository>();

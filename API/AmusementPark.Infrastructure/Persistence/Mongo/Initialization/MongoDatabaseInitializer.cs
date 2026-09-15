@@ -31,6 +31,7 @@ using AmusementPark.Application.Features.BackgroundJobs.Models;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.BackgroundJobs;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Comments;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Contact;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FactualEvents;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkGraphUpserts;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkOpeningHours;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkPricing;
@@ -202,6 +203,75 @@ private const string AdminFieldModeItemProgressCollectionName = "adminFieldModeI
         }
 
         await collection.DeleteManyAsync(Builders<BsonDocument>.Filter.In("_id", duplicateIds), cancellationToken);
+    }
+
+    private async Task InitializeFactualChangeIndexesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<FactualChangeOutboxDocument> outbox =
+            this.database.GetCollection<FactualChangeOutboxDocument>(
+                this.settings.FactualChangeOutboxCollectionName);
+        IMongoCollection<FactualChangeEventDocument> events =
+            this.database.GetCollection<FactualChangeEventDocument>(
+                this.settings.FactualChangeEventsCollectionName);
+        await outbox.Indexes.CreateManyAsync(BuildFactualChangeOutboxIndexes(), cancellationToken);
+        await events.Indexes.CreateManyAsync(BuildFactualChangeEventIndexes(), cancellationToken);
+    }
+
+    internal static IReadOnlyCollection<CreateIndexModel<FactualChangeOutboxDocument>>
+        BuildFactualChangeOutboxIndexes()
+    {
+        BsonDocument pendingFilter = new BsonDocument(
+            "materializedAtUtc",
+            new BsonDocument("$exists", false));
+        return new List<CreateIndexModel<FactualChangeOutboxDocument>>
+        {
+            new CreateIndexModel<FactualChangeOutboxDocument>(
+                Builders<FactualChangeOutboxDocument>.IndexKeys
+                    .Ascending(static value => value.DeduplicationKey)
+                    .Ascending(static value => value.SourceRevision),
+                new CreateIndexOptions
+                {
+                    Name = "idx_factual_outbox_logical_revision_unique",
+                    Unique = true,
+                }),
+            new CreateIndexModel<FactualChangeOutboxDocument>(
+                Builders<FactualChangeOutboxDocument>.IndexKeys
+                    .Ascending(static value => value.CreatedAt)
+                    .Ascending(static value => value.Id),
+                new CreateIndexOptions<FactualChangeOutboxDocument>
+                {
+                    Name = "idx_factual_outbox_pending",
+                    PartialFilterExpression = pendingFilter,
+                }),
+        };
+    }
+
+    internal static IReadOnlyCollection<CreateIndexModel<FactualChangeEventDocument>>
+        BuildFactualChangeEventIndexes()
+    {
+        return new List<CreateIndexModel<FactualChangeEventDocument>>
+        {
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending(static value => value.DeduplicationKey)
+                    .Ascending(static value => value.Revision),
+                new CreateIndexOptions
+                {
+                    Name = "idx_factual_events_logical_revision_unique",
+                    Unique = true,
+                }),
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending(static value => value.Status)
+                    .Descending(static value => value.CreatedAt),
+                new CreateIndexOptions { Name = "idx_factual_events_status_created" }),
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending("target.type")
+                    .Ascending("target.targetId")
+                    .Descending(static value => value.CreatedAt),
+                new CreateIndexOptions { Name = "idx_factual_events_target_created" }),
+        };
     }
 
 private async Task InitializeDurableBackgroundJobIndexesAsync(CancellationToken cancellationToken)
@@ -565,6 +635,10 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.DurableBackgroundJobsCollectionName, cancellationToken);
         await this.InitializeDurableBackgroundJobIndexesAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(this.settings.FactualChangeOutboxCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.FactualChangeEventsCollectionName, cancellationToken);
+        await this.InitializeFactualChangeIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.UsersCollectionName, cancellationToken);
         await this.InitializeUsersIndexesAsync(cancellationToken);
