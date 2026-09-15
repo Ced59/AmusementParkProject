@@ -1,6 +1,20 @@
 {
-  "version": "5.3.38",
+  "version": "5.3.39",
   "history": [
+    {
+      "version": "5.3.39",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Les collections personnelles reposent désormais sur des intentions clairement définies.",
+        "en": "Personal collections now rely on clearly defined intentions.",
+        "de": "Persönliche Sammlungen basieren jetzt auf klar definierten Absichten.",
+        "nl": "Persoonlijke verzamelingen zijn nu gebaseerd op duidelijk omschreven intenties.",
+        "it": "Le raccolte personali si basano ora su intenzioni chiaramente definite.",
+        "es": "Las colecciones personales se basan ahora en intenciones claramente definidas.",
+        "pl": "Kolekcje osobiste opierają się teraz na jasno określonych zamiarach.",
+        "pt": "As coleções pessoais baseiam-se agora em intenções claramente definidas."
+      }
+    },
     {
       "version": "5.3.38",
       "releasedAt": "2026-09-15",

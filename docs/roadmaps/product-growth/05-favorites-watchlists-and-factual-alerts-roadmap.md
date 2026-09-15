@@ -62,6 +62,12 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 
 ## 4. Modèle des intentions
 
+> État au 15 septembre 2026 : `WATCH-01` est implémenté dans le Core pour la
+> version `5.3.39`. Les quatre intentions, leur compatibilité avec les cibles, les
+> détails privés, la période, la priorité, la version optimiste et la conservation
+> d'une cible fermée sont couvertes par des invariants et des tests. L'index unique,
+> l'API et l'interface restent volontairement dans `WATCH-02`.
+
 ## 4.1 `UserCollectionEntry`
 
 ```csharp
@@ -582,7 +588,7 @@ Une hausse du taux de clic n’est pas une justification pour rendre les formula
 
 | PR | Contenu | Critère |
 |---|---|---|
-| `WATCH-01` | Domaine collections | Intentions distinctes |
+| `WATCH-01` | Domaine collections — livré en `5.3.39` | Intentions distinctes |
 | `WATCH-02` | API/UI favoris et wishlist | Usage privé fiable |
 | `WATCH-03` | Domaine abonnements/préférences | Portée explicite |
 | `WATCH-04` | Catalogue d’événements et provenance | Types versionnés |
