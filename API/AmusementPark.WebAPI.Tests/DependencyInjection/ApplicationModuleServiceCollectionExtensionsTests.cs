@@ -9,6 +9,11 @@ using AmusementPark.Application.Features.Comments.Results;
 using AmusementPark.Application.Features.Contact.Commands;
 using AmusementPark.Application.Features.Contact.Contracts;
 using AmusementPark.Application.Features.Contact.Queries;
+using AmusementPark.Application.Features.FactualEvents.Commands;
+using AmusementPark.Application.Features.FactualEvents.Handlers;
+using AmusementPark.Application.Features.FactualEvents.Ports;
+using AmusementPark.Application.Features.FactualEvents.Queries;
+using AmusementPark.Application.Features.FactualEvents.Results;
 using AmusementPark.Application.Features.ParkFit.Handlers;
 using AmusementPark.Application.Features.ParkFit.Ports;
 using AmusementPark.Application.Features.ParkFit.Commands;
@@ -97,6 +102,40 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<AddUserCollectionEntryCommand, ApplicationResult<UserCollectionEntryResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<DeleteUserCollectionEntryCommand, ApplicationResult>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<ListMyUserCollectionEntriesQuery, ApplicationResult<IReadOnlyCollection<UserCollectionEntryResult>>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<VerifyFactualChangeEventCommand, ApplicationResult>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<PublishFactualChangeEventCommand, ApplicationResult>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetFactualChangeEventsQuery, ApplicationResult<PagedResult<FactualChangeEventAdminResult>>>));
+    }
+
+    [Fact]
+    public void AddApplicationModules_WhenCalled_ShouldResolveFactualEventAdministrationHandlers()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+        services.AddApplicationModules(configuration);
+        services.AddSingleton(Mock.Of<IFactualChangeEventRepository>());
+        services.AddSingleton(Mock.Of<IParkNameReadRepository>());
+        services.AddSingleton(Mock.Of<IParkItemNameReadRepository>());
+
+        using ServiceProvider serviceProvider = services.BuildServiceProvider();
+
+        ICommandHandler<VerifyFactualChangeEventCommand, ApplicationResult> verifyHandler =
+            serviceProvider.GetRequiredService<ICommandHandler<
+                VerifyFactualChangeEventCommand,
+                ApplicationResult>>();
+        ICommandHandler<PublishFactualChangeEventCommand, ApplicationResult> publishHandler =
+            serviceProvider.GetRequiredService<ICommandHandler<
+                PublishFactualChangeEventCommand,
+                ApplicationResult>>();
+        IQueryHandler<GetFactualChangeEventsQuery,
+            ApplicationResult<PagedResult<FactualChangeEventAdminResult>>> queryHandler =
+            serviceProvider.GetRequiredService<IQueryHandler<
+                GetFactualChangeEventsQuery,
+                ApplicationResult<PagedResult<FactualChangeEventAdminResult>>>>();
+
+        Assert.IsType<VerifyFactualChangeEventCommandHandler>(verifyHandler);
+        Assert.IsType<PublishFactualChangeEventCommandHandler>(publishHandler);
+        Assert.IsType<GetFactualChangeEventsQueryHandler>(queryHandler);
     }
 
     [Fact]
