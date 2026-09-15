@@ -1,0 +1,38 @@
+using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.Watchlists.Models;
+using AmusementPark.Core.Domain.Watchlists;
+
+namespace AmusementPark.Application.Features.Watchlists.Ports;
+
+public interface IUserNotificationRepository
+{
+    Task<long> CreateManyAsync(
+        IReadOnlyCollection<UserNotification> notifications,
+        CancellationToken cancellationToken);
+
+    Task<PagedResult<UserNotification>> SearchOwnedAsync(
+        string userId,
+        UserNotificationSearchCriteria criteria,
+        CancellationToken cancellationToken);
+
+    Task<long> CountUnreadAsync(string userId, CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<string>> ListParkIdsOwnedAsync(
+        string userId,
+        CancellationToken cancellationToken);
+
+    Task<UserNotification?> GetOwnedAsync(
+        string userId,
+        UserNotificationId notificationId,
+        CancellationToken cancellationToken);
+
+    Task<UserNotificationWriteOutcome> ReplaceAsync(
+        UserNotification notification,
+        long expectedVersion,
+        CancellationToken cancellationToken);
+
+    Task<long> MarkAllReadAsync(
+        string userId,
+        DateTime readAtUtc,
+        CancellationToken cancellationToken);
+}

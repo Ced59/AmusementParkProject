@@ -239,6 +239,11 @@ export class ProfilePageComponent implements OnInit {
     void this.router.navigate(['/', currentLang, 'profile', 'collections']);
   }
 
+  openNotifications(): void {
+    const currentLang: string = this.router.url.split('/')[1] || 'en';
+    void this.router.navigate(['/', currentLang, 'profile', 'notifications']);
+  }
+
   updatePreferredMeasurementSystem(system: MeasurementSystem): void {
     const currentUser: UserDto | null = this.user();
 

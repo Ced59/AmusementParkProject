@@ -99,6 +99,16 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > contre les validations concurrentes et limité en charge. Un fait détecté ou
 > vérifié reste techniquement non diffusable ; seule la publication volontaire
 > ouvre la distribution aux jalons suivants.
+> `WATCH-07` est livré en `5.3.51` : chaque membre peut activer, personnaliser,
+> mettre en pause ou supprimer un suivi privé directement depuis la fiche d'un
+> parc ou d'une attraction, sans relation implicite avec ses favoris. Seul un fait
+> publié alimente le centre Web ; la distribution paginée est idempotente et un
+> reconciler la répare après interruption. Le centre, accessible depuis le profil,
+> affiche la cible et son image, le changement vérifié, la valeur avant/après, la
+> source et sa date de vérification. Il propose les non-lus, les filtres par parc
+> et type, la lecture, le masquage, le désabonnement et une pagination finie. La
+> rétention de 365 jours est annoncée, les identifiants techniques ne sont jamais
+> rendus comme libellés et l'ensemble se replie sans débordement sur mobile.
 
 ## 4.1 `UserCollectionEntry`
 
@@ -628,7 +638,7 @@ Une hausse du taux de clic n’est pas une justification pour rendre les formula
 | `WATCH-04` | Catalogue d’événements et provenance — livré en `5.3.48` | Types versionnés |
 | `WATCH-05` | Diff/outbox/déduplication — livré en `5.3.49` | Un fait logique, une alerte |
 | `WATCH-06` | Administration de vérification — livré en `5.3.50` | Rien de non vérifié distribué |
-| `WATCH-07` | Notifications Web | Centre accessible |
+| `WATCH-07` | Notifications Web — livré en `5.3.51` | Centre accessible |
 | `WATCH-08` | Corrections/rétractations | Historique honnête |
 | `WATCH-09` | Digests | Groupement déterministe |
 | `WATCH-10` | E-mail opt-in | Consentement et unsubscription |

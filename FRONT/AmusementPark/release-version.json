@@ -1,6 +1,20 @@
 {
-  "version": "5.3.50",
+  "version": "5.3.51",
   "history": [
+    {
+      "version": "5.3.51",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Un radar privé signale désormais les changements vérifiés que tu choisis de suivre.",
+        "en": "A private radar now highlights verified changes you choose to track.",
+        "de": "Ein privates Radar zeigt jetzt geprüfte Änderungen, die du verfolgen möchtest.",
+        "nl": "Een privéradar toont nu gecontroleerde wijzigingen die je zelf wilt volgen.",
+        "it": "Un radar privato segnala ora le modifiche verificate che scegli di seguire.",
+        "es": "Un radar privado señala ahora los cambios verificados que eliges seguir.",
+        "pl": "Prywatny radar pokazuje teraz zweryfikowane zmiany, które chcesz śledzić.",
+        "pt": "Um radar privado assinala agora as alterações verificadas que escolheste acompanhar."
+      }
+    },
     {
       "version": "5.3.50",
       "releasedAt": "2026-09-15",

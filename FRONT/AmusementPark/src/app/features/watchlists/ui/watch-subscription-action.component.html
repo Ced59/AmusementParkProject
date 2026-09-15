@@ -1,0 +1,90 @@
+@if (facade.authenticated()) {
+  <section class="watch-action" [attr.aria-label]="'watchlists.action.label' | translate">
+    <button
+      appUiButton="soft"
+      type="button"
+      class="watch-action__trigger"
+      [class.watch-action__trigger--active]="facade.subscription() && !facade.subscription()?.isPaused"
+      [attr.aria-expanded]="facade.expanded()"
+      [disabled]="facade.loading() || facade.mutating()"
+      (click)="facade.toggleExpanded()">
+      <i [class]="facade.subscription() && !facade.subscription()?.isPaused ? 'pi pi-bell-fill' : 'pi pi-bell'" aria-hidden="true"></i>
+      <span>
+        @if (facade.subscription()?.isPaused) {
+          {{ 'watchlists.action.paused' | translate }}
+        } @else if (facade.subscription()) {
+          {{ 'watchlists.action.active' | translate }}
+        } @else {
+          {{ 'watchlists.action.follow' | translate }}
+        }
+      </span>
+      <i [class]="facade.expanded() ? 'pi pi-chevron-up' : 'pi pi-chevron-down'" aria-hidden="true"></i>
+    </button>
+
+    @if (facade.expanded()) {
+      <div class="watch-action__panel" appUiSurface="panel" appUiSurfacePadding="compact">
+        <div class="watch-action__heading">
+          <span class="watch-action__radar" aria-hidden="true"><i class="pi pi-bell"></i></span>
+          <div>
+            <h3>{{ 'watchlists.panel.title' | translate }}</h3>
+            <p>{{ 'watchlists.panel.description' | translate }}</p>
+          </div>
+        </div>
+
+        <div class="watch-action__groups">
+          @for (group of groups; track group.key) {
+            <button
+              type="button"
+              class="watch-action__group"
+              [class.watch-action__group--selected]="facade.isGroupSelected(group.eventTypes)"
+              [attr.aria-pressed]="facade.isGroupSelected(group.eventTypes)"
+              [disabled]="facade.mutating()"
+              (click)="facade.toggleGroup(group.eventTypes)">
+              <span class="watch-action__group-check" aria-hidden="true">
+                <i [class]="facade.isGroupSelected(group.eventTypes) ? 'pi pi-check' : 'pi pi-plus'"></i>
+              </span>
+              <span>
+                <strong>{{ groupLabelKey(group) | translate }}</strong>
+                <small>{{ groupDescriptionKey(group) | translate }}</small>
+              </span>
+            </button>
+          }
+        </div>
+
+        <p class="watch-action__privacy">
+          <i class="pi pi-lock" aria-hidden="true"></i>
+          <span>{{ 'watchlists.panel.privacy' | translate }}</span>
+        </p>
+
+        @if (facade.selectedEventTypes().length === 0) {
+          <p class="watch-action__warning" role="alert">{{ 'watchlists.feedback.selectOne' | translate }}</p>
+        }
+        @if (facade.error()) {
+          <p class="watch-action__error" role="alert">{{ 'watchlists.feedback.error' | translate }}</p>
+        }
+
+        <div class="watch-action__buttons">
+          <button
+            appUiButton="primary"
+            type="button"
+            [disabled]="facade.mutating() || facade.selectedEventTypes().length === 0"
+            (click)="facade.save()">
+            <i class="pi pi-check" aria-hidden="true"></i>
+            <span>{{ (facade.subscription() ? 'watchlists.action.update' : 'watchlists.action.start') | translate }}</span>
+          </button>
+
+          @if (facade.subscription(); as subscription) {
+            <button appUiButton="ghost" type="button" [disabled]="facade.mutating()" (click)="facade.togglePaused()">
+              <i [class]="subscription.isPaused ? 'pi pi-play' : 'pi pi-pause'" aria-hidden="true"></i>
+              <span>{{ (subscription.isPaused ? 'watchlists.action.resume' : 'watchlists.action.pause') | translate }}</span>
+            </button>
+            <button appUiButton="ghost" type="button" [disabled]="facade.mutating()" (click)="facade.remove()">
+              <i class="pi pi-trash" aria-hidden="true"></i>
+              <span>{{ 'watchlists.action.stop' | translate }}</span>
+            </button>
+          }
+        </div>
+      </div>
+    }
+  </section>
+}

@@ -32,6 +32,12 @@ public sealed class MongoDbSettings
 
     public string FactualEventMigrationsCollectionName { get; set; } = "factual-event-migrations";
 
+    public string WatchSubscriptionsCollectionName { get; set; } = "watch-subscriptions";
+
+    public string UserNotificationsCollectionName { get; set; } = "user-notifications";
+
+    public string FactualNotificationDistributionsCollectionName { get; set; } = "factual-notification-distributions";
+
     public bool CompleteFactualEventMigrationsOnStartup { get; set; } = true;
 
     public string RefreshTokensCollectionName { get; set; } = "refreshTokens";

@@ -23,6 +23,7 @@ import { PublicContextualBlockDirective } from '@features/public/contextual-edit
 import { ParkLifecycleNoticeComponent } from '@features/public/parks/ui/park-lifecycle-notice.component';
 import { ParkItemPassportRidePanelComponent } from './park-item-passport-ride-panel.component';
 import { UserCollectionActionsComponent } from '@features/collections/ui/user-collection-actions.component';
+import { WatchSubscriptionActionComponent } from '@features/watchlists/ui/watch-subscription-action.component';
 
 @Component({
   selector: 'app-park-item-detail-view',
@@ -51,7 +52,8 @@ import { UserCollectionActionsComponent } from '@features/collections/ui/user-co
     PublicContextualBlockDirective,
     ParkLifecycleNoticeComponent,
     ParkItemPassportRidePanelComponent,
-    UserCollectionActionsComponent
+    UserCollectionActionsComponent,
+    WatchSubscriptionActionComponent
   ]
 })
 export class ParkItemDetailViewComponent {

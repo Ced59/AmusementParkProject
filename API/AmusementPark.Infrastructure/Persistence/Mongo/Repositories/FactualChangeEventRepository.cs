@@ -89,6 +89,50 @@ public sealed class FactualChangeEventRepository : IFactualChangeEventRepository
         return document?.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<FactualChangeEvent>> GetManyAsync(
+        IReadOnlyCollection<FactualChangeEventId> eventIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(eventIds);
+        string[] ids = eventIds.Select(static eventId => eventId.Value).Distinct(StringComparer.Ordinal).ToArray();
+        if (ids.Length == 0)
+        {
+            return Array.Empty<FactualChangeEvent>();
+        }
+
+        List<FactualChangeEventDocument> documents = await this.collection.Find(
+            Builders<FactualChangeEventDocument>.Filter.In(static value => value.Id, ids))
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    public async Task<IReadOnlyCollection<FactualChangeEvent>> ListPublishedAsync(
+        PublishedFactualEventCursor? after,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(limit);
+        FilterDefinitionBuilder<FactualChangeEventDocument> filters = Builders<FactualChangeEventDocument>.Filter;
+        FilterDefinition<FactualChangeEventDocument> filter = filters.Eq(
+            static value => value.Status,
+            FactualChangeStatus.Published)
+            & filters.Ne(static value => value.PublishedAtUtc, null);
+        if (after is not null)
+        {
+            filter &= filters.Or(
+                filters.Gt(static value => value.PublishedAtUtc, after.PublishedAtUtc),
+                filters.Eq(static value => value.PublishedAtUtc, after.PublishedAtUtc)
+                    & filters.Gt(static value => value.Id, after.EventId));
+        }
+
+        List<FactualChangeEventDocument> documents = await this.collection.Find(filter)
+            .SortBy(static value => value.PublishedAtUtc)
+            .ThenBy(static value => value.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<PagedResult<FactualChangeEvent>> SearchAsync(
         FactualChangeEventSearchCriteria criteria,
         CancellationToken cancellationToken)

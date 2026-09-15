@@ -31,6 +31,7 @@ using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Services;
 using AmusementPark.Application.Features.Watchlists.Services;
+using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
@@ -95,6 +96,10 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ParkFitGroupProfileLifecycleService>();
         services.AddScoped<UserCollectionTargetReader>();
         services.AddScoped<UserCollectionLifecycleService>();
+        services.AddScoped<WatchSubscriptionLifecycleService>();
+        services.AddScoped<UserNotificationCenterService>();
+        services.AddScoped<IFactualNotificationDistributionScheduler, FactualNotificationDistributionScheduler>();
+        services.AddDurableBackgroundJobHandler<FactualNotificationDistributionJobHandler>();
         services.AddScoped<ParkWeatherRefreshStarter>();
         services.AddScoped<ParkWeatherRefreshOrchestrator>();
         services.AddSingleton<ParkWeatherLocalDateResolver>();
