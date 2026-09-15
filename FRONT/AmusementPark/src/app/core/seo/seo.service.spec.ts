@@ -402,11 +402,13 @@ describe('SeoService', () => {
     );
   });
 
-  it('describes planned park items as documented concepts instead of tourist attractions', () => {
+  it.each(['Planned', 'UnderConstruction', 'Cancelled'] as const)('keeps a %s park item generic even when its category describes a business', parkStatus => {
     const detail: ParkItemDetailViewModel = buildParkItemDetail({
+      category: 'Hotel',
       parkName: 'Future Park',
-      parkStatus: 'Planned',
+      parkStatus,
       parkLink: ['/fr/park/park-1/future-park'],
+      manufacturerName: 'Documented manufacturer',
     });
 
     service.applyParkItemDetailSeo(
@@ -419,15 +421,75 @@ describe('SeoService', () => {
       (value: Record<string, unknown>): boolean => value['name'] === detail.name,
     );
 
-    expect(itemJsonLd?.['@type']).toBe('Thing');
-    expect(itemJsonLd?.['containedInPlace']).toEqual({
-      '@type': 'Place',
-      name: 'Future Park',
+    expect(itemJsonLd).toEqual({
+      '@context': 'https://schema.org',
+      '@type': 'Thing',
+      name: detail.name,
+      url: 'http://localhost:4200/fr/park/park-1/future-park/item/item-1/future-ride',
+      description: detail.description,
     });
-    expect(itemJsonLd?.['additionalProperty']).toEqual({
-      '@type': 'PropertyValue',
-      name: 'parentParkLifecycleStatus',
-      value: 'Planned',
+    const breadcrumb = readJsonLdScripts().find(value => value['@type'] === 'BreadcrumbList');
+    expect(breadcrumb?.['itemListElement']).toContainEqual(expect.objectContaining({ name: 'Future Park' }));
+  });
+
+  it.each([
+    ['fr', 'fr_FR'], ['en', 'en_US'], ['de', 'de_DE'], ['nl', 'nl_NL'],
+    ['it', 'it_IT'], ['es', 'es_ES'], ['pl', 'pl_PL'], ['pt', 'pt_PT']
+  ])('describes a service as a place while preserving localized SEO in %s', (language, locale) => {
+    const path = `/${language}/park/park-1/beech-bend/item/item-1/lost-found`;
+    const detail = buildParkItemDetail({
+      category: 'Service', name: 'Lost & Found', parkName: 'Beech Bend',
+      parkLink: [`/${language}/park/park-1/beech-bend`],
+      description: 'Lost & Found is located at the main ticket gate.'
+    });
+
+    service.applyParkItemDetailSeo(detail, language, path);
+
+    expect(readJsonLdScripts().find(value => value['name'] === detail.name)).toMatchObject({
+      '@type': 'Place', name: 'Lost & Found', description: detail.description,
+      containedInPlace: { '@type': 'AmusementPark', name: 'Beech Bend' }
+    });
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readMetaContent('meta[name="description"]')).toBe(detail.description);
+    expect(readMetaContent('meta[property="og:locale"]')).toBe(locale);
+    expect(readMetaContent('meta[property="og:url"]')).toBe(`http://localhost:4200${path}`);
+    expect(readCanonicalHref()).toBe(`http://localhost:4200${path}`);
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(9);
+    const breadcrumb = readJsonLdScripts().find(value => value['@type'] === 'BreadcrumbList');
+    expect(breadcrumb?.['itemListElement']).toContainEqual(expect.objectContaining({ name: 'Beech Bend' }));
+    if (language === 'en') {
+      expect(documentRef.title).toBe('Guide to Lost & Found at Beech Bend — Amusement Parks');
+    }
+  });
+
+  it.each([
+    ['Attraction', 'TouristAttraction'], ['Restaurant', 'FoodEstablishment'],
+    ['Hotel', 'LodgingBusiness'], ['Shop', 'Store']
+  ] as const)('uses the supplied %s category in entity JSON-LD', (category, schemaType) => {
+    service.applyParkItemDetailSeo(buildParkItemDetail({ category, manufacturerName: 'Recorded manufacturer' }), 'en', '/en/park/park-1/demo/item/item-1/demo');
+    const itemJsonLd = readJsonLdScripts().find(value => value['name'] === 'Demo Item');
+    expect(itemJsonLd).toMatchObject({ '@type': schemaType });
+    expect(itemJsonLd).not.toHaveProperty('manufacturer');
+  });
+
+  it.each(['Animal', 'Show', 'Transport', 'Other'] as const)('keeps ambiguous %s metadata generic without inventing place or product properties', category => {
+    service.applyParkItemDetailSeo(buildParkItemDetail({
+      category, parkName: 'Old Park', parkStatus: 'ClosedDefinitively', manufacturerName: 'Recorded name', description: null
+    }), 'en', '/en/park/park-1/old/item/item-1/demo');
+
+    expect(readJsonLdScripts().find(value => value['name'] === 'Demo Item')).toEqual({
+      '@context': 'https://schema.org', '@type': 'Thing', name: 'Demo Item',
+      url: 'http://localhost:4200/en/park/park-1/old/item/item-1/demo'
+    });
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+  });
+
+  it('preserves the lifecycle context of an established closed service', () => {
+    service.applyParkItemDetailSeo(buildParkItemDetail({ category: 'Service', parkName: 'Old Park', parkStatus: 'ClosedDefinitively' }),
+      'en', '/en/park/park-1/old/item/item-1/demo');
+    expect(readJsonLdScripts().find(value => value['name'] === 'Demo Item')).toMatchObject({
+      '@type': 'Place', containedInPlace: { '@type': 'AmusementPark', name: 'Old Park' },
+      additionalProperty: { '@type': 'PropertyValue', name: 'parentParkLifecycleStatus', value: 'ClosedDefinitively' }
     });
   });
 
@@ -2269,6 +2331,7 @@ function buildParkItemDetail(
 ): ParkItemDetailViewModel {
   return {
     name: 'Demo Item',
+    category: 'Attraction',
     description: 'Demo item description',
     parkName: null,
     parkStatus: 'Operating',

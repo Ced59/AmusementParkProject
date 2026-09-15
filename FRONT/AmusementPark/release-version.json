@@ -1,6 +1,20 @@
 {
-  "version": "5.3.40",
+  "version": "5.3.41",
   "history": [
+    {
+      "version": "5.3.41",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Des titres et des informations plus précis pour les lieux des parcs.",
+        "en": "Clearer titles and information for places within parks.",
+        "de": "Klarere Titel und Informationen zu den Orten in den Parks.",
+        "nl": "Duidelijkere titels en informatie over plekken in de parken.",
+        "it": "Titoli e informazioni più precisi sui luoghi dei parchi.",
+        "es": "Títulos e información más precisos sobre los lugares de los parques.",
+        "pl": "Dokładniejsze tytuły i informacje o miejscach w parkach.",
+        "pt": "Títulos e informações mais precisos sobre os locais dos parques."
+      }
+    },
     {
       "version": "5.3.40",
       "releasedAt": "2026-09-15",
