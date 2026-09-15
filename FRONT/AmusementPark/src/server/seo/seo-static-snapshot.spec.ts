@@ -168,14 +168,14 @@ describe('SeoStaticSnapshotPublisher', () => {
     expect((await publisher.refresh()).fetchControlStatus).toBe('source-missing');
   });
 
-  it('preserves the main snapshot and reports a collision if the control name becomes an advertised child', async () => {
+  it.each(['sitemap-static-fr.xml', 'SITEMAP-STATIC-FR.xml'])('preserves the advertised child %s and reports a collision', async (controlFileName: string) => {
     const directory: string = await createTemporaryDirectory();
     const responses = buildValidResponses();
     responses['/sitemap.xml'] = response(buildIndexXml([
       'https://amusement-parks.fun/static-fr.xml',
-      'https://amusement-parks.fun/sitemap-static-fr.xml'
+      `https://amusement-parks.fun/${controlFileName}`
     ]));
-    responses['/sitemaps/sitemap-static-fr.xml'] = response(buildUrlSetXml('https://amusement-parks.fun/fr/parks'));
+    responses[`/sitemaps/${controlFileName}`] = response(buildUrlSetXml('https://amusement-parks.fun/fr/parks'));
     const fetchDocument = vi.fn(async (path: string): Promise<SeoStaticDocumentResponse> => responses[path]);
     const publisher = new SeoStaticSnapshotPublisher({ directory, publicOrigin: 'https://amusement-parks.fun', fetchDocument });
 
@@ -184,31 +184,77 @@ describe('SeoStaticSnapshotPublisher', () => {
     expect(result.fetchControlStatus).toBe('name-conflict');
     expect(result.documentCount).toBe(4);
     expect(fetchDocument).toHaveBeenCalledTimes(4);
-    expect((await readFile(join(directory, 'current', 'sitemap-static-fr.xml'))).equals(responses['/sitemaps/sitemap-static-fr.xml'].body)).toBe(true);
+    expect((await readFile(join(directory, 'current', controlFileName))).equals(responses[`/sitemaps/${controlFileName}`].body)).toBe(true);
     expect(await readFile(join(directory, 'current', 'sitemap.xml'), 'utf8')).toBe(responses['/sitemap.xml'].body.toString('utf8'));
   });
 
-  it('counts the control file in the document limit before fetching children', async () => {
+  it.each([5, 6])('preserves the main snapshot within a limit of %i documents', async (maxDocuments: number) => {
     const directory: string = await createTemporaryDirectory();
     const responses = buildValidResponses();
     const fetchDocument = vi.fn(async (path: string): Promise<SeoStaticDocumentResponse> => responses[path]);
-    const publisher = new SeoStaticSnapshotPublisher({ directory, publicOrigin: 'https://amusement-parks.fun', fetchDocument, maxDocuments: 5 });
+    const publisher = new SeoStaticSnapshotPublisher({ directory, publicOrigin: 'https://amusement-parks.fun', fetchDocument, maxDocuments });
 
-    await expect(publisher.refresh()).rejects.toThrow('contains 6 documents; maximum is 5');
+    const result = await publisher.refresh();
+    expect(result.status).toBe('published');
+    expect(result.documentCount).toBe(maxDocuments);
+    expect(result.fetchControlStatus).toBe(maxDocuments === 5 ? 'document-limit' : 'included');
+    expect(fetchDocument).toHaveBeenCalledTimes(5);
+    expect(await readFile(join(directory, 'current', 'sitemap.xml'), 'utf8')).toBe(responses['/sitemap.xml'].body.toString('utf8'));
+    if (maxDocuments === 5) {
+      await expect(readFile(join(directory, 'current', 'sitemap-static-fr.xml'))).rejects.toMatchObject({ code: 'ENOENT' });
+    }
+    const unchanged = await publisher.refresh();
+    expect(unchanged.status).toBe('unchanged');
+    expect(unchanged.fetchControlStatus).toBe(result.fetchControlStatus);
+  });
+
+  it('still rejects a main snapshot exceeding the document limit before fetching children', async () => {
+    const directory: string = await createTemporaryDirectory();
+    const responses = buildValidResponses();
+    const fetchDocument = vi.fn(async (path: string): Promise<SeoStaticDocumentResponse> => responses[path]);
+    const publisher = new SeoStaticSnapshotPublisher({ directory, publicOrigin: 'https://amusement-parks.fun', fetchDocument, maxDocuments: 4 });
+
+    await expect(publisher.refresh()).rejects.toThrow('contains 5 documents; maximum is 4');
     expect(fetchDocument).toHaveBeenCalledTimes(2);
   });
 
-  it('counts the byte-identical control file in the total byte limit', async () => {
+  it.each(['main-only', 'one-byte-short', 'with-control'])('preserves the main snapshot at the %s byte boundary', async (boundary: string) => {
     const directory: string = await createTemporaryDirectory();
     const responses = buildValidResponses();
     const sourceBytes: number = Object.values(responses).reduce((sum, item) => sum + item.body.length, 0);
     const totalBytes: number = sourceBytes + responses['/sitemaps/static-fr.xml'].body.length;
+    const maxTotalBytes: number = boundary === 'main-only' ? sourceBytes : totalBytes - (boundary === 'one-byte-short' ? 1 : 0);
+    const includesControl: boolean = boundary === 'with-control';
     const publisher = new SeoStaticSnapshotPublisher({
-      directory, publicOrigin: 'https://amusement-parks.fun', maxTotalBytes: totalBytes - 1,
+      directory, publicOrigin: 'https://amusement-parks.fun', maxTotalBytes,
       fetchDocument: async (path: string): Promise<SeoStaticDocumentResponse> => responses[path]
     });
 
-    await expect(publisher.refresh()).rejects.toThrow(`contains ${totalBytes} bytes; maximum is ${totalBytes - 1}`);
+    const result = await publisher.refresh();
+    expect(result.status).toBe('published');
+    expect(result.fetchControlStatus).toBe(includesControl ? 'included' : 'byte-limit');
+    expect(result.documentCount).toBe(includesControl ? 6 : 5);
+    expect(result.totalBytes).toBe(includesControl ? totalBytes : sourceBytes);
+    expect(result.totalBytes).toBeLessThanOrEqual(maxTotalBytes);
+    expect(await readFile(join(directory, 'current', 'sitemap.xml'), 'utf8')).toBe(responses['/sitemap.xml'].body.toString('utf8'));
+    if (!includesControl) {
+      await expect(readFile(join(directory, 'current', 'sitemap-static-fr.xml'))).rejects.toMatchObject({ code: 'ENOENT' });
+    }
+    const unchanged = await publisher.refresh();
+    expect(unchanged.status).toBe('unchanged');
+    expect(unchanged.fetchControlStatus).toBe(result.fetchControlStatus);
+  });
+
+  it('still rejects a main snapshot exceeding the byte limit', async () => {
+    const directory: string = await createTemporaryDirectory();
+    const responses = buildValidResponses();
+    const sourceBytes: number = Object.values(responses).reduce((sum, item) => sum + item.body.length, 0);
+    const publisher = new SeoStaticSnapshotPublisher({
+      directory, publicOrigin: 'https://amusement-parks.fun', maxTotalBytes: sourceBytes - 1,
+      fetchDocument: async (path: string): Promise<SeoStaticDocumentResponse> => responses[path]
+    });
+
+    await expect(publisher.refresh()).rejects.toThrow(`contains ${sourceBytes} bytes; maximum is ${sourceBytes - 1}`);
   });
 
   function createTemporaryDirectory(): Promise<string> {

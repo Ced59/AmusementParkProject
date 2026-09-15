@@ -20,7 +20,7 @@ export interface SeoStaticSnapshotPublisherOptions {
 }
 
 export type SeoStaticSnapshotPublishStatus = 'published' | 'unchanged' | 'busy';
-export type SeoStaticSnapshotFetchControlStatus = 'included' | 'source-missing' | 'name-conflict';
+export type SeoStaticSnapshotFetchControlStatus = 'included' | 'source-missing' | 'name-conflict' | 'document-limit' | 'byte-limit';
 
 export interface SeoStaticSnapshotPublishResult {
   readonly status: SeoStaticSnapshotPublishStatus;
@@ -161,7 +161,7 @@ export class SeoStaticSnapshotPublisher {
     const publicOrigin: string = normalizePublicOrigin(this.options.publicOrigin);
     const childFileNames: string[] = extractSitemapFileNames(indexResponse.body, publicOrigin);
     const sourceIndex: number = childFileNames.indexOf(fetchControlSourceFileName);
-    const fetchControlStatus: SeoStaticSnapshotFetchControlStatus = childFileNames.includes(fetchControlFileName)
+    let fetchControlStatus: SeoStaticSnapshotFetchControlStatus = childFileNames.some(fileName => fileName.toLowerCase() === fetchControlFileName)
       ? 'name-conflict'
       : sourceIndex < 0 ? 'source-missing' : 'included';
     const maxDocuments: number = normalizePositiveInteger(
@@ -169,9 +169,12 @@ export class SeoStaticSnapshotPublisher {
       defaultMaxDocuments,
     );
 
-    const documentCount: number = childFileNames.length + 2 + (fetchControlStatus === 'included' ? 1 : 0);
+    const documentCount: number = childFileNames.length + 2;
     if (documentCount > maxDocuments) {
       throw new Error(`SEO static snapshot contains ${documentCount} documents; maximum is ${maxDocuments}.`);
+    }
+    if (fetchControlStatus === 'included' && documentCount === maxDocuments) {
+      fetchControlStatus = 'document-limit';
     }
 
     const childDocuments: SeoStaticSnapshotDocument[] = new Array(childFileNames.length);
@@ -201,7 +204,6 @@ export class SeoStaticSnapshotPublisher {
       { fileName: 'robots.txt', body: robotsResponse.body },
       { fileName: 'sitemap.xml', body: indexResponse.body },
       ...childDocuments,
-      ...(fetchControlStatus === 'included' ? [{ fileName: fetchControlFileName, body: childDocuments[sourceIndex].body }] : []),
     ];
     const totalBytes: number = documents.reduce(
       (sum: number, document: SeoStaticSnapshotDocument): number => sum + document.body.length,
@@ -214,6 +216,15 @@ export class SeoStaticSnapshotPublisher {
 
     if (totalBytes > maxTotalBytes) {
       throw new Error(`SEO static snapshot contains ${totalBytes} bytes; maximum is ${maxTotalBytes}.`);
+    }
+
+    if (fetchControlStatus === 'included') {
+      const sourceBody: Buffer = childDocuments[sourceIndex].body;
+      if (totalBytes + sourceBody.length > maxTotalBytes) {
+        fetchControlStatus = 'byte-limit';
+      } else {
+        documents.push({ fileName: fetchControlFileName, body: sourceBody });
+      }
     }
 
     return { documents, fetchControlStatus };
