@@ -196,6 +196,7 @@ function pageResponse(page: number, size: number = 9): ParksApiResponse {
   const start: number = (page - 1) * size;
   const data: Park[] = Array.from({ length: Math.max(0, Math.min(size, 20 - start)) }, (_, index): Park => ({
     id: `park-${start + index + 1}`, name: `Parc ${start + index + 1}`, isVisible: true, countryCode: 'FR',
+    latitude: 48.8, longitude: 2.3,
     status: 'Operating', descriptions: [{ languageCode: 'fr', value: '<p>Un parc avec des attractions et des jardins.</p>' }]
   }));
   return { data, pagination: { currentPage: page, itemsPerPage: size, totalItems: 20, totalPages: Math.ceil(20 / size) } };
