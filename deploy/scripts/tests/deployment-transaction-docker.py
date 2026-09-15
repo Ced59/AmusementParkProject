@@ -19,7 +19,7 @@ import urllib.request
 SCRIPTS = Path(__file__).resolve().parents[1]
 REPO = SCRIPTS.parents[1]
 sys.path.insert(0, str(SCRIPTS))
-from deployment_runtime import DockerRuntime
+from deployment_runtime import DockerRuntime, GENERATION_LABEL
 from deployment_transaction import DeploymentTransaction
 
 
@@ -144,9 +144,17 @@ def main():
             assert body_request.result(timeout=20)[0] == f"start:{original['front']['name']}\nend:{original['front']['name']}\n".encode()
             assert write_request.result(timeout=20)["name"] == original["api"]["name"]
             assert len((directory / "control/writes").read_text().splitlines()) == 1
-            until(lambda: phase("replace-canonical") and runtime.find(runtime.names["api"])
-                  and not runtime.find(runtime.names["front"]), "B active with C API incomplete")
-            partial_api = runtime.find(runtime.names["api"])
+            def partial_canonical_api():
+                current = phase("replace-canonical")
+                if not current or runtime.find(runtime.names["front"]) is not None:
+                    return None
+                api = runtime.inspect(runtime.names["api"])
+                if not api or api["Config"]["Labels"].get(GENERATION_LABEL) != current["generation"]:
+                    return None
+                assert api["Id"] != current["original"]["api"]["id"]
+                assert api["State"].get("Health", {}).get("Status") != "healthy"
+                return runtime.reference(api)
+            partial_api = until(partial_canonical_api, "B active with new-generation C API incomplete")
             second.kill()
             second.wait(timeout=10)
             assert len(runtime.candidates()) == 2
