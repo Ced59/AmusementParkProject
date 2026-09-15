@@ -25,8 +25,11 @@ export function presentFactualFact(value: FactualFactValueAdmin | null): Factual
     && fields.has('rules')
     && fields.has('overrides')
     && fields.has('sha256');
+  const changedCalendarEntryCount: number = isOpeningCalendar
+    ? parseCount(fields.get('changedEntryCount')) ?? 0
+    : 0;
   const calendarEntries: readonly FactualCalendarEntryPresentation[] = isOpeningCalendar
-    ? parseCalendarEntries(fields.get('entries'))
+    ? parseCalendarEntries(fields.get('entries'), changedCalendarEntryCount)
     : [];
   const calendarEntryCount: number = isOpeningCalendar
     ? parseCount(fields.get('entryCount')) ?? calendarEntries.length
@@ -43,6 +46,12 @@ export function presentFactualFact(value: FactualFactValueAdmin | null): Factual
     evidenceAvailable: isOpeningCalendar && fields.get('evidence') === 'complete',
     calendarEntries,
     hiddenCalendarEntriesCount: Math.max(0, calendarEntryCount - calendarEntries.length),
+    hiddenChangedCalendarEntriesCount: Math.max(
+      0,
+      changedCalendarEntryCount - calendarEntries.filter(
+        (entry: FactualCalendarEntryPresentation): boolean => entry.isChanged,
+      ).length,
+    ),
   };
 }
 
@@ -64,21 +73,26 @@ function emptyPresentation(): FactualFactPresentation {
     evidenceAvailable: false,
     calendarEntries: [],
     hiddenCalendarEntriesCount: 0,
+    hiddenChangedCalendarEntriesCount: 0,
   };
 }
 
-function parseCalendarEntries(value: string | undefined): readonly FactualCalendarEntryPresentation[] {
+function parseCalendarEntries(
+  value: string | undefined,
+  changedEntryCount: number,
+): readonly FactualCalendarEntryPresentation[] {
   if (!value) {
     return [];
   }
 
   return value
     .split('~')
-    .map(parseCalendarEntry)
+    .map((entry: string, index: number): FactualCalendarEntryPresentation | null =>
+      parseCalendarEntry(entry, index < changedEntryCount))
     .filter((entry: FactualCalendarEntryPresentation | null): entry is FactualCalendarEntryPresentation => entry !== null);
 }
 
-function parseCalendarEntry(value: string): FactualCalendarEntryPresentation | null {
+function parseCalendarEntry(value: string, isChanged: boolean): FactualCalendarEntryPresentation | null {
   const parts: string[] = value.split('|');
   const startDate: string = parts[1] ?? '';
   const endDate: string = parts[2] ?? '';
@@ -103,6 +117,7 @@ function parseCalendarEntry(value: string): FactualCalendarEntryPresentation | n
     isClosed: state === 'C',
     priority: kind === 'regular' ? parseCount(parts[5]) : null,
     tieOrder: kind === 'regular' ? parseCount(parts[8]) : null,
+    isChanged,
     openingWindows: windows,
     hiddenOpeningWindowsCount: Math.max(0, windowCount - windows.length),
   };

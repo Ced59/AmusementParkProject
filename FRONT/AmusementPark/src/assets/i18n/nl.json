@@ -4077,6 +4077,8 @@
         "evidenceUnavailable": "De details van deze oudere versie zijn niet bewaard. Controleer de bron voordat je beslist.",
         "closed": "Gesloten",
         "hiddenEntries": "+{{count}} niet getoonde regels",
+        "changedEntry": "Wijziging gedetecteerd",
+        "hiddenChangedEntries": "{{count}} andere wijzigingen passen niet in dit voorbeeld. Controleer ze in de bron.",
         "priorityOrder": "Prioriteit {{priority}} · volgorde {{order}} bij gelijke stand",
         "entry": {
           "regular": "Vaste regel",

@@ -60,8 +60,9 @@
               @if (!previousFact.evidenceAvailable) {<small class="factual-event-card__evidence-warning">{{ 'factualEvents.admin.change.evidenceUnavailable' | translate }}</small>}
               <div class="factual-event-card__calendar-entries">
                 @for (entry of previousFact.calendarEntries; track entry.kind + entry.startDate + entry.endDate + $index) {
-                  <article class="factual-event-card__calendar-entry">
+                  <article class="factual-event-card__calendar-entry" [class.factual-event-card__calendar-entry--changed]="entry.isChanged">
                     <b>{{ ('factualEvents.admin.change.entry.' + entry.kind) | translate }}</b>
+                    @if (entry.isChanged) {<em class="factual-event-card__change-badge">{{ 'factualEvents.admin.change.changedEntry' | translate }}</em>}
                     <span>{{ entry.startDate | date:'mediumDate':'UTC' }}@if (entry.endDate !== entry.startDate) { → {{ entry.endDate | date:'mediumDate':'UTC' }}}</span>
                     @if (entry.days.length > 0) {<small>@for (day of entry.days; track day) {<em>{{ ('factualEvents.admin.change.weekday.' + day) | translate }}</em>}</small>}
                     @if (entry.priority !== null && entry.tieOrder !== null) {<small>{{ 'factualEvents.admin.change.priorityOrder' | translate:{ priority: entry.priority, order: entry.tieOrder + 1 } }}</small>}
@@ -70,6 +71,7 @@
                   </article>
                 }
                 @if (previousFact.hiddenCalendarEntriesCount > 0) {<small>{{ 'factualEvents.admin.change.hiddenEntries' | translate:{ count: previousFact.hiddenCalendarEntriesCount } }}</small>}
+                @if (previousFact.hiddenChangedCalendarEntriesCount > 0) {<small class="factual-event-card__evidence-warning">{{ 'factualEvents.admin.change.hiddenChangedEntries' | translate:{ count: previousFact.hiddenChangedCalendarEntriesCount } }}</small>}
               </div>
             } @else {<strong>{{ previousFact.rawValue }}</strong>}
           </div>
@@ -84,8 +86,9 @@
               @if (!newFact.evidenceAvailable) {<small class="factual-event-card__evidence-warning">{{ 'factualEvents.admin.change.evidenceUnavailable' | translate }}</small>}
               <div class="factual-event-card__calendar-entries">
                 @for (entry of newFact.calendarEntries; track entry.kind + entry.startDate + entry.endDate + $index) {
-                  <article class="factual-event-card__calendar-entry">
+                  <article class="factual-event-card__calendar-entry" [class.factual-event-card__calendar-entry--changed]="entry.isChanged">
                     <b>{{ ('factualEvents.admin.change.entry.' + entry.kind) | translate }}</b>
+                    @if (entry.isChanged) {<em class="factual-event-card__change-badge">{{ 'factualEvents.admin.change.changedEntry' | translate }}</em>}
                     <span>{{ entry.startDate | date:'mediumDate':'UTC' }}@if (entry.endDate !== entry.startDate) { → {{ entry.endDate | date:'mediumDate':'UTC' }}}</span>
                     @if (entry.days.length > 0) {<small>@for (day of entry.days; track day) {<em>{{ ('factualEvents.admin.change.weekday.' + day) | translate }}</em>}</small>}
                     @if (entry.priority !== null && entry.tieOrder !== null) {<small>{{ 'factualEvents.admin.change.priorityOrder' | translate:{ priority: entry.priority, order: entry.tieOrder + 1 } }}</small>}
@@ -94,6 +97,7 @@
                   </article>
                 }
                 @if (newFact.hiddenCalendarEntriesCount > 0) {<small>{{ 'factualEvents.admin.change.hiddenEntries' | translate:{ count: newFact.hiddenCalendarEntriesCount } }}</small>}
+                @if (newFact.hiddenChangedCalendarEntriesCount > 0) {<small class="factual-event-card__evidence-warning">{{ 'factualEvents.admin.change.hiddenChangedEntries' | translate:{ count: newFact.hiddenChangedCalendarEntriesCount } }}</small>}
               </div>
             } @else {<strong>{{ newFact.rawValue }}</strong>}
           </div>

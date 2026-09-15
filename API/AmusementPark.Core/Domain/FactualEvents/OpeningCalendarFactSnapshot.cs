@@ -13,6 +13,39 @@ public static class OpeningCalendarFactSnapshot
 
     public static FactValue? Create(ParkOpeningHoursSchedule? schedule)
     {
+        return CreateSnapshot(schedule, null, 0);
+    }
+
+    public static (FactValue? PreviousValue, FactValue? NewValue) CreateChange(
+        ParkOpeningHoursSchedule? previousSchedule,
+        ParkOpeningHoursSchedule? currentSchedule)
+    {
+        IReadOnlyCollection<string> previousEntries = previousSchedule is null
+            ? Array.Empty<string>()
+            : BuildPresentedEntries(previousSchedule);
+        IReadOnlyCollection<string> currentEntries = currentSchedule is null
+            ? Array.Empty<string>()
+            : BuildPresentedEntries(currentSchedule);
+        (IReadOnlyCollection<string> Ordered, int ChangedCount) previousPresentation =
+            PrioritizeChangedEntries(previousEntries, currentEntries);
+        (IReadOnlyCollection<string> Ordered, int ChangedCount) currentPresentation =
+            PrioritizeChangedEntries(currentEntries, previousEntries);
+        return (
+            CreateSnapshot(
+                previousSchedule,
+                previousPresentation.Ordered,
+                previousPresentation.ChangedCount),
+            CreateSnapshot(
+                currentSchedule,
+                currentPresentation.Ordered,
+                currentPresentation.ChangedCount));
+    }
+
+    private static FactValue? CreateSnapshot(
+        ParkOpeningHoursSchedule? schedule,
+        IReadOnlyCollection<string>? presentationEntries,
+        int changedEntryCount)
+    {
         if (schedule is null)
         {
             return null;
@@ -62,8 +95,9 @@ public static class OpeningCalendarFactSnapshot
         string hashText = Convert.ToHexString(hash).ToLowerInvariant();
         string coverage = BuildCoverage(schedule);
         IReadOnlyCollection<string> entries = BuildPresentedEntries(schedule);
+        IReadOnlyCollection<string> orderedPresentationEntries = presentationEntries ?? entries;
         return FactValue.FromText(
-            $"snapshot={SnapshotVersion};timezone={timeZoneId};coverage={coverage};rules={canonicalRules.Count};overrides={canonicalOverrides.Count};evidence=complete;entries={string.Join("~", entries.Take(MaximumPresentedEntryCount))};entryCount={entries.Count};sha256={hashText}");
+            $"snapshot={SnapshotVersion};timezone={timeZoneId};coverage={coverage};rules={canonicalRules.Count};overrides={canonicalOverrides.Count};evidence=complete;entries={string.Join("~", orderedPresentationEntries.Take(MaximumPresentedEntryCount))};entryCount={entries.Count};changedEntryCount={changedEntryCount};sha256={hashText}");
     }
 
     public static FactValue MigrateLegacy(
@@ -100,7 +134,38 @@ public static class OpeningCalendarFactSnapshot
             ? coverageValue
             : "none";
         return FactValue.FromText(
-            $"snapshot={SnapshotVersion};timezone={fields["timezone"]};coverage={coverage};rules={fields["rules"]};overrides={fields["overrides"]};evidence=unavailable;entries=;entryCount=0;sha256={legacyHash}");
+            $"snapshot={SnapshotVersion};timezone={fields["timezone"]};coverage={coverage};rules={fields["rules"]};overrides={fields["overrides"]};evidence=unavailable;entries=;entryCount=0;changedEntryCount=0;sha256={legacyHash}");
+    }
+
+    private static (IReadOnlyCollection<string> Ordered, int ChangedCount) PrioritizeChangedEntries(
+        IReadOnlyCollection<string> entries,
+        IReadOnlyCollection<string> counterpartEntries)
+    {
+        Dictionary<string, int> counterpartCounts = counterpartEntries
+            .GroupBy(static entry => entry, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.Count(),
+                StringComparer.Ordinal);
+        List<string> changedEntries = new List<string>();
+        List<string> unchangedEntries = new List<string>();
+        foreach (string entry in entries)
+        {
+            if (counterpartCounts.TryGetValue(entry, out int remainingCount)
+                && remainingCount > 0)
+            {
+                counterpartCounts[entry] = remainingCount - 1;
+                unchangedEntries.Add(entry);
+            }
+            else
+            {
+                changedEntries.Add(entry);
+            }
+        }
+
+        return (
+            changedEntries.Concat(unchangedEntries).ToArray(),
+            changedEntries.Count);
     }
 
     private static IReadOnlyCollection<string> BuildPresentedEntries(

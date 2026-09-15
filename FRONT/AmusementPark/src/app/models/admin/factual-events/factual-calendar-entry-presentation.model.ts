@@ -17,6 +17,7 @@ export interface FactualCalendarEntryPresentation {
   readonly isClosed: boolean;
   readonly priority: number | null;
   readonly tieOrder: number | null;
+  readonly isChanged: boolean;
   readonly openingWindows: readonly string[];
   readonly hiddenOpeningWindowsCount: number;
 }

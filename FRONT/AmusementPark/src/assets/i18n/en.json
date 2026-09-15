@@ -4077,6 +4077,8 @@
         "evidenceUnavailable": "The detail of this older version was not retained. Check the source before making a decision.",
         "closed": "Closed",
         "hiddenEntries": "+{{count}} rules not shown",
+        "changedEntry": "Change detected",
+        "hiddenChangedEntries": "{{count}} more changes do not fit in this preview. Check them in the source.",
         "priorityOrder": "Priority {{priority}} · order {{order}} when tied",
         "entry": {
           "regular": "Regular rule",

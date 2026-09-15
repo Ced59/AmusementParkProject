@@ -4077,6 +4077,8 @@
         "evidenceUnavailable": "Szczegóły tej starszej wersji nie zostały zachowane. Sprawdź źródło przed podjęciem decyzji.",
         "closed": "Zamknięte",
         "hiddenEntries": "+{{count}} niewyświetlonych reguł",
+        "changedEntry": "Wykryto zmianę",
+        "hiddenChangedEntries": "{{count}} kolejnych zmian nie mieści się w tym podglądzie. Sprawdź je w źródle.",
         "priorityOrder": "Priorytet {{priority}} · kolejność {{order}} przy remisie",
         "entry": {
           "regular": "Reguła regularna",

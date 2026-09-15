@@ -4,7 +4,7 @@ describe('presentFactualFact', (): void => {
   it('turns an opening calendar snapshot into contextual evidence without exposing its hash', (): void => {
     const presentation = presentFactualFact({
       kind: 'Text',
-      canonicalValue: 'snapshot=2;timezone=Europe/Paris;coverage=2026-04-01/2026-11-02;rules=7;overrides=3;evidence=complete;entries=R|2026-04-01|2026-06-30|1,2|O|2|09:30-18:00,10:00-23:30|2|1~D|2026-05-01|2026-05-01||C|||0|;entryCount=3;sha256=technical-secret',
+      canonicalValue: 'snapshot=2;timezone=Europe/Paris;coverage=2026-04-01/2026-11-02;rules=7;overrides=3;evidence=complete;entries=R|2026-04-01|2026-06-30|1,2|O|2|09:30-18:00,10:00-23:30|2|1~D|2026-05-01|2026-05-01||C|||0|;entryCount=3;changedEntryCount=1;sha256=technical-secret',
       unitCode: null,
     });
 
@@ -27,6 +27,7 @@ describe('presentFactualFact', (): void => {
           isClosed: false,
           priority: 2,
           tieOrder: 1,
+          isChanged: true,
           openingWindows: ['09:30 → 18:00', '10:00 → 23:30'],
           hiddenOpeningWindowsCount: 0,
         },
@@ -38,11 +39,13 @@ describe('presentFactualFact', (): void => {
           isClosed: true,
           priority: null,
           tieOrder: null,
+          isChanged: false,
           openingWindows: [],
           hiddenOpeningWindowsCount: 0,
         },
       ],
       hiddenCalendarEntriesCount: 1,
+      hiddenChangedCalendarEntriesCount: 0,
     });
     expect(JSON.stringify(presentation)).not.toContain('technical-secret');
   });

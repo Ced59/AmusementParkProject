@@ -12,4 +12,5 @@ export interface FactualFactPresentation {
   readonly evidenceAvailable: boolean;
   readonly calendarEntries: readonly FactualCalendarEntryPresentation[];
   readonly hiddenCalendarEntriesCount: number;
+  readonly hiddenChangedCalendarEntriesCount: number;
 }

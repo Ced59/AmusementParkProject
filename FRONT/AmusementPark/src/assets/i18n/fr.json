@@ -4077,6 +4077,8 @@
         "evidenceUnavailable": "Le détail de cette ancienne version n’était pas conservé. Contrôle la source avant toute décision.",
         "closed": "Fermé",
         "hiddenEntries": "+{{count}} règles non affichées",
+        "changedEntry": "Modification détectée",
+        "hiddenChangedEntries": "{{count}} autres modifications ne tiennent pas dans cet aperçu. Contrôle-les dans la source.",
         "priorityOrder": "Priorité {{priority}} · ordre {{order}} à priorité égale",
         "entry": {
           "regular": "Règle régulière",

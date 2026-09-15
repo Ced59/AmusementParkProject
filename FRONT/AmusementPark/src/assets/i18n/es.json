@@ -4077,6 +4077,8 @@
         "evidenceUnavailable": "No se conservó el detalle de esta versión anterior. Comprueba la fuente antes de decidir.",
         "closed": "Cerrado",
         "hiddenEntries": "+{{count}} reglas no mostradas",
+        "changedEntry": "Cambio detectado",
+        "hiddenChangedEntries": "{{count}} cambios más no caben en esta vista previa. Compruébalos en la fuente.",
         "priorityOrder": "Prioridad {{priority}} · orden {{order}} en caso de empate",
         "entry": {
           "regular": "Regla habitual",

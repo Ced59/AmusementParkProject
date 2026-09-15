@@ -117,6 +117,26 @@ public sealed class OpeningCalendarFactSnapshotTests
     }
 
     [Fact]
+    public void CreateChange_WhenLateRuleChanges_ShouldPresentThatRuleBeforeTheCap()
+    {
+        ParkOpeningHoursSchedule previous = CreateScheduleWithDailyRules(20);
+        ParkOpeningHoursSchedule current = CreateScheduleWithDailyRules(20);
+        current.RegularRules[19].TimeRanges[0].ClosesAt = new TimeOnly(19, 0);
+
+        (FactValue? previousValue, FactValue? newValue) =
+            OpeningCalendarFactSnapshot.CreateChange(previous, current);
+
+        Assert.Contains(
+            "entries=R|2026-01-20|2026-01-20|1|O|0|10:00-18:00|1|0",
+            previousValue!.CanonicalValue);
+        Assert.Contains(
+            "entries=R|2026-01-20|2026-01-20|1|O|0|10:00-19:00|1|0",
+            newValue!.CanonicalValue);
+        Assert.Contains("changedEntryCount=1", previousValue.CanonicalValue);
+        Assert.Contains("changedEntryCount=1", newValue.CanonicalValue);
+    }
+
+    [Fact]
     public void Create_WhenRulePriorityChanges_ShouldProduceDifferentFact()
     {
         ParkOpeningHoursSchedule previous = CreateSchedule(new TimeOnly(18, 0));
@@ -195,6 +215,28 @@ public sealed class OpeningCalendarFactSnapshotTests
                 },
             },
         };
+    }
+
+    private static ParkOpeningHoursSchedule CreateScheduleWithDailyRules(int count)
+    {
+        ParkOpeningHoursSchedule schedule = CreateSchedule(new TimeOnly(18, 0));
+        schedule.RegularRules = Enumerable.Range(0, count)
+            .Select(index => new ParkOpeningHoursRule
+            {
+                StartDate = new DateOnly(2026, 1, 1).AddDays(index),
+                EndDate = new DateOnly(2026, 1, 1).AddDays(index),
+                DaysOfWeek = new List<DayOfWeek> { DayOfWeek.Monday },
+                TimeRanges = new List<ParkOpeningHoursTimeRange>
+                {
+                    new ParkOpeningHoursTimeRange
+                    {
+                        OpensAt = new TimeOnly(10, 0),
+                        ClosesAt = new TimeOnly(18, 0),
+                    },
+                },
+            })
+            .ToList();
+        return schedule;
     }
 
     private static ParkOpeningHoursRule CreateTiedRule(TimeOnly closesAt)

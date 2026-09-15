@@ -89,7 +89,9 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > exposer les identifiants de cible ni l'empreinte technique des calendriers.
 > Pour les calendriers, chaque règle conserve sa période, ses jours, son état
 > ouvert ou fermé et ses plages horaires : un déplacement du lundi au mardi reste
-> donc visible même si les compteurs et les heures sont identiques. Une migration
+> donc visible même si les compteurs et les heures sont identiques. Dans un grand
+> calendrier, les règles réellement ajoutées, retirées ou modifiées passent avant
+> les règles inchangées dans l'aperçu borné. Une migration
 > Mongo unique convertit aussi les événements et outbox historiques ; lorsqu'un
 > ancien détail ne peut pas être reconstruit honnêtement, l'atelier le dit au lieu
 > d'inventer une preuve ou d'exposer une empreinte technique.
