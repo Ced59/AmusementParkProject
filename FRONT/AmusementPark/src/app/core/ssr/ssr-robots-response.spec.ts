@@ -57,7 +57,7 @@ describe('SSR robots response delivery', () => {
     const result = prepareSsrRobotsResponse(prepared.html, pageUrl, 200, false);
     expect(result.directive).toBeNull();
     expect(result.html).toContain('content="index,follow"');
-    expect(result.html).toContain(`href="https://amusement-manufacturers.fun${pageUrl}"`);
+    expect(result.html).toContain(`href="https://amusement-parks.fun${pageUrl}"`);
     expect(result.html).toContain('BreadcrumbList');
   });
 
