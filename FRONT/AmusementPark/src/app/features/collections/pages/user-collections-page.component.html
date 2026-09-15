@@ -1,6 +1,6 @@
 <main class="collections-page">
   <header class="collections-page__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
-    <a appUiButton="ghost" [routerLink]="['/', currentLang, 'profile']">
+    <a appUiButton="ghost" [routerLink]="['/', currentLang(), 'profile']">
       <i class="pi pi-arrow-left" aria-hidden="true"></i>
       <span>{{ 'collections.actions.backToProfile' | translate }}</span>
     </a>
@@ -45,7 +45,7 @@
       <i class="pi pi-sparkles" aria-hidden="true"></i>
       <h2>{{ 'collections.empty.title' | translate }}</h2>
       <p>{{ 'collections.empty.description' | translate }}</p>
-      <a appUiButton="primary" [routerLink]="['/', currentLang, 'parks']">
+      <a appUiButton="primary" [routerLink]="['/', currentLang(), 'parks']">
         {{ 'collections.actions.explore' | translate }}
       </a>
     </section>

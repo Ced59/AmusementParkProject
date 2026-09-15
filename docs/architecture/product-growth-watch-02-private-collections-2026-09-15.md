@@ -25,6 +25,8 @@ Les actions sont disponibles sur les fiches de parc et d'élément. Le profil ou
 une page dédiée, filtrable par intention. Une cible devenue temporairement ou
 définitivement fermée reste conservée et porte son état factuel. Une cible masquée
 ne divulgue plus son nom : la page explique seulement que le choix privé est gardé.
+Chaque consultation synchronise par lot le dernier état d'une cible encore visible,
+avec contrôle de version, afin que ce dernier fait connu reste juste si elle disparaît ensuite.
 
 ## Architecture
 
@@ -79,3 +81,4 @@ La page utilise des grilles avec `minmax(0, 1fr)`, des largeurs maximales à 100
 des textes cassables et une bascule en colonne unique sous 36 rem. Les actions de
 fiche et de carte deviennent pleine largeur sur mobile. Des tests de contrat dédiés
 empêchent le retour d'un dépassement horizontal du viewport.
+Les liens sont aussi recalculés lors d'un changement de langue sans recréer la page.

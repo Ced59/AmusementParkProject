@@ -133,6 +133,29 @@ public sealed class UserCollectionLifecycleService
                     cancellationToken);
             }
 
+            DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+            List<UserCollectionEntry> synchronizedEntries = new();
+            foreach (UserCollectionEntry entry in entries)
+            {
+                if (snapshotsByType.TryGetValue(
+                        entry.TargetType,
+                        out IReadOnlyDictionary<string, UserCollectionTargetSnapshot>? snapshots)
+                    && snapshots.TryGetValue(entry.TargetId, out UserCollectionTargetSnapshot? snapshot)
+                    && snapshot.IsAvailableForCreation
+                    && snapshot.Status != entry.TargetStatus)
+                {
+                    entry.SynchronizeTargetStatus(snapshot.Status, nowUtc);
+                    synchronizedEntries.Add(entry);
+                }
+            }
+
+            if (synchronizedEntries.Count > 0)
+            {
+                await this.repository.SynchronizeTargetStatusesAsync(
+                    synchronizedEntries,
+                    cancellationToken);
+            }
+
             UserCollectionEntryResult[] results = entries.Select(entry =>
             {
                 UserCollectionTargetSnapshot snapshot = snapshotsByType.TryGetValue(

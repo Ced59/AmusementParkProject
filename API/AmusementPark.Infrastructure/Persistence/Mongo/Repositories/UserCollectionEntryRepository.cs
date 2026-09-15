@@ -127,6 +127,41 @@ public sealed class UserCollectionEntryRepository : IUserCollectionEntryReposito
         return UserCollectionWriteOutcome.LimitReached;
     }
 
+    public async Task SynchronizeTargetStatusesAsync(
+        IReadOnlyCollection<UserCollectionEntry> entries,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(entries);
+        if (entries.Count == 0)
+        {
+            return;
+        }
+
+        List<WriteModel<UserCollectionEntryDocument>> writes = entries.Select(entry =>
+        {
+            FilterDefinition<UserCollectionEntryDocument> filter =
+                Builders<UserCollectionEntryDocument>.Filter.Eq(
+                    static document => document.Id,
+                    entry.Id.Value)
+                & Builders<UserCollectionEntryDocument>.Filter.Eq(
+                    static document => document.UserId,
+                    entry.UserId)
+                & Builders<UserCollectionEntryDocument>.Filter.Eq(
+                    static document => document.Version,
+                    entry.Version - 1);
+            UpdateDefinition<UserCollectionEntryDocument> update =
+                Builders<UserCollectionEntryDocument>.Update
+                    .Set(static document => document.TargetStatus, entry.TargetStatus)
+                    .Set(static document => document.UpdatedAt, entry.UpdatedAtUtc)
+                    .Set(static document => document.Version, entry.Version);
+            return new UpdateOneModel<UserCollectionEntryDocument>(filter, update);
+        }).Cast<WriteModel<UserCollectionEntryDocument>>().ToList();
+        await this.collection.BulkWriteAsync(
+            writes,
+            new BulkWriteOptions { IsOrdered = false },
+            cancellationToken);
+    }
+
     public async Task DeleteOwnedByIdentityAsync(
         string userId,
         CollectionTargetType targetType,

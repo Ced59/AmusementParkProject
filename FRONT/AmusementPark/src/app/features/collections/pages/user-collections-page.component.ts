@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, Signal, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, computed, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -34,7 +35,7 @@ type UserCollectionFilter = 'All' | UserCollectionKind;
   ]
 })
 export class UserCollectionsPageComponent implements OnInit {
-  protected readonly currentLang: string;
+  protected readonly currentLang = signal<string>('en');
   protected readonly filter = signal<UserCollectionFilter>('All');
   protected readonly entries: Signal<UserCollectionEntry[]> = computed((): UserCollectionEntry[] => {
     const activeFilter: UserCollectionFilter = this.filter();
@@ -55,9 +56,13 @@ export class UserCollectionsPageComponent implements OnInit {
 
   constructor(
     protected readonly facade: UserCollectionsPageFacade,
-    translationService: TranslationService
+    translationService: TranslationService,
+    destroyRef: DestroyRef
   ) {
-    this.currentLang = translationService.getCurrentLang() || 'en';
+    this.currentLang.set(translationService.getCurrentLang() || 'en');
+    translationService.languageChanged
+      .pipe(takeUntilDestroyed(destroyRef))
+      .subscribe((language: string): void => this.currentLang.set(language || 'en'));
   }
 
   ngOnInit(): void {
@@ -71,14 +76,14 @@ export class UserCollectionsPageComponent implements OnInit {
 
     if (entry.targetType === 'Park') {
       return buildPublicParkRouteCommands({
-        language: this.currentLang,
+        language: this.currentLang(),
         parkId: entry.targetId,
         parkName: entry.targetName
       });
     }
 
     return buildPublicParkItemRouteCommands({
-      language: this.currentLang,
+      language: this.currentLang(),
       parkId: entry.parentParkId,
       parkName: entry.parentParkName,
       itemId: entry.targetId,

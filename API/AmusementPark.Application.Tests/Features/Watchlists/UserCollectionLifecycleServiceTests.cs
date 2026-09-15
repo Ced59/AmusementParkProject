@@ -112,6 +112,50 @@ public sealed class UserCollectionLifecycleServiceTests
         Assert.True(result.IsSuccess);
     }
 
+    [Fact]
+    public async Task ListAsync_PersistsCurrentStatusBeforeUsingItAsFallback()
+    {
+        UserCollectionEntry entry = UserCollectionEntry.Create(
+            UserCollectionEntryId.Parse("entry-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.Available,
+            null,
+            null,
+            null,
+            DateTime.UtcNow.AddMinutes(-1));
+        Mock<IUserCollectionEntryRepository> collectionRepository = new(MockBehavior.Strict);
+        collectionRepository.Setup(repository => repository.ListOwnedAsync(
+                "user-1",
+                null,
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { entry });
+        collectionRepository.Setup(repository => repository.SynchronizeTargetStatusesAsync(
+                It.Is<IReadOnlyCollection<UserCollectionEntry>>(entries =>
+                    entries.Count == 1
+                    && entries.Single().TargetStatus == CollectionTargetStatus.PermanentlyClosed),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        UserCollectionLifecycleService service = CreateService(
+            collectionRepository,
+            CreatePublicPark("park-1", "Closed park", ParkStatus.ClosedDefinitively));
+
+        AmusementPark.Application.Errors.ApplicationResult<
+            IReadOnlyCollection<UserCollectionEntryResult>> result = await service.ListAsync(
+                "user-1",
+                null,
+                null,
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(CollectionTargetStatus.PermanentlyClosed, result.Value?.Single().TargetStatus);
+        Assert.Equal(2, result.Value?.Single().Version);
+        collectionRepository.VerifyAll();
+    }
+
     private static UserCollectionLifecycleService CreateService(
         Mock<IUserCollectionEntryRepository> collectionRepository,
         Park? park)

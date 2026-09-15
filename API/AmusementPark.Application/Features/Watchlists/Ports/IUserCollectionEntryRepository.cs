@@ -21,6 +21,10 @@ public interface IUserCollectionEntryRepository
         UserCollectionEntry entry,
         CancellationToken cancellationToken);
 
+    Task SynchronizeTargetStatusesAsync(
+        IReadOnlyCollection<UserCollectionEntry> entries,
+        CancellationToken cancellationToken);
+
     Task DeleteOwnedByIdentityAsync(
         string userId,
         CollectionTargetType targetType,
