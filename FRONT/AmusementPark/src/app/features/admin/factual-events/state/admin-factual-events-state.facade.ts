@@ -43,10 +43,6 @@ export class AdminFactualEventsStateFacade {
   ) {}
 
   public load(query: FactualChangeEventQuery): void {
-    if (this.loadingState()) {
-      return;
-    }
-
     const querySequence: number = ++this.querySequence;
     this.lastQueryState.set(query);
     this.loadingState.set(true);
@@ -55,7 +51,11 @@ export class AdminFactualEventsStateFacade {
     this.port.search(query)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        finalize((): void => this.loadingState.set(false)),
+        finalize((): void => {
+          if (this.isCurrentQuery(querySequence)) {
+            this.loadingState.set(false);
+          }
+        }),
       )
       .subscribe({
         next: (response: PagedResult<FactualChangeEventAdmin>): void => {

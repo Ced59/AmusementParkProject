@@ -84,6 +84,23 @@ describe('AdminFactualEventsStateFacade', (): void => {
 
     expect(facade.events()[0]?.status).toBe('Verified');
   });
+
+  it('accepts a new filter while the previous search is still loading', (): void => {
+    const staleSearch = new Subject<PagedResult<FactualChangeEventAdmin>>();
+    const verifiedEvent: FactualChangeEventAdmin = createEvent('Verified', 5);
+    port.search
+      .mockReturnValueOnce(staleSearch)
+      .mockReturnValueOnce(of(createPage(verifiedEvent)));
+
+    facade.load({ page: 1, size: 20, status: 'Draft' });
+    facade.load({ page: 1, size: 20, status: 'Verified' });
+    staleSearch.next(createPage(createEvent('Draft', 4)));
+    staleSearch.complete();
+
+    expect(port.search).toHaveBeenCalledTimes(2);
+    expect(facade.events()[0]?.status).toBe('Verified');
+    expect(facade.loading()).toBe(false);
+  });
 });
 
 function createPage(event: FactualChangeEventAdmin): PagedResult<FactualChangeEventAdmin> {

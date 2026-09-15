@@ -54,8 +54,9 @@
             <span>{{ 'factualEvents.admin.change.before' | translate }}</span>
             @if (!previousFact.isPresent) {<strong>{{ 'factualEvents.admin.change.notPublished' | translate }}</strong>}
             @else if (previousFact.isOpeningCalendar) {
-              <strong>{{ previousFact.coverageStart | date:'mediumDate' }} → {{ previousFact.coverageEnd | date:'mediumDate' }}</strong>
+              <strong>{{ previousFact.coverageStart | date:'mediumDate':'UTC' }} → {{ previousFact.coverageEnd | date:'mediumDate':'UTC' }}</strong>
               <small>{{ 'factualEvents.admin.change.calendarSummary' | translate:{ rules: previousFact.rulesCount, exceptions: previousFact.overridesCount } }}</small>
+              <small>{{ 'factualEvents.admin.change.timeZone' | translate:{ timeZone: previousFact.timeZone } }}</small>
             } @else {<strong>{{ previousFact.rawValue }}</strong>}
           </div>
           <i class="pi pi-arrow-right" aria-hidden="true"></i>
@@ -63,7 +64,7 @@
             <span>{{ 'factualEvents.admin.change.after' | translate }}</span>
             @if (!newFact.isPresent) {<strong>{{ 'factualEvents.admin.change.notPublished' | translate }}</strong>}
             @else if (newFact.isOpeningCalendar) {
-              <strong>{{ newFact.coverageStart | date:'mediumDate' }} → {{ newFact.coverageEnd | date:'mediumDate' }}</strong>
+              <strong>{{ newFact.coverageStart | date:'mediumDate':'UTC' }} → {{ newFact.coverageEnd | date:'mediumDate':'UTC' }}</strong>
               <small>{{ 'factualEvents.admin.change.calendarSummary' | translate:{ rules: newFact.rulesCount, exceptions: newFact.overridesCount } }}</small>
               <small>{{ 'factualEvents.admin.change.timeZone' | translate:{ timeZone: newFact.timeZone } }}</small>
             } @else {<strong>{{ newFact.rawValue }}</strong>}
