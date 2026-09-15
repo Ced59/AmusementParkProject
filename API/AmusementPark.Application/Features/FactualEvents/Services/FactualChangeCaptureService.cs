@@ -25,18 +25,8 @@ public sealed class FactualChangeCaptureService : IFactualChangeCaptureService
         FactualChangeCaptureRequest request,
         CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(request);
-        if (request.SourceRevision < 1)
-        {
-            throw new ArgumentOutOfRangeException(
-                nameof(request),
-                "The source revision must be positive.");
-        }
-
-        FactualChangeDiff? diff = FactualChangeDiff.Detect(
-            request.PreviousValue,
-            request.NewValue);
-        if (diff is null)
+        FactualChangeOutboxEntry? newEntry = FactualChangeOutboxEntry.Create(request);
+        if (newEntry is null)
         {
             return new FactualChangeCaptureResult(
                 FactualChangeCaptureDisposition.NoChange,
@@ -44,38 +34,23 @@ public sealed class FactualChangeCaptureService : IFactualChangeCaptureService
                 null);
         }
 
-        FactualChangeEvent candidate = FactualChangeEvent.CreateDraft(
-            FactualChangeEventId.New(),
-            request.Type,
-            request.Target,
-            diff.PreviousValue,
-            diff.NewValue,
-            request.Source,
-            request.Confidence,
-            request.OccurredAtUtc,
-            request.DeduplicationKey,
-            request.SourceRevision,
-            request.RecordedAtUtc);
-        FactualChangeOutboxEntry newEntry = new FactualChangeOutboxEntry(
-            Guid.NewGuid().ToString("N"),
-            candidate.Id.Value,
-            candidate.Type,
-            candidate.DefinitionVersion,
-            candidate.Target,
-            candidate.PreviousValue,
-            candidate.NewValue,
-            candidate.Source,
-            candidate.Confidence,
-            candidate.OccurredAtUtc,
-            candidate.DeduplicationKey,
-            request.SourceRevision,
-            candidate.CreatedAtUtc,
-            null,
-            null,
-            null,
-            1);
+        return await this.CapturePreparedAfterCommitAsync(newEntry, cancellationToken);
+    }
+
+    public async Task<FactualChangeCaptureResult> CapturePreparedAfterCommitAsync(
+        FactualChangeOutboxEntry entry,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(entry);
+        if (entry.SourceRevision < 1)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(entry),
+                "The source revision must be positive.");
+        }
+
         FactualChangeOutboxWriteResult write = await this.outboxRepository.RecordAsync(
-            newEntry,
+            entry,
             cancellationToken);
         if (write.Disposition == FactualChangeOutboxWriteDisposition.Conflict
             || write.Entry is null)

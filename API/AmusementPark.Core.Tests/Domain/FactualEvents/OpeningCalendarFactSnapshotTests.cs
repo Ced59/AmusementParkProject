@@ -41,6 +41,20 @@ public sealed class OpeningCalendarFactSnapshotTests
     }
 
     [Fact]
+    public void Create_WhenRulePriorityChanges_ShouldProduceDifferentFact()
+    {
+        ParkOpeningHoursSchedule previous = CreateSchedule(new TimeOnly(18, 0));
+        previous.RegularRules[0].SortOrder = 1;
+        ParkOpeningHoursSchedule current = CreateSchedule(new TimeOnly(18, 0));
+        current.RegularRules[0].SortOrder = 2;
+
+        FactValue? previousSnapshot = OpeningCalendarFactSnapshot.Create(previous);
+        FactValue? currentSnapshot = OpeningCalendarFactSnapshot.Create(current);
+
+        Assert.NotEqual(previousSnapshot, currentSnapshot);
+    }
+
+    [Fact]
     public void Create_WithoutTimeZone_ShouldNotProduceFact()
     {
         ParkOpeningHoursSchedule schedule = CreateSchedule(new TimeOnly(18, 0));

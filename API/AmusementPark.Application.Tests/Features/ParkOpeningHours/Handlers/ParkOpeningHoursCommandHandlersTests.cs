@@ -3,9 +3,12 @@ using AmusementPark.Application.Features.ParkOpeningHours.Commands;
 using AmusementPark.Application.Features.ParkOpeningHours.Handlers;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
+using AmusementPark.Application.Features.ParkOpeningHours.Models;
+using AmusementPark.Application.Features.FactualEvents.Models;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.FactualEvents;
 using Moq;
 using Xunit;
 
@@ -22,6 +25,8 @@ public sealed class ParkOpeningHoursCommandHandlersTests
         Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
         Mock<IParkOpeningHoursFactualChangeCapture> factualChangeCapture =
             new Mock<IParkOpeningHoursFactualChangeCapture>(MockBehavior.Strict);
+        ParkOpeningHoursFactualChangeDraft draft = CreateFactualDraft();
+        ParkOpeningHoursPendingFactualChange pending = CreatePendingChange(draft);
 
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
@@ -30,14 +35,20 @@ public sealed class ParkOpeningHoursCommandHandlersTests
             .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync((ParkOpeningHoursSchedule?)null);
         openingHoursRepository
-            .Setup(repository => repository.UpsertAsync(It.Is<ParkOpeningHoursSchedule>(candidate => candidate.ParkId == "park-1"), It.IsAny<CancellationToken>()))
-            .ReturnsAsync((ParkOpeningHoursSchedule candidate, CancellationToken _) => candidate);
+            .Setup(repository => repository.UpsertWithFactualChangeAsync(
+                It.Is<ParkOpeningHoursSchedule>(candidate => candidate.ParkId == "park-1"),
+                draft,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ParkOpeningHoursSchedule candidate, ParkOpeningHoursFactualChangeDraft? _, CancellationToken _) =>
+                new ParkOpeningHoursFactualWriteResult(candidate, pending));
         factualChangeCapture
-            .Setup(capture => capture.CaptureAsync(
+            .Setup(capture => capture.Prepare(
                 It.Is<Park>(park => park.Id == "park-1"),
                 null,
-                It.Is<ParkOpeningHoursSchedule>(candidate => candidate.ParkId == "park-1"),
-                CancellationToken.None))
+                It.Is<ParkOpeningHoursSchedule>(candidate => candidate.ParkId == "park-1")))
+            .Returns(draft);
+        factualChangeCapture
+            .Setup(capture => capture.CaptureAsync(pending, CancellationToken.None))
             .Returns(Task.CompletedTask);
         sitemapRefreshScheduler
             .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
@@ -76,25 +87,31 @@ public sealed class ParkOpeningHoursCommandHandlersTests
             .ReturnsAsync(new Park { Id = "park-1", Name = "Park" });
         Mock<IParkOpeningHoursRepository> openingHoursRepository =
             new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        ParkOpeningHoursFactualChangeDraft draft = CreateFactualDraft();
+        ParkOpeningHoursPendingFactualChange pending = CreatePendingChange(draft);
         openingHoursRepository
             .Setup(repository => repository.GetByParkIdAsync(
                 "park-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((ParkOpeningHoursSchedule?)null);
         openingHoursRepository
-            .Setup(repository => repository.UpsertAsync(
+            .Setup(repository => repository.UpsertWithFactualChangeAsync(
                 It.IsAny<ParkOpeningHoursSchedule>(),
+                draft,
                 It.IsAny<CancellationToken>()))
             .Callback(() => cancellation.Cancel())
-            .ReturnsAsync((ParkOpeningHoursSchedule candidate, CancellationToken _) => candidate);
+            .ReturnsAsync((ParkOpeningHoursSchedule candidate, ParkOpeningHoursFactualChangeDraft? _, CancellationToken _) =>
+                new ParkOpeningHoursFactualWriteResult(candidate, pending));
         Mock<IParkOpeningHoursFactualChangeCapture> factualChangeCapture =
             new Mock<IParkOpeningHoursFactualChangeCapture>(MockBehavior.Strict);
         factualChangeCapture
-            .Setup(capture => capture.CaptureAsync(
+            .Setup(capture => capture.Prepare(
                 It.IsAny<Park>(),
                 null,
-                It.IsAny<ParkOpeningHoursSchedule>(),
-                CancellationToken.None))
+                It.IsAny<ParkOpeningHoursSchedule>()))
+            .Returns(draft);
+        factualChangeCapture
+            .Setup(capture => capture.CaptureAsync(pending, CancellationToken.None))
             .Returns(Task.CompletedTask);
         Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
             new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
@@ -153,7 +170,10 @@ public sealed class ParkOpeningHoursCommandHandlersTests
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "park-opening-hours.not-operating");
         openingHoursRepository.Verify(
-            repository => repository.UpsertAsync(It.IsAny<ParkOpeningHoursSchedule>(), It.IsAny<CancellationToken>()),
+            repository => repository.UpsertWithFactualChangeAsync(
+                It.IsAny<ParkOpeningHoursSchedule>(),
+                It.IsAny<ParkOpeningHoursFactualChangeDraft?>(),
+                It.IsAny<CancellationToken>()),
             Times.Never);
         sitemapRefreshScheduler.Verify(
             scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()),
@@ -186,5 +206,33 @@ public sealed class ParkOpeningHoursCommandHandlersTests
                 },
             },
         };
+    }
+
+    private static ParkOpeningHoursFactualChangeDraft CreateFactualDraft()
+    {
+        DateTime occurredAtUtc = new DateTime(2026, 9, 15, 12, 0, 0, DateTimeKind.Utc);
+        return new ParkOpeningHoursFactualChangeDraft(
+            FactualEventType.OpeningCalendarPublished,
+            ChangeTarget.ForPark("park-1"),
+            null,
+            FactValue.FromText("calendar"),
+            new SourceReference(
+                SourceReferenceType.OfficialWebsite,
+                "Park",
+                "Calendar",
+                "https://example.com/calendar",
+                occurredAtUtc),
+            DataConfidence.High,
+            occurredAtUtc,
+            "park:park-1:opening-calendar");
+    }
+
+    private static ParkOpeningHoursPendingFactualChange CreatePendingChange(
+        ParkOpeningHoursFactualChangeDraft draft)
+    {
+        DateTime recordedAtUtc = new DateTime(2026, 9, 15, 12, 0, 0, DateTimeKind.Utc);
+        FactualChangeOutboxEntry entry = FactualChangeOutboxEntry.Create(
+            draft.ToCaptureRequest(1, recordedAtUtc))!;
+        return new ParkOpeningHoursPendingFactualChange("park-1", entry);
     }
 }

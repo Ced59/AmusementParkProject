@@ -59,6 +59,7 @@ public static class OpeningCalendarFactSnapshot
         AppendField(value, rule.StartDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
         AppendField(value, rule.EndDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
         AppendField(value, rule.IsClosed ? "1" : "0");
+        AppendField(value, rule.SortOrder.ToString(CultureInfo.InvariantCulture));
         AppendField(
             value,
             string.Join(",", rule.DaysOfWeek.OrderBy(static day => day).Select(static day => (int)day)));

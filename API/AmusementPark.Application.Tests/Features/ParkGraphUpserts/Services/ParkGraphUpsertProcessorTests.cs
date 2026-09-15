@@ -4,6 +4,7 @@ using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.FactualEvents.Models;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
@@ -14,6 +15,7 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Models;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.Parks.Contracts;
@@ -24,6 +26,7 @@ using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.History;
+using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
@@ -4099,7 +4102,10 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Contains(openingHoursChange.Fields, field => field.Field == "openingHours.timeZoneId" && field.NewValue == "Europe/Paris");
         Assert.Contains(openingHoursChange.Fields, field => field.Field == "openingHours.regularRules");
         Assert.True(result.Value.CanApply);
-        openingHoursRepository.Verify(value => value.UpsertAsync(It.IsAny<ParkOpeningHoursSchedule>(), It.IsAny<CancellationToken>()), Times.Never);
+        openingHoursRepository.Verify(value => value.UpsertWithFactualChangeAsync(
+            It.IsAny<ParkOpeningHoursSchedule>(),
+            It.IsAny<ParkOpeningHoursFactualChangeDraft?>(),
+            It.IsAny<CancellationToken>()), Times.Never);
         parkRepository.VerifyAll();
         openingHoursRepository.VerifyAll();
         historyRepository.VerifyAll();
@@ -4176,7 +4182,10 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Empty(result.Value!.Errors);
         Assert.DoesNotContain(result.Value.Changes, change => change.EntityType == "ParkOpeningHours");
         openingHoursRepository.Verify(value => value.GetByParkIdAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
-        openingHoursRepository.Verify(value => value.UpsertAsync(It.IsAny<ParkOpeningHoursSchedule>(), It.IsAny<CancellationToken>()), Times.Never);
+        openingHoursRepository.Verify(value => value.UpsertWithFactualChangeAsync(
+            It.IsAny<ParkOpeningHoursSchedule>(),
+            It.IsAny<ParkOpeningHoursFactualChangeDraft?>(),
+            It.IsAny<CancellationToken>()), Times.Never);
         parkRepository.VerifyAll();
         openingHoursRepository.VerifyAll();
         historyRepository.VerifyAll();
@@ -4194,6 +4203,25 @@ public sealed class ParkGraphUpsertProcessorTests
             AdminReviewStatus = AdminReviewStatus.Validated,
         };
         ParkOpeningHoursSchedule? savedSchedule = null;
+        DateTime occurredAtUtc = new DateTime(2026, 7, 2, 8, 0, 0, DateTimeKind.Utc);
+        ParkOpeningHoursFactualChangeDraft factualDraft = new ParkOpeningHoursFactualChangeDraft(
+            FactualEventType.OpeningCalendarPublished,
+            ChangeTarget.ForPark("park-1"),
+            null,
+            FactValue.FromText("calendar"),
+            new SourceReference(
+                SourceReferenceType.OfficialWebsite,
+                "Schedule Park",
+                "Calendar",
+                "https://example.test/hours",
+                occurredAtUtc),
+            DataConfidence.High,
+            occurredAtUtc,
+            "park:park-1:opening-calendar");
+        FactualChangeOutboxEntry factualEntry = FactualChangeOutboxEntry.Create(
+            factualDraft.ToCaptureRequest(1, occurredAtUtc))!;
+        ParkOpeningHoursPendingFactualChange pendingFactualChange =
+            new ParkOpeningHoursPendingFactualChange("park-1", factualEntry);
 
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         parkRepository
@@ -4208,9 +4236,13 @@ public sealed class ParkGraphUpsertProcessorTests
             .Setup(value => value.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync((ParkOpeningHoursSchedule?)null);
         openingHoursRepository
-            .Setup(value => value.UpsertAsync(It.IsAny<ParkOpeningHoursSchedule>(), It.IsAny<CancellationToken>()))
-            .Callback<ParkOpeningHoursSchedule, CancellationToken>((schedule, _) => savedSchedule = schedule)
-            .ReturnsAsync((ParkOpeningHoursSchedule schedule, CancellationToken _) => schedule);
+            .Setup(value => value.UpsertWithFactualChangeAsync(
+                It.IsAny<ParkOpeningHoursSchedule>(),
+                factualDraft,
+                It.IsAny<CancellationToken>()))
+            .Callback<ParkOpeningHoursSchedule, ParkOpeningHoursFactualChangeDraft?, CancellationToken>((schedule, _, _) => savedSchedule = schedule)
+            .ReturnsAsync((ParkOpeningHoursSchedule schedule, ParkOpeningHoursFactualChangeDraft? _, CancellationToken _) =>
+                new ParkOpeningHoursFactualWriteResult(schedule, pendingFactualChange));
 
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
         searchProjectionWriter
@@ -4233,10 +4265,14 @@ public sealed class ParkGraphUpsertProcessorTests
         Mock<IParkOpeningHoursFactualChangeCapture> factualChangeCapture =
             new Mock<IParkOpeningHoursFactualChangeCapture>(MockBehavior.Strict);
         factualChangeCapture
-            .Setup(value => value.CaptureAsync(
+            .Setup(value => value.Prepare(
                 park,
                 null,
-                It.Is<ParkOpeningHoursSchedule>(schedule => schedule.ParkId == "park-1"),
+                It.Is<ParkOpeningHoursSchedule>(schedule => schedule.ParkId == "park-1")))
+            .Returns(factualDraft);
+        factualChangeCapture
+            .Setup(value => value.CaptureAsync(
+                pendingFactualChange,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
 
@@ -4420,7 +4456,10 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Contains(result.Value.Errors, static error => error.Contains("openingHours.regularRules[0].label", StringComparison.Ordinal));
         Assert.Contains(result.Value.Errors, static error => error.Contains("openingHours.dateOverrides[0].reason", StringComparison.Ordinal));
         openingHoursRepository.Verify(value => value.GetByParkIdAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
-        openingHoursRepository.Verify(value => value.UpsertAsync(It.IsAny<ParkOpeningHoursSchedule>(), It.IsAny<CancellationToken>()), Times.Never);
+        openingHoursRepository.Verify(value => value.UpsertWithFactualChangeAsync(
+            It.IsAny<ParkOpeningHoursSchedule>(),
+            It.IsAny<ParkOpeningHoursFactualChangeDraft?>(),
+            It.IsAny<CancellationToken>()), Times.Never);
         parkRepository.VerifyAll();
         openingHoursRepository.VerifyAll();
         historyRepository.VerifyAll();

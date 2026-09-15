@@ -4,8 +4,9 @@
 
 Une modification validée peut désormais devenir un fait suivi sans dépendre de la
 disponibilité immédiate du worker. Le système compare des valeurs structurées,
-ignore les sauvegardes sans changement réel et conserve la révision source avant de
-programmer le traitement. Une même clé métier et une même révision ne peuvent créer
+ignore les sauvegardes sans changement réel et conserve l'intention et la révision
+monotone dans le même document que la source avant de programmer le traitement. Une
+même clé métier et une même révision ne peuvent créer
 qu'un seul événement logique.
 
 Le premier producteur réellement raccordé est le calendrier d'ouverture d'un parc.
@@ -27,6 +28,7 @@ flowchart LR
     Calendar[Calendrier officiel d'ouverture]
     Capture[FactualChangeCaptureService]
     Diff[FactualChangeDiff]
+    SourceMarker[(marqueur durable dans le calendrier)]
     Outbox[(factual-change-outbox)]
     Jobs[(durableBackgroundJobs)]
     Worker[Worker durable FOUNDATION]
@@ -37,7 +39,8 @@ flowchart LR
     Mutation -->|avant, après, source, révision| Capture
     Capture --> Diff
     Diff -->|aucun changement| Stop[Aucun événement]
-    Diff -->|changement réel| Outbox
+    Diff -->|changement réel, écriture atomique| SourceMarker
+    SourceMarker -->|copie idempotente| Outbox
     Outbox -->|après persistance| Jobs
     Jobs --> Worker
     Worker -->|brouillon unique| Events
@@ -79,6 +82,12 @@ erDiagram
         long version
     }
 
+    PARK_OPENING_HOURS {
+        string parkId PK
+        long factualRevision
+        array pendingFactualChanges
+    }
+
     FACTUAL_CHANGE_EVENT {
         string id PK
         string deduplicationKey
@@ -105,6 +114,7 @@ erDiagram
         int attemptCount
     }
 
+    PARK_OPENING_HOURS ||--o{ FACTUAL_CHANGE_OUTBOX : reprend
     FACTUAL_CHANGE_OUTBOX ||--o| DURABLE_BACKGROUND_JOB : programme
     FACTUAL_CHANGE_OUTBOX ||--o| FACTUAL_CHANGE_EVENT : matérialise
 ```
@@ -112,6 +122,7 @@ erDiagram
 Index critiques :
 
 - unicité outbox `(deduplicationKey, sourceRevision)` ;
+- révision monotone et intentions en attente embarquées dans le document calendrier ;
 - lecture bornée des entrées avec `materializedAtUtc` et `terminalAtUtc` nuls grâce
   à un index composé commençant par ces champs ;
 - unicité événement `(deduplicationKey, revision)` ;
@@ -128,6 +139,7 @@ coexiste avec celui-ci.
 sequenceDiagram
     participant Producer as Producteur métier
     participant Capture as Capture applicative
+    participant Source as Calendrier et marqueur Mongo
     participant Outbox as Outbox Mongo
     participant Queue as Worker durable
     participant Handler as Materialisation
@@ -139,6 +151,8 @@ sequenceDiagram
     alt aucune différence
         Capture-->>Producer: NoChange
     else différence réelle
+        Producer->>Source: calendrier + intention + révision monotone (une écriture)
+        Source-->>Capture: intention persistée
         Capture->>Outbox: insertion unique clé + révision
         Outbox-->>Capture: Created ou AlreadyRecorded
         Capture->>Queue: enqueue exact
@@ -155,10 +169,22 @@ sequenceDiagram
         Repair->>Queue: recréer le job exact manquant
     end
 
+    opt panne avant l'insertion outbox
+        Repair->>Source: lire les intentions factuelles en attente
+        Repair->>Outbox: recopier l'intention avec le même identifiant
+        Repair->>Source: retirer le marqueur après persistance
+    end
+
     opt job exact définitivement terminé sans acquittement
         Repair->>Outbox: acquitter l'échec terminal et son code
     end
 ```
+
+Le calendrier et son intention factuelle sont remplacés atomiquement dans un seul
+document, conformément à la contrainte MongoDB autonome. Une panne avant la copie
+vers la collection d'outbox laisse donc une source de reprise durable. Plusieurs
+intentions peuvent rester embarquées et leur révision est strictement croissante :
+une nouvelle édition ne remplace pas une intention précédente non acquittée.
 
 Une panne de planification n'annule donc pas le fait déjà enregistré. Une panne
 entre la création de l'événement et l'acquittement est rejouée : l'index unique
@@ -192,6 +218,7 @@ Les tests couvrent :
 - l'équivalence canonique et les créations/suppressions de valeur ;
 - l'absence totale d'écriture quand le diff est vide ;
 - la conservation de l'outbox quand la mise en file échoue ;
+- la conservation d'un marqueur dans le calendrier quand l'insertion outbox échoue ;
 - la clé de job déterministe et bornée même avec une clé métier maximale ;
 - la poursuite du reconciler lorsqu'une entrée échoue ;
 - l'acquittement terminal d'un job exact définitivement échoué ;
@@ -200,6 +227,8 @@ Les tests couvrent :
 - le round-trip Mongo des valeurs, sources et versions ;
 - la présence des index d'unicité et de reprise ;
 - l'empreinte stable d'un calendrier malgré l'ordre des données ;
-- le refus d'un faux événement de publication pour un calendrier vide ;
+- le refus d'un faux événement de publication pour un calendrier initial vide et
+  la capture explicite de la suppression d'un calendrier existant ;
+- l'inclusion de la priorité des règles dans l'empreinte canonique ;
 - le raccordement post-commit du calendrier officiel avec source et confiance,
   depuis l'édition comme depuis l'import, même après annulation de la requête.

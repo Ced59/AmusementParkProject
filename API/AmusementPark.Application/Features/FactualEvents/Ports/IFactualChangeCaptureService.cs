@@ -7,4 +7,8 @@ public interface IFactualChangeCaptureService
     Task<FactualChangeCaptureResult> CaptureAfterCommitAsync(
         FactualChangeCaptureRequest request,
         CancellationToken cancellationToken);
+
+    Task<FactualChangeCaptureResult> CapturePreparedAfterCommitAsync(
+        FactualChangeOutboxEntry entry,
+        CancellationToken cancellationToken);
 }

@@ -1,5 +1,7 @@
 using AmusementPark.Application.Features.FactualEvents.Models;
 using AmusementPark.Application.Features.FactualEvents.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Models;
+using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Parks;
@@ -11,65 +13,153 @@ namespace AmusementPark.Application.Tests.Features.ParkOpeningHours.Services;
 
 public sealed class ParkOpeningHoursFactualChangeCaptureServiceTests
 {
-    private static readonly DateTime UpdatedAtUtc =
+    private static readonly DateTime RecordedAtUtc =
         new DateTime(2026, 9, 15, 12, 0, 0, DateTimeKind.Utc);
 
     [Fact]
-    public async Task CaptureAsync_WithSourcedChangedSchedule_ShouldCaptureHighConfidenceFact()
+    public void Prepare_WithSourcedChangedSchedule_ShouldCreateHighConfidenceDraft()
     {
         Park park = new Park { Id = "park-1", Name = "Parc exemple" };
         ParkOpeningHoursSchedule previous = CreateSchedule(new TimeOnly(18, 0));
         ParkOpeningHoursSchedule current = CreateSchedule(new TimeOnly(19, 0));
         current.SourceUrl = "https://example.com/opening-hours";
-        current.LastVerifiedAtUtc = UpdatedAtUtc.AddHours(-1);
-        current.UpdatedAtUtc = UpdatedAtUtc;
-        FactualChangeCaptureRequest? capturedRequest = null;
+        current.LastVerifiedAtUtc = RecordedAtUtc.AddHours(-1);
+        ParkOpeningHoursFactualChangeCaptureService service = CreateService();
+
+        ParkOpeningHoursFactualChangeDraft? draft = service.Prepare(
+            park,
+            previous,
+            current);
+
+        Assert.NotNull(draft);
+        Assert.Equal(FactualEventType.OpeningCalendarChanged, draft.Type);
+        Assert.Equal(ChangeTarget.ForPark("park-1"), draft.Target);
+        Assert.NotEqual(draft.PreviousValue, draft.NewValue);
+        Assert.Equal(DataConfidence.High, draft.Confidence);
+        Assert.Equal(current.LastVerifiedAtUtc, draft.OccurredAtUtc);
+        Assert.Equal("https://example.com/opening-hours", draft.Source.Url);
+    }
+
+    [Fact]
+    public void Prepare_WhenCalendarIsRemoved_ShouldCreateChangeWithNullNewValue()
+    {
+        ParkOpeningHoursSchedule current = CreateSchedule(new TimeOnly(18, 0));
+        current.RegularRules.Clear();
+        current.SourceUrl = "https://example.com/opening-hours";
+        current.LastVerifiedAtUtc = RecordedAtUtc;
+        ParkOpeningHoursFactualChangeCaptureService service = CreateService();
+
+        ParkOpeningHoursFactualChangeDraft? draft = service.Prepare(
+            new Park { Id = "park-1", Name = "Parc exemple" },
+            CreateSchedule(new TimeOnly(18, 0)),
+            current);
+
+        Assert.NotNull(draft);
+        Assert.Equal(FactualEventType.OpeningCalendarChanged, draft.Type);
+        Assert.NotNull(draft.PreviousValue);
+        Assert.Null(draft.NewValue);
+    }
+
+    [Fact]
+    public void Prepare_WithoutVerifiedSource_ShouldNotCreateDraft()
+    {
+        ParkOpeningHoursFactualChangeCaptureService service = CreateService();
+
+        ParkOpeningHoursFactualChangeDraft? draft = service.Prepare(
+            new Park { Id = "park-1", Name = "Parc exemple" },
+            null,
+            CreateSchedule(new TimeOnly(18, 0)));
+
+        Assert.Null(draft);
+    }
+
+    [Fact]
+    public async Task CaptureAsync_WhenOutboxRecordFails_ShouldKeepDurableSourceMarker()
+    {
+        ParkOpeningHoursPendingFactualChange pending = CreatePendingChange();
         Mock<IFactualChangeCaptureService> capture =
             new Mock<IFactualChangeCaptureService>(MockBehavior.Strict);
-        capture.Setup(value => value.CaptureAfterCommitAsync(
-                It.IsAny<FactualChangeCaptureRequest>(),
+        capture.Setup(value => value.CapturePreparedAfterCommitAsync(
+                pending.Entry,
                 CancellationToken.None))
-            .Callback((FactualChangeCaptureRequest request, CancellationToken _) =>
-                capturedRequest = request)
-            .ReturnsAsync(new FactualChangeCaptureResult(
-                FactualChangeCaptureDisposition.Scheduled,
-                "outbox-1",
-                "event-1"));
-        ParkOpeningHoursFactualChangeCaptureService service =
-            new ParkOpeningHoursFactualChangeCaptureService(
-                capture.Object,
-                NullLogger<ParkOpeningHoursFactualChangeCaptureService>.Instance);
+            .ThrowsAsync(new InvalidOperationException("outbox unavailable"));
+        Mock<IParkOpeningHoursRepository> repository =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        ParkOpeningHoursFactualChangeCaptureService service = new ParkOpeningHoursFactualChangeCaptureService(
+            capture.Object,
+            repository.Object,
+            NullLogger<ParkOpeningHoursFactualChangeCaptureService>.Instance);
 
-        await service.CaptureAsync(park, previous, current, CancellationToken.None);
+        await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            service.CaptureAsync(pending, CancellationToken.None));
 
-        Assert.NotNull(capturedRequest);
-        Assert.Equal(FactualEventType.OpeningCalendarChanged, capturedRequest.Type);
-        Assert.Equal(ChangeTarget.ForPark("park-1"), capturedRequest.Target);
-        Assert.NotEqual(capturedRequest.PreviousValue, capturedRequest.NewValue);
-        Assert.Equal(DataConfidence.High, capturedRequest.Confidence);
-        Assert.Equal(current.LastVerifiedAtUtc, capturedRequest.OccurredAtUtc);
-        Assert.Equal(current.UpdatedAtUtc.Ticks, capturedRequest.SourceRevision);
-        Assert.Equal("https://example.com/opening-hours", capturedRequest.Source.Url);
+        repository.Verify(
+            value => value.MarkFactualChangeRecordedAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
         capture.VerifyAll();
     }
 
     [Fact]
-    public async Task CaptureAsync_WithoutVerifiedSource_ShouldNotCaptureFact()
+    public async Task CaptureAsync_WhenOutboxIsDurable_ShouldClearSourceMarker()
     {
+        ParkOpeningHoursPendingFactualChange pending = CreatePendingChange();
         Mock<IFactualChangeCaptureService> capture =
             new Mock<IFactualChangeCaptureService>(MockBehavior.Strict);
-        ParkOpeningHoursFactualChangeCaptureService service =
-            new ParkOpeningHoursFactualChangeCaptureService(
-                capture.Object,
-                NullLogger<ParkOpeningHoursFactualChangeCaptureService>.Instance);
+        capture.Setup(value => value.CapturePreparedAfterCommitAsync(
+                pending.Entry,
+                CancellationToken.None))
+            .ReturnsAsync(new FactualChangeCaptureResult(
+                FactualChangeCaptureDisposition.RecordedPendingScheduling,
+                pending.Entry.Id,
+                pending.Entry.EventId));
+        Mock<IParkOpeningHoursRepository> repository =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.MarkFactualChangeRecordedAsync(
+                "park-1",
+                pending.Entry.Id,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        ParkOpeningHoursFactualChangeCaptureService service = new ParkOpeningHoursFactualChangeCaptureService(
+            capture.Object,
+            repository.Object,
+            NullLogger<ParkOpeningHoursFactualChangeCaptureService>.Instance);
 
-        await service.CaptureAsync(
-            new Park { Id = "park-1", Name = "Parc exemple" },
+        await service.CaptureAsync(pending, CancellationToken.None);
+
+        capture.VerifyAll();
+        repository.VerifyAll();
+    }
+
+    private static ParkOpeningHoursFactualChangeCaptureService CreateService()
+    {
+        return new ParkOpeningHoursFactualChangeCaptureService(
+            Mock.Of<IFactualChangeCaptureService>(MockBehavior.Strict),
+            Mock.Of<IParkOpeningHoursRepository>(MockBehavior.Strict),
+            NullLogger<ParkOpeningHoursFactualChangeCaptureService>.Instance);
+    }
+
+    private static ParkOpeningHoursPendingFactualChange CreatePendingChange()
+    {
+        ParkOpeningHoursFactualChangeDraft draft = new ParkOpeningHoursFactualChangeDraft(
+            FactualEventType.OpeningCalendarPublished,
+            ChangeTarget.ForPark("park-1"),
             null,
-            CreateSchedule(new TimeOnly(18, 0)),
-            CancellationToken.None);
-
-        capture.VerifyNoOtherCalls();
+            FactValue.FromText("calendar"),
+            new SourceReference(
+                SourceReferenceType.OfficialWebsite,
+                "Park",
+                "Calendar",
+                "https://example.com/calendar",
+                RecordedAtUtc),
+            DataConfidence.High,
+            RecordedAtUtc,
+            "park:park-1:opening-calendar");
+        FactualChangeOutboxEntry entry = FactualChangeOutboxEntry.Create(
+            draft.ToCaptureRequest(1, RecordedAtUtc))!;
+        return new ParkOpeningHoursPendingFactualChange("park-1", entry);
     }
 
     private static ParkOpeningHoursSchedule CreateSchedule(TimeOnly closesAt)

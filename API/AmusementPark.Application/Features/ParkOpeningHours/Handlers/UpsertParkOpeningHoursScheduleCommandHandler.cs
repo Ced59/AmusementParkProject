@@ -3,6 +3,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkOpeningHours.Commands;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
+using AmusementPark.Application.Features.ParkOpeningHours.Models;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
@@ -59,12 +60,24 @@ public sealed class UpsertParkOpeningHoursScheduleCommandHandler : ICommandHandl
                 normalizedSchedule.ParkId,
                 cancellationToken);
         normalizedSchedule.CoverageSegments = this.coverageSegmentBuilder.BuildSegments(normalizedSchedule).ToList();
-        ParkOpeningHoursSchedule savedSchedule = await this.openingHoursRepository.UpsertAsync(normalizedSchedule, cancellationToken);
-        await this.factualChangeCapture.CaptureAsync(
-            park,
-            previousSchedule,
-            savedSchedule,
-            CancellationToken.None);
+        ParkOpeningHoursFactualChangeDraft? factualChange =
+            this.factualChangeCapture.Prepare(
+                park,
+                previousSchedule,
+                normalizedSchedule);
+        ParkOpeningHoursFactualWriteResult writeResult =
+            await this.openingHoursRepository.UpsertWithFactualChangeAsync(
+                normalizedSchedule,
+                factualChange,
+                cancellationToken);
+        if (writeResult.PendingFactualChange is not null)
+        {
+            await this.factualChangeCapture.CaptureAsync(
+                writeResult.PendingFactualChange,
+                CancellationToken.None);
+        }
+
+        ParkOpeningHoursSchedule savedSchedule = writeResult.Schedule;
         await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
         return ApplicationResult<ParkOpeningHoursSchedule>.Success(savedSchedule);
     }
