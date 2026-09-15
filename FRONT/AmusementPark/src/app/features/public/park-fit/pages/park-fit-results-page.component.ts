@@ -36,6 +36,7 @@ import {
 } from '../mappers/park-fit-result-display.helpers';
 import { ParkFitSearchFacade } from '../state/park-fit-search.facade';
 import { ParkFitSourceReportComponent } from '../components/park-fit-source-report/park-fit-source-report.component';
+import { ParkFitTrustNoticeComponent } from '../components/park-fit-trust-notice/park-fit-trust-notice.component';
 
 @Component({
   selector: 'app-park-fit-results-page',
@@ -49,7 +50,8 @@ import { ParkFitSourceReportComponent } from '../components/park-fit-source-repo
     UiChipComponent,
     UiKickerComponent,
     UiSurfaceDirective,
-    ParkFitSourceReportComponent
+    ParkFitSourceReportComponent,
+    ParkFitTrustNoticeComponent
   ]
 })
 export class ParkFitResultsPageComponent implements OnInit {

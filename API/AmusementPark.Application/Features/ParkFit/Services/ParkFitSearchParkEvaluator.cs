@@ -44,6 +44,13 @@ public sealed class ParkFitSearchParkEvaluator
         ArgumentNullException.ThrowIfNull(profiles);
         ArgumentNullException.ThrowIfNull(query);
 
+        if (quality.Status != ParkFitDataQualityStatus.EligibleForFitComparison)
+        {
+            throw new ArgumentException(
+                "A park must pass the Park Fit data-quality gate before evaluation.",
+                nameof(quality));
+        }
+
         List<GroupAttractionCompatibility> groupCompatibilities = attractions
             .Select(attraction => this.EvaluateAttraction(
                 attraction,

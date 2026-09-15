@@ -9,6 +9,7 @@ import { SeoService } from '@core/seo/seo.service';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { ParkFitTrustNoticeComponent } from '../components/park-fit-trust-notice/park-fit-trust-notice.component';
 import { buildParkFitComparisonSections } from '../mappers/park-fit-comparison.mapper';
 import {
   formatParkFitDate,
@@ -23,7 +24,15 @@ import { ParkFitSearchFacade } from '../state/park-fit-search.facade';
   templateUrl: './park-fit-comparison-page.component.html',
   styleUrl: './park-fit-comparison-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective]
+  imports: [
+    RouterLink,
+    TranslateModule,
+    UiButtonDirective,
+    UiChipComponent,
+    UiKickerComponent,
+    UiSurfaceDirective,
+    ParkFitTrustNoticeComponent
+  ]
 })
 export class ParkFitComparisonPageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');

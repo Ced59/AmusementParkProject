@@ -13,6 +13,11 @@
       "title": "Tes critères restent sur cet écran",
       "text": "Aucun nom ni compte n’est demandé. La recherche est calculée sans enregistrer ton groupe sur le serveur."
     },
+    "trust": {
+      "title": "Une boussole, pas une promesse",
+      "independent": "L’ordre repose uniquement sur tes critères, la compatibilité calculée et la qualité des données. Aucun partenariat ni paiement ne le modifie.",
+      "official": "Avant ta visite, vérifie toujours les conditions d’accès et les horaires sur le site officiel du parc."
+    },
     "date": {
       "title": "Choisis la date",
       "text": "Une fermeture connue exclut le parc pour ce jour. Une date sans horaire publié reste simplement inconnue.",

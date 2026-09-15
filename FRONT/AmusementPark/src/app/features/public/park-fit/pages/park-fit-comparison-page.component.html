@@ -30,6 +30,8 @@
       </div>
     </aside>
 
+    <app-park-fit-trust-notice></app-park-fit-trust-notice>
+
     <section class="park-fit-comparison__parks" [attr.aria-label]="'parkFit.comparison.selectedParks' | translate">
       @for (selection of selections(); track selection.park.parkId) {
         <article appUiSurface="panel" appUiSurfacePadding="regular">

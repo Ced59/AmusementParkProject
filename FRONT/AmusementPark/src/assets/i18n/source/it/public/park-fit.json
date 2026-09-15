@@ -13,6 +13,11 @@
       "title": "I tuoi criteri restano su questa schermata",
       "text": "Non servono nome o account. La ricerca viene calcolata senza salvare il gruppo sul server."
     },
+    "trust": {
+      "title": "Una bussola, non una promessa",
+      "independent": "L’ordine si basa esclusivamente sui tuoi criteri, sulla compatibilità calcolata e sulla qualità dei dati. Nessuna collaborazione o pagamento lo modifica.",
+      "official": "Prima della visita, verifica sempre le regole di accesso e gli orari sul sito ufficiale del parco."
+    },
     "date": {
       "title": "Scegli la data",
       "text": "Una chiusura nota esclude il parco per quel giorno. Senza orari pubblicati, la data resta semplicemente sconosciuta.",

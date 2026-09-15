@@ -4987,6 +4987,11 @@
       "title": "Os teus critérios ficam neste ecrã",
       "text": "Não é preciso nome nem conta. A pesquisa é calculada sem guardar o teu grupo no servidor."
     },
+    "trust": {
+      "title": "Uma bússola, não uma promessa",
+      "independent": "A ordem baseia-se apenas nos teus critérios, na compatibilidade calculada e na qualidade dos dados. Nenhuma parceria ou pagamento a altera.",
+      "official": "Antes da visita, confirma sempre as regras de acesso e os horários no site oficial do parque."
+    },
     "date": {
       "title": "Escolhe a data",
       "text": "Um encerramento conhecido exclui o parque nesse dia. Sem horários publicados, a data fica simplesmente desconhecida.",

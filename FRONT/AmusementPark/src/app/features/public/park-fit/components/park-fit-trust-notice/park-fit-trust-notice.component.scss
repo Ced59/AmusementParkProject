@@ -1,0 +1,62 @@
+:host,
+.park-fit-trust-notice,
+.park-fit-trust-notice > div,
+.park-fit-trust-notice ul,
+.park-fit-trust-notice li {
+  min-width: 0;
+  max-width: 100%;
+}
+
+:host {
+  display: block;
+}
+
+.park-fit-trust-notice {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+  border-color: color-mix(in srgb, var(--c-sky) 38%, var(--app-border));
+  background: color-mix(in srgb, var(--c-sky) 6%, var(--app-surface));
+  overflow: hidden;
+}
+
+.park-fit-trust-notice > i {
+  display: grid;
+  width: 2.4rem;
+  height: 2.4rem;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--c-sky);
+  background: color-mix(in srgb, var(--c-sky) 14%, transparent);
+}
+
+.park-fit-trust-notice > div {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.park-fit-trust-notice strong {
+  color: var(--heading);
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.park-fit-trust-notice ul {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--text-muted);
+}
+
+.park-fit-trust-notice li {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 360px) {
+  .park-fit-trust-notice {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

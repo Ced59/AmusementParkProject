@@ -13,6 +13,11 @@
       "title": "Je criteria blijven op dit scherm",
       "text": "Er is geen naam of account nodig. De zoekopdracht wordt berekend zonder je groep op de server op te slaan."
     },
+    "trust": {
+      "title": "Een kompas, geen belofte",
+      "independent": "De volgorde is uitsluitend gebaseerd op je criteria, de berekende match en de gegevenskwaliteit. Geen partnerschap of betaling verandert die volgorde.",
+      "official": "Controleer vóór je bezoek altijd de toegangsregels en openingstijden op de officiële website van het park."
+    },
     "date": {
       "title": "Kies de datum",
       "text": "Een bekende sluiting sluit het park voor die dag uit. Zonder gepubliceerde openingstijden blijft de datum onbekend.",
