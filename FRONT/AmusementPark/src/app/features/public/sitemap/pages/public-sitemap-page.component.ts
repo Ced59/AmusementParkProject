@@ -10,7 +10,7 @@ import { SeoService } from '@core/seo/seo.service';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
 import { UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PublicSitemapResolvedPage, PublicSitemapStateFacade } from '../state/public-sitemap-state.facade';
-import { PublicSitemapLocation, buildPublicSitemapQuery, resolvePublicSitemapLocation } from '../state/public-sitemap-location';
+import { PublicSitemapLocation, buildPublicSitemapQuery, resolvePublicSitemapLocation } from '@shared/utils/routing/public-sitemap-location';
 
 @Component({
   selector: 'app-public-sitemap-page',

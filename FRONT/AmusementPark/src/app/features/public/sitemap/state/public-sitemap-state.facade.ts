@@ -6,7 +6,7 @@ import { PublicHtmlSitemapNode } from '@app/models/seo/public-html-sitemap-node'
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { PUBLIC_SITEMAP_DATA_PORT, PublicSitemapDataPort } from './public-sitemap-data.ports';
-import { PUBLIC_SITEMAP_PAGE_SIZE, PublicSitemapLocation, buildPublicSitemapQuery } from './public-sitemap-location';
+import { PUBLIC_SITEMAP_PAGE_SIZE, PublicSitemapLocation, buildPublicSitemapQuery } from '@shared/utils/routing/public-sitemap-location';
 
 export interface PublicSitemapBreadcrumb {
   readonly label: string;

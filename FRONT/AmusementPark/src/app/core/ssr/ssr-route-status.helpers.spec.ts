@@ -6,6 +6,24 @@ import {
 } from './ssr-route-status.helpers';
 
 describe('SSR route status helpers', () => {
+  it.each([
+    '/fr/sitemap?node=parks', '/en/sitemap?node=parks&page=2',
+    '/pl/sitemap?node=snapshot-sections%2Fsitemap-section:history-pl-1&page=2',
+    '/fr/sitemap?node=&page=1'
+  ])('lets validated HTML metadata decide sitemap indexability for %s', (url: string) => {
+    expect(resolveXRobotsTagHeader(url)).toBeNull();
+    expect(shouldApplyNoindexFollowHeader(url)).toBe(false);
+  });
+
+  it.each([
+    '/fr/sitemap?node=parks&sort=random', '/fr/sitemap?node=parks&node=parks',
+    '/fr/sitemap?page=0', '/fr/sitemap?page=01', '/fr/sitemap?page=1&page=2',
+    '/fr/sitemap?node=parks%2F%2Freferences', '/fr/sitemap?node=..%2Fadmin',
+    '/fr/sitemap?search=park', '/fr/parks?node=parks&page=2'
+  ])('keeps invalid sitemap or unrelated filtered queries excluded: %s', (url: string) => {
+    expect(resolveXRobotsTagHeader(url)).toBe('noindex, follow');
+  });
+
   it('marks unknown localized routes as 404', () => {
     expect(resolveSsrRouteStatusCode('/fr/page-qui-nexiste-pas-123456')).toBe(
       404,
