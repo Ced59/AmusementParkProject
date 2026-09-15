@@ -149,7 +149,7 @@ def main():
                 if not current or runtime.find(runtime.names["front"]) is not None:
                     return None
                 api = runtime.inspect(runtime.names["api"])
-                if not api or api["Config"]["Labels"].get(GENERATION_LABEL) != current["generation"]:
+                if not api or api["Config"]["Labels"].get(GENERATION_LABEL) != current["generation"] + "c":
                     return None
                 assert api["Id"] != current["original"]["api"]["id"]
                 assert api["State"].get("Health", {}).get("Status") != "healthy"
