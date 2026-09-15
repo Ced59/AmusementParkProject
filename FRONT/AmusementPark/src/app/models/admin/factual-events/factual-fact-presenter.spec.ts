@@ -4,7 +4,7 @@ describe('presentFactualFact', (): void => {
   it('turns an opening calendar fingerprint into readable evidence without exposing its hash', (): void => {
     const presentation = presentFactualFact({
       kind: 'Text',
-      canonicalValue: 'timezone=Europe/Paris;coverage=2026-04-01/2026-11-02;rules=7;overrides=3;sha256=technical-secret',
+      canonicalValue: 'timezone=Europe/Paris;coverage=2026-04-01/2026-11-02;rules=7;overrides=3;windows=09:30-18:00,10:00-23:30;windowCount=2;sha256=technical-secret',
       unitCode: null,
     });
 
@@ -17,6 +17,8 @@ describe('presentFactualFact', (): void => {
       coverageEnd: '2026-11-02',
       rulesCount: 7,
       overridesCount: 3,
+      openingWindows: ['09:30 → 18:00', '10:00 → 23:30'],
+      hiddenOpeningWindowsCount: 0,
     });
     expect(JSON.stringify(presentation)).not.toContain('technical-secret');
   });

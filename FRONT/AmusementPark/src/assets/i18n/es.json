@@ -4072,7 +4072,8 @@
         "after": "Después",
         "notPublished": "No hay datos publicados",
         "calendarSummary": "{{rules}} reglas · {{exceptions}} excepciones",
-        "timeZone": "Zona horaria: {{timeZone}}"
+        "timeZone": "Zona horaria: {{timeZone}}",
+        "timeWindows": "Franjas horarias observadas"
       },
       "source": {
         "label": "Prueba consultable"

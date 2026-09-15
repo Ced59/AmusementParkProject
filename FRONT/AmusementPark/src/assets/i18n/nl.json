@@ -4072,7 +4072,8 @@
         "after": "Na",
         "notPublished": "Geen gepubliceerde gegevens",
         "calendarSummary": "{{rules}} regels · {{exceptions}} uitzonderingen",
-        "timeZone": "Tijdzone: {{timeZone}}"
+        "timeZone": "Tijdzone: {{timeZone}}",
+        "timeWindows": "Vastgestelde openingstijden"
       },
       "source": {
         "label": "Controleerbaar bewijs"

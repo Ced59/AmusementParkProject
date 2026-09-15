@@ -7,6 +7,8 @@ namespace AmusementPark.Core.Domain.FactualEvents;
 
 public static class OpeningCalendarFactSnapshot
 {
+    private const int MaximumPresentedWindowCount = 24;
+
     public static FactValue? Create(ParkOpeningHoursSchedule? schedule)
     {
         if (schedule is null)
@@ -57,8 +59,36 @@ public static class OpeningCalendarFactSnapshot
         byte[] hash = SHA256.HashData(Encoding.UTF8.GetBytes(canonical.ToString()));
         string hashText = Convert.ToHexString(hash).ToLowerInvariant();
         string coverage = BuildCoverage(schedule);
+        IReadOnlyCollection<string> openingWindows = BuildOpeningWindows(schedule);
+        string presentedWindows = string.Join(",", openingWindows.Take(MaximumPresentedWindowCount));
         return FactValue.FromText(
-            $"timezone={timeZoneId};coverage={coverage};rules={canonicalRules.Count};overrides={canonicalOverrides.Count};sha256={hashText}");
+            $"timezone={timeZoneId};coverage={coverage};rules={canonicalRules.Count};overrides={canonicalOverrides.Count};windows={presentedWindows};windowCount={openingWindows.Count};sha256={hashText}");
+    }
+
+    private static IReadOnlyCollection<string> BuildOpeningWindows(
+        ParkOpeningHoursSchedule schedule)
+    {
+        IEnumerable<ParkOpeningHoursTimeRange> regularWindows = schedule.RegularRules
+            .Where(static rule => !rule.IsClosed)
+            .SelectMany(static rule => rule.TimeRanges);
+        IEnumerable<ParkOpeningHoursTimeRange> overrideWindows = schedule.DateOverrides
+            .Where(static dateOverride => !dateOverride.IsClosed)
+            .SelectMany(static dateOverride => dateOverride.TimeRanges);
+        return regularWindows
+            .Concat(overrideWindows)
+            .Select(BuildPresentedWindow)
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static value => value, StringComparer.Ordinal)
+            .ToArray();
+    }
+
+    private static string BuildPresentedWindow(ParkOpeningHoursTimeRange range)
+    {
+        string closesNextDay = range.ClosesNextDay ? "+1" : string.Empty;
+        string lastAdmission = range.LastAdmissionAt.HasValue
+            ? $"@{range.LastAdmissionAt.Value.ToString("HH:mm", CultureInfo.InvariantCulture)}{(range.LastAdmissionNextDay ? "+1" : string.Empty)}"
+            : string.Empty;
+        return $"{range.OpensAt.ToString("HH:mm", CultureInfo.InvariantCulture)}-{range.ClosesAt.ToString("HH:mm", CultureInfo.InvariantCulture)}{closesNextDay}{lastAdmission}";
     }
 
     private static string BuildCanonicalRule(

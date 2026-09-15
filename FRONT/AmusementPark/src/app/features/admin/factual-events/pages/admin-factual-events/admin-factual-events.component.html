@@ -39,7 +39,7 @@
           <div class="factual-event-card__identity">
             <span class="factual-event-card__target-type">{{ ('factualEvents.target.' + event.target.type) | translate }}</span>
             <h2>{{ targetName(event) || ('factualEvents.admin.unknownTarget' | translate) }}</h2>
-            @if (event.target.parentParkName && event.target.name) {<p>{{ event.target.parentParkName }}</p>}
+            @if (event.target.type === 'ParkItem' && event.target.parentParkName) {<p>{{ event.target.parentParkName }}</p>}
           </div>
           <span class="factual-event-card__status" [attr.data-status]="event.status">{{ ('factualEvents.status.' + event.status) | translate }}</span>
         </header>
@@ -57,6 +57,13 @@
               <strong>{{ previousFact.coverageStart | date:'mediumDate':'UTC' }} → {{ previousFact.coverageEnd | date:'mediumDate':'UTC' }}</strong>
               <small>{{ 'factualEvents.admin.change.calendarSummary' | translate:{ rules: previousFact.rulesCount, exceptions: previousFact.overridesCount } }}</small>
               <small>{{ 'factualEvents.admin.change.timeZone' | translate:{ timeZone: previousFact.timeZone } }}</small>
+              @if (previousFact.openingWindows.length > 0) {
+                <small class="factual-event-card__windows">
+                  {{ 'factualEvents.admin.change.timeWindows' | translate }}
+                  @for (window of previousFact.openingWindows; track window) {<b>{{ window }}</b>}
+                  @if (previousFact.hiddenOpeningWindowsCount > 0) {<b>+{{ previousFact.hiddenOpeningWindowsCount }}</b>}
+                </small>
+              }
             } @else {<strong>{{ previousFact.rawValue }}</strong>}
           </div>
           <i class="pi pi-arrow-right" aria-hidden="true"></i>
@@ -67,6 +74,13 @@
               <strong>{{ newFact.coverageStart | date:'mediumDate':'UTC' }} → {{ newFact.coverageEnd | date:'mediumDate':'UTC' }}</strong>
               <small>{{ 'factualEvents.admin.change.calendarSummary' | translate:{ rules: newFact.rulesCount, exceptions: newFact.overridesCount } }}</small>
               <small>{{ 'factualEvents.admin.change.timeZone' | translate:{ timeZone: newFact.timeZone } }}</small>
+              @if (newFact.openingWindows.length > 0) {
+                <small class="factual-event-card__windows">
+                  {{ 'factualEvents.admin.change.timeWindows' | translate }}
+                  @for (window of newFact.openingWindows; track window) {<b>{{ window }}</b>}
+                  @if (newFact.hiddenOpeningWindowsCount > 0) {<b>+{{ newFact.hiddenOpeningWindowsCount }}</b>}
+                </small>
+              }
             } @else {<strong>{{ newFact.rawValue }}</strong>}
           </div>
         </section>

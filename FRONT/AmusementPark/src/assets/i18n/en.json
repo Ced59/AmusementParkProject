@@ -4072,7 +4072,8 @@
         "after": "After",
         "notPublished": "No published data",
         "calendarSummary": "{{rules}} rules · {{exceptions}} exceptions",
-        "timeZone": "Time zone: {{timeZone}}"
+        "timeZone": "Time zone: {{timeZone}}",
+        "timeWindows": "Observed opening windows"
       },
       "source": {
         "label": "Reviewable evidence"

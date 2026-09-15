@@ -7,4 +7,6 @@ export interface FactualFactPresentation {
   readonly coverageEnd: string | null;
   readonly rulesCount: number | null;
   readonly overridesCount: number | null;
+  readonly openingWindows: readonly string[];
+  readonly hiddenOpeningWindowsCount: number;
 }

@@ -1,6 +1,7 @@
 import type { MockedObject } from 'vitest';
+import { HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { Subject, of } from 'rxjs';
+import { Subject, of, throwError } from 'rxjs';
 
 import { FactualChangeEventAdmin } from '@app/models/admin/factual-events/factual-event-administration.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -100,6 +101,20 @@ describe('AdminFactualEventsStateFacade', (): void => {
     expect(port.search).toHaveBeenCalledTimes(2);
     expect(facade.events()[0]?.status).toBe('Verified');
     expect(facade.loading()).toBe(false);
+  });
+
+  it('reports a refresh failure as a load error after a successful mutation', (): void => {
+    const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
+    port.search
+      .mockReturnValueOnce(of(createPage(draftEvent)))
+      .mockReturnValueOnce(throwError((): HttpErrorResponse => new HttpErrorResponse({ status: 503 })));
+    port.verify.mockReturnValue(of(undefined));
+    facade.load({ page: 1, size: 20, status: 'Draft' });
+
+    facade.changeStatus(draftEvent, 'verify');
+
+    expect(facade.actionError()).toBeNull();
+    expect(facade.loadError()).toBe(true);
   });
 });
 

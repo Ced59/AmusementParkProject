@@ -27,6 +27,8 @@ public sealed class OpeningCalendarFactSnapshotTests
         Assert.NotNull(firstSnapshot);
         Assert.Equal(firstSnapshot, secondSnapshot);
         Assert.Contains("coverage=2026-07-01/2026-07-31", firstSnapshot.CanonicalValue);
+        Assert.Contains("windows=10:00-18:00", firstSnapshot.CanonicalValue);
+        Assert.Contains("windowCount=1", firstSnapshot.CanonicalValue);
     }
 
     [Fact]
@@ -38,6 +40,8 @@ public sealed class OpeningCalendarFactSnapshotTests
             CreateSchedule(new TimeOnly(19, 0)));
 
         Assert.NotEqual(previous, current);
+        Assert.Contains("windows=10:00-18:00", previous!.CanonicalValue);
+        Assert.Contains("windows=10:00-19:00", current!.CanonicalValue);
     }
 
     [Fact]

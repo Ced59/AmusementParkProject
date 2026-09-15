@@ -4072,7 +4072,8 @@
         "after": "Nachher",
         "notPublished": "Keine veröffentlichten Daten",
         "calendarSummary": "{{rules}} Regeln · {{exceptions}} Ausnahmen",
-        "timeZone": "Zeitzone: {{timeZone}}"
+        "timeZone": "Zeitzone: {{timeZone}}",
+        "timeWindows": "Erfasste Öffnungszeiten"
       },
       "source": {
         "label": "Prüfbarer Beleg"

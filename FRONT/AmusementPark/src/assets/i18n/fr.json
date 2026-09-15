@@ -4072,7 +4072,8 @@
         "after": "Après",
         "notPublished": "Aucune donnée publiée",
         "calendarSummary": "{{rules}} règles · {{exceptions}} exceptions",
-        "timeZone": "Fuseau : {{timeZone}}"
+        "timeZone": "Fuseau : {{timeZone}}",
+        "timeWindows": "Plages horaires constatées"
       },
       "source": {
         "label": "Preuve consultable"

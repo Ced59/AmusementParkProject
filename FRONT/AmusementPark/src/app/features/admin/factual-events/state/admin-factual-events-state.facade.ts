@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Observable, finalize, switchMap } from 'rxjs';
+import { Observable, finalize } from 'rxjs';
 
 import {
   FactualChangeEventAdmin,
@@ -85,14 +85,12 @@ export class AdminFactualEventsStateFacade {
     this.actionEventIdState.set(event.eventId);
     this.actionErrorState.set(null);
     operation.pipe(
-      switchMap((): Observable<PagedResult<FactualChangeEventAdmin>> =>
-        this.port.search(refreshQuery)),
       takeUntilDestroyed(this.destroyRef),
       finalize((): void => this.actionEventIdState.set(null)),
     ).subscribe({
-      next: (response: PagedResult<FactualChangeEventAdmin>): void => {
+      next: (): void => {
         if (this.isCurrentQuery(refreshQuerySequence)) {
-          this.setPage(response);
+          this.load(refreshQuery);
         }
       },
       error: (error: unknown): void => {

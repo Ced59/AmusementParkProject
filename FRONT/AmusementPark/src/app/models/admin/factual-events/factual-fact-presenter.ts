@@ -20,6 +20,12 @@ export function presentFactualFact(value: FactualFactValueAdmin | null): Factual
     && fields.has('rules')
     && fields.has('overrides')
     && fields.has('sha256');
+  const openingWindows: readonly string[] = isOpeningCalendar
+    ? parseOpeningWindows(fields.get('windows'))
+    : [];
+  const openingWindowCount: number = isOpeningCalendar
+    ? parseCount(fields.get('windowCount')) ?? openingWindows.length
+    : 0;
   return {
     isOpeningCalendar,
     isPresent: true,
@@ -29,6 +35,8 @@ export function presentFactualFact(value: FactualFactValueAdmin | null): Factual
     coverageEnd: coverageParts[1] ?? null,
     rulesCount: isOpeningCalendar ? parseCount(fields.get('rules')) : null,
     overridesCount: isOpeningCalendar ? parseCount(fields.get('overrides')) : null,
+    openingWindows,
+    hiddenOpeningWindowsCount: Math.max(0, openingWindowCount - openingWindows.length),
   };
 }
 
@@ -47,7 +55,20 @@ function emptyPresentation(): FactualFactPresentation {
     coverageEnd: null,
     rulesCount: null,
     overridesCount: null,
+    openingWindows: [],
+    hiddenOpeningWindowsCount: 0,
   };
+}
+
+function parseOpeningWindows(value: string | undefined): readonly string[] {
+  if (!value) {
+    return [];
+  }
+
+  return value
+    .split(',')
+    .filter((window: string): boolean => /^\d{2}:\d{2}-\d{2}:\d{2}(?:\+1)?(?:@\d{2}:\d{2}(?:\+1)?)?$/.test(window))
+    .map((window: string): string => window.replace('-', ' → ').replace('@', ' · '));
 }
 
 function parseCount(value: string | undefined): number | null {

@@ -4072,7 +4072,8 @@
         "after": "Po",
         "notPublished": "Brak opublikowanych danych",
         "calendarSummary": "{{rules}} reguł · {{exceptions}} wyjątków",
-        "timeZone": "Strefa czasowa: {{timeZone}}"
+        "timeZone": "Strefa czasowa: {{timeZone}}",
+        "timeWindows": "Zarejestrowane godziny otwarcia"
       },
       "source": {
         "label": "Dowód do sprawdzenia"

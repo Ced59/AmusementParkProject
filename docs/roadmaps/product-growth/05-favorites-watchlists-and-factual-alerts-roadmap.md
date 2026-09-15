@@ -87,6 +87,8 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > `WATCH-06` est livré en `5.3.50` : l'administration dispose d'un atelier
 > responsive qui présente le changement, sa cible lisible et sa preuve, sans
 > exposer les identifiants de cible ni l'empreinte technique des calendriers.
+> Pour les calendriers, les plages horaires constatées rendent aussi visible
+> une modification d'heures même lorsque les compteurs de règles ne changent pas.
 > Le passage `Draft` → `Verified` → `Published` est explicite, audité, protégé
 > contre les validations concurrentes et limité en charge. Un fait détecté ou
 > vérifié reste techniquement non diffusable ; seule la publication volontaire

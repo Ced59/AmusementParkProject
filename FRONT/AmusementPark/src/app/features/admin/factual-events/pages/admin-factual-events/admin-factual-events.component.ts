@@ -87,9 +87,7 @@ export class AdminFactualEventsComponent implements OnInit {
   }
 
   protected targetName(event: FactualChangeEventAdmin): string {
-    return event.target.name?.trim()
-      || event.target.parentParkName?.trim()
-      || '';
+    return event.target.name?.trim() || '';
   }
 
   protected fact(value: FactualChangeEventAdmin['newValue']): FactualFactPresentation {
