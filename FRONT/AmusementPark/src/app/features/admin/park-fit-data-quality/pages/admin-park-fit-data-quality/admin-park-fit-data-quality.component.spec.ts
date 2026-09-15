@@ -60,7 +60,7 @@ describe('AdminParkFitDataQualityComponent', () => {
     );
   });
 
-  it('does not expose activation writes during the compatible-reader rollout', () => {
+  it('shows but locks activation when a non-activated park fails the quality gate', () => {
     const page: ParkFitDataQualityPage = createPage();
     page.items[0].recommendationState = 'NotActivated';
     port.getPage.mockReturnValue(of(page));
@@ -75,7 +75,8 @@ describe('AdminParkFitDataQualityComponent', () => {
     const inactiveState = fixture.debugElement.query(
       By.css('.park-fit-operational-controls--inactive')
     );
-    expect(activationButton).toBeNull();
+    expect(activationButton).not.toBeNull();
+    expect(activationButton.nativeElement.disabled).toBe(true);
     expect(inactiveState).not.toBeNull();
   });
 });
