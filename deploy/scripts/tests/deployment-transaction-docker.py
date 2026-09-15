@@ -144,12 +144,14 @@ def main():
             assert len((directory / "control/writes").read_text().splitlines()) == 1
             def partial_canonical_api():
                 current = phase("replace-canonical")
-                if not current or runtime.find(runtime.names["front"]) is not None:
+                if not current:
                     return None
                 try:
+                    if runtime.find(runtime.names["front"]) is not None:
+                        return None
                     api = runtime.inspect(runtime.names["api"])
                 except DeploymentError as error:
-                    # The observer can race with the intentional remove/recreate window.
+                    # Either canonical name can disappear during its intentional replacement.
                     if "No such object:" in str(error):
                         return None
                     raise
