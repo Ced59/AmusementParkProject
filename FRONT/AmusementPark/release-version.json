@@ -1,6 +1,20 @@
 {
-  "version": "5.3.36",
+  "version": "5.3.37",
   "history": [
+    {
+      "version": "5.3.37",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "L’ergonomie des outils d’administration a été améliorée.",
+        "en": "Admin tool usability has been improved.",
+        "de": "Die Bedienbarkeit der Verwaltungswerkzeuge wurde verbessert.",
+        "nl": "De gebruiksvriendelijkheid van de beheertools is verbeterd.",
+        "it": "L’usabilità degli strumenti di amministrazione è stata migliorata.",
+        "es": "Se ha mejorado la usabilidad de las herramientas de administración.",
+        "pl": "Ulepszono wygodę obsługi narzędzi administracyjnych.",
+        "pt": "A usabilidade das ferramentas de administração foi melhorada."
+      }
+    },
     {
       "version": "5.3.36",
       "releasedAt": "2026-09-15",

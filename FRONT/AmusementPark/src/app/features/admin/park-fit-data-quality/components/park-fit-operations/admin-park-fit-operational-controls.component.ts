@@ -91,7 +91,11 @@ export class AdminParkFitOperationalControlsComponent implements OnChanges {
       return 'Suspend';
     }
 
-    return 'Restore';
+    if (targetState === 'NotActivated') {
+      return 'Deactivate';
+    }
+
+    return this.park.recommendationState === 'Suspended' ? 'Restore' : 'Activate';
   }
 
   protected confirm(): void {

@@ -63,7 +63,7 @@ public sealed class ChangeParkFitOperationalStatusCommandHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsync_WhenStateIsNotActivated_ShouldRejectActiveTransitionDuringReaderRollout()
+    public async Task HandleAsync_WhenQualityIsInsufficient_ShouldRejectActivation()
     {
         Park park = new Park { Id = "park-1", Name = "Parc incomplet", IsVisible = true };
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
@@ -81,6 +81,14 @@ public sealed class ChangeParkFitOperationalStatusCommandHandlerTests
                 park.Id,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((ParkFitOperationalStatus?)null);
+        items.Setup(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        openingHours.Setup(repository => repository.GetSummariesByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>());
         ChangeParkFitOperationalStatusCommandHandler handler =
             new ChangeParkFitOperationalStatusCommandHandler(
                 parks.Object,
@@ -94,6 +102,50 @@ public sealed class ChangeParkFitOperationalStatusCommandHandlerTests
                 ParkFitRecommendationState.Active,
                 "admin-1",
                 "Activation initiale",
+                0));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(
+            result.Errors,
+            static error => error.Code == "park-fit.operations.activation-quality-required");
+        statuses.Verify(repository => repository.ReplaceAsync(
+            It.IsAny<ParkFitOperationalStatus>(),
+            It.IsAny<long>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenParkIsAlreadyActive_ShouldRejectBeforeQualityAudit()
+    {
+        Park park = BuildEligiblePark();
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHours =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<IParkFitOperationalStatusRepository> statuses =
+            new Mock<IParkFitOperationalStatusRepository>(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetByIdAsync(
+                park.Id,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        statuses.Setup(repository => repository.GetAsync(
+                park.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ParkFitOperationalStatus.CreateActive(park.Id));
+        ChangeParkFitOperationalStatusCommandHandler handler =
+            new ChangeParkFitOperationalStatusCommandHandler(
+                parks.Object,
+                items.Object,
+                openingHours.Object,
+                statuses.Object);
+
+        ApplicationResult result = await handler.HandleAsync(
+            new ChangeParkFitOperationalStatusCommand(
+                park.Id,
+                ParkFitRecommendationState.Active,
+                "admin-1",
+                "Activation répétée",
                 0));
 
         Assert.False(result.IsSuccess);
@@ -242,6 +294,131 @@ public sealed class ChangeParkFitOperationalStatusCommandHandlerTests
                 1));
 
         Assert.True(result.IsSuccess);
+        statuses.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenNonActivatedParkIsEligible_ShouldActivateIt()
+    {
+        DateTime nowUtc = new DateTime(2026, 9, 15, 12, 0, 0, DateTimeKind.Utc);
+        Park park = BuildEligiblePark();
+        ParkItem attraction = BuildEligibleAttraction(park.Id, nowUtc);
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHours =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<IParkFitOperationalStatusRepository> statuses =
+            new Mock<IParkFitOperationalStatusRepository>(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetByIdAsync(
+                park.Id,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        statuses.Setup(repository => repository.GetAsync(
+                park.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ParkFitOperationalStatus.CreateNotActivated(park.Id));
+        items.Setup(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { attraction });
+        openingHours.Setup(repository => repository.GetSummariesByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, ParkOpeningHoursScheduleSummary>
+            {
+                [park.Id] = new ParkOpeningHoursScheduleSummary
+                {
+                    ParkId = park.Id,
+                    TimeZoneId = "UTC",
+                    HasScheduleData = true,
+                    LastDate = DateOnly.FromDateTime(nowUtc).AddDays(60),
+                    CoverageSegments = new[]
+                    {
+                        new ParkOpeningHoursCoverageSegmentSummary
+                        {
+                            StartDate = DateOnly.FromDateTime(nowUtc),
+                            EndDate = DateOnly.FromDateTime(nowUtc).AddDays(60),
+                        },
+                    },
+                },
+            });
+        statuses.Setup(repository => repository.ReplaceAsync(
+                It.Is<ParkFitOperationalStatus>(status =>
+                    status.State == ParkFitRecommendationState.Active
+                    && status.Decisions.Single().Type == ParkFitOperationalDecisionType.Activated),
+                0,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ParkFitOperationalStatusWriteOutcome.Success);
+        ChangeParkFitOperationalStatusCommandHandler handler =
+            new ChangeParkFitOperationalStatusCommandHandler(
+                parks.Object,
+                items.Object,
+                openingHours.Object,
+                statuses.Object,
+                new ChangeParkFitOperationalStatusCommandHandlerTestsFixedTimeProvider(nowUtc));
+
+        ApplicationResult result = await handler.HandleAsync(
+            new ChangeParkFitOperationalStatusCommand(
+                park.Id,
+                ParkFitRecommendationState.Active,
+                "admin-1",
+                "Données validées",
+                0));
+
+        Assert.True(result.IsSuccess);
+        statuses.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenSuspendedParkIsWithdrawn_ShouldNotRestoreItFirst()
+    {
+        DateTime nowUtc = new DateTime(2026, 9, 15, 12, 0, 0, DateTimeKind.Utc);
+        Park park = BuildEligiblePark();
+        ParkFitOperationalStatus suspendedStatus = ParkFitOperationalStatus.CreateActive(park.Id);
+        suspendedStatus.Suspend("admin-previous", "Contrôle requis", nowUtc.AddHours(-1));
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkOpeningHoursRepository> openingHours =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<IParkFitOperationalStatusRepository> statuses =
+            new Mock<IParkFitOperationalStatusRepository>(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetByIdAsync(
+                park.Id,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        statuses.Setup(repository => repository.GetAsync(
+                park.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(suspendedStatus);
+        statuses.Setup(repository => repository.ReplaceAsync(
+                It.Is<ParkFitOperationalStatus>(status =>
+                    status.State == ParkFitRecommendationState.NotActivated
+                    && status.Decisions.Last().Type
+                        == ParkFitOperationalDecisionType.DeactivatedDuringSuspension),
+                1,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ParkFitOperationalStatusWriteOutcome.Success);
+        ChangeParkFitOperationalStatusCommandHandler handler =
+            new ChangeParkFitOperationalStatusCommandHandler(
+                parks.Object,
+                items.Object,
+                openingHours.Object,
+                statuses.Object,
+                new ChangeParkFitOperationalStatusCommandHandlerTestsFixedTimeProvider(nowUtc));
+
+        ApplicationResult result = await handler.HandleAsync(
+            new ChangeParkFitOperationalStatusCommand(
+                park.Id,
+                ParkFitRecommendationState.NotActivated,
+                "admin-1",
+                "Retrait du portefeuille",
+                1));
+
+        Assert.True(result.IsSuccess);
+        items.VerifyNoOtherCalls();
+        openingHours.VerifyNoOtherCalls();
         statuses.VerifyAll();
     }
 
