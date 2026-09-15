@@ -2,6 +2,7 @@ namespace AmusementPark.Core.Domain.Watchlists;
 
 public static class UserCollectionErrorCodes
 {
+    public const string InvalidState = "watch.collection.invalid-state";
     public const string InvalidTargetType = "watch.collection.invalid-target-type";
     public const string InvalidKind = "watch.collection.invalid-kind";
     public const string IncompatibleTarget = "watch.collection.incompatible-target";

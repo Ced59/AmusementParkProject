@@ -1,4 +1,57 @@
 {
+  "collections": {
+    "kicker": "Twoje marzenia",
+    "title": "Twoja kolekcja parków",
+    "description": "Zachowaj pod ręką parki i atrakcje, które kochasz lub które wciąż chcesz odkryć.",
+    "privacy": "Ta kolekcja pozostaje prywatna. Dodanie do ulubionych nigdy nie włącza powiadomień.",
+    "actions": {
+      "label": "Działania kolekcji",
+      "favorite": "Dodaj do ulubionych",
+      "favoriteActive": "W moich ulubionych",
+      "wantToVisit": "Chcę odwiedzić",
+      "wantToExperience": "Chcę spróbować",
+      "intentActive": "Na mojej liście marzeń",
+      "backToProfile": "Wróć do profilu",
+      "openMine": "Moje ulubione i marzenia",
+      "retry": "Spróbuj ponownie",
+      "explore": "Odkrywaj parki",
+      "view": "Zobacz szczegóły",
+      "remove": "Usuń"
+    },
+    "filters": {
+      "label": "Filtruj kolekcję",
+      "all": "Wszystko",
+      "favorite": "Ulubione",
+      "wantToVisit": "Parki do odkrycia",
+      "wantToExperience": "Atrakcje do wypróbowania",
+      "planned": "Plany"
+    },
+    "kinds": {
+      "favorite": "Ulubione",
+      "wantToVisit": "Do odkrycia",
+      "wantToExperience": "Do wypróbowania",
+      "planned": "Plan"
+    },
+    "status": {
+      "unknown": "Status do potwierdzenia",
+      "available": "Dostępne",
+      "temporarilyClosed": "Tymczasowo zamknięte",
+      "permanentlyClosed": "Zamknięte na stałe"
+    },
+    "feedback": {
+      "loading": "Wczytujemy Twoją kolekcję…",
+      "loadError": "Nie można teraz wczytać Twojej kolekcji.",
+      "actionError": "Nie udało się zapisać zmiany. Spróbuj ponownie za chwilę."
+    },
+    "empty": {
+      "title": "Twoje następne odkrycie zaczyna się tutaj",
+      "description": "Dodaj serce lub marzenie na stronie parku albo atrakcji."
+    },
+    "unavailable": {
+      "title": "Strona niedostępna",
+      "description": "Twój wybór pozostaje zapisany, nawet gdy ta strona nie jest już widoczna."
+    }
+  },
   "accountLayout": {
     "kicker": "Strefa osobista",
     "title": "Twój paszport parków",

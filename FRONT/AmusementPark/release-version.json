@@ -1,6 +1,20 @@
 {
-  "version": "5.3.42",
+  "version": "5.3.43",
   "history": [
+    {
+      "version": "5.3.43",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Tes parcs et attractions préférés sont maintenant réunis dans une collection privée.",
+        "en": "Your favourite parks and attractions are now gathered in a private collection.",
+        "de": "Deine Lieblingsparks und -attraktionen sind jetzt in einer privaten Sammlung vereint.",
+        "nl": "Je favoriete parken en attracties staan nu samen in een privécollectie.",
+        "it": "I tuoi parchi e le tue attrazioni preferiti sono ora riuniti in una collezione privata.",
+        "es": "Tus parques y atracciones favoritos están ahora reunidos en una colección privada.",
+        "pl": "Twoje ulubione parki i atrakcje są teraz zebrane w prywatnej kolekcji.",
+        "pt": "Os teus parques e atrações favoritos estão agora reunidos numa coleção privada."
+      }
+    },
     {
       "version": "5.3.42",
       "releasedAt": "2026-09-15",

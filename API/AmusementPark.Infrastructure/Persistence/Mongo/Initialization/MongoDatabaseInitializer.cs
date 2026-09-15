@@ -40,6 +40,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Seo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.SocialPublishing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.SocialShare;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Watchlists;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
 
@@ -661,6 +662,15 @@ private readonly IMongoDatabase database;
                 this.settings.UserGroupProfilesCollectionName);
         await groupProfilesCollection.Indexes.CreateManyAsync(
             ParkFitGroupProfileMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.UserCollectionEntriesCollectionName,
+            cancellationToken);
+        IMongoCollection<UserCollectionEntryDocument> userCollectionEntries =
+            this.database.GetCollection<UserCollectionEntryDocument>(
+                this.settings.UserCollectionEntriesCollectionName);
+        await userCollectionEntries.Indexes.CreateManyAsync(
+            UserCollectionEntryMongoDefinitions.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
             this.settings.ParkFitSourceReportsCollectionName,

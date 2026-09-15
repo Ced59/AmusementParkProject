@@ -93,6 +93,13 @@
           </div>
 
           <div class="park-banner__actions">
+            @if (currentPark.id; as parkId) {
+              <app-user-collection-actions
+                [targetId]="parkId"
+                targetType="Park">
+              </app-user-collection-actions>
+            }
+
             <button appUiButton="primary" type="button" (click)="createVisit()">
               <i class="pi pi-calendar-plus" aria-hidden="true"></i>
               <span>{{ 'passport.quickCreate.actions.openForPark' | translate }}</span>

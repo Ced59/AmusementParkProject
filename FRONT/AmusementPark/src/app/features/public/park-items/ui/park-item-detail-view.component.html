@@ -151,6 +151,13 @@
         </div>
 
         <div class="item-detail-hero__actions">
+          @if (currentDetail.id; as itemId) {
+            <app-user-collection-actions
+              [targetId]="itemId"
+              targetType="ParkItem">
+            </app-user-collection-actions>
+          }
+
           <button appUiButton="ghost" type="button" (click)="goBackToItems()">
             <i class="pi pi-arrow-left" aria-hidden="true"></i>
             <span>{{ 'parkItems.actions.backToItems' | translate }}</span>

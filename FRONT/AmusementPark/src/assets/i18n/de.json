@@ -1,4 +1,57 @@
 {
+  "collections": {
+    "kicker": "Deine Wünsche",
+    "title": "Deine Park-Sammlung",
+    "description": "Behalte Parks und Attraktionen im Blick, die du liebst oder noch entdecken möchtest.",
+    "privacy": "Diese Sammlung bleibt privat. Ein Favorit aktiviert niemals Benachrichtigungen.",
+    "actions": {
+      "label": "Sammlungsaktionen",
+      "favorite": "Zu Favoriten hinzufügen",
+      "favoriteActive": "In meinen Favoriten",
+      "wantToVisit": "Möchte ich besuchen",
+      "wantToExperience": "Möchte ich ausprobieren",
+      "intentActive": "Auf meiner Wunschliste",
+      "backToProfile": "Zurück zum Profil",
+      "openMine": "Meine Favoriten und Wünsche",
+      "retry": "Erneut versuchen",
+      "explore": "Parks entdecken",
+      "view": "Details ansehen",
+      "remove": "Entfernen"
+    },
+    "filters": {
+      "label": "Sammlung filtern",
+      "all": "Alle",
+      "favorite": "Favoriten",
+      "wantToVisit": "Parks entdecken",
+      "wantToExperience": "Attraktionen ausprobieren",
+      "planned": "Pläne"
+    },
+    "kinds": {
+      "favorite": "Favorit",
+      "wantToVisit": "Zu entdecken",
+      "wantToExperience": "Auszuprobieren",
+      "planned": "Plan"
+    },
+    "status": {
+      "unknown": "Status noch offen",
+      "available": "Verfügbar",
+      "temporarilyClosed": "Vorübergehend geschlossen",
+      "permanentlyClosed": "Dauerhaft geschlossen"
+    },
+    "feedback": {
+      "loading": "Deine Sammlung wird geladen…",
+      "loadError": "Deine Sammlung kann gerade nicht geladen werden.",
+      "actionError": "Die Änderung konnte nicht gespeichert werden. Versuche es gleich noch einmal."
+    },
+    "empty": {
+      "title": "Deine nächste Entdeckung beginnt hier",
+      "description": "Füge auf einer Park- oder Attraktionsseite ein Herz oder einen Wunsch hinzu."
+    },
+    "unavailable": {
+      "title": "Seite nicht verfügbar",
+      "description": "Deine Auswahl bleibt erhalten, auch wenn diese Seite nicht mehr sichtbar ist."
+    }
+  },
   "accountLayout": {
     "kicker": "Persönlicher Bereich",
     "title": "Dein Park-Pass",

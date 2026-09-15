@@ -87,6 +87,25 @@
         <div class="profile-workspace__content">
           @if (activeTab() === 'profile') {
             <article class="profile-panel" appUiSurface="panel" appUiSurfacePadding="spacious">
+              <section class="profile-passport-entry profile-passport-entry--collections">
+                <span class="profile-passport-entry__icon" aria-hidden="true">
+                  <i class="pi pi-heart"></i>
+                </span>
+                <div class="profile-passport-entry__copy">
+                  <app-ui-kicker tone="rose" iconClass="pi pi-bookmark">
+                    {{ 'collections.kicker' | translate }}
+                  </app-ui-kicker>
+                  <h2>{{ 'collections.title' | translate }}</h2>
+                  <p>{{ 'collections.description' | translate }}</p>
+                </div>
+                <div class="profile-passport-entry__actions">
+                  <button appUiButton="rose" type="button" (click)="openCollections()">
+                    <i class="pi pi-heart" aria-hidden="true"></i>
+                    <span>{{ 'collections.actions.openMine' | translate }}</span>
+                  </button>
+                </div>
+              </section>
+
               <section class="profile-passport-entry">
                 <span class="profile-passport-entry__icon" aria-hidden="true">
                   <i class="pi pi-ticket"></i>

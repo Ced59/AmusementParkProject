@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.collection-actions {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  min-width: 0;
+  gap: 0.65rem;
+}
+
+.collection-actions button {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.collection-actions button span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.collection-actions__button--active {
+  border-color: color-mix(in srgb, var(--c-rose) 58%, var(--app-border));
+  background: color-mix(in srgb, var(--c-rose) 14%, var(--app-surface));
+  color: var(--c-rose);
+}
+
+.collection-actions__error {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--c-rose);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 36rem) {
+  .collection-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .collection-actions button {
+    width: 100%;
+  }
+}

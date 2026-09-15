@@ -1,0 +1,31 @@
+@if (facade.authenticated()) {
+  <section class="collection-actions" [attr.aria-label]="'collections.actions.label' | translate">
+    <button
+      type="button"
+      appUiButton="ghost"
+      [class.collection-actions__button--active]="facade.has('Favorite')"
+      [attr.aria-pressed]="facade.has('Favorite')"
+      [disabled]="facade.loading() || facade.mutatingKind() !== null"
+      (click)="facade.toggle('Favorite')">
+      <i [class]="icon('Favorite')" aria-hidden="true"></i>
+      <span>{{ labelKey('Favorite') | translate }}</span>
+    </button>
+
+    <button
+      type="button"
+      appUiButton="ghost"
+      [class.collection-actions__button--active]="facade.has(intentKind)"
+      [attr.aria-pressed]="facade.has(intentKind)"
+      [disabled]="facade.loading() || facade.mutatingKind() !== null"
+      (click)="facade.toggle(intentKind)">
+      <i [class]="icon(intentKind)" aria-hidden="true"></i>
+      <span>{{ labelKey(intentKind) | translate }}</span>
+    </button>
+
+    @if (facade.error()) {
+      <p class="collection-actions__error" role="alert">
+        {{ 'collections.feedback.actionError' | translate }}
+      </p>
+    }
+  </section>
+}

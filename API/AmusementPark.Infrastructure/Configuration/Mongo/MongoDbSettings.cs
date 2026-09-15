@@ -121,6 +121,9 @@ public sealed class MongoDbSettings
 
     public string UserGroupProfilesCollectionName { get; set; } = "user-group-profiles";
 
+    public string UserCollectionEntriesCollectionName { get; set; } =
+        "user-collection-entries";
+
     public string ParkFitSourceReportsCollectionName { get; set; } =
         "park-fit-source-reports";
 

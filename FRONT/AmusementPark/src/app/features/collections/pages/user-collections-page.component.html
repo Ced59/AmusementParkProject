@@ -1,0 +1,117 @@
+<main class="collections-page">
+  <header class="collections-page__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a appUiButton="ghost" [routerLink]="['/', currentLang, 'profile']">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'collections.actions.backToProfile' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="rose" iconClass="pi pi-heart">
+      {{ 'collections.kicker' | translate }}
+    </app-ui-kicker>
+    <h1>{{ 'collections.title' | translate }}</h1>
+    <p>{{ 'collections.description' | translate }}</p>
+    <p class="collections-page__privacy">
+      <i class="pi pi-lock" aria-hidden="true"></i>
+      <span>{{ 'collections.privacy' | translate }}</span>
+    </p>
+  </header>
+
+  <nav class="collections-page__filters" [attr.aria-label]="'collections.filters.label' | translate">
+    @for (filterOption of filters; track filterOption) {
+      <button
+        type="button"
+        class="collections-page__filter"
+        [class.collections-page__filter--active]="filter() === filterOption"
+        [attr.aria-pressed]="filter() === filterOption"
+        (click)="filter.set(filterOption)">
+        {{ filterLabelKey(filterOption) | translate }}
+      </button>
+    }
+  </nav>
+
+  @if (facade.status() === 'loading') {
+    <section class="collections-page__message" appUiSurface="panel" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'collections.feedback.loading' | translate }}</span>
+    </section>
+  } @else if (facade.status() === 'error') {
+    <section class="collections-page__message collections-page__message--error" appUiSurface="panel" role="alert">
+      <span>{{ 'collections.feedback.loadError' | translate }}</span>
+      <button type="button" appUiButton="ghost" (click)="facade.load()">
+        {{ 'collections.actions.retry' | translate }}
+      </button>
+    </section>
+  } @else if (entries().length === 0) {
+    <section class="collections-page__empty" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <i class="pi pi-sparkles" aria-hidden="true"></i>
+      <h2>{{ 'collections.empty.title' | translate }}</h2>
+      <p>{{ 'collections.empty.description' | translate }}</p>
+      <a appUiButton="primary" [routerLink]="['/', currentLang, 'parks']">
+        {{ 'collections.actions.explore' | translate }}
+      </a>
+    </section>
+  } @else {
+    @if (facade.actionError()) {
+      <p class="collections-page__action-error" role="alert">
+        {{ 'collections.feedback.actionError' | translate }}
+      </p>
+    }
+
+    <section class="collections-page__grid">
+      @for (entry of entries(); track entry.entryId) {
+        <article class="collection-card" appUiSurface="panel">
+          <div class="collection-card__visual">
+            @if (entry.mainImageId) {
+              <app-image-display
+                [imageId]="entry.mainImageId"
+                [alt]="entry.targetName || ('collections.unavailable.title' | translate)"
+                sizes="(max-width: 36rem) 100vw, 20rem"
+                [responsiveWidths]="imageWidths"
+                [srcWidth]="320"
+                placeholderKind="photo">
+              </app-image-display>
+            } @else {
+              <span class="collection-card__placeholder" aria-hidden="true">
+                <i class="pi" [class.pi-map-marker]="entry.targetType === 'Park'" [class.pi-ticket]="entry.targetType === 'ParkItem'"></i>
+              </span>
+            }
+          </div>
+
+          <div class="collection-card__content">
+            <div class="collection-card__chips">
+              <app-ui-chip tone="rose" [iconClass]="entry.kind === 'Favorite' ? 'pi pi-heart-fill' : 'pi pi-bookmark-fill'">
+                {{ kindLabelKey(entry.kind) | translate }}
+              </app-ui-chip>
+              <app-ui-chip tone="soft" iconClass="pi pi-info-circle">
+                {{ statusLabelKey(entry) | translate }}
+              </app-ui-chip>
+            </div>
+
+            <h2>{{ entry.targetName || ('collections.unavailable.title' | translate) }}</h2>
+            @if (entry.parentParkName) {
+              <p>{{ entry.parentParkName }}</p>
+            } @else if (!entry.targetName) {
+              <p>{{ 'collections.unavailable.description' | translate }}</p>
+            }
+
+            <div class="collection-card__actions">
+              @if (routeFor(entry); as route) {
+                <a appUiButton="primary" [routerLink]="route">
+                  <i class="pi pi-arrow-right" aria-hidden="true"></i>
+                  <span>{{ 'collections.actions.view' | translate }}</span>
+                </a>
+              }
+              <button
+                type="button"
+                appUiButton="ghost"
+                [disabled]="facade.removingId() !== null"
+                (click)="facade.remove(entry)">
+                <i class="pi pi-times" aria-hidden="true"></i>
+                <span>{{ 'collections.actions.remove' | translate }}</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      }
+    </section>
+  }
+</main>

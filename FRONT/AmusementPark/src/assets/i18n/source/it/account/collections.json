@@ -1,0 +1,28 @@
+{
+  "collections": {
+    "kicker": "I tuoi desideri",
+    "title": "La tua collezione di parchi",
+    "description": "Tieni a portata di mano i parchi e le attrazioni che ami o che sogni ancora di scoprire.",
+    "privacy": "Questa collezione resta privata. Un preferito non attiva mai le notifiche.",
+    "actions": {
+      "label": "Azioni della collezione",
+      "favorite": "Aggiungi ai preferiti",
+      "favoriteActive": "Nei miei preferiti",
+      "wantToVisit": "Voglio andarci",
+      "wantToExperience": "Voglio provarla",
+      "intentActive": "Nei miei desideri",
+      "backToProfile": "Torna al profilo",
+      "openMine": "I miei preferiti e desideri",
+      "retry": "Riprova",
+      "explore": "Esplora i parchi",
+      "view": "Vedi la scheda",
+      "remove": "Rimuovi"
+    },
+    "filters": { "label": "Filtra la collezione", "all": "Tutto", "favorite": "Preferiti", "wantToVisit": "Parchi da scoprire", "wantToExperience": "Attrazioni da provare", "planned": "Progetti" },
+    "kinds": { "favorite": "Preferito", "wantToVisit": "Da scoprire", "wantToExperience": "Da provare", "planned": "Progetto" },
+    "status": { "unknown": "Stato da confermare", "available": "Disponibile", "temporarilyClosed": "Chiusura temporanea", "permanentlyClosed": "Chiuso definitivamente" },
+    "feedback": { "loading": "Caricamento della collezione…", "loadError": "Non è possibile caricare la collezione ora.", "actionError": "Non è stato possibile salvare la modifica. Riprova tra poco." },
+    "empty": { "title": "La tua prossima scoperta inizia qui", "description": "Aggiungi un cuore o un desiderio dalla scheda di un parco o di un’attrazione." },
+    "unavailable": { "title": "Scheda non disponibile", "description": "La tua scelta resta salvata anche se la scheda non è più visibile." }
+  }
+}

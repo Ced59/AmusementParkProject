@@ -1,4 +1,57 @@
 {
+  "collections": {
+    "kicker": "Your wish list",
+    "title": "Your park collection",
+    "description": "Keep the parks and attractions you love or still dream of discovering close at hand.",
+    "privacy": "This collection stays private. A favourite never enables notifications.",
+    "actions": {
+      "label": "Collection actions",
+      "favorite": "Add to favourites",
+      "favoriteActive": "In my favourites",
+      "wantToVisit": "I want to visit",
+      "wantToExperience": "I want to try it",
+      "intentActive": "On my wish list",
+      "backToProfile": "Back to profile",
+      "openMine": "My favourites and wishes",
+      "retry": "Try again",
+      "explore": "Explore parks",
+      "view": "View details",
+      "remove": "Remove"
+    },
+    "filters": {
+      "label": "Filter your collection",
+      "all": "All",
+      "favorite": "Favourites",
+      "wantToVisit": "Parks to discover",
+      "wantToExperience": "Attractions to try",
+      "planned": "Plans"
+    },
+    "kinds": {
+      "favorite": "Favourite",
+      "wantToVisit": "To discover",
+      "wantToExperience": "To try",
+      "planned": "Plan"
+    },
+    "status": {
+      "unknown": "Status to confirm",
+      "available": "Available",
+      "temporarilyClosed": "Temporarily closed",
+      "permanentlyClosed": "Permanently closed"
+    },
+    "feedback": {
+      "loading": "Loading your collection…",
+      "loadError": "Your collection cannot be loaded right now.",
+      "actionError": "This change could not be saved. Try again in a moment."
+    },
+    "empty": {
+      "title": "Your next discovery starts here",
+      "description": "Add a heart or a wish from any park or attraction page."
+    },
+    "unavailable": {
+      "title": "Page unavailable",
+      "description": "Your choice is kept even when this page is no longer visible."
+    }
+  },
   "accountLayout": {
     "kicker": "Personal space",
     "title": "Your park passport",

@@ -1,4 +1,57 @@
 {
+  "collections": {
+    "kicker": "Jouw wensen",
+    "title": "Jouw parkcollectie",
+    "description": "Bewaar de parken en attracties waar je van houdt of die je nog wilt ontdekken.",
+    "privacy": "Deze collectie blijft privé. Een favoriet schakelt nooit meldingen in.",
+    "actions": {
+      "label": "Collectieacties",
+      "favorite": "Aan favorieten toevoegen",
+      "favoriteActive": "In mijn favorieten",
+      "wantToVisit": "Wil ik bezoeken",
+      "wantToExperience": "Wil ik proberen",
+      "intentActive": "Op mijn wensenlijst",
+      "backToProfile": "Terug naar profiel",
+      "openMine": "Mijn favorieten en wensen",
+      "retry": "Opnieuw proberen",
+      "explore": "Parken ontdekken",
+      "view": "Details bekijken",
+      "remove": "Verwijderen"
+    },
+    "filters": {
+      "label": "Je collectie filteren",
+      "all": "Alles",
+      "favorite": "Favorieten",
+      "wantToVisit": "Parken om te ontdekken",
+      "wantToExperience": "Attracties om te proberen",
+      "planned": "Plannen"
+    },
+    "kinds": {
+      "favorite": "Favoriet",
+      "wantToVisit": "Te ontdekken",
+      "wantToExperience": "Te proberen",
+      "planned": "Plan"
+    },
+    "status": {
+      "unknown": "Status te bevestigen",
+      "available": "Beschikbaar",
+      "temporarilyClosed": "Tijdelijk gesloten",
+      "permanentlyClosed": "Definitief gesloten"
+    },
+    "feedback": {
+      "loading": "Je collectie wordt geladen…",
+      "loadError": "Je collectie kan nu niet worden geladen.",
+      "actionError": "De wijziging kon niet worden opgeslagen. Probeer het zo opnieuw."
+    },
+    "empty": {
+      "title": "Je volgende ontdekking begint hier",
+      "description": "Voeg een hart of wens toe vanaf een park- of attractiepagina."
+    },
+    "unavailable": {
+      "title": "Pagina niet beschikbaar",
+      "description": "Je keuze blijft bewaard, ook als deze pagina niet meer zichtbaar is."
+    }
+  },
   "accountLayout": {
     "kicker": "Persoonlijke ruimte",
     "title": "Jouw parkpas",
