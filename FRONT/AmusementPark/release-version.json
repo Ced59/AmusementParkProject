@@ -1,6 +1,20 @@
 {
-  "version": "5.3.47",
+  "version": "5.3.48",
   "history": [
+    {
+      "version": "5.3.48",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Les changements suivis reposent désormais sur des faits sourcés et vérifiables.",
+        "en": "Tracked changes now rely on sourced, verifiable facts.",
+        "de": "Beobachtete Änderungen basieren jetzt auf belegten und überprüfbaren Fakten.",
+        "nl": "Gevolgde wijzigingen zijn nu gebaseerd op onderbouwde, controleerbare feiten.",
+        "it": "Le modifiche seguite si basano ora su fatti documentati e verificabili.",
+        "es": "Los cambios seguidos se basan ahora en hechos documentados y verificables.",
+        "pl": "Obserwowane zmiany opierają się teraz na udokumentowanych, możliwych do zweryfikowania faktach.",
+        "pt": "As alterações acompanhadas baseiam-se agora em factos documentados e verificáveis."
+      }
+    },
     {
       "version": "5.3.47",
       "releasedAt": "2026-09-15",
