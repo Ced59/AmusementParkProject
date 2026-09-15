@@ -22,7 +22,8 @@ const server = createServer(async (request, response) => {
       return;
     }
     if (url.pathname === '/health' && process.env.DEPLOYMENT_GENERATION !== 'unmanaged'
-        && !name.includes('candidate') && !existsSync('/control/canonical-api-ready')) {
+        && process.env.DurableBackgroundJobs__Worker__Enabled !== 'false'
+        && !existsSync('/control/canonical-api-ready')) {
       send(response, identity, 503);
     } else if (url.pathname === '/callback') {
       const result = await fetch(`${process.env.Ssr__InternalBaseUrl}/internal/cache/invalidate`, {

@@ -136,7 +136,7 @@ class DockerRuntime:
     def start_candidate(self, service: str, name: str, generation: str, api_name: str):
         existing = self.find(name, generation)
         if existing is None:
-            arguments = ["run", "-d", "--no-deps", "--name", name, "--hostname", name,
+            arguments = ["run", "-d", "--no-deps", "--name", name,
                          "--label", f"{GENERATION_LABEL}={generation}"]
             if service == "api":
                 arguments += ["-e", "DurableBackgroundJobs__Worker__Enabled=false", "-e",

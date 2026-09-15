@@ -422,7 +422,8 @@ jobs:
       - dependency-security
       - deployment-configuration-tests
     concurrency:
-      group: production-deploy
+      # Preserve the previous master key during the first workflow handoff.
+      group: production-deploy-master
       cancel-in-progress: false
     if: >-
       ${{

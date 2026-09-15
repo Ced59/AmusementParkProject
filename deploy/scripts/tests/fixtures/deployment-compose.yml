@@ -2,7 +2,6 @@ services:
   front:
     image: node:24-alpine
     container_name: ${COMPOSE_PROJECT_NAME}-front
-    hostname: ${COMPOSE_PROJECT_NAME}-front
     command: ["node", "/fixture/deployment-server.mjs"]
     labels:
       fun.amusement-parks.deployment-generation: ${DEPLOYMENT_GENERATION:-unmanaged}
@@ -22,7 +21,6 @@ services:
   api:
     image: node:24-alpine
     container_name: ${COMPOSE_PROJECT_NAME}-api
-    hostname: ${COMPOSE_PROJECT_NAME}-api
     command: ["node", "/fixture/deployment-server.mjs"]
     labels:
       fun.amusement-parks.deployment-generation: ${DEPLOYMENT_GENERATION:-unmanaged}

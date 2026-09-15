@@ -121,7 +121,11 @@ def main():
                   and runtime.edge_generation() == state["transition"]["generation"] else None, "candidate route active")
             selected = document("/pair")
             assert selected["front"]["version"] == selected["api"]["version"] == "new"
-            assert "candidate" in selected["front"]["name"] and "candidate" in selected["api"]["name"]
+            selected_pair = transaction.read()["candidate"]
+            # With Docker's default hostname, the fixture exposes the actual
+            # container ID prefix, not an identity derived from its API URL.
+            for service in ("front", "api"):
+                assert selected_pair[service]["id"][:12] == selected[service]["name"]
             callback = document("/api/callback")
             assert callback["status"] == 200 and callback["callback"]["name"] == selected["front"]["name"]
             assert len((directory / "control/writes").read_text().splitlines()) == 1
@@ -154,8 +158,10 @@ def main():
             until(lambda: state["transition"] if (state := transaction.read()).get("transition")
                   and runtime.edge_generation() == state["transition"]["generation"] else None, "canonical route active")
             canonical = document("/pair")
-            assert "candidate" not in canonical["front"]["name"]
-            assert "candidate" not in canonical["api"]["name"]
+            canonical_pair = transaction.read()["canonical"]
+            for service in ("front", "api"):
+                assert canonical_pair[service]["id"][:12] == canonical[service]["name"]
+                assert canonical[service]["name"] != selected[service]["name"]
             assert runtime.find(runtime.names["api"]) == partial_api
             assert len(runtime.candidates()) == 2 and not candidate_request.done()
             (directory / "control/release-candidatebody").touch()
