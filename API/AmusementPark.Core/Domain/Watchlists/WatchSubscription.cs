@@ -201,7 +201,9 @@ public sealed class WatchSubscription
         foreach (FactualEventType eventType in eventTypes)
         {
             ValidateEventType(eventType);
-            if (targetType == CollectionTargetType.ParkItem && IsParkOnlyEvent(eventType))
+            FactualEventDefinition definition = FactualEventCatalog.Get(eventType);
+            if (targetType == CollectionTargetType.ParkItem
+                && !definition.Supports(FactualTargetType.ParkItem))
             {
                 throw CreateValidationException(
                     WatchSubscriptionErrorCodes.IncompatibleEventType,
@@ -210,21 +212,6 @@ public sealed class WatchSubscription
         }
 
         return eventTypes.ToFrozenSet();
-    }
-
-    private static bool IsParkOnlyEvent(FactualEventType eventType)
-    {
-        return eventType is FactualEventType.OpeningCalendarPublished
-            or FactualEventType.OpeningCalendarChanged
-            or FactualEventType.SeasonOpeningConfirmed
-            or FactualEventType.SeasonClosingConfirmed
-            or FactualEventType.ParkTemporaryClosureConfirmed
-            or FactualEventType.ParkPermanentClosureConfirmed
-            or FactualEventType.ParkReopeningConfirmed
-            or FactualEventType.ParkNameChanged
-            or FactualEventType.OperatorChanged
-            or FactualEventType.TicketPricePublishedOrChanged
-            or FactualEventType.MajorDataCompletionImproved;
     }
 
     private static void ValidateEventType(FactualEventType eventType)

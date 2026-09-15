@@ -71,7 +71,10 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > réels. Favoris et envies n'activent toujours aucune surveillance implicite.
 > `WATCH-03` est livré en `5.3.45` : l'abonnement explicite porte sa cible, ses
 > événements choisis, sa fréquence, ses canaux externes facultatifs, sa pause et sa
-> version optimiste. Il reste distinct de toute entrée de collection.
+> version optimiste. Il reste distinct de toute entrée de collection. `WATCH-04` est
+> livré en `5.3.48` : les 25 types d'événements sont catalogués, versionnés et bornés
+> par cible ; chaque fait possède une valeur structurée avant/après, une source, un
+> niveau de confiance, une clé de déduplication et un cycle de validation auditable.
 
 ## 4.1 `UserCollectionEntry`
 
@@ -183,19 +186,21 @@ Une information `CommunityUnverified` peut apparaître dans un espace de contrib
 ```csharp
 public sealed class FactualChangeEvent
 {
-    public Guid Id { get; }
+    public FactualChangeEventId Id { get; }
     public FactualEventType Type { get; }
+    public int DefinitionVersion { get; }
     public ChangeTarget Target { get; }
     public FactValue? PreviousValue { get; }
     public FactValue? NewValue { get; }
     public SourceReference Source { get; }
     public DataConfidence Confidence { get; }
     public DateTime OccurredAtUtc { get; }
-    public DateTime VerifiedAtUtc { get; }
-    public DateTime PublishedAtUtc { get; }
+    public DateTime? VerifiedAtUtc { get; }
+    public DateTime? PublishedAtUtc { get; }
     public string DeduplicationKey { get; }
     public int Revision { get; }
     public FactualChangeStatus Status { get; }
+    public long Version { get; }
 }
 ```
 
@@ -596,7 +601,7 @@ Une hausse du taux de clic n’est pas une justification pour rendre les formula
 | `WATCH-01` | Domaine collections — livré en `5.3.39` | Intentions distinctes |
 | `WATCH-02` | API/UI favoris et wishlist — livré en `5.3.43` | Usage privé fiable |
 | `WATCH-03` | Domaine abonnements/préférences — livré en `5.3.45` | Portée explicite |
-| `WATCH-04` | Catalogue d’événements et provenance | Types versionnés |
+| `WATCH-04` | Catalogue d’événements et provenance — livré en `5.3.48` | Types versionnés |
 | `WATCH-05` | Diff/outbox/déduplication | Un fait logique, une alerte |
 | `WATCH-06` | Administration de vérification | Rien de non vérifié distribué |
 | `WATCH-07` | Notifications Web | Centre accessible |
