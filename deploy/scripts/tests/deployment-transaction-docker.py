@@ -21,6 +21,7 @@ REPO = SCRIPTS.parents[1]
 sys.path.insert(0, str(SCRIPTS))
 from deployment_runtime import DockerRuntime, GENERATION_LABEL
 from deployment_transaction import DeploymentTransaction
+from deployment_transition_observation import fixture_pair, matches_callback, matches_pair, wait_for_observation
 
 
 def until(predicate, label, seconds=90):
@@ -69,18 +70,18 @@ def main():
         children = []
         requests = ThreadPoolExecutor(max_workers=3)
 
-        def get(path, data=None):
+        def get(path, data=None, timeout=120):
             request = urllib.request.Request(f"http://127.0.0.1:{port}{path}", data=data,
                                              headers={"Host": "fixture.test", "Connection": "close"})
-            with urllib.request.urlopen(request, timeout=120) as response:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
                 if path == "/slow?key=body":
                     prefix = response.readline()
                     (directory / "control/client-body-started").write_bytes(prefix)
                     return prefix + response.read(), dict(response.headers)
                 return response.read(), dict(response.headers)
 
-        def document(path, data=None):
-            return json.loads(get(path, data)[0])
+        def document(path, data=None, timeout=120):
+            return json.loads(get(path, data, timeout)[0])
 
         def start_transaction():
             log = open(directory / f"attempt-{len(children)}.log", "w")
@@ -109,6 +110,7 @@ def main():
             runtime = DockerRuntime(directory)
             transaction = DeploymentTransaction(runtime, directory / "nginx/runtime")
             transaction.prepare()
+            assert original == fixture_pair(transaction.read()["original"], "old")
             headers_request = requests.submit(get, "/slow?key=headers")
             body_request = requests.submit(get, "/slow?key=body")
             write_request = requests.submit(document, "/api/write", b"one mutation")
@@ -119,15 +121,11 @@ def main():
             state = until(lambda: phase("switch-candidate"), "candidate routing intent")
             until(lambda: state["transition"] if (state := transaction.read()).get("transition")
                   and runtime.edge_generation() == state["transition"]["generation"] else None, "candidate route active")
-            selected = document("/pair")
-            assert selected["front"]["version"] == selected["api"]["version"] == "new"
-            selected_pair = transaction.read()["candidate"]
-            # With Docker's default hostname, the fixture exposes the actual
-            # container ID prefix, not an identity derived from its API URL.
-            for service in ("front", "api"):
-                assert selected_pair[service]["id"][:12] == selected[service]["name"]
-            callback = document("/api/callback")
-            assert callback["status"] == 200 and callback["callback"]["name"] == selected["front"]["name"]
+            expected_candidate = fixture_pair(transaction.read()["candidate"], "new")
+            selected = wait_for_observation(lambda timeout: document("/pair", timeout=timeout),
+                                            lambda value: matches_pair(value, original, expected_candidate), "candidate pair")
+            wait_for_observation(lambda timeout: document("/api/callback", timeout=timeout),
+                                 lambda value: matches_callback(value, original, selected), "candidate callback")
             assert len((directory / "control/writes").read_text().splitlines()) == 1
             assert not headers_request.done() and not body_request.done() and not write_request.done()
             first.kill()
@@ -165,11 +163,9 @@ def main():
             until(lambda: phase("switch-canonical"), "canonical routing intent")
             until(lambda: state["transition"] if (state := transaction.read()).get("transition")
                   and runtime.edge_generation() == state["transition"]["generation"] else None, "canonical route active")
-            canonical = document("/pair")
-            canonical_pair = transaction.read()["canonical"]
-            for service in ("front", "api"):
-                assert canonical_pair[service]["id"][:12] == canonical[service]["name"]
-                assert canonical[service]["name"] != selected[service]["name"]
+            expected_canonical = fixture_pair(transaction.read()["canonical"], "new")
+            canonical = wait_for_observation(lambda timeout: document("/pair", timeout=timeout),
+                                             lambda value: matches_pair(value, selected, expected_canonical), "canonical pair")
             assert runtime.find(runtime.names["api"]) == partial_api
             assert len(runtime.candidates()) == 2 and not candidate_request.done()
             (directory / "control/release-candidatebody").touch()
@@ -179,7 +175,7 @@ def main():
             assert state["phase"] == "complete" and not runtime.candidates()
             runtime.verify_pair(state["canonical"], candidate=False)
             callback = document("/api/callback")
-            assert callback["callback"]["name"] == canonical["front"]["name"]
+            assert callback == {"status": 200, "api": canonical["api"], "callback": canonical["front"]}
             try:
                 get("/internal/cache/invalidate", b"{}")
                 raise AssertionError("Unauthenticated callback accepted")
