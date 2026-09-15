@@ -23,7 +23,7 @@ describe('PublicSitemapPageComponent validated SEO', () => {
     vi.clearAllMocks();
     languageChanged = new Subject<string>();
     dataPort.getNodes.mockImplementation((language: string, parent: string | null) => of(parent === null
-      ? [{ id: 'parks', label: language === 'fr' ? 'Parcs' : 'Parks', hasChildren: true }]
+      ? [{ id: 'parks', label: language === 'fr' ? 'Parcs' : 'Parks', relativeUrl: `/${language}/parks`, hasChildren: true }]
       : Array.from({ length: 105 }, (_, index): PublicHtmlSitemapNode => ({
         id: `park:${index}`, label: `Parc ${index}`, relativeUrl: `/${language}/park/${index}/parc`, hasChildren: false
       }))));
@@ -89,7 +89,7 @@ describe('PublicSitemapPageComponent validated SEO', () => {
 
   it('keeps an empty branch noindex', async () => {
     dataPort.getNodes.mockImplementation((_language: string, parent: string | null) => of(parent === null
-      ? [{ id: 'parks', label: 'Parcs', hasChildren: true }] : []));
+      ? [{ id: 'parks', label: 'Parcs', relativeUrl: '/fr/parks', hasChildren: true }] : []));
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl('/fr/sitemap?node=parks', PublicSitemapPageComponent);
     expect(robots()).toBe('noindex,follow');
@@ -119,11 +119,11 @@ describe('PublicSitemapPageComponent validated SEO', () => {
     await harness.navigateByUrl('/fr/sitemap', PublicSitemapPageComponent);
     expect(robots()).toBe('noindex,follow');
     await harness.navigateByUrl('/en/sitemap', PublicSitemapPageComponent);
-    newResponse.next([{ id: 'parks', label: 'Parks', hasChildren: true }]);
+    newResponse.next([{ id: 'parks', label: 'Parks', relativeUrl: '/en/parks', hasChildren: true }]);
     harness.detectChanges();
     expect(robots()).toBe('index,follow');
     expect(canonical()).toBe('http://localhost:4200/en/sitemap');
-    oldResponse.next([{ id: 'parks', label: 'Parcs', hasChildren: true }]);
+    oldResponse.next([{ id: 'parks', label: 'Parcs', relativeUrl: '/fr/parks', hasChildren: true }]);
     harness.detectChanges();
     expect(oldResponse.observed).toBe(false);
     expect(canonical()).toBe('http://localhost:4200/en/sitemap');
