@@ -293,7 +293,7 @@ Sortie attendue : JSON upsert centré sur `history.events`, en plusieurs lots.
 
 Lire `park-data-integration-steps/09-final-audit-and-publication.md`.
 
-Objectif : vérifier cohérence, sources, localisations, références, images, cartes officielles et leurs millésimes, statut de visibilité, SEO public et absence de données inventées.
+Objectif : vérifier cohérence, sources, localisations, références, images, cartes officielles et leurs millésimes, statut de visibilité, SEO public, absence de données inventées et intégrité UTF-8 brute de tout le corpus public. Le rapport d’encodage conservé avec le dossier de travail doit être lisible par machine et présenter zéro anomalie avant toute publication.
 
 Sortie attendue : checklist de corrections ou dernier JSON upsert ciblé.
 

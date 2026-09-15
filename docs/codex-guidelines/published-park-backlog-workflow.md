@@ -43,7 +43,7 @@ La condition de réussite avant publication est cumulative :
 - export complet frais immédiatement avant l’étape 9 ;
 - audit final sans bloqueur ;
 - contrôle du corpus public sans duplication ou texte mécanique non justifié ;
-- contrôle bloquant de l’encodage sur l’export frais et le JSON final : vrais caractères Unicode, aucune entité HTML affichable persistée, aucun mojibake ni caractère de remplacement dans les huit langues ;
+- contrôle bloquant de l’encodage sur l’export frais et le JSON final : vrais caractères Unicode, aucune entité HTML affichable persistée, aucun mojibake ni caractère de remplacement dans les huit langues ; conserver avec le dossier de travail un rapport d’audit lisible par machine dont tous les compteurs d’anomalies valent zéro avant toute publication des données ou de Facebook ;
 - score individuel projeté avec `Completeness -ProjectForPublication` strictement supérieur à 95, donc au minimum 96, sauf pour l’exception nominative, explicite et bornée décrite ci-dessous ;
 - liste `publicationBlockers` vide ; un score brut élevé ne neutralise jamais un bloqueur éditorial, et `public-text.forbidden-editorial-language` impose une réécriture avant publication.
 
