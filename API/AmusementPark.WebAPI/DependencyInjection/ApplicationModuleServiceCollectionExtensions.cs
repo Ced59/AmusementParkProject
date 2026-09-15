@@ -53,6 +53,7 @@ public static class ApplicationModuleServiceCollectionExtensions
                    namespaceName.Contains(".Features.Users.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Search.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.DataSources.", StringComparison.Ordinal) ||
+                   namespaceName.Contains(".Features.FactualEvents.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.AdminAudit.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.TechnicalPages.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.TechnicalStats.", StringComparison.Ordinal) ||

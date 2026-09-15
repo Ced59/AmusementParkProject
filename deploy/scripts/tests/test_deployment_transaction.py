@@ -314,6 +314,7 @@ class CandidateConfigurationTests(unittest.TestCase):
         runtime.start_candidate("api", "api-candidate-one", "generation", "api-candidate-one")
         runtime.start_candidate("front", "front-candidate-one", "generation", "api-candidate-one")
         self.assertIn("DurableBackgroundJobs__Worker__Enabled=false", calls[0][0])
+        self.assertIn("MongoDB__CompleteFactualEventMigrationsOnStartup=false", calls[0][0])
         self.assertIn("AllowedHosts=public.test;localhost;api-candidate-one", calls[0][0])
         self.assertIn("SSR_API_INTERNAL_URL=http://api-candidate-one:8080", calls[1][0])
         self.assertNotIn("--use-aliases", calls[0][0])

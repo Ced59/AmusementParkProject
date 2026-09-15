@@ -474,8 +474,10 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
             return null;
         }
 
-        FactValue? previousValue = OpeningCalendarFactSnapshot.Create(existing?.ToDomain());
-        FactValue? newValue = OpeningCalendarFactSnapshot.Create(document.ToDomain());
+        (FactValue? previousValue, FactValue? newValue) =
+            OpeningCalendarFactSnapshot.CreateChange(
+                existing?.ToDomain(),
+                document.ToDomain());
         if (FactualChangeDiff.Detect(previousValue, newValue) is null)
         {
             return null;

@@ -225,6 +225,14 @@ export const ADMIN_NAVIGATION_ITEMS: readonly AdminNavigationItem[] = [
     exact: false
   },
   {
+    id: 'factual-events',
+    segments: ['factual-events'],
+    iconClass: 'pi pi-verified',
+    titleKey: 'factualEvents.admin.navTitle',
+    descriptionKey: 'factualEvents.admin.shortcut',
+    exact: false
+  },
+  {
     id: 'technical-stats',
     segments: ['technical-stats'],
     iconClass: 'pi pi-server',

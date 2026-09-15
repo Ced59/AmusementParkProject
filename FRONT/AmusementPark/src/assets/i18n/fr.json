@@ -4031,6 +4031,133 @@
       }
     }
   },
+  "factualEvents": {
+    "admin": {
+      "navTitle": "Faits à vérifier",
+      "shortcut": "Vérifier les changements sourcés avant leur diffusion.",
+      "kicker": "Veille · Confiance",
+      "title": "Atelier de vérification",
+      "subtitle": "Transforme chaque changement détecté en information fiable, compréhensible et prête à être diffusée.",
+      "safetyTitle": "Rien ne part sans ton accord",
+      "safetyText": "Un fait détecté ou vérifié reste bloqué. Seul un fait explicitement publié peut ensuite alimenter les abonnements.",
+      "unknownTarget": "Cible à identifier",
+      "detectedChange": "Changement détecté",
+      "loading": "Chargement des faits à examiner…",
+      "empty": "Aucun fait ne correspond à ces filtres.",
+      "error": "Impossible de charger les faits à vérifier.",
+      "conflict": "Ce fait a changé pendant ton examen. La version la plus récente vient d’être rechargée.",
+      "actionError": "L’action n’a pas pu être enregistrée. Réessaie dans un instant.",
+      "workflow": {
+        "label": "Parcours de vérification d’un fait",
+        "detected": "Détecté",
+        "detectedHelp": "Un changement et sa source sont capturés.",
+        "verified": "Vérifié",
+        "verifiedHelp": "Tu confirmes que la preuve soutient le fait.",
+        "published": "Publié",
+        "publishedHelp": "Le fait devient disponible pour la diffusion."
+      },
+      "filters": {
+        "label": "Filtres des faits",
+        "status": "Étape",
+        "target": "Cible",
+        "event": "Type de changement",
+        "confidence": "Confiance",
+        "all": "Tous",
+        "apply": "Afficher",
+        "reset": "Réinitialiser"
+      },
+      "change": {
+        "label": "Évolution du fait",
+        "before": "Avant",
+        "after": "Après",
+        "notPublished": "Aucune donnée publiée",
+        "calendarSummary": "{{rules}} règles · {{exceptions}} exceptions",
+        "timeZone": "Fuseau : {{timeZone}}",
+        "timeWindows": "Plages horaires constatées",
+        "evidenceUnavailable": "Le détail de cette ancienne version n’était pas conservé. Contrôle la source avant toute décision.",
+        "closed": "Fermé",
+        "hiddenEntries": "+{{count}} règles non affichées",
+        "changedEntry": "Modification détectée",
+        "hiddenChangedEntries": "{{count}} autres modifications ne tiennent pas dans cet aperçu. Contrôle-les dans la source.",
+        "priorityOrder": "Priorité {{priority}} · ordre {{order}} à priorité égale",
+        "entry": {
+          "regular": "Règle régulière",
+          "override": "Exception datée"
+        },
+        "weekday": {
+          "sunday": "Dimanche",
+          "monday": "Lundi",
+          "tuesday": "Mardi",
+          "wednesday": "Mercredi",
+          "thursday": "Jeudi",
+          "friday": "Vendredi",
+          "saturday": "Samedi"
+        }
+      },
+      "source": {
+        "label": "Preuve consultable"
+      },
+      "actions": {
+        "draftHelp": "Encore bloqué pour toute diffusion.",
+        "lowConfidenceHelp": "La confiance est trop faible pour confirmer ce fait. Renforce d’abord sa preuve ou sa qualification.",
+        "verify": "Je confirme ce fait",
+        "verifiedHelp": "Vérifié, mais toujours non diffusé.",
+        "publish": "Autoriser la diffusion",
+        "publishedHelp": "Publié et disponible pour les abonnements.",
+        "terminalHelp": "Ce fait n’est plus diffusable."
+      },
+      "pagination": {
+        "label": "Pagination des faits",
+        "previous": "Précédente",
+        "next": "Suivante",
+        "page": "Page {{page}} sur {{total}}"
+      }
+    },
+    "status": {
+      "Draft": "À examiner",
+      "Verified": "Vérifié",
+      "Published": "Publié",
+      "Corrected": "Corrigé",
+      "Retracted": "Retiré",
+      "Expired": "Expiré"
+    },
+    "target": {
+      "Park": "Parc",
+      "ParkItem": "Attraction ou lieu"
+    },
+    "confidence": {
+      "Low": "Confiance faible",
+      "Medium": "Confiance moyenne",
+      "High": "Confiance élevée"
+    },
+    "type": {
+      "OpeningCalendarPublished": "Calendrier d’ouverture publié",
+      "OpeningCalendarChanged": "Calendrier d’ouverture modifié",
+      "SeasonOpeningConfirmed": "Ouverture de saison confirmée",
+      "SeasonClosingConfirmed": "Fin de saison confirmée",
+      "ParkTemporaryClosureConfirmed": "Fermeture temporaire du parc confirmée",
+      "ParkPermanentClosureConfirmed": "Fermeture définitive du parc confirmée",
+      "ParkReopeningConfirmed": "Réouverture du parc confirmée",
+      "ParkNameChanged": "Nom du parc modifié",
+      "OperatorChanged": "Exploitant modifié",
+      "TicketPricePublishedOrChanged": "Tarif publié ou modifié",
+      "MajorDataCompletionImproved": "Données majeures enrichies",
+      "AttractionAnnouncedOfficially": "Attraction annoncée officiellement",
+      "OpeningDateConfirmed": "Date d’ouverture confirmée",
+      "OpeningDateChanged": "Date d’ouverture modifiée",
+      "OpenedConfirmed": "Ouverture confirmée",
+      "TemporarilyClosedConfirmed": "Fermeture temporaire confirmée",
+      "ReopenedConfirmed": "Réouverture confirmée",
+      "PermanentClosureConfirmed": "Fermeture définitive confirmée",
+      "Renamed": "Nouveau nom confirmé",
+      "MajorRestrictionChanged": "Restriction majeure modifiée",
+      "LocationOrCategoryCorrected": "Emplacement ou catégorie corrigé",
+      "HistoryPublished": "Contenu historique publié",
+      "MajorHistoryUpdate": "Mise à jour historique majeure",
+      "VerifiedSourceAdded": "Source vérifiée ajoutée",
+      "CorrectionAfterUserReport": "Correction après un signalement"
+    }
+  },
   "adminParkPricing": {
     "tab": "Tarifs",
     "title": "Tarifs du parc",

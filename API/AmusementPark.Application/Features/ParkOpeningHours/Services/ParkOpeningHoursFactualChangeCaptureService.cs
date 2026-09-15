@@ -37,8 +37,8 @@ public sealed class ParkOpeningHoursFactualChangeCaptureService
             return null;
         }
 
-        FactValue? previousValue = OpeningCalendarFactSnapshot.Create(previousSchedule);
-        FactValue? newValue = OpeningCalendarFactSnapshot.Create(currentSchedule);
+        (FactValue? previousValue, FactValue? newValue) =
+            OpeningCalendarFactSnapshot.CreateChange(previousSchedule, currentSchedule);
         string parkName = park.Name!.Trim();
         DateTime verifiedAtUtc = currentSchedule.LastVerifiedAtUtc!.Value;
         SourceReference source = new SourceReference(

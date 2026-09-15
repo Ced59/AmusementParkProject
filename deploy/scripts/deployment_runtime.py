@@ -139,7 +139,10 @@ class DockerRuntime:
             arguments = ["run", "-d", "--no-deps", "--name", name,
                          "--label", f"{GENERATION_LABEL}={generation}"]
             if service == "api":
+                # The candidate overlaps the previous API. It may scan migrations,
+                # but only the canonical API started after that writer stops may complete them.
                 arguments += ["-e", "DurableBackgroundJobs__Worker__Enabled=false", "-e",
+                              "MongoDB__CompleteFactualEventMigrationsOnStartup=false", "-e",
                               f"AllowedHosts={self.environment['ALLOWED_HOSTS']};{name}"]
             else:
                 arguments += ["-e", f"SSR_API_INTERNAL_URL=http://{api_name}:8080"]

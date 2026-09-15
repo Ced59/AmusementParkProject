@@ -171,6 +171,12 @@ public static class RateLimitingServiceCollectionExtensions
                 limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
                 limiterOptions.QueueLimit = 0;
             });
+            options.AddConcurrencyLimiter(RateLimitPolicyNames.FactualEventAdministration, limiterOptions =>
+            {
+                limiterOptions.PermitLimit = 1;
+                limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                limiterOptions.QueueLimit = 0;
+            });
             options.AddPolicy(RateLimitPolicyNames.ParkDataEditorOperationStatus, context =>
                 RateLimitPartition.Get(
                     partitionKey: GetParkDataEditorTokenPartitionKey(context),

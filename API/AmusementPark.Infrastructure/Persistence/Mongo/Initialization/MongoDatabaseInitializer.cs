@@ -633,6 +633,7 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.FactualChangeOutboxCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.FactualChangeEventsCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.FactualEventMigrationsCollectionName, cancellationToken);
         await this.InitializeFactualChangeIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.UsersCollectionName, cancellationToken);
@@ -888,6 +889,24 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkOpeningHoursCollectionName, cancellationToken);
         await this.InitializeParkOpeningHoursIndexesAsync(cancellationToken);
+        OpeningCalendarFactualEvidenceMigration openingCalendarEvidenceMigration = new OpeningCalendarFactualEvidenceMigration(
+            this.database.GetCollection<FactualChangeEventDocument>(
+                this.settings.FactualChangeEventsCollectionName),
+            this.database.GetCollection<FactualChangeOutboxDocument>(
+                this.settings.FactualChangeOutboxCollectionName),
+            this.database.GetCollection<ParkOpeningHoursScheduleDocument>(
+                this.settings.ParkOpeningHoursCollectionName),
+            this.database.GetCollection<FactualEventMigrationDocument>(
+                this.settings.FactualEventMigrationsCollectionName),
+            this.settings.CompleteFactualEventMigrationsOnStartup);
+        long migratedOpeningCalendarEvidenceCount =
+            await openingCalendarEvidenceMigration.MigrateAsync(cancellationToken);
+        if (migratedOpeningCalendarEvidenceCount > 0)
+        {
+            this.logger.LogInformation(
+                "Migrated {FactCount} persisted opening-calendar facts to contextual evidence schema 2.",
+                migratedOpeningCalendarEvidenceCount);
+        }
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkPricingCollectionName, cancellationToken);
         await this.InitializeParkPricingIndexesAsync(cancellationToken);

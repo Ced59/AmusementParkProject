@@ -84,6 +84,21 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > afin de ne jamais bloquer les faits suivants. La reprise est bornée par marqueur,
 > y compris à l'intérieur d'un même calendrier très actif, et les dates de
 > vérification futures sont rejetées avant toute écriture.
+> `WATCH-06` est livré en `5.3.50` : l'administration dispose d'un atelier
+> responsive qui présente le changement, sa cible lisible et sa preuve, sans
+> exposer les identifiants de cible ni l'empreinte technique des calendriers.
+> Pour les calendriers, chaque règle conserve sa période, ses jours, son état
+> ouvert ou fermé et ses plages horaires : un déplacement du lundi au mardi reste
+> donc visible même si les compteurs et les heures sont identiques. Dans un grand
+> calendrier, les règles réellement ajoutées, retirées ou modifiées passent avant
+> les règles inchangées dans l'aperçu borné. Une migration
+> Mongo unique convertit aussi les événements et outbox historiques ; lorsqu'un
+> ancien détail ne peut pas être reconstruit honnêtement, l'atelier le dit au lieu
+> d'inventer une preuve ou d'exposer une empreinte technique.
+> Le passage `Draft` → `Verified` → `Published` est explicite, audité, protégé
+> contre les validations concurrentes et limité en charge. Un fait détecté ou
+> vérifié reste techniquement non diffusable ; seule la publication volontaire
+> ouvre la distribution aux jalons suivants.
 
 ## 4.1 `UserCollectionEntry`
 
@@ -612,7 +627,7 @@ Une hausse du taux de clic n’est pas une justification pour rendre les formula
 | `WATCH-03` | Domaine abonnements/préférences — livré en `5.3.45` | Portée explicite |
 | `WATCH-04` | Catalogue d’événements et provenance — livré en `5.3.48` | Types versionnés |
 | `WATCH-05` | Diff/outbox/déduplication — livré en `5.3.49` | Un fait logique, une alerte |
-| `WATCH-06` | Administration de vérification | Rien de non vérifié distribué |
+| `WATCH-06` | Administration de vérification — livré en `5.3.50` | Rien de non vérifié distribué |
 | `WATCH-07` | Notifications Web | Centre accessible |
 | `WATCH-08` | Corrections/rétractations | Historique honnête |
 | `WATCH-09` | Digests | Groupement déterministe |

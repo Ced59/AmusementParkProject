@@ -19,7 +19,7 @@ import urllib.request
 SCRIPTS = Path(__file__).resolve().parents[1]
 REPO = SCRIPTS.parents[1]
 sys.path.insert(0, str(SCRIPTS))
-from deployment_runtime import DockerRuntime, GENERATION_LABEL
+from deployment_runtime import DeploymentError, DockerRuntime, GENERATION_LABEL
 from deployment_transaction import DeploymentTransaction
 from deployment_transition_observation import fixture_pair, matches_callback, matches_pair, wait_for_observation
 
@@ -144,9 +144,17 @@ def main():
             assert len((directory / "control/writes").read_text().splitlines()) == 1
             def partial_canonical_api():
                 current = phase("replace-canonical")
-                if not current or runtime.find(runtime.names["front"]) is not None:
+                if not current:
                     return None
-                api = runtime.inspect(runtime.names["api"])
+                try:
+                    if runtime.find(runtime.names["front"]) is not None:
+                        return None
+                    api = runtime.inspect(runtime.names["api"])
+                except DeploymentError as error:
+                    # Either canonical name can disappear during its intentional replacement.
+                    if "No such object:" in str(error):
+                        return None
+                    raise
                 if not api or api["Config"]["Labels"].get(GENERATION_LABEL) != current["generation"] + "c":
                     return None
                 assert api["Id"] != current["original"]["api"]["id"]
