@@ -4073,7 +4073,24 @@
         "notPublished": "Brak opublikowanych danych",
         "calendarSummary": "{{rules}} reguł · {{exceptions}} wyjątków",
         "timeZone": "Strefa czasowa: {{timeZone}}",
-        "timeWindows": "Zarejestrowane godziny otwarcia"
+        "timeWindows": "Zarejestrowane godziny otwarcia",
+        "evidenceUnavailable": "Szczegóły tej starszej wersji nie zostały zachowane. Sprawdź źródło przed podjęciem decyzji.",
+        "closed": "Zamknięte",
+        "hiddenEntries": "+{{count}} niewyświetlonych reguł",
+        "priorityOrder": "Priorytet {{priority}} · kolejność {{order}} przy remisie",
+        "entry": {
+          "regular": "Reguła regularna",
+          "override": "Wyjątek z datą"
+        },
+        "weekday": {
+          "sunday": "Niedziela",
+          "monday": "Poniedziałek",
+          "tuesday": "Wtorek",
+          "wednesday": "Środa",
+          "thursday": "Czwartek",
+          "friday": "Piątek",
+          "saturday": "Sobota"
+        }
       },
       "source": {
         "label": "Dowód do sprawdzenia"

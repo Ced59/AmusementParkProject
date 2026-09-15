@@ -70,19 +70,23 @@ describe('AdminFactualEventsStateFacade', (): void => {
   it('does not replace a newer filtered page with a stale mutation refresh', (): void => {
     const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
     const verifiedEvent: FactualChangeEventAdmin = createEvent('Verified', 5);
-    const staleRefresh = new Subject<PagedResult<FactualChangeEventAdmin>>();
+    const mutation = new Subject<void>();
+    const filterBeforeMutation = new Subject<PagedResult<FactualChangeEventAdmin>>();
     port.search
       .mockReturnValueOnce(of(createPage(draftEvent)))
-      .mockReturnValueOnce(staleRefresh)
+      .mockReturnValueOnce(filterBeforeMutation)
       .mockReturnValueOnce(of(createPage(verifiedEvent)));
-    port.verify.mockReturnValue(of(undefined));
+    port.verify.mockReturnValue(mutation);
     facade.load({ page: 1, size: 20, status: 'Draft' });
 
     facade.changeStatus(draftEvent, 'verify');
     facade.load({ page: 1, size: 20, status: 'Verified' });
-    staleRefresh.next(createPage(draftEvent));
-    staleRefresh.complete();
+    mutation.next();
+    mutation.complete();
+    filterBeforeMutation.next(createPage(draftEvent));
+    filterBeforeMutation.complete();
 
+    expect(port.search).toHaveBeenLastCalledWith({ page: 1, size: 20, status: 'Verified' });
     expect(facade.events()[0]?.status).toBe('Verified');
   });
 

@@ -1,10 +1,10 @@
 import { presentFactualFact } from './factual-fact-presenter';
 
 describe('presentFactualFact', (): void => {
-  it('turns an opening calendar fingerprint into readable evidence without exposing its hash', (): void => {
+  it('turns an opening calendar snapshot into contextual evidence without exposing its hash', (): void => {
     const presentation = presentFactualFact({
       kind: 'Text',
-      canonicalValue: 'timezone=Europe/Paris;coverage=2026-04-01/2026-11-02;rules=7;overrides=3;windows=09:30-18:00,10:00-23:30;windowCount=2;sha256=technical-secret',
+      canonicalValue: 'snapshot=2;timezone=Europe/Paris;coverage=2026-04-01/2026-11-02;rules=7;overrides=3;evidence=complete;entries=R|2026-04-01|2026-06-30|1,2|O|2|09:30-18:00,10:00-23:30|2|1~D|2026-05-01|2026-05-01||C|||0|;entryCount=3;sha256=technical-secret',
       unitCode: null,
     });
 
@@ -17,9 +17,46 @@ describe('presentFactualFact', (): void => {
       coverageEnd: '2026-11-02',
       rulesCount: 7,
       overridesCount: 3,
-      openingWindows: ['09:30 → 18:00', '10:00 → 23:30'],
-      hiddenOpeningWindowsCount: 0,
+      evidenceAvailable: true,
+      calendarEntries: [
+        {
+          kind: 'regular',
+          startDate: '2026-04-01',
+          endDate: '2026-06-30',
+          days: ['monday', 'tuesday'],
+          isClosed: false,
+          priority: 2,
+          tieOrder: 1,
+          openingWindows: ['09:30 → 18:00', '10:00 → 23:30'],
+          hiddenOpeningWindowsCount: 0,
+        },
+        {
+          kind: 'override',
+          startDate: '2026-05-01',
+          endDate: '2026-05-01',
+          days: [],
+          isClosed: true,
+          priority: null,
+          tieOrder: null,
+          openingWindows: [],
+          hiddenOpeningWindowsCount: 0,
+        },
+      ],
+      hiddenCalendarEntriesCount: 1,
     });
+    expect(JSON.stringify(presentation)).not.toContain('technical-secret');
+  });
+
+  it('identifies migrated historical evidence that could not be reconstructed', (): void => {
+    const presentation = presentFactualFact({
+      kind: 'Text',
+      canonicalValue: 'snapshot=2;timezone=Europe/Paris;coverage=2026-01-01/2026-03-31;rules=2;overrides=0;evidence=unavailable;entries=;entryCount=0;sha256=technical-secret',
+      unitCode: null,
+    });
+
+    expect(presentation.isOpeningCalendar).toBe(true);
+    expect(presentation.evidenceAvailable).toBe(false);
+    expect(presentation.rawValue).toBe('');
     expect(JSON.stringify(presentation)).not.toContain('technical-secret');
   });
 

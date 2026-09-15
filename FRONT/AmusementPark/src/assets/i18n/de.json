@@ -4073,7 +4073,24 @@
         "notPublished": "Keine veröffentlichten Daten",
         "calendarSummary": "{{rules}} Regeln · {{exceptions}} Ausnahmen",
         "timeZone": "Zeitzone: {{timeZone}}",
-        "timeWindows": "Erfasste Öffnungszeiten"
+        "timeWindows": "Erfasste Öffnungszeiten",
+        "evidenceUnavailable": "Die Details dieser älteren Version wurden nicht gespeichert. Prüfe vor der Entscheidung die Quelle.",
+        "closed": "Geschlossen",
+        "hiddenEntries": "+{{count}} nicht angezeigte Regeln",
+        "priorityOrder": "Priorität {{priority}} · Reihenfolge {{order}} bei Gleichstand",
+        "entry": {
+          "regular": "Regelmäßige Regel",
+          "override": "Datierte Ausnahme"
+        },
+        "weekday": {
+          "sunday": "Sonntag",
+          "monday": "Montag",
+          "tuesday": "Dienstag",
+          "wednesday": "Mittwoch",
+          "thursday": "Donnerstag",
+          "friday": "Freitag",
+          "saturday": "Samstag"
+        }
       },
       "source": {
         "label": "Prüfbarer Beleg"

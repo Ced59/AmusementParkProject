@@ -80,8 +80,6 @@ export class AdminFactualEventsStateFacade {
     const operation: Observable<void> = action === 'verify'
       ? this.port.verify(event.eventId, request)
       : this.port.publish(event.eventId, request);
-    const refreshQuery: FactualChangeEventQuery = this.lastQueryState();
-    const refreshQuerySequence: number = this.querySequence;
     this.actionEventIdState.set(event.eventId);
     this.actionErrorState.set(null);
     operation.pipe(
@@ -89,9 +87,7 @@ export class AdminFactualEventsStateFacade {
       finalize((): void => this.actionEventIdState.set(null)),
     ).subscribe({
       next: (): void => {
-        if (this.isCurrentQuery(refreshQuerySequence)) {
-          this.load(refreshQuery);
-        }
+        this.load(this.lastQueryState());
       },
       error: (error: unknown): void => {
         this.actionErrorState.set(error instanceof HttpErrorResponse && error.status === 409

@@ -4073,7 +4073,24 @@
         "notPublished": "No hay datos publicados",
         "calendarSummary": "{{rules}} reglas · {{exceptions}} excepciones",
         "timeZone": "Zona horaria: {{timeZone}}",
-        "timeWindows": "Franjas horarias observadas"
+        "timeWindows": "Franjas horarias observadas",
+        "evidenceUnavailable": "No se conservó el detalle de esta versión anterior. Comprueba la fuente antes de decidir.",
+        "closed": "Cerrado",
+        "hiddenEntries": "+{{count}} reglas no mostradas",
+        "priorityOrder": "Prioridad {{priority}} · orden {{order}} en caso de empate",
+        "entry": {
+          "regular": "Regla habitual",
+          "override": "Excepción con fecha"
+        },
+        "weekday": {
+          "sunday": "Domingo",
+          "monday": "Lunes",
+          "tuesday": "Martes",
+          "wednesday": "Miércoles",
+          "thursday": "Jueves",
+          "friday": "Viernes",
+          "saturday": "Sábado"
+        }
       },
       "source": {
         "label": "Prueba consultable"

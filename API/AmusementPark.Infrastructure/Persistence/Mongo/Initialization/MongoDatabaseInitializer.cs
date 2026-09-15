@@ -888,6 +888,21 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkOpeningHoursCollectionName, cancellationToken);
         await this.InitializeParkOpeningHoursIndexesAsync(cancellationToken);
+        OpeningCalendarFactualEvidenceMigration openingCalendarEvidenceMigration = new OpeningCalendarFactualEvidenceMigration(
+            this.database.GetCollection<FactualChangeEventDocument>(
+                this.settings.FactualChangeEventsCollectionName),
+            this.database.GetCollection<FactualChangeOutboxDocument>(
+                this.settings.FactualChangeOutboxCollectionName),
+            this.database.GetCollection<ParkOpeningHoursScheduleDocument>(
+                this.settings.ParkOpeningHoursCollectionName));
+        long migratedOpeningCalendarEvidenceCount =
+            await openingCalendarEvidenceMigration.MigrateAsync(cancellationToken);
+        if (migratedOpeningCalendarEvidenceCount > 0)
+        {
+            this.logger.LogInformation(
+                "Migrated {FactCount} persisted opening-calendar facts to contextual evidence schema 2.",
+                migratedOpeningCalendarEvidenceCount);
+        }
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkPricingCollectionName, cancellationToken);
         await this.InitializeParkPricingIndexesAsync(cancellationToken);

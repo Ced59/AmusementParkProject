@@ -7,7 +7,9 @@ namespace AmusementPark.Core.Domain.FactualEvents;
 
 public static class OpeningCalendarFactSnapshot
 {
-    private const int MaximumPresentedWindowCount = 24;
+    private const int MaximumPresentedEntryCount = 16;
+    private const int MaximumPresentedWindowCountPerEntry = 6;
+    private const string SnapshotVersion = "2";
 
     public static FactValue? Create(ParkOpeningHoursSchedule? schedule)
     {
@@ -59,27 +61,125 @@ public static class OpeningCalendarFactSnapshot
         byte[] hash = SHA256.HashData(Encoding.UTF8.GetBytes(canonical.ToString()));
         string hashText = Convert.ToHexString(hash).ToLowerInvariant();
         string coverage = BuildCoverage(schedule);
-        IReadOnlyCollection<string> openingWindows = BuildOpeningWindows(schedule);
-        string presentedWindows = string.Join(",", openingWindows.Take(MaximumPresentedWindowCount));
+        IReadOnlyCollection<string> entries = BuildPresentedEntries(schedule);
         return FactValue.FromText(
-            $"timezone={timeZoneId};coverage={coverage};rules={canonicalRules.Count};overrides={canonicalOverrides.Count};windows={presentedWindows};windowCount={openingWindows.Count};sha256={hashText}");
+            $"snapshot={SnapshotVersion};timezone={timeZoneId};coverage={coverage};rules={canonicalRules.Count};overrides={canonicalOverrides.Count};evidence=complete;entries={string.Join("~", entries.Take(MaximumPresentedEntryCount))};entryCount={entries.Count};sha256={hashText}");
     }
 
-    private static IReadOnlyCollection<string> BuildOpeningWindows(
+    public static FactValue MigrateLegacy(
+        FactValue value,
+        ParkOpeningHoursSchedule? currentSchedule)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+        IReadOnlyDictionary<string, string> fields = ParseFields(value.CanonicalValue);
+        if (fields.TryGetValue("snapshot", out string? version)
+            && string.Equals(version, SnapshotVersion, StringComparison.Ordinal))
+        {
+            return value;
+        }
+
+        if (!fields.TryGetValue("sha256", out string? legacyHash)
+            || !fields.ContainsKey("timezone")
+            || !fields.ContainsKey("rules")
+            || !fields.ContainsKey("overrides"))
+        {
+            return value;
+        }
+
+        FactValue? currentSnapshot = Create(currentSchedule);
+        if (currentSnapshot is not null
+            && string.Equals(
+                ExtractField(currentSnapshot.CanonicalValue, "sha256"),
+                legacyHash,
+                StringComparison.Ordinal))
+        {
+            return currentSnapshot;
+        }
+
+        string coverage = fields.TryGetValue("coverage", out string? coverageValue)
+            ? coverageValue
+            : "none";
+        return FactValue.FromText(
+            $"snapshot={SnapshotVersion};timezone={fields["timezone"]};coverage={coverage};rules={fields["rules"]};overrides={fields["overrides"]};evidence=unavailable;entries=;entryCount=0;sha256={legacyHash}");
+    }
+
+    private static IReadOnlyCollection<string> BuildPresentedEntries(
         ParkOpeningHoursSchedule schedule)
     {
-        IEnumerable<ParkOpeningHoursTimeRange> regularWindows = schedule.RegularRules
-            .Where(static rule => !rule.IsClosed)
-            .SelectMany(static rule => rule.TimeRanges);
-        IEnumerable<ParkOpeningHoursTimeRange> overrideWindows = schedule.DateOverrides
-            .Where(static dateOverride => !dateOverride.IsClosed)
-            .SelectMany(static dateOverride => dateOverride.TimeRanges);
-        return regularWindows
-            .Concat(overrideWindows)
-            .Select(BuildPresentedWindow)
-            .Distinct(StringComparer.Ordinal)
+        Dictionary<(int SortOrder, DateOnly StartDate), int> tieOrders =
+            new Dictionary<(int SortOrder, DateOnly StartDate), int>();
+        List<string> regularEntries = new List<string>();
+        foreach (ParkOpeningHoursRule rule in schedule.RegularRules)
+        {
+            (int SortOrder, DateOnly StartDate) key = (rule.SortOrder, rule.StartDate);
+            _ = tieOrders.TryGetValue(key, out int tieOrder);
+            regularEntries.Add(BuildPresentedRule(rule, tieOrder));
+            tieOrders[key] = tieOrder + 1;
+        }
+
+        IEnumerable<string> overrideEntries = schedule.DateOverrides
+            .Select(BuildPresentedOverride);
+        return regularEntries
+            .Concat(overrideEntries)
             .OrderBy(static value => value, StringComparer.Ordinal)
             .ToArray();
+    }
+
+    private static string BuildPresentedRule(ParkOpeningHoursRule rule, int tieOrder)
+    {
+        string days = string.Join(",", rule.DaysOfWeek
+            .Distinct()
+            .OrderBy(static day => day)
+            .Select(static day => ((int)day).ToString(CultureInfo.InvariantCulture)));
+        return BuildPresentedEntry(
+            "R",
+            rule.StartDate,
+            rule.EndDate,
+            days,
+            rule.IsClosed,
+            rule.SortOrder.ToString(CultureInfo.InvariantCulture),
+            rule.TimeRanges,
+            tieOrder.ToString(CultureInfo.InvariantCulture));
+    }
+
+    private static string BuildPresentedOverride(ParkOpeningHoursDateOverride dateOverride)
+    {
+        return BuildPresentedEntry(
+            "D",
+            dateOverride.LocalDate,
+            dateOverride.LocalDate,
+            string.Empty,
+            dateOverride.IsClosed,
+            string.Empty,
+            dateOverride.TimeRanges,
+            string.Empty);
+    }
+
+    private static string BuildPresentedEntry(
+        string kind,
+        DateOnly startDate,
+        DateOnly endDate,
+        string days,
+        bool isClosed,
+        string priority,
+        IReadOnlyCollection<ParkOpeningHoursTimeRange> ranges,
+        string tieOrder)
+    {
+        string windows = string.Join(",", ranges
+            .Select(BuildPresentedWindow)
+            .OrderBy(static value => value, StringComparer.Ordinal)
+            .Take(MaximumPresentedWindowCountPerEntry));
+        return string.Join(
+            "|",
+            kind,
+            startDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
+            endDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
+            days,
+            isClosed ? "C" : "O",
+            priority,
+            windows,
+            ranges.Count.ToString(CultureInfo.InvariantCulture),
+            tieOrder);
     }
 
     private static string BuildPresentedWindow(ParkOpeningHoursTimeRange range)
@@ -158,5 +258,26 @@ public static class OpeningCalendarFactSnapshot
         target.Append(value.Length.ToString(CultureInfo.InvariantCulture));
         target.Append(':');
         target.Append(value);
+    }
+
+    private static IReadOnlyDictionary<string, string> ParseFields(string canonicalValue)
+    {
+        Dictionary<string, string> fields = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (string part in canonicalValue.Split(';'))
+        {
+            int separator = part.IndexOf('=');
+            if (separator > 0)
+            {
+                fields[part[..separator]] = part[(separator + 1)..];
+            }
+        }
+
+        return fields;
+    }
+
+    private static string? ExtractField(string canonicalValue, string fieldName)
+    {
+        IReadOnlyDictionary<string, string> fields = ParseFields(canonicalValue);
+        return fields.TryGetValue(fieldName, out string? value) ? value : null;
     }
 }

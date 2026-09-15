@@ -4073,7 +4073,24 @@
         "notPublished": "No published data",
         "calendarSummary": "{{rules}} rules · {{exceptions}} exceptions",
         "timeZone": "Time zone: {{timeZone}}",
-        "timeWindows": "Observed opening windows"
+        "timeWindows": "Observed opening windows",
+        "evidenceUnavailable": "The detail of this older version was not retained. Check the source before making a decision.",
+        "closed": "Closed",
+        "hiddenEntries": "+{{count}} rules not shown",
+        "priorityOrder": "Priority {{priority}} · order {{order}} when tied",
+        "entry": {
+          "regular": "Regular rule",
+          "override": "Dated exception"
+        },
+        "weekday": {
+          "sunday": "Sunday",
+          "monday": "Monday",
+          "tuesday": "Tuesday",
+          "wednesday": "Wednesday",
+          "thursday": "Thursday",
+          "friday": "Friday",
+          "saturday": "Saturday"
+        }
       },
       "source": {
         "label": "Reviewable evidence"

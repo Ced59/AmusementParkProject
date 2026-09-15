@@ -87,8 +87,12 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > `WATCH-06` est livré en `5.3.50` : l'administration dispose d'un atelier
 > responsive qui présente le changement, sa cible lisible et sa preuve, sans
 > exposer les identifiants de cible ni l'empreinte technique des calendriers.
-> Pour les calendriers, les plages horaires constatées rendent aussi visible
-> une modification d'heures même lorsque les compteurs de règles ne changent pas.
+> Pour les calendriers, chaque règle conserve sa période, ses jours, son état
+> ouvert ou fermé et ses plages horaires : un déplacement du lundi au mardi reste
+> donc visible même si les compteurs et les heures sont identiques. Une migration
+> Mongo unique convertit aussi les événements et outbox historiques ; lorsqu'un
+> ancien détail ne peut pas être reconstruit honnêtement, l'atelier le dit au lieu
+> d'inventer une preuve ou d'exposer une empreinte technique.
 > Le passage `Draft` → `Verified` → `Published` est explicite, audité, protégé
 > contre les validations concurrentes et limité en charge. Un fait détecté ou
 > vérifié reste techniquement non diffusable ; seule la publication volontaire

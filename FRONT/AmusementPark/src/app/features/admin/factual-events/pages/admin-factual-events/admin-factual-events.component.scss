@@ -37,6 +37,13 @@
 .factual-event-card__fact--new { border-color: color-mix(in srgb, var(--primary-color) 50%, var(--surface-border)); }
 .factual-event-card__fact span { color: var(--text-color-secondary); font-size: .72rem; font-weight: 800; text-transform: uppercase; }
 .factual-event-card__fact strong, .factual-event-card__fact small { overflow-wrap: anywhere; }
+.factual-event-card__evidence-warning { border-left: .2rem solid var(--yellow-500); color: var(--yellow-300); padding-left: .5rem; }
+.factual-event-card__calendar-entries { display: grid; gap: .5rem; min-width: 0; }
+.factual-event-card__calendar-entry { border: 1px solid var(--surface-border); border-radius: .65rem; display: grid; gap: .3rem; min-width: 0; padding: .6rem; }
+.factual-event-card__calendar-entry > b { font-size: .72rem; }
+.factual-event-card__calendar-entry > span { font-size: .75rem; overflow-wrap: anywhere; text-transform: none; }
+.factual-event-card__calendar-entry > small { display: flex; flex-wrap: wrap; gap: .3rem; min-width: 0; }
+.factual-event-card__calendar-entry em { background: color-mix(in srgb, var(--surface-border) 60%, transparent); border-radius: 999px; font-size: .68rem; font-style: normal; padding: .15rem .4rem; }
 .factual-event-card__windows { align-items: center; display: flex; flex-wrap: wrap; gap: .35rem; }
 .factual-event-card__windows b { background: color-mix(in srgb, var(--primary-color) 12%, transparent); border-radius: 999px; font-size: .72rem; padding: .2rem .45rem; white-space: nowrap; }
 .factual-event-card__source { border-top: 1px solid var(--surface-border); padding-top: 1rem; }

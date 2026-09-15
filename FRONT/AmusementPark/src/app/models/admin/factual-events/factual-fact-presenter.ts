@@ -1,4 +1,8 @@
 import { FactualFactPresentation } from './factual-fact-presentation.model';
+import {
+  FactualCalendarEntryPresentation,
+  FactualCalendarWeekday,
+} from './factual-calendar-entry-presentation.model';
 import { FactualFactValueAdmin } from './factual-event-administration.models';
 
 export function presentFactualFact(value: FactualFactValueAdmin | null): FactualFactPresentation {
@@ -16,15 +20,16 @@ export function presentFactualFact(value: FactualFactValueAdmin | null): Factual
   );
   const coverage: string | undefined = fields.get('coverage');
   const coverageParts: string[] = coverage && coverage !== 'none' ? coverage.split('/') : [];
-  const isOpeningCalendar: boolean = fields.has('timezone')
+  const isOpeningCalendar: boolean = fields.get('snapshot') === '2'
+    && fields.has('timezone')
     && fields.has('rules')
     && fields.has('overrides')
     && fields.has('sha256');
-  const openingWindows: readonly string[] = isOpeningCalendar
-    ? parseOpeningWindows(fields.get('windows'))
+  const calendarEntries: readonly FactualCalendarEntryPresentation[] = isOpeningCalendar
+    ? parseCalendarEntries(fields.get('entries'))
     : [];
-  const openingWindowCount: number = isOpeningCalendar
-    ? parseCount(fields.get('windowCount')) ?? openingWindows.length
+  const calendarEntryCount: number = isOpeningCalendar
+    ? parseCount(fields.get('entryCount')) ?? calendarEntries.length
     : 0;
   return {
     isOpeningCalendar,
@@ -35,8 +40,9 @@ export function presentFactualFact(value: FactualFactValueAdmin | null): Factual
     coverageEnd: coverageParts[1] ?? null,
     rulesCount: isOpeningCalendar ? parseCount(fields.get('rules')) : null,
     overridesCount: isOpeningCalendar ? parseCount(fields.get('overrides')) : null,
-    openingWindows,
-    hiddenOpeningWindowsCount: Math.max(0, openingWindowCount - openingWindows.length),
+    evidenceAvailable: isOpeningCalendar && fields.get('evidence') === 'complete',
+    calendarEntries,
+    hiddenCalendarEntriesCount: Math.max(0, calendarEntryCount - calendarEntries.length),
   };
 }
 
@@ -55,20 +61,73 @@ function emptyPresentation(): FactualFactPresentation {
     coverageEnd: null,
     rulesCount: null,
     overridesCount: null,
-    openingWindows: [],
-    hiddenOpeningWindowsCount: 0,
+    evidenceAvailable: false,
+    calendarEntries: [],
+    hiddenCalendarEntriesCount: 0,
   };
 }
 
-function parseOpeningWindows(value: string | undefined): readonly string[] {
+function parseCalendarEntries(value: string | undefined): readonly FactualCalendarEntryPresentation[] {
   if (!value) {
     return [];
   }
 
   return value
+    .split('~')
+    .map(parseCalendarEntry)
+    .filter((entry: FactualCalendarEntryPresentation | null): entry is FactualCalendarEntryPresentation => entry !== null);
+}
+
+function parseCalendarEntry(value: string): FactualCalendarEntryPresentation | null {
+  const parts: string[] = value.split('|');
+  const startDate: string = parts[1] ?? '';
+  const endDate: string = parts[2] ?? '';
+  const state: string = parts[4] ?? '';
+  const kind: FactualCalendarEntryPresentation['kind'] | null = parts[0] === 'R'
+    ? 'regular'
+    : parts[0] === 'D' ? 'override' : null;
+  if (!kind
+    || !/^\d{4}-\d{2}-\d{2}$/.test(startDate)
+    || !/^\d{4}-\d{2}-\d{2}$/.test(endDate)
+    || !['C', 'O'].includes(state)) {
+    return null;
+  }
+
+  const windows: readonly string[] = parseOpeningWindows(parts[6]);
+  const windowCount: number = parseCount(parts[7]) ?? windows.length;
+  return {
+    kind,
+    startDate,
+    endDate,
+    days: kind === 'regular' ? parseWeekdays(parts[3]) : [],
+    isClosed: state === 'C',
+    priority: kind === 'regular' ? parseCount(parts[5]) : null,
+    tieOrder: kind === 'regular' ? parseCount(parts[8]) : null,
+    openingWindows: windows,
+    hiddenOpeningWindowsCount: Math.max(0, windowCount - windows.length),
+  };
+}
+
+function parseOpeningWindows(value: string | undefined): readonly string[] {
+  return (value ?? '')
     .split(',')
     .filter((window: string): boolean => /^\d{2}:\d{2}-\d{2}:\d{2}(?:\+1)?(?:@\d{2}:\d{2}(?:\+1)?)?$/.test(window))
     .map((window: string): string => window.replace('-', ' → ').replace('@', ' · '));
+}
+
+function parseWeekdays(value: string | undefined): readonly FactualCalendarWeekday[] {
+  const weekdays: readonly FactualCalendarWeekday[] = [
+    'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
+  ];
+  return (value ?? '')
+    .split(',')
+    .map((day: string): FactualCalendarWeekday | null => {
+      const index: number = Number(day);
+      return Number.isInteger(index) && index >= 0 && index < weekdays.length
+        ? weekdays[index]
+        : null;
+    })
+    .filter((day: FactualCalendarWeekday | null): day is FactualCalendarWeekday => day !== null);
 }
 
 function parseCount(value: string | undefined): number | null {

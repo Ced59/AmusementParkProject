@@ -27,8 +27,9 @@ public sealed class OpeningCalendarFactSnapshotTests
         Assert.NotNull(firstSnapshot);
         Assert.Equal(firstSnapshot, secondSnapshot);
         Assert.Contains("coverage=2026-07-01/2026-07-31", firstSnapshot.CanonicalValue);
-        Assert.Contains("windows=10:00-18:00", firstSnapshot.CanonicalValue);
-        Assert.Contains("windowCount=1", firstSnapshot.CanonicalValue);
+        Assert.Contains("snapshot=2", firstSnapshot.CanonicalValue);
+        Assert.Contains("entries=R|2026-07-01|2026-07-31|1|O|0|10:00-18:00|1|0", firstSnapshot.CanonicalValue);
+        Assert.Contains("entryCount=1", firstSnapshot.CanonicalValue);
     }
 
     [Fact]
@@ -40,8 +41,79 @@ public sealed class OpeningCalendarFactSnapshotTests
             CreateSchedule(new TimeOnly(19, 0)));
 
         Assert.NotEqual(previous, current);
-        Assert.Contains("windows=10:00-18:00", previous!.CanonicalValue);
-        Assert.Contains("windows=10:00-19:00", current!.CanonicalValue);
+        Assert.Contains("|10:00-18:00|1", previous!.CanonicalValue);
+        Assert.Contains("|10:00-19:00|1", current!.CanonicalValue);
+    }
+
+    [Fact]
+    public void Create_WhenWeekdayChanges_ShouldPreserveDistinctReviewEvidence()
+    {
+        ParkOpeningHoursSchedule previous = CreateSchedule(new TimeOnly(18, 0));
+        ParkOpeningHoursSchedule current = CreateSchedule(new TimeOnly(18, 0));
+        current.RegularRules[0].DaysOfWeek = new List<DayOfWeek> { DayOfWeek.Tuesday };
+
+        FactValue? previousSnapshot = OpeningCalendarFactSnapshot.Create(previous);
+        FactValue? currentSnapshot = OpeningCalendarFactSnapshot.Create(current);
+
+        Assert.NotEqual(previousSnapshot, currentSnapshot);
+        Assert.Contains("|1|O|", previousSnapshot!.CanonicalValue);
+        Assert.Contains("|2|O|", currentSnapshot!.CanonicalValue);
+    }
+
+    [Fact]
+    public void MigrateLegacy_WhenCurrentScheduleMatches_ShouldRestoreCompleteEvidence()
+    {
+        ParkOpeningHoursSchedule schedule = CreateSchedule(new TimeOnly(18, 0));
+        FactValue current = Assert.IsType<FactValue>(OpeningCalendarFactSnapshot.Create(schedule));
+        string hash = current.CanonicalValue.Split("sha256=")[1];
+        FactValue legacy = FactValue.FromText(
+            $"timezone=Europe/Paris;coverage=2026-07-01/2026-07-31;rules=1;overrides=0;sha256={hash}");
+
+        FactValue migrated = OpeningCalendarFactSnapshot.MigrateLegacy(legacy, schedule);
+
+        Assert.Equal(current, migrated);
+        Assert.Contains("evidence=complete", migrated.CanonicalValue);
+    }
+
+    [Fact]
+    public void MigrateLegacy_WhenHistoricalScheduleCannotBeRebuilt_ShouldMarkEvidenceUnavailable()
+    {
+        FactValue legacy = FactValue.FromText(
+            "timezone=Europe/Paris;coverage=2026-06-01/2026-06-30;rules=2;overrides=1;sha256=historical");
+
+        FactValue migrated = OpeningCalendarFactSnapshot.MigrateLegacy(legacy, null);
+
+        Assert.Contains("snapshot=2", migrated.CanonicalValue);
+        Assert.Contains("coverage=2026-06-01/2026-06-30", migrated.CanonicalValue);
+        Assert.Contains("evidence=unavailable", migrated.CanonicalValue);
+        Assert.DoesNotContain("windows=", migrated.CanonicalValue);
+    }
+
+    [Fact]
+    public void Create_WithLargeSchedule_ShouldBoundPresentedEvidenceAndRetainTotalCount()
+    {
+        ParkOpeningHoursSchedule schedule = CreateSchedule(new TimeOnly(18, 0));
+        schedule.RegularRules = Enumerable.Range(0, 100)
+            .Select(index => new ParkOpeningHoursRule
+            {
+                StartDate = new DateOnly(2026, 1, 1).AddDays(index),
+                EndDate = new DateOnly(2026, 1, 1).AddDays(index),
+                DaysOfWeek = new List<DayOfWeek> { DayOfWeek.Monday },
+                TimeRanges = new List<ParkOpeningHoursTimeRange>
+                {
+                    new ParkOpeningHoursTimeRange
+                    {
+                        OpensAt = new TimeOnly(10, 0),
+                        ClosesAt = new TimeOnly(18, 0),
+                    },
+                },
+            })
+            .ToList();
+
+        FactValue snapshot = Assert.IsType<FactValue>(OpeningCalendarFactSnapshot.Create(schedule));
+
+        Assert.True(snapshot.CanonicalValue.Length <= FactValue.MaximumTextLength);
+        Assert.Contains("entryCount=100", snapshot.CanonicalValue);
     }
 
     [Fact]
@@ -56,6 +128,8 @@ public sealed class OpeningCalendarFactSnapshotTests
         FactValue? currentSnapshot = OpeningCalendarFactSnapshot.Create(current);
 
         Assert.NotEqual(previousSnapshot, currentSnapshot);
+        Assert.Contains("|O|1|10:00-18:00", previousSnapshot!.CanonicalValue);
+        Assert.Contains("|O|2|10:00-18:00", currentSnapshot!.CanonicalValue);
     }
 
     [Fact]
@@ -72,6 +146,8 @@ public sealed class OpeningCalendarFactSnapshotTests
         FactValue? currentSnapshot = OpeningCalendarFactSnapshot.Create(current);
 
         Assert.NotEqual(previousSnapshot, currentSnapshot);
+        Assert.Contains("|10:00-18:00|1|0", previousSnapshot!.CanonicalValue);
+        Assert.Contains("|10:00-20:00|1|0", currentSnapshot!.CanonicalValue);
     }
 
     [Fact]

@@ -4073,7 +4073,24 @@
         "notPublished": "Geen gepubliceerde gegevens",
         "calendarSummary": "{{rules}} regels · {{exceptions}} uitzonderingen",
         "timeZone": "Tijdzone: {{timeZone}}",
-        "timeWindows": "Vastgestelde openingstijden"
+        "timeWindows": "Vastgestelde openingstijden",
+        "evidenceUnavailable": "De details van deze oudere versie zijn niet bewaard. Controleer de bron voordat je beslist.",
+        "closed": "Gesloten",
+        "hiddenEntries": "+{{count}} niet getoonde regels",
+        "priorityOrder": "Prioriteit {{priority}} · volgorde {{order}} bij gelijke stand",
+        "entry": {
+          "regular": "Vaste regel",
+          "override": "Gedateerde uitzondering"
+        },
+        "weekday": {
+          "sunday": "Zondag",
+          "monday": "Maandag",
+          "tuesday": "Dinsdag",
+          "wednesday": "Woensdag",
+          "thursday": "Donderdag",
+          "friday": "Vrijdag",
+          "saturday": "Zaterdag"
+        }
       },
       "source": {
         "label": "Controleerbaar bewijs"
