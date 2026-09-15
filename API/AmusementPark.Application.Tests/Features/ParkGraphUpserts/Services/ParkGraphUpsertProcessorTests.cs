@@ -4057,6 +4057,7 @@ public sealed class ParkGraphUpsertProcessorTests
             "parkId": "park-1",
             "timeZoneId": "Europe/Paris",
             "sourceUrl": "https://example.test/hours",
+            "lastVerifiedAtUtc": "2026-07-02T08:00:00Z",
             "regularRules": [
               {
                 "id": "summer",
@@ -4229,6 +4230,15 @@ public sealed class ParkGraphUpsertProcessorTests
                     && update.CurrentParks.Any(currentPark => currentPark.Id == "park-1")),
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
+        Mock<IParkOpeningHoursFactualChangeCapture> factualChangeCapture =
+            new Mock<IParkOpeningHoursFactualChangeCapture>(MockBehavior.Strict);
+        factualChangeCapture
+            .Setup(value => value.CaptureAsync(
+                park,
+                null,
+                It.Is<ParkOpeningHoursSchedule>(schedule => schedule.ParkId == "park-1"),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
 
         ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
             parkRepository.Object,
@@ -4246,7 +4256,8 @@ public sealed class ParkGraphUpsertProcessorTests
             openingHoursRepository.Object,
             new ParkOpeningHoursScheduleNormalizer(),
             new ParkOpeningHoursCoverageSegmentBuilder(
-                new FixedTimeProvider(new DateTimeOffset(2026, 7, 2, 10, 0, 0, TimeSpan.Zero))));
+                new FixedTimeProvider(new DateTimeOffset(2026, 7, 2, 10, 0, 0, TimeSpan.Zero))),
+            openingHoursFactualChangeCapture: factualChangeCapture.Object);
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -4255,6 +4266,7 @@ public sealed class ParkGraphUpsertProcessorTests
             "parkId": "park-1",
             "timeZoneId": "Europe/Paris",
             "sourceUrl": "https://example.test/hours",
+            "lastVerifiedAtUtc": "2026-07-02T08:00:00Z",
             "regularRules": [
               {
                 "id": "summer",
@@ -4314,6 +4326,7 @@ public sealed class ParkGraphUpsertProcessorTests
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
+        factualChangeCapture.VerifyAll();
     }
 
     [Fact]

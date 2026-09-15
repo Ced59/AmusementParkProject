@@ -71,7 +71,10 @@ internal static class ParkGraphUpsertProcessorOpeningHoursExtensions
             return;
         }
 
-        if (processorContext.parkOpeningHoursRepository is null || processorContext.parkOpeningHoursScheduleNormalizer is null || processorContext.parkOpeningHoursCoverageSegmentBuilder is null)
+        if (processorContext.parkOpeningHoursRepository is null
+            || processorContext.parkOpeningHoursScheduleNormalizer is null
+            || processorContext.parkOpeningHoursCoverageSegmentBuilder is null
+            || (apply && processorContext.openingHoursFactualChangeCapture is null))
         {
             change.ChangeType = "Skipped";
             result.Changes.Add(change);
@@ -120,7 +123,19 @@ internal static class ParkGraphUpsertProcessorOpeningHoursExtensions
         }
 
         normalizedSchedule.CoverageSegments = processorContext.parkOpeningHoursCoverageSegmentBuilder.BuildSegments(normalizedSchedule).ToList();
-        await processorContext.parkOpeningHoursRepository.UpsertAsync(normalizedSchedule, cancellationToken);
+        ParkOpeningHoursSchedule savedSchedule =
+            await processorContext.parkOpeningHoursRepository.UpsertAsync(
+                normalizedSchedule,
+                cancellationToken);
+        IParkOpeningHoursFactualChangeCapture factualChangeCapture =
+            processorContext.openingHoursFactualChangeCapture
+            ?? throw new InvalidOperationException(
+                "The opening-hours factual change capture is unavailable after commit.");
+        await factualChangeCapture.CaptureAsync(
+            targetPark,
+            existingSchedule,
+            savedSchedule,
+            CancellationToken.None);
     }
 
     internal static bool HasOpeningHoursPatch(JsonElement root)

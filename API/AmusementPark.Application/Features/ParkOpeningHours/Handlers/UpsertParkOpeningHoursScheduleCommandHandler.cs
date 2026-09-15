@@ -64,7 +64,7 @@ public sealed class UpsertParkOpeningHoursScheduleCommandHandler : ICommandHandl
             park,
             previousSchedule,
             savedSchedule,
-            cancellationToken);
+            CancellationToken.None);
         await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
         return ApplicationResult<ParkOpeningHoursSchedule>.Success(savedSchedule);
     }

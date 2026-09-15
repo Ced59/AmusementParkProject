@@ -9,11 +9,12 @@ programmer le traitement. Une même clé métier et une même révision ne peuve
 qu'un seul événement logique.
 
 Le premier producteur réellement raccordé est le calendrier d'ouverture d'un parc.
-Après sa sauvegarde, et uniquement lorsqu'une URL officielle ainsi qu'une date de
-vérification sont présentes, une empreinte métier stable compare les horaires
-précédents aux nouveaux. Les identifiants de règles, les dates techniques, les
-notes internes et les simples retouches éditoriales ne provoquent pas de faux
-changement.
+L'édition administrative et l'import `PARK_DATA_EDITOR` utilisent la même capture.
+Après la sauvegarde, même si la requête cliente est annulée, et uniquement lorsqu'une
+URL officielle, une date de vérification et au moins une règle sont présentes, une
+empreinte métier stable compare les horaires précédents aux nouveaux. Les identifiants
+de règles, les dates techniques, les notes internes et les simples retouches
+éditoriales ne provoquent pas de faux changement.
 
 Ce jalon ne notifie encore personne. Il prépare des brouillons factuels fiables pour
 la vérification administrative de `WATCH-06`, puis pour le centre Web de `WATCH-07`.
@@ -199,4 +200,6 @@ Les tests couvrent :
 - le round-trip Mongo des valeurs, sources et versions ;
 - la présence des index d'unicité et de reprise ;
 - l'empreinte stable d'un calendrier malgré l'ordre des données ;
-- le raccordement post-commit du calendrier officiel avec source et confiance.
+- le refus d'un faux événement de publication pour un calendrier vide ;
+- le raccordement post-commit du calendrier officiel avec source et confiance,
+  depuis l'édition comme depuis l'import, même après annulation de la requête.

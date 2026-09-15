@@ -49,6 +49,18 @@ public sealed class OpeningCalendarFactSnapshotTests
         Assert.Null(OpeningCalendarFactSnapshot.Create(schedule));
     }
 
+    [Fact]
+    public void Create_WithoutCalendarData_ShouldNotProducePublicationFact()
+    {
+        ParkOpeningHoursSchedule schedule = new ParkOpeningHoursSchedule
+        {
+            ParkId = "park-1",
+            TimeZoneId = "Europe/Paris",
+        };
+
+        Assert.Null(OpeningCalendarFactSnapshot.Create(schedule));
+    }
+
     private static ParkOpeningHoursSchedule CreateSchedule(TimeOnly closesAt)
     {
         return new ParkOpeningHoursSchedule

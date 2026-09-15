@@ -14,6 +14,11 @@ public static class OpeningCalendarFactSnapshot
             return null;
         }
 
+        if (schedule.RegularRules.Count == 0 && schedule.DateOverrides.Count == 0)
+        {
+            return null;
+        }
+
         string timeZoneId = schedule.TimeZoneId?.Trim() ?? string.Empty;
         if (timeZoneId.Length == 0)
         {

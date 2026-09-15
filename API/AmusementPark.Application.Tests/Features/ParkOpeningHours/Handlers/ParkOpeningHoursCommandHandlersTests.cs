@@ -37,7 +37,7 @@ public sealed class ParkOpeningHoursCommandHandlersTests
                 It.Is<Park>(park => park.Id == "park-1"),
                 null,
                 It.Is<ParkOpeningHoursSchedule>(candidate => candidate.ParkId == "park-1"),
-                It.IsAny<CancellationToken>()))
+                CancellationToken.None))
             .Returns(Task.CompletedTask);
         sitemapRefreshScheduler
             .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
@@ -61,6 +61,65 @@ public sealed class ParkOpeningHoursCommandHandlersTests
         openingHoursRepository.VerifyAll();
         sitemapRefreshScheduler.VerifyAll();
         factualChangeCapture.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenRequestIsCancelledAfterCommit_ShouldFinishDurableCapture()
+    {
+        using CancellationTokenSource cancellation = new CancellationTokenSource();
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync(
+                "park-1",
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Park" });
+        Mock<IParkOpeningHoursRepository> openingHoursRepository =
+            new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        openingHoursRepository
+            .Setup(repository => repository.GetByParkIdAsync(
+                "park-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ParkOpeningHoursSchedule?)null);
+        openingHoursRepository
+            .Setup(repository => repository.UpsertAsync(
+                It.IsAny<ParkOpeningHoursSchedule>(),
+                It.IsAny<CancellationToken>()))
+            .Callback(() => cancellation.Cancel())
+            .ReturnsAsync((ParkOpeningHoursSchedule candidate, CancellationToken _) => candidate);
+        Mock<IParkOpeningHoursFactualChangeCapture> factualChangeCapture =
+            new Mock<IParkOpeningHoursFactualChangeCapture>(MockBehavior.Strict);
+        factualChangeCapture
+            .Setup(capture => capture.CaptureAsync(
+                It.IsAny<Park>(),
+                null,
+                It.IsAny<ParkOpeningHoursSchedule>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
+            new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        sitemapRefreshScheduler
+            .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        UpsertParkOpeningHoursScheduleCommandHandler handler =
+            new UpsertParkOpeningHoursScheduleCommandHandler(
+                parkRepository.Object,
+                openingHoursRepository.Object,
+                new ParkOpeningHoursScheduleNormalizer(),
+                new ParkOpeningHoursCoverageSegmentBuilder(),
+                sitemapRefreshScheduler.Object,
+                factualChangeCapture.Object);
+
+        ApplicationResult<ParkOpeningHoursSchedule> result = await handler.HandleAsync(
+            new UpsertParkOpeningHoursScheduleCommand(CreateSchedule()),
+            cancellation.Token);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(cancellation.IsCancellationRequested);
+        factualChangeCapture.VerifyAll();
+        openingHoursRepository.VerifyAll();
+        parkRepository.VerifyAll();
+        sitemapRefreshScheduler.VerifyAll();
     }
 
     [Theory]
