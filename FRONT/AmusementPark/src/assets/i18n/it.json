@@ -4099,6 +4099,7 @@
       },
       "actions": {
         "draftHelp": "Ancora bloccato per qualsiasi diffusione.",
+        "lowConfidenceHelp": "Il livello di fiducia è troppo basso per confermare questo fatto. Rafforza prima la prova o la sua qualificazione.",
         "verify": "Conferma questo fatto",
         "verifiedHelp": "Verificato, ma non ancora diffuso.",
         "publish": "Autorizza la diffusione",

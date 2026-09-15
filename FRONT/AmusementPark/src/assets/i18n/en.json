@@ -4099,6 +4099,7 @@
       },
       "actions": {
         "draftHelp": "Still blocked from all distribution.",
+        "lowConfidenceHelp": "Confidence is too low to confirm this fact. Strengthen its evidence or qualification first.",
         "verify": "Confirm this fact",
         "verifiedHelp": "Verified, but still not distributed.",
         "publish": "Allow distribution",

@@ -20,6 +20,24 @@ describe('AdminFactualEventsComponent', (): void => {
 
     expect(targetName).toBe('Attraction exemple');
   });
+
+  it('does not offer verification for a low-confidence draft', (): void => {
+    const component = new AdminFactualEventsComponent({} as AdminFactualEventsStateFacade);
+    const canVerify = (component as unknown as {
+      canVerify(event: FactualChangeEventAdmin): boolean;
+    }).canVerify({ status: 'Draft', confidence: 'Low' } as FactualChangeEventAdmin);
+
+    expect(canVerify).toBe(false);
+  });
+
+  it('offers verification for a draft with sufficient confidence', (): void => {
+    const component = new AdminFactualEventsComponent({} as AdminFactualEventsStateFacade);
+    const canVerify = (component as unknown as {
+      canVerify(event: FactualChangeEventAdmin): boolean;
+    }).canVerify({ status: 'Draft', confidence: 'Medium' } as FactualChangeEventAdmin);
+
+    expect(canVerify).toBe(true);
+  });
 });
 
 function createEventWithTarget(

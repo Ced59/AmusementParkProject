@@ -4099,6 +4099,7 @@
       },
       "actions": {
         "draftHelp": "Nog geblokkeerd voor elke verspreiding.",
+        "lowConfidenceHelp": "Het vertrouwensniveau is te laag om dit feit te bevestigen. Versterk eerst het bewijs of de kwalificatie.",
         "verify": "Dit feit bevestigen",
         "verifiedHelp": "Gecontroleerd, maar nog niet verspreid.",
         "publish": "Verspreiding toestaan",

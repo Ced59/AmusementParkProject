@@ -4099,6 +4099,7 @@
       },
       "actions": {
         "draftHelp": "Nadal zablokowany przed rozpowszechnieniem.",
+        "lowConfidenceHelp": "Poziom zaufania jest zbyt niski, aby potwierdzić ten fakt. Najpierw wzmocnij dowód lub kwalifikację.",
         "verify": "Potwierdź ten fakt",
         "verifiedHelp": "Zweryfikowany, ale jeszcze nierozpowszechniony.",
         "publish": "Zezwól na rozpowszechnianie",

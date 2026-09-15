@@ -65,7 +65,7 @@ export class AdminFactualEventsStateFacade {
         },
         error: (): void => {
           if (this.isCurrentQuery(querySequence)) {
-            this.loadErrorState.set(true);
+            this.clearPageForLoadFailure();
           }
         },
       });
@@ -111,9 +111,7 @@ export class AdminFactualEventsStateFacade {
         },
         error: (): void => {
           if (this.isCurrentQuery(querySequence)) {
-            this.eventsState.set([]);
-            this.paginationState.set(null);
-            this.loadErrorState.set(true);
+            this.clearPageForLoadFailure();
             this.actionErrorState.set('failure');
           }
         },
@@ -127,5 +125,11 @@ export class AdminFactualEventsStateFacade {
   private setPage(response: PagedResult<FactualChangeEventAdmin>): void {
     this.eventsState.set(response.items);
     this.paginationState.set(response.pagination);
+  }
+
+  private clearPageForLoadFailure(): void {
+    this.eventsState.set([]);
+    this.paginationState.set(null);
+    this.loadErrorState.set(true);
   }
 }

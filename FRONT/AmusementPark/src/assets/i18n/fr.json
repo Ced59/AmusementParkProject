@@ -4099,6 +4099,7 @@
       },
       "actions": {
         "draftHelp": "Encore bloqué pour toute diffusion.",
+        "lowConfidenceHelp": "La confiance est trop faible pour confirmer ce fait. Renforce d’abord sa preuve ou sa qualification.",
         "verify": "Je confirme ce fait",
         "verifiedHelp": "Vérifié, mais toujours non diffusé.",
         "publish": "Autoriser la diffusion",

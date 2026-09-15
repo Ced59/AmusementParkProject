@@ -4099,6 +4099,7 @@
       },
       "actions": {
         "draftHelp": "Ainda bloqueado para qualquer divulgação.",
+        "lowConfidenceHelp": "A confiança é demasiado baixa para confirmar este facto. Reforça primeiro a prova ou a qualificação.",
         "verify": "Confirmar este facto",
         "verifiedHelp": "Verificado, mas ainda não divulgado.",
         "publish": "Autorizar divulgação",

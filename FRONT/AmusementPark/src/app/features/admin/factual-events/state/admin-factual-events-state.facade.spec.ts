@@ -107,6 +107,20 @@ describe('AdminFactualEventsStateFacade', (): void => {
     expect(facade.loading()).toBe(false);
   });
 
+  it('removes stale cards when a later filtered search fails', (): void => {
+    const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
+    port.search
+      .mockReturnValueOnce(of(createPage(draftEvent)))
+      .mockReturnValueOnce(throwError((): HttpErrorResponse => new HttpErrorResponse({ status: 503 })));
+    facade.load({ page: 1, size: 20, status: 'Draft' });
+
+    facade.load({ page: 1, size: 20, status: 'Verified' });
+
+    expect(facade.events()).toEqual([]);
+    expect(facade.pagination()).toBeNull();
+    expect(facade.loadError()).toBe(true);
+  });
+
   it('reports a refresh failure as a load error after a successful mutation', (): void => {
     const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
     port.search

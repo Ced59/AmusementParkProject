@@ -4099,6 +4099,7 @@
       },
       "actions": {
         "draftHelp": "Noch für jede Verteilung gesperrt.",
+        "lowConfidenceHelp": "Die Vertrauensstufe ist zu niedrig, um diesen Fakt zu bestätigen. Stärke zuerst den Beleg oder die Einordnung.",
         "verify": "Diesen Fakt bestätigen",
         "verifiedHelp": "Geprüft, aber noch nicht verteilt.",
         "publish": "Verteilung freigeben",

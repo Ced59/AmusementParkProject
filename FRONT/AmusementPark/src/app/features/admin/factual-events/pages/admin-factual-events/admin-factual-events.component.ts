@@ -98,6 +98,10 @@ export class AdminFactualEventsComponent implements OnInit {
     this.facade.changeStatus(event, 'verify');
   }
 
+  protected canVerify(event: FactualChangeEventAdmin): boolean {
+    return event.status === 'Draft' && event.confidence !== 'Low';
+  }
+
   protected publish(event: FactualChangeEventAdmin): void {
     this.facade.changeStatus(event, 'publish');
   }
