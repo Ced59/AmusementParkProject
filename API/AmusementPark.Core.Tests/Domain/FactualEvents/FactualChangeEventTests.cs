@@ -91,7 +91,7 @@ public sealed class FactualChangeEventTests
             "Example Park",
             "Official announcement",
             "https://example.com/official-news",
-            SourcePublishedAtUtc);
+            new DateTime(2026, 9, 15, 10, 30, 0, DateTimeKind.Utc));
 
         factualEvent.ReplaceEvidence(replacement, DataConfidence.High, At(11));
         factualEvent.ReplaceEvidence(replacement, DataConfidence.High, At(12));
@@ -100,6 +100,30 @@ public sealed class FactualChangeEventTests
         Assert.Equal(DataConfidence.High, factualEvent.Confidence);
         Assert.Equal(2, factualEvent.Version);
         Assert.Equal(At(11), factualEvent.UpdatedAtUtc);
+
+        FactualChangeEvent restored = FactualChangeEvent.Restore(
+            factualEvent.Id,
+            factualEvent.Type,
+            factualEvent.DefinitionVersion,
+            factualEvent.Target,
+            factualEvent.PreviousValue,
+            factualEvent.NewValue,
+            factualEvent.Source,
+            factualEvent.Confidence,
+            factualEvent.OccurredAtUtc,
+            factualEvent.DeduplicationKey,
+            factualEvent.Revision,
+            factualEvent.Status,
+            factualEvent.CreatedAtUtc,
+            factualEvent.UpdatedAtUtc,
+            factualEvent.VerifiedAtUtc,
+            factualEvent.PublishedAtUtc,
+            factualEvent.TerminalAtUtc,
+            factualEvent.SupersededByEventId,
+            factualEvent.ReasonCode,
+            factualEvent.Version);
+
+        Assert.Equal(replacement, restored.Source);
     }
 
     [Fact]

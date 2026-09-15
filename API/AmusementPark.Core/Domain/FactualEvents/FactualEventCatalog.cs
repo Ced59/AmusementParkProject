@@ -6,8 +6,12 @@ public static class FactualEventCatalog
 {
     public const int CurrentSchemaVersion = 1;
 
+    private static readonly FrozenDictionary<
+        (FactualEventType Type, int SchemaVersion),
+        FactualEventDefinition> DefinitionVersions = BuildDefinitionVersions();
+
     private static readonly FrozenDictionary<FactualEventType, FactualEventDefinition> Definitions =
-        BuildDefinitions();
+        BuildCurrentDefinitions();
 
     public static IReadOnlyDictionary<FactualEventType, FactualEventDefinition> All => Definitions;
 
@@ -20,6 +24,24 @@ public static class FactualEventCatalog
                 "The factual event type is not registered in the catalogue.");
     }
 
+    public static FactualEventDefinition Get(
+        FactualEventType type,
+        int schemaVersion)
+    {
+        if (!Enum.IsDefined(type))
+        {
+            throw new FactualEventValidationException(
+                FactualEventErrorCodes.InvalidType,
+                "The factual event type is not registered in the catalogue.");
+        }
+
+        return DefinitionVersions.TryGetValue((type, schemaVersion), out FactualEventDefinition? definition)
+            ? definition
+            : throw new FactualEventValidationException(
+                FactualEventErrorCodes.InvalidDefinitionVersion,
+                "The factual event definition version is not registered in the catalogue.");
+    }
+
     public static bool TryGet(
         FactualEventType type,
         out FactualEventDefinition? definition)
@@ -27,7 +49,9 @@ public static class FactualEventCatalog
         return Definitions.TryGetValue(type, out definition);
     }
 
-    private static FrozenDictionary<FactualEventType, FactualEventDefinition> BuildDefinitions()
+    private static FrozenDictionary<
+        (FactualEventType Type, int SchemaVersion),
+        FactualEventDefinition> BuildDefinitionVersions()
     {
         FactualTargetType[] park = { FactualTargetType.Park };
         FactualTargetType[] parkItem = { FactualTargetType.ParkItem };
@@ -65,15 +89,26 @@ public static class FactualEventCatalog
             Define(FactualEventType.CorrectionAfterUserReport, "correction-after-user-report", editorial),
         };
 
-        if (definitions.Length != Enum.GetValues<FactualEventType>().Length
-            || definitions.Select(static definition => definition.Code)
-                .Distinct(StringComparer.Ordinal).Count() != definitions.Length)
+        FactualEventDefinition[] currentDefinitions = definitions
+            .Where(static definition => definition.SchemaVersion == CurrentSchemaVersion)
+            .ToArray();
+        if (currentDefinitions.Length != Enum.GetValues<FactualEventType>().Length
+            || currentDefinitions.Select(static definition => definition.Code)
+                .Distinct(StringComparer.Ordinal).Count() != currentDefinitions.Length)
         {
             throw new InvalidOperationException(
                 "Every factual event type must have exactly one unique catalogue definition.");
         }
 
-        return definitions.ToFrozenDictionary(static definition => definition.Type);
+        return definitions.ToFrozenDictionary(
+            static definition => (definition.Type, definition.SchemaVersion));
+    }
+
+    private static FrozenDictionary<FactualEventType, FactualEventDefinition> BuildCurrentDefinitions()
+    {
+        return DefinitionVersions.Values
+            .Where(static definition => definition.SchemaVersion == CurrentSchemaVersion)
+            .ToFrozenDictionary(static definition => definition.Type);
     }
 
     private static FactualEventDefinition Define(

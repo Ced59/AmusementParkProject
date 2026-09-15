@@ -50,4 +50,13 @@ public sealed class FactualEventCatalogTests
 
         Assert.Equal(FactualEventErrorCodes.InvalidType, exception.Code);
     }
+
+    [Fact]
+    public void Get_WithUnknownSchemaVersion_ShouldRejectUnregisteredContract()
+    {
+        FactualEventValidationException exception = Assert.Throws<FactualEventValidationException>(
+            () => FactualEventCatalog.Get(FactualEventType.ParkNameChanged, 999));
+
+        Assert.Equal(FactualEventErrorCodes.InvalidDefinitionVersion, exception.Code);
+    }
 }

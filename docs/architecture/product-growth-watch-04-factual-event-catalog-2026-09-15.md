@@ -139,6 +139,7 @@ sequenceDiagram
 ## Invariants couverts par les tests
 
 - chaque valeur d'énumération possède exactement une définition et un code unique ;
+- une relecture résout la version historique stockée, pas une future définition courante ;
 - les événements de parc et d'élément ne peuvent pas changer de périmètre ;
 - une valeur est canonique, culture-indépendante et cohérente avec son type ;
 - une source utilise une URL HTTP(S) absolue et une date UTC ;

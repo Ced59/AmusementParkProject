@@ -31,8 +31,7 @@ public sealed class FactualChangeEvent
         long version)
     {
         _ = id.Value;
-        FactualEventDefinition definition = FactualEventCatalog.Get(type);
-        ValidateDefinitionVersion(definitionVersion, definition.SchemaVersion);
+        FactualEventDefinition definition = FactualEventCatalog.Get(type, definitionVersion);
         ArgumentNullException.ThrowIfNull(target);
         if (!definition.Supports(target.Type))
         {
@@ -388,16 +387,6 @@ public sealed class FactualChangeEvent
             && this.Revision == other.Revision;
     }
 
-    private static void ValidateDefinitionVersion(int definitionVersion, int currentVersion)
-    {
-        if (definitionVersion < 1 || definitionVersion > currentVersion)
-        {
-            throw Invalid(
-                FactualEventErrorCodes.InvalidDefinitionVersion,
-                "The factual event definition version is invalid or unsupported.");
-        }
-    }
-
     private static void ValidateFactChange(FactValue? previousValue, FactValue? newValue)
     {
         if (previousValue is null && newValue is null)
@@ -448,7 +437,7 @@ public sealed class FactualChangeEvent
         EnsureOptionalUtc(verifiedAtUtc);
         EnsureOptionalUtc(publishedAtUtc);
         EnsureOptionalUtc(terminalAtUtc);
-        if (source.PublishedAtUtc > createdAtUtc
+        if (source.PublishedAtUtc > updatedAtUtc
             || occurredAtUtc > createdAtUtc
             || updatedAtUtc < createdAtUtc
             || verifiedAtUtc < createdAtUtc
