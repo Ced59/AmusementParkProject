@@ -320,6 +320,35 @@ class CandidateConfigurationTests(unittest.TestCase):
         self.assertNotIn("--use-aliases", calls[1][0])
 
 
+class EdgeReloadTests(unittest.TestCase):
+    def runtime(self, fail_validation=False):
+        runtime = object.__new__(DockerRuntime)
+        runtime.names = {"edge": "edge"}
+        runtime.find = lambda name: {"id": "e" * 64, "name": name}
+        calls = []
+        def run(*args):
+            calls.append(args)
+            if fail_validation and "-t" in args:
+                raise DeploymentError("Invalid edge configuration")
+            return ""
+        runtime.run = run
+        return runtime, calls
+
+    def test_configuration_is_validated_before_graceful_reload_of_same_edge(self):
+        runtime, calls = self.runtime()
+        runtime.reload_edge()
+        prefix = ("docker", "exec", "e" * 64, "nginx")
+        config = ("-c", "/etc/nginx/amusementpark/edge.conf")
+        self.assertEqual(calls, [prefix + ("-t",) + config, prefix + ("-s", "reload") + config])
+
+    def test_invalid_configuration_never_signals_reload(self):
+        runtime, calls = self.runtime(fail_validation=True)
+        with self.assertRaisesRegex(DeploymentError, "Invalid edge configuration"):
+            runtime.reload_edge()
+        self.assertEqual(len(calls), 1)
+        self.assertNotIn("reload", calls[0])
+
+
 class StopPolicyTests(unittest.TestCase):
     def runtime(self, exit_code, running=True, generation="new", oom=False):
         runtime = object.__new__(DockerRuntime)

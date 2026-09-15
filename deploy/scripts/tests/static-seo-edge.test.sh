@@ -231,21 +231,17 @@ if grep -Fq 'force-recreate edge' "${deploy_script}"; then
   exit 1
 fi
 
-if ! grep -Fq 'if ! compose exec -T edge nginx -t -c /etc/nginx/amusementpark/edge.conf; then' "${deploy_script}" \
-  || ! grep -Fq 'if ! compose exec -T edge nginx -s reload -c /etc/nginx/amusementpark/edge.conf; then' "${deploy_script}"; then
-  echo 'Deployments must validate and gracefully reload the directory-mounted Nginx edge configuration.' >&2
-  exit 1
-fi
-
+# The runtime tests exercise nginx -t before reload; this checks the shell's
+# final snapshot validation still follows the completed routing transaction.
 edge_healthy_line="$(grep -n '^wait_for_service_healthy edge 180$' "${deploy_script}" | cut -d: -f1)"
-edge_reload_line="$(grep -n '^reload_edge_configuration$' "${deploy_script}" | cut -d: -f1)"
+transaction_line="$(grep -n '^python3 ./scripts/deployment_transaction.py deploy$' "${deploy_script}" | cut -d: -f1)"
 snapshot_check_line="$(grep -n '^[[:space:]]*wait_for_static_seo_snapshot 60$' "${deploy_script}" | cut -d: -f1)"
 if [ -z "${edge_healthy_line}" ] \
-  || [ -z "${edge_reload_line}" ] \
+  || [ -z "${transaction_line}" ] \
   || [ -z "${snapshot_check_line}" ] \
-  || [ "${edge_reload_line}" -le "${edge_healthy_line}" ] \
-  || [ "${edge_reload_line}" -ge "${snapshot_check_line}" ]; then
-  echo 'The Nginx edge must be healthy, reload gracefully, then pass the static sitemap validation.' >&2
+  || [ "${edge_healthy_line}" -le "${transaction_line}" ] \
+  || [ "${snapshot_check_line}" -le "${edge_healthy_line}" ]; then
+  echo 'The routing transaction and edge health check must finish before the static sitemap validation.' >&2
   exit 1
 fi
 
