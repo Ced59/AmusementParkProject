@@ -67,15 +67,79 @@ describe('AdminParkFitOperationalControlsComponent', () => {
     expect(fixture.debugElement.query(By.css('form'))).toBeNull();
   });
 
-  it('does not expose activation writes during the compatible-reader rollout', () => {
+  it('exposes activation only when a non-activated park passes the quality gate', () => {
     const fixture: ComponentFixture<AdminParkFitOperationalControlsComponent> =
       TestBed.createComponent(AdminParkFitOperationalControlsComponent);
     fixture.componentRef.setInput('park', createPark('NotActivated', 0));
     fixture.detectChanges();
 
+    const buttons = fixture.debugElement.queryAll(
+      By.css('.park-fit-operational-controls__actions button')
+    );
+    expect(buttons).toHaveLength(1);
+    expect(buttons[0].nativeElement.disabled).toBe(false);
+  });
+
+  it('submits an eligible activation with the current revision and a trimmed reason', () => {
+    const fixture: ComponentFixture<AdminParkFitOperationalControlsComponent> =
+      TestBed.createComponent(AdminParkFitOperationalControlsComponent);
+    const park: ParkFitDataQuality = createPark('NotActivated', 4);
+    fixture.componentRef.setInput('park', park);
+    fixture.detectChanges();
+
+    fixture.debugElement.query(
+      By.css('.park-fit-operational-controls__actions button')
+    ).nativeElement.click();
+    fixture.detectChanges();
+
+    const textarea = fixture.debugElement.query(By.css('textarea')).nativeElement;
+    textarea.value = '  Audit qualité validé  ';
+    textarea.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    fixture.debugElement.query(By.css('form')).triggerEventHandler('ngSubmit');
+
+    expect(facade.changeOperationalStatus).toHaveBeenCalledWith(
+      park,
+      'Active',
+      'Audit qualité validé'
+    );
+  });
+
+  it('keeps activation disabled while a non-activated park is ineligible', () => {
+    const fixture: ComponentFixture<AdminParkFitOperationalControlsComponent> =
+      TestBed.createComponent(AdminParkFitOperationalControlsComponent);
+    fixture.componentRef.setInput('park', createPark('NotActivated', 0, 'Insufficient'));
+    fixture.detectChanges();
+
+    const button = fixture.debugElement.query(
+      By.css('.park-fit-operational-controls__actions button')
+    );
+    expect(button.nativeElement.disabled).toBe(true);
+  });
+
+  it('offers suspension and withdrawal for an active park', () => {
+    const fixture: ComponentFixture<AdminParkFitOperationalControlsComponent> =
+      TestBed.createComponent(AdminParkFitOperationalControlsComponent);
+    fixture.componentRef.setInput('park', createPark('Active', 2));
+    fixture.detectChanges();
+
     expect(
       fixture.debugElement.queryAll(By.css('.park-fit-operational-controls__actions button'))
-    ).toHaveLength(0);
+    ).toHaveLength(2);
+  });
+
+  it('keeps withdrawal available when a suspended park cannot yet be restored', () => {
+    const fixture: ComponentFixture<AdminParkFitOperationalControlsComponent> =
+      TestBed.createComponent(AdminParkFitOperationalControlsComponent);
+    fixture.componentRef.setInput('park', createPark('Suspended', 3, 'Insufficient'));
+    fixture.detectChanges();
+
+    const buttons = fixture.debugElement.queryAll(
+      By.css('.park-fit-operational-controls__actions button')
+    );
+    expect(buttons).toHaveLength(2);
+    expect(buttons[0].nativeElement.disabled).toBe(true);
+    expect(buttons[1].nativeElement.disabled).toBe(false);
   });
 });
 

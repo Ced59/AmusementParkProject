@@ -77,6 +77,8 @@ classDiagram
       +ReplaceAsync(status, expectedRevision)
     }
     class ParkFitOperationalStatusRepository
+    class ParkFitOperationalStatusDocument
+    class ParkFitPortfolioStateMigration
     class SearchParksByFitQueryHandler
     class ParkFitCandidatePortfolioLoader
     class IParkFitCandidatePortfolioReadRepository {
@@ -97,6 +99,8 @@ classDiagram
     ChangeParkFitOperationalStatusCommandHandler --> ParkFitDataQualityAssessor
     ChangeParkFitOperationalStatusCommandHandler --> IParkFitOperationalStatusRepository
     IParkFitOperationalStatusRepository <|.. ParkFitOperationalStatusRepository
+    ParkFitOperationalStatusRepository --> ParkFitOperationalStatusDocument
+    ParkFitPortfolioStateMigration --> ParkFitOperationalStatusDocument : upsert des absents
     SearchParksByFitQueryHandler --> ParkFitCandidatePortfolioLoader
     ParkFitCandidatePortfolioLoader --> IParkFitCandidatePortfolioReadRepository
     IParkFitCandidatePortfolioReadRepository <|.. ParkFitCandidatePortfolioReadRepository
@@ -156,7 +160,23 @@ L'index `{ state: 1, updatedAt: -1 }` sert au pilotage. `_id` est l'identifiant 
 parc et garantit un état unique. Les raisons et acteurs sont réservés à
 l'administration ; la recherche publique ne les renvoie pas.
 
-## 5. Déploiement compatible avant migration physique
+### 4.2 Marqueur de migration
+
+Collection `park-fit-portfolio-migrations` :
+
+```javascript
+{
+  _id: "fit-15-portfolio-activation-v1",
+  startedAtUtc: ISODate("2026-09-15T00:00:00Z"),
+  completedAtUtc: ISODate("2026-09-15T00:00:02Z")
+}
+```
+
+Un marqueur terminé empêche tout nouveau parcours du catalogue. Un marqueur sans
+`completedAtUtc` fait reprendre l'opération après une interruption ; les upserts
+restent sans effet sur les états déjà présents.
+
+## 5. Déploiement compatible et migration physique
 
 Avant FIT-15, l'absence de document signifiait implicitement « actif ». Le nouveau
 code lui donne immédiatement la sémantique sûre `NotActivated`, mais cette première
@@ -164,33 +184,37 @@ livraison n'écrit pas encore la nouvelle valeur enum en masse. C'est volontaire
 pendant le basculement sans interruption, l'ancienne API encore en service ne sait
 pas désérialiser cette valeur.
 
-Le déploiement est donc ordonné en deux PR :
+Le déploiement a donc été ordonné en deux PR :
 
-1. la présente PR déploie le nouveau modèle de lecture, comprend les futures valeurs
+1. la première PR a déployé le nouveau modèle de lecture, comprend les futures valeurs
    d'état et de décision, applique la lecture sûre et pagine les seuls états actifs ;
-   elle conserve uniquement les écritures historiques `Suspend` et `Restore` ;
-2. après disparition vérifiée des anciennes instances, une PR dédiée ouvre les
+   elle conservait uniquement les écritures historiques `Suspend` et `Restore` ;
+2. après déploiement vérifié de ce lecteur compatible, la présente PR ouvre les
    actions `Activate` et `Deactivate`, puis matérialise chaque état absent en
    `NotActivated`, par lots idempotents, sans modifier les états `Active` ou
    `Suspended` déjà pilotés.
 
-Il n'existe déjà plus de comportement applicatif « absent = actif ». La seconde phase
-ne changera donc aucun résultat métier : elle alignera physiquement MongoDB sur la
-sémantique déjà déployée, sans adaptateur durable ni intervention manuelle.
+Il n'existe plus de comportement applicatif « absent = actif ». La seconde phase ne
+change donc aucun résultat métier : elle aligne physiquement MongoDB sur la
+sémantique déjà déployée, sans adaptateur durable ni intervention manuelle. La
+migration conserve un marqueur dédié, parcourt les identifiants par lots de 500 et
+utilise exclusivement `$setOnInsert` : un état existant et son historique ne sont
+jamais écrasés, même si plusieurs instances démarrent simultanément.
 
 ```mermaid
 sequenceDiagram
     participant D as Déploiement
-    participant A0 as Ancienne API
-    participant A1 as API compatible FIT-15
+    participant A0 as API phase lecteur
+    participant A1 as API phase écriture
     participant S as park-fit-operational-statuses
 
-    D->>A1: démarrer le candidat compatible
-    Note over A0,A1: aucune nouvelle valeur d'état ou décision n'est écrite
+    D->>A1: démarrer le candidat d'écriture
+    Note over A0,A1: les deux versions comprennent les nouvelles valeurs
+    A1->>S: matérialiser les absents en NotActivated par lots
+    Note over A1,S: les états existants restent intacts
     D->>A1: vérifier santé et tests candidats
     D->>A0: retirer l'ancienne instance
     D->>A1: rendre canonique
-    Note over A1,S: PR suivante : actions + backfill désormais lisibles partout
 ```
 
 ## 6. Recherche publique
@@ -231,12 +255,8 @@ Elle ne révèle ni justification, ni acteur, ni historique administratif.
 
 ## 7. Interface admin et responsive
 
-Dans l'audit « Qualité du comparateur », chaque carte présente déjà l'état et sa
-conséquence. Pendant la première phase compatible, seules les actions historiques
-`Suspend` et `Restore` restent proposées : aucune interface ne peut encore écrire
-`NotActivated` ou une décision d'activation pendant que l'ancienne API peut servir.
-
-Après la seconde phase, les actions deviennent :
+Dans l'audit « Qualité du comparateur », chaque carte présente l'état, sa conséquence
+et les actions désormais ouvertes :
 
 - actif : suspendre temporairement ou retirer du portefeuille ;
 - suspendu : rétablir si la qualité le permet, ou retirer directement ;
@@ -254,19 +274,19 @@ espagnol, polonais et portugais.
 
 - Core : transitions, retrait pendant une suspension, versions et historique
   tronqué ;
-- Application : refus d'une activation pendant la phase lecteur, rétablissement
-  soumis à la qualité, exclusion d'un état absent, compteurs séparés et lectures
-  groupées des seuls actifs ;
-- Infrastructure : lecture des états explicites sans écriture d'un enum incompatible,
-  projection active bornée après filtres publics et compteurs par facet ;
+- Application : activation et rétablissement soumis à la qualité, retrait direct
+  depuis les états actif ou suspendu, concurrence optimiste, compteurs séparés et
+  lectures groupées des seuls actifs ;
+- Infrastructure : migration idempotente vers `NotActivated` sans écrasement,
+  lecture des états explicites, projection active bornée après filtres publics et
+  compteurs par facet ;
 - WebAPI : mapping additif du compteur `notActivatedCandidateCount` et validation
   de l'enum central ;
-- Angular : aucune écriture anticipée des nouveaux états, fermeture d'une
-  confirmation devenue obsolète, contrats responsive, façade/port et huit
-  dictionnaires cohérents.
+- Angular : quatre actions explicites, blocage de l'activation lorsque la qualité
+  devient insuffisante, fermeture d'une confirmation devenue obsolète, contrats
+  responsive, façade/port et huit dictionnaires cohérents.
 
-La présente livraison termine la phase lecteur de FIT-15. Sa PR immédiatement
-suivante ouvre les écritures explicites et réalise le backfill compatible après ce
-premier déploiement. La gate FIT-G vérifie ensuite l'ensemble des invariants déjà
+Cette seconde livraison termine FIT-15 après le déploiement préalable du lecteur
+compatible. La gate FIT-G vérifie ensuite l'ensemble des invariants déjà
 automatisables ; les observations terrain restent un outil d'amélioration et ne
 bloquent pas l'achèvement technique demandé.

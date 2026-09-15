@@ -47,7 +47,8 @@ public sealed class ChangeParkFitOperationalStatusCommandHandler
             || string.IsNullOrWhiteSpace(command.Reason)
             || command.ExpectedRevision < 0
             || command.TargetState is not ParkFitRecommendationState.Active
-                and not ParkFitRecommendationState.Suspended)
+                and not ParkFitRecommendationState.Suspended
+                and not ParkFitRecommendationState.NotActivated)
         {
             return ApplicationResult.Failure(ParkFitOperationsApplicationErrors.InvalidReport());
         }
@@ -69,8 +70,19 @@ public sealed class ChangeParkFitOperationalStatusCommandHandler
             return ApplicationResult.Failure(ParkFitOperationsApplicationErrors.Conflict());
         }
 
-        if (command.TargetState == ParkFitRecommendationState.Active
-            && status.State != ParkFitRecommendationState.Suspended)
+        bool transitionAllowed = command.TargetState switch
+        {
+            ParkFitRecommendationState.Active =>
+                status.State is ParkFitRecommendationState.NotActivated
+                    or ParkFitRecommendationState.Suspended,
+            ParkFitRecommendationState.Suspended =>
+                status.State == ParkFitRecommendationState.Active,
+            ParkFitRecommendationState.NotActivated =>
+                status.State is ParkFitRecommendationState.Active
+                    or ParkFitRecommendationState.Suspended,
+            _ => false,
+        };
+        if (!transitionAllowed)
         {
             return ApplicationResult.Failure(ParkFitOperationsApplicationErrors.InvalidTransition());
         }
@@ -111,9 +123,17 @@ public sealed class ChangeParkFitOperationalStatusCommandHandler
             {
                 status.Suspend(command.ActorUserId, command.Reason, decidedAtUtc);
             }
-            else
+            else if (command.TargetState == ParkFitRecommendationState.NotActivated)
+            {
+                status.Deactivate(command.ActorUserId, command.Reason, decidedAtUtc);
+            }
+            else if (status.State == ParkFitRecommendationState.Suspended)
             {
                 status.RestoreRecommendations(command.ActorUserId, command.Reason, decidedAtUtc);
+            }
+            else
+            {
+                status.Activate(command.ActorUserId, command.Reason, decidedAtUtc);
             }
         }
         catch (ArgumentException)
