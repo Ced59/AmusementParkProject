@@ -20,21 +20,29 @@ public static class CollectionTargetStatusResolver
     {
         ArgumentNullException.ThrowIfNull(item);
         CollectionTargetStatus parentCollectionStatus = Resolve(parentStatus);
-        if (parentCollectionStatus is CollectionTargetStatus.PermanentlyClosed
-            or CollectionTargetStatus.TemporarilyClosed)
+        if (parentCollectionStatus == CollectionTargetStatus.PermanentlyClosed)
         {
             return parentCollectionStatus;
         }
 
         string? normalizedItemStatus = ParkItemStatusNormalizer.Normalize(
             item.AttractionDetails?.Status);
+        if (normalizedItemStatus is ParkItemStatusNormalizer.ClosedDefinitively
+            or ParkItemStatusNormalizer.Removed)
+        {
+            return CollectionTargetStatus.PermanentlyClosed;
+        }
+
+        if (parentCollectionStatus == CollectionTargetStatus.TemporarilyClosed)
+        {
+            return parentCollectionStatus;
+        }
+
         return normalizedItemStatus switch
         {
             ParkItemStatusNormalizer.Operating => CollectionTargetStatus.Available,
             ParkItemStatusNormalizer.TemporarilyClosed =>
                 CollectionTargetStatus.TemporarilyClosed,
-            ParkItemStatusNormalizer.ClosedDefinitively or ParkItemStatusNormalizer.Removed =>
-                CollectionTargetStatus.PermanentlyClosed,
             _ => parentCollectionStatus,
         };
     }

@@ -35,6 +35,24 @@ public sealed class CollectionTargetStatusResolverTests
     }
 
     [Theory]
+    [InlineData("ClosedDefinitively")]
+    [InlineData("Removed")]
+    public void Resolve_PreservesPermanentItemClosureOverTemporaryParentClosure(
+        string itemStatus)
+    {
+        ParkItem item = new ParkItem
+        {
+            AttractionDetails = new AttractionDetails { Status = itemStatus },
+        };
+
+        CollectionTargetStatus result = CollectionTargetStatusResolver.Resolve(
+            item,
+            ParkStatus.TemporarilyClosed);
+
+        Assert.Equal(CollectionTargetStatus.PermanentlyClosed, result);
+    }
+
+    [Theory]
     [InlineData("TemporarilyClosed", CollectionTargetStatus.TemporarilyClosed)]
     [InlineData("Removed", CollectionTargetStatus.PermanentlyClosed)]
     [InlineData("Operating", CollectionTargetStatus.Available)]
