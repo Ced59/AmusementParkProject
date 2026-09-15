@@ -2072,7 +2072,7 @@ export class SeoService {
     const location = resolvePublicParksLocation({
       keys: Array.from(params.keys()), get: key => params.get(key), getAll: key => params.getAll(key)
     });
-    if (!location.isIndexable || resolvedPage === null || resolvedPage !== location.page) {
+    if (!location.isValid || resolvedPage === null || resolvedPage !== location.page) {
       this.applyNoindexFallbackSeo('parks', language);
       return;
     }
@@ -2081,19 +2081,20 @@ export class SeoService {
     const rootPath: string = buildPublicParksPagePath(normalizedLanguage, 1);
     const rootUrl: string = this.canonicalUrlService.buildAbsoluteUrl(rootPath);
     const canonicalUrl: string = `${rootUrl}${resolvedPage > 1 ? `?page=${resolvedPage}` : ''}`;
-    const routeData = this.buildStaticRouteData('parks', normalizedLanguage, rootPath, 'index,follow');
+    const routeData = this.buildStaticRouteData('parks', normalizedLanguage, rootPath, location.isIndexable ? 'index,follow' : 'noindex,follow');
     const pageLabel: string = `${resolvePaginationLabels(normalizedLanguage).page} ${resolvedPage}`;
     const listLabel: string = this.resolveParksBreadcrumbLabel(normalizedLanguage);
     this.apply({
       ...routeData,
       title: `${routeData.title}${resolvedPage > 1 ? ` · ${pageLabel}` : ''}`,
       canonicalUrl,
-      alternates: resolvedPage === 1 ? routeData.alternates : [],
-      jsonLd: [this.buildBreadcrumbJsonLd([
+      // A validated tracking variant still needs its clean canonical for normal SSR readiness/cache.
+      alternates: location.isIndexable && resolvedPage === 1 ? routeData.alternates : [],
+      jsonLd: location.isIndexable ? [this.buildBreadcrumbJsonLd([
         { name: this.resolveHomeBreadcrumbLabel(normalizedLanguage), url: this.canonicalUrlService.buildAbsoluteUrl(`/${normalizedLanguage}/home`) },
         { name: listLabel, url: rootUrl },
         ...(resolvedPage > 1 ? [{ name: pageLabel, url: canonicalUrl }] : [])
-      ])]
+      ])] : []
     });
   }
 

@@ -296,7 +296,7 @@ export class ParkListPageComponent implements OnInit {
     }
     const actual: PublicParksLocation = resolvePublicParksLocation(this.router.parseUrl(this.router.url).queryParamMap);
     const resolved = this.stateFacade.resolvedPage();
-    const page: number | null = actual.isIndexable && this.standardFilters() && !this.selectedParkCard()
+    const page: number | null = actual.isValid && this.standardFilters() && !this.selectedParkCard()
       && this.stateFacade.pageSize() === PUBLIC_PARKS_PAGE_SIZE
       && resolved?.language === language && resolved.page === actual.page ? actual.page : null;
     this.seoService.applyParkListSeo(language, this.router.url, page);

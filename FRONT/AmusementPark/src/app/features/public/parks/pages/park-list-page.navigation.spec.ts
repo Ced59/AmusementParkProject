@@ -7,7 +7,7 @@ import { TestBed } from '@angular/core/testing';
 import { NavigationEnd, Router, provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { Subject, of, throwError } from 'rxjs';
+import { Subject, filter, firstValueFrom, of, take, throwError } from 'rxjs';
 
 import { Park } from '@app/models/parks/park';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
@@ -63,7 +63,7 @@ describe('Park directory URL navigation and resolved SEO', () => {
     harness.detectChanges();
     expect(parksPort.getParksPaginated).toHaveBeenCalledOnce();
     expect(parksPort.getParksPaginated.mock.calls[0].slice(0, 3)).toEqual([2, 9, true]);
-    expect(harness.routeNativeElement?.querySelectorAll('.park-card-wrapper')).toHaveLength(9);
+    expect(harness.routeNativeElement?.querySelectorAll('.parks-results__card-target')).toHaveLength(9);
     expect(harness.routeNativeElement?.querySelector('a[href="/fr/park/park-10/parc-10"]')).not.toBeNull();
     expect(harness.routeNativeElement?.querySelector('a[href="/fr/park/park-1/parc-1"]')).toBeNull();
     expect(link(harness, 'a[rel="prev"]')).toBe('/fr/parks');
@@ -111,7 +111,7 @@ describe('Park directory URL navigation and resolved SEO', () => {
     await harness.fixture.whenStable();
     harness.detectChanges();
     expect(TestBed.inject(Router).url).toBe('/fr/parks');
-    expect(harness.routeNativeElement?.querySelectorAll('.park-card-wrapper')).toHaveLength(18);
+    expect(harness.routeNativeElement?.querySelectorAll('.parks-results__card-target')).toHaveLength(18);
     expect(harness.routeNativeElement?.querySelector('.app-pagination a')).toBeNull();
     expect(parksPort.getVisibleParkMapPoints).toHaveBeenCalledOnce();
     page.onPageChange({ page: 0, rows: 9 });
@@ -127,7 +127,12 @@ describe('Park directory URL navigation and resolved SEO', () => {
     page.onStatusFilterChanged('Planned');
     await harness.fixture.whenStable();
     await harness.navigateByUrl('/fr/parks?page=3', ParkListPageComponent);
+    const router = TestBed.inject(Router);
+    // The harness navigates explicitly; install the listener normally installed during application bootstrap.
+    router.setUpLocationChangeListener();
+    const returned = firstValueFrom(router.events.pipe(filter(event => event instanceof NavigationEnd), take(1)));
     TestBed.inject(Location).back();
+    await returned;
     await harness.fixture.whenStable();
     harness.detectChanges();
     expect(TestBed.inject(Router).url).toBe('/fr/parks');
@@ -160,14 +165,14 @@ describe('Park directory URL navigation and resolved SEO', () => {
     pending.next(pageResponse(2));
     harness.detectChanges();
     expect(seo.applyParkListSeo).toHaveBeenLastCalledWith('fr', '/fr/parks?page=3', 3);
-    expect(harness.routeNativeElement?.querySelectorAll('.park-card-wrapper')).toHaveLength(2);
+    expect(harness.routeNativeElement?.querySelectorAll('.parks-results__card-target')).toHaveLength(2);
   });
 
   it.each(['/fr/parks?page=0', '/fr/parks?page=99'])('excludes invalid or nonexistent pages: %s', async url => {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl(url, ParkListPageComponent);
     expect(httpStatus.setNotFound).toHaveBeenCalled();
-    expect(harness.routeNativeElement?.querySelectorAll('.park-card-wrapper')).toHaveLength(0);
+    expect(harness.routeNativeElement?.querySelectorAll('.parks-results__card-target')).toHaveLength(0);
     expect(seo.applyParkListSeo).toHaveBeenLastCalledWith('fr', url, null);
     if (url.endsWith('=0')) {
       expect(parksPort.getParksPaginated).not.toHaveBeenCalled();
@@ -178,9 +183,9 @@ describe('Park directory URL navigation and resolved SEO', () => {
   it('keeps incoming tracking queries functional but excluded from the standard-page index', async () => {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl('/fr/parks?utm_source=mail', ParkListPageComponent);
-    expect(harness.routeNativeElement?.querySelectorAll('.park-card-wrapper')).toHaveLength(9);
+    expect(harness.routeNativeElement?.querySelectorAll('.parks-results__card-target')).toHaveLength(9);
     expect(httpStatus.setNotFound).not.toHaveBeenCalled();
-    expect(seo.applyParkListSeo).toHaveBeenLastCalledWith('fr', '/fr/parks?utm_source=mail', null);
+    expect(seo.applyParkListSeo).toHaveBeenLastCalledWith('fr', '/fr/parks?utm_source=mail', 1);
   });
 
   it('keeps an API failure unavailable after NavigationEnd', async () => {

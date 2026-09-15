@@ -1888,6 +1888,15 @@ describe('SeoService', () => {
     expect(readCanonicalHref()).toBeNull();
   });
 
+  it('keeps a clean canonical for validated tracking variants without granting indexability', () => {
+    service.applyParkListSeo('fr', '/fr/parks?page=2&utm_source=mail', 2);
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/parks?page=2');
+    expect(readMetaContent('meta[property="og:url"]')).toBe('http://localhost:4200/fr/parks?page=2');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(readJsonLdScripts()).toEqual([]);
+  });
+
   it('applies indexable map metadata to public park map pages', () => {
     service.applyParkMapSeo(
       buildPark({ name: 'Parc Demo' }),
