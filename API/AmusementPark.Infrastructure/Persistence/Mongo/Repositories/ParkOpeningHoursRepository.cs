@@ -506,9 +506,13 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
     internal static UpdateDefinition<ParkOpeningHoursScheduleDocument> BuildMarkFactualChangeRecordedUpdate(
         string outboxEntryId)
     {
-        return Builders<ParkOpeningHoursScheduleDocument>.Update.PullFilter(
-            static document => document.PendingFactualChanges,
-            entry => entry.Id == outboxEntryId);
+        return Builders<ParkOpeningHoursScheduleDocument>.Update.Combine(
+            Builders<ParkOpeningHoursScheduleDocument>.Update.PullFilter(
+                static document => document.PendingFactualChanges,
+                entry => entry.Id == outboxEntryId),
+            Builders<ParkOpeningHoursScheduleDocument>.Update.Inc(
+                static document => document.WriteRevision,
+                1));
     }
 
     private static ParkOpeningHoursScheduleSummary ToSummary(ParkOpeningHoursScheduleDocument document)

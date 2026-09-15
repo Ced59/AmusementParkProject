@@ -193,6 +193,9 @@ une nouvelle édition ne remplace pas une intention précédente non acquittée.
 Chaque remplacement utilise en plus une révision d'écriture comparée atomiquement.
 En cas de concurrence, le dépôt relit le calendrier, recalcule le véritable diff
 avant/après, attribue la révision factuelle suivante et retente au plus cinq fois.
+L'acquittement d'un marqueur incrémente cette même révision dans l'opération Mongo
+qui le retire : une sauvegarde partie depuis un état antérieur ne peut donc pas
+réintroduire une intention déjà recopiée.
 
 Une panne de planification n'annule donc pas le fait déjà enregistré. Une panne
 entre la création de l'événement et l'acquittement est rejouée : l'index unique
@@ -236,6 +239,8 @@ Les tests couvrent :
 - la conservation d'un marqueur dans le calendrier quand l'insertion outbox échoue ;
 - le compare-and-swap qui préserve les marqueurs et réattribue une révision sous
   écritures concurrentes ;
+- l'acquittement qui retire un marqueur et fait avancer atomiquement la révision
+  d'écriture ;
 - l'avancement du curseur source malgré un marqueur conflictuel ;
 - la reprise à l'intérieur d'un même calendrier lorsque son nombre de marqueurs
   dépasse la taille maximale d'un lot ;

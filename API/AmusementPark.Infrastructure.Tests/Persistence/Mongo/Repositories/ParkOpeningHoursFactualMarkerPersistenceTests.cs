@@ -146,6 +146,8 @@ public sealed class ParkOpeningHoursFactualMarkerPersistenceTests
         string json = update.Render(arguments).ToJson();
 
         Assert.Contains("$pull", json, StringComparison.Ordinal);
+        Assert.Contains("$inc", json, StringComparison.Ordinal);
+        Assert.Contains("writeRevision", json, StringComparison.Ordinal);
         Assert.Contains("outbox-7", json, StringComparison.Ordinal);
     }
 
