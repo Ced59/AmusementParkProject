@@ -1,8 +1,14 @@
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.FactualEvents.Models;
+using AmusementPark.Application.Features.ParkOpeningHours.Models;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkOpeningHours;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FactualEvents;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System.Globalization;
 
@@ -10,6 +16,7 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
 {
+    private static readonly TimeSpan PendingFactualChangeQueryTimeout = TimeSpan.FromSeconds(10);
     private readonly IMongoCollection<ParkOpeningHoursScheduleDocument> collection;
 
     public ParkOpeningHoursRepository(IMongoDatabase database, MongoDbSettings settings)
@@ -189,32 +196,323 @@ public sealed class ParkOpeningHoursRepository : IParkOpeningHoursRepository
 
     public async Task<ParkOpeningHoursSchedule> UpsertAsync(ParkOpeningHoursSchedule schedule, CancellationToken cancellationToken)
     {
-        DateTime now = DateTime.UtcNow;
-        ParkOpeningHoursScheduleDocument? existing = await this.collection
-            .Find(item => item.ParkId == schedule.ParkId)
-            .Project(static item => new ParkOpeningHoursScheduleDocument
-            {
-                Id = item.Id,
-                CreatedAt = item.CreatedAt,
-                LastCoverageThirtyDaysNotificationLocalDate = item.LastCoverageThirtyDaysNotificationLocalDate,
-                LastCoverageExpiredNotificationLocalDate = item.LastCoverageExpiredNotificationLocalDate,
-            })
-            .FirstOrDefaultAsync(cancellationToken);
-
-        ParkOpeningHoursScheduleDocument document = schedule.ToDocument();
-        document.Id = existing?.Id ?? Guid.NewGuid().ToString("N");
-        document.CreatedAt = existing?.CreatedAt ?? now;
-        document.UpdatedAt = now;
-        document.LastCoverageThirtyDaysNotificationLocalDate = existing?.LastCoverageThirtyDaysNotificationLocalDate;
-        document.LastCoverageExpiredNotificationLocalDate = existing?.LastCoverageExpiredNotificationLocalDate;
-
-        await this.collection.ReplaceOneAsync(
-            item => item.ParkId == document.ParkId,
-            document,
-            new ReplaceOptions { IsUpsert = true },
+        ParkOpeningHoursFactualWriteResult result = await this.UpsertCoreAsync(
+            schedule,
+            null,
             cancellationToken);
+        return result.Schedule;
+    }
 
-        return document.ToDomain();
+    public Task<ParkOpeningHoursFactualWriteResult> UpsertWithFactualChangeAsync(
+        ParkOpeningHoursSchedule schedule,
+        ParkOpeningHoursFactualChangeDraft? factualChange,
+        CancellationToken cancellationToken)
+    {
+        return this.UpsertCoreAsync(schedule, factualChange, cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<ParkOpeningHoursPendingFactualChange>> GetPendingFactualChangesAsync(
+        ParkOpeningHoursFactualChangeCursor? after,
+        int maximumCount,
+        CancellationToken cancellationToken)
+    {
+        if (maximumCount < 1 || maximumCount > 1000)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumCount));
+        }
+
+        BsonDocument[] pipeline = BuildPendingFactualChangePipeline(after, maximumCount);
+        List<BsonDocument> documents = await this.collection
+            .Aggregate<BsonDocument>(
+                pipeline,
+                new AggregateOptions
+                {
+                    MaxTime = PendingFactualChangeQueryTimeout,
+                })
+            .ToListAsync(cancellationToken);
+        return documents
+            .Select(static document => new ParkOpeningHoursPendingFactualChange(
+                document["parkId"].AsString,
+                BsonSerializer.Deserialize<FactualChangeOutboxDocument>(
+                        document["entry"].AsBsonDocument)
+                    .ToDomain(),
+                document["sourceUpdatedAtUtc"].AsBsonDateTime.ToUniversalTime()))
+            .ToList();
+    }
+
+    public async Task<bool> MarkFactualChangeRecordedAsync(
+        string parkId,
+        string outboxEntryId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = parkId?.Trim() ?? string.Empty;
+        string normalizedEntryId = outboxEntryId?.Trim() ?? string.Empty;
+        if (normalizedParkId.Length == 0)
+        {
+            throw new ArgumentException("A park identifier is required.", nameof(parkId));
+        }
+
+        if (normalizedEntryId.Length == 0)
+        {
+            throw new ArgumentException("An outbox entry identifier is required.", nameof(outboxEntryId));
+        }
+
+        FilterDefinition<ParkOpeningHoursScheduleDocument> filter =
+            Builders<ParkOpeningHoursScheduleDocument>.Filter.Eq(
+                static document => document.ParkId,
+                normalizedParkId)
+            & Builders<ParkOpeningHoursScheduleDocument>.Filter.ElemMatch(
+                static document => document.PendingFactualChanges,
+                entry => entry.Id == normalizedEntryId);
+        UpdateDefinition<ParkOpeningHoursScheduleDocument> update =
+            BuildMarkFactualChangeRecordedUpdate(normalizedEntryId);
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            filter,
+            update,
+            cancellationToken: cancellationToken);
+        return result.ModifiedCount == 1;
+    }
+
+    private async Task<ParkOpeningHoursFactualWriteResult> UpsertCoreAsync(
+        ParkOpeningHoursSchedule schedule,
+        ParkOpeningHoursFactualChangeDraft? factualChange,
+        CancellationToken cancellationToken)
+    {
+        const int maximumAttempts = 5;
+        for (int attempt = 1; attempt <= maximumAttempts; attempt += 1)
+        {
+            DateTime now = DateTime.UtcNow;
+            ParkOpeningHoursScheduleDocument? existing = await this.collection
+                .Find(item => item.ParkId == schedule.ParkId)
+                .FirstOrDefaultAsync(cancellationToken);
+            ParkOpeningHoursScheduleDocument document = schedule.ToDocument();
+            document.Id = existing?.Id ?? Guid.NewGuid().ToString("N");
+            document.CreatedAt = existing?.CreatedAt ?? now;
+            document.UpdatedAt = now;
+            document.LastCoverageThirtyDaysNotificationLocalDate = existing?.LastCoverageThirtyDaysNotificationLocalDate;
+            document.LastCoverageExpiredNotificationLocalDate = existing?.LastCoverageExpiredNotificationLocalDate;
+            document.FactualRevision = existing?.FactualRevision ?? 0;
+            document.WriteRevision = checked((existing?.WriteRevision ?? 0) + 1);
+            document.PendingFactualChanges = existing?.PendingFactualChanges.ToList()
+                ?? new List<FactualChangeOutboxDocument>();
+
+            ParkOpeningHoursPendingFactualChange? pendingFactualChange =
+                BuildPendingFactualChange(
+                    document,
+                    existing,
+                    factualChange,
+                    now);
+            try
+            {
+                ReplaceOneResult replaceResult = await this.collection.ReplaceOneAsync(
+                    BuildWriteRevisionFilter(
+                        document.ParkId,
+                        existing?.Id,
+                        existing?.WriteRevision ?? 0),
+                    document,
+                    new ReplaceOptions { IsUpsert = existing is null },
+                    cancellationToken);
+                if (existing is null || replaceResult.MatchedCount == 1)
+                {
+                    return new ParkOpeningHoursFactualWriteResult(
+                        document.ToDomain(),
+                        pendingFactualChange);
+                }
+            }
+            catch (MongoWriteException exception)
+                when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey
+                    && attempt < maximumAttempts)
+            {
+            }
+        }
+
+        throw new InvalidOperationException(
+            $"The opening-hours schedule for park '{schedule.ParkId}' changed concurrently too many times.");
+    }
+
+    internal static FilterDefinition<ParkOpeningHoursScheduleDocument> BuildPendingFactualChangeFilter(
+        ParkOpeningHoursFactualChangeCursor? after)
+    {
+        return new BsonDocumentFilterDefinition<ParkOpeningHoursScheduleDocument>(
+            BuildPendingFactualChangeSourceMatch(after));
+    }
+
+    internal static BsonDocument[] BuildPendingFactualChangePipeline(
+        ParkOpeningHoursFactualChangeCursor? after,
+        int maximumCount)
+    {
+        if (maximumCount < 1 || maximumCount > 1000)
+        {
+            throw new ArgumentOutOfRangeException(nameof(maximumCount));
+        }
+
+        List<BsonDocument> pipeline = new List<BsonDocument>
+        {
+            new BsonDocument("$match", BuildPendingFactualChangeSourceMatch(after)),
+            new BsonDocument("$unwind", "$pendingFactualChanges"),
+        };
+        if (after is not null)
+        {
+            pipeline.Add(new BsonDocument(
+                "$match",
+                BuildPendingFactualChangeEntryMatch(after)));
+        }
+
+        pipeline.Add(new BsonDocument("$sort", new BsonDocument
+        {
+            ["updatedAt"] = 1,
+            ["parkId"] = 1,
+            ["pendingFactualChanges.createdAt"] = 1,
+            ["pendingFactualChanges._id"] = 1,
+        }));
+        pipeline.Add(new BsonDocument("$limit", maximumCount));
+        pipeline.Add(new BsonDocument("$project", new BsonDocument
+        {
+            ["_id"] = 0,
+            ["parkId"] = 1,
+            ["sourceUpdatedAtUtc"] = "$updatedAt",
+            ["entry"] = "$pendingFactualChanges",
+        }));
+        return pipeline.ToArray();
+    }
+
+    private static BsonDocument BuildPendingFactualChangeSourceMatch(
+        ParkOpeningHoursFactualChangeCursor? after)
+    {
+        BsonDocument pending = new BsonDocument(
+            "pendingFactualChanges.0",
+            new BsonDocument("$exists", true));
+        if (after is null)
+        {
+            return pending;
+        }
+
+        return new BsonDocument("$and", new BsonArray
+        {
+            pending,
+            new BsonDocument("$or", new BsonArray
+            {
+                new BsonDocument(
+                    "updatedAt",
+                    new BsonDocument("$gt", after.SourceUpdatedAtUtc)),
+                new BsonDocument
+                {
+                    ["updatedAt"] = after.SourceUpdatedAtUtc,
+                    ["parkId"] = new BsonDocument("$gte", after.ParkId),
+                },
+            }),
+        });
+    }
+
+    private static BsonDocument BuildPendingFactualChangeEntryMatch(
+        ParkOpeningHoursFactualChangeCursor after)
+    {
+        return new BsonDocument("$or", new BsonArray
+        {
+            new BsonDocument(
+                "updatedAt",
+                new BsonDocument("$gt", after.SourceUpdatedAtUtc)),
+            new BsonDocument
+            {
+                ["updatedAt"] = after.SourceUpdatedAtUtc,
+                ["parkId"] = new BsonDocument("$gt", after.ParkId),
+            },
+            new BsonDocument
+            {
+                ["updatedAt"] = after.SourceUpdatedAtUtc,
+                ["parkId"] = after.ParkId,
+                ["$or"] = new BsonArray
+                {
+                    new BsonDocument(
+                        "pendingFactualChanges.createdAt",
+                        new BsonDocument("$gt", after.EntryRecordedAtUtc)),
+                    new BsonDocument
+                    {
+                        ["pendingFactualChanges.createdAt"] = after.EntryRecordedAtUtc,
+                        ["pendingFactualChanges._id"] = new BsonDocument("$gt", after.EntryId),
+                    },
+                },
+            },
+        });
+    }
+
+    internal static FilterDefinition<ParkOpeningHoursScheduleDocument> BuildWriteRevisionFilter(
+        string parkId,
+        string? documentId,
+        long expectedWriteRevision)
+    {
+        FilterDefinition<ParkOpeningHoursScheduleDocument> identity =
+            string.IsNullOrWhiteSpace(documentId)
+                ? Builders<ParkOpeningHoursScheduleDocument>.Filter.Eq(
+                    static document => document.ParkId,
+                    parkId)
+                : Builders<ParkOpeningHoursScheduleDocument>.Filter.Eq(
+                    static document => document.Id,
+                    documentId);
+        FilterDefinition<ParkOpeningHoursScheduleDocument> revision =
+            Builders<ParkOpeningHoursScheduleDocument>.Filter.Eq(
+                static document => document.WriteRevision,
+                expectedWriteRevision);
+        if (expectedWriteRevision == 0)
+        {
+            revision |= Builders<ParkOpeningHoursScheduleDocument>.Filter.Exists(
+                static document => document.WriteRevision,
+                false);
+        }
+
+        return identity & revision;
+    }
+
+    private static ParkOpeningHoursPendingFactualChange? BuildPendingFactualChange(
+        ParkOpeningHoursScheduleDocument document,
+        ParkOpeningHoursScheduleDocument? existing,
+        ParkOpeningHoursFactualChangeDraft? factualChange,
+        DateTime recordedAtUtc)
+    {
+        if (factualChange is null)
+        {
+            return null;
+        }
+
+        FactValue? previousValue = OpeningCalendarFactSnapshot.Create(existing?.ToDomain());
+        FactValue? newValue = OpeningCalendarFactSnapshot.Create(document.ToDomain());
+        if (FactualChangeDiff.Detect(previousValue, newValue) is null)
+        {
+            return null;
+        }
+
+        document.FactualRevision = checked(document.FactualRevision + 1);
+        ParkOpeningHoursFactualChangeDraft rebasedChange = factualChange with
+        {
+            Type = previousValue is null && newValue is not null
+                ? FactualEventType.OpeningCalendarPublished
+                : FactualEventType.OpeningCalendarChanged,
+            PreviousValue = previousValue,
+            NewValue = newValue,
+        };
+        FactualChangeCaptureRequest captureRequest = rebasedChange.ToCaptureRequest(
+            document.FactualRevision,
+            recordedAtUtc);
+        FactualChangeOutboxEntry entry = FactualChangeOutboxEntry.Create(captureRequest)
+            ?? throw new InvalidOperationException(
+                "A factual write cannot persist an empty opening-hours diff.");
+        document.PendingFactualChanges.Add(entry.ToDocument());
+        return new ParkOpeningHoursPendingFactualChange(
+            document.ParkId,
+            entry,
+            document.UpdatedAt);
+    }
+
+    internal static UpdateDefinition<ParkOpeningHoursScheduleDocument> BuildMarkFactualChangeRecordedUpdate(
+        string outboxEntryId)
+    {
+        return Builders<ParkOpeningHoursScheduleDocument>.Update.Combine(
+            Builders<ParkOpeningHoursScheduleDocument>.Update.PullFilter(
+                static document => document.PendingFactualChanges,
+                entry => entry.Id == outboxEntryId),
+            Builders<ParkOpeningHoursScheduleDocument>.Update.Inc(
+                static document => document.WriteRevision,
+                1));
     }
 
     private static ParkOpeningHoursScheduleSummary ToSummary(ParkOpeningHoursScheduleDocument document)

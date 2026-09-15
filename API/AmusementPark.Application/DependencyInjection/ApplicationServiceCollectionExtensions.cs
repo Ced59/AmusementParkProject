@@ -8,6 +8,8 @@ using AmusementPark.Application.Features.Contact.Services;
 using AmusementPark.Application.Features.Comments.Services;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.Countries.Services;
+using AmusementPark.Application.Features.FactualEvents.Ports;
+using AmusementPark.Application.Features.FactualEvents.Services;
 using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.ParkGraphUpserts.Services;
@@ -61,6 +63,9 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IDurableBackgroundJobHandlerResolver, DurableBackgroundJobHandlerRegistry>();
         services.AddSingleton<DurableBackgroundJobRetryDelayCalculator>();
         services.AddScoped<DurableBackgroundJobExecutionOrchestrator>();
+        services.AddScoped<IFactualChangeCaptureService, FactualChangeCaptureService>();
+        services.AddScoped<IFactualChangeMaterializationScheduler, FactualChangeMaterializationScheduler>();
+        services.AddDurableBackgroundJobHandler<FactualChangeMaterializationJobHandler>();
         services.AddScoped<ParkItemReferenceValidator>();
         services.AddScoped<CommentTargetResolver>();
         services.AddScoped<CommentImageManager>();
@@ -78,6 +83,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<SocialPublicationTargetResolver>();
         services.AddScoped<ISocialPublicationComposerService, SocialPublicationComposerService>();
         services.AddScoped<ParkOpeningHoursScheduleNormalizer>();
+        services.AddScoped<IParkOpeningHoursFactualChangeCapture, ParkOpeningHoursFactualChangeCaptureService>();
         services.AddSingleton<ParkOpeningHoursCoverageSegmentBuilder>();
         services.AddSingleton<ParkOpeningHoursAdminStatusResolver>();
         services.AddScoped<ParkOpeningHoursCoverageNotificationProcessor>();

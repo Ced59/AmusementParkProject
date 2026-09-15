@@ -31,6 +31,7 @@ using AmusementPark.Application.Features.BackgroundJobs.Models;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.BackgroundJobs;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Comments;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Contact;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FactualEvents;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkGraphUpserts;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkOpeningHours;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkPricing;
@@ -202,6 +203,70 @@ private const string AdminFieldModeItemProgressCollectionName = "adminFieldModeI
         }
 
         await collection.DeleteManyAsync(Builders<BsonDocument>.Filter.In("_id", duplicateIds), cancellationToken);
+    }
+
+    private async Task InitializeFactualChangeIndexesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<FactualChangeOutboxDocument> outbox =
+            this.database.GetCollection<FactualChangeOutboxDocument>(
+                this.settings.FactualChangeOutboxCollectionName);
+        IMongoCollection<FactualChangeEventDocument> events =
+            this.database.GetCollection<FactualChangeEventDocument>(
+                this.settings.FactualChangeEventsCollectionName);
+        await outbox.Indexes.CreateManyAsync(BuildFactualChangeOutboxIndexes(), cancellationToken);
+        await events.Indexes.CreateManyAsync(BuildFactualChangeEventIndexes(), cancellationToken);
+    }
+
+    internal static IReadOnlyCollection<CreateIndexModel<FactualChangeOutboxDocument>>
+        BuildFactualChangeOutboxIndexes()
+    {
+        return new List<CreateIndexModel<FactualChangeOutboxDocument>>
+        {
+            new CreateIndexModel<FactualChangeOutboxDocument>(
+                Builders<FactualChangeOutboxDocument>.IndexKeys
+                    .Ascending(static value => value.DeduplicationKey)
+                    .Ascending(static value => value.SourceRevision),
+                new CreateIndexOptions
+                {
+                    Name = "idx_factual_outbox_logical_revision_unique",
+                    Unique = true,
+                }),
+            new CreateIndexModel<FactualChangeOutboxDocument>(
+                Builders<FactualChangeOutboxDocument>.IndexKeys
+                    .Ascending(static value => value.MaterializedAtUtc)
+                    .Ascending(static value => value.TerminalAtUtc)
+                    .Ascending(static value => value.CreatedAt)
+                    .Ascending(static value => value.Id),
+                new CreateIndexOptions { Name = "idx_factual_outbox_pending" }),
+        };
+    }
+
+    internal static IReadOnlyCollection<CreateIndexModel<FactualChangeEventDocument>>
+        BuildFactualChangeEventIndexes()
+    {
+        return new List<CreateIndexModel<FactualChangeEventDocument>>
+        {
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending(static value => value.DeduplicationKey)
+                    .Ascending(static value => value.Revision),
+                new CreateIndexOptions
+                {
+                    Name = "idx_factual_events_logical_revision_unique",
+                    Unique = true,
+                }),
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending(static value => value.Status)
+                    .Descending(static value => value.CreatedAt),
+                new CreateIndexOptions { Name = "idx_factual_events_status_created" }),
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending("target.type")
+                    .Ascending("target.targetId")
+                    .Descending(static value => value.CreatedAt),
+                new CreateIndexOptions { Name = "idx_factual_events_target_created" }),
+        };
     }
 
 private async Task InitializeDurableBackgroundJobIndexesAsync(CancellationToken cancellationToken)
@@ -565,6 +630,10 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.DurableBackgroundJobsCollectionName, cancellationToken);
         await this.InitializeDurableBackgroundJobIndexesAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(this.settings.FactualChangeOutboxCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.FactualChangeEventsCollectionName, cancellationToken);
+        await this.InitializeFactualChangeIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.UsersCollectionName, cancellationToken);
         await this.InitializeUsersIndexesAsync(cancellationToken);
@@ -1083,7 +1152,15 @@ private async Task InitializeParkOpeningHoursIndexesAsync(CancellationToken canc
         IMongoCollection<ParkOpeningHoursScheduleDocument> collection =
             this.database.GetCollection<ParkOpeningHoursScheduleDocument>(this.settings.ParkOpeningHoursCollectionName);
 
-        List<CreateIndexModel<ParkOpeningHoursScheduleDocument>> indexes = new List<CreateIndexModel<ParkOpeningHoursScheduleDocument>>
+        IReadOnlyCollection<CreateIndexModel<ParkOpeningHoursScheduleDocument>> indexes =
+            BuildParkOpeningHoursIndexes();
+
+        await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
+    }
+
+    internal static IReadOnlyCollection<CreateIndexModel<ParkOpeningHoursScheduleDocument>> BuildParkOpeningHoursIndexes()
+    {
+        return new List<CreateIndexModel<ParkOpeningHoursScheduleDocument>>
         {
             new CreateIndexModel<ParkOpeningHoursScheduleDocument>(
                 Builders<ParkOpeningHoursScheduleDocument>.IndexKeys.Ascending(item => item.ParkId),
@@ -1091,9 +1168,16 @@ private async Task InitializeParkOpeningHoursIndexesAsync(CancellationToken canc
             new CreateIndexModel<ParkOpeningHoursScheduleDocument>(
                 Builders<ParkOpeningHoursScheduleDocument>.IndexKeys.Descending(item => item.UpdatedAt),
                 new CreateIndexOptions { Name = "idx_park_opening_hours_updated" }),
+            new CreateIndexModel<ParkOpeningHoursScheduleDocument>(
+                Builders<ParkOpeningHoursScheduleDocument>.IndexKeys
+                    .Ascending(item => item.UpdatedAt)
+                    .Ascending(item => item.ParkId),
+                new CreateIndexOptions<ParkOpeningHoursScheduleDocument>
+                {
+                    Name = "idx_park_opening_hours_pending_factual_changes",
+                    PartialFilterExpression = ParkOpeningHoursRepository.BuildPendingFactualChangeFilter(null),
+                }),
         };
-
-        await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
     }
 
 private async Task InitializeParkPricingIndexesAsync(CancellationToken cancellationToken)

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.48",
+  "version": "5.3.49",
   "history": [
+    {
+      "version": "5.3.49",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Les changements suivis sont désormais enregistrés sans perte ni doublon.",
+        "en": "Tracked changes are now recorded without loss or duplication.",
+        "de": "Beobachtete Änderungen werden jetzt verlust- und duplikatfrei erfasst.",
+        "nl": "Gevolgde wijzigingen worden nu zonder verlies of duplicaten vastgelegd.",
+        "it": "Le modifiche seguite vengono ora registrate senza perdite né duplicati.",
+        "es": "Los cambios seguidos se registran ahora sin pérdidas ni duplicados.",
+        "pl": "Obserwowane zmiany są teraz zapisywane bez utraty danych i duplikatów.",
+        "pt": "As alterações acompanhadas são agora registadas sem perdas nem duplicados."
+      }
+    },
     {
       "version": "5.3.48",
       "releasedAt": "2026-09-15",

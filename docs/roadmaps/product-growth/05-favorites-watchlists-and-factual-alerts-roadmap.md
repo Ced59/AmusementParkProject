@@ -75,6 +75,15 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > livré en `5.3.48` : les 25 types d'événements sont catalogués, versionnés et bornés
 > par cible ; chaque fait possède une valeur structurée avant/après, une source, un
 > niveau de confiance, une clé de déduplication et un cycle de validation auditable.
+> `WATCH-05` est livré en `5.3.49` : un diff structuré ignore les non-changements,
+> le calendrier conserve atomiquement chaque intention et sa révision monotone avant
+> sa copie idempotente dans l'outbox Mongo, puis le worker matérialise
+> exactement un brouillon factuel et un reconciler borné répare les interruptions.
+> Les calendriers d'ouverture officiellement sourcés sont le premier flux métier
+> raccordé ; un job définitivement terminé sans acquittement est isolé explicitement
+> afin de ne jamais bloquer les faits suivants. La reprise est bornée par marqueur,
+> y compris à l'intérieur d'un même calendrier très actif, et les dates de
+> vérification futures sont rejetées avant toute écriture.
 
 ## 4.1 `UserCollectionEntry`
 
@@ -602,7 +611,7 @@ Une hausse du taux de clic n’est pas une justification pour rendre les formula
 | `WATCH-02` | API/UI favoris et wishlist — livré en `5.3.43` | Usage privé fiable |
 | `WATCH-03` | Domaine abonnements/préférences — livré en `5.3.45` | Portée explicite |
 | `WATCH-04` | Catalogue d’événements et provenance — livré en `5.3.48` | Types versionnés |
-| `WATCH-05` | Diff/outbox/déduplication | Un fait logique, une alerte |
+| `WATCH-05` | Diff/outbox/déduplication — livré en `5.3.49` | Un fait logique, une alerte |
 | `WATCH-06` | Administration de vérification | Rien de non vérifié distribué |
 | `WATCH-07` | Notifications Web | Centre accessible |
 | `WATCH-08` | Corrections/rétractations | Historique honnête |

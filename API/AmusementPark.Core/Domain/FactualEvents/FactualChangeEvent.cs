@@ -19,7 +19,7 @@ public sealed class FactualChangeEvent
         DataConfidence confidence,
         DateTime occurredAtUtc,
         string deduplicationKey,
-        int revision,
+        long revision,
         FactualChangeStatus status,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
@@ -130,7 +130,7 @@ public sealed class FactualChangeEvent
 
     public string DeduplicationKey { get; }
 
-    public int Revision { get; }
+    public long Revision { get; }
 
     public FactualChangeStatus Status { get; private set; }
 
@@ -162,7 +162,7 @@ public sealed class FactualChangeEvent
         DataConfidence confidence,
         DateTime occurredAtUtc,
         string deduplicationKey,
-        int revision,
+        long revision,
         DateTime nowUtc)
     {
         FactualEventDefinition definition = FactualEventCatalog.Get(type);
@@ -200,7 +200,7 @@ public sealed class FactualChangeEvent
         DataConfidence confidence,
         DateTime occurredAtUtc,
         string deduplicationKey,
-        int revision,
+        long revision,
         FactualChangeStatus status,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,

@@ -1,4 +1,5 @@
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FactualEvents;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkOpeningHours;
@@ -51,4 +52,13 @@ public sealed class ParkOpeningHoursScheduleDocument : MongoDocumentBase
 
     [BsonElement("dateOverrides")]
     public List<ParkOpeningHoursDateOverrideDocument> DateOverrides { get; set; } = new();
+
+    [BsonElement("factualRevision")]
+    public long FactualRevision { get; set; }
+
+    [BsonElement("writeRevision")]
+    public long WriteRevision { get; set; }
+
+    [BsonElement("pendingFactualChanges")]
+    public List<FactualChangeOutboxDocument> PendingFactualChanges { get; set; } = new();
 }

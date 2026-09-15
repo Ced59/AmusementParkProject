@@ -26,6 +26,10 @@ public sealed class MongoDbSettings
 
     public string DurableBackgroundJobsCollectionName { get; set; } = "durableBackgroundJobs";
 
+    public string FactualChangeOutboxCollectionName { get; set; } = "factual-change-outbox";
+
+    public string FactualChangeEventsCollectionName { get; set; } = "factual-change-events";
+
     public string RefreshTokensCollectionName { get; set; } = "refreshTokens";
 
     public string ParkDataEditorAccessTokensCollectionName { get; set; } = "parkDataEditorAccessTokens";

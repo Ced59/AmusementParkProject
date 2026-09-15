@@ -29,6 +29,7 @@ using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
+using AmusementPark.Application.Features.ParkOpeningHours.Models;
 using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.ParkPricing.Services;
 using AmusementPark.Application.Features.Seo.Ports;
@@ -71,7 +72,10 @@ internal static class ParkGraphUpsertProcessorOpeningHoursExtensions
             return;
         }
 
-        if (processorContext.parkOpeningHoursRepository is null || processorContext.parkOpeningHoursScheduleNormalizer is null || processorContext.parkOpeningHoursCoverageSegmentBuilder is null)
+        if (processorContext.parkOpeningHoursRepository is null
+            || processorContext.parkOpeningHoursScheduleNormalizer is null
+            || processorContext.parkOpeningHoursCoverageSegmentBuilder is null
+            || (apply && processorContext.openingHoursFactualChangeCapture is null))
         {
             change.ChangeType = "Skipped";
             result.Changes.Add(change);
@@ -120,7 +124,26 @@ internal static class ParkGraphUpsertProcessorOpeningHoursExtensions
         }
 
         normalizedSchedule.CoverageSegments = processorContext.parkOpeningHoursCoverageSegmentBuilder.BuildSegments(normalizedSchedule).ToList();
-        await processorContext.parkOpeningHoursRepository.UpsertAsync(normalizedSchedule, cancellationToken);
+        IParkOpeningHoursFactualChangeCapture factualChangeCapture =
+            processorContext.openingHoursFactualChangeCapture
+            ?? throw new InvalidOperationException(
+                "The opening-hours factual change capture is unavailable after commit.");
+        ParkOpeningHoursFactualChangeDraft? factualChange =
+            factualChangeCapture.Prepare(
+                targetPark,
+                existingSchedule,
+                normalizedSchedule);
+        ParkOpeningHoursFactualWriteResult writeResult =
+            await processorContext.parkOpeningHoursRepository.UpsertWithFactualChangeAsync(
+                normalizedSchedule,
+                factualChange,
+                cancellationToken);
+        if (writeResult.PendingFactualChange is not null)
+        {
+            await factualChangeCapture.CaptureAsync(
+                writeResult.PendingFactualChange,
+                CancellationToken.None);
+        }
     }
 
     internal static bool HasOpeningHoursPatch(JsonElement root)

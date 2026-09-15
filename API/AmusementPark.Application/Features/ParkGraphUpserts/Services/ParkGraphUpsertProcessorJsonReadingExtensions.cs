@@ -209,7 +209,13 @@ internal static class ParkGraphUpsertProcessorJsonReadingExtensions
             return null;
         }
 
-        return DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out DateTime parsed) ? parsed : null;
+        return DateTime.TryParse(
+            value,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal,
+            out DateTime parsed)
+            ? parsed
+            : null;
     }
 
     internal static bool StartsWithCompleteIsoDate(string value)
