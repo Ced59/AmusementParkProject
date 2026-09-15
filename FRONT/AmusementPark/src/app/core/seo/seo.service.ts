@@ -33,6 +33,7 @@ import { normalizeSeoText, truncateSeoText } from './seo-text.utils';
 import { buildPublicSitemapCanonicalUrl, resolvePublicSitemapSeoCopy } from './public-sitemap-seo.helpers';
 import { buildPublicParksPagePath, resolvePublicParksLocation } from '@shared/utils/routing/public-parks-location';
 import { resolvePaginationLabels } from '@shared/utils/pagination/pagination-labels';
+import { ParkItemSchemaType, resolveParkItemSchemaType } from './park-item-schema-type';
 
 interface StaticSeoCopy {
   title: string;
@@ -1441,7 +1442,7 @@ const PARK_UNAVAILABLE_FEATURE_SEO_COPY: Record<string, ParkUnavailableFeatureSe
 const PARK_ITEM_DETAIL_SEO_COPY: Record<string, ParkItemDetailSeoCopy> = {
   en: {
     parkContextPrefix: 'at',
-    title: (itemName: string, parkLabel: string): string => `Attraction guide: ${itemName}${parkLabel}`,
+    title: (itemName: string, parkLabel: string): string => `Guide to ${itemName}${parkLabel}`,
     description: (itemName: string, parkLabel: string): string =>
       `${itemName}${parkLabel}: category, type, practical details, photos and map information.`
   },
@@ -3883,14 +3884,15 @@ export class SeoService {
 
     breadcrumbItems.push({ name: detail.name, url: canonicalUrl });
 
+    const schemaType: ParkItemSchemaType = resolveParkItemSchemaType(detail.category, this.isConceptualParkStatus(detail.parkStatus));
     const itemJsonLd: Record<string, unknown> = {
       '@context': 'https://schema.org',
-      '@type': this.isConceptualParkStatus(detail.parkStatus) ? 'Thing' : 'TouristAttraction',
+      '@type': schemaType,
       name: detail.name,
       url: canonicalUrl
     };
 
-    if (detail.parkStatus && detail.parkStatus !== 'Operating') {
+    if (schemaType !== 'Thing' && detail.parkStatus && detail.parkStatus !== 'Operating') {
       itemJsonLd['additionalProperty'] = {
         '@type': 'PropertyValue',
         name: 'parentParkLifecycleStatus',
@@ -3903,17 +3905,10 @@ export class SeoService {
       itemJsonLd['description'] = truncateSeoText(description, 300);
     }
 
-    if (detail.parkName) {
+    if (schemaType !== 'Thing' && detail.parkName) {
       itemJsonLd['containedInPlace'] = {
         '@type': this.resolveParkSchemaType(detail.parkStatus),
         name: detail.parkName
-      };
-    }
-
-    if (detail.manufacturerName) {
-      itemJsonLd['manufacturer'] = {
-        '@type': 'Organization',
-        name: detail.manufacturerName
       };
     }
 

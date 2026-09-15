@@ -314,6 +314,20 @@ describe('ParkItemDetailStateFacade', () => {
     TestBed.resetTestingModule();
   });
 
+  it.each([
+    ['Service', 'Service'], ['Restaurant', 'Snack'], ['Attraction', 'RollerCoaster']
+  ] as const)('preserves the supplied %s category across localized detail mapping', (category, type) => {
+    const context = configureFacade();
+    context.itemsPort.itemResponse$ = of(createParkItem({ category, type }));
+    context.facade.setCurrentLanguage('en');
+    context.facade.loadItem('item-1');
+    expect(context.facade.detail()?.category).toBe(category);
+
+    context.facade.setCurrentLanguage('nl');
+    expect(context.facade.detail()?.category).toBe(category);
+    expect(context.itemsPort.itemCalls).toEqual(['item-1']);
+  });
+
   it('loads the park item and orchestrates related detail data through ports', () => {
     const context = configureFacade();
     context.itemsPort.relatedResponse$ = of([
