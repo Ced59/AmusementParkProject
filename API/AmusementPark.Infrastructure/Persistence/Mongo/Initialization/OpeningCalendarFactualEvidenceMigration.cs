@@ -14,28 +14,88 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
 /// </summary>
 internal sealed class OpeningCalendarFactualEvidenceMigration
 {
+    internal const string MigrationId = "watch-06-opening-calendar-evidence-v2";
     private const int BatchSize = 100;
 
     private readonly IMongoCollection<FactualChangeEventDocument> events;
     private readonly IMongoCollection<FactualChangeOutboxDocument> outbox;
     private readonly IMongoCollection<ParkOpeningHoursScheduleDocument> schedules;
+    private readonly IMongoCollection<FactualEventMigrationDocument> migrations;
+    private readonly TimeProvider timeProvider;
 
     public OpeningCalendarFactualEvidenceMigration(
         IMongoCollection<FactualChangeEventDocument> events,
         IMongoCollection<FactualChangeOutboxDocument> outbox,
-        IMongoCollection<ParkOpeningHoursScheduleDocument> schedules)
+        IMongoCollection<ParkOpeningHoursScheduleDocument> schedules,
+        IMongoCollection<FactualEventMigrationDocument> migrations,
+        TimeProvider? timeProvider = null)
     {
         this.events = events ?? throw new ArgumentNullException(nameof(events));
         this.outbox = outbox ?? throw new ArgumentNullException(nameof(outbox));
         this.schedules = schedules ?? throw new ArgumentNullException(nameof(schedules));
+        this.migrations = migrations ?? throw new ArgumentNullException(nameof(migrations));
+        this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
     public async Task<long> MigrateAsync(CancellationToken cancellationToken)
     {
+        FactualEventMigrationDocument? migration = await this.LoadMigrationAsync(cancellationToken);
+        if (migration is null)
+        {
+            await TryCreateMigrationPlanAsync(
+                this.migrations,
+                this.timeProvider.GetUtcNow().UtcDateTime,
+                cancellationToken);
+            migration = await this.LoadMigrationAsync(cancellationToken);
+        }
+
+        if (migration is null)
+        {
+            throw new InvalidOperationException(
+                "The factual-event evidence migration plan could not be persisted.");
+        }
+
+        if (migration.CompletedAtUtc.HasValue)
+        {
+            return 0;
+        }
+
         long migratedEvents = await this.MigrateEventsAsync(cancellationToken);
         long migratedOutboxEntries = await this.MigrateOutboxAsync(cancellationToken);
         long migratedEmbeddedEntries = await this.MigrateEmbeddedOutboxAsync(cancellationToken);
+        await this.migrations.UpdateOneAsync(
+            Builders<FactualEventMigrationDocument>.Filter.Eq(
+                static value => value.Id,
+                MigrationId),
+            Builders<FactualEventMigrationDocument>.Update.Set(
+                static value => value.CompletedAtUtc,
+                this.timeProvider.GetUtcNow().UtcDateTime),
+            cancellationToken: cancellationToken);
         return migratedEvents + migratedOutboxEntries + migratedEmbeddedEntries;
+    }
+
+    internal static async Task TryCreateMigrationPlanAsync(
+        IMongoCollection<FactualEventMigrationDocument> migrations,
+        DateTime startedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            await migrations.UpdateOneAsync(
+                Builders<FactualEventMigrationDocument>.Filter.Eq(
+                    static migration => migration.Id,
+                    MigrationId),
+                Builders<FactualEventMigrationDocument>.Update.SetOnInsert(
+                    static migration => migration.StartedAtUtc,
+                    startedAtUtc),
+                new UpdateOptions { IsUpsert = true },
+                cancellationToken);
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            // Another instance persisted the same idempotent plan first.
+        }
     }
 
     internal static bool MigrateValue(
@@ -100,6 +160,16 @@ internal sealed class OpeningCalendarFactualEvidenceMigration
         }
 
         return migratedCount;
+    }
+
+    private async Task<FactualEventMigrationDocument?> LoadMigrationAsync(
+        CancellationToken cancellationToken)
+    {
+        return await this.migrations
+            .Find(Builders<FactualEventMigrationDocument>.Filter.Eq(
+                static migration => migration.Id,
+                MigrationId))
+            .FirstOrDefaultAsync(cancellationToken);
     }
 
     private async Task<long> MigrateOutboxAsync(CancellationToken cancellationToken)

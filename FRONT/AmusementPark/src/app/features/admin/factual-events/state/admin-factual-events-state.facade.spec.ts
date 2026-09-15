@@ -135,6 +135,46 @@ describe('AdminFactualEventsStateFacade', (): void => {
     expect(facade.loadError()).toBe(true);
   });
 
+  it('keeps actions locked until the successful mutation refresh completes', (): void => {
+    const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
+    const refresh = new Subject<PagedResult<FactualChangeEventAdmin>>();
+    port.search
+      .mockReturnValueOnce(of(createPage(draftEvent)))
+      .mockReturnValueOnce(refresh);
+    port.verify.mockReturnValue(of(undefined));
+    facade.load({ page: 1, size: 20, status: 'Draft' });
+
+    facade.changeStatus(draftEvent, 'verify');
+
+    expect(facade.actionEventId()).toBeNull();
+    expect(facade.loading()).toBe(true);
+    facade.changeStatus(draftEvent, 'verify');
+    expect(port.verify).toHaveBeenCalledTimes(1);
+    refresh.next(createPage(createEvent('Verified', 5)));
+    refresh.complete();
+    expect(facade.loading()).toBe(false);
+  });
+
+  it('keeps actions locked until the conflict refresh completes', (): void => {
+    const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
+    const refresh = new Subject<PagedResult<FactualChangeEventAdmin>>();
+    port.search
+      .mockReturnValueOnce(of(createPage(draftEvent)))
+      .mockReturnValueOnce(refresh);
+    port.verify.mockReturnValue(throwError(
+      (): HttpErrorResponse => new HttpErrorResponse({ status: 409 }),
+    ));
+    facade.load({ page: 1, size: 20, status: 'Draft' });
+
+    facade.changeStatus(draftEvent, 'verify');
+
+    expect(facade.actionEventId()).toBeNull();
+    expect(facade.loading()).toBe(true);
+    refresh.next(createPage(createEvent('Verified', 5)));
+    refresh.complete();
+    expect(facade.loading()).toBe(false);
+  });
+
   it('removes the stale actionable card when the conflict refresh fails', (): void => {
     const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
     port.search

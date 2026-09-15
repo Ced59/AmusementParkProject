@@ -112,13 +112,13 @@
           @if (event.status === 'Draft') {
             @if (canVerify(event)) {
               <p><i class="pi pi-lock" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.draftHelp' | translate }}</p>
-              <button appUiButton="primary" type="button" [disabled]="facade.actionEventId() !== null" (click)="verify(event)"><i class="pi pi-check" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.verify' | translate }}</button>
+              <button appUiButton="primary" type="button" [disabled]="facade.actionEventId() !== null || facade.loading()" (click)="verify(event)"><i class="pi pi-check" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.verify' | translate }}</button>
             } @else {
               <p><i class="pi pi-info-circle" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.lowConfidenceHelp' | translate }}</p>
             }
           } @else if (event.status === 'Verified') {
             <p><i class="pi pi-eye" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.verifiedHelp' | translate }}</p>
-            <button appUiButton="primary" type="button" [disabled]="facade.actionEventId() !== null" (click)="publish(event)"><i class="pi pi-send" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.publish' | translate }}</button>
+            <button appUiButton="primary" type="button" [disabled]="facade.actionEventId() !== null || facade.loading()" (click)="publish(event)"><i class="pi pi-send" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.publish' | translate }}</button>
           } @else if (event.canBeDistributed) {
             <p class="factual-event-card__distributed"><i class="pi pi-check-circle" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.publishedHelp' | translate }}</p>
           } @else {

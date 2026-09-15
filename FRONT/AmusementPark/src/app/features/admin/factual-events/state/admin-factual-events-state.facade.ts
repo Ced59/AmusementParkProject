@@ -72,7 +72,7 @@ export class AdminFactualEventsStateFacade {
   }
 
   public changeStatus(event: FactualChangeEventAdmin, action: FactualEventAdminAction): void {
-    if (this.actionEventIdState()) {
+    if (this.actionEventIdState() || this.loadingState()) {
       return;
     }
 
@@ -101,8 +101,16 @@ export class AdminFactualEventsStateFacade {
   }
 
   private reloadAfterConflict(query: FactualChangeEventQuery, querySequence: number): void {
+    this.loadingState.set(true);
     this.port.search(query)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize((): void => {
+          if (this.isCurrentQuery(querySequence)) {
+            this.loadingState.set(false);
+          }
+        }),
+      )
       .subscribe({
         next: (response: PagedResult<FactualChangeEventAdmin>): void => {
           if (this.isCurrentQuery(querySequence)) {

@@ -633,6 +633,7 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.FactualChangeOutboxCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.FactualChangeEventsCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.FactualEventMigrationsCollectionName, cancellationToken);
         await this.InitializeFactualChangeIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.UsersCollectionName, cancellationToken);
@@ -894,7 +895,9 @@ private readonly IMongoDatabase database;
             this.database.GetCollection<FactualChangeOutboxDocument>(
                 this.settings.FactualChangeOutboxCollectionName),
             this.database.GetCollection<ParkOpeningHoursScheduleDocument>(
-                this.settings.ParkOpeningHoursCollectionName));
+                this.settings.ParkOpeningHoursCollectionName),
+            this.database.GetCollection<FactualEventMigrationDocument>(
+                this.settings.FactualEventMigrationsCollectionName));
         long migratedOpeningCalendarEvidenceCount =
             await openingCalendarEvidenceMigration.MigrateAsync(cancellationToken);
         if (migratedOpeningCalendarEvidenceCount > 0)
