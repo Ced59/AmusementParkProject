@@ -30,11 +30,18 @@ public sealed record SourceReference
             throw InvalidSource("The factual source URL must be an absolute HTTP or HTTPS URL.");
         }
 
+        string canonicalUrl = parsedUrl.AbsoluteUri;
+        if (canonicalUrl.Length > MaximumUrlLength)
+        {
+            throw InvalidSource(
+                $"The canonical factual source URL cannot exceed {MaximumUrlLength} characters.");
+        }
+
         EnsureUtc(publishedAtUtc);
         this.Type = type;
         this.PublisherName = normalizedPublisherName;
         this.Title = normalizedTitle;
-        this.Url = parsedUrl.AbsoluteUri;
+        this.Url = canonicalUrl;
         this.PublishedAtUtc = publishedAtUtc;
     }
 

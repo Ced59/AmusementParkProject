@@ -34,6 +34,17 @@ public sealed class SourceReferenceTests
         Assert.Equal(url, source.Url);
     }
 
+    [Fact]
+    public void Create_WithUrlExpandingBeyondCanonicalLimit_ShouldRejectSource()
+    {
+        string url = $"https://example.com/{new string('é', 500)}";
+
+        FactualEventValidationException exception = Assert.Throws<FactualEventValidationException>(
+            () => CreateSource(url));
+
+        Assert.Equal(FactualEventErrorCodes.InvalidSource, exception.Code);
+    }
+
     [Theory]
     [InlineData("relative/path")]
     [InlineData("ftp://example.com/fact")]
