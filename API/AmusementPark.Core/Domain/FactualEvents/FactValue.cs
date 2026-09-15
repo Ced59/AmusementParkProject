@@ -117,7 +117,7 @@ public sealed record FactValue
                 out long integerValue) => FromInteger(integerValue),
             FactValueKind.Decimal when decimal.TryParse(
                 normalizedValue,
-                NumberStyles.Number,
+                NumberStyles.Float,
                 CultureInfo.InvariantCulture,
                 out decimal decimalValue) => FromDecimal(decimalValue, unitCode),
             FactValueKind.Boolean when bool.TryParse(
@@ -138,7 +138,7 @@ public sealed record FactValue
                 out DateTime dateTimeValue) => FromDateTime(dateTimeValue),
             FactValueKind.Money when decimal.TryParse(
                 normalizedValue,
-                NumberStyles.Number,
+                NumberStyles.Float,
                 CultureInfo.InvariantCulture,
                 out decimal moneyValue) => FromMoney(moneyValue, unitCode ?? string.Empty),
             _ => throw InvalidValue("The canonical factual value does not match its kind."),

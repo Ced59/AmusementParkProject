@@ -437,7 +437,8 @@ public sealed class FactualChangeEvent
         EnsureOptionalUtc(verifiedAtUtc);
         EnsureOptionalUtc(publishedAtUtc);
         EnsureOptionalUtc(terminalAtUtc);
-        if (source.PublishedAtUtc > updatedAtUtc
+        DateTime evidenceDeadlineUtc = verifiedAtUtc ?? updatedAtUtc;
+        if (source.PublishedAtUtc > evidenceDeadlineUtc
             || occurredAtUtc > createdAtUtc
             || updatedAtUtc < createdAtUtc
             || verifiedAtUtc < createdAtUtc

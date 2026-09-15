@@ -290,6 +290,42 @@ public sealed class FactualChangeEventTests
     }
 
     [Fact]
+    public void Restore_WithEvidencePublishedAfterVerification_ShouldRejectCorruptAuditTrail()
+    {
+        SourceReference lateSource = new SourceReference(
+            SourceReferenceType.OfficialWebsite,
+            "Example Park",
+            "Late announcement",
+            "https://example.com/late-news",
+            new DateTime(2026, 9, 15, 11, 30, 0, DateTimeKind.Utc));
+
+        FactualEventValidationException exception = Assert.Throws<FactualEventValidationException>(
+            () => FactualChangeEvent.Restore(
+                FactualChangeEventId.Parse("event-1"),
+                FactualEventType.ParkNameChanged,
+                FactualEventCatalog.CurrentSchemaVersion,
+                ChangeTarget.ForPark("park-1"),
+                FactValue.FromText("Old Park"),
+                FactValue.FromText("Example Park"),
+                lateSource,
+                DataConfidence.High,
+                OccurredAtUtc,
+                "park:park-1:name:2026-09-15",
+                1,
+                FactualChangeStatus.Published,
+                CreatedAtUtc,
+                At(12),
+                At(11),
+                At(12),
+                null,
+                null,
+                null,
+                3));
+
+        Assert.Equal(FactualEventErrorCodes.InvalidTimestamp, exception.Code);
+    }
+
+    [Fact]
     public void Restore_WithSelfReferencingCorrection_ShouldRejectCycle()
     {
         FactualChangeEventId eventId = FactualChangeEventId.Parse("event-1");

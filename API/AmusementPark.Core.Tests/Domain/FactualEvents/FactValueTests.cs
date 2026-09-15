@@ -40,6 +40,26 @@ public sealed class FactValueTests
     }
 
     [Fact]
+    public void Restore_ShouldAcceptEveryExponentFormEmittedByDecimalFactories()
+    {
+        decimal smallestPositiveValue = 0.0000000000000000000000000001m;
+        FactValue decimalValue = FactValue.FromDecimal(smallestPositiveValue);
+        FactValue moneyValue = FactValue.FromMoney(smallestPositiveValue, "EUR");
+
+        FactValue restoredDecimal = FactValue.Restore(
+            decimalValue.Kind,
+            decimalValue.CanonicalValue,
+            decimalValue.UnitCode);
+        FactValue restoredMoney = FactValue.Restore(
+            moneyValue.Kind,
+            moneyValue.CanonicalValue,
+            moneyValue.UnitCode);
+
+        Assert.Equal(decimalValue, restoredDecimal);
+        Assert.Equal(moneyValue, restoredMoney);
+    }
+
+    [Fact]
     public void Restore_WithUnitOnBoolean_ShouldRejectInvalidShape()
     {
         FactualEventValidationException exception = Assert.Throws<FactualEventValidationException>(
