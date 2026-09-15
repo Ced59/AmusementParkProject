@@ -20,6 +20,9 @@ import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
+import { PUBLIC_PARKS_PAGE_SIZE } from '@shared/utils/routing/public-parks-location';
 import { ParkAudienceClassificationFilter } from '@app/models/parks/park-audience-classification';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
@@ -46,6 +49,11 @@ interface ParkListSourceData {
   pagination: PaginationContract | null;
 }
 
+export interface ResolvedPublicParksPage {
+  readonly language: string;
+  readonly page: number;
+}
+
 @Injectable()
 export class ParkListStateFacade {
   private readonly screenStateStore = new SignalScreenStateStore<ParkListSourceData>();
@@ -53,6 +61,7 @@ export class ParkListStateFacade {
   private readonly currentLanguageSignal = signal('en');
   private readonly currentPageSignal = signal(1);
   private readonly pageSizeSignal = signal(9);
+  private readonly resolvedPageSignal = signal<ResolvedPublicParksPage | null>(null);
   private readonly selectedParkIdSignal = signal<string | null>(null);
   private readonly selectedParkCardSignal = signal<ParkCardModel | null>(null);
   private readonly selectedRegionSignal = signal<ParkRegionFilter | null>(null);
@@ -63,6 +72,7 @@ export class ParkListStateFacade {
   private mapRequestGeneration = 0;
 
   public readonly state = this.screenStateStore.state;
+  public readonly resolvedPage = this.resolvedPageSignal.asReadonly();
   public readonly mapState = this.mapStateStore.state;
   public readonly parks: Signal<ParkCardModel[]> = computed(() => {
     return mapArray(this.screenStateStore.data()?.parks, (park: Park) =>
@@ -106,7 +116,8 @@ export class ParkListStateFacade {
     @Inject(PARK_LIST_STATE_STANDALONE_ATTRACTIONS_API_SERVICE_PORT) private readonly standaloneAttractionsApiService: ParkListStateStandaloneAttractionsApiServicePort,
     private readonly countryDisplayService: CountryDisplayService,
     private readonly textTruncator: NaturalTextTruncatorService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
   }
 
@@ -208,7 +219,19 @@ export class ParkListStateFacade {
       });
   }
 
-  loadParks(page: number, size: number, term: string, region: ParkRegionFilter | null): void {
+  rejectInvalidPage(): void {
+    ++this.screenRequestGeneration;
+    this.resolvedPageSignal.set(null);
+    this.screenStateStore.setError('parks.emptyMessage');
+    this.ssrHttpStatusService.setNotFound();
+  }
+
+  loadParks(page: number, size: number, term: string, region: ParkRegionFilter | null, requestedPublicPage: boolean = false): void {
+    this.resolvedPageSignal.set(null);
+    const language: string = this.currentLanguageSignal();
+    const validatePublicPage: boolean = requestedPublicPage && size === PUBLIC_PARKS_PAGE_SIZE
+      && !term.trim() && region === null && this.selectedStatusSignal() === 'Operating'
+      && this.selectedAudienceClassificationFilterSignal() === null && this.discoveryScopeSignal() === 'parks';
     const normalizedTerm: string = term.trim();
     const previousData: ParkListSourceData | undefined = this.screenStateStore.data();
     const filters: ParkAdminListFilters | null = this.buildAudienceClassificationFilters();
@@ -235,12 +258,28 @@ export class ParkListStateFacade {
           pagination: pagedResult.pagination,
         };
 
+        if (validatePublicPage && (page > Math.max(1, pagedResult.pagination?.totalPages ?? 1)
+          || (page > 1 && pagedResult.items.length === 0))) {
+          this.rejectInvalidPage();
+          return;
+        }
+
+        if (validatePublicPage && pagedResult.items.length > 0
+          && (pagedResult.pagination?.currentPage !== page || pagedResult.pagination.itemsPerPage !== PUBLIC_PARKS_PAGE_SIZE)) {
+          this.ssrHttpStatusService.setStatus(503);
+          this.screenStateStore.setError('parks.errorMessage');
+          return;
+        }
+
         if (pagedResult.items.length === 0) {
           this.screenStateStore.setEmpty(sourceData);
           return;
         }
 
         this.screenStateStore.setReady(sourceData);
+        if (validatePublicPage) {
+          this.resolvedPageSignal.set({ language, page });
+        }
       },
       error: (error: unknown) => {
         if (requestGeneration !== this.screenRequestGeneration) {
@@ -248,6 +287,9 @@ export class ParkListStateFacade {
         }
 
         console.error('Error fetching parks:', error);
+        if (validatePublicPage) {
+          applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
+        }
         this.screenStateStore.setError('parks.errorMessage', previousData);
       }
     });
@@ -260,6 +302,7 @@ export class ParkListStateFacade {
     term: string,
     region: ParkRegionFilter | null
   ): void {
+    this.resolvedPageSignal.set(null);
     const previousData: ParkListSourceData | undefined = this.screenStateStore.data();
     const categories: string[] = scope === 'standaloneAttractions'
       ? ['standaloneAttractions']

@@ -1852,16 +1852,49 @@ describe('SeoService', () => {
     service.applyParkListSeo('fr', '/fr/parks?search=test');
 
     expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
-    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/parks');
+    expect(readCanonicalHref()).toBeNull();
     expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
     expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
   });
 
   it('keeps the unfiltered park list indexable', () => {
-    service.applyParkListSeo('fr', '/fr/parks');
+    service.applyParkListSeo('fr', '/fr/parks', 1);
 
     expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
     expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).not.toHaveLength(0);
+  });
+
+  it.each(['fr', 'en', 'de', 'nl', 'it', 'es', 'pl', 'pt'])('gives validated parks page 2 its own canonical in %s', language => {
+    service.applyParkListSeo(language, `/${language}/parks?page=2`, 2);
+    const canonical = `http://localhost:4200/${language}/parks?page=2`;
+    expect(readCanonicalHref()).toBe(canonical);
+    expect(readMetaContent('meta[property="og:url"]')).toBe(canonical);
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(readJsonLdScripts()[0]).toMatchObject({
+      '@type': 'BreadcrumbList',
+      itemListElement: [expect.objectContaining({ item: `http://localhost:4200/${language}/home` }), expect.objectContaining({ item: `http://localhost:4200/${language}/parks` }), expect.objectContaining({ item: canonical })]
+    });
+  });
+
+  it('normalizes page one and removes metadata while a page awaits validation', () => {
+    service.applyParkListSeo('fr', '/fr/parks?page=1', 1);
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/parks');
+    service.applyRouteDefaults('/fr/parks?page=2');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBeNull();
+    expect(readJsonLdScripts()).toEqual([]);
+    service.applyParkListSeo('fr', '/fr/parks?page=2', 1);
+    expect(readCanonicalHref()).toBeNull();
+  });
+
+  it('keeps a clean canonical for validated tracking variants without granting indexability', () => {
+    service.applyParkListSeo('fr', '/fr/parks?page=2&utm_source=mail', 2);
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/parks?page=2');
+    expect(readMetaContent('meta[property="og:url"]')).toBe('http://localhost:4200/fr/parks?page=2');
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(readJsonLdScripts()).toEqual([]);
   });
 
   it('applies indexable map metadata to public park map pages', () => {

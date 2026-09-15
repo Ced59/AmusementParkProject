@@ -18,6 +18,8 @@ export class PaginationComponent {
   @Input() first: number | null = null;
   @Input() rowsPerPageOptions: number[] = [10, 20, 50];
   @Input() pageLinkSize: number = 3;
+  @Input() pageHref: ((page: number) => string) | null = null;
+  @Input() pageLanguage: string = 'en';
   @Input() alwaysShow: boolean = false;
   @Input() scrollOnPageChange: boolean = true;
   @Input() scrollTargetSelector: string | null = null;

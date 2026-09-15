@@ -17,6 +17,37 @@ const html: string = [
 ].join('');
 
 describe('SSR robots response delivery', () => {
+  it.each([false, true])('preserves validated parks pagination after preparation (no-JS: %s)', noJs => {
+    const pageUrl = '/fr/parks?page=2';
+    const pageHtml = html.replaceAll(branchUrl, pageUrl);
+    const prepared = prepareRobotHtmlForResponse(pageHtml, {
+      allowRobotNoJsOptimization: true, robotNoJsHtmlEnabled: true, isRobotRequest: noJs
+    });
+    const result = prepareSsrRobotsResponse(prepared.html, pageUrl, 200, false);
+    expect(result.directive).toBeNull();
+    expect(result.html).toContain('content="index,follow"');
+    expect(result.html).toContain(`href="https://amusement-parks.fun${pageUrl}"`);
+    expect(result.html).toContain('BreadcrumbList');
+  });
+
+  it.each([
+    ['/fr/parks', 404, false], ['/fr/parks?page=99', 404, false],
+    ['/fr/parks?page=2', 503, false], ['/fr/parks?page=2', 200, true],
+    ['/fr/parks', 200, true], ['/fr/parks?page=2&search=parc', 200, false],
+    ['/fr/parks?page=2&page=3', 200, false], ['/fr/manufacturers?page=2', 200, false]
+  ] as const)('keeps parks errors, fallbacks and unrelated queries excluded: %s %s %s', (url, status, fallback) => {
+    const result = prepareSsrRobotsResponse(html, url, status, fallback);
+    expect(result.directive).toBe('noindex, follow');
+    expect(result.html).toContain('content="noindex,follow"');
+    expect(result.html).not.toContain('BreadcrumbList');
+  });
+
+  it('never promotes unresolved parks metadata from a syntactically valid page', () => {
+    const unresolved = html.replaceAll('content="index,follow"', 'content="noindex,follow"');
+    const result = prepareSsrRobotsResponse(unresolved, '/fr/parks?page=2', 200, false);
+    expect(result.directive).toBeNull();
+    expect(result.html).toContain('content="noindex,follow"');
+  });
   it.each([false, true])('preserves indexable branch HTML after robot preparation (no-JS optimization: %s)', (noJs: boolean) => {
     const prepared = prepareRobotHtmlForResponse(html, {
       allowRobotNoJsOptimization: true, robotNoJsHtmlEnabled: true, isRobotRequest: noJs

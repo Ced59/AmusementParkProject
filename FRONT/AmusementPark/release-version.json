@@ -1,6 +1,20 @@
 {
-  "version": "5.3.39",
+  "version": "5.3.40",
   "history": [
+    {
+      "version": "5.3.40",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Chaque page de l’annuaire des parcs dispose désormais de son propre lien.",
+        "en": "Each page of the park directory now has its own link.",
+        "de": "Jede Seite im Parkverzeichnis ist jetzt über einen eigenen Link erreichbar.",
+        "nl": "Elke pagina van het parkoverzicht heeft nu een eigen link.",
+        "it": "Ogni pagina dell’elenco dei parchi ha ora un proprio collegamento.",
+        "es": "Cada página del directorio de parques tiene ahora su propio enlace.",
+        "pl": "Każda strona katalogu parków ma teraz własny link.",
+        "pt": "Cada página do diretório de parques tem agora a sua própria ligação."
+      }
+    },
     {
       "version": "5.3.39",
       "releasedAt": "2026-09-15",

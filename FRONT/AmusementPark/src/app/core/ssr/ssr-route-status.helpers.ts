@@ -1,5 +1,6 @@
 import { LANGUAGES, LanguageOption } from '../../shared/models/localization';
 import { resolvePublicSitemapLocation } from '../../shared/utils/routing/public-sitemap-location';
+import { resolvePublicParksLocation } from '../../shared/utils/routing/public-parks-location';
 
 const SUPPORTED_ROUTE_LANGUAGES: ReadonlySet<string> = new Set<string>(
   LANGUAGES.map((language: LanguageOption): string => language.value)
@@ -113,6 +114,21 @@ function isKnownPrivateClientRoute(path: string): boolean {
 
 function isNoindexPublicPageRoute(url: string, statusCode: number, isCsrFallback: boolean): boolean {
   const path: string = normalizeSsrPath(url);
+
+  if (hasSupportedLanguagePrefix(path) && /^\/[a-z]{2}\/parks$/i.test(path)) {
+    try {
+      const params: URLSearchParams = new URL(url, 'https://amusement-parks.fun').searchParams;
+      const location = resolvePublicParksLocation({
+        keys: Array.from(params.keys()), get: key => params.get(key), getAll: key => params.getAll(key)
+      });
+      if (location.isIndexable) {
+        // Preserve the metadata validated by the loaded directory, never infer it from a page number.
+        return statusCode !== 200 || isCsrFallback;
+      }
+    } catch {
+      return true;
+    }
+  }
 
   if (hasSupportedLanguagePrefix(path) && /^\/[a-z]{2}\/sitemap$/i.test(path)) {
     try {

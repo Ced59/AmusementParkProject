@@ -70,6 +70,13 @@
   </app-park-list-map>
 
   <section class="public-panel parks-results" appUiSurface="panel" appUiSurfacePadding="compact" data-pagination-scroll-target>
+    @if (pageHref() && (pagination()?.currentPage ?? 1) > 1) {
+      <nav class="parks-pagination-trail" [attr.aria-label]="paginationLabels().page">
+        <a [routerLink]="['/', currentLang(), 'parks']">{{ 'parks.title' | translate }}</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{{ paginationLabels().page }} {{ pagination()?.currentPage }}</span>
+      </nav>
+    }
     <div class="parks-results__head">
       <div>
         <app-ui-kicker tone="lime" iconClass="pi pi-list">
@@ -94,7 +101,7 @@
       </div>
     </div>
 
-    <app-page-state
+  <app-page-state
       [state]="state().kind"
       [messages]="{
         loadingTitleKey: 'parks.loadingTitle',
@@ -131,7 +138,9 @@
 
       @if (!selectedParkCard() || discoveryScope() !== 'parks') {
         <app-pagination
-          [pagination]="pagination()"
+        [pagination]="pagination()"
+        [pageHref]="pageHref()"
+        [pageLanguage]="currentLang()"
           [rowsPerPageOptions]="[6, 9, 18, 36]"
           [pageLinkSize]="3"
           (pageChanged)="onPageChange($event)">
