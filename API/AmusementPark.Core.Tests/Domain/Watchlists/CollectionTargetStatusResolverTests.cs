@@ -69,4 +69,26 @@ public sealed class CollectionTargetStatusResolverTests
             expected,
             CollectionTargetStatusResolver.Resolve(item, ParkStatus.Operating));
     }
+
+    [Theory]
+    [InlineData("UnderConstruction")]
+    [InlineData("Planned")]
+    [InlineData("Unknown")]
+    [InlineData("UnrecognizedLifecycle")]
+    [InlineData(null)]
+    public void Resolve_DoesNotInferAvailabilityForAnUnresolvedAttraction(
+        string? itemStatus)
+    {
+        ParkItem item = new ParkItem
+        {
+            Category = ParkItemCategory.Attraction,
+            AttractionDetails = itemStatus is null
+                ? null
+                : new AttractionDetails { Status = itemStatus },
+        };
+
+        Assert.Equal(
+            CollectionTargetStatus.Unknown,
+            CollectionTargetStatusResolver.Resolve(item, ParkStatus.Operating));
+    }
 }

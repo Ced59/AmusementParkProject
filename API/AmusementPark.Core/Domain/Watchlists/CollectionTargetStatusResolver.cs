@@ -43,7 +43,10 @@ public static class CollectionTargetStatusResolver
             ParkItemStatusNormalizer.Operating => CollectionTargetStatus.Available,
             ParkItemStatusNormalizer.TemporarilyClosed =>
                 CollectionTargetStatus.TemporarilyClosed,
-            _ => parentCollectionStatus,
+            ParkItemStatusNormalizer.UnderConstruction or ParkItemStatusNormalizer.Planned
+                or ParkItemStatusNormalizer.Unknown => CollectionTargetStatus.Unknown,
+            null when item.Category != ParkItemCategory.Attraction => parentCollectionStatus,
+            _ => CollectionTargetStatus.Unknown,
         };
     }
 }

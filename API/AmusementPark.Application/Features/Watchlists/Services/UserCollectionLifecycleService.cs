@@ -49,6 +49,7 @@ public sealed class UserCollectionLifecycleService
 
             if (existing is not null)
             {
+                await this.SynchronizeTargetStatusAsync(existing, snapshot, cancellationToken);
                 return ApplicationResult<UserCollectionEntryResult>.Success(ToResult(existing, snapshot));
             }
 
@@ -82,6 +83,10 @@ public sealed class UserCollectionLifecycleService
                     cancellationToken);
                 if (concurrentEntry is not null)
                 {
+                    await this.SynchronizeTargetStatusAsync(
+                        concurrentEntry,
+                        snapshot,
+                        cancellationToken);
                     return ApplicationResult<UserCollectionEntryResult>.Success(
                         ToResult(concurrentEntry, snapshot));
                 }
@@ -230,6 +235,22 @@ public sealed class UserCollectionLifecycleService
             entry.CreatedAtUtc,
             entry.UpdatedAtUtc,
             entry.Version);
+    }
+
+    private async Task SynchronizeTargetStatusAsync(
+        UserCollectionEntry entry,
+        UserCollectionTargetSnapshot snapshot,
+        CancellationToken cancellationToken)
+    {
+        if (!snapshot.IsAvailableForCreation || snapshot.Status == entry.TargetStatus)
+        {
+            return;
+        }
+
+        entry.SynchronizeTargetStatus(snapshot.Status, this.timeProvider.GetUtcNow().UtcDateTime);
+        await this.repository.SynchronizeTargetStatusesAsync(
+            new[] { entry },
+            cancellationToken);
     }
 
     private static ApplicationResult<TResult> Invalid<TResult>(
