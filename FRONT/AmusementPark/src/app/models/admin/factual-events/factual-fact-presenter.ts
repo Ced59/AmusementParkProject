@@ -23,13 +23,18 @@ export function presentFactualFact(value: FactualFactValueAdmin | null): Factual
   return {
     isOpeningCalendar,
     isPresent: true,
-    rawValue: isOpeningCalendar ? '' : value.canonicalValue,
+    rawValue: isOpeningCalendar ? '' : presentCanonicalValue(value),
     timeZone: isOpeningCalendar ? fields.get('timezone') ?? null : null,
     coverageStart: coverageParts[0] ?? null,
     coverageEnd: coverageParts[1] ?? null,
     rulesCount: isOpeningCalendar ? parseCount(fields.get('rules')) : null,
     overridesCount: isOpeningCalendar ? parseCount(fields.get('overrides')) : null,
   };
+}
+
+function presentCanonicalValue(value: FactualFactValueAdmin): string {
+  const unitCode: string | null = value.unitCode?.trim() || null;
+  return unitCode ? `${value.canonicalValue} ${unitCode}` : value.canonicalValue;
 }
 
 function emptyPresentation(): FactualFactPresentation {

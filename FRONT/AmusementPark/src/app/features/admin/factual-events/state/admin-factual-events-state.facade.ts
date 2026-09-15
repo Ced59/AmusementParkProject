@@ -18,6 +18,7 @@ import {
 
 @Injectable()
 export class AdminFactualEventsStateFacade {
+  private querySequence = 0;
   private readonly eventsState = signal<FactualChangeEventAdmin[]>([]);
   private readonly paginationState = signal<PaginationContract | null>(null);
   private readonly loadingState = signal<boolean>(false);
@@ -46,6 +47,7 @@ export class AdminFactualEventsStateFacade {
       return;
     }
 
+    const querySequence: number = ++this.querySequence;
     this.lastQueryState.set(query);
     this.loadingState.set(true);
     this.loadErrorState.set(false);
@@ -56,8 +58,16 @@ export class AdminFactualEventsStateFacade {
         finalize((): void => this.loadingState.set(false)),
       )
       .subscribe({
-        next: (response: PagedResult<FactualChangeEventAdmin>): void => this.setPage(response),
-        error: (): void => this.loadErrorState.set(true),
+        next: (response: PagedResult<FactualChangeEventAdmin>): void => {
+          if (this.isCurrentQuery(querySequence)) {
+            this.setPage(response);
+          }
+        },
+        error: (): void => {
+          if (this.isCurrentQuery(querySequence)) {
+            this.loadErrorState.set(true);
+          }
+        },
       });
   }
 
@@ -70,32 +80,46 @@ export class AdminFactualEventsStateFacade {
     const operation: Observable<void> = action === 'verify'
       ? this.port.verify(event.eventId, request)
       : this.port.publish(event.eventId, request);
+    const refreshQuery: FactualChangeEventQuery = this.lastQueryState();
+    const refreshQuerySequence: number = this.querySequence;
     this.actionEventIdState.set(event.eventId);
     this.actionErrorState.set(null);
     operation.pipe(
       switchMap((): Observable<PagedResult<FactualChangeEventAdmin>> =>
-        this.port.search(this.lastQueryState())),
+        this.port.search(refreshQuery)),
       takeUntilDestroyed(this.destroyRef),
       finalize((): void => this.actionEventIdState.set(null)),
     ).subscribe({
-      next: (response: PagedResult<FactualChangeEventAdmin>): void => this.setPage(response),
+      next: (response: PagedResult<FactualChangeEventAdmin>): void => {
+        if (this.isCurrentQuery(refreshQuerySequence)) {
+          this.setPage(response);
+        }
+      },
       error: (error: unknown): void => {
         this.actionErrorState.set(error instanceof HttpErrorResponse && error.status === 409
           ? 'conflict'
           : 'failure');
         if (error instanceof HttpErrorResponse && error.status === 409) {
-          this.reloadAfterConflict();
+          this.reloadAfterConflict(this.lastQueryState(), this.querySequence);
         }
       },
     });
   }
 
-  private reloadAfterConflict(): void {
-    this.port.search(this.lastQueryState())
+  private reloadAfterConflict(query: FactualChangeEventQuery, querySequence: number): void {
+    this.port.search(query)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (response: PagedResult<FactualChangeEventAdmin>): void => this.setPage(response),
+        next: (response: PagedResult<FactualChangeEventAdmin>): void => {
+          if (this.isCurrentQuery(querySequence)) {
+            this.setPage(response);
+          }
+        },
       });
+  }
+
+  private isCurrentQuery(querySequence: number): boolean {
+    return this.querySequence === querySequence;
   }
 
   private setPage(response: PagedResult<FactualChangeEventAdmin>): void {

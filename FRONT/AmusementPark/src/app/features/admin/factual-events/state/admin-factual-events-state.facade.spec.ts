@@ -1,6 +1,6 @@
 import type { MockedObject } from 'vitest';
 import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { Subject, of } from 'rxjs';
 
 import { FactualChangeEventAdmin } from '@app/models/admin/factual-events/factual-event-administration.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -64,6 +64,25 @@ describe('AdminFactualEventsStateFacade', (): void => {
 
     expect(port.publish).toHaveBeenCalledWith('event-1', { expectedVersion: 5 });
     expect(port.verify).not.toHaveBeenCalled();
+  });
+
+  it('does not replace a newer filtered page with a stale mutation refresh', (): void => {
+    const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
+    const verifiedEvent: FactualChangeEventAdmin = createEvent('Verified', 5);
+    const staleRefresh = new Subject<PagedResult<FactualChangeEventAdmin>>();
+    port.search
+      .mockReturnValueOnce(of(createPage(draftEvent)))
+      .mockReturnValueOnce(staleRefresh)
+      .mockReturnValueOnce(of(createPage(verifiedEvent)));
+    port.verify.mockReturnValue(of(undefined));
+    facade.load({ page: 1, size: 20, status: 'Draft' });
+
+    facade.changeStatus(draftEvent, 'verify');
+    facade.load({ page: 1, size: 20, status: 'Verified' });
+    staleRefresh.next(createPage(draftEvent));
+    staleRefresh.complete();
+
+    expect(facade.events()[0]?.status).toBe('Verified');
   });
 });
 

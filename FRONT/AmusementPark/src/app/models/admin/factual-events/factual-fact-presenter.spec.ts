@@ -31,4 +31,14 @@ describe('presentFactualFact', (): void => {
     expect(presentation.isOpeningCalendar).toBe(false);
     expect(presentation.rawValue).toBe('Nouveau nom');
   });
+
+  it('keeps the unit beside a numeric fact so monetary values stay unambiguous', (): void => {
+    const presentation = presentFactualFact({
+      kind: 'Money',
+      canonicalValue: '49.00',
+      unitCode: 'EUR',
+    });
+
+    expect(presentation.rawValue).toBe('49.00 EUR');
+  });
 });
