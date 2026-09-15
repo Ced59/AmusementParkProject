@@ -36,6 +36,9 @@ using AmusementPark.Application.Features.Videos.Commands;
 using AmusementPark.Application.Features.Videos.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Videos.Queries;
+using AmusementPark.Application.Features.Watchlists.Commands;
+using AmusementPark.Application.Features.Watchlists.Queries;
+using AmusementPark.Application.Features.Watchlists.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Videos;
 using AmusementPark.WebAPI.DependencyInjection;
@@ -91,6 +94,9 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<CreateProfileComparisonInvitationCommand, ApplicationResult<ProfileComparisonInvitationCreationResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetProfileComparisonInvitationPreviewQuery, ApplicationResult<ProfileComparisonInvitationPreviewResult>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<AcceptProfileComparisonInvitationCommand, ApplicationResult<ProfileComparisonInvitationAcceptanceResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<AddUserCollectionEntryCommand, ApplicationResult<UserCollectionEntryResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<DeleteUserCollectionEntryCommand, ApplicationResult>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<ListMyUserCollectionEntriesQuery, ApplicationResult<IReadOnlyCollection<UserCollectionEntryResult>>>));
     }
 
     [Fact]

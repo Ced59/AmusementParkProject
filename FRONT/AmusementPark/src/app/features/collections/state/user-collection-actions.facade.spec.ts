@@ -43,6 +43,42 @@ describe('UserCollectionActionsFacade', () => {
     expect(dataPort.delete).toHaveBeenCalledWith('Park', 'park-1', 'Favorite');
     expect(facade.has('Favorite')).toBe(false);
   });
+
+  it('ignores a previous target response after route reuse', () => {
+    const firstTargetResponse = new Subject<UserCollectionEntry[]>();
+    const secondTargetResponse = new Subject<UserCollectionEntry[]>();
+    const dataPort: UserCollectionsDataPort = {
+      listMine: vi.fn()
+        .mockReturnValueOnce(firstTargetResponse)
+        .mockReturnValueOnce(secondTargetResponse),
+      add: vi.fn(),
+      delete: vi.fn()
+    };
+    const authService: Pick<AuthService, 'isLoggedIn'> = {
+      isLoggedIn: vi.fn().mockReturnValue(true)
+    };
+    const sharedService: Pick<SharedService, 'getLoginStatusListener'> = {
+      getLoginStatusListener: vi.fn().mockReturnValue(new Subject<void>())
+    };
+    const destroyRef: Pick<DestroyRef, 'onDestroy'> = {
+      onDestroy: vi.fn().mockReturnValue((): void => undefined)
+    };
+    const facade: UserCollectionActionsFacade = new UserCollectionActionsFacade(
+      dataPort,
+      authService as AuthService,
+      sharedService as SharedService,
+      destroyRef as DestroyRef
+    );
+
+    facade.configure('Park', 'park-1');
+    facade.configure('Park', 'park-2');
+    secondTargetResponse.next([]);
+    firstTargetResponse.next([buildEntry()]);
+
+    expect(dataPort.listMine).toHaveBeenNthCalledWith(1, 'Park', 'park-1');
+    expect(dataPort.listMine).toHaveBeenNthCalledWith(2, 'Park', 'park-2');
+    expect(facade.has('Favorite')).toBe(false);
+  });
 });
 
 function buildEntry(): UserCollectionEntry {

@@ -24,6 +24,8 @@ export class UserCollectionActionsFacade {
   private readonly loadingSignal = signal<boolean>(false);
   private readonly mutatingKindSignal = signal<UserCollectionKind | null>(null);
   private readonly errorSignal = signal<boolean>(false);
+  private loadRequestId: number = 0;
+  private mutationRequestId: number = 0;
 
   readonly authenticated: Signal<boolean> = this.authenticatedSignal.asReadonly();
   readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
@@ -45,6 +47,7 @@ export class UserCollectionActionsFacade {
         if (this.authenticatedSignal()) {
           this.load();
         } else {
+          this.invalidatePendingRequests();
           this.entriesSignal.set([]);
         }
       });
@@ -58,6 +61,7 @@ export class UserCollectionActionsFacade {
     this.targetIdSignal.set(normalizedTargetId);
     this.refreshAuthentication();
     if (changed) {
+      this.invalidatePendingRequests();
       this.entriesSignal.set([]);
       this.errorSignal.set(false);
       if (this.authenticatedSignal() && normalizedTargetId) {
@@ -80,6 +84,7 @@ export class UserCollectionActionsFacade {
 
     const targetType: UserCollectionTargetType = this.targetTypeSignal();
     const removing: boolean = this.has(kind);
+    const requestId: number = ++this.mutationRequestId;
     this.mutatingKindSignal.set(kind);
     this.errorSignal.set(false);
     const request: Observable<UserCollectionEntry | void> = removing
@@ -87,9 +92,17 @@ export class UserCollectionActionsFacade {
       : this.dataPort.add(targetType, targetId, kind);
     request.pipe(
       takeUntilDestroyed(this.destroyRef),
-      finalize((): void => this.mutatingKindSignal.set(null))
+      finalize((): void => {
+        if (requestId === this.mutationRequestId) {
+          this.mutatingKindSignal.set(null);
+        }
+      })
     ).subscribe({
       next: (entry: UserCollectionEntry | void): void => {
+        if (!this.isCurrentTarget(requestId, targetType, targetId, false)) {
+          return;
+        }
+
         if (removing) {
           this.entriesSignal.update((entries: UserCollectionEntry[]) =>
             entries.filter((current: UserCollectionEntry): boolean => current.kind !== kind));
@@ -103,27 +116,64 @@ export class UserCollectionActionsFacade {
           ]);
         }
       },
-      error: (): void => this.errorSignal.set(true)
+      error: (): void => {
+        if (this.isCurrentTarget(requestId, targetType, targetId, false)) {
+          this.errorSignal.set(true);
+        }
+      }
     });
   }
 
   private load(): void {
     const targetId: string = this.targetIdSignal();
-    if (!targetId || this.loadingSignal()) {
+    if (!targetId) {
       return;
     }
 
+    const targetType: UserCollectionTargetType = this.targetTypeSignal();
+    const requestId: number = ++this.loadRequestId;
     this.loadingSignal.set(true);
     this.errorSignal.set(false);
     this.dataPort.listMine(this.targetTypeSignal(), targetId)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        finalize((): void => this.loadingSignal.set(false))
+        finalize((): void => {
+          if (requestId === this.loadRequestId) {
+            this.loadingSignal.set(false);
+          }
+        })
       )
       .subscribe({
-        next: (entries: UserCollectionEntry[]): void => this.entriesSignal.set(entries),
-        error: (): void => this.errorSignal.set(true)
+        next: (entries: UserCollectionEntry[]): void => {
+          if (this.isCurrentTarget(requestId, targetType, targetId, true)) {
+            this.entriesSignal.set(entries);
+          }
+        },
+        error: (): void => {
+          if (this.isCurrentTarget(requestId, targetType, targetId, true)) {
+            this.errorSignal.set(true);
+          }
+        }
       });
+  }
+
+  private invalidatePendingRequests(): void {
+    this.loadRequestId++;
+    this.mutationRequestId++;
+    this.loadingSignal.set(false);
+    this.mutatingKindSignal.set(null);
+  }
+
+  private isCurrentTarget(
+    requestId: number,
+    targetType: UserCollectionTargetType,
+    targetId: string,
+    loading: boolean
+  ): boolean {
+    const currentRequestId: number = loading ? this.loadRequestId : this.mutationRequestId;
+    return requestId === currentRequestId
+      && targetType === this.targetTypeSignal()
+      && targetId === this.targetIdSignal();
   }
 
   private refreshAuthentication(): void {
