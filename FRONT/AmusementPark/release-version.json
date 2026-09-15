@@ -1,6 +1,20 @@
 {
-  "version": "5.3.44",
+  "version": "5.3.45",
   "history": [
+    {
+      "version": "5.3.45",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "La surveillance personnalisée repose désormais sur des choix explicites et séparés des favoris.",
+        "en": "Personalised tracking now relies on explicit choices kept separate from favourites.",
+        "de": "Die persönliche Beobachtung basiert jetzt auf ausdrücklichen, von Favoriten getrennten Entscheidungen.",
+        "nl": "Persoonlijk volgen is nu gebaseerd op expliciete keuzes die losstaan van favorieten.",
+        "it": "Il monitoraggio personalizzato si basa ora su scelte esplicite e separate dai preferiti.",
+        "es": "El seguimiento personalizado se basa ahora en elecciones explícitas y separadas de los favoritos.",
+        "pl": "Spersonalizowane obserwowanie opiera się teraz na wyraźnych wyborach oddzielonych od ulubionych.",
+        "pt": "O acompanhamento personalizado baseia-se agora em escolhas explícitas e separadas dos favoritos."
+      }
+    },
     {
       "version": "5.3.44",
       "releasedAt": "2026-09-15",
