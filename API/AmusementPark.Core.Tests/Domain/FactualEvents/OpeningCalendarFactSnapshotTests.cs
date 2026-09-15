@@ -137,6 +137,22 @@ public sealed class OpeningCalendarFactSnapshotTests
     }
 
     [Fact]
+    public void CreateChange_WhenHiddenOpeningWindowChanges_ShouldMarkTheEntryAsChanged()
+    {
+        ParkOpeningHoursSchedule previous = CreateScheduleWithManyWindows();
+        ParkOpeningHoursSchedule current = CreateScheduleWithManyWindows();
+        current.RegularRules[0].TimeRanges[7].ClosesAt = new TimeOnly(15, 45);
+
+        (FactValue? previousValue, FactValue? newValue) =
+            OpeningCalendarFactSnapshot.CreateChange(previous, current);
+
+        Assert.Contains("changedEntryCount=1", previousValue!.CanonicalValue);
+        Assert.Contains("changedEntryCount=1", newValue!.CanonicalValue);
+        Assert.DoesNotContain("15:00-15:45", newValue.CanonicalValue);
+        Assert.Contains("|8|0", newValue.CanonicalValue);
+    }
+
+    [Fact]
     public void Create_WhenRulePriorityChanges_ShouldProduceDifferentFact()
     {
         ParkOpeningHoursSchedule previous = CreateSchedule(new TimeOnly(18, 0));
@@ -256,5 +272,18 @@ public sealed class OpeningCalendarFactSnapshotTests
                 },
             },
         };
+    }
+
+    private static ParkOpeningHoursSchedule CreateScheduleWithManyWindows()
+    {
+        ParkOpeningHoursSchedule schedule = CreateSchedule(new TimeOnly(18, 0));
+        schedule.RegularRules[0].TimeRanges = Enumerable.Range(0, 8)
+            .Select(index => new ParkOpeningHoursTimeRange
+            {
+                OpensAt = new TimeOnly(8 + index, 0),
+                ClosesAt = new TimeOnly(8 + index, 30),
+            })
+            .ToList();
+        return schedule;
     }
 }

@@ -109,6 +109,14 @@ export class AdminFactualEventsStateFacade {
             this.setPage(response);
           }
         },
+        error: (): void => {
+          if (this.isCurrentQuery(querySequence)) {
+            this.eventsState.set([]);
+            this.paginationState.set(null);
+            this.loadErrorState.set(true);
+            this.actionErrorState.set('failure');
+          }
+        },
       });
   }
 

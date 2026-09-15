@@ -120,6 +120,22 @@ describe('AdminFactualEventsStateFacade', (): void => {
     expect(facade.actionError()).toBeNull();
     expect(facade.loadError()).toBe(true);
   });
+
+  it('removes the stale actionable card when the conflict refresh fails', (): void => {
+    const draftEvent: FactualChangeEventAdmin = createEvent('Draft', 4);
+    port.search
+      .mockReturnValueOnce(of(createPage(draftEvent)))
+      .mockReturnValueOnce(throwError((): HttpErrorResponse => new HttpErrorResponse({ status: 503 })));
+    port.verify.mockReturnValue(throwError((): HttpErrorResponse => new HttpErrorResponse({ status: 409 })));
+    facade.load({ page: 1, size: 20, status: 'Draft' });
+
+    facade.changeStatus(draftEvent, 'verify');
+
+    expect(facade.events()).toEqual([]);
+    expect(facade.pagination()).toBeNull();
+    expect(facade.loadError()).toBe(true);
+    expect(facade.actionError()).toBe('failure');
+  });
 });
 
 function createPage(event: FactualChangeEventAdmin): PagedResult<FactualChangeEventAdmin> {
