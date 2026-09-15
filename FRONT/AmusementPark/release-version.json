@@ -1,6 +1,20 @@
 {
-  "version": "5.3.43",
+  "version": "5.3.44",
   "history": [
+    {
+      "version": "5.3.44",
+      "releasedAt": "2026-09-15",
+      "labels": {
+        "fr": "Dix fiches de parc disposent désormais d’informations vérifiées plus complètes.",
+        "en": "Ten park pages now provide more complete, verified information.",
+        "de": "Zehn Parkseiten bieten jetzt vollständigere und geprüfte Informationen.",
+        "nl": "Tien parkpagina’s bieden nu volledigere en gecontroleerde informatie.",
+        "it": "Dieci pagine dei parchi offrono ora informazioni più complete e verificate.",
+        "es": "Diez páginas de parques ofrecen ahora información más completa y verificada.",
+        "pl": "Dziesięć stron parków zawiera teraz pełniejsze i zweryfikowane informacje.",
+        "pt": "Dez páginas de parques oferecem agora informações mais completas e verificadas."
+      }
+    },
     {
       "version": "5.3.43",
       "releasedAt": "2026-09-15",
