@@ -386,6 +386,11 @@ if ! docker network inspect "${npm_docker_network_name}" >/dev/null 2>&1; then
   exit 1
 fi
 
+if [ "${deploy_zero_downtime_enabled}" != "true" ]; then
+  echo "This deployment requires transactional rolling mode; no implicit maintenance fallback is allowed." >&2
+  exit 1
+fi
+
 mongodb_backup_completed=false
 if [ "${BACKUP_BEFORE_DEPLOY:-true}" = "true" ] && compose ps --services --filter status=running | grep -qx 'mongodb'; then
   echo "Running MongoDB backup before deployment..."
@@ -416,10 +421,6 @@ case "${shared_infrastructure_maintenance}" in
     ;;
 esac
 
-if [ "${deploy_zero_downtime_enabled}" != "true" ]; then
-  echo "This deployment requires transactional rolling mode; no implicit maintenance fallback is allowed." >&2
-  exit 1
-fi
 python3 ./scripts/deployment_transaction.py prepare
 if python3 ./scripts/deployment_transaction.py rollback-safe; then
   prepare_personal_ranking_cutover

@@ -12,6 +12,12 @@ grep -Fq "github.event_name == 'workflow_dispatch' && github.run_attempt == 1 &&
 grep -Fq 'mongodb_backup_completed=true' "${deploy_scripts_dir}/deploy.sh"
 grep -Fq 'MongoDB maintenance requires a successful backup in this deployment run.' \
   "${deploy_scripts_dir}/deploy.sh"
+rolling_guard_line="$(grep -nF 'if [ "${deploy_zero_downtime_enabled}" != "true" ]; then' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
+maintenance_line="$(grep -nF 'python3 ./scripts/deployment_transaction.py maintain-mongodb' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
+if [ -z "${rolling_guard_line}" ] || [ -z "${maintenance_line}" ] || [ "${rolling_guard_line}" -ge "${maintenance_line}" ]; then
+  echo 'Transactional rolling mode must be validated before MongoDB maintenance.' >&2
+  exit 1
+fi
 
 export API_IMAGE='ghcr.io/example/api:test'
 export FRONT_IMAGE='ghcr.io/example/front:test'

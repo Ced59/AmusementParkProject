@@ -25,6 +25,9 @@ l'API et du front. Si MongoDB n'est pas en cours d'exécution au moment de la
 sauvegarde, la maintenance est refusée même s'il revient ensuite : la configuration
 `BACKUP_BEFORE_DEPLOY=true` ne remplace jamais la preuve d'une sauvegarde achevée
 pendant ce run. Un push ordinaire reste incapable de recréer un service partagé.
+Le mode transactionnel obligatoire est contrôlé avant la sauvegarde et avant la
+consommation de l'intention de maintenance : sa désactivation échoue sans mutation
+partielle de l'infrastructure.
 
 L’edge doit avoir exactement `worker_processes 1`, vérifié sur la configuration complète par `nginx -T`. Le protocole refuse un autre nombre de workers. Les protections HTTP, les limites de corps, le routage statique XML/robots, les en-têtes et les routes publiques restent inchangés.
 

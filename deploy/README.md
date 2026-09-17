@@ -419,7 +419,9 @@ une nouvelle maintenance exige un nouveau lancement manuel. Elle ne doit pas
 servir à une première installation ni à contourner un échec de sauvegarde ou une
 identité de volume inattendue. Le hash de configuration Compose doit être inchangé :
 ce parcours met à jour l'image flottante `mongo:8.0`, jamais les identifiants,
-montages, réseaux, commandes ou autres paramètres MongoDB.
+montages, réseaux, commandes ou autres paramètres MongoDB. Le mode transactionnel
+est validé avant toute sauvegarde ou mutation ; une configuration incompatible ne
+consomme donc pas l'ordre manuel.
 
 Voir aussi :
 
