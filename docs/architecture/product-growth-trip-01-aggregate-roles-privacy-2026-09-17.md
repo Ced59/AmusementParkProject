@@ -61,7 +61,10 @@ TripPlan
 ├── DateProposal : None | Fixed | Range | Candidates
 ├── DestinationTimeZoneId : IANA facultatif tant qu'aucune date n'est fixée
 ├── Members[1..50] : sous-documents bornés, propriétaire inclus
-├── MemberAdmissionFence : Prepared | Active | Applied | Cancelled, facultatif
+├── MemberAdmissionFence : état, invitation, opération, génération et échéance
+├── ChildMutationEpoch : long, commence à 1
+├── ActiveChildMutationLeases[0..32] : opérations bornées avec échéance
+├── DeletionState : None | Pending | Purging | Purged
 ├── Version : long, commence à 1
 ├── CreatedAtUtc / UpdatedAtUtc
 └── ActiveMutation : lease courte facultative pour les mutations composées
@@ -80,8 +83,9 @@ cardinalité — préférences par attraction, candidats, jours et audit — res
 des collections séparées.
 
 Les objets enfants ne peuvent pas contourner la racine : toute commande charge un
-`TripAccessContext` depuis le plan, vérifie le rôle et la version, puis appelle le
-port spécialisé. WebAPI ne décide jamais des permissions et Infrastructure ne
+`TripAccessContext` depuis le plan, vérifie le rôle et la version, puis acquiert une
+lease de mutation enfant portant `ChildMutationEpoch` avant d'appeler le port
+spécialisé. WebAPI ne décide jamais des permissions et Infrastructure ne
 reconstruit jamais une règle métier.
 
 ## Décision 2 — états et dates sans déduction
@@ -281,6 +285,18 @@ ajouté de membre. Après la réservation, l'invitation est définitivement lié
 l'identifiant du compte acceptant et à `operationId`. L'armement est une écriture
 conditionnelle `Prepared -> Active` ; une compensation ayant déjà écrit
 `Cancelled` la rend donc définitivement inapplicable.
+
+Un fence `Prepared` persiste l'identifiant d'invitation, `operationId`, le compte
+candidat, une génération et `LeaseExpiresAtUtc`. Le reconciler balaye aussi les
+plans portant un fence `Prepared` expiré, pas seulement les invitations
+`Accepting`. Si l'invitation est encore `Active`, il écrit `Cancelled` avec la même
+génération ; si elle est `Accepting` pour cette opération, il reprend la saga ;
+sinon il compense. Une commande reprend avec une annulation liée à l'échéance du
+fence et ne peut armer qu'un fence `Prepared` de même opération et génération avant
+son expiration. Une commande suspendue au-delà de la lease échoue donc sans
+réactiver le fence, tandis que l'annulation rend immédiatement la place disponible
+pour une nouvelle génération.
+
 Une lease expirée ne remet jamais l'invitation en état `Active` : le reconciler
 reprend exclusivement la même opération et le même payload jusqu'à finalisation ou
 révocation demandée. Le `MemberAdmissionFence` vit dans le document `TripPlan` :
@@ -431,6 +447,7 @@ n'injectera directement un service API si un port existe.
 trip-plans
   _id, ownerUserId, title, accessScope, status, dateProposal,
   destinationTimeZoneId, members[], options, memberAdmissionFence?,
+  childMutationEpoch, activeChildMutationLeases[], deletionState,
   activeMutation?, version,
   createdAtUtc, updatedAtUtc
 
@@ -451,6 +468,8 @@ Indexes minimaux à prouver :
 
 - plans `{ ownerUserId, status, updatedAtUtc desc }` ;
 - plans `{ members.userId, status, updatedAtUtc desc }` multikey ;
+- plans `{ memberAdmissionFence.leaseExpiresAtUtc }` partiel pour les fences actifs ;
+- plans `{ deletionState, updatedAtUtc }` pour la reprise des purges ;
 - invitations `tokenHash` unique et TTL sur `expiresAtUtc` pour les états
   purgeables ;
 - invitations `{ tripPlanId, status, updatedAtUtc }` ;
@@ -488,11 +507,30 @@ Lors d'un départ ou d'un effacement :
 5. les décisions du groupe restent lisibles avec « ancien participant » ;
 6. un reconciler reprend toute étape interrompue avant la fin de la lease.
 
-Supprimer le voyage exige une version attendue et une confirmation récente. Le plan
-entre d'abord dans un état de suppression qui coupe les accès et invitations, puis
-un job borné purge les collections enfants. Une panne ne réactive jamais le plan.
-Les durées précises seront fixées avec l'implémentation et documentées dans la
-politique de confidentialité avant activation.
+Supprimer le voyage exige une version attendue et une confirmation récente. Toutes
+les écritures dans une collection enfant suivent une barrière commune :
+
+1. l'Application acquiert atomiquement sur le plan une lease bornée contenant
+   `OperationId`, `ChildMutationEpoch` et `LeaseExpiresAtUtc` ; aucune lease n'est
+   accordée lorsque `DeletionState != None` ;
+2. le délai d'annulation du client Mongo et `maxTimeMS` sont inférieurs au temps
+   restant de la lease, avec une marge fixe. Une commande suspendue au-delà de son
+   échéance ne peut donc pas démarrer une écriture tardive ;
+3. chaque document enfant porte l'epoch et l'opération qui l'ont écrit. Le port
+   refuse une commande dont la lease est expirée ou annulée avant d'appeler Mongo ;
+4. l'écriture libère sa lease de façon idempotente, avec reprise par reconciler.
+
+La suppression passe atomiquement le plan à `Pending`, incrémente
+`ChildMutationEpoch` et interdit toute nouvelle lease. Elle attend ensuite la fin
+des leases de l'ancien epoch ou leur expiration, puis une durée de sûreté supérieure
+au délai serveur maximal. Le job purge tous les enfants d'un epoch antérieur,
+refait un balayage après la barrière et passe à `Purged` seulement si aucune lease
+ni donnée ancienne ne subsiste. Le tombstone du plan est conservé pendant la durée
+de rétention annoncée ; pendant cette période, le reconciler supprime également
+toute écriture ambiguë de l'ancien epoch observée après coup. Une panne conserve
+`Pending` ou `Purging`, ne réactive jamais le plan et ne déclare jamais la purge
+terminée prématurément. Les délais exacts seront fixés avec l'implémentation et
+documentés dans la politique de confidentialité avant activation.
 
 ## Décision 12 — contrat UX, accessibilité et responsive
 
@@ -537,6 +575,8 @@ variantes ne sont pas réellement servies.
 - acceptation interrompue à chaque étape puis réparée sans doublon ;
 - fence `Prepared` installé avant réservation puis rendu inoffensif si une
   révocation gagne avant son armement ;
+- fence `Prepared` expiré après panne balayé par génération sans annuler une
+  commande dont la lease reste valide ;
 - écriture retardée après expiration de lease incapable d'autoriser un second
   compte ou de réactiver l'invitation ;
 - révocation concurrente à une écriture retardée laissant le plan sans membre
@@ -545,6 +585,8 @@ variantes ne sont pas réellement servies.
 - expiration, révocation, rotation, rate limit et `404` uniforme ;
 - preview dépourvue de membres, contraintes, votes et identifiants ;
 - suppression et anonymisation reprenables ;
+- suppression bloquant les nouvelles leases, attendant les écritures de l'ancien
+  epoch et repurgeant toute écriture ambiguë avant `Purged` ;
 - absence de lecture N+1 sur les listes et synthèses.
 
 ### Angular, SSR et mobile

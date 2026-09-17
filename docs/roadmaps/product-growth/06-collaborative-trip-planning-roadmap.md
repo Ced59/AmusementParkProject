@@ -291,6 +291,9 @@ Les avertissements ne modifient pas automatiquement le plan.
 
 - version optimiste du plan ;
 - opérations fines plutôt que remplacement complet ;
+- lease et epoch communs à toute écriture dans une collection enfant ;
+- suppression bloquant les nouvelles leases et attendant les écritures autorisées
+  avant de déclarer la purge terminée ;
 - journal d’activité ;
 - conflits affichés ;
 - idempotency keys ;
