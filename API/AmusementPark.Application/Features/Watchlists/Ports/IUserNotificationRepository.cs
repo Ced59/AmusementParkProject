@@ -17,6 +17,18 @@ public interface IUserNotificationRepository
         int limit,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<UserNotification>> ListByFactualEventAndUsersAsync(
+        FactualChangeEventId eventId,
+        IReadOnlyCollection<string> userIds,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<UserNotification>> ListOwnedForDigestAsync(
+        string userId,
+        DateTime periodStartUtc,
+        DateTime periodEndUtc,
+        int limit,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<FactualChangeEventId>> ListDeliveredFactualEventIdsOwnedAsync(
         string userId,
         IReadOnlyCollection<FactualChangeEventId> eventIds,

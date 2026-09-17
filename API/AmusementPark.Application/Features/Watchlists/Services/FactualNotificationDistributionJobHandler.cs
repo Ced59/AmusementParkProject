@@ -18,6 +18,7 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
     private readonly IUserNotificationRepository notificationRepository;
     private readonly IFactualNotificationDistributionReceiptRepository receiptRepository;
     private readonly IFactualNotificationDistributionScheduler scheduler;
+    private readonly INotificationDigestScheduler digestScheduler;
     private readonly IUserRepository userRepository;
     private readonly TimeProvider timeProvider;
 
@@ -27,6 +28,7 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
         IUserNotificationRepository notificationRepository,
         IFactualNotificationDistributionReceiptRepository receiptRepository,
         IFactualNotificationDistributionScheduler scheduler,
+        INotificationDigestScheduler digestScheduler,
         IUserRepository userRepository)
         : this(
             eventRepository,
@@ -34,6 +36,7 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
             notificationRepository,
             receiptRepository,
             scheduler,
+            digestScheduler,
             userRepository,
             TimeProvider.System)
     {
@@ -45,6 +48,7 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
         IUserNotificationRepository notificationRepository,
         IFactualNotificationDistributionReceiptRepository receiptRepository,
         IFactualNotificationDistributionScheduler scheduler,
+        INotificationDigestScheduler digestScheduler,
         IUserRepository userRepository,
         TimeProvider timeProvider)
     {
@@ -53,6 +57,7 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
         this.notificationRepository = notificationRepository;
         this.receiptRepository = receiptRepository;
         this.scheduler = scheduler;
+        this.digestScheduler = digestScheduler ?? throw new ArgumentNullException(nameof(digestScheduler));
         this.userRepository = userRepository;
         this.timeProvider = timeProvider;
     }
@@ -137,6 +142,13 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
         }
 
         await this.notificationRepository.CreateManyAsync(notifications, cancellationToken);
+        await this.digestScheduler.ScheduleAsync(
+            factualEvent.Id,
+            notifications
+                .Select(static notification => notification.UserId)
+                .Distinct(StringComparer.Ordinal)
+                .ToArray(),
+            cancellationToken);
         if (subscriptions.Count == FactualNotificationDistributionJob.SubscriptionBatchSize)
         {
             await this.scheduler.ScheduleAsync(

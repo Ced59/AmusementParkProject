@@ -1,0 +1,110 @@
+using System.Text.Json;
+using AmusementPark.Application.Features.BackgroundJobs.Models;
+using AmusementPark.Application.Features.BackgroundJobs.Ports;
+using AmusementPark.Application.Features.Watchlists.Models;
+using AmusementPark.Application.Features.Watchlists.Ports;
+using AmusementPark.Core.Domain.FactualEvents;
+using AmusementPark.Core.Domain.Watchlists;
+
+namespace AmusementPark.Application.Features.Watchlists.Services;
+
+public sealed class NotificationDigestScheduler : INotificationDigestScheduler
+{
+    private readonly IDurableBackgroundJobRepository jobRepository;
+    private readonly IUserNotificationRepository notificationRepository;
+    private readonly IWatchSubscriptionRepository subscriptionRepository;
+
+    public NotificationDigestScheduler(
+        IDurableBackgroundJobRepository jobRepository,
+        IUserNotificationRepository notificationRepository,
+        IWatchSubscriptionRepository subscriptionRepository)
+    {
+        this.jobRepository = jobRepository ?? throw new ArgumentNullException(nameof(jobRepository));
+        this.notificationRepository = notificationRepository
+            ?? throw new ArgumentNullException(nameof(notificationRepository));
+        this.subscriptionRepository = subscriptionRepository
+            ?? throw new ArgumentNullException(nameof(subscriptionRepository));
+    }
+
+    public async Task ScheduleAsync(
+        FactualChangeEventId eventId,
+        IReadOnlyCollection<string> userIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(userIds);
+        string[] distinctUserIds = userIds
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        IReadOnlyCollection<UserNotification> notifications =
+            await this.notificationRepository.ListByFactualEventAndUsersAsync(
+                eventId,
+                distinctUserIds,
+                cancellationToken);
+        foreach (IGrouping<string, UserNotification> ownerCandidates in notifications
+            .GroupBy(static candidate => candidate.UserId, StringComparer.Ordinal))
+        {
+            WatchSubscriptionId[] subscriptionIds = ownerCandidates
+                .Select(static notification => notification.SubscriptionId)
+                .Distinct()
+                .ToArray();
+            IReadOnlyCollection<WatchSubscription> subscriptions =
+                await this.subscriptionRepository.ListOwnedByIdsAsync(
+                    ownerCandidates.Key,
+                    subscriptionIds,
+                    cancellationToken);
+            Dictionary<WatchSubscriptionId, WatchSubscription> subscriptionsById = subscriptions
+                .ToDictionary(static subscription => subscription.Id);
+            NotificationDigestJobPayload[] groups = ownerCandidates
+                .Where(notification => subscriptionsById.TryGetValue(
+                    notification.SubscriptionId,
+                    out WatchSubscription? subscription)
+                    && IsDigestEligible(subscription))
+                .Select(notification =>
+                {
+                    WatchSubscription subscription = subscriptionsById[notification.SubscriptionId];
+                    return new NotificationDigestJobPayload(
+                        notification.UserId,
+                        NotificationChannel.Email,
+                        subscription.Frequency,
+                        NotificationDigestPeriodResolver.ResolveStart(
+                            subscription.Frequency,
+                            notification.DeliveredAtUtc));
+                })
+                .Distinct()
+                .ToArray();
+            foreach (NotificationDigestJobPayload group in groups)
+            {
+                NotificationDigestId digestId = NotificationDigestId.ForGroup(
+                    group.UserId,
+                    group.Channel,
+                    group.Frequency,
+                    group.PeriodStartUtc);
+                long requestedRevision = ownerCandidates
+                    .Where(notification => notification.DeliveredAtUtc
+                        >= group.PeriodStartUtc
+                        && notification.DeliveredAtUtc
+                        < NotificationDigestPeriodResolver.ResolveEnd(
+                            group.Frequency,
+                            group.PeriodStartUtc))
+                    .Max(static notification => notification.DeliveredAtUtc.Ticks);
+                await this.jobRepository.CoalesceAsync(
+                    new CoalesceBackgroundJobRequest(
+                        NotificationDigestJob.Kind,
+                        $"watch-digest:{digestId.Value}",
+                        requestedRevision,
+                        NotificationDigestJob.PayloadVersion,
+                        JsonSerializer.SerializeToElement(group),
+                        CorrelationId: digestId.Value),
+                    cancellationToken);
+            }
+        }
+    }
+
+    private static bool IsDigestEligible(WatchSubscription subscription)
+    {
+        return !subscription.IsPaused
+            && subscription.Frequency is NotificationFrequency.DailyDigest
+                or NotificationFrequency.WeeklyDigest
+            && subscription.Channels.Contains(NotificationChannel.Email);
+    }
+}

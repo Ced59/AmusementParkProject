@@ -1,6 +1,20 @@
 {
-  "version": "5.3.52",
+  "version": "5.3.53",
   "history": [
+    {
+      "version": "5.3.53",
+      "releasedAt": "2026-09-17",
+      "labels": {
+        "fr": "Les changements suivis sont désormais regroupés en récapitulatifs clairs et sans doublons.",
+        "en": "Tracked changes are now grouped into clear, duplicate-free summaries.",
+        "de": "Beobachtete Änderungen werden jetzt in übersichtlichen Zusammenfassungen ohne Duplikate gebündelt.",
+        "nl": "Gevolgde wijzigingen worden nu gebundeld in duidelijke samenvattingen zonder doublures.",
+        "it": "Le modifiche seguite vengono ora riunite in riepiloghi chiari e senza duplicati.",
+        "es": "Los cambios seguidos se agrupan ahora en resúmenes claros y sin duplicados.",
+        "pl": "Obserwowane zmiany są teraz grupowane w przejrzyste podsumowania bez duplikatów.",
+        "pt": "As alterações acompanhadas são agora agrupadas em resumos claros e sem duplicados."
+      }
+    },
     {
       "version": "5.3.52",
       "releasedAt": "2026-09-17",

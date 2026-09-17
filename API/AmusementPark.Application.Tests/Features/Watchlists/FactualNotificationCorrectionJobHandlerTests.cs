@@ -31,6 +31,8 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
             new Mock<IFactualNotificationDistributionReceiptRepository>(MockBehavior.Strict);
         Mock<IFactualNotificationDistributionScheduler> scheduler =
             new Mock<IFactualNotificationDistributionScheduler>(MockBehavior.Strict);
+        Mock<INotificationDigestScheduler> digestScheduler =
+            new Mock<INotificationDigestScheduler>(MockBehavior.Strict);
         Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
         string receiptId = FactualNotificationCorrectionJob.ReceiptId("event-1", 4);
         receipts.Setup(repository => repository.IsCompletedAsync(receiptId, CancellationToken.None))
@@ -55,6 +57,11 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
                     && items.Single().SubscriptionId == originalNotification.SubscriptionId),
                 CancellationToken.None))
             .ReturnsAsync(1);
+        digestScheduler.Setup(value => value.ScheduleAsync(
+                correction.Id,
+                It.Is<IReadOnlyCollection<string>>(userIds => userIds.Single() == "user-1"),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         receipts.Setup(repository => repository.CompleteAsync(
                 It.Is<FactualNotificationDistributionReceipt>(receipt =>
                     receipt.EventId == receiptId && receipt.CompletedAtUtc == NowUtc),
@@ -66,6 +73,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
             notifications.Object,
             receipts.Object,
             scheduler.Object,
+            digestScheduler.Object,
             timeProvider.Object);
 
         DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
@@ -76,6 +84,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
         events.VerifyAll();
         notifications.VerifyAll();
         receipts.VerifyAll();
+        digestScheduler.VerifyAll();
         scheduler.VerifyNoOtherCalls();
     }
 
@@ -93,6 +102,8 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
             new Mock<IFactualNotificationDistributionReceiptRepository>(MockBehavior.Strict);
         Mock<IFactualNotificationDistributionScheduler> scheduler =
             new Mock<IFactualNotificationDistributionScheduler>(MockBehavior.Strict);
+        Mock<INotificationDigestScheduler> digestScheduler =
+            new Mock<INotificationDigestScheduler>(MockBehavior.Strict);
         Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
         string receiptId = FactualNotificationCorrectionJob.ReceiptId("event-1", 4);
         receipts.Setup(repository => repository.IsCompletedAsync(receiptId, CancellationToken.None))
@@ -114,6 +125,11 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
                 NowUtc,
                 CancellationToken.None))
             .ReturnsAsync(1);
+        digestScheduler.Setup(value => value.ScheduleAsync(
+                originalEvent.Id,
+                It.Is<IReadOnlyCollection<string>>(userIds => userIds.Single() == "user-1"),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         receipts.Setup(repository => repository.CompleteAsync(
                 It.Is<FactualNotificationDistributionReceipt>(receipt => receipt.EventId == receiptId),
                 CancellationToken.None))
@@ -124,6 +140,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
             notifications.Object,
             receipts.Object,
             scheduler.Object,
+            digestScheduler.Object,
             timeProvider.Object);
 
         DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
@@ -134,6 +151,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
         events.VerifyAll();
         notifications.VerifyAll();
         receipts.VerifyAll();
+        digestScheduler.VerifyAll();
         scheduler.VerifyNoOtherCalls();
     }
 
@@ -163,6 +181,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
             notifications.Object,
             receipts.Object,
             scheduler.Object,
+            Mock.Of<INotificationDigestScheduler>(),
             Mock.Of<TimeProvider>());
 
         DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
@@ -227,6 +246,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
             notifications.Object,
             receipts.Object,
             scheduler.Object,
+            Mock.Of<INotificationDigestScheduler>(),
             timeProvider.Object);
 
         DurableBackgroundJobHandlerResult result = await handler.HandleAsync(

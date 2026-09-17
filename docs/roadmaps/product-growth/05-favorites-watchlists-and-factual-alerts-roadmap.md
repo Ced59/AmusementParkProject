@@ -458,6 +458,7 @@ Collections :
 - `watch-subscriptions` ;
 - `factual-change-events` ;
 - `user-notifications` ;
+- `notification-digests` ;
 - `notification-delivery-attempts` ;
 - `notification-preferences`.
 
@@ -650,7 +651,7 @@ Une hausse du taux de clic n’est pas une justification pour rendre les formula
 | `WATCH-06` | Administration de vérification — livré en `5.3.50` | Rien de non vérifié distribué |
 | `WATCH-07` | Notifications Web — livré en `5.3.51` | Centre accessible |
 | `WATCH-08` | Corrections/rétractations — livré en `5.3.52` | Historique honnête |
-| `WATCH-09` | Digests | Groupement déterministe |
+| `WATCH-09` | Digests — livré en `5.3.53` | Groupement déterministe |
 | `WATCH-10` | E-mail opt-in | Consentement et unsubscription |
 | `WATCH-11` | Export/suppression | Cycle complet |
 | `WATCH-12` | Pilote et métriques | Gate franchie |
