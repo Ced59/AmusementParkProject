@@ -111,6 +111,21 @@ public sealed class TripProgramService
             operationId,
             requestHash,
             cancellationToken);
+        if (replay.Outcome is TripChildWriteOutcome.Success
+            or TripChildWriteOutcome.IdempotencyConflict
+            or TripChildWriteOutcome.Deleted)
+        {
+            TripPlan? activeTrip = await this.tripPlanRepository.GetOwnedAsync(
+                normalizedUserId,
+                parsedTripId,
+                cancellationToken);
+            if (activeTrip is null)
+            {
+                return ApplicationResult<CreateTripParkCandidateResult>.Failure(
+                    TripPlanApplicationErrors.NotFound());
+            }
+        }
+
         if (replay.Outcome == TripChildWriteOutcome.Success && replay.Candidate is not null)
         {
             Park? replayedPark = await this.parkRepository.GetByIdAsync(
@@ -328,7 +343,6 @@ public sealed class TripProgramService
                         trip.Id,
                         plan,
                         lease,
-                        this.NowUtc(),
                         cancellationToken);
                     return outcome == TripChildWriteOutcome.Success
                         ? ApplicationResult<TripProgramResult>.Success(await this.resultFactory.BuildAsync(

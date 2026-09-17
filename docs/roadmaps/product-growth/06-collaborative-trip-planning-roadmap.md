@@ -86,9 +86,10 @@ identifiés de façon stable : repas, événement, attraction ou note. Les horai
 officiels ne sont pas recopiés dans ce choix collectif ; ils seront lus comme des
 faits séparés dans `TRIP-09`.
 
-Les collections MongoDB `trip-park-candidates`, `trip-park-candidate-orders` et
-`trip-day-plans` appliquent l'unicité `(voyage, parc)`, `(voyage, opération
-d'ajout)` et `(voyage, date)`. Toute écriture enfant acquiert sur
+Les collections MongoDB `trip-park-candidates` et `trip-day-plans` appliquent
+l'unicité `(voyage, parc)`, `(voyage, opération d'ajout)` et `(voyage, date)`.
+L'ordre canonique borné des candidats et sa version résident sur `trip-plans`, où
+leur mutation valide atomiquement la lease racine. Toute écriture enfant acquiert sur
 le voyage racine une lease liée à sa version, à son epoch et à une génération.
 Une création passe par une coquille `Reserved`; une mutation conserve la dernière
 version lisible et pose un marqueur `PendingMutation`. Les validations d'expiration

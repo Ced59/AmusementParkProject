@@ -36,7 +36,6 @@ public interface ITripParkCandidateRepository
         TripPlanId tripPlanId,
         TripParkCandidateOrderPlan orderPlan,
         TripChildMutationLease lease,
-        DateTime updatedAtUtc,
         CancellationToken cancellationToken);
 
     Task<TripParkCandidateWriteResult> DeleteAsync(

@@ -247,7 +247,7 @@ public sealed class TripDayProgramService
             if (expectedDayVersion.Value < long.MaxValue
                 && existing.Version == expectedDayVersion.Value + 1)
             {
-                long replayVersion = existing.Version;
+                long persistedVersion = existing.Version;
                 existing.Update(
                     candidate.Id,
                     candidate.ParkId,
@@ -255,10 +255,13 @@ public sealed class TripDayProgramService
                     input.GroupNote,
                     blocks,
                     nowUtc);
-                if (existing.Version == replayVersion)
+                if (existing.Version == persistedVersion)
                 {
                     return ApplicationResult<TripDayPlan>.Success(existing);
                 }
+
+                return ApplicationResult<TripDayPlan>.Failure(
+                    TripPlanApplicationErrors.ChangedConcurrently(persistedVersion));
             }
 
             return ApplicationResult<TripDayPlan>.Failure(

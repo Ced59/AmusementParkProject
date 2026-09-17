@@ -932,9 +932,6 @@ private readonly IMongoDatabase database;
             TripParkCandidateRepository.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
-            this.settings.TripParkCandidateOrdersCollectionName,
-            cancellationToken);
-        await this.EnsureCollectionExistsAsync(
             this.settings.TripDayPlansCollectionName,
             cancellationToken);
         IMongoCollection<TripDayPlanDocument> tripDayPlans =
@@ -2865,6 +2862,16 @@ private async Task InitializeVideosIndexesAsync(CancellationToken cancellationTo
             updates.Set(
                 static document => document.ActiveChildMutationLeases,
                 new List<TripChildMutationLeaseDocument>()),
+            cancellationToken: cancellationToken);
+        await collection.UpdateManyAsync(
+            filters.Exists(static document => document.ParkCandidateOrderIds, false),
+            updates.Set(
+                static document => document.ParkCandidateOrderIds,
+                new List<string>()),
+            cancellationToken: cancellationToken);
+        await collection.UpdateManyAsync(
+            filters.Exists(static document => document.ParkCandidateOrderVersion, false),
+            updates.Set(static document => document.ParkCandidateOrderVersion, 0),
             cancellationToken: cancellationToken);
         await collection.UpdateManyAsync(
             filters.Exists("creationSnapshot", true)

@@ -93,7 +93,6 @@ aux codes HTTP.
 ```mermaid
 erDiagram
     TRIP_PLANS ||--o{ TRIP_PARK_CANDIDATES : tripPlanId
-    TRIP_PLANS ||--o| TRIP_PARK_CANDIDATE_ORDERS : _id
     TRIP_PLANS ||--o{ TRIP_DAY_PLANS : tripPlanId
     TRIP_PARK_CANDIDATES ||--o{ TRIP_DAY_PLANS : parkCandidateId
 
@@ -104,6 +103,8 @@ erDiagram
       long childMutationEpoch
       long childMutationLeaseSequence
       array activeChildMutationLeases
+      array parkCandidateOrderIds
+      long parkCandidateOrderVersion
       string admissionClosureState
       string deletionState
     }
@@ -123,12 +124,6 @@ erDiagram
       object pendingMutation
       datetime reservedExpiresAtUtc
       datetime tombstoneExpiresAtUtc
-    }
-    TRIP_PARK_CANDIDATE_ORDERS {
-      string _id
-      array candidateIds
-      long version
-      datetime updatedAt
     }
     TRIP_DAY_PLANS {
       string _id
@@ -152,15 +147,14 @@ Indexes structurants :
   `{ tripPlanId, operationId }`, lecture de repli
   `{ tripPlanId, documentState, sortPosition, _id }`, TTL des coquilles réservées
   et des preuves de création supprimées ;
-- `trip-park-candidate-orders`: un document borné par voyage, dont le remplacement
-  atomique porte l'ordre canonique des cent candidats au maximum ;
 - `trip-day-plans`: unique `{ tripPlanId, localDate }`, lecture chronologique
   `{ tripPlanId, documentState, localDate }`, TTL des coquilles réservées ;
 - `trip-plans`: `{ deletionState, updatedAt }` pour la reprise des suppressions.
 
 La migration de démarrage ajoute aux plans antérieurs l'epoch initial, la séquence
-de lease et la liste de leases vide. Elle met aussi à niveau leur snapshot de
-création. Il s'agit d'une migration du modèle existant, pas d'un adaptateur durable.
+de lease, la liste de leases vide ainsi que l'ordre canonique vide et sa version.
+Elle met aussi à niveau leur snapshot de création. Il s'agit d'une migration du
+modèle existant, pas d'un adaptateur durable.
 
 ## Écriture sûre dans une collection enfant
 
@@ -208,8 +202,10 @@ expirée peut être remplacée par l'opération suivante. Toutes les décisions 
 validité temporelle reposent sur `$$NOW` côté MongoDB.
 
 Le rejeu d'un ajout réussi est recherché avant la version actuelle du voyage et
-avant la visibilité courante du parc : une réponse réseau perdue reste donc
-rejouable après un renommage, un changement de dates ou le masquage du parc. Quand
+avant la visibilité courante du parc, puis il vérifie que le voyage racine est
+toujours actif et appartient au demandeur : une réponse réseau perdue reste donc
+rejouable après un renommage, un changement de dates ou le masquage du parc, mais
+jamais pendant ou après sa suppression. Quand
 le candidat est retiré, son document devient pendant 24 heures une preuve minimale
 `Deleted`. Dates, note, snapshot FIT, parc et membre sont effacés ; la clé
 d'opération et son empreinte restent seules capables de refuser un ancien retry.
@@ -219,10 +215,11 @@ Un nouvel ajout volontaire du même parc avec une nouvelle clé reste possible.
 
 Le planificateur du Core calcule toujours l'ordre voulu à partir de positions
 espacées de 1 024 et de gardes `(id, version, ancienne position)`. Infrastructure
-projette ensuite ce résultat en une liste canonique d'identifiants dans un seul
-document `trip-park-candidate-orders`. Le remplacement de ce document est atomique
-et versionné : même une coupure en pleine requête ne peut produire un ordre
-partiellement appliqué. Un candidat absent du document, par exemple après un ajout
+projette ensuite ce résultat dans la liste canonique bornée du document racine
+`trip-plans`. Sa mise à jour est atomique, versionnée et filtrée par l'identité
+complète de la lease encore active selon `$$NOW` : un voyage en suppression ou une
+lease expirée ne peut donc plus publier un ordre tardif, et une coupure en pleine
+requête ne peut produire un ordre partiellement appliqué. Un candidat absent de la liste, par exemple après un ajout
 dont la réponse réseau a été perdue, est ajouté en repli déterministe ; un identifiant
 de candidat supprimé est ignoré. La prochaine écriture compacte naturellement la
 liste sans transaction multi-collection.

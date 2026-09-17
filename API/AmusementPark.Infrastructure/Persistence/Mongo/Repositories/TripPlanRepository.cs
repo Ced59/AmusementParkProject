@@ -13,7 +13,6 @@ public sealed class TripPlanRepository : ITripPlanRepository
 {
     private readonly IMongoCollection<TripPlanDocument> collection;
     private readonly IMongoCollection<TripParkCandidateDocument>? candidateCollection;
-    private readonly IMongoCollection<TripParkCandidateOrderDocument>? candidateOrderCollection;
     private readonly IMongoCollection<TripDayPlanDocument>? dayPlanCollection;
     private readonly TripPlanCreationFingerprint creationFingerprint;
 
@@ -25,7 +24,6 @@ public sealed class TripPlanRepository : ITripPlanRepository
             GetCollection(database, settings),
             creationFingerprint,
             GetCandidateCollection(database, settings),
-            GetCandidateOrderCollection(database, settings),
             GetDayPlanCollection(database, settings))
     {
     }
@@ -34,14 +32,12 @@ public sealed class TripPlanRepository : ITripPlanRepository
         IMongoCollection<TripPlanDocument> collection,
         TripPlanCreationFingerprint creationFingerprint,
         IMongoCollection<TripParkCandidateDocument>? candidateCollection = null,
-        IMongoCollection<TripParkCandidateOrderDocument>? candidateOrderCollection = null,
         IMongoCollection<TripDayPlanDocument>? dayPlanCollection = null)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
         this.creationFingerprint = creationFingerprint
             ?? throw new ArgumentNullException(nameof(creationFingerprint));
         this.candidateCollection = candidateCollection;
-        this.candidateOrderCollection = candidateOrderCollection;
         this.dayPlanCollection = dayPlanCollection;
     }
 
@@ -331,7 +327,6 @@ public sealed class TripPlanRepository : ITripPlanRepository
         CancellationToken cancellationToken)
     {
         if (this.candidateCollection is null
-            || this.candidateOrderCollection is null
             || this.dayPlanCollection is null)
         {
             throw new InvalidOperationException("Trip child collections are required to purge a trip.");
@@ -342,18 +337,12 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 static document => document.TripPlanId,
                 tripPlanId.Value),
             cancellationToken);
-        DeleteResult candidateOrder = await this.candidateOrderCollection.DeleteManyAsync(
-            Builders<TripParkCandidateOrderDocument>.Filter.Eq(
-                static document => document.Id,
-                tripPlanId.Value),
-            cancellationToken);
         DeleteResult days = await this.dayPlanCollection.DeleteManyAsync(
             Builders<TripDayPlanDocument>.Filter.Eq(
                 static document => document.TripPlanId,
                 tripPlanId.Value),
             cancellationToken);
         _ = candidates.DeletedCount;
-        _ = candidateOrder.DeletedCount;
         _ = days.DeletedCount;
     }
 
@@ -452,14 +441,6 @@ public sealed class TripPlanRepository : ITripPlanRepository
         MongoDbSettings settings)
     {
         return database.GetCollection<TripDayPlanDocument>(settings.TripDayPlansCollectionName);
-    }
-
-    private static IMongoCollection<TripParkCandidateOrderDocument> GetCandidateOrderCollection(
-        IMongoDatabase database,
-        MongoDbSettings settings)
-    {
-        return database.GetCollection<TripParkCandidateOrderDocument>(
-            settings.TripParkCandidateOrdersCollectionName);
     }
 
     private static string NormalizeRequired(string? value, string parameterName)

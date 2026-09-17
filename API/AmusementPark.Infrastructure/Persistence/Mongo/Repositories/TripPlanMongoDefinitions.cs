@@ -182,6 +182,10 @@ internal static class TripPlanMongoDefinitions
             updates.Set(
                 static document => document.ActiveChildMutationLeases,
                 new List<TripChildMutationLeaseDocument>()),
+            updates.Set(
+                static document => document.ParkCandidateOrderIds,
+                new List<string>()),
+            updates.Set(static document => document.ParkCandidateOrderVersion, 0),
             updates.Unset(static document => document.CreationSnapshot),
             updates.Set(
                 static document => document.CreationOperationExpiresAtUtc,

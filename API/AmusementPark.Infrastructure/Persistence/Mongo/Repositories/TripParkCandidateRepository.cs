@@ -11,7 +11,7 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
 {
     private readonly IMongoCollection<TripParkCandidateDocument> collection;
-    private readonly IMongoCollection<TripParkCandidateOrderDocument> orderCollection;
+    private readonly IMongoCollection<TripPlanDocument> tripPlanCollection;
 
     public TripParkCandidateRepository(IMongoDatabase database, MongoDbSettings settings)
     {
@@ -19,16 +19,16 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         ArgumentNullException.ThrowIfNull(settings);
         this.collection = database.GetCollection<TripParkCandidateDocument>(
             settings.TripParkCandidatesCollectionName);
-        this.orderCollection = database.GetCollection<TripParkCandidateOrderDocument>(
-            settings.TripParkCandidateOrdersCollectionName);
+        this.tripPlanCollection = database.GetCollection<TripPlanDocument>(
+            settings.TripPlansCollectionName);
     }
 
     internal TripParkCandidateRepository(
         IMongoCollection<TripParkCandidateDocument> collection,
-        IMongoCollection<TripParkCandidateOrderDocument> orderCollection)
+        IMongoCollection<TripPlanDocument> tripPlanCollection)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
-        this.orderCollection = orderCollection ?? throw new ArgumentNullException(nameof(orderCollection));
+        this.tripPlanCollection = tripPlanCollection ?? throw new ArgumentNullException(nameof(tripPlanCollection));
     }
 
     internal static IReadOnlyCollection<CreateIndexModel<TripParkCandidateDocument>> BuildIndexes()
@@ -87,7 +87,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         TripPlanId tripPlanId,
         CancellationToken cancellationToken)
     {
-        (IReadOnlyCollection<TripParkCandidate> Candidates, TripParkCandidateOrderDocument? Order) state =
+        (IReadOnlyCollection<TripParkCandidate> Candidates, TripPlanDocument? Plan) state =
             await this.LoadOrderedStateAsync(tripPlanId, cancellationToken);
         return state.Candidates;
     }
@@ -137,7 +137,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         };
     }
 
-    private async Task<(IReadOnlyCollection<TripParkCandidate> Candidates, TripParkCandidateOrderDocument? Order)>
+    private async Task<(IReadOnlyCollection<TripParkCandidate> Candidates, TripPlanDocument? Plan)>
         LoadOrderedStateAsync(
             TripPlanId tripPlanId,
             CancellationToken cancellationToken)
@@ -151,19 +151,19 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             .ThenBy(static document => document.Id)
             .Limit(TripParkCandidate.MaximumCandidatesPerTrip)
             .ToListAsync(cancellationToken);
-        Task<TripParkCandidateOrderDocument> orderTask = this.orderCollection.Find(
-                Builders<TripParkCandidateOrderDocument>.Filter.Eq(
-                    static document => document.Id,
-                    tripPlanId.Value))
+        FilterDefinitionBuilder<TripPlanDocument> planFilters = Builders<TripPlanDocument>.Filter;
+        Task<TripPlanDocument> planTask = this.tripPlanCollection.Find(
+                planFilters.Eq(static document => document.Id, tripPlanId.Value)
+                & planFilters.Eq(static document => document.DeletionState, TripDeletionState.None))
             .FirstOrDefaultAsync(cancellationToken);
-        await Task.WhenAll(documentsTask, orderTask);
-        TripParkCandidateOrderDocument? order = await orderTask;
+        await Task.WhenAll(documentsTask, planTask);
+        TripPlanDocument? plan = await planTask;
         IReadOnlyList<TripParkCandidateDocument> ordered = OrderDocuments(
             await documentsTask,
-            order?.CandidateIds);
+            plan?.ParkCandidateOrderIds);
         TripParkCandidate[] candidates = ordered.Select(static (document, index) => document.ToDomain(
             checked((index + 1L) * TripParkCandidate.SortPositionStep))).ToArray();
-        return (candidates, order);
+        return (candidates, plan);
     }
 
     internal static IReadOnlyList<TripParkCandidateDocument> OrderDocuments(
@@ -400,7 +400,6 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         TripPlanId tripPlanId,
         TripParkCandidateOrderPlan orderPlan,
         TripChildMutationLease lease,
-        DateTime updatedAtUtc,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(orderPlan);
@@ -410,8 +409,13 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             return TripChildWriteOutcome.Success;
         }
 
-        (IReadOnlyCollection<TripParkCandidate> existing, TripParkCandidateOrderDocument? currentOrder) =
+        (IReadOnlyCollection<TripParkCandidate> existing, TripPlanDocument? currentPlan) =
             await this.LoadOrderedStateAsync(tripPlanId, cancellationToken);
+        if (currentPlan is null)
+        {
+            return TripChildWriteOutcome.NotFound;
+        }
+
         Dictionary<TripParkCandidateId, TripParkCandidate> byId = existing.ToDictionary(static candidate => candidate.Id);
         bool guardsMatch = orderPlan.Guards.All(guard => byId.TryGetValue(guard.CandidateId, out TripParkCandidate? candidate)
             && candidate.Version == guard.Version
@@ -441,37 +445,26 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             .ThenBy(static candidate => candidate.Id.Value, StringComparer.Ordinal)
             .Select(static candidate => candidate.Id.Value)
             .ToList();
-        TripParkCandidateOrderDocument replacement = new()
-        {
-            Id = tripPlanId.Value,
-            CandidateIds = orderedIds,
-            Version = currentOrder is null ? 1 : checked(currentOrder.Version + 1),
-            CreatedAt = currentOrder?.CreatedAt ?? updatedAtUtc,
-            UpdatedAt = updatedAtUtc,
-        };
-        FilterDefinitionBuilder<TripParkCandidateOrderDocument> filters =
-            Builders<TripParkCandidateOrderDocument>.Filter;
-        FilterDefinition<TripParkCandidateOrderDocument> filter = currentOrder is null
-            ? filters.Eq(static document => document.Id, tripPlanId.Value)
-                & filters.Exists(static document => document.Version, false)
-            : filters.Eq(static document => document.Id, tripPlanId.Value)
-                & filters.Eq(static document => document.Version, currentOrder.Version);
-        try
-        {
-            ReplaceOneResult result = await this.orderCollection.ReplaceOneAsync(
-                filter,
-                replacement,
-                new ReplaceOptions { IsUpsert = currentOrder is null },
-                cancellationToken);
-            return result.ModifiedCount == 1 || result.UpsertedId is not null
-                ? TripChildWriteOutcome.Success
-                : TripChildWriteOutcome.Conflict;
-        }
-        catch (MongoWriteException exception)
-            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
-        {
-            return TripChildWriteOutcome.Conflict;
-        }
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        FilterDefinition<TripPlanDocument> filter = filters.Eq(
+                static document => document.Id,
+                tripPlanId.Value)
+            & filters.Eq(static document => document.DeletionState, TripDeletionState.None)
+            & filters.Eq(static document => document.ChildMutationEpoch, lease.ChildMutationEpoch)
+            & filters.Eq(
+                static document => document.ParkCandidateOrderVersion,
+                currentPlan.ParkCandidateOrderVersion)
+            & TripPlanMongoDefinitions.BuildActiveChildLeaseIdentityFilter(lease);
+        UpdateDefinition<TripPlanDocument> update = Builders<TripPlanDocument>.Update
+            .Set(static document => document.ParkCandidateOrderIds, orderedIds)
+            .Inc(static document => document.ParkCandidateOrderVersion, 1);
+        UpdateResult result = await this.tripPlanCollection.UpdateOneAsync(
+            filter,
+            update,
+            cancellationToken: cancellationToken);
+        return result.ModifiedCount == 1
+            ? TripChildWriteOutcome.Success
+            : TripChildWriteOutcome.Conflict;
     }
 
     public async Task<TripParkCandidateWriteResult> DeleteAsync(
