@@ -63,6 +63,8 @@ TripPlan
 ├── Members[1..50] : sous-documents bornés, propriétaire inclus
 ├── MemberAdmissionFence : état, invitation, opération, génération et échéance
 ├── AdmissionClosure : Open | Closing(cible, opération réclamée) | Closed
+├── InvitationCreationEpoch : long, commence à 1
+├── ActiveInvitationCreationLeases[0..8] : opération, génération et échéance
 ├── ChildMutationEpoch : long, commence à 1
 ├── ActiveChildMutationLeases[0..32] : acteur, sujet, epochs et échéance
 ├── DeletionState : None | Pending | Purging | Purged
@@ -218,10 +220,10 @@ TripInvitation
 ├── ProposedRole : Editor | Participant | Viewer, jamais Owner
 ├── InviterMemberId
 ├── TargetEmailHmac : facultatif
-├── Status : Active | Accepting | RevocationPending | Accepted | Declined | Revoked | Expired
+├── Status : Prepared | Active | Accepting | RevocationPending | Accepted | Declined | Revoked | Expired
 ├── ExpiresAtUtc / AcceptedAtUtc / RevokedAtUtc
 ├── UseCount : 0 puis 1 (invitation strictement mono-usage)
-├── Version et lease d'acceptation
+├── Version, fence de création et lease d'acceptation
 └── CreatedAtUtc / UpdatedAtUtc
 ```
 
@@ -230,6 +232,30 @@ canonique. Seul son hash est persisté. Une invitation ciblée compare le courri
 vérifié du compte à un HMAC versionné issu d'un trousseau rotatif ; un simple hash
 de courriel n'est pas accepté. Une adresse éventuellement nécessaire à l'envoi est chiffrée, séparée et
 supprimée après la durée annoncée.
+
+La création d'une invitation est elle aussi une saga bornée. Elle ne repose jamais
+sur une autorisation lue avant une insertion qui pourrait arriver trop tard :
+
+1. la commande acquiert sur le plan une `InvitationCreationLease` courte, bornée,
+   avec opération, `InvitationCreationEpoch`, génération et échéance, uniquement si
+   `AdmissionClosure = Open` et `CanAcceptMembers = true` ;
+2. elle insère une coquille `Prepared` portant la même identité et une échéance TTL.
+   Cet état n'est jamais résolu par un token et ne contient aucun profil invité ;
+3. un `UpdateOne` sans upsert passe cette coquille à `Active` seulement avec
+   l'identité exacte et la garde serveur `$$NOW < CreationLeaseExpiresAtUtc` ;
+4. la commande clôture la lease sur le plan seulement si l'epoch est inchangé et
+   les admissions toujours ouvertes. Cette écriture est le point de linéarisation
+   de la création ; le jeton brut n'est rendu à l'appelant qu'après son succès.
+
+Une fermeture passe d'abord à `Closing`, incrémente
+`InvitationCreationEpoch`, bloque les nouvelles leases puis attend les leases déjà
+accordées ou leur expiration augmentée de la marge serveur maximale. Elle balaie
+ensuite une seconde fois les invitations `Prepared` et `Active` avant de publier
+`Closed`. Une activation en transit peut donc soit gagner avant la clôture de sa
+lease, soit être révoquée ; elle ne peut jamais devenir utilisable après la
+fermeture. Une insertion `Prepared` extrêmement tardive reste inerte, expire par
+TTL et est aussi supprimée par le reconciler du tombstone. Le nombre de créations
+concurrentes et d'invitations actives par plan est borné.
 
 La première version ne crée que des invitations mono-usage. Une invitation de
 groupe réutilisable exigerait un autre agrégat et une nouvelle décision
@@ -316,8 +342,10 @@ point de linéarisation de l'adhésion.
 Une transition vers `Completed`, `Archived` ou `Cancelled`, comme le début d'une
 suppression, commence par une écriture du plan `Open -> Closing`. Elle rend
 `CanAcceptMembers` faux, capture l'`operationId` du fence courant, annule ce fence
-et retire dans la même écriture le membre encore provisoire. Elle compense ensuite
-toutes les invitations `Active` et, pour l'opération capturée, l'invitation
+et retire dans la même écriture le membre encore provisoire. Elle incrémente aussi
+`InvitationCreationEpoch` et attend les leases de création déjà accordées avant le
+second balayage. Elle compense ensuite toutes les invitations `Prepared` ou
+`Active` et, pour l'opération d'admission capturée, l'invitation
 `Accepting` **ou déjà `Accepted`** en la passant par `RevocationPending`. L'état
 métier cible et `AdmissionClosure = Closed` ne sont publiés qu'après cette
 compensation ; une panne laisse `Closing` au reconciler.
@@ -480,13 +508,14 @@ n'injectera directement un service API si un port existe.
 trip-plans
   _id, ownerUserId, title, accessScope, status, dateProposal,
   destinationTimeZoneId, members[], options, memberAdmissionFence?,
-  admissionClosure, childMutationEpoch, activeChildMutationLeases[], deletionState,
+  admissionClosure, invitationCreationEpoch, activeInvitationCreationLeases[],
+  childMutationEpoch, activeChildMutationLeases[], deletionState,
   activeMutation?, version,
   createdAtUtc, updatedAtUtc
 
 trip-invitations
   _id, tripPlanId, tokenHash, tokenHint, proposedRole, inviterMemberId,
-  targetEmailHmac?, status, useCount, acceptanceLease?,
+  targetEmailHmac?, status, useCount, creationFence?, acceptanceLease?,
   expiresAtUtc, version, createdAtUtc, updatedAtUtc
 
 trip-member-constraints
@@ -502,6 +531,8 @@ Indexes minimaux à prouver :
 - plans `{ ownerUserId, status, updatedAtUtc desc }` ;
 - plans `{ members.userId, status, updatedAtUtc desc }` multikey ;
 - plans `{ memberAdmissionFence.leaseExpiresAtUtc }` partiel pour les fences actifs ;
+- plans `{ activeInvitationCreationLeases.leaseExpiresAtUtc }` partiel pour reprendre
+  les créations interrompues ;
 - plans `{ deletionState, updatedAtUtc }` pour la reprise des purges ;
 - invitations `tokenHash` unique et TTL sur `expiresAtUtc` pour les états
   purgeables ;
@@ -575,12 +606,15 @@ les écritures dans une collection enfant suivent une barrière commune :
 
 La suppression passe atomiquement le plan à `Pending`, place
 `AdmissionClosure = Closing`, incrémente `ChildMutationEpoch`, réclame tout
-`MemberAdmissionFence` et interdit toute nouvelle lease ou admission. Elle rend
+`MemberAdmissionFence`, incrémente `InvitationCreationEpoch` et interdit toute
+nouvelle lease ou admission. Elle rend
 immédiatement le plan inaccessible, puis marque `RevocationPending` les invitations
-`Active`, ainsi que l'invitation `Accepting` ou `Accepted` de l'opération réclamée,
+`Prepared` ou `Active`, ainsi que l'invitation `Accepting` ou `Accepted` de
+l'opération réclamée,
 et reprend leur compensation ; aucun token ne peut rejoindre un plan dont la
-suppression a commencé. Elle attend ensuite la fin des leases de l'ancien epoch ou leur
-expiration, puis une durée de sûreté supérieure au délai serveur maximal. Le job
+suppression a commencé. Elle attend ensuite la fin des leases d'invitation et des
+leases enfant de l'ancien epoch ou leur expiration, puis une durée de sûreté
+supérieure au délai serveur maximal. Le job
 purge invitations et enfants d'un epoch antérieur, refait un balayage après la
 barrière et passe à `Purged` seulement si aucune lease, invitation active ou donnée
 ancienne ne subsiste. Le tombstone du plan est conservé pendant la durée
@@ -642,6 +676,8 @@ variantes ne sont pas réellement servies.
 - allers-retours Mongo et indexes réels ;
 - transfert de propriété dans une seule écriture du plan ;
 - acceptation interrompue à chaque étape puis réparée sans doublon ;
+- création d'invitation retardée au-delà de `Closing`, limitée à une coquille
+  `Prepared` non résolvable puis éliminée sans token actif orphelin ;
 - fence `Prepared` installé avant réservation puis rendu inoffensif si une
   révocation gagne avant son armement ;
 - fence `Prepared` expiré après panne balayé par génération sans annuler une
