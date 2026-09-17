@@ -19,6 +19,15 @@ public interface IFactualChangeEventRepository
         FactualChangeEventId eventId,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<FactualChangeEvent>> GetManyAsync(
+        IReadOnlyCollection<FactualChangeEventId> eventIds,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<FactualChangeEvent>> ListPublishedAsync(
+        PublishedFactualEventCursor? after,
+        int limit,
+        CancellationToken cancellationToken);
+
     Task<PagedResult<FactualChangeEvent>> SearchAsync(
         FactualChangeEventSearchCriteria criteria,
         CancellationToken cancellationToken);

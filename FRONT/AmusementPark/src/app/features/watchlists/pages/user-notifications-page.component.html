@@ -1,0 +1,201 @@
+<main class="notifications-page" data-pagination-scroll-target="notifications">
+  <header class="notifications-page__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a appUiButton="ghost" [routerLink]="['/', currentLang(), 'profile']">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'notifications.actions.backToProfile' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="sky" iconClass="pi pi-bell">
+      {{ 'notifications.kicker' | translate }}
+    </app-ui-kicker>
+    <div class="notifications-page__hero-copy">
+      <div>
+        <h1>{{ 'notifications.title' | translate }}</h1>
+        <p>{{ 'notifications.description' | translate }}</p>
+      </div>
+      @if (facade.page(); as page) {
+        <div class="notifications-page__counter" [attr.aria-label]="'notifications.unreadLabel' | translate">
+          <strong>{{ page.unreadCount }}</strong>
+          <span>{{ 'notifications.unread' | translate }}</span>
+        </div>
+      }
+    </div>
+    <p class="notifications-page__privacy">
+      <i class="pi pi-shield" aria-hidden="true"></i>
+      <span>{{ 'notifications.privacy' | translate:{ days: facade.page()?.retentionDays || 365 } }}</span>
+    </p>
+  </header>
+
+  <section class="notifications-filters" appUiSurface="panel" appUiSurfacePadding="compact" [attr.aria-label]="'notifications.filters.label' | translate">
+    <div class="notifications-filters__quick" role="group" [attr.aria-label]="'notifications.filters.readState' | translate">
+      <button
+        type="button"
+        class="notifications-filters__pill"
+        [class.notifications-filters__pill--active]="!facade.unreadOnly()"
+        [attr.aria-pressed]="!facade.unreadOnly()"
+        (click)="facade.setUnreadOnly(false)">
+        {{ 'notifications.filters.all' | translate }}
+      </button>
+      <button
+        type="button"
+        class="notifications-filters__pill"
+        [class.notifications-filters__pill--active]="facade.unreadOnly()"
+        [attr.aria-pressed]="facade.unreadOnly()"
+        (click)="facade.setUnreadOnly(true)">
+        {{ 'notifications.filters.unreadOnly' | translate }}
+      </button>
+    </div>
+
+    <label class="notifications-filters__field">
+      <span>{{ 'notifications.filters.park' | translate }}</span>
+      <select [value]="facade.parkId() || ''" (change)="onParkChanged($event)">
+        <option value="">{{ 'notifications.filters.allParks' | translate }}</option>
+        @for (park of facade.parkFilters; track park.parkId) {
+          <option [value]="park.parkId">{{ park.parkName }}</option>
+        }
+      </select>
+    </label>
+
+    <label class="notifications-filters__field">
+      <span>{{ 'notifications.filters.type' | translate }}</span>
+      <select [value]="facade.eventType() || ''" (change)="onEventTypeChanged($event)">
+        <option value="">{{ 'notifications.filters.allTypes' | translate }}</option>
+        @for (eventType of eventTypes; track eventType) {
+          <option [value]="eventType">{{ presenter.eventLabel(eventType) }}</option>
+        }
+      </select>
+    </label>
+
+    @if ((facade.page()?.unreadCount || 0) > 0) {
+      <button appUiButton="soft" type="button" [disabled]="facade.mutatingId() !== null" (click)="facade.markAllRead()">
+        <i class="pi pi-check-circle" aria-hidden="true"></i>
+        <span>{{ 'notifications.actions.markAllRead' | translate }}</span>
+      </button>
+    }
+  </section>
+
+  @if (facade.loading() && !facade.page()) {
+    <section class="notifications-message" appUiSurface="panel" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'notifications.feedback.loading' | translate }}</span>
+    </section>
+  } @else if (facade.error()) {
+    <section class="notifications-message notifications-message--error" appUiSurface="panel" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <span>{{ 'notifications.feedback.error' | translate }}</span>
+      <button appUiButton="ghost" type="button" (click)="facade.load(facade.page()?.page || 1)">
+        {{ 'notifications.actions.retry' | translate }}
+      </button>
+    </section>
+  } @else if (facade.notifications.length === 0) {
+    <section class="notifications-empty" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <span class="notifications-empty__icon" aria-hidden="true"><i class="pi pi-bell-slash"></i></span>
+      <h2>{{ 'notifications.empty.title' | translate }}</h2>
+      <p>{{ 'notifications.empty.description' | translate }}</p>
+    </section>
+  } @else {
+    <section class="notifications-list" [attr.aria-label]="'notifications.listLabel' | translate">
+      @for (notification of facade.notifications; track notification.notificationId) {
+        <article
+          class="notification-card"
+          [class.notification-card--unread]="notification.status === 'Delivered'"
+          appUiSurface="panel">
+          <div class="notification-card__visual">
+            <app-image-display
+              [imageId]="notification.target.mainImageId"
+              [alt]="notification.target.name || ('notifications.targetUnavailable' | translate)"
+              placeholderKind="park"
+              sizes="(max-width: 520px) 100vw, 180px"
+              [srcWidth]="240"
+              [responsiveWidths]="imageWidths">
+            </app-image-display>
+          </div>
+
+          <div class="notification-card__body">
+            <div class="notification-card__meta">
+              <app-ui-chip [tone]="notification.status === 'Delivered' ? 'sky' : 'soft'" iconClass="pi pi-circle-fill">
+                {{ (notification.status === 'Delivered' ? 'notifications.status.unread' : 'notifications.status.read') | translate }}
+              </app-ui-chip>
+              <time [attr.datetime]="notification.occurredAtUtc">
+                {{ notification.occurredAtUtc | date:'mediumDate':undefined:currentLang() }}
+              </time>
+            </div>
+
+            <div class="notification-card__title">
+              <div>
+                <p>{{ notification.target.parentParkName }}</p>
+                <h2>{{ notification.target.name || ('notifications.targetUnavailable' | translate) }}</h2>
+              </div>
+              <span class="notification-card__event-icon" aria-hidden="true"><i class="pi pi-bolt"></i></span>
+            </div>
+            <h3>{{ presenter.eventLabel(notification.eventType) }}</h3>
+
+            @if (notification.previousValue || notification.newValue) {
+              <div class="notification-card__proof" [attr.aria-label]="'notifications.proof.label' | translate">
+                <div>
+                  <span>{{ 'notifications.proof.before' | translate }}</span>
+                  <strong>{{ presenter.formatValue(notification.previousValue, notification.eventType) }}</strong>
+                </div>
+                <i class="pi pi-arrow-right" aria-hidden="true"></i>
+                <div>
+                  <span>{{ 'notifications.proof.after' | translate }}</span>
+                  <strong>{{ presenter.formatValue(notification.newValue, notification.eventType) }}</strong>
+                </div>
+              </div>
+            }
+
+            <div class="notification-card__source">
+              <i class="pi pi-verified" aria-hidden="true"></i>
+              <div>
+                <strong>{{ 'notifications.source.verified' | translate }}</strong>
+                <span>{{ notification.source.publisherName || notification.source.title || ('notifications.source.internal' | translate) }}</span>
+                <small>{{ 'notifications.source.checkedOn' | translate:{ date: (notification.source.verifiedAtUtc | date:'mediumDate':undefined:currentLang()) } }}</small>
+              </div>
+              @if (notification.source.url) {
+                <a [href]="notification.source.url | safeExternalUrl" target="_blank" rel="noopener noreferrer">
+                  {{ 'notifications.actions.openSource' | translate }}
+                  <i class="pi pi-external-link" aria-hidden="true"></i>
+                </a>
+              }
+            </div>
+
+            <div class="notification-card__actions">
+              @if (routeFor(notification); as route) {
+                <button
+                  appUiButton="primary"
+                  type="button"
+                  [disabled]="facade.mutatingId() !== null"
+                  (click)="openNotification(notification, route)">
+                  <i class="pi pi-eye" aria-hidden="true"></i>
+                  <span>{{ 'notifications.actions.view' | translate }}</span>
+                </button>
+              }
+              @if (notification.status === 'Delivered') {
+                <button appUiButton="ghost" type="button" [disabled]="facade.mutatingId() !== null" (click)="facade.markRead(notification)">
+                  <i class="pi pi-check" aria-hidden="true"></i>
+                  <span>{{ 'notifications.actions.markRead' | translate }}</span>
+                </button>
+              }
+              <button appUiButton="ghost" type="button" [disabled]="facade.mutatingId() !== null" (click)="facade.dismiss(notification)">
+                <i class="pi pi-times" aria-hidden="true"></i>
+                <span>{{ 'notifications.actions.dismiss' | translate }}</span>
+              </button>
+              @if (notification.canManageSubscription) {
+                <button appUiButton="ghost" type="button" [disabled]="facade.mutatingId() !== null" (click)="facade.unsubscribe(notification)">
+                  <i class="pi pi-bell-slash" aria-hidden="true"></i>
+                  <span>{{ 'notifications.actions.unsubscribe' | translate }}</span>
+                </button>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </section>
+
+    <app-pagination
+      [pagination]="facade.pagination"
+      [rowsPerPageOptions]="[12]"
+      [scrollTargetSelector]="'[data-pagination-scroll-target=notifications]'"
+      (pageChanged)="onPageChanged($event)">
+    </app-pagination>
+  }
+</main>

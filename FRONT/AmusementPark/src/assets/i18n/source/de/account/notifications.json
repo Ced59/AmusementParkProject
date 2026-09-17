@@ -1,0 +1,29 @@
+{
+  "watchlists": {
+    "action": { "label": "Änderungen verfolgen", "paused": "Verfolgung pausiert", "active": "Verfolgung aktiv", "follow": "Über Änderungen informieren", "update": "Aktualisieren", "start": "Verfolgung aktivieren", "resume": "Fortsetzen", "pause": "Pausieren", "stop": "Verfolgung beenden" },
+    "panel": { "title": "Stelle dein Radar zusammen", "description": "Wähle die geprüften Änderungen aus, die für dich wichtig sind.", "privacy": "Diese Verfolgung ist privat und unabhängig von deinen Favoriten." },
+    "groups": {
+      "practical": { "title": "Praktische Infos", "description": "Kalender, Saison, Schließungen, Name, Betreiber und Preise." },
+      "attractions": { "title": "Neuigkeiten zu Attraktionen", "description": "Ankündigungen, Eröffnungen, Schließungen und wichtige Änderungen." },
+      "editorial": { "title": "Geprüfte Inhalte", "description": "Geschichte, neue Quellen und dokumentierte Korrekturen." },
+      "lifecycle": { "title": "Lebenszyklus", "description": "Ankündigung, Eröffnung, Schließung, Wiedereröffnung und Umbenennung." },
+      "details": { "title": "Nützliche Details", "description": "Wichtige Einschränkungen, Standort und Kategorie." }
+    },
+    "feedback": { "selectOne": "Wähle mindestens eine Änderungsgruppe.", "error": "Die Verfolgung konnte nicht gespeichert werden. Versuche es erneut." }
+  },
+  "notifications": {
+    "kicker": "PERSÖNLICHES RADAR", "title": "DEINE BENACHRICHTIGUNGEN", "description": "Sieh nur die Faktenänderungen, die du ausdrücklich verfolgen möchtest.", "unreadLabel": "Ungelesene Benachrichtigungen", "unread": "ungelesen", "privacy": "Privater Bereich · Benachrichtigungen werden {{days}} Tage aufbewahrt.", "listLabel": "Benachrichtigungsliste", "targetUnavailable": "Element nicht verfügbar",
+    "profile": { "title": "Dein Änderungsradar", "description": "Sieh geprüfte Neuigkeiten zu Parks und Attraktionen, denen du folgst.", "action": "Meine Benachrichtigungen öffnen" },
+    "filters": { "label": "Benachrichtigungen filtern", "readState": "Lesestatus", "all": "Alle", "unreadOnly": "Ungelesen", "park": "Park", "allParks": "Alle Parks", "type": "Änderungsart", "allTypes": "Alle Änderungen" },
+    "status": { "unread": "Neu", "read": "Gelesen" },
+    "actions": { "backToProfile": "Zurück zum Profil", "markAllRead": "Alle als gelesen markieren", "retry": "Erneut versuchen", "view": "Seite ansehen", "markRead": "Als gelesen markieren", "dismiss": "Ausblenden", "unsubscribe": "Alle Benachrichtigungen für diesen Park oder diese Attraktion beenden", "openSource": "Quelle ansehen" },
+    "feedback": { "loading": "Dein Radar wird geladen…", "error": "Deine Benachrichtigungen konnten nicht geladen oder aktualisiert werden." },
+    "empty": { "title": "Dein Radar ist ruhig", "description": "Keine Änderung passt zu diesen Filtern. Aktiviere die Verfolgung auf einer Park- oder Attraktionsseite." },
+    "proof": { "label": "Geprüfte Änderung", "before": "Vorher", "after": "Jetzt" },
+    "source": { "verified": "Geprüfte Quelle", "internal": "Redaktionelle Prüfung durch AmusementPark", "checkedOn": "Geprüft am {{date}}" },
+    "values": { "notKnown": "Nicht angegeben", "yes": "Ja", "no": "Nein", "calendarUpdated": "Kalender aktualisiert", "calendarClosed": "Geschlossen", "calendarCoverage": "Vom {{start}} bis {{end}}", "calendarMore": "+ {{count}} weitere Zeitpläne" },
+    "events": {
+      "OpeningCalendarPublished": "Öffnungskalender veröffentlicht", "OpeningCalendarChanged": "Öffnungskalender geändert", "SeasonOpeningConfirmed": "Saisoneröffnung bestätigt", "SeasonClosingConfirmed": "Saisonende bestätigt", "ParkTemporaryClosureConfirmed": "Vorübergehende Parkschließung", "ParkPermanentClosureConfirmed": "Dauerhafte Parkschließung", "ParkReopeningConfirmed": "Wiedereröffnung des Parks bestätigt", "ParkNameChanged": "Park umbenannt", "OperatorChanged": "Betreiber gewechselt", "TicketPricePublishedOrChanged": "Ticketpreis veröffentlicht oder geändert", "MajorDataCompletionImproved": "Parkinformationen erweitert", "AttractionAnnouncedOfficially": "Attraktion offiziell angekündigt", "OpeningDateConfirmed": "Eröffnungsdatum bestätigt", "OpeningDateChanged": "Eröffnungsdatum geändert", "OpenedConfirmed": "Eröffnung bestätigt", "TemporarilyClosedConfirmed": "Vorübergehende Schließung bestätigt", "ReopenedConfirmed": "Wiedereröffnung bestätigt", "PermanentClosureConfirmed": "Dauerhafte Schließung bestätigt", "Renamed": "Neuer Name bestätigt", "MajorRestrictionChanged": "Wichtige Einschränkung geändert", "LocationOrCategoryCorrected": "Standort oder Kategorie korrigiert", "HistoryPublished": "Neue Geschichte veröffentlicht", "MajorHistoryUpdate": "Geschichte erweitert", "VerifiedSourceAdded": "Neue geprüfte Quelle", "CorrectionAfterUserReport": "Korrektur nach einem Nutzerhinweis"
+    }
+  }
+}

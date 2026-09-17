@@ -69,6 +69,7 @@ export class ProfilePageViewComponent {
   @Output() avatarUploaded: EventEmitter<ImageDto> = new EventEmitter<ImageDto>();
   @Output() passportOpened: EventEmitter<void> = new EventEmitter<void>();
   @Output() collectionsOpened: EventEmitter<void> = new EventEmitter<void>();
+  @Output() notificationsOpened: EventEmitter<void> = new EventEmitter<void>();
   @Output() passportVisitCreateClicked: EventEmitter<void> = new EventEmitter<void>();
 
   editField(field: string): void {
@@ -121,5 +122,9 @@ export class ProfilePageViewComponent {
 
   openCollections(): void {
     this.collectionsOpened.emit();
+  }
+
+  openNotifications(): void {
+    this.notificationsOpened.emit();
   }
 }

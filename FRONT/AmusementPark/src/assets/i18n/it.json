@@ -62,6 +62,143 @@
     "languages": "Lingue",
     "profile": "Profilo"
   },
+  "watchlists": {
+    "action": {
+      "label": "Monitoraggio delle modifiche",
+      "paused": "Monitoraggio in pausa",
+      "active": "Monitoraggio attivo",
+      "follow": "Avvisami delle modifiche",
+      "update": "Aggiorna",
+      "start": "Attiva il monitoraggio",
+      "resume": "Riprendi",
+      "pause": "Metti in pausa",
+      "stop": "Smetti di seguire"
+    },
+    "panel": {
+      "title": "Crea il tuo radar",
+      "description": "Scegli le modifiche verificate che contano per te.",
+      "privacy": "Questo monitoraggio è privato e indipendente dai tuoi preferiti."
+    },
+    "groups": {
+      "practical": {
+        "title": "Informazioni pratiche",
+        "description": "Calendario, stagione, chiusure, nome, gestore e prezzi."
+      },
+      "attractions": {
+        "title": "Novità sulle attrazioni",
+        "description": "Annunci, aperture, chiusure e modifiche importanti."
+      },
+      "editorial": {
+        "title": "Contenuti verificati",
+        "description": "Storia, nuove fonti e correzioni documentate."
+      },
+      "lifecycle": {
+        "title": "Ciclo di vita",
+        "description": "Annuncio, apertura, chiusura, riapertura e nuovo nome."
+      },
+      "details": {
+        "title": "Dettagli utili",
+        "description": "Restrizioni importanti, posizione e categoria."
+      }
+    },
+    "feedback": {
+      "selectOne": "Scegli almeno un gruppo di modifiche.",
+      "error": "Impossibile salvare il monitoraggio. Riprova."
+    }
+  },
+  "notifications": {
+    "kicker": "RADAR PERSONALE",
+    "title": "LE TUE NOTIFICHE",
+    "description": "Consulta solo le modifiche fattuali che hai scelto di seguire.",
+    "unreadLabel": "Notifiche non lette",
+    "unread": "non lette",
+    "privacy": "Centro privato · le notifiche vengono conservate per {{days}} giorni.",
+    "listLabel": "Elenco delle notifiche",
+    "targetUnavailable": "Elemento non disponibile",
+    "profile": {
+      "title": "Il tuo radar delle modifiche",
+      "description": "Consulta le novità verificate dei parchi e delle attrazioni che segui.",
+      "action": "Apri le mie notifiche"
+    },
+    "filters": {
+      "label": "Filtra le notifiche",
+      "readState": "Stato di lettura",
+      "all": "Tutte",
+      "unreadOnly": "Non lette",
+      "park": "Parco",
+      "allParks": "Tutti i parchi",
+      "type": "Tipo di modifica",
+      "allTypes": "Tutte le modifiche"
+    },
+    "status": {
+      "unread": "Nuova",
+      "read": "Letta"
+    },
+    "actions": {
+      "backToProfile": "Torna al profilo",
+      "markAllRead": "Segna tutto come letto",
+      "retry": "Riprova",
+      "view": "Vedi la pagina",
+      "markRead": "Segna come letta",
+      "dismiss": "Nascondi",
+      "unsubscribe": "Interrompi tutti gli avvisi per questo parco o attrazione",
+      "openSource": "Vedi la fonte"
+    },
+    "feedback": {
+      "loading": "Caricamento del tuo radar…",
+      "error": "Impossibile caricare o aggiornare le tue notifiche."
+    },
+    "empty": {
+      "title": "Il tuo radar è tranquillo",
+      "description": "Nessuna modifica corrisponde a questi filtri. Attiva il monitoraggio dalla pagina di un parco o di un’attrazione."
+    },
+    "proof": {
+      "label": "Modifica verificata",
+      "before": "Prima",
+      "after": "Ora"
+    },
+    "source": {
+      "verified": "Fonte verificata",
+      "internal": "Verifica editoriale di AmusementPark",
+      "checkedOn": "Verificata il {{date}}"
+    },
+    "values": {
+      "notKnown": "Non indicato",
+      "yes": "Sì",
+      "no": "No",
+      "calendarUpdated": "Calendario aggiornato",
+      "calendarClosed": "Chiuso",
+      "calendarCoverage": "Dal {{start}} al {{end}}",
+      "calendarMore": "+ {{count}} altri orari"
+    },
+    "events": {
+      "OpeningCalendarPublished": "Calendario di apertura pubblicato",
+      "OpeningCalendarChanged": "Calendario di apertura modificato",
+      "SeasonOpeningConfirmed": "Apertura stagionale confermata",
+      "SeasonClosingConfirmed": "Fine stagione confermata",
+      "ParkTemporaryClosureConfirmed": "Chiusura temporanea del parco",
+      "ParkPermanentClosureConfirmed": "Chiusura definitiva del parco",
+      "ParkReopeningConfirmed": "Riapertura del parco confermata",
+      "ParkNameChanged": "Nuovo nome del parco",
+      "OperatorChanged": "Cambio di gestore",
+      "TicketPricePublishedOrChanged": "Prezzo pubblicato o modificato",
+      "MajorDataCompletionImproved": "Informazioni sul parco ampliate",
+      "AttractionAnnouncedOfficially": "Attrazione annunciata ufficialmente",
+      "OpeningDateConfirmed": "Data di apertura confermata",
+      "OpeningDateChanged": "Data di apertura modificata",
+      "OpenedConfirmed": "Apertura confermata",
+      "TemporarilyClosedConfirmed": "Chiusura temporanea confermata",
+      "ReopenedConfirmed": "Riapertura confermata",
+      "PermanentClosureConfirmed": "Chiusura definitiva confermata",
+      "Renamed": "Nuovo nome confermato",
+      "MajorRestrictionChanged": "Restrizione importante modificata",
+      "LocationOrCategoryCorrected": "Posizione o categoria corretta",
+      "HistoryPublished": "Nuova storia pubblicata",
+      "MajorHistoryUpdate": "Storia ampliata",
+      "VerifiedSourceAdded": "Nuova fonte verificata",
+      "CorrectionAfterUserReport": "Correzione dopo una segnalazione"
+    }
+  },
   "parkFitProfiles": {
     "kicker": "Profili Park Fit privati",
     "title": "Le persone del tuo gruppo",

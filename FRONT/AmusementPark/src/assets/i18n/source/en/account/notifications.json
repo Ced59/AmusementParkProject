@@ -1,0 +1,29 @@
+{
+  "watchlists": {
+    "action": { "label": "Change tracking", "paused": "Tracking paused", "active": "Tracking active", "follow": "Notify me about changes", "update": "Update", "start": "Start tracking", "resume": "Resume", "pause": "Pause", "stop": "Stop tracking" },
+    "panel": { "title": "Build your radar", "description": "Choose the verified changes that matter to you.", "privacy": "This tracking is private and independent from your favourites." },
+    "groups": {
+      "practical": { "title": "Practical information", "description": "Calendar, season, closures, name, operator and prices." },
+      "attractions": { "title": "Attraction updates", "description": "Announcements, openings, closures and major changes." },
+      "editorial": { "title": "Verified content", "description": "History, new sources and documented corrections." },
+      "lifecycle": { "title": "Lifecycle", "description": "Announcement, opening, closure, reopening and renaming." },
+      "details": { "title": "Useful details", "description": "Major restrictions, location and category." }
+    },
+    "feedback": { "selectOne": "Choose at least one change group.", "error": "Tracking could not be saved. Try again." }
+  },
+  "notifications": {
+    "kicker": "PERSONAL RADAR", "title": "YOUR NOTIFICATIONS", "description": "See only the factual changes you explicitly chose to track.", "unreadLabel": "Unread notifications", "unread": "unread", "privacy": "Private centre · notifications are kept for {{days}} days.", "listLabel": "Notification list", "targetUnavailable": "Unavailable item",
+    "profile": { "title": "Your change radar", "description": "See verified updates from the parks and attractions you track.", "action": "Open my notifications" },
+    "filters": { "label": "Filter notifications", "readState": "Read state", "all": "All", "unreadOnly": "Unread", "park": "Park", "allParks": "All parks", "type": "Change type", "allTypes": "All changes" },
+    "status": { "unread": "New", "read": "Read" },
+    "actions": { "backToProfile": "Back to profile", "markAllRead": "Mark all as read", "retry": "Try again", "view": "View page", "markRead": "Mark as read", "dismiss": "Dismiss", "unsubscribe": "Stop all alerts for this park or attraction", "openSource": "View source" },
+    "feedback": { "loading": "Loading your radar…", "error": "Your notifications could not be loaded or updated." },
+    "empty": { "title": "Your radar is quiet", "description": "No change matches these filters. Start tracking from a park or attraction page." },
+    "proof": { "label": "Verified change", "before": "Before", "after": "Now" },
+    "source": { "verified": "Verified source", "internal": "AmusementPark editorial verification", "checkedOn": "Verified on {{date}}" },
+    "values": { "notKnown": "Not provided", "yes": "Yes", "no": "No", "calendarUpdated": "Calendar updated", "calendarClosed": "Closed", "calendarCoverage": "From {{start}} to {{end}}", "calendarMore": "+ {{count}} other schedules" },
+    "events": {
+      "OpeningCalendarPublished": "Opening calendar published", "OpeningCalendarChanged": "Opening calendar changed", "SeasonOpeningConfirmed": "Season opening confirmed", "SeasonClosingConfirmed": "Season closing confirmed", "ParkTemporaryClosureConfirmed": "Temporary park closure", "ParkPermanentClosureConfirmed": "Permanent park closure", "ParkReopeningConfirmed": "Park reopening confirmed", "ParkNameChanged": "Park renamed", "OperatorChanged": "Operator changed", "TicketPricePublishedOrChanged": "Ticket price published or changed", "MajorDataCompletionImproved": "Park information expanded", "AttractionAnnouncedOfficially": "Attraction officially announced", "OpeningDateConfirmed": "Opening date confirmed", "OpeningDateChanged": "Opening date changed", "OpenedConfirmed": "Opening confirmed", "TemporarilyClosedConfirmed": "Temporary closure confirmed", "ReopenedConfirmed": "Reopening confirmed", "PermanentClosureConfirmed": "Permanent closure confirmed", "Renamed": "New name confirmed", "MajorRestrictionChanged": "Major restriction changed", "LocationOrCategoryCorrected": "Location or category corrected", "HistoryPublished": "New history published", "MajorHistoryUpdate": "History expanded", "VerifiedSourceAdded": "New verified source", "CorrectionAfterUserReport": "Correction after a user report"
+    }
+  }
+}

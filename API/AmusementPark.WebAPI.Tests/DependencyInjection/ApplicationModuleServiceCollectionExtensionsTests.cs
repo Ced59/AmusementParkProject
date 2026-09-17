@@ -42,6 +42,7 @@ using AmusementPark.Application.Features.Videos.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.Videos.Queries;
 using AmusementPark.Application.Features.Watchlists.Commands;
+using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Application.Features.Watchlists.Queries;
 using AmusementPark.Application.Features.Watchlists.Results;
 using AmusementPark.Core.Domain.Parks;
@@ -113,7 +114,9 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         ServiceCollection services = new ServiceCollection();
         IConfiguration configuration = new ConfigurationBuilder().Build();
         services.AddApplicationModules(configuration);
+        services.AddLogging();
         services.AddSingleton(Mock.Of<IFactualChangeEventRepository>());
+        services.AddSingleton(Mock.Of<IFactualNotificationDistributionScheduler>());
         services.AddSingleton(Mock.Of<IParkNameReadRepository>());
         services.AddSingleton(Mock.Of<IParkItemNameReadRepository>());
 

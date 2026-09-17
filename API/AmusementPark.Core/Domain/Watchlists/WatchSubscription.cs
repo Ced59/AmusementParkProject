@@ -10,6 +10,8 @@ namespace AmusementPark.Core.Domain.Watchlists;
 /// </summary>
 public sealed class WatchSubscription
 {
+    public const int MaximumSubscriptionsPerUser = 250;
+
     private WatchSubscription(
         WatchSubscriptionId id,
         string userId,
@@ -166,6 +168,29 @@ public sealed class WatchSubscription
     {
         ValidateEventType(eventType);
         return !this.IsPaused && this.EventTypes.Contains(eventType);
+    }
+
+    public bool Accepts(FactualChangeEvent factualEvent)
+    {
+        ArgumentNullException.ThrowIfNull(factualEvent);
+        if (!factualEvent.CanBeDistributed
+            || !factualEvent.PublishedAtUtc.HasValue
+            || this.CreatedAtUtc > factualEvent.PublishedAtUtc.Value
+            || this.UpdatedAtUtc > factualEvent.PublishedAtUtc.Value
+            || !this.Accepts(factualEvent.Type))
+        {
+            return false;
+        }
+
+        return this.TargetType switch
+        {
+            CollectionTargetType.Park => factualEvent.Target.Type == FactualTargetType.Park
+                ? string.Equals(this.TargetId, factualEvent.Target.TargetId, StringComparison.Ordinal)
+                : string.Equals(this.TargetId, factualEvent.Target.ParentParkId, StringComparison.Ordinal),
+            CollectionTargetType.ParkItem => factualEvent.Target.Type == FactualTargetType.ParkItem
+                && string.Equals(this.TargetId, factualEvent.Target.TargetId, StringComparison.Ordinal),
+            _ => false,
+        };
     }
 
     public bool HasSameLogicalIdentityAs(WatchSubscription other)

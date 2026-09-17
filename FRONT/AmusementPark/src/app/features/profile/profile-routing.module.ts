@@ -5,6 +5,12 @@ import {authGuard} from "@core/guards/auth.guard";
 
 export const PROFILE_ROUTES: Routes = [
   {
+    path: 'notifications',
+    loadComponent: () => import('../watchlists/pages/user-notifications-page.component')
+      .then((module) => module.UserNotificationsPageComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'collections',
     loadComponent: () => import('../collections/pages/user-collections-page.component')
       .then((module) => module.UserCollectionsPageComponent),

@@ -73,4 +73,13 @@ describe('profile routes', () => {
     expect(route?.loadComponent).toBeDefined();
     expect(route?.canActivate).toContain(authGuard);
   });
+
+  it('keeps the private notification centre lazy and authenticated', () => {
+    const route: Route | undefined = PROFILE_ROUTES.find(
+      (candidate: Route): boolean => candidate.path === 'notifications'
+    );
+
+    expect(route?.loadComponent).toBeDefined();
+    expect(route?.canActivate).toContain(authGuard);
+  });
 });
