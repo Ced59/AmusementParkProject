@@ -349,10 +349,11 @@ conditionnelle `Prepared -> Active` ; une compensation ayant déjà écrit
 
 La réservation `Active -> Accepting` est un `UpdateOne` sans upsert qui exige le
 hash du token, la version d'invitation observée, et la garde serveur
-`$$NOW < <LeaseExpiresAtUtc du fence>`. Elle copie atomiquement dans l'invitation
-les `operationId`, génération et échéance exacts retournés par l'installation du
-fence. Toutes les étapes suivantes exigent cette même identité. Une valeur calculée
-avec l'horloge de l'API ou une réservation filtrée sur le seul statut est interdite.
+`$$NOW < ExpiresAtUtc` **et** `$$NOW < <LeaseExpiresAtUtc du fence>`. Elle copie
+atomiquement dans l'invitation les `operationId`, génération et échéance exacts
+retournés par l'installation du fence. Toutes les étapes suivantes exigent cette
+même identité. Une valeur calculée avec l'horloge de l'API ou une réservation
+filtrée sur le seul statut est interdite.
 
 Un fence `Prepared` persiste l'identifiant d'invitation, `operationId`, le compte
 candidat, une génération et `LeaseExpiresAtUtc`. Le reconciler balaye aussi les
@@ -727,6 +728,8 @@ variantes ne sont pas réellement servies.
   compte ou de réactiver l'invitation ;
 - réservation retardée refusée par l'heure serveur, la version et la génération du
   fence avant qu'une nouvelle génération ne puisse réutiliser l'invitation ;
+- invitation expirée entre résolution et réservation refusée par
+  `$$NOW < ExpiresAtUtc`, même si le fence reste encore valide ;
 - révocation concurrente à une écriture retardée laissant le plan sans membre
   admis par l'opération révoquée avant l'état terminal `Revoked` ;
 - suppression passant `Pending` atomiquement avec la fermeture des admissions et
