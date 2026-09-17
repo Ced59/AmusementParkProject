@@ -8,11 +8,12 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 internal static class TripPlanMongoDefinitions
 {
     public static FilterDefinition<TripPlanDocument> BuildCreationOperationFilter(
-        string ownerScopeHash,
+        IReadOnlyCollection<string> ownerScopeHashes,
         string operationKeyHash)
     {
+        ArgumentNullException.ThrowIfNull(ownerScopeHashes);
         FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
-        return filters.Eq(static document => document.OwnerScopeHash, ownerScopeHash)
+        return filters.In(static document => document.OwnerScopeHash, ownerScopeHashes)
             & filters.Eq(static document => document.CreationOperationKeyHash, operationKeyHash);
     }
 
@@ -83,9 +84,21 @@ internal static class TripPlanMongoDefinitions
                 }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
+                    .Ascending(static document => document.OwnerUserId)
+                    .Ascending(static document => document.CreationOperationKeyHash),
+                new CreateIndexOptions<TripPlanDocument>
+                {
+                    Unique = true,
+                    Name = "uq_trip_plan_owner_operation",
+                    PartialFilterExpression = Builders<TripPlanDocument>.Filter.Eq(
+                        static document => document.DeletionState,
+                        TripDeletionState.None),
+                }),
+            new(
+                Builders<TripPlanDocument>.IndexKeys
                     .Ascending(static document => document.OwnerScopeHash)
                     .Ascending(static document => document.CreationOperationKeyHash),
-                new CreateIndexOptions { Unique = true, Name = "uq_trip_plan_owner_operation" }),
+                new CreateIndexOptions { Name = "ix_trip_plan_owner_scope_operation" }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
                     .Ascending("members.userId")

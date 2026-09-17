@@ -16,6 +16,9 @@ export MONGO_APP_PASSWORD='test-app-password-value'
 export MINIO_ROOT_USER='test-minio-user'
 export MINIO_ROOT_PASSWORD='test-minio-password-value'
 export JWT_KEY='test-jwt-key-with-at-least-32-characters'
+export TRIP_FINGERPRINT_CURRENT_VERSION='v1'
+export TRIP_FINGERPRINT_CURRENT_KEY='dGVzdC10cmlwLWZpbmdlcnByaW50LWtleS0zMi1ieXRlcy1taW5pbXVt'
+export TRIP_FINGERPRINT_PREVIOUS_KEYS=''
 export EMAIL_MODE='Console'
 export FACEBOOK_APP_ID='123456789012345'
 export SOCIAL_PUBLISHING_FACEBOOK_ENABLED='true'
@@ -39,6 +42,8 @@ assert_env_line() {
 }
 
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_ENABLED=true'
+assert_env_line 'TRIP_FINGERPRINT_CURRENT_VERSION=v1'
+assert_env_line 'TRIP_FINGERPRINT_CURRENT_KEY=dGVzdC10cmlwLWZpbmdlcnByaW50LWtleS0zMi1ieXRlcy1taW5pbXVt'
 assert_env_line 'FACEBOOK_APP_ID=123456789012345'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_API_VERSION=v24.0'
 assert_env_line 'SOCIAL_PUBLISHING_FACEBOOK_PAGE_ID=1285475681307050'

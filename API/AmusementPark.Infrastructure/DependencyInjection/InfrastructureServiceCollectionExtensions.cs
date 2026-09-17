@@ -45,6 +45,7 @@ using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Configuration.Ssr;
 using AmusementPark.Infrastructure.Configuration.SocialPublishing;
+using AmusementPark.Infrastructure.Configuration.Trips;
 using AmusementPark.Infrastructure.Configuration.Videos;
 using AmusementPark.Infrastructure.Configuration.Weather;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
@@ -109,6 +110,10 @@ public static class InfrastructureServiceCollectionExtensions
 
         JwtSettings jwtSettings = configuration.GetSection("Authentication:Jwt").Get<JwtSettings>() ?? new JwtSettings();
         services.AddSingleton(jwtSettings);
+
+        TripFingerprintKeyRingSettings tripFingerprintKeyRingSettings =
+            TripFingerprintKeyRingSettings.Bind(configuration);
+        services.AddSingleton(tripFingerprintKeyRingSettings);
 
         EmailSettings emailSettings = configuration.GetSection("Email").Get<EmailSettings>() ?? new EmailSettings();
         services.AddSingleton(emailSettings);

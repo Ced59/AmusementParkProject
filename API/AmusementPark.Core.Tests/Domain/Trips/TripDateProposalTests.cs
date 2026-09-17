@@ -39,6 +39,18 @@ public sealed class TripDateProposalTests
     }
 
     [Fact]
+    public void Fixed_ShouldRepresentAnInclusiveConfirmedSpan()
+    {
+        DateOnly startDate = new(2027, 7, 8);
+        DateOnly endDate = new(2027, 7, 10);
+
+        TripDateProposal proposal = TripDateProposal.Fixed(startDate, endDate);
+
+        Assert.Equal(startDate, proposal.StartDate);
+        Assert.Equal(endDate, proposal.EndDate);
+    }
+
+    [Fact]
     public void Candidates_ShouldNormalizeDistinctChronologicalDates()
     {
         TripDateProposal proposal = TripDateProposal.Candidates(new[]
@@ -59,7 +71,7 @@ public sealed class TripDateProposalTests
         Assert.Throws<TripPlanValidationException>(() => TripDateProposal.Restore(
             TripDateProposalKind.Fixed,
             new DateOnly(2027, 7, 8),
-            new DateOnly(2027, 7, 9),
+            null,
             Array.Empty<DateOnly>()));
     }
 }

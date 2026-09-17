@@ -37,17 +37,22 @@ public sealed class TripPlanRepository : ITripPlanRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(requestedTripPlan);
-        string ownerScopeHash = this.creationFingerprint.HashOwnerScope(requestedTripPlan.OwnerUserId);
+        IReadOnlyCollection<string> ownerScopeHashes = this.creationFingerprint.HashOwnerScopes(
+            requestedTripPlan.OwnerUserId);
         string operationKeyHash = TripPlanCreationFingerprint.HashOperationKey(
             NormalizeRequired(clientOperationId, nameof(clientOperationId)));
         TripPlanDocument? existing = await this.collection
             .Find(TripPlanMongoDefinitions.BuildCreationOperationFilter(
-                ownerScopeHash,
+                ownerScopeHashes,
                 operationKeyHash))
             .FirstOrDefaultAsync(cancellationToken);
         return existing is null
             ? null
-            : ResolveIdempotentCreation(existing, this.creationFingerprint.HashPayload(requestedTripPlan));
+            : ResolveIdempotentCreation(
+                existing,
+                this.creationFingerprint.HashPayload(
+                    requestedTripPlan,
+                    existing.CreationFingerprintKeyVersion));
     }
 
     public async Task<IdempotentTripPlanCreationResult> CreateIdempotentAsync(
@@ -57,9 +62,11 @@ public sealed class TripPlanRepository : ITripPlanRepository
     {
         ArgumentNullException.ThrowIfNull(tripPlan);
         string normalizedOperationId = NormalizeRequired(clientOperationId, nameof(clientOperationId));
-        string ownerScopeHash = this.creationFingerprint.HashOwnerScope(tripPlan.OwnerUserId);
+        IReadOnlyCollection<string> ownerScopeHashes = this.creationFingerprint.HashOwnerScopes(
+            tripPlan.OwnerUserId);
+        string currentOwnerScopeHash = this.creationFingerprint.HashOwnerScope(tripPlan.OwnerUserId);
         string operationKeyHash = TripPlanCreationFingerprint.HashOperationKey(normalizedOperationId);
-        string payloadHash = this.creationFingerprint.HashPayload(tripPlan);
+        string currentPayloadHash = this.creationFingerprint.HashPayload(tripPlan);
         FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
         List<TripPlanDocument> owned = await this.collection.Find(
                 filters.Eq(static document => document.OwnerUserId, tripPlan.OwnerUserId)
@@ -68,6 +75,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 .Include(static document => document.OwnerSlot)
                 .Include(static document => document.CreationOperationKeyHash)
                 .Include(static document => document.CreationPayloadHash)
+                .Include(static document => document.CreationFingerprintKeyVersion)
                 .Include(static document => document.CreationSnapshot)
                 .Include(static document => document.Id)
                 .Include(static document => document.OwnerUserId))
@@ -79,7 +87,10 @@ public sealed class TripPlanRepository : ITripPlanRepository
             StringComparison.Ordinal));
         if (replay is not null)
         {
-            return ResolveIdempotentCreation(replay, payloadHash);
+            string replayPayloadHash = this.creationFingerprint.HashPayload(
+                tripPlan,
+                replay.CreationFingerprintKeyVersion);
+            return ResolveIdempotentCreation(replay, replayPayloadHash);
         }
 
         HashSet<int> occupiedSlots = owned.Select(static document => document.OwnerSlot).ToHashSet();
@@ -92,9 +103,10 @@ public sealed class TripPlanRepository : ITripPlanRepository
 
             TripPlanDocument document = tripPlan.ToDocument();
             document.OwnerSlot = ownerSlot;
-            document.OwnerScopeHash = ownerScopeHash;
+            document.OwnerScopeHash = currentOwnerScopeHash;
             document.CreationOperationKeyHash = operationKeyHash;
-            document.CreationPayloadHash = payloadHash;
+            document.CreationPayloadHash = currentPayloadHash;
+            document.CreationFingerprintKeyVersion = this.creationFingerprint.CurrentKeyVersion;
             document.CreationSnapshot = document.CreateCreationSnapshot();
             try
             {
@@ -108,11 +120,14 @@ public sealed class TripPlanRepository : ITripPlanRepository
             {
                 TripPlanDocument? existing = await this.collection
                     .Find(TripPlanMongoDefinitions.BuildCreationOperationFilter(
-                        ownerScopeHash,
+                        ownerScopeHashes,
                         operationKeyHash))
                     .FirstOrDefaultAsync(cancellationToken);
                 if (existing is not null)
                 {
+                    string payloadHash = this.creationFingerprint.HashPayload(
+                        tripPlan,
+                        existing.CreationFingerprintKeyVersion);
                     return ResolveIdempotentCreation(existing, payloadHash);
                 }
             }

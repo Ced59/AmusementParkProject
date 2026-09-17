@@ -52,6 +52,9 @@ public sealed class TripPlanDocument : MongoDocumentBase
     [BsonElement("creationPayloadHash")]
     public string CreationPayloadHash { get; set; } = string.Empty;
 
+    [BsonElement("creationFingerprintKeyVersion")]
+    public string CreationFingerprintKeyVersion { get; set; } = string.Empty;
+
     [BsonElement("creationSnapshot")]
     [BsonIgnoreIfNull]
     public TripPlanCreationSnapshotDocument? CreationSnapshot { get; set; }

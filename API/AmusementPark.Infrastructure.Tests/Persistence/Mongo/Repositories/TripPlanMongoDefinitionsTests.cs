@@ -19,6 +19,8 @@ public sealed class TripPlanMongoDefinitionsTests
             && index.Options.Unique == true);
         Assert.Contains(indexes, index => index.Options.Name == "uq_trip_plan_owner_operation"
             && index.Options.Unique == true);
+        Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_owner_scope_operation"
+            && index.Options.Unique != true);
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_member_updated");
         Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_plan_creation_tombstone"
             && index.Options.ExpireAfter == TimeSpan.Zero);
@@ -28,13 +30,15 @@ public sealed class TripPlanMongoDefinitionsTests
     public void BuildCreationOperationFilter_ShouldBindKeyedOwnerScopeAndHashedKey()
     {
         FilterDefinition<TripPlanDocument> filter = TripPlanMongoDefinitions.BuildCreationOperationFilter(
-            "owner-scope-hmac",
+            new[] { "owner-scope-hmac", "previous-owner-scope-hmac" },
             "hash-1");
         BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
             MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
             MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
 
-        Assert.Equal("owner-scope-hmac", rendered["ownerScopeHash"].AsString);
+        Assert.Equal(
+            new[] { "owner-scope-hmac", "previous-owner-scope-hmac" },
+            rendered["ownerScopeHash"]["$in"].AsBsonArray.Select(static value => value.AsString));
         Assert.False(rendered.Contains("ownerUserId"));
         Assert.Equal("hash-1", rendered["creationOperationKeyHash"].AsString);
     }

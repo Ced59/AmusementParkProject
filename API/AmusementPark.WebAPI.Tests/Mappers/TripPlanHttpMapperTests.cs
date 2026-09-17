@@ -46,4 +46,23 @@ public sealed class TripPlanHttpMapperTests
 
         Assert.False(request.TryToApplication(out TripPlanDetailsInput? _));
     }
+
+    [Fact]
+    public void TryToApplication_ShouldRejectCandidateArraysAboveTheDomainLimit()
+    {
+        TripPlanWriteRequestDto request = new()
+        {
+            Title = "Voyage été",
+            DestinationTimeZoneId = "Europe/Paris",
+            DateProposal = new TripDateProposalRequestDto
+            {
+                Kind = "Candidates",
+                CandidateDates = Enumerable.Repeat(
+                    "2027-07-08",
+                    TripDateProposal.MaximumCandidateDates + 1).ToArray(),
+            },
+        };
+
+        Assert.False(request.TryToApplication(out TripPlanDetailsInput? _));
+    }
 }

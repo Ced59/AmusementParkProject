@@ -16,6 +16,9 @@ export MONGO_APP_PASSWORD='test-app-password-value'
 export MINIO_ROOT_USER='test-minio-user'
 export MINIO_ROOT_PASSWORD='test-minio-password-value'
 export JWT_KEY='test-jwt-key-with-at-least-32-characters'
+export TRIP_FINGERPRINT_CURRENT_VERSION='v1'
+export TRIP_FINGERPRINT_CURRENT_KEY='dGVzdC10cmlwLWZpbmdlcnByaW50LWtleS0zMi1ieXRlcy1taW5pbXVt'
+export TRIP_FINGERPRINT_PREVIOUS_KEYS=''
 
 assert_env_line() {
   local env_file="$1"

@@ -118,7 +118,7 @@ public static class TripPlanHttpMapper
         out DateOnly[] parsed)
     {
         parsed = Array.Empty<DateOnly>();
-        if (values is null)
+        if (values is null || values.Count > TripDateProposal.MaximumCandidateDates)
         {
             return false;
         }

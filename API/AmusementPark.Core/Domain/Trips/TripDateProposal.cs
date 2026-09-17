@@ -42,7 +42,16 @@ public sealed class TripDateProposal
 
     public static TripDateProposal Fixed(DateOnly date)
     {
-        return new TripDateProposal(TripDateProposalKind.Fixed, date, null, Array.Empty<DateOnly>());
+        return Fixed(date, date);
+    }
+
+    public static TripDateProposal Fixed(DateOnly startDate, DateOnly endDate)
+    {
+        return new TripDateProposal(
+            TripDateProposalKind.Fixed,
+            startDate,
+            endDate,
+            Array.Empty<DateOnly>());
     }
 
     public static TripDateProposal Range(DateOnly startDate, DateOnly endDate)
@@ -84,7 +93,7 @@ public sealed class TripDateProposal
         bool valid = kind switch
         {
             TripDateProposalKind.None => !startDate.HasValue && !endDate.HasValue && candidates.Count == 0,
-            TripDateProposalKind.Fixed => startDate.HasValue && !endDate.HasValue && candidates.Count == 0,
+            TripDateProposalKind.Fixed => startDate.HasValue && endDate.HasValue && candidates.Count == 0,
             TripDateProposalKind.Range => startDate.HasValue && endDate.HasValue && candidates.Count == 0,
             TripDateProposalKind.Candidates => !startDate.HasValue && !endDate.HasValue
                 && candidates.Count is > 0 and <= MaximumCandidateDates,
@@ -95,7 +104,7 @@ public sealed class TripDateProposal
             throw Invalid("The trip date proposal does not match its selected mode.");
         }
 
-        if (kind == TripDateProposalKind.Range
+        if (kind is TripDateProposalKind.Fixed or TripDateProposalKind.Range
             && (endDate!.Value < startDate!.Value
                 || endDate.Value.DayNumber - startDate.Value.DayNumber + 1 > MaximumRangeDays))
         {

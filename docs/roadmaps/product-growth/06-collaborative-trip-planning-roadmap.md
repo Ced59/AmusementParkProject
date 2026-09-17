@@ -42,8 +42,9 @@ initial, tandis qu'une réutilisation de la même clé avec un autre contenu est
 refusée. Le quota est garanti par un slot propriétaire indexé, y compris sous
 concurrence.
 
-Un voyage accepte quatre formes de dates : non définies, date fixe, intervalle ou
-liste de dates candidates. Les dates utilisent le format ISO et, dès qu'elles
+Un voyage accepte quatre formes de dates : non définies, période confirmée avec
+bornes inclusives (un seul jour lorsque les bornes sont égales), intervalle encore
+possible ou liste de dates candidates. Les dates utilisent le format ISO et, dès qu'elles
 sont définies, un fuseau IANA valide est obligatoire. Chaque écriture porte une
 version optimiste afin qu'un onglet ancien ne puisse pas écraser une modification
 plus récente. Le propriétaire est aussi enregistré comme membre actif, sans
@@ -58,6 +59,10 @@ voyage supprimé. MongoDB purge automatiquement ce tombstone à l'expiration. La
 commande exige aussi une authentification confirmée depuis moins de dix minutes,
 en plus de la version attendue, afin qu'une session ancienne ne suffise pas à
 déclencher cette action irréversible.
+
+Les empreintes de création utilisent un trousseau HMAC dédié et versionné, distinct
+du JWT. Une rotation conserve explicitement les anciennes versions nécessaires aux
+reprises ; le tombstone ne garde aucun identifiant de compte en clair.
 
 Ce jalon reste volontairement sans écran : l'expérience utilisateur individuelle,
 conçue responsive dès 320 px, appartient à `TRIP-04`. `TRIP-03` enrichit d'abord

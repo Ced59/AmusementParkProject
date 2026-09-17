@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using AmusementPark.Core.Domain.Trips;
-using AmusementPark.Infrastructure.Configuration.Authentication;
+using AmusementPark.Infrastructure.Configuration.Trips;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
@@ -13,29 +13,40 @@ public sealed class TripPlanCreationFingerprint
         Encoding.UTF8.GetBytes("amusement-park/trip-plan/creation-payload/v1");
     private static readonly byte[] OwnerScopeSigningPurpose =
         Encoding.UTF8.GetBytes("amusement-park/trip-plan/owner-scope/v1");
-    private readonly byte[] payloadSigningKey;
-    private readonly byte[] ownerScopeSigningKey;
+    private readonly IReadOnlyDictionary<string, byte[]> payloadSigningKeys;
+    private readonly IReadOnlyDictionary<string, byte[]> ownerScopeSigningKeys;
 
-    public TripPlanCreationFingerprint(JwtSettings settings)
+    public TripPlanCreationFingerprint(TripFingerprintKeyRingSettings settings)
     {
         ArgumentNullException.ThrowIfNull(settings);
-        if (string.IsNullOrWhiteSpace(settings.Key))
+        IReadOnlyDictionary<string, string> configuredKeys = settings.GetValidatedKeys();
+        Dictionary<string, byte[]> payloadKeys = new(StringComparer.Ordinal);
+        Dictionary<string, byte[]> ownerKeys = new(StringComparer.Ordinal);
+        foreach (KeyValuePair<string, string> configuredKey in configuredKeys)
         {
-            throw new ArgumentException("A server signing key is required.", nameof(settings));
+            byte[] rootKey = Convert.FromBase64String(configuredKey.Value);
+            try
+            {
+                using HMACSHA256 keyDerivation = new(rootKey);
+                payloadKeys.Add(
+                    configuredKey.Key,
+                    keyDerivation.ComputeHash(PayloadSigningPurpose));
+                ownerKeys.Add(
+                    configuredKey.Key,
+                    keyDerivation.ComputeHash(OwnerScopeSigningPurpose));
+            }
+            finally
+            {
+                CryptographicOperations.ZeroMemory(rootKey);
+            }
         }
 
-        byte[] rootKey = Encoding.UTF8.GetBytes(settings.Key);
-        try
-        {
-            using HMACSHA256 keyDerivation = new(rootKey);
-            this.payloadSigningKey = keyDerivation.ComputeHash(PayloadSigningPurpose);
-            this.ownerScopeSigningKey = keyDerivation.ComputeHash(OwnerScopeSigningPurpose);
-        }
-        finally
-        {
-            CryptographicOperations.ZeroMemory(rootKey);
-        }
+        this.CurrentKeyVersion = settings.CurrentVersion.Trim();
+        this.payloadSigningKeys = payloadKeys;
+        this.ownerScopeSigningKeys = ownerKeys;
     }
+
+    public string CurrentKeyVersion { get; }
 
     public static string HashOperationKey(string clientOperationId)
     {
@@ -43,6 +54,19 @@ public sealed class TripPlanCreationFingerprint
     }
 
     public string HashOwnerScope(string ownerUserId)
+    {
+        return this.HashOwnerScope(ownerUserId, this.CurrentKeyVersion);
+    }
+
+    public IReadOnlyCollection<string> HashOwnerScopes(string ownerUserId)
+    {
+        return this.ownerScopeSigningKeys.Keys
+            .Select(keyVersion => this.HashOwnerScope(ownerUserId, keyVersion))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+    }
+
+    public string HashOwnerScope(string ownerUserId, string keyVersion)
     {
         string normalizedOwnerUserId = ownerUserId?.Trim() ?? string.Empty;
         if (normalizedOwnerUserId.Length == 0)
@@ -53,7 +77,7 @@ public sealed class TripPlanCreationFingerprint
         byte[] ownerBytes = Encoding.UTF8.GetBytes(normalizedOwnerUserId);
         try
         {
-            using HMACSHA256 hmac = new(this.ownerScopeSigningKey);
+            using HMACSHA256 hmac = new(GetRequiredKey(this.ownerScopeSigningKeys, keyVersion));
             return Convert.ToHexString(hmac.ComputeHash(ownerBytes)).ToLowerInvariant();
         }
         finally
@@ -63,6 +87,11 @@ public sealed class TripPlanCreationFingerprint
     }
 
     public string HashPayload(TripPlan tripPlan)
+    {
+        return this.HashPayload(tripPlan, this.CurrentKeyVersion);
+    }
+
+    public string HashPayload(TripPlan tripPlan, string keyVersion)
     {
         ArgumentNullException.ThrowIfNull(tripPlan);
         TripPlanCreationPayload payload = new(
@@ -76,7 +105,7 @@ public sealed class TripPlanCreationFingerprint
         byte[] serializedPayload = JsonSerializer.SerializeToUtf8Bytes(payload);
         try
         {
-            using HMACSHA256 hmac = new(this.payloadSigningKey);
+            using HMACSHA256 hmac = new(GetRequiredKey(this.payloadSigningKeys, keyVersion));
             return Convert.ToHexString(hmac.ComputeHash(serializedPayload)).ToLowerInvariant();
         }
         finally
@@ -93,6 +122,24 @@ public sealed class TripPlanCreationFingerprint
     private static string Hash(string value)
     {
         byte[] bytes = Encoding.UTF8.GetBytes(value);
-        return Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
+        try
+        {
+            return Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
+        }
+        finally
+        {
+            CryptographicOperations.ZeroMemory(bytes);
+        }
+    }
+
+    private static byte[] GetRequiredKey(
+        IReadOnlyDictionary<string, byte[]> keys,
+        string keyVersion)
+    {
+        string normalizedVersion = keyVersion?.Trim() ?? string.Empty;
+        return keys.TryGetValue(normalizedVersion, out byte[]? key)
+            ? key
+            : throw new InvalidOperationException(
+                $"The trip fingerprint key version '{normalizedVersion}' is unavailable.");
     }
 }

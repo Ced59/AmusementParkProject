@@ -470,6 +470,9 @@ jobs:
       JWT_KEY: ${{ secrets.PROD_JWT_KEY }}
       JWT_ISSUER: ${{ vars.PROD_JWT_ISSUER || 'AmusementPark' }}
       JWT_AUDIENCE: ${{ vars.PROD_JWT_AUDIENCE || 'AmusementPark' }}
+      TRIP_FINGERPRINT_CURRENT_VERSION: ${{ vars.PROD_TRIP_FINGERPRINT_CURRENT_VERSION || 'v1' }}
+      TRIP_FINGERPRINT_CURRENT_KEY: ${{ secrets.PROD_TRIP_FINGERPRINT_CURRENT_KEY }}
+      TRIP_FINGERPRINT_PREVIOUS_KEYS: ${{ secrets.PROD_TRIP_FINGERPRINT_PREVIOUS_KEYS }}
       GOOGLE_CLIENT_ID: ${{ secrets.PROD_GOOGLE_CLIENT_ID }}
       GOOGLE_CLIENT_SECRET: ${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}
       GOOGLE_REDIRECT_URI: ${{ vars.PROD_GOOGLE_REDIRECT_URI || 'https://amusement-parks.fun/api/auth/external/google/callback' }}
