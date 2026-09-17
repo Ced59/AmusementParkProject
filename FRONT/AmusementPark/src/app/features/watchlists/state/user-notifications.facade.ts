@@ -82,6 +82,12 @@ export class UserNotificationsFacade {
       .subscribe({
         next: (result: UserNotificationPage): void => {
           if (loadId === this.requestId) {
+            if (result.items.length === 0
+              && criteria.page > 1
+              && result.totalPages < criteria.page) {
+              this.load(Math.max(1, result.totalPages));
+              return;
+            }
             this.pageSignal.set(result);
           }
         },

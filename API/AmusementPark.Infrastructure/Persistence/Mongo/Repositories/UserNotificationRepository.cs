@@ -53,7 +53,9 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
             return result.Upserts.Count;
         }
         catch (MongoBulkWriteException<UserNotificationDocument> exception)
-            when (exception.WriteErrors.All(static error => error.Category == ServerErrorCategory.DuplicateKey))
+            when (IsDuplicateOnlyFailure(
+                exception.WriteErrors.Select(static error => error.Category).ToArray(),
+                exception.WriteConcernError is not null))
         {
             return exception.Result?.Upserts.Count ?? 0;
         }
@@ -214,6 +216,16 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
             .SetOnInsert(static item => item.UpdatedAt, document.UpdatedAt)
             .SetOnInsert(static item => item.Version, document.Version);
         return new UpdateOneModel<UserNotificationDocument>(filter, update) { IsUpsert = true };
+    }
+
+    internal static bool IsDuplicateOnlyFailure(
+        IReadOnlyCollection<ServerErrorCategory> errorCategories,
+        bool hasWriteConcernError)
+    {
+        ArgumentNullException.ThrowIfNull(errorCategories);
+        return !hasWriteConcernError
+            && errorCategories.Count > 0
+            && errorCategories.All(static category => category == ServerErrorCategory.DuplicateKey);
     }
 
     private static IMongoCollection<UserNotificationDocument> GetCollection(
