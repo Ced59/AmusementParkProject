@@ -20,6 +20,7 @@ public sealed class TripPlan
         IReadOnlyCollection<TripMember> members,
         TripAdmissionClosureState admissionClosureState,
         TripDeletionState deletionState,
+        long childMutationEpoch,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         long version)
@@ -31,6 +32,10 @@ public sealed class TripPlan
         string? normalizedTimeZoneId = NormalizeTimeZoneId(destinationTimeZoneId, dateProposal.Kind);
         ValidateEnums(status, accessScope, admissionClosureState, deletionState);
         ValidateTimestamps(createdAtUtc, updatedAtUtc);
+        if (childMutationEpoch < 1)
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidState, "The child mutation epoch must be positive.");
+        }
         if (version < 1)
         {
             throw Invalid(TripPlanErrorCodes.InvalidVersion, "The trip plan version must be positive.");
@@ -58,6 +63,7 @@ public sealed class TripPlan
         this.Members = normalizedMembers;
         this.AdmissionClosureState = admissionClosureState;
         this.DeletionState = deletionState;
+        this.ChildMutationEpoch = childMutationEpoch;
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
         this.Version = version;
@@ -73,6 +79,7 @@ public sealed class TripPlan
     public IReadOnlyCollection<TripMember> Members { get; }
     public TripAdmissionClosureState AdmissionClosureState { get; private set; }
     public TripDeletionState DeletionState { get; private set; }
+    public long ChildMutationEpoch { get; private set; }
     public DateTime CreatedAtUtc { get; }
     public DateTime UpdatedAtUtc { get; private set; }
     public long Version { get; private set; }
@@ -97,6 +104,7 @@ public sealed class TripPlan
             new[] { owner },
             TripAdmissionClosureState.Open,
             TripDeletionState.None,
+            1,
             nowUtc,
             nowUtc,
             1);
@@ -113,6 +121,7 @@ public sealed class TripPlan
         IReadOnlyCollection<TripMember> members,
         TripAdmissionClosureState admissionClosureState,
         TripDeletionState deletionState,
+        long childMutationEpoch,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         long version)
@@ -129,6 +138,7 @@ public sealed class TripPlan
             members,
             admissionClosureState,
             deletionState,
+            childMutationEpoch,
             createdAtUtc,
             updatedAtUtc,
             version);
@@ -165,6 +175,7 @@ public sealed class TripPlan
         this.PrepareMutation();
         this.DateProposal = dateProposal;
         this.DestinationTimeZoneId = normalizedTimeZoneId;
+        this.IncrementChildMutationEpoch();
         this.CommitMutation(nowUtc);
     }
 
@@ -179,6 +190,7 @@ public sealed class TripPlan
         this.PrepareMutation();
         this.AdmissionClosureState = TripAdmissionClosureState.Closing;
         this.DeletionState = TripDeletionState.Pending;
+        this.IncrementChildMutationEpoch();
         this.CommitMutation(nowUtc);
     }
 
@@ -203,6 +215,18 @@ public sealed class TripPlan
     {
         this.Version++;
         this.UpdatedAtUtc = nowUtc;
+    }
+
+    private void IncrementChildMutationEpoch()
+    {
+        if (this.ChildMutationEpoch == long.MaxValue)
+        {
+            throw Invalid(
+                TripPlanErrorCodes.InvalidVersion,
+                "The child mutation epoch cannot be incremented further.");
+        }
+
+        this.ChildMutationEpoch++;
     }
 
     private static string NormalizeTitle(string? title)

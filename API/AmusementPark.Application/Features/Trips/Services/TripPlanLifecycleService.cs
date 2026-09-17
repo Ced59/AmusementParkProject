@@ -38,7 +38,7 @@ public sealed class TripPlanLifecycleService
                 normalizedUserId,
                 cancellationToken);
             return ApplicationResult<IReadOnlyCollection<TripPlanResult>>.Success(
-                trips.Select(trip => ToResult(trip, normalizedUserId)).ToArray());
+                trips.Select(trip => TripPlanResultFactory.ToResult(trip, normalizedUserId)).ToArray());
         }
         catch (ArgumentException exception)
         {
@@ -61,7 +61,8 @@ public sealed class TripPlanLifecycleService
         TripPlan? trip = await this.repository.GetAccessibleAsync(normalizedUserId, parsedId, cancellationToken);
         return trip is null
             ? ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.NotFound())
-            : ApplicationResult<TripPlanResult>.Success(ToResult(trip, normalizedUserId));
+            : ApplicationResult<TripPlanResult>.Success(
+                TripPlanResultFactory.ToResult(trip, normalizedUserId));
     }
 
     public async Task<ApplicationResult<CreateTripPlanResult>> CreateAsync(
@@ -127,33 +128,6 @@ public sealed class TripPlanLifecycleService
             cancellationToken);
     }
 
-    public Task<ApplicationResult<TripPlanResult>> SetDatesAsync(
-        string userId,
-        string tripPlanId,
-        long expectedVersion,
-        TripPlanDatesInput input,
-        CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(input);
-        ApplicationError? timeZoneError = this.ValidateTimeZone(
-            input.DateProposal,
-            input.DestinationTimeZoneId);
-        if (timeZoneError is not null)
-        {
-            return Task.FromResult(ApplicationResult<TripPlanResult>.Failure(timeZoneError));
-        }
-
-        return this.MutateAsync(
-            userId,
-            tripPlanId,
-            expectedVersion,
-            (trip, nowUtc) => trip.SetDates(
-                input.DateProposal,
-                input.DestinationTimeZoneId,
-                nowUtc),
-            cancellationToken);
-    }
-
     private async Task<ApplicationResult<TripPlanResult>> MutateAsync(
         string userId,
         string tripPlanId,
@@ -207,7 +181,8 @@ public sealed class TripPlanLifecycleService
                     "A successful trip mutation must return the persisted aggregate.");
         }
 
-        return ApplicationResult<TripPlanResult>.Success(ToResult(persistedTrip, normalizedUserId));
+        return ApplicationResult<TripPlanResult>.Success(
+            TripPlanResultFactory.ToResult(persistedTrip, normalizedUserId));
     }
 
     public async Task<ApplicationResult> DeleteAsync(
@@ -256,6 +231,12 @@ public sealed class TripPlanLifecycleService
             trip,
             expectedVersion,
             cancellationToken);
+        if (writeResult.Outcome == TripPlanWriteOutcome.Success)
+        {
+            await this.repository.PurgeChildrenAsync(trip.Id, CancellationToken.None);
+            writeResult = await this.repository.FinalizeDeletionOwnedAsync(trip, CancellationToken.None);
+        }
+
         return writeResult.Outcome switch
         {
             TripPlanWriteOutcome.Success => ApplicationResult.Success(),
@@ -311,28 +292,8 @@ public sealed class TripPlanLifecycleService
         TripPlan trip = creation.TripPlan
             ?? throw new InvalidOperationException("A successful trip creation must return its snapshot.");
         return ApplicationResult<CreateTripPlanResult>.Success(new CreateTripPlanResult(
-            ToResult(trip, userId),
+            TripPlanResultFactory.ToResult(trip, userId),
             creation.Status == IdempotentTripPlanCreationStatus.Replayed));
-    }
-
-    private static TripPlanResult ToResult(TripPlan trip, string currentUserId)
-    {
-        return new TripPlanResult(
-            trip.Id.Value,
-            trip.Title,
-            new TripDateProposalResult(
-                trip.DateProposal.Kind,
-                trip.DateProposal.StartDate,
-                trip.DateProposal.EndDate,
-                trip.DateProposal.CandidateDates),
-            trip.DestinationTimeZoneId,
-            trip.Status,
-            trip.AccessScope,
-            trip.Members.Count(member => member.State == TripMembershipState.Active),
-            string.Equals(trip.OwnerUserId, currentUserId, StringComparison.Ordinal),
-            trip.CreatedAtUtc,
-            trip.UpdatedAtUtc,
-            trip.Version);
     }
 
     private static string NormalizeOperationId(string? value)

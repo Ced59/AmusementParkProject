@@ -201,8 +201,12 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
     {
         ServiceCollection services = new ServiceCollection();
         IConfiguration configuration = new ConfigurationBuilder().Build();
+        services.AddLogging();
         services.AddApplicationModules(configuration);
         services.AddSingleton(Mock.Of<ITripPlanRepository>());
+        services.AddSingleton(Mock.Of<ITripParkCandidateRepository>());
+        services.AddSingleton(Mock.Of<ITripDayPlanRepository>());
+        services.AddSingleton(Mock.Of<ITripChildMutationLeaseRepository>());
         services.AddSingleton(Mock.Of<ITripTimeZoneValidator>());
 
         using ServiceProvider serviceProvider = services.BuildServiceProvider();

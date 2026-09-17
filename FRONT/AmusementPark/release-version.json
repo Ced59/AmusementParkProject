@@ -1,6 +1,20 @@
 {
-  "version": "5.3.59",
+  "version": "5.3.60",
   "history": [
+    {
+      "version": "5.3.60",
+      "releasedAt": "2026-09-17",
+      "labels": {
+        "fr": "Les parcs envisagés et les journées peuvent désormais structurer un voyage privé.",
+        "en": "Candidate parks and day plans can now structure a private trip.",
+        "de": "Vorgemerkte Parks und Tagespläne können jetzt eine private Reise strukturieren.",
+        "nl": "Kandidaat-parken en dagplannen kunnen nu een privéreis structureren.",
+        "it": "I parchi candidati e i programmi giornalieri possono ora strutturare un viaggio privato.",
+        "es": "Los parques candidatos y los planes diarios ya pueden estructurar un viaje privado.",
+        "pl": "Proponowane parki i plany dni mogą teraz porządkować prywatny wyjazd.",
+        "pt": "Os parques candidatos e os planos diários podem agora estruturar uma viagem privada."
+      }
+    },
     {
       "version": "5.3.59",
       "releasedAt": "2026-09-17",

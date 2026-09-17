@@ -36,6 +36,9 @@ public sealed class TripPlanCreationSnapshotDocument
     [BsonRepresentation(BsonType.String)]
     public TripDeletionState DeletionState { get; set; }
 
+    [BsonElement("childMutationEpoch")]
+    public long ChildMutationEpoch { get; set; } = 1;
+
     [BsonElement("createdAtUtc")]
     public DateTime CreatedAtUtc { get; set; }
 

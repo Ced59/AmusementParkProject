@@ -67,6 +67,7 @@ using AmusementPark.Infrastructure.Services.Seo;
 using AmusementPark.Infrastructure.Services.Sharing;
 using AmusementPark.Infrastructure.Services.Ssr;
 using AmusementPark.Infrastructure.Services.SocialPublishing;
+using AmusementPark.Infrastructure.Services.Trips;
 using AmusementPark.Infrastructure.Services.Videos;
 using AmusementPark.Infrastructure.Services.Weather;
 using AmusementPark.Infrastructure.Time;
@@ -195,6 +196,9 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IWatchSubscriptionRepository, WatchSubscriptionRepository>();
         services.AddSingleton<TripPlanCreationFingerprint>();
         services.AddScoped<ITripPlanRepository, TripPlanRepository>();
+        services.AddScoped<ITripChildMutationLeaseRepository, TripChildMutationLeaseRepository>();
+        services.AddScoped<ITripParkCandidateRepository, TripParkCandidateRepository>();
+        services.AddScoped<ITripDayPlanRepository, TripDayPlanRepository>();
         services.AddSingleton<ITripTimeZoneValidator, SystemTripTimeZoneValidator>();
         services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
         services.AddScoped<INotificationDigestRepository, NotificationDigestRepository>();
@@ -216,6 +220,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHostedService<FactualChangeOutboxReconciliationBackgroundService>();
         services.AddHostedService<FactualNotificationDistributionReconciliationBackgroundService>();
         services.AddHostedService<RatingRankingRebuildReconciliationBackgroundService>();
+        services.AddHostedService<TripPlanDeletionReconciliationBackgroundService>();
 
         services.AddScoped<ICountryReadRepository, CountryReadRepository>();
         services.AddScoped<IParkFounderRepository, ParkFounderRepository>();

@@ -61,6 +61,45 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildChildEpochMutationFilter_ShouldOnlyRequireAnEmptyLeaseSetWhenEpochAdvances()
+    {
+        FilterDefinition<TripPlanDocument> filter =
+            TripPlanMongoDefinitions.BuildChildEpochMutationFilter(2);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("childMutationEpoch", json, StringComparison.Ordinal);
+        Assert.Contains("$$NOW", json, StringComparison.Ordinal);
+        Assert.Contains("$exists", json, StringComparison.Ordinal);
+        Assert.Contains("$or", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void BuildActiveChildLeaseIdentityFilter_ShouldBindTheGenerationAndMongoServerTime()
+    {
+        TripChildMutationLease lease = new(
+            "operation-1",
+            TripMemberId.Parse("member-1"),
+            3,
+            7,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+
+        FilterDefinition<TripPlanDocument> filter =
+            TripPlanMongoDefinitions.BuildActiveChildLeaseIdentityFilter(lease);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("operation-1", json, StringComparison.Ordinal);
+        Assert.Contains("member-1", json, StringComparison.Ordinal);
+        Assert.Contains("generation", json, StringComparison.Ordinal);
+        Assert.Contains("$$NOW", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void BuildDeletionTombstone_ShouldScrubPrivateDataAndKeepOnlyTheReplayFence()
     {
         DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
@@ -82,6 +121,8 @@ public sealed class TripPlanMongoDefinitionsTests
         Assert.Equal(TripPlanStatus.Cancelled.ToString(), rendered["$set"]["status"].AsString);
         Assert.Equal(TripDeletionState.Purged.ToString(), rendered["$set"]["deletionState"].AsString);
         Assert.Empty(rendered["$set"]["members"].AsBsonArray);
+        Assert.Empty(rendered["$set"]["parkCandidateOrderIds"].AsBsonArray);
+        Assert.Equal(0, rendered["$set"]["parkCandidateOrderVersion"].AsInt64);
         Assert.Equal(
             createdAtUtc.AddMinutes(1).Add(TripPlan.CreationReplayRetention),
             rendered["$set"]["creationOperationExpiresAtUtc"].ToUniversalTime());
@@ -93,6 +134,34 @@ public sealed class TripPlanMongoDefinitionsTests
         Assert.False(rendered.ToString().Contains("Voyage privé", StringComparison.Ordinal));
         Assert.False(rendered.ToString().Contains("Europe/Paris", StringComparison.Ordinal));
         Assert.False(rendered.ToString().Contains("user-1", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void BuildDeletionFinalizationFilter_ShouldAcceptTheOwnedPendingOrMatchingPurgedVersion()
+    {
+        DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "user-1",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            createdAtUtc);
+        trip.BeginDeletion(createdAtUtc.AddMinutes(1));
+
+        FilterDefinition<TripPlanDocument> filter =
+            TripPlanMongoDefinitions.BuildDeletionFinalizationFilter(trip);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("trip-1", json, StringComparison.Ordinal);
+        Assert.Contains("user-1", json, StringComparison.Ordinal);
+        Assert.Contains(TripDeletionState.Pending.ToString(), json, StringComparison.Ordinal);
+        Assert.Contains(TripDeletionState.Purged.ToString(), json, StringComparison.Ordinal);
+        Assert.Contains("version", json, StringComparison.Ordinal);
+        Assert.Contains("$or", json, StringComparison.Ordinal);
     }
 
     [Fact]

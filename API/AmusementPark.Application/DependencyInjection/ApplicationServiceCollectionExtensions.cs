@@ -99,6 +99,12 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<UserCollectionLifecycleService>();
         services.AddScoped<WatchSubscriptionLifecycleService>();
         services.AddScoped<TripPlanLifecycleService>();
+        services.AddScoped<TripPlanDateService>();
+        services.AddScoped<TripPlanDeletionReconciler>();
+        services.AddScoped<TripProgramService>();
+        services.AddScoped<TripDayProgramService>();
+        services.AddScoped<TripChildMutationExecutor>();
+        services.AddScoped<TripProgramResultFactory>();
         services.AddScoped<UserNotificationCenterService>();
         services.AddScoped<WatchPilotMetricsRecorder>();
         services.AddScoped<UserNotificationCreationService>();

@@ -43,6 +43,21 @@ public sealed class TripPlanDocument : MongoDocumentBase
     [BsonRepresentation(BsonType.String)]
     public TripDeletionState DeletionState { get; set; }
 
+    [BsonElement("childMutationEpoch")]
+    public long ChildMutationEpoch { get; set; } = 1;
+
+    [BsonElement("childMutationLeaseSequence")]
+    public long ChildMutationLeaseSequence { get; set; }
+
+    [BsonElement("activeChildMutationLeases")]
+    public List<TripChildMutationLeaseDocument> ActiveChildMutationLeases { get; set; } = new();
+
+    [BsonElement("parkCandidateOrderIds")]
+    public List<string> ParkCandidateOrderIds { get; set; } = new();
+
+    [BsonElement("parkCandidateOrderVersion")]
+    public long ParkCandidateOrderVersion { get; set; }
+
     [BsonElement("ownerSlot")]
     public int OwnerSlot { get; set; }
 

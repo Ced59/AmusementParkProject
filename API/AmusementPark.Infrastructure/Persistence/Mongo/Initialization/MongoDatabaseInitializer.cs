@@ -918,8 +918,26 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(this.settings.TripPlansCollectionName, cancellationToken);
         IMongoCollection<TripPlanDocument> tripPlans =
             this.database.GetCollection<TripPlanDocument>(this.settings.TripPlansCollectionName);
+        await MigrateTripPlanProgramFoundationAsync(tripPlans, cancellationToken);
         await tripPlans.Indexes.CreateManyAsync(
             TripPlanMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.TripParkCandidatesCollectionName,
+            cancellationToken);
+        IMongoCollection<TripParkCandidateDocument> tripParkCandidates =
+            this.database.GetCollection<TripParkCandidateDocument>(
+                this.settings.TripParkCandidatesCollectionName);
+        await tripParkCandidates.Indexes.CreateManyAsync(
+            TripParkCandidateRepository.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.TripDayPlansCollectionName,
+            cancellationToken);
+        IMongoCollection<TripDayPlanDocument> tripDayPlans =
+            this.database.GetCollection<TripDayPlanDocument>(this.settings.TripDayPlansCollectionName);
+        await tripDayPlans.Indexes.CreateManyAsync(
+            TripDayPlanRepository.BuildIndexes(),
             cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.UserVisitsCollectionName, cancellationToken);
@@ -2825,7 +2843,44 @@ private async Task InitializeVideosIndexesAsync(CancellationToken cancellationTo
         };
     }
 
-private async Task InitializeUserVisitIndexesAsync(CancellationToken cancellationToken)
+    private static async Task MigrateTripPlanProgramFoundationAsync(
+        IMongoCollection<TripPlanDocument> collection,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        UpdateDefinitionBuilder<TripPlanDocument> updates = Builders<TripPlanDocument>.Update;
+        await collection.UpdateManyAsync(
+            filters.Exists(static document => document.ChildMutationEpoch, false),
+            updates.Set(static document => document.ChildMutationEpoch, 1),
+            cancellationToken: cancellationToken);
+        await collection.UpdateManyAsync(
+            filters.Exists(static document => document.ChildMutationLeaseSequence, false),
+            updates.Set(static document => document.ChildMutationLeaseSequence, 0),
+            cancellationToken: cancellationToken);
+        await collection.UpdateManyAsync(
+            filters.Exists(static document => document.ActiveChildMutationLeases, false),
+            updates.Set(
+                static document => document.ActiveChildMutationLeases,
+                new List<TripChildMutationLeaseDocument>()),
+            cancellationToken: cancellationToken);
+        await collection.UpdateManyAsync(
+            filters.Exists(static document => document.ParkCandidateOrderIds, false),
+            updates.Set(
+                static document => document.ParkCandidateOrderIds,
+                new List<string>()),
+            cancellationToken: cancellationToken);
+        await collection.UpdateManyAsync(
+            filters.Exists(static document => document.ParkCandidateOrderVersion, false),
+            updates.Set(static document => document.ParkCandidateOrderVersion, 0),
+            cancellationToken: cancellationToken);
+        await collection.UpdateManyAsync(
+            filters.Exists("creationSnapshot", true)
+                & filters.Exists("creationSnapshot.childMutationEpoch", false),
+            updates.Set("creationSnapshot.childMutationEpoch", 1),
+            cancellationToken: cancellationToken);
+    }
+
+    private async Task InitializeUserVisitIndexesAsync(CancellationToken cancellationToken)
     {
         IMongoCollection<UserVisitDocument> collection =
             this.database.GetCollection<UserVisitDocument>(this.settings.UserVisitsCollectionName);

@@ -294,6 +294,14 @@ public sealed class TripPlanLifecycleServiceTests
                 1,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new TripPlanWriteResult(TripPlanWriteOutcome.Success, 2));
+        repository.Setup(item => item.PurgeChildrenAsync(
+                trip.Id,
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        repository.Setup(item => item.FinalizeDeletionOwnedAsync(
+                It.Is<TripPlan>(candidate => candidate.DeletionState == TripDeletionState.Pending),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new TripPlanWriteResult(TripPlanWriteOutcome.Success, 2));
         Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
         TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
 
