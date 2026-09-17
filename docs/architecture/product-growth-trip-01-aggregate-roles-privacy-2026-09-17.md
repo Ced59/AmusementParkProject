@@ -116,6 +116,10 @@ stateDiagram-v2
   chaque membre ;
 - `Archived` masque le voyage des listes actives sans le supprimer ;
 - `Cancelled` est terminal et révoque les invitations actives ;
+- `CanAcceptMembers` est vrai uniquement en `Draft`, `OpenForVotes` ou `Decided`
+  lorsque `DeletionState = None` ; toute transition qui ferme cette capacité annule
+  atomiquement le fence d'admission et retire un éventuel membre encore lié à son
+  opération avant de compenser les invitations `Active` ou `Accepting` ;
 - la suppression reste distincte d'une annulation et suit la politique décrite
   plus bas.
 
@@ -259,7 +263,7 @@ sequenceDiagram
     I->>A: accepter(token, idempotencyKey)
     A->>R: résoudre si Active, non expirée et destinataire valide
     R-->>A: tripPlanId + operationId proposé
-    A->>P: installer le fence inerte si DeletionState=None
+    A->>P: installer le fence inerte si CanAcceptMembers
     A->>R: réserver si toujours Active avec le même operationId
     R-->>A: invitation Accepting + operationId
     A->>P: armer le fence si encore Prepared
@@ -301,9 +305,12 @@ réactiver le fence, tandis que l'annulation rend immédiatement la place dispon
 pour une nouvelle génération.
 
 L'installation, l'armement et l'ajout du membre exigent tous
-`DeletionState = None`. Le passage à `Pending` annule atomiquement le fence courant
-et retire le membre portant son `operationId` s'il venait d'être appliqué. Une
-écriture d'admission retardée échoue donc sur le document du plan lui-même.
+`CanAcceptMembers = true`. Le passage de la suppression à `Pending`, comme une
+transition vers `Completed`, `Archived` ou `Cancelled`, annule atomiquement le
+fence courant et retire le membre portant son `operationId` s'il venait d'être
+appliqué. Les invitations `Active` ou `Accepting` passent ensuite par
+`RevocationPending` et leur compensation. Une écriture d'admission retardée échoue
+donc sur le document du plan lui-même, y compris lors d'une annulation métier.
 
 Une lease expirée ne remet jamais l'invitation en état `Active` : le reconciler
 reprend exclusivement la même opération et le même payload jusqu'à finalisation ou
@@ -626,6 +633,8 @@ variantes ne sont pas réellement servies.
   admis par l'opération révoquée avant l'état terminal `Revoked` ;
 - suppression passant `Pending` atomiquement avec la fermeture des admissions et
   compensant toute invitation déjà `Accepting` ;
+- transition vers `Completed`, `Archived` ou `Cancelled` fermant et compensant les
+  admissions en cours avant son état terminal ;
 - token brut absent de Mongo, des logs, jobs et réponses privées ;
 - expiration, révocation, rotation, rate limit et `404` uniforme ;
 - preview dépourvue de membres, contraintes, votes et identifiants ;
