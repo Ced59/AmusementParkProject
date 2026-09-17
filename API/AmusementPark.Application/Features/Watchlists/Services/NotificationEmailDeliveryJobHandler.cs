@@ -107,6 +107,35 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
                 NotificationEmailDeliveryErrorCodes.DigestNotClosed);
         }
 
+        string? activityLeaseId = await this.deletionFence.TryAcquireActivityLeaseAsync(
+            digest.UserId,
+            this.Definition.Timeout.Add(TimeSpan.FromMinutes(1)),
+            cancellationToken);
+        if (activityLeaseId is null)
+        {
+            return DurableBackgroundJobHandlerResult.Success();
+        }
+
+        try
+        {
+            return await this.HandleUnderActivityLeaseAsync(
+                digest,
+                nowUtc,
+                cancellationToken);
+        }
+        finally
+        {
+            await this.deletionFence.ReleaseActivityLeaseAsync(
+                activityLeaseId,
+                CancellationToken.None);
+        }
+    }
+
+    private async Task<DurableBackgroundJobHandlerResult> HandleUnderActivityLeaseAsync(
+        NotificationDigest digest,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
         string attemptId = $"email:{digest.Id.Value}";
         NotificationDeliveryAttempt? attempt = await this.GetOrCreateAttemptAsync(
             attemptId,
@@ -200,56 +229,37 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
             return DurableBackgroundJobHandlerResult.Success();
         }
 
-        string? deliveryLeaseId = await this.deletionFence.TryAcquireActivityLeaseAsync(
-            digest.UserId,
-            this.Definition.Timeout.Add(TimeSpan.FromMinutes(1)),
-            cancellationToken);
-        if (deliveryLeaseId is null)
-        {
-            await this.attemptRepository.DeleteAsync(attempt.Id, cancellationToken);
-            return DurableBackgroundJobHandlerResult.Success();
-        }
-
+        NotificationDigestEmailMessage message = new NotificationDigestEmailMessage(
+            user.Email.Trim(),
+            preference.ConsentLocale ?? "en",
+            digest.Frequency,
+            digest.PeriodStartUtc,
+            digest.PeriodEndUtc,
+            entries,
+            digest.ObservedNotificationCount,
+            this.tokenProtector.CreateToken(digest.UserId));
         try
         {
-            NotificationDigestEmailMessage message = new NotificationDigestEmailMessage(
-                user.Email.Trim(),
-                preference.ConsentLocale ?? "en",
-                digest.Frequency,
-                digest.PeriodStartUtc,
-                digest.PeriodEndUtc,
-                entries,
-                digest.ObservedNotificationCount,
-                this.tokenProtector.CreateToken(digest.UserId));
-            try
-            {
-                await this.emailSender.SendAsync(message, cancellationToken);
-            }
-            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
-            {
-                throw;
-            }
-            catch (Exception)
-            {
-                return await this.RecordFailureAsync(attempt, cancellationToken);
-            }
-
-            expectedVersion = attempt.Version;
-            attempt.MarkSucceeded(this.timeProvider.GetUtcNow().UtcDateTime);
-            return await this.attemptRepository.ReplaceAsync(
-                    attempt,
-                    expectedVersion,
-                    cancellationToken) == NotificationDeliveryAttemptWriteOutcome.Success
-                ? DurableBackgroundJobHandlerResult.Success()
-                : DurableBackgroundJobHandlerResult.Retry(
-                    NotificationEmailDeliveryErrorCodes.PersistenceConflict);
+            await this.emailSender.SendAsync(message, cancellationToken);
         }
-        finally
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
-            await this.deletionFence.ReleaseActivityLeaseAsync(
-                deliveryLeaseId,
-                CancellationToken.None);
+            throw;
         }
+        catch (Exception)
+        {
+            return await this.RecordFailureAsync(attempt, cancellationToken);
+        }
+
+        expectedVersion = attempt.Version;
+        attempt.MarkSucceeded(this.timeProvider.GetUtcNow().UtcDateTime);
+        return await this.attemptRepository.ReplaceAsync(
+                attempt,
+                expectedVersion,
+                cancellationToken) == NotificationDeliveryAttemptWriteOutcome.Success
+            ? DurableBackgroundJobHandlerResult.Success()
+            : DurableBackgroundJobHandlerResult.Retry(
+                NotificationEmailDeliveryErrorCodes.PersistenceConflict);
     }
 
     private async Task<NotificationDeliveryAttempt?> GetOrCreateAttemptAsync(

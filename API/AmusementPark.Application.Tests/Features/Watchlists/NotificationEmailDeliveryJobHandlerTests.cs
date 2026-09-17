@@ -74,6 +74,15 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
         fence.SetupSequence(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
             .ReturnsAsync(false)
             .ReturnsAsync(true);
+        fence.Setup(candidate => candidate.TryAcquireActivityLeaseAsync(
+                "user-1",
+                TimeSpan.FromMinutes(3),
+                CancellationToken.None))
+            .ReturnsAsync("activity-lease-1");
+        fence.Setup(candidate => candidate.ReleaseActivityLeaseAsync(
+                "activity-lease-1",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         Mock<INotificationEmailPreferenceRepository> preferences =
             new Mock<INotificationEmailPreferenceRepository>(MockBehavior.Strict);
         Mock<INotificationDeliveryAttemptRepository> attempts =
@@ -112,7 +121,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
     }
 
     [Fact]
-    public async Task HandleAsync_ShouldNotSendWhenDeletionBlocksTheDeliveryLease()
+    public async Task HandleAsync_ShouldStopBeforeCreatingAttemptWhenDeletionBlocksTheActivityLease()
     {
         FactualChangeEvent factualEvent = CreatePublishedEvent();
         WatchSubscription subscription = CreateSubscription();
@@ -229,13 +238,13 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
         Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
         fence.VerifyAll();
         digests.VerifyAll();
-        preferences.VerifyAll();
-        attempts.VerifyAll();
-        users.VerifyAll();
-        subscriptions.VerifyAll();
-        events.VerifyAll();
-        parks.VerifyAll();
-        images.VerifyAll();
+        preferences.VerifyNoOtherCalls();
+        attempts.VerifyNoOtherCalls();
+        users.VerifyNoOtherCalls();
+        subscriptions.VerifyNoOtherCalls();
+        events.VerifyNoOtherCalls();
+        parks.VerifyNoOtherCalls();
+        images.VerifyNoOtherCalls();
         sender.VerifyNoOtherCalls();
         timeProvider.VerifyAll();
     }
@@ -424,6 +433,15 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
             new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
         fence.Setup(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
             .ReturnsAsync(false);
+        fence.Setup(candidate => candidate.TryAcquireActivityLeaseAsync(
+                "user-1",
+                TimeSpan.FromMinutes(3),
+                CancellationToken.None))
+            .ReturnsAsync("activity-lease-1");
+        fence.Setup(candidate => candidate.ReleaseActivityLeaseAsync(
+                "activity-lease-1",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         return fence;
     }
 
