@@ -171,6 +171,67 @@ public sealed class TripPlanLifecycleServiceTests
     }
 
     [Fact]
+    public async Task RenameAsync_ShouldReturnTheTimestampPersistedByTheRepository()
+    {
+        DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
+        DateTime requestedAtUtc = createdAtUtc.AddMinutes(1).AddTicks(4567);
+        DateTime persistedAtUtc = new(
+            requestedAtUtc.Ticks - (requestedAtUtc.Ticks % TimeSpan.TicksPerMillisecond),
+            DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            createdAtUtc);
+        TripPlan persistedTrip = TripPlan.Create(
+            trip.Id,
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            createdAtUtc);
+        persistedTrip.Rename("Nouveau titre", persistedAtUtc);
+        Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.GetOwnedAsync(
+                "user-1",
+                trip.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(trip);
+        repository.Setup(item => item.ReplaceOwnedAsync(
+                It.Is<TripPlan>(candidate => candidate.UpdatedAtUtc == requestedAtUtc),
+                1,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new TripPlanWriteResult(
+                TripPlanWriteOutcome.Success,
+                persistedTrip.Version,
+                persistedTrip));
+        Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
+        Mock<TimeProvider> timeProvider = new(MockBehavior.Strict);
+        timeProvider.Setup(provider => provider.GetUtcNow())
+            .Returns(new DateTimeOffset(requestedAtUtc));
+        TripPlanLifecycleService service = new(
+            repository.Object,
+            timeZoneValidator.Object,
+            timeProvider.Object);
+
+        ApplicationResult<TripPlanResult> result = await service.RenameAsync(
+            "user-1",
+            trip.Id.Value,
+            1,
+            "Nouveau titre",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Equal(persistedAtUtc, result.Value.UpdatedAtUtc);
+        Assert.NotEqual(requestedAtUtc, result.Value.UpdatedAtUtc);
+        repository.VerifyAll();
+        timeProvider.VerifyAll();
+    }
+
+    [Fact]
     public async Task DeleteAsync_ShouldPersistAClosedPendingDeletionAtTheNextVersion()
     {
         TripPlan trip = TripPlan.Create(

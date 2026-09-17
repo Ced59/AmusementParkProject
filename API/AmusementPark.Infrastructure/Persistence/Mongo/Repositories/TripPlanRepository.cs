@@ -176,16 +176,25 @@ public sealed class TripPlanRepository : ITripPlanRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(tripPlan);
-        UpdateResult result = await this.collection.UpdateOneAsync(
+        FindOneAndUpdateOptions<TripPlanDocument, TripPlanDocument> options = new()
+        {
+            ReturnDocument = ReturnDocument.After,
+        };
+        TripPlanDocument? persisted = await this.collection.FindOneAndUpdateAsync(
             BuildOwnedFilter(tripPlan.OwnerUserId, tripPlan.Id)
                 & Builders<TripPlanDocument>.Filter.Eq(
                     static document => document.Version,
                     expectedVersion),
             TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
-            cancellationToken: cancellationToken);
-        if (result.MatchedCount == 1)
+            options,
+            cancellationToken);
+        if (persisted is not null)
         {
-            return new TripPlanWriteResult(TripPlanWriteOutcome.Success, tripPlan.Version);
+            TripPlan persistedTripPlan = persisted.ToDomain();
+            return new TripPlanWriteResult(
+                TripPlanWriteOutcome.Success,
+                persistedTripPlan.Version,
+                persistedTripPlan);
         }
 
         TripPlan? existing = await this.GetOwnedAsync(
@@ -236,6 +245,15 @@ public sealed class TripPlanRepository : ITripPlanRepository
         string payloadHash)
     {
         ArgumentNullException.ThrowIfNull(existing);
+        bool matches = !string.IsNullOrWhiteSpace(existing.CreationPayloadHash)
+            && string.Equals(existing.CreationPayloadHash, payloadHash, StringComparison.Ordinal);
+        if (!matches)
+        {
+            return new IdempotentTripPlanCreationResult(
+                IdempotentTripPlanCreationStatus.Conflict,
+                null);
+        }
+
         if (existing.DeletionState != TripDeletionState.None)
         {
             return new IdempotentTripPlanCreationResult(
@@ -243,15 +261,9 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 null);
         }
 
-        bool matches = !string.IsNullOrWhiteSpace(existing.CreationPayloadHash)
-            && string.Equals(existing.CreationPayloadHash, payloadHash, StringComparison.Ordinal);
-        return matches
-            ? new IdempotentTripPlanCreationResult(
-                IdempotentTripPlanCreationStatus.Replayed,
-                existing.CreationSnapshotToDomain())
-            : new IdempotentTripPlanCreationResult(
-                IdempotentTripPlanCreationStatus.Conflict,
-                null);
+        return new IdempotentTripPlanCreationResult(
+            IdempotentTripPlanCreationStatus.Replayed,
+            existing.CreationSnapshotToDomain());
     }
 
     private static FilterDefinition<TripPlanDocument> BuildOwnedFilter(

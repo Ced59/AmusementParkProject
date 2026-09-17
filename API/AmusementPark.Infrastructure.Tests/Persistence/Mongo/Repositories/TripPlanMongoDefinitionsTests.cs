@@ -85,4 +85,21 @@ public sealed class TripPlanMongoDefinitionsTests
         Assert.Equal(IdempotentTripPlanCreationStatus.Deleted, result.Status);
         Assert.Null(result.TripPlan);
     }
+
+    [Fact]
+    public void ResolveIdempotentCreation_WhenDeletedKeyHasDifferentPayload_ShouldConflict()
+    {
+        TripPlanDocument tombstone = new()
+        {
+            DeletionState = TripDeletionState.Purged,
+            CreationPayloadHash = "original-payload-hash",
+        };
+
+        IdempotentTripPlanCreationResult result = TripPlanRepository.ResolveIdempotentCreation(
+            tombstone,
+            "different-payload-hash");
+
+        Assert.Equal(IdempotentTripPlanCreationStatus.Conflict, result.Status);
+        Assert.Null(result.TripPlan);
+    }
 }

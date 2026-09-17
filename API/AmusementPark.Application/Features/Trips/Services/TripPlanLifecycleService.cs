@@ -180,6 +180,7 @@ public sealed class TripPlanLifecycleService
             return Invalid<TripPlanResult>(exception.Code, exception.Message);
         }
 
+        TripPlan persistedTrip = trip;
         if (trip.Version != expectedVersion)
         {
             TripPlanWriteResult writeResult = await this.repository.ReplaceOwnedAsync(
@@ -193,9 +194,13 @@ public sealed class TripPlanLifecycleService
                     : ApplicationResult<TripPlanResult>.Failure(
                         TripPlanApplicationErrors.ChangedConcurrently(writeResult.CurrentVersion));
             }
+
+            persistedTrip = writeResult.PersistedTripPlan
+                ?? throw new InvalidOperationException(
+                    "A successful trip mutation must return the persisted aggregate.");
         }
 
-        return ApplicationResult<TripPlanResult>.Success(ToResult(trip, normalizedUserId));
+        return ApplicationResult<TripPlanResult>.Success(ToResult(persistedTrip, normalizedUserId));
     }
 
     public async Task<ApplicationResult> DeleteAsync(

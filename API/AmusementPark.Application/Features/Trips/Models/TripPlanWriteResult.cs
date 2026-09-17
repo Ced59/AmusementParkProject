@@ -4,4 +4,5 @@ namespace AmusementPark.Application.Features.Trips.Models;
 
 public sealed record TripPlanWriteResult(
     TripPlanWriteOutcome Outcome,
-    long? CurrentVersion);
+    long? CurrentVersion,
+    TripPlan? PersistedTripPlan = null);
