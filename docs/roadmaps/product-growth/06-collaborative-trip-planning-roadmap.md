@@ -120,7 +120,8 @@ Transitions explicites et auditables. `Completed` ne crée pas automatiquement d
 - `Owner` : gère le plan, les rôles et la suppression ;
 - `Editor` : modifie le programme et les candidats ;
 - `Participant` : vote, ajoute ses contraintes et préférences ;
-- `Viewer` : lecture seule.
+- `Viewer` : lecture du voyage, tout en gardant le contrôle de ses propres données
+  partagées.
 
 ### 5.2 Permissions fines
 
@@ -131,7 +132,7 @@ Transitions explicites et auditables. `Completed` ne crée pas automatiquement d
 | Ajouter un parc candidat | Oui | Oui | Option | Non |
 | Modifier programme décidé | Oui | Oui | Non | Non |
 | Voter | Oui | Oui | Oui | Non |
-| Modifier ses contraintes | Oui | Oui | Oui | Non |
+| Créer, remplacer ou retirer ses contraintes | Oui | Oui | Oui | Oui |
 | Voir contraintes détaillées d’autrui | Seulement si partagées | Seulement si partagées | Seulement si partagées | Non |
 | Supprimer le voyage | Oui | Non | Non | Non |
 | Quitter | Non sans transfert | Oui | Oui | Oui |
@@ -147,7 +148,10 @@ Un participant peut être représenté par :
 - préférences partagées ;
 - aucune adresse, date de naissance ou donnée médicale.
 
-Les profils de groupe `FIT` ne sont pas copiés en totalité. Le propriétaire choisit les contraintes partagées avec ce voyage.
+Les profils de groupe `FIT` ne sont pas copiés en totalité. Chaque membre choisit
+seul les contraintes qu'il partage avec ce voyage et peut les remplacer ou les
+retirer quel que soit son rôle. Le propriétaire ne peut ni les choisir à sa place,
+ni empêcher leur suppression.
 
 ## 6. Invitations
 
@@ -159,7 +163,7 @@ Les profils de groupe `FIT` ne sont pas copiés en totalité. Le propriétaire c
 - initiateur ;
 - destinataire facultatif ;
 - expiration ;
-- nombre maximal d’utilisations, `1` par défaut ;
+- une seule utilisation ; aucune invitation multi-usage dans la première version ;
 - état ;
 - politique d’aperçu ;
 - date de révocation ;

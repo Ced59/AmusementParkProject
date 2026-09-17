@@ -143,7 +143,7 @@ Les rôles effectifs sont `Owner`, `Editor`, `Participant` et `Viewer`. L'option
 | Inviter et révoquer | Oui | Si option | Non | Non |
 | Changer un rôle | Oui | Non | Non | Non |
 | Voter et définir ses priorités | Oui | Oui | Oui | Non |
-| Modifier ses propres contraintes partagées | Oui | Oui | Oui | Non |
+| Créer, remplacer ou retirer ses propres contraintes partagées | Oui | Oui | Oui | Oui |
 | Modifier les données personnelles d'un autre membre | Non | Non | Non | Non |
 | Exporter le plan commun | Oui | Oui | Oui | Oui |
 | Supprimer le voyage | Oui | Non | Non | Non |
@@ -156,6 +156,8 @@ Règles supplémentaires :
 - le transfert choisit le rôle délégué de l'ancien propriétaire et met à jour, dans
   la même écriture du plan, `OwnerUserId` et les deux sous-documents concernés ;
 - un rôle ne donne jamais accès aux champs que leur auteur n'a pas partagés ;
+- le rôle `Viewer` interdit les décisions collectives, mais ne retire jamais à une
+  personne le contrôle de son propre snapshot ni son droit de le supprimer ;
 - un membre révoqué perd l'accès immédiatement, même si un rendu local existe ;
 - les permissions sont vérifiées dans Application à chaque cas d'usage, jamais
   seulement dans Angular ;
@@ -205,7 +207,7 @@ TripInvitation
 ├── TargetEmailHmac : facultatif
 ├── Status : Active | Accepting | Accepted | Declined | Revoked | Expired
 ├── ExpiresAtUtc / AcceptedAtUtc / RevokedAtUtc
-├── MaxUses / UseCount (1 par défaut)
+├── UseCount : 0 puis 1 (invitation strictement mono-usage)
 ├── Version et lease d'acceptation
 └── CreatedAtUtc / UpdatedAtUtc
 ```
@@ -215,6 +217,10 @@ canonique. Seul son hash est persisté. Une invitation ciblée compare le courri
 vérifié du compte à un HMAC versionné issu d'un trousseau rotatif ; un simple hash
 de courriel n'est pas accepté. Une adresse éventuellement nécessaire à l'envoi est chiffrée, séparée et
 supprimée après la durée annoncée.
+
+La première version ne crée que des invitations mono-usage. Une invitation de
+groupe réutilisable exigerait un autre agrégat et une nouvelle décision
+d'architecture ; elle ne sera pas simulée par un `MaxUses` supérieur à 1.
 
 L'aperçu public ne demande pas de compte et renvoie uniquement :
 
@@ -250,15 +256,22 @@ sequenceDiagram
     A->>R: finaliser Accepted
     R-->>I: adhésion confirmée
     Note over A,R: une autre payload avec la même clé produit un conflit
-    J->>R: rechercher les leases Accepting expirés
-    J->>P: vérifier le membre et operationId
-    J->>R: finaliser ou libérer de façon idempotente
+    J->>R: rechercher les acceptations incomplètes
+    J->>P: reprendre le même operationId et le même utilisateur
+    P-->>J: ajouté ou déjà ajouté avec le même payload
+    J->>R: finaliser Accepted de façon idempotente
 ```
 
 Une panne après l'ajout du membre ne permet pas une seconde adhésion :
 `operationId` est conservé dans le sous-document du membre et l'index logique
-`(TripPlanId, UserId)` reste unique dans l'agrégat. Une panne avant l'ajout libère
-la réservation après vérification. Le payload du job ne contient aucune donnée de
+`(TripPlanId, UserId)` reste unique dans l'agrégat. Dès la réservation, l'invitation
+est définitivement liée à l'identifiant du compte acceptant et à `operationId`.
+Une lease expirée ne remet jamais l'invitation en état `Active` : le reconciler
+reprend exclusivement la même opération et le même payload jusqu'à finalisation ou
+révocation explicite. Une erreur permanente révoque l'invitation et oblige à en
+créer une nouvelle ; elle ne rend jamais possible une opération B concurrente.
+Ainsi, même une écriture Mongo retardée de l'opération A reste la seule écriture
+autorisée par cette invitation. Le payload du job ne contient aucune donnée de
 profil ni jeton brut.
 
 ## Décision 7 — concurrence et opérations fines
@@ -472,8 +485,8 @@ Les futures pages doivent fonctionner dès 320 px sans débordement horizontal :
   jamais par la couleur seule ;
 - aucune donnée privée dans le HTML SSR d'une invitation avant résolution sûre.
 
-Chaque page responsive sera couverte au minimum aux largeurs 320, 360, 390 et
-768 px. Les routes privées restent `noindex`; la preview publique est
+Chaque page responsive sera couverte au minimum aux largeurs 320, 360, 390, 768 et
+1280 px. Les routes privées restent `noindex`; la preview publique est
 `noindex, nofollow` et ne rejoint ni sitemap ni hreflang tant que toutes les
 variantes ne sont pas réellement servies.
 
@@ -497,6 +510,8 @@ variantes ne sont pas réellement servies.
 - allers-retours Mongo et indexes réels ;
 - transfert de propriété dans une seule écriture du plan ;
 - acceptation interrompue à chaque étape puis réparée sans doublon ;
+- écriture retardée après expiration de lease incapable d'autoriser un second
+  compte ou de réactiver l'invitation ;
 - token brut absent de Mongo, des logs, jobs et réponses privées ;
 - expiration, révocation, rotation, rate limit et `404` uniforme ;
 - preview dépourvue de membres, contraintes, votes et identifiants ;
@@ -509,7 +524,7 @@ variantes ne sont pas réellement servies.
 - parcours clavier complet, y compris réordonnancement ;
 - aperçu minimal sans compte puis acceptation authentifiée ;
 - textes des huit langues sans clé manquante ;
-- aucune largeur fixe provoquant un débordement à 320, 360, 390 ou 768 px ;
+- aucune largeur fixe provoquant un débordement à 320, 360, 390, 768 ou 1280 px ;
 - contrôles non pertinents absents plutôt que désactivés ;
 - faits, choix et inconnues lisibles sans dépendre de la couleur.
 
