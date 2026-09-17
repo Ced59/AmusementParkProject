@@ -682,10 +682,11 @@ activation.
 
 Le départ ou l'effacement d'un seul membre utilise la même barrière à portée
 réduite. Chaque `TripMember` porte `MemberDataEpoch` et un état de participation.
-Si le compte visé n'est encore que `Provisional`, l'opération d'effacement ne suit
-pas le départ ordinaire : elle annule atomiquement le `MemberAdmissionFence`
-portant ce compte et le même `AdmissionOperationId`, retire le sous-document
-provisoire et conserve un tombstone de cette opération. L'invitation correspondante
+Si le compte visé apparaît comme candidat d'un `MemberAdmissionFence` `Prepared`,
+`Active` ou `Applied`, qu'un sous-document `Provisional` existe déjà ou non,
+l'opération d'effacement ne suit pas le départ ordinaire : elle annule atomiquement
+ce fence, retire le sous-document provisoire éventuel de même
+`AdmissionOperationId` et conserve un tombstone de cette opération. L'invitation correspondante
 `Accepting` ou déjà `Accepted` passe ensuite par `RevocationPending` et n'atteint
 `Revoked` qu'après confirmation de la compensation. L'établissement retardé exige
 encore le fence `Applied`, le membre `Provisional` et l'opération exacte : il échoue
