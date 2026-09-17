@@ -45,6 +45,9 @@ public sealed class MongoDbSettings
     public string WatchlistAccountDeletionFencesCollectionName { get; set; } =
         "watchlist-account-deletion-fences";
 
+    public string WatchlistAccountDeletionLeasesCollectionName { get; set; } =
+        "watchlist-account-deletion-leases";
+
     public string FactualNotificationDistributionsCollectionName { get; set; } = "factual-notification-distributions";
 
     public bool CompleteFactualEventMigrationsOnStartup { get; set; } = true;

@@ -439,6 +439,17 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         return result.ModifiedCount == 1;
     }
 
+    public async Task<bool> DeleteAsync(string jobId, CancellationToken cancellationToken)
+    {
+        string normalizedJobId = NormalizeRequired(jobId, nameof(jobId));
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            Builders<DurableBackgroundJobDocument>.Filter.Eq(
+                static document => document.Id,
+                normalizedJobId),
+            cancellationToken);
+        return result.DeletedCount == 1;
+    }
+
     public async Task<int> ReleaseExpiredLeasesAsync(int maximumCount, CancellationToken cancellationToken)
     {
         if (maximumCount <= 0 || maximumCount > MaximumDiagnosticLimit)

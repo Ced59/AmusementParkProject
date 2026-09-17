@@ -1,3 +1,4 @@
+using System.Text.Json;
 using AmusementPark.Application.Features.BackgroundJobs.Models;
 using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Watchlists.Models;
@@ -156,6 +157,55 @@ public sealed class NotificationDigestSchedulerTests
         fence.VerifyAll();
     }
 
+    [Fact]
+    public async Task ScheduleAsync_ShouldDeleteJobWhenAccountDeletionWinsTheRace()
+    {
+        WatchSubscription subscription = CreateSubscription(NotificationFrequency.DailyDigest);
+        UserNotification notification = CreateNotification(subscription);
+        Mock<IUserNotificationRepository> notifications =
+            new Mock<IUserNotificationRepository>(MockBehavior.Strict);
+        notifications.Setup(repository => repository.ListByFactualEventAndUsersAsync(
+                notification.FactualEventId,
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { notification });
+        Mock<IWatchSubscriptionRepository> subscriptions =
+            new Mock<IWatchSubscriptionRepository>(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListOwnedByIdsAsync(
+                "user-1",
+                It.IsAny<IReadOnlyCollection<WatchSubscriptionId>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { subscription });
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.SetupSequence(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(false)
+            .ReturnsAsync(true);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(repository => repository.CoalesceAsync(
+                It.IsAny<CoalesceBackgroundJobRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync(CreateJob());
+        jobs.Setup(repository => repository.DeleteAsync("job-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        NotificationDigestScheduler scheduler = new NotificationDigestScheduler(
+            fence.Object,
+            jobs.Object,
+            notifications.Object,
+            subscriptions.Object);
+
+        await scheduler.ScheduleAsync(
+            notification.FactualEventId,
+            new[] { "user-1" },
+            CancellationToken.None);
+
+        fence.VerifyAll();
+        notifications.VerifyAll();
+        subscriptions.VerifyAll();
+        jobs.VerifyAll();
+    }
+
     private static Mock<IWatchlistAccountDeletionFence> CreateOpenFence()
     {
         Mock<IWatchlistAccountDeletionFence> fence =
@@ -201,5 +251,30 @@ public sealed class NotificationDigestSchedulerTests
             null,
             OccurredAtUtc.AddDays(UserNotification.RetentionDays),
             1);
+    }
+
+    private static DurableBackgroundJob CreateJob()
+    {
+        return new DurableBackgroundJob(
+            Id: "job-1",
+            Kind: NotificationDigestJob.Kind,
+            NaturalKey: "watch-digest:test",
+            IdempotencyKey: null,
+            PayloadVersion: NotificationDigestJob.PayloadVersion,
+            Payload: JsonSerializer.SerializeToElement(new { }),
+            RequestedRevision: 0,
+            ProcessedRevision: null,
+            Status: DurableBackgroundJobStatus.Pending,
+            Priority: 0,
+            AttemptCount: 0,
+            NotBeforeUtc: OccurredAtUtc,
+            LeaseOwner: null,
+            LeaseToken: null,
+            LeaseExpiresAtUtc: null,
+            CreatedAtUtc: OccurredAtUtc,
+            UpdatedAtUtc: OccurredAtUtc,
+            CompletedAtUtc: null,
+            LastErrorCode: null,
+            CorrelationId: null);
     }
 }

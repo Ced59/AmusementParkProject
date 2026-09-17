@@ -200,37 +200,56 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
             return DurableBackgroundJobHandlerResult.Success();
         }
 
-        NotificationDigestEmailMessage message = new NotificationDigestEmailMessage(
-            user.Email.Trim(),
-            preference.ConsentLocale ?? "en",
-            digest.Frequency,
-            digest.PeriodStartUtc,
-            digest.PeriodEndUtc,
-            entries,
-            digest.ObservedNotificationCount,
-            this.tokenProtector.CreateToken(digest.UserId));
-        try
+        string? deliveryLeaseId = await this.deletionFence.TryAcquireDeliveryLeaseAsync(
+            digest.UserId,
+            this.Definition.Timeout.Add(TimeSpan.FromMinutes(1)),
+            cancellationToken);
+        if (deliveryLeaseId is null)
         {
-            await this.emailSender.SendAsync(message, cancellationToken);
-        }
-        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
-        {
-            throw;
-        }
-        catch (Exception)
-        {
-            return await this.RecordFailureAsync(attempt, cancellationToken);
+            await this.attemptRepository.DeleteAsync(attempt.Id, cancellationToken);
+            return DurableBackgroundJobHandlerResult.Success();
         }
 
-        expectedVersion = attempt.Version;
-        attempt.MarkSucceeded(this.timeProvider.GetUtcNow().UtcDateTime);
-        return await this.attemptRepository.ReplaceAsync(
-                attempt,
-                expectedVersion,
-                cancellationToken) == NotificationDeliveryAttemptWriteOutcome.Success
-            ? DurableBackgroundJobHandlerResult.Success()
-            : DurableBackgroundJobHandlerResult.Retry(
-                NotificationEmailDeliveryErrorCodes.PersistenceConflict);
+        try
+        {
+            NotificationDigestEmailMessage message = new NotificationDigestEmailMessage(
+                user.Email.Trim(),
+                preference.ConsentLocale ?? "en",
+                digest.Frequency,
+                digest.PeriodStartUtc,
+                digest.PeriodEndUtc,
+                entries,
+                digest.ObservedNotificationCount,
+                this.tokenProtector.CreateToken(digest.UserId));
+            try
+            {
+                await this.emailSender.SendAsync(message, cancellationToken);
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                return await this.RecordFailureAsync(attempt, cancellationToken);
+            }
+
+            expectedVersion = attempt.Version;
+            attempt.MarkSucceeded(this.timeProvider.GetUtcNow().UtcDateTime);
+            return await this.attemptRepository.ReplaceAsync(
+                    attempt,
+                    expectedVersion,
+                    cancellationToken) == NotificationDeliveryAttemptWriteOutcome.Success
+                ? DurableBackgroundJobHandlerResult.Success()
+                : DurableBackgroundJobHandlerResult.Retry(
+                    NotificationEmailDeliveryErrorCodes.PersistenceConflict);
+        }
+        finally
+        {
+            await this.deletionFence.ReleaseDeliveryLeaseAsync(
+                deliveryLeaseId,
+                CancellationToken.None);
+        }
     }
 
     private async Task<NotificationDeliveryAttempt?> GetOrCreateAttemptAsync(

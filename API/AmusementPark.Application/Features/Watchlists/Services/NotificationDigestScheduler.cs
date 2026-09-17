@@ -100,7 +100,7 @@ public sealed class NotificationDigestScheduler : INotificationDigestScheduler
                 if (job is not null
                     && await this.deletionFence.IsBlockedAsync(group.UserId, cancellationToken))
                 {
-                    await this.jobRepository.CancelAsync(job.Id, cancellationToken);
+                    await this.jobRepository.DeleteAsync(job.Id, cancellationToken);
                 }
             }
         }

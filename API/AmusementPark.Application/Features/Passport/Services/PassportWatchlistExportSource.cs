@@ -46,8 +46,6 @@ public sealed class PassportWatchlistExportSource : IPassportWatchlistExportSour
                 cancellationToken);
         FactualChangeEventId[] eventIds = stored.Notifications
             .Select(static notification => notification.FactualEventId)
-            .Concat(stored.Digests.SelectMany(static digest =>
-                digest.Entries.Select(static entry => entry.FactualEventId)))
             .Distinct()
             .ToArray();
         Task<IReadOnlyCollection<FactualChangeEvent>> eventsTask =

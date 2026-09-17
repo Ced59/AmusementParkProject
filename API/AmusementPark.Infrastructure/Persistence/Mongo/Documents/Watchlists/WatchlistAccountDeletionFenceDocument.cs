@@ -6,4 +6,6 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.Watchlists;
 [BsonIgnoreExtraElements]
 public sealed class WatchlistAccountDeletionFenceDocument : MongoDocumentBase
 {
+    [BsonElement("isBlocked")]
+    public bool IsBlocked { get; set; }
 }

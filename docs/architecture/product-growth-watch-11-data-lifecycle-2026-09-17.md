@@ -87,6 +87,7 @@ classDiagram
       <<Application port>>
       +BlockAsync(userId)
       +IsBlockedAsync(userId)
+      +TryAcquireDeliveryLeaseAsync(userId)
     }
     class MongoWatchlistAccountDeletionStore {
       <<Infrastructure>>
@@ -126,7 +127,8 @@ sequenceDiagram
     A->>A: verrouiller compte et sessions
     A->>S: DeleteAsync(userId)
     S->>F: BlockAsync(userId)
-    F->>F: conserver une empreinte SHA-256 non réversible
+    F->>F: bloquer les nouveaux baux d’envoi
+    F->>F: attendre les baux déjà engagés
     S->>M: PurgeAsync(userId)
     M->>M: recenser digests et travaux appartenant au membre
     M->>M: supprimer préférence e-mail
@@ -141,8 +143,10 @@ sequenceDiagram
 La borne est posée avant la première suppression. Les écritures de notifications,
 de digests, de travaux d’e-mail et de tentatives la contrôlent avant et après leur
 mutation. Si la suppression démarre pendant une écriture déjà louée, cette
-écriture est compensée immédiatement et aucun envoi n’est déclenché. Les travaux
-supprimés restent strictement reliés au membre ou à l’un de ses digests.
+écriture est compensée immédiatement. Un envoi SMTP acquiert en plus un bail borné :
+la suppression attend un envoi déjà engagé, ou empêche son démarrage si sa borne
+est déjà posée. Les travaux compensés sont supprimés physiquement, charge utile
+comprise, et restent strictement reliés au membre ou à l’un de ses digests.
 
 ## Collections MongoDB concernées
 
@@ -194,6 +198,11 @@ erDiagram
       datetime createdAt
       datetime updatedAt
     }
+    WATCHLIST_ACCOUNT_DELETION_LEASES {
+      string _id "jeton aléatoire"
+      string userKey "empreinte SHA-256"
+      datetime expiresAt
+    }
 
     WATCH_SUBSCRIPTIONS ||--o{ USER_NOTIFICATIONS : produit
     USER_NOTIFICATIONS }o--o{ NOTIFICATION_DIGESTS : regroupe
@@ -203,7 +212,9 @@ erDiagram
 
 Aucune migration MongoDB manuelle n’est requise. La collection de bornes est créée
 paresseusement à la première suppression et ne conserve pas l’identifiant brut du
-membre. Les autres collections et index restent inchangés.
+membre. La collection de baux ne contient elle aussi qu’une empreinte et ses
+entrées sont retirées à la fin de l’envoi ou à leur expiration. Les autres
+collections et index restent inchangés.
 
 ## Preuves automatisées
 
@@ -217,6 +228,8 @@ membre. Les autres collections et index restent inchangés.
 - le service pose la borne avant la purge, les workers cessent leur travail pour
   un membre supprimé et compensent une écriture commencée pendant la course ;
 - la borne persistée est stable sans exposer l’identifiant du membre ;
+- le bail d’envoi ferme la course entre la dernière vérification et l’appel SMTP ;
+- un travail compensé est supprimé avec sa charge utile, pas seulement annulé ;
 - les preuves factuelles consomment le même budget de source que le reste de
   l’export ;
 - la sélection des travaux durables accepte seulement un digest appartenant au

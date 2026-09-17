@@ -62,6 +62,6 @@ public sealed class NotificationEmailDeliveryScheduler : INotificationEmailDeliv
             return;
         }
 
-        await this.jobRepository.CancelAsync(jobId, cancellationToken);
+        await this.jobRepository.DeleteAsync(jobId, cancellationToken);
     }
 }

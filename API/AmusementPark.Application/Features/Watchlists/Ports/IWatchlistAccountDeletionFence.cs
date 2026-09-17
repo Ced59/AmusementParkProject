@@ -9,4 +9,13 @@ public interface IWatchlistAccountDeletionFence
     Task<IReadOnlySet<string>> ListBlockedAsync(
         IReadOnlyCollection<string> userIds,
         CancellationToken cancellationToken);
+
+    Task<string?> TryAcquireDeliveryLeaseAsync(
+        string userId,
+        TimeSpan leaseDuration,
+        CancellationToken cancellationToken);
+
+    Task ReleaseDeliveryLeaseAsync(
+        string leaseId,
+        CancellationToken cancellationToken);
 }

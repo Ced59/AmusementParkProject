@@ -30,9 +30,31 @@ public sealed class PassportWatchlistExportSourceTests
             1,
             null,
             DateTime.UtcNow);
+        DateTime periodStartUtc = new DateTime(2026, 9, 14, 0, 0, 0, DateTimeKind.Utc);
+        NotificationDigest digest = NotificationDigest.CreateSnapshot(
+            "user-1",
+            NotificationChannel.Email,
+            NotificationFrequency.WeeklyDigest,
+            periodStartUtc,
+            new[]
+            {
+                new NotificationDigestEntry(
+                    FactualChangeEventId.Parse("digest-event-not-exported"),
+                    WatchSubscriptionId.Parse("subscription-internal"),
+                    "park:park-internal:name",
+                    1,
+                    FactualEventType.ParkNameChanged,
+                    FactualTargetType.Park,
+                    "park-internal",
+                    FactualChangeStatus.Published,
+                    periodStartUtc.AddHours(1)),
+            },
+            1,
+            periodStartUtc.AddHours(2));
         PassportWatchlistStoredExportData stored = PassportWatchlistStoredExportData.Empty with
         {
             CollectionEntries = new[] { entry },
+            Digests = new[] { digest },
         };
         PassportExportSourceBudget sourceBudget = new PassportExportSourceBudget(1_024);
         Mock<IWatchlistExportStore> store = new Mock<IWatchlistExportStore>(MockBehavior.Strict);
