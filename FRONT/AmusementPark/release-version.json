@@ -1,6 +1,20 @@
 {
-  "version": "5.3.57",
+  "version": "5.3.58",
   "history": [
+    {
+      "version": "5.3.58",
+      "releasedAt": "2026-09-17",
+      "labels": {
+        "fr": "Les futurs voyages partagés reposent désormais sur des règles de collaboration et de confidentialité claires.",
+        "en": "Future shared trips now rest on clear collaboration and privacy rules.",
+        "de": "Künftige gemeinsame Reisen beruhen jetzt auf klaren Regeln für Zusammenarbeit und Datenschutz.",
+        "nl": "Toekomstige gedeelde reizen steunen nu op duidelijke regels voor samenwerking en privacy.",
+        "it": "I futuri viaggi condivisi si basano ora su regole chiare di collaborazione e privacy.",
+        "es": "Los futuros viajes compartidos se basan ahora en reglas claras de colaboración y privacidad.",
+        "pl": "Przyszłe wspólne wyjazdy opierają się teraz na jasnych zasadach współpracy i prywatności.",
+        "pt": "As futuras viagens partilhadas assentam agora em regras claras de colaboração e privacidade."
+      }
+    },
     {
       "version": "5.3.57",
       "releasedAt": "2026-09-17",

@@ -17,6 +17,21 @@
 - SignalR, CRDT et broker ne sont pas des prérequis ;
 - un passage à une collaboration temps réel nécessiterait un ADR séparé et des mesures d’usage.
 
+### État de `TRIP-01` au 17 septembre 2026
+
+L'ADR [`product-growth-trip-01-aggregate-roles-privacy-2026-09-17.md`](../../architecture/product-growth-trip-01-aggregate-roles-privacy-2026-09-17.md)
+fige les invariants avant toute persistance : identifiants chaîne typés, propriétaire
+unique, membres bornés embarqués dans le plan, rôles vérifiés dans Application,
+contraintes partagées en liste blanche, invitations opaques, acceptation idempotente
+réparable sur MongoDB autonome et concurrence optimiste par opérations fines.
+
+Le voyage reste privé entre membres. Une publication éventuelle passera par
+`SHARE`; une invitation ne publie pas le plan. Les faits officiels, les snapshots
+`FIT` et les choix du groupe restent trois catégories distinctes. Aucun voyage,
+endpoint, écran ou index n'est créé par ce jalon documentaire. `TRIP-02` peut donc
+implémenter le voyage individuel sans attendre une cohorte réelle, tout en
+conservant les gates techniques, de confidentialité et responsive.
+
 ## 1. Vision produit
 
 Un groupe doit pouvoir transformer des envies dispersées en programme commun :
@@ -66,13 +81,13 @@ La croissance par invitation est acceptable parce que l’invitation est nécess
 ```csharp
 public sealed class TripPlan
 {
-    public Guid Id { get; }
-    public Guid OwnerUserId { get; }
+    public TripPlanId Id { get; }
+    public string OwnerUserId { get; }
     public string Title { get; private set; }
-    public TripDateRange DateRange { get; private set; }
+    public TripDateProposal DateProposal { get; private set; }
     public TripPlanStatus Status { get; private set; }
-    public TripPlanPrivacy Privacy { get; private set; }
-    public int Version { get; private set; }
+    public TripPlanAccessScope AccessScope { get; private set; }
+    public long Version { get; private set; }
     public DateTime CreatedAtUtc { get; }
     public DateTime UpdatedAtUtc { get; private set; }
 }
@@ -105,7 +120,8 @@ Transitions explicites et auditables. `Completed` ne crée pas automatiquement d
 - `Owner` : gère le plan, les rôles et la suppression ;
 - `Editor` : modifie le programme et les candidats ;
 - `Participant` : vote, ajoute ses contraintes et préférences ;
-- `Viewer` : lecture seule.
+- `Viewer` : lecture du voyage, tout en gardant le contrôle de ses propres données
+  partagées.
 
 ### 5.2 Permissions fines
 
@@ -116,7 +132,7 @@ Transitions explicites et auditables. `Completed` ne crée pas automatiquement d
 | Ajouter un parc candidat | Oui | Oui | Option | Non |
 | Modifier programme décidé | Oui | Oui | Non | Non |
 | Voter | Oui | Oui | Oui | Non |
-| Modifier ses contraintes | Oui | Oui | Oui | Non |
+| Créer, remplacer ou retirer ses contraintes | Oui | Oui | Oui | Oui |
 | Voir contraintes détaillées d’autrui | Seulement si partagées | Seulement si partagées | Seulement si partagées | Non |
 | Supprimer le voyage | Oui | Non | Non | Non |
 | Quitter | Non sans transfert | Oui | Oui | Oui |
@@ -132,7 +148,10 @@ Un participant peut être représenté par :
 - préférences partagées ;
 - aucune adresse, date de naissance ou donnée médicale.
 
-Les profils de groupe `FIT` ne sont pas copiés en totalité. Le propriétaire choisit les contraintes partagées avec ce voyage.
+Les profils de groupe `FIT` ne sont pas copiés en totalité. Chaque membre choisit
+seul les contraintes qu'il partage avec ce voyage et peut les remplacer ou les
+retirer quel que soit son rôle. Le propriétaire ne peut ni les choisir à sa place,
+ni empêcher leur suppression.
 
 ## 6. Invitations
 
@@ -144,7 +163,7 @@ Les profils de groupe `FIT` ne sont pas copiés en totalité. Le propriétaire c
 - initiateur ;
 - destinataire facultatif ;
 - expiration ;
-- nombre maximal d’utilisations, `1` par défaut ;
+- une seule utilisation ; aucune invitation multi-usage dans la première version ;
 - état ;
 - politique d’aperçu ;
 - date de révocation ;
@@ -272,6 +291,9 @@ Les avertissements ne modifient pas automatiquement le plan.
 
 - version optimiste du plan ;
 - opérations fines plutôt que remplacement complet ;
+- lease et epoch communs à toute écriture dans une collection enfant ;
+- suppression bloquant les nouvelles leases et attendant les écritures autorisées
+  avant de déclarer la purge terminée ;
 - journal d’activité ;
 - conflits affichés ;
 - idempotency keys ;
@@ -285,8 +307,8 @@ Les avertissements ne modifient pas automatiquement le plan.
 Collections :
 
 - `trip-plans` ;
-- `trip-participants` ;
 - `trip-invitations` ;
+- `trip-member-constraints` ;
 - `trip-park-candidates` ;
 - `trip-day-plans` ;
 - `trip-item-preferences` ;
@@ -294,16 +316,19 @@ Collections :
 
 Indexes :
 
-- `{ OwnerUserId, UpdatedAtUtc }` ;
-- `{ ParticipantUserId, Status, UpdatedAtUtc }` ;
+- `{ OwnerUserId, Status, UpdatedAtUtc }` ;
+- `{ Members.UserId, Status, UpdatedAtUtc }` ;
 - token invitation unique + TTL ;
-- unique `(TripId, UserId)` participant ;
+- unicité d’un `UserId` dans les membres vérifiée par le Core et l’écriture conditionnelle du plan ;
 - unique `(TripId, UserId, ParkItemId)` préférence ;
 - unique `(TripId, Date)` jour si un seul plan par date ;
 - `{ TripId, Sequence }` ;
 - audit par voyage/date.
 
-Évaluer l’embarquement de petits sous-documents versus collections séparées. Les préférences potentiellement nombreuses restent séparées.
+La décision `TRIP-01` embarque les membres bornés dans `trip-plans` afin que le
+propriétaire unique, le transfert et les rôles soient atomiques. Les contraintes,
+préférences, candidats, jours, invitations et événements potentiellement nombreux
+restent séparés.
 
 ## 12. Ports et cas d’usage
 
@@ -311,8 +336,8 @@ Ports :
 
 ```text
 ITripPlanRepository
-ITripParticipantRepository
 ITripInvitationRepository
+ITripMemberConstraintRepository
 ITripPreferenceRepository
 ITripOfficialDataReader
 ITripFitSnapshotReader
