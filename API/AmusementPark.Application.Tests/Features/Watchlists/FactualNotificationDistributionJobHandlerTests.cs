@@ -42,6 +42,8 @@ public sealed class FactualNotificationDistributionJobHandlerTests
             new Mock<IFactualNotificationDistributionReceiptRepository>(MockBehavior.Strict);
         Mock<IFactualNotificationDistributionScheduler> scheduler =
             new Mock<IFactualNotificationDistributionScheduler>(MockBehavior.Strict);
+        Mock<INotificationDigestScheduler> digestScheduler =
+            new Mock<INotificationDigestScheduler>(MockBehavior.Strict);
         Mock<IUserRepository> users = new Mock<IUserRepository>(MockBehavior.Strict);
         Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
         receipts.Setup(repository => repository.IsCompletedAsync("event-1", CancellationToken.None))
@@ -71,6 +73,13 @@ public sealed class FactualNotificationDistributionJobHandlerTests
                     && created.Single().Status == UserNotificationStatus.Delivered),
                 CancellationToken.None))
             .ReturnsAsync(1);
+        digestScheduler.Setup(value => value.ScheduleAsync(
+                factualEvent.Id,
+                It.Is<IReadOnlyCollection<string>>(userIds =>
+                    userIds.Count == 1
+                    && userIds.Single() == "user-1"),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         receipts.Setup(repository => repository.CompleteAsync(
                 It.Is<FactualNotificationDistributionReceipt>(receipt =>
                     receipt.EventId == "event-1"
@@ -83,6 +92,7 @@ public sealed class FactualNotificationDistributionJobHandlerTests
             notifications.Object,
             receipts.Object,
             scheduler.Object,
+            digestScheduler.Object,
             users.Object,
             timeProvider.Object);
 
@@ -96,6 +106,7 @@ public sealed class FactualNotificationDistributionJobHandlerTests
         notifications.VerifyAll();
         receipts.VerifyAll();
         users.VerifyAll();
+        digestScheduler.VerifyAll();
         scheduler.VerifyNoOtherCalls();
     }
 
@@ -122,6 +133,7 @@ public sealed class FactualNotificationDistributionJobHandlerTests
             notifications.Object,
             receipts.Object,
             scheduler.Object,
+            Mock.Of<INotificationDigestScheduler>(),
             users.Object,
             timeProvider.Object);
 

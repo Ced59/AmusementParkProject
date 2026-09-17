@@ -17,18 +17,21 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
     private readonly IUserNotificationRepository notificationRepository;
     private readonly IFactualNotificationDistributionReceiptRepository receiptRepository;
     private readonly IFactualNotificationDistributionScheduler scheduler;
+    private readonly INotificationDigestScheduler digestScheduler;
     private readonly TimeProvider timeProvider;
 
     public FactualNotificationCorrectionJobHandler(
         IFactualChangeEventRepository eventRepository,
         IUserNotificationRepository notificationRepository,
         IFactualNotificationDistributionReceiptRepository receiptRepository,
-        IFactualNotificationDistributionScheduler scheduler)
+        IFactualNotificationDistributionScheduler scheduler,
+        INotificationDigestScheduler digestScheduler)
         : this(
             eventRepository,
             notificationRepository,
             receiptRepository,
             scheduler,
+            digestScheduler,
             TimeProvider.System)
     {
     }
@@ -38,12 +41,14 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
         IUserNotificationRepository notificationRepository,
         IFactualNotificationDistributionReceiptRepository receiptRepository,
         IFactualNotificationDistributionScheduler scheduler,
+        INotificationDigestScheduler digestScheduler,
         TimeProvider timeProvider)
     {
         this.eventRepository = eventRepository ?? throw new ArgumentNullException(nameof(eventRepository));
         this.notificationRepository = notificationRepository ?? throw new ArgumentNullException(nameof(notificationRepository));
         this.receiptRepository = receiptRepository ?? throw new ArgumentNullException(nameof(receiptRepository));
         this.scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
+        this.digestScheduler = digestScheduler ?? throw new ArgumentNullException(nameof(digestScheduler));
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -125,6 +130,13 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
                 factualEvent.TerminalAtUtc.Value,
                 nowUtc < factualEvent.TerminalAtUtc.Value ? factualEvent.TerminalAtUtc.Value : nowUtc,
                 cancellationToken);
+            await this.digestScheduler.ScheduleAsync(
+                factualEvent.Id,
+                originals
+                    .Select(static notification => notification.UserId)
+                    .Distinct(StringComparer.Ordinal)
+                    .ToArray(),
+                cancellationToken);
         }
 
         if (originals.Count == FactualNotificationCorrectionJob.NotificationBatchSize)
@@ -168,6 +180,13 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
                         nowUtc))
                     .ToArray();
                 await this.notificationRepository.CreateManyAsync(followUps, cancellationToken);
+                await this.digestScheduler.ScheduleAsync(
+                    followUp.Id,
+                    followUps
+                        .Select(static notification => notification.UserId)
+                        .Distinct(StringComparer.Ordinal)
+                        .ToArray(),
+                    cancellationToken);
             }
             catch (UserNotificationValidationException)
             {

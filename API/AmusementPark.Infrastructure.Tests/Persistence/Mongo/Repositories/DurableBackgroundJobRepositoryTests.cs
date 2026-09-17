@@ -190,6 +190,27 @@ public sealed class DurableBackgroundJobRepositoryTests
     }
 
     [Fact]
+    public void BuildAdvancingCoalesceUpdate_ShouldIncrementEverySchedulingPulse()
+    {
+        BsonValue rendered = Render(DurableBackgroundJobRepository.BuildAdvancingCoalesceUpdate(
+            1,
+            "{\"userId\":\"user-1\"}",
+            0,
+            NowUtc,
+            NowUtc,
+            "digest-1"));
+
+        BsonDocument set = Assert.Single(rendered.AsBsonArray).AsBsonDocument["$set"].AsBsonDocument;
+        BsonArray increment = set["requestedRevision"].AsBsonDocument["$add"].AsBsonArray;
+        Assert.Equal("$requestedRevision", increment[0].AsBsonDocument["$ifNull"].AsBsonArray[0].AsString);
+        Assert.Equal(1, increment[1].AsInt64);
+        Assert.Equal(1, set["payloadVersion"].AsInt32);
+        Assert.Equal("{\"userId\":\"user-1\"}", set["payload"].AsBsonDocument["$literal"].AsString);
+        Assert.Equal(0, set["attemptCount"].AsInt32);
+        Assert.Equal("digest-1", set["correlationId"].AsString);
+    }
+
+    [Fact]
     public void BuildCompletionUpdate_ShouldAtomicallyReplayANewerRevisionAndClearTheLease()
     {
         BsonValue rendered = Render(DurableBackgroundJobRepository.BuildCompletionUpdate(16, NowUtc));

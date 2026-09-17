@@ -85,6 +85,73 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
+    public async Task<IReadOnlyCollection<UserNotification>> ListByFactualEventAndUsersAsync(
+        FactualChangeEventId eventId,
+        IReadOnlyCollection<string> userIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(userIds);
+        string[] normalizedUserIds = userIds
+            .Select(userId => IdentifierRules.NormalizeRequired(userId, nameof(userIds)))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedUserIds.Length == 0)
+        {
+            return Array.Empty<UserNotification>();
+        }
+
+        FilterDefinition<UserNotificationDocument> filter =
+            Builders<UserNotificationDocument>.Filter.Eq(
+                static document => document.FactualEventId,
+                eventId.Value)
+            & Builders<UserNotificationDocument>.Filter.In(
+                static document => document.UserId,
+                normalizedUserIds);
+        List<UserNotificationDocument> documents = await this.collection.Find(filter)
+            .SortBy(static document => document.UserId)
+            .ThenBy(static document => document.Id)
+            .Limit(normalizedUserIds.Length)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    public async Task<IReadOnlyCollection<UserNotification>> ListOwnedForDigestAsync(
+        string userId,
+        DateTime periodStartUtc,
+        DateTime periodEndUtc,
+        IReadOnlyCollection<NotificationDigestSubscriptionFilter> subscriptionFilters,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
+        ArgumentNullException.ThrowIfNull(subscriptionFilters);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(limit);
+        if (periodStartUtc.Kind != DateTimeKind.Utc
+            || periodEndUtc.Kind != DateTimeKind.Utc
+            || periodEndUtc <= periodStartUtc)
+        {
+            throw new ArgumentException("The digest period must be a chronological UTC range.");
+        }
+
+        if (subscriptionFilters.Count == 0)
+        {
+            return Array.Empty<UserNotification>();
+        }
+
+        FilterDefinition<UserNotificationDocument> filter =
+            WatchNotificationMongoDefinitions.BuildDigestNotificationFilter(
+                normalizedUserId,
+                periodStartUtc,
+                periodEndUtc,
+                subscriptionFilters);
+        List<UserNotificationDocument> documents = await this.collection.Find(filter)
+            .SortBy(static document => document.DeliveredAt)
+            .ThenBy(static document => document.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<IReadOnlyCollection<FactualChangeEventId>> ListDeliveredFactualEventIdsOwnedAsync(
         string userId,
         IReadOnlyCollection<FactualChangeEventId> eventIds,

@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Watchlists.Models;
 using AmusementPark.Core.Domain.Watchlists;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Watchlists;
 using MongoDB.Driver;
@@ -35,6 +36,26 @@ internal static class WatchNotificationMongoDefinitions
             .Set(static document => document.IsPaused, subscription.IsPaused)
             .Set(static document => document.UpdatedAt, subscription.UpdatedAtUtc)
             .Set(static document => document.Version, subscription.Version);
+    }
+
+    internal static FilterDefinition<UserNotificationDocument> BuildDigestNotificationFilter(
+        string userId,
+        DateTime periodStartUtc,
+        DateTime periodEndUtc,
+        IReadOnlyCollection<NotificationDigestSubscriptionFilter> subscriptionFilters)
+    {
+        FilterDefinitionBuilder<UserNotificationDocument> filters =
+            Builders<UserNotificationDocument>.Filter;
+        FilterDefinition<UserNotificationDocument>[] subscriptionClauses = subscriptionFilters
+            .Select(filter => filters.Eq(
+                    static document => document.SubscriptionId,
+                    filter.SubscriptionId.Value)
+                & filters.In(static document => document.EventType, filter.EventTypes))
+            .ToArray();
+        return filters.Eq(static document => document.UserId, userId)
+            & filters.Gte(static document => document.DeliveredAt, periodStartUtc)
+            & filters.Lt(static document => document.DeliveredAt, periodEndUtc)
+            & filters.Or(subscriptionClauses);
     }
 
     internal static IReadOnlyCollection<CreateIndexModel<WatchSubscriptionDocument>> BuildSubscriptionIndexes()
@@ -100,6 +121,14 @@ internal static class WatchNotificationMongoDefinitions
                     .Ascending(static document => document.Status)
                     .Descending(static document => document.DeliveredAt),
                 new CreateIndexOptions { Name = "ix_user_notification_filters" }),
+            new CreateIndexModel<UserNotificationDocument>(
+                Builders<UserNotificationDocument>.IndexKeys
+                    .Ascending(static document => document.UserId)
+                    .Ascending(static document => document.SubscriptionId)
+                    .Ascending(static document => document.EventType)
+                    .Ascending(static document => document.DeliveredAt)
+                    .Ascending(static document => document.Id),
+                new CreateIndexOptions { Name = "ix_user_notification_digest" }),
             new CreateIndexModel<UserNotificationDocument>(
                 Builders<UserNotificationDocument>.IndexKeys
                     .Ascending(static document => document.ExpiresAt),

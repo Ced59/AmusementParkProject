@@ -101,14 +101,22 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
         DateTime notBeforeUtc = nowUtc.Add(delay);
         string payloadJson = request.Payload.ToStoredPayload();
         FilterDefinition<DurableBackgroundJobDocument> activeFilter = BuildActiveNaturalKeyFilter(kind, naturalKey);
-        UpdateDefinition<DurableBackgroundJobDocument> coalesceUpdate = BuildCoalesceUpdate(
-            request.RequestedRevision,
-            request.PayloadVersion,
-            payloadJson,
-            request.Priority,
-            notBeforeUtc,
-            nowUtc,
-            correlationId);
+        UpdateDefinition<DurableBackgroundJobDocument> coalesceUpdate = request.AdvanceRevision
+            ? BuildAdvancingCoalesceUpdate(
+                request.PayloadVersion,
+                payloadJson,
+                request.Priority,
+                notBeforeUtc,
+                nowUtc,
+                correlationId)
+            : BuildCoalesceUpdate(
+                request.RequestedRevision,
+                request.PayloadVersion,
+                payloadJson,
+                request.Priority,
+                notBeforeUtc,
+                nowUtc,
+                correlationId);
         FindOneAndUpdateOptions<DurableBackgroundJobDocument> options = new FindOneAndUpdateOptions<DurableBackgroundJobDocument>
         {
             ReturnDocument = ReturnDocument.After,
@@ -131,7 +139,7 @@ public sealed class DurableBackgroundJobRepository : IDurableBackgroundJobReposi
             NaturalKey = naturalKey,
             PayloadVersion = request.PayloadVersion,
             PayloadJson = payloadJson,
-            RequestedRevision = request.RequestedRevision,
+            RequestedRevision = request.AdvanceRevision ? 1 : request.RequestedRevision,
             Status = DurableBackgroundJobStatus.Pending,
             Priority = request.Priority,
             NotBeforeUtc = notBeforeUtc,

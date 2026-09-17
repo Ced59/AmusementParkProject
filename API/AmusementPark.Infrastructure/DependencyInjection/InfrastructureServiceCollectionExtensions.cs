@@ -187,6 +187,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IFactualChangeEventRepository, FactualChangeEventRepository>();
         services.AddScoped<IWatchSubscriptionRepository, WatchSubscriptionRepository>();
         services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
+        services.AddScoped<INotificationDigestRepository, NotificationDigestRepository>();
         services.AddScoped<IFactualNotificationDistributionReceiptRepository,
             FactualNotificationDistributionReceiptRepository>();
         services.AddScoped<IFactualChangeEventDistributionStateReader,

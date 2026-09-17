@@ -778,6 +778,15 @@ private readonly IMongoDatabase database;
             WatchNotificationMongoDefinitions.BuildNotificationIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.NotificationDigestsCollectionName,
+            cancellationToken);
+        IMongoCollection<NotificationDigestDocument> notificationDigests =
+            this.database.GetCollection<NotificationDigestDocument>(
+                this.settings.NotificationDigestsCollectionName);
+        await notificationDigests.Indexes.CreateManyAsync(
+            NotificationDigestMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.FactualNotificationDistributionsCollectionName,
             cancellationToken);
         await this.EnsureCollectionExistsAsync(

@@ -107,6 +107,47 @@ internal static class DurableBackgroundJobMongoDefinitions
         return Builders<DurableBackgroundJobDocument>.Update.Pipeline(pipeline);
     }
 
+    internal static UpdateDefinition<DurableBackgroundJobDocument> BuildAdvancingCoalesceUpdate(
+        int payloadVersion,
+        string payloadJson,
+        int priority,
+        DateTime notBeforeUtc,
+        DateTime nowUtc,
+        string? correlationId)
+    {
+        BsonDocument currentRevision = new BsonDocument(
+            "$ifNull",
+            new BsonArray { "$requestedRevision", new BsonInt64(0) });
+        BsonDocument nextRevision = new BsonDocument(
+            "$add",
+            new BsonArray { currentRevision, new BsonInt64(1) });
+        BsonDocument hasHigherPriority = new BsonDocument(
+            "$gt",
+            new BsonArray { new BsonInt32(priority), "$priority" });
+        BsonDocument set = new BsonDocument
+        {
+            { "requestedRevision", nextRevision },
+            { "payloadVersion", payloadVersion },
+            { "payload", new BsonDocument("$literal", payloadJson) },
+            {
+                "priority",
+                new BsonDocument("$cond", new BsonArray { hasHigherPriority, priority, "$priority" })
+            },
+            { "notBeforeUtc", notBeforeUtc },
+            { "attemptCount", 0 },
+            { "updatedAt", nowUtc },
+        };
+        if (correlationId is not null)
+        {
+            set.Add("correlationId", correlationId);
+        }
+
+        PipelineDefinition<DurableBackgroundJobDocument, DurableBackgroundJobDocument> pipeline =
+            PipelineDefinition<DurableBackgroundJobDocument, DurableBackgroundJobDocument>.Create(
+                new[] { new BsonDocument("$set", set) });
+        return Builders<DurableBackgroundJobDocument>.Update.Pipeline(pipeline);
+    }
+
     internal static FilterDefinition<DurableBackgroundJobDocument> BuildScheduledRunnableFilter(
         IReadOnlyCollection<string> kinds,
         DateTime nowUtc)
