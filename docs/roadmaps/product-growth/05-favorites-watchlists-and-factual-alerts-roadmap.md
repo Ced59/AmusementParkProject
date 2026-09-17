@@ -652,9 +652,11 @@ Une hausse du taux de clic n’est pas une justification pour rendre les formula
 | `WATCH-07` | Notifications Web — livré en `5.3.51` | Centre accessible |
 | `WATCH-08` | Corrections/rétractations — livré en `5.3.52` | Historique honnête |
 | `WATCH-09` | Digests — livré en `5.3.53` | Groupement déterministe |
-| `WATCH-10` | E-mail opt-in | Consentement et unsubscription |
+| `WATCH-10` | E-mail opt-in — livré en `5.3.54` | Consentement et désinscription |
 | `WATCH-11` | Export/suppression | Cycle complet |
 | `WATCH-12` | Pilote et métriques | Gate franchie |
+
+`WATCH-10` livre concrètement le canal e-mail sans le rendre obligatoire : l’utilisateur active ou coupe les résumés depuis son centre privé, uniquement avec une adresse confirmée et un accord explicite versionné. Un digest ne crée du travail de livraison que si cet accord est actif, puis le worker recontrôle l’accord, le compte, la fréquence, la surveillance et la dernière révision factuelle juste avant l’envoi. Les messages de marque existent en HTML accessible et en texte simple dans les huit langues, ne contiennent ni note privée, ni pixel de suivi, ni identifiant métier exposé, et proposent la gestion détaillée ainsi que la désinscription standard en un clic. Les tentatives sont idempotentes, retentées de façon bornée, conservées trente jours et agrégées dans un diagnostic administratif sans donnée personnelle.
 
 ## 19. Gate finale `WATCH-G`
 

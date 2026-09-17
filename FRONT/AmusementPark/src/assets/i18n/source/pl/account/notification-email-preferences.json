@@ -1,0 +1,20 @@
+{
+  "notifications": {
+    "emailPreferences": {
+      "kicker": "Podsumowania e-mail",
+      "title": "Otrzymuj tylko wybrane przez siebie aktualizacje",
+      "description": "Zweryfikowane zmiany z obserwowanych miejsc mogą trafić do jednego podsumowania. Centrum powiadomień pozostaje dostępne bez wiadomości e-mail.",
+      "enabled": "Włączone",
+      "disabled": "Wyłączone",
+      "loading": "Wczytywanie Twojego wyboru…",
+      "consentTitle": "Masz pełną kontrolę nad swoją zgodą",
+      "consentText": "Włączając podsumowania, zgadzasz się na wiadomości z częstotliwością wybraną dla obserwowanych miejsc. Zgodę możesz natychmiast wycofać tutaj lub w każdej wiadomości.",
+      "address": "Wysyłka na {{email}}",
+      "frequency": "Każda obserwacja zachowuje częstotliwość dzienną lub tygodniową.",
+      "unavailable": "Najpierw potwierdź adres e-mail, aby włączyć podsumowania.",
+      "error": "Nie można teraz zapisać Twojego wyboru.",
+      "disable": "Wyłącz podsumowania",
+      "enable": "Włącz podsumowania"
+    }
+  }
+}

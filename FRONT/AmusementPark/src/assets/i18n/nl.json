@@ -62,51 +62,23 @@
     "languages": "Talen",
     "profile": "Profiel"
   },
-  "watchlists": {
-    "action": {
-      "label": "Wijzigingen volgen",
-      "paused": "Volgen gepauzeerd",
-      "active": "Volgen actief",
-      "follow": "Waarschuw me bij wijzigingen",
-      "update": "Bijwerken",
-      "start": "Volgen inschakelen",
-      "resume": "Hervatten",
-      "pause": "Pauzeren",
-      "stop": "Niet meer volgen"
-    },
-    "panel": {
-      "title": "Stel je radar samen",
-      "description": "Kies de gecontroleerde wijzigingen die jij belangrijk vindt.",
-      "privacy": "Dit volgen is privé en staat los van je favorieten."
-    },
-    "groups": {
-      "practical": {
-        "title": "Praktische informatie",
-        "description": "Kalender, seizoen, sluitingen, naam, exploitant en prijzen."
-      },
-      "attractions": {
-        "title": "Attractienieuws",
-        "description": "Aankondigingen, openingen, sluitingen en belangrijke wijzigingen."
-      },
-      "editorial": {
-        "title": "Gecontroleerde inhoud",
-        "description": "Geschiedenis, nieuwe bronnen en gedocumenteerde correcties."
-      },
-      "lifecycle": {
-        "title": "Levenscyclus",
-        "description": "Aankondiging, opening, sluiting, heropening en naamswijziging."
-      },
-      "details": {
-        "title": "Nuttige details",
-        "description": "Belangrijke beperkingen, locatie en categorie."
-      }
-    },
-    "feedback": {
-      "selectOne": "Kies minstens één wijzigingsgroep.",
-      "error": "Het volgen kon niet worden opgeslagen. Probeer het opnieuw."
-    }
-  },
   "notifications": {
+    "emailPreferences": {
+      "kicker": "E-mailoverzichten",
+      "title": "Ontvang alleen de updates die je kiest",
+      "description": "Gecontroleerde wijzigingen uit je volglijst kunnen in een overzicht worden gebundeld. Het meldingencentrum blijft ook zonder e-mail beschikbaar.",
+      "enabled": "Ingeschakeld",
+      "disabled": "Uitgeschakeld",
+      "loading": "Je keuze wordt geladen…",
+      "consentTitle": "Je houdt zelf de controle over je toestemming",
+      "consentText": "Door overzichten in te schakelen, ga je akkoord met de gekozen dagelijkse of wekelijkse frequentie van je gevolgde items. Je kunt die toestemming hier of vanuit elke e-mail meteen intrekken.",
+      "address": "Verzending naar {{email}}",
+      "frequency": "Elk gevolgd item behoudt zijn dagelijkse of wekelijkse frequentie.",
+      "unavailable": "Bevestig eerst je e-mailadres om overzichten in te schakelen.",
+      "error": "Je keuze kan momenteel niet worden opgeslagen.",
+      "disable": "Overzichten uitschakelen",
+      "enable": "Overzichten inschakelen"
+    },
     "kicker": "PERSOONLIJKE RADAR",
     "title": "JE MELDINGEN",
     "description": "Bekijk alleen de feitelijke wijzigingen die je bewust hebt gekozen om te volgen.",
@@ -217,6 +189,50 @@
       "MajorHistoryUpdate": "Geschiedenis uitgebreid",
       "VerifiedSourceAdded": "Nieuwe gecontroleerde bron",
       "CorrectionAfterUserReport": "Correctie na een gebruikersmelding"
+    }
+  },
+  "watchlists": {
+    "action": {
+      "label": "Wijzigingen volgen",
+      "paused": "Volgen gepauzeerd",
+      "active": "Volgen actief",
+      "follow": "Waarschuw me bij wijzigingen",
+      "update": "Bijwerken",
+      "start": "Volgen inschakelen",
+      "resume": "Hervatten",
+      "pause": "Pauzeren",
+      "stop": "Niet meer volgen"
+    },
+    "panel": {
+      "title": "Stel je radar samen",
+      "description": "Kies de gecontroleerde wijzigingen die jij belangrijk vindt.",
+      "privacy": "Dit volgen is privé en staat los van je favorieten."
+    },
+    "groups": {
+      "practical": {
+        "title": "Praktische informatie",
+        "description": "Kalender, seizoen, sluitingen, naam, exploitant en prijzen."
+      },
+      "attractions": {
+        "title": "Attractienieuws",
+        "description": "Aankondigingen, openingen, sluitingen en belangrijke wijzigingen."
+      },
+      "editorial": {
+        "title": "Gecontroleerde inhoud",
+        "description": "Geschiedenis, nieuwe bronnen en gedocumenteerde correcties."
+      },
+      "lifecycle": {
+        "title": "Levenscyclus",
+        "description": "Aankondiging, opening, sluiting, heropening en naamswijziging."
+      },
+      "details": {
+        "title": "Nuttige details",
+        "description": "Belangrijke beperkingen, locatie en categorie."
+      }
+    },
+    "feedback": {
+      "selectOne": "Kies minstens één wijzigingsgroep.",
+      "error": "Het volgen kon niet worden opgeslagen. Probeer het opnieuw."
     }
   },
   "parkFitProfiles": {

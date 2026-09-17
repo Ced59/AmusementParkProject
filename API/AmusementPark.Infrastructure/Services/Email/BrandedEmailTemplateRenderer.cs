@@ -9,6 +9,7 @@ public sealed class BrandedEmailTemplateRenderer
     {
         ArgumentNullException.ThrowIfNull(model);
 
+        string language = Encode(model.Language);
         string preheader = Encode(model.Preheader);
         string badge = Encode(model.Badge);
         string title = Encode(model.Title);
@@ -20,7 +21,7 @@ public sealed class BrandedEmailTemplateRenderer
 
         return $"""
 <!doctype html>
-<html lang="en">
+<html lang="{language}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

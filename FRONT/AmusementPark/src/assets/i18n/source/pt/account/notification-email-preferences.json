@@ -1,0 +1,20 @@
+{
+  "notifications": {
+    "emailPreferences": {
+      "kicker": "Resumos por e-mail",
+      "title": "Recebe apenas as novidades que escolheres",
+      "description": "As alterações verificadas das tuas subscrições podem ser reunidas num resumo. O centro de notificações continua disponível sem e-mail.",
+      "enabled": "Ativados",
+      "disabled": "Desativados",
+      "loading": "A carregar a tua escolha…",
+      "consentTitle": "Manténs o controlo do teu consentimento",
+      "consentText": "Ao ativares os resumos, aceitas receber as frequências escolhidas nas tuas subscrições. Podes retirar imediatamente este consentimento aqui ou a partir de qualquer e-mail.",
+      "address": "Envio para {{email}}",
+      "frequency": "Cada subscrição mantém a sua frequência diária ou semanal.",
+      "unavailable": "Confirma primeiro o teu endereço de e-mail para ativares os resumos.",
+      "error": "Não é possível guardar a tua escolha neste momento.",
+      "disable": "Desativar os resumos",
+      "enable": "Ativar os resumos"
+    }
+  }
+}

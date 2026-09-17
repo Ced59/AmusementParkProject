@@ -15,18 +15,21 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
     private readonly IWatchSubscriptionRepository subscriptionRepository;
     private readonly IFactualChangeEventRepository eventRepository;
     private readonly INotificationDigestRepository digestRepository;
+    private readonly INotificationEmailDeliveryScheduler emailDeliveryScheduler;
     private readonly TimeProvider timeProvider;
 
     public NotificationDigestJobHandler(
         IUserNotificationRepository notificationRepository,
         IWatchSubscriptionRepository subscriptionRepository,
         IFactualChangeEventRepository eventRepository,
-        INotificationDigestRepository digestRepository)
+        INotificationDigestRepository digestRepository,
+        INotificationEmailDeliveryScheduler emailDeliveryScheduler)
         : this(
             notificationRepository,
             subscriptionRepository,
             eventRepository,
             digestRepository,
+            emailDeliveryScheduler,
             TimeProvider.System)
     {
     }
@@ -36,6 +39,7 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
         IWatchSubscriptionRepository subscriptionRepository,
         IFactualChangeEventRepository eventRepository,
         INotificationDigestRepository digestRepository,
+        INotificationEmailDeliveryScheduler emailDeliveryScheduler,
         TimeProvider timeProvider)
     {
         this.notificationRepository = notificationRepository
@@ -44,6 +48,8 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
             ?? throw new ArgumentNullException(nameof(subscriptionRepository));
         this.eventRepository = eventRepository ?? throw new ArgumentNullException(nameof(eventRepository));
         this.digestRepository = digestRepository ?? throw new ArgumentNullException(nameof(digestRepository));
+        this.emailDeliveryScheduler = emailDeliveryScheduler
+            ?? throw new ArgumentNullException(nameof(emailDeliveryScheduler));
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -124,6 +130,7 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
                 notifications.Count,
                 nowUtc);
             await this.digestRepository.ReplaceSnapshotAsync(snapshot, cancellationToken);
+            await this.emailDeliveryScheduler.ScheduleAsync(snapshot, cancellationToken);
             return DurableBackgroundJobHandlerResult.Success();
         }
         catch (ArgumentException)

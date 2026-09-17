@@ -1,0 +1,20 @@
+{
+  "notifications": {
+    "emailPreferences": {
+      "kicker": "E-mailoverzichten",
+      "title": "Ontvang alleen de updates die je kiest",
+      "description": "Gecontroleerde wijzigingen uit je volglijst kunnen in een overzicht worden gebundeld. Het meldingencentrum blijft ook zonder e-mail beschikbaar.",
+      "enabled": "Ingeschakeld",
+      "disabled": "Uitgeschakeld",
+      "loading": "Je keuze wordt geladen…",
+      "consentTitle": "Je houdt zelf de controle over je toestemming",
+      "consentText": "Door overzichten in te schakelen, ga je akkoord met de gekozen dagelijkse of wekelijkse frequentie van je gevolgde items. Je kunt die toestemming hier of vanuit elke e-mail meteen intrekken.",
+      "address": "Verzending naar {{email}}",
+      "frequency": "Elk gevolgd item behoudt zijn dagelijkse of wekelijkse frequentie.",
+      "unavailable": "Bevestig eerst je e-mailadres om overzichten in te schakelen.",
+      "error": "Je keuze kan momenteel niet worden opgeslagen.",
+      "disable": "Overzichten uitschakelen",
+      "enable": "Overzichten inschakelen"
+    }
+  }
+}

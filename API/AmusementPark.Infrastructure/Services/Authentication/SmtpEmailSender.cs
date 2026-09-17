@@ -49,15 +49,41 @@ public sealed class SmtpEmailSender : IEmailSender
 
     public async Task SendAsync(string to, string subject, string htmlBody, CancellationToken cancellationToken)
     {
+        await this.SendAsync(
+            new EmailMessage(to, subject, htmlBody),
+            cancellationToken);
+    }
+
+    public async Task SendAsync(EmailMessage email, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(email);
         MimeMessage message = new MimeMessage();
         message.From.Add(new MailboxAddress(this.emailSettings.FromName, this.emailSettings.FromAddress));
-        message.To.Add(MailboxAddress.Parse(to));
-        message.Subject = subject;
+        message.To.Add(MailboxAddress.Parse(email.To));
+        message.Subject = email.Subject;
+
+        if (email.Headers is not null)
+        {
+            foreach (KeyValuePair<string, string> header in email.Headers)
+            {
+                if (header.Key.Contains('\r', StringComparison.Ordinal)
+                    || header.Key.Contains('\n', StringComparison.Ordinal)
+                    || header.Value.Contains('\r', StringComparison.Ordinal)
+                    || header.Value.Contains('\n', StringComparison.Ordinal))
+                {
+                    throw new ArgumentException("Email headers cannot contain line breaks.", nameof(email));
+                }
+
+                message.Headers.Add(header.Key, header.Value);
+            }
+        }
 
         BodyBuilder bodyBuilder = new BodyBuilder
         {
-            HtmlBody = htmlBody,
-            TextBody = BuildTextBody(htmlBody),
+            HtmlBody = email.HtmlBody,
+            TextBody = string.IsNullOrWhiteSpace(email.TextBody)
+                ? BuildTextBody(email.HtmlBody)
+                : email.TextBody,
         };
 
         message.Body = bodyBuilder.ToMessageBody();
@@ -73,7 +99,10 @@ public sealed class SmtpEmailSender : IEmailSender
         await client.SendAsync(message, cancellationToken);
         await client.DisconnectAsync(true, cancellationToken);
 
-        this.logger.LogInformation("Email sent using SMTP provider to {To} with subject {Subject}.", to, subject);
+        this.logger.LogInformation(
+            "Email sent using SMTP provider to {To} with subject {Subject}.",
+            email.To,
+            email.Subject);
     }
 
     private SecureSocketOptions ResolveSocketOptions()

@@ -62,51 +62,23 @@
     "languages": "Idiomas",
     "profile": "Perfil"
   },
-  "watchlists": {
-    "action": {
-      "label": "Seguimiento de cambios",
-      "paused": "Seguimiento pausado",
-      "active": "Seguimiento activo",
-      "follow": "Avisarme de los cambios",
-      "update": "Actualizar",
-      "start": "Activar el seguimiento",
-      "resume": "Reanudar",
-      "pause": "Pausar",
-      "stop": "Dejar de seguir"
-    },
-    "panel": {
-      "title": "Crea tu radar",
-      "description": "Elige los cambios verificados que te importan.",
-      "privacy": "Este seguimiento es privado e independiente de tus favoritos."
-    },
-    "groups": {
-      "practical": {
-        "title": "Información práctica",
-        "description": "Calendario, temporada, cierres, nombre, operador y precios."
-      },
-      "attractions": {
-        "title": "Vida de las atracciones",
-        "description": "Anuncios, aperturas, cierres y cambios importantes."
-      },
-      "editorial": {
-        "title": "Contenido verificado",
-        "description": "Historia, nuevas fuentes y correcciones documentadas."
-      },
-      "lifecycle": {
-        "title": "Ciclo de vida",
-        "description": "Anuncio, apertura, cierre, reapertura y cambio de nombre."
-      },
-      "details": {
-        "title": "Detalles útiles",
-        "description": "Restricciones importantes, ubicación y categoría."
-      }
-    },
-    "feedback": {
-      "selectOne": "Elige al menos un grupo de cambios.",
-      "error": "No se pudo guardar el seguimiento. Inténtalo de nuevo."
-    }
-  },
   "notifications": {
+    "emailPreferences": {
+      "kicker": "Resúmenes por correo",
+      "title": "Recibe solo las novedades que elijas",
+      "description": "Los cambios verificados de tus seguimientos pueden agruparse en un resumen. El centro de notificaciones sigue disponible sin correo.",
+      "enabled": "Activados",
+      "disabled": "Desactivados",
+      "loading": "Cargando tu elección…",
+      "consentTitle": "Tú controlas tu consentimiento",
+      "consentText": "Al activar los resúmenes, aceptas recibir las frecuencias elegidas en tus seguimientos. Puedes retirar este consentimiento inmediatamente aquí o desde cualquier correo.",
+      "address": "Envío a {{email}}",
+      "frequency": "Cada seguimiento conserva su frecuencia diaria o semanal.",
+      "unavailable": "Confirma primero tu dirección de correo para activar los resúmenes.",
+      "error": "No se puede guardar tu elección en este momento.",
+      "disable": "Desactivar los resúmenes",
+      "enable": "Activar los resúmenes"
+    },
     "kicker": "RADAR PERSONAL",
     "title": "TUS NOTIFICACIONES",
     "description": "Consulta solo los cambios factuales que elegiste seguir.",
@@ -217,6 +189,50 @@
       "MajorHistoryUpdate": "Historia ampliada",
       "VerifiedSourceAdded": "Nueva fuente verificada",
       "CorrectionAfterUserReport": "Corrección tras un aviso de usuario"
+    }
+  },
+  "watchlists": {
+    "action": {
+      "label": "Seguimiento de cambios",
+      "paused": "Seguimiento pausado",
+      "active": "Seguimiento activo",
+      "follow": "Avisarme de los cambios",
+      "update": "Actualizar",
+      "start": "Activar el seguimiento",
+      "resume": "Reanudar",
+      "pause": "Pausar",
+      "stop": "Dejar de seguir"
+    },
+    "panel": {
+      "title": "Crea tu radar",
+      "description": "Elige los cambios verificados que te importan.",
+      "privacy": "Este seguimiento es privado e independiente de tus favoritos."
+    },
+    "groups": {
+      "practical": {
+        "title": "Información práctica",
+        "description": "Calendario, temporada, cierres, nombre, operador y precios."
+      },
+      "attractions": {
+        "title": "Vida de las atracciones",
+        "description": "Anuncios, aperturas, cierres y cambios importantes."
+      },
+      "editorial": {
+        "title": "Contenido verificado",
+        "description": "Historia, nuevas fuentes y correcciones documentadas."
+      },
+      "lifecycle": {
+        "title": "Ciclo de vida",
+        "description": "Anuncio, apertura, cierre, reapertura y cambio de nombre."
+      },
+      "details": {
+        "title": "Detalles útiles",
+        "description": "Restricciones importantes, ubicación y categoría."
+      }
+    },
+    "feedback": {
+      "selectOne": "Elige al menos un grupo de cambios.",
+      "error": "No se pudo guardar el seguimiento. Inténtalo de nuevo."
     }
   },
   "parkFitProfiles": {

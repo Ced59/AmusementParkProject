@@ -1,0 +1,20 @@
+{
+  "notifications": {
+    "emailPreferences": {
+      "kicker": "Email digests",
+      "title": "Receive only the updates you choose",
+      "description": "Verified changes from your watchlist can be grouped into a digest. The notification centre remains available without email.",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "loading": "Loading your choice…",
+      "consentTitle": "Your consent stays under your control",
+      "consentText": "By enabling digests, you agree to receive the frequencies selected in your watches. You can withdraw this consent immediately here or from any email.",
+      "address": "Sent to {{email}}",
+      "frequency": "Each watch keeps its daily or weekly frequency.",
+      "unavailable": "Confirm your email address before enabling digests.",
+      "error": "Your choice cannot be saved right now.",
+      "disable": "Disable digests",
+      "enable": "Enable digests"
+    }
+  }
+}

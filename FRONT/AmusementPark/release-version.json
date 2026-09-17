@@ -1,6 +1,20 @@
 {
-  "version": "5.3.53",
+  "version": "5.3.54",
   "history": [
+    {
+      "version": "5.3.54",
+      "releasedAt": "2026-09-17",
+      "labels": {
+        "fr": "Tu peux désormais recevoir par e-mail les résumés que tu as explicitement choisis.",
+        "en": "You can now receive by email the summaries you explicitly choose.",
+        "de": "Du kannst jetzt ausdrücklich ausgewählte Zusammenfassungen per E-Mail erhalten.",
+        "nl": "Je kunt nu de samenvattingen waarvoor je bewust kiest per e-mail ontvangen.",
+        "it": "Ora puoi ricevere via e-mail i riepiloghi che scegli esplicitamente.",
+        "es": "Ahora puedes recibir por correo los resúmenes que elijas expresamente.",
+        "pl": "Możesz teraz otrzymywać e-mailem wybrane przez siebie podsumowania.",
+        "pt": "Agora podes receber por e-mail os resumos que escolheres explicitamente."
+      }
+    },
     {
       "version": "5.3.53",
       "releasedAt": "2026-09-17",

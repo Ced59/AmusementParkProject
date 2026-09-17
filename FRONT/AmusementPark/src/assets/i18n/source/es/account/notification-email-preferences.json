@@ -1,0 +1,20 @@
+{
+  "notifications": {
+    "emailPreferences": {
+      "kicker": "Resúmenes por correo",
+      "title": "Recibe solo las novedades que elijas",
+      "description": "Los cambios verificados de tus seguimientos pueden agruparse en un resumen. El centro de notificaciones sigue disponible sin correo.",
+      "enabled": "Activados",
+      "disabled": "Desactivados",
+      "loading": "Cargando tu elección…",
+      "consentTitle": "Tú controlas tu consentimiento",
+      "consentText": "Al activar los resúmenes, aceptas recibir las frecuencias elegidas en tus seguimientos. Puedes retirar este consentimiento inmediatamente aquí o desde cualquier correo.",
+      "address": "Envío a {{email}}",
+      "frequency": "Cada seguimiento conserva su frecuencia diaria o semanal.",
+      "unavailable": "Confirma primero tu dirección de correo para activar los resúmenes.",
+      "error": "No se puede guardar tu elección en este momento.",
+      "disable": "Desactivar los resúmenes",
+      "enable": "Activar los resúmenes"
+    }
+  }
+}
