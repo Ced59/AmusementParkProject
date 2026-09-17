@@ -210,11 +210,11 @@ erDiagram
     NOTIFICATION_DIGESTS ||--o{ DURABLE_BACKGROUND_JOBS : planifie
 ```
 
-Aucune migration MongoDB manuelle n’est requise. La collection de bornes est créée
-paresseusement à la première suppression et ne conserve pas l’identifiant brut du
-membre. La collection de baux ne contient elle aussi qu’une empreinte et ses
-entrées sont retirées à la fin de l’envoi ou à leur expiration. Les autres
-collections et index restent inchangés.
+Aucune migration MongoDB manuelle n’est requise. L’initialiseur crée les collections
+de bornes et de baux ainsi que leurs index de recherche et de rétention. Aucune ne
+conserve l’identifiant brut du membre. Les baux sont retirés à la fin de l’envoi ou
+automatiquement à leur expiration. Les autres collections et index restent
+inchangés.
 
 ## Preuves automatisées
 
