@@ -1,6 +1,20 @@
 {
-  "version": "5.3.56",
+  "version": "5.3.57",
   "history": [
+    {
+      "version": "5.3.57",
+      "releasedAt": "2026-09-17",
+      "labels": {
+        "fr": "Les liens de désinscription aux alertes refusent désormais toute altération.",
+        "en": "Alert unsubscribe links now reject any alteration.",
+        "de": "Links zum Abbestellen von Warnmeldungen lehnen jetzt jede Veränderung ab.",
+        "nl": "Links om meldingen af te melden weigeren nu elke wijziging.",
+        "it": "I link per annullare gli avvisi ora rifiutano qualsiasi alterazione.",
+        "es": "Los enlaces para cancelar alertas rechazan ahora cualquier alteración.",
+        "pl": "Linki do rezygnacji z alertów odrzucają teraz każdą modyfikację.",
+        "pt": "As ligações para cancelar alertas rejeitam agora qualquer alteração."
+      }
+    },
     {
       "version": "5.3.56",
       "releasedAt": "2026-09-17",
