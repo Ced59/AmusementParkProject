@@ -81,6 +81,23 @@ public sealed class ApplicationResultHttpExtensionsTests
         Assert.Equal("park.not-found", problemDetails.Extensions["errorCode"]);
     }
 
+    [Fact]
+    public void ToActionResult_WhenConflictHasCurrentVersion_ShouldExposeTheTypedVersion()
+    {
+        TestController controller = CreateController("/me/trips/trip-1");
+        ApplicationResult result = ApplicationResult.Failure(ApplicationError.Conflict(
+            "trip.plan.changed-concurrently",
+            "The trip changed.",
+            7));
+
+        IActionResult actionResult = controller.ToActionResult(result);
+
+        ObjectResult objectResult = Assert.IsType<ObjectResult>(actionResult);
+        ProblemDetails problemDetails = Assert.IsType<ProblemDetails>(objectResult.Value);
+        Assert.Equal(StatusCodes.Status409Conflict, objectResult.StatusCode);
+        Assert.Equal(7L, problemDetails.Extensions["currentVersion"]);
+    }
+
     private static TestController CreateController(string path)
     {
         DefaultHttpContext httpContext = new DefaultHttpContext();

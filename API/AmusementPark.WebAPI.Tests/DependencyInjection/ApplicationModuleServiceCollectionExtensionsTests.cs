@@ -36,6 +36,11 @@ using AmusementPark.Application.Features.TechnicalPages.Results;
 using AmusementPark.Application.Features.TechnicalStats.Commands;
 using AmusementPark.Application.Features.TechnicalStats.Contracts;
 using AmusementPark.Application.Features.TechnicalStats.Queries;
+using AmusementPark.Application.Features.Trips.Commands;
+using AmusementPark.Application.Features.Trips.Handlers;
+using AmusementPark.Application.Features.Trips.Ports;
+using AmusementPark.Application.Features.Trips.Queries;
+using AmusementPark.Application.Features.Trips.Results;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Videos.Commands;
 using AmusementPark.Application.Features.Videos.Contracts;
@@ -189,5 +194,30 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
                 ApplicationResult<ParkFitSearchResult>>>();
 
         Assert.IsType<SearchParksByFitQueryHandler>(handler);
+    }
+
+    [Fact]
+    public void AddApplicationModules_WhenCalled_ShouldResolveTripPlanHandlers()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+        services.AddApplicationModules(configuration);
+        services.AddSingleton(Mock.Of<ITripPlanRepository>());
+        services.AddSingleton(Mock.Of<ITripTimeZoneValidator>());
+
+        using ServiceProvider serviceProvider = services.BuildServiceProvider();
+
+        Assert.IsType<CreateTripPlanCommandHandler>(serviceProvider.GetRequiredService<
+            ICommandHandler<CreateTripPlanCommand, ApplicationResult<CreateTripPlanResult>>>());
+        Assert.IsType<RenameTripPlanCommandHandler>(serviceProvider.GetRequiredService<
+            ICommandHandler<RenameTripPlanCommand, ApplicationResult<TripPlanResult>>>());
+        Assert.IsType<SetTripPlanDatesCommandHandler>(serviceProvider.GetRequiredService<
+            ICommandHandler<SetTripPlanDatesCommand, ApplicationResult<TripPlanResult>>>());
+        Assert.IsType<DeleteTripPlanCommandHandler>(serviceProvider.GetRequiredService<
+            ICommandHandler<DeleteTripPlanCommand, ApplicationResult>>());
+        Assert.IsType<ListMyTripPlansQueryHandler>(serviceProvider.GetRequiredService<
+            IQueryHandler<ListMyTripPlansQuery, ApplicationResult<IReadOnlyCollection<TripPlanResult>>>>());
+        Assert.IsType<GetMyTripPlanQueryHandler>(serviceProvider.GetRequiredService<
+            IQueryHandler<GetMyTripPlanQuery, ApplicationResult<TripPlanResult>>>());
     }
 }

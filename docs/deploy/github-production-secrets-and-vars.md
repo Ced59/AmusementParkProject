@@ -43,6 +43,13 @@ Si les images GHCR sont publiques, ces deux valeurs peuvent rester vides, mais i
 | Secret | Exemple / note |
 |---|---|
 | `PROD_JWT_KEY` | minimum 32 caractères, idéalement 64+ aléatoires |
+| `PROD_TRIP_FINGERPRINT_CURRENT_KEY` | secret Base64 indépendant contenant au moins 32 octets aléatoires ; ne pas réutiliser la clé JWT |
+| `PROD_TRIP_FINGERPRINT_PREVIOUS_KEYS` | optionnel ; anciennes clés conservées pendant une rotation, au format `version=base64;version=base64` |
+
+La variable `PROD_TRIP_FINGERPRINT_CURRENT_VERSION` identifie la clé active et vaut
+`v1` par défaut. Une rotation publie une nouvelle version et déplace l'ancienne paire
+dans `PROD_TRIP_FINGERPRINT_PREVIOUS_KEYS` avant le déploiement ; elle ne remplace
+jamais silencieusement la clé active.
 
 ### Google OAuth
 

@@ -198,6 +198,9 @@ services:
       Authentication__Jwt__Key: ${JWT_KEY:?JWT_KEY is required}
       Authentication__Jwt__Issuer: ${JWT_ISSUER:?JWT_ISSUER is required}
       Authentication__Jwt__Audience: ${JWT_AUDIENCE:?JWT_AUDIENCE is required}
+      Trips__FingerprintKeyRing__CurrentVersion: ${TRIP_FINGERPRINT_CURRENT_VERSION:?TRIP_FINGERPRINT_CURRENT_VERSION is required}
+      Trips__FingerprintKeyRing__CurrentKey: ${TRIP_FINGERPRINT_CURRENT_KEY:?TRIP_FINGERPRINT_CURRENT_KEY is required}
+      Trips__FingerprintKeyRing__PreviousKeys: ${TRIP_FINGERPRINT_PREVIOUS_KEYS:-}
       Authentication__Local__FrontendBaseUrl: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required}
       Seo__PublicBaseUrl: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required}
       Seo__DefaultLanguage: ${SEO_DEFAULT_LANGUAGE:-en}

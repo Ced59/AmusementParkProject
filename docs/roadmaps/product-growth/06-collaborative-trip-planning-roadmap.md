@@ -32,6 +32,43 @@ endpoint, écran ou index n'est créé par ce jalon documentaire. `TRIP-02` peut
 implémenter le voyage individuel sans attendre une cohorte réelle, tout en
 conservant les gates techniques, de confidentialité et responsive.
 
+### État de `TRIP-02` au 17 septembre 2026
+
+Le premier usage individuel est désormais porté par un vrai agrégat métier et
+par la collection MongoDB `trip-plans`. Un membre authentifié peut créer, lister,
+consulter, modifier et supprimer ses voyages privés au travers de `me/trips`.
+La création exige une clé d'idempotence : un retry réseau renvoie le résultat
+initial, tandis qu'une réutilisation de la même clé avec un autre contenu est
+refusée. Le quota est garanti par un slot propriétaire indexé, y compris sous
+concurrence.
+
+Un voyage accepte quatre formes de dates : non définies, période confirmée avec
+bornes inclusives (un seul jour lorsque les bornes sont égales), intervalle encore
+possible ou liste de dates candidates. Les dates utilisent le format ISO et, dès qu'elles
+sont définies, un fuseau IANA valide est obligatoire. Chaque écriture porte une
+version optimiste afin qu'un onglet ancien ne puisse pas écraser une modification
+plus récente. Le propriétaire est aussi enregistré comme membre actif, sans
+dupliquer son autorité dans un second rôle.
+Les modifications sont déjà séparées en commandes fines pour renommer le voyage
+ou changer ses dates ; aucune route ne remplace silencieusement tout le plan.
+
+La suppression produit un tombstone technique limité à 24 heures : les données
+privées sont immédiatement effacées, mais les empreintes minimales de création
+restent assez longtemps pour qu'un ancien retry réseau ne puisse pas recréer le
+voyage supprimé. MongoDB purge automatiquement ce tombstone à l'expiration. La
+commande exige aussi une authentification confirmée depuis moins de dix minutes,
+en plus de la version attendue, afin qu'une session ancienne ne suffise pas à
+déclencher cette action irréversible.
+
+Les empreintes de création utilisent un trousseau HMAC dédié et versionné, distinct
+du JWT. Une rotation conserve explicitement les anciennes versions nécessaires aux
+reprises ; le tombstone ne garde aucun identifiant de compte en clair.
+
+Ce jalon reste volontairement sans écran : l'expérience utilisateur individuelle,
+conçue responsive dès 320 px, appartient à `TRIP-04`. `TRIP-03` enrichit d'abord
+le même agrégat avec les parcs candidats et les journées afin que l'interface ne
+soit pas bâtie sur un contrat transitoire.
+
 ## 1. Vision produit
 
 Un groupe doit pouvoir transformer des envies dispersées en programme commun :
@@ -585,7 +622,7 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 | PR | Contenu | Critère |
 |---|---|---|
 | `TRIP-01` | ADR agrégat, rôles et confidentialité | Invariants validés |
-| `TRIP-02` | Core/persistance voyage individuel | CRUD fiable |
+| `TRIP-02` | Core/persistance voyage individuel | CRUD fiable — implémenté le 17 septembre 2026 |
 | `TRIP-03` | Candidats et jours | Programme cohérent |
 | `TRIP-04` | UI individuelle + wishlist | Valeur sans invitation |
 | `TRIP-05` | Invitations opaques | Preview minimisé |

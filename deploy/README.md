@@ -160,6 +160,9 @@ Ces limites ciblent login, OAuth externe, refresh-token, inscription, confirmati
 - `PROD_JWT_KEY`
 - `PROD_JWT_ISSUER`
 - `PROD_JWT_AUDIENCE`
+- `PROD_TRIP_FINGERPRINT_CURRENT_KEY` : 32 octets aléatoires minimum encodés en Base64, distincts du JWT
+- `PROD_TRIP_FINGERPRINT_PREVIOUS_KEYS` optionnel : anciennes clés sous la forme `version=base64;version=base64`
+- `PROD_TRIP_FINGERPRINT_CURRENT_VERSION` optionnel, défaut `v1`
 - `PROD_GOOGLE_CLIENT_ID`
 - `PROD_GOOGLE_CLIENT_SECRET`
 - `PROD_GOOGLE_REDIRECT_URI`

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using AmusementPark.WebAPI.Contracts.Users;
@@ -15,6 +16,19 @@ public static class ClaimsPrincipalExtensions
     {
         ArgumentNullException.ThrowIfNull(user);
         return user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    }
+
+    public static DateTime? GetLastAuthenticationUtc(this ClaimsPrincipal user)
+    {
+        ArgumentNullException.ThrowIfNull(user);
+        string? value = user.FindFirst("lastlogin")?.Value;
+        return DateTimeOffset.TryParse(
+            value,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.RoundtripKind,
+            out DateTimeOffset authenticatedAt)
+            ? authenticatedAt.UtcDateTime
+            : null;
     }
 
     public static bool IsInRoles(this ClaimsPrincipal user, params UserRoleDto[] roles)

@@ -85,6 +85,9 @@ MINIO_ROOT_PASSWORD
 JWT_KEY
 JWT_ISSUER
 JWT_AUDIENCE
+TRIP_FINGERPRINT_CURRENT_VERSION
+TRIP_FINGERPRINT_CURRENT_KEY
+TRIP_FINGERPRINT_PREVIOUS_KEYS
 GOOGLE_CLIENT_ID
 GOOGLE_CLIENT_SECRET
 GOOGLE_REDIRECT_URI
@@ -95,6 +98,9 @@ Contrôles spécifiques :
 - `PUBLIC_BASE_URL` et `PUBLIC_WWW_BASE_URL` doivent être des origins `https://` sans path ;
 - `ALLOWED_HOSTS` et `FORWARDED_HEADERS_ALLOWED_HOSTS` ne doivent pas contenir `*` ;
 - `JWT_KEY` doit contenir au moins 32 caractères ;
+- `TRIP_FINGERPRINT_CURRENT_KEY` doit être un secret Base64 indépendant du JWT,
+  contenir au moins 32 octets aléatoires et conserver son ancienne version dans
+  `TRIP_FINGERPRINT_PREVIOUS_KEYS` pendant une rotation ;
 - `EMAIL_MODE=Smtp` rend les paramètres SMTP obligatoires ;
 - `EMAIL_MODE=Console` reste accepté pour un smoke test privé, mais génère un warning.
 

@@ -204,6 +204,8 @@ required_names=(
   JWT_KEY
   JWT_ISSUER
   JWT_AUDIENCE
+  TRIP_FINGERPRINT_CURRENT_VERSION
+  TRIP_FINGERPRINT_CURRENT_KEY
   SOCIAL_PUBLISHING_FACEBOOK_ENABLED
   SOCIAL_PUBLISHING_FACEBOOK_WEBHOOK_ENABLED
 )
@@ -320,6 +322,50 @@ jwt_length="${#jwt_value}"
 if [ "${jwt_length}" -lt 32 ]; then
   echo "ERROR: JWT_KEY must contain at least 32 characters." >&2
   errors=$((errors + 1))
+fi
+
+if [[ ! "${TRIP_FINGERPRINT_CURRENT_VERSION:-}" =~ ^[A-Za-z0-9._-]{1,32}$ ]]; then
+  echo "ERROR: TRIP_FINGERPRINT_CURRENT_VERSION must be a short opaque identifier." >&2
+  errors=$((errors + 1))
+fi
+
+validate_trip_fingerprint_key() {
+  local setting_name="$1"
+  local encoded_key="$2"
+  local decoded_length
+
+  if ! decoded_length="$(printf '%s' "${encoded_key}" | base64 --decode 2>/dev/null | wc -c)"; then
+    echo "ERROR: ${setting_name} must be valid Base64." >&2
+    errors=$((errors + 1))
+    return
+  fi
+
+  if [ "${decoded_length}" -lt 32 ]; then
+    echo "ERROR: ${setting_name} must contain at least 32 random bytes." >&2
+    errors=$((errors + 1))
+  fi
+}
+
+validate_trip_fingerprint_key TRIP_FINGERPRINT_CURRENT_KEY "${TRIP_FINGERPRINT_CURRENT_KEY:-}"
+
+if [ -n "${TRIP_FINGERPRINT_PREVIOUS_KEYS:-}" ]; then
+  IFS=';' read -r -a trip_previous_keys <<< "${TRIP_FINGERPRINT_PREVIOUS_KEYS}"
+  for trip_previous_entry in "${trip_previous_keys[@]}"; do
+    trip_previous_version="${trip_previous_entry%%=*}"
+    trip_previous_key="${trip_previous_entry#*=}"
+    if [ "${trip_previous_version}" = "${trip_previous_entry}" ] \
+      || [[ ! "${trip_previous_version}" =~ ^[A-Za-z0-9._-]{1,32}$ ]]; then
+      echo "ERROR: TRIP_FINGERPRINT_PREVIOUS_KEYS entries must use version=base64-key." >&2
+      errors=$((errors + 1))
+      continue
+    fi
+
+    if [ "${trip_previous_version}" = "${TRIP_FINGERPRINT_CURRENT_VERSION:-}" ]; then
+      echo "ERROR: TRIP_FINGERPRINT_PREVIOUS_KEYS must not repeat the current version." >&2
+      errors=$((errors + 1))
+    fi
+    validate_trip_fingerprint_key TRIP_FINGERPRINT_PREVIOUS_KEYS "${trip_previous_key}"
+  done
 fi
 
 case "${EMAIL_MODE:-Smtp}" in
