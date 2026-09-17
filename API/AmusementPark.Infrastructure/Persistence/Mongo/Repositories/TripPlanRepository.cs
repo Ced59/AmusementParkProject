@@ -162,7 +162,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
         return document?.ToDomain();
     }
 
-    public async Task<TripPlanWriteOutcome> ReplaceOwnedAsync(
+    public async Task<TripPlanWriteResult> ReplaceOwnedAsync(
         TripPlan tripPlan,
         long expectedVersion,
         CancellationToken cancellationToken)
@@ -177,17 +177,19 @@ public sealed class TripPlanRepository : ITripPlanRepository
             cancellationToken: cancellationToken);
         if (result.MatchedCount == 1)
         {
-            return TripPlanWriteOutcome.Success;
+            return new TripPlanWriteResult(TripPlanWriteOutcome.Success, tripPlan.Version);
         }
 
         TripPlan? existing = await this.GetOwnedAsync(
             tripPlan.OwnerUserId,
             tripPlan.Id,
             cancellationToken);
-        return existing is null ? TripPlanWriteOutcome.NotFound : TripPlanWriteOutcome.Conflict;
+        return existing is null
+            ? new TripPlanWriteResult(TripPlanWriteOutcome.NotFound, null)
+            : new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, existing.Version);
     }
 
-    public async Task<TripPlanWriteOutcome> DeleteOwnedAsync(
+    public async Task<TripPlanWriteResult> DeleteOwnedAsync(
         TripPlan tripPlan,
         long expectedVersion,
         CancellationToken cancellationToken)
@@ -209,14 +211,16 @@ public sealed class TripPlanRepository : ITripPlanRepository
             cancellationToken: cancellationToken);
         if (result.MatchedCount == 1)
         {
-            return TripPlanWriteOutcome.Success;
+            return new TripPlanWriteResult(TripPlanWriteOutcome.Success, tripPlan.Version);
         }
 
         TripPlan? existing = await this.GetOwnedAsync(
             tripPlan.OwnerUserId,
             tripPlan.Id,
             cancellationToken);
-        return existing is null ? TripPlanWriteOutcome.NotFound : TripPlanWriteOutcome.Conflict;
+        return existing is null
+            ? new TripPlanWriteResult(TripPlanWriteOutcome.NotFound, null)
+            : new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, existing.Version);
     }
 
     internal static IdempotentTripPlanCreationResult ResolveIdempotentCreation(

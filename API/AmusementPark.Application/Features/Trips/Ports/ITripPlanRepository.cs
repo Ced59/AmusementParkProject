@@ -29,12 +29,12 @@ public interface ITripPlanRepository
         TripPlanId tripPlanId,
         CancellationToken cancellationToken);
 
-    Task<TripPlanWriteOutcome> ReplaceOwnedAsync(
+    Task<TripPlanWriteResult> ReplaceOwnedAsync(
         TripPlan tripPlan,
         long expectedVersion,
         CancellationToken cancellationToken);
 
-    Task<TripPlanWriteOutcome> DeleteOwnedAsync(
+    Task<TripPlanWriteResult> DeleteOwnedAsync(
         TripPlan tripPlan,
         long expectedVersion,
         CancellationToken cancellationToken);

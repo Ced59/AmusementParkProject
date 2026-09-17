@@ -126,7 +126,47 @@ public sealed class TripPlanLifecycleServiceTests
             CancellationToken.None);
 
         Assert.False(result.IsSuccess);
-        Assert.Equal("trip.plan.changed-concurrently", Assert.Single(result.Errors).Code);
+        ApplicationError error = Assert.Single(result.Errors);
+        Assert.Equal("trip.plan.changed-concurrently", error.Code);
+        Assert.Equal(1, error.CurrentVersion);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RenameAsync_WhenTheAtomicWriteLosesARace_ShouldReturnTheStoredCurrentVersion()
+    {
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            DateTime.UtcNow.AddMinutes(-1));
+        Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.GetOwnedAsync(
+                "user-1",
+                trip.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(trip);
+        repository.Setup(item => item.ReplaceOwnedAsync(
+                It.Is<TripPlan>(candidate => candidate.Version == 2),
+                1,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, 4));
+        Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+
+        ApplicationResult<TripPlanResult> result = await service.RenameAsync(
+            "user-1",
+            trip.Id.Value,
+            1,
+            "Nouveau titre",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        ApplicationError error = Assert.Single(result.Errors);
+        Assert.Equal("trip.plan.changed-concurrently", error.Code);
+        Assert.Equal(4, error.CurrentVersion);
         repository.VerifyAll();
     }
 
@@ -153,7 +193,7 @@ public sealed class TripPlanLifecycleServiceTests
                     && candidate.Version == 2),
                 1,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(TripPlanWriteOutcome.Success);
+            .ReturnsAsync(new TripPlanWriteResult(TripPlanWriteOutcome.Success, 2));
         Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
         TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
 

@@ -167,7 +167,8 @@ public sealed class TripPlanLifecycleService
 
         if (trip.Version != expectedVersion)
         {
-            return ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.ChangedConcurrently());
+            return ApplicationResult<TripPlanResult>.Failure(
+                TripPlanApplicationErrors.ChangedConcurrently(trip.Version));
         }
 
         try
@@ -181,13 +182,16 @@ public sealed class TripPlanLifecycleService
 
         if (trip.Version != expectedVersion)
         {
-            TripPlanWriteOutcome outcome = await this.repository.ReplaceOwnedAsync(
+            TripPlanWriteResult writeResult = await this.repository.ReplaceOwnedAsync(
                 trip,
                 expectedVersion,
                 cancellationToken);
-            if (outcome != TripPlanWriteOutcome.Success)
+            if (writeResult.Outcome != TripPlanWriteOutcome.Success)
             {
-                return ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.ChangedConcurrently());
+                return writeResult.Outcome == TripPlanWriteOutcome.NotFound
+                    ? ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.NotFound())
+                    : ApplicationResult<TripPlanResult>.Failure(
+                        TripPlanApplicationErrors.ChangedConcurrently(writeResult.CurrentVersion));
             }
         }
 
@@ -222,7 +226,7 @@ public sealed class TripPlanLifecycleService
 
         if (trip.Version != expectedVersion)
         {
-            return ApplicationResult.Failure(TripPlanApplicationErrors.ChangedConcurrently());
+            return ApplicationResult.Failure(TripPlanApplicationErrors.ChangedConcurrently(trip.Version));
         }
 
         try
@@ -236,15 +240,16 @@ public sealed class TripPlanLifecycleService
                 exception.Message));
         }
 
-        TripPlanWriteOutcome outcome = await this.repository.DeleteOwnedAsync(
+        TripPlanWriteResult writeResult = await this.repository.DeleteOwnedAsync(
             trip,
             expectedVersion,
             cancellationToken);
-        return outcome switch
+        return writeResult.Outcome switch
         {
             TripPlanWriteOutcome.Success => ApplicationResult.Success(),
             TripPlanWriteOutcome.NotFound => ApplicationResult.Failure(TripPlanApplicationErrors.NotFound()),
-            _ => ApplicationResult.Failure(TripPlanApplicationErrors.ChangedConcurrently()),
+            _ => ApplicationResult.Failure(
+                TripPlanApplicationErrors.ChangedConcurrently(writeResult.CurrentVersion)),
         };
     }
 

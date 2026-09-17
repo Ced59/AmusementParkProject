@@ -22,11 +22,12 @@ public static class TripPlanApplicationErrors
             $"At most {TripPlan.MaximumPlansPerOwner} trip plans are allowed per owner.");
     }
 
-    public static ApplicationError ChangedConcurrently()
+    public static ApplicationError ChangedConcurrently(long? currentVersion)
     {
         return ApplicationError.Conflict(
             "trip.plan.changed-concurrently",
-            "The trip plan changed before this action completed.");
+            "The trip plan changed before this action completed.",
+            currentVersion);
     }
 
     public static ApplicationError IdempotencyConflict()

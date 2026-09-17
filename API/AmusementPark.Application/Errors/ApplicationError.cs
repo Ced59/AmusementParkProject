@@ -7,11 +7,13 @@ namespace AmusementPark.Application.Errors
     /// <param name="Message">Message fonctionnel ou technique.</param>
     /// <param name="Type">Catégorie d'erreur applicative.</param>
     /// <param name="Details">Détails complémentaires optionnels.</param>
+    /// <param name="CurrentVersion">Version courante optionnelle lors d'un conflit optimiste.</param>
     public sealed record ApplicationError(
         string Code,
         string Message,
         ApplicationErrorType Type,
-        IReadOnlyDictionary<string, IReadOnlyCollection<string>>? Details = null)
+        IReadOnlyDictionary<string, IReadOnlyCollection<string>>? Details = null,
+        long? CurrentVersion = null)
     {
         /// <summary>
         /// Crée une erreur de validation.
@@ -43,9 +45,13 @@ namespace AmusementPark.Application.Errors
         /// <summary>
         /// Crée une erreur de conflit.
         /// </summary>
-        public static ApplicationError Conflict(string code, string message)
+        public static ApplicationError Conflict(string code, string message, long? currentVersion = null)
         {
-            return new ApplicationError(code, message, ApplicationErrorType.Conflict);
+            return new ApplicationError(
+                code,
+                message,
+                ApplicationErrorType.Conflict,
+                CurrentVersion: currentVersion);
         }
 
         /// <summary>

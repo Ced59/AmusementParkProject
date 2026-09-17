@@ -64,6 +64,10 @@ internal static class ApplicationResultHttpExtensions
             title,
             detail,
             error.Code);
+        if (error.CurrentVersion.HasValue)
+        {
+            problemDetails.Extensions["currentVersion"] = error.CurrentVersion.Value;
+        }
 
         return ApiProblemDetailsFactory.ToObjectResult(problemDetails);
     }
