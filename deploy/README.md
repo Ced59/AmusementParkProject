@@ -417,7 +417,9 @@ attend le healthcheck MongoDB puis exécute le déploiement applicatif normal. E
 ne s'applique qu'au premier essai du run : « Re-run failed jobs » la neutralise et
 une nouvelle maintenance exige un nouveau lancement manuel. Elle ne doit pas
 servir à une première installation ni à contourner un échec de sauvegarde ou une
-identité de volume inattendue.
+identité de volume inattendue. Le hash de configuration Compose doit être inchangé :
+ce parcours met à jour l'image flottante `mongo:8.0`, jamais les identifiants,
+montages, réseaux, commandes ou autres paramètres MongoDB.
 
 Voir aussi :
 

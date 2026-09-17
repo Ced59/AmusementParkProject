@@ -120,8 +120,8 @@ class DockerRuntime:
 
     def maintain_mongodb(self):
         desired_image = self.config["services"]["mongodb"]["image"]
-        if not re.fullmatch(r"mongo:8\.0(?:@sha256:[a-f0-9]{64})?", desired_image):
-            raise DeploymentError("MongoDB maintenance only supports the declared 8.0 release line")
+        if desired_image != "mongo:8.0":
+            raise DeploymentError("MongoDB maintenance only supports the declared floating 8.0 image")
         configured_volume = self.configured_named_volume("mongodb", "/data/db")
         identifier = self.compose("ps", "-q", "mongodb")
         if not identifier:
@@ -130,8 +130,12 @@ class DockerRuntime:
         if current is None:
             raise DeploymentError("MongoDB disappeared before maintenance")
         self.validate_shared_service(current, "mongodb")
-        if not re.fullmatch(r"mongo:8\.0(?:@sha256:[a-f0-9]{64})?", current["Config"].get("Image", "")):
-            raise DeploymentError("Running MongoDB is outside the supported 8.0 release line")
+        if current["Config"].get("Image") != desired_image:
+            raise DeploymentError("Running MongoDB does not use the declared floating 8.0 image")
+        expected_hash = self.compose("config", "--hash", "mongodb").split()[-1]
+        labels = current["Config"].get("Labels") or {}
+        if labels.get("com.docker.compose.config-hash") != expected_hash:
+            raise DeploymentError("MongoDB non-image configuration changed; refusing image-only maintenance")
         current_volume = self.named_volume_name(current, "/data/db")
         if current_volume != configured_volume:
             raise DeploymentError("MongoDB data volume does not match the declared Compose volume")

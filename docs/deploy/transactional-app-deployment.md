@@ -16,6 +16,10 @@ intention qu'au premier essai du run : la commande GitHub « Re-run failed jobs 
 la remplace par `none`, et seule une nouvelle exécution manuelle peut autoriser une
 autre maintenance. Le parcours vérifie que le volume nommé
 monté sur `/data/db` est strictement le même,
+que le hash Compose du service n'a pas changé et que l'ancienne comme la nouvelle
+configuration déclarent exactement l'image flottante `mongo:8.0`. Il ne peut donc
+pas appliquer simultanément un changement d'identifiant, de montage, de réseau,
+de commande ou de tout autre paramètre MongoDB,
 attend son retour à l'état sain, puis reprend le déploiement transactionnel de
 l'API et du front. Si MongoDB n'est pas en cours d'exécution au moment de la
 sauvegarde, la maintenance est refusée même s'il revient ensuite : la configuration

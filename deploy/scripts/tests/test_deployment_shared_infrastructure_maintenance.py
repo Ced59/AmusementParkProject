@@ -20,6 +20,7 @@ class SharedInfrastructureMaintenanceTests(unittest.TestCase):
                 "Labels": {
                     "com.docker.compose.project": "amusementpark",
                     "com.docker.compose.service": "mongodb",
+                    "com.docker.compose.config-hash": "stable-config",
                 },
             },
             "Mounts": [
@@ -63,13 +64,14 @@ class SharedInfrastructureMaintenanceTests(unittest.TestCase):
         runtime = self.runtime()
         before = self.container("a" * 64)
         after = self.container("b" * 64)
-        runtime.compose.side_effect = [before["Id"], "", after["Id"]]
+        runtime.compose.side_effect = [before["Id"], "mongodb stable-config", "", after["Id"]]
         runtime.inspect.side_effect = [before, after]
 
         runtime.maintain_mongodb()
 
         self.assertEqual(runtime.compose.call_args_list, [
             call("ps", "-q", "mongodb"),
+            call("config", "--hash", "mongodb"),
             call("up", "-d", "--no-deps", "mongodb"),
             call("ps", "-q", "mongodb"),
         ])
@@ -82,7 +84,7 @@ class SharedInfrastructureMaintenanceTests(unittest.TestCase):
         runtime = self.runtime()
         before = self.container("a" * 64)
         after = self.container("b" * 64, "unexpected")
-        runtime.compose.side_effect = [before["Id"], "", after["Id"]]
+        runtime.compose.side_effect = [before["Id"], "mongodb stable-config", "", after["Id"]]
         runtime.inspect.side_effect = [before, after]
 
         with self.assertRaisesRegex(DeploymentError, "volume identity changed"):
@@ -94,7 +96,7 @@ class SharedInfrastructureMaintenanceTests(unittest.TestCase):
         runtime = self.runtime()
         runtime.config["services"]["mongodb"]["image"] = "mongo:9.0"
 
-        with self.assertRaisesRegex(DeploymentError, "declared 8.0 release line"):
+        with self.assertRaisesRegex(DeploymentError, "declared floating 8.0 image"):
             runtime.maintain_mongodb()
 
         runtime.compose.assert_not_called()
@@ -108,6 +110,21 @@ class SharedInfrastructureMaintenanceTests(unittest.TestCase):
             runtime.maintain_mongodb()
 
         runtime.inspect.assert_not_called()
+        runtime.wait_healthy.assert_not_called()
+
+    def test_refuses_non_image_configuration_drift_before_recreation(self):
+        runtime = self.runtime()
+        before = self.container("a" * 64)
+        runtime.compose.side_effect = [before["Id"], "mongodb changed-config"]
+        runtime.inspect.return_value = before
+
+        with self.assertRaisesRegex(DeploymentError, "non-image configuration changed"):
+            runtime.maintain_mongodb()
+
+        self.assertEqual(runtime.compose.call_args_list, [
+            call("ps", "-q", "mongodb"),
+            call("config", "--hash", "mongodb"),
+        ])
         runtime.wait_healthy.assert_not_called()
 
     def test_refuses_a_container_owned_by_another_compose_project(self):
