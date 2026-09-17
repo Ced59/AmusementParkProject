@@ -200,7 +200,7 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
             return DurableBackgroundJobHandlerResult.Success();
         }
 
-        string? deliveryLeaseId = await this.deletionFence.TryAcquireDeliveryLeaseAsync(
+        string? deliveryLeaseId = await this.deletionFence.TryAcquireActivityLeaseAsync(
             digest.UserId,
             this.Definition.Timeout.Add(TimeSpan.FromMinutes(1)),
             cancellationToken);
@@ -246,7 +246,7 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
         }
         finally
         {
-            await this.deletionFence.ReleaseDeliveryLeaseAsync(
+            await this.deletionFence.ReleaseActivityLeaseAsync(
                 deliveryLeaseId,
                 CancellationToken.None);
         }

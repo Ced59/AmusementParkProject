@@ -10,12 +10,12 @@ public interface IWatchlistAccountDeletionFence
         IReadOnlyCollection<string> userIds,
         CancellationToken cancellationToken);
 
-    Task<string?> TryAcquireDeliveryLeaseAsync(
+    Task<string?> TryAcquireActivityLeaseAsync(
         string userId,
         TimeSpan leaseDuration,
         CancellationToken cancellationToken);
 
-    Task ReleaseDeliveryLeaseAsync(
+    Task ReleaseActivityLeaseAsync(
         string leaseId,
         CancellationToken cancellationToken);
 }

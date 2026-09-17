@@ -1,7 +1,5 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
-using AmusementPark.Application.Features.Watchlists.Results;
-using AmusementPark.Application.Features.Watchlists.Services;
 using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Identifiers;
 using AmusementPark.Core.Domain.Watchlists;
@@ -11,14 +9,10 @@ namespace AmusementPark.Application.Features.Passport.Services;
 public sealed class PassportWatchlistExportSource : IPassportWatchlistExportSource
 {
     private readonly IWatchlistExportStore store;
-    private readonly UserCollectionTargetReader targetReader;
 
-    public PassportWatchlistExportSource(
-        IWatchlistExportStore store,
-        UserCollectionTargetReader targetReader)
+    public PassportWatchlistExportSource(IWatchlistExportStore store)
     {
         this.store = store ?? throw new ArgumentNullException(nameof(store));
-        this.targetReader = targetReader ?? throw new ArgumentNullException(nameof(targetReader));
     }
 
     public async Task<PassportWatchlistExportData> LoadAsync(
@@ -34,25 +28,20 @@ public sealed class PassportWatchlistExportSource : IPassportWatchlistExportSour
             cancellationToken);
         string[] parkIds = ListTargetIds(stored, CollectionTargetType.Park);
         string[] parkItemIds = ListTargetIds(stored, CollectionTargetType.ParkItem);
-        Task<IReadOnlyDictionary<string, UserCollectionTargetSnapshot>> parksTask =
-            this.targetReader.ResolveAsync(
-                CollectionTargetType.Park,
-                parkIds,
-                cancellationToken);
-        Task<IReadOnlyDictionary<string, UserCollectionTargetSnapshot>> parkItemsTask =
-            this.targetReader.ResolveAsync(
-                CollectionTargetType.ParkItem,
-                parkItemIds,
-                cancellationToken);
+        PassportWatchlistTargetCatalog targets = await this.store.LoadTargetsAsync(
+            parkIds,
+            parkItemIds,
+            sourceBudget,
+            cancellationToken);
         FactualChangeEventId[] eventIds = stored.Notifications
             .Select(static notification => notification.FactualEventId)
             .Distinct()
             .ToArray();
-        Task<IReadOnlyCollection<FactualChangeEvent>> eventsTask =
-            this.store.LoadFactualEventsAsync(eventIds, sourceBudget, cancellationToken);
-        await Task.WhenAll(parksTask, parkItemsTask, eventsTask);
-
-        IReadOnlyCollection<FactualChangeEvent> events = await eventsTask;
+        IReadOnlyCollection<FactualChangeEvent> events =
+            await this.store.LoadFactualEventsAsync(
+                eventIds,
+                sourceBudget,
+                cancellationToken);
         return new PassportWatchlistExportData(
             stored.CollectionEntries,
             stored.Subscriptions,
@@ -60,8 +49,8 @@ public sealed class PassportWatchlistExportSource : IPassportWatchlistExportSour
             stored.Digests,
             stored.EmailPreference,
             stored.DeliveryAttempts,
-            MapTargets(await parksTask),
-            MapTargets(await parkItemsTask),
+            targets.ParkTargets,
+            targets.ParkItemTargets,
             events.ToDictionary(static factualEvent => factualEvent.Id));
     }
 
@@ -91,16 +80,4 @@ public sealed class PassportWatchlistExportSource : IPassportWatchlistExportSour
             : CollectionTargetType.ParkItem;
     }
 
-    private static IReadOnlyDictionary<string, PassportWatchlistTargetSnapshot> MapTargets(
-        IReadOnlyDictionary<string, UserCollectionTargetSnapshot> targets)
-    {
-        return targets.ToDictionary(
-            static pair => pair.Key,
-            static pair => new PassportWatchlistTargetSnapshot(
-                pair.Value.TargetType,
-                pair.Value.Status,
-                pair.Value.Name,
-                pair.Value.ParentParkName),
-            StringComparer.Ordinal);
-    }
 }

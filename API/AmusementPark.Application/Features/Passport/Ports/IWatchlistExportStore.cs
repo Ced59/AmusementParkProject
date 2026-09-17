@@ -10,6 +10,12 @@ public interface IWatchlistExportStore
         PassportExportSourceBudget sourceBudget,
         CancellationToken cancellationToken);
 
+    Task<PassportWatchlistTargetCatalog> LoadTargetsAsync(
+        IReadOnlyCollection<string> parkIds,
+        IReadOnlyCollection<string> parkItemIds,
+        PassportExportSourceBudget sourceBudget,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<FactualChangeEvent>> LoadFactualEventsAsync(
         IReadOnlyCollection<FactualChangeEventId> eventIds,
         PassportExportSourceBudget sourceBudget,

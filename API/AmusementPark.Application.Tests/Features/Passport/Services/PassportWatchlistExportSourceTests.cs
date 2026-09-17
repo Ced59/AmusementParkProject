@@ -1,13 +1,7 @@
-using AmusementPark.Application.Features.Images.Ports;
-using AmusementPark.Application.Features.ParkItems.Ports;
-using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
-using AmusementPark.Application.Features.Watchlists.Services;
 using AmusementPark.Core.Domain.FactualEvents;
-using AmusementPark.Core.Domain.Images;
-using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Watchlists;
 using Moq;
 using Xunit;
@@ -63,35 +57,27 @@ public sealed class PassportWatchlistExportSourceTests
                 It.Is<PassportExportSourceBudget>(budget => ReferenceEquals(budget, sourceBudget)),
                 CancellationToken.None))
             .ReturnsAsync(stored);
-        Park park = new Park
-        {
-            Id = "park-internal",
-            Name = "Europa-Park",
-            IsVisible = true,
-            Status = ParkStatus.Operating,
-        };
-        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
-        parks.Setup(repository => repository.GetByIdsAsync(
-                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-internal" })),
-                CancellationToken.None))
-            .ReturnsAsync(new[] { park });
-        Mock<IParkItemRepository> parkItems = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
-        images.Setup(repository => repository.GetMainImageIdsByOwnersAsync(
-                ImageOwnerType.Park,
+        store.Setup(candidate => candidate.LoadTargetsAsync(
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-internal" })),
-                ImageCategory.Park,
-                true,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0),
+                It.Is<PassportExportSourceBudget>(budget => ReferenceEquals(budget, sourceBudget)),
                 CancellationToken.None))
-            .ReturnsAsync(new Dictionary<string, string>());
+            .ReturnsAsync(new PassportWatchlistTargetCatalog(
+                new Dictionary<string, PassportWatchlistTargetSnapshot>(StringComparer.Ordinal)
+                {
+                    ["park-internal"] = new PassportWatchlistTargetSnapshot(
+                        CollectionTargetType.Park,
+                        CollectionTargetStatus.Available,
+                        "Europa-Park",
+                        null),
+                },
+                new Dictionary<string, PassportWatchlistTargetSnapshot>(StringComparer.Ordinal)));
         store.Setup(candidate => candidate.LoadFactualEventsAsync(
                 It.Is<IReadOnlyCollection<FactualChangeEventId>>(ids => ids.Count == 0),
                 It.Is<PassportExportSourceBudget>(budget => ReferenceEquals(budget, sourceBudget)),
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<FactualChangeEvent>());
-        PassportWatchlistExportSource source = new PassportWatchlistExportSource(
-            store.Object,
-            new UserCollectionTargetReader(parks.Object, parkItems.Object, images.Object));
+        PassportWatchlistExportSource source = new PassportWatchlistExportSource(store.Object);
 
         PassportWatchlistExportData result = await source.LoadAsync(
             "user-1",
@@ -102,8 +88,5 @@ public sealed class PassportWatchlistExportSourceTests
         Assert.Equal("Europa-Park", target.Name);
         Assert.Equal("À découvrir avec les enfants", Assert.Single(result.CollectionEntries).PrivateNote);
         store.VerifyAll();
-        parks.VerifyAll();
-        images.VerifyAll();
-        parkItems.VerifyNoOtherCalls();
     }
 }

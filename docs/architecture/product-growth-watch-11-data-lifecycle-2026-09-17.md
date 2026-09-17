@@ -47,16 +47,19 @@ responsabilités, dont une table distincte pour les entrées de digest. Les lien
 entre tables utilisent des références locales déterministes telles que
 `collection-0001`, `watch-0001` ou `digest-0001`.
 
-Les parcs et attractions sont résolus par le lecteur Application existant. Une
-cible qui n’est plus publiquement disponible reste exportable sous un libellé
-neutre, sans que son identifiant technique ne serve de nom de secours. Les
-notifications exportent la preuve factuelle disponible : valeur précédente,
-nouvelle valeur, éditeur, titre, URL, dates et statut de vérification. Ces preuves
-consomment le même budget mémoire borné que les autres documents de l’export : une
-preuve volumineuse ne peut donc pas contourner la limite avant la génération. Le
-JSON et la table CSV des notifications conservent tous deux le statut, la
-confiance, les dates de vérification, publication ou terminaison et le motif de
-correction ou de rétractation.
+Les parcs et attractions sont résolus par une projection MongoDB légère dédiée à
+l’export. Elle ne charge que le nom, la visibilité et les statuts nécessaires au
+domaine, sans descriptions, images ni détails techniques. Chaque projection
+consomme le budget mémoire partagé avant son mapping. Une cible qui n’est plus
+publiquement disponible reste exportable sous un libellé neutre, sans que son
+identifiant technique ne serve de nom de secours. Les notifications exportent la
+preuve factuelle disponible : valeur précédente, nouvelle valeur, éditeur, titre,
+URL, dates et statut de vérification. Les cibles et les preuves consomment donc le
+même budget borné que les autres documents de l’export : aucune lecture annexe ne
+peut contourner la limite avant la génération. Le JSON et la table CSV des
+notifications conservent tous deux le statut, la confiance, les dates de
+vérification, publication ou terminaison et le motif de correction ou de
+rétractation.
 
 ## Frontières d’architecture
 
@@ -72,11 +75,11 @@ classDiagram
     class PassportWatchlistExportSource
     class IWatchlistExportStore {
       <<Application port>>
+      +LoadTargetsAsync(parkIds, parkItemIds, budget)
     }
     class MongoWatchlistExportStore {
       <<Infrastructure>>
     }
-    class UserCollectionTargetReader
     class CanonicalVisitExportWriter
     class IWatchlistAccountDeletionService {
       <<Application port>>
@@ -90,7 +93,7 @@ classDiagram
       <<Application port>>
       +BlockAsync(userId)
       +IsBlockedAsync(userId)
-      +TryAcquireDeliveryLeaseAsync(userId)
+      +TryAcquireActivityLeaseAsync(userId)
     }
     class MongoWatchlistAccountDeletionStore {
       <<Infrastructure>>
@@ -99,7 +102,6 @@ classDiagram
     PassportExportJobHandler --> IPassportWatchlistExportSource
     IPassportWatchlistExportSource <|.. PassportWatchlistExportSource
     PassportWatchlistExportSource --> IWatchlistExportStore
-    PassportWatchlistExportSource --> UserCollectionTargetReader
     IWatchlistExportStore <|.. MongoWatchlistExportStore
     PassportExportJobHandler --> CanonicalVisitExportWriter
     IWatchlistAccountDeletionService <|.. WatchlistAccountDeletionService
@@ -146,10 +148,13 @@ sequenceDiagram
 La borne est posée avant la première suppression. Les écritures de notifications,
 de digests, de travaux d’e-mail et de tentatives la contrôlent avant et après leur
 mutation. Si la suppression démarre pendant une écriture déjà louée, cette
-écriture est compensée immédiatement. Un envoi SMTP acquiert en plus un bail borné :
-la suppression attend un envoi déjà engagé, ou empêche son démarrage si sa borne
-est déjà posée. Les travaux compensés sont supprimés physiquement, charge utile
-comprise, et restent strictement reliés au membre ou à l’un de ses digests.
+écriture est compensée immédiatement. La persistance d’un digest et l’envoi SMTP
+acquièrent en plus un bail d’activité borné : la suppression attend une mutation ou
+un envoi déjà engagé, ou empêche son démarrage si sa borne est déjà posée. Même si
+le worker est annulé après l’acceptation de l’écriture MongoDB, le bail est libéré
+indépendamment de son jeton puis la purge reprend et efface le digest. Les travaux
+compensés sont supprimés physiquement, charge utile comprise, et restent
+strictement reliés au membre ou à l’un de ses digests.
 
 ## Collections MongoDB concernées
 
@@ -215,9 +220,9 @@ erDiagram
 
 Aucune migration MongoDB manuelle n’est requise. L’initialiseur crée les collections
 de bornes et de baux ainsi que leurs index de recherche et de rétention. Aucune ne
-conserve l’identifiant brut du membre. Les baux sont retirés à la fin de l’envoi ou
-automatiquement à leur expiration. Les autres collections et index restent
-inchangés.
+conserve l’identifiant brut du membre. Les baux sont retirés à la fin de la mutation
+protégée ou automatiquement à leur expiration. Les autres collections et index
+restent inchangés.
 
 ## Preuves automatisées
 
@@ -225,16 +230,17 @@ inchangés.
   et la preuve de consentement ;
 - les deux formats refusent les identifiants de collection, d’abonnement et de
   compte persistés ;
-- la source d’export résout les noms publics via les ports existants et conserve la
-  note privée ;
+- la source d’export résout les noms par projections légères, débite ces projections
+  du budget commun et conserve la note privée ;
 - le service de suppression normalise l’identité et restitue un reçu complet ;
 - le service pose la borne avant la purge, les workers cessent leur travail pour
   un membre supprimé et compensent une écriture commencée pendant la course ;
 - la borne persistée est stable sans exposer l’identifiant du membre ;
-- le bail d’envoi ferme la course entre la dernière vérification et l’appel SMTP ;
+- le bail d’activité ferme les courses autour de l’écriture d’un digest et de
+  l’appel SMTP, y compris quand le jeton du worker est annulé ;
 - un travail compensé est supprimé avec sa charge utile, pas seulement annulé ;
-- les preuves factuelles consomment le même budget de source que le reste de
-  l’export ;
+- les cibles et les preuves factuelles consomment le même budget de source que le
+  reste de l’export ;
 - la sélection des travaux durables accepte seulement un digest appartenant au
   membre et rejette une autre nature de travail ou une charge illisible ;
 - les contrôles d’architecture continuent d’imposer un fichier par classe et les

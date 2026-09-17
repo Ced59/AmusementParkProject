@@ -144,27 +144,45 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
                 return DurableBackgroundJobHandlerResult.Success();
             }
 
-            await this.digestRepository.ReplaceSnapshotAsync(snapshot, cancellationToken);
-            if (await this.deletionFence.IsBlockedAsync(payload.UserId, cancellationToken))
+            string? activityLeaseId = await this.deletionFence.TryAcquireActivityLeaseAsync(
+                payload.UserId,
+                this.Definition.Timeout.Add(TimeSpan.FromMinutes(1)),
+                cancellationToken);
+            if (activityLeaseId is null)
             {
-                await this.digestRepository.DeleteAsync(snapshot.Id, cancellationToken);
                 return DurableBackgroundJobHandlerResult.Success();
             }
 
-            string? emailJobId = await this.emailDeliveryScheduler.ScheduleAsync(
-                snapshot,
-                cancellationToken);
-            if (await this.deletionFence.IsBlockedAsync(payload.UserId, cancellationToken))
+            try
             {
-                if (emailJobId is not null)
+                await this.digestRepository.ReplaceSnapshotAsync(snapshot, cancellationToken);
+                if (await this.deletionFence.IsBlockedAsync(payload.UserId, cancellationToken))
                 {
-                    await this.emailDeliveryScheduler.CancelAsync(emailJobId, cancellationToken);
+                    await this.digestRepository.DeleteAsync(snapshot.Id, cancellationToken);
+                    return DurableBackgroundJobHandlerResult.Success();
                 }
 
-                await this.digestRepository.DeleteAsync(snapshot.Id, cancellationToken);
-            }
+                string? emailJobId = await this.emailDeliveryScheduler.ScheduleAsync(
+                    snapshot,
+                    cancellationToken);
+                if (await this.deletionFence.IsBlockedAsync(payload.UserId, cancellationToken))
+                {
+                    if (emailJobId is not null)
+                    {
+                        await this.emailDeliveryScheduler.CancelAsync(emailJobId, cancellationToken);
+                    }
 
-            return DurableBackgroundJobHandlerResult.Success();
+                    await this.digestRepository.DeleteAsync(snapshot.Id, cancellationToken);
+                }
+
+                return DurableBackgroundJobHandlerResult.Success();
+            }
+            finally
+            {
+                await this.deletionFence.ReleaseActivityLeaseAsync(
+                    activityLeaseId,
+                    CancellationToken.None);
+            }
         }
         catch (ArgumentException)
         {

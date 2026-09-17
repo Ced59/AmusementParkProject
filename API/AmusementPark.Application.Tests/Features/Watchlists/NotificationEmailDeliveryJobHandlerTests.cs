@@ -125,7 +125,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
             new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
         fence.Setup(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
             .ReturnsAsync(false);
-        fence.Setup(candidate => candidate.TryAcquireDeliveryLeaseAsync(
+        fence.Setup(candidate => candidate.TryAcquireActivityLeaseAsync(
                 "user-1",
                 TimeSpan.FromMinutes(3),
                 CancellationToken.None))

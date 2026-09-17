@@ -40,7 +40,7 @@ public sealed class MongoWatchlistAccountDeletionFence : IWatchlistAccountDeleti
             update,
             new UpdateOptions { IsUpsert = true },
             cancellationToken);
-        await this.WaitForDeliveryLeasesAsync(deletionKey, cancellationToken);
+        await this.WaitForActivityLeasesAsync(deletionKey, cancellationToken);
     }
 
     public async Task<bool> IsBlockedAsync(
@@ -86,7 +86,7 @@ public sealed class MongoWatchlistAccountDeletionFence : IWatchlistAccountDeleti
             .ToHashSet(StringComparer.Ordinal);
     }
 
-    public async Task<string?> TryAcquireDeliveryLeaseAsync(
+    public async Task<string?> TryAcquireActivityLeaseAsync(
         string userId,
         TimeSpan leaseDuration,
         CancellationToken cancellationToken)
@@ -117,11 +117,11 @@ public sealed class MongoWatchlistAccountDeletionFence : IWatchlistAccountDeleti
             return lease.Id;
         }
 
-        await this.ReleaseDeliveryLeaseAsync(lease.Id, cancellationToken);
+        await this.ReleaseActivityLeaseAsync(lease.Id, cancellationToken);
         return null;
     }
 
-    public async Task ReleaseDeliveryLeaseAsync(
+    public async Task ReleaseActivityLeaseAsync(
         string leaseId,
         CancellationToken cancellationToken)
     {
@@ -131,7 +131,7 @@ public sealed class MongoWatchlistAccountDeletionFence : IWatchlistAccountDeleti
             cancellationToken);
     }
 
-    private async Task WaitForDeliveryLeasesAsync(
+    private async Task WaitForActivityLeasesAsync(
         string deletionKey,
         CancellationToken cancellationToken)
     {

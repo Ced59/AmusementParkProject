@@ -74,6 +74,15 @@ public sealed class NotificationDigestJobHandlerTests
             new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
         fence.Setup(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
             .ReturnsAsync(false);
+        fence.Setup(candidate => candidate.TryAcquireActivityLeaseAsync(
+                "user-1",
+                TimeSpan.FromMinutes(3),
+                CancellationToken.None))
+            .ReturnsAsync("activity-lease-1");
+        fence.Setup(candidate => candidate.ReleaseActivityLeaseAsync(
+                "activity-lease-1",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         NotificationDigestJobHandler handler = new NotificationDigestJobHandler(
             fence.Object,
             notifications.Object,
@@ -144,6 +153,15 @@ public sealed class NotificationDigestJobHandlerTests
             .ReturnsAsync(false)
             .ReturnsAsync(false)
             .ReturnsAsync(true);
+        fence.Setup(candidate => candidate.TryAcquireActivityLeaseAsync(
+                "user-1",
+                TimeSpan.FromMinutes(3),
+                CancellationToken.None))
+            .ReturnsAsync("activity-lease-1");
+        fence.Setup(candidate => candidate.ReleaseActivityLeaseAsync(
+                "activity-lease-1",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         Mock<IUserNotificationRepository> notifications =
             new Mock<IUserNotificationRepository>(MockBehavior.Strict);
         notifications.Setup(repository => repository.ListOwnedForDigestAsync(
@@ -197,6 +215,84 @@ public sealed class NotificationDigestJobHandlerTests
             CancellationToken.None);
 
         Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        fence.VerifyAll();
+        notifications.VerifyAll();
+        subscriptions.VerifyAll();
+        events.VerifyAll();
+        digests.VerifyAll();
+        emailDeliveryScheduler.VerifyNoOtherCalls();
+        timeProvider.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_ShouldHoldActivityLeaseUntilACancelledWriteHasExited()
+    {
+        using CancellationTokenSource cancellation = new CancellationTokenSource();
+        CancellationToken workerToken = cancellation.Token;
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.SetupSequence(candidate => candidate.IsBlockedAsync("user-1", workerToken))
+            .ReturnsAsync(false)
+            .ReturnsAsync(false)
+            .ThrowsAsync(new OperationCanceledException(workerToken));
+        fence.Setup(candidate => candidate.TryAcquireActivityLeaseAsync(
+                "user-1",
+                TimeSpan.FromMinutes(3),
+                workerToken))
+            .ReturnsAsync("activity-lease-1");
+        fence.Setup(candidate => candidate.ReleaseActivityLeaseAsync(
+                "activity-lease-1",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<IUserNotificationRepository> notifications =
+            new Mock<IUserNotificationRepository>(MockBehavior.Strict);
+        notifications.Setup(repository => repository.ListOwnedForDigestAsync(
+                "user-1",
+                PeriodStartUtc,
+                PeriodStartUtc.AddDays(7),
+                It.Is<IReadOnlyCollection<NotificationDigestSubscriptionFilter>>(filters => filters.Count == 0),
+                NotificationDigest.MaximumEntries + 1,
+                workerToken))
+            .ReturnsAsync(Array.Empty<UserNotification>());
+        Mock<IWatchSubscriptionRepository> subscriptions =
+            new Mock<IWatchSubscriptionRepository>(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListOwnedAsync(
+                "user-1",
+                null,
+                null,
+                workerToken))
+            .ReturnsAsync(Array.Empty<WatchSubscription>());
+        Mock<IFactualChangeEventRepository> events =
+            new Mock<IFactualChangeEventRepository>(MockBehavior.Strict);
+        events.Setup(repository => repository.GetManyAsync(
+                It.Is<IReadOnlyCollection<FactualChangeEventId>>(ids => ids.Count == 0),
+                workerToken))
+            .ReturnsAsync(Array.Empty<FactualChangeEvent>());
+        Mock<INotificationDigestRepository> digests =
+            new Mock<INotificationDigestRepository>(MockBehavior.Strict);
+        digests.Setup(repository => repository.ReplaceSnapshotAsync(
+                It.IsAny<NotificationDigest>(),
+                workerToken))
+            .Callback(cancellation.Cancel)
+            .Returns(Task.CompletedTask);
+        Mock<INotificationEmailDeliveryScheduler> emailDeliveryScheduler =
+            new Mock<INotificationEmailDeliveryScheduler>(MockBehavior.Strict);
+        Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
+        timeProvider.Setup(provider => provider.GetUtcNow())
+            .Returns(new DateTimeOffset(PeriodStartUtc.AddHours(10)));
+        NotificationDigestJobHandler handler = new NotificationDigestJobHandler(
+            fence.Object,
+            notifications.Object,
+            subscriptions.Object,
+            events.Object,
+            digests.Object,
+            emailDeliveryScheduler.Object,
+            timeProvider.Object);
+
+        await Assert.ThrowsAsync<OperationCanceledException>(() => handler.HandleAsync(
+            CreateContext(),
+            workerToken));
+
         fence.VerifyAll();
         notifications.VerifyAll();
         subscriptions.VerifyAll();
