@@ -63,7 +63,7 @@ TripPlan
 ├── Members[1..50] : sous-documents bornés, propriétaire inclus
 ├── MemberAdmissionFence : état, invitation, opération, génération et échéance
 ├── ChildMutationEpoch : long, commence à 1
-├── ActiveChildMutationLeases[0..32] : opérations bornées avec échéance
+├── ActiveChildMutationLeases[0..32] : acteur, sujet, epochs et échéance
 ├── DeletionState : None | Pending | Purging | Purged
 ├── Version : long, commence à 1
 ├── CreatedAtUtc / UpdatedAtUtc
@@ -178,6 +178,7 @@ une liste blanche :
 ```text
 TripMemberConstraintSnapshot
 ├── MemberId
+├── MemberDataEpoch
 ├── SchemaVersion
 ├── SharedFields : taille, mobilité, intensité, accessibilité… selon opt-in
 ├── Values : uniquement les valeurs explicitement sélectionnées
@@ -190,7 +191,9 @@ TripMemberConstraintSnapshot
   privé n'est copié ;
 - l'absence d'un champ signifie « non partagé », jamais « compatible » ;
 - seul le membre concerné peut créer, remplacer ou supprimer son snapshot ;
-- quitter ou demander l'effacement supprime ses contraintes et préférences actives ;
+- quitter ou demander l'effacement coupe immédiatement l'accès, bloque les nouvelles
+  leases portant ce membre comme sujet, attend ou expire les leases déjà accordées,
+  puis supprime ses contraintes et préférences actives ;
 - le propriétaire ne peut pas bloquer cet effacement ;
 - les décisions historiques conservent le fait qu'une décision a existé, mais
   retirent l'identifiant de compte, l'alias et les valeurs personnelles. L'interface
@@ -256,7 +259,7 @@ sequenceDiagram
     I->>A: accepter(token, idempotencyKey)
     A->>R: résoudre si Active, non expirée et destinataire valide
     R-->>A: tripPlanId + operationId proposé
-    A->>P: installer le fence inerte(operationId, utilisateur)
+    A->>P: installer le fence inerte si DeletionState=None
     A->>R: réserver si toujours Active avec le même operationId
     R-->>A: invitation Accepting + operationId
     A->>P: armer le fence si encore Prepared
@@ -296,6 +299,11 @@ fence et ne peut armer qu'un fence `Prepared` de même opération et génératio
 son expiration. Une commande suspendue au-delà de la lease échoue donc sans
 réactiver le fence, tandis que l'annulation rend immédiatement la place disponible
 pour une nouvelle génération.
+
+L'installation, l'armement et l'ajout du membre exigent tous
+`DeletionState = None`. Le passage à `Pending` annule atomiquement le fence courant
+et retire le membre portant son `operationId` s'il venait d'être appliqué. Une
+écriture d'admission retardée échoue donc sur le document du plan lui-même.
 
 Une lease expirée ne remet jamais l'invitation en état `Active` : le reconciler
 reprend exclusivement la même opération et le même payload jusqu'à finalisation ou
@@ -528,20 +536,40 @@ les écritures dans une collection enfant suivent une barrière commune :
    `Committed`. Si la coquille a été purgée, remplacée par une nouvelle génération
    ou si l'échéance est passée, il n'existe donc aucune branche capable de
    matérialiser ou recréer l'ancien contenu privé ;
-4. l'écriture libère sa lease de façon idempotente, avec reprise par reconciler.
+4. une modification d'un document `Committed` installe d'abord, par version
+   attendue, un sous-document `PendingMutation` sans nouveau contenu. Il porte la
+   nouvelle opération, les epochs, la génération et l'échéance. Un second
+   `UpdateOne` sans upsert exige cette identité exacte et applique le nouveau
+   contenu tout en retirant `PendingMutation`. Pendant ce temps, les lectures
+   continuent à voir l'ancien contenu `Committed`. Une mutation expirée est
+   abandonnée et son sous-document technique est retiré par le reconciler ;
+5. l'écriture libère sa lease de façon idempotente, avec reprise par reconciler.
 
 La suppression passe atomiquement le plan à `Pending`, incrémente
-`ChildMutationEpoch` et interdit toute nouvelle lease. Elle attend ensuite la fin
-des leases de l'ancien epoch ou leur expiration, puis une durée de sûreté supérieure
-au délai serveur maximal. Le job purge tous les enfants d'un epoch antérieur,
-refait un balayage après la barrière et passe à `Purged` seulement si aucune lease
-ni donnée ancienne ne subsiste. Le tombstone du plan est conservé pendant la durée
+`ChildMutationEpoch`, annule tout `MemberAdmissionFence` et interdit toute nouvelle
+lease ou admission. Elle rend immédiatement le plan inaccessible, puis marque
+`RevocationPending` les invitations `Active` ou `Accepting` et reprend leur
+compensation ; aucun token ne peut rejoindre un plan dont la suppression a
+commencé. Elle attend ensuite la fin des leases de l'ancien epoch ou leur
+expiration, puis une durée de sûreté supérieure au délai serveur maximal. Le job
+purge invitations et enfants d'un epoch antérieur, refait un balayage après la
+barrière et passe à `Purged` seulement si aucune lease, invitation active ou donnée
+ancienne ne subsiste. Le tombstone du plan est conservé pendant la durée
 de rétention annoncée ; pendant cette période, le reconciler supprime également
 toute coquille technique tardive de l'ancien epoch, que son TTL aurait aussi
 éliminée. Une panne conserve `Pending` ou `Purging`, ne réactive jamais le plan et
 ne déclare jamais la purge terminée prématurément. Les délais exacts seront fixés
 avec l'implémentation et documentés dans la politique de confidentialité avant
 activation.
+
+Le départ ou l'effacement d'un seul membre utilise la même barrière à portée
+réduite. Chaque `TripMember` porte `MemberDataEpoch` et un état de participation.
+La demande passe le membre à `Leaving`, incrémente son epoch et refuse toute
+nouvelle lease dont `SubjectMemberId` le désigne. Le job attend ou expire les
+leases de l'ancien epoch, purge contraintes, préférences et coquilles de ce membre,
+effectue un second balayage, puis retire ou anonymise le membre. L'opération ne
+devient terminale qu'après ce second balayage ; une panne reste reprenable et le
+membre ne récupère jamais son accès entre-temps.
 
 ## Décision 12 — contrat UX, accessibilité et responsive
 
@@ -592,6 +620,8 @@ variantes ne sont pas réellement servies.
   compte ou de réactiver l'invitation ;
 - révocation concurrente à une écriture retardée laissant le plan sans membre
   admis par l'opération révoquée avant l'état terminal `Revoked` ;
+- suppression passant `Pending` atomiquement avec la fermeture des admissions et
+  compensant toute invitation déjà `Accepting` ;
 - token brut absent de Mongo, des logs, jobs et réponses privées ;
 - expiration, révocation, rotation, rate limit et `404` uniforme ;
 - preview dépourvue de membres, contraintes, votes et identifiants ;
@@ -601,6 +631,10 @@ variantes ne sont pas réellement servies.
 - création enfant retardée incapable de matérialiser du contenu sans une coquille
   `Reserved` de mêmes opération, epoch et génération encore valide, et coquilles
   tardives purgées par TTL ;
+- mise à jour d'un enfant existant réservant une nouvelle `PendingMutation` sans
+  masquer le contenu validé ni réutiliser le fence de création ;
+- départ d'un membre invalidant son epoch, attendant ses leases et repurgeant ses
+  données avant l'état terminal ;
 - absence de lecture N+1 sur les listes et synthèses.
 
 ### Angular, SSR et mobile
