@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.Trips;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Services;
 using AmusementPark.Core.Domain.Trips;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
 
@@ -40,7 +41,9 @@ public sealed class TripChildMutationExecutorTests
             .ReturnsAsync(lease);
         repository.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
             .Returns(Task.CompletedTask);
-        TripChildMutationExecutor executor = new(repository.Object);
+        TripChildMutationExecutor executor = new(
+            repository.Object,
+            NullLogger<TripChildMutationExecutor>.Instance);
 
         ApplicationResult result = await executor.ExecuteOwnedAsync(
             trip,
@@ -75,7 +78,9 @@ public sealed class TripChildMutationExecutorTests
                 "operation-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((TripChildMutationLease?)null);
-        TripChildMutationExecutor executor = new(repository.Object);
+        TripChildMutationExecutor executor = new(
+            repository.Object,
+            NullLogger<TripChildMutationExecutor>.Instance);
         bool invoked = false;
 
         ApplicationResult result = await executor.ExecuteOwnedAsync(
@@ -90,6 +95,50 @@ public sealed class TripChildMutationExecutorTests
 
         Assert.False(result.IsSuccess);
         Assert.False(invoked);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteOwnedAsync_WhenReleaseFails_ShouldKeepTheSuccessfulBusinessResult()
+    {
+        DateTime nowUtc = new(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            nowUtc);
+        TripMember owner = Assert.Single(trip.Members);
+        TripChildMutationLease lease = new(
+            "operation-1",
+            owner.Id,
+            trip.ChildMutationEpoch,
+            1,
+            nowUtc.AddSeconds(20));
+        Mock<ITripChildMutationLeaseRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.TryAcquireOwnedAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                owner.Id,
+                trip.Version,
+                trip.ChildMutationEpoch,
+                "operation-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(lease);
+        repository.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("Transient MongoDB failure."));
+        TripChildMutationExecutor executor = new(
+            repository.Object,
+            NullLogger<TripChildMutationExecutor>.Instance);
+
+        ApplicationResult result = await executor.ExecuteOwnedAsync(
+            trip,
+            "operation-1",
+            _ => Task.FromResult(ApplicationResult.Success()),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
         repository.VerifyAll();
     }
 }

@@ -7,4 +7,5 @@ public enum TripChildWriteOutcome
     Conflict = 3,
     Duplicate = 4,
     LeaseExpired = 5,
+    IdempotencyConflict = 6,
 }

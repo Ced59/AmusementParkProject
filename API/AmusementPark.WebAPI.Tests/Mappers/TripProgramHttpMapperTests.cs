@@ -76,6 +76,36 @@ public sealed class TripProgramHttpMapperTests
     }
 
     [Fact]
+    public void TryToApplication_ShouldRejectANullBlockCollection()
+    {
+        PutTripDayPlanRequestDto request = new()
+        {
+            ParkCandidateId = "candidate-1",
+            Blocks = null!,
+        };
+
+        bool success = request.TryToApplication(out TripDayPlanInput? input);
+
+        Assert.False(success);
+        Assert.Null(input);
+    }
+
+    [Fact]
+    public void TryToApplication_ShouldRejectANullBlockEntry()
+    {
+        PutTripDayPlanRequestDto request = new()
+        {
+            ParkCandidateId = "candidate-1",
+            Blocks = new TripDayBlockRequestDto[] { null! },
+        };
+
+        bool success = request.TryToApplication(out TripDayPlanInput? input);
+
+        Assert.False(success);
+        Assert.Null(input);
+    }
+
+    [Fact]
     public void ToHttp_ShouldKeepTheHydratedParkName()
     {
         TripParkCandidateResult result = new(

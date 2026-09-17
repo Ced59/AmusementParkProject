@@ -77,6 +77,29 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildActiveChildLeaseIdentityFilter_ShouldBindTheGenerationAndMongoServerTime()
+    {
+        TripChildMutationLease lease = new(
+            "operation-1",
+            TripMemberId.Parse("member-1"),
+            3,
+            7,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+
+        FilterDefinition<TripPlanDocument> filter =
+            TripPlanMongoDefinitions.BuildActiveChildLeaseIdentityFilter(lease);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("operation-1", json, StringComparison.Ordinal);
+        Assert.Contains("member-1", json, StringComparison.Ordinal);
+        Assert.Contains("generation", json, StringComparison.Ordinal);
+        Assert.Contains("$$NOW", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void BuildDeletionTombstone_ShouldScrubPrivateDataAndKeepOnlyTheReplayFence()
     {
         DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);

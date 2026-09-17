@@ -33,6 +33,13 @@ internal static class TripParkCandidateMongoMapper
 
     public static TripParkCandidate ToDomain(this TripParkCandidateDocument document)
     {
+        return ToDomain(document, document.SortPosition);
+    }
+
+    public static TripParkCandidate ToDomain(
+        this TripParkCandidateDocument document,
+        long sortPosition)
+    {
         ArgumentNullException.ThrowIfNull(document);
         return TripParkCandidate.Restore(
             TripParkCandidateId.Parse(document.Id),
@@ -44,7 +51,7 @@ internal static class TripParkCandidateMongoMapper
             document.CollectiveNote,
             document.FitSnapshot?.ToDomain(),
             TripMemberId.Parse(document.AddedByMemberId),
-            document.SortPosition,
+            sortPosition,
             document.Version,
             DateTime.SpecifyKind(document.CreatedAt, DateTimeKind.Utc),
             DateTime.SpecifyKind(document.UpdatedAt, DateTimeKind.Utc));

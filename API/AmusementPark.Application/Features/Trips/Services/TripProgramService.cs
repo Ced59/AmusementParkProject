@@ -161,6 +161,9 @@ public sealed class TripProgramService
                         TripChildWriteOutcome.Duplicate =>
                             ApplicationResult<CreateTripParkCandidateResult>.Failure(
                                 TripPlanApplicationErrors.CandidateAlreadyExists()),
+                        TripChildWriteOutcome.IdempotencyConflict =>
+                            ApplicationResult<CreateTripParkCandidateResult>.Failure(
+                                TripPlanApplicationErrors.CandidateIdempotencyConflict()),
                         _ => ApplicationResult<CreateTripParkCandidateResult>.Failure(
                             TripPlanApplicationErrors.ChildMutationUnavailable()),
                     };

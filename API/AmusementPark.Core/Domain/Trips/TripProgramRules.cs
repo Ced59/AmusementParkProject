@@ -84,6 +84,37 @@ public static class TripProgramRules
         }
     }
 
+    public static void ValidateProgramAgainstProposal(
+        TripDateProposal proposal,
+        IReadOnlyCollection<TripParkCandidate> candidates,
+        IReadOnlyCollection<TripDayPlan> days)
+    {
+        ArgumentNullException.ThrowIfNull(proposal);
+        ArgumentNullException.ThrowIfNull(candidates);
+        ArgumentNullException.ThrowIfNull(days);
+        Dictionary<TripParkCandidateId, TripParkCandidate> candidatesById = candidates.ToDictionary(
+            static candidate => candidate.Id);
+        foreach (TripParkCandidate candidate in candidates)
+        {
+            ValidateCandidateDates(proposal, candidate.CandidateDates);
+        }
+
+        foreach (TripDayPlan day in days)
+        {
+            ValidateDayDate(proposal, day.LocalDate);
+            if (!candidatesById.TryGetValue(
+                day.ParkCandidateId,
+                out TripParkCandidate? candidate))
+            {
+                throw new TripPlanValidationException(
+                    TripPlanErrorCodes.InvalidDayPlan,
+                    "A decided day must reference an existing park candidate.");
+            }
+
+            ValidateDayCandidate(candidate, day.LocalDate);
+        }
+    }
+
     private static bool Contains(TripDateProposal proposal, DateOnly date)
     {
         return proposal.Kind switch

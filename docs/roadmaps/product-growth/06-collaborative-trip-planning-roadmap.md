@@ -75,9 +75,9 @@ Le programme privé sait désormais conserver jusqu'à cent parcs envisagés, sa
 dupliquer un même parc dans un voyage. Chaque candidat possède des dates possibles,
 une source (`Manual`, `Wishlist` ou `Comparator`), une note collective, un état
 explicite (`Proposed`, `Shortlisted`, `Selected` ou `Rejected`) et un ordre stable.
-Le déplacement d'une carte modifie normalement une seule position espacée ; une
-renormalisation locale et bornée intervient seulement lorsqu'il n'existe plus
-d'espace entre deux positions.
+Le déplacement d'une carte remplace atomiquement un unique document d'ordre borné
+à cent identifiants. Une interruption ne peut donc jamais laisser la moitié des
+candidats dans l'ancien ordre et l'autre moitié dans le nouveau.
 
 Une journée n'est programmable que dans une période de voyage déjà fixée et ne
 peut référencer qu'un parc candidat marqué `Selected`. Elle accepte une heure
@@ -86,14 +86,21 @@ identifiés de façon stable : repas, événement, attraction ou note. Les horai
 officiels ne sont pas recopiés dans ce choix collectif ; ils seront lus comme des
 faits séparés dans `TRIP-09`.
 
-Les collections MongoDB `trip-park-candidates` et `trip-day-plans` appliquent
-l'unicité `(voyage, parc)` et `(voyage, date)`. Toute écriture enfant acquiert sur
+Les collections MongoDB `trip-park-candidates`, `trip-park-candidate-orders` et
+`trip-day-plans` appliquent l'unicité `(voyage, parc)`, `(voyage, opération
+d'ajout)` et `(voyage, date)`. Toute écriture enfant acquiert sur
 le voyage racine une lease liée à sa version, à son epoch et à une génération.
 Une création passe par une coquille `Reserved`; une mutation conserve la dernière
 version lisible et pose un marqueur `PendingMutation`. Les validations d'expiration
 utilisent `$$NOW`, donc l'horloge du serveur MongoDB plutôt que celle d'un nœud Web.
 Les retries d'ajout de parc rejouent le résultat initial, et un `PUT` de journée
-identique est sans effet grâce aux identifiants stables de ses blocs.
+identique est sans effet grâce aux identifiants stables de ses blocs. Une même clé
+d'ajout réutilisée avec un autre contenu produit un conflit explicite.
+
+Une modification des dates du voyage acquiert la même barrière exclusive, vérifie
+tous les candidats et toutes les journées, puis avance atomiquement la version et
+l'epoch racine. Elle est refusée si elle ferait sortir une date candidate ou une
+journée du nouveau calendrier.
 
 La suppression ferme d'abord le voyage aux nouvelles écritures, purge candidats
 et journées, puis anonymise le plan. Si le processus tombe entre ces phases, un

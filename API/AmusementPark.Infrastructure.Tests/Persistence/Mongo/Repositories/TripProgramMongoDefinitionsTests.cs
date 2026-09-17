@@ -17,6 +17,8 @@ public sealed class TripProgramMongoDefinitionsTests
 
         Assert.Contains(indexes, index => index.Options.Name == "uq_trip_candidate_plan_park"
             && index.Options.Unique == true);
+        Assert.Contains(indexes, index => index.Options.Name == "uq_trip_candidate_plan_operation"
+            && index.Options.Unique == true);
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_candidate_plan_order");
         Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_candidate_reserved"
             && index.Options.ExpireAfter == TimeSpan.Zero);
@@ -72,5 +74,38 @@ public sealed class TripProgramMongoDefinitionsTests
         string json = rendered.ToJson();
         Assert.Contains("$$NOW", json, StringComparison.Ordinal);
         Assert.Contains("activeChildMutationLeases", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void OrderDocuments_ShouldApplyTheAtomicOrderAndAppendUnreferencedCandidates()
+    {
+        DateTime nowUtc = new(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc);
+        TripParkCandidateDocument first = new()
+        {
+            Id = "candidate-1",
+            SortPosition = 1024,
+            CreatedAt = nowUtc,
+        };
+        TripParkCandidateDocument second = new()
+        {
+            Id = "candidate-2",
+            SortPosition = 2048,
+            CreatedAt = nowUtc.AddMinutes(1),
+        };
+        TripParkCandidateDocument third = new()
+        {
+            Id = "candidate-3",
+            SortPosition = 3072,
+            CreatedAt = nowUtc.AddMinutes(2),
+        };
+
+        IReadOnlyList<TripParkCandidateDocument> ordered =
+            TripParkCandidateRepository.OrderDocuments(
+                new[] { first, second, third },
+                new[] { third.Id, "deleted-candidate", first.Id });
+
+        Assert.Equal(
+            new[] { third.Id, first.Id, second.Id },
+            ordered.Select(static document => document.Id));
     }
 }

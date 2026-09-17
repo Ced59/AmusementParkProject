@@ -72,6 +72,13 @@ public static class TripPlanApplicationErrors
             "This park is already a candidate for the trip.");
     }
 
+    public static ApplicationError CandidateIdempotencyConflict()
+    {
+        return ApplicationError.Conflict(
+            "trip.candidate.idempotency-conflict",
+            "The idempotency key was already used with different candidate details.");
+    }
+
     public static ApplicationError ChildMutationUnavailable()
     {
         return ApplicationError.Conflict(

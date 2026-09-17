@@ -9,9 +9,9 @@ namespace AmusementPark.Application.Features.Trips.Handlers;
 public sealed class SetTripPlanDatesCommandHandler
     : ICommandHandler<SetTripPlanDatesCommand, ApplicationResult<TripPlanResult>>
 {
-    private readonly TripPlanLifecycleService service;
+    private readonly TripPlanDateService service;
 
-    public SetTripPlanDatesCommandHandler(TripPlanLifecycleService service)
+    public SetTripPlanDatesCommandHandler(TripPlanDateService service)
     {
         this.service = service;
     }

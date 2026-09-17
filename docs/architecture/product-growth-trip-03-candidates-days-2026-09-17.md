@@ -93,6 +93,7 @@ aux codes HTTP.
 ```mermaid
 erDiagram
     TRIP_PLANS ||--o{ TRIP_PARK_CANDIDATES : tripPlanId
+    TRIP_PLANS ||--o| TRIP_PARK_CANDIDATE_ORDERS : _id
     TRIP_PLANS ||--o{ TRIP_DAY_PLANS : tripPlanId
     TRIP_PARK_CANDIDATES ||--o{ TRIP_DAY_PLANS : parkCandidateId
 
@@ -120,6 +121,12 @@ erDiagram
       object pendingMutation
       datetime reservedExpiresAtUtc
     }
+    TRIP_PARK_CANDIDATE_ORDERS {
+      string _id
+      array candidateIds
+      long version
+      datetime updatedAt
+    }
     TRIP_DAY_PLANS {
       string _id
       string tripPlanId
@@ -138,8 +145,11 @@ erDiagram
 
 Indexes structurants :
 
-- `trip-park-candidates`: unique `{ tripPlanId, parkId }`, lecture ordonnée
+- `trip-park-candidates`: uniques `{ tripPlanId, parkId }` et
+  `{ tripPlanId, operationId }`, lecture de repli
   `{ tripPlanId, documentState, sortPosition, _id }`, TTL des coquilles réservées ;
+- `trip-park-candidate-orders`: un document borné par voyage, dont le remplacement
+  atomique porte l'ordre canonique des cent candidats au maximum ;
 - `trip-day-plans`: unique `{ tripPlanId, localDate }`, lecture chronologique
   `{ tripPlanId, documentState, localDate }`, TTL des coquilles réservées ;
 - `trip-plans`: `{ deletionState, updatedAt }` pour la reprise des suppressions.
@@ -187,12 +197,24 @@ validité temporelle reposent sur `$$NOW` côté MongoDB.
 
 ## Ordre stable des candidats
 
-Les positions sont espacées de 1 024. Un déplacement avant ou après une carte
-calcule d'abord le milieu entre ses voisines. Si aucun entier n'est libre, le
-planificateur renormalise au plus les 100 candidats du voyage, puis applique les
-changements sous une même lease avec des gardes `(id, version, ancienne position)`.
-Un retry recalcule le résultat depuis l'état `Committed`, ce qui évite de dépendre
-d'une transaction multi-collection non disponible.
+Le planificateur du Core calcule toujours l'ordre voulu à partir de positions
+espacées de 1 024 et de gardes `(id, version, ancienne position)`. Infrastructure
+projette ensuite ce résultat en une liste canonique d'identifiants dans un seul
+document `trip-park-candidate-orders`. Le remplacement de ce document est atomique
+et versionné : même une coupure en pleine requête ne peut produire un ordre
+partiellement appliqué. Un candidat absent du document, par exemple après un ajout
+dont la réponse réseau a été perdue, est ajouté en repli déterministe ; un identifiant
+de candidat supprimé est ignoré. La prochaine écriture compacte naturellement la
+liste sans transaction multi-collection.
+
+## Changement sûr du calendrier
+
+La modification des dates acquiert la lease exclusive du voyage, charge candidats
+et journées, puis demande au Core de valider tout le programme contre la nouvelle
+proposition. Si une date candidate ou une journée deviendrait invalide, la commande
+est refusée sans écriture. Sinon la version et l'epoch racine avancent dans la même
+écriture MongoDB qui consomme la génération exacte de la lease ; aucune mutation
+enfant ne peut se glisser entre la validation et ce commit.
 
 ## Suppression et reprise après incident
 
@@ -237,9 +259,10 @@ sans cache, et n'ouvrent aucun partage public.
 
 - Core : limites, dates, états, blocs, positions et renormalisation ;
 - Application : libération de lease, hydratation en lot sans identifiant affiché,
-  ordre purge/finalisation et reprise de suppression ;
+  validation globale avant changement de dates, libération best-effort après un
+  commit, ordre purge/finalisation et reprise de suppression ;
 - Infrastructure : indexes uniques et TTL, gardes `$$NOW`, documents de mutation
-  et résolution du worker de reprise ;
+  et remplacement atomique de l'ordre canonique ;
 - WebAPI : parsing strict des dates/heures/énumérations, identifiants stables des
   blocs et conservation du nom de parc.
 

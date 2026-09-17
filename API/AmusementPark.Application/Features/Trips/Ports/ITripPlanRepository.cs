@@ -34,6 +34,12 @@ public interface ITripPlanRepository
         long expectedVersion,
         CancellationToken cancellationToken);
 
+    Task<TripPlanWriteResult> ReplaceOwnedUnderChildLeaseAsync(
+        TripPlan tripPlan,
+        long expectedVersion,
+        TripChildMutationLease lease,
+        CancellationToken cancellationToken);
+
     Task<TripPlanWriteResult> DeleteOwnedAsync(
         TripPlan tripPlan,
         long expectedVersion,

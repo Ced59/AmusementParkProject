@@ -66,6 +66,53 @@ internal static class TripPlanMongoDefinitions
         return sameEpoch | (previousEpochFilter & BuildNoActiveChildLeaseFilter());
     }
 
+    public static FilterDefinition<TripPlanDocument> BuildActiveChildLeaseIdentityFilter(
+        TripChildMutationLease lease)
+    {
+        ArgumentNullException.ThrowIfNull(lease);
+        BsonDocument matchingLease = new("$filter", new BsonDocument
+        {
+            {
+                "input",
+                new BsonDocument("$ifNull", new BsonArray
+                {
+                    "$activeChildMutationLeases",
+                    new BsonArray(),
+                })
+            },
+            { "as", "lease" },
+            {
+                "cond",
+                new BsonDocument("$and", new BsonArray
+                {
+                    new BsonDocument("$eq", new BsonArray { "$$lease.operationId", lease.OperationId }),
+                    new BsonDocument("$eq", new BsonArray
+                    {
+                        "$$lease.actorMemberId",
+                        lease.ActorMemberId.Value,
+                    }),
+                    new BsonDocument("$eq", new BsonArray
+                    {
+                        "$$lease.childMutationEpoch",
+                        lease.ChildMutationEpoch,
+                    }),
+                    new BsonDocument("$eq", new BsonArray
+                    {
+                        "$$lease.generation",
+                        lease.Generation,
+                    }),
+                    new BsonDocument("$gt", new BsonArray { "$$lease.expiresAtUtc", "$$NOW" }),
+                })
+            },
+        });
+        BsonDocument expression = new("$expr", new BsonDocument("$gt", new BsonArray
+        {
+            new BsonDocument("$size", matchingLease),
+            0,
+        }));
+        return new BsonDocumentFilterDefinition<TripPlanDocument>(expression);
+    }
+
     public static FilterDefinition<TripPlanDocument> BuildCreationOperationFilter(
         IReadOnlyCollection<string> ownerScopeHashes,
         string operationKeyHash)

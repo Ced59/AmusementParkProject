@@ -932,6 +932,9 @@ private readonly IMongoDatabase database;
             TripParkCandidateRepository.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.TripParkCandidateOrdersCollectionName,
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.TripDayPlansCollectionName,
             cancellationToken);
         IMongoCollection<TripDayPlanDocument> tripDayPlans =

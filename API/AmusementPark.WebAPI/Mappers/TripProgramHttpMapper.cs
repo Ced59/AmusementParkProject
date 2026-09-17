@@ -48,14 +48,17 @@ public static class TripProgramHttpMapper
     {
         ArgumentNullException.ThrowIfNull(request);
         input = null;
+        IReadOnlyCollection<TripDayBlockRequestDto>? requestedBlocks = request.Blocks;
         if (!TryParseOptionalTime(request.DesiredArrivalTime, out TimeOnly? arrival)
-            || request.Blocks.Count > TripDayPlan.MaximumBlocks)
+            || requestedBlocks is null
+            || requestedBlocks.Count > TripDayPlan.MaximumBlocks
+            || requestedBlocks.Any(static block => block is null))
         {
             return false;
         }
 
-        List<TripDayBlockInput> blocks = new(request.Blocks.Count);
-        foreach (TripDayBlockRequestDto block in request.Blocks)
+        List<TripDayBlockInput> blocks = new(requestedBlocks.Count);
+        foreach (TripDayBlockRequestDto block in requestedBlocks)
         {
             if (!TripDayBlockId.TryParse(block.BlockId, out _)
                 || !TryParseEnum(block.Type, out TripDayBlockType type)
