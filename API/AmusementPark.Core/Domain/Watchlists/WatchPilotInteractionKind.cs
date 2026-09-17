@@ -6,4 +6,5 @@ public enum WatchPilotInteractionKind
     SourceOpened,
     MisleadingAlertReported,
     SubscriptionRemoved,
+    DuplicateDeliveryPrevented,
 }

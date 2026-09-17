@@ -273,6 +273,7 @@ public sealed class UserNotificationCenterServiceTests
         metrics.Setup(value => value.IncrementInteractionAsync(
                 new DateOnly(2026, 9, 17),
                 WatchPilotInteractionKind.SubscriptionRemoved,
+                1,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
         WatchPilotMetricsRecorder recorder = new(

@@ -17,6 +17,7 @@ public sealed class WatchPilotMetricsRecorderTests
         repository.Setup(value => value.IncrementInteractionAsync(
                 new DateOnly(2026, 9, 17),
                 WatchPilotInteractionKind.SubscriptionRemoved,
+                1,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
         WatchPilotMetricsRecorder recorder = new(
@@ -39,6 +40,7 @@ public sealed class WatchPilotMetricsRecorderTests
         repository.Setup(value => value.IncrementInteractionAsync(
                 It.IsAny<DateOnly>(),
                 It.IsAny<WatchPilotInteractionKind>(),
+                It.IsAny<long>(),
                 CancellationToken.None))
             .ThrowsAsync(new InvalidOperationException("Metrics unavailable."));
         WatchPilotMetricsRecorder recorder = new(

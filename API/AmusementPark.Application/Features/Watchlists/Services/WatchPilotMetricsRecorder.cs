@@ -24,12 +24,22 @@ public sealed class WatchPilotMetricsRecorder
         WatchPilotInteractionKind interactionKind,
         CancellationToken cancellationToken)
     {
+        await this.RecordCountBestEffortAsync(interactionKind, 1L, cancellationToken);
+    }
+
+    public async Task RecordCountBestEffortAsync(
+        WatchPilotInteractionKind interactionKind,
+        long increment,
+        CancellationToken cancellationToken)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(increment);
         try
         {
             DateOnly dateUtc = DateOnly.FromDateTime(this.timeProvider.GetUtcNow().UtcDateTime);
             await this.metricsRepository.IncrementInteractionAsync(
                 dateUtc,
                 interactionKind,
+                increment,
                 cancellationToken);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

@@ -8,6 +8,7 @@ public interface IWatchPilotMetricsRepository
     Task IncrementInteractionAsync(
         DateOnly dateUtc,
         WatchPilotInteractionKind interactionKind,
+        long increment,
         CancellationToken cancellationToken);
 
     Task<WatchPilotMetricsSnapshot> ReadAsync(

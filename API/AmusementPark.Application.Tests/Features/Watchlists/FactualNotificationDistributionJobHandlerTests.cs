@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.Watchlists.Services;
 using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Users;
 using AmusementPark.Core.Domain.Watchlists;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
@@ -72,7 +73,7 @@ public sealed class FactualNotificationDistributionJobHandlerTests
                     && created.Single().Language == "FR"
                     && created.Single().Status == UserNotificationStatus.Delivered),
                 CancellationToken.None))
-            .ReturnsAsync(1);
+            .ReturnsAsync(new UserNotificationCreationResult(1, 0));
         digestScheduler.Setup(value => value.ScheduleAsync(
                 factualEvent.Id,
                 It.Is<IReadOnlyCollection<string>>(userIds =>
@@ -89,7 +90,7 @@ public sealed class FactualNotificationDistributionJobHandlerTests
         FactualNotificationDistributionJobHandler handler = new FactualNotificationDistributionJobHandler(
             events.Object,
             subscriptions.Object,
-            notifications.Object,
+            CreateNotificationCreationService(notifications.Object),
             receipts.Object,
             scheduler.Object,
             digestScheduler.Object,
@@ -130,7 +131,7 @@ public sealed class FactualNotificationDistributionJobHandlerTests
         FactualNotificationDistributionJobHandler handler = new FactualNotificationDistributionJobHandler(
             events.Object,
             subscriptions.Object,
-            notifications.Object,
+            CreateNotificationCreationService(notifications.Object),
             receipts.Object,
             scheduler.Object,
             Mock.Of<INotificationDigestScheduler>(),
@@ -161,6 +162,16 @@ public sealed class FactualNotificationDistributionJobHandlerTests
             0,
             1,
             "event-1");
+    }
+
+    private static UserNotificationCreationService CreateNotificationCreationService(
+        IUserNotificationRepository repository)
+    {
+        Mock<IWatchPilotMetricsRepository> metrics = new(MockBehavior.Strict);
+        WatchPilotMetricsRecorder recorder = new(
+            metrics.Object,
+            new Mock<ILogger<WatchPilotMetricsRecorder>>().Object);
+        return new UserNotificationCreationService(repository, recorder);
     }
 
     private static FactualChangeEvent CreatePublishedEvent()

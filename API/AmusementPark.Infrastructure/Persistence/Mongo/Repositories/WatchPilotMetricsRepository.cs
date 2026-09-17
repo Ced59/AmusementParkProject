@@ -55,12 +55,15 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
     public async Task IncrementInteractionAsync(
         DateOnly dateUtc,
         WatchPilotInteractionKind interactionKind,
+        long increment,
         CancellationToken cancellationToken)
     {
         if (!Enum.IsDefined(interactionKind))
         {
             throw new ArgumentOutOfRangeException(nameof(interactionKind));
         }
+
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(increment);
 
         DateTime dayUtc = dateUtc.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc);
         string dateKey = ToDateKey(dateUtc);
@@ -75,7 +78,7 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
                 updates.SetOnInsert(static document => document.DateUtc, dayUtc),
                 updates.Set(static document => document.UpdatedAt, DateTime.UtcNow),
                 updates.Set(static document => document.ExpiresAtUtc, dayUtc.AddDays(RetentionDays)),
-                updates.Inc($"interactionCounts.{interactionKind}", 1L)),
+                updates.Inc($"interactionCounts.{interactionKind}", increment)),
             new UpdateOptions { IsUpsert = true },
             cancellationToken);
     }
@@ -85,8 +88,8 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
         DateTime toUtc,
         CancellationToken cancellationToken)
     {
-        DateTime normalizedFromUtc = EnsureUtc(fromUtc);
-        DateTime normalizedToUtc = EnsureUtc(toUtc);
+        DateTime normalizedFromUtc = StartOfUtcDay(EnsureUtc(fromUtc));
+        DateTime normalizedToUtc = EndOfUtcDay(EnsureUtc(toUtc));
         long activeSubscriptions = await this.subscriptions.CountDocumentsAsync(
             Builders<WatchSubscriptionDocument>.Filter.Eq(
                 static document => document.IsPaused,
@@ -130,10 +133,6 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
         long notificationCount = await this.notifications.CountDocumentsAsync(
             notificationPeriod,
             cancellationToken: cancellationToken);
-        long duplicates = await this.ReadDuplicateCountAsync(
-            normalizedFromUtc,
-            normalizedToUtc,
-            cancellationToken);
         decimal averageLatencySeconds = await this.ReadAverageLatencySecondsAsync(
             normalizedFromUtc,
             normalizedToUtc,
@@ -162,6 +161,8 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
             normalizedFromUtc,
             normalizedToUtc,
             cancellationToken);
+        long duplicates = daily.Sum(day => day.InteractionCounts.GetValueOrDefault(
+            WatchPilotInteractionKind.DuplicateDeliveryPrevented.ToString()));
         return new WatchPilotMetricsSnapshot(
             activeSubscriptions,
             activeByType,
@@ -232,36 +233,6 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
             & filters.Gte(static document => document.TerminalAtUtc, fromUtc)
             & filters.Lte(static document => document.TerminalAtUtc, toUtc),
             cancellationToken: cancellationToken);
-    }
-
-    private async Task<long> ReadDuplicateCountAsync(
-        DateTime fromUtc,
-        DateTime toUtc,
-        CancellationToken cancellationToken)
-    {
-        BsonDocument[] pipeline =
-        [
-            PeriodMatch("deliveredAt", fromUtc, toUtc),
-            new BsonDocument("$group", new BsonDocument
-            {
-                ["_id"] = new BsonDocument
-                {
-                    ["userId"] = "$userId",
-                    ["eventId"] = "$factualEventId",
-                },
-                ["count"] = new BsonDocument("$sum", 1),
-            }),
-            new BsonDocument("$match", new BsonDocument("count", new BsonDocument("$gt", 1))),
-            new BsonDocument("$group", new BsonDocument
-            {
-                ["_id"] = BsonNull.Value,
-                ["count"] = new BsonDocument("$sum", new BsonDocument("$subtract", new BsonArray { "$count", 1 })),
-            }),
-        ];
-        BsonDocument? document = await this.notifications
-            .Aggregate<BsonDocument>(pipeline, new AggregateOptions { MaxTime = QueryTimeout })
-            .FirstOrDefaultAsync(cancellationToken);
-        return document is null ? 0L : ReadLong(document, "count");
     }
 
     private async Task<decimal> ReadAverageLatencySecondsAsync(
@@ -395,6 +366,12 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
             fromUtc,
             toUtc,
             cancellationToken);
+        IReadOnlyDictionary<string, long> misleadingReportsByDay = await this.ReadDailyCountsAsync(
+            this.notifications,
+            "misleadingReportedAtUtc",
+            fromUtc,
+            toUtc,
+            cancellationToken);
         Dictionary<string, WatchPilotDailyMetricsDocument> interactionsByDay = interactionDocuments
             .ToDictionary(static document => document.Id, StringComparer.Ordinal);
         List<WatchPilotDailyMetrics> result = new();
@@ -402,12 +379,16 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
         {
             string date = ToDateKey(DateOnly.FromDateTime(dayUtc));
             interactionsByDay.TryGetValue(date, out WatchPilotDailyMetricsDocument? interaction);
+            Dictionary<string, long> interactionCounts = interaction is null
+                ? new Dictionary<string, long>(StringComparer.Ordinal)
+                : new Dictionary<string, long>(interaction.InteractionCounts, StringComparer.Ordinal);
+            interactionCounts[WatchPilotInteractionKind.MisleadingAlertReported.ToString()] =
+                misleadingReportsByDay.GetValueOrDefault(date);
             result.Add(new WatchPilotDailyMetrics(
                 date,
                 notificationsByDay.GetValueOrDefault(date),
                 digestsByDay.GetValueOrDefault(date),
-                interaction?.InteractionCounts
-                    ?? new Dictionary<string, long>(StringComparer.Ordinal)));
+                interactionCounts));
             if (dayUtc == toDayUtc)
             {
                 break;
@@ -459,6 +440,16 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
     private static DateTime EnsureUtc(DateTime value)
     {
         return value.Kind == DateTimeKind.Utc ? value : value.ToUniversalTime();
+    }
+
+    private static DateTime StartOfUtcDay(DateTime value)
+    {
+        return DateTime.SpecifyKind(value.Date, DateTimeKind.Utc);
+    }
+
+    private static DateTime EndOfUtcDay(DateTime value)
+    {
+        return StartOfUtcDay(value).AddDays(1).AddTicks(-1);
     }
 
     private static long ReadLong(BsonDocument document, string field)

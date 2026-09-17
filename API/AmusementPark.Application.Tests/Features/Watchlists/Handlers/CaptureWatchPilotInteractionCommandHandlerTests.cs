@@ -21,6 +21,7 @@ public sealed class CaptureWatchPilotInteractionCommandHandlerTests
         metrics.Setup(value => value.IncrementInteractionAsync(
                 new DateOnly(2026, 9, 17),
                 WatchPilotInteractionKind.NotificationCenterOpened,
+                1,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
         CaptureWatchPilotInteractionCommandHandler handler = new(
@@ -100,11 +101,6 @@ public sealed class CaptureWatchPilotInteractionCommandHandlerTests
                 CancellationToken.None))
             .ReturnsAsync(UserNotificationWriteOutcome.Success);
         Mock<IWatchPilotMetricsRepository> metrics = new(MockBehavior.Strict);
-        metrics.Setup(value => value.IncrementInteractionAsync(
-                new DateOnly(2026, 9, 17),
-                WatchPilotInteractionKind.MisleadingAlertReported,
-                CancellationToken.None))
-            .Returns(Task.CompletedTask);
         CaptureWatchPilotInteractionCommandHandler handler = new(
             notifications.Object,
             CreateRecorder(metrics.Object),
@@ -120,7 +116,7 @@ public sealed class CaptureWatchPilotInteractionCommandHandlerTests
 
         Assert.True(result.IsSuccess);
         notifications.VerifyAll();
-        metrics.VerifyAll();
+        metrics.VerifyNoOtherCalls();
     }
 
     [Fact]

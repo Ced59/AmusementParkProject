@@ -15,6 +15,7 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
 
     private readonly IFactualChangeEventRepository eventRepository;
     private readonly IUserNotificationRepository notificationRepository;
+    private readonly UserNotificationCreationService notificationCreationService;
     private readonly IFactualNotificationDistributionReceiptRepository receiptRepository;
     private readonly IFactualNotificationDistributionScheduler scheduler;
     private readonly INotificationDigestScheduler digestScheduler;
@@ -23,12 +24,14 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
     public FactualNotificationCorrectionJobHandler(
         IFactualChangeEventRepository eventRepository,
         IUserNotificationRepository notificationRepository,
+        UserNotificationCreationService notificationCreationService,
         IFactualNotificationDistributionReceiptRepository receiptRepository,
         IFactualNotificationDistributionScheduler scheduler,
         INotificationDigestScheduler digestScheduler)
         : this(
             eventRepository,
             notificationRepository,
+            notificationCreationService,
             receiptRepository,
             scheduler,
             digestScheduler,
@@ -39,6 +42,7 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
     internal FactualNotificationCorrectionJobHandler(
         IFactualChangeEventRepository eventRepository,
         IUserNotificationRepository notificationRepository,
+        UserNotificationCreationService notificationCreationService,
         IFactualNotificationDistributionReceiptRepository receiptRepository,
         IFactualNotificationDistributionScheduler scheduler,
         INotificationDigestScheduler digestScheduler,
@@ -46,6 +50,8 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
     {
         this.eventRepository = eventRepository ?? throw new ArgumentNullException(nameof(eventRepository));
         this.notificationRepository = notificationRepository ?? throw new ArgumentNullException(nameof(notificationRepository));
+        this.notificationCreationService = notificationCreationService
+            ?? throw new ArgumentNullException(nameof(notificationCreationService));
         this.receiptRepository = receiptRepository ?? throw new ArgumentNullException(nameof(receiptRepository));
         this.scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
         this.digestScheduler = digestScheduler ?? throw new ArgumentNullException(nameof(digestScheduler));
@@ -179,7 +185,7 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
                         notification,
                         nowUtc))
                     .ToArray();
-                await this.notificationRepository.CreateManyAsync(followUps, cancellationToken);
+                await this.notificationCreationService.CreateManyAsync(followUps, cancellationToken);
                 await this.digestScheduler.ScheduleAsync(
                     followUp.Id,
                     followUps

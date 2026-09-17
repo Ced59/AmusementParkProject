@@ -38,29 +38,24 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
         this.deletionFence = deletionFence;
     }
 
-    public async Task<long> CreateManyAsync(
+    public async Task<UserNotificationCreationResult> CreateManyAsync(
         IReadOnlyCollection<UserNotification> notifications,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(notifications);
-        UserNotification[] distinct = notifications
-            .GroupBy(
-                static notification => $"{notification.UserId}\n{notification.FactualEventId.Value}",
-                StringComparer.Ordinal)
-            .Select(static group => group.First())
-            .ToArray();
+        UserNotification[] candidates = notifications.ToArray();
         if (this.deletionFence is not null)
         {
             IReadOnlySet<string> blockedUserIds = await this.deletionFence.ListBlockedAsync(
-                distinct.Select(static notification => notification.UserId).ToArray(),
+                candidates.Select(static notification => notification.UserId).ToArray(),
                 cancellationToken);
-            distinct = distinct
+            candidates = candidates
                 .Where(notification => !blockedUserIds.Contains(notification.UserId))
                 .ToArray();
         }
-        if (distinct.Length == 0)
+        if (candidates.Length == 0)
         {
-            return 0;
+            return new UserNotificationCreationResult(0, 0);
         }
 
         Dictionary<string, string> activityLeases = new Dictionary<string, string>(
@@ -69,7 +64,7 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
         {
             if (this.deletionFence is not null)
             {
-                foreach (string userId in distinct
+                foreach (string userId in candidates
                     .Select(static notification => notification.UserId)
                     .Distinct(StringComparer.Ordinal)
                     .OrderBy(static userId => userId, StringComparer.Ordinal))
@@ -84,16 +79,22 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
                     }
                 }
 
-                distinct = distinct
+                candidates = candidates
                     .Where(notification => activityLeases.ContainsKey(notification.UserId))
                     .ToArray();
             }
 
-            if (distinct.Length == 0)
+            if (candidates.Length == 0)
             {
-                return 0;
+                return new UserNotificationCreationResult(0, 0);
             }
 
+            UserNotification[] distinct = candidates
+                .GroupBy(
+                    static notification => $"{notification.UserId}\n{notification.FactualEventId.Value}",
+                    StringComparer.Ordinal)
+                .Select(static group => group.First())
+                .ToArray();
             List<WriteModel<UserNotificationDocument>> writes = distinct
                 .Select(notification => BuildInsert(notification.ToDocument()))
                 .Cast<WriteModel<UserNotificationDocument>>()
@@ -117,7 +118,8 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
             }
 
             await this.DeleteNewlyBlockedAsync(distinct, cancellationToken);
-            return createdCount;
+            long duplicateCount = candidates.LongLength - createdCount;
+            return new UserNotificationCreationResult(createdCount, duplicateCount);
         }
         finally
         {

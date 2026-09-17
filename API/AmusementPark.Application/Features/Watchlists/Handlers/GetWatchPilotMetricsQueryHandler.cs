@@ -30,16 +30,18 @@ public sealed class GetWatchPilotMetricsQueryHandler
     {
         ArgumentNullException.ThrowIfNull(query);
         DateTime generatedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        DateTime toUtc = NormalizeUtc(query.ToUtc) ?? generatedAtUtc;
+        DateTime requestedToUtc = NormalizeUtc(query.ToUtc) ?? generatedAtUtc;
         DateTime? requestedFromUtc = NormalizeUtc(query.FromUtc);
-        if (requestedFromUtc.HasValue && requestedFromUtc.Value > toUtc)
+        if (requestedFromUtc.HasValue && requestedFromUtc.Value > requestedToUtc)
         {
             return ApplicationResult<WatchPilotMetricsResult>.Failure(
                 WatchPilotApplicationErrors.InvalidMetricsRange());
         }
 
-        DateTime fromUtc = requestedFromUtc ?? toUtc.AddDays(-(DefaultRangeDays - 1));
-        DateTime earliestUtc = toUtc.AddDays(-(MaximumRangeDays - 1));
+        DateTime toUtc = EndOfUtcDay(requestedToUtc);
+        DateTime fromUtc = StartOfUtcDay(
+            requestedFromUtc ?? requestedToUtc.AddDays(-(DefaultRangeDays - 1)));
+        DateTime earliestUtc = StartOfUtcDay(requestedToUtc.AddDays(-(MaximumRangeDays - 1)));
         if (fromUtc < earliestUtc)
         {
             fromUtc = earliestUtc;
@@ -108,5 +110,15 @@ public sealed class GetWatchPilotMetricsQueryHandler
         return value.Value.Kind == DateTimeKind.Utc
             ? value.Value
             : value.Value.ToUniversalTime();
+    }
+
+    private static DateTime StartOfUtcDay(DateTime value)
+    {
+        return DateTime.SpecifyKind(value.Date, DateTimeKind.Utc);
+    }
+
+    private static DateTime EndOfUtcDay(DateTime value)
+    {
+        return StartOfUtcDay(value).AddDays(1).AddTicks(-1);
     }
 }

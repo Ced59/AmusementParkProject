@@ -110,9 +110,6 @@ public sealed class CaptureWatchPilotInteractionCommandHandler
                 cancellationToken);
             if (outcome == UserNotificationWriteOutcome.Success)
             {
-                await this.metricsRecorder.RecordBestEffortAsync(
-                    WatchPilotInteractionKind.MisleadingAlertReported,
-                    cancellationToken);
                 return ApplicationResult.Success();
             }
 

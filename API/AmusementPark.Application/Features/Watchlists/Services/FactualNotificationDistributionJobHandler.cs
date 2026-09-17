@@ -15,7 +15,7 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
 {
     private readonly IFactualChangeEventRepository eventRepository;
     private readonly IWatchSubscriptionRepository subscriptionRepository;
-    private readonly IUserNotificationRepository notificationRepository;
+    private readonly UserNotificationCreationService notificationCreationService;
     private readonly IFactualNotificationDistributionReceiptRepository receiptRepository;
     private readonly IFactualNotificationDistributionScheduler scheduler;
     private readonly INotificationDigestScheduler digestScheduler;
@@ -25,7 +25,7 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
     public FactualNotificationDistributionJobHandler(
         IFactualChangeEventRepository eventRepository,
         IWatchSubscriptionRepository subscriptionRepository,
-        IUserNotificationRepository notificationRepository,
+        UserNotificationCreationService notificationCreationService,
         IFactualNotificationDistributionReceiptRepository receiptRepository,
         IFactualNotificationDistributionScheduler scheduler,
         INotificationDigestScheduler digestScheduler,
@@ -33,7 +33,7 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
         : this(
             eventRepository,
             subscriptionRepository,
-            notificationRepository,
+            notificationCreationService,
             receiptRepository,
             scheduler,
             digestScheduler,
@@ -45,7 +45,7 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
     internal FactualNotificationDistributionJobHandler(
         IFactualChangeEventRepository eventRepository,
         IWatchSubscriptionRepository subscriptionRepository,
-        IUserNotificationRepository notificationRepository,
+        UserNotificationCreationService notificationCreationService,
         IFactualNotificationDistributionReceiptRepository receiptRepository,
         IFactualNotificationDistributionScheduler scheduler,
         INotificationDigestScheduler digestScheduler,
@@ -54,7 +54,8 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
     {
         this.eventRepository = eventRepository;
         this.subscriptionRepository = subscriptionRepository;
-        this.notificationRepository = notificationRepository;
+        this.notificationCreationService = notificationCreationService
+            ?? throw new ArgumentNullException(nameof(notificationCreationService));
         this.receiptRepository = receiptRepository;
         this.scheduler = scheduler;
         this.digestScheduler = digestScheduler ?? throw new ArgumentNullException(nameof(digestScheduler));
@@ -141,7 +142,7 @@ public sealed class FactualNotificationDistributionJobHandler : IDurableBackgrou
                 FactualNotificationDistributionErrorCodes.InvalidNotification);
         }
 
-        await this.notificationRepository.CreateManyAsync(notifications, cancellationToken);
+        await this.notificationCreationService.CreateManyAsync(notifications, cancellationToken);
         await this.digestScheduler.ScheduleAsync(
             factualEvent.Id,
             notifications
