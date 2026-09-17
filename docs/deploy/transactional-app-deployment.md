@@ -10,7 +10,9 @@ Une dérive de l'image `mongo:8.0` se traite uniquement par un lancement manuel 
 workflow `Production CI/CD` avec `deploy=true` et
 `shared_infrastructure_maintenance=mongodb`. Ce choix non sélectionné par défaut
 conserve le verrou global, exige la sauvegarde MongoDB, recrée uniquement le service
-MongoDB, vérifie que le volume nommé monté sur `/data/db` est strictement le même,
+MongoDB et consomme atomiquement cette intention avant la mutation afin qu'aucune
+reprise ultérieure ne puisse la rejouer. Le parcours vérifie que le volume nommé
+monté sur `/data/db` est strictement le même,
 attend son retour à l'état sain, puis reprend le déploiement transactionnel de
 l'API et du front. Un push ordinaire reste incapable de recréer un service partagé.
 

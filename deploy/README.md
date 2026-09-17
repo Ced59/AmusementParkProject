@@ -411,6 +411,7 @@ Quand un déploiement s'arrête explicitement sur une nouvelle image MongoDB, la
 maintenance se relance manuellement avec `deploy=true` et
 `shared_infrastructure_maintenance=mongodb`. Cette option est désactivée par
 défaut. Elle impose la sauvegarde préalable, conserve le volume nommé de données,
+consomme l'ordre manuel avant la recréation pour empêcher tout rejeu par une reprise,
 attend le healthcheck MongoDB puis exécute le déploiement applicatif normal. Elle
 ne doit pas servir à une première installation ni à contourner un échec de
 sauvegarde ou une identité de volume inattendue.

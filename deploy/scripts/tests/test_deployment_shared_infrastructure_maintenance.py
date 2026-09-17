@@ -2,9 +2,11 @@ import unittest
 from unittest.mock import Mock, call
 from pathlib import Path
 import sys
+import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from deployment_runtime import DeploymentError, DockerRuntime
+from deployment_transaction import consume_shared_infrastructure_maintenance
 
 
 class SharedInfrastructureMaintenanceTests(unittest.TestCase):
@@ -119,6 +121,33 @@ class SharedInfrastructureMaintenanceTests(unittest.TestCase):
             runtime.maintain_mongodb()
 
         runtime.wait_healthy.assert_not_called()
+
+    def test_consumes_the_manual_intent_without_changing_other_environment_values(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / ".env"
+            path.write_text(
+                "SECRET=value-with-maintenance-word\n"
+                "SHARED_INFRASTRUCTURE_MAINTENANCE=mongodb\n"
+                "OTHER=value\n",
+                encoding="utf-8")
+
+            consume_shared_infrastructure_maintenance(path, "mongodb")
+
+            self.assertEqual(
+                path.read_text(encoding="utf-8"),
+                "SECRET=value-with-maintenance-word\n"
+                "SHARED_INFRASTRUCTURE_MAINTENANCE=none\n"
+                "OTHER=value\n")
+
+    def test_refuses_to_consume_a_missing_or_already_consumed_intent(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / ".env"
+            path.write_text(
+                "SHARED_INFRASTRUCTURE_MAINTENANCE=none\n",
+                encoding="utf-8")
+
+            with self.assertRaisesRegex(DeploymentError, "missing or does not match"):
+                consume_shared_infrastructure_maintenance(path, "mongodb")
 
 
 if __name__ == "__main__":
