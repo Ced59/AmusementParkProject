@@ -13,6 +13,7 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class UserNotificationRepository : IUserNotificationRepository
 {
+    private static readonly TimeSpan ActivityLeaseDuration = TimeSpan.FromMinutes(3);
     private readonly IMongoCollection<UserNotificationDocument> collection;
     private readonly IWatchlistAccountDeletionFence? deletionFence;
 
@@ -62,29 +63,74 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
             return 0;
         }
 
-        List<WriteModel<UserNotificationDocument>> writes = distinct
-            .Select(notification => BuildInsert(notification.ToDocument()))
-            .Cast<WriteModel<UserNotificationDocument>>()
-            .ToList();
-        long createdCount;
+        Dictionary<string, string> activityLeases = new Dictionary<string, string>(
+            StringComparer.Ordinal);
         try
         {
-            BulkWriteResult<UserNotificationDocument> result = await this.collection.BulkWriteAsync(
-                writes,
-                new BulkWriteOptions { IsOrdered = false },
-                cancellationToken);
-            createdCount = result.Upserts.Count;
-        }
-        catch (MongoBulkWriteException<UserNotificationDocument> exception)
-            when (IsDuplicateOnlyFailure(
-                exception.WriteErrors.Select(static error => error.Category).ToArray(),
-                exception.WriteConcernError is not null))
-        {
-            createdCount = exception.Result?.Upserts.Count ?? 0;
-        }
+            if (this.deletionFence is not null)
+            {
+                foreach (string userId in distinct
+                    .Select(static notification => notification.UserId)
+                    .Distinct(StringComparer.Ordinal)
+                    .OrderBy(static userId => userId, StringComparer.Ordinal))
+                {
+                    string? leaseId = await this.deletionFence.TryAcquireActivityLeaseAsync(
+                        userId,
+                        ActivityLeaseDuration,
+                        cancellationToken);
+                    if (leaseId is not null)
+                    {
+                        activityLeases[userId] = leaseId;
+                    }
+                }
 
-        await this.DeleteNewlyBlockedAsync(distinct, cancellationToken);
-        return createdCount;
+                distinct = distinct
+                    .Where(notification => activityLeases.ContainsKey(notification.UserId))
+                    .ToArray();
+            }
+
+            if (distinct.Length == 0)
+            {
+                return 0;
+            }
+
+            List<WriteModel<UserNotificationDocument>> writes = distinct
+                .Select(notification => BuildInsert(notification.ToDocument()))
+                .Cast<WriteModel<UserNotificationDocument>>()
+                .ToList();
+            long createdCount;
+            try
+            {
+                BulkWriteResult<UserNotificationDocument> result =
+                    await this.collection.BulkWriteAsync(
+                        writes,
+                        new BulkWriteOptions { IsOrdered = false },
+                        cancellationToken);
+                createdCount = result.Upserts.Count;
+            }
+            catch (MongoBulkWriteException<UserNotificationDocument> exception)
+                when (IsDuplicateOnlyFailure(
+                    exception.WriteErrors.Select(static error => error.Category).ToArray(),
+                    exception.WriteConcernError is not null))
+            {
+                createdCount = exception.Result?.Upserts.Count ?? 0;
+            }
+
+            await this.DeleteNewlyBlockedAsync(distinct, cancellationToken);
+            return createdCount;
+        }
+        finally
+        {
+            if (this.deletionFence is not null)
+            {
+                foreach (string leaseId in activityLeases.Values)
+                {
+                    await this.deletionFence.ReleaseActivityLeaseAsync(
+                        leaseId,
+                        CancellationToken.None);
+                }
+            }
+        }
     }
 
     private async Task DeleteNewlyBlockedAsync(

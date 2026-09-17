@@ -148,13 +148,14 @@ sequenceDiagram
 La borne est posée avant la première suppression. Les écritures de notifications,
 de digests, de travaux d’e-mail et de tentatives la contrôlent avant et après leur
 mutation. Si la suppression démarre pendant une écriture déjà louée, cette
-écriture est compensée immédiatement. La persistance d’un digest et l’envoi SMTP
-acquièrent en plus un bail d’activité borné : la suppression attend une mutation ou
-un envoi déjà engagé, ou empêche son démarrage si sa borne est déjà posée. Même si
-le worker est annulé après l’acceptation de l’écriture MongoDB, le bail est libéré
-indépendamment de son jeton puis la purge reprend et efface le digest. Les travaux
-compensés sont supprimés physiquement, charge utile comprise, et restent
-strictement reliés au membre ou à l’un de ses digests.
+écriture est compensée immédiatement. La création en lot des notifications, la
+persistance d’un digest et l’envoi SMTP acquièrent en plus un bail d’activité borné :
+la suppression attend une mutation ou un envoi déjà engagé, ou empêche son
+démarrage si sa borne est déjà posée. Même si le worker est annulé après
+l’acceptation d’une écriture MongoDB, le bail est libéré indépendamment de son jeton
+puis la purge reprend et efface les données recréées. Les travaux compensés sont
+supprimés physiquement, charge utile comprise, et restent strictement reliés au
+membre ou à l’un de ses digests.
 
 ## Collections MongoDB concernées
 
@@ -236,8 +237,8 @@ restent inchangés.
 - le service pose la borne avant la purge, les workers cessent leur travail pour
   un membre supprimé et compensent une écriture commencée pendant la course ;
 - la borne persistée est stable sans exposer l’identifiant du membre ;
-- le bail d’activité ferme les courses autour de l’écriture d’un digest et de
-  l’appel SMTP, y compris quand le jeton du worker est annulé ;
+- le bail d’activité ferme les courses autour des notifications, de l’écriture d’un
+  digest et de l’appel SMTP, y compris quand le jeton du worker est annulé ;
 - un travail compensé est supprimé avec sa charge utile, pas seulement annulé ;
 - les cibles et les preuves factuelles consomment le même budget de source que le
   reste de l’export ;
