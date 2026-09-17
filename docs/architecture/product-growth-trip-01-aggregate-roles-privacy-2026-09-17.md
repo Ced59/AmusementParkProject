@@ -521,10 +521,13 @@ les écritures dans une collection enfant suivent une barrière commune :
    La création réserve d'abord une coquille `Reserved` sans contenu utilisateur,
    contenant seulement identifiants techniques, epoch et échéance, avec TTL. Le
    contenu est ensuite matérialisé et passé à `Committed` par `UpdateOne` sans
-   upsert, avec une garde serveur `$expr: $$NOW < LeaseExpiresAtUtc`. Les mises à
-   jour utilisent la même garde sans upsert et les lectures ignorent toute coquille
-   non `Committed`. Si la coquille a été purgée ou si l'échéance est passée, il
-   n'existe donc aucune branche d'insertion capable de recréer le contenu privé ;
+   upsert. Son filtre exige simultanément `State = Reserved`, le même
+   `OperationId`, le même `ChildMutationEpoch`, la même génération de lease et la
+   garde serveur `$expr: $$NOW < LeaseExpiresAtUtc`. Les mises à jour utilisent la
+   même identité de fence sans upsert et les lectures ignorent toute coquille non
+   `Committed`. Si la coquille a été purgée, remplacée par une nouvelle génération
+   ou si l'échéance est passée, il n'existe donc aucune branche capable de
+   matérialiser ou recréer l'ancien contenu privé ;
 4. l'écriture libère sa lease de façon idempotente, avec reprise par reconciler.
 
 La suppression passe atomiquement le plan à `Pending`, incrémente
@@ -596,7 +599,8 @@ variantes ne sont pas réellement servies.
 - suppression bloquant les nouvelles leases, attendant les écritures de l'ancien
   epoch et repurgeant toute écriture ambiguë avant `Purged` ;
 - création enfant retardée incapable de matérialiser du contenu sans une coquille
-  `Reserved` encore valide, et coquilles tardives purgées par TTL ;
+  `Reserved` de mêmes opération, epoch et génération encore valide, et coquilles
+  tardives purgées par TTL ;
 - absence de lecture N+1 sur les listes et synthèses.
 
 ### Angular, SSR et mobile
