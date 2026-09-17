@@ -17,6 +17,21 @@
 - SignalR, CRDT et broker ne sont pas des prérequis ;
 - un passage à une collaboration temps réel nécessiterait un ADR séparé et des mesures d’usage.
 
+### État de `TRIP-01` au 17 septembre 2026
+
+L'ADR [`product-growth-trip-01-aggregate-roles-privacy-2026-09-17.md`](../../architecture/product-growth-trip-01-aggregate-roles-privacy-2026-09-17.md)
+fige les invariants avant toute persistance : identifiants chaîne typés, propriétaire
+unique, membres bornés embarqués dans le plan, rôles vérifiés dans Application,
+contraintes partagées en liste blanche, invitations opaques, acceptation idempotente
+réparable sur MongoDB autonome et concurrence optimiste par opérations fines.
+
+Le voyage reste privé entre membres. Une publication éventuelle passera par
+`SHARE`; une invitation ne publie pas le plan. Les faits officiels, les snapshots
+`FIT` et les choix du groupe restent trois catégories distinctes. Aucun voyage,
+endpoint, écran ou index n'est créé par ce jalon documentaire. `TRIP-02` peut donc
+implémenter le voyage individuel sans attendre une cohorte réelle, tout en
+conservant les gates techniques, de confidentialité et responsive.
+
 ## 1. Vision produit
 
 Un groupe doit pouvoir transformer des envies dispersées en programme commun :
@@ -66,13 +81,13 @@ La croissance par invitation est acceptable parce que l’invitation est nécess
 ```csharp
 public sealed class TripPlan
 {
-    public Guid Id { get; }
-    public Guid OwnerUserId { get; }
+    public TripPlanId Id { get; }
+    public string OwnerUserId { get; }
     public string Title { get; private set; }
-    public TripDateRange DateRange { get; private set; }
+    public TripDateProposal DateProposal { get; private set; }
     public TripPlanStatus Status { get; private set; }
-    public TripPlanPrivacy Privacy { get; private set; }
-    public int Version { get; private set; }
+    public TripPlanAccessScope AccessScope { get; private set; }
+    public long Version { get; private set; }
     public DateTime CreatedAtUtc { get; }
     public DateTime UpdatedAtUtc { get; private set; }
 }
@@ -285,8 +300,8 @@ Les avertissements ne modifient pas automatiquement le plan.
 Collections :
 
 - `trip-plans` ;
-- `trip-participants` ;
 - `trip-invitations` ;
+- `trip-member-constraints` ;
 - `trip-park-candidates` ;
 - `trip-day-plans` ;
 - `trip-item-preferences` ;
@@ -294,16 +309,19 @@ Collections :
 
 Indexes :
 
-- `{ OwnerUserId, UpdatedAtUtc }` ;
-- `{ ParticipantUserId, Status, UpdatedAtUtc }` ;
+- `{ OwnerUserId, Status, UpdatedAtUtc }` ;
+- `{ Members.UserId, Status, UpdatedAtUtc }` ;
 - token invitation unique + TTL ;
-- unique `(TripId, UserId)` participant ;
+- unicité d’un `UserId` dans les membres vérifiée par le Core et l’écriture conditionnelle du plan ;
 - unique `(TripId, UserId, ParkItemId)` préférence ;
 - unique `(TripId, Date)` jour si un seul plan par date ;
 - `{ TripId, Sequence }` ;
 - audit par voyage/date.
 
-Évaluer l’embarquement de petits sous-documents versus collections séparées. Les préférences potentiellement nombreuses restent séparées.
+La décision `TRIP-01` embarque les membres bornés dans `trip-plans` afin que le
+propriétaire unique, le transfert et les rôles soient atomiques. Les contraintes,
+préférences, candidats, jours, invitations et événements potentiellement nombreux
+restent séparés.
 
 ## 12. Ports et cas d’usage
 
@@ -311,8 +329,8 @@ Ports :
 
 ```text
 ITripPlanRepository
-ITripParticipantRepository
 ITripInvitationRepository
+ITripMemberConstraintRepository
 ITripPreferenceRepository
 ITripOfficialDataReader
 ITripFitSnapshotReader
