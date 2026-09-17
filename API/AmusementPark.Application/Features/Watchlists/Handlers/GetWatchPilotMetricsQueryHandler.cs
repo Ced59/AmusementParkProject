@@ -12,7 +12,7 @@ public sealed class GetWatchPilotMetricsQueryHandler
     : IQueryHandler<GetWatchPilotMetricsQuery, ApplicationResult<WatchPilotMetricsResult>>
 {
     private const int DefaultRangeDays = 30;
-    private const int MaximumRangeDays = 180;
+    private const int MaximumRangeDays = NotificationDeliveryAttempt.RetentionDays;
     private readonly IWatchPilotMetricsRepository repository;
     private readonly TimeProvider timeProvider;
 
@@ -32,20 +32,34 @@ public sealed class GetWatchPilotMetricsQueryHandler
         DateTime generatedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         DateTime requestedToUtc = NormalizeUtc(query.ToUtc) ?? generatedAtUtc;
         DateTime? requestedFromUtc = NormalizeUtc(query.FromUtc);
-        if (requestedFromUtc.HasValue && requestedFromUtc.Value > requestedToUtc)
+        DateTime currentDayUtc = StartOfUtcDay(generatedAtUtc);
+        DateTime latestAvailableUtc = EndOfUtcDay(currentDayUtc);
+        DateTime earliestAvailableUtc = SubtractWholeDaysOrMinimum(
+            currentDayUtc,
+            MaximumRangeDays - 1);
+        if (requestedToUtc < earliestAvailableUtc
+            || requestedToUtc > latestAvailableUtc
+            || requestedFromUtc.HasValue
+                && (requestedFromUtc.Value < earliestAvailableUtc
+                    || requestedFromUtc.Value > requestedToUtc))
         {
             return ApplicationResult<WatchPilotMetricsResult>.Failure(
                 WatchPilotApplicationErrors.InvalidMetricsRange());
         }
 
-        DateTime toUtc = EndOfUtcDay(requestedToUtc);
-        DateTime fromUtc = StartOfUtcDay(
-            requestedFromUtc ?? requestedToUtc.AddDays(-(DefaultRangeDays - 1)));
-        DateTime earliestUtc = StartOfUtcDay(requestedToUtc.AddDays(-(MaximumRangeDays - 1)));
-        if (fromUtc < earliestUtc)
+        DateTime toDayUtc = StartOfUtcDay(requestedToUtc);
+        DateTime toUtc = EndOfUtcDay(toDayUtc);
+        DateTime defaultFromUtc = SubtractWholeDaysOrMinimum(
+            toDayUtc,
+            DefaultRangeDays - 1);
+        if (defaultFromUtc < earliestAvailableUtc)
         {
-            fromUtc = earliestUtc;
+            defaultFromUtc = earliestAvailableUtc;
         }
+
+        DateTime fromUtc = requestedFromUtc.HasValue
+            ? StartOfUtcDay(requestedFromUtc.Value)
+            : defaultFromUtc;
 
         WatchPilotMetricsSnapshot snapshot = await this.repository.ReadAsync(
             fromUtc,
@@ -117,8 +131,18 @@ public sealed class GetWatchPilotMetricsQueryHandler
         return DateTime.SpecifyKind(value.Date, DateTimeKind.Utc);
     }
 
-    private static DateTime EndOfUtcDay(DateTime value)
+    private static DateTime EndOfUtcDay(DateTime startOfDayUtc)
     {
-        return StartOfUtcDay(value).AddDays(1).AddTicks(-1);
+        return startOfDayUtc == DateTime.SpecifyKind(DateTime.MaxValue.Date, DateTimeKind.Utc)
+            ? DateTime.SpecifyKind(DateTime.MaxValue, DateTimeKind.Utc)
+            : startOfDayUtc.AddDays(1).AddTicks(-1);
+    }
+
+    private static DateTime SubtractWholeDaysOrMinimum(DateTime value, int days)
+    {
+        DateTime minimumUtc = DateTime.SpecifyKind(DateTime.MinValue, DateTimeKind.Utc);
+        return value < minimumUtc.AddDays(days)
+            ? minimumUtc
+            : value.AddDays(-days);
     }
 }

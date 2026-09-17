@@ -50,6 +50,10 @@ interface WatchPilotBreakdownItem {
   ]
 })
 export class AdminWatchPilotComponent implements OnInit {
+  protected readonly minimumDateUtc = new Date(Date.now() - 29 * 24 * 60 * 60 * 1000)
+    .toISOString()
+    .slice(0, 10);
+  protected readonly maximumDateUtc = new Date().toISOString().slice(0, 10);
   protected readonly state = this.facade.state;
   protected readonly metrics = this.facade.metrics;
   protected readonly filtersForm = new FormGroup<WatchPilotFiltersForm>({

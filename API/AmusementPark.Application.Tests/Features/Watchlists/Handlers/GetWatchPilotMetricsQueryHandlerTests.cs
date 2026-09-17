@@ -116,6 +116,49 @@ public sealed class GetWatchPilotMetricsQueryHandlerTests
         repository.VerifyNoOtherCalls();
     }
 
+    [Theory]
+    [InlineData(1, 1, 1)]
+    [InlineData(9999, 12, 31)]
+    public async Task HandleAsync_RejectsDatesOutsideTheRetainedMetricsWindow(
+        int year,
+        int month,
+        int day)
+    {
+        Mock<IWatchPilotMetricsRepository> repository = new(MockBehavior.Strict);
+        GetWatchPilotMetricsQueryHandler handler = new(
+            repository.Object,
+            new FixedWatchPilotTimeProvider(
+                new DateTimeOffset(2026, 9, 17, 12, 0, 0, TimeSpan.Zero)));
+
+        ApplicationResult<WatchPilotMetricsResult> result = await handler.HandleAsync(
+            new GetWatchPilotMetricsQuery(
+                null,
+                new DateTime(year, month, day, 0, 0, 0, DateTimeKind.Utc)),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        repository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_RejectsAStartBeforeEmailAttemptRetention()
+    {
+        Mock<IWatchPilotMetricsRepository> repository = new(MockBehavior.Strict);
+        GetWatchPilotMetricsQueryHandler handler = new(
+            repository.Object,
+            new FixedWatchPilotTimeProvider(
+                new DateTimeOffset(2026, 9, 17, 12, 0, 0, TimeSpan.Zero)));
+
+        ApplicationResult<WatchPilotMetricsResult> result = await handler.HandleAsync(
+            new GetWatchPilotMetricsQuery(
+                new DateTime(2026, 8, 18, 0, 0, 0, DateTimeKind.Utc),
+                new DateTime(2026, 9, 17, 0, 0, 0, DateTimeKind.Utc)),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        repository.VerifyNoOtherCalls();
+    }
+
     private static WatchPilotMetricsSnapshot EmptySnapshot()
     {
         return new WatchPilotMetricsSnapshot(

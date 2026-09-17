@@ -14,8 +14,8 @@
   </ng-template>
 
   <form class="watch-pilot__filters" [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
-    <label><span>{{ 'admin.watchPilot.filters.from' | translate }}</span><input appUiInputText type="date" formControlName="fromUtc" /></label>
-    <label><span>{{ 'admin.watchPilot.filters.to' | translate }}</span><input appUiInputText type="date" formControlName="toUtc" /></label>
+    <label><span>{{ 'admin.watchPilot.filters.from' | translate }}</span><input appUiInputText type="date" formControlName="fromUtc" [attr.min]="minimumDateUtc" [attr.max]="maximumDateUtc" /></label>
+    <label><span>{{ 'admin.watchPilot.filters.to' | translate }}</span><input appUiInputText type="date" formControlName="toUtc" [attr.min]="minimumDateUtc" [attr.max]="maximumDateUtc" /></label>
     <div class="watch-pilot__filter-actions">
       <button appUiButton type="submit" icon="pi pi-search" [label]="'actions.search' | translate"></button>
       <button appUiButton type="button" class="p-button-secondary" icon="pi pi-filter-slash"

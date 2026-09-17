@@ -146,6 +146,14 @@ internal static class WatchNotificationMongoDefinitions
                 Builders<UserNotificationDocument>.IndexKeys
                     .Ascending(static document => document.DeliveredAt),
                 new CreateIndexOptions { Name = "ix_user_notification_pilot_delivered" }),
+            new CreateIndexModel<UserNotificationDocument>(
+                Builders<UserNotificationDocument>.IndexKeys
+                    .Ascending(static document => document.MisleadingReportedAt),
+                new CreateIndexOptions
+                {
+                    Name = "ix_user_notification_pilot_misleading_reported",
+                    Sparse = true,
+                }),
         };
     }
 }
