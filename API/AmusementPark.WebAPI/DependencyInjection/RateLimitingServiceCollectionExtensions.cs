@@ -52,6 +52,9 @@ public static class RateLimitingServiceCollectionExtensions
         FixedWindowRateLimitSettings socialShareEventSettings = configuration
             .GetSection("RateLimiting:SocialShare:Events")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(60, 60);
+        FixedWindowRateLimitSettings notificationEmailUnsubscribeSettings = configuration
+            .GetSection("RateLimiting:Notifications:EmailUnsubscribe")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(5, 3600);
         FixedWindowRateLimitSettings passportExportSettings = configuration
             .GetSection("RateLimiting:Passport:Exports")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 600);
@@ -104,6 +107,10 @@ public static class RateLimitingServiceCollectionExtensions
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthRefresh, authenticationSettings.RefreshToken);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthRegistration, authenticationSettings.Registration);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthEmailChallenge, authenticationSettings.EmailChallenge);
+            options.AddPolicy(RateLimitPolicyNames.NotificationEmailUnsubscribe, context =>
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: GetNotificationEmailUnsubscribePartitionKey(context),
+                    factory: _ => CreateFixedWindowOptions(notificationEmailUnsubscribeSettings)));
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthPasswordReset, authenticationSettings.PasswordReset);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.ContactSubmission, contactSubmissionSettings);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.SocialShareEvents, socialShareEventSettings);
@@ -320,6 +327,18 @@ public static class RateLimitingServiceCollectionExtensions
         return string.IsNullOrWhiteSpace(userId)
             ? $"share-publication-confirmation:{GetRemoteIpPartitionKey(context)}"
             : $"share-publication-confirmation:user:{userId}";
+    }
+
+    internal static string GetNotificationEmailUnsubscribePartitionKey(HttpContext context)
+    {
+        string token = context.Request.Query["token"].ToString().Trim();
+        if (token.Length == 0)
+        {
+            return $"notification-email-unsubscribe:{GetRemoteIpPartitionKey(context)}";
+        }
+
+        byte[] hash = SHA256.HashData(Encoding.UTF8.GetBytes(token));
+        return $"notification-email-unsubscribe:token:{Convert.ToHexString(hash)}";
     }
 
     internal static bool IsPassportExportDownload(HttpContext context)

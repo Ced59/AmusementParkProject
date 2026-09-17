@@ -25,7 +25,7 @@ public sealed class NotificationEmailUnsubscribeController : ControllerBase
     }
 
     [HttpPost]
-    [EnableRateLimiting(RateLimitPolicyNames.AuthEmailChallenge)]
+    [EnableRateLimiting(RateLimitPolicyNames.NotificationEmailUnsubscribe)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> UnsubscribeAsync(

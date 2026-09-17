@@ -115,6 +115,16 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
             return DurableBackgroundJobHandlerResult.Success();
         }
 
+        if (attempt.Status == NotificationDeliveryAttemptStatus.Pending
+            && attempt.AttemptCount > 0)
+        {
+            return await this.CancelAsync(
+                attempt,
+                NotificationEmailDeliveryErrorCodes.AmbiguousProviderAcceptance,
+                nowUtc,
+                cancellationToken);
+        }
+
         NotificationEmailPreference? preference = await this.preferenceRepository.GetAsync(
             digest.UserId,
             cancellationToken);

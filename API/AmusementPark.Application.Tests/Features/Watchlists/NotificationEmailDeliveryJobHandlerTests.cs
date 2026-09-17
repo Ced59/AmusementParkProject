@@ -111,6 +111,55 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
         attempts.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_ShouldCancelAnAmbiguousStartedAttemptWithoutReplayingTheEmail()
+    {
+        NotificationDigest digest = CreateDigest();
+        NotificationDeliveryAttempt attempt = NotificationDeliveryAttempt.Create(
+            $"email:{digest.Id.Value}",
+            "user-1",
+            digest.Id,
+            NowUtc.AddMinutes(-2));
+        attempt.BeginAttempt(NowUtc.AddMinutes(-1));
+        Mock<INotificationDigestRepository> digests =
+            new Mock<INotificationDigestRepository>(MockBehavior.Strict);
+        digests.Setup(repository => repository.GetAsync(digest.Id, CancellationToken.None))
+            .ReturnsAsync(digest);
+        Mock<INotificationEmailPreferenceRepository> preferences =
+            new Mock<INotificationEmailPreferenceRepository>(MockBehavior.Strict);
+        Mock<INotificationDeliveryAttemptRepository> attempts =
+            new Mock<INotificationDeliveryAttemptRepository>(MockBehavior.Strict);
+        attempts.Setup(repository => repository.GetAsync(
+                $"email:{digest.Id.Value}",
+                CancellationToken.None))
+            .ReturnsAsync(attempt);
+        attempts.Setup(repository => repository.ReplaceAsync(
+                It.Is<NotificationDeliveryAttempt>(candidate =>
+                    candidate.Status == NotificationDeliveryAttemptStatus.Cancelled
+                    && candidate.LastErrorCode
+                        == NotificationEmailDeliveryErrorCodes.AmbiguousProviderAcceptance),
+                2,
+                CancellationToken.None))
+            .ReturnsAsync(NotificationDeliveryAttemptWriteOutcome.Success);
+        Mock<INotificationDigestEmailSender> sender =
+            new Mock<INotificationDigestEmailSender>(MockBehavior.Strict);
+        NotificationEmailDeliveryJobHandler handler = CreateHandler(
+            digests,
+            preferences,
+            attempts,
+            sender);
+
+        DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
+            CreateContext(digest),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        preferences.VerifyNoOtherCalls();
+        sender.VerifyNoOtherCalls();
+        digests.VerifyAll();
+        attempts.VerifyAll();
+    }
+
     private static NotificationEmailDeliveryJobHandler CreateHandler(
         Mock<INotificationDigestRepository> digests,
         Mock<INotificationEmailPreferenceRepository> preferences,

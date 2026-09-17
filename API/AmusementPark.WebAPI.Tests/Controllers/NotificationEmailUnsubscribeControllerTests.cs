@@ -20,6 +20,6 @@ public sealed class NotificationEmailUnsubscribeControllerTests
             action.GetCustomAttributes(typeof(EnableRateLimitingAttribute), inherit: true)
                 .Cast<EnableRateLimitingAttribute>());
 
-        Assert.Equal(RateLimitPolicyNames.AuthEmailChallenge, rateLimit.PolicyName);
+        Assert.Equal(RateLimitPolicyNames.NotificationEmailUnsubscribe, rateLimit.PolicyName);
     }
 }

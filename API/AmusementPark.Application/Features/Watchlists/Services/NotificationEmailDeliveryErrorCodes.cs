@@ -17,4 +17,7 @@ public static class NotificationEmailDeliveryErrorCodes
     public const string PersistenceConflict = "notification-email-delivery.persistence-conflict";
 
     public const string ProviderUnavailable = "notification-email-delivery.provider-unavailable";
+
+    public const string AmbiguousProviderAcceptance =
+        "notification-email-delivery.ambiguous-provider-acceptance";
 }

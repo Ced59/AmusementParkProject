@@ -99,6 +99,36 @@ public sealed class RateLimitingServiceCollectionExtensionsTests
             result);
     }
 
+    [Fact]
+    public void GetNotificationEmailUnsubscribePartitionKey_ShouldHashTheTokenInsteadOfUsingTheIp()
+    {
+        DefaultHttpContext firstContext = CreateContext(HttpMethods.Post);
+        firstContext.Request.QueryString = new QueryString("?token=opaque-token-1");
+        DefaultHttpContext secondContext = CreateContext(HttpMethods.Post);
+        secondContext.Connection.RemoteIpAddress = IPAddress.Parse("198.51.100.20");
+        secondContext.Request.QueryString = new QueryString("?token=opaque-token-1");
+
+        string firstKey = RateLimitingServiceCollectionExtensions
+            .GetNotificationEmailUnsubscribePartitionKey(firstContext);
+        string secondKey = RateLimitingServiceCollectionExtensions
+            .GetNotificationEmailUnsubscribePartitionKey(secondContext);
+
+        Assert.Equal(firstKey, secondKey);
+        Assert.StartsWith("notification-email-unsubscribe:token:", firstKey);
+        Assert.DoesNotContain("opaque-token-1", firstKey, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void GetNotificationEmailUnsubscribePartitionKey_ShouldFallBackToTheIpWithoutAToken()
+    {
+        DefaultHttpContext context = CreateContext(HttpMethods.Post);
+
+        string result = RateLimitingServiceCollectionExtensions
+            .GetNotificationEmailUnsubscribePartitionKey(context);
+
+        Assert.Equal("notification-email-unsubscribe:ip:203.0.113.10", result);
+    }
+
     private static DefaultHttpContext CreateContext(string method)
     {
         DefaultHttpContext context = new DefaultHttpContext();
