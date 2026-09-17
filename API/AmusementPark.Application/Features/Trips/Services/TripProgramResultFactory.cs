@@ -80,23 +80,23 @@ public sealed class TripProgramResultFactory
         IReadOnlyCollection<Park> parks = await this.parkRepository.GetByIdsAsync(
             parkIds,
             cancellationToken);
-        Dictionary<string, string?> parkNames = parks
+        Dictionary<string, Park> parksById = parks
             .Where(static park => park.Id is not null)
-            .ToDictionary(static park => park.Id!, static park => park.Name, StringComparer.Ordinal);
+            .ToDictionary(static park => park.Id!, StringComparer.Ordinal);
         return ApplicationResult<TripProgramResult>.Success(new TripProgramResult(
             candidates.Select(candidate => ToCandidateResult(
                 candidate,
-                parkNames.GetValueOrDefault(candidate.ParkId))).ToArray(),
+                parksById.GetValueOrDefault(candidate.ParkId))).ToArray(),
             days.Select(day => ToDayResult(
                 day,
-                parkNames.GetValueOrDefault(day.ParkId))).ToArray()));
+                parksById.GetValueOrDefault(day.ParkId))).ToArray()));
     }
 
     public static TripParkCandidateResult ToCandidateResult(
         TripParkCandidate candidate,
-        string? parkName)
+        Park? park)
     {
-        string? normalizedParkName = NormalizeParkName(parkName);
+        string? normalizedParkName = ResolveAvailableParkName(park);
         return new TripParkCandidateResult(
             candidate.Id.Value,
             candidate.ParkId,
@@ -118,9 +118,9 @@ public sealed class TripProgramResultFactory
             candidate.UpdatedAtUtc);
     }
 
-    public static TripDayPlanResult ToDayResult(TripDayPlan dayPlan, string? parkName)
+    public static TripDayPlanResult ToDayResult(TripDayPlan dayPlan, Park? park)
     {
-        string? normalizedParkName = NormalizeParkName(parkName);
+        string? normalizedParkName = ResolveAvailableParkName(park);
         return new TripDayPlanResult(
             dayPlan.Id.Value,
             dayPlan.LocalDate,
@@ -142,8 +142,10 @@ public sealed class TripProgramResultFactory
             dayPlan.UpdatedAtUtc);
     }
 
-    private static string? NormalizeParkName(string? parkName)
+    private static string? ResolveAvailableParkName(Park? park)
     {
-        return string.IsNullOrWhiteSpace(parkName) ? null : parkName.Trim();
+        return park?.IsPubliclyDiscoverable() == true
+            ? park.Name!.Trim()
+            : null;
     }
 }

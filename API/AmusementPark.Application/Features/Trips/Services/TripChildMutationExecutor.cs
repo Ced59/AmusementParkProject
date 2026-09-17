@@ -35,14 +35,9 @@ public sealed class TripChildMutationExecutor
                 TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        try
-        {
-            return await action(lease);
-        }
-        finally
-        {
-            await this.ReleaseBestEffortAsync(trip.Id, lease);
-        }
+        ApplicationResult<TResult> result = await action(lease);
+        await this.ReleaseBestEffortAsync(trip.Id, lease);
+        return result;
     }
 
     public async Task<ApplicationResult> ExecuteOwnedAsync(
@@ -60,14 +55,9 @@ public sealed class TripChildMutationExecutor
             return ApplicationResult.Failure(TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        try
-        {
-            return await action(lease);
-        }
-        finally
-        {
-            await this.ReleaseBestEffortAsync(trip.Id, lease);
-        }
+        ApplicationResult result = await action(lease);
+        await this.ReleaseBestEffortAsync(trip.Id, lease);
+        return result;
     }
 
     private async Task ReleaseBestEffortAsync(

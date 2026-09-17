@@ -136,7 +136,12 @@ public sealed class TripProgramServiceTests
             .ReturnsAsync(new[] { existing });
         Mock<IParkRepository> parks = new(MockBehavior.Strict);
         parks.Setup(item => item.GetByIdAsync("park-1", true, CancellationToken.None))
-            .ReturnsAsync(new Park { Id = "park-1", Name = "Parc test" });
+            .ReturnsAsync(new Park
+            {
+                Id = "park-1",
+                Name = "Parc test",
+                IsVisible = true,
+            });
         Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
         TripChildMutationLease lease = new(
             "put-day",
@@ -492,7 +497,8 @@ public sealed class TripProgramServiceTests
         Assert.NotNull(result.Value);
         Assert.True(result.Value.WasReplayed);
         Assert.Equal(existing.Id.Value, result.Value.Candidate.CandidateId);
-        Assert.Equal("Parc masqué", result.Value.Candidate.ParkName);
+        Assert.Null(result.Value.Candidate.ParkName);
+        Assert.False(result.Value.Candidate.IsParkAvailable);
         candidates.VerifyAll();
         parks.VerifyAll();
         trips.VerifyAll();

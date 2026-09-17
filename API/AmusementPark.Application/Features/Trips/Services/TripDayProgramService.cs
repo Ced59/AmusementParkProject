@@ -290,7 +290,7 @@ public sealed class TripDayProgramService
             dayPlan.ParkId,
             true,
             cancellationToken);
-        return TripProgramResultFactory.ToDayResult(dayPlan, park?.Name);
+        return TripProgramResultFactory.ToDayResult(dayPlan, park);
     }
 
     private async Task<ApplicationResult<TripPlan>> ResolveOwnedTripAsync(

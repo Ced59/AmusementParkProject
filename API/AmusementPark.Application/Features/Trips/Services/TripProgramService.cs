@@ -134,7 +134,7 @@ public sealed class TripProgramService
                 cancellationToken);
             return ApplicationResult<CreateTripParkCandidateResult>.Success(
                 new CreateTripParkCandidateResult(
-                    TripProgramResultFactory.ToCandidateResult(replay.Candidate, replayedPark?.Name),
+                    TripProgramResultFactory.ToCandidateResult(replay.Candidate, replayedPark),
                     true));
         }
 
@@ -215,7 +215,7 @@ public sealed class TripProgramService
                         TripChildWriteOutcome.Success when written.Candidate is not null =>
                             ApplicationResult<CreateTripParkCandidateResult>.Success(
                                 new CreateTripParkCandidateResult(
-                                    TripProgramResultFactory.ToCandidateResult(written.Candidate, park.Name),
+                                    TripProgramResultFactory.ToCandidateResult(written.Candidate, park),
                                     written.WasReplayed)),
                         TripChildWriteOutcome.Duplicate =>
                             ApplicationResult<CreateTripParkCandidateResult>.Failure(
@@ -491,7 +491,7 @@ public sealed class TripProgramService
                         true,
                         cancellationToken);
                     return ApplicationResult<TripParkCandidateResult>.Success(
-                        TripProgramResultFactory.ToCandidateResult(candidate, unchangedPark?.Name));
+                        TripProgramResultFactory.ToCandidateResult(candidate, unchangedPark));
                 }
 
                 TripParkCandidateWriteResult outcome = await this.candidateRepository.ReplaceAsync(
@@ -512,7 +512,7 @@ public sealed class TripProgramService
                     true,
                     cancellationToken);
                 return ApplicationResult<TripParkCandidateResult>.Success(
-                    TripProgramResultFactory.ToCandidateResult(outcome.Candidate, park?.Name));
+                    TripProgramResultFactory.ToCandidateResult(outcome.Candidate, park));
             },
             cancellationToken);
     }
