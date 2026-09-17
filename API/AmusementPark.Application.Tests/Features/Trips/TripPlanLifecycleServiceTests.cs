@@ -74,6 +74,45 @@ public sealed class TripPlanLifecycleServiceTests
     }
 
     [Fact]
+    public async Task CreateAsync_ShouldReplayBeforeRevalidatingTheStoredTimeZone()
+    {
+        DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
+        TripPlan existingTrip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.Fixed(new DateOnly(2027, 7, 8)),
+            "Europe/Legacy",
+            createdAtUtc);
+        Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.ResolveExistingCreationAsync(
+                It.Is<TripPlan>(trip => trip.DestinationTimeZoneId == "Europe/Legacy"),
+                "operation-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new IdempotentTripPlanCreationResult(
+                IdempotentTripPlanCreationStatus.Replayed,
+                existingTrip));
+        Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+
+        ApplicationResult<CreateTripPlanResult> result = await service.CreateAsync(
+            "user-1",
+            "operation-1",
+            new TripPlanDetailsInput(
+                "Voyage",
+                TripDateProposal.Fixed(new DateOnly(2027, 7, 8)),
+                "Europe/Legacy"),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.True(result.Value.WasReplayed);
+        Assert.Equal(existingTrip.Id.Value, result.Value.TripPlan.TripPlanId);
+        repository.VerifyAll();
+        timeZoneValidator.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task CreateAsync_WhenTheOriginalTripWasDeleted_ShouldRejectTheLateRetry()
     {
         Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);

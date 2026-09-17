@@ -74,12 +74,6 @@ public sealed class TripPlanLifecycleService
         {
             string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
             string normalizedOperationId = NormalizeOperationId(clientOperationId);
-            ApplicationError? timeZoneError = this.ValidateTimeZone(input);
-            if (timeZoneError is not null)
-            {
-                return ApplicationResult<CreateTripPlanResult>.Failure(timeZoneError);
-            }
-
             TripPlan requested = TripPlan.Create(
                 TripPlanId.New(),
                 normalizedUserId,
@@ -91,8 +85,21 @@ public sealed class TripPlanLifecycleService
                 requested,
                 normalizedOperationId,
                 cancellationToken);
-            IdempotentTripPlanCreationResult outcome = existing
-                ?? await this.repository.CreateIdempotentAsync(requested, normalizedOperationId, cancellationToken);
+            if (existing is not null)
+            {
+                return MapCreation(existing, normalizedUserId);
+            }
+
+            ApplicationError? timeZoneError = this.ValidateTimeZone(input);
+            if (timeZoneError is not null)
+            {
+                return ApplicationResult<CreateTripPlanResult>.Failure(timeZoneError);
+            }
+
+            IdempotentTripPlanCreationResult outcome = await this.repository.CreateIdempotentAsync(
+                requested,
+                normalizedOperationId,
+                cancellationToken);
             return MapCreation(outcome, normalizedUserId);
         }
         catch (TripPlanValidationException exception)
