@@ -210,6 +210,22 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.DoesNotContain("delivery-internal", content, StringComparison.Ordinal);
         Assert.DoesNotContain("park-1", content, StringComparison.Ordinal);
         Assert.DoesNotContain("user-1", content, StringComparison.Ordinal);
+        if (format == PassportExportFormat.Csv)
+        {
+            using MemoryStream stream = new MemoryStream(artifact.Content);
+            using ZipArchive archive = new ZipArchive(stream, ZipArchiveMode.Read);
+            ZipArchiveEntry notifications = archive.GetEntry("notifications.csv")!;
+            using StreamReader reader = new StreamReader(notifications.Open(), Encoding.UTF8);
+            string csv = reader.ReadToEnd();
+            Assert.Contains("evidenceStatus", csv, StringComparison.Ordinal);
+            Assert.Contains("evidenceConfidence", csv, StringComparison.Ordinal);
+            Assert.Contains("evidenceVerifiedAtUtc", csv, StringComparison.Ordinal);
+            Assert.Contains("evidencePublishedAtUtc", csv, StringComparison.Ordinal);
+            Assert.Contains("evidenceTerminalAtUtc", csv, StringComparison.Ordinal);
+            Assert.Contains("evidenceReasonCode", csv, StringComparison.Ordinal);
+            Assert.Contains("Published", csv, StringComparison.Ordinal);
+            Assert.Contains("High", csv, StringComparison.Ordinal);
+        }
     }
 
     [Theory]

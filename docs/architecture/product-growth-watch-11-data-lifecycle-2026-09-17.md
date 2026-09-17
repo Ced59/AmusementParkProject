@@ -53,7 +53,10 @@ neutre, sans que son identifiant technique ne serve de nom de secours. Les
 notifications exportent la preuve factuelle disponible : valeur précédente,
 nouvelle valeur, éditeur, titre, URL, dates et statut de vérification. Ces preuves
 consomment le même budget mémoire borné que les autres documents de l’export : une
-preuve volumineuse ne peut donc pas contourner la limite avant la génération.
+preuve volumineuse ne peut donc pas contourner la limite avant la génération. Le
+JSON et la table CSV des notifications conservent tous deux le statut, la
+confiance, les dates de vérification, publication ou terminaison et le motif de
+correction ou de rétractation.
 
 ## Frontières d’architecture
 
