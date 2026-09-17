@@ -11,6 +11,9 @@ public sealed class TripPlanDocument : MongoDocumentBase
     [BsonElement("ownerUserId")]
     public string OwnerUserId { get; set; } = string.Empty;
 
+    [BsonElement("ownerScopeHash")]
+    public string OwnerScopeHash { get; set; } = string.Empty;
+
     [BsonElement("title")]
     public string Title { get; set; } = string.Empty;
 

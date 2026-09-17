@@ -57,6 +57,19 @@ public sealed class TripPlanCreationFingerprintTests
     }
 
     [Fact]
+    public void HashOwnerScope_ShouldBeStableAndBoundToTheServerKey()
+    {
+        TripPlanCreationFingerprint first = CreateFingerprint("server-key-a-with-sufficient-entropy");
+        TripPlanCreationFingerprint second = CreateFingerprint("server-key-b-with-sufficient-entropy");
+
+        string firstHash = first.HashOwnerScope("user-1");
+
+        Assert.Equal(firstHash, first.HashOwnerScope("user-1"));
+        Assert.NotEqual(firstHash, second.HashOwnerScope("user-1"));
+        Assert.DoesNotContain("user-1", firstHash, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Constructor_ShouldRejectMissingServerSigningKey()
     {
         JwtSettings settings = new()

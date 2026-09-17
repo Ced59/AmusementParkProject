@@ -25,16 +25,17 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
-    public void BuildCreationOperationFilter_ShouldBindOwnerAndHashedKey()
+    public void BuildCreationOperationFilter_ShouldBindKeyedOwnerScopeAndHashedKey()
     {
         FilterDefinition<TripPlanDocument> filter = TripPlanMongoDefinitions.BuildCreationOperationFilter(
-            "user-1",
+            "owner-scope-hmac",
             "hash-1");
         BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
             MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
             MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
 
-        Assert.Equal("user-1", rendered["ownerUserId"].AsString);
+        Assert.Equal("owner-scope-hmac", rendered["ownerScopeHash"].AsString);
+        Assert.False(rendered.Contains("ownerUserId"));
         Assert.Equal("hash-1", rendered["creationOperationKeyHash"].AsString);
     }
 
@@ -65,8 +66,12 @@ public sealed class TripPlanMongoDefinitionsTests
             rendered["$set"]["creationOperationExpiresAtUtc"].ToUniversalTime());
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("destinationTimeZoneId"));
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("creationSnapshot"));
+        Assert.True(rendered["$unset"].AsBsonDocument.Contains("ownerUserId"));
+        Assert.True(rendered["$unset"].AsBsonDocument.Contains("ownerSlot"));
+        Assert.True(rendered["$unset"].AsBsonDocument.Contains("createdAt"));
         Assert.False(rendered.ToString().Contains("Voyage privé", StringComparison.Ordinal));
         Assert.False(rendered.ToString().Contains("Europe/Paris", StringComparison.Ordinal));
+        Assert.False(rendered.ToString().Contains("user-1", StringComparison.Ordinal));
     }
 
     [Fact]

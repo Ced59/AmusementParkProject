@@ -8,11 +8,11 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 internal static class TripPlanMongoDefinitions
 {
     public static FilterDefinition<TripPlanDocument> BuildCreationOperationFilter(
-        string ownerUserId,
+        string ownerScopeHash,
         string operationKeyHash)
     {
         FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
-        return filters.Eq(static document => document.OwnerUserId, ownerUserId)
+        return filters.Eq(static document => document.OwnerScopeHash, ownerScopeHash)
             & filters.Eq(static document => document.CreationOperationKeyHash, operationKeyHash);
     }
 
@@ -44,6 +44,9 @@ internal static class TripPlanMongoDefinitions
         UpdateDefinitionBuilder<TripPlanDocument> updates = Builders<TripPlanDocument>.Update;
         return updates.Combine(
             updates.Set(static document => document.Title, string.Empty),
+            updates.Unset(static document => document.OwnerUserId),
+            updates.Unset(static document => document.OwnerSlot),
+            updates.Unset(static document => document.CreatedAt),
             updates.Set(static document => document.DateProposal, new TripDateProposalDocument
             {
                 Kind = TripDateProposalKind.None,
@@ -80,7 +83,7 @@ internal static class TripPlanMongoDefinitions
                 }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
-                    .Ascending(static document => document.OwnerUserId)
+                    .Ascending(static document => document.OwnerScopeHash)
                     .Ascending(static document => document.CreationOperationKeyHash),
                 new CreateIndexOptions { Unique = true, Name = "uq_trip_plan_owner_operation" }),
             new(

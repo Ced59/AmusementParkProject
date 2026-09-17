@@ -11,7 +11,10 @@ public sealed class TripPlanCreationFingerprint
 {
     private static readonly byte[] PayloadSigningPurpose =
         Encoding.UTF8.GetBytes("amusement-park/trip-plan/creation-payload/v1");
+    private static readonly byte[] OwnerScopeSigningPurpose =
+        Encoding.UTF8.GetBytes("amusement-park/trip-plan/owner-scope/v1");
     private readonly byte[] payloadSigningKey;
+    private readonly byte[] ownerScopeSigningKey;
 
     public TripPlanCreationFingerprint(JwtSettings settings)
     {
@@ -26,6 +29,7 @@ public sealed class TripPlanCreationFingerprint
         {
             using HMACSHA256 keyDerivation = new(rootKey);
             this.payloadSigningKey = keyDerivation.ComputeHash(PayloadSigningPurpose);
+            this.ownerScopeSigningKey = keyDerivation.ComputeHash(OwnerScopeSigningPurpose);
         }
         finally
         {
@@ -36,6 +40,26 @@ public sealed class TripPlanCreationFingerprint
     public static string HashOperationKey(string clientOperationId)
     {
         return Hash(clientOperationId);
+    }
+
+    public string HashOwnerScope(string ownerUserId)
+    {
+        string normalizedOwnerUserId = ownerUserId?.Trim() ?? string.Empty;
+        if (normalizedOwnerUserId.Length == 0)
+        {
+            throw new ArgumentException("A non-empty owner identifier is required.", nameof(ownerUserId));
+        }
+
+        byte[] ownerBytes = Encoding.UTF8.GetBytes(normalizedOwnerUserId);
+        try
+        {
+            using HMACSHA256 hmac = new(this.ownerScopeSigningKey);
+            return Convert.ToHexString(hmac.ComputeHash(ownerBytes)).ToLowerInvariant();
+        }
+        finally
+        {
+            CryptographicOperations.ZeroMemory(ownerBytes);
+        }
     }
 
     public string HashPayload(TripPlan tripPlan)

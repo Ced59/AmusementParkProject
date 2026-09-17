@@ -37,11 +37,12 @@ public sealed class TripPlanRepository : ITripPlanRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(requestedTripPlan);
+        string ownerScopeHash = this.creationFingerprint.HashOwnerScope(requestedTripPlan.OwnerUserId);
         string operationKeyHash = TripPlanCreationFingerprint.HashOperationKey(
             NormalizeRequired(clientOperationId, nameof(clientOperationId)));
         TripPlanDocument? existing = await this.collection
             .Find(TripPlanMongoDefinitions.BuildCreationOperationFilter(
-                requestedTripPlan.OwnerUserId,
+                ownerScopeHash,
                 operationKeyHash))
             .FirstOrDefaultAsync(cancellationToken);
         return existing is null
@@ -56,6 +57,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
     {
         ArgumentNullException.ThrowIfNull(tripPlan);
         string normalizedOperationId = NormalizeRequired(clientOperationId, nameof(clientOperationId));
+        string ownerScopeHash = this.creationFingerprint.HashOwnerScope(tripPlan.OwnerUserId);
         string operationKeyHash = TripPlanCreationFingerprint.HashOperationKey(normalizedOperationId);
         string payloadHash = this.creationFingerprint.HashPayload(tripPlan);
         FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
@@ -90,6 +92,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
 
             TripPlanDocument document = tripPlan.ToDocument();
             document.OwnerSlot = ownerSlot;
+            document.OwnerScopeHash = ownerScopeHash;
             document.CreationOperationKeyHash = operationKeyHash;
             document.CreationPayloadHash = payloadHash;
             document.CreationSnapshot = document.CreateCreationSnapshot();
@@ -105,7 +108,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
             {
                 TripPlanDocument? existing = await this.collection
                     .Find(TripPlanMongoDefinitions.BuildCreationOperationFilter(
-                        tripPlan.OwnerUserId,
+                        ownerScopeHash,
                         operationKeyHash))
                     .FirstOrDefaultAsync(cancellationToken);
                 if (existing is not null)
