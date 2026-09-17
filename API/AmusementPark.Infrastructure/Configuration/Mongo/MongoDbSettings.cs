@@ -42,6 +42,9 @@ public sealed class MongoDbSettings
 
     public string NotificationDeliveryAttemptsCollectionName { get; set; } = "notification-delivery-attempts";
 
+    public string WatchlistAccountDeletionFencesCollectionName { get; set; } =
+        "watchlist-account-deletion-fences";
+
     public string FactualNotificationDistributionsCollectionName { get; set; } = "factual-notification-distributions";
 
     public bool CompleteFactualEventMigrationsOnStartup { get; set; } = true;

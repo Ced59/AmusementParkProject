@@ -11,6 +11,7 @@ namespace AmusementPark.Application.Features.Watchlists.Services;
 
 public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobHandler
 {
+    private readonly IWatchlistAccountDeletionFence deletionFence;
     private readonly INotificationDigestRepository digestRepository;
     private readonly INotificationEmailPreferenceRepository preferenceRepository;
     private readonly INotificationDeliveryAttemptRepository attemptRepository;
@@ -21,6 +22,7 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
     private readonly TimeProvider timeProvider;
 
     public NotificationEmailDeliveryJobHandler(
+        IWatchlistAccountDeletionFence deletionFence,
         INotificationDigestRepository digestRepository,
         INotificationEmailPreferenceRepository preferenceRepository,
         INotificationDeliveryAttemptRepository attemptRepository,
@@ -29,6 +31,7 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
         INotificationEmailUnsubscribeTokenProtector tokenProtector,
         INotificationDigestEmailSender emailSender)
         : this(
+            deletionFence,
             digestRepository,
             preferenceRepository,
             attemptRepository,
@@ -41,6 +44,7 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
     }
 
     internal NotificationEmailDeliveryJobHandler(
+        IWatchlistAccountDeletionFence deletionFence,
         INotificationDigestRepository digestRepository,
         INotificationEmailPreferenceRepository preferenceRepository,
         INotificationDeliveryAttemptRepository attemptRepository,
@@ -50,6 +54,7 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
         INotificationDigestEmailSender emailSender,
         TimeProvider timeProvider)
     {
+        this.deletionFence = deletionFence ?? throw new ArgumentNullException(nameof(deletionFence));
         this.digestRepository = digestRepository ?? throw new ArgumentNullException(nameof(digestRepository));
         this.preferenceRepository = preferenceRepository
             ?? throw new ArgumentNullException(nameof(preferenceRepository));
@@ -90,6 +95,11 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
                 NotificationEmailDeliveryErrorCodes.DigestMissing);
         }
 
+        if (await this.deletionFence.IsBlockedAsync(digest.UserId, cancellationToken))
+        {
+            return DurableBackgroundJobHandlerResult.Success();
+        }
+
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         if (nowUtc < digest.PeriodEndUtc)
         {
@@ -107,6 +117,12 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 NotificationEmailDeliveryErrorCodes.PersistenceConflict);
+        }
+
+        if (await this.deletionFence.IsBlockedAsync(digest.UserId, cancellationToken))
+        {
+            await this.attemptRepository.DeleteAsync(attempt.Id, cancellationToken);
+            return DurableBackgroundJobHandlerResult.Success();
         }
 
         if (attempt.Status is NotificationDeliveryAttemptStatus.Succeeded
@@ -161,6 +177,12 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
                 cancellationToken);
         }
 
+        if (await this.deletionFence.IsBlockedAsync(digest.UserId, cancellationToken))
+        {
+            await this.attemptRepository.DeleteAsync(attempt.Id, cancellationToken);
+            return DurableBackgroundJobHandlerResult.Success();
+        }
+
         long expectedVersion = attempt.Version;
         attempt.BeginAttempt(nowUtc);
         if (await this.attemptRepository.ReplaceAsync(
@@ -170,6 +192,12 @@ public sealed class NotificationEmailDeliveryJobHandler : IDurableBackgroundJobH
         {
             return DurableBackgroundJobHandlerResult.Retry(
                 NotificationEmailDeliveryErrorCodes.PersistenceConflict);
+        }
+
+        if (await this.deletionFence.IsBlockedAsync(digest.UserId, cancellationToken))
+        {
+            await this.attemptRepository.DeleteAsync(attempt.Id, cancellationToken);
+            return DurableBackgroundJobHandlerResult.Success();
         }
 
         NotificationDigestEmailMessage message = new NotificationDigestEmailMessage(

@@ -18,6 +18,8 @@ public interface INotificationDeliveryAttemptRepository
         long expectedVersion,
         CancellationToken cancellationToken);
 
+    Task DeleteAsync(string attemptId, CancellationToken cancellationToken);
+
     Task<NotificationDeliveryMetricsResult> GetMetricsAsync(
         DateTime fromUtc,
         DateTime toUtc,

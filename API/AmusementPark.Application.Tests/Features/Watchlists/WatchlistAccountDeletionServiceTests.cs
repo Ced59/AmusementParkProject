@@ -22,9 +22,18 @@ public sealed class WatchlistAccountDeletionServiceTests
             6);
         Mock<IWatchlistAccountDeletionStore> store =
             new Mock<IWatchlistAccountDeletionStore>(MockBehavior.Strict);
-        store.Setup(candidate => candidate.PurgeAsync("user-1", CancellationToken.None))
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        MockSequence sequence = new MockSequence();
+        fence.InSequence(sequence)
+            .Setup(candidate => candidate.BlockAsync("user-1", CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        store.InSequence(sequence)
+            .Setup(candidate => candidate.PurgeAsync("user-1", CancellationToken.None))
             .ReturnsAsync(receipt);
-        WatchlistAccountDeletionService service = new WatchlistAccountDeletionService(store.Object);
+        WatchlistAccountDeletionService service = new WatchlistAccountDeletionService(
+            fence.Object,
+            store.Object);
 
         WatchlistAccountDeletionResult result = await service.DeleteAsync(
             "  user-1  ",
@@ -33,6 +42,7 @@ public sealed class WatchlistAccountDeletionServiceTests
         Assert.Same(receipt, result);
         Assert.Equal(28, result.PurgedDocumentCount);
         store.VerifyAll();
+        fence.VerifyAll();
     }
 
     [Fact]
@@ -40,12 +50,17 @@ public sealed class WatchlistAccountDeletionServiceTests
     {
         Mock<IWatchlistAccountDeletionStore> store =
             new Mock<IWatchlistAccountDeletionStore>(MockBehavior.Strict);
-        WatchlistAccountDeletionService service = new WatchlistAccountDeletionService(store.Object);
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        WatchlistAccountDeletionService service = new WatchlistAccountDeletionService(
+            fence.Object,
+            store.Object);
 
         await Assert.ThrowsAsync<IdentifierValidationException>(() => service.DeleteAsync(
             " ",
             CancellationToken.None));
 
         store.VerifyNoOtherCalls();
+        fence.VerifyNoOtherCalls();
     }
 }

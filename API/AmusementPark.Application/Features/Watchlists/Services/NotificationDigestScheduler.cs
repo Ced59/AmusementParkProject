@@ -10,15 +10,18 @@ namespace AmusementPark.Application.Features.Watchlists.Services;
 
 public sealed class NotificationDigestScheduler : INotificationDigestScheduler
 {
+    private readonly IWatchlistAccountDeletionFence deletionFence;
     private readonly IDurableBackgroundJobRepository jobRepository;
     private readonly IUserNotificationRepository notificationRepository;
     private readonly IWatchSubscriptionRepository subscriptionRepository;
 
     public NotificationDigestScheduler(
+        IWatchlistAccountDeletionFence deletionFence,
         IDurableBackgroundJobRepository jobRepository,
         IUserNotificationRepository notificationRepository,
         IWatchSubscriptionRepository subscriptionRepository)
     {
+        this.deletionFence = deletionFence ?? throw new ArgumentNullException(nameof(deletionFence));
         this.jobRepository = jobRepository ?? throw new ArgumentNullException(nameof(jobRepository));
         this.notificationRepository = notificationRepository
             ?? throw new ArgumentNullException(nameof(notificationRepository));
@@ -43,6 +46,11 @@ public sealed class NotificationDigestScheduler : INotificationDigestScheduler
         foreach (IGrouping<string, UserNotification> ownerCandidates in notifications
             .GroupBy(static candidate => candidate.UserId, StringComparer.Ordinal))
         {
+            if (await this.deletionFence.IsBlockedAsync(ownerCandidates.Key, cancellationToken))
+            {
+                continue;
+            }
+
             WatchSubscriptionId[] subscriptionIds = ownerCandidates
                 .Select(static notification => notification.SubscriptionId)
                 .Distinct()
@@ -79,7 +87,7 @@ public sealed class NotificationDigestScheduler : INotificationDigestScheduler
                     group.Channel,
                     group.Frequency,
                     group.PeriodStartUtc);
-                await this.jobRepository.CoalesceAsync(
+                DurableBackgroundJob job = await this.jobRepository.CoalesceAsync(
                     new CoalesceBackgroundJobRequest(
                         NotificationDigestJob.Kind,
                         $"watch-digest:{digestId.Value}",
@@ -89,6 +97,11 @@ public sealed class NotificationDigestScheduler : INotificationDigestScheduler
                         CorrelationId: digestId.Value,
                         AdvanceRevision: true),
                     cancellationToken);
+                if (job is not null
+                    && await this.deletionFence.IsBlockedAsync(group.UserId, cancellationToken))
+                {
+                    await this.jobRepository.CancelAsync(job.Id, cancellationToken);
+                }
             }
         }
     }

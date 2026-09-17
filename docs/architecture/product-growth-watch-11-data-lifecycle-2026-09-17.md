@@ -51,7 +51,9 @@ Les parcs et attractions sont résolus par le lecteur Application existant. Une
 cible qui n’est plus publiquement disponible reste exportable sous un libellé
 neutre, sans que son identifiant technique ne serve de nom de secours. Les
 notifications exportent la preuve factuelle disponible : valeur précédente,
-nouvelle valeur, éditeur, titre, URL, dates et statut de vérification.
+nouvelle valeur, éditeur, titre, URL, dates et statut de vérification. Ces preuves
+consomment le même budget mémoire borné que les autres documents de l’export : une
+preuve volumineuse ne peut donc pas contourner la limite avant la génération.
 
 ## Frontières d’architecture
 
@@ -81,6 +83,11 @@ classDiagram
     class IWatchlistAccountDeletionStore {
       <<Application port>>
     }
+    class IWatchlistAccountDeletionFence {
+      <<Application port>>
+      +BlockAsync(userId)
+      +IsBlockedAsync(userId)
+    }
     class MongoWatchlistAccountDeletionStore {
       <<Infrastructure>>
     }
@@ -93,6 +100,7 @@ classDiagram
     PassportExportJobHandler --> CanonicalVisitExportWriter
     IWatchlistAccountDeletionService <|.. WatchlistAccountDeletionService
     WatchlistAccountDeletionService --> IWatchlistAccountDeletionStore
+    WatchlistAccountDeletionService --> IWatchlistAccountDeletionFence
     IWatchlistAccountDeletionStore <|.. MongoWatchlistAccountDeletionStore
 ```
 
@@ -111,11 +119,14 @@ classDiagram
 sequenceDiagram
     participant A as Futur coordinateur de compte
     participant S as WatchlistAccountDeletionService
+    participant F as Borne de suppression
     participant M as MongoWatchlistAccountDeletionStore
     participant J as File de travaux durables
 
     A->>A: verrouiller compte et sessions
     A->>S: DeleteAsync(userId)
+    S->>F: BlockAsync(userId)
+    F->>F: conserver une empreinte SHA-256 non réversible
     S->>M: PurgeAsync(userId)
     M->>M: recenser digests et travaux appartenant au membre
     M->>M: supprimer préférence e-mail
@@ -127,11 +138,11 @@ sequenceDiagram
     S-->>A: participant terminé
 ```
 
-Les workers recontrôlent déjà consentement et abonnement avant de produire ou
-d’envoyer un digest. Les supprimer en premier ferme donc aussi une course où un
-travail serait déjà loué pendant la purge. Les travaux supprimés sont strictement
-reliés soit au membre dans leur charge utile, soit à l’un de ses digests ; aucun
-travail d’un autre membre n’est touché.
+La borne est posée avant la première suppression. Les écritures de notifications,
+de digests, de travaux d’e-mail et de tentatives la contrôlent avant et après leur
+mutation. Si la suppression démarre pendant une écriture déjà louée, cette
+écriture est compensée immédiatement et aucun envoi n’est déclenché. Les travaux
+supprimés restent strictement reliés au membre ou à l’un de ses digests.
 
 ## Collections MongoDB concernées
 
@@ -178,6 +189,11 @@ erDiagram
       string naturalKey
       string payload
     }
+    WATCHLIST_ACCOUNT_DELETION_FENCES {
+      string _id "empreinte SHA-256"
+      datetime createdAt
+      datetime updatedAt
+    }
 
     WATCH_SUBSCRIPTIONS ||--o{ USER_NOTIFICATIONS : produit
     USER_NOTIFICATIONS }o--o{ NOTIFICATION_DIGESTS : regroupe
@@ -185,9 +201,9 @@ erDiagram
     NOTIFICATION_DIGESTS ||--o{ DURABLE_BACKGROUND_JOBS : planifie
 ```
 
-Aucune migration MongoDB manuelle n’est requise : le jalon lit et purge les
-collections et index existants. Les fichiers exportés changent de schéma, pas les
-documents persistés.
+Aucune migration MongoDB manuelle n’est requise. La collection de bornes est créée
+paresseusement à la première suppression et ne conserve pas l’identifiant brut du
+membre. Les autres collections et index restent inchangés.
 
 ## Preuves automatisées
 
@@ -198,6 +214,11 @@ documents persistés.
 - la source d’export résout les noms publics via les ports existants et conserve la
   note privée ;
 - le service de suppression normalise l’identité et restitue un reçu complet ;
+- le service pose la borne avant la purge, les workers cessent leur travail pour
+  un membre supprimé et compensent une écriture commencée pendant la course ;
+- la borne persistée est stable sans exposer l’identifiant du membre ;
+- les preuves factuelles consomment le même budget de source que le reste de
+  l’export ;
 - la sélection des travaux durables accepte seulement un digest appartenant au
   membre et rejette une autre nature de travail ou une charge illisible ;
 - les contrôles d’architecture continuent d’imposer un fichier par classe et les

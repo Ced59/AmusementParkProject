@@ -1,4 +1,3 @@
-using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Watchlists.Results;
@@ -12,16 +11,13 @@ namespace AmusementPark.Application.Features.Passport.Services;
 public sealed class PassportWatchlistExportSource : IPassportWatchlistExportSource
 {
     private readonly IWatchlistExportStore store;
-    private readonly IFactualChangeEventRepository eventRepository;
     private readonly UserCollectionTargetReader targetReader;
 
     public PassportWatchlistExportSource(
         IWatchlistExportStore store,
-        IFactualChangeEventRepository eventRepository,
         UserCollectionTargetReader targetReader)
     {
         this.store = store ?? throw new ArgumentNullException(nameof(store));
-        this.eventRepository = eventRepository ?? throw new ArgumentNullException(nameof(eventRepository));
         this.targetReader = targetReader ?? throw new ArgumentNullException(nameof(targetReader));
     }
 
@@ -55,7 +51,7 @@ public sealed class PassportWatchlistExportSource : IPassportWatchlistExportSour
             .Distinct()
             .ToArray();
         Task<IReadOnlyCollection<FactualChangeEvent>> eventsTask =
-            this.eventRepository.GetManyAsync(eventIds, cancellationToken);
+            this.store.LoadFactualEventsAsync(eventIds, sourceBudget, cancellationToken);
         await Task.WhenAll(parksTask, parkItemsTask, eventsTask);
 
         IReadOnlyCollection<FactualChangeEvent> events = await eventsTask;

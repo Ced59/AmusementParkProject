@@ -11,6 +11,7 @@ namespace AmusementPark.Application.Features.Watchlists.Services;
 
 public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
 {
+    private readonly IWatchlistAccountDeletionFence deletionFence;
     private readonly IUserNotificationRepository notificationRepository;
     private readonly IWatchSubscriptionRepository subscriptionRepository;
     private readonly IFactualChangeEventRepository eventRepository;
@@ -19,12 +20,14 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
     private readonly TimeProvider timeProvider;
 
     public NotificationDigestJobHandler(
+        IWatchlistAccountDeletionFence deletionFence,
         IUserNotificationRepository notificationRepository,
         IWatchSubscriptionRepository subscriptionRepository,
         IFactualChangeEventRepository eventRepository,
         INotificationDigestRepository digestRepository,
         INotificationEmailDeliveryScheduler emailDeliveryScheduler)
         : this(
+            deletionFence,
             notificationRepository,
             subscriptionRepository,
             eventRepository,
@@ -35,6 +38,7 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
     }
 
     internal NotificationDigestJobHandler(
+        IWatchlistAccountDeletionFence deletionFence,
         IUserNotificationRepository notificationRepository,
         IWatchSubscriptionRepository subscriptionRepository,
         IFactualChangeEventRepository eventRepository,
@@ -42,6 +46,7 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
         INotificationEmailDeliveryScheduler emailDeliveryScheduler,
         TimeProvider timeProvider)
     {
+        this.deletionFence = deletionFence ?? throw new ArgumentNullException(nameof(deletionFence));
         this.notificationRepository = notificationRepository
             ?? throw new ArgumentNullException(nameof(notificationRepository));
         this.subscriptionRepository = subscriptionRepository
@@ -72,6 +77,11 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
         if (!TryValidate(payload, out DateTime periodEndUtc) || payload is null)
         {
             return DurableBackgroundJobHandlerResult.DeadLetter(NotificationDigestErrorCodes.InvalidPayload);
+        }
+
+        if (await this.deletionFence.IsBlockedAsync(payload.UserId, cancellationToken))
+        {
+            return DurableBackgroundJobHandlerResult.Success();
         }
 
         IReadOnlyCollection<WatchSubscription> subscriptions =
@@ -129,8 +139,31 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
                 entries,
                 notifications.Count,
                 nowUtc);
+            if (await this.deletionFence.IsBlockedAsync(payload.UserId, cancellationToken))
+            {
+                return DurableBackgroundJobHandlerResult.Success();
+            }
+
             await this.digestRepository.ReplaceSnapshotAsync(snapshot, cancellationToken);
-            await this.emailDeliveryScheduler.ScheduleAsync(snapshot, cancellationToken);
+            if (await this.deletionFence.IsBlockedAsync(payload.UserId, cancellationToken))
+            {
+                await this.digestRepository.DeleteAsync(snapshot.Id, cancellationToken);
+                return DurableBackgroundJobHandlerResult.Success();
+            }
+
+            string? emailJobId = await this.emailDeliveryScheduler.ScheduleAsync(
+                snapshot,
+                cancellationToken);
+            if (await this.deletionFence.IsBlockedAsync(payload.UserId, cancellationToken))
+            {
+                if (emailJobId is not null)
+                {
+                    await this.emailDeliveryScheduler.CancelAsync(emailJobId, cancellationToken);
+                }
+
+                await this.digestRepository.DeleteAsync(snapshot.Id, cancellationToken);
+            }
+
             return DurableBackgroundJobHandlerResult.Success();
         }
         catch (ArgumentException)

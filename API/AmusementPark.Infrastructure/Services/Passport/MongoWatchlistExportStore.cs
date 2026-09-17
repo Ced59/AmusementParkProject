@@ -1,9 +1,11 @@
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Watchlists;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Watchlists;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FactualEvents;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -18,6 +20,7 @@ public sealed class MongoWatchlistExportStore : IWatchlistExportStore
     private readonly IMongoCollection<NotificationDigestDocument> digests;
     private readonly IMongoCollection<NotificationEmailPreferenceDocument> emailPreferences;
     private readonly IMongoCollection<NotificationDeliveryAttemptDocument> deliveryAttempts;
+    private readonly IMongoCollection<FactualChangeEventDocument> factualEvents;
 
     public MongoWatchlistExportStore(IMongoDatabase database, MongoDbSettings settings)
     {
@@ -35,6 +38,35 @@ public sealed class MongoWatchlistExportStore : IWatchlistExportStore
             settings.NotificationPreferencesCollectionName);
         this.deliveryAttempts = database.GetCollection<NotificationDeliveryAttemptDocument>(
             settings.NotificationDeliveryAttemptsCollectionName);
+        this.factualEvents = database.GetCollection<FactualChangeEventDocument>(
+            settings.FactualChangeEventsCollectionName);
+    }
+
+    public async Task<IReadOnlyCollection<FactualChangeEvent>> LoadFactualEventsAsync(
+        IReadOnlyCollection<FactualChangeEventId> eventIds,
+        PassportExportSourceBudget sourceBudget,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(eventIds);
+        ArgumentNullException.ThrowIfNull(sourceBudget);
+        if (eventIds.Count == 0)
+        {
+            return Array.Empty<FactualChangeEvent>();
+        }
+
+        string[] values = eventIds
+            .Select(static eventId => eventId.Value)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        return await LoadAsync(
+            this.factualEvents
+                .Find(Builders<FactualChangeEventDocument>.Filter.In(
+                    static document => document.Id,
+                    values))
+                .SortBy(static document => document.Id),
+            sourceBudget,
+            static document => document.ToDomain(),
+            cancellationToken);
     }
 
     public async Task<PassportWatchlistStoredExportData> LoadAsync(

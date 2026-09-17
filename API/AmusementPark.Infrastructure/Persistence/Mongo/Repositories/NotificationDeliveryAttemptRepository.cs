@@ -120,6 +120,16 @@ public sealed class NotificationDeliveryAttemptRepository
             latestFailureTask.Result);
     }
 
+    public async Task DeleteAsync(string attemptId, CancellationToken cancellationToken)
+    {
+        string normalizedAttemptId = IdentifierRules.NormalizeRequired(attemptId, nameof(attemptId));
+        await this.collection.DeleteOneAsync(
+            Builders<NotificationDeliveryAttemptDocument>.Filter.Eq(
+                static item => item.Id,
+                normalizedAttemptId),
+            cancellationToken);
+    }
+
     private static IMongoCollection<NotificationDeliveryAttemptDocument> GetCollection(
         IMongoDatabase database,
         MongoDbSettings settings)

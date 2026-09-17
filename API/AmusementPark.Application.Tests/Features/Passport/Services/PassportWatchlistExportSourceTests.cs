@@ -1,4 +1,3 @@
-using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -35,10 +34,11 @@ public sealed class PassportWatchlistExportSourceTests
         {
             CollectionEntries = new[] { entry },
         };
+        PassportExportSourceBudget sourceBudget = new PassportExportSourceBudget(1_024);
         Mock<IWatchlistExportStore> store = new Mock<IWatchlistExportStore>(MockBehavior.Strict);
         store.Setup(candidate => candidate.LoadAsync(
                 "user-1",
-                It.IsAny<PassportExportSourceBudget>(),
+                It.Is<PassportExportSourceBudget>(budget => ReferenceEquals(budget, sourceBudget)),
                 CancellationToken.None))
             .ReturnsAsync(stored);
         Park park = new Park
@@ -62,20 +62,18 @@ public sealed class PassportWatchlistExportSourceTests
                 true,
                 CancellationToken.None))
             .ReturnsAsync(new Dictionary<string, string>());
-        Mock<IFactualChangeEventRepository> events =
-            new Mock<IFactualChangeEventRepository>(MockBehavior.Strict);
-        events.Setup(repository => repository.GetManyAsync(
+        store.Setup(candidate => candidate.LoadFactualEventsAsync(
                 It.Is<IReadOnlyCollection<FactualChangeEventId>>(ids => ids.Count == 0),
+                It.Is<PassportExportSourceBudget>(budget => ReferenceEquals(budget, sourceBudget)),
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<FactualChangeEvent>());
         PassportWatchlistExportSource source = new PassportWatchlistExportSource(
             store.Object,
-            events.Object,
             new UserCollectionTargetReader(parks.Object, parkItems.Object, images.Object));
 
         PassportWatchlistExportData result = await source.LoadAsync(
             "user-1",
-            new PassportExportSourceBudget(1_024),
+            sourceBudget,
             CancellationToken.None);
 
         PassportWatchlistTargetSnapshot target = Assert.Single(result.ParkTargets).Value;
@@ -84,7 +82,6 @@ public sealed class PassportWatchlistExportSourceTests
         store.VerifyAll();
         parks.VerifyAll();
         images.VerifyAll();
-        events.VerifyAll();
         parkItems.VerifyNoOtherCalls();
     }
 }

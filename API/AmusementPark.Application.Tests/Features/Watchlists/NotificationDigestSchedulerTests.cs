@@ -36,6 +36,7 @@ public sealed class NotificationDigestSchedulerTests
             .ReturnsAsync(new[] { subscription });
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IWatchlistAccountDeletionFence> fence = CreateOpenFence();
         DateTime expectedStart = OccurredAtUtc.Date;
         NotificationDigestId expectedId = NotificationDigestId.ForGroup(
             "user-1",
@@ -51,6 +52,7 @@ public sealed class NotificationDigestSchedulerTests
                 CancellationToken.None))
             .ReturnsAsync((DurableBackgroundJob)null!);
         NotificationDigestScheduler scheduler = new NotificationDigestScheduler(
+            fence.Object,
             jobs.Object,
             notifications.Object,
             subscriptions.Object);
@@ -63,6 +65,7 @@ public sealed class NotificationDigestSchedulerTests
         notifications.VerifyAll();
         subscriptions.VerifyAll();
         jobs.VerifyAll();
+        fence.VerifyAll();
     }
 
     [Fact]
@@ -88,7 +91,9 @@ public sealed class NotificationDigestSchedulerTests
             .ReturnsAsync(new[] { subscription });
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IWatchlistAccountDeletionFence> fence = CreateOpenFence();
         NotificationDigestScheduler scheduler = new NotificationDigestScheduler(
+            fence.Object,
             jobs.Object,
             notifications.Object,
             subscriptions.Object);
@@ -101,6 +106,7 @@ public sealed class NotificationDigestSchedulerTests
         notifications.VerifyAll();
         subscriptions.VerifyAll();
         jobs.VerifyNoOtherCalls();
+        fence.VerifyAll();
     }
 
     [Fact]
@@ -132,7 +138,9 @@ public sealed class NotificationDigestSchedulerTests
             .ReturnsAsync(new[] { subscription });
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IWatchlistAccountDeletionFence> fence = CreateOpenFence();
         NotificationDigestScheduler scheduler = new NotificationDigestScheduler(
+            fence.Object,
             jobs.Object,
             notifications.Object,
             subscriptions.Object);
@@ -145,6 +153,16 @@ public sealed class NotificationDigestSchedulerTests
         notifications.VerifyAll();
         subscriptions.VerifyAll();
         jobs.VerifyNoOtherCalls();
+        fence.VerifyAll();
+    }
+
+    private static Mock<IWatchlistAccountDeletionFence> CreateOpenFence()
+    {
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.Setup(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(false);
+        return fence;
     }
 
     private static WatchSubscription CreateSubscription(

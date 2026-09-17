@@ -194,6 +194,8 @@ public static class InfrastructureServiceCollectionExtensions
             NotificationDeliveryAttemptRepository>();
         services.AddScoped<IWatchlistAccountDeletionStore,
             MongoWatchlistAccountDeletionStore>();
+        services.AddScoped<IWatchlistAccountDeletionFence,
+            MongoWatchlistAccountDeletionFence>();
         services.AddScoped<IFactualNotificationDistributionReceiptRepository,
             FactualNotificationDistributionReceiptRepository>();
         services.AddScoped<IFactualChangeEventDistributionStateReader,

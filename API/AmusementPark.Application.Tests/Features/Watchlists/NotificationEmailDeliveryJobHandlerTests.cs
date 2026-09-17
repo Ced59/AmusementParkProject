@@ -21,6 +21,93 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
     private static readonly DateTime NowUtc = PeriodStartUtc.AddDays(1).AddMinutes(5);
 
     [Fact]
+    public async Task HandleAsync_ShouldStopBeforeCreatingAttemptWhenOwnerIsDeleted()
+    {
+        NotificationDigest digest = CreateDigest();
+        Mock<INotificationDigestRepository> digests =
+            new Mock<INotificationDigestRepository>(MockBehavior.Strict);
+        digests.Setup(repository => repository.GetAsync(digest.Id, CancellationToken.None))
+            .ReturnsAsync(digest);
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.Setup(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<INotificationEmailPreferenceRepository> preferences =
+            new Mock<INotificationEmailPreferenceRepository>(MockBehavior.Strict);
+        Mock<INotificationDeliveryAttemptRepository> attempts =
+            new Mock<INotificationDeliveryAttemptRepository>(MockBehavior.Strict);
+        Mock<INotificationDigestEmailSender> sender =
+            new Mock<INotificationDigestEmailSender>(MockBehavior.Strict);
+        NotificationEmailDeliveryJobHandler handler = CreateHandler(
+            fence,
+            digests,
+            preferences,
+            attempts,
+            sender);
+
+        DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
+            CreateContext(digest),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        fence.VerifyAll();
+        digests.VerifyAll();
+        preferences.VerifyNoOtherCalls();
+        attempts.VerifyNoOtherCalls();
+        sender.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_ShouldRemoveAttemptWhenDeletionStartsDuringCreation()
+    {
+        NotificationDigest digest = CreateDigest();
+        Mock<INotificationDigestRepository> digests =
+            new Mock<INotificationDigestRepository>(MockBehavior.Strict);
+        digests.Setup(repository => repository.GetAsync(digest.Id, CancellationToken.None))
+            .ReturnsAsync(digest);
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.SetupSequence(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(false)
+            .ReturnsAsync(true);
+        Mock<INotificationEmailPreferenceRepository> preferences =
+            new Mock<INotificationEmailPreferenceRepository>(MockBehavior.Strict);
+        Mock<INotificationDeliveryAttemptRepository> attempts =
+            new Mock<INotificationDeliveryAttemptRepository>(MockBehavior.Strict);
+        attempts.Setup(repository => repository.GetAsync(
+                $"email:{digest.Id.Value}",
+                CancellationToken.None))
+            .ReturnsAsync((NotificationDeliveryAttempt?)null);
+        attempts.Setup(repository => repository.CreateAsync(
+                It.IsAny<NotificationDeliveryAttempt>(),
+                CancellationToken.None))
+            .ReturnsAsync(NotificationDeliveryAttemptWriteOutcome.Success);
+        attempts.Setup(repository => repository.DeleteAsync(
+                $"email:{digest.Id.Value}",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<INotificationDigestEmailSender> sender =
+            new Mock<INotificationDigestEmailSender>(MockBehavior.Strict);
+        NotificationEmailDeliveryJobHandler handler = CreateHandler(
+            fence,
+            digests,
+            preferences,
+            attempts,
+            sender);
+
+        DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
+            CreateContext(digest),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        fence.VerifyAll();
+        digests.VerifyAll();
+        attempts.VerifyAll();
+        preferences.VerifyNoOtherCalls();
+        sender.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_ShouldCancelBeforeSendingWhenConsentIsMissing()
     {
         NotificationDigest digest = CreateDigest();
@@ -28,6 +115,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
             new Mock<INotificationDigestRepository>(MockBehavior.Strict);
         digests.Setup(repository => repository.GetAsync(digest.Id, CancellationToken.None))
             .ReturnsAsync(digest);
+        Mock<IWatchlistAccountDeletionFence> fence = CreateOpenFence();
         Mock<INotificationEmailPreferenceRepository> preferences =
             new Mock<INotificationEmailPreferenceRepository>(MockBehavior.Strict);
         preferences.Setup(repository => repository.GetAsync("user-1", CancellationToken.None))
@@ -53,6 +141,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
         Mock<INotificationDigestEmailSender> sender =
             new Mock<INotificationDigestEmailSender>(MockBehavior.Strict);
         NotificationEmailDeliveryJobHandler handler = CreateHandler(
+            fence,
             digests,
             preferences,
             attempts,
@@ -67,6 +156,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
         digests.VerifyAll();
         preferences.VerifyAll();
         attempts.VerifyAll();
+        fence.VerifyAll();
     }
 
     [Fact]
@@ -84,6 +174,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
             new Mock<INotificationDigestRepository>(MockBehavior.Strict);
         digests.Setup(repository => repository.GetAsync(digest.Id, CancellationToken.None))
             .ReturnsAsync(digest);
+        Mock<IWatchlistAccountDeletionFence> fence = CreateOpenFence();
         Mock<INotificationEmailPreferenceRepository> preferences =
             new Mock<INotificationEmailPreferenceRepository>(MockBehavior.Strict);
         Mock<INotificationDeliveryAttemptRepository> attempts =
@@ -95,6 +186,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
         Mock<INotificationDigestEmailSender> sender =
             new Mock<INotificationDigestEmailSender>(MockBehavior.Strict);
         NotificationEmailDeliveryJobHandler handler = CreateHandler(
+            fence,
             digests,
             preferences,
             attempts,
@@ -109,6 +201,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
         sender.VerifyNoOtherCalls();
         digests.VerifyAll();
         attempts.VerifyAll();
+        fence.VerifyAll();
     }
 
     [Fact]
@@ -125,6 +218,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
             new Mock<INotificationDigestRepository>(MockBehavior.Strict);
         digests.Setup(repository => repository.GetAsync(digest.Id, CancellationToken.None))
             .ReturnsAsync(digest);
+        Mock<IWatchlistAccountDeletionFence> fence = CreateOpenFence();
         Mock<INotificationEmailPreferenceRepository> preferences =
             new Mock<INotificationEmailPreferenceRepository>(MockBehavior.Strict);
         Mock<INotificationDeliveryAttemptRepository> attempts =
@@ -144,6 +238,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
         Mock<INotificationDigestEmailSender> sender =
             new Mock<INotificationDigestEmailSender>(MockBehavior.Strict);
         NotificationEmailDeliveryJobHandler handler = CreateHandler(
+            fence,
             digests,
             preferences,
             attempts,
@@ -158,9 +253,11 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
         sender.VerifyNoOtherCalls();
         digests.VerifyAll();
         attempts.VerifyAll();
+        fence.VerifyAll();
     }
 
     private static NotificationEmailDeliveryJobHandler CreateHandler(
+        Mock<IWatchlistAccountDeletionFence> fence,
         Mock<INotificationDigestRepository> digests,
         Mock<INotificationEmailPreferenceRepository> preferences,
         Mock<INotificationDeliveryAttemptRepository> attempts,
@@ -177,6 +274,7 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
         Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
         timeProvider.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
         return new NotificationEmailDeliveryJobHandler(
+            fence.Object,
             digests.Object,
             preferences.Object,
             attempts.Object,
@@ -185,6 +283,15 @@ public sealed class NotificationEmailDeliveryJobHandlerTests
             new Mock<INotificationEmailUnsubscribeTokenProtector>(MockBehavior.Strict).Object,
             sender.Object,
             timeProvider.Object);
+    }
+
+    private static Mock<IWatchlistAccountDeletionFence> CreateOpenFence()
+    {
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.Setup(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(false);
+        return fence;
     }
 
     private static NotificationDigest CreateDigest()

@@ -69,8 +69,13 @@ public sealed class NotificationDigestJobHandlerTests
         emailDeliveryScheduler.Setup(scheduler => scheduler.ScheduleAsync(
                 It.Is<NotificationDigest>(digest => digest.Entries.Count == 1),
                 CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync("email-job-1");
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.Setup(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(false);
         NotificationDigestJobHandler handler = new NotificationDigestJobHandler(
+            fence.Object,
             notifications.Object,
             subscriptions.Object,
             events.Object,
@@ -88,6 +93,116 @@ public sealed class NotificationDigestJobHandlerTests
         events.VerifyAll();
         digests.VerifyAll();
         emailDeliveryScheduler.VerifyAll();
+        timeProvider.VerifyAll();
+        fence.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_ShouldStopBeforeReadingPersonalDataWhenOwnerIsDeleted()
+    {
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.Setup(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IUserNotificationRepository> notifications =
+            new Mock<IUserNotificationRepository>(MockBehavior.Strict);
+        Mock<IWatchSubscriptionRepository> subscriptions =
+            new Mock<IWatchSubscriptionRepository>(MockBehavior.Strict);
+        Mock<IFactualChangeEventRepository> events =
+            new Mock<IFactualChangeEventRepository>(MockBehavior.Strict);
+        Mock<INotificationDigestRepository> digests =
+            new Mock<INotificationDigestRepository>(MockBehavior.Strict);
+        Mock<INotificationEmailDeliveryScheduler> emailDeliveryScheduler =
+            new Mock<INotificationEmailDeliveryScheduler>(MockBehavior.Strict);
+        NotificationDigestJobHandler handler = new NotificationDigestJobHandler(
+            fence.Object,
+            notifications.Object,
+            subscriptions.Object,
+            events.Object,
+            digests.Object,
+            emailDeliveryScheduler.Object);
+
+        DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
+            CreateContext(),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        fence.VerifyAll();
+        notifications.VerifyNoOtherCalls();
+        subscriptions.VerifyNoOtherCalls();
+        events.VerifyNoOtherCalls();
+        digests.VerifyNoOtherCalls();
+        emailDeliveryScheduler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_ShouldRemoveSnapshotWhenDeletionStartsDuringTheWrite()
+    {
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.SetupSequence(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(false)
+            .ReturnsAsync(false)
+            .ReturnsAsync(true);
+        Mock<IUserNotificationRepository> notifications =
+            new Mock<IUserNotificationRepository>(MockBehavior.Strict);
+        notifications.Setup(repository => repository.ListOwnedForDigestAsync(
+                "user-1",
+                PeriodStartUtc,
+                PeriodStartUtc.AddDays(7),
+                It.Is<IReadOnlyCollection<NotificationDigestSubscriptionFilter>>(filters => filters.Count == 0),
+                NotificationDigest.MaximumEntries + 1,
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<UserNotification>());
+        Mock<IWatchSubscriptionRepository> subscriptions =
+            new Mock<IWatchSubscriptionRepository>(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListOwnedAsync(
+                "user-1",
+                null,
+                null,
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<WatchSubscription>());
+        Mock<IFactualChangeEventRepository> events =
+            new Mock<IFactualChangeEventRepository>(MockBehavior.Strict);
+        events.Setup(repository => repository.GetManyAsync(
+                It.Is<IReadOnlyCollection<FactualChangeEventId>>(ids => ids.Count == 0),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<FactualChangeEvent>());
+        Mock<INotificationDigestRepository> digests =
+            new Mock<INotificationDigestRepository>(MockBehavior.Strict);
+        digests.Setup(repository => repository.ReplaceSnapshotAsync(
+                It.IsAny<NotificationDigest>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        digests.Setup(repository => repository.DeleteAsync(
+                It.IsAny<NotificationDigestId>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<INotificationEmailDeliveryScheduler> emailDeliveryScheduler =
+            new Mock<INotificationEmailDeliveryScheduler>(MockBehavior.Strict);
+        Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
+        timeProvider.Setup(provider => provider.GetUtcNow())
+            .Returns(new DateTimeOffset(PeriodStartUtc.AddHours(10)));
+        NotificationDigestJobHandler handler = new NotificationDigestJobHandler(
+            fence.Object,
+            notifications.Object,
+            subscriptions.Object,
+            events.Object,
+            digests.Object,
+            emailDeliveryScheduler.Object,
+            timeProvider.Object);
+
+        DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
+            CreateContext(),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        fence.VerifyAll();
+        notifications.VerifyAll();
+        subscriptions.VerifyAll();
+        events.VerifyAll();
+        digests.VerifyAll();
+        emailDeliveryScheduler.VerifyNoOtherCalls();
         timeProvider.VerifyAll();
     }
 
