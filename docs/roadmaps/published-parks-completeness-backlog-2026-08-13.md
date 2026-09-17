@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 162 parcs étaient publiés (`isVisible: true`).
 - Les 162 scores ont été recalculés individuellement avec `Completeness`.
 - 68 parcs atteignent le niveau `Excellent` : 66 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 88 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **34 parcs** : 0 au niveau `Publishable`, 32 au niveau `Good` et 2 au niveau `Excellent`.
+- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 89 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **33 parcs** : 0 au niveau `Publishable`, 31 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,11 +22,10 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (32)
+## Priorité 2 — niveau `Good` (31)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 87 | `Good` | Cobac Parc | FR | `Operating` | `Regional` | 81/93 | `a2db3ed7-8f17-47dd-808f-4340936c82b7` |
 | 87 | `Good` | Parc d’Olhain | FR | `Operating` | `Regional` | 77/89 | `a3a2f6c5-3c81-4591-8ca0-246e677956e7` |
 | 88 | `Good` | Austin's Park | US | `Operating` | `Local` | 81/92 | `57d689ef-c11d-4a98-9238-73893061ac15` |
 | 89 | `Good` | 360 Play | BH | `Operating` | `Local` | 89/100 | `1a0f5161-48db-43bf-93d7-c899a74a5965` |
