@@ -44,6 +44,7 @@ deploy_compose_log_timeout_seconds="${DEPLOY_COMPOSE_LOG_TIMEOUT_SECONDS:-30}"
 deploy_compose_up_timeout_seconds="${DEPLOY_COMPOSE_UP_TIMEOUT_SECONDS:-300}"
 deploy_docker_prune_timeout_seconds="${DEPLOY_DOCKER_PRUNE_TIMEOUT_SECONDS:-120}"
 deploy_zero_downtime_enabled="${DEPLOY_ZERO_DOWNTIME_ENABLED:-true}"
+shared_infrastructure_maintenance="${SHARED_INFRASTRUCTURE_MAINTENANCE:-none}"
 continuous_warmup_service_name="amusementpark-ssr-warmup.service"
 personal_ranking_cutover_started=false
 
@@ -385,21 +386,41 @@ if ! docker network inspect "${npm_docker_network_name}" >/dev/null 2>&1; then
   exit 1
 fi
 
+if [ "${deploy_zero_downtime_enabled}" != "true" ]; then
+  echo "This deployment requires transactional rolling mode; no implicit maintenance fallback is allowed." >&2
+  exit 1
+fi
+
+mongodb_backup_completed=false
 if [ "${BACKUP_BEFORE_DEPLOY:-true}" = "true" ] && compose ps --services --filter status=running | grep -qx 'mongodb'; then
   echo "Running MongoDB backup before deployment..."
   ./scripts/backup-mongo.sh || {
     echo "MongoDB backup failed. Deployment aborted." >&2
     exit 1
   }
+  mongodb_backup_completed=true
+fi
+
+if [ "${shared_infrastructure_maintenance}" = "mongodb" ] && [ "${mongodb_backup_completed}" != "true" ]; then
+  echo "MongoDB maintenance requires a successful backup in this deployment run." >&2
+  exit 1
 fi
 
 echo "Pulling production images..."
 compose pull
 
-if [ "${deploy_zero_downtime_enabled}" != "true" ]; then
-  echo "This deployment requires transactional rolling mode; no implicit maintenance fallback is allowed." >&2
-  exit 1
-fi
+case "${shared_infrastructure_maintenance}" in
+  none)
+    ;;
+  mongodb)
+    python3 ./scripts/deployment_transaction.py maintain-mongodb
+    ;;
+  *)
+    echo "Unsupported shared infrastructure maintenance target: ${shared_infrastructure_maintenance}." >&2
+    exit 1
+    ;;
+esac
+
 python3 ./scripts/deployment_transaction.py prepare
 if python3 ./scripts/deployment_transaction.py rollback-safe; then
   prepare_personal_ranking_cutover

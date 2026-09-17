@@ -16,6 +16,14 @@ on:
         type: boolean
         required: true
         default: false
+      shared_infrastructure_maintenance:
+        description: Explicitly recreate one backed-up shared service before the rolling application deployment
+        type: choice
+        required: true
+        default: none
+        options:
+          - none
+          - mongodb
 
 permissions:
   contents: read
@@ -157,6 +165,7 @@ jobs:
           deploy/scripts/tests/seo-static-snapshot-policy.test.sh
           deploy/scripts/tests/static-seo-edge.test.sh
           deploy/scripts/tests/personal-ranking-cutover.test.sh
+          deploy/scripts/tests/shared-infrastructure-maintenance-env.test.sh
           deploy/scripts/tests/social-publishing-env.test.sh
           deploy/scripts/tests/ssr-warmup-env.test.sh
           python3 -m unittest deploy/scripts/tests/test_ssr_warmup_support.py
@@ -505,6 +514,7 @@ jobs:
       ADMIN_USER_PASSWORD: ${{ secrets.PROD_ADMIN_USER_PASSWORD }}
       BACKUP_BEFORE_DEPLOY: ${{ vars.BACKUP_BEFORE_DEPLOY || 'true' }}
       DEPLOY_ZERO_DOWNTIME_ENABLED: ${{ vars.DEPLOY_ZERO_DOWNTIME_ENABLED || 'true' }}
+      SHARED_INFRASTRUCTURE_MAINTENANCE: ${{ (github.event_name == 'workflow_dispatch' && github.run_attempt == 1 && inputs.shared_infrastructure_maintenance) || 'none' }}
       RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION: ${{ vars.RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION || 'true' }}
       OPENING_HOURS_LOCALIZED_NOTES_MIGRATION_DRY_RUN: ${{ vars.OPENING_HOURS_LOCALIZED_NOTES_MIGRATION_DRY_RUN || 'false' }}
       RUN_LEGACY_ENUM_MIGRATIONS: ${{ vars.RUN_LEGACY_ENUM_MIGRATIONS || 'false' }}

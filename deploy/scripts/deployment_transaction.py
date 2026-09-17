@@ -13,6 +13,7 @@ from deployment_runtime import DeploymentError, DockerRuntime, NAME
 
 
 PHASES = {"prepared", "abandoning", "switch-candidate", "replace-canonical", "switch-canonical", "cleanup", "complete", "abandoned"}
+SHARED_INFRASTRUCTURE_MAINTENANCE_SETTING = "SHARED_INFRASTRUCTURE_MAINTENANCE"
 
 
 def atomic_write(path: Path, content: str, mode=0o600):
@@ -34,6 +35,16 @@ def atomic_write(path: Path, content: str, mode=0o600):
     finally:
         if os.path.exists(temporary):
             os.unlink(temporary)
+
+
+def consume_shared_infrastructure_maintenance(path: Path, expected: str):
+    lines = path.read_text(encoding="utf-8").splitlines()
+    prefix = SHARED_INFRASTRUCTURE_MAINTENANCE_SETTING + "="
+    matches = [index for index, line in enumerate(lines) if line.startswith(prefix)]
+    if len(matches) != 1 or lines[matches[0]] != prefix + expected:
+        raise DeploymentError("Shared infrastructure maintenance intent is missing or does not match")
+    lines[matches[0]] = prefix + "none"
+    atomic_write(path, "\n".join(lines) + "\n")
 
 
 def validate_reference(reference):
@@ -319,10 +330,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("prepare", "deploy", "rollback-safe", "assert-complete",
                                             "arm-cutover", "cutover-pending", "cutover-restored", "abandon-unexposed",
-                                            "quiesce-unexposed", "validate-journal"))
+                                            "quiesce-unexposed", "validate-journal", "maintain-mongodb"))
     args = parser.parse_args()
     directory = Path(__file__).resolve().parent.parent
-    if args.command in {"prepare", "deploy", "arm-cutover", "cutover-restored", "abandon-unexposed", "quiesce-unexposed"}:
+    if args.command in {"prepare", "deploy", "arm-cutover", "cutover-restored", "abandon-unexposed", "quiesce-unexposed",
+                        "maintain-mongodb"}:
         import fcntl
         try:
             lock_path = os.environ.get("DEPLOY_LOCK_FILE", "/tmp/amusementpark-deploy.lock")
@@ -350,6 +362,10 @@ def main():
             return 0
         return 0 if safe and (args.command == "rollback-safe" or state["cutover_armed"]) else 1
     runtime = DockerRuntime(directory)
+    if args.command == "maintain-mongodb":
+        consume_shared_infrastructure_maintenance(directory / ".env", "mongodb")
+        runtime.maintain_mongodb()
+        return 0
     transaction = DeploymentTransaction(runtime, directory / "nginx/runtime")
     if args.command == "prepare":
         transaction.prepare()

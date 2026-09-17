@@ -6,6 +6,29 @@ Le retrait forcé d’un candidat pouvait interrompre une réponse encore trait�
 
 Le parcours met à jour **front et API**, derrière l’edge existant, avec au plus deux paires. Il conserve MongoDB, MinIO, l’edge, leurs volumes et leur réseau. Le hash de configuration Compose et l’image effective des services partagés doivent correspondre au bundle ; une modification de cette infrastructure bloque avant création d’un candidat. Une première installation, une pile déjà dégradée sans journal exploitable et une maintenance d’infrastructure nécessitent une opération distincte. `DEPLOY_ZERO_DOWNTIME_ENABLED=false` ne déclenche plus un remplacement global implicite.
 
+Une dérive de l'image `mongo:8.0` se traite uniquement par un lancement manuel du
+workflow `Production CI/CD` avec `deploy=true` et
+`shared_infrastructure_maintenance=mongodb`. Ce choix non sélectionné par défaut
+conserve le verrou global, exige la sauvegarde MongoDB, recrée uniquement le service
+MongoDB et consomme atomiquement cette intention avant la mutation afin qu'aucune
+reprise ultérieure ne puisse la rejouer. Le workflow ne transmet en outre cette
+intention qu'au premier essai du run : la commande GitHub « Re-run failed jobs »
+la remplace par `none`, et seule une nouvelle exécution manuelle peut autoriser une
+autre maintenance. Le parcours vérifie que le volume nommé
+monté sur `/data/db` est strictement le même,
+que le hash Compose du service n'a pas changé et que l'ancienne comme la nouvelle
+configuration déclarent exactement l'image flottante `mongo:8.0`. Il ne peut donc
+pas appliquer simultanément un changement d'identifiant, de montage, de réseau,
+de commande ou de tout autre paramètre MongoDB,
+attend son retour à l'état sain, puis reprend le déploiement transactionnel de
+l'API et du front. Si MongoDB n'est pas en cours d'exécution au moment de la
+sauvegarde, la maintenance est refusée même s'il revient ensuite : la configuration
+`BACKUP_BEFORE_DEPLOY=true` ne remplace jamais la preuve d'une sauvegarde achevée
+pendant ce run. Un push ordinaire reste incapable de recréer un service partagé.
+Le mode transactionnel obligatoire est contrôlé avant la sauvegarde et avant la
+consommation de l'intention de maintenance : sa désactivation échoue sans mutation
+partielle de l'infrastructure.
+
 L’edge doit avoir exactement `worker_processes 1`, vérifié sur la configuration complète par `nginx -T`. Le protocole refuse un autre nombre de workers. Les protections HTTP, les limites de corps, le routage statique XML/robots, les en-têtes et les routes publiques restent inchangés.
 
 ## Installation sous verrou

@@ -407,6 +407,22 @@ PRODUCTION_DEPLOY_ENABLED=true
 
 Sans cette variable, la CI build/test/push les images, mais ne touche pas au VPS. Le workflow peut aussi être lancé manuellement avec `workflow_dispatch` et `deploy=true`.
 
+Quand un déploiement s'arrête explicitement sur une nouvelle image MongoDB, la
+maintenance se relance manuellement avec `deploy=true` et
+`shared_infrastructure_maintenance=mongodb`. Cette option est désactivée par
+défaut. Elle exige qu'une sauvegarde se termine avec succès dans ce même run,
+conserve le volume nommé de données,
+consomme l'ordre manuel avant la recréation pour empêcher tout rejeu par une reprise,
+attend le healthcheck MongoDB puis exécute le déploiement applicatif normal. Elle
+ne s'applique qu'au premier essai du run : « Re-run failed jobs » la neutralise et
+une nouvelle maintenance exige un nouveau lancement manuel. Elle ne doit pas
+servir à une première installation ni à contourner un échec de sauvegarde ou une
+identité de volume inattendue. Le hash de configuration Compose doit être inchangé :
+ce parcours met à jour l'image flottante `mongo:8.0`, jamais les identifiants,
+montages, réseaux, commandes ou autres paramètres MongoDB. Le mode transactionnel
+est validé avant toute sauvegarde ou mutation ; une configuration incompatible ne
+consomme donc pas l'ordre manuel.
+
 Voir aussi :
 
 - `docs/deploy/production-cicd-first-release.md`

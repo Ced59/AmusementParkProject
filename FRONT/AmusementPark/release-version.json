@@ -1,6 +1,20 @@
 {
-  "version": "5.3.60",
+  "version": "5.3.61",
   "history": [
+    {
+      "version": "5.3.61",
+      "releasedAt": "2026-09-18",
+      "labels": {
+        "fr": "Les mises à jour de maintenance de la plateforme sont désormais déployées de façon plus sûre.",
+        "en": "Platform maintenance updates are now deployed more safely.",
+        "de": "Wartungsupdates der Plattform werden jetzt sicherer bereitgestellt.",
+        "nl": "Onderhoudsupdates voor het platform worden nu veiliger uitgerold.",
+        "it": "Gli aggiornamenti di manutenzione della piattaforma vengono ora distribuiti in modo più sicuro.",
+        "es": "Las actualizaciones de mantenimiento de la plataforma se despliegan ahora de forma más segura.",
+        "pl": "Aktualizacje konserwacyjne platformy są teraz wdrażane bezpieczniej.",
+        "pt": "As atualizações de manutenção da plataforma são agora implementadas com mais segurança."
+      }
+    },
     {
       "version": "5.3.60",
       "releasedAt": "2026-09-17",
