@@ -36,7 +36,9 @@ export class UserNotificationPresenter {
       if (!Number.isNaN(parsed.getTime())) {
         return new Intl.DateTimeFormat(this.locale(), {
           dateStyle: 'long',
-          ...(value.kind === 'DateTime' ? { timeStyle: 'short' as const } : {})
+          ...(value.kind === 'DateTime'
+            ? { timeStyle: 'short' as const }
+            : { timeZone: 'UTC' })
         }).format(parsed);
       }
     }

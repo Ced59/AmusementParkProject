@@ -33,6 +33,29 @@ describe('UserNotificationPresenter', () => {
 
     expect(result).toBe('Calendrier mis à jour');
   });
+
+  it('keeps date-only facts on their canonical calendar day', () => {
+    const previousTimeZone: string | undefined = process.env['TZ'];
+    process.env['TZ'] = 'America/Los_Angeles';
+    let result: string;
+    try {
+      const presenter: UserNotificationPresenter = createPresenter();
+      const value: UserNotificationFactValue = {
+        kind: 'Date',
+        canonicalValue: '2027-04-01',
+        unitCode: null
+      };
+      result = presenter.formatValue(value, 'OpeningDateChanged');
+    } finally {
+      if (previousTimeZone) {
+        process.env['TZ'] = previousTimeZone;
+      } else {
+        delete process.env['TZ'];
+      }
+    }
+
+    expect(result).toBe('1 avril 2027');
+  });
 });
 
 function createPresenter(): UserNotificationPresenter {
