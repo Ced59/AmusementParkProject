@@ -61,7 +61,7 @@ TripPlan
 ├── DateProposal : None | Fixed | Range | Candidates
 ├── DestinationTimeZoneId : IANA facultatif tant qu'aucune date n'est fixée
 ├── Members[1..50] : sous-documents bornés, propriétaire inclus
-├── MemberAdmissionFence : opération d'adhésion unique facultative
+├── MemberAdmissionFence : Prepared | Active | Applied | Cancelled, facultatif
 ├── Version : long, commence à 1
 ├── CreatedAtUtc / UpdatedAtUtc
 └── ActiveMutation : lease courte facultative pour les mutations composées
@@ -250,9 +250,12 @@ sequenceDiagram
     participant J as Reconciler borné
 
     I->>A: accepter(token, idempotencyKey)
-    A->>R: réserver si Active, non expirée et destinataire valide
+    A->>R: résoudre si Active, non expirée et destinataire valide
+    R-->>A: tripPlanId + operationId proposé
+    A->>P: installer le fence inerte(operationId, utilisateur)
+    A->>R: réserver si toujours Active avec le même operationId
     R-->>A: invitation Accepting + operationId
-    A->>P: installer le fence(operationId, utilisateur)
+    A->>P: armer le fence si encore Prepared
     A->>P: ajouter le membre si ce fence est encore actif
     P-->>A: membre ajouté et fence Applied dans la même écriture
     A->>R: finaliser Accepted
@@ -268,8 +271,16 @@ sequenceDiagram
 
 Une panne après l'ajout du membre ne permet pas une seconde adhésion :
 `operationId` est conservé dans le sous-document du membre et l'index logique
-`(TripPlanId, UserId)` reste unique dans l'agrégat. Dès la réservation, l'invitation
-est définitivement liée à l'identifiant du compte acceptant et à `operationId`.
+`(TripPlanId, UserId)` reste unique dans l'agrégat. Le fence est installé avant la
+réservation, mais il reste inerte : lui seul ne permet ni l'ajout ni l'accès. La
+commande attend obligatoirement que l'écriture conditionnelle de réservation ait
+réussi avant de tenter l'ajout. Si une révocation gagne pendant cette première
+fenêtre, l'invitation n'est plus `Active`, la réservation retardée échoue et le
+fence `Prepared` orphelin est annulé par la commande ou le reconciler sans avoir
+ajouté de membre. Après la réservation, l'invitation est définitivement liée à
+l'identifiant du compte acceptant et à `operationId`. L'armement est une écriture
+conditionnelle `Prepared -> Active` ; une compensation ayant déjà écrit
+`Cancelled` la rend donc définitivement inapplicable.
 Une lease expirée ne remet jamais l'invitation en état `Active` : le reconciler
 reprend exclusivement la même opération et le même payload jusqu'à finalisation ou
 révocation demandée. Le `MemberAdmissionFence` vit dans le document `TripPlan` :
@@ -524,6 +535,8 @@ variantes ne sont pas réellement servies.
 - allers-retours Mongo et indexes réels ;
 - transfert de propriété dans une seule écriture du plan ;
 - acceptation interrompue à chaque étape puis réparée sans doublon ;
+- fence `Prepared` installé avant réservation puis rendu inoffensif si une
+  révocation gagne avant son armement ;
 - écriture retardée après expiration de lease incapable d'autoriser un second
   compte ou de réactiver l'invitation ;
 - révocation concurrente à une écriture retardée laissant le plan sans membre
