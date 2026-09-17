@@ -64,7 +64,7 @@ TripPlan
 ├── MemberAdmissionFence : état, invitation, opération, génération et échéance
 ├── AdmissionClosure : Open | Closing(cible, opération réclamée) | Closed
 ├── InvitationCreationEpoch : long, commence à 1
-├── ActiveInvitationCreationLeases[0..8] : opération, génération et échéance
+├── InvitationCreationLeases[0..8] : état, opération, génération et échéance
 ├── ChildMutationEpoch : long, commence à 1
 ├── ActiveChildMutationLeases[0..32] : acteur, sujet, epochs et échéance
 ├── DeletionState : None | Pending | Purging | Purged
@@ -228,34 +228,59 @@ TripInvitation
 ```
 
 Le jeton contient au moins 256 bits générés par CSPRNG et encodés en Base64 URL
-canonique. Seul son hash est persisté. Une invitation ciblée compare le courriel
+canonique. Seul son hash est persisté dans l'invitation. Une invitation ciblée compare le courriel
 vérifié du compte à un HMAC versionné issu d'un trousseau rotatif ; un simple hash
 de courriel n'est pas accepté. Une adresse éventuellement nécessaire à l'envoi est chiffrée, séparée et
 supprimée après la durée annoncée.
 
 La création d'une invitation est elle aussi une saga bornée. Elle ne repose jamais
-sur une autorisation lue avant une insertion qui pourrait arriver trop tard :
+sur une autorisation lue avant une insertion qui pourrait arriver trop tard, et son
+résultat reste rejouable après une réponse réseau ambiguë :
 
-1. la commande acquiert sur le plan une `InvitationCreationLease` courte, bornée,
+1. la commande réserve d'abord `(actorScope, IdempotencyKey)` avec le hash canonique
+   de la requête et un `operationId`. La même clé avec un autre hash échoue ;
+2. elle acquiert sur le plan une `InvitationCreationLease` courte, bornée,
    avec opération, `InvitationCreationEpoch`, génération et échéance, uniquement si
    `AdmissionClosure = Open` et `CanAcceptMembers = true` ;
-2. elle insère une coquille `Prepared` portant la même identité et une échéance TTL.
+3. elle insère une coquille `Prepared` portant la même identité et une échéance TTL.
    Cet état n'est jamais résolu par un token et ne contient aucun profil invité ;
-3. un `UpdateOne` sans upsert passe cette coquille à `Active` seulement avec
+4. un `UpdateOne` sans upsert passe cette coquille à `Active` seulement avec
    l'identité exacte et la garde serveur `$$NOW < CreationLeaseExpiresAtUtc` ;
-4. la commande clôture la lease sur le plan seulement si l'epoch est inchangé et
-   les admissions toujours ouvertes. Cette écriture est le point de linéarisation
-   de la création ; le jeton brut n'est rendu à l'appelant qu'après son succès.
+5. avant de décider l'opération, elle scelle le token et la réponse dans le registre
+   d'idempotence avec un chiffrement authentifié et une rétention courte. L'enveloppe
+   lie le scope, la clé, le hash de requête et l'opération comme données associées ;
+6. elle passe la lease du plan de `Active` à `Committed` seulement si l'epoch est
+   inchangé et les admissions toujours ouvertes. Cette écriture est le point de
+   linéarisation de la création ;
+7. elle marque le résultat idempotent `Committed`, retire la lease déjà décidée et
+   rend le jeton à l'appelant. Un retry autorisé avec la même clé et le même payload
+   déchiffre et renvoie exactement ce résultat pendant sa rétention.
+
+La lease `Committed` reste sur le plan tant que le registre n'a pas lui-même atteint
+`Committed`. Une panne entre les étapes 6 et 7 est donc réparable sans deviner : le
+reconciler constate la preuve portée par le plan, finalise le même résultat chiffré,
+puis retire la lease. Si `Closing` a gagné alors que la lease était encore `Active`,
+le reconciler compense l'invitation et mémorise le résultat d'échec terminal pour
+les retries. Il ne génère jamais un second token.
+
+Le token n'est jamais stocké en clair : l'enveloppe de reprise utilise une clé de
+chiffrement dédiée et rotative, n'est lisible que dans le use case authentifié de
+rejeu, n'apparaît ni dans les logs ni dans les jobs, et expire au plus tôt entre la
+fin de la fenêtre d'idempotence et l'expiration de l'invitation. Sa suppression
+cryptographique et son TTL font partie de la purge.
 
 Une fermeture passe d'abord à `Closing`, incrémente
 `InvitationCreationEpoch`, bloque les nouvelles leases puis attend les leases déjà
 accordées ou leur expiration augmentée de la marge serveur maximale. Elle balaie
 ensuite une seconde fois les invitations `Prepared` et `Active` avant de publier
-`Closed`. Une activation en transit peut donc soit gagner avant la clôture de sa
-lease, soit être révoquée ; elle ne peut jamais devenir utilisable après la
-fermeture. Une insertion `Prepared` extrêmement tardive reste inerte, expire par
-TTL et est aussi supprimée par le reconciler du tombstone. Le nombre de créations
-concurrentes et d'invitations actives par plan est borné.
+`Closed`. Une lease encore `Active` est abandonnée avec un résultat d'échec stable ;
+une lease déjà `Committed` prouve que la création a gagné et fait d'abord finaliser
+son résultat idempotent avant la révocation normale du lien. Une activation en
+transit peut donc soit gagner avant la clôture de sa lease, soit être révoquée ; elle
+ne peut jamais devenir utilisable après la fermeture. Une insertion `Prepared`
+extrêmement tardive reste inerte, expire par TTL et est aussi supprimée par le
+reconciler du tombstone. Le nombre de créations concurrentes et d'invitations
+actives par plan est borné.
 
 La première version ne crée que des invitations mono-usage. Une invitation de
 groupe réutilisable exigerait un autre agrégat et une nouvelle décision
@@ -508,7 +533,7 @@ n'injectera directement un service API si un port existe.
 trip-plans
   _id, ownerUserId, title, accessScope, status, dateProposal,
   destinationTimeZoneId, members[], options, memberAdmissionFence?,
-  admissionClosure, invitationCreationEpoch, activeInvitationCreationLeases[],
+  admissionClosure, invitationCreationEpoch, invitationCreationLeases[],
   childMutationEpoch, activeChildMutationLeases[], deletionState,
   activeMutation?, version,
   createdAtUtc, updatedAtUtc
@@ -524,6 +549,8 @@ trip-day-plans
 trip-item-preferences
 trip-audit-events
 trip-idempotency-operations
+  actorScope, keyHash, requestHash, operationId, state,
+  sealedResult?, keyVersion?, expiresAtUtc, createdAtUtc, updatedAtUtc
 ```
 
 Indexes minimaux à prouver :
@@ -531,7 +558,7 @@ Indexes minimaux à prouver :
 - plans `{ ownerUserId, status, updatedAtUtc desc }` ;
 - plans `{ members.userId, status, updatedAtUtc desc }` multikey ;
 - plans `{ memberAdmissionFence.leaseExpiresAtUtc }` partiel pour les fences actifs ;
-- plans `{ activeInvitationCreationLeases.leaseExpiresAtUtc }` partiel pour reprendre
+- plans `{ invitationCreationLeases.leaseExpiresAtUtc }` partiel pour reprendre
   les créations interrompues ;
 - plans `{ deletionState, updatedAtUtc }` pour la reprise des purges ;
 - invitations `tokenHash` unique et TTL sur `expiresAtUtc` pour les états
@@ -542,7 +569,7 @@ Indexes minimaux à prouver :
 - jours `(tripPlanId, localDate)` unique lorsqu'une date est fixée ;
 - préférences `(tripPlanId, memberId, parkItemId)` unique ;
 - audit `(tripPlanId, sequence)` unique et `(tripPlanId, occurredAtUtc)` ;
-- idempotence `(ownerScope, key)` unique avec TTL borné après état terminal.
+- idempotence `(actorScope, keyHash)` unique avec TTL borné après état terminal.
 
 Les indexes ne suffisent pas à autoriser : chaque lecture reste filtrée par le plan
 accessible. Aucun index ni endpoint ne permet de lister des voyages publics.
@@ -692,7 +719,9 @@ variantes ne sont pas réellement servies.
   admissions en cours avant son état terminal ;
 - finalisation `Accepted` concurrente à une fermeture, sans confirmation si le
   fence `Applied` n'a pas pu établir le membre avant `Closing` ;
-- token brut absent de Mongo, des logs, jobs et réponses privées ;
+- résultat de création rejoué après panne depuis une enveloppe chiffrée bornée,
+  sans générer un second token ni laisser une lease décidée ;
+- token brut absent en clair de Mongo, des logs et des jobs ;
 - expiration, révocation, rotation, rate limit et `404` uniforme ;
 - preview dépourvue de membres, contraintes, votes et identifiants ;
 - suppression et anonymisation reprenables ;
