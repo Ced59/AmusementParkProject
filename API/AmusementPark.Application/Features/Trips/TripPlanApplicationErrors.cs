@@ -79,6 +79,13 @@ public static class TripPlanApplicationErrors
             "The idempotency key was already used with different candidate details.");
     }
 
+    public static ApplicationError CandidateCreationWasDeleted()
+    {
+        return ApplicationError.Conflict(
+            "trip.candidate.creation-deleted",
+            "The candidate created by this idempotency key was deleted and cannot be recreated by a retry.");
+    }
+
     public static ApplicationError ChildMutationUnavailable()
     {
         return ApplicationError.Conflict(

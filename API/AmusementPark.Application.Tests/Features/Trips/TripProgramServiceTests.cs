@@ -234,6 +234,12 @@ public sealed class TripProgramServiceTests
         Mock<IParkRepository> parks = new(MockBehavior.Strict);
         Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        candidates.Setup(item => item.ResolveCreationAsync(
+                trip.Id,
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .ReturnsAsync(new TripParkCandidateWriteResult(TripChildWriteOutcome.NotFound));
         trips.Setup(item => item.GetOwnedAsync("owner-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
         parks.Setup(item => item.GetByIdAsync("park-1", false, CancellationToken.None))
@@ -296,5 +302,133 @@ public sealed class TripProgramServiceTests
         parks.VerifyAll();
         leases.VerifyAll();
         clock.VerifyAll();
+    }
+
+    [Fact]
+    public async Task AddCandidateAsync_WhenACommittedOperationIsRetried_ShouldReplayBeforeMutableChecks()
+    {
+        DateOnly localDate = new(2027, 7, 8);
+        DateTime nowUtc = new(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "owner-1",
+            "Voyage",
+            TripDateProposal.Fixed(localDate),
+            "Europe/Paris",
+            nowUtc);
+        TripMember owner = Assert.Single(trip.Members);
+        TripParkCandidate existing = TripParkCandidate.Create(
+            TripParkCandidateId.New(),
+            trip.Id,
+            "park-1",
+            new[] { localDate },
+            TripParkCandidateSource.Manual,
+            null,
+            null,
+            owner.Id,
+            TripParkCandidate.SortPositionStep,
+            nowUtc);
+        Mock<ITripPlanRepository> trips = new(MockBehavior.Strict);
+        Mock<ITripParkCandidateRepository> candidates = new(MockBehavior.Strict);
+        Mock<ITripDayPlanRepository> days = new(MockBehavior.Strict);
+        Mock<IParkRepository> parks = new(MockBehavior.Strict);
+        Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
+        candidates.Setup(item => item.ResolveCreationAsync(
+                trip.Id,
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .ReturnsAsync(new TripParkCandidateWriteResult(
+                TripChildWriteOutcome.Success,
+                existing,
+                existing.Version,
+                true));
+        parks.Setup(item => item.GetByIdAsync(existing.ParkId, true, CancellationToken.None))
+            .ReturnsAsync(new Park
+            {
+                Id = existing.ParkId,
+                Name = "Parc masqué",
+                IsVisible = false,
+            });
+        TripProgramService service = new(
+            trips.Object,
+            candidates.Object,
+            days.Object,
+            parks.Object,
+            new TripChildMutationExecutor(
+                leases.Object,
+                NullLogger<TripChildMutationExecutor>.Instance),
+            new TripProgramResultFactory(candidates.Object, days.Object, parks.Object));
+
+        AmusementPark.Application.Errors.ApplicationResult<CreateTripParkCandidateResult> result =
+            await service.AddCandidateAsync(
+                "owner-1",
+                trip.Id.Value,
+                trip.Version + 10,
+                "retry-key",
+                new TripParkCandidateInput(
+                    existing.ParkId,
+                    new[] { localDate },
+                    TripParkCandidateSource.Manual,
+                    null),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.True(result.Value.WasReplayed);
+        Assert.Equal(existing.Id.Value, result.Value.Candidate.CandidateId);
+        Assert.Equal("Parc masqué", result.Value.Candidate.ParkName);
+        candidates.VerifyAll();
+        parks.VerifyAll();
+        trips.VerifyNoOtherCalls();
+        days.VerifyNoOtherCalls();
+        leases.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task AddCandidateAsync_WhenTheOriginalCandidateWasDeleted_ShouldNotRecreateIt()
+    {
+        TripPlanId tripId = TripPlanId.New();
+        Mock<ITripPlanRepository> trips = new(MockBehavior.Strict);
+        Mock<ITripParkCandidateRepository> candidates = new(MockBehavior.Strict);
+        Mock<ITripDayPlanRepository> days = new(MockBehavior.Strict);
+        Mock<IParkRepository> parks = new(MockBehavior.Strict);
+        Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
+        candidates.Setup(item => item.ResolveCreationAsync(
+                tripId,
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .ReturnsAsync(new TripParkCandidateWriteResult(TripChildWriteOutcome.Deleted));
+        TripProgramService service = new(
+            trips.Object,
+            candidates.Object,
+            days.Object,
+            parks.Object,
+            new TripChildMutationExecutor(
+                leases.Object,
+                NullLogger<TripChildMutationExecutor>.Instance),
+            new TripProgramResultFactory(candidates.Object, days.Object, parks.Object));
+
+        AmusementPark.Application.Errors.ApplicationResult<CreateTripParkCandidateResult> result =
+            await service.AddCandidateAsync(
+                "owner-1",
+                tripId.Value,
+                1,
+                "deleted-key",
+                new TripParkCandidateInput(
+                    "park-1",
+                    Array.Empty<DateOnly>(),
+                    TripParkCandidateSource.Manual,
+                    null),
+                CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("trip.candidate.creation-deleted", Assert.Single(result.Errors).Code);
+        candidates.VerifyAll();
+        trips.VerifyNoOtherCalls();
+        days.VerifyNoOtherCalls();
+        parks.VerifyNoOtherCalls();
+        leases.VerifyNoOtherCalls();
     }
 }

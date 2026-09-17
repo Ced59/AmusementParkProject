@@ -65,6 +65,10 @@ public sealed class TripParkCandidateDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? ReservedExpiresAtUtc { get; set; }
 
+    [BsonElement("tombstoneExpiresAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? TombstoneExpiresAtUtc { get; set; }
+
     [BsonElement("pendingMutation")]
     [BsonIgnoreIfNull]
     public PendingTripChildMutationDocument? PendingMutation { get; set; }

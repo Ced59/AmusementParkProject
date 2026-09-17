@@ -42,21 +42,6 @@ public sealed class TripChildMutationLeaseRepository : ITripChildMutationLeaseRe
             actorMemberId,
             expectedPlanVersion,
             childMutationEpoch);
-        BsonDocument replayFilter = new("$expr", new BsonDocument("$gt", new BsonArray
-        {
-            BuildActiveLeaseCountExpression(normalizedOperationId),
-            0,
-        }));
-        TripPlanDocument? existing = await this.collection.Find(
-                identityFilter & new BsonDocumentFilterDefinition<TripPlanDocument>(replayFilter))
-            .FirstOrDefaultAsync(cancellationToken);
-        TripChildMutationLeaseDocument? replay = existing?.ActiveChildMutationLeases.FirstOrDefault(
-            lease => string.Equals(lease.OperationId, normalizedOperationId, StringComparison.Ordinal));
-        if (replay is not null)
-        {
-            return ToDomain(replay);
-        }
-
         BsonDocument activeLeaseFilter = new("$expr", new BsonDocument("$and", new BsonArray
         {
             new BsonDocument("$lt", new BsonArray

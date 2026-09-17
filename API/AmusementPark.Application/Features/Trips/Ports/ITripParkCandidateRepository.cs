@@ -14,6 +14,12 @@ public interface ITripParkCandidateRepository
         TripParkCandidateId candidateId,
         CancellationToken cancellationToken);
 
+    Task<TripParkCandidateWriteResult> ResolveCreationAsync(
+        TripPlanId tripPlanId,
+        string operationId,
+        string requestHash,
+        CancellationToken cancellationToken);
+
     Task<TripParkCandidateWriteResult> CreateAsync(
         TripParkCandidate candidate,
         TripChildMutationLease lease,
@@ -38,5 +44,6 @@ public interface ITripParkCandidateRepository
         TripParkCandidateId candidateId,
         long expectedVersion,
         TripChildMutationLease lease,
+        DateTime deletedAtUtc,
         CancellationToken cancellationToken);
 }

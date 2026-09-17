@@ -118,8 +118,11 @@ erDiagram
       long sortPosition
       long version
       string documentState
+      string operationId
+      string requestHash
       object pendingMutation
       datetime reservedExpiresAtUtc
+      datetime tombstoneExpiresAtUtc
     }
     TRIP_PARK_CANDIDATE_ORDERS {
       string _id
@@ -147,7 +150,8 @@ Indexes structurants :
 
 - `trip-park-candidates`: uniques `{ tripPlanId, parkId }` et
   `{ tripPlanId, operationId }`, lecture de repli
-  `{ tripPlanId, documentState, sortPosition, _id }`, TTL des coquilles réservées ;
+  `{ tripPlanId, documentState, sortPosition, _id }`, TTL des coquilles réservées
+  et des preuves de création supprimées ;
 - `trip-park-candidate-orders`: un document borné par voyage, dont le remplacement
   atomique porte l'ordre canonique des cent candidats au maximum ;
 - `trip-day-plans`: unique `{ tripPlanId, localDate }`, lecture chronologique
@@ -170,6 +174,11 @@ sequenceDiagram
 
     U->>A: commande + versions attendues
     A->>S: DTO validé et identité authentifiée
+    S->>C: rechercher l'opération d'ajout avant les préconditions mutables
+    alt résultat terminal déjà connu
+      C-->>S: candidat rejoué, conflit de contenu ou création supprimée
+      S-->>A: résultat stable sans nouvelle lease
+    end
     S->>L: acquérir(version, epoch, membre, opération)
     L-->>S: lease + génération + expiration serveur
     alt création
@@ -184,7 +193,10 @@ sequenceDiagram
     A-->>U: 201 création, 200 rejeu/mutation ou conflit explicite
 ```
 
-La capacité active initiale est volontairement d'une lease par voyage. La forme
+La capacité active initiale est volontairement d'une lease exclusive par voyage.
+Deux appels, même porteurs de la même clé idempotente, ne partagent jamais la même
+génération : le second rejoue le résultat terminal ou attend une nouvelle tentative.
+La forme
 stockée reste une liste bornée afin de permettre une évolution mesurée, mais la
 sérialisation actuelle donne une sémantique simple sur un VPS modeste et empêche
 deux réordonnancements partiels de se concurrencer.
@@ -194,6 +206,14 @@ est invisible aux lectures et supprimée par TTL. Les modifications utilisent
 `PendingMutation` : le contenu `Committed` précédent reste lisible, et une mutation
 expirée peut être remplacée par l'opération suivante. Toutes les décisions de
 validité temporelle reposent sur `$$NOW` côté MongoDB.
+
+Le rejeu d'un ajout réussi est recherché avant la version actuelle du voyage et
+avant la visibilité courante du parc : une réponse réseau perdue reste donc
+rejouable après un renommage, un changement de dates ou le masquage du parc. Quand
+le candidat est retiré, son document devient pendant 24 heures une preuve minimale
+`Deleted`. Dates, note, snapshot FIT, parc et membre sont effacés ; la clé
+d'opération et son empreinte restent seules capables de refuser un ancien retry.
+Un nouvel ajout volontaire du même parc avec une nouvelle clé reste possible.
 
 ## Ordre stable des candidats
 
@@ -260,7 +280,8 @@ sans cache, et n'ouvrent aucun partage public.
 - Core : limites, dates, états, blocs, positions et renormalisation ;
 - Application : libération de lease, hydratation en lot sans identifiant affiché,
   validation globale avant changement de dates, libération best-effort après un
-  commit, ordre purge/finalisation et reprise de suppression ;
+  commit, rejeu avant préconditions mutables, blocage du rejeu après suppression,
+  ordre purge/finalisation et reprise de suppression ;
 - Infrastructure : indexes uniques et TTL, gardes `$$NOW`, documents de mutation
   et remplacement atomique de l'ordre canonique ;
 - WebAPI : parsing strict des dates/heures/énumérations, identifiants stables des

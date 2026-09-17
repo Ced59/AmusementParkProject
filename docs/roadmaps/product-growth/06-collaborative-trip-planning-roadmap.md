@@ -95,7 +95,10 @@ version lisible et pose un marqueur `PendingMutation`. Les validations d'expirat
 utilisent `$$NOW`, donc l'horloge du serveur MongoDB plutôt que celle d'un nœud Web.
 Les retries d'ajout de parc rejouent le résultat initial, et un `PUT` de journée
 identique est sans effet grâce aux identifiants stables de ses blocs. Une même clé
-d'ajout réutilisée avec un autre contenu produit un conflit explicite.
+d'ajout réutilisée avec un autre contenu produit un conflit explicite. Deux appels
+simultanés ne partagent jamais une lease. Le rejeu est résolu avant la version
+courante ou la visibilité du parc ; après retrait du candidat, une preuve minimale
+de 24 heures bloque l'ancien retry sans empêcher un nouvel ajout volontaire.
 
 Une modification des dates du voyage acquiert la même barrière exclusive, vérifie
 tous les candidats et toutes les journées, puis avance atomiquement la version et

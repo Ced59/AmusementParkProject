@@ -7,6 +7,7 @@ public sealed class TripParkCandidate
     public const int MaximumCandidatesPerTrip = 100;
     public const int MaximumCollectiveNoteLength = 1000;
     public const long SortPositionStep = 1024;
+    public static readonly TimeSpan CreationReplayRetention = TimeSpan.FromHours(24);
 
     private TripParkCandidate(
         TripParkCandidateId id,

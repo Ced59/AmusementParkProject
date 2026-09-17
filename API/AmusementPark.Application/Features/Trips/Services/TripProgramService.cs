@@ -71,23 +71,22 @@ public sealed class TripProgramService
         TripParkCandidateInput input,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(input);
         string normalizedKey = idempotencyKey?.Trim() ?? string.Empty;
         if (normalizedKey.Length is 0 or > MaximumIdempotencyKeyLength)
         {
             return Invalid<CreateTripParkCandidateResult>("A bounded idempotency key is required.");
         }
 
-        ApplicationResult<TripPlan> resolved = await this.ResolveOwnedTripAsync(
-            userId,
-            tripPlanId,
-            expectedPlanVersion,
-            cancellationToken);
-        if (!resolved.IsSuccess || resolved.Value is null)
+        if (!TryNormalizeIdentity(
+                userId,
+                tripPlanId,
+                out string normalizedUserId,
+                out TripPlanId parsedTripId))
         {
-            return ApplicationResult<CreateTripParkCandidateResult>.Failure(resolved.Errors);
+            return Invalid<CreateTripParkCandidateResult>("A valid trip identifier is required.");
         }
 
-        TripPlan trip = resolved.Value;
         string normalizedParkId;
         try
         {
@@ -98,6 +97,55 @@ public sealed class TripProgramService
             return Invalid<CreateTripParkCandidateResult>(exception.Message);
         }
 
+        string operationId = TripProgramOperationFingerprint.BuildOperationId(
+            normalizedUserId,
+            parsedTripId,
+            normalizedKey);
+        string requestHash = TripProgramOperationFingerprint.BuildCandidateRequestHash(
+            normalizedParkId,
+            input.CandidateDates,
+            input.Source,
+            input.CollectiveNote);
+        TripParkCandidateWriteResult replay = await this.candidateRepository.ResolveCreationAsync(
+            parsedTripId,
+            operationId,
+            requestHash,
+            cancellationToken);
+        if (replay.Outcome == TripChildWriteOutcome.Success && replay.Candidate is not null)
+        {
+            Park? replayedPark = await this.parkRepository.GetByIdAsync(
+                replay.Candidate.ParkId,
+                true,
+                cancellationToken);
+            return ApplicationResult<CreateTripParkCandidateResult>.Success(
+                new CreateTripParkCandidateResult(
+                    TripProgramResultFactory.ToCandidateResult(replay.Candidate, replayedPark?.Name),
+                    true));
+        }
+
+        if (replay.Outcome == TripChildWriteOutcome.IdempotencyConflict)
+        {
+            return ApplicationResult<CreateTripParkCandidateResult>.Failure(
+                TripPlanApplicationErrors.CandidateIdempotencyConflict());
+        }
+
+        if (replay.Outcome == TripChildWriteOutcome.Deleted)
+        {
+            return ApplicationResult<CreateTripParkCandidateResult>.Failure(
+                TripPlanApplicationErrors.CandidateCreationWasDeleted());
+        }
+
+        ApplicationResult<TripPlan> resolved = await this.ResolveOwnedTripAsync(
+            normalizedUserId,
+            parsedTripId.Value,
+            expectedPlanVersion,
+            cancellationToken);
+        if (!resolved.IsSuccess || resolved.Value is null)
+        {
+            return ApplicationResult<CreateTripParkCandidateResult>.Failure(resolved.Errors);
+        }
+
+        TripPlan trip = resolved.Value;
         Park? park = await this.parkRepository.GetByIdAsync(normalizedParkId, false, cancellationToken);
         if (park is null || !park.IsPubliclyDiscoverable())
         {
@@ -105,10 +153,6 @@ public sealed class TripProgramService
                 TripPlanApplicationErrors.ParkNotAvailable());
         }
 
-        string operationId = TripProgramOperationFingerprint.BuildOperationId(
-            trip.OwnerUserId,
-            trip.Id,
-            normalizedKey);
         return await this.mutationExecutor.ExecuteOwnedAsync(
             trip,
             operationId,
@@ -149,7 +193,7 @@ public sealed class TripProgramService
                     TripParkCandidateWriteResult written = await this.candidateRepository.CreateAsync(
                         candidate,
                         lease,
-                        TripProgramOperationFingerprint.BuildCandidateRequestHash(candidate),
+                        requestHash,
                         cancellationToken);
                     return written.Outcome switch
                     {
@@ -348,6 +392,7 @@ public sealed class TripProgramService
                     parsedCandidateId,
                     expectedCandidateVersion,
                     lease,
+                    this.NowUtc(),
                     cancellationToken);
                 return outcome.Outcome switch
                 {

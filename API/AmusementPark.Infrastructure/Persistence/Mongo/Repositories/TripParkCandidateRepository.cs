@@ -72,6 +72,14 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
                         static document => document.DocumentState,
                         TripChildDocumentState.Reserved),
                 }),
+            new(
+                Builders<TripParkCandidateDocument>.IndexKeys
+                    .Ascending(static document => document.TombstoneExpiresAtUtc),
+                new CreateIndexOptions<TripParkCandidateDocument>
+                {
+                    Name = "ttl_trip_candidate_creation_tombstone",
+                    ExpireAfter = TimeSpan.Zero,
+                }),
         };
     }
 
@@ -93,6 +101,40 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             tripPlanId,
             cancellationToken);
         return candidates.SingleOrDefault(candidate => candidate.Id == candidateId);
+    }
+
+    public async Task<TripParkCandidateWriteResult> ResolveCreationAsync(
+        TripPlanId tripPlanId,
+        string operationId,
+        string requestHash,
+        CancellationToken cancellationToken)
+    {
+        string normalizedOperationId = NormalizeRequired(operationId, nameof(operationId));
+        string normalizedRequestHash = NormalizeRequired(requestHash, nameof(requestHash));
+        FilterDefinitionBuilder<TripParkCandidateDocument> filters =
+            Builders<TripParkCandidateDocument>.Filter;
+        TripParkCandidateDocument? document = await this.collection.Find(
+                filters.Eq(static candidate => candidate.TripPlanId, tripPlanId.Value)
+                & filters.Eq(static candidate => candidate.OperationId, normalizedOperationId))
+            .FirstOrDefaultAsync(cancellationToken);
+        if (document is null)
+        {
+            return new TripParkCandidateWriteResult(TripChildWriteOutcome.NotFound);
+        }
+
+        if (!string.Equals(document.RequestHash, normalizedRequestHash, StringComparison.Ordinal))
+        {
+            return new TripParkCandidateWriteResult(TripChildWriteOutcome.IdempotencyConflict);
+        }
+
+        return document.DocumentState switch
+        {
+            TripChildDocumentState.Committed =>
+                await this.BuildSuccessResultAsync(document, true, cancellationToken),
+            TripChildDocumentState.Deleted =>
+                new TripParkCandidateWriteResult(TripChildWriteOutcome.Deleted),
+            _ => new TripParkCandidateWriteResult(TripChildWriteOutcome.LeaseExpired),
+        };
     }
 
     private async Task<(IReadOnlyCollection<TripParkCandidate> Candidates, TripParkCandidateOrderDocument? Order)>
@@ -437,8 +479,14 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         TripParkCandidateId candidateId,
         long expectedVersion,
         TripChildMutationLease lease,
+        DateTime deletedAtUtc,
         CancellationToken cancellationToken)
     {
+        if (deletedAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException("The deletion timestamp must be UTC.", nameof(deletedAtUtc));
+        }
+
         TripParkCandidateDocument? reserved = await this.ReserveMutationAsync(
             tripPlanId,
             candidateId,
@@ -450,10 +498,31 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             return await this.ResolveFailedWriteAsync(tripPlanId, candidateId, cancellationToken);
         }
 
-        DeleteResult result = await this.collection.DeleteOneAsync(
+        UpdateDefinitionBuilder<TripParkCandidateDocument> updates =
+            Builders<TripParkCandidateDocument>.Update;
+        UpdateDefinition<TripParkCandidateDocument> tombstone = updates.Combine(
+            updates.Set(static document => document.ParkId, $"deleted:{candidateId.Value}"),
+            updates.Set(static document => document.CandidateDates, new List<string>()),
+            updates.Set(static document => document.Source, TripParkCandidateSource.Manual),
+            updates.Set(static document => document.CandidateState, TripParkCandidateState.Rejected),
+            updates.Unset(static document => document.CollectiveNote),
+            updates.Unset(static document => document.FitSnapshot),
+            updates.Set(static document => document.AddedByMemberId, string.Empty),
+            updates.Set(static document => document.SortPosition, 0),
+            updates.Set(static document => document.Version, checked(expectedVersion + 1)),
+            updates.Set(static document => document.DocumentState, TripChildDocumentState.Deleted),
+            updates.Unset(static document => document.ReservedExpiresAtUtc),
+            updates.Set(
+                static document => document.TombstoneExpiresAtUtc,
+                deletedAtUtc.Add(TripParkCandidate.CreationReplayRetention)),
+            updates.Unset(static document => document.PendingMutation),
+            updates.Set(static document => document.CreatedAt, deletedAtUtc),
+            updates.Set(static document => document.UpdatedAt, deletedAtUtc));
+        UpdateResult result = await this.collection.UpdateOneAsync(
             BuildPendingFilter(tripPlanId, candidateId, expectedVersion, lease),
-            cancellationToken);
-        return result.DeletedCount == 1
+            tombstone,
+            cancellationToken: cancellationToken);
+        return result.ModifiedCount == 1
             ? new TripParkCandidateWriteResult(TripChildWriteOutcome.Success)
             : new TripParkCandidateWriteResult(TripChildWriteOutcome.LeaseExpired);
     }

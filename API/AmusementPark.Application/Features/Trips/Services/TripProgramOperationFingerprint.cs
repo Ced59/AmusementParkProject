@@ -14,14 +14,30 @@ internal static class TripProgramOperationFingerprint
 
     public static string BuildCandidateRequestHash(TripParkCandidate candidate)
     {
+        ArgumentNullException.ThrowIfNull(candidate);
+        return BuildCandidateRequestHash(
+            candidate.ParkId,
+            candidate.CandidateDates,
+            candidate.Source,
+            candidate.CollectiveNote);
+    }
+
+    public static string BuildCandidateRequestHash(
+        string parkId,
+        IReadOnlyCollection<DateOnly> candidateDates,
+        TripParkCandidateSource source,
+        string? collectiveNote)
+    {
+        ArgumentNullException.ThrowIfNull(candidateDates);
+        DateOnly[] normalizedDates = candidateDates.Distinct().OrderBy(static date => date).ToArray();
         List<string?> fields = new()
         {
-            candidate.ParkId,
-            candidate.CandidateDates.Count.ToString(System.Globalization.CultureInfo.InvariantCulture),
+            parkId.Trim(),
+            normalizedDates.Length.ToString(System.Globalization.CultureInfo.InvariantCulture),
         };
-        fields.AddRange(candidate.CandidateDates.Select(static date => date.ToString("yyyy-MM-dd")));
-        fields.Add(candidate.Source.ToString());
-        fields.Add(candidate.CollectiveNote);
+        fields.AddRange(normalizedDates.Select(static date => date.ToString("yyyy-MM-dd")));
+        fields.Add(source.ToString());
+        fields.Add(NormalizeOptional(collectiveNote));
         return HashFields(fields);
     }
 

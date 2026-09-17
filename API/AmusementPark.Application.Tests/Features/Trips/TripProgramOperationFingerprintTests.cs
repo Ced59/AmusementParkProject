@@ -22,6 +22,34 @@ public sealed class TripProgramOperationFingerprintTests
         Assert.NotEqual(firstHash, secondHash);
     }
 
+    [Fact]
+    public void BuildCandidateRequestHash_ShouldMatchTheNormalizedDomainCandidate()
+    {
+        DateTime nowUtc = new(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
+        DateOnly firstDate = new(2027, 7, 8);
+        DateOnly secondDate = new(2027, 7, 9);
+        TripParkCandidate candidate = TripParkCandidate.Create(
+            TripParkCandidateId.New(),
+            TripPlanId.New(),
+            "park-1",
+            new[] { secondDate, firstDate, secondDate },
+            TripParkCandidateSource.Wishlist,
+            "  Notre envie  ",
+            null,
+            TripMemberId.New(),
+            TripParkCandidate.SortPositionStep,
+            nowUtc);
+
+        string domainHash = TripProgramOperationFingerprint.BuildCandidateRequestHash(candidate);
+        string inputHash = TripProgramOperationFingerprint.BuildCandidateRequestHash(
+            " park-1 ",
+            new[] { secondDate, firstDate, secondDate },
+            TripParkCandidateSource.Wishlist,
+            "  Notre envie  ");
+
+        Assert.Equal(domainHash, inputHash);
+    }
+
     private static TripDayPlanInput CreateInput(
         TripParkCandidateId candidateId,
         TripDayBlockId blockId,

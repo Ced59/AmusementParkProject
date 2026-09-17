@@ -22,6 +22,8 @@ public sealed class TripProgramMongoDefinitionsTests
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_candidate_plan_order");
         Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_candidate_reserved"
             && index.Options.ExpireAfter == TimeSpan.Zero);
+        Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_candidate_creation_tombstone"
+            && index.Options.ExpireAfter == TimeSpan.Zero);
     }
 
     [Fact]
