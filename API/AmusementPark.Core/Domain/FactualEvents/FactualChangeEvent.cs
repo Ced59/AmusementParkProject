@@ -519,11 +519,19 @@ public sealed class FactualChangeEvent
 
     private static string NormalizeRequiredReason(string reasonCode)
     {
-        return NormalizeKey(
+        string normalizedReasonCode = NormalizeKey(
             reasonCode,
             MaximumReasonCodeLength,
             FactualEventErrorCodes.InvalidReasonCode,
             "reason code");
+        if (!FactualChangeRetractionReasonCodes.IsSupported(normalizedReasonCode))
+        {
+            throw Invalid(
+                FactualEventErrorCodes.InvalidReasonCode,
+                "The factual event retraction reason code is unsupported.");
+        }
+
+        return normalizedReasonCode;
     }
 
     private static string? NormalizeOptionalReason(string? reasonCode)

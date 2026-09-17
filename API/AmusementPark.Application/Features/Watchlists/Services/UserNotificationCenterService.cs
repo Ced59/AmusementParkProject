@@ -12,6 +12,8 @@ namespace AmusementPark.Application.Features.Watchlists.Services;
 
 public sealed class UserNotificationCenterService
 {
+    private const int MaximumCorrectionChainLength = 32;
+
     private readonly IUserNotificationRepository notificationRepository;
     private readonly IWatchSubscriptionRepository subscriptionRepository;
     private readonly IFactualChangeEventRepository eventRepository;
@@ -70,21 +72,11 @@ public sealed class UserNotificationCenterService
             cancellationToken);
         Dictionary<FactualChangeEventId, FactualChangeEvent> eventsById = events.ToDictionary(
             static factualEvent => factualEvent.Id);
-        IReadOnlyCollection<FactualChangeEvent> correctedOriginals =
-            await this.eventRepository.GetCorrectedBySuccessorIdsAsync(eventIds, cancellationToken);
-        IReadOnlyCollection<FactualChangeEventId> deliveredOriginalIds =
-            await this.notificationRepository.ListDeliveredFactualEventIdsOwnedAsync(
+        IReadOnlyDictionary<FactualChangeEventId, FactualChangeEvent> correctedOriginalsBySuccessor =
+            await this.ResolveDeliveredCorrectionOriginsAsync(
                 normalizedUserId,
-                correctedOriginals.Select(static factualEvent => factualEvent.Id).ToArray(),
+                eventIds,
                 cancellationToken);
-        HashSet<FactualChangeEventId> deliveredOriginalIdSet = deliveredOriginalIds.ToHashSet();
-        Dictionary<FactualChangeEventId, FactualChangeEvent> correctedOriginalsBySuccessor = correctedOriginals
-            .Where(factualEvent => factualEvent.SupersededByEventId.HasValue
-                && deliveredOriginalIdSet.Contains(factualEvent.Id))
-            .GroupBy(static factualEvent => factualEvent.SupersededByEventId!.Value)
-            .ToDictionary(
-                static group => group.Key,
-                static group => group.OrderByDescending(static factualEvent => factualEvent.TerminalAtUtc).First());
         WatchSubscriptionId[] subscriptionIds = page.Items
             .Select(static notification => notification.SubscriptionId)
             .Distinct()
@@ -284,6 +276,81 @@ public sealed class UserNotificationCenterService
         }
 
         return result;
+    }
+
+    private async Task<IReadOnlyDictionary<FactualChangeEventId, FactualChangeEvent>>
+        ResolveDeliveredCorrectionOriginsAsync(
+            string userId,
+            IReadOnlyCollection<FactualChangeEventId> successorEventIds,
+            CancellationToken cancellationToken)
+    {
+        HashSet<FactualChangeEventId> pageSuccessorIds = successorEventIds.ToHashSet();
+        Dictionary<FactualChangeEventId, FactualChangeEvent> ancestorsById = new();
+        FactualChangeEventId[] frontier = pageSuccessorIds.ToArray();
+        for (int depth = 0; depth < MaximumCorrectionChainLength && frontier.Length > 0; depth++)
+        {
+            IReadOnlyCollection<FactualChangeEvent> directOrigins =
+                await this.eventRepository.GetCorrectedBySuccessorIdsAsync(frontier, cancellationToken);
+            List<FactualChangeEventId> nextFrontier = new();
+            foreach (FactualChangeEvent origin in directOrigins)
+            {
+                if (ancestorsById.TryAdd(origin.Id, origin))
+                {
+                    nextFrontier.Add(origin.Id);
+                }
+            }
+
+            frontier = nextFrontier.Distinct().ToArray();
+        }
+
+        if (ancestorsById.Count == 0)
+        {
+            return new Dictionary<FactualChangeEventId, FactualChangeEvent>();
+        }
+
+        IReadOnlyCollection<FactualChangeEventId> deliveredAncestorIds =
+            await this.notificationRepository.ListDeliveredFactualEventIdsOwnedAsync(
+                userId,
+                ancestorsById.Keys.ToArray(),
+                cancellationToken);
+        Dictionary<FactualChangeEventId, FactualChangeEvent> deliveredOriginsByPageSuccessor = new();
+        foreach (FactualChangeEventId deliveredAncestorId in deliveredAncestorIds)
+        {
+            if (!ancestorsById.TryGetValue(deliveredAncestorId, out FactualChangeEvent? deliveredOrigin))
+            {
+                continue;
+            }
+
+            HashSet<FactualChangeEventId> visited = new() { deliveredOrigin.Id };
+            FactualChangeEvent current = deliveredOrigin;
+            for (int depth = 0; depth < MaximumCorrectionChainLength; depth++)
+            {
+                if (!current.SupersededByEventId.HasValue
+                    || !visited.Add(current.SupersededByEventId.Value))
+                {
+                    break;
+                }
+
+                FactualChangeEventId successorId = current.SupersededByEventId.Value;
+                if (pageSuccessorIds.Contains(successorId)
+                    && (!deliveredOriginsByPageSuccessor.TryGetValue(
+                            successorId,
+                            out FactualChangeEvent? currentOrigin)
+                        || deliveredOrigin.TerminalAtUtc > currentOrigin.TerminalAtUtc))
+                {
+                    deliveredOriginsByPageSuccessor[successorId] = deliveredOrigin;
+                }
+
+                if (!ancestorsById.TryGetValue(successorId, out FactualChangeEvent? successor))
+                {
+                    break;
+                }
+
+                current = successor;
+            }
+        }
+
+        return deliveredOriginsByPageSuccessor;
     }
 
     private async Task<IReadOnlyCollection<UserNotificationParkFilterResult>> ResolveParkFiltersAsync(

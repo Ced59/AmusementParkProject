@@ -201,6 +201,24 @@ public sealed class FactualChangeEventAdministrationServiceTests
         repository.VerifyAll();
     }
 
+    [Fact]
+    public async Task RetractAsync_WithUnsupportedReasonCode_ShouldRejectBeforeLoadingTheEvent()
+    {
+        Mock<IFactualChangeEventRepository> repository =
+            new Mock<IFactualChangeEventRepository>(MockBehavior.Strict);
+        FactualChangeEventAdministrationService service = CreateService(repository);
+
+        ApplicationResult result = await service.RetractAsync(
+            "event-1",
+            3,
+            "unsupported-reason",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("factual-event.admin.mutation.invalid", Assert.Single(result.Errors).Code);
+        repository.VerifyNoOtherCalls();
+    }
+
     private static Mock<IFactualChangeEventRepository> CreateRepository(
         FactualChangeEvent factualEvent)
     {

@@ -105,7 +105,8 @@ public sealed class FactualChangeEventAdministrationService
         CancellationToken cancellationToken)
     {
         string normalizedReasonCode = reasonCode?.Trim() ?? string.Empty;
-        if (normalizedReasonCode.Length == 0)
+        if (normalizedReasonCode.Length == 0
+            || !FactualChangeRetractionReasonCodes.IsSupported(normalizedReasonCode))
         {
             return Task.FromResult(
                 ApplicationResult.Failure(FactualEventAdministrationErrors.InvalidMutation()));

@@ -24,15 +24,24 @@ public sealed class UserNotificationCenterServiceTests
         new DateTime(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
 
     [Theory]
-    [InlineData(false, UserNotificationNoticeKind.Update)]
-    [InlineData(true, UserNotificationNoticeKind.Correction)]
+    [InlineData(false, false, UserNotificationNoticeKind.Update)]
+    [InlineData(true, false, UserNotificationNoticeKind.Correction)]
+    [InlineData(true, true, UserNotificationNoticeKind.Correction)]
     public async Task SearchAsync_WithPublishedSuccessor_ShouldOnlyLabelCorrectionForOriginalRecipients(
         bool originalWasDelivered,
+        bool hasIntermediateCorrection,
         UserNotificationNoticeKind expectedKind)
     {
         FactualChangeEvent original = CreatePublishedEvent("event-1", 1);
-        FactualChangeEvent successor = CreatePublishedEvent("event-2", 2);
-        original.Correct(successor.Id, NowUtc.AddMinutes(-10));
+        FactualChangeEvent intermediate = CreatePublishedEvent("event-2", 2);
+        FactualChangeEvent successor = hasIntermediateCorrection
+            ? CreatePublishedEvent("event-3", 3)
+            : intermediate;
+        original.Correct(intermediate.Id, NowUtc.AddMinutes(-10));
+        if (hasIntermediateCorrection)
+        {
+            intermediate.Correct(successor.Id, NowUtc.AddMinutes(-8));
+        }
         WatchSubscription subscription = WatchSubscription.Create(
             WatchSubscriptionId.Parse("subscription-1"),
             "user-1",
@@ -72,12 +81,23 @@ public sealed class UserNotificationCenterServiceTests
                 CancellationToken.None))
             .ReturnsAsync(new[] { successor });
         events.Setup(repository => repository.GetCorrectedBySuccessorIdsAsync(
-                It.Is<IReadOnlyCollection<FactualChangeEventId>>(ids => ids.Single() == successor.Id),
+                It.IsAny<IReadOnlyCollection<FactualChangeEventId>>(),
                 CancellationToken.None))
-            .ReturnsAsync(new[] { original });
+            .Returns((IReadOnlyCollection<FactualChangeEventId> ids, CancellationToken _) =>
+            {
+                IReadOnlyCollection<FactualChangeEvent> origins = ids.Contains(successor.Id)
+                    ? hasIntermediateCorrection ? new[] { intermediate } : new[] { original }
+                    : hasIntermediateCorrection && ids.Contains(intermediate.Id)
+                        ? new[] { original }
+                        : Array.Empty<FactualChangeEvent>();
+                return Task.FromResult(origins);
+            });
         notifications.Setup(repository => repository.ListDeliveredFactualEventIdsOwnedAsync(
                 "user-1",
-                It.Is<IReadOnlyCollection<FactualChangeEventId>>(ids => ids.Single() == original.Id),
+                It.Is<IReadOnlyCollection<FactualChangeEventId>>(ids =>
+                    ids.Contains(original.Id)
+                    && ids.Count == (hasIntermediateCorrection ? 2 : 1)
+                    && (!hasIntermediateCorrection || ids.Contains(intermediate.Id))),
                 CancellationToken.None))
             .ReturnsAsync(originalWasDelivered
                 ? new[] { original.Id }
