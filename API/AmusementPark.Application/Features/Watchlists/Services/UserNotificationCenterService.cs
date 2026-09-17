@@ -157,9 +157,11 @@ public sealed class UserNotificationCenterService
     public async Task<ApplicationResult> DeleteSourceSubscriptionAsync(
         string userId,
         string notificationId,
+        long expectedSubscriptionVersion,
         CancellationToken cancellationToken)
     {
-        if (!TryNormalize(userId, notificationId, out string normalizedUserId, out UserNotificationId parsedId))
+        if (!TryNormalize(userId, notificationId, out string normalizedUserId, out UserNotificationId parsedId)
+            || expectedSubscriptionVersion < 1)
         {
             return ApplicationResult.Failure(UserNotificationApplicationErrors.Invalid());
         }
@@ -182,10 +184,15 @@ public sealed class UserNotificationCenterService
             return ApplicationResult.Success();
         }
 
+        if (subscription.Version != expectedSubscriptionVersion)
+        {
+            return ApplicationResult.Failure(UserNotificationApplicationErrors.ChangedConcurrently());
+        }
+
         WatchSubscriptionWriteOutcome outcome = await this.subscriptionRepository.DeleteAsync(
             normalizedUserId,
             subscription.Id,
-            subscription.Version,
+            expectedSubscriptionVersion,
             cancellationToken);
         return outcome is WatchSubscriptionWriteOutcome.Success or WatchSubscriptionWriteOutcome.NotFound
             ? ApplicationResult.Success()

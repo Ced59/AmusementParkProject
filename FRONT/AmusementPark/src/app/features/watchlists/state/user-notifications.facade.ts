@@ -139,9 +139,15 @@ export class UserNotificationsFacade {
   }
 
   unsubscribe(notification: UserNotification): void {
+    if (!notification.subscriptionVersion) {
+      return;
+    }
     this.runMutation(
       notification.notificationId,
-      this.dataPort.deleteSourceSubscription(notification.notificationId),
+      this.dataPort.deleteSourceSubscription(
+        notification.notificationId,
+        notification.subscriptionVersion
+      ),
       (): void => this.load(this.pageSignal()?.page ?? 1)
     );
   }

@@ -173,7 +173,10 @@ public sealed class WatchSubscription
     public bool Accepts(FactualChangeEvent factualEvent)
     {
         ArgumentNullException.ThrowIfNull(factualEvent);
-        if (!factualEvent.CanBeDistributed || !this.Accepts(factualEvent.Type))
+        if (!factualEvent.CanBeDistributed
+            || !factualEvent.PublishedAtUtc.HasValue
+            || this.CreatedAtUtc > factualEvent.PublishedAtUtc.Value
+            || !this.Accepts(factualEvent.Type))
         {
             return false;
         }

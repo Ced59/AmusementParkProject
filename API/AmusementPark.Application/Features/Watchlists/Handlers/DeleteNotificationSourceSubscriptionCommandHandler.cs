@@ -23,6 +23,7 @@ public sealed class DeleteNotificationSourceSubscriptionCommandHandler
         return this.service.DeleteSourceSubscriptionAsync(
             command.UserId,
             command.NotificationId,
+            command.ExpectedSubscriptionVersion,
             cancellationToken);
     }
 }

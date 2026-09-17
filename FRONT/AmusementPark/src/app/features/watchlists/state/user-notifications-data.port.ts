@@ -12,7 +12,7 @@ export interface UserNotificationsDataPort {
   markRead(notificationId: string, expectedVersion: number): Observable<void>;
   dismiss(notificationId: string, expectedVersion: number): Observable<void>;
   markAllRead(): Observable<void>;
-  deleteSourceSubscription(notificationId: string): Observable<void>;
+  deleteSourceSubscription(notificationId: string, expectedVersion: number): Observable<void>;
 }
 
 export const USER_NOTIFICATIONS_DATA_PORT = new InjectionToken<UserNotificationsDataPort>(

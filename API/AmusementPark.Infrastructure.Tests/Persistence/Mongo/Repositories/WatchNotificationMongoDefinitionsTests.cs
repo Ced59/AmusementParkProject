@@ -12,6 +12,25 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class WatchNotificationMongoDefinitionsTests
 {
     [Fact]
+    public void BuildSubscriptionPublicationCutoff_ShouldExcludeLaterOptIns()
+    {
+        DateTime publishedAtUtc = new DateTime(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
+        FilterDefinition<WatchSubscriptionDocument> filter =
+            WatchNotificationMongoDefinitions.BuildSubscriptionPublicationCutoff(publishedAtUtc);
+        IBsonSerializer<WatchSubscriptionDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<WatchSubscriptionDocument>();
+
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<WatchSubscriptionDocument>(
+                serializer,
+                BsonSerializer.SerializerRegistry));
+
+        Assert.Equal(
+            new DateTimeOffset(publishedAtUtc).ToUnixTimeMilliseconds(),
+            rendered["createdAt"]["$lte"].AsBsonDateTime.MillisecondsSinceEpoch);
+    }
+
+    [Fact]
     public void BuildSubscriptionMutation_ShouldPreserveOwnerSlotAndImmutableIdentity()
     {
         DateTime createdAtUtc = new DateTime(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);

@@ -129,6 +129,7 @@ public sealed class UserNotificationsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> DeleteSourceSubscriptionAsync(
         [FromRoute] string notificationId,
+        [FromQuery] long expectedVersion,
         CancellationToken cancellationToken = default)
     {
         string? userId = this.User.GetUserId();
@@ -138,7 +139,7 @@ public sealed class UserNotificationsController : ControllerBase
         }
 
         ApplicationResult result = await this.unsubscribeHandler.HandleAsync(
-            new DeleteNotificationSourceSubscriptionCommand(userId, notificationId),
+            new DeleteNotificationSourceSubscriptionCommand(userId, notificationId, expectedVersion),
             cancellationToken);
         return result.IsSuccess ? this.NoContent() : this.ToActionResult(result);
     }

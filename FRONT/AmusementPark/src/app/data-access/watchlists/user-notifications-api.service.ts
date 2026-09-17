@@ -52,9 +52,11 @@ export class UserNotificationsApiService {
     );
   }
 
-  deleteSourceSubscription(notificationId: string): Observable<void> {
+  deleteSourceSubscription(notificationId: string, expectedVersion: number): Observable<void> {
+    const params: HttpParams = new HttpParams().set('expectedVersion', expectedVersion);
     return this.http.delete<void>(
-      `${environment.apiBaseUrl}${USER_NOTIFICATIONS_API_ENDPOINTS.subscription(notificationId)}`
+      `${environment.apiBaseUrl}${USER_NOTIFICATIONS_API_ENDPOINTS.subscription(notificationId)}`,
+      { params }
     );
   }
 }

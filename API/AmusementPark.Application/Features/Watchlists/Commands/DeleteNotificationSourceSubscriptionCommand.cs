@@ -5,5 +5,6 @@ namespace AmusementPark.Application.Features.Watchlists.Commands;
 
 public sealed record DeleteNotificationSourceSubscriptionCommand(
     string UserId,
-    string NotificationId)
+    string NotificationId,
+    long ExpectedSubscriptionVersion)
     : ICommand<ApplicationResult>;

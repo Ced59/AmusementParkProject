@@ -120,7 +120,10 @@ public sealed class WatchSubscriptionRepository : IWatchSubscriptionRepository
                     & filters.Eq(static item => item.TargetId, factualEvent.Target.ParentParkId));
         FilterDefinition<WatchSubscriptionDocument> filter = targetFilter
             & filters.Eq(static item => item.IsPaused, false)
-            & filters.AnyEq(static item => item.EventTypes, factualEvent.Type);
+            & filters.AnyEq(static item => item.EventTypes, factualEvent.Type)
+            & WatchNotificationMongoDefinitions.BuildSubscriptionPublicationCutoff(
+                factualEvent.PublishedAtUtc
+                    ?? throw new InvalidOperationException("A published fact must have a publication timestamp."));
         if (!string.IsNullOrWhiteSpace(afterSubscriptionId))
         {
             filter &= filters.Gt(static item => item.Id, afterSubscriptionId.Trim());

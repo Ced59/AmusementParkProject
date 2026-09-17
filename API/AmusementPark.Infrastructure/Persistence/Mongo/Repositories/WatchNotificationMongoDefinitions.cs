@@ -6,6 +6,19 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class WatchNotificationMongoDefinitions
 {
+    internal static FilterDefinition<WatchSubscriptionDocument> BuildSubscriptionPublicationCutoff(
+        DateTime publishedAtUtc)
+    {
+        if (publishedAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException("The publication timestamp must use UTC.", nameof(publishedAtUtc));
+        }
+
+        return Builders<WatchSubscriptionDocument>.Filter.Lte(
+            static document => document.CreatedAt,
+            publishedAtUtc);
+    }
+
     internal static UpdateDefinition<WatchSubscriptionDocument> BuildSubscriptionMutation(
         WatchSubscription subscription)
     {

@@ -51,6 +51,19 @@ describe('UserNotificationsFacade', () => {
     expect(dataPort.markRead).toHaveBeenCalledWith('notification-1', 3);
     expect(onSuccess).toHaveBeenCalledOnce();
   });
+
+  it('keeps the displayed subscription version when unsubscribing', () => {
+    const dataPort: UserNotificationsDataPort = buildPort();
+    const facade: UserNotificationsFacade = createFacade(dataPort);
+    const notification = {
+      notificationId: 'notification-1',
+      subscriptionVersion: 4
+    } as Parameters<UserNotificationsFacade['unsubscribe']>[0];
+
+    facade.unsubscribe(notification);
+
+    expect(dataPort.deleteSourceSubscription).toHaveBeenCalledWith('notification-1', 4);
+  });
 });
 
 function createFacade(dataPort: UserNotificationsDataPort): UserNotificationsFacade {

@@ -306,6 +306,40 @@ public sealed class WatchSubscriptionTests
     }
 
     [Fact]
+    public void Accepts_ShouldRejectAnEventPublishedBeforeTheMemberSubscribed()
+    {
+        WatchSubscription subscription = WatchSubscription.Create(
+            WatchSubscriptionId.Parse("subscription-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            new[] { FactualEventType.ParkNameChanged },
+            NotificationFrequency.WebOnly,
+            Array.Empty<NotificationChannel>(),
+            NowUtc);
+        FactualChangeEvent factualEvent = CreatePublishedParkNameEvent(NowUtc.AddMinutes(-1));
+
+        Assert.False(subscription.Accepts(factualEvent));
+    }
+
+    [Fact]
+    public void Accepts_ShouldIncludeAnEventPublishedWhenTheMemberWasAlreadySubscribed()
+    {
+        WatchSubscription subscription = WatchSubscription.Create(
+            WatchSubscriptionId.Parse("subscription-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            new[] { FactualEventType.ParkNameChanged },
+            NotificationFrequency.WebOnly,
+            Array.Empty<NotificationChannel>(),
+            NowUtc);
+        FactualChangeEvent factualEvent = CreatePublishedParkNameEvent(NowUtc.AddMinutes(1));
+
+        Assert.True(subscription.Accepts(factualEvent));
+    }
+
+    [Fact]
     public void SameTargetForSameOwner_ShouldShareOneLogicalSubscription()
     {
         WatchSubscription first = CreateSubscription(
@@ -371,5 +405,29 @@ public sealed class WatchSubscriptionTests
             frequency,
             channels,
             NowUtc);
+    }
+
+    private static FactualChangeEvent CreatePublishedParkNameEvent(DateTime publishedAtUtc)
+    {
+        FactualChangeEvent factualEvent = FactualChangeEvent.CreateDraft(
+            FactualChangeEventId.Parse("event-1"),
+            FactualEventType.ParkNameChanged,
+            ChangeTarget.ForPark("park-1"),
+            FactValue.FromText("Ancien nom"),
+            FactValue.FromText("Nouveau nom"),
+            new SourceReference(
+                SourceReferenceType.OfficialWebsite,
+                "Parc exemple",
+                "Annonce officielle",
+                "https://example.com/source",
+                NowUtc.AddMinutes(-5)),
+            DataConfidence.High,
+            NowUtc.AddMinutes(-4),
+            "park:park-1:name",
+            1,
+            NowUtc.AddMinutes(-4));
+        factualEvent.Verify(NowUtc.AddMinutes(-2));
+        factualEvent.Publish(publishedAtUtc);
+        return factualEvent;
     }
 }
