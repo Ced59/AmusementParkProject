@@ -62,4 +62,20 @@ describe('AdminFactualEventsApiService', (): void => {
     expect(request.request.body).toEqual({ expectedVersion: 5 });
     request.flush(null);
   });
+
+  it('corrects and retracts through distinct audited endpoints', (): void => {
+    service.correct('event-1', { expectedVersion: 6, supersedingEventId: 'event-2' }).subscribe();
+    const correction = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/factual-events/event-1/correct`,
+    );
+    expect(correction.request.body).toEqual({ expectedVersion: 6, supersedingEventId: 'event-2' });
+    correction.flush(null);
+
+    service.retract('event-1', { expectedVersion: 6, reasonCode: 'source-invalidated' }).subscribe();
+    const retraction = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/factual-events/event-1/retract`,
+    );
+    expect(retraction.request.body).toEqual({ expectedVersion: 6, reasonCode: 'source-invalidated' });
+    retraction.flush(null);
+  });
 });

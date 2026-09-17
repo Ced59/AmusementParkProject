@@ -118,6 +118,66 @@ public sealed class FactualChangeEventAdministrationServiceTests
         repository.VerifyAll();
     }
 
+    [Fact]
+    public async Task CorrectAsync_WithNewerPublishedLogicalRevision_ShouldLinkBothFacts()
+    {
+        FactualChangeEvent original = CreateDraft(DataConfidence.High);
+        original.Verify(NowUtc.AddMinutes(-4));
+        original.Publish(NowUtc.AddMinutes(-3));
+        FactualChangeEvent successor = CreateSuccessor();
+        Mock<IFactualChangeEventRepository> repository =
+            new Mock<IFactualChangeEventRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetAsync(original.Id, CancellationToken.None))
+            .ReturnsAsync(original);
+        repository.Setup(value => value.GetAsync(successor.Id, CancellationToken.None))
+            .ReturnsAsync(successor);
+        repository.Setup(value => value.ReplaceAsync(
+                It.Is<FactualChangeEvent>(item =>
+                    item.Status == FactualChangeStatus.Corrected
+                    && item.SupersededByEventId == successor.Id
+                    && item.TerminalAtUtc == NowUtc),
+                3,
+                CancellationToken.None))
+            .ReturnsAsync(FactualChangeEventMutationOutcome.Success);
+        FactualChangeEventAdministrationService service = CreateService(repository);
+
+        ApplicationResult result = await service.CorrectAsync(
+            original.Id.Value,
+            3,
+            successor.Id.Value,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RetractAsync_WithPublishedFact_ShouldKeepReasonAndTerminalDate()
+    {
+        FactualChangeEvent factualEvent = CreateDraft(DataConfidence.High);
+        factualEvent.Verify(NowUtc.AddMinutes(-2));
+        factualEvent.Publish(NowUtc.AddMinutes(-1));
+        Mock<IFactualChangeEventRepository> repository = CreateRepository(factualEvent);
+        repository.Setup(value => value.ReplaceAsync(
+                It.Is<FactualChangeEvent>(item =>
+                    item.Status == FactualChangeStatus.Retracted
+                    && item.ReasonCode == "source-invalidated"
+                    && item.TerminalAtUtc == NowUtc),
+                3,
+                CancellationToken.None))
+            .ReturnsAsync(FactualChangeEventMutationOutcome.Success);
+        FactualChangeEventAdministrationService service = CreateService(repository);
+
+        ApplicationResult result = await service.RetractAsync(
+            factualEvent.Id.Value,
+            3,
+            "source-invalidated",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        repository.VerifyAll();
+    }
+
     private static Mock<IFactualChangeEventRepository> CreateRepository(
         FactualChangeEvent factualEvent)
     {
@@ -160,5 +220,29 @@ public sealed class FactualChangeEventAdministrationServiceTests
             "park:park-1:name",
             1,
             NowUtc.AddMinutes(-30));
+    }
+
+    private static FactualChangeEvent CreateSuccessor()
+    {
+        FactualChangeEvent successor = FactualChangeEvent.CreateDraft(
+            FactualChangeEventId.Parse("event-admin-2"),
+            FactualEventType.ParkNameChanged,
+            ChangeTarget.ForPark("park-1"),
+            FactValue.FromText("Nouveau nom"),
+            FactValue.FromText("Nom corrigé"),
+            new SourceReference(
+                SourceReferenceType.OfficialWebsite,
+                "Parc exemple",
+                "Rectificatif officiel",
+                "https://example.com/correction",
+                NowUtc.AddMinutes(-5)),
+            DataConfidence.High,
+            NowUtc.AddMinutes(-4),
+            "park:park-1:name",
+            2,
+            NowUtc.AddMinutes(-4));
+        successor.Verify(NowUtc.AddMinutes(-2));
+        successor.Publish(NowUtc.AddMinutes(-1));
+        return successor;
     }
 }

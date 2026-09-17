@@ -63,6 +63,10 @@ public static class UserNotificationHttpMapper
             NotificationId = result.NotificationId,
             EventType = result.EventType.ToString(),
             Status = result.Status.ToString(),
+            NoticeKind = result.NoticeKind.ToString(),
+            FactualStatus = result.FactualStatus.ToString(),
+            LifecycleAtUtc = result.LifecycleAtUtc,
+            RetractionReasonCode = result.RetractionReasonCode,
             Target = new UserNotificationTargetDto
             {
                 Type = result.Target.Type.ToString(),

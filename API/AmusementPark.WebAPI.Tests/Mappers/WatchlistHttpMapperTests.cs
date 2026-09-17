@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Watchlists.Models;
 using AmusementPark.Application.Features.Watchlists.Results;
 using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Watchlists;
@@ -39,6 +40,10 @@ public sealed class WatchlistHttpMapperTests
             "notification-1",
             FactualEventType.OpeningDateChanged,
             UserNotificationStatus.Delivered,
+            UserNotificationNoticeKind.Update,
+            FactualChangeStatus.Published,
+            null,
+            null,
             new UserNotificationTargetResult(
                 FactualTargetType.ParkItem,
                 "item-1",

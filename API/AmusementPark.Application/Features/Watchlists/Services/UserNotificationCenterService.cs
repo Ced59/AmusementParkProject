@@ -70,6 +70,14 @@ public sealed class UserNotificationCenterService
             cancellationToken);
         Dictionary<FactualChangeEventId, FactualChangeEvent> eventsById = events.ToDictionary(
             static factualEvent => factualEvent.Id);
+        IReadOnlyCollection<FactualChangeEvent> correctedOriginals =
+            await this.eventRepository.GetCorrectedBySuccessorIdsAsync(eventIds, cancellationToken);
+        Dictionary<FactualChangeEventId, FactualChangeEvent> correctedOriginalsBySuccessor = correctedOriginals
+            .Where(static factualEvent => factualEvent.SupersededByEventId.HasValue)
+            .GroupBy(static factualEvent => factualEvent.SupersededByEventId!.Value)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.OrderByDescending(static factualEvent => factualEvent.TerminalAtUtc).First());
         WatchSubscriptionId[] subscriptionIds = page.Items
             .Select(static notification => notification.SubscriptionId)
             .Distinct()
@@ -89,7 +97,8 @@ public sealed class UserNotificationCenterService
                 notification,
                 eventsById[notification.FactualEventId],
                 FindTarget(targets, eventsById[notification.FactualEventId]),
-                subscriptionsById.GetValueOrDefault(notification.SubscriptionId)))
+                subscriptionsById.GetValueOrDefault(notification.SubscriptionId),
+                correctedOriginalsBySuccessor.GetValueOrDefault(notification.FactualEventId)))
             .ToArray();
         long unreadCount = await this.notificationRepository.CountUnreadAsync(
             normalizedUserId,
@@ -312,7 +321,8 @@ public sealed class UserNotificationCenterService
         UserNotification notification,
         FactualChangeEvent factualEvent,
         UserCollectionTargetSnapshot target,
-        WatchSubscription? subscription)
+        WatchSubscription? subscription,
+        FactualChangeEvent? correctedOriginal)
     {
         DateTime verifiedAtUtc = factualEvent.VerifiedAtUtc
             ?? throw new InvalidOperationException("A delivered factual event must have been verified.");
@@ -320,6 +330,10 @@ public sealed class UserNotificationCenterService
             notification.Id.Value,
             factualEvent.Type,
             notification.Status,
+            ResolveNoticeKind(factualEvent, correctedOriginal),
+            factualEvent.Status,
+            correctedOriginal?.TerminalAtUtc ?? factualEvent.TerminalAtUtc,
+            factualEvent.Status == FactualChangeStatus.Retracted ? factualEvent.ReasonCode : null,
             new UserNotificationTargetResult(
                 factualEvent.Target.Type,
                 factualEvent.Target.TargetId,
@@ -345,6 +359,19 @@ public sealed class UserNotificationCenterService
             notification.Version,
             subscription is not null,
             subscription?.Version);
+    }
+
+    private static UserNotificationNoticeKind ResolveNoticeKind(
+        FactualChangeEvent factualEvent,
+        FactualChangeEvent? correctedOriginal)
+    {
+        return factualEvent.Status switch
+        {
+            FactualChangeStatus.Corrected => UserNotificationNoticeKind.Superseded,
+            FactualChangeStatus.Retracted => UserNotificationNoticeKind.Retraction,
+            _ when correctedOriginal is not null => UserNotificationNoticeKind.Correction,
+            _ => UserNotificationNoticeKind.Update,
+        };
     }
 
     private static UserNotificationFactValueResult? Map(FactValue? value)

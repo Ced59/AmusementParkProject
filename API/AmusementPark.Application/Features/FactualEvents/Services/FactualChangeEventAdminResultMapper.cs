@@ -46,6 +46,9 @@ public static class FactualChangeEventAdminResultMapper
             factualEvent.UpdatedAtUtc,
             factualEvent.VerifiedAtUtc,
             factualEvent.PublishedAtUtc,
+            factualEvent.TerminalAtUtc,
+            factualEvent.SupersededByEventId?.Value,
+            factualEvent.ReasonCode,
             factualEvent.Version,
             factualEvent.CanBeDistributed);
     }

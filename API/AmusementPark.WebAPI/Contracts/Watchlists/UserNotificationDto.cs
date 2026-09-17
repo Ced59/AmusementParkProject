@@ -8,6 +8,14 @@ public sealed class UserNotificationDto
 
     public string Status { get; init; } = string.Empty;
 
+    public string NoticeKind { get; init; } = string.Empty;
+
+    public string FactualStatus { get; init; } = string.Empty;
+
+    public DateTime? LifecycleAtUtc { get; init; }
+
+    public string? RetractionReasonCode { get; init; }
+
     public UserNotificationTargetDto Target { get; init; } = new UserNotificationTargetDto();
 
     public UserNotificationFactValueDto? PreviousValue { get; init; }

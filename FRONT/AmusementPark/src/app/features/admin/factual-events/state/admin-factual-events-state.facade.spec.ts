@@ -21,6 +21,8 @@ describe('AdminFactualEventsStateFacade', (): void => {
       search: vi.fn().mockName('AdminFactualEventsStatePort.search'),
       verify: vi.fn().mockName('AdminFactualEventsStatePort.verify'),
       publish: vi.fn().mockName('AdminFactualEventsStatePort.publish'),
+      correct: vi.fn().mockName('AdminFactualEventsStatePort.correct'),
+      retract: vi.fn().mockName('AdminFactualEventsStatePort.retract'),
     } as unknown as MockedObject<AdminFactualEventsStatePort>;
     TestBed.configureTestingModule({
       providers: [
@@ -65,6 +67,35 @@ describe('AdminFactualEventsStateFacade', (): void => {
 
     expect(port.publish).toHaveBeenCalledWith('event-1', { expectedVersion: 5 });
     expect(port.verify).not.toHaveBeenCalled();
+  });
+
+  it('links a correction to the displayed version then refreshes the queue', (): void => {
+    const event: FactualChangeEventAdmin = createEvent('Published', 6);
+    port.search.mockReturnValue(of(createPage(event)));
+    port.correct.mockReturnValue(of(undefined));
+    facade.load({ page: 1, size: 20, status: 'Published' });
+
+    facade.correct(event, ' event-2 ');
+
+    expect(port.correct).toHaveBeenCalledWith('event-1', {
+      expectedVersion: 6,
+      supersedingEventId: 'event-2',
+    });
+    expect(port.search).toHaveBeenCalledTimes(2);
+  });
+
+  it('retracts with an explicit reason', (): void => {
+    const event: FactualChangeEventAdmin = createEvent('Published', 6);
+    port.search.mockReturnValue(of(createPage(event)));
+    port.retract.mockReturnValue(of(undefined));
+    facade.load({ page: 1, size: 20, status: 'Published' });
+
+    facade.retract(event, 'source-invalidated');
+
+    expect(port.retract).toHaveBeenCalledWith('event-1', {
+      expectedVersion: 6,
+      reasonCode: 'source-invalidated',
+    });
   });
 
   it('does not replace a newer filtered page with a stale mutation refresh', (): void => {
@@ -246,6 +277,9 @@ function createEvent(status: FactualChangeEventAdmin['status'], version: number)
     updatedAtUtc: '2026-09-15T10:00:00Z',
     verifiedAtUtc: status === 'Verified' ? '2026-09-15T10:30:00Z' : null,
     publishedAtUtc: null,
+    terminalAtUtc: null,
+    supersededByEventId: null,
+    reasonCode: null,
     version,
     canBeDistributed: false,
   };

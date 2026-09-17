@@ -134,6 +134,26 @@
       "unread": "Nowe",
       "read": "Przeczytane"
     },
+    "notices": {
+      "Correction": {
+        "title": "Informacja poprawiona",
+        "text": "Ta wersja zastępuje wcześniej wysłaną informację. Poprawiona wartość i dowód znajdują się poniżej."
+      },
+      "Superseded": {
+        "title": "Zastąpiona wersja",
+        "text": "Ta starsza informacja pozostaje widoczna, aby zachować uczciwą historię."
+      },
+      "Retraction": {
+        "title": "Informacja wycofana",
+        "text": "Ta informacja nie jest już uznawana za wiarygodną. Pozostaje widoczna, aby jasno wyjaśnić wycofanie."
+      }
+    },
+    "retractionReasons": {
+      "source-invalidated": "Źródło zostało unieważnione.",
+      "change-cancelled": "Zapowiedziana zmiana została anulowana.",
+      "duplicate-event": "Ta informacja została opublikowana dwukrotnie.",
+      "published-in-error": "Ta informacja została opublikowana omyłkowo."
+    },
     "actions": {
       "backToProfile": "Wróć do profilu",
       "markAllRead": "Oznacz wszystkie jako przeczytane",
@@ -4234,6 +4254,23 @@
       "source": {
         "label": "Dowód do sprawdzenia"
       },
+      "correction": {
+        "title": "Połącz korektę",
+        "help": "Wskaż nowszy opublikowany fakt, który zastępuje tę informację. Zainteresowani użytkownicy otrzymają jedno powiadomienie.",
+        "successor": "Identyfikator faktu zastępczego",
+        "placeholder": "Np. event-…"
+      },
+      "retraction": {
+        "title": "Wycofaj błędną informację",
+        "help": "Wycofanie pozostaje widoczne w historii i ponownie ostrzega pierwotnych odbiorców.",
+        "reason": "Powód",
+        "reasons": {
+          "source-invalidated": "Źródło zostało unieważnione",
+          "change-cancelled": "Zmiana została anulowana",
+          "duplicate-event": "Informację opublikowano dwukrotnie",
+          "published-in-error": "Informację opublikowano omyłkowo"
+        }
+      },
       "actions": {
         "draftHelp": "Nadal zablokowany przed rozpowszechnieniem.",
         "lowConfidenceHelp": "Poziom zaufania jest zbyt niski, aby potwierdzić ten fakt. Najpierw wzmocnij dowód lub kwalifikację.",
@@ -4241,6 +4278,8 @@
         "verifiedHelp": "Zweryfikowany, ale jeszcze nierozpowszechniony.",
         "publish": "Zezwól na rozpowszechnianie",
         "publishedHelp": "Opublikowany i dostępny dla subskrypcji.",
+        "correct": "Rozpowszechnij korektę",
+        "retract": "Potwierdź wycofanie",
         "terminalHelp": "Tego faktu nie można już rozpowszechniać."
       },
       "pagination": {

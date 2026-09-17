@@ -67,6 +67,88 @@ public sealed class UserNotificationTests
         Assert.Equal(3, notification.Version);
     }
 
+    [Fact]
+    public void CreateCorrection_ShouldKeepOriginalRecipientWithoutRequiringAnActiveSubscription()
+    {
+        UserNotification original = UserNotification.CreateWeb(
+            UserNotificationId.Parse("notification-1"),
+            CreatePublishedEvent(),
+            CreateSubscription(),
+            "fr",
+            NowUtc);
+        FactualChangeEvent correction = FactualChangeEvent.CreateDraft(
+            FactualChangeEventId.Parse("event-2"),
+            FactualEventType.OpeningDateChanged,
+            ChangeTarget.ForParkItem("item-1", "park-1"),
+            FactValue.FromDate(new DateOnly(2027, 4, 8)),
+            FactValue.FromDate(new DateOnly(2027, 4, 10)),
+            new SourceReference(
+                SourceReferenceType.OfficialWebsite,
+                "Example Park",
+                "Corrected opening update",
+                "https://example.com/opening-correction",
+                NowUtc.AddMinutes(-8)),
+            DataConfidence.High,
+            NowUtc.AddMinutes(-7),
+            "park-item:item-1:opening-date:2027",
+            2,
+            NowUtc.AddMinutes(-6));
+        correction.Verify(NowUtc.AddMinutes(-5));
+        correction.Publish(NowUtc.AddMinutes(-4));
+
+        UserNotification notification = UserNotification.CreateCorrection(
+            UserNotificationId.Parse("notification-2"),
+            correction,
+            original,
+            NowUtc.AddMinutes(1));
+
+        Assert.Equal(original.UserId, notification.UserId);
+        Assert.Equal(original.SubscriptionId, notification.SubscriptionId);
+        Assert.Equal(original.Language, notification.Language);
+        Assert.Equal(correction.Id, notification.FactualEventId);
+        Assert.Equal(2, notification.SourceRevision);
+    }
+
+    [Fact]
+    public void CreateCorrection_ShouldRejectASuccessorThatIsNoLongerPublished()
+    {
+        UserNotification original = UserNotification.CreateWeb(
+            UserNotificationId.Parse("notification-1"),
+            CreatePublishedEvent(),
+            CreateSubscription(),
+            "fr",
+            NowUtc);
+        FactualChangeEvent correction = FactualChangeEvent.CreateDraft(
+            FactualChangeEventId.Parse("event-2"),
+            FactualEventType.OpeningDateChanged,
+            ChangeTarget.ForParkItem("item-1", "park-1"),
+            FactValue.FromDate(new DateOnly(2027, 4, 8)),
+            FactValue.FromDate(new DateOnly(2027, 4, 10)),
+            new SourceReference(
+                SourceReferenceType.OfficialWebsite,
+                "Example Park",
+                "Corrected opening update",
+                "https://example.com/opening-correction",
+                NowUtc.AddMinutes(-8)),
+            DataConfidence.High,
+            NowUtc.AddMinutes(-7),
+            "park-item:item-1:opening-date:2027",
+            2,
+            NowUtc.AddMinutes(-6));
+        correction.Verify(NowUtc.AddMinutes(-5));
+        correction.Publish(NowUtc.AddMinutes(-4));
+        correction.Retract("published-in-error", NowUtc.AddMinutes(-3));
+
+        UserNotificationValidationException exception = Assert.Throws<UserNotificationValidationException>(
+            () => UserNotification.CreateCorrection(
+                UserNotificationId.Parse("notification-2"),
+                correction,
+                original,
+                NowUtc.AddMinutes(1)));
+
+        Assert.Equal(UserNotificationErrorCodes.EventNotDistributable, exception.Code);
+    }
+
     private static WatchSubscription CreateSubscription()
     {
         return WatchSubscription.Create(

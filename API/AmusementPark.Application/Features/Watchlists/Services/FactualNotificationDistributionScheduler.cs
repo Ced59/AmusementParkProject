@@ -90,4 +90,75 @@ public sealed class FactualNotificationDistributionScheduler : IFactualNotificat
                 ?? throw new InvalidOperationException("A published event must have a publication date."),
             last.Id.Value);
     }
+
+    public async Task ScheduleCorrectionAsync(
+        string eventId,
+        long eventVersion,
+        string? afterNotificationId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedEventId = eventId?.Trim() ?? string.Empty;
+        if (normalizedEventId.Length == 0 || eventVersion < 1)
+        {
+            throw new ArgumentException("A valid factual event identity is required.", nameof(eventId));
+        }
+
+        string receiptId = FactualNotificationCorrectionJob.ReceiptId(normalizedEventId, eventVersion);
+        if (await this.receiptRepository.IsCompletedAsync(receiptId, cancellationToken))
+        {
+            return;
+        }
+
+        string normalizedCursor = string.IsNullOrWhiteSpace(afterNotificationId)
+            ? "start"
+            : afterNotificationId.Trim();
+        FactualNotificationCorrectionJobPayload payload = new FactualNotificationCorrectionJobPayload(
+            normalizedEventId,
+            eventVersion,
+            string.Equals(normalizedCursor, "start", StringComparison.Ordinal) ? null : normalizedCursor);
+        await this.jobRepository.CoalesceAsync(
+            new CoalesceBackgroundJobRequest(
+                FactualNotificationCorrectionJob.Kind,
+                $"watch-correction:{normalizedEventId}:{eventVersion}:{normalizedCursor}",
+                RequestedRevision: eventVersion,
+                FactualNotificationCorrectionJob.PayloadVersion,
+                JsonSerializer.SerializeToElement(payload),
+                CorrelationId: normalizedEventId),
+            cancellationToken);
+    }
+
+    public async Task<TerminalFactualEventCursor?> ReconcileCorrectionsAsync(
+        TerminalFactualEventCursor? after,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<FactualChangeEvent> terminalEvents = await this.eventRepository.ListTerminalAsync(
+            after,
+            ReconciliationBatchSize,
+            cancellationToken);
+        foreach (FactualChangeEvent factualEvent in terminalEvents)
+        {
+            string receiptId = FactualNotificationCorrectionJob.ReceiptId(
+                factualEvent.Id.Value,
+                factualEvent.Version);
+            if (!await this.receiptRepository.IsCompletedAsync(receiptId, cancellationToken))
+            {
+                await this.ScheduleCorrectionAsync(
+                    factualEvent.Id.Value,
+                    factualEvent.Version,
+                    null,
+                    cancellationToken);
+            }
+        }
+
+        if (terminalEvents.Count < ReconciliationBatchSize)
+        {
+            return null;
+        }
+
+        FactualChangeEvent last = terminalEvents.Last();
+        return new TerminalFactualEventCursor(
+            last.TerminalAtUtc
+                ?? throw new InvalidOperationException("A terminal event must have a terminal date."),
+            last.Id.Value);
+    }
 }

@@ -134,6 +134,26 @@
       "unread": "Nieuw",
       "read": "Gelezen"
     },
+    "notices": {
+      "Correction": {
+        "title": "Informatie gecorrigeerd",
+        "text": "Deze versie vervangt eerder verzonden informatie. De gecorrigeerde waarde en het bewijs staan hieronder."
+      },
+      "Superseded": {
+        "title": "Vervangen versie",
+        "text": "Deze oudere informatie blijft zichtbaar voor een eerlijke geschiedenis."
+      },
+      "Retraction": {
+        "title": "Informatie ingetrokken",
+        "text": "Deze informatie geldt niet langer als betrouwbaar. Ze blijft zichtbaar om de intrekking duidelijk uit te leggen."
+      }
+    },
+    "retractionReasons": {
+      "source-invalidated": "De bron is ongeldig verklaard.",
+      "change-cancelled": "De aangekondigde wijziging is geannuleerd.",
+      "duplicate-event": "Deze informatie was dubbel gepubliceerd.",
+      "published-in-error": "Deze informatie was per ongeluk gepubliceerd."
+    },
     "actions": {
       "backToProfile": "Terug naar profiel",
       "markAllRead": "Alles als gelezen markeren",
@@ -4234,6 +4254,23 @@
       "source": {
         "label": "Controleerbaar bewijs"
       },
+      "correction": {
+        "title": "Correctie koppelen",
+        "help": "Vul het nieuwere gepubliceerde feit in dat deze informatie vervangt. Betrokken leden krijgen zonder doublures bericht.",
+        "successor": "Identificatie van het vervangende feit",
+        "placeholder": "Bijv. event-…"
+      },
+      "retraction": {
+        "title": "Onjuiste informatie intrekken",
+        "help": "De intrekking blijft zichtbaar in de geschiedenis en waarschuwt de oorspronkelijke ontvangers opnieuw.",
+        "reason": "Reden",
+        "reasons": {
+          "source-invalidated": "De bron is ongeldig verklaard",
+          "change-cancelled": "De wijziging is geannuleerd",
+          "duplicate-event": "Informatie is dubbel gepubliceerd",
+          "published-in-error": "Informatie is per ongeluk gepubliceerd"
+        }
+      },
       "actions": {
         "draftHelp": "Nog geblokkeerd voor elke verspreiding.",
         "lowConfidenceHelp": "Het vertrouwensniveau is te laag om dit feit te bevestigen. Versterk eerst het bewijs of de kwalificatie.",
@@ -4241,6 +4278,8 @@
         "verifiedHelp": "Gecontroleerd, maar nog niet verspreid.",
         "publish": "Verspreiding toestaan",
         "publishedHelp": "Gepubliceerd en beschikbaar voor abonnementen.",
+        "correct": "Correctie verspreiden",
+        "retract": "Intrekking bevestigen",
         "terminalHelp": "Dit feit kan niet meer worden verspreid."
       },
       "pagination": {

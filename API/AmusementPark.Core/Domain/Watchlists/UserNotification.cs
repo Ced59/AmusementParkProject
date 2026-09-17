@@ -154,6 +154,52 @@ public sealed class UserNotification
             1);
     }
 
+    public static UserNotification CreateCorrection(
+        UserNotificationId id,
+        FactualChangeEvent correction,
+        UserNotification originalNotification,
+        DateTime nowUtc)
+    {
+        ArgumentNullException.ThrowIfNull(correction);
+        ArgumentNullException.ThrowIfNull(originalNotification);
+        if (correction.Status != FactualChangeStatus.Published
+            || correction.PublishedAtUtc is null)
+        {
+            throw Invalid(
+                UserNotificationErrorCodes.EventNotDistributable,
+                "A correction must reference a factual event that has been published.");
+        }
+
+        if (correction.Target.Type != originalNotification.TargetType
+            || !string.Equals(correction.Target.TargetId, originalNotification.TargetId, StringComparison.Ordinal))
+        {
+            throw Invalid(
+                UserNotificationErrorCodes.SubscriptionDoesNotMatch,
+                "A correction must keep the original notification target.");
+        }
+
+        EnsureUtc(nowUtc);
+        return new UserNotification(
+            id,
+            originalNotification.UserId,
+            correction.Id,
+            originalNotification.SubscriptionId,
+            correction.Type,
+            correction.Target.Type,
+            correction.Target.TargetId,
+            originalNotification.ParkId,
+            correction.Revision,
+            CurrentTemplateVersion,
+            originalNotification.Language,
+            UserNotificationStatus.Delivered,
+            nowUtc,
+            nowUtc,
+            null,
+            null,
+            nowUtc.AddDays(RetentionDays),
+            1);
+    }
+
     public static UserNotification Restore(
         UserNotificationId id,
         string userId,

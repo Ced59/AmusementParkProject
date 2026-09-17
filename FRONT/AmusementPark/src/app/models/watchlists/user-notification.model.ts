@@ -28,6 +28,10 @@ export interface UserNotification {
   notificationId: string;
   eventType: FactualEventType;
   status: 'Delivered' | 'Read';
+  noticeKind: 'Update' | 'Correction' | 'Superseded' | 'Retraction';
+  factualStatus: 'Published' | 'Corrected' | 'Retracted' | 'Expired';
+  lifecycleAtUtc: string | null;
+  retractionReasonCode: string | null;
   target: UserNotificationTarget;
   previousValue: UserNotificationFactValue | null;
   newValue: UserNotificationFactValue | null;

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.51",
+  "version": "5.3.52",
   "history": [
+    {
+      "version": "5.3.52",
+      "releasedAt": "2026-09-17",
+      "labels": {
+        "fr": "Les informations corrigées ou retirées restent désormais expliquées dans un historique transparent.",
+        "en": "Corrected or withdrawn information now remains explained in a transparent history.",
+        "de": "Korrigierte oder zurückgezogene Informationen bleiben jetzt in einem transparenten Verlauf erklärt.",
+        "nl": "Gecorrigeerde of ingetrokken informatie blijft nu uitgelegd in een transparante geschiedenis.",
+        "it": "Le informazioni corrette o ritirate restano ora spiegate in una cronologia trasparente.",
+        "es": "La información corregida o retirada queda ahora explicada en un historial transparente.",
+        "pl": "Poprawione lub wycofane informacje są teraz wyjaśniane w przejrzystej historii.",
+        "pt": "As informações corrigidas ou retiradas ficam agora explicadas num histórico transparente."
+      }
+    },
     {
       "version": "5.3.51",
       "releasedAt": "2026-09-15",

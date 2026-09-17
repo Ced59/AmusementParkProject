@@ -32,6 +32,12 @@ public sealed class FactualChangeEventAdminDto
 
     public DateTime? PublishedAtUtc { get; init; }
 
+    public DateTime? TerminalAtUtc { get; init; }
+
+    public string? SupersededByEventId { get; init; }
+
+    public string? ReasonCode { get; init; }
+
     public long Version { get; init; }
 
     public bool CanBeDistributed { get; init; }

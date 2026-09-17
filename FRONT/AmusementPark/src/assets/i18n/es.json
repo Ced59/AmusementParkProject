@@ -134,6 +134,26 @@
       "unread": "Nuevo",
       "read": "Leído"
     },
+    "notices": {
+      "Correction": {
+        "title": "Información corregida",
+        "text": "Esta versión sustituye información ya enviada. El valor corregido y su prueba aparecen debajo."
+      },
+      "Superseded": {
+        "title": "Versión sustituida",
+        "text": "Esta información anterior sigue visible para conservar un historial honesto."
+      },
+      "Retraction": {
+        "title": "Información retractada",
+        "text": "Esta información ya no se considera fiable. Sigue visible para explicar claramente la retirada."
+      }
+    },
+    "retractionReasons": {
+      "source-invalidated": "La fuente fue invalidada.",
+      "change-cancelled": "El cambio anunciado fue cancelado.",
+      "duplicate-event": "Esta información se había publicado dos veces.",
+      "published-in-error": "Esta información se había publicado por error."
+    },
     "actions": {
       "backToProfile": "Volver al perfil",
       "markAllRead": "Marcar todo como leído",
@@ -4234,6 +4254,23 @@
       "source": {
         "label": "Prueba consultable"
       },
+      "correction": {
+        "title": "Vincular una corrección",
+        "help": "Indica el hecho publicado más reciente que sustituye esta información. Las personas afectadas recibirán un aviso sin duplicados.",
+        "successor": "Identificador del hecho sustituto",
+        "placeholder": "Ej. event-…"
+      },
+      "retraction": {
+        "title": "Retirar información incorrecta",
+        "help": "La retractación permanece visible en el historial y vuelve a avisar a los destinatarios originales.",
+        "reason": "Motivo",
+        "reasons": {
+          "source-invalidated": "La fuente fue invalidada",
+          "change-cancelled": "El cambio fue cancelado",
+          "duplicate-event": "Información publicada dos veces",
+          "published-in-error": "Información publicada por error"
+        }
+      },
       "actions": {
         "draftHelp": "Todavía bloqueado para cualquier difusión.",
         "lowConfidenceHelp": "La confianza es demasiado baja para confirmar este hecho. Refuerza primero la prueba o su calificación.",
@@ -4241,6 +4278,8 @@
         "verifiedHelp": "Verificado, pero aún no difundido.",
         "publish": "Autorizar la difusión",
         "publishedHelp": "Publicado y disponible para las suscripciones.",
+        "correct": "Difundir la corrección",
+        "retract": "Confirmar la retractación",
         "terminalHelp": "Este hecho ya no se puede difundir."
       },
       "pagination": {

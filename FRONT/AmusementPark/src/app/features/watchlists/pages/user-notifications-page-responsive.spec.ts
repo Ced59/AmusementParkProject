@@ -9,6 +9,8 @@ describe('User notifications responsive contract', () => {
     expect(styles).toContain('overflow-x: clip');
     expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
     expect(styles).toContain('.notification-card__proof');
+    expect(styles).toContain('.notification-card__lifecycle');
+    expect(styles).toContain('overflow-wrap: anywhere');
     expect(styles).toContain('width: 100%');
   });
 });

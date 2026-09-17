@@ -28,6 +28,15 @@ public interface IFactualChangeEventRepository
         int limit,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<FactualChangeEvent>> ListTerminalAsync(
+        TerminalFactualEventCursor? after,
+        int limit,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<FactualChangeEvent>> GetCorrectedBySuccessorIdsAsync(
+        IReadOnlyCollection<FactualChangeEventId> successorEventIds,
+        CancellationToken cancellationToken);
+
     Task<PagedResult<FactualChangeEvent>> SearchAsync(
         FactualChangeEventSearchCriteria criteria,
         CancellationToken cancellationToken);

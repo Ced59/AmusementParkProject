@@ -1,6 +1,7 @@
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Watchlists.Models;
 using AmusementPark.Application.Features.Watchlists.Ports;
+using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Identifiers;
 using AmusementPark.Core.Domain.Watchlists;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -59,6 +60,74 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
         {
             return exception.Result?.Upserts.Count ?? 0;
         }
+    }
+
+    public async Task<IReadOnlyCollection<UserNotification>> ListByFactualEventAsync(
+        FactualChangeEventId eventId,
+        string? afterNotificationId,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(limit);
+        FilterDefinitionBuilder<UserNotificationDocument> filters = Builders<UserNotificationDocument>.Filter;
+        FilterDefinition<UserNotificationDocument> filter = filters.Eq(
+            static document => document.FactualEventId,
+            eventId.Value);
+        if (!string.IsNullOrWhiteSpace(afterNotificationId))
+        {
+            filter &= filters.Gt(static document => document.Id, afterNotificationId.Trim());
+        }
+
+        List<UserNotificationDocument> documents = await this.collection.Find(filter)
+            .SortBy(static document => document.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    public async Task<long> RedeliverRetractionAsync(
+        FactualChangeEventId eventId,
+        IReadOnlyCollection<UserNotificationId> notificationIds,
+        DateTime terminalAtUtc,
+        DateTime deliveredAtUtc,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(notificationIds);
+        if (terminalAtUtc.Kind != DateTimeKind.Utc || deliveredAtUtc.Kind != DateTimeKind.Utc
+            || deliveredAtUtc < terminalAtUtc)
+        {
+            throw new ArgumentException("Retraction notification timestamps must be chronological UTC values.");
+        }
+
+        string[] ids = notificationIds
+            .Select(static notificationId => notificationId.Value)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (ids.Length == 0)
+        {
+            return 0;
+        }
+
+        FilterDefinition<UserNotificationDocument> filter =
+            Builders<UserNotificationDocument>.Filter.Eq(
+                static document => document.FactualEventId,
+                eventId.Value)
+            & Builders<UserNotificationDocument>.Filter.In(static document => document.Id, ids)
+            & Builders<UserNotificationDocument>.Filter.Lt(
+                static document => document.DeliveredAt,
+                terminalAtUtc);
+        UpdateResult result = await this.collection.UpdateManyAsync(
+            filter,
+            Builders<UserNotificationDocument>.Update
+                .Set(static document => document.Status, UserNotificationStatus.Delivered)
+                .Set(static document => document.DeliveredAt, deliveredAtUtc)
+                .Set(static document => document.ReadAt, null)
+                .Set(static document => document.DismissedAt, null)
+                .Set(static document => document.ExpiresAt, deliveredAtUtc.AddDays(UserNotification.RetentionDays))
+                .Set(static document => document.UpdatedAt, deliveredAtUtc)
+                .Inc(static document => document.Version, 1),
+            cancellationToken: cancellationToken);
+        return result.ModifiedCount;
     }
 
     public async Task<PagedResult<UserNotification>> SearchOwnedAsync(

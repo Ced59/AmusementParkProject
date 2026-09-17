@@ -1,5 +1,6 @@
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Watchlists.Models;
+using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Watchlists;
 
 namespace AmusementPark.Application.Features.Watchlists.Ports;
@@ -8,6 +9,19 @@ public interface IUserNotificationRepository
 {
     Task<long> CreateManyAsync(
         IReadOnlyCollection<UserNotification> notifications,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<UserNotification>> ListByFactualEventAsync(
+        FactualChangeEventId eventId,
+        string? afterNotificationId,
+        int limit,
+        CancellationToken cancellationToken);
+
+    Task<long> RedeliverRetractionAsync(
+        FactualChangeEventId eventId,
+        IReadOnlyCollection<UserNotificationId> notificationIds,
+        DateTime terminalAtUtc,
+        DateTime deliveredAtUtc,
         CancellationToken cancellationToken);
 
     Task<PagedResult<UserNotification>> SearchOwnedAsync(

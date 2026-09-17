@@ -134,6 +134,26 @@
       "unread": "Nova",
       "read": "Lida"
     },
+    "notices": {
+      "Correction": {
+        "title": "Informação corrigida",
+        "text": "Esta versão substitui uma informação já enviada. O valor corrigido e a prova aparecem abaixo."
+      },
+      "Superseded": {
+        "title": "Versão substituída",
+        "text": "Esta informação anterior permanece visível para manter um histórico transparente."
+      },
+      "Retraction": {
+        "title": "Informação retratada",
+        "text": "Esta informação deixou de ser considerada fiável. Permanece visível para explicar claramente a retirada."
+      }
+    },
+    "retractionReasons": {
+      "source-invalidated": "A fonte foi invalidada.",
+      "change-cancelled": "A alteração anunciada foi cancelada.",
+      "duplicate-event": "Esta informação tinha sido publicada em duplicado.",
+      "published-in-error": "Esta informação tinha sido publicada por erro."
+    },
     "actions": {
       "backToProfile": "Voltar ao perfil",
       "markAllRead": "Marcar tudo como lido",
@@ -4234,6 +4254,23 @@
       "source": {
         "label": "Prova consultável"
       },
+      "correction": {
+        "title": "Associar uma correção",
+        "help": "Indica o facto publicado mais recente que substitui esta informação. As pessoas afetadas serão avisadas sem duplicados.",
+        "successor": "Identificador do facto substituto",
+        "placeholder": "Ex. event-…"
+      },
+      "retraction": {
+        "title": "Retirar informação incorreta",
+        "help": "A retratação permanece visível no histórico e volta a avisar os destinatários originais.",
+        "reason": "Motivo",
+        "reasons": {
+          "source-invalidated": "A fonte foi invalidada",
+          "change-cancelled": "A alteração foi cancelada",
+          "duplicate-event": "Informação publicada em duplicado",
+          "published-in-error": "Informação publicada por erro"
+        }
+      },
       "actions": {
         "draftHelp": "Ainda bloqueado para qualquer divulgação.",
         "lowConfidenceHelp": "A confiança é demasiado baixa para confirmar este facto. Reforça primeiro a prova ou a qualificação.",
@@ -4241,6 +4278,8 @@
         "verifiedHelp": "Verificado, mas ainda não divulgado.",
         "publish": "Autorizar divulgação",
         "publishedHelp": "Publicado e disponível para subscrições.",
+        "correct": "Divulgar a correção",
+        "retract": "Confirmar a retratação",
         "terminalHelp": "Este facto já não pode ser divulgado."
       },
       "pagination": {

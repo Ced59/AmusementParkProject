@@ -109,6 +109,16 @@ L’utilisateur contrôle les types d’événements, le canal et la fréquence.
 > et type, la lecture, le masquage, le désabonnement et une pagination finie. La
 > rétention de 365 jours est annoncée, les identifiants techniques ne sont jamais
 > rendus comme libellés et l'ensemble se replie sans débordement sur mobile.
+> `WATCH-08` est livré en `5.3.52` : l'administration peut relier un fait publié à
+> une révision plus récente ou le rétracter avec un motif explicite. La cohérence
+> de cible, de clé logique et de révision est contrôlée avant toute mutation ; les
+> transitions restent auditées et protégées par version. Un traitement durable,
+> idempotent et borné par lots de 100 avertit les destinataires initiaux, y compris
+> après un désabonnement, sans créer de doublon. Une rétractation remonte
+> l'ancienne notification comme non lue, tandis qu'une correction diffuse la
+> version de remplacement avec sa nouvelle preuve. Le centre privé distingue
+> clairement mise à jour, correction, version remplacée et rétractation dans les
+> huit langues, sans masquer l'historique ni dépasser le viewport mobile.
 
 ## 4.1 `UserCollectionEntry`
 
@@ -639,7 +649,7 @@ Une hausse du taux de clic n’est pas une justification pour rendre les formula
 | `WATCH-05` | Diff/outbox/déduplication — livré en `5.3.49` | Un fait logique, une alerte |
 | `WATCH-06` | Administration de vérification — livré en `5.3.50` | Rien de non vérifié distribué |
 | `WATCH-07` | Notifications Web — livré en `5.3.51` | Centre accessible |
-| `WATCH-08` | Corrections/rétractations | Historique honnête |
+| `WATCH-08` | Corrections/rétractations — livré en `5.3.52` | Historique honnête |
 | `WATCH-09` | Digests | Groupement déterministe |
 | `WATCH-10` | E-mail opt-in | Consentement et unsubscription |
 | `WATCH-11` | Export/suppression | Cycle complet |
