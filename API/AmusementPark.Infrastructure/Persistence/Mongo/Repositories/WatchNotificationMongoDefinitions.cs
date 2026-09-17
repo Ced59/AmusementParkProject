@@ -14,9 +14,10 @@ internal static class WatchNotificationMongoDefinitions
             throw new ArgumentException("The publication timestamp must use UTC.", nameof(publishedAtUtc));
         }
 
-        return Builders<WatchSubscriptionDocument>.Filter.Lte(
-            static document => document.CreatedAt,
-            publishedAtUtc);
+        FilterDefinitionBuilder<WatchSubscriptionDocument> filters =
+            Builders<WatchSubscriptionDocument>.Filter;
+        return filters.Lte(static document => document.CreatedAt, publishedAtUtc)
+            & filters.Lte(static document => document.UpdatedAt, publishedAtUtc);
     }
 
     internal static UpdateDefinition<WatchSubscriptionDocument> BuildSubscriptionMutation(
@@ -63,6 +64,8 @@ internal static class WatchNotificationMongoDefinitions
                     .Ascending(static document => document.TargetId)
                     .Ascending(static document => document.IsPaused)
                     .Ascending(static document => document.EventTypes)
+                    .Ascending(static document => document.CreatedAt)
+                    .Ascending(static document => document.UpdatedAt)
                     .Ascending(static document => document.Id),
                 new CreateIndexOptions { Name = "ix_watch_subscription_distribution" }),
         };

@@ -176,6 +176,7 @@ public sealed class WatchSubscription
         if (!factualEvent.CanBeDistributed
             || !factualEvent.PublishedAtUtc.HasValue
             || this.CreatedAtUtc > factualEvent.PublishedAtUtc.Value
+            || this.UpdatedAtUtc > factualEvent.PublishedAtUtc.Value
             || !this.Accepts(factualEvent.Type))
         {
             return false;

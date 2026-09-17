@@ -340,6 +340,47 @@ public sealed class WatchSubscriptionTests
     }
 
     [Fact]
+    public void Accepts_ShouldRejectDelayedEventWhenSubscriptionWasResumedAfterPublication()
+    {
+        WatchSubscription subscription = WatchSubscription.Create(
+            WatchSubscriptionId.Parse("subscription-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            new[] { FactualEventType.ParkNameChanged },
+            NotificationFrequency.WebOnly,
+            Array.Empty<NotificationChannel>(),
+            NowUtc);
+        subscription.Pause(NowUtc.AddMinutes(1));
+        FactualChangeEvent factualEvent = CreatePublishedParkNameEvent(NowUtc.AddMinutes(2));
+        subscription.Resume(NowUtc.AddMinutes(3));
+
+        Assert.False(subscription.Accepts(factualEvent));
+    }
+
+    [Fact]
+    public void Accepts_ShouldRejectDelayedEventTypeAddedAfterPublication()
+    {
+        WatchSubscription subscription = WatchSubscription.Create(
+            WatchSubscriptionId.Parse("subscription-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            new[] { FactualEventType.ParkTemporaryClosureConfirmed },
+            NotificationFrequency.WebOnly,
+            Array.Empty<NotificationChannel>(),
+            NowUtc);
+        FactualChangeEvent factualEvent = CreatePublishedParkNameEvent(NowUtc.AddMinutes(1));
+        subscription.UpdatePreferences(
+            new[] { FactualEventType.ParkNameChanged },
+            NotificationFrequency.WebOnly,
+            Array.Empty<NotificationChannel>(),
+            NowUtc.AddMinutes(2));
+
+        Assert.False(subscription.Accepts(factualEvent));
+    }
+
+    [Fact]
     public void SameTargetForSameOwner_ShouldShareOneLogicalSubscription()
     {
         WatchSubscription first = CreateSubscription(

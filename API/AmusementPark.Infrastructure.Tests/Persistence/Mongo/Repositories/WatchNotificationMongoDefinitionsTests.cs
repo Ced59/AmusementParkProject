@@ -25,9 +25,13 @@ public sealed class WatchNotificationMongoDefinitionsTests
                 serializer,
                 BsonSerializer.SerializerRegistry));
 
+        long expectedTimestamp = new DateTimeOffset(publishedAtUtc).ToUnixTimeMilliseconds();
         Assert.Equal(
-            new DateTimeOffset(publishedAtUtc).ToUnixTimeMilliseconds(),
+            expectedTimestamp,
             rendered["createdAt"]["$lte"].AsBsonDateTime.MillisecondsSinceEpoch);
+        Assert.Equal(
+            expectedTimestamp,
+            rendered["updatedAt"]["$lte"].AsBsonDateTime.MillisecondsSinceEpoch);
     }
 
     [Fact]
