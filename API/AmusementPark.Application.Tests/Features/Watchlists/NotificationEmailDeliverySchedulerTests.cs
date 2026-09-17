@@ -11,6 +11,22 @@ namespace AmusementPark.Application.Tests.Features.Watchlists;
 public sealed class NotificationEmailDeliverySchedulerTests
 {
     [Fact]
+    public async Task CancelAsync_ShouldPhysicallyDeleteCompensatedWork()
+    {
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(repository => repository.DeleteAsync("job-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        NotificationEmailDeliveryScheduler scheduler = new NotificationEmailDeliveryScheduler(
+            jobs.Object,
+            new Mock<INotificationEmailPreferenceRepository>(MockBehavior.Strict).Object);
+
+        await scheduler.CancelAsync("job-1", CancellationToken.None);
+
+        jobs.VerifyAll();
+    }
+
+    [Fact]
     public async Task ScheduleAsync_ShouldUseStableIdentityAndWaitUntilTheDigestCloses()
     {
         DateTime periodStartUtc = new DateTime(2026, 9, 17, 0, 0, 0, DateTimeKind.Utc);

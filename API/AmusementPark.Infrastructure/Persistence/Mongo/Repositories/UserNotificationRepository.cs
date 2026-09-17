@@ -13,16 +13,29 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class UserNotificationRepository : IUserNotificationRepository
 {
+    private static readonly TimeSpan ActivityLeaseDuration = TimeSpan.FromMinutes(3);
     private readonly IMongoCollection<UserNotificationDocument> collection;
+    private readonly IWatchlistAccountDeletionFence? deletionFence;
 
-    public UserNotificationRepository(IMongoDatabase database, MongoDbSettings settings)
-        : this(GetCollection(database, settings))
+    public UserNotificationRepository(
+        IMongoDatabase database,
+        MongoDbSettings settings,
+        IWatchlistAccountDeletionFence deletionFence)
+        : this(GetCollection(database, settings), deletionFence)
     {
     }
 
     internal UserNotificationRepository(IMongoCollection<UserNotificationDocument> collection)
+        : this(collection, null)
+    {
+    }
+
+    internal UserNotificationRepository(
+        IMongoCollection<UserNotificationDocument> collection,
+        IWatchlistAccountDeletionFence? deletionFence)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
+        this.deletionFence = deletionFence;
     }
 
     public async Task<long> CreateManyAsync(
@@ -36,30 +49,116 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
                 StringComparer.Ordinal)
             .Select(static group => group.First())
             .ToArray();
+        if (this.deletionFence is not null)
+        {
+            IReadOnlySet<string> blockedUserIds = await this.deletionFence.ListBlockedAsync(
+                distinct.Select(static notification => notification.UserId).ToArray(),
+                cancellationToken);
+            distinct = distinct
+                .Where(notification => !blockedUserIds.Contains(notification.UserId))
+                .ToArray();
+        }
         if (distinct.Length == 0)
         {
             return 0;
         }
 
-        List<WriteModel<UserNotificationDocument>> writes = distinct
-            .Select(notification => BuildInsert(notification.ToDocument()))
-            .Cast<WriteModel<UserNotificationDocument>>()
-            .ToList();
+        Dictionary<string, string> activityLeases = new Dictionary<string, string>(
+            StringComparer.Ordinal);
         try
         {
-            BulkWriteResult<UserNotificationDocument> result = await this.collection.BulkWriteAsync(
-                writes,
-                new BulkWriteOptions { IsOrdered = false },
-                cancellationToken);
-            return result.Upserts.Count;
+            if (this.deletionFence is not null)
+            {
+                foreach (string userId in distinct
+                    .Select(static notification => notification.UserId)
+                    .Distinct(StringComparer.Ordinal)
+                    .OrderBy(static userId => userId, StringComparer.Ordinal))
+                {
+                    string? leaseId = await this.deletionFence.TryAcquireActivityLeaseAsync(
+                        userId,
+                        ActivityLeaseDuration,
+                        cancellationToken);
+                    if (leaseId is not null)
+                    {
+                        activityLeases[userId] = leaseId;
+                    }
+                }
+
+                distinct = distinct
+                    .Where(notification => activityLeases.ContainsKey(notification.UserId))
+                    .ToArray();
+            }
+
+            if (distinct.Length == 0)
+            {
+                return 0;
+            }
+
+            List<WriteModel<UserNotificationDocument>> writes = distinct
+                .Select(notification => BuildInsert(notification.ToDocument()))
+                .Cast<WriteModel<UserNotificationDocument>>()
+                .ToList();
+            long createdCount;
+            try
+            {
+                BulkWriteResult<UserNotificationDocument> result =
+                    await this.collection.BulkWriteAsync(
+                        writes,
+                        new BulkWriteOptions { IsOrdered = false },
+                        cancellationToken);
+                createdCount = result.Upserts.Count;
+            }
+            catch (MongoBulkWriteException<UserNotificationDocument> exception)
+                when (IsDuplicateOnlyFailure(
+                    exception.WriteErrors.Select(static error => error.Category).ToArray(),
+                    exception.WriteConcernError is not null))
+            {
+                createdCount = exception.Result?.Upserts.Count ?? 0;
+            }
+
+            await this.DeleteNewlyBlockedAsync(distinct, cancellationToken);
+            return createdCount;
         }
-        catch (MongoBulkWriteException<UserNotificationDocument> exception)
-            when (IsDuplicateOnlyFailure(
-                exception.WriteErrors.Select(static error => error.Category).ToArray(),
-                exception.WriteConcernError is not null))
+        finally
         {
-            return exception.Result?.Upserts.Count ?? 0;
+            if (this.deletionFence is not null)
+            {
+                foreach (string leaseId in activityLeases.Values)
+                {
+                    await this.deletionFence.ReleaseActivityLeaseAsync(
+                        leaseId,
+                        CancellationToken.None);
+                }
+            }
         }
+    }
+
+    private async Task DeleteNewlyBlockedAsync(
+        IReadOnlyCollection<UserNotification> notifications,
+        CancellationToken cancellationToken)
+    {
+        if (this.deletionFence is null || notifications.Count == 0)
+        {
+            return;
+        }
+
+        IReadOnlySet<string> blockedUserIds = await this.deletionFence.ListBlockedAsync(
+            notifications.Select(static notification => notification.UserId).ToArray(),
+            cancellationToken);
+        string[] blockedNotificationIds = notifications
+            .Where(notification => blockedUserIds.Contains(notification.UserId))
+            .Select(static notification => notification.Id.Value)
+            .ToArray();
+        if (blockedNotificationIds.Length == 0)
+        {
+            return;
+        }
+
+        await this.collection.DeleteManyAsync(
+            Builders<UserNotificationDocument>.Filter.In(
+                static document => document.Id,
+                blockedNotificationIds),
+            cancellationToken);
     }
 
     public async Task<IReadOnlyCollection<UserNotification>> ListByFactualEventAsync(

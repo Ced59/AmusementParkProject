@@ -46,6 +46,8 @@ public interface IDurableBackgroundJobRepository
 
     Task<bool> CancelAsync(string jobId, CancellationToken cancellationToken);
 
+    Task<bool> DeleteAsync(string jobId, CancellationToken cancellationToken);
+
     Task<int> ReleaseExpiredLeasesAsync(int maximumCount, CancellationToken cancellationToken);
 
     Task<bool> HasDeadLetteredRevisionAsync(

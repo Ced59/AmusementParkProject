@@ -25,7 +25,7 @@ public sealed class NotificationEmailDeliveryScheduler : INotificationEmailDeliv
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
-    public async Task ScheduleAsync(
+    public async Task<string?> ScheduleAsync(
         NotificationDigest digest,
         CancellationToken cancellationToken)
     {
@@ -35,7 +35,7 @@ public sealed class NotificationEmailDeliveryScheduler : INotificationEmailDeliv
             cancellationToken);
         if (preference?.IsEnabled != true)
         {
-            return;
+            return null;
         }
 
         DateTime deliverAtUtc = digest.PeriodEndUtc.Add(DigestSettlementDelay);
@@ -43,7 +43,7 @@ public sealed class NotificationEmailDeliveryScheduler : INotificationEmailDeliv
         TimeSpan delay = deliverAtUtc > nowUtc ? deliverAtUtc - nowUtc : TimeSpan.Zero;
         NotificationEmailDeliveryJobPayload payload = new NotificationEmailDeliveryJobPayload(
             digest.Id.Value);
-        await this.jobRepository.EnqueueExactAsync(
+        DurableBackgroundJob job = await this.jobRepository.EnqueueExactAsync(
             new EnqueueExactBackgroundJobRequest(
                 NotificationEmailDeliveryJob.Kind,
                 $"watch-email:{digest.Id.Value}",
@@ -52,5 +52,16 @@ public sealed class NotificationEmailDeliveryScheduler : INotificationEmailDeliv
                 Delay: delay,
                 CorrelationId: digest.Id.Value),
             cancellationToken);
+        return job?.Id;
+    }
+
+    public async Task CancelAsync(string jobId, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(jobId))
+        {
+            return;
+        }
+
+        await this.jobRepository.DeleteAsync(jobId, cancellationToken);
     }
 }

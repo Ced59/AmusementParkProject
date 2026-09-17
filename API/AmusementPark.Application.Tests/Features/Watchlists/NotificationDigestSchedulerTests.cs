@@ -1,3 +1,4 @@
+using System.Text.Json;
 using AmusementPark.Application.Features.BackgroundJobs.Models;
 using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Watchlists.Models;
@@ -36,6 +37,16 @@ public sealed class NotificationDigestSchedulerTests
             .ReturnsAsync(new[] { subscription });
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IWatchlistAccountDeletionFence> fence = CreateOpenFence();
+        fence.Setup(candidate => candidate.TryAcquireActivityLeaseAsync(
+                "user-1",
+                TimeSpan.FromMinutes(3),
+                CancellationToken.None))
+            .ReturnsAsync("activity-lease-1");
+        fence.Setup(candidate => candidate.ReleaseActivityLeaseAsync(
+                "activity-lease-1",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         DateTime expectedStart = OccurredAtUtc.Date;
         NotificationDigestId expectedId = NotificationDigestId.ForGroup(
             "user-1",
@@ -51,6 +62,7 @@ public sealed class NotificationDigestSchedulerTests
                 CancellationToken.None))
             .ReturnsAsync((DurableBackgroundJob)null!);
         NotificationDigestScheduler scheduler = new NotificationDigestScheduler(
+            fence.Object,
             jobs.Object,
             notifications.Object,
             subscriptions.Object);
@@ -63,6 +75,7 @@ public sealed class NotificationDigestSchedulerTests
         notifications.VerifyAll();
         subscriptions.VerifyAll();
         jobs.VerifyAll();
+        fence.VerifyAll();
     }
 
     [Fact]
@@ -88,7 +101,9 @@ public sealed class NotificationDigestSchedulerTests
             .ReturnsAsync(new[] { subscription });
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IWatchlistAccountDeletionFence> fence = CreateOpenFence();
         NotificationDigestScheduler scheduler = new NotificationDigestScheduler(
+            fence.Object,
             jobs.Object,
             notifications.Object,
             subscriptions.Object);
@@ -101,6 +116,7 @@ public sealed class NotificationDigestSchedulerTests
         notifications.VerifyAll();
         subscriptions.VerifyAll();
         jobs.VerifyNoOtherCalls();
+        fence.VerifyAll();
     }
 
     [Fact]
@@ -132,7 +148,9 @@ public sealed class NotificationDigestSchedulerTests
             .ReturnsAsync(new[] { subscription });
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IWatchlistAccountDeletionFence> fence = CreateOpenFence();
         NotificationDigestScheduler scheduler = new NotificationDigestScheduler(
+            fence.Object,
             jobs.Object,
             notifications.Object,
             subscriptions.Object);
@@ -145,6 +163,74 @@ public sealed class NotificationDigestSchedulerTests
         notifications.VerifyAll();
         subscriptions.VerifyAll();
         jobs.VerifyNoOtherCalls();
+        fence.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ScheduleAsync_ShouldDeleteJobWhenAccountDeletionWinsTheRace()
+    {
+        WatchSubscription subscription = CreateSubscription(NotificationFrequency.DailyDigest);
+        UserNotification notification = CreateNotification(subscription);
+        Mock<IUserNotificationRepository> notifications =
+            new Mock<IUserNotificationRepository>(MockBehavior.Strict);
+        notifications.Setup(repository => repository.ListByFactualEventAndUsersAsync(
+                notification.FactualEventId,
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { notification });
+        Mock<IWatchSubscriptionRepository> subscriptions =
+            new Mock<IWatchSubscriptionRepository>(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListOwnedByIdsAsync(
+                "user-1",
+                It.IsAny<IReadOnlyCollection<WatchSubscriptionId>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { subscription });
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.SetupSequence(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(false)
+            .ReturnsAsync(true);
+        fence.Setup(candidate => candidate.TryAcquireActivityLeaseAsync(
+                "user-1",
+                TimeSpan.FromMinutes(3),
+                CancellationToken.None))
+            .ReturnsAsync("activity-lease-1");
+        fence.Setup(candidate => candidate.ReleaseActivityLeaseAsync(
+                "activity-lease-1",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        jobs.Setup(repository => repository.CoalesceAsync(
+                It.IsAny<CoalesceBackgroundJobRequest>(),
+                CancellationToken.None))
+            .ReturnsAsync(CreateJob());
+        jobs.Setup(repository => repository.DeleteAsync("job-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        NotificationDigestScheduler scheduler = new NotificationDigestScheduler(
+            fence.Object,
+            jobs.Object,
+            notifications.Object,
+            subscriptions.Object);
+
+        await scheduler.ScheduleAsync(
+            notification.FactualEventId,
+            new[] { "user-1" },
+            CancellationToken.None);
+
+        fence.VerifyAll();
+        notifications.VerifyAll();
+        subscriptions.VerifyAll();
+        jobs.VerifyAll();
+    }
+
+    private static Mock<IWatchlistAccountDeletionFence> CreateOpenFence()
+    {
+        Mock<IWatchlistAccountDeletionFence> fence =
+            new Mock<IWatchlistAccountDeletionFence>(MockBehavior.Strict);
+        fence.Setup(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(false);
+        return fence;
     }
 
     private static WatchSubscription CreateSubscription(
@@ -183,5 +269,30 @@ public sealed class NotificationDigestSchedulerTests
             null,
             OccurredAtUtc.AddDays(UserNotification.RetentionDays),
             1);
+    }
+
+    private static DurableBackgroundJob CreateJob()
+    {
+        return new DurableBackgroundJob(
+            Id: "job-1",
+            Kind: NotificationDigestJob.Kind,
+            NaturalKey: "watch-digest:test",
+            IdempotencyKey: null,
+            PayloadVersion: NotificationDigestJob.PayloadVersion,
+            Payload: JsonSerializer.SerializeToElement(new { }),
+            RequestedRevision: 0,
+            ProcessedRevision: null,
+            Status: DurableBackgroundJobStatus.Pending,
+            Priority: 0,
+            AttemptCount: 0,
+            NotBeforeUtc: OccurredAtUtc,
+            LeaseOwner: null,
+            LeaseToken: null,
+            LeaseExpiresAtUtc: null,
+            CreatedAtUtc: OccurredAtUtc,
+            UpdatedAtUtc: OccurredAtUtc,
+            CompletedAtUtc: null,
+            LastErrorCode: null,
+            CorrelationId: null);
     }
 }

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.54",
+  "version": "5.3.55",
   "history": [
+    {
+      "version": "5.3.55",
+      "releasedAt": "2026-09-17",
+      "labels": {
+        "fr": "Tes favoris, tes envies et tes alertes font désormais partie de ton export personnel.",
+        "en": "Your favourites, wish lists and alerts are now included in your personal export.",
+        "de": "Deine Favoriten, Wunschlisten und Warnmeldungen sind jetzt in deinem persönlichen Export enthalten.",
+        "nl": "Je favorieten, wensen en meldingen staan nu in je persoonlijke export.",
+        "it": "I tuoi preferiti, desideri e avvisi sono ora inclusi nell’esportazione personale.",
+        "es": "Tus favoritos, deseos y alertas ya forman parte de tu exportación personal.",
+        "pl": "Ulubione miejsca, plany i alerty są teraz częścią Twojego osobistego eksportu.",
+        "pt": "Os teus favoritos, desejos e alertas fazem agora parte da tua exportação pessoal."
+      }
+    },
     {
       "version": "5.3.54",
       "releasedAt": "2026-09-17",

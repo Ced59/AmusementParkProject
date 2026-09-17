@@ -192,6 +192,10 @@ public static class InfrastructureServiceCollectionExtensions
             NotificationEmailPreferenceRepository>();
         services.AddScoped<INotificationDeliveryAttemptRepository,
             NotificationDeliveryAttemptRepository>();
+        services.AddScoped<IWatchlistAccountDeletionStore,
+            MongoWatchlistAccountDeletionStore>();
+        services.AddScoped<IWatchlistAccountDeletionFence,
+            MongoWatchlistAccountDeletionFence>();
         services.AddScoped<IFactualNotificationDistributionReceiptRepository,
             FactualNotificationDistributionReceiptRepository>();
         services.AddScoped<IFactualChangeEventDistributionStateReader,
@@ -283,6 +287,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IPassportExportRepository, PassportExportRepository>();
         services.AddScoped<IPassportShareLifecycleExportSource,
             MongoPassportShareLifecycleExportSource>();
+        services.AddScoped<IWatchlistExportStore, MongoWatchlistExportStore>();
         services.AddScoped<MongoVisitDeletionStore>();
         services.AddScoped<IVisitDeletionStore>(provider =>
             new PassportProfileRevisionVisitDeletionStore(

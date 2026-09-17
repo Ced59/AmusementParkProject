@@ -2,6 +2,7 @@ using System.Globalization;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Core.Domain.Visits;
+using AmusementPark.Core.Domain.Watchlists;
 
 namespace AmusementPark.Application.Features.Passport.Services;
 
@@ -15,6 +16,11 @@ internal sealed class PassportExportReferenceMap
     private readonly IReadOnlyDictionary<string, string> publicationReferences;
     private readonly IReadOnlyDictionary<string, string> invitationReferences;
     private readonly IReadOnlyDictionary<string, string> comparisonReferences;
+    private readonly IReadOnlyDictionary<string, string> collectionReferences;
+    private readonly IReadOnlyDictionary<string, string> subscriptionReferences;
+    private readonly IReadOnlyDictionary<string, string> notificationReferences;
+    private readonly IReadOnlyDictionary<string, string> digestReferences;
+    private readonly IReadOnlyDictionary<string, string> deliveryReferences;
 
     private PassportExportReferenceMap(
         IReadOnlyDictionary<string, string> visitReferences,
@@ -23,7 +29,12 @@ internal sealed class PassportExportReferenceMap
         IReadOnlyDictionary<(string ParkId, string ParkItemId), string> parkItemReferences,
         IReadOnlyDictionary<string, string> publicationReferences,
         IReadOnlyDictionary<string, string> invitationReferences,
-        IReadOnlyDictionary<string, string> comparisonReferences)
+        IReadOnlyDictionary<string, string> comparisonReferences,
+        IReadOnlyDictionary<string, string> collectionReferences,
+        IReadOnlyDictionary<string, string> subscriptionReferences,
+        IReadOnlyDictionary<string, string> notificationReferences,
+        IReadOnlyDictionary<string, string> digestReferences,
+        IReadOnlyDictionary<string, string> deliveryReferences)
     {
         this.visitReferences = visitReferences;
         this.occurrenceReferences = occurrenceReferences;
@@ -32,6 +43,11 @@ internal sealed class PassportExportReferenceMap
         this.publicationReferences = publicationReferences;
         this.invitationReferences = invitationReferences;
         this.comparisonReferences = comparisonReferences;
+        this.collectionReferences = collectionReferences;
+        this.subscriptionReferences = subscriptionReferences;
+        this.notificationReferences = notificationReferences;
+        this.digestReferences = digestReferences;
+        this.deliveryReferences = deliveryReferences;
     }
 
     public static PassportExportReferenceMap Create(PassportExportWriteRequest request)
@@ -99,6 +115,41 @@ internal sealed class PassportExportReferenceMap
             AddReference(comparisons, comparison.Id.Value, "comparison");
         }
 
+        Dictionary<string, string> collections =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (UserCollectionEntry entry in request.WatchlistLifecycle.CollectionEntries)
+        {
+            AddReference(collections, entry.Id.Value, "collection");
+        }
+
+        Dictionary<string, string> subscriptions =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (WatchSubscription subscription in request.WatchlistLifecycle.Subscriptions)
+        {
+            AddReference(subscriptions, subscription.Id.Value, "watch");
+        }
+
+        Dictionary<string, string> notifications =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (UserNotification notification in request.WatchlistLifecycle.Notifications)
+        {
+            AddReference(notifications, notification.Id.Value, "notification");
+        }
+
+        Dictionary<string, string> digests =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (NotificationDigest digest in request.WatchlistLifecycle.Digests)
+        {
+            AddReference(digests, digest.Id.Value, "digest");
+        }
+
+        Dictionary<string, string> deliveries =
+            new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (NotificationDeliveryAttempt attempt in request.WatchlistLifecycle.DeliveryAttempts)
+        {
+            AddReference(deliveries, attempt.Id, "delivery");
+        }
+
         return new PassportExportReferenceMap(
             visits,
             occurrences,
@@ -106,7 +157,12 @@ internal sealed class PassportExportReferenceMap
             parkItems,
             publications,
             invitations,
-            comparisons);
+            comparisons,
+            collections,
+            subscriptions,
+            notifications,
+            digests,
+            deliveries);
     }
 
     public string Visit(VisitId visitId)
@@ -166,6 +222,36 @@ internal sealed class PassportExportReferenceMap
         return comparisonId.HasValue
             ? this.comparisonReferences.GetValueOrDefault(comparisonId.Value.Value)
             : null;
+    }
+
+    public string Collection(UserCollectionEntryId entryId)
+    {
+        return this.collectionReferences[entryId.Value];
+    }
+
+    public string? SubscriptionOrDefault(WatchSubscriptionId subscriptionId)
+    {
+        return this.subscriptionReferences.GetValueOrDefault(subscriptionId.Value);
+    }
+
+    public string Notification(UserNotificationId notificationId)
+    {
+        return this.notificationReferences[notificationId.Value];
+    }
+
+    public string Digest(NotificationDigestId digestId)
+    {
+        return this.digestReferences[digestId.Value];
+    }
+
+    public string? DigestOrDefault(NotificationDigestId digestId)
+    {
+        return this.digestReferences.GetValueOrDefault(digestId.Value);
+    }
+
+    public string Delivery(string attemptId)
+    {
+        return this.deliveryReferences[attemptId];
     }
 
     private static void AddReference(

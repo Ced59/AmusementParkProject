@@ -4,5 +4,7 @@ namespace AmusementPark.Application.Features.Watchlists.Ports;
 
 public interface INotificationEmailDeliveryScheduler
 {
-    Task ScheduleAsync(NotificationDigest digest, CancellationToken cancellationToken);
+    Task<string?> ScheduleAsync(NotificationDigest digest, CancellationToken cancellationToken);
+
+    Task CancelAsync(string jobId, CancellationToken cancellationToken);
 }

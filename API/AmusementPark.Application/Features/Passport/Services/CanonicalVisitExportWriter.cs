@@ -12,7 +12,7 @@ namespace AmusementPark.Application.Features.Passport.Services;
 
 public sealed class CanonicalVisitExportWriter : IVisitExportWriter
 {
-    public const int SchemaVersion = 3;
+    public const int SchemaVersion = 4;
     public const int MaximumArtifactBytes = 64 * 1024 * 1024;
     private static readonly UTF8Encoding Utf8WithoutBom = new UTF8Encoding(false);
 
@@ -101,6 +101,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
 
         writer.WriteEndArray();
         PassportShareLifecycleExportWriter.WriteJson(writer, request, references);
+        PassportWatchlistExportWriter.WriteJson(writer, request, references);
         writer.WriteEndObject();
         writer.Flush();
         return output.ToArray();
@@ -121,6 +122,7 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
             WriteVisitAssessmentsCsv(archive, request, references);
             WriteRideAssessmentsCsv(archive, request, references);
             PassportShareLifecycleExportWriter.WriteCsvEntries(archive, request, references);
+            PassportWatchlistExportWriter.WriteCsvEntries(archive, request, references);
         }
 
         return output.ToArray();
@@ -153,6 +155,11 @@ public sealed class CanonicalVisitExportWriter : IVisitExportWriter
         writer.WriteStringValue("visit-assessments.csv");
         writer.WriteStringValue("ride-assessments.csv");
         foreach (string fileName in PassportShareLifecycleExportWriter.CsvFileNames)
+        {
+            writer.WriteStringValue(fileName);
+        }
+
+        foreach (string fileName in PassportWatchlistExportWriter.CsvFileNames)
         {
             writer.WriteStringValue(fileName);
         }

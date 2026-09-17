@@ -805,6 +805,18 @@ private readonly IMongoDatabase database;
             NotificationDeliveryAttemptMongoDefinitions.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.WatchlistAccountDeletionFencesCollectionName,
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.WatchlistAccountDeletionLeasesCollectionName,
+            cancellationToken);
+        IMongoCollection<WatchlistAccountDeletionLeaseDocument> watchlistAccountDeletionLeases =
+            this.database.GetCollection<WatchlistAccountDeletionLeaseDocument>(
+                this.settings.WatchlistAccountDeletionLeasesCollectionName);
+        await watchlistAccountDeletionLeases.Indexes.CreateManyAsync(
+            WatchlistAccountDeletionLeaseMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.FactualNotificationDistributionsCollectionName,
             cancellationToken);
         await this.EnsureCollectionExistsAsync(

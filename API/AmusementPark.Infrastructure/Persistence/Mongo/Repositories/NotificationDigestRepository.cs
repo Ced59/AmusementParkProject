@@ -58,6 +58,17 @@ public sealed class NotificationDigestRepository : INotificationDigestRepository
         return document?.ToDomain();
     }
 
+    public async Task DeleteAsync(
+        NotificationDigestId digestId,
+        CancellationToken cancellationToken)
+    {
+        await this.collection.DeleteOneAsync(
+            Builders<NotificationDigestDocument>.Filter.Eq(
+                static item => item.Id,
+                digestId.Value),
+            cancellationToken);
+    }
+
     private static IMongoCollection<NotificationDigestDocument> GetCollection(
         IMongoDatabase database,
         MongoDbSettings settings)
