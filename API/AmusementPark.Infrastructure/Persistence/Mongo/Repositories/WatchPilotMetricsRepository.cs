@@ -18,6 +18,13 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
 {
     private const int RetentionDays = 400;
     private static readonly TimeSpan QueryTimeout = TimeSpan.FromSeconds(10);
+    internal static IReadOnlyCollection<string> MonitoredQueueKinds { get; } =
+    [
+        FactualNotificationDistributionJob.Kind,
+        FactualNotificationCorrectionJob.Kind,
+        NotificationDigestJob.Kind,
+        NotificationEmailDeliveryJob.Kind,
+    ];
 
     private readonly IMongoCollection<WatchPilotDailyMetricsDocument> dailyMetrics;
     private readonly IMongoCollection<WatchSubscriptionDocument> subscriptions;
@@ -310,15 +317,11 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
     private async Task<IReadOnlyDictionary<string, long>> ReadQueueCountsAsync(
         CancellationToken cancellationToken)
     {
-        string[] kinds =
-        [
-            FactualNotificationDistributionJob.Kind,
-            NotificationDigestJob.Kind,
-            NotificationEmailDeliveryJob.Kind,
-        ];
         BsonDocument[] pipeline =
         [
-            new BsonDocument("$match", new BsonDocument("kind", new BsonDocument("$in", new BsonArray(kinds)))),
+            new BsonDocument("$match", new BsonDocument(
+                "kind",
+                new BsonDocument("$in", new BsonArray(MonitoredQueueKinds)))),
             new BsonDocument("$group", new BsonDocument
             {
                 ["_id"] = "$status",
@@ -368,7 +371,7 @@ public sealed class WatchPilotMetricsRepository : IWatchPilotMetricsRepository
             cancellationToken);
         IReadOnlyDictionary<string, long> misleadingReportsByDay = await this.ReadDailyCountsAsync(
             this.notifications,
-            "misleadingReportedAtUtc",
+            UserNotificationDocument.MisleadingReportedAtFieldName,
             fromUtc,
             toUtc,
             cancellationToken);

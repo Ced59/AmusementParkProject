@@ -8,6 +8,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.Watchlists;
 [BsonIgnoreExtraElements]
 public sealed class UserNotificationDocument : MongoDocumentBase
 {
+    public const string MisleadingReportedAtFieldName = "misleadingReportedAt";
+
     [BsonElement("userId")]
     public string UserId { get; set; } = string.Empty;
 
@@ -52,7 +54,7 @@ public sealed class UserNotificationDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? DismissedAt { get; set; }
 
-    [BsonElement("misleadingReportedAt")]
+    [BsonElement(MisleadingReportedAtFieldName)]
     [BsonIgnoreIfNull]
     public DateTime? MisleadingReportedAt { get; set; }
 
