@@ -42,4 +42,11 @@ public static class TripPlanApplicationErrors
             "trip.plan.creation-deleted",
             "The trip created by this idempotency key was deleted and cannot be recreated by a retry.");
     }
+
+    public static ApplicationError RecentAuthenticationRequired()
+    {
+        return ApplicationError.Forbidden(
+            "trip.plan.recent-authentication-required",
+            "Deleting a trip requires a recent authentication confirmation.");
+    }
 }

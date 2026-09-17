@@ -15,6 +15,30 @@ public sealed class TripDateProposalTests
     }
 
     [Fact]
+    public void Range_ShouldAcceptExactlyTheMaximumInclusiveDayCount()
+    {
+        DateOnly startDate = new(2027, 1, 1);
+
+        TripDateProposal proposal = TripDateProposal.Range(
+            startDate,
+            startDate.AddDays(TripDateProposal.MaximumRangeDays - 1));
+
+        Assert.Equal(startDate, proposal.StartDate);
+        Assert.Equal(startDate.AddDays(TripDateProposal.MaximumRangeDays - 1), proposal.EndDate);
+    }
+
+    [Fact]
+    public void Range_ShouldRejectOneMoreThanTheMaximumInclusiveDayCount()
+    {
+        DateOnly startDate = new(2027, 1, 1);
+
+        TripPlanValidationException exception = Assert.Throws<TripPlanValidationException>(() =>
+            TripDateProposal.Range(startDate, startDate.AddDays(TripDateProposal.MaximumRangeDays)));
+
+        Assert.Equal(TripPlanErrorCodes.InvalidDateProposal, exception.Code);
+    }
+
+    [Fact]
     public void Candidates_ShouldNormalizeDistinctChronologicalDates()
     {
         TripDateProposal proposal = TripDateProposal.Candidates(new[]

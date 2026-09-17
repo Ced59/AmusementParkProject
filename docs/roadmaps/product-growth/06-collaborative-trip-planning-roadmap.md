@@ -54,7 +54,10 @@ ou changer ses dates ; aucune route ne remplace silencieusement tout le plan.
 La suppression produit un tombstone technique limité à 24 heures : les données
 privées sont immédiatement effacées, mais les empreintes minimales de création
 restent assez longtemps pour qu'un ancien retry réseau ne puisse pas recréer le
-voyage supprimé. MongoDB purge automatiquement ce tombstone à l'expiration.
+voyage supprimé. MongoDB purge automatiquement ce tombstone à l'expiration. La
+commande exige aussi une authentification confirmée depuis moins de dix minutes,
+en plus de la version attendue, afin qu'une session ancienne ne suffise pas à
+déclencher cette action irréversible.
 
 Ce jalon reste volontairement sans écran : l'expérience utilisateur individuelle,
 conçue responsive dès 320 px, appartient à `TRIP-04`. `TRIP-03` enrichit d'abord

@@ -161,9 +161,29 @@ public sealed class TripPlanLifecycleServiceTests
             "user-1",
             trip.Id.Value,
             1,
+            DateTime.UtcNow,
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
         repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteAsync_WhenAuthenticationIsNotRecent_ShouldRejectBeforeReadingTheTrip()
+    {
+        Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+
+        ApplicationResult result = await service.DeleteAsync(
+            "user-1",
+            TripPlanId.New().Value,
+            1,
+            DateTime.UtcNow.Subtract(TripPlanLifecycleService.MaximumRecentAuthenticationAge).AddSeconds(-1),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("trip.plan.recent-authentication-required", Assert.Single(result.Errors).Code);
+        repository.VerifyNoOtherCalls();
     }
 }

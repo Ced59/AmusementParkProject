@@ -10,6 +10,8 @@ namespace AmusementPark.Application.Features.Trips.Services;
 public sealed class TripPlanLifecycleService
 {
     public const int MaximumIdempotencyKeyLength = 200;
+    public static readonly TimeSpan MaximumRecentAuthenticationAge = TimeSpan.FromMinutes(10);
+    private static readonly TimeSpan AuthenticationClockSkew = TimeSpan.FromMinutes(1);
 
     private readonly ITripPlanRepository repository;
     private readonly ITripTimeZoneValidator timeZoneValidator;
@@ -196,6 +198,7 @@ public sealed class TripPlanLifecycleService
         string userId,
         string tripPlanId,
         long expectedVersion,
+        DateTime? authenticationConfirmedAtUtc,
         CancellationToken cancellationToken)
     {
         if (!TryNormalizeMutation(userId, tripPlanId, expectedVersion, out string normalizedUserId, out TripPlanId parsedId))
@@ -203,6 +206,12 @@ public sealed class TripPlanLifecycleService
             return ApplicationResult.Failure(TripPlanApplicationErrors.Invalid(
                 TripPlanErrorCodes.InvalidVersion,
                 "A valid trip and version are required."));
+        }
+
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        if (!IsRecentAuthentication(authenticationConfirmedAtUtc, nowUtc))
+        {
+            return ApplicationResult.Failure(TripPlanApplicationErrors.RecentAuthenticationRequired());
         }
 
         TripPlan? trip = await this.repository.GetOwnedAsync(normalizedUserId, parsedId, cancellationToken);
@@ -218,7 +227,7 @@ public sealed class TripPlanLifecycleService
 
         try
         {
-            trip.BeginDeletion(this.timeProvider.GetUtcNow().UtcDateTime);
+            trip.BeginDeletion(nowUtc);
         }
         catch (TripPlanValidationException exception)
         {
@@ -351,6 +360,14 @@ public sealed class TripPlanLifecycleService
     {
         return TryNormalizeIdentity(userId, tripPlanId, out normalizedUserId, out parsedId)
             && expectedVersion > 0;
+    }
+
+    private static bool IsRecentAuthentication(DateTime? authenticationConfirmedAtUtc, DateTime nowUtc)
+    {
+        return authenticationConfirmedAtUtc.HasValue
+            && authenticationConfirmedAtUtc.Value.Kind == DateTimeKind.Utc
+            && authenticationConfirmedAtUtc.Value >= nowUtc.Subtract(MaximumRecentAuthenticationAge)
+            && authenticationConfirmedAtUtc.Value <= nowUtc.Add(AuthenticationClockSkew);
     }
 
     private static ApplicationResult<TResult> Invalid<TResult>(string code, string message)

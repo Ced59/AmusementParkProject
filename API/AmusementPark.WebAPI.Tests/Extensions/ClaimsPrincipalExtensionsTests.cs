@@ -36,6 +36,33 @@ public sealed class ClaimsPrincipalExtensionsTests
     }
 
     [Fact]
+    public void GetLastAuthenticationUtc_WhenClaimIsAnIsoTimestamp_ShouldReturnUtcInstant()
+    {
+        DateTime authenticatedAtUtc = new(2026, 9, 17, 8, 30, 0, DateTimeKind.Utc);
+        ClaimsPrincipal user = CreatePrincipal(new Claim("lastlogin", authenticatedAtUtc.ToString("o")));
+
+        DateTime? result = user.GetLastAuthenticationUtc();
+
+        Assert.Equal(authenticatedAtUtc, result);
+        Assert.Equal(DateTimeKind.Utc, result!.Value.Kind);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("not-a-date")]
+    public void GetLastAuthenticationUtc_WhenClaimIsMissingOrInvalid_ShouldReturnNull(string? value)
+    {
+        ClaimsPrincipal user = value is null
+            ? CreatePrincipal()
+            : CreatePrincipal(new Claim("lastlogin", value));
+
+        DateTime? result = user.GetLastAuthenticationUtc();
+
+        Assert.Null(result);
+    }
+
+    [Fact]
     public void IsInRoles_WhenAnyRequestedRoleMatchesIgnoringCase_ShouldReturnTrue()
     {
         ClaimsPrincipal user = CreatePrincipal(

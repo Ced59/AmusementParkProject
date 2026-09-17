@@ -6,5 +6,6 @@ namespace AmusementPark.Application.Features.Trips.Commands;
 public sealed record DeleteTripPlanCommand(
     string UserId,
     string TripPlanId,
-    long ExpectedVersion)
+    long ExpectedVersion,
+    DateTime? AuthenticationConfirmedAtUtc)
     : ICommand<ApplicationResult>;

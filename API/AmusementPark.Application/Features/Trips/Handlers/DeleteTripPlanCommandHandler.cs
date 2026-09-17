@@ -23,6 +23,7 @@ public sealed class DeleteTripPlanCommandHandler : ICommandHandler<DeleteTripPla
             command.UserId,
             command.TripPlanId,
             command.ExpectedVersion,
+            command.AuthenticationConfirmedAtUtc,
             cancellationToken);
     }
 }

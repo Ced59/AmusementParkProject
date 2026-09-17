@@ -97,7 +97,7 @@ public sealed class TripDateProposal
 
         if (kind == TripDateProposalKind.Range
             && (endDate!.Value < startDate!.Value
-                || endDate.Value.DayNumber - startDate.Value.DayNumber > MaximumRangeDays))
+                || endDate.Value.DayNumber - startDate.Value.DayNumber + 1 > MaximumRangeDays))
         {
             throw Invalid($"A trip date range must be chronological and no longer than {MaximumRangeDays} days.");
         }

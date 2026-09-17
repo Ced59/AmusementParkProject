@@ -183,6 +183,7 @@ public sealed class TripPlansController : ControllerBase
 
     [HttpDelete("{tripPlanId}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<IActionResult> DeleteAsync(
         [FromRoute] string tripPlanId,
         [FromQuery] long expectedVersion,
@@ -195,7 +196,11 @@ public sealed class TripPlansController : ControllerBase
         }
 
         ApplicationResult result = await this.deleteHandler.HandleAsync(
-            new DeleteTripPlanCommand(userId, tripPlanId, expectedVersion),
+            new DeleteTripPlanCommand(
+                userId,
+                tripPlanId,
+                expectedVersion,
+                this.User.GetLastAuthenticationUtc()),
             cancellationToken);
         return result.IsSuccess ? this.NoContent() : this.ToActionResult(result);
     }
