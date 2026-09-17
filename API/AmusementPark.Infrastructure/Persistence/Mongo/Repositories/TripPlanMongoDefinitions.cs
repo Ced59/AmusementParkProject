@@ -33,6 +33,19 @@ internal static class TripPlanMongoDefinitions
             .Set(static item => item.Version, document.Version);
     }
 
+    public static ProjectionDefinition<TripPlanDocument> BuildActiveCreationProjection()
+    {
+        return Builders<TripPlanDocument>.Projection
+            .Include(static document => document.OwnerSlot)
+            .Include(static document => document.CreationOperationKeyHash)
+            .Include(static document => document.CreationPayloadHash)
+            .Include(static document => document.CreationFingerprintKeyVersion)
+            .Include(static document => document.CreationSnapshot)
+            .Include(static document => document.DeletionState)
+            .Include(static document => document.Id)
+            .Include(static document => document.OwnerUserId);
+    }
+
     public static UpdateDefinition<TripPlanDocument> BuildDeletionTombstone(TripPlan trip)
     {
         ArgumentNullException.ThrowIfNull(trip);

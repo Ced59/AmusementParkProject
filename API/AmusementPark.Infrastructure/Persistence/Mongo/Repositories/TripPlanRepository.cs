@@ -71,14 +71,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
         List<TripPlanDocument> owned = await this.collection.Find(
                 filters.Eq(static document => document.OwnerUserId, tripPlan.OwnerUserId)
                 & filters.Eq(static document => document.DeletionState, TripDeletionState.None))
-            .Project<TripPlanDocument>(Builders<TripPlanDocument>.Projection
-                .Include(static document => document.OwnerSlot)
-                .Include(static document => document.CreationOperationKeyHash)
-                .Include(static document => document.CreationPayloadHash)
-                .Include(static document => document.CreationFingerprintKeyVersion)
-                .Include(static document => document.CreationSnapshot)
-                .Include(static document => document.Id)
-                .Include(static document => document.OwnerUserId))
+            .Project<TripPlanDocument>(TripPlanMongoDefinitions.BuildActiveCreationProjection())
             .Limit(TripPlan.MaximumPlansPerOwner)
             .ToListAsync(cancellationToken);
         TripPlanDocument? replay = owned.FirstOrDefault(document => string.Equals(

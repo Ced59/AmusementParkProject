@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.Trips.Models;
 using AmusementPark.Core.Domain.Trips;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Trips;
+using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -41,6 +42,22 @@ public sealed class TripPlanMongoDefinitionsTests
             rendered["ownerScopeHash"]["$in"].AsBsonArray.Select(static value => value.AsString));
         Assert.False(rendered.Contains("ownerUserId"));
         Assert.Equal("hash-1", rendered["creationOperationKeyHash"].AsString);
+    }
+
+    [Fact]
+    public void BuildActiveCreationProjection_ShouldRetainEveryReplayDecisionField()
+    {
+        ProjectionDefinition<TripPlanDocument> projection =
+            TripPlanMongoDefinitions.BuildActiveCreationProjection();
+        BsonDocument rendered = projection.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+
+        Assert.Equal(1, rendered["creationOperationKeyHash"].AsInt32);
+        Assert.Equal(1, rendered["creationPayloadHash"].AsInt32);
+        Assert.Equal(1, rendered["creationFingerprintKeyVersion"].AsInt32);
+        Assert.Equal(1, rendered["creationSnapshot"].AsInt32);
+        Assert.Equal(1, rendered["deletionState"].AsInt32);
     }
 
     [Fact]
@@ -93,6 +110,28 @@ public sealed class TripPlanMongoDefinitionsTests
 
         Assert.Equal(IdempotentTripPlanCreationStatus.Deleted, result.Status);
         Assert.Null(result.TripPlan);
+    }
+
+    [Fact]
+    public void ResolveIdempotentCreation_WhenConcurrentActiveCreateMatches_ShouldReplayIt()
+    {
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "user-1",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            new DateTime(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc));
+        TripPlanDocument activeDocument = trip.ToDocument();
+        activeDocument.CreationPayloadHash = "payload-hash";
+        activeDocument.CreationSnapshot = activeDocument.CreateCreationSnapshot();
+
+        IdempotentTripPlanCreationResult result = TripPlanRepository.ResolveIdempotentCreation(
+            activeDocument,
+            "payload-hash");
+
+        Assert.Equal(IdempotentTripPlanCreationStatus.Replayed, result.Status);
+        Assert.Equal(trip.Id, result.TripPlan?.Id);
     }
 
     [Fact]
