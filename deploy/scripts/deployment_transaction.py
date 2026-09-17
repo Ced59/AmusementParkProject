@@ -319,10 +319,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("prepare", "deploy", "rollback-safe", "assert-complete",
                                             "arm-cutover", "cutover-pending", "cutover-restored", "abandon-unexposed",
-                                            "quiesce-unexposed", "validate-journal"))
+                                            "quiesce-unexposed", "validate-journal", "maintain-mongodb"))
     args = parser.parse_args()
     directory = Path(__file__).resolve().parent.parent
-    if args.command in {"prepare", "deploy", "arm-cutover", "cutover-restored", "abandon-unexposed", "quiesce-unexposed"}:
+    if args.command in {"prepare", "deploy", "arm-cutover", "cutover-restored", "abandon-unexposed", "quiesce-unexposed",
+                        "maintain-mongodb"}:
         import fcntl
         try:
             lock_path = os.environ.get("DEPLOY_LOCK_FILE", "/tmp/amusementpark-deploy.lock")
@@ -350,6 +351,9 @@ def main():
             return 0
         return 0 if safe and (args.command == "rollback-safe" or state["cutover_armed"]) else 1
     runtime = DockerRuntime(directory)
+    if args.command == "maintain-mongodb":
+        runtime.maintain_mongodb()
+        return 0
     transaction = DeploymentTransaction(runtime, directory / "nginx/runtime")
     if args.command == "prepare":
         transaction.prepare()

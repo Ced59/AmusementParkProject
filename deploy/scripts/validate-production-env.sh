@@ -385,6 +385,21 @@ case "${EMAIL_MODE:-Smtp}" in
     ;;
 esac
 
+case "${SHARED_INFRASTRUCTURE_MAINTENANCE:-none}" in
+  none|mongodb)
+    ;;
+  *)
+    echo "ERROR: SHARED_INFRASTRUCTURE_MAINTENANCE must be none or mongodb." >&2
+    errors=$((errors + 1))
+    ;;
+esac
+
+if [ "${SHARED_INFRASTRUCTURE_MAINTENANCE:-none}" = "mongodb" ] \
+  && [ "${BACKUP_BEFORE_DEPLOY:-true}" != "true" ]; then
+  echo "ERROR: MongoDB maintenance requires BACKUP_BEFORE_DEPLOY=true." >&2
+  errors=$((errors + 1))
+fi
+
 if [ "${errors}" -gt 0 ]; then
   echo "Production environment validation failed with ${errors} error(s) and ${warnings} warning(s)." >&2
   exit 1

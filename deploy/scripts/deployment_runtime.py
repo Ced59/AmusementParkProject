@@ -118,6 +118,63 @@ class DockerRuntime:
         validate_single_worker_configuration(self.run("docker", "exec", self.names["edge"], "nginx", "-T", "-c",
                                                       "/etc/nginx/amusementpark/edge.conf"))
 
+    def maintain_mongodb(self):
+        desired_image = self.config["services"]["mongodb"]["image"]
+        if not re.fullmatch(r"mongo:8\.0(?:@sha256:[a-f0-9]{64})?", desired_image):
+            raise DeploymentError("MongoDB maintenance only supports the declared 8.0 release line")
+        configured_volume = self.configured_named_volume("mongodb", "/data/db")
+        identifier = self.compose("ps", "-q", "mongodb")
+        if not identifier:
+            raise DeploymentError("Missing mongodb; maintenance cannot bootstrap shared infrastructure")
+        current = self.inspect(identifier)
+        if current is None:
+            raise DeploymentError("MongoDB disappeared before maintenance")
+        self.validate_shared_service(current, "mongodb")
+        if not re.fullmatch(r"mongo:8\.0(?:@sha256:[a-f0-9]{64})?", current["Config"].get("Image", "")):
+            raise DeploymentError("Running MongoDB is outside the supported 8.0 release line")
+        current_volume = self.named_volume_name(current, "/data/db")
+        if current_volume != configured_volume:
+            raise DeploymentError("MongoDB data volume does not match the declared Compose volume")
+
+        self.compose("up", "-d", "--no-deps", "mongodb")
+
+        updated_identifier = self.compose("ps", "-q", "mongodb")
+        if not updated_identifier:
+            raise DeploymentError("MongoDB is missing after maintenance")
+        updated = self.inspect(updated_identifier)
+        if updated is None:
+            raise DeploymentError("MongoDB disappeared after maintenance")
+        self.validate_shared_service(updated, "mongodb")
+        if self.named_volume_name(updated, "/data/db") != current_volume:
+            raise DeploymentError("MongoDB data volume identity changed during maintenance")
+        self.wait_healthy(self.reference(updated))
+        print("MongoDB maintenance completed: original named data volume retained", flush=True)
+
+    def validate_shared_service(self, container, service: str):
+        labels = container["Config"].get("Labels") or {}
+        if labels.get("com.docker.compose.project") != self.project:
+            raise DeploymentError(f"Container for {service} belongs to another project")
+        if labels.get("com.docker.compose.service") != service:
+            raise DeploymentError(f"Container identity does not match shared service {service}")
+
+    @staticmethod
+    def named_volume_name(container, destination: str) -> str:
+        mounts = [mount for mount in container.get("Mounts", [])
+                  if mount.get("Destination") == destination]
+        if len(mounts) != 1 or mounts[0].get("Type") != "volume" or not mounts[0].get("Name"):
+            raise DeploymentError(f"Expected one named volume at {destination}")
+        return mounts[0]["Name"]
+
+    def configured_named_volume(self, service: str, destination: str) -> str:
+        mounts = [mount for mount in self.config["services"][service].get("volumes", [])
+                  if mount.get("target") == destination]
+        if len(mounts) != 1 or mounts[0].get("type") != "volume":
+            raise DeploymentError(f"Expected one configured named volume at {destination}")
+        volume = self.config.get("volumes", {}).get(mounts[0].get("source"), {})
+        if not volume.get("name"):
+            raise DeploymentError(f"Configured volume at {destination} has no resolved name")
+        return volume["name"]
+
     def wait_healthy(self, reference):
         if reference is None:
             raise DeploymentError("Missing required deployment container")

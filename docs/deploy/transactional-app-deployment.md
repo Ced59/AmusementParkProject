@@ -6,6 +6,14 @@ Le retrait forcé d’un candidat pouvait interrompre une réponse encore trait�
 
 Le parcours met à jour **front et API**, derrière l’edge existant, avec au plus deux paires. Il conserve MongoDB, MinIO, l’edge, leurs volumes et leur réseau. Le hash de configuration Compose et l’image effective des services partagés doivent correspondre au bundle ; une modification de cette infrastructure bloque avant création d’un candidat. Une première installation, une pile déjà dégradée sans journal exploitable et une maintenance d’infrastructure nécessitent une opération distincte. `DEPLOY_ZERO_DOWNTIME_ENABLED=false` ne déclenche plus un remplacement global implicite.
 
+Une dérive de l'image `mongo:8.0` se traite uniquement par un lancement manuel du
+workflow `Production CI/CD` avec `deploy=true` et
+`shared_infrastructure_maintenance=mongodb`. Ce choix non sélectionné par défaut
+conserve le verrou global, exige la sauvegarde MongoDB, recrée uniquement le service
+MongoDB, vérifie que le volume nommé monté sur `/data/db` est strictement le même,
+attend son retour à l'état sain, puis reprend le déploiement transactionnel de
+l'API et du front. Un push ordinaire reste incapable de recréer un service partagé.
+
 L’edge doit avoir exactement `worker_processes 1`, vérifié sur la configuration complète par `nginx -T`. Le protocole refuse un autre nombre de workers. Les protections HTTP, les limites de corps, le routage statique XML/robots, les en-têtes et les routes publiques restent inchangés.
 
 ## Installation sous verrou

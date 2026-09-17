@@ -44,6 +44,7 @@ deploy_compose_log_timeout_seconds="${DEPLOY_COMPOSE_LOG_TIMEOUT_SECONDS:-30}"
 deploy_compose_up_timeout_seconds="${DEPLOY_COMPOSE_UP_TIMEOUT_SECONDS:-300}"
 deploy_docker_prune_timeout_seconds="${DEPLOY_DOCKER_PRUNE_TIMEOUT_SECONDS:-120}"
 deploy_zero_downtime_enabled="${DEPLOY_ZERO_DOWNTIME_ENABLED:-true}"
+shared_infrastructure_maintenance="${SHARED_INFRASTRUCTURE_MAINTENANCE:-none}"
 continuous_warmup_service_name="amusementpark-ssr-warmup.service"
 personal_ranking_cutover_started=false
 
@@ -395,6 +396,23 @@ fi
 
 echo "Pulling production images..."
 compose pull
+
+case "${shared_infrastructure_maintenance}" in
+  none)
+    ;;
+  mongodb)
+    if [ "${BACKUP_BEFORE_DEPLOY:-true}" != "true" ]; then
+      echo "MongoDB maintenance requires BACKUP_BEFORE_DEPLOY=true." >&2
+      exit 1
+    fi
+
+    python3 ./scripts/deployment_transaction.py maintain-mongodb
+    ;;
+  *)
+    echo "Unsupported shared infrastructure maintenance target: ${shared_infrastructure_maintenance}." >&2
+    exit 1
+    ;;
+esac
 
 if [ "${deploy_zero_downtime_enabled}" != "true" ]; then
   echo "This deployment requires transactional rolling mode; no implicit maintenance fallback is allowed." >&2
