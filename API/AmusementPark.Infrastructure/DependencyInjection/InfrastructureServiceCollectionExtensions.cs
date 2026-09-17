@@ -188,6 +188,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IFactualChangeOutboxRepository, FactualChangeOutboxRepository>();
         services.AddScoped<IFactualChangeEventRepository, FactualChangeEventRepository>();
         services.AddScoped<IWatchSubscriptionRepository, WatchSubscriptionRepository>();
+        services.AddSingleton<TripPlanCreationFingerprint>();
         services.AddScoped<ITripPlanRepository, TripPlanRepository>();
         services.AddSingleton<ITripTimeZoneValidator, SystemTripTimeZoneValidator>();
         services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();

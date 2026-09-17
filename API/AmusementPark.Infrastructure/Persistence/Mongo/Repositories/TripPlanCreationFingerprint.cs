@@ -3,17 +3,42 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using AmusementPark.Core.Domain.Trips;
+using AmusementPark.Infrastructure.Configuration.Authentication;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
-internal static class TripPlanCreationFingerprint
+public sealed class TripPlanCreationFingerprint
 {
+    private static readonly byte[] PayloadSigningPurpose =
+        Encoding.UTF8.GetBytes("amusement-park/trip-plan/creation-payload/v1");
+    private readonly byte[] payloadSigningKey;
+
+    public TripPlanCreationFingerprint(JwtSettings settings)
+    {
+        ArgumentNullException.ThrowIfNull(settings);
+        if (string.IsNullOrWhiteSpace(settings.Key))
+        {
+            throw new ArgumentException("A server signing key is required.", nameof(settings));
+        }
+
+        byte[] rootKey = Encoding.UTF8.GetBytes(settings.Key);
+        try
+        {
+            using HMACSHA256 keyDerivation = new(rootKey);
+            this.payloadSigningKey = keyDerivation.ComputeHash(PayloadSigningPurpose);
+        }
+        finally
+        {
+            CryptographicOperations.ZeroMemory(rootKey);
+        }
+    }
+
     public static string HashOperationKey(string clientOperationId)
     {
         return Hash(clientOperationId);
     }
 
-    public static string HashPayload(TripPlan tripPlan)
+    public string HashPayload(TripPlan tripPlan)
     {
         ArgumentNullException.ThrowIfNull(tripPlan);
         TripPlanCreationPayload payload = new(
@@ -24,7 +49,16 @@ internal static class TripPlanCreationFingerprint
             Format(tripPlan.DateProposal.EndDate),
             tripPlan.DateProposal.CandidateDates.Select(static date => Format(date)!).ToArray(),
             tripPlan.DestinationTimeZoneId);
-        return Hash(JsonSerializer.Serialize(payload));
+        byte[] serializedPayload = JsonSerializer.SerializeToUtf8Bytes(payload);
+        try
+        {
+            using HMACSHA256 hmac = new(this.payloadSigningKey);
+            return Convert.ToHexString(hmac.ComputeHash(serializedPayload)).ToLowerInvariant();
+        }
+        finally
+        {
+            CryptographicOperations.ZeroMemory(serializedPayload);
+        }
     }
 
     private static string? Format(DateOnly? value)

@@ -12,15 +12,23 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class TripPlanRepository : ITripPlanRepository
 {
     private readonly IMongoCollection<TripPlanDocument> collection;
+    private readonly TripPlanCreationFingerprint creationFingerprint;
 
-    public TripPlanRepository(IMongoDatabase database, MongoDbSettings settings)
-        : this(GetCollection(database, settings))
+    public TripPlanRepository(
+        IMongoDatabase database,
+        MongoDbSettings settings,
+        TripPlanCreationFingerprint creationFingerprint)
+        : this(GetCollection(database, settings), creationFingerprint)
     {
     }
 
-    internal TripPlanRepository(IMongoCollection<TripPlanDocument> collection)
+    internal TripPlanRepository(
+        IMongoCollection<TripPlanDocument> collection,
+        TripPlanCreationFingerprint creationFingerprint)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
+        this.creationFingerprint = creationFingerprint
+            ?? throw new ArgumentNullException(nameof(creationFingerprint));
     }
 
     public async Task<IdempotentTripPlanCreationResult?> ResolveExistingCreationAsync(
@@ -38,7 +46,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
             .FirstOrDefaultAsync(cancellationToken);
         return existing is null
             ? null
-            : ResolveIdempotentCreation(existing, TripPlanCreationFingerprint.HashPayload(requestedTripPlan));
+            : ResolveIdempotentCreation(existing, this.creationFingerprint.HashPayload(requestedTripPlan));
     }
 
     public async Task<IdempotentTripPlanCreationResult> CreateIdempotentAsync(
@@ -49,7 +57,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
         ArgumentNullException.ThrowIfNull(tripPlan);
         string normalizedOperationId = NormalizeRequired(clientOperationId, nameof(clientOperationId));
         string operationKeyHash = TripPlanCreationFingerprint.HashOperationKey(normalizedOperationId);
-        string payloadHash = TripPlanCreationFingerprint.HashPayload(tripPlan);
+        string payloadHash = this.creationFingerprint.HashPayload(tripPlan);
         FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
         List<TripPlanDocument> owned = await this.collection.Find(
                 filters.Eq(static document => document.OwnerUserId, tripPlan.OwnerUserId)
