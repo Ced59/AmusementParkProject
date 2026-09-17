@@ -687,13 +687,17 @@ nouvelle lease dont `ActorMemberId` ou `SubjectMemberId` le désigne. Le job att
 ou expire les leases enfant où il est acteur, ainsi que celles de son ancien epoch
 où il est sujet. Il invalide aussi toute `InvitationCreationLease` `Active` dont il
 est l'acteur : son commit exigeant encore l'ancien epoch et l'état `Active` échoue,
-puis les invitations `Prepared` ou `Active` de ces opérations sont compensées. Une
-lease déjà `Committed` est d'abord finalisée de manière idempotente, car sa création
-avait gagné avant le départ, puis son invitation encore ouverte est révoquée. Le job
-purge ensuite contraintes, préférences et coquilles de ce membre, effectue un second
-balayage, puis retire ou anonymise le membre. L'opération ne devient terminale
-qu'après ce second balayage ; une panne reste reprenable et le membre ne récupère
-jamais son accès entre-temps.
+puis le tombstone `Leaving` conserve les opérations et générations invalidées. Le
+job attend leur échéance augmentée de la marge serveur maximale, compense les
+invitations `Prepared` ou `Active` correspondantes, puis refait un second balayage.
+Une activation en transit ne peut donc pas survivre à la barrière. Une lease déjà
+`Committed` est d'abord finalisée de manière idempotente, car sa création avait
+gagné avant le départ, puis son invitation encore ouverte est révoquée. Le job purge
+ensuite contraintes, préférences et coquilles de ce membre et retire ou anonymise le
+membre seulement après tous les seconds balayages. Le tombstone et les identités
+d'opérations restent réconciliables pendant la rétention annoncée. L'opération ne
+devient terminale qu'après cette barrière ; une panne reste reprenable et le membre
+ne récupère jamais son accès entre-temps.
 
 ## Décision 12 — contrat UX, accessibilité et responsive
 
@@ -762,6 +766,8 @@ variantes ne sont pas réellement servies.
   sans générer un second token ni laisser une lease décidée ;
 - départ d'un invitant invalidant ses leases de création par `ActorMemberId` et
   `MemberDataEpoch` avant le second balayage ;
+- départ attendant l'échéance et la marge serveur des créations invalidées, puis
+  rebalaie leurs invitations avant de retirer le tombstone du membre ;
 - reprise d'une lease `Committed` par recherche indexée de son `operationId`, sans
   balayage de la collection d'idempotence ;
 - token brut absent en clair de Mongo, des logs et des jobs ;
