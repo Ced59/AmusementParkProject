@@ -536,15 +536,16 @@ les écritures dans une collection enfant suivent une barrière commune :
    `Committed`. Si la coquille a été purgée, remplacée par une nouvelle génération
    ou si l'échéance est passée, il n'existe donc aucune branche capable de
    matérialiser ou recréer l'ancien contenu privé ;
-4. une modification d'un document `Committed` installe d'abord, par version
-   attendue, un sous-document `PendingMutation` sans nouveau contenu. Il porte la
-   nouvelle opération, les epochs, la génération et l'échéance. Un second
-   `UpdateOne` sans upsert exige cette identité exacte et applique le nouveau
-   contenu tout en retirant `PendingMutation`. Son filtre répète obligatoirement la
-   garde serveur `$expr: $$NOW < PendingMutation.LeaseExpiresAtUtc`. Pendant ce
-   temps, les lectures continuent à voir l'ancien contenu `Committed`. Une mutation
-   expirée est abandonnée et son sous-document technique est retiré par le
-   reconciler ;
+4. une modification d'un document `Committed` installe d'abord, par `UpdateOne`
+   sans upsert, version attendue et garde serveur
+   `$expr: $$NOW < LeaseExpiresAtUtc`, un sous-document `PendingMutation` sans
+   nouveau contenu. Il porte la nouvelle opération, les epochs, la génération et
+   l'échéance. Un second `UpdateOne` sans upsert exige cette identité exacte et
+   applique le nouveau contenu tout en retirant `PendingMutation`. Son filtre
+   répète obligatoirement la garde serveur
+   `$expr: $$NOW < PendingMutation.LeaseExpiresAtUtc`. Pendant ce temps, les
+   lectures continuent à voir l'ancien contenu `Committed`. Une mutation expirée
+   est abandonnée et son sous-document technique est retiré par le reconciler ;
 5. l'écriture libère sa lease de façon idempotente, avec reprise par reconciler.
 
 La suppression passe atomiquement le plan à `Pending`, incrémente
