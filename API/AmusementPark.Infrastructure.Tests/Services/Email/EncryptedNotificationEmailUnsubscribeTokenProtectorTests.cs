@@ -73,6 +73,21 @@ public sealed class EncryptedNotificationEmailUnsubscribeTokenProtectorTests
         Assert.Empty(userId);
     }
 
+    [Fact]
+    public void TryReadUserId_ShouldRejectSurroundingWhitespace()
+    {
+        EncryptedNotificationEmailUnsubscribeTokenProtector protector = CreateProtector();
+        string token = protector.CreateToken("user-1");
+
+        bool leadingSuccess = protector.TryReadUserId(" " + token, out string leadingUserId);
+        bool trailingSuccess = protector.TryReadUserId(token + " ", out string trailingUserId);
+
+        Assert.False(leadingSuccess);
+        Assert.Empty(leadingUserId);
+        Assert.False(trailingSuccess);
+        Assert.Empty(trailingUserId);
+    }
+
     private static EncryptedNotificationEmailUnsubscribeTokenProtector CreateProtector()
     {
         return new EncryptedNotificationEmailUnsubscribeTokenProtector(new JwtSettings

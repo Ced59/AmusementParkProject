@@ -52,6 +52,7 @@ public sealed class EncryptedNotificationEmailUnsubscribeTokenProtector
         string normalizedToken = token?.Trim() ?? string.Empty;
         if (normalizedToken.Length == 0
             || normalizedToken.Length > 1000
+            || !string.Equals(token, normalizedToken, StringComparison.Ordinal)
             || !TryDecode(normalizedToken, out byte[] payload)
             || payload.Length <= 1 + NonceLength + TagLength
             || payload[0] != TokenVersion)
