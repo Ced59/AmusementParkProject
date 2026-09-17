@@ -518,9 +518,13 @@ les écritures dans une collection enfant suivent une barrière commune :
    échéance ne peut donc pas démarrer une écriture tardive ;
 3. chaque document enfant porte l'epoch et l'opération qui l'ont écrit. Le port
    refuse une commande dont la lease est expirée ou annulée avant d'appeler Mongo.
-   L'écriture utilise un upsert conditionnel, jamais `InsertOne`, avec une garde
-   serveur `$expr: $$NOW < LeaseExpiresAtUtc` ; une requête restée en transit après
-   l'échéance ne peut donc pas créer le document ;
+   La création réserve d'abord une coquille `Reserved` sans contenu utilisateur,
+   contenant seulement identifiants techniques, epoch et échéance, avec TTL. Le
+   contenu est ensuite matérialisé et passé à `Committed` par `UpdateOne` sans
+   upsert, avec une garde serveur `$expr: $$NOW < LeaseExpiresAtUtc`. Les mises à
+   jour utilisent la même garde sans upsert et les lectures ignorent toute coquille
+   non `Committed`. Si la coquille a été purgée ou si l'échéance est passée, il
+   n'existe donc aucune branche d'insertion capable de recréer le contenu privé ;
 4. l'écriture libère sa lease de façon idempotente, avec reprise par reconciler.
 
 La suppression passe atomiquement le plan à `Pending`, incrémente
@@ -530,10 +534,11 @@ au délai serveur maximal. Le job purge tous les enfants d'un epoch antérieur,
 refait un balayage après la barrière et passe à `Purged` seulement si aucune lease
 ni donnée ancienne ne subsiste. Le tombstone du plan est conservé pendant la durée
 de rétention annoncée ; pendant cette période, le reconciler supprime également
-toute écriture ambiguë de l'ancien epoch observée après coup. Une panne conserve
-`Pending` ou `Purging`, ne réactive jamais le plan et ne déclare jamais la purge
-terminée prématurément. Les délais exacts seront fixés avec l'implémentation et
-documentés dans la politique de confidentialité avant activation.
+toute coquille technique tardive de l'ancien epoch, que son TTL aurait aussi
+éliminée. Une panne conserve `Pending` ou `Purging`, ne réactive jamais le plan et
+ne déclare jamais la purge terminée prématurément. Les délais exacts seront fixés
+avec l'implémentation et documentés dans la politique de confidentialité avant
+activation.
 
 ## Décision 12 — contrat UX, accessibilité et responsive
 
@@ -590,6 +595,8 @@ variantes ne sont pas réellement servies.
 - suppression et anonymisation reprenables ;
 - suppression bloquant les nouvelles leases, attendant les écritures de l'ancien
   epoch et repurgeant toute écriture ambiguë avant `Purged` ;
+- création enfant retardée incapable de matérialiser du contenu sans une coquille
+  `Reserved` encore valide, et coquilles tardives purgées par TTL ;
 - absence de lecture N+1 sur les listes et synthèses.
 
 ### Angular, SSR et mobile
