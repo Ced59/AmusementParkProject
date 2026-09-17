@@ -272,8 +272,16 @@ traite 25 plans par minute au maximum.
 | `DELETE` | `/me/trips/{tripId}/days/{yyyy-MM-dd}` | retrait explicite d'une journée |
 
 Les DTO conservent les identifiants nécessaires aux mutations et aux liens, mais
-le libellé visible est toujours `parkName`. Les routes sont authentifiées, privées,
-sans cache, et n'ouvrent aucun partage public.
+le libellé visible est toujours `parkName`. Si le parc ne peut plus être résolu,
+`parkName` vaut `null` et `isParkAvailable` vaut `false` afin que chaque client
+affiche son propre libellé localisé sans transformer une phrase en nom métier. Les
+routes sont authentifiées, privées, sans cache, et n'ouvrent aucun partage public.
+
+La lecture du programme encadre candidats et journées par deux lectures de la
+séquence de mutations enfants portée par `trip-plans`. Si la séquence change, le
+snapshot complet est relu, au maximum trois fois. Une lecture trop disputée échoue
+explicitement plutôt que de mélanger un candidat d'avant mutation avec une journée
+d'après mutation.
 
 ## Preuves automatisées
 
@@ -281,6 +289,7 @@ sans cache, et n'ouvrent aucun partage public.
 - Application : libération de lease, hydratation en lot sans identifiant affiché,
   validation globale avant changement de dates, libération best-effort après un
   commit, rejeu avant préconditions mutables, blocage du rejeu après suppression,
+  lecture cohérente avec retry, disponibilité neutre des parcs,
   ordre purge/finalisation et reprise de suppression ;
 - Infrastructure : indexes uniques et TTL, gardes `$$NOW`, documents de mutation
   et remplacement atomique de l'ordre canonique ;

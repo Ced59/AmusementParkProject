@@ -5,7 +5,8 @@ namespace AmusementPark.Application.Features.Trips.Results;
 public sealed record TripParkCandidateResult(
     string CandidateId,
     string ParkId,
-    string ParkName,
+    string? ParkName,
+    bool IsParkAvailable,
     IReadOnlyCollection<DateOnly> CandidateDates,
     TripParkCandidateSource Source,
     TripParkCandidateState State,

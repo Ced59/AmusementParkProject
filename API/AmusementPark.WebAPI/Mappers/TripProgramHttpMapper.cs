@@ -102,6 +102,7 @@ public static class TripProgramHttpMapper
             CandidateId = result.CandidateId,
             ParkId = result.ParkId,
             ParkName = result.ParkName,
+            IsParkAvailable = result.IsParkAvailable,
             CandidateDates = result.CandidateDates.Select(FormatDate).ToArray(),
             Source = result.Source.ToString(),
             State = result.State.ToString(),
@@ -131,6 +132,7 @@ public static class TripProgramHttpMapper
             ParkCandidateId = result.ParkCandidateId,
             ParkId = result.ParkId,
             ParkName = result.ParkName,
+            IsParkAvailable = result.IsParkAvailable,
             DesiredArrivalTime = result.DesiredArrivalTime?.ToString(TimeFormat, CultureInfo.InvariantCulture),
             GroupNote = result.GroupNote,
             Blocks = result.Blocks.Select(static block => new TripDayBlockDto

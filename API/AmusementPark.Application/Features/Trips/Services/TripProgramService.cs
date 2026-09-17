@@ -58,9 +58,9 @@ public sealed class TripProgramService
             return ApplicationResult<TripProgramResult>.Failure(TripPlanApplicationErrors.NotFound());
         }
 
-        return ApplicationResult<TripProgramResult>.Success(await this.resultFactory.BuildAsync(
+        return await this.resultFactory.BuildAsync(
             parsedTripId,
-            cancellationToken));
+            cancellationToken);
     }
 
     public async Task<ApplicationResult<CreateTripParkCandidateResult>> AddCandidateAsync(
@@ -344,12 +344,13 @@ public sealed class TripProgramService
                         plan,
                         lease,
                         cancellationToken);
-                    return outcome == TripChildWriteOutcome.Success
-                        ? ApplicationResult<TripProgramResult>.Success(await this.resultFactory.BuildAsync(
-                            trip.Id,
-                            cancellationToken))
-                        : ApplicationResult<TripProgramResult>.Failure(
+                    if (outcome != TripChildWriteOutcome.Success)
+                    {
+                        return ApplicationResult<TripProgramResult>.Failure(
                             TripPlanApplicationErrors.ChildMutationUnavailable());
+                    }
+
+                    return await this.resultFactory.BuildAsync(trip.Id, cancellationToken);
                 }
                 catch (KeyNotFoundException)
                 {

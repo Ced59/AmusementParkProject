@@ -114,7 +114,10 @@ du modèle ne coexiste.
 
 Les routes authentifiées `me/trips/{tripId}/program`, `parks` et `days/{date}`
 exposent les noms de parc résolus en lot. Les identifiants techniques restent des
-clés d'action et ne servent jamais de libellé. Ce jalon livre volontairement le
+clés d'action et ne servent jamais de libellé. Un parc devenu indisponible expose
+un nom nul et un statut neutre à localiser par le client. La lecture du programme
+est rejouée si la séquence de mutations enfants change entre la lecture des
+candidats et celle des journées. Ce jalon livre volontairement le
 contrat métier et sa persistance ; `TRIP-04` apporte l'expérience visuelle mobile,
 la wishlist et le réordonnancement accessible.
 

@@ -112,6 +112,7 @@ public sealed class TripProgramHttpMapperTests
             "candidate-1",
             "park-technical-id",
             "Europa-Park",
+            true,
             Array.Empty<DateOnly>(),
             TripParkCandidateSource.Manual,
             TripParkCandidateState.Proposed,
@@ -125,6 +126,31 @@ public sealed class TripProgramHttpMapperTests
         TripParkCandidateDto dto = result.ToHttp();
 
         Assert.Equal("Europa-Park", dto.ParkName);
+        Assert.True(dto.IsParkAvailable);
         Assert.NotEqual(dto.ParkId, dto.ParkName);
+    }
+
+    [Fact]
+    public void ToHttp_ShouldKeepTheLocaleNeutralUnavailableParkState()
+    {
+        TripParkCandidateResult result = new(
+            "candidate-1",
+            "park-technical-id",
+            null,
+            false,
+            Array.Empty<DateOnly>(),
+            TripParkCandidateSource.Manual,
+            TripParkCandidateState.Proposed,
+            null,
+            null,
+            1024,
+            1,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
+
+        TripParkCandidateDto dto = result.ToHttp();
+
+        Assert.Null(dto.ParkName);
+        Assert.False(dto.IsParkAvailable);
     }
 }

@@ -4,7 +4,8 @@ public sealed class TripParkCandidateDto
 {
     public string CandidateId { get; set; } = string.Empty;
     public string ParkId { get; set; } = string.Empty;
-    public string ParkName { get; set; } = string.Empty;
+    public string? ParkName { get; set; }
+    public bool IsParkAvailable { get; set; }
     public IReadOnlyCollection<string> CandidateDates { get; set; } = Array.Empty<string>();
     public string Source { get; set; } = string.Empty;
     public string State { get; set; } = string.Empty;

@@ -391,7 +391,7 @@ public sealed class TripProgramServiceTests
             new TripChildMutationExecutor(
                 leases.Object,
                 NullLogger<TripChildMutationExecutor>.Instance),
-            new TripProgramResultFactory(candidates.Object, days.Object, parks.Object),
+            new TripProgramResultFactory(trips.Object, candidates.Object, days.Object, parks.Object),
             clock.Object);
 
         AmusementPark.Application.Errors.ApplicationResult<CreateTripParkCandidateResult> result =
@@ -473,7 +473,7 @@ public sealed class TripProgramServiceTests
             new TripChildMutationExecutor(
                 leases.Object,
                 NullLogger<TripChildMutationExecutor>.Instance),
-            new TripProgramResultFactory(candidates.Object, days.Object, parks.Object));
+            new TripProgramResultFactory(trips.Object, candidates.Object, days.Object, parks.Object));
 
         AmusementPark.Application.Errors.ApplicationResult<CreateTripParkCandidateResult> result =
             await service.AddCandidateAsync(
@@ -532,7 +532,7 @@ public sealed class TripProgramServiceTests
             new TripChildMutationExecutor(
                 leases.Object,
                 NullLogger<TripChildMutationExecutor>.Instance),
-            new TripProgramResultFactory(candidates.Object, days.Object, parks.Object));
+            new TripProgramResultFactory(trips.Object, candidates.Object, days.Object, parks.Object));
 
         AmusementPark.Application.Errors.ApplicationResult<CreateTripParkCandidateResult> result =
             await service.AddCandidateAsync(
@@ -604,7 +604,7 @@ public sealed class TripProgramServiceTests
             new TripChildMutationExecutor(
                 leases.Object,
                 NullLogger<TripChildMutationExecutor>.Instance),
-            new TripProgramResultFactory(candidates.Object, days.Object, parks.Object));
+            new TripProgramResultFactory(trips.Object, candidates.Object, days.Object, parks.Object));
 
         AmusementPark.Application.Errors.ApplicationResult<CreateTripParkCandidateResult> result =
             await service.AddCandidateAsync(

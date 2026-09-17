@@ -191,6 +191,18 @@ public sealed class TripPlanRepository : ITripPlanRepository
         return document?.ToDomain();
     }
 
+    public async Task<long?> GetProgramReadSequenceAsync(
+        TripPlanId tripPlanId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        return await this.collection.Find(
+                filters.Eq(static document => document.Id, tripPlanId.Value)
+                & filters.Eq(static document => document.DeletionState, TripDeletionState.None))
+            .Project(static document => (long?)document.ChildMutationLeaseSequence)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
     public async Task<TripPlanWriteResult> ReplaceOwnedAsync(
         TripPlan tripPlan,
         long expectedVersion,

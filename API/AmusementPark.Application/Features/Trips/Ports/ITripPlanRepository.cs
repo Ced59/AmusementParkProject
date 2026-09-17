@@ -29,6 +29,10 @@ public interface ITripPlanRepository
         TripPlanId tripPlanId,
         CancellationToken cancellationToken);
 
+    Task<long?> GetProgramReadSequenceAsync(
+        TripPlanId tripPlanId,
+        CancellationToken cancellationToken);
+
     Task<TripPlanWriteResult> ReplaceOwnedAsync(
         TripPlan tripPlan,
         long expectedVersion,

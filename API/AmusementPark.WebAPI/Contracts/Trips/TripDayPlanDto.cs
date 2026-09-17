@@ -6,7 +6,8 @@ public sealed class TripDayPlanDto
     public string LocalDate { get; set; } = string.Empty;
     public string ParkCandidateId { get; set; } = string.Empty;
     public string ParkId { get; set; } = string.Empty;
-    public string ParkName { get; set; } = string.Empty;
+    public string? ParkName { get; set; }
+    public bool IsParkAvailable { get; set; }
     public string? DesiredArrivalTime { get; set; }
     public string? GroupNote { get; set; }
     public IReadOnlyCollection<TripDayBlockDto> Blocks { get; set; } = Array.Empty<TripDayBlockDto>();

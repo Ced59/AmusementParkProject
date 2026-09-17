@@ -1,3 +1,4 @@
+using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Results;
@@ -8,15 +9,21 @@ namespace AmusementPark.Application.Features.Trips.Services;
 
 public sealed class TripProgramResultFactory
 {
+    public const int MaximumConsistentReadAttempts = 3;
+
+    private readonly ITripPlanRepository tripPlanRepository;
     private readonly ITripParkCandidateRepository candidateRepository;
     private readonly ITripDayPlanRepository dayPlanRepository;
     private readonly IParkRepository parkRepository;
 
     public TripProgramResultFactory(
+        ITripPlanRepository tripPlanRepository,
         ITripParkCandidateRepository candidateRepository,
         ITripDayPlanRepository dayPlanRepository,
         IParkRepository parkRepository)
     {
+        this.tripPlanRepository = tripPlanRepository
+            ?? throw new ArgumentNullException(nameof(tripPlanRepository));
         this.candidateRepository = candidateRepository
             ?? throw new ArgumentNullException(nameof(candidateRepository));
         this.dayPlanRepository = dayPlanRepository
@@ -24,17 +31,48 @@ public sealed class TripProgramResultFactory
         this.parkRepository = parkRepository ?? throw new ArgumentNullException(nameof(parkRepository));
     }
 
-    public async Task<TripProgramResult> BuildAsync(
+    public async Task<ApplicationResult<TripProgramResult>> BuildAsync(
         TripPlanId tripPlanId,
         CancellationToken cancellationToken)
     {
-        Task<IReadOnlyCollection<TripParkCandidate>> candidatesTask =
-            this.candidateRepository.ListAsync(tripPlanId, cancellationToken);
-        Task<IReadOnlyCollection<TripDayPlan>> daysTask =
-            this.dayPlanRepository.ListAsync(tripPlanId, cancellationToken);
-        await Task.WhenAll(candidatesTask, daysTask);
-        IReadOnlyCollection<TripParkCandidate> candidates = await candidatesTask;
-        IReadOnlyCollection<TripDayPlan> days = await daysTask;
+        IReadOnlyCollection<TripParkCandidate>? candidates = null;
+        IReadOnlyCollection<TripDayPlan>? days = null;
+        for (int attempt = 0; attempt < MaximumConsistentReadAttempts; attempt++)
+        {
+            long? sequenceBefore = await this.tripPlanRepository.GetProgramReadSequenceAsync(
+                tripPlanId,
+                cancellationToken);
+            if (!sequenceBefore.HasValue)
+            {
+                return ApplicationResult<TripProgramResult>.Failure(
+                    TripPlanApplicationErrors.NotFound());
+            }
+
+            Task<IReadOnlyCollection<TripParkCandidate>> candidatesTask =
+                this.candidateRepository.ListAsync(tripPlanId, cancellationToken);
+            Task<IReadOnlyCollection<TripDayPlan>> daysTask =
+                this.dayPlanRepository.ListAsync(tripPlanId, cancellationToken);
+            await Task.WhenAll(candidatesTask, daysTask);
+            candidates = await candidatesTask;
+            days = await daysTask;
+            long? sequenceAfter = await this.tripPlanRepository.GetProgramReadSequenceAsync(
+                tripPlanId,
+                cancellationToken);
+            if (sequenceAfter == sequenceBefore)
+            {
+                break;
+            }
+
+            candidates = null;
+            days = null;
+        }
+
+        if (candidates is null || days is null)
+        {
+            return ApplicationResult<TripProgramResult>.Failure(
+                TripPlanApplicationErrors.ChildMutationUnavailable());
+        }
+
         string[] parkIds = candidates.Select(static candidate => candidate.ParkId)
             .Concat(days.Select(static day => day.ParkId))
             .Distinct(StringComparer.Ordinal)
@@ -45,23 +83,25 @@ public sealed class TripProgramResultFactory
         Dictionary<string, string?> parkNames = parks
             .Where(static park => park.Id is not null)
             .ToDictionary(static park => park.Id!, static park => park.Name, StringComparer.Ordinal);
-        return new TripProgramResult(
+        return ApplicationResult<TripProgramResult>.Success(new TripProgramResult(
             candidates.Select(candidate => ToCandidateResult(
                 candidate,
                 parkNames.GetValueOrDefault(candidate.ParkId))).ToArray(),
             days.Select(day => ToDayResult(
                 day,
-                parkNames.GetValueOrDefault(day.ParkId))).ToArray());
+                parkNames.GetValueOrDefault(day.ParkId))).ToArray()));
     }
 
     public static TripParkCandidateResult ToCandidateResult(
         TripParkCandidate candidate,
         string? parkName)
     {
+        string? normalizedParkName = NormalizeParkName(parkName);
         return new TripParkCandidateResult(
             candidate.Id.Value,
             candidate.ParkId,
-            NormalizeParkName(parkName),
+            normalizedParkName,
+            normalizedParkName is not null,
             candidate.CandidateDates,
             candidate.Source,
             candidate.State,
@@ -80,12 +120,14 @@ public sealed class TripProgramResultFactory
 
     public static TripDayPlanResult ToDayResult(TripDayPlan dayPlan, string? parkName)
     {
+        string? normalizedParkName = NormalizeParkName(parkName);
         return new TripDayPlanResult(
             dayPlan.Id.Value,
             dayPlan.LocalDate,
             dayPlan.ParkCandidateId.Value,
             dayPlan.ParkId,
-            NormalizeParkName(parkName),
+            normalizedParkName,
+            normalizedParkName is not null,
             dayPlan.DesiredArrivalTime,
             dayPlan.GroupNote,
             dayPlan.Blocks.Select(static block => new TripDayBlockResult(
@@ -100,8 +142,8 @@ public sealed class TripProgramResultFactory
             dayPlan.UpdatedAtUtc);
     }
 
-    private static string NormalizeParkName(string? parkName)
+    private static string? NormalizeParkName(string? parkName)
     {
-        return string.IsNullOrWhiteSpace(parkName) ? "Parc indisponible" : parkName.Trim();
+        return string.IsNullOrWhiteSpace(parkName) ? null : parkName.Trim();
     }
 }
