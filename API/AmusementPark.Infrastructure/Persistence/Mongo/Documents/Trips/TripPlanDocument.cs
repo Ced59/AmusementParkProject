@@ -50,7 +50,12 @@ public sealed class TripPlanDocument : MongoDocumentBase
     public string CreationPayloadHash { get; set; } = string.Empty;
 
     [BsonElement("creationSnapshot")]
-    public TripPlanCreationSnapshotDocument CreationSnapshot { get; set; } = new();
+    [BsonIgnoreIfNull]
+    public TripPlanCreationSnapshotDocument? CreationSnapshot { get; set; }
+
+    [BsonElement("creationOperationExpiresAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? CreationOperationExpiresAtUtc { get; set; }
 
     [BsonElement("version")]
     public long Version { get; set; }

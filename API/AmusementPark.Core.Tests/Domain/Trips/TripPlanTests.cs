@@ -67,4 +67,22 @@ public sealed class TripPlanTests
 
         Assert.Equal(TripPlanErrorCodes.InvalidTimeZone, exception.Code);
     }
+
+    [Fact]
+    public void BeginDeletion_ShouldCloseAdmissionsAndIncrementTheVersion()
+    {
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            CreatedAtUtc);
+
+        trip.BeginDeletion(CreatedAtUtc.AddMinutes(1));
+
+        Assert.Equal(TripDeletionState.Pending, trip.DeletionState);
+        Assert.Equal(TripAdmissionClosureState.Closing, trip.AdmissionClosureState);
+        Assert.Equal(2, trip.Version);
+    }
 }

@@ -35,8 +35,7 @@ public interface ITripPlanRepository
         CancellationToken cancellationToken);
 
     Task<TripPlanWriteOutcome> DeleteOwnedAsync(
-        string userId,
-        TripPlanId tripPlanId,
+        TripPlan tripPlan,
         long expectedVersion,
         CancellationToken cancellationToken);
 }

@@ -50,10 +50,10 @@ public sealed class TripPlanRepository : ITripPlanRepository
         string normalizedOperationId = NormalizeRequired(clientOperationId, nameof(clientOperationId));
         string operationKeyHash = TripPlanCreationFingerprint.HashOperationKey(normalizedOperationId);
         string payloadHash = TripPlanCreationFingerprint.HashPayload(tripPlan);
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
         List<TripPlanDocument> owned = await this.collection.Find(
-                Builders<TripPlanDocument>.Filter.Eq(
-                    static document => document.OwnerUserId,
-                    tripPlan.OwnerUserId))
+                filters.Eq(static document => document.OwnerUserId, tripPlan.OwnerUserId)
+                & filters.Eq(static document => document.DeletionState, TripDeletionState.None))
             .Project<TripPlanDocument>(Builders<TripPlanDocument>.Projection
                 .Include(static document => document.OwnerSlot)
                 .Include(static document => document.CreationOperationKeyHash)
@@ -188,24 +188,34 @@ public sealed class TripPlanRepository : ITripPlanRepository
     }
 
     public async Task<TripPlanWriteOutcome> DeleteOwnedAsync(
-        string userId,
-        TripPlanId tripPlanId,
+        TripPlan tripPlan,
         long expectedVersion,
         CancellationToken cancellationToken)
     {
-        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
-        DeleteResult result = await this.collection.DeleteOneAsync(
-            BuildOwnedFilter(normalizedUserId, tripPlanId)
+        ArgumentNullException.ThrowIfNull(tripPlan);
+        if (expectedVersion == long.MaxValue || tripPlan.Version != expectedVersion + 1)
+        {
+            throw new ArgumentException(
+                "The deleted trip must be exactly one version ahead of the expected version.",
+                nameof(tripPlan));
+        }
+
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            BuildOwnedFilter(tripPlan.OwnerUserId, tripPlan.Id)
                 & Builders<TripPlanDocument>.Filter.Eq(
                     static document => document.Version,
                     expectedVersion),
-            cancellationToken);
-        if (result.DeletedCount == 1)
+            TripPlanMongoDefinitions.BuildDeletionTombstone(tripPlan),
+            cancellationToken: cancellationToken);
+        if (result.MatchedCount == 1)
         {
             return TripPlanWriteOutcome.Success;
         }
 
-        TripPlan? existing = await this.GetOwnedAsync(normalizedUserId, tripPlanId, cancellationToken);
+        TripPlan? existing = await this.GetOwnedAsync(
+            tripPlan.OwnerUserId,
+            tripPlan.Id,
+            cancellationToken);
         return existing is null ? TripPlanWriteOutcome.NotFound : TripPlanWriteOutcome.Conflict;
     }
 
@@ -214,6 +224,13 @@ public sealed class TripPlanRepository : ITripPlanRepository
         string payloadHash)
     {
         ArgumentNullException.ThrowIfNull(existing);
+        if (existing.DeletionState != TripDeletionState.None)
+        {
+            return new IdempotentTripPlanCreationResult(
+                IdempotentTripPlanCreationStatus.Deleted,
+                null);
+        }
+
         bool matches = !string.IsNullOrWhiteSpace(existing.CreationPayloadHash)
             && string.Equals(existing.CreationPayloadHash, payloadHash, StringComparison.Ordinal);
         return matches

@@ -205,9 +205,30 @@ public sealed class TripPlanLifecycleService
                 "A valid trip and version are required."));
         }
 
+        TripPlan? trip = await this.repository.GetOwnedAsync(normalizedUserId, parsedId, cancellationToken);
+        if (trip is null)
+        {
+            return ApplicationResult.Failure(TripPlanApplicationErrors.NotFound());
+        }
+
+        if (trip.Version != expectedVersion)
+        {
+            return ApplicationResult.Failure(TripPlanApplicationErrors.ChangedConcurrently());
+        }
+
+        try
+        {
+            trip.BeginDeletion(this.timeProvider.GetUtcNow().UtcDateTime);
+        }
+        catch (TripPlanValidationException exception)
+        {
+            return ApplicationResult.Failure(TripPlanApplicationErrors.Invalid(
+                exception.Code,
+                exception.Message));
+        }
+
         TripPlanWriteOutcome outcome = await this.repository.DeleteOwnedAsync(
-            normalizedUserId,
-            parsedId,
+            trip,
             expectedVersion,
             cancellationToken);
         return outcome switch
@@ -253,6 +274,12 @@ public sealed class TripPlanLifecycleService
         if (creation.Status == IdempotentTripPlanCreationStatus.LimitReached)
         {
             return ApplicationResult<CreateTripPlanResult>.Failure(TripPlanApplicationErrors.LimitReached());
+        }
+
+        if (creation.Status == IdempotentTripPlanCreationStatus.Deleted)
+        {
+            return ApplicationResult<CreateTripPlanResult>.Failure(
+                TripPlanApplicationErrors.CreationWasDeleted());
         }
 
         TripPlan trip = creation.TripPlan

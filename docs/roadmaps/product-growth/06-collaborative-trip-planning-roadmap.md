@@ -51,6 +51,11 @@ dupliquer son autorité dans un second rôle.
 Les modifications sont déjà séparées en commandes fines pour renommer le voyage
 ou changer ses dates ; aucune route ne remplace silencieusement tout le plan.
 
+La suppression produit un tombstone technique limité à 24 heures : les données
+privées sont immédiatement effacées, mais les empreintes minimales de création
+restent assez longtemps pour qu'un ancien retry réseau ne puisse pas recréer le
+voyage supprimé. MongoDB purge automatiquement ce tombstone à l'expiration.
+
 Ce jalon reste volontairement sans écran : l'expérience utilisateur individuelle,
 conçue responsive dès 320 px, appartient à `TRIP-04`. `TRIP-03` enrichit d'abord
 le même agrégat avec les parcs candidats et les journées afin que l'interface ne

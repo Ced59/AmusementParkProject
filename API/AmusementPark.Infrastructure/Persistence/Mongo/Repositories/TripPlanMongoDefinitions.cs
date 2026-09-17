@@ -32,6 +32,36 @@ internal static class TripPlanMongoDefinitions
             .Set(static item => item.Version, document.Version);
     }
 
+    public static UpdateDefinition<TripPlanDocument> BuildDeletionTombstone(TripPlan trip)
+    {
+        ArgumentNullException.ThrowIfNull(trip);
+        if (trip.DeletionState != TripDeletionState.Pending
+            || trip.AdmissionClosureState != TripAdmissionClosureState.Closing)
+        {
+            throw new ArgumentException("The trip must have started deletion before it can be purged.", nameof(trip));
+        }
+
+        UpdateDefinitionBuilder<TripPlanDocument> updates = Builders<TripPlanDocument>.Update;
+        return updates.Combine(
+            updates.Set(static document => document.Title, string.Empty),
+            updates.Set(static document => document.DateProposal, new TripDateProposalDocument
+            {
+                Kind = TripDateProposalKind.None,
+            }),
+            updates.Unset(static document => document.DestinationTimeZoneId),
+            updates.Set(static document => document.Status, TripPlanStatus.Cancelled),
+            updates.Set(static document => document.AccessScope, TripPlanAccessScope.MembersOnly),
+            updates.Set(static document => document.Members, new List<TripMemberDocument>()),
+            updates.Set(static document => document.AdmissionClosureState, TripAdmissionClosureState.Closed),
+            updates.Set(static document => document.DeletionState, TripDeletionState.Purged),
+            updates.Unset(static document => document.CreationSnapshot),
+            updates.Set(
+                static document => document.CreationOperationExpiresAtUtc,
+                trip.UpdatedAtUtc.Add(TripPlan.CreationReplayRetention)),
+            updates.Set(static document => document.UpdatedAt, trip.UpdatedAtUtc),
+            updates.Set(static document => document.Version, trip.Version));
+    }
+
     public static IReadOnlyCollection<CreateIndexModel<TripPlanDocument>> BuildIndexes()
     {
         return new List<CreateIndexModel<TripPlanDocument>>
@@ -40,7 +70,14 @@ internal static class TripPlanMongoDefinitions
                 Builders<TripPlanDocument>.IndexKeys
                     .Ascending(static document => document.OwnerUserId)
                     .Ascending(static document => document.OwnerSlot),
-                new CreateIndexOptions { Unique = true, Name = "uq_trip_plan_owner_slot" }),
+                new CreateIndexOptions<TripPlanDocument>
+                {
+                    Unique = true,
+                    Name = "uq_trip_plan_owner_slot",
+                    PartialFilterExpression = Builders<TripPlanDocument>.Filter.Eq(
+                        static document => document.DeletionState,
+                        TripDeletionState.None),
+                }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
                     .Ascending(static document => document.OwnerUserId)
@@ -61,6 +98,19 @@ internal static class TripPlanMongoDefinitions
                     .Ascending(static document => document.DeletionState)
                     .Descending(static document => document.UpdatedAt),
                 new CreateIndexOptions { Name = "ix_trip_plan_owner_status_updated" }),
+            new(
+                Builders<TripPlanDocument>.IndexKeys
+                    .Ascending(static document => document.DeletionState)
+                    .Ascending(static document => document.UpdatedAt),
+                new CreateIndexOptions { Name = "ix_trip_plan_deletion_recovery" }),
+            new(
+                Builders<TripPlanDocument>.IndexKeys
+                    .Ascending(static document => document.CreationOperationExpiresAtUtc),
+                new CreateIndexOptions
+                {
+                    Name = "ttl_trip_plan_creation_tombstone",
+                    ExpireAfter = TimeSpan.Zero,
+                }),
         };
     }
 }

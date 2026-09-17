@@ -12,12 +12,12 @@ public sealed class SystemTripTimeZoneValidator : ITripTimeZoneValidator
         }
 
         string normalized = timeZoneId.Trim();
-        if (string.Equals(normalized, "Etc/UTC", StringComparison.Ordinal))
+        if (!string.Equals(normalized, "UTC", StringComparison.Ordinal)
+            && TimeZoneInfo.TryConvertWindowsIdToIanaId(normalized, out string? _))
         {
-            return true;
+            return false;
         }
 
-        return normalized.Contains('/', StringComparison.Ordinal)
-            && TimeZoneInfo.TryConvertIanaIdToWindowsId(normalized, out string? _);
+        return TimeZoneInfo.TryFindSystemTimeZoneById(normalized, out TimeZoneInfo? _);
     }
 }

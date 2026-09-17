@@ -6,4 +6,5 @@ public enum IdempotentTripPlanCreationStatus
     Replayed = 2,
     Conflict = 3,
     LimitReached = 4,
+    Deleted = 5,
 }

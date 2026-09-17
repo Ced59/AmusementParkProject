@@ -35,4 +35,11 @@ public static class TripPlanApplicationErrors
             "trip.plan.idempotency-conflict",
             "The idempotency key was already used with different trip details.");
     }
+
+    public static ApplicationError CreationWasDeleted()
+    {
+        return ApplicationError.Conflict(
+            "trip.plan.creation-deleted",
+            "The trip created by this idempotency key was deleted and cannot be recreated by a retry.");
+    }
 }

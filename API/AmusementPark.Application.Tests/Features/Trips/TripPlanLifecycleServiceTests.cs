@@ -74,6 +74,31 @@ public sealed class TripPlanLifecycleServiceTests
     }
 
     [Fact]
+    public async Task CreateAsync_WhenTheOriginalTripWasDeleted_ShouldRejectTheLateRetry()
+    {
+        Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
+        repository.Setup(item => item.ResolveExistingCreationAsync(
+                It.IsAny<TripPlan>(),
+                "operation-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new IdempotentTripPlanCreationResult(
+                IdempotentTripPlanCreationStatus.Deleted,
+                null));
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+
+        ApplicationResult<CreateTripPlanResult> result = await service.CreateAsync(
+            "user-1",
+            "operation-1",
+            new TripPlanDetailsInput("Voyage", TripDateProposal.None(), null),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("trip.plan.creation-deleted", Assert.Single(result.Errors).Code);
+        repository.VerifyAll();
+    }
+
+    [Fact]
     public async Task RenameAsync_ShouldRejectAStaleVersionWithoutWriting()
     {
         DateTime nowUtc = DateTime.UtcNow.AddMinutes(-1);
@@ -102,6 +127,43 @@ public sealed class TripPlanLifecycleServiceTests
 
         Assert.False(result.IsSuccess);
         Assert.Equal("trip.plan.changed-concurrently", Assert.Single(result.Errors).Code);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteAsync_ShouldPersistAClosedPendingDeletionAtTheNextVersion()
+    {
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            DateTime.UtcNow.AddMinutes(-1));
+        Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.GetOwnedAsync(
+                "user-1",
+                trip.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(trip);
+        repository.Setup(item => item.DeleteOwnedAsync(
+                It.Is<TripPlan>(candidate =>
+                    candidate.DeletionState == TripDeletionState.Pending
+                    && candidate.AdmissionClosureState == TripAdmissionClosureState.Closing
+                    && candidate.Version == 2),
+                1,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(TripPlanWriteOutcome.Success);
+        Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+
+        ApplicationResult result = await service.DeleteAsync(
+            "user-1",
+            trip.Id.Value,
+            1,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
         repository.VerifyAll();
     }
 }

@@ -63,6 +63,7 @@ public static class ApplicationModuleServiceCollectionExtensions
                    namespaceName.Contains(".Features.ParkFit.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Passport.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Sharing.", StringComparison.Ordinal) ||
+                   namespaceName.Contains(".Features.Trips.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Watchlists.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Seo.", StringComparison.Ordinal);
         });

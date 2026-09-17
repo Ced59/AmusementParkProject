@@ -7,6 +7,7 @@ public sealed class TripPlan
     public const int MaximumPlansPerOwner = 50;
     public const int MaximumTitleLength = 120;
     public const int MaximumTimeZoneIdLength = 100;
+    public static readonly TimeSpan CreationReplayRetention = TimeSpan.FromHours(24);
 
     private TripPlan(
         TripPlanId id,
@@ -70,8 +71,8 @@ public sealed class TripPlan
     public TripPlanStatus Status { get; }
     public TripPlanAccessScope AccessScope { get; }
     public IReadOnlyCollection<TripMember> Members { get; }
-    public TripAdmissionClosureState AdmissionClosureState { get; }
-    public TripDeletionState DeletionState { get; }
+    public TripAdmissionClosureState AdmissionClosureState { get; private set; }
+    public TripDeletionState DeletionState { get; private set; }
     public DateTime CreatedAtUtc { get; }
     public DateTime UpdatedAtUtc { get; private set; }
     public long Version { get; private set; }
@@ -164,6 +165,20 @@ public sealed class TripPlan
         this.PrepareMutation();
         this.DateProposal = dateProposal;
         this.DestinationTimeZoneId = normalizedTimeZoneId;
+        this.CommitMutation(nowUtc);
+    }
+
+    public void BeginDeletion(DateTime nowUtc)
+    {
+        this.ValidateMutation(nowUtc);
+        if (this.DeletionState != TripDeletionState.None)
+        {
+            return;
+        }
+
+        this.PrepareMutation();
+        this.AdmissionClosureState = TripAdmissionClosureState.Closing;
+        this.DeletionState = TripDeletionState.Pending;
         this.CommitMutation(nowUtc);
     }
 
