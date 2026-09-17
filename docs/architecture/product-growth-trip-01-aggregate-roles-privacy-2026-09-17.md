@@ -684,8 +684,14 @@ Le départ ou l'effacement d'un seul membre utilise la même barrière à porté
 réduite. Chaque `TripMember` porte `MemberDataEpoch` et un état de participation.
 Si le compte visé apparaît comme candidat d'un `MemberAdmissionFence` `Prepared`,
 `Active` ou `Applied`, qu'un sous-document `Provisional` existe déjà ou non,
-l'opération d'effacement ne suit pas le départ ordinaire. Elle réclame **d'abord**
-l'invitation liée au fence : une écriture conditionnelle unique fait passer
+l'opération d'effacement ne suit pas le départ ordinaire. Une première écriture sur
+le plan transforme atomiquement ce fence en `ErasureClaiming` tout en conservant
+invitation, compte, `operationId`, génération et échéance. Ce n'est pas encore sa
+libération : cet état singulier interdit une nouvelle génération, l'armement,
+l'ajout et l'établissement du membre jusqu'à la fin de la barrière.
+
+L'opération réclame **ensuite, avant d'annuler ou de libérer le fence**,
+l'invitation liée : une écriture conditionnelle unique fait passer
 `Active`, `Accepting` ou `Accepted` à `RevocationPending`; lorsque l'opération est
 déjà inscrite, elle exige le même compte candidat et le même `operationId`. MongoDB
 sérialise ainsi cette réclamation avec une réservation `Active -> Accepting` déjà en
@@ -701,7 +707,10 @@ n'atteint `Revoked` qu'après confirmation de cette compensation. En cas de rés
 réseau ambigu, le reconciler attend au plus l'échéance du fence plus la marge
 serveur, relit l'invitation et refait un second balayage avant de terminer
 l'effacement. Celui-ci ne devient terminal qu'une fois l'invitation compensée et le
-fence libéré.
+fence libéré. Une réclamation de la branche `Active` restée en transit ne peut donc
+jamais atteindre une génération ultérieure : le fence `ErasureClaiming` et son
+tombstone restent en place jusqu'à son résultat certain ou jusqu'à cette barrière
+temporelle.
 
 Pour un membre `Active`, la demande suit la barrière de départ :
 La demande passe le membre à `Leaving`, incrémente son epoch et refuse toute
@@ -768,6 +777,8 @@ variantes ne sont pas réellement servies.
   et compensant l'invitation `Accepting` ou `Accepted` avant l'état terminal ;
 - réservation en transit sérialisée avec la réclamation préalable de l'invitation,
   suivie d'une barrière temporelle et d'un second balayage avant effacement ;
+- fence `ErasureClaiming` empêchant une réclamation `Active` ambiguë de viser une
+  génération d'admission ultérieure ;
 - création d'invitation retardée au-delà de `Closing`, limitée à une coquille
   `Prepared` non résolvable puis éliminée sans token actif orphelin ;
 - fence `Prepared` installé avant réservation puis rendu inoffensif si une
