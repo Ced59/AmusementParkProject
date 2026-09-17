@@ -10,6 +10,7 @@ namespace AmusementPark.Application.Features.Watchlists.Services;
 
 public sealed class NotificationDigestScheduler : INotificationDigestScheduler
 {
+    private static readonly TimeSpan ActivityLeaseDuration = TimeSpan.FromMinutes(3);
     private readonly IWatchlistAccountDeletionFence deletionFence;
     private readonly IDurableBackgroundJobRepository jobRepository;
     private readonly IUserNotificationRepository notificationRepository;
@@ -80,28 +81,51 @@ public sealed class NotificationDigestScheduler : INotificationDigestScheduler
                 })
                 .Distinct()
                 .ToArray();
-            foreach (NotificationDigestJobPayload group in groups)
+            if (groups.Length == 0)
             {
-                NotificationDigestId digestId = NotificationDigestId.ForGroup(
-                    group.UserId,
-                    group.Channel,
-                    group.Frequency,
-                    group.PeriodStartUtc);
-                DurableBackgroundJob job = await this.jobRepository.CoalesceAsync(
-                    new CoalesceBackgroundJobRequest(
-                        NotificationDigestJob.Kind,
-                        $"watch-digest:{digestId.Value}",
-                        RequestedRevision: 0,
-                        NotificationDigestJob.PayloadVersion,
-                        JsonSerializer.SerializeToElement(group),
-                        CorrelationId: digestId.Value,
-                        AdvanceRevision: true),
-                    cancellationToken);
-                if (job is not null
-                    && await this.deletionFence.IsBlockedAsync(group.UserId, cancellationToken))
+                continue;
+            }
+
+            string? activityLeaseId = await this.deletionFence.TryAcquireActivityLeaseAsync(
+                ownerCandidates.Key,
+                ActivityLeaseDuration,
+                cancellationToken);
+            if (activityLeaseId is null)
+            {
+                continue;
+            }
+
+            try
+            {
+                foreach (NotificationDigestJobPayload group in groups)
                 {
-                    await this.jobRepository.DeleteAsync(job.Id, cancellationToken);
+                    NotificationDigestId digestId = NotificationDigestId.ForGroup(
+                        group.UserId,
+                        group.Channel,
+                        group.Frequency,
+                        group.PeriodStartUtc);
+                    DurableBackgroundJob job = await this.jobRepository.CoalesceAsync(
+                        new CoalesceBackgroundJobRequest(
+                            NotificationDigestJob.Kind,
+                            $"watch-digest:{digestId.Value}",
+                            RequestedRevision: 0,
+                            NotificationDigestJob.PayloadVersion,
+                            JsonSerializer.SerializeToElement(group),
+                            CorrelationId: digestId.Value,
+                            AdvanceRevision: true),
+                        cancellationToken);
+                    if (job is not null
+                        && await this.deletionFence.IsBlockedAsync(group.UserId, cancellationToken))
+                    {
+                        await this.jobRepository.DeleteAsync(job.Id, cancellationToken);
+                    }
                 }
+            }
+            finally
+            {
+                await this.deletionFence.ReleaseActivityLeaseAsync(
+                    activityLeaseId,
+                    CancellationToken.None);
             }
         }
     }

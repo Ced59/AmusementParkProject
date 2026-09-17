@@ -38,6 +38,15 @@ public sealed class NotificationDigestSchedulerTests
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
         Mock<IWatchlistAccountDeletionFence> fence = CreateOpenFence();
+        fence.Setup(candidate => candidate.TryAcquireActivityLeaseAsync(
+                "user-1",
+                TimeSpan.FromMinutes(3),
+                CancellationToken.None))
+            .ReturnsAsync("activity-lease-1");
+        fence.Setup(candidate => candidate.ReleaseActivityLeaseAsync(
+                "activity-lease-1",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         DateTime expectedStart = OccurredAtUtc.Date;
         NotificationDigestId expectedId = NotificationDigestId.ForGroup(
             "user-1",
@@ -181,6 +190,15 @@ public sealed class NotificationDigestSchedulerTests
         fence.SetupSequence(candidate => candidate.IsBlockedAsync("user-1", CancellationToken.None))
             .ReturnsAsync(false)
             .ReturnsAsync(true);
+        fence.Setup(candidate => candidate.TryAcquireActivityLeaseAsync(
+                "user-1",
+                TimeSpan.FromMinutes(3),
+                CancellationToken.None))
+            .ReturnsAsync("activity-lease-1");
+        fence.Setup(candidate => candidate.ReleaseActivityLeaseAsync(
+                "activity-lease-1",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         Mock<IDurableBackgroundJobRepository> jobs =
             new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
         jobs.Setup(repository => repository.CoalesceAsync(
