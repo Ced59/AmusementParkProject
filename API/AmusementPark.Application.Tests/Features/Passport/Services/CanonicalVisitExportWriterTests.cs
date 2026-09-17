@@ -6,10 +6,12 @@ using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Application.Features.Sharing.Models;
 using AmusementPark.Application.Features.Sharing.Results;
 using AmusementPark.Application.Features.Sharing.Services;
+using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Core.Domain.Visits;
+using AmusementPark.Core.Domain.Watchlists;
 using Xunit;
 
 namespace AmusementPark.Application.Tests.Features.Passport.Services;
@@ -66,7 +68,7 @@ public sealed class CanonicalVisitExportWriterTests
     }
 
     [Fact]
-    public void Write_CsvCreatesFifteenIndependentTablesAndSchemaMetadata()
+    public void Write_CsvCreatesCompleteIndependentTablesAndSchemaMetadata()
     {
         CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
         PassportExportWriteRequest request = CreateRequest(PassportExportFormat.Csv);
@@ -79,12 +81,18 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.Equal(
             new[]
             {
+                "collections.csv",
                 "comparison-invitations.csv",
                 "comparison-missed-items.csv",
                 "comparison-parks.csv",
                 "comparison-ratings.csv",
                 "comparison-years.csv",
                 "comparisons.csv",
+                "notification-delivery-attempts.csv",
+                "notification-digest-entries.csv",
+                "notification-digests.csv",
+                "notification-email-preference.csv",
+                "notifications.csv",
                 "park-items.csv",
                 "parks.csv",
                 "passport-share-selections.csv",
@@ -95,6 +103,7 @@ public sealed class CanonicalVisitExportWriterTests
                 "share-snapshots.csv",
                 "visit-assessments.csv",
                 "visits.csv",
+                "watch-subscriptions.csv",
             },
             names);
         ZipArchiveEntry visitsEntry = Assert.Single(archive.Entries, static entry => entry.FullName == "visits.csv");
@@ -170,6 +179,37 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.DoesNotContain(PassportShareToken, content, StringComparison.Ordinal);
         Assert.DoesNotContain(InvitationShareToken, content, StringComparison.Ordinal);
         Assert.DoesNotContain(ComparisonShareToken, content, StringComparison.Ordinal);
+    }
+
+    [Theory]
+    [InlineData(PassportExportFormat.Json)]
+    [InlineData(PassportExportFormat.Csv)]
+    public void Write_WatchlistLifecycleExportsPrivateIntentionsAndConsentWithoutTechnicalIdentifiers(
+        PassportExportFormat format)
+    {
+        CanonicalVisitExportWriter writer = new CanonicalVisitExportWriter();
+        PassportExportWriteRequest request = CreateRequestWithWatchlistLifecycle(format);
+
+        PassportExportArtifact artifact = writer.Write(request);
+
+        string content = ReadAllText(artifact);
+        Assert.Contains("collection-0001", content, StringComparison.Ordinal);
+        Assert.Contains("watch-0001", content, StringComparison.Ordinal);
+        Assert.Contains("notification-0001", content, StringComparison.Ordinal);
+        Assert.Contains("digest-0001", content, StringComparison.Ordinal);
+        Assert.Contains("delivery-0001", content, StringComparison.Ordinal);
+        Assert.Contains("Europa Park", content, StringComparison.Ordinal);
+        Assert.Contains("refaire en famille", content, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/opening-calendar", content, StringComparison.Ordinal);
+        Assert.Contains(NotificationEmailPreference.CurrentConsentTextVersion, content, StringComparison.Ordinal);
+        Assert.Contains("fr", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("collection-internal", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("subscription-internal", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("notification-internal", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("event-internal", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("delivery-internal", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("park-1", content, StringComparison.Ordinal);
+        Assert.DoesNotContain("user-1", content, StringComparison.Ordinal);
     }
 
     [Theory]
@@ -410,7 +450,8 @@ public sealed class CanonicalVisitExportWriterTests
             new[] { occurrence },
             new Dictionary<string, Park>(StringComparer.Ordinal) { [park.Id] = park },
             new Dictionary<string, VisitTarget>(StringComparer.Ordinal) { [target.ParkItemId] = target },
-            PassportShareLifecycleExportData.Empty);
+            PassportShareLifecycleExportData.Empty,
+            PassportWatchlistExportData.Empty);
     }
 
     private static IReadOnlyCollection<string> ReadPassportSelectionParkNames(
@@ -653,6 +694,129 @@ public sealed class CanonicalVisitExportWriterTests
                 Array.Empty<YearRecapShareSnapshot>(),
                 new[] { passportSnapshot }),
         };
+    }
+
+    private static PassportExportWriteRequest CreateRequestWithWatchlistLifecycle(
+        PassportExportFormat format)
+    {
+        PassportExportWriteRequest source = CreateRequest(format);
+        UserCollectionEntry entry = UserCollectionEntry.Create(
+            UserCollectionEntryId.Parse("collection-internal"),
+            source.UserId,
+            CollectionTargetType.Park,
+            "park-1",
+            UserCollectionKind.Favorite,
+            CollectionTargetStatus.Available,
+            "À refaire en famille",
+            2,
+            new DateRangePreference(new DateOnly(2027, 4, 1), new DateOnly(2027, 10, 31)),
+            NowUtc);
+        WatchSubscription subscription = WatchSubscription.Create(
+            WatchSubscriptionId.Parse("subscription-internal"),
+            source.UserId,
+            CollectionTargetType.Park,
+            "park-1",
+            new[] { FactualEventType.OpeningCalendarChanged },
+            NotificationFrequency.DailyDigest,
+            new[] { NotificationChannel.Email },
+            NowUtc);
+        NotificationEmailPreference preference = NotificationEmailPreference.CreateConsented(
+            source.UserId,
+            NotificationEmailPreference.CurrentConsentTextVersion,
+            "fr",
+            NowUtc);
+        FactualChangeEvent factualEvent = CreatePublishedWatchEvent();
+        UserNotification notification = UserNotification.Restore(
+            UserNotificationId.Parse("notification-internal"),
+            source.UserId,
+            factualEvent.Id,
+            subscription.Id,
+            factualEvent.Type,
+            factualEvent.Target.Type,
+            factualEvent.Target.TargetId,
+            "park-1",
+            factualEvent.Revision,
+            UserNotification.CurrentTemplateVersion,
+            "FR",
+            UserNotificationStatus.Delivered,
+            NowUtc,
+            NowUtc,
+            null,
+            null,
+            NowUtc.AddDays(UserNotification.RetentionDays),
+            1);
+        DateTime periodStartUtc = new DateTime(2026, 9, 4, 0, 0, 0, DateTimeKind.Utc);
+        NotificationDigestEntry digestEntry = new NotificationDigestEntry(
+            factualEvent.Id,
+            subscription.Id,
+            "opening-calendar:park-1:1",
+            factualEvent.Revision,
+            factualEvent.Type,
+            factualEvent.Target.Type,
+            factualEvent.Target.TargetId,
+            factualEvent.Status,
+            factualEvent.OccurredAtUtc);
+        NotificationDigest digest = NotificationDigest.CreateSnapshot(
+            source.UserId,
+            NotificationChannel.Email,
+            NotificationFrequency.DailyDigest,
+            periodStartUtc,
+            new[] { digestEntry },
+            1,
+            NowUtc);
+        NotificationDeliveryAttempt delivery = NotificationDeliveryAttempt.Create(
+            "delivery-internal",
+            source.UserId,
+            digest.Id,
+            NowUtc);
+        PassportWatchlistTargetSnapshot target = new PassportWatchlistTargetSnapshot(
+            CollectionTargetType.Park,
+            CollectionTargetStatus.Available,
+            "Europa Park",
+            null);
+        return source with
+        {
+            WatchlistLifecycle = new PassportWatchlistExportData(
+                new[] { entry },
+                new[] { subscription },
+                new[] { notification },
+                new[] { digest },
+                preference,
+                new[] { delivery },
+                new Dictionary<string, PassportWatchlistTargetSnapshot>(StringComparer.Ordinal)
+                {
+                    ["park-1"] = target,
+                },
+                new Dictionary<string, PassportWatchlistTargetSnapshot>(StringComparer.Ordinal),
+                new Dictionary<FactualChangeEventId, FactualChangeEvent>
+                {
+                    [factualEvent.Id] = factualEvent,
+                }),
+        };
+    }
+
+    private static FactualChangeEvent CreatePublishedWatchEvent()
+    {
+        FactualChangeEvent factualEvent = FactualChangeEvent.CreateDraft(
+            FactualChangeEventId.Parse("event-internal"),
+            FactualEventType.OpeningCalendarChanged,
+            ChangeTarget.ForPark("park-1"),
+            FactValue.FromText("Fermé"),
+            FactValue.FromText("Ouvert"),
+            new SourceReference(
+                SourceReferenceType.OfficialWebsite,
+                "Europa Park",
+                "Calendrier officiel",
+                "https://example.com/opening-calendar",
+                NowUtc.AddHours(-3)),
+            DataConfidence.High,
+            NowUtc.AddHours(-2),
+            "park:park-1:opening-calendar",
+            1,
+            NowUtc.AddHours(-2));
+        factualEvent.Verify(NowUtc.AddHours(-1));
+        factualEvent.Publish(NowUtc.AddMinutes(-30));
+        return factualEvent;
     }
 
     private static string ReadAllText(PassportExportArtifact artifact)

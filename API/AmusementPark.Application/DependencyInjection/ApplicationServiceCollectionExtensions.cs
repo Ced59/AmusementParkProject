@@ -99,6 +99,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<WatchSubscriptionLifecycleService>();
         services.AddScoped<UserNotificationCenterService>();
         services.AddScoped<NotificationEmailPreferenceService>();
+        services.AddScoped<IWatchlistAccountDeletionService, WatchlistAccountDeletionService>();
         services.AddScoped<NotificationDigestEmailEntryResolver>();
         services.AddScoped<IFactualNotificationDistributionScheduler, FactualNotificationDistributionScheduler>();
         services.AddScoped<INotificationDigestScheduler, NotificationDigestScheduler>();
@@ -197,6 +198,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<IVisitTargetResolver, VisitTargetResolver>();
         services.AddSingleton<IVisitExportWriter, CanonicalVisitExportWriter>();
+        services.AddScoped<IPassportWatchlistExportSource, PassportWatchlistExportSource>();
         services.AddScoped<PassportExportScheduler>();
         services.AddDurableBackgroundJobHandler<PassportExportJobHandler>();
         services.AddScoped<VisitPurgeScheduler>();

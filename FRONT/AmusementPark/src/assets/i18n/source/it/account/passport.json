@@ -22,7 +22,7 @@
     "exports": {
       "kicker": "Copia dei tuoi dati",
       "title": "Esporta il tuo passaporto",
-      "description": "Scarica tutte le visite, i passaggi, le valutazioni private, le condivisioni e i confronti. Il JSON versionato e le tabelle nello ZIP CSV usano solo riferimenti propri dell’esportazione, senza identificativi interni.",
+      "description": "Scarica tutte le visite, i passaggi, le valutazioni private, le condivisioni, i confronti, i preferiti, i desideri e gli avvisi. Sono incluse le tue scelte e-mail e la prova del consenso. Il JSON versionato e lo ZIP CSV usano solo riferimenti propri dell’esportazione, senza identificativi interni.",
       "retention": "Il file resta privato, richiede l’accesso al tuo account e scade un’ora dopo la generazione.",
       "actions": { "json": "Prepara il JSON", "csv": "Prepara i CSV", "download": "Scarica il file" },
       "status": { "generating": "Preparazione dell’esportazione…", "ready": "L’esportazione è pronta" },

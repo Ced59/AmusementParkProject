@@ -372,7 +372,7 @@
     "exports": {
       "kicker": "Your data copy",
       "title": "Export your passport",
-      "description": "Download all your visits, ride entries, private ratings, shares and comparisons. The versioned JSON and CSV ZIP tables use export-only references, without internal identifiers.",
+      "description": "Download all your visits, ride entries, private ratings, shares, comparisons, favourites, wish lists and alerts. Your email choices and consent proof are included. The versioned JSON and CSV ZIP use export-only references, without internal identifiers.",
       "retention": "The file stays private, requires your signed-in session and expires one hour after it is generated.",
       "actions": {
         "json": "Prepare JSON",

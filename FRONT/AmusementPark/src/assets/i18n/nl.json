@@ -372,7 +372,7 @@
     "exports": {
       "kicker": "Kopie van je gegevens",
       "title": "Exporteer je paspoort",
-      "description": "Download al je bezoeken, ritregistraties, privébeoordelingen, gedeelde inhoud en vergelijkingen. De JSON met versienummer en de tabellen in het CSV-zipbestand gebruiken alleen exportspecifieke verwijzingen, zonder interne identificaties.",
+      "description": "Download al je bezoeken, ritregistraties, privébeoordelingen, gedeelde inhoud, vergelijkingen, favorieten, wensen en meldingen. Je e-mailkeuzes en toestemmingsbewijs zijn inbegrepen. De JSON met versienummer en het CSV-zipbestand gebruiken alleen exportspecifieke verwijzingen, zonder interne identificaties.",
       "retention": "Het bestand blijft privé, vereist dat je bent aangemeld en verloopt één uur na het aanmaken.",
       "actions": {
         "json": "JSON voorbereiden",

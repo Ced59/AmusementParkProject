@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.BackgroundJobs.Ports;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.TechnicalStats.Ports;
+using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Infrastructure.Configuration.BackgroundJobs;
 using AmusementPark.Infrastructure.DependencyInjection;
 using AmusementPark.Infrastructure.Services.BackgroundJobs;
@@ -153,6 +154,26 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
             typeof(MongoPassportShareLifecycleExportSource),
             registration.ImplementationType);
         Assert.Equal(ServiceLifetime.Scoped, registration.Lifetime);
+    }
+
+    [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterWatchlistLifecycleStores()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor exportStore = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IWatchlistExportStore));
+        Assert.Equal(typeof(MongoWatchlistExportStore), exportStore.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, exportStore.Lifetime);
+        ServiceDescriptor deletionStore = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IWatchlistAccountDeletionStore));
+        Assert.Equal(typeof(MongoWatchlistAccountDeletionStore), deletionStore.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, deletionStore.Lifetime);
     }
 
     [Fact]

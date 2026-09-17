@@ -12,4 +12,5 @@ public sealed record PassportExportWriteRequest(
     IReadOnlyCollection<RideOccurrence> RideOccurrences,
     IReadOnlyDictionary<string, Park> Parks,
     IReadOnlyDictionary<string, VisitTarget> ParkItems,
-    PassportShareLifecycleExportData ShareLifecycle);
+    PassportShareLifecycleExportData ShareLifecycle,
+    PassportWatchlistExportData WatchlistLifecycle);
