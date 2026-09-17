@@ -17,7 +17,10 @@ la remplace par `none`, et seule une nouvelle exécution manuelle peut autoriser
 autre maintenance. Le parcours vérifie que le volume nommé
 monté sur `/data/db` est strictement le même,
 attend son retour à l'état sain, puis reprend le déploiement transactionnel de
-l'API et du front. Un push ordinaire reste incapable de recréer un service partagé.
+l'API et du front. Si MongoDB n'est pas en cours d'exécution au moment de la
+sauvegarde, la maintenance est refusée même s'il revient ensuite : la configuration
+`BACKUP_BEFORE_DEPLOY=true` ne remplace jamais la preuve d'une sauvegarde achevée
+pendant ce run. Un push ordinaire reste incapable de recréer un service partagé.
 
 L’edge doit avoir exactement `worker_processes 1`, vérifié sur la configuration complète par `nginx -T`. Le protocole refuse un autre nombre de workers. Les protections HTTP, les limites de corps, le routage statique XML/robots, les en-têtes et les routes publiques restent inchangés.
 

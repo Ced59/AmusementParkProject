@@ -9,6 +9,9 @@ trap 'rm -rf "${temp_dir}"' EXIT
 
 grep -Fq "github.event_name == 'workflow_dispatch' && github.run_attempt == 1 && inputs.shared_infrastructure_maintenance" \
   "${repo_root}/.github/workflows/production.yml"
+grep -Fq 'mongodb_backup_completed=true' "${deploy_scripts_dir}/deploy.sh"
+grep -Fq 'MongoDB maintenance requires a successful backup in this deployment run.' \
+  "${deploy_scripts_dir}/deploy.sh"
 
 export API_IMAGE='ghcr.io/example/api:test'
 export FRONT_IMAGE='ghcr.io/example/front:test'

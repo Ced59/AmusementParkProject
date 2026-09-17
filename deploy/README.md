@@ -410,7 +410,8 @@ Sans cette variable, la CI build/test/push les images, mais ne touche pas au VPS
 Quand un déploiement s'arrête explicitement sur une nouvelle image MongoDB, la
 maintenance se relance manuellement avec `deploy=true` et
 `shared_infrastructure_maintenance=mongodb`. Cette option est désactivée par
-défaut. Elle impose la sauvegarde préalable, conserve le volume nommé de données,
+défaut. Elle exige qu'une sauvegarde se termine avec succès dans ce même run,
+conserve le volume nommé de données,
 consomme l'ordre manuel avant la recréation pour empêcher tout rejeu par une reprise,
 attend le healthcheck MongoDB puis exécute le déploiement applicatif normal. Elle
 ne s'applique qu'au premier essai du run : « Re-run failed jobs » la neutralise et

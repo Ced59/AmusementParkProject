@@ -386,12 +386,19 @@ if ! docker network inspect "${npm_docker_network_name}" >/dev/null 2>&1; then
   exit 1
 fi
 
+mongodb_backup_completed=false
 if [ "${BACKUP_BEFORE_DEPLOY:-true}" = "true" ] && compose ps --services --filter status=running | grep -qx 'mongodb'; then
   echo "Running MongoDB backup before deployment..."
   ./scripts/backup-mongo.sh || {
     echo "MongoDB backup failed. Deployment aborted." >&2
     exit 1
   }
+  mongodb_backup_completed=true
+fi
+
+if [ "${shared_infrastructure_maintenance}" = "mongodb" ] && [ "${mongodb_backup_completed}" != "true" ]; then
+  echo "MongoDB maintenance requires a successful backup in this deployment run." >&2
+  exit 1
 fi
 
 echo "Pulling production images..."
@@ -401,11 +408,6 @@ case "${shared_infrastructure_maintenance}" in
   none)
     ;;
   mongodb)
-    if [ "${BACKUP_BEFORE_DEPLOY:-true}" != "true" ]; then
-      echo "MongoDB maintenance requires BACKUP_BEFORE_DEPLOY=true." >&2
-      exit 1
-    fi
-
     python3 ./scripts/deployment_transaction.py maintain-mongodb
     ;;
   *)
