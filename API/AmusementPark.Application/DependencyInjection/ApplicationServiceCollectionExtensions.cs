@@ -30,6 +30,7 @@ using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Services;
+using AmusementPark.Application.Features.Trips.Services;
 using AmusementPark.Application.Features.Watchlists.Services;
 using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Application.Validation;
@@ -97,6 +98,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<UserCollectionTargetReader>();
         services.AddScoped<UserCollectionLifecycleService>();
         services.AddScoped<WatchSubscriptionLifecycleService>();
+        services.AddScoped<TripPlanLifecycleService>();
         services.AddScoped<UserNotificationCenterService>();
         services.AddScoped<WatchPilotMetricsRecorder>();
         services.AddScoped<UserNotificationCreationService>();

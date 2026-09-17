@@ -40,6 +40,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Seo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.SocialPublishing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.SocialShare;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Trips;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Watchlists;
 
@@ -913,6 +914,13 @@ private readonly IMongoDatabase database;
             cancellationToken);
         await this.personalRankingShareMigration.ExecuteAsync(cancellationToken);
         await this.personalRankingShareAvatarPolicyMigration.ExecuteAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(this.settings.TripPlansCollectionName, cancellationToken);
+        IMongoCollection<TripPlanDocument> tripPlans =
+            this.database.GetCollection<TripPlanDocument>(this.settings.TripPlansCollectionName);
+        await tripPlans.Indexes.CreateManyAsync(
+            TripPlanMongoDefinitions.BuildIndexes(),
+            cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.UserVisitsCollectionName, cancellationToken);
         await this.InitializeUserVisitIndexesAsync(cancellationToken);

@@ -32,6 +32,7 @@ using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Application.Features.TechnicalPages.Ports;
 using AmusementPark.Application.Features.TechnicalStats.Ports;
+using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Application.Features.Watchlists.Ports;
@@ -67,6 +68,7 @@ using AmusementPark.Infrastructure.Services.Ssr;
 using AmusementPark.Infrastructure.Services.SocialPublishing;
 using AmusementPark.Infrastructure.Services.Videos;
 using AmusementPark.Infrastructure.Services.Weather;
+using AmusementPark.Infrastructure.Time;
 using System.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -186,6 +188,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IFactualChangeOutboxRepository, FactualChangeOutboxRepository>();
         services.AddScoped<IFactualChangeEventRepository, FactualChangeEventRepository>();
         services.AddScoped<IWatchSubscriptionRepository, WatchSubscriptionRepository>();
+        services.AddScoped<ITripPlanRepository, TripPlanRepository>();
+        services.AddSingleton<ITripTimeZoneValidator, SystemTripTimeZoneValidator>();
         services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
         services.AddScoped<INotificationDigestRepository, NotificationDigestRepository>();
         services.AddScoped<INotificationEmailPreferenceRepository,

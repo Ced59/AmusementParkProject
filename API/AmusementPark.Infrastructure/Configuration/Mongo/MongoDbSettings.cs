@@ -152,6 +152,8 @@ public sealed class MongoDbSettings
     public string UserCollectionEntriesCollectionName { get; set; } =
         "user-collection-entries";
 
+    public string TripPlansCollectionName { get; set; } = "trip-plans";
+
     public string ParkFitSourceReportsCollectionName { get; set; } =
         "park-fit-source-reports";
 

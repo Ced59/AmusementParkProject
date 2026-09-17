@@ -1,0 +1,208 @@
+using System.Globalization;
+using AmusementPark.Core.Domain.Trips;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Trips;
+
+namespace AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+
+internal static class TripPlanMongoMapper
+{
+    private const string DateFormat = "yyyy-MM-dd";
+
+    public static TripPlanDocument ToDocument(this TripPlan trip)
+    {
+        ArgumentNullException.ThrowIfNull(trip);
+        return new TripPlanDocument
+        {
+            Id = trip.Id.Value,
+            OwnerUserId = trip.OwnerUserId,
+            Title = trip.Title,
+            DateProposal = trip.DateProposal.ToDocument(),
+            DestinationTimeZoneId = trip.DestinationTimeZoneId,
+            Status = trip.Status,
+            AccessScope = trip.AccessScope,
+            Members = trip.Members.Select(static member => member.ToDocument()).ToList(),
+            AdmissionClosureState = trip.AdmissionClosureState,
+            DeletionState = trip.DeletionState,
+            CreatedAt = ToMongoPrecision(trip.CreatedAtUtc),
+            UpdatedAt = ToMongoPrecision(trip.UpdatedAtUtc),
+            Version = trip.Version,
+        };
+    }
+
+    public static TripPlan ToDomain(this TripPlanDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        return Restore(
+            document.Id,
+            document.OwnerUserId,
+            document.Title,
+            document.DateProposal,
+            document.DestinationTimeZoneId,
+            document.Status,
+            document.AccessScope,
+            document.Members,
+            document.AdmissionClosureState,
+            document.DeletionState,
+            document.CreatedAt,
+            document.UpdatedAt,
+            document.Version);
+    }
+
+    public static TripPlanCreationSnapshotDocument CreateCreationSnapshot(this TripPlanDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        return new TripPlanCreationSnapshotDocument
+        {
+            Title = document.Title,
+            DateProposal = Clone(document.DateProposal),
+            DestinationTimeZoneId = document.DestinationTimeZoneId,
+            Status = document.Status,
+            AccessScope = document.AccessScope,
+            Members = document.Members.Select(Clone).ToList(),
+            AdmissionClosureState = document.AdmissionClosureState,
+            DeletionState = document.DeletionState,
+            CreatedAtUtc = document.CreatedAt,
+            UpdatedAtUtc = document.UpdatedAt,
+            Version = document.Version,
+        };
+    }
+
+    public static TripPlan CreationSnapshotToDomain(this TripPlanDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        TripPlanCreationSnapshotDocument snapshot = document.CreationSnapshot
+            ?? throw new InvalidOperationException("The idempotent trip creation snapshot is missing.");
+        return Restore(
+            document.Id,
+            document.OwnerUserId,
+            snapshot.Title,
+            snapshot.DateProposal,
+            snapshot.DestinationTimeZoneId,
+            snapshot.Status,
+            snapshot.AccessScope,
+            snapshot.Members,
+            snapshot.AdmissionClosureState,
+            snapshot.DeletionState,
+            snapshot.CreatedAtUtc,
+            snapshot.UpdatedAtUtc,
+            snapshot.Version);
+    }
+
+    private static TripPlan Restore(
+        string id,
+        string ownerUserId,
+        string title,
+        TripDateProposalDocument dateProposal,
+        string? destinationTimeZoneId,
+        TripPlanStatus status,
+        TripPlanAccessScope accessScope,
+        IReadOnlyCollection<TripMemberDocument> members,
+        TripAdmissionClosureState admissionClosureState,
+        TripDeletionState deletionState,
+        DateTime createdAtUtc,
+        DateTime updatedAtUtc,
+        long version)
+    {
+        return TripPlan.Restore(
+            TripPlanId.Parse(id),
+            ownerUserId,
+            title,
+            dateProposal.ToDomain(),
+            destinationTimeZoneId,
+            status,
+            accessScope,
+            members.Select(static member => member.ToDomain()).ToArray(),
+            admissionClosureState,
+            deletionState,
+            DateTime.SpecifyKind(createdAtUtc, DateTimeKind.Utc),
+            DateTime.SpecifyKind(updatedAtUtc, DateTimeKind.Utc),
+            version);
+    }
+
+    private static TripDateProposalDocument ToDocument(this TripDateProposal proposal)
+    {
+        return new TripDateProposalDocument
+        {
+            Kind = proposal.Kind,
+            StartDate = Format(proposal.StartDate),
+            EndDate = Format(proposal.EndDate),
+            CandidateDates = proposal.CandidateDates.Select(static date => Format(date)!).ToList(),
+        };
+    }
+
+    private static TripMemberDocument ToDocument(this TripMember member)
+    {
+        return new TripMemberDocument
+        {
+            MemberId = member.Id.Value,
+            UserId = member.UserId,
+            DelegatedRole = member.DelegatedRole,
+            State = member.State,
+            JoinedAtUtc = ToMongoPrecision(member.JoinedAtUtc),
+        };
+    }
+
+    private static TripDateProposal ToDomain(this TripDateProposalDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        return TripDateProposal.Restore(
+            document.Kind,
+            Parse(document.StartDate),
+            Parse(document.EndDate),
+            document.CandidateDates.Select(static value => ParseRequired(value)).ToArray());
+    }
+
+    private static TripMember ToDomain(this TripMemberDocument document)
+    {
+        return TripMember.Restore(
+            TripMemberId.Parse(document.MemberId),
+            document.UserId,
+            document.DelegatedRole,
+            document.State,
+            DateTime.SpecifyKind(document.JoinedAtUtc, DateTimeKind.Utc));
+    }
+
+    private static TripDateProposalDocument Clone(TripDateProposalDocument document)
+    {
+        return new TripDateProposalDocument
+        {
+            Kind = document.Kind,
+            StartDate = document.StartDate,
+            EndDate = document.EndDate,
+            CandidateDates = document.CandidateDates.ToList(),
+        };
+    }
+
+    private static TripMemberDocument Clone(TripMemberDocument document)
+    {
+        return new TripMemberDocument
+        {
+            MemberId = document.MemberId,
+            UserId = document.UserId,
+            DelegatedRole = document.DelegatedRole,
+            State = document.State,
+            JoinedAtUtc = document.JoinedAtUtc,
+        };
+    }
+
+    private static string? Format(DateOnly? value)
+    {
+        return value?.ToString(DateFormat, CultureInfo.InvariantCulture);
+    }
+
+    private static DateOnly? Parse(string? value)
+    {
+        return value is null ? null : ParseRequired(value);
+    }
+
+    private static DateOnly ParseRequired(string value)
+    {
+        return DateOnly.ParseExact(value, DateFormat, CultureInfo.InvariantCulture);
+    }
+
+    private static DateTime ToMongoPrecision(DateTime value)
+    {
+        long ticks = value.Ticks - (value.Ticks % TimeSpan.TicksPerMillisecond);
+        return new DateTime(ticks, DateTimeKind.Utc);
+    }
+}

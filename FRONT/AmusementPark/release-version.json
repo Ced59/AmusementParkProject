@@ -1,6 +1,20 @@
 {
-  "version": "5.3.58",
+  "version": "5.3.59",
   "history": [
+    {
+      "version": "5.3.59",
+      "releasedAt": "2026-09-17",
+      "labels": {
+        "fr": "La préparation de voyages privés repose désormais sur un socle fiable.",
+        "en": "Private trip planning now rests on a reliable foundation.",
+        "de": "Die private Reiseplanung beruht jetzt auf einer zuverlässigen Grundlage.",
+        "nl": "Privéreisplanning steunt nu op een betrouwbare basis.",
+        "it": "La pianificazione dei viaggi privati poggia ora su basi affidabili.",
+        "es": "La planificación de viajes privados cuenta ahora con una base fiable.",
+        "pl": "Planowanie prywatnych wyjazdów ma teraz niezawodne podstawy.",
+        "pt": "O planeamento de viagens privadas assenta agora numa base fiável."
+      }
+    },
     {
       "version": "5.3.58",
       "releasedAt": "2026-09-17",
