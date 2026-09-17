@@ -517,7 +517,10 @@ les écritures dans une collection enfant suivent une barrière commune :
    restant de la lease, avec une marge fixe. Une commande suspendue au-delà de son
    échéance ne peut donc pas démarrer une écriture tardive ;
 3. chaque document enfant porte l'epoch et l'opération qui l'ont écrit. Le port
-   refuse une commande dont la lease est expirée ou annulée avant d'appeler Mongo ;
+   refuse une commande dont la lease est expirée ou annulée avant d'appeler Mongo.
+   L'écriture utilise un upsert conditionnel, jamais `InsertOne`, avec une garde
+   serveur `$expr: $$NOW < LeaseExpiresAtUtc` ; une requête restée en transit après
+   l'échéance ne peut donc pas créer le document ;
 4. l'écriture libère sa lease de façon idempotente, avec reprise par reconciler.
 
 La suppression passe atomiquement le plan à `Pending`, incrémente
