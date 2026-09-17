@@ -1,0 +1,96 @@
+<main class="trip-list-page">
+  <header class="trip-list-page__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a appUiButton="ghost" [routerLink]="['/', (translationService.getCurrentLang() || 'en'), 'profile']">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'trips.actions.backToProfile' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="sky" iconClass="pi pi-compass">
+      {{ 'trips.kicker' | translate }}
+    </app-ui-kicker>
+    <h1>{{ 'trips.list.title' | translate }}</h1>
+    <p>{{ 'trips.list.description' | translate }}</p>
+    <div class="trip-list-page__hero-actions">
+      <button type="button" appUiButton="primary" (click)="composerVisible.set(!composerVisible())">
+        <i class="pi pi-plus" aria-hidden="true"></i>
+        <span>{{ 'trips.actions.create' | translate }}</span>
+      </button>
+    </div>
+  </header>
+
+  @if (composerVisible()) {
+    <section class="trip-composer" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div>
+        <app-ui-kicker tone="gold" iconClass="pi pi-sparkles">{{ 'trips.create.kicker' | translate }}</app-ui-kicker>
+        <h2>{{ 'trips.create.title' | translate }}</h2>
+        <p>{{ 'trips.create.description' | translate }}</p>
+      </div>
+      <label>
+        <span>{{ 'trips.fields.title' | translate }}</span>
+        <input
+          type="text"
+          maxlength="120"
+          [value]="title()"
+          [placeholder]="'trips.create.titlePlaceholder' | translate"
+          (input)="title.set($any($event.target).value)">
+      </label>
+      <div class="trip-composer__dates">
+        <label>
+          <span>{{ 'trips.fields.startDate' | translate }}</span>
+          <input type="date" [value]="startDate()" (input)="startDate.set($any($event.target).value)">
+        </label>
+        <label>
+          <span>{{ 'trips.fields.endDate' | translate }}</span>
+          <input type="date" [min]="startDate()" [value]="endDate()" (input)="endDate.set($any($event.target).value)">
+        </label>
+      </div>
+      <p class="trip-composer__hint">{{ 'trips.create.dateHint' | translate }}</p>
+      @if (facade.createError()) {
+        <p class="trip-list-page__error" role="alert">{{ 'trips.feedback.createError' | translate }}</p>
+      }
+      <button type="button" appUiButton="primary" [disabled]="facade.creating() || !title().trim()" (click)="create()">
+        @if (facade.creating()) { <i class="pi pi-spin pi-spinner" aria-hidden="true"></i> }
+        <span>{{ (facade.creating() ? 'trips.actions.creating' : 'trips.actions.start') | translate }}</span>
+      </button>
+    </section>
+  }
+
+  @if (facade.status() === 'loading') {
+    <section class="trip-list-page__message" appUiSurface="panel" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'trips.feedback.loading' | translate }}</span>
+    </section>
+  } @else if (facade.status() === 'error') {
+    <section class="trip-list-page__message trip-list-page__error" appUiSurface="panel" role="alert">
+      <span>{{ 'trips.feedback.loadError' | translate }}</span>
+      <button type="button" appUiButton="ghost" (click)="facade.load()">{{ 'trips.actions.retry' | translate }}</button>
+    </section>
+  } @else if (facade.trips().length === 0) {
+    <section class="trip-list-page__empty" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <span class="trip-list-page__empty-icon" aria-hidden="true"><i class="pi pi-map"></i></span>
+      <h2>{{ 'trips.empty.title' | translate }}</h2>
+      <p>{{ 'trips.empty.description' | translate }}</p>
+      <button type="button" appUiButton="primary" (click)="composerVisible.set(true)">{{ 'trips.actions.createFirst' | translate }}</button>
+    </section>
+  } @else {
+    <section class="trip-list-page__grid" [attr.aria-label]="'trips.list.myTrips' | translate">
+      @for (trip of facade.trips(); track trip.tripPlanId) {
+        <article class="trip-card" appUiSurface="panel" appUiSurfacePadding="spacious">
+          <div class="trip-card__topline">
+            <app-ui-chip tone="sky" iconClass="pi pi-calendar">{{ dateLabelKey(trip) | translate }}</app-ui-chip>
+            <span>{{ trip.memberCount }} <i class="pi pi-user" aria-hidden="true"></i></span>
+          </div>
+          <h2>{{ trip.title }}</h2>
+          @if (dateRange(trip)) {
+            <p class="trip-card__dates">{{ dateRange(trip) }}</p>
+          } @else {
+            <p class="trip-card__dates">{{ 'trips.dates.toDecide' | translate }}</p>
+          }
+          <button type="button" appUiButton="primary" (click)="open(trip)">
+            <span>{{ 'trips.actions.continuePlanning' | translate }}</span>
+            <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          </button>
+        </article>
+      }
+    </section>
+  }
+</main>

@@ -70,6 +70,7 @@ export class ProfilePageViewComponent {
   @Output() passportOpened: EventEmitter<void> = new EventEmitter<void>();
   @Output() collectionsOpened: EventEmitter<void> = new EventEmitter<void>();
   @Output() notificationsOpened: EventEmitter<void> = new EventEmitter<void>();
+  @Output() tripsOpened: EventEmitter<void> = new EventEmitter<void>();
   @Output() passportVisitCreateClicked: EventEmitter<void> = new EventEmitter<void>();
 
   editField(field: string): void {
@@ -126,5 +127,9 @@ export class ProfilePageViewComponent {
 
   openNotifications(): void {
     this.notificationsOpened.emit();
+  }
+
+  openTrips(): void {
+    this.tripsOpened.emit();
   }
 }

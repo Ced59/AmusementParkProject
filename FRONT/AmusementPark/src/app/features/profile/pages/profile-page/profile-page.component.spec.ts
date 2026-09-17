@@ -112,12 +112,13 @@ describe('ProfilePageComponent', () => {
     stateFacade.setUser(createUser());
     fixture.detectChanges();
     const actions: NodeListOf<HTMLButtonElement> = fixture.nativeElement.querySelectorAll(
-      '.profile-passport-entry:not(.profile-passport-entry--collections):not(.profile-passport-entry--notifications) .profile-passport-entry__actions button'
+      '.profile-passport-entry:not(.profile-passport-entry--collections):not(.profile-passport-entry--notifications):not(.profile-passport-entry--trips) .profile-passport-entry__actions button'
     );
 
     expect(actions).toHaveLength(2);
     expect(fixture.nativeElement.querySelector('.profile-passport-entry--collections button')).toBeTruthy();
     expect(fixture.nativeElement.querySelector('.profile-passport-entry--notifications button')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.profile-passport-entry--trips button')).toBeTruthy();
   });
 
   it('navigates from the profile to the localized passport overview', () => {
@@ -145,6 +146,15 @@ describe('ProfilePageComponent', () => {
     component.openNotifications();
 
     expect(router.navigate).toHaveBeenCalledWith(['/', 'en', 'profile', 'notifications']);
+  });
+
+  it('navigates from the profile to private trip planning', () => {
+    const router: Router = TestBed.inject(Router);
+    vi.spyOn(router, 'navigate').mockResolvedValue(true);
+
+    component.openTrips();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/', 'en', 'profile', 'trips']);
   });
 });
 

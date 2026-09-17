@@ -1,0 +1,253 @@
+:host {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.trip-overview-page,
+.trip-overview-page__hero,
+.trip-section,
+.trip-section__heading,
+.trip-section__heading > div,
+.trip-dates__fields,
+.wishlist-strip,
+.candidate-board,
+.day-board,
+.day-card,
+label {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.trip-overview-page {
+  display: grid;
+  width: min(100%, 78rem);
+  margin: 0 auto;
+  padding: clamp(0.75rem, 3vw, 2rem);
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.trip-overview-page__hero,
+.trip-section,
+.trip-overview-page__message {
+  display: grid;
+  gap: 1rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  max-width: 14ch;
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 8vw, 5.4rem);
+  line-height: 0.92;
+}
+
+.trip-overview-page__hero > p,
+.trip-section__heading p,
+.trip-section__empty,
+.trip-overview-page__message {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.trip-overview-page__legend,
+.trip-dates__fields {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.trip-section__heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+}
+
+.trip-section__step {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--c-orange), var(--c-rose));
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.trip-dates__fields label {
+  flex: 1 1 12rem;
+}
+
+label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 800;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: var(--app-surface-2);
+  color: var(--text-primary);
+  font: inherit;
+}
+
+input,
+select {
+  min-height: 46px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.wishlist-strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(min(78vw, 10rem), 12rem);
+  gap: 0.75rem;
+  padding: 0.15rem 0 0.5rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+}
+
+.wishlist-card {
+  display: grid;
+  min-width: 0;
+  padding: 0;
+  gap: 0.6rem;
+  overflow: hidden;
+  scroll-snap-align: start;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: var(--app-surface-2);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.wishlist-card > strong,
+.wishlist-card > span:last-child {
+  padding-inline: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.wishlist-card > span:last-child {
+  padding-bottom: 0.75rem;
+  color: var(--c-sky);
+}
+
+.wishlist-card--selected {
+  border-color: var(--c-sky);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--c-sky) 25%, transparent);
+}
+
+.wishlist-card__visual {
+  display: grid;
+  width: 100%;
+  height: 7rem;
+  place-items: center;
+  background: color-mix(in srgb, var(--c-sky) 10%, var(--app-surface));
+  color: var(--c-sky);
+  font-size: 1.8rem;
+}
+
+.wishlist-card__visual app-image-display {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.candidate-board,
+.day-board {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.candidate-board.cdk-drop-list-dragging app-trip-candidate-card:not(.cdk-drag-placeholder) {
+  transition: transform 180ms ease;
+}
+
+app-trip-candidate-card.cdk-drag-preview {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+app-trip-candidate-card.cdk-drag-placeholder {
+  opacity: 0.25;
+}
+
+.day-board {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+}
+
+.day-card {
+  display: grid;
+  padding: 1rem;
+  gap: 0.8rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--c-lime) 5%, var(--app-surface-2));
+}
+
+.day-card__date {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  color: var(--c-lime);
+}
+
+.day-card__note {
+  grid-column: 1 / -1;
+}
+
+.trip-overview-page__error {
+  color: var(--c-rose);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 36rem) {
+  .trip-overview-page {
+    padding-inline: 0.65rem;
+    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
+  }
+
+  .trip-dates__fields,
+  .trip-dates__fields label {
+    display: grid;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .trip-section__heading {
+    gap: 0.7rem;
+  }
+
+  .trip-section__step {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .trip-overview-page button,
+  .trip-overview-page a {
+    max-width: 100%;
+  }
+}

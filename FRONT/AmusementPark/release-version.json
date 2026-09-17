@@ -1,6 +1,20 @@
 {
-  "version": "5.3.61",
+  "version": "5.3.62",
   "history": [
+    {
+      "version": "5.3.62",
+      "releasedAt": "2026-09-18",
+      "labels": {
+        "fr": "Tes envies de parcs peuvent désormais devenir un voyage organisé journée par journée.",
+        "en": "Your saved park ideas can now become a trip organised day by day.",
+        "de": "Deine gespeicherten Parkideen können jetzt Tag für Tag zu einer geplanten Reise werden.",
+        "nl": "Je opgeslagen parkideeën kunnen nu uitgroeien tot een reis die dag voor dag is gepland.",
+        "it": "Le tue idee sui parchi possono ora diventare un viaggio organizzato giorno per giorno.",
+        "es": "Tus ideas de parques guardadas ya pueden convertirse en un viaje organizado día a día.",
+        "pl": "Twoje zapisane pomysły na parki mogą teraz stać się wyjazdem zaplanowanym dzień po dniu.",
+        "pt": "As tuas ideias de parques guardadas podem agora tornar-se numa viagem organizada dia a dia."
+      }
+    },
     {
       "version": "5.3.61",
       "releasedAt": "2026-09-18",

@@ -1364,6 +1364,115 @@
       "error": "No se han podido actualizar tus comparaciones. Inténtalo de nuevo."
     }
   },
+  "trips": {
+    "kicker": "Viajes por preparar",
+    "privacy": "Privado, visible solo para ti",
+    "profile": {
+      "title": "Prepara tu próximo viaje",
+      "description": "Reúne los parques que te interesan, ordénalos y organiza cada día.",
+      "action": "Abrir mis viajes"
+    },
+    "actions": {
+      "backToProfile": "Volver al perfil",
+      "backToTrips": "Volver a los viajes",
+      "create": "Nuevo viaje",
+      "creating": "Creando…",
+      "start": "Empezar este viaje",
+      "retry": "Reintentar",
+      "createFirst": "Crear mi primer viaje",
+      "continuePlanning": "Seguir preparando",
+      "saveDates": "Guardar las fechas",
+      "openCollections": "Abrir mis listas",
+      "importSelection": "Añadir la selección ({{count}})",
+      "saveDay": "Guardar este día"
+    },
+    "fields": {
+      "title": "Nombre del viaje",
+      "startDate": "Fecha de inicio",
+      "endDate": "Fecha de fin"
+    },
+    "list": {
+      "title": "Tus viajes",
+      "description": "Recupera tus ideas de viaje y sigue preparándolas cuando quieras.",
+      "myTrips": "Mis viajes privados"
+    },
+    "create": {
+      "kicker": "Nueva aventura",
+      "title": "Marca el rumbo de tu próximo viaje",
+      "description": "Basta con un título para empezar. Podrás fijar las fechas después.",
+      "titlePlaceholder": "Ej. Fin de semana de parques en Alemania",
+      "dateHint": "Las fechas son opcionales y se pueden modificar."
+    },
+    "feedback": {
+      "loading": "Cargando…",
+      "loadError": "No se han podido cargar tus viajes.",
+      "createError": "No se ha podido crear este viaje.",
+      "actionError": "No se ha podido guardar este cambio.",
+      "conflict": "El viaje ha cambiado en otro lugar. Se acaba de cargar su versión más reciente."
+    },
+    "empty": {
+      "title": "Ningún viaje en preparación",
+      "description": "Crea un viaje y convierte tus ideas de parques en un plan concreto."
+    },
+    "overview": {
+      "kicker": "Taller de viaje",
+      "description": "Convierte tus ideas en un programa claro, a tu ritmo.",
+      "solo": "Preparación individual"
+    },
+    "dates": {
+      "kicker": "¿Cuándo vas?",
+      "title": "Fija las fechas del viaje",
+      "description": "Las fechas crean automáticamente los días del programa.",
+      "toDecide": "Fechas por decidir",
+      "kinds": {
+        "none": "Fechas por decidir",
+        "fixed": "Fechas fijadas",
+        "range": "Periodo posible",
+        "candidates": "Varias fechas posibles"
+      }
+    },
+    "wishlist": {
+      "kicker": "Tus ideas",
+      "title": "Empieza por tus parques guardados",
+      "description": "Selecciona varios favoritos o visitas previstas y añádelos a la vez.",
+      "empty": "Todos tus parques disponibles ya están en este viaje o tu lista sigue vacía."
+    },
+    "candidates": {
+      "kicker": "Tus prioridades",
+      "title": "Compón la selección del viaje",
+      "description": "Arrastra las tarjetas para ordenarlas o usa sus botones de desplazamiento.",
+      "empty": "Añade un parque desde tus ideas para empezar.",
+      "unavailable": "Parque no disponible",
+      "drag": "Arrastrar este parque",
+      "changeState": "Cambiar la prioridad del parque",
+      "move": "Mover el parque en la lista",
+      "first": "Colocar primero",
+      "up": "Subir",
+      "down": "Bajar",
+      "last": "Colocar último",
+      "states": {
+        "proposed": "Idea",
+        "shortlisted": "Preselección",
+        "selected": "Elegido",
+        "rejected": "Descartado"
+      },
+      "sources": {
+        "manual": "Añadido manualmente",
+        "wishlist": "Importado desde tus ideas"
+      }
+    },
+    "days": {
+      "kicker": "Tu programa",
+      "title": "Organiza el viaje día a día",
+      "description": "Asigna a cada fecha un parque elegido, una hora de llegada y una nota útil.",
+      "needsDates": "Fija primero las fechas para crear los días.",
+      "needsPark": "Marca al menos un parque como «Elegido» para asignarlo a un día.",
+      "park": "Parque del día",
+      "choosePark": "Elegir un parque",
+      "arrival": "Hora de llegada deseada",
+      "note": "Nota para el día"
+    }
+  },
   "user-profile": {
     "title": "Perfil de usuario",
     "name": "Apellido",

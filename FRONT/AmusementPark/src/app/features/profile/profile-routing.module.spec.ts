@@ -74,6 +74,18 @@ describe('profile routes', () => {
     expect(route?.canActivate).toContain(authGuard);
   });
 
+  it('keeps the private trip list and detail lazy, authenticated and ahead of the profile root', () => {
+    const paths: string[] = ['trips', 'trips/:tripId'];
+    const rootIndex: number = PROFILE_ROUTES.findIndex((candidate: Route): boolean => candidate.path === '');
+
+    paths.forEach((path: string): void => {
+      const route: Route | undefined = PROFILE_ROUTES.find((candidate: Route): boolean => candidate.path === path);
+      expect(route?.loadComponent).toBeDefined();
+      expect(route?.canActivate).toContain(authGuard);
+      expect(PROFILE_ROUTES.indexOf(route!)).toBeLessThan(rootIndex);
+    });
+  });
+
   it('keeps the private notification centre lazy and authenticated', () => {
     const route: Route | undefined = PROFILE_ROUTES.find(
       (candidate: Route): boolean => candidate.path === 'notifications'
