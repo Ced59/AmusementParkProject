@@ -192,8 +192,8 @@ TripMemberConstraintSnapshot
 - l'absence d'un champ signifie « non partagé », jamais « compatible » ;
 - seul le membre concerné peut créer, remplacer ou supprimer son snapshot ;
 - quitter ou demander l'effacement coupe immédiatement l'accès, bloque les nouvelles
-  leases portant ce membre comme sujet, attend ou expire les leases déjà accordées,
-  puis supprime ses contraintes et préférences actives ;
+  leases portant ce membre comme acteur ou sujet, attend ou expire les leases déjà
+  accordées, puis supprime ses contraintes et préférences actives ;
 - le propriétaire ne peut pas bloquer cet effacement ;
 - les décisions historiques conservent le fait qu'une décision a existé, mais
   retirent l'identifiant de compte, l'alias et les valeurs personnelles. L'interface
@@ -540,9 +540,11 @@ les écritures dans une collection enfant suivent une barrière commune :
    attendue, un sous-document `PendingMutation` sans nouveau contenu. Il porte la
    nouvelle opération, les epochs, la génération et l'échéance. Un second
    `UpdateOne` sans upsert exige cette identité exacte et applique le nouveau
-   contenu tout en retirant `PendingMutation`. Pendant ce temps, les lectures
-   continuent à voir l'ancien contenu `Committed`. Une mutation expirée est
-   abandonnée et son sous-document technique est retiré par le reconciler ;
+   contenu tout en retirant `PendingMutation`. Son filtre répète obligatoirement la
+   garde serveur `$expr: $$NOW < PendingMutation.LeaseExpiresAtUtc`. Pendant ce
+   temps, les lectures continuent à voir l'ancien contenu `Committed`. Une mutation
+   expirée est abandonnée et son sous-document technique est retiré par le
+   reconciler ;
 5. l'écriture libère sa lease de façon idempotente, avec reprise par reconciler.
 
 La suppression passe atomiquement le plan à `Pending`, incrémente
@@ -565,11 +567,12 @@ activation.
 Le départ ou l'effacement d'un seul membre utilise la même barrière à portée
 réduite. Chaque `TripMember` porte `MemberDataEpoch` et un état de participation.
 La demande passe le membre à `Leaving`, incrémente son epoch et refuse toute
-nouvelle lease dont `SubjectMemberId` le désigne. Le job attend ou expire les
-leases de l'ancien epoch, purge contraintes, préférences et coquilles de ce membre,
-effectue un second balayage, puis retire ou anonymise le membre. L'opération ne
-devient terminale qu'après ce second balayage ; une panne reste reprenable et le
-membre ne récupère jamais son accès entre-temps.
+nouvelle lease dont `ActorMemberId` ou `SubjectMemberId` le désigne. Le job attend
+ou expire les leases où il est acteur, ainsi que celles de son ancien epoch où il
+est sujet, purge contraintes, préférences et coquilles de ce membre, effectue un
+second balayage, puis retire ou anonymise le membre. L'opération ne devient
+terminale qu'après ce second balayage ; une panne reste reprenable et le membre ne
+récupère jamais son accès entre-temps.
 
 ## Décision 12 — contrat UX, accessibilité et responsive
 
@@ -634,7 +637,7 @@ variantes ne sont pas réellement servies.
 - mise à jour d'un enfant existant réservant une nouvelle `PendingMutation` sans
   masquer le contenu validé ni réutiliser le fence de création ;
 - départ d'un membre invalidant son epoch, attendant ses leases et repurgeant ses
-  données avant l'état terminal ;
+  données avant l'état terminal, qu'il soit acteur ou sujet de l'écriture ;
 - absence de lecture N+1 sur les listes et synthèses.
 
 ### Angular, SSR et mobile
