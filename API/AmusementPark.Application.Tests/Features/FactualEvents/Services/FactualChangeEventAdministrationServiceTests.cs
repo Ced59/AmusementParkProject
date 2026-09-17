@@ -178,6 +178,29 @@ public sealed class FactualChangeEventAdministrationServiceTests
         repository.VerifyAll();
     }
 
+    [Fact]
+    public async Task RetractAsync_WhileInitialDistributionIsPending_ShouldKeepPublishedFact()
+    {
+        FactualChangeEvent factualEvent = CreateDraft(DataConfidence.High);
+        factualEvent.Verify(NowUtc.AddMinutes(-2));
+        factualEvent.Publish(NowUtc.AddMinutes(-1));
+        Mock<IFactualChangeEventRepository> repository = CreateRepository(factualEvent);
+        FactualChangeEventAdministrationService service = CreateService(
+            repository,
+            distributionCompleted: false);
+
+        ApplicationResult result = await service.RetractAsync(
+            factualEvent.Id.Value,
+            3,
+            "source-invalidated",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("factual-event.distribution.pending", Assert.Single(result.Errors).Code);
+        Assert.Equal(FactualChangeStatus.Published, factualEvent.Status);
+        repository.VerifyAll();
+    }
+
     private static Mock<IFactualChangeEventRepository> CreateRepository(
         FactualChangeEvent factualEvent)
     {
@@ -191,13 +214,21 @@ public sealed class FactualChangeEventAdministrationServiceTests
     }
 
     private static FactualChangeEventAdministrationService CreateService(
-        Mock<IFactualChangeEventRepository> repository)
+        Mock<IFactualChangeEventRepository> repository,
+        bool distributionCompleted = true)
     {
         Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
         timeProvider.Setup(value => value.GetUtcNow())
             .Returns(new DateTimeOffset(NowUtc));
+        Mock<IFactualChangeEventDistributionStateReader> distributionState =
+            new Mock<IFactualChangeEventDistributionStateReader>(MockBehavior.Strict);
+        distributionState.Setup(value => value.IsInitialDistributionCompletedAsync(
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(distributionCompleted);
         return new FactualChangeEventAdministrationService(
             repository.Object,
+            distributionState.Object,
             timeProvider.Object);
     }
 

@@ -68,7 +68,7 @@ public sealed class UserNotificationTests
     }
 
     [Fact]
-    public void CreateCorrection_ShouldKeepOriginalRecipientWithoutRequiringAnActiveSubscription()
+    public void CreateFollowUp_ShouldKeepOriginalRecipientWithoutRequiringAnActiveSubscription()
     {
         UserNotification original = UserNotification.CreateWeb(
             UserNotificationId.Parse("notification-1"),
@@ -96,7 +96,7 @@ public sealed class UserNotificationTests
         correction.Verify(NowUtc.AddMinutes(-5));
         correction.Publish(NowUtc.AddMinutes(-4));
 
-        UserNotification notification = UserNotification.CreateCorrection(
+        UserNotification notification = UserNotification.CreateFollowUp(
             UserNotificationId.Parse("notification-2"),
             correction,
             original,
@@ -110,7 +110,7 @@ public sealed class UserNotificationTests
     }
 
     [Fact]
-    public void CreateCorrection_ShouldRejectASuccessorThatIsNoLongerPublished()
+    public void CreateFollowUp_ShouldAcceptARetractedSuccessorAsTheLatestHonestState()
     {
         UserNotification original = UserNotification.CreateWeb(
             UserNotificationId.Parse("notification-1"),
@@ -139,14 +139,14 @@ public sealed class UserNotificationTests
         correction.Publish(NowUtc.AddMinutes(-4));
         correction.Retract("published-in-error", NowUtc.AddMinutes(-3));
 
-        UserNotificationValidationException exception = Assert.Throws<UserNotificationValidationException>(
-            () => UserNotification.CreateCorrection(
-                UserNotificationId.Parse("notification-2"),
-                correction,
-                original,
-                NowUtc.AddMinutes(1)));
+        UserNotification notification = UserNotification.CreateFollowUp(
+            UserNotificationId.Parse("notification-2"),
+            correction,
+            original,
+            NowUtc.AddMinutes(1));
 
-        Assert.Equal(UserNotificationErrorCodes.EventNotDistributable, exception.Code);
+        Assert.Equal(correction.Id, notification.FactualEventId);
+        Assert.Equal(original.UserId, notification.UserId);
     }
 
     private static WatchSubscription CreateSubscription()

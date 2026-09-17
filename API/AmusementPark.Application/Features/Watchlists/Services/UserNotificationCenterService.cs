@@ -72,8 +72,15 @@ public sealed class UserNotificationCenterService
             static factualEvent => factualEvent.Id);
         IReadOnlyCollection<FactualChangeEvent> correctedOriginals =
             await this.eventRepository.GetCorrectedBySuccessorIdsAsync(eventIds, cancellationToken);
+        IReadOnlyCollection<FactualChangeEventId> deliveredOriginalIds =
+            await this.notificationRepository.ListDeliveredFactualEventIdsOwnedAsync(
+                normalizedUserId,
+                correctedOriginals.Select(static factualEvent => factualEvent.Id).ToArray(),
+                cancellationToken);
+        HashSet<FactualChangeEventId> deliveredOriginalIdSet = deliveredOriginalIds.ToHashSet();
         Dictionary<FactualChangeEventId, FactualChangeEvent> correctedOriginalsBySuccessor = correctedOriginals
-            .Where(static factualEvent => factualEvent.SupersededByEventId.HasValue)
+            .Where(factualEvent => factualEvent.SupersededByEventId.HasValue
+                && deliveredOriginalIdSet.Contains(factualEvent.Id))
             .GroupBy(static factualEvent => factualEvent.SupersededByEventId!.Value)
             .ToDictionary(
                 static group => group.Key,

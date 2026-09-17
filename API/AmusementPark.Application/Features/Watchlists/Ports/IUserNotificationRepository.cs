@@ -17,6 +17,11 @@ public interface IUserNotificationRepository
         int limit,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<FactualChangeEventId>> ListDeliveredFactualEventIdsOwnedAsync(
+        string userId,
+        IReadOnlyCollection<FactualChangeEventId> eventIds,
+        CancellationToken cancellationToken);
+
     Task<long> RedeliverRetractionAsync(
         FactualChangeEventId eventId,
         IReadOnlyCollection<UserNotificationId> notificationIds,

@@ -85,6 +85,38 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
+    public async Task<IReadOnlyCollection<FactualChangeEventId>> ListDeliveredFactualEventIdsOwnedAsync(
+        string userId,
+        IReadOnlyCollection<FactualChangeEventId> eventIds,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
+        ArgumentNullException.ThrowIfNull(eventIds);
+        string[] ids = eventIds
+            .Select(static eventId => eventId.Value)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (ids.Length == 0)
+        {
+            return Array.Empty<FactualChangeEventId>();
+        }
+
+        FilterDefinition<UserNotificationDocument> filter =
+            Builders<UserNotificationDocument>.Filter.Eq(
+                static document => document.UserId,
+                normalizedUserId)
+            & Builders<UserNotificationDocument>.Filter.In(
+                static document => document.FactualEventId,
+                ids);
+        List<string> deliveredIds = await this.collection.Find(filter)
+            .Project(static document => document.FactualEventId)
+            .ToListAsync(cancellationToken);
+        return deliveredIds
+            .Distinct(StringComparer.Ordinal)
+            .Select(FactualChangeEventId.Parse)
+            .ToArray();
+    }
+
     public async Task<long> RedeliverRetractionAsync(
         FactualChangeEventId eventId,
         IReadOnlyCollection<UserNotificationId> notificationIds,

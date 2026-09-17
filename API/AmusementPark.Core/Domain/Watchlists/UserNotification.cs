@@ -154,24 +154,25 @@ public sealed class UserNotification
             1);
     }
 
-    public static UserNotification CreateCorrection(
+    public static UserNotification CreateFollowUp(
         UserNotificationId id,
-        FactualChangeEvent correction,
+        FactualChangeEvent followUp,
         UserNotification originalNotification,
         DateTime nowUtc)
     {
-        ArgumentNullException.ThrowIfNull(correction);
+        ArgumentNullException.ThrowIfNull(followUp);
         ArgumentNullException.ThrowIfNull(originalNotification);
-        if (correction.Status != FactualChangeStatus.Published
-            || correction.PublishedAtUtc is null)
+        if (followUp.PublishedAtUtc is null
+            || followUp.Status is not FactualChangeStatus.Published
+                and not FactualChangeStatus.Retracted)
         {
             throw Invalid(
                 UserNotificationErrorCodes.EventNotDistributable,
-                "A correction must reference a factual event that has been published.");
+                "A follow-up must reference a published or retracted factual event.");
         }
 
-        if (correction.Target.Type != originalNotification.TargetType
-            || !string.Equals(correction.Target.TargetId, originalNotification.TargetId, StringComparison.Ordinal))
+        if (followUp.Target.Type != originalNotification.TargetType
+            || !string.Equals(followUp.Target.TargetId, originalNotification.TargetId, StringComparison.Ordinal))
         {
             throw Invalid(
                 UserNotificationErrorCodes.SubscriptionDoesNotMatch,
@@ -182,13 +183,13 @@ public sealed class UserNotification
         return new UserNotification(
             id,
             originalNotification.UserId,
-            correction.Id,
+            followUp.Id,
             originalNotification.SubscriptionId,
-            correction.Type,
-            correction.Target.Type,
-            correction.Target.TargetId,
+            followUp.Type,
+            followUp.Target.Type,
+            followUp.Target.TargetId,
             originalNotification.ParkId,
-            correction.Revision,
+            followUp.Revision,
             CurrentTemplateVersion,
             originalNotification.Language,
             UserNotificationStatus.Delivered,

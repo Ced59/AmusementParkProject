@@ -32,6 +32,13 @@ public static class FactualEventAdministrationErrors
             "The factual event changed while it was being reviewed.");
     }
 
+    public static ApplicationError DistributionPending()
+    {
+        return ApplicationError.Conflict(
+            "factual-event.distribution.pending",
+            "The published factual event is still being distributed.");
+    }
+
     public static ApplicationError InvalidTransition()
     {
         return ApplicationError.RuleViolation(

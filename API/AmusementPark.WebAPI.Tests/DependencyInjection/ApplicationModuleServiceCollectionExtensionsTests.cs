@@ -117,6 +117,7 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         services.AddLogging();
         services.AddSingleton(Mock.Of<IFactualChangeEventRepository>());
         services.AddSingleton(Mock.Of<IFactualNotificationDistributionScheduler>());
+        services.AddSingleton(Mock.Of<IFactualChangeEventDistributionStateReader>());
         services.AddSingleton(Mock.Of<IParkNameReadRepository>());
         services.AddSingleton(Mock.Of<IParkItemNameReadRepository>());
 

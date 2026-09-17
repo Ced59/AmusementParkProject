@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.Watchlists.Models;
 using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -7,7 +8,8 @@ using MongoDB.Driver;
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class FactualNotificationDistributionReceiptRepository
-    : IFactualNotificationDistributionReceiptRepository
+    : IFactualNotificationDistributionReceiptRepository,
+        IFactualChangeEventDistributionStateReader
 {
     private readonly IMongoCollection<FactualNotificationDistributionReceiptDocument> collection;
 
@@ -35,6 +37,13 @@ public sealed class FactualNotificationDistributionReceiptRepository
                 normalizedEventId))
             .Limit(1)
             .AnyAsync(cancellationToken);
+    }
+
+    public Task<bool> IsInitialDistributionCompletedAsync(
+        string eventId,
+        CancellationToken cancellationToken)
+    {
+        return this.IsCompletedAsync(eventId, cancellationToken);
     }
 
     public async Task CompleteAsync(

@@ -35,6 +35,8 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
         string receiptId = FactualNotificationCorrectionJob.ReceiptId("event-1", 4);
         receipts.Setup(repository => repository.IsCompletedAsync(receiptId, CancellationToken.None))
             .ReturnsAsync(false);
+        receipts.Setup(repository => repository.IsCompletedAsync("event-1", CancellationToken.None))
+            .ReturnsAsync(true);
         events.Setup(repository => repository.GetAsync(originalEvent.Id, CancellationToken.None))
             .ReturnsAsync(originalEvent);
         events.Setup(repository => repository.GetAsync(correction.Id, CancellationToken.None))
@@ -95,6 +97,8 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
         string receiptId = FactualNotificationCorrectionJob.ReceiptId("event-1", 4);
         receipts.Setup(repository => repository.IsCompletedAsync(receiptId, CancellationToken.None))
             .ReturnsAsync(false);
+        receipts.Setup(repository => repository.IsCompletedAsync("event-1", CancellationToken.None))
+            .ReturnsAsync(true);
         events.Setup(repository => repository.GetAsync(originalEvent.Id, CancellationToken.None))
             .ReturnsAsync(originalEvent);
         notifications.Setup(repository => repository.ListByFactualEventAsync(
@@ -108,6 +112,109 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
                 It.Is<IReadOnlyCollection<UserNotificationId>>(ids => ids.Single() == originalNotification.Id),
                 NowUtc.AddMinutes(-1),
                 NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(1);
+        receipts.Setup(repository => repository.CompleteAsync(
+                It.Is<FactualNotificationDistributionReceipt>(receipt => receipt.EventId == receiptId),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        timeProvider.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
+        FactualNotificationCorrectionJobHandler handler = new FactualNotificationCorrectionJobHandler(
+            events.Object,
+            notifications.Object,
+            receipts.Object,
+            scheduler.Object,
+            timeProvider.Object);
+
+        DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
+            CreateContext(new FactualNotificationCorrectionJobPayload("event-1", 4, null)),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Succeeded, result.Outcome);
+        events.VerifyAll();
+        notifications.VerifyAll();
+        receipts.VerifyAll();
+        scheduler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhileInitialDistributionIsPending_ShouldRetryWithoutCreatingFollowUps()
+    {
+        FactualChangeEvent originalEvent = CreatePublishedEvent("event-1", 1);
+        FactualChangeEvent correction = CreatePublishedEvent("event-2", 2);
+        originalEvent.Correct(correction.Id, NowUtc.AddMinutes(-1));
+        Mock<IFactualChangeEventRepository> events =
+            new Mock<IFactualChangeEventRepository>(MockBehavior.Strict);
+        Mock<IUserNotificationRepository> notifications =
+            new Mock<IUserNotificationRepository>(MockBehavior.Strict);
+        Mock<IFactualNotificationDistributionReceiptRepository> receipts =
+            new Mock<IFactualNotificationDistributionReceiptRepository>(MockBehavior.Strict);
+        Mock<IFactualNotificationDistributionScheduler> scheduler =
+            new Mock<IFactualNotificationDistributionScheduler>(MockBehavior.Strict);
+        string receiptId = FactualNotificationCorrectionJob.ReceiptId("event-1", 4);
+        receipts.Setup(repository => repository.IsCompletedAsync(receiptId, CancellationToken.None))
+            .ReturnsAsync(false);
+        receipts.Setup(repository => repository.IsCompletedAsync("event-1", CancellationToken.None))
+            .ReturnsAsync(false);
+        events.Setup(repository => repository.GetAsync(originalEvent.Id, CancellationToken.None))
+            .ReturnsAsync(originalEvent);
+        FactualNotificationCorrectionJobHandler handler = new FactualNotificationCorrectionJobHandler(
+            events.Object,
+            notifications.Object,
+            receipts.Object,
+            scheduler.Object,
+            Mock.Of<TimeProvider>());
+
+        DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
+            CreateContext(new FactualNotificationCorrectionJobPayload("event-1", 4, null)),
+            CancellationToken.None);
+
+        Assert.Equal(DurableBackgroundJobHandlerOutcome.Retry, result.Outcome);
+        Assert.Equal(FactualNotificationDistributionErrorCodes.InitialDistributionPending, result.ErrorCode);
+        events.VerifyAll();
+        receipts.VerifyAll();
+        notifications.VerifyNoOtherCalls();
+        scheduler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WithCorrectionChain_ShouldNotifyOriginalRecipientUsingLatestPublishedFact()
+    {
+        FactualChangeEvent originalEvent = CreatePublishedEvent("event-1", 1);
+        FactualChangeEvent intermediate = CreatePublishedEvent("event-2", 2);
+        FactualChangeEvent latest = CreatePublishedEvent("event-3", 3);
+        UserNotification originalNotification = CreateNotification(originalEvent, "notification-1");
+        originalEvent.Correct(intermediate.Id, NowUtc.AddMinutes(-4));
+        intermediate.Correct(latest.Id, NowUtc.AddMinutes(-2));
+        Mock<IFactualChangeEventRepository> events =
+            new Mock<IFactualChangeEventRepository>(MockBehavior.Strict);
+        Mock<IUserNotificationRepository> notifications =
+            new Mock<IUserNotificationRepository>(MockBehavior.Strict);
+        Mock<IFactualNotificationDistributionReceiptRepository> receipts =
+            new Mock<IFactualNotificationDistributionReceiptRepository>(MockBehavior.Strict);
+        Mock<IFactualNotificationDistributionScheduler> scheduler =
+            new Mock<IFactualNotificationDistributionScheduler>(MockBehavior.Strict);
+        Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
+        string receiptId = FactualNotificationCorrectionJob.ReceiptId("event-1", 4);
+        receipts.Setup(repository => repository.IsCompletedAsync(receiptId, CancellationToken.None))
+            .ReturnsAsync(false);
+        receipts.Setup(repository => repository.IsCompletedAsync("event-1", CancellationToken.None))
+            .ReturnsAsync(true);
+        events.Setup(repository => repository.GetAsync(originalEvent.Id, CancellationToken.None))
+            .ReturnsAsync(originalEvent);
+        events.Setup(repository => repository.GetAsync(intermediate.Id, CancellationToken.None))
+            .ReturnsAsync(intermediate);
+        events.Setup(repository => repository.GetAsync(latest.Id, CancellationToken.None))
+            .ReturnsAsync(latest);
+        notifications.Setup(repository => repository.ListByFactualEventAsync(
+                originalEvent.Id,
+                null,
+                FactualNotificationCorrectionJob.NotificationBatchSize,
+                CancellationToken.None))
+            .ReturnsAsync(new[] { originalNotification });
+        notifications.Setup(repository => repository.CreateManyAsync(
+                It.Is<IReadOnlyCollection<UserNotification>>(items =>
+                    items.Count == 1 && items.Single().FactualEventId == latest.Id),
                 CancellationToken.None))
             .ReturnsAsync(1);
         receipts.Setup(repository => repository.CompleteAsync(

@@ -11,6 +11,8 @@ namespace AmusementPark.Application.Features.Watchlists.Services;
 
 public sealed class FactualNotificationCorrectionJobHandler : IDurableBackgroundJobHandler
 {
+    private const int MaximumCorrectionChainLength = 32;
+
     private readonly IFactualChangeEventRepository eventRepository;
     private readonly IUserNotificationRepository notificationRepository;
     private readonly IFactualNotificationDistributionReceiptRepository receiptRepository;
@@ -90,6 +92,12 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
                 FactualNotificationDistributionErrorCodes.EventNotTerminal);
         }
 
+        if (!await this.receiptRepository.IsCompletedAsync(factualEvent.Id.Value, cancellationToken))
+        {
+            return DurableBackgroundJobHandlerResult.Retry(
+                FactualNotificationDistributionErrorCodes.InitialDistributionPending);
+        }
+
         IReadOnlyCollection<UserNotification> originals =
             await this.notificationRepository.ListByFactualEventAsync(
                 factualEvent.Id,
@@ -141,39 +149,111 @@ public sealed class FactualNotificationCorrectionJobHandler : IDurableBackground
         DateTime nowUtc,
         CancellationToken cancellationToken)
     {
-        if (!original.SupersededByEventId.HasValue)
+        FactualChangeEvent? followUp = await this.ResolveLatestFollowUpAsync(original, cancellationToken);
+        if (followUp is null)
         {
             return DurableBackgroundJobHandlerResult.DeadLetter(
                 FactualNotificationDistributionErrorCodes.SupersedingEventMissing);
         }
 
-        FactualChangeEvent? correction = await this.eventRepository.GetAsync(
-            original.SupersededByEventId.Value,
-            cancellationToken);
-        if (correction?.Status != FactualChangeStatus.Published
-            || correction.PublishedAtUtc is null)
+        for (int chainAttempt = 0; chainAttempt < MaximumCorrectionChainLength; chainAttempt++)
         {
-            return DurableBackgroundJobHandlerResult.DeadLetter(
-                FactualNotificationDistributionErrorCodes.SupersedingEventMissing);
+            try
+            {
+                UserNotification[] followUps = originalNotifications
+                    .Select(notification => UserNotification.CreateFollowUp(
+                        UserNotificationId.New(),
+                        followUp,
+                        notification,
+                        nowUtc))
+                    .ToArray();
+                await this.notificationRepository.CreateManyAsync(followUps, cancellationToken);
+            }
+            catch (UserNotificationValidationException)
+            {
+                return DurableBackgroundJobHandlerResult.DeadLetter(
+                    FactualNotificationDistributionErrorCodes.InvalidNotification);
+            }
+
+            if (followUp.Status == FactualChangeStatus.Retracted)
+            {
+                return null;
+            }
+
+            FactualChangeEvent? refreshed = await this.eventRepository.GetAsync(
+                followUp.Id,
+                cancellationToken);
+            if (refreshed is null)
+            {
+                return DurableBackgroundJobHandlerResult.DeadLetter(
+                    FactualNotificationDistributionErrorCodes.SupersedingEventMissing);
+            }
+
+            if (refreshed.Status == FactualChangeStatus.Published)
+            {
+                return null;
+            }
+
+            if (refreshed.Status != FactualChangeStatus.Corrected)
+            {
+                return refreshed.Status == FactualChangeStatus.Retracted
+                    ? null
+                    : DurableBackgroundJobHandlerResult.DeadLetter(
+                        FactualNotificationDistributionErrorCodes.SupersedingEventMissing);
+            }
+
+            followUp = await this.ResolveLatestFollowUpAsync(refreshed, cancellationToken);
+            if (followUp is null)
+            {
+                return DurableBackgroundJobHandlerResult.DeadLetter(
+                    FactualNotificationDistributionErrorCodes.SupersedingEventMissing);
+            }
         }
 
-        try
+        return DurableBackgroundJobHandlerResult.DeadLetter(
+            FactualNotificationDistributionErrorCodes.SupersedingEventMissing);
+    }
+
+    private async Task<FactualChangeEvent?> ResolveLatestFollowUpAsync(
+        FactualChangeEvent original,
+        CancellationToken cancellationToken)
+    {
+        HashSet<FactualChangeEventId> visited = new() { original.Id };
+        FactualChangeEvent current = original;
+        for (int depth = 0; depth < MaximumCorrectionChainLength; depth++)
         {
-            UserNotification[] corrections = originalNotifications
-                .Select(notification => UserNotification.CreateCorrection(
-                    UserNotificationId.New(),
-                    correction,
-                    notification,
-                    nowUtc))
-                .ToArray();
-            await this.notificationRepository.CreateManyAsync(corrections, cancellationToken);
-            return null;
+            if (!current.SupersededByEventId.HasValue
+                || !visited.Add(current.SupersededByEventId.Value))
+            {
+                return null;
+            }
+
+            FactualChangeEvent? candidate = await this.eventRepository.GetAsync(
+                current.SupersededByEventId.Value,
+                cancellationToken);
+            if (candidate is null
+                || candidate.PublishedAtUtc is null
+                || candidate.Target != original.Target
+                || !string.Equals(candidate.DeduplicationKey, original.DeduplicationKey, StringComparison.Ordinal)
+                || candidate.Revision <= current.Revision)
+            {
+                return null;
+            }
+
+            if (candidate.Status is FactualChangeStatus.Published or FactualChangeStatus.Retracted)
+            {
+                return candidate;
+            }
+
+            if (candidate.Status != FactualChangeStatus.Corrected)
+            {
+                return null;
+            }
+
+            current = candidate;
         }
-        catch (UserNotificationValidationException)
-        {
-            return DurableBackgroundJobHandlerResult.DeadLetter(
-                FactualNotificationDistributionErrorCodes.InvalidNotification);
-        }
+
+        return null;
     }
 
     private static FactualNotificationCorrectionJobPayload? Parse(

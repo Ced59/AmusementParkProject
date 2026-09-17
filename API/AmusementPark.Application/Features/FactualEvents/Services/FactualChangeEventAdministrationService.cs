@@ -8,13 +8,17 @@ namespace AmusementPark.Application.Features.FactualEvents.Services;
 public sealed class FactualChangeEventAdministrationService
 {
     private readonly IFactualChangeEventRepository repository;
+    private readonly IFactualChangeEventDistributionStateReader distributionStateReader;
     private readonly TimeProvider timeProvider;
 
     public FactualChangeEventAdministrationService(
         IFactualChangeEventRepository repository,
+        IFactualChangeEventDistributionStateReader distributionStateReader,
         TimeProvider? timeProvider = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        this.distributionStateReader = distributionStateReader
+            ?? throw new ArgumentNullException(nameof(distributionStateReader));
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -69,6 +73,13 @@ public sealed class FactualChangeEventAdministrationService
             return ApplicationResult.Failure(FactualEventAdministrationErrors.Conflict());
         }
 
+        if (!await this.distributionStateReader.IsInitialDistributionCompletedAsync(
+                factualEvent.Id.Value,
+                cancellationToken))
+        {
+            return ApplicationResult.Failure(FactualEventAdministrationErrors.DistributionPending());
+        }
+
         if (supersedingEvent.Status != FactualChangeStatus.Published
             || supersedingEvent.Target != factualEvent.Target
             || !string.Equals(
@@ -104,14 +115,16 @@ public sealed class FactualChangeEventAdministrationService
             eventId,
             expectedVersion,
             (factualEvent, timestamp) => factualEvent.Retract(normalizedReasonCode, timestamp),
-            cancellationToken);
+            cancellationToken,
+            requireCompletedDistribution: true);
     }
 
     private async Task<ApplicationResult> ChangeStatusAsync(
         string eventId,
         long expectedVersion,
         Action<FactualChangeEvent, DateTime> transition,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        bool requireCompletedDistribution = false)
     {
         if (!FactualChangeEventId.TryParse(eventId, out FactualChangeEventId parsedEventId)
             || expectedVersion < 1)
@@ -130,6 +143,14 @@ public sealed class FactualChangeEventAdministrationService
         if (factualEvent.Version != expectedVersion)
         {
             return ApplicationResult.Failure(FactualEventAdministrationErrors.Conflict());
+        }
+
+        if (requireCompletedDistribution
+            && !await this.distributionStateReader.IsInitialDistributionCompletedAsync(
+                factualEvent.Id.Value,
+                cancellationToken))
+        {
+            return ApplicationResult.Failure(FactualEventAdministrationErrors.DistributionPending());
         }
 
         return await this.ChangeStatusAsync(
