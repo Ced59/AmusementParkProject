@@ -4,15 +4,18 @@ using AmusementPark.Application.Features.Watchlists.Commands;
 using AmusementPark.Application.Features.Watchlists.Models;
 using AmusementPark.Application.Features.Watchlists.Queries;
 using AmusementPark.Application.Features.Watchlists.Results;
+using AmusementPark.Core.Domain.Watchlists;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.Watchlists;
 using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.RateLimiting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -30,6 +33,8 @@ public sealed class UserNotificationsController : ControllerBase
     private readonly ICommandHandler<MarkAllUserNotificationsReadCommand, ApplicationResult> readAllHandler;
     private readonly ICommandHandler<DeleteNotificationSourceSubscriptionCommand, ApplicationResult>
         unsubscribeHandler;
+    private readonly ICommandHandler<CaptureWatchPilotInteractionCommand, ApplicationResult>
+        pilotInteractionHandler;
 
     public UserNotificationsController(
         IQueryHandler<GetMyUserNotificationsQuery,
@@ -37,13 +42,39 @@ public sealed class UserNotificationsController : ControllerBase
         ICommandHandler<MarkUserNotificationReadCommand, ApplicationResult> readHandler,
         ICommandHandler<DismissUserNotificationCommand, ApplicationResult> dismissHandler,
         ICommandHandler<MarkAllUserNotificationsReadCommand, ApplicationResult> readAllHandler,
-        ICommandHandler<DeleteNotificationSourceSubscriptionCommand, ApplicationResult> unsubscribeHandler)
+        ICommandHandler<DeleteNotificationSourceSubscriptionCommand, ApplicationResult> unsubscribeHandler,
+        ICommandHandler<CaptureWatchPilotInteractionCommand, ApplicationResult> pilotInteractionHandler)
     {
         this.queryHandler = queryHandler;
         this.readHandler = readHandler;
         this.dismissHandler = dismissHandler;
         this.readAllHandler = readAllHandler;
         this.unsubscribeHandler = unsubscribeHandler;
+        this.pilotInteractionHandler = pilotInteractionHandler;
+    }
+
+    [HttpPost("pilot-interactions")]
+    [EnableRateLimiting(RateLimitPolicyNames.WatchPilotInteractions)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> CapturePilotInteractionAsync(
+        [FromBody] CaptureWatchPilotInteractionRequestDto request,
+        CancellationToken cancellationToken = default)
+    {
+        string? userId = this.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return this.Unauthorized();
+        }
+
+        if (!Enum.TryParse(request.InteractionKind, true, out WatchPilotInteractionKind kind))
+        {
+            return this.BadRequest();
+        }
+
+        ApplicationResult result = await this.pilotInteractionHandler.HandleAsync(
+            new CaptureWatchPilotInteractionCommand(userId, kind, request.NotificationId),
+            cancellationToken);
+        return result.IsSuccess ? this.NoContent() : this.ToActionResult(result);
     }
 
     [HttpGet]

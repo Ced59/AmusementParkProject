@@ -89,6 +89,11 @@ internal static class WatchNotificationMongoDefinitions
                     .Ascending(static document => document.UpdatedAt)
                     .Ascending(static document => document.Id),
                 new CreateIndexOptions { Name = "ix_watch_subscription_distribution" }),
+            new CreateIndexModel<WatchSubscriptionDocument>(
+                Builders<WatchSubscriptionDocument>.IndexKeys
+                    .Ascending(static document => document.IsPaused)
+                    .Ascending(static document => document.EventTypes),
+                new CreateIndexOptions { Name = "ix_watch_subscription_pilot_active_types" }),
         };
     }
 
@@ -137,6 +142,10 @@ internal static class WatchNotificationMongoDefinitions
                     ExpireAfter = TimeSpan.Zero,
                     Name = "ttl_user_notification_retention",
                 }),
+            new CreateIndexModel<UserNotificationDocument>(
+                Builders<UserNotificationDocument>.IndexKeys
+                    .Ascending(static document => document.DeliveredAt),
+                new CreateIndexOptions { Name = "ix_user_notification_pilot_delivered" }),
         };
     }
 }

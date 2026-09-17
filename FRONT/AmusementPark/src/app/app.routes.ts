@@ -149,6 +149,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/factual-events/pages/admin-factual-events/admin-factual-events.component').then((m) => m.AdminFactualEventsComponent)
           },
           {
+            path: 'watch-pilot',
+            loadComponent: () => import('@features/admin/watch-pilot/pages/admin-watch-pilot/admin-watch-pilot.component').then((m) => m.AdminWatchPilotComponent)
+          },
+          {
             path: 'technical-stats',
             loadComponent: () => import('@features/admin/technical-stats/pages/admin-technical-stats/admin-technical-stats.component').then((m) => m.AdminTechnicalStatsComponent)
           },

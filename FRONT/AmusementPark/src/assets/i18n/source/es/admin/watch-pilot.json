@@ -1,0 +1,15 @@
+{
+  "admin": {
+    "watchPilot": {
+      "navTitle": "Piloto de alertas", "shortcut": "Medir la fiabilidad de las alertas y el estado de las colas.", "kicker": "Radar · confianza", "title": "Pilotaje de alertas factuales", "subtitle": "Decide si el catálogo puede crecer con mediciones agregadas, sin seguir recorridos individuales.", "loading": "Cargando indicadores de alertas…", "loadError": "No se pudieron cargar los indicadores de alertas.", "empty": "No hay mediciones en este período.",
+      "filters": { "from": "Desde", "to": "Hasta" },
+      "signal": { "AwaitingObservations": "Esperando observaciones", "NeedsAttention": "Requiere atención", "Monitor": "Vigilar", "ReadyToExtend": "Listo para ampliar" },
+      "decision": { "kicker": "Decisión de ampliación", "ready": "El volumen, la calidad y la cobertura del proveedor permiten añadir tipos con prudencia.", "wait": "La base sigue activa, pero faltan observaciones o cobertura completa del proveedor antes de ampliar los tipos." },
+      "metrics": { "ariaLabel": "Indicadores agregados de alertas", "activeSubscriptions": "Suscripciones activas", "published": "Hechos publicados", "notifications": "Notificaciones entregadas", "duplicates": "Duplicados detectados", "latency": "Latencia media", "centerOpens": "Aperturas del centro", "sourceOpens": "Fuentes consultadas", "reports": "Alertas señaladas", "digests": "Resúmenes generados", "emailFailures": "Fallos de correo", "outbox": "Outbox pendiente", "unsubscriptions": "Bajas" },
+      "queueStatus": { "Pending": "Pendiente", "Leased": "En curso", "Succeeded": "Completada", "RetryScheduled": "Reintento programado", "DeadLetter": "Bloqueada", "Cancelled": "Cancelada", "Superseded": "Sustituida" },
+      "provider": { "title": "Respuesta del proveedor no disponible", "description": "SMTP informa de envíos y fallos, pero aún no de rebotes ni quejas. La puerta permanece cerrada sin inventar datos." },
+      "chart": { "title": "Entregas diarias", "subtitle": "Notificaciones web entregadas cada día en el período elegido." },
+      "breakdown": { "subscriptions": "Suscripciones por tipo de hecho", "queue": "Carga de las colas", "empty": "No se observó volumen." }
+    }
+  }
+}

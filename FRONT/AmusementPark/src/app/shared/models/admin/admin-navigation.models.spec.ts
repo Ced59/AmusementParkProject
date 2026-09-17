@@ -33,6 +33,7 @@ describe('ADMIN_NAVIGATION_ITEMS', () => {
       'rating-rankings',
       'share-moderation',
       'factual-events',
+      'watch-pilot',
       'technical-stats'
     ]);
     expect(new Set(routes).size).toBe(routes.length);

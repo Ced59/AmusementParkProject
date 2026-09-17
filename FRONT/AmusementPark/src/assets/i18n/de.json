@@ -134,7 +134,9 @@
       "markRead": "Als gelesen markieren",
       "dismiss": "Ausblenden",
       "unsubscribe": "Alle Benachrichtigungen für diesen Park oder diese Attraktion beenden",
-      "openSource": "Quelle ansehen"
+      "openSource": "Quelle ansehen",
+      "reportMisleading": "Irreführenden Hinweis melden",
+      "reportedMisleading": "Hinweis gemeldet"
     },
     "feedback": {
       "loading": "Dein Radar wird geladen…",
@@ -4156,6 +4158,68 @@
       }
     },
     "visible": "Sichtbar",
+    "watchPilot": {
+      "navTitle": "Warnungs-Pilot",
+      "shortcut": "Zuverlässigkeit faktischer Hinweise und Warteschlangen messen.",
+      "kicker": "Radar · Vertrauen",
+      "title": "Pilot für faktische Hinweise",
+      "subtitle": "Entscheide anhand aggregierter Messwerte über eine Erweiterung, ohne einzelne Wege zu verfolgen.",
+      "loading": "Hinweiskennzahlen werden geladen…",
+      "loadError": "Hinweiskennzahlen konnten nicht geladen werden.",
+      "empty": "Keine Messwerte für diesen Zeitraum.",
+      "filters": {
+        "from": "Von",
+        "to": "Bis"
+      },
+      "signal": {
+        "AwaitingObservations": "Beobachtungen ausstehend",
+        "NeedsAttention": "Handlungsbedarf",
+        "Monitor": "Beobachten",
+        "ReadyToExtend": "Bereit zur Erweiterung"
+      },
+      "decision": {
+        "kicker": "Erweiterungsentscheidung",
+        "ready": "Umfang, Qualität und Anbieterabdeckung erlauben eine vorsichtige Erweiterung.",
+        "wait": "Die Grundlage bleibt aktiv; vor einer Erweiterung fehlen noch Beobachtungen oder vollständige Anbieterangaben."
+      },
+      "metrics": {
+        "ariaLabel": "Aggregierte Hinweiskennzahlen",
+        "activeSubscriptions": "Aktive Abonnements",
+        "published": "Veröffentlichte Fakten",
+        "notifications": "Zugestellte Hinweise",
+        "duplicates": "Erkannte Duplikate",
+        "latency": "Mittlere Latenz",
+        "centerOpens": "Aufrufe der Zentrale",
+        "sourceOpens": "Geöffnete Quellen",
+        "reports": "Gemeldete Hinweise",
+        "digests": "Erstellte Zusammenfassungen",
+        "emailFailures": "E-Mail-Fehler",
+        "outbox": "Offene Outbox",
+        "unsubscriptions": "Abmeldungen"
+      },
+      "queueStatus": {
+        "Pending": "Ausstehend",
+        "Leased": "In Bearbeitung",
+        "Succeeded": "Abgeschlossen",
+        "RetryScheduled": "Neuer Versuch geplant",
+        "DeadLetter": "Blockiert",
+        "Cancelled": "Abgebrochen",
+        "Superseded": "Ersetzt"
+      },
+      "provider": {
+        "title": "Anbieterrückmeldungen nicht verfügbar",
+        "description": "SMTP meldet Versand und Fehler, aber noch keine Rückläufer oder Beschwerden. Deshalb bleibt die Freigabe ohne erfundene Daten geschlossen."
+      },
+      "chart": {
+        "title": "Tägliche Zustellungen",
+        "subtitle": "Pro Tag zugestellte Web-Hinweise im gewählten Zeitraum."
+      },
+      "breakdown": {
+        "subscriptions": "Abonnements nach Faktentyp",
+        "queue": "Warteschlangenlast",
+        "empty": "Kein Volumen beobachtet."
+      }
+    },
     "workbench": {
       "navTitle": "Arbeitsbereich Parkinhalte",
       "title": "Schnellerfassung von Einträgen",

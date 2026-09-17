@@ -1,0 +1,15 @@
+{
+  "admin": {
+    "watchPilot": {
+      "navTitle": "Piloto de alertas", "shortcut": "Mede a fiabilidade dos alertas e o estado das filas.", "kicker": "Radar · confiança", "title": "Pilotagem dos alertas factuais", "subtitle": "Decide se o catálogo pode crescer com medições agregadas, sem acompanhar percursos individuais.", "loading": "A carregar indicadores…", "loadError": "Não foi possível carregar os indicadores dos alertas.", "empty": "Sem medições neste período.",
+      "filters": { "from": "De", "to": "Até" },
+      "signal": { "AwaitingObservations": "A aguardar observações", "NeedsAttention": "Requer atenção", "Monitor": "A acompanhar", "ReadyToExtend": "Pronto para ampliar" },
+      "decision": { "kicker": "Decisão de ampliação", "ready": "O volume, a qualidade e a cobertura do fornecedor permitem acrescentar novos tipos com prudência.", "wait": "A base continua ativa, mas faltam observações ou cobertura completa do fornecedor antes da ampliação." },
+      "metrics": { "ariaLabel": "Indicadores agregados dos alertas", "activeSubscriptions": "Subscrições ativas", "published": "Factos publicados", "notifications": "Notificações entregues", "duplicates": "Duplicados detetados", "latency": "Latência média", "centerOpens": "Aberturas do centro", "sourceOpens": "Fontes consultadas", "reports": "Alertas assinalados", "digests": "Resumos gerados", "emailFailures": "Falhas de e-mail", "outbox": "Outbox pendente", "unsubscriptions": "Cancelamentos" },
+      "queueStatus": { "Pending": "Pendente", "Leased": "Em curso", "Succeeded": "Concluída", "RetryScheduled": "Nova tentativa agendada", "DeadLetter": "Bloqueada", "Cancelled": "Cancelada", "Superseded": "Substituída" },
+      "provider": { "title": "Retorno do fornecedor indisponível", "description": "O SMTP indica envios e falhas, mas ainda não devoluções nem queixas. A decisão fica fechada sem inventar dados." },
+      "chart": { "title": "Entregas diárias", "subtitle": "Notificações Web entregues por dia no período escolhido." },
+      "breakdown": { "subscriptions": "Subscrições por tipo de facto", "queue": "Carga das filas", "empty": "Nenhum volume observado." }
+    }
+  }
+}

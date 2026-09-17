@@ -1,0 +1,15 @@
+{
+  "admin": {
+    "watchPilot": {
+      "navTitle": "Alert pilot", "shortcut": "Measure factual-alert reliability and queue health.", "kicker": "Radar · trust", "title": "Factual alert pilot", "subtitle": "Decide whether the catalogue can grow from aggregate measurements without tracking individual journeys.", "loading": "Loading alert indicators…", "loadError": "Alert indicators could not be loaded.", "empty": "No measurements for this period.",
+      "filters": { "from": "From", "to": "To" },
+      "signal": { "AwaitingObservations": "Awaiting observations", "NeedsAttention": "Attention required", "Monitor": "Monitor", "ReadyToExtend": "Ready to extend" },
+      "decision": { "kicker": "Extension decision", "ready": "Volume, quality and provider coverage allow new alert types to be added carefully.", "wait": "The foundation remains active, but more evidence or complete provider coverage is needed before adding types." },
+      "metrics": { "ariaLabel": "Aggregate alert indicators", "activeSubscriptions": "Active subscriptions", "published": "Published facts", "notifications": "Notifications delivered", "duplicates": "Duplicates detected", "latency": "Average latency", "centerOpens": "Centre opens", "sourceOpens": "Sources opened", "reports": "Alerts reported", "digests": "Digests generated", "emailFailures": "Email failures", "outbox": "Pending outbox", "unsubscriptions": "Unsubscriptions" },
+      "queueStatus": { "Pending": "Pending", "Leased": "Running", "Succeeded": "Completed", "RetryScheduled": "Retry scheduled", "DeadLetter": "Blocked", "Cancelled": "Cancelled", "Superseded": "Superseded" },
+      "provider": { "title": "Provider feedback unavailable", "description": "SMTP reports send successes and failures, but not bounces or complaints yet. The gate therefore stays closed without inventing data." },
+      "chart": { "title": "Daily deliveries", "subtitle": "Web notifications delivered each day during the selected period." },
+      "breakdown": { "subscriptions": "Subscriptions by fact type", "queue": "Queue load", "empty": "No observed volume." }
+    }
+  }
+}

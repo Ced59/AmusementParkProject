@@ -50,6 +50,8 @@ public sealed class MongoDbSettings
 
     public string FactualNotificationDistributionsCollectionName { get; set; } = "factual-notification-distributions";
 
+    public string WatchPilotDailyMetricsCollectionName { get; set; } = "watch-pilot-daily-metrics";
+
     public bool CompleteFactualEventMigrationsOnStartup { get; set; } = true;
 
     public string RefreshTokensCollectionName { get; set; } = "refreshTokens";

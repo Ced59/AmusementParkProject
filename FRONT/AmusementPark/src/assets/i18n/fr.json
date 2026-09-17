@@ -134,7 +134,9 @@
       "markRead": "Marquer comme lu",
       "dismiss": "Masquer",
       "unsubscribe": "Arrêter toutes les alertes pour ce parc ou cette attraction",
-      "openSource": "Voir la source"
+      "openSource": "Voir la source",
+      "reportMisleading": "Signaler une alerte trompeuse",
+      "reportedMisleading": "Alerte signalée"
     },
     "feedback": {
       "loading": "Chargement de ton radar…",
@@ -4156,6 +4158,68 @@
       }
     },
     "visible": "Visible",
+    "watchPilot": {
+      "navTitle": "Pilote des alertes",
+      "shortcut": "Mesurer la fiabilité des alertes factuelles et l’état des files.",
+      "kicker": "Radar · confiance",
+      "title": "Pilotage des alertes factuelles",
+      "subtitle": "Décide si le catalogue peut s’étendre à partir de mesures agrégées, sans suivre les parcours individuels.",
+      "loading": "Chargement des indicateurs d’alertes…",
+      "loadError": "Impossible de charger les indicateurs d’alertes.",
+      "empty": "Aucune mesure sur cette période.",
+      "filters": {
+        "from": "Du",
+        "to": "Au"
+      },
+      "signal": {
+        "AwaitingObservations": "En attente d’observations",
+        "NeedsAttention": "Attention requise",
+        "Monitor": "À surveiller",
+        "ReadyToExtend": "Prêt à étendre"
+      },
+      "decision": {
+        "kicker": "Décision d’extension",
+        "ready": "Le volume, la qualité et la couverture fournisseur autorisent l’ajout prudent de nouveaux types d’alertes.",
+        "wait": "Le socle reste actif, mais il manque encore du recul ou une couverture fournisseur complète avant d’étendre les types."
+      },
+      "metrics": {
+        "ariaLabel": "Indicateurs agrégés des alertes",
+        "activeSubscriptions": "Abonnements actifs",
+        "published": "Faits publiés",
+        "notifications": "Notifications livrées",
+        "duplicates": "Doublons détectés",
+        "latency": "Latence moyenne",
+        "centerOpens": "Ouvertures du centre",
+        "sourceOpens": "Sources consultées",
+        "reports": "Alertes signalées",
+        "digests": "Résumés générés",
+        "emailFailures": "Échecs e-mail",
+        "outbox": "Outbox en attente",
+        "unsubscriptions": "Désabonnements"
+      },
+      "queueStatus": {
+        "Pending": "En attente",
+        "Leased": "En cours",
+        "Succeeded": "Terminée",
+        "RetryScheduled": "Nouvel essai planifié",
+        "DeadLetter": "Bloquée",
+        "Cancelled": "Annulée",
+        "Superseded": "Remplacée"
+      },
+      "provider": {
+        "title": "Retours fournisseur indisponibles",
+        "description": "Le SMTP remonte les succès et échecs d’envoi, mais pas encore les rebonds ni les plaintes. Le seuil décisionnel reste donc fermé sans inventer ces données."
+      },
+      "chart": {
+        "title": "Livraisons quotidiennes",
+        "subtitle": "Notifications Web remises chaque jour sur la période choisie."
+      },
+      "breakdown": {
+        "subscriptions": "Abonnements par type de fait",
+        "queue": "Charge des files",
+        "empty": "Aucun volume observé."
+      }
+    },
     "workbench": {
       "navTitle": "Atelier des contenus du parc",
       "title": "Saisie rapide de fiches",

@@ -52,6 +52,10 @@ public sealed class UserNotificationDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? DismissedAt { get; set; }
 
+    [BsonElement("misleadingReportedAt")]
+    [BsonIgnoreIfNull]
+    public DateTime? MisleadingReportedAt { get; set; }
+
     [BsonElement("expiresAt")]
     public DateTime ExpiresAt { get; set; }
 

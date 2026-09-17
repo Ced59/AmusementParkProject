@@ -78,6 +78,12 @@ public sealed class MongoDatabaseInitializerFactualEventsTests
         Assert.Contains(
             indexes,
             static index => index.Options.Name == "idx_factual_events_correction_lookup");
+        Assert.Contains(
+            indexes,
+            static index => index.Options.Name == "idx_factual_events_pilot_verified");
+        Assert.Contains(
+            indexes,
+            static index => index.Options.Name == "idx_factual_events_pilot_published");
     }
 
     private static BsonDocument Render<TDocument>(IndexKeysDefinition<TDocument> keys)

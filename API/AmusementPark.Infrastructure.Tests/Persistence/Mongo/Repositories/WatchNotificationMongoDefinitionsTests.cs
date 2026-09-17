@@ -86,6 +86,7 @@ public sealed class WatchNotificationMongoDefinitionsTests
             && index.Options.Unique == true);
         Assert.Contains(indexes, index => index.Options.Name == "ix_watch_subscription_distribution"
             && index.Options.Unique != true);
+        Assert.Contains(indexes, index => index.Options.Name == "ix_watch_subscription_pilot_active_types");
     }
 
     [Fact]
@@ -101,6 +102,7 @@ public sealed class WatchNotificationMongoDefinitionsTests
         Assert.Contains(indexes, index => index.Options.Name == "ix_user_notification_correction_distribution");
         Assert.Contains(indexes, index => index.Options.Name == "ttl_user_notification_retention"
             && index.Options.ExpireAfter == TimeSpan.Zero);
+        Assert.Contains(indexes, index => index.Options.Name == "ix_user_notification_pilot_delivered");
     }
 
     [Fact]

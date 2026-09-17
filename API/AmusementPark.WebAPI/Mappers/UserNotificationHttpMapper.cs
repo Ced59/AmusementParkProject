@@ -92,6 +92,7 @@ public static class UserNotificationHttpMapper
             ReadAtUtc = result.ReadAtUtc,
             ExpiresAtUtc = result.ExpiresAtUtc,
             Version = result.Version,
+            IsReportedMisleading = result.IsReportedMisleading,
             CanManageSubscription = result.CanManageSubscription,
             SubscriptionVersion = result.SubscriptionVersion,
         };

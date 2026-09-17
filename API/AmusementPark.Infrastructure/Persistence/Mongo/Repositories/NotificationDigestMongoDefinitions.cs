@@ -20,6 +20,10 @@ internal static class NotificationDigestMongoDefinitions
                     Unique = true,
                     Name = "uq_notification_digest_group",
                 }),
+            new CreateIndexModel<NotificationDigestDocument>(
+                Builders<NotificationDigestDocument>.IndexKeys
+                    .Ascending(static document => document.CreatedAt),
+                new CreateIndexOptions { Name = "ix_notification_digest_pilot_created" }),
         };
     }
 }

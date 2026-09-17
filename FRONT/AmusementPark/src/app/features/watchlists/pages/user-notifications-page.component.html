@@ -167,7 +167,8 @@
                 <small>{{ 'notifications.source.checkedOn' | translate:{ date: (notification.source.verifiedAtUtc | date:'mediumDate':undefined:currentLang()) } }}</small>
               </div>
               @if (notification.source.url) {
-                <a [href]="notification.source.url | safeExternalUrl" target="_blank" rel="noopener noreferrer">
+                <a [href]="notification.source.url | safeExternalUrl" target="_blank" rel="noopener noreferrer"
+                  (click)="facade.recordSourceOpened(notification.notificationId)">
                   {{ 'notifications.actions.openSource' | translate }}
                   <i class="pi pi-external-link" aria-hidden="true"></i>
                 </a>
@@ -194,6 +195,16 @@
               <button appUiButton="ghost" type="button" [disabled]="facade.mutatingId() !== null" (click)="facade.dismiss(notification)">
                 <i class="pi pi-times" aria-hidden="true"></i>
                 <span>{{ 'notifications.actions.dismiss' | translate }}</span>
+              </button>
+              <button
+                appUiButton="ghost"
+                type="button"
+                [disabled]="facade.mutatingId() !== null || notification.isReportedMisleading || facade.reportedNotificationIds().has(notification.notificationId)"
+                (click)="facade.reportMisleading(notification.notificationId)">
+                <i class="pi pi-flag" aria-hidden="true"></i>
+                <span>{{ (notification.isReportedMisleading || facade.reportedNotificationIds().has(notification.notificationId)
+                  ? 'notifications.actions.reportedMisleading'
+                  : 'notifications.actions.reportMisleading') | translate }}</span>
               </button>
               @if (notification.canManageSubscription) {
                 <button appUiButton="ghost" type="button" [disabled]="facade.mutatingId() !== null" (click)="facade.unsubscribe(notification)">

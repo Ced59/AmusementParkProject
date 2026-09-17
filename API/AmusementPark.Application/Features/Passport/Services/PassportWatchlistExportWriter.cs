@@ -157,6 +157,7 @@ internal static class PassportWatchlistExportWriter
         writer.WriteString("deliveredAtUtc", FormatUtc(notification.DeliveredAtUtc));
         WriteNullableTimestamp(writer, "readAtUtc", notification.ReadAtUtc);
         WriteNullableTimestamp(writer, "dismissedAtUtc", notification.DismissedAtUtc);
+        WriteNullableTimestamp(writer, "misleadingReportedAtUtc", notification.MisleadingReportedAtUtc);
         writer.WriteString("retainedUntilUtc", FormatUtc(notification.ExpiresAtUtc));
         writer.WriteNumber("version", notification.Version);
         writer.WritePropertyName("evidence");
@@ -349,7 +350,7 @@ internal static class PassportWatchlistExportWriter
             "sourcePublisher", "sourceTitle", "sourceUrl", "sourcePublishedAtUtc",
             "evidenceVerifiedAtUtc", "evidencePublishedAtUtc", "evidenceTerminalAtUtc",
             "evidenceReasonCode", "deliveredAtUtc", "readAtUtc", "dismissedAtUtc",
-            "retainedUntilUtc", "version",
+            "misleadingReportedAtUtc", "retainedUntilUtc", "version",
         });
         foreach (UserNotification notification in request.WatchlistLifecycle.Notifications)
         {
@@ -375,7 +376,9 @@ internal static class PassportWatchlistExportWriter
                 NullableTimestamp(factualEvent?.PublishedAtUtc),
                 NullableTimestamp(factualEvent?.TerminalAtUtc), factualEvent?.ReasonCode,
                 FormatUtc(notification.DeliveredAtUtc), NullableTimestamp(notification.ReadAtUtc),
-                NullableTimestamp(notification.DismissedAtUtc), FormatUtc(notification.ExpiresAtUtc),
+                NullableTimestamp(notification.DismissedAtUtc),
+                NullableTimestamp(notification.MisleadingReportedAtUtc),
+                FormatUtc(notification.ExpiresAtUtc),
                 Integer(notification.Version),
             });
         }

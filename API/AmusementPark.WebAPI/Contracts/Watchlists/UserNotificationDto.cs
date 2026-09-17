@@ -34,6 +34,8 @@ public sealed class UserNotificationDto
 
     public long Version { get; init; }
 
+    public bool IsReportedMisleading { get; init; }
+
     public bool CanManageSubscription { get; init; }
 
     public long? SubscriptionVersion { get; init; }

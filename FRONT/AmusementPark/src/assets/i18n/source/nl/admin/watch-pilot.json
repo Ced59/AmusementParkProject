@@ -1,0 +1,15 @@
+{
+  "admin": {
+    "watchPilot": {
+      "navTitle": "Meldingenpilot", "shortcut": "Meet de betrouwbaarheid van feitelijke meldingen en de wachtrijen.", "kicker": "Radar · vertrouwen", "title": "Pilot voor feitelijke meldingen", "subtitle": "Beslis met samengevoegde metingen of de catalogus kan groeien, zonder individuele routes te volgen.", "loading": "Indicatoren worden geladen…", "loadError": "De indicatoren konden niet worden geladen.", "empty": "Geen metingen in deze periode.",
+      "filters": { "from": "Van", "to": "Tot" },
+      "signal": { "AwaitingObservations": "Wachten op waarnemingen", "NeedsAttention": "Aandacht nodig", "Monitor": "Volgen", "ReadyToExtend": "Klaar voor uitbreiding" },
+      "decision": { "kicker": "Uitbreidingsbesluit", "ready": "Volume, kwaliteit en dekking van de provider laten een voorzichtige uitbreiding toe.", "wait": "De basis blijft actief, maar er zijn meer waarnemingen of volledige providergegevens nodig vóór uitbreiding." },
+      "metrics": { "ariaLabel": "Samengevoegde meldingsindicatoren", "activeSubscriptions": "Actieve abonnementen", "published": "Gepubliceerde feiten", "notifications": "Afgeleverde meldingen", "duplicates": "Gedetecteerde dubbels", "latency": "Gemiddelde vertraging", "centerOpens": "Openingen van het centrum", "sourceOpens": "Geopende bronnen", "reports": "Gemelde waarschuwingen", "digests": "Gemaakte samenvattingen", "emailFailures": "E-mailfouten", "outbox": "Wachtende outbox", "unsubscriptions": "Afmeldingen" },
+      "queueStatus": { "Pending": "In afwachting", "Leased": "Bezig", "Succeeded": "Voltooid", "RetryScheduled": "Nieuwe poging gepland", "DeadLetter": "Geblokkeerd", "Cancelled": "Geannuleerd", "Superseded": "Vervangen" },
+      "provider": { "title": "Providerfeedback niet beschikbaar", "description": "SMTP meldt verzendingen en fouten, maar nog geen bounces of klachten. De poort blijft daarom dicht zonder gegevens te verzinnen." },
+      "chart": { "title": "Dagelijkse leveringen", "subtitle": "Webmeldingen die per dag in de gekozen periode zijn afgeleverd." },
+      "breakdown": { "subscriptions": "Abonnementen per feitentype", "queue": "Belasting van wachtrijen", "empty": "Geen volume waargenomen." }
+    }
+  }
+}

@@ -233,6 +233,14 @@ export const ADMIN_NAVIGATION_ITEMS: readonly AdminNavigationItem[] = [
     exact: false
   },
   {
+    id: 'watch-pilot',
+    segments: ['watch-pilot'],
+    iconClass: 'pi pi-chart-line',
+    titleKey: 'admin.watchPilot.navTitle',
+    descriptionKey: 'admin.watchPilot.shortcut',
+    exact: false
+  },
+  {
     id: 'technical-stats',
     segments: ['technical-stats'],
     iconClass: 'pi pi-server',

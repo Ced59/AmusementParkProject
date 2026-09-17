@@ -19,5 +19,6 @@ public sealed class NotificationDeliveryAttemptMongoDefinitionsTests
             index => index.Options.Name == "ttl_notification_delivery_expiry");
         Assert.True(unique.Options.Unique);
         Assert.Equal(TimeSpan.Zero, expiry.Options.ExpireAfter);
+        Assert.Contains(indexes, index => index.Options.Name == "ix_notification_delivery_pilot_created_status");
     }
 }

@@ -283,6 +283,14 @@ private const string AdminFieldModeItemProgressCollectionName = "adminFieldModeI
                     .Ascending(static value => value.Status)
                     .Ascending(static value => value.SupersededByEventId),
                 new CreateIndexOptions { Name = "idx_factual_events_correction_lookup" }),
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending(static value => value.VerifiedAtUtc),
+                new CreateIndexOptions { Name = "idx_factual_events_pilot_verified" }),
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending(static value => value.PublishedAtUtc),
+                new CreateIndexOptions { Name = "idx_factual_events_pilot_published" }),
         };
     }
 
@@ -818,6 +826,15 @@ private readonly IMongoDatabase database;
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
             this.settings.FactualNotificationDistributionsCollectionName,
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.WatchPilotDailyMetricsCollectionName,
+            cancellationToken);
+        IMongoCollection<WatchPilotDailyMetricsDocument> watchPilotDailyMetrics =
+            this.database.GetCollection<WatchPilotDailyMetricsDocument>(
+                this.settings.WatchPilotDailyMetricsCollectionName);
+        await watchPilotDailyMetrics.Indexes.CreateManyAsync(
+            WatchPilotMetricsMongoDefinitions.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
             this.settings.ParkFitSourceReportsCollectionName,
