@@ -89,6 +89,62 @@ public sealed class AdminFactualEventsControllerTests
     }
 
     [Fact]
+    public async Task CorrectAsync_ShouldForwardSuccessorAndExpectedVersion()
+    {
+        Mock<ICommandHandler<CorrectFactualChangeEventCommand, ApplicationResult>> handler =
+            new Mock<ICommandHandler<CorrectFactualChangeEventCommand, ApplicationResult>>(
+                MockBehavior.Strict);
+        handler.Setup(value => value.HandleAsync(
+                It.Is<CorrectFactualChangeEventCommand>(command =>
+                    command.EventId == "event-1"
+                    && command.ExpectedVersion == 3
+                    && command.SupersedingEventId == "event-2"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult.Success());
+        AdminFactualEventsController controller = CreateController(correctHandler: handler.Object);
+
+        IActionResult response = await controller.CorrectAsync(
+            "event-1",
+            new CorrectFactualChangeEventRequestDto
+            {
+                ExpectedVersion = 3,
+                SupersedingEventId = "event-2",
+            },
+            CancellationToken.None);
+
+        Assert.IsType<NoContentResult>(response);
+        handler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RetractAsync_ShouldForwardReasonAndExpectedVersion()
+    {
+        Mock<ICommandHandler<RetractFactualChangeEventCommand, ApplicationResult>> handler =
+            new Mock<ICommandHandler<RetractFactualChangeEventCommand, ApplicationResult>>(
+                MockBehavior.Strict);
+        handler.Setup(value => value.HandleAsync(
+                It.Is<RetractFactualChangeEventCommand>(command =>
+                    command.EventId == "event-1"
+                    && command.ExpectedVersion == 3
+                    && command.ReasonCode == "source-invalidated"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult.Success());
+        AdminFactualEventsController controller = CreateController(retractHandler: handler.Object);
+
+        IActionResult response = await controller.RetractAsync(
+            "event-1",
+            new RetractFactualChangeEventRequestDto
+            {
+                ExpectedVersion = 3,
+                ReasonCode = "source-invalidated",
+            },
+            CancellationToken.None);
+
+        Assert.IsType<NoContentResult>(response);
+        handler.VerifyAll();
+    }
+
+    [Fact]
     public void Controller_ShouldBeAdminOnlyNoStoreRateLimitedAndAudited()
     {
         AuthorizeAttribute authorization = Assert.Single(
@@ -103,6 +159,10 @@ public sealed class AdminFactualEventsControllerTests
             .GetMethod(nameof(AdminFactualEventsController.VerifyAsync))!;
         MethodInfo publishAction = typeof(AdminFactualEventsController)
             .GetMethod(nameof(AdminFactualEventsController.PublishAsync))!;
+        MethodInfo correctAction = typeof(AdminFactualEventsController)
+            .GetMethod(nameof(AdminFactualEventsController.CorrectAsync))!;
+        MethodInfo retractAction = typeof(AdminFactualEventsController)
+            .GetMethod(nameof(AdminFactualEventsController.RetractAsync))!;
 
         Assert.Equal(AuthorizationRoleGroups.Admin, authorization.Roles);
         Assert.Equal(AuthorizationPolicyNames.ActivatedUnblockedUser, activation.Policy);
@@ -119,19 +179,35 @@ public sealed class AdminFactualEventsControllerTests
         Assert.Equal(
             "factual-event.publish",
             Assert.Single(publishAction.GetCustomAttributes<AdminAuditAttribute>()).Action);
+        Assert.Equal(
+            "factual-event.correct",
+            Assert.Single(correctAction.GetCustomAttributes<AdminAuditAttribute>()).Action);
+        Assert.Equal(
+            RateLimitPolicyNames.FactualEventAdministration,
+            Assert.Single(correctAction.GetCustomAttributes<EnableRateLimitingAttribute>()).PolicyName);
+        Assert.Equal(
+            "factual-event.retract",
+            Assert.Single(retractAction.GetCustomAttributes<AdminAuditAttribute>()).Action);
+        Assert.Equal(
+            RateLimitPolicyNames.FactualEventAdministration,
+            Assert.Single(retractAction.GetCustomAttributes<EnableRateLimitingAttribute>()).PolicyName);
     }
 
     private static AdminFactualEventsController CreateController(
         IQueryHandler<GetFactualChangeEventsQuery,
             ApplicationResult<PagedResult<FactualChangeEventAdminResult>>>? queryHandler = null,
         ICommandHandler<VerifyFactualChangeEventCommand, ApplicationResult>? verifyHandler = null,
-        ICommandHandler<PublishFactualChangeEventCommand, ApplicationResult>? publishHandler = null)
+        ICommandHandler<PublishFactualChangeEventCommand, ApplicationResult>? publishHandler = null,
+        ICommandHandler<CorrectFactualChangeEventCommand, ApplicationResult>? correctHandler = null,
+        ICommandHandler<RetractFactualChangeEventCommand, ApplicationResult>? retractHandler = null)
     {
         return new AdminFactualEventsController(
             queryHandler ?? Mock.Of<IQueryHandler<GetFactualChangeEventsQuery,
                 ApplicationResult<PagedResult<FactualChangeEventAdminResult>>>>(),
             verifyHandler ?? Mock.Of<ICommandHandler<VerifyFactualChangeEventCommand, ApplicationResult>>(),
-            publishHandler ?? Mock.Of<ICommandHandler<PublishFactualChangeEventCommand, ApplicationResult>>());
+            publishHandler ?? Mock.Of<ICommandHandler<PublishFactualChangeEventCommand, ApplicationResult>>(),
+            correctHandler ?? Mock.Of<ICommandHandler<CorrectFactualChangeEventCommand, ApplicationResult>>(),
+            retractHandler ?? Mock.Of<ICommandHandler<RetractFactualChangeEventCommand, ApplicationResult>>());
     }
 
     private static FactualChangeEventAdminResult CreateResult()
@@ -163,6 +239,9 @@ public sealed class AdminFactualEventsControllerTests
             FactualChangeStatus.Draft,
             OccurredAtUtc,
             OccurredAtUtc,
+            null,
+            null,
+            null,
             null,
             null,
             1,

@@ -189,6 +189,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
         services.AddScoped<IFactualNotificationDistributionReceiptRepository,
             FactualNotificationDistributionReceiptRepository>();
+        services.AddScoped<IFactualChangeEventDistributionStateReader,
+            FactualNotificationDistributionReceiptRepository>();
         services.AddSingleton<DurableBackgroundJobMetrics>();
         services.AddHostedService<DurableBackgroundJobWorkerBackgroundService>();
         services.AddHostedService<FactualChangeOutboxReconciliationBackgroundService>();

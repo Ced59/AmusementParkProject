@@ -134,6 +134,26 @@
       "unread": "Nouveau",
       "read": "Lu"
     },
+    "notices": {
+      "Correction": {
+        "title": "Information corrigée",
+        "text": "Cette version remplace une information déjà envoyée. La nouvelle preuve et la valeur corrigée sont affichées ci-dessous."
+      },
+      "Superseded": {
+        "title": "Version remplacée",
+        "text": "Cette ancienne information reste consultable pour conserver un historique honnête."
+      },
+      "Retraction": {
+        "title": "Information rétractée",
+        "text": "Cette information n’est plus considérée comme fiable. Elle reste visible pour expliquer clairement le retrait."
+      }
+    },
+    "retractionReasons": {
+      "source-invalidated": "La source a été invalidée.",
+      "change-cancelled": "Le changement annoncé a été annulé.",
+      "duplicate-event": "Cette information avait été publiée en double.",
+      "published-in-error": "Cette information avait été publiée par erreur."
+    },
     "actions": {
       "backToProfile": "Retour au profil",
       "markAllRead": "Tout marquer comme lu",
@@ -4234,6 +4254,23 @@
       "source": {
         "label": "Preuve consultable"
       },
+      "correction": {
+        "title": "Relier une correction",
+        "help": "Indique le fait plus récent, déjà publié, qui remplace cette information. Les personnes concernées seront averties sans doublon.",
+        "successor": "Identifiant du fait de remplacement",
+        "placeholder": "Ex. event-…"
+      },
+      "retraction": {
+        "title": "Retirer une information erronée",
+        "help": "La rétractation reste visible dans l’historique et avertit à nouveau les destinataires initiaux.",
+        "reason": "Motif",
+        "reasons": {
+          "source-invalidated": "La source a été invalidée",
+          "change-cancelled": "Le changement a été annulé",
+          "duplicate-event": "Information publiée en double",
+          "published-in-error": "Information publiée par erreur"
+        }
+      },
       "actions": {
         "draftHelp": "Encore bloqué pour toute diffusion.",
         "lowConfidenceHelp": "La confiance est trop faible pour confirmer ce fait. Renforce d’abord sa preuve ou sa qualification.",
@@ -4241,6 +4278,8 @@
         "verifiedHelp": "Vérifié, mais toujours non diffusé.",
         "publish": "Autoriser la diffusion",
         "publishedHelp": "Publié et disponible pour les abonnements.",
+        "correct": "Diffuser la correction",
+        "retract": "Confirmer la rétractation",
         "terminalHelp": "Ce fait n’est plus diffusable."
       },
       "pagination": {

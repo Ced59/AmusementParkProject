@@ -204,14 +204,26 @@ public sealed class FactualChangeEventTests
     {
         FactualChangeEvent factualEvent = CreatePublished();
 
-        factualEvent.Retract("source-withdrawn", At(13));
-        factualEvent.Retract(" source-withdrawn ", At(14));
+        factualEvent.Retract(FactualChangeRetractionReasonCodes.SourceInvalidated, At(13));
+        factualEvent.Retract($" {FactualChangeRetractionReasonCodes.SourceInvalidated} ", At(14));
 
         Assert.Equal(FactualChangeStatus.Retracted, factualEvent.Status);
-        Assert.Equal("source-withdrawn", factualEvent.ReasonCode);
+        Assert.Equal(FactualChangeRetractionReasonCodes.SourceInvalidated, factualEvent.ReasonCode);
         Assert.Equal(At(13), factualEvent.TerminalAtUtc);
         Assert.False(factualEvent.CanBeDistributed);
         Assert.Equal(4, factualEvent.Version);
+    }
+
+    [Fact]
+    public void Retract_WithUnsupportedReasonCode_ShouldRejectMutation()
+    {
+        FactualChangeEvent factualEvent = CreatePublished();
+
+        FactualEventValidationException exception = Assert.Throws<FactualEventValidationException>(
+            () => factualEvent.Retract("unsupported-reason", At(13)));
+
+        Assert.Equal(FactualEventErrorCodes.InvalidReasonCode, exception.Code);
+        Assert.Equal(FactualChangeStatus.Published, factualEvent.Status);
     }
 
     [Fact]

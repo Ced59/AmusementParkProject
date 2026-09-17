@@ -32,16 +32,24 @@ public sealed class AdminFactualEventsController : ControllerBase
         verifyHandler;
     private readonly ICommandHandler<PublishFactualChangeEventCommand, ApplicationResult>
         publishHandler;
+    private readonly ICommandHandler<CorrectFactualChangeEventCommand, ApplicationResult>
+        correctHandler;
+    private readonly ICommandHandler<RetractFactualChangeEventCommand, ApplicationResult>
+        retractHandler;
 
     public AdminFactualEventsController(
         IQueryHandler<GetFactualChangeEventsQuery,
             ApplicationResult<PagedResult<FactualChangeEventAdminResult>>> queryHandler,
         ICommandHandler<VerifyFactualChangeEventCommand, ApplicationResult> verifyHandler,
-        ICommandHandler<PublishFactualChangeEventCommand, ApplicationResult> publishHandler)
+        ICommandHandler<PublishFactualChangeEventCommand, ApplicationResult> publishHandler,
+        ICommandHandler<CorrectFactualChangeEventCommand, ApplicationResult> correctHandler,
+        ICommandHandler<RetractFactualChangeEventCommand, ApplicationResult> retractHandler)
     {
         this.queryHandler = queryHandler ?? throw new ArgumentNullException(nameof(queryHandler));
         this.verifyHandler = verifyHandler ?? throw new ArgumentNullException(nameof(verifyHandler));
         this.publishHandler = publishHandler ?? throw new ArgumentNullException(nameof(publishHandler));
+        this.correctHandler = correctHandler ?? throw new ArgumentNullException(nameof(correctHandler));
+        this.retractHandler = retractHandler ?? throw new ArgumentNullException(nameof(retractHandler));
     }
 
     [HttpGet]
@@ -92,6 +100,42 @@ public sealed class AdminFactualEventsController : ControllerBase
     {
         ApplicationResult result = await this.publishHandler.HandleAsync(
             new PublishFactualChangeEventCommand(eventId, request.ExpectedVersion),
+            cancellationToken);
+        return result.IsSuccess ? this.NoContent() : this.ToActionResult(result);
+    }
+
+    [HttpPost("{eventId}/correct")]
+    [EnableRateLimiting(RateLimitPolicyNames.FactualEventAdministration)]
+    [AdminAudit("factual-event.correct", "FactualChangeEvent", TargetIdRouteKey = "eventId")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> CorrectAsync(
+        [FromRoute] string eventId,
+        [FromBody] CorrectFactualChangeEventRequestDto request,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult result = await this.correctHandler.HandleAsync(
+            new CorrectFactualChangeEventCommand(
+                eventId,
+                request.ExpectedVersion,
+                request.SupersedingEventId),
+            cancellationToken);
+        return result.IsSuccess ? this.NoContent() : this.ToActionResult(result);
+    }
+
+    [HttpPost("{eventId}/retract")]
+    [EnableRateLimiting(RateLimitPolicyNames.FactualEventAdministration)]
+    [AdminAudit("factual-event.retract", "FactualChangeEvent", TargetIdRouteKey = "eventId")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> RetractAsync(
+        [FromRoute] string eventId,
+        [FromBody] RetractFactualChangeEventRequestDto request,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult result = await this.retractHandler.HandleAsync(
+            new RetractFactualChangeEventCommand(
+                eventId,
+                request.ExpectedVersion,
+                request.ReasonCode),
             cancellationToken);
         return result.IsSuccess ? this.NoContent() : this.ToActionResult(result);
     }

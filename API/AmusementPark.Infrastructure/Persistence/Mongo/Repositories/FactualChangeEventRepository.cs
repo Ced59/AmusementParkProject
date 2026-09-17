@@ -133,6 +133,59 @@ public sealed class FactualChangeEventRepository : IFactualChangeEventRepository
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
+    public async Task<IReadOnlyCollection<FactualChangeEvent>> ListTerminalAsync(
+        TerminalFactualEventCursor? after,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(limit);
+        FilterDefinitionBuilder<FactualChangeEventDocument> filters = Builders<FactualChangeEventDocument>.Filter;
+        FilterDefinition<FactualChangeEventDocument> filter = filters.In(
+            static value => value.Status,
+            new[] { FactualChangeStatus.Corrected, FactualChangeStatus.Retracted })
+            & filters.Ne(static value => value.TerminalAtUtc, null);
+        if (after is not null)
+        {
+            filter &= filters.Or(
+                filters.Gt(static value => value.TerminalAtUtc, after.TerminalAtUtc),
+                filters.Eq(static value => value.TerminalAtUtc, after.TerminalAtUtc)
+                    & filters.Gt(static value => value.Id, after.EventId));
+        }
+
+        List<FactualChangeEventDocument> documents = await this.collection.Find(filter)
+            .SortBy(static value => value.TerminalAtUtc)
+            .ThenBy(static value => value.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    public async Task<IReadOnlyCollection<FactualChangeEvent>> GetCorrectedBySuccessorIdsAsync(
+        IReadOnlyCollection<FactualChangeEventId> successorEventIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(successorEventIds);
+        string[] ids = successorEventIds
+            .Select(static eventId => eventId.Value)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (ids.Length == 0)
+        {
+            return Array.Empty<FactualChangeEvent>();
+        }
+
+        FilterDefinition<FactualChangeEventDocument> filter =
+            Builders<FactualChangeEventDocument>.Filter.Eq(
+                static value => value.Status,
+                FactualChangeStatus.Corrected)
+            & Builders<FactualChangeEventDocument>.Filter.In(
+                static value => value.SupersededByEventId,
+                ids);
+        List<FactualChangeEventDocument> documents = await this.collection.Find(filter)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<PagedResult<FactualChangeEvent>> SearchAsync(
         FactualChangeEventSearchCriteria criteria,
         CancellationToken cancellationToken)

@@ -100,6 +100,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<UserNotificationCenterService>();
         services.AddScoped<IFactualNotificationDistributionScheduler, FactualNotificationDistributionScheduler>();
         services.AddDurableBackgroundJobHandler<FactualNotificationDistributionJobHandler>();
+        services.AddDurableBackgroundJobHandler<FactualNotificationCorrectionJobHandler>();
         services.AddScoped<ParkWeatherRefreshStarter>();
         services.AddScoped<ParkWeatherRefreshOrchestrator>();
         services.AddSingleton<ParkWeatherLocalDateResolver>();

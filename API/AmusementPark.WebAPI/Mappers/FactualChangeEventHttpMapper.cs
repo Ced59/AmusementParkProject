@@ -63,6 +63,9 @@ public static class FactualChangeEventHttpMapper
             UpdatedAtUtc = result.UpdatedAtUtc,
             VerifiedAtUtc = result.VerifiedAtUtc,
             PublishedAtUtc = result.PublishedAtUtc,
+            TerminalAtUtc = result.TerminalAtUtc,
+            SupersededByEventId = result.SupersededByEventId,
+            ReasonCode = result.ReasonCode,
             Version = result.Version,
             CanBeDistributed = result.CanBeDistributed,
         };

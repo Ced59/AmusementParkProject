@@ -23,6 +23,8 @@ import { UiButtonDirective } from '@ui/primitives';
   imports: [DatePipe, TranslateModule, UiButtonDirective],
 })
 export class AdminFactualEventsComponent implements OnInit {
+  private readonly correctionIds = signal<Record<string, string>>({});
+  private readonly retractionReasons = signal<Record<string, string>>({});
   protected readonly status = signal<FactualChangeStatus | ''>('Draft');
   protected readonly targetType = signal<FactualTargetType | ''>('');
   protected readonly eventType = signal<FactualEventType | ''>('');
@@ -42,6 +44,9 @@ export class AdminFactualEventsComponent implements OnInit {
     'PermanentClosureConfirmed', 'Renamed', 'MajorRestrictionChanged',
     'LocationOrCategoryCorrected', 'HistoryPublished', 'MajorHistoryUpdate',
     'VerifiedSourceAdded', 'CorrectionAfterUserReport',
+  ];
+  protected readonly reasonCodes: readonly string[] = [
+    'source-invalidated', 'change-cancelled', 'duplicate-event', 'published-in-error',
   ];
 
   public constructor(protected readonly facade: AdminFactualEventsStateFacade) {}
@@ -104,6 +109,36 @@ export class AdminFactualEventsComponent implements OnInit {
 
   protected publish(event: FactualChangeEventAdmin): void {
     this.facade.changeStatus(event, 'publish');
+  }
+
+  protected correctionId(eventId: string): string {
+    return this.correctionIds()[eventId] ?? '';
+  }
+
+  protected changeCorrectionId(eventId: string, value: string): void {
+    this.correctionIds.update((current: Record<string, string>): Record<string, string> => ({
+      ...current,
+      [eventId]: value,
+    }));
+  }
+
+  protected correct(event: FactualChangeEventAdmin): void {
+    this.facade.correct(event, this.correctionId(event.eventId));
+  }
+
+  protected retractionReason(eventId: string): string {
+    return this.retractionReasons()[eventId] ?? this.reasonCodes[0];
+  }
+
+  protected changeRetractionReason(eventId: string, value: string): void {
+    this.retractionReasons.update((current: Record<string, string>): Record<string, string> => ({
+      ...current,
+      [eventId]: this.reasonCodes.includes(value) ? value : this.reasonCodes[0],
+    }));
+  }
+
+  protected retract(event: FactualChangeEventAdmin): void {
+    this.facade.retract(event, this.retractionReason(event.eventId));
   }
 
   protected previousPage(): void {

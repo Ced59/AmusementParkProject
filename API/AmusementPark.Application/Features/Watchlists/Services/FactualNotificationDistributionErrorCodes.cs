@@ -6,4 +6,7 @@ public static class FactualNotificationDistributionErrorCodes
     public const string EventMissing = "watch-distribution.event-missing";
     public const string EventNotPublished = "watch-distribution.event-not-published";
     public const string InvalidNotification = "watch-distribution.invalid-notification";
+    public const string EventNotTerminal = "watch-distribution.event-not-terminal";
+    public const string SupersedingEventMissing = "watch-distribution.superseding-event-missing";
+    public const string InitialDistributionPending = "watch-distribution.initial-distribution-pending";
 }

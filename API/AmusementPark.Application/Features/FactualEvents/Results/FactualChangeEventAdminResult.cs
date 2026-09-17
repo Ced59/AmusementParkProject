@@ -18,5 +18,8 @@ public sealed record FactualChangeEventAdminResult(
     DateTime UpdatedAtUtc,
     DateTime? VerifiedAtUtc,
     DateTime? PublishedAtUtc,
+    DateTime? TerminalAtUtc,
+    string? SupersededByEventId,
+    string? ReasonCode,
     long Version,
     bool CanBeDistributed);

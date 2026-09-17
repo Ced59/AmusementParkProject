@@ -12,4 +12,14 @@ public interface IFactualNotificationDistributionScheduler
     Task<PublishedFactualEventCursor?> ReconcileAsync(
         PublishedFactualEventCursor? after,
         CancellationToken cancellationToken);
+
+    Task ScheduleCorrectionAsync(
+        string eventId,
+        long eventVersion,
+        string? afterNotificationId,
+        CancellationToken cancellationToken);
+
+    Task<TerminalFactualEventCursor?> ReconcileCorrectionsAsync(
+        TerminalFactualEventCursor? after,
+        CancellationToken cancellationToken);
 }

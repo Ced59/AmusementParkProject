@@ -67,6 +67,9 @@ export interface FactualChangeEventAdmin {
   readonly updatedAtUtc: string;
   readonly verifiedAtUtc: string | null;
   readonly publishedAtUtc: string | null;
+  readonly terminalAtUtc: string | null;
+  readonly supersededByEventId: string | null;
+  readonly reasonCode: string | null;
   readonly version: number;
   readonly canBeDistributed: boolean;
 }
@@ -84,6 +87,14 @@ export interface FactualChangeEventMutationRequest {
   readonly expectedVersion: number;
 }
 
-export type FactualEventAdminAction = 'verify' | 'publish';
+export interface CorrectFactualChangeEventRequest extends FactualChangeEventMutationRequest {
+  readonly supersedingEventId: string;
+}
+
+export interface RetractFactualChangeEventRequest extends FactualChangeEventMutationRequest {
+  readonly reasonCode: string;
+}
+
+export type FactualEventAdminAction = 'verify' | 'publish' | 'correct' | 'retract';
 
 export type FactualEventAdminActionError = 'conflict' | 'failure' | null;

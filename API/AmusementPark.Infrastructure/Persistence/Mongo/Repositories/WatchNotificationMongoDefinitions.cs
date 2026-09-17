@@ -82,6 +82,11 @@ internal static class WatchNotificationMongoDefinitions
                 new CreateIndexOptions { Unique = true, Name = "uq_user_notification_event" }),
             new CreateIndexModel<UserNotificationDocument>(
                 Builders<UserNotificationDocument>.IndexKeys
+                    .Ascending(static document => document.FactualEventId)
+                    .Ascending(static document => document.Id),
+                new CreateIndexOptions { Name = "ix_user_notification_correction_distribution" }),
+            new CreateIndexModel<UserNotificationDocument>(
+                Builders<UserNotificationDocument>.IndexKeys
                     .Ascending(static document => document.UserId)
                     .Ascending(static document => document.Status)
                     .Descending(static document => document.DeliveredAt)

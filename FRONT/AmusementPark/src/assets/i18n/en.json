@@ -134,6 +134,26 @@
       "unread": "New",
       "read": "Read"
     },
+    "notices": {
+      "Correction": {
+        "title": "Information corrected",
+        "text": "This version replaces information that was already sent. The corrected value and its evidence appear below."
+      },
+      "Superseded": {
+        "title": "Replaced version",
+        "text": "This older information remains available to preserve an honest history."
+      },
+      "Retraction": {
+        "title": "Information retracted",
+        "text": "This information is no longer considered reliable. It remains visible to explain the withdrawal clearly."
+      }
+    },
+    "retractionReasons": {
+      "source-invalidated": "The source was invalidated.",
+      "change-cancelled": "The announced change was cancelled.",
+      "duplicate-event": "This information had been published twice.",
+      "published-in-error": "This information had been published in error."
+    },
     "actions": {
       "backToProfile": "Back to profile",
       "markAllRead": "Mark all as read",
@@ -4234,6 +4254,23 @@
       "source": {
         "label": "Reviewable evidence"
       },
+      "correction": {
+        "title": "Link a correction",
+        "help": "Enter the newer published fact that replaces this information. Affected members will be notified without duplicates.",
+        "successor": "Replacement fact identifier",
+        "placeholder": "E.g. event-…"
+      },
+      "retraction": {
+        "title": "Retract incorrect information",
+        "help": "The retraction remains visible in history and alerts the original recipients again.",
+        "reason": "Reason",
+        "reasons": {
+          "source-invalidated": "The source was invalidated",
+          "change-cancelled": "The change was cancelled",
+          "duplicate-event": "Information was published twice",
+          "published-in-error": "Information was published in error"
+        }
+      },
       "actions": {
         "draftHelp": "Still blocked from all distribution.",
         "lowConfidenceHelp": "Confidence is too low to confirm this fact. Strengthen its evidence or qualification first.",
@@ -4241,6 +4278,8 @@
         "verifiedHelp": "Verified, but still not distributed.",
         "publish": "Allow distribution",
         "publishedHelp": "Published and available to subscriptions.",
+        "correct": "Distribute correction",
+        "retract": "Confirm retraction",
         "terminalHelp": "This fact can no longer be distributed."
       },
       "pagination": {

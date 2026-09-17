@@ -98,6 +98,8 @@
         <article
           class="notification-card"
           [class.notification-card--unread]="notification.status === 'Delivered'"
+          [class.notification-card--correction]="notification.noticeKind === 'Correction'"
+          [class.notification-card--retraction]="notification.noticeKind === 'Retraction'"
           appUiSurface="panel">
           <div class="notification-card__visual">
             <app-image-display
@@ -111,6 +113,18 @@
           </div>
 
           <div class="notification-card__body">
+            @if (notification.noticeKind !== 'Update') {
+              <aside class="notification-card__lifecycle" [attr.data-kind]="notification.noticeKind" role="status">
+                <i [class]="notification.noticeKind === 'Retraction' ? 'pi pi-ban' : 'pi pi-history'" aria-hidden="true"></i>
+                <div>
+                  <strong>{{ ('notifications.notices.' + notification.noticeKind + '.title') | translate }}</strong>
+                  <span>{{ ('notifications.notices.' + notification.noticeKind + '.text') | translate }}</span>
+                  @if (notification.retractionReasonCode) {
+                    <small>{{ ('notifications.retractionReasons.' + notification.retractionReasonCode) | translate }}</small>
+                  }
+                </div>
+              </aside>
+            }
             <div class="notification-card__meta">
               <app-ui-chip [tone]="notification.status === 'Delivered' ? 'sky' : 'soft'" iconClass="pi pi-circle-fill">
                 {{ (notification.status === 'Delivered' ? 'notifications.status.unread' : 'notifications.status.read') | translate }}

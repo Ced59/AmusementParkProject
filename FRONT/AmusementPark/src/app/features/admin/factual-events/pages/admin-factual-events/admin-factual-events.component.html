@@ -120,9 +120,45 @@
             <p><i class="pi pi-eye" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.verifiedHelp' | translate }}</p>
             <button appUiButton="primary" type="button" [disabled]="facade.actionEventId() !== null || facade.loading()" (click)="publish(event)"><i class="pi pi-send" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.publish' | translate }}</button>
           } @else if (event.canBeDistributed) {
-            <p class="factual-event-card__distributed"><i class="pi pi-check-circle" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.publishedHelp' | translate }}</p>
+            <div class="factual-event-card__published-actions">
+              <p class="factual-event-card__distributed"><i class="pi pi-check-circle" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.publishedHelp' | translate }}</p>
+              <details class="factual-event-card__terminal-action">
+                <summary>{{ 'factualEvents.admin.correction.title' | translate }}</summary>
+                <p>{{ 'factualEvents.admin.correction.help' | translate }}</p>
+                <label>
+                  <span>{{ 'factualEvents.admin.correction.successor' | translate }}</span>
+                  <input
+                    type="text"
+                    [value]="correctionId(event.eventId)"
+                    [placeholder]="'factualEvents.admin.correction.placeholder' | translate"
+                    (input)="changeCorrectionId(event.eventId, $any($event.target).value)">
+                </label>
+                <button appUiButton="soft" type="button" [disabled]="!correctionId(event.eventId).trim() || facade.actionEventId() !== null || facade.loading()" (click)="correct(event)">
+                  <i class="pi pi-history" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.correct' | translate }}
+                </button>
+              </details>
+              <details class="factual-event-card__terminal-action factual-event-card__terminal-action--danger">
+                <summary>{{ 'factualEvents.admin.retraction.title' | translate }}</summary>
+                <p>{{ 'factualEvents.admin.retraction.help' | translate }}</p>
+                <label>
+                  <span>{{ 'factualEvents.admin.retraction.reason' | translate }}</span>
+                  <select [value]="retractionReason(event.eventId)" (change)="changeRetractionReason(event.eventId, $any($event.target).value)">
+                    @for (reason of reasonCodes; track reason) {
+                      <option [value]="reason">{{ ('factualEvents.admin.retraction.reasons.' + reason) | translate }}</option>
+                    }
+                  </select>
+                </label>
+                <button appUiButton="ghost" type="button" [disabled]="facade.actionEventId() !== null || facade.loading()" (click)="retract(event)">
+                  <i class="pi pi-ban" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.retract' | translate }}
+                </button>
+              </details>
+            </div>
           } @else {
-            <p><i class="pi pi-ban" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.terminalHelp' | translate }}</p>
+            <div class="factual-event-card__terminal-summary">
+              <p><i class="pi pi-ban" aria-hidden="true"></i>{{ 'factualEvents.admin.actions.terminalHelp' | translate }}</p>
+              @if (event.terminalAtUtc) {<small>{{ event.terminalAtUtc | date:'medium' }}</small>}
+              @if (event.reasonCode) {<strong>{{ ('factualEvents.admin.retraction.reasons.' + event.reasonCode) | translate }}</strong>}
+            </div>
           }
         </footer>
       </article>

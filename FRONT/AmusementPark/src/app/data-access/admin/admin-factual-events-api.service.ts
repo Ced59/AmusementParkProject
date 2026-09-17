@@ -4,8 +4,10 @@ import { Observable, map } from 'rxjs';
 
 import {
   FactualChangeEventAdmin,
+  CorrectFactualChangeEventRequest,
   FactualChangeEventMutationRequest,
   FactualChangeEventQuery,
+  RetractFactualChangeEventRequest,
 } from '@app/models/admin/factual-events/factual-event-administration.models';
 import { PagedResult } from '@shared/models/contracts';
 import { PagedCollectionResponse, unwrapPagedCollection } from '@data-access/shared/api-helpers';
@@ -50,6 +52,20 @@ export class AdminFactualEventsApiService {
   public publish(eventId: string, request: FactualChangeEventMutationRequest): Observable<void> {
     return this.http.post<void>(
       `${environment.apiBaseUrl}${ADMIN_FACTUAL_EVENTS_API_ENDPOINTS.publish(eventId)}`,
+      request,
+    );
+  }
+
+  public correct(eventId: string, request: CorrectFactualChangeEventRequest): Observable<void> {
+    return this.http.post<void>(
+      `${environment.apiBaseUrl}${ADMIN_FACTUAL_EVENTS_API_ENDPOINTS.correct(eventId)}`,
+      request,
+    );
+  }
+
+  public retract(eventId: string, request: RetractFactualChangeEventRequest): Observable<void> {
+    return this.http.post<void>(
+      `${environment.apiBaseUrl}${ADMIN_FACTUAL_EVENTS_API_ENDPOINTS.retract(eventId)}`,
       request,
     );
   }

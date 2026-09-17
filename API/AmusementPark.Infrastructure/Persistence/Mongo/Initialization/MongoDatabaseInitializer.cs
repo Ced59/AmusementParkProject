@@ -272,6 +272,17 @@ private const string AdminFieldModeItemProgressCollectionName = "adminFieldModeI
                     .Ascending(static value => value.PublishedAtUtc)
                     .Ascending(static value => value.Id),
                 new CreateIndexOptions { Name = "idx_factual_events_published_distribution" }),
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending(static value => value.Status)
+                    .Ascending(static value => value.TerminalAtUtc)
+                    .Ascending(static value => value.Id),
+                new CreateIndexOptions { Name = "idx_factual_events_terminal_distribution" }),
+            new CreateIndexModel<FactualChangeEventDocument>(
+                Builders<FactualChangeEventDocument>.IndexKeys
+                    .Ascending(static value => value.Status)
+                    .Ascending(static value => value.SupersededByEventId),
+                new CreateIndexOptions { Name = "idx_factual_events_correction_lookup" }),
         };
     }
 

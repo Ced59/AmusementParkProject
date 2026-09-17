@@ -5,10 +5,11 @@ import { Observable, finalize } from 'rxjs';
 
 import {
   FactualChangeEventAdmin,
+  CorrectFactualChangeEventRequest,
   FactualChangeEventMutationRequest,
   FactualChangeEventQuery,
-  FactualEventAdminAction,
   FactualEventAdminActionError,
+  RetractFactualChangeEventRequest,
 } from '@app/models/admin/factual-events/factual-event-administration.models';
 import { PagedResult, PaginationContract } from '@shared/models/contracts';
 import {
@@ -71,7 +72,7 @@ export class AdminFactualEventsStateFacade {
       });
   }
 
-  public changeStatus(event: FactualChangeEventAdmin, action: FactualEventAdminAction): void {
+  public changeStatus(event: FactualChangeEventAdmin, action: 'verify' | 'publish'): void {
     if (this.actionEventIdState() || this.loadingState()) {
       return;
     }
@@ -80,7 +81,37 @@ export class AdminFactualEventsStateFacade {
     const operation: Observable<void> = action === 'verify'
       ? this.port.verify(event.eventId, request)
       : this.port.publish(event.eventId, request);
-    this.actionEventIdState.set(event.eventId);
+    this.execute(event.eventId, operation);
+  }
+
+  public correct(event: FactualChangeEventAdmin, supersedingEventId: string): void {
+    const request: CorrectFactualChangeEventRequest = {
+      expectedVersion: event.version,
+      supersedingEventId: supersedingEventId.trim(),
+    };
+    if (!request.supersedingEventId) {
+      return;
+    }
+    this.execute(event.eventId, this.port.correct(event.eventId, request));
+  }
+
+  public retract(event: FactualChangeEventAdmin, reasonCode: string): void {
+    const request: RetractFactualChangeEventRequest = {
+      expectedVersion: event.version,
+      reasonCode: reasonCode.trim(),
+    };
+    if (!request.reasonCode) {
+      return;
+    }
+    this.execute(event.eventId, this.port.retract(event.eventId, request));
+  }
+
+  private execute(eventId: string, operation: Observable<void>): void {
+    if (this.actionEventIdState() || this.loadingState()) {
+      return;
+    }
+
+    this.actionEventIdState.set(eventId);
     this.actionErrorState.set(null);
     operation.pipe(
       takeUntilDestroyed(this.destroyRef),

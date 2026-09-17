@@ -57,6 +57,40 @@ public sealed class FactualNotificationDistributionSchedulerTests
         jobs.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task ScheduleCorrectionAsync_ShouldUseTerminalVersionAndCursorInItsNaturalKey()
+    {
+        Mock<IDurableBackgroundJobRepository> jobs = new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        Mock<IFactualChangeEventRepository> events = new Mock<IFactualChangeEventRepository>(MockBehavior.Strict);
+        Mock<IFactualNotificationDistributionReceiptRepository> receipts =
+            new Mock<IFactualNotificationDistributionReceiptRepository>(MockBehavior.Strict);
+        receipts.Setup(repository => repository.IsCompletedAsync(
+                "terminal:event-1:4",
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        jobs.Setup(repository => repository.CoalesceAsync(
+                It.Is<CoalesceBackgroundJobRequest>(request =>
+                    request.Kind == FactualNotificationCorrectionJob.Kind
+                    && request.NaturalKey == "watch-correction:event-1:4:notification-100"
+                    && request.RequestedRevision == 4
+                    && request.CorrelationId == "event-1"),
+                CancellationToken.None))
+            .ReturnsAsync(CreateJob());
+        FactualNotificationDistributionScheduler scheduler = new FactualNotificationDistributionScheduler(
+            jobs.Object,
+            events.Object,
+            receipts.Object);
+
+        await scheduler.ScheduleCorrectionAsync(
+            " event-1 ",
+            4,
+            " notification-100 ",
+            CancellationToken.None);
+
+        jobs.VerifyAll();
+        receipts.VerifyAll();
+    }
+
     private static DurableBackgroundJob CreateJob()
     {
         DateTime nowUtc = new DateTime(2026, 9, 15, 12, 0, 0, DateTimeKind.Utc);

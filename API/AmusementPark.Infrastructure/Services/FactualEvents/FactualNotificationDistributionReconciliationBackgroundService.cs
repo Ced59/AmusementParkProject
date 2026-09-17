@@ -15,6 +15,7 @@ internal sealed class FactualNotificationDistributionReconciliationBackgroundSer
     private readonly ILogger<FactualNotificationDistributionReconciliationBackgroundService> logger;
     private readonly TimeProvider timeProvider;
     private PublishedFactualEventCursor? cursor;
+    private TerminalFactualEventCursor? correctionCursor;
 
     public FactualNotificationDistributionReconciliationBackgroundService(
         IServiceScopeFactory serviceScopeFactory,
@@ -44,7 +45,10 @@ internal sealed class FactualNotificationDistributionReconciliationBackgroundSer
                 IFactualNotificationDistributionScheduler scheduler = scope.ServiceProvider
                     .GetRequiredService<IFactualNotificationDistributionScheduler>();
                 this.cursor = await scheduler.ReconcileAsync(this.cursor, stoppingToken);
-                if (this.cursor is null)
+                this.correctionCursor = await scheduler.ReconcileCorrectionsAsync(
+                    this.correctionCursor,
+                    stoppingToken);
+                if (this.cursor is null && this.correctionCursor is null)
                 {
                     nextDelay = CompletedAuditInterval;
                 }

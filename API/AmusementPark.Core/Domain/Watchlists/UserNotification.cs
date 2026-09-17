@@ -154,6 +154,53 @@ public sealed class UserNotification
             1);
     }
 
+    public static UserNotification CreateFollowUp(
+        UserNotificationId id,
+        FactualChangeEvent followUp,
+        UserNotification originalNotification,
+        DateTime nowUtc)
+    {
+        ArgumentNullException.ThrowIfNull(followUp);
+        ArgumentNullException.ThrowIfNull(originalNotification);
+        if (followUp.PublishedAtUtc is null
+            || followUp.Status is not FactualChangeStatus.Published
+                and not FactualChangeStatus.Retracted)
+        {
+            throw Invalid(
+                UserNotificationErrorCodes.EventNotDistributable,
+                "A follow-up must reference a published or retracted factual event.");
+        }
+
+        if (followUp.Target.Type != originalNotification.TargetType
+            || !string.Equals(followUp.Target.TargetId, originalNotification.TargetId, StringComparison.Ordinal))
+        {
+            throw Invalid(
+                UserNotificationErrorCodes.SubscriptionDoesNotMatch,
+                "A correction must keep the original notification target.");
+        }
+
+        EnsureUtc(nowUtc);
+        return new UserNotification(
+            id,
+            originalNotification.UserId,
+            followUp.Id,
+            originalNotification.SubscriptionId,
+            followUp.Type,
+            followUp.Target.Type,
+            followUp.Target.TargetId,
+            originalNotification.ParkId,
+            followUp.Revision,
+            CurrentTemplateVersion,
+            originalNotification.Language,
+            UserNotificationStatus.Delivered,
+            nowUtc,
+            nowUtc,
+            null,
+            null,
+            nowUtc.AddDays(RetentionDays),
+            1);
+    }
+
     public static UserNotification Restore(
         UserNotificationId id,
         string userId,

@@ -11,6 +11,9 @@ describe('AdminFactualEventsComponent responsive contract', (): void => {
     expect(styles).toContain('overflow-wrap: anywhere');
     expect(styles).toContain('.factual-event-card__windows');
     expect(styles).toContain('.factual-event-card__calendar-entry');
+    expect(styles).toContain('.factual-event-card__terminal-action');
+    expect(styles).toContain('input');
+    expect(styles).toContain('select');
     expect(styles).toContain('flex-wrap: wrap');
     expect(styles).toContain('@media (max-width: 48rem)');
     expect(styles).toContain('@media (max-width: 36rem)');
