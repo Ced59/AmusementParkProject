@@ -3,8 +3,12 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 deploy_scripts_dir="$(cd "${script_dir}/.." && pwd)"
+repo_root="$(cd "${deploy_scripts_dir}/../.." && pwd)"
 temp_dir="$(mktemp -d)"
 trap 'rm -rf "${temp_dir}"' EXIT
+
+grep -Fq "github.event_name == 'workflow_dispatch' && github.run_attempt == 1 && inputs.shared_infrastructure_maintenance" \
+  "${repo_root}/.github/workflows/production.yml"
 
 export API_IMAGE='ghcr.io/example/api:test'
 export FRONT_IMAGE='ghcr.io/example/front:test'

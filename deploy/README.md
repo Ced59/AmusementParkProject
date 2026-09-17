@@ -413,8 +413,10 @@ maintenance se relance manuellement avec `deploy=true` et
 défaut. Elle impose la sauvegarde préalable, conserve le volume nommé de données,
 consomme l'ordre manuel avant la recréation pour empêcher tout rejeu par une reprise,
 attend le healthcheck MongoDB puis exécute le déploiement applicatif normal. Elle
-ne doit pas servir à une première installation ni à contourner un échec de
-sauvegarde ou une identité de volume inattendue.
+ne s'applique qu'au premier essai du run : « Re-run failed jobs » la neutralise et
+une nouvelle maintenance exige un nouveau lancement manuel. Elle ne doit pas
+servir à une première installation ni à contourner un échec de sauvegarde ou une
+identité de volume inattendue.
 
 Voir aussi :
 

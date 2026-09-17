@@ -514,7 +514,7 @@ jobs:
       ADMIN_USER_PASSWORD: ${{ secrets.PROD_ADMIN_USER_PASSWORD }}
       BACKUP_BEFORE_DEPLOY: ${{ vars.BACKUP_BEFORE_DEPLOY || 'true' }}
       DEPLOY_ZERO_DOWNTIME_ENABLED: ${{ vars.DEPLOY_ZERO_DOWNTIME_ENABLED || 'true' }}
-      SHARED_INFRASTRUCTURE_MAINTENANCE: ${{ (github.event_name == 'workflow_dispatch' && inputs.shared_infrastructure_maintenance) || 'none' }}
+      SHARED_INFRASTRUCTURE_MAINTENANCE: ${{ (github.event_name == 'workflow_dispatch' && github.run_attempt == 1 && inputs.shared_infrastructure_maintenance) || 'none' }}
       RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION: ${{ vars.RUN_OPENING_HOURS_LOCALIZED_NOTES_MIGRATION || 'true' }}
       OPENING_HOURS_LOCALIZED_NOTES_MIGRATION_DRY_RUN: ${{ vars.OPENING_HOURS_LOCALIZED_NOTES_MIGRATION_DRY_RUN || 'false' }}
       RUN_LEGACY_ENUM_MIGRATIONS: ${{ vars.RUN_LEGACY_ENUM_MIGRATIONS || 'false' }}
