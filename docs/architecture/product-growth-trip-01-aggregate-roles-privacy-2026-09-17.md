@@ -314,10 +314,11 @@ sequenceDiagram
 
     I->>A: accepter(token, idempotencyKey)
     A->>R: résoudre si Active, non expirée et destinataire valide
-    R-->>A: tripPlanId + operationId proposé
+    R-->>A: tripPlanId + version d'invitation attendue
     A->>P: installer le fence inerte si CanAcceptMembers
-    A->>R: réserver si toujours Active avec le même operationId
-    R-->>A: invitation Accepting + operationId
+    P-->>A: operationId + génération + échéance du fence
+    A->>R: réserver avec version, génération et échéance exactes
+    R-->>A: invitation Accepting + identité du fence
     A->>P: armer le fence si encore Prepared
     A->>P: ajouter le membre si ce fence est encore actif
     P-->>A: membre ajouté et fence Applied dans la même écriture
@@ -346,6 +347,13 @@ l'identifiant du compte acceptant et à `operationId`. L'armement est une écrit
 conditionnelle `Prepared -> Active` ; une compensation ayant déjà écrit
 `Cancelled` la rend donc définitivement inapplicable.
 
+La réservation `Active -> Accepting` est un `UpdateOne` sans upsert qui exige le
+hash du token, la version d'invitation observée, et la garde serveur
+`$$NOW < <LeaseExpiresAtUtc du fence>`. Elle copie atomiquement dans l'invitation
+les `operationId`, génération et échéance exacts retournés par l'installation du
+fence. Toutes les étapes suivantes exigent cette même identité. Une valeur calculée
+avec l'horloge de l'API ou une réservation filtrée sur le seul statut est interdite.
+
 Un fence `Prepared` persiste l'identifiant d'invitation, `operationId`, le compte
 candidat, une génération et `LeaseExpiresAtUtc`. Le reconciler balaye aussi les
 plans portant un fence `Prepared` expiré, pas seulement les invitations
@@ -354,8 +362,12 @@ génération ; si elle est `Accepting` pour cette opération, il reprend la saga
 sinon il compense. Une commande reprend avec une annulation liée à l'échéance du
 fence et ne peut armer qu'un fence `Prepared` de même opération et génération avant
 son expiration. Une commande suspendue au-delà de la lease échoue donc sans
-réactiver le fence, tandis que l'annulation rend immédiatement la place disponible
-pour une nouvelle génération.
+réactiver le fence. Hors révocation explicite — qui réclame d'abord l'invitation —,
+un abandon conserve le fence inerte jusqu'à son échéance : aucune nouvelle
+génération ne réutilise le lien pendant cette quarantaine courte. Après l'échéance,
+le reconciler écrit `Cancelled` et libère la place ; toute réservation retardée de
+l'ancienne génération échoue alors sur la garde temporelle Mongo avant que la
+nouvelle génération puisse réserver.
 
 L'installation, l'armement, l'ajout provisoire et l'établissement définitif du
 membre exigent tous `CanAcceptMembers = true`. Après le passage conditionnel de
@@ -713,6 +725,8 @@ variantes ne sont pas réellement servies.
   commande dont la lease reste valide ;
 - écriture retardée après expiration de lease incapable d'autoriser un second
   compte ou de réactiver l'invitation ;
+- réservation retardée refusée par l'heure serveur, la version et la génération du
+  fence avant qu'une nouvelle génération ne puisse réutiliser l'invitation ;
 - révocation concurrente à une écriture retardée laissant le plan sans membre
   admis par l'opération révoquée avant l'état terminal `Revoked` ;
 - suppression passant `Pending` atomiquement avec la fermeture des admissions et
