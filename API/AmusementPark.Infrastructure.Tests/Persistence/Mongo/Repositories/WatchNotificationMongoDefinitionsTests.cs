@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.Watchlists.Models;
 using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Watchlists;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Watchlists;
@@ -96,8 +97,40 @@ public sealed class WatchNotificationMongoDefinitionsTests
         Assert.Contains(indexes, index => index.Options.Name == "uq_user_notification_event"
             && index.Options.Unique == true);
         Assert.Contains(indexes, index => index.Options.Name == "ix_user_notification_filters");
+        Assert.Contains(indexes, index => index.Options.Name == "ix_user_notification_digest");
         Assert.Contains(indexes, index => index.Options.Name == "ix_user_notification_correction_distribution");
         Assert.Contains(indexes, index => index.Options.Name == "ttl_user_notification_retention"
             && index.Options.ExpireAfter == TimeSpan.Zero);
+    }
+
+    [Fact]
+    public void BuildDigestNotificationFilter_ShouldApplySubscriptionSpecificEventTypesBeforeLimit()
+    {
+        DateTime periodStartUtc = new DateTime(2026, 9, 17, 0, 0, 0, DateTimeKind.Utc);
+        FilterDefinition<UserNotificationDocument> filter =
+            WatchNotificationMongoDefinitions.BuildDigestNotificationFilter(
+                "user-1",
+                periodStartUtc,
+                periodStartUtc.AddDays(1),
+                new[]
+                {
+                    new NotificationDigestSubscriptionFilter(
+                        WatchSubscriptionId.Parse("subscription-1"),
+                        new[] { FactualEventType.ParkNameChanged }),
+                });
+        IBsonSerializer<UserNotificationDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<UserNotificationDocument>();
+
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<UserNotificationDocument>(
+                serializer,
+                BsonSerializer.SerializerRegistry));
+
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        BsonDocument subscriptionClause = Assert.Single(rendered["$or"].AsBsonArray).AsBsonDocument;
+        Assert.Equal("subscription-1", subscriptionClause["subscriptionId"].AsString);
+        Assert.Equal(
+            (int)FactualEventType.ParkNameChanged,
+            Assert.Single(subscriptionClause["eventType"].AsBsonDocument["$in"].AsBsonArray).AsInt32);
     }
 }

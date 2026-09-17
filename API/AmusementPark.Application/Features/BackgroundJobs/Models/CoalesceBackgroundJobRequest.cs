@@ -10,4 +10,5 @@ public sealed record CoalesceBackgroundJobRequest(
     JsonElement Payload,
     int Priority = 0,
     TimeSpan? Delay = null,
-    string? CorrelationId = null);
+    string? CorrelationId = null,
+    bool AdvanceRevision = false);

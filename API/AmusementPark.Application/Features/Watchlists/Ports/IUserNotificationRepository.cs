@@ -26,6 +26,7 @@ public interface IUserNotificationRepository
         string userId,
         DateTime periodStartUtc,
         DateTime periodEndUtc,
+        IReadOnlyCollection<NotificationDigestSubscriptionFilter> subscriptionFilters,
         int limit,
         CancellationToken cancellationToken);
 

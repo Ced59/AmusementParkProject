@@ -26,20 +26,25 @@ public sealed class NotificationDigestJobHandlerTests
         UserNotification second = CreateNotification("notification-2", correction, subscription, PeriodStartUtc.AddHours(9));
         Mock<IUserNotificationRepository> notifications =
             new Mock<IUserNotificationRepository>(MockBehavior.Strict);
+        Mock<IWatchSubscriptionRepository> subscriptions =
+            new Mock<IWatchSubscriptionRepository>(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListOwnedAsync(
+                "user-1",
+                null,
+                null,
+                CancellationToken.None))
+            .ReturnsAsync(new[] { subscription });
         notifications.Setup(repository => repository.ListOwnedForDigestAsync(
                 "user-1",
                 PeriodStartUtc,
                 PeriodStartUtc.AddDays(7),
+                It.Is<IReadOnlyCollection<NotificationDigestSubscriptionFilter>>(filters =>
+                    filters.Count == 1
+                    && filters.Single().SubscriptionId == subscription.Id
+                    && filters.Single().EventTypes.Contains(FactualEventType.ParkNameChanged)),
                 NotificationDigest.MaximumEntries + 1,
                 CancellationToken.None))
             .ReturnsAsync(new[] { first, second });
-        Mock<IWatchSubscriptionRepository> subscriptions =
-            new Mock<IWatchSubscriptionRepository>(MockBehavior.Strict);
-        subscriptions.Setup(repository => repository.ListOwnedByIdsAsync(
-                "user-1",
-                It.IsAny<IReadOnlyCollection<WatchSubscriptionId>>(),
-                CancellationToken.None))
-            .ReturnsAsync(new[] { subscription });
         Mock<IFactualChangeEventRepository> events =
             new Mock<IFactualChangeEventRepository>(MockBehavior.Strict);
         events.Setup(repository => repository.GetManyAsync(

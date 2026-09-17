@@ -119,10 +119,12 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
         string userId,
         DateTime periodStartUtc,
         DateTime periodEndUtc,
+        IReadOnlyCollection<NotificationDigestSubscriptionFilter> subscriptionFilters,
         int limit,
         CancellationToken cancellationToken)
     {
         string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
+        ArgumentNullException.ThrowIfNull(subscriptionFilters);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(limit);
         if (periodStartUtc.Kind != DateTimeKind.Utc
             || periodEndUtc.Kind != DateTimeKind.Utc
@@ -131,16 +133,17 @@ public sealed class UserNotificationRepository : IUserNotificationRepository
             throw new ArgumentException("The digest period must be a chronological UTC range.");
         }
 
+        if (subscriptionFilters.Count == 0)
+        {
+            return Array.Empty<UserNotification>();
+        }
+
         FilterDefinition<UserNotificationDocument> filter =
-            Builders<UserNotificationDocument>.Filter.Eq(
-                static document => document.UserId,
-                normalizedUserId)
-            & Builders<UserNotificationDocument>.Filter.Gte(
-                static document => document.DeliveredAt,
-                periodStartUtc)
-            & Builders<UserNotificationDocument>.Filter.Lt(
-                static document => document.DeliveredAt,
-                periodEndUtc);
+            WatchNotificationMongoDefinitions.BuildDigestNotificationFilter(
+                normalizedUserId,
+                periodStartUtc,
+                periodEndUtc,
+                subscriptionFilters);
         List<UserNotificationDocument> documents = await this.collection.Find(filter)
             .SortBy(static document => document.DeliveredAt)
             .ThenBy(static document => document.Id)

@@ -58,7 +58,7 @@ public sealed class NotificationDigestScheduler : INotificationDigestScheduler
                 .Where(notification => subscriptionsById.TryGetValue(
                     notification.SubscriptionId,
                     out WatchSubscription? subscription)
-                    && IsDigestEligible(subscription))
+                    && IsDigestEligible(subscription, notification))
                 .Select(notification =>
                 {
                     WatchSubscription subscription = subscriptionsById[notification.SubscriptionId];
@@ -79,32 +79,28 @@ public sealed class NotificationDigestScheduler : INotificationDigestScheduler
                     group.Channel,
                     group.Frequency,
                     group.PeriodStartUtc);
-                long requestedRevision = ownerCandidates
-                    .Where(notification => notification.DeliveredAtUtc
-                        >= group.PeriodStartUtc
-                        && notification.DeliveredAtUtc
-                        < NotificationDigestPeriodResolver.ResolveEnd(
-                            group.Frequency,
-                            group.PeriodStartUtc))
-                    .Max(static notification => notification.DeliveredAtUtc.Ticks);
                 await this.jobRepository.CoalesceAsync(
                     new CoalesceBackgroundJobRequest(
                         NotificationDigestJob.Kind,
                         $"watch-digest:{digestId.Value}",
-                        requestedRevision,
+                        RequestedRevision: 0,
                         NotificationDigestJob.PayloadVersion,
                         JsonSerializer.SerializeToElement(group),
-                        CorrelationId: digestId.Value),
+                        CorrelationId: digestId.Value,
+                        AdvanceRevision: true),
                     cancellationToken);
             }
         }
     }
 
-    private static bool IsDigestEligible(WatchSubscription subscription)
+    private static bool IsDigestEligible(
+        WatchSubscription subscription,
+        UserNotification notification)
     {
         return !subscription.IsPaused
             && subscription.Frequency is NotificationFrequency.DailyDigest
                 or NotificationFrequency.WeeklyDigest
-            && subscription.Channels.Contains(NotificationChannel.Email);
+            && subscription.Channels.Contains(NotificationChannel.Email)
+            && subscription.EventTypes.Contains(notification.EventType);
     }
 }

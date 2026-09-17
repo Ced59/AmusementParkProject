@@ -46,7 +46,8 @@ public sealed class NotificationDigestSchedulerTests
                 It.Is<CoalesceBackgroundJobRequest>(request =>
                     request.Kind == NotificationDigestJob.Kind
                     && request.NaturalKey == $"watch-digest:{expectedId.Value}"
-                    && request.RequestedRevision == OccurredAtUtc.Ticks),
+                    && request.RequestedRevision == 0
+                    && request.AdvanceRevision),
                 CancellationToken.None))
             .ReturnsAsync((DurableBackgroundJob)null!);
         NotificationDigestScheduler scheduler = new NotificationDigestScheduler(
@@ -70,6 +71,50 @@ public sealed class NotificationDigestSchedulerTests
         WatchSubscription subscription = CreateSubscription(
             NotificationFrequency.WebOnly,
             Array.Empty<NotificationChannel>());
+        UserNotification notification = CreateNotification(subscription);
+        Mock<IUserNotificationRepository> notifications =
+            new Mock<IUserNotificationRepository>(MockBehavior.Strict);
+        notifications.Setup(repository => repository.ListByFactualEventAndUsersAsync(
+                notification.FactualEventId,
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { notification });
+        Mock<IWatchSubscriptionRepository> subscriptions =
+            new Mock<IWatchSubscriptionRepository>(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListOwnedByIdsAsync(
+                "user-1",
+                It.IsAny<IReadOnlyCollection<WatchSubscriptionId>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { subscription });
+        Mock<IDurableBackgroundJobRepository> jobs =
+            new Mock<IDurableBackgroundJobRepository>(MockBehavior.Strict);
+        NotificationDigestScheduler scheduler = new NotificationDigestScheduler(
+            jobs.Object,
+            notifications.Object,
+            subscriptions.Object);
+
+        await scheduler.ScheduleAsync(
+            notification.FactualEventId,
+            new[] { "user-1" },
+            CancellationToken.None);
+
+        notifications.VerifyAll();
+        subscriptions.VerifyAll();
+        jobs.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ScheduleAsync_ShouldIgnoreEventTypeRemovedFromSubscription()
+    {
+        WatchSubscription subscription = WatchSubscription.Create(
+            WatchSubscriptionId.Parse("subscription-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            new[] { FactualEventType.OperatorChanged },
+            NotificationFrequency.DailyDigest,
+            new[] { NotificationChannel.Email },
+            OccurredAtUtc.AddDays(-1));
         UserNotification notification = CreateNotification(subscription);
         Mock<IUserNotificationRepository> notifications =
             new Mock<IUserNotificationRepository>(MockBehavior.Strict);

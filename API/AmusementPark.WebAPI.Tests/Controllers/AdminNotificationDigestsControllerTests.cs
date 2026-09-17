@@ -85,6 +85,57 @@ public sealed class AdminNotificationDigestsControllerTests
     }
 
     [Fact]
+    public async Task PreviewAsync_ShouldSuppressEventTypeRemovedFromSubscription()
+    {
+        WatchSubscription subscription = WatchSubscription.Create(
+            WatchSubscriptionId.Parse("subscription-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            new[] { FactualEventType.OperatorChanged },
+            NotificationFrequency.WeeklyDigest,
+            new[] { NotificationChannel.Email },
+            PeriodStartUtc.AddHours(-1));
+        NotificationDigest digest = NotificationDigest.CreateSnapshot(
+            "user-1",
+            NotificationChannel.Email,
+            NotificationFrequency.WeeklyDigest,
+            PeriodStartUtc,
+            new[] { CreateEntry(subscription.Id) },
+            1,
+            PeriodStartUtc.AddHours(1));
+        Mock<INotificationDigestRepository> digests =
+            new Mock<INotificationDigestRepository>(MockBehavior.Strict);
+        digests.Setup(repository => repository.GetAsync(digest.Id, CancellationToken.None))
+            .ReturnsAsync(digest);
+        Mock<IWatchSubscriptionRepository> subscriptions =
+            new Mock<IWatchSubscriptionRepository>(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListOwnedByIdsAsync(
+                "user-1",
+                It.IsAny<IReadOnlyCollection<WatchSubscriptionId>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { subscription });
+        AdminNotificationDigestsController controller = new AdminNotificationDigestsController(
+            new PreviewNotificationDigestQueryHandler(digests.Object, subscriptions.Object));
+
+        IActionResult response = await controller.PreviewAsync(
+            new NotificationDigestPreviewRequestDto
+            {
+                UserId = "user-1",
+                Frequency = "WeeklyDigest",
+                PeriodStartUtc = PeriodStartUtc,
+            },
+            CancellationToken.None);
+
+        NotificationDigestPreviewDto body = Assert.IsType<NotificationDigestPreviewDto>(
+            Assert.IsType<OkObjectResult>(response).Value);
+        Assert.Equal(0, body.EligibleItemCount);
+        Assert.Equal(1, body.SuppressedItemCount);
+        digests.VerifyAll();
+        subscriptions.VerifyAll();
+    }
+
+    [Fact]
     public void Controller_ShouldRequireAdminAndActivatedAccount()
     {
         Type controllerType = typeof(AdminNotificationDigestsController);

@@ -68,11 +68,24 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
             return DurableBackgroundJobHandlerResult.DeadLetter(NotificationDigestErrorCodes.InvalidPayload);
         }
 
+        IReadOnlyCollection<WatchSubscription> subscriptions =
+            await this.subscriptionRepository.ListOwnedAsync(
+                payload.UserId,
+                null,
+                null,
+                cancellationToken);
+        NotificationDigestSubscriptionFilter[] subscriptionFilters = subscriptions
+            .Where(subscription => IsEligible(subscription, payload))
+            .Select(subscription => new NotificationDigestSubscriptionFilter(
+                subscription.Id,
+                subscription.EventTypes))
+            .ToArray();
         IReadOnlyCollection<UserNotification> notifications =
             await this.notificationRepository.ListOwnedForDigestAsync(
                 payload.UserId,
                 payload.PeriodStartUtc,
                 periodEndUtc,
+                subscriptionFilters,
                 NotificationDigest.MaximumEntries + 1,
                 cancellationToken);
         if (notifications.Count > NotificationDigest.MaximumEntries)
@@ -81,38 +94,22 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
                 NotificationDigestErrorCodes.TooManyNotifications);
         }
 
-        WatchSubscriptionId[] subscriptionIds = notifications
-            .Select(static notification => notification.SubscriptionId)
-            .Distinct()
-            .ToArray();
-        IReadOnlyCollection<WatchSubscription> subscriptions =
-            await this.subscriptionRepository.ListOwnedByIdsAsync(
-                payload.UserId,
-                subscriptionIds,
-                cancellationToken);
-        HashSet<WatchSubscriptionId> eligibleSubscriptionIds = subscriptions
-            .Where(subscription => IsEligible(subscription, payload))
-            .Select(static subscription => subscription.Id)
-            .ToHashSet();
-        UserNotification[] eligibleNotifications = notifications
-            .Where(notification => eligibleSubscriptionIds.Contains(notification.SubscriptionId))
-            .ToArray();
         IReadOnlyCollection<FactualChangeEvent> factualEvents = await this.eventRepository.GetManyAsync(
-            eligibleNotifications
+            notifications
                 .Select(static notification => notification.FactualEventId)
                 .Distinct()
                 .ToArray(),
             cancellationToken);
         Dictionary<FactualChangeEventId, FactualChangeEvent> eventsById = factualEvents
             .ToDictionary(static factualEvent => factualEvent.Id);
-        if (eligibleNotifications.Any(notification =>
+        if (notifications.Any(notification =>
             !eventsById.ContainsKey(notification.FactualEventId)))
         {
             return DurableBackgroundJobHandlerResult.DeadLetter(
                 NotificationDigestErrorCodes.EventMissing);
         }
 
-        NotificationDigestEntry[] entries = eligibleNotifications
+        NotificationDigestEntry[] entries = notifications
             .Select(notification => ToEntry(notification, eventsById[notification.FactualEventId]))
             .ToArray();
         try
@@ -124,7 +121,7 @@ public sealed class NotificationDigestJobHandler : IDurableBackgroundJobHandler
                 payload.Frequency,
                 payload.PeriodStartUtc,
                 entries,
-                eligibleNotifications.Length,
+                notifications.Count,
                 nowUtc);
             await this.digestRepository.ReplaceSnapshotAsync(snapshot, cancellationToken);
             return DurableBackgroundJobHandlerResult.Success();

@@ -46,14 +46,14 @@ public sealed class PreviewNotificationDigestQueryHandler
                 digest.UserId,
                 subscriptionIds,
                 cancellationToken);
-        HashSet<WatchSubscriptionId> activeSubscriptionIds = subscriptions
-            .Where(subscription => !subscription.IsPaused
-                && subscription.Frequency == digest.Frequency
-                && subscription.Channels.Contains(digest.Channel))
-            .Select(static subscription => subscription.Id)
-            .ToHashSet();
+        Dictionary<WatchSubscriptionId, WatchSubscription> subscriptionsById = subscriptions
+            .ToDictionary(static subscription => subscription.Id);
         int eligibleCount = digest.Entries.Count(entry =>
-            activeSubscriptionIds.Contains(entry.SubscriptionId));
+            subscriptionsById.TryGetValue(entry.SubscriptionId, out WatchSubscription? subscription)
+            && !subscription.IsPaused
+            && subscription.Frequency == digest.Frequency
+            && subscription.Channels.Contains(digest.Channel)
+            && subscription.EventTypes.Contains(entry.EventType));
         return new NotificationDigestPreviewResult(
             digest.Channel,
             digest.Frequency,
