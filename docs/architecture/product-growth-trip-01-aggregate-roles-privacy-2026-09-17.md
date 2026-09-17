@@ -62,6 +62,7 @@ TripPlan
 ├── DestinationTimeZoneId : IANA facultatif tant qu'aucune date n'est fixée
 ├── Members[1..50] : sous-documents bornés, propriétaire inclus
 ├── MemberAdmissionFence : état, invitation, opération, génération et échéance
+├── AdmissionClosure : Open | Closing(cible, opération réclamée) | Closed
 ├── ChildMutationEpoch : long, commence à 1
 ├── ActiveChildMutationLeases[0..32] : acteur, sujet, epochs et échéance
 ├── DeletionState : None | Pending | Purging | Purged
@@ -116,10 +117,10 @@ stateDiagram-v2
   chaque membre ;
 - `Archived` masque le voyage des listes actives sans le supprimer ;
 - `Cancelled` est terminal et révoque les invitations actives ;
-- `CanAcceptMembers` est vrai uniquement en `Draft`, `OpenForVotes` ou `Decided`
-  lorsque `DeletionState = None` ; toute transition qui ferme cette capacité annule
-  atomiquement le fence d'admission et retire un éventuel membre encore lié à son
-  opération avant de compenser les invitations `Active` ou `Accepting` ;
+- `CanAcceptMembers` est vrai uniquement en `Draft`, `OpenForVotes` ou `Decided`,
+  lorsque `DeletionState = None` et `AdmissionClosure = Open` ; toute transition
+  qui ferme cette capacité réclame atomiquement le fence d'admission et retire un
+  éventuel membre encore provisoire avant de compenser les invitations concernées ;
 - la suppression reste distincte d'une annulation et suit la politique décrite
   plus bas.
 
@@ -269,15 +270,16 @@ sequenceDiagram
     A->>P: armer le fence si encore Prepared
     A->>P: ajouter le membre si ce fence est encore actif
     P-->>A: membre ajouté et fence Applied dans la même écriture
-    A->>R: finaliser Accepted
-    A->>P: clôturer le fence
+    A->>R: finaliser Accepted si toujours Accepting
+    A->>P: établir le membre et clôturer le fence si admissions ouvertes
+    P-->>A: admission établie ou fermeture gagnante
     R-->>I: adhésion confirmée
     Note over A,R: une autre payload avec la même clé produit un conflit
     J->>R: rechercher les acceptations incomplètes
     J->>P: reprendre le même fence, operationId et utilisateur
     P-->>J: ajouté ou déjà Applied avec le même payload
     J->>R: finaliser Accepted de façon idempotente
-    J->>P: clôturer le fence
+    J->>P: établir le membre ou compenser si fermeture gagnante
 ```
 
 Une panne après l'ajout du membre ne permet pas une seconde adhésion :
@@ -304,13 +306,29 @@ son expiration. Une commande suspendue au-delà de la lease échoue donc sans
 réactiver le fence, tandis que l'annulation rend immédiatement la place disponible
 pour une nouvelle génération.
 
-L'installation, l'armement et l'ajout du membre exigent tous
-`CanAcceptMembers = true`. Le passage de la suppression à `Pending`, comme une
-transition vers `Completed`, `Archived` ou `Cancelled`, annule atomiquement le
-fence courant et retire le membre portant son `operationId` s'il venait d'être
-appliqué. Les invitations `Active` ou `Accepting` passent ensuite par
-`RevocationPending` et leur compensation. Une écriture d'admission retardée échoue
-donc sur le document du plan lui-même, y compris lors d'une annulation métier.
+L'installation, l'armement, l'ajout provisoire et l'établissement définitif du
+membre exigent tous `CanAcceptMembers = true`. Après le passage conditionnel de
+l'invitation de `Accepting` à `Accepted`, l'admission n'est confirmée à l'appelant
+que si une dernière écriture sur le plan transforme le membre provisoire en membre
+établi et clôture le fence `Applied` de la même opération. Cette écriture est le
+point de linéarisation de l'adhésion.
+
+Une transition vers `Completed`, `Archived` ou `Cancelled`, comme le début d'une
+suppression, commence par une écriture du plan `Open -> Closing`. Elle rend
+`CanAcceptMembers` faux, capture l'`operationId` du fence courant, annule ce fence
+et retire dans la même écriture le membre encore provisoire. Elle compense ensuite
+toutes les invitations `Active` et, pour l'opération capturée, l'invitation
+`Accepting` **ou déjà `Accepted`** en la passant par `RevocationPending`. L'état
+métier cible et `AdmissionClosure = Closed` ne sont publiés qu'après cette
+compensation ; une panne laisse `Closing` au reconciler.
+
+Si la fermeture gagne après l'écriture `Accepted` mais avant l'établissement du
+membre, cette dernière écriture échoue, l'appelant ne reçoit aucune confirmation
+et l'invitation `Accepted` capturée est compensée. Si l'établissement du membre
+gagne avant `Closing`, le fence est déjà clôturé : l'adhésion est réellement
+acquise et la transition terminale est linéarisée après elle. Il n'existe donc
+aucune fenêtre où une réponse confirme une adhésion que le plan avait déjà
+refusée.
 
 Une lease expirée ne remet jamais l'invitation en état `Active` : le reconciler
 reprend exclusivement la même opération et le même payload jusqu'à finalisation ou
@@ -462,7 +480,7 @@ n'injectera directement un service API si un port existe.
 trip-plans
   _id, ownerUserId, title, accessScope, status, dateProposal,
   destinationTimeZoneId, members[], options, memberAdmissionFence?,
-  childMutationEpoch, activeChildMutationLeases[], deletionState,
+  admissionClosure, childMutationEpoch, activeChildMutationLeases[], deletionState,
   activeMutation?, version,
   createdAtUtc, updatedAtUtc
 
@@ -555,12 +573,13 @@ les écritures dans une collection enfant suivent une barrière commune :
    est abandonnée et son sous-document technique est retiré par le reconciler ;
 5. l'écriture libère sa lease de façon idempotente, avec reprise par reconciler.
 
-La suppression passe atomiquement le plan à `Pending`, incrémente
-`ChildMutationEpoch`, annule tout `MemberAdmissionFence` et interdit toute nouvelle
-lease ou admission. Elle rend immédiatement le plan inaccessible, puis marque
-`RevocationPending` les invitations `Active` ou `Accepting` et reprend leur
-compensation ; aucun token ne peut rejoindre un plan dont la suppression a
-commencé. Elle attend ensuite la fin des leases de l'ancien epoch ou leur
+La suppression passe atomiquement le plan à `Pending`, place
+`AdmissionClosure = Closing`, incrémente `ChildMutationEpoch`, réclame tout
+`MemberAdmissionFence` et interdit toute nouvelle lease ou admission. Elle rend
+immédiatement le plan inaccessible, puis marque `RevocationPending` les invitations
+`Active`, ainsi que l'invitation `Accepting` ou `Accepted` de l'opération réclamée,
+et reprend leur compensation ; aucun token ne peut rejoindre un plan dont la
+suppression a commencé. Elle attend ensuite la fin des leases de l'ancien epoch ou leur
 expiration, puis une durée de sûreté supérieure au délai serveur maximal. Le job
 purge invitations et enfants d'un epoch antérieur, refait un balayage après la
 barrière et passe à `Purged` seulement si aucune lease, invitation active ou donnée
@@ -635,6 +654,8 @@ variantes ne sont pas réellement servies.
   compensant toute invitation déjà `Accepting` ;
 - transition vers `Completed`, `Archived` ou `Cancelled` fermant et compensant les
   admissions en cours avant son état terminal ;
+- finalisation `Accepted` concurrente à une fermeture, sans confirmation si le
+  fence `Applied` n'a pas pu établir le membre avant `Closing` ;
 - token brut absent de Mongo, des logs, jobs et réponses privées ;
 - expiration, révocation, rotation, rate limit et `404` uniforme ;
 - preview dépourvue de membres, contraintes, votes et identifiants ;
