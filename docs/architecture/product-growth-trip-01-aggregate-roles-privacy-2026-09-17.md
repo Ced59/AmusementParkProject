@@ -684,14 +684,24 @@ Le départ ou l'effacement d'un seul membre utilise la même barrière à porté
 réduite. Chaque `TripMember` porte `MemberDataEpoch` et un état de participation.
 Si le compte visé apparaît comme candidat d'un `MemberAdmissionFence` `Prepared`,
 `Active` ou `Applied`, qu'un sous-document `Provisional` existe déjà ou non,
-l'opération d'effacement ne suit pas le départ ordinaire : elle annule atomiquement
-ce fence, retire le sous-document provisoire éventuel de même
-`AdmissionOperationId` et conserve un tombstone de cette opération. L'invitation correspondante
-`Accepting` ou déjà `Accepted` passe ensuite par `RevocationPending` et n'atteint
-`Revoked` qu'après confirmation de la compensation. L'établissement retardé exige
-encore le fence `Applied`, le membre `Provisional` et l'opération exacte : il échoue
-donc définitivement après cette écriture. L'effacement ne devient terminal qu'une
-fois l'invitation compensée et le fence libéré par le reconciler.
+l'opération d'effacement ne suit pas le départ ordinaire. Elle réclame **d'abord**
+l'invitation liée au fence : une écriture conditionnelle unique fait passer
+`Active`, `Accepting` ou `Accepted` à `RevocationPending`; lorsque l'opération est
+déjà inscrite, elle exige le même compte candidat et le même `operationId`. MongoDB
+sérialise ainsi cette réclamation avec une réservation `Active -> Accepting` déjà en
+transit : l'une des deux gagne et l'effacement reprend l'état gagnant sans rendre le
+lien réutilisable.
+
+L'opération annule ensuite atomiquement le fence du plan, retire tout sous-document
+de même `AdmissionOperationId`, qu'il soit encore `Provisional` ou qu'une
+finalisation concurrente l'ait déjà passé `Active`, et conserve un tombstone. Une
+écriture d'établissement retardée exige encore le fence `Applied`, le membre
+`Provisional` et l'opération exacte : elle échoue définitivement. L'invitation
+n'atteint `Revoked` qu'après confirmation de cette compensation. En cas de résultat
+réseau ambigu, le reconciler attend au plus l'échéance du fence plus la marge
+serveur, relit l'invitation et refait un second balayage avant de terminer
+l'effacement. Celui-ci ne devient terminal qu'une fois l'invitation compensée et le
+fence libéré.
 
 Pour un membre `Active`, la demande suit la barrière de départ :
 La demande passe le membre à `Leaving`, incrémente son epoch et refuse toute
@@ -756,6 +766,8 @@ variantes ne sont pas réellement servies.
   jusqu'à l'établissement atomique de l'adhésion ;
 - effacement d'un candidat provisoire annulant son fence, retirant le sous-document
   et compensant l'invitation `Accepting` ou `Accepted` avant l'état terminal ;
+- réservation en transit sérialisée avec la réclamation préalable de l'invitation,
+  suivie d'une barrière temporelle et d'un second balayage avant effacement ;
 - création d'invitation retardée au-delà de `Closing`, limitée à une coquille
   `Prepared` non résolvable puis éliminée sans token actif orphelin ;
 - fence `Prepared` installé avant réservation puis rendu inoffensif si une
