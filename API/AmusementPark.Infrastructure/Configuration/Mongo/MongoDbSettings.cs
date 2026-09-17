@@ -38,6 +38,10 @@ public sealed class MongoDbSettings
 
     public string NotificationDigestsCollectionName { get; set; } = "notification-digests";
 
+    public string NotificationPreferencesCollectionName { get; set; } = "notification-preferences";
+
+    public string NotificationDeliveryAttemptsCollectionName { get; set; } = "notification-delivery-attempts";
+
     public string FactualNotificationDistributionsCollectionName { get; set; } = "factual-notification-distributions";
 
     public bool CompleteFactualEventMigrationsOnStartup { get; set; } = true;

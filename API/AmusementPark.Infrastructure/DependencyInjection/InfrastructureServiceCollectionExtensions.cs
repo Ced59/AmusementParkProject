@@ -188,6 +188,10 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IWatchSubscriptionRepository, WatchSubscriptionRepository>();
         services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
         services.AddScoped<INotificationDigestRepository, NotificationDigestRepository>();
+        services.AddScoped<INotificationEmailPreferenceRepository,
+            NotificationEmailPreferenceRepository>();
+        services.AddScoped<INotificationDeliveryAttemptRepository,
+            NotificationDeliveryAttemptRepository>();
         services.AddScoped<IFactualNotificationDistributionReceiptRepository,
             FactualNotificationDistributionReceiptRepository>();
         services.AddScoped<IFactualChangeEventDistributionStateReader,
@@ -354,6 +358,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddSingleton<IShareTokenFactory, CryptographicShareTokenFactory>();
         services.AddSingleton<ISharePublicationPreviewApprovalProtector,
             HmacSharePublicationPreviewApprovalProtector>();
+        services.AddSingleton<INotificationEmailUnsubscribeTokenProtector,
+            EncryptedNotificationEmailUnsubscribeTokenProtector>();
         services.AddSingleton<IUserRankingSharePreviewRenderer, UserRankingSharePreviewRenderer>();
         services.AddSingleton<ShareSocialImageRenderer>();
         services.AddSingleton<IShareSocialImageRenderer>(provider =>
@@ -366,6 +372,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IExternalIdentityVerifier, GoogleExternalIdentityVerifier>();
         services.AddScoped<IUserAvatarImporter, UserAvatarImporter>();
         services.AddSingleton<BrandedEmailTemplateRenderer>();
+        services.AddScoped<INotificationDigestEmailSender, NotificationDigestEmailSender>();
         services.AddScoped<IContactNotificationService, ContactNotificationEmailService>();
         services.AddScoped<IParkWeatherNotificationService, ParkWeatherNotificationEmailService>();
         services.AddScoped<IParkOpeningHoursNotificationService, ParkOpeningHoursNotificationEmailService>();

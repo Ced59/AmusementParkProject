@@ -98,11 +98,15 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<UserCollectionLifecycleService>();
         services.AddScoped<WatchSubscriptionLifecycleService>();
         services.AddScoped<UserNotificationCenterService>();
+        services.AddScoped<NotificationEmailPreferenceService>();
+        services.AddScoped<NotificationDigestEmailEntryResolver>();
         services.AddScoped<IFactualNotificationDistributionScheduler, FactualNotificationDistributionScheduler>();
         services.AddScoped<INotificationDigestScheduler, NotificationDigestScheduler>();
+        services.AddScoped<INotificationEmailDeliveryScheduler, NotificationEmailDeliveryScheduler>();
         services.AddDurableBackgroundJobHandler<FactualNotificationDistributionJobHandler>();
         services.AddDurableBackgroundJobHandler<FactualNotificationCorrectionJobHandler>();
         services.AddDurableBackgroundJobHandler<NotificationDigestJobHandler>();
+        services.AddDurableBackgroundJobHandler<NotificationEmailDeliveryJobHandler>();
         services.AddScoped<ParkWeatherRefreshStarter>();
         services.AddScoped<ParkWeatherRefreshOrchestrator>();
         services.AddSingleton<ParkWeatherLocalDateResolver>();

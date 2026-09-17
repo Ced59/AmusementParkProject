@@ -25,4 +25,10 @@ public sealed class ConsoleEmailSender : IEmailSender
 
         return Task.CompletedTask;
     }
+
+    public Task SendAsync(EmailMessage message, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        return this.SendAsync(message.To, message.Subject, message.HtmlBody, cancellationToken);
+    }
 }

@@ -62,51 +62,23 @@
     "languages": "Lingue",
     "profile": "Profilo"
   },
-  "watchlists": {
-    "action": {
-      "label": "Monitoraggio delle modifiche",
-      "paused": "Monitoraggio in pausa",
-      "active": "Monitoraggio attivo",
-      "follow": "Avvisami delle modifiche",
-      "update": "Aggiorna",
-      "start": "Attiva il monitoraggio",
-      "resume": "Riprendi",
-      "pause": "Metti in pausa",
-      "stop": "Smetti di seguire"
-    },
-    "panel": {
-      "title": "Crea il tuo radar",
-      "description": "Scegli le modifiche verificate che contano per te.",
-      "privacy": "Questo monitoraggio è privato e indipendente dai tuoi preferiti."
-    },
-    "groups": {
-      "practical": {
-        "title": "Informazioni pratiche",
-        "description": "Calendario, stagione, chiusure, nome, gestore e prezzi."
-      },
-      "attractions": {
-        "title": "Novità sulle attrazioni",
-        "description": "Annunci, aperture, chiusure e modifiche importanti."
-      },
-      "editorial": {
-        "title": "Contenuti verificati",
-        "description": "Storia, nuove fonti e correzioni documentate."
-      },
-      "lifecycle": {
-        "title": "Ciclo di vita",
-        "description": "Annuncio, apertura, chiusura, riapertura e nuovo nome."
-      },
-      "details": {
-        "title": "Dettagli utili",
-        "description": "Restrizioni importanti, posizione e categoria."
-      }
-    },
-    "feedback": {
-      "selectOne": "Scegli almeno un gruppo di modifiche.",
-      "error": "Impossibile salvare il monitoraggio. Riprova."
-    }
-  },
   "notifications": {
+    "emailPreferences": {
+      "kicker": "Riepiloghi via e-mail",
+      "title": "Ricevi solo le novità che scegli",
+      "description": "Le modifiche verificate delle tue attività seguite possono essere raccolte in un riepilogo. Il centro notifiche resta disponibile anche senza e-mail.",
+      "enabled": "Attivi",
+      "disabled": "Disattivati",
+      "loading": "Caricamento della tua scelta…",
+      "consentTitle": "Mantieni il controllo del tuo consenso",
+      "consentText": "Attivando i riepiloghi, accetti di ricevere le frequenze scelte nelle tue attività seguite. Puoi revocare subito il consenso qui o da qualsiasi e-mail.",
+      "address": "Invio a {{email}}",
+      "frequency": "Ogni attività seguita mantiene la propria frequenza giornaliera o settimanale.",
+      "unavailable": "Conferma prima il tuo indirizzo e-mail per attivare i riepiloghi.",
+      "error": "Al momento non è possibile salvare la tua scelta.",
+      "disable": "Disattiva i riepiloghi",
+      "enable": "Attiva i riepiloghi"
+    },
     "kicker": "RADAR PERSONALE",
     "title": "LE TUE NOTIFICHE",
     "description": "Consulta solo le modifiche fattuali che hai scelto di seguire.",
@@ -217,6 +189,50 @@
       "MajorHistoryUpdate": "Storia ampliata",
       "VerifiedSourceAdded": "Nuova fonte verificata",
       "CorrectionAfterUserReport": "Correzione dopo una segnalazione"
+    }
+  },
+  "watchlists": {
+    "action": {
+      "label": "Monitoraggio delle modifiche",
+      "paused": "Monitoraggio in pausa",
+      "active": "Monitoraggio attivo",
+      "follow": "Avvisami delle modifiche",
+      "update": "Aggiorna",
+      "start": "Attiva il monitoraggio",
+      "resume": "Riprendi",
+      "pause": "Metti in pausa",
+      "stop": "Smetti di seguire"
+    },
+    "panel": {
+      "title": "Crea il tuo radar",
+      "description": "Scegli le modifiche verificate che contano per te.",
+      "privacy": "Questo monitoraggio è privato e indipendente dai tuoi preferiti."
+    },
+    "groups": {
+      "practical": {
+        "title": "Informazioni pratiche",
+        "description": "Calendario, stagione, chiusure, nome, gestore e prezzi."
+      },
+      "attractions": {
+        "title": "Novità sulle attrazioni",
+        "description": "Annunci, aperture, chiusure e modifiche importanti."
+      },
+      "editorial": {
+        "title": "Contenuti verificati",
+        "description": "Storia, nuove fonti e correzioni documentate."
+      },
+      "lifecycle": {
+        "title": "Ciclo di vita",
+        "description": "Annuncio, apertura, chiusura, riapertura e nuovo nome."
+      },
+      "details": {
+        "title": "Dettagli utili",
+        "description": "Restrizioni importanti, posizione e categoria."
+      }
+    },
+    "feedback": {
+      "selectOne": "Scegli almeno un gruppo di modifiche.",
+      "error": "Impossibile salvare il monitoraggio. Riprova."
     }
   },
   "parkFitProfiles": {

@@ -10,6 +10,7 @@ public static class RateLimitPolicyNames
     public const string AuthRefresh = "auth-refresh";
     public const string AuthRegistration = "auth-registration";
     public const string AuthEmailChallenge = "auth-email-challenge";
+    public const string NotificationEmailUnsubscribe = "notification-email-unsubscribe";
     public const string AuthPasswordReset = "auth-password-reset";
     public const string ContactSubmission = "contact-submission";
     public const string SocialShareEvents = "social-share-events";

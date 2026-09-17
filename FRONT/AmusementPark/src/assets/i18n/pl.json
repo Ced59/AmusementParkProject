@@ -62,51 +62,23 @@
     "languages": "Języki",
     "profile": "Profil"
   },
-  "watchlists": {
-    "action": {
-      "label": "Śledzenie zmian",
-      "paused": "Śledzenie wstrzymane",
-      "active": "Śledzenie aktywne",
-      "follow": "Powiadamiaj mnie o zmianach",
-      "update": "Aktualizuj",
-      "start": "Włącz śledzenie",
-      "resume": "Wznów",
-      "pause": "Wstrzymaj",
-      "stop": "Przestań śledzić"
-    },
-    "panel": {
-      "title": "Skonfiguruj swój radar",
-      "description": "Wybierz zweryfikowane zmiany, które są dla ciebie ważne.",
-      "privacy": "To śledzenie jest prywatne i niezależne od ulubionych."
-    },
-    "groups": {
-      "practical": {
-        "title": "Informacje praktyczne",
-        "description": "Kalendarz, sezon, zamknięcia, nazwa, operator i ceny."
-      },
-      "attractions": {
-        "title": "Aktualności o atrakcjach",
-        "description": "Zapowiedzi, otwarcia, zamknięcia i ważne zmiany."
-      },
-      "editorial": {
-        "title": "Zweryfikowane treści",
-        "description": "Historia, nowe źródła i udokumentowane poprawki."
-      },
-      "lifecycle": {
-        "title": "Cykl życia",
-        "description": "Zapowiedź, otwarcie, zamknięcie, ponowne otwarcie i nowa nazwa."
-      },
-      "details": {
-        "title": "Przydatne szczegóły",
-        "description": "Ważne ograniczenia, lokalizacja i kategoria."
-      }
-    },
-    "feedback": {
-      "selectOne": "Wybierz co najmniej jedną grupę zmian.",
-      "error": "Nie udało się zapisać śledzenia. Spróbuj ponownie."
-    }
-  },
   "notifications": {
+    "emailPreferences": {
+      "kicker": "Podsumowania e-mail",
+      "title": "Otrzymuj tylko wybrane przez siebie aktualizacje",
+      "description": "Zweryfikowane zmiany z obserwowanych miejsc mogą trafić do jednego podsumowania. Centrum powiadomień pozostaje dostępne bez wiadomości e-mail.",
+      "enabled": "Włączone",
+      "disabled": "Wyłączone",
+      "loading": "Wczytywanie Twojego wyboru…",
+      "consentTitle": "Masz pełną kontrolę nad swoją zgodą",
+      "consentText": "Włączając podsumowania, zgadzasz się na wiadomości z częstotliwością wybraną dla obserwowanych miejsc. Zgodę możesz natychmiast wycofać tutaj lub w każdej wiadomości.",
+      "address": "Wysyłka na {{email}}",
+      "frequency": "Każda obserwacja zachowuje częstotliwość dzienną lub tygodniową.",
+      "unavailable": "Najpierw potwierdź adres e-mail, aby włączyć podsumowania.",
+      "error": "Nie można teraz zapisać Twojego wyboru.",
+      "disable": "Wyłącz podsumowania",
+      "enable": "Włącz podsumowania"
+    },
     "kicker": "OSOBISTY RADAR",
     "title": "TWOJE POWIADOMIENIA",
     "description": "Zobacz tylko zmiany faktów, które świadomie śledzisz.",
@@ -217,6 +189,50 @@
       "MajorHistoryUpdate": "Rozszerzono historię",
       "VerifiedSourceAdded": "Dodano nowe zweryfikowane źródło",
       "CorrectionAfterUserReport": "Poprawka po zgłoszeniu użytkownika"
+    }
+  },
+  "watchlists": {
+    "action": {
+      "label": "Śledzenie zmian",
+      "paused": "Śledzenie wstrzymane",
+      "active": "Śledzenie aktywne",
+      "follow": "Powiadamiaj mnie o zmianach",
+      "update": "Aktualizuj",
+      "start": "Włącz śledzenie",
+      "resume": "Wznów",
+      "pause": "Wstrzymaj",
+      "stop": "Przestań śledzić"
+    },
+    "panel": {
+      "title": "Skonfiguruj swój radar",
+      "description": "Wybierz zweryfikowane zmiany, które są dla ciebie ważne.",
+      "privacy": "To śledzenie jest prywatne i niezależne od ulubionych."
+    },
+    "groups": {
+      "practical": {
+        "title": "Informacje praktyczne",
+        "description": "Kalendarz, sezon, zamknięcia, nazwa, operator i ceny."
+      },
+      "attractions": {
+        "title": "Aktualności o atrakcjach",
+        "description": "Zapowiedzi, otwarcia, zamknięcia i ważne zmiany."
+      },
+      "editorial": {
+        "title": "Zweryfikowane treści",
+        "description": "Historia, nowe źródła i udokumentowane poprawki."
+      },
+      "lifecycle": {
+        "title": "Cykl życia",
+        "description": "Zapowiedź, otwarcie, zamknięcie, ponowne otwarcie i nowa nazwa."
+      },
+      "details": {
+        "title": "Przydatne szczegóły",
+        "description": "Ważne ograniczenia, lokalizacja i kategoria."
+      }
+    },
+    "feedback": {
+      "selectOne": "Wybierz co najmniej jedną grupę zmian.",
+      "error": "Nie udało się zapisać śledzenia. Spróbuj ponownie."
     }
   },
   "parkFitProfiles": {

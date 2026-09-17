@@ -5,6 +5,8 @@ namespace AmusementPark.Infrastructure.Services.Email;
 
 public sealed class BrandedEmailTemplateModel
 {
+    public string Language { get; init; } = "en";
+
     public string Preheader { get; init; } = string.Empty;
 
     public string Badge { get; init; } = "Amusement Park";

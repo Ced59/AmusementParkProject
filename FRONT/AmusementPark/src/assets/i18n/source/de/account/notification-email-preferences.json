@@ -1,0 +1,20 @@
+{
+  "notifications": {
+    "emailPreferences": {
+      "kicker": "E-Mail-Zusammenfassungen",
+      "title": "Erhalte nur die Neuigkeiten, die du auswählst",
+      "description": "Geprüfte Änderungen aus deiner Beobachtungsliste können in einer Zusammenfassung gebündelt werden. Das Benachrichtigungscenter bleibt auch ohne E-Mail verfügbar.",
+      "enabled": "Aktiviert",
+      "disabled": "Deaktiviert",
+      "loading": "Deine Auswahl wird geladen…",
+      "consentTitle": "Du behältst die Kontrolle über deine Einwilligung",
+      "consentText": "Mit der Aktivierung stimmst du den für deine Beobachtungen gewählten täglichen oder wöchentlichen Zusammenfassungen zu. Du kannst diese Einwilligung hier oder über jede E-Mail sofort widerrufen.",
+      "address": "Versand an {{email}}",
+      "frequency": "Jede Beobachtung behält ihren täglichen oder wöchentlichen Rhythmus.",
+      "unavailable": "Bestätige zuerst deine E-Mail-Adresse, um Zusammenfassungen zu aktivieren.",
+      "error": "Deine Auswahl kann derzeit nicht gespeichert werden.",
+      "disable": "Zusammenfassungen deaktivieren",
+      "enable": "Zusammenfassungen aktivieren"
+    }
+  }
+}

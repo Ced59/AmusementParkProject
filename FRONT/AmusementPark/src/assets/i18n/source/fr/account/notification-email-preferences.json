@@ -1,0 +1,20 @@
+{
+  "notifications": {
+    "emailPreferences": {
+      "kicker": "Résumés par e-mail",
+      "title": "Reçois uniquement les nouvelles que tu choisis",
+      "description": "Les changements vérifiés de tes surveillances peuvent être regroupés dans un résumé. Le centre de notifications reste disponible même sans e-mail.",
+      "enabled": "Activés",
+      "disabled": "Désactivés",
+      "loading": "Chargement de ton choix…",
+      "consentTitle": "Ton accord reste sous ton contrôle",
+      "consentText": "En activant les résumés, tu acceptes de recevoir les fréquences choisies dans tes surveillances. Tu peux retirer cet accord immédiatement, ici ou depuis chaque e-mail.",
+      "address": "Envoi vers {{email}}",
+      "frequency": "Chaque surveillance conserve sa fréquence quotidienne ou hebdomadaire.",
+      "unavailable": "Confirme d’abord ton adresse e-mail pour activer les résumés.",
+      "error": "Impossible d’enregistrer ton choix pour le moment.",
+      "disable": "Désactiver les résumés",
+      "enable": "Activer les résumés"
+    }
+  }
+}

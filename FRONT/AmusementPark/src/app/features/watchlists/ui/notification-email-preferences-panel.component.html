@@ -1,0 +1,88 @@
+<section class="email-preferences" appUiSurface="panel" appUiSurfacePadding="spacious">
+  <div class="email-preferences__heading">
+    <div>
+      <app-ui-kicker tone="lime" iconClass="pi pi-envelope">
+        {{ 'notifications.emailPreferences.kicker' | translate }}
+      </app-ui-kicker>
+      <h2>{{ 'notifications.emailPreferences.title' | translate }}</h2>
+      <p>{{ 'notifications.emailPreferences.description' | translate }}</p>
+    </div>
+    @if (facade.preference(); as preference) {
+      <app-ui-chip
+        [tone]="preference.emailDigestEnabled ? 'lime' : 'soft'"
+        [iconClass]="preference.emailDigestEnabled ? 'pi pi-check-circle' : 'pi pi-bell-slash'">
+        {{ (preference.emailDigestEnabled
+          ? 'notifications.emailPreferences.enabled'
+          : 'notifications.emailPreferences.disabled') | translate }}
+      </app-ui-chip>
+    }
+  </div>
+
+  @if (facade.loading() && !facade.preference()) {
+    <p class="email-preferences__feedback" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      {{ 'notifications.emailPreferences.loading' | translate }}
+    </p>
+  } @else if (facade.preference(); as preference) {
+    <div class="email-preferences__promise">
+      <i class="pi pi-shield" aria-hidden="true"></i>
+      <div>
+        <strong>{{ 'notifications.emailPreferences.consentTitle' | translate }}</strong>
+        <p>{{ 'notifications.emailPreferences.consentText' | translate }}</p>
+      </div>
+    </div>
+
+    @if (preference.maskedEmail) {
+      <p class="email-preferences__address">
+        <i class="pi pi-at" aria-hidden="true"></i>
+        <span>{{ 'notifications.emailPreferences.address' | translate:{ email: preference.maskedEmail } }}</span>
+      </p>
+    }
+
+    <p class="email-preferences__frequency">
+      <i class="pi pi-clock" aria-hidden="true"></i>
+      <span>{{ 'notifications.emailPreferences.frequency' | translate }}</span>
+    </p>
+
+    @if (!preference.emailAvailable) {
+      <p class="email-preferences__feedback email-preferences__feedback--warning" role="status">
+        {{ 'notifications.emailPreferences.unavailable' | translate }}
+      </p>
+    }
+
+    @if (facade.error()) {
+      <p class="email-preferences__feedback email-preferences__feedback--error" role="alert">
+        {{ 'notifications.emailPreferences.error' | translate }}
+      </p>
+    }
+
+    <div class="email-preferences__actions">
+      @if (preference.emailDigestEnabled) {
+        <button
+          appUiButton="ghost"
+          type="button"
+          [disabled]="facade.saving()"
+          (click)="facade.disable(currentLang())">
+          <i class="pi pi-bell-slash" aria-hidden="true"></i>
+          <span>{{ 'notifications.emailPreferences.disable' | translate }}</span>
+        </button>
+      } @else {
+        <button
+          appUiButton="primary"
+          type="button"
+          [disabled]="facade.saving() || !preference.emailAvailable"
+          (click)="facade.enable(currentLang())">
+          <i class="pi pi-envelope" aria-hidden="true"></i>
+          <span>{{ 'notifications.emailPreferences.enable' | translate }}</span>
+        </button>
+      }
+    </div>
+  } @else if (facade.error()) {
+    <p class="email-preferences__feedback email-preferences__feedback--error" role="alert">
+      {{ 'notifications.emailPreferences.error' | translate }}
+    </p>
+    <button appUiButton="ghost" type="button" (click)="facade.load()">
+      {{ 'notifications.actions.retry' | translate }}
+    </button>
+  }
+</section>

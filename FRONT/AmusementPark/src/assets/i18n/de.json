@@ -62,51 +62,23 @@
     "languages": "Sprachen",
     "profile": "Profil"
   },
-  "watchlists": {
-    "action": {
-      "label": "Änderungen verfolgen",
-      "paused": "Verfolgung pausiert",
-      "active": "Verfolgung aktiv",
-      "follow": "Über Änderungen informieren",
-      "update": "Aktualisieren",
-      "start": "Verfolgung aktivieren",
-      "resume": "Fortsetzen",
-      "pause": "Pausieren",
-      "stop": "Verfolgung beenden"
-    },
-    "panel": {
-      "title": "Stelle dein Radar zusammen",
-      "description": "Wähle die geprüften Änderungen aus, die für dich wichtig sind.",
-      "privacy": "Diese Verfolgung ist privat und unabhängig von deinen Favoriten."
-    },
-    "groups": {
-      "practical": {
-        "title": "Praktische Infos",
-        "description": "Kalender, Saison, Schließungen, Name, Betreiber und Preise."
-      },
-      "attractions": {
-        "title": "Neuigkeiten zu Attraktionen",
-        "description": "Ankündigungen, Eröffnungen, Schließungen und wichtige Änderungen."
-      },
-      "editorial": {
-        "title": "Geprüfte Inhalte",
-        "description": "Geschichte, neue Quellen und dokumentierte Korrekturen."
-      },
-      "lifecycle": {
-        "title": "Lebenszyklus",
-        "description": "Ankündigung, Eröffnung, Schließung, Wiedereröffnung und Umbenennung."
-      },
-      "details": {
-        "title": "Nützliche Details",
-        "description": "Wichtige Einschränkungen, Standort und Kategorie."
-      }
-    },
-    "feedback": {
-      "selectOne": "Wähle mindestens eine Änderungsgruppe.",
-      "error": "Die Verfolgung konnte nicht gespeichert werden. Versuche es erneut."
-    }
-  },
   "notifications": {
+    "emailPreferences": {
+      "kicker": "E-Mail-Zusammenfassungen",
+      "title": "Erhalte nur die Neuigkeiten, die du auswählst",
+      "description": "Geprüfte Änderungen aus deiner Beobachtungsliste können in einer Zusammenfassung gebündelt werden. Das Benachrichtigungscenter bleibt auch ohne E-Mail verfügbar.",
+      "enabled": "Aktiviert",
+      "disabled": "Deaktiviert",
+      "loading": "Deine Auswahl wird geladen…",
+      "consentTitle": "Du behältst die Kontrolle über deine Einwilligung",
+      "consentText": "Mit der Aktivierung stimmst du den für deine Beobachtungen gewählten täglichen oder wöchentlichen Zusammenfassungen zu. Du kannst diese Einwilligung hier oder über jede E-Mail sofort widerrufen.",
+      "address": "Versand an {{email}}",
+      "frequency": "Jede Beobachtung behält ihren täglichen oder wöchentlichen Rhythmus.",
+      "unavailable": "Bestätige zuerst deine E-Mail-Adresse, um Zusammenfassungen zu aktivieren.",
+      "error": "Deine Auswahl kann derzeit nicht gespeichert werden.",
+      "disable": "Zusammenfassungen deaktivieren",
+      "enable": "Zusammenfassungen aktivieren"
+    },
     "kicker": "PERSÖNLICHES RADAR",
     "title": "DEINE BENACHRICHTIGUNGEN",
     "description": "Sieh nur die Faktenänderungen, die du ausdrücklich verfolgen möchtest.",
@@ -217,6 +189,50 @@
       "MajorHistoryUpdate": "Geschichte erweitert",
       "VerifiedSourceAdded": "Neue geprüfte Quelle",
       "CorrectionAfterUserReport": "Korrektur nach einem Nutzerhinweis"
+    }
+  },
+  "watchlists": {
+    "action": {
+      "label": "Änderungen verfolgen",
+      "paused": "Verfolgung pausiert",
+      "active": "Verfolgung aktiv",
+      "follow": "Über Änderungen informieren",
+      "update": "Aktualisieren",
+      "start": "Verfolgung aktivieren",
+      "resume": "Fortsetzen",
+      "pause": "Pausieren",
+      "stop": "Verfolgung beenden"
+    },
+    "panel": {
+      "title": "Stelle dein Radar zusammen",
+      "description": "Wähle die geprüften Änderungen aus, die für dich wichtig sind.",
+      "privacy": "Diese Verfolgung ist privat und unabhängig von deinen Favoriten."
+    },
+    "groups": {
+      "practical": {
+        "title": "Praktische Infos",
+        "description": "Kalender, Saison, Schließungen, Name, Betreiber und Preise."
+      },
+      "attractions": {
+        "title": "Neuigkeiten zu Attraktionen",
+        "description": "Ankündigungen, Eröffnungen, Schließungen und wichtige Änderungen."
+      },
+      "editorial": {
+        "title": "Geprüfte Inhalte",
+        "description": "Geschichte, neue Quellen und dokumentierte Korrekturen."
+      },
+      "lifecycle": {
+        "title": "Lebenszyklus",
+        "description": "Ankündigung, Eröffnung, Schließung, Wiedereröffnung und Umbenennung."
+      },
+      "details": {
+        "title": "Nützliche Details",
+        "description": "Wichtige Einschränkungen, Standort und Kategorie."
+      }
+    },
+    "feedback": {
+      "selectOne": "Wähle mindestens eine Änderungsgruppe.",
+      "error": "Die Verfolgung konnte nicht gespeichert werden. Versuche es erneut."
     }
   },
   "parkFitProfiles": {

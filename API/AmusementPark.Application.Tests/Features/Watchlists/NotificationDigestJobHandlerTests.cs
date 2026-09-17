@@ -64,11 +64,18 @@ public sealed class NotificationDigestJobHandlerTests
         Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
         timeProvider.Setup(provider => provider.GetUtcNow())
             .Returns(new DateTimeOffset(PeriodStartUtc.AddHours(10)));
+        Mock<INotificationEmailDeliveryScheduler> emailDeliveryScheduler =
+            new Mock<INotificationEmailDeliveryScheduler>(MockBehavior.Strict);
+        emailDeliveryScheduler.Setup(scheduler => scheduler.ScheduleAsync(
+                It.Is<NotificationDigest>(digest => digest.Entries.Count == 1),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         NotificationDigestJobHandler handler = new NotificationDigestJobHandler(
             notifications.Object,
             subscriptions.Object,
             events.Object,
             digests.Object,
+            emailDeliveryScheduler.Object,
             timeProvider.Object);
 
         DurableBackgroundJobHandlerResult result = await handler.HandleAsync(
@@ -80,6 +87,7 @@ public sealed class NotificationDigestJobHandlerTests
         subscriptions.VerifyAll();
         events.VerifyAll();
         digests.VerifyAll();
+        emailDeliveryScheduler.VerifyAll();
         timeProvider.VerifyAll();
     }
 

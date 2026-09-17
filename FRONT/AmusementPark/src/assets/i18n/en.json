@@ -62,51 +62,23 @@
     "languages": "Languages",
     "profile": "Profile"
   },
-  "watchlists": {
-    "action": {
-      "label": "Change tracking",
-      "paused": "Tracking paused",
-      "active": "Tracking active",
-      "follow": "Notify me about changes",
-      "update": "Update",
-      "start": "Start tracking",
-      "resume": "Resume",
-      "pause": "Pause",
-      "stop": "Stop tracking"
-    },
-    "panel": {
-      "title": "Build your radar",
-      "description": "Choose the verified changes that matter to you.",
-      "privacy": "This tracking is private and independent from your favourites."
-    },
-    "groups": {
-      "practical": {
-        "title": "Practical information",
-        "description": "Calendar, season, closures, name, operator and prices."
-      },
-      "attractions": {
-        "title": "Attraction updates",
-        "description": "Announcements, openings, closures and major changes."
-      },
-      "editorial": {
-        "title": "Verified content",
-        "description": "History, new sources and documented corrections."
-      },
-      "lifecycle": {
-        "title": "Lifecycle",
-        "description": "Announcement, opening, closure, reopening and renaming."
-      },
-      "details": {
-        "title": "Useful details",
-        "description": "Major restrictions, location and category."
-      }
-    },
-    "feedback": {
-      "selectOne": "Choose at least one change group.",
-      "error": "Tracking could not be saved. Try again."
-    }
-  },
   "notifications": {
+    "emailPreferences": {
+      "kicker": "Email digests",
+      "title": "Receive only the updates you choose",
+      "description": "Verified changes from your watchlist can be grouped into a digest. The notification centre remains available without email.",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "loading": "Loading your choice…",
+      "consentTitle": "Your consent stays under your control",
+      "consentText": "By enabling digests, you agree to receive the frequencies selected in your watches. You can withdraw this consent immediately here or from any email.",
+      "address": "Sent to {{email}}",
+      "frequency": "Each watch keeps its daily or weekly frequency.",
+      "unavailable": "Confirm your email address before enabling digests.",
+      "error": "Your choice cannot be saved right now.",
+      "disable": "Disable digests",
+      "enable": "Enable digests"
+    },
     "kicker": "PERSONAL RADAR",
     "title": "YOUR NOTIFICATIONS",
     "description": "See only the factual changes you explicitly chose to track.",
@@ -217,6 +189,50 @@
       "MajorHistoryUpdate": "History expanded",
       "VerifiedSourceAdded": "New verified source",
       "CorrectionAfterUserReport": "Correction after a user report"
+    }
+  },
+  "watchlists": {
+    "action": {
+      "label": "Change tracking",
+      "paused": "Tracking paused",
+      "active": "Tracking active",
+      "follow": "Notify me about changes",
+      "update": "Update",
+      "start": "Start tracking",
+      "resume": "Resume",
+      "pause": "Pause",
+      "stop": "Stop tracking"
+    },
+    "panel": {
+      "title": "Build your radar",
+      "description": "Choose the verified changes that matter to you.",
+      "privacy": "This tracking is private and independent from your favourites."
+    },
+    "groups": {
+      "practical": {
+        "title": "Practical information",
+        "description": "Calendar, season, closures, name, operator and prices."
+      },
+      "attractions": {
+        "title": "Attraction updates",
+        "description": "Announcements, openings, closures and major changes."
+      },
+      "editorial": {
+        "title": "Verified content",
+        "description": "History, new sources and documented corrections."
+      },
+      "lifecycle": {
+        "title": "Lifecycle",
+        "description": "Announcement, opening, closure, reopening and renaming."
+      },
+      "details": {
+        "title": "Useful details",
+        "description": "Major restrictions, location and category."
+      }
+    },
+    "feedback": {
+      "selectOne": "Choose at least one change group.",
+      "error": "Tracking could not be saved. Try again."
     }
   },
   "parkFitProfiles": {
