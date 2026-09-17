@@ -60,11 +60,11 @@ TripPlan
 ├── Status : Draft | OpenForVotes | Decided | Completed | Archived | Cancelled
 ├── DateProposal : None | Fixed | Range | Candidates
 ├── DestinationTimeZoneId : IANA facultatif tant qu'aucune date n'est fixée
-├── Members[1..50] : sous-documents bornés, propriétaire inclus
+├── Members[1..50] : identité, rôle, état, epoch et opération d'admission
 ├── MemberAdmissionFence : état, invitation, opération, génération et échéance
 ├── AdmissionClosure : Open | Closing(cible, opération réclamée) | Closed
 ├── InvitationCreationEpoch : long, commence à 1
-├── InvitationCreationLeases[0..8] : état, opération, génération et échéance
+├── InvitationCreationLeases[0..8] : état, acteur/epoch, opération, génération, échéance
 ├── ChildMutationEpoch : long, commence à 1
 ├── ActiveChildMutationLeases[0..32] : acteur, sujet, epochs et échéance
 ├── DeletionState : None | Pending | Purging | Purged
@@ -84,6 +84,14 @@ Cette taille est bornée et permet de rendre atomiques l'ajout d'un membre, le
 changement de rôle, le transfert de propriété et le départ. Les données à forte
 cardinalité — préférences par attraction, candidats, jours et audit — restent dans
 des collections séparées.
+
+Chaque sous-document `TripMember` porte `MembershipState = Provisional | Active |
+Leaving`, `MemberDataEpoch` et, pendant une admission, son `AdmissionOperationId`.
+Le propriétaire initial est créé directement `Active`. Un membre `Provisional`
+n'est ni compté comme participant accepté, ni retourné par les listes, ni autorisé
+à lire le plan : `TripAccessContext` et toutes les requêtes d'accès exigent
+explicitement le même `UserId` **et** `MembershipState = Active`. Seule l'écriture
+de linéarisation décrite plus bas transforme `Provisional` en `Active`.
 
 Les objets enfants ne peuvent pas contourner la racine : toute commande charge un
 `TripAccessContext` depuis le plan, vérifie le rôle et la version, puis acquiert une
@@ -240,8 +248,10 @@ résultat reste rejouable après une réponse réseau ambiguë :
 1. la commande réserve d'abord `(actorScope, IdempotencyKey)` avec le hash canonique
    de la requête et un `operationId`. La même clé avec un autre hash échoue ;
 2. elle acquiert sur le plan une `InvitationCreationLease` courte, bornée,
-   avec opération, `InvitationCreationEpoch`, génération et échéance, uniquement si
-   `AdmissionClosure = Open` et `CanAcceptMembers = true` ;
+   avec opération, `InvitationCreationEpoch`, `ActorMemberId`, son
+   `MemberDataEpoch`, génération et échéance, uniquement si ce membre est `Active`,
+   autorisé à inviter, si `AdmissionClosure = Open` et si
+   `CanAcceptMembers = true` ;
 3. elle insère une coquille `Prepared` portant la même identité et une échéance TTL.
    Cet état n'est jamais résolu par un token et ne contient aucun profil invité ;
 4. un `UpdateOne` sans upsert passe cette coquille à `Active` seulement avec
@@ -249,9 +259,10 @@ résultat reste rejouable après une réponse réseau ambiguë :
 5. avant de décider l'opération, elle scelle le token et la réponse dans le registre
    d'idempotence avec un chiffrement authentifié et une rétention courte. L'enveloppe
    lie le scope, la clé, le hash de requête et l'opération comme données associées ;
-6. elle passe la lease du plan de `Active` à `Committed` seulement si l'epoch est
-   inchangé et les admissions toujours ouvertes. Cette écriture est le point de
-   linéarisation de la création ;
+6. elle passe la lease du plan de `Active` à `Committed` seulement si les epochs du
+   plan et de l'acteur sont inchangés, si ce membre est toujours `Active` et
+   autorisé à inviter, et si les admissions restent ouvertes. Cette écriture est le
+   point de linéarisation de la création ;
 7. elle marque le résultat idempotent `Committed`, retire la lease déjà décidée et
    rend le jeton à l'appelant. Un retry autorisé avec la même clé et le même payload
    déchiffre et renvoie exactement ce résultat pendant sa rétention.
@@ -375,7 +386,8 @@ membre exigent tous `CanAcceptMembers = true`. Après le passage conditionnel de
 l'invitation de `Accepting` à `Accepted`, l'admission n'est confirmée à l'appelant
 que si une dernière écriture sur le plan transforme le membre provisoire en membre
 établi et clôture le fence `Applied` de la même opération. Cette écriture est le
-point de linéarisation de l'adhésion.
+point de linéarisation de l'adhésion. Avant elle, la présence physique du
+sous-document ne satisfait jamais un contrôle d'accès.
 
 Une transition vers `Completed`, `Archived` ou `Cancelled`, comme le début d'une
 suppression, commence par une écriture du plan `Open -> Closing`. Elle rend
@@ -569,7 +581,8 @@ trip-idempotency-operations
 Indexes minimaux à prouver :
 
 - plans `{ ownerUserId, status, updatedAtUtc desc }` ;
-- plans `{ members.userId, status, updatedAtUtc desc }` multikey ;
+- plans `{ members.userId, members.membershipState, status, updatedAtUtc desc }`
+  multikey ; toute lecture privée filtre `membershipState = Active` ;
 - plans `{ memberAdmissionFence.leaseExpiresAtUtc }` partiel pour les fences actifs ;
 - plans `{ invitationCreationLeases.leaseExpiresAtUtc }` partiel pour reprendre
   les créations interrompues ;
@@ -671,11 +684,16 @@ Le départ ou l'effacement d'un seul membre utilise la même barrière à porté
 réduite. Chaque `TripMember` porte `MemberDataEpoch` et un état de participation.
 La demande passe le membre à `Leaving`, incrémente son epoch et refuse toute
 nouvelle lease dont `ActorMemberId` ou `SubjectMemberId` le désigne. Le job attend
-ou expire les leases où il est acteur, ainsi que celles de son ancien epoch où il
-est sujet, purge contraintes, préférences et coquilles de ce membre, effectue un
-second balayage, puis retire ou anonymise le membre. L'opération ne devient
-terminale qu'après ce second balayage ; une panne reste reprenable et le membre ne
-récupère jamais son accès entre-temps.
+ou expire les leases enfant où il est acteur, ainsi que celles de son ancien epoch
+où il est sujet. Il invalide aussi toute `InvitationCreationLease` `Active` dont il
+est l'acteur : son commit exigeant encore l'ancien epoch et l'état `Active` échoue,
+puis les invitations `Prepared` ou `Active` de ces opérations sont compensées. Une
+lease déjà `Committed` est d'abord finalisée de manière idempotente, car sa création
+avait gagné avant le départ, puis son invitation encore ouverte est révoquée. Le job
+purge ensuite contraintes, préférences et coquilles de ce membre, effectue un second
+balayage, puis retire ou anonymise le membre. L'opération ne devient terminale
+qu'après ce second balayage ; une panne reste reprenable et le membre ne récupère
+jamais son accès entre-temps.
 
 ## Décision 12 — contrat UX, accessibilité et responsive
 
@@ -718,6 +736,8 @@ variantes ne sont pas réellement servies.
 - allers-retours Mongo et indexes réels ;
 - transfert de propriété dans une seule écriture du plan ;
 - acceptation interrompue à chaque étape puis réparée sans doublon ;
+- sous-document membre `Provisional` exclu de toutes les lectures et autorisations
+  jusqu'à l'établissement atomique de l'adhésion ;
 - création d'invitation retardée au-delà de `Closing`, limitée à une coquille
   `Prepared` non résolvable puis éliminée sans token actif orphelin ;
 - fence `Prepared` installé avant réservation puis rendu inoffensif si une
@@ -740,6 +760,8 @@ variantes ne sont pas réellement servies.
   fence `Applied` n'a pas pu établir le membre avant `Closing` ;
 - résultat de création rejoué après panne depuis une enveloppe chiffrée bornée,
   sans générer un second token ni laisser une lease décidée ;
+- départ d'un invitant invalidant ses leases de création par `ActorMemberId` et
+  `MemberDataEpoch` avant le second balayage ;
 - reprise d'une lease `Committed` par recherche indexée de son `operationId`, sans
   balayage de la collection d'idempotence ;
 - token brut absent en clair de Mongo, des logs et des jobs ;
