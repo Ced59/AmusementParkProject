@@ -61,6 +61,7 @@ TripPlan
 ├── DateProposal : None | Fixed | Range | Candidates
 ├── DestinationTimeZoneId : IANA facultatif tant qu'aucune date n'est fixée
 ├── Members[1..50] : sous-documents bornés, propriétaire inclus
+├── MemberAdmissionFence : opération d'adhésion unique facultative
 ├── Version : long, commence à 1
 ├── CreatedAtUtc / UpdatedAtUtc
 └── ActiveMutation : lease courte facultative pour les mutations composées
@@ -205,7 +206,7 @@ TripInvitation
 ├── ProposedRole : Editor | Participant | Viewer, jamais Owner
 ├── InviterMemberId
 ├── TargetEmailHmac : facultatif
-├── Status : Active | Accepting | Accepted | Declined | Revoked | Expired
+├── Status : Active | Accepting | RevocationPending | Accepted | Declined | Revoked | Expired
 ├── ExpiresAtUtc / AcceptedAtUtc / RevokedAtUtc
 ├── UseCount : 0 puis 1 (invitation strictement mono-usage)
 ├── Version et lease d'acceptation
@@ -251,15 +252,18 @@ sequenceDiagram
     I->>A: accepter(token, idempotencyKey)
     A->>R: réserver si Active, non expirée et destinataire valide
     R-->>A: invitation Accepting + operationId
-    A->>P: ajouter le membre avec operationId
-    P-->>A: ajouté ou déjà ajouté avec le même payload
+    A->>P: installer le fence(operationId, utilisateur)
+    A->>P: ajouter le membre si ce fence est encore actif
+    P-->>A: membre ajouté et fence Applied dans la même écriture
     A->>R: finaliser Accepted
+    A->>P: clôturer le fence
     R-->>I: adhésion confirmée
     Note over A,R: une autre payload avec la même clé produit un conflit
     J->>R: rechercher les acceptations incomplètes
-    J->>P: reprendre le même operationId et le même utilisateur
-    P-->>J: ajouté ou déjà ajouté avec le même payload
+    J->>P: reprendre le même fence, operationId et utilisateur
+    P-->>J: ajouté ou déjà Applied avec le même payload
     J->>R: finaliser Accepted de façon idempotente
+    J->>P: clôturer le fence
 ```
 
 Une panne après l'ajout du membre ne permet pas une seconde adhésion :
@@ -268,11 +272,20 @@ Une panne après l'ajout du membre ne permet pas une seconde adhésion :
 est définitivement liée à l'identifiant du compte acceptant et à `operationId`.
 Une lease expirée ne remet jamais l'invitation en état `Active` : le reconciler
 reprend exclusivement la même opération et le même payload jusqu'à finalisation ou
-révocation explicite. Une erreur permanente révoque l'invitation et oblige à en
-créer une nouvelle ; elle ne rend jamais possible une opération B concurrente.
-Ainsi, même une écriture Mongo retardée de l'opération A reste la seule écriture
-autorisée par cette invitation. Le payload du job ne contient aucune donnée de
-profil ni jeton brut.
+révocation demandée. Le `MemberAdmissionFence` vit dans le document `TripPlan` :
+l'ajout du membre vérifie que son état est `Active` puis ajoute le membre et passe
+le fence à `Applied` dans une seule écriture conditionnelle.
+
+Une révocation pendant `Accepting` passe d'abord l'invitation en
+`RevocationPending`. Elle annule ensuite le fence et retire, dans la même écriture
+du plan, le membre portant cet `operationId` s'il avait déjà été ajouté. MongoDB
+ordonne ces deux écritures concurrentes sur le même document : si l'ajout gagne,
+l'annulation le retire ; si l'annulation gagne, l'ajout retardé échoue car le fence
+n'est plus `Active`. L'invitation ne devient `Revoked` qu'après confirmation de
+cette compensation. Une erreur permanente conserve `RevocationPending` pour le
+reconciler ; elle ne déclare jamais la révocation terminée prématurément. Il faut
+créer une nouvelle invitation pour recommencer. Le payload du job ne contient
+aucune donnée de profil ni jeton brut.
 
 ## Décision 7 — concurrence et opérations fines
 
@@ -406,12 +419,13 @@ n'injectera directement un service API si un port existe.
 ```text
 trip-plans
   _id, ownerUserId, title, accessScope, status, dateProposal,
-  destinationTimeZoneId, members[], options, activeMutation?, version,
+  destinationTimeZoneId, members[], options, memberAdmissionFence?,
+  activeMutation?, version,
   createdAtUtc, updatedAtUtc
 
 trip-invitations
   _id, tripPlanId, tokenHash, tokenHint, proposedRole, inviterMemberId,
-  targetEmailHmac?, status, maxUses, useCount, acceptanceLease?,
+  targetEmailHmac?, status, useCount, acceptanceLease?,
   expiresAtUtc, version, createdAtUtc, updatedAtUtc
 
 trip-member-constraints
@@ -512,6 +526,8 @@ variantes ne sont pas réellement servies.
 - acceptation interrompue à chaque étape puis réparée sans doublon ;
 - écriture retardée après expiration de lease incapable d'autoriser un second
   compte ou de réactiver l'invitation ;
+- révocation concurrente à une écriture retardée laissant le plan sans membre
+  admis par l'opération révoquée avant l'état terminal `Revoked` ;
 - token brut absent de Mongo, des logs, jobs et réponses privées ;
 - expiration, révocation, rotation, rate limit et `404` uniforme ;
 - preview dépourvue de membres, contraintes, votes et identifiants ;
