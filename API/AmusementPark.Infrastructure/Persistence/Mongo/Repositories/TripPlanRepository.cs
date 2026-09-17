@@ -351,12 +351,8 @@ public sealed class TripPlanRepository : ITripPlanRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(tripPlan);
-        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
         UpdateResult result = await this.collection.UpdateOneAsync(
-            filters.Eq(static document => document.Id, tripPlan.Id.Value)
-                & filters.Eq(static document => document.OwnerUserId, tripPlan.OwnerUserId)
-                & filters.Eq(static document => document.DeletionState, TripDeletionState.Pending)
-                & filters.Eq(static document => document.Version, tripPlan.Version),
+            TripPlanMongoDefinitions.BuildDeletionFinalizationFilter(tripPlan),
             TripPlanMongoDefinitions.BuildDeletionTombstone(tripPlan),
             cancellationToken: cancellationToken);
         return result.MatchedCount == 1

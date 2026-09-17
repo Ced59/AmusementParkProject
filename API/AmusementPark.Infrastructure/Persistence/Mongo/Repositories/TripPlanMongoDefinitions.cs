@@ -194,6 +194,24 @@ internal static class TripPlanMongoDefinitions
             updates.Set(static document => document.Version, trip.Version));
     }
 
+    public static FilterDefinition<TripPlanDocument> BuildDeletionFinalizationFilter(TripPlan trip)
+    {
+        ArgumentNullException.ThrowIfNull(trip);
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        FilterDefinition<TripPlanDocument> exactTripVersion = filters.Eq(
+                static document => document.Id,
+                trip.Id.Value)
+            & filters.Eq(static document => document.Version, trip.Version);
+        FilterDefinition<TripPlanDocument> ownedPending = filters.Eq(
+                static document => document.OwnerUserId,
+                trip.OwnerUserId)
+            & filters.Eq(static document => document.DeletionState, TripDeletionState.Pending);
+        FilterDefinition<TripPlanDocument> alreadyPurged = filters.Eq(
+            static document => document.DeletionState,
+            TripDeletionState.Purged);
+        return exactTripVersion & (ownedPending | alreadyPurged);
+    }
+
     public static IReadOnlyCollection<CreateIndexModel<TripPlanDocument>> BuildIndexes()
     {
         return new List<CreateIndexModel<TripPlanDocument>>

@@ -253,7 +253,10 @@ sequenceDiagram
 
 Le tombstone final ne garde ni propriétaire, ni membres, ni titre, ni dates, ni
 note. Seule la preuve minimale empêchant le rejeu d'une ancienne création subsiste
-pendant la rétention annoncée. Le worker traite 25 plans par minute au maximum.
+pendant la rétention annoncée. La finalisation considère aussi comme un succès le
+tombstone du même voyage à la même version : si le worker termine la reprise en
+parallèle de la requête initiale, celle-ci ne renvoie pas un faux conflit. Le worker
+traite 25 plans par minute au maximum.
 
 ## API livrée
 

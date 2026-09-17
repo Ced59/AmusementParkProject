@@ -137,6 +137,34 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildDeletionFinalizationFilter_ShouldAcceptTheOwnedPendingOrMatchingPurgedVersion()
+    {
+        DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "user-1",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            createdAtUtc);
+        trip.BeginDeletion(createdAtUtc.AddMinutes(1));
+
+        FilterDefinition<TripPlanDocument> filter =
+            TripPlanMongoDefinitions.BuildDeletionFinalizationFilter(trip);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("trip-1", json, StringComparison.Ordinal);
+        Assert.Contains("user-1", json, StringComparison.Ordinal);
+        Assert.Contains(TripDeletionState.Pending.ToString(), json, StringComparison.Ordinal);
+        Assert.Contains(TripDeletionState.Purged.ToString(), json, StringComparison.Ordinal);
+        Assert.Contains("version", json, StringComparison.Ordinal);
+        Assert.Contains("$or", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void ResolveIdempotentCreation_WhenTripWasDeleted_ShouldNeverRecreateIt()
     {
         TripPlanDocument tombstone = new()
