@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { UserNotification } from '@app/models/watchlists/user-notification.model';
@@ -54,6 +54,7 @@ export class UserNotificationsPageComponent implements OnInit {
   constructor(
     protected readonly facade: UserNotificationsFacade,
     protected readonly presenter: UserNotificationPresenter,
+    private readonly router: Router,
     translationService: TranslationService,
     destroyRef: DestroyRef
   ) {
@@ -99,5 +100,14 @@ export class UserNotificationsPageComponent implements OnInit {
     const rows: number = event.rows ?? this.facade.pagination.itemsPerPage;
     const first: number = event.first ?? 0;
     this.facade.load(Math.floor(first / Math.max(1, rows)) + 1);
+  }
+
+  protected openNotification(notification: UserNotification, route: string[]): void {
+    this.facade.markRead(
+      notification,
+      (): void => {
+        void this.router.navigate(route);
+      }
+    );
   }
 }

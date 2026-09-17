@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.Watchlists;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Watchlists;
 using MongoDB.Driver;
 
@@ -5,6 +6,23 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class WatchNotificationMongoDefinitions
 {
+    internal static UpdateDefinition<WatchSubscriptionDocument> BuildSubscriptionMutation(
+        WatchSubscription subscription)
+    {
+        ArgumentNullException.ThrowIfNull(subscription);
+        return Builders<WatchSubscriptionDocument>.Update
+            .Set(
+                static document => document.EventTypes,
+                subscription.EventTypes.OrderBy(static eventType => eventType).ToList())
+            .Set(static document => document.Frequency, subscription.Frequency)
+            .Set(
+                static document => document.Channels,
+                subscription.Channels.OrderBy(static channel => channel).ToList())
+            .Set(static document => document.IsPaused, subscription.IsPaused)
+            .Set(static document => document.UpdatedAt, subscription.UpdatedAtUtc)
+            .Set(static document => document.Version, subscription.Version);
+    }
+
     internal static IReadOnlyCollection<CreateIndexModel<WatchSubscriptionDocument>> BuildSubscriptionIndexes()
     {
         return new List<CreateIndexModel<WatchSubscriptionDocument>>

@@ -165,7 +165,11 @@
     "values": {
       "notKnown": "Non indicato",
       "yes": "Sì",
-      "no": "No"
+      "no": "No",
+      "calendarUpdated": "Calendario aggiornato",
+      "calendarClosed": "Chiuso",
+      "calendarCoverage": "Dal {{start}} al {{end}}",
+      "calendarMore": "+ {{count}} altri orari"
     },
     "events": {
       "OpeningCalendarPublished": "Calendario di apertura pubblicato",

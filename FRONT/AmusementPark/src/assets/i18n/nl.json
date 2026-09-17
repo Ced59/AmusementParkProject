@@ -165,7 +165,11 @@
     "values": {
       "notKnown": "Niet opgegeven",
       "yes": "Ja",
-      "no": "Nee"
+      "no": "Nee",
+      "calendarUpdated": "Kalender bijgewerkt",
+      "calendarClosed": "Gesloten",
+      "calendarCoverage": "Van {{start}} tot {{end}}",
+      "calendarMore": "+ {{count}} andere tijdvakken"
     },
     "events": {
       "OpeningCalendarPublished": "Openingskalender gepubliceerd",

@@ -108,14 +108,21 @@ export class UserNotificationsFacade {
     this.load();
   }
 
-  markRead(notification: UserNotification): void {
+  markRead(notification: UserNotification, onSuccess?: () => void): void {
     if (notification.status === 'Read') {
+      onSuccess?.();
       return;
     }
     this.runMutation(
       notification.notificationId,
       this.dataPort.markRead(notification.notificationId, notification.version),
-      (): void => this.load(this.pageSignal()?.page ?? 1)
+      (): void => {
+        if (onSuccess) {
+          onSuccess();
+          return;
+        }
+        this.load(this.pageSignal()?.page ?? 1);
+      }
     );
   }
 

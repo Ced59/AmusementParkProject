@@ -133,12 +133,12 @@
               <div class="notification-card__proof" [attr.aria-label]="'notifications.proof.label' | translate">
                 <div>
                   <span>{{ 'notifications.proof.before' | translate }}</span>
-                  <strong>{{ presenter.formatValue(notification.previousValue) }}</strong>
+                  <strong>{{ presenter.formatValue(notification.previousValue, notification.eventType) }}</strong>
                 </div>
                 <i class="pi pi-arrow-right" aria-hidden="true"></i>
                 <div>
                   <span>{{ 'notifications.proof.after' | translate }}</span>
-                  <strong>{{ presenter.formatValue(notification.newValue) }}</strong>
+                  <strong>{{ presenter.formatValue(notification.newValue, notification.eventType) }}</strong>
                 </div>
               </div>
             }
@@ -160,10 +160,14 @@
 
             <div class="notification-card__actions">
               @if (routeFor(notification); as route) {
-                <a appUiButton="primary" [routerLink]="route" (click)="facade.markRead(notification)">
+                <button
+                  appUiButton="primary"
+                  type="button"
+                  [disabled]="facade.mutatingId() !== null"
+                  (click)="openNotification(notification, route)">
                   <i class="pi pi-eye" aria-hidden="true"></i>
                   <span>{{ 'notifications.actions.view' | translate }}</span>
-                </a>
+                </button>
               }
               @if (notification.status === 'Delivered') {
                 <button appUiButton="ghost" type="button" [disabled]="facade.mutatingId() !== null" (click)="facade.markRead(notification)">

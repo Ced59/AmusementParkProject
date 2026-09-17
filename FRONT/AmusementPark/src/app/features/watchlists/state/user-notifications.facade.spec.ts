@@ -35,6 +35,22 @@ describe('UserNotificationsFacade', () => {
     expect(dataPort.markAllRead).toHaveBeenCalledOnce();
     expect(dataPort.search).toHaveBeenLastCalledWith(expect.objectContaining({ page: 1 }));
   });
+
+  it('waits for the read mutation before continuing to the notification target', () => {
+    const dataPort: UserNotificationsDataPort = buildPort();
+    const facade: UserNotificationsFacade = createFacade(dataPort);
+    const onSuccess: () => void = vi.fn();
+    const notification = {
+      notificationId: 'notification-1',
+      status: 'Delivered' as const,
+      version: 3
+    } as Parameters<UserNotificationsFacade['markRead']>[0];
+
+    facade.markRead(notification, onSuccess);
+
+    expect(dataPort.markRead).toHaveBeenCalledWith('notification-1', 3);
+    expect(onSuccess).toHaveBeenCalledOnce();
+  });
 });
 
 function createFacade(dataPort: UserNotificationsDataPort): UserNotificationsFacade {

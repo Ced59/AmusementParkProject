@@ -165,7 +165,11 @@
     "values": {
       "notKnown": "Not provided",
       "yes": "Yes",
-      "no": "No"
+      "no": "No",
+      "calendarUpdated": "Calendar updated",
+      "calendarClosed": "Closed",
+      "calendarCoverage": "From {{start}} to {{end}}",
+      "calendarMore": "+ {{count}} other schedules"
     },
     "events": {
       "OpeningCalendarPublished": "Opening calendar published",

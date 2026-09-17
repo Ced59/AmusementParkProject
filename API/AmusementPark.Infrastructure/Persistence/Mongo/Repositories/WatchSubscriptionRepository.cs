@@ -188,11 +188,11 @@ public sealed class WatchSubscriptionRepository : IWatchSubscriptionRepository
         long expectedVersion,
         CancellationToken cancellationToken)
     {
-        ReplaceOneResult result = await this.collection.ReplaceOneAsync(
+        UpdateResult result = await this.collection.UpdateOneAsync(
             Builders<WatchSubscriptionDocument>.Filter.Eq(static item => item.Id, subscription.Id.Value)
             & Builders<WatchSubscriptionDocument>.Filter.Eq(static item => item.UserId, subscription.UserId)
             & Builders<WatchSubscriptionDocument>.Filter.Eq(static item => item.Version, expectedVersion),
-            subscription.ToDocument(),
+            WatchNotificationMongoDefinitions.BuildSubscriptionMutation(subscription),
             cancellationToken: cancellationToken);
         return result.MatchedCount == 1
             ? WatchSubscriptionWriteOutcome.Success
