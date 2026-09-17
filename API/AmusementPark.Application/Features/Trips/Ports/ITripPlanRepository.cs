@@ -38,4 +38,16 @@ public interface ITripPlanRepository
         TripPlan tripPlan,
         long expectedVersion,
         CancellationToken cancellationToken);
+
+    Task PurgeChildrenAsync(
+        TripPlanId tripPlanId,
+        CancellationToken cancellationToken);
+
+    Task<TripPlanWriteResult> FinalizeDeletionOwnedAsync(
+        TripPlan tripPlan,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<TripPlan>> ListPendingDeletionAsync(
+        int limit,
+        CancellationToken cancellationToken);
 }

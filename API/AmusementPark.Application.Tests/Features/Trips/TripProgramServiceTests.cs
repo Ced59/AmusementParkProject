@@ -1,0 +1,206 @@
+using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Trips.Models;
+using AmusementPark.Application.Features.Trips.Ports;
+using AmusementPark.Application.Features.Trips.Results;
+using AmusementPark.Application.Features.Trips.Services;
+using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Trips;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.Application.Tests.Features.Trips;
+
+public sealed class TripProgramServiceTests
+{
+    [Fact]
+    public async Task DeleteAsync_ShouldRemoveTheRequestedDayUnderTheTripLease()
+    {
+        DateTime nowUtc = new(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
+        DateOnly localDate = new(2027, 7, 8);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "owner-1",
+            "Voyage",
+            TripDateProposal.Fixed(localDate),
+            "Europe/Paris",
+            nowUtc);
+        TripMember owner = Assert.Single(trip.Members);
+        Mock<ITripPlanRepository> trips = new(MockBehavior.Strict);
+        trips.Setup(item => item.GetOwnedAsync("owner-1", trip.Id, CancellationToken.None))
+            .ReturnsAsync(trip);
+        Mock<ITripParkCandidateRepository> candidates = new(MockBehavior.Strict);
+        Mock<ITripDayPlanRepository> days = new(MockBehavior.Strict);
+        Mock<IParkRepository> parks = new(MockBehavior.Strict);
+        Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
+        TripChildMutationLease lease = new(
+            "delete-day",
+            owner.Id,
+            trip.ChildMutationEpoch,
+            1,
+            nowUtc.AddMinutes(5));
+        leases.Setup(item => item.TryAcquireOwnedAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                owner.Id,
+                trip.Version,
+                trip.ChildMutationEpoch,
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .ReturnsAsync(lease);
+        leases.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        days.Setup(item => item.DeleteAsync(
+                trip.Id,
+                localDate,
+                3,
+                lease,
+                CancellationToken.None))
+            .ReturnsAsync(new TripDayPlanWriteResult(TripChildWriteOutcome.Success));
+        TripDayProgramService service = new(
+            trips.Object,
+            candidates.Object,
+            days.Object,
+            parks.Object,
+            new TripChildMutationExecutor(leases.Object));
+
+        AmusementPark.Application.Errors.ApplicationResult result = await service.DeleteAsync(
+            "owner-1",
+            trip.Id.Value,
+            trip.Version,
+            localDate,
+            3,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        trips.VerifyAll();
+        days.VerifyAll();
+        leases.VerifyAll();
+        candidates.VerifyNoOtherCalls();
+        parks.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task PutDayAsync_WhenAnIdenticalCreateIsRetried_ShouldReplayWithoutASecondWrite()
+    {
+        DateOnly localDate = new(2027, 7, 8);
+        DateTime nowUtc = new(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "owner-1",
+            "Voyage",
+            TripDateProposal.Fixed(localDate),
+            "Europe/Paris",
+            nowUtc);
+        TripMember owner = Assert.Single(trip.Members);
+        TripParkCandidate candidate = TripParkCandidate.Create(
+            TripParkCandidateId.New(),
+            trip.Id,
+            "park-1",
+            new[] { localDate },
+            TripParkCandidateSource.Manual,
+            null,
+            null,
+            owner.Id,
+            TripParkCandidate.SortPositionStep,
+            nowUtc);
+        candidate.ChangeState(TripParkCandidateState.Selected, nowUtc.AddMinutes(1));
+        TripDayBlockId blockId = TripDayBlockId.New();
+        TripDayBlock block = new(
+            blockId,
+            TripDayBlockType.Meal,
+            "Déjeuner",
+            null,
+            new TimeOnly(12, 30),
+            TripDayBlock.SortPositionStep);
+        TripDayPlan existing = TripDayPlan.Create(
+            TripDayPlanId.New(),
+            trip.Id,
+            localDate,
+            candidate.Id,
+            candidate.ParkId,
+            new TimeOnly(9, 0),
+            "Rendez-vous à l'entrée",
+            new[] { block },
+            nowUtc.AddMinutes(2));
+        Mock<ITripPlanRepository> trips = new(MockBehavior.Strict);
+        trips.Setup(item => item.GetOwnedAsync("owner-1", trip.Id, CancellationToken.None))
+            .ReturnsAsync(trip);
+        Mock<ITripParkCandidateRepository> candidates = new(MockBehavior.Strict);
+        candidates.Setup(item => item.GetAsync(trip.Id, candidate.Id, CancellationToken.None))
+            .ReturnsAsync(candidate);
+        Mock<ITripDayPlanRepository> days = new(MockBehavior.Strict);
+        days.Setup(item => item.ListAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(new[] { existing });
+        Mock<IParkRepository> parks = new(MockBehavior.Strict);
+        parks.Setup(item => item.GetByIdAsync("park-1", true, CancellationToken.None))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Parc test" });
+        Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
+        TripChildMutationLease lease = new(
+            "put-day",
+            owner.Id,
+            trip.ChildMutationEpoch,
+            1,
+            nowUtc.AddMinutes(5));
+        leases.Setup(item => item.TryAcquireOwnedAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                owner.Id,
+                trip.Version,
+                trip.ChildMutationEpoch,
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .ReturnsAsync(lease);
+        leases.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        clock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(nowUtc.AddMinutes(3)));
+        TripDayProgramService service = new(
+            trips.Object,
+            candidates.Object,
+            days.Object,
+            parks.Object,
+            new TripChildMutationExecutor(leases.Object),
+            clock.Object);
+        TripDayPlanInput input = new(
+            candidate.Id.Value,
+            new TimeOnly(9, 0),
+            "Rendez-vous à l'entrée",
+            new[]
+            {
+                new TripDayBlockInput(
+                    blockId.Value,
+                    TripDayBlockType.Meal,
+                    "Déjeuner",
+                    null,
+                    new TimeOnly(12, 30),
+                    TripDayBlock.SortPositionStep),
+            });
+
+        AmusementPark.Application.Errors.ApplicationResult<TripDayPlanResult> result =
+            await service.PutAsync(
+                "owner-1",
+                trip.Id.Value,
+                trip.Version,
+                localDate,
+                null,
+                input,
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.Equal(existing.Version, result.Value.Version);
+        Assert.Equal("Parc test", result.Value.ParkName);
+        days.Verify(item => item.PutAsync(
+            It.IsAny<TripDayPlan>(),
+            It.IsAny<long?>(),
+            It.IsAny<TripChildMutationLease>(),
+            It.IsAny<string>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        trips.VerifyAll();
+        candidates.VerifyAll();
+        days.VerifyAll();
+        parks.VerifyAll();
+        leases.VerifyAll();
+        clock.VerifyAll();
+    }
+}

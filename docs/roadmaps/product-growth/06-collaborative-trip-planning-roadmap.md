@@ -69,6 +69,48 @@ conçue responsive dès 320 px, appartient à `TRIP-04`. `TRIP-03` enrichit d'ab
 le même agrégat avec les parcs candidats et les journées afin que l'interface ne
 soit pas bâtie sur un contrat transitoire.
 
+### État de `TRIP-03` au 17 septembre 2026
+
+Le programme privé sait désormais conserver jusqu'à cent parcs envisagés, sans
+dupliquer un même parc dans un voyage. Chaque candidat possède des dates possibles,
+une source (`Manual`, `Wishlist` ou `Comparator`), une note collective, un état
+explicite (`Proposed`, `Shortlisted`, `Selected` ou `Rejected`) et un ordre stable.
+Le déplacement d'une carte modifie normalement une seule position espacée ; une
+renormalisation locale et bornée intervient seulement lorsqu'il n'existe plus
+d'espace entre deux positions.
+
+Une journée n'est programmable que dans une période de voyage déjà fixée et ne
+peut référencer qu'un parc candidat marqué `Selected`. Elle accepte une heure
+d'arrivée souhaitée, une note du groupe et au plus cinquante blocs simples
+identifiés de façon stable : repas, événement, attraction ou note. Les horaires
+officiels ne sont pas recopiés dans ce choix collectif ; ils seront lus comme des
+faits séparés dans `TRIP-09`.
+
+Les collections MongoDB `trip-park-candidates` et `trip-day-plans` appliquent
+l'unicité `(voyage, parc)` et `(voyage, date)`. Toute écriture enfant acquiert sur
+le voyage racine une lease liée à sa version, à son epoch et à une génération.
+Une création passe par une coquille `Reserved`; une mutation conserve la dernière
+version lisible et pose un marqueur `PendingMutation`. Les validations d'expiration
+utilisent `$$NOW`, donc l'horloge du serveur MongoDB plutôt que celle d'un nœud Web.
+Les retries d'ajout de parc rejouent le résultat initial, et un `PUT` de journée
+identique est sans effet grâce aux identifiants stables de ses blocs.
+
+La suppression ferme d'abord le voyage aux nouvelles écritures, purge candidats
+et journées, puis anonymise le plan. Si le processus tombe entre ces phases, un
+réconciliateur reprend automatiquement la purge. Les anciennes données `TRIP-02`
+sont complétées par migration additive au démarrage ; aucune seconde implémentation
+du modèle ne coexiste.
+
+Les routes authentifiées `me/trips/{tripId}/program`, `parks` et `days/{date}`
+exposent les noms de parc résolus en lot. Les identifiants techniques restent des
+clés d'action et ne servent jamais de libellé. Ce jalon livre volontairement le
+contrat métier et sa persistance ; `TRIP-04` apporte l'expérience visuelle mobile,
+la wishlist et le réordonnancement accessible.
+
+La preuve détaillée, le schéma MongoDB et les diagrammes de classes et de séquence
+sont consignés dans
+[`product-growth-trip-03-candidates-days-2026-09-17.md`](../../architecture/product-growth-trip-03-candidates-days-2026-09-17.md).
+
 ## 1. Vision produit
 
 Un groupe doit pouvoir transformer des envies dispersées en programme commun :
@@ -424,6 +466,7 @@ POST   /api/me/trips/{tripId}/parks
 PATCH  /api/me/trips/{tripId}/parks/{candidateId}
 DELETE /api/me/trips/{tripId}/parks/{candidateId}
 PUT    /api/me/trips/{tripId}/days/{date}
+DELETE /api/me/trips/{tripId}/days/{date}
 
 PUT    /api/me/trips/{tripId}/preferences/{parkItemId}
 POST   /api/me/trips/{tripId}/preferences:batch
@@ -623,7 +666,7 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 |---|---|---|
 | `TRIP-01` | ADR agrégat, rôles et confidentialité | Invariants validés |
 | `TRIP-02` | Core/persistance voyage individuel | CRUD fiable — implémenté le 17 septembre 2026 |
-| `TRIP-03` | Candidats et jours | Programme cohérent |
+| `TRIP-03` | Candidats et jours | Programme cohérent — implémenté le 17 septembre 2026 |
 | `TRIP-04` | UI individuelle + wishlist | Valeur sans invitation |
 | `TRIP-05` | Invitations opaques | Preview minimisé |
 | `TRIP-06` | Participants/rôles | Permissions testées |

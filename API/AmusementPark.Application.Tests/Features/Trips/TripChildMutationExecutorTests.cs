@@ -1,0 +1,95 @@
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Trips;
+using AmusementPark.Application.Features.Trips.Ports;
+using AmusementPark.Application.Features.Trips.Services;
+using AmusementPark.Core.Domain.Trips;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.Application.Tests.Features.Trips;
+
+public sealed class TripChildMutationExecutorTests
+{
+    [Fact]
+    public async Task ExecuteOwnedAsync_ShouldAlwaysReleaseTheAcquiredLease()
+    {
+        DateTime nowUtc = new(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            nowUtc);
+        TripMember owner = Assert.Single(trip.Members);
+        TripChildMutationLease lease = new(
+            "operation-1",
+            owner.Id,
+            trip.ChildMutationEpoch,
+            1,
+            nowUtc.AddSeconds(20));
+        Mock<ITripChildMutationLeaseRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.TryAcquireOwnedAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                owner.Id,
+                trip.Version,
+                trip.ChildMutationEpoch,
+                "operation-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(lease);
+        repository.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        TripChildMutationExecutor executor = new(repository.Object);
+
+        ApplicationResult result = await executor.ExecuteOwnedAsync(
+            trip,
+            "operation-1",
+            _ => Task.FromResult(ApplicationResult.Failure(
+                TripPlanApplicationErrors.ChildMutationUnavailable())),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ExecuteOwnedAsync_WhenLeaseCannotBeAcquired_ShouldNotInvokeTheMutation()
+    {
+        DateTime nowUtc = new(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            nowUtc);
+        TripMember owner = Assert.Single(trip.Members);
+        Mock<ITripChildMutationLeaseRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.TryAcquireOwnedAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                owner.Id,
+                trip.Version,
+                trip.ChildMutationEpoch,
+                "operation-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((TripChildMutationLease?)null);
+        TripChildMutationExecutor executor = new(repository.Object);
+        bool invoked = false;
+
+        ApplicationResult result = await executor.ExecuteOwnedAsync(
+            trip,
+            "operation-1",
+            _ =>
+            {
+                invoked = true;
+                return Task.FromResult(ApplicationResult.Success());
+            },
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.False(invoked);
+        repository.VerifyAll();
+    }
+}

@@ -61,6 +61,22 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildChildEpochMutationFilter_ShouldOnlyRequireAnEmptyLeaseSetWhenEpochAdvances()
+    {
+        FilterDefinition<TripPlanDocument> filter =
+            TripPlanMongoDefinitions.BuildChildEpochMutationFilter(2);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("childMutationEpoch", json, StringComparison.Ordinal);
+        Assert.Contains("$$NOW", json, StringComparison.Ordinal);
+        Assert.Contains("$exists", json, StringComparison.Ordinal);
+        Assert.Contains("$or", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void BuildDeletionTombstone_ShouldScrubPrivateDataAndKeepOnlyTheReplayFence()
     {
         DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);

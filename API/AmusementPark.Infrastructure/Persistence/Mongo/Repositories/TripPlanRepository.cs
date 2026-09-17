@@ -12,23 +12,33 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class TripPlanRepository : ITripPlanRepository
 {
     private readonly IMongoCollection<TripPlanDocument> collection;
+    private readonly IMongoCollection<TripParkCandidateDocument>? candidateCollection;
+    private readonly IMongoCollection<TripDayPlanDocument>? dayPlanCollection;
     private readonly TripPlanCreationFingerprint creationFingerprint;
 
     public TripPlanRepository(
         IMongoDatabase database,
         MongoDbSettings settings,
         TripPlanCreationFingerprint creationFingerprint)
-        : this(GetCollection(database, settings), creationFingerprint)
+        : this(
+            GetCollection(database, settings),
+            creationFingerprint,
+            GetCandidateCollection(database, settings),
+            GetDayPlanCollection(database, settings))
     {
     }
 
     internal TripPlanRepository(
         IMongoCollection<TripPlanDocument> collection,
-        TripPlanCreationFingerprint creationFingerprint)
+        TripPlanCreationFingerprint creationFingerprint,
+        IMongoCollection<TripParkCandidateDocument>? candidateCollection = null,
+        IMongoCollection<TripDayPlanDocument>? dayPlanCollection = null)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
         this.creationFingerprint = creationFingerprint
             ?? throw new ArgumentNullException(nameof(creationFingerprint));
+        this.candidateCollection = candidateCollection;
+        this.dayPlanCollection = dayPlanCollection;
     }
 
     public async Task<IdempotentTripPlanCreationResult?> ResolveExistingCreationAsync(
@@ -195,7 +205,9 @@ public sealed class TripPlanRepository : ITripPlanRepository
             BuildOwnedFilter(tripPlan.OwnerUserId, tripPlan.Id)
                 & Builders<TripPlanDocument>.Filter.Eq(
                     static document => document.Version,
-                    expectedVersion),
+                    expectedVersion)
+                & TripPlanMongoDefinitions.BuildChildEpochMutationFilter(
+                    tripPlan.ChildMutationEpoch),
             TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
             options,
             cancellationToken);
@@ -234,8 +246,9 @@ public sealed class TripPlanRepository : ITripPlanRepository
             BuildOwnedFilter(tripPlan.OwnerUserId, tripPlan.Id)
                 & Builders<TripPlanDocument>.Filter.Eq(
                     static document => document.Version,
-                    expectedVersion),
-            TripPlanMongoDefinitions.BuildDeletionTombstone(tripPlan),
+                    expectedVersion)
+                & TripPlanMongoDefinitions.BuildNoActiveChildLeaseFilter(),
+            TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
             cancellationToken: cancellationToken);
         if (result.MatchedCount == 1)
         {
@@ -249,6 +262,67 @@ public sealed class TripPlanRepository : ITripPlanRepository
         return existing is null
             ? new TripPlanWriteResult(TripPlanWriteOutcome.NotFound, null)
             : new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, existing.Version);
+    }
+
+    public async Task PurgeChildrenAsync(
+        TripPlanId tripPlanId,
+        CancellationToken cancellationToken)
+    {
+        if (this.candidateCollection is null || this.dayPlanCollection is null)
+        {
+            throw new InvalidOperationException("Trip child collections are required to purge a trip.");
+        }
+
+        DeleteResult candidates = await this.candidateCollection.DeleteManyAsync(
+            Builders<TripParkCandidateDocument>.Filter.Eq(
+                static document => document.TripPlanId,
+                tripPlanId.Value),
+            cancellationToken);
+        DeleteResult days = await this.dayPlanCollection.DeleteManyAsync(
+            Builders<TripDayPlanDocument>.Filter.Eq(
+                static document => document.TripPlanId,
+                tripPlanId.Value),
+            cancellationToken);
+        _ = candidates.DeletedCount;
+        _ = days.DeletedCount;
+    }
+
+    public async Task<TripPlanWriteResult> FinalizeDeletionOwnedAsync(
+        TripPlan tripPlan,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(tripPlan);
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        UpdateResult result = await this.collection.UpdateOneAsync(
+            filters.Eq(static document => document.Id, tripPlan.Id.Value)
+                & filters.Eq(static document => document.OwnerUserId, tripPlan.OwnerUserId)
+                & filters.Eq(static document => document.DeletionState, TripDeletionState.Pending)
+                & filters.Eq(static document => document.Version, tripPlan.Version),
+            TripPlanMongoDefinitions.BuildDeletionTombstone(tripPlan),
+            cancellationToken: cancellationToken);
+        return result.MatchedCount == 1
+            ? new TripPlanWriteResult(TripPlanWriteOutcome.Success, tripPlan.Version)
+            : new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, null);
+    }
+
+    public async Task<IReadOnlyCollection<TripPlan>> ListPendingDeletionAsync(
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        if (limit is < 1 or > 100)
+        {
+            throw new ArgumentOutOfRangeException(nameof(limit));
+        }
+
+        List<TripPlanDocument> documents = await this.collection.Find(
+                Builders<TripPlanDocument>.Filter.Eq(
+                    static document => document.DeletionState,
+                    TripDeletionState.Pending))
+            .SortBy(static document => document.UpdatedAt)
+            .ThenBy(static document => document.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
     internal static IdempotentTripPlanCreationResult ResolveIdempotentCreation(
@@ -294,6 +368,20 @@ public sealed class TripPlanRepository : ITripPlanRepository
         ArgumentNullException.ThrowIfNull(database);
         ArgumentNullException.ThrowIfNull(settings);
         return database.GetCollection<TripPlanDocument>(settings.TripPlansCollectionName);
+    }
+
+    private static IMongoCollection<TripParkCandidateDocument> GetCandidateCollection(
+        IMongoDatabase database,
+        MongoDbSettings settings)
+    {
+        return database.GetCollection<TripParkCandidateDocument>(settings.TripParkCandidatesCollectionName);
+    }
+
+    private static IMongoCollection<TripDayPlanDocument> GetDayPlanCollection(
+        IMongoDatabase database,
+        MongoDbSettings settings)
+    {
+        return database.GetCollection<TripDayPlanDocument>(settings.TripDayPlansCollectionName);
     }
 
     private static string NormalizeRequired(string? value, string parameterName)

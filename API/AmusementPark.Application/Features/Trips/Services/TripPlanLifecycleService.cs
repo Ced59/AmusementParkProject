@@ -256,6 +256,12 @@ public sealed class TripPlanLifecycleService
             trip,
             expectedVersion,
             cancellationToken);
+        if (writeResult.Outcome == TripPlanWriteOutcome.Success)
+        {
+            await this.repository.PurgeChildrenAsync(trip.Id, CancellationToken.None);
+            writeResult = await this.repository.FinalizeDeletionOwnedAsync(trip, CancellationToken.None);
+        }
+
         return writeResult.Outcome switch
         {
             TripPlanWriteOutcome.Success => ApplicationResult.Success(),

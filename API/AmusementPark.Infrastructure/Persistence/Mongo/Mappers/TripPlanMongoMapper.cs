@@ -23,6 +23,7 @@ internal static class TripPlanMongoMapper
             Members = trip.Members.Select(static member => member.ToDocument()).ToList(),
             AdmissionClosureState = trip.AdmissionClosureState,
             DeletionState = trip.DeletionState,
+            ChildMutationEpoch = trip.ChildMutationEpoch,
             CreatedAt = ToMongoPrecision(trip.CreatedAtUtc),
             UpdatedAt = ToMongoPrecision(trip.UpdatedAtUtc),
             Version = trip.Version,
@@ -43,6 +44,7 @@ internal static class TripPlanMongoMapper
             document.Members,
             document.AdmissionClosureState,
             document.DeletionState,
+            document.ChildMutationEpoch,
             document.CreatedAt,
             document.UpdatedAt,
             document.Version);
@@ -61,6 +63,7 @@ internal static class TripPlanMongoMapper
             Members = document.Members.Select(Clone).ToList(),
             AdmissionClosureState = document.AdmissionClosureState,
             DeletionState = document.DeletionState,
+            ChildMutationEpoch = document.ChildMutationEpoch,
             CreatedAtUtc = document.CreatedAt,
             UpdatedAtUtc = document.UpdatedAt,
             Version = document.Version,
@@ -83,6 +86,7 @@ internal static class TripPlanMongoMapper
             snapshot.Members,
             snapshot.AdmissionClosureState,
             snapshot.DeletionState,
+            snapshot.ChildMutationEpoch,
             snapshot.CreatedAtUtc,
             snapshot.UpdatedAtUtc,
             snapshot.Version);
@@ -99,6 +103,7 @@ internal static class TripPlanMongoMapper
         IReadOnlyCollection<TripMemberDocument> members,
         TripAdmissionClosureState admissionClosureState,
         TripDeletionState deletionState,
+        long childMutationEpoch,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         long version)
@@ -114,6 +119,7 @@ internal static class TripPlanMongoMapper
             members.Select(static member => member.ToDomain()).ToArray(),
             admissionClosureState,
             deletionState,
+            childMutationEpoch,
             DateTime.SpecifyKind(createdAtUtc, DateTimeKind.Utc),
             DateTime.SpecifyKind(updatedAtUtc, DateTimeKind.Utc),
             version);
@@ -205,4 +211,5 @@ internal static class TripPlanMongoMapper
         long ticks = value.Ticks - (value.Ticks % TimeSpan.TicksPerMillisecond);
         return new DateTime(ticks, DateTimeKind.Utc);
     }
+
 }

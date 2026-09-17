@@ -26,6 +26,7 @@ public sealed class TripPlanTests
         Assert.Equal(TripMembershipState.Active, owner.State);
         Assert.Null(owner.DelegatedRole);
         Assert.Equal(1, trip.Version);
+        Assert.Equal(1, trip.ChildMutationEpoch);
     }
 
     [Fact]
@@ -48,6 +49,7 @@ public sealed class TripPlanTests
             "Europe/Paris",
             CreatedAtUtc.AddMinutes(2));
         Assert.Equal(2, trip.Version);
+        Assert.Equal(2, trip.ChildMutationEpoch);
         Assert.Equal(CreatedAtUtc.AddMinutes(2), trip.UpdatedAtUtc);
 
         trip.Rename("Voyage été", CreatedAtUtc.AddMinutes(3));
@@ -84,5 +86,6 @@ public sealed class TripPlanTests
         Assert.Equal(TripDeletionState.Pending, trip.DeletionState);
         Assert.Equal(TripAdmissionClosureState.Closing, trip.AdmissionClosureState);
         Assert.Equal(2, trip.Version);
+        Assert.Equal(2, trip.ChildMutationEpoch);
     }
 }

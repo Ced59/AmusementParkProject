@@ -1,12 +1,71 @@
 using AmusementPark.Core.Domain.Trips;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Trips;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class TripPlanMongoDefinitions
 {
+    public static FilterDefinition<TripPlanDocument> BuildNoActiveChildLeaseFilter()
+    {
+        return new BsonDocumentFilterDefinition<TripPlanDocument>(new BsonDocument(
+            "$expr",
+            new BsonDocument("$eq", new BsonArray
+            {
+                new BsonDocument("$size", new BsonDocument("$filter", new BsonDocument
+                {
+                    {
+                        "input",
+                        new BsonDocument("$ifNull", new BsonArray
+                        {
+                            "$activeChildMutationLeases",
+                            new BsonArray(),
+                        })
+                    },
+                    { "as", "lease" },
+                    {
+                        "cond",
+                        new BsonDocument("$gt", new BsonArray
+                        {
+                            "$$lease.expiresAtUtc",
+                            "$$NOW",
+                        })
+                    },
+                })),
+                0,
+            })));
+    }
+
+    public static FilterDefinition<TripPlanDocument> BuildChildEpochMutationFilter(long targetEpoch)
+    {
+        if (targetEpoch < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(targetEpoch));
+        }
+
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        FilterDefinition<TripPlanDocument> sameEpoch =
+            filters.Eq(static document => document.ChildMutationEpoch, targetEpoch);
+        if (targetEpoch == 1)
+        {
+            return sameEpoch | filters.Exists(static document => document.ChildMutationEpoch, false);
+        }
+
+        long previousEpoch = targetEpoch - 1;
+        FilterDefinition<TripPlanDocument> previousEpochFilter =
+            filters.Eq(static document => document.ChildMutationEpoch, previousEpoch);
+        if (previousEpoch == 1)
+        {
+            previousEpochFilter |= filters.Exists(
+                static document => document.ChildMutationEpoch,
+                false);
+        }
+
+        return sameEpoch | (previousEpochFilter & BuildNoActiveChildLeaseFilter());
+    }
+
     public static FilterDefinition<TripPlanDocument> BuildCreationOperationFilter(
         IReadOnlyCollection<string> ownerScopeHashes,
         string operationKeyHash)
@@ -29,6 +88,7 @@ internal static class TripPlanMongoDefinitions
             .Set(static item => item.Members, document.Members)
             .Set(static item => item.AdmissionClosureState, document.AdmissionClosureState)
             .Set(static item => item.DeletionState, document.DeletionState)
+            .Set(static item => item.ChildMutationEpoch, document.ChildMutationEpoch)
             .Set(static item => item.UpdatedAt, document.UpdatedAt)
             .Set(static item => item.Version, document.Version);
     }
@@ -71,6 +131,10 @@ internal static class TripPlanMongoDefinitions
             updates.Set(static document => document.Members, new List<TripMemberDocument>()),
             updates.Set(static document => document.AdmissionClosureState, TripAdmissionClosureState.Closed),
             updates.Set(static document => document.DeletionState, TripDeletionState.Purged),
+            updates.Set(static document => document.ChildMutationEpoch, trip.ChildMutationEpoch),
+            updates.Set(
+                static document => document.ActiveChildMutationLeases,
+                new List<TripChildMutationLeaseDocument>()),
             updates.Unset(static document => document.CreationSnapshot),
             updates.Set(
                 static document => document.CreationOperationExpiresAtUtc,

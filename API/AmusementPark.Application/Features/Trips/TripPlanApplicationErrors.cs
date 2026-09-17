@@ -50,4 +50,53 @@ public static class TripPlanApplicationErrors
             "trip.plan.recent-authentication-required",
             "Deleting a trip requires a recent authentication confirmation.");
     }
+
+    public static ApplicationError CandidateNotFound()
+    {
+        return ApplicationError.NotFound(
+            "trip.candidate.not-found",
+            "The park candidate was not found.");
+    }
+
+    public static ApplicationError ParkNotAvailable()
+    {
+        return ApplicationError.NotFound(
+            "trip.park.not-available",
+            "The park is not available for trip planning.");
+    }
+
+    public static ApplicationError CandidateAlreadyExists()
+    {
+        return ApplicationError.Conflict(
+            "trip.candidate.already-exists",
+            "This park is already a candidate for the trip.");
+    }
+
+    public static ApplicationError ChildMutationUnavailable()
+    {
+        return ApplicationError.Conflict(
+            "trip.program.mutation-unavailable",
+            "The trip changed or another program action is still completing.");
+    }
+
+    public static ApplicationError CandidateIsUsedByDay()
+    {
+        return ApplicationError.RuleViolation(
+            "trip.candidate.used-by-day",
+            "A park assigned to a decided day cannot be removed.");
+    }
+
+    public static ApplicationError CandidateChangeInvalidatesDay()
+    {
+        return ApplicationError.RuleViolation(
+            "trip.candidate.change-invalidates-day",
+            "A park assigned to a decided day must stay selected and available on that date.");
+    }
+
+    public static ApplicationError DayNotFound()
+    {
+        return ApplicationError.NotFound(
+            "trip.day.not-found",
+            "The trip day was not found.");
+    }
 }
