@@ -16,7 +16,7 @@
     "profile": { "title": "Ton radar de changements", "description": "Consulte les nouveautés vérifiées des parcs et attractions que tu suis.", "action": "Ouvrir mes notifications" },
     "filters": { "label": "Filtrer les notifications", "readState": "État de lecture", "all": "Toutes", "unreadOnly": "Non lues", "park": "Parc", "allParks": "Tous les parcs", "type": "Type de changement", "allTypes": "Tous les changements" },
     "status": { "unread": "Nouveau", "read": "Lu" },
-    "actions": { "backToProfile": "Retour au profil", "markAllRead": "Tout marquer comme lu", "retry": "Réessayer", "view": "Voir la page", "markRead": "Marquer comme lu", "dismiss": "Masquer", "unsubscribe": "Ne plus suivre cette source", "openSource": "Voir la source" },
+    "actions": { "backToProfile": "Retour au profil", "markAllRead": "Tout marquer comme lu", "retry": "Réessayer", "view": "Voir la page", "markRead": "Marquer comme lu", "dismiss": "Masquer", "unsubscribe": "Arrêter toutes les alertes pour ce parc ou cette attraction", "openSource": "Voir la source" },
     "feedback": { "loading": "Chargement de ton radar…", "error": "Impossible de charger ou de mettre à jour tes notifications." },
     "empty": { "title": "Ton radar est calme", "description": "Aucun changement ne correspond à ces filtres. Active un suivi depuis la page d’un parc ou d’une attraction." },
     "proof": { "label": "Évolution vérifiée", "before": "Avant", "after": "Maintenant" },

@@ -16,7 +16,7 @@
     "profile": { "title": "Twój radar zmian", "description": "Zobacz zweryfikowane aktualności o parkach i atrakcjach, które śledzisz.", "action": "Otwórz moje powiadomienia" },
     "filters": { "label": "Filtruj powiadomienia", "readState": "Stan odczytu", "all": "Wszystkie", "unreadOnly": "Nieprzeczytane", "park": "Park", "allParks": "Wszystkie parki", "type": "Rodzaj zmiany", "allTypes": "Wszystkie zmiany" },
     "status": { "unread": "Nowe", "read": "Przeczytane" },
-    "actions": { "backToProfile": "Wróć do profilu", "markAllRead": "Oznacz wszystkie jako przeczytane", "retry": "Spróbuj ponownie", "view": "Zobacz stronę", "markRead": "Oznacz jako przeczytane", "dismiss": "Ukryj", "unsubscribe": "Przestań śledzić to źródło", "openSource": "Zobacz źródło" },
+    "actions": { "backToProfile": "Wróć do profilu", "markAllRead": "Oznacz wszystkie jako przeczytane", "retry": "Spróbuj ponownie", "view": "Zobacz stronę", "markRead": "Oznacz jako przeczytane", "dismiss": "Ukryj", "unsubscribe": "Wyłącz wszystkie alerty dla tego parku lub atrakcji", "openSource": "Zobacz źródło" },
     "feedback": { "loading": "Ładowanie twojego radaru…", "error": "Nie udało się wczytać lub zaktualizować powiadomień." },
     "empty": { "title": "Na twoim radarze jest spokojnie", "description": "Żadna zmiana nie pasuje do tych filtrów. Włącz śledzenie na stronie parku lub atrakcji." },
     "proof": { "label": "Zweryfikowana zmiana", "before": "Wcześniej", "after": "Teraz" },

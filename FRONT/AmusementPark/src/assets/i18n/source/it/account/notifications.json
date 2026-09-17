@@ -16,7 +16,7 @@
     "profile": { "title": "Il tuo radar delle modifiche", "description": "Consulta le novità verificate dei parchi e delle attrazioni che segui.", "action": "Apri le mie notifiche" },
     "filters": { "label": "Filtra le notifiche", "readState": "Stato di lettura", "all": "Tutte", "unreadOnly": "Non lette", "park": "Parco", "allParks": "Tutti i parchi", "type": "Tipo di modifica", "allTypes": "Tutte le modifiche" },
     "status": { "unread": "Nuova", "read": "Letta" },
-    "actions": { "backToProfile": "Torna al profilo", "markAllRead": "Segna tutto come letto", "retry": "Riprova", "view": "Vedi la pagina", "markRead": "Segna come letta", "dismiss": "Nascondi", "unsubscribe": "Non seguire più questa fonte", "openSource": "Vedi la fonte" },
+    "actions": { "backToProfile": "Torna al profilo", "markAllRead": "Segna tutto come letto", "retry": "Riprova", "view": "Vedi la pagina", "markRead": "Segna come letta", "dismiss": "Nascondi", "unsubscribe": "Interrompi tutti gli avvisi per questo parco o attrazione", "openSource": "Vedi la fonte" },
     "feedback": { "loading": "Caricamento del tuo radar…", "error": "Impossibile caricare o aggiornare le tue notifiche." },
     "empty": { "title": "Il tuo radar è tranquillo", "description": "Nessuna modifica corrisponde a questi filtri. Attiva il monitoraggio dalla pagina di un parco o di un’attrazione." },
     "proof": { "label": "Modifica verificata", "before": "Prima", "after": "Ora" },

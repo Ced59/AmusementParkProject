@@ -141,7 +141,7 @@
       "view": "View page",
       "markRead": "Mark as read",
       "dismiss": "Dismiss",
-      "unsubscribe": "Stop tracking this source",
+      "unsubscribe": "Stop all alerts for this park or attraction",
       "openSource": "View source"
     },
     "feedback": {

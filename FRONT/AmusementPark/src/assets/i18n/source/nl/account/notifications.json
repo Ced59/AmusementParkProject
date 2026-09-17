@@ -16,7 +16,7 @@
     "profile": { "title": "Je wijzigingsradar", "description": "Bekijk gecontroleerde updates van parken en attracties die je volgt.", "action": "Mijn meldingen openen" },
     "filters": { "label": "Meldingen filteren", "readState": "Leesstatus", "all": "Alle", "unreadOnly": "Ongelezen", "park": "Park", "allParks": "Alle parken", "type": "Soort wijziging", "allTypes": "Alle wijzigingen" },
     "status": { "unread": "Nieuw", "read": "Gelezen" },
-    "actions": { "backToProfile": "Terug naar profiel", "markAllRead": "Alles als gelezen markeren", "retry": "Opnieuw proberen", "view": "Pagina bekijken", "markRead": "Als gelezen markeren", "dismiss": "Verbergen", "unsubscribe": "Deze bron niet meer volgen", "openSource": "Bron bekijken" },
+    "actions": { "backToProfile": "Terug naar profiel", "markAllRead": "Alles als gelezen markeren", "retry": "Opnieuw proberen", "view": "Pagina bekijken", "markRead": "Als gelezen markeren", "dismiss": "Verbergen", "unsubscribe": "Alle meldingen voor dit park of deze attractie stoppen", "openSource": "Bron bekijken" },
     "feedback": { "loading": "Je radar wordt geladen…", "error": "Je meldingen konden niet worden geladen of bijgewerkt." },
     "empty": { "title": "Je radar is rustig", "description": "Geen wijziging past bij deze filters. Schakel volgen in op de pagina van een park of attractie." },
     "proof": { "label": "Gecontroleerde wijziging", "before": "Eerder", "after": "Nu" },

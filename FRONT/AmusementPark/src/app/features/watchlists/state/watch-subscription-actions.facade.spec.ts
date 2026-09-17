@@ -48,14 +48,47 @@ describe('WatchSubscriptionActionsFacade', () => {
 
     expect(dataPort.create).not.toHaveBeenCalled();
   });
+
+  it('clears the previous account selection before loading the next account', () => {
+    const loginStatus: Subject<void> = new Subject<void>();
+    const dataPort: WatchSubscriptionsDataPort = {
+      listMine: vi.fn()
+        .mockReturnValueOnce(of([buildSubscription()]))
+        .mockReturnValueOnce(of([])),
+      create: vi.fn(),
+      update: vi.fn(),
+      setPaused: vi.fn(),
+      delete: vi.fn()
+    };
+    const authService: Pick<AuthService, 'isLoggedIn'> = {
+      isLoggedIn: vi.fn().mockReturnValue(true)
+    };
+    const facade: WatchSubscriptionActionsFacade = createFacade(
+      dataPort,
+      authService,
+      loginStatus);
+    facade.configure('Park', 'park-1', ['OperatorChanged']);
+    expect(facade.selectedEventTypes()).toEqual([
+      'ParkNameChanged',
+      'OpeningCalendarChanged'
+    ]);
+
+    loginStatus.next();
+
+    expect(facade.subscription()).toBeNull();
+    expect(facade.selectedEventTypes()).toEqual(['OperatorChanged']);
+  });
 });
 
-function createFacade(dataPort: WatchSubscriptionsDataPort): WatchSubscriptionActionsFacade {
-  const authService: Pick<AuthService, 'isLoggedIn'> = {
+function createFacade(
+  dataPort: WatchSubscriptionsDataPort,
+  authService: Pick<AuthService, 'isLoggedIn'> = {
     isLoggedIn: vi.fn().mockReturnValue(true)
-  };
+  },
+  loginStatus: Subject<void> = new Subject<void>()
+): WatchSubscriptionActionsFacade {
   const sharedService: Pick<SharedService, 'getLoginStatusListener'> = {
-    getLoginStatusListener: vi.fn().mockReturnValue(new Subject<void>())
+    getLoginStatusListener: vi.fn().mockReturnValue(loginStatus)
   };
   const destroyRef: Pick<DestroyRef, 'onDestroy'> = {
     onDestroy: vi.fn().mockReturnValue((): void => undefined)

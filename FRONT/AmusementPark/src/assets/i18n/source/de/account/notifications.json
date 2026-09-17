@@ -16,7 +16,7 @@
     "profile": { "title": "Dein Änderungsradar", "description": "Sieh geprüfte Neuigkeiten zu Parks und Attraktionen, denen du folgst.", "action": "Meine Benachrichtigungen öffnen" },
     "filters": { "label": "Benachrichtigungen filtern", "readState": "Lesestatus", "all": "Alle", "unreadOnly": "Ungelesen", "park": "Park", "allParks": "Alle Parks", "type": "Änderungsart", "allTypes": "Alle Änderungen" },
     "status": { "unread": "Neu", "read": "Gelesen" },
-    "actions": { "backToProfile": "Zurück zum Profil", "markAllRead": "Alle als gelesen markieren", "retry": "Erneut versuchen", "view": "Seite ansehen", "markRead": "Als gelesen markieren", "dismiss": "Ausblenden", "unsubscribe": "Diese Quelle nicht mehr verfolgen", "openSource": "Quelle ansehen" },
+    "actions": { "backToProfile": "Zurück zum Profil", "markAllRead": "Alle als gelesen markieren", "retry": "Erneut versuchen", "view": "Seite ansehen", "markRead": "Als gelesen markieren", "dismiss": "Ausblenden", "unsubscribe": "Alle Benachrichtigungen für diesen Park oder diese Attraktion beenden", "openSource": "Quelle ansehen" },
     "feedback": { "loading": "Dein Radar wird geladen…", "error": "Deine Benachrichtigungen konnten nicht geladen oder aktualisiert werden." },
     "empty": { "title": "Dein Radar ist ruhig", "description": "Keine Änderung passt zu diesen Filtern. Aktiviere die Verfolgung auf einer Park- oder Attraktionsseite." },
     "proof": { "label": "Geprüfte Änderung", "before": "Vorher", "after": "Jetzt" },

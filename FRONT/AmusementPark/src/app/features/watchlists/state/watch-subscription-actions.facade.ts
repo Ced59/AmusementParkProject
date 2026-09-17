@@ -25,6 +25,7 @@ export class WatchSubscriptionActionsFacade {
   private readonly mutatingSignal = signal<boolean>(false);
   private readonly expandedSignal = signal<boolean>(false);
   private readonly errorSignal = signal<boolean>(false);
+  private defaultEventTypes: FactualEventType[] = [];
   private requestId: number = 0;
 
   readonly authenticated: Signal<boolean> = this.authenticatedSignal.asReadonly();
@@ -45,11 +46,10 @@ export class WatchSubscriptionActionsFacade {
     sharedService.getLoginStatusListener()
       .pipe(takeUntilDestroyed(destroyRef))
       .subscribe((): void => {
+        this.reset();
         this.refreshAuthentication();
         if (this.authenticatedSignal() && this.targetIdSignal()) {
           this.load();
-        } else {
-          this.reset();
         }
       });
   }
@@ -64,6 +64,7 @@ export class WatchSubscriptionActionsFacade {
       || normalizedTargetId !== this.targetIdSignal();
     this.targetTypeSignal.set(targetType);
     this.targetIdSignal.set(normalizedTargetId);
+    this.defaultEventTypes = [...new Set(defaultEventTypes)];
     this.refreshAuthentication();
     if (!changed) {
       return;
@@ -71,7 +72,7 @@ export class WatchSubscriptionActionsFacade {
 
     this.requestId++;
     this.subscriptionSignal.set(null);
-    this.selectedEventTypesSignal.set([...defaultEventTypes]);
+    this.selectedEventTypesSignal.set([...this.defaultEventTypes]);
     this.expandedSignal.set(false);
     this.errorSignal.set(false);
     if (this.authenticatedSignal() && normalizedTargetId) {
@@ -195,9 +196,9 @@ export class WatchSubscriptionActionsFacade {
           }
           const subscription: WatchSubscription | null = subscriptions[0] ?? null;
           this.subscriptionSignal.set(subscription);
-          if (subscription) {
-            this.selectedEventTypesSignal.set([...subscription.eventTypes]);
-          }
+          this.selectedEventTypesSignal.set(subscription
+            ? [...subscription.eventTypes]
+            : [...this.defaultEventTypes]);
         },
         error: (): void => {
           if (loadId === this.requestId) {
@@ -240,6 +241,8 @@ export class WatchSubscriptionActionsFacade {
     this.loadingSignal.set(false);
     this.mutatingSignal.set(false);
     this.expandedSignal.set(false);
+    this.errorSignal.set(false);
+    this.selectedEventTypesSignal.set([...this.defaultEventTypes]);
   }
 
   private refreshAuthentication(): void {

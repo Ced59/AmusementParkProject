@@ -16,7 +16,7 @@
     "profile": { "title": "Your change radar", "description": "See verified updates from the parks and attractions you track.", "action": "Open my notifications" },
     "filters": { "label": "Filter notifications", "readState": "Read state", "all": "All", "unreadOnly": "Unread", "park": "Park", "allParks": "All parks", "type": "Change type", "allTypes": "All changes" },
     "status": { "unread": "New", "read": "Read" },
-    "actions": { "backToProfile": "Back to profile", "markAllRead": "Mark all as read", "retry": "Try again", "view": "View page", "markRead": "Mark as read", "dismiss": "Dismiss", "unsubscribe": "Stop tracking this source", "openSource": "View source" },
+    "actions": { "backToProfile": "Back to profile", "markAllRead": "Mark all as read", "retry": "Try again", "view": "View page", "markRead": "Mark as read", "dismiss": "Dismiss", "unsubscribe": "Stop all alerts for this park or attraction", "openSource": "View source" },
     "feedback": { "loading": "Loading your radar…", "error": "Your notifications could not be loaded or updated." },
     "empty": { "title": "Your radar is quiet", "description": "No change matches these filters. Start tracking from a park or attraction page." },
     "proof": { "label": "Verified change", "before": "Before", "after": "Now" },

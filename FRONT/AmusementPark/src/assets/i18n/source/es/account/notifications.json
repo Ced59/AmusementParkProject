@@ -16,7 +16,7 @@
     "profile": { "title": "Tu radar de cambios", "description": "Consulta novedades verificadas de los parques y atracciones que sigues.", "action": "Abrir mis notificaciones" },
     "filters": { "label": "Filtrar notificaciones", "readState": "Estado de lectura", "all": "Todas", "unreadOnly": "No leídas", "park": "Parque", "allParks": "Todos los parques", "type": "Tipo de cambio", "allTypes": "Todos los cambios" },
     "status": { "unread": "Nuevo", "read": "Leído" },
-    "actions": { "backToProfile": "Volver al perfil", "markAllRead": "Marcar todo como leído", "retry": "Reintentar", "view": "Ver la página", "markRead": "Marcar como leído", "dismiss": "Ocultar", "unsubscribe": "Dejar de seguir esta fuente", "openSource": "Ver la fuente" },
+    "actions": { "backToProfile": "Volver al perfil", "markAllRead": "Marcar todo como leído", "retry": "Reintentar", "view": "Ver la página", "markRead": "Marcar como leído", "dismiss": "Ocultar", "unsubscribe": "Dejar de recibir todas las alertas de este parque o atracción", "openSource": "Ver la fuente" },
     "feedback": { "loading": "Cargando tu radar…", "error": "No se pudieron cargar o actualizar tus notificaciones." },
     "empty": { "title": "Tu radar está tranquilo", "description": "Ningún cambio coincide con estos filtros. Activa un seguimiento desde la página de un parque o una atracción." },
     "proof": { "label": "Cambio verificado", "before": "Antes", "after": "Ahora" },
