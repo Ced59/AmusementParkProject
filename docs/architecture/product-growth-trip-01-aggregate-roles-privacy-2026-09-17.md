@@ -682,6 +682,17 @@ activation.
 
 Le départ ou l'effacement d'un seul membre utilise la même barrière à portée
 réduite. Chaque `TripMember` porte `MemberDataEpoch` et un état de participation.
+Si le compte visé n'est encore que `Provisional`, l'opération d'effacement ne suit
+pas le départ ordinaire : elle annule atomiquement le `MemberAdmissionFence`
+portant ce compte et le même `AdmissionOperationId`, retire le sous-document
+provisoire et conserve un tombstone de cette opération. L'invitation correspondante
+`Accepting` ou déjà `Accepted` passe ensuite par `RevocationPending` et n'atteint
+`Revoked` qu'après confirmation de la compensation. L'établissement retardé exige
+encore le fence `Applied`, le membre `Provisional` et l'opération exacte : il échoue
+donc définitivement après cette écriture. L'effacement ne devient terminal qu'une
+fois l'invitation compensée et le fence libéré par le reconciler.
+
+Pour un membre `Active`, la demande suit la barrière de départ :
 La demande passe le membre à `Leaving`, incrémente son epoch et refuse toute
 nouvelle lease dont `ActorMemberId` ou `SubjectMemberId` le désigne. Le job attend
 ou expire les leases enfant où il est acteur, ainsi que celles de son ancien epoch
@@ -742,6 +753,8 @@ variantes ne sont pas réellement servies.
 - acceptation interrompue à chaque étape puis réparée sans doublon ;
 - sous-document membre `Provisional` exclu de toutes les lectures et autorisations
   jusqu'à l'établissement atomique de l'adhésion ;
+- effacement d'un candidat provisoire annulant son fence, retirant le sous-document
+  et compensant l'invitation `Accepting` ou `Accepted` avant l'état terminal ;
 - création d'invitation retardée au-delà de `Closing`, limitée à une coquille
   `Prepared` non résolvable puis éliminée sans token actif orphelin ;
 - fence `Prepared` installé avant réservation puis rendu inoffensif si une
