@@ -42,10 +42,32 @@ public sealed class EncryptedNotificationEmailUnsubscribeTokenProtectorTests
     {
         EncryptedNotificationEmailUnsubscribeTokenProtector protector = CreateProtector();
         string token = protector.CreateToken("user-1");
-        char replacement = token[^1] == 'a' ? 'b' : 'a';
-        string tampered = token[..^1] + replacement;
+        int tamperedIndex = token.Length / 2;
+        char replacement = token[tamperedIndex] == 'a' ? 'b' : 'a';
+        string tampered = token[..tamperedIndex]
+            + replacement
+            + token[(tamperedIndex + 1)..];
 
         bool success = protector.TryReadUserId(tampered, out string userId);
+
+        Assert.False(success);
+        Assert.Empty(userId);
+    }
+
+    [Fact]
+    public void TryReadUserId_ShouldRejectANonCanonicalBase64UrlAlias()
+    {
+        const string alphabet =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+        EncryptedNotificationEmailUnsubscribeTokenProtector protector = CreateProtector();
+        string token = protector.CreateToken("user-1");
+        byte[] expectedPayload = DecodeBase64Url(token);
+        char replacement = alphabet.First(candidate =>
+            candidate != token[^1]
+            && DecodeBase64Url(token[..^1] + candidate).SequenceEqual(expectedPayload));
+        string nonCanonicalAlias = token[..^1] + replacement;
+
+        bool success = protector.TryReadUserId(nonCanonicalAlias, out string userId);
 
         Assert.False(success);
         Assert.Empty(userId);
@@ -57,5 +79,12 @@ public sealed class EncryptedNotificationEmailUnsubscribeTokenProtectorTests
         {
             Key = "a-test-key-that-is-long-enough-for-encryption-protection",
         });
+    }
+
+    private static byte[] DecodeBase64Url(string value)
+    {
+        string base64 = value.Replace('-', '+').Replace('_', '/');
+        int padding = (4 - base64.Length % 4) % 4;
+        return Convert.FromBase64String(base64.PadRight(base64.Length + padding, '='));
     }
 }

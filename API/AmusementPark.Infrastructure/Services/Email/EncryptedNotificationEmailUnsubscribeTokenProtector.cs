@@ -101,7 +101,14 @@ public sealed class EncryptedNotificationEmailUnsubscribeTokenProtector
         {
             string base64 = value.Replace('-', '+').Replace('_', '/');
             int padding = (4 - base64.Length % 4) % 4;
-            decoded = Convert.FromBase64String(base64.PadRight(base64.Length + padding, '='));
+            byte[] candidate = Convert.FromBase64String(
+                base64.PadRight(base64.Length + padding, '='));
+            if (!string.Equals(Encode(candidate), value, StringComparison.Ordinal))
+            {
+                return false;
+            }
+
+            decoded = candidate;
             return true;
         }
         catch (FormatException)
