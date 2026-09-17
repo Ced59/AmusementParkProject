@@ -569,7 +569,9 @@ Indexes minimaux à prouver :
 - jours `(tripPlanId, localDate)` unique lorsqu'une date est fixée ;
 - préférences `(tripPlanId, memberId, parkItemId)` unique ;
 - audit `(tripPlanId, sequence)` unique et `(tripPlanId, occurredAtUtc)` ;
-- idempotence `(actorScope, keyHash)` unique avec TTL borné après état terminal.
+- idempotence `(actorScope, keyHash)` unique avec TTL borné après état terminal ;
+- idempotence `operationId` unique afin que le reconciler retrouve directement le
+  résultat scellé depuis la preuve conservée dans la lease du plan.
 
 Les indexes ne suffisent pas à autoriser : chaque lecture reste filtrée par le plan
 accessible. Aucun index ni endpoint ne permet de lister des voyages publics.
@@ -721,6 +723,8 @@ variantes ne sont pas réellement servies.
   fence `Applied` n'a pas pu établir le membre avant `Closing` ;
 - résultat de création rejoué après panne depuis une enveloppe chiffrée bornée,
   sans générer un second token ni laisser une lease décidée ;
+- reprise d'une lease `Committed` par recherche indexée de son `operationId`, sans
+  balayage de la collection d'idempotence ;
 - token brut absent en clair de Mongo, des logs et des jobs ;
 - expiration, révocation, rotation, rate limit et `404` uniforme ;
 - preview dépourvue de membres, contraintes, votes et identifiants ;
