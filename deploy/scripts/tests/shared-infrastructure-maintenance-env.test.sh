@@ -13,9 +13,17 @@ grep -Fq 'mongodb_backup_completed=true' "${deploy_scripts_dir}/deploy.sh"
 grep -Fq 'MongoDB maintenance requires a successful backup in this deployment run.' \
   "${deploy_scripts_dir}/deploy.sh"
 rolling_guard_line="$(grep -nF 'if [ "${deploy_zero_downtime_enabled}" != "true" ]; then' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
+backup_line="$(grep -nF './scripts/backup-mongo.sh || {' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
+pull_line="$(grep -nF 'compose pull' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
 maintenance_line="$(grep -nF 'python3 ./scripts/deployment_transaction.py maintain-mongodb' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
-if [ -z "${rolling_guard_line}" ] || [ -z "${maintenance_line}" ] || [ "${rolling_guard_line}" -ge "${maintenance_line}" ]; then
-  echo 'Transactional rolling mode must be validated before MongoDB maintenance.' >&2
+if [ -z "${rolling_guard_line}" ] \
+  || [ -z "${backup_line}" ] \
+  || [ -z "${pull_line}" ] \
+  || [ -z "${maintenance_line}" ] \
+  || [ "${rolling_guard_line}" -ge "${backup_line}" ] \
+  || [ "${rolling_guard_line}" -ge "${pull_line}" ] \
+  || [ "${rolling_guard_line}" -ge "${maintenance_line}" ]; then
+  echo 'Transactional rolling mode must be validated before backup, image pull and MongoDB maintenance.' >&2
   exit 1
 fi
 
