@@ -21,5 +21,6 @@ public sealed record UserNotificationResult(
     DateTime? ReadAtUtc,
     DateTime ExpiresAtUtc,
     long Version,
+    bool IsReportedMisleading,
     bool CanManageSubscription,
     long? SubscriptionVersion);

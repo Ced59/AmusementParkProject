@@ -134,7 +134,9 @@
       "markRead": "Oznacz jako przeczytane",
       "dismiss": "Ukryj",
       "unsubscribe": "Wyłącz wszystkie alerty dla tego parku lub atrakcji",
-      "openSource": "Zobacz źródło"
+      "openSource": "Zobacz źródło",
+      "reportMisleading": "Zgłoś mylący alert",
+      "reportedMisleading": "Alert zgłoszony"
     },
     "feedback": {
       "loading": "Ładowanie twojego radaru…",
@@ -4156,6 +4158,68 @@
       }
     },
     "visible": "Widoczny",
+    "watchPilot": {
+      "navTitle": "Pilotaż alertów",
+      "shortcut": "Mierz wiarygodność alertów i stan kolejek.",
+      "kicker": "Radar · zaufanie",
+      "title": "Pilotaż alertów faktograficznych",
+      "subtitle": "Decyduj o rozwoju katalogu na podstawie danych zbiorczych, bez śledzenia pojedynczych ścieżek.",
+      "loading": "Wczytywanie wskaźników…",
+      "loadError": "Nie udało się wczytać wskaźników alertów.",
+      "empty": "Brak pomiarów w tym okresie.",
+      "filters": {
+        "from": "Od",
+        "to": "Do"
+      },
+      "signal": {
+        "AwaitingObservations": "Oczekiwanie na obserwacje",
+        "NeedsAttention": "Wymaga uwagi",
+        "Monitor": "Do obserwacji",
+        "ReadyToExtend": "Gotowe do rozszerzenia"
+      },
+      "decision": {
+        "kicker": "Decyzja o rozszerzeniu",
+        "ready": "Wolumen, jakość i dane dostawcy pozwalają ostrożnie dodać nowe typy alertów.",
+        "wait": "Podstawa pozostaje aktywna, ale przed rozszerzeniem potrzeba więcej obserwacji lub pełnych danych dostawcy."
+      },
+      "metrics": {
+        "ariaLabel": "Zbiorcze wskaźniki alertów",
+        "activeSubscriptions": "Aktywne subskrypcje",
+        "published": "Opublikowane fakty",
+        "notifications": "Dostarczone powiadomienia",
+        "duplicates": "Wykryte duplikaty",
+        "latency": "Średnie opóźnienie",
+        "centerOpens": "Otwarcia centrum",
+        "sourceOpens": "Otwarte źródła",
+        "reports": "Zgłoszone alerty",
+        "digests": "Utworzone podsumowania",
+        "emailFailures": "Błędy e-mail",
+        "outbox": "Oczekujący outbox",
+        "unsubscriptions": "Rezygnacje"
+      },
+      "queueStatus": {
+        "Pending": "Oczekuje",
+        "Leased": "W toku",
+        "Succeeded": "Zakończone",
+        "RetryScheduled": "Ponowienie zaplanowane",
+        "DeadLetter": "Zablokowane",
+        "Cancelled": "Anulowane",
+        "Superseded": "Zastąpione"
+      },
+      "provider": {
+        "title": "Brak informacji zwrotnych od dostawcy",
+        "description": "SMTP podaje powodzenia i błędy wysyłki, ale jeszcze nie odbicia ani skargi. Bramka pozostaje zamknięta bez zmyślania danych."
+      },
+      "chart": {
+        "title": "Dzienne dostarczenia",
+        "subtitle": "Powiadomienia internetowe dostarczone każdego dnia wybranego okresu."
+      },
+      "breakdown": {
+        "subscriptions": "Subskrypcje według typu faktu",
+        "queue": "Obciążenie kolejek",
+        "empty": "Nie zaobserwowano wolumenu."
+      }
+    },
     "workbench": {
       "navTitle": "Panel treści parku",
       "title": "Szybkie wprowadzanie wpisów",

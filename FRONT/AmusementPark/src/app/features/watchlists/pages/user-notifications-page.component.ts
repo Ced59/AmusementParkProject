@@ -67,6 +67,7 @@ export class UserNotificationsPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.facade.recordCenterOpened();
     this.facade.load();
   }
 

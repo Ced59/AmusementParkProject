@@ -98,6 +98,8 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<UserCollectionLifecycleService>();
         services.AddScoped<WatchSubscriptionLifecycleService>();
         services.AddScoped<UserNotificationCenterService>();
+        services.AddScoped<WatchPilotMetricsRecorder>();
+        services.AddScoped<UserNotificationCreationService>();
         services.AddScoped<NotificationEmailPreferenceService>();
         services.AddScoped<IWatchlistAccountDeletionService, WatchlistAccountDeletionService>();
         services.AddScoped<NotificationDigestEmailEntryResolver>();

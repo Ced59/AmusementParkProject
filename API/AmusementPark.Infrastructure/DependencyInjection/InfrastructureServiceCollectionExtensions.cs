@@ -200,6 +200,7 @@ public static class InfrastructureServiceCollectionExtensions
             FactualNotificationDistributionReceiptRepository>();
         services.AddScoped<IFactualChangeEventDistributionStateReader,
             FactualNotificationDistributionReceiptRepository>();
+        services.AddScoped<IWatchPilotMetricsRepository, WatchPilotMetricsRepository>();
         services.AddSingleton<DurableBackgroundJobMetrics>();
         services.AddHostedService<DurableBackgroundJobWorkerBackgroundService>();
         services.AddHostedService<FactualChangeOutboxReconciliationBackgroundService>();

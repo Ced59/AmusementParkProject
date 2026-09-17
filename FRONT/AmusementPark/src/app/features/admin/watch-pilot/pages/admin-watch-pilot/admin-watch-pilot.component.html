@@ -1,0 +1,88 @@
+<app-ui-card styleClass="admin-list-card watch-pilot">
+  <ng-template appUiTemplate="header">
+    <div class="admin-list-header watch-pilot__header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.watchPilot.kicker' | translate }}</span>
+        <h2>{{ 'admin.watchPilot.title' | translate }}</h2>
+        <p>{{ 'admin.watchPilot.subtitle' | translate }}</p>
+      </div>
+      @if (metrics(); as current) {
+        <app-ui-tag [value]="signalLabel(current.health.signal) | translate"
+          [severity]="signalSeverity(current.health.signal)"></app-ui-tag>
+      }
+    </div>
+  </ng-template>
+
+  <form class="watch-pilot__filters" [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
+    <label><span>{{ 'admin.watchPilot.filters.from' | translate }}</span><input appUiInputText type="date" formControlName="fromUtc" [attr.min]="minimumDateUtc" [attr.max]="maximumDateUtc" /></label>
+    <label><span>{{ 'admin.watchPilot.filters.to' | translate }}</span><input appUiInputText type="date" formControlName="toUtc" [attr.min]="minimumDateUtc" [attr.max]="maximumDateUtc" /></label>
+    <div class="watch-pilot__filter-actions">
+      <button appUiButton type="submit" icon="pi pi-search" [label]="'actions.search' | translate"></button>
+      <button appUiButton type="button" class="p-button-secondary" icon="pi pi-filter-slash"
+        [label]="'actions.reset' | translate" (click)="resetFilters()"></button>
+    </div>
+  </form>
+
+  <app-page-state [state]="state()" loadingMessageKey="admin.watchPilot.loading"
+    errorMessageKey="admin.watchPilot.loadError" emptyMessageKey="admin.watchPilot.empty">
+    @if (metrics(); as current) {
+      <section class="watch-pilot__decision" [class.watch-pilot__decision--ready]="current.health.canExtendEventTypes">
+        <div>
+          <span>{{ 'admin.watchPilot.decision.kicker' | translate }}</span>
+          <h3>{{ signalLabel(current.health.signal) | translate }}</h3>
+          <p>{{ (current.health.canExtendEventTypes ? 'admin.watchPilot.decision.ready' : 'admin.watchPilot.decision.wait') | translate }}</p>
+        </div>
+        <i [class]="current.health.canExtendEventTypes ? 'pi pi-check-circle' : 'pi pi-clock'" aria-hidden="true"></i>
+      </section>
+
+      <section class="watch-pilot__kpis" [attr.aria-label]="'admin.watchPilot.metrics.ariaLabel' | translate">
+        <article><span>{{ 'admin.watchPilot.metrics.activeSubscriptions' | translate }}</span><strong>{{ current.activeSubscriptions | number }}</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.published' | translate }}</span><strong>{{ current.eventsPublished | number }}</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.notifications' | translate }}</span><strong>{{ current.notificationsDelivered | number }}</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.duplicates' | translate }}</span><strong>{{ current.duplicateNotifications | number }}</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.latency' | translate }}</span><strong>{{ current.health.averageDeliveryLatencyMinutes | number:'1.0-1' }} min</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.centerOpens' | translate }}</span><strong>{{ current.notificationCenterOpens | number }}</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.sourceOpens' | translate }}</span><strong>{{ current.sourceOpens | number }}</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.reports' | translate }}</span><strong>{{ current.misleadingAlertReports | number }}</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.digests' | translate }}</span><strong>{{ current.digestsGenerated | number }}</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.emailFailures' | translate }}</span><strong>{{ current.emailFailed | number }}</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.outbox' | translate }}</span><strong>{{ current.pendingOutboxEntries | number }}</strong></article>
+        <article><span>{{ 'admin.watchPilot.metrics.unsubscriptions' | translate }}</span><strong>{{ current.subscriptionsRemoved | number }}</strong></article>
+      </section>
+
+      @if (!current.health.providerFeedbackAvailable) {
+        <aside class="watch-pilot__provider" role="status">
+          <i class="pi pi-info-circle" aria-hidden="true"></i>
+          <div><h3>{{ 'admin.watchPilot.provider.title' | translate }}</h3><p>{{ 'admin.watchPilot.provider.description' | translate }}</p></div>
+        </aside>
+      }
+
+      <section class="watch-pilot__chart" aria-labelledby="watch-pilot-chart-title">
+        <div><h3 id="watch-pilot-chart-title">{{ 'admin.watchPilot.chart.title' | translate }}</h3><p>{{ 'admin.watchPilot.chart.subtitle' | translate }}</p></div>
+        <div class="watch-pilot__bars" aria-hidden="true">
+          @for (point of chartPoints(); track point.date) {
+            <div class="watch-pilot__bar">
+              <span class="watch-pilot__bar-fill" [style.--bar-height]="point.heightPercent + '%'"></span>
+              <small>{{ point.date | date:'MM-dd':'UTC' }}</small>
+            </div>
+          }
+        </div>
+      </section>
+
+      <section class="watch-pilot__breakdowns">
+        <article>
+          <h3>{{ 'admin.watchPilot.breakdown.subscriptions' | translate }}</h3>
+          @for (item of subscriptionBreakdown(); track item.key) {
+            <div class="watch-pilot__breakdown"><div><span>{{ ('notifications.events.' + item.key) | translate }}</span><strong>{{ item.count }}</strong></div><span><i [style.--bar-width]="item.widthPercent + '%'"></i></span></div>
+          } @empty { <p>{{ 'admin.watchPilot.breakdown.empty' | translate }}</p> }
+        </article>
+        <article>
+          <h3>{{ 'admin.watchPilot.breakdown.queue' | translate }}</h3>
+          @for (item of queueBreakdown(); track item.key) {
+            <div class="watch-pilot__breakdown"><div><span>{{ ('admin.watchPilot.queueStatus.' + item.key) | translate }}</span><strong>{{ item.count }}</strong></div><span><i [style.--bar-width]="item.widthPercent + '%'"></i></span></div>
+          } @empty { <p>{{ 'admin.watchPilot.breakdown.empty' | translate }}</p> }
+        </article>
+      </section>
+    }
+  </app-page-state>
+</app-ui-card>

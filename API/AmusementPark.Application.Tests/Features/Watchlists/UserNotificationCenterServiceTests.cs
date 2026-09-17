@@ -9,10 +9,12 @@ using AmusementPark.Application.Features.Watchlists.Models;
 using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Application.Features.Watchlists.Results;
 using AmusementPark.Application.Features.Watchlists.Services;
+using AmusementPark.Application.Tests.Features.Watchlists.Handlers;
 using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Watchlists;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
@@ -215,9 +217,91 @@ public sealed class UserNotificationCenterServiceTests
             Times.Never);
     }
 
+    [Fact]
+    public async Task DeleteSourceSubscriptionAsync_WhenDeleted_ShouldRecordTheCanonicalUnsubscriptionMetric()
+    {
+        UserNotification notification = UserNotification.Restore(
+            UserNotificationId.Parse("notification-1"),
+            "user-1",
+            FactualChangeEventId.Parse("event-1"),
+            WatchSubscriptionId.Parse("subscription-1"),
+            FactualEventType.ParkNameChanged,
+            FactualTargetType.Park,
+            "park-1",
+            "park-1",
+            1,
+            UserNotification.CurrentTemplateVersion,
+            "FR",
+            UserNotificationStatus.Delivered,
+            NowUtc.AddMinutes(-2),
+            NowUtc.AddMinutes(-2),
+            null,
+            null,
+            NowUtc.AddDays(UserNotification.RetentionDays),
+            1);
+        WatchSubscription subscription = WatchSubscription.Restore(
+            WatchSubscriptionId.Parse("subscription-1"),
+            "user-1",
+            CollectionTargetType.Park,
+            "park-1",
+            new[] { FactualEventType.ParkNameChanged },
+            NotificationFrequency.WebOnly,
+            Array.Empty<NotificationChannel>(),
+            false,
+            NowUtc.AddDays(-1),
+            NowUtc.AddMinutes(-1),
+            1);
+        Mock<IUserNotificationRepository> notifications = new(MockBehavior.Strict);
+        Mock<IWatchSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        notifications.Setup(value => value.GetOwnedAsync(
+                "user-1",
+                UserNotificationId.Parse("notification-1"),
+                CancellationToken.None))
+            .ReturnsAsync(notification);
+        subscriptions.Setup(value => value.GetOwnedAsync(
+                "user-1",
+                WatchSubscriptionId.Parse("subscription-1"),
+                CancellationToken.None))
+            .ReturnsAsync(subscription);
+        subscriptions.Setup(value => value.DeleteAsync(
+                "user-1",
+                WatchSubscriptionId.Parse("subscription-1"),
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(WatchSubscriptionWriteOutcome.Success);
+        Mock<IWatchPilotMetricsRepository> metrics = new(MockBehavior.Strict);
+        metrics.Setup(value => value.IncrementInteractionAsync(
+                new DateOnly(2026, 9, 17),
+                WatchPilotInteractionKind.SubscriptionRemoved,
+                1,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        WatchPilotMetricsRecorder recorder = new(
+            metrics.Object,
+            new Mock<ILogger<WatchPilotMetricsRecorder>>().Object,
+            new FixedWatchPilotTimeProvider(
+                new DateTimeOffset(2026, 9, 17, 12, 0, 0, TimeSpan.Zero)));
+        UserNotificationCenterService service = CreateService(
+            notifications.Object,
+            subscriptions.Object,
+            recorder);
+
+        ApplicationResult result = await service.DeleteSourceSubscriptionAsync(
+            "user-1",
+            "notification-1",
+            1,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        notifications.VerifyAll();
+        subscriptions.VerifyAll();
+        metrics.VerifyAll();
+    }
+
     private static UserNotificationCenterService CreateService(
         IUserNotificationRepository notifications,
-        IWatchSubscriptionRepository subscriptions)
+        IWatchSubscriptionRepository subscriptions,
+        WatchPilotMetricsRecorder? pilotMetricsRecorder = null)
     {
         UserCollectionTargetReader targetReader = new UserCollectionTargetReader(
             new Mock<IParkRepository>(MockBehavior.Strict).Object,
@@ -227,7 +311,8 @@ public sealed class UserNotificationCenterServiceTests
             notifications,
             subscriptions,
             new Mock<IFactualChangeEventRepository>(MockBehavior.Strict).Object,
-            targetReader);
+            targetReader,
+            pilotMetricsRecorder: pilotMetricsRecorder);
     }
 
     private static FactualChangeEvent CreatePublishedEvent(string eventId, long revision)

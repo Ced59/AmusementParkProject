@@ -1,0 +1,15 @@
+{
+  "admin": {
+    "watchPilot": {
+      "navTitle": "Pilota degli avvisi", "shortcut": "Misura l’affidabilità degli avvisi e lo stato delle code.", "kicker": "Radar · fiducia", "title": "Pilotaggio degli avvisi fattuali", "subtitle": "Decidi se il catalogo può crescere usando misure aggregate, senza tracciare i percorsi individuali.", "loading": "Caricamento degli indicatori…", "loadError": "Impossibile caricare gli indicatori degli avvisi.", "empty": "Nessuna misura in questo periodo.",
+      "filters": { "from": "Dal", "to": "Al" },
+      "signal": { "AwaitingObservations": "In attesa di osservazioni", "NeedsAttention": "Richiede attenzione", "Monitor": "Da monitorare", "ReadyToExtend": "Pronto per l’estensione" },
+      "decision": { "kicker": "Decisione di estensione", "ready": "Volume, qualità e copertura del fornitore consentono di aggiungere con prudenza nuovi tipi.", "wait": "La base resta attiva, ma servono più osservazioni o una copertura completa del fornitore prima dell’estensione." },
+      "metrics": { "ariaLabel": "Indicatori aggregati degli avvisi", "activeSubscriptions": "Abbonamenti attivi", "published": "Fatti pubblicati", "notifications": "Notifiche consegnate", "duplicates": "Duplicati rilevati", "latency": "Latenza media", "centerOpens": "Aperture del centro", "sourceOpens": "Fonti consultate", "reports": "Avvisi segnalati", "digests": "Riepiloghi generati", "emailFailures": "Errori e-mail", "outbox": "Outbox in attesa", "unsubscriptions": "Disiscrizioni" },
+      "queueStatus": { "Pending": "In attesa", "Leased": "In corso", "Succeeded": "Completata", "RetryScheduled": "Nuovo tentativo pianificato", "DeadLetter": "Bloccata", "Cancelled": "Annullata", "Superseded": "Sostituita" },
+      "provider": { "title": "Riscontri del fornitore non disponibili", "description": "SMTP riporta invii ed errori, ma non ancora rimbalzi o reclami. La soglia resta chiusa senza inventare dati." },
+      "chart": { "title": "Consegne giornaliere", "subtitle": "Notifiche web consegnate ogni giorno nel periodo scelto." },
+      "breakdown": { "subscriptions": "Abbonamenti per tipo di fatto", "queue": "Carico delle code", "empty": "Nessun volume osservato." }
+    }
+  }
+}

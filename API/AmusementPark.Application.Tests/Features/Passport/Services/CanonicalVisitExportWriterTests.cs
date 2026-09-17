@@ -202,6 +202,7 @@ public sealed class CanonicalVisitExportWriterTests
         Assert.Contains("refaire en famille", content, StringComparison.Ordinal);
         Assert.Contains("https://example.com/opening-calendar", content, StringComparison.Ordinal);
         Assert.Contains(NotificationEmailPreference.CurrentConsentTextVersion, content, StringComparison.Ordinal);
+        Assert.Contains("misleadingReportedAtUtc", content, StringComparison.Ordinal);
         Assert.Contains("fr", content, StringComparison.Ordinal);
         Assert.DoesNotContain("collection-internal", content, StringComparison.Ordinal);
         Assert.DoesNotContain("subscription-internal", content, StringComparison.Ordinal);
@@ -761,6 +762,7 @@ public sealed class CanonicalVisitExportWriterTests
             null,
             NowUtc.AddDays(UserNotification.RetentionDays),
             1);
+        notification.ReportMisleading(NowUtc.AddMinutes(1));
         DateTime periodStartUtc = new DateTime(2026, 9, 4, 0, 0, 0, DateTimeKind.Utc);
         NotificationDigestEntry digestEntry = new NotificationDigestEntry(
             factualEvent.Id,

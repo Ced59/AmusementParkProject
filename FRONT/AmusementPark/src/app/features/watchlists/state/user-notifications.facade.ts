@@ -25,6 +25,7 @@ export class UserNotificationsFacade {
   private readonly unreadOnlySignal = signal<boolean>(false);
   private readonly parkIdSignal = signal<string | null>(null);
   private readonly eventTypeSignal = signal<FactualEventType | null>(null);
+  private readonly reportedNotificationIdsSignal = signal<ReadonlySet<string>>(new Set<string>());
   private requestId: number = 0;
 
   readonly page: Signal<UserNotificationPage | null> = this.pageSignal.asReadonly();
@@ -34,6 +35,8 @@ export class UserNotificationsFacade {
   readonly unreadOnly: Signal<boolean> = this.unreadOnlySignal.asReadonly();
   readonly parkId: Signal<string | null> = this.parkIdSignal.asReadonly();
   readonly eventType: Signal<FactualEventType | null> = this.eventTypeSignal.asReadonly();
+  readonly reportedNotificationIds: Signal<ReadonlySet<string>> =
+    this.reportedNotificationIdsSignal.asReadonly();
 
   constructor(
     @Inject(USER_NOTIFICATIONS_DATA_PORT) private readonly dataPort: UserNotificationsDataPort,
@@ -89,6 +92,14 @@ export class UserNotificationsFacade {
               return;
             }
             this.pageSignal.set(result);
+            this.reportedNotificationIdsSignal.update(
+              (current: ReadonlySet<string>): ReadonlySet<string> => new Set<string>([
+                ...current,
+                ...result.items
+                  .filter((notification: UserNotification): boolean => notification.isReportedMisleading)
+                  .map((notification: UserNotification): string => notification.notificationId)
+              ])
+            );
           }
         },
         error: (): void => {
@@ -97,6 +108,32 @@ export class UserNotificationsFacade {
           }
         }
       });
+  }
+
+  recordCenterOpened(): void {
+    this.recordPilotInteraction('NotificationCenterOpened');
+  }
+
+  recordSourceOpened(notificationId: string): void {
+    this.recordPilotInteraction('SourceOpened', notificationId);
+  }
+
+  reportMisleading(notificationId: string): void {
+    if (this.reportedNotificationIdsSignal().has(notificationId)) {
+      return;
+    }
+
+    this.runMutation(
+      notificationId,
+      this.dataPort.capturePilotInteraction('MisleadingAlertReported', notificationId),
+      (): void => {
+        this.reportedNotificationIdsSignal.update(
+          (current: ReadonlySet<string>): ReadonlySet<string> =>
+            new Set<string>([...current, notificationId])
+        );
+        this.load(this.pageSignal()?.page ?? 1);
+      }
+    );
   }
 
   setUnreadOnly(unreadOnly: boolean): void {
@@ -154,8 +191,19 @@ export class UserNotificationsFacade {
         notification.notificationId,
         notification.subscriptionVersion
       ),
-      (): void => this.load(this.pageSignal()?.page ?? 1)
+      (): void => {
+        this.load(this.pageSignal()?.page ?? 1);
+      }
     );
+  }
+
+  private recordPilotInteraction(
+    interactionKind: 'NotificationCenterOpened' | 'SourceOpened',
+    notificationId: string | null = null
+  ): void {
+    this.dataPort.capturePilotInteraction(interactionKind, notificationId)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({ error: (): void => undefined });
   }
 
   private runMutation(id: string, request: Observable<void>, onSuccess: () => void): void {

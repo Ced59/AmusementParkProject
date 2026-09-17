@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Watchlists.Ports;
+using AmusementPark.Application.Features.Watchlists.Models;
 using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Watchlists;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Watchlists;
@@ -11,6 +12,37 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 
 public sealed class UserNotificationRepositoryTests
 {
+    [Fact]
+    public async Task CreateManyAsync_ShouldReportDuplicatesPreventedByTheLogicalUniqueKey()
+    {
+        BulkWriteResult<UserNotificationDocument> writeResult =
+            new BulkWriteResult<UserNotificationDocument>.Acknowledged(
+                2,
+                0,
+                0,
+                0,
+                0,
+                Array.Empty<WriteModel<UserNotificationDocument>>(),
+                new BulkWriteUpsert[] { null! });
+        Mock<IMongoCollection<UserNotificationDocument>> collection =
+            new Mock<IMongoCollection<UserNotificationDocument>>(MockBehavior.Strict);
+        collection.Setup(candidate => candidate.BulkWriteAsync(
+                It.Is<IEnumerable<WriteModel<UserNotificationDocument>>>(writes => writes.Count() == 1),
+                It.Is<BulkWriteOptions>(options => !options.IsOrdered),
+                CancellationToken.None))
+            .ReturnsAsync(writeResult);
+        UserNotification notification = CreateNotification();
+        UserNotificationRepository repository = new(collection.Object);
+
+        UserNotificationCreationResult result = await repository.CreateManyAsync(
+                new[] { notification, notification },
+                CancellationToken.None);
+
+        Assert.Equal(1, result.CreatedCount);
+        Assert.Equal(1, result.DuplicateCount);
+        collection.VerifyAll();
+    }
+
     [Fact]
     public async Task CreateManyAsync_ShouldHoldActivityLeaseUntilACancelledWriteHasExited()
     {

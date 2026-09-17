@@ -66,6 +66,7 @@ public sealed class WatchlistHttpMapperTests
             NowUtc.AddDays(365),
             1,
             true,
+            true,
             2);
         UserNotificationPageResult result = new UserNotificationPageResult(
             new[] { notification },
@@ -83,5 +84,6 @@ public sealed class WatchlistHttpMapperTests
         Assert.Equal("park-1", item.Target.ParkId);
         Assert.Equal("Europa-Park", Assert.Single(dto.ParkFilters).ParkName);
         Assert.Equal("2027-04-08", item.NewValue?.CanonicalValue);
+        Assert.True(item.IsReportedMisleading);
     }
 }

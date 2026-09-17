@@ -30,6 +30,11 @@ internal static class NotificationDeliveryAttemptMongoDefinitions
                     ExpireAfter = TimeSpan.Zero,
                     Name = "ttl_notification_delivery_expiry",
                 }),
+            new CreateIndexModel<NotificationDeliveryAttemptDocument>(
+                Builders<NotificationDeliveryAttemptDocument>.IndexKeys
+                    .Ascending(static item => item.CreatedAt)
+                    .Ascending(static item => item.Status),
+                new CreateIndexOptions { Name = "ix_notification_delivery_pilot_created_status" }),
         };
     }
 }

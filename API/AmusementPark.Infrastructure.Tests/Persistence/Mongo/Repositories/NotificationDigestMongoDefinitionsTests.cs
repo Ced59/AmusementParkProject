@@ -13,8 +13,10 @@ public sealed class NotificationDigestMongoDefinitionsTests
         IReadOnlyCollection<CreateIndexModel<NotificationDigestDocument>> indexes =
             NotificationDigestMongoDefinitions.BuildIndexes();
 
-        CreateIndexModel<NotificationDigestDocument> unique = Assert.Single(indexes);
+        CreateIndexModel<NotificationDigestDocument> unique = indexes.Single(
+            index => index.Options.Name == "uq_notification_digest_group");
         Assert.Equal("uq_notification_digest_group", unique.Options.Name);
         Assert.True(unique.Options.Unique);
+        Assert.Contains(indexes, index => index.Options.Name == "ix_notification_digest_pilot_created");
     }
 }

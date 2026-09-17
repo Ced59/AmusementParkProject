@@ -86,6 +86,7 @@ public sealed class WatchNotificationMongoDefinitionsTests
             && index.Options.Unique == true);
         Assert.Contains(indexes, index => index.Options.Name == "ix_watch_subscription_distribution"
             && index.Options.Unique != true);
+        Assert.Contains(indexes, index => index.Options.Name == "ix_watch_subscription_pilot_active_types");
     }
 
     [Fact]
@@ -93,6 +94,14 @@ public sealed class WatchNotificationMongoDefinitionsTests
     {
         IReadOnlyCollection<CreateIndexModel<UserNotificationDocument>> indexes =
             WatchNotificationMongoDefinitions.BuildNotificationIndexes();
+        CreateIndexModel<UserNotificationDocument> misleadingReports = indexes.Single(
+            index => index.Options.Name == "ix_user_notification_pilot_misleading_reported");
+        IBsonSerializer<UserNotificationDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<UserNotificationDocument>();
+        BsonDocument misleadingReportKeys = misleadingReports.Keys.Render(
+            new RenderArgs<UserNotificationDocument>(
+                serializer,
+                BsonSerializer.SerializerRegistry));
 
         Assert.Contains(indexes, index => index.Options.Name == "uq_user_notification_event"
             && index.Options.Unique == true);
@@ -101,6 +110,9 @@ public sealed class WatchNotificationMongoDefinitionsTests
         Assert.Contains(indexes, index => index.Options.Name == "ix_user_notification_correction_distribution");
         Assert.Contains(indexes, index => index.Options.Name == "ttl_user_notification_retention"
             && index.Options.ExpireAfter == TimeSpan.Zero);
+        Assert.Contains(indexes, index => index.Options.Name == "ix_user_notification_pilot_delivered");
+        Assert.True(misleadingReports.Options.Sparse);
+        Assert.Equal(1, misleadingReportKeys[UserNotificationDocument.MisleadingReportedAtFieldName]);
     }
 
     [Fact]

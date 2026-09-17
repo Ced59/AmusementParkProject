@@ -9,6 +9,13 @@ internal static class UserNotificationMongoMapper
     public static UserNotificationDocument ToDocument(this UserNotification notification)
     {
         ArgumentNullException.ThrowIfNull(notification);
+        DateTime[] mutationTimestamps =
+        [
+            notification.DeliveredAtUtc,
+            notification.ReadAtUtc ?? notification.DeliveredAtUtc,
+            notification.DismissedAtUtc ?? notification.DeliveredAtUtc,
+            notification.MisleadingReportedAtUtc ?? notification.DeliveredAtUtc,
+        ];
         return new UserNotificationDocument
         {
             Id = notification.Id.Value,
@@ -26,9 +33,10 @@ internal static class UserNotificationMongoMapper
             DeliveredAt = notification.DeliveredAtUtc,
             ReadAt = notification.ReadAtUtc,
             DismissedAt = notification.DismissedAtUtc,
+            MisleadingReportedAt = notification.MisleadingReportedAtUtc,
             ExpiresAt = notification.ExpiresAtUtc,
             CreatedAt = notification.CreatedAtUtc,
-            UpdatedAt = notification.DismissedAtUtc ?? notification.ReadAtUtc ?? notification.DeliveredAtUtc,
+            UpdatedAt = mutationTimestamps.Max(),
             Version = notification.Version,
         };
     }
@@ -54,6 +62,7 @@ internal static class UserNotificationMongoMapper
             document.ReadAt,
             document.DismissedAt,
             document.ExpiresAt,
-            document.Version);
+            document.Version,
+            document.MisleadingReportedAt);
     }
 }

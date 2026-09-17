@@ -59,4 +59,14 @@ export class UserNotificationsApiService {
       { params }
     );
   }
+
+  capturePilotInteraction(
+    interactionKind: 'NotificationCenterOpened' | 'SourceOpened' | 'MisleadingAlertReported',
+    notificationId: string | null = null
+  ): Observable<void> {
+    return this.http.post<void>(
+      `${environment.apiBaseUrl}${USER_NOTIFICATIONS_API_ENDPOINTS.pilotInteractions}`,
+      { interactionKind, notificationId }
+    );
+  }
 }

@@ -12,15 +12,18 @@ public sealed class WatchSubscriptionLifecycleService
     private readonly IWatchSubscriptionRepository repository;
     private readonly UserCollectionTargetReader targetReader;
     private readonly TimeProvider timeProvider;
+    private readonly WatchPilotMetricsRecorder? pilotMetricsRecorder;
 
     public WatchSubscriptionLifecycleService(
         IWatchSubscriptionRepository repository,
         UserCollectionTargetReader targetReader,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        WatchPilotMetricsRecorder? pilotMetricsRecorder = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         this.targetReader = targetReader ?? throw new ArgumentNullException(nameof(targetReader));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.pilotMetricsRecorder = pilotMetricsRecorder;
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<WatchSubscriptionResult>>> ListAsync(
@@ -184,6 +187,13 @@ public sealed class WatchSubscriptionLifecycleService
             parsedId,
             expectedVersion,
             cancellationToken);
+        if (outcome == WatchSubscriptionWriteOutcome.Success && this.pilotMetricsRecorder is not null)
+        {
+            await this.pilotMetricsRecorder.RecordBestEffortAsync(
+                WatchPilotInteractionKind.SubscriptionRemoved,
+                cancellationToken);
+        }
+
         return outcome switch
         {
             WatchSubscriptionWriteOutcome.Success => ApplicationResult.Success(),

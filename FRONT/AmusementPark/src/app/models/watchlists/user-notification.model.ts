@@ -41,6 +41,7 @@ export interface UserNotification {
   readAtUtc: string | null;
   expiresAtUtc: string;
   version: number;
+  isReportedMisleading: boolean;
   canManageSubscription: boolean;
   subscriptionVersion: number | null;
 }

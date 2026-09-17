@@ -1,6 +1,20 @@
 {
-  "version": "5.3.55",
+  "version": "5.3.56",
   "history": [
+    {
+      "version": "5.3.56",
+      "releasedAt": "2026-09-17",
+      "labels": {
+        "fr": "La fiabilité des alertes peut désormais être suivie avec des indicateurs clairs.",
+        "en": "Alert reliability can now be monitored through clear indicators.",
+        "de": "Die Zuverlässigkeit von Warnmeldungen lässt sich jetzt mit klaren Kennzahlen verfolgen.",
+        "nl": "De betrouwbaarheid van meldingen is nu te volgen met duidelijke indicatoren.",
+        "it": "L’affidabilità degli avvisi può ora essere monitorata con indicatori chiari.",
+        "es": "La fiabilidad de las alertas ya puede seguirse mediante indicadores claros.",
+        "pl": "Wiarygodność alertów można teraz śledzić za pomocą czytelnych wskaźników.",
+        "pt": "A fiabilidade dos alertas pode agora ser acompanhada com indicadores claros."
+      }
+    },
     {
       "version": "5.3.55",
       "releasedAt": "2026-09-17",

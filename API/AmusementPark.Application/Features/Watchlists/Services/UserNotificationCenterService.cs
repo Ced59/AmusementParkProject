@@ -19,19 +19,22 @@ public sealed class UserNotificationCenterService
     private readonly IFactualChangeEventRepository eventRepository;
     private readonly UserCollectionTargetReader targetReader;
     private readonly TimeProvider timeProvider;
+    private readonly WatchPilotMetricsRecorder? pilotMetricsRecorder;
 
     public UserNotificationCenterService(
         IUserNotificationRepository notificationRepository,
         IWatchSubscriptionRepository subscriptionRepository,
         IFactualChangeEventRepository eventRepository,
         UserCollectionTargetReader targetReader,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        WatchPilotMetricsRecorder? pilotMetricsRecorder = null)
     {
         this.notificationRepository = notificationRepository ?? throw new ArgumentNullException(nameof(notificationRepository));
         this.subscriptionRepository = subscriptionRepository ?? throw new ArgumentNullException(nameof(subscriptionRepository));
         this.eventRepository = eventRepository ?? throw new ArgumentNullException(nameof(eventRepository));
         this.targetReader = targetReader ?? throw new ArgumentNullException(nameof(targetReader));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.pilotMetricsRecorder = pilotMetricsRecorder;
     }
 
     public async Task<ApplicationResult<UserNotificationPageResult>> SearchAsync(
@@ -202,6 +205,13 @@ public sealed class UserNotificationCenterService
             subscription.Id,
             expectedSubscriptionVersion,
             cancellationToken);
+        if (outcome == WatchSubscriptionWriteOutcome.Success && this.pilotMetricsRecorder is not null)
+        {
+            await this.pilotMetricsRecorder.RecordBestEffortAsync(
+                WatchPilotInteractionKind.SubscriptionRemoved,
+                cancellationToken);
+        }
+
         return outcome is WatchSubscriptionWriteOutcome.Success or WatchSubscriptionWriteOutcome.NotFound
             ? ApplicationResult.Success()
             : ApplicationResult.Failure(UserNotificationApplicationErrors.ChangedConcurrently());
@@ -431,6 +441,7 @@ public sealed class UserNotificationCenterService
             notification.ReadAtUtc,
             notification.ExpiresAtUtc,
             notification.Version,
+            notification.MisleadingReportedAtUtc.HasValue,
             subscription is not null,
             subscription?.Version);
     }

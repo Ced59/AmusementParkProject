@@ -7,7 +7,7 @@ namespace AmusementPark.Application.Features.Watchlists.Ports;
 
 public interface IUserNotificationRepository
 {
-    Task<long> CreateManyAsync(
+    Task<UserNotificationCreationResult> CreateManyAsync(
         IReadOnlyCollection<UserNotification> notifications,
         CancellationToken cancellationToken);
 

@@ -30,7 +30,8 @@ public sealed class UserNotification
         DateTime? readAtUtc,
         DateTime? dismissedAtUtc,
         DateTime expiresAtUtc,
-        long version)
+        long version,
+        DateTime? misleadingReportedAtUtc)
     {
         _ = id.Value;
         _ = factualEventId.Value;
@@ -53,7 +54,15 @@ public sealed class UserNotification
             throw Invalid(UserNotificationErrorCodes.InvalidLanguage, "The notification language is not supported.");
         }
 
-        ValidateState(status, createdAtUtc, deliveredAtUtc, readAtUtc, dismissedAtUtc, expiresAtUtc, version);
+        ValidateState(
+            status,
+            createdAtUtc,
+            deliveredAtUtc,
+            readAtUtc,
+            dismissedAtUtc,
+            expiresAtUtc,
+            version,
+            misleadingReportedAtUtc);
         this.Id = id;
         this.FactualEventId = factualEventId;
         this.SubscriptionId = subscriptionId;
@@ -69,6 +78,7 @@ public sealed class UserNotification
         this.DismissedAtUtc = dismissedAtUtc;
         this.ExpiresAtUtc = expiresAtUtc;
         this.Version = version;
+        this.MisleadingReportedAtUtc = misleadingReportedAtUtc;
     }
 
     public UserNotificationId Id { get; }
@@ -106,6 +116,8 @@ public sealed class UserNotification
     public DateTime ExpiresAtUtc { get; }
 
     public long Version { get; private set; }
+
+    public DateTime? MisleadingReportedAtUtc { get; private set; }
 
     public bool IsUnread => this.Status == UserNotificationStatus.Delivered;
 
@@ -151,7 +163,8 @@ public sealed class UserNotification
             null,
             null,
             nowUtc.AddDays(RetentionDays),
-            1);
+            1,
+            null);
     }
 
     public static UserNotification CreateFollowUp(
@@ -198,7 +211,8 @@ public sealed class UserNotification
             null,
             null,
             nowUtc.AddDays(RetentionDays),
-            1);
+            1,
+            null);
     }
 
     public static UserNotification Restore(
@@ -219,7 +233,8 @@ public sealed class UserNotification
         DateTime? readAtUtc,
         DateTime? dismissedAtUtc,
         DateTime expiresAtUtc,
-        long version)
+        long version,
+        DateTime? misleadingReportedAtUtc = null)
     {
         return new UserNotification(
             id,
@@ -239,7 +254,8 @@ public sealed class UserNotification
             readAtUtc,
             dismissedAtUtc,
             expiresAtUtc,
-            version);
+            version,
+            misleadingReportedAtUtc);
     }
 
     public void MarkRead(DateTime nowUtc)
@@ -278,6 +294,18 @@ public sealed class UserNotification
         this.DismissedAtUtc = nowUtc;
     }
 
+    public void ReportMisleading(DateTime nowUtc)
+    {
+        this.EnsureMutationTimestamp(nowUtc);
+        if (this.MisleadingReportedAtUtc.HasValue)
+        {
+            return;
+        }
+
+        this.AdvanceVersion();
+        this.MisleadingReportedAtUtc = nowUtc;
+    }
+
     private static void ValidateState(
         UserNotificationStatus status,
         DateTime createdAtUtc,
@@ -285,7 +313,8 @@ public sealed class UserNotification
         DateTime? readAtUtc,
         DateTime? dismissedAtUtc,
         DateTime expiresAtUtc,
-        long version)
+        long version,
+        DateTime? misleadingReportedAtUtc)
     {
         if (!Enum.IsDefined(status))
         {
@@ -305,8 +334,14 @@ public sealed class UserNotification
             EnsureUtc(dismissedAtUtc.Value);
         }
 
+        if (misleadingReportedAtUtc.HasValue)
+        {
+            EnsureUtc(misleadingReportedAtUtc.Value);
+        }
+
         if (deliveredAtUtc < createdAtUtc || expiresAtUtc <= deliveredAtUtc
-            || readAtUtc < deliveredAtUtc || dismissedAtUtc < deliveredAtUtc)
+            || readAtUtc < deliveredAtUtc || dismissedAtUtc < deliveredAtUtc
+            || misleadingReportedAtUtc < deliveredAtUtc)
         {
             throw Invalid(UserNotificationErrorCodes.InvalidTimestamp, "The notification timestamps are inconsistent.");
         }

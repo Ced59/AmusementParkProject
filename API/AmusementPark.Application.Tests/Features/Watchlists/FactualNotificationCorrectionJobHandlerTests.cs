@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Application.Features.Watchlists.Services;
 using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Watchlists;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
@@ -56,7 +57,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
                     && items.Single().FactualEventId == correction.Id
                     && items.Single().SubscriptionId == originalNotification.SubscriptionId),
                 CancellationToken.None))
-            .ReturnsAsync(1);
+            .ReturnsAsync(new UserNotificationCreationResult(1, 0));
         digestScheduler.Setup(value => value.ScheduleAsync(
                 correction.Id,
                 It.Is<IReadOnlyCollection<string>>(userIds => userIds.Single() == "user-1"),
@@ -71,6 +72,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
         FactualNotificationCorrectionJobHandler handler = new FactualNotificationCorrectionJobHandler(
             events.Object,
             notifications.Object,
+            CreateNotificationCreationService(notifications.Object),
             receipts.Object,
             scheduler.Object,
             digestScheduler.Object,
@@ -138,6 +140,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
         FactualNotificationCorrectionJobHandler handler = new FactualNotificationCorrectionJobHandler(
             events.Object,
             notifications.Object,
+            CreateNotificationCreationService(notifications.Object),
             receipts.Object,
             scheduler.Object,
             digestScheduler.Object,
@@ -179,6 +182,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
         FactualNotificationCorrectionJobHandler handler = new FactualNotificationCorrectionJobHandler(
             events.Object,
             notifications.Object,
+            CreateNotificationCreationService(notifications.Object),
             receipts.Object,
             scheduler.Object,
             Mock.Of<INotificationDigestScheduler>(),
@@ -235,7 +239,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
                 It.Is<IReadOnlyCollection<UserNotification>>(items =>
                     items.Count == 1 && items.Single().FactualEventId == latest.Id),
                 CancellationToken.None))
-            .ReturnsAsync(1);
+            .ReturnsAsync(new UserNotificationCreationResult(1, 0));
         receipts.Setup(repository => repository.CompleteAsync(
                 It.Is<FactualNotificationDistributionReceipt>(receipt => receipt.EventId == receiptId),
                 CancellationToken.None))
@@ -244,6 +248,7 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
         FactualNotificationCorrectionJobHandler handler = new FactualNotificationCorrectionJobHandler(
             events.Object,
             notifications.Object,
+            CreateNotificationCreationService(notifications.Object),
             receipts.Object,
             scheduler.Object,
             Mock.Of<INotificationDigestScheduler>(),
@@ -270,6 +275,16 @@ public sealed class FactualNotificationCorrectionJobHandlerTests
             payload.EventVersion,
             1,
             payload.EventId);
+    }
+
+    private static UserNotificationCreationService CreateNotificationCreationService(
+        IUserNotificationRepository repository)
+    {
+        Mock<IWatchPilotMetricsRepository> metrics = new(MockBehavior.Strict);
+        WatchPilotMetricsRecorder recorder = new(
+            metrics.Object,
+            new Mock<ILogger<WatchPilotMetricsRecorder>>().Object);
+        return new UserNotificationCreationService(repository, recorder);
     }
 
     private static UserNotification CreateNotification(

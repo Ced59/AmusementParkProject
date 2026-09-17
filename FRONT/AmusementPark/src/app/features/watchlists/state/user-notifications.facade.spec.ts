@@ -65,6 +65,34 @@ describe('UserNotificationsFacade', () => {
     expect(dataPort.deleteSourceSubscription).toHaveBeenCalledWith('notification-1', 4);
   });
 
+  it('records privacy-safe pilot interactions without changing the notification list', () => {
+    const dataPort: UserNotificationsDataPort = buildPort();
+    const facade: UserNotificationsFacade = createFacade(dataPort);
+
+    facade.recordCenterOpened();
+    facade.recordSourceOpened('notification-1');
+    facade.reportMisleading('notification-1');
+
+    expect(dataPort.capturePilotInteraction).toHaveBeenCalledWith('NotificationCenterOpened', null);
+    expect(dataPort.capturePilotInteraction).toHaveBeenCalledWith('SourceOpened', 'notification-1');
+    expect(dataPort.capturePilotInteraction).toHaveBeenCalledWith('MisleadingAlertReported', 'notification-1');
+    expect(facade.reportedNotificationIds().has('notification-1')).toBe(true);
+  });
+
+  it('restores an existing misleading report from the private notification state', () => {
+    const notification = {
+      notificationId: 'notification-1',
+      isReportedMisleading: true
+    } as UserNotificationPage['items'][number];
+    const dataPort: UserNotificationsDataPort = buildPort();
+    vi.mocked(dataPort.search).mockReturnValue(of(buildPage([notification], 1, 1, 1)));
+    const facade: UserNotificationsFacade = createFacade(dataPort);
+
+    facade.load();
+
+    expect(facade.reportedNotificationIds().has('notification-1')).toBe(true);
+  });
+
   it('returns to the last populated page after dismissing the final item', () => {
     const notification = {
       notificationId: 'notification-13',
@@ -100,7 +128,8 @@ function buildPort(): UserNotificationsDataPort {
     markRead: vi.fn().mockReturnValue(of(void 0)),
     dismiss: vi.fn().mockReturnValue(of(void 0)),
     markAllRead: vi.fn().mockReturnValue(of(void 0)),
-    deleteSourceSubscription: vi.fn().mockReturnValue(of(void 0))
+    deleteSourceSubscription: vi.fn().mockReturnValue(of(void 0)),
+    capturePilotInteraction: vi.fn().mockReturnValue(of(void 0))
   };
 }
 

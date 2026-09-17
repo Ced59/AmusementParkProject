@@ -13,6 +13,10 @@ export interface UserNotificationsDataPort {
   dismiss(notificationId: string, expectedVersion: number): Observable<void>;
   markAllRead(): Observable<void>;
   deleteSourceSubscription(notificationId: string, expectedVersion: number): Observable<void>;
+  capturePilotInteraction(
+    interactionKind: 'NotificationCenterOpened' | 'SourceOpened' | 'MisleadingAlertReported',
+    notificationId?: string | null
+  ): Observable<void>;
 }
 
 export const USER_NOTIFICATIONS_DATA_PORT = new InjectionToken<UserNotificationsDataPort>(

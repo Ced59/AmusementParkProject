@@ -79,6 +79,9 @@ public static class RateLimitingServiceCollectionExtensions
         FixedWindowRateLimitSettings parkFitPilotEventSettings = configuration
             .GetSection("RateLimiting:ParkFit:PilotEvents")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(30, 60);
+        FixedWindowRateLimitSettings watchPilotInteractionSettings = configuration
+            .GetSection("RateLimiting:WatchPilot:Interactions")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(60, 60);
 
         services.AddRateLimiter(options =>
         {
@@ -148,6 +151,10 @@ public static class RateLimitingServiceCollectionExtensions
                 options,
                 RateLimitPolicyNames.ParkFitPilotEvents,
                 parkFitPilotEventSettings);
+            options.AddPolicy(RateLimitPolicyNames.WatchPilotInteractions, context =>
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: GetAuthenticatedUserPartitionKey(context),
+                    factory: _ => CreateFixedWindowOptions(watchPilotInteractionSettings)));
             options.AddConcurrencyLimiter(RateLimitPolicyNames.ImageUploadProcessing, limiterOptions =>
             {
                 limiterOptions.PermitLimit = 1;

@@ -68,6 +68,25 @@ public sealed class UserNotificationTests
     }
 
     [Fact]
+    public void ReportMisleading_ShouldBeIdempotentAndIndependentFromReadStatus()
+    {
+        UserNotification notification = UserNotification.CreateWeb(
+            UserNotificationId.Parse("notification-1"),
+            CreatePublishedEvent(),
+            CreateSubscription(),
+            "fr",
+            NowUtc);
+
+        notification.ReportMisleading(NowUtc.AddMinutes(1));
+        notification.ReportMisleading(NowUtc.AddMinutes(2));
+        notification.MarkRead(NowUtc.AddMinutes(3));
+
+        Assert.Equal(NowUtc.AddMinutes(1), notification.MisleadingReportedAtUtc);
+        Assert.Equal(UserNotificationStatus.Read, notification.Status);
+        Assert.Equal(3, notification.Version);
+    }
+
+    [Fact]
     public void CreateFollowUp_ShouldKeepOriginalRecipientWithoutRequiringAnActiveSubscription()
     {
         UserNotification original = UserNotification.CreateWeb(
