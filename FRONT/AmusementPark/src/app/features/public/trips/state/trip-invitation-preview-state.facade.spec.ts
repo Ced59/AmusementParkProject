@@ -190,6 +190,32 @@ describe('TripInvitationPreviewStateFacade', () => {
     expect(facade.status()).toBe('accepted');
   });
 
+  it('does not reuse an in-memory decision after the authenticated account changes', () => {
+    loggedIn = true;
+    (data.accept as ReturnType<typeof vi.fn>).mockReturnValue(
+      throwError(() => ({ status: 503 }))
+    );
+    (data.decline as ReturnType<typeof vi.fn>).mockReturnValue(
+      of({ tripPlanId: 'trip-1', wasReplayed: false })
+    );
+    facade.load('opaque-token');
+    facade.accept();
+
+    currentUserId = 'user-2';
+    facade.decline();
+
+    expect(decisionOperations.read).toHaveBeenLastCalledWith('opaque-token', 'user-2');
+    expect(data.accept).toHaveBeenCalledOnce();
+    expect(data.decline).toHaveBeenCalledWith('opaque-token', 'operation-1');
+    expect(decisionOperations.write).toHaveBeenLastCalledWith(
+      'opaque-token',
+      'user-2',
+      'decline',
+      'operation-1'
+    );
+    expect(facade.status()).toBe('declined');
+  });
+
   it('does not resume another account decision in a shared tab', () => {
     loggedIn = true;
     currentUserId = 'user-2';

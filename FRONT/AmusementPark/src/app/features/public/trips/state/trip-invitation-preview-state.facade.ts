@@ -22,6 +22,7 @@ export class TripInvitationPreviewStateFacade {
   private token: string = '';
   private acceptOperationId: string | null = null;
   private declineOperationId: string | null = null;
+  private decisionUserId: string | null = null;
   private readonly tripPlanIdSignal = signal<string | null>(null);
 
   readonly preview: Signal<TripInvitationPreview | null> = this.previewSignal.asReadonly();
@@ -56,6 +57,7 @@ export class TripInvitationPreviewStateFacade {
       this.declineOperationId = storedOperation?.decision === 'decline'
         ? storedOperation.operationId
         : null;
+      this.decisionUserId = storedOperation ? currentUserId : null;
     }
     if (!normalizedToken) {
       this.previewSignal.set(null);
@@ -116,6 +118,11 @@ export class TripInvitationPreviewStateFacade {
     if (!currentUserId) {
       return;
     }
+    if (this.decisionUserId && this.decisionUserId !== currentUserId) {
+      this.acceptOperationId = null;
+      this.declineOperationId = null;
+      this.decisionUserId = null;
+    }
     if (!resumed) {
       if (!this.acceptOperationId && !this.declineOperationId) {
         const storedOperation = this.decisionOperations.read(this.token, currentUserId);
@@ -126,6 +133,7 @@ export class TripInvitationPreviewStateFacade {
           this.declineOperationId = storedOperation.decision === 'decline'
             ? storedOperation.operationId
             : null;
+          this.decisionUserId = currentUserId;
         }
       }
       if (this.acceptOperationId || this.declineOperationId) {
@@ -143,6 +151,7 @@ export class TripInvitationPreviewStateFacade {
     } else {
       this.declineOperationId = operationId;
     }
+    this.decisionUserId = currentUserId;
     this.decisionOperations.write(
       this.token,
       currentUserId,
@@ -165,6 +174,7 @@ export class TripInvitationPreviewStateFacade {
         this.decisionOperations.clear(decisionToken);
         this.acceptOperationId = null;
         this.declineOperationId = null;
+        this.decisionUserId = null;
         this.statusSignal.set(accept ? 'accepted' : 'declined');
       },
       error: (): void => {

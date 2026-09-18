@@ -232,6 +232,9 @@ termine dans la modale sans recharger la route, la première action relit ce mar
 lié au compte et reprend la décision déjà engagée avant de générer une autre clé.
 Après une réponse ambiguë, même un clic sur l'action opposée rejoue cette décision
 initiale : son identifiant ne peut pas être remplacé avant un résultat autoritatif.
+L'état conservé en mémoire porte la même frontière de compte que le stockage : une
+déconnexion suivie d'une autre connexion dans la page l'invalide sans supprimer la
+reprise réservée au premier compte.
 
 ## Séquence de transfert de propriété
 
