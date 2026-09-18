@@ -44,7 +44,9 @@ export class TripInvitationPreviewStateFacade {
     const requestGeneration: number = ++this.requestGeneration;
     this.tripPlanIdSignal.set(null);
     if (tokenChanged) {
-      const currentUserId: string | null = this.authService.getUserIdFromToken();
+      const currentUserId: string | null = this.isAuthenticated()
+        ? this.authService.getUserIdFromToken()
+        : null;
       const storedOperation = currentUserId
         ? this.decisionOperations.read(normalizedToken, currentUserId)
         : null;
