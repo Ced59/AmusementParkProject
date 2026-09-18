@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.Trips.Results;
 using AmusementPark.Application.Features.Trips.Services;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Core.Domain.Trips;
+using AmusementPark.Core.Domain.Users;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
@@ -171,6 +172,41 @@ public sealed class TripInvitationServiceTests
     }
 
     [Fact]
+    public async Task ListAsync_ShouldReturnTheExactPublicAliasUsedByTheGuestPreview()
+    {
+        DateTime nowUtc = new(2027, 6, 1, 8, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "user-1",
+            "Voyage été",
+            TripDateProposal.None(),
+            null,
+            nowUtc);
+        Mock<ITripPlanRepository> trips = new();
+        Mock<ITripInvitationRepository> invitations = new();
+        Mock<IUserRepository> users = new();
+        trips.Setup(item => item.GetOwnedAsync("user-1", trip.Id, CancellationToken.None))
+            .ReturnsAsync(trip);
+        invitations.Setup(item => item.ListActiveAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(Array.Empty<TripInvitation>());
+        users.Setup(item => item.GetByIdAsync("user-1", CancellationToken.None))
+            .ReturnsAsync(new User { PublicDisplayName = " CoasterCamille " });
+        TripInvitationService service = CreateService(
+            invitations.Object,
+            Mock.Of<ITripInvitationSecurity>(),
+            trips.Object,
+            users.Object);
+
+        ApplicationResult<TripInvitationListResult> result = await service.ListAsync(
+            "user-1",
+            trip.Id.Value,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("CoasterCamille", result.Value?.InviterDisplayName);
+    }
+
+    [Fact]
     public async Task PreviewAsync_ShouldNotQueryPersistenceForAMalformedToken()
     {
         Mock<ITripInvitationSecurity> security = new();
@@ -192,17 +228,19 @@ public sealed class TripInvitationServiceTests
 
     private static TripInvitationService CreateService(
         ITripInvitationRepository invitations,
-        ITripInvitationSecurity security)
+        ITripInvitationSecurity security,
+        ITripPlanRepository? trips = null,
+        IUserRepository? users = null)
     {
         TripChildMutationExecutor executor = new(
             Mock.Of<ITripChildMutationLeaseRepository>(),
             NullLogger<TripChildMutationExecutor>.Instance);
         return new TripInvitationService(
-            Mock.Of<ITripPlanRepository>(),
+            trips ?? Mock.Of<ITripPlanRepository>(),
             invitations,
             security,
             executor,
-            Mock.Of<IUserRepository>());
+            users ?? Mock.Of<IUserRepository>());
     }
 
     private static TripInvitation CreateInvitation()

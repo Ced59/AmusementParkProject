@@ -1419,6 +1419,8 @@
       "expiresAt": "Verloopt op",
       "revoke": "Intrekken",
       "error": "De uitnodigingen konden niet worden bijgewerkt.",
+      "breadcrumbLabel": "Kruimelpad",
+      "breadcrumbHome": "Home",
       "backHome": "Terug naar home",
       "previewLoading": "Uitnodiging controleren…",
       "unavailableTitle": "Deze uitnodiging is niet meer beschikbaar",

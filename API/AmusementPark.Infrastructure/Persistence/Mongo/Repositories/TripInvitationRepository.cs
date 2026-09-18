@@ -71,10 +71,10 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
                 new CreateIndexOptions { Name = "ix_trip_invitation_plan_status_created" }),
             new(
                 Builders<TripInvitationDocument>.IndexKeys.Ascending(
-                    static document => document.ExpiresAtUtc),
+                    static document => document.RetentionExpiresAtUtc),
                 new CreateIndexOptions
                 {
-                    Name = "ttl_trip_invitation_expiration",
+                    Name = "ttl_trip_invitation_retention",
                     ExpireAfter = TimeSpan.Zero,
                 }),
             new(
@@ -118,6 +118,8 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
         string normalizedRequestHash = NormalizeRequired(requestHash, nameof(requestHash));
         string normalizedSealedToken = NormalizeRequired(sealedToken, nameof(sealedToken));
         string normalizedKeyVersion = NormalizeRequired(sealedTokenKeyVersion, nameof(sealedTokenKeyVersion));
+
+        await this.ExpireElapsedInvitationsAsync(invitation.TripPlanId, cancellationToken);
 
         TripInvitationDocument? existing = await this.collection.Find(BuildOperationFilter(
                 invitation.TripPlanId,
@@ -370,6 +372,25 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
             : await this.ActivateAsync(reclaimed, lease, cancellationToken);
     }
 
+    private async Task ExpireElapsedInvitationsAsync(
+        TripPlanId tripPlanId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<TripInvitationDocument> filters =
+            Builders<TripInvitationDocument>.Filter;
+        await this.collection.UpdateManyAsync(
+            filters.Eq(static document => document.TripPlanId, tripPlanId.Value)
+            & filters.Eq(static document => document.Status, TripInvitationStatus.Active)
+            & BuildElapsedExpirationFilter(),
+            Builders<TripInvitationDocument>.Update
+                .Set(static document => document.Status, TripInvitationStatus.Expired)
+                .CurrentDate(static document => document.UpdatedAt)
+                .Unset(static document => document.ActiveSlot)
+                .Unset(static document => document.SealedToken)
+                .Unset(static document => document.SealedTokenKeyVersion),
+            cancellationToken: cancellationToken);
+    }
+
     private async Task<TripInvitationCreationWriteResult> ActivateAsync(
         TripInvitationDocument shell,
         TripChildMutationLease lease,
@@ -453,6 +474,13 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
             & new BsonDocumentFilterDefinition<TripInvitationDocument>(new BsonDocument(
                 "$expr",
                 new BsonDocument("$lt", new BsonArray { "$$NOW", "$expiresAtUtc" })));
+    }
+
+    internal static FilterDefinition<TripInvitationDocument> BuildElapsedExpirationFilter()
+    {
+        return new BsonDocumentFilterDefinition<TripInvitationDocument>(new BsonDocument(
+            "$expr",
+            new BsonDocument("$gte", new BsonArray { "$$NOW", "$expiresAtUtc" })));
     }
 
     private static FilterDefinition<TripInvitationDocument> BuildLeaseTimeGuard(

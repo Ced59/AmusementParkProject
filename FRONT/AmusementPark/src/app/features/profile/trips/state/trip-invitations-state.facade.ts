@@ -5,6 +5,7 @@ import { finalize } from 'rxjs';
 import {
   CreateTripInvitationRequest,
   TripInvitationCreation,
+  TripInvitationList,
   TripInvitationRole,
   TripInvitationSummary
 } from '@app/models/trips/trip-invitation.models';
@@ -23,6 +24,7 @@ export type TripInvitationActionStatus = 'idle' | 'loading' | 'creating' | 'revo
 export class TripInvitationsStateFacade {
   private readonly invitationsSignal = signal<TripInvitationSummary[]>([]);
   private readonly creationSignal = signal<TripInvitationCreation | null>(null);
+  private readonly inviterDisplayNameSignal = signal<string>('');
   private readonly statusSignal = signal<TripInvitationActionStatus>('idle');
   private readonly tripIdSignal = signal<string>('');
   private readonly planVersionSignal = signal<number>(0);
@@ -31,6 +33,7 @@ export class TripInvitationsStateFacade {
 
   readonly invitations: Signal<TripInvitationSummary[]> = this.invitationsSignal.asReadonly();
   readonly creation: Signal<TripInvitationCreation | null> = this.creationSignal.asReadonly();
+  readonly inviterDisplayName: Signal<string> = this.inviterDisplayNameSignal.asReadonly();
   readonly status: Signal<TripInvitationActionStatus> = this.statusSignal.asReadonly();
 
   constructor(
@@ -56,8 +59,9 @@ export class TripInvitationsStateFacade {
         }
       })
     ).subscribe({
-      next: (invitations: TripInvitationSummary[]): void => {
-        this.invitationsSignal.set(invitations);
+      next: (result: TripInvitationList): void => {
+        this.inviterDisplayNameSignal.set(result.inviterDisplayName);
+        this.invitationsSignal.set(result.invitations);
         this.statusSignal.set('idle');
       },
       error: (): void => this.statusSignal.set('error')
@@ -153,7 +157,10 @@ export class TripInvitationsStateFacade {
       return;
     }
     this.data.list(tripId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (invitations: TripInvitationSummary[]): void => this.invitationsSignal.set(invitations)
+      next: (result: TripInvitationList): void => {
+        this.inviterDisplayNameSignal.set(result.inviterDisplayName);
+        this.invitationsSignal.set(result.invitations);
+      }
     });
   }
 }

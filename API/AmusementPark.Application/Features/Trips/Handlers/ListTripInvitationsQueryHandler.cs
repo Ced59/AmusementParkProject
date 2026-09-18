@@ -8,7 +8,7 @@ namespace AmusementPark.Application.Features.Trips.Handlers;
 
 public sealed class ListTripInvitationsQueryHandler
     : IQueryHandler<ListTripInvitationsQuery,
-        ApplicationResult<IReadOnlyCollection<TripInvitationSummaryResult>>>
+        ApplicationResult<TripInvitationListResult>>
 {
     private readonly TripInvitationService service;
 
@@ -17,7 +17,7 @@ public sealed class ListTripInvitationsQueryHandler
         this.service = service ?? throw new ArgumentNullException(nameof(service));
     }
 
-    public Task<ApplicationResult<IReadOnlyCollection<TripInvitationSummaryResult>>> HandleAsync(
+    public Task<ApplicationResult<TripInvitationListResult>> HandleAsync(
         ListTripInvitationsQuery query,
         CancellationToken cancellationToken = default)
     {

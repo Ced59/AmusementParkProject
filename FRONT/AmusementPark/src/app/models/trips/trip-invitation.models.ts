@@ -28,6 +28,11 @@ export interface TripInvitationSummary {
   createdAtUtc: string;
 }
 
+export interface TripInvitationList {
+  inviterDisplayName: string;
+  invitations: TripInvitationSummary[];
+}
+
 export interface TripInvitationPreview {
   tripTitle: string;
   inviterDisplayName: string;

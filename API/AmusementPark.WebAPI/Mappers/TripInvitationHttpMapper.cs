@@ -30,6 +30,14 @@ public static class TripInvitationHttpMapper
             result.CreatedAtUtc);
     }
 
+    public static TripInvitationListDto ToHttp(this TripInvitationListResult result)
+    {
+        ArgumentNullException.ThrowIfNull(result);
+        return new TripInvitationListDto(
+            result.InviterDisplayName,
+            result.Invitations.Select(static invitation => invitation.ToHttp()).ToArray());
+    }
+
     public static TripInvitationPreviewDto ToHttp(this TripInvitationPreviewResult result)
     {
         ArgumentNullException.ThrowIfNull(result);

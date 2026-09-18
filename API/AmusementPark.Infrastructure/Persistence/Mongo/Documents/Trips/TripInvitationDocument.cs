@@ -65,6 +65,9 @@ public sealed class TripInvitationDocument : MongoDocumentBase
     [BsonElement("expiresAtUtc")]
     public DateTime ExpiresAtUtc { get; set; }
 
+    [BsonElement("retentionExpiresAtUtc")]
+    public DateTime RetentionExpiresAtUtc { get; set; }
+
     [BsonElement("revokedAtUtc")]
     [BsonIgnoreIfNull]
     public DateTime? RevokedAtUtc { get; set; }

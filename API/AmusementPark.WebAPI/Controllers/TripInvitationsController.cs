@@ -24,14 +24,14 @@ namespace AmusementPark.WebAPI.Controllers;
 public sealed class TripInvitationsController : ControllerBase
 {
     private readonly IQueryHandler<ListTripInvitationsQuery,
-        ApplicationResult<IReadOnlyCollection<TripInvitationSummaryResult>>> listHandler;
+        ApplicationResult<TripInvitationListResult>> listHandler;
     private readonly ICommandHandler<CreateTripInvitationCommand,
         ApplicationResult<TripInvitationCreationResult>> createHandler;
     private readonly ICommandHandler<RevokeTripInvitationCommand, ApplicationResult> revokeHandler;
 
     public TripInvitationsController(
         IQueryHandler<ListTripInvitationsQuery,
-            ApplicationResult<IReadOnlyCollection<TripInvitationSummaryResult>>> listHandler,
+            ApplicationResult<TripInvitationListResult>> listHandler,
         ICommandHandler<CreateTripInvitationCommand,
             ApplicationResult<TripInvitationCreationResult>> createHandler,
         ICommandHandler<RevokeTripInvitationCommand, ApplicationResult> revokeHandler)
@@ -42,7 +42,7 @@ public sealed class TripInvitationsController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IReadOnlyCollection<TripInvitationSummaryDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(TripInvitationListDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ListAsync(
         [FromRoute] string tripPlanId,
         CancellationToken cancellationToken = default)
@@ -53,12 +53,12 @@ public sealed class TripInvitationsController : ControllerBase
             return this.Unauthorized();
         }
 
-        ApplicationResult<IReadOnlyCollection<TripInvitationSummaryResult>> result =
+        ApplicationResult<TripInvitationListResult> result =
             await this.listHandler.HandleAsync(
                 new ListTripInvitationsQuery(userId, tripPlanId),
                 cancellationToken);
         return result.IsSuccess && result.Value is not null
-            ? this.Ok(result.Value.Select(static invitation => invitation.ToHttp()).ToArray())
+            ? this.Ok(result.Value.ToHttp())
             : this.ToActionResult(result);
     }
 

@@ -27,6 +27,8 @@ internal static class TripInvitationMongoMapper
             EndMonth = invitation.PeriodPreview.EndMonth,
             MemberCountBand = invitation.MemberCountBand,
             ExpiresAtUtc = ToMongoPrecision(invitation.ExpiresAtUtc),
+            RetentionExpiresAtUtc = ToMongoPrecision(
+                invitation.ExpiresAtUtc.Add(TripInvitation.IdempotencyReplayRetention)),
             RevokedAtUtc = invitation.RevokedAtUtc.HasValue
                 ? ToMongoPrecision(invitation.RevokedAtUtc.Value)
                 : null,

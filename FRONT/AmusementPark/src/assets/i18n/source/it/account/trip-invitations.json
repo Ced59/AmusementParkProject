@@ -37,6 +37,8 @@
       "expiresAt": "Scade il",
       "revoke": "Revoca",
       "error": "Non è stato possibile aggiornare gli inviti.",
+      "breadcrumbLabel": "Percorso di navigazione",
+      "breadcrumbHome": "Home",
       "backHome": "Torna alla home",
       "previewLoading": "Verifica dell’invito…",
       "unavailableTitle": "Questo invito non è più disponibile",

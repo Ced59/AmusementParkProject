@@ -16,6 +16,30 @@
   max-width: 100%;
 }
 
+.invitation-page__breadcrumb {
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-muted);
+}
+
+.invitation-page__breadcrumb a {
+  color: var(--c-sky);
+}
+
+.invitation-page__breadcrumb span,
+.invitation-page__breadcrumb a {
+  overflow-wrap: anywhere;
+}
+
+.invitation-page__breadcrumb i {
+  flex: 0 0 auto;
+  font-size: 0.75rem;
+}
+
 .invitation-page {
   display: grid;
   width: min(100%, 58rem);

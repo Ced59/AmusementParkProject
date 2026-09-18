@@ -172,7 +172,8 @@ rejouer exactement une création dont la réponse réseau aurait été perdue ; 
 est effacée lors de la révocation. Les adresses ciblées sont normalisées puis
 protégées par HMAC versionné. Vingt invitations actives au maximum sont garanties
 par des slots uniques, y compris en concurrence, et l'expiration utilise l'heure
-du serveur MongoDB.
+du serveur MongoDB. La preuve d'idempotence reste conservée vingt-quatre heures
+après l'expiration du lien afin qu'un rejeu tardif ne crée pas un nouveau secret.
 
 L'aperçu public est accessible sans compte mais rendu côté client, non indexable,
 non archivable et sans cache de transfert SSR afin que le token ne soit pas injecté

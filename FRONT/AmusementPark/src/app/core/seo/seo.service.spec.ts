@@ -60,6 +60,18 @@ describe('SeoService', () => {
     expect(readOpenGraphLocaleAlternates()).toEqual([]);
   });
 
+  it('adds a localized token-free breadcrumb to a private trip invitation', () => {
+    service.applyRouteDefaults('/fr/trip-invitations/opaque-secret');
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,nofollow,noarchive');
+    expect(readCanonicalHref()).toBe('http://localhost:4200/fr/trip-invitations');
+    expect(JSON.stringify(readJsonLdScripts())).not.toContain('opaque-secret');
+    expect(readBreadcrumbElements()).toEqual([
+      expect.objectContaining({ position: 1, name: 'Accueil', item: 'http://localhost:4200/fr/home' }),
+      expect.objectContaining({ position: 2, name: 'Invitation privée', item: 'http://localhost:4200/fr/trip-invitations' })
+    ]);
+  });
+
   it('adds localized parent breadcrumbs to the private Park Fit results page', () => {
     service.applyParkFitResultsSeo(
       'Résultats Park Fit',

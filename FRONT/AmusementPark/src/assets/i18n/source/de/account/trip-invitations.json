@@ -37,6 +37,8 @@
       "expiresAt": "Läuft ab am",
       "revoke": "Widerrufen",
       "error": "Die Einladungen konnten nicht aktualisiert werden.",
+      "breadcrumbLabel": "Breadcrumb-Navigation",
+      "breadcrumbHome": "Startseite",
       "backHome": "Zurück zur Startseite",
       "previewLoading": "Einladung wird geprüft…",
       "unavailableTitle": "Diese Einladung ist nicht mehr verfügbar",

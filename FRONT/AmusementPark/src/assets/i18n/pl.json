@@ -1419,6 +1419,8 @@
       "expiresAt": "Wygasa",
       "revoke": "Unieważnij",
       "error": "Nie udało się zaktualizować zaproszeń.",
+      "breadcrumbLabel": "Nawigacja okruszkowa",
+      "breadcrumbHome": "Strona główna",
       "backHome": "Wróć na stronę główną",
       "previewLoading": "Sprawdzanie zaproszenia…",
       "unavailableTitle": "To zaproszenie nie jest już dostępne",

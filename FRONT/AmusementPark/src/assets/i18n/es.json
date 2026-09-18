@@ -1419,6 +1419,8 @@
       "expiresAt": "Caduca el",
       "revoke": "Revocar",
       "error": "No se han podido actualizar las invitaciones.",
+      "breadcrumbLabel": "Ruta de navegación",
+      "breadcrumbHome": "Inicio",
       "backHome": "Volver al inicio",
       "previewLoading": "Comprobando la invitación…",
       "unavailableTitle": "Esta invitación ya no está disponible",

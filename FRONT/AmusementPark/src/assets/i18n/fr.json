@@ -1419,6 +1419,8 @@
       "expiresAt": "Expire le",
       "revoke": "Révoquer",
       "error": "Les invitations n’ont pas pu être mises à jour.",
+      "breadcrumbLabel": "Fil d’Ariane",
+      "breadcrumbHome": "Accueil",
       "backHome": "Retour à l’accueil",
       "previewLoading": "Vérification de l’invitation…",
       "unavailableTitle": "Cette invitation n’est plus disponible",

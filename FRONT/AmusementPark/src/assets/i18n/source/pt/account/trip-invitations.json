@@ -37,6 +37,8 @@
       "expiresAt": "Expira em",
       "revoke": "Revogar",
       "error": "Não foi possível atualizar os convites.",
+      "breadcrumbLabel": "Caminho de navegação",
+      "breadcrumbHome": "Início",
       "backHome": "Voltar ao início",
       "previewLoading": "A verificar o convite…",
       "unavailableTitle": "Este convite já não está disponível",

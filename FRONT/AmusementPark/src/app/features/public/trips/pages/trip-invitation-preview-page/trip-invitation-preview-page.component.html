@@ -1,8 +1,9 @@
 <main class="invitation-page">
-  <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'home']">
-    <i class="pi pi-arrow-left" aria-hidden="true"></i>
-    <span>{{ 'trips.invitations.backHome' | translate }}</span>
-  </a>
+  <nav class="invitation-page__breadcrumb" [attr.aria-label]="'trips.invitations.breadcrumbLabel' | translate">
+    <a [routerLink]="['/', currentLanguage(), 'home']">{{ 'trips.invitations.breadcrumbHome' | translate }}</a>
+    <i class="pi pi-chevron-right" aria-hidden="true"></i>
+    <span aria-current="page">{{ 'trips.invitations.publicKicker' | translate }}</span>
+  </nav>
 
   @if (facade.status() === 'loading') {
     <section class="invitation-page__message" appUiSurface="panel" role="status" aria-live="polite">

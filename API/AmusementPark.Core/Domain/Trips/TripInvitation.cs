@@ -6,6 +6,7 @@ public sealed class TripInvitation
     public const int MaximumDisplayNameLength = 80;
     public static readonly TimeSpan MinimumLifetime = TimeSpan.FromHours(1);
     public static readonly TimeSpan MaximumLifetime = TimeSpan.FromDays(30);
+    public static readonly TimeSpan IdempotencyReplayRetention = TimeSpan.FromHours(24);
 
     private TripInvitation(
         TripInvitationId id,

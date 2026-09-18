@@ -1419,6 +1419,8 @@
       "expiresAt": "Expires on",
       "revoke": "Revoke",
       "error": "Invitations could not be updated.",
+      "breadcrumbLabel": "Breadcrumb",
+      "breadcrumbHome": "Home",
       "backHome": "Back to home",
       "previewLoading": "Checking the invitation…",
       "unavailableTitle": "This invitation is no longer available",

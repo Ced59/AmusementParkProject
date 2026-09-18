@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 import {
   CreateTripInvitationRequest,
   TripInvitationCreation,
-  TripInvitationPreview,
-  TripInvitationSummary
+  TripInvitationList,
+  TripInvitationPreview
 } from '@app/models/trips/trip-invitation.models';
 import { environment } from '../../../environments/environment';
 import { TRIP_API_ENDPOINTS } from './trip-api-endpoints';
@@ -16,8 +16,8 @@ export class TripInvitationsApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  list(tripPlanId: string): Observable<TripInvitationSummary[]> {
-    return this.http.get<TripInvitationSummary[]>(
+  list(tripPlanId: string): Observable<TripInvitationList> {
+    return this.http.get<TripInvitationList>(
       `${environment.apiBaseUrl}${TRIP_API_ENDPOINTS.invitations(tripPlanId)}`,
       { transferCache: false }
     );

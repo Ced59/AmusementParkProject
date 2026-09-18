@@ -138,14 +138,14 @@ public sealed class TripInvitationService
             cancellationToken);
     }
 
-    public async Task<ApplicationResult<IReadOnlyCollection<TripInvitationSummaryResult>>> ListAsync(
+    public async Task<ApplicationResult<TripInvitationListResult>> ListAsync(
         string userId,
         string tripPlanId,
         CancellationToken cancellationToken)
     {
         if (!TryNormalizeIdentity(userId, tripPlanId, out string normalizedUserId, out TripPlanId parsedTripId))
         {
-            return ApplicationResult<IReadOnlyCollection<TripInvitationSummaryResult>>.Failure(
+            return ApplicationResult<TripInvitationListResult>.Failure(
                 TripPlanApplicationErrors.NotFound());
         }
 
@@ -155,15 +155,18 @@ public sealed class TripInvitationService
             cancellationToken);
         if (trip is null)
         {
-            return ApplicationResult<IReadOnlyCollection<TripInvitationSummaryResult>>.Failure(
+            return ApplicationResult<TripInvitationListResult>.Failure(
                 TripPlanApplicationErrors.NotFound());
         }
 
         IReadOnlyCollection<TripInvitation> invitations = await this.invitationRepository.ListActiveAsync(
             trip.Id,
             cancellationToken);
-        return ApplicationResult<IReadOnlyCollection<TripInvitationSummaryResult>>.Success(
-            invitations.Select(ToSummary).ToArray());
+        User? inviterUser = await this.userRepository.GetByIdAsync(normalizedUserId, cancellationToken);
+        string inviterDisplayName = inviterUser?.ResolvePublicDisplayName() ?? NeutralInviterDisplayName;
+        return ApplicationResult<TripInvitationListResult>.Success(new TripInvitationListResult(
+            inviterDisplayName,
+            invitations.Select(ToSummary).ToArray()));
     }
 
     public async Task<ApplicationResult<TripInvitationPreviewResult>> PreviewAsync(

@@ -76,6 +76,7 @@ Collection `trip-invitations` :
   endMonth?: yyyy-MM,
   memberCountBand: One | TwoToFive | SixToTen | ElevenToFifty,
   expiresAtUtc: date,
+  retentionExpiresAtUtc: date,
   revokedAtUtc?: date,
   operationKeyHash: SHA-256(actor + operation),
   requestHash: SHA-256(role + lifetime + target),
@@ -100,7 +101,7 @@ Indexes structurants :
 | unique `(tripPlanId, inviterMemberId, operationKeyHash)` | rejeu idempotent |
 | unique partiel `(tripPlanId, activeSlot)` | au plus vingt créations actives ou préparées |
 | `(tripPlanId, status, createdAt desc)` | liste propriétaire bornée |
-| TTL `expiresAtUtc` | disparition des liens expirés |
+| TTL `retentionExpiresAtUtc` | conservation de la preuve d'idempotence 24 h après expiration |
 | TTL partiel `reservedExpiresAtUtc` | nettoyage d'une préparation interrompue |
 
 La collection et les indexes sont créés par l'initialiseur MongoDB au démarrage ;
@@ -141,7 +142,9 @@ sequenceDiagram
 
 Une même clé avec un autre rôle, une autre durée ou une autre cible est refusée.
 Une opération expirée, révoquée ou dont la clé de rotation n'est plus disponible
-ne restitue jamais un lien ancien.
+ne restitue jamais un lien ancien. À l'expiration, le slot actif et le token scellé
+sont retirés, mais la preuve d'opération reste conservée vingt-quatre heures : un
+rejeu tardif ne peut donc pas fabriquer silencieusement une nouvelle invitation.
 
 ## Aperçu public et révocation
 

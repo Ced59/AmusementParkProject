@@ -3,6 +3,7 @@ import { of, throwError } from 'rxjs';
 
 import {
   TripInvitationCreation,
+  TripInvitationList,
   TripInvitationSummary
 } from '@app/models/trips/trip-invitation.models';
 import {
@@ -22,7 +23,7 @@ describe('TripInvitationsStateFacade', () => {
 
   beforeEach(() => {
     data = {
-      list: vi.fn().mockReturnValue(of([])),
+      list: vi.fn().mockReturnValue(of(createList())),
       create: vi.fn().mockReturnValue(of(createResult())),
       revoke: vi.fn().mockReturnValue(of(undefined)),
       preview: vi.fn()
@@ -49,12 +50,13 @@ describe('TripInvitationsStateFacade', () => {
       targetEmail: 'guest@example.com'
     }, 'operation-1');
     expect(facade.creation()?.token).toBe('opaque-token');
+    expect(facade.inviterDisplayName()).toBe('CoasterCamille');
     expect(facade.status()).toBe('idle');
   });
 
   it('revokes by the hidden action identifier and removes the visible card', () => {
     const invitation: TripInvitationSummary = createSummary();
-    (data.list as ReturnType<typeof vi.fn>).mockReturnValue(of([invitation]));
+    (data.list as ReturnType<typeof vi.fn>).mockReturnValue(of(createList([invitation])));
     facade.load('trip-1', 4);
 
     facade.revoke(invitation);
@@ -107,6 +109,13 @@ function createResult(): TripInvitationCreation {
     expiresAtUtc: '2027-06-08T08:00:00Z',
     isTargeted: false,
     wasReplayed: false
+  };
+}
+
+function createList(invitations: TripInvitationSummary[] = []): TripInvitationList {
+  return {
+    inviterDisplayName: 'CoasterCamille',
+    invitations
   };
 }
 
