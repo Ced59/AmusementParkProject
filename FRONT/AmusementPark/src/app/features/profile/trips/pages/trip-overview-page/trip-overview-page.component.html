@@ -50,10 +50,13 @@
             <button type="button" appUiButton="primary" [disabled]="facade.busy()" (click)="beginFixedDateEdit()">
               {{ 'trips.actions.chooseFixedDates' | translate }}
             </button>
-            <button type="button" appUiButton="ghost" [disabled]="facade.busy()" (click)="clearDates()">
+            <button type="button" appUiButton="ghost" [disabled]="facade.busy() || !canClearDates()" (click)="clearDates()">
               {{ 'trips.actions.clearDates' | translate }}
             </button>
           </div>
+          @if (!canClearDates()) {
+            <p class="trip-dates__validation">{{ 'trips.dates.clearBlocked' | translate }}</p>
+          }
         </div>
       } @else {
         <div class="trip-dates__fields">
@@ -86,11 +89,14 @@
               {{ 'trips.actions.saveDates' | translate }}
             </button>
             @if (facade.trip()?.dateProposal?.kind !== 'None') {
-              <button type="button" appUiButton="ghost" [disabled]="facade.busy()" (click)="clearDates()">
+              <button type="button" appUiButton="ghost" [disabled]="facade.busy() || !canClearDates()" (click)="clearDates()">
                 {{ 'trips.actions.clearDates' | translate }}
               </button>
             }
           </div>
+          @if (facade.trip()?.dateProposal?.kind !== 'None' && !canClearDates()) {
+            <p class="trip-dates__validation">{{ 'trips.dates.clearBlocked' | translate }}</p>
+          }
         </div>
       }
     </section>
@@ -184,6 +190,7 @@
               [index]="index"
               [count]="facade.program().candidates.length"
               [disabled]="facade.busy()"
+              [scheduled]="isCandidateScheduled(candidate.candidateId)"
               (stateChanged)="changeCandidateState(candidate, $event)"
               (moveRequested)="facade.moveCandidate(candidate.candidateId, $event)">
             </app-trip-candidate-card>

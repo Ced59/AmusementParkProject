@@ -19,6 +19,7 @@ export class TripCandidateCardComponent {
   @Input() index: number = 0;
   @Input() count: number = 0;
   @Input() disabled: boolean = false;
+  @Input() scheduled: boolean = false;
 
   @Output() stateChanged = new EventEmitter<TripParkCandidateState>();
   @Output() moveRequested = new EventEmitter<number>();
@@ -33,5 +34,11 @@ export class TripCandidateCardComponent {
 
   protected stateLabelKey(state: TripParkCandidateState): string {
     return `trips.candidates.states.${state.toLowerCase()}`;
+  }
+
+  protected isStateDisabled(state: TripParkCandidateState): boolean {
+    return this.disabled
+      || this.candidate.state === state
+      || (this.scheduled && state !== 'Selected');
   }
 }

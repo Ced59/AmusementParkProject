@@ -63,6 +63,8 @@ describe('TripOverviewPageComponent', () => {
       selectedCandidatesForDate: (localDate: string) => TripParkCandidate[];
       canSaveDay: (localDate: string) => boolean;
       canSaveDates: () => boolean;
+      canClearDates: () => boolean;
+      isCandidateScheduled: (candidateId: string) => boolean;
       saveDates: () => void;
       clearDates: () => void;
     };
@@ -130,6 +132,8 @@ describe('TripOverviewPageComponent', () => {
 
     expect(state.selectedCandidatesForDate('2026-10-04').map((candidate: TripParkCandidate): string =>
       candidate.candidateId)).toEqual(['candidate-flexible']);
+    expect(state.isCandidateScheduled('candidate-1')).toBe(true);
+    expect(state.isCandidateScheduled('candidate-flexible')).toBe(false);
 
     tripDates.set(['2026-10-05']);
     state.dayDrafts.set({
@@ -156,8 +160,18 @@ describe('TripOverviewPageComponent', () => {
     expect(state.dateEditorEnabled()).toBe(false);
     expect(state.canSaveDates()).toBe(false);
     expect(fixture.nativeElement.textContent).toContain('2026-11-01');
+    program.set({ candidates: [createCandidate('candidate-restricted', ['2026-11-01'])], days: [] });
+    fixture.detectChanges();
+    expect(state.canClearDates()).toBe(false);
+    expect(fixture.nativeElement.textContent).toContain('trips.dates.clearBlocked');
     state.saveDates();
     expect(facade.setDates).not.toHaveBeenCalled();
+    state.clearDates();
+    expect(facade.setDates).not.toHaveBeenCalled();
+
+    program.set({ candidates: [createCandidate('candidate-flexible', [])], days: [] });
+    fixture.detectChanges();
+    expect(state.canClearDates()).toBe(true);
     state.clearDates();
     expect(facade.setDates).toHaveBeenCalledWith('', '', '');
   });

@@ -1431,6 +1431,7 @@
       "timeZoneHint": "Check the park or destination time zone (for example Europe/Paris), especially when planning from another country.",
       "currentProposal": "Current proposal",
       "explicitConversion": "This proposal stays unchanged until you explicitly choose fixed dates or clear it.",
+      "clearBlocked": "Clear every saved day and every park date constraint before clearing the trip dates.",
       "toDecide": "Dates to decide",
       "kinds": {
         "none": "Dates to decide",
@@ -1454,6 +1455,7 @@
       "unavailable": "Unavailable park",
       "drag": "Drag this park",
       "changeState": "Change the park priority",
+      "scheduledStateHint": "This park is used in a saved day. Clear that day before changing its priority.",
       "move": "Move the park in the list",
       "first": "Move to first",
       "up": "Move up",

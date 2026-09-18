@@ -58,6 +58,7 @@
       "timeZoneHint": "Vérifie le fuseau du parc ou de la destination (par exemple Europe/Paris), surtout si tu prépares le voyage depuis un autre pays.",
       "currentProposal": "Proposition actuelle",
       "explicitConversion": "Cette proposition reste intacte tant que tu ne choisis pas explicitement des dates fixes ou son effacement.",
+      "clearBlocked": "Efface d’abord chaque journée enregistrée et chaque contrainte de date d’un parc avant d’effacer les dates du voyage.",
       "toDecide": "Dates à décider",
       "kinds": { "none": "Dates à décider", "fixed": "Dates fixées", "range": "Période envisagée", "candidates": "Plusieurs dates possibles" }
     },
@@ -76,6 +77,7 @@
       "unavailable": "Parc indisponible",
       "drag": "Faire glisser ce parc",
       "changeState": "Changer la priorité du parc",
+      "scheduledStateHint": "Ce parc est utilisé dans une journée enregistrée. Efface cette journée avant de changer sa priorité.",
       "move": "Déplacer le parc dans la liste",
       "first": "Placer en premier",
       "up": "Monter",

@@ -37,13 +37,17 @@
         <button
           type="button"
           appUiButton="ghost"
-          [disabled]="disabled || candidate.state === state"
+          [disabled]="isStateDisabled(state)"
           [attr.aria-pressed]="candidate.state === state"
           (click)="stateChanged.emit(state)">
           {{ stateLabelKey(state) | translate }}
         </button>
       }
     </div>
+
+    @if (scheduled) {
+      <p class="candidate-card__note">{{ 'trips.candidates.scheduledStateHint' | translate }}</p>
+    }
 
     <div class="candidate-card__move" [attr.aria-label]="'trips.candidates.move' | translate">
       <button type="button" appUiButton="ghost" [disabled]="disabled || index === 0" (click)="moveRequested.emit(0)">

@@ -1431,6 +1431,7 @@
       "timeZoneHint": "Prüfe die Zeitzone des Parks oder Reiseziels (zum Beispiel Europe/Paris), besonders wenn du aus einem anderen Land planst.",
       "currentProposal": "Aktueller Vorschlag",
       "explicitConversion": "Dieser Vorschlag bleibt unverändert, bis du ausdrücklich feste Daten wählst oder ihn löschst.",
+      "clearBlocked": "Lösche zuerst alle gespeicherten Tage und Datumsbeschränkungen der Parks, bevor du die Reisedaten löschst.",
       "toDecide": "Daten noch offen",
       "kinds": {
         "none": "Daten noch offen",
@@ -1454,6 +1455,7 @@
       "unavailable": "Park nicht verfügbar",
       "drag": "Diesen Park ziehen",
       "changeState": "Priorität des Parks ändern",
+      "scheduledStateHint": "Dieser Park wird an einem gespeicherten Tag verwendet. Lösche diesen Tag, bevor du seine Priorität änderst.",
       "move": "Park in der Liste verschieben",
       "first": "Ganz nach oben",
       "up": "Nach oben",

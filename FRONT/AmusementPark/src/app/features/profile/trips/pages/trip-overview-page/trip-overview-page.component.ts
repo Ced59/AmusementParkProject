@@ -129,7 +129,9 @@ export class TripOverviewPageComponent implements OnInit {
   }
 
   protected clearDates(): void {
-    this.facade.setDates('', '', '');
+    if (this.canClearDates()) {
+      this.facade.setDates('', '', '');
+    }
   }
 
   protected beginFixedDateEdit(): void {
@@ -149,6 +151,12 @@ export class TripOverviewPageComponent implements OnInit {
   protected hasSpecialDateProposal(): boolean {
     const kind: TripPlan['dateProposal']['kind'] | undefined = this.facade.trip()?.dateProposal.kind;
     return kind === 'Candidates' || kind === 'Range';
+  }
+
+  protected canClearDates(): boolean {
+    const program: TripProgram = this.facade.program();
+    return program.days.length === 0
+      && program.candidates.every((candidate: TripParkCandidate): boolean => candidate.candidateDates.length === 0);
   }
 
   protected currentProposedDates(): string[] {
@@ -194,6 +202,12 @@ export class TripOverviewPageComponent implements OnInit {
 
   protected changeCandidateState(candidate: TripParkCandidate, state: TripParkCandidateState): void {
     this.facade.changeCandidateState(candidate, state);
+  }
+
+  protected isCandidateScheduled(candidateId: string): boolean {
+    return this.facade.program().days.some(
+      (day: TripDayPlan): boolean => day.parkCandidateId === candidateId
+    );
   }
 
   protected selectedCandidates(): TripParkCandidate[] {

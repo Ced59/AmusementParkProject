@@ -1431,6 +1431,7 @@
       "timeZoneHint": "Controlla il fuso orario del parco o della destinazione (per esempio Europe/Paris), soprattutto se prepari il viaggio da un altro Paese.",
       "currentProposal": "Proposta attuale",
       "explicitConversion": "Questa proposta resta invariata finché non scegli esplicitamente date fisse o non la cancelli.",
+      "clearBlocked": "Svuota prima tutte le giornate salvate e i vincoli di data dei parchi, poi potrai cancellare le date del viaggio.",
       "toDecide": "Date da decidere",
       "kinds": {
         "none": "Date da decidere",
@@ -1454,6 +1455,7 @@
       "unavailable": "Parco non disponibile",
       "drag": "Trascina questo parco",
       "changeState": "Cambia la priorità del parco",
+      "scheduledStateHint": "Questo parco è usato in una giornata salvata. Svuota quella giornata prima di cambiarne la priorità.",
       "move": "Sposta il parco nell’elenco",
       "first": "Sposta all’inizio",
       "up": "Sposta in alto",
