@@ -202,7 +202,7 @@
                 <textarea maxlength="1000" rows="2" [value]="dayDrafts()[date]?.note || ''" (input)="updateDay(date, 'note', $any($event.target).value)"></textarea>
               </label>
               <div class="day-card__actions">
-                <button type="button" appUiButton="primary" [disabled]="facade.busy() || !dayDrafts()[date]?.candidateId" (click)="saveDay(date)">
+                <button type="button" appUiButton="primary" [disabled]="facade.busy() || !canSaveDay(date)" (click)="saveDay(date)">
                   {{ 'trips.actions.saveDay' | translate }}
                 </button>
                 @if (hasSavedDay(date)) {

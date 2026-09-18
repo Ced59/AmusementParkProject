@@ -3,7 +3,13 @@ import { ChangeDetectionStrategy, Component, effect, OnInit, signal, untracked }
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { TripDayPlan, TripParkCandidate, TripParkCandidateState, TripPlan } from '@app/models/trips/trip.models';
+import {
+  TripDayPlan,
+  TripParkCandidate,
+  TripParkCandidateState,
+  TripPlan,
+  TripProgram
+} from '@app/models/trips/trip.models';
 import { UserCollectionEntry } from '@app/models/watchlists/user-collection-entry.model';
 import { TranslationService } from '@app/services/translation.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
@@ -46,7 +52,7 @@ export class TripOverviewPageComponent implements OnInit {
   protected readonly imageWidths: readonly number[] = [120, 200, 320];
 
   private dateDraftInitialized: boolean = false;
-  private handledDateRecoveryRevision: number = 0;
+  private handledDateDraftRevision: number = 0;
   private handledDayRecoveryRevision: number = 0;
   private handledClearDayRevision: number = 0;
 
@@ -60,21 +66,22 @@ export class TripOverviewPageComponent implements OnInit {
 
     effect((): void => {
       const trip: TripPlan | null = this.facade.trip();
-      const recoveryRevision: number = this.facade.recoveryRevision();
-      const mustRecover: boolean = recoveryRevision > this.handledDateRecoveryRevision;
-      if (!trip || (this.dateDraftInitialized && !mustRecover)) {
+      const dateDraftRevision: number = this.facade.dateDraftRevision();
+      const mustRefresh: boolean = dateDraftRevision > this.handledDateDraftRevision;
+      if (!trip || (this.dateDraftInitialized && !mustRefresh)) {
         return;
       }
       this.startDate.set(trip.dateProposal.startDate ?? '');
       this.endDate.set(trip.dateProposal.endDate ?? '');
       this.destinationTimeZoneId.set(trip.destinationTimeZoneId ?? '');
       this.dateDraftInitialized = true;
-      this.handledDateRecoveryRevision = recoveryRevision;
+      this.handledDateDraftRevision = dateDraftRevision;
     });
 
     effect((): void => {
       const dates: string[] = this.facade.tripDates();
-      const days: TripDayPlan[] = this.facade.program().days;
+      const program: TripProgram = this.facade.program();
+      const days: TripDayPlan[] = program.days;
       const recoveryRevision: number = this.facade.recoveryRevision();
       const clearedDay: { localDate: string; revision: number } | null = this.facade.clearedDay();
       const mustRecover: boolean = recoveryRevision > this.handledDayRecoveryRevision;
@@ -84,7 +91,18 @@ export class TripOverviewPageComponent implements OnInit {
       for (const date of dates) {
         const saved: TripDayPlan | undefined = days.find((day: TripDayPlan): boolean => day.localDate === date);
         const mustRefreshDate: boolean = mustRecover || (hasNewClearedDay && clearedDay?.localDate === date);
-        nextDrafts[date] = !mustRefreshDate && existingDrafts[date] ? existingDrafts[date] : {
+        const existingDraft: TripDayDraft | undefined = existingDrafts[date];
+        const existingCandidateIsValid: boolean = !existingDraft?.candidateId
+          || saved?.parkCandidateId === existingDraft.candidateId
+          || program.candidates.some((candidate: TripParkCandidate): boolean =>
+            candidate.candidateId === existingDraft.candidateId
+            && candidate.state === 'Selected'
+            && candidate.isParkAvailable
+            && (candidate.candidateDates.length === 0 || candidate.candidateDates.includes(date)));
+        nextDrafts[date] = !mustRefreshDate && existingDraft ? {
+          ...existingDraft,
+          candidateId: existingCandidateIsValid ? existingDraft.candidateId : ''
+        } : {
           candidateId: saved?.parkCandidateId ?? '',
           arrivalTime: saved?.desiredArrivalTime ?? '',
           note: saved?.groupNote ?? ''
@@ -163,6 +181,13 @@ export class TripOverviewPageComponent implements OnInit {
     if (draft) {
       this.facade.saveDay(date, draft.candidateId, draft.arrivalTime, draft.note);
     }
+  }
+
+  protected canSaveDay(date: string): boolean {
+    const candidateId: string | undefined = this.dayDrafts()[date]?.candidateId;
+    return !!candidateId && this.selectedCandidatesForDate(date).some(
+      (candidate: TripParkCandidate): boolean => candidate.candidateId === candidateId
+    );
   }
 
   protected clearDay(date: string): void {

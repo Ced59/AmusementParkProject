@@ -14,12 +14,14 @@ describe('TripOverviewPageComponent', () => {
     const program: WritableSignal<TripProgram> = signal<TripProgram>(createProgram('09:00', 'Serveur initial'));
     const tripDates: WritableSignal<string[]> = signal<string[]>(['2026-10-03']);
     const recoveryRevision: WritableSignal<number> = signal<number>(0);
+    const dateDraftRevision: WritableSignal<number> = signal<number>(0);
     const clearedDay: WritableSignal<{ localDate: string; revision: number } | null> = signal(null);
     const facade = {
       trip: trip.asReadonly(),
       program: program.asReadonly(),
       tripDates: tripDates.asReadonly(),
       recoveryRevision: recoveryRevision.asReadonly(),
+      dateDraftRevision: dateDraftRevision.asReadonly(),
       clearedDay: clearedDay.asReadonly(),
       status: signal('ready').asReadonly(),
       busy: signal(false).asReadonly(),
@@ -57,6 +59,7 @@ describe('TripOverviewPageComponent', () => {
       destinationTimeZoneId: WritableSignal<string>;
       dayDrafts: WritableSignal<Record<string, { candidateId: string; arrivalTime: string; note: string }>>;
       selectedCandidatesForDate: (localDate: string) => TripParkCandidate[];
+      canSaveDay: (localDate: string) => boolean;
     };
     state.startDate.set('2026-10-03');
     state.endDate.set('2026-10-04');
@@ -72,6 +75,7 @@ describe('TripOverviewPageComponent', () => {
     tripDates.set(['2026-10-04']);
     program.set(createProgram('10:30', 'Version concurrente', '2026-10-04'));
     recoveryRevision.set(1);
+    dateDraftRevision.set(1);
     fixture.detectChanges();
 
     expect(state.startDate()).toBe('2026-10-04');
@@ -83,12 +87,25 @@ describe('TripOverviewPageComponent', () => {
       note: 'Version concurrente'
     });
 
+    state.endDate.set('2026-10-04');
+    trip.set(createTrip({
+      version: 3,
+      destinationTimeZoneId: null,
+      dateProposal: { kind: 'None', startDate: null, endDate: null, candidateDates: [] }
+    }));
+    dateDraftRevision.set(2);
+    fixture.detectChanges();
+
+    expect(state.startDate()).toBe('');
+    expect(state.endDate()).toBe('');
+    expect(state.destinationTimeZoneId()).toBe('');
+
     tripDates.set(['2026-10-04', '2026-10-05']);
     state.dayDrafts.set({
       '2026-10-04': { candidateId: 'candidate-1', arrivalTime: '10:30', note: 'À effacer' },
       '2026-10-05': { candidateId: 'candidate-2', arrivalTime: '08:45', note: 'Brouillon à conserver' }
     });
-    program.set({ candidates: [], days: [] });
+    program.set({ candidates: [createCandidate('candidate-2', [])], days: [] });
     clearedDay.set({ localDate: '2026-10-04', revision: 1 });
     fixture.detectChanges();
 
@@ -108,6 +125,18 @@ describe('TripOverviewPageComponent', () => {
 
     expect(state.selectedCandidatesForDate('2026-10-04').map((candidate: TripParkCandidate): string =>
       candidate.candidateId)).toEqual(['candidate-flexible']);
+
+    tripDates.set(['2026-10-05']);
+    state.dayDrafts.set({
+      '2026-10-05': { candidateId: 'candidate-flexible', arrivalTime: '09:00', note: 'À préserver' }
+    });
+    program.set({ candidates: [createCandidate('candidate-flexible', [], 'Proposed')], days: [] });
+    fixture.detectChanges();
+
+    expect(state.dayDrafts()['2026-10-05']).toEqual({
+      candidateId: '', arrivalTime: '09:00', note: 'À préserver'
+    });
+    expect(state.canSaveDay('2026-10-05')).toBe(false);
   });
 });
 
@@ -130,10 +159,14 @@ function createProgram(arrivalTime: string, note: string, localDate: string = '2
   return { candidates: [], days: [day] };
 }
 
-function createCandidate(candidateId: string, candidateDates: string[]): TripParkCandidate {
+function createCandidate(
+  candidateId: string,
+  candidateDates: string[],
+  state: TripParkCandidate['state'] = 'Selected'
+): TripParkCandidate {
   return {
     candidateId, parkId: `park-${candidateId}`, parkName: candidateId, isParkAvailable: true,
-    candidateDates, source: 'Manual', state: 'Selected', collectiveNote: null, fitSnapshot: null,
+    candidateDates, source: 'Manual', state, collectiveNote: null, fitSnapshot: null,
     sortPosition: 0, version: 1, createdAtUtc: '2026-09-18T10:00:00Z', updatedAtUtc: '2026-09-18T10:00:00Z'
   };
 }

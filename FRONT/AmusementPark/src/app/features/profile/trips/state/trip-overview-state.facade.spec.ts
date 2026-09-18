@@ -156,6 +156,7 @@ describe('TripOverviewStateFacade', () => {
       },
       destinationTimeZoneId: 'Europe/Berlin'
     });
+    expect(facade.dateDraftRevision()).toBe(1);
   });
 
   it('reloads the latest plan and reports an optimistic conflict', () => {
@@ -177,6 +178,7 @@ describe('TripOverviewStateFacade', () => {
     expect(facade.trip()?.version).toBe(2);
     expect(facade.program().candidates[0].state).toBe('Selected');
     expect(facade.recoveryRevision()).toBe(1);
+    expect(facade.dateDraftRevision()).toBe(1);
   });
 });
 
