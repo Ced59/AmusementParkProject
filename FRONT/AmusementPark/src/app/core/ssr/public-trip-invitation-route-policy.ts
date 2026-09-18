@@ -4,7 +4,7 @@ export function isPublicTripInvitationRoute(path: string): boolean {
 
 export function sanitizePublicTripInvitationUrl(url: string): string {
   return url.replace(
-    /^(\/[a-z]{2}\/trip-invitations\/)[^/?]+(?:\?.*)?$/i,
+    /^(\/[a-z]{2}\/trip-invitations\/)[^/?]+\/?(?:\?.*)?$/i,
     '$1[REDACTED]',
   );
 }

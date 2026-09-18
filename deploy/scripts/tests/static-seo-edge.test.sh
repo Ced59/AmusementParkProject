@@ -140,7 +140,7 @@ if [ "$(grep -Fc 'client_max_body_size 26m;' <<< "${rendered_edge_configuration}
 fi
 
 invitation_token='opaque-secret-that-must-never-reach-access-logs'
-read_response "/fr/trip-invitations/${invitation_token}" >/dev/null
+read_response "/fr/trip-invitations/${invitation_token}/?from=email" >/dev/null
 read_response "/api/public/trip-invitations/${invitation_token}/preview" >/dev/null
 sleep 1
 edge_logs="$(docker logs "${container_name}" 2>&1)"
