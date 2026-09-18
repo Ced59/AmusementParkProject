@@ -8,6 +8,9 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.Trips;
 [BsonIgnoreExtraElements]
 public sealed class TripActivityPendingDocument
 {
+    [BsonElement("markerId")]
+    public string MarkerId { get; set; } = string.Empty;
+
     [BsonElement("tripPlanId")]
     public string TripPlanId { get; set; } = string.Empty;
 
@@ -38,6 +41,7 @@ public sealed class TripActivityPendingDocument
         ArgumentNullException.ThrowIfNull(activity);
         return new TripActivityPendingDocument
         {
+            MarkerId = Guid.NewGuid().ToString("N"),
             TripPlanId = activity.TripPlanId.Value,
             ActorMemberId = activity.ActorMemberId?.Value,
             ActorRole = activity.ActorRole,

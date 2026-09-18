@@ -335,11 +335,51 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
         string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
         FilterDefinitionBuilder<TripItemPreferenceDocument> filters =
             Builders<TripItemPreferenceDocument>.Filter;
-        DeleteResult result = await this.collection.DeleteManyAsync(
+        FilterDefinition<TripItemPreferenceDocument> departingPreferences =
             filters.Eq(static document => document.TripPlanId, tripPlanId.Value)
-            & filters.Eq(static document => document.UserId, normalizedUserId),
+            & filters.Eq(static document => document.UserId, normalizedUserId);
+        FilterDefinition<TripItemPreferenceDocument> pendingAuditFilter =
+            new BsonDocumentFilterDefinition<TripItemPreferenceDocument>(
+                new BsonDocument(
+                    "pendingAuditEvents.0",
+                    new BsonDocument("$exists", true)));
+        List<List<TripActivityPendingDocument>> pendingSets = await this.collection
+            .Find(departingPreferences & pendingAuditFilter)
+            .Project(static document => document.PendingAuditEvents)
+            .ToListAsync(cancellationToken);
+        List<TripActivityPendingDocument> pendingActivities = pendingSets
+            .SelectMany(static pending => pending)
+            .ToList();
+        if (pendingActivities.Count > 0)
+        {
+            UpdateResult relocation = await this.tripPlans.UpdateOneAsync(
+                Builders<TripPlanDocument>.Filter.Eq(
+                    static document => document.Id,
+                    tripPlanId.Value)
+                & Builders<TripPlanDocument>.Filter.Eq(
+                    static document => document.DeletionState,
+                    TripDeletionState.None),
+                BuildDepartureAuditRelocation(pendingActivities),
+                cancellationToken: cancellationToken);
+            if (relocation.MatchedCount != 1)
+            {
+                return;
+            }
+        }
+
+        DeleteResult result = await this.collection.DeleteManyAsync(
+            departingPreferences & BuildDepartureSafeDeletionFilter(
+                pendingActivities.Select(static activity => activity.MarkerId).ToArray()),
             cancellationToken);
         _ = result.DeletedCount;
+        long remaining = await this.collection.CountDocumentsAsync(
+            departingPreferences,
+            new CountOptions { Limit = 1 },
+            cancellationToken);
+        if (remaining > 0)
+        {
+            return;
+        }
 
         UpdateResult planResult = await this.tripPlans.UpdateOneAsync(
             Builders<TripPlanDocument>.Filter.Eq(
@@ -353,6 +393,47 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
                 normalizedUserId),
             cancellationToken: cancellationToken);
         _ = planResult.ModifiedCount;
+    }
+
+    internal static UpdateDefinition<TripPlanDocument> BuildDepartureAuditRelocation(
+        IReadOnlyCollection<TripActivityPendingDocument> pendingActivities)
+    {
+        ArgumentNullException.ThrowIfNull(pendingActivities);
+        if (pendingActivities.Count == 0)
+        {
+            throw new ArgumentException(
+                "At least one pending activity is required.",
+                nameof(pendingActivities));
+        }
+
+        return Builders<TripPlanDocument>.Update.AddToSetEach(
+            static document => document.PendingAuditEvents,
+            pendingActivities);
+    }
+
+    internal static FilterDefinition<TripItemPreferenceDocument> BuildDepartureSafeDeletionFilter(
+        IReadOnlyCollection<string> relocatedMarkerIds)
+    {
+        ArgumentNullException.ThrowIfNull(relocatedMarkerIds);
+        BsonArray markerIds = new();
+        foreach (string markerId in relocatedMarkerIds.Distinct(StringComparer.Ordinal))
+        {
+            markerIds.Add(markerId);
+        }
+
+        return markerIds.Count == 0
+            ? new BsonDocumentFilterDefinition<TripItemPreferenceDocument>(
+                new BsonDocument(
+                    "pendingAuditEvents.0",
+                    new BsonDocument("$exists", false)))
+            : new BsonDocumentFilterDefinition<TripItemPreferenceDocument>(
+                new BsonDocument(
+                    "pendingAuditEvents",
+                    new BsonDocument("$not", new BsonDocument(
+                        "$elemMatch",
+                        new BsonDocument(
+                            "markerId",
+                            new BsonDocument("$nin", markerIds))))));
     }
 
     public async Task<int> ReconcileDepartureCleanupAsync(

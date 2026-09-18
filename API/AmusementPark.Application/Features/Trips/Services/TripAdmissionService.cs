@@ -337,12 +337,7 @@ public sealed class TripAdmissionService
         TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
             invitation.TripPlanId,
             null,
-            invitation.ProposedRole switch
-            {
-                TripDelegatedRole.Editor => TripEffectiveRole.Editor,
-                TripDelegatedRole.Participant => TripEffectiveRole.Participant,
-                _ => TripEffectiveRole.Viewer,
-            },
+            null,
             TripActivityKind.InvitationAccepted,
             $"invitation:accept:{fence.OperationId}",
             1);

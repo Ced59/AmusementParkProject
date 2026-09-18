@@ -30,6 +30,7 @@ public sealed class TripAdmissionServiceTests
         Mock<ITripInvitationSecurity> security = CreateSecurity();
         Mock<IUserRepository> users = new(MockBehavior.Strict);
         Mock<TimeProvider> clock = CreateClock();
+        Mock<ITripAuditWriter> audit = new(MockBehavior.Strict);
         MockSequence sequence = new();
         repository.InSequence(sequence)
             .Setup(item => item.GetInvitationByTokenHashAsync("token-hash", CancellationToken.None))
@@ -71,7 +72,10 @@ public sealed class TripAdmissionServiceTests
             .Setup(item => item.EstablishMemberAsync(
                 invitation.TripPlanId,
                 fence,
-                It.IsAny<TripActivityWrite?>(),
+                It.Is<TripActivityWrite?>(activity =>
+                    activity != null
+                    && activity.ActorMemberId == null
+                    && activity.ActorRole == null),
                 CancellationToken.None))
             .ReturnsAsync(TripAdmissionWriteOutcome.Success);
         repository.InSequence(sequence)
@@ -80,12 +84,19 @@ public sealed class TripAdmissionServiceTests
                 fence,
                 CancellationToken.None))
             .Returns(Task.CompletedTask);
+        plans.InSequence(sequence)
+            .Setup(item => item.GetAccessibleAsync(
+                "user-2",
+                invitation.TripPlanId,
+                CancellationToken.None))
+            .ReturnsAsync((TripPlan?)null);
         TripAdmissionService service = new(
             repository.Object,
             plans.Object,
             security.Object,
             users.Object,
-            clock.Object);
+            clock.Object,
+            new TripActivityRecorder(audit.Object, clock.Object));
 
         ApplicationResult<TripInvitationDecisionResult> result = await service.AcceptAsync(
             "user-2",
@@ -96,7 +107,9 @@ public sealed class TripAdmissionServiceTests
         Assert.True(result.IsSuccess);
         Assert.False(result.Value?.WasReplayed);
         repository.VerifyAll();
+        plans.VerifyAll();
         users.VerifyAll();
+        audit.VerifyNoOtherCalls();
     }
 
     [Fact]

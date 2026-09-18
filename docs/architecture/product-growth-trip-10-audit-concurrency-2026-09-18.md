@@ -144,6 +144,7 @@ erDiagram
       date updatedAt
     }
     PENDING_AUDIT_MARKERS {
+      string markerId
       string tripPlanId
       string actorMemberId_nullable
       string actorRole_nullable
@@ -174,6 +175,15 @@ peut être modifiée sans que sa preuve soit durable. Une panne pendant
 l’allocation de séquence ou l’insertion du journal ne remet pas en cause le
 résultat métier : le marqueur reste sur le document source et le réconciliateur
 le reprend par lots de 50 au plus.
+Chaque marqueur possède un identifiant opaque propre au document source. Il
+permet de déplacer sans perte ni duplication les preuves encore en attente
+lorsqu’un membre quitte le voyage et que ses préférences privées doivent être
+supprimées. Ces marqueurs sont d’abord réunis de façon idempotente sur le plan,
+puis seulement les préférences du membre sont effacées. Le filtre de suppression
+refuse tout document qui aurait reçu entre-temps un marqueur non déplacé ; le
+ticket de nettoyage reste alors actif pour une reprise ultérieure. Le comptage
+déduplique `markerId` si le réconciliateur observe simultanément la source et sa
+copie sur le plan.
 L’allocation incrémente atomiquement `trip-plans.auditSequence` uniquement si le
 voyage n’est pas en suppression. Une répétition de la même opération retrouve
 l’intention puis l’événement existants. Une tentative après le début d’une
@@ -239,7 +249,12 @@ le contenu peut redevenir identique, comme une journée A → B → A, ajoutent 
 génération de lease à la clé : le dernier A reste donc un événement distinct du
 premier. Pour un lot de préférences, chaque préférence réussie porte un marqueur
 unitaire ; le journal publie ainsi le nombre réellement validé, même si un
-conflit interrompt le lot.
+conflit interrompt le lot. Le réconciliateur sélectionne au plus 50 opérations,
+puis recharge tous les marqueurs de chacune d’elles avant le comptage : une
+opération comportant 250 préférences n’est donc jamais tronquée à 50. Quand le
+membre d’une invitation n’est pas encore relisible après une interruption, le
+marqueur conserve les deux champs d’acteur à `null` plutôt qu’une identité
+partielle invalide ; la publication immédiate les complète dès que possible.
 
 ## 6. Séquence de lecture et confidentialité
 
@@ -313,8 +328,10 @@ le débordement horizontal de la page, des cartes, contrôles et liens.
 - **Application** : accès obligatoire, page bornée, curseur, nom des seuls membres
   actifs et anonymisation d’un ancien participant.
 - **Infrastructure** : unicité opération/séquence, marqueurs sources atomiques,
-  reprise bornée au démarrage du worker et absence d’identifiant de compte dans
-  le journal comme dans les marqueurs Mongo.
+  rechargement complet des opérations sélectionnées, déplacement idempotent des
+  marqueurs avant nettoyage d’un membre, reprise bornée au démarrage du worker
+  et absence d’identifiant de compte dans le journal comme dans les marqueurs
+  Mongo.
 - **WebAPI** : enum métier sérialisé en texte et absence de propriété `*Id`.
 - **Angular** : URL encodée, `transferCache: false`, pagination sans doublon,
   actualisation, route authentifiée, façade/port et une classe par fichier.

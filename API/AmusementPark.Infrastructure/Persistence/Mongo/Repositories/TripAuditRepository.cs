@@ -280,25 +280,51 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         int maximumCount,
         CancellationToken cancellationToken)
     {
-        List<TripActivityPendingDocument> markers = new();
-        await AddPendingAsync(this.plans, markers, maximumCount, cancellationToken);
-        await AddPendingAsync(this.candidates, markers, maximumCount, cancellationToken);
-        await AddPendingAsync(this.days, markers, maximumCount, cancellationToken);
-        await AddPendingAsync(this.invitations, markers, maximumCount, cancellationToken);
-        await AddPendingAsync(this.preferences, markers, maximumCount, cancellationToken);
-        await AddPendingAsync(this.decisions, markers, maximumCount, cancellationToken);
+        List<TripActivityPendingDocument> candidates = new();
+        await AddPendingCandidatesAsync(this.plans, candidates, maximumCount, cancellationToken);
+        await AddPendingCandidatesAsync(this.candidates, candidates, maximumCount, cancellationToken);
+        await AddPendingCandidatesAsync(this.days, candidates, maximumCount, cancellationToken);
+        await AddPendingCandidatesAsync(this.invitations, candidates, maximumCount, cancellationToken);
+        await AddPendingCandidatesAsync(this.preferences, candidates, maximumCount, cancellationToken);
+        await AddPendingCandidatesAsync(this.decisions, candidates, maximumCount, cancellationToken);
 
-        return markers
+        string[] selectedGroupKeys = candidates
             .GroupBy(
-                static marker => $"{marker.TripPlanId}\n{marker.OperationKey}",
+                static marker => BuildPendingGroupKey(marker),
                 StringComparer.Ordinal)
             .OrderBy(static group => group.Min(static marker => marker.OccurredAtUtc))
             .Take(maximumCount)
+            .Select(static group => group.Key)
+            .ToArray();
+        if (selectedGroupKeys.Length == 0)
+        {
+            return Array.Empty<TripActivityWrite>();
+        }
+
+        HashSet<string> selectedGroups = new(selectedGroupKeys, StringComparer.Ordinal);
+        string[] operationKeys = candidates
+            .Where(marker => selectedGroups.Contains(BuildPendingGroupKey(marker)))
+            .Select(static marker => marker.OperationKey)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        List<TripActivityPendingDocument> completeMarkers = new();
+        await AddPendingOperationsAsync(this.plans, completeMarkers, operationKeys, selectedGroups, cancellationToken);
+        await AddPendingOperationsAsync(this.candidates, completeMarkers, operationKeys, selectedGroups, cancellationToken);
+        await AddPendingOperationsAsync(this.days, completeMarkers, operationKeys, selectedGroups, cancellationToken);
+        await AddPendingOperationsAsync(this.invitations, completeMarkers, operationKeys, selectedGroups, cancellationToken);
+        await AddPendingOperationsAsync(this.preferences, completeMarkers, operationKeys, selectedGroups, cancellationToken);
+        await AddPendingOperationsAsync(this.decisions, completeMarkers, operationKeys, selectedGroups, cancellationToken);
+
+        return completeMarkers
+            .GroupBy(
+                static marker => BuildPendingGroupKey(marker),
+                StringComparer.Ordinal)
+            .OrderBy(static group => group.Min(static marker => marker.OccurredAtUtc))
             .Select(static group => BuildReconciledWrite(group.ToArray()))
             .ToArray();
     }
 
-    private static async Task AddPendingAsync<TDocument>(
+    private static async Task AddPendingCandidatesAsync<TDocument>(
         IMongoCollection<TDocument> collection,
         List<TripActivityPendingDocument> destination,
         int limit,
@@ -308,10 +334,35 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             collection.CollectionNamespace.CollectionName);
         BsonDocument filter = new("pendingAuditEvents.0", new BsonDocument("$exists", true));
         List<BsonDocument> projected = await untyped.Find(filter)
-            .Project(new BsonDocument("pendingAuditEvents", 1))
+            .Project(new BsonDocument(
+                "pendingAuditEvents",
+                new BsonDocument("$slice", limit)))
             .Limit(limit)
             .ToListAsync(cancellationToken);
-        foreach (BsonDocument document in projected)
+        AddDeserializedMarkers(projected, destination, null);
+    }
+
+    private static async Task AddPendingOperationsAsync<TDocument>(
+        IMongoCollection<TDocument> collection,
+        List<TripActivityPendingDocument> destination,
+        IReadOnlyCollection<string> operationKeys,
+        HashSet<string> selectedGroups,
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<BsonDocument> untyped = collection.Database.GetCollection<BsonDocument>(
+            collection.CollectionNamespace.CollectionName);
+        List<BsonDocument> projected = await untyped.Aggregate<BsonDocument>(
+                BuildPendingOperationPipeline(operationKeys))
+            .ToListAsync(cancellationToken);
+        AddDeserializedMarkers(projected, destination, selectedGroups);
+    }
+
+    private static void AddDeserializedMarkers(
+        IEnumerable<BsonDocument> documents,
+        List<TripActivityPendingDocument> destination,
+        HashSet<string>? selectedGroups)
+    {
+        foreach (BsonDocument document in documents)
         {
             if (!document.TryGetValue("pendingAuditEvents", out BsonValue? value)
                 || !value.IsBsonArray)
@@ -321,10 +372,54 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
 
             foreach (BsonValue marker in value.AsBsonArray)
             {
-                destination.Add(MongoDB.Bson.Serialization.BsonSerializer.Deserialize<TripActivityPendingDocument>(
-                    marker.AsBsonDocument));
+                TripActivityPendingDocument pending =
+                    MongoDB.Bson.Serialization.BsonSerializer.Deserialize<TripActivityPendingDocument>(
+                        marker.AsBsonDocument);
+                if (selectedGroups is null
+                    || selectedGroups.Contains(BuildPendingGroupKey(pending)))
+                {
+                    destination.Add(pending);
+                }
             }
         }
+    }
+
+    internal static BsonDocument[] BuildPendingOperationPipeline(
+        IReadOnlyCollection<string> operationKeys)
+    {
+        ArgumentNullException.ThrowIfNull(operationKeys);
+        if (operationKeys.Count == 0)
+        {
+            throw new ArgumentException("At least one operation key is required.", nameof(operationKeys));
+        }
+
+        BsonArray keys = new();
+        foreach (string operationKey in operationKeys)
+        {
+            keys.Add(operationKey);
+        }
+
+        return new BsonDocument[]
+        {
+            new("$match", new BsonDocument(
+                "pendingAuditEvents.operationKey",
+                new BsonDocument("$in", keys))),
+            new("$project", new BsonDocument(
+                "pendingAuditEvents",
+                new BsonDocument("$filter", new BsonDocument
+                {
+                    { "input", "$pendingAuditEvents" },
+                    { "as", "pending" },
+                    {
+                        "cond",
+                        new BsonDocument("$in", new BsonArray
+                        {
+                            "$$pending.operationKey",
+                            keys,
+                        })
+                    },
+                }))),
+        };
     }
 
     private async Task<bool> HasPendingMarkerAsync(
@@ -437,15 +532,25 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         return new BsonDocument("pendingAuditEvents", new BsonDocument("$elemMatch", element));
     }
 
-    private static TripActivityWrite BuildReconciledWrite(
+    internal static TripActivityWrite BuildReconciledWrite(
         IReadOnlyCollection<TripActivityPendingDocument> markers)
     {
         TripActivityPendingDocument first = markers.OrderBy(static marker => marker.OccurredAtUtc).First();
         TripActivityWrite canonical = first.ToWrite();
         int affectedCount = canonical.Kind == TripActivityKind.PreferencesUpdated
-            ? markers.Count
+            ? markers
+                .Where(static marker => !string.IsNullOrWhiteSpace(marker.MarkerId))
+                .Select(static marker => marker.MarkerId)
+                .Distinct(StringComparer.Ordinal)
+                .Count()
+                + markers.Count(static marker => string.IsNullOrWhiteSpace(marker.MarkerId))
             : canonical.AffectedCount;
         return canonical with { AffectedCount = affectedCount };
+    }
+
+    private static string BuildPendingGroupKey(TripActivityPendingDocument marker)
+    {
+        return $"{marker.TripPlanId}\n{marker.OperationKey}";
     }
 
     private static TripActivityEvent ToDomain(TripActivityEventDocument document)
