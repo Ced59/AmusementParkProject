@@ -1,0 +1,291 @@
+import { spawn, spawnSync } from 'node:child_process';
+import { once } from 'node:events';
+import { existsSync } from 'node:fs';
+import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { createServer } from 'node:net';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+
+import { compile } from 'sass';
+
+const viewportWidths = [320, 360, 390, 768, 1280];
+const projectRoot = process.cwd();
+const componentStyles = [
+  'src/app/features/profile/trips/pages/trip-list-page/trip-list-page.component.scss',
+  'src/app/features/profile/trips/pages/trip-overview-page/trip-overview-page.component.scss',
+  'src/app/features/profile/trips/components/trip-candidate-card/trip-candidate-card.component.scss'
+]
+  .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
+  .join('\n')
+  .replaceAll(':host', '.responsive-fixture-host');
+
+const chromeCandidates = [
+  process.env.CHROME_PATH,
+  process.env.GOOGLE_CHROME_BIN,
+  process.env.PROGRAMFILES && join(process.env.PROGRAMFILES, 'Google/Chrome/Application/chrome.exe'),
+  process.env['PROGRAMFILES(X86)'] && join(process.env['PROGRAMFILES(X86)'], 'Google/Chrome/Application/chrome.exe'),
+  process.env.LOCALAPPDATA && join(process.env.LOCALAPPDATA, 'Google/Chrome/Application/chrome.exe'),
+  'google-chrome-stable',
+  'google-chrome',
+  'chromium',
+  'chromium-browser'
+].filter(Boolean);
+
+const chromeExecutable = chromeCandidates.find((candidate) => {
+  if (candidate.includes('/') || candidate.includes('\\')) {
+    return existsSync(candidate);
+  }
+
+  return spawnSync(candidate, ['--version'], { encoding: 'utf8' }).status === 0;
+});
+
+if (!chromeExecutable) {
+  throw new Error('A Chromium or Google Chrome executable is required for the trip responsive check.');
+}
+
+const fixtureMarkup = `
+  <div class="responsive-fixture-host">
+    <main class="trip-list-page" data-responsive-root="trip-list">
+      <header class="trip-list-page__hero surface" data-check-bound>
+        <a href="#">Retour vers le profil du membre</a>
+        <h1>Prépare ton prochain voyage dans les parcs</h1>
+        <p>Un titre volontairement long vérifie que les textes localisés restent contenus dans le viewport.</p>
+        <div class="trip-list-page__hero-actions"><button>Créer un nouveau voyage privé</button></div>
+      </header>
+      <section class="trip-composer surface" data-check-bound>
+        <div><h2>Commence ton programme</h2><p>Choisis les premières informations sans rien publier.</p></div>
+        <label><span>Titre du voyage</span><input value="Un très long voyage entre plusieurs destinations"></label>
+        <div class="trip-composer__dates">
+          <label><span>Date de début</span><input type="date" value="2026-10-03"></label>
+          <label><span>Date de fin</span><input type="date" value="2026-10-09"></label>
+        </div>
+        <p class="trip-composer__hint">Fuseau de la destination : Europe/Paris</p>
+        <button>Commencer la préparation du voyage</button>
+      </section>
+      <section class="trip-list-page__grid" data-check-bound>
+        <article class="trip-card surface"><h2>Un voyage au titre particulièrement long</h2><p class="trip-card__dates">3 octobre 2026 → 9 octobre 2026</p><button>Continuer la préparation</button></article>
+        <article class="trip-card surface"><h2>Voyage sans dates</h2><p class="trip-card__dates">Dates à décider ensemble</p><button>Continuer la préparation</button></article>
+      </section>
+    </main>
+
+    <main class="trip-overview-page" data-responsive-root="trip-overview">
+      <header class="trip-overview-page__hero surface" data-check-bound>
+        <a href="#">Tous mes voyages</a>
+        <h1>Une aventure européenne avec un titre très long</h1>
+        <p>Programme privé · aucune donnée n'est publiée.</p>
+      </header>
+      <section class="trip-section surface" data-check-bound>
+        <div class="trip-section__heading"><span class="trip-section__step">1</span><div><h2>Cadre du voyage</h2><p>Les dates et le fuseau organisent les journées.</p></div></div>
+        <div class="trip-dates__fields">
+          <label><span>Début</span><input type="date" value="2026-10-03"></label>
+          <label><span>Fin</span><input type="date" value="2026-10-09"></label>
+          <label><span>Fuseau</span><input value="Europe/Paris"></label>
+          <div class="trip-dates__actions"><button>Enregistrer les dates</button><button>Retirer les dates</button></div>
+        </div>
+      </section>
+      <section class="trip-section surface" data-check-bound>
+        <div class="trip-section__heading"><span class="trip-section__step">2</span><div><h2>Idées enregistrées</h2><p>Le carrousel reste défilable sans agrandir la page.</p></div></div>
+        <div class="wishlist-strip">
+          <button class="wishlist-card"><span class="wishlist-card__visual">Image</span><strong>Parc au nom très long</strong><span>Ajouter au voyage</span></button>
+          <button class="wishlist-card"><span class="wishlist-card__visual">Image</span><strong>Deuxième destination</strong><span>Ajouter au voyage</span></button>
+          <button class="wishlist-card"><span class="wishlist-card__visual">Image</span><strong>Troisième destination</strong><span>Ajouter au voyage</span></button>
+        </div>
+      </section>
+      <section class="trip-section surface" data-check-bound>
+        <div class="trip-section__heading"><span class="trip-section__step">3</span><div><h2>Parcs candidats</h2><p>Le glisser-déposer conserve ses commandes accessibles.</p></div></div>
+        <div class="candidate-board">
+          <app-trip-candidate-card class="responsive-fixture-host" data-check-bound>
+            <article class="candidate-card surface">
+              <div class="candidate-card__visual"><span class="candidate-card__placeholder">Image</span></div>
+              <div class="candidate-card__body">
+                <div class="candidate-card__heading"><button class="candidate-card__drag">↕</button><div><h3>Destination au libellé extrêmement long</h3><p>Ajoutée depuis la liste d'envies</p></div><app-ui-chip>Choisi</app-ui-chip></div>
+                <div class="candidate-card__states"><button>Idée</button><button>Présélection</button><button>Choisi</button><button>Écarté</button></div>
+                <div class="candidate-card__move"><button>Premier</button><button>Monter</button><button>Descendre</button><button>Dernier</button></div>
+              </div>
+            </article>
+          </app-trip-candidate-card>
+        </div>
+      </section>
+      <section class="trip-section surface" data-check-bound>
+        <div class="trip-section__heading"><span class="trip-section__step">4</span><div><h2>Journées</h2><p>Chaque contrôle doit rester entièrement utilisable.</p></div></div>
+        <div class="day-board">
+          <article class="day-card"><div class="day-card__date"><strong>3 octobre 2026</strong></div><label><span>Parc</span><select><option>Parc au nom très long</option></select></label><label><span>Arrivée</span><input type="time" value="09:00"></label><label class="day-card__note"><span>Note du groupe</span><textarea>Rendez-vous devant l'entrée principale.</textarea></label><div class="day-card__actions"><button>Enregistrer la journée</button><button>Vider la journée</button></div></article>
+          <article class="day-card"><div class="day-card__date"><strong>4 octobre 2026</strong></div><label><span>Parc</span><select><option>Deuxième destination</option></select></label><label><span>Arrivée</span><input type="time" value="10:00"></label><label class="day-card__note"><span>Note du groupe</span><textarea>Une autre note représentative.</textarea></label><div class="day-card__actions"><button>Enregistrer la journée</button><button>Vider la journée</button></div></article>
+        </div>
+      </section>
+    </main>
+  </div>
+  <nav class="test-mobile-navigation" aria-hidden="true">Navigation mobile</nav>`;
+
+const baseStyles = `
+  :root { --font-heading: sans-serif; --text-muted: #8a8175; --text-primary: #fff; --app-border: #655847; --app-surface: #17110c; --app-surface-2: #211810; --c-rose: #ff477e; --c-orange: #ff5b2d; --c-sky: #58c9ee; --c-gold: #d6a945; --c-lime: #b8e532; --radius-md: 0.75rem; --radius-lg: 1rem; --shadow-lg: 0 1rem 2rem #0008; }
+  * { box-sizing: border-box; }
+  html, body { width: 100%; max-width: 100%; margin: 0; overflow-x: clip; }
+  body { background: #0d0906; color: var(--text-primary); font: 16px/1.4 sans-serif; }
+  button, input, select, textarea, a { max-width: 100%; font: inherit; }
+  button, a { overflow-wrap: anywhere; }
+  .surface { padding: 1rem; border: 1px solid var(--app-border); border-radius: var(--radius-lg); background: var(--app-surface); }
+  .test-mobile-navigation { display: none; }
+  @media (max-width: 36rem) { .test-mobile-navigation { position: fixed; z-index: 10; right: 0.75rem; bottom: 0; left: 0.75rem; display: grid; height: 4.75rem; place-items: center; border: 1px solid var(--app-border); border-radius: 1rem 1rem 0 0; background: #120d09; } }
+`;
+
+const evaluationScript = `
+  (() => {
+    const viewportRight = document.documentElement.clientWidth;
+    const checked = Array.from(document.querySelectorAll('[data-responsive-root], [data-check-bound], input, select, textarea, button, a'))
+      .filter((element) => !element.closest('.wishlist-strip'));
+    const violations = [];
+    if (document.documentElement.scrollWidth > viewportRight + 1) {
+      violations.push({ selector: 'document', reason: 'horizontal-overflow', right: document.documentElement.scrollWidth, viewportRight });
+    }
+    for (const element of checked) {
+      const bounds = element.getBoundingClientRect();
+      if (bounds.left < -1 || bounds.right > viewportRight + 1) {
+        violations.push({ selector: element.tagName.toLowerCase() + (element.className ? '.' + String(element.className).trim().replaceAll(' ', '.') : ''), reason: 'out-of-bounds', left: bounds.left, right: bounds.right, viewportRight });
+      }
+    }
+    if (viewportRight <= 576) {
+      for (const root of document.querySelectorAll('[data-responsive-root]')) {
+        const bottomPadding = Number.parseFloat(getComputedStyle(root).paddingBottom);
+        if (bottomPadding < 80) {
+          violations.push({ selector: root.getAttribute('data-responsive-root'), reason: 'fixed-navigation-overlap', bottomPadding });
+        }
+      }
+    }
+    document.querySelector('#responsive-result').textContent = JSON.stringify({ viewportRight, violations });
+  })();`;
+
+const reservePort = () => new Promise((resolvePort, rejectPort) => {
+  const server = createServer();
+  server.once('error', rejectPort);
+  server.listen(0, '127.0.0.1', () => {
+    const address = server.address();
+    const port = typeof address === 'object' && address ? address.port : null;
+    server.close((error) => error ? rejectPort(error) : resolvePort(port));
+  });
+});
+
+const waitForPageTarget = async (port) => {
+  const deadline = Date.now() + 10000;
+  while (Date.now() < deadline) {
+    try {
+      const response = await fetch(`http://127.0.0.1:${port}/json/list`);
+      const targets = await response.json();
+      const page = targets.find((target) => target.type === 'page');
+      if (page?.webSocketDebuggerUrl) {
+        return page.webSocketDebuggerUrl;
+      }
+    } catch {
+      // Chrome has not opened its DevTools endpoint yet.
+    }
+    await new Promise((resolveWait) => setTimeout(resolveWait, 100));
+  }
+  throw new Error('Chrome did not expose a page target within ten seconds.');
+};
+
+const connectDevTools = async (webSocketUrl) => {
+  const socket = new WebSocket(webSocketUrl);
+  await new Promise((resolveOpen, rejectOpen) => {
+    socket.addEventListener('open', resolveOpen, { once: true });
+    socket.addEventListener('error', rejectOpen, { once: true });
+  });
+
+  let sequence = 0;
+  const pending = new Map();
+  const eventWaiters = new Map();
+  socket.addEventListener('message', (event) => {
+    const message = JSON.parse(event.data);
+    if (message.id) {
+      const request = pending.get(message.id);
+      pending.delete(message.id);
+      if (message.error) {
+        request?.reject(new Error(message.error.message));
+      } else {
+        request?.resolve(message.result);
+      }
+      return;
+    }
+    const waiters = eventWaiters.get(message.method) ?? [];
+    eventWaiters.delete(message.method);
+    for (const resolveEvent of waiters) {
+      resolveEvent(message.params);
+    }
+  });
+
+  return {
+    close: () => socket.close(),
+    send: (method, params = {}) => new Promise((resolveRequest, rejectRequest) => {
+      const id = ++sequence;
+      pending.set(id, { reject: rejectRequest, resolve: resolveRequest });
+      socket.send(JSON.stringify({ id, method, params }));
+    }),
+    waitFor: (method) => new Promise((resolveEvent) => {
+      const waiters = eventWaiters.get(method) ?? [];
+      waiters.push(resolveEvent);
+      eventWaiters.set(method, waiters);
+    })
+  };
+};
+
+const workingDirectory = await mkdtemp(join(tmpdir(), 'trip-responsive-'));
+let chromeProcess;
+let devTools;
+
+try {
+  const htmlPath = join(workingDirectory, 'trip-responsive.html');
+  const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>${baseStyles}\n${componentStyles}</style></head><body>${fixtureMarkup}<pre id="responsive-result"></pre><script>${evaluationScript}</script></body></html>`;
+  await writeFile(htmlPath, html, 'utf8');
+  const port = await reservePort();
+  chromeProcess = spawn(chromeExecutable, [
+    '--headless=new',
+    '--disable-gpu',
+    '--hide-scrollbars',
+    '--no-sandbox',
+    '--remote-allow-origins=*',
+    `--remote-debugging-port=${port}`,
+    `--user-data-dir=${join(workingDirectory, 'chrome-profile')}`,
+    'about:blank'
+  ], { stdio: 'ignore' });
+  const pageWebSocketUrl = await waitForPageTarget(port);
+  devTools = await connectDevTools(pageWebSocketUrl);
+  await devTools.send('Page.enable');
+  await devTools.send('Runtime.enable');
+
+  for (const width of viewportWidths) {
+    await devTools.send('Emulation.setDeviceMetricsOverride', {
+      width,
+      height: 1200,
+      deviceScaleFactor: 1,
+      mobile: false,
+      screenWidth: width,
+      screenHeight: 1200
+    });
+    const pageLoaded = devTools.waitFor('Page.loadEventFired');
+    await devTools.send('Page.navigate', { url: `${pathToFileURL(htmlPath).href}?width=${width}` });
+    await pageLoaded;
+    const evaluation = await devTools.send('Runtime.evaluate', {
+      expression: "document.querySelector('#responsive-result')?.textContent",
+      returnByValue: true
+    });
+    if (!evaluation.result?.value) {
+      throw new Error(`Chrome did not return responsive measurements at ${width}px.`);
+    }
+    const result = JSON.parse(evaluation.result.value);
+    if (result.viewportRight !== width || result.violations.length > 0) {
+      throw new Error(`Trip responsive check failed at ${width}px: ${JSON.stringify(result)}`);
+    }
+  }
+
+  console.log(`Trip pages fit real Chromium viewports: ${viewportWidths.join(', ')}px.`);
+} finally {
+  devTools?.close();
+  if (chromeProcess && chromeProcess.exitCode === null) {
+    chromeProcess.kill();
+    await Promise.race([
+      once(chromeProcess, 'exit'),
+      new Promise((resolveWait) => setTimeout(resolveWait, 2000))
+    ]);
+  }
+  await rm(workingDirectory, { force: true, recursive: true, maxRetries: 10, retryDelay: 100 });
+}

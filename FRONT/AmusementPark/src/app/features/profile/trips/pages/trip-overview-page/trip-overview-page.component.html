@@ -223,7 +223,10 @@
               <div class="day-card__date"><i class="pi pi-calendar" aria-hidden="true"></i><strong>{{ date }}</strong></div>
               <label>
                 <span>{{ 'trips.days.park' | translate }}</span>
-                <select [value]="dayDrafts()[date]?.candidateId || ''" (change)="updateDay(date, 'candidateId', $any($event.target).value)">
+                <select
+                  [disabled]="facade.busy()"
+                  [value]="dayDrafts()[date]?.candidateId || ''"
+                  (change)="updateDay(date, 'candidateId', $any($event.target).value)">
                   <option value="">{{ 'trips.days.choosePark' | translate }}</option>
                   @if (savedDayNeedsFallbackOption(date)) {
                     @if (savedDay(date); as saved) {
@@ -239,11 +242,20 @@
               </label>
               <label>
                 <span>{{ 'trips.days.arrival' | translate }}</span>
-                <input type="time" [value]="dayDrafts()[date]?.arrivalTime || ''" (input)="updateDay(date, 'arrivalTime', $any($event.target).value)">
+                <input
+                  type="time"
+                  [disabled]="facade.busy()"
+                  [value]="dayDrafts()[date]?.arrivalTime || ''"
+                  (input)="updateDay(date, 'arrivalTime', $any($event.target).value)">
               </label>
               <label class="day-card__note">
                 <span>{{ 'trips.days.note' | translate }}</span>
-                <textarea maxlength="2000" rows="2" [value]="dayDrafts()[date]?.note || ''" (input)="updateDay(date, 'note', $any($event.target).value)"></textarea>
+                <textarea
+                  maxlength="2000"
+                  rows="2"
+                  [disabled]="facade.busy()"
+                  [value]="dayDrafts()[date]?.note || ''"
+                  (input)="updateDay(date, 'note', $any($event.target).value)"></textarea>
               </label>
               <div class="day-card__actions">
                 <button type="button" appUiButton="primary" [disabled]="facade.busy() || !canSaveDay(date)" (click)="saveDay(date)">

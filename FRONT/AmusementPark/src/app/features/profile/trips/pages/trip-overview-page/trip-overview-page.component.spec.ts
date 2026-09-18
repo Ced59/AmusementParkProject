@@ -101,6 +101,9 @@ describe('TripOverviewPageComponent', () => {
     expect(Array.from(fixture.nativeElement.querySelectorAll('.trip-dates input')).every(
       (input: unknown): boolean => (input as HTMLInputElement).disabled
     )).toBe(true);
+    expect(Array.from(fixture.nativeElement.querySelectorAll('.day-card select, .day-card input, .day-card textarea, .day-card button')).every(
+      (control: unknown): boolean => (control as HTMLInputElement).disabled
+    )).toBe(true);
     busy.set(false);
     fixture.detectChanges();
 
