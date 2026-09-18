@@ -162,6 +162,11 @@ public sealed class TripParticipantService
             return InvalidList();
         }
 
+        TripMember actingOwner = trip.Members.Single(member => string.Equals(
+            member.UserId,
+            normalizedUserId,
+            StringComparison.Ordinal));
+        TripEffectiveRole? actingOwnerRole = trip.ResolveRole(normalizedUserId);
         try
         {
             trip.TransferOwnership(
@@ -178,11 +183,8 @@ public sealed class TripParticipantService
 
         TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
             trip.Id,
-            trip.Members.Single(member => string.Equals(
-                member.UserId,
-                normalizedUserId,
-                StringComparison.Ordinal)).Id,
-            trip.ResolveRole(normalizedUserId),
+            actingOwner.Id,
+            actingOwnerRole,
             TripActivityKind.OwnershipTransferred,
             TripActivityRecorder.RootOperationKey(TripActivityKind.OwnershipTransferred, trip.Version),
             1);
@@ -194,16 +196,11 @@ public sealed class TripParticipantService
             cancellationToken);
         if (write.Outcome == TripPlanWriteOutcome.Success
             && write.PersistedTripPlan is not null
-            && this.activityRecorder is not null)
+            && this.activityRecorder is not null
+            && pendingActivity is not null)
         {
-            await this.activityRecorder.RecordAsync(
-                write.PersistedTripPlan,
-                normalizedUserId,
-                TripActivityKind.OwnershipTransferred,
-                TripActivityRecorder.RootOperationKey(
-                    TripActivityKind.OwnershipTransferred,
-                    write.PersistedTripPlan.Version),
-                1,
+            await this.activityRecorder.PublishAsync(
+                pendingActivity,
                 CancellationToken.None);
         }
 

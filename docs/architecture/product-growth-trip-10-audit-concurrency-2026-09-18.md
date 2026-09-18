@@ -203,6 +203,9 @@ Le tombstone d’un parc candidat ne reçoit aucune échéance TTL tant que sa p
 de retrait est en attente. Après matérialisation, l’échéance de rétention de
 24 heures est posée et l’index TTL existant peut le nettoyer sans risque de
 perdre le journal.
+Une invitation portant un marqueur suspend de la même façon son échéance de
+rétention. Après matérialisation, MongoDB restaure la fin normale de la fenêtre
+de rejeu ou l’heure serveur courante si cette fenêtre est déjà dépassée.
 Après l’insertion, le repository revérifie la barrière de suppression et retire
 l’événement si la fermeture a gagné la course. Si la fermeture commence après
 cette vérification, la purge voit déjà l’événement et le retire normalement.
@@ -273,6 +276,9 @@ partielle invalide ; la publication immédiate les complète dès que possible.
 Les marqueurs de préférences portent aussi l’identité complète de leur lease.
 Le worker refuse de publier tant que cette lease est présente et non expirée,
 afin de ne jamais photographier un lot encore en cours d’écriture.
+Pour un transfert de propriété, le membre et son rôle sont capturés avant la
+mutation de l’agrégat : l’auteur reste donc « propriétaire » dans le journal,
+même s’il devient éditeur, participant ou lecteur juste après l’action.
 
 ## 6. Séquence de lecture et confidentialité
 

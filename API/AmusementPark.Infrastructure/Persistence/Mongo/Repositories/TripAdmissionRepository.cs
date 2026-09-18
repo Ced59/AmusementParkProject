@@ -542,7 +542,7 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
             & filters.Eq(static item => item.Status, TripInvitationStatus.Active)
             & filters.Eq(static item => item.Version, invitation.Version)
             & serverTimeGuard,
-            TripActivityPendingMongoDefinitions.Append(
+            TripInvitationRepository.AppendPendingAudit(
                 Builders<TripInvitationDocument>.Update
                     .Set(static item => item.Status, TripInvitationStatus.Declined)
                     .Set(static item => item.AcceptanceOperationKeyHash, NormalizeRequired(operationKeyHash, nameof(operationKeyHash)))

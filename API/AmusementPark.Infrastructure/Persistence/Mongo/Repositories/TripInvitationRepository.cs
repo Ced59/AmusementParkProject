@@ -337,7 +337,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
                 static document => document.Version,
                 expectedVersion)
             & BuildLeaseTimeGuard(lease),
-            TripActivityPendingMongoDefinitions.Append(
+            AppendPendingAudit(
                 updates.Set(static document => document.Status, TripInvitationStatus.Revoked)
                     .Set(static document => document.RevokedAtUtc, invitation.RevokedAtUtc)
                     .Set(static document => document.UpdatedAt, invitation.UpdatedAtUtc)
@@ -463,7 +463,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
             & filters.Eq(static document => document.ChildMutationEpoch, lease.ChildMutationEpoch)
             & filters.Eq(static document => document.LeaseGeneration, lease.Generation)
             & TripChildMutationMongoDefinitions.BuildCreationLeaseGuard<TripInvitationDocument>(),
-            TripActivityPendingMongoDefinitions.Append(
+            AppendPendingAudit(
                 Builders<TripInvitationDocument>.Update
                     .Set(static document => document.Status, TripInvitationStatus.Active)
                     .Unset(static document => document.ReservedExpiresAtUtc),
@@ -496,6 +496,21 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
         return new TripInvitationCreationWriteResult(
             TripInvitationCreationWriteOutcome.Success,
             ToCreationRecord(document, wasReplayed));
+    }
+
+    internal static UpdateDefinition<TripInvitationDocument> AppendPendingAudit(
+        UpdateDefinition<TripInvitationDocument> update,
+        TripActivityWrite? activity)
+    {
+        ArgumentNullException.ThrowIfNull(update);
+        UpdateDefinition<TripInvitationDocument> withMarker =
+            TripActivityPendingMongoDefinitions.Append(update, activity);
+        return activity is null
+            ? withMarker
+            : Builders<TripInvitationDocument>.Update.Combine(
+                withMarker,
+                Builders<TripInvitationDocument>.Update.Unset(
+                    static document => document.RetentionExpiresAtUtc));
     }
 
     private static TripInvitationCreationRecord ToCreationRecord(

@@ -611,6 +611,7 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         await RemovePendingAsync(this.candidates, filter, update, cancellationToken);
         await RemovePendingAsync(this.days, filter, update, cancellationToken);
         await RemovePendingAsync(this.invitations, filter, update, cancellationToken);
+        await this.RestoreInvitationRetentionAsync(tripPlanId, cancellationToken);
         await RemovePendingAsync(this.preferences, filter, update, cancellationToken);
         await RemovePendingAsync(this.decisions, filter, update, cancellationToken);
 
@@ -644,6 +645,48 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         _ = await this.days.Database.GetCollection<BsonDocument>(
                 this.days.CollectionNamespace.CollectionName)
             .DeleteManyAsync(tombstoneFilter, cancellationToken);
+    }
+
+    private async Task RestoreInvitationRetentionAsync(
+        TripPlanId tripPlanId,
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<BsonDocument> invitationDocuments =
+            this.invitations.Database.GetCollection<BsonDocument>(
+                this.invitations.CollectionNamespace.CollectionName);
+        BsonDocument filter = new("$and", new BsonArray
+        {
+            new BsonDocument("tripPlanId", tripPlanId.Value),
+            new BsonDocument(
+                "pendingAuditEvents.0",
+                new BsonDocument("$exists", false)),
+            new BsonDocument(
+                "retentionExpiresAtUtc",
+                new BsonDocument("$exists", false)),
+        });
+        _ = await invitationDocuments.UpdateManyAsync(
+            filter,
+            new PipelineUpdateDefinition<BsonDocument>(BuildInvitationRetentionRestorePipeline()),
+            cancellationToken: cancellationToken);
+    }
+
+    internal static BsonDocument[] BuildInvitationRetentionRestorePipeline()
+    {
+        long retentionMilliseconds = checked((long)TripInvitation.IdempotencyReplayRetention.TotalMilliseconds);
+        return new[]
+        {
+            new BsonDocument("$set", new BsonDocument(
+                "retentionExpiresAtUtc",
+                new BsonDocument("$max", new BsonArray
+                {
+                    new BsonDocument("$add", new BsonArray
+                    {
+                        "$expiresAtUtc",
+                        retentionMilliseconds,
+                    }),
+                    "$$NOW",
+                }))),
+        };
     }
 
     private static async Task RemovePendingAsync<TDocument>(

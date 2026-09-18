@@ -146,6 +146,77 @@ public sealed class TripParticipantServiceTests
     }
 
     [Fact]
+    public async Task TransferOwnershipAsync_ShouldAuditTheActorAsOwnerBeforeTheTransfer()
+    {
+        TripPlan trip = CreateTripWithMember();
+        long expectedVersion = trip.Version;
+        TripMember target = trip.Members.Single(item => item.UserId == "user-2");
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
+        Mock<IUserRepository> users = new(MockBehavior.Strict);
+        Mock<ITripAuditWriter> audit = new(MockBehavior.Strict);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        TripActivityWrite? persistedMarker = null;
+        TripActivityWrite? publishedActivity = null;
+        clock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
+        plans.Setup(item => item.GetOwnedAsync("user-1", trip.Id, CancellationToken.None))
+            .ReturnsAsync(trip);
+        plans.Setup(item => item.TransferOwnershipAsync(
+                "user-1",
+                trip,
+                expectedVersion,
+                It.IsAny<TripActivityWrite?>(),
+                CancellationToken.None))
+            .Callback<string, TripPlan, long, TripActivityWrite?, CancellationToken>(
+                (_, _, _, activity, _) => persistedMarker = activity)
+            .ReturnsAsync(() => new TripPlanWriteResult(
+                TripPlanWriteOutcome.Success,
+                trip.Version,
+                trip));
+        users.Setup(item => item.GetByIdAsync("user-2", CancellationToken.None))
+            .ReturnsAsync(new User
+            {
+                Id = "user-2",
+                IsActivated = true,
+                IsBlocked = false,
+            });
+        users.Setup(item => item.GetByIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                new User { Id = "user-1", PublicDisplayName = "Camille" },
+                new User { Id = "user-2", PublicDisplayName = "Alex" },
+            });
+        audit.Setup(item => item.AppendAsync(It.IsAny<TripActivityWrite>(), CancellationToken.None))
+            .Callback<TripActivityWrite, CancellationToken>(
+                (activity, _) => publishedActivity = activity)
+            .ReturnsAsync(true);
+        TripActivityRecorder recorder = new(audit.Object, clock.Object);
+        TripParticipantService service = new(
+            plans.Object,
+            preferences.Object,
+            users.Object,
+            clock.Object,
+            recorder);
+
+        ApplicationResult<TripParticipantListResult> result = await service.TransferOwnershipAsync(
+            "user-1",
+            trip.Id.Value,
+            target.Id.Value,
+            TripDelegatedRole.Participant,
+            expectedVersion,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(TripEffectiveRole.Owner, persistedMarker?.ActorRole);
+        Assert.Equal(TripEffectiveRole.Owner, publishedActivity?.ActorRole);
+        audit.VerifyAll();
+        plans.VerifyAll();
+        users.VerifyAll();
+    }
+
+    [Fact]
     public async Task LeaveAsync_WhenDepartureSucceeds_ShouldDeleteTheMembersPreferences()
     {
         using CancellationTokenSource requestCancellation = new();
