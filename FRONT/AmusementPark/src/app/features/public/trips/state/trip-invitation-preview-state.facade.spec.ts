@@ -15,6 +15,7 @@ describe('TripInvitationPreviewStateFacade', () => {
   let facade: TripInvitationPreviewStateFacade;
   let data: TripInvitationsDataPort;
   let loggedIn: boolean;
+  let currentUserId: string;
   let decisionOperations: {
     read: ReturnType<typeof vi.fn>;
     write: ReturnType<typeof vi.fn>;
@@ -23,6 +24,7 @@ describe('TripInvitationPreviewStateFacade', () => {
 
   beforeEach(() => {
     loggedIn = false;
+    currentUserId = 'user-1';
     decisionOperations = {
       read: vi.fn().mockReturnValue(null),
       write: vi.fn(),
@@ -42,7 +44,13 @@ describe('TripInvitationPreviewStateFacade', () => {
         { provide: TRIP_INVITATIONS_DATA_PORT, useValue: data },
         { provide: TRIP_INVITATION_OPERATION_ID_PORT, useValue: { create: (): string => 'operation-1' } },
         { provide: TripInvitationDecisionOperationStore, useValue: decisionOperations },
-        { provide: AuthService, useValue: { isLoggedIn: (): boolean => loggedIn } }
+        {
+          provide: AuthService,
+          useValue: {
+            isLoggedIn: (): boolean => loggedIn,
+            getUserIdFromToken: (): string | null => loggedIn ? currentUserId : null
+          }
+        }
       ]
     });
     facade = TestBed.inject(TripInvitationPreviewStateFacade);
@@ -92,7 +100,12 @@ describe('TripInvitationPreviewStateFacade', () => {
     facade.accept();
 
     expect(data.accept).toHaveBeenCalledWith('opaque-token', 'operation-1');
-    expect(decisionOperations.write).toHaveBeenCalledWith('opaque-token', 'accept', 'operation-1');
+    expect(decisionOperations.write).toHaveBeenCalledWith(
+      'opaque-token',
+      'user-1',
+      'accept',
+      'operation-1'
+    );
     expect(decisionOperations.clear).toHaveBeenCalledWith('opaque-token');
     expect(facade.tripPlanId()).toBe('trip-1');
     expect(facade.status()).toBe('accepted');
@@ -106,10 +119,24 @@ describe('TripInvitationPreviewStateFacade', () => {
     facade.load('opaque-token');
 
     expect(data.preview).not.toHaveBeenCalled();
+    expect(decisionOperations.read).toHaveBeenCalledWith('opaque-token', 'user-1');
     expect(data.accept).toHaveBeenCalledWith('opaque-token', 'persisted-operation');
     expect(decisionOperations.clear).toHaveBeenCalledWith('opaque-token');
     expect(facade.tripPlanId()).toBe('trip-1');
     expect(facade.status()).toBe('accepted');
+  });
+
+  it('does not resume another account decision in a shared tab', () => {
+    loggedIn = true;
+    currentUserId = 'user-2';
+    decisionOperations.read.mockReturnValue(null);
+
+    facade.load('opaque-token');
+
+    expect(decisionOperations.read).toHaveBeenCalledWith('opaque-token', 'user-2');
+    expect(data.accept).not.toHaveBeenCalled();
+    expect(data.preview).toHaveBeenCalledWith('opaque-token');
+    expect(facade.status()).toBe('ready');
   });
 
   it('ignores an acceptance response from the invitation shown before a route change', () => {

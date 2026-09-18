@@ -218,7 +218,9 @@ une copie chargée avant l'admission ne peut donc effacer ni le membre provisoir
 le verrou de reprise.
 
 Le navigateur conserve en `sessionStorage` l'identifiant d'opération associé à une
-empreinte locale du token, jamais le token lui-même. Si l'acceptation
+empreinte locale du token et à une empreinte du compte initiateur, jamais le token
+ni l'identifiant de compte eux-mêmes. Un autre compte ouvert dans le même onglet ne
+reprend donc pas cette décision. Si l'acceptation
 est validée mais que sa réponse HTTP se perd, un rechargement rejoue directement la
 même opération avant de demander l'aperçu désormais terminal. Le succès efface le
 marqueur ; une erreur ambiguë le conserve pour un nouveau retry.

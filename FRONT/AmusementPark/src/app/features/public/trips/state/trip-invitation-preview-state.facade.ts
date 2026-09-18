@@ -44,7 +44,10 @@ export class TripInvitationPreviewStateFacade {
     const requestGeneration: number = ++this.requestGeneration;
     this.tripPlanIdSignal.set(null);
     if (tokenChanged) {
-      const storedOperation = this.decisionOperations.read(normalizedToken);
+      const currentUserId: string | null = this.authService.getUserIdFromToken();
+      const storedOperation = currentUserId
+        ? this.decisionOperations.read(normalizedToken, currentUserId)
+        : null;
       this.acceptOperationId = storedOperation?.decision === 'accept'
         ? storedOperation.operationId
         : null;
@@ -103,6 +106,10 @@ export class TripInvitationPreviewStateFacade {
       ? this.acceptOperationId
       : this.declineOperationId;
     const operationId: string = existingOperationId ?? this.operationIds.create();
+    const currentUserId: string | null = this.authService.getUserIdFromToken();
+    if (!currentUserId) {
+      return;
+    }
     if (accept) {
       this.acceptOperationId = operationId;
     } else {
@@ -110,6 +117,7 @@ export class TripInvitationPreviewStateFacade {
     }
     this.decisionOperations.write(
       this.token,
+      currentUserId,
       accept ? 'accept' : 'decline',
       operationId
     );

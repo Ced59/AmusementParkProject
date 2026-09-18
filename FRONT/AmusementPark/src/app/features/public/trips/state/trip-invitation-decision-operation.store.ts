@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 interface StoredTripInvitationDecisionOperation {
   readonly decision: 'accept' | 'decline';
   readonly operationId: string;
+  readonly subjectFingerprint: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class TripInvitationDecisionOperationStore {
   private readonly keyPrefix: string = 'amusementpark.trip-invitation-decision.v1.';
 
-  read(token: string): StoredTripInvitationDecisionOperation | null {
+  read(token: string, userId: string): StoredTripInvitationDecisionOperation | null {
     const storage: Storage | null = this.getStorage();
     if (!storage) {
       return null;
@@ -17,7 +18,8 @@ export class TripInvitationDecisionOperationStore {
 
     try {
       const value: unknown = JSON.parse(storage.getItem(this.buildKey(token)) ?? 'null');
-      if (!this.isStoredOperation(value)) {
+      if (!this.isStoredOperation(value)
+        || value.subjectFingerprint !== this.fingerprint(userId)) {
         return null;
       }
 
@@ -28,14 +30,23 @@ export class TripInvitationDecisionOperationStore {
     }
   }
 
-  write(token: string, decision: 'accept' | 'decline', operationId: string): void {
+  write(
+    token: string,
+    userId: string,
+    decision: 'accept' | 'decline',
+    operationId: string
+  ): void {
     const storage: Storage | null = this.getStorage();
     if (!storage) {
       return;
     }
 
     try {
-      storage.setItem(this.buildKey(token), JSON.stringify({ decision, operationId }));
+      storage.setItem(this.buildKey(token), JSON.stringify({
+        decision,
+        operationId,
+        subjectFingerprint: this.fingerprint(userId)
+      }));
     } catch {
       // A disabled or full session storage must not prevent the decision request.
     }
@@ -50,15 +61,19 @@ export class TripInvitationDecisionOperationStore {
   }
 
   private buildKey(token: string): string {
+    return `${this.keyPrefix}${this.fingerprint(token)}`;
+  }
+
+  private fingerprint(value: string): string {
     let firstHash: number = 0x811c9dc5;
     let secondHash: number = 0x9e3779b9;
-    for (let index: number = 0; index < token.length; index++) {
-      const code: number = token.charCodeAt(index);
+    for (let index: number = 0; index < value.length; index++) {
+      const code: number = value.charCodeAt(index);
       firstHash = Math.imul(firstHash ^ code, 0x01000193);
       secondHash = Math.imul(secondHash ^ code, 0x85ebca6b);
     }
 
-    return `${this.keyPrefix}${(firstHash >>> 0).toString(16)}${(secondHash >>> 0).toString(16)}`;
+    return `${(firstHash >>> 0).toString(16)}${(secondHash >>> 0).toString(16)}`;
   }
 
   private isStoredOperation(value: unknown): value is StoredTripInvitationDecisionOperation {
@@ -70,7 +85,9 @@ export class TripInvitationDecisionOperationStore {
     return (candidate.decision === 'accept' || candidate.decision === 'decline')
       && typeof candidate.operationId === 'string'
       && candidate.operationId.length > 0
-      && candidate.operationId.length <= 200;
+      && candidate.operationId.length <= 200
+      && typeof candidate.subjectFingerprint === 'string'
+      && candidate.subjectFingerprint.length > 0;
   }
 
   private getStorage(): Storage | null {

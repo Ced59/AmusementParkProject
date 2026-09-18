@@ -219,7 +219,8 @@ autorisation ne peut donc pas écrire après la réponse. La liste des voyages r
 reste indépendante du quota de création, mais chaque lecture est bornée aux 100
 adhésions les plus récemment modifiées pour protéger les ressources du VPS.
 Une acceptation ambiguë est reprise après rechargement avec le même identifiant
-d'opération conservé pour la session sans stocker le token. Un transfert vérifie
+d'opération conservé pour la session sans stocker le token, uniquement sous le
+même compte initiateur. Un transfert vérifie
 aussi que le nouveau propriétaire possède encore un compte activé et non bloqué.
 
 Les preuves, schémas MongoDB et diagrammes sont détaillés dans
