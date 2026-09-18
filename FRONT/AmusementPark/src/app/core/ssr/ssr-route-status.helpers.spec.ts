@@ -169,6 +169,15 @@ describe('SSR route status helpers', () => {
     ).toBe(200);
   });
 
+  it('serves invitation links successfully while excluding bearer URLs from indexing and archiving', () => {
+    const url: string = '/fr/trip-invitations/opaque-secret?from=email';
+
+    expect(resolveSsrRouteStatusCode(url)).toBe(200);
+    expect(resolveXRobotsTagHeader(url)).toBe('noindex, nofollow, noarchive');
+    expect(resolveSsrRouteStatusCode('/fr/trip-invitations')).toBe(404);
+    expect(resolveSsrRouteStatusCode('/fr/trip-invitations/token/extra')).toBe(404);
+  });
+
   it('serves Park Fit through the CSR shell while excluding its private criteria page from indexing', () => {
     expect(resolveSsrRouteStatusCode('/fr/park-fit')).toBe(200);
     expect(resolveSsrRouteStatusCode('/fr/park-fit/')).toBe(200);

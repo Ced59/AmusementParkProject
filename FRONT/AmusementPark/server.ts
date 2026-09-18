@@ -42,7 +42,10 @@ import { isPublicSharedVisitRecapSsrRoute } from './src/server/ssr/public-shared
 import { isPublicSharedYearRecapSsrRoute } from './src/server/ssr/public-shared-year-recap-ssr-route-policy';
 import { isPublicSharedPassportProfileSsrRoute } from './src/server/ssr/public-shared-passport-profile-ssr-route-policy';
 import { isPublicSharedProfileComparisonSsrRoute } from './src/server/ssr/public-shared-profile-comparison-ssr-route-policy';
-import { isPublicTripInvitationRoute } from './src/server/ssr/public-trip-invitation-route-policy';
+import {
+  isPublicTripInvitationRoute,
+  sanitizePublicTripInvitationUrl,
+} from './src/app/core/ssr/public-trip-invitation-route-policy';
 import { isPublicRatingMethodologySsrRoute } from './src/server/ssr/public-rating-methodology-ssr-route-policy';
 import {
   isCriticalPublicPricingSsrRoute,
@@ -654,7 +657,7 @@ export function app(): express.Express {
       })
       .catch((err: unknown) => {
         if (err instanceof SsrRenderQueueFullError) {
-          console.warn(`SSR overload fallback to CSR: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${req.originalUrl}`);
+          console.warn(`SSR overload fallback to CSR: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${sanitizePublicTripInvitationUrl(req.originalUrl)}`);
           serveCsrFallbackPage(req, res, csrIndexHtml, 'CSR-OVERLOAD-FALLBACK');
           return;
         }
@@ -1988,7 +1991,7 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
   const fallbackStatus: SsrPageResponseStatus = mode === 'SSR-BOT-CACHE-ONLY-MISS' && statusCode !== 200 ? 'CSR-CACHE-MISS-FALLBACK' : mode;
   recordPageResponse(req, fallbackStatus, buildPageCacheKey(req));
   if (csrFallbackLogSampleRate > 0 && csrFallbackCount % csrFallbackLogSampleRate === 0) {
-    console.warn(`SSR CSR fallback sample: count=${csrFallbackCount}, mode=${mode}, url=${req.originalUrl}`);
+    console.warn(`SSR CSR fallback sample: count=${csrFallbackCount}, mode=${mode}, url=${sanitizePublicTripInvitationUrl(req.originalUrl)}`);
   }
 
   res.setHeader('X-AmusementPark-SSR-Fallback', mode);
