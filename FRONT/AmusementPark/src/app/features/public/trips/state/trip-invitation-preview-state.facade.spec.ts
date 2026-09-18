@@ -83,6 +83,34 @@ describe('TripInvitationPreviewStateFacade', () => {
     expect(facade.tripPlanId()).toBe('trip-1');
     expect(facade.status()).toBe('accepted');
   });
+
+  it('ignores an acceptance response from the invitation shown before a route change', () => {
+    loggedIn = true;
+    const firstDecision = new Subject<{ tripPlanId: string; wasReplayed: boolean }>();
+    (data.accept as ReturnType<typeof vi.fn>).mockReturnValue(firstDecision);
+    facade.load('first-token');
+    facade.accept();
+
+    facade.load('second-token');
+    firstDecision.next({ tripPlanId: 'first-trip', wasReplayed: false });
+
+    expect(facade.preview()).toEqual(createPreview());
+    expect(facade.tripPlanId()).toBeNull();
+    expect(facade.status()).toBe('ready');
+  });
+
+  it('ignores a decision error from the invitation shown before a route change', () => {
+    loggedIn = true;
+    const firstDecision = new Subject<{ tripPlanId: string; wasReplayed: boolean }>();
+    (data.decline as ReturnType<typeof vi.fn>).mockReturnValue(firstDecision);
+    facade.load('first-token');
+    facade.decline();
+
+    facade.load('second-token');
+    firstDecision.error(new Error('late failure'));
+
+    expect(facade.status()).toBe('ready');
+  });
 });
 
 function createPreview(): TripInvitationPreview {

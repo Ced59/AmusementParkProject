@@ -37,8 +37,14 @@ export class TripInvitationPreviewStateFacade {
 
   load(token: string): void {
     const normalizedToken: string = token.trim();
+    const tokenChanged: boolean = normalizedToken !== this.token;
     this.token = normalizedToken;
     const requestGeneration: number = ++this.requestGeneration;
+    this.tripPlanIdSignal.set(null);
+    if (tokenChanged) {
+      this.acceptOperationId = null;
+      this.declineOperationId = null;
+    }
     if (!normalizedToken) {
       this.previewSignal.set(null);
       this.statusSignal.set('unavailable');
@@ -92,15 +98,24 @@ export class TripInvitationPreviewStateFacade {
     }
 
     this.statusSignal.set('deciding');
+    const decisionGeneration: number = this.requestGeneration;
+    const decisionToken: string = this.token;
     const decision$ = accept
-      ? this.data.accept(this.token, operationId)
-      : this.data.decline(this.token, operationId);
+      ? this.data.accept(decisionToken, operationId)
+      : this.data.decline(decisionToken, operationId);
     decision$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result): void => {
+        if (decisionGeneration !== this.requestGeneration || decisionToken !== this.token) {
+          return;
+        }
         this.tripPlanIdSignal.set(result.tripPlanId);
         this.statusSignal.set(accept ? 'accepted' : 'declined');
       },
-      error: (): void => this.statusSignal.set('decision-error')
+      error: (): void => {
+        if (decisionGeneration === this.requestGeneration && decisionToken === this.token) {
+          this.statusSignal.set('decision-error');
+        }
+      }
     });
   }
 }

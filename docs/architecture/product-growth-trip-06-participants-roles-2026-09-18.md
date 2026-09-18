@@ -276,6 +276,10 @@ outils de dates et de programme. Pour `Participant` et `Viewer`, les champs,
 poignées de glisser-déposer et boutons de déplacement sont absents, pas simplement
 désactivés. Les dates, parcs et journées restent lisibles.
 
+L'aperçu public associe aussi chaque décision à la génération et au token affichés.
+Une réponse tardive d'un ancien lien ne peut donc ni remplacer le nouveau voyage,
+ni afficher une erreur qui ne concerne plus la page courante.
+
 Le panneau des participants borne toutes ses colonnes avec `minmax(0, 1fr)`, coupe
 les mots longs et empile identité, rôle et actions à 42 rem puis l'en-tête à 22,5
 rem. Le contrôle navigateur couvre réellement 320, 360, 390, 768 et 1280 px.
@@ -290,7 +294,7 @@ rem. Le contrôle navigateur couvre réellement 320, 360, 390, 768 et 1280 px.
 - réconciliation conservant une adhésion déjà établie ;
 - résolution des alias en un seul batch ;
 - refus serveur d'un changement de rôle par un non-propriétaire ;
-- capacités Angular, opération d'acceptation stable et lecture seule ;
+- capacités Angular, opération d'acceptation stable, navigation concurrente et lecture seule ;
 - architecture façades/ports et une classe par fichier ;
 - huit langues et viewports réels.
 
