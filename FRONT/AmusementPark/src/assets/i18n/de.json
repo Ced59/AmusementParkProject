@@ -1461,7 +1461,8 @@
       },
       "sources": {
         "manual": "Manuell hinzugefügt",
-        "wishlist": "Aus deinen Wünschen übernommen"
+        "wishlist": "Aus deinen Wünschen übernommen",
+        "comparator": "Über den Vergleich hinzugefügt"
       }
     },
     "days": {

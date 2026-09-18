@@ -1461,7 +1461,8 @@
       },
       "sources": {
         "manual": "Added manually",
-        "wishlist": "Imported from your saved ideas"
+        "wishlist": "Imported from your saved ideas",
+        "comparator": "Added from the comparator"
       }
     },
     "days": {

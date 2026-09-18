@@ -47,7 +47,8 @@ export class TripOverviewPageComponent implements OnInit {
 
   private dateDraftInitialized: boolean = false;
   private handledDateRecoveryRevision: number = 0;
-  private handledDayDraftRevision: number = 0;
+  private handledDayRecoveryRevision: number = 0;
+  private handledClearDayRevision: number = 0;
 
   constructor(
     protected readonly facade: TripOverviewStateFacade,
@@ -74,20 +75,24 @@ export class TripOverviewPageComponent implements OnInit {
     effect((): void => {
       const dates: string[] = this.facade.tripDates();
       const days: TripDayPlan[] = this.facade.program().days;
-      const dayDraftRevision: number = this.facade.dayDraftRevision();
-      const mustRefresh: boolean = dayDraftRevision > this.handledDayDraftRevision;
+      const recoveryRevision: number = this.facade.recoveryRevision();
+      const clearedDay: { localDate: string; revision: number } | null = this.facade.clearedDay();
+      const mustRecover: boolean = recoveryRevision > this.handledDayRecoveryRevision;
+      const hasNewClearedDay: boolean = (clearedDay?.revision ?? 0) > this.handledClearDayRevision;
       const existingDrafts: Record<string, TripDayDraft> = untracked(this.dayDrafts);
       const nextDrafts: Record<string, TripDayDraft> = {};
       for (const date of dates) {
         const saved: TripDayPlan | undefined = days.find((day: TripDayPlan): boolean => day.localDate === date);
-        nextDrafts[date] = !mustRefresh && existingDrafts[date] ? existingDrafts[date] : {
+        const mustRefreshDate: boolean = mustRecover || (hasNewClearedDay && clearedDay?.localDate === date);
+        nextDrafts[date] = !mustRefreshDate && existingDrafts[date] ? existingDrafts[date] : {
           candidateId: saved?.parkCandidateId ?? '',
           arrivalTime: saved?.desiredArrivalTime ?? '',
           note: saved?.groupNote ?? ''
         };
       }
       this.dayDrafts.set(nextDrafts);
-      this.handledDayDraftRevision = dayDraftRevision;
+      this.handledDayRecoveryRevision = recoveryRevision;
+      this.handledClearDayRevision = clearedDay?.revision ?? this.handledClearDayRevision;
     });
   }
 
@@ -165,7 +170,18 @@ export class TripOverviewPageComponent implements OnInit {
   }
 
   protected hasSavedDay(date: string): boolean {
-    return this.facade.program().days.some((day: TripDayPlan): boolean => day.localDate === date);
+    return this.savedDay(date) !== undefined;
+  }
+
+  protected savedDay(date: string): TripDayPlan | undefined {
+    return this.facade.program().days.find((day: TripDayPlan): boolean => day.localDate === date);
+  }
+
+  protected savedDayNeedsFallbackOption(date: string): boolean {
+    const saved: TripDayPlan | undefined = this.savedDay(date);
+    return !!saved && !this.selectedCandidatesForDate(date).some(
+      (candidate: TripParkCandidate): boolean => candidate.candidateId === saved.parkCandidateId
+    );
   }
 
   protected stateLabelKey(state: TripParkCandidateState): string {

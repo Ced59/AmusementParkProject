@@ -1461,7 +1461,8 @@
       },
       "sources": {
         "manual": "Aggiunto manualmente",
-        "wishlist": "Importato dai tuoi desideri"
+        "wishlist": "Importato dai tuoi desideri",
+        "comparator": "Aggiunto dal comparatore"
       }
     },
     "days": {

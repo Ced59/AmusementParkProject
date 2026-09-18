@@ -14,13 +14,13 @@ describe('TripOverviewPageComponent', () => {
     const program: WritableSignal<TripProgram> = signal<TripProgram>(createProgram('09:00', 'Serveur initial'));
     const tripDates: WritableSignal<string[]> = signal<string[]>(['2026-10-03']);
     const recoveryRevision: WritableSignal<number> = signal<number>(0);
-    const dayDraftRevision: WritableSignal<number> = signal<number>(0);
+    const clearedDay: WritableSignal<{ localDate: string; revision: number } | null> = signal(null);
     const facade = {
       trip: trip.asReadonly(),
       program: program.asReadonly(),
       tripDates: tripDates.asReadonly(),
       recoveryRevision: recoveryRevision.asReadonly(),
-      dayDraftRevision: dayDraftRevision.asReadonly(),
+      clearedDay: clearedDay.asReadonly(),
       status: signal('ready').asReadonly(),
       busy: signal(false).asReadonly(),
       actionError: signal(null).asReadonly(),
@@ -50,6 +50,7 @@ describe('TripOverviewPageComponent', () => {
 
     const fixture: ComponentFixture<TripOverviewPageComponent> = TestBed.createComponent(TripOverviewPageComponent);
     fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('trips.actions.clearDay');
     const state = fixture.componentInstance as unknown as {
       startDate: WritableSignal<string>;
       endDate: WritableSignal<string>;
@@ -71,7 +72,6 @@ describe('TripOverviewPageComponent', () => {
     tripDates.set(['2026-10-04']);
     program.set(createProgram('10:30', 'Version concurrente', '2026-10-04'));
     recoveryRevision.set(1);
-    dayDraftRevision.set(1);
     fixture.detectChanges();
 
     expect(state.startDate()).toBe('2026-10-04');
@@ -83,11 +83,19 @@ describe('TripOverviewPageComponent', () => {
       note: 'Version concurrente'
     });
 
+    tripDates.set(['2026-10-04', '2026-10-05']);
+    state.dayDrafts.set({
+      '2026-10-04': { candidateId: 'candidate-1', arrivalTime: '10:30', note: 'À effacer' },
+      '2026-10-05': { candidateId: 'candidate-2', arrivalTime: '08:45', note: 'Brouillon à conserver' }
+    });
     program.set({ candidates: [], days: [] });
-    dayDraftRevision.set(2);
+    clearedDay.set({ localDate: '2026-10-04', revision: 1 });
     fixture.detectChanges();
 
     expect(state.dayDrafts()['2026-10-04']).toEqual({ candidateId: '', arrivalTime: '', note: '' });
+    expect(state.dayDrafts()['2026-10-05']).toEqual({
+      candidateId: 'candidate-2', arrivalTime: '08:45', note: 'Brouillon à conserver'
+    });
 
     program.set({
       ...createProgram('10:30', 'Version concurrente', '2026-10-04'),

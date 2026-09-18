@@ -170,7 +170,7 @@
       </div>
       @if (facade.tripDates().length === 0) {
         <div class="trip-section__empty"><p>{{ 'trips.days.needsDates' | translate }}</p></div>
-      } @else if (selectedCandidates().length === 0) {
+      } @else if (selectedCandidates().length === 0 && facade.program().days.length === 0) {
         <div class="trip-section__empty"><p>{{ 'trips.days.needsPark' | translate }}</p></div>
       } @else {
         <div class="day-board">
@@ -181,6 +181,13 @@
                 <span>{{ 'trips.days.park' | translate }}</span>
                 <select [value]="dayDrafts()[date]?.candidateId || ''" (change)="updateDay(date, 'candidateId', $any($event.target).value)">
                   <option value="">{{ 'trips.days.choosePark' | translate }}</option>
+                  @if (savedDayNeedsFallbackOption(date)) {
+                    @if (savedDay(date); as saved) {
+                      <option [value]="saved.parkCandidateId" disabled>
+                        {{ saved.parkName }} · {{ 'trips.candidates.unavailable' | translate }}
+                      </option>
+                    }
+                  }
                   @for (candidate of selectedCandidatesForDate(date); track candidate.candidateId) {
                     <option [value]="candidate.candidateId">{{ candidate.parkName }}</option>
                   }

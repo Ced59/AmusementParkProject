@@ -134,7 +134,7 @@ describe('TripOverviewStateFacade', () => {
     expect(programData.deleteDay).toHaveBeenCalledWith('trip-1', '2026-10-03', 7, 4);
     expect(facade.program().days).toEqual([]);
     expect(facade.trip()?.version).toBe(8);
-    expect(facade.dayDraftRevision()).toBe(1);
+    expect(facade.clearedDay()).toEqual({ localDate: '2026-10-03', revision: 1 });
   });
 
   it('saves the explicit destination timezone instead of inferring it from the browser', () => {

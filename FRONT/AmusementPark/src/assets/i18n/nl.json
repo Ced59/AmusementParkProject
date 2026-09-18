@@ -1461,7 +1461,8 @@
       },
       "sources": {
         "manual": "Handmatig toegevoegd",
-        "wishlist": "Geïmporteerd uit je wensen"
+        "wishlist": "Geïmporteerd uit je wensen",
+        "comparator": "Toegevoegd vanuit de vergelijker"
       }
     },
     "days": {

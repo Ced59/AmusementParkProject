@@ -41,7 +41,7 @@ export class TripOverviewStateFacade {
   private readonly busySignal = signal<boolean>(false);
   private readonly actionErrorSignal = signal<TripOverviewActionError>(null);
   private readonly recoveryRevisionSignal = signal<number>(0);
-  private readonly dayDraftRevisionSignal = signal<number>(0);
+  private readonly clearedDaySignal = signal<{ localDate: string; revision: number } | null>(null);
 
   readonly trip: Signal<TripPlan | null> = this.tripSignal.asReadonly();
   readonly program: Signal<TripProgram> = this.programSignal.asReadonly();
@@ -49,7 +49,7 @@ export class TripOverviewStateFacade {
   readonly busy: Signal<boolean> = this.busySignal.asReadonly();
   readonly actionError: Signal<TripOverviewActionError> = this.actionErrorSignal.asReadonly();
   readonly recoveryRevision: Signal<number> = this.recoveryRevisionSignal.asReadonly();
-  readonly dayDraftRevision: Signal<number> = this.dayDraftRevisionSignal.asReadonly();
+  readonly clearedDay: Signal<{ localDate: string; revision: number } | null> = this.clearedDaySignal.asReadonly();
   readonly tripDates: Signal<string[]> = computed((): string[] => {
     const trip: TripPlan | null = this.tripSignal();
     return trip ? enumerateTripDates(trip.dateProposal) : [];
@@ -247,7 +247,10 @@ export class TripOverviewStateFacade {
       switchMap((): Observable<{ trip: TripPlan; program: TripProgram }> => this.reloadProgram(tripId)),
       tap((result: { trip: TripPlan; program: TripProgram }): void => {
         this.applyProgram(result);
-        this.dayDraftRevisionSignal.update((revision: number): number => revision + 1);
+        this.clearedDaySignal.update((current: { localDate: string; revision: number } | null) => ({
+          localDate,
+          revision: (current?.revision ?? 0) + 1
+        }));
       })
     ));
   }
@@ -283,7 +286,6 @@ export class TripOverviewStateFacade {
         next: (result: { trip: TripPlan; program: TripProgram }): void => {
           this.applyProgram(result);
           this.recoveryRevisionSignal.update((revision: number): number => revision + 1);
-          this.dayDraftRevisionSignal.update((revision: number): number => revision + 1);
         }
       });
   }

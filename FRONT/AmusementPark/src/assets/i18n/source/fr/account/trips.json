@@ -76,7 +76,7 @@
       "down": "Descendre",
       "last": "Placer en dernier",
       "states": { "proposed": "Idée", "shortlisted": "À retenir", "selected": "Choisi", "rejected": "Écarté" },
-      "sources": { "manual": "Ajout manuel", "wishlist": "Importé depuis tes envies" }
+      "sources": { "manual": "Ajout manuel", "wishlist": "Importé depuis tes envies", "comparator": "Ajouté depuis le comparateur" }
     },
     "days": {
       "kicker": "Ton programme",
