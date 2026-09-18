@@ -115,7 +115,7 @@ public sealed class TripInvitationServiceTests
         leases.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
             .Returns(Task.CompletedTask);
         users.Setup(item => item.GetByIdAsync("user-1", CancellationToken.None))
-            .ReturnsAsync((AmusementPark.Core.Domain.Users.User?)null);
+            .ReturnsAsync(new User { PublicDisplayName = " CoasterCamille " });
         clock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
         TripInvitationService service = new(
             trips.Object,
@@ -138,6 +138,8 @@ public sealed class TripInvitationServiceTests
 
         Assert.True(result.IsSuccess);
         Assert.Equal("opaque-token", result.Value?.Token);
+        Assert.Equal("CoasterCamille", result.Value?.InviterDisplayName);
+        Assert.Equal("CoasterCamille", persisted?.InviterDisplayName);
         Assert.Equal(TripDelegatedRole.Editor, result.Value?.ProposedRole);
         Assert.True(result.Value?.IsTargeted);
         Assert.Equal("email-hmac", persisted?.TargetEmailHmac);

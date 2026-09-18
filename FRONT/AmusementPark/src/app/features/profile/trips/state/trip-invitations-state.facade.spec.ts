@@ -50,6 +50,7 @@ describe('TripInvitationsStateFacade', () => {
       targetEmail: 'guest@example.com'
     }, 'operation-1');
     expect(facade.creation()?.token).toBe('opaque-token');
+    expect(facade.creation()?.inviterDisplayName).toBe('CoasterCamille');
     expect(facade.inviterDisplayName()).toBe('CoasterCamille');
     expect(facade.status()).toBe('idle');
   });
@@ -145,6 +146,7 @@ function createResult(): TripInvitationCreation {
   return {
     invitationId: 'invitation-1',
     token: 'opaque-token',
+    inviterDisplayName: 'CoasterCamille',
     proposedRole: 'Participant',
     expiresAtUtc: '2027-06-08T08:00:00Z',
     isTargeted: false,

@@ -1,13 +1,32 @@
 using System.Text.Json;
 using AmusementPark.Application.Features.Trips.Models;
+using AmusementPark.Application.Features.Trips.Results;
 using AmusementPark.Core.Domain.Trips;
 using AmusementPark.WebAPI.Contracts.Trips;
+using AmusementPark.WebAPI.Mappers;
 using Xunit;
 
 namespace AmusementPark.WebAPI.Tests.Mappers;
 
 public sealed class TripInvitationHttpMapperTests
 {
+    [Fact]
+    public void Creation_ShouldExposeTheAliasCapturedInTheInvitationSnapshot()
+    {
+        TripInvitationCreationResult result = new(
+            "invitation-1",
+            "opaque-token",
+            "CoasterCamille",
+            TripDelegatedRole.Editor,
+            new DateTime(2027, 6, 2, 12, 0, 0, DateTimeKind.Utc),
+            false,
+            false);
+
+        TripInvitationCreationDto response = result.ToHttp();
+
+        Assert.Equal("CoasterCamille", response.InviterDisplayName);
+    }
+
     [Fact]
     public void CreateRequest_ShouldReadTheDelegatedRoleAsAString()
     {

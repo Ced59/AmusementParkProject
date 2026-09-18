@@ -12,6 +12,7 @@ export interface CreateTripInvitationRequest {
 export interface TripInvitationCreation {
   invitationId: string;
   token: string;
+  inviterDisplayName: string;
   proposedRole: TripInvitationRole;
   expiresAtUtc: string;
   isTargeted: boolean;

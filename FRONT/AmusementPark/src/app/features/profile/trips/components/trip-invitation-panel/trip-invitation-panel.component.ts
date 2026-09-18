@@ -81,6 +81,10 @@ export class TripInvitationPanelComponent implements OnChanges {
       .catch((): void => this.copied.set(false));
   }
 
+  protected previewInviterDisplayName(): string {
+    return this.facade.creation()?.inviterDisplayName ?? this.facade.inviterDisplayName();
+  }
+
   protected isTargetEmailValid(): boolean {
     const value: string = this.targetEmail().trim();
     return !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);

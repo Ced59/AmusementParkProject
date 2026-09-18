@@ -12,6 +12,7 @@ public static class TripInvitationHttpMapper
         return new TripInvitationCreationDto(
             result.InvitationId,
             result.Token,
+            result.InviterDisplayName,
             ToHttp(result.ProposedRole),
             result.ExpiresAtUtc,
             result.IsTargeted,

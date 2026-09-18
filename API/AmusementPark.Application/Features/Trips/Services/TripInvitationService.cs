@@ -405,6 +405,7 @@ public sealed class TripInvitationService
         return ApplicationResult<TripInvitationCreationResult>.Success(new TripInvitationCreationResult(
             invitation.Id.Value,
             token,
+            invitation.InviterDisplayName,
             invitation.ProposedRole,
             invitation.ExpiresAtUtc,
             invitation.IsTargeted,
