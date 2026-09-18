@@ -55,17 +55,20 @@ export class TripOverviewStateFacade {
   private readonly statusSignal = signal<TripOverviewStatus>('idle');
   private readonly busySignal = signal<boolean>(false);
   private readonly actionErrorSignal = signal<TripOverviewActionError>(null);
+  private readonly wishlistLoadingSignal = signal<boolean>(false);
   private readonly wishlistUnavailableSignal = signal<boolean>(false);
   private readonly recoveryRevisionSignal = signal<number>(0);
   private readonly dateDraftRevisionSignal = signal<number>(0);
   private readonly clearedDaySignal = signal<{ localDate: string; revision: number } | null>(null);
   private readonly wishlistImportOperations = new Map<string, { fingerprint: string; operationId: string }>();
+  private wishlistLoadRevision: number = 0;
 
   readonly trip: Signal<TripPlan | null> = this.tripSignal.asReadonly();
   readonly program: Signal<TripProgram> = this.programSignal.asReadonly();
   readonly status: Signal<TripOverviewStatus> = this.statusSignal.asReadonly();
   readonly busy: Signal<boolean> = this.busySignal.asReadonly();
   readonly actionError: Signal<TripOverviewActionError> = this.actionErrorSignal.asReadonly();
+  readonly wishlistLoading: Signal<boolean> = this.wishlistLoadingSignal.asReadonly();
   readonly wishlistUnavailable: Signal<boolean> = this.wishlistUnavailableSignal.asReadonly();
   readonly recoveryRevision: Signal<number> = this.recoveryRevisionSignal.asReadonly();
   readonly dateDraftRevision: Signal<number> = this.dateDraftRevisionSignal.asReadonly();
@@ -141,6 +144,34 @@ export class TripOverviewStateFacade {
       expectedVersion: trip.version,
       dateProposal,
       destinationTimeZoneId: dateProposal.kind === 'None' ? null : normalizedTimeZoneId
+    };
+    this.runAction(this.plans.setDates(tripId, request).pipe(
+      tap((updated: TripPlan): void => {
+        this.tripSignal.set(updated);
+        this.dateDraftRevisionSignal.update((revision: number): number => revision + 1);
+      }),
+      switchMap((): Observable<TripProgram> => this.programData.get(tripId)),
+      tap((program: TripProgram): void => this.programSignal.set(program))
+    ));
+  }
+
+  setSpecialProposalTimeZone(destinationTimeZoneId: string): void {
+    const trip: TripPlan | null = this.tripSignal();
+    const tripId: string | null = this.tripIdSignal();
+    const normalizedTimeZoneId: string = destinationTimeZoneId.trim();
+    if (!trip
+      || !tripId
+      || this.busySignal()
+      || (trip.dateProposal.kind !== 'Candidates' && trip.dateProposal.kind !== 'Range')
+      || !normalizedTimeZoneId
+      || normalizedTimeZoneId === trip.destinationTimeZoneId) {
+      return;
+    }
+
+    const request: SetTripPlanDatesRequest = {
+      expectedVersion: trip.version,
+      dateProposal: trip.dateProposal,
+      destinationTimeZoneId: normalizedTimeZoneId
     };
     this.runAction(this.plans.setDates(tripId, request).pipe(
       tap((updated: TripPlan): void => {
@@ -352,11 +383,29 @@ export class TripOverviewStateFacade {
   }
 
   private loadWishlist(): void {
+    const revision: number = ++this.wishlistLoadRevision;
+    this.wishlistLoadingSignal.set(true);
+    this.wishlistUnavailableSignal.set(false);
     this.collections.listMine('Park')
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (collections: UserCollectionEntry[]): void => this.collectionsSignal.set(collections),
-        error: (): void => this.wishlistUnavailableSignal.set(true)
+        next: (collections: UserCollectionEntry[]): void => {
+          if (revision === this.wishlistLoadRevision) {
+            this.collectionsSignal.set(collections);
+            this.wishlistLoadingSignal.set(false);
+          }
+        },
+        error: (): void => {
+          if (revision === this.wishlistLoadRevision) {
+            this.wishlistLoadingSignal.set(false);
+            this.wishlistUnavailableSignal.set(true);
+          }
+        },
+        complete: (): void => {
+          if (revision === this.wishlistLoadRevision) {
+            this.wishlistLoadingSignal.set(false);
+          }
+        }
       });
   }
 

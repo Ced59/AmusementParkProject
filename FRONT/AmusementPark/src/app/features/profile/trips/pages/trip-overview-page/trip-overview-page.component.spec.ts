@@ -21,6 +21,7 @@ describe('TripOverviewPageComponent', () => {
     const dateDraftRevision: WritableSignal<number> = signal<number>(0);
     const clearedDay: WritableSignal<{ localDate: string; revision: number } | null> = signal(null);
     const busy: WritableSignal<boolean> = signal<boolean>(false);
+    const wishlistLoading: WritableSignal<boolean> = signal<boolean>(false);
     const facade = {
       trip: trip.asReadonly(),
       program: program.asReadonly(),
@@ -32,9 +33,11 @@ describe('TripOverviewPageComponent', () => {
       busy: busy.asReadonly(),
       actionError: signal(null).asReadonly(),
       wishlistParks: signal([]).asReadonly(),
+      wishlistLoading: wishlistLoading.asReadonly(),
       wishlistUnavailable: signal(false).asReadonly(),
       load: vi.fn(),
       setDates: vi.fn(),
+      setSpecialProposalTimeZone: vi.fn(),
       importWishlist: vi.fn(),
       changeCandidateState: vi.fn(),
       moveCandidate: vi.fn(),
@@ -70,6 +73,11 @@ describe('TripOverviewPageComponent', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.textContent).toContain('trips.actions.clearDay');
     expect(fixture.nativeElement.querySelector('textarea')?.maxLength).toBe(2000);
+    wishlistLoading.set(true);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('trips.wishlist.loading');
+    wishlistLoading.set(false);
+    fixture.detectChanges();
     const state = fixture.componentInstance as unknown as {
       startDate: WritableSignal<string>;
       endDate: WritableSignal<string>;
@@ -80,10 +88,12 @@ describe('TripOverviewPageComponent', () => {
       selectedCandidatesForDate: (localDate: string) => TripParkCandidate[];
       canSaveDay: (localDate: string) => boolean;
       canSaveDates: () => boolean;
+      canSaveSpecialTimeZone: () => boolean;
       canClearDates: () => boolean;
       dateDependenciesOutsideDraft: () => boolean;
       isCandidateScheduled: (candidateId: string) => boolean;
       saveDates: () => void;
+      saveSpecialTimeZone: () => void;
       clearDates: () => void;
     };
     state.startDate.set('2026-10-03');
@@ -193,6 +203,11 @@ describe('TripOverviewPageComponent', () => {
     expect(state.dateEditorEnabled()).toBe(false);
     expect(state.canSaveDates()).toBe(false);
     expect(fixture.nativeElement.textContent).toContain('2026-11-01');
+    expect(fixture.nativeElement.textContent).toContain('trips.actions.saveTimeZone');
+    state.destinationTimeZoneId.set('Europe/Berlin');
+    expect(state.canSaveSpecialTimeZone()).toBe(true);
+    state.saveSpecialTimeZone();
+    expect(facade.setSpecialProposalTimeZone).toHaveBeenCalledWith('Europe/Berlin');
     state.dateEditorEnabled.set(true);
     expect(state.startDate()).toBe('');
     expect(state.canSaveDates()).toBe(false);

@@ -1382,6 +1382,7 @@
       "createFirst": "Utwórz mój pierwszy wyjazd",
       "continuePlanning": "Kontynuuj planowanie",
       "saveDates": "Zapisz daty",
+      "saveTimeZone": "Zapisz strefę czasową",
       "chooseFixedDates": "Wybierz ustalone daty",
       "clearDates": "Usuń daty",
       "openCollections": "Otwórz moje listy",
@@ -1445,6 +1446,7 @@
       "kicker": "Twoje pomysły",
       "title": "Zacznij od zapisanych parków",
       "description": "Wybierz kilka ulubionych lub planowanych wizyt i dodaj je jednocześnie.",
+      "loading": "Wczytywanie zapisanych parków…",
       "empty": "Wszystkie dostępne parki są już w tym wyjeździe albo twoja lista jest jeszcze pusta.",
       "unavailable": "Twoje listy są chwilowo niedostępne. Możesz dalej planować pozostałą część wyjazdu."
     },

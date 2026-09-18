@@ -1382,6 +1382,7 @@
       "createFirst": "Mijn eerste reis maken",
       "continuePlanning": "Verder plannen",
       "saveDates": "Datums opslaan",
+      "saveTimeZone": "Tijdzone opslaan",
       "chooseFixedDates": "Vaste datums kiezen",
       "clearDates": "Datums wissen",
       "openCollections": "Mijn lijsten openen",
@@ -1445,6 +1446,7 @@
       "kicker": "Je wensen",
       "title": "Begin met je opgeslagen parken",
       "description": "Selecteer meerdere favorieten of geplande bezoeken en voeg ze tegelijk toe.",
+      "loading": "Je opgeslagen parken worden geladen…",
       "empty": "Alle beschikbare parken staan al in deze reis, of je lijst is nog leeg.",
       "unavailable": "Je lijsten zijn tijdelijk niet beschikbaar. Je kunt de rest van de reis blijven plannen."
     },

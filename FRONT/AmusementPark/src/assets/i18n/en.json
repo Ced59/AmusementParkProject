@@ -1382,6 +1382,7 @@
       "createFirst": "Create my first trip",
       "continuePlanning": "Continue planning",
       "saveDates": "Save dates",
+      "saveTimeZone": "Save time zone",
       "chooseFixedDates": "Choose fixed dates",
       "clearDates": "Clear dates",
       "openCollections": "Open my lists",
@@ -1445,6 +1446,7 @@
       "kicker": "Your ideas",
       "title": "Start with your saved parks",
       "description": "Select several favourites or planned visits and add them at once.",
+      "loading": "Loading your saved parks…",
       "empty": "All available saved parks are already in this trip, or your list is still empty.",
       "unavailable": "Your lists are temporarily unavailable. You can keep planning the rest of the trip."
     },

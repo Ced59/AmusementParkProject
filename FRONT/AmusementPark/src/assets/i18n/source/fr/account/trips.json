@@ -17,6 +17,7 @@
       "createFirst": "Créer mon premier voyage",
       "continuePlanning": "Continuer la préparation",
       "saveDates": "Enregistrer les dates",
+      "saveTimeZone": "Enregistrer le fuseau",
       "chooseFixedDates": "Choisir des dates fixes",
       "clearDates": "Effacer les dates",
       "openCollections": "Ouvrir mes listes",
@@ -67,6 +68,7 @@
       "kicker": "Tes envies",
       "title": "Pars de tes parcs enregistrés",
       "description": "Choisis plusieurs favoris ou projets de visite et ajoute-les en une fois.",
+      "loading": "Chargement de tes parcs enregistrés…",
       "empty": "Tous tes parcs disponibles sont déjà dans ce voyage, ou ta liste est encore vide.",
       "unavailable": "Tes listes sont momentanément indisponibles. Tu peux continuer à préparer le reste du voyage."
     },

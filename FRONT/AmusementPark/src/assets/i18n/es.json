@@ -1382,6 +1382,7 @@
       "createFirst": "Crear mi primer viaje",
       "continuePlanning": "Seguir preparando",
       "saveDates": "Guardar las fechas",
+      "saveTimeZone": "Guardar la zona horaria",
       "chooseFixedDates": "Elegir fechas fijas",
       "clearDates": "Borrar las fechas",
       "openCollections": "Abrir mis listas",
@@ -1445,6 +1446,7 @@
       "kicker": "Tus ideas",
       "title": "Empieza por tus parques guardados",
       "description": "Selecciona varios favoritos o visitas previstas y añádelos a la vez.",
+      "loading": "Cargando tus parques guardados…",
       "empty": "Todos tus parques disponibles ya están en este viaje o tu lista sigue vacía.",
       "unavailable": "Tus listas no están disponibles temporalmente. Puedes seguir preparando el resto del viaje."
     },

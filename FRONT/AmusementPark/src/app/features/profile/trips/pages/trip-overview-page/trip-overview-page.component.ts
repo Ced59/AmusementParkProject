@@ -155,6 +155,22 @@ export class TripOverviewPageComponent implements OnInit {
     this.dateEditorEnabled.set(true);
   }
 
+  protected saveSpecialTimeZone(): void {
+    if (this.canSaveSpecialTimeZone()) {
+      this.facade.setSpecialProposalTimeZone(this.destinationTimeZoneId());
+    }
+  }
+
+  protected canSaveSpecialTimeZone(): boolean {
+    const trip: TripPlan | null = this.facade.trip();
+    const normalizedTimeZoneId: string = this.destinationTimeZoneId().trim();
+    return !!trip
+      && this.hasSpecialDateProposal()
+      && !this.dateEditorEnabled()
+      && !!normalizedTimeZoneId
+      && normalizedTimeZoneId !== trip.destinationTimeZoneId;
+  }
+
   protected canSaveDates(): boolean {
     const hasStartDate: boolean = !!this.startDate().trim();
     return this.dateEditorEnabled()

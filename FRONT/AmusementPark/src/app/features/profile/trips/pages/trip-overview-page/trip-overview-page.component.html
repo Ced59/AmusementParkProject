@@ -45,6 +45,25 @@
               <span>{{ date }}</span>
             }
           </div>
+          <label>
+            <span>{{ 'trips.fields.destinationTimeZone' | translate }}</span>
+            <input
+              type="text"
+              maxlength="100"
+              autocomplete="off"
+              [disabled]="facade.busy()"
+              [value]="destinationTimeZoneId()"
+              placeholder="Europe/Paris"
+              (input)="destinationTimeZoneId.set($any($event.target).value)">
+          </label>
+          <p class="trip-dates__hint">{{ 'trips.dates.timeZoneHint' | translate }}</p>
+          <button
+            type="button"
+            appUiButton="ghost"
+            [disabled]="facade.busy() || !canSaveSpecialTimeZone()"
+            (click)="saveSpecialTimeZone()">
+            {{ 'trips.actions.saveTimeZone' | translate }}
+          </button>
           <p>{{ 'trips.dates.explicitConversion' | translate }}</p>
           <div class="trip-dates__actions">
             <button type="button" appUiButton="primary" [disabled]="facade.busy()" (click)="beginFixedDateEdit()">
@@ -114,7 +133,11 @@
           <p>{{ 'trips.wishlist.description' | translate }}</p>
         </div>
       </div>
-      @if (facade.wishlistUnavailable()) {
+      @if (facade.wishlistLoading()) {
+        <div class="trip-section__empty" role="status" aria-live="polite">
+          <p>{{ 'trips.wishlist.loading' | translate }}</p>
+        </div>
+      } @else if (facade.wishlistUnavailable()) {
         <div class="trip-section__empty">
           <p>{{ 'trips.wishlist.unavailable' | translate }}</p>
           <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'collections']">

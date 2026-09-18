@@ -80,6 +80,7 @@ describe('TripOverviewStateFacade', () => {
     expect(facade.trip()?.tripPlanId).toBe('trip-1');
     expect(facade.wishlistParks()).toEqual([]);
     expect(facade.wishlistUnavailable()).toBe(true);
+    expect(facade.wishlistLoading()).toBe(false);
   });
 
   it('makes the planner ready without waiting for the auxiliary wishlist', () => {
@@ -91,11 +92,13 @@ describe('TripOverviewStateFacade', () => {
     expect(facade.status()).toBe('ready');
     expect(facade.trip()?.tripPlanId).toBe('trip-1');
     expect(facade.wishlistParks()).toEqual([]);
+    expect(facade.wishlistLoading()).toBe(true);
 
     pendingWishlist.next([createEntry()]);
     pendingWishlist.complete();
 
     expect(facade.wishlistParks()).toHaveLength(1);
+    expect(facade.wishlistLoading()).toBe(false);
   });
 
   it('imports several wishes sequentially with the refreshed plan version', () => {
@@ -234,6 +237,35 @@ describe('TripOverviewStateFacade', () => {
       destinationTimeZoneId: 'Europe/Berlin'
     });
     expect(facade.dateDraftRevision()).toBe(1);
+  });
+
+  it('updates a special proposal timezone without converting its dates', () => {
+    const proposal = {
+      kind: 'Candidates' as const,
+      startDate: null,
+      endDate: null,
+      candidateDates: ['2026-10-03', '2026-10-10']
+    };
+    (plans.getMine as ReturnType<typeof vi.fn>).mockReturnValue(of(createTrip({
+      dateProposal: proposal,
+      destinationTimeZoneId: 'Europe/Paris'
+    })));
+    (plans.setDates as ReturnType<typeof vi.fn>).mockReturnValue(of(createTrip({
+      version: 2,
+      dateProposal: proposal,
+      destinationTimeZoneId: 'Europe/Berlin'
+    })));
+
+    facade.load('trip-1');
+    facade.setSpecialProposalTimeZone(' Europe/Berlin ');
+
+    expect(plans.setDates).toHaveBeenCalledWith('trip-1', {
+      expectedVersion: 1,
+      dateProposal: proposal,
+      destinationTimeZoneId: 'Europe/Berlin'
+    });
+    expect(facade.trip()?.dateProposal).toEqual(proposal);
+    expect(facade.trip()?.destinationTimeZoneId).toBe('Europe/Berlin');
   });
 
   it('preserves local drafts after a deterministic validation failure', () => {
