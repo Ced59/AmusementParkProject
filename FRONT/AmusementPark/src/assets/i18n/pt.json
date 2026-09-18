@@ -1535,6 +1535,71 @@
         "saved": "A decisão do grupo foi guardada."
       }
     },
+    "coherence": {
+      "open": "Verificar o programa",
+      "back": "Voltar à viagem",
+      "kicker": "Verificação do programa",
+      "description": "Compara o programa com os factos oficiais disponíveis e identifica o que o grupo deve rever.",
+      "counts": {
+        "critical": "{{count}} alerta(s)",
+        "attention": "{{count}} ponto(s) a verificar",
+        "information": "{{count}} atualização(ões)"
+      },
+      "noAutomaticChange": "Nenhum alerta altera automaticamente o programa: a decisão continua sempre nas mãos do grupo.",
+      "loadError": "Não foi possível carregar a verificação do programa.",
+      "alerts": {
+        "kicker": "A analisar",
+        "title": "Os pontos que exigem a tua atenção",
+        "description": "Cada alerta liga uma escolha do grupo a um facto atual sem os confundir.",
+        "emptyTitle": "Nada a assinalar",
+        "emptyDescription": "Não foi detetada qualquer incoerência com as informações disponíveis."
+      },
+      "days": {
+        "kicker": "Provas oficiais",
+        "title": "Abertura dia a dia",
+        "description": "O estado do parque, os horários e a data de verificação permanecem separados do teu programa.",
+        "empty": "Adiciona dias à viagem para verificar a abertura."
+      },
+      "travel": {
+        "kicker": "Ligações",
+        "title": "Distâncias entre etapas",
+        "description": "As ligações conhecidas são apresentadas entre dois parques consecutivos.",
+        "estimate": "Cerca de {{distance}} km · {{minutes}} min",
+        "disclaimer": "Estimativa geográfica indicativa, não um itinerário rodoviário em tempo real.",
+        "empty": "Ainda não é possível calcular qualquer ligação."
+      },
+      "severity": {
+        "critical": "A corrigir",
+        "attention": "A verificar",
+        "information": "Nova informação"
+      },
+      "opening": {
+        "unknown": "Horários desconhecidos",
+        "open": "Abertura confirmada",
+        "closed": "Encerramento confirmado"
+      },
+      "issues": {
+        "dateOutsideProposal": "O dia {{date}} fica fora das datas escolhidas.",
+        "multipleParksSameDate": "Vários parques ocupam o dia inteiro de {{date}}.",
+        "candidateMissing": "{{subject}} deixou de estar associado a um parque candidato.",
+        "candidateNotSelected": "{{subject}} deixou de estar marcado como parque selecionado.",
+        "parkUnavailable": "{{subject}} deixou de estar disponível publicamente.",
+        "parkNotOperating": "{{subject}} não está atualmente indicado como aberto a visitantes.",
+        "openingHoursUnknown": "Os horários de {{subject}} são desconhecidos para este dia.",
+        "openingHoursClosed": "{{subject}} está indicado como encerrado neste dia.",
+        "openingHoursStale": "Os horários de {{subject}} não foram verificados recentemente.",
+        "openingHoursVerifiedAfterPlanning": "Os horários de {{subject}} foram verificados novamente depois do planeamento deste dia.",
+        "attractionUnavailable": "{{subject}} deixou de estar disponível no catálogo público.",
+        "attractionClosed": "{{subject}} está agora indicada como encerrada.",
+        "newMemberConstraint": "Surgiu uma nova oposição a {{subject}} desde a decisão do grupo."
+      },
+      "officialStatus": "Estado oficial",
+      "verifiedAt": "Verificado em {{date}}",
+      "openSource": "Abrir a fonte oficial",
+      "noSource": "Não está disponível qualquer fonte de horários.",
+      "unavailablePark": "Parque indisponível",
+      "unavailableSubject": "Este elemento indisponível"
+    },
     "kicker": "Viagens por preparar",
     "privacy": "Privado, visível apenas para os membros",
     "profile": {

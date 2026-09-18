@@ -210,3 +210,70 @@ export interface SetTripItemDecisionRequest {
   status: TripItemDecisionStatus;
   reason: string;
 }
+
+export type TripProgramCoherenceSeverity = 'Information' | 'Attention' | 'Critical';
+export type TripProgramOpeningState = 'Unknown' | 'Open' | 'Closed';
+export type TripProgramCoherenceCode =
+  | 'DateOutsideProposal'
+  | 'MultipleParksSameDate'
+  | 'CandidateMissing'
+  | 'CandidateNotSelected'
+  | 'ParkUnavailable'
+  | 'ParkNotOperating'
+  | 'OpeningHoursUnknown'
+  | 'OpeningHoursClosed'
+  | 'OpeningHoursStale'
+  | 'OpeningHoursVerifiedAfterPlanning'
+  | 'AttractionUnavailable'
+  | 'AttractionClosed'
+  | 'NewMemberConstraint';
+
+export interface TripProgramDayEvidence {
+  localDate: string;
+  parkId: string;
+  parkName: string | null;
+  isParkAvailable: boolean;
+  parkStatus: string | null;
+  openingState: TripProgramOpeningState;
+  openingHoursSourceUrl: string | null;
+  openingHoursVerifiedAtUtc: string | null;
+  dayPlanUpdatedAtUtc: string;
+}
+
+export interface TripProgramTravelSegment {
+  fromDate: string;
+  fromParkId: string;
+  fromParkName: string | null;
+  toDate: string;
+  toParkId: string;
+  toParkName: string | null;
+  distanceKilometers: number;
+  estimatedTravelDurationMinutes: number;
+  estimationMethod: 'GeodesicEstimate';
+}
+
+export interface TripProgramCoherenceIssue {
+  code: TripProgramCoherenceCode;
+  severity: TripProgramCoherenceSeverity;
+  localDate: string | null;
+  parkId: string | null;
+  parkName: string | null;
+  parkItemId: string | null;
+  parkItemName: string | null;
+  officialStatus: string | null;
+  officialSourceUrl: string | null;
+  officialVerifiedAtUtc: string | null;
+}
+
+export interface TripProgramCoherence {
+  tripPlanId: string;
+  tripTitle: string;
+  planVersion: number;
+  evaluatedAtUtc: string;
+  criticalCount: number;
+  attentionCount: number;
+  informationCount: number;
+  days: TripProgramDayEvidence[];
+  travelSegments: TripProgramTravelSegment[];
+  issues: TripProgramCoherenceIssue[];
+}

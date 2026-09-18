@@ -1,0 +1,39 @@
+{
+  "trips": {
+    "coherence": {
+      "open": "Check the schedule",
+      "back": "Back to the trip",
+      "kicker": "Schedule check",
+      "description": "Compare the schedule with available official facts and spot what the group should review.",
+      "counts": { "critical": "{{count}} alert(s)", "attention": "{{count}} point(s) to check", "information": "{{count}} update(s)" },
+      "noAutomaticChange": "No alert changes the schedule automatically: the group always keeps the final say.",
+      "loadError": "The schedule check could not be loaded.",
+      "alerts": { "kicker": "Review", "title": "Points that need your attention", "description": "Each alert links a group choice to a current fact without mixing the two.", "emptyTitle": "Nothing to report", "emptyDescription": "No inconsistency is detected with the available information." },
+      "days": { "kicker": "Official evidence", "title": "Opening day by day", "description": "Park status, opening hours and their verification date stay separate from your schedule.", "empty": "Add days to the trip to check their opening information." },
+      "travel": { "kicker": "Connections", "title": "Distances between stops", "description": "Known connections are shown between two consecutive parks.", "estimate": "About {{distance}} km · {{minutes}} min", "disclaimer": "Indicative geographic estimate, not a real-time road itinerary.", "empty": "No connection can be calculated yet." },
+      "severity": { "critical": "Needs fixing", "attention": "Needs checking", "information": "New information" },
+      "opening": { "unknown": "Hours unknown", "open": "Opening confirmed", "closed": "Closure confirmed" },
+      "issues": {
+        "dateOutsideProposal": "The day on {{date}} falls outside the selected dates.",
+        "multipleParksSameDate": "Several parks occupy the full day on {{date}}.",
+        "candidateMissing": "{{subject}} is no longer linked to a candidate park.",
+        "candidateNotSelected": "{{subject}} is no longer marked as a selected park.",
+        "parkUnavailable": "{{subject}} is no longer publicly available.",
+        "parkNotOperating": "{{subject}} is not currently shown as open to visitors.",
+        "openingHoursUnknown": "Opening hours for {{subject}} are unknown on this day.",
+        "openingHoursClosed": "{{subject}} is shown as closed on this day.",
+        "openingHoursStale": "Opening hours for {{subject}} have not been verified recently.",
+        "openingHoursVerifiedAfterPlanning": "Opening hours for {{subject}} were rechecked after this day was planned.",
+        "attractionUnavailable": "{{subject}} is no longer available in the public catalogue.",
+        "attractionClosed": "{{subject}} is now shown as closed.",
+        "newMemberConstraint": "A new objection concerns {{subject}} since the group decision."
+      },
+      "officialStatus": "Official status",
+      "verifiedAt": "Verified on {{date}}",
+      "openSource": "Open the official source",
+      "noSource": "No opening-hours source is available.",
+      "unavailablePark": "Unavailable park",
+      "unavailableSubject": "This unavailable item"
+    }
+  }
+}

@@ -79,7 +79,8 @@ describe('profile routes', () => {
       'trips',
       'trips/:tripId',
       'trips/:tripId/preferences',
-      'trips/:tripId/preference-summary'
+      'trips/:tripId/preference-summary',
+      'trips/:tripId/coherence'
     ];
     const rootIndex: number = PROFILE_ROUTES.findIndex((candidate: Route): boolean => candidate.path === '');
 

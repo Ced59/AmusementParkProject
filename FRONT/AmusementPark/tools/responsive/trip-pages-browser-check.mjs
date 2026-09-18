@@ -18,6 +18,7 @@ const componentStyles = [
   'src/app/features/profile/trips/components/trip-invitation-panel/trip-invitation-panel.component.scss',
   'src/app/features/profile/trips/pages/trip-preferences-page/trip-preferences-page.component.scss',
   'src/app/features/profile/trips/pages/trip-preference-summary-page/trip-preference-summary-page.component.scss',
+  'src/app/features/profile/trips/pages/trip-program-coherence-page/trip-program-coherence-page.component.scss',
   'src/app/features/public/trips/pages/trip-invitation-preview-page/trip-invitation-preview-page.component.scss'
 ]
   .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
@@ -184,6 +185,34 @@ const fixtureMarkup = `
           <section class="trip-summary-decision"><span class="trip-summary-decision__icon">✓</span><div><small>Décision du groupe</small><strong>Groupe séparé</strong><p>Une partie du groupe fera cette attraction pendant une pause adaptée aux autres participants.</p><span>Décidé par PseudonymeTrèsLong</span></div></section>
           <details class="trip-summary-editor" open><summary>Faire évoluer la décision</summary><div class="trip-summary-editor__body"><div class="trip-summary-decision-picker"><button>À rediscuter</button><button>Retenue</button><button>Groupe séparé</button><button>Optionnelle</button><button>Écartée</button></div><label><span>Pourquoi ce choix ?</span><textarea>Un compromis explicite et suffisamment détaillé.</textarea><small>La raison reste visible.</small></label><button>Enregistrer la décision</button></div></details>
         </article>
+      </section>
+    </main>
+
+    <main class="trip-coherence-page" data-responsive-root="trip-program-coherence">
+      <header class="trip-coherence-hero surface" data-check-bound>
+        <a href="#">Retour au voyage</a>
+        <h1>Une aventure européenne avec un titre très long</h1>
+        <p>Compare le programme aux faits officiels disponibles et repère ce que le groupe doit revoir.</p>
+        <div class="trip-coherence-hero__counts"><span>2 alertes critiques</span><span>3 points à vérifier</span><span>1 mise à jour</span></div>
+        <p class="trip-coherence-hero__promise">Aucune alerte ne change le programme automatiquement : le groupe garde toujours la décision.</p>
+      </header>
+      <section class="trip-coherence-section surface" data-check-bound>
+        <div class="trip-coherence-section__heading"><h2>Les points qui demandent ton attention</h2><p>Chaque alerte relie un choix du groupe à un fait actuel.</p></div>
+        <div class="trip-coherence-issues">
+          <article class="trip-coherence-issue" data-severity="Critical" data-check-bound><div class="trip-coherence-issue__icon">!</div><div><span class="trip-coherence-issue__severity">À corriger</span><h3>Une attraction au nom volontairement très long est maintenant indiquée fermée.</h3><p>État officiel : fermeture temporaire</p><a href="#">Consulter la source officielle</a></div></article>
+          <article class="trip-coherence-issue" data-severity="Attention" data-check-bound><div class="trip-coherence-issue__icon">i</div><div><span class="trip-coherence-issue__severity">À vérifier</span><h3>Les horaires de cette destination au nom particulièrement long n'ont pas été vérifiés récemment.</h3><p>Vérifié le 18 septembre 2026</p><a href="#">Consulter la source officielle</a></div></article>
+        </div>
+      </section>
+      <section class="trip-coherence-section surface" data-check-bound>
+        <div class="trip-coherence-section__heading"><h2>Ouverture jour par jour</h2><p>L'état officiel reste séparé du planning.</p></div>
+        <div class="trip-coherence-days">
+          <article class="trip-coherence-day" data-check-bound><div class="trip-coherence-day__date"><strong>3</strong><span>oct.</span></div><div class="trip-coherence-day__body"><h3>Destination au nom particulièrement long</h3><div class="trip-coherence-day__facts"><span>Ouverture confirmée</span><span>En activité</span><span>18 septembre 2026</span></div><a href="#">Consulter la source officielle</a></div></article>
+          <article class="trip-coherence-day" data-check-bound><div class="trip-coherence-day__date"><strong>4</strong><span>oct.</span></div><div class="trip-coherence-day__body"><h3>Deuxième destination représentative</h3><div class="trip-coherence-day__facts"><span>Horaires inconnus</span><span>En activité</span></div><small>Aucune source d'horaires n'est disponible.</small></div></article>
+        </div>
+      </section>
+      <section class="trip-coherence-section surface" data-check-bound>
+        <div class="trip-coherence-section__heading"><h2>Distances entre les étapes</h2><p>Les liaisons connues sont affichées entre deux parcs consécutifs.</p></div>
+        <div class="trip-coherence-travel"><article class="trip-coherence-route" data-check-bound><div class="trip-coherence-route__parks"><strong>Destination au nom particulièrement long</strong><span>→</span><strong>Deuxième destination représentative</strong></div><p>Environ 245,6 km · 211 min</p><small>Estimation géographique indicative, pas un itinéraire routier en temps réel.</small></article></div>
       </section>
     </main>
 

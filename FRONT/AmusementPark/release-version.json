@@ -1,6 +1,20 @@
 {
-  "version": "5.3.68",
+  "version": "5.3.69",
   "history": [
+    {
+      "version": "5.3.69",
+      "releasedAt": "2026-09-18",
+      "labels": {
+        "fr": "Tu peux maintenant vérifier les ouvertures et les distances de ton programme.",
+        "en": "You can now check openings and distances in your trip schedule.",
+        "de": "Du kannst jetzt Öffnungen und Entfernungen in deinem Reiseprogramm prüfen.",
+        "nl": "Je kunt nu openingen en afstanden in je reisprogramma controleren.",
+        "it": "Ora puoi verificare aperture e distanze nel programma del viaggio.",
+        "es": "Ya puedes comprobar aperturas y distancias en el programa del viaje.",
+        "pl": "Możesz teraz sprawdzać otwarcia i odległości w programie wyjazdu.",
+        "pt": "Agora podes verificar aberturas e distâncias no programa da viagem."
+      }
+    },
     {
       "version": "5.3.68",
       "releasedAt": "2026-09-18",

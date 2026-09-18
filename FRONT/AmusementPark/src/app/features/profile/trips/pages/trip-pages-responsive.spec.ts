@@ -5,6 +5,7 @@ import { TripListPageComponent } from './trip-list-page/trip-list-page.component
 import { TripOverviewPageComponent } from './trip-overview-page/trip-overview-page.component';
 import { TripPreferencesPageComponent } from './trip-preferences-page/trip-preferences-page.component';
 import { TripPreferenceSummaryPageComponent } from './trip-preference-summary-page/trip-preference-summary-page.component';
+import { TripProgramCoherencePageComponent } from './trip-program-coherence-page/trip-program-coherence-page.component';
 
 describe('Trip planning responsive contract', () => {
   it('contains the trip list inside narrow mobile viewports', () => {
@@ -87,6 +88,19 @@ describe('Trip planning responsive contract', () => {
     expect(styles).toContain('repeat(2, minmax(min(100%, 30rem), 1fr))');
     expect(styles).toContain('@media (max-width: 36rem)');
     expect(styles).toContain('grid-template-columns: repeat(2, minmax(0, 1fr))');
+    expect(styles).toContain('@media (max-width: 22.5rem)');
+    expect(styles).toContain('padding-bottom: calc(5.75rem + env(safe-area-inset-bottom))');
+  });
+
+  it('keeps schedule evidence, warnings and travel estimates inside 320px phones', () => {
+    const styles: string = (
+      TripProgramCoherencePageComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('overflow-x: clip');
+    expect(styles).toContain('repeat(2, minmax(min(100%, 27rem), 1fr))');
+    expect(styles).toContain('@media (max-width: 48rem)');
+    expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
     expect(styles).toContain('@media (max-width: 22.5rem)');
     expect(styles).toContain('padding-bottom: calc(5.75rem + env(safe-area-inset-bottom))');
   });
