@@ -9,6 +9,7 @@ import {
   TripInvitationOperationIdPort,
   TripInvitationsDataPort
 } from '@features/trips/state/trip-invitation-data.port';
+import { TripInvitationDecisionOperationStore } from './trip-invitation-decision-operation.store';
 
 export type TripInvitationPreviewStatus =
   'idle' | 'loading' | 'ready' | 'unavailable' | 'deciding' | 'accepted' | 'declined' | 'decision-error';
@@ -30,6 +31,7 @@ export class TripInvitationPreviewStateFacade {
   constructor(
     @Inject(TRIP_INVITATIONS_DATA_PORT) private readonly data: TripInvitationsDataPort,
     @Inject(TRIP_INVITATION_OPERATION_ID_PORT) private readonly operationIds: TripInvitationOperationIdPort,
+    private readonly decisionOperations: TripInvitationDecisionOperationStore,
     private readonly authService: AuthService,
     private readonly destroyRef: DestroyRef
   ) {
@@ -42,12 +44,22 @@ export class TripInvitationPreviewStateFacade {
     const requestGeneration: number = ++this.requestGeneration;
     this.tripPlanIdSignal.set(null);
     if (tokenChanged) {
-      this.acceptOperationId = null;
-      this.declineOperationId = null;
+      const storedOperation = this.decisionOperations.read(normalizedToken);
+      this.acceptOperationId = storedOperation?.decision === 'accept'
+        ? storedOperation.operationId
+        : null;
+      this.declineOperationId = storedOperation?.decision === 'decline'
+        ? storedOperation.operationId
+        : null;
     }
     if (!normalizedToken) {
       this.previewSignal.set(null);
       this.statusSignal.set('unavailable');
+      return;
+    }
+
+    if (this.isAuthenticated() && (this.acceptOperationId || this.declineOperationId)) {
+      this.decide(this.acceptOperationId !== null);
       return;
     }
 
@@ -96,6 +108,11 @@ export class TripInvitationPreviewStateFacade {
     } else {
       this.declineOperationId = operationId;
     }
+    this.decisionOperations.write(
+      this.token,
+      accept ? 'accept' : 'decline',
+      operationId
+    );
 
     this.statusSignal.set('deciding');
     const decisionGeneration: number = this.requestGeneration;
@@ -109,6 +126,9 @@ export class TripInvitationPreviewStateFacade {
           return;
         }
         this.tripPlanIdSignal.set(result.tripPlanId);
+        this.decisionOperations.clear(decisionToken);
+        this.acceptOperationId = null;
+        this.declineOperationId = null;
         this.statusSignal.set(accept ? 'accepted' : 'declined');
       },
       error: (): void => {

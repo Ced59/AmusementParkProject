@@ -9,14 +9,25 @@ import {
 } from '@features/trips/state/trip-invitation-data.port';
 import { AuthService } from '@app/services/auth/auth.service';
 import { TripInvitationPreviewStateFacade } from './trip-invitation-preview-state.facade';
+import { TripInvitationDecisionOperationStore } from './trip-invitation-decision-operation.store';
 
 describe('TripInvitationPreviewStateFacade', () => {
   let facade: TripInvitationPreviewStateFacade;
   let data: TripInvitationsDataPort;
   let loggedIn: boolean;
+  let decisionOperations: {
+    read: ReturnType<typeof vi.fn>;
+    write: ReturnType<typeof vi.fn>;
+    clear: ReturnType<typeof vi.fn>;
+  };
 
   beforeEach(() => {
     loggedIn = false;
+    decisionOperations = {
+      read: vi.fn().mockReturnValue(null),
+      write: vi.fn(),
+      clear: vi.fn()
+    };
     data = {
       list: vi.fn(),
       create: vi.fn(),
@@ -30,6 +41,7 @@ describe('TripInvitationPreviewStateFacade', () => {
         TripInvitationPreviewStateFacade,
         { provide: TRIP_INVITATIONS_DATA_PORT, useValue: data },
         { provide: TRIP_INVITATION_OPERATION_ID_PORT, useValue: { create: (): string => 'operation-1' } },
+        { provide: TripInvitationDecisionOperationStore, useValue: decisionOperations },
         { provide: AuthService, useValue: { isLoggedIn: (): boolean => loggedIn } }
       ]
     });
@@ -80,6 +92,22 @@ describe('TripInvitationPreviewStateFacade', () => {
     facade.accept();
 
     expect(data.accept).toHaveBeenCalledWith('opaque-token', 'operation-1');
+    expect(decisionOperations.write).toHaveBeenCalledWith('opaque-token', 'accept', 'operation-1');
+    expect(decisionOperations.clear).toHaveBeenCalledWith('opaque-token');
+    expect(facade.tripPlanId()).toBe('trip-1');
+    expect(facade.status()).toBe('accepted');
+  });
+
+  it('resumes a pending acceptance after a page reload before requesting the terminal preview', () => {
+    loggedIn = true;
+    decisionOperations.read.mockReturnValue({ decision: 'accept', operationId: 'persisted-operation' });
+    (data.accept as ReturnType<typeof vi.fn>).mockReturnValue(of({ tripPlanId: 'trip-1', wasReplayed: true }));
+
+    facade.load('opaque-token');
+
+    expect(data.preview).not.toHaveBeenCalled();
+    expect(data.accept).toHaveBeenCalledWith('opaque-token', 'persisted-operation');
+    expect(decisionOperations.clear).toHaveBeenCalledWith('opaque-token');
     expect(facade.tripPlanId()).toBe('trip-1');
     expect(facade.status()).toBe('accepted');
   });

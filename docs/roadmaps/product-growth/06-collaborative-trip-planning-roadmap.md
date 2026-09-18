@@ -218,6 +218,9 @@ enfants et ne réussissent qu'après extinction des leases antérieures. Une anc
 autorisation ne peut donc pas écrire après la réponse. La liste des voyages rejoints
 reste indépendante du quota de création, mais chaque lecture est bornée aux 100
 adhésions les plus récemment modifiées pour protéger les ressources du VPS.
+Une acceptation ambiguë est reprise après rechargement avec le même identifiant
+d'opération conservé pour la session sans stocker le token. Un transfert vérifie
+aussi que le nouveau propriétaire possède encore un compte activé et non bloqué.
 
 Les preuves, schémas MongoDB et diagrammes sont détaillés dans
 [`product-growth-trip-06-participants-roles-2026-09-18.md`](../../architecture/product-growth-trip-06-participants-roles-2026-09-18.md).

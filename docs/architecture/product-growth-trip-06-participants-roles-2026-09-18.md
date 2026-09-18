@@ -217,6 +217,12 @@ ordinaire du voyage exige enfin l'absence de fence et ne réécrit jamais ce cha
 une copie chargée avant l'admission ne peut donc effacer ni le membre provisoire ni
 le verrou de reprise.
 
+Le navigateur conserve en `sessionStorage` l'identifiant d'opération associé à une
+empreinte locale du token, jamais le token lui-même. Si l'acceptation
+est validée mais que sa réponse HTTP se perd, un rechargement rejoue directement la
+même opération avant de demander l'aperçu désormais terminal. Le succès efface le
+marqueur ; une erreur ambiguë le conserve pour un nouveau retry.
+
 ## Séquence de transfert de propriété
 
 ```mermaid
@@ -228,6 +234,7 @@ sequenceDiagram
 
     O->>A: transférer à memberId + rôle futur + version
     A->>M: charger le voyage possédé
+    A->>M: vérifier le compte cible activé et non bloqué
     A->>D: TransferOwnership(owner, memberId, rôle)
     D->>D: vérifier membre Active et distinct
     D->>D: rétrograder ancien owner + promouvoir nouveau
@@ -245,6 +252,8 @@ Un changement de rôle, un transfert ou un départ avance le même epoch racine 
 les écritures enfants. MongoDB n'accepte cette transition qu'après la fin des leases
 déjà accordées. La réponse de changement de droits ne peut donc pas réussir puis
 laisser une ancienne autorisation terminer une modification de candidat ou de jour.
+Un compte supprimé, désactivé ou bloqué ne peut pas devenir propriétaire : cette
+vérification précède toute mutation afin de ne jamais rendre le voyage ingérable.
 
 ## API et confidentialité
 

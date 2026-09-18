@@ -68,6 +68,76 @@ public sealed class TripParticipantServiceTests
         plans.VerifyAll();
     }
 
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(true, true)]
+    public async Task TransferOwnershipAsync_WhenTheTargetCannotUseTheAccount_ShouldReject(
+        bool isActivated,
+        bool isBlocked)
+    {
+        TripPlan trip = CreateTripWithMember();
+        TripMember target = trip.Members.Single(item => item.UserId == "user-2");
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<IUserRepository> users = new(MockBehavior.Strict);
+        plans.Setup(item => item.GetOwnedAsync("user-1", trip.Id, CancellationToken.None))
+            .ReturnsAsync(trip);
+        users.Setup(item => item.GetByIdAsync("user-2", CancellationToken.None))
+            .ReturnsAsync(new User
+            {
+                Id = "user-2",
+                IsActivated = isActivated,
+                IsBlocked = isBlocked,
+            });
+        TripParticipantService service = new(plans.Object, users.Object);
+
+        ApplicationResult<TripParticipantListResult> result = await service.TransferOwnershipAsync(
+            "user-1",
+            trip.Id.Value,
+            target.Id.Value,
+            TripDelegatedRole.Participant,
+            trip.Version,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(TripPlanErrorCodes.InvalidState, Assert.Single(result.Errors).Code);
+        plans.Verify(item => item.TransferOwnershipAsync(
+            It.IsAny<string>(),
+            It.IsAny<TripPlan>(),
+            It.IsAny<long>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        users.VerifyAll();
+    }
+
+    [Fact]
+    public async Task TransferOwnershipAsync_WhenTheTargetAccountWasDeleted_ShouldReject()
+    {
+        TripPlan trip = CreateTripWithMember();
+        TripMember target = trip.Members.Single(item => item.UserId == "user-2");
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<IUserRepository> users = new(MockBehavior.Strict);
+        plans.Setup(item => item.GetOwnedAsync("user-1", trip.Id, CancellationToken.None))
+            .ReturnsAsync(trip);
+        users.Setup(item => item.GetByIdAsync("user-2", CancellationToken.None))
+            .ReturnsAsync((User?)null);
+        TripParticipantService service = new(plans.Object, users.Object);
+
+        ApplicationResult<TripParticipantListResult> result = await service.TransferOwnershipAsync(
+            "user-1",
+            trip.Id.Value,
+            target.Id.Value,
+            TripDelegatedRole.Participant,
+            trip.Version,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        plans.Verify(item => item.TransferOwnershipAsync(
+            It.IsAny<string>(),
+            It.IsAny<TripPlan>(),
+            It.IsAny<long>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        users.VerifyAll();
+    }
+
     private static TripPlan CreateTripWithMember()
     {
         TripPlan trip = TripPlan.Create(

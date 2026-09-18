@@ -121,6 +121,19 @@ public sealed class TripParticipantService
             return ChangedList(trip.Version);
         }
 
+        TripMember? targetMember = trip.Members.SingleOrDefault(member =>
+            member.Id == parsedMemberId && member.State == TripMembershipState.Active);
+        if (targetMember is null)
+        {
+            return InvalidList();
+        }
+
+        User? targetUser = await this.users.GetByIdAsync(targetMember.UserId, cancellationToken);
+        if (targetUser is null || !targetUser.IsActivated || targetUser.IsBlocked)
+        {
+            return InvalidList();
+        }
+
         try
         {
             trip.TransferOwnership(
