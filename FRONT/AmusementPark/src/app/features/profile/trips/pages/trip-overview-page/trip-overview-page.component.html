@@ -62,11 +62,11 @@
         <div class="trip-dates__fields">
           <label>
             <span>{{ 'trips.fields.startDate' | translate }}</span>
-            <input type="date" [value]="startDate()" (input)="startDate.set($any($event.target).value)">
+            <input type="date" [disabled]="facade.busy()" [value]="startDate()" (input)="startDate.set($any($event.target).value)">
           </label>
           <label>
             <span>{{ 'trips.fields.endDate' | translate }}</span>
-            <input type="date" [min]="startDate()" [value]="endDate()" (input)="endDate.set($any($event.target).value)">
+            <input type="date" [disabled]="facade.busy()" [min]="startDate()" [value]="endDate()" (input)="endDate.set($any($event.target).value)">
           </label>
           @if (startDate()) {
             <label>
@@ -75,6 +75,7 @@
                 type="text"
                 maxlength="100"
                 autocomplete="off"
+                [disabled]="facade.busy()"
                 [value]="destinationTimeZoneId()"
                 placeholder="Europe/Paris"
                 (input)="destinationTimeZoneId.set($any($event.target).value)">

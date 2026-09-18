@@ -20,6 +20,7 @@ describe('TripOverviewPageComponent', () => {
     const recoveryRevision: WritableSignal<number> = signal<number>(0);
     const dateDraftRevision: WritableSignal<number> = signal<number>(0);
     const clearedDay: WritableSignal<{ localDate: string; revision: number } | null> = signal(null);
+    const busy: WritableSignal<boolean> = signal<boolean>(false);
     const facade = {
       trip: trip.asReadonly(),
       program: program.asReadonly(),
@@ -28,7 +29,7 @@ describe('TripOverviewPageComponent', () => {
       dateDraftRevision: dateDraftRevision.asReadonly(),
       clearedDay: clearedDay.asReadonly(),
       status: signal('ready').asReadonly(),
-      busy: signal(false).asReadonly(),
+      busy: busy.asReadonly(),
       actionError: signal(null).asReadonly(),
       wishlistParks: signal([]).asReadonly(),
       wishlistUnavailable: signal(false).asReadonly(),
@@ -95,6 +96,13 @@ describe('TripOverviewPageComponent', () => {
     fixture.detectChanges();
     expect(state.currentLanguage()).toBe('de');
     expect(fixture.nativeElement.querySelector('a')?.getAttribute('href')).toContain('/de/profile/trips');
+    busy.set(true);
+    fixture.detectChanges();
+    expect(Array.from(fixture.nativeElement.querySelectorAll('.trip-dates input')).every(
+      (input: unknown): boolean => (input as HTMLInputElement).disabled
+    )).toBe(true);
+    busy.set(false);
+    fixture.detectChanges();
 
     trip.set(createTrip({
       version: 2,
