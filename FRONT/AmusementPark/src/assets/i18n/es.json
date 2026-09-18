@@ -1438,7 +1438,8 @@
       "kicker": "Tus ideas",
       "title": "Empieza por tus parques guardados",
       "description": "Selecciona varios favoritos o visitas previstas y añádelos a la vez.",
-      "empty": "Todos tus parques disponibles ya están en este viaje o tu lista sigue vacía."
+      "empty": "Todos tus parques disponibles ya están en este viaje o tu lista sigue vacía.",
+      "unavailable": "Tus listas no están disponibles temporalmente. Puedes seguir preparando el resto del viaje."
     },
     "candidates": {
       "kicker": "Tus prioridades",

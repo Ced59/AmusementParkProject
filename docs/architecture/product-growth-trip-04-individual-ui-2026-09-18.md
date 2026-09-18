@@ -69,6 +69,9 @@ sequenceDiagram
 
 Une réponse HTTP `409` produit un message explicite et recharge le voyage et son
 programme. L'interface ne réessaie pas aveuglément une écriture conflictuelle.
+Les erreurs de validation déterministes conservent au contraire les brouillons
+locaux. Une indisponibilité des collections masque seulement l'import des envies :
+le voyage et son programme restent consultables et modifiables.
 
 ## Responsive et accessibilité
 
@@ -95,6 +98,8 @@ programme. L'interface ne réessaie pas aveuglément une écriture conflictuelle
 - suppression d'une journée avec les versions attendues du voyage et de la journée ;
 - import d'une note de collection strictement privé, quelle que soit sa longueur ;
 - rechargement après conflit optimiste ;
+- conservation des brouillons après erreur de validation ;
+- chargement du plan maintenu si les collections auxiliaires sont indisponibles ;
 - routes lazy et authentifiées ;
 - navigation depuis le profil ;
 - contrats CSS de confinement, reflow mobile et zone sûre.

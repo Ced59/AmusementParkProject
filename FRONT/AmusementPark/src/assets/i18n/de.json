@@ -1438,7 +1438,8 @@
       "kicker": "Deine Wünsche",
       "title": "Beginne mit deinen gespeicherten Parks",
       "description": "Wähle mehrere Favoriten oder geplante Besuche und füge sie gemeinsam hinzu.",
-      "empty": "Alle verfügbaren Parks sind bereits in dieser Reise oder deine Liste ist noch leer."
+      "empty": "Alle verfügbaren Parks sind bereits in dieser Reise oder deine Liste ist noch leer.",
+      "unavailable": "Deine Listen sind vorübergehend nicht verfügbar. Du kannst den Rest der Reise weiterplanen."
     },
     "candidates": {
       "kicker": "Deine Prioritäten",

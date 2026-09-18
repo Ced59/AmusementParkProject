@@ -1438,7 +1438,8 @@
       "kicker": "Je wensen",
       "title": "Begin met je opgeslagen parken",
       "description": "Selecteer meerdere favorieten of geplande bezoeken en voeg ze tegelijk toe.",
-      "empty": "Alle beschikbare parken staan al in deze reis, of je lijst is nog leeg."
+      "empty": "Alle beschikbare parken staan al in deze reis, of je lijst is nog leeg.",
+      "unavailable": "Je lijsten zijn tijdelijk niet beschikbaar. Je kunt de rest van de reis blijven plannen."
     },
     "candidates": {
       "kicker": "Je prioriteiten",

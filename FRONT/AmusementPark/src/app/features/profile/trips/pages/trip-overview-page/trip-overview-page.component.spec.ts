@@ -27,6 +27,7 @@ describe('TripOverviewPageComponent', () => {
       busy: signal(false).asReadonly(),
       actionError: signal(null).asReadonly(),
       wishlistParks: signal([]).asReadonly(),
+      wishlistUnavailable: signal(false).asReadonly(),
       load: vi.fn(),
       setDates: vi.fn(),
       importWishlist: vi.fn(),

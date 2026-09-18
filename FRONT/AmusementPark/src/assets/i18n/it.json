@@ -1438,7 +1438,8 @@
       "kicker": "I tuoi desideri",
       "title": "Parti dai parchi salvati",
       "description": "Scegli più preferiti o visite previste e aggiungili tutti insieme.",
-      "empty": "Tutti i parchi disponibili sono già nel viaggio oppure la tua lista è ancora vuota."
+      "empty": "Tutti i parchi disponibili sono già nel viaggio oppure la tua lista è ancora vuota.",
+      "unavailable": "Le tue liste sono temporaneamente non disponibili. Puoi continuare a preparare il resto del viaggio."
     },
     "candidates": {
       "kicker": "Le tue priorità",

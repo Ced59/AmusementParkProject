@@ -78,7 +78,14 @@
           <p>{{ 'trips.wishlist.description' | translate }}</p>
         </div>
       </div>
-      @if (facade.wishlistParks().length === 0) {
+      @if (facade.wishlistUnavailable()) {
+        <div class="trip-section__empty">
+          <p>{{ 'trips.wishlist.unavailable' | translate }}</p>
+          <a appUiButton="ghost" [routerLink]="['/', currentLanguage, 'profile', 'collections']">
+            {{ 'trips.actions.openCollections' | translate }}
+          </a>
+        </div>
+      } @else if (facade.wishlistParks().length === 0) {
         <div class="trip-section__empty">
           <p>{{ 'trips.wishlist.empty' | translate }}</p>
           <a appUiButton="ghost" [routerLink]="['/', currentLanguage, 'profile', 'collections']">

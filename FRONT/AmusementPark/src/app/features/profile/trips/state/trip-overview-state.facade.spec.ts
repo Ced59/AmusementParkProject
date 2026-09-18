@@ -69,6 +69,19 @@ describe('TripOverviewStateFacade', () => {
     expect(facade.wishlistParks().map((entry: UserCollectionEntry): string => entry.entryId)).toEqual(['planned']);
   });
 
+  it('keeps the planner available when the auxiliary wishlist cannot load', () => {
+    (collections.listMine as ReturnType<typeof vi.fn>).mockReturnValue(
+      throwError(() => ({ status: 503 }))
+    );
+
+    facade.load('trip-1');
+
+    expect(facade.status()).toBe('ready');
+    expect(facade.trip()?.tripPlanId).toBe('trip-1');
+    expect(facade.wishlistParks()).toEqual([]);
+    expect(facade.wishlistUnavailable()).toBe(true);
+  });
+
   it('imports several wishes sequentially with the refreshed plan version', () => {
     const first: UserCollectionEntry = createEntry({
       entryId: 'entry-1', targetId: 'park-2', preferredStartsOn: '2026-10-03', preferredEndsOn: '2026-10-03'
@@ -157,6 +170,21 @@ describe('TripOverviewStateFacade', () => {
       destinationTimeZoneId: 'Europe/Berlin'
     });
     expect(facade.dateDraftRevision()).toBe(1);
+  });
+
+  it('preserves local drafts after a deterministic validation failure', () => {
+    (plans.setDates as ReturnType<typeof vi.fn>).mockReturnValue(
+      throwError(() => ({ status: 400 }))
+    );
+
+    facade.load('trip-1');
+    facade.setDates('2026-10-05', '2026-10-03', 'Europe/Paris');
+
+    expect(facade.actionError()).toBe('failed');
+    expect(programData.get).toHaveBeenCalledTimes(1);
+    expect(plans.getMine).toHaveBeenCalledTimes(1);
+    expect(facade.recoveryRevision()).toBe(0);
+    expect(facade.dateDraftRevision()).toBe(0);
   });
 
   it('reloads the latest plan and reports an optimistic conflict', () => {

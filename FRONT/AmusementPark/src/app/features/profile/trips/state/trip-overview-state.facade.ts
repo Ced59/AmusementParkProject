@@ -1,6 +1,6 @@
 import { computed, DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { concatMap, defer, finalize, forkJoin, from, last, map, Observable, switchMap, tap } from 'rxjs';
+import { catchError, concatMap, defer, finalize, forkJoin, from, last, map, Observable, of, switchMap, tap } from 'rxjs';
 
 import {
   AddTripParkCandidateRequest,
@@ -40,6 +40,7 @@ export class TripOverviewStateFacade {
   private readonly statusSignal = signal<TripOverviewStatus>('idle');
   private readonly busySignal = signal<boolean>(false);
   private readonly actionErrorSignal = signal<TripOverviewActionError>(null);
+  private readonly wishlistUnavailableSignal = signal<boolean>(false);
   private readonly recoveryRevisionSignal = signal<number>(0);
   private readonly dateDraftRevisionSignal = signal<number>(0);
   private readonly clearedDaySignal = signal<{ localDate: string; revision: number } | null>(null);
@@ -49,6 +50,7 @@ export class TripOverviewStateFacade {
   readonly status: Signal<TripOverviewStatus> = this.statusSignal.asReadonly();
   readonly busy: Signal<boolean> = this.busySignal.asReadonly();
   readonly actionError: Signal<TripOverviewActionError> = this.actionErrorSignal.asReadonly();
+  readonly wishlistUnavailable: Signal<boolean> = this.wishlistUnavailableSignal.asReadonly();
   readonly recoveryRevision: Signal<number> = this.recoveryRevisionSignal.asReadonly();
   readonly dateDraftRevision: Signal<number> = this.dateDraftRevisionSignal.asReadonly();
   readonly clearedDay: Signal<{ localDate: string; revision: number } | null> = this.clearedDaySignal.asReadonly();
@@ -85,10 +87,16 @@ export class TripOverviewStateFacade {
 
     this.tripIdSignal.set(tripId);
     this.statusSignal.set('loading');
+    this.wishlistUnavailableSignal.set(false);
     forkJoin({
       trip: this.plans.getMine(tripId),
       program: this.programData.get(tripId),
-      collections: this.collections.listMine('Park')
+      collections: this.collections.listMine('Park').pipe(
+        catchError((): Observable<UserCollectionEntry[]> => {
+          this.wishlistUnavailableSignal.set(true);
+          return of([]);
+        })
+      )
     })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
@@ -275,9 +283,16 @@ export class TripOverviewStateFacade {
     ).subscribe({
       error: (error: { status?: number }): void => {
         this.actionErrorSignal.set(error?.status === 409 ? 'conflict' : 'failed');
-        this.reloadAfterFailure();
+        if (this.requiresRecoveryReload(error)) {
+          this.reloadAfterFailure();
+        }
       }
     });
+  }
+
+  private requiresRecoveryReload(error: { status?: number }): boolean {
+    const status: number | undefined = error?.status;
+    return status === undefined || status === 0 || status === 408 || status === 409 || status >= 500;
   }
 
   private reloadAfterFailure(): void {

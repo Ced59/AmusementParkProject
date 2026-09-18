@@ -60,7 +60,8 @@
       "kicker": "Tes envies",
       "title": "Pars de tes parcs enregistrés",
       "description": "Choisis plusieurs favoris ou projets de visite et ajoute-les en une fois.",
-      "empty": "Tous tes parcs disponibles sont déjà dans ce voyage, ou ta liste est encore vide."
+      "empty": "Tous tes parcs disponibles sont déjà dans ce voyage, ou ta liste est encore vide.",
+      "unavailable": "Tes listes sont momentanément indisponibles. Tu peux continuer à préparer le reste du voyage."
     },
     "candidates": {
       "kicker": "Tes priorités",
