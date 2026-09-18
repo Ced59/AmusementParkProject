@@ -17,6 +17,7 @@ public sealed class TripDayProgramService
     private readonly IParkRepository parkRepository;
     private readonly TripChildMutationExecutor mutationExecutor;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripDayProgramService(
         ITripPlanRepository tripPlanRepository,
@@ -24,7 +25,8 @@ public sealed class TripDayProgramService
         ITripDayPlanRepository dayPlanRepository,
         IParkRepository parkRepository,
         TripChildMutationExecutor mutationExecutor,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.tripPlanRepository = tripPlanRepository ?? throw new ArgumentNullException(nameof(tripPlanRepository));
         this.candidateRepository = candidateRepository ?? throw new ArgumentNullException(nameof(candidateRepository));
@@ -32,6 +34,7 @@ public sealed class TripDayProgramService
         this.parkRepository = parkRepository ?? throw new ArgumentNullException(nameof(parkRepository));
         this.mutationExecutor = mutationExecutor ?? throw new ArgumentNullException(nameof(mutationExecutor));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<TripDayPlanResult>> PutAsync(
@@ -70,6 +73,7 @@ public sealed class TripDayProgramService
             operationId,
             lease => this.PutUnderLeaseAsync(
                 trip,
+                normalizedUserId,
                 candidateId,
                 localDate,
                 expectedDayVersion,
@@ -106,12 +110,33 @@ public sealed class TripDayProgramService
             Guid.NewGuid().ToString("N"),
             async lease =>
             {
+                TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                    trip,
+                    userId.Trim(),
+                    TripActivityKind.DayRemoved,
+                    TripActivityRecorder.ChildOperationKey(TripActivityKind.DayRemoved, lease),
+                    1);
                 TripDayPlanWriteResult result = await this.dayPlanRepository.DeleteAsync(
                     trip.Id,
                     localDate,
                     expectedDayVersion,
                     lease,
+                    pendingActivity,
                     cancellationToken);
+                if (result.Outcome == TripChildWriteOutcome.Success
+                    && this.activityRecorder is not null)
+                {
+                    await this.activityRecorder.RecordAsync(
+                        trip,
+                        userId.Trim(),
+                        TripActivityKind.DayRemoved,
+                        TripActivityRecorder.ChildOperationKey(
+                            TripActivityKind.DayRemoved,
+                            lease),
+                        1,
+                        CancellationToken.None);
+                }
+
                 return result.Outcome switch
                 {
                     TripChildWriteOutcome.Success => ApplicationResult.Success(),
@@ -126,6 +151,7 @@ public sealed class TripDayProgramService
 
     private async Task<ApplicationResult<TripDayPlanResult>> PutUnderLeaseAsync(
         TripPlan trip,
+        string actorUserId,
         TripParkCandidateId candidateId,
         DateOnly localDate,
         long? expectedDayVersion,
@@ -196,11 +222,18 @@ public sealed class TripDayProgramService
                     nowUtc);
             }
 
+            TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                trip,
+                actorUserId,
+                TripActivityKind.DayUpdated,
+                TripActivityRecorder.ChildOperationKey(TripActivityKind.DayUpdated, lease),
+                1);
             TripDayPlanWriteResult outcome = await this.dayPlanRepository.PutAsync(
                 dayPlan,
                 expectedDayVersion,
                 lease,
                 requestHash,
+                pendingActivity,
                 cancellationToken);
             if (outcome.Outcome != TripChildWriteOutcome.Success || outcome.DayPlan is null)
             {
@@ -208,6 +241,19 @@ public sealed class TripDayProgramService
                     outcome.Outcome == TripChildWriteOutcome.Conflict
                         ? TripPlanApplicationErrors.ChangedConcurrently(outcome.CurrentVersion)
                         : TripPlanApplicationErrors.ChildMutationUnavailable());
+            }
+
+            if (this.activityRecorder is not null)
+            {
+                await this.activityRecorder.RecordAsync(
+                    trip,
+                    actorUserId,
+                    TripActivityKind.DayUpdated,
+                    TripActivityRecorder.ChildOperationKey(
+                        TripActivityKind.DayUpdated,
+                        lease),
+                    1,
+                    CancellationToken.None);
             }
 
             return ApplicationResult<TripDayPlanResult>.Success(

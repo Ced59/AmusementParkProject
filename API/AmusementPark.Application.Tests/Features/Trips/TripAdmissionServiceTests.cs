@@ -19,6 +19,7 @@ public sealed class TripAdmissionServiceTests
     public async Task AcceptAsync_ShouldEstablishTheMemberThroughTheRepairableSaga()
     {
         TripInvitation invitation = CreateInvitation(TripInvitationStatus.Active);
+        TripPlan establishedTrip = CreateTripWithMember();
         TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
             invitation.Id,
             "operation-hash",
@@ -30,6 +31,7 @@ public sealed class TripAdmissionServiceTests
         Mock<ITripInvitationSecurity> security = CreateSecurity();
         Mock<IUserRepository> users = new(MockBehavior.Strict);
         Mock<TimeProvider> clock = CreateClock();
+        Mock<ITripAuditWriter> audit = new(MockBehavior.Strict);
         MockSequence sequence = new();
         repository.InSequence(sequence)
             .Setup(item => item.GetInvitationByTokenHashAsync("token-hash", CancellationToken.None))
@@ -68,8 +70,29 @@ public sealed class TripAdmissionServiceTests
             .Setup(item => item.MarkInvitationAcceptedAsync(invitation.Id, fence, CancellationToken.None))
             .ReturnsAsync(TripAdmissionWriteOutcome.Success);
         repository.InSequence(sequence)
-            .Setup(item => item.EstablishMemberAsync(invitation.TripPlanId, fence, CancellationToken.None))
+            .Setup(item => item.EstablishMemberAsync(
+                invitation.TripPlanId,
+                fence,
+                It.Is<TripActivityWrite?>(activity =>
+                    activity != null
+                    && activity.ActorMemberId == null
+                    && activity.ActorRole == null),
+                CancellationToken.None))
             .ReturnsAsync(TripAdmissionWriteOutcome.Success);
+        plans.InSequence(sequence)
+            .Setup(item => item.GetAccessibleAsync(
+                "user-2",
+                invitation.TripPlanId,
+                CancellationToken.None))
+            .ReturnsAsync(establishedTrip);
+        audit.InSequence(sequence)
+            .Setup(item => item.AppendAsync(
+                It.Is<TripActivityWrite>(activity =>
+                    activity.Kind == TripActivityKind.InvitationAccepted
+                    && activity.ActorMemberId.HasValue
+                    && activity.ActorRole == TripEffectiveRole.Participant),
+                CancellationToken.None))
+            .ReturnsAsync(true);
         repository.InSequence(sequence)
             .Setup(item => item.MarkInvitationAdmissionCompletedAsync(
                 invitation.Id,
@@ -81,7 +104,8 @@ public sealed class TripAdmissionServiceTests
             plans.Object,
             security.Object,
             users.Object,
-            clock.Object);
+            clock.Object,
+            new TripActivityRecorder(audit.Object, clock.Object));
 
         ApplicationResult<TripInvitationDecisionResult> result = await service.AcceptAsync(
             "user-2",
@@ -92,7 +116,9 @@ public sealed class TripAdmissionServiceTests
         Assert.True(result.IsSuccess);
         Assert.False(result.Value?.WasReplayed);
         repository.VerifyAll();
+        plans.VerifyAll();
         users.VerifyAll();
+        audit.VerifyAll();
     }
 
     [Fact]
@@ -139,10 +165,18 @@ public sealed class TripAdmissionServiceTests
         TripPlan trip = CreateTripWithMember();
         Mock<ITripAdmissionRepository> repository = new(MockBehavior.Strict);
         Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<ITripAuditWriter> audit = new(MockBehavior.Strict);
         Mock<TimeProvider> expiredClock = new(MockBehavior.Strict);
         expiredClock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc.AddMinutes(3)));
         plans.Setup(item => item.GetAccessibleAsync("user-2", invitation.TripPlanId, CancellationToken.None))
             .ReturnsAsync(trip);
+        audit.Setup(item => item.AppendAsync(
+                It.Is<TripActivityWrite>(activity =>
+                    activity.Kind == TripActivityKind.InvitationAccepted
+                    && activity.ActorMemberId.HasValue
+                    && activity.ActorRole == TripEffectiveRole.Participant),
+                CancellationToken.None))
+            .ReturnsAsync(true);
         repository.Setup(item => item.MarkInvitationAdmissionCompletedAsync(
                 invitation.Id,
                 It.IsAny<TripMemberAdmissionFence>(),
@@ -153,13 +187,48 @@ public sealed class TripAdmissionServiceTests
             plans.Object,
             Mock.Of<ITripInvitationSecurity>(),
             Mock.Of<IUserRepository>(),
-            expiredClock.Object);
+            expiredClock.Object,
+            new TripActivityRecorder(audit.Object, expiredClock.Object));
 
         bool reconciled = await service.ReconcileAsync(invitation, CancellationToken.None);
 
         Assert.True(reconciled);
         plans.VerifyAll();
         repository.VerifyAll();
+        audit.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileAsync_ShouldKeepTheAcceptancePendingWhenAuditEnrichmentFails()
+    {
+        TripInvitation invitation = CreateInvitation(TripInvitationStatus.Accepted);
+        TripPlan trip = CreateTripWithMember();
+        Mock<ITripAdmissionRepository> repository = new(MockBehavior.Strict);
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<ITripAuditWriter> audit = new(MockBehavior.Strict);
+        Mock<TimeProvider> expiredClock = new(MockBehavior.Strict);
+        expiredClock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc.AddMinutes(3)));
+        plans.Setup(item => item.GetAccessibleAsync("user-2", invitation.TripPlanId, CancellationToken.None))
+            .ReturnsAsync(trip);
+        audit.Setup(item => item.AppendAsync(
+                It.Is<TripActivityWrite>(activity =>
+                    activity.Kind == TripActivityKind.InvitationAccepted),
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        TripAdmissionService service = new(
+            repository.Object,
+            plans.Object,
+            Mock.Of<ITripInvitationSecurity>(),
+            Mock.Of<IUserRepository>(),
+            expiredClock.Object,
+            new TripActivityRecorder(audit.Object, expiredClock.Object));
+
+        bool reconciled = await service.ReconcileAsync(invitation, CancellationToken.None);
+
+        Assert.False(reconciled);
+        repository.VerifyNoOtherCalls();
+        plans.VerifyAll();
+        audit.VerifyAll();
     }
 
     [Fact]
@@ -279,6 +348,7 @@ public sealed class TripAdmissionServiceTests
                 invitation,
                 "user-2",
                 "operation-hash",
+                It.IsAny<TripActivityWrite?>(),
                 CancellationToken.None))
             .ReturnsAsync(TripAdmissionWriteOutcome.AlreadyCompleted);
         TripAdmissionService service = new(

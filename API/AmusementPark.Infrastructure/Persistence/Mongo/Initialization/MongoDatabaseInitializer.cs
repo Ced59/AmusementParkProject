@@ -974,7 +974,15 @@ private readonly IMongoDatabase database;
         await tripInvitations.Indexes.CreateManyAsync(
             TripInvitationRepository.BuildIndexes(),
             cancellationToken);
-
+        await this.EnsureCollectionExistsAsync(
+            this.settings.TripAuditEventsCollectionName,
+            cancellationToken);
+        IMongoCollection<TripActivityEventDocument> tripAuditEvents =
+            this.database.GetCollection<TripActivityEventDocument>(
+                this.settings.TripAuditEventsCollectionName);
+        await tripAuditEvents.Indexes.CreateManyAsync(
+            TripAuditRepository.BuildIndexes(),
+            cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.UserVisitsCollectionName, cancellationToken);
         await this.InitializeUserVisitIndexesAsync(cancellationToken);
 

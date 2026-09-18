@@ -15,6 +15,7 @@ public sealed class TripPlanDateService
     private readonly ITripTimeZoneValidator timeZoneValidator;
     private readonly TripChildMutationExecutor mutationExecutor;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripPlanDateService(
         ITripPlanRepository tripPlanRepository,
@@ -22,7 +23,8 @@ public sealed class TripPlanDateService
         ITripDayPlanRepository dayPlanRepository,
         ITripTimeZoneValidator timeZoneValidator,
         TripChildMutationExecutor mutationExecutor,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.tripPlanRepository = tripPlanRepository
             ?? throw new ArgumentNullException(nameof(tripPlanRepository));
@@ -35,6 +37,7 @@ public sealed class TripPlanDateService
         this.mutationExecutor = mutationExecutor
             ?? throw new ArgumentNullException(nameof(mutationExecutor));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<TripPlanResult>> SetDatesAsync(
@@ -75,6 +78,29 @@ public sealed class TripPlanDateService
 
         if (trip.Version != expectedVersion)
         {
+            if (expectedVersion < long.MaxValue && trip.Version == expectedVersion + 1)
+            {
+                long replayedVersion = trip.Version;
+                try
+                {
+                    trip.SetDates(
+                        input.DateProposal,
+                        input.DestinationTimeZoneId,
+                        this.timeProvider.GetUtcNow().UtcDateTime);
+                }
+                catch (TripPlanValidationException exception)
+                {
+                    return Invalid(exception.Code, exception.Message);
+                }
+
+                if (trip.Version == replayedVersion)
+                {
+                    await this.RecordActivityAsync(trip, normalizedUserId);
+                    return ApplicationResult<TripPlanResult>.Success(
+                        TripPlanResultFactory.ToResult(trip, normalizedUserId));
+                }
+            }
+
             return ApplicationResult<TripPlanResult>.Failure(
                 TripPlanApplicationErrors.ChangedConcurrently(trip.Version));
         }
@@ -129,11 +155,18 @@ public sealed class TripPlanDateService
                 TripPlanResultFactory.ToResult(trip, actorUserId));
         }
 
+        TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+            trip,
+            actorUserId,
+            TripActivityKind.DatesChanged,
+            TripActivityRecorder.RootOperationKey(TripActivityKind.DatesChanged, trip.Version),
+            1);
         TripPlanWriteResult outcome = await this.tripPlanRepository.ReplaceAccessibleUnderChildLeaseAsync(
             actorUserId,
             trip,
             expectedVersion,
             lease,
+            pendingActivity,
             cancellationToken);
         if (outcome.Outcome != TripPlanWriteOutcome.Success || outcome.PersistedTripPlan is null)
         {
@@ -143,8 +176,27 @@ public sealed class TripPlanDateService
                     TripPlanApplicationErrors.ChangedConcurrently(outcome.CurrentVersion));
         }
 
+        if (this.activityRecorder is not null)
+        {
+            await this.RecordActivityAsync(outcome.PersistedTripPlan, actorUserId);
+        }
+
         return ApplicationResult<TripPlanResult>.Success(
             TripPlanResultFactory.ToResult(outcome.PersistedTripPlan, actorUserId));
+    }
+
+    private Task RecordActivityAsync(TripPlan trip, string actorUserId)
+    {
+        return this.activityRecorder?.RecordAsync(
+                trip,
+                actorUserId,
+                TripActivityKind.DatesChanged,
+                TripActivityRecorder.RootOperationKey(
+                    TripActivityKind.DatesChanged,
+                    trip.Version),
+                1,
+                CancellationToken.None)
+            ?? Task.CompletedTask;
     }
 
     private static bool TryNormalizeIdentity(

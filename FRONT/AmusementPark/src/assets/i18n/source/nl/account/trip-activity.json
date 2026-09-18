@@ -1,0 +1,21 @@
+{
+  "trips": {
+    "activity": {
+      "open": "Geschiedenis bekijken", "back": "Terug naar de reis", "kicker": "Reislogboek",
+      "description": "Bekijk belangrijke beslissingen en wijzigingen van de groep zonder privévoorkeuren te tonen.",
+      "refresh": "Geschiedenis vernieuwen", "feedKicker": "Gedeeld spoor", "feedTitle": "Wat is er gewijzigd?",
+      "feedDescription": "De nieuwste wijzigingen staan bovenaan. Vernieuw wanneer je een recente aanpassing wilt controleren.",
+      "you": "Jij", "hiddenActor": "Niet-getoonde persoon", "loadMore": "Eerdere wijzigingen laden", "loadError": "De reisgeschiedenis kon niet worden geladen.",
+      "loadMoreError": "Eerdere wijzigingen konden niet worden geladen. Je kunt het opnieuw proberen.",
+      "emptyTitle": "Nog geen wijzigingen vastgelegd", "emptyDescription": "Het logboek begint bij de volgende wijzigingen aan de reis.",
+      "kinds": {
+        "tripCreated": "Reis aangemaakt · {{actor}}", "tripRenamed": "Titel gewijzigd · {{actor}}", "datesChanged": "Datums gewijzigd · {{actor}}",
+        "candidateAdded": "Kandidaatpark toegevoegd · {{actor}}", "candidateUpdated": "Kandidaatpark bijgewerkt · {{actor}}", "candidateMoved": "Kandidaatpark verplaatst · {{actor}}", "candidateRemoved": "Kandidaatpark verwijderd · {{actor}}",
+        "dayUpdated": "Reisdag bijgewerkt · {{actor}}", "dayRemoved": "Reisdag verwijderd · {{actor}}",
+        "invitationCreated": "Uitnodiging aangemaakt · {{actor}}", "invitationRevoked": "Uitnodiging ingetrokken · {{actor}}", "invitationAccepted": "Uitnodiging geaccepteerd · {{actor}}", "invitationDeclined": "Uitnodiging afgewezen · {{actor}}",
+        "participantRoleChanged": "Rol gewijzigd · {{actor}}", "ownershipTransferred": "Reisbeheer overgedragen · {{actor}}", "participantLeft": "Reis verlaten · {{actor}}",
+        "preferencesUpdated": "Voorkeuren bijgewerkt ({{count}}) · {{actor}}", "collectiveDecisionUpdated": "Groepsbesluit bijgewerkt · {{actor}}"
+      }
+    }
+  }
+}

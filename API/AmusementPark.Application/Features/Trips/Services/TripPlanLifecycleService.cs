@@ -16,15 +16,18 @@ public sealed class TripPlanLifecycleService
     private readonly ITripPlanRepository repository;
     private readonly ITripTimeZoneValidator timeZoneValidator;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripPlanLifecycleService(
         ITripPlanRepository repository,
         ITripTimeZoneValidator timeZoneValidator,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         this.timeZoneValidator = timeZoneValidator ?? throw new ArgumentNullException(nameof(timeZoneValidator));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<TripPlanResult>>> ListAsync(
@@ -88,6 +91,7 @@ public sealed class TripPlanLifecycleService
                 cancellationToken);
             if (existing is not null)
             {
+                await this.RecordCreationAsync(existing, normalizedUserId, normalizedOperationId);
                 return MapCreation(existing, normalizedUserId);
             }
 
@@ -97,10 +101,21 @@ public sealed class TripPlanLifecycleService
                 return ApplicationResult<CreateTripPlanResult>.Failure(timeZoneError);
             }
 
+            TripActivityWrite? creationActivity = this.activityRecorder?.CreateWrite(
+                requested,
+                normalizedUserId,
+                TripActivityKind.TripCreated,
+                TripActivityRecorder.IdempotentOperationKey(
+                    TripActivityKind.TripCreated,
+                    normalizedOperationId),
+                1);
             IdempotentTripPlanCreationResult outcome = await this.repository.CreateIdempotentAsync(
                 requested,
                 normalizedOperationId,
+                creationActivity,
                 cancellationToken);
+            await this.RecordCreationAsync(outcome, normalizedUserId, normalizedOperationId);
+
             return MapCreation(outcome, normalizedUserId);
         }
         catch (TripPlanValidationException exception)
@@ -111,6 +126,30 @@ public sealed class TripPlanLifecycleService
         {
             return Invalid<CreateTripPlanResult>(TripPlanErrorCodes.InvalidState, exception.Message);
         }
+    }
+
+    private async Task RecordCreationAsync(
+        IdempotentTripPlanCreationResult creation,
+        string actorUserId,
+        string operationId)
+    {
+        if (creation.Status is not (IdempotentTripPlanCreationStatus.Created
+            or IdempotentTripPlanCreationStatus.Replayed)
+            || creation.TripPlan is null
+            || this.activityRecorder is null)
+        {
+            return;
+        }
+
+        await this.activityRecorder.RecordAsync(
+            creation.TripPlan,
+            actorUserId,
+            TripActivityKind.TripCreated,
+            TripActivityRecorder.IdempotentOperationKey(
+                TripActivityKind.TripCreated,
+                operationId),
+            1,
+            CancellationToken.None);
     }
 
     public Task<ApplicationResult<TripPlanResult>> RenameAsync(
@@ -124,6 +163,7 @@ public sealed class TripPlanLifecycleService
             userId,
             tripPlanId,
             expectedVersion,
+            TripActivityKind.TripRenamed,
             (trip, nowUtc) => trip.Rename(title, nowUtc),
             cancellationToken);
     }
@@ -132,6 +172,7 @@ public sealed class TripPlanLifecycleService
         string userId,
         string tripPlanId,
         long expectedVersion,
+        TripActivityKind activityKind,
         Action<TripPlan, DateTime> mutation,
         CancellationToken cancellationToken)
     {
@@ -152,15 +193,39 @@ public sealed class TripPlanLifecycleService
             return ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.NotFound());
         }
 
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         if (trip.Version != expectedVersion)
         {
+            if (expectedVersion < long.MaxValue && trip.Version == expectedVersion + 1)
+            {
+                long replayedVersion = trip.Version;
+                try
+                {
+                    mutation(trip, nowUtc);
+                }
+                catch (TripPlanValidationException exception)
+                {
+                    return Invalid<TripPlanResult>(exception.Code, exception.Message);
+                }
+
+                if (trip.Version == replayedVersion)
+                {
+                    await this.RecordRootActivityAsync(
+                        trip,
+                        normalizedUserId,
+                        activityKind);
+                    return ApplicationResult<TripPlanResult>.Success(
+                        TripPlanResultFactory.ToResult(trip, normalizedUserId));
+                }
+            }
+
             return ApplicationResult<TripPlanResult>.Failure(
                 TripPlanApplicationErrors.ChangedConcurrently(trip.Version));
         }
 
         try
         {
-            mutation(trip, this.timeProvider.GetUtcNow().UtcDateTime);
+            mutation(trip, nowUtc);
         }
         catch (TripPlanValidationException exception)
         {
@@ -170,10 +235,17 @@ public sealed class TripPlanLifecycleService
         TripPlan persistedTrip = trip;
         if (trip.Version != expectedVersion)
         {
+            TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                trip,
+                normalizedUserId,
+                activityKind,
+                TripActivityRecorder.RootOperationKey(activityKind, trip.Version),
+                1);
             TripPlanWriteResult writeResult = await this.repository.ReplaceAccessibleAsync(
                 normalizedUserId,
                 trip,
                 expectedVersion,
+                pendingActivity,
                 cancellationToken);
             if (writeResult.Outcome != TripPlanWriteOutcome.Success)
             {
@@ -188,8 +260,28 @@ public sealed class TripPlanLifecycleService
                     "A successful trip mutation must return the persisted aggregate.");
         }
 
+        if (this.activityRecorder is not null && persistedTrip.Version != expectedVersion)
+        {
+            await this.RecordRootActivityAsync(persistedTrip, normalizedUserId, activityKind);
+        }
+
         return ApplicationResult<TripPlanResult>.Success(
             TripPlanResultFactory.ToResult(persistedTrip, normalizedUserId));
+    }
+
+    private Task RecordRootActivityAsync(
+        TripPlan trip,
+        string actorUserId,
+        TripActivityKind activityKind)
+    {
+        return this.activityRecorder?.RecordAsync(
+                trip,
+                actorUserId,
+                activityKind,
+                TripActivityRecorder.RootOperationKey(activityKind, trip.Version),
+                1,
+                CancellationToken.None)
+            ?? Task.CompletedTask;
     }
 
     public async Task<ApplicationResult> DeleteAsync(

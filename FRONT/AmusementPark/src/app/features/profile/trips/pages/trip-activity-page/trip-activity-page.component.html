@@ -1,0 +1,68 @@
+<main class="trip-activity-page">
+  <header class="trip-activity-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', tripPlanId]">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'trips.activity.back' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="sky" iconClass="pi pi-history">{{ 'trips.activity.kicker' | translate }}</app-ui-kicker>
+    <h1>{{ facade.tripTitle() || ('trips.feedback.loading' | translate) }}</h1>
+    <p>{{ 'trips.activity.description' | translate }}</p>
+    <div class="trip-activity-hero__actions">
+      <button type="button" appUiButton="ghost" [disabled]="facade.loading() || facade.loadingMore()" (click)="facade.refresh()">
+        <i class="pi pi-refresh" aria-hidden="true"></i>
+        <span>{{ 'trips.activity.refresh' | translate }}</span>
+      </button>
+    </div>
+  </header>
+
+  @if (facade.loading()) {
+    <section class="trip-activity-message" appUiSurface="panel" role="status" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'trips.feedback.loading' | translate }}</span>
+    </section>
+  } @else if (facade.error() && facade.entries().length === 0) {
+    <section class="trip-activity-message trip-activity-message--error" appUiSurface="panel" role="alert">
+      <p>{{ 'trips.activity.loadError' | translate }}</p>
+      <button type="button" appUiButton="primary" (click)="facade.refresh()">{{ 'trips.actions.retry' | translate }}</button>
+    </section>
+  } @else {
+    <section class="trip-activity-feed" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-activity-feed__heading">
+        <div>
+          <app-ui-kicker tone="lime" iconClass="pi pi-clock">{{ 'trips.activity.feedKicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.activity.feedTitle' | translate }}</h2>
+          <p>{{ 'trips.activity.feedDescription' | translate }}</p>
+        </div>
+      </div>
+
+      <ol class="trip-activity-list">
+        @for (entry of facade.entries(); track entry.sequence) {
+          <li class="trip-activity-entry">
+            <span class="trip-activity-entry__icon"><i class="pi {{ activityIcon(entry.kind) }}" aria-hidden="true"></i></span>
+            <div class="trip-activity-entry__body">
+              <strong>{{ activityKey(entry.kind) | translate:{ actor: entry.isCurrentUser ? ('trips.activity.you' | translate) : entry.actorDisplayName === '—' ? ('trips.activity.hiddenActor' | translate) : entry.actorDisplayName, count: entry.affectedCount } }}</strong>
+              <time [attr.datetime]="entry.occurredAtUtc">
+                {{ entry.occurredAtUtc | date:'medium':undefined:currentLanguage() }}
+              </time>
+            </div>
+          </li>
+        } @empty {
+          <li class="trip-activity-empty">
+            <i class="pi pi-history" aria-hidden="true"></i>
+            <div><h3>{{ 'trips.activity.emptyTitle' | translate }}</h3><p>{{ 'trips.activity.emptyDescription' | translate }}</p></div>
+          </li>
+        }
+      </ol>
+
+      @if (facade.nextBeforeSequence() !== null) {
+        <button type="button" appUiButton="ghost" [disabled]="facade.loadingMore()" (click)="facade.loadMore()">
+          @if (facade.loadingMore()) { <i class="pi pi-spin pi-spinner" aria-hidden="true"></i> }
+          <span>{{ 'trips.activity.loadMore' | translate }}</span>
+        </button>
+      }
+      @if (facade.error() && facade.entries().length > 0) {
+        <p class="trip-activity-inline-error" role="alert">{{ 'trips.activity.loadMoreError' | translate }}</p>
+      }
+    </section>
+  }
+</main>

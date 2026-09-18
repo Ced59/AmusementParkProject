@@ -25,8 +25,9 @@ public sealed class TripPlanLifecycleServiceTests
         repository.Setup(item => item.CreateIdempotentAsync(
                 It.IsAny<TripPlan>(),
                 "operation-1",
+                It.IsAny<TripActivityWrite?>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((TripPlan trip, string _, CancellationToken _) =>
+            .ReturnsAsync((TripPlan trip, string _, TripActivityWrite? _, CancellationToken _) =>
                 new IdempotentTripPlanCreationResult(IdempotentTripPlanCreationStatus.Created, trip));
         TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
 
@@ -113,6 +114,54 @@ public sealed class TripPlanLifecycleServiceTests
     }
 
     [Fact]
+    public async Task CreateAsync_ShouldRepairTheAuditWhenAStoredCreationIsReplayed()
+    {
+        DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
+        TripPlan existingTrip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            createdAtUtc);
+        Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.ResolveExistingCreationAsync(
+                It.IsAny<TripPlan>(),
+                "operation-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new IdempotentTripPlanCreationResult(
+                IdempotentTripPlanCreationStatus.Replayed,
+                existingTrip));
+        Mock<ITripAuditWriter> writer = new(MockBehavior.Strict);
+        writer.Setup(item => item.AppendAsync(
+                It.Is<TripActivityWrite>(write =>
+                    write.TripPlanId == existingTrip.Id
+                    && write.Kind == TripActivityKind.TripCreated
+                    && write.OperationKey == TripActivityRecorder.IdempotentOperationKey(
+                        TripActivityKind.TripCreated,
+                        "operation-1")),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
+        TripPlanLifecycleService service = new(
+            repository.Object,
+            timeZoneValidator.Object,
+            activityRecorder: new TripActivityRecorder(writer.Object));
+
+        ApplicationResult<CreateTripPlanResult> result = await service.CreateAsync(
+            "user-1",
+            "operation-1",
+            new TripPlanDetailsInput("Voyage", TripDateProposal.None(), null),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.WasReplayed);
+        repository.VerifyAll();
+        writer.VerifyAll();
+        timeZoneValidator.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task CreateAsync_WhenTheOriginalTripWasDeleted_ShouldRejectTheLateRetry()
     {
         Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
@@ -172,6 +221,58 @@ public sealed class TripPlanLifecycleServiceTests
     }
 
     [Fact]
+    public async Task RenameAsync_ShouldRepairTheAuditWhenThePersistedRenameIsRetried()
+    {
+        DateTime nowUtc = new DateTime(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            nowUtc);
+        trip.Rename("Nouveau titre", nowUtc.AddMinutes(1));
+        Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.GetAccessibleAsync(
+                "user-1",
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(trip);
+        Mock<ITripAuditWriter> writer = new(MockBehavior.Strict);
+        writer.Setup(item => item.AppendAsync(
+                It.Is<TripActivityWrite>(write =>
+                    write.TripPlanId == trip.Id
+                    && write.Kind == TripActivityKind.TripRenamed
+                    && write.OperationKey == TripActivityRecorder.RootOperationKey(
+                        TripActivityKind.TripRenamed,
+                        trip.Version)),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
+        Mock<TimeProvider> timeProvider = new(MockBehavior.Strict);
+        timeProvider.Setup(provider => provider.GetUtcNow())
+            .Returns(new DateTimeOffset(nowUtc.AddMinutes(2)));
+        TripPlanLifecycleService service = new(
+            repository.Object,
+            timeZoneValidator.Object,
+            timeProvider.Object,
+            activityRecorder: new TripActivityRecorder(writer.Object));
+
+        ApplicationResult<TripPlanResult> result = await service.RenameAsync(
+            "user-1",
+            trip.Id.Value,
+            1,
+            "Nouveau titre",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(2, result.Value?.Version);
+        repository.VerifyAll();
+        writer.VerifyAll();
+        timeProvider.VerifyAll();
+    }
+
+    [Fact]
     public async Task RenameAsync_WhenTheAtomicWriteLosesARace_ShouldReturnTheStoredCurrentVersion()
     {
         TripPlan trip = TripPlan.Create(
@@ -191,6 +292,7 @@ public sealed class TripPlanLifecycleServiceTests
                 "user-1",
                 It.Is<TripPlan>(candidate => candidate.Version == 2),
                 1,
+                It.IsAny<TripActivityWrite?>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, 4));
         Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
@@ -243,6 +345,7 @@ public sealed class TripPlanLifecycleServiceTests
                 "user-1",
                 It.Is<TripPlan>(candidate => candidate.UpdatedAtUtc == requestedAtUtc),
                 1,
+                It.IsAny<TripActivityWrite?>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new TripPlanWriteResult(
                 TripPlanWriteOutcome.Success,

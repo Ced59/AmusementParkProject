@@ -140,4 +140,7 @@ public sealed class TripInvitationDocument : MongoDocumentBase
     [BsonElement("reservedExpiresAtUtc")]
     [BsonIgnoreIfNull]
     public DateTime? ReservedExpiresAtUtc { get; set; }
+
+    [BsonElement("pendingAuditEvents")]
+    public List<TripActivityPendingDocument> PendingAuditEvents { get; set; } = new();
 }

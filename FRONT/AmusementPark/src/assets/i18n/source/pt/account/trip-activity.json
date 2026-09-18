@@ -1,0 +1,21 @@
+{
+  "trips": {
+    "activity": {
+      "open": "Ver histórico", "back": "Voltar à viagem", "kicker": "Diário da viagem",
+      "description": "Consulta as decisões e alterações importantes do grupo sem revelar preferências privadas.",
+      "refresh": "Atualizar histórico", "feedKicker": "Registo partilhado", "feedTitle": "O que mudou",
+      "feedDescription": "As alterações mais recentes aparecem primeiro. Atualiza quando quiseres verificar uma modificação recente.",
+      "you": "Tu", "hiddenActor": "Pessoa não apresentada", "loadMore": "Carregar alterações anteriores", "loadError": "Não foi possível carregar o histórico da viagem.",
+      "loadMoreError": "Não foi possível carregar as alterações anteriores. Podes tentar novamente.",
+      "emptyTitle": "Nenhuma alteração registada", "emptyDescription": "O diário começará com as próximas alterações da viagem.",
+      "kinds": {
+        "tripCreated": "Criação da viagem · {{actor}}", "tripRenamed": "Alteração do título · {{actor}}", "datesChanged": "Alteração das datas · {{actor}}",
+        "candidateAdded": "Parque candidato adicionado · {{actor}}", "candidateUpdated": "Parque candidato atualizado · {{actor}}", "candidateMoved": "Parque candidato reordenado · {{actor}}", "candidateRemoved": "Parque candidato removido · {{actor}}",
+        "dayUpdated": "Dia atualizado · {{actor}}", "dayRemoved": "Dia removido · {{actor}}",
+        "invitationCreated": "Convite criado · {{actor}}", "invitationRevoked": "Convite revogado · {{actor}}", "invitationAccepted": "Convite aceite · {{actor}}", "invitationDeclined": "Convite recusado · {{actor}}",
+        "participantRoleChanged": "Função alterada · {{actor}}", "ownershipTransferred": "Organização transferida · {{actor}}", "participantLeft": "Saída da viagem · {{actor}}",
+        "preferencesUpdated": "Preferências atualizadas ({{count}}) · {{actor}}", "collectiveDecisionUpdated": "Decisão coletiva atualizada · {{actor}}"
+      }
+    }
+  }
+}

@@ -148,8 +148,9 @@ public sealed class TripPlanDateServiceTests
                 It.Is<TripPlan>(value => value.ChildMutationEpoch == 2 && value.Version == 2),
                 1,
                 lease,
+                It.IsAny<TripActivityWrite?>(),
                 CancellationToken.None))
-            .ReturnsAsync((string _, TripPlan value, long _, TripChildMutationLease _, CancellationToken _) =>
+            .ReturnsAsync((string _, TripPlan value, long _, TripChildMutationLease _, TripActivityWrite? _, CancellationToken _) =>
                 new TripPlanWriteResult(TripPlanWriteOutcome.Success, value.Version, value));
         TripPlanDateService service = new(
             trips.Object,

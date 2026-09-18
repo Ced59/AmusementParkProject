@@ -56,6 +56,7 @@ public sealed class TripInvitationServiceTests
                 "request-hash",
                 "sealed-token",
                 "v1",
+                It.IsAny<TripActivityWrite?>(),
                 CancellationToken.None))
             .ReturnsAsync((
                 TripInvitation invitation,
@@ -64,6 +65,7 @@ public sealed class TripInvitationServiceTests
                 string requestHash,
                 string sealedToken,
                 string keyVersion,
+                TripActivityWrite? _,
                 CancellationToken _) =>
             {
                 persisted = invitation;

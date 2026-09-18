@@ -1,6 +1,20 @@
 {
-  "version": "5.3.69",
+  "version": "5.3.70",
   "history": [
+    {
+      "version": "5.3.70",
+      "releasedAt": "2026-09-18",
+      "labels": {
+        "fr": "Tu peux maintenant consulter l’historique clair des changements de ton voyage.",
+        "en": "You can now review a clear history of changes to your trip.",
+        "de": "Du kannst jetzt einen verständlichen Verlauf der Änderungen an deiner Reise ansehen.",
+        "nl": "Je kunt nu een duidelijk overzicht van wijzigingen aan je reis bekijken.",
+        "it": "Ora puoi consultare una cronologia chiara delle modifiche al viaggio.",
+        "es": "Ya puedes consultar un historial claro de los cambios de tu viaje.",
+        "pl": "Możesz teraz przeglądać przejrzystą historię zmian w podróży.",
+        "pt": "Agora podes consultar um histórico claro das alterações à tua viagem."
+      }
+    },
     {
       "version": "5.3.69",
       "releasedAt": "2026-09-18",

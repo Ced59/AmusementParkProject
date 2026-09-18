@@ -1,0 +1,143 @@
+:host {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.trip-activity-page,
+.trip-activity-hero,
+.trip-activity-feed,
+.trip-activity-list,
+.trip-activity-entry,
+.trip-activity-entry__body {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.trip-activity-page {
+  display: grid;
+  width: min(100%, 64rem);
+  margin: 0 auto;
+  padding: clamp(0.75rem, 3vw, 2rem);
+  padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.trip-activity-hero,
+.trip-activity-feed,
+.trip-activity-message {
+  display: grid;
+  gap: 1rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  max-width: 18ch;
+  font-family: var(--font-heading);
+  font-size: clamp(2.35rem, 8vw, 5rem);
+  line-height: 0.95;
+}
+
+.trip-activity-hero > p,
+.trip-activity-feed__heading p,
+.trip-activity-empty p,
+.trip-activity-entry time {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.trip-activity-hero__actions {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.trip-activity-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trip-activity-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  padding: 0.95rem 0;
+  gap: 0.85rem;
+}
+
+.trip-activity-entry:not(:last-child)::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 3.85rem;
+  height: 1px;
+  background: var(--app-border);
+  content: '';
+}
+
+.trip-activity-entry__icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c-sky) 12%, var(--app-surface-2));
+  color: var(--c-sky);
+}
+
+.trip-activity-entry__body {
+  display: grid;
+  align-content: center;
+  gap: 0.25rem;
+  overflow-wrap: anywhere;
+}
+
+.trip-activity-entry time {
+  font-size: 0.9rem;
+}
+
+.trip-activity-empty {
+  display: flex;
+  padding: 1rem;
+  align-items: flex-start;
+  gap: 0.8rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: var(--app-surface-2);
+}
+
+.trip-activity-message--error,
+.trip-activity-inline-error {
+  color: var(--c-rose);
+}
+
+@media (max-width: 22.5rem) {
+  .trip-activity-page {
+    padding-inline: 0.55rem;
+  }
+
+  .trip-activity-entry {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .trip-activity-entry__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .trip-activity-entry:not(:last-child)::after {
+    left: 3.35rem;
+  }
+}

@@ -581,6 +581,26 @@ dans [`product-growth-trip-09-program-coherence-2026-09-18.md`](../../architectu
 - SignalR seulement si besoin observé ;
 - notification Web via `WATCH` pour changements importants, opt-in.
 
+### Implémentation `TRIP-10` — 18 septembre 2026
+
+Le voyage possède désormais un journal append-only ordonné par une séquence
+propre au plan. Il couvre les mutations de la racine, du programme, des
+invitations, des participants, des préférences et des décisions collectives. Une
+clé d’opération unique rend la preuve idempotente et la suppression du voyage
+purge aussi ses événements.
+
+L’API privée vérifie l’accès avant toute lecture, ne résout que les noms des
+membres encore actifs et n’expose aucun identifiant technique, jeton, adresse,
+préférence ou texte privé. La page Angular charge 30 événements par curseur,
+propose une actualisation manuelle et reste contenue dans le viewport à partir
+de 320 pixels. Aucun temps réel n’est ajouté sans besoin observé. Le raccord
+opt-in aux notifications de voyage reste réservé au pilote `TRIP-13`, car le
+domaine `WATCH` existant traite les faits publics et ne doit pas être détourné.
+
+Le schéma MongoDB, les diagrammes de classes et de séquence, les règles de
+confidentialité et les preuves sont détaillés dans
+[`product-growth-trip-10-audit-concurrency-2026-09-18.md`](../../architecture/product-growth-trip-10-audit-concurrency-2026-09-18.md).
+
 ## 11. Modèle de données
 
 Collections :
@@ -876,7 +896,7 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 | `TRIP-07` | Préférences par élément | Unicité et batch — implémenté le 18 septembre 2026 |
 | `TRIP-08` | Synthèse/conflits | Pas de majorité aveugle — implémenté le 18 septembre 2026 |
 | `TRIP-09` | Validation calendrier/trajet | Faits distingués des choix — implémenté le 18 septembre 2026 |
-| `TRIP-10` | Audit/concurrence | Modifications reconstituables |
+| `TRIP-10` | Audit/concurrence | Modifications reconstituables — implémenté le 18 septembre 2026 |
 | `TRIP-11` | Export | Plan portable |
 | `TRIP-12` | Transition Passeport | Confirmation individuelle |
 | `TRIP-13` | Pilote collaboratif | Gate franchie |

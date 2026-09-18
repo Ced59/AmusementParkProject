@@ -20,6 +20,7 @@ public sealed class TripProgramService
     private readonly TripChildMutationExecutor mutationExecutor;
     private readonly TripProgramResultFactory resultFactory;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripProgramService(
         ITripPlanRepository tripPlanRepository,
@@ -28,7 +29,8 @@ public sealed class TripProgramService
         IParkRepository parkRepository,
         TripChildMutationExecutor mutationExecutor,
         TripProgramResultFactory resultFactory,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.tripPlanRepository = tripPlanRepository ?? throw new ArgumentNullException(nameof(tripPlanRepository));
         this.candidateRepository = candidateRepository ?? throw new ArgumentNullException(nameof(candidateRepository));
@@ -37,6 +39,7 @@ public sealed class TripProgramService
         this.mutationExecutor = mutationExecutor ?? throw new ArgumentNullException(nameof(mutationExecutor));
         this.resultFactory = resultFactory ?? throw new ArgumentNullException(nameof(resultFactory));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<TripProgramResult>> GetAsync(
@@ -111,16 +114,17 @@ public sealed class TripProgramService
             operationId,
             requestHash,
             cancellationToken);
+        TripPlan? replayTrip = null;
         if (replay.Outcome is TripChildWriteOutcome.Success
             or TripChildWriteOutcome.IdempotencyConflict
             or TripChildWriteOutcome.Deleted)
         {
-            TripPlan? activeTrip = await this.tripPlanRepository.GetAccessibleAsync(
+            replayTrip = await this.tripPlanRepository.GetAccessibleAsync(
                 normalizedUserId,
                 parsedTripId,
                 cancellationToken);
-            TripEffectiveRole? activeRole = activeTrip?.ResolveRole(normalizedUserId);
-            if (activeTrip is null
+            TripEffectiveRole? activeRole = replayTrip?.ResolveRole(normalizedUserId);
+            if (replayTrip is null
                 || !activeRole.HasValue
                 || !TripAuthorizationPolicy.HasPermission(activeRole.Value, TripPermission.AddCandidates))
             {
@@ -131,6 +135,18 @@ public sealed class TripProgramService
 
         if (replay.Outcome == TripChildWriteOutcome.Success && replay.Candidate is not null)
         {
+            if (this.activityRecorder is not null)
+            {
+                await this.activityRecorder.RecordAsync(
+                    replayTrip
+                        ?? throw new InvalidOperationException("An accessible replay requires its trip."),
+                    normalizedUserId,
+                    TripActivityKind.CandidateAdded,
+                    $"candidate-add:{operationId}",
+                    1,
+                    CancellationToken.None);
+            }
+
             Park? replayedPark = await this.parkRepository.GetByIdAsync(
                 replay.Candidate.ParkId,
                 true,
@@ -210,11 +226,31 @@ public sealed class TripProgramService
                         TripParkCandidateOrderPlanner.AllocateAppend(
                             candidates.Count == 0 ? null : candidates.Max(static item => item.SortPosition)),
                         this.NowUtc());
+                    TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                        trip,
+                        normalizedUserId,
+                        TripActivityKind.CandidateAdded,
+                        $"candidate-add:{lease.OperationId}",
+                        1);
                     TripParkCandidateWriteResult written = await this.candidateRepository.CreateAsync(
                         candidate,
                         lease,
                         requestHash,
+                        pendingActivity,
                         cancellationToken);
+                    if (written.Outcome == TripChildWriteOutcome.Success
+                        && written.Candidate is not null
+                        && this.activityRecorder is not null)
+                    {
+                        await this.activityRecorder.RecordAsync(
+                            trip,
+                            normalizedUserId,
+                            TripActivityKind.CandidateAdded,
+                            $"candidate-add:{lease.OperationId}",
+                            1,
+                            CancellationToken.None);
+                    }
+
                     return written.Outcome switch
                     {
                         TripChildWriteOutcome.Success when written.Candidate is not null =>
@@ -238,60 +274,6 @@ public sealed class TripProgramService
                         TripPlanApplicationErrors.Invalid(exception.Code, exception.Message));
                 }
             },
-            cancellationToken);
-    }
-
-    public Task<ApplicationResult<TripParkCandidateResult>> UpdateCandidateAsync(
-        string userId,
-        string tripPlanId,
-        long expectedPlanVersion,
-        string candidateId,
-        long expectedCandidateVersion,
-        TripParkCandidateDetailsInput input,
-        CancellationToken cancellationToken)
-    {
-        return this.MutateCandidateAsync(
-            userId,
-            tripPlanId,
-            expectedPlanVersion,
-            candidateId,
-            expectedCandidateVersion,
-            (trip, candidate) =>
-            {
-                TripProgramRules.ValidateCandidateDates(trip.DateProposal, input.CandidateDates);
-                candidate.UpdateDetails(
-                    input.CandidateDates,
-                    input.CollectiveNote,
-                    candidate.FitSnapshot,
-                    this.NowUtc());
-            },
-            (candidate, token) => this.ValidateCandidateDatesAgainstDaysAsync(
-                candidate,
-                input.CandidateDates,
-                token),
-            cancellationToken);
-    }
-
-    public Task<ApplicationResult<TripParkCandidateResult>> ChangeCandidateStateAsync(
-        string userId,
-        string tripPlanId,
-        long expectedPlanVersion,
-        string candidateId,
-        long expectedCandidateVersion,
-        TripParkCandidateState state,
-        CancellationToken cancellationToken)
-    {
-        return this.MutateCandidateAsync(
-            userId,
-            tripPlanId,
-            expectedPlanVersion,
-            candidateId,
-            expectedCandidateVersion,
-            (_, candidate) => candidate.ChangeState(state, this.NowUtc()),
-            (candidate, token) => this.ValidateCandidateStateAgainstDaysAsync(
-                candidate,
-                state,
-                token),
             cancellationToken);
     }
 
@@ -346,15 +328,33 @@ public sealed class TripProgramService
                         parsedCandidateId,
                         parsedAnchorId,
                         placement);
+                    TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                        trip,
+                        userId.Trim(),
+                        TripActivityKind.CandidateMoved,
+                        $"candidate-move:{lease.OperationId}",
+                        1);
                     TripChildWriteOutcome outcome = await this.candidateRepository.ApplyOrderAsync(
                         trip.Id,
                         plan,
                         lease,
+                        pendingActivity,
                         cancellationToken);
                     if (outcome != TripChildWriteOutcome.Success)
                     {
                         return ApplicationResult<TripProgramResult>.Failure(
                             TripPlanApplicationErrors.ChildMutationUnavailable());
+                    }
+
+                    if (this.activityRecorder is not null)
+                    {
+                        await this.activityRecorder.RecordAsync(
+                            trip,
+                            userId.Trim(),
+                            TripActivityKind.CandidateMoved,
+                            $"candidate-move:{lease.OperationId}",
+                            1,
+                            CancellationToken.None);
                     }
 
                     return await this.resultFactory.BuildAsync(trip.Id, cancellationToken);
@@ -411,13 +411,32 @@ public sealed class TripProgramService
                     return ApplicationResult.Failure(TripPlanApplicationErrors.CandidateIsUsedByDay());
                 }
 
+                TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                    trip,
+                    userId.Trim(),
+                    TripActivityKind.CandidateRemoved,
+                    $"candidate-remove:{lease.OperationId}",
+                    1);
                 TripParkCandidateWriteResult outcome = await this.candidateRepository.DeleteAsync(
                     trip.Id,
                     parsedCandidateId,
                     expectedCandidateVersion,
                     lease,
                     this.NowUtc(),
+                    pendingActivity,
                     cancellationToken);
+                if (outcome.Outcome == TripChildWriteOutcome.Success
+                    && this.activityRecorder is not null)
+                {
+                    await this.activityRecorder.RecordAsync(
+                        trip,
+                        userId.Trim(),
+                        TripActivityKind.CandidateRemoved,
+                        $"candidate-remove:{lease.OperationId}",
+                        1,
+                        CancellationToken.None);
+                }
+
                 return outcome.Outcome switch
                 {
                     TripChildWriteOutcome.Success => ApplicationResult.Success(),
@@ -428,147 +447,6 @@ public sealed class TripProgramService
                 };
             },
             cancellationToken);
-    }
-
-    private async Task<ApplicationResult<TripParkCandidateResult>> MutateCandidateAsync(
-        string userId,
-        string tripPlanId,
-        long expectedPlanVersion,
-        string candidateId,
-        long expectedCandidateVersion,
-        Action<TripPlan, TripParkCandidate> mutation,
-        Func<TripParkCandidate, CancellationToken, Task<ApplicationError?>> consistencyGuard,
-        CancellationToken cancellationToken)
-    {
-        ApplicationResult<TripPlan> resolved = await this.ResolveEditableTripAsync(
-            userId,
-            tripPlanId,
-            expectedPlanVersion,
-            cancellationToken);
-        if (!resolved.IsSuccess || resolved.Value is null
-            || !TripParkCandidateId.TryParse(candidateId, out TripParkCandidateId parsedCandidateId))
-        {
-            return resolved.IsSuccess
-                ? ApplicationResult<TripParkCandidateResult>.Failure(TripPlanApplicationErrors.CandidateNotFound())
-                : ApplicationResult<TripParkCandidateResult>.Failure(resolved.Errors);
-        }
-
-        TripPlan trip = resolved.Value;
-        return await this.mutationExecutor.ExecuteAccessibleAsync(
-            trip,
-            userId.Trim(),
-            TripPermission.EditProgram,
-            Guid.NewGuid().ToString("N"),
-            async lease =>
-            {
-                TripParkCandidate? candidate = await this.candidateRepository.GetAsync(
-                    trip.Id,
-                    parsedCandidateId,
-                    cancellationToken);
-                if (candidate is null)
-                {
-                    return ApplicationResult<TripParkCandidateResult>.Failure(
-                        TripPlanApplicationErrors.CandidateNotFound());
-                }
-
-                if (candidate.Version != expectedCandidateVersion)
-                {
-                    return ApplicationResult<TripParkCandidateResult>.Failure(
-                        TripPlanApplicationErrors.ChangedConcurrently(candidate.Version));
-                }
-
-                ApplicationError? consistencyError = await consistencyGuard(
-                    candidate,
-                    cancellationToken);
-                if (consistencyError is not null)
-                {
-                    return ApplicationResult<TripParkCandidateResult>.Failure(consistencyError);
-                }
-
-                try
-                {
-                    mutation(trip, candidate);
-                }
-                catch (TripPlanValidationException exception)
-                {
-                    return ApplicationResult<TripParkCandidateResult>.Failure(
-                        TripPlanApplicationErrors.Invalid(exception.Code, exception.Message));
-                }
-
-                if (candidate.Version == expectedCandidateVersion)
-                {
-                    Park? unchangedPark = await this.parkRepository.GetByIdAsync(
-                        candidate.ParkId,
-                        true,
-                        cancellationToken);
-                    return ApplicationResult<TripParkCandidateResult>.Success(
-                        TripProgramResultFactory.ToCandidateResult(candidate, unchangedPark));
-                }
-
-                TripParkCandidateWriteResult outcome = await this.candidateRepository.ReplaceAsync(
-                    candidate,
-                    expectedCandidateVersion,
-                    lease,
-                    cancellationToken);
-                if (outcome.Outcome != TripChildWriteOutcome.Success || outcome.Candidate is null)
-                {
-                    return ApplicationResult<TripParkCandidateResult>.Failure(
-                        outcome.Outcome == TripChildWriteOutcome.NotFound
-                            ? TripPlanApplicationErrors.CandidateNotFound()
-                            : TripPlanApplicationErrors.ChangedConcurrently(outcome.CurrentVersion));
-                }
-
-                Park? park = await this.parkRepository.GetByIdAsync(
-                    outcome.Candidate.ParkId,
-                    true,
-                    cancellationToken);
-                return ApplicationResult<TripParkCandidateResult>.Success(
-                    TripProgramResultFactory.ToCandidateResult(outcome.Candidate, park));
-            },
-            cancellationToken);
-    }
-
-    private async Task<ApplicationError?> ValidateCandidateDatesAgainstDaysAsync(
-        TripParkCandidate candidate,
-        IReadOnlyCollection<DateOnly> candidateDates,
-        CancellationToken cancellationToken)
-    {
-        IReadOnlyCollection<TripDayPlan> days = await this.dayPlanRepository.ListAsync(
-            candidate.TripPlanId,
-            cancellationToken);
-        try
-        {
-            TripProgramRules.ValidateCandidateDatesAgainstDays(candidate, candidateDates, days);
-            return null;
-        }
-        catch (TripPlanValidationException)
-        {
-            return TripPlanApplicationErrors.CandidateChangeInvalidatesDay();
-        }
-    }
-
-    private async Task<ApplicationError?> ValidateCandidateStateAgainstDaysAsync(
-        TripParkCandidate candidate,
-        TripParkCandidateState state,
-        CancellationToken cancellationToken)
-    {
-        if (state == TripParkCandidateState.Selected)
-        {
-            return null;
-        }
-
-        IReadOnlyCollection<TripDayPlan> days = await this.dayPlanRepository.ListAsync(
-            candidate.TripPlanId,
-            cancellationToken);
-        try
-        {
-            TripProgramRules.ValidateCandidateStateAgainstDays(candidate, state, days);
-            return null;
-        }
-        catch (TripPlanValidationException)
-        {
-            return TripPlanApplicationErrors.CandidateChangeInvalidatesDay();
-        }
     }
 
     private async Task<ApplicationResult<TripPlan>> ResolveEditableTripAsync(

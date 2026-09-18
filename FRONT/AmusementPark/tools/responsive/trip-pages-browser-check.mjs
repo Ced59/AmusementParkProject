@@ -19,6 +19,7 @@ const componentStyles = [
   'src/app/features/profile/trips/pages/trip-preferences-page/trip-preferences-page.component.scss',
   'src/app/features/profile/trips/pages/trip-preference-summary-page/trip-preference-summary-page.component.scss',
   'src/app/features/profile/trips/pages/trip-program-coherence-page/trip-program-coherence-page.component.scss',
+  'src/app/features/profile/trips/pages/trip-activity-page/trip-activity-page.component.scss',
   'src/app/features/public/trips/pages/trip-invitation-preview-page/trip-invitation-preview-page.component.scss'
 ]
   .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
@@ -213,6 +214,23 @@ const fixtureMarkup = `
       <section class="trip-coherence-section surface" data-check-bound>
         <div class="trip-coherence-section__heading"><h2>Distances entre les étapes</h2><p>Les liaisons connues sont affichées entre deux parcs consécutifs.</p></div>
         <div class="trip-coherence-travel"><article class="trip-coherence-route" data-check-bound><div class="trip-coherence-route__parks"><strong>Destination au nom particulièrement long</strong><span>→</span><strong>Deuxième destination représentative</strong></div><p>Environ 245,6 km · 211 min</p><small>Estimation géographique indicative, pas un itinéraire routier en temps réel.</small></article></div>
+      </section>
+    </main>
+
+    <main class="trip-activity-page" data-responsive-root="trip-activity">
+      <header class="trip-activity-hero surface" data-check-bound>
+        <a href="#">Retour au voyage</a>
+        <h1>Une aventure européenne avec un titre très long</h1>
+        <p>Retrouve les décisions et changements importants sans exposer les préférences privées.</p>
+        <div class="trip-activity-hero__actions"><button>Actualiser l’historique</button></div>
+      </header>
+      <section class="trip-activity-feed surface" data-check-bound>
+        <div class="trip-activity-feed__heading"><h2>Ce qui a changé</h2><p>Les changements les plus récents apparaissent en premier.</p></div>
+        <ol class="trip-activity-list">
+          <li class="trip-activity-entry" data-check-bound><span class="trip-activity-entry__icon">✎</span><div class="trip-activity-entry__body"><strong>Modification du titre · UnPseudonymeVolontairementTrèsLongPourLeMobile</strong><time>18 septembre 2026 à 14:30</time></div></li>
+          <li class="trip-activity-entry" data-check-bound><span class="trip-activity-entry__icon">♥</span><div class="trip-activity-entry__body"><strong>Mise à jour de 250 préférences · Toi</strong><time>18 septembre 2026 à 14:22</time></div></li>
+        </ol>
+        <button>Charger les changements précédents</button>
       </section>
     </main>
 

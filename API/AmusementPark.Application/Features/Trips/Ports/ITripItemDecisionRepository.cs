@@ -17,11 +17,13 @@ public interface ITripItemDecisionRepository
     Task<TripItemDecisionWriteResult> CreateAsync(
         TripItemDecision decision,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripItemDecisionWriteResult> ReplaceAsync(
         TripItemDecision decision,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 }
