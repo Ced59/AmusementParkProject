@@ -36,6 +36,7 @@ public sealed class TripPlanCollaborationTests
         trip.EstablishAdmission("operation-1", 1, CreatedAtUtc.AddMinutes(3));
 
         Assert.Equal(TripMembershipState.Active, provisional.State);
+        Assert.Equal("operation-1", provisional.AdmissionOperationId);
         Assert.Equal(TripEffectiveRole.Participant, trip.ResolveRole("user-2"));
         Assert.Null(trip.MemberAdmissionFence);
     }

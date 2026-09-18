@@ -76,7 +76,7 @@ public sealed class TripAdmissionService
                     normalizedUserId,
                     invitation.TripPlanId,
                     cancellationToken);
-                if (establishedTrip?.ResolveRole(normalizedUserId) is not null)
+                if (HasEstablishedAdmission(establishedTrip, resumedFence))
                 {
                     await this.repository.MarkInvitationAdmissionCompletedAsync(
                         invitation.Id,
@@ -220,7 +220,7 @@ public sealed class TripAdmissionService
                 invitation.AcceptingUserId,
                 invitation.TripPlanId,
                 cancellationToken);
-            if (establishedTrip?.ResolveRole(invitation.AcceptingUserId) is not null)
+            if (HasEstablishedAdmission(establishedTrip, fence))
             {
                 await this.repository.MarkInvitationAdmissionCompletedAsync(
                     invitation.Id,
@@ -254,6 +254,19 @@ public sealed class TripAdmissionService
             true,
             cancellationToken);
         return result.IsSuccess;
+    }
+
+    private static bool HasEstablishedAdmission(
+        TripPlan? trip,
+        TripMemberAdmissionFence fence)
+    {
+        return trip?.Members.Any(member =>
+            member.State == TripMembershipState.Active
+            && string.Equals(member.UserId, fence.CandidateUserId, StringComparison.Ordinal)
+            && string.Equals(
+                member.AdmissionOperationId,
+                fence.OperationId,
+                StringComparison.Ordinal)) == true;
     }
 
     private async Task<ApplicationResult<TripInvitationDecisionResult>> ResumeAcceptanceAsync(

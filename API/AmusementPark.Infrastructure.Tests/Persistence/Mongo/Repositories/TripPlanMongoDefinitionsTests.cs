@@ -214,6 +214,7 @@ public sealed class TripPlanMongoDefinitionsTests
                     MemberId = "member-2",
                     UserId = "user-2",
                     State = TripMembershipState.Active,
+                    AdmissionOperationId = "operation-1",
                 },
             },
         };
@@ -222,6 +223,37 @@ public sealed class TripPlanMongoDefinitionsTests
             TripAdmissionRepository.ResolveCancellationReplay(establishedPlan, fence);
 
         Assert.Equal(TripAdmissionWriteOutcome.AlreadyCompleted, outcome);
+    }
+
+    [Fact]
+    public void ResolveCancellationReplay_WhenAnotherInvitationEstablishedTheMember_ShouldResumeCleanup()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+        TripPlanDocument planJoinedThroughAnotherInvitation = new()
+        {
+            Id = "trip-1",
+            Members = new List<TripMemberDocument>
+            {
+                new()
+                {
+                    MemberId = "member-2",
+                    UserId = "user-2",
+                    State = TripMembershipState.Active,
+                    AdmissionOperationId = "operation-2",
+                },
+            },
+        };
+
+        TripAdmissionWriteOutcome outcome = TripAdmissionRepository.ResolveCancellationReplay(
+            planJoinedThroughAnotherInvitation,
+            fence);
+
+        Assert.Equal(TripAdmissionWriteOutcome.Success, outcome);
     }
 
     [Fact]

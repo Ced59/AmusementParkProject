@@ -197,6 +197,41 @@ public sealed class TripAdmissionServiceTests
     }
 
     [Fact]
+    public async Task ReconcileAsync_WhenTheUserJoinedThroughAnotherInvitation_ShouldCancelTheStaleAcceptance()
+    {
+        TripInvitation invitation = CreateInvitation(TripInvitationStatus.Accepted);
+        TripPlan tripJoinedThroughAnotherInvitation = CreateTripWithMember("another-operation");
+        Mock<ITripAdmissionRepository> repository = new(MockBehavior.Strict);
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<TimeProvider> expiredClock = new(MockBehavior.Strict);
+        expiredClock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc.AddMinutes(3)));
+        plans.Setup(item => item.GetAccessibleAsync("user-2", invitation.TripPlanId, CancellationToken.None))
+            .ReturnsAsync(tripJoinedThroughAnotherInvitation);
+        repository.Setup(item => item.CancelExpiredFenceAsync(
+                invitation.TripPlanId,
+                It.IsAny<TripMemberAdmissionFence>(),
+                CancellationToken.None))
+            .ReturnsAsync(TripAdmissionWriteOutcome.Success);
+        repository.Setup(item => item.CancelInvitationAcceptanceAsync(
+                invitation.Id,
+                It.IsAny<TripMemberAdmissionFence>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        TripAdmissionService service = new(
+            repository.Object,
+            plans.Object,
+            Mock.Of<ITripInvitationSecurity>(),
+            Mock.Of<IUserRepository>(),
+            expiredClock.Object);
+
+        bool reconciled = await service.ReconcileAsync(invitation, CancellationToken.None);
+
+        Assert.True(reconciled);
+        repository.VerifyAll();
+        plans.VerifyAll();
+    }
+
+    [Fact]
     public async Task ReconcileAsync_WhenAnotherNodeEstablishesTheMemberDuringCompensation_ShouldNotRevokeInvitation()
     {
         TripInvitation invitation = CreateInvitation(TripInvitationStatus.Accepted);
@@ -312,7 +347,7 @@ public sealed class TripAdmissionServiceTests
             status is TripInvitationStatus.Accepted or TripInvitationStatus.Declined ? 2 : 1);
     }
 
-    private static TripPlan CreateTripWithMember()
+    private static TripPlan CreateTripWithMember(string operationId = "operation-hash")
     {
         TripPlan trip = TripPlan.Create(
             TripPlanId.Parse("trip-1"),
@@ -323,14 +358,14 @@ public sealed class TripAdmissionServiceTests
             NowUtc.AddHours(-1));
         trip.PrepareAdmission(
             TripInvitationId.Parse("invitation-1"),
-            "operation-hash",
+            operationId,
             "user-2",
             1,
             NowUtc.AddMinutes(2),
             NowUtc.AddMinutes(-3));
-        trip.ArmAdmission("operation-hash", 1);
-        trip.ApplyAdmission("operation-hash", 1, TripDelegatedRole.Participant, NowUtc.AddMinutes(-2));
-        trip.EstablishAdmission("operation-hash", 1, NowUtc.AddMinutes(-1));
+        trip.ArmAdmission(operationId, 1);
+        trip.ApplyAdmission(operationId, 1, TripDelegatedRole.Participant, NowUtc.AddMinutes(-2));
+        trip.EstablishAdmission(operationId, 1, NowUtc.AddMinutes(-1));
         return trip;
     }
 }

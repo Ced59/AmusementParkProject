@@ -40,13 +40,14 @@ describe('TripParticipantsStateFacade', () => {
     facade.changeRole('member-2', 'Viewer');
 
     expect(data.changeRole).toHaveBeenCalledWith('trip-1', 'member-2', 'Viewer', 4);
+    expect(facade.tripMutationRevision()).toBe(1);
   });
 
   it('signals the overview to refresh its permissions after ownership transfer', () => {
     facade.transferOwnership('member-2', 'Viewer');
 
     expect(data.transferOwnership).toHaveBeenCalledWith('trip-1', 'member-2', 'Viewer', 4);
-    expect(facade.ownershipTransferRevision()).toBe(1);
+    expect(facade.tripMutationRevision()).toBe(1);
   });
 
   it('keeps an action error visible while refreshing concurrent participant data', () => {

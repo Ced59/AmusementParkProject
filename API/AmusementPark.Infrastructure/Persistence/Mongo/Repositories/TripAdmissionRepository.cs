@@ -389,7 +389,6 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
             filter,
             Builders<TripPlanDocument>.Update
                 .Set("members.$[member].state", TripMembershipState.Active.ToString())
-                .Unset("members.$[member].admissionOperationId")
                 .Unset(static plan => plan.MemberAdmissionFence)
                 .Inc(static plan => plan.Version, 1)
                 .CurrentDate(static plan => plan.UpdatedAt),
@@ -628,7 +627,8 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
         FilterDefinition<TripPlanDocument> active = filters.ElemMatch(
             static plan => plan.Members,
             member => member.UserId == fence.CandidateUserId
-                && member.State == TripMembershipState.Active);
+                && member.State == TripMembershipState.Active
+                && member.AdmissionOperationId == fence.OperationId);
         return await this.plans.Find(
                 filters.Eq(static plan => plan.Id, tripPlanId.Value)
                 & (provisional | active))
@@ -663,7 +663,11 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
 
         bool memberEstablished = current.Members.Any(member =>
             string.Equals(member.UserId, fence.CandidateUserId, StringComparison.Ordinal)
-            && member.State == TripMembershipState.Active);
+            && member.State == TripMembershipState.Active
+            && string.Equals(
+                member.AdmissionOperationId,
+                fence.OperationId,
+                StringComparison.Ordinal));
         if (memberEstablished)
         {
             return TripAdmissionWriteOutcome.AlreadyCompleted;

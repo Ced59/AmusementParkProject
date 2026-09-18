@@ -118,7 +118,7 @@ trip-plans
 │   ├── state: Provisional | Active | Leaving
 │   ├── joinedAtUtc: date
 │   ├── memberDataEpoch: long
-│   └── admissionOperationId?: string opaque
+│   └── admissionOperationId?: provenance opaque de l'admission
 ├── memberAdmissionGeneration: long
 ├── memberAdmissionFence?
 │   ├── invitationId: string opaque
@@ -200,8 +200,10 @@ elle, le membre reste `Provisional`; après elle, un retry constate le membre ac
 renvoie le résultat sans rejouer les étapes. Le marqueur `admissionCompletedAtUtc`
 retire ensuite l'invitation terminale des lots de reprise sans participer à la
 décision métier. Le réconciliateur ne révoque jamais une
-invitation `Accepted` dont le membre est déjà actif, même après l'expiration de la
-lease technique.
+invitation `Accepted` dont le membre est déjà actif grâce à cette même opération,
+même après l'expiration de la lease technique. Le membre actif conserve uniquement
+cette provenance opaque interne, jamais exposée par l'API : une adhésion ultérieure
+obtenue avec un autre lien ne peut pas valider l'ancienne invitation.
 
 La compensation expirée revalide `$$NOW` dans MongoDB puis ne révoque l'invitation
 que si elle a effectivement retiré le fence de même génération. Si un autre nœud a

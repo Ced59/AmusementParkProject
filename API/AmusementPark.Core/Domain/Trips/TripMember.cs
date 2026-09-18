@@ -27,7 +27,7 @@ public sealed class TripMember
         if (!Enum.IsDefined(state)
             || joinedAtUtc.Kind != DateTimeKind.Utc
             || memberDataEpoch < 1
-            || (state == TripMembershipState.Provisional) != (normalizedAdmissionOperationId is not null))
+            || (state == TripMembershipState.Provisional && normalizedAdmissionOperationId is null))
         {
             throw new TripPlanValidationException(
                 TripPlanErrorCodes.InvalidState,
@@ -108,7 +108,6 @@ public sealed class TripMember
         }
 
         this.State = TripMembershipState.Active;
-        this.AdmissionOperationId = null;
     }
 
     public void ChangeDelegatedRole(TripDelegatedRole role)

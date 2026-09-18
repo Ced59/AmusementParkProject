@@ -24,7 +24,7 @@ export class TripParticipantsStateFacade {
   private readonly canTransferOwnershipSignal = signal<boolean>(false);
   private readonly canLeaveSignal = signal<boolean>(false);
   private readonly leftSignal = signal<boolean>(false);
-  private readonly ownershipTransferRevisionSignal = signal<number>(0);
+  private readonly tripMutationRevisionSignal = signal<number>(0);
   private tripPlanId: string = '';
   private tripVersion: number = 0;
 
@@ -36,7 +36,7 @@ export class TripParticipantsStateFacade {
   readonly canTransferOwnership: Signal<boolean> = this.canTransferOwnershipSignal.asReadonly();
   readonly canLeave: Signal<boolean> = this.canLeaveSignal.asReadonly();
   readonly left: Signal<boolean> = this.leftSignal.asReadonly();
-  readonly ownershipTransferRevision: Signal<number> = this.ownershipTransferRevisionSignal.asReadonly();
+  readonly tripMutationRevision: Signal<number> = this.tripMutationRevisionSignal.asReadonly();
 
   constructor(
     @Inject(TRIP_PARTICIPANTS_DATA_PORT) private readonly data: TripParticipantsDataPort,
@@ -70,7 +70,9 @@ export class TripParticipantsStateFacade {
   }
 
   changeRole(memberId: string, role: TripDelegatedRole): void {
-    this.run(this.data.changeRole(this.tripPlanId, memberId, role, this.tripVersion));
+    this.run(this.data.changeRole(this.tripPlanId, memberId, role, this.tripVersion), (): void => {
+      this.signalTripMutation();
+    });
   }
 
   transferOwnership(memberId: string, previousOwnerRole: TripDelegatedRole): void {
@@ -80,7 +82,7 @@ export class TripParticipantsStateFacade {
       previousOwnerRole,
       this.tripVersion
     ), (): void => {
-      this.ownershipTransferRevisionSignal.update((revision: number): number => revision + 1);
+      this.signalTripMutation();
     });
   }
 
@@ -133,5 +135,9 @@ export class TripParticipantsStateFacade {
     this.canTransferOwnershipSignal.set(result.canTransferOwnership);
     this.canLeaveSignal.set(result.canLeave);
     this.tripVersion = result.tripVersion;
+  }
+
+  private signalTripMutation(): void {
+    this.tripMutationRevisionSignal.update((revision: number): number => revision + 1);
   }
 }
