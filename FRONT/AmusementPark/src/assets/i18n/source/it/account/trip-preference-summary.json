@@ -14,7 +14,7 @@
       "compatibility": { "conflict": "Punto di attrito", "mixed": "Pareri diversi", "unknown": "Ancora sconosciuto", "consensus": "Accordo del gruppo" },
       "counts": { "must": "Imperdibile", "want": "Desiderata", "optional": "Forse", "notForMe": "Non fa per me", "unanswered": "Senza risposta" },
       "signals": { "conflict": "Coesistono almeno un desiderio e un’obiezione: nessuna maggioranza automatica decide.", "priority": "Questa attrazione emerge come priorità senza obiezioni espresse.", "incomplete": "Mancano ancora {{count}} risposta/e: la compatibilità resta provvisoria." },
-      "official": { "title": "Stato ufficiale e fonte", "status": "Stato", "checkedAt": "Dati aggiornati", "unspecified": "Stato non specificato", "source": "Consulta la fonte" },
+      "official": { "title": "Stato ufficiale e fonte", "status": "Stato", "checkedAt": "Stato verificato", "unspecified": "Stato non specificato", "source": "Consulta la fonte" },
       "decisions": { "review": "Da ridiscutere", "retained": "Mantenuta", "splitgroup": "Dividere il gruppo", "optional": "Facoltativa", "excluded": "Esclusa" },
       "feedback": { "loadError": "Impossibile caricare la bussola del gruppo.", "saveError": "Impossibile salvare la decisione.", "conflict": "La decisione o il viaggio sono cambiati. Ricarica la pagina prima di riprovare.", "saved": "La decisione del gruppo è stata salvata." }
     }

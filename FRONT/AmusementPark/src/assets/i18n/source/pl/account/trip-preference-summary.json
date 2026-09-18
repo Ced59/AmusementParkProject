@@ -14,7 +14,7 @@
       "compatibility": { "conflict": "Punkt sporny", "mixed": "Podzielone zdania", "unknown": "Jeszcze nie wiadomo", "consensus": "Zgoda grupy" },
       "counts": { "must": "Koniecznie", "want": "Chcę", "optional": "Może", "notForMe": "Nie dla mnie", "unanswered": "Bez odpowiedzi" },
       "signals": { "conflict": "Występują jednocześnie chęć i sprzeciw: automatyczna większość nie podejmuje decyzji.", "priority": "Ta atrakcja wyróżnia się jako priorytet bez zgłoszonego sprzeciwu.", "incomplete": "Brakuje jeszcze {{count}} odpowiedzi, dlatego ocena pozostaje wstępna." },
-      "official": { "title": "Oficjalny status i źródło", "status": "Status", "checkedAt": "Dane zaktualizowano", "unspecified": "Nie podano statusu", "source": "Zobacz źródło" },
+      "official": { "title": "Oficjalny status i źródło", "status": "Status", "checkedAt": "Status zweryfikowany", "unspecified": "Nie podano statusu", "source": "Zobacz źródło" },
       "decisions": { "review": "Do ponownego omówienia", "retained": "Pozostaje", "splitgroup": "Podział grupy", "optional": "Opcjonalna", "excluded": "Odrzucona" },
       "feedback": { "loadError": "Nie udało się wczytać kompasu grupy.", "saveError": "Nie udało się zapisać decyzji.", "conflict": "Decyzja lub wyjazd uległy zmianie. Odśwież stronę przed ponowną próbą.", "saved": "Decyzja grupy została zapisana." }
     }

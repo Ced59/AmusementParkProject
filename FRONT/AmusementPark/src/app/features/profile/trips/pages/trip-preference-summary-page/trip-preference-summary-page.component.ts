@@ -11,6 +11,7 @@ import {
 } from '@app/models/trips/trip.models';
 import { TranslationService } from '@app/services/translation.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
+import { getAttractionStatusValueKey } from '@shared/utils/display/park-item-presentation.helpers';
 import {
   findNearestLanguageActivatedRoute,
   resolveLanguageFromActivatedRoute,
@@ -87,6 +88,10 @@ export class TripPreferenceSummaryPageComponent implements OnInit {
 
   protected compatibilityKey(compatibility: TripPreferenceCompatibility): string {
     return `trips.preferenceSummary.compatibility.${compatibility.toLowerCase()}`;
+  }
+
+  protected officialStatusKey(status: string | null): string | null {
+    return getAttractionStatusValueKey(status);
   }
 
   protected decisionKey(status: TripItemDecisionStatus): string {

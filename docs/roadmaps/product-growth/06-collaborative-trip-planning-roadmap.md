@@ -276,8 +276,8 @@ retenu, groupe séparé, optionnel, écarté ou à rediscuter. La raison est
 obligatoire, l'auteur est présenté par son alias public et chaque évolution est
 versionnée. Les participants et lecteurs consultent les décisions sans recevoir
 les contrôles réservés aux organisateurs. L'état officiel de l'attraction, sa
-source et la date des données restent visuellement séparés des préférences et de
-la décision humaine.
+source et, lorsqu'elle existe, sa date de vérification restent visuellement
+séparés des préférences et de la décision humaine.
 
 L'agrégation est calculée dans MongoDB en une lecture bornée, puis les invariants
 de compatibilité sont appliqués dans le Core. Les décisions utilisent la lease et

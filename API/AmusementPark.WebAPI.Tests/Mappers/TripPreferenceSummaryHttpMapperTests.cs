@@ -50,6 +50,7 @@ public sealed class TripPreferenceSummaryHttpMapperTests
 
         TripItemPreferenceSummaryDto item = Assert.Single(dto.Items);
         Assert.Equal("Conflict", item.Compatibility);
+        Assert.Equal(nowUtc, item.OfficialStatusVerifiedAtUtc);
         Assert.Equal("SplitGroup", item.Decision!.Status);
         Assert.Equal("CapitaineParc", item.Decision.DecidedByDisplayName);
     }

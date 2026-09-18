@@ -1517,7 +1517,7 @@
       "official": {
         "title": "Official status and evidence",
         "status": "Status",
-        "checkedAt": "Data updated",
+        "checkedAt": "Status verified",
         "unspecified": "Status not specified",
         "source": "View the source"
       },

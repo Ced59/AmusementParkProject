@@ -33,7 +33,7 @@
         "priority": "This attraction stands out as a priority with no stated objection.",
         "incomplete": "{{count}} answer(s) are still missing, so compatibility remains provisional."
       },
-      "official": { "title": "Official status and evidence", "status": "Status", "checkedAt": "Data updated", "unspecified": "Status not specified", "source": "View the source" },
+      "official": { "title": "Official status and evidence", "status": "Status", "checkedAt": "Status verified", "unspecified": "Status not specified", "source": "View the source" },
       "decisions": { "review": "Discuss again", "retained": "Retained", "splitgroup": "Split the group", "optional": "Optional", "excluded": "Set aside" },
       "feedback": {
         "loadError": "The group compass could not be loaded.",

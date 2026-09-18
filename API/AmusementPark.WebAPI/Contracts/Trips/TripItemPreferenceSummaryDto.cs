@@ -34,7 +34,7 @@ public sealed class TripItemPreferenceSummaryDto
 
     public string? OfficialSourceUrl { get; set; }
 
-    public DateTime OfficialStatusUpdatedAtUtc { get; set; }
+    public DateTime? OfficialStatusVerifiedAtUtc { get; set; }
 
     public TripItemDecisionDto? Decision { get; set; }
 }

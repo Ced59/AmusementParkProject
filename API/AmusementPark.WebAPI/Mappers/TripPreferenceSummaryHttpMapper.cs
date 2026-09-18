@@ -35,7 +35,7 @@ public static class TripPreferenceSummaryHttpMapper
                 IsGroupPriority = item.IsGroupPriority,
                 OfficialStatus = item.OfficialStatus,
                 OfficialSourceUrl = item.OfficialSourceUrl,
-                OfficialStatusUpdatedAtUtc = item.OfficialStatusUpdatedAtUtc,
+                OfficialStatusVerifiedAtUtc = item.OfficialStatusVerifiedAtUtc,
                 Decision = item.Decision is null
                     ? null
                     : new TripItemDecisionDto

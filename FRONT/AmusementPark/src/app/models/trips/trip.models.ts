@@ -191,7 +191,7 @@ export interface TripItemPreferenceSummary {
   isGroupPriority: boolean;
   officialStatus: string | null;
   officialSourceUrl: string | null;
-  officialStatusUpdatedAtUtc: string;
+  officialStatusVerifiedAtUtc: string | null;
   decision: TripItemDecision | null;
 }
 

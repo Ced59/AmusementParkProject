@@ -14,7 +14,7 @@
       "compatibility": { "conflict": "Punto de fricción", "mixed": "Opiniones divididas", "unknown": "Aún desconocido", "consensus": "Acuerdo del grupo" },
       "counts": { "must": "Imprescindible", "want": "Me apetece", "optional": "Quizá", "notForMe": "No es para mí", "unanswered": "Sin respuesta" },
       "signals": { "conflict": "Conviven al menos un deseo y una objeción: ninguna mayoría automática decide.", "priority": "Esta atracción destaca como prioridad sin objeciones expresadas.", "incomplete": "Faltan {{count}} respuesta(s), así que la compatibilidad sigue siendo provisional." },
-      "official": { "title": "Estado oficial y prueba", "status": "Estado", "checkedAt": "Datos actualizados", "unspecified": "Estado no indicado", "source": "Consultar la fuente" },
+      "official": { "title": "Estado oficial y prueba", "status": "Estado", "checkedAt": "Estado verificado", "unspecified": "Estado no indicado", "source": "Consultar la fuente" },
       "decisions": { "review": "Volver a hablar", "retained": "Mantenida", "splitgroup": "Separar el grupo", "optional": "Opcional", "excluded": "Descartada" },
       "feedback": { "loadError": "No se ha podido cargar la brújula del grupo.", "saveError": "No se ha podido guardar la decisión.", "conflict": "La decisión o el viaje ha cambiado. Recarga la página antes de intentarlo de nuevo.", "saved": "La decisión del grupo se ha guardado." }
     }

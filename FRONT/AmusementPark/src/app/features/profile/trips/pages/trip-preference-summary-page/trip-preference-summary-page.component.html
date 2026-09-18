@@ -157,12 +157,18 @@
             <div>
               <p>
                 <strong>{{ 'trips.preferenceSummary.official.status' | translate }}</strong>
-                <span>{{ item.officialStatus || ('trips.preferenceSummary.official.unspecified' | translate) }}</span>
+                @if (officialStatusKey(item.officialStatus); as statusKey) {
+                  <span>{{ statusKey | translate }}</span>
+                } @else {
+                  <span>{{ item.officialStatus || ('trips.preferenceSummary.official.unspecified' | translate) }}</span>
+                }
               </p>
-              <p>
-                <strong>{{ 'trips.preferenceSummary.official.checkedAt' | translate }}</strong>
-                <span>{{ item.officialStatusUpdatedAtUtc | date:'mediumDate':undefined:currentLanguage() }}</span>
-              </p>
+              @if (item.officialStatusVerifiedAtUtc) {
+                <p>
+                  <strong>{{ 'trips.preferenceSummary.official.checkedAt' | translate }}</strong>
+                  <span>{{ item.officialStatusVerifiedAtUtc | date:'mediumDate':undefined:currentLanguage() }}</span>
+                </p>
+              }
               @if (item.officialSourceUrl) {
                 <a [href]="item.officialSourceUrl" target="_blank" rel="noopener noreferrer">
                   {{ 'trips.preferenceSummary.official.source' | translate }}

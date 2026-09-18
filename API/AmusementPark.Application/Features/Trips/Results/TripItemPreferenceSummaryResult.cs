@@ -19,5 +19,5 @@ public sealed record TripItemPreferenceSummaryResult(
     bool IsGroupPriority,
     string? OfficialStatus,
     string? OfficialSourceUrl,
-    DateTime OfficialStatusUpdatedAtUtc,
+    DateTime? OfficialStatusVerifiedAtUtc,
     TripItemDecisionResult? Decision);

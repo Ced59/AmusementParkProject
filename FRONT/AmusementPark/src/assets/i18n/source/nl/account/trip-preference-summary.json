@@ -14,7 +14,7 @@
       "compatibility": { "conflict": "Knelpunt", "mixed": "Verdeelde meningen", "unknown": "Nog onbekend", "consensus": "Groepsakkoord" },
       "counts": { "must": "Niet te missen", "want": "Graag doen", "optional": "Misschien", "notForMe": "Niets voor mij", "unanswered": "Geen antwoord" },
       "signals": { "conflict": "Minstens één wens en één bezwaar komen samen: een automatische meerderheid beslist niet.", "priority": "Deze attractie komt zonder uitgesproken bezwaar als prioriteit naar voren.", "incomplete": "Er ontbreken nog {{count}} antwoord(en); de inschatting blijft voorlopig." },
-      "official": { "title": "Officiële status en bron", "status": "Status", "checkedAt": "Gegevens bijgewerkt", "unspecified": "Status niet vermeld", "source": "Bron bekijken" },
+      "official": { "title": "Officiële status en bron", "status": "Status", "checkedAt": "Status geverifieerd", "unspecified": "Status niet vermeld", "source": "Bron bekijken" },
       "decisions": { "review": "Opnieuw bespreken", "retained": "Behouden", "splitgroup": "Groep opsplitsen", "optional": "Optioneel", "excluded": "Uitgesloten" },
       "feedback": { "loadError": "Het groepskompas kon niet worden geladen.", "saveError": "Het besluit kon niet worden opgeslagen.", "conflict": "Het besluit of de reis is gewijzigd. Herlaad de pagina voordat je het opnieuw probeert.", "saved": "Het groepsbesluit is opgeslagen." }
     }

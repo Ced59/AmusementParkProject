@@ -33,7 +33,7 @@
         "priority": "Cette attraction ressort comme priorité sans opposition exprimée.",
         "incomplete": "Il manque encore {{count}} réponse(s) : la compatibilité reste provisoire."
       },
-      "official": { "title": "État officiel et preuve", "status": "État", "checkedAt": "Données mises à jour", "unspecified": "État non précisé", "source": "Consulter la source" },
+      "official": { "title": "État officiel et preuve", "status": "État", "checkedAt": "Statut vérifié", "unspecified": "État non précisé", "source": "Consulter la source" },
       "decisions": { "review": "À rediscuter", "retained": "Retenue", "splitgroup": "Groupe séparé", "optional": "Optionnelle", "excluded": "Écartée" },
       "feedback": {
         "loadError": "La boussole du groupe n’a pas pu être chargée.",

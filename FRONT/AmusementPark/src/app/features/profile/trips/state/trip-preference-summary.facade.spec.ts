@@ -99,7 +99,7 @@ function createSummary(): TripPreferenceSummary {
         isGroupPriority: true,
         officialStatus: 'Operating',
         officialSourceUrl: null,
-        officialStatusUpdatedAtUtc: '2027-03-04T10:00:00Z',
+        officialStatusVerifiedAtUtc: null,
         decision: null
       },
       {
@@ -119,7 +119,7 @@ function createSummary(): TripPreferenceSummary {
         isGroupPriority: false,
         officialStatus: 'Operating',
         officialSourceUrl: 'https://example.com/ride',
-        officialStatusUpdatedAtUtc: '2027-03-04T10:00:00Z',
+        officialStatusVerifiedAtUtc: null,
         decision: {
           status: 'Review',
           reason: 'Le groupe doit encore en parler.',

@@ -10,7 +10,7 @@ Pour chaque attraction encore éligible, le groupe voit :
 - combien ont indiqué « pas pour moi » ;
 - combien n'ont pas encore répondu ;
 - si la situation est un accord, un avis partagé, un inconnu ou un conflit ;
-- l'état officiel de l'attraction, la date des données et leur source ;
+- l'état officiel de l'attraction, sa source et sa date de vérification lorsqu'elle existe ;
 - le compromis explicitement retenu par les organisateurs, s'il existe.
 
 Une opposition ne disparaît jamais derrière trois avis positifs. Le produit ne
@@ -171,6 +171,11 @@ sequenceDiagram
     API-->>UI: aucun choix nominatif, aucun identifiant de compte
     UI-->>M: conflits d'abord, filtres et preuves séparées
 ```
+
+Le statut canonique est traduit côté interface avec le dictionnaire partagé des
+statuts d'attraction. Le statut historique ne possède pas encore d'horodatage de
+vérification dédié : la date reste donc `null` et n'est pas rendue, plutôt que de
+présenter la date d'une modification générale de la fiche comme une preuve.
 
 Le contrat ne contient ni la préférence d'un membre identifié, ni le véritable
 nom de l'auteur, ni son identifiant technique. Seul son alias public résolu côté

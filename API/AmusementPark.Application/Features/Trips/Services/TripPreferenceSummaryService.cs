@@ -301,7 +301,7 @@ public sealed class TripPreferenceSummaryService
                 aggregate.IsGroupPriority,
                 NormalizeOptional(item.AttractionDetails?.Status),
                 NormalizeOptional(item.AttractionDetails?.SourceUrl),
-                item.UpdatedAtUtc,
+                null,
                 decisionResult);
         }).ToArray();
         TripEffectiveRole role = trip.ResolveRole(currentUserId)!.Value;

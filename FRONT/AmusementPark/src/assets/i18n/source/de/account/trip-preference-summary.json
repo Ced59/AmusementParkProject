@@ -14,7 +14,7 @@
       "compatibility": { "conflict": "Reibungspunkt", "mixed": "Geteilte Meinungen", "unknown": "Noch unbekannt", "consensus": "Einigung der Gruppe" },
       "counts": { "must": "Unbedingt", "want": "Wunsch", "optional": "Vielleicht", "notForMe": "Nichts für mich", "unanswered": "Ohne Antwort" },
       "signals": { "conflict": "Mindestens ein Wunsch und ein Einwand treffen aufeinander: Keine automatische Mehrheit entscheidet.", "priority": "Diese Attraktion ist ohne geäußerten Einwand eine Priorität.", "incomplete": "{{count}} Antwort(en) fehlen noch; die Einschätzung bleibt vorläufig." },
-      "official": { "title": "Offizieller Status und Nachweis", "status": "Status", "checkedAt": "Daten aktualisiert", "unspecified": "Status nicht angegeben", "source": "Quelle ansehen" },
+      "official": { "title": "Offizieller Status und Nachweis", "status": "Status", "checkedAt": "Status verifiziert", "unspecified": "Status nicht angegeben", "source": "Quelle ansehen" },
       "decisions": { "review": "Erneut besprechen", "retained": "Beibehalten", "splitgroup": "Gruppe aufteilen", "optional": "Optional", "excluded": "Ausgeschlossen" },
       "feedback": { "loadError": "Der Gruppenkompass konnte nicht geladen werden.", "saveError": "Die Entscheidung konnte nicht gespeichert werden.", "conflict": "Die Entscheidung oder Reise wurde geändert. Lade die Seite neu und versuche es erneut.", "saved": "Die Gruppenentscheidung wurde gespeichert." }
     }

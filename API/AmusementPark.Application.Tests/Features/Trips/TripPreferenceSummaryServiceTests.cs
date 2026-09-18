@@ -187,6 +187,7 @@ public sealed class TripPreferenceSummaryServiceTests
         Assert.Equal(TripPreferenceCompatibility.Conflict, item.Compatibility);
         Assert.Equal(1, item.NotForMeCount);
         Assert.False(item.IsGroupPriority);
+        Assert.Null(item.OfficialStatusVerifiedAtUtc);
         Assert.Equal("CapitaineParc", item.Decision!.DecidedByDisplayName);
         Assert.True(result.Value.CanDecide);
         plans.VerifyAll();
