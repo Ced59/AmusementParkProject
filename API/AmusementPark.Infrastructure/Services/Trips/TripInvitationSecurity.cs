@@ -36,7 +36,20 @@ public sealed class TripInvitationSecurity : ITripInvitationSecurity
         int lifetimeHours,
         string? normalizedTargetEmail)
     {
-        return HashCanonical($"{proposedRole:D}\n{lifetimeHours}\n{normalizedTargetEmail ?? string.Empty}");
+        string email = normalizedTargetEmail?.Trim().ToLowerInvariant() ?? string.Empty;
+        byte[] key = this.DeriveKey(
+            this.CurrentKeyVersion,
+            "trip-invitation-creation-payload-v1");
+        byte[] payload = Encoding.UTF8.GetBytes($"{proposedRole:D}\n{lifetimeHours}\n{email}");
+        try
+        {
+            using HMACSHA256 hmac = new HMACSHA256(key);
+            return $"{this.CurrentKeyVersion}:{Convert.ToBase64String(hmac.ComputeHash(payload))}";
+        }
+        finally
+        {
+            CryptographicOperations.ZeroMemory(key);
+        }
     }
 
     public TripInvitationTokenMaterial CreateToken(

@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using AmusementPark.Application.Features.Trips.Models;
 using AmusementPark.Core.Domain.Trips;
 using AmusementPark.Infrastructure.Configuration.Trips;
@@ -62,6 +64,29 @@ public sealed class TripInvitationSecurityTests
         Assert.Equal(first, second);
         Assert.DoesNotContain("guest@example.com", first.Hmac, StringComparison.OrdinalIgnoreCase);
         Assert.Equal("v1", first.KeyVersion);
+    }
+
+    [Fact]
+    public void HashCreationPayload_ShouldProtectTheRecipientWithADomainSeparatedKey()
+    {
+        TripInvitationSecurity security = CreateSecurity();
+        string normalizedEmail = "guest@example.com";
+
+        string first = security.HashCreationPayload(
+            TripDelegatedRole.Participant,
+            24,
+            normalizedEmail);
+        string second = security.HashCreationPayload(
+            TripDelegatedRole.Participant,
+            24,
+            normalizedEmail);
+        string legacyUnkeyedHash = Convert.ToBase64String(SHA256.HashData(Encoding.UTF8.GetBytes(
+            $"{TripDelegatedRole.Participant:D}\n24\n{normalizedEmail}")));
+
+        Assert.Equal(first, second);
+        Assert.StartsWith("v1:", first, StringComparison.Ordinal);
+        Assert.NotEqual(legacyUnkeyedHash, first);
+        Assert.DoesNotContain(normalizedEmail, first, StringComparison.OrdinalIgnoreCase);
     }
 
     private static TripInvitationSecurity CreateSecurity()

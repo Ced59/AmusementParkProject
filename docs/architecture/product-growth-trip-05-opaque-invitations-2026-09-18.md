@@ -79,7 +79,7 @@ Collection `trip-invitations` :
   retentionExpiresAtUtc: date,
   revokedAtUtc?: date,
   operationKeyHash: SHA-256(actor + operation),
-  requestHash: SHA-256(role + lifetime + target),
+  requestHash: version + HMAC dédié(role + durée + destinataire normalisé),
   sealedToken?: AES-256-GCM(token),
   sealedTokenKeyVersion?: string,
   childMutationEpoch: long,
