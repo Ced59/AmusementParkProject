@@ -1414,6 +1414,7 @@
       "createError": "Non è stato possibile creare questo viaggio.",
       "actionError": "Non è stato possibile salvare questa modifica.",
       "conflict": "Il viaggio è stato modificato altrove. È stata caricata la versione più recente.",
+      "dateRangeTooLong": "Un viaggio può durare al massimo 366 giorni.",
       "invalidDates": "Inserisci una data di inizio precedente alla data di fine e rispetta l’ordine cronologico."
     },
     "empty": {

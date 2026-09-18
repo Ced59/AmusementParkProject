@@ -18,6 +18,19 @@ export const areTripDateInputsValid = (startDate: string, endDate: string): bool
     && inclusiveDayCount <= 366;
 };
 
+export const doesTripDateRangeExceedMaximum = (startDate: string, endDate: string): boolean => {
+  const normalizedStart: string = startDate.trim();
+  const normalizedEnd: string = endDate.trim();
+  if (!normalizedStart || !normalizedEnd) {
+    return false;
+  }
+
+  const startTimestamp: number = Date.parse(`${normalizedStart}T00:00:00Z`);
+  const endTimestamp: number = Date.parse(`${normalizedEnd}T00:00:00Z`);
+  const inclusiveDayCount: number = ((endTimestamp - startTimestamp) / 86_400_000) + 1;
+  return Number.isFinite(inclusiveDayCount) && inclusiveDayCount > 366;
+};
+
 export const buildConfirmedTripDates = (startDate: string, endDate: string): TripDateProposal => {
   if (!areTripDateInputsValid(startDate, endDate)) {
     throw new Error('Trip date inputs are invalid.');

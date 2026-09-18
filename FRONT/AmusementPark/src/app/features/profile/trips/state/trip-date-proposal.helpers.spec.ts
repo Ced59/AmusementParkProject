@@ -1,4 +1,9 @@
-import { areTripDateInputsValid, buildConfirmedTripDates, enumerateTripDates } from './trip-date-proposal.helpers';
+import {
+  areTripDateInputsValid,
+  buildConfirmedTripDates,
+  doesTripDateRangeExceedMaximum,
+  enumerateTripDates
+} from './trip-date-proposal.helpers';
 
 describe('trip date proposal helpers', () => {
   it('keeps a trip without dates as an explicit undecided proposal', () => {
@@ -29,6 +34,9 @@ describe('trip date proposal helpers', () => {
   it('accepts at most 366 calendar days inclusively', () => {
     expect(areTripDateInputsValid('2026-01-01', '2027-01-01')).toBe(true);
     expect(areTripDateInputsValid('2026-01-01', '2027-01-02')).toBe(false);
+    expect(doesTripDateRangeExceedMaximum('2026-01-01', '2027-01-01')).toBe(false);
+    expect(doesTripDateRangeExceedMaximum('2026-01-01', '2027-01-02')).toBe(true);
+    expect(doesTripDateRangeExceedMaximum('2027-01-02', '2026-01-01')).toBe(false);
     expect((): void => { buildConfirmedTripDates('2026-01-01', '2027-01-02'); }).toThrow();
   });
 

@@ -1414,6 +1414,7 @@
       "createError": "Não foi possível criar esta viagem.",
       "actionError": "Não foi possível guardar esta alteração.",
       "conflict": "A viagem foi alterada noutro local. A versão mais recente acaba de ser carregada.",
+      "dateRangeTooLong": "Uma viagem pode abranger, no máximo, 366 dias.",
       "invalidDates": "Indica uma data de início anterior à data de fim e mantém a ordem cronológica."
     },
     "empty": {

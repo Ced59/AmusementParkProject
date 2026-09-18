@@ -1414,6 +1414,7 @@
       "createError": "Diese Reise konnte nicht erstellt werden.",
       "actionError": "Diese Änderung konnte nicht gespeichert werden.",
       "conflict": "Die Reise wurde an anderer Stelle geändert. Die neueste Version wurde geladen.",
+      "dateRangeTooLong": "Eine Reise darf höchstens 366 Tage umfassen.",
       "invalidDates": "Gib vor dem Enddatum ein Startdatum ein und halte die zeitliche Reihenfolge ein."
     },
     "empty": {

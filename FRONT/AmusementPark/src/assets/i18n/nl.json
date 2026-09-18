@@ -1414,6 +1414,7 @@
       "createError": "Deze reis kon niet worden aangemaakt.",
       "actionError": "Deze wijziging kon niet worden opgeslagen.",
       "conflict": "De reis is elders gewijzigd. De nieuwste versie is zojuist geladen.",
+      "dateRangeTooLong": "Een reis mag maximaal 366 dagen duren.",
       "invalidDates": "Vul een startdatum vóór de einddatum in en houd de chronologische volgorde aan."
     },
     "empty": {

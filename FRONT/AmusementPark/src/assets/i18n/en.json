@@ -1414,6 +1414,7 @@
       "createError": "This trip could not be created.",
       "actionError": "This change could not be saved.",
       "conflict": "The trip changed elsewhere. Its latest version has just been reloaded.",
+      "dateRangeTooLong": "A trip can cover at most 366 days.",
       "invalidDates": "Enter a start date before the end date and keep them in chronological order."
     },
     "empty": {

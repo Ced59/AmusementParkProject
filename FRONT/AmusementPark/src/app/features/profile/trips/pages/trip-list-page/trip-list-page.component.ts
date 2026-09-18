@@ -5,7 +5,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TripPlan } from '@app/models/trips/trip.models';
 import { TranslationService } from '@app/services/translation.service';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
-import { areTripDateInputsValid, resolvedBrowserTimeZone } from '../../state/trip-date-proposal.helpers';
+import {
+  areTripDateInputsValid,
+  doesTripDateRangeExceedMaximum,
+  resolvedBrowserTimeZone
+} from '../../state/trip-date-proposal.helpers';
 import { TripListStateFacade } from '../../state/trip-list-state.facade';
 
 @Component({
@@ -55,7 +59,11 @@ export class TripListPageComponent implements OnInit {
   }
 
   protected datesInvalid(): boolean {
-    return !areTripDateInputsValid(this.startDate(), this.endDate());
+    return !this.datesTooLong() && !areTripDateInputsValid(this.startDate(), this.endDate());
+  }
+
+  protected datesTooLong(): boolean {
+    return doesTripDateRangeExceedMaximum(this.startDate(), this.endDate());
   }
 
   protected open(trip: TripPlan): void {

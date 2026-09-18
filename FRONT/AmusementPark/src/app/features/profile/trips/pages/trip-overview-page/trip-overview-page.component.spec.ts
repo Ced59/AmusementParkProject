@@ -88,6 +88,7 @@ describe('TripOverviewPageComponent', () => {
       selectedCandidatesForDate: (localDate: string) => TripParkCandidate[];
       canSaveDay: (localDate: string) => boolean;
       canSaveDates: () => boolean;
+      datesTooLong: () => boolean;
       canSaveSpecialTimeZone: () => boolean;
       canClearDates: () => boolean;
       dateDependenciesOutsideDraft: () => boolean;
@@ -225,6 +226,12 @@ describe('TripOverviewPageComponent', () => {
     state.startDate.set('2026-11-01');
     expect(state.dateDependenciesOutsideDraft()).toBe(false);
     expect(state.canSaveDates()).toBe(true);
+    state.startDate.set('2026-01-01');
+    state.endDate.set('2027-01-02');
+    fixture.detectChanges();
+    expect(state.datesTooLong()).toBe(true);
+    expect(state.canSaveDates()).toBe(false);
+    expect(fixture.nativeElement.textContent).toContain('trips.feedback.dateRangeTooLong');
     state.dateEditorEnabled.set(false);
     state.saveDates();
     expect(facade.setDates).not.toHaveBeenCalled();

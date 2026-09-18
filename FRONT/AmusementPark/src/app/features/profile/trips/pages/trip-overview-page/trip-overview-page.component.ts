@@ -22,7 +22,7 @@ import {
 } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { TripCandidateCardComponent } from '../../components/trip-candidate-card/trip-candidate-card.component';
-import { areTripDateInputsValid } from '../../state/trip-date-proposal.helpers';
+import { areTripDateInputsValid, doesTripDateRangeExceedMaximum } from '../../state/trip-date-proposal.helpers';
 import { TripOverviewStateFacade } from '../../state/trip-overview-state.facade';
 
 interface TripDayDraft {
@@ -181,7 +181,11 @@ export class TripOverviewPageComponent implements OnInit {
   }
 
   protected datesInvalid(): boolean {
-    return !areTripDateInputsValid(this.startDate(), this.endDate());
+    return !this.datesTooLong() && !areTripDateInputsValid(this.startDate(), this.endDate());
+  }
+
+  protected datesTooLong(): boolean {
+    return doesTripDateRangeExceedMaximum(this.startDate(), this.endDate());
   }
 
   protected hasSpecialDateProposal(): boolean {

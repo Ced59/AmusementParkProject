@@ -101,7 +101,9 @@
             </label>
             <p class="trip-dates__hint">{{ 'trips.dates.timeZoneHint' | translate }}</p>
           }
-          @if (datesInvalid()) {
+          @if (datesTooLong()) {
+            <p class="trip-dates__validation" role="alert">{{ 'trips.feedback.dateRangeTooLong' | translate }}</p>
+          } @else if (datesInvalid()) {
             <p class="trip-dates__validation" role="alert">{{ 'trips.feedback.invalidDates' | translate }}</p>
           }
           @if (dateDependenciesOutsideDraft()) {

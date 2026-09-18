@@ -69,7 +69,9 @@
       <p class="trip-composer__hint">
         {{ (startDate() ? 'trips.dates.timeZoneHint' : 'trips.create.dateHint') | translate }}
       </p>
-      @if (datesInvalid()) {
+      @if (datesTooLong()) {
+        <p class="trip-list-page__error" role="alert">{{ 'trips.feedback.dateRangeTooLong' | translate }}</p>
+      } @else if (datesInvalid()) {
         <p class="trip-list-page__error" role="alert">{{ 'trips.feedback.invalidDates' | translate }}</p>
       }
       @if (facade.createError()) {

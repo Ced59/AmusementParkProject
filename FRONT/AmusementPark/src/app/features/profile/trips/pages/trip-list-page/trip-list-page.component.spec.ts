@@ -36,6 +36,8 @@ describe('TripListPageComponent', () => {
     const component = fixture.componentInstance as unknown as {
       composerVisible: WritableSignal<boolean>;
       startDate: WritableSignal<string>;
+      endDate: WritableSignal<string>;
+      datesTooLong: () => boolean;
     };
     component.composerVisible.set(true);
     component.startDate.set('2026-10-03');
@@ -46,6 +48,12 @@ describe('TripListPageComponent', () => {
     );
     expect(fields).toHaveLength(4);
     expect(fields.every((field: HTMLInputElement): boolean => !field.disabled)).toBe(true);
+
+    component.startDate.set('2026-01-01');
+    component.endDate.set('2027-01-02');
+    fixture.detectChanges();
+    expect(component.datesTooLong()).toBe(true);
+    expect(fixture.nativeElement.textContent).toContain('trips.feedback.dateRangeTooLong');
 
     creating.set(true);
     fixture.detectChanges();

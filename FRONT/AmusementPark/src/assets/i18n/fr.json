@@ -1414,6 +1414,7 @@
       "createError": "Ce voyage n’a pas pu être créé.",
       "actionError": "Cette modification n’a pas pu être enregistrée.",
       "conflict": "Le voyage a changé ailleurs. Sa version la plus récente vient d’être rechargée.",
+      "dateRangeTooLong": "Un voyage peut couvrir au maximum 366 jours.",
       "invalidDates": "Indique une date de début avant la date de fin, dans l’ordre chronologique."
     },
     "empty": {
