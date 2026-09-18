@@ -126,6 +126,22 @@ describe('TripInvitationPreviewStateFacade', () => {
     expect(facade.status()).toBe('accepted');
   });
 
+  it('recovers the public preview when a resumed decision fails', () => {
+    loggedIn = true;
+    decisionOperations.read.mockReturnValue({ decision: 'accept', operationId: 'persisted-operation' });
+    (data.accept as ReturnType<typeof vi.fn>).mockReturnValue(
+      throwError(() => ({ status: 503 }))
+    );
+
+    facade.load('opaque-token');
+
+    expect(data.accept).toHaveBeenCalledWith('opaque-token', 'persisted-operation');
+    expect(data.preview).toHaveBeenCalledWith('opaque-token');
+    expect(decisionOperations.clear).not.toHaveBeenCalled();
+    expect(facade.preview()).toEqual(createPreview());
+    expect(facade.status()).toBe('decision-error');
+  });
+
   it('does not resume another account decision in a shared tab', () => {
     loggedIn = true;
     currentUserId = 'user-2';

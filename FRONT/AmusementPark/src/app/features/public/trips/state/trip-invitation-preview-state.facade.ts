@@ -64,27 +64,11 @@ export class TripInvitationPreviewStateFacade {
     }
 
     if (this.isAuthenticated() && (this.acceptOperationId || this.declineOperationId)) {
-      this.decide(this.acceptOperationId !== null);
+      this.decide(this.acceptOperationId !== null, true);
       return;
     }
 
-    this.previewSignal.set(null);
-    this.statusSignal.set('loading');
-    this.data.preview(normalizedToken).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (preview: TripInvitationPreview): void => {
-        if (requestGeneration !== this.requestGeneration) {
-          return;
-        }
-        this.previewSignal.set(preview);
-        this.statusSignal.set('ready');
-      },
-      error: (): void => {
-        if (requestGeneration === this.requestGeneration) {
-          this.previewSignal.set(null);
-          this.statusSignal.set('unavailable');
-        }
-      }
-    });
+    this.loadPreview(normalizedToken, requestGeneration, 'ready');
   }
 
   isAuthenticated(): boolean {
@@ -99,7 +83,31 @@ export class TripInvitationPreviewStateFacade {
     this.decide(false);
   }
 
-  private decide(accept: boolean): void {
+  private loadPreview(
+    token: string,
+    requestGeneration: number,
+    successStatus: TripInvitationPreviewStatus
+  ): void {
+    this.previewSignal.set(null);
+    this.statusSignal.set('loading');
+    this.data.preview(token).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (preview: TripInvitationPreview): void => {
+        if (requestGeneration !== this.requestGeneration) {
+          return;
+        }
+        this.previewSignal.set(preview);
+        this.statusSignal.set(successStatus);
+      },
+      error: (): void => {
+        if (requestGeneration === this.requestGeneration) {
+          this.previewSignal.set(null);
+          this.statusSignal.set('unavailable');
+        }
+      }
+    });
+  }
+
+  private decide(accept: boolean, resumed: boolean = false): void {
     if (!this.token || !this.isAuthenticated() || this.statusSignal() === 'deciding') {
       return;
     }
@@ -143,7 +151,11 @@ export class TripInvitationPreviewStateFacade {
       },
       error: (): void => {
         if (decisionGeneration === this.requestGeneration && decisionToken === this.token) {
-          this.statusSignal.set('decision-error');
+          if (resumed && this.previewSignal() === null) {
+            this.loadPreview(decisionToken, decisionGeneration, 'decision-error');
+          } else {
+            this.statusSignal.set('decision-error');
+          }
         }
       }
     });
