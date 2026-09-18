@@ -242,7 +242,7 @@ export class TripOverviewPageComponent implements OnInit {
   private static dayDraftDiffersFromSaved(draft: TripDayDraft, saved: TripDayPlan | undefined): boolean {
     return draft.candidateId !== (saved?.parkCandidateId ?? '')
       || draft.arrivalTime !== (saved?.desiredArrivalTime ?? '')
-      || draft.note !== (saved?.groupNote ?? '');
+      || draft.note.trim() !== (saved?.groupNote ?? '');
   }
 
   protected currentProposedDates(): string[] {

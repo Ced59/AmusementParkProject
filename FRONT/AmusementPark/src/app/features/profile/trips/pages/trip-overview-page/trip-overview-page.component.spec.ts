@@ -100,6 +100,10 @@ describe('TripOverviewPageComponent', () => {
       clearDates: () => void;
     };
     expect(state.hasUnsavedDayDraft()).toBe(false);
+    state.dayDrafts.set({
+      '2026-10-03': { candidateId: 'candidate-1', arrivalTime: '09:00', note: '  Serveur initial  ' }
+    });
+    expect(state.hasUnsavedDayDraft()).toBe(false);
     state.startDate.set('2026-10-03');
     state.endDate.set('2026-10-04');
     state.dayDrafts.set({
