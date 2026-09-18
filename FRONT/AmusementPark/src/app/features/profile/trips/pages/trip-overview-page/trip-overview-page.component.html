@@ -28,6 +28,10 @@
           <i class="pi pi-compass" aria-hidden="true"></i>
           <span>{{ 'trips.preferenceSummary.open' | translate }}</span>
         </a>
+        <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', trip.tripPlanId, 'coherence']">
+          <i class="pi pi-shield" aria-hidden="true"></i>
+          <span>{{ 'trips.coherence.open' | translate }}</span>
+        </a>
       </div>
     }
   </header>

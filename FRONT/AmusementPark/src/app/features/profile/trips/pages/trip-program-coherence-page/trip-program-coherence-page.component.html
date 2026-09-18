@@ -1,0 +1,151 @@
+<main class="trip-coherence-page">
+  <header class="trip-coherence-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', tripPlanId]">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'trips.coherence.back' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="sky" iconClass="pi pi-shield">
+      {{ 'trips.coherence.kicker' | translate }}
+    </app-ui-kicker>
+    <h1>{{ facade.coherence()?.tripTitle || ('trips.feedback.loading' | translate) }}</h1>
+    <p>{{ 'trips.coherence.description' | translate }}</p>
+    @if (facade.coherence(); as coherence) {
+      <div class="trip-coherence-hero__counts">
+        <app-ui-chip tone="rose" iconClass="pi pi-exclamation-triangle">
+          {{ 'trips.coherence.counts.critical' | translate:{ count: coherence.criticalCount } }}
+        </app-ui-chip>
+        <app-ui-chip tone="gold" iconClass="pi pi-info-circle">
+          {{ 'trips.coherence.counts.attention' | translate:{ count: coherence.attentionCount } }}
+        </app-ui-chip>
+        <app-ui-chip tone="sky" iconClass="pi pi-refresh">
+          {{ 'trips.coherence.counts.information' | translate:{ count: coherence.informationCount } }}
+        </app-ui-chip>
+      </div>
+      <p class="trip-coherence-hero__promise">
+        <i class="pi pi-users" aria-hidden="true"></i>
+        <span>{{ 'trips.coherence.noAutomaticChange' | translate }}</span>
+      </p>
+    }
+  </header>
+
+  @if (facade.loading()) {
+    <section class="trip-coherence-message" appUiSurface="panel" role="status" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'trips.feedback.loading' | translate }}</span>
+    </section>
+  } @else if (facade.error() || !facade.coherence()) {
+    <section class="trip-coherence-message trip-coherence-message--error" appUiSurface="panel" role="alert">
+      <p>{{ 'trips.coherence.loadError' | translate }}</p>
+      <button type="button" appUiButton="primary" (click)="facade.load(tripPlanId)">
+        {{ 'trips.actions.retry' | translate }}
+      </button>
+    </section>
+  } @else if (facade.coherence(); as coherence) {
+    <section class="trip-coherence-section" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-coherence-section__heading">
+        <div>
+          <app-ui-kicker tone="rose" iconClass="pi pi-bell">{{ 'trips.coherence.alerts.kicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.coherence.alerts.title' | translate }}</h2>
+          <p>{{ 'trips.coherence.alerts.description' | translate }}</p>
+        </div>
+      </div>
+      <div class="trip-coherence-issues">
+        @for (issue of facade.orderedIssues(); track issue.code + ':' + (issue.localDate || '') + ':' + (issue.parkItemId || issue.parkId || '')) {
+          <article class="trip-coherence-issue" [attr.data-severity]="issue.severity">
+            <div class="trip-coherence-issue__icon"><i class="pi {{ severityIcon(issue.severity) }}" aria-hidden="true"></i></div>
+            <div>
+              <span class="trip-coherence-issue__severity">{{ severityKey(issue.severity) | translate }}</span>
+              <h3>{{ issueKey(issue) | translate:{ subject: (issue.parkItemName || issue.parkName || ('trips.coherence.unavailableSubject' | translate)), date: issue.localDate || '' } }}</h3>
+              @if (issue.localDate) {
+                <p>{{ issue.localDate | date:'fullDate':'UTC':currentLanguage() }}</p>
+              }
+              @if (issue.officialStatus) {
+                <p>
+                  {{ 'trips.coherence.officialStatus' | translate }}:
+                  {{ (attractionStatusKey(issue.officialStatus) || issue.officialStatus) | translate }}
+                </p>
+              }
+              @if (issue.officialVerifiedAtUtc) {
+                <p>{{ 'trips.coherence.verifiedAt' | translate:{ date: (issue.officialVerifiedAtUtc | date:'mediumDate':'UTC':currentLanguage()) } }}</p>
+              }
+              @if (issue.officialSourceUrl) {
+                <a [href]="issue.officialSourceUrl" target="_blank" rel="noopener noreferrer">
+                  {{ 'trips.coherence.openSource' | translate }} <i class="pi pi-external-link" aria-hidden="true"></i>
+                </a>
+              }
+            </div>
+          </article>
+        } @empty {
+          <div class="trip-coherence-empty">
+            <i class="pi pi-check-circle" aria-hidden="true"></i>
+            <div><h3>{{ 'trips.coherence.alerts.emptyTitle' | translate }}</h3><p>{{ 'trips.coherence.alerts.emptyDescription' | translate }}</p></div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="trip-coherence-section" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-coherence-section__heading">
+        <div>
+          <app-ui-kicker tone="lime" iconClass="pi pi-calendar">{{ 'trips.coherence.days.kicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.coherence.days.title' | translate }}</h2>
+          <p>{{ 'trips.coherence.days.description' | translate }}</p>
+        </div>
+      </div>
+      <div class="trip-coherence-days">
+        @for (day of coherence.days; track day.localDate + ':' + day.parkId) {
+          <article class="trip-coherence-day">
+            <div class="trip-coherence-day__date">
+              <strong>{{ day.localDate | date:'d':'UTC':currentLanguage() }}</strong>
+              <span>{{ day.localDate | date:'MMM':'UTC':currentLanguage() }}</span>
+            </div>
+            <div class="trip-coherence-day__body">
+              <h3>{{ day.parkName || ('trips.coherence.unavailablePark' | translate) }}</h3>
+              <div class="trip-coherence-day__facts">
+                <span><i class="pi pi-clock" aria-hidden="true"></i>{{ openingKey(day.openingState) | translate }}</span>
+                @if (day.parkStatus && parkStatusKey(day.parkStatus)) {
+                  <span><i class="pi pi-flag" aria-hidden="true"></i>{{ parkStatusKey(day.parkStatus)! | translate }}</span>
+                }
+                @if (day.openingHoursVerifiedAtUtc) {
+                  <span><i class="pi pi-check-circle" aria-hidden="true"></i>{{ day.openingHoursVerifiedAtUtc | date:'mediumDate':'UTC':currentLanguage() }}</span>
+                }
+              </div>
+              @if (day.openingHoursSourceUrl) {
+                <a [href]="day.openingHoursSourceUrl" target="_blank" rel="noopener noreferrer">{{ 'trips.coherence.openSource' | translate }}</a>
+              } @else {
+                <small>{{ 'trips.coherence.noSource' | translate }}</small>
+              }
+            </div>
+          </article>
+        } @empty {
+          <p class="trip-coherence-placeholder">{{ 'trips.coherence.days.empty' | translate }}</p>
+        }
+      </div>
+    </section>
+
+    <section class="trip-coherence-section" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-coherence-section__heading">
+        <div>
+          <app-ui-kicker tone="gold" iconClass="pi pi-directions">{{ 'trips.coherence.travel.kicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.coherence.travel.title' | translate }}</h2>
+          <p>{{ 'trips.coherence.travel.description' | translate }}</p>
+        </div>
+      </div>
+      <div class="trip-coherence-travel">
+        @for (segment of coherence.travelSegments; track segment.fromDate + ':' + segment.fromParkId + ':' + segment.toParkId) {
+          <article class="trip-coherence-route">
+            <div class="trip-coherence-route__parks">
+              <strong>{{ segment.fromParkName || ('trips.coherence.unavailablePark' | translate) }}</strong>
+              <i class="pi pi-arrow-right" aria-hidden="true"></i>
+              <strong>{{ segment.toParkName || ('trips.coherence.unavailablePark' | translate) }}</strong>
+            </div>
+            <p>{{ 'trips.coherence.travel.estimate' | translate:{ distance: (segment.distanceKilometers | number:'1.0-1'), minutes: segment.estimatedTravelDurationMinutes } }}</p>
+            <small>{{ 'trips.coherence.travel.disclaimer' | translate }}</small>
+          </article>
+        } @empty {
+          <p class="trip-coherence-placeholder">{{ 'trips.coherence.travel.empty' | translate }}</p>
+        }
+      </div>
+    </section>
+  }
+</main>

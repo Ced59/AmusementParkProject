@@ -1,0 +1,39 @@
+{
+  "trips": {
+    "coherence": {
+      "open": "Sprawdź program",
+      "back": "Wróć do wyjazdu",
+      "kicker": "Kontrola programu",
+      "description": "Porównaj program z dostępnymi oficjalnymi informacjami i sprawdź, co grupa powinna przeanalizować.",
+      "counts": { "critical": "Alerty: {{count}}", "attention": "Do sprawdzenia: {{count}}", "information": "Aktualizacje: {{count}}" },
+      "noAutomaticChange": "Żaden alert nie zmienia programu automatycznie: ostateczna decyzja zawsze należy do grupy.",
+      "loadError": "Nie udało się wczytać kontroli programu.",
+      "alerts": { "kicker": "Do przejrzenia", "title": "Punkty wymagające Twojej uwagi", "description": "Każdy alert łączy wybór grupy z aktualnym faktem, nie mieszając ich ze sobą.", "emptyTitle": "Brak uwag", "emptyDescription": "Na podstawie dostępnych informacji nie wykryto żadnej niespójności." },
+      "days": { "kicker": "Oficjalne źródła", "title": "Otwarcie dzień po dniu", "description": "Status parku, godziny otwarcia i data ich weryfikacji pozostają oddzielone od Twojego programu.", "empty": "Dodaj dni do wyjazdu, aby sprawdzić informacje o otwarciu." },
+      "travel": { "kicker": "Połączenia", "title": "Odległości między etapami", "description": "Znane połączenia są wyświetlane między dwoma kolejnymi parkami.", "estimate": "Około {{distance}} km · {{minutes}} min", "disclaimer": "Orientacyjne oszacowanie geograficzne, a nie trasa drogowa w czasie rzeczywistym.", "empty": "Nie można jeszcze obliczyć żadnego połączenia." },
+      "severity": { "critical": "Do poprawy", "attention": "Do sprawdzenia", "information": "Nowa informacja" },
+      "opening": { "unknown": "Godziny nieznane", "open": "Otwarcie potwierdzone", "closed": "Zamknięcie potwierdzone" },
+      "issues": {
+        "dateOutsideProposal": "Dzień {{date}} wypada poza wybranymi datami.",
+        "multipleParksSameDate": "W dniu {{date}} kilka parków zajmuje cały dzień.",
+        "candidateMissing": "{{subject}} nie jest już powiązany z parkiem kandydującym.",
+        "candidateNotSelected": "{{subject}} nie jest już oznaczony jako wybrany park.",
+        "parkUnavailable": "{{subject}} nie jest już dostępny publicznie.",
+        "parkNotOperating": "{{subject}} nie jest obecnie oznaczony jako otwarty dla odwiedzających.",
+        "openingHoursUnknown": "Godziny otwarcia {{subject}} są nieznane dla tego dnia.",
+        "openingHoursClosed": "{{subject}} jest oznaczony jako zamknięty w tym dniu.",
+        "openingHoursStale": "Godziny otwarcia {{subject}} nie były ostatnio weryfikowane.",
+        "openingHoursVerifiedAfterPlanning": "Godziny otwarcia {{subject}} sprawdzono ponownie po zaplanowaniu tego dnia.",
+        "attractionUnavailable": "{{subject}} nie jest już dostępna w publicznym katalogu.",
+        "attractionClosed": "{{subject}} jest teraz oznaczona jako zamknięta.",
+        "newMemberConstraint": "Od czasu decyzji grupy pojawił się nowy sprzeciw dotyczący {{subject}}."
+      },
+      "officialStatus": "Oficjalny status",
+      "verifiedAt": "Zweryfikowano: {{date}}",
+      "openSource": "Otwórz oficjalne źródło",
+      "noSource": "Brak źródła godzin otwarcia.",
+      "unavailablePark": "Niedostępny park",
+      "unavailableSubject": "Ten niedostępny element"
+    }
+  }
+}

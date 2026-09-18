@@ -1,0 +1,39 @@
+{
+  "trips": {
+    "coherence": {
+      "open": "Programm prüfen",
+      "back": "Zurück zur Reise",
+      "kicker": "Programmprüfung",
+      "description": "Vergleiche das Programm mit verfügbaren offiziellen Fakten und erkenne, was die Gruppe prüfen sollte.",
+      "counts": { "critical": "{{count}} Warnung(en)", "attention": "{{count}} Prüfpunkt(e)", "information": "{{count}} Aktualisierung(en)" },
+      "noAutomaticChange": "Keine Warnung ändert das Programm automatisch: Die Gruppe entscheidet immer selbst.",
+      "loadError": "Die Programmprüfung konnte nicht geladen werden.",
+      "alerts": { "kicker": "Prüfen", "title": "Punkte, die deine Aufmerksamkeit brauchen", "description": "Jede Warnung verbindet eine Gruppenentscheidung mit einem aktuellen Fakt, ohne beides zu vermischen.", "emptyTitle": "Alles in Ordnung", "emptyDescription": "Mit den verfügbaren Informationen wurde keine Unstimmigkeit erkannt." },
+      "days": { "kicker": "Offizielle Nachweise", "title": "Öffnung Tag für Tag", "description": "Parkstatus, Öffnungszeiten und Prüfdatum bleiben von deinem Programm getrennt.", "empty": "Füge Reisetage hinzu, um die Öffnung zu prüfen." },
+      "travel": { "kicker": "Verbindungen", "title": "Entfernungen zwischen Etappen", "description": "Bekannte Verbindungen werden zwischen zwei aufeinanderfolgenden Parks angezeigt.", "estimate": "Etwa {{distance}} km · {{minutes}} Min.", "disclaimer": "Unverbindliche geografische Schätzung, keine Echtzeit-Straßenroute.", "empty": "Noch kann keine Verbindung berechnet werden." },
+      "severity": { "critical": "Zu korrigieren", "attention": "Zu prüfen", "information": "Neue Information" },
+      "opening": { "unknown": "Öffnungszeiten unbekannt", "open": "Öffnung bestätigt", "closed": "Schließung bestätigt" },
+      "issues": {
+        "dateOutsideProposal": "Der Tag {{date}} liegt außerhalb der ausgewählten Daten.",
+        "multipleParksSameDate": "Am {{date}} belegen mehrere Parks den ganzen Tag.",
+        "candidateMissing": "{{subject}} ist nicht mehr mit einem Kandidatenpark verknüpft.",
+        "candidateNotSelected": "{{subject}} ist nicht mehr als ausgewählter Park markiert.",
+        "parkUnavailable": "{{subject}} ist nicht mehr öffentlich verfügbar.",
+        "parkNotOperating": "{{subject}} wird derzeit nicht als für Besucher geöffnet geführt.",
+        "openingHoursUnknown": "Die Öffnungszeiten von {{subject}} sind für diesen Tag unbekannt.",
+        "openingHoursClosed": "{{subject}} wird für diesen Tag als geschlossen geführt.",
+        "openingHoursStale": "Die Öffnungszeiten von {{subject}} wurden nicht kürzlich geprüft.",
+        "openingHoursVerifiedAfterPlanning": "Die Öffnungszeiten von {{subject}} wurden nach der Planung dieses Tages erneut geprüft.",
+        "attractionUnavailable": "{{subject}} ist im öffentlichen Katalog nicht mehr verfügbar.",
+        "attractionClosed": "{{subject}} wird jetzt als geschlossen geführt.",
+        "newMemberConstraint": "Seit der Gruppenentscheidung gibt es einen neuen Einwand zu {{subject}}."
+      },
+      "officialStatus": "Offizieller Status",
+      "verifiedAt": "Geprüft am {{date}}",
+      "openSource": "Offizielle Quelle öffnen",
+      "noSource": "Keine Quelle für Öffnungszeiten verfügbar.",
+      "unavailablePark": "Nicht verfügbarer Park",
+      "unavailableSubject": "Dieses nicht verfügbare Element"
+    }
+  }
+}

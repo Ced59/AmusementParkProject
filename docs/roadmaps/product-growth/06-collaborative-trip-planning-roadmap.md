@@ -549,6 +549,23 @@ Règles de validation :
 
 Les avertissements ne modifient pas automatiquement le plan.
 
+### Implémentation `TRIP-09` — 18 septembre 2026
+
+L'écran « Vérifier le programme » compare désormais chaque journée et chaque
+attraction décidée avec les faits officiels disponibles. Il distingue les
+alertes critiques, les points à vérifier et les faits devenus plus récents que
+le programme. Les horaires gardent leur source et leur date de vérification ;
+les liaisons entre parcs sont explicitement présentées comme des estimations
+géodésiques, pas comme un itinéraire routier.
+
+Une préférence agrégée `NotForMe` plus récente qu'un compromis produit une
+alerte sans révéler son auteur. Aucune règle ne modifie le programme : le groupe
+conserve toujours la décision. La page suit l'architecture
+`API -> port -> façade -> composant` et est bornée au viewport dès 320 pixels.
+
+L'architecture, le pipeline MongoDB, les preuves et les diagrammes sont détaillés
+dans [`product-growth-trip-09-program-coherence-2026-09-18.md`](../../architecture/product-growth-trip-09-program-coherence-2026-09-18.md).
+
 ## 10. Collaboration et concurrence
 
 - version optimiste du plan ;
@@ -858,7 +875,7 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 | `TRIP-06` | Participants/rôles | Permissions testées — implémenté le 18 septembre 2026 |
 | `TRIP-07` | Préférences par élément | Unicité et batch — implémenté le 18 septembre 2026 |
 | `TRIP-08` | Synthèse/conflits | Pas de majorité aveugle — implémenté le 18 septembre 2026 |
-| `TRIP-09` | Validation calendrier/trajet | Faits distingués des choix |
+| `TRIP-09` | Validation calendrier/trajet | Faits distingués des choix — implémenté le 18 septembre 2026 |
 | `TRIP-10` | Audit/concurrence | Modifications reconstituables |
 | `TRIP-11` | Export | Plan portable |
 | `TRIP-12` | Transition Passeport | Confirmation individuelle |

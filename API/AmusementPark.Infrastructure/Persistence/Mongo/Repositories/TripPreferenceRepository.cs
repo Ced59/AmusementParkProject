@@ -82,9 +82,40 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
             return Array.Empty<TripPreferenceCount>();
         }
 
-        BsonArray users = new(activeUserIds.Select(static value => new BsonString(value)));
-        BsonArray items = new(parkItemIds.Select(static value => new BsonString(value)));
-        PipelineDefinition<TripItemPreferenceDocument, BsonDocument> pipeline = new BsonDocument[]
+        PipelineDefinition<TripItemPreferenceDocument, BsonDocument> pipeline = BuildSummaryStages(
+            tripPlanId,
+            activeUserIds,
+            parkItemIds);
+        List<BsonDocument> rows = await this.collection.Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        List<TripPreferenceCount> counts = new(rows.Count);
+        foreach (BsonDocument row in rows)
+        {
+            BsonDocument key = row["_id"].AsBsonDocument;
+            if (Enum.TryParse(key["level"].AsString, true, out TripItemPreferenceLevel level)
+                && Enum.IsDefined(level))
+            {
+                counts.Add(new TripPreferenceCount(
+                    key["parkItemId"].AsString,
+                    level,
+                    checked((int)row["count"].ToInt64()),
+                    row["latestUpdatedAtUtc"].ToUniversalTime()));
+            }
+        }
+
+        return counts;
+    }
+
+    internal static BsonDocument[] BuildSummaryStages(
+        TripPlanId tripPlanId,
+        IReadOnlyCollection<string> activeUserIds,
+        IReadOnlyCollection<string> parkItemIds)
+    {
+        ArgumentNullException.ThrowIfNull(activeUserIds);
+        ArgumentNullException.ThrowIfNull(parkItemIds);
+        BsonArray users = new BsonArray(activeUserIds.Select(static value => new BsonString(value)));
+        BsonArray items = new BsonArray(parkItemIds.Select(static value => new BsonString(value)));
+        return new BsonDocument[]
         {
             new("$match", new BsonDocument
             {
@@ -103,25 +134,9 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
                     }
                 },
                 { "count", new BsonDocument("$sum", 1) },
+                { "latestUpdatedAtUtc", new BsonDocument("$max", "$updatedAt") },
             }),
         };
-        List<BsonDocument> rows = await this.collection.Aggregate(pipeline)
-            .ToListAsync(cancellationToken);
-        List<TripPreferenceCount> counts = new(rows.Count);
-        foreach (BsonDocument row in rows)
-        {
-            BsonDocument key = row["_id"].AsBsonDocument;
-            if (Enum.TryParse(key["level"].AsString, true, out TripItemPreferenceLevel level)
-                && Enum.IsDefined(level))
-            {
-                counts.Add(new TripPreferenceCount(
-                    key["parkItemId"].AsString,
-                    level,
-                    checked((int)row["count"].ToInt64())));
-            }
-        }
-
-        return counts;
     }
 
     public async Task<IReadOnlyCollection<TripItemPreference>> ListForUserAsync(

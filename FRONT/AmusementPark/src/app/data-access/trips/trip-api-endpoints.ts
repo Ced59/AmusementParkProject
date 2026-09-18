@@ -39,5 +39,7 @@ export const TRIP_API_ENDPOINTS = {
   preferenceSummary: (tripPlanId: string): string =>
     `me/trips/${encodeSegment(tripPlanId)}/preference-summary`,
   preferenceDecision: (tripPlanId: string, parkItemId: string): string =>
-    `me/trips/${encodeSegment(tripPlanId)}/preference-summary/${encodeSegment(parkItemId)}/decision`
+    `me/trips/${encodeSegment(tripPlanId)}/preference-summary/${encodeSegment(parkItemId)}/decision`,
+  coherence: (tripPlanId: string): string =>
+    `me/trips/${encodeSegment(tripPlanId)}/coherence`
 } as const;

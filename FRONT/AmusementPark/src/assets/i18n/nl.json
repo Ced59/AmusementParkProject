@@ -1535,6 +1535,71 @@
         "saved": "Het groepsbesluit is opgeslagen."
       }
     },
+    "coherence": {
+      "open": "Programma controleren",
+      "back": "Terug naar de reis",
+      "kicker": "Programmacontrole",
+      "description": "Vergelijk het programma met beschikbare officiële feiten en zie wat de groep moet herbekijken.",
+      "counts": {
+        "critical": "{{count}} waarschuwing(en)",
+        "attention": "{{count}} controlepunt(en)",
+        "information": "{{count}} update(s)"
+      },
+      "noAutomaticChange": "Geen enkele waarschuwing wijzigt het programma automatisch: de groep beslist altijd zelf.",
+      "loadError": "De programmacontrole kon niet worden geladen.",
+      "alerts": {
+        "kicker": "Bekijken",
+        "title": "Punten die je aandacht vragen",
+        "description": "Elke waarschuwing koppelt een groepskeuze aan een actueel feit zonder beide te vermengen.",
+        "emptyTitle": "Niets te melden",
+        "emptyDescription": "Met de beschikbare informatie is geen inconsistentie gevonden."
+      },
+      "days": {
+        "kicker": "Officieel bewijs",
+        "title": "Opening per dag",
+        "description": "Parkstatus, openingstijden en controledatum blijven gescheiden van je planning.",
+        "empty": "Voeg dagen aan de reis toe om de opening te controleren."
+      },
+      "travel": {
+        "kicker": "Verbindingen",
+        "title": "Afstanden tussen etappes",
+        "description": "Bekende verbindingen worden tussen twee opeenvolgende parken getoond.",
+        "estimate": "Ongeveer {{distance}} km · {{minutes}} min.",
+        "disclaimer": "Indicatieve geografische schatting, geen actuele route over de weg.",
+        "empty": "Er kan nog geen verbinding worden berekend."
+      },
+      "severity": {
+        "critical": "Te corrigeren",
+        "attention": "Te controleren",
+        "information": "Nieuwe informatie"
+      },
+      "opening": {
+        "unknown": "Openingstijden onbekend",
+        "open": "Opening bevestigd",
+        "closed": "Sluiting bevestigd"
+      },
+      "issues": {
+        "dateOutsideProposal": "De dag {{date}} valt buiten de gekozen datums.",
+        "multipleParksSameDate": "Op {{date}} vullen meerdere parken de hele dag.",
+        "candidateMissing": "{{subject}} is niet meer aan een kandidaatpark gekoppeld.",
+        "candidateNotSelected": "{{subject}} is niet meer als gekozen park gemarkeerd.",
+        "parkUnavailable": "{{subject}} is niet meer openbaar beschikbaar.",
+        "parkNotOperating": "{{subject}} staat momenteel niet als geopend voor bezoekers vermeld.",
+        "openingHoursUnknown": "De openingstijden van {{subject}} zijn voor deze dag onbekend.",
+        "openingHoursClosed": "{{subject}} staat voor deze dag als gesloten vermeld.",
+        "openingHoursStale": "De openingstijden van {{subject}} zijn niet onlangs gecontroleerd.",
+        "openingHoursVerifiedAfterPlanning": "De openingstijden van {{subject}} zijn opnieuw gecontroleerd nadat deze dag werd gepland.",
+        "attractionUnavailable": "{{subject}} is niet meer beschikbaar in de openbare catalogus.",
+        "attractionClosed": "{{subject}} staat nu als gesloten vermeld.",
+        "newMemberConstraint": "Sinds het groepsbesluit is er een nieuw bezwaar tegen {{subject}}."
+      },
+      "officialStatus": "Officiële status",
+      "verifiedAt": "Gecontroleerd op {{date}}",
+      "openSource": "Officiële bron openen",
+      "noSource": "Er is geen bron voor openingstijden beschikbaar.",
+      "unavailablePark": "Niet-beschikbaar park",
+      "unavailableSubject": "Dit niet-beschikbare onderdeel"
+    },
     "kicker": "Reizen om te plannen",
     "privacy": "Privé, alleen zichtbaar voor leden",
     "profile": {
