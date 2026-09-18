@@ -1430,11 +1430,42 @@
       "privatePlan": "Privater Plan",
       "publicPrivacy": "Diese Vorschau zeigt keine Parks, Tage, Notizen oder Gruppenwünsche.",
       "publicTargeted": "Dieser Link ist für die vom Organisator gewählte E-Mail reserviert.",
-      "continue": "Anmelden",
-      "accountRequired": "Du kannst diese Vorschau ohne Konto ansehen. Die Anmeldung nimmt die Einladung noch nicht an; bald kannst du der Reise beitreten."
+      "continue": "Zum Antworten anmelden",
+      "accept": "Der Reise beitreten",
+      "decline": "Einladung ablehnen",
+      "accountRequired": "Die Anmeldung ist nur zum Annehmen oder Ablehnen nötig. So bleibt der Zugriff auf die Reise privat.",
+      "acceptedTitle": "Du bist der Reise beigetreten",
+      "acceptedDescription": "Der private Plan ist jetzt unter deinen Reisen verfügbar.",
+      "declinedTitle": "Einladung abgelehnt",
+      "declinedDescription": "Der Link wurde geschlossen und kann nicht mehr verwendet werden.",
+      "openTrip": "Reise öffnen",
+      "decisionError": "Deine Antwort konnte nicht gespeichert werden. Versuche es auf diesem Bildschirm erneut."
+    },
+    "participants": {
+      "kicker": "Reiseteam",
+      "title": "Wer plant diese Reise?",
+      "description": "Sieh, wer eine Einladung angenommen hat und welche Rolle jede Person hat.",
+      "loading": "Team wird geladen…",
+      "loadError": "Das Team konnte nicht geladen werden.",
+      "actionError": "Die Änderung konnte nicht übernommen werden. Die Liste wurde aktualisiert.",
+      "you": "Du",
+      "roleLabel": "Rolle in der Reise",
+      "roles": {
+        "owner": "Eigentümer",
+        "editor": "Mitorganisator",
+        "participant": "Teilnehmer",
+        "viewer": "Leser"
+      },
+      "transfer": "Eigentum übertragen",
+      "transferExplanation": "{{name}} wird Eigentümer. Wähle die Rolle, die du behältst.",
+      "previousOwnerRole": "Deine neue Rolle",
+      "confirmTransfer": "Übertragung bestätigen",
+      "leave": "Reise verlassen",
+      "leaveExplanation": "Du verlierst sofort den Zugriff auf den privaten Plan.",
+      "confirmLeave": "Austritt bestätigen"
     },
     "kicker": "Reisen zum Planen",
-    "privacy": "Privat, nur für dich sichtbar",
+    "privacy": "Privat, nur für Mitglieder sichtbar",
     "profile": {
       "title": "Plane deine nächste Reise",
       "description": "Sammle interessante Parks, ordne sie und gestalte jeden Reisetag.",
@@ -1492,7 +1523,8 @@
     "overview": {
       "kicker": "Reisewerkstatt",
       "description": "Entwickle deine Ideen in deinem Tempo zu einem klaren Plan.",
-      "solo": "Allein geplant"
+      "solo": "Allein geplant",
+      "memberCount": "{{count}} Teilnehmer"
     },
     "dates": {
       "kicker": "Wann geht es los?",
@@ -1506,6 +1538,7 @@
       "unsavedDayOutsideRange": "Ein Tag außerhalb dieses Zeitraums enthält ungespeicherte Änderungen. Lösche oder speichere den Entwurf, bevor du die Daten änderst.",
       "unsavedDayBeforeClear": "Ein Tag enthält ungespeicherte Änderungen. Lösche oder speichere den Entwurf, bevor du die Reisedaten löschst.",
       "toDecide": "Daten noch offen",
+      "notDefined": "Daten noch offen",
       "kinds": {
         "none": "Daten noch offen",
         "fixed": "Daten festgelegt",
@@ -1556,7 +1589,8 @@
       "park": "Park des Tages",
       "choosePark": "Park auswählen",
       "arrival": "Gewünschte Ankunftszeit",
-      "note": "Notiz für den Tag"
+      "note": "Notiz für den Tag",
+      "noProgram": "Für diesen Tag wurde noch kein Programm festgelegt."
     }
   },
   "user-profile": {

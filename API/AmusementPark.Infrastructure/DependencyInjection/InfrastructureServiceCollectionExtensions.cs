@@ -200,6 +200,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ITripParkCandidateRepository, TripParkCandidateRepository>();
         services.AddScoped<ITripDayPlanRepository, TripDayPlanRepository>();
         services.AddScoped<ITripInvitationRepository, TripInvitationRepository>();
+        services.AddScoped<ITripAdmissionRepository, TripAdmissionRepository>();
         services.AddSingleton<ITripInvitationSecurity, TripInvitationSecurity>();
         services.AddSingleton<ITripTimeZoneValidator, SystemTripTimeZoneValidator>();
         services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
@@ -224,6 +225,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHostedService<RatingRankingRebuildReconciliationBackgroundService>();
         services.AddHostedService<TripPlanDeletionReconciliationBackgroundService>();
         services.AddHostedService<TripInvitationExpirationReconciliationBackgroundService>();
+        services.AddHostedService<TripAdmissionReconciliationBackgroundService>();
 
         services.AddScoped<ICountryReadRepository, CountryReadRepository>();
         services.AddScoped<IParkFounderRepository, ParkFounderRepository>();

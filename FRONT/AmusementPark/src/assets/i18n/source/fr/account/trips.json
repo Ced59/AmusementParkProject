@@ -1,7 +1,7 @@
 {
   "trips": {
     "kicker": "Voyages à préparer",
-    "privacy": "Privé, visible uniquement par toi",
+    "privacy": "Privé, visible uniquement par les membres",
     "profile": {
       "title": "Prépare ton prochain voyage",
       "description": "Rassemble les parcs qui te tentent, classe-les et construis chaque journée.",
@@ -51,7 +51,8 @@
     "overview": {
       "kicker": "Atelier de voyage",
       "description": "Fais évoluer tes idées jusqu’à un programme clair, à ton rythme.",
-      "solo": "Préparation en solo"
+      "solo": "Préparation en solo",
+      "memberCount": "{{count}} participant(s)"
     },
     "dates": {
       "kicker": "Quand partir ?",
@@ -59,6 +60,7 @@
       "description": "Elles créent automatiquement les journées de ton programme.",
       "timeZoneHint": "Vérifie le fuseau du parc ou de la destination (par exemple Europe/Paris), surtout si tu prépares le voyage depuis un autre pays.",
       "currentProposal": "Proposition actuelle",
+      "notDefined": "Dates encore à décider",
       "explicitConversion": "Cette proposition reste intacte tant que tu ne choisis pas explicitement des dates fixes ou son effacement.",
       "clearBlocked": "Efface d’abord chaque journée enregistrée et chaque contrainte de date d’un parc avant d’effacer les dates du voyage.",
       "dependenciesOutsideRange": "La nouvelle période doit inclure chaque journée enregistrée et chaque contrainte de date d’un parc.",
@@ -101,7 +103,8 @@
       "park": "Parc de la journée",
       "choosePark": "Choisir un parc",
       "arrival": "Heure d’arrivée souhaitée",
-      "note": "Note pour la journée"
+      "note": "Note pour la journée",
+      "noProgram": "Aucun programme défini pour cette journée."
     }
   }
 }

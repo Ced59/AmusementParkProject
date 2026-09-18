@@ -140,8 +140,14 @@ public sealed class TripPlanLifecycleService
             return Invalid<TripPlanResult>(TripPlanErrorCodes.InvalidVersion, "A valid trip and version are required.");
         }
 
-        TripPlan? trip = await this.repository.GetOwnedAsync(normalizedUserId, parsedId, cancellationToken);
+        TripPlan? trip = await this.repository.GetAccessibleAsync(normalizedUserId, parsedId, cancellationToken);
         if (trip is null)
+        {
+            return ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.NotFound());
+        }
+
+        TripEffectiveRole? role = trip.ResolveRole(normalizedUserId);
+        if (!role.HasValue || !TripAuthorizationPolicy.HasPermission(role.Value, TripPermission.EditPlan))
         {
             return ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.NotFound());
         }
@@ -164,7 +170,8 @@ public sealed class TripPlanLifecycleService
         TripPlan persistedTrip = trip;
         if (trip.Version != expectedVersion)
         {
-            TripPlanWriteResult writeResult = await this.repository.ReplaceOwnedAsync(
+            TripPlanWriteResult writeResult = await this.repository.ReplaceAccessibleAsync(
+                normalizedUserId,
                 trip,
                 expectedVersion,
                 cancellationToken);

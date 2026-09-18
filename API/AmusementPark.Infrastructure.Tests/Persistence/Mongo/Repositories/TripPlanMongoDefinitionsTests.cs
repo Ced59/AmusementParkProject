@@ -23,6 +23,8 @@ public sealed class TripPlanMongoDefinitionsTests
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_owner_scope_operation"
             && index.Options.Unique != true);
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_member_updated");
+        Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_admission_fence"
+            && index.Options.PartialFilterExpression is not null);
         Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_plan_creation_tombstone"
             && index.Options.ExpireAfter == TimeSpan.Zero);
     }
@@ -58,6 +60,26 @@ public sealed class TripPlanMongoDefinitionsTests
         Assert.Equal(1, rendered["creationFingerprintKeyVersion"].AsInt32);
         Assert.Equal(1, rendered["creationSnapshot"].AsInt32);
         Assert.Equal(1, rendered["deletionState"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildDomainMutation_WithoutAdmissionFence_ShouldRemoveTheMongoField()
+    {
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "user-1",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            new DateTime(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc));
+
+        UpdateDefinition<TripPlanDocument> update = TripPlanMongoDefinitions.BuildDomainMutation(trip);
+        BsonDocument rendered = update.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry)).AsBsonDocument;
+
+        Assert.True(rendered["$unset"].AsBsonDocument.Contains("memberAdmissionFence"));
+        Assert.False(rendered["$set"].AsBsonDocument.Contains("memberAdmissionFence"));
     }
 
     [Fact]
@@ -100,6 +122,34 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildExpiredAdmissionFenceFilter_ShouldBindIdentityAndMongoServerTime()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+
+        FilterDefinition<TripPlanDocument> filter =
+            TripAdmissionRepository.BuildExpiredFenceCancellationFilter(
+                TripPlanId.Parse("trip-1"),
+                fence);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("trip-1", json, StringComparison.Ordinal);
+        Assert.Contains("invitation-1", json, StringComparison.Ordinal);
+        Assert.Contains("operation-1", json, StringComparison.Ordinal);
+        Assert.Contains("user-2", json, StringComparison.Ordinal);
+        Assert.Contains("generation", json, StringComparison.Ordinal);
+        Assert.Contains("$$NOW", json, StringComparison.Ordinal);
+        Assert.Contains("$gte", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void BuildDeletionTombstone_ShouldScrubPrivateDataAndKeepOnlyTheReplayFence()
     {
         DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
@@ -128,6 +178,7 @@ public sealed class TripPlanMongoDefinitionsTests
             rendered["$set"]["creationOperationExpiresAtUtc"].ToUniversalTime());
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("destinationTimeZoneId"));
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("creationSnapshot"));
+        Assert.True(rendered["$unset"].AsBsonDocument.Contains("memberAdmissionFence"));
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("ownerUserId"));
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("ownerSlot"));
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("createdAt"));

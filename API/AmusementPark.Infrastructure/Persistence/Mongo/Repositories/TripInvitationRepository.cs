@@ -75,6 +75,12 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
                     .Ascending(static document => document.ExpiresAtUtc),
                 new CreateIndexOptions { Name = "ix_trip_invitation_status_expires" }),
             new(
+                Builders<TripInvitationDocument>.IndexKeys
+                    .Ascending(static document => document.Status)
+                    .Ascending(static document => document.AcceptanceLeaseExpiresAtUtc)
+                    .Ascending(static document => document.UpdatedAt),
+                new CreateIndexOptions { Name = "ix_trip_invitation_acceptance_recovery" }),
+            new(
                 Builders<TripInvitationDocument>.IndexKeys.Ascending(
                     static document => document.RetentionExpiresAtUtc),
                 new CreateIndexOptions

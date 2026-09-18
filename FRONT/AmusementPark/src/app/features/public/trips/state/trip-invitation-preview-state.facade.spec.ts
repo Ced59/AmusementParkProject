@@ -4,25 +4,33 @@ import { of, Subject, throwError } from 'rxjs';
 import { TripInvitationPreview } from '@app/models/trips/trip-invitation.models';
 import {
   TRIP_INVITATIONS_DATA_PORT,
+  TRIP_INVITATION_OPERATION_ID_PORT,
   TripInvitationsDataPort
 } from '@features/trips/state/trip-invitation-data.port';
+import { AuthService } from '@app/services/auth/auth.service';
 import { TripInvitationPreviewStateFacade } from './trip-invitation-preview-state.facade';
 
 describe('TripInvitationPreviewStateFacade', () => {
   let facade: TripInvitationPreviewStateFacade;
   let data: TripInvitationsDataPort;
+  let loggedIn: boolean;
 
   beforeEach(() => {
+    loggedIn = false;
     data = {
       list: vi.fn(),
       create: vi.fn(),
       revoke: vi.fn(),
-      preview: vi.fn().mockReturnValue(of(createPreview()))
+      preview: vi.fn().mockReturnValue(of(createPreview())),
+      accept: vi.fn(),
+      decline: vi.fn()
     };
     TestBed.configureTestingModule({
       providers: [
         TripInvitationPreviewStateFacade,
-        { provide: TRIP_INVITATIONS_DATA_PORT, useValue: data }
+        { provide: TRIP_INVITATIONS_DATA_PORT, useValue: data },
+        { provide: TRIP_INVITATION_OPERATION_ID_PORT, useValue: { create: (): string => 'operation-1' } },
+        { provide: AuthService, useValue: { isLoggedIn: (): boolean => loggedIn } }
       ]
     });
     facade = TestBed.inject(TripInvitationPreviewStateFacade);
@@ -62,6 +70,18 @@ describe('TripInvitationPreviewStateFacade', () => {
 
     expect(facade.preview()).toEqual(secondPreview);
     expect(facade.status()).toBe('ready');
+  });
+
+  it('accepts the retained token with a stable client operation id', () => {
+    loggedIn = true;
+    (data.accept as ReturnType<typeof vi.fn>).mockReturnValue(of({ tripPlanId: 'trip-1', wasReplayed: false }));
+    facade.load('opaque-token');
+
+    facade.accept();
+
+    expect(data.accept).toHaveBeenCalledWith('opaque-token', 'operation-1');
+    expect(facade.tripPlanId()).toBe('trip-1');
+    expect(facade.status()).toBe('accepted');
   });
 });
 

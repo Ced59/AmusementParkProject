@@ -45,3 +45,8 @@ export interface TripInvitationPreview {
   expiresAtUtc: string;
   isTargeted: boolean;
 }
+
+export interface TripInvitationDecision {
+  tripPlanId: string;
+  wasReplayed: boolean;
+}

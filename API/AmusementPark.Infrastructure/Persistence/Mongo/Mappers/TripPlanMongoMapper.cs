@@ -21,6 +21,7 @@ internal static class TripPlanMongoMapper
             Status = trip.Status,
             AccessScope = trip.AccessScope,
             Members = trip.Members.Select(static member => member.ToDocument()).ToList(),
+            MemberAdmissionFence = trip.MemberAdmissionFence?.ToDocument(),
             AdmissionClosureState = trip.AdmissionClosureState,
             DeletionState = trip.DeletionState,
             ChildMutationEpoch = trip.ChildMutationEpoch,
@@ -42,6 +43,7 @@ internal static class TripPlanMongoMapper
             document.Status,
             document.AccessScope,
             document.Members,
+            document.MemberAdmissionFence,
             document.AdmissionClosureState,
             document.DeletionState,
             document.ChildMutationEpoch,
@@ -84,6 +86,7 @@ internal static class TripPlanMongoMapper
             snapshot.Status,
             snapshot.AccessScope,
             snapshot.Members,
+            null,
             snapshot.AdmissionClosureState,
             snapshot.DeletionState,
             snapshot.ChildMutationEpoch,
@@ -101,6 +104,7 @@ internal static class TripPlanMongoMapper
         TripPlanStatus status,
         TripPlanAccessScope accessScope,
         IReadOnlyCollection<TripMemberDocument> members,
+        TripMemberAdmissionFenceDocument? memberAdmissionFence,
         TripAdmissionClosureState admissionClosureState,
         TripDeletionState deletionState,
         long childMutationEpoch,
@@ -122,7 +126,8 @@ internal static class TripPlanMongoMapper
             childMutationEpoch,
             DateTime.SpecifyKind(createdAtUtc, DateTimeKind.Utc),
             DateTime.SpecifyKind(updatedAtUtc, DateTimeKind.Utc),
-            version);
+            version,
+            memberAdmissionFence?.ToDomain());
     }
 
     private static TripDateProposalDocument ToDocument(this TripDateProposal proposal)
@@ -145,7 +150,33 @@ internal static class TripPlanMongoMapper
             DelegatedRole = member.DelegatedRole,
             State = member.State,
             JoinedAtUtc = ToMongoPrecision(member.JoinedAtUtc),
+            MemberDataEpoch = member.MemberDataEpoch,
+            AdmissionOperationId = member.AdmissionOperationId,
         };
+    }
+
+    private static TripMemberAdmissionFenceDocument ToDocument(this TripMemberAdmissionFence fence)
+    {
+        return new TripMemberAdmissionFenceDocument
+        {
+            InvitationId = fence.InvitationId.Value,
+            OperationId = fence.OperationId,
+            CandidateUserId = fence.CandidateUserId,
+            Generation = fence.Generation,
+            LeaseExpiresAtUtc = ToMongoPrecision(fence.LeaseExpiresAtUtc),
+            State = fence.State,
+        };
+    }
+
+    private static TripMemberAdmissionFence ToDomain(this TripMemberAdmissionFenceDocument document)
+    {
+        return TripMemberAdmissionFence.Restore(
+            TripInvitationId.Parse(document.InvitationId),
+            document.OperationId,
+            document.CandidateUserId,
+            document.Generation,
+            DateTime.SpecifyKind(document.LeaseExpiresAtUtc, DateTimeKind.Utc),
+            document.State);
     }
 
     private static TripDateProposal ToDomain(this TripDateProposalDocument document)
@@ -165,7 +196,9 @@ internal static class TripPlanMongoMapper
             document.UserId,
             document.DelegatedRole,
             document.State,
-            DateTime.SpecifyKind(document.JoinedAtUtc, DateTimeKind.Utc));
+            DateTime.SpecifyKind(document.JoinedAtUtc, DateTimeKind.Utc),
+            document.MemberDataEpoch < 1 ? 1 : document.MemberDataEpoch,
+            document.AdmissionOperationId);
     }
 
     private static TripDateProposalDocument Clone(TripDateProposalDocument document)
@@ -188,6 +221,8 @@ internal static class TripPlanMongoMapper
             DelegatedRole = document.DelegatedRole,
             State = document.State,
             JoinedAtUtc = document.JoinedAtUtc,
+            MemberDataEpoch = document.MemberDataEpoch,
+            AdmissionOperationId = document.AdmissionOperationId,
         };
     }
 

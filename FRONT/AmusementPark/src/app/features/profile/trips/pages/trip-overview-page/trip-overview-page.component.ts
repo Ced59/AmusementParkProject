@@ -1,7 +1,7 @@
 import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { ChangeDetectionStrategy, Component, DestroyRef, effect, OnInit, signal, untracked } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { skip } from 'rxjs';
 
@@ -23,6 +23,7 @@ import {
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { TripCandidateCardComponent } from '../../components/trip-candidate-card/trip-candidate-card.component';
 import { TripInvitationPanelComponent } from '../../components/trip-invitation-panel/trip-invitation-panel.component';
+import { TripParticipantPanelComponent } from '../../components/trip-participant-panel/trip-participant-panel.component';
 import { areTripDateInputsValid, doesTripDateRangeExceedMaximum } from '../../state/trip-date-proposal.helpers';
 import { TripOverviewStateFacade } from '../../state/trip-overview-state.facade';
 
@@ -49,7 +50,8 @@ interface TripDayDraft {
     UiKickerComponent,
     UiSurfaceDirective,
     TripCandidateCardComponent,
-    TripInvitationPanelComponent
+    TripInvitationPanelComponent,
+    TripParticipantPanelComponent
   ]
 })
 export class TripOverviewPageComponent implements OnInit {
@@ -70,6 +72,7 @@ export class TripOverviewPageComponent implements OnInit {
   constructor(
     protected readonly facade: TripOverviewStateFacade,
     private readonly route: ActivatedRoute,
+    private readonly router: Router,
     translationService: TranslationService,
     destroyRef: DestroyRef
   ) {
@@ -354,5 +357,9 @@ export class TripOverviewPageComponent implements OnInit {
 
   protected stateLabelKey(state: TripParkCandidateState): string {
     return `trips.candidates.states.${state.toLowerCase()}`;
+  }
+
+  protected returnToTrips(): void {
+    void this.router.navigate(['/', this.currentLanguage(), 'profile', 'trips']);
   }
 }

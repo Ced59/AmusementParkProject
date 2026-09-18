@@ -24,4 +24,9 @@ public interface ITripInvitationSecurity
     bool TryHashPublicToken(string token, out string tokenHash);
 
     TripInvitationEmailFingerprint FingerprintEmail(string normalizedEmail);
+
+    bool MatchesEmailFingerprint(
+        string normalizedEmail,
+        string expectedFingerprint,
+        string keyVersion);
 }

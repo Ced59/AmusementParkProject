@@ -24,4 +24,11 @@ public sealed class TripMemberDocument
 
     [BsonElement("joinedAtUtc")]
     public DateTime JoinedAtUtc { get; set; }
+
+    [BsonElement("memberDataEpoch")]
+    public long MemberDataEpoch { get; set; } = 1;
+
+    [BsonElement("admissionOperationId")]
+    [BsonIgnoreIfNull]
+    public string? AdmissionOperationId { get; set; }
 }

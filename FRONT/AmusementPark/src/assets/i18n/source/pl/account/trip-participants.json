@@ -1,0 +1,22 @@
+{
+  "trips": {
+    "participants": {
+      "kicker": "Zespół podróży",
+      "title": "Kto planuje tę podróż?",
+      "description": "Sprawdź, kto przyjął zaproszenie i jaką rolę ma każda osoba.",
+      "loading": "Wczytywanie zespołu…",
+      "loadError": "Nie udało się wczytać zespołu.",
+      "actionError": "Nie udało się zastosować zmiany. Lista została odświeżona.",
+      "you": "Ty",
+      "roleLabel": "Rola w podróży",
+      "roles": { "owner": "Właściciel", "editor": "Współorganizator", "participant": "Uczestnik", "viewer": "Czytelnik" },
+      "transfer": "Przekaż własność",
+      "transferExplanation": "{{name}} zostanie właścicielem. Wybierz rolę, którą zachowasz.",
+      "previousOwnerRole": "Twoja nowa rola",
+      "confirmTransfer": "Potwierdź przekazanie",
+      "leave": "Opuść tę podróż",
+      "leaveExplanation": "Natychmiast utracisz dostęp do prywatnego planu.",
+      "confirmLeave": "Potwierdź odejście"
+    }
+  }
+}

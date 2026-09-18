@@ -1,5 +1,6 @@
 import { TripCandidateCardComponent } from '../components/trip-candidate-card/trip-candidate-card.component';
 import { TripInvitationPanelComponent } from '../components/trip-invitation-panel/trip-invitation-panel.component';
+import { TripParticipantPanelComponent } from '../components/trip-participant-panel/trip-participant-panel.component';
 import { TripListPageComponent } from './trip-list-page/trip-list-page.component';
 import { TripOverviewPageComponent } from './trip-overview-page/trip-overview-page.component';
 
@@ -48,5 +49,17 @@ describe('Trip planning responsive contract', () => {
     expect(styles).toContain('@media (max-width: 36rem)');
     expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
     expect(styles).toContain('overflow-wrap: anywhere');
+  });
+
+  it('stacks participant identities and role actions on narrow phones', () => {
+    const styles: string = (
+      TripParticipantPanelComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('grid-template-columns: 3rem minmax(0, 1fr) auto');
+    expect(styles).toContain('overflow-wrap: anywhere');
+    expect(styles).toContain('@media (max-width: 42rem)');
+    expect(styles).toContain('grid-template-columns: 3rem minmax(0, 1fr)');
+    expect(styles).toContain('@media (max-width: 22.5rem)');
   });
 });

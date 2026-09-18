@@ -102,6 +102,87 @@ public sealed class TripChildMutationLeaseRepository : ITripChildMutationLeaseRe
         return acquired is null ? null : ToDomain(acquired);
     }
 
+    public async Task<TripChildMutationLease?> TryAcquireAccessibleAsync(
+        TripPlanId tripPlanId,
+        string actorUserId,
+        TripMemberId actorMemberId,
+        long expectedPlanVersion,
+        long childMutationEpoch,
+        string operationId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedOperationId = NormalizeOperationId(operationId);
+        FilterDefinition<TripPlanDocument> identityFilter = BuildAccessibleIdentityFilter(
+            tripPlanId,
+            actorUserId,
+            actorMemberId,
+            expectedPlanVersion,
+            childMutationEpoch);
+        BsonDocument activeLeaseFilter = new("$expr", new BsonDocument("$and", new BsonArray
+        {
+            new BsonDocument("$lt", new BsonArray
+            {
+                BuildActiveLeaseCountExpression(null),
+                MaximumActiveLeases,
+            }),
+            new BsonDocument("$eq", new BsonArray
+            {
+                BuildActiveLeaseCountExpression(normalizedOperationId),
+                0,
+            }),
+        }));
+        FilterDefinition<TripPlanDocument> acquireFilter = identityFilter
+            & new BsonDocumentFilterDefinition<TripPlanDocument>(activeLeaseFilter);
+        BsonDocument activeLeases = BuildActiveLeasesExpression();
+        BsonDocument nextGeneration = new("$add", new BsonArray
+        {
+            new BsonDocument("$ifNull", new BsonArray { "$childMutationLeaseSequence", 0 }),
+            1,
+        });
+        BsonDocument newLease = new()
+        {
+            { "operationId", normalizedOperationId },
+            { "actorMemberId", actorMemberId.Value },
+            { "childMutationEpoch", childMutationEpoch },
+            { "generation", nextGeneration },
+            {
+                "expiresAtUtc",
+                new BsonDocument("$dateAdd", new BsonDocument
+                {
+                    { "startDate", "$$NOW" },
+                    { "unit", "second" },
+                    { "amount", (int)LeaseDuration.TotalSeconds },
+                })
+            },
+        };
+        PipelineUpdateDefinition<TripPlanDocument> update = new(new[]
+        {
+            new BsonDocument("$set", new BsonDocument
+            {
+                {
+                    "activeChildMutationLeases",
+                    new BsonDocument("$concatArrays", new BsonArray
+                    {
+                        activeLeases,
+                        new BsonArray { newLease },
+                    })
+                },
+                { "childMutationLeaseSequence", nextGeneration },
+            }),
+        });
+        TripPlanDocument? updated = await this.collection.FindOneAndUpdateAsync(
+            acquireFilter,
+            update,
+            new FindOneAndUpdateOptions<TripPlanDocument, TripPlanDocument>
+            {
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
+        TripChildMutationLeaseDocument? acquired = updated?.ActiveChildMutationLeases.SingleOrDefault(
+            lease => string.Equals(lease.OperationId, normalizedOperationId, StringComparison.Ordinal));
+        return acquired is null ? null : ToDomain(acquired);
+    }
+
     public Task ReleaseAsync(
         TripPlanId tripPlanId,
         TripChildMutationLease lease,
@@ -140,6 +221,29 @@ public sealed class TripChildMutationLeaseRepository : ITripChildMutationLeaseRe
                 static document => document.Members,
                 member => member.MemberId == actorMemberId.Value
                     && member.UserId == ownerUserId
+                    && member.State == TripMembershipState.Active);
+    }
+
+    private static FilterDefinition<TripPlanDocument> BuildAccessibleIdentityFilter(
+        TripPlanId tripPlanId,
+        string actorUserId,
+        TripMemberId actorMemberId,
+        long expectedPlanVersion,
+        long childMutationEpoch)
+    {
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        FilterDefinition<TripPlanDocument> epochFilter = childMutationEpoch == 1
+            ? filters.Eq(static document => document.ChildMutationEpoch, 1)
+                | filters.Exists(static document => document.ChildMutationEpoch, false)
+            : filters.Eq(static document => document.ChildMutationEpoch, childMutationEpoch);
+        return filters.Eq(static document => document.Id, tripPlanId.Value)
+            & filters.Eq(static document => document.Version, expectedPlanVersion)
+            & filters.Eq(static document => document.DeletionState, TripDeletionState.None)
+            & epochFilter
+            & filters.ElemMatch(
+                static document => document.Members,
+                member => member.MemberId == actorMemberId.Value
+                    && member.UserId == actorUserId
                     && member.State == TripMembershipState.Active);
     }
 

@@ -11,6 +11,11 @@ public sealed record TripPlanResult(
     TripPlanAccessScope AccessScope,
     int MemberCount,
     bool IsOwner,
+    TripEffectiveRole EffectiveRole,
+    bool CanEditPlan,
+    bool CanEditProgram,
+    bool CanInvite,
+    bool CanChangeRoles,
     DateTime CreatedAtUtc,
     DateTime UpdatedAtUtc,
     long Version);

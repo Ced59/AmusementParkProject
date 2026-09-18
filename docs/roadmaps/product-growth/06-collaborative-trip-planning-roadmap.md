@@ -188,6 +188,34 @@ du lien, l'acceptation ou le refus et la gestion des participants appartiennent 
 dans
 [`product-growth-trip-05-opaque-invitations-2026-09-18.md`](../../architecture/product-growth-trip-05-opaque-invitations-2026-09-18.md).
 
+### État de `TRIP-06` au 18 septembre 2026
+
+Un invité authentifié peut maintenant accepter ou refuser le lien consulté. Le
+jeton reste dans le corps de la requête et n'est jamais recopié dans une route ou
+un journal. Une invitation ciblée vérifie l'empreinte HMAC versionnée de l'adresse
+du compte activé. L'acceptation est mono-usage, idempotente avec la même opération
+cliente et réparable sur MongoDB autonome : un membre provisoire ne peut jamais
+lire le voyage avant l'écriture finale qui établit son adhésion.
+
+Chaque voyage affiche ses participants par alias public et rôle. Le propriétaire
+peut choisir `Editor`, `Participant` ou `Viewer`, puis transférer la propriété à un
+membre actif en choisissant son propre rôle futur. Un membre non propriétaire peut
+quitter le voyage ; le propriétaire doit d'abord transférer la propriété. Les
+coorganisateurs peuvent réellement renommer, dater et programmer le voyage. Les
+participants et lecteurs obtiennent une présentation en lecture seule, sans
+contrôles d'édition simplement grisés.
+
+La matrice de permissions appartient au Core, les cas d'usage la vérifient côté
+serveur et Angular ne reçoit que les capacités calculées utiles à l'affichage. Les
+lectures MongoDB exigent un sous-document membre `Active`; l'état `Provisional` est
+donc exclu même en cas d'interruption de l'acceptation. Un réconciliateur reprend ou
+compense les fences expirés sans annuler une adhésion déjà établie. Les nouveaux
+champs sont une évolution additive du document existant et les anciens voyages sont
+relus avec leurs valeurs par défaut : aucun second modèle ne coexiste.
+
+Les preuves, schémas MongoDB et diagrammes sont détaillés dans
+[`product-growth-trip-06-participants-roles-2026-09-18.md`](../../architecture/product-growth-trip-06-participants-roles-2026-09-18.md).
+
 ## 1. Vision produit
 
 Un groupe doit pouvoir transformer des envies dispersées en programme commun :
@@ -534,9 +562,12 @@ POST   /api/me/trips/{tripId}/status
 
 POST   /api/me/trips/{tripId}/invitations
 GET    /api/public/trip-invitations/{token}/preview
-POST   /api/public/trip-invitations/{token}/accept
+POST   /api/me/trip-invitations/accept
+POST   /api/me/trip-invitations/decline
 DELETE /api/me/trips/{tripId}/invitations/{invitationId}
-PATCH  /api/me/trips/{tripId}/participants/{participantId}
+GET    /api/me/trips/{tripId}/participants
+PATCH  /api/me/trips/{tripId}/participants/{participantId}/role
+POST   /api/me/trips/{tripId}/participants/{participantId}/transfer-ownership
 DELETE /api/me/trips/{tripId}/participants/me
 
 POST   /api/me/trips/{tripId}/parks
@@ -746,7 +777,7 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 | `TRIP-03` | Candidats et jours | Programme cohérent — implémenté le 17 septembre 2026 |
 | `TRIP-04` | UI individuelle + wishlist | Valeur sans invitation — implémenté le 18 septembre 2026 |
 | `TRIP-05` | Invitations opaques | Preview minimisé — implémenté le 18 septembre 2026 |
-| `TRIP-06` | Participants/rôles | Permissions testées |
+| `TRIP-06` | Participants/rôles | Permissions testées — implémenté le 18 septembre 2026 |
 | `TRIP-07` | Préférences par élément | Unicité et batch |
 | `TRIP-08` | Synthèse/conflits | Pas de majorité aveugle |
 | `TRIP-09` | Validation calendrier/trajet | Faits distingués des choix |

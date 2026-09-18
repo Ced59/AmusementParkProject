@@ -1,0 +1,22 @@
+{
+  "trips": {
+    "participants": {
+      "kicker": "Equipa da viagem",
+      "title": "Quem está a preparar esta viagem?",
+      "description": "Vê quem aceitou um convite e a função de cada pessoa.",
+      "loading": "A carregar a equipa…",
+      "loadError": "Não foi possível carregar a equipa.",
+      "actionError": "Não foi possível aplicar a alteração. A lista foi atualizada.",
+      "you": "Tu",
+      "roleLabel": "Função na viagem",
+      "roles": { "owner": "Proprietário", "editor": "Coorganizador", "participant": "Participante", "viewer": "Leitor" },
+      "transfer": "Transferir a propriedade",
+      "transferExplanation": "{{name}} passará a ser proprietário. Escolhe a função que vais manter.",
+      "previousOwnerRole": "A tua nova função",
+      "confirmTransfer": "Confirmar a transferência",
+      "leave": "Sair desta viagem",
+      "leaveExplanation": "Perderás imediatamente o acesso ao plano privado.",
+      "confirmLeave": "Confirmar a saída"
+    }
+  }
+}

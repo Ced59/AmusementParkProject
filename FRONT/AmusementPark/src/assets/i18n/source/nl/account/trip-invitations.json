@@ -48,8 +48,16 @@
       "privatePlan": "Privéprogramma",
       "publicPrivacy": "Dit voorbeeld toont geen parken, dagen, notities of groepsvoorkeuren.",
       "publicTargeted": "Deze link is voorbehouden aan het e-mailadres dat de organisator koos.",
-      "continue": "Inloggen",
-      "accountRequired": "Je kunt dit voorbeeld zonder account bekijken. Inloggen accepteert de uitnodiging nog niet; binnenkort kun je aan de reis deelnemen."
+      "continue": "Log in om te antwoorden",
+      "accept": "Deelnemen aan de reis",
+      "decline": "Uitnodiging weigeren",
+      "accountRequired": "Inloggen is alleen nodig om te accepteren of te weigeren. Zo blijft de toegang tot de reis privé.",
+      "acceptedTitle": "Je neemt deel aan de reis",
+      "acceptedDescription": "Het privéprogramma staat nu bij je reizen.",
+      "declinedTitle": "Uitnodiging geweigerd",
+      "declinedDescription": "De link is gesloten en kan niet meer worden gebruikt.",
+      "openTrip": "Reis openen",
+      "decisionError": "Je antwoord kon niet worden opgeslagen. Probeer het opnieuw vanuit ditzelfde scherm."
     }
   }
 }

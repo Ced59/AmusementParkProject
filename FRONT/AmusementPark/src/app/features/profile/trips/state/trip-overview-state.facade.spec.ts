@@ -318,7 +318,8 @@ function createTrip(overrides: Partial<TripPlan> = {}): TripPlan {
     tripPlanId: 'trip-1', title: 'Voyage',
     dateProposal: { kind: 'Fixed', startDate: '2026-10-03', endDate: '2026-10-04', candidateDates: [] },
     destinationTimeZoneId: 'Europe/Paris', status: 'Draft', accessScope: 'Private', memberCount: 1,
-    isOwner: true, createdAtUtc: '2026-09-18T10:00:00Z', updatedAtUtc: '2026-09-18T10:00:00Z', version: 1,
+    isOwner: true, effectiveRole: 'Owner', canEditPlan: true, canEditProgram: true, canInvite: true,
+    canChangeRoles: true, createdAtUtc: '2026-09-18T10:00:00Z', updatedAtUtc: '2026-09-18T10:00:00Z', version: 1,
     ...overrides
   };
 }

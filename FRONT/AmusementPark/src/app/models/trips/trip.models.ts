@@ -20,6 +20,11 @@ export interface TripPlan {
   accessScope: string;
   memberCount: number;
   isOwner: boolean;
+  effectiveRole: 'Owner' | 'Editor' | 'Participant' | 'Viewer';
+  canEditPlan: boolean;
+  canEditProgram: boolean;
+  canInvite: boolean;
+  canChangeRoles: boolean;
   createdAtUtc: string;
   updatedAtUtc: string;
   version: number;

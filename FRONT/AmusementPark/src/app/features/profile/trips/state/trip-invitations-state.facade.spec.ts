@@ -26,7 +26,9 @@ describe('TripInvitationsStateFacade', () => {
       list: vi.fn().mockReturnValue(of(createList())),
       create: vi.fn().mockReturnValue(of(createResult())),
       revoke: vi.fn().mockReturnValue(of(undefined)),
-      preview: vi.fn()
+      preview: vi.fn(),
+      accept: vi.fn(),
+      decline: vi.fn()
     };
     operationIds = { create: vi.fn().mockReturnValue('operation-1') };
     TestBed.configureTestingModule({

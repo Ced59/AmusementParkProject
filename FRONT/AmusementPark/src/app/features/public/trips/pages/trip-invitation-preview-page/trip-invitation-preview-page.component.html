@@ -17,6 +17,22 @@
       <p>{{ 'trips.invitations.unavailableDescription' | translate }}</p>
       <a appUiButton="primary" [routerLink]="['/', currentLanguage(), 'home']">{{ 'trips.invitations.backHome' | translate }}</a>
     </section>
+  } @else if (facade.status() === 'accepted') {
+    <section class="invitation-page__message invitation-page__message--success" appUiSurface="panel" role="status" aria-live="polite">
+      <i class="pi pi-check-circle" aria-hidden="true"></i>
+      <h1>{{ 'trips.invitations.acceptedTitle' | translate }}</h1>
+      <p>{{ 'trips.invitations.acceptedDescription' | translate }}</p>
+      <a appUiButton="primary" [routerLink]="['/', currentLanguage(), 'profile', 'trips', facade.tripPlanId()]">
+        {{ 'trips.invitations.openTrip' | translate }}
+      </a>
+    </section>
+  } @else if (facade.status() === 'declined') {
+    <section class="invitation-page__message" appUiSurface="panel" role="status" aria-live="polite">
+      <i class="pi pi-times-circle" aria-hidden="true"></i>
+      <h1>{{ 'trips.invitations.declinedTitle' | translate }}</h1>
+      <p>{{ 'trips.invitations.declinedDescription' | translate }}</p>
+      <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'home']">{{ 'trips.invitations.backHome' | translate }}</a>
+    </section>
   } @else if (facade.preview(); as preview) {
     <article class="invitation-card-public" appUiSurface="hero" appUiSurfacePadding="spacious">
       <div class="invitation-card-public__intro">
@@ -52,9 +68,18 @@
       </div>
 
       <div class="invitation-card-public__cta">
+        @if (facade.status() === 'decision-error') {
+          <p class="invitation-card-public__decision-error" role="alert">
+            {{ 'trips.invitations.decisionError' | translate }}
+          </p>
+        }
         <button type="button" appUiButton="primary" (click)="continueWithAccount()">
-          <i class="pi pi-sign-in" aria-hidden="true"></i>
-          <span>{{ 'trips.invitations.continue' | translate }}</span>
+          <i class="pi" [class.pi-spin]="facade.status() === 'deciding'" [class.pi-spinner]="facade.status() === 'deciding'" [class.pi-check]="facade.status() !== 'deciding'" aria-hidden="true"></i>
+          <span>{{ (facade.isAuthenticated() ? 'trips.invitations.accept' : 'trips.invitations.continue') | translate }}</span>
+        </button>
+        <button type="button" appUiButton="ghost" (click)="decline()">
+          <i class="pi pi-times" aria-hidden="true"></i>
+          <span>{{ 'trips.invitations.decline' | translate }}</span>
         </button>
         <p>{{ 'trips.invitations.accountRequired' | translate }}</p>
         <small>{{ 'trips.invitations.expiresAt' | translate }} {{ preview.expiresAtUtc | date:'medium':undefined:currentLanguage() }}</small>

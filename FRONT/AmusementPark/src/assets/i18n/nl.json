@@ -1430,11 +1430,42 @@
       "privatePlan": "Privéprogramma",
       "publicPrivacy": "Dit voorbeeld toont geen parken, dagen, notities of groepsvoorkeuren.",
       "publicTargeted": "Deze link is voorbehouden aan het e-mailadres dat de organisator koos.",
-      "continue": "Inloggen",
-      "accountRequired": "Je kunt dit voorbeeld zonder account bekijken. Inloggen accepteert de uitnodiging nog niet; binnenkort kun je aan de reis deelnemen."
+      "continue": "Log in om te antwoorden",
+      "accept": "Deelnemen aan de reis",
+      "decline": "Uitnodiging weigeren",
+      "accountRequired": "Inloggen is alleen nodig om te accepteren of te weigeren. Zo blijft de toegang tot de reis privé.",
+      "acceptedTitle": "Je neemt deel aan de reis",
+      "acceptedDescription": "Het privéprogramma staat nu bij je reizen.",
+      "declinedTitle": "Uitnodiging geweigerd",
+      "declinedDescription": "De link is gesloten en kan niet meer worden gebruikt.",
+      "openTrip": "Reis openen",
+      "decisionError": "Je antwoord kon niet worden opgeslagen. Probeer het opnieuw vanuit ditzelfde scherm."
+    },
+    "participants": {
+      "kicker": "Reisteam",
+      "title": "Wie plant deze reis?",
+      "description": "Bekijk wie een uitnodiging heeft geaccepteerd en welke rol iedereen heeft.",
+      "loading": "Team laden…",
+      "loadError": "Het team kon niet worden geladen.",
+      "actionError": "De wijziging kon niet worden toegepast. De lijst is vernieuwd.",
+      "you": "Jij",
+      "roleLabel": "Rol in de reis",
+      "roles": {
+        "owner": "Eigenaar",
+        "editor": "Medeorganisator",
+        "participant": "Deelnemer",
+        "viewer": "Lezer"
+      },
+      "transfer": "Eigendom overdragen",
+      "transferExplanation": "{{name}} wordt de eigenaar. Kies de rol die je zelf behoudt.",
+      "previousOwnerRole": "Je nieuwe rol",
+      "confirmTransfer": "Overdracht bevestigen",
+      "leave": "Deze reis verlaten",
+      "leaveExplanation": "Je verliest onmiddellijk de toegang tot het privéprogramma.",
+      "confirmLeave": "Vertrek bevestigen"
     },
     "kicker": "Reizen om te plannen",
-    "privacy": "Privé, alleen zichtbaar voor jou",
+    "privacy": "Privé, alleen zichtbaar voor leden",
     "profile": {
       "title": "Plan je volgende reis",
       "description": "Verzamel de parken die je aanspreken, rangschik ze en stel elke dag samen.",
@@ -1492,7 +1523,8 @@
     "overview": {
       "kicker": "Reisatelier",
       "description": "Werk je ideeën in je eigen tempo uit tot een duidelijk plan.",
-      "solo": "Alleen plannen"
+      "solo": "Alleen plannen",
+      "memberCount": "{{count}} deelnemer(s)"
     },
     "dates": {
       "kicker": "Wanneer ga je?",
@@ -1506,6 +1538,7 @@
       "unsavedDayOutsideRange": "Een dag buiten deze periode bevat niet-opgeslagen wijzigingen. Wis of bewaar het concept voordat je de datums wijzigt.",
       "unsavedDayBeforeClear": "Een dag bevat niet-opgeslagen wijzigingen. Wis of bewaar het concept voordat je de reisdatums wist.",
       "toDecide": "Datums nog te bepalen",
+      "notDefined": "Datums nog te bepalen",
       "kinds": {
         "none": "Datums nog te bepalen",
         "fixed": "Datums vastgelegd",
@@ -1556,7 +1589,8 @@
       "park": "Park van de dag",
       "choosePark": "Kies een park",
       "arrival": "Gewenste aankomsttijd",
-      "note": "Notitie voor de dag"
+      "note": "Notitie voor de dag",
+      "noProgram": "Voor deze dag is nog geen programma vastgelegd."
     }
   },
   "user-profile": {

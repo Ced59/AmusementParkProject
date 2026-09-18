@@ -32,6 +32,19 @@ internal static class TripInvitationMongoMapper
             RevokedAtUtc = invitation.RevokedAtUtc.HasValue
                 ? ToMongoPrecision(invitation.RevokedAtUtc.Value)
                 : null,
+            AcceptedAtUtc = invitation.AcceptedAtUtc.HasValue
+                ? ToMongoPrecision(invitation.AcceptedAtUtc.Value)
+                : null,
+            DeclinedAtUtc = invitation.DeclinedAtUtc.HasValue
+                ? ToMongoPrecision(invitation.DeclinedAtUtc.Value)
+                : null,
+            UseCount = invitation.UseCount,
+            AcceptingUserId = invitation.AcceptingUserId,
+            AcceptanceOperationId = invitation.AcceptanceOperationId,
+            AcceptanceGeneration = invitation.AcceptanceGeneration,
+            AcceptanceLeaseExpiresAtUtc = invitation.AcceptanceLeaseExpiresAtUtc.HasValue
+                ? ToMongoPrecision(invitation.AcceptanceLeaseExpiresAtUtc.Value)
+                : null,
             CreatedAt = ToMongoPrecision(invitation.CreatedAtUtc),
             UpdatedAt = ToMongoPrecision(invitation.UpdatedAtUtc),
             Version = invitation.Version,
@@ -61,6 +74,15 @@ internal static class TripInvitationMongoMapper
             document.MemberCountBand,
             AsUtc(document.ExpiresAtUtc),
             document.RevokedAtUtc.HasValue ? AsUtc(document.RevokedAtUtc.Value) : null,
+            document.AcceptedAtUtc.HasValue ? AsUtc(document.AcceptedAtUtc.Value) : null,
+            document.DeclinedAtUtc.HasValue ? AsUtc(document.DeclinedAtUtc.Value) : null,
+            document.UseCount,
+            document.AcceptingUserId,
+            document.AcceptanceOperationId,
+            document.AcceptanceGeneration,
+            document.AcceptanceLeaseExpiresAtUtc.HasValue
+                ? AsUtc(document.AcceptanceLeaseExpiresAtUtc.Value)
+                : null,
             AsUtc(document.CreatedAt),
             AsUtc(document.UpdatedAt),
             document.Version);

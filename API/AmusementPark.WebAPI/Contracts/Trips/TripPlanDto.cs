@@ -18,6 +18,16 @@ public sealed class TripPlanDto
 
     public bool IsOwner { get; set; }
 
+    public string EffectiveRole { get; set; } = string.Empty;
+
+    public bool CanEditPlan { get; set; }
+
+    public bool CanEditProgram { get; set; }
+
+    public bool CanInvite { get; set; }
+
+    public bool CanChangeRoles { get; set; }
+
     public DateTime CreatedAtUtc { get; set; }
 
     public DateTime UpdatedAtUtc { get; set; }

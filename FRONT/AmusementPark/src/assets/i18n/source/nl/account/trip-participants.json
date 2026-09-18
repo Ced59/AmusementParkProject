@@ -1,0 +1,22 @@
+{
+  "trips": {
+    "participants": {
+      "kicker": "Reisteam",
+      "title": "Wie plant deze reis?",
+      "description": "Bekijk wie een uitnodiging heeft geaccepteerd en welke rol iedereen heeft.",
+      "loading": "Team laden…",
+      "loadError": "Het team kon niet worden geladen.",
+      "actionError": "De wijziging kon niet worden toegepast. De lijst is vernieuwd.",
+      "you": "Jij",
+      "roleLabel": "Rol in de reis",
+      "roles": { "owner": "Eigenaar", "editor": "Medeorganisator", "participant": "Deelnemer", "viewer": "Lezer" },
+      "transfer": "Eigendom overdragen",
+      "transferExplanation": "{{name}} wordt de eigenaar. Kies de rol die je zelf behoudt.",
+      "previousOwnerRole": "Je nieuwe rol",
+      "confirmTransfer": "Overdracht bevestigen",
+      "leave": "Deze reis verlaten",
+      "leaveExplanation": "Je verliest onmiddellijk de toegang tot het privéprogramma.",
+      "confirmLeave": "Vertrek bevestigen"
+    }
+  }
+}

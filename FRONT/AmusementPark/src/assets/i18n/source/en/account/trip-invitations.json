@@ -48,8 +48,16 @@
       "privatePlan": "Private plan",
       "publicPrivacy": "This preview reveals no park, day, note or group preference.",
       "publicTargeted": "This link is reserved for the email chosen by the organiser.",
-      "continue": "Sign in",
-      "accountRequired": "You can view this preview without an account. Signing in does not accept it yet; joining the trip will be available soon."
+      "continue": "Sign in to respond",
+      "accept": "Join the trip",
+      "decline": "Decline invitation",
+      "accountRequired": "Signing in is only required to accept or decline. It protects private access to the trip.",
+      "acceptedTitle": "You have joined the trip",
+      "acceptedDescription": "The private plan is now available in your trips.",
+      "declinedTitle": "Invitation declined",
+      "declinedDescription": "The link has been closed and can no longer be used.",
+      "openTrip": "Open the trip",
+      "decisionError": "Your response could not be saved. Try again from this same screen."
     }
   }
 }

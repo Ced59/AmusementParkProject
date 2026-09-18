@@ -69,6 +69,20 @@ export class TripInvitationPreviewPageComponent implements OnInit {
   }
 
   protected continueWithAccount(): void {
+    if (this.facade.isAuthenticated()) {
+      this.facade.accept();
+      return;
+    }
+
+    this.modalService.openModal('loginModal');
+  }
+
+  protected decline(): void {
+    if (this.facade.isAuthenticated()) {
+      this.facade.decline();
+      return;
+    }
+
     this.modalService.openModal('loginModal');
   }
 

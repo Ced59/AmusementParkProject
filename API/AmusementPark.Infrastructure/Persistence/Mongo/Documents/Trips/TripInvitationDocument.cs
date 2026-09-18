@@ -72,6 +72,37 @@ public sealed class TripInvitationDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? RevokedAtUtc { get; set; }
 
+    [BsonElement("acceptedAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? AcceptedAtUtc { get; set; }
+
+    [BsonElement("declinedAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? DeclinedAtUtc { get; set; }
+
+    [BsonElement("useCount")]
+    public int UseCount { get; set; }
+
+    [BsonElement("acceptingUserId")]
+    [BsonIgnoreIfNull]
+    public string? AcceptingUserId { get; set; }
+
+    [BsonElement("acceptanceOperationId")]
+    [BsonIgnoreIfNull]
+    public string? AcceptanceOperationId { get; set; }
+
+    [BsonElement("acceptanceOperationKeyHash")]
+    [BsonIgnoreIfNull]
+    public string? AcceptanceOperationKeyHash { get; set; }
+
+    [BsonElement("acceptanceGeneration")]
+    [BsonIgnoreIfNull]
+    public long? AcceptanceGeneration { get; set; }
+
+    [BsonElement("acceptanceLeaseExpiresAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? AcceptanceLeaseExpiresAtUtc { get; set; }
+
     [BsonElement("version")]
     public long Version { get; set; }
 

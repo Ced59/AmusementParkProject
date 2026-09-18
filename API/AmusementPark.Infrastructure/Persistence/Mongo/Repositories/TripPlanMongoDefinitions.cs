@@ -127,7 +127,7 @@ internal static class TripPlanMongoDefinitions
     {
         TripPlanDocument document = trip.ToDocument();
         UpdateDefinitionBuilder<TripPlanDocument> updates = Builders<TripPlanDocument>.Update;
-        return updates.Set(static item => item.Title, document.Title)
+        UpdateDefinition<TripPlanDocument> domain = updates.Set(static item => item.Title, document.Title)
             .Set(static item => item.DateProposal, document.DateProposal)
             .Set(static item => item.DestinationTimeZoneId, document.DestinationTimeZoneId)
             .Set(static item => item.Status, document.Status)
@@ -138,6 +138,10 @@ internal static class TripPlanMongoDefinitions
             .Set(static item => item.ChildMutationEpoch, document.ChildMutationEpoch)
             .Set(static item => item.UpdatedAt, document.UpdatedAt)
             .Set(static item => item.Version, document.Version);
+        UpdateDefinition<TripPlanDocument> fence = document.MemberAdmissionFence is null
+            ? updates.Unset(static item => item.MemberAdmissionFence)
+            : updates.Set(static item => item.MemberAdmissionFence, document.MemberAdmissionFence);
+        return updates.Combine(domain, fence);
     }
 
     public static ProjectionDefinition<TripPlanDocument> BuildActiveCreationProjection()
@@ -176,6 +180,7 @@ internal static class TripPlanMongoDefinitions
             updates.Set(static document => document.Status, TripPlanStatus.Cancelled),
             updates.Set(static document => document.AccessScope, TripPlanAccessScope.MembersOnly),
             updates.Set(static document => document.Members, new List<TripMemberDocument>()),
+            updates.Unset(static document => document.MemberAdmissionFence),
             updates.Set(static document => document.AdmissionClosureState, TripAdmissionClosureState.Closed),
             updates.Set(static document => document.DeletionState, TripDeletionState.Purged),
             updates.Set(static document => document.ChildMutationEpoch, trip.ChildMutationEpoch),
@@ -265,6 +270,17 @@ internal static class TripPlanMongoDefinitions
                     .Ascending(static document => document.DeletionState)
                     .Ascending(static document => document.UpdatedAt),
                 new CreateIndexOptions { Name = "ix_trip_plan_deletion_recovery" }),
+            new(
+                Builders<TripPlanDocument>.IndexKeys
+                    .Ascending("memberAdmissionFence.leaseExpiresAtUtc")
+                    .Ascending("memberAdmissionFence.state"),
+                new CreateIndexOptions<TripPlanDocument>
+                {
+                    Name = "ix_trip_plan_admission_fence",
+                    PartialFilterExpression = Builders<TripPlanDocument>.Filter.Type(
+                        static document => document.MemberAdmissionFence,
+                        BsonType.Document),
+                }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
                     .Ascending(static document => document.CreationOperationExpiresAtUtc),

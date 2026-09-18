@@ -16,9 +16,11 @@
 
   <div class="candidate-card__body">
     <div class="candidate-card__heading">
-      <span class="candidate-card__drag" cdkDragHandle [attr.aria-label]="'trips.candidates.drag' | translate">
-        <i class="pi pi-bars" aria-hidden="true"></i>
-      </span>
+      @if (!readonly) {
+        <span class="candidate-card__drag" cdkDragHandle [attr.aria-label]="'trips.candidates.drag' | translate">
+          <i class="pi pi-bars" aria-hidden="true"></i>
+        </span>
+      }
       <div>
         <h3>{{ candidate.parkName || ('trips.candidates.unavailable' | translate) }}</h3>
         <p>{{ ('trips.candidates.sources.' + candidate.source.toLowerCase()) | translate }}</p>
@@ -32,36 +34,40 @@
       <p class="candidate-card__note">{{ candidate.collectiveNote }}</p>
     }
 
-    <div class="candidate-card__states" [attr.aria-label]="'trips.candidates.changeState' | translate">
-      @for (state of states; track state) {
-        <button
-          type="button"
-          appUiButton="ghost"
-          [disabled]="isStateDisabled(state)"
-          [attr.aria-pressed]="candidate.state === state"
-          (click)="stateChanged.emit(state)">
-          {{ stateLabelKey(state) | translate }}
-        </button>
-      }
-    </div>
+    @if (!readonly) {
+      <div class="candidate-card__states" [attr.aria-label]="'trips.candidates.changeState' | translate">
+        @for (state of states; track state) {
+          <button
+            type="button"
+            appUiButton="ghost"
+            [disabled]="isStateDisabled(state)"
+            [attr.aria-pressed]="candidate.state === state"
+            (click)="stateChanged.emit(state)">
+            {{ stateLabelKey(state) | translate }}
+          </button>
+        }
+      </div>
+    }
 
     @if (scheduled) {
       <p class="candidate-card__note">{{ 'trips.candidates.scheduledStateHint' | translate }}</p>
     }
 
-    <div class="candidate-card__move" [attr.aria-label]="'trips.candidates.move' | translate">
-      <button type="button" appUiButton="ghost" [disabled]="disabled || index === 0" (click)="moveRequested.emit(0)">
-        <i class="pi pi-angle-double-up" aria-hidden="true"></i><span class="sr-only">{{ 'trips.candidates.first' | translate }}</span>
-      </button>
-      <button type="button" appUiButton="ghost" [disabled]="disabled || index === 0" (click)="moveRequested.emit(index - 1)">
-        <i class="pi pi-angle-up" aria-hidden="true"></i><span class="sr-only">{{ 'trips.candidates.up' | translate }}</span>
-      </button>
-      <button type="button" appUiButton="ghost" [disabled]="disabled || index >= count - 1" (click)="moveRequested.emit(index + 1)">
-        <i class="pi pi-angle-down" aria-hidden="true"></i><span class="sr-only">{{ 'trips.candidates.down' | translate }}</span>
-      </button>
-      <button type="button" appUiButton="ghost" [disabled]="disabled || index >= count - 1" (click)="moveRequested.emit(count - 1)">
-        <i class="pi pi-angle-double-down" aria-hidden="true"></i><span class="sr-only">{{ 'trips.candidates.last' | translate }}</span>
-      </button>
-    </div>
+    @if (!readonly) {
+      <div class="candidate-card__move" [attr.aria-label]="'trips.candidates.move' | translate">
+        <button type="button" appUiButton="ghost" [disabled]="disabled || index === 0" (click)="moveRequested.emit(0)">
+          <i class="pi pi-angle-double-up" aria-hidden="true"></i><span class="sr-only">{{ 'trips.candidates.first' | translate }}</span>
+        </button>
+        <button type="button" appUiButton="ghost" [disabled]="disabled || index === 0" (click)="moveRequested.emit(index - 1)">
+          <i class="pi pi-angle-up" aria-hidden="true"></i><span class="sr-only">{{ 'trips.candidates.up' | translate }}</span>
+        </button>
+        <button type="button" appUiButton="ghost" [disabled]="disabled || index >= count - 1" (click)="moveRequested.emit(index + 1)">
+          <i class="pi pi-angle-down" aria-hidden="true"></i><span class="sr-only">{{ 'trips.candidates.down' | translate }}</span>
+        </button>
+        <button type="button" appUiButton="ghost" [disabled]="disabled || index >= count - 1" (click)="moveRequested.emit(count - 1)">
+          <i class="pi pi-angle-double-down" aria-hidden="true"></i><span class="sr-only">{{ 'trips.candidates.last' | translate }}</span>
+        </button>
+      </div>
+    }
   </div>
 </article>
