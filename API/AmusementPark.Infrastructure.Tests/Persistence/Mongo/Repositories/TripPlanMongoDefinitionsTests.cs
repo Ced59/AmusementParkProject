@@ -12,6 +12,16 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class TripPlanMongoDefinitionsTests
 {
     [Fact]
+    public void BuildAccessibleListOptions_ShouldNotReuseTheOwnerCreationQuota()
+    {
+        FindOptions<TripPlanDocument, TripPlanDocument> options =
+            TripPlanMongoDefinitions.BuildAccessibleListOptions();
+
+        Assert.Null(options.Limit);
+        Assert.NotNull(options.Sort);
+    }
+
+    [Fact]
     public void BuildIndexes_ShouldProtectOwnerCapacityAndIdempotency()
     {
         IReadOnlyCollection<CreateIndexModel<TripPlanDocument>> indexes = TripPlanMongoDefinitions.BuildIndexes();

@@ -8,6 +8,16 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class TripPlanMongoDefinitions
 {
+    public static FindOptions<TripPlanDocument, TripPlanDocument> BuildAccessibleListOptions()
+    {
+        SortDefinitionBuilder<TripPlanDocument> sorts = Builders<TripPlanDocument>.Sort;
+        return new FindOptions<TripPlanDocument, TripPlanDocument>
+        {
+            Sort = sorts.Descending(static document => document.UpdatedAt)
+                .Ascending(static document => document.Id),
+        };
+    }
+
     public static FilterDefinition<TripPlanDocument> BuildNoActiveChildLeaseFilter()
     {
         return new BsonDocumentFilterDefinition<TripPlanDocument>(new BsonDocument(

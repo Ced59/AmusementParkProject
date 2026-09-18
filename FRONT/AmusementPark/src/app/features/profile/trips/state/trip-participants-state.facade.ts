@@ -50,10 +50,16 @@ export class TripParticipantsStateFacade {
       return;
     }
 
+    this.loadParticipants(normalizedId, true);
+  }
+
+  private loadParticipants(normalizedId: string, resetActionError: boolean): void {
     this.tripPlanId = normalizedId;
     this.leftSignal.set(false);
     this.statusSignal.set('loading');
-    this.errorSignal.set(false);
+    if (resetActionError) {
+      this.errorSignal.set(false);
+    }
     this.data.list(normalizedId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result: TripParticipantList): void => {
         this.apply(result);
@@ -116,7 +122,7 @@ export class TripParticipantsStateFacade {
       error: (): void => {
         this.errorSignal.set(true);
         this.busySignal.set(false);
-        this.load(this.tripPlanId);
+        this.loadParticipants(this.tripPlanId, false);
       }
     });
   }

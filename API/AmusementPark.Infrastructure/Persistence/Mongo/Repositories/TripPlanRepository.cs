@@ -156,11 +156,13 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 member => member.UserId == normalizedUserId
                     && member.State == TripMembershipState.Active)
             & filters.Eq(static document => document.DeletionState, TripDeletionState.None);
-        List<TripPlanDocument> documents = await this.collection.Find(filter)
-            .SortByDescending(static document => document.UpdatedAt)
-            .ThenBy(static document => document.Id)
-            .Limit(TripPlan.MaximumPlansPerOwner)
-            .ToListAsync(cancellationToken);
+        FindOptions<TripPlanDocument, TripPlanDocument> options =
+            TripPlanMongoDefinitions.BuildAccessibleListOptions();
+        using IAsyncCursor<TripPlanDocument> cursor = await this.collection.FindAsync(
+            filter,
+            options,
+            cancellationToken);
+        List<TripPlanDocument> documents = await cursor.ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 

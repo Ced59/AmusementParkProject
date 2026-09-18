@@ -160,7 +160,9 @@ Indexes concernés :
 La lecture privée utilise un `ElemMatch` exigeant simultanément le bon `userId` et
 `state = Active`. Deux éléments différents du tableau ne peuvent donc pas satisfaire
 chacun une moitié du filtre. Un membre `Provisional` présent physiquement dans le
-document ne dispose d'aucun accès.
+document ne dispose d'aucun accès. La liste conserve son tri stable par dernière
+modification sans réutiliser le quota de 50 créations du propriétaire : les voyages
+rejoints ne sont pas tronqués par une règle qui ne concerne que la possession.
 
 ## Séquence d'acceptation
 

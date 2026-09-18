@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 import { TripParticipantList } from '@app/models/trips/trip-participant.models';
 import {
@@ -47,6 +47,16 @@ describe('TripParticipantsStateFacade', () => {
 
     expect(data.transferOwnership).toHaveBeenCalledWith('trip-1', 'member-2', 'Viewer', 4);
     expect(facade.ownershipTransferRevision()).toBe(1);
+  });
+
+  it('keeps an action error visible while refreshing concurrent participant data', () => {
+    vi.mocked(data.changeRole).mockReturnValue(throwError(() => new Error('conflict')));
+
+    facade.changeRole('member-2', 'Viewer');
+
+    expect(data.list).toHaveBeenCalledTimes(2);
+    expect(facade.status()).toBe('ready');
+    expect(facade.error()).toBe(true);
   });
 
   it('marks the collaboration as left only after the server confirms departure', () => {
