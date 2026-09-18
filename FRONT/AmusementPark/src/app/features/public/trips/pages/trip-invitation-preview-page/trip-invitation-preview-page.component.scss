@@ -16,6 +16,15 @@
   max-width: 100%;
 }
 
+.invitation-page__message--success {
+  border-color: color-mix(in srgb, var(--color-lime-400, #b5f23d) 52%, transparent);
+}
+
+.invitation-card-public__decision-error {
+  color: var(--color-danger-300, #ff8da1);
+  overflow-wrap: anywhere;
+}
+
 .invitation-page__breadcrumb {
   display: flex;
   min-width: 0;

@@ -59,11 +59,16 @@ public sealed class TripPlanDateService
                 "The destination time zone must be a valid IANA identifier.");
         }
 
-        TripPlan? trip = await this.tripPlanRepository.GetOwnedAsync(
+        TripPlan? trip = await this.tripPlanRepository.GetAccessibleAsync(
             normalizedUserId,
             parsedId,
             cancellationToken);
         if (trip is null)
+        {
+            return ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.NotFound());
+        }
+        TripEffectiveRole? role = trip.ResolveRole(normalizedUserId);
+        if (!role.HasValue || !TripAuthorizationPolicy.HasPermission(role.Value, TripPermission.EditPlan))
         {
             return ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.NotFound());
         }
@@ -74,11 +79,14 @@ public sealed class TripPlanDateService
                 TripPlanApplicationErrors.ChangedConcurrently(trip.Version));
         }
 
-        return await this.mutationExecutor.ExecuteOwnedAsync(
+        return await this.mutationExecutor.ExecuteAccessibleAsync(
             trip,
+            normalizedUserId,
+            TripPermission.EditPlan,
             Guid.NewGuid().ToString("N"),
             lease => this.SetDatesUnderLeaseAsync(
                 trip,
+                normalizedUserId,
                 expectedVersion,
                 input,
                 lease,
@@ -88,6 +96,7 @@ public sealed class TripPlanDateService
 
     private async Task<ApplicationResult<TripPlanResult>> SetDatesUnderLeaseAsync(
         TripPlan trip,
+        string actorUserId,
         long expectedVersion,
         TripPlanDatesInput input,
         TripChildMutationLease lease,
@@ -117,10 +126,11 @@ public sealed class TripPlanDateService
         if (trip.Version == expectedVersion)
         {
             return ApplicationResult<TripPlanResult>.Success(
-                TripPlanResultFactory.ToResult(trip, trip.OwnerUserId));
+                TripPlanResultFactory.ToResult(trip, actorUserId));
         }
 
-        TripPlanWriteResult outcome = await this.tripPlanRepository.ReplaceOwnedUnderChildLeaseAsync(
+        TripPlanWriteResult outcome = await this.tripPlanRepository.ReplaceAccessibleUnderChildLeaseAsync(
+            actorUserId,
             trip,
             expectedVersion,
             lease,
@@ -134,7 +144,7 @@ public sealed class TripPlanDateService
         }
 
         return ApplicationResult<TripPlanResult>.Success(
-            TripPlanResultFactory.ToResult(outcome.PersistedTripPlan, trip.OwnerUserId));
+            TripPlanResultFactory.ToResult(outcome.PersistedTripPlan, actorUserId));
     }
 
     private static bool TryNormalizeIdentity(

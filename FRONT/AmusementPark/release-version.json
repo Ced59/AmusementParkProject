@@ -1,6 +1,20 @@
 {
-  "version": "5.3.65",
+  "version": "5.3.66",
   "history": [
+    {
+      "version": "5.3.66",
+      "releasedAt": "2026-09-18",
+      "labels": {
+        "fr": "Tes voyages peuvent désormais accueillir des participants avec des rôles adaptés.",
+        "en": "Your trips can now welcome participants with suitable roles.",
+        "de": "Deine Reisen können jetzt Teilnehmer mit passenden Rollen aufnehmen.",
+        "nl": "Je reizen kunnen nu deelnemers met passende rollen verwelkomen.",
+        "it": "I tuoi viaggi possono ora accogliere partecipanti con ruoli adeguati.",
+        "es": "Tus viajes ya pueden incluir participantes con funciones adecuadas.",
+        "pl": "Do Twoich wyjazdów mogą teraz dołączać uczestnicy z odpowiednimi rolami.",
+        "pt": "As tuas viagens podem agora receber participantes com funções adequadas."
+      }
+    },
     {
       "version": "5.3.65",
       "releasedAt": "2026-09-18",

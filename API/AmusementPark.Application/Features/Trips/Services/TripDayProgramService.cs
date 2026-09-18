@@ -43,7 +43,7 @@ public sealed class TripDayProgramService
         TripDayPlanInput input,
         CancellationToken cancellationToken)
     {
-        ApplicationResult<TripPlan> resolved = await this.ResolveOwnedTripAsync(
+        ApplicationResult<TripPlan> resolved = await this.ResolveEditableTripAsync(
             userId,
             tripPlanId,
             expectedPlanVersion,
@@ -57,13 +57,16 @@ public sealed class TripDayProgramService
         }
 
         TripPlan trip = resolved.Value;
+        string normalizedUserId = userId.Trim();
         string requestHash = TripProgramOperationFingerprint.BuildDayRequestHash(localDate, input);
         string operationId = TripProgramOperationFingerprint.BuildOperationId(
-            trip.OwnerUserId,
+            normalizedUserId,
             trip.Id,
             requestHash);
-        return await this.mutationExecutor.ExecuteOwnedAsync(
+        return await this.mutationExecutor.ExecuteAccessibleAsync(
             trip,
+            normalizedUserId,
+            TripPermission.EditProgram,
             operationId,
             lease => this.PutUnderLeaseAsync(
                 trip,
@@ -85,7 +88,7 @@ public sealed class TripDayProgramService
         long expectedDayVersion,
         CancellationToken cancellationToken)
     {
-        ApplicationResult<TripPlan> resolved = await this.ResolveOwnedTripAsync(
+        ApplicationResult<TripPlan> resolved = await this.ResolveEditableTripAsync(
             userId,
             tripPlanId,
             expectedPlanVersion,
@@ -96,8 +99,10 @@ public sealed class TripDayProgramService
         }
 
         TripPlan trip = resolved.Value;
-        return await this.mutationExecutor.ExecuteOwnedAsync(
+        return await this.mutationExecutor.ExecuteAccessibleAsync(
             trip,
+            userId.Trim(),
+            TripPermission.EditProgram,
             Guid.NewGuid().ToString("N"),
             async lease =>
             {
@@ -293,7 +298,7 @@ public sealed class TripDayProgramService
         return TripProgramResultFactory.ToDayResult(dayPlan, park);
     }
 
-    private async Task<ApplicationResult<TripPlan>> ResolveOwnedTripAsync(
+    private async Task<ApplicationResult<TripPlan>> ResolveEditableTripAsync(
         string userId,
         string tripPlanId,
         long expectedVersion,
@@ -314,11 +319,14 @@ public sealed class TripDayProgramService
             return InvalidTrip();
         }
 
-        TripPlan? trip = await this.tripPlanRepository.GetOwnedAsync(
+        TripPlan? trip = await this.tripPlanRepository.GetAccessibleAsync(
             normalizedUserId,
             parsedTripId,
             cancellationToken);
-        if (trip is null)
+        TripEffectiveRole? role = trip?.ResolveRole(normalizedUserId);
+        if (trip is null
+            || !role.HasValue
+            || !TripAuthorizationPolicy.HasPermission(role.Value, TripPermission.EditProgram))
         {
             return ApplicationResult<TripPlan>.Failure(TripPlanApplicationErrors.NotFound());
         }

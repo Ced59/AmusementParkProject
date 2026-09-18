@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.Trips;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Trips;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
@@ -27,6 +28,7 @@ public sealed class TripInvitationMongoDefinitionsTests
         Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_invitation_prepared"
             && index.Options.ExpireAfter == TimeSpan.Zero);
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_invitation_status_expires");
+        Assert.Contains(indexes, index => index.Options.Name == "ix_trip_invitation_acceptance_recovery");
     }
 
     [Fact]
@@ -52,5 +54,21 @@ public sealed class TripInvitationMongoDefinitionsTests
 
         Assert.Equal("$$NOW", rendered["$expr"]["$lt"][0].AsString);
         Assert.Equal("$expiresAtUtc", rendered["$expr"]["$lt"][1].AsString);
+    }
+
+    [Fact]
+    public void PendingAcceptanceFilter_ShouldExcludeAcceptedAdmissionsAlreadyCompleted()
+    {
+        FilterDefinition<TripInvitationDocument> filter =
+            TripAdmissionRepository.BuildPendingAcceptanceFilter();
+        BsonDocument rendered = filter.Render(new RenderArgs<TripInvitationDocument>(
+            BsonSerializer.LookupSerializer<TripInvitationDocument>(),
+            BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains(TripInvitationStatus.Accepting.ToString(), json, StringComparison.Ordinal);
+        Assert.Contains(TripInvitationStatus.Accepted.ToString(), json, StringComparison.Ordinal);
+        Assert.Contains("admissionCompletedAtUtc", json, StringComparison.Ordinal);
+        Assert.Contains("null", json, StringComparison.OrdinalIgnoreCase);
     }
 }

@@ -1430,11 +1430,42 @@
       "privatePlan": "Programme privé",
       "publicPrivacy": "Cet aperçu ne révèle aucun parc, aucune journée, aucune note ni préférence du groupe.",
       "publicTargeted": "Ce lien est réservé à l’adresse choisie par l’organisateur.",
-      "continue": "Me connecter",
-      "accountRequired": "Tu peux consulter cet aperçu sans compte. Te connecter n’accepte pas encore l’invitation ; tu pourras bientôt rejoindre le voyage."
+      "continue": "Me connecter pour répondre",
+      "accept": "Rejoindre le voyage",
+      "decline": "Décliner l’invitation",
+      "accountRequired": "La connexion est nécessaire uniquement pour accepter ou décliner. Elle protège l’accès privé au voyage.",
+      "acceptedTitle": "Tu fais partie du voyage",
+      "acceptedDescription": "Le programme privé est maintenant accessible depuis tes voyages.",
+      "declinedTitle": "Invitation déclinée",
+      "declinedDescription": "Le lien a été fermé et ne pourra plus être utilisé.",
+      "openTrip": "Ouvrir le voyage",
+      "decisionError": "La réponse n’a pas pu être enregistrée. Réessaie avec ce même écran."
+    },
+    "participants": {
+      "kicker": "Équipe du voyage",
+      "title": "Qui prépare ce voyage ?",
+      "description": "Retrouve les personnes qui ont accepté l’invitation et le rôle de chacune.",
+      "loading": "Chargement de l’équipe…",
+      "loadError": "L’équipe n’a pas pu être chargée.",
+      "actionError": "La modification n’a pas pu être appliquée. La liste a été actualisée.",
+      "you": "Toi",
+      "roleLabel": "Rôle dans le voyage",
+      "roles": {
+        "owner": "Propriétaire",
+        "editor": "Co-organisateur",
+        "participant": "Participant",
+        "viewer": "Lecteur"
+      },
+      "transfer": "Transférer la propriété",
+      "transferExplanation": "{{name}} deviendra propriétaire. Choisis le rôle que tu conserveras.",
+      "previousOwnerRole": "Ton nouveau rôle",
+      "confirmTransfer": "Confirmer le transfert",
+      "leave": "Quitter ce voyage",
+      "leaveExplanation": "Tu perdras immédiatement l’accès au programme privé.",
+      "confirmLeave": "Confirmer mon départ"
     },
     "kicker": "Voyages à préparer",
-    "privacy": "Privé, visible uniquement par toi",
+    "privacy": "Privé, visible uniquement par les membres",
     "profile": {
       "title": "Prépare ton prochain voyage",
       "description": "Rassemble les parcs qui te tentent, classe-les et construis chaque journée.",
@@ -1492,7 +1523,8 @@
     "overview": {
       "kicker": "Atelier de voyage",
       "description": "Fais évoluer tes idées jusqu’à un programme clair, à ton rythme.",
-      "solo": "Préparation en solo"
+      "solo": "Préparation en solo",
+      "memberCount": "{{count}} participant(s)"
     },
     "dates": {
       "kicker": "Quand partir ?",
@@ -1500,6 +1532,7 @@
       "description": "Elles créent automatiquement les journées de ton programme.",
       "timeZoneHint": "Vérifie le fuseau du parc ou de la destination (par exemple Europe/Paris), surtout si tu prépares le voyage depuis un autre pays.",
       "currentProposal": "Proposition actuelle",
+      "notDefined": "Dates encore à décider",
       "explicitConversion": "Cette proposition reste intacte tant que tu ne choisis pas explicitement des dates fixes ou son effacement.",
       "clearBlocked": "Efface d’abord chaque journée enregistrée et chaque contrainte de date d’un parc avant d’effacer les dates du voyage.",
       "dependenciesOutsideRange": "La nouvelle période doit inclure chaque journée enregistrée et chaque contrainte de date d’un parc.",
@@ -1556,7 +1589,8 @@
       "park": "Parc de la journée",
       "choosePark": "Choisir un parc",
       "arrival": "Heure d’arrivée souhaitée",
-      "note": "Note pour la journée"
+      "note": "Note pour la journée",
+      "noProgram": "Aucun programme défini pour cette journée."
     }
   },
   "user-profile": {

@@ -1430,11 +1430,42 @@
       "privatePlan": "Prywatny plan",
       "publicPrivacy": "Ten podgląd nie ujawnia parków, dni, notatek ani preferencji grupy.",
       "publicTargeted": "Ten link jest przeznaczony dla adresu e-mail wybranego przez organizatora.",
-      "continue": "Zaloguj się",
-      "accountRequired": "Możesz zobaczyć ten podgląd bez konta. Samo logowanie nie przyjmuje jeszcze zaproszenia; wkrótce będzie można dołączyć do podróży."
+      "continue": "Zaloguj się, aby odpowiedzieć",
+      "accept": "Dołącz do podróży",
+      "decline": "Odrzuć zaproszenie",
+      "accountRequired": "Logowanie jest potrzebne tylko do przyjęcia lub odrzucenia zaproszenia. Chroni prywatny dostęp do podróży.",
+      "acceptedTitle": "Dołączasz do podróży",
+      "acceptedDescription": "Prywatny plan jest już dostępny wśród twoich podróży.",
+      "declinedTitle": "Zaproszenie odrzucone",
+      "declinedDescription": "Link został zamknięty i nie można go ponownie użyć.",
+      "openTrip": "Otwórz podróż",
+      "decisionError": "Nie udało się zapisać odpowiedzi. Spróbuj ponownie na tym samym ekranie."
+    },
+    "participants": {
+      "kicker": "Zespół podróży",
+      "title": "Kto planuje tę podróż?",
+      "description": "Sprawdź, kto przyjął zaproszenie i jaką rolę ma każda osoba.",
+      "loading": "Wczytywanie zespołu…",
+      "loadError": "Nie udało się wczytać zespołu.",
+      "actionError": "Nie udało się zastosować zmiany. Lista została odświeżona.",
+      "you": "Ty",
+      "roleLabel": "Rola w podróży",
+      "roles": {
+        "owner": "Właściciel",
+        "editor": "Współorganizator",
+        "participant": "Uczestnik",
+        "viewer": "Czytelnik"
+      },
+      "transfer": "Przekaż własność",
+      "transferExplanation": "{{name}} zostanie właścicielem. Wybierz rolę, którą zachowasz.",
+      "previousOwnerRole": "Twoja nowa rola",
+      "confirmTransfer": "Potwierdź przekazanie",
+      "leave": "Opuść tę podróż",
+      "leaveExplanation": "Natychmiast utracisz dostęp do prywatnego planu.",
+      "confirmLeave": "Potwierdź odejście"
     },
     "kicker": "Wyjazdy do zaplanowania",
-    "privacy": "Prywatne, widoczne tylko dla ciebie",
+    "privacy": "Prywatny, widoczny tylko dla członków",
     "profile": {
       "title": "Zaplanuj kolejny wyjazd",
       "description": "Zbierz interesujące parki, uporządkuj je i zaplanuj każdy dzień.",
@@ -1492,7 +1523,8 @@
     "overview": {
       "kicker": "Pracownia wyjazdu",
       "description": "Rozwijaj pomysły we własnym tempie, aż powstanie przejrzysty plan.",
-      "solo": "Planowanie indywidualne"
+      "solo": "Planowanie indywidualne",
+      "memberCount": "Liczba uczestników: {{count}}"
     },
     "dates": {
       "kicker": "Kiedy jedziesz?",
@@ -1506,6 +1538,7 @@
       "unsavedDayOutsideRange": "Dzień poza tym okresem zawiera niezapisane zmiany. Wyczyść lub zapisz jego szkic przed zmianą dat.",
       "unsavedDayBeforeClear": "Dzień zawiera niezapisane zmiany. Wyczyść lub zapisz jego szkic przed usunięciem dat wyjazdu.",
       "toDecide": "Daty do ustalenia",
+      "notDefined": "Daty są jeszcze do ustalenia",
       "kinds": {
         "none": "Daty do ustalenia",
         "fixed": "Daty ustalone",
@@ -1556,7 +1589,8 @@
       "park": "Park na ten dzień",
       "choosePark": "Wybierz park",
       "arrival": "Planowana godzina przyjazdu",
-      "note": "Notatka na ten dzień"
+      "note": "Notatka na ten dzień",
+      "noProgram": "Program na ten dzień nie został jeszcze ustalony."
     }
   },
   "user-profile": {

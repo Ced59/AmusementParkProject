@@ -8,6 +8,22 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class TripPlanMongoDefinitions
 {
+    public const int MaximumAccessibleTripsPerRequest = 100;
+    public const string LegacyOwnerOperationIndexName = "uq_trip_plan_owner_operation";
+    public const string LegacyOwnerScopeOperationIndexName = "ix_trip_plan_owner_scope_operation";
+    public const string CreatorScopeOperationIndexName = "uq_trip_plan_creator_scope_operation";
+
+    public static FindOptions<TripPlanDocument, TripPlanDocument> BuildAccessibleListOptions()
+    {
+        SortDefinitionBuilder<TripPlanDocument> sorts = Builders<TripPlanDocument>.Sort;
+        return new FindOptions<TripPlanDocument, TripPlanDocument>
+        {
+            Limit = MaximumAccessibleTripsPerRequest,
+            Sort = sorts.Descending(static document => document.UpdatedAt)
+                .Ascending(static document => document.Id),
+        };
+    }
+
     public static FilterDefinition<TripPlanDocument> BuildNoActiveChildLeaseFilter()
     {
         return new BsonDocumentFilterDefinition<TripPlanDocument>(new BsonDocument(
@@ -123,6 +139,31 @@ internal static class TripPlanMongoDefinitions
             & filters.Eq(static document => document.CreationOperationKeyHash, operationKeyHash);
     }
 
+    public static FilterDefinition<TripPlanDocument> BuildMissingCreationSnapshotOwnerFilter()
+    {
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        return filters.Exists(static document => document.CreationSnapshot, true)
+            & filters.Exists("creationSnapshot.ownerUserId", false);
+    }
+
+    public static UpdateDefinition<TripPlanDocument> BuildCreationSnapshotOwnerBackfill()
+    {
+        return new PipelineUpdateDefinition<TripPlanDocument>(
+            new[]
+            {
+                new BsonDocument(
+                    "$set",
+                    new BsonDocument("creationSnapshot.ownerUserId", "$ownerUserId")),
+            });
+    }
+
+    public static FilterDefinition<TripPlanDocument> BuildNoAdmissionInFlightFilter()
+    {
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        return filters.Exists(static document => document.MemberAdmissionFence, false)
+            | filters.Eq(static document => document.MemberAdmissionFence, null);
+    }
+
     public static UpdateDefinition<TripPlanDocument> BuildDomainMutation(TripPlan trip)
     {
         TripPlanDocument document = trip.ToDocument();
@@ -138,6 +179,21 @@ internal static class TripPlanMongoDefinitions
             .Set(static item => item.ChildMutationEpoch, document.ChildMutationEpoch)
             .Set(static item => item.UpdatedAt, document.UpdatedAt)
             .Set(static item => item.Version, document.Version);
+    }
+
+    public static UpdateDefinition<TripPlanDocument> BuildOwnershipTransferMutation(
+        TripPlan trip,
+        int ownerSlot)
+    {
+        ArgumentNullException.ThrowIfNull(trip);
+        if (ownerSlot is < 0 or >= TripPlan.MaximumPlansPerOwner)
+        {
+            throw new ArgumentOutOfRangeException(nameof(ownerSlot));
+        }
+
+        return BuildDomainMutation(trip)
+            .Set(static document => document.OwnerUserId, trip.OwnerUserId)
+            .Set(static document => document.OwnerSlot, ownerSlot);
     }
 
     public static ProjectionDefinition<TripPlanDocument> BuildActiveCreationProjection()
@@ -176,6 +232,7 @@ internal static class TripPlanMongoDefinitions
             updates.Set(static document => document.Status, TripPlanStatus.Cancelled),
             updates.Set(static document => document.AccessScope, TripPlanAccessScope.MembersOnly),
             updates.Set(static document => document.Members, new List<TripMemberDocument>()),
+            updates.Unset(static document => document.MemberAdmissionFence),
             updates.Set(static document => document.AdmissionClosureState, TripAdmissionClosureState.Closed),
             updates.Set(static document => document.DeletionState, TripDeletionState.Purged),
             updates.Set(static document => document.ChildMutationEpoch, trip.ChildMutationEpoch),
@@ -230,21 +287,16 @@ internal static class TripPlanMongoDefinitions
                 }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
-                    .Ascending(static document => document.OwnerUserId)
+                    .Ascending(static document => document.OwnerScopeHash)
                     .Ascending(static document => document.CreationOperationKeyHash),
                 new CreateIndexOptions<TripPlanDocument>
                 {
                     Unique = true,
-                    Name = "uq_trip_plan_owner_operation",
+                    Name = CreatorScopeOperationIndexName,
                     PartialFilterExpression = Builders<TripPlanDocument>.Filter.Eq(
                         static document => document.DeletionState,
                         TripDeletionState.None),
                 }),
-            new(
-                Builders<TripPlanDocument>.IndexKeys
-                    .Ascending(static document => document.OwnerScopeHash)
-                    .Ascending(static document => document.CreationOperationKeyHash),
-                new CreateIndexOptions { Name = "ix_trip_plan_owner_scope_operation" }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
                     .Ascending("members.userId")
@@ -265,6 +317,17 @@ internal static class TripPlanMongoDefinitions
                     .Ascending(static document => document.DeletionState)
                     .Ascending(static document => document.UpdatedAt),
                 new CreateIndexOptions { Name = "ix_trip_plan_deletion_recovery" }),
+            new(
+                Builders<TripPlanDocument>.IndexKeys
+                    .Ascending("memberAdmissionFence.leaseExpiresAtUtc")
+                    .Ascending("memberAdmissionFence.state"),
+                new CreateIndexOptions<TripPlanDocument>
+                {
+                    Name = "ix_trip_plan_admission_fence",
+                    PartialFilterExpression = Builders<TripPlanDocument>.Filter.Type(
+                        static document => document.MemberAdmissionFence,
+                        BsonType.Document),
+                }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
                     .Ascending(static document => document.CreationOperationExpiresAtUtc),

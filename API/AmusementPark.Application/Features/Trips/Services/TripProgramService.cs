@@ -115,11 +115,14 @@ public sealed class TripProgramService
             or TripChildWriteOutcome.IdempotencyConflict
             or TripChildWriteOutcome.Deleted)
         {
-            TripPlan? activeTrip = await this.tripPlanRepository.GetOwnedAsync(
+            TripPlan? activeTrip = await this.tripPlanRepository.GetAccessibleAsync(
                 normalizedUserId,
                 parsedTripId,
                 cancellationToken);
-            if (activeTrip is null)
+            TripEffectiveRole? activeRole = activeTrip?.ResolveRole(normalizedUserId);
+            if (activeTrip is null
+                || !activeRole.HasValue
+                || !TripAuthorizationPolicy.HasPermission(activeRole.Value, TripPermission.AddCandidates))
             {
                 return ApplicationResult<CreateTripParkCandidateResult>.Failure(
                     TripPlanApplicationErrors.NotFound());
@@ -150,7 +153,7 @@ public sealed class TripProgramService
                 TripPlanApplicationErrors.CandidateCreationWasDeleted());
         }
 
-        ApplicationResult<TripPlan> resolved = await this.ResolveOwnedTripAsync(
+        ApplicationResult<TripPlan> resolved = await this.ResolveEditableTripAsync(
             normalizedUserId,
             parsedTripId.Value,
             expectedPlanVersion,
@@ -168,8 +171,10 @@ public sealed class TripProgramService
                 TripPlanApplicationErrors.ParkNotAvailable());
         }
 
-        return await this.mutationExecutor.ExecuteOwnedAsync(
+        return await this.mutationExecutor.ExecuteAccessibleAsync(
             trip,
+            normalizedUserId,
+            TripPermission.AddCandidates,
             operationId,
             async lease =>
             {
@@ -192,7 +197,7 @@ public sealed class TripProgramService
                 try
                 {
                     TripProgramRules.ValidateCandidateDates(trip.DateProposal, input.CandidateDates);
-                    TripMember owner = ResolveOwnerMember(trip);
+                    TripMember actor = ResolveActiveMember(trip, normalizedUserId);
                     TripParkCandidate candidate = TripParkCandidate.Create(
                         TripParkCandidateId.New(),
                         trip.Id,
@@ -201,7 +206,7 @@ public sealed class TripProgramService
                         input.Source,
                         input.CollectiveNote,
                         null,
-                        owner.Id,
+                        actor.Id,
                         TripParkCandidateOrderPlanner.AllocateAppend(
                             candidates.Count == 0 ? null : candidates.Max(static item => item.SortPosition)),
                         this.NowUtc());
@@ -299,7 +304,7 @@ public sealed class TripProgramService
         TripParkCandidatePlacement placement,
         CancellationToken cancellationToken)
     {
-        ApplicationResult<TripPlan> resolved = await this.ResolveOwnedTripAsync(
+        ApplicationResult<TripPlan> resolved = await this.ResolveEditableTripAsync(
             userId,
             tripPlanId,
             expectedPlanVersion,
@@ -325,8 +330,10 @@ public sealed class TripProgramService
         }
 
         TripPlan trip = resolved.Value;
-        return await this.mutationExecutor.ExecuteOwnedAsync(
+        return await this.mutationExecutor.ExecuteAccessibleAsync(
             trip,
+            userId.Trim(),
+            TripPermission.EditProgram,
             Guid.NewGuid().ToString("N"),
             async lease =>
             {
@@ -373,7 +380,7 @@ public sealed class TripProgramService
         long expectedCandidateVersion,
         CancellationToken cancellationToken)
     {
-        ApplicationResult<TripPlan> resolved = await this.ResolveOwnedTripAsync(
+        ApplicationResult<TripPlan> resolved = await this.ResolveEditableTripAsync(
             userId,
             tripPlanId,
             expectedPlanVersion,
@@ -389,8 +396,10 @@ public sealed class TripProgramService
         }
 
         TripPlan trip = resolved.Value;
-        return await this.mutationExecutor.ExecuteOwnedAsync(
+        return await this.mutationExecutor.ExecuteAccessibleAsync(
             trip,
+            userId.Trim(),
+            TripPermission.EditProgram,
             Guid.NewGuid().ToString("N"),
             async lease =>
             {
@@ -431,7 +440,7 @@ public sealed class TripProgramService
         Func<TripParkCandidate, CancellationToken, Task<ApplicationError?>> consistencyGuard,
         CancellationToken cancellationToken)
     {
-        ApplicationResult<TripPlan> resolved = await this.ResolveOwnedTripAsync(
+        ApplicationResult<TripPlan> resolved = await this.ResolveEditableTripAsync(
             userId,
             tripPlanId,
             expectedPlanVersion,
@@ -445,8 +454,10 @@ public sealed class TripProgramService
         }
 
         TripPlan trip = resolved.Value;
-        return await this.mutationExecutor.ExecuteOwnedAsync(
+        return await this.mutationExecutor.ExecuteAccessibleAsync(
             trip,
+            userId.Trim(),
+            TripPermission.EditProgram,
             Guid.NewGuid().ToString("N"),
             async lease =>
             {
@@ -560,7 +571,7 @@ public sealed class TripProgramService
         }
     }
 
-    private async Task<ApplicationResult<TripPlan>> ResolveOwnedTripAsync(
+    private async Task<ApplicationResult<TripPlan>> ResolveEditableTripAsync(
         string userId,
         string tripPlanId,
         long expectedVersion,
@@ -572,11 +583,14 @@ public sealed class TripProgramService
             return Invalid<TripPlan>("A valid trip and version are required.");
         }
 
-        TripPlan? trip = await this.tripPlanRepository.GetOwnedAsync(
+        TripPlan? trip = await this.tripPlanRepository.GetAccessibleAsync(
             normalizedUserId,
             parsedTripId,
             cancellationToken);
-        if (trip is null)
+        TripEffectiveRole? role = trip?.ResolveRole(normalizedUserId);
+        if (trip is null
+            || !role.HasValue
+            || !TripAuthorizationPolicy.HasPermission(role.Value, TripPermission.EditProgram))
         {
             return ApplicationResult<TripPlan>.Failure(TripPlanApplicationErrors.NotFound());
         }
@@ -587,10 +601,10 @@ public sealed class TripProgramService
                 TripPlanApplicationErrors.ChangedConcurrently(trip.Version));
     }
 
-    private static TripMember ResolveOwnerMember(TripPlan trip)
+    private static TripMember ResolveActiveMember(TripPlan trip, string userId)
     {
         return trip.Members.Single(member => member.State == TripMembershipState.Active
-            && string.Equals(member.UserId, trip.OwnerUserId, StringComparison.Ordinal));
+            && string.Equals(member.UserId, userId, StringComparison.Ordinal));
     }
 
     private DateTime NowUtc()

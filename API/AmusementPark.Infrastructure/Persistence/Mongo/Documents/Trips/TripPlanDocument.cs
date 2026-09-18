@@ -35,6 +35,13 @@ public sealed class TripPlanDocument : MongoDocumentBase
     [BsonElement("members")]
     public List<TripMemberDocument> Members { get; set; } = new();
 
+    [BsonElement("memberAdmissionFence")]
+    [BsonIgnoreIfNull]
+    public TripMemberAdmissionFenceDocument? MemberAdmissionFence { get; set; }
+
+    [BsonElement("memberAdmissionGeneration")]
+    public long MemberAdmissionGeneration { get; set; }
+
     [BsonElement("admissionClosureState")]
     [BsonRepresentation(BsonType.String)]
     public TripAdmissionClosureState AdmissionClosureState { get; set; }

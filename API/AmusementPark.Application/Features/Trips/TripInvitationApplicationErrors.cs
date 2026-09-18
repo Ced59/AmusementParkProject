@@ -58,4 +58,25 @@ public static class TripInvitationApplicationErrors
             "trip.invitation.replay-unavailable",
             "The original invitation link can no longer be replayed safely.");
     }
+
+    public static ApplicationError RecipientMismatch()
+    {
+        return ApplicationError.Forbidden(
+            "trip.invitation.recipient-mismatch",
+            "This invitation is reserved for another verified account.");
+    }
+
+    public static ApplicationError AdmissionUnavailable()
+    {
+        return ApplicationError.Conflict(
+            "trip.invitation.admission-unavailable",
+            "The invitation could not be accepted safely. Retry with the same idempotency key.");
+    }
+
+    public static ApplicationError MemberLimitReached()
+    {
+        return ApplicationError.RuleViolation(
+            "trip.invitation.member-limit-reached",
+            $"At most {TripPlan.MaximumMembers} active participants are allowed per trip.");
+    }
 }

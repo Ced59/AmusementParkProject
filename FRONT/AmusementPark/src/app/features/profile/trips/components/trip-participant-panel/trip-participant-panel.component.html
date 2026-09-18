@@ -1,0 +1,107 @@
+<section class="participant-panel" appUiSurface="panel" appUiSurfacePadding="spacious">
+  <div class="participant-panel__heading">
+    <div>
+      <app-ui-kicker tone="sky" iconClass="pi pi-users">{{ 'trips.participants.kicker' | translate }}</app-ui-kicker>
+      <h2>{{ 'trips.participants.title' | translate }}</h2>
+      <p>{{ 'trips.participants.description' | translate }}</p>
+    </div>
+    @if (facade.status() === 'ready') {
+      <app-ui-chip tone="soft" iconClass="pi pi-user">{{ facade.participants().length }}</app-ui-chip>
+    }
+  </div>
+
+  @if (facade.status() === 'loading') {
+    <p class="participant-panel__message" role="status">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      {{ 'trips.participants.loading' | translate }}
+    </p>
+  } @else if (facade.status() === 'error') {
+    <p class="participant-panel__message participant-panel__message--error" role="alert">
+      {{ 'trips.participants.loadError' | translate }}
+    </p>
+  } @else {
+    @if (facade.error()) {
+      <p class="participant-panel__message participant-panel__message--error" role="alert">
+        {{ 'trips.participants.actionError' | translate }}
+      </p>
+    }
+
+    <div class="participant-list">
+      @for (participant of facade.participants(); track participant.memberId) {
+        <article class="participant-card" [class.participant-card--self]="participant.isCurrentUser">
+          <span class="participant-card__avatar" aria-hidden="true">{{ initials(participant.displayName) }}</span>
+          <div class="participant-card__identity">
+            <strong>{{ participant.displayName }}</strong>
+            <span>{{ roleLabelKey(participant.role) | translate }}</span>
+            @if (participant.isCurrentUser) {
+              <small>{{ 'trips.participants.you' | translate }}</small>
+            }
+          </div>
+
+          @if (facade.canManageRoles() && participant.role !== 'Owner') {
+            <div class="participant-card__actions">
+              <label>
+                <span>{{ 'trips.participants.roleLabel' | translate }}</span>
+                <select
+                  [value]="participant.role"
+                  (change)="changeRole(participant, $any($event.target).value)">
+                  @for (role of delegatedRoles; track role) {
+                    <option [value]="role">{{ roleLabelKey(role) | translate }}</option>
+                  }
+                </select>
+              </label>
+              @if (facade.canTransferOwnership()) {
+                <button type="button" appUiButton="ghost" (click)="beginTransfer(participant)">
+                  {{ 'trips.participants.transfer' | translate }}
+                </button>
+              }
+            </div>
+          }
+
+          @if (transferCandidateId() === participant.memberId) {
+            <div class="participant-card__confirmation" role="group" [attr.aria-label]="'trips.participants.transfer' | translate">
+              <p>{{ 'trips.participants.transferExplanation' | translate:{ name: participant.displayName } }}</p>
+              <label>
+                <span>{{ 'trips.participants.previousOwnerRole' | translate }}</span>
+                <select [value]="previousOwnerRole()" (change)="previousOwnerRole.set($any($event.target).value)">
+                  @for (role of delegatedRoles; track role) {
+                    <option [value]="role">{{ roleLabelKey(role) | translate }}</option>
+                  }
+                </select>
+              </label>
+              <div>
+                <button type="button" appUiButton="primary" (click)="confirmTransfer(participant)">
+                  {{ 'trips.participants.confirmTransfer' | translate }}
+                </button>
+                <button type="button" appUiButton="ghost" (click)="cancelTransfer()">
+                  {{ 'common.cancel' | translate }}
+                </button>
+              </div>
+            </div>
+          }
+        </article>
+      }
+    </div>
+
+    @if (facade.canLeave()) {
+      <div class="participant-panel__leave">
+        @if (!confirmingLeave()) {
+          <button type="button" appUiButton="ghost" (click)="confirmingLeave.set(true)">
+            <i class="pi pi-sign-out" aria-hidden="true"></i>
+            {{ 'trips.participants.leave' | translate }}
+          </button>
+        } @else {
+          <p>{{ 'trips.participants.leaveExplanation' | translate }}</p>
+          <div>
+            <button type="button" appUiButton="primary" (click)="confirmLeave()">
+              {{ 'trips.participants.confirmLeave' | translate }}
+            </button>
+            <button type="button" appUiButton="ghost" (click)="confirmingLeave.set(false)">
+              {{ 'common.cancel' | translate }}
+            </button>
+          </div>
+        }
+      </div>
+    }
+  }
+</section>

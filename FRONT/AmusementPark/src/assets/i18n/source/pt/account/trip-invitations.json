@@ -48,8 +48,16 @@
       "privatePlan": "Plano privado",
       "publicPrivacy": "Esta pré-visualização não revela parques, dias, notas ou preferências do grupo.",
       "publicTargeted": "Esta ligação está reservada ao e-mail escolhido pelo organizador.",
-      "continue": "Iniciar sessão",
-      "accountRequired": "Podes consultar esta pré-visualização sem conta. Iniciar sessão ainda não aceita o convite; em breve poderás juntar-te à viagem."
+      "continue": "Inicia sessão para responder",
+      "accept": "Juntar-me à viagem",
+      "decline": "Recusar o convite",
+      "accountRequired": "Só precisas de iniciar sessão para aceitar ou recusar. Assim, o acesso à viagem permanece privado.",
+      "acceptedTitle": "Juntaste-te à viagem",
+      "acceptedDescription": "O plano privado está agora disponível nas tuas viagens.",
+      "declinedTitle": "Convite recusado",
+      "declinedDescription": "O link foi fechado e já não pode ser utilizado.",
+      "openTrip": "Abrir a viagem",
+      "decisionError": "Não foi possível guardar a tua resposta. Tenta novamente neste mesmo ecrã."
     }
   }
 }

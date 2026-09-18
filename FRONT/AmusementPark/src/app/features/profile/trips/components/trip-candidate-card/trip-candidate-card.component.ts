@@ -19,6 +19,7 @@ export class TripCandidateCardComponent {
   @Input() index: number = 0;
   @Input() count: number = 0;
   @Input() disabled: boolean = false;
+  @Input() readonly: boolean = false;
   @Input() scheduled: boolean = false;
 
   @Output() stateChanged = new EventEmitter<TripParkCandidateState>();

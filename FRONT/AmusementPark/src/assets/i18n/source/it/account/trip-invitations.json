@@ -48,8 +48,16 @@
       "privatePlan": "Programma privato",
       "publicPrivacy": "Questa anteprima non mostra parchi, giorni, note o preferenze del gruppo.",
       "publicTargeted": "Questo link è riservato all’e-mail scelta dall’organizzatore.",
-      "continue": "Accedi",
-      "accountRequired": "Puoi vedere questa anteprima senza account. L’accesso non accetta ancora l’invito; presto potrai unirti al viaggio."
+      "continue": "Accedi per rispondere",
+      "accept": "Unisciti al viaggio",
+      "decline": "Rifiuta l’invito",
+      "accountRequired": "L’accesso serve solo per accettare o rifiutare. In questo modo il viaggio resta privato.",
+      "acceptedTitle": "Hai aderito al viaggio",
+      "acceptedDescription": "Il programma privato è ora disponibile tra i tuoi viaggi.",
+      "declinedTitle": "Invito rifiutato",
+      "declinedDescription": "Il link è stato chiuso e non può più essere utilizzato.",
+      "openTrip": "Apri il viaggio",
+      "decisionError": "Non è stato possibile salvare la risposta. Riprova da questa stessa schermata."
     }
   }
 }

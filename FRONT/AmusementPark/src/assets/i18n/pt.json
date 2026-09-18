@@ -1430,11 +1430,42 @@
       "privatePlan": "Plano privado",
       "publicPrivacy": "Esta pré-visualização não revela parques, dias, notas ou preferências do grupo.",
       "publicTargeted": "Esta ligação está reservada ao e-mail escolhido pelo organizador.",
-      "continue": "Iniciar sessão",
-      "accountRequired": "Podes consultar esta pré-visualização sem conta. Iniciar sessão ainda não aceita o convite; em breve poderás juntar-te à viagem."
+      "continue": "Inicia sessão para responder",
+      "accept": "Juntar-me à viagem",
+      "decline": "Recusar o convite",
+      "accountRequired": "Só precisas de iniciar sessão para aceitar ou recusar. Assim, o acesso à viagem permanece privado.",
+      "acceptedTitle": "Juntaste-te à viagem",
+      "acceptedDescription": "O plano privado está agora disponível nas tuas viagens.",
+      "declinedTitle": "Convite recusado",
+      "declinedDescription": "O link foi fechado e já não pode ser utilizado.",
+      "openTrip": "Abrir a viagem",
+      "decisionError": "Não foi possível guardar a tua resposta. Tenta novamente neste mesmo ecrã."
+    },
+    "participants": {
+      "kicker": "Equipa da viagem",
+      "title": "Quem está a preparar esta viagem?",
+      "description": "Vê quem aceitou um convite e a função de cada pessoa.",
+      "loading": "A carregar a equipa…",
+      "loadError": "Não foi possível carregar a equipa.",
+      "actionError": "Não foi possível aplicar a alteração. A lista foi atualizada.",
+      "you": "Tu",
+      "roleLabel": "Função na viagem",
+      "roles": {
+        "owner": "Proprietário",
+        "editor": "Coorganizador",
+        "participant": "Participante",
+        "viewer": "Leitor"
+      },
+      "transfer": "Transferir a propriedade",
+      "transferExplanation": "{{name}} passará a ser proprietário. Escolhe a função que vais manter.",
+      "previousOwnerRole": "A tua nova função",
+      "confirmTransfer": "Confirmar a transferência",
+      "leave": "Sair desta viagem",
+      "leaveExplanation": "Perderás imediatamente o acesso ao plano privado.",
+      "confirmLeave": "Confirmar a saída"
     },
     "kicker": "Viagens por preparar",
-    "privacy": "Privado, visível apenas para ti",
+    "privacy": "Privado, visível apenas para os membros",
     "profile": {
       "title": "Prepara a tua próxima viagem",
       "description": "Reúne os parques que te interessam, ordena-os e constrói cada dia.",
@@ -1492,7 +1523,8 @@
     "overview": {
       "kicker": "Oficina de viagem",
       "description": "Transforma as tuas ideias num programa claro, ao teu ritmo.",
-      "solo": "Preparação individual"
+      "solo": "Preparação individual",
+      "memberCount": "{{count}} participante(s)"
     },
     "dates": {
       "kicker": "Quando vais?",
@@ -1506,6 +1538,7 @@
       "unsavedDayOutsideRange": "Um dia fora deste período contém alterações não guardadas. Limpa ou guarda o rascunho antes de alterares as datas.",
       "unsavedDayBeforeClear": "Um dia contém alterações não guardadas. Limpa ou guarda o rascunho antes de limpares as datas da viagem.",
       "toDecide": "Datas por decidir",
+      "notDefined": "Datas ainda por decidir",
       "kinds": {
         "none": "Datas por decidir",
         "fixed": "Datas definidas",
@@ -1556,7 +1589,8 @@
       "park": "Parque do dia",
       "choosePark": "Escolher um parque",
       "arrival": "Hora de chegada pretendida",
-      "note": "Nota para o dia"
+      "note": "Nota para o dia",
+      "noProgram": "Ainda não há programa definido para este dia."
     }
   },
   "user-profile": {

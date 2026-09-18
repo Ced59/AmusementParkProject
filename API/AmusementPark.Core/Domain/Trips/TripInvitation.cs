@@ -25,6 +25,13 @@ public sealed class TripInvitation
         TripInvitationMemberCountBand memberCountBand,
         DateTime expiresAtUtc,
         DateTime? revokedAtUtc,
+        DateTime? acceptedAtUtc,
+        DateTime? declinedAtUtc,
+        int useCount,
+        string? acceptingUserId,
+        string? acceptanceOperationId,
+        long? acceptanceGeneration,
+        DateTime? acceptanceLeaseExpiresAtUtc,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         long version)
@@ -66,12 +73,38 @@ public sealed class TripInvitation
         {
             ValidateUtc(revokedAtUtc.Value, nameof(revokedAtUtc));
         }
+        if (acceptedAtUtc.HasValue)
+        {
+            ValidateUtc(acceptedAtUtc.Value, nameof(acceptedAtUtc));
+        }
+        if (declinedAtUtc.HasValue)
+        {
+            ValidateUtc(declinedAtUtc.Value, nameof(declinedAtUtc));
+        }
+        if (acceptanceLeaseExpiresAtUtc.HasValue)
+        {
+            ValidateUtc(acceptanceLeaseExpiresAtUtc.Value, nameof(acceptanceLeaseExpiresAtUtc));
+        }
+
+        string? normalizedAcceptingUserId = NormalizeOptional(acceptingUserId);
+        string? normalizedAcceptanceOperationId = NormalizeOptional(acceptanceOperationId);
+        bool hasAcceptanceIdentity = normalizedAcceptingUserId is not null
+            && normalizedAcceptanceOperationId is not null
+            && acceptanceGeneration is > 0
+            && acceptanceLeaseExpiresAtUtc.HasValue;
 
         TimeSpan lifetime = expiresAtUtc - createdAtUtc;
         if (lifetime < MinimumLifetime || lifetime > MaximumLifetime
             || updatedAtUtc < createdAtUtc
             || version < 1
+            || useCount is < 0 or > 1
             || (status == TripInvitationStatus.Revoked) != revokedAtUtc.HasValue
+            || (status == TripInvitationStatus.Accepted) != acceptedAtUtc.HasValue
+            || (status == TripInvitationStatus.Declined) != declinedAtUtc.HasValue
+            || (status is TripInvitationStatus.Accepting or TripInvitationStatus.Accepted
+                ? !hasAcceptanceIdentity
+                : hasAcceptanceIdentity)
+            || (status == TripInvitationStatus.Accepted ? useCount != 1 : useCount != 0)
             || (revokedAtUtc.HasValue && (revokedAtUtc.Value < createdAtUtc || updatedAtUtc < revokedAtUtc.Value)))
         {
             throw Invalid(TripInvitationErrorCodes.InvalidLifetime, "The trip invitation lifetime is invalid.");
@@ -93,6 +126,13 @@ public sealed class TripInvitation
         this.MemberCountBand = memberCountBand;
         this.ExpiresAtUtc = expiresAtUtc;
         this.RevokedAtUtc = revokedAtUtc;
+        this.AcceptedAtUtc = acceptedAtUtc;
+        this.DeclinedAtUtc = declinedAtUtc;
+        this.UseCount = useCount;
+        this.AcceptingUserId = normalizedAcceptingUserId;
+        this.AcceptanceOperationId = normalizedAcceptanceOperationId;
+        this.AcceptanceGeneration = acceptanceGeneration;
+        this.AcceptanceLeaseExpiresAtUtc = acceptanceLeaseExpiresAtUtc;
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
         this.Version = version;
@@ -114,6 +154,13 @@ public sealed class TripInvitation
     public TripInvitationMemberCountBand MemberCountBand { get; }
     public DateTime ExpiresAtUtc { get; }
     public DateTime? RevokedAtUtc { get; private set; }
+    public DateTime? AcceptedAtUtc { get; private set; }
+    public DateTime? DeclinedAtUtc { get; private set; }
+    public int UseCount { get; private set; }
+    public string? AcceptingUserId { get; private set; }
+    public string? AcceptanceOperationId { get; private set; }
+    public long? AcceptanceGeneration { get; private set; }
+    public DateTime? AcceptanceLeaseExpiresAtUtc { get; private set; }
     public DateTime CreatedAtUtc { get; }
     public DateTime UpdatedAtUtc { get; private set; }
     public long Version { get; private set; }
@@ -152,6 +199,13 @@ public sealed class TripInvitation
             memberCountBand,
             expiresAtUtc,
             null,
+            null,
+            null,
+            0,
+            null,
+            null,
+            null,
+            null,
             createdAtUtc,
             createdAtUtc,
             1);
@@ -174,6 +228,13 @@ public sealed class TripInvitation
         TripInvitationMemberCountBand memberCountBand,
         DateTime expiresAtUtc,
         DateTime? revokedAtUtc,
+        DateTime? acceptedAtUtc,
+        DateTime? declinedAtUtc,
+        int useCount,
+        string? acceptingUserId,
+        string? acceptanceOperationId,
+        long? acceptanceGeneration,
+        DateTime? acceptanceLeaseExpiresAtUtc,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         long version)
@@ -195,6 +256,13 @@ public sealed class TripInvitation
             memberCountBand,
             expiresAtUtc,
             revokedAtUtc,
+            acceptedAtUtc,
+            declinedAtUtc,
+            useCount,
+            acceptingUserId,
+            acceptanceOperationId,
+            acceptanceGeneration,
+            acceptanceLeaseExpiresAtUtc,
             createdAtUtc,
             updatedAtUtc,
             version);
@@ -246,6 +314,11 @@ public sealed class TripInvitation
         {
             throw Invalid(TripInvitationErrorCodes.InvalidToken, "The trip invitation token material is invalid.");
         }
+    }
+
+    private static string? NormalizeOptional(string? value)
+    {
+        return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
     }
 
     private static void ValidateUtc(DateTime value, string parameterName)

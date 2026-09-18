@@ -1,0 +1,22 @@
+{
+  "trips": {
+    "participants": {
+      "kicker": "Trip team",
+      "title": "Who is planning this trip?",
+      "description": "See who accepted an invitation and each person’s role.",
+      "loading": "Loading the team…",
+      "loadError": "The team could not be loaded.",
+      "actionError": "The change could not be applied. The list has been refreshed.",
+      "you": "You",
+      "roleLabel": "Trip role",
+      "roles": { "owner": "Owner", "editor": "Co-organiser", "participant": "Participant", "viewer": "Viewer" },
+      "transfer": "Transfer ownership",
+      "transferExplanation": "{{name}} will become the owner. Choose the role you will keep.",
+      "previousOwnerRole": "Your new role",
+      "confirmTransfer": "Confirm transfer",
+      "leave": "Leave this trip",
+      "leaveExplanation": "You will immediately lose access to the private plan.",
+      "confirmLeave": "Confirm leaving"
+    }
+  }
+}

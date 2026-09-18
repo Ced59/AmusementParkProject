@@ -1,0 +1,22 @@
+{
+  "trips": {
+    "participants": {
+      "kicker": "Squadra del viaggio",
+      "title": "Chi sta preparando questo viaggio?",
+      "description": "Scopri chi ha accettato un invito e il ruolo di ogni persona.",
+      "loading": "Caricamento della squadra…",
+      "loadError": "Non è stato possibile caricare la squadra.",
+      "actionError": "Non è stato possibile applicare la modifica. L’elenco è stato aggiornato.",
+      "you": "Tu",
+      "roleLabel": "Ruolo nel viaggio",
+      "roles": { "owner": "Proprietario", "editor": "Co-organizzatore", "participant": "Partecipante", "viewer": "Lettore" },
+      "transfer": "Trasferisci la proprietà",
+      "transferExplanation": "{{name}} diventerà proprietario. Scegli il ruolo che manterrai.",
+      "previousOwnerRole": "Il tuo nuovo ruolo",
+      "confirmTransfer": "Conferma il trasferimento",
+      "leave": "Lascia questo viaggio",
+      "leaveExplanation": "Perderai immediatamente l’accesso al programma privato.",
+      "confirmLeave": "Conferma l’uscita"
+    }
+  }
+}

@@ -12,17 +12,43 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class TripPlanMongoDefinitionsTests
 {
     [Fact]
+    public void BuildAccessibleListOptions_ShouldUseADedicatedMembershipSafetyLimit()
+    {
+        FindOptions<TripPlanDocument, TripPlanDocument> options =
+            TripPlanMongoDefinitions.BuildAccessibleListOptions();
+
+        Assert.Equal(TripPlanMongoDefinitions.MaximumAccessibleTripsPerRequest, options.Limit);
+        Assert.True(options.Limit > TripPlan.MaximumPlansPerOwner);
+        Assert.NotNull(options.Sort);
+    }
+
+    [Fact]
     public void BuildIndexes_ShouldProtectOwnerCapacityAndIdempotency()
     {
         IReadOnlyCollection<CreateIndexModel<TripPlanDocument>> indexes = TripPlanMongoDefinitions.BuildIndexes();
 
         Assert.Contains(indexes, index => index.Options.Name == "uq_trip_plan_owner_slot"
             && index.Options.Unique == true);
-        Assert.Contains(indexes, index => index.Options.Name == "uq_trip_plan_owner_operation"
-            && index.Options.Unique == true);
-        Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_owner_scope_operation"
-            && index.Options.Unique != true);
+        CreateIndexModel<TripPlanDocument> creatorOperationIndex = Assert.Single(
+            indexes,
+            index => index.Options.Name == TripPlanMongoDefinitions.CreatorScopeOperationIndexName);
+        Assert.True(creatorOperationIndex.Options.Unique);
+        BsonDocument creatorOperationKeys = creatorOperationIndex.Keys.Render(
+            new RenderArgs<TripPlanDocument>(
+                MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+                MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        Assert.Equal(
+            new BsonDocument
+            {
+                { "ownerScopeHash", 1 },
+                { "creationOperationKeyHash", 1 },
+            },
+            creatorOperationKeys);
+        Assert.DoesNotContain(indexes, index => index.Options.Name == "uq_trip_plan_owner_operation");
+        Assert.DoesNotContain(indexes, index => index.Options.Name == "ix_trip_plan_owner_scope_operation");
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_member_updated");
+        Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_admission_fence"
+            && index.Options.PartialFilterExpression is not null);
         Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_plan_creation_tombstone"
             && index.Options.ExpireAfter == TimeSpan.Zero);
     }
@@ -45,6 +71,25 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void CreationSnapshotOwnerBackfill_ShouldCopyTheOriginalCurrentOwner()
+    {
+        BsonDocument filter = TripPlanMongoDefinitions.BuildMissingCreationSnapshotOwnerFilter()
+            .Render(new RenderArgs<TripPlanDocument>(
+                MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+                MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        BsonValue update = TripPlanMongoDefinitions.BuildCreationSnapshotOwnerBackfill()
+            .Render(new RenderArgs<TripPlanDocument>(
+                MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+                MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+
+        Assert.True(filter.Contains("creationSnapshot"));
+        Assert.False(filter["creationSnapshot.ownerUserId"]["$exists"].AsBoolean);
+        Assert.Equal(
+            "$ownerUserId",
+            update.AsBsonArray[0]["$set"]["creationSnapshot.ownerUserId"].AsString);
+    }
+
+    [Fact]
     public void BuildActiveCreationProjection_ShouldRetainEveryReplayDecisionField()
     {
         ProjectionDefinition<TripPlanDocument> projection =
@@ -58,6 +103,91 @@ public sealed class TripPlanMongoDefinitionsTests
         Assert.Equal(1, rendered["creationFingerprintKeyVersion"].AsInt32);
         Assert.Equal(1, rendered["creationSnapshot"].AsInt32);
         Assert.Equal(1, rendered["deletionState"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildDomainMutation_ShouldNeverOverwriteTheAdmissionFence()
+    {
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "user-1",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            new DateTime(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc));
+
+        UpdateDefinition<TripPlanDocument> update = TripPlanMongoDefinitions.BuildDomainMutation(trip);
+        BsonDocument rendered = update.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry)).AsBsonDocument;
+
+        Assert.False(rendered["$set"].AsBsonDocument.Contains("memberAdmissionFence"));
+        Assert.False(rendered.Contains("$unset"));
+    }
+
+    [Fact]
+    public void BuildOwnershipTransferMutation_ShouldPreserveTheImmutableCreationScope()
+    {
+        DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
+        TripMember owner = TripMember.Restore(
+            TripMemberId.Parse("member-1"),
+            "user-1",
+            null,
+            TripMembershipState.Active,
+            createdAtUtc);
+        TripMember target = TripMember.Restore(
+            TripMemberId.Parse("member-2"),
+            "user-2",
+            TripDelegatedRole.Participant,
+            TripMembershipState.Active,
+            createdAtUtc.AddMinutes(1));
+        TripPlan trip = TripPlan.Restore(
+            TripPlanId.Parse("trip-1"),
+            "user-1",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            TripPlanStatus.Draft,
+            TripPlanAccessScope.MembersOnly,
+            new[] { owner, target },
+            TripAdmissionClosureState.Open,
+            TripDeletionState.None,
+            1,
+            createdAtUtc,
+            createdAtUtc.AddMinutes(1),
+            1);
+        trip.TransferOwnership(
+            "user-1",
+            target.Id,
+            TripDelegatedRole.Editor,
+            new DateTime(2026, 9, 17, 8, 2, 0, DateTimeKind.Utc));
+
+        UpdateDefinition<TripPlanDocument> update =
+            TripPlanMongoDefinitions.BuildOwnershipTransferMutation(trip, 7);
+        BsonDocument rendered = update.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry)).AsBsonDocument;
+
+        Assert.Equal("user-2", rendered["$set"]["ownerUserId"].AsString);
+        Assert.Equal(7, rendered["$set"]["ownerSlot"].AsInt32);
+        Assert.False(rendered["$set"].AsBsonDocument.Contains("ownerScopeHash"));
+        Assert.False(rendered["$set"].AsBsonDocument.Contains("creationOperationKeyHash"));
+        Assert.False(rendered["$set"].AsBsonDocument.Contains("creationPayloadHash"));
+    }
+
+    [Fact]
+    public void BuildNoAdmissionInFlightFilter_ShouldAcceptOnlyMissingOrLegacyNullFences()
+    {
+        FilterDefinition<TripPlanDocument> filter =
+            TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter();
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("memberAdmissionFence", json, StringComparison.Ordinal);
+        Assert.Contains("$exists", json, StringComparison.Ordinal);
+        Assert.Contains("null", json, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]
@@ -100,6 +230,162 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildExpiredAdmissionFenceFilter_ShouldBindIdentityAndMongoServerTime()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+
+        FilterDefinition<TripPlanDocument> filter =
+            TripAdmissionRepository.BuildExpiredFenceCancellationFilter(
+                TripPlanId.Parse("trip-1"),
+                fence);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("trip-1", json, StringComparison.Ordinal);
+        Assert.Contains("invitation-1", json, StringComparison.Ordinal);
+        Assert.Contains("operation-1", json, StringComparison.Ordinal);
+        Assert.Contains("user-2", json, StringComparison.Ordinal);
+        Assert.Contains("generation", json, StringComparison.Ordinal);
+        Assert.Contains("$$NOW", json, StringComparison.Ordinal);
+        Assert.Contains("$gte", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void BuildFenceCancellationUpdate_ShouldAdvanceTheRootVersion()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+
+        BsonValue rendered = TripAdmissionRepository.BuildFenceCancellationUpdate(fence)
+            .Render(new RenderArgs<TripPlanDocument>(
+                MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+                MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        BsonDocument update = rendered.AsBsonDocument;
+
+        Assert.Equal(1L, update["$inc"]["version"].AsInt64);
+        Assert.Equal("operation-1", update["$pull"]["members"]["admissionOperationId"].AsString);
+        Assert.True(update["$unset"].AsBsonDocument.Contains("memberAdmissionFence"));
+    }
+
+    [Fact]
+    public void ResolveCancellationReplay_WhenFenceAndProvisionalMemberAreAlreadyGone_ShouldResumeCleanup()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+        TripPlanDocument cleanedPlan = new()
+        {
+            Id = "trip-1",
+            Members = new List<TripMemberDocument>(),
+        };
+
+        TripAdmissionWriteOutcome outcome =
+            TripAdmissionRepository.ResolveCancellationReplay(cleanedPlan, fence);
+
+        Assert.Equal(TripAdmissionWriteOutcome.Success, outcome);
+    }
+
+    [Fact]
+    public void ResolveCancellationReplay_WhenMemberWasEstablished_ShouldPreserveAcceptance()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+        TripPlanDocument establishedPlan = new()
+        {
+            Id = "trip-1",
+            Members = new List<TripMemberDocument>
+            {
+                new()
+                {
+                    MemberId = "member-2",
+                    UserId = "user-2",
+                    State = TripMembershipState.Active,
+                    AdmissionOperationId = "operation-1",
+                },
+            },
+        };
+
+        TripAdmissionWriteOutcome outcome =
+            TripAdmissionRepository.ResolveCancellationReplay(establishedPlan, fence);
+
+        Assert.Equal(TripAdmissionWriteOutcome.AlreadyCompleted, outcome);
+    }
+
+    [Fact]
+    public void ResolveCancellationReplay_WhenAnotherInvitationEstablishedTheMember_ShouldResumeCleanup()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+        TripPlanDocument planJoinedThroughAnotherInvitation = new()
+        {
+            Id = "trip-1",
+            Members = new List<TripMemberDocument>
+            {
+                new()
+                {
+                    MemberId = "member-2",
+                    UserId = "user-2",
+                    State = TripMembershipState.Active,
+                    AdmissionOperationId = "operation-2",
+                },
+            },
+        };
+
+        TripAdmissionWriteOutcome outcome = TripAdmissionRepository.ResolveCancellationReplay(
+            planJoinedThroughAnotherInvitation,
+            fence);
+
+        Assert.Equal(TripAdmissionWriteOutcome.Success, outcome);
+    }
+
+    [Fact]
+    public void BuildEstablishedMemberReplayFilter_ShouldRequireTheExactAdmissionOperation()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+
+        FilterDefinition<TripPlanDocument> filter =
+            TripAdmissionRepository.BuildEstablishedMemberReplayFilter(
+                TripPlanId.Parse("trip-1"),
+                fence);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        BsonDocument memberMatch = rendered["members"]["$elemMatch"].AsBsonDocument;
+
+        Assert.Equal("trip-1", rendered["_id"].AsString);
+        Assert.Equal("user-2", memberMatch["userId"].AsString);
+        Assert.Equal(TripMembershipState.Active.ToString(), memberMatch["state"].AsString);
+        Assert.Equal("operation-1", memberMatch["admissionOperationId"].AsString);
+    }
+
+    [Fact]
     public void BuildDeletionTombstone_ShouldScrubPrivateDataAndKeepOnlyTheReplayFence()
     {
         DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
@@ -128,6 +414,7 @@ public sealed class TripPlanMongoDefinitionsTests
             rendered["$set"]["creationOperationExpiresAtUtc"].ToUniversalTime());
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("destinationTimeZoneId"));
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("creationSnapshot"));
+        Assert.True(rendered["$unset"].AsBsonDocument.Contains("memberAdmissionFence"));
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("ownerUserId"));
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("ownerSlot"));
         Assert.True(rendered["$unset"].AsBsonDocument.Contains("createdAt"));
@@ -201,6 +488,30 @@ public sealed class TripPlanMongoDefinitionsTests
 
         Assert.Equal(IdempotentTripPlanCreationStatus.Replayed, result.Status);
         Assert.Equal(trip.Id, result.TripPlan?.Id);
+    }
+
+    [Fact]
+    public void ResolveIdempotentCreation_AfterOwnershipTransfer_ShouldReplayTheOriginalSnapshot()
+    {
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "creator-user",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            new DateTime(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc));
+        TripPlanDocument transferredDocument = trip.ToDocument();
+        transferredDocument.CreationPayloadHash = "payload-hash";
+        transferredDocument.CreationSnapshot = transferredDocument.CreateCreationSnapshot();
+        transferredDocument.OwnerUserId = "new-owner";
+
+        IdempotentTripPlanCreationResult result = TripPlanRepository.ResolveIdempotentCreation(
+            transferredDocument,
+            "payload-hash");
+
+        Assert.Equal(IdempotentTripPlanCreationStatus.Replayed, result.Status);
+        Assert.Equal("creator-user", result.TripPlan?.OwnerUserId);
+        Assert.Equal("creator-user", result.TripPlan?.Members.Single().UserId);
     }
 
     [Fact]

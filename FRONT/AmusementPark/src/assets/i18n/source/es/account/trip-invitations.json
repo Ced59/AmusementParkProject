@@ -48,8 +48,16 @@
       "privatePlan": "Plan privado",
       "publicPrivacy": "Esta vista previa no revela parques, días, notas ni preferencias del grupo.",
       "publicTargeted": "Este enlace está reservado al correo elegido por el organizador.",
-      "continue": "Iniciar sesión",
-      "accountRequired": "Puedes consultar esta vista previa sin cuenta. Iniciar sesión todavía no acepta la invitación; pronto podrás unirte al viaje."
+      "continue": "Inicia sesión para responder",
+      "accept": "Unirme al viaje",
+      "decline": "Rechazar la invitación",
+      "accountRequired": "Solo necesitas iniciar sesión para aceptar o rechazar. Así se protege el acceso privado al viaje.",
+      "acceptedTitle": "Te has unido al viaje",
+      "acceptedDescription": "El plan privado ya está disponible en tus viajes.",
+      "declinedTitle": "Invitación rechazada",
+      "declinedDescription": "El enlace se ha cerrado y ya no se puede utilizar.",
+      "openTrip": "Abrir el viaje",
+      "decisionError": "No se ha podido guardar tu respuesta. Inténtalo de nuevo desde esta misma pantalla."
     }
   }
 }

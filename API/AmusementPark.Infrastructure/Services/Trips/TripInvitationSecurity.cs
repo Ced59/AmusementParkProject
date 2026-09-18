@@ -194,6 +194,42 @@ public sealed class TripInvitationSecurity : ITripInvitationSecurity
         }
     }
 
+    public bool MatchesEmailFingerprint(
+        string normalizedEmail,
+        string expectedFingerprint,
+        string keyVersion)
+    {
+        string email = NormalizeRequired(normalizedEmail).ToLowerInvariant();
+        string normalizedKeyVersion = NormalizeRequired(keyVersion);
+        if (!this.rootKeys.ContainsKey(normalizedKeyVersion))
+        {
+            return false;
+        }
+
+        byte[] key = this.DeriveKey(normalizedKeyVersion, "trip-invitation-email-fingerprint-v1");
+        byte[] payload = Encoding.UTF8.GetBytes(email);
+        try
+        {
+            using HMACSHA256 hmac = new HMACSHA256(key);
+            byte[] actual = hmac.ComputeHash(payload);
+            byte[] expected;
+            try
+            {
+                expected = Convert.FromBase64String(expectedFingerprint);
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+
+            return CryptographicOperations.FixedTimeEquals(actual, expected);
+        }
+        finally
+        {
+            CryptographicOperations.ZeroMemory(key);
+        }
+    }
+
     private string Seal(byte[] plaintext, string keyVersion, byte[] associatedData)
     {
         byte[] nonce = RandomNumberGenerator.GetBytes(NonceByteCount);

@@ -62,6 +62,7 @@ export class TripOverviewStateFacade {
   private readonly clearedDaySignal = signal<{ localDate: string; revision: number } | null>(null);
   private readonly wishlistImportOperations = new Map<string, { fingerprint: string; operationId: string }>();
   private wishlistLoadRevision: number = 0;
+  private queuedLoadTripId: string | null = null;
 
   readonly trip: Signal<TripPlan | null> = this.tripSignal.asReadonly();
   readonly program: Signal<TripProgram> = this.programSignal.asReadonly();
@@ -100,17 +101,23 @@ export class TripOverviewStateFacade {
   }
 
   load(tripId: string): void {
-    if (!tripId || this.statusSignal() === 'loading') {
+    const normalizedTripId: string = tripId.trim();
+    if (!normalizedTripId) {
+      return;
+    }
+    if (this.statusSignal() === 'loading') {
+      this.queuedLoadTripId = normalizedTripId;
       return;
     }
 
-    this.tripIdSignal.set(tripId);
+    this.queuedLoadTripId = null;
+    this.tripIdSignal.set(normalizedTripId);
     this.statusSignal.set('loading');
     this.collectionsSignal.set([]);
     this.wishlistUnavailableSignal.set(false);
     forkJoin({
-      trip: this.plans.getMine(tripId),
-      program: this.programData.get(tripId)
+      trip: this.plans.getMine(normalizedTripId),
+      program: this.programData.get(normalizedTripId)
     })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
@@ -120,9 +127,21 @@ export class TripOverviewStateFacade {
           this.wishlistImportOperations.clear();
           this.statusSignal.set('ready');
         },
-        error: (): void => this.statusSignal.set('error')
+        error: (): void => {
+          this.statusSignal.set('error');
+          this.runQueuedLoad();
+        },
+        complete: (): void => this.runQueuedLoad()
       });
     this.loadWishlist();
+  }
+
+  private runQueuedLoad(): void {
+    const queuedTripId: string | null = this.queuedLoadTripId;
+    this.queuedLoadTripId = null;
+    if (queuedTripId) {
+      this.load(queuedTripId);
+    }
   }
 
   setDates(startDate: string, endDate: string, destinationTimeZoneId: string): void {

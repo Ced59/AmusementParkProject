@@ -8,6 +8,8 @@ internal static class TripPlanResultFactory
     public static TripPlanResult ToResult(TripPlan trip, string currentUserId)
     {
         ArgumentNullException.ThrowIfNull(trip);
+        TripEffectiveRole role = trip.ResolveRole(currentUserId)
+            ?? throw new InvalidOperationException("An accessible trip must expose an active member role.");
         return new TripPlanResult(
             trip.Id.Value,
             trip.Title,
@@ -21,6 +23,11 @@ internal static class TripPlanResultFactory
             trip.AccessScope,
             trip.Members.Count(member => member.State == TripMembershipState.Active),
             string.Equals(trip.OwnerUserId, currentUserId, StringComparison.Ordinal),
+            role,
+            TripAuthorizationPolicy.HasPermission(role, TripPermission.EditPlan),
+            TripAuthorizationPolicy.HasPermission(role, TripPermission.EditProgram),
+            TripAuthorizationPolicy.HasPermission(role, TripPermission.Invite),
+            TripAuthorizationPolicy.HasPermission(role, TripPermission.ChangeRoles),
             trip.CreatedAtUtc,
             trip.UpdatedAtUtc,
             trip.Version);

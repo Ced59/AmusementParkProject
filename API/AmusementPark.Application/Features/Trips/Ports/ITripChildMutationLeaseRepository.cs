@@ -13,6 +13,15 @@ public interface ITripChildMutationLeaseRepository
         string operationId,
         CancellationToken cancellationToken);
 
+    Task<TripChildMutationLease?> TryAcquireAccessibleAsync(
+        TripPlanId tripPlanId,
+        string actorUserId,
+        TripMemberId actorMemberId,
+        long expectedPlanVersion,
+        long childMutationEpoch,
+        string operationId,
+        CancellationToken cancellationToken);
+
     Task ReleaseAsync(
         TripPlanId tripPlanId,
         TripChildMutationLease lease,

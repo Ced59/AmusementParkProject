@@ -9,7 +9,14 @@
     <p>{{ 'trips.overview.description' | translate }}</p>
     <div class="trip-overview-page__legend">
       <app-ui-chip tone="gold" iconClass="pi pi-lock">{{ 'trips.privacy' | translate }}</app-ui-chip>
-      <app-ui-chip tone="soft" iconClass="pi pi-users">{{ 'trips.overview.solo' | translate }}</app-ui-chip>
+      @if (facade.trip(); as trip) {
+        <app-ui-chip tone="soft" iconClass="pi pi-users">
+          {{ 'trips.overview.memberCount' | translate:{ count: trip.memberCount } }}
+        </app-ui-chip>
+        <app-ui-chip tone="sky" iconClass="pi pi-id-card">
+          {{ ('trips.participants.roles.' + trip.effectiveRole.toLowerCase()) | translate }}
+        </app-ui-chip>
+      }
     </div>
   </header>
 
@@ -37,7 +44,21 @@
           <p>{{ 'trips.dates.description' | translate }}</p>
         </div>
       </div>
-      @if (hasSpecialDateProposal() && !dateEditorEnabled()) {
+      @if (!facade.trip()?.canEditPlan) {
+        <div class="trip-dates__proposal trip-dates__proposal--readonly">
+          <strong>{{ 'trips.dates.currentProposal' | translate }}</strong>
+          <div class="trip-dates__proposal-values">
+            @for (date of currentProposedDates(); track date) {
+              <span>{{ date }}</span>
+            } @empty {
+              <span>{{ 'trips.dates.notDefined' | translate }}</span>
+            }
+          </div>
+          @if (facade.trip()?.destinationTimeZoneId; as timeZone) {
+            <p>{{ 'trips.fields.destinationTimeZone' | translate }} · {{ timeZone }}</p>
+          }
+        </div>
+      } @else if (hasSpecialDateProposal() && !dateEditorEnabled()) {
         <div class="trip-dates__proposal">
           <strong>{{ 'trips.dates.currentProposal' | translate }}</strong>
           <div class="trip-dates__proposal-values">
@@ -132,6 +153,7 @@
       }
     </section>
 
+    @if (facade.trip()?.canEditProgram) {
     <section class="trip-section" appUiSurface="panel" appUiSurfacePadding="spacious">
       <div class="trip-section__heading">
         <span class="trip-section__step">2</span>
@@ -197,6 +219,7 @@
         </button>
       }
     </section>
+    }
 
     <section class="trip-section" appUiSurface="panel" appUiSurfacePadding="spacious">
       <div class="trip-section__heading">
@@ -214,7 +237,7 @@
           class="candidate-board"
           cdkDropList
           [cdkDropListData]="facade.program().candidates"
-          [cdkDropListDisabled]="facade.busy()"
+          [cdkDropListDisabled]="facade.busy() || !facade.trip()?.canEditProgram"
           (cdkDropListDropped)="dropCandidate($event)">
           @for (candidate of facade.program().candidates; track candidate.candidateId; let index = $index) {
             <app-trip-candidate-card
@@ -225,6 +248,7 @@
               [index]="index"
               [count]="facade.program().candidates.length"
               [disabled]="facade.busy()"
+              [readonly]="!facade.trip()?.canEditProgram"
               [scheduled]="isCandidateScheduled(candidate.candidateId)"
               (stateChanged)="changeCandidateState(candidate, $event)"
               (moveRequested)="facade.moveCandidate(candidate.candidateId, $event)">
@@ -252,6 +276,19 @@
           @for (date of facade.tripDates(); track date) {
             <article class="day-card">
               <div class="day-card__date"><i class="pi pi-calendar" aria-hidden="true"></i><strong>{{ date }}</strong></div>
+              @if (!facade.trip()?.canEditProgram) {
+                @if (savedDay(date); as saved) {
+                  <strong>{{ saved.parkName || ('trips.candidates.unavailable' | translate) }}</strong>
+                  @if (saved.desiredArrivalTime) {
+                    <p>{{ 'trips.days.arrival' | translate }} · {{ saved.desiredArrivalTime }}</p>
+                  }
+                  @if (saved.groupNote) {
+                    <p>{{ saved.groupNote }}</p>
+                  }
+                } @else {
+                  <p>{{ 'trips.days.noProgram' | translate }}</p>
+                }
+              } @else {
               <label>
                 <span>{{ 'trips.days.park' | translate }}</span>
                 <select
@@ -299,6 +336,7 @@
                   </button>
                 }
               </div>
+              }
             </article>
           }
         </div>
@@ -306,7 +344,11 @@
     </section>
 
     @if (facade.trip(); as trip) {
-      @if (trip.isOwner) {
+      <app-trip-participant-panel
+        [tripPlanId]="trip.tripPlanId"
+        (tripChanged)="facade.load(trip.tripPlanId)"
+        (left)="returnToTrips()"></app-trip-participant-panel>
+      @if (trip.canInvite) {
         <app-trip-invitation-panel [trip]="trip" [currentLanguage]="currentLanguage()"></app-trip-invitation-panel>
       }
     }

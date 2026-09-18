@@ -48,8 +48,16 @@
       "privatePlan": "Prywatny plan",
       "publicPrivacy": "Ten podgląd nie ujawnia parków, dni, notatek ani preferencji grupy.",
       "publicTargeted": "Ten link jest przeznaczony dla adresu e-mail wybranego przez organizatora.",
-      "continue": "Zaloguj się",
-      "accountRequired": "Możesz zobaczyć ten podgląd bez konta. Samo logowanie nie przyjmuje jeszcze zaproszenia; wkrótce będzie można dołączyć do podróży."
+      "continue": "Zaloguj się, aby odpowiedzieć",
+      "accept": "Dołącz do podróży",
+      "decline": "Odrzuć zaproszenie",
+      "accountRequired": "Logowanie jest potrzebne tylko do przyjęcia lub odrzucenia zaproszenia. Chroni prywatny dostęp do podróży.",
+      "acceptedTitle": "Dołączasz do podróży",
+      "acceptedDescription": "Prywatny plan jest już dostępny wśród twoich podróży.",
+      "declinedTitle": "Zaproszenie odrzucone",
+      "declinedDescription": "Link został zamknięty i nie można go ponownie użyć.",
+      "openTrip": "Otwórz podróż",
+      "decisionError": "Nie udało się zapisać odpowiedzi. Spróbuj ponownie na tym samym ekranie."
     }
   }
 }

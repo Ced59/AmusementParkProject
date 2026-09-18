@@ -1,0 +1,140 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.participant-panel,
+.participant-panel__heading,
+.participant-card,
+.participant-card__identity,
+.participant-card__actions,
+.participant-card__confirmation,
+.participant-panel__leave {
+  min-width: 0;
+}
+
+.participant-panel__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.participant-panel__heading h2,
+.participant-panel__heading p,
+.participant-card strong,
+.participant-card span,
+.participant-card p {
+  overflow-wrap: anywhere;
+}
+
+.participant-list {
+  display: grid;
+  gap: .75rem;
+  margin-top: 1.25rem;
+}
+
+.participant-card {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .8rem;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-border, #786b58) 48%, transparent);
+  border-radius: 1rem;
+}
+
+.participant-card--self {
+  border-color: color-mix(in srgb, var(--color-sky-400, #54d7ff) 55%, transparent);
+}
+
+.participant-card__avatar {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-sky-400, #54d7ff) 18%, transparent);
+  font-weight: 800;
+}
+
+.participant-card__identity {
+  display: grid;
+  gap: .15rem;
+}
+
+.participant-card__identity span,
+.participant-card__identity small {
+  color: var(--color-text-muted, #b7aa96);
+}
+
+.participant-card__actions {
+  display: flex;
+  align-items: flex-end;
+  gap: .5rem;
+}
+
+.participant-card__actions label,
+.participant-card__confirmation label {
+  display: grid;
+  gap: .35rem;
+}
+
+.participant-card__actions select,
+.participant-card__confirmation select {
+  max-width: 100%;
+  min-height: 2.75rem;
+}
+
+.participant-card__confirmation {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: .75rem;
+  padding: 1rem;
+  border-radius: .9rem;
+  background: color-mix(in srgb, var(--color-gold-400, #f6c84a) 10%, transparent);
+}
+
+.participant-card__confirmation > div,
+.participant-panel__leave > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.participant-panel__leave {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-border, #786b58) 38%, transparent);
+}
+
+.participant-panel__message--error {
+  color: var(--color-danger-300, #ff8da1);
+}
+
+@media (max-width: 42rem) {
+  .participant-panel__heading,
+  .participant-card,
+  .participant-card__actions {
+    align-items: stretch;
+  }
+
+  .participant-card {
+    grid-template-columns: 3rem minmax(0, 1fr);
+  }
+
+  .participant-card__actions {
+    grid-column: 1 / -1;
+    display: grid;
+  }
+}
+
+@media (max-width: 22.5rem) {
+  .participant-panel__heading {
+    flex-direction: column;
+  }
+
+  .participant-card {
+    padding: .8rem;
+  }
+}

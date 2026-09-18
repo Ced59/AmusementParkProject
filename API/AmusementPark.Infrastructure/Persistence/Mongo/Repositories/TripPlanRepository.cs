@@ -156,11 +156,13 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 member => member.UserId == normalizedUserId
                     && member.State == TripMembershipState.Active)
             & filters.Eq(static document => document.DeletionState, TripDeletionState.None);
-        List<TripPlanDocument> documents = await this.collection.Find(filter)
-            .SortByDescending(static document => document.UpdatedAt)
-            .ThenBy(static document => document.Id)
-            .Limit(TripPlan.MaximumPlansPerOwner)
-            .ToListAsync(cancellationToken);
+        FindOptions<TripPlanDocument, TripPlanDocument> options =
+            TripPlanMongoDefinitions.BuildAccessibleListOptions();
+        using IAsyncCursor<TripPlanDocument> cursor = await this.collection.FindAsync(
+            filter,
+            options,
+            cancellationToken);
+        List<TripPlanDocument> documents = await cursor.ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
@@ -222,6 +224,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 & Builders<TripPlanDocument>.Filter.Eq(
                     static document => document.Version,
                     expectedVersion)
+                & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
                 & TripPlanMongoDefinitions.BuildChildEpochMutationFilter(
                     tripPlan.ChildMutationEpoch),
             TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
@@ -245,6 +248,108 @@ public sealed class TripPlanRepository : ITripPlanRepository
             : new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, existing.Version);
     }
 
+    public async Task<TripPlanWriteResult> ReplaceAccessibleAsync(
+        string actorUserId,
+        TripPlan tripPlan,
+        long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(tripPlan);
+        string normalizedActorUserId = IdentifierRules.NormalizeRequired(actorUserId, nameof(actorUserId));
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        TripPlanDocument? persisted = await this.collection.FindOneAndUpdateAsync(
+            filters.Eq(static document => document.Id, tripPlan.Id.Value)
+            & filters.Eq(static document => document.Version, expectedVersion)
+            & filters.Eq(static document => document.DeletionState, TripDeletionState.None)
+            & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
+            & TripPlanMongoDefinitions.BuildChildEpochMutationFilter(
+                tripPlan.ChildMutationEpoch)
+            & filters.ElemMatch(
+                static document => document.Members,
+                member => member.UserId == normalizedActorUserId
+                    && member.State == TripMembershipState.Active),
+            TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
+            new FindOneAndUpdateOptions<TripPlanDocument, TripPlanDocument>
+            {
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
+        if (persisted is not null)
+        {
+            TripPlan current = persisted.ToDomain();
+            return new TripPlanWriteResult(TripPlanWriteOutcome.Success, current.Version, current);
+        }
+
+        TripPlan? existing = await this.GetAccessibleAsync(normalizedActorUserId, tripPlan.Id, cancellationToken);
+        return existing is null
+            ? new TripPlanWriteResult(TripPlanWriteOutcome.NotFound, null)
+            : new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, existing.Version);
+    }
+
+    public async Task<TripPlanWriteResult> TransferOwnershipAsync(
+        string previousOwnerUserId,
+        TripPlan tripPlan,
+        long expectedVersion,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(tripPlan);
+        string normalizedPreviousOwner = IdentifierRules.NormalizeRequired(
+            previousOwnerUserId,
+            nameof(previousOwnerUserId));
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        HashSet<int> occupiedSlots = (await this.collection.Find(
+                filters.Eq(static document => document.OwnerUserId, tripPlan.OwnerUserId)
+                & filters.Eq(static document => document.DeletionState, TripDeletionState.None))
+            .Project(static document => document.OwnerSlot)
+            .Limit(TripPlan.MaximumPlansPerOwner)
+            .ToListAsync(cancellationToken)).ToHashSet();
+        for (int ownerSlot = 0; ownerSlot < TripPlan.MaximumPlansPerOwner; ownerSlot++)
+        {
+            if (occupiedSlots.Contains(ownerSlot))
+            {
+                continue;
+            }
+
+            try
+            {
+                TripPlanDocument? persisted = await this.collection.FindOneAndUpdateAsync(
+                    filters.Eq(static document => document.Id, tripPlan.Id.Value)
+                    & filters.Eq(static document => document.OwnerUserId, normalizedPreviousOwner)
+                    & filters.Eq(static document => document.Version, expectedVersion)
+                    & filters.Eq(static document => document.DeletionState, TripDeletionState.None)
+                    & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
+                    & TripPlanMongoDefinitions.BuildChildEpochMutationFilter(
+                        tripPlan.ChildMutationEpoch),
+                    TripPlanMongoDefinitions.BuildOwnershipTransferMutation(tripPlan, ownerSlot),
+                    new FindOneAndUpdateOptions<TripPlanDocument, TripPlanDocument>
+                    {
+                        ReturnDocument = ReturnDocument.After,
+                    },
+                    cancellationToken);
+                if (persisted is not null)
+                {
+                    TripPlan current = persisted.ToDomain();
+                    return new TripPlanWriteResult(TripPlanWriteOutcome.Success, current.Version, current);
+                }
+            }
+            catch (MongoWriteException exception)
+                when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+            {
+                occupiedSlots.Add(ownerSlot);
+                continue;
+            }
+
+            break;
+        }
+
+        TripPlanDocument? currentDocument = await this.collection.Find(
+                filters.Eq(static document => document.Id, tripPlan.Id.Value))
+            .FirstOrDefaultAsync(cancellationToken);
+        return currentDocument is null
+            ? new TripPlanWriteResult(TripPlanWriteOutcome.NotFound, null)
+            : new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, currentDocument.Version);
+    }
+
     public async Task<TripPlanWriteResult> DeleteOwnedAsync(
         TripPlan tripPlan,
         long expectedVersion,
@@ -263,6 +368,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 & Builders<TripPlanDocument>.Filter.Eq(
                     static document => document.Version,
                     expectedVersion)
+                & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
                 & TripPlanMongoDefinitions.BuildNoActiveChildLeaseFilter(),
             TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
             cancellationToken: cancellationToken);
@@ -316,6 +422,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 & Builders<TripPlanDocument>.Filter.Eq(
                     static document => document.ChildMutationEpoch,
                     lease.ChildMutationEpoch)
+                & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
                 & TripPlanMongoDefinitions.BuildActiveChildLeaseIdentityFilter(lease),
             update,
             options,
@@ -333,6 +440,60 @@ public sealed class TripPlanRepository : ITripPlanRepository
             tripPlan.OwnerUserId,
             tripPlan.Id,
             cancellationToken);
+        return existing is null
+            ? new TripPlanWriteResult(TripPlanWriteOutcome.NotFound, null)
+            : new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, existing.Version);
+    }
+
+    public async Task<TripPlanWriteResult> ReplaceAccessibleUnderChildLeaseAsync(
+        string actorUserId,
+        TripPlan tripPlan,
+        long expectedVersion,
+        TripChildMutationLease lease,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(tripPlan);
+        ArgumentNullException.ThrowIfNull(lease);
+        string normalizedActorUserId = IdentifierRules.NormalizeRequired(actorUserId, nameof(actorUserId));
+        if (lease.ChildMutationEpoch == long.MaxValue
+            || tripPlan.ChildMutationEpoch != lease.ChildMutationEpoch + 1
+            || expectedVersion == long.MaxValue
+            || tripPlan.Version != expectedVersion + 1)
+        {
+            throw new ArgumentException(
+                "The root mutation must advance exactly one version and one child epoch.",
+                nameof(tripPlan));
+        }
+
+        UpdateDefinitionBuilder<TripPlanDocument> updates = Builders<TripPlanDocument>.Update;
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        TripPlanDocument? persisted = await this.collection.FindOneAndUpdateAsync(
+            filters.Eq(static document => document.Id, tripPlan.Id.Value)
+            & filters.Eq(static document => document.Version, expectedVersion)
+            & filters.Eq(static document => document.ChildMutationEpoch, lease.ChildMutationEpoch)
+            & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
+            & filters.ElemMatch(
+                static document => document.Members,
+                member => member.UserId == normalizedActorUserId
+                    && member.State == TripMembershipState.Active)
+            & TripPlanMongoDefinitions.BuildActiveChildLeaseIdentityFilter(lease),
+            updates.Combine(
+                TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
+                updates.Set(
+                    static document => document.ActiveChildMutationLeases,
+                    new List<TripChildMutationLeaseDocument>())),
+            new FindOneAndUpdateOptions<TripPlanDocument, TripPlanDocument>
+            {
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
+        if (persisted is not null)
+        {
+            TripPlan current = persisted.ToDomain();
+            return new TripPlanWriteResult(TripPlanWriteOutcome.Success, current.Version, current);
+        }
+
+        TripPlan? existing = await this.GetAccessibleAsync(normalizedActorUserId, tripPlan.Id, cancellationToken);
         return existing is null
             ? new TripPlanWriteResult(TripPlanWriteOutcome.NotFound, null)
             : new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, existing.Version);

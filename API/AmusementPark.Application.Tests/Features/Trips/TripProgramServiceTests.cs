@@ -27,7 +27,7 @@ public sealed class TripProgramServiceTests
             nowUtc);
         TripMember owner = Assert.Single(trip.Members);
         Mock<ITripPlanRepository> trips = new(MockBehavior.Strict);
-        trips.Setup(item => item.GetOwnedAsync("owner-1", trip.Id, CancellationToken.None))
+        trips.Setup(item => item.GetAccessibleAsync("owner-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
         Mock<ITripParkCandidateRepository> candidates = new(MockBehavior.Strict);
         Mock<ITripDayPlanRepository> days = new(MockBehavior.Strict);
@@ -39,7 +39,7 @@ public sealed class TripProgramServiceTests
             trip.ChildMutationEpoch,
             1,
             nowUtc.AddMinutes(5));
-        leases.Setup(item => item.TryAcquireOwnedAsync(
+        leases.Setup(item => item.TryAcquireAccessibleAsync(
                 trip.Id,
                 trip.OwnerUserId,
                 owner.Id,
@@ -126,7 +126,7 @@ public sealed class TripProgramServiceTests
             new[] { block },
             nowUtc.AddMinutes(2));
         Mock<ITripPlanRepository> trips = new(MockBehavior.Strict);
-        trips.Setup(item => item.GetOwnedAsync("owner-1", trip.Id, CancellationToken.None))
+        trips.Setup(item => item.GetAccessibleAsync("owner-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
         Mock<ITripParkCandidateRepository> candidates = new(MockBehavior.Strict);
         candidates.Setup(item => item.GetAsync(trip.Id, candidate.Id, CancellationToken.None))
@@ -149,7 +149,7 @@ public sealed class TripProgramServiceTests
             trip.ChildMutationEpoch,
             1,
             nowUtc.AddMinutes(5));
-        leases.Setup(item => item.TryAcquireOwnedAsync(
+        leases.Setup(item => item.TryAcquireAccessibleAsync(
                 trip.Id,
                 trip.OwnerUserId,
                 owner.Id,
@@ -258,7 +258,7 @@ public sealed class TripProgramServiceTests
             nowUtc.AddMinutes(3));
         long persistedVersion = existing.Version;
         Mock<ITripPlanRepository> trips = new(MockBehavior.Strict);
-        trips.Setup(item => item.GetOwnedAsync("owner-1", trip.Id, CancellationToken.None))
+        trips.Setup(item => item.GetAccessibleAsync("owner-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
         Mock<ITripParkCandidateRepository> candidates = new(MockBehavior.Strict);
         candidates.Setup(item => item.GetAsync(trip.Id, candidate.Id, CancellationToken.None))
@@ -274,7 +274,7 @@ public sealed class TripProgramServiceTests
             trip.ChildMutationEpoch,
             1,
             nowUtc.AddMinutes(5));
-        leases.Setup(item => item.TryAcquireOwnedAsync(
+        leases.Setup(item => item.TryAcquireAccessibleAsync(
                 trip.Id,
                 trip.OwnerUserId,
                 owner.Id,
@@ -358,7 +358,7 @@ public sealed class TripProgramServiceTests
                 It.IsAny<string>(),
                 CancellationToken.None))
             .ReturnsAsync(new TripParkCandidateWriteResult(TripChildWriteOutcome.NotFound));
-        trips.Setup(item => item.GetOwnedAsync("owner-1", trip.Id, CancellationToken.None))
+        trips.Setup(item => item.GetAccessibleAsync("owner-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
         parks.Setup(item => item.GetByIdAsync("park-1", false, CancellationToken.None))
             .ReturnsAsync(new Park
@@ -376,7 +376,7 @@ public sealed class TripProgramServiceTests
                 CancellationToken.None))
             .ReturnsAsync(new TripParkCandidateWriteResult(
                 TripChildWriteOutcome.IdempotencyConflict));
-        leases.Setup(item => item.TryAcquireOwnedAsync(
+        leases.Setup(item => item.TryAcquireAccessibleAsync(
                 trip.Id,
                 trip.OwnerUserId,
                 owner.Id,
@@ -451,7 +451,7 @@ public sealed class TripProgramServiceTests
         Mock<ITripDayPlanRepository> days = new(MockBehavior.Strict);
         Mock<IParkRepository> parks = new(MockBehavior.Strict);
         Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
-        trips.Setup(item => item.GetOwnedAsync("owner-1", trip.Id, CancellationToken.None))
+        trips.Setup(item => item.GetAccessibleAsync("owner-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
         candidates.Setup(item => item.ResolveCreationAsync(
                 trip.Id,
@@ -522,7 +522,7 @@ public sealed class TripProgramServiceTests
         Mock<ITripDayPlanRepository> days = new(MockBehavior.Strict);
         Mock<IParkRepository> parks = new(MockBehavior.Strict);
         Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
-        trips.Setup(item => item.GetOwnedAsync("owner-1", trip.Id, CancellationToken.None))
+        trips.Setup(item => item.GetAccessibleAsync("owner-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
         candidates.Setup(item => item.ResolveCreationAsync(
                 trip.Id,
@@ -600,7 +600,7 @@ public sealed class TripProgramServiceTests
                 existing,
                 existing.Version,
                 true));
-        trips.Setup(item => item.GetOwnedAsync("owner-1", trip.Id, CancellationToken.None))
+        trips.Setup(item => item.GetAccessibleAsync("owner-1", trip.Id, CancellationToken.None))
             .ReturnsAsync((TripPlan?)null);
         TripProgramService service = new(
             trips.Object,

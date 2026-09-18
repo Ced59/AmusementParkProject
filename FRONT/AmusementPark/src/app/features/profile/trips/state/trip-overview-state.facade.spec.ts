@@ -101,6 +101,34 @@ describe('TripOverviewStateFacade', () => {
     expect(facade.wishlistLoading()).toBe(false);
   });
 
+  it('coalesces a participant refresh requested while a load is active', () => {
+    const firstTrip: Subject<TripPlan> = new Subject<TripPlan>();
+    const firstProgram: Subject<TripProgram> = new Subject<TripProgram>();
+    (plans.getMine as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(firstTrip)
+      .mockReturnValueOnce(of(createTrip({ version: 3, effectiveRole: 'Participant' })));
+    (programData.get as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(firstProgram)
+      .mockReturnValueOnce(of(createProgram()));
+
+    facade.load('trip-1');
+    facade.load('trip-1');
+
+    expect(plans.getMine).toHaveBeenCalledTimes(1);
+    expect(programData.get).toHaveBeenCalledTimes(1);
+
+    firstTrip.next(createTrip({ version: 2 }));
+    firstTrip.complete();
+    firstProgram.next(createProgram());
+    firstProgram.complete();
+
+    expect(plans.getMine).toHaveBeenCalledTimes(2);
+    expect(programData.get).toHaveBeenCalledTimes(2);
+    expect(facade.trip()?.version).toBe(3);
+    expect(facade.trip()?.effectiveRole).toBe('Participant');
+    expect(facade.status()).toBe('ready');
+  });
+
   it('imports several wishes sequentially with the refreshed plan version', () => {
     const first: UserCollectionEntry = createEntry({
       entryId: 'entry-1', targetId: 'park-2', preferredStartsOn: '2026-10-03', preferredEndsOn: '2026-10-03'
@@ -318,7 +346,8 @@ function createTrip(overrides: Partial<TripPlan> = {}): TripPlan {
     tripPlanId: 'trip-1', title: 'Voyage',
     dateProposal: { kind: 'Fixed', startDate: '2026-10-03', endDate: '2026-10-04', candidateDates: [] },
     destinationTimeZoneId: 'Europe/Paris', status: 'Draft', accessScope: 'Private', memberCount: 1,
-    isOwner: true, createdAtUtc: '2026-09-18T10:00:00Z', updatedAtUtc: '2026-09-18T10:00:00Z', version: 1,
+    isOwner: true, effectiveRole: 'Owner', canEditPlan: true, canEditProgram: true, canInvite: true,
+    canChangeRoles: true, createdAtUtc: '2026-09-18T10:00:00Z', updatedAtUtc: '2026-09-18T10:00:00Z', version: 1,
     ...overrides
   };
 }

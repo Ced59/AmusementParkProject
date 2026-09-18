@@ -48,8 +48,16 @@
       "privatePlan": "Programme privé",
       "publicPrivacy": "Cet aperçu ne révèle aucun parc, aucune journée, aucune note ni préférence du groupe.",
       "publicTargeted": "Ce lien est réservé à l’adresse choisie par l’organisateur.",
-      "continue": "Me connecter",
-      "accountRequired": "Tu peux consulter cet aperçu sans compte. Te connecter n’accepte pas encore l’invitation ; tu pourras bientôt rejoindre le voyage."
+      "continue": "Me connecter pour répondre",
+      "accept": "Rejoindre le voyage",
+      "decline": "Décliner l’invitation",
+      "accountRequired": "La connexion est nécessaire uniquement pour accepter ou décliner. Elle protège l’accès privé au voyage.",
+      "acceptedTitle": "Tu fais partie du voyage",
+      "acceptedDescription": "Le programme privé est maintenant accessible depuis tes voyages.",
+      "declinedTitle": "Invitation déclinée",
+      "declinedDescription": "Le lien a été fermé et ne pourra plus être utilisé.",
+      "openTrip": "Ouvrir le voyage",
+      "decisionError": "La réponse n’a pas pu être enregistrée. Réessaie avec ce même écran."
     }
   }
 }

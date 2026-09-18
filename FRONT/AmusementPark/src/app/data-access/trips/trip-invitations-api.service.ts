@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import {
   CreateTripInvitationRequest,
   TripInvitationCreation,
+  TripInvitationDecision,
   TripInvitationList,
   TripInvitationPreview
 } from '@app/models/trips/trip-invitation.models';
@@ -54,6 +55,27 @@ export class TripInvitationsApiService {
     return this.http.get<TripInvitationPreview>(
       `${environment.apiBaseUrl}${TRIP_API_ENDPOINTS.invitationPreview(token)}`,
       { transferCache: false }
+    );
+  }
+
+  accept(token: string, idempotencyKey: string): Observable<TripInvitationDecision> {
+    return this.decide(TRIP_API_ENDPOINTS.acceptInvitation, token, idempotencyKey);
+  }
+
+  decline(token: string, idempotencyKey: string): Observable<TripInvitationDecision> {
+    return this.decide(TRIP_API_ENDPOINTS.declineInvitation, token, idempotencyKey);
+  }
+
+  private decide(
+    endpoint: string,
+    token: string,
+    idempotencyKey: string
+  ): Observable<TripInvitationDecision> {
+    const headers: HttpHeaders = new HttpHeaders({ 'Idempotency-Key': idempotencyKey });
+    return this.http.post<TripInvitationDecision>(
+      `${environment.apiBaseUrl}${endpoint}`,
+      { token },
+      { headers }
     );
   }
 }

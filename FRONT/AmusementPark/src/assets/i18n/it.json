@@ -1430,11 +1430,42 @@
       "privatePlan": "Programma privato",
       "publicPrivacy": "Questa anteprima non mostra parchi, giorni, note o preferenze del gruppo.",
       "publicTargeted": "Questo link è riservato all’e-mail scelta dall’organizzatore.",
-      "continue": "Accedi",
-      "accountRequired": "Puoi vedere questa anteprima senza account. L’accesso non accetta ancora l’invito; presto potrai unirti al viaggio."
+      "continue": "Accedi per rispondere",
+      "accept": "Unisciti al viaggio",
+      "decline": "Rifiuta l’invito",
+      "accountRequired": "L’accesso serve solo per accettare o rifiutare. In questo modo il viaggio resta privato.",
+      "acceptedTitle": "Hai aderito al viaggio",
+      "acceptedDescription": "Il programma privato è ora disponibile tra i tuoi viaggi.",
+      "declinedTitle": "Invito rifiutato",
+      "declinedDescription": "Il link è stato chiuso e non può più essere utilizzato.",
+      "openTrip": "Apri il viaggio",
+      "decisionError": "Non è stato possibile salvare la risposta. Riprova da questa stessa schermata."
+    },
+    "participants": {
+      "kicker": "Squadra del viaggio",
+      "title": "Chi sta preparando questo viaggio?",
+      "description": "Scopri chi ha accettato un invito e il ruolo di ogni persona.",
+      "loading": "Caricamento della squadra…",
+      "loadError": "Non è stato possibile caricare la squadra.",
+      "actionError": "Non è stato possibile applicare la modifica. L’elenco è stato aggiornato.",
+      "you": "Tu",
+      "roleLabel": "Ruolo nel viaggio",
+      "roles": {
+        "owner": "Proprietario",
+        "editor": "Co-organizzatore",
+        "participant": "Partecipante",
+        "viewer": "Lettore"
+      },
+      "transfer": "Trasferisci la proprietà",
+      "transferExplanation": "{{name}} diventerà proprietario. Scegli il ruolo che manterrai.",
+      "previousOwnerRole": "Il tuo nuovo ruolo",
+      "confirmTransfer": "Conferma il trasferimento",
+      "leave": "Lascia questo viaggio",
+      "leaveExplanation": "Perderai immediatamente l’accesso al programma privato.",
+      "confirmLeave": "Conferma l’uscita"
     },
     "kicker": "Viaggi da preparare",
-    "privacy": "Privato, visibile solo a te",
+    "privacy": "Privato, visibile solo ai membri",
     "profile": {
       "title": "Prepara il tuo prossimo viaggio",
       "description": "Riunisci i parchi che ti interessano, ordinali e costruisci ogni giornata.",
@@ -1492,7 +1523,8 @@
     "overview": {
       "kicker": "Laboratorio di viaggio",
       "description": "Trasforma le tue idee in un programma chiaro, con i tuoi tempi.",
-      "solo": "Preparazione individuale"
+      "solo": "Preparazione individuale",
+      "memberCount": "{{count}} partecipante/i"
     },
     "dates": {
       "kicker": "Quando partire?",
@@ -1506,6 +1538,7 @@
       "unsavedDayOutsideRange": "Una giornata fuori da questo periodo contiene modifiche non salvate. Cancella o salva la bozza prima di cambiare le date.",
       "unsavedDayBeforeClear": "Una giornata contiene modifiche non salvate. Cancella o salva la bozza prima di cancellare le date del viaggio.",
       "toDecide": "Date da decidere",
+      "notDefined": "Date ancora da decidere",
       "kinds": {
         "none": "Date da decidere",
         "fixed": "Date stabilite",
@@ -1556,7 +1589,8 @@
       "park": "Parco della giornata",
       "choosePark": "Scegli un parco",
       "arrival": "Orario di arrivo desiderato",
-      "note": "Nota per la giornata"
+      "note": "Nota per la giornata",
+      "noProgram": "Nessun programma è stato ancora definito per questa giornata."
     }
   },
   "user-profile": {

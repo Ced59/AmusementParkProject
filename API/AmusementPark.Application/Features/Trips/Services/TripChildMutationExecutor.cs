@@ -35,9 +35,36 @@ public sealed class TripChildMutationExecutor
                 TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        ApplicationResult<TResult> result = await action(lease);
-        await this.ReleaseBestEffortAsync(trip.Id, lease);
-        return result;
+        return await this.ExecuteWithLeaseAsync(
+            trip.Id,
+            lease,
+            () => action(lease));
+    }
+
+    public async Task<ApplicationResult<TResult>> ExecuteAccessibleAsync<TResult>(
+        TripPlan trip,
+        string actorUserId,
+        TripPermission requiredPermission,
+        string operationId,
+        Func<TripChildMutationLease, Task<ApplicationResult<TResult>>> action,
+        CancellationToken cancellationToken)
+    {
+        TripChildMutationLease? lease = await this.TryAcquireAccessibleAsync(
+            trip,
+            actorUserId,
+            requiredPermission,
+            operationId,
+            cancellationToken);
+        if (lease is null)
+        {
+            return ApplicationResult<TResult>.Failure(
+                TripPlanApplicationErrors.ChildMutationUnavailable());
+        }
+
+        return await this.ExecuteWithLeaseAsync(
+            trip.Id,
+            lease,
+            () => action(lease));
     }
 
     public async Task<ApplicationResult> ExecuteOwnedAsync(
@@ -55,9 +82,64 @@ public sealed class TripChildMutationExecutor
             return ApplicationResult.Failure(TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        ApplicationResult result = await action(lease);
-        await this.ReleaseBestEffortAsync(trip.Id, lease);
-        return result;
+        return await this.ExecuteWithLeaseAsync(
+            trip.Id,
+            lease,
+            () => action(lease));
+    }
+
+    public async Task<ApplicationResult> ExecuteAccessibleAsync(
+        TripPlan trip,
+        string actorUserId,
+        TripPermission requiredPermission,
+        string operationId,
+        Func<TripChildMutationLease, Task<ApplicationResult>> action,
+        CancellationToken cancellationToken)
+    {
+        TripChildMutationLease? lease = await this.TryAcquireAccessibleAsync(
+            trip,
+            actorUserId,
+            requiredPermission,
+            operationId,
+            cancellationToken);
+        if (lease is null)
+        {
+            return ApplicationResult.Failure(TripPlanApplicationErrors.ChildMutationUnavailable());
+        }
+
+        return await this.ExecuteWithLeaseAsync(
+            trip.Id,
+            lease,
+            () => action(lease));
+    }
+
+    private async Task<TResult> ExecuteWithLeaseAsync<TResult>(
+        TripPlanId tripPlanId,
+        TripChildMutationLease lease,
+        Func<Task<TResult>> action)
+    {
+        bool outcomeIsKnown = true;
+        try
+        {
+            return await action();
+        }
+        catch (OperationCanceledException)
+        {
+            outcomeIsKnown = false;
+            throw;
+        }
+        catch (TimeoutException)
+        {
+            outcomeIsKnown = false;
+            throw;
+        }
+        finally
+        {
+            if (outcomeIsKnown)
+            {
+                await this.ReleaseBestEffortAsync(tripPlanId, lease);
+            }
+        }
     }
 
     private async Task ReleaseBestEffortAsync(
@@ -90,6 +172,32 @@ public sealed class TripChildMutationExecutor
             trip.Id,
             trip.OwnerUserId,
             owner.Id,
+            trip.Version,
+            trip.ChildMutationEpoch,
+            operationId,
+            cancellationToken);
+    }
+
+    private Task<TripChildMutationLease?> TryAcquireAccessibleAsync(
+        TripPlan trip,
+        string actorUserId,
+        TripPermission requiredPermission,
+        string operationId,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(trip);
+        TripEffectiveRole? role = trip.ResolveRole(actorUserId);
+        if (!role.HasValue || !TripAuthorizationPolicy.HasPermission(role.Value, requiredPermission))
+        {
+            return Task.FromResult<TripChildMutationLease?>(null);
+        }
+
+        TripMember actor = trip.Members.Single(member => member.State == TripMembershipState.Active
+            && string.Equals(member.UserId, actorUserId, StringComparison.Ordinal));
+        return this.leaseRepository.TryAcquireAccessibleAsync(
+            trip.Id,
+            actorUserId,
+            actor.Id,
             trip.Version,
             trip.ChildMutationEpoch,
             operationId,

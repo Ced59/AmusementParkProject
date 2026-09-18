@@ -5,6 +5,7 @@ namespace AmusementPark.Core.Domain.Trips;
 public sealed class TripPlan
 {
     public const int MaximumPlansPerOwner = 50;
+    public const int MaximumMembers = 50;
     public const int MaximumTitleLength = 120;
     public const int MaximumTimeZoneIdLength = 100;
     public static readonly TimeSpan CreationReplayRetention = TimeSpan.FromHours(24);
@@ -23,7 +24,8 @@ public sealed class TripPlan
         long childMutationEpoch,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        long version)
+        long version,
+        TripMemberAdmissionFence? memberAdmissionFence)
     {
         _ = id.Value;
         string normalizedOwnerUserId = IdentifierRules.NormalizeRequired(ownerUserId, nameof(ownerUserId));
@@ -42,6 +44,12 @@ public sealed class TripPlan
         }
 
         TripMember[] normalizedMembers = members.ToArray();
+        if (normalizedMembers.Length is < 1 or > MaximumMembers
+            || normalizedMembers.Select(static member => member.UserId).Distinct(StringComparer.Ordinal).Count()
+                != normalizedMembers.Length)
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidState, "The trip member collection is invalid.");
+        }
         TripMember[] activeOwners = normalizedMembers
             .Where(member => member.State == TripMembershipState.Active
                 && string.Equals(member.UserId, normalizedOwnerUserId, StringComparison.Ordinal))
@@ -60,7 +68,8 @@ public sealed class TripPlan
         this.DestinationTimeZoneId = normalizedTimeZoneId;
         this.Status = status;
         this.AccessScope = accessScope;
-        this.Members = normalizedMembers;
+        this.members = normalizedMembers.ToList();
+        this.MemberAdmissionFence = memberAdmissionFence;
         this.AdmissionClosureState = admissionClosureState;
         this.DeletionState = deletionState;
         this.ChildMutationEpoch = childMutationEpoch;
@@ -70,13 +79,16 @@ public sealed class TripPlan
     }
 
     public TripPlanId Id { get; }
-    public string OwnerUserId { get; }
+    private readonly List<TripMember> members;
+
+    public string OwnerUserId { get; private set; }
     public string Title { get; private set; }
     public TripDateProposal DateProposal { get; private set; }
     public string? DestinationTimeZoneId { get; private set; }
     public TripPlanStatus Status { get; }
     public TripPlanAccessScope AccessScope { get; }
-    public IReadOnlyCollection<TripMember> Members { get; }
+    public IReadOnlyCollection<TripMember> Members => this.members;
+    public TripMemberAdmissionFence? MemberAdmissionFence { get; private set; }
     public TripAdmissionClosureState AdmissionClosureState { get; private set; }
     public TripDeletionState DeletionState { get; private set; }
     public long ChildMutationEpoch { get; private set; }
@@ -111,7 +123,8 @@ public sealed class TripPlan
             1,
             nowUtc,
             nowUtc,
-            1);
+            1,
+            null);
     }
 
     public static TripPlan Restore(
@@ -128,7 +141,8 @@ public sealed class TripPlan
         long childMutationEpoch,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
-        long version)
+        long version,
+        TripMemberAdmissionFence? memberAdmissionFence = null)
     {
         ArgumentNullException.ThrowIfNull(members);
         return new TripPlan(
@@ -145,7 +159,188 @@ public sealed class TripPlan
             childMutationEpoch,
             createdAtUtc,
             updatedAtUtc,
-            version);
+            version,
+            memberAdmissionFence);
+    }
+
+    public TripEffectiveRole? ResolveRole(string userId)
+    {
+        TripMember? member = this.members.SingleOrDefault(candidate =>
+            candidate.State == TripMembershipState.Active
+            && string.Equals(candidate.UserId, userId, StringComparison.Ordinal));
+        if (member is null)
+        {
+            return null;
+        }
+
+        if (string.Equals(this.OwnerUserId, member.UserId, StringComparison.Ordinal))
+        {
+            return TripEffectiveRole.Owner;
+        }
+
+        return member.DelegatedRole switch
+        {
+            TripDelegatedRole.Editor => TripEffectiveRole.Editor,
+            TripDelegatedRole.Participant => TripEffectiveRole.Participant,
+            TripDelegatedRole.Viewer => TripEffectiveRole.Viewer,
+            _ => null,
+        };
+    }
+
+    public void PrepareAdmission(
+        TripInvitationId invitationId,
+        string operationId,
+        string candidateUserId,
+        long generation,
+        DateTime leaseExpiresAtUtc,
+        DateTime nowUtc)
+    {
+        this.ValidateMutation(nowUtc);
+        if (!this.CanAcceptMembers
+            || this.members.Count >= MaximumMembers
+            || this.members.Any(member => string.Equals(member.UserId, candidateUserId, StringComparison.Ordinal))
+            || (this.MemberAdmissionFence is not null
+                && this.MemberAdmissionFence.State != TripMemberAdmissionFenceState.Cancelled))
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidState, "The trip cannot prepare this member admission.");
+        }
+
+        this.MemberAdmissionFence = TripMemberAdmissionFence.Prepare(
+            invitationId,
+            operationId,
+            candidateUserId,
+            generation,
+            leaseExpiresAtUtc);
+    }
+
+    public void ArmAdmission(string operationId, long generation)
+    {
+        TripMemberAdmissionFence fence = this.RequireAdmissionFence(operationId, generation);
+        fence.Arm();
+    }
+
+    public void ApplyAdmission(
+        string operationId,
+        long generation,
+        TripDelegatedRole role,
+        DateTime nowUtc)
+    {
+        TripMemberAdmissionFence fence = this.RequireAdmissionFence(operationId, generation);
+        if (!this.CanAcceptMembers || fence.State != TripMemberAdmissionFenceState.Active)
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidState, "The trip admission cannot be applied.");
+        }
+
+        this.members.Add(TripMember.CreateProvisional(fence.CandidateUserId, role, operationId, nowUtc));
+        fence.MarkApplied();
+    }
+
+    public void EstablishAdmission(string operationId, long generation, DateTime nowUtc)
+    {
+        this.ValidateMutation(nowUtc);
+        TripMemberAdmissionFence fence = this.RequireAdmissionFence(operationId, generation);
+        TripMember member = this.members.Single(candidate =>
+            string.Equals(candidate.AdmissionOperationId, operationId, StringComparison.Ordinal));
+        if (!this.CanAcceptMembers || fence.State != TripMemberAdmissionFenceState.Applied)
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidState, "The trip admission cannot be established.");
+        }
+
+        this.PrepareMutation();
+        member.Activate(operationId);
+        this.MemberAdmissionFence = null;
+        this.CommitMutation(nowUtc);
+    }
+
+    public void CancelAdmission(string operationId, long generation, DateTime nowUtc)
+    {
+        this.ValidateMutation(nowUtc);
+        TripMemberAdmissionFence fence = this.RequireAdmissionFence(operationId, generation);
+        this.members.RemoveAll(member =>
+            string.Equals(member.AdmissionOperationId, operationId, StringComparison.Ordinal));
+        fence.Cancel();
+        this.MemberAdmissionFence = null;
+        this.UpdatedAtUtc = nowUtc;
+    }
+
+    public void ChangeMemberRole(
+        string ownerUserId,
+        TripMemberId memberId,
+        TripDelegatedRole role,
+        DateTime nowUtc)
+    {
+        this.ValidateOwner(ownerUserId);
+        this.ValidateMutation(nowUtc);
+        TripMember member = this.members.SingleOrDefault(candidate => candidate.Id == memberId)
+            ?? throw Invalid(TripPlanErrorCodes.InvalidState, "The trip member was not found.");
+        if (string.Equals(member.UserId, this.OwnerUserId, StringComparison.Ordinal))
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidOwner, "The owner role cannot be changed directly.");
+        }
+
+        this.PrepareMutation();
+        member.ChangeDelegatedRole(role);
+        this.IncrementChildMutationEpoch();
+        this.CommitMutation(nowUtc);
+    }
+
+    public void TransferOwnership(
+        string ownerUserId,
+        TripMemberId newOwnerMemberId,
+        TripDelegatedRole previousOwnerRole,
+        DateTime nowUtc)
+    {
+        this.ValidateOwner(ownerUserId);
+        this.ValidateMutation(nowUtc);
+        TripMember previousOwner = this.members.Single(member =>
+            string.Equals(member.UserId, this.OwnerUserId, StringComparison.Ordinal));
+        TripMember newOwner = this.members.SingleOrDefault(member => member.Id == newOwnerMemberId)
+            ?? throw Invalid(TripPlanErrorCodes.InvalidState, "The new trip owner was not found.");
+        if (newOwner.State != TripMembershipState.Active
+            || string.Equals(newOwner.UserId, previousOwner.UserId, StringComparison.Ordinal))
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidOwner, "Ownership requires another active trip member.");
+        }
+
+        this.PrepareMutation();
+        previousOwner.ChangeDelegatedRole(previousOwnerRole);
+        newOwner.BecomeOwner();
+        this.OwnerUserId = newOwner.UserId;
+        this.IncrementChildMutationEpoch();
+        this.CommitMutation(nowUtc);
+    }
+
+    public TripMember BeginMemberDeparture(string userId, DateTime nowUtc)
+    {
+        this.ValidateMutation(nowUtc);
+        if (string.Equals(this.OwnerUserId, userId, StringComparison.Ordinal))
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidOwner, "The trip owner must transfer ownership before leaving.");
+        }
+
+        TripMember member = this.members.SingleOrDefault(candidate =>
+            candidate.State == TripMembershipState.Active
+            && string.Equals(candidate.UserId, userId, StringComparison.Ordinal))
+            ?? throw Invalid(TripPlanErrorCodes.InvalidState, "The active trip member was not found.");
+        this.PrepareMutation();
+        member.BeginLeaving();
+        this.IncrementChildMutationEpoch();
+        this.CommitMutation(nowUtc);
+        return member;
+    }
+
+    public void RemoveLeavingMember(TripMemberId memberId, DateTime nowUtc)
+    {
+        this.ValidateMutation(nowUtc);
+        TripMember member = this.members.SingleOrDefault(candidate => candidate.Id == memberId)
+            ?? throw Invalid(TripPlanErrorCodes.InvalidState, "The departing trip member was not found.");
+        if (member.State != TripMembershipState.Leaving)
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidState, "Only a leaving trip member can be removed.");
+        }
+
+        this.members.Remove(member);
+        this.UpdatedAtUtc = nowUtc;
     }
 
     public void Rename(string title, DateTime nowUtc)
@@ -204,6 +399,27 @@ public sealed class TripPlan
         if (nowUtc < this.UpdatedAtUtc)
         {
             throw Invalid(TripPlanErrorCodes.InvalidTimestamp, "A trip mutation cannot predate its current state.");
+        }
+    }
+
+    private TripMemberAdmissionFence RequireAdmissionFence(string operationId, long generation)
+    {
+        TripMemberAdmissionFence? fence = this.MemberAdmissionFence;
+        if (fence is null
+            || fence.Generation != generation
+            || !string.Equals(fence.OperationId, operationId, StringComparison.Ordinal))
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidState, "The trip admission fence does not match the operation.");
+        }
+
+        return fence;
+    }
+
+    private void ValidateOwner(string ownerUserId)
+    {
+        if (!string.Equals(this.OwnerUserId, ownerUserId?.Trim(), StringComparison.Ordinal))
+        {
+            throw Invalid(TripPlanErrorCodes.InvalidOwner, "Only the trip owner can perform this action.");
         }
     }
 

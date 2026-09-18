@@ -8,8 +8,10 @@ import { NEVER } from 'rxjs';
 import { TranslationService } from '@app/services/translation.service';
 import {
   TRIP_INVITATIONS_DATA_PORT,
+  TRIP_INVITATION_OPERATION_ID_PORT,
   TripInvitationsDataPort
 } from '@features/trips/state/trip-invitation-data.port';
+import { AuthService } from '@app/services/auth/auth.service';
 import { SeoService } from '@core/seo/seo.service';
 import { ModalService } from '@app/services/modal/modal.service';
 import { TripInvitationPreviewPageComponent } from './trip-invitation-preview-page.component';
@@ -21,7 +23,9 @@ describe('TripInvitationPreviewPageComponent', () => {
       list: vi.fn(),
       create: vi.fn(),
       revoke: vi.fn(),
-      preview: vi.fn().mockReturnValue(NEVER)
+      preview: vi.fn().mockReturnValue(NEVER),
+      accept: vi.fn(),
+      decline: vi.fn()
     };
     TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot()],
@@ -32,6 +36,8 @@ describe('TripInvitationPreviewPageComponent', () => {
         }]),
         provideLocationMocks(),
         { provide: TRIP_INVITATIONS_DATA_PORT, useValue: data },
+        { provide: TRIP_INVITATION_OPERATION_ID_PORT, useValue: { create: (): string => 'operation-1' } },
+        { provide: AuthService, useValue: { isLoggedIn: (): boolean => false } },
         { provide: TranslationService, useValue: { getCurrentLang: (): string => 'en' } },
         { provide: SeoService, useValue: seoService },
         { provide: ModalService, useValue: { openModal: vi.fn() } }

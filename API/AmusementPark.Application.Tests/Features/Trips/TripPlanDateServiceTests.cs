@@ -58,13 +58,13 @@ public sealed class TripPlanDateServiceTests
         Mock<ITripDayPlanRepository> days = new(MockBehavior.Strict);
         Mock<ITripTimeZoneValidator> timeZones = new(MockBehavior.Strict);
         Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
-        trips.Setup(item => item.GetOwnedAsync("user-1", trip.Id, CancellationToken.None))
+        trips.Setup(item => item.GetAccessibleAsync("user-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
         candidates.Setup(item => item.ListAsync(trip.Id, CancellationToken.None))
             .ReturnsAsync(new[] { candidate });
         days.Setup(item => item.ListAsync(trip.Id, CancellationToken.None))
             .ReturnsAsync(new[] { day });
-        leases.Setup(item => item.TryAcquireOwnedAsync(
+        leases.Setup(item => item.TryAcquireAccessibleAsync(
                 trip.Id,
                 trip.OwnerUserId,
                 owner.Id,
@@ -125,13 +125,13 @@ public sealed class TripPlanDateServiceTests
         Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         timeZones.Setup(item => item.IsValidIanaTimeZone("Europe/Paris")).Returns(true);
-        trips.Setup(item => item.GetOwnedAsync("user-1", trip.Id, CancellationToken.None))
+        trips.Setup(item => item.GetAccessibleAsync("user-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
         candidates.Setup(item => item.ListAsync(trip.Id, CancellationToken.None))
             .ReturnsAsync(Array.Empty<TripParkCandidate>());
         days.Setup(item => item.ListAsync(trip.Id, CancellationToken.None))
             .ReturnsAsync(Array.Empty<TripDayPlan>());
-        leases.Setup(item => item.TryAcquireOwnedAsync(
+        leases.Setup(item => item.TryAcquireAccessibleAsync(
                 trip.Id,
                 trip.OwnerUserId,
                 owner.Id,
@@ -143,12 +143,13 @@ public sealed class TripPlanDateServiceTests
         leases.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
             .Returns(Task.CompletedTask);
         clock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(nowUtc.AddMinutes(1)));
-        trips.Setup(item => item.ReplaceOwnedUnderChildLeaseAsync(
+        trips.Setup(item => item.ReplaceAccessibleUnderChildLeaseAsync(
+                "user-1",
                 It.Is<TripPlan>(value => value.ChildMutationEpoch == 2 && value.Version == 2),
                 1,
                 lease,
                 CancellationToken.None))
-            .ReturnsAsync((TripPlan value, long _, TripChildMutationLease _, CancellationToken _) =>
+            .ReturnsAsync((string _, TripPlan value, long _, TripChildMutationLease _, CancellationToken _) =>
                 new TripPlanWriteResult(TripPlanWriteOutcome.Success, value.Version, value));
         TripPlanDateService service = new(
             trips.Object,

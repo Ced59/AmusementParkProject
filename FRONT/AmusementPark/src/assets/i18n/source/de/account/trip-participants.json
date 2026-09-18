@@ -1,0 +1,22 @@
+{
+  "trips": {
+    "participants": {
+      "kicker": "Reiseteam",
+      "title": "Wer plant diese Reise?",
+      "description": "Sieh, wer eine Einladung angenommen hat und welche Rolle jede Person hat.",
+      "loading": "Team wird geladen…",
+      "loadError": "Das Team konnte nicht geladen werden.",
+      "actionError": "Die Änderung konnte nicht übernommen werden. Die Liste wurde aktualisiert.",
+      "you": "Du",
+      "roleLabel": "Rolle in der Reise",
+      "roles": { "owner": "Eigentümer", "editor": "Mitorganisator", "participant": "Teilnehmer", "viewer": "Leser" },
+      "transfer": "Eigentum übertragen",
+      "transferExplanation": "{{name}} wird Eigentümer. Wähle die Rolle, die du behältst.",
+      "previousOwnerRole": "Deine neue Rolle",
+      "confirmTransfer": "Übertragung bestätigen",
+      "leave": "Reise verlassen",
+      "leaveExplanation": "Du verlierst sofort den Zugriff auf den privaten Plan.",
+      "confirmLeave": "Austritt bestätigen"
+    }
+  }
+}

@@ -149,7 +149,7 @@ public sealed class TripPlanLifecycleServiceTests
             null,
             nowUtc);
         Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
-        repository.Setup(item => item.GetOwnedAsync(
+        repository.Setup(item => item.GetAccessibleAsync(
                 "user-1",
                 trip.Id,
                 It.IsAny<CancellationToken>()))
@@ -182,12 +182,13 @@ public sealed class TripPlanLifecycleServiceTests
             null,
             DateTime.UtcNow.AddMinutes(-1));
         Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
-        repository.Setup(item => item.GetOwnedAsync(
+        repository.Setup(item => item.GetAccessibleAsync(
                 "user-1",
                 trip.Id,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(trip);
-        repository.Setup(item => item.ReplaceOwnedAsync(
+        repository.Setup(item => item.ReplaceAccessibleAsync(
+                "user-1",
                 It.Is<TripPlan>(candidate => candidate.Version == 2),
                 1,
                 It.IsAny<CancellationToken>()))
@@ -233,12 +234,13 @@ public sealed class TripPlanLifecycleServiceTests
             createdAtUtc);
         persistedTrip.Rename("Nouveau titre", persistedAtUtc);
         Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
-        repository.Setup(item => item.GetOwnedAsync(
+        repository.Setup(item => item.GetAccessibleAsync(
                 "user-1",
                 trip.Id,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(trip);
-        repository.Setup(item => item.ReplaceOwnedAsync(
+        repository.Setup(item => item.ReplaceAccessibleAsync(
+                "user-1",
                 It.Is<TripPlan>(candidate => candidate.UpdatedAtUtc == requestedAtUtc),
                 1,
                 It.IsAny<CancellationToken>()))
