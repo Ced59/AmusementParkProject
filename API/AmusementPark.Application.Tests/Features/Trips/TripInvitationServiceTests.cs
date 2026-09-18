@@ -82,7 +82,8 @@ public sealed class TripInvitationServiceTests
         security.Setup(item => item.HashCreationPayload(
                 TripDelegatedRole.Editor,
                 24,
-                "guest@example.com"))
+                "guest@example.com",
+                null))
             .Returns("request-hash");
         security.Setup(item => item.FingerprintEmail("guest@example.com"))
             .Returns(new TripInvitationEmailFingerprint("email-hmac", "v1"));

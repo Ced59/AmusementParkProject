@@ -10,7 +10,8 @@ public interface ITripInvitationSecurity
     string HashCreationPayload(
         TripDelegatedRole proposedRole,
         int lifetimeHours,
-        string? normalizedTargetEmail);
+        string? normalizedTargetEmail,
+        string? existingRequestHash);
 
     TripInvitationTokenMaterial CreateToken(
         TripInvitationId invitationId,

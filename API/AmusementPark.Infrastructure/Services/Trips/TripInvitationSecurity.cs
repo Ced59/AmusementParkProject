@@ -34,22 +34,39 @@ public sealed class TripInvitationSecurity : ITripInvitationSecurity
     public string HashCreationPayload(
         TripDelegatedRole proposedRole,
         int lifetimeHours,
-        string? normalizedTargetEmail)
+        string? normalizedTargetEmail,
+        string? existingRequestHash)
     {
         string email = normalizedTargetEmail?.Trim().ToLowerInvariant() ?? string.Empty;
+        string keyVersion = this.ResolveCreationPayloadKeyVersion(existingRequestHash);
         byte[] key = this.DeriveKey(
-            this.CurrentKeyVersion,
+            keyVersion,
             "trip-invitation-creation-payload-v1");
         byte[] payload = Encoding.UTF8.GetBytes($"{proposedRole:D}\n{lifetimeHours}\n{email}");
         try
         {
             using HMACSHA256 hmac = new HMACSHA256(key);
-            return $"{this.CurrentKeyVersion}:{Convert.ToBase64String(hmac.ComputeHash(payload))}";
+            return $"{keyVersion}:{Convert.ToBase64String(hmac.ComputeHash(payload))}";
         }
         finally
         {
             CryptographicOperations.ZeroMemory(key);
         }
+    }
+
+    private string ResolveCreationPayloadKeyVersion(string? existingRequestHash)
+    {
+        string normalized = existingRequestHash?.Trim() ?? string.Empty;
+        int separatorIndex = normalized.IndexOf(':');
+        if (separatorIndex <= 0)
+        {
+            return this.CurrentKeyVersion;
+        }
+
+        string persistedVersion = normalized[..separatorIndex];
+        return this.rootKeys.ContainsKey(persistedVersion)
+            ? persistedVersion
+            : this.CurrentKeyVersion;
     }
 
     public TripInvitationTokenMaterial CreateToken(

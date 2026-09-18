@@ -75,11 +75,13 @@ public sealed class TripInvitationSecurityTests
         string first = security.HashCreationPayload(
             TripDelegatedRole.Participant,
             24,
-            normalizedEmail);
+            normalizedEmail,
+            null);
         string second = security.HashCreationPayload(
             TripDelegatedRole.Participant,
             24,
-            normalizedEmail);
+            normalizedEmail,
+            null);
         string legacyUnkeyedHash = Convert.ToBase64String(SHA256.HashData(Encoding.UTF8.GetBytes(
             $"{TripDelegatedRole.Participant:D}\n24\n{normalizedEmail}")));
 
@@ -87,6 +89,34 @@ public sealed class TripInvitationSecurityTests
         Assert.StartsWith("v1:", first, StringComparison.Ordinal);
         Assert.NotEqual(legacyUnkeyedHash, first);
         Assert.DoesNotContain(normalizedEmail, first, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void HashCreationPayload_ShouldReuseARetainedKeyVersionAfterRotation()
+    {
+        string previousKey = Convert.ToBase64String(
+            Enumerable.Range(1, 32).Select(static value => (byte)value).ToArray());
+        TripInvitationSecurity previousSecurity = CreateSecurity();
+        string previousHash = previousSecurity.HashCreationPayload(
+            TripDelegatedRole.Viewer,
+            48,
+            "guest@example.com",
+            null);
+        TripInvitationSecurity rotatedSecurity = new(new TripFingerprintKeyRingSettings
+        {
+            CurrentVersion = "v2",
+            CurrentKey = Convert.ToBase64String(
+                Enumerable.Range(33, 32).Select(static value => (byte)value).ToArray()),
+            PreviousKeys = $"v1={previousKey}",
+        });
+
+        string replayHash = rotatedSecurity.HashCreationPayload(
+            TripDelegatedRole.Viewer,
+            48,
+            "guest@example.com",
+            previousHash);
+
+        Assert.Equal(previousHash, replayHash);
     }
 
     private static TripInvitationSecurity CreateSecurity()

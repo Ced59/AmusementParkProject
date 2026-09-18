@@ -77,15 +77,16 @@ public sealed class TripInvitationService
 
         TripMember inviter = ResolveOwner(trip);
         string operationKeyHash = this.security.HashOperationKey(normalizedUserId, normalizedOperationId);
-        string requestHash = this.security.HashCreationPayload(
-            input.ProposedRole,
-            input.LifetimeHours,
-            normalizedTargetEmail);
         TripInvitationCreationRecord? existing = await this.invitationRepository.ResolveCreationAsync(
             trip.Id,
             inviter.Id,
             operationKeyHash,
             cancellationToken);
+        string requestHash = this.security.HashCreationPayload(
+            input.ProposedRole,
+            input.LifetimeHours,
+            normalizedTargetEmail,
+            existing?.RequestHash);
         ApplicationResult<TripInvitationCreationResult>? replay = this.TryMapReplay(
             existing,
             normalizedUserId,
