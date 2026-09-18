@@ -160,8 +160,8 @@ Indexes de `trip-audit-events` :
 
 ```javascript
 { tripPlanId: 1, operationKey: 1 } // unique : même commande, même preuve
-{ tripPlanId: 1, sequence: -1 }    // unique : ordre stable du journal
-{ tripPlanId: 1, createdAt: -1 }   // diagnostic chronologique
+{ tripPlanId: 1, sequence: -1 }                 // unique : curseur stable
+{ tripPlanId: 1, createdAt: -1, sequence: -1 } // ordre métier puis départage stable
 ```
 
 Chaque collection source possède aussi un index sparse sur :
@@ -176,6 +176,11 @@ peut être modifiée sans que sa preuve soit durable. Une panne pendant
 l’allocation de séquence ou l’insertion du journal ne remet pas en cause le
 résultat métier : le marqueur reste sur le document source et le réconciliateur
 le reprend par lots de 50 au plus.
+La matérialisation relit toujours le marqueur durable comme source canonique de
+l’auteur, du rôle, du type, de la quantité et de l’heure. Une nouvelle tentative
+ne peut donc pas réattribuer une action antérieure au membre qui la relance. Le
+seul enrichissement admis complète l’acteur d’une acceptation d’invitation quand
+le marqueur avait dû être enregistré avant que le nouveau membre soit relisible.
 Chaque marqueur possède un identifiant opaque propre au document source. Il
 permet de déplacer sans perte ni duplication les preuves encore en attente
 lorsqu’un membre quitte le voyage et que ses préférences privées doivent être
@@ -292,9 +297,13 @@ sequenceDiagram
     end
 ```
 
-La pagination est bornée à 30 événements et utilise la séquence décroissante,
-pas une page numérique fragile sous écriture concurrente. `nextBeforeSequence`
-est un curseur d’ordre, pas un identifiant MongoDB.
+La pagination est bornée à 30 événements et utilise l’heure persistée de la
+mutation en ordre décroissant. La séquence départage deux actions à la même
+microseconde et permet de retrouver le point de reprise sans exposer un
+identifiant MongoDB. `nextBeforeSequence` est donc un curseur opaque : le
+repository relit sa date, puis applique le couple `(occurredAtUtc, sequence)`.
+Une preuve ancienne réparée après une coupure retrouve ainsi sa vraie place
+chronologique au lieu d’apparaître artificiellement comme la plus récente.
 
 ## 7. Concurrence réutilisée
 

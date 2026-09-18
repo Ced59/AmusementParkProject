@@ -36,7 +36,12 @@ public sealed class TripAuditRepositoryTests
             new BsonDocument { { "tripPlanId", 1 }, { "sequence", -1 } },
             Render(sequence.Keys));
         Assert.Equal(
-            new BsonDocument { { "tripPlanId", 1 }, { "createdAt", -1 } },
+            new BsonDocument
+            {
+                { "tripPlanId", 1 },
+                { "createdAt", -1 },
+                { "sequence", -1 },
+            },
             Render(date.Keys));
     }
 
@@ -201,9 +206,105 @@ public sealed class TripAuditRepositoryTests
         Assert.Contains("$$NOW", json, StringComparison.Ordinal);
     }
 
+    [Fact]
+    public void EnrichCanonicalWrite_ShouldPreserveThePersistedActorAndOccurrenceTime()
+    {
+        TripPlanId tripPlanId = TripPlanId.New();
+        TripMemberId originalActor = TripMemberId.New();
+        DateTime originalOccurrence = new(2027, 6, 1, 8, 0, 0, DateTimeKind.Utc);
+        TripActivityWrite canonical = new(
+            tripPlanId,
+            originalActor,
+            TripEffectiveRole.Editor,
+            TripActivityKind.TripRenamed,
+            "root:TripRenamed:2",
+            1,
+            originalOccurrence);
+        TripActivityWrite retry = canonical with
+        {
+            ActorMemberId = TripMemberId.New(),
+            ActorRole = TripEffectiveRole.Owner,
+            OccurredAtUtc = originalOccurrence.AddHours(1),
+        };
+
+        TripActivityWrite enriched = TripAuditRepository.EnrichCanonicalWrite(canonical, retry);
+
+        Assert.Equal(originalActor, enriched.ActorMemberId);
+        Assert.Equal(TripEffectiveRole.Editor, enriched.ActorRole);
+        Assert.Equal(originalOccurrence, enriched.OccurredAtUtc);
+    }
+
+    [Fact]
+    public void EnrichCanonicalWrite_ShouldCompleteAnActorMissingFromThePersistedMarker()
+    {
+        TripPlanId tripPlanId = TripPlanId.New();
+        DateTime originalOccurrence = new(2027, 6, 1, 8, 0, 0, DateTimeKind.Utc);
+        TripActivityWrite canonical = new(
+            tripPlanId,
+            null,
+            null,
+            TripActivityKind.InvitationAccepted,
+            "invitation:accept:operation-1",
+            1,
+            originalOccurrence);
+        TripMemberId resolvedActor = TripMemberId.New();
+        TripActivityWrite retry = canonical with
+        {
+            ActorMemberId = resolvedActor,
+            ActorRole = TripEffectiveRole.Participant,
+            OccurredAtUtc = originalOccurrence.AddHours(1),
+        };
+
+        TripActivityWrite enriched = TripAuditRepository.EnrichCanonicalWrite(canonical, retry);
+
+        Assert.Equal(resolvedActor, enriched.ActorMemberId);
+        Assert.Equal(TripEffectiveRole.Participant, enriched.ActorRole);
+        Assert.Equal(originalOccurrence, enriched.OccurredAtUtc);
+    }
+
+    [Fact]
+    public void PageDefinitions_ShouldOrderByOccurrenceThenUseSequenceAsAStableCursor()
+    {
+        TripPlanId tripPlanId = TripPlanId.New();
+        DateTime cursorDate = new(2027, 6, 1, 8, 0, 0, DateTimeKind.Utc);
+        TripActivityEventDocument cursor = new()
+        {
+            TripPlanId = tripPlanId.Value,
+            Sequence = 42,
+            CreatedAt = cursorDate,
+            UpdatedAt = cursorDate,
+        };
+
+        BsonDocument filter = Render(TripAuditRepository.BuildPageFilter(tripPlanId, cursor));
+        BsonDocument sort = Render(TripAuditRepository.BuildPageSort());
+
+        Assert.Equal(tripPlanId.Value, filter["tripPlanId"].AsString);
+        string filterJson = filter.ToJson();
+        Assert.Contains("$lt", filterJson, StringComparison.Ordinal);
+        Assert.Contains("createdAt", filterJson, StringComparison.Ordinal);
+        Assert.Contains("sequence", filterJson, StringComparison.Ordinal);
+        Assert.Equal(
+            new BsonDocument { { "createdAt", -1 }, { "sequence", -1 } },
+            sort);
+    }
+
     private static BsonDocument Render(IndexKeysDefinition<TripActivityEventDocument> keys)
     {
         return keys.Render(new RenderArgs<TripActivityEventDocument>(
+            BsonSerializer.LookupSerializer<TripActivityEventDocument>(),
+            BsonSerializer.SerializerRegistry));
+    }
+
+    private static BsonDocument Render(FilterDefinition<TripActivityEventDocument> filter)
+    {
+        return filter.Render(new RenderArgs<TripActivityEventDocument>(
+            BsonSerializer.LookupSerializer<TripActivityEventDocument>(),
+            BsonSerializer.SerializerRegistry));
+    }
+
+    private static BsonDocument Render(SortDefinition<TripActivityEventDocument> sort)
+    {
+        return sort.Render(new RenderArgs<TripActivityEventDocument>(
             BsonSerializer.LookupSerializer<TripActivityEventDocument>(),
             BsonSerializer.SerializerRegistry));
     }
