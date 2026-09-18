@@ -74,31 +74,28 @@ public sealed class TripProgramCoherenceService
             return ApplicationResult<TripProgramCoherenceResult>.Failure(TripPlanApplicationErrors.NotFound());
         }
 
-        ApplicationResult<TripProgramResult> programResult = await this.programFactory.BuildAsync(
+        ApplicationResult<TripProgramSnapshotResult> snapshotResult = await this.programFactory.BuildSnapshotAsync(
             parsedTripId,
             cancellationToken);
-        if (!programResult.IsSuccess || programResult.Value is null)
+        if (!snapshotResult.IsSuccess || snapshotResult.Value is null)
         {
-            return ApplicationResult<TripProgramCoherenceResult>.Failure(programResult.Errors);
+            return ApplicationResult<TripProgramCoherenceResult>.Failure(snapshotResult.Errors);
         }
 
-        TripProgramResult program = programResult.Value;
+        TripProgramResult program = snapshotResult.Value.Program;
         string[] parkIds = program.Candidates.Select(static candidate => candidate.ParkId)
             .Concat(program.Days.Select(static day => day.ParkId))
             .Distinct(StringComparer.Ordinal)
             .ToArray();
-        Task<IReadOnlyCollection<Park>> parksTask = parkIds.Length == 0
-            ? Task.FromResult<IReadOnlyCollection<Park>>(Array.Empty<Park>())
-            : this.parks.GetByIdsAsync(parkIds, cancellationToken);
         Task<IReadOnlyCollection<ParkOpeningHoursSchedule>> schedulesTask = parkIds.Length == 0
             ? Task.FromResult<IReadOnlyCollection<ParkOpeningHoursSchedule>>(
                 Array.Empty<ParkOpeningHoursSchedule>())
             : this.openingHours.GetByParkIdsAsync(parkIds, cancellationToken);
         Task<IReadOnlyCollection<TripItemDecision>> decisionsTask =
             this.decisions.ListAsync(parsedTripId, cancellationToken);
-        await Task.WhenAll(parksTask, schedulesTask, decisionsTask);
+        await Task.WhenAll(schedulesTask, decisionsTask);
 
-        IReadOnlyCollection<Park> resolvedParks = await parksTask;
+        IReadOnlyCollection<Park> resolvedParks = snapshotResult.Value.Parks;
         IReadOnlyCollection<ParkOpeningHoursSchedule> schedules = await schedulesTask;
         IReadOnlyCollection<TripItemDecision> tripDecisions = await decisionsTask;
         string[] decisionItemIds = tripDecisions.Select(static decision => decision.ParkItemId)
@@ -118,6 +115,23 @@ public sealed class TripProgramCoherenceService
 
         IReadOnlyCollection<ParkItem> decisionItems = await decisionItemsTask;
         IReadOnlyCollection<TripPreferenceCount> preferenceCounts = await preferenceCountsTask;
+        HashSet<string> resolvedParkIds = resolvedParks
+            .Where(static park => !string.IsNullOrWhiteSpace(park.Id))
+            .Select(static park => park.Id!)
+            .ToHashSet(StringComparer.Ordinal);
+        string[] missingParentParkIds = decisionItems
+            .Select(static item => item.ParkId)
+            .Where(parkId => !string.IsNullOrWhiteSpace(parkId)
+                && !resolvedParkIds.Contains(parkId))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (missingParentParkIds.Length > 0)
+        {
+            IReadOnlyCollection<Park> parentParks = await this.parks.GetByIdsAsync(
+                missingParentParkIds,
+                cancellationToken);
+            resolvedParks = resolvedParks.Concat(parentParks).ToArray();
+        }
         Dictionary<string, ParkItem> decisionItemsById = decisionItems
             .Where(static item => !string.IsNullOrWhiteSpace(item.Id))
             .ToDictionary(static item => item.Id!, StringComparer.Ordinal);

@@ -86,10 +86,10 @@ public sealed class TripProgramEvidenceBuilder
             day.ParkId,
             isParkAvailable ? park!.Name!.Trim() : null,
             isParkAvailable,
-            park?.Status.ToString(),
+            isParkAvailable ? park!.Status.ToString() : null,
             openingState,
-            NormalizeOptional(schedule?.SourceUrl),
-            schedule?.LastVerifiedAtUtc,
+            isParkAvailable ? NormalizeOptional(schedule?.SourceUrl) : null,
+            isParkAvailable ? schedule?.LastVerifiedAtUtc : null,
             day.UpdatedAtUtc);
     }
 

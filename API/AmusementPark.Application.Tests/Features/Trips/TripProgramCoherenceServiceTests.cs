@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Trips.Models;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Results;
 using AmusementPark.Application.Features.Trips.Services;
@@ -151,11 +152,119 @@ public sealed class TripProgramCoherenceServiceTests
         days.VerifyAll();
         parks.Verify(repository => repository.GetByIdsAsync(
             It.IsAny<IEnumerable<string>>(),
-            CancellationToken.None), Times.Exactly(2));
+            CancellationToken.None), Times.Once);
         openingHours.VerifyAll();
         decisions.VerifyAll();
         preferences.VerifyNoOtherCalls();
         parkItems.VerifyNoOtherCalls();
         timeProvider.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetAsync_WhenDecisionParentIsNoLongerACandidate_ShouldResolveItsParkWithoutFalseAlert()
+    {
+        DateTime nowUtc = new DateTime(2027, 4, 1, 10, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "owner-1",
+            "Voyage partagé",
+            TripDateProposal.Range(new DateOnly(2027, 5, 1), new DateOnly(2027, 5, 5)),
+            "Europe/Paris",
+            nowUtc);
+        Park parentPark = new Park
+        {
+            Id = "removed-candidate-park",
+            Name = "Parc toujours public",
+            IsVisible = true,
+            Status = ParkStatus.Operating,
+        };
+        ParkItem item = new ParkItem
+        {
+            Id = "retained-item",
+            ParkId = parentPark.Id,
+            Name = "Attraction conservée",
+            Category = ParkItemCategory.Attraction,
+            IsVisible = true,
+            AttractionDetails = new AttractionDetails { Status = "Operating" },
+        };
+        TripItemDecision decision = TripItemDecision.Create(
+            TripItemDecisionId.New(),
+            trip.Id,
+            item.Id,
+            TripItemDecisionStatus.Retained,
+            "Le groupe la conserve.",
+            trip.OwnerUserId,
+            nowUtc);
+        Mock<ITripPlanRepository> plans = new Mock<ITripPlanRepository>(MockBehavior.Strict);
+        plans.Setup(repository => repository.GetAccessibleAsync(
+                trip.OwnerUserId,
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(trip);
+        plans.SetupSequence(repository => repository.GetProgramReadSequenceAsync(
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(1)
+            .ReturnsAsync(1);
+        Mock<ITripParkCandidateRepository> candidates = new Mock<ITripParkCandidateRepository>(MockBehavior.Strict);
+        candidates.Setup(repository => repository.ListAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(Array.Empty<TripParkCandidate>());
+        Mock<ITripDayPlanRepository> days = new Mock<ITripDayPlanRepository>(MockBehavior.Strict);
+        days.Setup(repository => repository.ListAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(Array.Empty<TripDayPlan>());
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { parentPark.Id })),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { parentPark });
+        Mock<IParkOpeningHoursRepository> openingHours = new Mock<IParkOpeningHoursRepository>(MockBehavior.Strict);
+        Mock<ITripItemDecisionRepository> decisions = new Mock<ITripItemDecisionRepository>(MockBehavior.Strict);
+        decisions.Setup(repository => repository.ListAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(new[] { decision });
+        Mock<ITripPreferenceRepository> preferences = new Mock<ITripPreferenceRepository>(MockBehavior.Strict);
+        preferences.Setup(repository => repository.SummarizeAsync(
+                trip.Id,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { trip.OwnerUserId })),
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { item.Id })),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<TripPreferenceCount>());
+        Mock<IParkItemRepository> parkItems = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItems.Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { item.Id })),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { item });
+        Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
+        timeProvider.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        TripProgramResultFactory programFactory = new TripProgramResultFactory(
+            plans.Object,
+            candidates.Object,
+            days.Object,
+            parks.Object);
+        TripProgramCoherenceService service = new TripProgramCoherenceService(
+            plans.Object,
+            programFactory,
+            parks.Object,
+            openingHours.Object,
+            decisions.Object,
+            preferences.Object,
+            parkItems.Object,
+            new TripProgramEvidenceBuilder(new ParkOpeningHoursCalendarBuilder()),
+            new TripProgramAttractionFactBuilder(),
+            new TripProgramCoherenceEvaluator(),
+            new TripProgramCoherenceIssueMapper(),
+            timeProvider.Object);
+
+        AmusementPark.Application.Errors.ApplicationResult<TripProgramCoherenceResult> result =
+            await service.GetAsync(trip.OwnerUserId, trip.Id.Value, CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        TripProgramCoherenceResult coherence = Assert.IsType<TripProgramCoherenceResult>(result.Value);
+        Assert.DoesNotContain(coherence.Issues, issue =>
+            issue.Code == TripProgramCoherenceCode.AttractionUnavailable);
+        parks.VerifyAll();
+        openingHours.VerifyNoOtherCalls();
+        decisions.VerifyAll();
+        preferences.VerifyAll();
+        parkItems.VerifyAll();
     }
 }

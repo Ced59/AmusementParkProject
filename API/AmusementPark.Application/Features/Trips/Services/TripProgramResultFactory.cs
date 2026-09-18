@@ -35,6 +35,18 @@ public sealed class TripProgramResultFactory
         TripPlanId tripPlanId,
         CancellationToken cancellationToken)
     {
+        ApplicationResult<TripProgramSnapshotResult> snapshotResult = await this.BuildSnapshotAsync(
+            tripPlanId,
+            cancellationToken);
+        return snapshotResult.IsSuccess && snapshotResult.Value is not null
+            ? ApplicationResult<TripProgramResult>.Success(snapshotResult.Value.Program)
+            : ApplicationResult<TripProgramResult>.Failure(snapshotResult.Errors);
+    }
+
+    public async Task<ApplicationResult<TripProgramSnapshotResult>> BuildSnapshotAsync(
+        TripPlanId tripPlanId,
+        CancellationToken cancellationToken)
+    {
         IReadOnlyCollection<TripParkCandidate>? candidates = null;
         IReadOnlyCollection<TripDayPlan>? days = null;
         for (int attempt = 0; attempt < MaximumConsistentReadAttempts; attempt++)
@@ -44,7 +56,7 @@ public sealed class TripProgramResultFactory
                 cancellationToken);
             if (!sequenceBefore.HasValue)
             {
-                return ApplicationResult<TripProgramResult>.Failure(
+                return ApplicationResult<TripProgramSnapshotResult>.Failure(
                     TripPlanApplicationErrors.NotFound());
             }
 
@@ -69,7 +81,7 @@ public sealed class TripProgramResultFactory
 
         if (candidates is null || days is null)
         {
-            return ApplicationResult<TripProgramResult>.Failure(
+            return ApplicationResult<TripProgramSnapshotResult>.Failure(
                 TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
@@ -77,19 +89,21 @@ public sealed class TripProgramResultFactory
             .Concat(days.Select(static day => day.ParkId))
             .Distinct(StringComparer.Ordinal)
             .ToArray();
-        IReadOnlyCollection<Park> parks = await this.parkRepository.GetByIdsAsync(
-            parkIds,
-            cancellationToken);
+        IReadOnlyCollection<Park> parks = parkIds.Length == 0
+            ? Array.Empty<Park>()
+            : await this.parkRepository.GetByIdsAsync(parkIds, cancellationToken);
         Dictionary<string, Park> parksById = parks
             .Where(static park => park.Id is not null)
             .ToDictionary(static park => park.Id!, StringComparer.Ordinal);
-        return ApplicationResult<TripProgramResult>.Success(new TripProgramResult(
+        TripProgramResult program = new TripProgramResult(
             candidates.Select(candidate => ToCandidateResult(
                 candidate,
                 parksById.GetValueOrDefault(candidate.ParkId))).ToArray(),
             days.Select(day => ToDayResult(
                 day,
-                parksById.GetValueOrDefault(day.ParkId))).ToArray()));
+                parksById.GetValueOrDefault(day.ParkId))).ToArray());
+        return ApplicationResult<TripProgramSnapshotResult>.Success(
+            new TripProgramSnapshotResult(program, parks));
     }
 
     public static TripParkCandidateResult ToCandidateResult(
