@@ -39,6 +39,8 @@ public sealed class TripChildMutationExecutorTests
                 "operation-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(lease);
+        repository.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
+            .Returns(Task.CompletedTask);
         TripChildMutationExecutor executor = new(
             repository.Object,
             NullLogger<TripChildMutationExecutor>.Instance);
