@@ -1,0 +1,146 @@
+:host {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.trip-list-page,
+.trip-list-page__hero,
+.trip-list-page__grid,
+.trip-card,
+.trip-composer,
+.trip-composer__dates,
+label {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.trip-list-page {
+  display: grid;
+  width: min(100%, 78rem);
+  margin: 0 auto;
+  padding: clamp(0.75rem, 3vw, 2rem);
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.trip-list-page__hero,
+.trip-composer,
+.trip-card,
+.trip-list-page__empty,
+.trip-list-page__message {
+  display: grid;
+  gap: 1rem;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  max-width: 13ch;
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 8vw, 5.4rem);
+  line-height: 0.92;
+}
+
+.trip-list-page__hero > p,
+.trip-composer p,
+.trip-card__dates,
+.trip-list-page__empty p {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.trip-list-page__hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.trip-composer {
+  grid-template-columns: minmax(0, 1.5fr) minmax(12rem, 1fr);
+  align-items: end;
+}
+
+.trip-composer__dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+label {
+  display: grid;
+  gap: 0.45rem;
+  font-weight: 800;
+}
+
+input {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  box-sizing: border-box;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: var(--app-surface-2);
+  color: var(--text-primary);
+  font: inherit;
+}
+
+.trip-composer__hint,
+.trip-list-page__error {
+  grid-column: 1 / -1;
+}
+
+.trip-list-page__error {
+  color: var(--c-rose);
+}
+
+.trip-list-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: 1rem;
+}
+
+.trip-card {
+  align-content: start;
+}
+
+.trip-card__topline {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.trip-list-page__empty-icon {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--c-sky) 16%, transparent);
+  color: var(--c-sky);
+  font-size: 1.5rem;
+}
+
+@media (max-width: 42rem) {
+  .trip-list-page {
+    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
+  }
+
+  .trip-composer,
+  .trip-composer__dates {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .trip-list-page button,
+  .trip-list-page a {
+    max-width: 100%;
+  }
+}

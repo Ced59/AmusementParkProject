@@ -23,6 +23,18 @@ export const PROFILE_ROUTES: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'trips/:tripId',
+    loadComponent: () => import('./trips/pages/trip-overview-page/trip-overview-page.component')
+      .then((module) => module.TripOverviewPageComponent),
+    canActivate: [authGuard]
+  },
+  {
+    path: 'trips',
+    loadComponent: () => import('./trips/pages/trip-list-page/trip-list-page.component')
+      .then((module) => module.TripListPageComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'passport/comparisons/invitations/:token',
     loadComponent: () => import('./passport/pages/profile-comparison-invitation-page/profile-comparison-invitation-page.component')
       .then((module) => module.ProfileComparisonInvitationPageComponent),

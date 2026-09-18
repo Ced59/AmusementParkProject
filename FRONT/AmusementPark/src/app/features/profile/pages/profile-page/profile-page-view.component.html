@@ -106,6 +106,25 @@
                 </div>
               </section>
 
+              <section class="profile-passport-entry profile-passport-entry--trips">
+                <span class="profile-passport-entry__icon" aria-hidden="true">
+                  <i class="pi pi-compass"></i>
+                </span>
+                <div class="profile-passport-entry__copy">
+                  <app-ui-kicker tone="sky" iconClass="pi pi-map">
+                    {{ 'trips.kicker' | translate }}
+                  </app-ui-kicker>
+                  <h2>{{ 'trips.profile.title' | translate }}</h2>
+                  <p>{{ 'trips.profile.description' | translate }}</p>
+                </div>
+                <div class="profile-passport-entry__actions">
+                  <button appUiButton="primary" type="button" (click)="openTrips()">
+                    <i class="pi pi-compass" aria-hidden="true"></i>
+                    <span>{{ 'trips.profile.action' | translate }}</span>
+                  </button>
+                </div>
+              </section>
+
               <section class="profile-passport-entry profile-passport-entry--collections">
                 <span class="profile-passport-entry__icon" aria-hidden="true">
                   <i class="pi pi-heart"></i>

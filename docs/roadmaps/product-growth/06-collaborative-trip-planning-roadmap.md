@@ -125,6 +125,37 @@ La preuve détaillée, le schéma MongoDB et les diagrammes de classes et de sé
 sont consignés dans
 [`product-growth-trip-03-candidates-days-2026-09-17.md`](../../architecture/product-growth-trip-03-candidates-days-2026-09-17.md).
 
+### État de `TRIP-04` au 18 septembre 2026
+
+Le voyage individuel est désormais accessible depuis le profil, sans invitation
+ni activité communautaire préalable. Un membre peut créer un voyage avec ou sans
+dates, retrouver ses voyages privés puis reprendre leur préparation. La page de
+détail transforme les dates fixes en journées, importe en lot les parcs `WantToVisit`
+ou `Planned` encore disponibles, permet de les qualifier comme idée, présélection,
+choix ou écart, puis d'affecter les parcs choisis à chaque journée avec une heure
+d'arrivée et une note de groupe.
+
+L'ordre des parcs se modifie par glisser-déposer, mais aucun geste précis n'est
+obligatoire : des boutons accessibles permettent aussi de placer une carte en
+premier, de la monter, de la descendre ou de la placer en dernier. Les images des
+collections aident à reconnaître immédiatement les parcs. Les imports multiples
+sont sérialisés et reprennent la version du voyage après chaque ajout ; un conflit
+optimiste recharge le dernier état plutôt que d'écraser une modification plus
+récente.
+
+Le frontend respecte la chaîne `API -> port injecté -> façade -> composant` et les
+écrans restent paresseux derrière l'authentification. Les mises en page bornent
+toutes les grilles, cartes, champs et textes à la largeur disponible, conservent
+la zone sûre de navigation mobile et sont testées jusqu'aux petits écrans. Les
+textes sont localisés dans les huit langues prises en charge. Le fuseau IANA de
+la destination est explicite et modifiable pour tout voyage daté ; une date
+préférée de collection n'est pas transformée en contrainte tant qu'elle ne peut
+pas être retirée depuis cette interface.
+
+La preuve d'architecture, les flux, les cas couverts et les limites du jalon sont
+consignés dans
+[`product-growth-trip-04-individual-ui-2026-09-18.md`](../../architecture/product-growth-trip-04-individual-ui-2026-09-18.md).
+
 ## 1. Vision produit
 
 Un groupe doit pouvoir transformer des envies dispersées en programme commun :
@@ -681,7 +712,7 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 | `TRIP-01` | ADR agrégat, rôles et confidentialité | Invariants validés |
 | `TRIP-02` | Core/persistance voyage individuel | CRUD fiable — implémenté le 17 septembre 2026 |
 | `TRIP-03` | Candidats et jours | Programme cohérent — implémenté le 17 septembre 2026 |
-| `TRIP-04` | UI individuelle + wishlist | Valeur sans invitation |
+| `TRIP-04` | UI individuelle + wishlist | Valeur sans invitation — implémenté le 18 septembre 2026 |
 | `TRIP-05` | Invitations opaques | Preview minimisé |
 | `TRIP-06` | Participants/rôles | Permissions testées |
 | `TRIP-07` | Préférences par élément | Unicité et batch |

@@ -1,0 +1,105 @@
+{
+  "trips": {
+    "kicker": "Voyages à préparer",
+    "privacy": "Privé, visible uniquement par toi",
+    "profile": {
+      "title": "Prépare ton prochain voyage",
+      "description": "Rassemble les parcs qui te tentent, classe-les et construis chaque journée.",
+      "action": "Ouvrir mes voyages"
+    },
+    "actions": {
+      "backToProfile": "Retour au profil",
+      "backToTrips": "Retour aux voyages",
+      "create": "Nouveau voyage",
+      "creating": "Création…",
+      "start": "Commencer ce voyage",
+      "retry": "Réessayer",
+      "createFirst": "Créer mon premier voyage",
+      "continuePlanning": "Continuer la préparation",
+      "saveDates": "Enregistrer les dates",
+      "saveTimeZone": "Enregistrer le fuseau",
+      "chooseFixedDates": "Choisir des dates fixes",
+      "clearDates": "Effacer les dates",
+      "openCollections": "Ouvrir mes listes",
+      "importSelection": "Ajouter la sélection ({{count}})",
+      "saveDay": "Enregistrer cette journée",
+      "clearDay": "Effacer cette journée"
+    },
+    "fields": { "title": "Nom du voyage", "startDate": "Date de début", "endDate": "Date de fin", "destinationTimeZone": "Fuseau horaire de la destination" },
+    "list": {
+      "title": "Tes voyages",
+      "description": "Retrouve tes idées de séjour et reprends leur préparation quand tu veux.",
+      "myTrips": "Mes voyages privés"
+    },
+    "create": {
+      "kicker": "Nouvelle aventure",
+      "title": "Donne un cap à ton prochain séjour",
+      "description": "Un titre suffit pour commencer. Tu pourras préciser les dates ensuite.",
+      "titlePlaceholder": "Ex. Week-end parcs en Allemagne",
+      "dateHint": "Les dates sont facultatives et restent modifiables."
+    },
+    "feedback": {
+      "loading": "Chargement…",
+      "loadError": "Tes voyages n’ont pas pu être chargés.",
+      "createError": "Ce voyage n’a pas pu être créé.",
+      "actionError": "Cette modification n’a pas pu être enregistrée.",
+      "conflict": "Le voyage a changé ailleurs. Sa version la plus récente vient d’être rechargée.",
+      "dateRangeTooLong": "Un voyage peut couvrir au maximum 366 jours.",
+      "invalidDates": "Indique une date de début avant la date de fin, dans l’ordre chronologique."
+    },
+    "empty": { "title": "Aucun voyage en préparation", "description": "Crée un voyage pour transformer tes envies de parcs en programme concret." },
+    "overview": {
+      "kicker": "Atelier de voyage",
+      "description": "Fais évoluer tes idées jusqu’à un programme clair, à ton rythme.",
+      "solo": "Préparation en solo"
+    },
+    "dates": {
+      "kicker": "Quand partir ?",
+      "title": "Pose les dates du voyage",
+      "description": "Elles créent automatiquement les journées de ton programme.",
+      "timeZoneHint": "Vérifie le fuseau du parc ou de la destination (par exemple Europe/Paris), surtout si tu prépares le voyage depuis un autre pays.",
+      "currentProposal": "Proposition actuelle",
+      "explicitConversion": "Cette proposition reste intacte tant que tu ne choisis pas explicitement des dates fixes ou son effacement.",
+      "clearBlocked": "Efface d’abord chaque journée enregistrée et chaque contrainte de date d’un parc avant d’effacer les dates du voyage.",
+      "dependenciesOutsideRange": "La nouvelle période doit inclure chaque journée enregistrée et chaque contrainte de date d’un parc.",
+      "toDecide": "Dates à décider",
+      "kinds": { "none": "Dates à décider", "fixed": "Dates fixées", "range": "Période envisagée", "candidates": "Plusieurs dates possibles" }
+    },
+    "wishlist": {
+      "kicker": "Tes envies",
+      "title": "Pars de tes parcs enregistrés",
+      "description": "Choisis plusieurs favoris ou projets de visite et ajoute-les en une fois.",
+      "loading": "Chargement de tes parcs enregistrés…",
+      "empty": "Tous tes parcs disponibles sont déjà dans ce voyage, ou ta liste est encore vide.",
+      "unavailable": "Tes listes sont momentanément indisponibles. Tu peux continuer à préparer le reste du voyage."
+    },
+    "candidates": {
+      "kicker": "Tes priorités",
+      "title": "Compose la sélection du voyage",
+      "description": "Glisse les cartes pour les classer, ou utilise leurs boutons de déplacement.",
+      "empty": "Ajoute un parc depuis tes envies pour commencer la sélection.",
+      "unavailable": "Parc indisponible",
+      "drag": "Faire glisser ce parc",
+      "changeState": "Changer la priorité du parc",
+      "scheduledStateHint": "Ce parc est utilisé dans une journée enregistrée. Efface cette journée avant de changer sa priorité.",
+      "move": "Déplacer le parc dans la liste",
+      "first": "Placer en premier",
+      "up": "Monter",
+      "down": "Descendre",
+      "last": "Placer en dernier",
+      "states": { "proposed": "Idée", "shortlisted": "À retenir", "selected": "Choisi", "rejected": "Écarté" },
+      "sources": { "manual": "Ajout manuel", "wishlist": "Importé depuis tes envies", "comparator": "Ajouté depuis le comparateur" }
+    },
+    "days": {
+      "kicker": "Ton programme",
+      "title": "Construis le séjour journée par journée",
+      "description": "Affecte un parc choisi, une heure d’arrivée et une note utile à chaque date.",
+      "needsDates": "Fixe d’abord les dates pour créer les journées.",
+      "needsPark": "Passe au moins un parc dans l’état « Choisi » pour l’affecter à une journée.",
+      "park": "Parc de la journée",
+      "choosePark": "Choisir un parc",
+      "arrival": "Heure d’arrivée souhaitée",
+      "note": "Note pour la journée"
+    }
+  }
+}

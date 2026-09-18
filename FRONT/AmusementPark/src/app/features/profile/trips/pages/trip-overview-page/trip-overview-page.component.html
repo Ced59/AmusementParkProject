@@ -1,0 +1,302 @@
+<main class="trip-overview-page">
+  <header class="trip-overview-page__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips']">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'trips.actions.backToTrips' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="sky" iconClass="pi pi-compass">{{ 'trips.overview.kicker' | translate }}</app-ui-kicker>
+    <h1>{{ facade.trip()?.title || ('trips.feedback.loading' | translate) }}</h1>
+    <p>{{ 'trips.overview.description' | translate }}</p>
+    <div class="trip-overview-page__legend">
+      <app-ui-chip tone="gold" iconClass="pi pi-lock">{{ 'trips.privacy' | translate }}</app-ui-chip>
+      <app-ui-chip tone="soft" iconClass="pi pi-users">{{ 'trips.overview.solo' | translate }}</app-ui-chip>
+    </div>
+  </header>
+
+  @if (facade.status() === 'loading') {
+    <section class="trip-overview-page__message" appUiSurface="panel" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i><span>{{ 'trips.feedback.loading' | translate }}</span>
+    </section>
+  } @else if (facade.status() === 'error') {
+    <section class="trip-overview-page__message trip-overview-page__error" appUiSurface="panel" role="alert">
+      <span>{{ 'trips.feedback.loadError' | translate }}</span>
+    </section>
+  } @else if (facade.trip()) {
+    @if (facade.actionError()) {
+      <p class="trip-overview-page__error" role="alert">
+        {{ (facade.actionError() === 'conflict' ? 'trips.feedback.conflict' : 'trips.feedback.actionError') | translate }}
+      </p>
+    }
+
+    <section class="trip-section trip-dates" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-section__heading">
+        <span class="trip-section__step">1</span>
+        <div>
+          <app-ui-kicker tone="gold" iconClass="pi pi-calendar">{{ 'trips.dates.kicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.dates.title' | translate }}</h2>
+          <p>{{ 'trips.dates.description' | translate }}</p>
+        </div>
+      </div>
+      @if (hasSpecialDateProposal() && !dateEditorEnabled()) {
+        <div class="trip-dates__proposal">
+          <strong>{{ 'trips.dates.currentProposal' | translate }}</strong>
+          <div class="trip-dates__proposal-values">
+            @for (date of currentProposedDates(); track date) {
+              <span>{{ date }}</span>
+            }
+          </div>
+          <label>
+            <span>{{ 'trips.fields.destinationTimeZone' | translate }}</span>
+            <input
+              type="text"
+              maxlength="100"
+              autocomplete="off"
+              [disabled]="facade.busy()"
+              [value]="destinationTimeZoneId()"
+              placeholder="Europe/Paris"
+              (input)="destinationTimeZoneId.set($any($event.target).value)">
+          </label>
+          <p class="trip-dates__hint">{{ 'trips.dates.timeZoneHint' | translate }}</p>
+          <button
+            type="button"
+            appUiButton="ghost"
+            [disabled]="facade.busy() || !canSaveSpecialTimeZone()"
+            (click)="saveSpecialTimeZone()">
+            {{ 'trips.actions.saveTimeZone' | translate }}
+          </button>
+          <p>{{ 'trips.dates.explicitConversion' | translate }}</p>
+          <div class="trip-dates__actions">
+            <button type="button" appUiButton="primary" [disabled]="facade.busy()" (click)="beginFixedDateEdit()">
+              {{ 'trips.actions.chooseFixedDates' | translate }}
+            </button>
+            <button type="button" appUiButton="ghost" [disabled]="facade.busy() || !canClearDates()" (click)="clearDates()">
+              {{ 'trips.actions.clearDates' | translate }}
+            </button>
+          </div>
+          @if (!canClearDates()) {
+            <p class="trip-dates__validation">{{ 'trips.dates.clearBlocked' | translate }}</p>
+          }
+        </div>
+      } @else {
+        <div class="trip-dates__fields">
+          <label>
+            <span>{{ 'trips.fields.startDate' | translate }}</span>
+            <input type="date" [disabled]="facade.busy()" [value]="startDate()" (input)="startDate.set($any($event.target).value)">
+          </label>
+          <label>
+            <span>{{ 'trips.fields.endDate' | translate }}</span>
+            <input type="date" [disabled]="facade.busy()" [min]="startDate()" [value]="endDate()" (input)="endDate.set($any($event.target).value)">
+          </label>
+          @if (startDate()) {
+            <label>
+              <span>{{ 'trips.fields.destinationTimeZone' | translate }}</span>
+              <input
+                type="text"
+                maxlength="100"
+                autocomplete="off"
+                [disabled]="facade.busy()"
+                [value]="destinationTimeZoneId()"
+                placeholder="Europe/Paris"
+                (input)="destinationTimeZoneId.set($any($event.target).value)">
+            </label>
+            <p class="trip-dates__hint">{{ 'trips.dates.timeZoneHint' | translate }}</p>
+          }
+          @if (datesTooLong()) {
+            <p class="trip-dates__validation" role="alert">{{ 'trips.feedback.dateRangeTooLong' | translate }}</p>
+          } @else if (datesInvalid()) {
+            <p class="trip-dates__validation" role="alert">{{ 'trips.feedback.invalidDates' | translate }}</p>
+          }
+          @if (dateDependenciesOutsideDraft()) {
+            <p class="trip-dates__validation" role="alert">{{ 'trips.dates.dependenciesOutsideRange' | translate }}</p>
+          }
+          <div class="trip-dates__actions">
+            <button type="button" appUiButton="primary" [disabled]="facade.busy() || !canSaveDates()" (click)="saveDates()">
+              {{ 'trips.actions.saveDates' | translate }}
+            </button>
+            @if (facade.trip()?.dateProposal?.kind !== 'None') {
+              <button type="button" appUiButton="ghost" [disabled]="facade.busy() || !canClearDates()" (click)="clearDates()">
+                {{ 'trips.actions.clearDates' | translate }}
+              </button>
+            }
+          </div>
+          @if (facade.trip()?.dateProposal?.kind !== 'None' && !canClearDates()) {
+            <p class="trip-dates__validation">{{ 'trips.dates.clearBlocked' | translate }}</p>
+          }
+        </div>
+      }
+    </section>
+
+    <section class="trip-section" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-section__heading">
+        <span class="trip-section__step">2</span>
+        <div>
+          <app-ui-kicker tone="rose" iconClass="pi pi-heart">{{ 'trips.wishlist.kicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.wishlist.title' | translate }}</h2>
+          <p>{{ 'trips.wishlist.description' | translate }}</p>
+        </div>
+      </div>
+      @if (facade.wishlistLoading()) {
+        <div class="trip-section__empty" role="status" aria-live="polite">
+          <p>{{ 'trips.wishlist.loading' | translate }}</p>
+        </div>
+      } @else if (facade.wishlistUnavailable()) {
+        <div class="trip-section__empty">
+          <p>{{ 'trips.wishlist.unavailable' | translate }}</p>
+          <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'collections']">
+            {{ 'trips.actions.openCollections' | translate }}
+          </a>
+        </div>
+      } @else if (facade.wishlistParks().length === 0) {
+        <div class="trip-section__empty">
+          <p>{{ 'trips.wishlist.empty' | translate }}</p>
+          <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'collections']">
+            {{ 'trips.actions.openCollections' | translate }}
+          </a>
+        </div>
+      } @else {
+        <div class="wishlist-strip">
+          @for (entry of facade.wishlistParks(); track entry.entryId) {
+            <button
+              type="button"
+              class="wishlist-card"
+              [class.wishlist-card--selected]="selectedWishlistIds().has(entry.entryId)"
+              [attr.aria-pressed]="selectedWishlistIds().has(entry.entryId)"
+              (click)="toggleWishlist(entry.entryId)">
+              <span class="wishlist-card__visual">
+                @if (entry.mainImageId) {
+                  <app-image-display
+                    [imageId]="entry.mainImageId"
+                    [alt]="entry.targetName || ''"
+                    sizes="8rem"
+                    [responsiveWidths]="imageWidths"
+                    [srcWidth]="200"
+                    placeholderKind="photo">
+                  </app-image-display>
+                } @else {
+                  <i class="pi pi-building" aria-hidden="true"></i>
+                }
+              </span>
+              <strong>{{ entry.targetName }}</strong>
+              <span><i class="pi" [class.pi-check-circle]="selectedWishlistIds().has(entry.entryId)" [class.pi-circle]="!selectedWishlistIds().has(entry.entryId)" aria-hidden="true"></i></span>
+            </button>
+          }
+        </div>
+        <button
+          type="button"
+          appUiButton="rose"
+          [disabled]="facade.busy() || selectedWishlistIds().size === 0"
+          (click)="importSelectedWishlist()">
+          <i class="pi pi-plus" aria-hidden="true"></i>
+          <span>{{ 'trips.actions.importSelection' | translate:{ count: selectedWishlistIds().size } }}</span>
+        </button>
+      }
+    </section>
+
+    <section class="trip-section" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-section__heading">
+        <span class="trip-section__step">3</span>
+        <div>
+          <app-ui-kicker tone="sky" iconClass="pi pi-sort-alt">{{ 'trips.candidates.kicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.candidates.title' | translate }}</h2>
+          <p>{{ 'trips.candidates.description' | translate }}</p>
+        </div>
+      </div>
+      @if (facade.program().candidates.length === 0) {
+        <div class="trip-section__empty"><p>{{ 'trips.candidates.empty' | translate }}</p></div>
+      } @else {
+        <div
+          class="candidate-board"
+          cdkDropList
+          [cdkDropListData]="facade.program().candidates"
+          [cdkDropListDisabled]="facade.busy()"
+          (cdkDropListDropped)="dropCandidate($event)">
+          @for (candidate of facade.program().candidates; track candidate.candidateId; let index = $index) {
+            <app-trip-candidate-card
+              cdkDrag
+              [cdkDragData]="candidate"
+              [candidate]="candidate"
+              [imageId]="facade.imageIdForPark(candidate.parkId)"
+              [index]="index"
+              [count]="facade.program().candidates.length"
+              [disabled]="facade.busy()"
+              [scheduled]="isCandidateScheduled(candidate.candidateId)"
+              (stateChanged)="changeCandidateState(candidate, $event)"
+              (moveRequested)="facade.moveCandidate(candidate.candidateId, $event)">
+            </app-trip-candidate-card>
+          }
+        </div>
+      }
+    </section>
+
+    <section class="trip-section" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-section__heading">
+        <span class="trip-section__step">4</span>
+        <div>
+          <app-ui-kicker tone="lime" iconClass="pi pi-map">{{ 'trips.days.kicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.days.title' | translate }}</h2>
+          <p>{{ 'trips.days.description' | translate }}</p>
+        </div>
+      </div>
+      @if (facade.tripDates().length === 0) {
+        <div class="trip-section__empty"><p>{{ 'trips.days.needsDates' | translate }}</p></div>
+      } @else if (selectedCandidates().length === 0 && facade.program().days.length === 0) {
+        <div class="trip-section__empty"><p>{{ 'trips.days.needsPark' | translate }}</p></div>
+      } @else {
+        <div class="day-board">
+          @for (date of facade.tripDates(); track date) {
+            <article class="day-card">
+              <div class="day-card__date"><i class="pi pi-calendar" aria-hidden="true"></i><strong>{{ date }}</strong></div>
+              <label>
+                <span>{{ 'trips.days.park' | translate }}</span>
+                <select
+                  [disabled]="facade.busy()"
+                  [value]="dayDrafts()[date]?.candidateId || ''"
+                  (change)="updateDay(date, 'candidateId', $any($event.target).value)">
+                  <option value="">{{ 'trips.days.choosePark' | translate }}</option>
+                  @if (savedDayNeedsFallbackOption(date)) {
+                    @if (savedDay(date); as saved) {
+                      <option [value]="saved.parkCandidateId" disabled>
+                        {{ saved.parkName }} · {{ 'trips.candidates.unavailable' | translate }}
+                      </option>
+                    }
+                  }
+                  @for (candidate of selectedCandidatesForDate(date); track candidate.candidateId) {
+                    <option [value]="candidate.candidateId">{{ candidate.parkName }}</option>
+                  }
+                </select>
+              </label>
+              <label>
+                <span>{{ 'trips.days.arrival' | translate }}</span>
+                <input
+                  type="time"
+                  [disabled]="facade.busy()"
+                  [value]="dayDrafts()[date]?.arrivalTime || ''"
+                  (input)="updateDay(date, 'arrivalTime', $any($event.target).value)">
+              </label>
+              <label class="day-card__note">
+                <span>{{ 'trips.days.note' | translate }}</span>
+                <textarea
+                  maxlength="2000"
+                  rows="2"
+                  [disabled]="facade.busy()"
+                  [value]="dayDrafts()[date]?.note || ''"
+                  (input)="updateDay(date, 'note', $any($event.target).value)"></textarea>
+              </label>
+              <div class="day-card__actions">
+                <button type="button" appUiButton="primary" [disabled]="facade.busy() || !canSaveDay(date)" (click)="saveDay(date)">
+                  {{ 'trips.actions.saveDay' | translate }}
+                </button>
+                @if (hasSavedDay(date)) {
+                  <button type="button" appUiButton="ghost" [disabled]="facade.busy()" (click)="clearDay(date)">
+                    <i class="pi pi-trash" aria-hidden="true"></i>
+                    <span>{{ 'trips.actions.clearDay' | translate }}</span>
+                  </button>
+                }
+              </div>
+            </article>
+          }
+        </div>
+      }
+    </section>
+  }
+</main>
