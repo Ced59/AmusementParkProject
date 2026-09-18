@@ -35,14 +35,10 @@ public sealed class TripChildMutationExecutor
                 TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        try
-        {
-            return await action(lease);
-        }
-        finally
-        {
-            await this.ReleaseBestEffortAsync(trip.Id, lease);
-        }
+        return await this.ExecuteWithLeaseAsync(
+            trip.Id,
+            lease,
+            () => action(lease));
     }
 
     public async Task<ApplicationResult<TResult>> ExecuteAccessibleAsync<TResult>(
@@ -65,14 +61,10 @@ public sealed class TripChildMutationExecutor
                 TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        try
-        {
-            return await action(lease);
-        }
-        finally
-        {
-            await this.ReleaseBestEffortAsync(trip.Id, lease);
-        }
+        return await this.ExecuteWithLeaseAsync(
+            trip.Id,
+            lease,
+            () => action(lease));
     }
 
     public async Task<ApplicationResult> ExecuteOwnedAsync(
@@ -90,14 +82,10 @@ public sealed class TripChildMutationExecutor
             return ApplicationResult.Failure(TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        try
-        {
-            return await action(lease);
-        }
-        finally
-        {
-            await this.ReleaseBestEffortAsync(trip.Id, lease);
-        }
+        return await this.ExecuteWithLeaseAsync(
+            trip.Id,
+            lease,
+            () => action(lease));
     }
 
     public async Task<ApplicationResult> ExecuteAccessibleAsync(
@@ -119,13 +107,38 @@ public sealed class TripChildMutationExecutor
             return ApplicationResult.Failure(TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
+        return await this.ExecuteWithLeaseAsync(
+            trip.Id,
+            lease,
+            () => action(lease));
+    }
+
+    private async Task<TResult> ExecuteWithLeaseAsync<TResult>(
+        TripPlanId tripPlanId,
+        TripChildMutationLease lease,
+        Func<Task<TResult>> action)
+    {
+        bool outcomeIsKnown = true;
         try
         {
-            return await action(lease);
+            return await action();
+        }
+        catch (OperationCanceledException)
+        {
+            outcomeIsKnown = false;
+            throw;
+        }
+        catch (TimeoutException)
+        {
+            outcomeIsKnown = false;
+            throw;
         }
         finally
         {
-            await this.ReleaseBestEffortAsync(trip.Id, lease);
+            if (outcomeIsKnown)
+            {
+                await this.ReleaseBestEffortAsync(tripPlanId, lease);
+            }
         }
     }
 

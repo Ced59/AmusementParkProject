@@ -39,8 +39,6 @@ public sealed class TripChildMutationExecutorTests
                 "operation-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(lease);
-        repository.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
-            .Returns(Task.CompletedTask);
         TripChildMutationExecutor executor = new(
             repository.Object,
             NullLogger<TripChildMutationExecutor>.Instance);
@@ -143,7 +141,7 @@ public sealed class TripChildMutationExecutorTests
     }
 
     [Fact]
-    public async Task ExecuteOwnedAsync_WhenTheGenericMutationThrows_ShouldReleaseTheLease()
+    public async Task ExecuteOwnedAsync_WhenTheGenericMutationOutcomeIsAmbiguous_ShouldKeepTheLeaseUntilExpiry()
     {
         DateTime nowUtc = new(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
         TripPlan trip = TripPlan.Create(
@@ -170,8 +168,6 @@ public sealed class TripChildMutationExecutorTests
                 "operation-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(lease);
-        repository.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
-            .Returns(Task.CompletedTask);
         TripChildMutationExecutor executor = new(
             repository.Object,
             NullLogger<TripChildMutationExecutor>.Instance);
@@ -183,6 +179,10 @@ public sealed class TripChildMutationExecutorTests
                 new TimeoutException("The MongoDB outcome is unknown.")),
             CancellationToken.None));
 
+        repository.Verify(item => item.ReleaseAsync(
+            It.IsAny<TripPlanId>(),
+            It.IsAny<TripChildMutationLease>(),
+            It.IsAny<CancellationToken>()), Times.Never);
         repository.VerifyAll();
     }
 
@@ -230,7 +230,7 @@ public sealed class TripChildMutationExecutorTests
     }
 
     [Fact]
-    public async Task ExecuteAccessibleAsync_WhenTheGenericMutationIsCancelled_ShouldReleaseTheLease()
+    public async Task ExecuteAccessibleAsync_WhenTheGenericMutationIsCancelled_ShouldKeepTheLeaseUntilExpiry()
     {
         DateTime nowUtc = new(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
         TripPlan trip = TripPlan.Create(
@@ -257,8 +257,6 @@ public sealed class TripChildMutationExecutorTests
                 "operation-1",
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(lease);
-        repository.Setup(item => item.ReleaseAsync(trip.Id, lease, CancellationToken.None))
-            .Returns(Task.CompletedTask);
         TripChildMutationExecutor executor = new(
             repository.Object,
             NullLogger<TripChildMutationExecutor>.Instance);
@@ -271,6 +269,10 @@ public sealed class TripChildMutationExecutorTests
             _ => Task.FromCanceled<ApplicationResult<string>>(new CancellationToken(true)),
             CancellationToken.None));
 
+        repository.Verify(item => item.ReleaseAsync(
+            It.IsAny<TripPlanId>(),
+            It.IsAny<TripChildMutationLease>(),
+            It.IsAny<CancellationToken>()), Times.Never);
         repository.VerifyAll();
     }
 
