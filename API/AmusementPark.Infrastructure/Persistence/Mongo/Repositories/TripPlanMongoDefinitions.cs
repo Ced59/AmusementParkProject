@@ -273,6 +273,9 @@ internal static class TripPlanMongoDefinitions
                 static document => document.ParkCandidateOrderIds,
                 new List<string>()),
             updates.Set(static document => document.ParkCandidateOrderVersion, 0),
+            updates.Set(
+                static document => document.PendingAuditEvents,
+                new List<TripActivityPendingDocument>()),
             updates.Unset(static document => document.CreationSnapshot),
             updates.Set(
                 static document => document.CreationOperationExpiresAtUtc,

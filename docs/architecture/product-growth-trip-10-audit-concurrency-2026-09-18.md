@@ -181,6 +181,9 @@ l’auteur, du rôle, du type, de la quantité et de l’heure. Une nouvelle ten
 ne peut donc pas réattribuer une action antérieure au membre qui la relance. Le
 seul enrichissement admis complète l’acteur d’une acceptation d’invitation quand
 le marqueur avait dû être enregistré avant que le nouveau membre soit relisible.
+Si le worker a déjà matérialisé cet événement neutre, la publication de premier
+plan complète atomiquement les deux champs d’acteur sans toucher à l’heure ni au
+reste de la preuve.
 Chaque marqueur possède un identifiant opaque propre au document source. Il
 permet de déplacer sans perte ni duplication les preuves encore en attente
 lorsqu’un membre quitte le voyage et que ses préférences privées doivent être
@@ -203,8 +206,10 @@ perdre le journal.
 Après l’insertion, le repository revérifie la barrière de suppression et retire
 l’événement si la fermeture a gagné la course. Si la fermeture commence après
 cette vérification, la purge voit déjà l’événement et le retire normalement.
-La purge du voyage supprime les événements et tous les documents sources, donc
-également leurs marqueurs en attente.
+La purge du voyage supprime les événements et tous les documents enfants, puis
+vide explicitement `pendingAuditEvents` sur le tombstone du plan. Aucun identifiant
+de membre porté par une preuve racine ne subsiste donc pendant la rétention du
+tombstone.
 
 Les anciens documents n’ont pas besoin de migration de données : l’absence de
 `auditSequence` vaut zéro et l’absence de `pendingAuditEvents` vaut une liste

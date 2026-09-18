@@ -449,6 +449,7 @@ public sealed class TripPlanMongoDefinitionsTests
         Assert.Equal(TripDeletionState.Purged.ToString(), rendered["$set"]["deletionState"].AsString);
         Assert.Empty(rendered["$set"]["members"].AsBsonArray);
         Assert.Empty(rendered["$set"]["parkCandidateOrderIds"].AsBsonArray);
+        Assert.Empty(rendered["$set"]["pendingAuditEvents"].AsBsonArray);
         Assert.Equal(0, rendered["$set"]["parkCandidateOrderVersion"].AsInt64);
         Assert.Equal(
             createdAtUtc.AddMinutes(1).Add(TripPlan.CreationReplayRetention),

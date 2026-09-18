@@ -72,6 +72,7 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
                 cancellationToken);
             if (existing is not null)
             {
+                await this.EnrichExistingActorAsync(existing, activity, cancellationToken);
                 await this.RemovePendingMarkersAsync(
                     activity.TripPlanId,
                     activity.OperationKey,
@@ -109,6 +110,47 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
                 activity.OperationKey);
             return false;
         }
+    }
+
+    private async Task EnrichExistingActorAsync(
+        TripActivityEventDocument existing,
+        TripActivityWrite requested,
+        CancellationToken cancellationToken)
+    {
+        if (!CanEnrichExistingActor(existing, requested))
+        {
+            return;
+        }
+
+        FilterDefinitionBuilder<TripActivityEventDocument> filters =
+            Builders<TripActivityEventDocument>.Filter;
+        _ = await this.activities.UpdateOneAsync(
+            filters.Eq(static document => document.Id, existing.Id)
+                & filters.Eq(static document => document.TripPlanId, requested.TripPlanId.Value)
+                & filters.Eq(static document => document.OperationKey, requested.OperationKey)
+                & filters.Eq(static document => document.Kind, TripActivityKind.InvitationAccepted)
+                & filters.Eq(static document => document.ActorMemberId, null)
+                & filters.Eq(static document => document.ActorRole, null),
+            Builders<TripActivityEventDocument>.Update
+                .Set(static document => document.ActorMemberId, requested.ActorMemberId!.Value.Value)
+                .Set(static document => document.ActorRole, requested.ActorRole!.Value),
+            cancellationToken: cancellationToken);
+    }
+
+    internal static bool CanEnrichExistingActor(
+        TripActivityEventDocument existing,
+        TripActivityWrite requested)
+    {
+        ArgumentNullException.ThrowIfNull(existing);
+        ArgumentNullException.ThrowIfNull(requested);
+        return existing.Kind == TripActivityKind.InvitationAccepted
+            && requested.Kind == TripActivityKind.InvitationAccepted
+            && string.Equals(existing.TripPlanId, requested.TripPlanId.Value, StringComparison.Ordinal)
+            && string.Equals(existing.OperationKey, requested.OperationKey, StringComparison.Ordinal)
+            && string.IsNullOrWhiteSpace(existing.ActorMemberId)
+            && !existing.ActorRole.HasValue
+            && requested.ActorMemberId.HasValue
+            && requested.ActorRole.HasValue;
     }
 
     public async Task<int> ReconcilePendingAsync(

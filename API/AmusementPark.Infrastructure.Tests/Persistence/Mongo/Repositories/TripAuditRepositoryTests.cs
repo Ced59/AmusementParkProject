@@ -263,6 +263,45 @@ public sealed class TripAuditRepositoryTests
     }
 
     [Fact]
+    public void CanEnrichExistingActor_ShouldOnlyAllowAnActorlessInvitationAcceptance()
+    {
+        TripPlanId tripPlanId = TripPlanId.New();
+        TripMemberId resolvedActor = TripMemberId.New();
+        DateTime occurredAtUtc = new(2027, 6, 1, 8, 0, 0, DateTimeKind.Utc);
+        TripActivityEventDocument existing = new()
+        {
+            Id = "activity-1",
+            TripPlanId = tripPlanId.Value,
+            Kind = TripActivityKind.InvitationAccepted,
+            OperationKey = "invitation:accept:operation-1",
+            Sequence = 1,
+            AffectedCount = 1,
+            CreatedAt = occurredAtUtc,
+            UpdatedAt = occurredAtUtc,
+        };
+        TripActivityWrite requested = new(
+            tripPlanId,
+            resolvedActor,
+            TripEffectiveRole.Participant,
+            TripActivityKind.InvitationAccepted,
+            existing.OperationKey,
+            1,
+            occurredAtUtc.AddMinutes(1));
+
+        Assert.True(TripAuditRepository.CanEnrichExistingActor(existing, requested));
+
+        existing.ActorMemberId = TripMemberId.New().Value;
+        existing.ActorRole = TripEffectiveRole.Editor;
+        Assert.False(TripAuditRepository.CanEnrichExistingActor(existing, requested));
+
+        existing.ActorMemberId = null;
+        existing.ActorRole = null;
+        Assert.False(TripAuditRepository.CanEnrichExistingActor(
+            existing,
+            requested with { Kind = TripActivityKind.InvitationDeclined }));
+    }
+
+    [Fact]
     public void PageDefinitions_ShouldOrderByOccurrenceThenUseSequenceAsAStableCursor()
     {
         TripPlanId tripPlanId = TripPlanId.New();
