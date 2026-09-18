@@ -36,7 +36,9 @@ public static class SensitiveRequestPathSanitizer
             return value;
         }
 
-        if (Uri.TryCreate(value, UriKind.Absolute, out Uri? absoluteUri))
+        if (Uri.TryCreate(value, UriKind.Absolute, out Uri? absoluteUri)
+            && (string.Equals(absoluteUri.Scheme, Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(absoluteUri.Scheme, Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase)))
         {
             string sanitizedPath = SanitizeUrlPath(absoluteUri.AbsolutePath);
             if (string.Equals(sanitizedPath, absoluteUri.AbsolutePath, StringComparison.Ordinal))
