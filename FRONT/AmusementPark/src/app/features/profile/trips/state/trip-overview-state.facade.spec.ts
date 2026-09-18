@@ -132,6 +132,30 @@ describe('TripOverviewStateFacade', () => {
     expect(facade.busy()).toBe(false);
   });
 
+  it('keeps successfully imported parks visible when a later wishlist import fails', () => {
+    const first: UserCollectionEntry = createEntry({ entryId: 'entry-1', targetId: 'park-2' });
+    const second: UserCollectionEntry = createEntry({ entryId: 'entry-2', targetId: 'park-3' });
+    (plans.getMine as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(of(createTrip({ version: 1 })))
+      .mockReturnValueOnce(of(createTrip({ version: 2 })));
+    (programData.addPark as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(of(createCandidate({ candidateId: 'candidate-2', parkId: 'park-2' })))
+      .mockReturnValueOnce(throwError(() => ({ status: 400 })));
+
+    facade.load('trip-1');
+    facade.importWishlist([first, second]);
+
+    expect(programData.addPark).toHaveBeenCalledTimes(2);
+    expect(programData.get).toHaveBeenCalledTimes(1);
+    expect(facade.program().candidates.map((candidate: TripParkCandidate): string => candidate.parkId))
+      .toEqual(['park-2']);
+    expect(facade.wishlistParks().map((entry: UserCollectionEntry): string => entry.targetId))
+      .not.toContain('park-2');
+    expect(facade.trip()?.version).toBe(2);
+    expect(facade.actionError()).toBe('failed');
+    expect(facade.busy()).toBe(false);
+  });
+
   it('clears a saved day and refreshes the authoritative day drafts', () => {
     const day: TripDayPlan = createDay({ version: 4 });
     (programData.get as ReturnType<typeof vi.fn>)

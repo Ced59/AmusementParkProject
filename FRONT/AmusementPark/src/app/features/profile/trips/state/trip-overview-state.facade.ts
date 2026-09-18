@@ -175,6 +175,7 @@ export class TripOverviewStateFacade {
           collectiveNote: null
         };
         return this.programData.addPark(tripId, request, this.operationIds.create()).pipe(
+          tap((candidate: TripParkCandidate): void => this.reconcileImportedCandidate(candidate)),
           switchMap((): Observable<TripPlan> => this.plans.getMine(tripId)),
           tap((updatedTrip: TripPlan): void => this.tripSignal.set(updatedTrip))
         );
@@ -335,6 +336,22 @@ export class TripOverviewStateFacade {
   private applyProgram(result: { trip: TripPlan; program: TripProgram }): void {
     this.tripSignal.set(result.trip);
     this.programSignal.set(result.program);
+  }
+
+  private reconcileImportedCandidate(candidate: TripParkCandidate): void {
+    this.programSignal.update((program: TripProgram): TripProgram => {
+      const existingIndex: number = program.candidates.findIndex(
+        (current: TripParkCandidate): boolean => current.candidateId === candidate.candidateId
+          || current.parkId === candidate.parkId
+      );
+      if (existingIndex < 0) {
+        return { ...program, candidates: [...program.candidates, candidate] };
+      }
+
+      const candidates: TripParkCandidate[] = [...program.candidates];
+      candidates[existingIndex] = candidate;
+      return { ...program, candidates };
+    });
   }
 
   private deduplicateWishlistEntries(entries: UserCollectionEntry[]): UserCollectionEntry[] {

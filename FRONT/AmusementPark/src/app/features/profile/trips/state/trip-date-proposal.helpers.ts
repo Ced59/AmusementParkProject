@@ -3,8 +3,19 @@ import { TripDateProposal } from '@app/models/trips/trip.models';
 export const areTripDateInputsValid = (startDate: string, endDate: string): boolean => {
   const normalizedStart: string = startDate.trim();
   const normalizedEnd: string = endDate.trim();
-  return (!normalizedEnd || !!normalizedStart)
-    && (!normalizedStart || !normalizedEnd || normalizedEnd >= normalizedStart);
+  if (normalizedEnd && !normalizedStart) {
+    return false;
+  }
+  if (!normalizedStart || !normalizedEnd) {
+    return true;
+  }
+
+  const startTimestamp: number = Date.parse(`${normalizedStart}T00:00:00Z`);
+  const endTimestamp: number = Date.parse(`${normalizedEnd}T00:00:00Z`);
+  const inclusiveDayCount: number = ((endTimestamp - startTimestamp) / 86_400_000) + 1;
+  return Number.isFinite(inclusiveDayCount)
+    && inclusiveDayCount >= 1
+    && inclusiveDayCount <= 366;
 };
 
 export const buildConfirmedTripDates = (startDate: string, endDate: string): TripDateProposal => {

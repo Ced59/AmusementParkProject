@@ -26,6 +26,12 @@ describe('trip date proposal helpers', () => {
     expect((): void => { buildConfirmedTripDates('', '2026-10-05'); }).toThrow();
   });
 
+  it('accepts at most 366 calendar days inclusively', () => {
+    expect(areTripDateInputsValid('2026-01-01', '2027-01-01')).toBe(true);
+    expect(areTripDateInputsValid('2026-01-01', '2027-01-02')).toBe(false);
+    expect((): void => { buildConfirmedTripDates('2026-01-01', '2027-01-02'); }).toThrow();
+  });
+
   it('enumerates every fixed day inclusively without depending on the browser time zone', () => {
     expect(enumerateTripDates({
       kind: 'Fixed',
