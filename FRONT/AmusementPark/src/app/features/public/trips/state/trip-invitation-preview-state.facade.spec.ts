@@ -239,6 +239,28 @@ describe('TripInvitationPreviewStateFacade', () => {
     expect(facade.status()).toBe('declined');
   });
 
+  it('does not let a stale account response release the next account decision', () => {
+    loggedIn = true;
+    const firstDecision = new Subject<{ tripPlanId: string; wasReplayed: boolean }>();
+    const secondDecision = new Subject<{ tripPlanId: string; wasReplayed: boolean }>();
+    (data.accept as ReturnType<typeof vi.fn>).mockReturnValue(firstDecision);
+    (data.decline as ReturnType<typeof vi.fn>).mockReturnValue(secondDecision);
+    facade.load('opaque-token');
+    facade.accept();
+
+    currentUserId = 'user-2';
+    facade.decline();
+    firstDecision.next({ tripPlanId: 'trip-1', wasReplayed: false });
+
+    expect(facade.tripPlanId()).toBeNull();
+    expect(facade.status()).toBe('deciding');
+
+    secondDecision.next({ tripPlanId: 'trip-2', wasReplayed: false });
+
+    expect(facade.tripPlanId()).toBe('trip-2');
+    expect(facade.status()).toBe('declined');
+  });
+
   it('does not resume another account decision in a shared tab', () => {
     loggedIn = true;
     currentUserId = 'user-2';

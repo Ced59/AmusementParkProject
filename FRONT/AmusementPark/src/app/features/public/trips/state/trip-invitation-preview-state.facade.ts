@@ -174,8 +174,20 @@ export class TripInvitationPreviewStateFacade {
       : this.data.decline(decisionToken, operationId);
     decision$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result): void => {
-        if (!this.isCurrentDecision(decisionGeneration, decisionToken, decisionUserId)) {
-          this.releaseInterruptedDecision(decisionGeneration, decisionToken);
+        if (!this.isCurrentDecision(
+          decisionGeneration,
+          decisionToken,
+          decisionUserId,
+          operationId,
+          accept
+        )) {
+          this.releaseInterruptedDecision(
+            decisionGeneration,
+            decisionToken,
+            decisionUserId,
+            operationId,
+            accept
+          );
           return;
         }
         this.tripPlanIdSignal.set(result.tripPlanId);
@@ -186,8 +198,20 @@ export class TripInvitationPreviewStateFacade {
         this.statusSignal.set(accept ? 'accepted' : 'declined');
       },
       error: (): void => {
-        if (!this.isCurrentDecision(decisionGeneration, decisionToken, decisionUserId)) {
-          this.releaseInterruptedDecision(decisionGeneration, decisionToken);
+        if (!this.isCurrentDecision(
+          decisionGeneration,
+          decisionToken,
+          decisionUserId,
+          operationId,
+          accept
+        )) {
+          this.releaseInterruptedDecision(
+            decisionGeneration,
+            decisionToken,
+            decisionUserId,
+            operationId,
+            accept
+          );
           return;
         }
         if (resumed && this.previewSignal() === null) {
@@ -202,18 +226,39 @@ export class TripInvitationPreviewStateFacade {
   private isCurrentDecision(
     decisionGeneration: number,
     decisionToken: string,
-    decisionUserId: string
+    decisionUserId: string,
+    operationId: string,
+    accept: boolean
   ): boolean {
     return decisionGeneration === this.requestGeneration
       && decisionToken === this.token
-      && this.authService.getUserIdFromToken() === decisionUserId;
+      && this.authService.getUserIdFromToken() === decisionUserId
+      && this.ownsActiveDecision(decisionUserId, operationId, accept);
   }
 
-  private releaseInterruptedDecision(decisionGeneration: number, decisionToken: string): void {
+  private releaseInterruptedDecision(
+    decisionGeneration: number,
+    decisionToken: string,
+    decisionUserId: string,
+    operationId: string,
+    accept: boolean
+  ): void {
     if (decisionGeneration === this.requestGeneration
       && decisionToken === this.token
-      && this.statusSignal() === 'deciding') {
+      && this.statusSignal() === 'deciding'
+      && this.ownsActiveDecision(decisionUserId, operationId, accept)) {
       this.statusSignal.set('decision-error');
     }
+  }
+
+  private ownsActiveDecision(
+    decisionUserId: string,
+    operationId: string,
+    accept: boolean
+  ): boolean {
+    const activeOperationId: string | null = accept
+      ? this.acceptOperationId
+      : this.declineOperationId;
+    return this.decisionUserId === decisionUserId && activeOperationId === operationId;
   }
 }
