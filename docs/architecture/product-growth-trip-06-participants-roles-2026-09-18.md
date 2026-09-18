@@ -205,7 +205,9 @@ décision métier. Le réconciliateur ne révoque jamais une
 invitation `Accepted` dont le membre est déjà actif grâce à cette même opération,
 même après l'expiration de la lease technique. Le membre actif conserve uniquement
 cette provenance opaque interne, jamais exposée par l'API : une adhésion ultérieure
-obtenue avec un autre lien ne peut pas valider l'ancienne invitation.
+obtenue avec un autre lien ne peut pas valider l'ancienne invitation. Le fallback
+d'établissement exige lui aussi le même `AdmissionOperationId` ; partager seulement
+le compte candidat et l'état `Active` ne suffit jamais à revendiquer le succès.
 
 La compensation expirée revalide `$$NOW` dans MongoDB puis ne révoque l'invitation
 que si elle a effectivement retiré le fence de même génération. Si un autre nœud a

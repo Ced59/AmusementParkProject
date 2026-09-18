@@ -400,13 +400,23 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
         }
 
         bool active = await this.plans.Find(
-                filters.Eq(static plan => plan.Id, tripPlanId.Value)
-                & filters.ElemMatch(
-                    static plan => plan.Members,
-                    member => member.UserId == fence.CandidateUserId
-                        && member.State == TripMembershipState.Active))
+                BuildEstablishedMemberReplayFilter(tripPlanId, fence))
             .AnyAsync(cancellationToken);
         return active ? TripAdmissionWriteOutcome.AlreadyCompleted : TripAdmissionWriteOutcome.Conflict;
+    }
+
+    internal static FilterDefinition<TripPlanDocument> BuildEstablishedMemberReplayFilter(
+        TripPlanId tripPlanId,
+        TripMemberAdmissionFence fence)
+    {
+        ArgumentNullException.ThrowIfNull(fence);
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        return filters.Eq(static plan => plan.Id, tripPlanId.Value)
+            & filters.ElemMatch(
+                static plan => plan.Members,
+                member => member.UserId == fence.CandidateUserId
+                    && member.State == TripMembershipState.Active
+                    && member.AdmissionOperationId == fence.OperationId);
     }
 
     public async Task MarkInvitationAdmissionCompletedAsync(

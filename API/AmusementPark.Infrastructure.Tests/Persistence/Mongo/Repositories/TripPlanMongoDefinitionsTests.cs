@@ -308,6 +308,31 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildEstablishedMemberReplayFilter_ShouldRequireTheExactAdmissionOperation()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+
+        FilterDefinition<TripPlanDocument> filter =
+            TripAdmissionRepository.BuildEstablishedMemberReplayFilter(
+                TripPlanId.Parse("trip-1"),
+                fence);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        BsonDocument memberMatch = rendered["members"]["$elemMatch"].AsBsonDocument;
+
+        Assert.Equal("trip-1", rendered["_id"].AsString);
+        Assert.Equal("user-2", memberMatch["userId"].AsString);
+        Assert.Equal(TripMembershipState.Active.ToString(), memberMatch["state"].AsString);
+        Assert.Equal("operation-1", memberMatch["admissionOperationId"].AsString);
+    }
+
+    [Fact]
     public void BuildDeletionTombstone_ShouldScrubPrivateDataAndKeepOnlyTheReplayFence()
     {
         DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
