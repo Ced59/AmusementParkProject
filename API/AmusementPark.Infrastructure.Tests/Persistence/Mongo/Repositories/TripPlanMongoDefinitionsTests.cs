@@ -12,12 +12,13 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class TripPlanMongoDefinitionsTests
 {
     [Fact]
-    public void BuildAccessibleListOptions_ShouldNotReuseTheOwnerCreationQuota()
+    public void BuildAccessibleListOptions_ShouldUseADedicatedMembershipSafetyLimit()
     {
         FindOptions<TripPlanDocument, TripPlanDocument> options =
             TripPlanMongoDefinitions.BuildAccessibleListOptions();
 
-        Assert.Null(options.Limit);
+        Assert.Equal(TripPlanMongoDefinitions.MaximumAccessibleTripsPerRequest, options.Limit);
+        Assert.True(options.Limit > TripPlan.MaximumPlansPerOwner);
         Assert.NotNull(options.Sort);
     }
 

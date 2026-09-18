@@ -280,6 +280,7 @@ public sealed class TripPlan
 
         this.PrepareMutation();
         member.ChangeDelegatedRole(role);
+        this.IncrementChildMutationEpoch();
         this.CommitMutation(nowUtc);
     }
 
@@ -305,6 +306,7 @@ public sealed class TripPlan
         previousOwner.ChangeDelegatedRole(previousOwnerRole);
         newOwner.BecomeOwner();
         this.OwnerUserId = newOwner.UserId;
+        this.IncrementChildMutationEpoch();
         this.CommitMutation(nowUtc);
     }
 
@@ -322,6 +324,7 @@ public sealed class TripPlan
             ?? throw Invalid(TripPlanErrorCodes.InvalidState, "The active trip member was not found.");
         this.PrepareMutation();
         member.BeginLeaving();
+        this.IncrementChildMutationEpoch();
         this.CommitMutation(nowUtc);
         return member;
     }

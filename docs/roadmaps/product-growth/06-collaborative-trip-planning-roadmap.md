@@ -213,6 +213,12 @@ compense les fences expirés sans annuler une adhésion déjà établie. Les nou
 champs sont une évolution additive du document existant et les anciens voyages sont
 relus avec leurs valeurs par défaut : aucun second modèle ne coexiste.
 
+Le changement de rôle, le transfert et le départ avancent l'epoch des écritures
+enfants et ne réussissent qu'après extinction des leases antérieures. Une ancienne
+autorisation ne peut donc pas écrire après la réponse. La liste des voyages rejoints
+reste indépendante du quota de création, mais chaque lecture est bornée aux 100
+adhésions les plus récemment modifiées pour protéger les ressources du VPS.
+
 Les preuves, schémas MongoDB et diagrammes sont détaillés dans
 [`product-growth-trip-06-participants-roles-2026-09-18.md`](../../architecture/product-growth-trip-06-participants-roles-2026-09-18.md).
 

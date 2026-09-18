@@ -161,8 +161,9 @@ La lecture privée utilise un `ElemMatch` exigeant simultanément le bon `userId
 `state = Active`. Deux éléments différents du tableau ne peuvent donc pas satisfaire
 chacun une moitié du filtre. Un membre `Provisional` présent physiquement dans le
 document ne dispose d'aucun accès. La liste conserve son tri stable par dernière
-modification sans réutiliser le quota de 50 créations du propriétaire : les voyages
-rejoints ne sont pas tronqués par une règle qui ne concerne que la possession.
+modification sans réutiliser le quota de 50 créations du propriétaire. Une limite
+de sécurité dédiée de 100 adhésions récentes borne cependant chaque réponse et la
+mémoire consommée sur le VPS ; elle reste distincte du quota de possession.
 
 ## Séquence d'acceptation
 
@@ -230,7 +231,8 @@ sequenceDiagram
     A->>D: TransferOwnership(owner, memberId, rôle)
     D->>D: vérifier membre Active et distinct
     D->>D: rétrograder ancien owner + promouvoir nouveau
-    A->>M: écriture conditionnelle version + ownerSlot disponible
+    D->>D: avancer l'epoch des écritures enfants
+    A->>M: version + ownerSlot + aucune lease antérieure active
     M-->>A: document complet persisté ou conflit
     A-->>O: participants et capacités recalculés
 ```
@@ -238,6 +240,11 @@ sequenceDiagram
 Après succès, le panneau participants demande à la vue d'ensemble de recharger le
 voyage. Les droits, la version et les actions visibles changent immédiatement, sans
 laisser d'anciens contrôles de propriétaire à l'écran.
+
+Un changement de rôle, un transfert ou un départ avance le même epoch racine que
+les écritures enfants. MongoDB n'accepte cette transition qu'après la fin des leases
+déjà accordées. La réponse de changement de droits ne peut donc pas réussir puis
+laisser une ancienne autorisation terminer une modification de candidat ou de jour.
 
 ## API et confidentialité
 

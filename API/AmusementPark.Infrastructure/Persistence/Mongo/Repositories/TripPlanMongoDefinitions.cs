@@ -8,11 +8,14 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class TripPlanMongoDefinitions
 {
+    public const int MaximumAccessibleTripsPerRequest = 100;
+
     public static FindOptions<TripPlanDocument, TripPlanDocument> BuildAccessibleListOptions()
     {
         SortDefinitionBuilder<TripPlanDocument> sorts = Builders<TripPlanDocument>.Sort;
         return new FindOptions<TripPlanDocument, TripPlanDocument>
         {
+            Limit = MaximumAccessibleTripsPerRequest,
             Sort = sorts.Descending(static document => document.UpdatedAt)
                 .Ascending(static document => document.Id),
         };

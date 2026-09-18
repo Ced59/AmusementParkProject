@@ -56,6 +56,23 @@ public sealed class TripPlanCollaborationTests
         Assert.Equal("user-2", trip.OwnerUserId);
         Assert.Equal(TripEffectiveRole.Owner, trip.ResolveRole("user-2"));
         Assert.Equal(TripEffectiveRole.Participant, trip.ResolveRole("user-1"));
+        Assert.Equal(2, trip.ChildMutationEpoch);
+    }
+
+    [Fact]
+    public void ChangeMemberRole_ShouldFencePreviouslyGrantedChildMutations()
+    {
+        TripPlan trip = CreateTripWithEstablishedMember("user-2", TripDelegatedRole.Editor);
+        TripMember editor = trip.Members.Single(member => member.UserId == "user-2");
+
+        trip.ChangeMemberRole(
+            "user-1",
+            editor.Id,
+            TripDelegatedRole.Viewer,
+            CreatedAtUtc.AddMinutes(4));
+
+        Assert.Equal(TripEffectiveRole.Viewer, trip.ResolveRole("user-2"));
+        Assert.Equal(2, trip.ChildMutationEpoch);
     }
 
     [Fact]
@@ -79,6 +96,7 @@ public sealed class TripPlanCollaborationTests
 
         Assert.DoesNotContain(trip.Members, member => member.UserId == "user-2");
         Assert.Equal(TripEffectiveRole.Owner, trip.ResolveRole("user-1"));
+        Assert.Equal(2, trip.ChildMutationEpoch);
     }
 
     private static TripPlan CreateTripWithEstablishedMember(string userId, TripDelegatedRole role)
