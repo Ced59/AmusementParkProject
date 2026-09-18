@@ -108,6 +108,7 @@ public sealed class TripParticipantServiceTests
             It.IsAny<string>(),
             It.IsAny<TripPlan>(),
             It.IsAny<long>(),
+            It.IsAny<TripActivityWrite?>(),
             It.IsAny<CancellationToken>()), Times.Never);
         users.VerifyAll();
     }
@@ -139,6 +140,7 @@ public sealed class TripParticipantServiceTests
             It.IsAny<string>(),
             It.IsAny<TripPlan>(),
             It.IsAny<long>(),
+            It.IsAny<TripActivityWrite?>(),
             It.IsAny<CancellationToken>()), Times.Never);
         users.VerifyAll();
     }
@@ -161,6 +163,7 @@ public sealed class TripParticipantServiceTests
                 "user-2",
                 trip,
                 expectedVersion,
+                It.IsAny<TripActivityWrite?>(),
                 requestToken))
             .ReturnsAsync(() =>
             {

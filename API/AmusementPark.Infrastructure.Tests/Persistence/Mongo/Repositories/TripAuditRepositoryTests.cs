@@ -39,32 +39,26 @@ public sealed class TripAuditRepositoryTests
     }
 
     [Fact]
-    public void BuildOutboxIndexes_ShouldProtectDurabilityAndBoundPendingScans()
+    public void PendingDocument_ShouldRoundTripWithoutAnAccountIdentifier()
     {
-        IReadOnlyCollection<CreateIndexModel<TripActivityOutboxDocument>> indexes =
-            TripAuditRepository.BuildOutboxIndexes();
+        TripActivityPendingDocument document = new()
+        {
+            TripPlanId = Guid.NewGuid().ToString(),
+            ActorMemberId = Guid.NewGuid().ToString(),
+            Kind = AmusementPark.Core.Domain.Trips.TripActivityKind.TripRenamed,
+            OperationKey = "root:TripRenamed:2",
+            AffectedCount = 1,
+            OccurredAtUtc = DateTime.UtcNow,
+        };
 
-        CreateIndexModel<TripActivityOutboxDocument> operation = Assert.Single(
-            indexes,
-            index => index.Options.Name == "uq_trip_audit_outbox_operation");
-        CreateIndexModel<TripActivityOutboxDocument> pending = Assert.Single(
-            indexes,
-            index => index.Options.Name == "ix_trip_audit_outbox_pending");
-        CreateIndexModel<TripActivityOutboxDocument> retention = Assert.Single(
-            indexes,
-            index => index.Options.Name == "ttl_trip_audit_outbox_materialized");
-        Assert.Equal(3, indexes.Count);
-        Assert.True(operation.Options.Unique);
-        Assert.Equal(TripAuditRepository.MaterializedOutboxRetention, retention.Options.ExpireAfter);
-        Assert.Equal(
-            new BsonDocument { { "tripPlanId", 1 }, { "operationKey", 1 } },
-            Render(operation.Keys));
-        Assert.Equal(
-            new BsonDocument { { "materializedAtUtc", 1 }, { "createdAt", 1 } },
-            Render(pending.Keys));
-        Assert.Equal(
-            new BsonDocument { { "materializedAtUtc", 1 } },
-            Render(retention.Keys));
+        BsonDocument serialized = document.ToBsonDocument();
+        TripActivityPendingDocument roundTrip =
+            BsonSerializer.Deserialize<TripActivityPendingDocument>(serialized);
+
+        Assert.Equal(document.TripPlanId, roundTrip.TripPlanId);
+        Assert.Equal(document.OperationKey, roundTrip.OperationKey);
+        Assert.DoesNotContain("actorUserId", serialized.Names);
+        Assert.DoesNotContain("userId", serialized.Names);
     }
 
     [Fact]
@@ -90,25 +84,30 @@ public sealed class TripAuditRepositoryTests
     }
 
     [Fact]
-    public void OutboxDocument_ShouldNeverPersistAnAccountIdentifier()
+    public void TripPlanDocument_ShouldEmbedTheDurablePendingMarker()
     {
-        TripActivityOutboxDocument document = new TripActivityOutboxDocument
+        TripPlanDocument document = new()
         {
-            Id = "outbox-1",
-            TripPlanId = "trip-1",
-            ActorMemberId = "member-1",
-            Kind = AmusementPark.Core.Domain.Trips.TripActivityKind.TripRenamed,
-            OperationKey = "root:TripRenamed:2",
-            AffectedCount = 1,
-            OccurredAtUtc = DateTime.UtcNow,
+            Id = "trip-1",
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
+            PendingAuditEvents = new List<TripActivityPendingDocument>
+            {
+                new()
+                {
+                    TripPlanId = "trip-1",
+                    ActorMemberId = "member-1",
+                    Kind = AmusementPark.Core.Domain.Trips.TripActivityKind.TripRenamed,
+                    OperationKey = "root:TripRenamed:2",
+                    AffectedCount = 1,
+                    OccurredAtUtc = DateTime.UtcNow,
+                },
+            },
         };
 
         BsonDocument serialized = document.ToBsonDocument();
 
-        Assert.DoesNotContain("actorUserId", serialized.Names);
-        Assert.DoesNotContain("userId", serialized.Names);
+        Assert.Single(serialized["pendingAuditEvents"].AsBsonArray);
     }
 
     private static BsonDocument Render(IndexKeysDefinition<TripActivityEventDocument> keys)
@@ -118,10 +117,4 @@ public sealed class TripAuditRepositoryTests
             BsonSerializer.SerializerRegistry));
     }
 
-    private static BsonDocument Render(IndexKeysDefinition<TripActivityOutboxDocument> keys)
-    {
-        return keys.Render(new RenderArgs<TripActivityOutboxDocument>(
-            BsonSerializer.LookupSerializer<TripActivityOutboxDocument>(),
-            BsonSerializer.SerializerRegistry));
-    }
 }

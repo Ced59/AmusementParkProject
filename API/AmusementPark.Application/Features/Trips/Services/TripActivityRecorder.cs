@@ -49,15 +49,60 @@ public sealed class TripActivityRecorder
         CancellationToken cancellationToken)
     {
         _ = await this.writer.AppendAsync(
-            new TripActivityWrite(
+            this.CreateWrite(
                 tripPlanId,
                 actorMemberId,
                 actorRole,
                 kind,
                 operationKey,
-                affectedCount,
-                this.timeProvider.GetUtcNow().UtcDateTime),
+                affectedCount),
             cancellationToken);
+    }
+
+    public TripActivityWrite CreateWrite(
+        TripPlan trip,
+        string actorUserId,
+        TripActivityKind kind,
+        string operationKey,
+        int affectedCount)
+    {
+        ArgumentNullException.ThrowIfNull(trip);
+        TripMember actor = trip.Members.Single(member =>
+            member.State == TripMembershipState.Active
+            && string.Equals(member.UserId, actorUserId, StringComparison.Ordinal));
+        return this.CreateWrite(
+            trip.Id,
+            actor.Id,
+            trip.ResolveRole(actor.UserId),
+            kind,
+            operationKey,
+            affectedCount);
+    }
+
+    public TripActivityWrite CreateWrite(
+        TripPlanId tripPlanId,
+        TripMemberId? actorMemberId,
+        TripEffectiveRole? actorRole,
+        TripActivityKind kind,
+        string operationKey,
+        int affectedCount)
+    {
+        return new TripActivityWrite(
+            tripPlanId,
+            actorMemberId,
+            actorRole,
+            kind,
+            operationKey,
+            affectedCount,
+            this.timeProvider.GetUtcNow().UtcDateTime);
+    }
+
+    public async Task PublishAsync(
+        TripActivityWrite activity,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(activity);
+        _ = await this.writer.AppendAsync(activity, cancellationToken);
     }
 
     public static string RootOperationKey(TripActivityKind kind, long version)

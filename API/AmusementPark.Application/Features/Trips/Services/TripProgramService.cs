@@ -226,10 +226,17 @@ public sealed class TripProgramService
                         TripParkCandidateOrderPlanner.AllocateAppend(
                             candidates.Count == 0 ? null : candidates.Max(static item => item.SortPosition)),
                         this.NowUtc());
+                    TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                        trip,
+                        normalizedUserId,
+                        TripActivityKind.CandidateAdded,
+                        $"candidate-add:{lease.OperationId}",
+                        1);
                     TripParkCandidateWriteResult written = await this.candidateRepository.CreateAsync(
                         candidate,
                         lease,
                         requestHash,
+                        pendingActivity,
                         cancellationToken);
                     if (written.Outcome == TripChildWriteOutcome.Success
                         && written.Candidate is not null
@@ -321,10 +328,17 @@ public sealed class TripProgramService
                         parsedCandidateId,
                         parsedAnchorId,
                         placement);
+                    TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                        trip,
+                        userId.Trim(),
+                        TripActivityKind.CandidateMoved,
+                        $"candidate-move:{lease.OperationId}",
+                        1);
                     TripChildWriteOutcome outcome = await this.candidateRepository.ApplyOrderAsync(
                         trip.Id,
                         plan,
                         lease,
+                        pendingActivity,
                         cancellationToken);
                     if (outcome != TripChildWriteOutcome.Success)
                     {
@@ -397,12 +411,19 @@ public sealed class TripProgramService
                     return ApplicationResult.Failure(TripPlanApplicationErrors.CandidateIsUsedByDay());
                 }
 
+                TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                    trip,
+                    userId.Trim(),
+                    TripActivityKind.CandidateRemoved,
+                    $"candidate-remove:{lease.OperationId}",
+                    1);
                 TripParkCandidateWriteResult outcome = await this.candidateRepository.DeleteAsync(
                     trip.Id,
                     parsedCandidateId,
                     expectedCandidateVersion,
                     lease,
                     this.NowUtc(),
+                    pendingActivity,
                     cancellationToken);
                 if (outcome.Outcome == TripChildWriteOutcome.Success
                     && this.activityRecorder is not null)

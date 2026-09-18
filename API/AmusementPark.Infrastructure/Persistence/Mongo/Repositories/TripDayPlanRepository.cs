@@ -55,6 +55,8 @@ public sealed class TripDayPlanRepository : ITripDayPlanRepository
                         static document => document.DocumentState,
                         TripChildDocumentState.Reserved),
                 }),
+            TripActivityPendingMongoDefinitions.BuildPendingIndex<TripDayPlanDocument>(
+                "ix_trip_day_pending_audit"),
         };
     }
 
@@ -78,13 +80,14 @@ public sealed class TripDayPlanRepository : ITripDayPlanRepository
         long? expectedVersion,
         TripChildMutationLease lease,
         string requestHash,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(dayPlan);
         ArgumentNullException.ThrowIfNull(lease);
         return expectedVersion.HasValue
-            ? await this.ReplaceAsync(dayPlan, expectedVersion.Value, lease, cancellationToken)
-            : await this.CreateAsync(dayPlan, lease, requestHash, cancellationToken);
+            ? await this.ReplaceAsync(dayPlan, expectedVersion.Value, lease, pendingActivity, cancellationToken)
+            : await this.CreateAsync(dayPlan, lease, requestHash, pendingActivity, cancellationToken);
     }
 
     public async Task<TripDayPlanWriteResult> DeleteAsync(
@@ -92,6 +95,7 @@ public sealed class TripDayPlanRepository : ITripDayPlanRepository
         DateOnly localDate,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(lease);
@@ -128,14 +132,21 @@ public sealed class TripDayPlanRepository : ITripDayPlanRepository
                     existing.Version);
         }
 
-        DeleteResult deleted = await this.collection.DeleteOneAsync(
+        UpdateDefinition<TripDayPlanDocument> deleteUpdate = TripActivityPendingMongoDefinitions.Append(
+            Builders<TripDayPlanDocument>.Update
+                .Set(static document => document.DocumentState, TripChildDocumentState.Deleted)
+                .Set(static document => document.UpdatedAt, pendingActivity?.OccurredAtUtc ?? DateTime.UtcNow)
+                .Unset(static document => document.PendingMutation),
+            pendingActivity);
+        UpdateResult deleted = await this.collection.UpdateOneAsync(
             identity
                 & filters.Eq("pendingMutation.operationId", lease.OperationId)
                 & filters.Eq("pendingMutation.childMutationEpoch", lease.ChildMutationEpoch)
                 & filters.Eq("pendingMutation.leaseGeneration", lease.Generation)
                 & TripChildMutationMongoDefinitions.BuildPendingLeaseGuard<TripDayPlanDocument>(),
-            cancellationToken);
-        return deleted.DeletedCount == 1
+            deleteUpdate,
+            cancellationToken: cancellationToken);
+        return deleted.ModifiedCount == 1
             ? new TripDayPlanWriteResult(TripChildWriteOutcome.Success)
             : new TripDayPlanWriteResult(TripChildWriteOutcome.LeaseExpired);
     }
@@ -144,6 +155,7 @@ public sealed class TripDayPlanRepository : ITripDayPlanRepository
         TripDayPlan dayPlan,
         TripChildMutationLease lease,
         string requestHash,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         string normalizedRequestHash = NormalizeRequired(requestHash, nameof(requestHash));
@@ -242,7 +254,7 @@ public sealed class TripDayPlanRepository : ITripDayPlanRepository
             & filters.Eq(static document => document.LeaseGeneration, lease.Generation)
             & TripChildMutationMongoDefinitions.BuildCreationLeaseGuard<TripDayPlanDocument>();
         UpdateDefinitionBuilder<TripDayPlanDocument> updates = Builders<TripDayPlanDocument>.Update;
-        UpdateDefinition<TripDayPlanDocument> update = updates
+        UpdateDefinition<TripDayPlanDocument> update = TripActivityPendingMongoDefinitions.Append(updates
             .Set(static document => document.ParkCandidateId, materialized.ParkCandidateId)
             .Set(static document => document.ParkId, materialized.ParkId)
             .Set(static document => document.DesiredArrivalTime, materialized.DesiredArrivalTime)
@@ -252,7 +264,7 @@ public sealed class TripDayPlanRepository : ITripDayPlanRepository
             .Set(static document => document.CreatedAt, materialized.CreatedAt)
             .Set(static document => document.UpdatedAt, materialized.UpdatedAt)
             .Set(static document => document.DocumentState, TripChildDocumentState.Committed)
-            .Unset(static document => document.ReservedExpiresAtUtc);
+            .Unset(static document => document.ReservedExpiresAtUtc), pendingActivity);
         TripDayPlanDocument? committed = await this.collection.FindOneAndUpdateAsync(
             filter,
             update,
@@ -287,6 +299,7 @@ public sealed class TripDayPlanRepository : ITripDayPlanRepository
         TripDayPlan dayPlan,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         FilterDefinitionBuilder<TripDayPlanDocument> filters = Builders<TripDayPlanDocument>.Filter;
@@ -332,7 +345,7 @@ public sealed class TripDayPlanRepository : ITripDayPlanRepository
             & filters.Eq("pendingMutation.leaseGeneration", lease.Generation)
             & TripChildMutationMongoDefinitions.BuildPendingLeaseGuard<TripDayPlanDocument>();
         UpdateDefinitionBuilder<TripDayPlanDocument> updates = Builders<TripDayPlanDocument>.Update;
-        UpdateDefinition<TripDayPlanDocument> update = updates
+        UpdateDefinition<TripDayPlanDocument> update = TripActivityPendingMongoDefinitions.Append(updates
             .Set(static document => document.ParkCandidateId, replacement.ParkCandidateId)
             .Set(static document => document.ParkId, replacement.ParkId)
             .Set(static document => document.DesiredArrivalTime, replacement.DesiredArrivalTime)
@@ -340,7 +353,7 @@ public sealed class TripDayPlanRepository : ITripDayPlanRepository
             .Set(static document => document.Blocks, replacement.Blocks)
             .Set(static document => document.Version, replacement.Version)
             .Set(static document => document.UpdatedAt, replacement.UpdatedAt)
-            .Unset(static document => document.PendingMutation);
+            .Unset(static document => document.PendingMutation), pendingActivity);
         TripDayPlanDocument? committed = await this.collection.FindOneAndUpdateAsync(
             commitFilter,
             update,

@@ -207,9 +207,22 @@ public sealed class TripPreferenceSummaryService
             return Invalid(exception.Message, exception.Code);
         }
 
+        TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+            trip,
+            actorUserId,
+            TripActivityKind.CollectiveDecisionUpdated,
+            TripActivityRecorder.ChildOperationKey(
+                TripActivityKind.CollectiveDecisionUpdated,
+                lease),
+            1);
         TripItemDecisionWriteResult written = expectedVersion.HasValue
-            ? await this.decisions.ReplaceAsync(decision, expectedVersion.Value, lease, cancellationToken)
-            : await this.decisions.CreateAsync(decision, lease, cancellationToken);
+            ? await this.decisions.ReplaceAsync(
+                decision,
+                expectedVersion.Value,
+                lease,
+                pendingActivity,
+                cancellationToken)
+            : await this.decisions.CreateAsync(decision, lease, pendingActivity, cancellationToken);
         if (written.Outcome != TripChildWriteOutcome.Success)
         {
             return ApplicationResult<TripPreferenceSummaryResult>.Failure(

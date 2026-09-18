@@ -155,11 +155,18 @@ public sealed class TripPlanDateService
                 TripPlanResultFactory.ToResult(trip, actorUserId));
         }
 
+        TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+            trip,
+            actorUserId,
+            TripActivityKind.DatesChanged,
+            TripActivityRecorder.RootOperationKey(TripActivityKind.DatesChanged, trip.Version),
+            1);
         TripPlanWriteResult outcome = await this.tripPlanRepository.ReplaceAccessibleUnderChildLeaseAsync(
             actorUserId,
             trip,
             expectedVersion,
             lease,
+            pendingActivity,
             cancellationToken);
         if (outcome.Outcome != TripPlanWriteOutcome.Success || outcome.PersistedTripPlan is null)
         {

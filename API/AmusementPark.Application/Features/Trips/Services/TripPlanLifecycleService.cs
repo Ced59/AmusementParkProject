@@ -101,9 +101,18 @@ public sealed class TripPlanLifecycleService
                 return ApplicationResult<CreateTripPlanResult>.Failure(timeZoneError);
             }
 
+            TripActivityWrite? creationActivity = this.activityRecorder?.CreateWrite(
+                requested,
+                normalizedUserId,
+                TripActivityKind.TripCreated,
+                TripActivityRecorder.IdempotentOperationKey(
+                    TripActivityKind.TripCreated,
+                    normalizedOperationId),
+                1);
             IdempotentTripPlanCreationResult outcome = await this.repository.CreateIdempotentAsync(
                 requested,
                 normalizedOperationId,
+                creationActivity,
                 cancellationToken);
             await this.RecordCreationAsync(outcome, normalizedUserId, normalizedOperationId);
 
@@ -226,10 +235,17 @@ public sealed class TripPlanLifecycleService
         TripPlan persistedTrip = trip;
         if (trip.Version != expectedVersion)
         {
+            TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                trip,
+                normalizedUserId,
+                activityKind,
+                TripActivityRecorder.RootOperationKey(activityKind, trip.Version),
+                1);
             TripPlanWriteResult writeResult = await this.repository.ReplaceAccessibleAsync(
                 normalizedUserId,
                 trip,
                 expectedVersion,
+                pendingActivity,
                 cancellationToken);
             if (writeResult.Outcome != TripPlanWriteOutcome.Success)
             {

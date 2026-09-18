@@ -93,9 +93,16 @@ public sealed class TripParticipantService
                 TripPlanApplicationErrors.Invalid(exception.Code, exception.Message));
         }
 
+        TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+            trip,
+            normalizedUserId,
+            TripActivityKind.ParticipantRoleChanged,
+            TripActivityRecorder.RootOperationKey(TripActivityKind.ParticipantRoleChanged, trip.Version),
+            1);
         TripPlanWriteResult write = await this.plans.ReplaceOwnedAsync(
             trip,
             expectedVersion,
+            pendingActivity,
             cancellationToken);
         if (write.Outcome == TripPlanWriteOutcome.Success
             && write.PersistedTripPlan is not null
@@ -169,10 +176,21 @@ public sealed class TripParticipantService
                 TripPlanApplicationErrors.Invalid(exception.Code, exception.Message));
         }
 
+        TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+            trip.Id,
+            trip.Members.Single(member => string.Equals(
+                member.UserId,
+                normalizedUserId,
+                StringComparison.Ordinal)).Id,
+            trip.ResolveRole(normalizedUserId),
+            TripActivityKind.OwnershipTransferred,
+            TripActivityRecorder.RootOperationKey(TripActivityKind.OwnershipTransferred, trip.Version),
+            1);
         TripPlanWriteResult write = await this.plans.TransferOwnershipAsync(
             normalizedUserId,
             trip,
             expectedVersion,
+            pendingActivity,
             cancellationToken);
         if (write.Outcome == TripPlanWriteOutcome.Success
             && write.PersistedTripPlan is not null
@@ -230,10 +248,20 @@ public sealed class TripParticipantService
                 TripPlanApplicationErrors.Invalid(exception.Code, exception.Message));
         }
 
+        TripActivityWrite? pendingActivity = leavingMember is null
+            ? null
+            : this.activityRecorder?.CreateWrite(
+                parsedTripId,
+                leavingMember.Id,
+                leavingRole,
+                TripActivityKind.ParticipantLeft,
+                TripActivityRecorder.RootOperationKey(TripActivityKind.ParticipantLeft, trip.Version),
+                1);
         TripPlanWriteResult write = await this.plans.ReplaceAccessibleAsync(
             normalizedUserId,
             trip,
             expectedVersion,
+            pendingActivity,
             cancellationToken);
         if (write.Outcome == TripPlanWriteOutcome.Success)
         {

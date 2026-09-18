@@ -59,4 +59,7 @@ public sealed class TripDayPlanDocument : MongoDocumentBase
     [BsonElement("pendingMutation")]
     [BsonIgnoreIfNull]
     public PendingTripChildMutationDocument? PendingMutation { get; set; }
+
+    [BsonElement("pendingAuditEvents")]
+    public List<TripActivityPendingDocument> PendingAuditEvents { get; set; } = new();
 }

@@ -5,6 +5,7 @@ using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Trips;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -12,37 +13,49 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, ITripAuditReconciler
 {
     public const int MaximumReconciliationBatchSize = 50;
-    public static readonly TimeSpan MaterializedOutboxRetention = TimeSpan.FromDays(7);
 
     private readonly IMongoCollection<TripPlanDocument> plans;
+    private readonly IMongoCollection<TripParkCandidateDocument> candidates;
+    private readonly IMongoCollection<TripDayPlanDocument> days;
+    private readonly IMongoCollection<TripInvitationDocument> invitations;
+    private readonly IMongoCollection<TripItemPreferenceDocument> preferences;
+    private readonly IMongoCollection<TripItemDecisionDocument> decisions;
     private readonly IMongoCollection<TripActivityEventDocument> activities;
-    private readonly IMongoCollection<TripActivityOutboxDocument> outbox;
     private readonly ILogger<TripAuditRepository> logger;
 
     public TripAuditRepository(
         IMongoDatabase database,
         MongoDbSettings settings,
         ILogger<TripAuditRepository> logger)
+        : this(
+            database.GetCollection<TripPlanDocument>(settings.TripPlansCollectionName),
+            database.GetCollection<TripParkCandidateDocument>(settings.TripParkCandidatesCollectionName),
+            database.GetCollection<TripDayPlanDocument>(settings.TripDayPlansCollectionName),
+            database.GetCollection<TripInvitationDocument>(settings.TripInvitationsCollectionName),
+            database.GetCollection<TripItemPreferenceDocument>(settings.TripItemPreferencesCollectionName),
+            database.GetCollection<TripItemDecisionDocument>(settings.TripItemDecisionsCollectionName),
+            database.GetCollection<TripActivityEventDocument>(settings.TripAuditEventsCollectionName),
+            logger)
     {
-        ArgumentNullException.ThrowIfNull(database);
-        ArgumentNullException.ThrowIfNull(settings);
-        this.plans = database.GetCollection<TripPlanDocument>(settings.TripPlansCollectionName);
-        this.activities = database.GetCollection<TripActivityEventDocument>(
-            settings.TripAuditEventsCollectionName);
-        this.outbox = database.GetCollection<TripActivityOutboxDocument>(
-            settings.TripAuditOutboxCollectionName);
-        this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     internal TripAuditRepository(
         IMongoCollection<TripPlanDocument> plans,
+        IMongoCollection<TripParkCandidateDocument> candidates,
+        IMongoCollection<TripDayPlanDocument> days,
+        IMongoCollection<TripInvitationDocument> invitations,
+        IMongoCollection<TripItemPreferenceDocument> preferences,
+        IMongoCollection<TripItemDecisionDocument> decisions,
         IMongoCollection<TripActivityEventDocument> activities,
-        IMongoCollection<TripActivityOutboxDocument> outbox,
         ILogger<TripAuditRepository>? logger = null)
     {
         this.plans = plans ?? throw new ArgumentNullException(nameof(plans));
+        this.candidates = candidates ?? throw new ArgumentNullException(nameof(candidates));
+        this.days = days ?? throw new ArgumentNullException(nameof(days));
+        this.invitations = invitations ?? throw new ArgumentNullException(nameof(invitations));
+        this.preferences = preferences ?? throw new ArgumentNullException(nameof(preferences));
+        this.decisions = decisions ?? throw new ArgumentNullException(nameof(decisions));
         this.activities = activities ?? throw new ArgumentNullException(nameof(activities));
-        this.outbox = outbox ?? throw new ArgumentNullException(nameof(outbox));
         this.logger = logger ?? NullLogger<TripAuditRepository>.Instance;
     }
 
@@ -51,12 +64,30 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(activity);
-        TripActivityOutboxDocument pending = await this.EnqueueAsync(
-            activity,
-            cancellationToken);
         try
         {
-            return await this.MaterializeAsync(pending, cancellationToken);
+            TripActivityEventDocument? existing = await this.FindByOperationAsync(
+                activity.TripPlanId,
+                activity.OperationKey,
+                cancellationToken);
+            if (existing is not null)
+            {
+                await this.RemovePendingMarkersAsync(
+                    activity.TripPlanId,
+                    activity.OperationKey,
+                    cancellationToken);
+                return true;
+            }
+
+            if (!await this.HasPendingMarkerAsync(activity, cancellationToken))
+            {
+                this.logger.LogWarning(
+                    "Trip activity {OperationKey} has no durable source marker and will not be invented.",
+                    activity.OperationKey);
+                return false;
+            }
+
+            return await this.MaterializeAsync(activity, cancellationToken);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
@@ -66,8 +97,8 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         {
             this.logger.LogError(
                 exception,
-                "Unable to materialize trip activity {OperationKey}; the durable outbox will retry.",
-                pending.OperationKey);
+                "Unable to materialize trip activity {OperationKey}; its source marker will retry.",
+                activity.OperationKey);
             return false;
         }
     }
@@ -81,20 +112,15 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             throw new ArgumentOutOfRangeException(nameof(maximumCount));
         }
 
-        List<TripActivityOutboxDocument> pending = await this.outbox.Find(
-                Builders<TripActivityOutboxDocument>.Filter.Eq(
-                    static document => document.MaterializedAtUtc,
-                    null))
-            .SortBy(static document => document.CreatedAt)
-            .ThenBy(static document => document.Id)
-            .Limit(maximumCount)
-            .ToListAsync(cancellationToken);
+        IReadOnlyCollection<TripActivityWrite> pending = await this.LoadPendingAsync(
+            maximumCount,
+            cancellationToken);
         int reconciledCount = 0;
-        foreach (TripActivityOutboxDocument item in pending)
+        foreach (TripActivityWrite activity in pending)
         {
             try
             {
-                if (await this.MaterializeAsync(item, cancellationToken))
+                if (await this.MaterializeAsync(activity, cancellationToken))
                 {
                     reconciledCount++;
                 }
@@ -107,167 +133,12 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             {
                 this.logger.LogError(
                     exception,
-                    "Unable to reconcile trip activity {OperationKey}; it remains pending.",
-                    item.OperationKey);
+                    "Unable to reconcile trip activity {OperationKey}; its source marker remains pending.",
+                    activity.OperationKey);
             }
         }
 
         return reconciledCount;
-    }
-
-    private async Task<TripActivityOutboxDocument> EnqueueAsync(
-        TripActivityWrite activity,
-        CancellationToken cancellationToken)
-    {
-        TripActivityOutboxDocument document = new TripActivityOutboxDocument
-        {
-            Id = Guid.NewGuid().ToString("N"),
-            TripPlanId = activity.TripPlanId.Value,
-            ActorMemberId = activity.ActorMemberId?.Value,
-            ActorRole = activity.ActorRole,
-            Kind = activity.Kind,
-            OperationKey = activity.OperationKey,
-            AffectedCount = activity.AffectedCount,
-            OccurredAtUtc = activity.OccurredAtUtc,
-            CreatedAt = activity.OccurredAtUtc,
-            UpdatedAt = activity.OccurredAtUtc,
-        };
-        try
-        {
-            await this.outbox.InsertOneAsync(document, cancellationToken: cancellationToken);
-            return document;
-        }
-        catch (MongoWriteException exception) when (
-            exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
-        {
-            TripActivityOutboxDocument? existing = await this.FindOutboxByOperationAsync(
-                activity.TripPlanId,
-                activity.OperationKey,
-                cancellationToken);
-            if (existing is null || !HasSameActivity(existing, activity))
-            {
-                throw;
-            }
-
-            return existing;
-        }
-    }
-
-    private async Task<bool> MaterializeAsync(
-        TripActivityOutboxDocument pending,
-        CancellationToken cancellationToken)
-    {
-        if (pending.MaterializedAtUtc.HasValue)
-        {
-            return true;
-        }
-
-        TripPlanId tripPlanId = TripPlanId.Parse(pending.TripPlanId);
-        TripActivityEventDocument? existing = await this.FindByOperationAsync(
-            tripPlanId,
-            pending.OperationKey,
-            cancellationToken);
-        if (existing is not null)
-        {
-            await this.MarkMaterializedAsync(pending.Id, cancellationToken);
-            return true;
-        }
-
-        TripPlanDocument? updatedPlan = await this.plans.FindOneAndUpdateAsync(
-            Builders<TripPlanDocument>.Filter.Eq(
-                static document => document.Id,
-                pending.TripPlanId)
-                & Builders<TripPlanDocument>.Filter.Eq(
-                    static document => document.DeletionState,
-                    TripDeletionState.None),
-            Builders<TripPlanDocument>.Update.Inc(
-                static document => document.AuditSequence,
-                1),
-            new FindOneAndUpdateOptions<TripPlanDocument, TripPlanDocument>
-            {
-                ReturnDocument = ReturnDocument.After,
-            },
-            cancellationToken);
-        if (updatedPlan is null)
-        {
-            await this.MarkMaterializedAsync(pending.Id, cancellationToken);
-            return true;
-        }
-
-        TripActivityEventDocument document = new TripActivityEventDocument
-        {
-            Id = Guid.NewGuid().ToString("N"),
-            TripPlanId = pending.TripPlanId,
-            ActorMemberId = pending.ActorMemberId,
-            ActorRole = pending.ActorRole,
-            Kind = pending.Kind,
-            OperationKey = pending.OperationKey,
-            Sequence = updatedPlan.AuditSequence,
-            AffectedCount = pending.AffectedCount,
-            CreatedAt = pending.OccurredAtUtc,
-            UpdatedAt = pending.OccurredAtUtc,
-        };
-        try
-        {
-            await this.activities.InsertOneAsync(document, cancellationToken: cancellationToken);
-            await this.RemoveIfTripDeletionStartedAsync(document, cancellationToken);
-        }
-        catch (MongoWriteException exception) when (
-            exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
-        {
-            TripActivityEventDocument? replay = await this.FindByOperationAsync(
-                tripPlanId,
-                pending.OperationKey,
-                cancellationToken);
-            if (replay is null)
-            {
-                throw;
-            }
-        }
-
-        await this.MarkMaterializedAsync(pending.Id, cancellationToken);
-        return true;
-    }
-
-    private Task MarkMaterializedAsync(
-        string outboxId,
-        CancellationToken cancellationToken)
-    {
-        DateTime nowUtc = DateTime.UtcNow;
-        return this.outbox.UpdateOneAsync(
-            Builders<TripActivityOutboxDocument>.Filter.Eq(
-                static document => document.Id,
-                outboxId)
-            & Builders<TripActivityOutboxDocument>.Filter.Eq(
-                static document => document.MaterializedAtUtc,
-                null),
-            Builders<TripActivityOutboxDocument>.Update
-                .Set(static document => document.MaterializedAtUtc, nowUtc)
-                .Set(static document => document.UpdatedAt, nowUtc),
-            cancellationToken: cancellationToken);
-    }
-
-    private async Task RemoveIfTripDeletionStartedAsync(
-        TripActivityEventDocument document,
-        CancellationToken cancellationToken)
-    {
-        long activeTripCount = await this.plans.CountDocumentsAsync(
-            Builders<TripPlanDocument>.Filter.Eq(
-                static plan => plan.Id,
-                document.TripPlanId)
-            & Builders<TripPlanDocument>.Filter.Eq(
-                static plan => plan.DeletionState,
-                TripDeletionState.None),
-            new CountOptions { Limit = 1 },
-            cancellationToken);
-        if (activeTripCount == 0)
-        {
-            _ = await this.activities.DeleteOneAsync(
-                Builders<TripActivityEventDocument>.Filter.Eq(
-                    static activity => activity.Id,
-                    document.Id),
-                cancellationToken);
-        }
     }
 
     public async Task<IReadOnlyCollection<TripActivityEvent>> ListAsync(
@@ -305,55 +176,232 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             Builders<TripActivityEventDocument>.IndexKeys;
         return new List<CreateIndexModel<TripActivityEventDocument>>
         {
-            new CreateIndexModel<TripActivityEventDocument>(
+            new(
                 keys.Ascending(static document => document.TripPlanId)
                     .Ascending(static document => document.OperationKey),
-                new CreateIndexOptions
-                {
-                    Name = "uq_trip_audit_operation",
-                    Unique = true,
-                }),
-            new CreateIndexModel<TripActivityEventDocument>(
+                new CreateIndexOptions { Name = "uq_trip_audit_operation", Unique = true }),
+            new(
                 keys.Ascending(static document => document.TripPlanId)
                     .Descending(static document => document.Sequence),
-                new CreateIndexOptions
-                {
-                    Name = "uq_trip_audit_sequence",
-                    Unique = true,
-                }),
-            new CreateIndexModel<TripActivityEventDocument>(
+                new CreateIndexOptions { Name = "uq_trip_audit_sequence", Unique = true }),
+            new(
                 keys.Ascending(static document => document.TripPlanId)
                     .Descending(static document => document.CreatedAt),
                 new CreateIndexOptions { Name = "ix_trip_audit_date" }),
         };
     }
 
-    public static IReadOnlyCollection<CreateIndexModel<TripActivityOutboxDocument>> BuildOutboxIndexes()
+    private async Task<bool> MaterializeAsync(
+        TripActivityWrite activity,
+        CancellationToken cancellationToken)
     {
-        IndexKeysDefinitionBuilder<TripActivityOutboxDocument> keys =
-            Builders<TripActivityOutboxDocument>.IndexKeys;
-        return new List<CreateIndexModel<TripActivityOutboxDocument>>
+        TripActivityEventDocument? existing = await this.FindByOperationAsync(
+            activity.TripPlanId,
+            activity.OperationKey,
+            cancellationToken);
+        if (existing is not null)
         {
-            new CreateIndexModel<TripActivityOutboxDocument>(
-                keys.Ascending(static document => document.TripPlanId)
-                    .Ascending(static document => document.OperationKey),
-                new CreateIndexOptions
-                {
-                    Name = "uq_trip_audit_outbox_operation",
-                    Unique = true,
-                }),
-            new CreateIndexModel<TripActivityOutboxDocument>(
-                keys.Ascending(static document => document.MaterializedAtUtc)
-                    .Ascending(static document => document.CreatedAt),
-                new CreateIndexOptions { Name = "ix_trip_audit_outbox_pending" }),
-            new CreateIndexModel<TripActivityOutboxDocument>(
-                keys.Ascending(static document => document.MaterializedAtUtc),
-                new CreateIndexOptions
-                {
-                    Name = "ttl_trip_audit_outbox_materialized",
-                    ExpireAfter = MaterializedOutboxRetention,
-                }),
+            await this.RemovePendingMarkersAsync(
+                activity.TripPlanId,
+                activity.OperationKey,
+                cancellationToken);
+            return true;
+        }
+
+        TripPlanDocument? updatedPlan = await this.plans.FindOneAndUpdateAsync(
+            Builders<TripPlanDocument>.Filter.Eq(
+                static document => document.Id,
+                activity.TripPlanId.Value)
+                & Builders<TripPlanDocument>.Filter.Eq(
+                    static document => document.DeletionState,
+                    TripDeletionState.None),
+            Builders<TripPlanDocument>.Update.Inc(static document => document.AuditSequence, 1),
+            new FindOneAndUpdateOptions<TripPlanDocument, TripPlanDocument>
+            {
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
+        if (updatedPlan is null)
+        {
+            await this.RemovePendingMarkersAsync(
+                activity.TripPlanId,
+                activity.OperationKey,
+                cancellationToken);
+            return true;
+        }
+
+        TripActivityEventDocument document = new()
+        {
+            Id = Guid.NewGuid().ToString("N"),
+            TripPlanId = activity.TripPlanId.Value,
+            ActorMemberId = activity.ActorMemberId?.Value,
+            ActorRole = activity.ActorRole,
+            Kind = activity.Kind,
+            OperationKey = activity.OperationKey,
+            Sequence = updatedPlan.AuditSequence,
+            AffectedCount = activity.AffectedCount,
+            CreatedAt = activity.OccurredAtUtc,
+            UpdatedAt = activity.OccurredAtUtc,
         };
+        try
+        {
+            await this.activities.InsertOneAsync(document, cancellationToken: cancellationToken);
+        }
+        catch (MongoWriteException exception) when (
+            exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            TripActivityEventDocument? replay = await this.FindByOperationAsync(
+                activity.TripPlanId,
+                activity.OperationKey,
+                cancellationToken);
+            if (replay is null)
+            {
+                throw;
+            }
+        }
+
+        if (!await this.IsTripActiveAsync(activity.TripPlanId, cancellationToken))
+        {
+            _ = await this.activities.DeleteManyAsync(
+                Builders<TripActivityEventDocument>.Filter.Eq(
+                    static item => item.TripPlanId,
+                    activity.TripPlanId.Value),
+                cancellationToken);
+        }
+
+        await this.RemovePendingMarkersAsync(
+            activity.TripPlanId,
+            activity.OperationKey,
+            cancellationToken);
+        return true;
+    }
+
+    private async Task<IReadOnlyCollection<TripActivityWrite>> LoadPendingAsync(
+        int maximumCount,
+        CancellationToken cancellationToken)
+    {
+        List<TripActivityPendingDocument> markers = new();
+        await AddPendingAsync(this.plans, markers, maximumCount, cancellationToken);
+        await AddPendingAsync(this.candidates, markers, maximumCount, cancellationToken);
+        await AddPendingAsync(this.days, markers, maximumCount, cancellationToken);
+        await AddPendingAsync(this.invitations, markers, maximumCount, cancellationToken);
+        await AddPendingAsync(this.preferences, markers, maximumCount, cancellationToken);
+        await AddPendingAsync(this.decisions, markers, maximumCount, cancellationToken);
+
+        return markers
+            .GroupBy(
+                static marker => $"{marker.TripPlanId}\n{marker.OperationKey}",
+                StringComparer.Ordinal)
+            .OrderBy(static group => group.Min(static marker => marker.OccurredAtUtc))
+            .Take(maximumCount)
+            .Select(static group => BuildReconciledWrite(group.ToArray()))
+            .ToArray();
+    }
+
+    private static async Task AddPendingAsync<TDocument>(
+        IMongoCollection<TDocument> collection,
+        List<TripActivityPendingDocument> destination,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<BsonDocument> untyped = collection.Database.GetCollection<BsonDocument>(
+            collection.CollectionNamespace.CollectionName);
+        BsonDocument filter = new("pendingAuditEvents.0", new BsonDocument("$exists", true));
+        List<BsonDocument> projected = await untyped.Find(filter)
+            .Project(new BsonDocument("pendingAuditEvents", 1))
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        foreach (BsonDocument document in projected)
+        {
+            if (!document.TryGetValue("pendingAuditEvents", out BsonValue? value)
+                || !value.IsBsonArray)
+            {
+                continue;
+            }
+
+            foreach (BsonValue marker in value.AsBsonArray)
+            {
+                destination.Add(MongoDB.Bson.Serialization.BsonSerializer.Deserialize<TripActivityPendingDocument>(
+                    marker.AsBsonDocument));
+            }
+        }
+    }
+
+    private async Task<bool> HasPendingMarkerAsync(
+        TripActivityWrite activity,
+        CancellationToken cancellationToken)
+    {
+        BsonDocument filter = BuildPendingMarkerFilter(
+            activity.TripPlanId,
+            activity.OperationKey,
+            activity.Kind);
+        return await HasPendingAsync(this.plans, filter, cancellationToken)
+            || await HasPendingAsync(this.candidates, filter, cancellationToken)
+            || await HasPendingAsync(this.days, filter, cancellationToken)
+            || await HasPendingAsync(this.invitations, filter, cancellationToken)
+            || await HasPendingAsync(this.preferences, filter, cancellationToken)
+            || await HasPendingAsync(this.decisions, filter, cancellationToken);
+    }
+
+    private static async Task<bool> HasPendingAsync<TDocument>(
+        IMongoCollection<TDocument> collection,
+        BsonDocument filter,
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<BsonDocument> untyped = collection.Database.GetCollection<BsonDocument>(
+            collection.CollectionNamespace.CollectionName);
+        return await untyped.Find(filter).Limit(1).AnyAsync(cancellationToken);
+    }
+
+    private async Task RemovePendingMarkersAsync(
+        TripPlanId tripPlanId,
+        string operationKey,
+        CancellationToken cancellationToken)
+    {
+        BsonDocument filter = BuildPendingMarkerFilter(tripPlanId, operationKey, null);
+        BsonDocument update = new("$pull", new BsonDocument(
+            "pendingAuditEvents",
+            new BsonDocument("operationKey", operationKey)));
+        await RemovePendingAsync(this.plans, filter, update, cancellationToken);
+        await RemovePendingAsync(this.candidates, filter, update, cancellationToken);
+        await RemovePendingAsync(this.days, filter, update, cancellationToken);
+        await RemovePendingAsync(this.invitations, filter, update, cancellationToken);
+        await RemovePendingAsync(this.preferences, filter, update, cancellationToken);
+        await RemovePendingAsync(this.decisions, filter, update, cancellationToken);
+
+        BsonDocument tombstoneFilter = new("$and", new BsonArray
+        {
+            new BsonDocument("tripPlanId", tripPlanId.Value),
+            new BsonDocument("documentState", TripChildDocumentState.Deleted.ToString()),
+            new BsonDocument("pendingAuditEvents.0", new BsonDocument("$exists", false)),
+        });
+        _ = await this.days.Database.GetCollection<BsonDocument>(
+                this.days.CollectionNamespace.CollectionName)
+            .DeleteManyAsync(tombstoneFilter, cancellationToken);
+    }
+
+    private static async Task RemovePendingAsync<TDocument>(
+        IMongoCollection<TDocument> collection,
+        BsonDocument filter,
+        BsonDocument update,
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<BsonDocument> untyped = collection.Database.GetCollection<BsonDocument>(
+            collection.CollectionNamespace.CollectionName);
+        _ = await untyped.UpdateManyAsync(filter, update, cancellationToken: cancellationToken);
+    }
+
+    private Task<bool> IsTripActiveAsync(
+        TripPlanId tripPlanId,
+        CancellationToken cancellationToken)
+    {
+        return this.plans.Find(
+                Builders<TripPlanDocument>.Filter.Eq(static item => item.Id, tripPlanId.Value)
+                & Builders<TripPlanDocument>.Filter.Eq(
+                    static item => item.DeletionState,
+                    TripDeletionState.None))
+            .Limit(1)
+            .AnyAsync(cancellationToken);
     }
 
     private async Task<TripActivityEventDocument?> FindByOperationAsync(
@@ -361,7 +409,7 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         string operationKey,
         CancellationToken cancellationToken)
     {
-        TripActivityEventDocument? document = await this.activities.Find(
+        return await this.activities.Find(
                 Builders<TripActivityEventDocument>.Filter.Eq(
                     static document => document.TripPlanId,
                     tripPlanId.Value)
@@ -369,34 +417,35 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
                     static document => document.OperationKey,
                     operationKey))
             .FirstOrDefaultAsync(cancellationToken);
-        return document;
     }
 
-    private async Task<TripActivityOutboxDocument?> FindOutboxByOperationAsync(
+    private static BsonDocument BuildPendingMarkerFilter(
         TripPlanId tripPlanId,
         string operationKey,
-        CancellationToken cancellationToken)
+        TripActivityKind? kind)
     {
-        return await this.outbox.Find(
-                Builders<TripActivityOutboxDocument>.Filter.Eq(
-                    static document => document.TripPlanId,
-                    tripPlanId.Value)
-                & Builders<TripActivityOutboxDocument>.Filter.Eq(
-                    static document => document.OperationKey,
-                    operationKey))
-            .FirstOrDefaultAsync(cancellationToken);
+        BsonDocument element = new()
+        {
+            { "tripPlanId", tripPlanId.Value },
+            { "operationKey", operationKey },
+        };
+        if (kind.HasValue)
+        {
+            element.Add("kind", kind.Value.ToString());
+        }
+
+        return new BsonDocument("pendingAuditEvents", new BsonDocument("$elemMatch", element));
     }
 
-    private static bool HasSameActivity(
-        TripActivityOutboxDocument existing,
-        TripActivityWrite requested)
+    private static TripActivityWrite BuildReconciledWrite(
+        IReadOnlyCollection<TripActivityPendingDocument> markers)
     {
-        return string.Equals(existing.TripPlanId, requested.TripPlanId.Value, StringComparison.Ordinal)
-            && string.Equals(existing.ActorMemberId, requested.ActorMemberId?.Value, StringComparison.Ordinal)
-            && existing.ActorRole == requested.ActorRole
-            && existing.Kind == requested.Kind
-            && string.Equals(existing.OperationKey, requested.OperationKey, StringComparison.Ordinal)
-            && existing.AffectedCount == requested.AffectedCount;
+        TripActivityPendingDocument first = markers.OrderBy(static marker => marker.OccurredAtUtc).First();
+        TripActivityWrite canonical = first.ToWrite();
+        int affectedCount = canonical.Kind == TripActivityKind.PreferencesUpdated
+            ? markers.Count
+            : canonical.AffectedCount;
+        return canonical with { AffectedCount = affectedCount };
     }
 
     private static TripActivityEvent ToDomain(TripActivityEventDocument document)

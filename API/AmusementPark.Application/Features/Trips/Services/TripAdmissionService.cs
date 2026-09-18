@@ -192,10 +192,18 @@ public sealed class TripAdmissionService
             return NotFoundDecision();
         }
 
+        TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+            invitation.TripPlanId,
+            null,
+            null,
+            TripActivityKind.InvitationDeclined,
+            $"invitation:decline:{operationKeyHash}",
+            1);
         TripAdmissionWriteOutcome outcome = await this.repository.DeclineInvitationAsync(
             invitation,
             normalizedUserId,
             operationKeyHash,
+            pendingActivity,
             cancellationToken);
         if (outcome is not TripAdmissionWriteOutcome.Success
             and not TripAdmissionWriteOutcome.AlreadyCompleted)
@@ -326,9 +334,22 @@ public sealed class TripAdmissionService
             return AdmissionUnavailable();
         }
 
+        TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+            invitation.TripPlanId,
+            null,
+            invitation.ProposedRole switch
+            {
+                TripDelegatedRole.Editor => TripEffectiveRole.Editor,
+                TripDelegatedRole.Participant => TripEffectiveRole.Participant,
+                _ => TripEffectiveRole.Viewer,
+            },
+            TripActivityKind.InvitationAccepted,
+            $"invitation:accept:{fence.OperationId}",
+            1);
         TripAdmissionWriteOutcome established = await this.repository.EstablishMemberAsync(
             invitation.TripPlanId,
             fence,
+            pendingActivity,
             cancellationToken);
         if (!CanContinue(established))
         {

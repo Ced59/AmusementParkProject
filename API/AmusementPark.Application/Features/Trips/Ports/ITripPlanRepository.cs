@@ -13,6 +13,7 @@ public interface ITripPlanRepository
     Task<IdempotentTripPlanCreationResult> CreateIdempotentAsync(
         TripPlan tripPlan,
         string clientOperationId,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<TripPlan>> ListAccessibleAsync(
@@ -36,24 +37,28 @@ public interface ITripPlanRepository
     Task<TripPlanWriteResult> ReplaceOwnedAsync(
         TripPlan tripPlan,
         long expectedVersion,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripPlanWriteResult> ReplaceAccessibleAsync(
         string actorUserId,
         TripPlan tripPlan,
         long expectedVersion,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripPlanWriteResult> TransferOwnershipAsync(
         string previousOwnerUserId,
         TripPlan tripPlan,
         long expectedVersion,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripPlanWriteResult> ReplaceOwnedUnderChildLeaseAsync(
         TripPlan tripPlan,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripPlanWriteResult> ReplaceAccessibleUnderChildLeaseAsync(
@@ -61,6 +66,7 @@ public interface ITripPlanRepository
         TripPlan tripPlan,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripPlanWriteResult> DeleteOwnedAsync(

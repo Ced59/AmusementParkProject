@@ -25,12 +25,14 @@ public interface ITripPreferenceRepository
     Task<TripItemPreferenceWriteResult> CreateAsync(
         TripItemPreference preference,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripItemPreferenceWriteResult> ReplaceAsync(
         TripItemPreference preference,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task CompleteDepartureCleanupAsync(

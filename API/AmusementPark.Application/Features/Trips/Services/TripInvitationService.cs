@@ -273,10 +273,17 @@ public sealed class TripInvitationService
             leaseOperationId,
             async lease =>
             {
+                TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                    trip,
+                    normalizedUserId,
+                    TripActivityKind.InvitationRevoked,
+                    $"invitation-revoke:{lease.OperationId}",
+                    1);
                 TripInvitationWriteOutcome outcome = await this.invitationRepository.RevokeAsync(
                     invitation,
                     expectedInvitationVersion,
                     lease,
+                    pendingActivity,
                     cancellationToken);
                 if (outcome == TripInvitationWriteOutcome.Success
                     && this.activityRecorder is not null)
@@ -333,6 +340,12 @@ public sealed class TripInvitationService
                 memberCountBand,
                 nowUtc,
                 nowUtc.AddHours(input.LifetimeHours));
+            TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                trip,
+                actorUserId,
+                TripActivityKind.InvitationCreated,
+                $"invitation-create:{lease.OperationId}",
+                1);
             TripInvitationCreationWriteResult write = await this.invitationRepository.CreateAsync(
                 invitation,
                 lease,
@@ -340,6 +353,7 @@ public sealed class TripInvitationService
                 requestHash,
                 token.SealedToken,
                 token.KeyVersion,
+                pendingActivity,
                 cancellationToken);
             if (write.Outcome == TripInvitationCreationWriteOutcome.TokenCollision)
             {

@@ -162,10 +162,17 @@ public sealed class TripCandidateMutationService
                         TripProgramResultFactory.ToCandidateResult(candidate, unchangedPark));
                 }
 
+                TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                    trip,
+                    userId.Trim(),
+                    TripActivityKind.CandidateUpdated,
+                    $"candidate-update:{lease.OperationId}",
+                    1);
                 TripParkCandidateWriteResult outcome = await this.candidateRepository.ReplaceAsync(
                     candidate,
                     expectedCandidateVersion,
                     lease,
+                    pendingActivity,
                     cancellationToken);
                 if (outcome.Outcome != TripChildWriteOutcome.Success || outcome.Candidate is null)
                 {

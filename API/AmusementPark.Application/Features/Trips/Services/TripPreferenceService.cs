@@ -241,25 +241,51 @@ public sealed class TripPreferenceService
             mutations.Add((created, null));
         }
 
+        string activityOperationKey = TripActivityRecorder.ChildOperationKey(
+            TripActivityKind.PreferencesUpdated,
+            lease);
+        int committedCount = 0;
         foreach ((TripItemPreference preference, long? expectedVersion) in mutations)
         {
+            TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                trip.Id,
+                actor.Id,
+                trip.ResolveRole(userId),
+                TripActivityKind.PreferencesUpdated,
+                activityOperationKey,
+                1);
             TripItemPreferenceWriteResult written = expectedVersion.HasValue
                 ? await this.preferenceRepository.ReplaceAsync(
                     preference,
                     expectedVersion.Value,
                     lease,
+                    pendingActivity,
                     cancellationToken)
                 : await this.preferenceRepository.CreateAsync(
                     preference,
                     lease,
+                    pendingActivity,
                     cancellationToken);
             if (written.Outcome != TripChildWriteOutcome.Success || written.Preference is null)
             {
+                if (committedCount > 0 && this.activityRecorder is not null)
+                {
+                    await this.activityRecorder.RecordAsync(
+                        trip.Id,
+                        actor.Id,
+                        trip.ResolveRole(userId),
+                        TripActivityKind.PreferencesUpdated,
+                        activityOperationKey,
+                        committedCount,
+                        CancellationToken.None);
+                }
+
                 return ApplicationResult<TripPreferenceBoardResult>.Failure(
                     TripPlanApplicationErrors.PreferenceChangedConcurrently(written.CurrentVersion));
             }
 
             preferences[preference.ParkItemId] = written.Preference;
+            committedCount++;
         }
 
         if (mutations.Count > 0 && this.activityRecorder is not null)
@@ -269,8 +295,8 @@ public sealed class TripPreferenceService
                 actor.Id,
                 trip.ResolveRole(userId),
                 TripActivityKind.PreferencesUpdated,
-                $"child:{TripActivityKind.PreferencesUpdated}:{lease.OperationId}:{lease.Generation}",
-                mutations.Count,
+                activityOperationKey,
+                committedCount,
                 CancellationToken.None);
         }
 

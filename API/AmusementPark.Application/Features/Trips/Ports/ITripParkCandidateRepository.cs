@@ -24,18 +24,21 @@ public interface ITripParkCandidateRepository
         TripParkCandidate candidate,
         TripChildMutationLease lease,
         string requestHash,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripParkCandidateWriteResult> ReplaceAsync(
         TripParkCandidate candidate,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripChildWriteOutcome> ApplyOrderAsync(
         TripPlanId tripPlanId,
         TripParkCandidateOrderPlan orderPlan,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripParkCandidateWriteResult> DeleteAsync(
@@ -44,5 +47,6 @@ public interface ITripParkCandidateRepository
         long expectedVersion,
         TripChildMutationLease lease,
         DateTime deletedAtUtc,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 }

@@ -55,6 +55,7 @@ public sealed class TripProgramServiceTests
                 localDate,
                 3,
                 lease,
+                It.IsAny<TripActivityWrite?>(),
                 CancellationToken.None))
             .ReturnsAsync(new TripDayPlanWriteResult(TripChildWriteOutcome.Success));
         TripDayProgramService service = new(
@@ -205,6 +206,7 @@ public sealed class TripProgramServiceTests
             It.IsAny<long?>(),
             It.IsAny<TripChildMutationLease>(),
             It.IsAny<string>(),
+            It.IsAny<TripActivityWrite?>(),
             It.IsAny<CancellationToken>()), Times.Never);
         trips.VerifyAll();
         candidates.VerifyAll();
@@ -318,6 +320,7 @@ public sealed class TripProgramServiceTests
             It.IsAny<long?>(),
             It.IsAny<TripChildMutationLease>(),
             It.IsAny<string>(),
+            It.IsAny<TripActivityWrite?>(),
             It.IsAny<CancellationToken>()), Times.Never);
         trips.VerifyAll();
         candidates.VerifyAll();
@@ -373,6 +376,7 @@ public sealed class TripProgramServiceTests
                 It.IsAny<TripParkCandidate>(),
                 lease,
                 It.IsAny<string>(),
+                It.IsAny<TripActivityWrite?>(),
                 CancellationToken.None))
             .ReturnsAsync(new TripParkCandidateWriteResult(
                 TripChildWriteOutcome.IdempotencyConflict));

@@ -68,7 +68,11 @@ public sealed class TripAdmissionServiceTests
             .Setup(item => item.MarkInvitationAcceptedAsync(invitation.Id, fence, CancellationToken.None))
             .ReturnsAsync(TripAdmissionWriteOutcome.Success);
         repository.InSequence(sequence)
-            .Setup(item => item.EstablishMemberAsync(invitation.TripPlanId, fence, CancellationToken.None))
+            .Setup(item => item.EstablishMemberAsync(
+                invitation.TripPlanId,
+                fence,
+                It.IsAny<TripActivityWrite?>(),
+                CancellationToken.None))
             .ReturnsAsync(TripAdmissionWriteOutcome.Success);
         repository.InSequence(sequence)
             .Setup(item => item.MarkInvitationAdmissionCompletedAsync(
@@ -279,6 +283,7 @@ public sealed class TripAdmissionServiceTests
                 invitation,
                 "user-2",
                 "operation-hash",
+                It.IsAny<TripActivityWrite?>(),
                 CancellationToken.None))
             .ReturnsAsync(TripAdmissionWriteOutcome.AlreadyCompleted);
         TripAdmissionService service = new(

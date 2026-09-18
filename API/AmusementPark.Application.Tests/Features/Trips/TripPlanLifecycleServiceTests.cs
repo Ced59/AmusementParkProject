@@ -25,8 +25,9 @@ public sealed class TripPlanLifecycleServiceTests
         repository.Setup(item => item.CreateIdempotentAsync(
                 It.IsAny<TripPlan>(),
                 "operation-1",
+                It.IsAny<TripActivityWrite?>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync((TripPlan trip, string _, CancellationToken _) =>
+            .ReturnsAsync((TripPlan trip, string _, TripActivityWrite? _, CancellationToken _) =>
                 new IdempotentTripPlanCreationResult(IdempotentTripPlanCreationStatus.Created, trip));
         TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
 
@@ -291,6 +292,7 @@ public sealed class TripPlanLifecycleServiceTests
                 "user-1",
                 It.Is<TripPlan>(candidate => candidate.Version == 2),
                 1,
+                It.IsAny<TripActivityWrite?>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, 4));
         Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
@@ -343,6 +345,7 @@ public sealed class TripPlanLifecycleServiceTests
                 "user-1",
                 It.Is<TripPlan>(candidate => candidate.UpdatedAtUtc == requestedAtUtc),
                 1,
+                It.IsAny<TripActivityWrite?>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new TripPlanWriteResult(
                 TripPlanWriteOutcome.Success,

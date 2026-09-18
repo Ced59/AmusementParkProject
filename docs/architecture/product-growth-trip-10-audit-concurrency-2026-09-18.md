@@ -74,7 +74,7 @@ classDiagram
       <<interface>>
       +ReconcilePendingAsync(limit)
     }
-    class TripActivityOutboxDocument
+    class TripActivityPendingDocument
     class TripAuditReconciliationBackgroundService
     class TripAuditRepository
     class TripActivityService {
@@ -91,7 +91,7 @@ classDiagram
     TripAuditRepository ..|> ITripAuditWriter
     TripAuditRepository ..|> ITripAuditReader
     TripAuditRepository ..|> ITripAuditReconciler
-    TripAuditRepository --> TripActivityOutboxDocument
+    TripAuditRepository --> TripActivityPendingDocument
     TripAuditRepository --> TripActivityEvent
     TripAuditReconciliationBackgroundService --> ITripAuditReconciler
     TripActivityService --> ITripAuditReader
@@ -101,14 +101,15 @@ classDiagram
 ```
 
 - **Core** valide l’événement immuable, ses bornes et son rôle d’acteur.
-- **Application** enregistre après une mutation métier réussie, contrôle l’accès
-  à la lecture et minimise les identités visibles.
+- **Application** prépare la preuve avant l’écriture, la transmet au port de
+  mutation puis déclenche sa matérialisation après réussite ; elle contrôle
+  aussi l’accès à la lecture et minimise les identités visibles.
 - Les modifications de détail et d’état d’un parc candidat sont isolées dans
   `TripCandidateMutationService`, afin que `TripProgramService` conserve une
   responsabilité et une taille bornées.
-- **Infrastructure** conserve d’abord chaque preuve dans une boîte d’envoi
-  durable, alloue une séquence par voyage, garantit l’idempotence et répare en
-  tâche de fond toute matérialisation interrompue.
+- **Infrastructure** attache chaque preuve au document métier modifié, alloue
+  une séquence par voyage, garantit l’idempotence et répare en tâche de fond
+  toute matérialisation interrompue.
 - **WebAPI** expose un contrat privé non mis en cache et sans identifiant.
 - **Angular** respecte `service API -> port -> façade -> composant` ; la façade
   remplace la page récente et ajoute les pages anciennes sans doublon.
@@ -120,8 +121,9 @@ Chaque classe demeure dans son propre fichier.
 ```mermaid
 erDiagram
     TRIP_PLANS ||--o{ TRIP_AUDIT_EVENTS : "auditSequence / tripPlanId"
-    TRIP_PLANS ||--o{ TRIP_AUDIT_OUTBOX : "tripPlanId"
-    TRIP_AUDIT_OUTBOX ||--o| TRIP_AUDIT_EVENTS : "operationKey"
+    TRIP_PLANS ||--o{ PENDING_AUDIT_MARKERS : "écriture atomique"
+    TRIP_CHILD_DOCUMENTS ||--o{ PENDING_AUDIT_MARKERS : "écriture atomique"
+    PENDING_AUDIT_MARKERS ||--o| TRIP_AUDIT_EVENTS : "operationKey"
     TRIP_PLANS {
       string _id
       long auditSequence
@@ -141,8 +143,7 @@ erDiagram
       date createdAt
       date updatedAt
     }
-    TRIP_AUDIT_OUTBOX {
-      string _id
+    PENDING_AUDIT_MARKERS {
       string tripPlanId
       string actorMemberId_nullable
       string actorRole_nullable
@@ -150,9 +151,6 @@ erDiagram
       string operationKey
       int affectedCount
       date occurredAtUtc
-      date materializedAtUtc_nullable
-      date createdAt
-      date updatedAt
     }
 ```
 
@@ -164,32 +162,34 @@ Indexes de `trip-audit-events` :
 { tripPlanId: 1, createdAt: -1 }   // diagnostic chronologique
 ```
 
-Indexes de `trip-audit-outbox` :
+Chaque collection source possède aussi un index sparse sur :
 
 ```javascript
-{ tripPlanId: 1, operationKey: 1 }       // unique : une intention durable
-{ materializedAtUtc: 1, createdAt: 1 }  // reprise bornée des preuves en attente
-{ materializedAtUtc: 1 }                 // TTL 7 jours après matérialisation
+{ "pendingAuditEvents.operationKey": 1 } // reprise bornée des preuves en attente
 ```
 
-Après la mutation métier, l’intention d’audit est d’abord insérée de manière
-idempotente dans `trip-audit-outbox`. Une panne pendant l’allocation de séquence
-ou l’insertion du journal ne remet donc pas en cause le résultat métier : la
-preuve reste en attente et le réconciliateur la reprend par lots de 50 au plus.
+L’intention d’audit est ajoutée à `pendingAuditEvents` dans la même écriture
+MongoDB que la mutation métier. Il n’existe donc aucune fenêtre où la donnée
+peut être modifiée sans que sa preuve soit durable. Une panne pendant
+l’allocation de séquence ou l’insertion du journal ne remet pas en cause le
+résultat métier : le marqueur reste sur le document source et le réconciliateur
+le reprend par lots de 50 au plus.
 L’allocation incrémente atomiquement `trip-plans.auditSequence` uniquement si le
 voyage n’est pas en suppression. Une répétition de la même opération retrouve
 l’intention puis l’événement existants. Une tentative après le début d’une
-suppression acquitte l’intention sans recréer de donnée.
+suppression retire le marqueur sans recréer de donnée. Une journée supprimée
+reste sous forme de tombstone privé jusqu’à matérialisation de sa preuve, puis
+le réconciliateur la retire.
 Après l’insertion, le repository revérifie la barrière de suppression et retire
 l’événement si la fermeture a gagné la course. Si la fermeture commence après
 cette vérification, la purge voit déjà l’événement et le retire normalement.
-La purge du voyage supprime les événements et les intentions de la boîte d’envoi
-avec les candidats, jours, invitations, préférences et décisions.
+La purge du voyage supprime les événements et tous les documents sources, donc
+également leurs marqueurs en attente.
 
-Les anciens documents `trip-plans` n’ont pas besoin de migration de données :
-l’absence de `auditSequence` vaut zéro, puis le premier `$inc` produit la séquence
-1. Les collections et leurs indexes sont créés par l’initialiseur MongoDB au
-démarrage. Aucune commande manuelle en production n’est requise.
+Les anciens documents n’ont pas besoin de migration de données : l’absence de
+`auditSequence` vaut zéro et l’absence de `pendingAuditEvents` vaut une liste
+vide. Les indexes sont créés par l’initialiseur MongoDB au démarrage. Aucune
+commande manuelle en production n’est requise.
 
 ## 5. Séquence d’écriture
 
@@ -198,23 +198,21 @@ sequenceDiagram
     actor M as Membre
     participant UI as Écran du voyage
     participant A as Service Application
-    participant B as Collection métier
+    participant B as Document métier + marqueur
     participant R as TripActivityRecorder
-    participant O as trip-audit-outbox
     participant P as trip-plans
     participant J as trip-audit-events
     participant BG as Réconciliateur borné
 
     M->>UI: confirme une modification
     UI->>A: commande + version/clé attendue
-    A->>B: écriture protégée par version ou lease
+    A->>B: mutation + pendingAuditEvents atomiques
     alt conflit ou refus
       B-->>A: aucune mutation
       A-->>UI: conflit explicite + état serveur
     else mutation réussie
       B-->>A: état persisté
-      A->>R: type + acteur + opération + quantité
-      R->>O: insert idempotent de l’intention
+      A->>R: publie la preuve déjà durable
       R->>P: $inc auditSequence si suppression absente
       P-->>R: prochaine séquence
       R->>J: insert append-only
@@ -224,21 +222,24 @@ sequenceDiagram
         J-->>R: événement créé
       else matérialisation momentanément indisponible
         R-->>A: intention durable conservée
-        BG->>O: lit au plus 50 intentions en attente
+        BG->>B: lit au plus 50 groupes de marqueurs
         BG->>P: alloue la prochaine séquence
         BG->>J: insère la preuve idempotente
-        BG->>O: marque l’intention matérialisée
+        BG->>B: retire les marqueurs matérialisés
       end
       A-->>UI: résultat métier
     end
 ```
 
-Les écritures d’audit utilisent `CancellationToken.None` après la réussite métier
-afin qu’une fermeture du navigateur ne coupe pas l’intention durable. Les clés
-stables des opérations idempotentes empêchent un double événement lors d’une
-répétition. Les mutations enfant dont le contenu peut redevenir identique, comme
-une journée A → B → A, ajoutent la génération de lease à la clé : le dernier A
-reste donc un événement distinct du premier.
+La publication immédiate utilise `CancellationToken.None` après la réussite
+métier ; une fermeture du navigateur ne peut de toute façon plus perdre la
+preuve, déjà attachée à la mutation. Les clés stables des opérations idempotentes
+empêchent un double événement lors d’une répétition. Les mutations enfant dont
+le contenu peut redevenir identique, comme une journée A → B → A, ajoutent la
+génération de lease à la clé : le dernier A reste donc un événement distinct du
+premier. Pour un lot de préférences, chaque préférence réussie porte un marqueur
+unitaire ; le journal publie ainsi le nombre réellement validé, même si un
+conflit interrompt le lot.
 
 ## 6. Séquence de lecture et confidentialité
 
@@ -311,9 +312,9 @@ le débordement horizontal de la page, des cartes, contrôles et liens.
 - **Core** : acteur invité sans membre, UTC, séquence et quantité bornées.
 - **Application** : accès obligatoire, page bornée, curseur, nom des seuls membres
   actifs et anonymisation d’un ancien participant.
-- **Infrastructure** : unicité opération/séquence, boîte d’envoi, reprise bornée
-  au démarrage du worker et absence d’identifiant de compte dans les deux
-  documents Mongo.
+- **Infrastructure** : unicité opération/séquence, marqueurs sources atomiques,
+  reprise bornée au démarrage du worker et absence d’identifiant de compte dans
+  le journal comme dans les marqueurs Mongo.
 - **WebAPI** : enum métier sérialisé en texte et absence de propriété `*Id`.
 - **Angular** : URL encodée, `transferCache: false`, pagination sans doublon,
   actualisation, route authentifiée, façade/port et une classe par fichier.

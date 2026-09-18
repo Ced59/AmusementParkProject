@@ -110,11 +110,18 @@ public sealed class TripDayProgramService
             Guid.NewGuid().ToString("N"),
             async lease =>
             {
+                TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                    trip,
+                    userId.Trim(),
+                    TripActivityKind.DayRemoved,
+                    TripActivityRecorder.ChildOperationKey(TripActivityKind.DayRemoved, lease),
+                    1);
                 TripDayPlanWriteResult result = await this.dayPlanRepository.DeleteAsync(
                     trip.Id,
                     localDate,
                     expectedDayVersion,
                     lease,
+                    pendingActivity,
                     cancellationToken);
                 if (result.Outcome == TripChildWriteOutcome.Success
                     && this.activityRecorder is not null)
@@ -215,11 +222,18 @@ public sealed class TripDayProgramService
                     nowUtc);
             }
 
+            TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+                trip,
+                actorUserId,
+                TripActivityKind.DayUpdated,
+                TripActivityRecorder.ChildOperationKey(TripActivityKind.DayUpdated, lease),
+                1);
             TripDayPlanWriteResult outcome = await this.dayPlanRepository.PutAsync(
                 dayPlan,
                 expectedDayVersion,
                 lease,
                 requestHash,
+                pendingActivity,
                 cancellationToken);
             if (outcome.Outcome != TripChildWriteOutcome.Success || outcome.DayPlan is null)
             {

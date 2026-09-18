@@ -55,8 +55,14 @@ public sealed class TripCandidateMutationServiceTests
                 candidate,
                 expectedCandidateVersion,
                 It.IsAny<TripChildMutationLease>(),
+                It.Is<TripActivityWrite?>(activity =>
+                    activity != null
+                    && activity.TripPlanId == trip.Id
+                    && activity.ActorMemberId == owner.Id
+                    && activity.Kind == TripActivityKind.CandidateUpdated
+                    && activity.OperationKey == "candidate-update:candidate-update-operation"),
                 CancellationToken.None))
-            .ReturnsAsync((TripParkCandidate persisted, long _, TripChildMutationLease _, CancellationToken _) =>
+            .ReturnsAsync((TripParkCandidate persisted, long _, TripChildMutationLease _, TripActivityWrite? _, CancellationToken _) =>
                 new TripParkCandidateWriteResult(TripChildWriteOutcome.Success, persisted));
         Mock<ITripDayPlanRepository> days = new Mock<ITripDayPlanRepository>(MockBehavior.Strict);
         days.Setup(repository => repository.ListAsync(trip.Id, CancellationToken.None))

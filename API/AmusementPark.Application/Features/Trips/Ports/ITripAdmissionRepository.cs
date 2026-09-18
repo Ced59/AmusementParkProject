@@ -43,6 +43,7 @@ public interface ITripAdmissionRepository
     Task<TripAdmissionWriteOutcome> EstablishMemberAsync(
         TripPlanId tripPlanId,
         TripMemberAdmissionFence fence,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task MarkInvitationAdmissionCompletedAsync(
@@ -69,6 +70,7 @@ public interface ITripAdmissionRepository
         TripInvitation invitation,
         string candidateUserId,
         string operationKeyHash,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<TripInvitation>> ListPendingAcceptancesAsync(

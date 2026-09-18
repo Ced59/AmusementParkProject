@@ -376,6 +376,8 @@ internal static class TripPlanMongoDefinitions
                     Name = "ttl_trip_plan_creation_tombstone",
                     ExpireAfter = TimeSpan.Zero,
                 }),
+            TripActivityPendingMongoDefinitions.BuildPendingIndex<TripPlanDocument>(
+                "ix_trip_plan_pending_audit"),
         };
     }
 }

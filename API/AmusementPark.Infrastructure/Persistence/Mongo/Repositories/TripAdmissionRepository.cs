@@ -358,6 +358,7 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
     public async Task<TripAdmissionWriteOutcome> EstablishMemberAsync(
         TripPlanId tripPlanId,
         TripMemberAdmissionFence fence,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
@@ -387,11 +388,13 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
         };
         UpdateResult result = await this.plans.UpdateOneAsync(
             filter,
-            Builders<TripPlanDocument>.Update
-                .Set("members.$[member].state", TripMembershipState.Active.ToString())
-                .Unset(static plan => plan.MemberAdmissionFence)
-                .Inc(static plan => plan.Version, 1)
-                .CurrentDate(static plan => plan.UpdatedAt),
+            TripActivityPendingMongoDefinitions.Append(
+                Builders<TripPlanDocument>.Update
+                    .Set("members.$[member].state", TripMembershipState.Active.ToString())
+                    .Unset(static plan => plan.MemberAdmissionFence)
+                    .Inc(static plan => plan.Version, 1)
+                    .CurrentDate(static plan => plan.UpdatedAt),
+                pendingActivity),
             options,
             cancellationToken);
         if (result.ModifiedCount == 1)
@@ -526,6 +529,7 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
         TripInvitation invitation,
         string candidateUserId,
         string operationKeyHash,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         FilterDefinitionBuilder<TripInvitationDocument> filters = Builders<TripInvitationDocument>.Filter;
@@ -538,15 +542,17 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
             & filters.Eq(static item => item.Status, TripInvitationStatus.Active)
             & filters.Eq(static item => item.Version, invitation.Version)
             & serverTimeGuard,
-            Builders<TripInvitationDocument>.Update
-                .Set(static item => item.Status, TripInvitationStatus.Declined)
-                .Set(static item => item.AcceptanceOperationKeyHash, NormalizeRequired(operationKeyHash, nameof(operationKeyHash)))
-                .CurrentDate(static item => item.DeclinedAtUtc)
-                .CurrentDate(static item => item.UpdatedAt)
-                .Unset(static item => item.ActiveSlot)
-                .Unset(static item => item.SealedToken)
-                .Unset(static item => item.SealedTokenKeyVersion)
-                .Inc(static item => item.Version, 1),
+            TripActivityPendingMongoDefinitions.Append(
+                Builders<TripInvitationDocument>.Update
+                    .Set(static item => item.Status, TripInvitationStatus.Declined)
+                    .Set(static item => item.AcceptanceOperationKeyHash, NormalizeRequired(operationKeyHash, nameof(operationKeyHash)))
+                    .CurrentDate(static item => item.DeclinedAtUtc)
+                    .CurrentDate(static item => item.UpdatedAt)
+                    .Unset(static item => item.ActiveSlot)
+                    .Unset(static item => item.SealedToken)
+                    .Unset(static item => item.SealedTokenKeyVersion)
+                    .Inc(static item => item.Version, 1),
+                pendingActivity),
             cancellationToken: cancellationToken);
         if (result.ModifiedCount == 1)
         {
