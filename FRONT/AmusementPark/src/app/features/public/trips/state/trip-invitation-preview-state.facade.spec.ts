@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
+import { of, Subject, throwError } from 'rxjs';
 
 import { TripInvitationPreview } from '@app/models/trips/trip-invitation.models';
 import {
@@ -44,6 +44,24 @@ describe('TripInvitationPreviewStateFacade', () => {
 
     expect(facade.preview()).toBeNull();
     expect(facade.status()).toBe('unavailable');
+  });
+
+  it('ignores an older preview response after the route token changes', () => {
+    const firstPreview = new Subject<TripInvitationPreview>();
+    const secondPreview: TripInvitationPreview = {
+      ...createPreview(),
+      tripTitle: 'Second voyage'
+    };
+    (data.preview as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(firstPreview)
+      .mockReturnValueOnce(of(secondPreview));
+
+    facade.load('first-token');
+    facade.load('second-token');
+    firstPreview.next(createPreview());
+
+    expect(facade.preview()).toEqual(secondPreview);
+    expect(facade.status()).toBe('ready');
   });
 });
 

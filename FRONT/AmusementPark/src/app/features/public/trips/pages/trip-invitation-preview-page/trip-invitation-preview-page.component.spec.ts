@@ -15,7 +15,7 @@ import { ModalService } from '@app/services/modal/modal.service';
 import { TripInvitationPreviewPageComponent } from './trip-invitation-preview-page.component';
 
 describe('TripInvitationPreviewPageComponent', () => {
-  it('updates its localized navigation when the active language changes in place', async () => {
+  it('tracks in-place language and invitation token navigation', async () => {
     const languageChanged = new Subject<string>();
     const data: TripInvitationsDataPort = {
       list: vi.fn(),
@@ -38,7 +38,10 @@ describe('TripInvitationPreviewPageComponent', () => {
       ]
     });
     const harness = await RouterTestingHarness.create();
-    await harness.navigateByUrl('/en/trip-invitations/opaque-token', TripInvitationPreviewPageComponent);
+    const page = await harness.navigateByUrl(
+      '/en/trip-invitations/opaque-token',
+      TripInvitationPreviewPageComponent
+    );
     harness.detectChanges();
     expect(homeLink(harness)).toBe('/en/home');
 
@@ -48,6 +51,12 @@ describe('TripInvitationPreviewPageComponent', () => {
 
     expect(homeLink(harness)).toBe('/fr/home');
     expect(data.preview).toHaveBeenCalledOnce();
+
+    expect(await harness.navigateByUrl(
+      '/fr/trip-invitations/second-token',
+      TripInvitationPreviewPageComponent
+    )).toBe(page);
+    expect(data.preview).toHaveBeenNthCalledWith(2, 'second-token');
   });
 });
 

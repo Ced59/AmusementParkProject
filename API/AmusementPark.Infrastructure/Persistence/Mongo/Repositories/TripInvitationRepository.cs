@@ -70,6 +70,11 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
                     .Descending(static document => document.CreatedAt),
                 new CreateIndexOptions { Name = "ix_trip_invitation_plan_status_created" }),
             new(
+                Builders<TripInvitationDocument>.IndexKeys
+                    .Ascending(static document => document.Status)
+                    .Ascending(static document => document.ExpiresAtUtc),
+                new CreateIndexOptions { Name = "ix_trip_invitation_status_expires" }),
+            new(
                 Builders<TripInvitationDocument>.IndexKeys.Ascending(
                     static document => document.RetentionExpiresAtUtc),
                 new CreateIndexOptions
@@ -221,6 +226,41 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
             .Limit(TripInvitation.MaximumActiveInvitationsPerTrip)
             .ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    public async Task<int> ExpireElapsedAsync(int limit, CancellationToken cancellationToken)
+    {
+        if (limit is < 1 or > 100)
+        {
+            throw new ArgumentOutOfRangeException(nameof(limit));
+        }
+
+        FilterDefinitionBuilder<TripInvitationDocument> filters =
+            Builders<TripInvitationDocument>.Filter;
+        FilterDefinition<TripInvitationDocument> elapsedFilter =
+            filters.Eq(static document => document.Status, TripInvitationStatus.Active)
+            & BuildElapsedExpirationFilter();
+        List<string> invitationIds = await this.collection.Find(elapsedFilter)
+            .SortBy(static document => document.ExpiresAtUtc)
+            .Project(static document => document.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        if (invitationIds.Count == 0)
+        {
+            return 0;
+        }
+
+        UpdateResult result = await this.collection.UpdateManyAsync(
+            filters.In(static document => document.Id, invitationIds)
+            & elapsedFilter,
+            Builders<TripInvitationDocument>.Update
+                .Set(static document => document.Status, TripInvitationStatus.Expired)
+                .CurrentDate(static document => document.UpdatedAt)
+                .Unset(static document => document.ActiveSlot)
+                .Unset(static document => document.SealedToken)
+                .Unset(static document => document.SealedTokenKeyVersion),
+            cancellationToken: cancellationToken);
+        return checked((int)result.ModifiedCount);
     }
 
     public async Task<TripInvitation?> GetOwnedAsync(

@@ -1,8 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { distinctUntilChanged, map } from 'rxjs';
 
 import {
   TripInvitationMemberCountBand,
@@ -54,7 +55,11 @@ export class TripInvitationPreviewPageComponent implements OnInit {
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((language: string): void => this.currentLanguage.set(language));
     this.seoService.applyRouteDefaults(this.router.url);
-    this.facade.load(this.route.snapshot.paramMap.get('token') ?? '');
+    this.route.paramMap.pipe(
+      map((params: ParamMap): string => params.get('token') ?? ''),
+      distinctUntilChanged(),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((token: string): void => this.facade.load(token));
   }
 
   protected continueWithAccount(): void {

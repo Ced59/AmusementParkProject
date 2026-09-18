@@ -26,6 +26,7 @@ public sealed class TripInvitationMongoDefinitionsTests
             && index.Options.ExpireAfter == TimeSpan.Zero);
         Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_invitation_prepared"
             && index.Options.ExpireAfter == TimeSpan.Zero);
+        Assert.Contains(indexes, index => index.Options.Name == "ix_trip_invitation_status_expires");
     }
 
     [Fact]

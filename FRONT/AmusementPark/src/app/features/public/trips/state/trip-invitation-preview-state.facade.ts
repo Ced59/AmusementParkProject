@@ -13,6 +13,7 @@ export type TripInvitationPreviewStatus = 'idle' | 'loading' | 'ready' | 'unavai
 export class TripInvitationPreviewStateFacade {
   private readonly previewSignal = signal<TripInvitationPreview | null>(null);
   private readonly statusSignal = signal<TripInvitationPreviewStatus>('idle');
+  private requestGeneration = 0;
 
   readonly preview: Signal<TripInvitationPreview | null> = this.previewSignal.asReadonly();
   readonly status: Signal<TripInvitationPreviewStatus> = this.statusSignal.asReadonly();
@@ -25,7 +26,9 @@ export class TripInvitationPreviewStateFacade {
 
   load(token: string): void {
     const normalizedToken: string = token.trim();
-    if (!normalizedToken || this.statusSignal() === 'loading') {
+    const requestGeneration: number = ++this.requestGeneration;
+    if (!normalizedToken) {
+      this.previewSignal.set(null);
       this.statusSignal.set('unavailable');
       return;
     }
@@ -34,10 +37,18 @@ export class TripInvitationPreviewStateFacade {
     this.statusSignal.set('loading');
     this.data.preview(normalizedToken).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (preview: TripInvitationPreview): void => {
+        if (requestGeneration !== this.requestGeneration) {
+          return;
+        }
         this.previewSignal.set(preview);
         this.statusSignal.set('ready');
       },
-      error: (): void => this.statusSignal.set('unavailable')
+      error: (): void => {
+        if (requestGeneration === this.requestGeneration) {
+          this.previewSignal.set(null);
+          this.statusSignal.set('unavailable');
+        }
+      }
     });
   }
 }

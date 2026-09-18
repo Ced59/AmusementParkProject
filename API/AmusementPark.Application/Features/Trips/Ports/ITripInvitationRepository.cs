@@ -39,5 +39,7 @@ public interface ITripInvitationRepository
         TripChildMutationLease lease,
         CancellationToken cancellationToken);
 
+    Task<int> ExpireElapsedAsync(int limit, CancellationToken cancellationToken);
+
     Task PurgeAsync(TripPlanId tripPlanId, CancellationToken cancellationToken);
 }
