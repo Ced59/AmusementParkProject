@@ -94,6 +94,9 @@ classDiagram
 - **Core** valide l’événement immuable, ses bornes et son rôle d’acteur.
 - **Application** enregistre après une mutation métier réussie, contrôle l’accès
   à la lecture et minimise les identités visibles.
+- Les modifications de détail et d’état d’un parc candidat sont isolées dans
+  `TripCandidateMutationService`, afin que `TripProgramService` conserve une
+  responsabilité et une taille bornées.
 - **Infrastructure** alloue une séquence par voyage et garantit l’idempotence.
 - **WebAPI** expose un contrat privé non mis en cache et sans identifiant.
 - **Angular** respecte `service API -> port -> façade -> composant` ; la façade

@@ -9,9 +9,9 @@ namespace AmusementPark.Application.Features.Trips.Handlers;
 public sealed class UpdateTripParkCandidateCommandHandler
     : ICommandHandler<UpdateTripParkCandidateCommand, ApplicationResult<TripParkCandidateResult>>
 {
-    private readonly TripProgramService service;
+    private readonly TripCandidateMutationService service;
 
-    public UpdateTripParkCandidateCommandHandler(TripProgramService service)
+    public UpdateTripParkCandidateCommandHandler(TripCandidateMutationService service)
     {
         this.service = service;
     }
@@ -21,7 +21,7 @@ public sealed class UpdateTripParkCandidateCommandHandler
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return this.service.UpdateCandidateAsync(
+        return this.service.UpdateAsync(
             command.UserId,
             command.TripPlanId,
             command.ExpectedPlanVersion,
