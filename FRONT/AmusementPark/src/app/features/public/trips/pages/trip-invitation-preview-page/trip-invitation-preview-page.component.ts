@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { distinctUntilChanged, map } from 'rxjs';
 
@@ -12,7 +12,10 @@ import {
 import { ModalService } from '@app/services/modal/modal.service';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
-import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import {
+  findNearestLanguageActivatedRoute,
+  resolveLanguageFromParamMap
+} from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { TripInvitationPreviewStateFacade } from '../../state/trip-invitation-preview-state.facade';
 
@@ -37,7 +40,6 @@ export class TripInvitationPreviewPageComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly seoService: SeoService,
     private readonly modalService: ModalService,
@@ -47,14 +49,18 @@ export class TripInvitationPreviewPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentLanguage.set(resolveLanguageFromActivatedRoute(
-      this.route,
-      this.translationService.getCurrentLang() || 'en'
-    ));
-    this.translationService.languageChanged.pipe(
+    const languageRoute: ActivatedRoute = findNearestLanguageActivatedRoute(this.route) ?? this.route;
+    languageRoute.paramMap.pipe(
+      map((params: ParamMap): string => resolveLanguageFromParamMap(
+        params,
+        this.translationService.getCurrentLang() || 'en'
+      )),
+      distinctUntilChanged(),
       takeUntilDestroyed(this.destroyRef)
-    ).subscribe((language: string): void => this.currentLanguage.set(language));
-    this.seoService.applyRouteDefaults(this.router.url);
+    ).subscribe((language: string): void => {
+      this.currentLanguage.set(language);
+      this.seoService.applyRouteDefaults(`/${language}/trip-invitations/[REDACTED]`);
+    });
     this.route.paramMap.pipe(
       map((params: ParamMap): string => params.get('token') ?? ''),
       distinctUntilChanged(),

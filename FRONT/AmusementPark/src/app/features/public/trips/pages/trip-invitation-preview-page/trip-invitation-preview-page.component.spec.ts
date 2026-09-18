@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { NEVER, Subject } from 'rxjs';
+import { NEVER } from 'rxjs';
 
 import { TranslationService } from '@app/services/translation.service';
 import {
@@ -16,7 +16,7 @@ import { TripInvitationPreviewPageComponent } from './trip-invitation-preview-pa
 
 describe('TripInvitationPreviewPageComponent', () => {
   it('tracks in-place language and invitation token navigation', async () => {
-    const languageChanged = new Subject<string>();
+    const seoService = { applyRouteDefaults: vi.fn() };
     const data: TripInvitationsDataPort = {
       list: vi.fn(),
       create: vi.fn(),
@@ -32,8 +32,8 @@ describe('TripInvitationPreviewPageComponent', () => {
         }]),
         provideLocationMocks(),
         { provide: TRIP_INVITATIONS_DATA_PORT, useValue: data },
-        { provide: TranslationService, useValue: { getCurrentLang: (): string => 'en', languageChanged } },
-        { provide: SeoService, useValue: { applyRouteDefaults: vi.fn() } },
+        { provide: TranslationService, useValue: { getCurrentLang: (): string => 'en' } },
+        { provide: SeoService, useValue: seoService },
         { provide: ModalService, useValue: { openModal: vi.fn() } }
       ]
     });
@@ -44,12 +44,17 @@ describe('TripInvitationPreviewPageComponent', () => {
     );
     harness.detectChanges();
     expect(homeLink(harness)).toBe('/en/home');
+    expect(seoService.applyRouteDefaults).toHaveBeenLastCalledWith(
+      '/en/trip-invitations/[REDACTED]'
+    );
 
-    languageChanged.next('fr');
     await harness.navigateByUrl('/fr/trip-invitations/opaque-token', TripInvitationPreviewPageComponent);
     harness.detectChanges();
 
     expect(homeLink(harness)).toBe('/fr/home');
+    expect(seoService.applyRouteDefaults).toHaveBeenLastCalledWith(
+      '/fr/trip-invitations/[REDACTED]'
+    );
     expect(data.preview).toHaveBeenCalledOnce();
 
     expect(await harness.navigateByUrl(
