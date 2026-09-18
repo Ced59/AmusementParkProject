@@ -33,6 +33,10 @@ public sealed class SensitiveRequestPathSanitizerTests
     [InlineData("https://amusement-parks.fun/api/public/trip-invitations/live-secret/preview/?source=page", "https://amusement-parks.fun/api/public/trip-invitations/[REDACTED]/preview/")]
     [InlineData("/de/trip-invitations/live-secret/", "/de/trip-invitations/[REDACTED]/")]
     [InlineData("https://cdn.example.com/app.js", "https://cdn.example.com/app.js")]
+    [InlineData("inline", "inline")]
+    [InlineData("eval", "eval")]
+    [InlineData("data", "data")]
+    [InlineData("data:text/plain,blocked", "data:text/plain,blocked")]
     public void SanitizeUrl_ShouldRedactInvitationTokensOnly(string value, string expected)
     {
         string? result = SensitiveRequestPathSanitizer.SanitizeUrl(value);
