@@ -1368,7 +1368,7 @@
     "invitations": {
       "kicker": "Gemeinsam planen",
       "title": "Lade deine Reisebegleitung ein",
-      "description": "Erstelle einen persönlichen Einmallink, ohne den Plan öffentlich zu machen.",
+      "description": "Erstelle einen persönlichen Link mit begrenzter Gültigkeit, ohne den Plan öffentlich zu machen.",
       "roleLabel": "Was darf diese Person tun?",
       "roles": {
         "editor": "Mitorganisator",
@@ -1406,7 +1406,7 @@
       "createLink": "Sicheren Link erstellen",
       "ready": "Link bereit",
       "shareNow": "Jetzt teilen",
-      "oneUse": "Der Link wird nur hier angezeigt und kann nur einmal verwendet werden.",
+      "oneUse": "Der Link wird nur hier angezeigt. Er bleibt bis zum Ablauf oder bis zu deinem Widerruf verfügbar.",
       "copy": "Link kopieren",
       "copied": "Link kopiert",
       "hideLink": "Ausblenden",
@@ -1424,14 +1424,14 @@
       "backHome": "Zurück zur Startseite",
       "previewLoading": "Einladung wird geprüft…",
       "unavailableTitle": "Diese Einladung ist nicht mehr verfügbar",
-      "unavailableDescription": "Sie ist vielleicht abgelaufen, bereits verwendet oder widerrufen worden. Bitte den Organisator um einen neuen Link.",
+      "unavailableDescription": "Sie ist vielleicht abgelaufen oder widerrufen worden. Bitte den Organisator um einen neuen Link.",
       "publicKicker": "Private Einladung",
       "invitedBy": "{{name}} lädt dich ein, diese Reise zu planen.",
       "privatePlan": "Privater Plan",
       "publicPrivacy": "Diese Vorschau zeigt keine Parks, Tage, Notizen oder Gruppenwünsche.",
       "publicTargeted": "Dieser Link ist für die vom Organisator gewählte E-Mail reserviert.",
-      "continue": "Anmelden und fortfahren",
-      "accountRequired": "Du kannst diese Vorschau ohne Konto sehen. Um der Reise dauerhaft beizutreten, musst du dich anmelden."
+      "continue": "Anmelden",
+      "accountRequired": "Du kannst diese Vorschau ohne Konto ansehen. Die Anmeldung nimmt die Einladung noch nicht an; bald kannst du der Reise beitreten."
     },
     "kicker": "Reisen zum Planen",
     "privacy": "Privat, nur für dich sichtbar",

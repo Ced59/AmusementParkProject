@@ -59,7 +59,7 @@ public static class WebApplicationPipelineExtensions
                         exception,
                         "Unhandled API exception for {Method} {Path}. TraceId: {TraceId}.",
                         context.Request.Method,
-                        context.Request.Path,
+                        SensitiveRequestPathSanitizer.Sanitize(context.Request.Path),
                         context.TraceIdentifier);
                 }
 

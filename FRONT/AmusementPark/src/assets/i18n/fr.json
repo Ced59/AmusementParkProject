@@ -1368,7 +1368,7 @@
     "invitations": {
       "kicker": "Un voyage à plusieurs",
       "title": "Invite tes compagnons de voyage",
-      "description": "Crée un lien personnel, valable une seule fois, sans rendre le programme public.",
+      "description": "Crée un lien personnel à durée limitée, sans rendre le programme public.",
       "roleLabel": "Que pourra faire cette personne ?",
       "roles": {
         "editor": "Co-organisateur",
@@ -1406,7 +1406,7 @@
       "createLink": "Créer le lien sécurisé",
       "ready": "Lien prêt",
       "shareNow": "Partage-le maintenant",
-      "oneUse": "Le lien n’est affiché qu’ici et ne pourra servir qu’une fois.",
+      "oneUse": "Le lien n’est affiché qu’ici. Il reste disponible jusqu’à son expiration ou sa révocation.",
       "copy": "Copier le lien",
       "copied": "Lien copié",
       "hideLink": "Masquer",
@@ -1424,14 +1424,14 @@
       "backHome": "Retour à l’accueil",
       "previewLoading": "Vérification de l’invitation…",
       "unavailableTitle": "Cette invitation n’est plus disponible",
-      "unavailableDescription": "Elle a peut-être expiré, déjà été utilisée ou été révoquée. Demande un nouveau lien à l’organisateur.",
+      "unavailableDescription": "Elle a peut-être expiré ou été révoquée. Demande un nouveau lien à l’organisateur.",
       "publicKicker": "Invitation privée",
       "invitedBy": "{{name}} t’invite à préparer ce voyage.",
       "privatePlan": "Programme privé",
       "publicPrivacy": "Cet aperçu ne révèle aucun parc, aucune journée, aucune note ni préférence du groupe.",
       "publicTargeted": "Ce lien est réservé à l’adresse choisie par l’organisateur.",
-      "continue": "Me connecter pour continuer",
-      "accountRequired": "Tu peux consulter cet aperçu sans compte. Une connexion sera nécessaire pour rejoindre durablement le voyage."
+      "continue": "Me connecter",
+      "accountRequired": "Tu peux consulter cet aperçu sans compte. Te connecter n’accepte pas encore l’invitation ; tu pourras bientôt rejoindre le voyage."
     },
     "kicker": "Voyages à préparer",
     "privacy": "Privé, visible uniquement par toi",

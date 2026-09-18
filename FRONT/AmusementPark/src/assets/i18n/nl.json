@@ -1368,7 +1368,7 @@
     "invitations": {
       "kicker": "Plan het samen",
       "title": "Nodig je reisgenoten uit",
-      "description": "Maak een persoonlijke link voor eenmalig gebruik zonder het plan openbaar te maken.",
+      "description": "Maak een persoonlijke link met beperkte geldigheid zonder het plan openbaar te maken.",
       "roleLabel": "Wat mag deze persoon doen?",
       "roles": {
         "editor": "Medeorganisator",
@@ -1406,7 +1406,7 @@
       "createLink": "Veilige link maken",
       "ready": "Link klaar",
       "shareNow": "Deel hem nu",
-      "oneUse": "De link wordt alleen hier getoond en kan maar één keer worden gebruikt.",
+      "oneUse": "De link wordt alleen hier getoond. Hij blijft beschikbaar totdat hij verloopt of je hem intrekt.",
       "copy": "Link kopiëren",
       "copied": "Link gekopieerd",
       "hideLink": "Verbergen",
@@ -1424,14 +1424,14 @@
       "backHome": "Terug naar home",
       "previewLoading": "Uitnodiging controleren…",
       "unavailableTitle": "Deze uitnodiging is niet meer beschikbaar",
-      "unavailableDescription": "Ze kan verlopen, al gebruikt of ingetrokken zijn. Vraag de organisator om een nieuwe link.",
+      "unavailableDescription": "Ze kan verlopen of ingetrokken zijn. Vraag de organisator om een nieuwe link.",
       "publicKicker": "Privé-uitnodiging",
       "invitedBy": "{{name}} nodigt je uit om deze reis te plannen.",
       "privatePlan": "Privéprogramma",
       "publicPrivacy": "Dit voorbeeld toont geen parken, dagen, notities of groepsvoorkeuren.",
       "publicTargeted": "Deze link is voorbehouden aan het e-mailadres dat de organisator koos.",
-      "continue": "Inloggen om door te gaan",
-      "accountRequired": "Je kunt dit voorbeeld zonder account bekijken. Om blijvend aan de reis deel te nemen moet je inloggen."
+      "continue": "Inloggen",
+      "accountRequired": "Je kunt dit voorbeeld zonder account bekijken. Inloggen accepteert de uitnodiging nog niet; binnenkort kun je aan de reis deelnemen."
     },
     "kicker": "Reizen om te plannen",
     "privacy": "Privé, alleen zichtbaar voor jou",

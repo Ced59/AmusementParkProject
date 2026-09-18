@@ -1368,7 +1368,7 @@
     "invitations": {
       "kicker": "Organizzatelo insieme",
       "title": "Invita i tuoi compagni di viaggio",
-      "description": "Crea un link personale monouso senza rendere pubblico il programma.",
+      "description": "Crea un link personale a durata limitata senza rendere pubblico il programma.",
       "roleLabel": "Cosa potrà fare questa persona?",
       "roles": {
         "editor": "Co-organizzatore",
@@ -1406,7 +1406,7 @@
       "createLink": "Crea link sicuro",
       "ready": "Link pronto",
       "shareNow": "Condividilo ora",
-      "oneUse": "Il link viene mostrato solo qui e può essere usato una sola volta.",
+      "oneUse": "Il link viene mostrato solo qui. Resta disponibile fino alla scadenza o finché non lo revochi.",
       "copy": "Copia link",
       "copied": "Link copiato",
       "hideLink": "Nascondi",
@@ -1424,14 +1424,14 @@
       "backHome": "Torna alla home",
       "previewLoading": "Verifica dell’invito…",
       "unavailableTitle": "Questo invito non è più disponibile",
-      "unavailableDescription": "Potrebbe essere scaduto, già usato o revocato. Chiedi un nuovo link all’organizzatore.",
+      "unavailableDescription": "Potrebbe essere scaduto o revocato. Chiedi un nuovo link all’organizzatore.",
       "publicKicker": "Invito privato",
       "invitedBy": "{{name}} ti invita a preparare questo viaggio.",
       "privatePlan": "Programma privato",
       "publicPrivacy": "Questa anteprima non mostra parchi, giorni, note o preferenze del gruppo.",
       "publicTargeted": "Questo link è riservato all’e-mail scelta dall’organizzatore.",
-      "continue": "Accedi per continuare",
-      "accountRequired": "Puoi vedere questa anteprima senza account. Dovrai accedere per unirti stabilmente al viaggio."
+      "continue": "Accedi",
+      "accountRequired": "Puoi vedere questa anteprima senza account. L’accesso non accetta ancora l’invito; presto potrai unirti al viaggio."
     },
     "kicker": "Viaggi da preparare",
     "privacy": "Privato, visibile solo a te",

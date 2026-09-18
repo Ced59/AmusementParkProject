@@ -3,7 +3,7 @@
     "invitations": {
       "kicker": "Planeia em conjunto",
       "title": "Convida os teus companheiros de viagem",
-      "description": "Cria uma ligação pessoal de utilização única sem tornar o plano público.",
+      "description": "Cria uma ligação pessoal de duração limitada sem tornar o plano público.",
       "roleLabel": "O que poderá esta pessoa fazer?",
       "roles": { "editor": "Co-organizador", "participant": "Participante", "viewer": "Leitor" },
       "roleHints": { "editor": "Edita o programa contigo.", "participant": "Participa nas escolhas e preferências.", "viewer": "Consulta a viagem sem a alterar." },
@@ -24,7 +24,7 @@
       "createLink": "Criar ligação segura",
       "ready": "Ligação pronta",
       "shareNow": "Partilha-a agora",
-      "oneUse": "A ligação só é apresentada aqui e apenas pode ser usada uma vez.",
+      "oneUse": "A ligação só é apresentada aqui. Continua disponível até expirar ou até a revogares.",
       "copy": "Copiar ligação",
       "copied": "Ligação copiada",
       "hideLink": "Ocultar",
@@ -42,14 +42,14 @@
       "backHome": "Voltar ao início",
       "previewLoading": "A verificar o convite…",
       "unavailableTitle": "Este convite já não está disponível",
-      "unavailableDescription": "Pode ter expirado, já ter sido usado ou ter sido revogado. Pede uma nova ligação ao organizador.",
+      "unavailableDescription": "Pode ter expirado ou ter sido revogada. Pede uma nova ligação ao organizador.",
       "publicKicker": "Convite privado",
       "invitedBy": "{{name}} convida-te a preparar esta viagem.",
       "privatePlan": "Plano privado",
       "publicPrivacy": "Esta pré-visualização não revela parques, dias, notas ou preferências do grupo.",
       "publicTargeted": "Esta ligação está reservada ao e-mail escolhido pelo organizador.",
-      "continue": "Iniciar sessão para continuar",
-      "accountRequired": "Podes consultar esta pré-visualização sem conta. Terás de iniciar sessão para aderir à viagem de forma permanente."
+      "continue": "Iniciar sessão",
+      "accountRequired": "Podes consultar esta pré-visualização sem conta. Iniciar sessão ainda não aceita o convite; em breve poderás juntar-te à viagem."
     }
   }
 }

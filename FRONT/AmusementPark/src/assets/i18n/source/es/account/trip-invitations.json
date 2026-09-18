@@ -3,7 +3,7 @@
     "invitations": {
       "kicker": "Planificadlo juntos",
       "title": "Invita a tus compañeros de viaje",
-      "description": "Crea un enlace personal de un solo uso sin hacer público el plan.",
+      "description": "Crea un enlace personal de duración limitada sin hacer público el plan.",
       "roleLabel": "¿Qué podrá hacer esta persona?",
       "roles": { "editor": "Coorganizador", "participant": "Participante", "viewer": "Lector" },
       "roleHints": { "editor": "Edita el programa contigo.", "participant": "Participa en las decisiones y preferencias.", "viewer": "Consulta el viaje sin modificarlo." },
@@ -24,7 +24,7 @@
       "createLink": "Crear enlace seguro",
       "ready": "Enlace listo",
       "shareNow": "Compártelo ahora",
-      "oneUse": "El enlace solo aparece aquí y solo puede usarse una vez.",
+      "oneUse": "El enlace solo aparece aquí. Seguirá disponible hasta que caduque o lo revoques.",
       "copy": "Copiar enlace",
       "copied": "Enlace copiado",
       "hideLink": "Ocultar",
@@ -42,14 +42,14 @@
       "backHome": "Volver al inicio",
       "previewLoading": "Comprobando la invitación…",
       "unavailableTitle": "Esta invitación ya no está disponible",
-      "unavailableDescription": "Puede haber caducado, haberse usado o revocado. Pide un enlace nuevo al organizador.",
+      "unavailableDescription": "Puede haber caducado o haber sido revocado. Pide un enlace nuevo al organizador.",
       "publicKicker": "Invitación privada",
       "invitedBy": "{{name}} te invita a preparar este viaje.",
       "privatePlan": "Plan privado",
       "publicPrivacy": "Esta vista previa no revela parques, días, notas ni preferencias del grupo.",
       "publicTargeted": "Este enlace está reservado al correo elegido por el organizador.",
-      "continue": "Iniciar sesión para continuar",
-      "accountRequired": "Puedes consultar esta vista previa sin cuenta. Necesitarás iniciar sesión para unirte al viaje de forma permanente."
+      "continue": "Iniciar sesión",
+      "accountRequired": "Puedes consultar esta vista previa sin cuenta. Iniciar sesión todavía no acepta la invitación; pronto podrás unirte al viaje."
     }
   }
 }

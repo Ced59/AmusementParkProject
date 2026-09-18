@@ -1368,7 +1368,7 @@
     "invitations": {
       "kicker": "Plan it together",
       "title": "Invite your travel companions",
-      "description": "Create a personal, one-use link without making the plan public.",
+      "description": "Create a personal link that expires automatically without making the plan public.",
       "roleLabel": "What will this person be able to do?",
       "roles": {
         "editor": "Co-organiser",
@@ -1406,7 +1406,7 @@
       "createLink": "Create secure link",
       "ready": "Link ready",
       "shareNow": "Share it now",
-      "oneUse": "The link is shown only here and can be used only once.",
+      "oneUse": "The link is shown only here. It stays available until it expires or you revoke it.",
       "copy": "Copy link",
       "copied": "Link copied",
       "hideLink": "Hide",
@@ -1424,14 +1424,14 @@
       "backHome": "Back to home",
       "previewLoading": "Checking the invitation…",
       "unavailableTitle": "This invitation is no longer available",
-      "unavailableDescription": "It may have expired, already been used or been revoked. Ask the organiser for a new link.",
+      "unavailableDescription": "It may have expired or been revoked. Ask the organiser for a new link.",
       "publicKicker": "Private invitation",
       "invitedBy": "{{name}} invites you to plan this trip.",
       "privatePlan": "Private plan",
       "publicPrivacy": "This preview reveals no park, day, note or group preference.",
       "publicTargeted": "This link is reserved for the email chosen by the organiser.",
-      "continue": "Sign in to continue",
-      "accountRequired": "You can view this preview without an account. You will need to sign in to join the trip permanently."
+      "continue": "Sign in",
+      "accountRequired": "You can view this preview without an account. Signing in does not accept it yet; joining the trip will be available soon."
     },
     "kicker": "Trips to plan",
     "privacy": "Private, visible only to you",

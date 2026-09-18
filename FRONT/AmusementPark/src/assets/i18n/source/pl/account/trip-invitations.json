@@ -3,7 +3,7 @@
     "invitations": {
       "kicker": "Planujcie razem",
       "title": "Zaproś swoich towarzyszy podróży",
-      "description": "Utwórz osobisty, jednorazowy link bez upubliczniania planu.",
+      "description": "Utwórz osobisty link o ograniczonej ważności bez upubliczniania planu.",
       "roleLabel": "Co będzie mogła robić ta osoba?",
       "roles": { "editor": "Współorganizator", "participant": "Uczestnik", "viewer": "Czytelnik" },
       "roleHints": { "editor": "Edytuje program razem z tobą.", "participant": "Bierze udział w wyborach i preferencjach.", "viewer": "Przegląda podróż bez wprowadzania zmian." },
@@ -24,7 +24,7 @@
       "createLink": "Utwórz bezpieczny link",
       "ready": "Link gotowy",
       "shareNow": "Udostępnij go teraz",
-      "oneUse": "Link jest wyświetlany tylko tutaj i może zostać użyty tylko raz.",
+      "oneUse": "Link jest wyświetlany tylko tutaj. Pozostaje dostępny do wygaśnięcia lub unieważnienia przez ciebie.",
       "copy": "Kopiuj link",
       "copied": "Link skopiowany",
       "hideLink": "Ukryj",
@@ -42,14 +42,14 @@
       "backHome": "Wróć na stronę główną",
       "previewLoading": "Sprawdzanie zaproszenia…",
       "unavailableTitle": "To zaproszenie nie jest już dostępne",
-      "unavailableDescription": "Mogło wygasnąć, zostać już użyte albo unieważnione. Poproś organizatora o nowy link.",
+      "unavailableDescription": "Mogło wygasnąć albo zostać unieważnione. Poproś organizatora o nowy link.",
       "publicKicker": "Prywatne zaproszenie",
       "invitedBy": "{{name}} zaprasza cię do zaplanowania tej podróży.",
       "privatePlan": "Prywatny plan",
       "publicPrivacy": "Ten podgląd nie ujawnia parków, dni, notatek ani preferencji grupy.",
       "publicTargeted": "Ten link jest przeznaczony dla adresu e-mail wybranego przez organizatora.",
-      "continue": "Zaloguj się, aby kontynuować",
-      "accountRequired": "Możesz zobaczyć ten podgląd bez konta. Aby na stałe dołączyć do podróży, musisz się zalogować."
+      "continue": "Zaloguj się",
+      "accountRequired": "Możesz zobaczyć ten podgląd bez konta. Samo logowanie nie przyjmuje jeszcze zaproszenia; wkrótce będzie można dołączyć do podróży."
     }
   }
 }
