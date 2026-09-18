@@ -253,6 +253,14 @@ public sealed class TripAdmissionService
                 cancellationToken);
             if (HasEstablishedAdmission(establishedTrip, fence))
             {
+                if (!await this.RecordAdmissionAsync(
+                    invitation,
+                    fence,
+                    TripActivityKind.InvitationAccepted))
+                {
+                    return false;
+                }
+
                 await this.repository.MarkInvitationAdmissionCompletedAsync(
                     invitation.Id,
                     fence,
@@ -351,26 +359,30 @@ public sealed class TripAdmissionService
             return AdmissionUnavailable();
         }
 
+        if (!await this.RecordAdmissionAsync(
+            invitation,
+            fence,
+            TripActivityKind.InvitationAccepted))
+        {
+            return AdmissionUnavailable();
+        }
+
         await this.repository.MarkInvitationAdmissionCompletedAsync(
             invitation.Id,
             fence,
             cancellationToken);
-        await this.RecordAdmissionAsync(
-            invitation,
-            fence,
-            TripActivityKind.InvitationAccepted);
         return ApplicationResult<TripInvitationDecisionResult>.Success(
             new TripInvitationDecisionResult(invitation.TripPlanId.Value, wasReplayed));
     }
 
-    private async Task RecordAdmissionAsync(
+    private async Task<bool> RecordAdmissionAsync(
         TripInvitation invitation,
         TripMemberAdmissionFence fence,
         TripActivityKind kind)
     {
         if (this.activityRecorder is null)
         {
-            return;
+            return true;
         }
 
         TripPlan? trip = await this.tripPlanRepository.GetAccessibleAsync(
@@ -382,17 +394,17 @@ public sealed class TripAdmissionService
             && string.Equals(candidate.UserId, fence.CandidateUserId, StringComparison.Ordinal));
         if (member is null)
         {
-            return;
+            return false;
         }
 
-        await this.activityRecorder.RecordAsync(
+        TripActivityWrite activity = this.activityRecorder.CreateWrite(
             invitation.TripPlanId,
             member.Id,
             trip!.ResolveRole(fence.CandidateUserId),
             kind,
             $"invitation:accept:{fence.OperationId}",
-            1,
-            CancellationToken.None);
+            1);
+        return await this.activityRecorder.PublishAsync(activity, CancellationToken.None);
     }
 
     private bool TryNormalizeRequest(

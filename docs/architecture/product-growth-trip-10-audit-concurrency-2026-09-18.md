@@ -268,11 +268,14 @@ génération de lease à la clé : le dernier A reste donc un événement distin
 premier. Pour un lot de préférences, chaque préférence réussie porte un marqueur
 unitaire ; le journal publie ainsi le nombre réellement validé, même si un
 conflit interrompt le lot. Le réconciliateur sélectionne au plus 50 opérations,
-puis recharge tous les marqueurs de chacune d’elles avant le comptage : une
+les filtre dans MongoDB par le couple exact voyage/opération, puis recharge tous
+les marqueurs de chacune d’elles avant le comptage : une
 opération comportant 250 préférences n’est donc jamais tronquée à 50. Quand le
 membre d’une invitation n’est pas encore relisible après une interruption, le
 marqueur conserve les deux champs d’acteur à `null` plutôt qu’une identité
-partielle invalide ; la publication immédiate les complète dès que possible.
+partielle invalide ; la publication immédiate les complète durablement dès que
+possible. La saga ne marque pas l’admission comme entièrement réparée tant que
+cet enrichissement n’a pas réussi, ce qui garantit une nouvelle tentative.
 Les marqueurs de préférences portent aussi l’identité complète de leur lease.
 Le worker refuse de publier tant que cette lease est présente et non expirée,
 afin de ne jamais photographier un lot encore en cours d’écriture.

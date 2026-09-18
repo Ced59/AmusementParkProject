@@ -101,12 +101,12 @@ public sealed class TripActivityRecorder
             childLease?.Generation);
     }
 
-    public async Task PublishAsync(
+    public Task<bool> PublishAsync(
         TripActivityWrite activity,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(activity);
-        _ = await this.writer.AppendAsync(activity, cancellationToken);
+        return this.writer.AppendAsync(activity, cancellationToken);
     }
 
     public static string RootOperationKey(TripActivityKind kind, long version)

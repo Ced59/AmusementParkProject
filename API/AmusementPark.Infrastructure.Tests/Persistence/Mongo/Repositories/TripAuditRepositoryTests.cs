@@ -165,14 +165,29 @@ public sealed class TripAuditRepositoryTests
     public void BuildPendingOperationPipeline_ShouldFilterWithoutTruncatingTheSelectedGroup()
     {
         BsonDocument[] pipeline = TripAuditRepository.BuildPendingOperationPipeline(
-            new[] { "operation-1", "operation-2" });
+            new[]
+            {
+                new TripActivityPendingDocument
+                {
+                    TripPlanId = "trip-1",
+                    OperationKey = "root:TripRenamed:2",
+                },
+                new TripActivityPendingDocument
+                {
+                    TripPlanId = "trip-2",
+                    OperationKey = "root:TripRenamed:2",
+                },
+            });
 
         Assert.Equal(2, pipeline.Length);
-        Assert.Equal(
-            new BsonArray { "operation-1", "operation-2" },
-            pipeline[0]["$match"]["pendingAuditEvents.operationKey"]["$in"].AsBsonArray);
+        string matchJson = pipeline[0].ToJson();
+        Assert.Contains("trip-1", matchJson, StringComparison.Ordinal);
+        Assert.Contains("trip-2", matchJson, StringComparison.Ordinal);
+        Assert.Contains("root:TripRenamed:2", matchJson, StringComparison.Ordinal);
+        Assert.Contains("$elemMatch", matchJson, StringComparison.Ordinal);
         Assert.False(pipeline[1].ToString().Contains("$slice", StringComparison.Ordinal));
         Assert.Contains("$filter", pipeline[1].ToString(), StringComparison.Ordinal);
+        Assert.Contains("tripPlanId", pipeline[1].ToString(), StringComparison.Ordinal);
     }
 
     [Fact]
