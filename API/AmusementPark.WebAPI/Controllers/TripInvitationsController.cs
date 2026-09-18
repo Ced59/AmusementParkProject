@@ -9,10 +9,12 @@ using AmusementPark.WebAPI.Contracts.Trips;
 using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
+using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -63,8 +65,10 @@ public sealed class TripInvitationsController : ControllerBase
     }
 
     [HttpPost]
+    [EnableRateLimiting(RateLimitPolicyNames.TripInvitationMutations)]
     [ProducesResponseType(typeof(TripInvitationCreationDto), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(TripInvitationCreationDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status429TooManyRequests)]
     public async Task<IActionResult> CreateAsync(
         [FromRoute] string tripPlanId,
         [FromHeader(Name = "Idempotency-Key")] string? idempotencyKey,
@@ -103,7 +107,9 @@ public sealed class TripInvitationsController : ControllerBase
     }
 
     [HttpDelete("{invitationId}")]
+    [EnableRateLimiting(RateLimitPolicyNames.TripInvitationMutations)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status429TooManyRequests)]
     public async Task<IActionResult> RevokeAsync(
         [FromRoute] string tripPlanId,
         [FromRoute] string invitationId,

@@ -82,6 +82,9 @@ public static class RateLimitingServiceCollectionExtensions
         FixedWindowRateLimitSettings watchPilotInteractionSettings = configuration
             .GetSection("RateLimiting:WatchPilot:Interactions")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(60, 60);
+        FixedWindowRateLimitSettings tripInvitationMutationSettings = configuration
+            .GetSection("RateLimiting:Trips:InvitationMutations")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(60, 3600);
 
         services.AddRateLimiter(options =>
         {
@@ -155,6 +158,10 @@ public static class RateLimitingServiceCollectionExtensions
                 RateLimitPartition.GetFixedWindowLimiter(
                     partitionKey: GetAuthenticatedUserPartitionKey(context),
                     factory: _ => CreateFixedWindowOptions(watchPilotInteractionSettings)));
+            options.AddPolicy(RateLimitPolicyNames.TripInvitationMutations, context =>
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: GetTripInvitationMutationPartitionKey(context),
+                    factory: _ => CreateFixedWindowOptions(tripInvitationMutationSettings)));
             options.AddConcurrencyLimiter(RateLimitPolicyNames.ImageUploadProcessing, limiterOptions =>
             {
                 limiterOptions.PermitLimit = 1;
@@ -326,6 +333,14 @@ public static class RateLimitingServiceCollectionExtensions
         return string.IsNullOrWhiteSpace(userId)
             ? $"share-publication-preview:{GetRemoteIpPartitionKey(context)}"
             : $"share-publication-preview:user:{userId}";
+    }
+
+    internal static string GetTripInvitationMutationPartitionKey(HttpContext context)
+    {
+        string? userId = context.User.GetUserId();
+        return string.IsNullOrWhiteSpace(userId)
+            ? $"trip-invitation-mutation:{GetRemoteIpPartitionKey(context)}"
+            : $"trip-invitation-mutation:user:{userId}";
     }
 
     internal static string GetSharePublicationConfirmationPartitionKey(HttpContext context)

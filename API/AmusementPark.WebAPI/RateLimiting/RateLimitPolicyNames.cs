@@ -30,4 +30,5 @@ public static class RateLimitPolicyNames
     public const string ParkFitAdministration = "park-fit-administration";
     public const string FactualEventAdministration = "factual-event-administration";
     public const string WatchPilotInteractions = "watch-pilot-interactions";
+    public const string TripInvitationMutations = "trip-invitation-mutations";
 }
