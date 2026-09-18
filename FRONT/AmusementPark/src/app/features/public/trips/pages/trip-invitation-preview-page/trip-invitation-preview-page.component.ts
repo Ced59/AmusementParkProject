@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -39,6 +40,7 @@ export class TripInvitationPreviewPageComponent implements OnInit {
     private readonly translationService: TranslationService,
     private readonly seoService: SeoService,
     private readonly modalService: ModalService,
+    private readonly destroyRef: DestroyRef,
     protected readonly facade: TripInvitationPreviewStateFacade
   ) {
   }
@@ -48,6 +50,9 @@ export class TripInvitationPreviewPageComponent implements OnInit {
       this.route,
       this.translationService.getCurrentLang() || 'en'
     ));
+    this.translationService.languageChanged.pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((language: string): void => this.currentLanguage.set(language));
     this.seoService.applyRouteDefaults(this.router.url);
     this.facade.load(this.route.snapshot.paramMap.get('token') ?? '');
   }

@@ -30,6 +30,7 @@ export class TripInvitationsStateFacade {
   private readonly planVersionSignal = signal<number>(0);
   private pendingCreateFingerprint: string | null = null;
   private pendingCreateIdempotencyKey: string | null = null;
+  private listRequestGeneration = 0;
 
   readonly invitations: Signal<TripInvitationSummary[]> = this.invitationsSignal.asReadonly();
   readonly creation: Signal<TripInvitationCreation | null> = this.creationSignal.asReadonly();
@@ -50,25 +51,34 @@ export class TripInvitationsStateFacade {
 
     this.tripIdSignal.set(tripId);
     this.planVersionSignal.set(planVersion);
-    if (this.isBusy()) {
+    this.listRequestGeneration++;
+    if (this.statusSignal() === 'creating' || this.statusSignal() === 'revoking') {
       return;
     }
 
+    const requestGeneration: number = this.listRequestGeneration;
     this.statusSignal.set('loading');
     this.data.list(tripId).pipe(
       takeUntilDestroyed(this.destroyRef),
       finalize((): void => {
-        if (this.statusSignal() === 'loading') {
+        if (requestGeneration === this.listRequestGeneration && this.statusSignal() === 'loading') {
           this.statusSignal.set('idle');
         }
       })
     ).subscribe({
       next: (result: TripInvitationList): void => {
+        if (requestGeneration !== this.listRequestGeneration) {
+          return;
+        }
         this.inviterDisplayNameSignal.set(result.inviterDisplayName);
         this.invitationsSignal.set(result.invitations);
         this.statusSignal.set('idle');
       },
-      error: (): void => this.statusSignal.set('error')
+      error: (): void => {
+        if (requestGeneration === this.listRequestGeneration) {
+          this.statusSignal.set('error');
+        }
+      }
     });
   }
 
@@ -79,6 +89,7 @@ export class TripInvitationsStateFacade {
       return;
     }
 
+    this.listRequestGeneration++;
     const request: CreateTripInvitationRequest = {
       expectedPlanVersion,
       proposedRole: role,
@@ -122,6 +133,7 @@ export class TripInvitationsStateFacade {
       return;
     }
 
+    this.listRequestGeneration++;
     this.statusSignal.set('revoking');
     this.data.revoke(
       tripId,
@@ -160,8 +172,12 @@ export class TripInvitationsStateFacade {
     if (!tripId) {
       return;
     }
+    const requestGeneration: number = ++this.listRequestGeneration;
     this.data.list(tripId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result: TripInvitationList): void => {
+        if (requestGeneration !== this.listRequestGeneration) {
+          return;
+        }
         this.inviterDisplayNameSignal.set(result.inviterDisplayName);
         this.invitationsSignal.set(result.invitations);
       }

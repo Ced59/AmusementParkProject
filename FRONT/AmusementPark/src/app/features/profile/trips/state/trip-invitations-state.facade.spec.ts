@@ -117,6 +117,19 @@ describe('TripInvitationsStateFacade', () => {
       targetEmail: null
     }, 'operation-1');
   });
+
+  it('ignores an older refresh that completes after an invitation was revoked', () => {
+    const staleRefresh = new Subject<TripInvitationList>();
+    const invitation: TripInvitationSummary = createSummary();
+    (data.list as ReturnType<typeof vi.fn>).mockReturnValueOnce(staleRefresh);
+
+    facade.create('Participant', 24, '');
+    facade.revoke(invitation);
+    staleRefresh.next(createList([invitation]));
+    staleRefresh.complete();
+
+    expect(facade.invitations()).toEqual([]);
+  });
 });
 
 function createResult(): TripInvitationCreation {
