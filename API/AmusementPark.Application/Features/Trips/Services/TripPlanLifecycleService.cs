@@ -16,15 +16,18 @@ public sealed class TripPlanLifecycleService
     private readonly ITripPlanRepository repository;
     private readonly ITripTimeZoneValidator timeZoneValidator;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripPlanLifecycleService(
         ITripPlanRepository repository,
         ITripTimeZoneValidator timeZoneValidator,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         this.timeZoneValidator = timeZoneValidator ?? throw new ArgumentNullException(nameof(timeZoneValidator));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<TripPlanResult>>> ListAsync(
@@ -88,6 +91,7 @@ public sealed class TripPlanLifecycleService
                 cancellationToken);
             if (existing is not null)
             {
+                await this.RecordCreationAsync(existing, normalizedUserId, normalizedOperationId);
                 return MapCreation(existing, normalizedUserId);
             }
 
@@ -101,6 +105,8 @@ public sealed class TripPlanLifecycleService
                 requested,
                 normalizedOperationId,
                 cancellationToken);
+            await this.RecordCreationAsync(outcome, normalizedUserId, normalizedOperationId);
+
             return MapCreation(outcome, normalizedUserId);
         }
         catch (TripPlanValidationException exception)
@@ -111,6 +117,30 @@ public sealed class TripPlanLifecycleService
         {
             return Invalid<CreateTripPlanResult>(TripPlanErrorCodes.InvalidState, exception.Message);
         }
+    }
+
+    private async Task RecordCreationAsync(
+        IdempotentTripPlanCreationResult creation,
+        string actorUserId,
+        string operationId)
+    {
+        if (creation.Status is not (IdempotentTripPlanCreationStatus.Created
+            or IdempotentTripPlanCreationStatus.Replayed)
+            || creation.TripPlan is null
+            || this.activityRecorder is null)
+        {
+            return;
+        }
+
+        await this.activityRecorder.RecordAsync(
+            creation.TripPlan,
+            actorUserId,
+            TripActivityKind.TripCreated,
+            TripActivityRecorder.IdempotentOperationKey(
+                TripActivityKind.TripCreated,
+                operationId),
+            1,
+            CancellationToken.None);
     }
 
     public Task<ApplicationResult<TripPlanResult>> RenameAsync(
@@ -124,6 +154,7 @@ public sealed class TripPlanLifecycleService
             userId,
             tripPlanId,
             expectedVersion,
+            TripActivityKind.TripRenamed,
             (trip, nowUtc) => trip.Rename(title, nowUtc),
             cancellationToken);
     }
@@ -132,6 +163,7 @@ public sealed class TripPlanLifecycleService
         string userId,
         string tripPlanId,
         long expectedVersion,
+        TripActivityKind activityKind,
         Action<TripPlan, DateTime> mutation,
         CancellationToken cancellationToken)
     {
@@ -186,6 +218,17 @@ public sealed class TripPlanLifecycleService
             persistedTrip = writeResult.PersistedTripPlan
                 ?? throw new InvalidOperationException(
                     "A successful trip mutation must return the persisted aggregate.");
+        }
+
+        if (this.activityRecorder is not null && persistedTrip.Version != expectedVersion)
+        {
+            await this.activityRecorder.RecordAsync(
+                persistedTrip,
+                normalizedUserId,
+                activityKind,
+                TripActivityRecorder.RootOperationKey(activityKind, persistedTrip.Version),
+                1,
+                CancellationToken.None);
         }
 
         return ApplicationResult<TripPlanResult>.Success(

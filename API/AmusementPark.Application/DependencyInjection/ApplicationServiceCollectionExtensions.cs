@@ -119,6 +119,8 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<TripProgramCoherenceIssueMapper>();
         services.AddScoped<TripProgramCoherenceService>();
         services.AddSingleton<TripProgramCoherenceEvaluator>();
+        services.AddScoped<TripActivityRecorder>();
+        services.AddScoped<TripActivityService>();
         services.AddScoped<TripPreferenceCleanupReconciler>();
         services.AddScoped<UserNotificationCenterService>();
         services.AddScoped<WatchPilotMetricsRecorder>();

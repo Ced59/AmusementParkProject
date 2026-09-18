@@ -113,6 +113,63 @@ public sealed class TripPlanLifecycleServiceTests
     }
 
     [Fact]
+    public async Task CreateAsync_ShouldRepairTheAuditWhenAStoredCreationIsReplayed()
+    {
+        DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
+        TripPlan existingTrip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            createdAtUtc);
+        Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.ResolveExistingCreationAsync(
+                It.IsAny<TripPlan>(),
+                "operation-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new IdempotentTripPlanCreationResult(
+                IdempotentTripPlanCreationStatus.Replayed,
+                existingTrip));
+        Mock<ITripAuditWriter> writer = new(MockBehavior.Strict);
+        writer.Setup(item => item.AppendAsync(
+                It.Is<TripActivityWrite>(write =>
+                    write.TripPlanId == existingTrip.Id
+                    && write.Kind == TripActivityKind.TripCreated
+                    && write.OperationKey == TripActivityRecorder.IdempotentOperationKey(
+                        TripActivityKind.TripCreated,
+                        "operation-1")),
+                CancellationToken.None))
+            .ReturnsAsync((TripActivityWrite write, CancellationToken _) => new TripActivityEvent(
+                "activity-1",
+                write.TripPlanId,
+                write.ActorMemberId,
+                write.ActorRole,
+                write.Kind,
+                write.OperationKey,
+                1,
+                write.AffectedCount,
+                write.OccurredAtUtc));
+        Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
+        TripPlanLifecycleService service = new(
+            repository.Object,
+            timeZoneValidator.Object,
+            activityRecorder: new TripActivityRecorder(writer.Object));
+
+        ApplicationResult<CreateTripPlanResult> result = await service.CreateAsync(
+            "user-1",
+            "operation-1",
+            new TripPlanDetailsInput("Voyage", TripDateProposal.None(), null),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.WasReplayed);
+        repository.VerifyAll();
+        writer.VerifyAll();
+        timeZoneValidator.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task CreateAsync_WhenTheOriginalTripWasDeleted_ShouldRejectTheLateRetry()
     {
         Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);

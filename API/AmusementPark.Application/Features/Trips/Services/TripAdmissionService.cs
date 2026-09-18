@@ -16,19 +16,22 @@ public sealed class TripAdmissionService
     private readonly ITripInvitationSecurity security;
     private readonly IUserRepository users;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripAdmissionService(
         ITripAdmissionRepository repository,
         ITripPlanRepository tripPlanRepository,
         ITripInvitationSecurity security,
         IUserRepository users,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         this.tripPlanRepository = tripPlanRepository ?? throw new ArgumentNullException(nameof(tripPlanRepository));
         this.security = security ?? throw new ArgumentNullException(nameof(security));
         this.users = users ?? throw new ArgumentNullException(nameof(users));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<TripInvitationDecisionResult>> AcceptAsync(
@@ -82,6 +85,10 @@ public sealed class TripAdmissionService
                         invitation.Id,
                         resumedFence,
                         cancellationToken);
+                    await this.RecordAdmissionAsync(
+                        invitation,
+                        resumedFence,
+                        TripActivityKind.InvitationAccepted);
                     return ApplicationResult<TripInvitationDecisionResult>.Success(
                         new TripInvitationDecisionResult(invitation.TripPlanId.Value, true));
                 }
@@ -190,13 +197,29 @@ public sealed class TripAdmissionService
             normalizedUserId,
             operationKeyHash,
             cancellationToken);
-        return outcome is TripAdmissionWriteOutcome.Success or TripAdmissionWriteOutcome.AlreadyCompleted
-            ? ApplicationResult<TripInvitationDecisionResult>.Success(
-                new TripInvitationDecisionResult(
-                    invitation.TripPlanId.Value,
-                    outcome == TripAdmissionWriteOutcome.AlreadyCompleted))
-            : ApplicationResult<TripInvitationDecisionResult>.Failure(
+        if (outcome is not TripAdmissionWriteOutcome.Success
+            and not TripAdmissionWriteOutcome.AlreadyCompleted)
+        {
+            return ApplicationResult<TripInvitationDecisionResult>.Failure(
                 TripInvitationApplicationErrors.ChangedConcurrently());
+        }
+
+        if (this.activityRecorder is not null)
+        {
+            await this.activityRecorder.RecordAsync(
+                invitation.TripPlanId,
+                null,
+                null,
+                TripActivityKind.InvitationDeclined,
+                $"invitation:decline:{operationKeyHash}",
+                1,
+                CancellationToken.None);
+        }
+
+        return ApplicationResult<TripInvitationDecisionResult>.Success(
+            new TripInvitationDecisionResult(
+                invitation.TripPlanId.Value,
+                outcome == TripAdmissionWriteOutcome.AlreadyCompleted));
     }
 
     internal async Task<bool> ReconcileAsync(
@@ -316,8 +339,44 @@ public sealed class TripAdmissionService
             invitation.Id,
             fence,
             cancellationToken);
+        await this.RecordAdmissionAsync(
+            invitation,
+            fence,
+            TripActivityKind.InvitationAccepted);
         return ApplicationResult<TripInvitationDecisionResult>.Success(
             new TripInvitationDecisionResult(invitation.TripPlanId.Value, wasReplayed));
+    }
+
+    private async Task RecordAdmissionAsync(
+        TripInvitation invitation,
+        TripMemberAdmissionFence fence,
+        TripActivityKind kind)
+    {
+        if (this.activityRecorder is null)
+        {
+            return;
+        }
+
+        TripPlan? trip = await this.tripPlanRepository.GetAccessibleAsync(
+            fence.CandidateUserId,
+            invitation.TripPlanId,
+            CancellationToken.None);
+        TripMember? member = trip?.Members.SingleOrDefault(candidate =>
+            candidate.State == TripMembershipState.Active
+            && string.Equals(candidate.UserId, fence.CandidateUserId, StringComparison.Ordinal));
+        if (member is null)
+        {
+            return;
+        }
+
+        await this.activityRecorder.RecordAsync(
+            invitation.TripPlanId,
+            member.Id,
+            trip!.ResolveRole(fence.CandidateUserId),
+            kind,
+            $"invitation:accept:{fence.OperationId}",
+            1,
+            CancellationToken.None);
     }
 
     private bool TryNormalizeRequest(

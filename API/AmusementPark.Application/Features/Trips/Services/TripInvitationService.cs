@@ -22,6 +22,7 @@ public sealed class TripInvitationService
     private readonly TripChildMutationExecutor mutationExecutor;
     private readonly IUserRepository userRepository;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripInvitationService(
         ITripPlanRepository tripPlanRepository,
@@ -29,7 +30,8 @@ public sealed class TripInvitationService
         ITripInvitationSecurity security,
         TripChildMutationExecutor mutationExecutor,
         IUserRepository userRepository,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.tripPlanRepository = tripPlanRepository
             ?? throw new ArgumentNullException(nameof(tripPlanRepository));
@@ -39,6 +41,7 @@ public sealed class TripInvitationService
         this.mutationExecutor = mutationExecutor ?? throw new ArgumentNullException(nameof(mutationExecutor));
         this.userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<TripInvitationCreationResult>> CreateAsync(
@@ -268,11 +271,27 @@ public sealed class TripInvitationService
         return await this.mutationExecutor.ExecuteOwnedAsync(
             trip,
             leaseOperationId,
-            async lease => MapWriteOutcome(await this.invitationRepository.RevokeAsync(
-                invitation,
-                expectedInvitationVersion,
-                lease,
-                cancellationToken)),
+            async lease =>
+            {
+                TripInvitationWriteOutcome outcome = await this.invitationRepository.RevokeAsync(
+                    invitation,
+                    expectedInvitationVersion,
+                    lease,
+                    cancellationToken);
+                if (outcome == TripInvitationWriteOutcome.Success
+                    && this.activityRecorder is not null)
+                {
+                    await this.activityRecorder.RecordAsync(
+                        trip,
+                        normalizedUserId,
+                        TripActivityKind.InvitationRevoked,
+                        $"invitation-revoke:{lease.OperationId}",
+                        1,
+                        CancellationToken.None);
+                }
+
+                return MapWriteOutcome(outcome);
+            },
             cancellationToken);
     }
 
@@ -327,7 +346,21 @@ public sealed class TripInvitationService
                 continue;
             }
 
-            return this.MapCreationWrite(write, actorUserId);
+            ApplicationResult<TripInvitationCreationResult> result = this.MapCreationWrite(
+                write,
+                actorUserId);
+            if (result.IsSuccess && this.activityRecorder is not null)
+            {
+                await this.activityRecorder.RecordAsync(
+                    trip,
+                    actorUserId,
+                    TripActivityKind.InvitationCreated,
+                    $"invitation-create:{lease.OperationId}",
+                    1,
+                    CancellationToken.None);
+            }
+
+            return result;
         }
 
         return ApplicationResult<TripInvitationCreationResult>.Failure(

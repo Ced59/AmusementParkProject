@@ -1,0 +1,41 @@
+{
+  "trips": {
+    "activity": {
+      "open": "Voir l’historique",
+      "back": "Retour au voyage",
+      "kicker": "Journal du voyage",
+      "description": "Retrouve les décisions et changements importants du groupe, sans exposer les préférences privées.",
+      "refresh": "Actualiser l’historique",
+      "feedKicker": "Trace partagée",
+      "feedTitle": "Ce qui a changé",
+      "feedDescription": "Les changements les plus récents apparaissent en premier. Recharge la page quand tu veux vérifier une modification récente.",
+      "you": "Toi",
+      "hiddenActor": "Personne non affichée",
+      "loadMore": "Charger les changements précédents",
+      "loadError": "L’historique du voyage n’a pas pu être chargé.",
+      "loadMoreError": "Les changements précédents n’ont pas pu être chargés. Tu peux réessayer.",
+      "emptyTitle": "Aucun changement enregistré",
+      "emptyDescription": "Le journal commence avec les prochaines modifications du voyage.",
+      "kinds": {
+        "tripCreated": "Création du voyage · {{actor}}",
+        "tripRenamed": "Modification du titre · {{actor}}",
+        "datesChanged": "Modification des dates · {{actor}}",
+        "candidateAdded": "Ajout d’un parc candidat · {{actor}}",
+        "candidateUpdated": "Mise à jour d’un parc candidat · {{actor}}",
+        "candidateMoved": "Réorganisation d’un parc candidat · {{actor}}",
+        "candidateRemoved": "Retrait d’un parc candidat · {{actor}}",
+        "dayUpdated": "Mise à jour d’une journée · {{actor}}",
+        "dayRemoved": "Retrait d’une journée · {{actor}}",
+        "invitationCreated": "Création d’une invitation · {{actor}}",
+        "invitationRevoked": "Révocation d’une invitation · {{actor}}",
+        "invitationAccepted": "Acceptation d’une invitation · {{actor}}",
+        "invitationDeclined": "Refus d’une invitation · {{actor}}",
+        "participantRoleChanged": "Modification d’un rôle · {{actor}}",
+        "ownershipTransferred": "Transfert de l’organisation · {{actor}}",
+        "participantLeft": "Départ du voyage · {{actor}}",
+        "preferencesUpdated": "Préférences modifiées ({{count}}) · {{actor}}",
+        "collectiveDecisionUpdated": "Mise à jour d’une décision collective · {{actor}}"
+      }
+    }
+  }
+}

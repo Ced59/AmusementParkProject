@@ -20,6 +20,7 @@ public sealed class TripProgramService
     private readonly TripChildMutationExecutor mutationExecutor;
     private readonly TripProgramResultFactory resultFactory;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripProgramService(
         ITripPlanRepository tripPlanRepository,
@@ -28,7 +29,8 @@ public sealed class TripProgramService
         IParkRepository parkRepository,
         TripChildMutationExecutor mutationExecutor,
         TripProgramResultFactory resultFactory,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.tripPlanRepository = tripPlanRepository ?? throw new ArgumentNullException(nameof(tripPlanRepository));
         this.candidateRepository = candidateRepository ?? throw new ArgumentNullException(nameof(candidateRepository));
@@ -37,6 +39,7 @@ public sealed class TripProgramService
         this.mutationExecutor = mutationExecutor ?? throw new ArgumentNullException(nameof(mutationExecutor));
         this.resultFactory = resultFactory ?? throw new ArgumentNullException(nameof(resultFactory));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<TripProgramResult>> GetAsync(
@@ -215,6 +218,19 @@ public sealed class TripProgramService
                         lease,
                         requestHash,
                         cancellationToken);
+                    if (written.Outcome == TripChildWriteOutcome.Success
+                        && written.Candidate is not null
+                        && this.activityRecorder is not null)
+                    {
+                        await this.activityRecorder.RecordAsync(
+                            trip,
+                            normalizedUserId,
+                            TripActivityKind.CandidateAdded,
+                            $"candidate-add:{lease.OperationId}",
+                            1,
+                            CancellationToken.None);
+                    }
+
                     return written.Outcome switch
                     {
                         TripChildWriteOutcome.Success when written.Candidate is not null =>
@@ -256,6 +272,7 @@ public sealed class TripProgramService
             expectedPlanVersion,
             candidateId,
             expectedCandidateVersion,
+            TripActivityKind.CandidateUpdated,
             (trip, candidate) =>
             {
                 TripProgramRules.ValidateCandidateDates(trip.DateProposal, input.CandidateDates);
@@ -287,6 +304,7 @@ public sealed class TripProgramService
             expectedPlanVersion,
             candidateId,
             expectedCandidateVersion,
+            TripActivityKind.CandidateUpdated,
             (_, candidate) => candidate.ChangeState(state, this.NowUtc()),
             (candidate, token) => this.ValidateCandidateStateAgainstDaysAsync(
                 candidate,
@@ -357,6 +375,17 @@ public sealed class TripProgramService
                             TripPlanApplicationErrors.ChildMutationUnavailable());
                     }
 
+                    if (this.activityRecorder is not null)
+                    {
+                        await this.activityRecorder.RecordAsync(
+                            trip,
+                            userId.Trim(),
+                            TripActivityKind.CandidateMoved,
+                            $"candidate-move:{lease.OperationId}",
+                            1,
+                            CancellationToken.None);
+                    }
+
                     return await this.resultFactory.BuildAsync(trip.Id, cancellationToken);
                 }
                 catch (KeyNotFoundException)
@@ -418,6 +447,18 @@ public sealed class TripProgramService
                     lease,
                     this.NowUtc(),
                     cancellationToken);
+                if (outcome.Outcome == TripChildWriteOutcome.Success
+                    && this.activityRecorder is not null)
+                {
+                    await this.activityRecorder.RecordAsync(
+                        trip,
+                        userId.Trim(),
+                        TripActivityKind.CandidateRemoved,
+                        $"candidate-remove:{lease.OperationId}",
+                        1,
+                        CancellationToken.None);
+                }
+
                 return outcome.Outcome switch
                 {
                     TripChildWriteOutcome.Success => ApplicationResult.Success(),
@@ -436,6 +477,7 @@ public sealed class TripProgramService
         long expectedPlanVersion,
         string candidateId,
         long expectedCandidateVersion,
+        TripActivityKind activityKind,
         Action<TripPlan, TripParkCandidate> mutation,
         Func<TripParkCandidate, CancellationToken, Task<ApplicationError?>> consistencyGuard,
         CancellationToken cancellationToken)
@@ -516,6 +558,17 @@ public sealed class TripProgramService
                         outcome.Outcome == TripChildWriteOutcome.NotFound
                             ? TripPlanApplicationErrors.CandidateNotFound()
                             : TripPlanApplicationErrors.ChangedConcurrently(outcome.CurrentVersion));
+                }
+
+                if (this.activityRecorder is not null)
+                {
+                    await this.activityRecorder.RecordAsync(
+                        trip,
+                        userId.Trim(),
+                        activityKind,
+                        $"candidate-update:{lease.OperationId}",
+                        1,
+                        CancellationToken.None);
                 }
 
                 Park? park = await this.parkRepository.GetByIdAsync(

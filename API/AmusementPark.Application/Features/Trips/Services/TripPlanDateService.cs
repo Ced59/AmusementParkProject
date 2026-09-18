@@ -15,6 +15,7 @@ public sealed class TripPlanDateService
     private readonly ITripTimeZoneValidator timeZoneValidator;
     private readonly TripChildMutationExecutor mutationExecutor;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripPlanDateService(
         ITripPlanRepository tripPlanRepository,
@@ -22,7 +23,8 @@ public sealed class TripPlanDateService
         ITripDayPlanRepository dayPlanRepository,
         ITripTimeZoneValidator timeZoneValidator,
         TripChildMutationExecutor mutationExecutor,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.tripPlanRepository = tripPlanRepository
             ?? throw new ArgumentNullException(nameof(tripPlanRepository));
@@ -35,6 +37,7 @@ public sealed class TripPlanDateService
         this.mutationExecutor = mutationExecutor
             ?? throw new ArgumentNullException(nameof(mutationExecutor));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<TripPlanResult>> SetDatesAsync(
@@ -141,6 +144,17 @@ public sealed class TripPlanDateService
                 ? ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.NotFound())
                 : ApplicationResult<TripPlanResult>.Failure(
                     TripPlanApplicationErrors.ChangedConcurrently(outcome.CurrentVersion));
+        }
+
+        if (this.activityRecorder is not null)
+        {
+            await this.activityRecorder.RecordAsync(
+                outcome.PersistedTripPlan,
+                actorUserId,
+                TripActivityKind.DatesChanged,
+                $"dates:{lease.OperationId}",
+                1,
+                CancellationToken.None);
         }
 
         return ApplicationResult<TripPlanResult>.Success(

@@ -17,6 +17,7 @@ public sealed class TripPreferenceService
     private readonly IImageRepository imageRepository;
     private readonly TripChildMutationExecutor mutationExecutor;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripPreferenceService(
         ITripPlanRepository tripPlanRepository,
@@ -24,7 +25,8 @@ public sealed class TripPreferenceService
         TripEligibleItemReader eligibleItemReader,
         IImageRepository imageRepository,
         TripChildMutationExecutor mutationExecutor,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.tripPlanRepository = tripPlanRepository ?? throw new ArgumentNullException(nameof(tripPlanRepository));
         this.preferenceRepository = preferenceRepository ?? throw new ArgumentNullException(nameof(preferenceRepository));
@@ -32,6 +34,7 @@ public sealed class TripPreferenceService
         this.imageRepository = imageRepository ?? throw new ArgumentNullException(nameof(imageRepository));
         this.mutationExecutor = mutationExecutor ?? throw new ArgumentNullException(nameof(mutationExecutor));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<TripPreferenceBoardResult>> GetAsync(
@@ -257,6 +260,18 @@ public sealed class TripPreferenceService
             }
 
             preferences[preference.ParkItemId] = written.Preference;
+        }
+
+        if (mutations.Count > 0 && this.activityRecorder is not null)
+        {
+            await this.activityRecorder.RecordAsync(
+                trip.Id,
+                actor.Id,
+                trip.ResolveRole(userId),
+                TripActivityKind.PreferencesUpdated,
+                $"child:{TripActivityKind.PreferencesUpdated}:{lease.OperationId}:{lease.Generation}",
+                mutations.Count,
+                CancellationToken.None);
         }
 
         return await this.BuildBoardAsync(trip, userId, cancellationToken, eligible);

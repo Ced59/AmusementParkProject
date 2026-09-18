@@ -1365,6 +1365,43 @@
     }
   },
   "trips": {
+    "activity": {
+      "open": "Verlauf ansehen",
+      "back": "Zurück zur Reise",
+      "kicker": "Reiseprotokoll",
+      "description": "Sieh wichtige Entscheidungen und Änderungen der Gruppe nach, ohne private Präferenzen offenzulegen.",
+      "refresh": "Verlauf aktualisieren",
+      "feedKicker": "Gemeinsame Spur",
+      "feedTitle": "Was sich geändert hat",
+      "feedDescription": "Die neuesten Änderungen stehen zuerst. Aktualisiere den Verlauf, wenn du eine neue Änderung prüfen möchtest.",
+      "you": "Du",
+      "hiddenActor": "Nicht angezeigte Person",
+      "loadMore": "Frühere Änderungen laden",
+      "loadError": "Der Reiseverlauf konnte nicht geladen werden.",
+      "loadMoreError": "Frühere Änderungen konnten nicht geladen werden. Du kannst es erneut versuchen.",
+      "emptyTitle": "Noch keine Änderungen erfasst",
+      "emptyDescription": "Das Protokoll beginnt mit den nächsten Änderungen der Reise.",
+      "kinds": {
+        "tripCreated": "Reise erstellt · {{actor}}",
+        "tripRenamed": "Titel geändert · {{actor}}",
+        "datesChanged": "Reisedaten geändert · {{actor}}",
+        "candidateAdded": "Parkvorschlag hinzugefügt · {{actor}}",
+        "candidateUpdated": "Parkvorschlag aktualisiert · {{actor}}",
+        "candidateMoved": "Parkvorschlag neu sortiert · {{actor}}",
+        "candidateRemoved": "Parkvorschlag entfernt · {{actor}}",
+        "dayUpdated": "Reisetag aktualisiert · {{actor}}",
+        "dayRemoved": "Reisetag entfernt · {{actor}}",
+        "invitationCreated": "Einladung erstellt · {{actor}}",
+        "invitationRevoked": "Einladung widerrufen · {{actor}}",
+        "invitationAccepted": "Einladung angenommen · {{actor}}",
+        "invitationDeclined": "Einladung abgelehnt · {{actor}}",
+        "participantRoleChanged": "Rolle geändert · {{actor}}",
+        "ownershipTransferred": "Reiseleitung übertragen · {{actor}}",
+        "participantLeft": "Reise verlassen · {{actor}}",
+        "preferencesUpdated": "Präferenzen aktualisiert ({{count}}) · {{actor}}",
+        "collectiveDecisionUpdated": "Gruppenentscheidung aktualisiert · {{actor}}"
+      }
+    },
     "invitations": {
       "kicker": "Gemeinsam planen",
       "title": "Lade deine Reisebegleitung ein",
