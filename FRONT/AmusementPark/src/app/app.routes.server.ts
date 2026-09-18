@@ -74,6 +74,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/park-fit/compare', renderMode: RenderMode.Client },
   { path: ':lang/park-fit/results', renderMode: RenderMode.Client },
   { path: ':lang/park-fit', renderMode: RenderMode.Client },
+  { path: ':lang/trip-invitations/:token', renderMode: RenderMode.Client },
   { path: ':lang/confirm-account', renderMode: RenderMode.Client },
   { path: ':lang/forgot-password', renderMode: RenderMode.Client },
   { path: ':lang/reset-password', renderMode: RenderMode.Client },

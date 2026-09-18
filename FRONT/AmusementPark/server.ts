@@ -42,6 +42,11 @@ import { isPublicSharedVisitRecapSsrRoute } from './src/server/ssr/public-shared
 import { isPublicSharedYearRecapSsrRoute } from './src/server/ssr/public-shared-year-recap-ssr-route-policy';
 import { isPublicSharedPassportProfileSsrRoute } from './src/server/ssr/public-shared-passport-profile-ssr-route-policy';
 import { isPublicSharedProfileComparisonSsrRoute } from './src/server/ssr/public-shared-profile-comparison-ssr-route-policy';
+import {
+  isPublicTripInvitationRoute,
+  resolveTripInvitationCsrCacheControl,
+  sanitizePublicTripInvitationUrl,
+} from './src/app/core/ssr/public-trip-invitation-route-policy';
 import { isPublicRatingMethodologySsrRoute } from './src/server/ssr/public-rating-methodology-ssr-route-policy';
 import {
   isCriticalPublicPricingSsrRoute,
@@ -653,7 +658,7 @@ export function app(): express.Express {
       })
       .catch((err: unknown) => {
         if (err instanceof SsrRenderQueueFullError) {
-          console.warn(`SSR overload fallback to CSR: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${req.originalUrl}`);
+          console.warn(`SSR overload fallback to CSR: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${sanitizePublicTripInvitationUrl(req.originalUrl)}`);
           serveCsrFallbackPage(req, res, csrIndexHtml, 'CSR-OVERLOAD-FALLBACK');
           return;
         }
@@ -1828,7 +1833,7 @@ async function renderSsrHtmlWithSeoReadyRetries(
 
     console.warn(
       `SSR SEO-ready render retry: attempt=${retryIndex}/${seoReadyRenderRetryCount}, `
-      + `status=${res.statusCode}, reason=${seoReady.reason}, bodyTextLength=${seoReady.bodyTextLength}, url=${requestUrl}`
+      + `status=${res.statusCode}, reason=${seoReady.reason}, bodyTextLength=${seoReady.bodyTextLength}, url=${sanitizePublicTripInvitationUrl(requestUrl)}`
     );
 
     if (seoReadyRenderRetryDelayMilliseconds > 0) {
@@ -1863,13 +1868,13 @@ function scheduleSsrRender(render: () => Promise<string>, requestUrl?: string): 
 
   if (pendingRenderQueue.length >= renderQueueMaxEntries) {
     technicalStatsCounters.renderQueueFullRejections += 1;
-    console.warn(`SSR render queue full: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${requestUrl ?? 'unknown'}`);
+    console.warn(`SSR render queue full: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${sanitizePublicTripInvitationUrl(requestUrl ?? 'unknown')}`);
     return Promise.reject(new SsrRenderQueueFullError());
   }
 
   const queueLengthAfterPush = pendingRenderQueue.length + 1;
   if (queueLengthAfterPush >= renderQueueWarningThreshold) {
-    console.warn(`SSR render queue high: active=${activeRenderCount}, queued=${queueLengthAfterPush}, url=${requestUrl ?? 'unknown'}`);
+    console.warn(`SSR render queue high: active=${activeRenderCount}, queued=${queueLengthAfterPush}, url=${sanitizePublicTripInvitationUrl(requestUrl ?? 'unknown')}`);
   }
 
   return new Promise<string>((resolve: (value: string) => void, reject: (reason?: unknown) => void): void => {
@@ -1890,7 +1895,7 @@ function runScheduledSsrRender(render: () => Promise<string>, requestUrl?: strin
     technicalStatsCounters.maxRenderMilliseconds = Math.max(technicalStatsCounters.maxRenderMilliseconds, elapsedMilliseconds);
     if (slowRenderThresholdMilliseconds > 0 && elapsedMilliseconds >= slowRenderThresholdMilliseconds) {
       technicalStatsCounters.slowRenders += 1;
-      console.warn(`SSR slow render: ${elapsedMilliseconds}ms, active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${requestUrl ?? 'unknown'}`);
+      console.warn(`SSR slow render: ${elapsedMilliseconds}ms, active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${sanitizePublicTripInvitationUrl(requestUrl ?? 'unknown')}`);
     }
 
     activeRenderCount = Math.max(0, activeRenderCount - 1);
@@ -1987,12 +1992,15 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
   const fallbackStatus: SsrPageResponseStatus = mode === 'SSR-BOT-CACHE-ONLY-MISS' && statusCode !== 200 ? 'CSR-CACHE-MISS-FALLBACK' : mode;
   recordPageResponse(req, fallbackStatus, buildPageCacheKey(req));
   if (csrFallbackLogSampleRate > 0 && csrFallbackCount % csrFallbackLogSampleRate === 0) {
-    console.warn(`SSR CSR fallback sample: count=${csrFallbackCount}, mode=${mode}, url=${req.originalUrl}`);
+    console.warn(`SSR CSR fallback sample: count=${csrFallbackCount}, mode=${mode}, url=${sanitizePublicTripInvitationUrl(req.originalUrl)}`);
   }
 
   res.setHeader('X-AmusementPark-SSR-Fallback', mode);
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
-  res.setHeader('Cache-Control', csrFallbackCacheControl);
+  res.setHeader(
+    'Cache-Control',
+    resolveTripInvitationCsrCacheControl(getPathOnly(req.originalUrl), csrFallbackCacheControl),
+  );
   sendPreparedHtmlResponse(req, res, readCsrShellHtml(csrIndexHtmlPath), {
     allowRobotNoJsOptimization: false,
     responseMode: 'CSR_FALLBACK'
@@ -3386,6 +3394,7 @@ function applySecurityHeaders(req: Request, res: Response, next: NextFunction): 
       || isPublicSharedYearRecapSsrRoute(getPathOnly(req.originalUrl))
       || isPublicSharedPassportProfileSsrRoute(getPathOnly(req.originalUrl))
       || isPublicSharedProfileComparisonSsrRoute(getPathOnly(req.originalUrl))
+      || isPublicTripInvitationRoute(getPathOnly(req.originalUrl))
       ? 'no-referrer'
       : 'strict-origin-when-cross-origin'
   );

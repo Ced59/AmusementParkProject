@@ -126,6 +126,18 @@ describe('Server routes', () => {
     expect(serverRoutes.indexOf(comparisonRoute as ServerRoute)).toBeLessThan(fallbackIndex);
   });
 
+  it('keeps secret invitation tokens out of server-rendered and cached HTML', () => {
+    const invitationRoute: ServerRoute | undefined = serverRoutes.find(
+      (candidate: ServerRoute): boolean => candidate.path === ':lang/trip-invitations/:token'
+    );
+    const fallbackIndex: number = serverRoutes.findIndex(
+      (candidate: ServerRoute): boolean => candidate.path === '**'
+    );
+
+    expect(invitationRoute?.renderMode).toBe(RenderMode.Client);
+    expect(serverRoutes.indexOf(invitationRoute as ServerRoute)).toBeLessThan(fallbackIndex);
+  });
+
   it('server-renders current and historical rating methodology pages', () => {
     const expectedPaths: string[] = [
       ':lang/rankings/methodology',

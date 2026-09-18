@@ -1876,6 +1876,28 @@ export class SeoService {
       return;
     }
 
+    if (this.routePolicy.isTripInvitationRoute(url)) {
+      const canonicalPath: string = `/${language}/trip-invitations`;
+      this.apply({
+        title: SITE_NAME,
+        description: DEFAULT_DESCRIPTION,
+        canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(canonicalPath),
+        robots: 'noindex,nofollow,noarchive',
+        alternates: [],
+        jsonLd: [this.buildBreadcrumbJsonLd([
+          {
+            name: this.resolveHomeBreadcrumbLabel(language),
+            url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`)
+          },
+          {
+            name: this.resolveTripInvitationBreadcrumbLabel(language),
+            url: this.canonicalUrlService.buildAbsoluteUrl(canonicalPath)
+          }
+        ])]
+      });
+      return;
+    }
+
     if (this.routePolicy.isSharedUserRankingRoute(url) || this.routePolicy.isSharedVisitRecapRoute(url)) {
       this.apply({
         title: SITE_NAME,
@@ -4019,6 +4041,21 @@ export class SeoService {
       nl: 'Parkenlijst',
       pl: 'Lista parków',
       pt: 'Lista de parques'
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveTripInvitationBreadcrumbLabel(language: string): string {
+    const labels: Record<string, string> = {
+      fr: 'Invitation privée',
+      en: 'Private invitation',
+      es: 'Invitación privada',
+      de: 'Private Einladung',
+      it: 'Invito privato',
+      nl: 'Privé-uitnodiging',
+      pl: 'Prywatne zaproszenie',
+      pt: 'Convite privado'
     };
 
     return labels[language] ?? labels['en'];

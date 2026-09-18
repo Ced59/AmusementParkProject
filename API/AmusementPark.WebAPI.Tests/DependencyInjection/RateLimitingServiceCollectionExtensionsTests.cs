@@ -100,6 +100,31 @@ public sealed class RateLimitingServiceCollectionExtensionsTests
     }
 
     [Fact]
+    public void GetTripInvitationMutationPartitionKey_ShouldPreferAuthenticatedUser()
+    {
+        DefaultHttpContext context = CreateContext(HttpMethods.Post);
+        context.User = new ClaimsPrincipal(new ClaimsIdentity(
+            new[] { new Claim(ClaimTypes.NameIdentifier, "owner-1") },
+            "Test"));
+
+        string result = RateLimitingServiceCollectionExtensions
+            .GetTripInvitationMutationPartitionKey(context);
+
+        Assert.Equal("trip-invitation-mutation:user:owner-1", result);
+    }
+
+    [Fact]
+    public void GetTripInvitationMutationPartitionKey_ShouldFallBackToRemoteIp()
+    {
+        DefaultHttpContext context = CreateContext(HttpMethods.Post);
+
+        string result = RateLimitingServiceCollectionExtensions
+            .GetTripInvitationMutationPartitionKey(context);
+
+        Assert.Equal("trip-invitation-mutation:ip:203.0.113.10", result);
+    }
+
+    [Fact]
     public void GetNotificationEmailUnsubscribePartitionKey_ShouldHashTheTokenInsteadOfUsingTheIp()
     {
         DefaultHttpContext firstContext = CreateContext(HttpMethods.Post);

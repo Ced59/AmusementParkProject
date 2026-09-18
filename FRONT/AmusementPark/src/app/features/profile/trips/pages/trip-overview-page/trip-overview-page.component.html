@@ -304,5 +304,11 @@
         </div>
       }
     </section>
+
+    @if (facade.trip(); as trip) {
+      @if (trip.isOwner) {
+        <app-trip-invitation-panel [trip]="trip" [currentLanguage]="currentLanguage()"></app-trip-invitation-panel>
+      }
+    }
   }
 </main>

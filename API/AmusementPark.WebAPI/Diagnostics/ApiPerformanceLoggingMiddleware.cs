@@ -62,6 +62,7 @@ public sealed class ApiPerformanceLoggingMiddleware
         bool isAuthenticated = context.User.Identity?.IsAuthenticated == true;
         string userAgent = context.Request.Headers["User-Agent"].ToString();
         string queryString = context.Request.QueryString.HasValue ? context.Request.QueryString.Value ?? string.Empty : string.Empty;
+        string safePath = SensitiveRequestPathSanitizer.Sanitize(context.Request.Path);
         double roundedElapsedMilliseconds = Math.Round(elapsedMilliseconds, 2);
 
         if (isSlow)
@@ -69,7 +70,7 @@ public sealed class ApiPerformanceLoggingMiddleware
             this.logger.LogWarning(
                 "Slow API request {Method} {Path}{QueryString} responded {StatusCode} in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, AuthorizationHeader={HasAuthorizationHeader}, CookieHeader={HasCookieHeader}, UserAgent={UserAgent}, TraceId={TraceId}.",
                 context.Request.Method,
-                context.Request.Path.Value,
+                safePath,
                 queryString,
                 statusCode,
                 roundedElapsedMilliseconds,
@@ -84,7 +85,7 @@ public sealed class ApiPerformanceLoggingMiddleware
         this.logger.LogInformation(
             "API request {Method} {Path}{QueryString} responded {StatusCode} in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, AuthorizationHeader={HasAuthorizationHeader}, CookieHeader={HasCookieHeader}, UserAgent={UserAgent}, TraceId={TraceId}.",
             context.Request.Method,
-            context.Request.Path.Value,
+            safePath,
             queryString,
             statusCode,
             roundedElapsedMilliseconds,

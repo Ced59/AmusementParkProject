@@ -22,7 +22,8 @@ describe('sanitizeMatomoPageViewUrl', () => {
     ['passport/shared/visits/visit-secret', 'visit-recap'],
     ['passport/shared/years/year-secret', 'year-recap'],
     ['passport/shared/profiles/profile-secret', 'passport-profile'],
-    ['passport/shared/comparisons/comparison-secret', 'profile-comparison']
+    ['passport/shared/comparisons/comparison-secret', 'profile-comparison'],
+    ['trip-invitations/invitation-secret', 'trip-invitation']
   ])('replaces a public share token with its categorical product path', (
     path: string,
     recapType: string
@@ -53,7 +54,8 @@ describe('sanitizeMatomoPageViewUrl', () => {
     ['passport/shared/visits/visit-secret', 'Journée de Camille à Europa-Park'],
     ['passport/shared/years/year-secret', 'L’année 2026 de Camille'],
     ['passport/shared/profiles/profile-secret', 'Passeport de Camille'],
-    ['passport/shared/comparisons/comparison-secret', 'Camille face à Alex']
+    ['passport/shared/comparisons/comparison-secret', 'Camille face à Alex'],
+    ['trip-invitations/invitation-secret', 'Invitation privée de Camille']
   ])('removes personal content from the complete public share page-view payload', (
     path: string,
     privateTitle: string

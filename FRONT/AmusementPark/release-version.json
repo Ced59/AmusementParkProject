@@ -1,6 +1,20 @@
 {
-  "version": "5.3.64",
+  "version": "5.3.65",
   "history": [
+    {
+      "version": "5.3.65",
+      "releasedAt": "2026-09-18",
+      "labels": {
+        "fr": "Tu peux désormais préparer et partager un lien sécurisé pour un voyage privé.",
+        "en": "You can now prepare and share a secure link for a private trip.",
+        "de": "Du kannst jetzt einen sicheren Link für eine private Reise erstellen und teilen.",
+        "nl": "Je kunt nu een beveiligde link voor een privéreis maken en delen.",
+        "it": "Ora puoi preparare e condividere un link sicuro per un viaggio privato.",
+        "es": "Ya puedes preparar y compartir un enlace seguro para un viaje privado.",
+        "pl": "Możesz teraz przygotować i udostępnić bezpieczny link do prywatnego wyjazdu.",
+        "pt": "Agora podes preparar e partilhar uma ligação segura para uma viagem privada."
+      }
+    },
     {
       "version": "5.3.64",
       "releasedAt": "2026-09-18",

@@ -14,6 +14,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
     private readonly IMongoCollection<TripPlanDocument> collection;
     private readonly IMongoCollection<TripParkCandidateDocument>? candidateCollection;
     private readonly IMongoCollection<TripDayPlanDocument>? dayPlanCollection;
+    private readonly IMongoCollection<TripInvitationDocument>? invitationCollection;
     private readonly TripPlanCreationFingerprint creationFingerprint;
 
     public TripPlanRepository(
@@ -24,7 +25,8 @@ public sealed class TripPlanRepository : ITripPlanRepository
             GetCollection(database, settings),
             creationFingerprint,
             GetCandidateCollection(database, settings),
-            GetDayPlanCollection(database, settings))
+            GetDayPlanCollection(database, settings),
+            GetInvitationCollection(database, settings))
     {
     }
 
@@ -32,13 +34,15 @@ public sealed class TripPlanRepository : ITripPlanRepository
         IMongoCollection<TripPlanDocument> collection,
         TripPlanCreationFingerprint creationFingerprint,
         IMongoCollection<TripParkCandidateDocument>? candidateCollection = null,
-        IMongoCollection<TripDayPlanDocument>? dayPlanCollection = null)
+        IMongoCollection<TripDayPlanDocument>? dayPlanCollection = null,
+        IMongoCollection<TripInvitationDocument>? invitationCollection = null)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
         this.creationFingerprint = creationFingerprint
             ?? throw new ArgumentNullException(nameof(creationFingerprint));
         this.candidateCollection = candidateCollection;
         this.dayPlanCollection = dayPlanCollection;
+        this.invitationCollection = invitationCollection;
     }
 
     public async Task<IdempotentTripPlanCreationResult?> ResolveExistingCreationAsync(
@@ -339,7 +343,8 @@ public sealed class TripPlanRepository : ITripPlanRepository
         CancellationToken cancellationToken)
     {
         if (this.candidateCollection is null
-            || this.dayPlanCollection is null)
+            || this.dayPlanCollection is null
+            || this.invitationCollection is null)
         {
             throw new InvalidOperationException("Trip child collections are required to purge a trip.");
         }
@@ -354,8 +359,14 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 static document => document.TripPlanId,
                 tripPlanId.Value),
             cancellationToken);
+        DeleteResult invitations = await this.invitationCollection.DeleteManyAsync(
+            Builders<TripInvitationDocument>.Filter.Eq(
+                static document => document.TripPlanId,
+                tripPlanId.Value),
+            cancellationToken);
         _ = candidates.DeletedCount;
         _ = days.DeletedCount;
+        _ = invitations.DeletedCount;
     }
 
     public async Task<TripPlanWriteResult> FinalizeDeletionOwnedAsync(
@@ -449,6 +460,13 @@ public sealed class TripPlanRepository : ITripPlanRepository
         MongoDbSettings settings)
     {
         return database.GetCollection<TripDayPlanDocument>(settings.TripDayPlansCollectionName);
+    }
+
+    private static IMongoCollection<TripInvitationDocument> GetInvitationCollection(
+        IMongoDatabase database,
+        MongoDbSettings settings)
+    {
+        return database.GetCollection<TripInvitationDocument>(settings.TripInvitationsCollectionName);
     }
 
     private static string NormalizeRequired(string? value, string parameterName)

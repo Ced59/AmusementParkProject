@@ -1,0 +1,64 @@
+<main class="invitation-page">
+  <nav class="invitation-page__breadcrumb" [attr.aria-label]="'trips.invitations.breadcrumbLabel' | translate">
+    <a [routerLink]="['/', currentLanguage(), 'home']">{{ 'trips.invitations.breadcrumbHome' | translate }}</a>
+    <i class="pi pi-chevron-right" aria-hidden="true"></i>
+    <span aria-current="page">{{ 'trips.invitations.publicKicker' | translate }}</span>
+  </nav>
+
+  @if (facade.status() === 'loading') {
+    <section class="invitation-page__message" appUiSurface="panel" role="status" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'trips.invitations.previewLoading' | translate }}</span>
+    </section>
+  } @else if (facade.status() === 'unavailable') {
+    <section class="invitation-page__message invitation-page__message--unavailable" appUiSurface="panel" role="alert">
+      <i class="pi pi-link" aria-hidden="true"></i>
+      <h1>{{ 'trips.invitations.unavailableTitle' | translate }}</h1>
+      <p>{{ 'trips.invitations.unavailableDescription' | translate }}</p>
+      <a appUiButton="primary" [routerLink]="['/', currentLanguage(), 'home']">{{ 'trips.invitations.backHome' | translate }}</a>
+    </section>
+  } @else if (facade.preview(); as preview) {
+    <article class="invitation-card-public" appUiSurface="hero" appUiSurfacePadding="spacious">
+      <div class="invitation-card-public__intro">
+        <app-ui-kicker tone="sky" iconClass="pi pi-send">{{ 'trips.invitations.publicKicker' | translate }}</app-ui-kicker>
+        <h1>{{ preview.tripTitle }}</h1>
+        <p>{{ 'trips.invitations.invitedBy' | translate:{ name: preview.inviterDisplayName } }}</p>
+      </div>
+
+      <div class="invitation-card-public__facts">
+        <div>
+          <i class="pi pi-id-card" aria-hidden="true"></i>
+          <span>{{ 'trips.invitations.previewRole' | translate }}</span>
+          <strong>{{ roleLabelKey(preview.proposedRole) | translate }}</strong>
+        </div>
+        <div>
+          <i class="pi pi-calendar" aria-hidden="true"></i>
+          <span>{{ 'trips.invitations.previewPeriod' | translate }}</span>
+          <strong>{{ periodLabel() | translate }}</strong>
+        </div>
+        <div>
+          <i class="pi pi-users" aria-hidden="true"></i>
+          <span>{{ 'trips.invitations.previewGroup' | translate }}</span>
+          <strong>{{ memberBandLabelKey(preview.memberCountBand) | translate }}</strong>
+        </div>
+      </div>
+
+      <div class="invitation-card-public__privacy">
+        <app-ui-chip tone="lime" iconClass="pi pi-shield">{{ 'trips.invitations.privatePlan' | translate }}</app-ui-chip>
+        <p>{{ 'trips.invitations.publicPrivacy' | translate }}</p>
+        @if (preview.isTargeted) {
+          <p><i class="pi pi-envelope" aria-hidden="true"></i>{{ 'trips.invitations.publicTargeted' | translate }}</p>
+        }
+      </div>
+
+      <div class="invitation-card-public__cta">
+        <button type="button" appUiButton="primary" (click)="continueWithAccount()">
+          <i class="pi pi-sign-in" aria-hidden="true"></i>
+          <span>{{ 'trips.invitations.continue' | translate }}</span>
+        </button>
+        <p>{{ 'trips.invitations.accountRequired' | translate }}</p>
+        <small>{{ 'trips.invitations.expiresAt' | translate }} {{ preview.expiresAtUtc | date:'medium':undefined:currentLanguage() }}</small>
+      </div>
+    </article>
+  }
+</main>

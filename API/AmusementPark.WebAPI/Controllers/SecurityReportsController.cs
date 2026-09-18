@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using AmusementPark.WebAPI.ClientIp;
+using AmusementPark.WebAPI.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -50,11 +51,11 @@ public sealed class SecurityReportsController : ControllerBase
 
         this.logger.LogWarning(
             "CSP report received. DocumentUri={DocumentUri} ViolatedDirective={ViolatedDirective} EffectiveDirective={EffectiveDirective} BlockedUri={BlockedUri} SourceFile={SourceFile} LineNumber={LineNumber} RemoteIp={RemoteIpAddress} UserAgent={UserAgent}",
-            summary.DocumentUri,
+            SensitiveRequestPathSanitizer.SanitizeUrl(summary.DocumentUri),
             summary.ViolatedDirective,
             summary.EffectiveDirective,
-            summary.BlockedUri,
-            summary.SourceFile,
+            SensitiveRequestPathSanitizer.SanitizeUrl(summary.BlockedUri),
+            SensitiveRequestPathSanitizer.SanitizeUrl(summary.SourceFile),
             summary.LineNumber,
             ClientIpAddressResolver.Resolve(this.HttpContext),
             this.Request.Headers["User-Agent"].ToString());

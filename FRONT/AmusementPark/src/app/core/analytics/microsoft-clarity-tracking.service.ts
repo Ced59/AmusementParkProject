@@ -2,6 +2,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, Injector, PLATFORM_ID, effect } from '@angular/core';
 
 import { CookieConsentService } from '@core/privacy/cookie-consent.service';
+import { isPublicTripInvitationRoute } from '@core/ssr/public-trip-invitation-route-policy';
 import { environment } from '../../../environments/environment';
 
 type ClarityStorageConsent = 'granted' | 'denied';
@@ -34,6 +35,9 @@ export class MicrosoftClarityTrackingService {
     }
 
     this.initialized = true;
+    if (isPublicTripInvitationRoute(this.document.location?.pathname ?? '')) {
+      return;
+    }
 
     effect((): void => {
       if (this.cookieConsentService.hasAcceptedOptionalCookies()) {

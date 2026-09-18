@@ -84,6 +84,10 @@ public sealed class TripPlan
     public DateTime UpdatedAtUtc { get; private set; }
     public long Version { get; private set; }
 
+    public bool CanAcceptMembers => this.DeletionState == TripDeletionState.None
+        && this.AdmissionClosureState == TripAdmissionClosureState.Open
+        && this.Status is TripPlanStatus.Draft or TripPlanStatus.OpenForVotes or TripPlanStatus.Decided;
+
     public static TripPlan Create(
         TripPlanId id,
         string ownerUserId,

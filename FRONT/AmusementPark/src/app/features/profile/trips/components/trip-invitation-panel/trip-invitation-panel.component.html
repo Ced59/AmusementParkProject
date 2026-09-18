@@ -1,0 +1,149 @@
+<section class="invitation-panel" appUiSurface="panel" appUiSurfacePadding="spacious">
+  <div class="invitation-panel__heading">
+    <span class="invitation-panel__step">5</span>
+    <div>
+      <app-ui-kicker tone="sky" iconClass="pi pi-user-plus">{{ 'trips.invitations.kicker' | translate }}</app-ui-kicker>
+      <h2>{{ 'trips.invitations.title' | translate }}</h2>
+      <p>{{ 'trips.invitations.description' | translate }}</p>
+    </div>
+  </div>
+
+  <div class="invitation-panel__workspace">
+    <form class="invitation-panel__form" (submit)="$event.preventDefault(); createInvitation()">
+      <fieldset>
+        <legend>{{ 'trips.invitations.roleLabel' | translate }}</legend>
+        <div class="invitation-panel__roles">
+          @for (role of ['Editor', 'Participant', 'Viewer']; track role) {
+            <button
+              type="button"
+              class="invitation-role"
+              [class.invitation-role--active]="selectedRole() === role"
+              [attr.aria-pressed]="selectedRole() === role"
+              (click)="selectedRole.set($any(role))">
+              <i class="pi" [class.pi-pencil]="role === 'Editor'" [class.pi-star]="role === 'Participant'" [class.pi-eye]="role === 'Viewer'" aria-hidden="true"></i>
+              <strong>{{ roleLabelKey($any(role)) | translate }}</strong>
+              <span>{{ ('trips.invitations.roleHints.' + role.toLowerCase()) | translate }}</span>
+            </button>
+          }
+        </div>
+      </fieldset>
+
+      <div class="invitation-panel__fields">
+        <label>
+          <span>{{ 'trips.invitations.expirationLabel' | translate }}</span>
+          <select [value]="lifetimeHours()" (change)="lifetimeHours.set(+$any($event.target).value)">
+            <option [value]="24">{{ 'trips.invitations.expirations.day' | translate }}</option>
+            <option [value]="168">{{ 'trips.invitations.expirations.week' | translate }}</option>
+            <option [value]="720">{{ 'trips.invitations.expirations.month' | translate }}</option>
+          </select>
+        </label>
+        <label>
+          <span>{{ 'trips.invitations.emailLabel' | translate }}</span>
+          <input
+            type="email"
+            maxlength="254"
+            autocomplete="email"
+            [value]="targetEmail()"
+            [placeholder]="'trips.invitations.emailPlaceholder' | translate"
+            (input)="targetEmail.set($any($event.target).value)">
+        </label>
+      </div>
+      @if (!isTargetEmailValid()) {
+        <p class="invitation-panel__error" role="alert">{{ 'trips.invitations.invalidEmail' | translate }}</p>
+      }
+
+      <aside class="invitation-preview" aria-labelledby="invitation-preview-title">
+        <div>
+          <app-ui-chip tone="soft" iconClass="pi pi-eye">{{ 'trips.invitations.previewKicker' | translate }}</app-ui-chip>
+          <h3 id="invitation-preview-title">{{ trip.title }}</h3>
+        </div>
+        <dl>
+          <div>
+            <dt>{{ 'trips.invitations.previewInviter' | translate }}</dt>
+            <dd>{{ previewInviterDisplayName() || ('trips.invitations.loading' | translate) }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'trips.invitations.previewRole' | translate }}</dt>
+            <dd>{{ roleLabelKey(selectedRole()) | translate }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'trips.invitations.previewPeriod' | translate }}</dt>
+            <dd>
+              @if (previewMonths().length === 0) {
+                {{ 'trips.invitations.periodUnspecified' | translate }}
+              } @else {
+                {{ previewMonths().join(' → ') }}
+              }
+            </dd>
+          </div>
+          <div>
+            <dt>{{ 'trips.invitations.previewGroup' | translate }}</dt>
+            <dd>{{ memberBandLabelKey(previewMemberBand()) | translate }}</dd>
+          </div>
+        </dl>
+        <p><i class="pi pi-shield" aria-hidden="true"></i>{{ 'trips.invitations.previewPrivacy' | translate }}</p>
+      </aside>
+
+      <button
+        type="submit"
+        appUiButton="primary"
+        [disabled]="facade.isBusy() || !isTargetEmailValid()">
+        <i class="pi pi-link" aria-hidden="true"></i>
+        <span>{{ 'trips.invitations.createLink' | translate }}</span>
+      </button>
+    </form>
+
+    @if (facade.creation(); as creation) {
+      <div class="invitation-created" role="status" aria-live="polite">
+        <div>
+          <app-ui-chip tone="lime" iconClass="pi pi-check">{{ 'trips.invitations.ready' | translate }}</app-ui-chip>
+          <h3>{{ 'trips.invitations.shareNow' | translate }}</h3>
+          <p>{{ 'trips.invitations.oneUse' | translate }}</p>
+        </div>
+        <a class="invitation-created__link" [href]="invitationUrl()" rel="noreferrer">{{ invitationUrl() }}</a>
+        <div class="invitation-created__actions">
+          <button type="button" appUiButton="primary" (click)="copyInvitation()">
+            <i class="pi pi-copy" aria-hidden="true"></i>
+            <span>{{ (copied() ? 'trips.invitations.copied' : 'trips.invitations.copy') | translate }}</span>
+          </button>
+          <button type="button" appUiButton="ghost" (click)="facade.clearCreatedLink()">
+            {{ 'trips.invitations.hideLink' | translate }}
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="invitation-panel__active">
+    <div>
+      <h3>{{ 'trips.invitations.activeTitle' | translate }}</h3>
+      <p>{{ 'trips.invitations.activeDescription' | translate }}</p>
+    </div>
+    @if (facade.status() === 'loading') {
+      <p role="status">{{ 'trips.invitations.loading' | translate }}</p>
+    } @else if (facade.invitations().length === 0) {
+      <p class="invitation-panel__empty">{{ 'trips.invitations.empty' | translate }}</p>
+    } @else {
+      <div class="invitation-list">
+        @for (invitation of facade.invitations(); track invitation.invitationId) {
+          <article class="invitation-card">
+            <div>
+              <strong>{{ roleLabelKey(invitation.proposedRole) | translate }}</strong>
+              <span>
+                {{ (invitation.isTargeted ? 'trips.invitations.targeted' : 'trips.invitations.openLink') | translate }}
+              </span>
+            </div>
+            <p>{{ 'trips.invitations.expiresAt' | translate }} {{ invitation.expiresAtUtc | date:'medium':undefined:currentLanguage }}</p>
+            <button type="button" appUiButton="ghost" [disabled]="facade.isBusy()" (click)="revoke(invitation)">
+              <i class="pi pi-times" aria-hidden="true"></i>
+              <span>{{ 'trips.invitations.revoke' | translate }}</span>
+            </button>
+          </article>
+        }
+      </div>
+    }
+    @if (facade.status() === 'error') {
+      <p class="invitation-panel__error" role="alert">{{ 'trips.invitations.error' | translate }}</p>
+    }
+  </div>
+</section>

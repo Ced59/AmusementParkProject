@@ -1,6 +1,7 @@
 import { LANGUAGES, LanguageOption } from '../../shared/models/localization';
 import { resolvePublicSitemapLocation } from '../../shared/utils/routing/public-sitemap-location';
 import { resolvePublicDirectoryLocation } from '../../shared/utils/routing/public-directory-location';
+import { isPublicTripInvitationRoute } from './public-trip-invitation-route-policy';
 
 const SUPPORTED_ROUTE_LANGUAGES: ReadonlySet<string> = new Set<string>(
   LANGUAGES.map((language: LanguageOption): string => language.value)
@@ -22,7 +23,8 @@ export function resolveXRobotsTagHeader(url: string, statusCode: number = 200, i
       || isSharedVisitRecapRoute(path)
       || isSharedYearRecapRoute(path)
       || isSharedPassportProfileRoute(path)
-      || isSharedProfileComparisonRoute(path)) {
+      || isSharedProfileComparisonRoute(path)
+      || isPublicTripInvitationRoute(path)) {
     return 'noindex, nofollow, noarchive';
   }
 
@@ -109,6 +111,7 @@ function isKnownPrivateClientRoute(path: string): boolean {
   return isParkFitRoute(path)
     || /^\/[a-z]{2}\/admin(?:\/.*)?$/i.test(path)
     || /^\/[a-z]{2}\/passport\/local(?:\/[^/]+)?\/?$/i.test(path)
+    || isPublicTripInvitationRoute(path)
     || /^\/[a-z]{2}\/(?:profile|confirm-account|forgot-password|reset-password)(?:\/.*)?$/i.test(path);
 }
 
