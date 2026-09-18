@@ -42,6 +42,13 @@ describe('TripParticipantsStateFacade', () => {
     expect(data.changeRole).toHaveBeenCalledWith('trip-1', 'member-2', 'Viewer', 4);
   });
 
+  it('signals the overview to refresh its permissions after ownership transfer', () => {
+    facade.transferOwnership('member-2', 'Viewer');
+
+    expect(data.transferOwnership).toHaveBeenCalledWith('trip-1', 'member-2', 'Viewer', 4);
+    expect(facade.ownershipTransferRevision()).toBe(1);
+  });
+
   it('marks the collaboration as left only after the server confirms departure', () => {
     vi.mocked(data.list).mockReturnValue(of({ ...createList(), canLeave: true }));
     facade.load('trip-1');

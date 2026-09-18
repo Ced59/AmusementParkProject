@@ -69,6 +69,7 @@ public sealed class TripAdmissionService
                     TripInvitationApplicationErrors.ChangedConcurrently());
             }
 
+            TripMemberAdmissionFence resumedFence = RestoreFence(invitation);
             if (invitation.Status == TripInvitationStatus.Accepted)
             {
                 TripPlan? establishedTrip = await this.tripPlanRepository.GetAccessibleAsync(
@@ -77,12 +78,15 @@ public sealed class TripAdmissionService
                     cancellationToken);
                 if (establishedTrip?.ResolveRole(normalizedUserId) is not null)
                 {
+                    await this.repository.MarkInvitationAdmissionCompletedAsync(
+                        invitation.Id,
+                        resumedFence,
+                        cancellationToken);
                     return ApplicationResult<TripInvitationDecisionResult>.Success(
                         new TripInvitationDecisionResult(invitation.TripPlanId.Value, true));
                 }
             }
 
-            TripMemberAdmissionFence resumedFence = RestoreFence(invitation);
             return await this.ResumeAcceptanceAsync(
                 invitation,
                 resumedFence,
@@ -209,6 +213,7 @@ public sealed class TripAdmissionService
             return true;
         }
 
+        TripMemberAdmissionFence fence = RestoreFence(invitation);
         if (invitation.Status == TripInvitationStatus.Accepted)
         {
             TripPlan? establishedTrip = await this.tripPlanRepository.GetAccessibleAsync(
@@ -217,11 +222,14 @@ public sealed class TripAdmissionService
                 cancellationToken);
             if (establishedTrip?.ResolveRole(invitation.AcceptingUserId) is not null)
             {
+                await this.repository.MarkInvitationAdmissionCompletedAsync(
+                    invitation.Id,
+                    fence,
+                    cancellationToken);
                 return true;
             }
         }
 
-        TripMemberAdmissionFence fence = RestoreFence(invitation);
         if (this.timeProvider.GetUtcNow().UtcDateTime >= fence.LeaseExpiresAtUtc)
         {
             TripAdmissionWriteOutcome cancelled = await this.repository.CancelExpiredFenceAsync(
@@ -286,10 +294,17 @@ public sealed class TripAdmissionService
             invitation.TripPlanId,
             fence,
             cancellationToken);
-        return CanContinue(established)
-            ? ApplicationResult<TripInvitationDecisionResult>.Success(
-                new TripInvitationDecisionResult(invitation.TripPlanId.Value, wasReplayed))
-            : AdmissionUnavailable();
+        if (!CanContinue(established))
+        {
+            return AdmissionUnavailable();
+        }
+
+        await this.repository.MarkInvitationAdmissionCompletedAsync(
+            invitation.Id,
+            fence,
+            cancellationToken);
+        return ApplicationResult<TripInvitationDecisionResult>.Success(
+            new TripInvitationDecisionResult(invitation.TripPlanId.Value, wasReplayed));
     }
 
     private bool TryNormalizeRequest(

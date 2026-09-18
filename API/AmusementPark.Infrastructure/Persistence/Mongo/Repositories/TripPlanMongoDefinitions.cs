@@ -123,11 +123,18 @@ internal static class TripPlanMongoDefinitions
             & filters.Eq(static document => document.CreationOperationKeyHash, operationKeyHash);
     }
 
+    public static FilterDefinition<TripPlanDocument> BuildNoAdmissionInFlightFilter()
+    {
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        return filters.Exists(static document => document.MemberAdmissionFence, false)
+            | filters.Eq(static document => document.MemberAdmissionFence, null);
+    }
+
     public static UpdateDefinition<TripPlanDocument> BuildDomainMutation(TripPlan trip)
     {
         TripPlanDocument document = trip.ToDocument();
         UpdateDefinitionBuilder<TripPlanDocument> updates = Builders<TripPlanDocument>.Update;
-        UpdateDefinition<TripPlanDocument> domain = updates.Set(static item => item.Title, document.Title)
+        return updates.Set(static item => item.Title, document.Title)
             .Set(static item => item.DateProposal, document.DateProposal)
             .Set(static item => item.DestinationTimeZoneId, document.DestinationTimeZoneId)
             .Set(static item => item.Status, document.Status)
@@ -138,10 +145,6 @@ internal static class TripPlanMongoDefinitions
             .Set(static item => item.ChildMutationEpoch, document.ChildMutationEpoch)
             .Set(static item => item.UpdatedAt, document.UpdatedAt)
             .Set(static item => item.Version, document.Version);
-        UpdateDefinition<TripPlanDocument> fence = document.MemberAdmissionFence is null
-            ? updates.Unset(static item => item.MemberAdmissionFence)
-            : updates.Set(static item => item.MemberAdmissionFence, document.MemberAdmissionFence);
-        return updates.Combine(domain, fence);
     }
 
     public static ProjectionDefinition<TripPlanDocument> BuildActiveCreationProjection()

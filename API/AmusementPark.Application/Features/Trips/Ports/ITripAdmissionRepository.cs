@@ -45,6 +45,11 @@ public interface ITripAdmissionRepository
         TripMemberAdmissionFence fence,
         CancellationToken cancellationToken);
 
+    Task MarkInvitationAdmissionCompletedAsync(
+        TripInvitationId invitationId,
+        TripMemberAdmissionFence fence,
+        CancellationToken cancellationToken);
+
     Task<TripAdmissionWriteOutcome> CancelFenceAsync(
         TripPlanId tripPlanId,
         TripMemberAdmissionFence fence,

@@ -77,6 +77,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
             new(
                 Builders<TripInvitationDocument>.IndexKeys
                     .Ascending(static document => document.Status)
+                    .Ascending(static document => document.AdmissionCompletedAtUtc)
                     .Ascending(static document => document.AcceptanceLeaseExpiresAtUtc)
                     .Ascending(static document => document.UpdatedAt),
                 new CreateIndexOptions { Name = "ix_trip_invitation_acceptance_recovery" }),

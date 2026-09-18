@@ -346,6 +346,7 @@
     @if (facade.trip(); as trip) {
       <app-trip-participant-panel
         [tripPlanId]="trip.tripPlanId"
+        (ownershipTransferred)="facade.load(trip.tripPlanId)"
         (left)="returnToTrips()"></app-trip-participant-panel>
       @if (trip.canInvite) {
         <app-trip-invitation-panel [trip]="trip" [currentLanguage]="currentLanguage()"></app-trip-invitation-panel>

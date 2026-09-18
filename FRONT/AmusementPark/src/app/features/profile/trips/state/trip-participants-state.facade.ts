@@ -24,6 +24,7 @@ export class TripParticipantsStateFacade {
   private readonly canTransferOwnershipSignal = signal<boolean>(false);
   private readonly canLeaveSignal = signal<boolean>(false);
   private readonly leftSignal = signal<boolean>(false);
+  private readonly ownershipTransferRevisionSignal = signal<number>(0);
   private tripPlanId: string = '';
   private tripVersion: number = 0;
 
@@ -35,6 +36,7 @@ export class TripParticipantsStateFacade {
   readonly canTransferOwnership: Signal<boolean> = this.canTransferOwnershipSignal.asReadonly();
   readonly canLeave: Signal<boolean> = this.canLeaveSignal.asReadonly();
   readonly left: Signal<boolean> = this.leftSignal.asReadonly();
+  readonly ownershipTransferRevision: Signal<number> = this.ownershipTransferRevisionSignal.asReadonly();
 
   constructor(
     @Inject(TRIP_PARTICIPANTS_DATA_PORT) private readonly data: TripParticipantsDataPort,
@@ -71,7 +73,9 @@ export class TripParticipantsStateFacade {
       memberId,
       previousOwnerRole,
       this.tripVersion
-    ));
+    ), (): void => {
+      this.ownershipTransferRevisionSignal.update((revision: number): number => revision + 1);
+    });
   }
 
   leave(): void {
@@ -96,7 +100,7 @@ export class TripParticipantsStateFacade {
       });
   }
 
-  private run(operation: Observable<TripParticipantList>): void {
+  private run(operation: Observable<TripParticipantList>, onSuccess?: () => void): void {
     if (this.busySignal() || !this.tripPlanId) {
       return;
     }
@@ -106,6 +110,7 @@ export class TripParticipantsStateFacade {
     operation.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result: TripParticipantList): void => {
         this.apply(result);
+        onSuccess?.();
         this.busySignal.set(false);
       },
       error: (): void => {

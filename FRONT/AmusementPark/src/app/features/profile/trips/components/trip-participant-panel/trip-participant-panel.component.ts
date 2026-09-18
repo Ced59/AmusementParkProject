@@ -30,16 +30,25 @@ import { TripParticipantsStateFacade } from '../../state/trip-participants-state
 export class TripParticipantPanelComponent implements OnChanges {
   @Input({ required: true }) tripPlanId: string = '';
   @Output() readonly left: EventEmitter<void> = new EventEmitter<void>();
+  @Output() readonly ownershipTransferred: EventEmitter<void> = new EventEmitter<void>();
 
   protected readonly transferCandidateId = signal<string | null>(null);
   protected readonly previousOwnerRole = signal<TripDelegatedRole>('Editor');
   protected readonly confirmingLeave = signal<boolean>(false);
   protected readonly delegatedRoles: readonly TripDelegatedRole[] = ['Editor', 'Participant', 'Viewer'];
+  private handledOwnershipTransferRevision: number = 0;
 
   constructor(protected readonly facade: TripParticipantsStateFacade) {
     effect((): void => {
       if (this.facade.left()) {
         this.left.emit();
+      }
+    });
+    effect((): void => {
+      const revision: number = this.facade.ownershipTransferRevision();
+      if (revision > this.handledOwnershipTransferRevision) {
+        this.handledOwnershipTransferRevision = revision;
+        this.ownershipTransferred.emit();
       }
     });
   }

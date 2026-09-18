@@ -70,6 +70,12 @@ public sealed class TripAdmissionServiceTests
         repository.InSequence(sequence)
             .Setup(item => item.EstablishMemberAsync(invitation.TripPlanId, fence, CancellationToken.None))
             .ReturnsAsync(TripAdmissionWriteOutcome.Success);
+        repository.InSequence(sequence)
+            .Setup(item => item.MarkInvitationAdmissionCompletedAsync(
+                invitation.Id,
+                fence,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         TripAdmissionService service = new(
             repository.Object,
             plans.Object,
@@ -102,6 +108,11 @@ public sealed class TripAdmissionServiceTests
             .ReturnsAsync(invitation);
         plans.Setup(item => item.GetAccessibleAsync("user-2", invitation.TripPlanId, CancellationToken.None))
             .ReturnsAsync(trip);
+        repository.Setup(item => item.MarkInvitationAdmissionCompletedAsync(
+                invitation.Id,
+                It.IsAny<TripMemberAdmissionFence>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         TripAdmissionService service = new(
             repository.Object,
             plans.Object,
@@ -132,6 +143,11 @@ public sealed class TripAdmissionServiceTests
         expiredClock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc.AddMinutes(3)));
         plans.Setup(item => item.GetAccessibleAsync("user-2", invitation.TripPlanId, CancellationToken.None))
             .ReturnsAsync(trip);
+        repository.Setup(item => item.MarkInvitationAdmissionCompletedAsync(
+                invitation.Id,
+                It.IsAny<TripMemberAdmissionFence>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         TripAdmissionService service = new(
             repository.Object,
             plans.Object,
@@ -143,7 +159,41 @@ public sealed class TripAdmissionServiceTests
 
         Assert.True(reconciled);
         plans.VerifyAll();
-        repository.VerifyNoOtherCalls();
+        repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileAsync_WhenExpiredFenceWasAlreadyRemoved_ShouldFinishInvitationCancellation()
+    {
+        TripInvitation invitation = CreateInvitation(TripInvitationStatus.Accepted);
+        Mock<ITripAdmissionRepository> repository = new(MockBehavior.Strict);
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<TimeProvider> expiredClock = new(MockBehavior.Strict);
+        expiredClock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc.AddMinutes(3)));
+        plans.Setup(item => item.GetAccessibleAsync("user-2", invitation.TripPlanId, CancellationToken.None))
+            .ReturnsAsync((TripPlan?)null);
+        repository.Setup(item => item.CancelExpiredFenceAsync(
+                invitation.TripPlanId,
+                It.IsAny<TripMemberAdmissionFence>(),
+                CancellationToken.None))
+            .ReturnsAsync(TripAdmissionWriteOutcome.Success);
+        repository.Setup(item => item.CancelInvitationAcceptanceAsync(
+                invitation.Id,
+                It.IsAny<TripMemberAdmissionFence>(),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        TripAdmissionService service = new(
+            repository.Object,
+            plans.Object,
+            Mock.Of<ITripInvitationSecurity>(),
+            Mock.Of<IUserRepository>(),
+            expiredClock.Object);
+
+        bool reconciled = await service.ReconcileAsync(invitation, CancellationToken.None);
+
+        Assert.True(reconciled);
+        repository.VerifyAll();
+        plans.VerifyAll();
     }
 
     [Fact]

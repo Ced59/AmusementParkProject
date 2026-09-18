@@ -142,6 +142,7 @@ trip-invitations
 ├── acceptanceOperationKeyHash?
 ├── acceptanceGeneration?
 ├── acceptanceLeaseExpiresAtUtc?
+├── admissionCompletedAtUtc? (sortie de la file de reprise)
 ├── acceptedAtUtc? / declinedAtUtc?
 ├── version
 └── retentionExpiresAtUtc
@@ -152,8 +153,8 @@ Indexes concernés :
 - `trip-plans`: `(members.userId, members.state, deletionState, updatedAt, _id)` ;
 - `trip-plans`: index partiel du fence par échéance et état ;
 - `trip-invitations`: `tokenHash` unique ;
-- `trip-invitations`: index de reprise par statut, échéance de lease et date de mise
-  à jour ;
+- `trip-invitations`: index de reprise par statut, marqueur d'admission terminée,
+  échéance de lease et date de mise à jour ;
 - `trip-invitations`: TTL de rétention, sans dépendre d'un nettoyage applicatif.
 
 La lecture privée utilise un `ElemMatch` exigeant simultanément le bon `userId` et
@@ -183,6 +184,7 @@ sequenceDiagram
     A->>P: ajouter Provisional + fence Applied atomiquement
     A->>I: Accepting -> Accepted, useCount = 1
     A->>P: Provisional -> Active + retrait du fence
+    A->>I: marquer l'admission terminée
     P-->>A: adhésion établie
     A-->>U: voyage rejoint
     Note over U,P: un retry avec la même opération retrouve le membre Active
@@ -193,7 +195,9 @@ sequenceDiagram
 
 Le point de linéarisation métier est la dernière écriture sur `trip-plans`. Avant
 elle, le membre reste `Provisional`; après elle, un retry constate le membre actif et
-renvoie le résultat sans rejouer les étapes. Le réconciliateur ne révoque jamais une
+renvoie le résultat sans rejouer les étapes. Le marqueur `admissionCompletedAtUtc`
+retire ensuite l'invitation terminale des lots de reprise sans participer à la
+décision métier. Le réconciliateur ne révoque jamais une
 invitation `Accepted` dont le membre est déjà actif, même après l'expiration de la
 lease technique.
 
@@ -201,7 +205,12 @@ La compensation expirée revalide `$$NOW` dans MongoDB puis ne révoque l'invita
 que si elle a effectivement retiré le fence de même génération. Si un autre nœud a
 établi le membre entre la lecture et la compensation, l'invitation reste acceptée.
 Une réponse perdue après la préparation retrouve également le même fence au retry ;
-un refus rejoué avec la même clé renvoie le résultat acquis.
+un refus rejoué avec la même clé renvoie le résultat acquis. Si le processus tombe
+après avoir retiré un fence expiré mais avant d'avoir révoqué l'invitation, le passage
+suivant reconnaît l'état déjà compensé et termine la révocation. Toute mutation
+ordinaire du voyage exige enfin l'absence de fence et ne réécrit jamais ce champ :
+une copie chargée avant l'admission ne peut donc effacer ni le membre provisoire ni
+le verrou de reprise.
 
 ## Séquence de transfert de propriété
 
@@ -221,6 +230,10 @@ sequenceDiagram
     M-->>A: document complet persisté ou conflit
     A-->>O: participants et capacités recalculés
 ```
+
+Après succès, le panneau participants demande à la vue d'ensemble de recharger le
+voyage. Les droits, la version et les actions visibles changent immédiatement, sans
+laisser d'anciens contrôles de propriétaire à l'écran.
 
 ## API et confidentialité
 

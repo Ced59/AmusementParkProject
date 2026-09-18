@@ -222,6 +222,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 & Builders<TripPlanDocument>.Filter.Eq(
                     static document => document.Version,
                     expectedVersion)
+                & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
                 & TripPlanMongoDefinitions.BuildChildEpochMutationFilter(
                     tripPlan.ChildMutationEpoch),
             TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
@@ -258,6 +259,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
             filters.Eq(static document => document.Id, tripPlan.Id.Value)
             & filters.Eq(static document => document.Version, expectedVersion)
             & filters.Eq(static document => document.DeletionState, TripDeletionState.None)
+            & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
             & filters.ElemMatch(
                 static document => document.Members,
                 member => member.UserId == normalizedActorUserId
@@ -311,7 +313,8 @@ public sealed class TripPlanRepository : ITripPlanRepository
                     filters.Eq(static document => document.Id, tripPlan.Id.Value)
                     & filters.Eq(static document => document.OwnerUserId, normalizedPreviousOwner)
                     & filters.Eq(static document => document.Version, expectedVersion)
-                    & filters.Eq(static document => document.DeletionState, TripDeletionState.None),
+                    & filters.Eq(static document => document.DeletionState, TripDeletionState.None)
+                    & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter(),
                     TripPlanMongoDefinitions.BuildDomainMutation(tripPlan)
                         .Set(static document => document.OwnerUserId, tripPlan.OwnerUserId)
                         .Set(static document => document.OwnerSlot, ownerSlot)
@@ -365,6 +368,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 & Builders<TripPlanDocument>.Filter.Eq(
                     static document => document.Version,
                     expectedVersion)
+                & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
                 & TripPlanMongoDefinitions.BuildNoActiveChildLeaseFilter(),
             TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
             cancellationToken: cancellationToken);
@@ -418,6 +422,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 & Builders<TripPlanDocument>.Filter.Eq(
                     static document => document.ChildMutationEpoch,
                     lease.ChildMutationEpoch)
+                & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
                 & TripPlanMongoDefinitions.BuildActiveChildLeaseIdentityFilter(lease),
             update,
             options,
@@ -466,6 +471,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
             filters.Eq(static document => document.Id, tripPlan.Id.Value)
             & filters.Eq(static document => document.Version, expectedVersion)
             & filters.Eq(static document => document.ChildMutationEpoch, lease.ChildMutationEpoch)
+            & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
             & filters.ElemMatch(
                 static document => document.Members,
                 member => member.UserId == normalizedActorUserId

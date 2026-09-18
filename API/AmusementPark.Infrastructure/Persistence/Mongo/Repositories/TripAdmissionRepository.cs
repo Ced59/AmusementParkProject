@@ -410,6 +410,25 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
         return active ? TripAdmissionWriteOutcome.AlreadyCompleted : TripAdmissionWriteOutcome.Conflict;
     }
 
+    public async Task MarkInvitationAdmissionCompletedAsync(
+        TripInvitationId invitationId,
+        TripMemberAdmissionFence fence,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(fence);
+        FilterDefinitionBuilder<TripInvitationDocument> filters = Builders<TripInvitationDocument>.Filter;
+        await this.invitations.UpdateOneAsync(
+            filters.Eq(static item => item.Id, invitationId.Value)
+            & filters.Eq(static item => item.Status, TripInvitationStatus.Accepted)
+            & filters.Eq(static item => item.AcceptanceOperationId, fence.OperationId)
+            & filters.Eq(static item => item.AcceptanceGeneration, fence.Generation)
+            & filters.Eq(static item => item.AdmissionCompletedAtUtc, null),
+            Builders<TripInvitationDocument>.Update
+                .CurrentDate(static item => item.AdmissionCompletedAtUtc)
+                .CurrentDate(static item => item.UpdatedAt),
+            cancellationToken: cancellationToken);
+    }
+
     public Task<TripAdmissionWriteOutcome> CancelFenceAsync(
         TripPlanId tripPlanId,
         TripMemberAdmissionFence fence,
@@ -452,9 +471,7 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
             return TripAdmissionWriteOutcome.Success;
         }
 
-        return await this.HasAdmittedMemberAsync(tripPlanId, fence, cancellationToken)
-            ? TripAdmissionWriteOutcome.AlreadyCompleted
-            : TripAdmissionWriteOutcome.Conflict;
+        return await this.ResolveCancellationReplayAsync(tripPlanId, fence, cancellationToken);
     }
 
     public async Task CancelInvitationAcceptanceAsync(
@@ -536,13 +553,20 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
     {
         ValidateLimit(limit);
         List<TripInvitationDocument> documents = await this.invitations.Find(
-                Builders<TripInvitationDocument>.Filter.In(
-                    static item => item.Status,
-                    new[] { TripInvitationStatus.Accepting, TripInvitationStatus.Accepted }))
+                BuildPendingAcceptanceFilter())
             .SortBy(static item => item.UpdatedAt)
             .Limit(limit)
             .ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    internal static FilterDefinition<TripInvitationDocument> BuildPendingAcceptanceFilter()
+    {
+        FilterDefinitionBuilder<TripInvitationDocument> filters =
+            Builders<TripInvitationDocument>.Filter;
+        return filters.Eq(static item => item.Status, TripInvitationStatus.Accepting)
+            | (filters.Eq(static item => item.Status, TripInvitationStatus.Accepted)
+                & filters.Eq(static item => item.AdmissionCompletedAtUtc, null));
     }
 
     public async Task<IReadOnlyCollection<TripPlan>> ListPendingAdmissionFencesAsync(
@@ -609,6 +633,55 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
                 filters.Eq(static plan => plan.Id, tripPlanId.Value)
                 & (provisional | active))
             .AnyAsync(cancellationToken);
+    }
+
+    private async Task<TripAdmissionWriteOutcome> ResolveCancellationReplayAsync(
+        TripPlanId tripPlanId,
+        TripMemberAdmissionFence fence,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        TripPlanDocument? current = await this.plans.Find(
+                filters.Eq(static plan => plan.Id, tripPlanId.Value))
+            .Project<TripPlanDocument>(Builders<TripPlanDocument>.Projection
+                .Include(static plan => plan.Id)
+                .Include(static plan => plan.Members)
+                .Include(static plan => plan.MemberAdmissionFence))
+            .FirstOrDefaultAsync(cancellationToken);
+        return ResolveCancellationReplay(current, fence);
+    }
+
+    internal static TripAdmissionWriteOutcome ResolveCancellationReplay(
+        TripPlanDocument? current,
+        TripMemberAdmissionFence fence)
+    {
+        ArgumentNullException.ThrowIfNull(fence);
+        if (current is null)
+        {
+            return TripAdmissionWriteOutcome.NotFound;
+        }
+
+        bool memberEstablished = current.Members.Any(member =>
+            string.Equals(member.UserId, fence.CandidateUserId, StringComparison.Ordinal)
+            && member.State == TripMembershipState.Active);
+        if (memberEstablished)
+        {
+            return TripAdmissionWriteOutcome.AlreadyCompleted;
+        }
+
+        TripMemberAdmissionFenceDocument? currentFence = current.MemberAdmissionFence;
+        bool sameFence = currentFence is not null
+            && string.Equals(currentFence.InvitationId, fence.InvitationId.Value, StringComparison.Ordinal)
+            && string.Equals(currentFence.OperationId, fence.OperationId, StringComparison.Ordinal)
+            && string.Equals(currentFence.CandidateUserId, fence.CandidateUserId, StringComparison.Ordinal)
+            && currentFence.Generation == fence.Generation;
+        bool provisionalMemberRemains = current.Members.Any(member => string.Equals(
+            member.AdmissionOperationId,
+            fence.OperationId,
+            StringComparison.Ordinal));
+        return !sameFence && !provisionalMemberRemains
+            ? TripAdmissionWriteOutcome.Success
+            : TripAdmissionWriteOutcome.Conflict;
     }
 
     private static FilterDefinition<TripPlanDocument> BuildFenceFilter(

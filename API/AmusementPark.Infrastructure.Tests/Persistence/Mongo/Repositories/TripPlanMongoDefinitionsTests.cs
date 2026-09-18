@@ -63,7 +63,7 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
-    public void BuildDomainMutation_WithoutAdmissionFence_ShouldRemoveTheMongoField()
+    public void BuildDomainMutation_ShouldNeverOverwriteTheAdmissionFence()
     {
         TripPlan trip = TripPlan.Create(
             TripPlanId.Parse("trip-1"),
@@ -78,8 +78,23 @@ public sealed class TripPlanMongoDefinitionsTests
             MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
             MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry)).AsBsonDocument;
 
-        Assert.True(rendered["$unset"].AsBsonDocument.Contains("memberAdmissionFence"));
         Assert.False(rendered["$set"].AsBsonDocument.Contains("memberAdmissionFence"));
+        Assert.False(rendered.Contains("$unset"));
+    }
+
+    [Fact]
+    public void BuildNoAdmissionInFlightFilter_ShouldAcceptOnlyMissingOrLegacyNullFences()
+    {
+        FilterDefinition<TripPlanDocument> filter =
+            TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter();
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("memberAdmissionFence", json, StringComparison.Ordinal);
+        Assert.Contains("$exists", json, StringComparison.Ordinal);
+        Assert.Contains("null", json, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]
@@ -147,6 +162,56 @@ public sealed class TripPlanMongoDefinitionsTests
         Assert.Contains("generation", json, StringComparison.Ordinal);
         Assert.Contains("$$NOW", json, StringComparison.Ordinal);
         Assert.Contains("$gte", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void ResolveCancellationReplay_WhenFenceAndProvisionalMemberAreAlreadyGone_ShouldResumeCleanup()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+        TripPlanDocument cleanedPlan = new()
+        {
+            Id = "trip-1",
+            Members = new List<TripMemberDocument>(),
+        };
+
+        TripAdmissionWriteOutcome outcome =
+            TripAdmissionRepository.ResolveCancellationReplay(cleanedPlan, fence);
+
+        Assert.Equal(TripAdmissionWriteOutcome.Success, outcome);
+    }
+
+    [Fact]
+    public void ResolveCancellationReplay_WhenMemberWasEstablished_ShouldPreserveAcceptance()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+        TripPlanDocument establishedPlan = new()
+        {
+            Id = "trip-1",
+            Members = new List<TripMemberDocument>
+            {
+                new()
+                {
+                    MemberId = "member-2",
+                    UserId = "user-2",
+                    State = TripMembershipState.Active,
+                },
+            },
+        };
+
+        TripAdmissionWriteOutcome outcome =
+            TripAdmissionRepository.ResolveCancellationReplay(establishedPlan, fence);
+
+        Assert.Equal(TripAdmissionWriteOutcome.AlreadyCompleted, outcome);
     }
 
     [Fact]

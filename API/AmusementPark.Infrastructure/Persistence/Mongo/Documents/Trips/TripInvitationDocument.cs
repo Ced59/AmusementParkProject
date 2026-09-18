@@ -103,6 +103,10 @@ public sealed class TripInvitationDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? AcceptanceLeaseExpiresAtUtc { get; set; }
 
+    [BsonElement("admissionCompletedAtUtc")]
+    [BsonIgnoreIfNull]
+    public DateTime? AdmissionCompletedAtUtc { get; set; }
+
     [BsonElement("version")]
     public long Version { get; set; }
 
