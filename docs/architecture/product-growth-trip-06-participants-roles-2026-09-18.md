@@ -234,7 +234,9 @@ Après une réponse ambiguë, même un clic sur l'action opposée rejoue cette d
 initiale : son identifiant ne peut pas être remplacé avant un résultat autoritatif.
 L'état conservé en mémoire porte la même frontière de compte que le stockage : une
 déconnexion suivie d'une autre connexion dans la page l'invalide sans supprimer la
-reprise réservée au premier compte.
+reprise réservée au premier compte. Une réponse réseau tardive porte aussi le compte
+initiateur : elle est ignorée si la session a changé avant son retour, puis la page
+quitte son attente afin que le compte courant puisse choisir sa propre action.
 
 ## Séquence de transfert de propriété
 
@@ -292,6 +294,9 @@ déjà accordées. La réponse de changement de droits ne peut donc pas réussir
 laisser une ancienne autorisation terminer une modification de candidat ou de jour.
 Un compte supprimé, désactivé ou bloqué ne peut pas devenir propriétaire : cette
 vérification précède toute mutation afin de ne jamais rendre le voyage ingérable.
+L'annulation d'une admission provisoire avance elle aussi la version du voyage. Une
+mutation chargée avant le nettoyage entre ainsi en conflit au lieu de réintroduire
+un membre provisoire déjà retiré.
 
 ## API et confidentialité
 

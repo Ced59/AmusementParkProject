@@ -258,6 +258,27 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildFenceCancellationUpdate_ShouldAdvanceTheRootVersion()
+    {
+        TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            3,
+            new DateTime(2027, 1, 2, 3, 4, 5, DateTimeKind.Utc));
+
+        BsonValue rendered = TripAdmissionRepository.BuildFenceCancellationUpdate(fence)
+            .Render(new RenderArgs<TripPlanDocument>(
+                MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+                MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        BsonDocument update = rendered.AsBsonDocument;
+
+        Assert.Equal(1L, update["$inc"]["version"].AsInt64);
+        Assert.Equal("operation-1", update["$pull"]["members"]["admissionOperationId"].AsString);
+        Assert.True(update["$unset"].AsBsonDocument.Contains("memberAdmissionFence"));
+    }
+
+    [Fact]
     public void ResolveCancellationReplay_WhenFenceAndProvisionalMemberAreAlreadyGone_ShouldResumeCleanup()
     {
         TripMemberAdmissionFence fence = TripMemberAdmissionFence.Prepare(

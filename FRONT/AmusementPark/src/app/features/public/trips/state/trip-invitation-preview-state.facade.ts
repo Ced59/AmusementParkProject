@@ -110,7 +110,7 @@ export class TripInvitationPreviewStateFacade {
   }
 
   private decide(accept: boolean, resumed: boolean = false): void {
-    if (!this.token || !this.isAuthenticated() || this.statusSignal() === 'deciding') {
+    if (!this.token || !this.isAuthenticated()) {
       return;
     }
 
@@ -122,6 +122,12 @@ export class TripInvitationPreviewStateFacade {
       this.acceptOperationId = null;
       this.declineOperationId = null;
       this.decisionUserId = null;
+      if (this.statusSignal() === 'deciding') {
+        this.statusSignal.set(this.previewSignal() ? 'ready' : 'unavailable');
+      }
+    }
+    if (this.statusSignal() === 'deciding') {
+      return;
     }
     if (!resumed) {
       if (!this.acceptOperationId && !this.declineOperationId) {
@@ -162,12 +168,14 @@ export class TripInvitationPreviewStateFacade {
     this.statusSignal.set('deciding');
     const decisionGeneration: number = this.requestGeneration;
     const decisionToken: string = this.token;
+    const decisionUserId: string = currentUserId;
     const decision$ = accept
       ? this.data.accept(decisionToken, operationId)
       : this.data.decline(decisionToken, operationId);
     decision$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result): void => {
-        if (decisionGeneration !== this.requestGeneration || decisionToken !== this.token) {
+        if (!this.isCurrentDecision(decisionGeneration, decisionToken, decisionUserId)) {
+          this.releaseInterruptedDecision(decisionGeneration, decisionToken);
           return;
         }
         this.tripPlanIdSignal.set(result.tripPlanId);
@@ -178,14 +186,34 @@ export class TripInvitationPreviewStateFacade {
         this.statusSignal.set(accept ? 'accepted' : 'declined');
       },
       error: (): void => {
-        if (decisionGeneration === this.requestGeneration && decisionToken === this.token) {
-          if (resumed && this.previewSignal() === null) {
-            this.loadPreview(decisionToken, decisionGeneration, 'decision-error');
-          } else {
-            this.statusSignal.set('decision-error');
-          }
+        if (!this.isCurrentDecision(decisionGeneration, decisionToken, decisionUserId)) {
+          this.releaseInterruptedDecision(decisionGeneration, decisionToken);
+          return;
+        }
+        if (resumed && this.previewSignal() === null) {
+          this.loadPreview(decisionToken, decisionGeneration, 'decision-error');
+        } else {
+          this.statusSignal.set('decision-error');
         }
       }
     });
+  }
+
+  private isCurrentDecision(
+    decisionGeneration: number,
+    decisionToken: string,
+    decisionUserId: string
+  ): boolean {
+    return decisionGeneration === this.requestGeneration
+      && decisionToken === this.token
+      && this.authService.getUserIdFromToken() === decisionUserId;
+  }
+
+  private releaseInterruptedDecision(decisionGeneration: number, decisionToken: string): void {
+    if (decisionGeneration === this.requestGeneration
+      && decisionToken === this.token
+      && this.statusSignal() === 'deciding') {
+      this.statusSignal.set('decision-error');
+    }
   }
 }

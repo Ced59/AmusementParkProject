@@ -468,12 +468,7 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
 
         UpdateResult result = await this.plans.UpdateOneAsync(
             filter,
-            Builders<TripPlanDocument>.Update
-                .PullFilter(
-                    static plan => plan.Members,
-                    member => member.AdmissionOperationId == fence.OperationId)
-                .Unset(static plan => plan.MemberAdmissionFence)
-                .CurrentDate(static plan => plan.UpdatedAt),
+            BuildFenceCancellationUpdate(fence),
             cancellationToken: cancellationToken);
         if (result.ModifiedCount == 1)
         {
@@ -481,6 +476,19 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
         }
 
         return await this.ResolveCancellationReplayAsync(tripPlanId, fence, cancellationToken);
+    }
+
+    internal static UpdateDefinition<TripPlanDocument> BuildFenceCancellationUpdate(
+        TripMemberAdmissionFence fence)
+    {
+        ArgumentNullException.ThrowIfNull(fence);
+        return Builders<TripPlanDocument>.Update
+            .PullFilter(
+                static plan => plan.Members,
+                member => member.AdmissionOperationId == fence.OperationId)
+            .Unset(static plan => plan.MemberAdmissionFence)
+            .Inc(static plan => plan.Version, 1)
+            .CurrentDate(static plan => plan.UpdatedAt);
     }
 
     public async Task CancelInvitationAcceptanceAsync(
