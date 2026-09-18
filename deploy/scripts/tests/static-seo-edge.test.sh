@@ -142,6 +142,7 @@ fi
 invitation_token='opaque-secret-that-must-never-reach-access-logs'
 read_response "/fr/trip-invitations/${invitation_token}/?from=email" >/dev/null
 read_response "/api/public/trip-invitations/${invitation_token}/preview" >/dev/null
+read_response "/api/public/trip-invitations/${invitation_token}/preview/?from=email" >/dev/null
 sleep 1
 edge_logs="$(docker logs "${container_name}" 2>&1)"
 if grep -Fq "${invitation_token}" <<< "${edge_logs}"; then
@@ -272,6 +273,7 @@ docker stop "${front_container_name}" >/dev/null
 docker exec "${container_name}" /bin/sh -ec '
   wget -S -O /dev/null "http://127.0.0.1:4000/fr/trip-invitations/$1/?from=email" >/dev/null 2>&1 || true
   wget -S -O /dev/null "http://127.0.0.1:4000/api/public/trip-invitations/$1/preview" >/dev/null 2>&1 || true
+  wget -S -O /dev/null "http://127.0.0.1:4000/api/public/trip-invitations/$1/preview/" >/dev/null 2>&1 || true
 ' sh "${upstream_failure_token}"
 sleep 1
 edge_logs="$(docker logs "${container_name}" 2>&1)"

@@ -27,4 +27,16 @@ public sealed class SensitiveRequestPathSanitizerTests
 
         Assert.Equal(path, result);
     }
+
+    [Theory]
+    [InlineData("https://amusement-parks.fun/fr/trip-invitations/live-secret?from=email", "https://amusement-parks.fun/fr/trip-invitations/[REDACTED]")]
+    [InlineData("https://amusement-parks.fun/api/public/trip-invitations/live-secret/preview/?source=page", "https://amusement-parks.fun/api/public/trip-invitations/[REDACTED]/preview/")]
+    [InlineData("/de/trip-invitations/live-secret/", "/de/trip-invitations/[REDACTED]/")]
+    [InlineData("https://cdn.example.com/app.js", "https://cdn.example.com/app.js")]
+    public void SanitizeUrl_ShouldRedactInvitationTokensOnly(string value, string expected)
+    {
+        string? result = SensitiveRequestPathSanitizer.SanitizeUrl(value);
+
+        Assert.Equal(expected, result);
+    }
 }
