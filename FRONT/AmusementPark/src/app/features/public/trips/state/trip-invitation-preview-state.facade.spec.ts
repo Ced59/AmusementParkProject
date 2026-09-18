@@ -166,6 +166,30 @@ describe('TripInvitationPreviewStateFacade', () => {
     expect(facade.status()).toBe('decision-error');
   });
 
+  it('retries the original decision after an ambiguous error instead of replacing it', () => {
+    loggedIn = true;
+    (data.accept as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(throwError(() => ({ status: 503 })))
+      .mockReturnValueOnce(of({ tripPlanId: 'trip-1', wasReplayed: true }));
+    facade.load('opaque-token');
+
+    facade.accept();
+    expect(facade.status()).toBe('decision-error');
+
+    facade.decline();
+
+    expect(data.accept).toHaveBeenNthCalledWith(1, 'opaque-token', 'operation-1');
+    expect(data.accept).toHaveBeenNthCalledWith(2, 'opaque-token', 'operation-1');
+    expect(data.decline).not.toHaveBeenCalled();
+    expect(decisionOperations.write).toHaveBeenLastCalledWith(
+      'opaque-token',
+      'user-1',
+      'accept',
+      'operation-1'
+    );
+    expect(facade.status()).toBe('accepted');
+  });
+
   it('does not resume another account decision in a shared tab', () => {
     loggedIn = true;
     currentUserId = 'user-2';

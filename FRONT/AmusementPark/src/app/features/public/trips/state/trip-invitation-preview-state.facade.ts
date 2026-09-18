@@ -116,16 +116,20 @@ export class TripInvitationPreviewStateFacade {
     if (!currentUserId) {
       return;
     }
-    if (!resumed && !this.acceptOperationId && !this.declineOperationId) {
-      const storedOperation = this.decisionOperations.read(this.token, currentUserId);
-      if (storedOperation) {
-        this.acceptOperationId = storedOperation.decision === 'accept'
-          ? storedOperation.operationId
-          : null;
-        this.declineOperationId = storedOperation.decision === 'decline'
-          ? storedOperation.operationId
-          : null;
-        this.decide(storedOperation.decision === 'accept', true);
+    if (!resumed) {
+      if (!this.acceptOperationId && !this.declineOperationId) {
+        const storedOperation = this.decisionOperations.read(this.token, currentUserId);
+        if (storedOperation) {
+          this.acceptOperationId = storedOperation.decision === 'accept'
+            ? storedOperation.operationId
+            : null;
+          this.declineOperationId = storedOperation.decision === 'decline'
+            ? storedOperation.operationId
+            : null;
+        }
+      }
+      if (this.acceptOperationId || this.declineOperationId) {
+        this.decide(this.acceptOperationId !== null, true);
         return;
       }
     }

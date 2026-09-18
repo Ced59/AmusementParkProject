@@ -230,6 +230,8 @@ marqueur ; une erreur ambiguë le conserve pour un nouveau retry et recharge
 explicitement l'aperçu afin de ne jamais laisser une page vide. Si la connexion se
 termine dans la modale sans recharger la route, la première action relit ce marqueur
 lié au compte et reprend la décision déjà engagée avant de générer une autre clé.
+Après une réponse ambiguë, même un clic sur l'action opposée rejoue cette décision
+initiale : son identifiant ne peut pas être remplacé avant un résultat autoritatif.
 
 ## Séquence de transfert de propriété
 
