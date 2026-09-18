@@ -18,6 +18,12 @@
         </app-ui-chip>
       }
     </div>
+    @if (facade.trip(); as trip) {
+      <a appUiButton="primary" [routerLink]="['/', currentLanguage(), 'profile', 'trips', trip.tripPlanId, 'preferences']">
+        <i class="pi pi-heart" aria-hidden="true"></i>
+        <span>{{ 'trips.preferences.open' | translate }}</span>
+      </a>
+    }
   </header>
 
   @if (facade.status() === 'loading') {

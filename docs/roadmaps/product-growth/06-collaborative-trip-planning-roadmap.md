@@ -230,6 +230,33 @@ la redirection.
 Les preuves, schémas MongoDB et diagrammes sont détaillés dans
 [`product-growth-trip-06-participants-roles-2026-09-18.md`](../../architecture/product-growth-trip-06-participants-roles-2026-09-18.md).
 
+### État de `TRIP-07` au 18 septembre 2026
+
+Chaque membre peut désormais qualifier les attractions des parcs encore retenus
+dans le voyage : indispensable, souhaitée, facultative, pas pour lui ou encore
+indécise. Une raison facultative et structurée peut préciser un choix sans ouvrir
+un champ de texte sensible. Les préférences restent strictement personnelles :
+un propriétaire ne choisit jamais pour un autre participant et un lecteur ne voit
+aucun contrôle d'écriture.
+
+La matrice responsive regroupe les attractions par parc, affiche leur image
+principale, propose recherche et filtres, et conserve les modifications localement
+jusqu'à un enregistrement explicite. Un enregistrement isolé utilise une commande
+fine ; plusieurs changements sont envoyés par le contrat batch. Les conflits de
+version n'écrasent jamais un choix plus récent. Les noms de parc et d'attraction
+sont résolus côté serveur : un identifiant technique n'est jamais présenté comme
+un libellé.
+
+MongoDB garantit l'unicité `(TripPlanId, UserId, ParkItemId)`. Les écritures
+réutilisent la lease et l'epoch du voyage afin qu'un rôle retiré ne puisse plus
+voter avec une autorisation ancienne. Les préférences d'un membre sont supprimées
+physiquement après son départ, et celles de tout le groupe sont purgées avec le
+voyage. La nouvelle collection et ses indexes sont créés par l'initialisation
+existante ; aucune migration manuelle MongoDB n'est requise.
+
+Les preuves, le schéma MongoDB et les diagrammes sont détaillés dans
+[`product-growth-trip-07-item-preferences-2026-09-18.md`](../../architecture/product-growth-trip-07-item-preferences-2026-09-18.md).
+
 ## 1. Vision produit
 
 Un groupe doit pouvoir transformer des envies dispersées en programme commun :
@@ -792,7 +819,7 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 | `TRIP-04` | UI individuelle + wishlist | Valeur sans invitation — implémenté le 18 septembre 2026 |
 | `TRIP-05` | Invitations opaques | Preview minimisé — implémenté le 18 septembre 2026 |
 | `TRIP-06` | Participants/rôles | Permissions testées — implémenté le 18 septembre 2026 |
-| `TRIP-07` | Préférences par élément | Unicité et batch |
+| `TRIP-07` | Préférences par élément | Unicité et batch — implémenté le 18 septembre 2026 |
 | `TRIP-08` | Synthèse/conflits | Pas de majorité aveugle |
 | `TRIP-09` | Validation calendrier/trajet | Faits distingués des choix |
 | `TRIP-10` | Audit/concurrence | Modifications reconstituables |

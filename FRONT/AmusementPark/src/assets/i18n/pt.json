@@ -1580,6 +1580,55 @@
         "comparator": "Adicionado a partir do comparador"
       }
     },
+    "preferences": {
+      "open": "Escolher as minhas atrações",
+      "back": "Voltar à viagem",
+      "kicker": "Vontades pessoais",
+      "description": "Indica o que queres mesmo fazer. As escolhas continuam a ser tuas e depois ajudarão o grupo a respeitar cada pessoa.",
+      "summary": "Resumo das minhas preferências",
+      "summaryMust": "{{count}} imperdível/is",
+      "summaryWant": "{{count}} vontade(s)",
+      "summaryUnknown": "{{count}} sem opinião",
+      "readonly": "O teu papel permite consultar estas escolhas, mas não alterá-las.",
+      "chooseFor": "Escolher uma preferência para {{name}}",
+      "reasonLabel": "Porquê esta escolha? (facultativo)",
+      "noReason": "Sem motivo particular",
+      "reasonReadonly": "Motivo: {{reason}}",
+      "empty": "Adiciona primeiro um parque à viagem para descobrir as atrações.",
+      "noMatch": "Nenhuma atração corresponde a estes filtros.",
+      "pending": "{{count}} escolha(s) por guardar",
+      "pendingHint": "Explora livremente e depois guarda tudo de uma vez.",
+      "discard": "Anular alterações",
+      "save": "Guardar as minhas escolhas",
+      "filters": {
+        "search": "Pesquisar",
+        "searchPlaceholder": "Nome de uma atração ou parque",
+        "park": "Parque",
+        "allParks": "Todos os parques",
+        "preference": "Preferência",
+        "allPreferences": "Todas as preferências"
+      },
+      "levels": {
+        "mustdo": "Imperdível",
+        "wanttodo": "Quero fazer",
+        "optional": "Talvez",
+        "notforme": "Não é para mim",
+        "unknown": "Sem opinião"
+      },
+      "reasons": {
+        "sensations": "Emoções",
+        "height": "Altura ou acesso",
+        "alreadydone": "Já fiz",
+        "unavailable": "Indisponível",
+        "other": "Outro motivo"
+      },
+      "feedback": {
+        "loadError": "Não foi possível carregar as tuas preferências.",
+        "saveError": "Não foi possível guardar as tuas escolhas.",
+        "conflict": "A viagem ou uma escolha mudou. Recarrega antes de tentares novamente.",
+        "saved": "As tuas escolhas foram guardadas."
+      }
+    },
     "days": {
       "kicker": "O teu programa",
       "title": "Constrói a viagem dia a dia",
@@ -4844,7 +4893,8 @@
     "success": "Sucesso",
     "error": "Erro",
     "warning": "Atenção",
-    "unexpectedError": "Ocorreu um erro inesperado."
+    "unexpectedError": "Ocorreu um erro inesperado.",
+    "cancel": "Cancelar"
   },
   "measurementSystem": {
     "label": "Sistema de medidas",

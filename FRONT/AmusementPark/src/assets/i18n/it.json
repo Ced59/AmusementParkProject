@@ -1580,6 +1580,55 @@
         "comparator": "Aggiunto dal comparatore"
       }
     },
+    "preferences": {
+      "open": "Scegliere le mie attrazioni",
+      "back": "Torna al viaggio",
+      "kicker": "Desideri personali",
+      "description": "Indica cosa vuoi davvero fare. Le tue scelte restano tue e aiuteranno poi il gruppo a rispettare le preferenze di tutti.",
+      "summary": "Riepilogo delle mie preferenze",
+      "summaryMust": "{{count}} imperdibile/i",
+      "summaryWant": "{{count}} desiderio/i",
+      "summaryUnknown": "{{count}} senza opinione",
+      "readonly": "Il tuo ruolo consente di vedere queste scelte, ma non di modificarle.",
+      "chooseFor": "Scegli una preferenza per {{name}}",
+      "reasonLabel": "Perché questa scelta? (facoltativo)",
+      "noReason": "Nessun motivo particolare",
+      "reasonReadonly": "Motivo: {{reason}}",
+      "empty": "Aggiungi prima un parco al viaggio per scoprirne le attrazioni.",
+      "noMatch": "Nessuna attrazione corrisponde a questi filtri.",
+      "pending": "{{count}} scelta/e da salvare",
+      "pendingHint": "Esplora liberamente e poi salva tutto in una volta.",
+      "discard": "Annulla le modifiche",
+      "save": "Salva le mie scelte",
+      "filters": {
+        "search": "Cerca",
+        "searchPlaceholder": "Nome di un’attrazione o di un parco",
+        "park": "Parco",
+        "allParks": "Tutti i parchi",
+        "preference": "Preferenza",
+        "allPreferences": "Tutte le preferenze"
+      },
+      "levels": {
+        "mustdo": "Imperdibile",
+        "wanttodo": "Mi interessa",
+        "optional": "Forse",
+        "notforme": "Non fa per me",
+        "unknown": "Senza opinione"
+      },
+      "reasons": {
+        "sensations": "Adrenalina",
+        "height": "Altezza o accesso",
+        "alreadydone": "Già fatta",
+        "unavailable": "Non disponibile",
+        "other": "Altro motivo"
+      },
+      "feedback": {
+        "loadError": "Non è stato possibile caricare le tue preferenze.",
+        "saveError": "Non è stato possibile salvare le tue scelte.",
+        "conflict": "Il viaggio o una scelta è cambiato. Ricarica prima di riprovare.",
+        "saved": "Le tue scelte sono state salvate."
+      }
+    },
     "days": {
       "kicker": "Il tuo programma",
       "title": "Costruisci il viaggio giorno per giorno",
@@ -4844,7 +4893,8 @@
     "success": "Successo",
     "error": "Errore",
     "warning": "Attenzione",
-    "unexpectedError": "Si è verificato un errore imprevisto."
+    "unexpectedError": "Si è verificato un errore imprevisto.",
+    "cancel": "Annulla"
   },
   "measurementSystem": {
     "label": "Sistema di misura",

@@ -1580,6 +1580,55 @@
         "comparator": "Dodano z porównywarki"
       }
     },
+    "preferences": {
+      "open": "Wybierz moje atrakcje",
+      "back": "Wróć do wyjazdu",
+      "kicker": "Osobiste oczekiwania",
+      "description": "Zaznacz, czego naprawdę chcesz doświadczyć. Twoje wybory pozostają twoje i później pomogą grupie uwzględnić każdą osobę.",
+      "summary": "Podsumowanie moich preferencji",
+      "summaryMust": "{{count}} obowiązkowe",
+      "summaryWant": "{{count}} chcę",
+      "summaryUnknown": "{{count}} bez zdania",
+      "readonly": "Twoja rola pozwala oglądać te wybory, ale nie je zmieniać.",
+      "chooseFor": "Wybierz preferencję dla {{name}}",
+      "reasonLabel": "Dlaczego? (opcjonalnie)",
+      "noReason": "Bez szczególnego powodu",
+      "reasonReadonly": "Powód: {{reason}}",
+      "empty": "Najpierw dodaj park do wyjazdu, aby zobaczyć jego atrakcje.",
+      "noMatch": "Żadna atrakcja nie pasuje do tych filtrów.",
+      "pending": "{{count}} wybór/wybory do zapisania",
+      "pendingHint": "Przeglądaj swobodnie, a potem zapisz wszystko naraz.",
+      "discard": "Odrzuć zmiany",
+      "save": "Zapisz moje wybory",
+      "filters": {
+        "search": "Szukaj",
+        "searchPlaceholder": "Nazwa atrakcji lub parku",
+        "park": "Park",
+        "allParks": "Wszystkie parki",
+        "preference": "Preferencja",
+        "allPreferences": "Wszystkie preferencje"
+      },
+      "levels": {
+        "mustdo": "Koniecznie",
+        "wanttodo": "Chcę",
+        "optional": "Może",
+        "notforme": "Nie dla mnie",
+        "unknown": "Bez zdania"
+      },
+      "reasons": {
+        "sensations": "Emocje",
+        "height": "Wzrost lub dostęp",
+        "alreadydone": "Już zaliczone",
+        "unavailable": "Niedostępne",
+        "other": "Inny powód"
+      },
+      "feedback": {
+        "loadError": "Nie udało się wczytać twoich preferencji.",
+        "saveError": "Nie udało się zapisać twoich wyborów.",
+        "conflict": "Wyjazd lub jeden z wyborów uległ zmianie. Odśwież stronę przed ponowną próbą.",
+        "saved": "Twoje wybory zostały zapisane."
+      }
+    },
     "days": {
       "kicker": "Twój program",
       "title": "Zaplanuj wyjazd dzień po dniu",
@@ -4844,7 +4893,8 @@
     "success": "Sukces",
     "error": "Błąd",
     "warning": "Uwaga",
-    "unexpectedError": "Wystąpił nieoczekiwany błąd."
+    "unexpectedError": "Wystąpił nieoczekiwany błąd.",
+    "cancel": "Anuluj"
   },
   "measurementSystem": {
     "label": "System miar",

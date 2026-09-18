@@ -13,7 +13,8 @@
     "success": "Succès",
     "error": "Erreur",
     "warning": "Attention",
-    "unexpectedError": "Une erreur inattendue est survenue."
+    "unexpectedError": "Une erreur inattendue est survenue.",
+    "cancel": "Annuler"
   },
   "measurementSystem": {
     "label": "Système d'unités",

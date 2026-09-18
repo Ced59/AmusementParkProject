@@ -13,7 +13,8 @@
     "success": "Éxito",
     "error": "Error",
     "warning": "Atención",
-    "unexpectedError": "Se produjo un error inesperado."
+    "unexpectedError": "Se produjo un error inesperado.",
+    "cancel": "Cancelar"
   },
   "measurementSystem": {
     "label": "Sistema de medidas",

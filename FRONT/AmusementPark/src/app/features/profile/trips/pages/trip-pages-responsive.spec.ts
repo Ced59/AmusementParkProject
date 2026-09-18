@@ -3,6 +3,7 @@ import { TripInvitationPanelComponent } from '../components/trip-invitation-pane
 import { TripParticipantPanelComponent } from '../components/trip-participant-panel/trip-participant-panel.component';
 import { TripListPageComponent } from './trip-list-page/trip-list-page.component';
 import { TripOverviewPageComponent } from './trip-overview-page/trip-overview-page.component';
+import { TripPreferencesPageComponent } from './trip-preferences-page/trip-preferences-page.component';
 
 describe('Trip planning responsive contract', () => {
   it('contains the trip list inside narrow mobile viewports', () => {
@@ -61,5 +62,18 @@ describe('Trip planning responsive contract', () => {
     expect(styles).toContain('@media (max-width: 42rem)');
     expect(styles).toContain('grid-template-columns: 3rem minmax(0, 1fr)');
     expect(styles).toContain('@media (max-width: 22.5rem)');
+  });
+
+  it('keeps preference filters, cards and the save bar inside narrow viewports', () => {
+    const styles: string = (
+      TripPreferencesPageComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('overflow-x: clip');
+    expect(styles).toContain('minmax(min(100%, 30rem), 1fr)');
+    expect(styles).toContain('@media (max-width: 36rem)');
+    expect(styles).toContain('grid-template-columns: repeat(2, minmax(0, 1fr))');
+    expect(styles).toContain('bottom: calc(5.75rem + env(safe-area-inset-bottom))');
+    expect(styles).toContain('padding-bottom: calc(11rem + env(safe-area-inset-bottom))');
   });
 });

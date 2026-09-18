@@ -75,7 +75,7 @@ describe('profile routes', () => {
   });
 
   it('keeps the private trip list and detail lazy, authenticated and ahead of the profile root', () => {
-    const paths: string[] = ['trips', 'trips/:tripId'];
+    const paths: string[] = ['trips', 'trips/:tripId', 'trips/:tripId/preferences'];
     const rootIndex: number = PROFILE_ROUTES.findIndex((candidate: Route): boolean => candidate.path === '');
 
     paths.forEach((path: string): void => {

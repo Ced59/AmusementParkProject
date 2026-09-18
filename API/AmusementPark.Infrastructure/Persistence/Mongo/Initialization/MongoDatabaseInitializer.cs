@@ -948,6 +948,15 @@ private readonly IMongoDatabase database;
             TripDayPlanRepository.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.TripItemPreferencesCollectionName,
+            cancellationToken);
+        IMongoCollection<TripItemPreferenceDocument> tripItemPreferences =
+            this.database.GetCollection<TripItemPreferenceDocument>(
+                this.settings.TripItemPreferencesCollectionName);
+        await tripItemPreferences.Indexes.CreateManyAsync(
+            TripPreferenceRepository.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.TripInvitationsCollectionName,
             cancellationToken);
         IMongoCollection<TripInvitationDocument> tripInvitations =

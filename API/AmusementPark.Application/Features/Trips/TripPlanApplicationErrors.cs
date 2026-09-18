@@ -113,4 +113,19 @@ public static class TripPlanApplicationErrors
             "trip.day.not-found",
             "The trip day was not found.");
     }
+
+    public static ApplicationError PreferenceItemNotAvailable()
+    {
+        return ApplicationError.NotFound(
+            "trip.preference.item-not-available",
+            "The attraction is not available among the trip's candidate parks.");
+    }
+
+    public static ApplicationError PreferenceChangedConcurrently(long? currentVersion)
+    {
+        return ApplicationError.Conflict(
+            "trip.preference.changed-concurrently",
+            "The preference changed before this action completed.",
+            currentVersion);
+    }
 }
