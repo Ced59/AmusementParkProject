@@ -151,6 +151,9 @@ export class TripInvitationsStateFacade {
       next: (): void => {
         this.invitationsSignal.update((items: TripInvitationSummary[]): TripInvitationSummary[] =>
           items.filter((item: TripInvitationSummary): boolean => item.invitationId !== invitation.invitationId));
+        if (this.creationSignal()?.invitationId === invitation.invitationId) {
+          this.creationSignal.set(null);
+        }
         this.statusSignal.set('idle');
       },
       error: (): void => this.statusSignal.set('error')

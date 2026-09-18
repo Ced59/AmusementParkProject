@@ -100,7 +100,7 @@
           <h3>{{ 'trips.invitations.shareNow' | translate }}</h3>
           <p>{{ 'trips.invitations.oneUse' | translate }}</p>
         </div>
-        <a class="invitation-created__link" [routerLink]="invitationPath()">{{ invitationUrl() }}</a>
+        <a class="invitation-created__link" [href]="invitationUrl()" rel="noreferrer">{{ invitationUrl() }}</a>
         <div class="invitation-created__actions">
           <button type="button" appUiButton="primary" (click)="copyInvitation()">
             <i class="pi pi-copy" aria-hidden="true"></i>

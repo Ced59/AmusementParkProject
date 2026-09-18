@@ -40,7 +40,7 @@ describe('TripInvitationsStateFacade', () => {
     facade.load('trip-1', 4);
   });
 
-  it('creates a one-use link with the chosen role and optional target', () => {
+  it('creates an opaque link with the chosen role and optional target', () => {
     facade.create('Editor', 24, ' guest@example.com ');
 
     expect(data.create).toHaveBeenCalledWith('trip-1', {
@@ -63,6 +63,15 @@ describe('TripInvitationsStateFacade', () => {
 
     expect(data.revoke).toHaveBeenCalledWith('trip-1', 'invitation-1', 2, 'operation-1');
     expect(facade.invitations()).toEqual([]);
+  });
+
+  it('hides the newly created link when that invitation is revoked', () => {
+    const invitation: TripInvitationSummary = createSummary();
+    facade.create('Participant', 24, '');
+
+    facade.revoke(invitation);
+
+    expect(facade.creation()).toBeNull();
   });
 
   it('reuses the idempotency key when the same creation is retried after an ambiguous failure', () => {

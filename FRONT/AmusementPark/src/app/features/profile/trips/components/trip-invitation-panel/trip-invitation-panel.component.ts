@@ -1,6 +1,5 @@
 import { DOCUMENT, DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, Input, OnChanges, SimpleChanges, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import {
@@ -20,7 +19,6 @@ import { TripInvitationsStateFacade } from '../../state/trip-invitations-state.f
   providers: [TripInvitationsStateFacade],
   imports: [
     DatePipe,
-    RouterLink,
     TranslateModule,
     UiButtonDirective,
     UiChipComponent,
@@ -59,11 +57,6 @@ export class TripInvitationPanelComponent implements OnChanges {
 
   protected revoke(invitation: TripInvitationSummary): void {
     this.facade.revoke(invitation);
-  }
-
-  protected invitationPath(): string[] {
-    const token: string = this.facade.creation()?.token ?? '';
-    return ['/', this.currentLanguage, 'trip-invitations', token];
   }
 
   protected invitationUrl(): string {
