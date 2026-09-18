@@ -73,7 +73,9 @@
               {{ 'trips.actions.clearDates' | translate }}
             </button>
           </div>
-          @if (!canClearDates()) {
+          @if (hasUnsavedDayDraft()) {
+            <p class="trip-dates__validation">{{ 'trips.dates.unsavedDayBeforeClear' | translate }}</p>
+          } @else if (!canClearDates()) {
             <p class="trip-dates__validation">{{ 'trips.dates.clearBlocked' | translate }}</p>
           }
         </div>
@@ -106,7 +108,9 @@
           } @else if (datesInvalid()) {
             <p class="trip-dates__validation" role="alert">{{ 'trips.feedback.invalidDates' | translate }}</p>
           }
-          @if (dateDependenciesOutsideDraft()) {
+          @if (unsavedDayDraftOutsideRange()) {
+            <p class="trip-dates__validation" role="alert">{{ 'trips.dates.unsavedDayOutsideRange' | translate }}</p>
+          } @else if (dateDependenciesOutsideDraft()) {
             <p class="trip-dates__validation" role="alert">{{ 'trips.dates.dependenciesOutsideRange' | translate }}</p>
           }
           <div class="trip-dates__actions">
@@ -119,7 +123,9 @@
               </button>
             }
           </div>
-          @if (facade.trip()?.dateProposal?.kind !== 'None' && !canClearDates()) {
+          @if (facade.trip()?.dateProposal?.kind !== 'None' && hasUnsavedDayDraft()) {
+            <p class="trip-dates__validation">{{ 'trips.dates.unsavedDayBeforeClear' | translate }}</p>
+          } @else if (facade.trip()?.dateProposal?.kind !== 'None' && !canClearDates()) {
             <p class="trip-dates__validation">{{ 'trips.dates.clearBlocked' | translate }}</p>
           }
         </div>

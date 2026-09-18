@@ -195,8 +195,17 @@ export class TripOverviewPageComponent implements OnInit {
 
   protected canClearDates(): boolean {
     const program: TripProgram = this.facade.program();
-    return program.days.length === 0
+    return !this.hasUnsavedDayDraft()
+      && program.days.length === 0
       && program.candidates.every((candidate: TripParkCandidate): boolean => candidate.candidateDates.length === 0);
+  }
+
+  protected hasUnsavedDayDraft(): boolean {
+    const savedDays: Map<string, TripDayPlan> = new Map(
+      this.facade.program().days.map((day: TripDayPlan): [string, TripDayPlan] => [day.localDate, day])
+    );
+    return Object.entries(this.dayDrafts()).some(([localDate, draft]: [string, TripDayDraft]): boolean =>
+      TripOverviewPageComponent.dayDraftDiffersFromSaved(draft, savedDays.get(localDate)));
   }
 
   protected dateDependenciesOutsideDraft(): boolean {
@@ -207,11 +216,33 @@ export class TripOverviewPageComponent implements OnInit {
     }
 
     const program: TripProgram = this.facade.program();
-    return program.days.some((day: TripDayPlan): boolean =>
+    return this.unsavedDayDraftOutsideRange()
+      || program.days.some((day: TripDayPlan): boolean =>
       day.localDate < normalizedStart || day.localDate > normalizedEnd)
       || program.candidates.some((candidate: TripParkCandidate): boolean =>
         candidate.candidateDates.some((date: string): boolean =>
           date < normalizedStart || date > normalizedEnd));
+  }
+
+  protected unsavedDayDraftOutsideRange(): boolean {
+    const normalizedStart: string = this.startDate().trim();
+    const normalizedEnd: string = this.endDate().trim() || normalizedStart;
+    if (!normalizedStart || !areTripDateInputsValid(normalizedStart, normalizedEnd)) {
+      return false;
+    }
+
+    const savedDays: Map<string, TripDayPlan> = new Map(
+      this.facade.program().days.map((day: TripDayPlan): [string, TripDayPlan] => [day.localDate, day])
+    );
+    return Object.entries(this.dayDrafts()).some(([localDate, draft]: [string, TripDayDraft]): boolean =>
+      (localDate < normalizedStart || localDate > normalizedEnd)
+      && TripOverviewPageComponent.dayDraftDiffersFromSaved(draft, savedDays.get(localDate)));
+  }
+
+  private static dayDraftDiffersFromSaved(draft: TripDayDraft, saved: TripDayPlan | undefined): boolean {
+    return draft.candidateId !== (saved?.parkCandidateId ?? '')
+      || draft.arrivalTime !== (saved?.desiredArrivalTime ?? '')
+      || draft.note.trim() !== (saved?.groupNote ?? '');
   }
 
   protected currentProposedDates(): string[] {

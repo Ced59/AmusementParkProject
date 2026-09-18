@@ -1435,6 +1435,8 @@
       "explicitConversion": "Dieser Vorschlag bleibt unverändert, bis du ausdrücklich feste Daten wählst oder ihn löschst.",
       "clearBlocked": "Lösche zuerst alle gespeicherten Tage und Datumsbeschränkungen der Parks, bevor du die Reisedaten löschst.",
       "dependenciesOutsideRange": "Der neue Zeitraum muss alle gespeicherten Tage und Datumsbeschränkungen der Parks enthalten.",
+      "unsavedDayOutsideRange": "Ein Tag außerhalb dieses Zeitraums enthält ungespeicherte Änderungen. Lösche oder speichere den Entwurf, bevor du die Daten änderst.",
+      "unsavedDayBeforeClear": "Ein Tag enthält ungespeicherte Änderungen. Lösche oder speichere den Entwurf, bevor du die Reisedaten löschst.",
       "toDecide": "Daten noch offen",
       "kinds": {
         "none": "Daten noch offen",
