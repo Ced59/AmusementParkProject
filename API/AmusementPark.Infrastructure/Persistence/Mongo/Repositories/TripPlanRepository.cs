@@ -16,6 +16,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
     private readonly IMongoCollection<TripDayPlanDocument>? dayPlanCollection;
     private readonly IMongoCollection<TripInvitationDocument>? invitationCollection;
     private readonly IMongoCollection<TripItemPreferenceDocument>? preferenceCollection;
+    private readonly IMongoCollection<TripItemDecisionDocument>? decisionCollection;
     private readonly TripPlanCreationFingerprint creationFingerprint;
 
     public TripPlanRepository(
@@ -28,7 +29,8 @@ public sealed class TripPlanRepository : ITripPlanRepository
             GetCandidateCollection(database, settings),
             GetDayPlanCollection(database, settings),
             GetInvitationCollection(database, settings),
-            GetPreferenceCollection(database, settings))
+            GetPreferenceCollection(database, settings),
+            GetDecisionCollection(database, settings))
     {
     }
 
@@ -38,7 +40,8 @@ public sealed class TripPlanRepository : ITripPlanRepository
         IMongoCollection<TripParkCandidateDocument>? candidateCollection = null,
         IMongoCollection<TripDayPlanDocument>? dayPlanCollection = null,
         IMongoCollection<TripInvitationDocument>? invitationCollection = null,
-        IMongoCollection<TripItemPreferenceDocument>? preferenceCollection = null)
+        IMongoCollection<TripItemPreferenceDocument>? preferenceCollection = null,
+        IMongoCollection<TripItemDecisionDocument>? decisionCollection = null)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
         this.creationFingerprint = creationFingerprint
@@ -47,6 +50,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
         this.dayPlanCollection = dayPlanCollection;
         this.invitationCollection = invitationCollection;
         this.preferenceCollection = preferenceCollection;
+        this.decisionCollection = decisionCollection;
     }
 
     public async Task<IdempotentTripPlanCreationResult?> ResolveExistingCreationAsync(
@@ -512,7 +516,8 @@ public sealed class TripPlanRepository : ITripPlanRepository
         if (this.candidateCollection is null
             || this.dayPlanCollection is null
             || this.invitationCollection is null
-            || this.preferenceCollection is null)
+            || this.preferenceCollection is null
+            || this.decisionCollection is null)
         {
             throw new InvalidOperationException("Trip child collections are required to purge a trip.");
         }
@@ -537,10 +542,16 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 static document => document.TripPlanId,
                 tripPlanId.Value),
             cancellationToken);
+        DeleteResult decisions = await this.decisionCollection.DeleteManyAsync(
+            Builders<TripItemDecisionDocument>.Filter.Eq(
+                static document => document.TripPlanId,
+                tripPlanId.Value),
+            cancellationToken);
         _ = candidates.DeletedCount;
         _ = days.DeletedCount;
         _ = invitations.DeletedCount;
         _ = preferences.DeletedCount;
+        _ = decisions.DeletedCount;
     }
 
     public async Task<TripPlanWriteResult> FinalizeDeletionOwnedAsync(
@@ -649,6 +660,14 @@ public sealed class TripPlanRepository : ITripPlanRepository
     {
         return database.GetCollection<TripItemPreferenceDocument>(
             settings.TripItemPreferencesCollectionName);
+    }
+
+    private static IMongoCollection<TripItemDecisionDocument> GetDecisionCollection(
+        IMongoDatabase database,
+        MongoDbSettings settings)
+    {
+        return database.GetCollection<TripItemDecisionDocument>(
+            settings.TripItemDecisionsCollectionName);
     }
 
     private static string NormalizeRequired(string? value, string parameterName)

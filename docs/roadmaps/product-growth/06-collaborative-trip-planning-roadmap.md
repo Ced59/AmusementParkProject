@@ -261,6 +261,39 @@ requise.
 Les preuves, le schéma MongoDB et les diagrammes sont détaillés dans
 [`product-growth-trip-07-item-preferences-2026-09-18.md`](../../architecture/product-growth-trip-07-item-preferences-2026-09-18.md).
 
+### État de `TRIP-08` au 18 septembre 2026
+
+La boussole du groupe synthétise désormais, pour chaque attraction, les nombres
+d'indispensables, d'envies, de choix facultatifs, d'oppositions et de membres
+sans réponse. Elle distingue explicitement l'accord complet, les avis partagés,
+l'inconnu et le conflit. Une opposition reste donc visible même face à plusieurs
+envies : aucune majorité automatique ne transforme une contrainte individuelle
+en recommandation pour tout le groupe. Les choix nominatifs de chaque membre ne
+sont jamais exposés par ce contrat collectif.
+
+Le propriétaire et les coorganisateurs peuvent enregistrer un compromis :
+retenu, groupe séparé, optionnel, écarté ou à rediscuter. La raison est
+obligatoire, l'auteur est présenté par son alias public et chaque évolution est
+versionnée. Les participants et lecteurs consultent les décisions sans recevoir
+les contrôles réservés aux organisateurs. L'état officiel de l'attraction, sa
+source et la date des données restent visuellement séparés des préférences et de
+la décision humaine.
+
+L'agrégation est calculée dans MongoDB en une lecture bornée, puis les invariants
+de compatibilité sont appliqués dans le Core. Les décisions utilisent la lease et
+l'epoch communs aux écritures enfants du voyage, avec unicité par
+`(TripPlanId, ParkItemId)` et version optimiste. La suppression d'un voyage purge
+aussi ces décisions. La collection et ses indexes sont créés par l'initialisation
+existante : aucune migration manuelle MongoDB n'est nécessaire.
+
+La page responsive privilégie d'abord les points de friction, propose recherche
+et filtres, conserve les images et preuves officielles, et replie l'éditeur de
+décision pour ne pas alourdir la lecture. Elle est contrôlée en navigateur réel à
+320, 360, 390, 768 et 1280 pixels sans débordement horizontal.
+
+Les preuves, le schéma MongoDB et les diagrammes sont détaillés dans
+[`product-growth-trip-08-preference-summary-2026-09-18.md`](../../architecture/product-growth-trip-08-preference-summary-2026-09-18.md).
+
 ## 1. Vision produit
 
 Un groupe doit pouvoir transformer des envies dispersées en programme commun :
@@ -824,7 +857,7 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 | `TRIP-05` | Invitations opaques | Preview minimisé — implémenté le 18 septembre 2026 |
 | `TRIP-06` | Participants/rôles | Permissions testées — implémenté le 18 septembre 2026 |
 | `TRIP-07` | Préférences par élément | Unicité et batch — implémenté le 18 septembre 2026 |
-| `TRIP-08` | Synthèse/conflits | Pas de majorité aveugle |
+| `TRIP-08` | Synthèse/conflits | Pas de majorité aveugle — implémenté le 18 septembre 2026 |
 | `TRIP-09` | Validation calendrier/trajet | Faits distingués des choix |
 | `TRIP-10` | Audit/concurrence | Modifications reconstituables |
 | `TRIP-11` | Export | Plan portable |

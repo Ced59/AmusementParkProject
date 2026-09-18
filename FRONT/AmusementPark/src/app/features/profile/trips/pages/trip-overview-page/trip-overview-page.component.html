@@ -19,10 +19,16 @@
       }
     </div>
     @if (facade.trip(); as trip) {
-      <a appUiButton="primary" [routerLink]="['/', currentLanguage(), 'profile', 'trips', trip.tripPlanId, 'preferences']">
-        <i class="pi pi-heart" aria-hidden="true"></i>
-        <span>{{ 'trips.preferences.open' | translate }}</span>
-      </a>
+      <div class="trip-overview-page__hero-actions">
+        <a appUiButton="primary" [routerLink]="['/', currentLanguage(), 'profile', 'trips', trip.tripPlanId, 'preferences']">
+          <i class="pi pi-heart" aria-hidden="true"></i>
+          <span>{{ 'trips.preferences.open' | translate }}</span>
+        </a>
+        <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', trip.tripPlanId, 'preference-summary']">
+          <i class="pi pi-compass" aria-hidden="true"></i>
+          <span>{{ 'trips.preferenceSummary.open' | translate }}</span>
+        </a>
+      </div>
     }
   </header>
 

@@ -17,6 +17,7 @@ const componentStyles = [
   'src/app/features/profile/trips/components/trip-candidate-card/trip-candidate-card.component.scss',
   'src/app/features/profile/trips/components/trip-invitation-panel/trip-invitation-panel.component.scss',
   'src/app/features/profile/trips/pages/trip-preferences-page/trip-preferences-page.component.scss',
+  'src/app/features/profile/trips/pages/trip-preference-summary-page/trip-preference-summary-page.component.scss',
   'src/app/features/public/trips/pages/trip-invitation-preview-page/trip-invitation-preview-page.component.scss'
 ]
   .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
@@ -160,6 +161,30 @@ const fixtureMarkup = `
         </section>
       </div>
       <aside class="preference-savebar" data-check-bound><div><strong>2 changements</strong><span>Enregistre-les avant de partir.</span></div><div class="preference-savebar__actions"><button>Annuler</button><button>Enregistrer les choix</button></div></aside>
+    </main>
+
+    <main class="trip-summary-page" data-responsive-root="trip-preference-summary">
+      <header class="trip-summary-hero surface" data-check-bound>
+        <a href="#">Retour au voyage</a>
+        <h1>Une aventure européenne avec un titre très long</h1>
+        <p>La boussole du groupe garde chaque opposition visible sans exposer les choix individuels.</p>
+        <div class="trip-summary-hero__facts"><span>8 participants</span><span>12 points à discuter</span><span>4 accords</span></div>
+        <p class="trip-summary-hero__promise">Une opposition reste visible même lorsqu'une majorité souhaite faire l'attraction.</p>
+      </header>
+      <section class="trip-summary-tools surface" data-check-bound>
+        <label class="trip-summary-search"><span>Rechercher</span><span class="trip-summary-search__field"><i>⌕</i><input value="Une attraction au nom particulièrement long"></span></label>
+        <div class="trip-summary-filters"><button class="trip-summary-filter">Tout</button><button class="trip-summary-filter">À discuter <strong>12</strong></button><button class="trip-summary-filter">Avis partagés <strong>7</strong></button><button class="trip-summary-filter">À compléter <strong>9</strong></button></div>
+      </section>
+      <section class="trip-summary-board" data-check-bound>
+        <article class="trip-summary-card trip-summary-card--conflict surface" data-check-bound>
+          <div class="trip-summary-card__identity"><span class="trip-summary-card__image">Image</span><div><span class="trip-summary-card__park">Destination au nom particulièrement long</span><h2>Attraction au nom extrêmement long</h2></div><span class="trip-summary-card__compatibility">Point de friction</span></div>
+          <div class="trip-summary-counts"><span class="trip-summary-count"><strong>3</strong><small>Incontournable</small></span><span class="trip-summary-count"><strong>2</strong><small>Envie</small></span><span class="trip-summary-count"><strong>1</strong><small>Pourquoi pas</small></span><span class="trip-summary-count"><strong>1</strong><small>Pas pour moi</small></span><span class="trip-summary-count"><strong>1</strong><small>Sans réponse</small></span></div>
+          <div class="trip-summary-signals"><p class="trip-summary-signal trip-summary-signal--conflict">Une envie et une opposition coexistent : la majorité ne tranche pas.</p></div>
+          <details class="trip-summary-official" open><summary>État officiel et preuve</summary><div><p><strong>État</strong><span>En activité</span></p><a>Consulter une source au libellé long</a></div></details>
+          <section class="trip-summary-decision"><span class="trip-summary-decision__icon">✓</span><div><small>Décision du groupe</small><strong>Groupe séparé</strong><p>Une partie du groupe fera cette attraction pendant une pause adaptée aux autres participants.</p><span>Décidé par PseudonymeTrèsLong</span></div></section>
+          <details class="trip-summary-editor" open><summary>Faire évoluer la décision</summary><div class="trip-summary-editor__body"><div class="trip-summary-decision-picker"><button>À rediscuter</button><button>Retenue</button><button>Groupe séparé</button><button>Optionnelle</button><button>Écartée</button></div><label><span>Pourquoi ce choix ?</span><textarea>Un compromis explicite et suffisamment détaillé.</textarea><small>La raison reste visible.</small></label><button>Enregistrer la décision</button></div></details>
+        </article>
+      </section>
     </main>
 
     <main class="invitation-page" data-responsive-root="trip-invitation-preview">

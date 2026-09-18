@@ -1,0 +1,250 @@
+<main class="trip-summary-page">
+  <header class="trip-summary-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', tripPlanId]">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'trips.preferenceSummary.back' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="lime" iconClass="pi pi-compass">
+      {{ 'trips.preferenceSummary.kicker' | translate }}
+    </app-ui-kicker>
+    <h1>{{ facade.summary()?.tripTitle || ('trips.feedback.loading' | translate) }}</h1>
+    <p>{{ 'trips.preferenceSummary.description' | translate }}</p>
+    @if (facade.summary(); as summary) {
+      <div class="trip-summary-hero__facts">
+        <app-ui-chip tone="sky" iconClass="pi pi-users">
+          {{ 'trips.preferenceSummary.participants' | translate:{ count: summary.participantCount } }}
+        </app-ui-chip>
+        <app-ui-chip tone="rose" iconClass="pi pi-comments">
+          {{ 'trips.preferenceSummary.conflicts' | translate:{ count: facade.count('Conflict') } }}
+        </app-ui-chip>
+        <app-ui-chip tone="lime" iconClass="pi pi-sparkles">
+          {{ 'trips.preferenceSummary.consensuses' | translate:{ count: facade.count('Consensus') } }}
+        </app-ui-chip>
+      </div>
+      <p class="trip-summary-hero__promise">
+        <i class="pi pi-shield" aria-hidden="true"></i>
+        <span>{{ 'trips.preferenceSummary.noBlindMajority' | translate }}</span>
+      </p>
+    }
+  </header>
+
+  @if (facade.loading()) {
+    <section class="trip-summary-message" appUiSurface="panel" role="status" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'trips.feedback.loading' | translate }}</span>
+    </section>
+  } @else if (!facade.summary()) {
+    <section class="trip-summary-message trip-summary-message--error" appUiSurface="panel" role="alert">
+      <p>{{ (facade.feedbackKey() || 'trips.preferenceSummary.feedback.loadError') | translate }}</p>
+      <button type="button" appUiButton="primary" (click)="facade.load(tripPlanId)">
+        {{ 'trips.actions.retry' | translate }}
+      </button>
+    </section>
+  } @else {
+    <section class="trip-summary-tools" appUiSurface="panel" appUiSurfacePadding="compact">
+      <label class="trip-summary-search">
+        <span>{{ 'trips.preferenceSummary.search' | translate }}</span>
+        <span class="trip-summary-search__field">
+          <i class="pi pi-search" aria-hidden="true"></i>
+          <input
+            type="search"
+            [value]="facade.search()"
+            [placeholder]="'trips.preferenceSummary.searchPlaceholder' | translate"
+            (input)="facade.setSearch($any($event.target).value)">
+        </span>
+      </label>
+      <div class="trip-summary-filters" role="group" [attr.aria-label]="'trips.preferenceSummary.filterLabel' | translate">
+        @for (filter of filters; track filter) {
+          <button
+            type="button"
+            class="trip-summary-filter"
+            [class.trip-summary-filter--active]="facade.filter() === filter"
+            [attr.aria-pressed]="facade.filter() === filter"
+            (click)="facade.setFilter(filter)">
+            <span>{{ filterKey(filter) | translate }}</span>
+            @if (filter !== 'All') {
+              <strong>{{ facade.count(filter) }}</strong>
+            }
+          </button>
+        }
+      </div>
+    </section>
+
+    @if (facade.feedbackKey()) {
+      <p
+        class="trip-summary-feedback"
+        [class.trip-summary-feedback--success]="facade.feedbackKey() === 'trips.preferenceSummary.feedback.saved'"
+        role="status" aria-live="polite">
+        {{ facade.feedbackKey()! | translate }}
+      </p>
+    }
+
+    <section class="trip-summary-board" [attr.aria-label]="'trips.preferenceSummary.boardLabel' | translate">
+      @for (item of facade.visibleItems(); track item.parkItemId) {
+        <article
+          class="trip-summary-card trip-summary-card--{{ item.compatibility.toLowerCase() }}"
+          appUiSurface="panel" appUiSurfacePadding="compact">
+          <div class="trip-summary-card__identity">
+            <span class="trip-summary-card__image">
+              @if (item.mainImageId) {
+                <app-image-display
+                  [imageId]="item.mainImageId"
+                  [alt]="item.parkItemName"
+                  sizes="(max-width: 36rem) 5rem, 7rem"
+                  [responsiveWidths]="imageWidths"
+                  [srcWidth]="200"
+                  placeholderKind="photo">
+                </app-image-display>
+              } @else {
+                <i class="pi pi-ticket" aria-hidden="true"></i>
+              }
+            </span>
+            <div>
+              <span class="trip-summary-card__park">{{ item.parkName }}</span>
+              <h2>{{ item.parkItemName }}</h2>
+            </div>
+            <span class="trip-summary-card__compatibility">
+              <i class="pi {{ compatibilityIcon(item.compatibility) }}" aria-hidden="true"></i>
+              {{ compatibilityKey(item.compatibility) | translate }}
+            </span>
+          </div>
+
+          <div class="trip-summary-counts">
+            <span class="trip-summary-count trip-summary-count--must">
+              <strong>{{ item.mustDoCount }}</strong>
+              <small>{{ 'trips.preferenceSummary.counts.must' | translate }}</small>
+            </span>
+            <span class="trip-summary-count trip-summary-count--want">
+              <strong>{{ item.wantToDoCount }}</strong>
+              <small>{{ 'trips.preferenceSummary.counts.want' | translate }}</small>
+            </span>
+            <span class="trip-summary-count trip-summary-count--optional">
+              <strong>{{ item.optionalCount }}</strong>
+              <small>{{ 'trips.preferenceSummary.counts.optional' | translate }}</small>
+            </span>
+            <span class="trip-summary-count trip-summary-count--constraint">
+              <strong>{{ item.notForMeCount }}</strong>
+              <small>{{ 'trips.preferenceSummary.counts.notForMe' | translate }}</small>
+            </span>
+            <span class="trip-summary-count trip-summary-count--unknown">
+              <strong>{{ item.unansweredCount }}</strong>
+              <small>{{ 'trips.preferenceSummary.counts.unanswered' | translate }}</small>
+            </span>
+          </div>
+
+          <div class="trip-summary-signals">
+            @if (item.compatibility === 'Conflict') {
+              <p class="trip-summary-signal trip-summary-signal--conflict">
+                <i class="pi pi-comments" aria-hidden="true"></i>
+                <span>{{ 'trips.preferenceSummary.signals.conflict' | translate }}</span>
+              </p>
+            } @else if (item.isGroupPriority) {
+              <p class="trip-summary-signal trip-summary-signal--priority">
+                <i class="pi pi-bolt" aria-hidden="true"></i>
+                <span>{{ 'trips.preferenceSummary.signals.priority' | translate }}</span>
+              </p>
+            }
+            @if (!item.isCompatibilityKnown) {
+              <p class="trip-summary-signal">
+                <i class="pi pi-question-circle" aria-hidden="true"></i>
+                <span>{{ 'trips.preferenceSummary.signals.incomplete' | translate:{ count: item.unansweredCount } }}</span>
+              </p>
+            }
+          </div>
+
+          <details class="trip-summary-official">
+            <summary>{{ 'trips.preferenceSummary.official.title' | translate }}</summary>
+            <div>
+              <p>
+                <strong>{{ 'trips.preferenceSummary.official.status' | translate }}</strong>
+                <span>{{ item.officialStatus || ('trips.preferenceSummary.official.unspecified' | translate) }}</span>
+              </p>
+              <p>
+                <strong>{{ 'trips.preferenceSummary.official.checkedAt' | translate }}</strong>
+                <span>{{ item.officialStatusUpdatedAtUtc | date:'mediumDate':undefined:currentLanguage() }}</span>
+              </p>
+              @if (item.officialSourceUrl) {
+                <a [href]="item.officialSourceUrl" target="_blank" rel="noopener noreferrer">
+                  {{ 'trips.preferenceSummary.official.source' | translate }}
+                  <i class="pi pi-external-link" aria-hidden="true"></i>
+                </a>
+              }
+            </div>
+          </details>
+
+          @if (item.decision; as decision) {
+            <section class="trip-summary-decision" aria-label="{{ 'trips.preferenceSummary.currentDecision' | translate }}">
+              <span class="trip-summary-decision__icon">
+                <i class="pi {{ decisionIcon(decision.status) }}" aria-hidden="true"></i>
+              </span>
+              <div>
+                <small>{{ 'trips.preferenceSummary.currentDecision' | translate }}</small>
+                <strong>{{ decisionKey(decision.status) | translate }}</strong>
+                <p>{{ decision.reason }}</p>
+                <span>{{ 'trips.preferenceSummary.decidedBy' | translate:{ name: decision.decidedByDisplayName } }}</span>
+              </div>
+            </section>
+          } @else {
+            <p class="trip-summary-no-decision">
+              <i class="pi pi-compass" aria-hidden="true"></i>
+              <span>{{ 'trips.preferenceSummary.noDecision' | translate }}</span>
+            </p>
+          }
+
+          @if (facade.summary()!.canDecide) {
+            <details class="trip-summary-editor">
+              <summary>
+                <i class="pi pi-pencil" aria-hidden="true"></i>
+                <span>{{ (item.decision ? 'trips.preferenceSummary.editDecision' : 'trips.preferenceSummary.makeDecision') | translate }}</span>
+              </summary>
+              <div class="trip-summary-editor__body">
+                <div class="trip-summary-decision-picker" role="radiogroup" [attr.aria-label]="'trips.preferenceSummary.decisionLabel' | translate">
+                  @for (status of decisionStatuses; track status) {
+                    <button
+                      type="button"
+                      role="radio"
+                      [attr.aria-checked]="facade.draftFor(item).status === status"
+                      [class.trip-summary-decision-choice--active]="facade.draftFor(item).status === status"
+                      [disabled]="facade.savingItemId() !== null"
+                      (click)="facade.setDecisionStatus(item, status)">
+                      <i class="pi {{ decisionIcon(status) }}" aria-hidden="true"></i>
+                      <span>{{ decisionKey(status) | translate }}</span>
+                    </button>
+                  }
+                </div>
+                <label>
+                  <span>{{ 'trips.preferenceSummary.reasonLabel' | translate }}</span>
+                  <textarea
+                    rows="3"
+                    maxlength="500"
+                    [disabled]="facade.savingItemId() !== null"
+                    [value]="facade.draftFor(item).reason"
+                    [placeholder]="'trips.preferenceSummary.reasonPlaceholder' | translate"
+                    (input)="facade.setDecisionReason(item, $any($event.target).value)"></textarea>
+                  <small>{{ 'trips.preferenceSummary.reasonHint' | translate }}</small>
+                </label>
+                <button
+                  type="button"
+                  appUiButton="primary"
+                  [disabled]="!facade.canSave(item)"
+                  (click)="facade.saveDecision(item)">
+                  @if (facade.savingItemId() === item.parkItemId) {
+                    <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+                  } @else {
+                    <i class="pi pi-check" aria-hidden="true"></i>
+                  }
+                  <span>{{ 'trips.preferenceSummary.saveDecision' | translate }}</span>
+                </button>
+              </div>
+            </details>
+          }
+        </article>
+      } @empty {
+        <section class="trip-summary-message" appUiSurface="panel">
+          <i class="pi pi-filter-slash" aria-hidden="true"></i>
+          <p>{{ (facade.summary()!.items.length === 0 ? 'trips.preferenceSummary.empty' : 'trips.preferenceSummary.noMatch') | translate }}</p>
+        </section>
+      }
+    </section>
+  }
+</main>

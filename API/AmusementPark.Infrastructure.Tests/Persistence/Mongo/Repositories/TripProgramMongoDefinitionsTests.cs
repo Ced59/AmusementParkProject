@@ -52,6 +52,18 @@ public sealed class TripProgramMongoDefinitionsTests
     }
 
     [Fact]
+    public void DecisionIndexes_ShouldGuaranteeOneDecisionPerTripAndItem()
+    {
+        IReadOnlyCollection<CreateIndexModel<TripItemDecisionDocument>> indexes =
+            TripItemDecisionRepository.BuildIndexes();
+
+        Assert.Contains(indexes, index => index.Options.Name == "uq_trip_item_decision_plan_item"
+            && index.Options.Unique == true);
+        Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_item_decision_reserved"
+            && index.Options.ExpireAfter == TimeSpan.Zero);
+    }
+
+    [Fact]
     public void CreationGuard_ShouldUseMongoServerTime()
     {
         FilterDefinition<TripParkCandidateDocument> filter =

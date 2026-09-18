@@ -23,6 +23,12 @@ export const PROFILE_ROUTES: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'trips/:tripId/preference-summary',
+    loadComponent: () => import('./trips/pages/trip-preference-summary-page/trip-preference-summary-page.component')
+      .then((module) => module.TripPreferenceSummaryPageComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'trips/:tripId/preferences',
     loadComponent: () => import('./trips/pages/trip-preferences-page/trip-preferences-page.component')
       .then((module) => module.TripPreferencesPageComponent),

@@ -1464,6 +1464,77 @@
       "leaveExplanation": "You will immediately lose access to the private plan.",
       "confirmLeave": "Confirm leaving"
     },
+    "preferenceSummary": {
+      "open": "Open the group compass",
+      "back": "Back to the trip",
+      "kicker": "Group compass",
+      "description": "Spot agreements, hesitation and genuine friction without exposing anyone’s individual choices.",
+      "participants": "{{count}} participant(s)",
+      "conflicts": "{{count}} point(s) to discuss",
+      "consensuses": "{{count}} agreement(s)",
+      "noBlindMajority": "An objection remains visible even when several people want the attraction. The group then decides explicitly.",
+      "search": "Search",
+      "searchPlaceholder": "Attraction or park name",
+      "filterLabel": "Filter the compass",
+      "boardLabel": "Group preference summary",
+      "currentDecision": "Group decision",
+      "decidedBy": "Decided by {{name}}",
+      "noDecision": "No group decision has been recorded yet.",
+      "editDecision": "Evolve the decision",
+      "makeDecision": "Decide together",
+      "decisionLabel": "Choose the group decision",
+      "reasonLabel": "Why this choice?",
+      "reasonPlaceholder": "Briefly explain the chosen compromise…",
+      "reasonHint": "A reason is required and stays visible with the decision author.",
+      "saveDecision": "Save the decision",
+      "empty": "Add a park to the trip first to build the compass.",
+      "noMatch": "No attraction matches this filter.",
+      "filters": {
+        "all": "All",
+        "conflict": "Discuss",
+        "mixed": "Mixed views",
+        "unknown": "Incomplete",
+        "consensus": "Agreements"
+      },
+      "compatibility": {
+        "conflict": "Friction point",
+        "mixed": "Mixed views",
+        "unknown": "Still unknown",
+        "consensus": "Group agreement"
+      },
+      "counts": {
+        "must": "Must-do",
+        "want": "Want",
+        "optional": "Maybe",
+        "notForMe": "Not for me",
+        "unanswered": "No answer"
+      },
+      "signals": {
+        "conflict": "At least one wish and one objection coexist: no automatic majority decides.",
+        "priority": "This attraction stands out as a priority with no stated objection.",
+        "incomplete": "{{count}} answer(s) are still missing, so compatibility remains provisional."
+      },
+      "official": {
+        "title": "Official status and evidence",
+        "status": "Status",
+        "checkedAt": "Data updated",
+        "unspecified": "Status not specified",
+        "source": "View the source"
+      },
+      "decisions": {
+        "review": "Discuss again",
+        "retained": "Retained",
+        "splitgroup": "Split the group",
+        "optional": "Optional",
+        "excluded": "Set aside"
+      },
+      "feedback": {
+        "loadError": "The group compass could not be loaded.",
+        "saveError": "The decision could not be saved.",
+        "conflict": "The decision or trip changed. Reload before trying again.",
+        "saved": "The group decision is saved."
+      }
+    },
     "kicker": "Trips to plan",
     "privacy": "Private, visible only to members",
     "profile": {

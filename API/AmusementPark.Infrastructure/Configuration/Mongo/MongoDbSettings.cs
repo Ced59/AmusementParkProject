@@ -160,6 +160,8 @@ public sealed class MongoDbSettings
 
     public string TripItemPreferencesCollectionName { get; set; } = "trip-item-preferences";
 
+    public string TripItemDecisionsCollectionName { get; set; } = "trip-item-decisions";
+
     public string TripInvitationsCollectionName { get; set; } = "trip-invitations";
 
     public string ParkFitSourceReportsCollectionName { get; set; } =

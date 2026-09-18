@@ -1464,6 +1464,77 @@
       "leaveExplanation": "Perderai immediatamente l’accesso al programma privato.",
       "confirmLeave": "Conferma l’uscita"
     },
+    "preferenceSummary": {
+      "open": "Apri la bussola del gruppo",
+      "back": "Torna al viaggio",
+      "kicker": "Bussola del gruppo",
+      "description": "Individua accordi, esitazioni e veri punti di attrito senza mostrare le scelte individuali.",
+      "participants": "{{count}} partecipante/i",
+      "conflicts": "{{count}} punto/i da discutere",
+      "consensuses": "{{count}} accordo/i",
+      "noBlindMajority": "Un’obiezione resta visibile anche quando più persone desiderano l’attrazione. Poi il gruppo decide esplicitamente.",
+      "search": "Cerca",
+      "searchPlaceholder": "Nome di un’attrazione o di un parco",
+      "filterLabel": "Filtra la bussola",
+      "boardLabel": "Sintesi delle preferenze del gruppo",
+      "currentDecision": "Decisione del gruppo",
+      "decidedBy": "Deciso da {{name}}",
+      "noDecision": "Non è ancora stata registrata alcuna decisione collettiva.",
+      "editDecision": "Rivedi la decisione",
+      "makeDecision": "Decidete insieme",
+      "decisionLabel": "Scegli la decisione del gruppo",
+      "reasonLabel": "Perché questa scelta?",
+      "reasonPlaceholder": "Spiega brevemente il compromesso scelto…",
+      "reasonHint": "La motivazione è obbligatoria e resta visibile insieme all’autore della decisione.",
+      "saveDecision": "Salva la decisione",
+      "empty": "Aggiungi prima un parco al viaggio per creare la bussola.",
+      "noMatch": "Nessuna attrazione corrisponde a questo filtro.",
+      "filters": {
+        "all": "Tutto",
+        "conflict": "Da discutere",
+        "mixed": "Pareri diversi",
+        "unknown": "Da completare",
+        "consensus": "Accordi"
+      },
+      "compatibility": {
+        "conflict": "Punto di attrito",
+        "mixed": "Pareri diversi",
+        "unknown": "Ancora sconosciuto",
+        "consensus": "Accordo del gruppo"
+      },
+      "counts": {
+        "must": "Imperdibile",
+        "want": "Desiderata",
+        "optional": "Forse",
+        "notForMe": "Non fa per me",
+        "unanswered": "Senza risposta"
+      },
+      "signals": {
+        "conflict": "Coesistono almeno un desiderio e un’obiezione: nessuna maggioranza automatica decide.",
+        "priority": "Questa attrazione emerge come priorità senza obiezioni espresse.",
+        "incomplete": "Mancano ancora {{count}} risposta/e: la compatibilità resta provvisoria."
+      },
+      "official": {
+        "title": "Stato ufficiale e fonte",
+        "status": "Stato",
+        "checkedAt": "Dati aggiornati",
+        "unspecified": "Stato non specificato",
+        "source": "Consulta la fonte"
+      },
+      "decisions": {
+        "review": "Da ridiscutere",
+        "retained": "Mantenuta",
+        "splitgroup": "Dividere il gruppo",
+        "optional": "Facoltativa",
+        "excluded": "Esclusa"
+      },
+      "feedback": {
+        "loadError": "Impossibile caricare la bussola del gruppo.",
+        "saveError": "Impossibile salvare la decisione.",
+        "conflict": "La decisione o il viaggio sono cambiati. Ricarica la pagina prima di riprovare.",
+        "saved": "La decisione del gruppo è stata salvata."
+      }
+    },
     "kicker": "Viaggi da preparare",
     "privacy": "Privato, visibile solo ai membri",
     "profile": {

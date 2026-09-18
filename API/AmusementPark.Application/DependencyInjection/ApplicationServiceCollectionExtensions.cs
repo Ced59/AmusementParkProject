@@ -104,6 +104,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<TripProgramService>();
         services.AddScoped<TripDayProgramService>();
         services.AddScoped<TripChildMutationExecutor>();
+        services.AddScoped<TripEligibleItemReader>();
         services.AddScoped<TripProgramResultFactory>();
         services.AddScoped<TripInvitationService>();
         services.AddScoped<TripInvitationExpirationReconciler>();
@@ -111,6 +112,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<TripAdmissionReconciler>();
         services.AddScoped<TripParticipantService>();
         services.AddScoped<TripPreferenceService>();
+        services.AddScoped<TripPreferenceSummaryService>();
         services.AddScoped<TripPreferenceCleanupReconciler>();
         services.AddScoped<UserNotificationCenterService>();
         services.AddScoped<WatchPilotMetricsRecorder>();

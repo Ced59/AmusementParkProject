@@ -1,6 +1,20 @@
 {
-  "version": "5.3.67",
+  "version": "5.3.68",
   "history": [
+    {
+      "version": "5.3.68",
+      "releasedAt": "2026-09-18",
+      "labels": {
+        "fr": "Ton groupe peut maintenant repérer les accords, les désaccords et décider ensemble.",
+        "en": "Your group can now spot agreements and disagreements and decide together.",
+        "de": "Deine Gruppe kann jetzt Übereinstimmungen und Meinungsverschiedenheiten erkennen und gemeinsam entscheiden.",
+        "nl": "Je groep kan nu overeenstemming en meningsverschillen herkennen en samen beslissen.",
+        "it": "Il tuo gruppo può ora individuare accordi e disaccordi e decidere insieme.",
+        "es": "Tu grupo ya puede detectar acuerdos y desacuerdos y decidir en conjunto.",
+        "pl": "Twoja grupa może teraz rozpoznawać zgodność i różnice zdań oraz wspólnie decydować.",
+        "pt": "O teu grupo pode agora identificar acordos e desacordos e decidir em conjunto."
+      }
+    },
     {
       "version": "5.3.67",
       "releasedAt": "2026-09-18",
