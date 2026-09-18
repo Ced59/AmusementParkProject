@@ -45,6 +45,8 @@ export class TripOverviewPageComponent implements OnInit {
   protected readonly imageWidths: readonly number[] = [120, 200, 320];
 
   private dateDraftInitialized: boolean = false;
+  private handledDateRecoveryRevision: number = 0;
+  private handledDayRecoveryRevision: number = 0;
 
   constructor(
     protected readonly facade: TripOverviewStateFacade,
@@ -56,28 +58,34 @@ export class TripOverviewPageComponent implements OnInit {
 
     effect((): void => {
       const trip: TripPlan | null = this.facade.trip();
-      if (!trip || this.dateDraftInitialized) {
+      const recoveryRevision: number = this.facade.recoveryRevision();
+      const mustRecover: boolean = recoveryRevision > this.handledDateRecoveryRevision;
+      if (!trip || (this.dateDraftInitialized && !mustRecover)) {
         return;
       }
       this.startDate.set(trip.dateProposal.startDate ?? '');
       this.endDate.set(trip.dateProposal.endDate ?? '');
       this.dateDraftInitialized = true;
+      this.handledDateRecoveryRevision = recoveryRevision;
     });
 
     effect((): void => {
       const dates: string[] = this.facade.tripDates();
       const days: TripDayPlan[] = this.facade.program().days;
+      const recoveryRevision: number = this.facade.recoveryRevision();
+      const mustRecover: boolean = recoveryRevision > this.handledDayRecoveryRevision;
       const existingDrafts: Record<string, TripDayDraft> = untracked(this.dayDrafts);
       const nextDrafts: Record<string, TripDayDraft> = {};
       for (const date of dates) {
         const saved: TripDayPlan | undefined = days.find((day: TripDayPlan): boolean => day.localDate === date);
-        nextDrafts[date] = existingDrafts[date] ?? {
+        nextDrafts[date] = !mustRecover && existingDrafts[date] ? existingDrafts[date] : {
           candidateId: saved?.parkCandidateId ?? '',
           arrivalTime: saved?.desiredArrivalTime ?? '',
           note: saved?.groupNote ?? ''
         };
       }
       this.dayDrafts.set(nextDrafts);
+      this.handledDayRecoveryRevision = recoveryRevision;
     });
   }
 

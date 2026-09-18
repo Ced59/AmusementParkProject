@@ -71,7 +71,13 @@ describe('TripOverviewStateFacade', () => {
     const first: UserCollectionEntry = createEntry({
       entryId: 'entry-1', targetId: 'park-2', preferredStartsOn: '2026-10-03', preferredEndsOn: '2026-10-03'
     });
-    const second: UserCollectionEntry = createEntry({ entryId: 'entry-2', targetId: 'park-3', privateNote: 'Immanquable' });
+    const second: UserCollectionEntry = createEntry({
+      entryId: 'entry-2',
+      targetId: 'park-3',
+      privateNote: 'Immanquable',
+      preferredStartsOn: '2026-11-01',
+      preferredEndsOn: '2026-11-01'
+    });
     (plans.getMine as ReturnType<typeof vi.fn>)
       .mockReturnValueOnce(of(createTrip({ version: 1 })))
       .mockReturnValueOnce(of(createTrip({ version: 2 })))
@@ -123,6 +129,7 @@ describe('TripOverviewStateFacade', () => {
     expect(facade.actionError()).toBe('conflict');
     expect(facade.trip()?.version).toBe(2);
     expect(facade.program().candidates[0].state).toBe('Selected');
+    expect(facade.recoveryRevision()).toBe(1);
   });
 });
 

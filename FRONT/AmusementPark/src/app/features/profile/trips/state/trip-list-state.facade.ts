@@ -20,6 +20,8 @@ export class TripListStateFacade {
   private readonly creatingSignal = signal<boolean>(false);
   private readonly createErrorSignal = signal<boolean>(false);
   private readonly createdTripIdSignal = signal<string | null>(null);
+  private pendingCreateFingerprint: string | null = null;
+  private pendingCreateIdempotencyKey: string | null = null;
 
   readonly trips: Signal<TripPlan[]> = this.tripsSignal.asReadonly();
   readonly status: Signal<TripListStatus> = this.statusSignal.asReadonly();
@@ -63,10 +65,15 @@ export class TripListStateFacade {
       dateProposal,
       destinationTimeZoneId: dateProposal.kind === 'None' ? null : resolvedBrowserTimeZone()
     };
+    const fingerprint: string = JSON.stringify(request);
+    if (this.pendingCreateFingerprint !== fingerprint || !this.pendingCreateIdempotencyKey) {
+      this.pendingCreateFingerprint = fingerprint;
+      this.pendingCreateIdempotencyKey = this.operationIds.create();
+    }
 
     this.creatingSignal.set(true);
     this.createErrorSignal.set(false);
-    this.plans.create(request, this.operationIds.create())
+    this.plans.create(request, this.pendingCreateIdempotencyKey)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         finalize((): void => this.creatingSignal.set(false))
@@ -75,6 +82,8 @@ export class TripListStateFacade {
         next: (trip: TripPlan): void => {
           this.tripsSignal.update((trips: TripPlan[]): TripPlan[] => [trip, ...trips]);
           this.createdTripIdSignal.set(trip.tripPlanId);
+          this.pendingCreateFingerprint = null;
+          this.pendingCreateIdempotencyKey = null;
         },
         error: (): void => this.createErrorSignal.set(true)
       });

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 import { TripPlan, TripPlanWriteRequest } from '@app/models/trips/trip.models';
 import {
@@ -66,6 +66,20 @@ describe('TripListStateFacade', () => {
     facade.create('   ', '', '');
 
     expect(plans.create).not.toHaveBeenCalled();
+  });
+
+  it('reuses the creation key when the same request is retried after an ambiguous failure', () => {
+    (plans.create as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(throwError(() => ({ status: 0 })))
+      .mockReturnValueOnce(of(createTrip()));
+
+    facade.create('Voyage Allemagne', '2026-10-03', '2026-10-05');
+    facade.create('Voyage Allemagne', '2026-10-03', '2026-10-05');
+
+    expect(operationIds.create).toHaveBeenCalledTimes(1);
+    expect((plans.create as ReturnType<typeof vi.fn>).mock.calls.map((call: unknown[]): unknown => call[1]))
+      .toEqual(['operation-1', 'operation-1']);
+    expect(facade.createdTripId()).toBe('trip-1');
   });
 });
 

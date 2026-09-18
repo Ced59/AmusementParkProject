@@ -38,8 +38,8 @@ export interface SetTripPlanDatesRequest {
 }
 
 export interface TripFitRecommendationSnapshot {
-  recommendation: string;
-  explanation: string | null;
+  methodVersion: string;
+  explanation: string;
   calculatedAtUtc: string;
 }
 
