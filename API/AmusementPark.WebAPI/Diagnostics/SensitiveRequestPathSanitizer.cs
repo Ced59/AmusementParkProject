@@ -49,7 +49,7 @@ public static class SensitiveRequestPathSanitizer
             return string.Concat(absoluteUri.GetLeftPart(UriPartial.Authority), sanitizedPath);
         }
 
-        if (!value.StartsWith('/', StringComparison.Ordinal))
+        if (!value.StartsWith("/", StringComparison.Ordinal))
         {
             return value;
         }
