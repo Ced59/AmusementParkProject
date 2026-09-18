@@ -193,11 +193,13 @@ describe('TripOverviewPageComponent', () => {
     expect(state.dateEditorEnabled()).toBe(false);
     expect(state.canSaveDates()).toBe(false);
     expect(fixture.nativeElement.textContent).toContain('2026-11-01');
+    state.dateEditorEnabled.set(true);
+    expect(state.startDate()).toBe('');
+    expect(state.canSaveDates()).toBe(false);
     program.set({ candidates: [createCandidate('candidate-restricted', ['2026-11-01'])], days: [] });
     fixture.detectChanges();
     expect(state.canClearDates()).toBe(false);
     expect(fixture.nativeElement.textContent).toContain('trips.dates.clearBlocked');
-    state.dateEditorEnabled.set(true);
     state.startDate.set('2026-11-02');
     state.endDate.set('2026-11-08');
     state.destinationTimeZoneId.set('Europe/Paris');

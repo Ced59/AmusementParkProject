@@ -158,8 +158,9 @@ export class TripOverviewPageComponent implements OnInit {
   protected canSaveDates(): boolean {
     const hasStartDate: boolean = !!this.startDate().trim();
     return this.dateEditorEnabled()
+      && hasStartDate
       && areTripDateInputsValid(this.startDate(), this.endDate())
-      && (hasStartDate ? !!this.destinationTimeZoneId().trim() : this.canClearDates())
+      && !!this.destinationTimeZoneId().trim()
       && !this.dateDependenciesOutsideDraft();
   }
 
