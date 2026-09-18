@@ -15,6 +15,7 @@ import { TranslationService } from '@app/services/translation.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { TripCandidateCardComponent } from '../../components/trip-candidate-card/trip-candidate-card.component';
+import { areTripDateInputsValid } from '../../state/trip-date-proposal.helpers';
 import { TripOverviewStateFacade } from '../../state/trip-overview-state.facade';
 
 interface TripDayDraft {
@@ -47,6 +48,7 @@ export class TripOverviewPageComponent implements OnInit {
   protected readonly startDate = signal<string>('');
   protected readonly endDate = signal<string>('');
   protected readonly destinationTimeZoneId = signal<string>('');
+  protected readonly dateEditorEnabled = signal<boolean>(true);
   protected readonly selectedWishlistIds = signal<Set<string>>(new Set<string>());
   protected readonly dayDrafts = signal<Record<string, TripDayDraft>>({});
   protected readonly imageWidths: readonly number[] = [120, 200, 320];
@@ -74,6 +76,7 @@ export class TripOverviewPageComponent implements OnInit {
       this.startDate.set(trip.dateProposal.startDate ?? '');
       this.endDate.set(trip.dateProposal.endDate ?? '');
       this.destinationTimeZoneId.set(trip.destinationTimeZoneId ?? '');
+      this.dateEditorEnabled.set(trip.dateProposal.kind !== 'Candidates' && trip.dateProposal.kind !== 'Range');
       this.dateDraftInitialized = true;
       this.handledDateDraftRevision = dateDraftRevision;
     });
@@ -120,7 +123,45 @@ export class TripOverviewPageComponent implements OnInit {
   }
 
   protected saveDates(): void {
-    this.facade.setDates(this.startDate(), this.endDate(), this.destinationTimeZoneId());
+    if (this.canSaveDates()) {
+      this.facade.setDates(this.startDate(), this.endDate(), this.destinationTimeZoneId());
+    }
+  }
+
+  protected clearDates(): void {
+    this.facade.setDates('', '', '');
+  }
+
+  protected beginFixedDateEdit(): void {
+    this.dateEditorEnabled.set(true);
+  }
+
+  protected canSaveDates(): boolean {
+    return this.dateEditorEnabled()
+      && areTripDateInputsValid(this.startDate(), this.endDate())
+      && (!this.startDate() || !!this.destinationTimeZoneId().trim());
+  }
+
+  protected datesInvalid(): boolean {
+    return !areTripDateInputsValid(this.startDate(), this.endDate());
+  }
+
+  protected hasSpecialDateProposal(): boolean {
+    const kind: TripPlan['dateProposal']['kind'] | undefined = this.facade.trip()?.dateProposal.kind;
+    return kind === 'Candidates' || kind === 'Range';
+  }
+
+  protected currentProposedDates(): string[] {
+    const trip: TripPlan | null = this.facade.trip();
+    if (!trip) {
+      return [];
+    }
+    if (trip.dateProposal.kind === 'Candidates') {
+      return trip.dateProposal.candidateDates;
+    }
+    return [trip.dateProposal.startDate, trip.dateProposal.endDate].filter(
+      (date: string | null): date is string => !!date
+    );
   }
 
   protected toggleWishlist(entryId: string): void {

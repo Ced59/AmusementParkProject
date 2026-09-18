@@ -69,6 +69,13 @@ describe('TripListStateFacade', () => {
     expect(plans.create).not.toHaveBeenCalled();
   });
 
+  it('does not discard an end date entered without a start date', () => {
+    facade.create('Voyage Allemagne', '', '2026-10-05', 'Europe/Berlin');
+
+    expect(plans.create).not.toHaveBeenCalled();
+    expect(operationIds.create).not.toHaveBeenCalled();
+  });
+
   it('reuses the creation key when the same request is retried after an ambiguous failure', () => {
     (plans.create as ReturnType<typeof vi.fn>)
       .mockReturnValueOnce(throwError(() => ({ status: 0 })))

@@ -1382,6 +1382,8 @@
       "createFirst": "Create my first trip",
       "continuePlanning": "Continue planning",
       "saveDates": "Save dates",
+      "chooseFixedDates": "Choose fixed dates",
+      "clearDates": "Clear dates",
       "openCollections": "Open my lists",
       "importSelection": "Add selection ({{count}})",
       "saveDay": "Save this day",
@@ -1410,7 +1412,8 @@
       "loadError": "Your trips could not be loaded.",
       "createError": "This trip could not be created.",
       "actionError": "This change could not be saved.",
-      "conflict": "The trip changed elsewhere. Its latest version has just been reloaded."
+      "conflict": "The trip changed elsewhere. Its latest version has just been reloaded.",
+      "invalidDates": "Enter a start date before the end date and keep them in chronological order."
     },
     "empty": {
       "title": "No trip in progress",
@@ -1426,6 +1429,8 @@
       "title": "Set the trip dates",
       "description": "They automatically create the days in your itinerary.",
       "timeZoneHint": "Check the park or destination time zone (for example Europe/Paris), especially when planning from another country.",
+      "currentProposal": "Current proposal",
+      "explicitConversion": "This proposal stays unchanged until you explicitly choose fixed dates or clear it.",
       "toDecide": "Dates to decide",
       "kinds": {
         "none": "Dates to decide",

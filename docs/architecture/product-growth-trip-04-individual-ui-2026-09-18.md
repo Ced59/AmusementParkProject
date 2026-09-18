@@ -19,6 +19,9 @@ lors de l'import : elles restent dans leur contexte privé d'origine.
 Lorsqu'un voyage est daté, le fuseau IANA de la destination est affiché et reste
 modifiable. Le fuseau du navigateur n'est qu'une proposition visible à la création :
 il n'est jamais substitué silencieusement au fuseau du parc.
+Une proposition sous forme de période ou de plusieurs dates candidates reste
+intacte tant que le membre ne choisit pas explicitement de la convertir en dates
+fixes ou de l'effacer.
 
 Les attractions et préférences par membre appartiennent à `TRIP-07`. Les
 invitations et rôles collaboratifs appartiennent à `TRIP-05` et `TRIP-06`.
@@ -72,6 +75,8 @@ programme. L'interface ne réessaie pas aveuglément une écriture conflictuelle
 Les erreurs de validation déterministes conservent au contraire les brouillons
 locaux. Une indisponibilité des collections masque seulement l'import des envies :
 le voyage et son programme restent consultables et modifiables.
+Pendant une récupération après conflit, timeout ou panne ambiguë, les écritures
+restent verrouillées jusqu'au retour de la version autoritaire.
 
 ## Responsive et accessibilité
 
@@ -100,6 +105,9 @@ le voyage et son programme restent consultables et modifiables.
 - rechargement après conflit optimiste ;
 - conservation des brouillons après erreur de validation ;
 - chargement du plan maintenu si les collections auxiliaires sont indisponibles ;
+- refus d'une date de fin sans début ou d'une plage inversée ;
+- conversion ou effacement explicite des périodes et dates candidates ;
+- verrouillage maintenu jusqu'à la fin d'une récupération autoritaire ;
 - routes lazy et authentifiées ;
 - navigation depuis le profil ;
 - contrats CSS de confinement, reflow mobile et zone sûre.

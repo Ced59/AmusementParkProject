@@ -1382,6 +1382,8 @@
       "createFirst": "Crea il mio primo viaggio",
       "continuePlanning": "Continua la preparazione",
       "saveDates": "Salva le date",
+      "chooseFixedDates": "Scegli date fisse",
+      "clearDates": "Cancella le date",
       "openCollections": "Apri le mie liste",
       "importSelection": "Aggiungi la selezione ({{count}})",
       "saveDay": "Salva questa giornata",
@@ -1410,7 +1412,8 @@
       "loadError": "Non è stato possibile caricare i tuoi viaggi.",
       "createError": "Non è stato possibile creare questo viaggio.",
       "actionError": "Non è stato possibile salvare questa modifica.",
-      "conflict": "Il viaggio è stato modificato altrove. È stata caricata la versione più recente."
+      "conflict": "Il viaggio è stato modificato altrove. È stata caricata la versione più recente.",
+      "invalidDates": "Inserisci una data di inizio precedente alla data di fine e rispetta l’ordine cronologico."
     },
     "empty": {
       "title": "Nessun viaggio in preparazione",
@@ -1426,6 +1429,8 @@
       "title": "Imposta le date del viaggio",
       "description": "Le date creano automaticamente le giornate del programma.",
       "timeZoneHint": "Controlla il fuso orario del parco o della destinazione (per esempio Europe/Paris), soprattutto se prepari il viaggio da un altro Paese.",
+      "currentProposal": "Proposta attuale",
+      "explicitConversion": "Questa proposta resta invariata finché non scegli esplicitamente date fisse o non la cancelli.",
       "toDecide": "Date da decidere",
       "kinds": {
         "none": "Date da decidere",

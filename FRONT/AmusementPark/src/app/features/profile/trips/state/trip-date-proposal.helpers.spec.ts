@@ -1,4 +1,4 @@
-import { buildConfirmedTripDates, enumerateTripDates } from './trip-date-proposal.helpers';
+import { areTripDateInputsValid, buildConfirmedTripDates, enumerateTripDates } from './trip-date-proposal.helpers';
 
 describe('trip date proposal helpers', () => {
   it('keeps a trip without dates as an explicit undecided proposal', () => {
@@ -17,6 +17,13 @@ describe('trip date proposal helpers', () => {
       endDate: '2026-10-03',
       candidateDates: []
     });
+  });
+
+  it('rejects an end date without a start date and a reversed range', () => {
+    expect(areTripDateInputsValid('', '2026-10-05')).toBe(false);
+    expect(areTripDateInputsValid('2026-10-05', '2026-10-03')).toBe(false);
+    expect(areTripDateInputsValid('2026-10-03', '2026-10-05')).toBe(true);
+    expect((): void => { buildConfirmedTripDates('', '2026-10-05'); }).toThrow();
   });
 
   it('enumerates every fixed day inclusively without depending on the browser time zone', () => {

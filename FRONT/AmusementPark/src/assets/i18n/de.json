@@ -1382,6 +1382,8 @@
       "createFirst": "Meine erste Reise erstellen",
       "continuePlanning": "Weiterplanen",
       "saveDates": "Reisedaten speichern",
+      "chooseFixedDates": "Feste Daten wählen",
+      "clearDates": "Daten löschen",
       "openCollections": "Meine Listen öffnen",
       "importSelection": "Auswahl hinzufügen ({{count}})",
       "saveDay": "Diesen Tag speichern",
@@ -1410,7 +1412,8 @@
       "loadError": "Deine Reisen konnten nicht geladen werden.",
       "createError": "Diese Reise konnte nicht erstellt werden.",
       "actionError": "Diese Änderung konnte nicht gespeichert werden.",
-      "conflict": "Die Reise wurde an anderer Stelle geändert. Die neueste Version wurde geladen."
+      "conflict": "Die Reise wurde an anderer Stelle geändert. Die neueste Version wurde geladen.",
+      "invalidDates": "Gib vor dem Enddatum ein Startdatum ein und halte die zeitliche Reihenfolge ein."
     },
     "empty": {
       "title": "Keine Reise in Planung",
@@ -1426,6 +1429,8 @@
       "title": "Lege die Reisedaten fest",
       "description": "Damit werden die Tage deines Programms automatisch angelegt.",
       "timeZoneHint": "Prüfe die Zeitzone des Parks oder Reiseziels (zum Beispiel Europe/Paris), besonders wenn du aus einem anderen Land planst.",
+      "currentProposal": "Aktueller Vorschlag",
+      "explicitConversion": "Dieser Vorschlag bleibt unverändert, bis du ausdrücklich feste Daten wählst oder ihn löschst.",
       "toDecide": "Daten noch offen",
       "kinds": {
         "none": "Daten noch offen",

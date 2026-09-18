@@ -1382,6 +1382,8 @@
       "createFirst": "Utwórz mój pierwszy wyjazd",
       "continuePlanning": "Kontynuuj planowanie",
       "saveDates": "Zapisz daty",
+      "chooseFixedDates": "Wybierz ustalone daty",
+      "clearDates": "Usuń daty",
       "openCollections": "Otwórz moje listy",
       "importSelection": "Dodaj wybrane ({{count}})",
       "saveDay": "Zapisz ten dzień",
@@ -1410,7 +1412,8 @@
       "loadError": "Nie udało się wczytać twoich wyjazdów.",
       "createError": "Nie udało się utworzyć tego wyjazdu.",
       "actionError": "Nie udało się zapisać tej zmiany.",
-      "conflict": "Wyjazd został zmieniony w innym miejscu. Wczytano jego najnowszą wersję."
+      "conflict": "Wyjazd został zmieniony w innym miejscu. Wczytano jego najnowszą wersję.",
+      "invalidDates": "Podaj datę rozpoczęcia wcześniejszą niż data zakończenia i zachowaj kolejność chronologiczną."
     },
     "empty": {
       "title": "Brak planowanego wyjazdu",
@@ -1426,6 +1429,8 @@
       "title": "Ustal daty wyjazdu",
       "description": "Na ich podstawie automatycznie powstaną dni programu.",
       "timeZoneHint": "Sprawdź strefę czasową parku lub celu podróży (na przykład Europe/Paris), zwłaszcza gdy planujesz z innego kraju.",
+      "currentProposal": "Aktualna propozycja",
+      "explicitConversion": "Ta propozycja pozostanie bez zmian, dopóki wyraźnie nie wybierzesz ustalonych dat albo jej nie usuniesz.",
       "toDecide": "Daty do ustalenia",
       "kinds": {
         "none": "Daty do ustalenia",

@@ -17,6 +17,8 @@
       "createFirst": "Créer mon premier voyage",
       "continuePlanning": "Continuer la préparation",
       "saveDates": "Enregistrer les dates",
+      "chooseFixedDates": "Choisir des dates fixes",
+      "clearDates": "Effacer les dates",
       "openCollections": "Ouvrir mes listes",
       "importSelection": "Ajouter la sélection ({{count}})",
       "saveDay": "Enregistrer cette journée",
@@ -40,7 +42,8 @@
       "loadError": "Tes voyages n’ont pas pu être chargés.",
       "createError": "Ce voyage n’a pas pu être créé.",
       "actionError": "Cette modification n’a pas pu être enregistrée.",
-      "conflict": "Le voyage a changé ailleurs. Sa version la plus récente vient d’être rechargée."
+      "conflict": "Le voyage a changé ailleurs. Sa version la plus récente vient d’être rechargée.",
+      "invalidDates": "Indique une date de début avant la date de fin, dans l’ordre chronologique."
     },
     "empty": { "title": "Aucun voyage en préparation", "description": "Crée un voyage pour transformer tes envies de parcs en programme concret." },
     "overview": {
@@ -53,6 +56,8 @@
       "title": "Pose les dates du voyage",
       "description": "Elles créent automatiquement les journées de ton programme.",
       "timeZoneHint": "Vérifie le fuseau du parc ou de la destination (par exemple Europe/Paris), surtout si tu prépares le voyage depuis un autre pays.",
+      "currentProposal": "Proposition actuelle",
+      "explicitConversion": "Cette proposition reste intacte tant que tu ne choisis pas explicitement des dates fixes ou son effacement.",
       "toDecide": "Dates à décider",
       "kinds": { "none": "Dates à décider", "fixed": "Dates fixées", "range": "Période envisagée", "candidates": "Plusieurs dates possibles" }
     },

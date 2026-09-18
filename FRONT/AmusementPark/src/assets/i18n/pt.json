@@ -1382,6 +1382,8 @@
       "createFirst": "Criar a minha primeira viagem",
       "continuePlanning": "Continuar a preparação",
       "saveDates": "Guardar as datas",
+      "chooseFixedDates": "Escolher datas fixas",
+      "clearDates": "Limpar as datas",
       "openCollections": "Abrir as minhas listas",
       "importSelection": "Adicionar a seleção ({{count}})",
       "saveDay": "Guardar este dia",
@@ -1410,7 +1412,8 @@
       "loadError": "Não foi possível carregar as tuas viagens.",
       "createError": "Não foi possível criar esta viagem.",
       "actionError": "Não foi possível guardar esta alteração.",
-      "conflict": "A viagem foi alterada noutro local. A versão mais recente acaba de ser carregada."
+      "conflict": "A viagem foi alterada noutro local. A versão mais recente acaba de ser carregada.",
+      "invalidDates": "Indica uma data de início anterior à data de fim e mantém a ordem cronológica."
     },
     "empty": {
       "title": "Nenhuma viagem em preparação",
@@ -1426,6 +1429,8 @@
       "title": "Define as datas da viagem",
       "description": "As datas criam automaticamente os dias do programa.",
       "timeZoneHint": "Confirma o fuso horário do parque ou do destino (por exemplo, Europe/Paris), sobretudo se preparares a viagem a partir de outro país.",
+      "currentProposal": "Proposta atual",
+      "explicitConversion": "Esta proposta permanece inalterada até escolheres explicitamente datas fixas ou a limpares.",
       "toDecide": "Datas por decidir",
       "kinds": {
         "none": "Datas por decidir",

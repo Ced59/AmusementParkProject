@@ -58,9 +58,13 @@ describe('TripOverviewPageComponent', () => {
       startDate: WritableSignal<string>;
       endDate: WritableSignal<string>;
       destinationTimeZoneId: WritableSignal<string>;
+      dateEditorEnabled: WritableSignal<boolean>;
       dayDrafts: WritableSignal<Record<string, { candidateId: string; arrivalTime: string; note: string }>>;
       selectedCandidatesForDate: (localDate: string) => TripParkCandidate[];
       canSaveDay: (localDate: string) => boolean;
+      canSaveDates: () => boolean;
+      saveDates: () => void;
+      clearDates: () => void;
     };
     state.startDate.set('2026-10-03');
     state.endDate.set('2026-10-04');
@@ -138,6 +142,24 @@ describe('TripOverviewPageComponent', () => {
       candidateId: '', arrivalTime: '09:00', note: 'À préserver'
     });
     expect(state.canSaveDay('2026-10-05')).toBe(false);
+
+    trip.set(createTrip({
+      version: 4,
+      dateProposal: {
+        kind: 'Candidates', startDate: null, endDate: null,
+        candidateDates: ['2026-11-01', '2026-11-08']
+      }
+    }));
+    dateDraftRevision.set(3);
+    fixture.detectChanges();
+
+    expect(state.dateEditorEnabled()).toBe(false);
+    expect(state.canSaveDates()).toBe(false);
+    expect(fixture.nativeElement.textContent).toContain('2026-11-01');
+    state.saveDates();
+    expect(facade.setDates).not.toHaveBeenCalled();
+    state.clearDates();
+    expect(facade.setDates).toHaveBeenCalledWith('', '', '');
   });
 });
 

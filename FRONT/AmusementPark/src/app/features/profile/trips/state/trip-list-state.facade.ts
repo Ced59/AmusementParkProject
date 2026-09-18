@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
 
 import { TripDateProposal, TripPlan, TripPlanWriteRequest } from '@app/models/trips/trip.models';
-import { buildConfirmedTripDates } from './trip-date-proposal.helpers';
+import { areTripDateInputsValid, buildConfirmedTripDates } from './trip-date-proposal.helpers';
 import {
   TRIP_OPERATION_ID_PORT,
   TRIP_PLANS_DATA_PORT,
@@ -56,10 +56,13 @@ export class TripListStateFacade {
   create(title: string, startDate: string, endDate: string, destinationTimeZoneId: string): void {
     const normalizedTitle: string = title.trim();
     const normalizedTimeZoneId: string = destinationTimeZoneId.trim();
-    const dateProposal: TripDateProposal = buildConfirmedTripDates(startDate, endDate);
     if (!normalizedTitle
       || this.creatingSignal()
-      || (dateProposal.kind !== 'None' && !normalizedTimeZoneId)) {
+      || !areTripDateInputsValid(startDate, endDate)) {
+      return;
+    }
+    const dateProposal: TripDateProposal = buildConfirmedTripDates(startDate, endDate);
+    if (dateProposal.kind !== 'None' && !normalizedTimeZoneId) {
       return;
     }
 

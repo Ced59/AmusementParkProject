@@ -11,6 +11,8 @@
 .trip-section__heading,
 .trip-section__heading > div,
 .trip-dates__fields,
+.trip-dates__proposal,
+.trip-dates__actions,
 .wishlist-strip,
 .candidate-board,
 .day-board,
@@ -92,6 +94,45 @@ h1 {
 .trip-dates__hint {
   flex: 1 1 100%;
   color: var(--text-muted);
+}
+
+.trip-dates__proposal {
+  display: grid;
+  padding: 1rem;
+  gap: 0.75rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: var(--app-surface-2);
+}
+
+.trip-dates__proposal-values,
+.trip-dates__actions {
+  display: flex;
+  min-width: 0;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.trip-dates__proposal-values > span {
+  max-width: 100%;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c-gold) 14%, var(--app-surface));
+  overflow-wrap: anywhere;
+}
+
+.trip-dates__actions {
+  flex: 1 1 100%;
+}
+
+.trip-dates__actions > button {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.trip-dates__validation {
+  flex: 1 1 100%;
+  color: var(--c-rose);
 }
 
 label {

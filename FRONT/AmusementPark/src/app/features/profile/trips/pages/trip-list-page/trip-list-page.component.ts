@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TripPlan } from '@app/models/trips/trip.models';
 import { TranslationService } from '@app/services/translation.service';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
-import { resolvedBrowserTimeZone } from '../../state/trip-date-proposal.helpers';
+import { areTripDateInputsValid, resolvedBrowserTimeZone } from '../../state/trip-date-proposal.helpers';
 import { TripListStateFacade } from '../../state/trip-list-state.facade';
 
 @Component({
@@ -43,7 +43,19 @@ export class TripListPageComponent implements OnInit {
   }
 
   protected create(): void {
-    this.facade.create(this.title(), this.startDate(), this.endDate(), this.destinationTimeZoneId());
+    if (this.canCreate()) {
+      this.facade.create(this.title(), this.startDate(), this.endDate(), this.destinationTimeZoneId());
+    }
+  }
+
+  protected canCreate(): boolean {
+    return !!this.title().trim()
+      && areTripDateInputsValid(this.startDate(), this.endDate())
+      && (!this.startDate() || !!this.destinationTimeZoneId().trim());
+  }
+
+  protected datesInvalid(): boolean {
+    return !areTripDateInputsValid(this.startDate(), this.endDate());
   }
 
   protected open(trip: TripPlan): void {

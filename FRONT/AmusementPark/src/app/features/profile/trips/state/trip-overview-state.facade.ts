@@ -1,6 +1,20 @@
 import { computed, DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { catchError, concatMap, defer, finalize, forkJoin, from, last, map, Observable, of, switchMap, tap } from 'rxjs';
+import {
+  catchError,
+  concatMap,
+  defer,
+  EMPTY,
+  finalize,
+  forkJoin,
+  from,
+  last,
+  map,
+  Observable,
+  of,
+  switchMap,
+  tap
+} from 'rxjs';
 
 import {
   AddTripParkCandidateRequest,
@@ -16,7 +30,7 @@ import {
   TripProgram
 } from '@app/models/trips/trip.models';
 import { UserCollectionEntry } from '@app/models/watchlists/user-collection-entry.model';
-import { buildConfirmedTripDates, enumerateTripDates } from './trip-date-proposal.helpers';
+import { areTripDateInputsValid, buildConfirmedTripDates, enumerateTripDates } from './trip-date-proposal.helpers';
 import {
   TRIP_COLLECTIONS_DATA_PORT,
   TRIP_OPERATION_ID_PORT,
@@ -113,12 +127,15 @@ export class TripOverviewStateFacade {
   setDates(startDate: string, endDate: string, destinationTimeZoneId: string): void {
     const trip: TripPlan | null = this.tripSignal();
     const tripId: string | null = this.tripIdSignal();
-    const dateProposal = buildConfirmedTripDates(startDate, endDate);
     const normalizedTimeZoneId: string = destinationTimeZoneId.trim();
     if (!trip
       || !tripId
       || this.busySignal()
-      || (dateProposal.kind !== 'None' && !normalizedTimeZoneId)) {
+      || !areTripDateInputsValid(startDate, endDate)) {
+      return;
+    }
+    const dateProposal = buildConfirmedTripDates(startDate, endDate);
+    if (dateProposal.kind !== 'None' && !normalizedTimeZoneId) {
       return;
     }
 
@@ -279,15 +296,12 @@ export class TripOverviewStateFacade {
     this.actionErrorSignal.set(null);
     operation.pipe(
       takeUntilDestroyed(this.destroyRef),
-      finalize((): void => this.busySignal.set(false))
-    ).subscribe({
-      error: (error: { status?: number }): void => {
+      catchError((error: { status?: number }): Observable<unknown> => {
         this.actionErrorSignal.set(error?.status === 409 ? 'conflict' : 'failed');
-        if (this.requiresRecoveryReload(error)) {
-          this.reloadAfterFailure();
-        }
-      }
-    });
+        return this.requiresRecoveryReload(error) ? this.reloadAfterFailure() : EMPTY;
+      }),
+      finalize((): void => this.busySignal.set(false))
+    ).subscribe();
   }
 
   private requiresRecoveryReload(error: { status?: number }): boolean {
@@ -295,20 +309,20 @@ export class TripOverviewStateFacade {
     return status === undefined || status === 0 || status === 408 || status === 409 || status >= 500;
   }
 
-  private reloadAfterFailure(): void {
+  private reloadAfterFailure(): Observable<void> {
     const tripId: string | null = this.tripIdSignal();
     if (!tripId) {
-      return;
+      return of(undefined);
     }
-    this.reloadProgram(tripId)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (result: { trip: TripPlan; program: TripProgram }): void => {
-          this.applyProgram(result);
-          this.recoveryRevisionSignal.update((revision: number): number => revision + 1);
-          this.dateDraftRevisionSignal.update((revision: number): number => revision + 1);
-        }
-      });
+    return this.reloadProgram(tripId).pipe(
+      tap((result: { trip: TripPlan; program: TripProgram }): void => {
+        this.applyProgram(result);
+        this.recoveryRevisionSignal.update((revision: number): number => revision + 1);
+        this.dateDraftRevisionSignal.update((revision: number): number => revision + 1);
+      }),
+      map((): void => undefined),
+      catchError((): Observable<void> => of(undefined))
+    );
   }
 
   private reloadProgram(tripId: string): Observable<{ trip: TripPlan; program: TripProgram }> {

@@ -58,13 +58,16 @@
       <p class="trip-composer__hint">
         {{ (startDate() ? 'trips.dates.timeZoneHint' : 'trips.create.dateHint') | translate }}
       </p>
+      @if (datesInvalid()) {
+        <p class="trip-list-page__error" role="alert">{{ 'trips.feedback.invalidDates' | translate }}</p>
+      }
       @if (facade.createError()) {
         <p class="trip-list-page__error" role="alert">{{ 'trips.feedback.createError' | translate }}</p>
       }
       <button
         type="button"
         appUiButton="primary"
-        [disabled]="facade.creating() || !title().trim() || (!!startDate() && !destinationTimeZoneId().trim())"
+        [disabled]="facade.creating() || !canCreate()"
         (click)="create()">
         @if (facade.creating()) { <i class="pi pi-spin pi-spinner" aria-hidden="true"></i> }
         <span>{{ (facade.creating() ? 'trips.actions.creating' : 'trips.actions.start') | translate }}</span>

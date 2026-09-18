@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
+import { of, Subject, throwError } from 'rxjs';
 
 import { TripDayPlan, TripParkCandidate, TripPlan, TripProgram } from '@app/models/trips/trip.models';
 import { UserCollectionEntry } from '@app/models/watchlists/user-collection-entry.model';
@@ -178,7 +178,7 @@ describe('TripOverviewStateFacade', () => {
     );
 
     facade.load('trip-1');
-    facade.setDates('2026-10-05', '2026-10-03', 'Europe/Paris');
+    facade.setDates('2026-10-03', '2026-10-05', 'Invalid/Zone');
 
     expect(facade.actionError()).toBe('failed');
     expect(programData.get).toHaveBeenCalledTimes(1);
@@ -189,9 +189,10 @@ describe('TripOverviewStateFacade', () => {
 
   it('reloads the latest plan and reports an optimistic conflict', () => {
     const candidate: TripParkCandidate = createCandidate();
+    const recoveryProgram: Subject<TripProgram> = new Subject<TripProgram>();
     (programData.get as ReturnType<typeof vi.fn>)
       .mockReturnValueOnce(of(createProgram([candidate])))
-      .mockReturnValueOnce(of(createProgram([{ ...candidate, state: 'Selected', version: 2 }])));
+      .mockReturnValueOnce(recoveryProgram);
     (plans.getMine as ReturnType<typeof vi.fn>)
       .mockReturnValueOnce(of(createTrip({ version: 1 })))
       .mockReturnValueOnce(of(createTrip({ version: 2 })));
@@ -203,10 +204,16 @@ describe('TripOverviewStateFacade', () => {
     facade.changeCandidateState(candidate, 'Selected');
 
     expect(facade.actionError()).toBe('conflict');
+    expect(facade.busy()).toBe(true);
+
+    recoveryProgram.next(createProgram([{ ...candidate, state: 'Selected', version: 2 }]));
+    recoveryProgram.complete();
+
     expect(facade.trip()?.version).toBe(2);
     expect(facade.program().candidates[0].state).toBe('Selected');
     expect(facade.recoveryRevision()).toBe(1);
     expect(facade.dateDraftRevision()).toBe(1);
+    expect(facade.busy()).toBe(false);
   });
 });
 

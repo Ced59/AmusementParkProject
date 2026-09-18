@@ -1,6 +1,16 @@
 import { TripDateProposal } from '@app/models/trips/trip.models';
 
+export const areTripDateInputsValid = (startDate: string, endDate: string): boolean => {
+  const normalizedStart: string = startDate.trim();
+  const normalizedEnd: string = endDate.trim();
+  return (!normalizedEnd || !!normalizedStart)
+    && (!normalizedStart || !normalizedEnd || normalizedEnd >= normalizedStart);
+};
+
 export const buildConfirmedTripDates = (startDate: string, endDate: string): TripDateProposal => {
+  if (!areTripDateInputsValid(startDate, endDate)) {
+    throw new Error('Trip date inputs are invalid.');
+  }
   const normalizedStart: string = startDate.trim();
   const normalizedEnd: string = endDate.trim();
   if (!normalizedStart) {

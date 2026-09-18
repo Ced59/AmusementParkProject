@@ -37,36 +37,62 @@
           <p>{{ 'trips.dates.description' | translate }}</p>
         </div>
       </div>
-      <div class="trip-dates__fields">
-        <label>
-          <span>{{ 'trips.fields.startDate' | translate }}</span>
-          <input type="date" [value]="startDate()" (input)="startDate.set($any($event.target).value)">
-        </label>
-        <label>
-          <span>{{ 'trips.fields.endDate' | translate }}</span>
-          <input type="date" [min]="startDate()" [value]="endDate()" (input)="endDate.set($any($event.target).value)">
-        </label>
-        @if (startDate()) {
+      @if (hasSpecialDateProposal() && !dateEditorEnabled()) {
+        <div class="trip-dates__proposal">
+          <strong>{{ 'trips.dates.currentProposal' | translate }}</strong>
+          <div class="trip-dates__proposal-values">
+            @for (date of currentProposedDates(); track date) {
+              <span>{{ date }}</span>
+            }
+          </div>
+          <p>{{ 'trips.dates.explicitConversion' | translate }}</p>
+          <div class="trip-dates__actions">
+            <button type="button" appUiButton="primary" [disabled]="facade.busy()" (click)="beginFixedDateEdit()">
+              {{ 'trips.actions.chooseFixedDates' | translate }}
+            </button>
+            <button type="button" appUiButton="ghost" [disabled]="facade.busy()" (click)="clearDates()">
+              {{ 'trips.actions.clearDates' | translate }}
+            </button>
+          </div>
+        </div>
+      } @else {
+        <div class="trip-dates__fields">
           <label>
-            <span>{{ 'trips.fields.destinationTimeZone' | translate }}</span>
-            <input
-              type="text"
-              maxlength="100"
-              autocomplete="off"
-              [value]="destinationTimeZoneId()"
-              placeholder="Europe/Paris"
-              (input)="destinationTimeZoneId.set($any($event.target).value)">
+            <span>{{ 'trips.fields.startDate' | translate }}</span>
+            <input type="date" [value]="startDate()" (input)="startDate.set($any($event.target).value)">
           </label>
-          <p class="trip-dates__hint">{{ 'trips.dates.timeZoneHint' | translate }}</p>
-        }
-        <button
-          type="button"
-          appUiButton="primary"
-          [disabled]="facade.busy() || (!!startDate() && !destinationTimeZoneId().trim())"
-          (click)="saveDates()">
-          {{ 'trips.actions.saveDates' | translate }}
-        </button>
-      </div>
+          <label>
+            <span>{{ 'trips.fields.endDate' | translate }}</span>
+            <input type="date" [min]="startDate()" [value]="endDate()" (input)="endDate.set($any($event.target).value)">
+          </label>
+          @if (startDate()) {
+            <label>
+              <span>{{ 'trips.fields.destinationTimeZone' | translate }}</span>
+              <input
+                type="text"
+                maxlength="100"
+                autocomplete="off"
+                [value]="destinationTimeZoneId()"
+                placeholder="Europe/Paris"
+                (input)="destinationTimeZoneId.set($any($event.target).value)">
+            </label>
+            <p class="trip-dates__hint">{{ 'trips.dates.timeZoneHint' | translate }}</p>
+          }
+          @if (datesInvalid()) {
+            <p class="trip-dates__validation" role="alert">{{ 'trips.feedback.invalidDates' | translate }}</p>
+          }
+          <div class="trip-dates__actions">
+            <button type="button" appUiButton="primary" [disabled]="facade.busy() || !canSaveDates()" (click)="saveDates()">
+              {{ 'trips.actions.saveDates' | translate }}
+            </button>
+            @if (facade.trip()?.dateProposal?.kind !== 'None') {
+              <button type="button" appUiButton="ghost" [disabled]="facade.busy()" (click)="clearDates()">
+                {{ 'trips.actions.clearDates' | translate }}
+              </button>
+            }
+          </div>
+        </div>
+      }
     </section>
 
     <section class="trip-section" appUiSurface="panel" appUiSurfacePadding="spacious">
