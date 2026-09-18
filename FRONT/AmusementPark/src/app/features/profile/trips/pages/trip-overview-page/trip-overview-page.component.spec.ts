@@ -99,11 +99,13 @@ describe('TripOverviewPageComponent', () => {
       saveSpecialTimeZone: () => void;
       clearDates: () => void;
     };
+    expect(state.hasUnsavedDayDraft()).toBe(false);
     state.startDate.set('2026-10-03');
     state.endDate.set('2026-10-04');
     state.dayDrafts.set({
       '2026-10-03': { candidateId: 'candidate-1', arrivalTime: '08:00', note: 'Brouillon obsolète' }
     });
+    expect(state.hasUnsavedDayDraft()).toBe(true);
     expect(state.currentLanguage()).toBe('fr');
     languageParams.next(convertToParamMap({ lang: 'de' }));
     fixture.detectChanges();
