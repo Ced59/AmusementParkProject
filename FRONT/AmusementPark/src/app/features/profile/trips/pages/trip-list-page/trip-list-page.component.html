@@ -29,6 +29,7 @@
         <input
           type="text"
           maxlength="120"
+          [disabled]="facade.creating()"
           [value]="title()"
           [placeholder]="'trips.create.titlePlaceholder' | translate"
           (input)="title.set($any($event.target).value)">
@@ -36,11 +37,20 @@
       <div class="trip-composer__dates">
         <label>
           <span>{{ 'trips.fields.startDate' | translate }}</span>
-          <input type="date" [value]="startDate()" (input)="startDate.set($any($event.target).value)">
+          <input
+            type="date"
+            [disabled]="facade.creating()"
+            [value]="startDate()"
+            (input)="startDate.set($any($event.target).value)">
         </label>
         <label>
           <span>{{ 'trips.fields.endDate' | translate }}</span>
-          <input type="date" [min]="startDate()" [value]="endDate()" (input)="endDate.set($any($event.target).value)">
+          <input
+            type="date"
+            [disabled]="facade.creating()"
+            [min]="startDate()"
+            [value]="endDate()"
+            (input)="endDate.set($any($event.target).value)">
         </label>
         @if (startDate()) {
           <label>
@@ -49,6 +59,7 @@
               type="text"
               maxlength="100"
               autocomplete="off"
+              [disabled]="facade.creating()"
               [value]="destinationTimeZoneId()"
               placeholder="Europe/Paris"
               (input)="destinationTimeZoneId.set($any($event.target).value)">
