@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
+import { of, Subject, throwError } from 'rxjs';
 
 import {
   TripInvitationCreation,
@@ -98,6 +98,24 @@ describe('TripInvitationsStateFacade', () => {
 
     expect(operationIds.create).toHaveBeenCalledTimes(2);
     expect(data.create).toHaveBeenNthCalledWith(2, 'trip-1', expect.any(Object), 'operation-2');
+  });
+
+  it('retains a newer plan version received while the invitation list is loading', () => {
+    const pendingList = new Subject<TripInvitationList>();
+    (data.list as ReturnType<typeof vi.fn>).mockReturnValue(pendingList);
+
+    facade.load('trip-1', 5);
+    facade.load('trip-1', 6);
+    pendingList.next(createList());
+    pendingList.complete();
+    facade.create('Participant', 24, '');
+
+    expect(data.create).toHaveBeenCalledWith('trip-1', {
+      expectedPlanVersion: 6,
+      proposedRole: 'Participant',
+      lifetimeHours: 24,
+      targetEmail: null
+    }, 'operation-1');
   });
 });
 

@@ -61,7 +61,7 @@ function resolvePublicShareProductPath(localizedPath: string): string | null {
   if (localizedPath.startsWith('passport/shared/comparisons/')) {
     return 'product/share/profile-comparison';
   }
-  if (localizedPath.startsWith('trips/invitations/')) {
+  if (localizedPath.startsWith('trip-invitations/')) {
     return 'product/share/trip-invitation';
   }
 

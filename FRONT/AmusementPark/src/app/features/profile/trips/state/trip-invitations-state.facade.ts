@@ -44,12 +44,16 @@ export class TripInvitationsStateFacade {
   }
 
   load(tripId: string, planVersion: number): void {
-    if (!tripId || planVersion < 1 || this.isBusy()) {
+    if (!tripId || planVersion < 1) {
       return;
     }
 
     this.tripIdSignal.set(tripId);
     this.planVersionSignal.set(planVersion);
+    if (this.isBusy()) {
+      return;
+    }
+
     this.statusSignal.set('loading');
     this.data.list(tripId).pipe(
       takeUntilDestroyed(this.destroyRef),
