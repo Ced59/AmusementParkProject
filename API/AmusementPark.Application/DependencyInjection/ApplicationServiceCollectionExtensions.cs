@@ -105,6 +105,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<TripDayProgramService>();
         services.AddScoped<TripChildMutationExecutor>();
         services.AddScoped<TripProgramResultFactory>();
+        services.AddScoped<TripInvitationService>();
         services.AddScoped<UserNotificationCenterService>();
         services.AddScoped<WatchPilotMetricsRecorder>();
         services.AddScoped<UserNotificationCreationService>();

@@ -199,6 +199,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ITripChildMutationLeaseRepository, TripChildMutationLeaseRepository>();
         services.AddScoped<ITripParkCandidateRepository, TripParkCandidateRepository>();
         services.AddScoped<ITripDayPlanRepository, TripDayPlanRepository>();
+        services.AddScoped<ITripInvitationRepository, TripInvitationRepository>();
+        services.AddSingleton<ITripInvitationSecurity, TripInvitationSecurity>();
         services.AddSingleton<ITripTimeZoneValidator, SystemTripTimeZoneValidator>();
         services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
         services.AddScoped<INotificationDigestRepository, NotificationDigestRepository>();

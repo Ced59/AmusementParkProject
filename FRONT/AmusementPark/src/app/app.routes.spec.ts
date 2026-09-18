@@ -93,6 +93,16 @@ describe('App routes', () => {
     expect(route?.canActivate).toBeUndefined();
   });
 
+  it('exposes the minimized trip invitation preview without an authentication guard', () => {
+    const route: Route | undefined = getPublicRoutes().find(
+      (candidate: Route): boolean => candidate.path === 'trip-invitations/:token'
+    );
+
+    expect(route).toBeDefined();
+    expect(route?.loadComponent).toBeDefined();
+    expect(route?.canActivate).toBeUndefined();
+  });
+
   it('redirects legacy video share routes to canonical video routes', () => {
     const publicRoutes: Route[] = getPublicRoutes();
     const expectedRedirects: Record<string, string> = {

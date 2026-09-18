@@ -103,4 +103,11 @@ describe('SeoRoutePolicyService', (): void => {
     expect(service.isSharedProfileComparisonRoute('/fr/passport/shared/comparisons/opaque-token')).toBe(true);
     expect(service.isAccountRoute('/fr/passport/shared/comparisons/opaque-token')).toBe(false);
   });
+
+  it('recognizes only complete opaque trip invitation routes', (): void => {
+    expect(service.isTripInvitationRoute('/fr/trip-invitations/opaque-token')).toBe(true);
+    expect(service.isTripInvitationRoute('/fr/trip-invitations/opaque-token?from=copy')).toBe(true);
+    expect(service.isTripInvitationRoute('/fr/trip-invitations')).toBe(false);
+    expect(service.isTripInvitationRoute('/fr/trip-invitations/token/extra')).toBe(false);
+  });
 });

@@ -156,6 +156,37 @@ La preuve d'architecture, les flux, les cas couverts et les limites du jalon son
 consignés dans
 [`product-growth-trip-04-individual-ui-2026-09-18.md`](../../architecture/product-growth-trip-04-individual-ui-2026-09-18.md).
 
+### État de `TRIP-05` au 18 septembre 2026
+
+Le propriétaire peut désormais préparer une invitation depuis son voyage, choisir
+un rôle de co-organisateur, participant ou lecteur, fixer une validité comprise
+entre une heure et trente jours et, facultativement, réserver le lien à une adresse.
+Avant la création, l'interface présente les seules informations visibles par
+l'invité : titre, alias public de l'organisateur, rôle, période ramenée au mois,
+taille du groupe par tranche et expiration. Les parcs, journées, membres, votes,
+contraintes et notes ne quittent jamais le périmètre privé.
+
+Le lien contient 256 bits aléatoires et n'est conservé en base que sous forme de
+condensat SHA-256. Une copie chiffrée, liée à l'opération et à l'auteur, permet de
+rejouer exactement une création dont la réponse réseau aurait été perdue ; elle
+est effacée lors de la révocation. Les adresses ciblées sont normalisées puis
+protégées par HMAC versionné. Vingt invitations actives au maximum sont garanties
+par des slots uniques, y compris en concurrence, et l'expiration utilise l'heure
+du serveur MongoDB.
+
+L'aperçu public est accessible sans compte mais rendu côté client, non indexable,
+non archivable et sans cache de transfert SSR afin que le token ne soit pas injecté
+dans un HTML partagé. Une invitation inconnue, expirée, utilisée ou révoquée
+produit le même résultat indisponible. Le propriétaire retrouve uniquement les
+informations métier utiles de ses liens en attente et peut les révoquer sans que
+les identifiants internes ou empreintes techniques soient affichés.
+
+`TRIP-05` ne modifie pas encore les membres du voyage : la consommation atomique
+du lien, l'acceptation ou le refus et la gestion des participants appartiennent à
+`TRIP-06`. Le schéma de persistance, les frontières et les séquences sont détaillés
+dans
+[`product-growth-trip-05-opaque-invitations-2026-09-18.md`](../../architecture/product-growth-trip-05-opaque-invitations-2026-09-18.md).
+
 ## 1. Vision produit
 
 Un groupe doit pouvoir transformer des envies dispersées en programme commun :
@@ -713,7 +744,7 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 | `TRIP-02` | Core/persistance voyage individuel | CRUD fiable — implémenté le 17 septembre 2026 |
 | `TRIP-03` | Candidats et jours | Programme cohérent — implémenté le 17 septembre 2026 |
 | `TRIP-04` | UI individuelle + wishlist | Valeur sans invitation — implémenté le 18 septembre 2026 |
-| `TRIP-05` | Invitations opaques | Preview minimisé |
+| `TRIP-05` | Invitations opaques | Preview minimisé — implémenté le 18 septembre 2026 |
 | `TRIP-06` | Participants/rôles | Permissions testées |
 | `TRIP-07` | Préférences par élément | Unicité et batch |
 | `TRIP-08` | Synthèse/conflits | Pas de majorité aveugle |

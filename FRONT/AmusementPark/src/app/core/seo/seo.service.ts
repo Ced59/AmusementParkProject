@@ -1876,6 +1876,17 @@ export class SeoService {
       return;
     }
 
+    if (this.routePolicy.isTripInvitationRoute(url)) {
+      this.apply({
+        title: SITE_NAME,
+        description: DEFAULT_DESCRIPTION,
+        canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(`/${language}/trip-invitations`),
+        robots: 'noindex,nofollow,noarchive',
+        alternates: []
+      });
+      return;
+    }
+
     if (this.routePolicy.isSharedUserRankingRoute(url) || this.routePolicy.isSharedVisitRecapRoute(url)) {
       this.apply({
         title: SITE_NAME,

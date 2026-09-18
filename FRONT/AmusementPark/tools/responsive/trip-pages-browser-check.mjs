@@ -14,7 +14,9 @@ const projectRoot = process.cwd();
 const componentStyles = [
   'src/app/features/profile/trips/pages/trip-list-page/trip-list-page.component.scss',
   'src/app/features/profile/trips/pages/trip-overview-page/trip-overview-page.component.scss',
-  'src/app/features/profile/trips/components/trip-candidate-card/trip-candidate-card.component.scss'
+  'src/app/features/profile/trips/components/trip-candidate-card/trip-candidate-card.component.scss',
+  'src/app/features/profile/trips/components/trip-invitation-panel/trip-invitation-panel.component.scss',
+  'src/app/features/public/trips/pages/trip-invitation-preview-page/trip-invitation-preview-page.component.scss'
 ]
   .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
   .join('\n')
@@ -114,12 +116,34 @@ const fixtureMarkup = `
           <article class="day-card"><div class="day-card__date"><strong>4 octobre 2026</strong></div><label><span>Parc</span><select><option>Deuxième destination</option></select></label><label><span>Arrivée</span><input type="time" value="10:00"></label><label class="day-card__note"><span>Note du groupe</span><textarea>Une autre note représentative.</textarea></label><div class="day-card__actions"><button>Enregistrer la journée</button><button>Vider la journée</button></div></article>
         </div>
       </section>
+      <section class="invitation-panel surface" data-check-bound>
+        <div class="invitation-panel__heading"><span class="invitation-panel__step">5</span><div><h2>Invite tes compagnons de voyage</h2><p>Le formulaire et son aperçu restent contenus.</p></div></div>
+        <div class="invitation-panel__workspace">
+          <form class="invitation-panel__form">
+            <fieldset><legend>Que pourra faire cette personne ?</legend><div class="invitation-panel__roles"><button class="invitation-role"><i>✎</i><strong>Co-organisateur</strong><span>Modifie le programme avec toi.</span></button><button class="invitation-role invitation-role--active"><i>★</i><strong>Participant</strong><span>Participe aux choix.</span></button><button class="invitation-role"><i>◉</i><strong>Lecteur</strong><span>Consulte sans modifier.</span></button></div></fieldset>
+            <div class="invitation-panel__fields"><label><span>Durée de validité</span><select><option>7 jours</option></select></label><label><span>Adresse du destinataire facultative</span><input value="compagnon@example.com"></label></div>
+            <aside class="invitation-preview"><h3>Aperçu avant envoi</h3><dl><div><dt>Rôle proposé</dt><dd>Participant</dd></div><div><dt>Période approximative</dt><dd>2027-07 → 2027-08</dd></div></dl><p>Les détails privés restent invisibles.</p></aside>
+            <button>Créer le lien sécurisé</button>
+          </form>
+          <div class="invitation-created"><h3>Partage-le maintenant</h3><a class="invitation-created__link">https://amusement-parks.fun/fr/trip-invitations/un-tres-long-token-opaque</a><div class="invitation-created__actions"><button>Copier le lien</button><button>Masquer</button></div></div>
+        </div>
+      </section>
+    </main>
+
+    <main class="invitation-page" data-responsive-root="trip-invitation-preview">
+      <a href="#">Retour à l'accueil</a>
+      <article class="invitation-card-public surface" data-check-bound>
+        <div class="invitation-card-public__intro"><h1>Une aventure européenne avec un titre très long</h1><p>Camille t'invite à préparer ce voyage.</p></div>
+        <div class="invitation-card-public__facts"><div><i>◉</i><span>Rôle proposé</span><strong>Participant</strong></div><div><i>▣</i><span>Période approximative</span><strong>2027-07 → 2027-08</strong></div><div><i>♙</i><span>Taille du groupe</span><strong>2 à 5 membres</strong></div></div>
+        <div class="invitation-card-public__privacy"><strong>Programme privé</strong><p>Aucun parc, jour, vote ou contrainte n'est révélé.</p></div>
+        <div class="invitation-card-public__cta"><button>Me connecter pour continuer</button><p>Tu peux consulter cet aperçu sans compte.</p></div>
+      </article>
     </main>
   </div>
   <nav class="test-mobile-navigation" aria-hidden="true">Navigation mobile</nav>`;
 
 const baseStyles = `
-  :root { --font-heading: sans-serif; --text-muted: #8a8175; --text-primary: #fff; --app-border: #655847; --app-surface: #17110c; --app-surface-2: #211810; --c-rose: #ff477e; --c-orange: #ff5b2d; --c-sky: #58c9ee; --c-gold: #d6a945; --c-lime: #b8e532; --radius-md: 0.75rem; --radius-lg: 1rem; --shadow-lg: 0 1rem 2rem #0008; }
+  :root { --font-heading: sans-serif; --text-muted: #8a8175; --text-primary: #fff; --app-border: #655847; --app-surface: #17110c; --app-surface-2: #211810; --c-rose: #ff477e; --c-orange: #ff5b2d; --c-sky: #58c9ee; --c-gold: #d6a945; --c-lime: #b8e532; --c-purple: #a978ff; --radius-md: 0.75rem; --radius-lg: 1rem; --shadow-lg: 0 1rem 2rem #0008; }
   * { box-sizing: border-box; }
   html, body { width: 100%; max-width: 100%; margin: 0; overflow-x: clip; }
   body { background: #0d0906; color: var(--text-primary); font: 16px/1.4 sans-serif; }

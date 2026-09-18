@@ -1365,6 +1365,72 @@
     }
   },
   "trips": {
+    "invitations": {
+      "kicker": "Planujcie razem",
+      "title": "Zaproś swoich towarzyszy podróży",
+      "description": "Utwórz osobisty, jednorazowy link bez upubliczniania planu.",
+      "roleLabel": "Co będzie mogła robić ta osoba?",
+      "roles": {
+        "editor": "Współorganizator",
+        "participant": "Uczestnik",
+        "viewer": "Czytelnik"
+      },
+      "roleHints": {
+        "editor": "Edytuje program razem z tobą.",
+        "participant": "Bierze udział w wyborach i preferencjach.",
+        "viewer": "Przegląda podróż bez wprowadzania zmian."
+      },
+      "expirationLabel": "Okres ważności",
+      "expirations": {
+        "day": "24 godziny",
+        "week": "7 dni",
+        "month": "30 dni"
+      },
+      "emailLabel": "E-mail odbiorcy (opcjonalnie)",
+      "emailPlaceholder": "znajomy@przyklad.pl",
+      "invalidEmail": "Wpisz prawidłowy adres e-mail albo pozostaw pole puste.",
+      "previewKicker": "Podgląd przed udostępnieniem",
+      "previewInviter": "Zaproszenie od",
+      "previewPublicAlias": "Twój publiczny alias",
+      "previewRole": "Proponowana rola",
+      "previewPeriod": "Przybliżony termin",
+      "previewGroup": "Wielkość grupy",
+      "previewPrivacy": "Parki, dni, notatki, głosy i ograniczenia pozostają ukryte do przyjęcia zaproszenia.",
+      "periodUnspecified": "Termin jeszcze nieustalony",
+      "memberBands": {
+        "one": "Obecnie 1 członek",
+        "twotofive": "Od 2 do 5 członków",
+        "sixtoten": "Od 6 do 10 członków",
+        "eleventofifty": "Od 11 do 50 członków"
+      },
+      "createLink": "Utwórz bezpieczny link",
+      "ready": "Link gotowy",
+      "shareNow": "Udostępnij go teraz",
+      "oneUse": "Link jest wyświetlany tylko tutaj i może zostać użyty tylko raz.",
+      "copy": "Kopiuj link",
+      "copied": "Link skopiowany",
+      "hideLink": "Ukryj",
+      "activeTitle": "Oczekujące linki",
+      "activeDescription": "Natychmiast unieważnij link, który nie powinien być już używany.",
+      "loading": "Ładowanie zaproszeń…",
+      "empty": "Brak aktywnych linków z zaproszeniem.",
+      "targeted": "Tylko dla jednego adresu",
+      "openLink": "Link nieimienny",
+      "expiresAt": "Wygasa",
+      "revoke": "Unieważnij",
+      "error": "Nie udało się zaktualizować zaproszeń.",
+      "backHome": "Wróć na stronę główną",
+      "previewLoading": "Sprawdzanie zaproszenia…",
+      "unavailableTitle": "To zaproszenie nie jest już dostępne",
+      "unavailableDescription": "Mogło wygasnąć, zostać już użyte albo unieważnione. Poproś organizatora o nowy link.",
+      "publicKicker": "Prywatne zaproszenie",
+      "invitedBy": "{{name}} zaprasza cię do zaplanowania tej podróży.",
+      "privatePlan": "Prywatny plan",
+      "publicPrivacy": "Ten podgląd nie ujawnia parków, dni, notatek ani preferencji grupy.",
+      "publicTargeted": "Ten link jest przeznaczony dla adresu e-mail wybranego przez organizatora.",
+      "continue": "Zaloguj się, aby kontynuować",
+      "accountRequired": "Możesz zobaczyć ten podgląd bez konta. Aby na stałe dołączyć do podróży, musisz się zalogować."
+    },
     "kicker": "Wyjazdy do zaplanowania",
     "privacy": "Prywatne, widoczne tylko dla ciebie",
     "profile": {

@@ -1,0 +1,76 @@
+import { DatePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+
+import {
+  TripInvitationMemberCountBand,
+  TripInvitationRole
+} from '@app/models/trips/trip-invitation.models';
+import { ModalService } from '@app/services/modal/modal.service';
+import { TranslationService } from '@app/services/translation.service';
+import { SeoService } from '@core/seo/seo.service';
+import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { TripInvitationPreviewStateFacade } from '../../state/trip-invitation-preview-state.facade';
+
+@Component({
+  selector: 'app-trip-invitation-preview-page',
+  templateUrl: './trip-invitation-preview-page.component.html',
+  styleUrl: './trip-invitation-preview-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [TripInvitationPreviewStateFacade],
+  imports: [
+    DatePipe,
+    RouterLink,
+    TranslateModule,
+    UiButtonDirective,
+    UiChipComponent,
+    UiKickerComponent,
+    UiSurfaceDirective
+  ]
+})
+export class TripInvitationPreviewPageComponent implements OnInit {
+  protected readonly currentLanguage = signal<string>('en');
+
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly translationService: TranslationService,
+    private readonly seoService: SeoService,
+    private readonly modalService: ModalService,
+    protected readonly facade: TripInvitationPreviewStateFacade
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.currentLanguage.set(resolveLanguageFromActivatedRoute(
+      this.route,
+      this.translationService.getCurrentLang() || 'en'
+    ));
+    this.seoService.applyRouteDefaults(this.router.url);
+    this.facade.load(this.route.snapshot.paramMap.get('token') ?? '');
+  }
+
+  protected continueWithAccount(): void {
+    this.modalService.openModal('loginModal');
+  }
+
+  protected roleLabelKey(role: TripInvitationRole): string {
+    return `trips.invitations.roles.${role.toLowerCase()}`;
+  }
+
+  protected memberBandLabelKey(band: TripInvitationMemberCountBand): string {
+    return `trips.invitations.memberBands.${band.toLowerCase()}`;
+  }
+
+  protected periodLabel(): string {
+    const preview = this.facade.preview();
+    if (!preview || preview.periodKind === 'Unspecified' || !preview.startMonth) {
+      return 'trips.invitations.periodUnspecified';
+    }
+    return preview.periodKind === 'SingleMonth'
+      ? preview.startMonth
+      : `${preview.startMonth} → ${preview.endMonth ?? preview.startMonth}`;
+  }
+}

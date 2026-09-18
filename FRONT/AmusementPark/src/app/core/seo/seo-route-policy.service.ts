@@ -77,6 +77,10 @@ export class SeoRoutePolicyService {
     return /^\/[a-z]{2}\/passport\/shared\/comparisons\/[^/]+\/?$/i.test(this.normalizePath(url));
   }
 
+  isTripInvitationRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/trip-invitations\/[^/]+\/?$/i.test(this.normalizePath(url));
+  }
+
   isFilteredPublicParkRoute(url: string): boolean {
     if (!this.hasQueryString(url)) {
       return false;

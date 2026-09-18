@@ -201,6 +201,7 @@ export const routes: Routes = [
           { path: 'park-fit/compare', loadComponent: () => import('@features/public/park-fit/pages/park-fit-comparison-page.component').then((m) => m.ParkFitComparisonPageComponent) },
           { path: 'park-fit/results', loadComponent: () => import('@features/public/park-fit/pages/park-fit-results-page.component').then((m) => m.ParkFitResultsPageComponent) },
           { path: 'park-fit', loadComponent: () => import('@features/public/park-fit/pages/park-fit-start-page.component').then((m) => m.ParkFitStartPageComponent) },
+          { path: 'trip-invitations/:token', loadComponent: () => import('@features/public/trips/pages/trip-invitation-preview-page/trip-invitation-preview-page.component').then((m) => m.TripInvitationPreviewPageComponent) },
           { path: 'sitemap', loadComponent: () => import('./features/public/sitemap/pages/public-sitemap-page.component').then((m) => m.PublicSitemapPageComponent) },
           { path: 'technical', loadComponent: () => import('./features/public/technical-pages/pages/technical-pages-page.component').then((m) => m.TechnicalPagesPageComponent) },
           { path: 'technical/:slug', loadComponent: () => import('./features/public/technical-pages/pages/technical-page-detail-page.component').then((m) => m.TechnicalPageDetailPageComponent) },
