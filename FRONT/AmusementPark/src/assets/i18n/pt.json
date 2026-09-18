@@ -1436,6 +1436,7 @@
       "clearBlocked": "Limpa primeiro todos os dias guardados e as restrições de datas dos parques antes de limpares as datas da viagem.",
       "dependenciesOutsideRange": "O novo período deve incluir todos os dias guardados e as restrições de datas dos parques.",
       "unsavedDayOutsideRange": "Um dia fora deste período contém alterações não guardadas. Limpa ou guarda o rascunho antes de alterares as datas.",
+      "unsavedDayBeforeClear": "Um dia contém alterações não guardadas. Limpa ou guarda o rascunho antes de limpares as datas da viagem.",
       "toDecide": "Datas por decidir",
       "kinds": {
         "none": "Datas por decidir",

@@ -1436,6 +1436,7 @@
       "clearBlocked": "Efface d’abord chaque journée enregistrée et chaque contrainte de date d’un parc avant d’effacer les dates du voyage.",
       "dependenciesOutsideRange": "La nouvelle période doit inclure chaque journée enregistrée et chaque contrainte de date d’un parc.",
       "unsavedDayOutsideRange": "Une journée contient des modifications non enregistrées hors de cette période. Efface ou enregistre son brouillon avant de modifier les dates.",
+      "unsavedDayBeforeClear": "Une journée contient des modifications non enregistrées. Efface ou enregistre son brouillon avant d’effacer les dates.",
       "toDecide": "Dates à décider",
       "kinds": {
         "none": "Dates à décider",

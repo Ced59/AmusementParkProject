@@ -1436,6 +1436,7 @@
       "clearBlocked": "Najpierw usuń wszystkie zapisane dni i ograniczenia dat parków, zanim usuniesz daty wyjazdu.",
       "dependenciesOutsideRange": "Nowy okres musi obejmować wszystkie zapisane dni i ograniczenia dat parków.",
       "unsavedDayOutsideRange": "Dzień poza tym okresem zawiera niezapisane zmiany. Wyczyść lub zapisz jego szkic przed zmianą dat.",
+      "unsavedDayBeforeClear": "Dzień zawiera niezapisane zmiany. Wyczyść lub zapisz jego szkic przed usunięciem dat wyjazdu.",
       "toDecide": "Daty do ustalenia",
       "kinds": {
         "none": "Daty do ustalenia",

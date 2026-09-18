@@ -1436,6 +1436,7 @@
       "clearBlocked": "Wis eerst alle opgeslagen dagen en datumbeperkingen van parken voordat je de reisdatums wist.",
       "dependenciesOutsideRange": "De nieuwe periode moet alle opgeslagen dagen en datumbeperkingen van parken bevatten.",
       "unsavedDayOutsideRange": "Een dag buiten deze periode bevat niet-opgeslagen wijzigingen. Wis of bewaar het concept voordat je de datums wijzigt.",
+      "unsavedDayBeforeClear": "Een dag bevat niet-opgeslagen wijzigingen. Wis of bewaar het concept voordat je de reisdatums wist.",
       "toDecide": "Datums nog te bepalen",
       "kinds": {
         "none": "Datums nog te bepalen",

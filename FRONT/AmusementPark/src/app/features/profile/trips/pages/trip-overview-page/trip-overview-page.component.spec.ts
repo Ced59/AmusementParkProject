@@ -91,6 +91,7 @@ describe('TripOverviewPageComponent', () => {
       datesTooLong: () => boolean;
       canSaveSpecialTimeZone: () => boolean;
       canClearDates: () => boolean;
+      hasUnsavedDayDraft: () => boolean;
       dateDependenciesOutsideDraft: () => boolean;
       unsavedDayDraftOutsideRange: () => boolean;
       isCandidateScheduled: (candidateId: string) => boolean;
@@ -251,6 +252,18 @@ describe('TripOverviewPageComponent', () => {
     expect(facade.setDates).not.toHaveBeenCalled();
 
     program.set({ candidates: [createCandidate('candidate-flexible', [])], days: [] });
+    fixture.detectChanges();
+    expect(state.canClearDates()).toBe(true);
+    state.dayDrafts.set({
+      '2026-11-01': { candidateId: 'candidate-flexible', arrivalTime: '', note: 'À préserver' }
+    });
+    fixture.detectChanges();
+    expect(state.hasUnsavedDayDraft()).toBe(true);
+    expect(state.canClearDates()).toBe(false);
+    expect(fixture.nativeElement.textContent).toContain('trips.dates.unsavedDayBeforeClear');
+    state.clearDates();
+    expect(facade.setDates).not.toHaveBeenCalled();
+    state.dayDrafts.set({});
     fixture.detectChanges();
     expect(state.canClearDates()).toBe(true);
     state.clearDates();

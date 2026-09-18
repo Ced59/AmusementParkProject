@@ -1436,6 +1436,7 @@
       "clearBlocked": "Clear every saved day and every park date constraint before clearing the trip dates.",
       "dependenciesOutsideRange": "The new period must include every saved day and every park date constraint.",
       "unsavedDayOutsideRange": "A day has unsaved changes outside this period. Clear or save its draft before changing the dates.",
+      "unsavedDayBeforeClear": "A day has unsaved changes. Clear or save its draft before clearing the trip dates.",
       "toDecide": "Dates to decide",
       "kinds": {
         "none": "Dates to decide",

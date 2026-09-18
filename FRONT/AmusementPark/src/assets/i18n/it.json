@@ -1436,6 +1436,7 @@
       "clearBlocked": "Svuota prima tutte le giornate salvate e i vincoli di data dei parchi, poi potrai cancellare le date del viaggio.",
       "dependenciesOutsideRange": "Il nuovo periodo deve includere tutte le giornate salvate e i vincoli di data dei parchi.",
       "unsavedDayOutsideRange": "Una giornata fuori da questo periodo contiene modifiche non salvate. Cancella o salva la bozza prima di cambiare le date.",
+      "unsavedDayBeforeClear": "Una giornata contiene modifiche non salvate. Cancella o salva la bozza prima di cancellare le date del viaggio.",
       "toDecide": "Date da decidere",
       "kinds": {
         "none": "Date da decidere",

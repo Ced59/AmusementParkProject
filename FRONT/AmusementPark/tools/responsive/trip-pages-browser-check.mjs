@@ -167,7 +167,7 @@ const reservePort = () => new Promise((resolvePort, rejectPort) => {
 });
 
 const waitForPageTarget = async (port) => {
-  const deadline = Date.now() + 10000;
+  const deadline = Date.now() + 30000;
   while (Date.now() < deadline) {
     try {
       const response = await fetch(`http://127.0.0.1:${port}/json/list`);
@@ -181,7 +181,7 @@ const waitForPageTarget = async (port) => {
     }
     await new Promise((resolveWait) => setTimeout(resolveWait, 100));
   }
-  throw new Error('Chrome did not expose a page target within ten seconds.');
+  throw new Error('Chrome did not expose a page target within thirty seconds.');
 };
 
 const connectDevTools = async (webSocketUrl) => {
@@ -240,6 +240,7 @@ try {
   chromeProcess = spawn(chromeExecutable, [
     '--headless=new',
     '--disable-gpu',
+    '--disable-dev-shm-usage',
     '--hide-scrollbars',
     '--no-sandbox',
     '--remote-allow-origins=*',

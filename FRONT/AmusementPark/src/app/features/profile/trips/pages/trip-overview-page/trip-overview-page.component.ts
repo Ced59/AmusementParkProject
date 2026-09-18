@@ -195,8 +195,14 @@ export class TripOverviewPageComponent implements OnInit {
 
   protected canClearDates(): boolean {
     const program: TripProgram = this.facade.program();
-    return program.days.length === 0
+    return !this.hasUnsavedDayDraft()
+      && program.days.length === 0
       && program.candidates.every((candidate: TripParkCandidate): boolean => candidate.candidateDates.length === 0);
+  }
+
+  protected hasUnsavedDayDraft(): boolean {
+    return Object.values(this.dayDrafts()).some((draft: TripDayDraft): boolean =>
+      !!draft.candidateId.trim() || !!draft.arrivalTime.trim() || !!draft.note.trim());
   }
 
   protected dateDependenciesOutsideDraft(): boolean {
