@@ -195,6 +195,11 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         TripActivityWrite activity,
         CancellationToken cancellationToken)
     {
+        if (await this.IsActivityInFlightAsync(activity, cancellationToken))
+        {
+            return false;
+        }
+
         TripActivityEventDocument? existing = await this.FindByOperationAsync(
             activity.TripPlanId,
             activity.OperationKey,
@@ -274,6 +279,72 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             activity.OperationKey,
             cancellationToken);
         return true;
+    }
+
+    private Task<bool> IsActivityInFlightAsync(
+        TripActivityWrite activity,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<TripPlanDocument>? filter = BuildInFlightActivityFilter(activity);
+        return filter is null
+            ? Task.FromResult(false)
+            : this.plans.Find(filter).Limit(1).AnyAsync(cancellationToken);
+    }
+
+    internal static FilterDefinition<TripPlanDocument>? BuildInFlightActivityFilter(
+        TripActivityWrite activity)
+    {
+        ArgumentNullException.ThrowIfNull(activity);
+        if (string.IsNullOrWhiteSpace(activity.ChildLeaseOperationId)
+            || !activity.ChildLeaseEpoch.HasValue
+            || !activity.ChildLeaseGeneration.HasValue)
+        {
+            return null;
+        }
+
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        return filters.Eq(static document => document.Id, activity.TripPlanId.Value)
+            & new BsonDocumentFilterDefinition<TripPlanDocument>(
+                new BsonDocument("$expr", new BsonDocument(
+                    "$anyElementTrue",
+                    new BsonDocument("$map", new BsonDocument
+                    {
+                        {
+                            "input",
+                            new BsonDocument("$ifNull", new BsonArray
+                            {
+                                "$activeChildMutationLeases",
+                                new BsonArray(),
+                            })
+                        },
+                        { "as", "lease" },
+                        {
+                            "in",
+                            new BsonDocument("$and", new BsonArray
+                            {
+                                new BsonDocument("$eq", new BsonArray
+                                {
+                                    "$$lease.operationId",
+                                    activity.ChildLeaseOperationId,
+                                }),
+                                new BsonDocument("$eq", new BsonArray
+                                {
+                                    "$$lease.childMutationEpoch",
+                                    activity.ChildLeaseEpoch.Value,
+                                }),
+                                new BsonDocument("$eq", new BsonArray
+                                {
+                                    "$$lease.generation",
+                                    activity.ChildLeaseGeneration.Value,
+                                }),
+                                new BsonDocument("$gt", new BsonArray
+                                {
+                                    "$$lease.expiresAtUtc",
+                                    "$$NOW",
+                                }),
+                            })
+                        },
+                    }))));
     }
 
     private async Task<IReadOnlyCollection<TripActivityWrite>> LoadPendingAsync(
@@ -463,6 +534,27 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         await RemovePendingAsync(this.invitations, filter, update, cancellationToken);
         await RemovePendingAsync(this.preferences, filter, update, cancellationToken);
         await RemovePendingAsync(this.decisions, filter, update, cancellationToken);
+
+        FilterDefinitionBuilder<TripParkCandidateDocument> candidateFilters =
+            Builders<TripParkCandidateDocument>.Filter;
+        FilterDefinition<TripParkCandidateDocument> candidateTombstone =
+            candidateFilters.Eq(static document => document.TripPlanId, tripPlanId.Value)
+            & candidateFilters.Eq(
+                static document => document.DocumentState,
+                TripChildDocumentState.Deleted)
+            & candidateFilters.Eq(
+                static document => document.TombstoneExpiresAtUtc,
+                null)
+            & new BsonDocumentFilterDefinition<TripParkCandidateDocument>(
+                new BsonDocument(
+                    "pendingAuditEvents.0",
+                    new BsonDocument("$exists", false)));
+        _ = await this.candidates.UpdateManyAsync(
+            candidateTombstone,
+            Builders<TripParkCandidateDocument>.Update.Set(
+                static document => document.TombstoneExpiresAtUtc,
+                DateTime.UtcNow.Add(TripParkCandidate.CreationReplayRetention)),
+            cancellationToken: cancellationToken);
 
         BsonDocument tombstoneFilter = new("$and", new BsonArray
         {

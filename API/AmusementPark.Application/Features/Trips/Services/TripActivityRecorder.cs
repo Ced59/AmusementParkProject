@@ -85,7 +85,8 @@ public sealed class TripActivityRecorder
         TripEffectiveRole? actorRole,
         TripActivityKind kind,
         string operationKey,
-        int affectedCount)
+        int affectedCount,
+        TripChildMutationLease? childLease = null)
     {
         return new TripActivityWrite(
             tripPlanId,
@@ -94,7 +95,10 @@ public sealed class TripActivityRecorder
             kind,
             operationKey,
             affectedCount,
-            this.timeProvider.GetUtcNow().UtcDateTime);
+            this.timeProvider.GetUtcNow().UtcDateTime,
+            childLease?.OperationId,
+            childLease?.ChildMutationEpoch,
+            childLease?.Generation);
     }
 
     public async Task PublishAsync(

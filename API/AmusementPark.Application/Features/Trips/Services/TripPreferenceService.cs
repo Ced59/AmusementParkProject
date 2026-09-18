@@ -244,16 +244,22 @@ public sealed class TripPreferenceService
         string activityOperationKey = TripActivityRecorder.ChildOperationKey(
             TripActivityKind.PreferencesUpdated,
             lease);
-        int committedCount = 0;
-        foreach ((TripItemPreference preference, long? expectedVersion) in mutations)
-        {
-            TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+        TripActivityWrite? batchActivity = mutations.Count == 0
+            ? null
+            : this.activityRecorder?.CreateWrite(
                 trip.Id,
                 actor.Id,
                 trip.ResolveRole(userId),
                 TripActivityKind.PreferencesUpdated,
                 activityOperationKey,
-                1);
+                mutations.Count,
+                lease);
+        int committedCount = 0;
+        foreach ((TripItemPreference preference, long? expectedVersion) in mutations)
+        {
+            TripActivityWrite? pendingActivity = batchActivity is null
+                ? null
+                : batchActivity with { AffectedCount = 1 };
             TripItemPreferenceWriteResult written = expectedVersion.HasValue
                 ? await this.preferenceRepository.ReplaceAsync(
                     preference,
@@ -268,15 +274,10 @@ public sealed class TripPreferenceService
                     cancellationToken);
             if (written.Outcome != TripChildWriteOutcome.Success || written.Preference is null)
             {
-                if (committedCount > 0 && this.activityRecorder is not null)
+                if (committedCount > 0 && batchActivity is not null)
                 {
-                    await this.activityRecorder.RecordAsync(
-                        trip.Id,
-                        actor.Id,
-                        trip.ResolveRole(userId),
-                        TripActivityKind.PreferencesUpdated,
-                        activityOperationKey,
-                        committedCount,
+                    await this.activityRecorder!.PublishAsync(
+                        batchActivity with { AffectedCount = committedCount },
                         CancellationToken.None);
                 }
 
@@ -288,15 +289,10 @@ public sealed class TripPreferenceService
             committedCount++;
         }
 
-        if (mutations.Count > 0 && this.activityRecorder is not null)
+        if (batchActivity is not null)
         {
-            await this.activityRecorder.RecordAsync(
-                trip.Id,
-                actor.Id,
-                trip.ResolveRole(userId),
-                TripActivityKind.PreferencesUpdated,
-                activityOperationKey,
-                committedCount,
+            await this.activityRecorder!.PublishAsync(
+                batchActivity with { AffectedCount = committedCount },
                 CancellationToken.None);
         }
 

@@ -9,4 +9,7 @@ public sealed record TripActivityWrite(
     TripActivityKind Kind,
     string OperationKey,
     int AffectedCount,
-    DateTime OccurredAtUtc);
+    DateTime OccurredAtUtc,
+    string? ChildLeaseOperationId = null,
+    long? ChildLeaseEpoch = null,
+    long? ChildLeaseGeneration = null);

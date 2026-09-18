@@ -391,7 +391,10 @@ public sealed class TripPreferenceServiceTests
                 It.Is<TripActivityWrite?>(activity =>
                     activity != null
                     && activity.Kind == TripActivityKind.PreferencesUpdated
-                    && activity.AffectedCount == 1),
+                    && activity.AffectedCount == 1
+                    && activity.ChildLeaseOperationId == lease.OperationId
+                    && activity.ChildLeaseEpoch == lease.ChildMutationEpoch
+                    && activity.ChildLeaseGeneration == lease.Generation),
                 CancellationToken.None))
             .Returns((TripItemPreference preference, TripChildMutationLease _, TripActivityWrite? _, CancellationToken _) =>
             {
@@ -431,6 +434,9 @@ public sealed class TripPreferenceServiceTests
                 It.Is<TripActivityWrite>(activity =>
                     activity.Kind == TripActivityKind.PreferencesUpdated
                     && activity.AffectedCount == 1
+                    && activity.ChildLeaseOperationId == lease.OperationId
+                    && activity.ChildLeaseEpoch == lease.ChildMutationEpoch
+                    && activity.ChildLeaseGeneration == lease.Generation
                     && activity.OperationKey == TripActivityRecorder.ChildOperationKey(
                         TripActivityKind.PreferencesUpdated,
                         lease)),

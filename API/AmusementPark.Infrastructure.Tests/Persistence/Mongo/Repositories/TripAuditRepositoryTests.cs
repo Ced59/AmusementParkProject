@@ -170,6 +170,37 @@ public sealed class TripAuditRepositoryTests
         Assert.Contains("$filter", pipeline[1].ToString(), StringComparison.Ordinal);
     }
 
+    [Fact]
+    public void BuildInFlightActivityFilter_ShouldFenceAnActivePreferenceBatch()
+    {
+        DateTime nowUtc = new(2027, 6, 1, 8, 0, 0, DateTimeKind.Utc);
+        TripActivityWrite activity = new(
+            TripPlanId.New(),
+            TripMemberId.New(),
+            TripEffectiveRole.Participant,
+            TripActivityKind.PreferencesUpdated,
+            "child:PreferencesUpdated:operation-1:4",
+            2,
+            nowUtc,
+            "operation-1",
+            3,
+            4);
+
+        FilterDefinition<TripPlanDocument>? filter =
+            TripAuditRepository.BuildInFlightActivityFilter(activity);
+        Assert.NotNull(filter);
+        BsonDocument rendered = filter.Render(new RenderArgs<TripPlanDocument>(
+            BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            BsonSerializer.SerializerRegistry));
+
+        string json = rendered.ToJson();
+        Assert.Contains("operation-1", json, StringComparison.Ordinal);
+        Assert.Contains("childMutationEpoch", json, StringComparison.Ordinal);
+        Assert.Contains("generation", json, StringComparison.Ordinal);
+        Assert.Contains("$ifNull", json, StringComparison.Ordinal);
+        Assert.Contains("$$NOW", json, StringComparison.Ordinal);
+    }
+
     private static BsonDocument Render(IndexKeysDefinition<TripActivityEventDocument> keys)
     {
         return keys.Render(new RenderArgs<TripActivityEventDocument>(

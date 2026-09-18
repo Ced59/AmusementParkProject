@@ -109,7 +109,8 @@ classDiagram
   responsabilité et une taille bornées.
 - **Infrastructure** attache chaque preuve au document métier modifié, alloue
   une séquence par voyage, garantit l’idempotence et répare en tâche de fond
-  toute matérialisation interrompue.
+  toute matérialisation interrompue. Un lot de préférences reste fermé à la
+  matérialisation tant que sa lease enfant est active.
 - **WebAPI** expose un contrat privé non mis en cache et sans identifiant.
 - **Angular** respecte `service API -> port -> façade -> composant` ; la façade
   remplace la page récente et ajoute les pages anciennes sans doublon.
@@ -190,6 +191,10 @@ l’intention puis l’événement existants. Une tentative après le début d�
 suppression retire le marqueur sans recréer de donnée. Une journée supprimée
 reste sous forme de tombstone privé jusqu’à matérialisation de sa preuve, puis
 le réconciliateur la retire.
+Le tombstone d’un parc candidat ne reçoit aucune échéance TTL tant que sa preuve
+de retrait est en attente. Après matérialisation, l’échéance de rétention de
+24 heures est posée et l’index TTL existant peut le nettoyer sans risque de
+perdre le journal.
 Après l’insertion, le repository revérifie la barrière de suppression et retire
 l’événement si la fermeture a gagné la course. Si la fermeture commence après
 cette vérification, la purge voit déjà l’événement et le retire normalement.
@@ -255,6 +260,9 @@ opération comportant 250 préférences n’est donc jamais tronquée à 50. Qua
 membre d’une invitation n’est pas encore relisible après une interruption, le
 marqueur conserve les deux champs d’acteur à `null` plutôt qu’une identité
 partielle invalide ; la publication immédiate les complète dès que possible.
+Les marqueurs de préférences portent aussi l’identité complète de leur lease.
+Le worker refuse de publier tant que cette lease est présente et non expirée,
+afin de ne jamais photographier un lot encore en cours d’écriture.
 
 ## 6. Séquence de lecture et confidentialité
 

@@ -501,6 +501,8 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
 
         UpdateDefinitionBuilder<TripParkCandidateDocument> updates =
             Builders<TripParkCandidateDocument>.Update;
+        UpdateDefinition<TripParkCandidateDocument> tombstoneExpiry =
+            BuildDeletionTombstoneExpiryUpdate(deletedAtUtc, pendingActivity is not null);
         UpdateDefinition<TripParkCandidateDocument> tombstone = TripActivityPendingMongoDefinitions.Append(updates.Combine(
             updates.Set(static document => document.ParkId, $"deleted:{candidateId.Value}"),
             updates.Set(static document => document.CandidateDates, new List<string>()),
@@ -513,9 +515,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             updates.Set(static document => document.Version, checked(expectedVersion + 1)),
             updates.Set(static document => document.DocumentState, TripChildDocumentState.Deleted),
             updates.Unset(static document => document.ReservedExpiresAtUtc),
-            updates.Set(
-                static document => document.TombstoneExpiresAtUtc,
-                deletedAtUtc.Add(TripParkCandidate.CreationReplayRetention)),
+            tombstoneExpiry,
             updates.Unset(static document => document.PendingMutation),
             updates.Set(static document => document.CreatedAt, deletedAtUtc),
             updates.Set(static document => document.UpdatedAt, deletedAtUtc)), pendingActivity);
@@ -526,6 +526,24 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         return result.ModifiedCount == 1
             ? new TripParkCandidateWriteResult(TripChildWriteOutcome.Success)
             : new TripParkCandidateWriteResult(TripChildWriteOutcome.LeaseExpired);
+    }
+
+    internal static UpdateDefinition<TripParkCandidateDocument> BuildDeletionTombstoneExpiryUpdate(
+        DateTime deletedAtUtc,
+        bool hasPendingAudit)
+    {
+        if (deletedAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException("The deletion timestamp must be UTC.", nameof(deletedAtUtc));
+        }
+
+        UpdateDefinitionBuilder<TripParkCandidateDocument> updates =
+            Builders<TripParkCandidateDocument>.Update;
+        return hasPendingAudit
+            ? updates.Unset(static document => document.TombstoneExpiresAtUtc)
+            : updates.Set(
+                static document => document.TombstoneExpiresAtUtc,
+                deletedAtUtc.Add(TripParkCandidate.CreationReplayRetention));
     }
 
     private async Task<TripParkCandidateDocument?> ReserveMutationAsync(

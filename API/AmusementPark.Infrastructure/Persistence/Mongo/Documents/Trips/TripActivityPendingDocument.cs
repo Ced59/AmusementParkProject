@@ -36,6 +36,18 @@ public sealed class TripActivityPendingDocument
     [BsonElement("occurredAtUtc")]
     public DateTime OccurredAtUtc { get; set; }
 
+    [BsonElement("childLeaseOperationId")]
+    [BsonIgnoreIfNull]
+    public string? ChildLeaseOperationId { get; set; }
+
+    [BsonElement("childLeaseEpoch")]
+    [BsonIgnoreIfNull]
+    public long? ChildLeaseEpoch { get; set; }
+
+    [BsonElement("childLeaseGeneration")]
+    [BsonIgnoreIfNull]
+    public long? ChildLeaseGeneration { get; set; }
+
     public static TripActivityPendingDocument FromWrite(TripActivityWrite activity)
     {
         ArgumentNullException.ThrowIfNull(activity);
@@ -49,6 +61,9 @@ public sealed class TripActivityPendingDocument
             OperationKey = activity.OperationKey,
             AffectedCount = activity.AffectedCount,
             OccurredAtUtc = activity.OccurredAtUtc,
+            ChildLeaseOperationId = activity.ChildLeaseOperationId,
+            ChildLeaseEpoch = activity.ChildLeaseEpoch,
+            ChildLeaseGeneration = activity.ChildLeaseGeneration,
         };
     }
 
@@ -63,6 +78,9 @@ public sealed class TripActivityPendingDocument
             this.Kind,
             this.OperationKey,
             this.AffectedCount,
-            DateTime.SpecifyKind(this.OccurredAtUtc, DateTimeKind.Utc));
+            DateTime.SpecifyKind(this.OccurredAtUtc, DateTimeKind.Utc),
+            this.ChildLeaseOperationId,
+            this.ChildLeaseEpoch,
+            this.ChildLeaseGeneration);
     }
 }
