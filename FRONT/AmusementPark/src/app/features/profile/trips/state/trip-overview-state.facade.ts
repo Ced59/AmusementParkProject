@@ -13,7 +13,8 @@ import {
   Observable,
   of,
   switchMap,
-  tap
+  tap,
+  throwError
 } from 'rxjs';
 
 import {
@@ -58,6 +59,7 @@ export class TripOverviewStateFacade {
   private readonly recoveryRevisionSignal = signal<number>(0);
   private readonly dateDraftRevisionSignal = signal<number>(0);
   private readonly clearedDaySignal = signal<{ localDate: string; revision: number } | null>(null);
+  private readonly wishlistImportOperations = new Map<string, { fingerprint: string; operationId: string }>();
 
   readonly trip: Signal<TripPlan | null> = this.tripSignal.asReadonly();
   readonly program: Signal<TripProgram> = this.programSignal.asReadonly();
@@ -101,27 +103,23 @@ export class TripOverviewStateFacade {
 
     this.tripIdSignal.set(tripId);
     this.statusSignal.set('loading');
+    this.collectionsSignal.set([]);
     this.wishlistUnavailableSignal.set(false);
     forkJoin({
       trip: this.plans.getMine(tripId),
-      program: this.programData.get(tripId),
-      collections: this.collections.listMine('Park').pipe(
-        catchError((): Observable<UserCollectionEntry[]> => {
-          this.wishlistUnavailableSignal.set(true);
-          return of([]);
-        })
-      )
+      program: this.programData.get(tripId)
     })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (result: { trip: TripPlan; program: TripProgram; collections: UserCollectionEntry[] }): void => {
+        next: (result: { trip: TripPlan; program: TripProgram }): void => {
           this.tripSignal.set(result.trip);
           this.programSignal.set(result.program);
-          this.collectionsSignal.set(result.collections);
+          this.wishlistImportOperations.clear();
           this.statusSignal.set('ready');
         },
         error: (): void => this.statusSignal.set('error')
       });
+    this.loadWishlist();
   }
 
   setDates(startDate: string, endDate: string, destinationTimeZoneId: string): void {
@@ -156,7 +154,11 @@ export class TripOverviewStateFacade {
 
   importWishlist(entries: UserCollectionEntry[]): void {
     const tripId: string | null = this.tripIdSignal();
-    const uniqueEntries: UserCollectionEntry[] = this.deduplicateWishlistEntries(entries);
+    const existingParkIds: Set<string> = new Set(
+      this.programSignal().candidates.map((candidate: TripParkCandidate): string => candidate.parkId)
+    );
+    const uniqueEntries: UserCollectionEntry[] = this.deduplicateWishlistEntries(entries)
+      .filter((entry: UserCollectionEntry): boolean => !existingParkIds.has(entry.targetId));
     if (!tripId || uniqueEntries.length === 0 || this.busySignal()) {
       return;
     }
@@ -174,8 +176,18 @@ export class TripOverviewStateFacade {
           source: 'Wishlist',
           collectiveNote: null
         };
-        return this.programData.addPark(tripId, request, this.operationIds.create()).pipe(
-          tap((candidate: TripParkCandidate): void => this.reconcileImportedCandidate(candidate)),
+        const operationId: string = this.resolveWishlistImportOperationId(tripId, entry.targetId, request);
+        return this.programData.addPark(tripId, request, operationId).pipe(
+          tap((candidate: TripParkCandidate): void => {
+            this.wishlistImportOperations.delete(entry.targetId);
+            this.reconcileImportedCandidate(candidate);
+          }),
+          catchError((error: { status?: number }): Observable<TripParkCandidate> => {
+            if (!this.requiresRecoveryReload(error)) {
+              this.wishlistImportOperations.delete(entry.targetId);
+            }
+            return throwError(() => error);
+          }),
           switchMap((): Observable<TripPlan> => this.plans.getMine(tripId)),
           tap((updatedTrip: TripPlan): void => this.tripSignal.set(updatedTrip))
         );
@@ -318,6 +330,7 @@ export class TripOverviewStateFacade {
     return this.reloadProgram(tripId).pipe(
       tap((result: { trip: TripPlan; program: TripProgram }): void => {
         this.applyProgram(result);
+        this.wishlistImportOperations.clear();
         this.recoveryRevisionSignal.update((revision: number): number => revision + 1);
         this.dateDraftRevisionSignal.update((revision: number): number => revision + 1);
       }),
@@ -336,6 +349,32 @@ export class TripOverviewStateFacade {
   private applyProgram(result: { trip: TripPlan; program: TripProgram }): void {
     this.tripSignal.set(result.trip);
     this.programSignal.set(result.program);
+  }
+
+  private loadWishlist(): void {
+    this.collections.listMine('Park')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (collections: UserCollectionEntry[]): void => this.collectionsSignal.set(collections),
+        error: (): void => this.wishlistUnavailableSignal.set(true)
+      });
+  }
+
+  private resolveWishlistImportOperationId(
+    tripId: string,
+    parkId: string,
+    request: AddTripParkCandidateRequest
+  ): string {
+    const fingerprint: string = JSON.stringify({ tripId, request });
+    const pending: { fingerprint: string; operationId: string } | undefined =
+      this.wishlistImportOperations.get(parkId);
+    if (pending?.fingerprint === fingerprint) {
+      return pending.operationId;
+    }
+
+    const operationId: string = this.operationIds.create();
+    this.wishlistImportOperations.set(parkId, { fingerprint, operationId });
+    return operationId;
   }
 
   private reconcileImportedCandidate(candidate: TripParkCandidate): void {

@@ -82,6 +82,22 @@ describe('TripOverviewStateFacade', () => {
     expect(facade.wishlistUnavailable()).toBe(true);
   });
 
+  it('makes the planner ready without waiting for the auxiliary wishlist', () => {
+    const pendingWishlist: Subject<UserCollectionEntry[]> = new Subject<UserCollectionEntry[]>();
+    (collections.listMine as ReturnType<typeof vi.fn>).mockReturnValue(pendingWishlist);
+
+    facade.load('trip-1');
+
+    expect(facade.status()).toBe('ready');
+    expect(facade.trip()?.tripPlanId).toBe('trip-1');
+    expect(facade.wishlistParks()).toEqual([]);
+
+    pendingWishlist.next([createEntry()]);
+    pendingWishlist.complete();
+
+    expect(facade.wishlistParks()).toHaveLength(1);
+  });
+
   it('imports several wishes sequentially with the refreshed plan version', () => {
     const first: UserCollectionEntry = createEntry({
       entryId: 'entry-1', targetId: 'park-2', preferredStartsOn: '2026-10-03', preferredEndsOn: '2026-10-03'
@@ -154,6 +170,30 @@ describe('TripOverviewStateFacade', () => {
     expect(facade.trip()?.version).toBe(2);
     expect(facade.actionError()).toBe('failed');
     expect(facade.busy()).toBe(false);
+  });
+
+  it('reuses the wishlist operation id after an ambiguous failure and failed recovery', () => {
+    const entry: UserCollectionEntry = createEntry({ entryId: 'entry-2', targetId: 'park-2' });
+    (plans.getMine as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(of(createTrip({ version: 1 })))
+      .mockReturnValueOnce(throwError(() => ({ status: 503 })))
+      .mockReturnValueOnce(of(createTrip({ version: 2 })));
+    (programData.addPark as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(throwError(() => ({ status: 0 })))
+      .mockReturnValueOnce(of(createCandidate({ candidateId: 'candidate-2', parkId: 'park-2' })));
+
+    facade.load('trip-1');
+    facade.importWishlist([entry]);
+    expect(facade.actionError()).toBe('failed');
+    expect(facade.busy()).toBe(false);
+
+    facade.importWishlist([entry]);
+
+    expect(programData.addPark).toHaveBeenCalledTimes(2);
+    expect((programData.addPark as ReturnType<typeof vi.fn>).mock.calls[0][2]).toBe('operation-1');
+    expect((programData.addPark as ReturnType<typeof vi.fn>).mock.calls[1][2]).toBe('operation-1');
+    expect(operationIds.create).toHaveBeenCalledTimes(1);
+    expect(facade.trip()?.version).toBe(2);
   });
 
   it('clears a saved day and refreshes the authoritative day drafts', () => {
