@@ -7,7 +7,7 @@ public sealed class CreateTripInvitationRequestDto
 {
     public long ExpectedPlanVersion { get; set; }
 
-    public TripDelegatedRole ProposedRole { get; set; }
+    public TripDelegatedRoleDto ProposedRole { get; set; }
 
     public int LifetimeHours { get; set; }
 
@@ -17,7 +17,7 @@ public sealed class CreateTripInvitationRequestDto
     {
         input = null;
         if (this.ExpectedPlanVersion < 1
-            || !Enum.IsDefined(this.ProposedRole)
+            || !TryMapRole(this.ProposedRole, out TripDelegatedRole proposedRole)
             || this.LifetimeHours < TripInvitation.MinimumLifetime.TotalHours
             || this.LifetimeHours > TripInvitation.MaximumLifetime.TotalHours)
         {
@@ -26,9 +26,21 @@ public sealed class CreateTripInvitationRequestDto
 
         input = new TripInvitationCreateInput(
             this.ExpectedPlanVersion,
-            this.ProposedRole,
+            proposedRole,
             this.LifetimeHours,
             this.TargetEmail);
         return true;
+    }
+
+    private static bool TryMapRole(TripDelegatedRoleDto value, out TripDelegatedRole role)
+    {
+        role = value switch
+        {
+            TripDelegatedRoleDto.Editor => TripDelegatedRole.Editor,
+            TripDelegatedRoleDto.Participant => TripDelegatedRole.Participant,
+            TripDelegatedRoleDto.Viewer => TripDelegatedRole.Viewer,
+            _ => default,
+        };
+        return Enum.IsDefined(role);
     }
 }

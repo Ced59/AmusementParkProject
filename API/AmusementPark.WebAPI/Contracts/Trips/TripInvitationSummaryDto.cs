@@ -1,11 +1,9 @@
-using AmusementPark.Core.Domain.Trips;
-
 namespace AmusementPark.WebAPI.Contracts.Trips;
 
 public sealed record TripInvitationSummaryDto(
     string InvitationId,
     string TokenHint,
-    TripDelegatedRole ProposedRole,
+    TripDelegatedRoleDto ProposedRole,
     DateTime ExpiresAtUtc,
     bool IsTargeted,
     long Version,

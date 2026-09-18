@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.Trips.Results;
+using AmusementPark.Core.Domain.Trips;
 using AmusementPark.WebAPI.Contracts.Trips;
 
 namespace AmusementPark.WebAPI.Mappers;
@@ -11,7 +12,7 @@ public static class TripInvitationHttpMapper
         return new TripInvitationCreationDto(
             result.InvitationId,
             result.Token,
-            result.ProposedRole,
+            ToHttp(result.ProposedRole),
             result.ExpiresAtUtc,
             result.IsTargeted,
             result.WasReplayed);
@@ -23,7 +24,7 @@ public static class TripInvitationHttpMapper
         return new TripInvitationSummaryDto(
             result.InvitationId,
             result.TokenHint,
-            result.ProposedRole,
+            ToHttp(result.ProposedRole),
             result.ExpiresAtUtc,
             result.IsTargeted,
             result.Version,
@@ -44,12 +45,46 @@ public static class TripInvitationHttpMapper
         return new TripInvitationPreviewDto(
             result.TripTitle,
             result.InviterDisplayName,
-            result.ProposedRole,
-            result.PeriodKind,
+            ToHttp(result.ProposedRole),
+            ToHttp(result.PeriodKind),
             result.StartMonth,
             result.EndMonth,
-            result.MemberCountBand,
+            ToHttp(result.MemberCountBand),
             result.ExpiresAtUtc,
             result.IsTargeted);
+    }
+
+    private static TripDelegatedRoleDto ToHttp(TripDelegatedRole role)
+    {
+        return role switch
+        {
+            TripDelegatedRole.Editor => TripDelegatedRoleDto.Editor,
+            TripDelegatedRole.Participant => TripDelegatedRoleDto.Participant,
+            TripDelegatedRole.Viewer => TripDelegatedRoleDto.Viewer,
+            _ => throw new ArgumentOutOfRangeException(nameof(role), role, null),
+        };
+    }
+
+    private static TripInvitationPeriodKindDto ToHttp(TripInvitationPeriodKind periodKind)
+    {
+        return periodKind switch
+        {
+            TripInvitationPeriodKind.Unspecified => TripInvitationPeriodKindDto.Unspecified,
+            TripInvitationPeriodKind.SingleMonth => TripInvitationPeriodKindDto.SingleMonth,
+            TripInvitationPeriodKind.MonthRange => TripInvitationPeriodKindDto.MonthRange,
+            _ => throw new ArgumentOutOfRangeException(nameof(periodKind), periodKind, null),
+        };
+    }
+
+    private static TripInvitationMemberCountBandDto ToHttp(TripInvitationMemberCountBand band)
+    {
+        return band switch
+        {
+            TripInvitationMemberCountBand.One => TripInvitationMemberCountBandDto.One,
+            TripInvitationMemberCountBand.TwoToFive => TripInvitationMemberCountBandDto.TwoToFive,
+            TripInvitationMemberCountBand.SixToTen => TripInvitationMemberCountBandDto.SixToTen,
+            TripInvitationMemberCountBand.ElevenToFifty => TripInvitationMemberCountBandDto.ElevenToFifty,
+            _ => throw new ArgumentOutOfRangeException(nameof(band), band, null),
+        };
     }
 }

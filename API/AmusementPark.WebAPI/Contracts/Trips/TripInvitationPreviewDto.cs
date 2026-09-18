@@ -1,14 +1,12 @@
-using AmusementPark.Core.Domain.Trips;
-
 namespace AmusementPark.WebAPI.Contracts.Trips;
 
 public sealed record TripInvitationPreviewDto(
     string TripTitle,
     string InviterDisplayName,
-    TripDelegatedRole ProposedRole,
-    TripInvitationPeriodKind PeriodKind,
+    TripDelegatedRoleDto ProposedRole,
+    TripInvitationPeriodKindDto PeriodKind,
     string? StartMonth,
     string? EndMonth,
-    TripInvitationMemberCountBand MemberCountBand,
+    TripInvitationMemberCountBandDto MemberCountBand,
     DateTime ExpiresAtUtc,
     bool IsTargeted);
