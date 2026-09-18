@@ -5,10 +5,10 @@
 Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à **08:36 CEST**, avec le client technique `PARK_DATA_EDITOR`.
 
 - 2 980 fiches ont été parcourues sur 60 pages.
-- 162 parcs étaient publiés (`isVisible: true`).
-- Les 162 scores ont été recalculés individuellement avec `Completeness`.
-- 67 parcs atteignent le niveau `Excellent` : 65 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **116 parcs publiés ont un score inférieur ou égal à 95** ; après les exceptions explicites enregistrées ci-dessous et les retraits validés, le backlog actif contient **41 parcs** : 0 au niveau `Publishable`, 39 au niveau `Good` et 2 au niveau `Excellent`.
+- 190 parcs étaient publiés (`isVisible: true`).
+- Les 190 scores ont été recalculés individuellement avec `Completeness`.
+- 68 parcs atteignent le niveau `Excellent` : 66 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 91 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **31 parcs** : 0 au niveau `Publishable`, 29 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,20 +22,10 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (39)
+## Priorité 2 — niveau `Good` (29)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 86 | `Good` | Plopsa Indoor Hasselt | BE | `Operating` | `Regional` | 76/88 | `4273e070-ca9e-4239-89ab-a47e96846a68` |
-| 86 | `Good` | Six Flags Over Georgia | US | `Operating` | `National` | 89/104 | `b16443c3-0bdd-4f7c-b4f3-9892a14c7943` |
-| 86 | `Good` | Six Flags Over Texas | US | `Operating` | `National` | 89/104 | `55d391fa-4dff-44df-a067-300c7b7bd6d4` |
-| 86 | `Good` | Six Flags St. Louis | US | `Operating` | `National` | 89/104 | `2825e63a-cf40-4bff-9e2b-b406fb573825` |
-| 87 | `Good` | Attractie- & Vakantiepark Slagharen | NL | `Operating` | `International` | 86/99 | `d586a0bc-107b-4537-a310-cbd5a6f5ada3` |
-| 87 | `Good` | Avonturenpark Hellendoorn | NL | `Operating` | `National` | 90/104 | `5c110f5e-5103-4a32-8abd-41c1a1e9c2de` |
-| 87 | `Good` | Azur Park | FR | `Operating` | `Regional` | 81/93 | `de091ae6-7a00-4446-ae69-e7bae1c60a67` |
-| 87 | `Good` | Cobac Parc | FR | `Operating` | `Regional` | 81/93 | `a2db3ed7-8f17-47dd-808f-4340936c82b7` |
-| 87 | `Good` | Parc d’Olhain | FR | `Operating` | `Regional` | 77/89 | `a3a2f6c5-3c81-4591-8ca0-246e677956e7` |
-| 88 | `Good` | Austin's Park | US | `Operating` | `Local` | 81/92 | `57d689ef-c11d-4a98-9238-73893061ac15` |
 | 89 | `Good` | 360 Play | BH | `Operating` | `Local` | 89/100 | `1a0f5161-48db-43bf-93d7-c899a74a5965` |
 | 89 | `Good` | Antibes Land | FR | `Operating` | `Regional` | 83/93 | `b0607555-4092-407e-9ee6-7d61423a8c73` |
 | 89 | `Good` | Festyland | FR | `Operating` | `Regional` | 83/93 | `4fc0aa20-b0d7-47cc-a403-81b0d6e10f04` |

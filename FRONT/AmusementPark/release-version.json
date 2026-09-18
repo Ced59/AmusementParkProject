@@ -1,8 +1,8 @@
 {
-  "version": "5.3.62",
+  "version": "5.3.63",
   "history": [
     {
-      "version": "5.3.62",
+      "version": "5.3.63",
       "releasedAt": "2026-09-18",
       "labels": {
         "fr": "Tes envies de parcs peuvent désormais devenir un voyage organisé journée par journée.",
@@ -13,6 +13,20 @@
         "es": "Tus ideas de parques guardadas ya pueden convertirse en un viaje organizado día a día.",
         "pl": "Twoje zapisane pomysły na parki mogą teraz stać się wyjazdem zaplanowanym dzień po dniu.",
         "pt": "As tuas ideias de parques guardadas podem agora tornar-se numa viagem organizada dia a dia."
+      }
+    },
+    {
+      "version": "5.3.62",
+      "releasedAt": "2026-09-18",
+      "labels": {
+        "fr": "Dix autres fiches de parc proposent désormais des informations vérifiées plus complètes.",
+        "en": "Ten more park pages now provide more complete, verified information.",
+        "de": "Zehn weitere Parkseiten bieten jetzt vollständigere und geprüfte Informationen.",
+        "nl": "Tien extra parkpagina’s bieden nu volledigere en gecontroleerde informatie.",
+        "it": "Altre dieci pagine dei parchi offrono ora informazioni più complete e verificate.",
+        "es": "Otras diez páginas de parques ofrecen ahora información más completa y verificada.",
+        "pl": "Kolejnych dziesięć stron parków zawiera teraz pełniejsze i zweryfikowane informacje.",
+        "pt": "Mais dez páginas de parques oferecem agora informações mais completas e verificadas."
       }
     },
     {
