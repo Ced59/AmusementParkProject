@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -65,6 +65,21 @@ export class TripProgramApiService {
     return this.http.put<TripDayPlan>(
       `${environment.apiBaseUrl}${TRIP_API_ENDPOINTS.day(tripPlanId, localDate)}`,
       request
+    );
+  }
+
+  deleteDay(
+    tripPlanId: string,
+    localDate: string,
+    expectedPlanVersion: number,
+    expectedDayVersion: number
+  ): Observable<void> {
+    const params: HttpParams = new HttpParams()
+      .set('expectedPlanVersion', expectedPlanVersion)
+      .set('expectedDayVersion', expectedDayVersion);
+    return this.http.delete<void>(
+      `${environment.apiBaseUrl}${TRIP_API_ENDPOINTS.day(tripPlanId, localDate)}`,
+      { params }
     );
   }
 }

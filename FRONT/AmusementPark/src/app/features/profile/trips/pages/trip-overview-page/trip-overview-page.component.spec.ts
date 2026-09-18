@@ -14,11 +14,13 @@ describe('TripOverviewPageComponent', () => {
     const program: WritableSignal<TripProgram> = signal<TripProgram>(createProgram('09:00', 'Serveur initial'));
     const tripDates: WritableSignal<string[]> = signal<string[]>(['2026-10-03']);
     const recoveryRevision: WritableSignal<number> = signal<number>(0);
+    const dayDraftRevision: WritableSignal<number> = signal<number>(0);
     const facade = {
       trip: trip.asReadonly(),
       program: program.asReadonly(),
       tripDates: tripDates.asReadonly(),
       recoveryRevision: recoveryRevision.asReadonly(),
+      dayDraftRevision: dayDraftRevision.asReadonly(),
       status: signal('ready').asReadonly(),
       busy: signal(false).asReadonly(),
       actionError: signal(null).asReadonly(),
@@ -29,6 +31,7 @@ describe('TripOverviewPageComponent', () => {
       changeCandidateState: vi.fn(),
       moveCandidate: vi.fn(),
       saveDay: vi.fn(),
+      clearDay: vi.fn(),
       imageIdForPark: vi.fn().mockReturnValue(null)
     };
 
@@ -68,6 +71,7 @@ describe('TripOverviewPageComponent', () => {
     tripDates.set(['2026-10-04']);
     program.set(createProgram('10:30', 'Version concurrente', '2026-10-04'));
     recoveryRevision.set(1);
+    dayDraftRevision.set(1);
     fixture.detectChanges();
 
     expect(state.startDate()).toBe('2026-10-04');
@@ -78,6 +82,12 @@ describe('TripOverviewPageComponent', () => {
       arrivalTime: '10:30',
       note: 'Version concurrente'
     });
+
+    program.set({ candidates: [], days: [] });
+    dayDraftRevision.set(2);
+    fixture.detectChanges();
+
+    expect(state.dayDrafts()['2026-10-04']).toEqual({ candidateId: '', arrivalTime: '', note: '' });
 
     program.set({
       ...createProgram('10:30', 'Version concurrente', '2026-10-04'),

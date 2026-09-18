@@ -2,7 +2,7 @@
   "trips": {
     "kicker": "Trips to plan", "privacy": "Private, visible only to you",
     "profile": { "title": "Plan your next trip", "description": "Gather the parks you want to visit, rank them and build each day.", "action": "Open my trips" },
-    "actions": { "backToProfile": "Back to profile", "backToTrips": "Back to trips", "create": "New trip", "creating": "Creating…", "start": "Start this trip", "retry": "Try again", "createFirst": "Create my first trip", "continuePlanning": "Continue planning", "saveDates": "Save dates", "openCollections": "Open my lists", "importSelection": "Add selection ({{count}})", "saveDay": "Save this day" },
+    "actions": { "backToProfile": "Back to profile", "backToTrips": "Back to trips", "create": "New trip", "creating": "Creating…", "start": "Start this trip", "retry": "Try again", "createFirst": "Create my first trip", "continuePlanning": "Continue planning", "saveDates": "Save dates", "openCollections": "Open my lists", "importSelection": "Add selection ({{count}})", "saveDay": "Save this day", "clearDay": "Clear this day" },
     "fields": { "title": "Trip name", "startDate": "Start date", "endDate": "End date", "destinationTimeZone": "Destination time zone" },
     "list": { "title": "Your trips", "description": "Find your trip ideas and continue planning them whenever you like.", "myTrips": "My private trips" },
     "create": { "kicker": "New adventure", "title": "Give your next trip a direction", "description": "A title is enough to begin. You can set the dates later.", "titlePlaceholder": "E.g. Theme park weekend in Germany", "dateHint": "Dates are optional and can be changed." },

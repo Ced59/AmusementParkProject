@@ -1384,7 +1384,8 @@
       "saveDates": "Zapisz daty",
       "openCollections": "Otwórz moje listy",
       "importSelection": "Dodaj wybrane ({{count}})",
-      "saveDay": "Zapisz ten dzień"
+      "saveDay": "Zapisz ten dzień",
+      "clearDay": "Wyczyść ten dzień"
     },
     "fields": {
       "title": "Nazwa wyjazdu",

@@ -224,6 +224,18 @@ app-trip-candidate-card.cdk-drag-placeholder {
   grid-column: 1 / -1;
 }
 
+.day-card__actions {
+  display: flex;
+  min-width: 0;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.day-card__actions > button {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
 .trip-overview-page__error {
   color: var(--c-rose);
   overflow-wrap: anywhere;

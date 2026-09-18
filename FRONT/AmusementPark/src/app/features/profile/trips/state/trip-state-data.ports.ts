@@ -13,7 +13,7 @@ export interface TripPlansDataPort extends Pick<
 
 export interface TripProgramDataPort extends Pick<
   TripProgramApiService,
-  'get' | 'addPark' | 'changeParkState' | 'movePark' | 'putDay'
+  'get' | 'addPark' | 'changeParkState' | 'movePark' | 'putDay' | 'deleteDay'
 > {
 }
 

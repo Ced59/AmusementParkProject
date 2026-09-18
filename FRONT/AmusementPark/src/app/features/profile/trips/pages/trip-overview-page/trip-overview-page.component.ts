@@ -47,7 +47,7 @@ export class TripOverviewPageComponent implements OnInit {
 
   private dateDraftInitialized: boolean = false;
   private handledDateRecoveryRevision: number = 0;
-  private handledDayRecoveryRevision: number = 0;
+  private handledDayDraftRevision: number = 0;
 
   constructor(
     protected readonly facade: TripOverviewStateFacade,
@@ -74,20 +74,20 @@ export class TripOverviewPageComponent implements OnInit {
     effect((): void => {
       const dates: string[] = this.facade.tripDates();
       const days: TripDayPlan[] = this.facade.program().days;
-      const recoveryRevision: number = this.facade.recoveryRevision();
-      const mustRecover: boolean = recoveryRevision > this.handledDayRecoveryRevision;
+      const dayDraftRevision: number = this.facade.dayDraftRevision();
+      const mustRefresh: boolean = dayDraftRevision > this.handledDayDraftRevision;
       const existingDrafts: Record<string, TripDayDraft> = untracked(this.dayDrafts);
       const nextDrafts: Record<string, TripDayDraft> = {};
       for (const date of dates) {
         const saved: TripDayPlan | undefined = days.find((day: TripDayPlan): boolean => day.localDate === date);
-        nextDrafts[date] = !mustRecover && existingDrafts[date] ? existingDrafts[date] : {
+        nextDrafts[date] = !mustRefresh && existingDrafts[date] ? existingDrafts[date] : {
           candidateId: saved?.parkCandidateId ?? '',
           arrivalTime: saved?.desiredArrivalTime ?? '',
           note: saved?.groupNote ?? ''
         };
       }
       this.dayDrafts.set(nextDrafts);
-      this.handledDayRecoveryRevision = recoveryRevision;
+      this.handledDayDraftRevision = dayDraftRevision;
     });
   }
 
@@ -158,6 +158,14 @@ export class TripOverviewPageComponent implements OnInit {
     if (draft) {
       this.facade.saveDay(date, draft.candidateId, draft.arrivalTime, draft.note);
     }
+  }
+
+  protected clearDay(date: string): void {
+    this.facade.clearDay(date);
+  }
+
+  protected hasSavedDay(date: string): boolean {
+    return this.facade.program().days.some((day: TripDayPlan): boolean => day.localDate === date);
   }
 
   protected stateLabelKey(state: TripParkCandidateState): string {

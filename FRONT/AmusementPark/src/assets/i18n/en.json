@@ -1384,7 +1384,8 @@
       "saveDates": "Save dates",
       "openCollections": "Open my lists",
       "importSelection": "Add selection ({{count}})",
-      "saveDay": "Save this day"
+      "saveDay": "Save this day",
+      "clearDay": "Clear this day"
     },
     "fields": {
       "title": "Trip name",

@@ -12,6 +12,10 @@ avant toute collaboration :
 5. classer les cartes par glisser-déposer ou par boutons accessibles ;
 6. affecter un parc choisi, une heure d'arrivée et une note à chaque journée.
 
+Une journée enregistrée peut être effacée avant de modifier les dates du voyage.
+Les notes privées des collections ne sont jamais transformées en notes collectives
+lors de l'import : elles restent dans leur contexte privé d'origine.
+
 Lorsqu'un voyage est daté, le fuseau IANA de la destination est affiché et reste
 modifiable. Le fuseau du navigateur n'est qu'une proposition visible à la création :
 il n'est jamais substitué silencieusement au fuseau du parc.
@@ -88,6 +92,8 @@ programme. L'interface ne réessaie pas aveuglément une écriture conflictuelle
 - énumération calendaire inclusive indépendante du fuseau du navigateur ;
 - filtrage des collections indisponibles, déjà importées ou non pertinentes ;
 - import séquentiel avec versions 1 puis 2 et clés d'opération distinctes ;
+- suppression d'une journée avec les versions attendues du voyage et de la journée ;
+- import d'une note de collection strictement privé, quelle que soit sa longueur ;
 - rechargement après conflit optimiste ;
 - routes lazy et authentifiées ;
 - navigation depuis le profil ;

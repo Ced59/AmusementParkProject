@@ -1384,7 +1384,8 @@
       "saveDates": "Reisedaten speichern",
       "openCollections": "Meine Listen öffnen",
       "importSelection": "Auswahl hinzufügen ({{count}})",
-      "saveDay": "Diesen Tag speichern"
+      "saveDay": "Diesen Tag speichern",
+      "clearDay": "Tagesplanung löschen"
     },
     "fields": {
       "title": "Name der Reise",

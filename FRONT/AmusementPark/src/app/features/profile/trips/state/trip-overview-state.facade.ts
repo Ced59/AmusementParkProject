@@ -41,6 +41,7 @@ export class TripOverviewStateFacade {
   private readonly busySignal = signal<boolean>(false);
   private readonly actionErrorSignal = signal<TripOverviewActionError>(null);
   private readonly recoveryRevisionSignal = signal<number>(0);
+  private readonly dayDraftRevisionSignal = signal<number>(0);
 
   readonly trip: Signal<TripPlan | null> = this.tripSignal.asReadonly();
   readonly program: Signal<TripProgram> = this.programSignal.asReadonly();
@@ -48,6 +49,7 @@ export class TripOverviewStateFacade {
   readonly busy: Signal<boolean> = this.busySignal.asReadonly();
   readonly actionError: Signal<TripOverviewActionError> = this.actionErrorSignal.asReadonly();
   readonly recoveryRevision: Signal<number> = this.recoveryRevisionSignal.asReadonly();
+  readonly dayDraftRevision: Signal<number> = this.dayDraftRevisionSignal.asReadonly();
   readonly tripDates: Signal<string[]> = computed((): string[] => {
     const trip: TripPlan | null = this.tripSignal();
     return trip ? enumerateTripDates(trip.dateProposal) : [];
@@ -140,7 +142,7 @@ export class TripOverviewStateFacade {
           parkId: entry.targetId,
           candidateDates: [],
           source: 'Wishlist',
-          collectiveNote: entry.privateNote
+          collectiveNote: null
         };
         return this.programData.addPark(tripId, request, this.operationIds.create()).pipe(
           switchMap((): Observable<TripPlan> => this.plans.getMine(tripId)),
@@ -231,6 +233,25 @@ export class TripOverviewStateFacade {
     ));
   }
 
+  clearDay(localDate: string): void {
+    const trip: TripPlan | null = this.tripSignal();
+    const tripId: string | null = this.tripIdSignal();
+    const existing: TripDayPlan | undefined = this.programSignal().days.find(
+      (day: TripDayPlan): boolean => day.localDate === localDate
+    );
+    if (!trip || !tripId || !existing || this.busySignal()) {
+      return;
+    }
+
+    this.runAction(this.programData.deleteDay(tripId, localDate, trip.version, existing.version).pipe(
+      switchMap((): Observable<{ trip: TripPlan; program: TripProgram }> => this.reloadProgram(tripId)),
+      tap((result: { trip: TripPlan; program: TripProgram }): void => {
+        this.applyProgram(result);
+        this.dayDraftRevisionSignal.update((revision: number): number => revision + 1);
+      })
+    ));
+  }
+
   imageIdForPark(parkId: string): string | null {
     return this.collectionsSignal().find(
       (entry: UserCollectionEntry): boolean => entry.targetType === 'Park' && entry.targetId === parkId
@@ -262,6 +283,7 @@ export class TripOverviewStateFacade {
         next: (result: { trip: TripPlan; program: TripProgram }): void => {
           this.applyProgram(result);
           this.recoveryRevisionSignal.update((revision: number): number => revision + 1);
+          this.dayDraftRevisionSignal.update((revision: number): number => revision + 1);
         }
       });
   }

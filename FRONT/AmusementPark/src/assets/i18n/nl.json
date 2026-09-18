@@ -1384,7 +1384,8 @@
       "saveDates": "Datums opslaan",
       "openCollections": "Mijn lijsten openen",
       "importSelection": "Selectie toevoegen ({{count}})",
-      "saveDay": "Deze dag opslaan"
+      "saveDay": "Deze dag opslaan",
+      "clearDay": "Deze dag wissen"
     },
     "fields": {
       "title": "Naam van de reis",

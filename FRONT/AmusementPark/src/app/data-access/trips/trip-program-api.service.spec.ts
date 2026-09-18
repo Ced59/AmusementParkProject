@@ -68,4 +68,16 @@ describe('TripProgramApiService', () => {
       request
     );
   });
+
+  it('deletes a day with both optimistic versions', () => {
+    const httpClient = { delete: vi.fn().mockReturnValue(of(undefined)) };
+    const service: TripProgramApiService = new TripProgramApiService(httpClient as unknown as HttpClient);
+
+    service.deleteDay('trip/one', '2026-10-03', 7, 4).subscribe();
+
+    const call: unknown[] = httpClient.delete.mock.calls[0];
+    expect(call[0]).toBe(`${environment.apiBaseUrl}me/trips/trip%2Fone/days/2026-10-03`);
+    expect((call[1] as { params: { get: (name: string) => string | null } }).params.get('expectedPlanVersion')).toBe('7');
+    expect((call[1] as { params: { get: (name: string) => string | null } }).params.get('expectedDayVersion')).toBe('4');
+  });
 });

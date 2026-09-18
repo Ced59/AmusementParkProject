@@ -194,9 +194,17 @@
                 <span>{{ 'trips.days.note' | translate }}</span>
                 <textarea maxlength="1000" rows="2" [value]="dayDrafts()[date]?.note || ''" (input)="updateDay(date, 'note', $any($event.target).value)"></textarea>
               </label>
-              <button type="button" appUiButton="primary" [disabled]="facade.busy() || !dayDrafts()[date]?.candidateId" (click)="saveDay(date)">
-                {{ 'trips.actions.saveDay' | translate }}
-              </button>
+              <div class="day-card__actions">
+                <button type="button" appUiButton="primary" [disabled]="facade.busy() || !dayDrafts()[date]?.candidateId" (click)="saveDay(date)">
+                  {{ 'trips.actions.saveDay' | translate }}
+                </button>
+                @if (hasSavedDay(date)) {
+                  <button type="button" appUiButton="ghost" [disabled]="facade.busy()" (click)="clearDay(date)">
+                    <i class="pi pi-trash" aria-hidden="true"></i>
+                    <span>{{ 'trips.actions.clearDay' | translate }}</span>
+                  </button>
+                }
+              </div>
             </article>
           }
         </div>

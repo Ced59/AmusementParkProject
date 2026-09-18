@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 
-import { TripParkCandidate, TripPlan, TripProgram } from '@app/models/trips/trip.models';
+import { TripDayPlan, TripParkCandidate, TripPlan, TripProgram } from '@app/models/trips/trip.models';
 import { UserCollectionEntry } from '@app/models/watchlists/user-collection-entry.model';
 import {
   TRIP_COLLECTIONS_DATA_PORT,
@@ -35,7 +35,8 @@ describe('TripOverviewStateFacade', () => {
       addPark: vi.fn().mockReturnValue(of(createCandidate())),
       changeParkState: vi.fn().mockReturnValue(of(createCandidate())),
       movePark: vi.fn().mockReturnValue(of(createProgram())),
-      putDay: vi.fn()
+      putDay: vi.fn(),
+      deleteDay: vi.fn().mockReturnValue(of(undefined))
     };
     collections = { listMine: vi.fn().mockReturnValue(of([])) };
     operationIds = { create: vi.fn().mockReturnValueOnce('operation-1').mockReturnValueOnce('operation-2') };
@@ -75,7 +76,7 @@ describe('TripOverviewStateFacade', () => {
     const second: UserCollectionEntry = createEntry({
       entryId: 'entry-2',
       targetId: 'park-3',
-      privateNote: 'Immanquable',
+      privateNote: 'x'.repeat(2001),
       preferredStartsOn: '2026-11-01',
       preferredEndsOn: '2026-11-01'
     });
@@ -102,7 +103,7 @@ describe('TripOverviewStateFacade', () => {
         parkId: 'park-2',
         candidateDates: [],
         source: 'Wishlist',
-        collectiveNote: 'Planifié'
+        collectiveNote: null
       },
       'operation-1'
     ]);
@@ -110,12 +111,30 @@ describe('TripOverviewStateFacade', () => {
       expectedPlanVersion: 2,
       parkId: 'park-3',
       candidateDates: [],
-      collectiveNote: 'Immanquable'
+      collectiveNote: null
     });
     expect(operationIds.create).toHaveBeenCalledTimes(2);
     expect(programData.get).toHaveBeenCalledTimes(2);
     expect(facade.trip()?.version).toBe(3);
     expect(facade.busy()).toBe(false);
+  });
+
+  it('clears a saved day and refreshes the authoritative day drafts', () => {
+    const day: TripDayPlan = createDay({ version: 4 });
+    (programData.get as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(of(createProgram([], [day])))
+      .mockReturnValueOnce(of(createProgram()));
+    (plans.getMine as ReturnType<typeof vi.fn>)
+      .mockReturnValueOnce(of(createTrip({ version: 7 })))
+      .mockReturnValueOnce(of(createTrip({ version: 8 })));
+
+    facade.load('trip-1');
+    facade.clearDay('2026-10-03');
+
+    expect(programData.deleteDay).toHaveBeenCalledWith('trip-1', '2026-10-03', 7, 4);
+    expect(facade.program().days).toEqual([]);
+    expect(facade.trip()?.version).toBe(8);
+    expect(facade.dayDraftRevision()).toBe(1);
   });
 
   it('saves the explicit destination timezone instead of inferring it from the browser', () => {
@@ -180,8 +199,17 @@ function createCandidate(overrides: Partial<TripParkCandidate> = {}): TripParkCa
   };
 }
 
-function createProgram(candidates: TripParkCandidate[] = []): TripProgram {
-  return { candidates, days: [] };
+function createProgram(candidates: TripParkCandidate[] = [], days: TripDayPlan[] = []): TripProgram {
+  return { candidates, days };
+}
+
+function createDay(overrides: Partial<TripDayPlan> = {}): TripDayPlan {
+  return {
+    dayPlanId: 'day-1', localDate: '2026-10-03', parkCandidateId: 'candidate-1', parkId: 'park-1',
+    parkName: 'Parc A', isParkAvailable: true, desiredArrivalTime: '09:00', groupNote: null, blocks: [],
+    version: 1, createdAtUtc: '2026-09-18T10:00:00Z', updatedAtUtc: '2026-09-18T10:00:00Z',
+    ...overrides
+  };
 }
 
 function createEntry(overrides: Partial<UserCollectionEntry> = {}): UserCollectionEntry {
