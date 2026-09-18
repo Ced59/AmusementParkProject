@@ -267,4 +267,18 @@ if [ "$(grep -Fc "grep -Eqi '^Content-Type:[[:space:]]*application/xml;[[:space:
   exit 1
 fi
 
+upstream_failure_token='upstream-failure-secret-that-must-never-reach-error-logs'
+docker stop "${front_container_name}" >/dev/null
+docker exec "${container_name}" /bin/sh -ec '
+  wget -S -O /dev/null "http://127.0.0.1:4000/fr/trip-invitations/$1/?from=email" >/dev/null 2>&1 || true
+  wget -S -O /dev/null "http://127.0.0.1:4000/api/public/trip-invitations/$1/preview" >/dev/null 2>&1 || true
+' sh "${upstream_failure_token}"
+sleep 1
+edge_logs="$(docker logs "${container_name}" 2>&1)"
+if grep -Fq "${upstream_failure_token}" <<< "${edge_logs}"; then
+  echo 'Trip invitation bearer tokens must stay out of Nginx logs when the upstream fails.' >&2
+  printf '%s\n' "${edge_logs}" >&2
+  exit 1
+fi
+
 echo 'Static SEO edge security and disabled fallback tests passed.'
