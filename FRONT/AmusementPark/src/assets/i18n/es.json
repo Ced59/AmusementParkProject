@@ -1435,6 +1435,7 @@
       "explicitConversion": "Esta propuesta no cambia hasta que elijas expresamente fechas fijas o la borres.",
       "clearBlocked": "Borra primero todos los días guardados y las restricciones de fecha de los parques antes de borrar las fechas del viaje.",
       "dependenciesOutsideRange": "El nuevo periodo debe incluir todos los días guardados y las restricciones de fecha de los parques.",
+      "unsavedDayOutsideRange": "Un día fuera de este periodo contiene cambios sin guardar. Borra o guarda su borrador antes de cambiar las fechas.",
       "toDecide": "Fechas por decidir",
       "kinds": {
         "none": "Fechas por decidir",

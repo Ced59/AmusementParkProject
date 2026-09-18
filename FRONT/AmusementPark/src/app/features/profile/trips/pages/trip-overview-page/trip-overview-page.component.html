@@ -106,7 +106,9 @@
           } @else if (datesInvalid()) {
             <p class="trip-dates__validation" role="alert">{{ 'trips.feedback.invalidDates' | translate }}</p>
           }
-          @if (dateDependenciesOutsideDraft()) {
+          @if (unsavedDayDraftOutsideRange()) {
+            <p class="trip-dates__validation" role="alert">{{ 'trips.dates.unsavedDayOutsideRange' | translate }}</p>
+          } @else if (dateDependenciesOutsideDraft()) {
             <p class="trip-dates__validation" role="alert">{{ 'trips.dates.dependenciesOutsideRange' | translate }}</p>
           }
           <div class="trip-dates__actions">

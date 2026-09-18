@@ -1435,6 +1435,7 @@
       "explicitConversion": "Ta propozycja pozostanie bez zmian, dopóki wyraźnie nie wybierzesz ustalonych dat albo jej nie usuniesz.",
       "clearBlocked": "Najpierw usuń wszystkie zapisane dni i ograniczenia dat parków, zanim usuniesz daty wyjazdu.",
       "dependenciesOutsideRange": "Nowy okres musi obejmować wszystkie zapisane dni i ograniczenia dat parków.",
+      "unsavedDayOutsideRange": "Dzień poza tym okresem zawiera niezapisane zmiany. Wyczyść lub zapisz jego szkic przed zmianą dat.",
       "toDecide": "Daty do ustalenia",
       "kinds": {
         "none": "Daty do ustalenia",

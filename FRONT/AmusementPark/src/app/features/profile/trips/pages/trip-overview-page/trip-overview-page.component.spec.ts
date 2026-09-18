@@ -92,6 +92,7 @@ describe('TripOverviewPageComponent', () => {
       canSaveSpecialTimeZone: () => boolean;
       canClearDates: () => boolean;
       dateDependenciesOutsideDraft: () => boolean;
+      unsavedDayDraftOutsideRange: () => boolean;
       isCandidateScheduled: (candidateId: string) => boolean;
       saveDates: () => void;
       saveSpecialTimeZone: () => void;
@@ -212,6 +213,7 @@ describe('TripOverviewPageComponent', () => {
     state.dateEditorEnabled.set(true);
     expect(state.startDate()).toBe('');
     expect(state.canSaveDates()).toBe(false);
+    state.dayDrafts.set({});
     program.set({ candidates: [createCandidate('candidate-restricted', ['2026-11-01'])], days: [] });
     fixture.detectChanges();
     expect(state.canClearDates()).toBe(false);
@@ -226,6 +228,16 @@ describe('TripOverviewPageComponent', () => {
     state.startDate.set('2026-11-01');
     expect(state.dateDependenciesOutsideDraft()).toBe(false);
     expect(state.canSaveDates()).toBe(true);
+    state.dayDrafts.set({
+      '2026-10-31': { candidateId: '', arrivalTime: '09:15', note: 'Brouillon non enregistré' },
+      '2026-11-02': { candidateId: '', arrivalTime: '', note: '' }
+    });
+    fixture.detectChanges();
+    expect(state.unsavedDayDraftOutsideRange()).toBe(true);
+    expect(state.dateDependenciesOutsideDraft()).toBe(true);
+    expect(state.canSaveDates()).toBe(false);
+    expect(fixture.nativeElement.textContent).toContain('trips.dates.unsavedDayOutsideRange');
+    state.dayDrafts.set({});
     state.startDate.set('2026-01-01');
     state.endDate.set('2027-01-02');
     fixture.detectChanges();

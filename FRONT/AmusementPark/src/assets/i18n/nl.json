@@ -1435,6 +1435,7 @@
       "explicitConversion": "Dit voorstel blijft ongewijzigd totdat je uitdrukkelijk vaste datums kiest of het wist.",
       "clearBlocked": "Wis eerst alle opgeslagen dagen en datumbeperkingen van parken voordat je de reisdatums wist.",
       "dependenciesOutsideRange": "De nieuwe periode moet alle opgeslagen dagen en datumbeperkingen van parken bevatten.",
+      "unsavedDayOutsideRange": "Een dag buiten deze periode bevat niet-opgeslagen wijzigingen. Wis of bewaar het concept voordat je de datums wijzigt.",
       "toDecide": "Datums nog te bepalen",
       "kinds": {
         "none": "Datums nog te bepalen",

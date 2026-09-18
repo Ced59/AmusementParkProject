@@ -207,11 +207,24 @@ export class TripOverviewPageComponent implements OnInit {
     }
 
     const program: TripProgram = this.facade.program();
-    return program.days.some((day: TripDayPlan): boolean =>
+    return this.unsavedDayDraftOutsideRange()
+      || program.days.some((day: TripDayPlan): boolean =>
       day.localDate < normalizedStart || day.localDate > normalizedEnd)
       || program.candidates.some((candidate: TripParkCandidate): boolean =>
         candidate.candidateDates.some((date: string): boolean =>
           date < normalizedStart || date > normalizedEnd));
+  }
+
+  protected unsavedDayDraftOutsideRange(): boolean {
+    const normalizedStart: string = this.startDate().trim();
+    const normalizedEnd: string = this.endDate().trim() || normalizedStart;
+    if (!normalizedStart || !areTripDateInputsValid(normalizedStart, normalizedEnd)) {
+      return false;
+    }
+
+    return Object.entries(this.dayDrafts()).some(([localDate, draft]: [string, TripDayDraft]): boolean =>
+      (localDate < normalizedStart || localDate > normalizedEnd)
+      && (!!draft.candidateId.trim() || !!draft.arrivalTime.trim() || !!draft.note.trim()));
   }
 
   protected currentProposedDates(): string[] {
