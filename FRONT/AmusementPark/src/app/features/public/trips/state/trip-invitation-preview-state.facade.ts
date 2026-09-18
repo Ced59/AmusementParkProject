@@ -179,7 +179,7 @@ export class TripInvitationPreviewStateFacade {
           return;
         }
         this.tripPlanIdSignal.set(result.tripPlanId);
-        this.decisionOperations.clear(decisionToken);
+        this.decisionOperations.clear(decisionToken, decisionUserId);
         this.acceptOperationId = null;
         this.declineOperationId = null;
         this.decisionUserId = null;

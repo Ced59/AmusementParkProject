@@ -27,6 +27,28 @@ describe('TripInvitationDecisionOperationStore', () => {
     }));
   });
 
+  it('keeps independent pending decisions for two accounts on the same invitation', () => {
+    store.write(token, 'user-1', 'accept', 'operation-1');
+    store.write(token, 'user-2', 'decline', 'operation-2');
+
+    expect(store.read(token, 'user-1')).toEqual(expect.objectContaining({
+      decision: 'accept',
+      operationId: 'operation-1'
+    }));
+    expect(store.read(token, 'user-2')).toEqual(expect.objectContaining({
+      decision: 'decline',
+      operationId: 'operation-2'
+    }));
+    expect(Object.keys(sessionStorage)).toHaveLength(2);
+
+    store.clear(token, 'user-2');
+
+    expect(store.read(token, 'user-1')).toEqual(expect.objectContaining({
+      operationId: 'operation-1'
+    }));
+    expect(store.read(token, 'user-2')).toBeNull();
+  });
+
   it('drops malformed stored values', () => {
     store.write(token, 'user-1', 'accept', 'operation-1');
     const key: string = Object.keys(sessionStorage)[0];

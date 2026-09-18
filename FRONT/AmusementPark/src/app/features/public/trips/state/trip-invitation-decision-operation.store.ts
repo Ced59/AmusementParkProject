@@ -8,7 +8,7 @@ interface StoredTripInvitationDecisionOperation {
 
 @Injectable({ providedIn: 'root' })
 export class TripInvitationDecisionOperationStore {
-  private readonly keyPrefix: string = 'amusementpark.trip-invitation-decision.v1.';
+  private readonly keyPrefix: string = 'amusementpark.trip-invitation-decision.v2.';
 
   read(token: string, userId: string): StoredTripInvitationDecisionOperation | null {
     const storage: Storage | null = this.getStorage();
@@ -17,7 +17,7 @@ export class TripInvitationDecisionOperationStore {
     }
 
     try {
-      const value: unknown = JSON.parse(storage.getItem(this.buildKey(token)) ?? 'null');
+      const value: unknown = JSON.parse(storage.getItem(this.buildKey(token, userId)) ?? 'null');
       if (!this.isStoredOperation(value)
         || value.subjectFingerprint !== this.fingerprint(userId)) {
         return null;
@@ -25,7 +25,7 @@ export class TripInvitationDecisionOperationStore {
 
       return value;
     } catch {
-      this.clear(token);
+      this.clear(token, userId);
       return null;
     }
   }
@@ -42,7 +42,7 @@ export class TripInvitationDecisionOperationStore {
     }
 
     try {
-      storage.setItem(this.buildKey(token), JSON.stringify({
+      storage.setItem(this.buildKey(token, userId), JSON.stringify({
         decision,
         operationId,
         subjectFingerprint: this.fingerprint(userId)
@@ -52,16 +52,16 @@ export class TripInvitationDecisionOperationStore {
     }
   }
 
-  clear(token: string): void {
+  clear(token: string, userId: string): void {
     try {
-      this.getStorage()?.removeItem(this.buildKey(token));
+      this.getStorage()?.removeItem(this.buildKey(token, userId));
     } catch {
       // Best-effort cleanup only.
     }
   }
 
-  private buildKey(token: string): string {
-    return `${this.keyPrefix}${this.fingerprint(token)}`;
+  private buildKey(token: string, userId: string): string {
+    return `${this.keyPrefix}${this.fingerprint(token)}.${this.fingerprint(userId)}`;
   }
 
   private fingerprint(value: string): string {

@@ -106,7 +106,7 @@ describe('TripInvitationPreviewStateFacade', () => {
       'accept',
       'operation-1'
     );
-    expect(decisionOperations.clear).toHaveBeenCalledWith('opaque-token');
+    expect(decisionOperations.clear).toHaveBeenCalledWith('opaque-token', 'user-1');
     expect(facade.tripPlanId()).toBe('trip-1');
     expect(facade.status()).toBe('accepted');
   });
@@ -121,7 +121,7 @@ describe('TripInvitationPreviewStateFacade', () => {
     expect(data.preview).not.toHaveBeenCalled();
     expect(decisionOperations.read).toHaveBeenCalledWith('opaque-token', 'user-1');
     expect(data.accept).toHaveBeenCalledWith('opaque-token', 'persisted-operation');
-    expect(decisionOperations.clear).toHaveBeenCalledWith('opaque-token');
+    expect(decisionOperations.clear).toHaveBeenCalledWith('opaque-token', 'user-1');
     expect(facade.tripPlanId()).toBe('trip-1');
     expect(facade.status()).toBe('accepted');
   });

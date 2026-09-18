@@ -237,6 +237,9 @@ déconnexion suivie d'une autre connexion dans la page l'invalide sans supprimer
 reprise réservée au premier compte. Une réponse réseau tardive porte aussi le compte
 initiateur : elle est ignorée si la session a changé avant son retour, puis la page
 quitte son attente afin que le compte courant puisse choisir sa propre action.
+La clé physique de session combine les deux empreintes : plusieurs comptes peuvent
+donc conserver chacun leur reprise pour le même lien, et le succès de l'un ne nettoie
+jamais le marqueur de l'autre.
 
 ## Séquence de transfert de propriété
 
