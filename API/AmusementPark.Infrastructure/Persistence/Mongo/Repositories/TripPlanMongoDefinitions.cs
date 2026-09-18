@@ -139,6 +139,24 @@ internal static class TripPlanMongoDefinitions
             & filters.Eq(static document => document.CreationOperationKeyHash, operationKeyHash);
     }
 
+    public static FilterDefinition<TripPlanDocument> BuildMissingCreationSnapshotOwnerFilter()
+    {
+        FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;
+        return filters.Exists(static document => document.CreationSnapshot, true)
+            & filters.Exists("creationSnapshot.ownerUserId", false);
+    }
+
+    public static UpdateDefinition<TripPlanDocument> BuildCreationSnapshotOwnerBackfill()
+    {
+        return new PipelineUpdateDefinition<TripPlanDocument>(
+            new[]
+            {
+                new BsonDocument(
+                    "$set",
+                    new BsonDocument("creationSnapshot.ownerUserId", "$ownerUserId")),
+            });
+    }
+
     public static FilterDefinition<TripPlanDocument> BuildNoAdmissionInFlightFilter()
     {
         FilterDefinitionBuilder<TripPlanDocument> filters = Builders<TripPlanDocument>.Filter;

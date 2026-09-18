@@ -276,6 +276,11 @@ unicité `(ownerUserId, creationOperationKeyHash)` : les deux systèmes ne
 coexistent pas après la migration et un transfert ne peut pas entrer en collision
 avec une clé de création propre au destinataire.
 
+Le reçu de création conserve également le propriétaire d'origine avec les membres
+d'origine. Une migration complète les reçus historiques avant tout transfert. Le
+rejeu du créateur reconstruit donc un agrégat cohérent et stable, sans mélanger le
+nouveau propriétaire avec l'ancien état des participants.
+
 Un changement de rôle, un transfert ou un départ avance le même epoch racine que
 les écritures enfants. MongoDB n'accepte cette transition qu'après la fin des leases
 déjà accordées. La réponse de changement de droits ne peut donc pas réussir puis

@@ -2895,6 +2895,10 @@ private async Task InitializeVideosIndexesAsync(CancellationToken cancellationTo
                 & filters.Exists("creationSnapshot.childMutationEpoch", false),
             updates.Set("creationSnapshot.childMutationEpoch", 1),
             cancellationToken: cancellationToken);
+        await collection.UpdateManyAsync(
+            TripPlanMongoDefinitions.BuildMissingCreationSnapshotOwnerFilter(),
+            TripPlanMongoDefinitions.BuildCreationSnapshotOwnerBackfill(),
+            cancellationToken: cancellationToken);
     }
 
     private async Task InitializeUserVisitIndexesAsync(CancellationToken cancellationToken)

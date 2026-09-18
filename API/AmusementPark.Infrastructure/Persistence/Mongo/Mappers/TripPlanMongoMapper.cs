@@ -57,6 +57,7 @@ internal static class TripPlanMongoMapper
         ArgumentNullException.ThrowIfNull(document);
         return new TripPlanCreationSnapshotDocument
         {
+            OwnerUserId = document.OwnerUserId,
             Title = document.Title,
             DateProposal = Clone(document.DateProposal),
             DestinationTimeZoneId = document.DestinationTimeZoneId,
@@ -79,7 +80,7 @@ internal static class TripPlanMongoMapper
             ?? throw new InvalidOperationException("The idempotent trip creation snapshot is missing.");
         return Restore(
             document.Id,
-            document.OwnerUserId,
+            snapshot.OwnerUserId,
             snapshot.Title,
             snapshot.DateProposal,
             snapshot.DestinationTimeZoneId,

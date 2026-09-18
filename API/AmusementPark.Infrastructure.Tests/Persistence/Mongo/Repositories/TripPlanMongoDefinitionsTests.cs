@@ -71,6 +71,25 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void CreationSnapshotOwnerBackfill_ShouldCopyTheOriginalCurrentOwner()
+    {
+        BsonDocument filter = TripPlanMongoDefinitions.BuildMissingCreationSnapshotOwnerFilter()
+            .Render(new RenderArgs<TripPlanDocument>(
+                MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+                MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        BsonValue update = TripPlanMongoDefinitions.BuildCreationSnapshotOwnerBackfill()
+            .Render(new RenderArgs<TripPlanDocument>(
+                MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+                MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+
+        Assert.True(filter.Contains("creationSnapshot"));
+        Assert.False(filter["creationSnapshot.ownerUserId"]["$exists"].AsBoolean);
+        Assert.Equal(
+            "$ownerUserId",
+            update.AsBsonArray[0]["$set"]["creationSnapshot.ownerUserId"].AsString);
+    }
+
+    [Fact]
     public void BuildActiveCreationProjection_ShouldRetainEveryReplayDecisionField()
     {
         ProjectionDefinition<TripPlanDocument> projection =
@@ -448,6 +467,30 @@ public sealed class TripPlanMongoDefinitionsTests
 
         Assert.Equal(IdempotentTripPlanCreationStatus.Replayed, result.Status);
         Assert.Equal(trip.Id, result.TripPlan?.Id);
+    }
+
+    [Fact]
+    public void ResolveIdempotentCreation_AfterOwnershipTransfer_ShouldReplayTheOriginalSnapshot()
+    {
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "creator-user",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            new DateTime(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc));
+        TripPlanDocument transferredDocument = trip.ToDocument();
+        transferredDocument.CreationPayloadHash = "payload-hash";
+        transferredDocument.CreationSnapshot = transferredDocument.CreateCreationSnapshot();
+        transferredDocument.OwnerUserId = "new-owner";
+
+        IdempotentTripPlanCreationResult result = TripPlanRepository.ResolveIdempotentCreation(
+            transferredDocument,
+            "payload-hash");
+
+        Assert.Equal(IdempotentTripPlanCreationStatus.Replayed, result.Status);
+        Assert.Equal("creator-user", result.TripPlan?.OwnerUserId);
+        Assert.Equal("creator-user", result.TripPlan?.Members.Single().UserId);
     }
 
     [Fact]

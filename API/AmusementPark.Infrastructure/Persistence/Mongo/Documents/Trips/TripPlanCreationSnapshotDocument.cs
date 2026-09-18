@@ -7,6 +7,9 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.Trips;
 [BsonIgnoreExtraElements]
 public sealed class TripPlanCreationSnapshotDocument
 {
+    [BsonElement("ownerUserId")]
+    public string OwnerUserId { get; set; } = string.Empty;
+
     [BsonElement("title")]
     public string Title { get; set; } = string.Empty;
 
