@@ -184,15 +184,39 @@ public sealed class TripPlanLifecycleService
             return ApplicationResult<TripPlanResult>.Failure(TripPlanApplicationErrors.NotFound());
         }
 
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         if (trip.Version != expectedVersion)
         {
+            if (expectedVersion < long.MaxValue && trip.Version == expectedVersion + 1)
+            {
+                long replayedVersion = trip.Version;
+                try
+                {
+                    mutation(trip, nowUtc);
+                }
+                catch (TripPlanValidationException exception)
+                {
+                    return Invalid<TripPlanResult>(exception.Code, exception.Message);
+                }
+
+                if (trip.Version == replayedVersion)
+                {
+                    await this.RecordRootActivityAsync(
+                        trip,
+                        normalizedUserId,
+                        activityKind);
+                    return ApplicationResult<TripPlanResult>.Success(
+                        TripPlanResultFactory.ToResult(trip, normalizedUserId));
+                }
+            }
+
             return ApplicationResult<TripPlanResult>.Failure(
                 TripPlanApplicationErrors.ChangedConcurrently(trip.Version));
         }
 
         try
         {
-            mutation(trip, this.timeProvider.GetUtcNow().UtcDateTime);
+            mutation(trip, nowUtc);
         }
         catch (TripPlanValidationException exception)
         {
@@ -222,17 +246,26 @@ public sealed class TripPlanLifecycleService
 
         if (this.activityRecorder is not null && persistedTrip.Version != expectedVersion)
         {
-            await this.activityRecorder.RecordAsync(
-                persistedTrip,
-                normalizedUserId,
-                activityKind,
-                TripActivityRecorder.RootOperationKey(activityKind, persistedTrip.Version),
-                1,
-                CancellationToken.None);
+            await this.RecordRootActivityAsync(persistedTrip, normalizedUserId, activityKind);
         }
 
         return ApplicationResult<TripPlanResult>.Success(
             TripPlanResultFactory.ToResult(persistedTrip, normalizedUserId));
+    }
+
+    private Task RecordRootActivityAsync(
+        TripPlan trip,
+        string actorUserId,
+        TripActivityKind activityKind)
+    {
+        return this.activityRecorder?.RecordAsync(
+                trip,
+                actorUserId,
+                activityKind,
+                TripActivityRecorder.RootOperationKey(activityKind, trip.Version),
+                1,
+                CancellationToken.None)
+            ?? Task.CompletedTask;
     }
 
     public async Task<ApplicationResult> DeleteAsync(

@@ -91,16 +91,7 @@ public sealed class TripCandidateMutationServiceTests
                     && activity.Kind == TripActivityKind.CandidateUpdated
                     && activity.OperationKey == "candidate-update:candidate-update-operation"),
                 CancellationToken.None))
-            .ReturnsAsync((TripActivityWrite activity, CancellationToken _) => new TripActivityEvent(
-                "activity-1",
-                activity.TripPlanId,
-                activity.ActorMemberId,
-                activity.ActorRole,
-                activity.Kind,
-                activity.OperationKey,
-                1,
-                activity.AffectedCount,
-                activity.OccurredAtUtc));
+            .ReturnsAsync(true);
         Mock<TimeProvider> clock = new Mock<TimeProvider>(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc.AddMinutes(1)));
         TripCandidateMutationService service = new TripCandidateMutationService(

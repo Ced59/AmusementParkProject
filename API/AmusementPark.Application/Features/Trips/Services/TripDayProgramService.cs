@@ -123,7 +123,9 @@ public sealed class TripDayProgramService
                         trip,
                         userId.Trim(),
                         TripActivityKind.DayRemoved,
-                        $"day-remove:{lease.OperationId}",
+                        TripActivityRecorder.ChildOperationKey(
+                            TripActivityKind.DayRemoved,
+                            lease),
                         1,
                         CancellationToken.None);
                 }
@@ -233,7 +235,9 @@ public sealed class TripDayProgramService
                     trip,
                     actorUserId,
                     TripActivityKind.DayUpdated,
-                    $"day-put:{lease.OperationId}",
+                    TripActivityRecorder.ChildOperationKey(
+                        TripActivityKind.DayUpdated,
+                        lease),
                     1,
                     CancellationToken.None);
             }

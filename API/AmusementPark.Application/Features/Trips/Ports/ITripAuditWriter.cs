@@ -5,7 +5,7 @@ namespace AmusementPark.Application.Features.Trips.Ports;
 
 public interface ITripAuditWriter
 {
-    Task<TripActivityEvent> AppendAsync(
+    Task<bool> AppendAsync(
         TripActivityWrite activity,
         CancellationToken cancellationToken);
 }

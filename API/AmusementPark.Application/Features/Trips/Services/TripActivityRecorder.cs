@@ -17,7 +17,7 @@ public sealed class TripActivityRecorder
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
-    public Task<TripActivityEvent> RecordAsync(
+    public Task RecordAsync(
         TripPlan trip,
         string actorUserId,
         TripActivityKind kind,
@@ -39,7 +39,7 @@ public sealed class TripActivityRecorder
             cancellationToken);
     }
 
-    public Task<TripActivityEvent> RecordAsync(
+    public async Task RecordAsync(
         TripPlanId tripPlanId,
         TripMemberId? actorMemberId,
         TripEffectiveRole? actorRole,
@@ -48,7 +48,7 @@ public sealed class TripActivityRecorder
         int affectedCount,
         CancellationToken cancellationToken)
     {
-        return this.writer.AppendAsync(
+        _ = await this.writer.AppendAsync(
             new TripActivityWrite(
                 tripPlanId,
                 actorMemberId,
@@ -75,5 +75,13 @@ public sealed class TripActivityRecorder
 
         byte[] digest = SHA256.HashData(Encoding.UTF8.GetBytes(normalizedOperationId));
         return $"idempotent:{kind}:{Convert.ToHexStringLower(digest)}";
+    }
+
+    public static string ChildOperationKey(
+        TripActivityKind kind,
+        TripChildMutationLease lease)
+    {
+        ArgumentNullException.ThrowIfNull(lease);
+        return $"child:{kind}:{lease.OperationId}:{lease.Generation}";
     }
 }

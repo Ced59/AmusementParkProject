@@ -45,21 +45,12 @@ public sealed class TripActivityRecorderTests
                     && write.Kind == TripActivityKind.TripRenamed
                     && write.OccurredAtUtc == nowUtc),
                 CancellationToken.None))
-            .ReturnsAsync((TripActivityWrite write, CancellationToken _) => new TripActivityEvent(
-                "activity-1",
-                write.TripPlanId,
-                write.ActorMemberId,
-                write.ActorRole,
-                write.Kind,
-                write.OperationKey,
-                1,
-                write.AffectedCount,
-                write.OccurredAtUtc));
+            .ReturnsAsync(true);
         Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
         timeProvider.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
         TripActivityRecorder recorder = new TripActivityRecorder(writer.Object, timeProvider.Object);
 
-        TripActivityEvent activity = await recorder.RecordAsync(
+        await recorder.RecordAsync(
             trip,
             trip.OwnerUserId,
             TripActivityKind.TripRenamed,
@@ -67,8 +58,36 @@ public sealed class TripActivityRecorderTests
             1,
             CancellationToken.None);
 
-        Assert.Equal(TripEffectiveRole.Owner, activity.ActorRole);
         writer.VerifyAll();
         timeProvider.VerifyAll();
+    }
+
+    [Fact]
+    public void ChildOperationKey_ShouldDistinguishTwoLeasesWithTheSameOperationId()
+    {
+        TripMemberId actorMemberId = TripMemberId.Parse("member-1");
+        TripChildMutationLease first = new TripChildMutationLease(
+            "same-content",
+            actorMemberId,
+            1,
+            8,
+            new DateTime(2027, 3, 4, 10, 1, 0, DateTimeKind.Utc));
+        TripChildMutationLease second = new TripChildMutationLease(
+            "same-content",
+            actorMemberId,
+            1,
+            10,
+            new DateTime(2027, 3, 4, 10, 2, 0, DateTimeKind.Utc));
+
+        string firstKey = TripActivityRecorder.ChildOperationKey(
+            TripActivityKind.DayUpdated,
+            first);
+        string secondKey = TripActivityRecorder.ChildOperationKey(
+            TripActivityKind.DayUpdated,
+            second);
+
+        Assert.NotEqual(firstKey, secondKey);
+        Assert.Contains(":8", firstKey, StringComparison.Ordinal);
+        Assert.Contains(":10", secondKey, StringComparison.Ordinal);
     }
 }

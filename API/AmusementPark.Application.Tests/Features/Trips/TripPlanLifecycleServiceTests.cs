@@ -140,16 +140,7 @@ public sealed class TripPlanLifecycleServiceTests
                         TripActivityKind.TripCreated,
                         "operation-1")),
                 CancellationToken.None))
-            .ReturnsAsync((TripActivityWrite write, CancellationToken _) => new TripActivityEvent(
-                "activity-1",
-                write.TripPlanId,
-                write.ActorMemberId,
-                write.ActorRole,
-                write.Kind,
-                write.OperationKey,
-                1,
-                write.AffectedCount,
-                write.OccurredAtUtc));
+            .ReturnsAsync(true);
         Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
         TripPlanLifecycleService service = new(
             repository.Object,
@@ -226,6 +217,58 @@ public sealed class TripPlanLifecycleServiceTests
         Assert.Equal("trip.plan.changed-concurrently", error.Code);
         Assert.Equal(1, error.CurrentVersion);
         repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task RenameAsync_ShouldRepairTheAuditWhenThePersistedRenameIsRetried()
+    {
+        DateTime nowUtc = new DateTime(2027, 2, 3, 10, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.New(),
+            "user-1",
+            "Voyage",
+            TripDateProposal.None(),
+            null,
+            nowUtc);
+        trip.Rename("Nouveau titre", nowUtc.AddMinutes(1));
+        Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        repository.Setup(item => item.GetAccessibleAsync(
+                "user-1",
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(trip);
+        Mock<ITripAuditWriter> writer = new(MockBehavior.Strict);
+        writer.Setup(item => item.AppendAsync(
+                It.Is<TripActivityWrite>(write =>
+                    write.TripPlanId == trip.Id
+                    && write.Kind == TripActivityKind.TripRenamed
+                    && write.OperationKey == TripActivityRecorder.RootOperationKey(
+                        TripActivityKind.TripRenamed,
+                        trip.Version)),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
+        Mock<TimeProvider> timeProvider = new(MockBehavior.Strict);
+        timeProvider.Setup(provider => provider.GetUtcNow())
+            .Returns(new DateTimeOffset(nowUtc.AddMinutes(2)));
+        TripPlanLifecycleService service = new(
+            repository.Object,
+            timeZoneValidator.Object,
+            timeProvider.Object,
+            activityRecorder: new TripActivityRecorder(writer.Object));
+
+        ApplicationResult<TripPlanResult> result = await service.RenameAsync(
+            "user-1",
+            trip.Id.Value,
+            1,
+            "Nouveau titre",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(2, result.Value?.Version);
+        repository.VerifyAll();
+        writer.VerifyAll();
+        timeProvider.VerifyAll();
     }
 
     [Fact]

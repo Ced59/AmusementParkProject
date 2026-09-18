@@ -114,16 +114,17 @@ public sealed class TripProgramService
             operationId,
             requestHash,
             cancellationToken);
+        TripPlan? replayTrip = null;
         if (replay.Outcome is TripChildWriteOutcome.Success
             or TripChildWriteOutcome.IdempotencyConflict
             or TripChildWriteOutcome.Deleted)
         {
-            TripPlan? activeTrip = await this.tripPlanRepository.GetAccessibleAsync(
+            replayTrip = await this.tripPlanRepository.GetAccessibleAsync(
                 normalizedUserId,
                 parsedTripId,
                 cancellationToken);
-            TripEffectiveRole? activeRole = activeTrip?.ResolveRole(normalizedUserId);
-            if (activeTrip is null
+            TripEffectiveRole? activeRole = replayTrip?.ResolveRole(normalizedUserId);
+            if (replayTrip is null
                 || !activeRole.HasValue
                 || !TripAuthorizationPolicy.HasPermission(activeRole.Value, TripPermission.AddCandidates))
             {
@@ -134,6 +135,18 @@ public sealed class TripProgramService
 
         if (replay.Outcome == TripChildWriteOutcome.Success && replay.Candidate is not null)
         {
+            if (this.activityRecorder is not null)
+            {
+                await this.activityRecorder.RecordAsync(
+                    replayTrip
+                        ?? throw new InvalidOperationException("An accessible replay requires its trip."),
+                    normalizedUserId,
+                    TripActivityKind.CandidateAdded,
+                    $"candidate-add:{operationId}",
+                    1,
+                    CancellationToken.None);
+            }
+
             Park? replayedPark = await this.parkRepository.GetByIdAsync(
                 replay.Candidate.ParkId,
                 true,

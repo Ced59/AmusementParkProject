@@ -78,6 +78,29 @@ public sealed class TripPlanDateService
 
         if (trip.Version != expectedVersion)
         {
+            if (expectedVersion < long.MaxValue && trip.Version == expectedVersion + 1)
+            {
+                long replayedVersion = trip.Version;
+                try
+                {
+                    trip.SetDates(
+                        input.DateProposal,
+                        input.DestinationTimeZoneId,
+                        this.timeProvider.GetUtcNow().UtcDateTime);
+                }
+                catch (TripPlanValidationException exception)
+                {
+                    return Invalid(exception.Code, exception.Message);
+                }
+
+                if (trip.Version == replayedVersion)
+                {
+                    await this.RecordActivityAsync(trip, normalizedUserId);
+                    return ApplicationResult<TripPlanResult>.Success(
+                        TripPlanResultFactory.ToResult(trip, normalizedUserId));
+                }
+            }
+
             return ApplicationResult<TripPlanResult>.Failure(
                 TripPlanApplicationErrors.ChangedConcurrently(trip.Version));
         }
@@ -148,17 +171,25 @@ public sealed class TripPlanDateService
 
         if (this.activityRecorder is not null)
         {
-            await this.activityRecorder.RecordAsync(
-                outcome.PersistedTripPlan,
-                actorUserId,
-                TripActivityKind.DatesChanged,
-                $"dates:{lease.OperationId}",
-                1,
-                CancellationToken.None);
+            await this.RecordActivityAsync(outcome.PersistedTripPlan, actorUserId);
         }
 
         return ApplicationResult<TripPlanResult>.Success(
             TripPlanResultFactory.ToResult(outcome.PersistedTripPlan, actorUserId));
+    }
+
+    private Task RecordActivityAsync(TripPlan trip, string actorUserId)
+    {
+        return this.activityRecorder?.RecordAsync(
+                trip,
+                actorUserId,
+                TripActivityKind.DatesChanged,
+                TripActivityRecorder.RootOperationKey(
+                    TripActivityKind.DatesChanged,
+                    trip.Version),
+                1,
+                CancellationToken.None)
+            ?? Task.CompletedTask;
     }
 
     private static bool TryNormalizeIdentity(
