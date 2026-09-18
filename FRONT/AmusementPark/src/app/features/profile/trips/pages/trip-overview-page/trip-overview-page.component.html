@@ -46,7 +46,24 @@
           <span>{{ 'trips.fields.endDate' | translate }}</span>
           <input type="date" [min]="startDate()" [value]="endDate()" (input)="endDate.set($any($event.target).value)">
         </label>
-        <button type="button" appUiButton="primary" [disabled]="facade.busy()" (click)="saveDates()">
+        @if (startDate()) {
+          <label>
+            <span>{{ 'trips.fields.destinationTimeZone' | translate }}</span>
+            <input
+              type="text"
+              maxlength="100"
+              autocomplete="off"
+              [value]="destinationTimeZoneId()"
+              placeholder="Europe/Paris"
+              (input)="destinationTimeZoneId.set($any($event.target).value)">
+          </label>
+          <p class="trip-dates__hint">{{ 'trips.dates.timeZoneHint' | translate }}</p>
+        }
+        <button
+          type="button"
+          appUiButton="primary"
+          [disabled]="facade.busy() || (!!startDate() && !destinationTimeZoneId().trim())"
+          (click)="saveDates()">
           {{ 'trips.actions.saveDates' | translate }}
         </button>
       </div>
@@ -164,7 +181,7 @@
                 <span>{{ 'trips.days.park' | translate }}</span>
                 <select [value]="dayDrafts()[date]?.candidateId || ''" (change)="updateDay(date, 'candidateId', $any($event.target).value)">
                   <option value="">{{ 'trips.days.choosePark' | translate }}</option>
-                  @for (candidate of selectedCandidates(); track candidate.candidateId) {
+                  @for (candidate of selectedCandidatesForDate(date); track candidate.candidateId) {
                     <option [value]="candidate.candidateId">{{ candidate.parkName }}</option>
                   }
                 </select>

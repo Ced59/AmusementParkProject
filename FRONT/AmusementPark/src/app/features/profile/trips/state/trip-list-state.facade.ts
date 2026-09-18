@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
 
 import { TripDateProposal, TripPlan, TripPlanWriteRequest } from '@app/models/trips/trip.models';
-import { buildConfirmedTripDates, resolvedBrowserTimeZone } from './trip-date-proposal.helpers';
+import { buildConfirmedTripDates } from './trip-date-proposal.helpers';
 import {
   TRIP_OPERATION_ID_PORT,
   TRIP_PLANS_DATA_PORT,
@@ -53,17 +53,20 @@ export class TripListStateFacade {
       });
   }
 
-  create(title: string, startDate: string, endDate: string): void {
+  create(title: string, startDate: string, endDate: string, destinationTimeZoneId: string): void {
     const normalizedTitle: string = title.trim();
-    if (!normalizedTitle || this.creatingSignal()) {
+    const normalizedTimeZoneId: string = destinationTimeZoneId.trim();
+    const dateProposal: TripDateProposal = buildConfirmedTripDates(startDate, endDate);
+    if (!normalizedTitle
+      || this.creatingSignal()
+      || (dateProposal.kind !== 'None' && !normalizedTimeZoneId)) {
       return;
     }
 
-    const dateProposal: TripDateProposal = buildConfirmedTripDates(startDate, endDate);
     const request: TripPlanWriteRequest = {
       title: normalizedTitle,
       dateProposal,
-      destinationTimeZoneId: dateProposal.kind === 'None' ? null : resolvedBrowserTimeZone()
+      destinationTimeZoneId: dateProposal.kind === 'None' ? null : normalizedTimeZoneId
     };
     const fingerprint: string = JSON.stringify(request);
     if (this.pendingCreateFingerprint !== fingerprint || !this.pendingCreateIdempotencyKey) {

@@ -55,6 +55,7 @@ describe('TripOverviewStateFacade', () => {
     (programData.get as ReturnType<typeof vi.fn>).mockReturnValue(of(createProgram([createCandidate()])));
     (collections.listMine as ReturnType<typeof vi.fn>).mockReturnValue(of([
       createEntry({ entryId: 'eligible', targetId: 'park-2' }),
+      createEntry({ entryId: 'planned', targetId: 'park-2', kind: 'Planned' }),
       createEntry({ entryId: 'already-added', targetId: 'park-1' }),
       createEntry({ entryId: 'closed', targetId: 'park-3', targetStatus: 'PermanentlyClosed' }),
       createEntry({ entryId: 'favourite', targetId: 'park-4', kind: 'Favorite' }),
@@ -64,7 +65,7 @@ describe('TripOverviewStateFacade', () => {
     facade.load('trip-1');
 
     expect(collections.listMine).toHaveBeenCalledWith('Park');
-    expect(facade.wishlistParks().map((entry: UserCollectionEntry): string => entry.entryId)).toEqual(['eligible']);
+    expect(facade.wishlistParks().map((entry: UserCollectionEntry): string => entry.entryId)).toEqual(['planned']);
   });
 
   it('imports several wishes sequentially with the refreshed plan version', () => {
@@ -78,6 +79,12 @@ describe('TripOverviewStateFacade', () => {
       preferredStartsOn: '2026-11-01',
       preferredEndsOn: '2026-11-01'
     });
+    const plannedDuplicate: UserCollectionEntry = createEntry({
+      entryId: 'entry-1-planned',
+      targetId: 'park-2',
+      kind: 'Planned',
+      privateNote: 'Planifié'
+    });
     (plans.getMine as ReturnType<typeof vi.fn>)
       .mockReturnValueOnce(of(createTrip({ version: 1 })))
       .mockReturnValueOnce(of(createTrip({ version: 2 })))
@@ -85,7 +92,7 @@ describe('TripOverviewStateFacade', () => {
     (collections.listMine as ReturnType<typeof vi.fn>).mockReturnValue(of([first, second]));
 
     facade.load('trip-1');
-    facade.importWishlist([first, second]);
+    facade.importWishlist([first, plannedDuplicate, second]);
 
     expect(programData.addPark).toHaveBeenCalledTimes(2);
     expect((programData.addPark as ReturnType<typeof vi.fn>).mock.calls[0]).toEqual([
@@ -93,9 +100,9 @@ describe('TripOverviewStateFacade', () => {
       {
         expectedPlanVersion: 1,
         parkId: 'park-2',
-        candidateDates: ['2026-10-03'],
+        candidateDates: [],
         source: 'Wishlist',
-        collectiveNote: null
+        collectiveNote: 'Planifié'
       },
       'operation-1'
     ]);
@@ -109,6 +116,27 @@ describe('TripOverviewStateFacade', () => {
     expect(programData.get).toHaveBeenCalledTimes(2);
     expect(facade.trip()?.version).toBe(3);
     expect(facade.busy()).toBe(false);
+  });
+
+  it('saves the explicit destination timezone instead of inferring it from the browser', () => {
+    (plans.setDates as ReturnType<typeof vi.fn>).mockReturnValue(of(createTrip({
+      version: 2,
+      destinationTimeZoneId: 'Europe/Berlin'
+    })));
+
+    facade.load('trip-1');
+    facade.setDates('2026-10-03', '2026-10-05', ' Europe/Berlin ');
+
+    expect(plans.setDates).toHaveBeenCalledWith('trip-1', {
+      expectedVersion: 1,
+      dateProposal: {
+        kind: 'Fixed',
+        startDate: '2026-10-03',
+        endDate: '2026-10-05',
+        candidateDates: []
+      },
+      destinationTimeZoneId: 'Europe/Berlin'
+    });
   });
 
   it('reloads the latest plan and reports an optimistic conflict', () => {

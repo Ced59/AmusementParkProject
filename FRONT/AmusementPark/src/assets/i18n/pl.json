@@ -1389,7 +1389,8 @@
     "fields": {
       "title": "Nazwa wyjazdu",
       "startDate": "Data rozpoczęcia",
-      "endDate": "Data zakończenia"
+      "endDate": "Data zakończenia",
+      "destinationTimeZone": "Strefa czasowa celu podróży"
     },
     "list": {
       "title": "Twoje wyjazdy",
@@ -1423,6 +1424,7 @@
       "kicker": "Kiedy jedziesz?",
       "title": "Ustal daty wyjazdu",
       "description": "Na ich podstawie automatycznie powstaną dni programu.",
+      "timeZoneHint": "Sprawdź strefę czasową parku lub celu podróży (na przykład Europe/Paris), zwłaszcza gdy planujesz z innego kraju.",
       "toDecide": "Daty do ustalenia",
       "kinds": {
         "none": "Daty do ustalenia",

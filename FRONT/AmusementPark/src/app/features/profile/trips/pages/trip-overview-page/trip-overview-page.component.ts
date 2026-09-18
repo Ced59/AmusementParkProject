@@ -40,6 +40,7 @@ export class TripOverviewPageComponent implements OnInit {
   protected readonly currentLanguage: string;
   protected readonly startDate = signal<string>('');
   protected readonly endDate = signal<string>('');
+  protected readonly destinationTimeZoneId = signal<string>('');
   protected readonly selectedWishlistIds = signal<Set<string>>(new Set<string>());
   protected readonly dayDrafts = signal<Record<string, TripDayDraft>>({});
   protected readonly imageWidths: readonly number[] = [120, 200, 320];
@@ -65,6 +66,7 @@ export class TripOverviewPageComponent implements OnInit {
       }
       this.startDate.set(trip.dateProposal.startDate ?? '');
       this.endDate.set(trip.dateProposal.endDate ?? '');
+      this.destinationTimeZoneId.set(trip.destinationTimeZoneId ?? '');
       this.dateDraftInitialized = true;
       this.handledDateRecoveryRevision = recoveryRevision;
     });
@@ -95,7 +97,7 @@ export class TripOverviewPageComponent implements OnInit {
   }
 
   protected saveDates(): void {
-    this.facade.setDates(this.startDate(), this.endDate());
+    this.facade.setDates(this.startDate(), this.endDate(), this.destinationTimeZoneId());
   }
 
   protected toggleWishlist(entryId: string): void {
@@ -134,6 +136,11 @@ export class TripOverviewPageComponent implements OnInit {
     return this.facade.program().candidates.filter(
       (candidate: TripParkCandidate): boolean => candidate.state === 'Selected' && candidate.isParkAvailable
     );
+  }
+
+  protected selectedCandidatesForDate(localDate: string): TripParkCandidate[] {
+    return this.selectedCandidates().filter((candidate: TripParkCandidate): boolean =>
+      candidate.candidateDates.length === 0 || candidate.candidateDates.includes(localDate));
   }
 
   protected updateDay(date: string, field: keyof TripDayDraft, value: string): void {

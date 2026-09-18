@@ -1389,7 +1389,8 @@
     "fields": {
       "title": "Trip name",
       "startDate": "Start date",
-      "endDate": "End date"
+      "endDate": "End date",
+      "destinationTimeZone": "Destination time zone"
     },
     "list": {
       "title": "Your trips",
@@ -1423,6 +1424,7 @@
       "kicker": "When are you going?",
       "title": "Set the trip dates",
       "description": "They automatically create the days in your itinerary.",
+      "timeZoneHint": "Check the park or destination time zone (for example Europe/Paris), especially when planning from another country.",
       "toDecide": "Dates to decide",
       "kinds": {
         "none": "Dates to decide",

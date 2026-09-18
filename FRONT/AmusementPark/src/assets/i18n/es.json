@@ -1389,7 +1389,8 @@
     "fields": {
       "title": "Nombre del viaje",
       "startDate": "Fecha de inicio",
-      "endDate": "Fecha de fin"
+      "endDate": "Fecha de fin",
+      "destinationTimeZone": "Zona horaria del destino"
     },
     "list": {
       "title": "Tus viajes",
@@ -1423,6 +1424,7 @@
       "kicker": "¿Cuándo vas?",
       "title": "Fija las fechas del viaje",
       "description": "Las fechas crean automáticamente los días del programa.",
+      "timeZoneHint": "Comprueba la zona horaria del parque o del destino (por ejemplo, Europe/Paris), sobre todo si preparas el viaje desde otro país.",
       "toDecide": "Fechas por decidir",
       "kinds": {
         "none": "Fechas por decidir",

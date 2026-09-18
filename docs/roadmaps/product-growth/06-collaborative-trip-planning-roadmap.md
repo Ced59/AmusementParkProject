@@ -147,7 +147,10 @@ Le frontend respecte la chaîne `API -> port injecté -> façade -> composant` e
 écrans restent paresseux derrière l'authentification. Les mises en page bornent
 toutes les grilles, cartes, champs et textes à la largeur disponible, conservent
 la zone sûre de navigation mobile et sont testées jusqu'aux petits écrans. Les
-textes sont localisés dans les huit langues prises en charge.
+textes sont localisés dans les huit langues prises en charge. Le fuseau IANA de
+la destination est explicite et modifiable pour tout voyage daté ; une date
+préférée de collection n'est pas transformée en contrainte tant qu'elle ne peut
+pas être retirée depuis cette interface.
 
 La preuve d'architecture, les flux, les cas couverts et les limites du jalon sont
 consignés dans

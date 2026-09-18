@@ -1389,7 +1389,8 @@
     "fields": {
       "title": "Naam van de reis",
       "startDate": "Begindatum",
-      "endDate": "Einddatum"
+      "endDate": "Einddatum",
+      "destinationTimeZone": "Tijdzone van de bestemming"
     },
     "list": {
       "title": "Je reizen",
@@ -1423,6 +1424,7 @@
       "kicker": "Wanneer ga je?",
       "title": "Leg de reisdatums vast",
       "description": "Daarmee worden de dagen van je programma automatisch aangemaakt.",
+      "timeZoneHint": "Controleer de tijdzone van het park of de bestemming (bijvoorbeeld Europe/Paris), vooral als je vanuit een ander land plant.",
       "toDecide": "Datums nog te bepalen",
       "kinds": {
         "none": "Datums nog te bepalen",

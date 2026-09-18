@@ -44,7 +44,7 @@ describe('TripListStateFacade', () => {
   });
 
   it('creates a fixed trip with a fresh operation key and exposes the created id', () => {
-    facade.create('  Voyage Allemagne  ', '2026-10-03', '2026-10-05');
+    facade.create('  Voyage Allemagne  ', '2026-10-03', '2026-10-05', 'Europe/Berlin');
 
     expect(operationIds.create).toHaveBeenCalledTimes(1);
     expect(plans.create).toHaveBeenCalledTimes(1);
@@ -57,13 +57,14 @@ describe('TripListStateFacade', () => {
       endDate: '2026-10-05',
       candidateDates: []
     });
+    expect(request.destinationTimeZoneId).toBe('Europe/Berlin');
     expect(call[1]).toBe('operation-1');
     expect(facade.createdTripId()).toBe('trip-1');
     expect(facade.creating()).toBe(false);
   });
 
   it('does not create a trip whose title is empty', () => {
-    facade.create('   ', '', '');
+    facade.create('   ', '', '', '');
 
     expect(plans.create).not.toHaveBeenCalled();
   });
@@ -73,13 +74,20 @@ describe('TripListStateFacade', () => {
       .mockReturnValueOnce(throwError(() => ({ status: 0 })))
       .mockReturnValueOnce(of(createTrip()));
 
-    facade.create('Voyage Allemagne', '2026-10-03', '2026-10-05');
-    facade.create('Voyage Allemagne', '2026-10-03', '2026-10-05');
+    facade.create('Voyage Allemagne', '2026-10-03', '2026-10-05', 'Europe/Berlin');
+    facade.create('Voyage Allemagne', '2026-10-03', '2026-10-05', 'Europe/Berlin');
 
     expect(operationIds.create).toHaveBeenCalledTimes(1);
     expect((plans.create as ReturnType<typeof vi.fn>).mock.calls.map((call: unknown[]): unknown => call[1]))
       .toEqual(['operation-1', 'operation-1']);
     expect(facade.createdTripId()).toBe('trip-1');
+  });
+
+  it('does not silently use the browser zone when a dated trip has no destination timezone', () => {
+    facade.create('Voyage Allemagne', '2026-10-03', '2026-10-05', '   ');
+
+    expect(plans.create).not.toHaveBeenCalled();
+    expect(operationIds.create).not.toHaveBeenCalled();
   });
 });
 

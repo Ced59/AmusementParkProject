@@ -1389,7 +1389,8 @@
     "fields": {
       "title": "Nom du voyage",
       "startDate": "Date de début",
-      "endDate": "Date de fin"
+      "endDate": "Date de fin",
+      "destinationTimeZone": "Fuseau horaire de la destination"
     },
     "list": {
       "title": "Tes voyages",
@@ -1423,6 +1424,7 @@
       "kicker": "Quand partir ?",
       "title": "Pose les dates du voyage",
       "description": "Elles créent automatiquement les journées de ton programme.",
+      "timeZoneHint": "Vérifie le fuseau du parc ou de la destination (par exemple Europe/Paris), surtout si tu prépares le voyage depuis un autre pays.",
       "toDecide": "Dates à décider",
       "kinds": {
         "none": "Dates à décider",

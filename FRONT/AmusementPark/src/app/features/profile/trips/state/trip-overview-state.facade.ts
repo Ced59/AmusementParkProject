@@ -8,7 +8,6 @@ import {
   MoveTripParkCandidateRequest,
   PutTripDayPlanRequest,
   SetTripPlanDatesRequest,
-  TripDateProposal,
   TripDayPlan,
   TripParkCandidate,
   TripParkCandidatePlacement,
@@ -17,7 +16,7 @@ import {
   TripProgram
 } from '@app/models/trips/trip.models';
 import { UserCollectionEntry } from '@app/models/watchlists/user-collection-entry.model';
-import { buildConfirmedTripDates, enumerateTripDates, resolvedBrowserTimeZone } from './trip-date-proposal.helpers';
+import { buildConfirmedTripDates, enumerateTripDates } from './trip-date-proposal.helpers';
 import {
   TRIP_COLLECTIONS_DATA_PORT,
   TRIP_OPERATION_ID_PORT,
@@ -57,12 +56,13 @@ export class TripOverviewStateFacade {
     const existingParkIds: Set<string> = new Set(
       this.programSignal().candidates.map((candidate: TripParkCandidate): string => candidate.parkId)
     );
-    return this.collectionsSignal().filter((entry: UserCollectionEntry): boolean =>
+    const eligibleEntries: UserCollectionEntry[] = this.collectionsSignal().filter((entry: UserCollectionEntry): boolean =>
       entry.targetType === 'Park'
       && (entry.kind === 'WantToVisit' || entry.kind === 'Planned')
       && entry.targetStatus !== 'PermanentlyClosed'
       && entry.targetName !== null
       && !existingParkIds.has(entry.targetId));
+    return this.deduplicateWishlistEntries(eligibleEntries);
   });
 
   constructor(
@@ -98,17 +98,22 @@ export class TripOverviewStateFacade {
       });
   }
 
-  setDates(startDate: string, endDate: string): void {
+  setDates(startDate: string, endDate: string, destinationTimeZoneId: string): void {
     const trip: TripPlan | null = this.tripSignal();
     const tripId: string | null = this.tripIdSignal();
-    if (!trip || !tripId || this.busySignal()) {
+    const dateProposal = buildConfirmedTripDates(startDate, endDate);
+    const normalizedTimeZoneId: string = destinationTimeZoneId.trim();
+    if (!trip
+      || !tripId
+      || this.busySignal()
+      || (dateProposal.kind !== 'None' && !normalizedTimeZoneId)) {
       return;
     }
 
     const request: SetTripPlanDatesRequest = {
       expectedVersion: trip.version,
-      dateProposal: buildConfirmedTripDates(startDate, endDate),
-      destinationTimeZoneId: startDate.trim() ? resolvedBrowserTimeZone() : null
+      dateProposal,
+      destinationTimeZoneId: dateProposal.kind === 'None' ? null : normalizedTimeZoneId
     };
     this.runAction(this.plans.setDates(tripId, request).pipe(
       tap((updated: TripPlan): void => this.tripSignal.set(updated)),
@@ -119,11 +124,12 @@ export class TripOverviewStateFacade {
 
   importWishlist(entries: UserCollectionEntry[]): void {
     const tripId: string | null = this.tripIdSignal();
-    if (!tripId || entries.length === 0 || this.busySignal()) {
+    const uniqueEntries: UserCollectionEntry[] = this.deduplicateWishlistEntries(entries);
+    if (!tripId || uniqueEntries.length === 0 || this.busySignal()) {
       return;
     }
 
-    const operation: Observable<TripPlan> = from(entries).pipe(
+    const operation: Observable<TripPlan> = from(uniqueEntries).pipe(
       concatMap((entry: UserCollectionEntry): Observable<TripPlan> => defer((): Observable<TripPlan> => {
         const trip: TripPlan | null = this.tripSignal();
         if (!trip) {
@@ -132,7 +138,7 @@ export class TripOverviewStateFacade {
         const request: AddTripParkCandidateRequest = {
           expectedPlanVersion: trip.version,
           parkId: entry.targetId,
-          candidateDates: this.preferredDates(entry, trip),
+          candidateDates: [],
           source: 'Wishlist',
           collectiveNote: entry.privateNote
         };
@@ -272,21 +278,14 @@ export class TripOverviewStateFacade {
     this.programSignal.set(result.program);
   }
 
-  private preferredDates(entry: UserCollectionEntry, trip: TripPlan): string[] {
-    const start: string | null = entry.preferredStartsOn;
-    const end: string | null = entry.preferredEndsOn;
-    if (!start || !end || start !== end) {
-      return [];
+  private deduplicateWishlistEntries(entries: UserCollectionEntry[]): UserCollectionEntry[] {
+    const entriesByParkId: Map<string, UserCollectionEntry> = new Map<string, UserCollectionEntry>();
+    for (const entry of entries) {
+      const current: UserCollectionEntry | undefined = entriesByParkId.get(entry.targetId);
+      if (!current || (entry.kind === 'Planned' && current.kind !== 'Planned')) {
+        entriesByParkId.set(entry.targetId, entry);
+      }
     }
-
-    const proposal: TripDateProposal = trip.dateProposal;
-    const belongsToProposal: boolean = proposal.kind === 'Fixed' || proposal.kind === 'Range'
-      ? !!proposal.startDate && !!proposal.endDate && start >= proposal.startDate && start <= proposal.endDate
-      : proposal.kind === 'Candidates' && proposal.candidateDates.includes(start);
-    if (!belongsToProposal) {
-      return [];
-    }
-
-    return [start];
+    return Array.from(entriesByParkId.values());
   }
 }

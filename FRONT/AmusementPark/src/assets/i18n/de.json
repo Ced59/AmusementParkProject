@@ -1389,7 +1389,8 @@
     "fields": {
       "title": "Name der Reise",
       "startDate": "Startdatum",
-      "endDate": "Enddatum"
+      "endDate": "Enddatum",
+      "destinationTimeZone": "Zeitzone des Reiseziels"
     },
     "list": {
       "title": "Deine Reisen",
@@ -1423,6 +1424,7 @@
       "kicker": "Wann geht es los?",
       "title": "Lege die Reisedaten fest",
       "description": "Damit werden die Tage deines Programms automatisch angelegt.",
+      "timeZoneHint": "Prüfe die Zeitzone des Parks oder Reiseziels (zum Beispiel Europe/Paris), besonders wenn du aus einem anderen Land planst.",
       "toDecide": "Daten noch offen",
       "kinds": {
         "none": "Daten noch offen",

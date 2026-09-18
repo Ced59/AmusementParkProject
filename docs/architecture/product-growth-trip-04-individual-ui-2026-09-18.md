@@ -12,6 +12,10 @@ avant toute collaboration :
 5. classer les cartes par glisser-déposer ou par boutons accessibles ;
 6. affecter un parc choisi, une heure d'arrivée et une note à chaque journée.
 
+Lorsqu'un voyage est daté, le fuseau IANA de la destination est affiché et reste
+modifiable. Le fuseau du navigateur n'est qu'une proposition visible à la création :
+il n'est jamais substitué silencieusement au fuseau du parc.
+
 Les attractions et préférences par membre appartiennent à `TRIP-07`. Les
 invitations et rôles collaboratifs appartiennent à `TRIP-05` et `TRIP-06`.
 
@@ -95,4 +99,6 @@ programme. L'interface ne réessaie pas aveuglément une écriture conflictuelle
 - aucun vote ou arbitrage collectif ;
 - aucun horaire officiel ni trajet estimé ;
 - aucun passage automatique vers le Passeport ;
+- une préférence de date issue des collections n'est pas recopiée comme contrainte
+  du voyage tant que ce jalon ne permet pas de la modifier ou de la retirer ;
 - aucune dépendance à un volume réel de visites ou à un signal communautaire.

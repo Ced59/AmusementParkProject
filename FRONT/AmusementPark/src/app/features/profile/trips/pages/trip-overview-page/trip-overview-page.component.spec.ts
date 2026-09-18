@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { signal, WritableSignal } from '@angular/core';
 
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
-import { TripDayPlan, TripPlan, TripProgram } from '@app/models/trips/trip.models';
+import { TripDayPlan, TripParkCandidate, TripPlan, TripProgram } from '@app/models/trips/trip.models';
 import { TranslationService } from '@app/services/translation.service';
 import { TripOverviewStateFacade } from '../../state/trip-overview-state.facade';
 import { TripOverviewPageComponent } from './trip-overview-page.component';
@@ -50,7 +50,9 @@ describe('TripOverviewPageComponent', () => {
     const state = fixture.componentInstance as unknown as {
       startDate: WritableSignal<string>;
       endDate: WritableSignal<string>;
+      destinationTimeZoneId: WritableSignal<string>;
       dayDrafts: WritableSignal<Record<string, { candidateId: string; arrivalTime: string; note: string }>>;
+      selectedCandidatesForDate: (localDate: string) => TripParkCandidate[];
     };
     state.startDate.set('2026-10-03');
     state.endDate.set('2026-10-04');
@@ -60,6 +62,7 @@ describe('TripOverviewPageComponent', () => {
 
     trip.set(createTrip({
       version: 2,
+      destinationTimeZoneId: 'Europe/Berlin',
       dateProposal: { kind: 'Fixed', startDate: '2026-10-04', endDate: '2026-10-04', candidateDates: [] }
     }));
     tripDates.set(['2026-10-04']);
@@ -69,11 +72,24 @@ describe('TripOverviewPageComponent', () => {
 
     expect(state.startDate()).toBe('2026-10-04');
     expect(state.endDate()).toBe('2026-10-04');
+    expect(state.destinationTimeZoneId()).toBe('Europe/Berlin');
     expect(state.dayDrafts()['2026-10-04']).toEqual({
       candidateId: 'candidate-1',
       arrivalTime: '10:30',
       note: 'Version concurrente'
     });
+
+    program.set({
+      ...createProgram('10:30', 'Version concurrente', '2026-10-04'),
+      candidates: [
+        createCandidate('candidate-restricted', ['2026-10-03']),
+        createCandidate('candidate-flexible', [])
+      ]
+    });
+    fixture.detectChanges();
+
+    expect(state.selectedCandidatesForDate('2026-10-04').map((candidate: TripParkCandidate): string =>
+      candidate.candidateId)).toEqual(['candidate-flexible']);
   });
 });
 
@@ -94,4 +110,12 @@ function createProgram(arrivalTime: string, note: string, localDate: string = '2
     createdAtUtc: '2026-09-18T10:00:00Z', updatedAtUtc: '2026-09-18T10:00:00Z'
   };
   return { candidates: [], days: [day] };
+}
+
+function createCandidate(candidateId: string, candidateDates: string[]): TripParkCandidate {
+  return {
+    candidateId, parkId: `park-${candidateId}`, parkName: candidateId, isParkAvailable: true,
+    candidateDates, source: 'Manual', state: 'Selected', collectiveNote: null, fitSnapshot: null,
+    sortPosition: 0, version: 1, createdAtUtc: '2026-09-18T10:00:00Z', updatedAtUtc: '2026-09-18T10:00:00Z'
+  };
 }

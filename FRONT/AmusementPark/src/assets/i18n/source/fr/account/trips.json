@@ -21,7 +21,7 @@
       "importSelection": "Ajouter la sélection ({{count}})",
       "saveDay": "Enregistrer cette journée"
     },
-    "fields": { "title": "Nom du voyage", "startDate": "Date de début", "endDate": "Date de fin" },
+    "fields": { "title": "Nom du voyage", "startDate": "Date de début", "endDate": "Date de fin", "destinationTimeZone": "Fuseau horaire de la destination" },
     "list": {
       "title": "Tes voyages",
       "description": "Retrouve tes idées de séjour et reprends leur préparation quand tu veux.",
@@ -51,6 +51,7 @@
       "kicker": "Quand partir ?",
       "title": "Pose les dates du voyage",
       "description": "Elles créent automatiquement les journées de ton programme.",
+      "timeZoneHint": "Vérifie le fuseau du parc ou de la destination (par exemple Europe/Paris), surtout si tu prépares le voyage depuis un autre pays.",
       "toDecide": "Dates à décider",
       "kinds": { "none": "Dates à décider", "fixed": "Dates fixées", "range": "Période envisagée", "candidates": "Plusieurs dates possibles" }
     },
