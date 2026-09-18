@@ -200,6 +200,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ITripParkCandidateRepository, TripParkCandidateRepository>();
         services.AddScoped<ITripDayPlanRepository, TripDayPlanRepository>();
         services.AddScoped<ITripPreferenceRepository, TripPreferenceRepository>();
+        services.AddScoped<ITripItemDecisionRepository, TripItemDecisionRepository>();
         services.AddScoped<ITripInvitationRepository, TripInvitationRepository>();
         services.AddScoped<ITripAdmissionRepository, TripAdmissionRepository>();
         services.AddSingleton<ITripInvitationSecurity, TripInvitationSecurity>();

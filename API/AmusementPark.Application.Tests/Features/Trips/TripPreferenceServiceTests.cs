@@ -340,10 +340,11 @@ public sealed class TripPreferenceServiceTests
     {
         return new TripPreferenceService(
             trips.Object,
-            candidates.Object,
             preferences.Object,
-            parks.Object,
-            parkItems.Object,
+            new TripEligibleItemReader(
+                candidates.Object,
+                parks.Object,
+                parkItems.Object),
             images.Object,
             new TripChildMutationExecutor(
                 leases.Object,

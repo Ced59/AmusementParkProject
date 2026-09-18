@@ -1,0 +1,46 @@
+{
+  "trips": {
+    "preferenceSummary": {
+      "open": "Voir la boussole du groupe",
+      "back": "Retour au voyage",
+      "kicker": "Boussole du groupe",
+      "description": "Repère les accords, les hésitations et les vrais points de friction sans exposer les choix individuels.",
+      "participants": "{{count}} participant(s)",
+      "conflicts": "{{count}} point(s) à discuter",
+      "consensuses": "{{count}} accord(s)",
+      "noBlindMajority": "Une opposition reste visible, même si plusieurs personnes souhaitent faire l’attraction. Le groupe décide ensuite explicitement.",
+      "search": "Rechercher",
+      "searchPlaceholder": "Nom d’une attraction ou d’un parc",
+      "filterLabel": "Filtrer la boussole",
+      "boardLabel": "Synthèse des préférences du groupe",
+      "currentDecision": "Décision du groupe",
+      "decidedBy": "Décidé par {{name}}",
+      "noDecision": "Aucune décision collective n’a encore été enregistrée.",
+      "editDecision": "Faire évoluer la décision",
+      "makeDecision": "Décider ensemble",
+      "decisionLabel": "Choisir la décision du groupe",
+      "reasonLabel": "Pourquoi ce choix ?",
+      "reasonPlaceholder": "Explique brièvement le compromis retenu…",
+      "reasonHint": "La raison est obligatoire et restera visible avec l’auteur de la décision.",
+      "saveDecision": "Enregistrer la décision",
+      "empty": "Ajoute d’abord un parc au voyage pour construire la boussole.",
+      "noMatch": "Aucune attraction ne correspond à ce filtre.",
+      "filters": { "all": "Tout", "conflict": "À discuter", "mixed": "Avis partagés", "unknown": "À compléter", "consensus": "Accords" },
+      "compatibility": { "conflict": "Point de friction", "mixed": "Avis partagés", "unknown": "Encore inconnu", "consensus": "Accord du groupe" },
+      "counts": { "must": "Incontournable", "want": "Envie", "optional": "Pourquoi pas", "notForMe": "Pas pour moi", "unanswered": "Sans réponse" },
+      "signals": {
+        "conflict": "Au moins une envie et une opposition coexistent : aucune majorité automatique ne tranche.",
+        "priority": "Cette attraction ressort comme priorité sans opposition exprimée.",
+        "incomplete": "Il manque encore {{count}} réponse(s) : la compatibilité reste provisoire."
+      },
+      "official": { "title": "État officiel et preuve", "status": "État", "checkedAt": "Statut vérifié", "unspecified": "État non précisé", "source": "Consulter la source" },
+      "decisions": { "review": "À rediscuter", "retained": "Retenue", "splitgroup": "Groupe séparé", "optional": "Optionnelle", "excluded": "Écartée" },
+      "feedback": {
+        "loadError": "La boussole du groupe n’a pas pu être chargée.",
+        "saveError": "La décision n’a pas pu être enregistrée.",
+        "conflict": "La décision ou le voyage a changé. Recharge la page avant de réessayer.",
+        "saved": "La décision du groupe est enregistrée."
+      }
+    }
+  }
+}

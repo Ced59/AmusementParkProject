@@ -128,4 +128,19 @@ public static class TripPlanApplicationErrors
             "The preference changed before this action completed.",
             currentVersion);
     }
+
+    public static ApplicationError DecisionForbidden()
+    {
+        return ApplicationError.Forbidden(
+            "trip.decision.forbidden",
+            "Only the trip owner or an editor can record a group decision.");
+    }
+
+    public static ApplicationError DecisionChangedConcurrently(long? currentVersion)
+    {
+        return ApplicationError.Conflict(
+            "trip.decision.changed-concurrently",
+            "The group decision changed before this action completed.",
+            currentVersion);
+    }
 }

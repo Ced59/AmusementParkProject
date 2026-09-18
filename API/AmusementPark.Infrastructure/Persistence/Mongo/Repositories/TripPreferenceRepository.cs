@@ -69,6 +69,61 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
         };
     }
 
+    public async Task<IReadOnlyCollection<TripPreferenceCount>> SummarizeAsync(
+        TripPlanId tripPlanId,
+        IReadOnlyCollection<string> activeUserIds,
+        IReadOnlyCollection<string> parkItemIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(activeUserIds);
+        ArgumentNullException.ThrowIfNull(parkItemIds);
+        if (activeUserIds.Count == 0 || parkItemIds.Count == 0)
+        {
+            return Array.Empty<TripPreferenceCount>();
+        }
+
+        BsonArray users = new(activeUserIds.Select(static value => new BsonString(value)));
+        BsonArray items = new(parkItemIds.Select(static value => new BsonString(value)));
+        PipelineDefinition<TripItemPreferenceDocument, BsonDocument> pipeline = new BsonDocument[]
+        {
+            new("$match", new BsonDocument
+            {
+                { "tripPlanId", tripPlanId.Value },
+                { "userId", new BsonDocument("$in", users) },
+                { "parkItemId", new BsonDocument("$in", items) },
+                { "documentState", TripChildDocumentState.Committed.ToString() },
+                { "level", new BsonDocument("$ne", TripItemPreferenceLevel.Unknown.ToString()) },
+            }),
+            new("$group", new BsonDocument
+            {
+                { "_id", new BsonDocument
+                    {
+                        { "parkItemId", "$parkItemId" },
+                        { "level", "$level" },
+                    }
+                },
+                { "count", new BsonDocument("$sum", 1) },
+            }),
+        };
+        List<BsonDocument> rows = await this.collection.Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        List<TripPreferenceCount> counts = new(rows.Count);
+        foreach (BsonDocument row in rows)
+        {
+            BsonDocument key = row["_id"].AsBsonDocument;
+            if (Enum.TryParse(key["level"].AsString, true, out TripItemPreferenceLevel level)
+                && Enum.IsDefined(level))
+            {
+                counts.Add(new TripPreferenceCount(
+                    key["parkItemId"].AsString,
+                    level,
+                    checked((int)row["count"].ToInt64())));
+            }
+        }
+
+        return counts;
+    }
+
     public async Task<IReadOnlyCollection<TripItemPreference>> ListForUserAsync(
         TripPlanId tripPlanId,
         string userId,

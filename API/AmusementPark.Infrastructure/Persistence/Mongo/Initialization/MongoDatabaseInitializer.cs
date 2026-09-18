@@ -957,6 +957,15 @@ private readonly IMongoDatabase database;
             TripPreferenceRepository.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.TripItemDecisionsCollectionName,
+            cancellationToken);
+        IMongoCollection<TripItemDecisionDocument> tripItemDecisions =
+            this.database.GetCollection<TripItemDecisionDocument>(
+                this.settings.TripItemDecisionsCollectionName);
+        await tripItemDecisions.Indexes.CreateManyAsync(
+            TripItemDecisionRepository.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.TripInvitationsCollectionName,
             cancellationToken);
         IMongoCollection<TripInvitationDocument> tripInvitations =

@@ -5,6 +5,12 @@ namespace AmusementPark.Application.Features.Trips.Ports;
 
 public interface ITripPreferenceRepository
 {
+    Task<IReadOnlyCollection<TripPreferenceCount>> SummarizeAsync(
+        TripPlanId tripPlanId,
+        IReadOnlyCollection<string> activeUserIds,
+        IReadOnlyCollection<string> parkItemIds,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<TripItemPreference>> ListForUserAsync(
         TripPlanId tripPlanId,
         string userId,

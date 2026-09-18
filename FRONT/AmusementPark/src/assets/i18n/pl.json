@@ -1464,6 +1464,77 @@
       "leaveExplanation": "Natychmiast utracisz dostęp do prywatnego planu.",
       "confirmLeave": "Potwierdź odejście"
     },
+    "preferenceSummary": {
+      "open": "Otwórz kompas grupy",
+      "back": "Wróć do wyjazdu",
+      "kicker": "Kompas grupy",
+      "description": "Zobacz zgodność, wątpliwości i rzeczywiste punkty sporne bez ujawniania indywidualnych wyborów.",
+      "participants": "Uczestnicy: {{count}}",
+      "conflicts": "Punkty do omówienia: {{count}}",
+      "consensuses": "Uzgodnienia: {{count}}",
+      "noBlindMajority": "Sprzeciw pozostaje widoczny, nawet gdy kilka osób chce wybrać atrakcję. Następnie grupa podejmuje wyraźną decyzję.",
+      "search": "Szukaj",
+      "searchPlaceholder": "Nazwa atrakcji lub parku",
+      "filterLabel": "Filtruj kompas",
+      "boardLabel": "Podsumowanie preferencji grupy",
+      "currentDecision": "Decyzja grupy",
+      "decidedBy": "Decyzję podjął użytkownik {{name}}",
+      "noDecision": "Nie zapisano jeszcze żadnej decyzji grupowej.",
+      "editDecision": "Zmień decyzję",
+      "makeDecision": "Zdecydujcie wspólnie",
+      "decisionLabel": "Wybierz decyzję grupy",
+      "reasonLabel": "Dlaczego taki wybór?",
+      "reasonPlaceholder": "Krótko wyjaśnij wybrany kompromis…",
+      "reasonHint": "Uzasadnienie jest obowiązkowe i pozostanie widoczne wraz z autorem decyzji.",
+      "saveDecision": "Zapisz decyzję",
+      "empty": "Najpierw dodaj park do wyjazdu, aby utworzyć kompas.",
+      "noMatch": "Żadna atrakcja nie pasuje do tego filtra.",
+      "filters": {
+        "all": "Wszystko",
+        "conflict": "Do omówienia",
+        "mixed": "Podzielone zdania",
+        "unknown": "Do uzupełnienia",
+        "consensus": "Uzgodnione"
+      },
+      "compatibility": {
+        "conflict": "Punkt sporny",
+        "mixed": "Podzielone zdania",
+        "unknown": "Jeszcze nie wiadomo",
+        "consensus": "Zgoda grupy"
+      },
+      "counts": {
+        "must": "Koniecznie",
+        "want": "Chcę",
+        "optional": "Może",
+        "notForMe": "Nie dla mnie",
+        "unanswered": "Bez odpowiedzi"
+      },
+      "signals": {
+        "conflict": "Występują jednocześnie chęć i sprzeciw: automatyczna większość nie podejmuje decyzji.",
+        "priority": "Ta atrakcja wyróżnia się jako priorytet bez zgłoszonego sprzeciwu.",
+        "incomplete": "Brakuje jeszcze {{count}} odpowiedzi, dlatego ocena pozostaje wstępna."
+      },
+      "official": {
+        "title": "Oficjalny status i źródło",
+        "status": "Status",
+        "checkedAt": "Status zweryfikowany",
+        "unspecified": "Nie podano statusu",
+        "source": "Zobacz źródło"
+      },
+      "decisions": {
+        "review": "Do ponownego omówienia",
+        "retained": "Pozostaje",
+        "splitgroup": "Podział grupy",
+        "optional": "Opcjonalna",
+        "excluded": "Odrzucona"
+      },
+      "feedback": {
+        "loadError": "Nie udało się wczytać kompasu grupy.",
+        "saveError": "Nie udało się zapisać decyzji.",
+        "conflict": "Decyzja lub wyjazd uległy zmianie. Odśwież stronę przed ponowną próbą.",
+        "saved": "Decyzja grupy została zapisana."
+      }
+    },
     "kicker": "Wyjazdy do zaplanowania",
     "privacy": "Prywatny, widoczny tylko dla członków",
     "profile": {

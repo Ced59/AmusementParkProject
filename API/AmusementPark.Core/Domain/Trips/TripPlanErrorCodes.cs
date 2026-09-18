@@ -11,6 +11,7 @@ public static class TripPlanErrorCodes
     public const string InvalidOwner = "trip.plan.invalid-owner";
     public const string InvalidCandidate = "trip.plan.invalid-candidate";
     public const string InvalidPreference = "trip.plan.invalid-preference";
+    public const string InvalidDecision = "trip.plan.invalid-decision";
     public const string InvalidDayPlan = "trip.plan.invalid-day-plan";
     public const string ProgramLimitReached = "trip.plan.program-limit-reached";
     public const string InvalidChildMutationLease = "trip.plan.invalid-child-mutation-lease";

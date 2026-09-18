@@ -1,13 +1,10 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Ports;
-using AmusementPark.Application.Features.ParkItems.Ports;
-using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Trips.Models;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Results;
 using AmusementPark.Core.Domain.Identifiers;
 using AmusementPark.Core.Domain.Images;
-using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Trips;
 
 namespace AmusementPark.Application.Features.Trips.Services;
@@ -15,29 +12,23 @@ namespace AmusementPark.Application.Features.Trips.Services;
 public sealed class TripPreferenceService
 {
     private readonly ITripPlanRepository tripPlanRepository;
-    private readonly ITripParkCandidateRepository candidateRepository;
     private readonly ITripPreferenceRepository preferenceRepository;
-    private readonly IParkRepository parkRepository;
-    private readonly IParkItemRepository parkItemRepository;
+    private readonly TripEligibleItemReader eligibleItemReader;
     private readonly IImageRepository imageRepository;
     private readonly TripChildMutationExecutor mutationExecutor;
     private readonly TimeProvider timeProvider;
 
     public TripPreferenceService(
         ITripPlanRepository tripPlanRepository,
-        ITripParkCandidateRepository candidateRepository,
         ITripPreferenceRepository preferenceRepository,
-        IParkRepository parkRepository,
-        IParkItemRepository parkItemRepository,
+        TripEligibleItemReader eligibleItemReader,
         IImageRepository imageRepository,
         TripChildMutationExecutor mutationExecutor,
         TimeProvider? timeProvider = null)
     {
         this.tripPlanRepository = tripPlanRepository ?? throw new ArgumentNullException(nameof(tripPlanRepository));
-        this.candidateRepository = candidateRepository ?? throw new ArgumentNullException(nameof(candidateRepository));
         this.preferenceRepository = preferenceRepository ?? throw new ArgumentNullException(nameof(preferenceRepository));
-        this.parkRepository = parkRepository ?? throw new ArgumentNullException(nameof(parkRepository));
-        this.parkItemRepository = parkItemRepository ?? throw new ArgumentNullException(nameof(parkItemRepository));
+        this.eligibleItemReader = eligibleItemReader ?? throw new ArgumentNullException(nameof(eligibleItemReader));
         this.imageRepository = imageRepository ?? throw new ArgumentNullException(nameof(imageRepository));
         this.mutationExecutor = mutationExecutor ?? throw new ArgumentNullException(nameof(mutationExecutor));
         this.timeProvider = timeProvider ?? TimeProvider.System;
@@ -153,7 +144,7 @@ public sealed class TripPreferenceService
     {
         TripMember actor = trip.Members.Single(member => member.State == TripMembershipState.Active
             && string.Equals(member.UserId, userId, StringComparison.Ordinal));
-        EligibleTripItems eligible = await this.LoadEligibleItemsAsync(trip.Id, cancellationToken);
+        EligibleTripItems eligible = await this.eligibleItemReader.LoadAsync(trip.Id, cancellationToken);
         if (inputs.Any(input => !eligible.ItemsById.ContainsKey(input.ParkItemId)))
         {
             return ApplicationResult<TripPreferenceBoardResult>.Failure(
@@ -278,7 +269,7 @@ public sealed class TripPreferenceService
         EligibleTripItems? loadedEligible = null)
     {
         EligibleTripItems eligible = loadedEligible
-            ?? await this.LoadEligibleItemsAsync(trip.Id, cancellationToken);
+            ?? await this.eligibleItemReader.LoadAsync(trip.Id, cancellationToken);
         IReadOnlyCollection<TripItemPreference> preferences = await this.preferenceRepository.ListForUserAsync(
             trip.Id,
             userId,
@@ -313,44 +304,6 @@ public sealed class TripPreferenceService
             trip.Version,
             TripAuthorizationPolicy.HasPermission(role, TripPermission.Vote),
             items));
-    }
-
-    private async Task<EligibleTripItems> LoadEligibleItemsAsync(
-        TripPlanId tripPlanId,
-        CancellationToken cancellationToken)
-    {
-        IReadOnlyCollection<TripParkCandidate> candidates = await this.candidateRepository.ListAsync(
-            tripPlanId,
-            cancellationToken);
-        string[] orderedParkIds = candidates
-            .Where(static candidate => candidate.State != TripParkCandidateState.Rejected)
-            .OrderBy(static candidate => candidate.SortPosition)
-            .Select(static candidate => candidate.ParkId)
-            .Distinct(StringComparer.Ordinal)
-            .ToArray();
-        IReadOnlyCollection<Park> parks = await this.parkRepository.GetByIdsAsync(
-            orderedParkIds,
-            cancellationToken);
-        Dictionary<string, Park> parksById = parks
-            .Where(static park => park.Id is not null && park.IsPubliclyDiscoverable())
-            .ToDictionary(static park => park.Id!, StringComparer.Ordinal);
-        string[] availableParkIds = orderedParkIds.Where(parksById.ContainsKey).ToArray();
-        IReadOnlyCollection<ParkItem> parkItems = await this.parkItemRepository
-            .GetVisibleOpenAttractionsByParkIdsAsync(availableParkIds, cancellationToken);
-        Dictionary<string, int> parkOrder = availableParkIds
-            .Select(static (parkId, index) => new { parkId, index })
-            .ToDictionary(static item => item.parkId, static item => item.index, StringComparer.Ordinal);
-        ParkItem[] orderedItems = parkItems
-            .Where(static item => !string.IsNullOrWhiteSpace(item.Id)
-                && !string.IsNullOrWhiteSpace(item.Name))
-            .OrderBy(item => parkOrder.GetValueOrDefault(item.ParkId, int.MaxValue))
-            .ThenBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
-            .ThenBy(static item => item.Id, StringComparer.Ordinal)
-            .ToArray();
-        return new EligibleTripItems(
-            parksById,
-            orderedItems,
-            orderedItems.ToDictionary(static item => item.Id, StringComparer.Ordinal));
     }
 
     private DateTime NowUtc()

@@ -9,6 +9,10 @@
     </app-ui-kicker>
     <h1>{{ facade.board()?.tripTitle || ('trips.feedback.loading' | translate) }}</h1>
     <p>{{ 'trips.preferences.description' | translate }}</p>
+    <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', tripPlanId, 'preference-summary']">
+      <i class="pi pi-compass" aria-hidden="true"></i>
+      <span>{{ 'trips.preferenceSummary.open' | translate }}</span>
+    </a>
     @if (facade.board(); as board) {
       <div class="preference-summary" aria-label="{{ 'trips.preferences.summary' | translate }}">
         <app-ui-chip tone="rose" iconClass="pi pi-bolt">

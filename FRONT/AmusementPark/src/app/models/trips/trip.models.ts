@@ -5,6 +5,8 @@ export type TripParkCandidatePlacement = 'First' | 'Before' | 'After' | 'Last';
 export type TripDayBlockType = 'Meal' | 'Event' | 'Note';
 export type TripItemPreferenceLevel = 'Unknown' | 'MustDo' | 'WantToDo' | 'Optional' | 'NotForMe';
 export type TripItemPreferenceReason = 'Sensations' | 'Height' | 'AlreadyDone' | 'Unavailable' | 'Other';
+export type TripPreferenceCompatibility = 'Unknown' | 'Consensus' | 'Mixed' | 'Conflict';
+export type TripItemDecisionStatus = 'Review' | 'Retained' | 'SplitGroup' | 'Optional' | 'Excluded';
 
 export interface TripDateProposal {
   kind: TripDateProposalKind;
@@ -163,3 +165,48 @@ export interface BulkSetTripItemPreferencesRequest {
 }
 
 export const TRIP_ITEM_PREFERENCE_MAX_BATCH_SIZE: number = 250;
+
+export interface TripItemDecision {
+  status: TripItemDecisionStatus;
+  reason: string;
+  decidedByDisplayName: string;
+  decidedAtUtc: string;
+  version: number;
+}
+
+export interface TripItemPreferenceSummary {
+  parkId: string;
+  parkName: string;
+  parkItemId: string;
+  parkItemName: string;
+  mainImageId: string | null;
+  mustDoCount: number;
+  wantToDoCount: number;
+  optionalCount: number;
+  notForMeCount: number;
+  unansweredCount: number;
+  compatibility: TripPreferenceCompatibility;
+  isCompatibilityKnown: boolean;
+  hasIndividualConstraint: boolean;
+  isGroupPriority: boolean;
+  officialStatus: string | null;
+  officialSourceUrl: string | null;
+  officialStatusVerifiedAtUtc: string | null;
+  decision: TripItemDecision | null;
+}
+
+export interface TripPreferenceSummary {
+  tripPlanId: string;
+  tripTitle: string;
+  planVersion: number;
+  participantCount: number;
+  canDecide: boolean;
+  items: TripItemPreferenceSummary[];
+}
+
+export interface SetTripItemDecisionRequest {
+  expectedPlanVersion: number;
+  expectedDecisionVersion: number | null;
+  status: TripItemDecisionStatus;
+  reason: string;
+}
