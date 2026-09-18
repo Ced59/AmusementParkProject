@@ -139,6 +139,23 @@ if [ "$(grep -Fc 'client_max_body_size 26m;' <<< "${rendered_edge_configuration}
   exit 1
 fi
 
+invitation_token='opaque-secret-that-must-never-reach-access-logs'
+read_response "/fr/trip-invitations/${invitation_token}" >/dev/null
+read_response "/api/public/trip-invitations/${invitation_token}/preview" >/dev/null
+sleep 1
+edge_logs="$(docker logs "${container_name}" 2>&1)"
+if grep -Fq "${invitation_token}" <<< "${edge_logs}"; then
+  echo 'Trip invitation bearer tokens must be redacted from Nginx access logs.' >&2
+  printf '%s\n' "${edge_logs}" >&2
+  exit 1
+fi
+if ! grep -Fq '/trip-invitations/[REDACTED]' <<< "${edge_logs}" \
+  || ! grep -Fq '/api/public/trip-invitations/[REDACTED]/preview' <<< "${edge_logs}"; then
+  echo 'Trip invitation access logs must retain a token-free diagnostic route.' >&2
+  printf '%s\n' "${edge_logs}" >&2
+  exit 1
+fi
+
 headers="$(read_response)"
 
 assert_header() {

@@ -42,6 +42,7 @@ import { isPublicSharedVisitRecapSsrRoute } from './src/server/ssr/public-shared
 import { isPublicSharedYearRecapSsrRoute } from './src/server/ssr/public-shared-year-recap-ssr-route-policy';
 import { isPublicSharedPassportProfileSsrRoute } from './src/server/ssr/public-shared-passport-profile-ssr-route-policy';
 import { isPublicSharedProfileComparisonSsrRoute } from './src/server/ssr/public-shared-profile-comparison-ssr-route-policy';
+import { isPublicTripInvitationRoute } from './src/server/ssr/public-trip-invitation-route-policy';
 import { isPublicRatingMethodologySsrRoute } from './src/server/ssr/public-rating-methodology-ssr-route-policy';
 import {
   isCriticalPublicPricingSsrRoute,
@@ -3386,6 +3387,7 @@ function applySecurityHeaders(req: Request, res: Response, next: NextFunction): 
       || isPublicSharedYearRecapSsrRoute(getPathOnly(req.originalUrl))
       || isPublicSharedPassportProfileSsrRoute(getPathOnly(req.originalUrl))
       || isPublicSharedProfileComparisonSsrRoute(getPathOnly(req.originalUrl))
+      || isPublicTripInvitationRoute(getPathOnly(req.originalUrl))
       ? 'no-referrer'
       : 'strict-origin-when-cross-origin'
   );
