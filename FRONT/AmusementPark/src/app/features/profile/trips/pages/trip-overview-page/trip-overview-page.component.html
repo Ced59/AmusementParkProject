@@ -84,6 +84,9 @@
           @if (datesInvalid()) {
             <p class="trip-dates__validation" role="alert">{{ 'trips.feedback.invalidDates' | translate }}</p>
           }
+          @if (dateDependenciesOutsideDraft()) {
+            <p class="trip-dates__validation" role="alert">{{ 'trips.dates.dependenciesOutsideRange' | translate }}</p>
+          }
           <div class="trip-dates__actions">
             <button type="button" appUiButton="primary" [disabled]="facade.busy() || !canSaveDates()" (click)="saveDates()">
               {{ 'trips.actions.saveDates' | translate }}
@@ -239,7 +242,7 @@
               </label>
               <label class="day-card__note">
                 <span>{{ 'trips.days.note' | translate }}</span>
-                <textarea maxlength="1000" rows="2" [value]="dayDrafts()[date]?.note || ''" (input)="updateDay(date, 'note', $any($event.target).value)"></textarea>
+                <textarea maxlength="2000" rows="2" [value]="dayDrafts()[date]?.note || ''" (input)="updateDay(date, 'note', $any($event.target).value)"></textarea>
               </label>
               <div class="day-card__actions">
                 <button type="button" appUiButton="primary" [disabled]="facade.busy() || !canSaveDay(date)" (click)="saveDay(date)">

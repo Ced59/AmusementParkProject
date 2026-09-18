@@ -59,6 +59,7 @@
       "currentProposal": "Proposition actuelle",
       "explicitConversion": "Cette proposition reste intacte tant que tu ne choisis pas explicitement des dates fixes ou son effacement.",
       "clearBlocked": "Efface d’abord chaque journée enregistrée et chaque contrainte de date d’un parc avant d’effacer les dates du voyage.",
+      "dependenciesOutsideRange": "La nouvelle période doit inclure chaque journée enregistrée et chaque contrainte de date d’un parc.",
       "toDecide": "Dates à décider",
       "kinds": { "none": "Dates à décider", "fixed": "Dates fixées", "range": "Période envisagée", "candidates": "Plusieurs dates possibles" }
     },

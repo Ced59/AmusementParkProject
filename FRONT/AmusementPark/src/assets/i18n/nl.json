@@ -1432,6 +1432,7 @@
       "currentProposal": "Huidig voorstel",
       "explicitConversion": "Dit voorstel blijft ongewijzigd totdat je uitdrukkelijk vaste datums kiest of het wist.",
       "clearBlocked": "Wis eerst alle opgeslagen dagen en datumbeperkingen van parken voordat je de reisdatums wist.",
+      "dependenciesOutsideRange": "De nieuwe periode moet alle opgeslagen dagen en datumbeperkingen van parken bevatten.",
       "toDecide": "Datums nog te bepalen",
       "kinds": {
         "none": "Datums nog te bepalen",

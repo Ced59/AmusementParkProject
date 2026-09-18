@@ -54,6 +54,7 @@ describe('TripOverviewPageComponent', () => {
     const fixture: ComponentFixture<TripOverviewPageComponent> = TestBed.createComponent(TripOverviewPageComponent);
     fixture.detectChanges();
     expect(fixture.nativeElement.textContent).toContain('trips.actions.clearDay');
+    expect(fixture.nativeElement.querySelector('textarea')?.maxLength).toBe(2000);
     const state = fixture.componentInstance as unknown as {
       startDate: WritableSignal<string>;
       endDate: WritableSignal<string>;
@@ -64,6 +65,7 @@ describe('TripOverviewPageComponent', () => {
       canSaveDay: (localDate: string) => boolean;
       canSaveDates: () => boolean;
       canClearDates: () => boolean;
+      dateDependenciesOutsideDraft: () => boolean;
       isCandidateScheduled: (candidateId: string) => boolean;
       saveDates: () => void;
       clearDates: () => void;
@@ -164,6 +166,18 @@ describe('TripOverviewPageComponent', () => {
     fixture.detectChanges();
     expect(state.canClearDates()).toBe(false);
     expect(fixture.nativeElement.textContent).toContain('trips.dates.clearBlocked');
+    state.dateEditorEnabled.set(true);
+    state.startDate.set('2026-11-02');
+    state.endDate.set('2026-11-08');
+    state.destinationTimeZoneId.set('Europe/Paris');
+    expect(state.dateDependenciesOutsideDraft()).toBe(true);
+    expect(state.canSaveDates()).toBe(false);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('trips.dates.dependenciesOutsideRange');
+    state.startDate.set('2026-11-01');
+    expect(state.dateDependenciesOutsideDraft()).toBe(false);
+    expect(state.canSaveDates()).toBe(true);
+    state.dateEditorEnabled.set(false);
     state.saveDates();
     expect(facade.setDates).not.toHaveBeenCalled();
     state.clearDates();

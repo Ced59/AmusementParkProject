@@ -1432,6 +1432,7 @@
       "currentProposal": "Current proposal",
       "explicitConversion": "This proposal stays unchanged until you explicitly choose fixed dates or clear it.",
       "clearBlocked": "Clear every saved day and every park date constraint before clearing the trip dates.",
+      "dependenciesOutsideRange": "The new period must include every saved day and every park date constraint.",
       "toDecide": "Dates to decide",
       "kinds": {
         "none": "Dates to decide",

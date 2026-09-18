@@ -139,9 +139,11 @@ export class TripOverviewPageComponent implements OnInit {
   }
 
   protected canSaveDates(): boolean {
+    const hasStartDate: boolean = !!this.startDate().trim();
     return this.dateEditorEnabled()
       && areTripDateInputsValid(this.startDate(), this.endDate())
-      && (!this.startDate() || !!this.destinationTimeZoneId().trim());
+      && (hasStartDate ? !!this.destinationTimeZoneId().trim() : this.canClearDates())
+      && !this.dateDependenciesOutsideDraft();
   }
 
   protected datesInvalid(): boolean {
@@ -157,6 +159,21 @@ export class TripOverviewPageComponent implements OnInit {
     const program: TripProgram = this.facade.program();
     return program.days.length === 0
       && program.candidates.every((candidate: TripParkCandidate): boolean => candidate.candidateDates.length === 0);
+  }
+
+  protected dateDependenciesOutsideDraft(): boolean {
+    const normalizedStart: string = this.startDate().trim();
+    const normalizedEnd: string = this.endDate().trim() || normalizedStart;
+    if (!normalizedStart || !areTripDateInputsValid(normalizedStart, normalizedEnd)) {
+      return false;
+    }
+
+    const program: TripProgram = this.facade.program();
+    return program.days.some((day: TripDayPlan): boolean =>
+      day.localDate < normalizedStart || day.localDate > normalizedEnd)
+      || program.candidates.some((candidate: TripParkCandidate): boolean =>
+        candidate.candidateDates.some((date: string): boolean =>
+          date < normalizedStart || date > normalizedEnd));
   }
 
   protected currentProposedDates(): string[] {

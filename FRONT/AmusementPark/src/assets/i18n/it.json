@@ -1432,6 +1432,7 @@
       "currentProposal": "Proposta attuale",
       "explicitConversion": "Questa proposta resta invariata finché non scegli esplicitamente date fisse o non la cancelli.",
       "clearBlocked": "Svuota prima tutte le giornate salvate e i vincoli di data dei parchi, poi potrai cancellare le date del viaggio.",
+      "dependenciesOutsideRange": "Il nuovo periodo deve includere tutte le giornate salvate e i vincoli di data dei parchi.",
       "toDecide": "Date da decidere",
       "kinds": {
         "none": "Date da decidere",
