@@ -35,9 +35,14 @@ public sealed class TripChildMutationExecutor
                 TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        ApplicationResult<TResult> result = await action(lease);
-        await this.ReleaseBestEffortAsync(trip.Id, lease);
-        return result;
+        try
+        {
+            return await action(lease);
+        }
+        finally
+        {
+            await this.ReleaseBestEffortAsync(trip.Id, lease);
+        }
     }
 
     public async Task<ApplicationResult<TResult>> ExecuteAccessibleAsync<TResult>(
@@ -60,9 +65,14 @@ public sealed class TripChildMutationExecutor
                 TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        ApplicationResult<TResult> result = await action(lease);
-        await this.ReleaseBestEffortAsync(trip.Id, lease);
-        return result;
+        try
+        {
+            return await action(lease);
+        }
+        finally
+        {
+            await this.ReleaseBestEffortAsync(trip.Id, lease);
+        }
     }
 
     public async Task<ApplicationResult> ExecuteOwnedAsync(
@@ -80,9 +90,14 @@ public sealed class TripChildMutationExecutor
             return ApplicationResult.Failure(TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        ApplicationResult result = await action(lease);
-        await this.ReleaseBestEffortAsync(trip.Id, lease);
-        return result;
+        try
+        {
+            return await action(lease);
+        }
+        finally
+        {
+            await this.ReleaseBestEffortAsync(trip.Id, lease);
+        }
     }
 
     public async Task<ApplicationResult> ExecuteAccessibleAsync(
@@ -104,9 +119,14 @@ public sealed class TripChildMutationExecutor
             return ApplicationResult.Failure(TripPlanApplicationErrors.ChildMutationUnavailable());
         }
 
-        ApplicationResult result = await action(lease);
-        await this.ReleaseBestEffortAsync(trip.Id, lease);
-        return result;
+        try
+        {
+            return await action(lease);
+        }
+        finally
+        {
+            await this.ReleaseBestEffortAsync(trip.Id, lease);
+        }
     }
 
     private async Task ReleaseBestEffortAsync(

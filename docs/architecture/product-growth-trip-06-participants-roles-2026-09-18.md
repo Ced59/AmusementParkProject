@@ -295,6 +295,9 @@ Un changement de rôle, un transfert ou un départ avance le même epoch racine 
 les écritures enfants. MongoDB n'accepte cette transition qu'après la fin des leases
 déjà accordées. La réponse de changement de droits ne peut donc pas réussir puis
 laisser une ancienne autorisation terminer une modification de candidat ou de jour.
+L'exécuteur libère toujours sa lease en `finally`, y compris si l'écriture lève une
+exception ou propage une annulation ; la libération utilise son propre token non
+annulé et reste en meilleur effort, avec l'expiration comme dernier filet de sécurité.
 Un compte supprimé, désactivé ou bloqué ne peut pas devenir propriétaire : cette
 vérification précède toute mutation afin de ne jamais rendre le voyage ingérable.
 L'annulation d'une admission provisoire avance elle aussi la version du voyage. Une
