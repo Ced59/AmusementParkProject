@@ -9,6 +9,9 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 internal static class TripPlanMongoDefinitions
 {
     public const int MaximumAccessibleTripsPerRequest = 100;
+    public const string LegacyOwnerOperationIndexName = "uq_trip_plan_owner_operation";
+    public const string LegacyOwnerScopeOperationIndexName = "ix_trip_plan_owner_scope_operation";
+    public const string CreatorScopeOperationIndexName = "uq_trip_plan_creator_scope_operation";
 
     public static FindOptions<TripPlanDocument, TripPlanDocument> BuildAccessibleListOptions()
     {
@@ -266,21 +269,16 @@ internal static class TripPlanMongoDefinitions
                 }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
-                    .Ascending(static document => document.OwnerUserId)
+                    .Ascending(static document => document.OwnerScopeHash)
                     .Ascending(static document => document.CreationOperationKeyHash),
                 new CreateIndexOptions<TripPlanDocument>
                 {
                     Unique = true,
-                    Name = "uq_trip_plan_owner_operation",
+                    Name = CreatorScopeOperationIndexName,
                     PartialFilterExpression = Builders<TripPlanDocument>.Filter.Eq(
                         static document => document.DeletionState,
                         TripDeletionState.None),
                 }),
-            new(
-                Builders<TripPlanDocument>.IndexKeys
-                    .Ascending(static document => document.OwnerScopeHash)
-                    .Ascending(static document => document.CreationOperationKeyHash),
-                new CreateIndexOptions { Name = "ix_trip_plan_owner_scope_operation" }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
                     .Ascending("members.userId")

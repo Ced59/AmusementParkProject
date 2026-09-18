@@ -126,6 +126,30 @@ describe('TripInvitationPreviewStateFacade', () => {
     expect(facade.status()).toBe('accepted');
   });
 
+  it('resumes the account-bound decision after an in-place login before creating another operation', () => {
+    facade.load('opaque-token');
+    expect(decisionOperations.read).not.toHaveBeenCalled();
+
+    loggedIn = true;
+    decisionOperations.read.mockReturnValue({ decision: 'accept', operationId: 'persisted-operation' });
+    (data.accept as ReturnType<typeof vi.fn>).mockReturnValue(
+      of({ tripPlanId: 'trip-1', wasReplayed: true })
+    );
+
+    facade.decline();
+
+    expect(decisionOperations.read).toHaveBeenCalledWith('opaque-token', 'user-1');
+    expect(data.accept).toHaveBeenCalledWith('opaque-token', 'persisted-operation');
+    expect(data.decline).not.toHaveBeenCalled();
+    expect(decisionOperations.write).toHaveBeenCalledWith(
+      'opaque-token',
+      'user-1',
+      'accept',
+      'persisted-operation'
+    );
+    expect(facade.status()).toBe('accepted');
+  });
+
   it('recovers the public preview when a resumed decision fails', () => {
     loggedIn = true;
     decisionOperations.read.mockReturnValue({ decision: 'accept', operationId: 'persisted-operation' });

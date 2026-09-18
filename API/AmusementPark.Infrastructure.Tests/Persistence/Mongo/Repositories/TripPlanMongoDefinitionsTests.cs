@@ -29,10 +29,23 @@ public sealed class TripPlanMongoDefinitionsTests
 
         Assert.Contains(indexes, index => index.Options.Name == "uq_trip_plan_owner_slot"
             && index.Options.Unique == true);
-        Assert.Contains(indexes, index => index.Options.Name == "uq_trip_plan_owner_operation"
-            && index.Options.Unique == true);
-        Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_owner_scope_operation"
-            && index.Options.Unique != true);
+        CreateIndexModel<TripPlanDocument> creatorOperationIndex = Assert.Single(
+            indexes,
+            index => index.Options.Name == TripPlanMongoDefinitions.CreatorScopeOperationIndexName);
+        Assert.True(creatorOperationIndex.Options.Unique);
+        BsonDocument creatorOperationKeys = creatorOperationIndex.Keys.Render(
+            new RenderArgs<TripPlanDocument>(
+                MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+                MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        Assert.Equal(
+            new BsonDocument
+            {
+                { "ownerScopeHash", 1 },
+                { "creationOperationKeyHash", 1 },
+            },
+            creatorOperationKeys);
+        Assert.DoesNotContain(indexes, index => index.Options.Name == "uq_trip_plan_owner_operation");
+        Assert.DoesNotContain(indexes, index => index.Options.Name == "ix_trip_plan_owner_scope_operation");
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_member_updated");
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_admission_fence"
             && index.Options.PartialFilterExpression is not null);

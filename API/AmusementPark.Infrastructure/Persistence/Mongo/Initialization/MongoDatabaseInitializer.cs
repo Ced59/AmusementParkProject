@@ -919,8 +919,16 @@ private readonly IMongoDatabase database;
         IMongoCollection<TripPlanDocument> tripPlans =
             this.database.GetCollection<TripPlanDocument>(this.settings.TripPlansCollectionName);
         await MigrateTripPlanProgramFoundationAsync(tripPlans, cancellationToken);
+        await this.DropIndexIfExistsAsync(
+            tripPlans,
+            TripPlanMongoDefinitions.LegacyOwnerScopeOperationIndexName,
+            cancellationToken);
         await tripPlans.Indexes.CreateManyAsync(
             TripPlanMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.DropIndexIfExistsAsync(
+            tripPlans,
+            TripPlanMongoDefinitions.LegacyOwnerOperationIndexName,
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
             this.settings.TripParkCandidatesCollectionName,

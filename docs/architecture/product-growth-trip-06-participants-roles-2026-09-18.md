@@ -227,7 +227,9 @@ reprend donc pas cette décision. Si l'acceptation
 est validée mais que sa réponse HTTP se perd, un rechargement rejoue directement la
 même opération avant de demander l'aperçu désormais terminal. Le succès efface le
 marqueur ; une erreur ambiguë le conserve pour un nouveau retry et recharge
-explicitement l'aperçu afin de ne jamais laisser une page vide.
+explicitement l'aperçu afin de ne jamais laisser une page vide. Si la connexion se
+termine dans la modale sans recharger la route, la première action relit ce marqueur
+lié au compte et reprend la décision déjà engagée avant de générer une autre clé.
 
 ## Séquence de transfert de propriété
 
@@ -265,6 +267,14 @@ présenter l'échec comme un départ non enregistré.
 création d'origine si le premier propriétaire rejoue sa clé après un transfert. Le
 transfert ne peut donc ni créer un doublon au retry, ni déplacer la portée
 d'idempotence vers le nouveau propriétaire.
+
+L'initialisation MongoDB migre l'index historique fondé sur le propriétaire
+courant vers un unique index partiel
+`(ownerScopeHash, creationOperationKeyHash)`. Elle supprime l'ancien index de
+lecture non unique avant de créer cette contrainte, puis retire l'ancienne
+unicité `(ownerUserId, creationOperationKeyHash)` : les deux systèmes ne
+coexistent pas après la migration et un transfert ne peut pas entrer en collision
+avec une clé de création propre au destinataire.
 
 Un changement de rôle, un transfert ou un départ avance le même epoch racine que
 les écritures enfants. MongoDB n'accepte cette transition qu'après la fin des leases
