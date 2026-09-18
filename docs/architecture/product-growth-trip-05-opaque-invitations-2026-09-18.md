@@ -3,9 +3,10 @@
 ## Résultat métier
 
 Le propriétaire d'un voyage privé peut générer et révoquer un lien d'invitation
-à usage unique. L'invité consulte un aperçu sans créer de compte. Cette étape ne
-l'ajoute pas encore au voyage : l'acceptation, le refus et les rôles actifs sont
-livrés par `TRIP-06`.
+opaque. L'invité peut rouvrir cet aperçu sans créer de compte tant que le lien
+n'est ni expiré ni révoqué. Cette étape ne l'ajoute pas encore au voyage : la
+consommation atomique qui rendra le lien strictement mono-usage, l'acceptation,
+le refus et les rôles actifs sont livrés par `TRIP-06`.
 
 L'écran propriétaire propose trois intentions compréhensibles : co-organiser,
 participer aux choix ou seulement consulter. Il montre avant l'envoi le contenu
