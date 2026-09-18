@@ -44,6 +44,7 @@ import { isPublicSharedPassportProfileSsrRoute } from './src/server/ssr/public-s
 import { isPublicSharedProfileComparisonSsrRoute } from './src/server/ssr/public-shared-profile-comparison-ssr-route-policy';
 import {
   isPublicTripInvitationRoute,
+  resolveTripInvitationCsrCacheControl,
   sanitizePublicTripInvitationUrl,
 } from './src/app/core/ssr/public-trip-invitation-route-policy';
 import { isPublicRatingMethodologySsrRoute } from './src/server/ssr/public-rating-methodology-ssr-route-policy';
@@ -1832,7 +1833,7 @@ async function renderSsrHtmlWithSeoReadyRetries(
 
     console.warn(
       `SSR SEO-ready render retry: attempt=${retryIndex}/${seoReadyRenderRetryCount}, `
-      + `status=${res.statusCode}, reason=${seoReady.reason}, bodyTextLength=${seoReady.bodyTextLength}, url=${requestUrl}`
+      + `status=${res.statusCode}, reason=${seoReady.reason}, bodyTextLength=${seoReady.bodyTextLength}, url=${sanitizePublicTripInvitationUrl(requestUrl)}`
     );
 
     if (seoReadyRenderRetryDelayMilliseconds > 0) {
@@ -1867,13 +1868,13 @@ function scheduleSsrRender(render: () => Promise<string>, requestUrl?: string): 
 
   if (pendingRenderQueue.length >= renderQueueMaxEntries) {
     technicalStatsCounters.renderQueueFullRejections += 1;
-    console.warn(`SSR render queue full: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${requestUrl ?? 'unknown'}`);
+    console.warn(`SSR render queue full: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${sanitizePublicTripInvitationUrl(requestUrl ?? 'unknown')}`);
     return Promise.reject(new SsrRenderQueueFullError());
   }
 
   const queueLengthAfterPush = pendingRenderQueue.length + 1;
   if (queueLengthAfterPush >= renderQueueWarningThreshold) {
-    console.warn(`SSR render queue high: active=${activeRenderCount}, queued=${queueLengthAfterPush}, url=${requestUrl ?? 'unknown'}`);
+    console.warn(`SSR render queue high: active=${activeRenderCount}, queued=${queueLengthAfterPush}, url=${sanitizePublicTripInvitationUrl(requestUrl ?? 'unknown')}`);
   }
 
   return new Promise<string>((resolve: (value: string) => void, reject: (reason?: unknown) => void): void => {
@@ -1894,7 +1895,7 @@ function runScheduledSsrRender(render: () => Promise<string>, requestUrl?: strin
     technicalStatsCounters.maxRenderMilliseconds = Math.max(technicalStatsCounters.maxRenderMilliseconds, elapsedMilliseconds);
     if (slowRenderThresholdMilliseconds > 0 && elapsedMilliseconds >= slowRenderThresholdMilliseconds) {
       technicalStatsCounters.slowRenders += 1;
-      console.warn(`SSR slow render: ${elapsedMilliseconds}ms, active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${requestUrl ?? 'unknown'}`);
+      console.warn(`SSR slow render: ${elapsedMilliseconds}ms, active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${sanitizePublicTripInvitationUrl(requestUrl ?? 'unknown')}`);
     }
 
     activeRenderCount = Math.max(0, activeRenderCount - 1);
@@ -1996,7 +1997,10 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
 
   res.setHeader('X-AmusementPark-SSR-Fallback', mode);
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
-  res.setHeader('Cache-Control', csrFallbackCacheControl);
+  res.setHeader(
+    'Cache-Control',
+    resolveTripInvitationCsrCacheControl(getPathOnly(req.originalUrl), csrFallbackCacheControl),
+  );
   sendPreparedHtmlResponse(req, res, readCsrShellHtml(csrIndexHtmlPath), {
     allowRobotNoJsOptimization: false,
     responseMode: 'CSR_FALLBACK'
