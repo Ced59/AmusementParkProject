@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 import { signal, WritableSignal } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { TripDayPlan, TripParkCandidate, TripPlan, TripProgram } from '@app/models/trips/trip.models';
@@ -10,6 +11,9 @@ import { TripOverviewPageComponent } from './trip-overview-page.component';
 
 describe('TripOverviewPageComponent', () => {
   it('replaces stale date and day drafts with the server state after conflict recovery', async () => {
+    const languageParams: BehaviorSubject<ParamMap> = new BehaviorSubject<ParamMap>(
+      convertToParamMap({ lang: 'fr' })
+    );
     const trip: WritableSignal<TripPlan | null> = signal<TripPlan | null>(createTrip());
     const program: WritableSignal<TripProgram> = signal<TripProgram>(createProgram('09:00', 'Serveur initial'));
     const tripDates: WritableSignal<string[]> = signal<string[]>(['2026-10-03']);
@@ -42,7 +46,17 @@ describe('TripOverviewPageComponent', () => {
       imports: [...COMMON_TEST_IMPORTS, TripOverviewPageComponent],
       providers: [
         ...provideCommonTestDependencies(),
-        { provide: ActivatedRoute, useValue: { snapshot: { paramMap: { get: (): string => 'trip-1' } } } },
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: { paramMap: convertToParamMap({ tripId: 'trip-1' }) },
+            parent: {
+              snapshot: { paramMap: languageParams.value },
+              paramMap: languageParams.asObservable(),
+              parent: null
+            }
+          }
+        },
         { provide: TranslationService, useValue: { getCurrentLang: (): string => 'fr' } }
       ]
     })
@@ -60,6 +74,7 @@ describe('TripOverviewPageComponent', () => {
       endDate: WritableSignal<string>;
       destinationTimeZoneId: WritableSignal<string>;
       dateEditorEnabled: WritableSignal<boolean>;
+      currentLanguage: () => string;
       dayDrafts: WritableSignal<Record<string, { candidateId: string; arrivalTime: string; note: string }>>;
       selectedCandidatesForDate: (localDate: string) => TripParkCandidate[];
       canSaveDay: (localDate: string) => boolean;
@@ -75,6 +90,11 @@ describe('TripOverviewPageComponent', () => {
     state.dayDrafts.set({
       '2026-10-03': { candidateId: 'candidate-1', arrivalTime: '08:00', note: 'Brouillon obsolète' }
     });
+    expect(state.currentLanguage()).toBe('fr');
+    languageParams.next(convertToParamMap({ lang: 'de' }));
+    fixture.detectChanges();
+    expect(state.currentLanguage()).toBe('de');
+    expect(fixture.nativeElement.querySelector('a')?.getAttribute('href')).toContain('/de/profile/trips');
 
     trip.set(createTrip({
       version: 2,

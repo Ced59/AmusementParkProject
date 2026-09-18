@@ -1,6 +1,6 @@
 <main class="trip-overview-page">
   <header class="trip-overview-page__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
-    <a appUiButton="ghost" [routerLink]="['/', currentLanguage, 'profile', 'trips']">
+    <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips']">
       <i class="pi pi-arrow-left" aria-hidden="true"></i>
       <span>{{ 'trips.actions.backToTrips' | translate }}</span>
     </a>
@@ -116,14 +116,14 @@
       @if (facade.wishlistUnavailable()) {
         <div class="trip-section__empty">
           <p>{{ 'trips.wishlist.unavailable' | translate }}</p>
-          <a appUiButton="ghost" [routerLink]="['/', currentLanguage, 'profile', 'collections']">
+          <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'collections']">
             {{ 'trips.actions.openCollections' | translate }}
           </a>
         </div>
       } @else if (facade.wishlistParks().length === 0) {
         <div class="trip-section__empty">
           <p>{{ 'trips.wishlist.empty' | translate }}</p>
-          <a appUiButton="ghost" [routerLink]="['/', currentLanguage, 'profile', 'collections']">
+          <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'collections']">
             {{ 'trips.actions.openCollections' | translate }}
           </a>
         </div>

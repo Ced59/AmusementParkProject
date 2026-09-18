@@ -1,7 +1,9 @@
 import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
-import { ChangeDetectionStrategy, Component, effect, OnInit, signal, untracked } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, DestroyRef, effect, OnInit, signal, untracked } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { skip } from 'rxjs';
 
 import {
   TripDayPlan,
@@ -13,6 +15,11 @@ import {
 import { UserCollectionEntry } from '@app/models/watchlists/user-collection-entry.model';
 import { TranslationService } from '@app/services/translation.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
+import {
+  findNearestLanguageActivatedRoute,
+  resolveLanguageFromActivatedRoute,
+  resolveLanguageFromParamMap
+} from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { TripCandidateCardComponent } from '../../components/trip-candidate-card/trip-candidate-card.component';
 import { areTripDateInputsValid } from '../../state/trip-date-proposal.helpers';
@@ -44,7 +51,7 @@ interface TripDayDraft {
   ]
 })
 export class TripOverviewPageComponent implements OnInit {
-  protected readonly currentLanguage: string;
+  protected readonly currentLanguage = signal<string>('en');
   protected readonly startDate = signal<string>('');
   protected readonly endDate = signal<string>('');
   protected readonly destinationTimeZoneId = signal<string>('');
@@ -61,10 +68,20 @@ export class TripOverviewPageComponent implements OnInit {
   constructor(
     protected readonly facade: TripOverviewStateFacade,
     private readonly route: ActivatedRoute,
-    private readonly router: Router,
-    translationService: TranslationService
+    translationService: TranslationService,
+    destroyRef: DestroyRef
   ) {
-    this.currentLanguage = translationService.getCurrentLang() || this.router.url.split('/')[1] || 'en';
+    const initialLanguage: string = resolveLanguageFromActivatedRoute(
+      route,
+      translationService.getCurrentLang() || 'en'
+    );
+    this.currentLanguage.set(initialLanguage);
+    findNearestLanguageActivatedRoute(route)?.paramMap.pipe(
+      skip(1),
+      takeUntilDestroyed(destroyRef)
+    ).subscribe((params: ParamMap): void => {
+      this.currentLanguage.set(resolveLanguageFromParamMap(params, this.currentLanguage()));
+    });
 
     effect((): void => {
       const trip: TripPlan | null = this.facade.trip();
