@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 190 parcs étaient publiés (`isVisible: true`).
 - Les 190 scores ont été recalculés individuellement avec `Completeness`.
 - 68 parcs atteignent le niveau `Excellent` : 66 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 92 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **30 parcs** : 0 au niveau `Publishable`, 28 au niveau `Good` et 2 au niveau `Excellent`.
+- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 93 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **29 parcs** : 0 au niveau `Publishable`, 27 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,11 +22,10 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (28)
+## Priorité 2 — niveau `Good` (27)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 89 | `Good` | Antibes Land | FR | `Operating` | `Regional` | 83/93 | `b0607555-4092-407e-9ee6-7d61423a8c73` |
 | 89 | `Good` | Festyland | FR | `Operating` | `Regional` | 83/93 | `4fc0aa20-b0d7-47cc-a403-81b0d6e10f04` |
 | 89 | `Good` | Mirapolis | FR | `ClosedDefinitively` | `—` | 96/108 | `327f4af5-10e5-4744-aa77-d3755ec7a9dc` |
 | 90 | `Good` | Amusementspark Tivoli | NL | `Operating` | `Regional` | 84/93 | `f95c7ed8-6564-4fce-a031-3d81d3bee764` |
