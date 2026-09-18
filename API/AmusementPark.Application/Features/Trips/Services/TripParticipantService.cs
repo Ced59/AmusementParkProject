@@ -13,15 +13,18 @@ public sealed class TripParticipantService
 {
     private const string NeutralDisplayName = "—";
     private readonly ITripPlanRepository plans;
+    private readonly ITripPreferenceRepository preferences;
     private readonly IUserRepository users;
     private readonly TimeProvider timeProvider;
 
     public TripParticipantService(
         ITripPlanRepository plans,
+        ITripPreferenceRepository preferences,
         IUserRepository users,
         TimeProvider? timeProvider = null)
     {
         this.plans = plans ?? throw new ArgumentNullException(nameof(plans));
+        this.preferences = preferences ?? throw new ArgumentNullException(nameof(preferences));
         this.users = users ?? throw new ArgumentNullException(nameof(users));
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
@@ -197,9 +200,17 @@ public sealed class TripParticipantService
             trip,
             expectedVersion,
             cancellationToken);
+        if (write.Outcome == TripPlanWriteOutcome.Success)
+        {
+            await this.preferences.CompleteDepartureCleanupAsync(
+                parsedTripId,
+                normalizedUserId,
+                CancellationToken.None);
+            return ApplicationResult.Success();
+        }
+
         return write.Outcome switch
         {
-            TripPlanWriteOutcome.Success => ApplicationResult.Success(),
             TripPlanWriteOutcome.NotFound => ApplicationResult.Failure(TripPlanApplicationErrors.NotFound()),
             _ => ApplicationResult.Failure(
                 TripPlanApplicationErrors.ChangedConcurrently(write.CurrentVersion)),

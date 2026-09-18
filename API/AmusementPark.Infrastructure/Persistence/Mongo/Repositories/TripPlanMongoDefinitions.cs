@@ -181,6 +181,33 @@ internal static class TripPlanMongoDefinitions
             .Set(static item => item.Version, document.Version);
     }
 
+    public static UpdateDefinition<TripPlanDocument> BuildAccessibleDomainMutation(
+        TripPlan trip,
+        string actorUserId)
+    {
+        ArgumentNullException.ThrowIfNull(trip);
+        string normalizedActorUserId = actorUserId?.Trim() ?? string.Empty;
+        if (normalizedActorUserId.Length == 0)
+        {
+            throw new ArgumentException("The actor user identifier is required.", nameof(actorUserId));
+        }
+
+        UpdateDefinition<TripPlanDocument> domainMutation = BuildDomainMutation(trip);
+        bool actorRemainsActive = trip.Members.Any(member =>
+            member.State == TripMembershipState.Active
+            && string.Equals(member.UserId, normalizedActorUserId, StringComparison.Ordinal));
+        if (actorRemainsActive)
+        {
+            return domainMutation;
+        }
+
+        return Builders<TripPlanDocument>.Update.Combine(
+            domainMutation,
+            Builders<TripPlanDocument>.Update.AddToSet(
+                static document => document.DepartedPreferenceCleanupUserIds,
+                normalizedActorUserId));
+    }
+
     public static UpdateDefinition<TripPlanDocument> BuildOwnershipTransferMutation(
         TripPlan trip,
         int ownerSlot)
@@ -232,6 +259,9 @@ internal static class TripPlanMongoDefinitions
             updates.Set(static document => document.Status, TripPlanStatus.Cancelled),
             updates.Set(static document => document.AccessScope, TripPlanAccessScope.MembersOnly),
             updates.Set(static document => document.Members, new List<TripMemberDocument>()),
+            updates.Set(
+                static document => document.DepartedPreferenceCleanupUserIds,
+                new List<string>()),
             updates.Unset(static document => document.MemberAdmissionFence),
             updates.Set(static document => document.AdmissionClosureState, TripAdmissionClosureState.Closed),
             updates.Set(static document => document.DeletionState, TripDeletionState.Purged),
@@ -317,6 +347,16 @@ internal static class TripPlanMongoDefinitions
                     .Ascending(static document => document.DeletionState)
                     .Ascending(static document => document.UpdatedAt),
                 new CreateIndexOptions { Name = "ix_trip_plan_deletion_recovery" }),
+            new(
+                Builders<TripPlanDocument>.IndexKeys
+                    .Ascending(static document => document.DepartedPreferenceCleanupUserIds),
+                new CreateIndexOptions<TripPlanDocument>
+                {
+                    Name = "ix_trip_plan_departed_preference_cleanup",
+                    PartialFilterExpression = Builders<TripPlanDocument>.Filter.Exists(
+                        "departedPreferenceCleanupUserIds.0",
+                        true),
+                }),
             new(
                 Builders<TripPlanDocument>.IndexKeys
                     .Ascending("memberAdmissionFence.leaseExpiresAtUtc")

@@ -39,6 +39,19 @@ public sealed class TripProgramMongoDefinitionsTests
     }
 
     [Fact]
+    public void PreferenceIndexes_ShouldGuaranteeOneChoicePerUserAndItem()
+    {
+        IReadOnlyCollection<CreateIndexModel<TripItemPreferenceDocument>> indexes =
+            TripPreferenceRepository.BuildIndexes();
+
+        Assert.Contains(indexes, index => index.Options.Name == "uq_trip_preference_plan_user_item"
+            && index.Options.Unique == true);
+        Assert.Contains(indexes, index => index.Options.Name == "ix_trip_preference_plan_item");
+        Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_preference_reserved"
+            && index.Options.ExpireAfter == TimeSpan.Zero);
+    }
+
+    [Fact]
     public void CreationGuard_ShouldUseMongoServerTime()
     {
         FilterDefinition<TripParkCandidateDocument> filter =

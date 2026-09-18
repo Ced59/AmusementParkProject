@@ -16,6 +16,7 @@ const componentStyles = [
   'src/app/features/profile/trips/pages/trip-overview-page/trip-overview-page.component.scss',
   'src/app/features/profile/trips/components/trip-candidate-card/trip-candidate-card.component.scss',
   'src/app/features/profile/trips/components/trip-invitation-panel/trip-invitation-panel.component.scss',
+  'src/app/features/profile/trips/pages/trip-preferences-page/trip-preferences-page.component.scss',
   'src/app/features/public/trips/pages/trip-invitation-preview-page/trip-invitation-preview-page.component.scss'
 ]
   .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
@@ -128,6 +129,37 @@ const fixtureMarkup = `
           <div class="invitation-created"><h3>Partage-le maintenant</h3><a class="invitation-created__link">https://amusement-parks.fun/fr/trip-invitations/un-tres-long-token-opaque</a><div class="invitation-created__actions"><button>Copier le lien</button><button>Masquer</button></div></div>
         </div>
       </section>
+    </main>
+
+    <main class="trip-preferences-page" data-responsive-root="trip-preferences">
+      <header class="trip-preferences-hero surface" data-check-bound>
+        <a href="#">Retour au voyage</a>
+        <h1>Une aventure européenne avec un titre très long</h1>
+        <p>Dis ce que tu veux vraiment faire, sans agrandir la page sur mobile.</p>
+        <div class="preference-summary"><span>12 indispensables</span><span>18 souhaitées</span><span>7 à décider</span></div>
+      </header>
+      <section class="preference-filters surface" data-check-bound>
+        <label class="preference-search"><span>Rechercher une attraction</span><span class="preference-input-shell"><i>⌕</i><input value="Une attraction au nom particulièrement long"></span></label>
+        <label><span>Parc</span><select><option>Destination au nom particulièrement long</option></select></label>
+        <label><span>Préférence</span><select><option>Toutes les préférences</option></select></label>
+      </section>
+      <div class="preference-groups" data-check-bound>
+        <section class="preference-group">
+          <div class="preference-group__heading"><i>⌖</i><h2>Destination au nom particulièrement long</h2><span>2</span></div>
+          <div class="preference-grid">
+            <article class="preference-card surface" data-check-bound>
+              <div class="preference-card__identity"><span class="preference-card__image">Image</span><div><h3>Attraction au nom extrêmement long</h3><span class="preference-card__current">Indispensable</span></div></div>
+              <div class="preference-picker"><button class="preference-choice">Indispensable</button><button class="preference-choice">Souhaitée</button><button class="preference-choice">Facultative</button><button class="preference-choice">Pas pour moi</button><button class="preference-choice">À décider</button></div>
+              <label class="preference-reason"><span>Pourquoi ce choix ?</span><select><option>Sensations trop intenses</option></select></label>
+            </article>
+            <article class="preference-card surface" data-check-bound>
+              <div class="preference-card__identity"><span class="preference-card__image">Image</span><div><h3>Deuxième attraction représentative</h3><span class="preference-card__current">Souhaitée</span></div></div>
+              <div class="preference-picker"><button class="preference-choice">Indispensable</button><button class="preference-choice">Souhaitée</button><button class="preference-choice">Facultative</button><button class="preference-choice">Pas pour moi</button><button class="preference-choice">À décider</button></div>
+            </article>
+          </div>
+        </section>
+      </div>
+      <aside class="preference-savebar" data-check-bound><div><strong>2 changements</strong><span>Enregistre-les avant de partir.</span></div><div class="preference-savebar__actions"><button>Annuler</button><button>Enregistrer les choix</button></div></aside>
     </main>
 
     <main class="invitation-page" data-responsive-root="trip-invitation-preview">

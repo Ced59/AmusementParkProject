@@ -1580,6 +1580,55 @@
         "comparator": "Added from the comparator"
       }
     },
+    "preferences": {
+      "open": "Choose my attractions",
+      "back": "Back to the trip",
+      "kicker": "Personal wishes",
+      "description": "Say what you genuinely want to do. Your choices remain yours and will later help the group build a plan that respects everyone.",
+      "summary": "My preference summary",
+      "summaryMust": "{{count}} must-do",
+      "summaryWant": "{{count}} want to do",
+      "summaryUnknown": "{{count}} undecided",
+      "readonly": "Your role lets you view these choices but not change them.",
+      "chooseFor": "Choose a preference for {{name}}",
+      "reasonLabel": "Why this choice? (optional)",
+      "noReason": "No particular reason",
+      "reasonReadonly": "Reason: {{reason}}",
+      "empty": "Add a park to the trip first to discover its attractions.",
+      "noMatch": "No attraction matches these filters.",
+      "pending": "{{count}} choice(s) to save",
+      "pendingHint": "Explore freely, then save everything at once.",
+      "discard": "Discard changes",
+      "save": "Save my choices",
+      "filters": {
+        "search": "Search",
+        "searchPlaceholder": "Attraction or park name",
+        "park": "Park",
+        "allParks": "All parks",
+        "preference": "Preference",
+        "allPreferences": "All preferences"
+      },
+      "levels": {
+        "mustdo": "Must-do",
+        "wanttodo": "Want to do",
+        "optional": "Maybe",
+        "notforme": "Not for me",
+        "unknown": "No opinion"
+      },
+      "reasons": {
+        "sensations": "Thrills",
+        "height": "Height or access",
+        "alreadydone": "Already done",
+        "unavailable": "Unavailable",
+        "other": "Another reason"
+      },
+      "feedback": {
+        "loadError": "Your preferences could not be loaded.",
+        "saveError": "Your choices could not be saved.",
+        "conflict": "The trip or one of your choices changed. Reload before trying again.",
+        "saved": "Your choices are saved."
+      }
+    },
     "days": {
       "kicker": "Your itinerary",
       "title": "Build the trip day by day",
@@ -4844,7 +4893,8 @@
     "success": "Success",
     "error": "Error",
     "warning": "Warning",
-    "unexpectedError": "An unexpected error occurred."
+    "unexpectedError": "An unexpected error occurred.",
+    "cancel": "Cancel"
   },
   "measurementSystem": {
     "label": "Measurement system",

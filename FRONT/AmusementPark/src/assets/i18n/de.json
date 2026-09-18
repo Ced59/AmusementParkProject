@@ -1580,6 +1580,55 @@
         "comparator": "Über den Vergleich hinzugefügt"
       }
     },
+    "preferences": {
+      "open": "Meine Attraktionen auswählen",
+      "back": "Zurück zur Reise",
+      "kicker": "Persönliche Wünsche",
+      "description": "Zeige, was du wirklich erleben möchtest. Deine Auswahl bleibt deine und hilft der Gruppe später, alle Wünsche zu berücksichtigen.",
+      "summary": "Übersicht meiner Wünsche",
+      "summaryMust": "{{count}} unverzichtbar",
+      "summaryWant": "{{count}} Wunsch",
+      "summaryUnknown": "{{count}} ohne Meinung",
+      "readonly": "Mit deiner Rolle kannst du diese Auswahl ansehen, aber nicht ändern.",
+      "chooseFor": "Wunsch für {{name}} auswählen",
+      "reasonLabel": "Warum diese Wahl? (optional)",
+      "noReason": "Kein besonderer Grund",
+      "reasonReadonly": "Grund: {{reason}}",
+      "empty": "Füge der Reise zuerst einen Park hinzu, um seine Attraktionen zu sehen.",
+      "noMatch": "Keine Attraktion entspricht diesen Filtern.",
+      "pending": "{{count}} Auswahl(en) zu speichern",
+      "pendingHint": "Erkunde in Ruhe und speichere anschließend alles auf einmal.",
+      "discard": "Änderungen verwerfen",
+      "save": "Meine Auswahl speichern",
+      "filters": {
+        "search": "Suchen",
+        "searchPlaceholder": "Name der Attraktion oder des Parks",
+        "park": "Park",
+        "allParks": "Alle Parks",
+        "preference": "Wunsch",
+        "allPreferences": "Alle Wünsche"
+      },
+      "levels": {
+        "mustdo": "Unverzichtbar",
+        "wanttodo": "Möchte ich",
+        "optional": "Vielleicht",
+        "notforme": "Nichts für mich",
+        "unknown": "Keine Meinung"
+      },
+      "reasons": {
+        "sensations": "Nervenkitzel",
+        "height": "Größe oder Zugang",
+        "alreadydone": "Schon erlebt",
+        "unavailable": "Nicht verfügbar",
+        "other": "Anderer Grund"
+      },
+      "feedback": {
+        "loadError": "Deine Wünsche konnten nicht geladen werden.",
+        "saveError": "Deine Auswahl konnte nicht gespeichert werden.",
+        "conflict": "Die Reise oder eine Auswahl wurde geändert. Lade die Seite vor dem nächsten Versuch neu.",
+        "saved": "Deine Auswahl wurde gespeichert."
+      }
+    },
     "days": {
       "kicker": "Dein Programm",
       "title": "Plane die Reise Tag für Tag",
@@ -4844,7 +4893,8 @@
     "success": "Erfolg",
     "error": "Fehler",
     "warning": "Achtung",
-    "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten."
+    "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten.",
+    "cancel": "Abbrechen"
   },
   "measurementSystem": {
     "label": "Einheitensystem",

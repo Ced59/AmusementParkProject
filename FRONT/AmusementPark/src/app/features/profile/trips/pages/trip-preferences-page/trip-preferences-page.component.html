@@ -1,0 +1,194 @@
+<main class="trip-preferences-page">
+  <header class="trip-preferences-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', tripPlanId]">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'trips.preferences.back' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="rose" iconClass="pi pi-heart-fill">
+      {{ 'trips.preferences.kicker' | translate }}
+    </app-ui-kicker>
+    <h1>{{ facade.board()?.tripTitle || ('trips.feedback.loading' | translate) }}</h1>
+    <p>{{ 'trips.preferences.description' | translate }}</p>
+    @if (facade.board(); as board) {
+      <div class="preference-summary" aria-label="{{ 'trips.preferences.summary' | translate }}">
+        <app-ui-chip tone="rose" iconClass="pi pi-bolt">
+          {{ 'trips.preferences.summaryMust' | translate:{ count: count('MustDo') } }}
+        </app-ui-chip>
+        <app-ui-chip tone="sky" iconClass="pi pi-heart">
+          {{ 'trips.preferences.summaryWant' | translate:{ count: count('WantToDo') } }}
+        </app-ui-chip>
+        <app-ui-chip tone="soft" iconClass="pi pi-minus-circle">
+          {{ 'trips.preferences.summaryUnknown' | translate:{ count: count('Unknown') } }}
+        </app-ui-chip>
+      </div>
+      @if (!board.canVote) {
+        <p class="trip-preferences-readonly">
+          <i class="pi pi-eye" aria-hidden="true"></i>
+          <span>{{ 'trips.preferences.readonly' | translate }}</span>
+        </p>
+      }
+    }
+  </header>
+
+  @if (facade.loading()) {
+    <section class="trip-preferences-message" appUiSurface="panel" role="status" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'trips.feedback.loading' | translate }}</span>
+    </section>
+  } @else if (!facade.board()) {
+    <section class="trip-preferences-message trip-preferences-message--error" appUiSurface="panel" role="alert">
+      <p>{{ (facade.feedbackKey() || 'trips.preferences.feedback.loadError') | translate }}</p>
+      <button type="button" appUiButton="primary" (click)="facade.load(tripPlanId)">
+        {{ 'trips.actions.retry' | translate }}
+      </button>
+    </section>
+  } @else {
+    <section class="preference-filters" appUiSurface="panel" appUiSurfacePadding="compact">
+      <label class="preference-search">
+        <span>{{ 'trips.preferences.filters.search' | translate }}</span>
+        <span class="preference-input-shell">
+          <i class="pi pi-search" aria-hidden="true"></i>
+          <input
+            type="search"
+            [value]="facade.search()"
+            [placeholder]="'trips.preferences.filters.searchPlaceholder' | translate"
+            (input)="facade.setSearch($any($event.target).value)">
+        </span>
+      </label>
+      <label>
+        <span>{{ 'trips.preferences.filters.park' | translate }}</span>
+        <select [value]="facade.parkFilter()" (change)="facade.setParkFilter($any($event.target).value)">
+          <option value="">{{ 'trips.preferences.filters.allParks' | translate }}</option>
+          @for (park of facade.parkOptions(); track park.parkId) {
+            <option [value]="park.parkId">{{ park.parkName }}</option>
+          }
+        </select>
+      </label>
+      <label>
+        <span>{{ 'trips.preferences.filters.preference' | translate }}</span>
+        <select [value]="facade.levelFilter()" (change)="facade.setLevelFilter(parseLevel($any($event.target).value))">
+          <option value="">{{ 'trips.preferences.filters.allPreferences' | translate }}</option>
+          @for (level of levels; track level) {
+            <option [value]="level">{{ levelKey(level) | translate }}</option>
+          }
+        </select>
+      </label>
+    </section>
+
+    @if (facade.feedbackKey()) {
+      <p
+        class="trip-preferences-feedback"
+        [class.trip-preferences-feedback--success]="facade.feedbackKey() === 'trips.preferences.feedback.saved'"
+        role="status" aria-live="polite">
+        {{ facade.feedbackKey()! | translate }}
+      </p>
+    }
+
+    <div class="preference-groups">
+      @for (group of groupedItems(); track group.parkId; let groupIndex = $index) {
+        <section class="preference-group" [attr.aria-labelledby]="'preference-park-' + groupIndex">
+          <div class="preference-group__heading">
+            <i class="pi pi-map-marker" aria-hidden="true"></i>
+            <h2 [id]="'preference-park-' + groupIndex">{{ group.parkName }}</h2>
+            <span>{{ group.items.length }}</span>
+          </div>
+          <div class="preference-grid">
+            @for (item of group.items; track item.parkItemId) {
+              <article class="preference-card" appUiSurface="panel" appUiSurfacePadding="compact">
+                <div class="preference-card__identity">
+                  <span class="preference-card__image">
+                    @if (item.mainImageId) {
+                      <app-image-display
+                        [imageId]="item.mainImageId"
+                        [alt]="item.parkItemName"
+                        sizes="(max-width: 36rem) 5rem, 7rem"
+                        [responsiveWidths]="imageWidths"
+                        [srcWidth]="200"
+                        placeholderKind="photo">
+                      </app-image-display>
+                    } @else {
+                      <i class="pi pi-ticket" aria-hidden="true"></i>
+                    }
+                  </span>
+                  <div>
+                    <h3>{{ item.parkItemName }}</h3>
+                    <span class="preference-card__current preference-card__current--{{ item.level.toLowerCase() }}">
+                      <i class="pi {{ levelIcon(item.level) }}" aria-hidden="true"></i>
+                      {{ levelKey(item.level) | translate }}
+                    </span>
+                  </div>
+                </div>
+
+                @if (facade.board()?.canVote) {
+                  <div
+                    class="preference-picker"
+                    role="radiogroup"
+                    [attr.aria-label]="'trips.preferences.chooseFor' | translate:{ name: item.parkItemName }">
+                    @for (level of levels; track level) {
+                      <button
+                        type="button"
+                        class="preference-choice preference-choice--{{ level.toLowerCase() }}"
+                        role="radio"
+                        [class.preference-choice--active]="item.level === level"
+                        [attr.aria-checked]="item.level === level"
+                        [disabled]="facade.saving()"
+                        (click)="facade.setLevel(item.parkItemId, level)">
+                        <i class="pi {{ levelIcon(level) }}" aria-hidden="true"></i>
+                        <span>{{ levelKey(level) | translate }}</span>
+                      </button>
+                    }
+                  </div>
+                  @if (item.level !== 'Unknown') {
+                    <label class="preference-reason">
+                      <span>{{ 'trips.preferences.reasonLabel' | translate }}</span>
+                      <select
+                        [disabled]="facade.saving()"
+                        [value]="item.reason || ''"
+                        (change)="facade.setReason(item.parkItemId, parseReason($any($event.target).value))">
+                        <option value="">{{ 'trips.preferences.noReason' | translate }}</option>
+                        @for (reason of reasons; track reason) {
+                          <option [value]="reason">{{ reasonKey(reason) | translate }}</option>
+                        }
+                      </select>
+                    </label>
+                  }
+                } @else if (item.reason) {
+                  <p class="preference-card__reason">
+                    {{ 'trips.preferences.reasonReadonly' | translate:{ reason: (reasonKey(item.reason) | translate) } }}
+                  </p>
+                }
+              </article>
+            }
+          </div>
+        </section>
+      } @empty {
+        <section class="trip-preferences-message" appUiSurface="panel">
+          <i class="pi pi-filter-slash" aria-hidden="true"></i>
+          <p>{{ (facade.board()!.items.length === 0 ? 'trips.preferences.empty' : 'trips.preferences.noMatch') | translate }}</p>
+        </section>
+      }
+    </div>
+
+    @if (facade.board()?.canVote && facade.pendingCount() > 0) {
+      <aside class="preference-savebar" aria-live="polite">
+        <div>
+          <strong>{{ 'trips.preferences.pending' | translate:{ count: facade.pendingCount() } }}</strong>
+          <span>{{ 'trips.preferences.pendingHint' | translate }}</span>
+        </div>
+        <div class="preference-savebar__actions">
+          <button type="button" appUiButton="ghost" [disabled]="facade.saving()" (click)="facade.discardChanges()">
+            {{ 'trips.preferences.discard' | translate }}
+          </button>
+          <button type="button" appUiButton="primary" [disabled]="facade.saving()" (click)="facade.save()">
+            @if (facade.saving()) {
+              <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+            } @else {
+              <i class="pi pi-check" aria-hidden="true"></i>
+            }
+            <span>{{ 'trips.preferences.save' | translate }}</span>
+          </button>
+        </div>
+      </aside>
+    }
+  }
+</main>

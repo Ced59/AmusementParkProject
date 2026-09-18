@@ -199,6 +199,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ITripChildMutationLeaseRepository, TripChildMutationLeaseRepository>();
         services.AddScoped<ITripParkCandidateRepository, TripParkCandidateRepository>();
         services.AddScoped<ITripDayPlanRepository, TripDayPlanRepository>();
+        services.AddScoped<ITripPreferenceRepository, TripPreferenceRepository>();
         services.AddScoped<ITripInvitationRepository, TripInvitationRepository>();
         services.AddScoped<ITripAdmissionRepository, TripAdmissionRepository>();
         services.AddSingleton<ITripInvitationSecurity, TripInvitationSecurity>();
@@ -226,6 +227,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHostedService<TripPlanDeletionReconciliationBackgroundService>();
         services.AddHostedService<TripInvitationExpirationReconciliationBackgroundService>();
         services.AddHostedService<TripAdmissionReconciliationBackgroundService>();
+        services.AddHostedService<TripPreferenceCleanupReconciliationBackgroundService>();
 
         services.AddScoped<ICountryReadRepository, CountryReadRepository>();
         services.AddScoped<IParkFounderRepository, ParkFounderRepository>();

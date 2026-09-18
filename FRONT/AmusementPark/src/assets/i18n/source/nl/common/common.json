@@ -13,7 +13,8 @@
     "success": "Succes",
     "error": "Fout",
     "warning": "Let op",
-    "unexpectedError": "Er is een onverwachte fout opgetreden."
+    "unexpectedError": "Er is een onverwachte fout opgetreden.",
+    "cancel": "Annuleren"
   },
   "measurementSystem": {
     "label": "Eenhedensysteem",

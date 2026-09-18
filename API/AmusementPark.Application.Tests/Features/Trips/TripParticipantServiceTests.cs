@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Trips.Models;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Results;
 using AmusementPark.Application.Features.Trips.Services;
@@ -19,6 +20,7 @@ public sealed class TripParticipantServiceTests
     {
         TripPlan trip = CreateTripWithMember();
         Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
         Mock<IUserRepository> users = new(MockBehavior.Strict);
         plans.Setup(item => item.GetAccessibleAsync("user-2", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
@@ -30,7 +32,7 @@ public sealed class TripParticipantServiceTests
                 new User { Id = "user-1", PublicDisplayName = "Camille" },
                 new User { Id = "user-2", PublicDisplayName = "Alex" },
             });
-        TripParticipantService service = new(plans.Object, users.Object);
+        TripParticipantService service = new(plans.Object, preferences.Object, users.Object);
 
         ApplicationResult<TripParticipantListResult> result = await service.ListAsync(
             "user-2",
@@ -50,10 +52,11 @@ public sealed class TripParticipantServiceTests
         TripPlan trip = CreateTripWithMember();
         TripMember owner = trip.Members.Single(item => item.UserId == "user-1");
         Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
         Mock<IUserRepository> users = new(MockBehavior.Strict);
         plans.Setup(item => item.GetOwnedAsync("user-2", trip.Id, CancellationToken.None))
             .ReturnsAsync((TripPlan?)null);
-        TripParticipantService service = new(plans.Object, users.Object);
+        TripParticipantService service = new(plans.Object, preferences.Object, users.Object);
 
         ApplicationResult<TripParticipantListResult> result = await service.ChangeRoleAsync(
             "user-2",
@@ -78,6 +81,7 @@ public sealed class TripParticipantServiceTests
         TripPlan trip = CreateTripWithMember();
         TripMember target = trip.Members.Single(item => item.UserId == "user-2");
         Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
         Mock<IUserRepository> users = new(MockBehavior.Strict);
         plans.Setup(item => item.GetOwnedAsync("user-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
@@ -88,7 +92,7 @@ public sealed class TripParticipantServiceTests
                 IsActivated = isActivated,
                 IsBlocked = isBlocked,
             });
-        TripParticipantService service = new(plans.Object, users.Object);
+        TripParticipantService service = new(plans.Object, preferences.Object, users.Object);
 
         ApplicationResult<TripParticipantListResult> result = await service.TransferOwnershipAsync(
             "user-1",
@@ -114,12 +118,13 @@ public sealed class TripParticipantServiceTests
         TripPlan trip = CreateTripWithMember();
         TripMember target = trip.Members.Single(item => item.UserId == "user-2");
         Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
         Mock<IUserRepository> users = new(MockBehavior.Strict);
         plans.Setup(item => item.GetOwnedAsync("user-1", trip.Id, CancellationToken.None))
             .ReturnsAsync(trip);
         users.Setup(item => item.GetByIdAsync("user-2", CancellationToken.None))
             .ReturnsAsync((User?)null);
-        TripParticipantService service = new(plans.Object, users.Object);
+        TripParticipantService service = new(plans.Object, preferences.Object, users.Object);
 
         ApplicationResult<TripParticipantListResult> result = await service.TransferOwnershipAsync(
             "user-1",
@@ -136,6 +141,52 @@ public sealed class TripParticipantServiceTests
             It.IsAny<long>(),
             It.IsAny<CancellationToken>()), Times.Never);
         users.VerifyAll();
+    }
+
+    [Fact]
+    public async Task LeaveAsync_WhenDepartureSucceeds_ShouldDeleteTheMembersPreferences()
+    {
+        using CancellationTokenSource requestCancellation = new();
+        CancellationToken requestToken = requestCancellation.Token;
+        TripPlan trip = CreateTripWithMember();
+        long expectedVersion = trip.Version;
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
+        Mock<IUserRepository> users = new(MockBehavior.Strict);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        clock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
+        plans.Setup(item => item.GetAccessibleAsync("user-2", trip.Id, requestToken))
+            .ReturnsAsync(trip);
+        plans.Setup(item => item.ReplaceAccessibleAsync(
+                "user-2",
+                trip,
+                expectedVersion,
+                requestToken))
+            .ReturnsAsync(() =>
+            {
+                requestCancellation.Cancel();
+                return new TripPlanWriteResult(
+                    TripPlanWriteOutcome.Success,
+                    trip.Version,
+                    trip);
+            });
+        preferences.Setup(item => item.CompleteDepartureCleanupAsync(
+                trip.Id,
+                "user-2",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        TripParticipantService service = new(plans.Object, preferences.Object, users.Object, clock.Object);
+
+        ApplicationResult result = await service.LeaveAsync(
+            "user-2",
+            trip.Id.Value,
+            expectedVersion,
+            requestToken);
+
+        Assert.True(result.IsSuccess);
+        Assert.DoesNotContain(trip.Members, member => member.UserId == "user-2");
+        plans.VerifyAll();
+        preferences.VerifyAll();
     }
 
     private static TripPlan CreateTripWithMember()

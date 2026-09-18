@@ -29,5 +29,11 @@ export const TRIP_API_ENDPOINTS = {
   parkMove: (tripPlanId: string, candidateId: string): string =>
     `me/trips/${encodeSegment(tripPlanId)}/parks/${encodeSegment(candidateId)}/move`,
   day: (tripPlanId: string, localDate: string): string =>
-    `me/trips/${encodeSegment(tripPlanId)}/days/${encodeSegment(localDate)}`
+    `me/trips/${encodeSegment(tripPlanId)}/days/${encodeSegment(localDate)}`,
+  preferences: (tripPlanId: string): string =>
+    `me/trips/${encodeSegment(tripPlanId)}/preferences`,
+  preference: (tripPlanId: string, parkItemId: string): string =>
+    `me/trips/${encodeSegment(tripPlanId)}/preferences/${encodeSegment(parkItemId)}`,
+  preferenceBatch: (tripPlanId: string): string =>
+    `me/trips/${encodeSegment(tripPlanId)}/preferences:batch`
 } as const;

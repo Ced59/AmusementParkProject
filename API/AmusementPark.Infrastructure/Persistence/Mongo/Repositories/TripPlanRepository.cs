@@ -15,6 +15,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
     private readonly IMongoCollection<TripParkCandidateDocument>? candidateCollection;
     private readonly IMongoCollection<TripDayPlanDocument>? dayPlanCollection;
     private readonly IMongoCollection<TripInvitationDocument>? invitationCollection;
+    private readonly IMongoCollection<TripItemPreferenceDocument>? preferenceCollection;
     private readonly TripPlanCreationFingerprint creationFingerprint;
 
     public TripPlanRepository(
@@ -26,7 +27,8 @@ public sealed class TripPlanRepository : ITripPlanRepository
             creationFingerprint,
             GetCandidateCollection(database, settings),
             GetDayPlanCollection(database, settings),
-            GetInvitationCollection(database, settings))
+            GetInvitationCollection(database, settings),
+            GetPreferenceCollection(database, settings))
     {
     }
 
@@ -35,7 +37,8 @@ public sealed class TripPlanRepository : ITripPlanRepository
         TripPlanCreationFingerprint creationFingerprint,
         IMongoCollection<TripParkCandidateDocument>? candidateCollection = null,
         IMongoCollection<TripDayPlanDocument>? dayPlanCollection = null,
-        IMongoCollection<TripInvitationDocument>? invitationCollection = null)
+        IMongoCollection<TripInvitationDocument>? invitationCollection = null,
+        IMongoCollection<TripItemPreferenceDocument>? preferenceCollection = null)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
         this.creationFingerprint = creationFingerprint
@@ -43,6 +46,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
         this.candidateCollection = candidateCollection;
         this.dayPlanCollection = dayPlanCollection;
         this.invitationCollection = invitationCollection;
+        this.preferenceCollection = preferenceCollection;
     }
 
     public async Task<IdempotentTripPlanCreationResult?> ResolveExistingCreationAsync(
@@ -268,7 +272,9 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 static document => document.Members,
                 member => member.UserId == normalizedActorUserId
                     && member.State == TripMembershipState.Active),
-            TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
+            TripPlanMongoDefinitions.BuildAccessibleDomainMutation(
+                tripPlan,
+                normalizedActorUserId),
             new FindOneAndUpdateOptions<TripPlanDocument, TripPlanDocument>
             {
                 ReturnDocument = ReturnDocument.After,
@@ -505,7 +511,8 @@ public sealed class TripPlanRepository : ITripPlanRepository
     {
         if (this.candidateCollection is null
             || this.dayPlanCollection is null
-            || this.invitationCollection is null)
+            || this.invitationCollection is null
+            || this.preferenceCollection is null)
         {
             throw new InvalidOperationException("Trip child collections are required to purge a trip.");
         }
@@ -525,9 +532,15 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 static document => document.TripPlanId,
                 tripPlanId.Value),
             cancellationToken);
+        DeleteResult preferences = await this.preferenceCollection.DeleteManyAsync(
+            Builders<TripItemPreferenceDocument>.Filter.Eq(
+                static document => document.TripPlanId,
+                tripPlanId.Value),
+            cancellationToken);
         _ = candidates.DeletedCount;
         _ = days.DeletedCount;
         _ = invitations.DeletedCount;
+        _ = preferences.DeletedCount;
     }
 
     public async Task<TripPlanWriteResult> FinalizeDeletionOwnedAsync(
@@ -628,6 +641,14 @@ public sealed class TripPlanRepository : ITripPlanRepository
         MongoDbSettings settings)
     {
         return database.GetCollection<TripInvitationDocument>(settings.TripInvitationsCollectionName);
+    }
+
+    private static IMongoCollection<TripItemPreferenceDocument> GetPreferenceCollection(
+        IMongoDatabase database,
+        MongoDbSettings settings)
+    {
+        return database.GetCollection<TripItemPreferenceDocument>(
+            settings.TripItemPreferencesCollectionName);
     }
 
     private static string NormalizeRequired(string? value, string parameterName)

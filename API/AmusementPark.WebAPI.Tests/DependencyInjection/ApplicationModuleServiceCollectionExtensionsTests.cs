@@ -206,8 +206,12 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         services.AddSingleton(Mock.Of<ITripPlanRepository>());
         services.AddSingleton(Mock.Of<ITripParkCandidateRepository>());
         services.AddSingleton(Mock.Of<ITripDayPlanRepository>());
+        services.AddSingleton(Mock.Of<ITripPreferenceRepository>());
         services.AddSingleton(Mock.Of<ITripChildMutationLeaseRepository>());
         services.AddSingleton(Mock.Of<ITripTimeZoneValidator>());
+        services.AddSingleton(Mock.Of<IParkRepository>());
+        services.AddSingleton(Mock.Of<IParkItemRepository>());
+        services.AddSingleton(Mock.Of<IImageRepository>());
 
         using ServiceProvider serviceProvider = services.BuildServiceProvider();
 
@@ -223,5 +227,11 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
             IQueryHandler<ListMyTripPlansQuery, ApplicationResult<IReadOnlyCollection<TripPlanResult>>>>());
         Assert.IsType<GetMyTripPlanQueryHandler>(serviceProvider.GetRequiredService<
             IQueryHandler<GetMyTripPlanQuery, ApplicationResult<TripPlanResult>>>());
+        Assert.IsType<GetMyTripPreferencesQueryHandler>(serviceProvider.GetRequiredService<
+            IQueryHandler<GetMyTripPreferencesQuery, ApplicationResult<TripPreferenceBoardResult>>>());
+        Assert.IsType<SetTripItemPreferenceCommandHandler>(serviceProvider.GetRequiredService<
+            ICommandHandler<SetTripItemPreferenceCommand, ApplicationResult<TripPreferenceBoardResult>>>());
+        Assert.IsType<BulkSetTripItemPreferencesCommandHandler>(serviceProvider.GetRequiredService<
+            ICommandHandler<BulkSetTripItemPreferencesCommand, ApplicationResult<TripPreferenceBoardResult>>>());
     }
 }

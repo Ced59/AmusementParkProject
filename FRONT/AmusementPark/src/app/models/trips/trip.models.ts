@@ -3,6 +3,8 @@ export type TripParkCandidateSource = 'Manual' | 'Wishlist' | 'Comparator';
 export type TripParkCandidateState = 'Proposed' | 'Shortlisted' | 'Selected' | 'Rejected';
 export type TripParkCandidatePlacement = 'First' | 'Before' | 'After' | 'Last';
 export type TripDayBlockType = 'Meal' | 'Event' | 'Note';
+export type TripItemPreferenceLevel = 'Unknown' | 'MustDo' | 'WantToDo' | 'Optional' | 'NotForMe';
+export type TripItemPreferenceReason = 'Sensations' | 'Height' | 'AlreadyDone' | 'Unavailable' | 'Other';
 
 export interface TripDateProposal {
   kind: TripDateProposalKind;
@@ -121,3 +123,43 @@ export interface PutTripDayPlanRequest {
   groupNote: string | null;
   blocks: TripDayBlock[];
 }
+
+export interface TripItemPreference {
+  parkId: string;
+  parkName: string;
+  parkItemId: string;
+  parkItemName: string;
+  mainImageId: string | null;
+  level: TripItemPreferenceLevel;
+  reason: TripItemPreferenceReason | null;
+  version: number | null;
+}
+
+export interface TripPreferenceBoard {
+  tripPlanId: string;
+  tripTitle: string;
+  planVersion: number;
+  canVote: boolean;
+  items: TripItemPreference[];
+}
+
+export interface SetTripItemPreferenceRequest {
+  expectedPlanVersion: number;
+  expectedPreferenceVersion: number | null;
+  level: TripItemPreferenceLevel;
+  reason: TripItemPreferenceReason | null;
+}
+
+export interface BulkTripItemPreferenceRequest {
+  parkItemId: string;
+  expectedPreferenceVersion: number | null;
+  level: TripItemPreferenceLevel;
+  reason: TripItemPreferenceReason | null;
+}
+
+export interface BulkSetTripItemPreferencesRequest {
+  expectedPlanVersion: number;
+  preferences: BulkTripItemPreferenceRequest[];
+}
+
+export const TRIP_ITEM_PREFERENCE_MAX_BATCH_SIZE: number = 250;

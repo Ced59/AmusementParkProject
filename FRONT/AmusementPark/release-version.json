@@ -1,6 +1,20 @@
 {
-  "version": "5.3.66",
+  "version": "5.3.67",
   "history": [
+    {
+      "version": "5.3.67",
+      "releasedAt": "2026-09-18",
+      "labels": {
+        "fr": "Tu peux maintenant indiquer tes envies pour chaque attraction d’un voyage.",
+        "en": "You can now share your wishes for every attraction in a trip.",
+        "de": "Du kannst jetzt deine Wünsche für jede Attraktion einer Reise angeben.",
+        "nl": "Je kunt nu je wensen voor elke attractie van een reis aangeven.",
+        "it": "Ora puoi indicare le tue preferenze per ogni attrazione di un viaggio.",
+        "es": "Ya puedes indicar tus preferencias para cada atracción de un viaje.",
+        "pl": "Możesz teraz określić swoje preferencje dla każdej atrakcji wyjazdu.",
+        "pt": "Agora podes indicar as tuas preferências para cada atração de uma viagem."
+      }
+    },
     {
       "version": "5.3.66",
       "releasedAt": "2026-09-18",

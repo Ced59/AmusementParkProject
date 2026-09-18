@@ -1580,6 +1580,55 @@
         "comparator": "Ajouté depuis le comparateur"
       }
     },
+    "preferences": {
+      "open": "Choisir mes attractions",
+      "back": "Retour au voyage",
+      "kicker": "Envies personnelles",
+      "description": "Indique ce que tu veux vraiment faire. Tes choix restent les tiens et aideront ensuite le groupe à trouver un programme qui respecte chacun.",
+      "summary": "Résumé de mes préférences",
+      "summaryMust": "{{count}} incontournable(s)",
+      "summaryWant": "{{count}} envie(s)",
+      "summaryUnknown": "{{count}} sans avis",
+      "readonly": "Ton rôle permet de consulter ces choix, mais pas de les modifier.",
+      "chooseFor": "Choisir une préférence pour {{name}}",
+      "reasonLabel": "Pourquoi ce choix ? (facultatif)",
+      "noReason": "Aucune raison particulière",
+      "reasonReadonly": "Raison : {{reason}}",
+      "empty": "Ajoute d’abord un parc au voyage pour découvrir ses attractions.",
+      "noMatch": "Aucune attraction ne correspond à ces filtres.",
+      "pending": "{{count}} choix à enregistrer",
+      "pendingHint": "Tu peux explorer librement puis tout enregistrer en une fois.",
+      "discard": "Annuler les changements",
+      "save": "Enregistrer mes choix",
+      "filters": {
+        "search": "Rechercher",
+        "searchPlaceholder": "Nom d’une attraction ou d’un parc",
+        "park": "Parc",
+        "allParks": "Tous les parcs",
+        "preference": "Préférence",
+        "allPreferences": "Toutes les préférences"
+      },
+      "levels": {
+        "mustdo": "Incontournable",
+        "wanttodo": "J’ai envie",
+        "optional": "Pourquoi pas",
+        "notforme": "Pas pour moi",
+        "unknown": "Sans avis"
+      },
+      "reasons": {
+        "sensations": "Sensations",
+        "height": "Taille ou accès",
+        "alreadydone": "Déjà fait",
+        "unavailable": "Indisponible",
+        "other": "Autre raison"
+      },
+      "feedback": {
+        "loadError": "Tes préférences n’ont pas pu être chargées.",
+        "saveError": "Tes choix n’ont pas pu être enregistrés.",
+        "conflict": "Le voyage ou l’un de tes choix a changé. Recharge la page avant de réessayer.",
+        "saved": "Tes choix sont enregistrés."
+      }
+    },
     "days": {
       "kicker": "Ton programme",
       "title": "Construis le séjour journée par journée",
@@ -4844,7 +4893,8 @@
     "success": "Succès",
     "error": "Erreur",
     "warning": "Attention",
-    "unexpectedError": "Une erreur inattendue est survenue."
+    "unexpectedError": "Une erreur inattendue est survenue.",
+    "cancel": "Annuler"
   },
   "measurementSystem": {
     "label": "Système d'unités",

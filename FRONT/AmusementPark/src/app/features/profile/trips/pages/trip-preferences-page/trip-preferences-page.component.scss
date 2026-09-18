@@ -1,0 +1,400 @@
+:host {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.trip-preferences-page,
+.trip-preferences-hero,
+.preference-filters,
+.preference-groups,
+.preference-group,
+.preference-grid,
+.preference-card,
+.preference-card__identity,
+.preference-card__identity > div,
+.preference-picker,
+.preference-savebar,
+.preference-savebar__actions,
+label {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.trip-preferences-page {
+  display: grid;
+  width: min(100%, 80rem);
+  margin: 0 auto;
+  padding: clamp(0.75rem, 3vw, 2rem);
+  padding-bottom: calc(7rem + env(safe-area-inset-bottom));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.trip-preferences-hero,
+.trip-preferences-message,
+.preference-group,
+.preference-card {
+  display: grid;
+  gap: 1rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  max-width: 16ch;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 8vw, 5.2rem);
+  line-height: 0.94;
+}
+
+.trip-preferences-hero > p,
+.trip-preferences-message,
+.preference-card__reason,
+.preference-savebar span {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.preference-summary {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.trip-preferences-readonly {
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  gap: 0.65rem;
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--c-sky) 9%, var(--app-surface-2));
+  color: var(--text-muted);
+}
+
+.preference-filters {
+  display: grid;
+  grid-template-columns: minmax(14rem, 2fr) repeat(2, minmax(10rem, 1fr));
+  align-items: end;
+  gap: 0.85rem;
+}
+
+label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 800;
+}
+
+input,
+select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  box-sizing: border-box;
+  padding: 0.72rem 0.8rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: var(--app-surface-2);
+  color: var(--text-primary);
+  font: inherit;
+}
+
+.preference-input-shell {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: var(--app-surface-2);
+}
+
+.preference-input-shell i {
+  padding-left: 0.8rem;
+  color: var(--text-muted);
+}
+
+.preference-input-shell input {
+  border: 0;
+  background: transparent;
+}
+
+.trip-preferences-feedback {
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--c-rose) 45%, var(--app-border));
+  border-radius: var(--radius-md);
+  color: var(--c-rose);
+}
+
+.trip-preferences-feedback--success {
+  border-color: color-mix(in srgb, var(--c-lime) 45%, var(--app-border));
+  color: var(--c-lime);
+}
+
+.trip-preferences-message {
+  justify-items: start;
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.trip-preferences-message--error {
+  color: var(--c-rose);
+}
+
+.preference-groups {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.preference-group__heading {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.preference-group__heading i {
+  color: var(--c-orange);
+}
+
+.preference-group__heading span {
+  display: grid;
+  min-width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--app-surface-2);
+  color: var(--text-muted);
+  font-weight: 900;
+}
+
+.preference-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
+  gap: 0.9rem;
+}
+
+.preference-card {
+  align-content: start;
+}
+
+.preference-card__identity {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.preference-card__identity > div {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.preference-card__image {
+  display: grid;
+  width: 7rem;
+  height: 5.25rem;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--c-orange) 10%, var(--app-surface-2));
+  color: var(--c-orange);
+  font-size: 1.5rem;
+}
+
+.preference-card__image app-image-display {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.preference-card__current {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  padding: 0.32rem 0.6rem;
+  gap: 0.4rem;
+  border-radius: 999px;
+  background: var(--app-surface-2);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.preference-card__current--mustdo {
+  color: var(--c-orange);
+}
+
+.preference-card__current--wanttodo {
+  color: var(--c-rose);
+}
+
+.preference-card__current--notforme {
+  color: var(--text-muted);
+}
+
+.preference-picker {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.preference-choice {
+  display: grid;
+  min-width: 0;
+  min-height: 4.25rem;
+  padding: 0.55rem 0.35rem;
+  place-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: var(--app-surface-2);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 900;
+  line-height: 1.15;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.preference-choice i {
+  font-size: 1.05rem;
+}
+
+.preference-choice--active {
+  border-color: var(--c-orange);
+  background: color-mix(in srgb, var(--c-orange) 12%, var(--app-surface-2));
+  color: var(--text-primary);
+  box-shadow: inset 0 0 0 1px var(--c-orange);
+}
+
+.preference-choice--wanttodo.preference-choice--active {
+  border-color: var(--c-rose);
+  background: color-mix(in srgb, var(--c-rose) 10%, var(--app-surface-2));
+  box-shadow: inset 0 0 0 1px var(--c-rose);
+}
+
+.preference-choice--optional.preference-choice--active {
+  border-color: var(--c-sky);
+  background: color-mix(in srgb, var(--c-sky) 10%, var(--app-surface-2));
+  box-shadow: inset 0 0 0 1px var(--c-sky);
+}
+
+.preference-choice:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--c-sky) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.preference-reason {
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--app-border);
+}
+
+.preference-savebar {
+  position: fixed;
+  z-index: 25;
+  right: max(1rem, calc((100vw - 78rem) / 2));
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  left: max(1rem, calc((100vw - 78rem) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem;
+  gap: 1rem;
+  border: 1px solid color-mix(in srgb, var(--c-orange) 40%, var(--app-border));
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--app-surface) 94%, transparent);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(18px);
+}
+
+.preference-savebar > div:first-child {
+  display: grid;
+  min-width: 0;
+  gap: 0.2rem;
+}
+
+.preference-savebar__actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.55rem;
+}
+
+@media (max-width: 48rem) {
+  .preference-filters {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .preference-search {
+    grid-column: 1 / -1;
+  }
+
+  .preference-savebar {
+    right: 0.65rem;
+    bottom: calc(5.75rem + env(safe-area-inset-bottom));
+    left: 0.65rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .trip-preferences-page {
+    padding-inline: 0.65rem;
+    padding-bottom: calc(11rem + env(safe-area-inset-bottom));
+  }
+
+  .preference-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .preference-search {
+    grid-column: auto;
+  }
+
+  .preference-card__identity {
+    grid-template-columns: 5rem minmax(0, 1fr);
+  }
+
+  .preference-card__image {
+    width: 5rem;
+    height: 4.25rem;
+  }
+
+  .preference-picker {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .preference-choice:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .preference-savebar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .preference-savebar__actions,
+  .preference-savebar__actions > button {
+    width: 100%;
+  }
+
+  .preference-savebar__actions > button {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 22rem) {
+  .preference-savebar__actions {
+    display: grid;
+  }
+}

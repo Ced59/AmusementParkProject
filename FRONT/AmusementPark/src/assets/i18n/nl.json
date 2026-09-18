@@ -1580,6 +1580,55 @@
         "comparator": "Toegevoegd vanuit de vergelijker"
       }
     },
+    "preferences": {
+      "open": "Mijn attracties kiezen",
+      "back": "Terug naar de reis",
+      "kicker": "Persoonlijke wensen",
+      "description": "Geef aan wat je echt wilt doen. Je keuzes blijven van jou en helpen de groep later met iedereen rekening te houden.",
+      "summary": "Overzicht van mijn voorkeuren",
+      "summaryMust": "{{count}} onmisbaar",
+      "summaryWant": "{{count}} wens(en)",
+      "summaryUnknown": "{{count}} zonder mening",
+      "readonly": "Met jouw rol kun je deze keuzes bekijken, maar niet wijzigen.",
+      "chooseFor": "Kies een voorkeur voor {{name}}",
+      "reasonLabel": "Waarom deze keuze? (optioneel)",
+      "noReason": "Geen bijzondere reden",
+      "reasonReadonly": "Reden: {{reason}}",
+      "empty": "Voeg eerst een park aan de reis toe om de attracties te ontdekken.",
+      "noMatch": "Geen attractie past bij deze filters.",
+      "pending": "{{count}} keuze(s) om op te slaan",
+      "pendingHint": "Verken gerust en sla daarna alles tegelijk op.",
+      "discard": "Wijzigingen annuleren",
+      "save": "Mijn keuzes opslaan",
+      "filters": {
+        "search": "Zoeken",
+        "searchPlaceholder": "Naam van attractie of park",
+        "park": "Park",
+        "allParks": "Alle parken",
+        "preference": "Voorkeur",
+        "allPreferences": "Alle voorkeuren"
+      },
+      "levels": {
+        "mustdo": "Onmisbaar",
+        "wanttodo": "Wil ik doen",
+        "optional": "Misschien",
+        "notforme": "Niet voor mij",
+        "unknown": "Geen mening"
+      },
+      "reasons": {
+        "sensations": "Spanning",
+        "height": "Lengte of toegang",
+        "alreadydone": "Al gedaan",
+        "unavailable": "Niet beschikbaar",
+        "other": "Andere reden"
+      },
+      "feedback": {
+        "loadError": "Je voorkeuren konden niet worden geladen.",
+        "saveError": "Je keuzes konden niet worden opgeslagen.",
+        "conflict": "De reis of een keuze is gewijzigd. Laad opnieuw voordat je het nogmaals probeert.",
+        "saved": "Je keuzes zijn opgeslagen."
+      }
+    },
     "days": {
       "kicker": "Je programma",
       "title": "Bouw de reis dag voor dag",
@@ -4844,7 +4893,8 @@
     "success": "Succes",
     "error": "Fout",
     "warning": "Let op",
-    "unexpectedError": "Er is een onverwachte fout opgetreden."
+    "unexpectedError": "Er is een onverwachte fout opgetreden.",
+    "cancel": "Annuleren"
   },
   "measurementSystem": {
     "label": "Eenhedensysteem",
