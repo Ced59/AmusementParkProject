@@ -160,6 +160,21 @@ internal static class TripPlanMongoDefinitions
             .Set(static item => item.Version, document.Version);
     }
 
+    public static UpdateDefinition<TripPlanDocument> BuildOwnershipTransferMutation(
+        TripPlan trip,
+        int ownerSlot)
+    {
+        ArgumentNullException.ThrowIfNull(trip);
+        if (ownerSlot is < 0 or >= TripPlan.MaximumPlansPerOwner)
+        {
+            throw new ArgumentOutOfRangeException(nameof(ownerSlot));
+        }
+
+        return BuildDomainMutation(trip)
+            .Set(static document => document.OwnerUserId, trip.OwnerUserId)
+            .Set(static document => document.OwnerSlot, ownerSlot);
+    }
+
     public static ProjectionDefinition<TripPlanDocument> BuildActiveCreationProjection()
     {
         return Builders<TripPlanDocument>.Projection

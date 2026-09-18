@@ -221,7 +221,11 @@ adhésions les plus récemment modifiées pour protéger les ressources du VPS.
 Une acceptation ambiguë est reprise après rechargement avec le même identifiant
 d'opération conservé pour la session sans stocker le token, uniquement sous le
 même compte initiateur. Un transfert vérifie
-aussi que le nouveau propriétaire possède encore un compte activé et non bloqué.
+aussi que le nouveau propriétaire possède encore un compte activé et non bloqué,
+sans déplacer la portée d'idempotence du créateur initial. Les relectures de
+récupération propagent la dernière version et les derniers droits à la page ; un
+départ dont la réponse est perdue est confirmé par la disparition de l'accès avant
+la redirection.
 
 Les preuves, schémas MongoDB et diagrammes sont détaillés dans
 [`product-growth-trip-06-participants-roles-2026-09-18.md`](../../architecture/product-growth-trip-06-participants-roles-2026-09-18.md).

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
@@ -53,7 +54,11 @@ export class TripParticipantsStateFacade {
     this.loadParticipants(normalizedId, true);
   }
 
-  private loadParticipants(normalizedId: string, resetActionError: boolean): void {
+  private loadParticipants(
+    normalizedId: string,
+    resetActionError: boolean,
+    recoveredFromTripVersion: number | null = null
+  ): void {
     this.tripPlanId = normalizedId;
     this.leftSignal.set(false);
     this.statusSignal.set('loading');
@@ -63,9 +68,20 @@ export class TripParticipantsStateFacade {
     this.data.list(normalizedId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result: TripParticipantList): void => {
         this.apply(result);
+        if (recoveredFromTripVersion !== null) {
+          if (result.tripVersion > recoveredFromTripVersion) {
+            this.signalTripMutation();
+          }
+          this.busySignal.set(false);
+        }
         this.statusSignal.set('ready');
       },
-      error: (): void => this.statusSignal.set('error')
+      error: (): void => {
+        if (recoveredFromTripVersion !== null) {
+          this.busySignal.set(false);
+        }
+        this.statusSignal.set('error');
+      }
     });
   }
 
@@ -97,13 +113,14 @@ export class TripParticipantsStateFacade {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (): void => {
-          this.participantsSignal.set([]);
-          this.leftSignal.set(true);
-          this.busySignal.set(false);
+          this.markLeft();
         },
-        error: (): void => {
-          this.errorSignal.set(true);
-          this.busySignal.set(false);
+        error: (error: unknown): void => {
+          if (this.isNotFound(error)) {
+            this.markLeft();
+            return;
+          }
+          this.reconcileLeave();
         }
       });
   }
@@ -113,6 +130,7 @@ export class TripParticipantsStateFacade {
       return;
     }
 
+    const attemptedTripVersion: number = this.tripVersion;
     this.busySignal.set(true);
     this.errorSignal.set(false);
     operation.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
@@ -123,10 +141,43 @@ export class TripParticipantsStateFacade {
       },
       error: (): void => {
         this.errorSignal.set(true);
-        this.busySignal.set(false);
-        this.loadParticipants(this.tripPlanId, false);
+        this.loadParticipants(this.tripPlanId, false, attemptedTripVersion);
       }
     });
+  }
+
+  private reconcileLeave(): void {
+    this.errorSignal.set(true);
+    this.data.list(this.tripPlanId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (result: TripParticipantList): void => {
+        this.apply(result);
+        this.statusSignal.set('ready');
+        this.busySignal.set(false);
+      },
+      error: (error: unknown): void => {
+        if (this.isNotFound(error)) {
+          this.markLeft();
+          return;
+        }
+        this.statusSignal.set('error');
+        this.busySignal.set(false);
+      }
+    });
+  }
+
+  private markLeft(): void {
+    this.participantsSignal.set([]);
+    this.canManageRolesSignal.set(false);
+    this.canTransferOwnershipSignal.set(false);
+    this.canLeaveSignal.set(false);
+    this.errorSignal.set(false);
+    this.leftSignal.set(true);
+    this.statusSignal.set('ready');
+    this.busySignal.set(false);
+  }
+
+  private isNotFound(error: unknown): boolean {
+    return error instanceof HttpErrorResponse && error.status === 404;
   }
 
   private apply(result: TripParticipantList): void {

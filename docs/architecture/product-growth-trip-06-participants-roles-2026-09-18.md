@@ -111,6 +111,7 @@ trip-plans
 ├── _id: string opaque
 ├── ownerUserId: string opaque
 ├── ownerSlot: int
+├── ownerScopeHash: HMAC du créateur initial, immuable après transfert
 ├── members[]
 │   ├── memberId: string opaque
 │   ├── userId: string opaque
@@ -223,7 +224,8 @@ ni l'identifiant de compte eux-mêmes. Un autre compte ouvert dans le même ongl
 reprend donc pas cette décision. Si l'acceptation
 est validée mais que sa réponse HTTP se perd, un rechargement rejoue directement la
 même opération avant de demander l'aperçu désormais terminal. Le succès efface le
-marqueur ; une erreur ambiguë le conserve pour un nouveau retry.
+marqueur ; une erreur ambiguë le conserve pour un nouveau retry et recharge
+explicitement l'aperçu afin de ne jamais laisser une page vide.
 
 ## Séquence de transfert de propriété
 
@@ -248,7 +250,19 @@ sequenceDiagram
 
 Après succès, le panneau participants demande à la vue d'ensemble de recharger le
 voyage. Les droits, la version et les actions visibles changent immédiatement, sans
-laisser d'anciens contrôles de propriétaire à l'écran.
+laisser d'anciens contrôles de propriétaire à l'écran. Plusieurs mutations proches
+coalescent leurs demandes de lecture et rejouent toujours la dernière : une réponse
+plus lente ne peut pas figer une ancienne version ou d'anciens droits. Si la réponse
+d'une mutation se perd, la relecture qui découvre une version plus récente déclenche
+le même rafraîchissement de la vue d'ensemble. Un départ ambigu est, lui, vérifié par
+une lecture d'accès ; le `404` prouve que l'ancien membre peut être redirigé sans
+présenter l'échec comme un départ non enregistré.
+
+`ownerScopeHash` reste celui du créateur initial lorsque `ownerUserId` et
+`ownerSlot` changent. Ce champ n'autorise rien : il sert uniquement à retrouver la
+création d'origine si le premier propriétaire rejoue sa clé après un transfert. Le
+transfert ne peut donc ni créer un doublon au retry, ni déplacer la portée
+d'idempotence vers le nouveau propriétaire.
 
 Un changement de rôle, un transfert ou un départ avance le même epoch racine que
 les écritures enfants. MongoDB n'accepte cette transition qu'après la fin des leases
@@ -315,6 +329,8 @@ rem. Le contrôle navigateur couvre réellement 320, 360, 390, 768 et 1280 px.
 - résolution des alias en un seul batch ;
 - refus serveur d'un changement de rôle par un non-propriétaire ;
 - capacités Angular, opération d'acceptation stable, navigation concurrente et lecture seule ;
+- reprise d'une mutation de rôle, d'un transfert ou d'un départ dont la réponse réseau est perdue ;
+- portée de création immuable après transfert de propriété ;
 - architecture façades/ports et une classe par fichier ;
 - huit langues et viewports réels.
 

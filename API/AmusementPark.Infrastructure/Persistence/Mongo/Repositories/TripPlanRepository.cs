@@ -303,7 +303,6 @@ public sealed class TripPlanRepository : ITripPlanRepository
             .Project(static document => document.OwnerSlot)
             .Limit(TripPlan.MaximumPlansPerOwner)
             .ToListAsync(cancellationToken)).ToHashSet();
-        TripPlanDocument domain = tripPlan.ToDocument();
         for (int ownerSlot = 0; ownerSlot < TripPlan.MaximumPlansPerOwner; ownerSlot++)
         {
             if (occupiedSlots.Contains(ownerSlot))
@@ -321,12 +320,7 @@ public sealed class TripPlanRepository : ITripPlanRepository
                     & TripPlanMongoDefinitions.BuildNoAdmissionInFlightFilter()
                     & TripPlanMongoDefinitions.BuildChildEpochMutationFilter(
                         tripPlan.ChildMutationEpoch),
-                    TripPlanMongoDefinitions.BuildDomainMutation(tripPlan)
-                        .Set(static document => document.OwnerUserId, tripPlan.OwnerUserId)
-                        .Set(static document => document.OwnerSlot, ownerSlot)
-                        .Set(
-                            static document => document.OwnerScopeHash,
-                            this.creationFingerprint.HashOwnerScope(tripPlan.OwnerUserId)),
+                    TripPlanMongoDefinitions.BuildOwnershipTransferMutation(tripPlan, ownerSlot),
                     new FindOneAndUpdateOptions<TripPlanDocument, TripPlanDocument>
                     {
                         ReturnDocument = ReturnDocument.After,

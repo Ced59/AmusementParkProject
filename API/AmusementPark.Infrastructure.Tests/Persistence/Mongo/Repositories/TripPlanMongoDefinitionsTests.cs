@@ -94,6 +94,56 @@ public sealed class TripPlanMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildOwnershipTransferMutation_ShouldPreserveTheImmutableCreationScope()
+    {
+        DateTime createdAtUtc = new(2026, 9, 17, 8, 0, 0, DateTimeKind.Utc);
+        TripMember owner = TripMember.Restore(
+            TripMemberId.Parse("member-1"),
+            "user-1",
+            null,
+            TripMembershipState.Active,
+            createdAtUtc);
+        TripMember target = TripMember.Restore(
+            TripMemberId.Parse("member-2"),
+            "user-2",
+            TripDelegatedRole.Participant,
+            TripMembershipState.Active,
+            createdAtUtc.AddMinutes(1));
+        TripPlan trip = TripPlan.Restore(
+            TripPlanId.Parse("trip-1"),
+            "user-1",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            TripPlanStatus.Draft,
+            TripPlanAccessScope.MembersOnly,
+            new[] { owner, target },
+            TripAdmissionClosureState.Open,
+            TripDeletionState.None,
+            1,
+            createdAtUtc,
+            createdAtUtc.AddMinutes(1),
+            1);
+        trip.TransferOwnership(
+            "user-1",
+            target.Id,
+            TripDelegatedRole.Editor,
+            new DateTime(2026, 9, 17, 8, 2, 0, DateTimeKind.Utc));
+
+        UpdateDefinition<TripPlanDocument> update =
+            TripPlanMongoDefinitions.BuildOwnershipTransferMutation(trip, 7);
+        BsonDocument rendered = update.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry)).AsBsonDocument;
+
+        Assert.Equal("user-2", rendered["$set"]["ownerUserId"].AsString);
+        Assert.Equal(7, rendered["$set"]["ownerSlot"].AsInt32);
+        Assert.False(rendered["$set"].AsBsonDocument.Contains("ownerScopeHash"));
+        Assert.False(rendered["$set"].AsBsonDocument.Contains("creationOperationKeyHash"));
+        Assert.False(rendered["$set"].AsBsonDocument.Contains("creationPayloadHash"));
+    }
+
+    [Fact]
     public void BuildNoAdmissionInFlightFilter_ShouldAcceptOnlyMissingOrLegacyNullFences()
     {
         FilterDefinition<TripPlanDocument> filter =

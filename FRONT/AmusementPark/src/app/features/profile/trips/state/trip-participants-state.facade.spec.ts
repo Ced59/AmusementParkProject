@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 
@@ -60,6 +61,17 @@ describe('TripParticipantsStateFacade', () => {
     expect(facade.error()).toBe(true);
   });
 
+  it('signals a mutation recovered after the role response was lost', () => {
+    vi.mocked(data.changeRole).mockReturnValue(throwError(() => new HttpErrorResponse({ status: 0 })));
+    vi.mocked(data.list).mockReturnValue(of(createList(5)));
+
+    facade.changeRole('member-2', 'Viewer');
+
+    expect(data.list).toHaveBeenCalledTimes(2);
+    expect(facade.tripMutationRevision()).toBe(1);
+    expect(facade.busy()).toBe(false);
+  });
+
   it('marks the collaboration as left only after the server confirms departure', () => {
     vi.mocked(data.list).mockReturnValue(of({ ...createList(), canLeave: true }));
     facade.load('trip-1');
@@ -68,6 +80,24 @@ describe('TripParticipantsStateFacade', () => {
 
     expect(data.leave).toHaveBeenCalledWith('trip-1', 4);
     expect(facade.left()).toBe(true);
+  });
+
+  it('reconciles a committed departure when its response was lost', () => {
+    vi.mocked(data.list).mockReturnValue(of({ ...createList(), canLeave: true }));
+    facade.load('trip-1');
+    vi.mocked(data.leave).mockReturnValue(
+      throwError(() => new HttpErrorResponse({ status: 0 }))
+    );
+    vi.mocked(data.list).mockReturnValue(
+      throwError(() => new HttpErrorResponse({ status: 404 }))
+    );
+
+    facade.leave();
+
+    expect(data.list).toHaveBeenCalledTimes(3);
+    expect(facade.left()).toBe(true);
+    expect(facade.error()).toBe(false);
+    expect(facade.busy()).toBe(false);
   });
 });
 
