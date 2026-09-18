@@ -59,7 +59,8 @@ classDiagram
       +GetAsync()
       +CreateAsync()
       +ReplaceAsync()
-      +DeleteForUserAsync()
+      +CompleteDepartureCleanupAsync()
+      +ReconcileDepartureCleanupAsync()
     }
     class TripPreferenceRepository
     class TripPreferencesController
@@ -163,7 +164,9 @@ Le serveur construit et valide tout le lot avant la première écriture. Un doub
 dans le lot, une attraction devenue inéligible ou une version incohérente bloque
 l'opération. La lease du voyage relie l'autorisation à l'epoch courant : un
 changement de rôle ou un départ attend les mutations en cours, puis invalide toute
-ancienne autorisation.
+ancienne autorisation. Le client découpe et sérialise automatiquement une
+sauvegarde de plus de 250 attractions ; chaque requête respecte ainsi la borne du
+contrat sans perdre les brouillons restants.
 
 ## 6. Lecture et confidentialité
 
@@ -173,9 +176,15 @@ participant de lire ou modifier les choix personnels avant la synthèse collecti
 prévue dans `TRIP-08`. Les noms et images publiques sont résolus en lots afin
 d'éviter les requêtes N+1.
 
-Après un départ réussi, `TripParticipantService` efface tous les documents du
-membre pour ce voyage. La purge complète du voyage inclut aussi la collection de
-préférences. Aucun choix individuel n'est publié et `SHARE` n'est pas impliqué.
+Le retrait du membre et l'ajout de son identifiant dans
+`departedPreferenceCleanupUserIds` sont une même écriture atomique du document
+`trip-plans`. `TripParticipantService` tente ensuite la purge sans reprendre le
+jeton d'annulation HTTP. Il retire le marqueur seulement après avoir supprimé les
+préférences. Si le processus tombe entre ces étapes, le service d'arrière-plan
+relit l'index partiel toutes les minutes et reprend au plus 25 purges : la
+suppression est idempotente et finit donc par aboutir sans dépendre de l'ancien
+membre. La purge complète du voyage inclut aussi la collection de préférences.
+Aucun choix individuel n'est publié et `SHARE` n'est pas impliqué.
 
 ## 7. Expérience responsive et accessible
 
@@ -211,9 +220,13 @@ sont jamais corrigées silencieusement.
 
 - Core : création, raison interdite pour `Unknown`, version incrémentée ;
 - Application : liste personnelle, batch, droits et version optimiste ;
-- participants : départ réussi suivi de la suppression des préférences ;
-- Infrastructure : unicité, index de lecture et TTL ;
+- participants : départ réussi suivi d'une purge indépendante de l'annulation
+  HTTP ;
+- Infrastructure : unicité, index de lecture, TTL, dette de purge atomique et
+  résolution bornée du réconciliateur ;
 - Angular : service API, façade, routes, filtres, enregistrement unitaire/batch ;
+- Angular : découpage sérialisé d'une sauvegarde de 251 choix en lots de 250 et
+  un ;
 - responsive : assertions structurelles contre les largeurs fixes, débordements et
   barres d'action incompatibles avec la navigation mobile ;
 - architecture : contrôle des ports de façade et règle une classe par fichier.

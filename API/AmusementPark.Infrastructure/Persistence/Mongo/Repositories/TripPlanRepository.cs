@@ -272,7 +272,9 @@ public sealed class TripPlanRepository : ITripPlanRepository
                 static document => document.Members,
                 member => member.UserId == normalizedActorUserId
                     && member.State == TripMembershipState.Active),
-            TripPlanMongoDefinitions.BuildDomainMutation(tripPlan),
+            TripPlanMongoDefinitions.BuildAccessibleDomainMutation(
+                tripPlan,
+                normalizedActorUserId),
             new FindOneAndUpdateOptions<TripPlanDocument, TripPlanDocument>
             {
                 ReturnDocument = ReturnDocument.After,

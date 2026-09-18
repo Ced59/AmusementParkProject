@@ -227,6 +227,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHostedService<TripPlanDeletionReconciliationBackgroundService>();
         services.AddHostedService<TripInvitationExpirationReconciliationBackgroundService>();
         services.AddHostedService<TripAdmissionReconciliationBackgroundService>();
+        services.AddHostedService<TripPreferenceCleanupReconciliationBackgroundService>();
 
         services.AddScoped<ICountryReadRepository, CountryReadRepository>();
         services.AddScoped<IParkFounderRepository, ParkFounderRepository>();

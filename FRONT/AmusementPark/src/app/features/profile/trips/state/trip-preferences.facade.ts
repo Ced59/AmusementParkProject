@@ -1,11 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { computed, DestroyRef, Inject, Injectable, Signal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { finalize, Observable } from 'rxjs';
+import { concatMap, finalize, from, last, Observable } from 'rxjs';
 
 import {
   BulkSetTripItemPreferencesRequest,
+  BulkTripItemPreferenceRequest,
   SetTripItemPreferenceRequest,
+  TRIP_ITEM_PREFERENCE_MAX_BATCH_SIZE,
   TripItemPreference,
   TripItemPreferenceLevel,
   TripItemPreferenceReason,
@@ -159,17 +161,19 @@ export class TripPreferencesFacade {
       return;
     }
 
-    const requests = entries.map(([parkItemId, draft]: [string, TripPreferenceDraft]) => {
-      const item: TripItemPreference | undefined = board.items.find(
-        (candidate: TripItemPreference): boolean => candidate.parkItemId === parkItemId
-      );
-      return {
-        parkItemId,
-        expectedPreferenceVersion: item?.version ?? null,
-        level: draft.level,
-        reason: draft.reason
-      };
-    });
+    const requests: BulkTripItemPreferenceRequest[] = entries.map(
+      ([parkItemId, draft]: [string, TripPreferenceDraft]): BulkTripItemPreferenceRequest => {
+        const item: TripItemPreference | undefined = board.items.find(
+          (candidate: TripItemPreference): boolean => candidate.parkItemId === parkItemId
+        );
+        return {
+          parkItemId,
+          expectedPreferenceVersion: item?.version ?? null,
+          level: draft.level,
+          reason: draft.reason
+        };
+      }
+    );
     let operation: Observable<TripPreferenceBoard>;
     if (requests.length === 1) {
       const request: SetTripItemPreferenceRequest = {
@@ -180,11 +184,17 @@ export class TripPreferencesFacade {
       };
       operation = this.data.set(this.tripPlanId, requests[0].parkItemId, request);
     } else {
-      const request: BulkSetTripItemPreferencesRequest = {
-        expectedPlanVersion: board.planVersion,
-        preferences: requests
-      };
-      operation = this.data.setBatch(this.tripPlanId, request);
+      const batches: BulkTripItemPreferenceRequest[][] = chunkPreferences(requests);
+      operation = from(batches).pipe(
+        concatMap((preferences: BulkTripItemPreferenceRequest[]): Observable<TripPreferenceBoard> => {
+          const request: BulkSetTripItemPreferencesRequest = {
+            expectedPlanVersion: board.planVersion,
+            preferences
+          };
+          return this.data.setBatch(this.tripPlanId, request);
+        }),
+        last()
+      );
     }
 
     this.savingSignal.set(true);
@@ -230,4 +240,18 @@ export class TripPreferencesFacade {
     });
     this.feedbackKeySignal.set(null);
   }
+}
+
+function chunkPreferences(
+  preferences: BulkTripItemPreferenceRequest[]
+): BulkTripItemPreferenceRequest[][] {
+  const chunks: BulkTripItemPreferenceRequest[][] = [];
+  for (
+    let index: number = 0;
+    index < preferences.length;
+    index += TRIP_ITEM_PREFERENCE_MAX_BATCH_SIZE
+  ) {
+    chunks.push(preferences.slice(index, index + TRIP_ITEM_PREFERENCE_MAX_BATCH_SIZE));
+  }
+  return chunks;
 }

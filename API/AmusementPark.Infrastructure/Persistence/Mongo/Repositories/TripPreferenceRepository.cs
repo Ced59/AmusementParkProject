@@ -5,6 +5,7 @@ using AmusementPark.Core.Domain.Trips;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Trips;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -12,6 +13,7 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class TripPreferenceRepository : ITripPreferenceRepository
 {
     private readonly IMongoCollection<TripItemPreferenceDocument> collection;
+    private readonly IMongoCollection<TripPlanDocument> tripPlans;
 
     public TripPreferenceRepository(IMongoDatabase database, MongoDbSettings settings)
     {
@@ -19,11 +21,16 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
         ArgumentNullException.ThrowIfNull(settings);
         this.collection = database.GetCollection<TripItemPreferenceDocument>(
             settings.TripItemPreferencesCollectionName);
+        this.tripPlans = database.GetCollection<TripPlanDocument>(
+            settings.TripPlansCollectionName);
     }
 
-    internal TripPreferenceRepository(IMongoCollection<TripItemPreferenceDocument> collection)
+    internal TripPreferenceRepository(
+        IMongoCollection<TripItemPreferenceDocument> collection,
+        IMongoCollection<TripPlanDocument> tripPlans)
     {
         this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
+        this.tripPlans = tripPlans ?? throw new ArgumentNullException(nameof(tripPlans));
     }
 
     internal static IReadOnlyCollection<CreateIndexModel<TripItemPreferenceDocument>> BuildIndexes()
@@ -238,7 +245,7 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
                 committed.Version);
     }
 
-    public async Task DeleteForUserAsync(
+    public async Task CompleteDepartureCleanupAsync(
         TripPlanId tripPlanId,
         string userId,
         CancellationToken cancellationToken)
@@ -251,6 +258,60 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
             & filters.Eq(static document => document.UserId, normalizedUserId),
             cancellationToken);
         _ = result.DeletedCount;
+
+        UpdateResult planResult = await this.tripPlans.UpdateOneAsync(
+            Builders<TripPlanDocument>.Filter.Eq(
+                static document => document.Id,
+                tripPlanId.Value)
+            & Builders<TripPlanDocument>.Filter.AnyEq(
+                static document => document.DepartedPreferenceCleanupUserIds,
+                normalizedUserId),
+            Builders<TripPlanDocument>.Update.Pull(
+                static document => document.DepartedPreferenceCleanupUserIds,
+                normalizedUserId),
+            cancellationToken: cancellationToken);
+        _ = planResult.ModifiedCount;
+    }
+
+    public async Task<int> ReconcileDepartureCleanupAsync(
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        if (limit is < 1 or > 100)
+        {
+            throw new ArgumentOutOfRangeException(nameof(limit));
+        }
+
+        FilterDefinition<TripPlanDocument> pendingFilter =
+            new BsonDocumentFilterDefinition<TripPlanDocument>(
+                new BsonDocument(
+                    "departedPreferenceCleanupUserIds.0",
+                    new BsonDocument("$exists", true)));
+        List<TripPlanDocument> pendingPlans = await this.tripPlans.Find(pendingFilter)
+            .SortBy(static document => document.UpdatedAt)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        int completed = 0;
+        foreach (TripPlanDocument plan in pendingPlans)
+        {
+            foreach (string userId in plan.DepartedPreferenceCleanupUserIds
+                .Where(static value => !string.IsNullOrWhiteSpace(value))
+                .Distinct(StringComparer.Ordinal))
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.CompleteDepartureCleanupAsync(
+                    TripPlanId.Parse(plan.Id),
+                    userId,
+                    cancellationToken);
+                completed++;
+                if (completed >= limit)
+                {
+                    return completed;
+                }
+            }
+        }
+
+        return completed;
     }
 
     private static FilterDefinition<TripItemPreferenceDocument> BuildCommittedIdentityFilter(

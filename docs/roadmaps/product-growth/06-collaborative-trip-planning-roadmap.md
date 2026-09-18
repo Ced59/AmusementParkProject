@@ -242,17 +242,21 @@ aucun contrôle d'écriture.
 La matrice responsive regroupe les attractions par parc, affiche leur image
 principale, propose recherche et filtres, et conserve les modifications localement
 jusqu'à un enregistrement explicite. Un enregistrement isolé utilise une commande
-fine ; plusieurs changements sont envoyés par le contrat batch. Les conflits de
-version n'écrasent jamais un choix plus récent. Les noms de parc et d'attraction
-sont résolus côté serveur : un identifiant technique n'est jamais présenté comme
-un libellé.
+fine ; plusieurs changements sont envoyés par lots sérialisés de 250 choix au
+maximum, afin qu'une longue liste ne dépasse jamais le contrat serveur. Les
+conflits de version n'écrasent jamais un choix plus récent. Les noms de parc et
+d'attraction sont résolus côté serveur : un identifiant technique n'est jamais
+présenté comme un libellé.
 
 MongoDB garantit l'unicité `(TripPlanId, UserId, ParkItemId)`. Les écritures
 réutilisent la lease et l'epoch du voyage afin qu'un rôle retiré ne puisse plus
-voter avec une autorisation ancienne. Les préférences d'un membre sont supprimées
-physiquement après son départ, et celles de tout le groupe sont purgées avec le
-voyage. La nouvelle collection et ses indexes sont créés par l'initialisation
-existante ; aucune migration manuelle MongoDB n'est requise.
+voter avec une autorisation ancienne. Le départ inscrit atomiquement une dette de
+purge sur le voyage avant de supprimer les préférences du membre. Si la réponse
+HTTP disparaît ou que MongoDB est momentanément indisponible, un réconciliateur
+borné reprend cette dette jusqu'à son acquittement. Les préférences de tout le
+groupe sont purgées avec le voyage. La nouvelle collection et ses indexes sont
+créés par l'initialisation existante ; aucune migration manuelle MongoDB n'est
+requise.
 
 Les preuves, le schéma MongoDB et les diagrammes sont détaillés dans
 [`product-growth-trip-07-item-preferences-2026-09-18.md`](../../architecture/product-growth-trip-07-item-preferences-2026-09-18.md).

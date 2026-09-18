@@ -35,6 +35,9 @@ public sealed class TripPlanDocument : MongoDocumentBase
     [BsonElement("members")]
     public List<TripMemberDocument> Members { get; set; } = new();
 
+    [BsonElement("departedPreferenceCleanupUserIds")]
+    public List<string> DepartedPreferenceCleanupUserIds { get; set; } = new();
+
     [BsonElement("memberAdmissionFence")]
     [BsonIgnoreIfNull]
     public TripMemberAdmissionFenceDocument? MemberAdmissionFence { get; set; }

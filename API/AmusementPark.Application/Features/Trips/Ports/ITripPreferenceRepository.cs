@@ -27,8 +27,12 @@ public interface ITripPreferenceRepository
         TripChildMutationLease lease,
         CancellationToken cancellationToken);
 
-    Task DeleteForUserAsync(
+    Task CompleteDepartureCleanupAsync(
         TripPlanId tripPlanId,
         string userId,
+        CancellationToken cancellationToken);
+
+    Task<int> ReconcileDepartureCleanupAsync(
+        int limit,
         CancellationToken cancellationToken);
 }

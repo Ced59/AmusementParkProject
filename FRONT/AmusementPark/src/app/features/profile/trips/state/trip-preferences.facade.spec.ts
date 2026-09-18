@@ -85,6 +85,28 @@ describe('TripPreferencesFacade', () => {
     expect(data.set).not.toHaveBeenCalled();
     expect(data.setBatch).not.toHaveBeenCalled();
   });
+
+  it('serializes very large saves into server-sized batches', () => {
+    const board: TripPreferenceBoard = createLargeBoard(251);
+    const data: TripPreferencesDataPort = {
+      getMine: vi.fn().mockReturnValue(of(board)),
+      set: vi.fn().mockReturnValue(of(board)),
+      setBatch: vi.fn().mockReturnValue(of(board))
+    };
+    const facade: TripPreferencesFacade = createFacade(data);
+
+    facade.load('trip-1');
+    for (const item of board.items) {
+      facade.setLevel(item.parkItemId, 'MustDo');
+    }
+    facade.save();
+
+    expect(data.setBatch).toHaveBeenCalledTimes(2);
+    const calls = vi.mocked(data.setBatch).mock.calls;
+    expect(calls[0][1].preferences).toHaveLength(250);
+    expect(calls[1][1].preferences).toHaveLength(1);
+    expect(facade.pendingCount()).toBe(0);
+  });
 });
 
 function createFacade(data: TripPreferencesDataPort): TripPreferencesFacade {
@@ -123,5 +145,24 @@ function createBoard(canVote: boolean = true): TripPreferenceBoard {
         version: 3
       }
     ]
+  };
+}
+
+function createLargeBoard(itemCount: number): TripPreferenceBoard {
+  return {
+    tripPlanId: 'trip-1',
+    tripTitle: 'Grand voyage test',
+    planVersion: 7,
+    canVote: true,
+    items: Array.from({ length: itemCount }, (_, index: number) => ({
+      parkId: `park-${Math.floor(index / 20)}`,
+      parkName: `Parc ${Math.floor(index / 20)}`,
+      parkItemId: `item-${index}`,
+      parkItemName: `Attraction ${index}`,
+      mainImageId: null,
+      level: 'Unknown' as const,
+      reason: null,
+      version: null
+    }))
   };
 }

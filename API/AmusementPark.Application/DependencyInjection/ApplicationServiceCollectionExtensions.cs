@@ -111,6 +111,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<TripAdmissionReconciler>();
         services.AddScoped<TripParticipantService>();
         services.AddScoped<TripPreferenceService>();
+        services.AddScoped<TripPreferenceCleanupReconciler>();
         services.AddScoped<UserNotificationCenterService>();
         services.AddScoped<WatchPilotMetricsRecorder>();
         services.AddScoped<UserNotificationCreationService>();

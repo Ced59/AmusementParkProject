@@ -202,10 +202,10 @@ public sealed class TripParticipantService
             cancellationToken);
         if (write.Outcome == TripPlanWriteOutcome.Success)
         {
-            await this.preferences.DeleteForUserAsync(
+            await this.preferences.CompleteDepartureCleanupAsync(
                 parsedTripId,
                 normalizedUserId,
-                cancellationToken);
+                CancellationToken.None);
             return ApplicationResult.Success();
         }
 

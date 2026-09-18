@@ -49,8 +49,49 @@ public sealed class TripPlanMongoDefinitionsTests
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_member_updated");
         Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_admission_fence"
             && index.Options.PartialFilterExpression is not null);
+        Assert.Contains(indexes, index => index.Options.Name == "ix_trip_plan_departed_preference_cleanup"
+            && index.Options.PartialFilterExpression is not null);
         Assert.Contains(indexes, index => index.Options.Name == "ttl_trip_plan_creation_tombstone"
             && index.Options.ExpireAfter == TimeSpan.Zero);
+    }
+
+    [Fact]
+    public void BuildAccessibleDomainMutation_WhenMemberLeaves_ShouldQueuePreferenceCleanup()
+    {
+        DateTime nowUtc = new(2027, 3, 4, 10, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "owner-1",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            nowUtc);
+        trip.PrepareAdmission(
+            TripInvitationId.Parse("invitation-1"),
+            "operation-1",
+            "user-2",
+            1,
+            nowUtc.AddMinutes(10),
+            nowUtc.AddSeconds(1));
+        trip.ArmAdmission("operation-1", 1);
+        trip.ApplyAdmission(
+            "operation-1",
+            1,
+            TripDelegatedRole.Participant,
+            nowUtc.AddSeconds(2));
+        trip.EstablishAdmission("operation-1", 1, nowUtc.AddSeconds(3));
+        TripMember leaving = trip.BeginMemberDeparture("user-2", nowUtc.AddSeconds(4));
+        trip.RemoveLeavingMember(leaving.Id, nowUtc.AddSeconds(5));
+
+        UpdateDefinition<TripPlanDocument> update =
+            TripPlanMongoDefinitions.BuildAccessibleDomainMutation(trip, "user-2");
+        BsonValue rendered = update.Render(new RenderArgs<TripPlanDocument>(
+            MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer<TripPlanDocument>(),
+            MongoDB.Bson.Serialization.BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("departedPreferenceCleanupUserIds", json, StringComparison.Ordinal);
+        Assert.Contains("user-2", json, StringComparison.Ordinal);
     }
 
     [Fact]

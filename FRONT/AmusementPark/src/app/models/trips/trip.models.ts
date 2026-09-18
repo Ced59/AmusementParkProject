@@ -161,3 +161,5 @@ export interface BulkSetTripItemPreferencesRequest {
   expectedPlanVersion: number;
   preferences: BulkTripItemPreferenceRequest[];
 }
+
+export const TRIP_ITEM_PREFERENCE_MAX_BATCH_SIZE: number = 250;

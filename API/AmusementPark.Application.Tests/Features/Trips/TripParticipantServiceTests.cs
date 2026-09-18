@@ -146,6 +146,8 @@ public sealed class TripParticipantServiceTests
     [Fact]
     public async Task LeaveAsync_WhenDepartureSucceeds_ShouldDeleteTheMembersPreferences()
     {
+        using CancellationTokenSource requestCancellation = new();
+        CancellationToken requestToken = requestCancellation.Token;
         TripPlan trip = CreateTripWithMember();
         long expectedVersion = trip.Version;
         Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
@@ -153,18 +155,22 @@ public sealed class TripParticipantServiceTests
         Mock<IUserRepository> users = new(MockBehavior.Strict);
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
-        plans.Setup(item => item.GetAccessibleAsync("user-2", trip.Id, CancellationToken.None))
+        plans.Setup(item => item.GetAccessibleAsync("user-2", trip.Id, requestToken))
             .ReturnsAsync(trip);
         plans.Setup(item => item.ReplaceAccessibleAsync(
                 "user-2",
                 trip,
                 expectedVersion,
-                CancellationToken.None))
-            .ReturnsAsync(() => new TripPlanWriteResult(
-                TripPlanWriteOutcome.Success,
-                trip.Version,
-                trip));
-        preferences.Setup(item => item.DeleteForUserAsync(
+                requestToken))
+            .ReturnsAsync(() =>
+            {
+                requestCancellation.Cancel();
+                return new TripPlanWriteResult(
+                    TripPlanWriteOutcome.Success,
+                    trip.Version,
+                    trip);
+            });
+        preferences.Setup(item => item.CompleteDepartureCleanupAsync(
                 trip.Id,
                 "user-2",
                 CancellationToken.None))
@@ -175,7 +181,7 @@ public sealed class TripParticipantServiceTests
             "user-2",
             trip.Id.Value,
             expectedVersion,
-            CancellationToken.None);
+            requestToken);
 
         Assert.True(result.IsSuccess);
         Assert.DoesNotContain(trip.Members, member => member.UserId == "user-2");
