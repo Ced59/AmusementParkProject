@@ -686,8 +686,9 @@ jamais le 1er janvier.
 des clés distinctes pour une année, un mois ou un jour. `HistoricalPeriod`
 gère les bornes ouvertes, les événements ponctuels, l'inclusion civile, la
 confiance `Confirmed`, `Estimated` ou `Disputed`, les ordres certains et les
-chevauchements ambigus. Les erreurs portent des codes métier stables afin que
-les couches suivantes puissent les traduire sans recopier les règles.
+chevauchements ambigus. Une intersection partielle prouvée reste distincte d'un
+simple chevauchement possible. Les erreurs portent des codes métier stables afin
+que les couches suivantes puissent les traduire sans recopier les règles.
 
 Les tests du Core couvrent les années bissextiles, les jours invalides, les
 qualificatifs exclusifs, les limites du calendrier, les périodes inversées,

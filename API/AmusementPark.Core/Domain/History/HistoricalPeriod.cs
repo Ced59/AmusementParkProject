@@ -117,6 +117,11 @@ public sealed record HistoricalPeriod
             return HistoricalPeriodMatch.EntirelyContained;
         }
 
+        if (this.HasDefiniteOverlap(instantEnvelope))
+        {
+            return HistoricalPeriodMatch.DefinitePartialOverlap;
+        }
+
         return HistoricalPeriodMatch.PossibleOverlap;
     }
 
@@ -130,6 +135,11 @@ public sealed record HistoricalPeriod
         if (this.Start is not null)
         {
             if (this.StartConfidence != PeriodBoundaryConfidence.Confirmed)
+            {
+                return false;
+            }
+
+            if (this.Start.IsApproximate)
             {
                 return false;
             }
@@ -152,6 +162,11 @@ public sealed record HistoricalPeriod
                 return false;
             }
 
+            if (this.End.IsApproximate)
+            {
+                return false;
+            }
+
             DateOnly? earliestPossibleEnd = this.End.GetEnvelope().EarliestPossibleDate;
             if (!earliestPossibleEnd.HasValue
                 || !instantEnvelope.LatestPossibleDate.HasValue
@@ -164,6 +179,59 @@ public sealed record HistoricalPeriod
         }
 
         return true;
+    }
+
+    private bool HasDefiniteOverlap(HistoricalDateEnvelope instantEnvelope)
+    {
+        if (this.Ordering == HistoricalPeriodOrdering.Ambiguous
+            || (this.Start is not null
+                && (this.StartConfidence != PeriodBoundaryConfidence.Confirmed
+                    || this.Start.IsApproximate))
+            || (this.End is not null
+                && (this.EndConfidence != PeriodBoundaryConfidence.Confirmed
+                    || this.End.IsApproximate)))
+        {
+            return false;
+        }
+
+        if (this.IsPoint)
+        {
+            HistoricalDateEnvelope pointEnvelope = this.Start!.GetEnvelope();
+            return instantEnvelope.EarliestPossibleDate.HasValue
+                && instantEnvelope.LatestPossibleDate.HasValue
+                && pointEnvelope.EarliestPossibleDate.HasValue
+                && pointEnvelope.LatestPossibleDate.HasValue
+                && instantEnvelope.EarliestPossibleDate.Value
+                    <= pointEnvelope.EarliestPossibleDate.Value
+                && instantEnvelope.LatestPossibleDate.Value
+                    >= pointEnvelope.LatestPossibleDate.Value;
+        }
+
+        DateOnly? certainStart = this.Start?.GetEnvelope().LatestPossibleDate;
+        if (this.Start is not null && !certainStart.HasValue)
+        {
+            return false;
+        }
+
+        DateOnly? certainEnd = this.End?.GetEnvelope().EarliestPossibleDate;
+        if (this.End is not null && !certainEnd.HasValue)
+        {
+            return false;
+        }
+
+        if (certainStart.HasValue
+            && certainEnd.HasValue
+            && certainEnd.Value < certainStart.Value)
+        {
+            return false;
+        }
+
+        HistoricalDateEnvelope certainCoverage = new HistoricalDateEnvelope(
+            certainStart,
+            certainEnd,
+            false);
+
+        return certainCoverage.Overlaps(instantEnvelope);
     }
 
     private static HistoricalPeriodOrdering ResolveOrdering(

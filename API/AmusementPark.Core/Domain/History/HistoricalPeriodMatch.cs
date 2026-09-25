@@ -7,5 +7,6 @@ public enum HistoricalPeriodMatch
 {
     Outside = 1,
     PossibleOverlap = 2,
-    EntirelyContained = 3,
+    DefinitePartialOverlap = 3,
+    EntirelyContained = 4,
 }

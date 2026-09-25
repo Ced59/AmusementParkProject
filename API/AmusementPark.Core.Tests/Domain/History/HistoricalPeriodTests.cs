@@ -96,11 +96,35 @@ public sealed class HistoricalPeriodTests
     }
 
     [Fact]
-    public void Match_WhenPointFallsInsideRequestedYear_ShouldReturnPossibleOverlap()
+    public void Match_WhenConfirmedPointFallsInsideRequestedYear_ShouldReturnDefinitePartialOverlap()
     {
         HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
 
         HistoricalPeriodMatch match = period.Match(HistoricalInstant.ForYear(1998));
+
+        Assert.Equal(HistoricalPeriodMatch.DefinitePartialOverlap, match);
+    }
+
+    [Fact]
+    public void Match_WhenConfirmedPeriodCoversOnlyPartOfRequestedYear_ShouldReturnDefinitePartialOverlap()
+    {
+        HistoricalPeriod period = new HistoricalPeriod(
+            HistoricalDate.ForDay(1998, 5, 1),
+            HistoricalDate.ForDay(1998, 5, 10),
+            PeriodBoundaryConfidence.Confirmed,
+            PeriodBoundaryConfidence.Confirmed);
+
+        HistoricalPeriodMatch match = period.Match(HistoricalInstant.ForYear(1998));
+
+        Assert.Equal(HistoricalPeriodMatch.DefinitePartialOverlap, match);
+    }
+
+    [Fact]
+    public void Match_WhenYearPrecisionPointIsQueriedByMonth_ShouldRemainPossible()
+    {
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(1998));
+
+        HistoricalPeriodMatch match = period.Match(HistoricalInstant.ForMonth(1998, 5));
 
         Assert.Equal(HistoricalPeriodMatch.PossibleOverlap, match);
     }
@@ -162,7 +186,7 @@ public sealed class HistoricalPeriodTests
             HistoricalInstant.ForDay(1998, 5, 13));
 
         Assert.Equal(HistoricalPeriodMatch.PossibleOverlap, boundaryMatch);
-        Assert.Equal(HistoricalPeriodMatch.EntirelyContained, followingDayMatch);
+        Assert.Equal(HistoricalPeriodMatch.PossibleOverlap, followingDayMatch);
     }
 
     [Fact]
@@ -177,7 +201,7 @@ public sealed class HistoricalPeriodTests
             HistoricalInstant.ForDay(2004, 7, 31));
 
         Assert.Equal(HistoricalPeriodMatch.PossibleOverlap, boundaryMatch);
-        Assert.Equal(HistoricalPeriodMatch.EntirelyContained, precedingDayMatch);
+        Assert.Equal(HistoricalPeriodMatch.PossibleOverlap, precedingDayMatch);
     }
 
     [Fact]
