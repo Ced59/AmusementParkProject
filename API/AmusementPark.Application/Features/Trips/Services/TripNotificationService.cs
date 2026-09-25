@@ -65,6 +65,14 @@ public sealed class TripNotificationService
             access.Trip.Id,
             access.UserId,
             cancellationToken);
+        if (current is not null && current.MemberId != access.Member.Id)
+        {
+            await this.subscriptions.DeleteForMemberAsync(
+                access.Trip.Id,
+                access.UserId,
+                CancellationToken.None);
+            current = null;
+        }
         if (current is null)
         {
             if (expectedVersion != 0)
@@ -83,6 +91,7 @@ public sealed class TripNotificationService
                 cancellationToken);
             current = TripNotificationSubscription.CreateEnabled(
                 access.Trip.Id,
+                access.Member.Id,
                 access.UserId,
                 latestSequence,
                 this.timeProvider.GetUtcNow().UtcDateTime);
@@ -158,7 +167,9 @@ public sealed class TripNotificationService
             access.Trip.Id,
             access.UserId,
             cancellationToken);
-        if (current is null || !current.IsEnabled)
+        if (current is null
+            || current.MemberId != access.Member.Id
+            || !current.IsEnabled)
         {
             return ApplicationResult<TripNotificationStateResult>.Failure(
                 TripPlanApplicationErrors.NotificationsDisabled());
@@ -204,11 +215,15 @@ public sealed class TripNotificationService
         TripNotificationSubscription? subscription,
         CancellationToken cancellationToken)
     {
-        if (subscription is null || !subscription.IsEnabled)
+        if (subscription is null
+            || subscription.MemberId != access.Member.Id
+            || !subscription.IsEnabled)
         {
             return new TripNotificationStateResult(
                 false,
-                subscription?.Version ?? 0,
+                subscription is not null && subscription.MemberId == access.Member.Id
+                    ? subscription.Version
+                    : 0,
                 0,
                 false);
         }

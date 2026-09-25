@@ -126,12 +126,24 @@ public sealed class TripPilotMetricsRepository : ITripPilotMetricsRepository
         FilterDefinition<TDocument> filter,
         CancellationToken cancellationToken)
     {
-        List<string> ids = await collection.Distinct<string>(
-                "tripPlanId",
-                filter,
-                cancellationToken: cancellationToken)
-            .ToListAsync(cancellationToken);
-        return ids.Count;
+        BsonDocument renderedFilter = filter.Render(new RenderArgs<TDocument>(
+            collection.DocumentSerializer,
+            collection.Settings.SerializerRegistry));
+        BsonDocument? result = await collection.Aggregate<BsonDocument>(
+                BuildDistinctTripCountPipeline(renderedFilter))
+            .FirstOrDefaultAsync(cancellationToken);
+        return result is null ? 0 : result["count"].ToInt64();
+    }
+
+    internal static BsonDocument[] BuildDistinctTripCountPipeline(BsonDocument matchFilter)
+    {
+        ArgumentNullException.ThrowIfNull(matchFilter);
+        return new[]
+        {
+            new BsonDocument("$match", matchFilter),
+            new BsonDocument("$group", new BsonDocument("_id", "$tripPlanId")),
+            new BsonDocument("$count", "count"),
+        };
     }
 
     private static async Task<long> CountPendingAuditMarkersAsync<TDocument>(

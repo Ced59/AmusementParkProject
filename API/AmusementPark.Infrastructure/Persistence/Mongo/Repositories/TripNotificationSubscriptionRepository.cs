@@ -166,6 +166,7 @@ public sealed class TripNotificationSubscriptionRepository
         return TripNotificationSubscription.Restore(
             document.Id,
             TripPlanId.Parse(document.TripPlanId),
+            TripMemberId.Parse(document.MemberId),
             document.UserId,
             document.IsEnabled,
             document.SeenThroughSequence,
@@ -181,6 +182,7 @@ public sealed class TripNotificationSubscriptionRepository
         {
             Id = subscription.Id,
             TripPlanId = subscription.TripPlanId.Value,
+            MemberId = subscription.MemberId.Value,
             UserId = subscription.UserId,
             IsEnabled = subscription.IsEnabled,
             SeenThroughSequence = subscription.SeenThroughSequence,

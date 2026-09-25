@@ -53,7 +53,8 @@ donc ni dupliquée dans MongoDB, ni décidée par le contrôleur ou Angular.
 ### Core
 
 `TripNotificationSubscription` porte les invariants : abonnement individuel,
-curseur monotone, activation sans historique rétroactif et version optimiste.
+identité exacte de l’appartenance, curseur monotone, activation sans historique
+rétroactif et version optimiste.
 `TripNotificationPolicy` centralise les types d’activité significatifs et borne
 le compteur visible à 99, avec un indicateur `99+`.
 
@@ -85,8 +86,10 @@ la preuve canonique. Ce choix réduit les écritures, la rétention et la charge
 VPS.
 
 Le tableau de bord utilise des comptages MongoDB, deux lectures distinctes de
-clés de voyage et des agrégations par groupe. Il ne charge aucun document métier
-complet et ne déclenche aucune requête par voyage ou par membre.
+voyages effectuées par des agrégations `group/count` côté serveur et des
+agrégations par type d’activité. Il ne rapatrie ni les identifiants distincts,
+ni aucun document métier complet, et ne déclenche aucune requête par voyage ou
+par membre.
 
 La lecture est bornée à 100 événements (`99 + preuve qu’il en reste`) et utilise
 les index du journal sur `tripPlanId`, `sequence` et `createdAt`. La séquence
@@ -133,6 +136,7 @@ comptes ou les textes privés.
 trip-notification-subscriptions {
   _id: string,                 // opaque, jamais exposé
   tripPlanId: string,          // clé du voyage privé
+  memberId: string,            // appartenance précise ayant activé le suivi
   userId: string,              // propriétaire de l’opt-in
   isEnabled: boolean,
   seenThroughSequence: long,   // dernière séquence globale reconnue
@@ -169,6 +173,7 @@ classDiagram
     class MarkTripNotificationsReadCommandHandler
     class TripNotificationService
     class TripNotificationSubscription {
+      +MemberId TripMemberId
       +IsEnabled bool
       +SeenThroughSequence long
       +Version long
@@ -284,9 +289,11 @@ Une seconde protection traite la course plus rare où le départ ou la suppressi
 du voyage se termine juste avant la création de l’abonnement, puis où sa
 compensation MongoDB échoue. Le document d’abonnement lui-même sert alors de
 marqueur durable. Un réconciliateur parcourt au plus 25 abonnements par minute,
-par identifiant opaque croissant, revérifie l’accès actif et supprime uniquement
-les documents devenus inaccessibles. Son curseur n’avance qu’après la réussite
-complète du lot ; un échec rejoue donc la même page, et la fin de collection
+par identifiant opaque croissant, revérifie l’accès actif et l’identifiant exact
+de l’appartenance qui avait consenti au suivi, puis supprime les documents
+devenus inaccessibles ou rattachés à une ancienne appartenance. Une réadmission
+ultérieure repart donc toujours désactivée. Son curseur n’avance qu’après la
+réussite complète du lot ; un échec rejoue la même page, et la fin de collection
 ramène le prochain passage au début. Ce balayage borné évite une collection
 secondaire, une charge soudaine et tout abandon silencieux après redémarrage.
 
@@ -340,14 +347,15 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
 ## 11. Preuves
 
 - 7 tests Core : activation, réactivation, curseur monotone et politique ;
-- 10 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
+- 12 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
   concurrence, compensations de départ/annulation, réconciliation des
-  abonnements orphelins et métriques agrégées sans contenu privé ;
-- 22 tests Application du périmètre : notifications, départ, reprise de purge
+  abonnements orphelins ou issus d’une ancienne appartenance et métriques
+  agrégées sans contenu privé ;
+- 24 tests Application du périmètre : notifications, départ, reprise de purge
   et pilotage ;
-- 19 tests Infrastructure du périmètre : index, pagination de purge, clôture
-  d’admission pendant une purge, filtre privé, agrégations et
-  résolution du nettoyage en tâche de fond ;
+- 20 tests Infrastructure du périmètre : index, pagination de purge, clôture
+  d’admission pendant une purge, filtre privé, comptages scalaires et
+  agrégations, résolution du nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;
 - 20 tests Angular ciblés : façades, effet sans polling, réponse tardive
   neutralisée, libellés agrégés, navigation admin et contrats responsive ;

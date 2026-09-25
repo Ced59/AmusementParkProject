@@ -9,6 +9,9 @@ public sealed class TripNotificationSubscriptionDocument : MongoDocumentBase
     [BsonElement("tripPlanId")]
     public string TripPlanId { get; set; } = string.Empty;
 
+    [BsonElement("memberId")]
+    public string MemberId { get; set; } = string.Empty;
+
     [BsonElement("userId")]
     public string UserId { get; set; } = string.Empty;
 

@@ -25,10 +25,12 @@ public sealed class TripNotificationCleanupReconcilerTests
         TripNotificationSubscription accessible = Subscription(
             "subscription-a",
             accessibleTrip.Id,
+            Assert.Single(accessibleTrip.Members).Id,
             "user-1");
         TripNotificationSubscription orphan = Subscription(
             "subscription-b",
             TripPlanId.Parse("trip-2"),
+            TripMemberId.Parse("departed-member"),
             "user-2");
         Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
         subscriptions.Setup(repository => repository.ListForCleanupAsync(
@@ -74,6 +76,7 @@ public sealed class TripNotificationCleanupReconcilerTests
         TripNotificationSubscription orphan = Subscription(
             "subscription-a",
             TripPlanId.Parse("trip-2"),
+            TripMemberId.Parse("departed-member"),
             "user-2");
         Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
         subscriptions.Setup(repository => repository.ListForCleanupAsync(
@@ -105,14 +108,63 @@ public sealed class TripNotificationCleanupReconcilerTests
         subscriptions.VerifyAll();
     }
 
+    [Fact]
+    public async Task ReconcileAsync_ShouldDeleteSubscriptionFromAPreviousMembership()
+    {
+        TripPlan currentTrip = TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "user-1",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            NowUtc);
+        TripNotificationSubscription stale = Subscription(
+            "subscription-a",
+            currentTrip.Id,
+            TripMemberId.Parse("previous-membership"),
+            currentTrip.OwnerUserId);
+        Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListForCleanupAsync(
+                null,
+                25,
+                CancellationToken.None))
+            .ReturnsAsync(new[] { stale });
+        subscriptions.Setup(repository => repository.DeleteForMemberAsync(
+                stale.TripPlanId,
+                stale.UserId,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        plans.Setup(repository => repository.GetAccessibleAsync(
+                stale.UserId,
+                stale.TripPlanId,
+                CancellationToken.None))
+            .ReturnsAsync(currentTrip);
+        TripNotificationCleanupReconciler reconciler = new(
+            plans.Object,
+            subscriptions.Object);
+
+        TripNotificationCleanupBatchResult result = await reconciler.ReconcileAsync(
+            null,
+            25,
+            CancellationToken.None);
+
+        Assert.Equal(1, result.DeletedCount);
+        Assert.Null(result.NextCursor);
+        plans.VerifyAll();
+        subscriptions.VerifyAll();
+    }
+
     private static TripNotificationSubscription Subscription(
         string id,
         TripPlanId tripPlanId,
+        TripMemberId memberId,
         string userId)
     {
         return TripNotificationSubscription.Restore(
             id,
             tripPlanId,
+            memberId,
             userId,
             true,
             0,

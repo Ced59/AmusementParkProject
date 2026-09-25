@@ -38,7 +38,14 @@ public sealed class TripNotificationCleanupReconciler
                 subscription.UserId,
                 subscription.TripPlanId,
                 cancellationToken);
-            if (accessible is not null)
+            bool ownsSubscription = accessible?.Members.Any(member =>
+                member.State == TripMembershipState.Active
+                && member.Id == subscription.MemberId
+                && string.Equals(
+                    member.UserId,
+                    subscription.UserId,
+                    StringComparison.Ordinal)) == true;
+            if (ownsSubscription)
             {
                 continue;
             }

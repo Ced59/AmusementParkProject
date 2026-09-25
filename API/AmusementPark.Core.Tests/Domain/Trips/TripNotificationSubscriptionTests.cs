@@ -12,11 +12,13 @@ public sealed class TripNotificationSubscriptionTests
 
         TripNotificationSubscription subscription = TripNotificationSubscription.CreateEnabled(
             TripPlanId.Parse("trip-1"),
+            TripMemberId.Parse("member-1"),
             "user-1",
             12,
             nowUtc);
 
         Assert.True(subscription.IsEnabled);
+        Assert.Equal(TripMemberId.Parse("member-1"), subscription.MemberId);
         Assert.Equal(12, subscription.SeenThroughSequence);
         Assert.Equal(1, subscription.Version);
     }
@@ -27,6 +29,7 @@ public sealed class TripNotificationSubscriptionTests
         DateTime nowUtc = new DateTime(2027, 4, 5, 10, 0, 0, DateTimeKind.Utc);
         TripNotificationSubscription subscription = TripNotificationSubscription.CreateEnabled(
             TripPlanId.Parse("trip-1"),
+            TripMemberId.Parse("member-1"),
             "user-1",
             4,
             nowUtc);
@@ -45,6 +48,7 @@ public sealed class TripNotificationSubscriptionTests
         DateTime nowUtc = new DateTime(2027, 4, 5, 10, 0, 0, DateTimeKind.Utc);
         TripNotificationSubscription subscription = TripNotificationSubscription.CreateEnabled(
             TripPlanId.Parse("trip-1"),
+            TripMemberId.Parse("member-1"),
             "user-1",
             7,
             nowUtc);

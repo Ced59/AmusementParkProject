@@ -7,6 +7,7 @@ public sealed class TripNotificationSubscription
     private TripNotificationSubscription(
         string id,
         TripPlanId tripPlanId,
+        TripMemberId memberId,
         string userId,
         bool isEnabled,
         long seenThroughSequence,
@@ -16,6 +17,7 @@ public sealed class TripNotificationSubscription
     {
         this.Id = IdentifierRules.NormalizeRequired(id, nameof(id));
         _ = tripPlanId.Value;
+        _ = memberId.Value;
         this.UserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
         if (seenThroughSequence < 0
             || version < 1
@@ -29,6 +31,7 @@ public sealed class TripNotificationSubscription
         }
 
         this.TripPlanId = tripPlanId;
+        this.MemberId = memberId;
         this.IsEnabled = isEnabled;
         this.SeenThroughSequence = seenThroughSequence;
         this.CreatedAtUtc = createdAtUtc;
@@ -39,6 +42,8 @@ public sealed class TripNotificationSubscription
     public string Id { get; }
 
     public TripPlanId TripPlanId { get; }
+
+    public TripMemberId MemberId { get; }
 
     public string UserId { get; }
 
@@ -54,6 +59,7 @@ public sealed class TripNotificationSubscription
 
     public static TripNotificationSubscription CreateEnabled(
         TripPlanId tripPlanId,
+        TripMemberId memberId,
         string userId,
         long currentSequence,
         DateTime nowUtc)
@@ -61,6 +67,7 @@ public sealed class TripNotificationSubscription
         return new TripNotificationSubscription(
             Guid.NewGuid().ToString("N"),
             tripPlanId,
+            memberId,
             userId,
             true,
             currentSequence,
@@ -72,6 +79,7 @@ public sealed class TripNotificationSubscription
     public static TripNotificationSubscription Restore(
         string id,
         TripPlanId tripPlanId,
+        TripMemberId memberId,
         string userId,
         bool isEnabled,
         long seenThroughSequence,
@@ -82,6 +90,7 @@ public sealed class TripNotificationSubscription
         return new TripNotificationSubscription(
             id,
             tripPlanId,
+            memberId,
             userId,
             isEnabled,
             seenThroughSequence,
