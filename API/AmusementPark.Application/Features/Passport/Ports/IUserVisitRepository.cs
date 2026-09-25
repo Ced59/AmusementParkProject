@@ -43,6 +43,11 @@ public interface IUserVisitRepository
         IReadOnlyCollection<string> clientOperationIds,
         CancellationToken cancellationToken);
 
+    Task ReleaseDeletedCreationOperationAsync(
+        string userId,
+        string clientOperationId,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,

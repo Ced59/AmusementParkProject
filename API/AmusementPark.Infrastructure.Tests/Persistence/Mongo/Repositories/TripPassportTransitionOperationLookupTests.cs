@@ -46,6 +46,34 @@ public sealed class TripPassportTransitionOperationLookupTests
     }
 
     [Fact]
+    public void DeletedCreationRelease_ShouldTargetOnlyTheOwnedTombstoneAndClearItsKey()
+    {
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildDeletedCreationOperationFilter(
+                " user-1 ",
+                " operation-hash ");
+        UpdateDefinition<UserVisitDocument> update =
+            UserVisitMongoDefinitions.BuildReleaseCreationOperationUpdate();
+
+        BsonDocument renderedFilter = Render(filter);
+        BsonDocument renderedUpdate = Render(update);
+
+        Assert.Equal("user-1", renderedFilter["userId"].AsString);
+        Assert.Equal(
+            "operation-hash",
+            renderedFilter["creationOperationKeyHash"].AsString);
+        Assert.True(renderedFilter.Contains("deletedAtUtc"));
+        Assert.Equal(
+            new[]
+            {
+                "creationOperationKeyHash",
+                "creationPayloadHash",
+                "creationSnapshot",
+            },
+            renderedUpdate["$unset"].AsBsonDocument.Names);
+    }
+
+    [Fact]
     public void RideLookup_ShouldReturnOnlyResumableOrCompletedCreationOperations()
     {
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
@@ -78,5 +106,14 @@ public sealed class TripPassportTransitionOperationLookupTests
         return filter.Render(new RenderArgs<TDocument>(
             serializer,
             BsonSerializer.SerializerRegistry));
+    }
+
+    private static BsonDocument Render<TDocument>(UpdateDefinition<TDocument> update)
+    {
+        IBsonSerializer<TDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<TDocument>();
+        return update.Render(new RenderArgs<TDocument>(
+            serializer,
+            BsonSerializer.SerializerRegistry)).AsBsonDocument;
     }
 }

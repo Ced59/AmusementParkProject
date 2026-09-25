@@ -209,6 +209,26 @@ internal static class UserVisitMongoDefinitions
                 NormalizeRequired(operationKeyHash, nameof(operationKeyHash)));
     }
 
+    public static FilterDefinition<UserVisitDocument> BuildDeletedCreationOperationFilter(
+        string userId,
+        string operationKeyHash)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return BuildCreationOperationFilter(userId, operationKeyHash)
+            & filters.Ne<DateTime?>(DeletedAtUtcPath, null);
+    }
+
+    public static UpdateDefinition<UserVisitDocument> BuildReleaseCreationOperationUpdate()
+    {
+        UpdateDefinitionBuilder<UserVisitDocument> updates =
+            Builders<UserVisitDocument>.Update;
+        return updates.Combine(
+            updates.Unset(static document => document.CreationOperationKeyHash),
+            updates.Unset(static document => document.CreationPayloadHash),
+            updates.Unset(static document => document.CreationSnapshot));
+    }
+
     public static FilterDefinition<UserVisitDocument> BuildOwnedCreationOperationsFilter(
         string userId,
         IReadOnlyCollection<string> operationKeyHashes)

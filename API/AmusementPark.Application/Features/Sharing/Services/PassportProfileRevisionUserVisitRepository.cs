@@ -95,6 +95,17 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
             cancellationToken);
     }
 
+    public Task ReleaseDeletedCreationOperationAsync(
+        string userId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.ReleaseDeletedCreationOperationAsync(
+            userId,
+            clientOperationId,
+            cancellationToken);
+    }
+
     public Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,

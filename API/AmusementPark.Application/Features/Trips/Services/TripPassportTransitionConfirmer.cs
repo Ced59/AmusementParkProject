@@ -118,17 +118,51 @@ public sealed class TripPassportTransitionConfirmer
             parsedTripId.Value,
             normalizedUserId,
             localDate);
-        if (existingVisit is not null
-            && !await this.IsTransitionCreationAsync(
+        bool isTransitionCreation = existingVisit is not null
+            && await this.IsTransitionCreationAsync(
                 trip,
                 day,
+                existingVisit,
                 normalizedUserId,
                 localDate,
                 visitOperationId,
-                cancellationToken))
+                cancellationToken);
+        if (existingVisit is not null && !isTransitionCreation)
         {
             return ApplicationResult<ConfirmTripPassportTransitionResult>.Success(
                 new ConfirmTripPassportTransitionResult(existingVisit.Id.Value, true, 0));
+        }
+
+        string rideOperationId = TripPassportTransitionOperationKeys.Rides(
+            parsedTripId.Value,
+            normalizedUserId,
+            localDate);
+        RideOccurrenceBatchCreationOperationState? existingRideOperation = null;
+        if (isTransitionCreation)
+        {
+            IReadOnlyCollection<RideOccurrenceBatchCreationOperationState> operations =
+                await this.rideOccurrences.ListBatchCreationOperationStatesAsync(
+                    normalizedUserId,
+                    new[] { rideOperationId },
+                    cancellationToken);
+            existingRideOperation = operations.SingleOrDefault();
+            if (existingRideOperation?.IsCompleted == true)
+            {
+                return ApplicationResult<ConfirmTripPassportTransitionResult>.Success(
+                    new ConfirmTripPassportTransitionResult(existingVisit!.Id.Value, true, 0));
+            }
+
+            if (existingRideOperation is not null)
+            {
+                normalizedItemIds = existingRideOperation.ParkItemIds.ToArray();
+            }
+        }
+        else
+        {
+            await this.visits.ReleaseDeletedCreationOperationAsync(
+                normalizedUserId,
+                visitOperationId,
+                cancellationToken);
         }
 
         IReadOnlyCollection<ParkItem> dayItems = await this.parkItems.GetByParkIdAsync(
@@ -141,7 +175,8 @@ public sealed class TripPassportTransitionConfirmer
                 && !string.IsNullOrWhiteSpace(item.Id))
             .Select(static item => item.Id!)
             .ToHashSet(StringComparer.Ordinal);
-        if (normalizedItemIds.Any(itemId => !selectableIds.Contains(itemId)))
+        if (existingRideOperation is null
+            && normalizedItemIds.Any(itemId => !selectableIds.Contains(itemId)))
         {
             return Failure(TripPlanApplicationErrors.PassportTransitionInvalidSelection());
         }
@@ -175,10 +210,6 @@ public sealed class TripPassportTransitionConfirmer
             cancellationToken);
         if (currentVisit?.Status == VisitStatus.Draft)
         {
-            string rideOperationId = TripPassportTransitionOperationKeys.Rides(
-                parsedTripId.Value,
-                normalizedUserId,
-                localDate);
             if (normalizedItemIds.Length > 0)
             {
                 AddRideOccurrencesBatchCommand addRidesCommand =
@@ -227,6 +258,7 @@ public sealed class TripPassportTransitionConfirmer
     private async Task<bool> IsTransitionCreationAsync(
         TripPlan trip,
         TripDayPlanResult day,
+        Visit existingVisit,
         string userId,
         DateOnly localDate,
         string visitOperationId,
@@ -247,7 +279,7 @@ public sealed class TripPassportTransitionConfirmer
                 requestedVisit,
                 visitOperationId,
                 cancellationToken);
-        return existingTransition is not null;
+        return existingTransition?.Visit?.Id == existingVisit.Id;
     }
 
     private bool TryResolveDestinationToday(TripPlan trip, out DateOnly destinationToday)

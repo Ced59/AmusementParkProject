@@ -295,6 +295,13 @@ public sealed class TripPassportTransitionServiceTests
                 It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<Visit>());
+        visits.Setup(repository => repository.ReleaseDeletedCreationOperationAsync(
+                trip.OwnerUserId,
+                It.Is<string>(operationId => operationId.StartsWith(
+                    "trip-passport-visit:",
+                    StringComparison.Ordinal)),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         visits.Setup(repository => repository.GetOwnedAsync(
                 visitId,
                 trip.OwnerUserId,
@@ -417,6 +424,13 @@ public sealed class TripPassportTransitionServiceTests
                 It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<Visit>());
+        visits.Setup(repository => repository.ReleaseDeletedCreationOperationAsync(
+                trip.OwnerUserId,
+                It.Is<string>(operationId => operationId.StartsWith(
+                    "trip-passport-visit:",
+                    StringComparison.Ordinal)),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
         visits.Setup(repository => repository.GetOwnedAsync(
                 visitId,
                 trip.OwnerUserId,
@@ -497,7 +511,7 @@ public sealed class TripPassportTransitionServiceTests
     }
 
     [Fact]
-    public async Task ConfirmAsync_WhenVisitCreationSucceededBeforeARideFailure_ShouldResumeTheSameDraft()
+    public async Task ConfirmAsync_WhenReservedAttractionIsNoLongerVisible_ShouldResumePersistedSelection()
     {
         DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
         DateOnly visitDate = new(2027, 8, 20);
@@ -524,7 +538,7 @@ public sealed class TripPassportTransitionServiceTests
                 "park-1",
                 false,
                 CancellationToken.None))
-            .ReturnsAsync(new[] { selectedAttraction });
+            .ReturnsAsync(Array.Empty<ParkItem>());
         Mock<IUserVisitRepository> visits = new(MockBehavior.Strict);
         visits.Setup(repository => repository.ListOwnedByExactDatesAsync(
                 trip.OwnerUserId,
@@ -578,6 +592,23 @@ public sealed class TripPassportTransitionServiceTests
             .ReturnsAsync(ApplicationResult<CreateRideOccurrencesResult>.Success(
                 new CreateRideOccurrencesResult(Array.Empty<RideOccurrenceResult>(), true, false)));
         Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
+        rideOccurrences.Setup(repository => repository.ListBatchCreationOperationStatesAsync(
+                trip.OwnerUserId,
+                It.Is<IReadOnlyCollection<string>>(operationIds =>
+                    operationIds.Single().StartsWith(
+                        "trip-passport-rides:",
+                        StringComparison.Ordinal)),
+                CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                new RideOccurrenceBatchCreationOperationState(
+                    TripPassportTransitionOperationKeys.Rides(
+                        trip.Id.Value,
+                        trip.OwnerUserId,
+                        visitDate),
+                    false,
+                    new[] { selectedAttraction.Id! }),
+            });
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
         TripPassportTransitionConfirmer confirmer = new(
@@ -599,7 +630,7 @@ public sealed class TripPassportTransitionServiceTests
             trip.OwnerUserId,
             trip.Id.Value,
             visitDate,
-            new[] { selectedAttraction.Id! },
+            Array.Empty<string>(),
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);
@@ -608,6 +639,7 @@ public sealed class TripPassportTransitionServiceTests
         visits.VerifyAll();
         createVisit.VerifyAll();
         addRides.VerifyAll();
+        rideOccurrences.VerifyAll();
         trips.VerifyAll();
         candidates.VerifyAll();
         dayPlans.VerifyAll();

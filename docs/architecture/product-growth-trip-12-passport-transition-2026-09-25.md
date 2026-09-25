@@ -88,6 +88,9 @@ exactement la sélection après une coupure. Une confirmation volontairement
 vide écrit un marqueur de fin sans créer de passage. Ces opérations réutilisent
 les index d’idempotence existants et ne chargent ni notes privées ni contenu de
 visite. Les recherches par date excluent toujours les visites supprimées.
+Lorsqu’un ancien brouillon TRIP-12 a lui-même été supprimé, sa clé de création
+est libérée atomiquement du tombstone avant la nouvelle création : l’historique
+supprimé reste conservé, mais ne peut ni être rejoué ni bloquer l’index unique.
 
 ### WebAPI
 
@@ -130,6 +133,7 @@ classDiagram
       +ListOwnedCreationOperationVisitIdsAsync(userId, operationIds)
       +ResolveExistingCreationAsync(visit, operationId)
       +GetOwnedAsync(visitId, userId)
+      +ReleaseDeletedCreationOperationAsync(userId, operationId)
     }
     class IRideOccurrenceRepository {
       +ListBatchCreationOperationStatesAsync(userId, operationIds)
@@ -220,7 +224,8 @@ sequenceDiagram
 
     Note over APP,DB: Si la visite a été créée mais que le batch échoue,
     Note over APP,DB: un rechargement reconnaît les marqueurs groupés,
-    Note over APP,DB: restaure la sélection réservée et reprend le même brouillon.
+    Note over APP,DB: le serveur rejoue directement la sélection réservée,
+    Note over APP,DB: même si une attraction a depuis été masquée ou déplacée.
 ```
 
 Les clés d’opération sont dérivées par SHA-256 de l’identifiant du voyage, du
@@ -307,6 +312,8 @@ participant.
 | reprise après échec partiel | lectures groupées des empreintes et de l’état du batch, restauration verrouillée des identifiants réservés, exposition `canResume`, puis replay du même brouillon |
 | sélection vide réellement terminée | marqueur idempotent `completed` sans occurrence, relu comme une fin et non comme une reprise |
 | suppression sans blocage fantôme | le filtre exact propriétaire/date exclut les documents avec tombstone |
+| suppression d’un brouillon TRIP-12 | libération ciblée de son ancienne clé avant insert ; le tombstone n’est ni restauré ni supprimé physiquement |
+| catalogue modifié après réservation | le serveur reprend le payload réservé complet sans le reconstruire depuis les seules attractions encore visibles |
 | pas de fuite SSR/cache | route authentifiée et réponse `no-store` |
 | plan conservé | aucune mutation ou suppression du voyage pendant la transition |
 
@@ -331,7 +338,8 @@ dépassements horizontaux et le dégagement de la navigation mobile.
   sélection explicite, reprise avec sélection restaurée, lot déjà finalisé et
   confirmation vide marquée comme terminée ;
 - tests Infrastructure : requêtes bornées au propriétaire, aux empreintes
-  demandées, aux états de création utiles et exclusion des visites supprimées ;
+  demandées, aux états de création utiles, exclusion des visites supprimées et
+  libération ciblée de leur ancienne clé ;
 - tests Angular : endpoints, filtrage défensif de la facade, erreur de
   confirmation, route authentifiée ;
 - contrat responsive statique ;

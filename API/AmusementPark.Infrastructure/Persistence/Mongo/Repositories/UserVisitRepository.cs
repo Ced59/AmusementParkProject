@@ -218,6 +218,22 @@ public sealed class UserVisitRepository : IUserVisitRepository
         return visitIds.Select(VisitId.Parse).Distinct().ToArray();
     }
 
+    public async Task ReleaseDeletedCreationOperationAsync(
+        string userId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string operationKeyHash = UserVisitCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        await this.collection.UpdateOneAsync(
+            UserVisitMongoDefinitions.BuildDeletedCreationOperationFilter(
+                normalizedUserId,
+                operationKeyHash),
+            UserVisitMongoDefinitions.BuildReleaseCreationOperationUpdate(),
+            cancellationToken: cancellationToken);
+    }
+
     public async Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,
