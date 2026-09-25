@@ -86,6 +86,37 @@ describe('TripNotificationFacade', () => {
     expect(facade.error()).toBe(true);
     expect(facade.loading()).toBe(false);
   });
+
+  it('lets a different trip supersede an in-flight load', () => {
+    const tripA: Subject<TripNotificationState> = new Subject<TripNotificationState>();
+    const tripB: Subject<TripNotificationState> = new Subject<TripNotificationState>();
+    const stateA: TripNotificationState = state(false, 1, 0);
+    const stateB: TripNotificationState = state(false, 3, 0);
+    const enabledB: TripNotificationState = state(true, 4, 0);
+    const data: TripNotificationDataPort = {
+      get: vi.fn()
+        .mockReturnValueOnce(tripA)
+        .mockReturnValueOnce(tripB),
+      setEnabled: vi.fn().mockReturnValue(of(enabledB)),
+      markRead: vi.fn()
+    };
+    const facade: TripNotificationFacade = createFacade(data);
+
+    facade.load('trip-a');
+    facade.load('trip-b');
+    tripB.next(stateB);
+    tripB.complete();
+    tripA.next(stateA);
+    tripA.complete();
+    facade.toggle();
+
+    expect(facade.state()).toEqual(enabledB);
+    expect(facade.loading()).toBe(false);
+    expect(data.setEnabled).toHaveBeenCalledWith('trip-b', {
+      enabled: true,
+      expectedVersion: 3
+    });
+  });
 });
 
 function createFacade(data: TripNotificationDataPort): TripNotificationFacade {

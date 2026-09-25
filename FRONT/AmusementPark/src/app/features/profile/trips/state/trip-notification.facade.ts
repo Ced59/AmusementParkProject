@@ -31,7 +31,7 @@ export class TripNotificationFacade {
 
   private loadState(tripPlanId: string, clearError: boolean): void {
     const normalizedId: string = tripPlanId.trim();
-    if (!normalizedId || this.loadingSignal()) {
+    if (!normalizedId || (this.loadingSignal() && normalizedId === this.tripPlanId)) {
       return;
     }
 
