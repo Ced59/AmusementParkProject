@@ -110,7 +110,7 @@
                   class="trip-passport-attraction"
                   [class.trip-passport-attraction--selected]="isSelected(day.localDate, item.parkItemId)"
                   [attr.aria-pressed]="isSelected(day.localDate, item.parkItemId)"
-                  [disabled]="facade.confirmingDate() !== null"
+                  [disabled]="facade.confirmingDate() !== null || day.canResume"
                   (click)="toggle(day.localDate, item)">
                   <span class="trip-passport-attraction__visual">
                     <app-image-display

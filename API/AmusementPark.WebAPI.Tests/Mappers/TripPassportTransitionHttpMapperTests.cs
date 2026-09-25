@@ -33,7 +33,8 @@ public sealed class TripPassportTransitionHttpMapperTests
                             "Taron",
                             "image-1",
                             TripItemPreferenceLevel.MustDo,
-                            HistoricalConsistency.Verified),
+                            HistoricalConsistency.Verified,
+                            true),
                     }),
             });
 
@@ -47,6 +48,7 @@ public sealed class TripPassportTransitionHttpMapperTests
         Assert.Equal("Taron", item.Name);
         Assert.Equal("MustDo", item.OwnPreference);
         Assert.Equal("Verified", item.HistoricalConsistency);
+        Assert.True(item.IsPreselected);
     }
 
     [Fact]

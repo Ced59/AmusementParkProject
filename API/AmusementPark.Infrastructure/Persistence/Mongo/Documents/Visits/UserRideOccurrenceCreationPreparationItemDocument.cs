@@ -11,6 +11,10 @@ public sealed class UserRideOccurrenceCreationPreparationItemDocument
     [BsonElement("index")]
     public int Index { get; set; }
 
+    [BsonElement("parkItemId")]
+    [BsonIgnoreIfNull]
+    public string? ParkItemId { get; set; }
+
     [BsonElement("historicalConsistency")]
     [BsonRepresentation(BsonType.String)]
     public HistoricalConsistency HistoricalConsistency { get; set; }

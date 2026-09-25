@@ -11,4 +11,6 @@ public sealed class TripPassportTransitionItemDto
     public string OwnPreference { get; set; } = string.Empty;
 
     public string HistoricalConsistency { get; set; } = string.Empty;
+
+    public bool IsPreselected { get; set; }
 }

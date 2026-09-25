@@ -31,6 +31,7 @@ public static class TripPassportTransitionHttpMapper
                         MainImageId = item.MainImageId,
                         OwnPreference = item.OwnPreference.ToString(),
                         HistoricalConsistency = item.HistoricalConsistency.ToString(),
+                        IsPreselected = item.IsPreselected,
                     }).ToArray(),
             }).ToArray(),
         };

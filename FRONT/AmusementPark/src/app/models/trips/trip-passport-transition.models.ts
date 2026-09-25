@@ -8,6 +8,7 @@ export interface TripPassportTransitionItem {
   mainImageId: string | null;
   ownPreference: TripPassportPreference;
   historicalConsistency: TripPassportHistoricalConsistency;
+  isPreselected: boolean;
 }
 
 export interface TripPassportTransitionDay {

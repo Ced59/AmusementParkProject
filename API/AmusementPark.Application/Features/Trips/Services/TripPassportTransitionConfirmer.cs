@@ -1,6 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.Passport;
 using AmusementPark.Application.Features.Passport.Commands;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
@@ -21,6 +22,7 @@ public sealed class TripPassportTransitionConfirmer
     private readonly TripProgramResultFactory programFactory;
     private readonly IParkItemRepository parkItems;
     private readonly IUserVisitRepository visits;
+    private readonly IRideOccurrenceRepository rideOccurrences;
     private readonly IPassportLocalDateResolver localDateResolver;
     private readonly ICommandHandler<CreateVisitCommand,
         ApplicationResult<CreateVisitResult>> createVisitHandler;
@@ -33,6 +35,7 @@ public sealed class TripPassportTransitionConfirmer
         TripProgramResultFactory programFactory,
         IParkItemRepository parkItems,
         IUserVisitRepository visits,
+        IRideOccurrenceRepository rideOccurrences,
         IPassportLocalDateResolver localDateResolver,
         ICommandHandler<CreateVisitCommand,
             ApplicationResult<CreateVisitResult>> createVisitHandler,
@@ -44,6 +47,8 @@ public sealed class TripPassportTransitionConfirmer
         this.programFactory = programFactory ?? throw new ArgumentNullException(nameof(programFactory));
         this.parkItems = parkItems ?? throw new ArgumentNullException(nameof(parkItems));
         this.visits = visits ?? throw new ArgumentNullException(nameof(visits));
+        this.rideOccurrences = rideOccurrences
+            ?? throw new ArgumentNullException(nameof(rideOccurrences));
         this.localDateResolver = localDateResolver
             ?? throw new ArgumentNullException(nameof(localDateResolver));
         this.createVisitHandler = createVisitHandler
@@ -164,22 +169,23 @@ public sealed class TripPassportTransitionConfirmer
 
         int addedRideCount = 0;
         bool wasReplayed = visitResult.Value.WasReplayed;
-        if (normalizedItemIds.Length > 0)
+        Visit? currentVisit = await this.visits.GetOwnedAsync(
+            VisitId.Parse(visitResult.Value.Visit.Id),
+            normalizedUserId,
+            cancellationToken);
+        if (currentVisit?.Status == VisitStatus.Draft)
         {
-            Visit? currentVisit = await this.visits.GetOwnedAsync(
-                VisitId.Parse(visitResult.Value.Visit.Id),
+            string rideOperationId = TripPassportTransitionOperationKeys.Rides(
+                parsedTripId.Value,
                 normalizedUserId,
-                cancellationToken);
-            if (currentVisit?.Status == VisitStatus.Draft)
+                localDate);
+            if (normalizedItemIds.Length > 0)
             {
                 AddRideOccurrencesBatchCommand addRidesCommand =
                     new AddRideOccurrencesBatchCommand(
                         normalizedUserId,
                         visitResult.Value.Visit.Id,
-                        TripPassportTransitionOperationKeys.Rides(
-                            parsedTripId.Value,
-                            normalizedUserId,
-                            localDate),
+                        rideOperationId,
                         normalizedItemIds.Select(static itemId =>
                             (RideOccurrenceCreationItem?)new RideOccurrenceCreationItem(
                                 itemId,
@@ -199,6 +205,15 @@ public sealed class TripPassportTransitionConfirmer
 
                 addedRideCount = ridesResult.Value.Occurrences.Count;
                 wasReplayed |= ridesResult.Value.WasReplayed;
+            }
+            else if (!await this.rideOccurrences.CompleteEmptyBatchCreationOperationAsync(
+                normalizedUserId,
+                currentVisit.Id,
+                rideOperationId,
+                this.timeProvider.GetUtcNow().UtcDateTime,
+                cancellationToken))
+            {
+                return Failure(PassportApplicationErrors.RideOccurrenceIdempotencyConflict());
             }
         }
 
@@ -295,6 +310,7 @@ public sealed class TripPassportTransitionConfirmer
         {
             normalizedItemIds = parkItemIds
                 .Select(static itemId => IdentifierRules.NormalizeRequired(itemId, nameof(parkItemIds)))
+                .OrderBy(static itemId => itemId, StringComparer.Ordinal)
                 .ToArray();
             return normalizedItemIds.Distinct(StringComparer.Ordinal).Count()
                 == normalizedItemIds.Length;

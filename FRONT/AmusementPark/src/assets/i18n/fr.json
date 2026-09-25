@@ -1561,7 +1561,7 @@
       "privacyProof": "Les choix et données des autres participants ne sont jamais copiés dans ton Passeport.",
       "alreadyCreated": "Déjà dans ton Passeport",
       "resume": "Préparation à reprendre",
-      "resumeDescription": "Le brouillon existe déjà, mais la sélection n’a pas été finalisée. Vérifie les attractions, puis relance la préparation.",
+      "resumeDescription": "Le brouillon existe déjà, mais la préparation a été interrompue. Ta sélection enregistrée est restaurée à l’identique ; finalise-la pour reprendre en toute sécurité.",
       "afterDay": "Disponible après cette journée",
       "existingDescription": "Une visite existe déjà pour ce parc et cette date. Ouvre-la pour la compléter.",
       "openVisit": "Ouvrir cette visite",

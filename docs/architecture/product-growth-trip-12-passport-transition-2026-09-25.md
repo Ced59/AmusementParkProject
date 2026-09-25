@@ -21,6 +21,9 @@ donc repartir du programme pour créer **son propre brouillon privé** :
 
 Le résultat est volontairement un brouillon. Le membre peut ensuite corriger,
 noter, compléter ou terminer la visite avec le parcours Passeport existant.
+La seule exception à l’absence de présélection est une reprise technique : si
+un lot déjà réservé a été interrompu, les choix du membre sont restaurés à
+l’identique et verrouillés le temps de finaliser le même lot idempotent.
 
 ## 2. Parcours utilisateur
 
@@ -79,8 +82,12 @@ La recherche des visites aux dates du voyage utilise une seule requête MongoDB
 bornée par le propriétaire et `dateSortKey`. Aucun parcours complet de
 collection ni requête par journée n’est ajouté. Deux lectures groupées par
 empreintes d’opération distinguent ensuite une création TRIP-12 et un lot de
-passages déjà finalisé. Elles réutilisent les index d’idempotence existants et
-ne chargent ni notes privées ni contenu de visite.
+passages réservé, en cours ou finalisé. La réservation conserve aussi les
+identifiants des attractions dans leur ordre canonique afin de restaurer
+exactement la sélection après une coupure. Une confirmation volontairement
+vide écrit un marqueur de fin sans créer de passage. Ces opérations réutilisent
+les index d’idempotence existants et ne chargent ni notes privées ni contenu de
+visite. Les recherches par date excluent toujours les visites supprimées.
 
 ### WebAPI
 
@@ -125,7 +132,8 @@ classDiagram
       +GetOwnedAsync(visitId, userId)
     }
     class IRideOccurrenceRepository {
-      +ListCompletedBatchCreationOperationIdsAsync(userId, operationIds)
+      +ListBatchCreationOperationStatesAsync(userId, operationIds)
+      +CompleteEmptyBatchCreationOperationAsync(userId, visitId, operationId)
     }
     class CreateVisitCommandHandler
     class AddRideOccurrencesBatchCommandHandler
@@ -176,8 +184,8 @@ sequenceDiagram
     API-->>UI: Proposition privée no-store
     UI-->>M: Cartes illustrées, aucune case présélectionnée
 
-    alt création présente mais lot non terminé
-      UI-->>M: Reprendre la préparation et sélectionner à nouveau
+    alt création présente mais lot réservé non terminé
+      UI-->>M: Restaurer exactement la sélection réservée et la finaliser
     end
 ```
 
@@ -200,15 +208,19 @@ sequenceDiagram
     else aucune visite ou création TRIP-12 rejouée
       APP->>VISIT: Création idempotente du brouillon privé
       VISIT->>DB: Insert ou replay par clé déterministe
-      APP->>RIDE: Batch idempotent des seules cases cochées
-      RIDE->>DB: Insert atomique ou replay du batch
+      alt au moins une attraction cochée
+        APP->>RIDE: Batch idempotent des seules cases cochées
+        RIDE->>DB: Insert atomique ou replay du batch
+      else sélection vide confirmée
+        APP->>DB: Marqueur idempotent de lot vide terminé
+      end
       APP-->>UI: Identifiant de la visite
       UI-->>M: Ouverture de l’éditeur Passeport
     end
 
     Note over APP,DB: Si la visite a été créée mais que le batch échoue,
     Note over APP,DB: un rechargement reconnaît les marqueurs groupés,
-    Note over APP,DB: réaffiche les attractions et reprend le même brouillon.
+    Note over APP,DB: restaure la sélection réservée et reprend le même brouillon.
 ```
 
 Les clés d’opération sont dérivées par SHA-256 de l’identifiant du voyage, du
@@ -272,6 +284,8 @@ erDiagram
       string operationKeyHash
       string operationKind
       string operationState
+      array creationPreparationItems
+      array items
     }
 ```
 
@@ -286,11 +300,13 @@ participant.
 | aucune création automatique | seule la route POST appelle les handlers de création |
 | journée strictement passée | politique Core unique `TripPassportTransitionPolicy`, partagée par lecture et confirmation |
 | visite privée et en brouillon | création par le handler Passeport, dont les valeurs initiales sont `Private` et `Draft` |
-| aucune priorité transformée automatiquement | la préférence n’est qu’un badge ; la sélection Angular commence vide |
+| aucune priorité transformée automatiquement | la préférence n’est qu’un badge ; une nouvelle sélection Angular commence vide |
 | aucune donnée d’un autre participant | appel unique à `ListForUserAsync(tripId, currentUserId)` |
 | aucune attraction d’un autre parc | validation serveur contre le catalogue visible du parc de la journée |
 | pas de doublon de visite | détection membre/parc/date puis clés d’idempotence déterministes |
-| reprise après échec partiel | lectures groupées des empreintes de création et de l’état du batch, exposition `canResume`, puis replay du même brouillon |
+| reprise après échec partiel | lectures groupées des empreintes et de l’état du batch, restauration verrouillée des identifiants réservés, exposition `canResume`, puis replay du même brouillon |
+| sélection vide réellement terminée | marqueur idempotent `completed` sans occurrence, relu comme une fin et non comme une reprise |
+| suppression sans blocage fantôme | le filtre exact propriétaire/date exclut les documents avec tombstone |
 | pas de fuite SSR/cache | route authentifiée et réponse `no-store` |
 | plan conservé | aucune mutation ou suppression du voyage pendant la transition |
 
@@ -312,9 +328,10 @@ dépassements horizontaux et le dégagement de la navigation mobile.
 ## 10. Validation
 
 - tests Application : proposition passée/future, préférence personnelle,
-  sélection explicite, reprise après rechargement et lot déjà finalisé ;
+  sélection explicite, reprise avec sélection restaurée, lot déjà finalisé et
+  confirmation vide marquée comme terminée ;
 - tests Infrastructure : requêtes bornées au propriétaire, aux empreintes
-  demandées et aux seuls lots de création terminés ;
+  demandées, aux états de création utiles et exclusion des visites supprimées ;
 - tests Angular : endpoints, filtrage défensif de la facade, erreur de
   confirmation, route authentifiée ;
 - contrat responsive statique ;

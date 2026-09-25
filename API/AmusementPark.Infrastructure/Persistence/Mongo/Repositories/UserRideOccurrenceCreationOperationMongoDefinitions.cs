@@ -40,7 +40,7 @@ internal static class UserRideOccurrenceCreationOperationMongoDefinitions
     }
 
     public static FilterDefinition<UserRideOccurrenceCreationOperationDocument>
-        BuildCompletedCreationOperationsFilter(
+        BuildCreationOperationsFilter(
             string userId,
             IReadOnlyCollection<string> operationKeyHashes)
     {
@@ -57,8 +57,12 @@ internal static class UserRideOccurrenceCreationOperationMongoDefinitions
             & filters.In(
                 static document => document.OperationKeyHash,
                 normalizedHashes)
-            & filters.Eq(static document => document.OperationKind, "creation")
-            & filters.Eq(static document => document.OperationState, "completed");
+            & filters.In(
+                static document => document.OperationKind,
+                new[] { "creation-key-reservation", "creation" })
+            & filters.In(
+                static document => document.OperationState,
+                new[] { "reserved", "pending", "completed" });
     }
 
     public static IReadOnlyCollection<CreateIndexModel<UserRideOccurrenceCreationOperationDocument>>

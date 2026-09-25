@@ -229,6 +229,21 @@ internal static class UserVisitMongoDefinitions
             & BuildNotDeletedFilter();
     }
 
+    public static FilterDefinition<UserVisitDocument> BuildOwnedExactDatesFilter(
+        string userId,
+        IReadOnlyCollection<int> dateSortKeys)
+    {
+        ArgumentNullException.ThrowIfNull(dateSortKeys);
+        int[] normalizedDateSortKeys = dateSortKeys.Distinct().ToArray();
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return filters.Eq(
+                static document => document.UserId,
+                NormalizeRequired(userId, nameof(userId)))
+            & filters.In(static document => document.DateSortKey, normalizedDateSortKeys)
+            & BuildNotDeletedFilter();
+    }
+
     public static FilterDefinition<UserVisitDocument> BuildListFilter(
         UserVisitListCriteria criteria)
     {

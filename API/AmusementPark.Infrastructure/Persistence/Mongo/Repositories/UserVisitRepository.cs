@@ -184,10 +184,10 @@ public sealed class UserVisitRepository : IUserVisitRepository
             return Array.Empty<Visit>();
         }
 
-        FilterDefinitionBuilder<UserVisitDocument> filters = Builders<UserVisitDocument>.Filter;
-        List<UserVisitDocument> documents = await this.collection.Find(
-                filters.Eq(static document => document.UserId, normalizedUserId)
-                & filters.In(static document => document.DateSortKey, dateSortKeys))
+        List<UserVisitDocument> documents = await this.collection
+            .Find(UserVisitMongoDefinitions.BuildOwnedExactDatesFilter(
+                normalizedUserId,
+                dateSortKeys))
             .ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToArray();
     }

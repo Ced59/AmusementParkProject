@@ -86,7 +86,8 @@ function createTransition(): TripPassportTransition {
         name: 'Grand huit',
         mainImageId: 'image-1',
         ownPreference: 'MustDo',
-        historicalConsistency: 'Verified'
+        historicalConsistency: 'Verified',
+        isPreselected: false
       }]
     }]
   };

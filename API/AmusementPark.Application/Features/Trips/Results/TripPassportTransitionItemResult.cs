@@ -8,4 +8,5 @@ public sealed record TripPassportTransitionItemResult(
     string Name,
     string? MainImageId,
     TripItemPreferenceLevel OwnPreference,
-    HistoricalConsistency HistoricalConsistency);
+    HistoricalConsistency HistoricalConsistency,
+    bool IsPreselected);

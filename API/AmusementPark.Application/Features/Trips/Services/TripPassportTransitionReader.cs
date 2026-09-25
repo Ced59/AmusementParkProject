@@ -1,6 +1,7 @@
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Results;
@@ -128,15 +129,21 @@ public sealed class TripPassportTransitionReader
                 normalizedUserId,
                 visitOperationIds.Values.ToArray(),
                 cancellationToken);
-        IReadOnlyCollection<string> completedRideOperationIds = rideOperationIds.Count == 0
-            ? Array.Empty<string>()
-            : await this.rideOccurrences.ListCompletedBatchCreationOperationIdsAsync(
+        IReadOnlyCollection<RideOccurrenceBatchCreationOperationState> rideOperations =
+            rideOperationIds.Count == 0
+            ? Array.Empty<RideOccurrenceBatchCreationOperationState>()
+            : await this.rideOccurrences.ListBatchCreationOperationStatesAsync(
                 normalizedUserId,
                 rideOperationIds.Values.ToArray(),
                 cancellationToken);
         HashSet<VisitId> transitionVisitIdSet = transitionVisitIds.ToHashSet();
-        HashSet<string> completedRideOperationIdSet = completedRideOperationIds
-            .ToHashSet(StringComparer.Ordinal);
+        IReadOnlyDictionary<string, RideOccurrenceBatchCreationOperationState>
+            rideOperationById = rideOperations
+                .GroupBy(static operation => operation.ClientOperationId, StringComparer.Ordinal)
+                .ToDictionary(
+                    static group => group.Key,
+                    static group => group.First(),
+                    StringComparer.Ordinal);
 
         string[] pastParkIds = days
             .Where(day => TripPassportTransitionPolicy.CanConfirmDay(
@@ -181,11 +188,16 @@ public sealed class TripPassportTransitionReader
         TripPassportTransitionDayResult[] results = days.Select(day =>
         {
             existingByDay.TryGetValue((day.ParkId, day.LocalDate), out Visit? existing);
+            RideOccurrenceBatchCreationOperationState? rideOperation = null;
+            if (rideOperationIds.TryGetValue(day.LocalDate, out string? rideOperationId))
+            {
+                rideOperationById.TryGetValue(rideOperationId, out rideOperation);
+            }
+
             bool canResume = existing is not null
                 && existing.Status == VisitStatus.Draft
                 && transitionVisitIdSet.Contains(existing.Id)
-                && rideOperationIds.TryGetValue(day.LocalDate, out string? rideOperationId)
-                && !completedRideOperationIdSet.Contains(rideOperationId);
+                && !(rideOperation?.IsCompleted ?? false);
             bool canConfirm = TripPassportTransitionPolicy.CanConfirmDay(
                     day.LocalDate,
                     destinationToday,
@@ -199,7 +211,9 @@ public sealed class TripPassportTransitionReader
                         StringComparison.Ordinal)),
                     day.LocalDate,
                     preferenceByItem,
-                    imageIds)
+                    imageIds,
+                    rideOperation?.ParkItemIds.ToHashSet(StringComparer.Ordinal)
+                        ?? new HashSet<string>(StringComparer.Ordinal))
                 : Array.Empty<TripPassportTransitionItemResult>();
             return new TripPassportTransitionDayResult(
                 day.LocalDate,
@@ -248,7 +262,8 @@ public sealed class TripPassportTransitionReader
         IEnumerable<ParkItem> items,
         DateOnly localDate,
         IReadOnlyDictionary<string, TripItemPreferenceLevel> preferenceByItem,
-        IReadOnlyDictionary<string, string> imageIds)
+        IReadOnlyDictionary<string, string> imageIds,
+        IReadOnlySet<string> preselectedItemIds)
     {
         VisitDate visitDate = VisitDate.ForDay(localDate.Year, localDate.Month, localDate.Day);
         return items.OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
@@ -263,7 +278,8 @@ public sealed class TripPassportTransitionReader
                 RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
                     visitDate,
                     ToDateOnly(item.AttractionDetails?.OpeningDate),
-                    ToDateOnly(item.AttractionDetails?.ClosingDate))))
+                    ToDateOnly(item.AttractionDetails?.ClosingDate)),
+                preselectedItemIds.Contains(item.Id!)))
             .ToArray();
     }
 

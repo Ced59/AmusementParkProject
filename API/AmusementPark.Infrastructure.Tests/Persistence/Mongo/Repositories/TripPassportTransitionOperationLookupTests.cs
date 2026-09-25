@@ -28,19 +28,43 @@ public sealed class TripPassportTransitionOperationLookupTests
     }
 
     [Fact]
-    public void RideLookup_ShouldOnlyReturnCompletedCreationOperations()
+    public void ExactDateVisitLookup_ShouldExcludeSoftDeletedVisits()
+    {
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedExactDatesFilter(
+                " user-1 ",
+                new[] { 20270820, 20270820 });
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(
+            new[] { 20270820 },
+            rendered["dateSortKey"]["$in"].AsBsonArray
+                .Select(static value => value.AsInt32));
+        Assert.True(rendered.Contains("deletedAtUtc"));
+    }
+
+    [Fact]
+    public void RideLookup_ShouldReturnOnlyResumableOrCompletedCreationOperations()
     {
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
             UserRideOccurrenceCreationOperationMongoDefinitions
-                .BuildCompletedCreationOperationsFilter(
+                .BuildCreationOperationsFilter(
                     "user-1",
                     new[] { "hash-1", "hash-2" });
 
         BsonDocument rendered = Render(filter);
 
         Assert.Equal("user-1", rendered["userId"].AsString);
-        Assert.Equal("creation", rendered["operationKind"].AsString);
-        Assert.Equal("completed", rendered["operationState"].AsString);
+        Assert.Equal(
+            new[] { "creation-key-reservation", "creation" },
+            rendered["operationKind"]["$in"].AsBsonArray
+                .Select(static value => value.AsString));
+        Assert.Equal(
+            new[] { "reserved", "pending", "completed" },
+            rendered["operationState"]["$in"].AsBsonArray
+                .Select(static value => value.AsString));
         Assert.Equal(
             new[] { "hash-1", "hash-2" },
             rendered["operationKeyHash"]["$in"].AsBsonArray

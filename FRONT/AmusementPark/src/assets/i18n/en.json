@@ -1561,7 +1561,7 @@
       "privacyProof": "Other participants’ choices and data are never copied into your Passport.",
       "alreadyCreated": "Already in your Passport",
       "resume": "Preparation to resume",
-      "resumeDescription": "The draft already exists, but the selection was not finalized. Check the attractions, then resume the preparation.",
+      "resumeDescription": "The draft already exists, but the preparation was interrupted. Your saved selection has been restored exactly; finish it to resume safely.",
       "afterDay": "Available after this day",
       "existingDescription": "A visit already exists for this park and date. Open it to complete it.",
       "openVisit": "Open this visit",

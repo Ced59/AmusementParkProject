@@ -120,14 +120,30 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
             cancellationToken);
     }
 
-    public Task<IReadOnlyCollection<string>> ListCompletedBatchCreationOperationIdsAsync(
+    public Task<IReadOnlyCollection<RideOccurrenceBatchCreationOperationState>>
+        ListBatchCreationOperationStatesAsync(
         string userId,
         IReadOnlyCollection<string> clientOperationIds,
         CancellationToken cancellationToken)
     {
-        return this.inner.ListCompletedBatchCreationOperationIdsAsync(
+        return this.inner.ListBatchCreationOperationStatesAsync(
             userId,
             clientOperationIds,
+            cancellationToken);
+    }
+
+    public Task<bool> CompleteEmptyBatchCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        DateTime completedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.CompleteEmptyBatchCreationOperationAsync(
+            userId,
+            visitId,
+            clientOperationId,
+            completedAtUtc,
             cancellationToken);
     }
 

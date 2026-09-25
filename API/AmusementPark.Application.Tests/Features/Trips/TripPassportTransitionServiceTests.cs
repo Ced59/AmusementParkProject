@@ -199,14 +199,18 @@ public sealed class TripPassportTransitionServiceTests
                 CancellationToken.None))
             .ReturnsAsync(new[] { existingDraft.Id });
         Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
-        rideOccurrences.Setup(repository => repository.ListCompletedBatchCreationOperationIdsAsync(
+        rideOccurrences.Setup(repository => repository.ListBatchCreationOperationStatesAsync(
                 trip.OwnerUserId,
                 It.Is<IReadOnlyCollection<string>>(operationIds =>
                     operationIds.SequenceEqual(new[] { rideOperationId })),
                 CancellationToken.None))
-            .ReturnsAsync(rideBatchCompleted
-                ? new[] { rideOperationId }
-                : Array.Empty<string>());
+            .ReturnsAsync(new[]
+            {
+                new RideOccurrenceBatchCreationOperationState(
+                    rideOperationId,
+                    rideBatchCompleted,
+                    new[] { attraction.Id! }),
+            });
         Mock<IPassportLocalDateResolver> dates = new(MockBehavior.Strict);
         dates.Setup(resolver => resolver.Resolve(nowUtc, "Europe/Paris"))
             .Returns(new DateOnly(2027, 8, 22));
@@ -237,6 +241,10 @@ public sealed class TripPassportTransitionServiceTests
         Assert.Equal(expectedCanResume, transitionDay.CanConfirm);
         Assert.Equal(existingDraft.Id.Value, transitionDay.ExistingVisitId);
         Assert.Equal(expectedCanResume, transitionDay.Attractions.Count == 1);
+        if (expectedCanResume)
+        {
+            Assert.True(Assert.Single(transitionDay.Attractions).IsPreselected);
+        }
         trips.VerifyAll();
         candidates.VerifyAll();
         dayPlans.VerifyAll();
@@ -335,6 +343,7 @@ public sealed class TripPassportTransitionServiceTests
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<CreateRideOccurrencesResult>.Success(
                 new CreateRideOccurrencesResult(Array.Empty<RideOccurrenceResult>(), false, false)));
+        Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
         TripPassportTransitionConfirmer confirmer = new(
@@ -346,6 +355,7 @@ public sealed class TripPassportTransitionServiceTests
                 parks.Object),
             parkItems.Object,
             visits.Object,
+            rideOccurrences.Object,
             dates.Object,
             createVisit.Object,
             addRides.Object,
@@ -363,6 +373,120 @@ public sealed class TripPassportTransitionServiceTests
         createVisit.VerifyAll();
         addRides.VerifyAll();
         visits.VerifyAll();
+        trips.VerifyAll();
+        candidates.VerifyAll();
+        dayPlans.VerifyAll();
+        parks.VerifyAll();
+        parkItems.VerifyAll();
+        dates.VerifyAll();
+        clock.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ConfirmAsync_WithoutSelectedAttractions_ShouldPersistACompletedEmptyBatch()
+    {
+        DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
+        DateOnly visitDate = new(2027, 8, 20);
+        TripPlan trip = CreateTrip(nowUtc, visitDate);
+        TripDayPlan day = CreateDay(trip, "park-1", visitDate, nowUtc);
+        VisitId visitId = VisitId.New();
+        Visit createdVisit = Visit.Create(
+            visitId,
+            trip.OwnerUserId,
+            "park-1",
+            VisitDate.ForDay(2027, 8, 20),
+            "Europe/Paris",
+            LocalServiceDayConvention.UserSelectedServiceDate,
+            null,
+            null,
+            nowUtc);
+
+        Mock<ITripPlanRepository> trips = CreateTripRepository(trip);
+        Mock<ITripParkCandidateRepository> candidates = CreateCandidateRepository(trip.Id);
+        Mock<ITripDayPlanRepository> dayPlans = CreateDayRepository(trip.Id, new[] { day });
+        Mock<IParkRepository> parks = CreateParkRepository();
+        Mock<IParkItemRepository> parkItems = new(MockBehavior.Strict);
+        parkItems.Setup(repository => repository.GetByParkIdAsync(
+                "park-1",
+                false,
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        Mock<IUserVisitRepository> visits = new(MockBehavior.Strict);
+        visits.Setup(repository => repository.ListOwnedByExactDatesAsync(
+                trip.OwnerUserId,
+                It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<Visit>());
+        visits.Setup(repository => repository.GetOwnedAsync(
+                visitId,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .ReturnsAsync(createdVisit);
+        Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
+        rideOccurrences.Setup(repository => repository.CompleteEmptyBatchCreationOperationAsync(
+                trip.OwnerUserId,
+                visitId,
+                It.Is<string>(operationId => operationId.StartsWith(
+                    "trip-passport-rides:",
+                    StringComparison.Ordinal)),
+                nowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IPassportLocalDateResolver> dates = new(MockBehavior.Strict);
+        dates.Setup(resolver => resolver.Resolve(nowUtc, "Europe/Paris"))
+            .Returns(new DateOnly(2027, 8, 22));
+        Mock<ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>>> createVisit =
+            new(MockBehavior.Strict);
+        createVisit.Setup(handler => handler.HandleAsync(
+                It.Is<CreateVisitCommand>(command => command.ParkId == "park-1"),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<CreateVisitResult>.Success(new CreateVisitResult(
+                new VisitResult(
+                    visitId.Value,
+                    "park-1",
+                    new VisitDateResult(2027, 8, 20, VisitDatePrecision.Day, false),
+                    "Europe/Paris",
+                    LocalServiceDayConvention.UserSelectedServiceDate,
+                    VisitStatus.Draft,
+                    VisitPrivacy.Private,
+                    null,
+                    null,
+                    1,
+                    nowUtc,
+                    nowUtc,
+                    null),
+                false)));
+        Mock<ICommandHandler<AddRideOccurrencesBatchCommand,
+            ApplicationResult<CreateRideOccurrencesResult>>> addRides = new(MockBehavior.Strict);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        TripPassportTransitionConfirmer confirmer = new(
+            trips.Object,
+            new TripProgramResultFactory(
+                trips.Object,
+                candidates.Object,
+                dayPlans.Object,
+                parks.Object),
+            parkItems.Object,
+            visits.Object,
+            rideOccurrences.Object,
+            dates.Object,
+            createVisit.Object,
+            addRides.Object,
+            clock.Object);
+
+        ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            visitDate,
+            Array.Empty<string>(),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(0, result.Value!.AddedRideCount);
+        rideOccurrences.VerifyAll();
+        visits.VerifyAll();
+        createVisit.VerifyAll();
         trips.VerifyAll();
         candidates.VerifyAll();
         dayPlans.VerifyAll();
@@ -453,6 +577,7 @@ public sealed class TripPassportTransitionServiceTests
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<CreateRideOccurrencesResult>.Success(
                 new CreateRideOccurrencesResult(Array.Empty<RideOccurrenceResult>(), true, false)));
+        Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
         TripPassportTransitionConfirmer confirmer = new(
@@ -464,6 +589,7 @@ public sealed class TripPassportTransitionServiceTests
                 parks.Object),
             parkItems.Object,
             visits.Object,
+            rideOccurrences.Object,
             dates.Object,
             createVisit.Object,
             addRides.Object,

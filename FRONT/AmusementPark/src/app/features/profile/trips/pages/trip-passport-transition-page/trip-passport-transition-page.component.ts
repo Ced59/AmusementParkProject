@@ -75,6 +75,23 @@ export class TripPassportTransitionPageComponent implements OnInit {
     });
 
     effect((): void => {
+      const transition = this.facade.transition();
+      if (transition) {
+        this.selections.update((current: Record<string, readonly string[]>): Record<string, readonly string[]> => {
+          const initialized: Record<string, readonly string[]> = { ...current };
+          let changed: boolean = false;
+          for (const day of transition.days) {
+            if (!(day.localDate in initialized)) {
+              initialized[day.localDate] = day.attractions
+                .filter((item: TripPassportTransitionItem): boolean => item.isPreselected)
+                .map((item: TripPassportTransitionItem): string => item.parkItemId);
+              changed = true;
+            }
+          }
+          return changed ? initialized : current;
+        });
+      }
+
       const confirmation: TripPassportConfirmation | null = this.facade.confirmation();
       if (!confirmation || confirmation.revision <= this.handledConfirmationRevision) {
         return;
@@ -97,7 +114,8 @@ export class TripPassportTransitionPageComponent implements OnInit {
   }
 
   protected toggle(localDate: string, item: TripPassportTransitionItem): void {
-    if (this.facade.confirmingDate()) {
+    const day = this.facade.transition()?.days.find(candidate => candidate.localDate === localDate);
+    if (this.facade.confirmingDate() || day?.canResume) {
       return;
     }
 

@@ -6,7 +6,7 @@
       "private": "Visible only to you", "manual": "No ride is added automatically",
       "chooseTitle": "Start from your plan, not from assumptions", "chooseDescription": "The park and date are already filled in. Your earlier wishes are only reminders: nothing is selected for you.",
       "privacyProof": "Other participants’ choices and data are never copied into your Passport.",
-      "alreadyCreated": "Already in your Passport", "resume": "Preparation to resume", "resumeDescription": "The draft already exists, but the selection was not finalized. Check the attractions, then resume the preparation.", "afterDay": "Available after this day", "existingDescription": "A visit already exists for this park and date. Open it to complete it.",
+      "alreadyCreated": "Already in your Passport", "resume": "Preparation to resume", "resumeDescription": "The draft already exists, but the preparation was interrupted. Your saved selection has been restored exactly; finish it to resume safely.", "afterDay": "Available after this day", "existingDescription": "A visit already exists for this park and date. Open it to complete it.",
       "openVisit": "Open this visit", "unavailablePark": "Park no longer available", "unavailableDescription": "This day remains in the trip, but the park can no longer be added to the Passport.",
       "futureDescription": "You can create the draft once this day is over.", "dayPrompt": "Select only the attractions you actually experienced that day.",
       "historicalWarning": "Reference dates are uncertain; selecting this confirms it explicitly.", "noAttractions": "No attraction is available to select.",

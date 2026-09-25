@@ -6,7 +6,7 @@
       "private": "Visível apenas para ti", "manual": "Nenhuma volta é adicionada automaticamente",
       "chooseTitle": "Parte do teu programa, não de suposições", "chooseDescription": "O parque e a data já estão preenchidos. As tuas preferências anteriores são apenas referências: nada é selecionado por ti.",
       "privacyProof": "As escolhas e os dados dos outros participantes nunca são copiados para o teu Passaporte.",
-      "alreadyCreated": "Já está no teu Passaporte", "resume": "Preparação por retomar", "resumeDescription": "O rascunho já existe, mas a seleção não foi concluída. Confirma as atrações e retoma a preparação.", "afterDay": "Disponível depois deste dia", "existingDescription": "Já existe uma visita para este parque e esta data. Abre-a para a completares.",
+      "alreadyCreated": "Já está no teu Passaporte", "resume": "Preparação por retomar", "resumeDescription": "O rascunho já existe, mas a preparação foi interrompida. A tua seleção guardada foi restaurada sem alterações; conclui-a em segurança.", "afterDay": "Disponível depois deste dia", "existingDescription": "Já existe uma visita para este parque e esta data. Abre-a para a completares.",
       "openVisit": "Abrir esta visita", "unavailablePark": "Parque já não disponível", "unavailableDescription": "Este dia permanece na viagem, mas o parque já não pode ser adicionado ao Passaporte.",
       "futureDescription": "Poderás criar o rascunho quando este dia terminar.", "dayPrompt": "Seleciona apenas as atrações que fizeste realmente nesse dia.",
       "historicalWarning": "As datas de referência são incertas; a tua seleção serve de confirmação explícita.", "noAttractions": "Não há nenhuma atração disponível para selecionar.",
