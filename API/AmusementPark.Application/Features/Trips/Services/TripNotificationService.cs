@@ -95,6 +95,15 @@ public sealed class TripNotificationService
                 return Changed(concurrent?.Version);
             }
 
+            if (!await this.IsStillAccessibleAsync(access, cancellationToken))
+            {
+                await this.subscriptions.DeleteForMemberAsync(
+                    access.Trip.Id,
+                    access.UserId,
+                    CancellationToken.None);
+                return NotFound();
+            }
+
             return ApplicationResult<TripNotificationStateResult>.Success(
                 await this.BuildStateAsync(access, current, cancellationToken));
         }
@@ -245,6 +254,20 @@ public sealed class TripNotificationService
         {
             return null;
         }
+    }
+
+    private async Task<bool> IsStillAccessibleAsync(
+        TripNotificationAccess access,
+        CancellationToken cancellationToken)
+    {
+        TripPlan? current = await this.plans.GetAccessibleAsync(
+            access.UserId,
+            access.Trip.Id,
+            cancellationToken);
+        return current?.Members.Any(member =>
+            member.State == TripMembershipState.Active
+            && member.Id == access.Member.Id
+            && string.Equals(member.UserId, access.UserId, StringComparison.Ordinal)) == true;
     }
 
     private static ApplicationResult<TripNotificationStateResult> NotFound()

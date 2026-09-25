@@ -67,8 +67,8 @@ le compteur visible à 99, avec un indicateur `99+`.
 4. exclut l’identité membre courante au niveau de la requête ;
 5. applique une écriture optimiste lors de l’activation, désactivation ou lecture.
 
-Les handlers restent minces. Les services de départ et de suppression
-révoquent les abonnements via le port applicatif dédié.
+Les handlers restent minces. Le départ, la suppression immédiate et son
+réconciliateur révoquent les abonnements via le port applicatif dédié.
 
 Le handler de pilotage lit un instantané agrégé : voyages actifs, voyages avec
 au moins deux membres actifs, plans ayant des préférences ou décisions,
@@ -239,6 +239,11 @@ Deux onglets ne peuvent pas écraser silencieusement la préférence : chaque
 version différente produit un conflit `trip.notification.changed-concurrently`.
 La façade recharge alors l’état serveur.
 
+Après une première création, le service relit l’appartenance. Si le membre a
+quitté le voyage ou si celui-ci a été supprimé pendant la course, il compense
+immédiatement l’insertion avant de répondre. Si le départ intervient après
+cette relecture, le nettoyage obligatoire du départ supprime l’abonnement.
+
 Un événement matérialisé après un « tout marquer comme vu » reçoit une séquence
 supérieure et reste donc visible : la course ne peut pas faire perdre une
 nouveauté. À l’inverse, une action personnelle est filtrée mais sa séquence peut
@@ -286,9 +291,9 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
 ## 11. Preuves
 
 - 7 tests Core : activation, réactivation, curseur monotone et politique ;
-- 5 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
-  concurrence et métriques agrégées sans contenu privé ;
-- 13 tests Application du périmètre : notifications, départ, purge et pilotage ;
+- 6 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
+  concurrence, compensation de départ et métriques agrégées sans contenu privé ;
+- 15 tests Application du périmètre : notifications, départ, purge et pilotage ;
 - 16 tests Infrastructure du périmètre : index, filtre privé, agrégations et
   résolution du nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;

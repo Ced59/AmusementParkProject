@@ -80,6 +80,51 @@ public sealed class TripNotificationServiceTests
     }
 
     [Fact]
+    public async Task SetEnabledAsync_WhenMemberLeavesDuringCreation_ShouldCompensateSubscription()
+    {
+        TripPlan trip = CreateTrip();
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        plans.SetupSequence(repository => repository.GetAccessibleAsync(
+                trip.OwnerUserId,
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(trip)
+            .ReturnsAsync((TripPlan?)null);
+        Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
+        audit.Setup(reader => reader.GetLatestSequenceAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(8);
+        Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.GetAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .ReturnsAsync((TripNotificationSubscription?)null);
+        subscriptions.Setup(repository => repository.CreateAsync(
+                It.IsAny<TripNotificationSubscription>(),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        subscriptions.Setup(repository => repository.DeleteForMemberAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        TripNotificationService service = new(plans.Object, audit.Object, subscriptions.Object);
+
+        ApplicationResult<TripNotificationStateResult> result = await service.SetEnabledAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            true,
+            0,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("trip.plan.not-found", Assert.Single(result.Errors).Code);
+        subscriptions.VerifyAll();
+        plans.VerifyAll();
+        audit.VerifyAll();
+    }
+
+    [Fact]
     public async Task GetAsync_ShouldCountOnlyRepositoryFilteredImportantChanges()
     {
         TripPlan trip = CreateTrip();
