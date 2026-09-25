@@ -4,4 +4,5 @@ public sealed record RideOccurrenceBatchCreationOperationState(
     string ClientOperationId,
     bool IsCompleted,
     bool IsConflicted,
-    IReadOnlyList<string> ParkItemIds);
+    IReadOnlyList<string> ParkItemIds,
+    RideOccurrenceCreationPreparation? Preparation = null);

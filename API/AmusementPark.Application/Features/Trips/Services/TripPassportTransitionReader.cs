@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
+using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Results;
 using AmusementPark.Core.Domain.Identifiers;
@@ -146,11 +147,28 @@ public sealed class TripPassportTransitionReader
                     static group => group.First(),
                     StringComparer.Ordinal);
 
+        HashSet<DateOnly> resumableDates = eligibleDaysWithVisit
+            .Where(day =>
+            {
+                Visit existing = existingByDay[(day.ParkId, day.LocalDate)];
+                rideOperationIds.TryGetValue(day.LocalDate, out string? operationId);
+                RideOccurrenceBatchCreationOperationState? operation = operationId is null
+                    ? null
+                    : rideOperationById.GetValueOrDefault(operationId);
+                return existing.Status == VisitStatus.Draft
+                    && transitionVisitIdSet.Contains(existing.Id)
+                    && !(operation?.IsCompleted ?? false)
+                    && !(operation?.IsConflicted ?? false);
+            })
+            .Select(static day => day.LocalDate)
+            .ToHashSet();
+
         string[] pastParkIds = days
             .Where(day => TripPassportTransitionPolicy.CanConfirmDay(
-                day.LocalDate,
-                destinationToday,
-                day.IsParkAvailable))
+                    day.LocalDate,
+                    destinationToday,
+                    day.IsParkAvailable)
+                || resumableDates.Contains(day.LocalDate))
             .Select(static day => day.ParkId)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
@@ -206,7 +224,14 @@ public sealed class TripPassportTransitionReader
                     day.IsParkAvailable)
                 && existing is null;
             bool canConfirm = canStart || canResume;
-            bool isSelectionLocked = canResume && rideOperation is not null;
+            bool reservationMatchesVisit = rideOperation?.Preparation is null
+                || (existing is not null
+                    && RideOccurrenceCreationPreparationVisitGuard.Matches(
+                        rideOperation.Preparation,
+                        existing));
+            bool isSelectionLocked = canResume
+                && rideOperation is not null
+                && reservationMatchesVisit;
             IReadOnlyCollection<TripPassportTransitionItemResult> dayItems = canConfirm
                 ? BuildItems(
                     attractions.Where(item => string.Equals(
@@ -216,8 +241,9 @@ public sealed class TripPassportTransitionReader
                     day.LocalDate,
                     preferenceByItem,
                     imageIds,
-                    rideOperation?.ParkItemIds.ToHashSet(StringComparer.Ordinal)
-                        ?? new HashSet<string>(StringComparer.Ordinal))
+                    isSelectionLocked
+                        ? rideOperation!.ParkItemIds.ToHashSet(StringComparer.Ordinal)
+                        : new HashSet<string>(StringComparer.Ordinal))
                 : Array.Empty<TripPassportTransitionItemResult>();
             return new TripPassportTransitionDayResult(
                 day.LocalDate,

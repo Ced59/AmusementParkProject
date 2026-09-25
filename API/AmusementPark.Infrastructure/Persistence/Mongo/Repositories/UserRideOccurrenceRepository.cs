@@ -600,22 +600,46 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             .ToListAsync(cancellationToken);
         return operations
             .Where(operation => operationIdByHash.ContainsKey(operation.OperationKeyHash))
-            .Select(operation => new RideOccurrenceBatchCreationOperationState(
-                operationIdByHash[operation.OperationKeyHash],
-                string.Equals(
-                    operation.OperationKind,
-                    CreationOperationKind,
-                    StringComparison.Ordinal)
-                    && string.Equals(
-                        operation.OperationState,
-                        CompletedOperationState,
-                        StringComparison.Ordinal),
-                string.Equals(
-                    operation.OperationState,
-                    ConflictOperationState,
-                    StringComparison.Ordinal),
-                ResolveOperationParkItemIds(operation)))
+            .Select(operation => CreateBatchCreationOperationState(
+                operation,
+                operationIdByHash[operation.OperationKeyHash]))
             .ToArray();
+    }
+
+    internal static RideOccurrenceBatchCreationOperationState
+        CreateBatchCreationOperationState(
+        UserRideOccurrenceCreationOperationDocument operation,
+        string clientOperationId)
+    {
+        ArgumentNullException.ThrowIfNull(operation);
+        string normalizedOperationId = NormalizeRequired(
+            clientOperationId,
+            nameof(clientOperationId));
+        RideOccurrenceCreationPreparation? preparation = null;
+        if (operation.CreationPreparation is not null)
+        {
+            _ = TryCreatePreparation(
+                operation.CreationPreparation,
+                operation.CreationPreparation.Items.Count,
+                out preparation);
+        }
+
+        return new RideOccurrenceBatchCreationOperationState(
+            normalizedOperationId,
+            string.Equals(
+                operation.OperationKind,
+                CreationOperationKind,
+                StringComparison.Ordinal)
+                && string.Equals(
+                    operation.OperationState,
+                    CompletedOperationState,
+                    StringComparison.Ordinal),
+            string.Equals(
+                operation.OperationState,
+                ConflictOperationState,
+                StringComparison.Ordinal),
+            ResolveOperationParkItemIds(operation),
+            preparation);
     }
 
     public async Task<bool> CompleteEmptyBatchCreationOperationAsync(

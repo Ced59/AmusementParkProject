@@ -136,16 +136,19 @@ public sealed class TripPassportTransitionServiceTests
     }
 
     [Theory]
-    [InlineData(false, false, true, true, true, true)]
-    [InlineData(true, false, true, true, false, false)]
-    [InlineData(false, true, true, true, false, false)]
-    [InlineData(false, false, false, true, true, true)]
-    [InlineData(false, false, true, false, true, false)]
+    [InlineData(false, false, true, true, true, true, true)]
+    [InlineData(true, false, true, true, true, false, false)]
+    [InlineData(false, true, true, true, true, false, false)]
+    [InlineData(false, false, false, true, true, true, true)]
+    [InlineData(false, false, true, false, true, true, false)]
+    [InlineData(false, false, false, false, true, true, false)]
+    [InlineData(false, false, true, true, false, true, false)]
     public async Task GetAsync_WhenATransitionDraftExists_ShouldExposeItsExactRecoveryState(
         bool rideBatchCompleted,
         bool rideBatchConflicted,
         bool parkVisible,
         bool rideOperationExists,
+        bool reservationMatchesVisit,
         bool expectedCanResume,
         bool expectedSelectionLocked)
     {
@@ -181,7 +184,7 @@ public sealed class TripPassportTransitionServiceTests
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<TripItemPreference>());
         Mock<IParkItemRepository> parkItems = new(MockBehavior.Strict);
-        if (parkVisible)
+        if (parkVisible || expectedCanResume)
         {
             parkItems.Setup(repository => repository.GetByParkIdsAsync(
                     It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
@@ -190,7 +193,7 @@ public sealed class TripPassportTransitionServiceTests
                 .ReturnsAsync(new[] { attraction });
         }
         Mock<IImageRepository> images = new(MockBehavior.Strict);
-        if (parkVisible)
+        if (parkVisible || expectedCanResume)
         {
             images.Setup(repository => repository.GetMainImageIdsByOwnersAsync(
                     ImageOwnerType.ParkItem,
@@ -225,7 +228,13 @@ public sealed class TripPassportTransitionServiceTests
                         rideOperationId,
                         rideBatchCompleted,
                         rideBatchConflicted,
-                        new[] { attraction.Id! }),
+                        new[] { attraction.Id! },
+                        new RideOccurrenceCreationPreparation(
+                            "park-1",
+                            VisitDate.ForDay(2027, 8, 20),
+                            reservationMatchesVisit ? "Europe/Paris" : "UTC",
+                            LocalServiceDayConvention.UserSelectedServiceDate,
+                            new[] { HistoricalConsistency.Verified })),
                 }
                 : Array.Empty<RideOccurrenceBatchCreationOperationState>());
         Mock<IPassportLocalDateResolver> dates = new(MockBehavior.Strict);
@@ -258,11 +267,11 @@ public sealed class TripPassportTransitionServiceTests
         Assert.Equal(expectedCanResume, transitionDay.CanConfirm);
         Assert.Equal(expectedSelectionLocked, transitionDay.IsSelectionLocked);
         Assert.Equal(existingDraft.Id.Value, transitionDay.ExistingVisitId);
-        Assert.Equal(expectedCanResume && parkVisible, transitionDay.Attractions.Count == 1);
-        if (expectedCanResume && parkVisible)
+        Assert.Equal(expectedCanResume, transitionDay.Attractions.Count == 1);
+        if (expectedCanResume)
         {
             Assert.Equal(
-                rideOperationExists,
+                expectedSelectionLocked,
                 Assert.Single(transitionDay.Attractions).IsPreselected);
         }
         trips.VerifyAll();
@@ -722,14 +731,20 @@ public sealed class TripPassportTransitionServiceTests
         clock.VerifyAll();
     }
 
-    [Fact]
-    public async Task ConfirmAsync_WhenCatalogAndTimeZoneChanged_ShouldResumePersistedSelection()
+    [Theory]
+    [InlineData("America/New_York", "item-1", false)]
+    [InlineData("Europe/Paris", "item-2", true)]
+    public async Task ConfirmAsync_WhenTimeZoneChanged_ShouldUseTheCompatibleSelection(
+        string reservedTimeZoneId,
+        string expectedItemId,
+        bool shouldReleaseReservation)
     {
         DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
         DateOnly visitDate = new(2027, 8, 20);
         TripPlan trip = CreateTrip(nowUtc, visitDate);
         TripDayPlan day = CreateDay(trip, "park-1", visitDate, nowUtc);
         ParkItem selectedAttraction = CreateAttraction("item-1", "Grand huit");
+        ParkItem replacementAttraction = CreateAttraction("item-2", "Tour");
         Visit existingDraft = Visit.Create(
             VisitId.New(),
             trip.OwnerUserId,
@@ -750,7 +765,7 @@ public sealed class TripPassportTransitionServiceTests
                 "park-1",
                 false,
                 CancellationToken.None))
-            .ReturnsAsync(Array.Empty<ParkItem>());
+            .ReturnsAsync(new[] { replacementAttraction });
         Mock<IUserVisitRepository> visits = new(MockBehavior.Strict);
         visits.Setup(repository => repository.ListOwnedByExactDatesAsync(
                 trip.OwnerUserId,
@@ -776,7 +791,7 @@ public sealed class TripPassportTransitionServiceTests
                 It.Is<AddRideOccurrencesBatchCommand>(command =>
                     command.VisitId == existingDraft.Id.Value
                     && command.Source == RideLogSource.TripTransition
-                    && command.Items.Single()!.ParkItemId == selectedAttraction.Id),
+                    && command.Items.Single()!.ParkItemId == expectedItemId),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<CreateRideOccurrencesResult>.Success(
                 new CreateRideOccurrencesResult(Array.Empty<RideOccurrenceResult>(), true, false)));
@@ -798,8 +813,25 @@ public sealed class TripPassportTransitionServiceTests
                         visitDate),
                     false,
                     false,
-                    new[] { selectedAttraction.Id! }),
+                    new[] { selectedAttraction.Id! },
+                    new RideOccurrenceCreationPreparation(
+                        "park-1",
+                        VisitDate.ForDay(2027, 8, 20),
+                        reservedTimeZoneId,
+                        LocalServiceDayConvention.UserSelectedServiceDate,
+                        new[] { HistoricalConsistency.Verified })),
             });
+        if (shouldReleaseReservation)
+        {
+            rideOccurrences.Setup(repository => repository.ReleaseBatchCreationOperationAsync(
+                    trip.OwnerUserId,
+                    existingDraft.Id,
+                    It.Is<string>(operationId => operationId.StartsWith(
+                        "trip-passport-rides:",
+                        StringComparison.Ordinal)),
+                    CancellationToken.None))
+                .Returns(Task.CompletedTask);
+        }
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
         TripPassportTransitionConfirmer confirmer = new(
@@ -821,7 +853,7 @@ public sealed class TripPassportTransitionServiceTests
             trip.OwnerUserId,
             trip.Id.Value,
             visitDate,
-            Array.Empty<string>(),
+            new[] { replacementAttraction.Id! },
             CancellationToken.None);
 
         Assert.True(result.IsSuccess);

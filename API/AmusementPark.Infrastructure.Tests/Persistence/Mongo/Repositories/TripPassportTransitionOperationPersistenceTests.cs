@@ -103,6 +103,54 @@ public sealed class TripPassportTransitionOperationPersistenceTests
         operations.VerifyAll();
     }
 
+    [Fact]
+    public void CreateBatchCreationOperationState_ShouldRestoreTheReservedVisitIdentity()
+    {
+        UserRideOccurrenceCreationOperationDocument operation = new()
+        {
+            UserId = "user-1",
+            OperationKind = "creation-key-reservation",
+            OperationState = "reserved",
+            CreationPreparation = new UserRideOccurrenceCreationPreparationDocument
+            {
+                ParkId = "park-1",
+                VisitDate = new VisitDateDocument
+                {
+                    Year = 2027,
+                    Month = 8,
+                    Day = 20,
+                    Precision = VisitDatePrecision.Day,
+                },
+                TimeZoneId = "Europe/Paris",
+                ServiceDayConvention = LocalServiceDayConvention.UserSelectedServiceDate,
+                Items = new List<UserRideOccurrenceCreationPreparationItemDocument>
+                {
+                    new UserRideOccurrenceCreationPreparationItemDocument
+                    {
+                        Index = 0,
+                        ParkItemId = "item-1",
+                        HistoricalConsistency = HistoricalConsistency.Verified,
+                    },
+                },
+            },
+        };
+
+        RideOccurrenceBatchCreationOperationState state =
+            UserRideOccurrenceRepository.CreateBatchCreationOperationState(
+                operation,
+                "trip-passport-rides:test");
+
+        Assert.False(state.IsCompleted);
+        Assert.False(state.IsConflicted);
+        Assert.Equal(new[] { "item-1" }, state.ParkItemIds);
+        Assert.NotNull(state.Preparation);
+        Assert.Equal("park-1", state.Preparation.ParkId);
+        Assert.Equal("Europe/Paris", state.Preparation.TimeZoneId);
+        Assert.Equal(
+            VisitDate.ForDay(2027, 8, 20),
+            state.Preparation.VisitDate);
+    }
+
     private static UserRideOccurrenceRepository CreateRepository(
         IMongoCollection<UserRideOccurrenceCreationOperationDocument> operations)
     {

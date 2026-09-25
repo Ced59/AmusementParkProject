@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Passport.Commands;
 using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Results;
 using AmusementPark.Core.Domain.Identifiers;
@@ -175,6 +176,19 @@ public sealed class TripPassportTransitionConfirmer
             if (existingRideOperation?.IsConflicted == true)
             {
                 return Failure(PassportApplicationErrors.RideOccurrenceIdempotencyConflict());
+            }
+
+            if (existingRideOperation?.Preparation is not null
+                && !RideOccurrenceCreationPreparationVisitGuard.Matches(
+                    existingRideOperation.Preparation,
+                    existingVisit!))
+            {
+                await this.rideOccurrences.ReleaseBatchCreationOperationAsync(
+                    normalizedUserId,
+                    existingVisit!.Id,
+                    rideOperationId,
+                    cancellationToken);
+                existingRideOperation = null;
             }
 
             if (existingRideOperation is not null)

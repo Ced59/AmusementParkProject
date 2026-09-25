@@ -90,8 +90,11 @@ bornée par le propriétaire et `dateSortKey`. Aucun parcours complet de
 collection ni requête par journée n’est ajouté. Deux lectures groupées par
 empreintes d’opération distinguent ensuite une création TRIP-12 et un lot de
 passages réservé, en cours ou finalisé. La réservation conserve aussi les
-identifiants des attractions dans leur ordre canonique afin de restaurer
-exactement la sélection après une coupure. Une confirmation volontairement
+identifiants des attractions dans leur ordre canonique ainsi que l’identité
+temporelle de la visite afin de restaurer exactement la sélection après une
+coupure. Si cette identité a été corrigée dans le Passeport avant tout passage,
+l’ancienne réservation est retirée et la sélection redevient éditable avant
+d’être réservée à nouveau. Une confirmation volontairement
 vide écrit un marqueur de fin sans créer de passage. Ces opérations réutilisent
 les index d’idempotence existants et ne chargent ni notes privées ni contenu de
 visite. Les recherches par date excluent toujours les visites supprimées.
@@ -110,6 +113,9 @@ des clés d’action ; les libellés visibles utilisent les noms hydratés. Le c
 complète ou créée manuellement. Les opérations terminales en conflit sont
 également relues, mais ne sont jamais annoncées comme reprenables ; le membre
 peut ouvrir le brouillon et sa suppression libère ensuite les clés ciblées.
+`isSelectionLocked` reste distinct de `canResume` : il n’est vrai que si la
+réservation retrouvée correspond encore au parc, à la date, au fuseau et à la
+convention de journée du brouillon courant.
 
 ### Angular
 
@@ -206,6 +212,8 @@ sequenceDiagram
       UI-->>M: Restaurer exactement la sélection réservée et la finaliser
     else création présente sans lot réservé
       UI-->>M: Reprendre avec une sélection encore modifiable
+    else réservation incompatible avec le brouillon corrigé
+      UI-->>M: Reprendre avec une sélection vide et modifiable
     end
 ```
 
@@ -250,6 +258,11 @@ sequenceDiagram
     Note over APP,DB: un rechargement reconnaît les marqueurs groupés,
     Note over APP,DB: le serveur rejoue directement la sélection réservée,
     Note over APP,DB: même si une attraction a depuis été masquée ou déplacée.
+
+    opt identité temporelle du brouillon corrigée avant les passages
+      APP->>DB: Libère la réservation devenue incompatible
+      APP->>RIDE: Réserve la sélection courante contre la visite corrigée
+    end
 ```
 
 Les clés d’opération sont dérivées par SHA-256 de l’identifiant du voyage, du
@@ -336,6 +349,8 @@ participant.
 | pas de doublon de visite | détection membre/parc/date puis clés d’idempotence déterministes |
 | reprise après échec partiel | lectures groupées des empreintes et de l’état du batch, restauration verrouillée des identifiants réservés, exposition `canResume`, puis replay du même brouillon |
 | coupure avant réservation du lot | `isSelectionLocked` reste faux lorsque seule la visite existe ; le membre reprend le brouillon et choisit encore librement ses attractions |
+| parc masqué après une coupure sans réservation | les attractions encore visibles du parc sont chargées pour le brouillon TRIP-12 reconnu ; aucune validation vide n’est suggérée faute de catalogue |
+| identité temporelle du brouillon corrigée | la préparation réservée est comparée à la visite ; une incompatibilité déverrouille l’interface puis libère et reconstruit la réservation sur la sélection courante |
 | fuseau modifié après création | la reprise reconnaît l’identité persistée opération/visite et ne rappelle pas la création avec le fuseau courant du voyage |
 | parc masqué après création | une nouvelle transition reste interdite, mais le brouillon déjà identifié demeure reprenable après la date |
 | opération de passages en conflit | l’état terminal est relu explicitement et retire `canResume` au lieu de produire une fausse action vouée à échouer |
@@ -368,12 +383,15 @@ dépassements horizontaux et le dégagement de la navigation mobile.
 
 - tests Application : proposition passée/future, préférence personnelle,
   sélection explicite, reprise avec sélection restaurée sans recréer la visite,
-  reprise éditable avant réservation, brouillon déplacé sans replay sur la mauvaise date, parc devenu masqué,
-  opération terminale en conflit, lot déjà finalisé et confirmation vide
+  reprise éditable avant réservation, reprise d’un parc devenu masqué,
+  reconstruction après correction du fuseau de la visite, brouillon déplacé
+  sans replay sur la mauvaise date, opération terminale en conflit, lot déjà
+  finalisé et confirmation vide
   marquée comme terminée ;
 - tests Infrastructure : requêtes bornées au propriétaire, aux empreintes
-  demandées, aux états de création utiles, exclusion des visites supprimées et
-  libération ciblée de leur ancienne clé ;
+  demandées, aux états de création utiles, restauration de l’identité temporelle
+  réservée, exclusion des visites supprimées et libération ciblée de leur
+  ancienne clé ;
 - tests Angular : endpoints, filtrage défensif de la facade, erreur de
   confirmation, route authentifiée ;
 - contrat responsive statique ;
