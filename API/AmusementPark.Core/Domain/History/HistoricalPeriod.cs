@@ -137,7 +137,9 @@ public sealed record HistoricalPeriod
             DateOnly? latestPossibleStart = this.Start.GetEnvelope().LatestPossibleDate;
             if (!latestPossibleStart.HasValue
                 || !instantEnvelope.EarliestPossibleDate.HasValue
-                || instantEnvelope.EarliestPossibleDate.Value < latestPossibleStart.Value)
+                || instantEnvelope.EarliestPossibleDate.Value < latestPossibleStart.Value
+                || (this.Start.HasUncertainBoundary
+                    && instantEnvelope.EarliestPossibleDate.Value == latestPossibleStart.Value))
             {
                 return false;
             }
@@ -153,7 +155,9 @@ public sealed record HistoricalPeriod
             DateOnly? earliestPossibleEnd = this.End.GetEnvelope().EarliestPossibleDate;
             if (!earliestPossibleEnd.HasValue
                 || !instantEnvelope.LatestPossibleDate.HasValue
-                || instantEnvelope.LatestPossibleDate.Value > earliestPossibleEnd.Value)
+                || instantEnvelope.LatestPossibleDate.Value > earliestPossibleEnd.Value
+                || (this.End.HasUncertainBoundary
+                    && instantEnvelope.LatestPossibleDate.Value == earliestPossibleEnd.Value))
             {
                 return false;
             }
