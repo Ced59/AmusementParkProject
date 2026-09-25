@@ -93,6 +93,13 @@ public static class TripPlanApplicationErrors
             "The trip changed or another program action is still completing.");
     }
 
+    public static ApplicationError ExportUnavailable()
+    {
+        return ApplicationError.Conflict(
+            "trip.export.unavailable",
+            "The portable trip plan could not be prepared safely.");
+    }
+
     public static ApplicationError CandidateIsUsedByDay()
     {
         return ApplicationError.RuleViolation(

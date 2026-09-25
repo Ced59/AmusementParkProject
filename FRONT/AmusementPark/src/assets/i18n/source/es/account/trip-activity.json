@@ -14,7 +14,7 @@
         "dayUpdated": "Día actualizado · {{actor}}", "dayRemoved": "Día retirado · {{actor}}",
         "invitationCreated": "Invitación creada · {{actor}}", "invitationRevoked": "Invitación revocada · {{actor}}", "invitationAccepted": "Invitación aceptada · {{actor}}", "invitationDeclined": "Invitación rechazada · {{actor}}",
         "participantRoleChanged": "Rol modificado · {{actor}}", "ownershipTransferred": "Organización transferida · {{actor}}", "participantLeft": "Salida del viaje · {{actor}}",
-        "preferencesUpdated": "Preferencias actualizadas ({{count}}) · {{actor}}", "collectiveDecisionUpdated": "Decisión colectiva actualizada · {{actor}}"
+        "preferencesUpdated": "Preferencias actualizadas ({{count}}) · {{actor}}", "collectiveDecisionUpdated": "Decisión colectiva actualizada · {{actor}}", "planExported": "Programa exportado · {{actor}}"
       }
     }
   }

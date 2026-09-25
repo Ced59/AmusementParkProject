@@ -1,0 +1,17 @@
+{
+  "trips": {
+    "export": {
+      "open": "Emporter le programme", "back": "Retour au voyage", "kicker": "Programme à emporter",
+      "description": "Retrouve l’essentiel du voyage dans une vue claire à imprimer, enregistrer en PDF ou télécharger en JSON.",
+      "private": "Réservé aux participants", "generated": "Préparé le {{date}}", "print": "Imprimer ou enregistrer en PDF", "downloadJson": "Télécharger le JSON",
+      "errorTitle": "Le programme n’est pas disponible", "errorDescription": "Il n’a pas pu être préparé de façon sûre. Réessaie dans un instant.",
+      "whenKicker": "Repères", "whenTitle": "Quand part-on ?", "dates": "Dates", "datesUnknown": "Dates encore à décider", "timeZone": "Fuseau horaire",
+      "parksKicker": "Cap du voyage", "parksTitle": "Les parcs envisagés", "parksDescription": "Les choix retenus et encore en discussion.", "unavailablePark": "Parc devenu indisponible", "noParks": "Aucun parc n’a encore été ajouté.",
+      "programKicker": "Jour après jour", "programTitle": "Le programme", "programDescription": "Les rendez-vous et notes collectives, sans les préférences privées.", "arrival": "Arrivée souhaitée à {{time}}", "noBlocks": "Aucun rendez-vous prévu pour cette journée.", "noDays": "Aucune journée n’a encore été programmée.",
+      "decisionsKicker": "Choix du groupe", "decisionsTitle": "Les décisions collectives", "decisionsDescription": "Ce que le groupe a officiellement décidé pour les attractions.", "unavailableAttraction": "Attraction devenue indisponible", "noDecisions": "Aucune décision collective n’a encore été enregistrée.",
+      "footer": "Ce document contient uniquement le programme partagé. Les préférences individuelles et les données de compte n’y figurent jamais.",
+      "states": { "proposed": "Proposé", "shortlisted": "À départager", "selected": "Retenu", "rejected": "Écarté" },
+      "decisions": { "review": "À étudier", "retained": "Retenu", "splitgroup": "Groupe séparé", "optional": "Facultatif", "excluded": "Écarté" }
+    }
+  }
+}

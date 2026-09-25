@@ -897,7 +897,7 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 | `TRIP-08` | Synthèse/conflits | Pas de majorité aveugle — implémenté le 18 septembre 2026 |
 | `TRIP-09` | Validation calendrier/trajet | Faits distingués des choix — implémenté le 18 septembre 2026 |
 | `TRIP-10` | Audit/concurrence | Modifications reconstituables — implémenté le 18 septembre 2026 |
-| `TRIP-11` | Export | Plan portable |
+| `TRIP-11` | Export | Plan portable — implémenté le 25 septembre 2026 |
 | `TRIP-12` | Transition Passeport | Confirmation individuelle |
 | `TRIP-13` | Pilote collaboratif | Gate franchie |
 

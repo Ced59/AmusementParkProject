@@ -29,6 +29,12 @@ export const PROFILE_ROUTES: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'trips/:tripId/export',
+    loadComponent: () => import('./trips/pages/trip-export-page/trip-export-page.component')
+      .then((module) => module.TripExportPageComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'trips/:tripId/coherence',
     loadComponent: () => import('./trips/pages/trip-program-coherence-page/trip-program-coherence-page.component')
       .then((module) => module.TripProgramCoherencePageComponent),

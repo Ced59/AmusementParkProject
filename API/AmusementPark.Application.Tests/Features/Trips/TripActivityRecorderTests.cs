@@ -63,6 +63,28 @@ public sealed class TripActivityRecorderTests
     }
 
     [Fact]
+    public async Task PublishReadOnlyAsync_ShouldUseTheDedicatedDurableAuditPath()
+    {
+        TripActivityWrite activity = new(
+            TripPlanId.New(),
+            TripMemberId.New(),
+            TripEffectiveRole.Participant,
+            TripActivityKind.PlanExported,
+            "idempotent:PlanExported:hash",
+            1,
+            new DateTime(2027, 3, 4, 10, 0, 0, DateTimeKind.Utc));
+        Mock<ITripAuditWriter> writer = new(MockBehavior.Strict);
+        writer.Setup(port => port.AppendReadOnlyAsync(activity, CancellationToken.None))
+            .ReturnsAsync(true);
+        TripActivityRecorder recorder = new(writer.Object);
+
+        bool result = await recorder.PublishReadOnlyAsync(activity, CancellationToken.None);
+
+        Assert.True(result);
+        writer.VerifyAll();
+    }
+
+    [Fact]
     public void ChildOperationKey_ShouldDistinguishTwoLeasesWithTheSameOperationId()
     {
         TripMemberId actorMemberId = TripMemberId.Parse("member-1");

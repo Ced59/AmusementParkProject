@@ -14,7 +14,7 @@
         "dayUpdated": "Day updated · {{actor}}", "dayRemoved": "Day removed · {{actor}}",
         "invitationCreated": "Invitation created · {{actor}}", "invitationRevoked": "Invitation revoked · {{actor}}", "invitationAccepted": "Invitation accepted · {{actor}}", "invitationDeclined": "Invitation declined · {{actor}}",
         "participantRoleChanged": "Member role changed · {{actor}}", "ownershipTransferred": "Trip ownership transferred · {{actor}}", "participantLeft": "Member left the trip · {{actor}}",
-        "preferencesUpdated": "Preferences updated ({{count}}) · {{actor}}", "collectiveDecisionUpdated": "Group decision updated · {{actor}}"
+        "preferencesUpdated": "Preferences updated ({{count}}) · {{actor}}", "collectiveDecisionUpdated": "Group decision updated · {{actor}}", "planExported": "Plan exported · {{actor}}"
       }
     }
   }

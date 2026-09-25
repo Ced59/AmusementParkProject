@@ -1,0 +1,173 @@
+<main class="trip-export-page" data-responsive-root="trip-export">
+  <header class="trip-export-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a class="trip-export-screen-only" appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', tripPlanId]">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'trips.export.back' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="sky" iconClass="pi pi-briefcase">{{ 'trips.export.kicker' | translate }}</app-ui-kicker>
+    <h1>{{ facade.plan()?.title || ('trips.feedback.loading' | translate) }}</h1>
+    <p>{{ 'trips.export.description' | translate }}</p>
+    <div class="trip-export-hero__legend">
+      <app-ui-chip tone="gold" iconClass="pi pi-lock">{{ 'trips.export.private' | translate }}</app-ui-chip>
+      @if (facade.plan(); as plan) {
+        <app-ui-chip tone="soft" iconClass="pi pi-clock">
+          {{ 'trips.export.generated' | translate:{ date: (plan.generatedAtUtc | date:'short':undefined:currentLanguage()) } }}
+        </app-ui-chip>
+      }
+    </div>
+    @if (facade.plan()) {
+      <div class="trip-export-hero__actions trip-export-screen-only">
+        <button type="button" appUiButton="primary" (click)="print()">
+          <i class="pi pi-print" aria-hidden="true"></i>
+          <span>{{ 'trips.export.print' | translate }}</span>
+        </button>
+        <button type="button" appUiButton="ghost" (click)="downloadJson()">
+          <i class="pi pi-download" aria-hidden="true"></i>
+          <span>{{ 'trips.export.downloadJson' | translate }}</span>
+        </button>
+      </div>
+    }
+  </header>
+
+  @if (facade.loading()) {
+    <section class="trip-export-message" appUiSurface="panel" role="status" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'trips.feedback.loading' | translate }}</span>
+    </section>
+  } @else if (facade.error()) {
+    <section class="trip-export-message trip-export-message--error" appUiSurface="panel" role="alert">
+      <h2>{{ 'trips.export.errorTitle' | translate }}</h2>
+      <p>{{ 'trips.export.errorDescription' | translate }}</p>
+      <button type="button" appUiButton="primary" (click)="facade.retry()">{{ 'trips.actions.retry' | translate }}</button>
+    </section>
+  } @else if (facade.plan(); as plan) {
+    <section class="trip-export-section trip-export-summary" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-export-section__heading">
+        <span class="trip-export-section__step">1</span>
+        <div>
+          <app-ui-kicker tone="gold" iconClass="pi pi-calendar">{{ 'trips.export.whenKicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.export.whenTitle' | translate }}</h2>
+        </div>
+      </div>
+      <dl class="trip-export-facts">
+        <div>
+          <dt>{{ 'trips.export.dates' | translate }}</dt>
+          <dd>
+            @if (plan.dateProposal.startDate) {
+              {{ plan.dateProposal.startDate | date:'longDate':undefined:currentLanguage() }}
+              @if (plan.dateProposal.endDate && plan.dateProposal.endDate !== plan.dateProposal.startDate) {
+                – {{ plan.dateProposal.endDate | date:'longDate':undefined:currentLanguage() }}
+              }
+            } @else if (plan.dateProposal.candidateDates.length > 0) {
+              @for (date of plan.dateProposal.candidateDates; track date; let last = $last) {
+                {{ date | date:'mediumDate':undefined:currentLanguage() }}@if (!last) { · }
+              }
+            } @else {
+              {{ 'trips.export.datesUnknown' | translate }}
+            }
+          </dd>
+        </div>
+        @if (plan.destinationTimeZoneId) {
+          <div><dt>{{ 'trips.export.timeZone' | translate }}</dt><dd>{{ plan.destinationTimeZoneId }}</dd></div>
+        }
+      </dl>
+    </section>
+
+    <section class="trip-export-section" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-export-section__heading">
+        <span class="trip-export-section__step">2</span>
+        <div>
+          <app-ui-kicker tone="rose" iconClass="pi pi-map-marker">{{ 'trips.export.parksKicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.export.parksTitle' | translate }}</h2>
+          <p>{{ 'trips.export.parksDescription' | translate }}</p>
+        </div>
+      </div>
+      <div class="trip-export-grid">
+        @for (candidate of plan.candidateParks; track $index) {
+          <article class="trip-export-card">
+            <div class="trip-export-card__title">
+              <i class="pi pi-building-columns" aria-hidden="true"></i>
+              <h3>{{ candidate.isParkAvailable ? candidate.parkName : ('trips.export.unavailablePark' | translate) }}</h3>
+            </div>
+            <app-ui-chip tone="soft">{{ stateKey(candidate.state) | translate }}</app-ui-chip>
+            @if (candidate.candidateDates.length > 0) {
+              <p class="trip-export-card__dates">
+                @for (date of candidate.candidateDates; track date; let last = $last) {
+                  {{ date | date:'mediumDate':undefined:currentLanguage() }}@if (!last) { · }
+                }
+              </p>
+            }
+            @if (candidate.collectiveNote) { <p>{{ candidate.collectiveNote }}</p> }
+          </article>
+        } @empty {
+          <p class="trip-export-empty">{{ 'trips.export.noParks' | translate }}</p>
+        }
+      </div>
+    </section>
+
+    <section class="trip-export-section" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-export-section__heading">
+        <span class="trip-export-section__step">3</span>
+        <div>
+          <app-ui-kicker tone="lime" iconClass="pi pi-list-check">{{ 'trips.export.programKicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.export.programTitle' | translate }}</h2>
+          <p>{{ 'trips.export.programDescription' | translate }}</p>
+        </div>
+      </div>
+      <div class="trip-export-days">
+        @for (day of plan.days; track day.localDate) {
+          <article class="trip-export-day">
+            <div class="trip-export-day__heading">
+              <div><time [attr.datetime]="day.localDate">{{ day.localDate | date:'fullDate':undefined:currentLanguage() }}</time>
+                <h3>{{ day.isParkAvailable ? day.parkName : ('trips.export.unavailablePark' | translate) }}</h3>
+              </div>
+              @if (day.desiredArrivalTime) { <span>{{ 'trips.export.arrival' | translate:{ time: day.desiredArrivalTime } }}</span> }
+            </div>
+            @if (day.groupNote) { <p class="trip-export-day__note">{{ day.groupNote }}</p> }
+            <ol class="trip-export-blocks">
+              @for (block of day.blocks; track $index) {
+                <li>
+                  <span>{{ block.localTime || '—' }}</span>
+                  <div><strong>{{ block.title }}</strong>@if (block.details) { <p>{{ block.details }}</p> }</div>
+                </li>
+              } @empty {
+                <li class="trip-export-empty">{{ 'trips.export.noBlocks' | translate }}</li>
+              }
+            </ol>
+          </article>
+        } @empty {
+          <p class="trip-export-empty">{{ 'trips.export.noDays' | translate }}</p>
+        }
+      </div>
+    </section>
+
+    <section class="trip-export-section" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <div class="trip-export-section__heading">
+        <span class="trip-export-section__step">4</span>
+        <div>
+          <app-ui-kicker tone="sky" iconClass="pi pi-users">{{ 'trips.export.decisionsKicker' | translate }}</app-ui-kicker>
+          <h2>{{ 'trips.export.decisionsTitle' | translate }}</h2>
+          <p>{{ 'trips.export.decisionsDescription' | translate }}</p>
+        </div>
+      </div>
+      <ul class="trip-export-decisions">
+        @for (decision of plan.collectiveDecisions; track $index) {
+          <li>
+            <div>
+              <strong>{{ decision.isParkItemAvailable ? decision.parkItemName : ('trips.export.unavailableAttraction' | translate) }}</strong>
+              @if (decision.parkName) { <span>{{ decision.parkName }}</span> }
+            </div>
+            <app-ui-chip tone="soft">{{ decisionKey(decision.status) | translate }}</app-ui-chip>
+            <p>{{ decision.reason }}</p>
+          </li>
+        } @empty {
+          <li class="trip-export-empty">{{ 'trips.export.noDecisions' | translate }}</li>
+        }
+      </ul>
+    </section>
+
+    <footer class="trip-export-footer">
+      <p>{{ 'trips.export.footer' | translate }}</p>
+    </footer>
+  }
+</main>
