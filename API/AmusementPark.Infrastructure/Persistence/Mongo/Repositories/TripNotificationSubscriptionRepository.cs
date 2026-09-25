@@ -194,10 +194,9 @@ public sealed class TripNotificationSubscriptionRepository
             document.UserId,
             document.IsEnabled,
             document.SeenThroughSequence,
+            document.PendingOperationKeys,
             DateTime.SpecifyKind(document.CreatedAt, DateTimeKind.Utc),
-            document.UpdatedAtUtcTicks > 0
-                ? new DateTime(document.UpdatedAtUtcTicks, DateTimeKind.Utc)
-                : DateTime.SpecifyKind(document.UpdatedAt, DateTimeKind.Utc),
+            DateTime.SpecifyKind(document.UpdatedAt, DateTimeKind.Utc),
             document.Version);
     }
 
@@ -212,7 +211,7 @@ public sealed class TripNotificationSubscriptionRepository
             UserId = subscription.UserId,
             IsEnabled = subscription.IsEnabled,
             SeenThroughSequence = subscription.SeenThroughSequence,
-            UpdatedAtUtcTicks = subscription.UpdatedAtUtc.Ticks,
+            PendingOperationKeys = subscription.PendingOperationKeys.ToList(),
             CreatedAt = subscription.CreatedAtUtc,
             UpdatedAt = subscription.UpdatedAtUtc,
             Version = subscription.Version,

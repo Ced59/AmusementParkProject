@@ -35,8 +35,12 @@ export class TripNotificationFacade {
       return;
     }
 
+    const tripChanged: boolean = normalizedId !== this.tripPlanId;
     const generation: number = ++this.requestGeneration;
     this.tripPlanId = normalizedId;
+    if (tripChanged) {
+      this.stateSignal.set(null);
+    }
     this.loadingSignal.set(true);
     if (clearError) {
       this.errorSignal.set(false);
@@ -77,7 +81,10 @@ export class TripNotificationFacade {
 
   markRead(): void {
     const state: TripNotificationState | null = this.stateSignal();
-    if (!state?.enabled || state.unreadCount === 0 || !this.tripPlanId || this.savingSignal()) {
+    if (!state?.enabled
+      || state.unreadCount === 0
+      || !this.tripPlanId
+      || this.savingSignal()) {
       return;
     }
 

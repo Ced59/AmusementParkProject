@@ -94,14 +94,14 @@ public sealed class TripNotificationService
                     new TripNotificationStateResult(false, 0, 0, false));
             }
 
-            long latestSequence = await this.audit.GetLatestSequenceAsync(
+            TripNotificationBoundary creationBoundary = await this.audit.GetNotificationBoundaryAsync(
                 access.Trip.Id,
                 cancellationToken);
             current = TripNotificationSubscription.CreateEnabled(
                 access.Trip.Id,
                 access.Member.Id,
                 access.UserId,
-                latestSequence,
+                creationBoundary,
                 this.timeProvider.GetUtcNow().UtcDateTime);
             if (!await this.subscriptions.CreateAsync(current, cancellationToken))
             {
@@ -135,8 +135,10 @@ public sealed class TripNotificationService
                 await this.BuildStateAsync(access, current, cancellationToken));
         }
 
-        long sequence = await this.audit.GetLatestSequenceAsync(access.Trip.Id, cancellationToken);
-        current.SetEnabled(enabled, sequence, this.timeProvider.GetUtcNow().UtcDateTime);
+        TripNotificationBoundary boundary = enabled
+            ? await this.audit.GetNotificationBoundaryAsync(access.Trip.Id, cancellationToken)
+            : new TripNotificationBoundary(current.SeenThroughSequence);
+        current.SetEnabled(enabled, boundary, this.timeProvider.GetUtcNow().UtcDateTime);
         if (!await this.subscriptions.ReplaceAsync(current, expectedVersion, cancellationToken))
         {
             TripNotificationSubscription? concurrent = await this.subscriptions.GetAsync(
@@ -187,11 +189,11 @@ public sealed class TripNotificationService
             return Changed(current.Version);
         }
 
-        long latestSequence = await this.audit.GetLatestSequenceAsync(
+        TripNotificationBoundary boundary = await this.audit.GetNotificationBoundaryAsync(
             access.Trip.Id,
             cancellationToken);
         long previousVersion = current.Version;
-        current.MarkSeenThrough(latestSequence, this.timeProvider.GetUtcNow().UtcDateTime);
+        current.MarkSeenThrough(boundary, this.timeProvider.GetUtcNow().UtcDateTime);
         if (current.Version != previousVersion
             && !await this.subscriptions.ReplaceAsync(current, expectedVersion, cancellationToken))
         {
@@ -239,7 +241,7 @@ public sealed class TripNotificationService
             access.Trip.Id,
             access.Member.Id,
             subscription.SeenThroughSequence,
-            subscription.UpdatedAtUtc,
+            subscription.PendingOperationKeys,
             TripNotificationPolicy.MaximumUnreadCount + 1,
             cancellationToken);
         return new TripNotificationStateResult(

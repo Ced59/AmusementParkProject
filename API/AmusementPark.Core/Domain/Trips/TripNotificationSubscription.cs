@@ -11,6 +11,7 @@ public sealed class TripNotificationSubscription
         string userId,
         bool isEnabled,
         long seenThroughSequence,
+        IEnumerable<string>? pendingOperationKeys,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         long version)
@@ -34,6 +35,9 @@ public sealed class TripNotificationSubscription
         this.MemberId = memberId;
         this.IsEnabled = isEnabled;
         this.SeenThroughSequence = seenThroughSequence;
+        this.PendingOperationKeys = new TripNotificationBoundary(
+            seenThroughSequence,
+            pendingOperationKeys).PendingOperationKeys;
         this.CreatedAtUtc = createdAtUtc;
         this.UpdatedAtUtc = updatedAtUtc;
         this.Version = version;
@@ -51,6 +55,8 @@ public sealed class TripNotificationSubscription
 
     public long SeenThroughSequence { get; private set; }
 
+    public IReadOnlyCollection<string> PendingOperationKeys { get; private set; }
+
     public DateTime CreatedAtUtc { get; }
 
     public DateTime UpdatedAtUtc { get; private set; }
@@ -61,16 +67,18 @@ public sealed class TripNotificationSubscription
         TripPlanId tripPlanId,
         TripMemberId memberId,
         string userId,
-        long currentSequence,
+        TripNotificationBoundary boundary,
         DateTime nowUtc)
     {
+        ArgumentNullException.ThrowIfNull(boundary);
         return new TripNotificationSubscription(
             Guid.NewGuid().ToString("N"),
             tripPlanId,
             memberId,
             userId,
             true,
-            currentSequence,
+            boundary.Sequence,
+            boundary.PendingOperationKeys,
             nowUtc,
             nowUtc,
             1);
@@ -83,6 +91,7 @@ public sealed class TripNotificationSubscription
         string userId,
         bool isEnabled,
         long seenThroughSequence,
+        IEnumerable<string>? pendingOperationKeys,
         DateTime createdAtUtc,
         DateTime updatedAtUtc,
         long version)
@@ -94,14 +103,19 @@ public sealed class TripNotificationSubscription
             userId,
             isEnabled,
             seenThroughSequence,
+            pendingOperationKeys,
             createdAtUtc,
             updatedAtUtc,
             version);
     }
 
-    public void SetEnabled(bool enabled, long currentSequence, DateTime nowUtc)
+    public void SetEnabled(
+        bool enabled,
+        TripNotificationBoundary boundary,
+        DateTime nowUtc)
     {
-        this.ValidateMutation(currentSequence, nowUtc);
+        ArgumentNullException.ThrowIfNull(boundary);
+        this.ValidateMutation(boundary.Sequence, nowUtc);
         if (this.IsEnabled == enabled)
         {
             return;
@@ -110,22 +124,38 @@ public sealed class TripNotificationSubscription
         this.IsEnabled = enabled;
         if (enabled)
         {
-            this.SeenThroughSequence = currentSequence;
+            this.ApplyBoundary(boundary);
+        }
+        else
+        {
+            this.PendingOperationKeys = Array.Empty<string>();
         }
 
         this.CommitMutation(nowUtc);
     }
 
-    public void MarkSeenThrough(long currentSequence, DateTime nowUtc)
+    public void MarkSeenThrough(TripNotificationBoundary boundary, DateTime nowUtc)
     {
-        this.ValidateMutation(currentSequence, nowUtc);
-        if (!this.IsEnabled || currentSequence <= this.SeenThroughSequence)
+        ArgumentNullException.ThrowIfNull(boundary);
+        this.ValidateMutation(boundary.Sequence, nowUtc);
+        if (!this.IsEnabled
+            || boundary.Sequence < this.SeenThroughSequence
+            || (boundary.Sequence == this.SeenThroughSequence
+                && boundary.PendingOperationKeys.SequenceEqual(
+                    this.PendingOperationKeys,
+                    StringComparer.Ordinal)))
         {
             return;
         }
 
-        this.SeenThroughSequence = currentSequence;
+        this.ApplyBoundary(boundary);
         this.CommitMutation(nowUtc);
+    }
+
+    private void ApplyBoundary(TripNotificationBoundary boundary)
+    {
+        this.SeenThroughSequence = Math.Max(this.SeenThroughSequence, boundary.Sequence);
+        this.PendingOperationKeys = boundary.PendingOperationKeys.ToArray();
     }
 
     private void ValidateMutation(long currentSequence, DateTime nowUtc)

@@ -36,9 +36,6 @@ public sealed class TripActivityPendingDocument
     [BsonElement("occurredAtUtc")]
     public DateTime OccurredAtUtc { get; set; }
 
-    [BsonElement("occurredAtUtcTicks")]
-    public long OccurredAtUtcTicks { get; set; }
-
     [BsonElement("childLeaseOperationId")]
     [BsonIgnoreIfNull]
     public string? ChildLeaseOperationId { get; set; }
@@ -64,7 +61,6 @@ public sealed class TripActivityPendingDocument
             OperationKey = activity.OperationKey,
             AffectedCount = activity.AffectedCount,
             OccurredAtUtc = activity.OccurredAtUtc,
-            OccurredAtUtcTicks = activity.OccurredAtUtc.Ticks,
             ChildLeaseOperationId = activity.ChildLeaseOperationId,
             ChildLeaseEpoch = activity.ChildLeaseEpoch,
             ChildLeaseGeneration = activity.ChildLeaseGeneration,
@@ -82,9 +78,7 @@ public sealed class TripActivityPendingDocument
             this.Kind,
             this.OperationKey,
             this.AffectedCount,
-            this.OccurredAtUtcTicks > 0
-                ? new DateTime(this.OccurredAtUtcTicks, DateTimeKind.Utc)
-                : DateTime.SpecifyKind(this.OccurredAtUtc, DateTimeKind.Utc),
+            DateTime.SpecifyKind(this.OccurredAtUtc, DateTimeKind.Utc),
             this.ChildLeaseOperationId,
             this.ChildLeaseEpoch,
             this.ChildLeaseGeneration);

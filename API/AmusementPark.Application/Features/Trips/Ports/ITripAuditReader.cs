@@ -10,7 +10,7 @@ public interface ITripAuditReader
         int limit,
         CancellationToken cancellationToken);
 
-    Task<long> GetLatestSequenceAsync(
+    Task<TripNotificationBoundary> GetNotificationBoundaryAsync(
         TripPlanId tripPlanId,
         CancellationToken cancellationToken);
 
@@ -18,7 +18,7 @@ public interface ITripAuditReader
         TripPlanId tripPlanId,
         TripMemberId currentMemberId,
         long afterSequence,
-        DateTime occurredAfterUtc,
+        IReadOnlyCollection<string> excludedOperationKeys,
         int limit,
         CancellationToken cancellationToken);
 }

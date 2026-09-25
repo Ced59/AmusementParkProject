@@ -14,12 +14,13 @@ public sealed class TripNotificationSubscriptionTests
             TripPlanId.Parse("trip-1"),
             TripMemberId.Parse("member-1"),
             "user-1",
-            12,
+            new TripNotificationBoundary(12, new[] { "pending-1" }),
             nowUtc);
 
         Assert.True(subscription.IsEnabled);
         Assert.Equal(TripMemberId.Parse("member-1"), subscription.MemberId);
         Assert.Equal(12, subscription.SeenThroughSequence);
+        Assert.Equal(new[] { "pending-1" }, subscription.PendingOperationKeys);
         Assert.Equal(1, subscription.Version);
     }
 
@@ -31,14 +32,18 @@ public sealed class TripNotificationSubscriptionTests
             TripPlanId.Parse("trip-1"),
             TripMemberId.Parse("member-1"),
             "user-1",
-            4,
+            new TripNotificationBoundary(4),
             nowUtc);
 
-        subscription.SetEnabled(false, 8, nowUtc.AddMinutes(1));
-        subscription.SetEnabled(true, 11, nowUtc.AddMinutes(2));
+        subscription.SetEnabled(false, new TripNotificationBoundary(8), nowUtc.AddMinutes(1));
+        subscription.SetEnabled(
+            true,
+            new TripNotificationBoundary(11, new[] { "pending-2" }),
+            nowUtc.AddMinutes(2));
 
         Assert.True(subscription.IsEnabled);
         Assert.Equal(11, subscription.SeenThroughSequence);
+        Assert.Equal(new[] { "pending-2" }, subscription.PendingOperationKeys);
         Assert.Equal(3, subscription.Version);
     }
 
@@ -50,13 +55,33 @@ public sealed class TripNotificationSubscriptionTests
             TripPlanId.Parse("trip-1"),
             TripMemberId.Parse("member-1"),
             "user-1",
-            7,
+            new TripNotificationBoundary(7),
             nowUtc);
 
-        subscription.MarkSeenThrough(6, nowUtc.AddMinutes(1));
-        subscription.MarkSeenThrough(10, nowUtc.AddMinutes(2));
+        subscription.MarkSeenThrough(new TripNotificationBoundary(6), nowUtc.AddMinutes(1));
+        subscription.MarkSeenThrough(new TripNotificationBoundary(10), nowUtc.AddMinutes(2));
 
         Assert.Equal(10, subscription.SeenThroughSequence);
+        Assert.Equal(2, subscription.Version);
+    }
+
+    [Fact]
+    public void MarkSeenThrough_ShouldPersistANewPendingFenceAtTheSameSequence()
+    {
+        DateTime nowUtc = new DateTime(2027, 4, 5, 10, 0, 0, DateTimeKind.Utc);
+        TripNotificationSubscription subscription = TripNotificationSubscription.CreateEnabled(
+            TripPlanId.Parse("trip-1"),
+            TripMemberId.Parse("member-1"),
+            "user-1",
+            new TripNotificationBoundary(7, new[] { "pending-1" }),
+            nowUtc);
+
+        subscription.MarkSeenThrough(
+            new TripNotificationBoundary(7, new[] { "pending-2" }),
+            nowUtc.AddMinutes(1));
+
+        Assert.Equal(7, subscription.SeenThroughSequence);
+        Assert.Equal(new[] { "pending-2" }, subscription.PendingOperationKeys);
         Assert.Equal(2, subscription.Version);
     }
 

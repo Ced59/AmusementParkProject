@@ -88,14 +88,13 @@ describe('TripNotificationFacade', () => {
   });
 
   it('lets a different trip supersede an in-flight load', () => {
-    const tripA: Subject<TripNotificationState> = new Subject<TripNotificationState>();
     const tripB: Subject<TripNotificationState> = new Subject<TripNotificationState>();
     const stateA: TripNotificationState = state(false, 1, 0);
     const stateB: TripNotificationState = state(false, 3, 0);
     const enabledB: TripNotificationState = state(true, 4, 0);
     const data: TripNotificationDataPort = {
       get: vi.fn()
-        .mockReturnValueOnce(tripA)
+        .mockReturnValueOnce(of(stateA))
         .mockReturnValueOnce(tripB),
       setEnabled: vi.fn().mockReturnValue(of(enabledB)),
       markRead: vi.fn()
@@ -104,10 +103,12 @@ describe('TripNotificationFacade', () => {
 
     facade.load('trip-a');
     facade.load('trip-b');
+    expect(facade.state()).toBeNull();
+    facade.toggle();
+    expect(data.setEnabled).not.toHaveBeenCalled();
+
     tripB.next(stateB);
     tripB.complete();
-    tripA.next(stateA);
-    tripA.complete();
     facade.toggle();
 
     expect(facade.state()).toEqual(enabledB);

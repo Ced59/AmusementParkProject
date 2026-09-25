@@ -54,7 +54,9 @@ donc ni dupliquée dans MongoDB, ni décidée par le contrôleur ou Angular.
 
 `TripNotificationSubscription` porte les invariants : abonnement individuel,
 identité exacte de l’appartenance, curseur monotone, activation sans historique
-rétroactif et version optimiste.
+rétroactif, opérations durables encore en attente au moment du jalon et version
+optimiste. `TripNotificationBoundary` réunit cette séquence et ces identités
+d’opération sans dépendre de l’horloge d’un serveur.
 `TripNotificationPolicy` centralise les types d’activité significatifs et borne
 le compteur visible à 99, avec un indicateur `99+`.
 
@@ -64,8 +66,8 @@ le compteur visible à 99, avec un indicateur `99+`.
 
 1. vérifie l’accès actif au voyage ;
 2. charge l’abonnement du membre ;
-3. demande au journal les événements importants après son double jalon
-   séquence/date ;
+3. demande au journal les événements importants après sa séquence monotone,
+   hors opérations qui étaient encore en attente au moment du jalon ;
 4. exclut l’identité membre courante au niveau de la requête ;
 5. applique une écriture optimiste lors de l’activation, désactivation ou lecture.
 
@@ -92,16 +94,16 @@ ni aucun document métier complet, et ne déclenche aucune requête par voyage o
 par membre.
 
 La lecture est bornée à 100 événements (`99 + preuve qu’il en reste`) et utilise
-les index du journal sur `tripPlanId`, `sequence` et `createdAt`. La séquence
-écarte l’activité déjà matérialisée ; `updatedAt`, date du dernier jalon lu,
-écarte aussi un marqueur plus ancien matérialisé en retard. La précision native de
-MongoDB étant limitée à la milliseconde pour les dates, le marqueur durable,
-l’événement et l’abonnement conservent en plus les ticks UTC exacts. La lecture
-exige une séquence et des ticks strictement supérieurs au jalon : un événement
-antérieur matérialisé tardivement reste donc exclu, tandis qu’un événement
-postérieur dans la même milliseconde reste visible. L’unicité de
-l’abonnement est protégée par un index MongoDB, pas par une vérification en
-mémoire.
+les index du journal sur `tripPlanId`, `sequence` et `createdAt`. Lors de
+l’activation ou de « tout marquer comme vu », le repository photographie d’abord
+les clés des marqueurs durables encore en attente dans les six collections du
+voyage, puis lit la dernière séquence matérialisée. La séquence écarte ainsi tout
+ce qui est déjà journalisé ; les clés photographiées écartent les mêmes opérations
+si elles ne sont matérialisées que plus tard. Une opération créée pendant la
+photographie est soit déjà couverte par la dernière séquence, soit considérée
+comme postérieure au jalon. Cette borne ne compare aucune horloge et reste donc
+sûre entre plusieurs instances. L’unicité de l’abonnement est protégée par un
+index MongoDB, pas par une vérification en mémoire.
 
 ### WebAPI
 
@@ -128,6 +130,10 @@ les signaux de chargement de la façade sont lus hors suivi réactif afin de ne
 jamais transformer l’actualisation manuelle en polling involontaire. Chaque
 requête reçoit en outre une génération locale : une ancienne actualisation qui
 termine après une activation ou une lecture ne peut pas rétablir l’ancien état.
+Lors d’une navigation vers un autre voyage, l’ancien état est immédiatement
+retiré et toutes les mutations restent neutralisées jusqu’à la réponse du nouveau
+voyage ; une version appartenant au voyage précédent ne peut donc jamais être
+envoyée avec le nouvel identifiant.
 
 La page d’administration « Pilote des voyages » est lazy-loaded et présente les
 indicateurs agrégés, l’état du rattrapage d’audit et une répartition graphique
@@ -145,9 +151,10 @@ trip-notification-subscriptions {
   userId: string,              // propriétaire de l’opt-in
   isEnabled: boolean,
   seenThroughSequence: long,   // dernière séquence globale reconnue
+  pendingOperationKeys: string[], // opérations déjà engagées mais pas matérialisées au jalon
   version: long,               // concurrence optimiste
   createdAt: date,
-  updatedAt: date              // date UTC du dernier jalon lu/préféré
+  updatedAt: date              // date UTC de la dernière mutation de l’abonnement
 }
 
 trip-plans {
@@ -181,9 +188,14 @@ classDiagram
       +MemberId TripMemberId
       +IsEnabled bool
       +SeenThroughSequence long
+      +PendingOperationKeys string[]
       +Version long
-      +SetEnabled(enabled, sequence, now)
-      +MarkSeenThrough(sequence, now)
+      +SetEnabled(enabled, boundary, now)
+      +MarkSeenThrough(boundary, now)
+    }
+    class TripNotificationBoundary {
+      +Sequence long
+      +PendingOperationKeys string[]
     }
     class TripNotificationPolicy {
       +ImportantActivityKinds
@@ -212,6 +224,7 @@ classDiagram
     SetTripNotificationsCommandHandler --> TripNotificationService
     MarkTripNotificationsReadCommandHandler --> TripNotificationService
     TripNotificationService --> TripNotificationSubscription
+    TripNotificationSubscription --> TripNotificationBoundary
     TripNotificationService --> TripNotificationPolicy
     TripNotificationService --> ITripNotificationSubscriptionRepository
     TripNotificationService --> ITripAuditReader
@@ -243,9 +256,10 @@ sequenceDiagram
     M->>UI: Active le suivi
     UI->>API: PUT enabled=true, expectedVersion=0
     API->>APP: SetEnabledAsync
-    APP->>AUDIT: Dernière séquence matérialisée
-    AUDIT-->>APP: 42
-    APP->>SUB: Création (séquence=42, date=maintenant)
+    APP->>AUDIT: Jalon monotone du journal
+    AUDIT->>AUDIT: Photographie les opérations en attente
+    AUDIT-->>APP: Séquence 42 + clés en attente
+    APP->>SUB: Création avec ce jalon
     SUB-->>APP: Succès unique
     APP-->>UI: Activé, 0 nouveauté
 
@@ -255,12 +269,12 @@ sequenceDiagram
     UI->>API: GET état
     API->>APP: GetAsync
     APP->>SUB: Charge le curseur 42
-    APP->>AUDIT: Importants après séquence 42 ET date d’activation
+    APP->>AUDIT: Importants après 42, hors clés déjà engagées au jalon
     AUDIT-->>APP: 3 événements
     APP-->>UI: 3 nouveautés
     M->>UI: Tout marquer comme vu
     UI->>API: POST read, expectedVersion
-    APP->>AUDIT: Dernière séquence
+    APP->>AUDIT: Nouveau jalon monotone
     APP->>SUB: Replace si version inchangée
     APP-->>UI: 0 nouveauté, nouvelle version
 ```
@@ -306,13 +320,13 @@ le compte et la version lus par le balayage. Si un nouvel abonnement remplace
 l’ancien pendant cette vérification, il ne peut donc pas être supprimé par la
 purge devenue obsolète.
 
-Le jalon de lecture combine la séquence et l’instant UTC. Un marqueur créé avant
-l’activation ou avant « tout marquer comme vu », mais matérialisé en retard,
-reçoit une séquence supérieure sans devenir artificiellement une nouveauté :
-sa date d’occurrence reste antérieure au jalon. Une vraie modification
-postérieure satisfait les deux bornes et reste visible, y compris lorsque son
-horodatage BSON partage la milliseconde du jalon grâce à ses ticks UTC exacts.
-À l’inverse, une action
+Le jalon de lecture combine la séquence monotone du journal et l’identité des
+opérations durables encore en attente. Un marqueur créé avant l’activation ou
+avant « tout marquer comme vu », mais matérialisé en retard, reçoit une séquence
+supérieure sans devenir artificiellement une nouveauté : sa clé faisait déjà
+partie du jalon. Une vraie modification engagée après la photographie ne possède
+pas cette clé et reste visible, indépendamment de l’heure des instances ou de la
+précision BSON. À l’inverse, une action
 personnelle est filtrée mais sa séquence peut être franchie sans risque, puisque
 le curseur est global au journal du voyage.
 
@@ -357,20 +371,22 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
 
 ## 11. Preuves
 
-- 7 tests Core : activation, réactivation, curseur monotone et politique ;
+- 8 tests Core : activation, réactivation, curseur monotone, renouvellement de
+  la clôture des opérations en attente et politique ;
 - 14 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
   concurrence, compensations de départ/annulation, réconciliation des
   abonnements orphelins ou issus d’une ancienne appartenance et métriques
   agrégées sans contenu privé ;
-- 26 tests Application du périmètre : notifications, départ, reprise de purge
+- 27 tests Application du périmètre : notifications, départ, reprise de purge
   et pilotage ;
 - 24 tests Infrastructure du périmètre : index, pagination de purge, clôture
-  d’admission pendant une purge, filtre privé, conservation des bornes UTC à
-  la précision du tick, comptages scalaires et agrégations, résolution du
+  d’admission pendant une purge, filtre privé, photographie ciblée des opérations
+  en attente, comptages scalaires et agrégations, résolution du
   nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;
 - 23 tests Angular ciblés : façades, effet sans polling, réponse tardive
-  neutralisée, navigation entre voyages isolée, erreur de mutation conservée
+  neutralisée, navigation entre voyages isolée et non actionnable pendant son
+  chargement, erreur de mutation conservée
   après reprise, libellés agrégés, navigation admin et
   contrats responsive ;
 - build WebAPI Release réussi ;

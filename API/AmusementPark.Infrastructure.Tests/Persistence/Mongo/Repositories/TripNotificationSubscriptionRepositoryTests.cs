@@ -11,10 +11,10 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class TripNotificationSubscriptionRepositoryTests
 {
     [Fact]
-    public void DocumentRoundTrip_ShouldPreserveTheExactNotificationBoundary()
+    public void DocumentRoundTrip_ShouldPreserveTheMonotonicNotificationBoundary()
     {
         DateTime createdAtUtc = new(2027, 6, 1, 8, 0, 0, DateTimeKind.Utc);
-        DateTime updatedAtUtc = new DateTime(createdAtUtc.Ticks + 4321, DateTimeKind.Utc);
+        DateTime updatedAtUtc = createdAtUtc.AddMilliseconds(1);
         TripNotificationSubscription subscription = TripNotificationSubscription.Restore(
             "subscription-1",
             TripPlanId.Parse("trip-1"),
@@ -22,6 +22,7 @@ public sealed class TripNotificationSubscriptionRepositoryTests
             "user-1",
             true,
             12,
+            new[] { "pending-before-boundary" },
             createdAtUtc,
             updatedAtUtc,
             4);
@@ -34,7 +35,8 @@ public sealed class TripNotificationSubscriptionRepositoryTests
         TripNotificationSubscription roundTrip =
             TripNotificationSubscriptionRepository.ToDomain(roundTripDocument);
 
-        Assert.Equal(updatedAtUtc.Ticks, roundTripDocument.UpdatedAtUtcTicks);
+        Assert.Equal(new[] { "pending-before-boundary" }, roundTripDocument.PendingOperationKeys);
+        Assert.Equal(new[] { "pending-before-boundary" }, roundTrip.PendingOperationKeys);
         Assert.Equal(updatedAtUtc, roundTrip.UpdatedAtUtc);
     }
 
@@ -49,6 +51,7 @@ public sealed class TripNotificationSubscriptionRepositoryTests
             "user-1",
             true,
             12,
+            Array.Empty<string>(),
             nowUtc,
             nowUtc,
             4);

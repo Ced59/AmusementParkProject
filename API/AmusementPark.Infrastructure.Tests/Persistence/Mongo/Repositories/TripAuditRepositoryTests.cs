@@ -48,24 +48,35 @@ public sealed class TripAuditRepositoryTests
     [Fact]
     public void ImportantNotificationFilter_ShouldExcludeTheCurrentActorAndPrivateNoise()
     {
-        DateTime baselineUtc = new(2027, 4, 5, 10, 0, 0, DateTimeKind.Utc);
         BsonDocument filter = Render(TripAuditRepository.BuildImportantAfterFilter(
             TripPlanId.Parse("trip-1"),
             TripMemberId.Parse("member-1"),
             12,
-            baselineUtc));
+            new[] { "pending-before-boundary" }));
         string rendered = filter.ToJson();
 
         Assert.Contains("trip-1", rendered, StringComparison.Ordinal);
         Assert.Contains("member-1", rendered, StringComparison.Ordinal);
         Assert.Contains("$ne", rendered, StringComparison.Ordinal);
         Assert.Contains("$gt", rendered, StringComparison.Ordinal);
-        Assert.DoesNotContain("$gte", rendered, StringComparison.Ordinal);
-        Assert.Contains("occurredAtUtcTicks", rendered, StringComparison.Ordinal);
-        Assert.Contains(baselineUtc.Ticks.ToString(), rendered, StringComparison.Ordinal);
+        Assert.Contains("$nin", rendered, StringComparison.Ordinal);
+        Assert.Contains("pending-before-boundary", rendered, StringComparison.Ordinal);
         Assert.Contains(TripActivityKind.TripRenamed.ToString(), rendered, StringComparison.Ordinal);
         Assert.DoesNotContain(TripActivityKind.PlanExported.ToString(), rendered, StringComparison.Ordinal);
         Assert.DoesNotContain(TripActivityKind.TripCreated.ToString(), rendered, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void NotificationBoundaryPipeline_ShouldSnapshotOnlyTheRequestedTripMarkers()
+    {
+        BsonDocument[] pipeline = TripAuditRepository.BuildNotificationBoundaryPipeline(
+            TripPlanId.Parse("trip-1"));
+        string rendered = pipeline.ToJson();
+
+        Assert.Contains("pendingAuditEvents", rendered, StringComparison.Ordinal);
+        Assert.Contains("$filter", rendered, StringComparison.Ordinal);
+        Assert.Contains("$$pending.tripPlanId", rendered, StringComparison.Ordinal);
+        Assert.Contains("trip-1", rendered, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -92,29 +103,6 @@ public sealed class TripAuditRepositoryTests
     }
 
     [Fact]
-    public void PendingDocument_ShouldPreserveSubMillisecondOccurrenceOrdering()
-    {
-        DateTime occurredAtUtc = new DateTime(
-            new DateTime(2027, 4, 5, 10, 0, 0, DateTimeKind.Utc).Ticks + 4321,
-            DateTimeKind.Utc);
-        TripActivityWrite activity = new(
-            TripPlanId.Parse("trip-1"),
-            TripMemberId.Parse("member-1"),
-            TripEffectiveRole.Owner,
-            TripActivityKind.TripRenamed,
-            "root:TripRenamed:2",
-            1,
-            occurredAtUtc);
-
-        TripActivityPendingDocument document = TripActivityPendingDocument.FromWrite(activity);
-        TripActivityPendingDocument roundTrip = BsonSerializer.Deserialize<TripActivityPendingDocument>(
-            document.ToBsonDocument());
-
-        Assert.Equal(occurredAtUtc.Ticks, roundTrip.OccurredAtUtcTicks);
-        Assert.Equal(occurredAtUtc, roundTrip.ToWrite().OccurredAtUtc);
-    }
-
-    [Fact]
     public void Document_ShouldNeverPersistAnAccountIdentifier()
     {
         TripActivityEventDocument document = new TripActivityEventDocument
@@ -126,7 +114,6 @@ public sealed class TripAuditRepositoryTests
             OperationKey = "root:TripRenamed:2",
             Sequence = 1,
             AffectedCount = 1,
-            OccurredAtUtcTicks = DateTime.UtcNow.Ticks,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
         };

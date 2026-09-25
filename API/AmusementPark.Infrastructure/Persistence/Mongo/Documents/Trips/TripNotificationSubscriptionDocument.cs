@@ -21,8 +21,8 @@ public sealed class TripNotificationSubscriptionDocument : MongoDocumentBase
     [BsonElement("seenThroughSequence")]
     public long SeenThroughSequence { get; set; }
 
-    [BsonElement("updatedAtUtcTicks")]
-    public long UpdatedAtUtcTicks { get; set; }
+    [BsonElement("pendingOperationKeys")]
+    public List<string> PendingOperationKeys { get; set; } = new();
 
     [BsonElement("version")]
     public long Version { get; set; }

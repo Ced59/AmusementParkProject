@@ -44,13 +44,15 @@ public sealed class TripNotificationServiceTests
         DateTime baselineUtc = new(2027, 4, 5, 10, 0, 0, DateTimeKind.Utc);
         Mock<ITripPlanRepository> plans = AccessiblePlans(trip);
         Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
-        audit.Setup(reader => reader.GetLatestSequenceAsync(trip.Id, CancellationToken.None))
-            .ReturnsAsync(8);
+        audit.Setup(reader => reader.GetNotificationBoundaryAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(new TripNotificationBoundary(8, new[] { "pending-before-opt-in" }));
         audit.Setup(reader => reader.ListImportantAfterAsync(
                 trip.Id,
                 owner.Id,
                 8,
-                baselineUtc,
+                It.Is<IReadOnlyCollection<string>>(keys => keys.SequenceEqual(
+                    new[] { "pending-before-opt-in" },
+                    StringComparer.Ordinal)),
                 TripNotificationPolicy.MaximumUnreadCount + 1,
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<TripActivityEvent>());
@@ -84,6 +86,9 @@ public sealed class TripNotificationServiceTests
 
         Assert.True(Assert.IsType<TripNotificationStateResult>(result.Value).Enabled);
         Assert.Equal(8, Assert.IsType<TripNotificationSubscription>(created).SeenThroughSequence);
+        Assert.Equal(
+            new[] { "pending-before-opt-in" },
+            Assert.IsType<TripNotificationSubscription>(created).PendingOperationKeys);
         Assert.Equal(baselineUtc, created.UpdatedAtUtc);
         subscriptions.VerifyAll();
         audit.VerifyAll();
@@ -102,8 +107,8 @@ public sealed class TripNotificationServiceTests
             .ReturnsAsync(trip)
             .ReturnsAsync((TripPlan?)null);
         Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
-        audit.Setup(reader => reader.GetLatestSequenceAsync(trip.Id, CancellationToken.None))
-            .ReturnsAsync(8);
+        audit.Setup(reader => reader.GetNotificationBoundaryAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(new TripNotificationBoundary(8));
         Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
         subscriptions.Setup(repository => repository.GetAsync(
                 trip.Id,
@@ -155,8 +160,8 @@ public sealed class TripNotificationServiceTests
                 CancellationToken.None))
             .ReturnsAsync((TripPlan?)null);
         Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
-        audit.Setup(reader => reader.GetLatestSequenceAsync(trip.Id, cancellation.Token))
-            .ReturnsAsync(8);
+        audit.Setup(reader => reader.GetNotificationBoundaryAsync(trip.Id, cancellation.Token))
+            .ReturnsAsync(new TripNotificationBoundary(8));
         Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
         subscriptions.Setup(repository => repository.GetAsync(
                 trip.Id,
@@ -206,8 +211,8 @@ public sealed class TripNotificationServiceTests
             .ReturnsAsync(trip)
             .ReturnsAsync((TripPlan?)null);
         Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
-        audit.Setup(reader => reader.GetLatestSequenceAsync(trip.Id, CancellationToken.None))
-            .ReturnsAsync(8);
+        audit.Setup(reader => reader.GetNotificationBoundaryAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(new TripNotificationBoundary(8));
         Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
         subscriptions.Setup(repository => repository.GetAsync(
                 trip.Id,
@@ -251,6 +256,7 @@ public sealed class TripNotificationServiceTests
             trip.OwnerUserId,
             true,
             2,
+            new[] { "pending-before-read" },
             trip.CreatedAtUtc,
             trip.CreatedAtUtc,
             4);
@@ -260,7 +266,7 @@ public sealed class TripNotificationServiceTests
                 trip.Id,
                 owner.Id,
                 2,
-                subscription.UpdatedAtUtc,
+                subscription.PendingOperationKeys,
                 TripNotificationPolicy.MaximumUnreadCount + 1,
                 CancellationToken.None))
             .ReturnsAsync(new[]
@@ -285,6 +291,71 @@ public sealed class TripNotificationServiceTests
     }
 
     [Fact]
+    public async Task MarkReadAsync_ShouldPersistPendingOperationsWhenTheSequenceIsUnchanged()
+    {
+        TripPlan trip = CreateTrip();
+        TripMember owner = Assert.Single(trip.Members);
+        DateTime nowUtc = trip.CreatedAtUtc.AddMinutes(5);
+        TripNotificationSubscription subscription = TripNotificationSubscription.Restore(
+            "subscription-1",
+            trip.Id,
+            owner.Id,
+            trip.OwnerUserId,
+            true,
+            8,
+            Array.Empty<string>(),
+            trip.CreatedAtUtc,
+            trip.CreatedAtUtc,
+            4);
+        Mock<ITripPlanRepository> plans = AccessiblePlans(trip);
+        Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
+        audit.Setup(reader => reader.GetNotificationBoundaryAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(new TripNotificationBoundary(8, new[] { "pending-before-read" }));
+        audit.Setup(reader => reader.ListImportantAfterAsync(
+                trip.Id,
+                owner.Id,
+                8,
+                It.Is<IReadOnlyCollection<string>>(keys => keys.SequenceEqual(
+                    new[] { "pending-before-read" },
+                    StringComparer.Ordinal)),
+                TripNotificationPolicy.MaximumUnreadCount + 1,
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<TripActivityEvent>());
+        Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.GetAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .ReturnsAsync(subscription);
+        subscriptions.Setup(repository => repository.ReplaceAsync(
+                subscription,
+                4,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        TripNotificationService service = new(
+            plans.Object,
+            audit.Object,
+            subscriptions.Object,
+            clock.Object);
+
+        ApplicationResult<TripNotificationStateResult> result = await service.MarkReadAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            4,
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(5, subscription.Version);
+        Assert.Equal(new[] { "pending-before-read" }, subscription.PendingOperationKeys);
+        plans.VerifyAll();
+        audit.VerifyAll();
+        subscriptions.VerifyAll();
+        clock.VerifyAll();
+    }
+
+    [Fact]
     public async Task SetEnabledAsync_ShouldReplaceSubscriptionFromAPreviousMembership()
     {
         TripPlan trip = CreateTrip();
@@ -297,18 +368,19 @@ public sealed class TripNotificationServiceTests
             trip.OwnerUserId,
             true,
             2,
+            Array.Empty<string>(),
             trip.CreatedAtUtc,
             trip.CreatedAtUtc,
             4);
         Mock<ITripPlanRepository> plans = AccessiblePlans(trip);
         Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
-        audit.Setup(reader => reader.GetLatestSequenceAsync(trip.Id, CancellationToken.None))
-            .ReturnsAsync(8);
+        audit.Setup(reader => reader.GetNotificationBoundaryAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(new TripNotificationBoundary(8));
         audit.Setup(reader => reader.ListImportantAfterAsync(
                 trip.Id,
                 owner.Id,
                 8,
-                baselineUtc,
+                Array.Empty<string>(),
                 TripNotificationPolicy.MaximumUnreadCount + 1,
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<TripActivityEvent>());
@@ -364,6 +436,7 @@ public sealed class TripNotificationServiceTests
             trip.OwnerUserId,
             true,
             2,
+            Array.Empty<string>(),
             trip.CreatedAtUtc,
             trip.CreatedAtUtc,
             4);
@@ -374,6 +447,7 @@ public sealed class TripNotificationServiceTests
             trip.OwnerUserId,
             true,
             8,
+            Array.Empty<string>(),
             trip.CreatedAtUtc,
             trip.CreatedAtUtc,
             1);
@@ -419,6 +493,7 @@ public sealed class TripNotificationServiceTests
             trip.OwnerUserId,
             true,
             2,
+            Array.Empty<string>(),
             trip.CreatedAtUtc,
             trip.CreatedAtUtc,
             4);

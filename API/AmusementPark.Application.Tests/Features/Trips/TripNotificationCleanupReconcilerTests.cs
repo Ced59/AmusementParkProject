@@ -204,6 +204,7 @@ public sealed class TripNotificationCleanupReconcilerTests
             userId,
             true,
             0,
+            Array.Empty<string>(),
             NowUtc,
             NowUtc,
             1);

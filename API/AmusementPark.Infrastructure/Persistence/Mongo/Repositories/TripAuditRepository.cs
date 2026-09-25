@@ -287,37 +287,62 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         return documents.Select(ToDomain).ToArray();
     }
 
-    public async Task<long> GetLatestSequenceAsync(
+    public async Task<TripNotificationBoundary> GetNotificationBoundaryAsync(
         TripPlanId tripPlanId,
         CancellationToken cancellationToken)
     {
+        HashSet<string> pendingOperationKeys = new(StringComparer.Ordinal);
+        await AddPendingOperationKeysAsync(
+            this.plans,
+            tripPlanId,
+            pendingOperationKeys,
+            cancellationToken);
+        await AddPendingOperationKeysAsync(
+            this.candidates,
+            tripPlanId,
+            pendingOperationKeys,
+            cancellationToken);
+        await AddPendingOperationKeysAsync(
+            this.days,
+            tripPlanId,
+            pendingOperationKeys,
+            cancellationToken);
+        await AddPendingOperationKeysAsync(
+            this.invitations,
+            tripPlanId,
+            pendingOperationKeys,
+            cancellationToken);
+        await AddPendingOperationKeysAsync(
+            this.preferences,
+            tripPlanId,
+            pendingOperationKeys,
+            cancellationToken);
+        await AddPendingOperationKeysAsync(
+            this.decisions,
+            tripPlanId,
+            pendingOperationKeys,
+            cancellationToken);
+
         TripActivityEventDocument? latest = await this.activities.Find(
                 Builders<TripActivityEventDocument>.Filter.Eq(
                     static document => document.TripPlanId,
                     tripPlanId.Value))
             .SortByDescending(static document => document.Sequence)
             .FirstOrDefaultAsync(cancellationToken);
-        return latest?.Sequence ?? 0;
+        return new TripNotificationBoundary(latest?.Sequence ?? 0, pendingOperationKeys);
     }
 
     public async Task<IReadOnlyCollection<TripActivityEvent>> ListImportantAfterAsync(
         TripPlanId tripPlanId,
         TripMemberId currentMemberId,
         long afterSequence,
-        DateTime occurredAfterUtc,
+        IReadOnlyCollection<string> excludedOperationKeys,
         int limit,
         CancellationToken cancellationToken)
     {
         if (afterSequence < 0)
         {
             throw new ArgumentOutOfRangeException(nameof(afterSequence));
-        }
-
-        if (occurredAfterUtc.Kind != DateTimeKind.Utc)
-        {
-            throw new ArgumentException(
-                "The notification baseline must use UTC.",
-                nameof(occurredAfterUtc));
         }
 
         if (limit is < 1 or > 100)
@@ -330,7 +355,7 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
                     tripPlanId,
                     currentMemberId,
                     afterSequence,
-                    occurredAfterUtc))
+                    excludedOperationKeys))
             .SortBy(static document => document.Sequence)
             .Limit(limit)
             .ToListAsync(cancellationToken);
@@ -341,17 +366,26 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         TripPlanId tripPlanId,
         TripMemberId currentMemberId,
         long afterSequence,
-        DateTime occurredAfterUtc)
+        IReadOnlyCollection<string> excludedOperationKeys)
     {
+        ArgumentNullException.ThrowIfNull(excludedOperationKeys);
         FilterDefinitionBuilder<TripActivityEventDocument> filters =
             Builders<TripActivityEventDocument>.Filter;
-        return filters.Eq(static document => document.TripPlanId, tripPlanId.Value)
+        FilterDefinition<TripActivityEventDocument> filter =
+            filters.Eq(static document => document.TripPlanId, tripPlanId.Value)
             & filters.Gt(static document => document.Sequence, afterSequence)
-            & filters.Gt(static document => document.OccurredAtUtcTicks, occurredAfterUtc.Ticks)
             & filters.Ne(static document => document.ActorMemberId, currentMemberId.Value)
             & filters.In(
                 static document => document.Kind,
                 TripNotificationPolicy.ImportantActivityKinds);
+        string[] excluded = excludedOperationKeys
+            .Where(static value => !string.IsNullOrWhiteSpace(value))
+            .Select(static value => value.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        return excluded.Length == 0
+            ? filter
+            : filter & filters.Nin(static document => document.OperationKey, excluded);
     }
 
     public static IReadOnlyCollection<CreateIndexModel<TripActivityEventDocument>> BuildIndexes()
@@ -458,7 +492,6 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             OperationKey = activity.OperationKey,
             Sequence = updatedPlan.AuditSequence,
             AffectedCount = activity.AffectedCount,
-            OccurredAtUtcTicks = activity.OccurredAtUtc.Ticks,
             CreatedAt = activity.OccurredAtUtc,
             UpdatedAt = activity.OccurredAtUtc,
         };
@@ -653,6 +686,64 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             .Limit(limit)
             .ToListAsync(cancellationToken);
         AddDeserializedMarkers(projected, destination, null);
+    }
+
+    private static async Task AddPendingOperationKeysAsync<TDocument>(
+        IMongoCollection<TDocument> collection,
+        TripPlanId tripPlanId,
+        HashSet<string> destination,
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<BsonDocument> untyped = collection.Database.GetCollection<BsonDocument>(
+            collection.CollectionNamespace.CollectionName);
+        List<BsonDocument> documents = await untyped.Aggregate<BsonDocument>(
+                BuildNotificationBoundaryPipeline(tripPlanId))
+            .ToListAsync(cancellationToken);
+        foreach (BsonDocument document in documents)
+        {
+            if (!document.TryGetValue("pendingAuditEvents", out BsonValue? value)
+                || !value.IsBsonArray)
+            {
+                continue;
+            }
+
+            foreach (BsonValue marker in value.AsBsonArray)
+            {
+                string operationKey = marker.AsBsonDocument
+                    .GetValue("operationKey", string.Empty)
+                    .AsString;
+                if (!string.IsNullOrWhiteSpace(operationKey))
+                {
+                    destination.Add(operationKey);
+                }
+            }
+        }
+    }
+
+    internal static BsonDocument[] BuildNotificationBoundaryPipeline(TripPlanId tripPlanId)
+    {
+        BsonDocument identity = new("tripPlanId", tripPlanId.Value);
+        return new BsonDocument[]
+        {
+            new("$match", new BsonDocument(
+                "pendingAuditEvents",
+                new BsonDocument("$elemMatch", identity))),
+            new("$project", new BsonDocument(
+                "pendingAuditEvents",
+                new BsonDocument("$filter", new BsonDocument
+                {
+                    { "input", "$pendingAuditEvents" },
+                    { "as", "pending" },
+                    {
+                        "cond",
+                        new BsonDocument("$eq", new BsonArray
+                        {
+                            "$$pending.tripPlanId",
+                            tripPlanId.Value,
+                        })
+                    },
+                }))),
+        };
     }
 
     private static async Task AddPendingOperationsAsync<TDocument>(
@@ -961,8 +1052,6 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             document.OperationKey,
             document.Sequence,
             document.AffectedCount,
-            document.OccurredAtUtcTicks > 0
-                ? new DateTime(document.OccurredAtUtcTicks, DateTimeKind.Utc)
-                : DateTime.SpecifyKind(document.CreatedAt, DateTimeKind.Utc));
+            DateTime.SpecifyKind(document.CreatedAt, DateTimeKind.Utc));
     }
 }
