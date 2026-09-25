@@ -1,6 +1,20 @@
 {
-  "version": "5.3.73",
+  "version": "5.3.74",
   "history": [
+    {
+      "version": "5.3.74",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "Le site gagne en fiabilité.",
+        "en": "The site is now more reliable.",
+        "de": "Die Website ist jetzt zuverlässiger.",
+        "nl": "De website is nu betrouwbaarder.",
+        "it": "Il sito è ora più affidabile.",
+        "es": "El sitio es ahora más fiable.",
+        "pl": "Strona działa teraz bardziej niezawodnie.",
+        "pt": "O site está agora mais fiável."
+      }
+    },
     {
       "version": "5.3.73",
       "releasedAt": "2026-09-25",
