@@ -532,7 +532,7 @@ public sealed class TripPassportTransitionServiceTests
     }
 
     [Fact]
-    public async Task ConfirmAsync_WhenReservedAttractionIsNoLongerVisible_ShouldResumePersistedSelection()
+    public async Task ConfirmAsync_WhenCatalogAndTimeZoneChanged_ShouldResumePersistedSelection()
     {
         DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
         DateOnly visitDate = new(2027, 8, 20);
@@ -544,7 +544,7 @@ public sealed class TripPassportTransitionServiceTests
             trip.OwnerUserId,
             "park-1",
             VisitDate.ForDay(2027, 8, 20),
-            "Europe/Paris",
+            "America/New_York",
             LocalServiceDayConvention.UserSelectedServiceDate,
             null,
             null,
@@ -566,13 +566,14 @@ public sealed class TripPassportTransitionServiceTests
                 It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
                 CancellationToken.None))
             .ReturnsAsync(new[] { existingDraft });
-        visits.Setup(repository => repository.ResolveExistingCreationAsync(
-                It.Is<Visit>(visit => visit.ParkId == "park-1" && visit.Date == existingDraft.Date),
-                It.Is<string>(operationId => operationId.StartsWith("trip-passport-visit:", StringComparison.Ordinal)),
+        visits.Setup(repository => repository.ListOwnedCreationOperationVisitIdsAsync(
+                trip.OwnerUserId,
+                It.Is<IReadOnlyCollection<string>>(operationIds =>
+                    operationIds.Single().StartsWith(
+                        "trip-passport-visit:",
+                        StringComparison.Ordinal)),
                 CancellationToken.None))
-            .ReturnsAsync(new IdempotentVisitCreationResult(
-                IdempotentVisitCreationStatus.Replayed,
-                existingDraft));
+            .ReturnsAsync(new[] { existingDraft.Id });
         visits.Setup(repository => repository.GetOwnedAsync(
                 existingDraft.Id,
                 trip.OwnerUserId,

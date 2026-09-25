@@ -121,11 +121,8 @@ public sealed class TripPassportTransitionConfirmer
             localDate);
         bool isTransitionCreation = existingVisit is not null
             && await this.IsTransitionCreationAsync(
-                trip,
-                day,
                 existingVisit,
                 normalizedUserId,
-                localDate,
                 visitOperationId,
                 cancellationToken);
         if (existingVisit is not null && !isTransitionCreation)
@@ -271,30 +268,17 @@ public sealed class TripPassportTransitionConfirmer
     }
 
     private async Task<bool> IsTransitionCreationAsync(
-        TripPlan trip,
-        TripDayPlanResult day,
         Visit existingVisit,
         string userId,
-        DateOnly localDate,
         string visitOperationId,
         CancellationToken cancellationToken)
     {
-        Visit requestedVisit = Visit.Create(
-            VisitId.New(),
-            userId,
-            day.ParkId,
-            VisitDate.ForDay(localDate.Year, localDate.Month, localDate.Day),
-            trip.DestinationTimeZoneId,
-            LocalServiceDayConvention.UserSelectedServiceDate,
-            null,
-            null,
-            this.timeProvider.GetUtcNow().UtcDateTime);
-        IdempotentVisitCreationResult? existingTransition =
-            await this.visits.ResolveExistingCreationAsync(
-                requestedVisit,
-                visitOperationId,
+        IReadOnlyCollection<VisitId> transitionVisitIds =
+            await this.visits.ListOwnedCreationOperationVisitIdsAsync(
+                userId,
+                new[] { visitOperationId },
                 cancellationToken);
-        return existingTransition?.Visit?.Id == existingVisit.Id;
+        return transitionVisitIds.Contains(existingVisit.Id);
     }
 
     private bool TryResolveDestinationToday(TripPlan trip, out DateOnly destinationToday)

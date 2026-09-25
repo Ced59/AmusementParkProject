@@ -319,6 +319,7 @@ participant.
 | aucune attraction d’un autre parc | validation serveur contre le catalogue visible du parc de la journée |
 | pas de doublon de visite | détection membre/parc/date puis clés d’idempotence déterministes |
 | reprise après échec partiel | lectures groupées des empreintes et de l’état du batch, restauration verrouillée des identifiants réservés, exposition `canResume`, puis replay du même brouillon |
+| fuseau modifié après création | la reprise reconnaît l’identité persistée opération/visite sans recalculer une empreinte avec le fuseau courant du voyage |
 | sélection vide réellement terminée | marqueur idempotent `completed` sans occurrence, relu comme une fin et non comme une reprise |
 | suppression sans blocage fantôme | le filtre exact propriétaire/date exclut les documents avec tombstone |
 | suppression d’un brouillon TRIP-12 | résolution du tombstone puis libération ciblée de l’opération de passages avant celle de la visite ; une interruption reste rejouable et le tombstone n’est ni restauré ni supprimé physiquement |
