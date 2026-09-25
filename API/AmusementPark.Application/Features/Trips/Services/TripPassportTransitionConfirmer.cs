@@ -115,12 +115,33 @@ public sealed class TripPassportTransitionConfirmer
             normalizedUserId,
             day.ParkId,
             localDate);
-        bool isTransitionCreation = existingVisit is not null
-            && await this.IsTransitionCreationAsync(
-                existingVisit,
+        string rideOperationId = TripPassportTransitionOperationKeys.Rides(
+            parsedTripId.Value,
+            normalizedUserId,
+            day.ParkId,
+            localDate);
+        IReadOnlyCollection<VisitId> transitionVisitIds =
+            await this.visits.ListOwnedCreationOperationVisitIdsAsync(
                 normalizedUserId,
+                new[] { visitOperationId },
+                cancellationToken);
+        bool isTransitionCreation = existingVisit is not null
+            && transitionVisitIds.Contains(existingVisit.Id);
+        if (existingVisit is null && transitionVisitIds.Count > 0)
+        {
+            VisitId movedVisitId = transitionVisitIds.Single();
+            await this.rideOccurrences.ReleaseBatchCreationOperationAsync(
+                normalizedUserId,
+                movedVisitId,
+                rideOperationId,
+                cancellationToken);
+            await this.visits.ReleaseOwnedCreationOperationAsync(
+                normalizedUserId,
+                movedVisitId,
                 visitOperationId,
                 cancellationToken);
+        }
+
         if (!isTransitionCreation
             && !TripPassportTransitionPolicy.CanConfirmDay(
                 localDate,
@@ -136,11 +157,6 @@ public sealed class TripPassportTransitionConfirmer
                 new ConfirmTripPassportTransitionResult(existingVisit.Id.Value, true, 0));
         }
 
-        string rideOperationId = TripPassportTransitionOperationKeys.Rides(
-            parsedTripId.Value,
-            normalizedUserId,
-            day.ParkId,
-            localDate);
         RideOccurrenceBatchCreationOperationState? existingRideOperation = null;
         if (isTransitionCreation)
         {
@@ -287,20 +303,6 @@ public sealed class TripPassportTransitionConfirmer
                 visitId,
                 wasReplayed,
                 addedRideCount));
-    }
-
-    private async Task<bool> IsTransitionCreationAsync(
-        Visit existingVisit,
-        string userId,
-        string visitOperationId,
-        CancellationToken cancellationToken)
-    {
-        IReadOnlyCollection<VisitId> transitionVisitIds =
-            await this.visits.ListOwnedCreationOperationVisitIdsAsync(
-                userId,
-                new[] { visitOperationId },
-                cancellationToken);
-        return transitionVisitIds.Contains(existingVisit.Id);
     }
 
     private bool TryResolveDestinationToday(TripPlan trip, out DateOnly destinationToday)

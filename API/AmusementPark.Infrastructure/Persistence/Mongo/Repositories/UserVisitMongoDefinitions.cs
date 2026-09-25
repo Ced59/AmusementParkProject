@@ -219,6 +219,19 @@ internal static class UserVisitMongoDefinitions
             & filters.Ne<DateTime?>(DeletedAtUtcPath, null);
     }
 
+    public static FilterDefinition<UserVisitDocument> BuildOwnedCreationOperationReleaseFilter(
+        string userId,
+        string visitId,
+        string operationKeyHash)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return BuildCreationOperationFilter(userId, operationKeyHash)
+            & filters.Eq(
+                static document => document.Id,
+                NormalizeRequired(visitId, nameof(visitId)));
+    }
+
     public static UpdateDefinition<UserVisitDocument> BuildReleaseCreationOperationUpdate()
     {
         UpdateDefinitionBuilder<UserVisitDocument> updates =

@@ -75,6 +75,25 @@ public sealed class TripPassportTransitionOperationLookupTests
     }
 
     [Fact]
+    public void OwnedCreationRelease_ShouldTargetTheExactVisitAndClearItsKey()
+    {
+        VisitId visitId = VisitId.New();
+        FilterDefinition<UserVisitDocument> filter =
+            UserVisitMongoDefinitions.BuildOwnedCreationOperationReleaseFilter(
+                " user-1 ",
+                visitId.Value,
+                " operation-hash ");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(visitId.Value, rendered["_id"].AsString);
+        Assert.Equal(
+            "operation-hash",
+            rendered["creationOperationKeyHash"].AsString);
+    }
+
+    [Fact]
     public void RideLookup_ShouldReturnResumableCompletedAndConflictedCreationOperations()
     {
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =

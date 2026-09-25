@@ -234,6 +234,24 @@ public sealed class UserVisitRepository : IUserVisitRepository
             cancellationToken: cancellationToken);
     }
 
+    public async Task ReleaseOwnedCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string operationKeyHash = UserVisitCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        await this.collection.UpdateOneAsync(
+            UserVisitMongoDefinitions.BuildOwnedCreationOperationReleaseFilter(
+                normalizedUserId,
+                visitId.Value,
+                operationKeyHash),
+            UserVisitMongoDefinitions.BuildReleaseCreationOperationUpdate(),
+            cancellationToken: cancellationToken);
+    }
+
     public async Task<VisitId?> GetDeletedCreationOperationVisitIdAsync(
         string userId,
         string clientOperationId,

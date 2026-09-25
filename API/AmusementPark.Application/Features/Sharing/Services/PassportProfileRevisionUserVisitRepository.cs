@@ -106,6 +106,19 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
             cancellationToken);
     }
 
+    public Task ReleaseOwnedCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.ReleaseOwnedCreationOperationAsync(
+            userId,
+            visitId,
+            clientOperationId,
+            cancellationToken);
+    }
+
     public Task<VisitId?> GetDeletedCreationOperationVisitIdAsync(
         string userId,
         string clientOperationId,

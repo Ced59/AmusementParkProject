@@ -224,6 +224,10 @@ sequenceDiagram
         APP->>DB: Retrouve le tombstone par clé propriétaire
         APP->>DB: Libère son opération de passages puis sa clé de visite
       end
+      opt brouillon TRIP-12 déplacé vers une autre date ou un autre parc
+        APP->>DB: Retrouve la visite active par clé propriétaire
+        APP->>DB: Libère son opération de passages puis détache sa clé de visite
+      end
       APP->>VISIT: Création idempotente du brouillon privé
       VISIT->>DB: Insert ou replay par clé déterministe
       alt au moins une attraction cochée
@@ -331,6 +335,7 @@ participant.
 | sélection vide réellement terminée | marqueur idempotent `completed` sans occurrence, relu comme une fin et non comme une reprise |
 | suppression sans blocage fantôme | le filtre exact propriétaire/date exclut les documents avec tombstone |
 | suppression d’un brouillon TRIP-12 | résolution du tombstone puis libération ciblée de l’opération de passages avant celle de la visite ; une interruption reste rejouable et le tombstone n’est ni restauré ni supprimé physiquement |
+| date ou parc du brouillon modifié dans le Passeport | résolution de la visite active par clé, libération ciblée de son opération de passages puis détachement de sa clé de création ; le brouillon modifié reste intact et la journée d’origine reçoit une nouvelle visite |
 | catalogue modifié après réservation | le serveur reprend le payload réservé complet sans le reconstruire depuis les seules attractions encore visibles |
 | parc reprogrammé le même jour | le parc fait partie des deux clés d’opération ; la transition du nouveau parc ne rejoue pas celle de l’ancien |
 | pas de fuite SSR/cache | route authentifiée et réponse `no-store` |
@@ -356,8 +361,9 @@ dépassements horizontaux et le dégagement de la navigation mobile.
 
 - tests Application : proposition passée/future, préférence personnelle,
   sélection explicite, reprise avec sélection restaurée sans recréer la visite,
-  parc devenu masqué, opération terminale en conflit, lot déjà finalisé et
-  confirmation vide marquée comme terminée ;
+  brouillon déplacé sans replay sur la mauvaise date, parc devenu masqué,
+  opération terminale en conflit, lot déjà finalisé et confirmation vide
+  marquée comme terminée ;
 - tests Infrastructure : requêtes bornées au propriétaire, aux empreintes
   demandées, aux états de création utiles, exclusion des visites supprimées et
   libération ciblée de leur ancienne clé ;

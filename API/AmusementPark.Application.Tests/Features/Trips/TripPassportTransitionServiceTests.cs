@@ -309,6 +309,11 @@ public sealed class TripPassportTransitionServiceTests
                 It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<Visit>());
+        visits.Setup(repository => repository.ListOwnedCreationOperationVisitIdsAsync(
+                trip.OwnerUserId,
+                It.Is<IReadOnlyCollection<string>>(operationIds => operationIds.Count == 1),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<VisitId>());
         MockSequence cleanupSequence = new();
         visits.InSequence(cleanupSequence).Setup(
             repository => repository.GetDeletedCreationOperationVisitIdAsync(
@@ -422,6 +427,168 @@ public sealed class TripPassportTransitionServiceTests
     }
 
     [Fact]
+    public async Task ConfirmAsync_WhenTransitionDraftDateChanged_ShouldReleaseKeysAndCreateOriginalDay()
+    {
+        DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
+        DateOnly visitDate = new(2027, 8, 20);
+        TripPlan trip = CreateTrip(nowUtc, visitDate);
+        TripDayPlan day = CreateDay(trip, "park-1", visitDate, nowUtc);
+        Visit movedVisit = Visit.Create(
+            VisitId.New(),
+            trip.OwnerUserId,
+            "park-1",
+            VisitDate.ForDay(2027, 8, 19),
+            "Europe/Paris",
+            LocalServiceDayConvention.UserSelectedServiceDate,
+            null,
+            null,
+            nowUtc);
+        Visit createdVisit = Visit.Create(
+            VisitId.New(),
+            trip.OwnerUserId,
+            "park-1",
+            VisitDate.ForDay(2027, 8, 20),
+            "Europe/Paris",
+            LocalServiceDayConvention.UserSelectedServiceDate,
+            null,
+            null,
+            nowUtc);
+        string visitOperationId = TripPassportTransitionOperationKeys.Visit(
+            trip.Id.Value,
+            trip.OwnerUserId,
+            "park-1",
+            visitDate);
+        string rideOperationId = TripPassportTransitionOperationKeys.Rides(
+            trip.Id.Value,
+            trip.OwnerUserId,
+            "park-1",
+            visitDate);
+
+        Mock<ITripPlanRepository> trips = CreateTripRepository(trip);
+        Mock<ITripParkCandidateRepository> candidates = CreateCandidateRepository(trip.Id);
+        Mock<ITripDayPlanRepository> dayPlans = CreateDayRepository(trip.Id, new[] { day });
+        Mock<IParkRepository> parks = CreateParkRepository();
+        Mock<IParkItemRepository> parkItems = new(MockBehavior.Strict);
+        parkItems.Setup(repository => repository.GetByParkIdAsync(
+                "park-1",
+                false,
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        Mock<IUserVisitRepository> visits = new(MockBehavior.Strict);
+        visits.Setup(repository => repository.ListOwnedByExactDatesAsync(
+                trip.OwnerUserId,
+                It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<Visit>());
+        visits.Setup(repository => repository.ListOwnedCreationOperationVisitIdsAsync(
+                trip.OwnerUserId,
+                It.Is<IReadOnlyCollection<string>>(operationIds =>
+                    operationIds.SequenceEqual(new[] { visitOperationId })),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { movedVisit.Id });
+        Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
+        MockSequence cleanupSequence = new();
+        rideOccurrences.InSequence(cleanupSequence).Setup(
+            repository => repository.ReleaseBatchCreationOperationAsync(
+                trip.OwnerUserId,
+                movedVisit.Id,
+                rideOperationId,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        visits.InSequence(cleanupSequence).Setup(
+            repository => repository.ReleaseOwnedCreationOperationAsync(
+                trip.OwnerUserId,
+                movedVisit.Id,
+                visitOperationId,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        visits.Setup(repository => repository.GetDeletedCreationOperationVisitIdAsync(
+                trip.OwnerUserId,
+                visitOperationId,
+                CancellationToken.None))
+            .ReturnsAsync((VisitId?)null);
+        visits.Setup(repository => repository.GetOwnedAsync(
+                createdVisit.Id,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .ReturnsAsync(createdVisit);
+        rideOccurrences.Setup(repository => repository.CompleteEmptyBatchCreationOperationAsync(
+                trip.OwnerUserId,
+                createdVisit.Id,
+                rideOperationId,
+                nowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<IPassportLocalDateResolver> dates = new(MockBehavior.Strict);
+        dates.Setup(resolver => resolver.Resolve(nowUtc, "Europe/Paris"))
+            .Returns(new DateOnly(2027, 8, 22));
+        Mock<ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>>> createVisit =
+            new(MockBehavior.Strict);
+        createVisit.Setup(handler => handler.HandleAsync(
+                It.Is<CreateVisitCommand>(command =>
+                    command.ParkId == "park-1"
+                    && command.Year == 2027
+                    && command.Month == 8
+                    && command.Day == 20),
+                CancellationToken.None))
+            .ReturnsAsync(ApplicationResult<CreateVisitResult>.Success(new CreateVisitResult(
+                new VisitResult(
+                    createdVisit.Id.Value,
+                    createdVisit.ParkId,
+                    new VisitDateResult(2027, 8, 20, VisitDatePrecision.Day, false),
+                    createdVisit.TimeZoneId,
+                    createdVisit.ServiceDayConvention,
+                    createdVisit.Status,
+                    createdVisit.Privacy,
+                    null,
+                    null,
+                    createdVisit.Version,
+                    createdVisit.CreatedAtUtc,
+                    createdVisit.UpdatedAtUtc,
+                    null),
+                false)));
+        Mock<ICommandHandler<AddRideOccurrencesBatchCommand,
+            ApplicationResult<CreateRideOccurrencesResult>>> addRides = new(MockBehavior.Strict);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        TripPassportTransitionConfirmer confirmer = new(
+            trips.Object,
+            new TripProgramResultFactory(
+                trips.Object,
+                candidates.Object,
+                dayPlans.Object,
+                parks.Object),
+            parkItems.Object,
+            visits.Object,
+            rideOccurrences.Object,
+            dates.Object,
+            createVisit.Object,
+            addRides.Object,
+            clock.Object);
+
+        ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            visitDate,
+            Array.Empty<string>(),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(createdVisit.Id.Value, result.Value!.VisitId);
+        Assert.False(result.Value.WasReplayed);
+        visits.VerifyAll();
+        rideOccurrences.VerifyAll();
+        createVisit.VerifyAll();
+        trips.VerifyAll();
+        candidates.VerifyAll();
+        dayPlans.VerifyAll();
+        parks.VerifyAll();
+        parkItems.VerifyAll();
+        dates.VerifyAll();
+        clock.VerifyAll();
+    }
+
+    [Fact]
     public async Task ConfirmAsync_WithoutSelectedAttractions_ShouldPersistACompletedEmptyBatch()
     {
         DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
@@ -456,6 +623,11 @@ public sealed class TripPassportTransitionServiceTests
                 It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<Visit>());
+        visits.Setup(repository => repository.ListOwnedCreationOperationVisitIdsAsync(
+                trip.OwnerUserId,
+                It.Is<IReadOnlyCollection<string>>(operationIds => operationIds.Count == 1),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<VisitId>());
         visits.Setup(repository => repository.GetDeletedCreationOperationVisitIdAsync(
                 trip.OwnerUserId,
                 It.Is<string>(operationId => operationId.StartsWith(

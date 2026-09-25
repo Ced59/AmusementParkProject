@@ -53,6 +53,12 @@ public interface IUserVisitRepository
         string clientOperationId,
         CancellationToken cancellationToken);
 
+    Task ReleaseOwnedCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,
