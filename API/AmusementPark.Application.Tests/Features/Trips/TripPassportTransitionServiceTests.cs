@@ -737,6 +737,97 @@ public sealed class TripPassportTransitionServiceTests
     }
 
     [Fact]
+    public async Task ConfirmAsync_WhenTransitionDraftDayIsNoLongerElapsed_ShouldRejectWithoutMutation()
+    {
+        DateTime nowUtc = new(2027, 8, 20, 10, 0, 0, DateTimeKind.Utc);
+        DateOnly visitDate = new(2027, 8, 20);
+        TripPlan trip = CreateTrip(nowUtc, visitDate);
+        TripDayPlan day = CreateDay(trip, "park-1", visitDate, nowUtc);
+        Visit existingDraft = Visit.Create(
+            VisitId.New(),
+            trip.OwnerUserId,
+            "park-1",
+            VisitDate.ForDay(2027, 8, 20),
+            "Europe/Paris",
+            LocalServiceDayConvention.UserSelectedServiceDate,
+            null,
+            null,
+            nowUtc);
+        string visitOperationId = TripPassportTransitionOperationKeys.Visit(
+            trip.Id.Value,
+            trip.OwnerUserId,
+            "park-1",
+            visitDate);
+
+        Mock<ITripPlanRepository> trips = CreateTripRepository(trip);
+        Mock<ITripParkCandidateRepository> candidates = CreateCandidateRepository(trip.Id);
+        Mock<ITripDayPlanRepository> dayPlans = CreateDayRepository(trip.Id, new[] { day });
+        Mock<IParkRepository> parks = CreateParkRepository();
+        Mock<IParkItemRepository> parkItems = new(MockBehavior.Strict);
+        Mock<IUserVisitRepository> visits = new(MockBehavior.Strict);
+        visits.Setup(repository => repository.ListOwnedByExactDatesAsync(
+                trip.OwnerUserId,
+                It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { existingDraft });
+        visits.Setup(repository => repository.ListOwnedCreationOperationVisitsAsync(
+                trip.OwnerUserId,
+                It.Is<IReadOnlyCollection<string>>(operationIds =>
+                    operationIds.SequenceEqual(new[] { visitOperationId })),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<string, VisitId>(StringComparer.Ordinal)
+            {
+                [visitOperationId] = existingDraft.Id,
+            });
+        Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
+        Mock<IPassportLocalDateResolver> dates = new(MockBehavior.Strict);
+        dates.Setup(resolver => resolver.Resolve(nowUtc, "Europe/Paris"))
+            .Returns(visitDate);
+        Mock<ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>>> createVisit =
+            new(MockBehavior.Strict);
+        Mock<ICommandHandler<AddRideOccurrencesBatchCommand,
+            ApplicationResult<CreateRideOccurrencesResult>>> addRides = new(MockBehavior.Strict);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        TripPassportTransitionConfirmer confirmer = new(
+            trips.Object,
+            new TripProgramResultFactory(
+                trips.Object,
+                candidates.Object,
+                dayPlans.Object,
+                parks.Object),
+            parkItems.Object,
+            visits.Object,
+            rideOccurrences.Object,
+            dates.Object,
+            createVisit.Object,
+            addRides.Object,
+            clock.Object);
+
+        ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            visitDate,
+            Array.Empty<string>(),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error =>
+            error.Code == "trip.passport-transition.not-ready");
+        trips.VerifyAll();
+        candidates.VerifyAll();
+        dayPlans.VerifyAll();
+        parks.VerifyAll();
+        parkItems.VerifyAll();
+        visits.VerifyAll();
+        rideOccurrences.VerifyAll();
+        dates.VerifyAll();
+        createVisit.VerifyAll();
+        addRides.VerifyAll();
+        clock.VerifyAll();
+    }
+
+    [Fact]
     public async Task ConfirmAsync_WithoutSelectedAttractions_ShouldPersistACompletedEmptyBatch()
     {
         DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);

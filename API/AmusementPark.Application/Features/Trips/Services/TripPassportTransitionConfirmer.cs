@@ -146,11 +146,13 @@ public sealed class TripPassportTransitionConfirmer
                 cancellationToken);
         }
 
-        if (!isTransitionCreation
-            && !TripPassportTransitionPolicy.CanConfirmDay(
+        bool canConfirmTransition = isTransitionCreation
+            ? TripPassportTransitionPolicy.HasElapsed(localDate, destinationToday)
+            : TripPassportTransitionPolicy.CanConfirmDay(
                 localDate,
                 destinationToday,
-                day.IsParkAvailable))
+                day.IsParkAvailable);
+        if (!canConfirmTransition)
         {
             return Failure(TripPlanApplicationErrors.PassportTransitionNotReady());
         }
