@@ -347,7 +347,7 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             Builders<TripActivityEventDocument>.Filter;
         return filters.Eq(static document => document.TripPlanId, tripPlanId.Value)
             & filters.Gt(static document => document.Sequence, afterSequence)
-            & filters.Gte(static document => document.CreatedAt, occurredAfterUtc)
+            & filters.Gt(static document => document.OccurredAtUtcTicks, occurredAfterUtc.Ticks)
             & filters.Ne(static document => document.ActorMemberId, currentMemberId.Value)
             & filters.In(
                 static document => document.Kind,
@@ -458,6 +458,7 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             OperationKey = activity.OperationKey,
             Sequence = updatedPlan.AuditSequence,
             AffectedCount = activity.AffectedCount,
+            OccurredAtUtcTicks = activity.OccurredAtUtc.Ticks,
             CreatedAt = activity.OccurredAtUtc,
             UpdatedAt = activity.OccurredAtUtc,
         };
@@ -960,6 +961,8 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             document.OperationKey,
             document.Sequence,
             document.AffectedCount,
-            DateTime.SpecifyKind(document.CreatedAt, DateTimeKind.Utc));
+            document.OccurredAtUtcTicks > 0
+                ? new DateTime(document.OccurredAtUtcTicks, DateTimeKind.Utc)
+                : DateTime.SpecifyKind(document.CreatedAt, DateTimeKind.Utc));
     }
 }

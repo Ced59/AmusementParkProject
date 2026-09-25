@@ -11,6 +11,34 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class TripNotificationSubscriptionRepositoryTests
 {
     [Fact]
+    public void DocumentRoundTrip_ShouldPreserveTheExactNotificationBoundary()
+    {
+        DateTime createdAtUtc = new(2027, 6, 1, 8, 0, 0, DateTimeKind.Utc);
+        DateTime updatedAtUtc = new DateTime(createdAtUtc.Ticks + 4321, DateTimeKind.Utc);
+        TripNotificationSubscription subscription = TripNotificationSubscription.Restore(
+            "subscription-1",
+            TripPlanId.Parse("trip-1"),
+            TripMemberId.Parse("membership-1"),
+            "user-1",
+            true,
+            12,
+            createdAtUtc,
+            updatedAtUtc,
+            4);
+
+        TripNotificationSubscriptionDocument document =
+            TripNotificationSubscriptionRepository.ToDocument(subscription);
+        TripNotificationSubscriptionDocument roundTripDocument =
+            BsonSerializer.Deserialize<TripNotificationSubscriptionDocument>(
+                document.ToBsonDocument());
+        TripNotificationSubscription roundTrip =
+            TripNotificationSubscriptionRepository.ToDomain(roundTripDocument);
+
+        Assert.Equal(updatedAtUtc.Ticks, roundTripDocument.UpdatedAtUtcTicks);
+        Assert.Equal(updatedAtUtc, roundTrip.UpdatedAtUtc);
+    }
+
+    [Fact]
     public void BuildExactSubscriptionFilter_ShouldFenceAConcurrentReplacement()
     {
         DateTime nowUtc = new(2027, 6, 1, 8, 0, 0, DateTimeKind.Utc);

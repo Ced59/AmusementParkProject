@@ -94,9 +94,12 @@ par membre.
 La lecture est bornée à 100 événements (`99 + preuve qu’il en reste`) et utilise
 les index du journal sur `tripPlanId`, `sequence` et `createdAt`. La séquence
 écarte l’activité déjà matérialisée ; `updatedAt`, date du dernier jalon lu,
-écarte aussi un marqueur plus ancien matérialisé en retard. La date est inclusive
-à la milliseconde MongoDB : la séquence strictement supérieure départage deux
-événements partageant exactement cette milliseconde. L’unicité de
+écarte aussi un marqueur plus ancien matérialisé en retard. La précision native de
+MongoDB étant limitée à la milliseconde pour les dates, le marqueur durable,
+l’événement et l’abonnement conservent en plus les ticks UTC exacts. La lecture
+exige une séquence et des ticks strictement supérieurs au jalon : un événement
+antérieur matérialisé tardivement reste donc exclu, tandis qu’un événement
+postérieur dans la même milliseconde reste visible. L’unicité de
 l’abonnement est protégée par un index MongoDB, pas par une vérification en
 mémoire.
 
@@ -308,7 +311,7 @@ l’activation ou avant « tout marquer comme vu », mais matérialisé en retar
 reçoit une séquence supérieure sans devenir artificiellement une nouveauté :
 sa date d’occurrence reste antérieure au jalon. Une vraie modification
 postérieure satisfait les deux bornes et reste visible, y compris lorsque son
-horodatage BSON partage la milliseconde du jalon grâce à sa séquence supérieure.
+horodatage BSON partage la milliseconde du jalon grâce à ses ticks UTC exacts.
 À l’inverse, une action
 personnelle est filtrée mais sa séquence peut être franchie sans risque, puisque
 le curseur est global au journal du voyage.
@@ -361,9 +364,10 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
   agrégées sans contenu privé ;
 - 25 tests Application du périmètre : notifications, départ, reprise de purge
   et pilotage ;
-- 22 tests Infrastructure du périmètre : index, pagination de purge, clôture
-  d’admission pendant une purge, filtre privé, comptages scalaires et
-  agrégations, résolution du nettoyage en tâche de fond ;
+- 24 tests Infrastructure du périmètre : index, pagination de purge, clôture
+  d’admission pendant une purge, filtre privé, conservation des bornes UTC à
+  la précision du tick, comptages scalaires et agrégations, résolution du
+  nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;
 - 21 tests Angular ciblés : façades, effet sans polling, réponse tardive
   neutralisée, reprise après erreur, libellés agrégés, navigation admin et

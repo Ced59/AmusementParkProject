@@ -184,7 +184,7 @@ public sealed class TripNotificationSubscriptionRepository
             & filters.Eq(static item => item.Version, subscription.Version);
     }
 
-    private static TripNotificationSubscription ToDomain(
+    internal static TripNotificationSubscription ToDomain(
         TripNotificationSubscriptionDocument document)
     {
         return TripNotificationSubscription.Restore(
@@ -195,11 +195,13 @@ public sealed class TripNotificationSubscriptionRepository
             document.IsEnabled,
             document.SeenThroughSequence,
             DateTime.SpecifyKind(document.CreatedAt, DateTimeKind.Utc),
-            DateTime.SpecifyKind(document.UpdatedAt, DateTimeKind.Utc),
+            document.UpdatedAtUtcTicks > 0
+                ? new DateTime(document.UpdatedAtUtcTicks, DateTimeKind.Utc)
+                : DateTime.SpecifyKind(document.UpdatedAt, DateTimeKind.Utc),
             document.Version);
     }
 
-    private static TripNotificationSubscriptionDocument ToDocument(
+    internal static TripNotificationSubscriptionDocument ToDocument(
         TripNotificationSubscription subscription)
     {
         return new TripNotificationSubscriptionDocument
@@ -210,6 +212,7 @@ public sealed class TripNotificationSubscriptionRepository
             UserId = subscription.UserId,
             IsEnabled = subscription.IsEnabled,
             SeenThroughSequence = subscription.SeenThroughSequence,
+            UpdatedAtUtcTicks = subscription.UpdatedAtUtc.Ticks,
             CreatedAt = subscription.CreatedAtUtc,
             UpdatedAt = subscription.UpdatedAtUtc,
             Version = subscription.Version,
