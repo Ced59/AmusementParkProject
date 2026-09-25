@@ -23,7 +23,8 @@ public sealed class TripPassportTransitionHttpMapperTests
                     "Phantasialand",
                     true,
                     true,
-                    false,
+                    true,
+                    true,
                     null,
                     null,
                     new[]
@@ -43,7 +44,8 @@ public sealed class TripPassportTransitionHttpMapperTests
         Assert.Equal("Voyage test", dto.Title);
         TripPassportTransitionDayDto day = Assert.Single(dto.Days);
         Assert.Equal("Phantasialand", day.ParkName);
-        Assert.False(day.CanResume);
+        Assert.True(day.CanResume);
+        Assert.True(day.IsSelectionLocked);
         TripPassportTransitionItemDto item = Assert.Single(day.Attractions);
         Assert.Equal("Taron", item.Name);
         Assert.Equal("MustDo", item.OwnPreference);

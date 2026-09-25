@@ -61,6 +61,17 @@ export class TripPassportTransitionFacade {
     });
   }
 
+  canChangeSelection(localDate: string): boolean {
+    if (this.confirmingDateSignal()) {
+      return false;
+    }
+
+    const day: TripPassportTransitionDay | undefined = this.transitionSignal()?.days.find(
+      (candidate: TripPassportTransitionDay): boolean => candidate.localDate === localDate
+    );
+    return Boolean(day?.canConfirm && !day.isSelectionLocked);
+  }
+
   confirm(localDate: string, parkItemIds: readonly string[]): void {
     if (!this.tripPlanId || this.confirmingDateSignal()) {
       return;
@@ -97,6 +108,7 @@ export class TripPassportTransitionFacade {
               ...candidate,
               canConfirm: false,
               canResume: false,
+              isSelectionLocked: false,
               existingVisitId: result.visitId,
               existingVisitStatus: 'Draft',
               attractions: []

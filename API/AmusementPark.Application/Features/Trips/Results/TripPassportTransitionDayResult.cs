@@ -9,6 +9,7 @@ public sealed record TripPassportTransitionDayResult(
     bool IsParkAvailable,
     bool CanConfirm,
     bool CanResume,
+    bool IsSelectionLocked,
     string? ExistingVisitId,
     VisitStatus? ExistingVisitStatus,
     IReadOnlyCollection<TripPassportTransitionItemResult> Attractions);

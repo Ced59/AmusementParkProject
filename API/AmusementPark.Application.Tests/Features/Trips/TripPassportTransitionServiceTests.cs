@@ -136,15 +136,18 @@ public sealed class TripPassportTransitionServiceTests
     }
 
     [Theory]
-    [InlineData(false, false, true, true)]
-    [InlineData(true, false, true, false)]
-    [InlineData(false, true, true, false)]
-    [InlineData(false, false, false, true)]
-    public async Task GetAsync_WhenATransitionDraftExists_ShouldOnlyResumeAnUnfinishedRideBatch(
+    [InlineData(false, false, true, true, true, true)]
+    [InlineData(true, false, true, true, false, false)]
+    [InlineData(false, true, true, true, false, false)]
+    [InlineData(false, false, false, true, true, true)]
+    [InlineData(false, false, true, false, true, false)]
+    public async Task GetAsync_WhenATransitionDraftExists_ShouldExposeItsExactRecoveryState(
         bool rideBatchCompleted,
         bool rideBatchConflicted,
         bool parkVisible,
-        bool expectedCanResume)
+        bool rideOperationExists,
+        bool expectedCanResume,
+        bool expectedSelectionLocked)
     {
         DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
         DateOnly visitDate = new(2027, 8, 20);
@@ -215,14 +218,16 @@ public sealed class TripPassportTransitionServiceTests
                 It.Is<IReadOnlyCollection<string>>(operationIds =>
                     operationIds.SequenceEqual(new[] { rideOperationId })),
                 CancellationToken.None))
-            .ReturnsAsync(new[]
-            {
-                new RideOccurrenceBatchCreationOperationState(
-                    rideOperationId,
-                    rideBatchCompleted,
-                    rideBatchConflicted,
-                    new[] { attraction.Id! }),
-            });
+            .ReturnsAsync(rideOperationExists
+                ? new[]
+                {
+                    new RideOccurrenceBatchCreationOperationState(
+                        rideOperationId,
+                        rideBatchCompleted,
+                        rideBatchConflicted,
+                        new[] { attraction.Id! }),
+                }
+                : Array.Empty<RideOccurrenceBatchCreationOperationState>());
         Mock<IPassportLocalDateResolver> dates = new(MockBehavior.Strict);
         dates.Setup(resolver => resolver.Resolve(nowUtc, "Europe/Paris"))
             .Returns(new DateOnly(2027, 8, 22));
@@ -251,11 +256,14 @@ public sealed class TripPassportTransitionServiceTests
         TripPassportTransitionDayResult transitionDay = Assert.Single(result.Value!.Days);
         Assert.Equal(expectedCanResume, transitionDay.CanResume);
         Assert.Equal(expectedCanResume, transitionDay.CanConfirm);
+        Assert.Equal(expectedSelectionLocked, transitionDay.IsSelectionLocked);
         Assert.Equal(existingDraft.Id.Value, transitionDay.ExistingVisitId);
         Assert.Equal(expectedCanResume && parkVisible, transitionDay.Attractions.Count == 1);
         if (expectedCanResume && parkVisible)
         {
-            Assert.True(Assert.Single(transitionDay.Attractions).IsPreselected);
+            Assert.Equal(
+                rideOperationExists,
+                Assert.Single(transitionDay.Attractions).IsPreselected);
         }
         trips.VerifyAll();
         candidates.VerifyAll();

@@ -21,6 +21,7 @@ public static class TripPassportTransitionHttpMapper
                 IsParkAvailable = day.IsParkAvailable,
                 CanConfirm = day.CanConfirm,
                 CanResume = day.CanResume,
+                IsSelectionLocked = day.IsSelectionLocked,
                 ExistingVisitId = day.ExistingVisitId,
                 ExistingVisitStatus = day.ExistingVisitStatus?.ToString(),
                 Attractions = day.Attractions.Select(static item =>

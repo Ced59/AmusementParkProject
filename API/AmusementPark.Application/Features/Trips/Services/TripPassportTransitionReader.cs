@@ -206,6 +206,7 @@ public sealed class TripPassportTransitionReader
                     day.IsParkAvailable)
                 && existing is null;
             bool canConfirm = canStart || canResume;
+            bool isSelectionLocked = canResume && rideOperation is not null;
             IReadOnlyCollection<TripPassportTransitionItemResult> dayItems = canConfirm
                 ? BuildItems(
                     attractions.Where(item => string.Equals(
@@ -225,6 +226,7 @@ public sealed class TripPassportTransitionReader
                 day.IsParkAvailable,
                 canConfirm,
                 canResume,
+                isSelectionLocked,
                 existing?.Id.Value,
                 existing?.Status,
                 dayItems);

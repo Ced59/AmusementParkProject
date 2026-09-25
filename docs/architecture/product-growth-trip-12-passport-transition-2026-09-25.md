@@ -24,6 +24,9 @@ noter, compléter ou terminer la visite avec le parcours Passeport existant.
 La seule exception à l’absence de présélection est une reprise technique : si
 un lot déjà réservé a été interrompu, les choix du membre sont restaurés à
 l’identique et verrouillés le temps de finaliser le même lot idempotent.
+Si la coupure est survenue juste après la création du brouillon, avant toute
+réservation du lot, la reprise conserve au contraire la sélection éditable :
+aucun choix encore inexistant ne peut être inventé ni remplacé par un lot vide.
 
 ## 2. Parcours utilisateur
 
@@ -143,6 +146,7 @@ classDiagram
       +GetOwnedAsync(visitId, userId)
       +GetDeletedCreationOperationVisitIdAsync(userId, operationId)
       +ReleaseDeletedCreationOperationAsync(userId, operationId)
+      +ReleaseOwnedCreationOperationAsync(userId, visitId, operationId)
     }
     class IRideOccurrenceRepository {
       +ListBatchCreationOperationStatesAsync(userId, operationIds)
@@ -200,6 +204,8 @@ sequenceDiagram
 
     alt création présente mais lot réservé non terminé
       UI-->>M: Restaurer exactement la sélection réservée et la finaliser
+    else création présente sans lot réservé
+      UI-->>M: Reprendre avec une sélection encore modifiable
     end
 ```
 
@@ -329,6 +335,7 @@ participant.
 | aucune attraction d’un autre parc | validation serveur contre le catalogue visible du parc de la journée |
 | pas de doublon de visite | détection membre/parc/date puis clés d’idempotence déterministes |
 | reprise après échec partiel | lectures groupées des empreintes et de l’état du batch, restauration verrouillée des identifiants réservés, exposition `canResume`, puis replay du même brouillon |
+| coupure avant réservation du lot | `isSelectionLocked` reste faux lorsque seule la visite existe ; le membre reprend le brouillon et choisit encore librement ses attractions |
 | fuseau modifié après création | la reprise reconnaît l’identité persistée opération/visite et ne rappelle pas la création avec le fuseau courant du voyage |
 | parc masqué après création | une nouvelle transition reste interdite, mais le brouillon déjà identifié demeure reprenable après la date |
 | opération de passages en conflit | l’état terminal est relu explicitement et retire `canResume` au lieu de produire une fausse action vouée à échouer |
@@ -361,7 +368,7 @@ dépassements horizontaux et le dégagement de la navigation mobile.
 
 - tests Application : proposition passée/future, préférence personnelle,
   sélection explicite, reprise avec sélection restaurée sans recréer la visite,
-  brouillon déplacé sans replay sur la mauvaise date, parc devenu masqué,
+  reprise éditable avant réservation, brouillon déplacé sans replay sur la mauvaise date, parc devenu masqué,
   opération terminale en conflit, lot déjà finalisé et confirmation vide
   marquée comme terminée ;
 - tests Infrastructure : requêtes bornées au propriétaire, aux empreintes

@@ -114,8 +114,7 @@ export class TripPassportTransitionPageComponent implements OnInit {
   }
 
   protected toggle(localDate: string, item: TripPassportTransitionItem): void {
-    const day = this.facade.transition()?.days.find(candidate => candidate.localDate === localDate);
-    if (this.facade.confirmingDate() || day?.canResume) {
+    if (!this.facade.canChangeSelection(localDate)) {
       return;
     }
 

@@ -44,6 +44,29 @@ describe('TripPassportTransitionFacade', () => {
     expect(data.confirm).not.toHaveBeenCalled();
   });
 
+  it('keeps an unreserved recovery selection editable and locks a reserved one', () => {
+    const transition: TripPassportTransition = createTransition();
+    transition.days[0] = {
+      ...transition.days[0],
+      canResume: true,
+      existingVisitId: 'visit-1'
+    };
+    const data: TripPassportTransitionDataPort = {
+      get: vi.fn().mockReturnValue(of(transition)),
+      confirm: vi.fn()
+    };
+    const facade: TripPassportTransitionFacade = createFacade(data);
+
+    facade.load('trip-1');
+
+    expect(facade.canChangeSelection('2027-08-20')).toBe(true);
+
+    transition.days[0] = { ...transition.days[0], isSelectionLocked: true };
+    facade.load('trip-1');
+
+    expect(facade.canChangeSelection('2027-08-20')).toBe(false);
+  });
+
   it('keeps the proposal visible when confirmation fails', () => {
     const transition: TripPassportTransition = createTransition();
     const data: TripPassportTransitionDataPort = {
@@ -79,6 +102,7 @@ function createTransition(): TripPassportTransition {
       isParkAvailable: true,
       canConfirm: true,
       canResume: false,
+      isSelectionLocked: false,
       existingVisitId: null,
       existingVisitStatus: null,
       attractions: [{
