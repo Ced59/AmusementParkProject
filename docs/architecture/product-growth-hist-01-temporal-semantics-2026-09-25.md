@@ -181,6 +181,11 @@ source.
 | `Unverified` | La donnée est importée, incomplète ou pas encore revue. | Administration uniquement. |
 | `Retracted` | Une révision a invalidé une assertion auparavant conservée. | Non active ; trace d’audit conservée. |
 
+`VerifiedAtUtc` est nullable et n’est renseigné qu’au passage réel vers
+`Verified`. Un fait importé ou `Unverified` garde `null` : une date par défaut ne
+doit jamais simuler une vérification. Les revues de faits `Probable` ou
+`Disputed` restent datées dans le journal de revue sans détourner ce champ.
+
 `Verified` ne signifie pas « vrai pour toujours ». Toute correction crée une
 nouvelle révision auditée, invalide les snapshots dépendants et garde la version
 précédente consultable en administration.
@@ -275,6 +280,14 @@ l’on peut conclure. Ils ne sont pas interchangeables : un fait `Disputed` peut
 être correctement revu et publié, tandis qu’un fait `Verified` en brouillon
 n’est pas public.
 
+Le fait, la relation et le récit lié possèdent chacun leur propre état de
+publication (`Draft`, `Published`, `Withdrawn`). Cette indépendance est
+obligatoire : un fait peut rester public tandis que son article est encore en
+brouillon ou a été retiré. Dans ce cas, la réponse publique conserve le fait
+structuré mais omet entièrement le récit non publié. Inversement, publier un
+récit ne publie jamais automatiquement son fait ou une relation. Les
+transitions sont explicites, versionnées et auditées pour chaque ressource.
+
 Règles de publication :
 
 - `Unverified` n’est pas public par défaut ;
@@ -353,6 +366,8 @@ rejouable après que le Core et la persistance canoniques auront été livrés.
 - conservation d’une copie de sauvegarde et d’un rapport avant bascule ;
 - migration idempotente avec marqueur de version et compteurs avant/après ;
 - les enregistrements incomplets deviennent `Unverified`, pas `Verified` ;
+- `HistoryArticle.IsPublished` est migré vers l’état de publication propre du
+  récit, indépendamment de celui du fait ;
 - une donnée actuellement visible mais non prouvée est conservée, puis signalée
   pour revue ; elle n’est pas promue artificiellement dans l’explorateur ;
 - aucune double écriture durable après la bascule ;
@@ -393,16 +408,21 @@ classDiagram
       +Guid Id
       +HistoricalFactType Type
       +HistoricalFactState State
+      +HistoricalPublicationState PublicationState
       +int Revision
-      +DateTime VerifiedAtUtc
+      +DateTime? VerifiedAtUtc
     }
     class HistoricalRelation {
       +HistoricalRelationType Type
       +HistoricalRelationState State
+      +HistoricalPublicationState PublicationState
       +int Revision
     }
     class HistoricalSourceReference
-    class HistoricalNarrative
+    class HistoricalNarrative {
+      +HistoricalPublicationState PublicationState
+      +int Revision
+    }
     class ParkHistoricalSnapshot
     class HistoricalAmbiguity
 
@@ -474,7 +494,8 @@ Les collections cibles sont `historical-facts`, `historical-relations`,
 
 ## 14. Contrats publics et confidentialité
 
-- seuls les faits publiés entrent dans les réponses publiques ;
+- seuls les faits et relations publiés entrent dans les réponses publiques ;
+- un récit brouillon ou retiré est omis même lorsque son fait reste publié ;
 - les notes admin, historiques de revue et suggestions restent privés ;
 - les sources publiques exposent uniquement les champs éditorialement validés ;
 - les statistiques de visites personnelles restent privées jusqu’à une
