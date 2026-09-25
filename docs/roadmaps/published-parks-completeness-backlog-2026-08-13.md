@@ -7,8 +7,8 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 190 parcs étaient publiés (`isVisible: true`).
 - Les 190 scores ont été recalculés individuellement avec `Completeness`.
-- 68 parcs atteignent le niveau `Excellent` : 66 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 99 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **23 parcs** : 0 au niveau `Publishable`, 21 au niveau `Good` et 2 au niveau `Excellent`.
+- 69 parcs atteignent le niveau `Excellent` : 67 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
+- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 100 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **22 parcs** : 0 au niveau `Publishable`, 20 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,12 +22,11 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (21)
+## Priorité 2 — niveau `Good` (20)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 | 89 | `Good` | Festyland | FR | `Operating` | `Regional` | 83/93 | `4fc0aa20-b0d7-47cc-a403-81b0d6e10f04` |
-| 90 | `Good` | Walibi Rhône-Alpes | FR | `Operating` | `Regional` | 88/98 | `79f7ad14-8b8e-437c-9512-7344341b5212` |
 | 91 | `Good` | 50. Yıl Parkı | TR | `Operating` | `Local` | 92/101 | `74d6c4cc-a870-496a-bb05-8b2607ec9ad7` |
 | 91 | `Good` | AltmühlBOB | DE | `Operating` | `Regional` | 84/92 | `b3cc3569-cab0-48e3-8572-e5ff62525bee` |
 | 91 | `Good` | Armoripark | FR | `Operating` | `Regional` | 84/92 | `444d0ae3-ad1f-4e87-9304-139df277451d` |
