@@ -14,7 +14,7 @@ grep -Fq 'MongoDB maintenance requires a successful backup in this deployment ru
   "${deploy_scripts_dir}/deploy.sh"
 rolling_guard_line="$(grep -nF 'if [ "${deploy_zero_downtime_enabled}" != "true" ]; then' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
 backup_line="$(grep -nF './scripts/backup-mongo.sh || {' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
-pull_line="$(grep -nF 'compose pull' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
+pull_line="$(grep -nF 'compose pull api front edge' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
 maintenance_line="$(grep -nF 'python3 ./scripts/deployment_transaction.py maintain-mongodb' "${deploy_scripts_dir}/deploy.sh" | cut -d: -f1)"
 if [ -z "${rolling_guard_line}" ] \
   || [ -z "${backup_line}" ] \
@@ -24,6 +24,15 @@ if [ -z "${rolling_guard_line}" ] \
   || [ "${rolling_guard_line}" -ge "${pull_line}" ] \
   || [ "${rolling_guard_line}" -ge "${maintenance_line}" ]; then
   echo 'Transactional rolling mode must be validated before backup, image pull and MongoDB maintenance.' >&2
+  exit 1
+fi
+
+grep -Fq 'compose pull api front edge' "${deploy_scripts_dir}/deploy.sh"
+grep -Fq 'if [ "${shared_infrastructure_maintenance}" = "mongodb" ]; then' \
+  "${deploy_scripts_dir}/deploy.sh"
+grep -Fq 'compose pull mongodb' "${deploy_scripts_dir}/deploy.sh"
+if grep -Fqx 'compose pull' "${deploy_scripts_dir}/deploy.sh"; then
+  echo 'Normal deployments must not pull every shared infrastructure image.' >&2
   exit 1
 fi
 
