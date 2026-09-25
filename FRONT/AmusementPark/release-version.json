@@ -1,6 +1,20 @@
 {
-  "version": "5.3.76",
+  "version": "5.3.77",
   "history": [
+    {
+      "version": "5.3.77",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "La liste de complétude des parcs publiés reflète dix nouvelles validations.",
+        "en": "The published park completeness list now reflects ten more validations.",
+        "de": "Die Vollständigkeitsliste veröffentlichter Parks berücksichtigt zehn weitere Prüfungen.",
+        "nl": "De volledigheidslijst van gepubliceerde parken bevat nu tien extra validaties.",
+        "it": "L’elenco di completezza dei parchi pubblicati include ora dieci nuove convalide.",
+        "es": "La lista de integridad de parques publicados incorpora diez nuevas validaciones.",
+        "pl": "Lista kompletności opublikowanych parków uwzględnia teraz dziesięć kolejnych weryfikacji.",
+        "pt": "A lista de completude dos parques publicados inclui agora mais dez validações."
+      }
+    },
     {
       "version": "5.3.76",
       "releasedAt": "2026-09-25",

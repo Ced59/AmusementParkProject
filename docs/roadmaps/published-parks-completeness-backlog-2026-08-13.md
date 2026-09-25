@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 190 parcs étaient publiés (`isVisible: true`).
 - Les 190 scores ont été recalculés individuellement avec `Completeness`.
 - 68 parcs atteignent le niveau `Excellent` : 66 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 91 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **31 parcs** : 0 au niveau `Publishable`, 29 au niveau `Good` et 2 au niveau `Excellent`.
+- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 101 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **21 parcs** : 0 au niveau `Publishable`, 19 au niveau `Good` et 2 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,21 +22,11 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (29)
+## Priorité 2 — niveau `Good` (19)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 89 | `Good` | 360 Play | BH | `Operating` | `Local` | 89/100 | `1a0f5161-48db-43bf-93d7-c899a74a5965` |
-| 89 | `Good` | Antibes Land | FR | `Operating` | `Regional` | 83/93 | `b0607555-4092-407e-9ee6-7d61423a8c73` |
 | 89 | `Good` | Festyland | FR | `Operating` | `Regional` | 83/93 | `4fc0aa20-b0d7-47cc-a403-81b0d6e10f04` |
-| 89 | `Good` | Mirapolis | FR | `ClosedDefinitively` | `—` | 96/108 | `327f4af5-10e5-4744-aa77-d3755ec7a9dc` |
-| 90 | `Good` | Amusementspark Tivoli | NL | `Operating` | `Regional` | 84/93 | `f95c7ed8-6564-4fce-a031-3d81d3bee764` |
-| 90 | `Good` | Astoria Village | IT | `Operating` | `Local` | 87/97 | `7513075c-bb97-4bd7-82b4-ae4ab1e2bfef` |
-| 90 | `Good` | Aussie World | AU | `Operating` | `Regional` | 84/93 | `1a4504c6-db5c-454b-9357-322096e6d02f` |
-| 90 | `Good` | Six Flags Great Adventure | US | `Operating` | `International` | 97/108 | `dea21548-7975-4b25-a8a6-378916b068c4` |
-| 90 | `Good` | Six Flags Great Escape | US | `Operating` | `Regional` | 88/98 | `3b8ff68d-f3b7-4094-b84a-6cb52dfbbf18` |
-| 90 | `Good` | Walibi Rhône-Alpes | FR | `Operating` | `Regional` | 88/98 | `79f7ad14-8b8e-437c-9512-7344341b5212` |
-| 91 | `Good` | 50. Yıl Parkı | TR | `Operating` | `Local` | 92/101 | `74d6c4cc-a870-496a-bb05-8b2607ec9ad7` |
 | 91 | `Good` | AltmühlBOB | DE | `Operating` | `Regional` | 84/92 | `b3cc3569-cab0-48e3-8572-e5ff62525bee` |
 | 91 | `Good` | Armoripark | FR | `Operating` | `Regional` | 84/92 | `444d0ae3-ad1f-4e87-9304-139df277451d` |
 | 91 | `Good` | Arnolds Park | US | `Operating` | `Regional` | 84/92 | `c8d92323-b1de-4abf-b3a5-b7cf450c352b` |
