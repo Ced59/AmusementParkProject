@@ -737,48 +737,18 @@ public sealed class TripPassportTransitionServiceTests
     }
 
     [Fact]
-    public async Task ConfirmAsync_WhenTransitionDraftDayIsNoLongerElapsed_ShouldRejectWithoutMutation()
+    public async Task ConfirmAsync_WhenDayIsNoLongerElapsed_ShouldRejectBeforePersistence()
     {
         DateTime nowUtc = new(2027, 8, 20, 10, 0, 0, DateTimeKind.Utc);
         DateOnly visitDate = new(2027, 8, 20);
         TripPlan trip = CreateTrip(nowUtc, visitDate);
         TripDayPlan day = CreateDay(trip, "park-1", visitDate, nowUtc);
-        Visit existingDraft = Visit.Create(
-            VisitId.New(),
-            trip.OwnerUserId,
-            "park-1",
-            VisitDate.ForDay(2027, 8, 20),
-            "Europe/Paris",
-            LocalServiceDayConvention.UserSelectedServiceDate,
-            null,
-            null,
-            nowUtc);
-        string visitOperationId = TripPassportTransitionOperationKeys.Visit(
-            trip.Id.Value,
-            trip.OwnerUserId,
-            "park-1",
-            visitDate);
-
         Mock<ITripPlanRepository> trips = CreateTripRepository(trip);
         Mock<ITripParkCandidateRepository> candidates = CreateCandidateRepository(trip.Id);
         Mock<ITripDayPlanRepository> dayPlans = CreateDayRepository(trip.Id, new[] { day });
         Mock<IParkRepository> parks = CreateParkRepository();
         Mock<IParkItemRepository> parkItems = new(MockBehavior.Strict);
         Mock<IUserVisitRepository> visits = new(MockBehavior.Strict);
-        visits.Setup(repository => repository.ListOwnedByExactDatesAsync(
-                trip.OwnerUserId,
-                It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
-                CancellationToken.None))
-            .ReturnsAsync(new[] { existingDraft });
-        visits.Setup(repository => repository.ListOwnedCreationOperationVisitsAsync(
-                trip.OwnerUserId,
-                It.Is<IReadOnlyCollection<string>>(operationIds =>
-                    operationIds.SequenceEqual(new[] { visitOperationId })),
-                CancellationToken.None))
-            .ReturnsAsync(new Dictionary<string, VisitId>(StringComparer.Ordinal)
-            {
-                [visitOperationId] = existingDraft.Id,
-            });
         Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
         Mock<IPassportLocalDateResolver> dates = new(MockBehavior.Strict);
         dates.Setup(resolver => resolver.Resolve(nowUtc, "Europe/Paris"))

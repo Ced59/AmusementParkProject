@@ -100,6 +100,11 @@ public sealed class TripPassportTransitionConfirmer
             return Failure(TripPlanApplicationErrors.PassportTransitionNotReady());
         }
 
+        if (!TripPassportTransitionPolicy.HasElapsed(localDate, destinationToday))
+        {
+            return Failure(TripPlanApplicationErrors.PassportTransitionNotReady());
+        }
+
         IReadOnlyCollection<Visit> sameDateVisits = await this.visits.ListOwnedByExactDatesAsync(
             normalizedUserId,
             new[] { localDate },
@@ -146,13 +151,11 @@ public sealed class TripPassportTransitionConfirmer
                 cancellationToken);
         }
 
-        bool canConfirmTransition = isTransitionCreation
-            ? TripPassportTransitionPolicy.HasElapsed(localDate, destinationToday)
-            : TripPassportTransitionPolicy.CanConfirmDay(
+        if (!isTransitionCreation
+            && !TripPassportTransitionPolicy.CanConfirmDay(
                 localDate,
                 destinationToday,
-                day.IsParkAvailable);
-        if (!canConfirmTransition)
+                day.IsParkAvailable))
         {
             return Failure(TripPlanApplicationErrors.PassportTransitionNotReady());
         }
