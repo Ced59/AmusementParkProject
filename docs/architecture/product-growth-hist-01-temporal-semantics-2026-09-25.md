@@ -178,7 +178,7 @@ source.
 | `Verified` | Au moins une preuve admissible soutient le fait et la revue structurée est achevée. | Publique. |
 | `Probable` | Les preuves convergent mais ne permettent pas une affirmation certaine. | Publique avec avertissement et raison. |
 | `Disputed` | Des sources admissibles se contredisent ou la conclusion est activement contestée. | Publique avec les positions et la fourchette. |
-| `Unverified` | La donnée est importée, incomplète ou pas encore revue. | Administration uniquement. |
+| `Unverified` | La donnée est importée, incomplète ou pas encore revue. | Administration uniquement, hors transition de migration explicitement balisée. |
 | `Retracted` | Une révision a invalidé une assertion auparavant conservée. | Non active ; trace d’audit conservée. |
 
 `VerifiedAtUtc` est nullable et n’est renseigné qu’au passage réel vers
@@ -275,23 +275,51 @@ Draft → SourcesAttached → EditorialReview → StructuredValidation → Publi
                                                       ↘ Corrected / Retracted
 ```
 
+`HistoricalEditorialWorkflowState` persiste explicitement chacune de ces étapes :
+`Draft`, `SourcesAttached`, `EditorialReview`, `StructuredValidation`,
+`Published`, `Corrected` et `Retracted`. Il n’est pas déduit à la volée du
+journal d’audit. Les transitions invalides sont refusées par le Core et chacune
+ajoute un événement de revue.
+
 L’état de workflow indique où en est le travail. L’état de preuve indique ce que
 l’on peut conclure. Ils ne sont pas interchangeables : un fait `Disputed` peut
 être correctement revu et publié, tandis qu’un fait `Verified` en brouillon
 n’est pas public.
 
-Le fait, la relation et le récit lié possèdent chacun leur propre état de
-publication (`Draft`, `Published`, `Withdrawn`). Cette indépendance est
-obligatoire : un fait peut rester public tandis que son article est encore en
-brouillon ou a été retiré. Dans ce cas, la réponse publique conserve le fait
-structuré mais omet entièrement le récit non publié. Inversement, publier un
-récit ne publie jamais automatiquement son fait ou une relation. Les
-transitions sont explicites, versionnées et auditées pour chaque ressource.
+Le fait, la relation et le récit lié possèdent chacun leur propre workflow et
+leur propre état de publication. `HistoricalPublicationState` vaut `Draft`,
+`Published`, `LegacyPublishedPendingReview` ou `Withdrawn`.
+`LegacyPublishedPendingReview` est réservé à HIST-04 : il conserve temporairement
+un contenu déjà public dont les preuves ne satisfont pas encore le nouveau
+contrat, sans le présenter comme vérifié. Aucun endpoint de création ou
+modification ordinaire ne peut choisir cet état.
+
+Cette indépendance est obligatoire : un fait peut rester public tandis que son
+article est encore en brouillon ou a été retiré. Dans ce cas, la réponse
+publique conserve le fait structuré mais omet entièrement le récit non publié.
+Inversement, publier un récit ne publie jamais automatiquement son fait ou une
+relation. Les transitions sont explicites, versionnées et auditées pour chaque
+ressource.
+
+Dans le flux normal, `Published` exige un workflow `Published` ou `Corrected` ;
+les étapes antérieures restent `Draft`, et une rétractation impose
+`Withdrawn`. La migration place `LegacyPublishedPendingReview` en
+`EditorialReview`. Le Core refuse toute combinaison contradictoire au lieu de
+laisser l’Application ou MongoDB en interpréter le sens.
+
+Un fait ou une relation `Probable` ou `Disputed` possède en propre une
+`PublicUncertaintyExplanation` localisée, distincte du récit et de toute note
+admin. Sa publication est refusée tant qu’une explication non vide n’existe pas
+dans les huit langues prises en charge. Le public conserve ainsi la raison de
+l’incertitude même lorsque l’article lié reste en brouillon ou a été retiré.
 
 Règles de publication :
 
 - `Unverified` n’est pas public par défaut ;
 - `Probable` et `Disputed` exigent une explication visible ;
+- `LegacyPublishedPendingReview` affiche un avertissement localisé obligatoire,
+  reste exclu des snapshots décisionnels et des nouveaux liens SEO, et apparaît
+  dans les diagnostics jusqu’à sa revue ;
 - `Retracted` ne participe plus aux calculs publics ;
 - chaque publication fige une révision et une version de méthode ;
 - l’absence de traduction utilise le fallback annoncé, jamais un faux texte
@@ -313,17 +341,52 @@ Pour un élément et un instant demandé, le Core rend exactement l’un des ét
 Ordre de décision :
 
 1. écarter les révisions remplacées et faits rétractés ;
-2. retenir uniquement les faits publiés applicables au sujet et à la méthode ;
-3. calculer leurs enveloppes sans compléter les dates ;
-4. détecter contradictions et bornes ambiguës ;
-5. rendre un état certain seulement si toutes les preuves décisionnelles
+2. charger l’historique de cycle de vie publié nécessaire jusqu’à l’instant
+   demandé, pas seulement les faits ponctuels dont la période contient cet
+   instant ;
+3. écarter `LegacyPublishedPendingReview` du calcul décisionnel ;
+4. calculer les enveloppes sans compléter les dates ;
+5. réduire les transitions de cycle de vie selon les règles ci-dessous ;
+6. détecter contradictions et bornes ambiguës ;
+7. rendre un état certain seulement si toutes les preuves décisionnelles
    nécessaires le permettent ;
-6. sinon rendre `PossiblyOpen` ou `Unknown` avec des raisons structurées.
+8. sinon rendre `PossiblyOpen` ou `Unknown` avec des raisons structurées.
 
 Un élément sans date n’est jamais présumé ouvert. Un fait `Probable` ou
 `Disputed` peut expliquer `PossiblyOpen`, mais pas produire seul `KnownOpen`.
 Une réouverture crée une nouvelle période d’activité ; elle ne modifie pas
 rétroactivement la précédente.
+
+### 9.1 Réduction des événements de cycle de vie
+
+Les événements ponctuels sont des **bornes**. Le builder les ordonne par leurs
+enveloppes civiles et replie toute la séquence du sujet jusqu’à l’instant demandé :
+
+| Transition | Effet sur l’état courant |
+|---|---|
+| `Opening` | commence la première période connue d’activité ; avant cette borne confirmée, le sujet est `KnownClosed` si le fait affirme bien son ouverture initiale ; |
+| `Reopening` | termine une fermeture temporaire et commence une nouvelle période active ; |
+| `TemporaryClosure` | termine la période certainement active ; sa période fermée n’est certaine que jusqu’à sa fin ou sa réouverture documentée ; |
+| `DefinitiveClosure` | termine la période active ; une réouverture ultérieure crée une nouvelle période et un diagnostic de cohérence ; |
+| `Closure` non qualifiée | ne devient pas automatiquement temporaire ou définitive ; elle crée une borne incertaine à classifier pendant la migration ; |
+| annonce, construction, renommage, thème | n’altère pas l’état d’exploitation à elle seule. |
+
+Ainsi, une ouverture ponctuelle confirmée en 1998 suivie d’aucune fermeture
+admissible couvre 1999 : la borne ouvre un intervalle actif. Une fermeture
+temporaire suivie d’une réouverture le découpe en deux intervalles actifs.
+Une fermeture temporaire connue seulement par son jour de début ne prouve pas
+que le sujet est resté fermé indéfiniment : après cette borne, l’état redevient
+`Unknown` tant qu’une période ou une réouverture ne borne pas la fermeture.
+
+Seules les transitions dont l’ordre est certain sont repliées comme états
+certains. Si deux enveloppes se chevauchent, si des transitions incompatibles
+partagent une date partielle ou si une borne est `Estimated`/`Disputed`, le
+builder ne les départage jamais par identifiant, date de création ou ordre
+MongoDB : il produit une ambiguïté et abaisse le résultat vers `PossiblyOpen` ou
+`Unknown`. Le tri technique final est stable, mais ne résout aucune vérité
+métier. Une transition impossible, comme deux ouvertures certaines successives
+sans fermeture, est signalée au diagnostic au lieu d’être silencieusement
+ignorée.
 
 ## 10. Couverture et ambiguïtés
 
@@ -350,7 +413,7 @@ rejouable après que le Core et la persistance canoniques auront été livrés.
 |---|---|---|
 | `EntityType` + `OwnerId` | `HistoricalSubject` | Identité typée, jamais résolue par heuristique. |
 | `Year`, `Month`, `Day`, `DatePrecision` | `HistoricalDate` | Valeurs conservées sans compléter les parties absentes. |
-| date unique | période ponctuelle | Même date en début et fin. |
+| date unique | période ponctuelle ou borne de cycle de vie | Même date en début et fin ; les ouvertures et fermetures sont ensuite réduites en intervalles selon la section 9.1. |
 | `EventType` | `HistoricalFactType` | Table explicite ; valeur inconnue signalée et non rabattue. |
 | `Titles`, `Summaries`, `Article` | contenu éditorial lié | Texte et huit langues conservés. |
 | `Sources` | sources canoniques | Champs connus conservés ; champs absents marqués à compléter. |
@@ -368,8 +431,13 @@ rejouable après que le Core et la persistance canoniques auront été livrés.
 - les enregistrements incomplets deviennent `Unverified`, pas `Verified` ;
 - `HistoryArticle.IsPublished` est migré vers l’état de publication propre du
   récit, indépendamment de celui du fait ;
-- une donnée actuellement visible mais non prouvée est conservée, puis signalée
-  pour revue ; elle n’est pas promue artificiellement dans l’explorateur ;
+- une donnée actuellement visible mais non prouvée est migrée vers
+  `LegacyPublishedPendingReview`, conserve son contenu public avec un
+  avertissement explicite, ne participe à aucun état certain et rejoint une file
+  de revue mesurable ; elle n’est pas promue artificiellement ;
+- ce statut transitoire ne peut être créé que par la migration, doit évoluer
+  vers `Published` après preuve ou `Withdrawn` après décision, et son compteur
+  doit atteindre zéro avant la gate finale `HIST-G` ;
 - aucune double écriture durable après la bascule ;
 - retour arrière par restauration contrôlée, jamais par lecture simultanée des
   deux modèles ;
@@ -408,18 +476,23 @@ classDiagram
       +Guid Id
       +HistoricalFactType Type
       +HistoricalFactState State
+      +HistoricalEditorialWorkflowState WorkflowState
       +HistoricalPublicationState PublicationState
+      +LocalizedText[] PublicUncertaintyExplanation
       +int Revision
       +DateTime? VerifiedAtUtc
     }
     class HistoricalRelation {
       +HistoricalRelationType Type
       +HistoricalRelationState State
+      +HistoricalEditorialWorkflowState WorkflowState
       +HistoricalPublicationState PublicationState
+      +LocalizedText[] PublicUncertaintyExplanation
       +int Revision
     }
     class HistoricalSourceReference
     class HistoricalNarrative {
+      +HistoricalEditorialWorkflowState WorkflowState
       +HistoricalPublicationState PublicationState
       +int Revision
     }
@@ -494,7 +567,11 @@ Les collections cibles sont `historical-facts`, `historical-relations`,
 
 ## 14. Contrats publics et confidentialité
 
-- seuls les faits et relations publiés entrent dans les réponses publiques ;
+- seuls les faits et relations `Published`, plus les contenus de migration
+  `LegacyPublishedPendingReview` explicitement avertis, entrent dans les réponses
+  publiques ;
+- seuls les faits et relations `Published` admissibles participent aux
+  snapshots décisionnels ;
 - un récit brouillon ou retiré est omis même lorsque son fait reste publié ;
 - les notes admin, historiques de revue et suggestions restent privés ;
 - les sources publiques exposent uniquement les champs éditorialement validés ;
