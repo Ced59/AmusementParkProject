@@ -658,7 +658,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 
 | PR | Contenu | Critère |
 |---|---|---|
-| `HIST-01` | ADR dates, faits, relations et incertitude | Sémantique figée |
+| [`HIST-01`](../../architecture/product-growth-hist-01-temporal-semantics-2026-09-25.md) | ADR dates, faits, relations et incertitude | Sémantique figée |
 | `HIST-02` | Core temporel | Frontières testées |
 | `HIST-03` | Persistance faits/sources | Audit et indexes |
 | `HIST-04` | Migration/adaptation des historiques existants | Aucune perte de contenu |
