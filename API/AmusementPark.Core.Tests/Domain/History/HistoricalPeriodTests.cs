@@ -239,6 +239,34 @@ public sealed class HistoricalPeriodTests
     }
 
     [Fact]
+    public void Match_WhenStartQualifierIsUncertain_ShouldNotClaimItsEnvelopeBoundary()
+    {
+        HistoricalPeriod period = HistoricalPeriod.From(
+            HistoricalDate.ForYear(1998, qualifier: DateQualifier.Early));
+
+        HistoricalPeriodMatch match = period.Match(
+            HistoricalInstant.ForDay(1998, 12, 31));
+
+        Assert.Equal(HistoricalPeriodMatch.PossibleOverlap, match);
+    }
+
+    [Fact]
+    public void Match_WhenPointEndIsConfirmed_ShouldUseItIndependentlyFromEstimatedStart()
+    {
+        HistoricalDate date = HistoricalDate.ForDay(1998, 5, 12);
+        HistoricalPeriod period = new HistoricalPeriod(
+            date,
+            date,
+            PeriodBoundaryConfidence.Estimated,
+            PeriodBoundaryConfidence.Confirmed);
+
+        HistoricalPeriodMatch match = period.Match(
+            HistoricalInstant.ForDay(1998, 5, 12));
+
+        Assert.Equal(HistoricalPeriodMatch.EntirelyContained, match);
+    }
+
+    [Fact]
     public void Constructor_WhenConfidenceIsUnknown_ShouldRejectIt()
     {
         HistoricalTemporalValidationException exception = Assert.Throws<HistoricalTemporalValidationException>(

@@ -165,7 +165,10 @@ public sealed record HistoricalPeriod
         if (this.IsPoint)
         {
             HistoricalDateEnvelope pointEnvelope = this.Start!.GetEnvelope();
-            return IsUsableBoundary(this.Start, this.StartConfidence)
+            bool hasUsablePointBoundary = IsUsableBoundary(this.Start, this.StartConfidence)
+                || IsUsableBoundary(this.End, this.EndConfidence);
+
+            return hasUsablePointBoundary
                 && pointEnvelope.IsExactDay
                     ? pointEnvelope
                     : null;
@@ -220,7 +223,11 @@ public sealed record HistoricalPeriod
     {
         return boundary is not null
             && confidence == PeriodBoundaryConfidence.Confirmed
-            && !boundary.IsApproximate;
+            && !boundary.IsApproximate
+            && boundary.Qualifier is not DateQualifier.Early
+                and not DateQualifier.Mid
+                and not DateQualifier.Late
+                and not DateQualifier.Circa;
     }
 
     private static HistoricalPeriodOrdering ResolveOrdering(
