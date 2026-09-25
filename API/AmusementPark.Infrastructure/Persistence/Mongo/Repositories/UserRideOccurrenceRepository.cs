@@ -618,9 +618,15 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         RideOccurrenceCreationPreparation? preparation = null;
         if (operation.CreationPreparation is not null)
         {
+            int expectedItemCount = string.Equals(
+                operation.OperationKind,
+                CreationKeyReservationOperationKind,
+                StringComparison.Ordinal)
+                ? operation.CreationPreparation.Items.Count
+                : operation.Items.Count;
             _ = TryCreatePreparation(
                 operation.CreationPreparation,
-                operation.CreationPreparation.Items.Count,
+                expectedItemCount,
                 out preparation);
         }
 
