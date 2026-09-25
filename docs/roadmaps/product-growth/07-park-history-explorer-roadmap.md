@@ -659,7 +659,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | PR | Contenu | Critère |
 |---|---|---|
 | [`HIST-01`](../../architecture/product-growth-hist-01-temporal-semantics-2026-09-25.md) | ADR dates, faits, relations et incertitude | Sémantique figée |
-| `HIST-02` | Core temporel | Frontières testées |
+| `HIST-02` | Core temporel | Frontières testées — implémenté le 25 septembre 2026 |
 | `HIST-03` | Persistance faits/sources | Audit et indexes |
 | `HIST-04` | Migration/adaptation des historiques existants | Aucune perte de contenu |
 | `HIST-05` | Builder snapshot | Résultat déterministe |
@@ -672,6 +672,28 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | `HIST-12` | Admin diagnostics/revue | Exploitation fiable |
 | `HIST-13` | SEO/partage | Pages clés seulement |
 | `HIST-14` | Extension parcs | Gate par parc |
+
+### Implémentation `HIST-02` — 25 septembre 2026
+
+Le Core possède désormais un vocabulaire temporel indépendant de MongoDB, de
+l'API et d'Angular. `HistoricalDate` conserve une précision à l'année, au mois
+ou au jour, l'approximation et les qualificatifs `Early`, `Mid`, `Late`,
+`Before`, `After` et `Circa`. Son enveloppe civile sert au raisonnement sans
+modifier la valeur affichable : `1998` couvre ses douze mois mais ne devient
+jamais le 1er janvier.
+
+`HistoricalInstant` représente l'enveloppe demandée par le visiteur et produit
+des clés distinctes pour une année, un mois ou un jour. `HistoricalPeriod`
+gère les bornes ouvertes, les événements ponctuels, l'inclusion civile, la
+confiance `Confirmed`, `Estimated` ou `Disputed`, les ordres certains et les
+chevauchements ambigus. Les erreurs portent des codes métier stables afin que
+les couches suivantes puissent les traduire sans recopier les règles.
+
+Les tests du Core couvrent les années bissextiles, les jours invalides, les
+qualificatifs exclusifs, les limites du calendrier, les périodes inversées,
+les premiers et derniers jours inclus, les enveloppes partielles et les bornes
+incertaines. Aucune persistance, API ou interface n'est introduite dans ce
+jalon ; elles consommeront ces valeurs dans les PR suivantes.
 
 ## 22. Gate finale `HIST-G`
 
