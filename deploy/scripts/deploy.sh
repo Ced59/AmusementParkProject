@@ -407,7 +407,12 @@ if [ "${shared_infrastructure_maintenance}" = "mongodb" ] && [ "${mongodb_backup
 fi
 
 echo "Pulling production images..."
-compose pull
+compose pull api front edge
+
+if [ "${shared_infrastructure_maintenance}" = "mongodb" ]; then
+  echo "Pulling the MongoDB image requested for this maintenance run..."
+  compose pull mongodb
+fi
 
 case "${shared_infrastructure_maintenance}" in
   none)

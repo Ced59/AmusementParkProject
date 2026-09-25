@@ -1,6 +1,20 @@
 {
-  "version": "5.3.70",
+  "version": "5.3.71",
   "history": [
+    {
+      "version": "5.3.71",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "Les mises en ligne sont désormais plus fiables.",
+        "en": "Releases are now more reliable.",
+        "de": "Veröffentlichungen sind jetzt zuverlässiger.",
+        "nl": "Nieuwe versies worden nu betrouwbaarder uitgebracht.",
+        "it": "Le pubblicazioni sono ora più affidabili.",
+        "es": "Las publicaciones son ahora más fiables.",
+        "pl": "Wdrażanie nowych wersji jest teraz bardziej niezawodne.",
+        "pt": "As novas versões são agora publicadas com maior fiabilidade."
+      }
+    },
     {
       "version": "5.3.70",
       "releasedAt": "2026-09-18",
