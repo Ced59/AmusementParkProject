@@ -1562,6 +1562,7 @@
       "alreadyCreated": "Już w Twoim Paszporcie",
       "resume": "Przygotowanie do wznowienia",
       "resumeDescription": "Wersja robocza już istnieje, ale przygotowanie zostało przerwane. Zapisany wybór odtworzono bez zmian; dokończ go bezpiecznie.",
+      "resumeUnreservedDescription": "Wersja robocza już istnieje, ale wybór atrakcji nie został jeszcze zapisany. Wybierz je ponownie przed zakończeniem.",
       "afterDay": "Dostępne po tym dniu",
       "existingDescription": "Wizyta w tym parku w tym dniu już istnieje. Otwórz ją, aby ją uzupełnić.",
       "openVisit": "Otwórz tę wizytę",

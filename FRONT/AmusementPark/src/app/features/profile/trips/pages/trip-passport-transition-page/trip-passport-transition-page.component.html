@@ -94,7 +94,11 @@
             </p>
           } @else {
             @if (day.canResume) {
-              <p>{{ 'trips.passportTransition.resumeDescription' | translate }}</p>
+              <p>
+                {{ (day.isSelectionLocked
+                  ? 'trips.passportTransition.resumeDescription'
+                  : 'trips.passportTransition.resumeUnreservedDescription') | translate }}
+              </p>
               <a
                 appUiButton="ghost"
                 [routerLink]="['/', currentLanguage(), 'profile', 'visits', day.existingVisitId]">

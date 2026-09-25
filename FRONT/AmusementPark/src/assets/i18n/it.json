@@ -1562,6 +1562,7 @@
       "alreadyCreated": "Già nel tuo Passaporto",
       "resume": "Preparazione da riprendere",
       "resumeDescription": "La bozza esiste già, ma la preparazione si è interrotta. La selezione salvata è stata ripristinata senza modifiche; completala in sicurezza.",
+      "resumeUnreservedDescription": "La bozza esiste già, ma la selezione delle attrazioni non era ancora stata salvata. Sceglila di nuovo prima di completare.",
       "afterDay": "Disponibile dopo questa giornata",
       "existingDescription": "Esiste già una visita per questo parco e questa data. Aprila per completarla.",
       "openVisit": "Apri questa visita",

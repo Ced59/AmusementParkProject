@@ -92,7 +92,10 @@ empreintes d’opération distinguent ensuite une création TRIP-12 et un lot de
 passages réservé, en cours ou finalisé. La réservation conserve aussi les
 identifiants des attractions dans leur ordre canonique ainsi que l’identité
 temporelle de la visite afin de restaurer exactement la sélection après une
-coupure. Si cette identité a été corrigée dans le Passeport avant tout passage,
+coupure. La lecture des créations conserve l’association exacte entre chaque
+clé d’opération et sa visite : un brouillon déplacé sur une autre journée ne
+peut donc pas être annoncé comme une reprise de cette nouvelle journée. Si
+cette identité a été corrigée dans le Passeport avant tout passage,
 l’ancienne réservation est retirée et la sélection redevient éditable avant
 d’être réservée à nouveau. Une confirmation volontairement
 vide écrit un marqueur de fin sans créer de passage. Ces opérations réutilisent
@@ -147,7 +150,7 @@ classDiagram
     }
     class IUserVisitRepository {
       +ListOwnedByExactDatesAsync(userId, dates)
-      +ListOwnedCreationOperationVisitIdsAsync(userId, operationIds)
+      +ListOwnedCreationOperationVisitsAsync(userId, operationIds)
       +ResolveExistingCreationAsync(visit, operationId)
       +GetOwnedAsync(visitId, userId)
       +GetDeletedCreationOperationVisitIdAsync(userId, operationId)

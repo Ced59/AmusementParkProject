@@ -192,30 +192,49 @@ public sealed class UserVisitRepository : IUserVisitRepository
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
-    public async Task<IReadOnlyCollection<VisitId>> ListOwnedCreationOperationVisitIdsAsync(
+    public async Task<IReadOnlyDictionary<string, VisitId>> ListOwnedCreationOperationVisitsAsync(
         string userId,
         IReadOnlyCollection<string> clientOperationIds,
         CancellationToken cancellationToken)
     {
         string normalizedUserId = NormalizeRequired(userId, nameof(userId));
         ArgumentNullException.ThrowIfNull(clientOperationIds);
-        string[] operationKeyHashes = clientOperationIds
-            .Select(operationId => UserVisitCreationFingerprint.HashOperationKey(
-                NormalizeRequired(operationId, nameof(clientOperationIds))))
+        Dictionary<string, string> operationIdByHash = clientOperationIds
+            .Select(operationId => NormalizeRequired(operationId, nameof(clientOperationIds)))
             .Distinct(StringComparer.Ordinal)
-            .ToArray();
-        if (operationKeyHashes.Length == 0)
+            .ToDictionary(
+                UserVisitCreationFingerprint.HashOperationKey,
+                static operationId => operationId,
+                StringComparer.Ordinal);
+        if (operationIdByHash.Count == 0)
         {
-            return Array.Empty<VisitId>();
+            return new Dictionary<string, VisitId>(StringComparer.Ordinal);
         }
 
-        List<string> visitIds = await this.collection
+        List<UserVisitCreationOperationProjection> references = await this.collection
             .Find(UserVisitMongoDefinitions.BuildOwnedCreationOperationsFilter(
                 normalizedUserId,
-                operationKeyHashes))
-            .Project(static document => document.Id)
+                operationIdByHash.Keys.ToArray()))
+            .Project(static document => new UserVisitCreationOperationProjection
+            {
+                Id = document.Id,
+                CreationOperationKeyHash = document.CreationOperationKeyHash,
+            })
             .ToListAsync(cancellationToken);
-        return visitIds.Select(VisitId.Parse).Distinct().ToArray();
+        Dictionary<string, VisitId> visitsByOperationId =
+            new Dictionary<string, VisitId>(StringComparer.Ordinal);
+        foreach (UserVisitCreationOperationProjection reference in references)
+        {
+            if (!string.IsNullOrWhiteSpace(reference.CreationOperationKeyHash)
+                && operationIdByHash.TryGetValue(
+                    reference.CreationOperationKeyHash,
+                    out string? operationId))
+            {
+                visitsByOperationId[operationId] = VisitId.Parse(reference.Id);
+            }
+        }
+
+        return visitsByOperationId;
     }
 
     public async Task ReleaseDeletedCreationOperationAsync(

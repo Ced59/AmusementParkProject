@@ -121,24 +121,27 @@ public sealed class TripPassportTransitionConfirmer
             normalizedUserId,
             day.ParkId,
             localDate);
-        IReadOnlyCollection<VisitId> transitionVisitIds =
-            await this.visits.ListOwnedCreationOperationVisitIdsAsync(
+        IReadOnlyDictionary<string, VisitId> transitionVisitByOperationId =
+            await this.visits.ListOwnedCreationOperationVisitsAsync(
                 normalizedUserId,
                 new[] { visitOperationId },
                 cancellationToken);
+        bool hasTransitionCreation = transitionVisitByOperationId.TryGetValue(
+            visitOperationId,
+            out VisitId transitionVisitId);
         bool isTransitionCreation = existingVisit is not null
-            && transitionVisitIds.Contains(existingVisit.Id);
-        if (existingVisit is null && transitionVisitIds.Count > 0)
+            && hasTransitionCreation
+            && transitionVisitId == existingVisit.Id;
+        if (existingVisit is null && hasTransitionCreation)
         {
-            VisitId movedVisitId = transitionVisitIds.Single();
             await this.rideOccurrences.ReleaseBatchCreationOperationAsync(
                 normalizedUserId,
-                movedVisitId,
+                transitionVisitId,
                 rideOperationId,
                 cancellationToken);
             await this.visits.ReleaseOwnedCreationOperationAsync(
                 normalizedUserId,
-                movedVisitId,
+                transitionVisitId,
                 visitOperationId,
                 cancellationToken);
         }

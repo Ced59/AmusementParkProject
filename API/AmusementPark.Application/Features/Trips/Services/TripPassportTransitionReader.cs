@@ -125,9 +125,10 @@ public sealed class TripPassportTransitionReader
                     normalizedUserId,
                     day.ParkId,
                     day.LocalDate));
-        IReadOnlyCollection<VisitId> transitionVisitIds = visitOperationIds.Count == 0
-            ? Array.Empty<VisitId>()
-            : await this.visits.ListOwnedCreationOperationVisitIdsAsync(
+        IReadOnlyDictionary<string, VisitId> transitionVisitByOperationId =
+            visitOperationIds.Count == 0
+            ? new Dictionary<string, VisitId>(StringComparer.Ordinal)
+            : await this.visits.ListOwnedCreationOperationVisitsAsync(
                 normalizedUserId,
                 visitOperationIds.Values.ToArray(),
                 cancellationToken);
@@ -138,7 +139,6 @@ public sealed class TripPassportTransitionReader
                 normalizedUserId,
                 rideOperationIds.Values.ToArray(),
                 cancellationToken);
-        HashSet<VisitId> transitionVisitIdSet = transitionVisitIds.ToHashSet();
         IReadOnlyDictionary<string, RideOccurrenceBatchCreationOperationState>
             rideOperationById = rideOperations
                 .GroupBy(static operation => operation.ClientOperationId, StringComparer.Ordinal)
@@ -151,12 +151,16 @@ public sealed class TripPassportTransitionReader
             .Where(day =>
             {
                 Visit existing = existingByDay[(day.ParkId, day.LocalDate)];
+                string visitOperationId = visitOperationIds[day.LocalDate];
                 rideOperationIds.TryGetValue(day.LocalDate, out string? operationId);
                 RideOccurrenceBatchCreationOperationState? operation = operationId is null
                     ? null
                     : rideOperationById.GetValueOrDefault(operationId);
                 return existing.Status == VisitStatus.Draft
-                    && transitionVisitIdSet.Contains(existing.Id)
+                    && transitionVisitByOperationId.TryGetValue(
+                        visitOperationId,
+                        out VisitId transitionVisitId)
+                    && transitionVisitId == existing.Id
                     && !(operation?.IsCompleted ?? false)
                     && !(operation?.IsConflicted ?? false);
             })
@@ -215,7 +219,13 @@ public sealed class TripPassportTransitionReader
 
             bool canResume = existing is not null
                 && existing.Status == VisitStatus.Draft
-                && transitionVisitIdSet.Contains(existing.Id)
+                && visitOperationIds.TryGetValue(
+                    day.LocalDate,
+                    out string? visitOperationId)
+                && transitionVisitByOperationId.TryGetValue(
+                    visitOperationId,
+                    out VisitId transitionVisitId)
+                && transitionVisitId == existing.Id
                 && !(rideOperation?.IsCompleted ?? false)
                 && !(rideOperation?.IsConflicted ?? false);
             bool canStart = TripPassportTransitionPolicy.CanConfirmDay(

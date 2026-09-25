@@ -1562,6 +1562,7 @@
       "alreadyCreated": "Bereits in deinem Pass",
       "resume": "Vorbereitung fortsetzen",
       "resumeDescription": "Der Entwurf ist bereits vorhanden, aber die Vorbereitung wurde unterbrochen. Deine gespeicherte Auswahl wurde unverändert wiederhergestellt; schließe sie sicher ab.",
+      "resumeUnreservedDescription": "Der Entwurf ist bereits vorhanden, aber die Attraktionsauswahl wurde noch nicht gespeichert. Wähle sie vor dem Abschluss erneut aus.",
       "afterDay": "Nach diesem Tag verfügbar",
       "existingDescription": "Für diesen Park und dieses Datum gibt es bereits einen Besuch. Öffne ihn, um ihn zu ergänzen.",
       "openVisit": "Diesen Besuch öffnen",

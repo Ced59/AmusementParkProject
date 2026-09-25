@@ -1562,6 +1562,7 @@
       "alreadyCreated": "Al in je Paspoort",
       "resume": "Voorbereiding hervatten",
       "resumeDescription": "Het concept bestaat al, maar de voorbereiding werd onderbroken. Je opgeslagen selectie is ongewijzigd hersteld; rond ze veilig af.",
+      "resumeUnreservedDescription": "Het concept bestaat al, maar de attractiekeuze was nog niet opgeslagen. Kies ze opnieuw voordat je afrondt.",
       "afterDay": "Beschikbaar na deze dag",
       "existingDescription": "Er bestaat al een bezoek voor dit park en deze datum. Open het om het aan te vullen.",
       "openVisit": "Dit bezoek openen",

@@ -38,7 +38,7 @@ public interface IUserVisitRepository
         IReadOnlyCollection<DateOnly> localDates,
         CancellationToken cancellationToken);
 
-    Task<IReadOnlyCollection<VisitId>> ListOwnedCreationOperationVisitIdsAsync(
+    Task<IReadOnlyDictionary<string, VisitId>> ListOwnedCreationOperationVisitsAsync(
         string userId,
         IReadOnlyCollection<string> clientOperationIds,
         CancellationToken cancellationToken);

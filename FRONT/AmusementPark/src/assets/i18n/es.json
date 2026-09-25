@@ -1562,6 +1562,7 @@
       "alreadyCreated": "Ya está en tu Pasaporte",
       "resume": "Preparación pendiente",
       "resumeDescription": "El borrador ya existe, pero la preparación se interrumpió. Tu selección guardada se ha restaurado sin cambios; finalízala con seguridad.",
+      "resumeUnreservedDescription": "El borrador ya existe, pero la selección de atracciones aún no se había guardado. Elígela de nuevo antes de finalizar.",
       "afterDay": "Disponible después de este día",
       "existingDescription": "Ya existe una visita para este parque y esta fecha. Ábrela para completarla.",
       "openVisit": "Abrir esta visita",

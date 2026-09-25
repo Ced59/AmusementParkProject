@@ -84,12 +84,12 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
         return this.inner.ListOwnedByExactDatesAsync(userId, localDates, cancellationToken);
     }
 
-    public Task<IReadOnlyCollection<VisitId>> ListOwnedCreationOperationVisitIdsAsync(
+    public Task<IReadOnlyDictionary<string, VisitId>> ListOwnedCreationOperationVisitsAsync(
         string userId,
         IReadOnlyCollection<string> clientOperationIds,
         CancellationToken cancellationToken)
     {
-        return this.inner.ListOwnedCreationOperationVisitIdsAsync(
+        return this.inner.ListOwnedCreationOperationVisitsAsync(
             userId,
             clientOperationIds,
             cancellationToken);

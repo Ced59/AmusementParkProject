@@ -1562,6 +1562,7 @@
       "alreadyCreated": "Déjà dans ton Passeport",
       "resume": "Préparation à reprendre",
       "resumeDescription": "Le brouillon existe déjà, mais la préparation a été interrompue. Ta sélection enregistrée est restaurée à l’identique ; finalise-la pour reprendre en toute sécurité.",
+      "resumeUnreservedDescription": "Le brouillon existe déjà, mais la sélection des attractions n’avait pas encore été enregistrée. Choisis-la de nouveau avant de finaliser.",
       "afterDay": "Disponible après cette journée",
       "existingDescription": "Une visite existe déjà pour ce parc et cette date. Ouvre-la pour la compléter.",
       "openVisit": "Ouvrir cette visite",
