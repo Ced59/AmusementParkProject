@@ -1,0 +1,12 @@
+{
+  "trips": {
+    "export": {
+      "open": "Lleva el programa contigo", "back": "Volver al viaje", "kicker": "Programa para llevar", "description": "Consulta lo esencial del viaje en una vista clara que puedes imprimir, guardar como PDF o descargar en JSON.",
+      "private": "Solo para participantes", "generated": "Preparado el {{date}}", "print": "Imprimir o guardar como PDF", "downloadJson": "Descargar JSON", "errorTitle": "El programa no está disponible", "errorDescription": "No se ha podido preparar de forma segura. Inténtalo de nuevo en un momento.",
+      "whenKicker": "Datos clave", "whenTitle": "¿Cuándo nos vamos?", "dates": "Fechas", "datesUnknown": "Fechas aún por decidir", "timeZone": "Zona horaria", "parksKicker": "Rumbo del viaje", "parksTitle": "Parques considerados", "parksDescription": "Las opciones elegidas y las que siguen en debate.", "unavailablePark": "Parque ya no disponible", "noParks": "Todavía no se ha añadido ningún parque.",
+      "programKicker": "Día a día", "programTitle": "El programa", "programDescription": "Citas y notas compartidas, sin preferencias privadas.", "arrival": "Llegada deseada a las {{time}}", "noBlocks": "No hay ninguna cita prevista para este día.", "noDays": "Todavía no se ha programado ningún día.",
+      "decisionsKicker": "Elecciones del grupo", "decisionsTitle": "Decisiones colectivas", "decisionsDescription": "Lo que el grupo ha decidido oficialmente para las atracciones.", "unavailableAttraction": "Atracción ya no disponible", "noDecisions": "Todavía no se ha registrado ninguna decisión colectiva.", "footer": "Este documento solo contiene el programa compartido. Nunca incluye preferencias individuales ni datos de cuenta.",
+      "states": { "proposed": "Propuesto", "shortlisted": "Preseleccionado", "selected": "Elegido", "rejected": "Descartado" }, "decisions": { "review": "Por revisar", "retained": "Elegido", "splitgroup": "Grupo separado", "optional": "Opcional", "excluded": "Excluido" }
+    }
+  }
+}

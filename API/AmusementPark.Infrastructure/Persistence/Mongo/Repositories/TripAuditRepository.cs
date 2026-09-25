@@ -113,6 +113,39 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         }
     }
 
+    public async Task<bool> AppendReadOnlyAsync(
+        TripActivityWrite activity,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(activity);
+        if (activity.Kind != TripActivityKind.PlanExported)
+        {
+            throw new ArgumentException(
+                "Only read-only trip activities may bypass a durable mutation marker.",
+                nameof(activity));
+        }
+
+        try
+        {
+            return await this.MaterializeAsync(
+                activity,
+                cancellationToken,
+                missingTripIsSuccess: false);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            return false;
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogError(
+                exception,
+                "Unable to materialize read-only trip activity {OperationKey}.",
+                activity.OperationKey);
+            return false;
+        }
+    }
+
     private async Task EnrichExistingActorAsync(
         TripActivityEventDocument existing,
         TripActivityWrite requested,
@@ -305,7 +338,8 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
 
     private async Task<bool> MaterializeAsync(
         TripActivityWrite activity,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        bool missingTripIsSuccess = true)
     {
         if (await this.IsActivityInFlightAsync(activity, cancellationToken))
         {
@@ -344,7 +378,7 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
                 activity.TripPlanId,
                 activity.OperationKey,
                 cancellationToken);
-            return true;
+            return missingTripIsSuccess;
         }
 
         TripActivityEventDocument document = new()
@@ -384,6 +418,7 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
                     static item => item.TripPlanId,
                     activity.TripPlanId.Value),
                 cancellationToken);
+            return missingTripIsSuccess;
         }
 
         await this.RemovePendingMarkersAsync(

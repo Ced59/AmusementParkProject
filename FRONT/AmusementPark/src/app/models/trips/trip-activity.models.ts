@@ -16,7 +16,8 @@ export type TripActivityKind =
   | 'OwnershipTransferred'
   | 'ParticipantLeft'
   | 'PreferencesUpdated'
-  | 'CollectiveDecisionUpdated';
+  | 'CollectiveDecisionUpdated'
+  | 'PlanExported';
 
 export interface TripActivityEntry {
   sequence: number;

@@ -20,6 +20,7 @@ const componentStyles = [
   'src/app/features/profile/trips/pages/trip-preference-summary-page/trip-preference-summary-page.component.scss',
   'src/app/features/profile/trips/pages/trip-program-coherence-page/trip-program-coherence-page.component.scss',
   'src/app/features/profile/trips/pages/trip-activity-page/trip-activity-page.component.scss',
+  'src/app/features/profile/trips/pages/trip-export-page/trip-export-page.component.scss',
   'src/app/features/public/trips/pages/trip-invitation-preview-page/trip-invitation-preview-page.component.scss'
 ]
   .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
@@ -231,6 +232,31 @@ const fixtureMarkup = `
           <li class="trip-activity-entry" data-check-bound><span class="trip-activity-entry__icon">♥</span><div class="trip-activity-entry__body"><strong>Mise à jour de 250 préférences · Toi</strong><time>18 septembre 2026 à 14:22</time></div></li>
         </ol>
         <button>Charger les changements précédents</button>
+      </section>
+    </main>
+
+    <main class="trip-export-page" data-responsive-root="trip-export">
+      <header class="trip-export-hero surface" data-check-bound>
+        <a href="#">Retour au voyage</a>
+        <h1>Une aventure européenne avec un titre volontairement très long</h1>
+        <p>Un programme privé, transportable et lisible sur tous les écrans.</p>
+        <div class="trip-export-hero__legend"><span>Réservé aux participants</span><span>Préparé aujourd’hui</span></div>
+        <div class="trip-export-hero__actions"><button>Imprimer ou enregistrer en PDF</button><button>Télécharger le JSON</button></div>
+      </header>
+      <section class="trip-export-section surface" data-check-bound>
+        <div class="trip-export-section__heading"><span class="trip-export-section__step">2</span><div><h2>Les parcs envisagés</h2><p>Les choix retenus et encore en discussion.</p></div></div>
+        <div class="trip-export-grid">
+          <article class="trip-export-card" data-check-bound><div class="trip-export-card__title"><i>⌖</i><h3>Destination au nom exceptionnellement long pour vérifier le retour à la ligne</h3></div><span>Sélectionné</span><p>Samedi 20 août 2027 · Dimanche 21 août 2027</p><p>Une note collective très détaillée qui doit rester entièrement dans la carte.</p></article>
+          <article class="trip-export-card" data-check-bound><div class="trip-export-card__title"><i>⌖</i><h3>Deuxième destination</h3></div><span>À départager</span></article>
+        </div>
+      </section>
+      <section class="trip-export-section surface" data-check-bound>
+        <div class="trip-export-section__heading"><span class="trip-export-section__step">3</span><div><h2>Le programme</h2><p>Les rendez-vous partagés, sans données privées.</p></div></div>
+        <div class="trip-export-days"><article class="trip-export-day" data-check-bound><div class="trip-export-day__heading"><div><time>Samedi 20 août 2027</time><h3>Destination au nom très long</h3></div><span>Arrivée souhaitée à 09:30</span></div><p class="trip-export-day__note">Rendez-vous devant l’entrée principale avec toute la famille.</p><ol class="trip-export-blocks"><li><span>12:30</span><div><strong>Déjeuner au restaurant dont le nom est particulièrement long</strong><p>Réservation du groupe.</p></div></li></ol></article></div>
+      </section>
+      <section class="trip-export-section surface" data-check-bound>
+        <div class="trip-export-section__heading"><span class="trip-export-section__step">4</span><div><h2>Les décisions collectives</h2></div></div>
+        <ul class="trip-export-decisions"><li data-check-bound><div><strong>Attraction au nom extrêmement long et non sécable</strong><span>Destination représentative</span></div><span>Groupe séparé</span><p>Une raison collective suffisamment longue pour éprouver la mise en page mobile.</p></li></ul>
       </section>
     </main>
 

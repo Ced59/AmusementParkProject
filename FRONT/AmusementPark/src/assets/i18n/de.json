@@ -1399,7 +1399,55 @@
         "ownershipTransferred": "Reiseleitung übertragen · {{actor}}",
         "participantLeft": "Reise verlassen · {{actor}}",
         "preferencesUpdated": "Präferenzen aktualisiert ({{count}}) · {{actor}}",
-        "collectiveDecisionUpdated": "Gruppenentscheidung aktualisiert · {{actor}}"
+        "collectiveDecisionUpdated": "Gruppenentscheidung aktualisiert · {{actor}}",
+        "planExported": "Reiseplan exportiert · {{actor}}"
+      }
+    },
+    "export": {
+      "open": "Reiseplan mitnehmen",
+      "back": "Zurück zur Reise",
+      "kicker": "Reiseplan für unterwegs",
+      "description": "Alle wichtigen Reisedaten in einer klaren Ansicht zum Drucken, Speichern als PDF oder Herunterladen als JSON.",
+      "private": "Nur für Teilnehmende",
+      "generated": "Erstellt am {{date}}",
+      "print": "Drucken oder als PDF speichern",
+      "downloadJson": "JSON herunterladen",
+      "errorTitle": "Der Reiseplan ist nicht verfügbar",
+      "errorDescription": "Er konnte nicht sicher erstellt werden. Versuche es gleich noch einmal.",
+      "whenKicker": "Eckdaten",
+      "whenTitle": "Wann fahren wir?",
+      "dates": "Daten",
+      "datesUnknown": "Daten noch offen",
+      "timeZone": "Zeitzone",
+      "parksKicker": "Reiseziel",
+      "parksTitle": "Parks in der Auswahl",
+      "parksDescription": "Ausgewählte Parks und noch offene Vorschläge.",
+      "unavailablePark": "Park nicht mehr verfügbar",
+      "noParks": "Noch kein Park hinzugefügt.",
+      "programKicker": "Tag für Tag",
+      "programTitle": "Der Reiseplan",
+      "programDescription": "Gemeinsame Termine und Notizen ohne private Präferenzen.",
+      "arrival": "Gewünschte Ankunft um {{time}}",
+      "noBlocks": "Für diesen Tag ist noch kein Termin geplant.",
+      "noDays": "Noch kein Tag geplant.",
+      "decisionsKicker": "Gruppenwahl",
+      "decisionsTitle": "Gemeinsame Entscheidungen",
+      "decisionsDescription": "Was die Gruppe für die Attraktionen offiziell beschlossen hat.",
+      "unavailableAttraction": "Attraktion nicht mehr verfügbar",
+      "noDecisions": "Noch keine gemeinsame Entscheidung erfasst.",
+      "footer": "Dieses Dokument enthält nur den gemeinsamen Reiseplan. Individuelle Präferenzen und Kontodaten sind nie enthalten.",
+      "states": {
+        "proposed": "Vorgeschlagen",
+        "shortlisted": "Engere Auswahl",
+        "selected": "Ausgewählt",
+        "rejected": "Abgelehnt"
+      },
+      "decisions": {
+        "review": "Prüfen",
+        "retained": "Beibehalten",
+        "splitgroup": "Geteilte Gruppe",
+        "optional": "Optional",
+        "excluded": "Ausgeschlossen"
       }
     },
     "invitations": {

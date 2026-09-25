@@ -1399,7 +1399,55 @@
         "ownershipTransferred": "Przekazanie organizacji · {{actor}}",
         "participantLeft": "Opuszczenie podróży · {{actor}}",
         "preferencesUpdated": "Aktualizacja preferencji ({{count}}) · {{actor}}",
-        "collectiveDecisionUpdated": "Aktualizacja decyzji grupowej · {{actor}}"
+        "collectiveDecisionUpdated": "Aktualizacja decyzji grupowej · {{actor}}",
+        "planExported": "Eksport programu · {{actor}}"
+      }
+    },
+    "export": {
+      "open": "Zabierz plan ze sobą",
+      "back": "Wróć do podróży",
+      "kicker": "Plan na drogę",
+      "description": "Najważniejsze informacje o podróży w czytelnym widoku do wydruku, zapisania jako PDF lub pobrania w JSON.",
+      "private": "Tylko dla uczestników",
+      "generated": "Przygotowano {{date}}",
+      "print": "Drukuj lub zapisz jako PDF",
+      "downloadJson": "Pobierz JSON",
+      "errorTitle": "Plan jest niedostępny",
+      "errorDescription": "Nie udało się go bezpiecznie przygotować. Spróbuj ponownie za chwilę.",
+      "whenKicker": "Najważniejsze dane",
+      "whenTitle": "Kiedy jedziemy?",
+      "dates": "Daty",
+      "datesUnknown": "Daty do ustalenia",
+      "timeZone": "Strefa czasowa",
+      "parksKicker": "Kierunek podróży",
+      "parksTitle": "Rozważane parki",
+      "parksDescription": "Wybrane propozycje i te, które są jeszcze omawiane.",
+      "unavailablePark": "Park nie jest już dostępny",
+      "noParks": "Nie dodano jeszcze żadnego parku.",
+      "programKicker": "Dzień po dniu",
+      "programTitle": "Plan",
+      "programDescription": "Wspólne terminy i notatki bez prywatnych preferencji.",
+      "arrival": "Planowany przyjazd o {{time}}",
+      "noBlocks": "Na ten dzień nie zaplanowano żadnego punktu.",
+      "noDays": "Nie zaplanowano jeszcze żadnego dnia.",
+      "decisionsKicker": "Wybory grupy",
+      "decisionsTitle": "Wspólne decyzje",
+      "decisionsDescription": "Oficjalne decyzje grupy dotyczące atrakcji.",
+      "unavailableAttraction": "Atrakcja nie jest już dostępna",
+      "noDecisions": "Nie zapisano jeszcze żadnej wspólnej decyzji.",
+      "footer": "Ten dokument zawiera tylko wspólny plan. Indywidualne preferencje i dane konta nigdy nie są w nim umieszczane.",
+      "states": {
+        "proposed": "Propozycja",
+        "shortlisted": "Krótka lista",
+        "selected": "Wybrany",
+        "rejected": "Odrzucony"
+      },
+      "decisions": {
+        "review": "Do sprawdzenia",
+        "retained": "Wybrana",
+        "splitgroup": "Podział grupy",
+        "optional": "Opcjonalna",
+        "excluded": "Wykluczona"
       }
     },
     "invitations": {

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.71",
+  "version": "5.3.72",
   "history": [
+    {
+      "version": "5.3.72",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "Tu peux maintenant imprimer le programme de ton voyage ou l’emporter dans un fichier lisible.",
+        "en": "You can now print your trip plan or take it with you in a readable file.",
+        "de": "Du kannst deinen Reiseplan jetzt drucken oder als lesbare Datei mitnehmen.",
+        "nl": "Je kunt je reisplan nu afdrukken of meenemen in een leesbaar bestand.",
+        "it": "Ora puoi stampare il programma del viaggio o portarlo con te in un file leggibile.",
+        "es": "Ya puedes imprimir el programa del viaje o llevarlo contigo en un archivo legible.",
+        "pl": "Możesz teraz wydrukować plan podróży lub zabrać go ze sobą w czytelnym pliku.",
+        "pt": "Agora podes imprimir o programa da viagem ou levá-lo contigo num ficheiro legível."
+      }
+    },
     {
       "version": "5.3.71",
       "releasedAt": "2026-09-25",

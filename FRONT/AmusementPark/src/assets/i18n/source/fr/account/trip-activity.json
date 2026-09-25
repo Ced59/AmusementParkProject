@@ -34,7 +34,8 @@
         "ownershipTransferred": "Transfert de l’organisation · {{actor}}",
         "participantLeft": "Départ du voyage · {{actor}}",
         "preferencesUpdated": "Préférences modifiées ({{count}}) · {{actor}}",
-        "collectiveDecisionUpdated": "Mise à jour d’une décision collective · {{actor}}"
+        "collectiveDecisionUpdated": "Mise à jour d’une décision collective · {{actor}}",
+        "planExported": "Programme exporté · {{actor}}"
       }
     }
   }

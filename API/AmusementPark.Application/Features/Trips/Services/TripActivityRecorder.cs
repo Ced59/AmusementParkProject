@@ -109,6 +109,14 @@ public sealed class TripActivityRecorder
         return this.writer.AppendAsync(activity, cancellationToken);
     }
 
+    public Task<bool> PublishReadOnlyAsync(
+        TripActivityWrite activity,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(activity);
+        return this.writer.AppendReadOnlyAsync(activity, cancellationToken);
+    }
+
     public static string RootOperationKey(TripActivityKind kind, long version)
     {
         return $"root:{kind}:{version}";

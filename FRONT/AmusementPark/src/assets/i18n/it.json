@@ -1399,7 +1399,55 @@
         "ownershipTransferred": "Organizzazione trasferita · {{actor}}",
         "participantLeft": "Uscita dal viaggio · {{actor}}",
         "preferencesUpdated": "Preferenze aggiornate ({{count}}) · {{actor}}",
-        "collectiveDecisionUpdated": "Decisione collettiva aggiornata · {{actor}}"
+        "collectiveDecisionUpdated": "Decisione collettiva aggiornata · {{actor}}",
+        "planExported": "Programma esportato · {{actor}}"
+      }
+    },
+    "export": {
+      "open": "Porta con te il programma",
+      "back": "Torna al viaggio",
+      "kicker": "Programma da portare",
+      "description": "Ritrova gli elementi essenziali del viaggio in una vista chiara da stampare, salvare in PDF o scaricare in JSON.",
+      "private": "Solo per i partecipanti",
+      "generated": "Preparato il {{date}}",
+      "print": "Stampa o salva in PDF",
+      "downloadJson": "Scarica JSON",
+      "errorTitle": "Il programma non è disponibile",
+      "errorDescription": "Non è stato possibile prepararlo in sicurezza. Riprova tra poco.",
+      "whenKicker": "Riferimenti",
+      "whenTitle": "Quando partiamo?",
+      "dates": "Date",
+      "datesUnknown": "Date ancora da decidere",
+      "timeZone": "Fuso orario",
+      "parksKicker": "Direzione del viaggio",
+      "parksTitle": "Parchi presi in considerazione",
+      "parksDescription": "Le scelte selezionate e quelle ancora in discussione.",
+      "unavailablePark": "Parco non più disponibile",
+      "noParks": "Non è ancora stato aggiunto alcun parco.",
+      "programKicker": "Giorno per giorno",
+      "programTitle": "Il programma",
+      "programDescription": "Appuntamenti e note condivise, senza preferenze private.",
+      "arrival": "Arrivo desiderato alle {{time}}",
+      "noBlocks": "Nessun appuntamento previsto per questa giornata.",
+      "noDays": "Nessuna giornata è stata ancora programmata.",
+      "decisionsKicker": "Scelte del gruppo",
+      "decisionsTitle": "Decisioni collettive",
+      "decisionsDescription": "Ciò che il gruppo ha deciso ufficialmente per le attrazioni.",
+      "unavailableAttraction": "Attrazione non più disponibile",
+      "noDecisions": "Non è stata ancora registrata alcuna decisione collettiva.",
+      "footer": "Questo documento contiene solo il programma condiviso. Le preferenze individuali e i dati dell’account non sono mai inclusi.",
+      "states": {
+        "proposed": "Proposto",
+        "shortlisted": "In selezione",
+        "selected": "Scelto",
+        "rejected": "Scartato"
+      },
+      "decisions": {
+        "review": "Da valutare",
+        "retained": "Confermato",
+        "splitgroup": "Gruppo diviso",
+        "optional": "Facoltativo",
+        "excluded": "Escluso"
       }
     },
     "invitations": {

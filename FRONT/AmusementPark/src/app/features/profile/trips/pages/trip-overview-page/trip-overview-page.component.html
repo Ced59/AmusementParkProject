@@ -36,6 +36,10 @@
           <i class="pi pi-history" aria-hidden="true"></i>
           <span>{{ 'trips.activity.open' | translate }}</span>
         </a>
+        <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', trip.tripPlanId, 'export']">
+          <i class="pi pi-download" aria-hidden="true"></i>
+          <span>{{ 'trips.export.open' | translate }}</span>
+        </a>
       </div>
     }
   </header>

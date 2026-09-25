@@ -14,7 +14,7 @@
         "dayUpdated": "Reisdag bijgewerkt · {{actor}}", "dayRemoved": "Reisdag verwijderd · {{actor}}",
         "invitationCreated": "Uitnodiging aangemaakt · {{actor}}", "invitationRevoked": "Uitnodiging ingetrokken · {{actor}}", "invitationAccepted": "Uitnodiging geaccepteerd · {{actor}}", "invitationDeclined": "Uitnodiging afgewezen · {{actor}}",
         "participantRoleChanged": "Rol gewijzigd · {{actor}}", "ownershipTransferred": "Reisbeheer overgedragen · {{actor}}", "participantLeft": "Reis verlaten · {{actor}}",
-        "preferencesUpdated": "Voorkeuren bijgewerkt ({{count}}) · {{actor}}", "collectiveDecisionUpdated": "Groepsbesluit bijgewerkt · {{actor}}"
+        "preferencesUpdated": "Voorkeuren bijgewerkt ({{count}}) · {{actor}}", "collectiveDecisionUpdated": "Groepsbesluit bijgewerkt · {{actor}}", "planExported": "Reisplan geëxporteerd · {{actor}}"
       }
     }
   }

@@ -20,4 +20,5 @@ public enum TripActivityKind
     ParticipantLeft = 15,
     PreferencesUpdated = 16,
     CollectiveDecisionUpdated = 17,
+    PlanExported = 18,
 }

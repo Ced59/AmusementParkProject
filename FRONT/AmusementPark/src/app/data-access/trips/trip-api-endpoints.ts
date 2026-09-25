@@ -43,5 +43,7 @@ export const TRIP_API_ENDPOINTS = {
   coherence: (tripPlanId: string): string =>
     `me/trips/${encodeSegment(tripPlanId)}/coherence`,
   activity: (tripPlanId: string): string =>
-    `me/trips/${encodeSegment(tripPlanId)}/activity`
+    `me/trips/${encodeSegment(tripPlanId)}/activity`,
+  export: (tripPlanId: string): string =>
+    `me/trips/${encodeSegment(tripPlanId)}/export`
 } as const;

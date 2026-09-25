@@ -1399,7 +1399,55 @@
         "ownershipTransferred": "Reisbeheer overgedragen · {{actor}}",
         "participantLeft": "Reis verlaten · {{actor}}",
         "preferencesUpdated": "Voorkeuren bijgewerkt ({{count}}) · {{actor}}",
-        "collectiveDecisionUpdated": "Groepsbesluit bijgewerkt · {{actor}}"
+        "collectiveDecisionUpdated": "Groepsbesluit bijgewerkt · {{actor}}",
+        "planExported": "Reisplan geëxporteerd · {{actor}}"
+      }
+    },
+    "export": {
+      "open": "Neem het programma mee",
+      "back": "Terug naar de reis",
+      "kicker": "Programma voor onderweg",
+      "description": "Bewaar de belangrijkste reisgegevens in een duidelijk overzicht dat je kunt afdrukken, als pdf opslaan of als JSON downloaden.",
+      "private": "Alleen voor deelnemers",
+      "generated": "Voorbereid op {{date}}",
+      "print": "Afdrukken of als pdf opslaan",
+      "downloadJson": "JSON downloaden",
+      "errorTitle": "Het programma is niet beschikbaar",
+      "errorDescription": "Het kon niet veilig worden voorbereid. Probeer het zo opnieuw.",
+      "whenKicker": "Hoofdgegevens",
+      "whenTitle": "Wanneer vertrekken we?",
+      "dates": "Datums",
+      "datesUnknown": "Datums nog te bepalen",
+      "timeZone": "Tijdzone",
+      "parksKicker": "Reisrichting",
+      "parksTitle": "Parken in overweging",
+      "parksDescription": "Geselecteerde keuzes en voorstellen die nog worden besproken.",
+      "unavailablePark": "Park niet meer beschikbaar",
+      "noParks": "Er is nog geen park toegevoegd.",
+      "programKicker": "Dag voor dag",
+      "programTitle": "Het programma",
+      "programDescription": "Gedeelde afspraken en notities, zonder privévoorkeuren.",
+      "arrival": "Gewenste aankomst om {{time}}",
+      "noBlocks": "Geen afspraak gepland voor deze dag.",
+      "noDays": "Er is nog geen dag gepland.",
+      "decisionsKicker": "Groepskeuzes",
+      "decisionsTitle": "Gezamenlijke beslissingen",
+      "decisionsDescription": "Wat de groep officieel heeft besloten voor attracties.",
+      "unavailableAttraction": "Attractie niet meer beschikbaar",
+      "noDecisions": "Er is nog geen gezamenlijk besluit vastgelegd.",
+      "footer": "Dit document bevat alleen het gedeelde programma. Individuele voorkeuren en accountgegevens worden nooit opgenomen.",
+      "states": {
+        "proposed": "Voorgesteld",
+        "shortlisted": "Voorselectie",
+        "selected": "Geselecteerd",
+        "rejected": "Afgewezen"
+      },
+      "decisions": {
+        "review": "Te bekijken",
+        "retained": "Behouden",
+        "splitgroup": "Groep splitsen",
+        "optional": "Optioneel",
+        "excluded": "Uitgesloten"
       }
     },
     "invitations": {

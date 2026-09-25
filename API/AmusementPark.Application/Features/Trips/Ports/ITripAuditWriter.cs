@@ -8,4 +8,8 @@ public interface ITripAuditWriter
     Task<bool> AppendAsync(
         TripActivityWrite activity,
         CancellationToken cancellationToken);
+
+    Task<bool> AppendReadOnlyAsync(
+        TripActivityWrite activity,
+        CancellationToken cancellationToken);
 }

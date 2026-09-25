@@ -67,6 +67,9 @@ export class TripActivityPageComponent implements OnInit {
     if (kind.includes('Preference') || kind === 'CollectiveDecisionUpdated') {
       return 'pi-heart';
     }
+    if (kind === 'PlanExported') {
+      return 'pi-download';
+    }
     return kind === 'TripCreated' ? 'pi-sparkles' : 'pi-pencil';
   }
 }

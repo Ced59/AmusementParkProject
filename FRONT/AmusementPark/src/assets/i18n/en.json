@@ -1399,7 +1399,55 @@
         "ownershipTransferred": "Trip ownership transferred · {{actor}}",
         "participantLeft": "Member left the trip · {{actor}}",
         "preferencesUpdated": "Preferences updated ({{count}}) · {{actor}}",
-        "collectiveDecisionUpdated": "Group decision updated · {{actor}}"
+        "collectiveDecisionUpdated": "Group decision updated · {{actor}}",
+        "planExported": "Plan exported · {{actor}}"
+      }
+    },
+    "export": {
+      "open": "Take the plan with you",
+      "back": "Back to the trip",
+      "kicker": "Plan to go",
+      "description": "Keep the trip essentials in a clear view you can print, save as PDF or download as JSON.",
+      "private": "Participants only",
+      "generated": "Prepared on {{date}}",
+      "print": "Print or save as PDF",
+      "downloadJson": "Download JSON",
+      "errorTitle": "The plan is unavailable",
+      "errorDescription": "It could not be prepared safely. Try again in a moment.",
+      "whenKicker": "Key details",
+      "whenTitle": "When are we going?",
+      "dates": "Dates",
+      "datesUnknown": "Dates still to be decided",
+      "timeZone": "Time zone",
+      "parksKicker": "Trip direction",
+      "parksTitle": "Parks under consideration",
+      "parksDescription": "Choices that are selected or still being discussed.",
+      "unavailablePark": "Park no longer available",
+      "noParks": "No park has been added yet.",
+      "programKicker": "Day by day",
+      "programTitle": "The plan",
+      "programDescription": "Shared appointments and notes, without private preferences.",
+      "arrival": "Desired arrival at {{time}}",
+      "noBlocks": "No appointment planned for this day.",
+      "noDays": "No day has been planned yet.",
+      "decisionsKicker": "Group choices",
+      "decisionsTitle": "Collective decisions",
+      "decisionsDescription": "What the group has officially decided for attractions.",
+      "unavailableAttraction": "Attraction no longer available",
+      "noDecisions": "No collective decision has been recorded yet.",
+      "footer": "This document only contains the shared plan. Individual preferences and account data are never included.",
+      "states": {
+        "proposed": "Proposed",
+        "shortlisted": "Shortlisted",
+        "selected": "Selected",
+        "rejected": "Rejected"
+      },
+      "decisions": {
+        "review": "Review",
+        "retained": "Retained",
+        "splitgroup": "Split group",
+        "optional": "Optional",
+        "excluded": "Excluded"
       }
     },
     "invitations": {
