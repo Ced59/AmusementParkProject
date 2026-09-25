@@ -199,18 +199,24 @@ public sealed record HistoricalPeriod
         if (hasUsableStart && this.Start is not null)
         {
             HistoricalDateEnvelope startEnvelope = this.Start.GetEnvelope();
-            if (startEnvelope.IsExactDay)
+            if (startEnvelope.LatestPossibleDate.HasValue)
             {
-                return startEnvelope;
+                return new HistoricalDateEnvelope(
+                    startEnvelope.LatestPossibleDate,
+                    startEnvelope.LatestPossibleDate,
+                    false);
             }
         }
 
         if (hasUsableEnd && this.End is not null)
         {
             HistoricalDateEnvelope endEnvelope = this.End.GetEnvelope();
-            if (endEnvelope.IsExactDay)
+            if (endEnvelope.EarliestPossibleDate.HasValue)
             {
-                return endEnvelope;
+                return new HistoricalDateEnvelope(
+                    endEnvelope.EarliestPossibleDate,
+                    endEnvelope.EarliestPossibleDate,
+                    false);
             }
         }
 

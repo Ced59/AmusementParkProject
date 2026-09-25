@@ -267,6 +267,36 @@ public sealed class HistoricalPeriodTests
     }
 
     [Fact]
+    public void Match_WhenEndIsApproximate_ShouldGuaranteeLatestPossibleConfirmedStart()
+    {
+        HistoricalPeriod period = new HistoricalPeriod(
+            HistoricalDate.ForYear(1998),
+            HistoricalDate.ForDay(2000, 12, 31, isApproximate: true),
+            PeriodBoundaryConfidence.Confirmed,
+            PeriodBoundaryConfidence.Confirmed);
+
+        HistoricalPeriodMatch match = period.Match(
+            HistoricalInstant.ForDay(1998, 12, 31));
+
+        Assert.Equal(HistoricalPeriodMatch.EntirelyContained, match);
+    }
+
+    [Fact]
+    public void Match_WhenStartIsApproximate_ShouldGuaranteeEarliestPossibleConfirmedEnd()
+    {
+        HistoricalPeriod period = new HistoricalPeriod(
+            HistoricalDate.ForDay(1998, 1, 1, isApproximate: true),
+            HistoricalDate.ForYear(2000),
+            PeriodBoundaryConfidence.Confirmed,
+            PeriodBoundaryConfidence.Confirmed);
+
+        HistoricalPeriodMatch match = period.Match(
+            HistoricalInstant.ForDay(2000, 1, 1));
+
+        Assert.Equal(HistoricalPeriodMatch.EntirelyContained, match);
+    }
+
+    [Fact]
     public void Constructor_WhenConfidenceIsUnknown_ShouldRejectIt()
     {
         HistoricalTemporalValidationException exception = Assert.Throws<HistoricalTemporalValidationException>(
