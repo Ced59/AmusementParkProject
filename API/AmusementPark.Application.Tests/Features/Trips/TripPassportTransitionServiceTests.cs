@@ -136,10 +136,14 @@ public sealed class TripPassportTransitionServiceTests
     }
 
     [Theory]
-    [InlineData(false, true)]
-    [InlineData(true, false)]
+    [InlineData(false, false, true, true)]
+    [InlineData(true, false, true, false)]
+    [InlineData(false, true, true, false)]
+    [InlineData(false, false, false, true)]
     public async Task GetAsync_WhenATransitionDraftExists_ShouldOnlyResumeAnUnfinishedRideBatch(
         bool rideBatchCompleted,
+        bool rideBatchConflicted,
+        bool parkVisible,
         bool expectedCanResume)
     {
         DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
@@ -166,7 +170,7 @@ public sealed class TripPassportTransitionServiceTests
         Mock<ITripPlanRepository> trips = CreateTripRepository(trip);
         Mock<ITripParkCandidateRepository> candidates = CreateCandidateRepository(trip.Id);
         Mock<ITripDayPlanRepository> dayPlans = CreateDayRepository(trip.Id, new[] { day });
-        Mock<IParkRepository> parks = CreateParkRepository();
+        Mock<IParkRepository> parks = CreateParkRepository(parkVisible);
         Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
         preferences.Setup(repository => repository.ListForUserAsync(
                 trip.Id,
@@ -174,19 +178,25 @@ public sealed class TripPassportTransitionServiceTests
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<TripItemPreference>());
         Mock<IParkItemRepository> parkItems = new(MockBehavior.Strict);
-        parkItems.Setup(repository => repository.GetByParkIdsAsync(
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
-                false,
-                CancellationToken.None))
-            .ReturnsAsync(new[] { attraction });
+        if (parkVisible)
+        {
+            parkItems.Setup(repository => repository.GetByParkIdsAsync(
+                    It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                    false,
+                    CancellationToken.None))
+                .ReturnsAsync(new[] { attraction });
+        }
         Mock<IImageRepository> images = new(MockBehavior.Strict);
-        images.Setup(repository => repository.GetMainImageIdsByOwnersAsync(
-                ImageOwnerType.ParkItem,
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { attraction.Id! })),
-                ImageCategory.ParkItem,
-                true,
-                CancellationToken.None))
-            .ReturnsAsync(new Dictionary<string, string>());
+        if (parkVisible)
+        {
+            images.Setup(repository => repository.GetMainImageIdsByOwnersAsync(
+                    ImageOwnerType.ParkItem,
+                    It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { attraction.Id! })),
+                    ImageCategory.ParkItem,
+                    true,
+                    CancellationToken.None))
+                .ReturnsAsync(new Dictionary<string, string>());
+        }
         Mock<IUserVisitRepository> visits = new(MockBehavior.Strict);
         visits.Setup(repository => repository.ListOwnedByExactDatesAsync(
                 trip.OwnerUserId,
@@ -210,6 +220,7 @@ public sealed class TripPassportTransitionServiceTests
                 new RideOccurrenceBatchCreationOperationState(
                     rideOperationId,
                     rideBatchCompleted,
+                    rideBatchConflicted,
                     new[] { attraction.Id! }),
             });
         Mock<IPassportLocalDateResolver> dates = new(MockBehavior.Strict);
@@ -241,8 +252,8 @@ public sealed class TripPassportTransitionServiceTests
         Assert.Equal(expectedCanResume, transitionDay.CanResume);
         Assert.Equal(expectedCanResume, transitionDay.CanConfirm);
         Assert.Equal(existingDraft.Id.Value, transitionDay.ExistingVisitId);
-        Assert.Equal(expectedCanResume, transitionDay.Attractions.Count == 1);
-        if (expectedCanResume)
+        Assert.Equal(expectedCanResume && parkVisible, transitionDay.Attractions.Count == 1);
+        if (expectedCanResume && parkVisible)
         {
             Assert.True(Assert.Single(transitionDay.Attractions).IsPreselected);
         }
@@ -553,7 +564,7 @@ public sealed class TripPassportTransitionServiceTests
         Mock<ITripPlanRepository> trips = CreateTripRepository(trip);
         Mock<ITripParkCandidateRepository> candidates = CreateCandidateRepository(trip.Id);
         Mock<ITripDayPlanRepository> dayPlans = CreateDayRepository(trip.Id, new[] { day });
-        Mock<IParkRepository> parks = CreateParkRepository();
+        Mock<IParkRepository> parks = CreateParkRepository(false);
         Mock<IParkItemRepository> parkItems = new(MockBehavior.Strict);
         parkItems.Setup(repository => repository.GetByParkIdAsync(
                 "park-1",
@@ -574,35 +585,11 @@ public sealed class TripPassportTransitionServiceTests
                         StringComparison.Ordinal)),
                 CancellationToken.None))
             .ReturnsAsync(new[] { existingDraft.Id });
-        visits.Setup(repository => repository.GetOwnedAsync(
-                existingDraft.Id,
-                trip.OwnerUserId,
-                CancellationToken.None))
-            .ReturnsAsync(existingDraft);
         Mock<IPassportLocalDateResolver> dates = new(MockBehavior.Strict);
         dates.Setup(resolver => resolver.Resolve(nowUtc, "Europe/Paris"))
             .Returns(new DateOnly(2027, 8, 22));
         Mock<ICommandHandler<CreateVisitCommand, ApplicationResult<CreateVisitResult>>> createVisit =
             new(MockBehavior.Strict);
-        createVisit.Setup(handler => handler.HandleAsync(
-                It.Is<CreateVisitCommand>(command => command.ParkId == "park-1"),
-                CancellationToken.None))
-            .ReturnsAsync(ApplicationResult<CreateVisitResult>.Success(new CreateVisitResult(
-                new VisitResult(
-                    existingDraft.Id.Value,
-                    existingDraft.ParkId,
-                    new VisitDateResult(2027, 8, 20, VisitDatePrecision.Day, false),
-                    existingDraft.TimeZoneId,
-                    existingDraft.ServiceDayConvention,
-                    existingDraft.Status,
-                    existingDraft.Privacy,
-                    null,
-                    null,
-                    existingDraft.Version,
-                    existingDraft.CreatedAtUtc,
-                    existingDraft.UpdatedAtUtc,
-                    null),
-                true)));
         Mock<ICommandHandler<AddRideOccurrencesBatchCommand,
             ApplicationResult<CreateRideOccurrencesResult>>> addRides = new(MockBehavior.Strict);
         addRides.Setup(handler => handler.HandleAsync(
@@ -629,6 +616,7 @@ public sealed class TripPassportTransitionServiceTests
                         trip.OwnerUserId,
                         "park-1",
                         visitDate),
+                    false,
                     false,
                     new[] { selectedAttraction.Id! }),
             });
@@ -747,7 +735,7 @@ public sealed class TripPassportTransitionServiceTests
         return repository;
     }
 
-    private static Mock<IParkRepository> CreateParkRepository()
+    private static Mock<IParkRepository> CreateParkRepository(bool isVisible = true)
     {
         Mock<IParkRepository> repository = new(MockBehavior.Strict);
         repository.Setup(item => item.GetByIdsAsync(
@@ -759,7 +747,7 @@ public sealed class TripPassportTransitionServiceTests
                 {
                     Id = "park-1",
                     Name = "Parc test",
-                    IsVisible = true,
+                    IsVisible = isVisible,
                     Status = ParkStatus.Operating,
                 },
             });

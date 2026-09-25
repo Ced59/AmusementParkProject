@@ -103,10 +103,9 @@ public sealed class TripPassportTransitionReader
                 static group => group.OrderByDescending(visit => visit.UpdatedAtUtc).First());
 
         TripDayPlanResult[] eligibleDaysWithVisit = days
-            .Where(day => TripPassportTransitionPolicy.CanConfirmDay(
+            .Where(day => TripPassportTransitionPolicy.HasElapsed(
                     day.LocalDate,
-                    destinationToday,
-                    day.IsParkAvailable)
+                    destinationToday)
                 && existingByDay.ContainsKey((day.ParkId, day.LocalDate)))
             .ToArray();
         Dictionary<DateOnly, string> visitOperationIds = eligibleDaysWithVisit
@@ -199,12 +198,14 @@ public sealed class TripPassportTransitionReader
             bool canResume = existing is not null
                 && existing.Status == VisitStatus.Draft
                 && transitionVisitIdSet.Contains(existing.Id)
-                && !(rideOperation?.IsCompleted ?? false);
-            bool canConfirm = TripPassportTransitionPolicy.CanConfirmDay(
+                && !(rideOperation?.IsCompleted ?? false)
+                && !(rideOperation?.IsConflicted ?? false);
+            bool canStart = TripPassportTransitionPolicy.CanConfirmDay(
                     day.LocalDate,
                     destinationToday,
                     day.IsParkAvailable)
-                && (existing is null || canResume);
+                && existing is null;
+            bool canConfirm = canStart || canResume;
             IReadOnlyCollection<TripPassportTransitionItemResult> dayItems = canConfirm
                 ? BuildItems(
                     attractions.Where(item => string.Equals(

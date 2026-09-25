@@ -610,6 +610,10 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                         operation.OperationState,
                         CompletedOperationState,
                         StringComparison.Ordinal),
+                string.Equals(
+                    operation.OperationState,
+                    ConflictOperationState,
+                    StringComparison.Ordinal),
                 ResolveOperationParkItemIds(operation)))
             .ToArray();
     }

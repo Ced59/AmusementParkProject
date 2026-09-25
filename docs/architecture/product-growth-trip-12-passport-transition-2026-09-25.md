@@ -52,10 +52,11 @@ de la déclaration sans introduire une règle Voyage dans l’entité `Visit`. S
 valeur HTTP dédiée reste distincte de `SystemMigration`, afin qu’aucun passage
 issu d’un voyage ne puisse être présenté comme une migration technique.
 
-`TripPassportTransitionPolicy` centralise l’éligibilité d’une journée : le parc
-doit être disponible et la date locale doit être strictement passée dans le
-fuseau de destination. La consultation et la confirmation réutilisent ainsi la
-même règle métier du Core.
+`TripPassportTransitionPolicy` centralise l’éligibilité d’une journée : une
+nouvelle transition exige un parc disponible et une date locale strictement
+passée dans le fuseau de destination. La même politique distingue toutefois la
+reprise d’un brouillon déjà identifié : son jour doit être passé, mais un
+masquage ultérieur du parc ne peut pas rendre la réparation impossible.
 
 ### Application
 
@@ -69,12 +70,15 @@ Deux services applicatifs ciblés orchestrent les deux parcours sans mélanger l
 3. calcul de la date courante dans le fuseau de destination ;
 4. lecture groupée des visites existantes ;
 5. lecture du catalogue public et des seules préférences de l’appelant ;
-6. création par les handlers Passeport existants ;
+6. création initiale par les handlers Passeport existants, ou reprise directe
+   de l’identité persistée opération/visite sans reconstruire son payload ;
 7. ajout idempotent des attractions explicitement sélectionnées.
 
 Les validations, l’audit, les verrous de contenu et les règles de brouillon ne
-sont pas contournés : la transition réutilise `CreateVisitCommand` et
-`AddRideOccurrencesBatchCommand`.
+sont pas contournés : la création initiale réutilise `CreateVisitCommand` et le
+lot réutilise `AddRideOccurrencesBatchCommand`. Une reprise ne rejoue pas la
+création de visite : elle cible le brouillon déjà prouvé par la clé persistée,
+ce qui évite qu’un fuseau de voyage modifié provoque un faux conflit.
 
 ### Infrastructure
 
@@ -100,7 +104,9 @@ Le contrôleur authentifié expose une proposition privée et une confirmation
 pour une journée précise. Les réponses ont `no-store`. Les identifiants restent
 des clés d’action ; les libellés visibles utilisent les noms hydratés. Le champ
 `canResume` distingue explicitement un brouillon interrompu d’une visite déjà
-complète ou créée manuellement.
+complète ou créée manuellement. Les opérations terminales en conflit sont
+également relues, mais ne sont jamais annoncées comme reprenables ; le membre
+peut ouvrir le brouillon et sa suppression libère ensuite les clés ciblées.
 
 ### Angular
 
@@ -319,7 +325,9 @@ participant.
 | aucune attraction d’un autre parc | validation serveur contre le catalogue visible du parc de la journée |
 | pas de doublon de visite | détection membre/parc/date puis clés d’idempotence déterministes |
 | reprise après échec partiel | lectures groupées des empreintes et de l’état du batch, restauration verrouillée des identifiants réservés, exposition `canResume`, puis replay du même brouillon |
-| fuseau modifié après création | la reprise reconnaît l’identité persistée opération/visite sans recalculer une empreinte avec le fuseau courant du voyage |
+| fuseau modifié après création | la reprise reconnaît l’identité persistée opération/visite et ne rappelle pas la création avec le fuseau courant du voyage |
+| parc masqué après création | une nouvelle transition reste interdite, mais le brouillon déjà identifié demeure reprenable après la date |
+| opération de passages en conflit | l’état terminal est relu explicitement et retire `canResume` au lieu de produire une fausse action vouée à échouer |
 | sélection vide réellement terminée | marqueur idempotent `completed` sans occurrence, relu comme une fin et non comme une reprise |
 | suppression sans blocage fantôme | le filtre exact propriétaire/date exclut les documents avec tombstone |
 | suppression d’un brouillon TRIP-12 | résolution du tombstone puis libération ciblée de l’opération de passages avant celle de la visite ; une interruption reste rejouable et le tombstone n’est ni restauré ni supprimé physiquement |
@@ -346,7 +354,8 @@ dépassements horizontaux et le dégagement de la navigation mobile.
 ## 10. Validation
 
 - tests Application : proposition passée/future, préférence personnelle,
-  sélection explicite, reprise avec sélection restaurée, lot déjà finalisé et
+  sélection explicite, reprise avec sélection restaurée sans recréer la visite,
+  parc devenu masqué, opération terminale en conflit, lot déjà finalisé et
   confirmation vide marquée comme terminée ;
 - tests Infrastructure : requêtes bornées au propriétaire, aux empreintes
   demandées, aux états de création utiles, exclusion des visites supprimées et

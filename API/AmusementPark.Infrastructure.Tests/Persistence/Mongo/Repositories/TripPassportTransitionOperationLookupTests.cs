@@ -75,7 +75,7 @@ public sealed class TripPassportTransitionOperationLookupTests
     }
 
     [Fact]
-    public void RideLookup_ShouldReturnOnlyResumableOrCompletedCreationOperations()
+    public void RideLookup_ShouldReturnResumableCompletedAndConflictedCreationOperations()
     {
         FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
             UserRideOccurrenceCreationOperationMongoDefinitions
@@ -91,7 +91,7 @@ public sealed class TripPassportTransitionOperationLookupTests
             rendered["operationKind"]["$in"].AsBsonArray
                 .Select(static value => value.AsString));
         Assert.Equal(
-            new[] { "reserved", "pending", "completed" },
+            new[] { "reserved", "pending", "completed", "conflict" },
             rendered["operationState"]["$in"].AsBsonArray
                 .Select(static value => value.AsString));
         Assert.Equal(

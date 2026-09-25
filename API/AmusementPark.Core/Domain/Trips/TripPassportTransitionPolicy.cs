@@ -7,6 +7,13 @@ public static class TripPassportTransitionPolicy
         DateOnly destinationToday,
         bool isParkAvailable)
     {
-        return isParkAvailable && localDate < destinationToday;
+        return isParkAvailable && HasElapsed(localDate, destinationToday);
+    }
+
+    public static bool HasElapsed(
+        DateOnly localDate,
+        DateOnly destinationToday)
+    {
+        return localDate < destinationToday;
     }
 }

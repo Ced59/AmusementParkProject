@@ -94,11 +94,7 @@ public sealed class TripPassportTransitionConfirmer
         TripDayPlanResult? day = programResult.Value.Program.Days.SingleOrDefault(
             candidate => candidate.LocalDate == localDate);
         if (day is null
-            || !TryResolveDestinationToday(trip, out DateOnly destinationToday)
-            || !TripPassportTransitionPolicy.CanConfirmDay(
-                localDate,
-                destinationToday,
-                day.IsParkAvailable))
+            || !TryResolveDestinationToday(trip, out DateOnly destinationToday))
         {
             return Failure(TripPlanApplicationErrors.PassportTransitionNotReady());
         }
@@ -125,6 +121,15 @@ public sealed class TripPassportTransitionConfirmer
                 normalizedUserId,
                 visitOperationId,
                 cancellationToken);
+        if (!isTransitionCreation
+            && !TripPassportTransitionPolicy.CanConfirmDay(
+                localDate,
+                destinationToday,
+                day.IsParkAvailable))
+        {
+            return Failure(TripPlanApplicationErrors.PassportTransitionNotReady());
+        }
+
         if (existingVisit is not null && !isTransitionCreation)
         {
             return ApplicationResult<ConfirmTripPassportTransitionResult>.Success(
@@ -149,6 +154,11 @@ public sealed class TripPassportTransitionConfirmer
             {
                 return ApplicationResult<ConfirmTripPassportTransitionResult>.Success(
                     new ConfirmTripPassportTransitionResult(existingVisit!.Id.Value, true, 0));
+            }
+
+            if (existingRideOperation?.IsConflicted == true)
+            {
+                return Failure(PassportApplicationErrors.RideOccurrenceIdempotencyConflict());
             }
 
             if (existingRideOperation is not null)
@@ -193,33 +203,45 @@ public sealed class TripPassportTransitionConfirmer
             return Failure(TripPlanApplicationErrors.PassportTransitionInvalidSelection());
         }
 
-        CreateVisitCommand createCommand = new CreateVisitCommand(
-            normalizedUserId,
-            visitOperationId,
-            day.ParkId,
-            localDate.Year,
-            localDate.Month,
-            localDate.Day,
-            VisitDatePrecision.Day,
-            false,
-            trip.DestinationTimeZoneId,
-            LocalServiceDayConvention.UserSelectedServiceDate,
-            null,
-            null);
-        ApplicationResult<CreateVisitResult> visitResult =
-            await this.createVisitHandler.HandleAsync(createCommand, cancellationToken);
-        if (!visitResult.IsSuccess || visitResult.Value is null)
+        int addedRideCount = 0;
+        bool wasReplayed = isTransitionCreation;
+        Visit? currentVisit = existingVisit;
+        string visitId;
+        if (isTransitionCreation)
         {
-            return ApplicationResult<ConfirmTripPassportTransitionResult>.Failure(
-                visitResult.Errors);
+            visitId = existingVisit!.Id.Value;
+        }
+        else
+        {
+            CreateVisitCommand createCommand = new CreateVisitCommand(
+                normalizedUserId,
+                visitOperationId,
+                day.ParkId,
+                localDate.Year,
+                localDate.Month,
+                localDate.Day,
+                VisitDatePrecision.Day,
+                false,
+                trip.DestinationTimeZoneId,
+                LocalServiceDayConvention.UserSelectedServiceDate,
+                null,
+                null);
+            ApplicationResult<CreateVisitResult> visitResult =
+                await this.createVisitHandler.HandleAsync(createCommand, cancellationToken);
+            if (!visitResult.IsSuccess || visitResult.Value is null)
+            {
+                return ApplicationResult<ConfirmTripPassportTransitionResult>.Failure(
+                    visitResult.Errors);
+            }
+
+            visitId = visitResult.Value.Visit.Id;
+            wasReplayed = visitResult.Value.WasReplayed;
+            currentVisit = await this.visits.GetOwnedAsync(
+                VisitId.Parse(visitId),
+                normalizedUserId,
+                cancellationToken);
         }
 
-        int addedRideCount = 0;
-        bool wasReplayed = visitResult.Value.WasReplayed;
-        Visit? currentVisit = await this.visits.GetOwnedAsync(
-            VisitId.Parse(visitResult.Value.Visit.Id),
-            normalizedUserId,
-            cancellationToken);
         if (currentVisit?.Status == VisitStatus.Draft)
         {
             if (normalizedItemIds.Length > 0)
@@ -227,7 +249,7 @@ public sealed class TripPassportTransitionConfirmer
                 AddRideOccurrencesBatchCommand addRidesCommand =
                     new AddRideOccurrencesBatchCommand(
                         normalizedUserId,
-                        visitResult.Value.Visit.Id,
+                        visitId,
                         rideOperationId,
                         normalizedItemIds.Select(static itemId =>
                             (RideOccurrenceCreationItem?)new RideOccurrenceCreationItem(
@@ -262,7 +284,7 @@ public sealed class TripPassportTransitionConfirmer
 
         return ApplicationResult<ConfirmTripPassportTransitionResult>.Success(
             new ConfirmTripPassportTransitionResult(
-                visitResult.Value.Visit.Id,
+                visitId,
                 wasReplayed,
                 addedRideCount));
     }

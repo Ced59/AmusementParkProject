@@ -62,7 +62,7 @@ internal static class UserRideOccurrenceCreationOperationMongoDefinitions
                 new[] { "creation-key-reservation", "creation" })
             & filters.In(
                 static document => document.OperationState,
-                new[] { "reserved", "pending", "completed" });
+                new[] { "reserved", "pending", "completed", "conflict" });
     }
 
     public static FilterDefinition<UserRideOccurrenceCreationOperationDocument>

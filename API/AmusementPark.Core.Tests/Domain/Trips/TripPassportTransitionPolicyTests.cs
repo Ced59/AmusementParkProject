@@ -24,4 +24,21 @@ public sealed class TripPassportTransitionPolicyTests
 
         Assert.Equal(expected, result);
     }
+
+    [Theory]
+    [InlineData(-1, true)]
+    [InlineData(0, false)]
+    [InlineData(1, false)]
+    public void HasElapsed_ShouldDependOnlyOnTheDestinationCalendar(
+        int dayOffset,
+        bool expected)
+    {
+        DateOnly destinationToday = new(2027, 8, 22);
+
+        bool result = TripPassportTransitionPolicy.HasElapsed(
+            destinationToday.AddDays(dayOffset),
+            destinationToday);
+
+        Assert.Equal(expected, result);
+    }
 }
