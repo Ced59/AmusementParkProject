@@ -235,6 +235,12 @@ doit jamais simuler une vérification. Les revues de faits `Probable` ou
 nouvelle révision auditée, invalide les snapshots dépendants et garde la version
 précédente consultable en administration.
 
+`HistoricalImportance` est une classification éditoriale indépendante de la
+preuve et vaut initialement `Standard` ou `Major`. Elle pilote la mise en avant
+et l’éligibilité des récits/URL clés sans rendre le fait plus certain. Elle est
+versionnée, auditée et ne se déduit ni de la présence d’un article, ni du type
+du fait.
+
 ### 5.3 Fait, interprétation et projection
 
 - Le fait stocke le sujet, le type, la période, l’état, les sources, sa valeur
@@ -461,6 +467,40 @@ il ne représente pas une heure inventée et n’est jamais dérivé de l’iden
 de la révision ou de la position MongoDB. Il est interdit pour départager deux
 dates seulement connues au mois ou à l’année.
 
+### 9.3 Réduction des identités et attributs historiques
+
+Le Core réduit séparément chaque `HistoricalAttributeKind` : `Name`, `Zone`,
+`Operator`, `Owner`, `Manufacturer`, `Category`, `Theme`, `Location` et
+`Status`. Un renommage ne modifie donc jamais implicitement la zone, et un
+déplacement ne modifie pas le nom.
+
+Un fait de transition porte une ancienne valeur facultative, une nouvelle
+valeur obligatoire et un `AttributeBoundaryMeaning` :
+
+- `FirstDayOfNewValue` applique la nouvelle valeur le jour exact ;
+- `LastDayOfPreviousValue` conserve l’ancienne valeur ce jour et applique la
+  nouvelle le lendemain ;
+- `Unspecified` laisse l’unité de frontière ambiguë.
+
+Avec une précision au mois ou à l’année, la transition se trouve quelque part
+dans l’enveloppe : l’attribut est ambigu pendant cette enveloppe, puis la
+nouvelle valeur s’applique à l’unité civile suivante. Une nouvelle valeur
+confirmée reste active jusqu’à la prochaine transition admissible du même
+attribut. C’est cette propagation, et non la valeur actuelle de l’entité, qui
+permet par exemple à un renommage de 1998 de fournir le nouveau nom en 1999.
+
+Avant la première transition connue, le snapshot ne prolonge pas arbitrairement
+la valeur actuelle vers le passé. Une ancienne valeur du fait couvre la période
+antérieure seulement si sa propre borne ou une assertion de période la soutient ;
+sinon l’attribut est `Unknown`. En l’absence de valeur historique, une valeur
+actuelle peut être affichée hors calcul avec le libellé explicite « information
+actuelle » prévu par la roadmap.
+
+Deux transitions du même attribut dont les enveloppes se chevauchent suivent
+les mêmes règles que le cycle de vie : un `SequenceWithinDate` n’est admis que
+pour un ordre exact et sourcé ; sinon le Core produit une ambiguïté. Les
+transitions d’attributs différents peuvent coexister sans ordre artificiel.
+
 ## 10. Couverture et ambiguïtés
 
 Chaque snapshot indique au minimum : éléments aux périodes fiables, périodes
@@ -488,6 +528,7 @@ rejouable après que le Core et la persistance canoniques auront été livrés.
 | `Year`, `Month`, `Day`, `DatePrecision` | `HistoricalDate` | Valeurs conservées sans compléter les parties absentes. |
 | date unique | période ponctuelle ou borne de cycle de vie | Même date en début et fin ; les ouvertures et fermetures sont ensuite réduites en intervalles selon la section 9.1. |
 | `EventType` | `HistoricalFactType` | Table explicite ; valeur inconnue signalée et non rabattue. |
+| `IsMajor` | `HistoricalImportance` | `false` devient `Standard`, `true` devient `Major`, sans inférence depuis l’article. |
 | `Titles`, `Summaries`, `Article` | contenu éditorial lié | Texte et huit langues conservés. |
 | `Sources` | sources canoniques | Champs connus conservés ; champs absents marqués à compléter. |
 | `IsVisible` | workflow de publication | Ne détermine pas à lui seul l’état de preuve. |
@@ -499,6 +540,8 @@ rejouable après que le Core et la persistance canoniques auront été livrés.
 ### 11.2 Garanties
 
 - aucune suppression de titre, résumé, article, source, image ou identifiant ;
+- conservation exacte de l’importance éditoriale et des conditions historiques
+  de mise en avant, routage d’article et éligibilité sitemap ;
 - conservation d’une copie de sauvegarde et d’un rapport avant bascule ;
 - migration idempotente avec marqueur de version et compteurs avant/après ;
 - les enregistrements incomplets deviennent `Unverified`, pas `Verified` ;
@@ -556,10 +599,12 @@ classDiagram
       +Guid Id
       +HistoricalFactType Type
       +HistoricalFactState State
+      +HistoricalImportance Importance
       +HistoricalEditorialWorkflowState WorkflowState
       +HistoricalPublicationState PublicationState
       +LocalizedText[] PublicUncertaintyExplanation
       +LifecycleBoundaryMeaning? BoundaryMeaning
+      +AttributeBoundaryMeaning? AttributeBoundaryMeaning
       +int? SequenceWithinDate
       +int Revision
       +DateTime? VerifiedAtUtc
@@ -690,6 +735,9 @@ lorsqu’ils n’apportent aucune information utile.
 
 La frise principale peut être indexable. Seules les années clés explicitement
 retenues, avec couverture suffisante et contenu utile, rejoignent le sitemap.
+La migration conserve `Major` comme entrée de la politique existante de mise en
+avant et d’éligibilité article/sitemap ; toute nouvelle politique qui modifierait
+ce résultat devra être versionnée et livrée séparément.
 Les dates arbitraires et filtres produisent `noindex` et une canonicalisation
 stable. Les métadonnées mentionnent l’incertitude et ne promettent jamais une
 liste complète en couverture partielle.
