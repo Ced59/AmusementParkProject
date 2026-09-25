@@ -21,6 +21,7 @@ const componentStyles = [
   'src/app/features/profile/trips/pages/trip-program-coherence-page/trip-program-coherence-page.component.scss',
   'src/app/features/profile/trips/pages/trip-activity-page/trip-activity-page.component.scss',
   'src/app/features/profile/trips/pages/trip-export-page/trip-export-page.component.scss',
+  'src/app/features/profile/trips/pages/trip-passport-transition-page/trip-passport-transition-page.component.scss',
   'src/app/features/public/trips/pages/trip-invitation-preview-page/trip-invitation-preview-page.component.scss'
 ]
   .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
@@ -258,6 +259,29 @@ const fixtureMarkup = `
         <div class="trip-export-section__heading"><span class="trip-export-section__step">4</span><div><h2>Les décisions collectives</h2></div></div>
         <ul class="trip-export-decisions"><li data-check-bound><div><strong>Attraction au nom extrêmement long et non sécable</strong><span>Destination représentative</span></div><span>Groupe séparé</span><p>Une raison collective suffisamment longue pour éprouver la mise en page mobile.</p></li></ul>
       </section>
+    </main>
+
+    <main class="trip-passport-page" data-responsive-root="trip-passport-transition">
+      <header class="trip-passport-hero surface" data-check-bound>
+        <a href="#">Retour au voyage</a>
+        <h1>Une aventure européenne avec un titre volontairement très long</h1>
+        <p>Transforme chaque journée passée en brouillon privé sans rien sélectionner automatiquement.</p>
+        <div class="trip-passport-hero__facts"><span>Visible uniquement par toi</span><span>Aucun tour automatique</span></div>
+      </header>
+      <section class="trip-passport-intro surface" data-check-bound>
+        <span class="trip-passport-intro__step">1</span><div><h2>Repars de ton programme, pas de suppositions</h2><p>Les choix des autres participants ne sont jamais copiés.</p></div>
+      </section>
+      <div class="trip-passport-days" data-check-bound>
+        <article class="trip-passport-day surface" data-check-bound>
+          <header class="trip-passport-day__header"><div><time>Vendredi 20 août 2027</time><h2>Destination au nom exceptionnellement long</h2></div><span>Disponible</span></header>
+          <p>Sélectionne uniquement les attractions réellement faites.</p>
+          <div class="trip-passport-attractions">
+            <button class="trip-passport-attraction" data-check-bound><span class="trip-passport-attraction__visual">Image</span><span class="trip-passport-attraction__copy"><strong>Attraction au nom particulièrement long</strong><small>Tu voulais absolument la faire</small><small class="trip-passport-attraction__warning">Dates de référence incertaines</small></span><i class="trip-passport-attraction__choice">○</i></button>
+            <button class="trip-passport-attraction trip-passport-attraction--selected" data-check-bound><span class="trip-passport-attraction__visual">Image</span><span class="trip-passport-attraction__copy"><strong>Deuxième attraction représentative</strong><small>C’était une option</small></span><i class="trip-passport-attraction__choice">●</i></button>
+          </div>
+          <div class="trip-passport-day__confirm"><div><strong>Ton souvenir</strong><span>1 attraction sélectionnée</span></div><button>Créer le brouillon privé</button></div>
+        </article>
+      </div>
     </main>
 
     <main class="invitation-page" data-responsive-root="trip-invitation-preview">

@@ -168,6 +168,30 @@ public sealed class UserVisitRepository : IUserVisitRepository
         return new UserVisitPage(visits, nextCursor);
     }
 
+    public async Task<IReadOnlyCollection<Visit>> ListOwnedByExactDatesAsync(
+        string userId,
+        IReadOnlyCollection<DateOnly> localDates,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        ArgumentNullException.ThrowIfNull(localDates);
+        int[] dateSortKeys = localDates
+            .Distinct()
+            .Select(static date => (date.Year * 10000) + (date.Month * 100) + date.Day)
+            .ToArray();
+        if (dateSortKeys.Length == 0)
+        {
+            return Array.Empty<Visit>();
+        }
+
+        FilterDefinitionBuilder<UserVisitDocument> filters = Builders<UserVisitDocument>.Filter;
+        List<UserVisitDocument> documents = await this.collection.Find(
+                filters.Eq(static document => document.UserId, normalizedUserId)
+                & filters.In(static document => document.DateSortKey, dateSortKeys))
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,

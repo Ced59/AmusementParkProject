@@ -45,5 +45,9 @@ export const TRIP_API_ENDPOINTS = {
   activity: (tripPlanId: string): string =>
     `me/trips/${encodeSegment(tripPlanId)}/activity`,
   export: (tripPlanId: string): string =>
-    `me/trips/${encodeSegment(tripPlanId)}/export`
+    `me/trips/${encodeSegment(tripPlanId)}/export`,
+  passportTransition: (tripPlanId: string): string =>
+    `me/trips/${encodeSegment(tripPlanId)}/passport-transition`,
+  confirmPassportTransition: (tripPlanId: string, localDate: string): string =>
+    `me/trips/${encodeSegment(tripPlanId)}/passport-transition/days/${encodeSegment(localDate)}/confirm`
 } as const;

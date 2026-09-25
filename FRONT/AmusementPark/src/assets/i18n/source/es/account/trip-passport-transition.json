@@ -1,0 +1,18 @@
+{
+  "trips": {
+    "passportTransition": {
+      "open": "Completar mi Pasaporte", "back": "Volver al viaje", "kicker": "Recuerdos del viaje",
+      "description": "Convierte cada día pasado en un borrador privado y anota solo lo que hiciste de verdad.",
+      "private": "Visible solo para ti", "manual": "No se añade ninguna vuelta automáticamente",
+      "chooseTitle": "Parte de tu programa, no de suposiciones", "chooseDescription": "El parque y la fecha ya están completos. Tus preferencias anteriores solo sirven de referencia: nada aparece marcado por ti.",
+      "privacyProof": "Las decisiones y los datos de los demás participantes nunca se copian en tu Pasaporte.",
+      "alreadyCreated": "Ya está en tu Pasaporte", "afterDay": "Disponible después de este día", "existingDescription": "Ya existe una visita para este parque y esta fecha. Ábrela para completarla.",
+      "openVisit": "Abrir esta visita", "unavailablePark": "Parque ya no disponible", "unavailableDescription": "Este día sigue en el viaje, pero el parque ya no se puede añadir al Pasaporte.",
+      "futureDescription": "Podrás crear el borrador cuando termine este día.", "dayPrompt": "Selecciona solo las atracciones que realmente hiciste ese día.",
+      "historicalWarning": "Las fechas de referencia son inciertas; tu selección sirve como confirmación explícita.", "noAttractions": "No hay ninguna atracción disponible para seleccionar.",
+      "selectionTitle": "Tu recuerdo", "selectionCount": "{{count}} atracción(es) seleccionada(s)", "createDraft": "Crear el borrador privado", "noDays": "Todavía no hay ningún día programado.",
+      "preferences": { "mustdo": "Querías hacerla sí o sí", "wanttodo": "Querías hacerla", "optional": "Era una opción", "notforme": "No querías hacerla", "unknown": "Sin referencia" },
+      "feedback": { "errorTitle": "La transición no está disponible", "loadError": "No se han podido preparar tus días de viaje para el Pasaporte.", "confirmError": "No se ha podido crear el borrador. No se ha añadido nada automáticamente; vuelve a intentarlo en unos instantes." }
+    }
+  }
+}

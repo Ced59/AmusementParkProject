@@ -1,0 +1,18 @@
+{
+  "trips": {
+    "passportTransition": {
+      "open": "Completa il mio Passaporto", "back": "Torna al viaggio", "kicker": "Ricordi di viaggio",
+      "description": "Trasforma ogni giornata passata in una bozza privata e indica solo ciò che hai fatto davvero.",
+      "private": "Visibile solo a te", "manual": "Nessun giro viene aggiunto automaticamente",
+      "chooseTitle": "Parti dal programma, non dalle supposizioni", "chooseDescription": "Il parco e la data sono già compilati. I tuoi desideri precedenti sono solo promemoria: nulla viene selezionato al posto tuo.",
+      "privacyProof": "Le scelte e i dati degli altri partecipanti non vengono mai copiati nel tuo Passaporto.",
+      "alreadyCreated": "Già nel tuo Passaporto", "afterDay": "Disponibile dopo questa giornata", "existingDescription": "Esiste già una visita per questo parco e questa data. Aprila per completarla.",
+      "openVisit": "Apri questa visita", "unavailablePark": "Parco non più disponibile", "unavailableDescription": "Questa giornata resta nel viaggio, ma il parco non può più essere aggiunto al Passaporto.",
+      "futureDescription": "Potrai creare la bozza al termine di questa giornata.", "dayPrompt": "Seleziona solo le attrazioni che hai provato davvero quel giorno.",
+      "historicalWarning": "Le date di riferimento sono incerte; la selezione vale come conferma esplicita.", "noAttractions": "Non ci sono attrazioni disponibili da selezionare.",
+      "selectionTitle": "Il tuo ricordo", "selectionCount": "{{count}} attrazione/i selezionata/e", "createDraft": "Crea la bozza privata", "noDays": "Non è stata ancora programmata alcuna giornata.",
+      "preferences": { "mustdo": "Volevi assolutamente farla", "wanttodo": "Volevi farla", "optional": "Era un’opzione", "notforme": "Non volevi farla", "unknown": "Nessun promemoria" },
+      "feedback": { "errorTitle": "Il passaggio non è disponibile", "loadError": "Non è stato possibile preparare le giornate per il Passaporto.", "confirmError": "Non è stato possibile creare la bozza. Non è stato aggiunto nulla automaticamente; riprova tra poco." }
+    }
+  }
+}

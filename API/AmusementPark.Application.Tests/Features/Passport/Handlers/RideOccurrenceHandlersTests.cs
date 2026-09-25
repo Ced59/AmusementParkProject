@@ -18,8 +18,11 @@ public sealed class RideOccurrenceHandlersTests
     private static readonly DateTime NowUtc =
         new DateTime(2026, 9, 3, 10, 30, 0, DateTimeKind.Utc);
 
-    [Fact]
-    public async Task AddBatch_ShouldExpandCountAndPersistOneOccurrencePerRide()
+    [Theory]
+    [InlineData(RideLogSource.Import)]
+    [InlineData(RideLogSource.TripTransition)]
+    public async Task AddBatch_ShouldExpandCountAndPersistOneOccurrencePerRide(
+        RideLogSource source)
     {
         Visit visit = CreateVisit();
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
@@ -76,16 +79,16 @@ public sealed class RideOccurrenceHandlersTests
             CreateClock());
 
         ApplicationResult<CreateRideOccurrencesResult> result = await handler.HandleAsync(
-            CreateBatchCommand(count: 2, source: RideLogSource.Import));
+            CreateBatchCommand(count: 2, source: source));
 
         Assert.True(result.IsSuccess);
         Assert.False(result.Value?.WasNormalized);
         Assert.Equal(2, result.Value?.Occurrences.Count);
         Assert.Equal(new[] { 1024L, 2048L }, captured?.Select(static item => item.SortPosition));
-        Assert.All(captured!, static item =>
+        Assert.All(captured!, item =>
         {
             Assert.Equal(HistoricalConsistency.Verified, item.HistoricalConsistency);
-            Assert.Equal(RideLogSource.Import, item.Source);
+            Assert.Equal(source, item.Source);
             Assert.True(item.CountsAsRide);
         });
         visits.VerifyAll();

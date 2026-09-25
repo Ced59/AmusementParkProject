@@ -1549,6 +1549,43 @@
       "leaveExplanation": "Du verlierst sofort den Zugriff auf den privaten Plan.",
       "confirmLeave": "Austritt bestätigen"
     },
+    "passportTransition": {
+      "open": "Meinen Pass vervollständigen",
+      "back": "Zurück zur Reise",
+      "kicker": "Reiseerinnerungen",
+      "description": "Verwandle jeden vergangenen Tag in einen privaten Entwurf und trage nur ein, was du wirklich erlebt hast.",
+      "private": "Nur für dich sichtbar",
+      "manual": "Keine Fahrt wird automatisch hinzugefügt",
+      "chooseTitle": "Nutze deinen Plan, nicht Vermutungen",
+      "chooseDescription": "Park und Datum sind bereits eingetragen. Deine früheren Wünsche sind nur Hinweise: Nichts wird für dich ausgewählt.",
+      "privacyProof": "Entscheidungen und Daten anderer Teilnehmender werden nie in deinen Pass kopiert.",
+      "alreadyCreated": "Bereits in deinem Pass",
+      "afterDay": "Nach diesem Tag verfügbar",
+      "existingDescription": "Für diesen Park und dieses Datum gibt es bereits einen Besuch. Öffne ihn, um ihn zu ergänzen.",
+      "openVisit": "Diesen Besuch öffnen",
+      "unavailablePark": "Park nicht mehr verfügbar",
+      "unavailableDescription": "Dieser Tag bleibt in der Reise, der Park kann aber nicht mehr in den Pass übernommen werden.",
+      "futureDescription": "Du kannst den Entwurf erstellen, sobald dieser Tag vorbei ist.",
+      "dayPrompt": "Wähle nur Attraktionen aus, die du an diesem Tag wirklich erlebt hast.",
+      "historicalWarning": "Die Referenzdaten sind unsicher; deine Auswahl gilt als ausdrückliche Bestätigung.",
+      "noAttractions": "Es ist keine Attraktion zur Auswahl verfügbar.",
+      "selectionTitle": "Deine Erinnerung",
+      "selectionCount": "{{count}} Attraktion(en) ausgewählt",
+      "createDraft": "Privaten Entwurf erstellen",
+      "noDays": "Es wurde noch kein Tag geplant.",
+      "preferences": {
+        "mustdo": "Das wolltest du unbedingt erleben",
+        "wanttodo": "Das wolltest du erleben",
+        "optional": "Das war eine Option",
+        "notforme": "Das wolltest du nicht",
+        "unknown": "Kein Hinweis"
+      },
+      "feedback": {
+        "errorTitle": "Die Übernahme ist nicht verfügbar",
+        "loadError": "Deine Reisetage konnten nicht für den Pass vorbereitet werden.",
+        "confirmError": "Der Entwurf konnte nicht erstellt werden. Nichts wurde automatisch hinzugefügt; versuche es gleich noch einmal."
+      }
+    },
     "preferenceSummary": {
       "open": "Gruppenkompass öffnen",
       "back": "Zurück zur Reise",

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.75",
+  "version": "5.3.76",
   "history": [
+    {
+      "version": "5.3.76",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "Après un voyage, tu peux maintenant préparer ton souvenir dans le Passeport sans ajout automatique.",
+        "en": "After a trip, you can now prepare your memory in the Passport without automatic additions.",
+        "de": "Nach einer Reise kannst du deine Erinnerung jetzt ohne automatische Einträge im Pass vorbereiten.",
+        "nl": "Na een reis kun je nu je herinnering in het Paspoort voorbereiden zonder automatische toevoegingen.",
+        "it": "Dopo un viaggio puoi ora preparare il tuo ricordo nel Passaporto senza aggiunte automatiche.",
+        "es": "Después de un viaje ya puedes preparar tu recuerdo en el Pasaporte sin añadidos automáticos.",
+        "pl": "Po podróży możesz teraz przygotować wspomnienie w Paszporcie bez automatycznego dodawania danych.",
+        "pt": "Depois de uma viagem, já podes preparar a tua memória no Passaporte sem adições automáticas."
+      }
+    },
     {
       "version": "5.3.75",
       "releasedAt": "2026-09-25",
