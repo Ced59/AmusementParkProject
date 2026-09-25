@@ -1,5 +1,5 @@
 import { Buffer } from 'node:buffer';
-import { promises as fs } from 'node:fs';
+import { promises as fs, readFileSync } from 'node:fs';
 
 const headerBytes = 8192;
 const jsonString = '"(?:[^"\\\\\\r\\n]|\\\\.)*"';
@@ -8,6 +8,20 @@ const jsonString = '"(?:[^"\\\\\\r\\n]|\\\\.)*"';
 const cacheHeader = new RegExp(
   '^\\{"buildVersion":' + jsonString + ',"cacheKey":(' + jsonString + '),"statusCode":\\d+,"html":"'
 );
+
+/** Reject corrupt JSON on its first lookup, independently of invalidation scans. */
+export function readDiskPageCacheJson(filePath: string, removeCorruptEntry: () => void): unknown {
+  // File access failures must not delete an otherwise valid cache entry.
+  const serialized: string = readFileSync(filePath, 'utf8');
+  try {
+    return JSON.parse(serialized) as unknown;
+  } catch (error: unknown) {
+    if (error instanceof SyntaxError) {
+      removeCorruptEntry();
+    }
+    throw error;
+  }
+}
 
 export function readCacheKeyFromHeader(header: string): string | null {
   const match: RegExpExecArray | null = cacheHeader.exec(header);

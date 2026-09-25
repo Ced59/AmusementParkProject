@@ -18,6 +18,11 @@ format, un ordre différent, une clé trop longue ou un en-tête incomplet suit 
 lecture complète existante. Les lots rendent la main même quand toutes leurs
 entrées sont écartées. Les descripteurs sont fermés dans tous les cas.
 
+Un fichier tronqué après un en-tête reconnaissable peut être ignoré par une
+invalidation étrangère. Sa première lecture réelle supprime désormais le JSON
+corrompu, pour éviter des lectures complètes et erreurs répétées à chaque visite.
+Un simple échec d’accès disque ne provoque pas cette suppression.
+
 La correction ne change ni les URL, ni les règles d’indexation, ni la durée du
 cache, ni les limites de concurrence. Elle n’efface pas le cache à la livraison.
 Les anciennes versions de fichiers restent soumises à la politique de version

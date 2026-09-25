@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
-import { promises as fs } from 'node:fs';
+import { promises as fs, unlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
-import { readCacheKeyFromHeader, readMatchingDiskPageCacheEntry } from '../src/server/ssr/disk-page-cache-invalidation-reader.ts';
+import { readCacheKeyFromHeader, readDiskPageCacheJson, readMatchingDiskPageCacheEntry } from '../src/server/ssr/disk-page-cache-invalidation-reader.ts';
 
 function entry(cacheKey, html = 'large HTML') {
   return JSON.stringify({ buildVersion: 'test-build', cacheKey, statusCode: 200, html, seoReady: true, expiresAt: 42 });
@@ -86,4 +86,37 @@ test('closes the descriptor even if matching or full reading fails', async (cont
   await assert.rejects(readMatchingDiskPageCacheEntry('entry', () => { throw new Error('matcher failed'); }), /matcher failed/);
   await assert.rejects(readMatchingDiskPageCacheEntry('entry', () => true), /read failed/);
   assert.equal(closes, 2);
+});
+
+test('evicts a prefix-valid truncated nonmatching entry on its first lookup', async () => {
+  const directory = await fs.mkdtemp(join(tmpdir(), 'ap-cache-corrupt-'));
+  const path = join(directory, 'entry.json');
+  let removals = 0;
+  const remove = () => { unlinkSync(path); removals++; };
+  try {
+    const truncated = entry('target', 'x'.repeat(20000)).slice(0, -30);
+    await fs.writeFile(path, truncated);
+    assert.equal(await readMatchingDiskPageCacheEntry(path, () => false), null);
+    assert.throws(() => readDiskPageCacheJson(path, remove), SyntaxError);
+    assert.equal(removals, 1);
+    await assert.rejects(fs.stat(path), { code: 'ENOENT' });
+    assert.throws(() => readDiskPageCacheJson(path, remove), { code: 'ENOENT' });
+    assert.equal(removals, 1);
+  } finally {
+    await fs.rm(directory, { recursive: true });
+  }
+});
+
+test('retains valid JSON and does not treat a file-access failure as corruption', async () => {
+  const directory = await fs.mkdtemp(join(tmpdir(), 'ap-cache-valid-'));
+  const path = join(directory, 'entry.json');
+  const remove = () => assert.fail('valid or inaccessible entries must not be removed');
+  try {
+    await fs.writeFile(path, entry('target'));
+    assert.equal(readDiskPageCacheJson(path, remove).cacheKey, 'target');
+    assert.throws(() => readDiskPageCacheJson(join(directory, 'missing.json'), remove), { code: 'ENOENT' });
+    assert.equal(await fs.readFile(path, 'utf8'), entry('target'));
+  } finally {
+    await fs.rm(directory, { recursive: true });
+  }
 });

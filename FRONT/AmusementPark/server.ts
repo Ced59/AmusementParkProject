@@ -74,7 +74,7 @@ import {
 } from './src/server/ssr/ssr-page-cache-generation-tracker';
 import type { SsrPageCacheGenerationStamp } from './src/server/ssr/ssr-page-cache-generation-tracker';
 import { SsrRenderQueueFullError } from './src/server/ssr/ssr-render-queue-full-error';
-import { readMatchingDiskPageCacheEntry } from './src/server/ssr/disk-page-cache-invalidation-reader';
+import { readDiskPageCacheJson, readMatchingDiskPageCacheEntry } from './src/server/ssr/disk-page-cache-invalidation-reader';
 import {
   buildPreferredLanguageHomeUrl,
   resolveLanguagePreferenceCookie,
@@ -2645,8 +2645,9 @@ function getDiskCachedPage(cacheKey: string): PageCacheEntry | null {
       return null;
     }
 
-    const serializedEntry: string = readFileSync(cacheFilePath, 'utf8');
-    const parsedEntry = JSON.parse(serializedEntry) as PageCacheEntry;
+    const parsedEntry = readDiskPageCacheJson(cacheFilePath, (): void => {
+      removeDiskPageCacheFile(cacheFilePath);
+    }) as PageCacheEntry;
 
     if (!isUsablePageCacheEntry(parsedEntry)
       || typeof parsedEntry.html !== 'string'
