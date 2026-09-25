@@ -70,6 +70,20 @@ suppression fonctionnelle ne cascade donc pas sur les faits, sources, relations
 ou anciennes visites qui la référencent. Si la cible ne peut plus être résolue,
 le système conserve son libellé historique figé et signale une cible retirée.
 
+La possibilité de conserver cette identité ne la rend pas automatiquement
+publique. Chaque sujet porte une `HistoricalSubjectPublicationPolicy` :
+
+- `FollowCurrentSubject` exige que la cible actuelle reste publiable selon ses
+  règles habituelles (`IsVisible`, statut pertinent et audience publique) ;
+- `HistoricalOnly` autorise une identité disparue ou retirée uniquement après
+  une décision éditoriale explicite, avec libellé historique et sources ;
+- `Suppressed` conserve les faits en administration mais interdit toute
+  exposition publique.
+
+Masquer une entité actuelle masque donc aussi ses faits
+`FollowCurrentSubject`. Une cible admin masquée ou `NotRelevant` ne peut pas
+réapparaître parce qu’un événement historique possède sa propre publication.
+
 ## 3. Date historique canonique
 
 ### 3.1 Forme
@@ -127,6 +141,31 @@ Aucune tolérance arbitraire de type « environ = plus ou moins un an » n’est
 inventée. Lorsque le calcul ne peut pas établir une borne certaine, il rend une
 ambiguïté ou un état possible.
 
+### 3.4 Instant historique demandé
+
+`HistoricalInstant` est la sélection civile du visiteur, sans approximation ni
+qualificatif : année, mois ou jour avec la même cohérence de champs que
+`HistoricalDate`. Malgré son nom, une précision `Year` ou `Month` représente
+toute l’enveloppe demandée, jamais son premier jour.
+
+Le snapshot agrège l’état sur cette enveloppe :
+
+| Résultat | Sémantique pour une année ou un mois |
+|---|---|
+| `KnownOpen` + `EntireRequestedPeriod` | activité démontrée pendant toute l’enveloppe ; |
+| `KnownOpen` + `PartOfRequestedPeriod` | activité démontrée pendant au moins un sous-intervalle, avec bornes renvoyées ; |
+| `KnownClosed` | fermeture démontrée pendant toute l’enveloppe ; |
+| `PossiblyOpen` | aucune activité certaine ne chevauche l’enveloppe, mais une borne incertaine la rend possible ; |
+| `Unknown` | ni activité prouvée, ni fermeture couvrant toute l’enveloppe, ni indice suffisant pour conclure. |
+
+Ainsi, une attraction ouverte de façon certaine en mai 1998 apparaît
+`KnownOpen / PartOfRequestedPeriod` pour la requête `1998`, et non ouverte au
+1er janvier ni simplement « peut-être ouverte ». Une requête au jour conserve
+une enveloppe d’un seul jour. La clé de cache encode toujours la précision :
+`Y:1998`, `M:1998-05` et `D:1998-05-12` sont trois résultats distincts.
+`PresenceExtent` fait partie du résultat structuré ; ce n’est pas un libellé
+recalculé par Angular.
+
 ## 4. Périodes et frontières
 
 ```csharp
@@ -139,6 +178,12 @@ public sealed record HistoricalPeriod(
 
 Les confiances de borne sont `Confirmed`, `Estimated` et `Disputed`. Une borne
 absente est ouverte et n’emploie pas une fausse date sentinelle.
+
+Les bornes d’une période ordinaire sont inclusives à leur précision civile. Une
+période du 1er au 10 mai couvre ces deux jours. Les événements d’exploitation
+ponctuels ajoutent le sens de borne défini en section 9.2 ; une fermeture ne
+peut donc pas exploiter implicitement cette convention générale pour décider si
+son jour était encore ouvert.
 
 Conventions canoniques :
 
@@ -388,6 +433,34 @@ métier. Une transition impossible, comme deux ouvertures certaines successives
 sans fermeture, est signalée au diagnostic au lieu d’être silencieusement
 ignorée.
 
+### 9.2 Inclusion des bornes d’exploitation
+
+Tout fait qui change l’état d’exploitation porte un
+`LifecycleBoundaryMeaning` :
+
+| Valeur | Convention civile |
+|---|---|
+| `FirstOperatingDay` | avec une précision `Day`, le sujet est actif ce jour ; avec `Month` ou `Year`, le premier jour actif se trouve quelque part dans l’enveloppe, sans être ramené à son début ; |
+| `LastOperatingDay` | avec `Day`, le sujet reste actif ce jour et devient fermé le lendemain ; avec une précision partielle, le dernier jour actif reste inconnu dans l’enveloppe ; |
+| `FirstClosedDay` | avec `Day`, le sujet est fermé ce jour ; avec une précision partielle, le premier jour fermé reste inconnu dans l’enveloppe ; |
+| `Unspecified` | la source ne permet pas de savoir de quel côté appartient l’unité de frontière. |
+
+Pour une fermeture, l’administration exige `LastOperatingDay` ou
+`FirstClosedDay` lorsqu’une source le permet. `Unspecified` rend l’unité de
+frontière `PossiblyOpen` et ne doit jamais être remplacé par une convention
+technique. Pour `Month` ou `Year`, même une signification connue ne fabrique pas
+le sous-jour manquant : l’enveloppe de transition est partielle, tandis que
+l’unité civile suivante peut adopter l’état résultant si aucune autre
+ambiguïté ne l’empêche.
+
+Il n’existe aucune priorité universelle « fermeture avant réouverture » ou
+inversement. Plusieurs transitions le même jour nécessitent un
+`SequenceWithinDate` positif, explicitement soutenu par la source. Sans cet
+ordre, elles produisent une ambiguïté. Cet ordre départage des faits documentés ;
+il ne représente pas une heure inventée et n’est jamais dérivé de l’identifiant,
+de la révision ou de la position MongoDB. Il est interdit pour départager deux
+dates seulement connues au mois ou à l’année.
+
 ## 10. Couverture et ambiguïtés
 
 Chaque snapshot indique au minimum : éléments aux périodes fiables, périodes
@@ -431,6 +504,12 @@ rejouable après que le Core et la persistance canoniques auront été livrés.
 - les enregistrements incomplets deviennent `Unverified`, pas `Verified` ;
 - `HistoryArticle.IsPublished` est migré vers l’état de publication propre du
   récit, indépendamment de celui du fait ;
+- les événements dont le propriétaire actuel est caché, introuvable ou
+  `NotRelevant` sont migrés avec une politique `Suppressed` et restent
+  administrables ; ils ne deviennent jamais publics par le seul effet de
+  `IsVisible` ;
+- `HistoricalOnly` ne peut résulter que d’une revue explicite après migration,
+  jamais d’une heuristique sur une cible manquante ;
 - une donnée actuellement visible mais non prouvée est migrée vers
   `LegacyPublishedPendingReview`, conserve son contenu public avec un
   avertissement explicite, ne participe à aucun état certain et rejoint une file
@@ -471,6 +550,7 @@ classDiagram
       +HistoricalSubjectType Type
       +string Id
       +string HistoricalLabel
+      +HistoricalSubjectPublicationPolicy PublicationPolicy
     }
     class HistoricalFact {
       +Guid Id
@@ -479,6 +559,8 @@ classDiagram
       +HistoricalEditorialWorkflowState WorkflowState
       +HistoricalPublicationState PublicationState
       +LocalizedText[] PublicUncertaintyExplanation
+      +LifecycleBoundaryMeaning? BoundaryMeaning
+      +int? SequenceWithinDate
       +int Revision
       +DateTime? VerifiedAtUtc
     }
@@ -498,6 +580,12 @@ classDiagram
     }
     class ParkHistoricalSnapshot
     class HistoricalAmbiguity
+    class HistoricalInstant {
+      +int Year
+      +int? Month
+      +int? Day
+      +DatePrecision Precision
+    }
 
     HistoricalFact --> HistoricalSubject
     HistoricalFact --> HistoricalPeriod
@@ -510,6 +598,7 @@ classDiagram
     ParkHistoricalSnapshot --> HistoricalFact
     ParkHistoricalSnapshot --> HistoricalRelation
     ParkHistoricalSnapshot --> HistoricalAmbiguity
+    ParkHistoricalSnapshot --> HistoricalInstant
 ```
 
 ```mermaid
@@ -570,6 +659,8 @@ Les collections cibles sont `historical-facts`, `historical-relations`,
 - seuls les faits et relations `Published`, plus les contenus de migration
   `LegacyPublishedPendingReview` explicitement avertis, entrent dans les réponses
   publiques ;
+- leur sujet doit en plus être éligible selon
+  `HistoricalSubjectPublicationPolicy` ;
 - seuls les faits et relations `Published` admissibles participent aux
   snapshots décisionnels ;
 - un récit brouillon ou retiré est omis même lorsque son fait reste publié ;
