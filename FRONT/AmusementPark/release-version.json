@@ -1,6 +1,20 @@
 {
-  "version": "5.3.78",
+  "version": "5.3.79",
   "history": [
+    {
+      "version": "5.3.79",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "Les futures vues historiques distingueront clairement les faits, les incertitudes et leurs sources.",
+        "en": "Future history views will clearly distinguish facts, uncertainties and their sources.",
+        "de": "Künftige historische Ansichten unterscheiden klar zwischen Fakten, Unsicherheiten und ihren Quellen.",
+        "nl": "Toekomstige historische weergaven maken feiten, onzekerheden en hun bronnen duidelijk herkenbaar.",
+        "it": "Le future viste storiche distingueranno chiaramente fatti, incertezze e relative fonti.",
+        "es": "Las futuras vistas históricas distinguirán claramente los hechos, las incertidumbres y sus fuentes.",
+        "pl": "Przyszłe widoki historyczne będą wyraźnie rozróżniać fakty, niepewności i ich źródła.",
+        "pt": "As futuras vistas históricas distinguirão claramente os factos, as incertezas e as respetivas fontes."
+      }
+    },
     {
       "version": "5.3.78",
       "releasedAt": "2026-09-25",
