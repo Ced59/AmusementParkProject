@@ -67,10 +67,18 @@ public sealed class TripNotificationService
             cancellationToken);
         if (current is not null && current.MemberId != access.Member.Id)
         {
-            await this.subscriptions.DeleteForMemberAsync(
-                access.Trip.Id,
-                access.UserId,
-                CancellationToken.None);
+            if (!await this.subscriptions.DeleteIfCurrentAsync(
+                    current,
+                    CancellationToken.None))
+            {
+                TripNotificationSubscription? concurrent =
+                    await this.subscriptions.GetAsync(
+                        access.Trip.Id,
+                        access.UserId,
+                        CancellationToken.None);
+                return Changed(concurrent?.Version);
+            }
+
             current = null;
         }
         if (current is null)

@@ -358,11 +358,11 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
 ## 11. Preuves
 
 - 7 tests Core : activation, réactivation, curseur monotone et politique ;
-- 13 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
+- 14 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
   concurrence, compensations de départ/annulation, réconciliation des
   abonnements orphelins ou issus d’une ancienne appartenance et métriques
   agrégées sans contenu privé ;
-- 25 tests Application du périmètre : notifications, départ, reprise de purge
+- 26 tests Application du périmètre : notifications, départ, reprise de purge
   et pilotage ;
 - 24 tests Infrastructure du périmètre : index, pagination de purge, clôture
   d’admission pendant une purge, filtre privé, conservation des bornes UTC à
