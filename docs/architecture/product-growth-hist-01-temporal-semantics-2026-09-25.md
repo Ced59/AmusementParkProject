@@ -366,7 +366,12 @@ l’incertitude même lorsque l’article lié reste en brouillon ou a été ret
 
 Règles de publication :
 
-- `Unverified` n’est pas public par défaut ;
+- un fait ou une relation `Unverified` ou `Retracted` ne peut jamais recevoir
+  `HistoricalPublicationState.Published` ; le Core refuse également le workflow
+  `Published` pour ces états de preuve ;
+- la seule exposition publique temporaire d'un contenu `Unverified` est
+  `LegacyPublishedPendingReview`, créée exclusivement par HIST-04 avec son
+  avertissement et ses exclusions obligatoires ;
 - `Probable` et `Disputed` exigent une explication visible ;
 - `LegacyPublishedPendingReview` affiche un avertissement localisé obligatoire,
   reste exclu des snapshots décisionnels et des nouveaux liens SEO, et apparaît
@@ -469,10 +474,12 @@ dates seulement connues au mois ou à l’année.
 
 ### 9.3 Réduction des identités et attributs historiques
 
-Le Core réduit séparément chaque `HistoricalAttributeKind` : `Name`, `Zone`,
-`Operator`, `Owner`, `Manufacturer`, `Category`, `Theme`, `Location` et
+Le Core réduit séparément chaque `HistoricalAttributeKind` : `Name`, `Logo`,
+`Zone`, `Operator`, `Owner`, `Manufacturer`, `Category`, `Theme`, `Location` et
 `Status`. Un renommage ne modifie donc jamais implicitement la zone, et un
-déplacement ne modifie pas le nom.
+déplacement ne modifie pas le nom. `Logo` porte une référence média canonique,
+pas une URL recopiée ; l'ancienne et la nouvelle référence restent conservées
+comme les deux valeurs d'une transition.
 
 Un fait de transition porte une ancienne valeur facultative, une nouvelle
 valeur obligatoire et un `AttributeBoundaryMeaning` :
@@ -500,6 +507,26 @@ Deux transitions du même attribut dont les enveloppes se chevauchent suivent
 les mêmes règles que le cycle de vie : un `SequenceWithinDate` n’est admis que
 pour un ordre exact et sourcé ; sinon le Core produit une ambiguïté. Les
 transitions d’attributs différents peuvent coexister sans ordre artificiel.
+
+`OperatedByDuring` et `LocatedInZoneDuring` sont aussi des assertions
+structurées des attributs `Operator` et `Zone`. Le réducteur normalise donc :
+
+- une transition d'attribut en assertion de sa nouvelle valeur depuis sa borne
+  jusqu'à la transition admissible suivante ;
+- une relation en assertion de la valeur de son sujet cible pendant sa période ;
+- les assertions admissibles de même attribut et même valeur en une seule
+  candidate, tout en conservant toutes leurs preuves et leurs intervalles ;
+- deux candidates de valeurs différentes applicables à la même unité civile en
+  `HistoricalAmbiguity`, sans priorité implicite du fait sur la relation ni de
+  la relation sur le fait.
+
+Une relation et une transition cohérentes renforcent la traçabilité mais
+n'élargissent pas artificiellement leur période respective. La candidate unique
+n'est applicable que sur les portions effectivement couvertes par au moins une
+assertion admissible ; une borne partielle conserve son niveau d'incertitude.
+Les relations brouillon, retirées, rétractées ou
+`LegacyPublishedPendingReview` sont exclues des snapshots décisionnels comme
+leurs équivalents factuels.
 
 ## 10. Couverture et ambiguïtés
 
@@ -533,6 +560,7 @@ rejouable après que le Core et la persistance canoniques auront été livrés.
 | `Sources` | sources canoniques | Champs connus conservés ; champs absents marqués à compléter. |
 | `IsVisible` | workflow de publication | Ne détermine pas à lui seul l’état de preuve. |
 | `PreviousName`, `NewName` | valeur structurée de renommage | Relation seulement si identité et sources l’établissent. |
+| `PreviousLogoImageId`, `NewLogoImageId` | transition de l'attribut `Logo` avec deux références média canoniques | Les deux identifiants sont conservés sans recopier d'URL ; une référence absente reste explicitement inconnue. |
 | anciens/nouveaux exploitants | fait structuré + cibles typées | Aucun exploitant inventé si l’identifiant ne se résout pas. |
 | `RelatedParkIds`, `RelatedParkItemIds` | contexte de migration | Jamais converti automatiquement en `ReplacedBy` ou autre relation. |
 | événement automatique d’ouverture/fermeture | fait candidat issu de l’entité actuelle | Revue de la précision et provenance avant publication canonique. |
