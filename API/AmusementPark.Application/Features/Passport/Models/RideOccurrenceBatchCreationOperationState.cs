@@ -5,4 +5,5 @@ public sealed record RideOccurrenceBatchCreationOperationState(
     bool IsCompleted,
     bool IsConflicted,
     IReadOnlyList<string> ParkItemIds,
-    RideOccurrenceCreationPreparation? Preparation = null);
+    RideOccurrenceCreationPreparation? Preparation = null,
+    string? ConcurrencyToken = null);

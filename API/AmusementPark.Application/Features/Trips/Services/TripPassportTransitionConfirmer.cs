@@ -105,17 +105,6 @@ public sealed class TripPassportTransitionConfirmer
             return Failure(TripPlanApplicationErrors.PassportTransitionNotReady());
         }
 
-        IReadOnlyCollection<Visit> sameDateVisits = await this.visits.ListOwnedByExactDatesAsync(
-            normalizedUserId,
-            new[] { localDate },
-            cancellationToken);
-        Visit? existingVisit = sameDateVisits
-            .Where(visit => string.Equals(visit.ParkId, day.ParkId, StringComparison.Ordinal)
-                && visit.Date.Precision == VisitDatePrecision.Day
-                && visit.Date.Month == localDate.Month
-                && visit.Date.Day == localDate.Day)
-            .OrderByDescending(static visit => visit.UpdatedAtUtc)
-            .FirstOrDefault();
         string visitOperationId = TripPassportTransitionOperationKeys.Visit(
             parsedTripId.Value,
             normalizedUserId,
@@ -134,6 +123,22 @@ public sealed class TripPassportTransitionConfirmer
         bool hasTransitionCreation = transitionVisitByOperationId.TryGetValue(
             visitOperationId,
             out VisitId transitionVisitId);
+        IReadOnlyCollection<Visit> sameDateVisits = await this.visits.ListOwnedByExactDatesAsync(
+            normalizedUserId,
+            new[] { localDate },
+            cancellationToken);
+        Visit[] matchingVisits = sameDateVisits
+            .Where(visit => string.Equals(visit.ParkId, day.ParkId, StringComparison.Ordinal)
+                && visit.Date.Precision == VisitDatePrecision.Day
+                && visit.Date.Month == localDate.Month
+                && visit.Date.Day == localDate.Day)
+            .ToArray();
+        Visit? existingVisit = hasTransitionCreation
+            ? matchingVisits.FirstOrDefault(visit => visit.Id == transitionVisitId)
+            : null;
+        existingVisit ??= matchingVisits
+            .OrderByDescending(static visit => visit.UpdatedAtUtc)
+            .FirstOrDefault();
         bool isTransitionCreation = existingVisit is not null
             && hasTransitionCreation
             && transitionVisitId == existingVisit.Id;
@@ -191,11 +196,17 @@ public sealed class TripPassportTransitionConfirmer
                     existingRideOperation.Preparation,
                     existingVisit!))
             {
-                await this.rideOccurrences.ReleaseBatchCreationOperationAsync(
-                    normalizedUserId,
-                    existingVisit!.Id,
-                    rideOperationId,
-                    cancellationToken);
+                if (string.IsNullOrWhiteSpace(existingRideOperation.ConcurrencyToken)
+                    || !await this.rideOccurrences.TryReleaseBatchCreationReservationAsync(
+                        normalizedUserId,
+                        existingVisit!.Id,
+                        rideOperationId,
+                        existingRideOperation.ConcurrencyToken,
+                        cancellationToken))
+                {
+                    return Failure(PassportApplicationErrors.RideOccurrenceIdempotencyConflict());
+                }
+
                 existingRideOperation = null;
             }
 

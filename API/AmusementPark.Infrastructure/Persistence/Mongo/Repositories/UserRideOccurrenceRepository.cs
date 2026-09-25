@@ -645,7 +645,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 ConflictOperationState,
                 StringComparison.Ordinal),
             ResolveOperationParkItemIds(operation),
-            preparation);
+            preparation,
+            operation.Id);
     }
 
     public async Task<bool> CompleteEmptyBatchCreationOperationAsync(
@@ -727,6 +728,27 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     visitId.Value,
                     operationKeyHash),
             cancellationToken);
+    }
+
+    public async Task<bool> TryReleaseBatchCreationReservationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        string concurrencyToken,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        DeleteResult result = await this.operationCollection.DeleteOneAsync(
+            UserRideOccurrenceCreationOperationMongoDefinitions
+                .BuildBatchCreationReservationReleaseFilter(
+                    normalizedUserId,
+                    visitId.Value,
+                    operationKeyHash,
+                    NormalizeRequired(concurrencyToken, nameof(concurrencyToken))),
+            cancellationToken);
+        return result.DeletedCount == 1;
     }
 
     public Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(

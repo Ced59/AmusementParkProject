@@ -92,7 +92,7 @@ public sealed class TripPassportTransitionReader
             normalizedUserId,
             days.Select(static day => day.LocalDate).ToArray(),
             cancellationToken);
-        Dictionary<(string ParkId, DateOnly Date), Visit> existingByDay = existingVisits
+        Dictionary<(string ParkId, DateOnly Date), Visit[]> existingCandidatesByDay = existingVisits
             .Where(static visit => visit.Date.Precision == VisitDatePrecision.Day
                 && visit.Date.Month.HasValue
                 && visit.Date.Day.HasValue)
@@ -101,13 +101,13 @@ public sealed class TripPassportTransitionReader
                 new DateOnly(visit.Date.Year, visit.Date.Month!.Value, visit.Date.Day!.Value)))
             .ToDictionary(
                 static group => group.Key,
-                static group => group.OrderByDescending(visit => visit.UpdatedAtUtc).First());
+                static group => group.ToArray());
 
         TripDayPlanResult[] eligibleDaysWithVisit = days
             .Where(day => TripPassportTransitionPolicy.HasElapsed(
                     day.LocalDate,
                     destinationToday)
-                && existingByDay.ContainsKey((day.ParkId, day.LocalDate)))
+                && existingCandidatesByDay.ContainsKey((day.ParkId, day.LocalDate)))
             .ToArray();
         Dictionary<DateOnly, string> visitOperationIds = eligibleDaysWithVisit
             .ToDictionary(
@@ -132,6 +132,32 @@ public sealed class TripPassportTransitionReader
                 normalizedUserId,
                 visitOperationIds.Values.ToArray(),
                 cancellationToken);
+        Dictionary<(string ParkId, DateOnly Date), Visit> existingByDay =
+            existingCandidatesByDay.ToDictionary(
+                static pair => pair.Key,
+                pair =>
+                {
+                    TripDayPlanResult? day = days.FirstOrDefault(candidate =>
+                        string.Equals(candidate.ParkId, pair.Key.ParkId, StringComparison.Ordinal)
+                        && candidate.LocalDate == pair.Key.Date);
+                    if (day is not null
+                        && visitOperationIds.TryGetValue(day.LocalDate, out string? operationId)
+                        && transitionVisitByOperationId.TryGetValue(
+                            operationId,
+                            out VisitId transitionVisitId))
+                    {
+                        Visit? transitionVisit = pair.Value.FirstOrDefault(
+                            visit => visit.Id == transitionVisitId);
+                        if (transitionVisit is not null)
+                        {
+                            return transitionVisit;
+                        }
+                    }
+
+                    return pair.Value
+                        .OrderByDescending(static visit => visit.UpdatedAtUtc)
+                        .First();
+                });
         IReadOnlyCollection<RideOccurrenceBatchCreationOperationState> rideOperations =
             rideOperationIds.Count == 0
             ? Array.Empty<RideOccurrenceBatchCreationOperationState>()

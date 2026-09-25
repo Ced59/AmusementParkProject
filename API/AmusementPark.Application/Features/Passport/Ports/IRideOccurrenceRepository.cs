@@ -74,6 +74,13 @@ public interface IRideOccurrenceRepository
         string clientOperationId,
         CancellationToken cancellationToken);
 
+    Task<bool> TryReleaseBatchCreationReservationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        string concurrencyToken,
+        CancellationToken cancellationToken);
+
     Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
         RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,

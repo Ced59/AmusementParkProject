@@ -354,6 +354,7 @@ participant.
 | coupure avant réservation du lot | `isSelectionLocked` reste faux lorsque seule la visite existe ; le membre reprend le brouillon et choisit encore librement ses attractions |
 | parc masqué après une coupure sans réservation | les attractions encore visibles du parc sont chargées pour le brouillon TRIP-12 reconnu ; aucune validation vide n’est suggérée faute de catalogue |
 | identité temporelle du brouillon corrigée | la préparation réservée est comparée à la visite ; une incompatibilité déverrouille l’interface puis libère et reconstruit la réservation sur la sélection courante |
+| deux confirmations concurrentes après correction | la libération compare l’identifiant opaque, le type et l’état exacts de la réservation observée ; une requête retardée ne peut pas supprimer l’opération de remplacement ou déjà activée |
 | fuseau modifié après création | la reprise reconnaît l’identité persistée opération/visite et ne rappelle pas la création avec le fuseau courant du voyage |
 | parc masqué après création | une nouvelle transition reste interdite, mais le brouillon déjà identifié demeure reprenable après la date |
 | opération de passages en conflit | l’état terminal est relu explicitement et retire `canResume` au lieu de produire une fausse action vouée à échouer |
@@ -361,6 +362,7 @@ participant.
 | suppression sans blocage fantôme | le filtre exact propriétaire/date exclut les documents avec tombstone |
 | suppression d’un brouillon TRIP-12 | résolution du tombstone puis libération ciblée de l’opération de passages avant celle de la visite ; une interruption reste rejouable et le tombstone n’est ni restauré ni supprimé physiquement |
 | date ou parc du brouillon modifié dans le Passeport | résolution de la visite active par clé, libération ciblée de son opération de passages puis détachement de sa clé de création ; le brouillon modifié reste intact et la journée d’origine reçoit une nouvelle visite |
+| visite manuelle plus récente le même jour | la relation exacte entre clé de transition et visite est résolue avant le choix du brouillon ; l’ordre de dernière modification ne masque jamais une reprise interrompue |
 | catalogue modifié après réservation | le serveur reprend le payload réservé complet sans le reconstruire depuis les seules attractions encore visibles |
 | parc reprogrammé le même jour | le parc fait partie des deux clés d’opération ; la transition du nouveau parc ne rejoue pas celle de l’ancien |
 | pas de fuite SSR/cache | route authentifiée et réponse `no-store` |
