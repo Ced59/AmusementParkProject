@@ -266,14 +266,21 @@ public sealed class TripParticipantService
             cancellationToken);
         if (write.Outcome == TripPlanWriteOutcome.Success)
         {
-            await this.preferences.CompleteDepartureCleanupAsync(
+            bool preferencesDeleted = await this.preferences.CompleteDepartureCleanupAsync(
                 parsedTripId,
                 normalizedUserId,
                 CancellationToken.None);
-            await this.notifications.DeleteForMemberAsync(
-                parsedTripId,
-                normalizedUserId,
-                CancellationToken.None);
+            if (preferencesDeleted)
+            {
+                await this.notifications.DeleteForMemberAsync(
+                    parsedTripId,
+                    normalizedUserId,
+                    CancellationToken.None);
+                await this.preferences.CompleteDepartureCleanupMarkerAsync(
+                    parsedTripId,
+                    normalizedUserId,
+                    CancellationToken.None);
+            }
             if (this.activityRecorder is not null && leavingMember is not null)
             {
                 await this.activityRecorder.RecordAsync(

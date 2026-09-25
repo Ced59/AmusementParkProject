@@ -327,7 +327,7 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
                 committed.Version);
     }
 
-    public async Task CompleteDepartureCleanupAsync(
+    public async Task<bool> CompleteDepartureCleanupAsync(
         TripPlanId tripPlanId,
         string userId,
         CancellationToken cancellationToken)
@@ -363,7 +363,7 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
                 cancellationToken: cancellationToken);
             if (relocation.MatchedCount != 1)
             {
-                return;
+                return false;
             }
         }
 
@@ -378,9 +378,18 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
             cancellationToken);
         if (remaining > 0)
         {
-            return;
+            return false;
         }
 
+        return true;
+    }
+
+    public async Task CompleteDepartureCleanupMarkerAsync(
+        TripPlanId tripPlanId,
+        string userId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
         UpdateResult planResult = await this.tripPlans.UpdateOneAsync(
             Builders<TripPlanDocument>.Filter.Eq(
                 static document => document.Id,
@@ -436,7 +445,7 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
                             new BsonDocument("$nin", markerIds))))));
     }
 
-    public async Task<int> ReconcileDepartureCleanupAsync(
+    public async Task<IReadOnlyCollection<TripDepartureCleanup>> ListPendingDepartureCleanupAsync(
         int limit,
         CancellationToken cancellationToken)
     {
@@ -454,7 +463,7 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
             .SortBy(static document => document.UpdatedAt)
             .Limit(limit)
             .ToListAsync(cancellationToken);
-        int completed = 0;
+        List<TripDepartureCleanup> pending = new(limit);
         foreach (TripPlanDocument plan in pendingPlans)
         {
             foreach (string userId in plan.DepartedPreferenceCleanupUserIds
@@ -462,19 +471,15 @@ public sealed class TripPreferenceRepository : ITripPreferenceRepository
                 .Distinct(StringComparer.Ordinal))
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                await this.CompleteDepartureCleanupAsync(
-                    TripPlanId.Parse(plan.Id),
-                    userId,
-                    cancellationToken);
-                completed++;
-                if (completed >= limit)
+                pending.Add(new TripDepartureCleanup(TripPlanId.Parse(plan.Id), userId));
+                if (pending.Count >= limit)
                 {
-                    return completed;
+                    return pending;
                 }
             }
         }
 
-        return completed;
+        return pending;
     }
 
     private static FilterDefinition<TripItemPreferenceDocument> BuildCommittedIdentityFilter(

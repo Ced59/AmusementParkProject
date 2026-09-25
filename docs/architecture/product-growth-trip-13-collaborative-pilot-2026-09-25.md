@@ -136,6 +136,12 @@ trip-notification-subscriptions {
   createdAt: date,
   updatedAt: date              // date UTC du dernier jalon lu/préféré
 }
+
+trip-plans {
+  // marqueur historique TRIP-06 désormais retiré seulement après toutes les
+  // purges privées du membre, y compris son abonnement TRIP-13
+  departedPreferenceCleanupUserIds: string[]
+}
 ```
 
 Index :
@@ -173,6 +179,8 @@ classDiagram
     class ITripAuditReader
     class TripNotificationSubscriptionRepository
     class TripAuditRepository
+    class TripPreferenceCleanupReconciler
+    class ITripPreferenceRepository
     class GetTripPilotMetricsQueryHandler
     class ITripPilotMetricsRepository
     class TripPilotMetricsRepository
@@ -194,6 +202,8 @@ classDiagram
     TripNotificationService --> ITripAuditReader
     ITripNotificationSubscriptionRepository <|.. TripNotificationSubscriptionRepository
     ITripAuditReader <|.. TripAuditRepository
+    TripPreferenceCleanupReconciler --> ITripPreferenceRepository
+    TripPreferenceCleanupReconciler --> ITripNotificationSubscriptionRepository
     AdminTripPilotController --> GetTripPilotMetricsQueryHandler
     GetTripPilotMetricsQueryHandler --> ITripPilotMetricsRepository
     ITripPilotMetricsRepository <|.. TripPilotMetricsRepository
@@ -252,6 +262,12 @@ cette relecture, le nettoyage obligatoire du départ supprime l’abonnement. La
 relecture et la compensation utilisent un jeton non annulable : une fermeture
 de l’appel HTTP ne peut pas laisser un abonnement orphelin.
 
+Le marqueur durable de nettoyage d’un membre parti n’est retiré qu’après les
+deux purges privées, préférences puis abonnement. Le réconciliateur rejoue ces
+opérations idempotentes dans le même ordre. Une panne MongoDB entre les deux
+laisse donc le marqueur en place et déclenche une nouvelle tentative, au lieu
+de conserver silencieusement un suivi devenu inaccessible.
+
 Le jalon de lecture combine la séquence et l’instant UTC. Un marqueur créé avant
 l’activation ou avant « tout marquer comme vu », mais matérialisé en retard,
 reçoit une séquence supérieure sans devenir artificiellement une nouveauté :
@@ -305,7 +321,8 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
 - 7 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
   concurrence, compensations de départ/annulation et métriques agrégées sans
   contenu privé ;
-- 16 tests Application du périmètre : notifications, départ, purge et pilotage ;
+- 19 tests Application du périmètre : notifications, départ, reprise de purge
+  et pilotage ;
 - 16 tests Infrastructure du périmètre : index, filtre privé, agrégations et
   résolution du nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;

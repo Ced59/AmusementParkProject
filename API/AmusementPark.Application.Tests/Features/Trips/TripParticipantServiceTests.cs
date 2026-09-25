@@ -266,8 +266,13 @@ public sealed class TripParticipantServiceTests
                 trip.Id,
                 "user-2",
                 CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(true);
         notifications.Setup(item => item.DeleteForMemberAsync(
+                trip.Id,
+                "user-2",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        preferences.Setup(item => item.CompleteDepartureCleanupMarkerAsync(
                 trip.Id,
                 "user-2",
                 CancellationToken.None))
@@ -287,6 +292,65 @@ public sealed class TripParticipantServiceTests
 
         Assert.True(result.IsSuccess);
         Assert.DoesNotContain(trip.Members, member => member.UserId == "user-2");
+        plans.VerifyAll();
+        preferences.VerifyAll();
+        notifications.VerifyAll();
+    }
+
+    [Fact]
+    public async Task LeaveAsync_WhenNotificationCleanupFails_ShouldKeepTheDurableMarker()
+    {
+        TripPlan trip = CreateTripWithMember();
+        long expectedVersion = trip.Version;
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
+        Mock<IUserRepository> users = new(MockBehavior.Strict);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        Mock<ITripNotificationSubscriptionRepository> notifications = new(MockBehavior.Strict);
+        clock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
+        plans.Setup(item => item.GetAccessibleAsync(
+                "user-2",
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(trip);
+        plans.Setup(item => item.ReplaceAccessibleAsync(
+                "user-2",
+                trip,
+                expectedVersion,
+                It.IsAny<TripActivityWrite?>(),
+                CancellationToken.None))
+            .ReturnsAsync(new TripPlanWriteResult(
+                TripPlanWriteOutcome.Success,
+                trip.Version,
+                trip));
+        preferences.Setup(item => item.CompleteDepartureCleanupAsync(
+                trip.Id,
+                "user-2",
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        notifications.Setup(item => item.DeleteForMemberAsync(
+                trip.Id,
+                "user-2",
+                CancellationToken.None))
+            .ThrowsAsync(new IOException("Transient notification cleanup failure."));
+        TripParticipantService service = new(
+            plans.Object,
+            preferences.Object,
+            users.Object,
+            notifications.Object,
+            clock.Object);
+
+        await Assert.ThrowsAsync<IOException>(() => service.LeaveAsync(
+            "user-2",
+            trip.Id.Value,
+            expectedVersion,
+            CancellationToken.None));
+
+        preferences.Verify(item => item.CompleteDepartureCleanupMarkerAsync(
+                It.IsAny<TripPlanId>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
         plans.VerifyAll();
         preferences.VerifyAll();
         notifications.VerifyAll();
