@@ -571,6 +571,39 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             cancellationToken);
     }
 
+    public async Task<IReadOnlyCollection<string>> ListCompletedBatchCreationOperationIdsAsync(
+        string userId,
+        IReadOnlyCollection<string> clientOperationIds,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        ArgumentNullException.ThrowIfNull(clientOperationIds);
+        Dictionary<string, string> operationIdByHash = clientOperationIds
+            .Select(operationId => NormalizeRequired(operationId, nameof(clientOperationIds)))
+            .Distinct(StringComparer.Ordinal)
+            .ToDictionary(
+                UserRideOccurrenceCreationFingerprint.HashOperationKey,
+                static operationId => operationId,
+                StringComparer.Ordinal);
+        if (operationIdByHash.Count == 0)
+        {
+            return Array.Empty<string>();
+        }
+
+        List<string> completedHashes = await this.operationCollection
+            .Find(UserRideOccurrenceCreationOperationMongoDefinitions
+                .BuildCompletedCreationOperationsFilter(
+                    normalizedUserId,
+                    operationIdByHash.Keys.ToArray()))
+            .Project(static operation => operation.OperationKeyHash)
+            .ToListAsync(cancellationToken);
+        return completedHashes
+            .Where(operationIdByHash.ContainsKey)
+            .Select(hash => operationIdByHash[hash])
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+    }
+
     public Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
         RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,

@@ -12,6 +12,8 @@ public sealed class TripPassportTransitionDayDto
 
     public bool CanConfirm { get; set; }
 
+    public bool CanResume { get; set; }
+
     public string? ExistingVisitId { get; set; }
 
     public string? ExistingVisitStatus { get; set; }

@@ -39,6 +39,28 @@ internal static class UserRideOccurrenceCreationOperationMongoDefinitions
             operation.ContentMutationFenceToken);
     }
 
+    public static FilterDefinition<UserRideOccurrenceCreationOperationDocument>
+        BuildCompletedCreationOperationsFilter(
+            string userId,
+            IReadOnlyCollection<string> operationKeyHashes)
+    {
+        ArgumentNullException.ThrowIfNull(operationKeyHashes);
+        string[] normalizedHashes = operationKeyHashes
+            .Select(hash => NormalizeRequired(hash, nameof(operationKeyHashes)))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        return filters.Eq(
+                static document => document.UserId,
+                NormalizeRequired(userId, nameof(userId)))
+            & filters.In(
+                static document => document.OperationKeyHash,
+                normalizedHashes)
+            & filters.Eq(static document => document.OperationKind, "creation")
+            & filters.Eq(static document => document.OperationState, "completed");
+    }
+
     public static IReadOnlyCollection<CreateIndexModel<UserRideOccurrenceCreationOperationDocument>>
         BuildIndexes()
     {

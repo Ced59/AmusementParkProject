@@ -96,6 +96,7 @@ export class TripPassportTransitionFacade {
             candidate.localDate === localDate ? {
               ...candidate,
               canConfirm: false,
+              canResume: false,
               existingVisitId: result.visitId,
               existingVisitStatus: 'Draft',
               attractions: []

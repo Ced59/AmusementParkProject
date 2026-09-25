@@ -1560,6 +1560,8 @@
       "chooseDescription": "El parque y la fecha ya están completos. Tus preferencias anteriores solo sirven de referencia: nada aparece marcado por ti.",
       "privacyProof": "Las decisiones y los datos de los demás participantes nunca se copian en tu Pasaporte.",
       "alreadyCreated": "Ya está en tu Pasaporte",
+      "resume": "Preparación pendiente",
+      "resumeDescription": "El borrador ya existe, pero la selección no se completó. Revisa las atracciones y retoma la preparación.",
       "afterDay": "Disponible después de este día",
       "existingDescription": "Ya existe una visita para este parque y esta fecha. Ábrela para completarla.",
       "openVisit": "Abrir esta visita",
@@ -1572,6 +1574,7 @@
       "selectionTitle": "Tu recuerdo",
       "selectionCount": "{{count}} atracción(es) seleccionada(s)",
       "createDraft": "Crear el borrador privado",
+      "finishDraft": "Finalizar la preparación",
       "noDays": "Todavía no hay ningún día programado.",
       "preferences": {
         "mustdo": "Querías hacerla sí o sí",

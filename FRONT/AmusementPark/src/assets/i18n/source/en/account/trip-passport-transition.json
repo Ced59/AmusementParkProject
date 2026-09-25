@@ -6,11 +6,11 @@
       "private": "Visible only to you", "manual": "No ride is added automatically",
       "chooseTitle": "Start from your plan, not from assumptions", "chooseDescription": "The park and date are already filled in. Your earlier wishes are only reminders: nothing is selected for you.",
       "privacyProof": "Other participants’ choices and data are never copied into your Passport.",
-      "alreadyCreated": "Already in your Passport", "afterDay": "Available after this day", "existingDescription": "A visit already exists for this park and date. Open it to complete it.",
+      "alreadyCreated": "Already in your Passport", "resume": "Preparation to resume", "resumeDescription": "The draft already exists, but the selection was not finalized. Check the attractions, then resume the preparation.", "afterDay": "Available after this day", "existingDescription": "A visit already exists for this park and date. Open it to complete it.",
       "openVisit": "Open this visit", "unavailablePark": "Park no longer available", "unavailableDescription": "This day remains in the trip, but the park can no longer be added to the Passport.",
       "futureDescription": "You can create the draft once this day is over.", "dayPrompt": "Select only the attractions you actually experienced that day.",
       "historicalWarning": "Reference dates are uncertain; selecting this confirms it explicitly.", "noAttractions": "No attraction is available to select.",
-      "selectionTitle": "Your memory", "selectionCount": "{{count}} attraction(s) selected", "createDraft": "Create the private draft", "noDays": "No day has been scheduled yet.",
+      "selectionTitle": "Your memory", "selectionCount": "{{count}} attraction(s) selected", "createDraft": "Create the private draft", "finishDraft": "Finish the preparation", "noDays": "No day has been scheduled yet.",
       "preferences": { "mustdo": "You really wanted to do this", "wanttodo": "You wanted to do this", "optional": "This was an option", "notforme": "You did not want this", "unknown": "No reminder" },
       "feedback": { "errorTitle": "The transition is unavailable", "loadError": "Your trip days could not be prepared for the Passport.", "confirmError": "The draft could not be created. Nothing was added automatically; try again shortly." }
     }

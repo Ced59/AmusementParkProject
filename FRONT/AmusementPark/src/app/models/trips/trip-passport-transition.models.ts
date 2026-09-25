@@ -16,6 +16,7 @@ export interface TripPassportTransitionDay {
   parkName: string | null;
   isParkAvailable: boolean;
   canConfirm: boolean;
+  canResume: boolean;
   existingVisitId: string | null;
   existingVisitStatus: 'Draft' | 'Completed' | 'Archived' | null;
   attractions: TripPassportTransitionItem[];

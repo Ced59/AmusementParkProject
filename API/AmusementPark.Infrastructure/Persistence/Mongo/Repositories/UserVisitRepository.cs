@@ -192,6 +192,32 @@ public sealed class UserVisitRepository : IUserVisitRepository
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
+    public async Task<IReadOnlyCollection<VisitId>> ListOwnedCreationOperationVisitIdsAsync(
+        string userId,
+        IReadOnlyCollection<string> clientOperationIds,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        ArgumentNullException.ThrowIfNull(clientOperationIds);
+        string[] operationKeyHashes = clientOperationIds
+            .Select(operationId => UserVisitCreationFingerprint.HashOperationKey(
+                NormalizeRequired(operationId, nameof(clientOperationIds))))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (operationKeyHashes.Length == 0)
+        {
+            return Array.Empty<VisitId>();
+        }
+
+        List<string> visitIds = await this.collection
+            .Find(UserVisitMongoDefinitions.BuildOwnedCreationOperationsFilter(
+                normalizedUserId,
+                operationKeyHashes))
+            .Project(static document => document.Id)
+            .ToListAsync(cancellationToken);
+        return visitIds.Select(VisitId.Parse).Distinct().ToArray();
+    }
+
     public async Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,

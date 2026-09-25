@@ -84,6 +84,17 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
         return this.inner.ListOwnedByExactDatesAsync(userId, localDates, cancellationToken);
     }
 
+    public Task<IReadOnlyCollection<VisitId>> ListOwnedCreationOperationVisitIdsAsync(
+        string userId,
+        IReadOnlyCollection<string> clientOperationIds,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.ListOwnedCreationOperationVisitIdsAsync(
+            userId,
+            clientOperationIds,
+            cancellationToken);
+    }
+
     public Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,

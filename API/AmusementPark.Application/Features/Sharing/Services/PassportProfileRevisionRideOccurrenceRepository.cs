@@ -120,6 +120,17 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
             cancellationToken);
     }
 
+    public Task<IReadOnlyCollection<string>> ListCompletedBatchCreationOperationIdsAsync(
+        string userId,
+        IReadOnlyCollection<string> clientOperationIds,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.ListCompletedBatchCreationOperationIdsAsync(
+            userId,
+            clientOperationIds,
+            cancellationToken);
+    }
+
     public Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
         RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,

@@ -61,7 +61,11 @@
               </time>
               <h2>{{ day.parkName || ('trips.passportTransition.unavailablePark' | translate) }}</h2>
             </div>
-            @if (day.existingVisitId) {
+            @if (day.canResume) {
+              <app-ui-chip tone="gold" iconClass="pi pi-refresh">
+                {{ 'trips.passportTransition.resume' | translate }}
+              </app-ui-chip>
+            } @else if (day.existingVisitId) {
               <app-ui-chip tone="lime" iconClass="pi pi-check">
                 {{ 'trips.passportTransition.alreadyCreated' | translate }}
               </app-ui-chip>
@@ -72,7 +76,7 @@
             }
           </header>
 
-          @if (day.existingVisitId) {
+          @if (day.existingVisitId && !day.canResume) {
             <p>{{ 'trips.passportTransition.existingDescription' | translate }}</p>
             <a
               appUiButton="primary"
@@ -89,6 +93,15 @@
               {{ 'trips.passportTransition.futureDescription' | translate }}
             </p>
           } @else {
+            @if (day.canResume) {
+              <p>{{ 'trips.passportTransition.resumeDescription' | translate }}</p>
+              <a
+                appUiButton="ghost"
+                [routerLink]="['/', currentLanguage(), 'profile', 'visits', day.existingVisitId]">
+                <i class="pi pi-ticket" aria-hidden="true"></i>
+                <span>{{ 'trips.passportTransition.openVisit' | translate }}</span>
+              </a>
+            }
             <p>{{ 'trips.passportTransition.dayPrompt' | translate }}</p>
             <div class="trip-passport-attractions" role="group" [attr.aria-label]="day.parkName">
               @for (item of day.attractions; track item.parkItemId) {
@@ -154,7 +167,11 @@
                 } @else {
                   <i class="pi pi-arrow-right" aria-hidden="true"></i>
                 }
-                <span>{{ 'trips.passportTransition.createDraft' | translate }}</span>
+                <span>
+                  {{ (day.canResume
+                    ? 'trips.passportTransition.finishDraft'
+                    : 'trips.passportTransition.createDraft') | translate }}
+                </span>
               </button>
             </div>
           }

@@ -209,6 +209,26 @@ internal static class UserVisitMongoDefinitions
                 NormalizeRequired(operationKeyHash, nameof(operationKeyHash)));
     }
 
+    public static FilterDefinition<UserVisitDocument> BuildOwnedCreationOperationsFilter(
+        string userId,
+        IReadOnlyCollection<string> operationKeyHashes)
+    {
+        ArgumentNullException.ThrowIfNull(operationKeyHashes);
+        string[] normalizedHashes = operationKeyHashes
+            .Select(hash => NormalizeRequired(hash, nameof(operationKeyHashes)))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return filters.Eq(
+                static document => document.UserId,
+                NormalizeRequired(userId, nameof(userId)))
+            & filters.In(
+                static document => document.CreationOperationKeyHash,
+                normalizedHashes)
+            & BuildNotDeletedFilter();
+    }
+
     public static FilterDefinition<UserVisitDocument> BuildListFilter(
         UserVisitListCriteria criteria)
     {

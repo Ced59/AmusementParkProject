@@ -1560,6 +1560,8 @@
       "chooseDescription": "Het park en de datum zijn al ingevuld. Je eerdere wensen zijn alleen geheugensteuntjes: niets wordt voor jou geselecteerd.",
       "privacyProof": "Keuzes en gegevens van andere deelnemers worden nooit naar jouw Paspoort gekopieerd.",
       "alreadyCreated": "Al in je Paspoort",
+      "resume": "Voorbereiding hervatten",
+      "resumeDescription": "Het concept bestaat al, maar de selectie is niet afgerond. Controleer de attracties en hervat daarna de voorbereiding.",
       "afterDay": "Beschikbaar na deze dag",
       "existingDescription": "Er bestaat al een bezoek voor dit park en deze datum. Open het om het aan te vullen.",
       "openVisit": "Dit bezoek openen",
@@ -1572,6 +1574,7 @@
       "selectionTitle": "Jouw herinnering",
       "selectionCount": "{{count}} attractie(s) geselecteerd",
       "createDraft": "Privéconcept maken",
+      "finishDraft": "Voorbereiding afronden",
       "noDays": "Er is nog geen dag ingepland.",
       "preferences": {
         "mustdo": "Deze wilde je absoluut doen",

@@ -1560,6 +1560,8 @@
       "chooseDescription": "Le parc et la date sont déjà remplis. Tes anciennes envies servent seulement de repères : rien n’est coché à ta place.",
       "privacyProof": "Les choix et données des autres participants ne sont jamais copiés dans ton Passeport.",
       "alreadyCreated": "Déjà dans ton Passeport",
+      "resume": "Préparation à reprendre",
+      "resumeDescription": "Le brouillon existe déjà, mais la sélection n’a pas été finalisée. Vérifie les attractions, puis relance la préparation.",
       "afterDay": "Disponible après cette journée",
       "existingDescription": "Une visite existe déjà pour ce parc et cette date. Ouvre-la pour la compléter.",
       "openVisit": "Ouvrir cette visite",
@@ -1572,6 +1574,7 @@
       "selectionTitle": "Ton souvenir",
       "selectionCount": "{{count}} attraction(s) sélectionnée(s)",
       "createDraft": "Créer le brouillon privé",
+      "finishDraft": "Finaliser la préparation",
       "noDays": "Aucune journée n’est encore programmée.",
       "preferences": {
         "mustdo": "Tu voulais absolument la faire",

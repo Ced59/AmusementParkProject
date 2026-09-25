@@ -1560,6 +1560,8 @@
       "chooseDescription": "O parque e a data já estão preenchidos. As tuas preferências anteriores são apenas referências: nada é selecionado por ti.",
       "privacyProof": "As escolhas e os dados dos outros participantes nunca são copiados para o teu Passaporte.",
       "alreadyCreated": "Já está no teu Passaporte",
+      "resume": "Preparação por retomar",
+      "resumeDescription": "O rascunho já existe, mas a seleção não foi concluída. Confirma as atrações e retoma a preparação.",
       "afterDay": "Disponível depois deste dia",
       "existingDescription": "Já existe uma visita para este parque e esta data. Abre-a para a completares.",
       "openVisit": "Abrir esta visita",
@@ -1572,6 +1574,7 @@
       "selectionTitle": "A tua memória",
       "selectionCount": "{{count}} atração(ões) selecionada(s)",
       "createDraft": "Criar o rascunho privado",
+      "finishDraft": "Concluir a preparação",
       "noDays": "Ainda não há nenhum dia programado.",
       "preferences": {
         "mustdo": "Querias mesmo fazer esta atração",

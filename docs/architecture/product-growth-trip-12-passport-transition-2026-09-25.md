@@ -77,13 +77,18 @@ sont pas contournés : la transition réutilise `CreateVisitCommand` et
 
 La recherche des visites aux dates du voyage utilise une seule requête MongoDB
 bornée par le propriétaire et `dateSortKey`. Aucun parcours complet de
-collection ni requête par journée n’est ajouté.
+collection ni requête par journée n’est ajouté. Deux lectures groupées par
+empreintes d’opération distinguent ensuite une création TRIP-12 et un lot de
+passages déjà finalisé. Elles réutilisent les index d’idempotence existants et
+ne chargent ni notes privées ni contenu de visite.
 
 ### WebAPI
 
 Le contrôleur authentifié expose une proposition privée et une confirmation
 pour une journée précise. Les réponses ont `no-store`. Les identifiants restent
-des clés d’action ; les libellés visibles utilisent les noms hydratés.
+des clés d’action ; les libellés visibles utilisent les noms hydratés. Le champ
+`canResume` distingue explicitement un brouillon interrompu d’une visite déjà
+complète ou créée manuellement.
 
 ### Angular
 
@@ -115,8 +120,12 @@ classDiagram
     }
     class IUserVisitRepository {
       +ListOwnedByExactDatesAsync(userId, dates)
+      +ListOwnedCreationOperationVisitIdsAsync(userId, operationIds)
       +ResolveExistingCreationAsync(visit, operationId)
       +GetOwnedAsync(visitId, userId)
+    }
+    class IRideOccurrenceRepository {
+      +ListCompletedBatchCreationOperationIdsAsync(userId, operationIds)
     }
     class CreateVisitCommandHandler
     class AddRideOccurrencesBatchCommandHandler
@@ -132,6 +141,7 @@ classDiagram
     TripPassportTransitionReader --> TripProgramResultFactory
     TripPassportTransitionReader --> TripPassportTransitionPolicy
     TripPassportTransitionReader --> IUserVisitRepository
+    TripPassportTransitionReader --> IRideOccurrenceRepository
     TripPassportTransitionConfirmer --> TripProgramResultFactory
     TripPassportTransitionConfirmer --> TripPassportTransitionPolicy
     TripPassportTransitionConfirmer --> IUserVisitRepository
@@ -159,11 +169,16 @@ sequenceDiagram
     API->>APP: GetAsync(userId, tripId)
     APP->>TRIP: Voyage accessible + snapshot cohérent
     APP->>PASS: Visites du membre aux dates du voyage (1 requête)
+    APP->>PASS: Créations TRIP-12 et lots terminés (2 requêtes groupées)
     APP->>CAT: Attractions visibles + images principales
     APP->>TRIP: Préférences du seul membre appelant
     APP-->>API: Jours passés/futurs + visites existantes
     API-->>UI: Proposition privée no-store
     UI-->>M: Cartes illustrées, aucune case présélectionnée
+
+    alt création présente mais lot non terminé
+      UI-->>M: Reprendre la préparation et sélectionner à nouveau
+    end
 ```
 
 ## 6. Séquence de confirmation et reprise sur incident
@@ -192,7 +207,8 @@ sequenceDiagram
     end
 
     Note over APP,DB: Si la visite a été créée mais que le batch échoue,
-    Note over APP,DB: une relance reconnaît la clé de création et reprend le même brouillon.
+    Note over APP,DB: un rechargement reconnaît les marqueurs groupés,
+    Note over APP,DB: réaffiche les attractions et reprend le même brouillon.
 ```
 
 Les clés d’opération sont dérivées par SHA-256 de l’identifiant du voyage, du
@@ -209,6 +225,7 @@ erDiagram
     tripPlans ||--o{ tripDayPlans : programme
     tripPlans ||--o{ tripItemPreferences : contient
     userVisits ||--o{ userRideOccurrences : contient
+    userVisits ||--o{ userRideOccurrenceCreationOperations : protège
 
     tripPlans {
       string _id
@@ -249,6 +266,13 @@ erDiagram
       string creationOperationKeyHash
       string creationPayloadHash
     }
+    userRideOccurrenceCreationOperations {
+      string userId
+      string visitId
+      string operationKeyHash
+      string operationKind
+      string operationState
+    }
 ```
 
 La proposition lit `tripItemPreferences` avec `tripPlanId + userId`. Elle ne
@@ -260,13 +284,13 @@ participant.
 | Invariant | Preuve d’implémentation |
 |---|---|
 | aucune création automatique | seule la route POST appelle les handlers de création |
-| journée strictement passée | comparaison `localDate < destinationToday` dans le fuseau du voyage |
+| journée strictement passée | politique Core unique `TripPassportTransitionPolicy`, partagée par lecture et confirmation |
 | visite privée et en brouillon | création par le handler Passeport, dont les valeurs initiales sont `Private` et `Draft` |
 | aucune priorité transformée automatiquement | la préférence n’est qu’un badge ; la sélection Angular commence vide |
 | aucune donnée d’un autre participant | appel unique à `ListForUserAsync(tripId, currentUserId)` |
 | aucune attraction d’un autre parc | validation serveur contre le catalogue visible du parc de la journée |
 | pas de doublon de visite | détection membre/parc/date puis clés d’idempotence déterministes |
-| reprise après échec partiel | reconnaissance de la création précédente puis replay du batch de passages |
+| reprise après échec partiel | lectures groupées des empreintes de création et de l’état du batch, exposition `canResume`, puis replay du même brouillon |
 | pas de fuite SSR/cache | route authentifiée et réponse `no-store` |
 | plan conservé | aucune mutation ou suppression du voyage pendant la transition |
 
@@ -288,7 +312,9 @@ dépassements horizontaux et le dégagement de la navigation mobile.
 ## 10. Validation
 
 - tests Application : proposition passée/future, préférence personnelle,
-  sélection explicite, reprise d’un échec partiel ;
+  sélection explicite, reprise après rechargement et lot déjà finalisé ;
+- tests Infrastructure : requêtes bornées au propriétaire, aux empreintes
+  demandées et aux seuls lots de création terminés ;
 - tests Angular : endpoints, filtrage défensif de la facade, erreur de
   confirmation, route authentifiée ;
 - contrat responsive statique ;

@@ -28,6 +28,7 @@ describe('TripPassportTransitionFacade', () => {
     expect(facade.confirmation()?.visitId).toBe('visit-1');
     expect(facade.transition()?.days[0].existingVisitId).toBe('visit-1');
     expect(facade.transition()?.days[0].canConfirm).toBe(false);
+    expect(facade.transition()?.days[0].canResume).toBe(false);
   });
 
   it('never submits an attraction that does not belong to the proposed day', () => {
@@ -77,6 +78,7 @@ function createTransition(): TripPassportTransition {
       parkName: 'Parc test',
       isParkAvailable: true,
       canConfirm: true,
+      canResume: false,
       existingVisitId: null,
       existingVisitStatus: null,
       attractions: [{

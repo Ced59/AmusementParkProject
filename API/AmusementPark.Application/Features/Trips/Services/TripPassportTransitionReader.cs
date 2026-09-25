@@ -20,6 +20,7 @@ public sealed class TripPassportTransitionReader
     private readonly IParkItemRepository parkItems;
     private readonly IImageRepository images;
     private readonly IUserVisitRepository visits;
+    private readonly IRideOccurrenceRepository rideOccurrences;
     private readonly IPassportLocalDateResolver localDateResolver;
     private readonly TimeProvider timeProvider;
 
@@ -30,6 +31,7 @@ public sealed class TripPassportTransitionReader
         IParkItemRepository parkItems,
         IImageRepository images,
         IUserVisitRepository visits,
+        IRideOccurrenceRepository rideOccurrences,
         IPassportLocalDateResolver localDateResolver,
         TimeProvider? timeProvider = null)
     {
@@ -39,6 +41,8 @@ public sealed class TripPassportTransitionReader
         this.parkItems = parkItems ?? throw new ArgumentNullException(nameof(parkItems));
         this.images = images ?? throw new ArgumentNullException(nameof(images));
         this.visits = visits ?? throw new ArgumentNullException(nameof(visits));
+        this.rideOccurrences = rideOccurrences
+            ?? throw new ArgumentNullException(nameof(rideOccurrences));
         this.localDateResolver = localDateResolver
             ?? throw new ArgumentNullException(nameof(localDateResolver));
         this.timeProvider = timeProvider ?? TimeProvider.System;
@@ -97,6 +101,43 @@ public sealed class TripPassportTransitionReader
                 static group => group.Key,
                 static group => group.OrderByDescending(visit => visit.UpdatedAtUtc).First());
 
+        TripDayPlanResult[] eligibleDaysWithVisit = days
+            .Where(day => TripPassportTransitionPolicy.CanConfirmDay(
+                    day.LocalDate,
+                    destinationToday,
+                    day.IsParkAvailable)
+                && existingByDay.ContainsKey((day.ParkId, day.LocalDate)))
+            .ToArray();
+        Dictionary<DateOnly, string> visitOperationIds = eligibleDaysWithVisit
+            .ToDictionary(
+                static day => day.LocalDate,
+                day => TripPassportTransitionOperationKeys.Visit(
+                    parsedTripId.Value,
+                    normalizedUserId,
+                    day.LocalDate));
+        Dictionary<DateOnly, string> rideOperationIds = eligibleDaysWithVisit
+            .ToDictionary(
+                static day => day.LocalDate,
+                day => TripPassportTransitionOperationKeys.Rides(
+                    parsedTripId.Value,
+                    normalizedUserId,
+                    day.LocalDate));
+        IReadOnlyCollection<VisitId> transitionVisitIds = visitOperationIds.Count == 0
+            ? Array.Empty<VisitId>()
+            : await this.visits.ListOwnedCreationOperationVisitIdsAsync(
+                normalizedUserId,
+                visitOperationIds.Values.ToArray(),
+                cancellationToken);
+        IReadOnlyCollection<string> completedRideOperationIds = rideOperationIds.Count == 0
+            ? Array.Empty<string>()
+            : await this.rideOccurrences.ListCompletedBatchCreationOperationIdsAsync(
+                normalizedUserId,
+                rideOperationIds.Values.ToArray(),
+                cancellationToken);
+        HashSet<VisitId> transitionVisitIdSet = transitionVisitIds.ToHashSet();
+        HashSet<string> completedRideOperationIdSet = completedRideOperationIds
+            .ToHashSet(StringComparer.Ordinal);
+
         string[] pastParkIds = days
             .Where(day => TripPassportTransitionPolicy.CanConfirmDay(
                 day.LocalDate,
@@ -140,11 +181,16 @@ public sealed class TripPassportTransitionReader
         TripPassportTransitionDayResult[] results = days.Select(day =>
         {
             existingByDay.TryGetValue((day.ParkId, day.LocalDate), out Visit? existing);
+            bool canResume = existing is not null
+                && existing.Status == VisitStatus.Draft
+                && transitionVisitIdSet.Contains(existing.Id)
+                && rideOperationIds.TryGetValue(day.LocalDate, out string? rideOperationId)
+                && !completedRideOperationIdSet.Contains(rideOperationId);
             bool canConfirm = TripPassportTransitionPolicy.CanConfirmDay(
                     day.LocalDate,
                     destinationToday,
                     day.IsParkAvailable)
-                && existing is null;
+                && (existing is null || canResume);
             IReadOnlyCollection<TripPassportTransitionItemResult> dayItems = canConfirm
                 ? BuildItems(
                     attractions.Where(item => string.Equals(
@@ -161,6 +207,7 @@ public sealed class TripPassportTransitionReader
                 day.ParkName,
                 day.IsParkAvailable,
                 canConfirm,
+                canResume,
                 existing?.Id.Value,
                 existing?.Status,
                 dayItems);

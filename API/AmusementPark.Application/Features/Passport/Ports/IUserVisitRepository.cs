@@ -38,6 +38,11 @@ public interface IUserVisitRepository
         IReadOnlyCollection<DateOnly> localDates,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<VisitId>> ListOwnedCreationOperationVisitIdsAsync(
+        string userId,
+        IReadOnlyCollection<string> clientOperationIds,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,

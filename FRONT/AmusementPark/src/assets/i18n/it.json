@@ -1560,6 +1560,8 @@
       "chooseDescription": "Il parco e la data sono già compilati. I tuoi desideri precedenti sono solo promemoria: nulla viene selezionato al posto tuo.",
       "privacyProof": "Le scelte e i dati degli altri partecipanti non vengono mai copiati nel tuo Passaporto.",
       "alreadyCreated": "Già nel tuo Passaporto",
+      "resume": "Preparazione da riprendere",
+      "resumeDescription": "La bozza esiste già, ma la selezione non è stata completata. Controlla le attrazioni e riprendi la preparazione.",
       "afterDay": "Disponibile dopo questa giornata",
       "existingDescription": "Esiste già una visita per questo parco e questa data. Aprila per completarla.",
       "openVisit": "Apri questa visita",
@@ -1572,6 +1574,7 @@
       "selectionTitle": "Il tuo ricordo",
       "selectionCount": "{{count}} attrazione/i selezionata/e",
       "createDraft": "Crea la bozza privata",
+      "finishDraft": "Completa la preparazione",
       "noDays": "Non è stata ancora programmata alcuna giornata.",
       "preferences": {
         "mustdo": "Volevi assolutamente farla",

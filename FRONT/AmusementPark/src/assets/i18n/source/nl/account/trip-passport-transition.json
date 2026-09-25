@@ -6,11 +6,11 @@
       "private": "Alleen zichtbaar voor jou", "manual": "Geen rit wordt automatisch toegevoegd",
       "chooseTitle": "Vertrek van je programma, niet van aannames", "chooseDescription": "Het park en de datum zijn al ingevuld. Je eerdere wensen zijn alleen geheugensteuntjes: niets wordt voor jou geselecteerd.",
       "privacyProof": "Keuzes en gegevens van andere deelnemers worden nooit naar jouw Paspoort gekopieerd.",
-      "alreadyCreated": "Al in je Paspoort", "afterDay": "Beschikbaar na deze dag", "existingDescription": "Er bestaat al een bezoek voor dit park en deze datum. Open het om het aan te vullen.",
+      "alreadyCreated": "Al in je Paspoort", "resume": "Voorbereiding hervatten", "resumeDescription": "Het concept bestaat al, maar de selectie is niet afgerond. Controleer de attracties en hervat daarna de voorbereiding.", "afterDay": "Beschikbaar na deze dag", "existingDescription": "Er bestaat al een bezoek voor dit park en deze datum. Open het om het aan te vullen.",
       "openVisit": "Dit bezoek openen", "unavailablePark": "Park niet meer beschikbaar", "unavailableDescription": "Deze dag blijft in de reis staan, maar het park kan niet meer aan het Paspoort worden toegevoegd.",
       "futureDescription": "Je kunt het concept maken zodra deze dag voorbij is.", "dayPrompt": "Selecteer alleen attracties die je die dag echt hebt gedaan.",
       "historicalWarning": "De referentiedata zijn onzeker; je selectie geldt als uitdrukkelijke bevestiging.", "noAttractions": "Er is geen attractie beschikbaar om te selecteren.",
-      "selectionTitle": "Jouw herinnering", "selectionCount": "{{count}} attractie(s) geselecteerd", "createDraft": "Privéconcept maken", "noDays": "Er is nog geen dag ingepland.",
+      "selectionTitle": "Jouw herinnering", "selectionCount": "{{count}} attractie(s) geselecteerd", "createDraft": "Privéconcept maken", "finishDraft": "Voorbereiding afronden", "noDays": "Er is nog geen dag ingepland.",
       "preferences": { "mustdo": "Deze wilde je absoluut doen", "wanttodo": "Deze wilde je doen", "optional": "Dit was een optie", "notforme": "Deze wilde je niet doen", "unknown": "Geen geheugensteun" },
       "feedback": { "errorTitle": "De overdracht is niet beschikbaar", "loadError": "Je reisdagen konden niet voor het Paspoort worden voorbereid.", "confirmError": "Het concept kon niet worden gemaakt. Er is niets automatisch toegevoegd; probeer het zo opnieuw." }
     }
