@@ -12,6 +12,7 @@ export class TripNotificationFacade {
   private readonly loadingSignal = signal<boolean>(false);
   private readonly savingSignal = signal<boolean>(false);
   private readonly errorSignal = signal<boolean>(false);
+  private requestGeneration: number = 0;
 
   readonly state: Signal<TripNotificationState | null> = this.stateSignal.asReadonly();
   readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
@@ -30,17 +31,28 @@ export class TripNotificationFacade {
       return;
     }
 
+    const generation: number = ++this.requestGeneration;
     this.tripPlanId = normalizedId;
     this.loadingSignal.set(true);
     this.errorSignal.set(false);
     this.data.get(normalizedId).pipe(
       takeUntilDestroyed(this.destroyRef),
-      finalize((): void => this.loadingSignal.set(false))
+      finalize((): void => {
+        if (generation === this.requestGeneration) {
+          this.loadingSignal.set(false);
+        }
+      })
     ).subscribe({
-      next: (state: TripNotificationState): void => this.stateSignal.set(state),
+      next: (state: TripNotificationState): void => {
+        if (generation === this.requestGeneration) {
+          this.stateSignal.set(state);
+        }
+      },
       error: (): void => {
-        this.stateSignal.set(null);
-        this.errorSignal.set(true);
+        if (generation === this.requestGeneration) {
+          this.stateSignal.set(null);
+          this.errorSignal.set(true);
+        }
       }
     });
   }
@@ -73,16 +85,24 @@ export class TripNotificationFacade {
   }
 
   private mutate(operation: () => ReturnType<TripNotificationDataPort['get']>): void {
+    const generation: number = ++this.requestGeneration;
+    this.loadingSignal.set(false);
     this.savingSignal.set(true);
     this.errorSignal.set(false);
     operation().pipe(
       takeUntilDestroyed(this.destroyRef),
       finalize((): void => this.savingSignal.set(false))
     ).subscribe({
-      next: (state: TripNotificationState): void => this.stateSignal.set(state),
+      next: (state: TripNotificationState): void => {
+        if (generation === this.requestGeneration) {
+          this.stateSignal.set(state);
+        }
+      },
       error: (): void => {
-        this.errorSignal.set(true);
-        this.load(this.tripPlanId);
+        if (generation === this.requestGeneration) {
+          this.errorSignal.set(true);
+          this.load(this.tripPlanId);
+        }
       }
     });
   }

@@ -117,7 +117,9 @@ trouve en haut du voyage, explique clairement l’opt-in, montre le compteur,
 ouvre le journal et permet de tout marquer comme vu. Il n’expose aucun
 identifiant technique. Son effet initial ne suit que l’identifiant du voyage :
 les signaux de chargement de la façade sont lus hors suivi réactif afin de ne
-jamais transformer l’actualisation manuelle en polling involontaire.
+jamais transformer l’actualisation manuelle en polling involontaire. Chaque
+requête reçoit en outre une génération locale : une ancienne actualisation qui
+termine après une activation ou une lecture ne peut pas rétablir l’ancien état.
 
 La page d’administration « Pilote des voyages » est lazy-loaded et présente les
 indicateurs agrégés, l’état du rattrapage d’audit et une répartition graphique
@@ -273,6 +275,11 @@ opérations idempotentes dans le même ordre. Une panne MongoDB entre les deux
 laisse donc le marqueur en place et déclenche une nouvelle tentative, au lieu
 de conserver silencieusement un suivi devenu inaccessible.
 
+Tant que ce marqueur subsiste, MongoDB refuse atomiquement une nouvelle
+admission du même compte dans le voyage. Le membre peut revenir dès que la
+purge est terminée, mais une ancienne tentative ne peut jamais supprimer les
+préférences ou l’abonnement de sa nouvelle appartenance.
+
 Une seconde protection traite la course plus rare où le départ ou la suppression
 du voyage se termine juste avant la création de l’abonnement, puis où sa
 compensation MongoDB échoue. Le document d’abonnement lui-même sert alors de
@@ -338,11 +345,12 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
   abonnements orphelins et métriques agrégées sans contenu privé ;
 - 22 tests Application du périmètre : notifications, départ, reprise de purge
   et pilotage ;
-- 18 tests Infrastructure du périmètre : index, pagination de purge, filtre privé, agrégations et
+- 19 tests Infrastructure du périmètre : index, pagination de purge, clôture
+  d’admission pendant une purge, filtre privé, agrégations et
   résolution du nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;
-- 19 tests Angular ciblés : façades, effet sans polling, libellés agrégés,
-  navigation admin et contrats responsive ;
+- 20 tests Angular ciblés : façades, effet sans polling, réponse tardive
+  neutralisée, libellés agrégés, navigation admin et contrats responsive ;
 - build WebAPI Release réussi ;
 - build Angular production/SSR réussi ;
 - architecture façade/ports et règle une classe par fichier réussies ;
