@@ -1,0 +1,18 @@
+{
+  "trips": {
+    "passportTransition": {
+      "open": "Uzupełnij mój Paszport", "back": "Wróć do podróży", "kicker": "Wspomnienia z podróży",
+      "description": "Zmień każdy miniony dzień w prywatną wersję roboczą i zapisz tylko to, co naprawdę udało Ci się zrobić.",
+      "private": "Widoczne tylko dla Ciebie", "manual": "Żaden przejazd nie jest dodawany automatycznie",
+      "chooseTitle": "Skorzystaj z planu, bez zgadywania", "chooseDescription": "Park i data są już uzupełnione. Twoje wcześniejsze preferencje są tylko podpowiedzią — nic nie zostanie zaznaczone za Ciebie.",
+      "privacyProof": "Wybory i dane innych uczestników nigdy nie są kopiowane do Twojego Paszportu.",
+      "alreadyCreated": "Już w Twoim Paszporcie", "resume": "Przygotowanie do wznowienia", "resumeDescription": "Wersja robocza już istnieje, ale przygotowanie zostało przerwane. Zapisany wybór odtworzono bez zmian; dokończ go bezpiecznie.", "resumeUnreservedDescription": "Wersja robocza już istnieje, ale wybór atrakcji nie został jeszcze zapisany. Wybierz je ponownie przed zakończeniem.", "afterDay": "Dostępne po tym dniu", "existingDescription": "Wizyta w tym parku w tym dniu już istnieje. Otwórz ją, aby ją uzupełnić.",
+      "openVisit": "Otwórz tę wizytę", "unavailablePark": "Park nie jest już dostępny", "unavailableDescription": "Ten dzień pozostaje w podróży, ale parku nie można już dodać do Paszportu.",
+      "futureDescription": "Wersję roboczą utworzysz po zakończeniu tego dnia.", "dayPrompt": "Zaznacz tylko atrakcje, z których naprawdę udało Ci się skorzystać tego dnia.",
+      "historicalWarning": "Daty referencyjne są niepewne; wybór jest jednoznacznym potwierdzeniem.", "noAttractions": "Brak atrakcji dostępnych do wyboru.",
+      "selectionTitle": "Twoje wspomnienie", "selectionCount": "Wybrane atrakcje: {{count}}", "createDraft": "Utwórz prywatną wersję roboczą", "finishDraft": "Dokończ przygotowanie", "noDays": "Nie zaplanowano jeszcze żadnego dnia.",
+      "preferences": { "mustdo": "Bardzo zależało Ci na tej atrakcji", "wanttodo": "Ta atrakcja była na Twojej liście", "optional": "To była dodatkowa opcja", "notforme": "Ta atrakcja nie była dla Ciebie", "unknown": "Brak podpowiedzi" },
+      "feedback": { "errorTitle": "Przeniesienie nie jest dostępne", "loadError": "Nie udało się przygotować dni podróży do Paszportu.", "confirmError": "Nie udało się utworzyć wersji roboczej. Nic nie dodano automatycznie; spróbuj ponownie za chwilę." }
+    }
+  }
+}

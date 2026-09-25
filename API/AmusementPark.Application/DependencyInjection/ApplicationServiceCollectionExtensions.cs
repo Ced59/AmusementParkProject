@@ -122,6 +122,8 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<TripActivityRecorder>();
         services.AddScoped<TripActivityService>();
         services.AddScoped<TripExportService>();
+        services.AddScoped<TripPassportTransitionReader>();
+        services.AddScoped<TripPassportTransitionConfirmer>();
         services.AddScoped<TripCandidateMutationService>();
         services.AddScoped<TripPreferenceCleanupReconciler>();
         services.AddScoped<UserNotificationCenterService>();

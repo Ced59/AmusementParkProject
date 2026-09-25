@@ -168,6 +168,126 @@ public sealed class UserVisitRepository : IUserVisitRepository
         return new UserVisitPage(visits, nextCursor);
     }
 
+    public async Task<IReadOnlyCollection<Visit>> ListOwnedByExactDatesAsync(
+        string userId,
+        IReadOnlyCollection<DateOnly> localDates,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        ArgumentNullException.ThrowIfNull(localDates);
+        int[] dateSortKeys = localDates
+            .Distinct()
+            .Select(static date => (date.Year * 10000) + (date.Month * 100) + date.Day)
+            .ToArray();
+        if (dateSortKeys.Length == 0)
+        {
+            return Array.Empty<Visit>();
+        }
+
+        List<UserVisitDocument> documents = await this.collection
+            .Find(UserVisitMongoDefinitions.BuildOwnedExactDatesFilter(
+                normalizedUserId,
+                dateSortKeys))
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    public async Task<IReadOnlyDictionary<string, VisitId>> ListOwnedCreationOperationVisitsAsync(
+        string userId,
+        IReadOnlyCollection<string> clientOperationIds,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        ArgumentNullException.ThrowIfNull(clientOperationIds);
+        Dictionary<string, string> operationIdByHash = clientOperationIds
+            .Select(operationId => NormalizeRequired(operationId, nameof(clientOperationIds)))
+            .Distinct(StringComparer.Ordinal)
+            .ToDictionary(
+                UserVisitCreationFingerprint.HashOperationKey,
+                static operationId => operationId,
+                StringComparer.Ordinal);
+        if (operationIdByHash.Count == 0)
+        {
+            return new Dictionary<string, VisitId>(StringComparer.Ordinal);
+        }
+
+        List<UserVisitCreationOperationProjection> references = await this.collection
+            .Find(UserVisitMongoDefinitions.BuildOwnedCreationOperationsFilter(
+                normalizedUserId,
+                operationIdByHash.Keys.ToArray()))
+            .Project(static document => new UserVisitCreationOperationProjection
+            {
+                Id = document.Id,
+                CreationOperationKeyHash = document.CreationOperationKeyHash,
+            })
+            .ToListAsync(cancellationToken);
+        Dictionary<string, VisitId> visitsByOperationId =
+            new Dictionary<string, VisitId>(StringComparer.Ordinal);
+        foreach (UserVisitCreationOperationProjection reference in references)
+        {
+            if (!string.IsNullOrWhiteSpace(reference.CreationOperationKeyHash)
+                && operationIdByHash.TryGetValue(
+                    reference.CreationOperationKeyHash,
+                    out string? operationId))
+            {
+                visitsByOperationId[operationId] = VisitId.Parse(reference.Id);
+            }
+        }
+
+        return visitsByOperationId;
+    }
+
+    public async Task ReleaseDeletedCreationOperationAsync(
+        string userId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string operationKeyHash = UserVisitCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        await this.collection.UpdateOneAsync(
+            UserVisitMongoDefinitions.BuildDeletedCreationOperationFilter(
+                normalizedUserId,
+                operationKeyHash),
+            UserVisitMongoDefinitions.BuildReleaseCreationOperationUpdate(),
+            cancellationToken: cancellationToken);
+    }
+
+    public async Task ReleaseOwnedCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string operationKeyHash = UserVisitCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        await this.collection.UpdateOneAsync(
+            UserVisitMongoDefinitions.BuildOwnedCreationOperationReleaseFilter(
+                normalizedUserId,
+                visitId.Value,
+                operationKeyHash),
+            UserVisitMongoDefinitions.BuildReleaseCreationOperationUpdate(),
+            cancellationToken: cancellationToken);
+    }
+
+    public async Task<VisitId?> GetDeletedCreationOperationVisitIdAsync(
+        string userId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string operationKeyHash = UserVisitCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        string? visitId = await this.collection
+            .Find(UserVisitMongoDefinitions.BuildDeletedCreationOperationFilter(
+                normalizedUserId,
+                operationKeyHash))
+            .Project(static document => document.Id)
+            .FirstOrDefaultAsync(cancellationToken);
+        return string.IsNullOrWhiteSpace(visitId) ? null : VisitId.Parse(visitId);
+    }
+
     public async Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,

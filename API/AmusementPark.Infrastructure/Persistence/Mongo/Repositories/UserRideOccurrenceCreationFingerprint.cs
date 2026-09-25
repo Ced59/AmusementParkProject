@@ -32,6 +32,14 @@ internal static class UserRideOccurrenceCreationFingerprint
         return Hash(canonicalPayload);
     }
 
+    public static string HashEmptyPayload(string userId, VisitId visitId)
+    {
+        return HashPayload(new RideOccurrenceCreationRequest(
+            visitId,
+            userId,
+            Array.Empty<RideOccurrenceCreationRequestItem>()));
+    }
+
     public static string HashReorderPayload(RideOccurrenceReorderRequest request)
     {
         ArgumentNullException.ThrowIfNull(request);

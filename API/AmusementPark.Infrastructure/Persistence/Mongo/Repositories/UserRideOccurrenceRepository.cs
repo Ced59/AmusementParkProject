@@ -400,7 +400,7 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 VisitId = request.VisitId.Value,
                 ContentMutationFenceToken = request.ContentFenceToken,
                 OperationState = ReservedOperationState,
-                CreationPreparation = CreatePreparationDocument(preparation),
+                CreationPreparation = CreatePreparationDocument(preparation, request),
                 CreatedAt = reservedAtUtc,
                 UpdatedAt = reservedAtUtc,
             };
@@ -569,6 +569,186 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             recovered,
             request,
             cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<RideOccurrenceBatchCreationOperationState>>
+        ListBatchCreationOperationStatesAsync(
+        string userId,
+        IReadOnlyCollection<string> clientOperationIds,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        ArgumentNullException.ThrowIfNull(clientOperationIds);
+        Dictionary<string, string> operationIdByHash = clientOperationIds
+            .Select(operationId => NormalizeRequired(operationId, nameof(clientOperationIds)))
+            .Distinct(StringComparer.Ordinal)
+            .ToDictionary(
+                UserRideOccurrenceCreationFingerprint.HashOperationKey,
+                static operationId => operationId,
+                StringComparer.Ordinal);
+        if (operationIdByHash.Count == 0)
+        {
+            return Array.Empty<RideOccurrenceBatchCreationOperationState>();
+        }
+
+        List<UserRideOccurrenceCreationOperationDocument> operations =
+            await this.operationCollection
+            .Find(UserRideOccurrenceCreationOperationMongoDefinitions
+                .BuildCreationOperationsFilter(
+                    normalizedUserId,
+                    operationIdByHash.Keys.ToArray()))
+            .ToListAsync(cancellationToken);
+        return operations
+            .Where(operation => operationIdByHash.ContainsKey(operation.OperationKeyHash))
+            .Select(operation => CreateBatchCreationOperationState(
+                operation,
+                operationIdByHash[operation.OperationKeyHash]))
+            .ToArray();
+    }
+
+    internal static RideOccurrenceBatchCreationOperationState
+        CreateBatchCreationOperationState(
+        UserRideOccurrenceCreationOperationDocument operation,
+        string clientOperationId)
+    {
+        ArgumentNullException.ThrowIfNull(operation);
+        string normalizedOperationId = NormalizeRequired(
+            clientOperationId,
+            nameof(clientOperationId));
+        RideOccurrenceCreationPreparation? preparation = null;
+        if (operation.CreationPreparation is not null)
+        {
+            int expectedItemCount = string.Equals(
+                operation.OperationKind,
+                CreationKeyReservationOperationKind,
+                StringComparison.Ordinal)
+                ? operation.CreationPreparation.Items.Count
+                : operation.Items.Count;
+            _ = TryCreatePreparation(
+                operation.CreationPreparation,
+                expectedItemCount,
+                out preparation);
+        }
+
+        return new RideOccurrenceBatchCreationOperationState(
+            normalizedOperationId,
+            string.Equals(
+                operation.OperationKind,
+                CreationOperationKind,
+                StringComparison.Ordinal)
+                && string.Equals(
+                    operation.OperationState,
+                    CompletedOperationState,
+                    StringComparison.Ordinal),
+            string.Equals(
+                operation.OperationState,
+                ConflictOperationState,
+                StringComparison.Ordinal),
+            ResolveOperationParkItemIds(operation),
+            preparation,
+            operation.Id);
+    }
+
+    public async Task<bool> CompleteEmptyBatchCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        DateTime completedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        if (completedAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException(
+                "The completion timestamp must be UTC.",
+                nameof(completedAtUtc));
+        }
+
+        string payloadHash = UserRideOccurrenceCreationFingerprint.HashEmptyPayload(
+            normalizedUserId,
+            visitId);
+        UserRideOccurrenceCreationOperationDocument completion =
+            new UserRideOccurrenceCreationOperationDocument
+            {
+                UserId = normalizedUserId,
+                OperationKeyHash = operationKeyHash,
+                PayloadHash = payloadHash,
+                OperationKind = CreationOperationKind,
+                VisitId = visitId.Value,
+                OperationState = CompletedOperationState,
+                CreatedAt = completedAtUtc,
+                UpdatedAt = completedAtUtc,
+            };
+        try
+        {
+            await this.operationCollection.InsertOneAsync(
+                completion,
+                cancellationToken: cancellationToken);
+            return true;
+        }
+        catch (MongoWriteException exception)
+            when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+        {
+            UserRideOccurrenceCreationOperationDocument? existing =
+                await this.LoadCreationOperationAsync(
+                    normalizedUserId,
+                    visitId,
+                    operationKeyHash,
+                    null,
+                    cancellationToken);
+            return existing is not null
+                && string.Equals(
+                    existing.OperationKind,
+                    CreationOperationKind,
+                    StringComparison.Ordinal)
+                && string.Equals(
+                    existing.OperationState,
+                    CompletedOperationState,
+                    StringComparison.Ordinal)
+                && string.Equals(existing.PayloadHash, payloadHash, StringComparison.Ordinal)
+                && existing.Items.Count == 0;
+        }
+    }
+
+    public async Task ReleaseBatchCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        await this.operationCollection.DeleteOneAsync(
+            UserRideOccurrenceCreationOperationMongoDefinitions
+                .BuildBatchCreationReleaseFilter(
+                    normalizedUserId,
+                    visitId.Value,
+                    operationKeyHash),
+            cancellationToken);
+    }
+
+    public async Task<bool> TryReleaseBatchCreationReservationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        string concurrencyToken,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        DeleteResult result = await this.operationCollection.DeleteOneAsync(
+            UserRideOccurrenceCreationOperationMongoDefinitions
+                .BuildBatchCreationReservationReleaseFilter(
+                    normalizedUserId,
+                    visitId.Value,
+                    operationKeyHash,
+                    NormalizeRequired(concurrencyToken, nameof(concurrencyToken))),
+            cancellationToken);
+        return result.DeletedCount == 1;
     }
 
     public Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
@@ -2645,7 +2825,8 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
     }
 
     private static UserRideOccurrenceCreationPreparationDocument CreatePreparationDocument(
-        RideOccurrenceCreationPreparation preparation)
+        RideOccurrenceCreationPreparation preparation,
+        RideOccurrenceCreationRequest request)
     {
         return new UserRideOccurrenceCreationPreparationDocument
         {
@@ -2665,10 +2846,35 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                     new UserRideOccurrenceCreationPreparationItemDocument
                     {
                         Index = index,
+                        ParkItemId = request.Items[index].ParkItemId,
                         HistoricalConsistency = consistency,
                     })
                 .ToList(),
         };
+    }
+
+    private static IReadOnlyList<string> ResolveOperationParkItemIds(
+        UserRideOccurrenceCreationOperationDocument operation)
+    {
+        if (string.Equals(
+                operation.OperationKind,
+                CreationKeyReservationOperationKind,
+                StringComparison.Ordinal))
+        {
+            return operation.CreationPreparation?.Items
+                .Where(static item => !string.IsNullOrWhiteSpace(item.ParkItemId))
+                .OrderBy(static item => item.Index)
+                .Select(static item => item.ParkItemId!.Trim())
+                .ToArray()
+                ?? Array.Empty<string>();
+        }
+
+        return operation.Items
+            .Where(static item => item.CreationSnapshot is not null
+                && !string.IsNullOrWhiteSpace(item.CreationSnapshot.ParkItemId))
+            .OrderBy(static item => item.Index)
+            .Select(static item => item.CreationSnapshot.ParkItemId.Trim())
+            .ToArray();
     }
 
     private static PendingPassportMutationVisit CreatePendingMutation(

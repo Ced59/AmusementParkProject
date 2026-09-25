@@ -33,6 +33,32 @@ public interface IUserVisitRepository
         UserVisitListCriteria criteria,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<Visit>> ListOwnedByExactDatesAsync(
+        string userId,
+        IReadOnlyCollection<DateOnly> localDates,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyDictionary<string, VisitId>> ListOwnedCreationOperationVisitsAsync(
+        string userId,
+        IReadOnlyCollection<string> clientOperationIds,
+        CancellationToken cancellationToken);
+
+    Task<VisitId?> GetDeletedCreationOperationVisitIdAsync(
+        string userId,
+        string clientOperationId,
+        CancellationToken cancellationToken);
+
+    Task ReleaseDeletedCreationOperationAsync(
+        string userId,
+        string clientOperationId,
+        CancellationToken cancellationToken);
+
+    Task ReleaseOwnedCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,

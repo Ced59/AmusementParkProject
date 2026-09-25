@@ -1549,6 +1549,47 @@
       "leaveExplanation": "Perderás imediatamente o acesso ao plano privado.",
       "confirmLeave": "Confirmar a saída"
     },
+    "passportTransition": {
+      "open": "Completar o meu Passaporte",
+      "back": "Voltar à viagem",
+      "kicker": "Memórias da viagem",
+      "description": "Transforma cada dia passado num rascunho privado e regista apenas o que fizeste realmente.",
+      "private": "Visível apenas para ti",
+      "manual": "Nenhuma volta é adicionada automaticamente",
+      "chooseTitle": "Parte do teu programa, não de suposições",
+      "chooseDescription": "O parque e a data já estão preenchidos. As tuas preferências anteriores são apenas referências: nada é selecionado por ti.",
+      "privacyProof": "As escolhas e os dados dos outros participantes nunca são copiados para o teu Passaporte.",
+      "alreadyCreated": "Já está no teu Passaporte",
+      "resume": "Preparação por retomar",
+      "resumeDescription": "O rascunho já existe, mas a preparação foi interrompida. A tua seleção guardada foi restaurada sem alterações; conclui-a em segurança.",
+      "resumeUnreservedDescription": "O rascunho já existe, mas a seleção de atrações ainda não tinha sido guardada. Escolhe-a novamente antes de concluir.",
+      "afterDay": "Disponível depois deste dia",
+      "existingDescription": "Já existe uma visita para este parque e esta data. Abre-a para a completares.",
+      "openVisit": "Abrir esta visita",
+      "unavailablePark": "Parque já não disponível",
+      "unavailableDescription": "Este dia permanece na viagem, mas o parque já não pode ser adicionado ao Passaporte.",
+      "futureDescription": "Poderás criar o rascunho quando este dia terminar.",
+      "dayPrompt": "Seleciona apenas as atrações que fizeste realmente nesse dia.",
+      "historicalWarning": "As datas de referência são incertas; a tua seleção serve de confirmação explícita.",
+      "noAttractions": "Não há nenhuma atração disponível para selecionar.",
+      "selectionTitle": "A tua memória",
+      "selectionCount": "{{count}} atração(ões) selecionada(s)",
+      "createDraft": "Criar o rascunho privado",
+      "finishDraft": "Concluir a preparação",
+      "noDays": "Ainda não há nenhum dia programado.",
+      "preferences": {
+        "mustdo": "Querias mesmo fazer esta atração",
+        "wanttodo": "Querias fazer esta atração",
+        "optional": "Era uma opção",
+        "notforme": "Não querias fazer esta atração",
+        "unknown": "Sem referência"
+      },
+      "feedback": {
+        "errorTitle": "A transição não está disponível",
+        "loadError": "Não foi possível preparar os teus dias de viagem para o Passaporte.",
+        "confirmError": "Não foi possível criar o rascunho. Nada foi adicionado automaticamente; tenta novamente dentro de instantes."
+      }
+    },
     "preferenceSummary": {
       "open": "Abrir a bússola do grupo",
       "back": "Voltar à viagem",

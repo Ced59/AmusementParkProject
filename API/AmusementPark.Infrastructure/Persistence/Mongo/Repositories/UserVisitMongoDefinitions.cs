@@ -209,6 +209,74 @@ internal static class UserVisitMongoDefinitions
                 NormalizeRequired(operationKeyHash, nameof(operationKeyHash)));
     }
 
+    public static FilterDefinition<UserVisitDocument> BuildDeletedCreationOperationFilter(
+        string userId,
+        string operationKeyHash)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return BuildCreationOperationFilter(userId, operationKeyHash)
+            & filters.Ne<DateTime?>(DeletedAtUtcPath, null);
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildOwnedCreationOperationReleaseFilter(
+        string userId,
+        string visitId,
+        string operationKeyHash)
+    {
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return BuildCreationOperationFilter(userId, operationKeyHash)
+            & filters.Eq(
+                static document => document.Id,
+                NormalizeRequired(visitId, nameof(visitId)));
+    }
+
+    public static UpdateDefinition<UserVisitDocument> BuildReleaseCreationOperationUpdate()
+    {
+        UpdateDefinitionBuilder<UserVisitDocument> updates =
+            Builders<UserVisitDocument>.Update;
+        return updates.Combine(
+            updates.Unset(static document => document.CreationOperationKeyHash),
+            updates.Unset(static document => document.CreationPayloadHash),
+            updates.Unset(static document => document.CreationSnapshot));
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildOwnedCreationOperationsFilter(
+        string userId,
+        IReadOnlyCollection<string> operationKeyHashes)
+    {
+        ArgumentNullException.ThrowIfNull(operationKeyHashes);
+        string[] normalizedHashes = operationKeyHashes
+            .Select(hash => NormalizeRequired(hash, nameof(operationKeyHashes)))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return filters.Eq(
+                static document => document.UserId,
+                NormalizeRequired(userId, nameof(userId)))
+            & filters.In(
+                static document => document.CreationOperationKeyHash,
+                normalizedHashes)
+            & BuildNotDeletedFilter();
+    }
+
+    public static FilterDefinition<UserVisitDocument> BuildOwnedExactDatesFilter(
+        string userId,
+        IReadOnlyCollection<int> dateSortKeys)
+    {
+        ArgumentNullException.ThrowIfNull(dateSortKeys);
+        int[] normalizedDateSortKeys = dateSortKeys.Distinct().ToArray();
+        FilterDefinitionBuilder<UserVisitDocument> filters =
+            Builders<UserVisitDocument>.Filter;
+        return filters.Eq(
+                static document => document.UserId,
+                NormalizeRequired(userId, nameof(userId)))
+            & filters.In(static document => document.DateSortKey, normalizedDateSortKeys)
+            & BuildNotDeletedFilter();
+    }
+
     public static FilterDefinition<UserVisitDocument> BuildListFilter(
         UserVisitListCriteria criteria)
     {

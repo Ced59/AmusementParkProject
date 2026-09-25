@@ -1,0 +1,277 @@
+:host {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.trip-passport-page,
+.trip-passport-hero,
+.trip-passport-intro,
+.trip-passport-days,
+.trip-passport-day,
+.trip-passport-day__header,
+.trip-passport-attractions,
+.trip-passport-attraction,
+.trip-passport-attraction__copy,
+.trip-passport-day__confirm {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.trip-passport-page {
+  display: grid;
+  width: min(100%, 68rem);
+  margin: 0 auto;
+  padding: clamp(0.75rem, 3vw, 2rem);
+  padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.trip-passport-hero,
+.trip-passport-day,
+.trip-passport-message {
+  display: grid;
+  gap: 1rem;
+}
+
+h1,
+h2,
+p,
+strong,
+small,
+span,
+time {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  max-width: 18ch;
+  font-family: var(--font-heading);
+  font-size: clamp(2.35rem, 8vw, 5rem);
+  line-height: 0.95;
+}
+
+.trip-passport-hero > p,
+.trip-passport-intro p,
+.trip-passport-day > p,
+.trip-passport-day__neutral,
+.trip-passport-day__confirm span {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.trip-passport-hero__facts {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.trip-passport-intro {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+}
+
+.trip-passport-intro > div {
+  display: grid;
+  min-width: 0;
+  gap: 0.6rem;
+}
+
+.trip-passport-intro__step {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--c-orange);
+  color: var(--app-on-accent);
+  font-weight: 800;
+}
+
+.trip-passport-intro__privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.trip-passport-intro__privacy i {
+  margin-top: 0.2rem;
+  color: var(--c-lime);
+}
+
+.trip-passport-days {
+  display: grid;
+  gap: 1rem;
+}
+
+.trip-passport-day__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.trip-passport-day__header > div {
+  display: grid;
+  min-width: 0;
+  gap: 0.3rem;
+}
+
+.trip-passport-day__header time {
+  color: var(--c-orange);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+}
+
+.trip-passport-attractions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.trip-passport-attraction {
+  display: grid;
+  width: 100%;
+  padding: 0;
+  grid-template-columns: 7rem minmax(0, 1fr) auto;
+  align-items: stretch;
+  gap: 0.85rem;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: var(--app-surface-2);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.trip-passport-attraction:hover,
+.trip-passport-attraction:focus-visible,
+.trip-passport-attraction--selected {
+  border-color: var(--c-orange);
+  background: color-mix(in srgb, var(--c-orange) 8%, var(--app-surface-2));
+}
+
+.trip-passport-attraction:focus-visible {
+  outline: 2px solid var(--c-orange);
+  outline-offset: 2px;
+}
+
+.trip-passport-attraction__visual {
+  display: block;
+  min-width: 0;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--app-surface-3);
+}
+
+.trip-passport-attraction__visual app-image-display {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.trip-passport-attraction__copy {
+  display: grid;
+  padding-block: 0.85rem;
+  align-content: center;
+  gap: 0.35rem;
+}
+
+.trip-passport-attraction__copy small {
+  color: var(--text-muted);
+}
+
+.trip-passport-attraction__copy small i {
+  margin-right: 0.25rem;
+}
+
+.trip-passport-attraction__warning {
+  color: var(--c-gold) !important;
+}
+
+.trip-passport-attraction__choice {
+  align-self: center;
+  padding-right: 1rem;
+  color: var(--c-orange);
+  font-size: 1.25rem;
+}
+
+.trip-passport-day__confirm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--app-border);
+}
+
+.trip-passport-day__confirm > div {
+  display: grid;
+  min-width: 0;
+  gap: 0.2rem;
+}
+
+.trip-passport-message {
+  padding: 1rem;
+}
+
+.trip-passport-message--error {
+  color: var(--c-rose);
+}
+
+@media (max-width: 48rem) {
+  .trip-passport-attractions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 36rem) {
+  .trip-passport-day__header,
+  .trip-passport-day__confirm {
+    display: grid;
+  }
+
+  .trip-passport-day__confirm > button,
+  .trip-passport-day > a {
+    width: 100%;
+  }
+
+  .trip-passport-attraction {
+    grid-template-columns: 5rem minmax(0, 1fr) auto;
+  }
+}
+
+@media (max-width: 22.5rem) {
+  .trip-passport-page {
+    padding-inline: 0.55rem;
+  }
+
+  .trip-passport-intro {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .trip-passport-intro__step {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .trip-passport-attraction {
+    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+    gap: 0.55rem;
+  }
+
+  .trip-passport-attraction__choice {
+    padding-right: 0.65rem;
+  }
+}

@@ -9,4 +9,5 @@ public enum PassportRideLogSourceDto
     Manual = 1,
     Import = 2,
     SystemMigration = 3,
+    TripTransition = 4,
 }

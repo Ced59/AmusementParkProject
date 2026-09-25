@@ -100,6 +100,20 @@ public static class TripPlanApplicationErrors
             "The portable trip plan could not be prepared safely.");
     }
 
+    public static ApplicationError PassportTransitionNotReady()
+    {
+        return ApplicationError.Conflict(
+            "trip.passport-transition.not-ready",
+            "This trip day is not ready to be confirmed in the passport.");
+    }
+
+    public static ApplicationError PassportTransitionInvalidSelection()
+    {
+        return ApplicationError.RuleViolation(
+            "trip.passport-transition.invalid-selection",
+            "The selected attractions do not belong to this trip day.");
+    }
+
     public static ApplicationError CandidateIsUsedByDay()
     {
         return ApplicationError.RuleViolation(

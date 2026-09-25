@@ -1,0 +1,190 @@
+<main class="trip-passport-page">
+  <header class="trip-passport-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', tripPlanId]">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'trips.passportTransition.back' | translate }}</span>
+    </a>
+    <app-ui-kicker tone="lime" iconClass="pi pi-ticket">
+      {{ 'trips.passportTransition.kicker' | translate }}
+    </app-ui-kicker>
+    <h1>{{ facade.transition()?.title || ('trips.feedback.loading' | translate) }}</h1>
+    <p>{{ 'trips.passportTransition.description' | translate }}</p>
+    <div class="trip-passport-hero__facts">
+      <app-ui-chip tone="gold" iconClass="pi pi-lock">
+        {{ 'trips.passportTransition.private' | translate }}
+      </app-ui-chip>
+      <app-ui-chip tone="soft" iconClass="pi pi-check-square">
+        {{ 'trips.passportTransition.manual' | translate }}
+      </app-ui-chip>
+    </div>
+  </header>
+
+  @if (facade.loading()) {
+    <section class="trip-passport-message" appUiSurface="panel" aria-live="polite">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      <span>{{ 'trips.feedback.loading' | translate }}</span>
+    </section>
+  } @else if (facade.feedbackKey() && !facade.transition()) {
+    <section class="trip-passport-message trip-passport-message--error" appUiSurface="panel" role="alert">
+      <strong>{{ 'trips.passportTransition.feedback.errorTitle' | translate }}</strong>
+      <span>{{ facade.feedbackKey()! | translate }}</span>
+      <button type="button" appUiButton="ghost" (click)="facade.load(tripPlanId)">
+        {{ 'trips.actions.retry' | translate }}
+      </button>
+    </section>
+  } @else if (facade.transition(); as transition) {
+    @if (facade.feedbackKey()) {
+      <p class="trip-passport-message trip-passport-message--error" role="alert">
+        {{ facade.feedbackKey()! | translate }}
+      </p>
+    }
+
+    <section class="trip-passport-intro" appUiSurface="panel" appUiSurfacePadding="spacious">
+      <span class="trip-passport-intro__step">1</span>
+      <div>
+        <h2>{{ 'trips.passportTransition.chooseTitle' | translate }}</h2>
+        <p>{{ 'trips.passportTransition.chooseDescription' | translate }}</p>
+        <p class="trip-passport-intro__privacy">
+          <i class="pi pi-eye-slash" aria-hidden="true"></i>
+          {{ 'trips.passportTransition.privacyProof' | translate }}
+        </p>
+      </div>
+    </section>
+
+    <div class="trip-passport-days">
+      @for (day of transition.days; track day.localDate) {
+        <article class="trip-passport-day" appUiSurface="panel" appUiSurfacePadding="spacious">
+          <header class="trip-passport-day__header">
+            <div>
+              <time [attr.datetime]="day.localDate">
+                {{ day.localDate | date:'fullDate':'UTC':currentLanguage() }}
+              </time>
+              <h2>{{ day.parkName || ('trips.passportTransition.unavailablePark' | translate) }}</h2>
+            </div>
+            @if (day.canResume) {
+              <app-ui-chip tone="gold" iconClass="pi pi-refresh">
+                {{ 'trips.passportTransition.resume' | translate }}
+              </app-ui-chip>
+            } @else if (day.existingVisitId) {
+              <app-ui-chip tone="lime" iconClass="pi pi-check">
+                {{ 'trips.passportTransition.alreadyCreated' | translate }}
+              </app-ui-chip>
+            } @else if (!day.canConfirm && day.localDate >= transition.destinationToday) {
+              <app-ui-chip tone="soft" iconClass="pi pi-clock">
+                {{ 'trips.passportTransition.afterDay' | translate }}
+              </app-ui-chip>
+            }
+          </header>
+
+          @if (day.existingVisitId && !day.canResume) {
+            <p>{{ 'trips.passportTransition.existingDescription' | translate }}</p>
+            <a
+              appUiButton="primary"
+              [routerLink]="['/', currentLanguage(), 'profile', 'visits', day.existingVisitId]">
+              <i class="pi pi-ticket" aria-hidden="true"></i>
+              <span>{{ 'trips.passportTransition.openVisit' | translate }}</span>
+            </a>
+          } @else if (!day.isParkAvailable && !day.canResume) {
+            <p class="trip-passport-day__neutral">
+              {{ 'trips.passportTransition.unavailableDescription' | translate }}
+            </p>
+          } @else if (!day.canConfirm) {
+            <p class="trip-passport-day__neutral">
+              {{ 'trips.passportTransition.futureDescription' | translate }}
+            </p>
+          } @else {
+            @if (day.canResume) {
+              <p>
+                {{ (day.isSelectionLocked
+                  ? 'trips.passportTransition.resumeDescription'
+                  : 'trips.passportTransition.resumeUnreservedDescription') | translate }}
+              </p>
+              <a
+                appUiButton="ghost"
+                [routerLink]="['/', currentLanguage(), 'profile', 'visits', day.existingVisitId]">
+                <i class="pi pi-ticket" aria-hidden="true"></i>
+                <span>{{ 'trips.passportTransition.openVisit' | translate }}</span>
+              </a>
+            }
+            <p>{{ 'trips.passportTransition.dayPrompt' | translate }}</p>
+            <div class="trip-passport-attractions" role="group" [attr.aria-label]="day.parkName">
+              @for (item of day.attractions; track item.parkItemId) {
+                <button
+                  type="button"
+                  class="trip-passport-attraction"
+                  [class.trip-passport-attraction--selected]="isSelected(day.localDate, item.parkItemId)"
+                  [attr.aria-pressed]="isSelected(day.localDate, item.parkItemId)"
+                  [disabled]="!facade.canChangeSelection(day.localDate)"
+                  (click)="toggle(day.localDate, item)">
+                  <span class="trip-passport-attraction__visual">
+                    <app-image-display
+                      [imageId]="item.mainImageId"
+                      [alt]="item.name"
+                      [responsiveWidths]="imageWidths"
+                      [srcWidth]="240"
+                      sizes="(max-width: 36rem) 5rem, 7rem"
+                      placeholderKind="parkItem">
+                    </app-image-display>
+                  </span>
+                  <span class="trip-passport-attraction__copy">
+                    <strong>{{ item.name }}</strong>
+                    @if (item.ownPreference !== 'Unknown') {
+                      <small>
+                        <i class="pi pi-heart" aria-hidden="true"></i>
+                        {{ preferenceKey(item) | translate }}
+                      </small>
+                    }
+                    @if (item.historicalConsistency !== 'Verified') {
+                      <small class="trip-passport-attraction__warning">
+                        <i class="pi pi-info-circle" aria-hidden="true"></i>
+                        {{ 'trips.passportTransition.historicalWarning' | translate }}
+                      </small>
+                    }
+                  </span>
+                  <i
+                    class="pi trip-passport-attraction__choice"
+                    [class.pi-check-circle]="isSelected(day.localDate, item.parkItemId)"
+                    [class.pi-circle]="!isSelected(day.localDate, item.parkItemId)"
+                    aria-hidden="true"></i>
+                </button>
+              } @empty {
+                <p class="trip-passport-day__neutral">
+                  {{ 'trips.passportTransition.noAttractions' | translate }}
+                </p>
+              }
+            </div>
+
+            <div class="trip-passport-day__confirm">
+              <div>
+                <strong>{{ 'trips.passportTransition.selectionTitle' | translate }}</strong>
+                <span>
+                  {{ 'trips.passportTransition.selectionCount' | translate:{ count: selectedCount(day.localDate) } }}
+                </span>
+              </div>
+              <button
+                type="button"
+                appUiButton="primary"
+                [disabled]="facade.confirmingDate() !== null"
+                (click)="confirm(day.localDate)">
+                @if (facade.confirmingDate() === day.localDate) {
+                  <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+                } @else {
+                  <i class="pi pi-arrow-right" aria-hidden="true"></i>
+                }
+                <span>
+                  {{ (day.canResume
+                    ? 'trips.passportTransition.finishDraft'
+                    : 'trips.passportTransition.createDraft') | translate }}
+                </span>
+              </button>
+            </div>
+          }
+        </article>
+      } @empty {
+        <section class="trip-passport-message" appUiSurface="panel">
+          {{ 'trips.passportTransition.noDays' | translate }}
+        </section>
+      }
+    </div>
+  }
+</main>

@@ -39,6 +39,73 @@ internal static class UserRideOccurrenceCreationOperationMongoDefinitions
             operation.ContentMutationFenceToken);
     }
 
+    public static FilterDefinition<UserRideOccurrenceCreationOperationDocument>
+        BuildCreationOperationsFilter(
+            string userId,
+            IReadOnlyCollection<string> operationKeyHashes)
+    {
+        ArgumentNullException.ThrowIfNull(operationKeyHashes);
+        string[] normalizedHashes = operationKeyHashes
+            .Select(hash => NormalizeRequired(hash, nameof(operationKeyHashes)))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        return filters.Eq(
+                static document => document.UserId,
+                NormalizeRequired(userId, nameof(userId)))
+            & filters.In(
+                static document => document.OperationKeyHash,
+                normalizedHashes)
+            & filters.In(
+                static document => document.OperationKind,
+                new[] { "creation-key-reservation", "creation" })
+            & filters.In(
+                static document => document.OperationState,
+                new[] { "reserved", "pending", "completed", "conflict" });
+    }
+
+    public static FilterDefinition<UserRideOccurrenceCreationOperationDocument>
+        BuildBatchCreationReleaseFilter(
+            string userId,
+            string visitId,
+            string operationKeyHash)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        return BuildOperationFilter(userId, operationKeyHash)
+            & filters.Eq(
+                static document => document.VisitId,
+                NormalizeRequired(visitId, nameof(visitId)))
+            & filters.In(
+                static document => document.OperationKind,
+                new[] { "creation-key-reservation", "creation" });
+    }
+
+    public static FilterDefinition<UserRideOccurrenceCreationOperationDocument>
+        BuildBatchCreationReservationReleaseFilter(
+            string userId,
+            string visitId,
+            string operationKeyHash,
+            string concurrencyToken)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        return BuildOperationFilter(userId, operationKeyHash)
+            & filters.Eq(
+                static document => document.Id,
+                NormalizeRequired(concurrencyToken, nameof(concurrencyToken)))
+            & filters.Eq(
+                static document => document.VisitId,
+                NormalizeRequired(visitId, nameof(visitId)))
+            & filters.Eq(
+                static document => document.OperationKind,
+                "creation-key-reservation")
+            & filters.Eq(
+                static document => document.OperationState,
+                "reserved");
+    }
+
     public static IReadOnlyCollection<CreateIndexModel<UserRideOccurrenceCreationOperationDocument>>
         BuildIndexes()
     {

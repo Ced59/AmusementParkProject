@@ -5,7 +5,7 @@ export type PassportRideOccurrenceStatus =
   | 'MissedUnavailable'
   | 'SkippedByChoice';
 
-export type PassportRideLogSource = 'Manual' | 'Import' | 'SystemMigration';
+export type PassportRideLogSource = 'Manual' | 'Import' | 'SystemMigration' | 'TripTransition';
 
 export type PassportHistoricalConsistency = 'Verified' | 'Unverified' | 'ConfirmedConflict';
 

@@ -72,7 +72,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         string? operationId = PassportRideOccurrenceHandlerSupport.NormalizeOperationId(command.ClientOperationId);
         IReadOnlyList<RideOccurrenceCreationItem>? expanded = Expand(command.Items);
         if (operationId is null || expanded is null
-            || command.Source is not (RideLogSource.Manual or RideLogSource.Import))
+            || command.Source is not (RideLogSource.Manual or RideLogSource.Import or RideLogSource.TripTransition))
         {
             return Failure(operationId is null
                 ? PassportApplicationErrors.InvalidIdempotencyKey()

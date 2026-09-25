@@ -76,6 +76,60 @@ public sealed class PassportProfileRevisionUserVisitRepository : IUserVisitRepos
         return this.inner.ListOwnedAsync(criteria, cancellationToken);
     }
 
+    public Task<IReadOnlyCollection<Visit>> ListOwnedByExactDatesAsync(
+        string userId,
+        IReadOnlyCollection<DateOnly> localDates,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.ListOwnedByExactDatesAsync(userId, localDates, cancellationToken);
+    }
+
+    public Task<IReadOnlyDictionary<string, VisitId>> ListOwnedCreationOperationVisitsAsync(
+        string userId,
+        IReadOnlyCollection<string> clientOperationIds,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.ListOwnedCreationOperationVisitsAsync(
+            userId,
+            clientOperationIds,
+            cancellationToken);
+    }
+
+    public Task ReleaseDeletedCreationOperationAsync(
+        string userId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.ReleaseDeletedCreationOperationAsync(
+            userId,
+            clientOperationId,
+            cancellationToken);
+    }
+
+    public Task ReleaseOwnedCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.ReleaseOwnedCreationOperationAsync(
+            userId,
+            visitId,
+            clientOperationId,
+            cancellationToken);
+    }
+
+    public Task<VisitId?> GetDeletedCreationOperationVisitIdAsync(
+        string userId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.GetDeletedCreationOperationVisitIdAsync(
+            userId,
+            clientOperationId,
+            cancellationToken);
+    }
+
     public Task<IReadOnlyCollection<Visit>> ListAllOwnedForExportAsync(
         string userId,
         PassportExportSourceBudget sourceBudget,

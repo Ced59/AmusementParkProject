@@ -8,6 +8,7 @@ import { TripPreferenceSummaryPageComponent } from './trip-preference-summary-pa
 import { TripProgramCoherencePageComponent } from './trip-program-coherence-page/trip-program-coherence-page.component';
 import { TripActivityPageComponent } from './trip-activity-page/trip-activity-page.component';
 import { TripExportPageComponent } from './trip-export-page/trip-export-page.component';
+import { TripPassportTransitionPageComponent } from './trip-passport-transition-page/trip-passport-transition-page.component';
 
 describe('Trip planning responsive contract', () => {
   it('contains the trip list inside narrow mobile viewports', () => {
@@ -127,6 +128,19 @@ describe('Trip planning responsive contract', () => {
     expect(styles).toContain('overflow-x: clip');
     expect(styles).toContain('grid-template-columns: repeat(2, minmax(0, 1fr))');
     expect(styles).toContain('overflow-wrap: anywhere');
+    expect(styles).toContain('@media (max-width: 36rem)');
+    expect(styles).toContain('@media (max-width: 22.5rem)');
+    expect(styles).toContain('padding-bottom: calc(5.75rem + env(safe-area-inset-bottom))');
+  });
+
+  it('keeps passport attraction cards and confirmation controls inside 320px phones', () => {
+    const styles: string = (
+      TripPassportTransitionPageComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('overflow-x: clip');
+    expect(styles).toContain('grid-template-columns: repeat(2, minmax(0, 1fr))');
+    expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
     expect(styles).toContain('@media (max-width: 36rem)');
     expect(styles).toContain('@media (max-width: 22.5rem)');
     expect(styles).toContain('padding-bottom: calc(5.75rem + env(safe-area-inset-bottom))');

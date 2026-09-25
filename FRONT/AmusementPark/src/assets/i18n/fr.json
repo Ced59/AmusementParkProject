@@ -1549,6 +1549,47 @@
       "leaveExplanation": "Tu perdras immédiatement l’accès au programme privé.",
       "confirmLeave": "Confirmer mon départ"
     },
+    "passportTransition": {
+      "open": "Compléter mon Passeport",
+      "back": "Retour au voyage",
+      "kicker": "Souvenirs du voyage",
+      "description": "Transforme chaque journée passée en brouillon privé, puis indique uniquement ce que tu as vraiment fait.",
+      "private": "Visible uniquement par toi",
+      "manual": "Aucun tour ajouté automatiquement",
+      "chooseTitle": "Repars de ton programme, pas de suppositions",
+      "chooseDescription": "Le parc et la date sont déjà remplis. Tes anciennes envies servent seulement de repères : rien n’est coché à ta place.",
+      "privacyProof": "Les choix et données des autres participants ne sont jamais copiés dans ton Passeport.",
+      "alreadyCreated": "Déjà dans ton Passeport",
+      "resume": "Préparation à reprendre",
+      "resumeDescription": "Le brouillon existe déjà, mais la préparation a été interrompue. Ta sélection enregistrée est restaurée à l’identique ; finalise-la pour reprendre en toute sécurité.",
+      "resumeUnreservedDescription": "Le brouillon existe déjà, mais la sélection des attractions n’avait pas encore été enregistrée. Choisis-la de nouveau avant de finaliser.",
+      "afterDay": "Disponible après cette journée",
+      "existingDescription": "Une visite existe déjà pour ce parc et cette date. Ouvre-la pour la compléter.",
+      "openVisit": "Ouvrir cette visite",
+      "unavailablePark": "Parc devenu indisponible",
+      "unavailableDescription": "Cette journée reste dans le voyage, mais le parc ne peut plus être repris dans le Passeport.",
+      "futureDescription": "Tu pourras créer le brouillon une fois cette journée terminée.",
+      "dayPrompt": "Touche uniquement les attractions que tu as réellement faites ce jour-là.",
+      "historicalWarning": "Les dates de référence sont incertaines ; ta sélection vaut confirmation explicite.",
+      "noAttractions": "Aucune attraction disponible à sélectionner.",
+      "selectionTitle": "Ton souvenir",
+      "selectionCount": "{{count}} attraction(s) sélectionnée(s)",
+      "createDraft": "Créer le brouillon privé",
+      "finishDraft": "Finaliser la préparation",
+      "noDays": "Aucune journée n’est encore programmée.",
+      "preferences": {
+        "mustdo": "Tu voulais absolument la faire",
+        "wanttodo": "Tu voulais la faire",
+        "optional": "C’était une option",
+        "notforme": "Tu ne la souhaitais pas",
+        "unknown": "Aucun repère"
+      },
+      "feedback": {
+        "errorTitle": "La transition n’est pas disponible",
+        "loadError": "Impossible de préparer tes journées pour le Passeport.",
+        "confirmError": "Le brouillon n’a pas pu être créé. Rien n’a été ajouté automatiquement ; réessaie dans un instant."
+      }
+    },
     "preferenceSummary": {
       "open": "Voir la boussole du groupe",
       "back": "Retour au voyage",

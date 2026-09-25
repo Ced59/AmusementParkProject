@@ -120,6 +120,61 @@ public sealed class PassportProfileRevisionRideOccurrenceRepository
             cancellationToken);
     }
 
+    public Task<IReadOnlyCollection<RideOccurrenceBatchCreationOperationState>>
+        ListBatchCreationOperationStatesAsync(
+        string userId,
+        IReadOnlyCollection<string> clientOperationIds,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.ListBatchCreationOperationStatesAsync(
+            userId,
+            clientOperationIds,
+            cancellationToken);
+    }
+
+    public Task<bool> CompleteEmptyBatchCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        DateTime completedAtUtc,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.CompleteEmptyBatchCreationOperationAsync(
+            userId,
+            visitId,
+            clientOperationId,
+            completedAtUtc,
+            cancellationToken);
+    }
+
+    public Task ReleaseBatchCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.ReleaseBatchCreationOperationAsync(
+            userId,
+            visitId,
+            clientOperationId,
+            cancellationToken);
+    }
+
+    public Task<bool> TryReleaseBatchCreationReservationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        string concurrencyToken,
+        CancellationToken cancellationToken)
+    {
+        return this.inner.TryReleaseBatchCreationReservationAsync(
+            userId,
+            visitId,
+            clientOperationId,
+            concurrencyToken,
+            cancellationToken);
+    }
+
     public Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
         RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,
