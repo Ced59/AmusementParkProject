@@ -84,7 +84,7 @@
               <i class="pi pi-ticket" aria-hidden="true"></i>
               <span>{{ 'trips.passportTransition.openVisit' | translate }}</span>
             </a>
-          } @else if (!day.isParkAvailable) {
+          } @else if (!day.isParkAvailable && !day.canResume) {
             <p class="trip-passport-day__neutral">
               {{ 'trips.passportTransition.unavailableDescription' | translate }}
             </p>

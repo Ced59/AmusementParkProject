@@ -139,7 +139,7 @@ describe('Trip planning responsive contract', () => {
     ).ɵcmp.styles.join('\n');
 
     expect(styles).toContain('overflow-x: clip');
-    expect(styles).toContain('repeat(2, minmax(min(100%, 26rem), 1fr))');
+    expect(styles).toContain('grid-template-columns: repeat(2, minmax(0, 1fr))');
     expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
     expect(styles).toContain('@media (max-width: 36rem)');
     expect(styles).toContain('@media (max-width: 22.5rem)');

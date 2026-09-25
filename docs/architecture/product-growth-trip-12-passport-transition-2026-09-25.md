@@ -339,7 +339,8 @@ participant.
 ## 9. Responsive et accessibilité
 
 - largeur bornée par `min-width: 0`, `max-width: 100%` et `overflow-x: clip` ;
-- cartes en deux colonnes sur grand écran puis une colonne sous 768 px ;
+- cartes en deux colonnes fluides sans largeur minimale fixe sur grand écran,
+  puis une colonne sous 768 px ;
 - image ramenée à 5 rem sur téléphone ;
 - actions empilées avant 576 px ;
 - variante 320 px dédiée ;
