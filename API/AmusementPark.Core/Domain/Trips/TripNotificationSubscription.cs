@@ -160,7 +160,7 @@ public sealed class TripNotificationSubscription
 
     private void ValidateMutation(long currentSequence, DateTime nowUtc)
     {
-        if (currentSequence < 0 || nowUtc.Kind != DateTimeKind.Utc || nowUtc < this.UpdatedAtUtc)
+        if (currentSequence < 0 || nowUtc.Kind != DateTimeKind.Utc)
         {
             throw new TripPlanValidationException(
                 TripPlanErrorCodes.InvalidState,
@@ -170,7 +170,9 @@ public sealed class TripNotificationSubscription
 
     private void CommitMutation(DateTime nowUtc)
     {
-        this.UpdatedAtUtc = nowUtc;
+        this.UpdatedAtUtc = nowUtc < this.UpdatedAtUtc
+            ? this.UpdatedAtUtc
+            : nowUtc;
         this.Version++;
     }
 }

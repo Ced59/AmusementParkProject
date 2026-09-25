@@ -85,6 +85,27 @@ public sealed class TripNotificationSubscriptionTests
         Assert.Equal(2, subscription.Version);
     }
 
+    [Fact]
+    public void SetEnabled_ShouldClampTheInformativeTimestampWhenTheClockMovesBackward()
+    {
+        DateTime nowUtc = new DateTime(2027, 4, 5, 10, 0, 0, DateTimeKind.Utc);
+        TripNotificationSubscription subscription = TripNotificationSubscription.CreateEnabled(
+            TripPlanId.Parse("trip-1"),
+            TripMemberId.Parse("member-1"),
+            "user-1",
+            new TripNotificationBoundary(7),
+            nowUtc);
+
+        subscription.SetEnabled(
+            false,
+            new TripNotificationBoundary(7),
+            nowUtc.AddMinutes(-1));
+
+        Assert.False(subscription.IsEnabled);
+        Assert.Equal(nowUtc, subscription.UpdatedAtUtc);
+        Assert.Equal(2, subscription.Version);
+    }
+
     [Theory]
     [InlineData(TripActivityKind.TripRenamed, true)]
     [InlineData(TripActivityKind.PreferencesUpdated, true)]

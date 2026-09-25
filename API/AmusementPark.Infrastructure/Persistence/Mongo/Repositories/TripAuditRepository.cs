@@ -295,31 +295,37 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         await AddPendingOperationKeysAsync(
             this.plans,
             tripPlanId,
+            "_id",
             pendingOperationKeys,
             cancellationToken);
         await AddPendingOperationKeysAsync(
             this.candidates,
             tripPlanId,
+            "tripPlanId",
             pendingOperationKeys,
             cancellationToken);
         await AddPendingOperationKeysAsync(
             this.days,
             tripPlanId,
+            "tripPlanId",
             pendingOperationKeys,
             cancellationToken);
         await AddPendingOperationKeysAsync(
             this.invitations,
             tripPlanId,
+            "tripPlanId",
             pendingOperationKeys,
             cancellationToken);
         await AddPendingOperationKeysAsync(
             this.preferences,
             tripPlanId,
+            "tripPlanId",
             pendingOperationKeys,
             cancellationToken);
         await AddPendingOperationKeysAsync(
             this.decisions,
             tripPlanId,
+            "tripPlanId",
             pendingOperationKeys,
             cancellationToken);
 
@@ -691,13 +697,14 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
     private static async Task AddPendingOperationKeysAsync<TDocument>(
         IMongoCollection<TDocument> collection,
         TripPlanId tripPlanId,
+        string tripIdentityField,
         HashSet<string> destination,
         CancellationToken cancellationToken)
     {
         IMongoCollection<BsonDocument> untyped = collection.Database.GetCollection<BsonDocument>(
             collection.CollectionNamespace.CollectionName);
         List<BsonDocument> documents = await untyped.Aggregate<BsonDocument>(
-                BuildNotificationBoundaryPipeline(tripPlanId))
+                BuildNotificationBoundaryPipeline(tripPlanId, tripIdentityField))
             .ToListAsync(cancellationToken);
         foreach (BsonDocument document in documents)
         {
@@ -720,14 +727,28 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         }
     }
 
-    internal static BsonDocument[] BuildNotificationBoundaryPipeline(TripPlanId tripPlanId)
+    internal static BsonDocument[] BuildNotificationBoundaryPipeline(
+        TripPlanId tripPlanId,
+        string tripIdentityField)
     {
+        if (tripIdentityField is not ("_id" or "tripPlanId"))
+        {
+            throw new ArgumentException(
+                "The indexed trip identity field is invalid.",
+                nameof(tripIdentityField));
+        }
+
         BsonDocument identity = new("tripPlanId", tripPlanId.Value);
         return new BsonDocument[]
         {
-            new("$match", new BsonDocument(
-                "pendingAuditEvents",
-                new BsonDocument("$elemMatch", identity))),
+            new("$match", new BsonDocument
+            {
+                { tripIdentityField, tripPlanId.Value },
+                {
+                    "pendingAuditEvents",
+                    new BsonDocument("$elemMatch", identity)
+                },
+            }),
             new("$project", new BsonDocument(
                 "pendingAuditEvents",
                 new BsonDocument("$filter", new BsonDocument

@@ -70,13 +70,25 @@ public sealed class TripAuditRepositoryTests
     public void NotificationBoundaryPipeline_ShouldSnapshotOnlyTheRequestedTripMarkers()
     {
         BsonDocument[] pipeline = TripAuditRepository.BuildNotificationBoundaryPipeline(
-            TripPlanId.Parse("trip-1"));
+            TripPlanId.Parse("trip-1"),
+            "tripPlanId");
         string rendered = pipeline.ToJson();
 
+        Assert.Equal("trip-1", pipeline[0]["$match"]["tripPlanId"].AsString);
         Assert.Contains("pendingAuditEvents", rendered, StringComparison.Ordinal);
         Assert.Contains("$filter", rendered, StringComparison.Ordinal);
         Assert.Contains("$$pending.tripPlanId", rendered, StringComparison.Ordinal);
         Assert.Contains("trip-1", rendered, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void NotificationBoundaryPipeline_ShouldUseThePlanPrimaryKey()
+    {
+        BsonDocument[] pipeline = TripAuditRepository.BuildNotificationBoundaryPipeline(
+            TripPlanId.Parse("trip-1"),
+            "_id");
+
+        Assert.Equal("trip-1", pipeline[0]["$match"]["_id"].AsString);
     }
 
     [Fact]

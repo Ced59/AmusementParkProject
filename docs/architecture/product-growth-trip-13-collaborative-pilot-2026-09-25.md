@@ -102,8 +102,11 @@ ce qui est déjà journalisé ; les clés photographiées écartent les mêmes o
 si elles ne sont matérialisées que plus tard. Une opération créée pendant la
 photographie est soit déjà couverte par la dernière séquence, soit considérée
 comme postérieure au jalon. Cette borne ne compare aucune horloge et reste donc
-sûre entre plusieurs instances. L’unicité de l’abonnement est protégée par un
-index MongoDB, pas par une vérification en mémoire.
+sûre entre plusieurs instances. Chaque photographie commence par l’identité du
+voyage indexée (`_id` pour le plan, `tripPlanId` pour ses enfants) avant de filtrer
+les marqueurs embarqués : son coût dépend du voyage visé, pas du corpus global.
+L’unicité de l’abonnement est protégée par un index MongoDB, pas par une
+vérification en mémoire.
 
 ### WebAPI
 
@@ -330,6 +333,11 @@ précision BSON. À l’inverse, une action
 personnelle est filtrée mais sa séquence peut être franchie sans risque, puisque
 le curseur est global au journal du voyage.
 
+`updatedAt` reste une information d’exploitation, jamais une borne d’ordre. Si
+l’horloge d’une instance recule, le domaine conserve la dernière valeur connue
+au lieu de rejeter une mutation légitime ; la séquence et la version optimiste
+restent les seules références de concurrence.
+
 ## 8. Confidentialité, sécurité et performance
 
 - opt-in explicite, jamais activé automatiquement ;
@@ -371,15 +379,15 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
 
 ## 11. Preuves
 
-- 8 tests Core : activation, réactivation, curseur monotone, renouvellement de
-  la clôture des opérations en attente et politique ;
+- 9 tests Core : activation, réactivation, curseur monotone, renouvellement de
+  la clôture des opérations en attente, recul d’horloge et politique ;
 - 14 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
   concurrence, compensations de départ/annulation, réconciliation des
   abonnements orphelins ou issus d’une ancienne appartenance et métriques
   agrégées sans contenu privé ;
 - 27 tests Application du périmètre : notifications, départ, reprise de purge
   et pilotage ;
-- 24 tests Infrastructure du périmètre : index, pagination de purge, clôture
+- 25 tests Infrastructure du périmètre : index, pagination de purge, clôture
   d’admission pendant une purge, filtre privé, photographie ciblée des opérations
   en attente, comptages scalaires et agrégations, résolution du
   nettoyage en tâche de fond ;
