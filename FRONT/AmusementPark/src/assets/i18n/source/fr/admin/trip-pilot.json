@@ -1,0 +1,37 @@
+{
+  "admin": {
+    "tripPilot": {
+      "navTitle": "Pilote des voyages",
+      "shortcut": "Suivre l’usage et la santé technique des voyages collaboratifs.",
+      "kicker": "Voyages privés",
+      "title": "Pilote collaboratif",
+      "subtitle": "Des indicateurs agrégés, sans identité ni contenu privé, pour vérifier la valeur et la fiabilité du parcours.",
+      "refresh": "Actualiser",
+      "loading": "Chargement des indicateurs…",
+      "loadError": "Impossible de charger les indicateurs des voyages.",
+      "empty": "Aucun indicateur disponible.",
+      "metrics": {
+        "ariaLabel": "Indicateurs du pilote collaboratif",
+        "totalPlans": "Voyages actifs",
+        "collaborativePlans": "Voyages à plusieurs",
+        "preferences": "Voyages avec préférences",
+        "decisions": "Voyages avec décisions",
+        "expiredInvitations": "Invitations expirées",
+        "subscriptions": "Suivis privés actifs",
+        "audit": "Événements audités"
+      },
+      "health": {
+        "readyTitle": "Journal à jour",
+        "readyDescription": "Aucune écriture d’audit n’attend sa matérialisation.",
+        "pendingTitle": "Rattrapage en cours",
+        "pendingDescription": "{{count}} écritures attendent encore leur matérialisation dans le journal."
+      },
+      "activity": {
+        "title": "Activité métier",
+        "description": "Répartition des preuves conservées dans le journal privé.",
+        "empty": "Le journal ne contient encore aucun événement."
+      },
+      "generatedAt": "Instantané généré le {{date}} UTC."
+    }
+  }
+}

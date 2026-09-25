@@ -12,17 +12,20 @@ import { compile } from 'sass';
 const viewportWidths = [320, 360, 390, 768, 1280];
 const projectRoot = process.cwd();
 const componentStyles = [
+  'src/styles/_layout.scss',
   'src/app/features/profile/trips/pages/trip-list-page/trip-list-page.component.scss',
   'src/app/features/profile/trips/pages/trip-overview-page/trip-overview-page.component.scss',
   'src/app/features/profile/trips/components/trip-candidate-card/trip-candidate-card.component.scss',
   'src/app/features/profile/trips/components/trip-invitation-panel/trip-invitation-panel.component.scss',
+  'src/app/features/profile/trips/components/trip-notification-panel/trip-notification-panel.component.scss',
   'src/app/features/profile/trips/pages/trip-preferences-page/trip-preferences-page.component.scss',
   'src/app/features/profile/trips/pages/trip-preference-summary-page/trip-preference-summary-page.component.scss',
   'src/app/features/profile/trips/pages/trip-program-coherence-page/trip-program-coherence-page.component.scss',
   'src/app/features/profile/trips/pages/trip-activity-page/trip-activity-page.component.scss',
   'src/app/features/profile/trips/pages/trip-export-page/trip-export-page.component.scss',
   'src/app/features/profile/trips/pages/trip-passport-transition-page/trip-passport-transition-page.component.scss',
-  'src/app/features/public/trips/pages/trip-invitation-preview-page/trip-invitation-preview-page.component.scss'
+  'src/app/features/public/trips/pages/trip-invitation-preview-page/trip-invitation-preview-page.component.scss',
+  'src/app/features/admin/trip-pilot/pages/admin-trip-pilot/admin-trip-pilot.component.scss'
 ]
   .map((relativePath) => compile(resolve(projectRoot, relativePath)).css)
   .join('\n')
@@ -54,6 +57,15 @@ if (!chromeExecutable) {
 
 const fixtureMarkup = `
   <div class="responsive-fixture-host">
+    <main class="app-admin-layout__main" data-responsive-root="admin-trip-pilot" data-check-bound>
+      <div class="trip-pilot surface" data-check-bound>
+        <header class="trip-pilot__header"><div><span>Pilotage des voyages privés</span><h2>Pilote collaboratif</h2><p>Des indicateurs agrégés avec des libellés volontairement longs pour éprouver l'affichage mobile.</p></div><button>Actualiser les indicateurs</button></header>
+        <section class="trip-pilot__kpis"><article><span>Voyages actifs</span><strong>1 234</strong></article><article><span>Voyages à plusieurs participants</span><strong>456</strong></article><article><span>Invitations expirées encore conservées</span><strong>78</strong></article></section>
+        <aside class="trip-pilot__health"><i>✓</i><div><h3>Journal à jour</h3><p>Aucune écriture d'audit n'attend sa matérialisation.</p></div></aside>
+        <section class="trip-pilot__activity"><div><h3>Activité métier</h3><p>Répartition des preuves conservées dans le journal privé.</p></div><article><div><span>Décisions collectives mises à jour</span><strong>987</strong></div><span class="trip-pilot__bar"><i style="--bar-width: 92%"></i></span></article></section>
+      </div>
+    </main>
+
     <main class="trip-list-page" data-responsive-root="trip-list">
       <header class="trip-list-page__hero surface" data-check-bound>
         <a href="#">Retour vers le profil du membre</a>
@@ -83,6 +95,14 @@ const fixtureMarkup = `
         <h1>Une aventure européenne avec un titre très long</h1>
         <p>Programme privé · aucune donnée n'est publiée.</p>
       </header>
+      <section class="trip-notification-panel surface" data-check-bound>
+        <div class="trip-notification-panel__heading">
+          <div><span>Suivi privé</span><h2>Reste au courant sans surveiller le voyage</h2><p>Choisis de voir les changements importants réalisés par les autres participants.</p></div>
+          <span>Suivi activé</span>
+        </div>
+        <div class="trip-notification-panel__summary"><span class="trip-notification-panel__count">99+</span><div><strong>Nouveaux changements importants</strong><p>Ouvre l'historique pour retrouver le détail et les auteurs.</p></div></div>
+        <div class="trip-notification-panel__actions"><button>Désactiver le suivi</button><button>Tout marquer comme vu</button><a>Voir l'historique du voyage</a><button>Actualiser maintenant</button></div>
+      </section>
       <section class="trip-section surface" data-check-bound>
         <div class="trip-section__heading"><span class="trip-section__step">1</span><div><h2>Cadre du voyage</h2><p>Les dates et le fuseau organisent les journées.</p></div></div>
         <div class="trip-dates__fields">
@@ -297,7 +317,7 @@ const fixtureMarkup = `
   <nav class="test-mobile-navigation" aria-hidden="true">Navigation mobile</nav>`;
 
 const baseStyles = `
-  :root { --font-heading: sans-serif; --text-muted: #8a8175; --text-primary: #fff; --app-border: #655847; --app-surface: #17110c; --app-surface-2: #211810; --c-rose: #ff477e; --c-orange: #ff5b2d; --c-sky: #58c9ee; --c-gold: #d6a945; --c-lime: #b8e532; --c-purple: #a978ff; --radius-md: 0.75rem; --radius-lg: 1rem; --shadow-lg: 0 1rem 2rem #0008; }
+  :root { --font-heading: sans-serif; --text-muted: #8a8175; --text-primary: #fff; --app-border: #655847; --app-surface: #17110c; --app-surface-2: #211810; --c-rose: #ff477e; --c-orange: #ff5b2d; --c-sky: #58c9ee; --c-gold: #d6a945; --c-lime: #b8e532; --c-purple: #a978ff; --radius-md: 0.75rem; --radius-lg: 1rem; --shadow-lg: 0 1rem 2rem #0008; --bottom-nav-height: 4.75rem; --content-max-width: 1200px; --content-wide-max-width: 1440px; --topbar-height: 4rem; }
   * { box-sizing: border-box; }
   html, body { width: 100%; max-width: 100%; margin: 0; overflow-x: clip; }
   body { background: #0d0906; color: var(--text-primary); font: 16px/1.4 sans-serif; }

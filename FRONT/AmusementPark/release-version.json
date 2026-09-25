@@ -1,6 +1,20 @@
 {
-  "version": "5.3.76",
+  "version": "5.3.77",
   "history": [
+    {
+      "version": "5.3.77",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "Tu peux maintenant suivre les changements importants de tes voyages partagés.",
+        "en": "You can now keep track of important changes to your shared trips.",
+        "de": "Du kannst jetzt wichtige Änderungen an deinen gemeinsamen Reisen verfolgen.",
+        "nl": "Je kunt nu belangrijke wijzigingen in je gedeelde reizen volgen.",
+        "it": "Ora puoi seguire i cambiamenti importanti dei tuoi viaggi condivisi.",
+        "es": "Ya puedes seguir los cambios importantes de tus viajes compartidos.",
+        "pl": "Możesz teraz śledzić ważne zmiany w swoich wspólnych podróżach.",
+        "pt": "Agora podes acompanhar as alterações importantes nas tuas viagens partilhadas."
+      }
+    },
     {
       "version": "5.3.76",
       "releasedAt": "2026-09-25",

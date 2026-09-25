@@ -30,6 +30,21 @@ public static class TripPlanApplicationErrors
             currentVersion);
     }
 
+    public static ApplicationError NotificationChangedConcurrently(long? currentVersion)
+    {
+        return ApplicationError.Conflict(
+            "trip.notification.changed-concurrently",
+            "The trip notification preference changed before this action completed.",
+            currentVersion);
+    }
+
+    public static ApplicationError NotificationsDisabled()
+    {
+        return ApplicationError.RuleViolation(
+            "trip.notification.disabled",
+            "Trip notifications must be enabled before they can be marked as read.");
+    }
+
     public static ApplicationError IdempotencyConflict()
     {
         return ApplicationError.Conflict(

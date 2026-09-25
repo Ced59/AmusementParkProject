@@ -1,6 +1,7 @@
 import { TripCandidateCardComponent } from '../components/trip-candidate-card/trip-candidate-card.component';
 import { TripInvitationPanelComponent } from '../components/trip-invitation-panel/trip-invitation-panel.component';
 import { TripParticipantPanelComponent } from '../components/trip-participant-panel/trip-participant-panel.component';
+import { TripNotificationPanelComponent } from '../components/trip-notification-panel/trip-notification-panel.component';
 import { TripListPageComponent } from './trip-list-page/trip-list-page.component';
 import { TripOverviewPageComponent } from './trip-overview-page/trip-overview-page.component';
 import { TripPreferencesPageComponent } from './trip-preferences-page/trip-preferences-page.component';
@@ -32,6 +33,17 @@ describe('Trip planning responsive contract', () => {
     expect(styles).toContain('minmax(min(100%, 22rem), 1fr)');
     expect(styles).toContain('@media (max-width: 36rem)');
     expect(styles).toContain('padding-bottom: calc(5.75rem + env(safe-area-inset-bottom))');
+  });
+
+  it('stacks private notification controls before a 320px viewport can overflow', () => {
+    const styles: string = (
+      TripNotificationPanelComponent as unknown as { ɵcmp: { styles: string[] } }
+    ).ɵcmp.styles.join('\n');
+
+    expect(styles).toContain('min-width: 0');
+    expect(styles).toContain('overflow-wrap: anywhere');
+    expect(styles).toContain('@media (max-width: 36rem)');
+    expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
   });
 
   it('reflows each draggable park card without hiding its accessible controls', () => {

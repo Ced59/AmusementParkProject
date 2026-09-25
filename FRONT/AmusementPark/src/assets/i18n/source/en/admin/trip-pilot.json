@@ -1,0 +1,37 @@
+{
+  "admin": {
+    "tripPilot": {
+      "navTitle": "Trip pilot",
+      "shortcut": "Track usage and technical health of collaborative trips.",
+      "kicker": "Private trips",
+      "title": "Collaborative pilot",
+      "subtitle": "Aggregated indicators without identities or private content to verify value and reliability.",
+      "refresh": "Refresh",
+      "loading": "Loading indicators…",
+      "loadError": "Trip indicators could not be loaded.",
+      "empty": "No indicator is available.",
+      "metrics": {
+        "ariaLabel": "Collaborative pilot indicators",
+        "totalPlans": "Active trips",
+        "collaborativePlans": "Collaborative trips",
+        "preferences": "Trips with preferences",
+        "decisions": "Trips with decisions",
+        "expiredInvitations": "Expired invitations",
+        "subscriptions": "Active private watches",
+        "audit": "Audited events"
+      },
+      "health": {
+        "readyTitle": "Activity log up to date",
+        "readyDescription": "No audit write is waiting to be materialised.",
+        "pendingTitle": "Catch-up in progress",
+        "pendingDescription": "{{count}} writes are still waiting to be materialised in the activity log."
+      },
+      "activity": {
+        "title": "Product activity",
+        "description": "Breakdown of evidence retained in the private activity log.",
+        "empty": "The activity log does not contain any event yet."
+      },
+      "generatedAt": "Snapshot generated on {{date}} UTC."
+    }
+  }
+}

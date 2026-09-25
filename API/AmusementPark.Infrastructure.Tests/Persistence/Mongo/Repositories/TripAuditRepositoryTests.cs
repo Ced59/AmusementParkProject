@@ -46,6 +46,24 @@ public sealed class TripAuditRepositoryTests
     }
 
     [Fact]
+    public void ImportantNotificationFilter_ShouldExcludeTheCurrentActorAndPrivateNoise()
+    {
+        BsonDocument filter = Render(TripAuditRepository.BuildImportantAfterFilter(
+            TripPlanId.Parse("trip-1"),
+            TripMemberId.Parse("member-1"),
+            12));
+        string rendered = filter.ToJson();
+
+        Assert.Contains("trip-1", rendered, StringComparison.Ordinal);
+        Assert.Contains("member-1", rendered, StringComparison.Ordinal);
+        Assert.Contains("$ne", rendered, StringComparison.Ordinal);
+        Assert.Contains("$gt", rendered, StringComparison.Ordinal);
+        Assert.Contains(TripActivityKind.TripRenamed.ToString(), rendered, StringComparison.Ordinal);
+        Assert.DoesNotContain(TripActivityKind.PlanExported.ToString(), rendered, StringComparison.Ordinal);
+        Assert.DoesNotContain(TripActivityKind.TripCreated.ToString(), rendered, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void PendingDocument_ShouldRoundTripWithoutAnAccountIdentifier()
     {
         TripActivityPendingDocument document = new()

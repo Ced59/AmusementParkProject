@@ -1,0 +1,19 @@
+{
+  "admin": {
+    "tripPilot": {
+      "navTitle": "Pilota viaggi",
+      "shortcut": "Monitora l’uso e la salute tecnica dei viaggi collaborativi.",
+      "kicker": "Viaggi privati",
+      "title": "Pilota collaborativo",
+      "subtitle": "Indicatori aggregati senza identità o contenuti privati per verificare valore e affidabilità.",
+      "refresh": "Aggiorna",
+      "loading": "Caricamento degli indicatori…",
+      "loadError": "Impossibile caricare gli indicatori dei viaggi.",
+      "empty": "Nessun indicatore disponibile.",
+      "metrics": { "ariaLabel": "Indicatori del pilota collaborativo", "totalPlans": "Viaggi attivi", "collaborativePlans": "Viaggi condivisi", "preferences": "Viaggi con preferenze", "decisions": "Viaggi con decisioni", "expiredInvitations": "Inviti scaduti", "subscriptions": "Monitoraggi privati attivi", "audit": "Eventi verificati" },
+      "health": { "readyTitle": "Registro aggiornato", "readyDescription": "Nessuna scrittura di audit attende la materializzazione.", "pendingTitle": "Recupero in corso", "pendingDescription": "{{count}} scritture attendono ancora la materializzazione nel registro." },
+      "activity": { "title": "Attività del prodotto", "description": "Distribuzione delle prove conservate nel registro privato.", "empty": "Il registro non contiene ancora eventi." },
+      "generatedAt": "Istantanea generata il {{date}} UTC."
+    }
+  }
+}

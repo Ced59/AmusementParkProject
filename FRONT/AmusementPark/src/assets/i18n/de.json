@@ -1526,6 +1526,23 @@
       "openTrip": "Reise öffnen",
       "decisionError": "Deine Antwort konnte nicht gespeichert werden. Versuche es auf diesem Bildschirm erneut."
     },
+    "notifications": {
+      "kicker": "Auf dem Laufenden bleiben",
+      "title": "Wichtige Änderungen",
+      "description": "Aktiviere diese private Beobachtung, um wichtige Entscheidungen und Änderungen anderer Mitglieder zu erkennen.",
+      "enabled": "Beobachtung aktiv",
+      "disabled": "Beobachtung inaktiv",
+      "loading": "Beobachtung wird geladen…",
+      "unreadTitle": "ungelesene Änderungen",
+      "unreadDescription": "Das Aktivitätsprotokoll zeigt dir genau, was sich geändert hat.",
+      "optInPrivacy": "Nichts wird gesendet oder veröffentlicht, solange du diese Beobachtung nicht aktivierst.",
+      "enableAction": "Über Änderungen informieren",
+      "disableAction": "Beobachtung deaktivieren",
+      "markRead": "Alles als gesehen markieren",
+      "openActivity": "Aktivitätsprotokoll öffnen",
+      "refresh": "Aktualisieren",
+      "error": "Die Beobachtung konnte nicht aktualisiert werden. Versuche es gleich noch einmal."
+    },
     "participants": {
       "kicker": "Reiseteam",
       "title": "Wer plant diese Reise?",
@@ -4531,6 +4548,39 @@
       }
     },
     "title": "Administrationsbereich",
+    "tripPilot": {
+      "navTitle": "Reise-Pilot",
+      "shortcut": "Nutzung und technischen Zustand gemeinsamer Reisen verfolgen.",
+      "kicker": "Private Reisen",
+      "title": "Kollaborativer Pilot",
+      "subtitle": "Aggregierte Kennzahlen ohne Identitäten oder private Inhalte zur Prüfung von Nutzen und Zuverlässigkeit.",
+      "refresh": "Aktualisieren",
+      "loading": "Kennzahlen werden geladen…",
+      "loadError": "Die Reise-Kennzahlen konnten nicht geladen werden.",
+      "empty": "Keine Kennzahl verfügbar.",
+      "metrics": {
+        "ariaLabel": "Kennzahlen des kollaborativen Piloten",
+        "totalPlans": "Aktive Reisen",
+        "collaborativePlans": "Gemeinsame Reisen",
+        "preferences": "Reisen mit Präferenzen",
+        "decisions": "Reisen mit Entscheidungen",
+        "expiredInvitations": "Abgelaufene Einladungen",
+        "subscriptions": "Aktive private Beobachtungen",
+        "audit": "Audit-Ereignisse"
+      },
+      "health": {
+        "readyTitle": "Aktivitätsprotokoll aktuell",
+        "readyDescription": "Keine Audit-Schreibung wartet auf die Materialisierung.",
+        "pendingTitle": "Aufholen läuft",
+        "pendingDescription": "{{count}} Schreibvorgänge warten noch auf die Materialisierung im Aktivitätsprotokoll."
+      },
+      "activity": {
+        "title": "Produktaktivität",
+        "description": "Verteilung der im privaten Aktivitätsprotokoll gespeicherten Nachweise.",
+        "empty": "Das Aktivitätsprotokoll enthält noch kein Ereignis."
+      },
+      "generatedAt": "Momentaufnahme erstellt am {{date}} UTC."
+    },
     "users": {
       "total": "Gesamtzahl der Benutzer: {{count}}",
       "empty": "Keine Benutzer gefunden.",

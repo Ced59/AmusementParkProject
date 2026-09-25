@@ -121,6 +121,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<TripProgramCoherenceEvaluator>();
         services.AddScoped<TripActivityRecorder>();
         services.AddScoped<TripActivityService>();
+        services.AddScoped<TripNotificationService>();
         services.AddScoped<TripExportService>();
         services.AddScoped<TripPassportTransitionReader>();
         services.AddScoped<TripPassportTransitionConfirmer>();

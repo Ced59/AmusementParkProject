@@ -1,0 +1,19 @@
+{
+  "admin": {
+    "tripPilot": {
+      "navTitle": "Reispilot",
+      "shortcut": "Volg gebruik en technische gezondheid van gezamenlijke reizen.",
+      "kicker": "Privéreizen",
+      "title": "Samenwerkingspilot",
+      "subtitle": "Geaggregeerde indicatoren zonder identiteiten of privé-inhoud om waarde en betrouwbaarheid te controleren.",
+      "refresh": "Vernieuwen",
+      "loading": "Indicatoren laden…",
+      "loadError": "De reisindicatoren konden niet worden geladen.",
+      "empty": "Geen indicator beschikbaar.",
+      "metrics": { "ariaLabel": "Indicatoren van de samenwerkingspilot", "totalPlans": "Actieve reizen", "collaborativePlans": "Gezamenlijke reizen", "preferences": "Reizen met voorkeuren", "decisions": "Reizen met beslissingen", "expiredInvitations": "Verlopen uitnodigingen", "subscriptions": "Actieve privévolgingen", "audit": "Gecontroleerde gebeurtenissen" },
+      "health": { "readyTitle": "Activiteitenlogboek bijgewerkt", "readyDescription": "Geen auditschrijving wacht op verwerking.", "pendingTitle": "Inhaalactie loopt", "pendingDescription": "{{count}} schrijfacties wachten nog op verwerking in het logboek." },
+      "activity": { "title": "Productactiviteit", "description": "Verdeling van bewijs in het privélogboek.", "empty": "Het logboek bevat nog geen gebeurtenissen." },
+      "generatedAt": "Momentopname gemaakt op {{date}} UTC."
+    }
+  }
+}

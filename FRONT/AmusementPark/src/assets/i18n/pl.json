@@ -1526,6 +1526,23 @@
       "openTrip": "Otwórz podróż",
       "decisionError": "Nie udało się zapisać odpowiedzi. Spróbuj ponownie na tym samym ekranie."
     },
+    "notifications": {
+      "kicker": "Bądź na bieżąco",
+      "title": "Ważne zmiany",
+      "description": "Włącz prywatne śledzenie, aby zauważać ważne decyzje i zmiany wprowadzone przez innych uczestników.",
+      "enabled": "Śledzenie włączone",
+      "disabled": "Śledzenie wyłączone",
+      "loading": "Wczytywanie śledzenia…",
+      "unreadTitle": "zmiany do odkrycia",
+      "unreadDescription": "Dziennik aktywności pokazuje dokładnie, co się zmieniło.",
+      "optInPrivacy": "Nic nie jest wysyłane ani upubliczniane, dopóki nie włączysz śledzenia.",
+      "enableAction": "Powiadamiaj mnie o zmianach",
+      "disableAction": "Wyłącz śledzenie",
+      "markRead": "Oznacz wszystko jako przeczytane",
+      "openActivity": "Zobacz dziennik",
+      "refresh": "Odśwież",
+      "error": "Nie udało się odświeżyć śledzenia. Spróbuj ponownie za chwilę."
+    },
     "participants": {
       "kicker": "Zespół podróży",
       "title": "Kto planuje tę podróż?",
@@ -4531,6 +4548,39 @@
       }
     },
     "title": "Panel administracyjny",
+    "tripPilot": {
+      "navTitle": "Pilotaż podróży",
+      "shortcut": "Monitoruj użycie i stan techniczny wspólnych podróży.",
+      "kicker": "Prywatne podróże",
+      "title": "Pilotaż współpracy",
+      "subtitle": "Zbiorcze wskaźniki bez tożsamości i prywatnych treści służące do oceny wartości i niezawodności.",
+      "refresh": "Odśwież",
+      "loading": "Wczytywanie wskaźników…",
+      "loadError": "Nie udało się wczytać wskaźników podróży.",
+      "empty": "Brak dostępnych wskaźników.",
+      "metrics": {
+        "ariaLabel": "Wskaźniki pilotażu współpracy",
+        "totalPlans": "Aktywne podróże",
+        "collaborativePlans": "Wspólne podróże",
+        "preferences": "Podróże z preferencjami",
+        "decisions": "Podróże z decyzjami",
+        "expiredInvitations": "Wygasłe zaproszenia",
+        "subscriptions": "Aktywne prywatne śledzenia",
+        "audit": "Zdarzenia audytowe"
+      },
+      "health": {
+        "readyTitle": "Dziennik jest aktualny",
+        "readyDescription": "Żaden zapis audytowy nie czeka na utrwalenie.",
+        "pendingTitle": "Trwa uzupełnianie",
+        "pendingDescription": "{{count}} zapisów nadal czeka na utrwalenie w dzienniku."
+      },
+      "activity": {
+        "title": "Aktywność produktu",
+        "description": "Podział dowodów zachowanych w prywatnym dzienniku.",
+        "empty": "Dziennik nie zawiera jeszcze żadnych zdarzeń."
+      },
+      "generatedAt": "Migawka wygenerowana {{date}} UTC."
+    },
     "users": {
       "total": "Łączna liczba użytkowników: {{count}}",
       "empty": "Nie znaleziono użytkowników.",

@@ -17,11 +17,13 @@ public sealed class TripParticipantService
     private readonly IUserRepository users;
     private readonly TimeProvider timeProvider;
     private readonly TripActivityRecorder? activityRecorder;
+    private readonly ITripNotificationSubscriptionRepository notifications;
 
     public TripParticipantService(
         ITripPlanRepository plans,
         ITripPreferenceRepository preferences,
         IUserRepository users,
+        ITripNotificationSubscriptionRepository notifications,
         TimeProvider? timeProvider = null,
         TripActivityRecorder? activityRecorder = null)
     {
@@ -30,6 +32,8 @@ public sealed class TripParticipantService
         this.users = users ?? throw new ArgumentNullException(nameof(users));
         this.timeProvider = timeProvider ?? TimeProvider.System;
         this.activityRecorder = activityRecorder;
+        this.notifications = notifications
+            ?? throw new ArgumentNullException(nameof(notifications));
     }
 
     public async Task<ApplicationResult<TripParticipantListResult>> ListAsync(
@@ -263,6 +267,10 @@ public sealed class TripParticipantService
         if (write.Outcome == TripPlanWriteOutcome.Success)
         {
             await this.preferences.CompleteDepartureCleanupAsync(
+                parsedTripId,
+                normalizedUserId,
+                CancellationToken.None);
+            await this.notifications.DeleteForMemberAsync(
                 parsedTripId,
                 normalizedUserId,
                 CancellationToken.None);

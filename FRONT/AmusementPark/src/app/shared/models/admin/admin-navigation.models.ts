@@ -241,6 +241,14 @@ export const ADMIN_NAVIGATION_ITEMS: readonly AdminNavigationItem[] = [
     exact: false
   },
   {
+    id: 'trip-pilot',
+    segments: ['trip-pilot'],
+    iconClass: 'pi pi-compass',
+    titleKey: 'admin.tripPilot.navTitle',
+    descriptionKey: 'admin.tripPilot.shortcut',
+    exact: false
+  },
+  {
     id: 'technical-stats',
     segments: ['technical-stats'],
     iconClass: 'pi pi-server',

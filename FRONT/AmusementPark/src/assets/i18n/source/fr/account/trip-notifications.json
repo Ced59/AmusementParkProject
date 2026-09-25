@@ -1,0 +1,21 @@
+{
+  "trips": {
+    "notifications": {
+      "kicker": "Rester au courant",
+      "title": "Les changements qui comptent",
+      "description": "Active ce suivi privé pour repérer les décisions et modifications importantes faites par les autres membres.",
+      "enabled": "Suivi activé",
+      "disabled": "Suivi désactivé",
+      "loading": "Chargement du suivi…",
+      "unreadTitle": "changements à découvrir",
+      "unreadDescription": "Le journal te montre précisément ce qui a évolué.",
+      "optInPrivacy": "Rien n’est envoyé ni rendu public tant que tu n’actives pas ce suivi.",
+      "enableAction": "Me prévenir des changements",
+      "disableAction": "Désactiver le suivi",
+      "markRead": "Tout marquer comme vu",
+      "openActivity": "Voir le journal",
+      "refresh": "Actualiser",
+      "error": "Le suivi n’a pas pu être actualisé. Réessaie dans un instant."
+    }
+  }
+}

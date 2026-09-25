@@ -1,0 +1,21 @@
+{
+  "trips": {
+    "notifications": {
+      "kicker": "Resta aggiornato",
+      "title": "I cambiamenti importanti",
+      "description": "Attiva questo monitoraggio privato per individuare decisioni e modifiche importanti degli altri membri.",
+      "enabled": "Monitoraggio attivo",
+      "disabled": "Monitoraggio disattivato",
+      "loading": "Caricamento del monitoraggio…",
+      "unreadTitle": "cambiamenti da scoprire",
+      "unreadDescription": "Il registro delle attività mostra esattamente cosa è cambiato.",
+      "optInPrivacy": "Nulla viene inviato o reso pubblico finché non attivi questo monitoraggio.",
+      "enableAction": "Avvisami dei cambiamenti",
+      "disableAction": "Disattiva il monitoraggio",
+      "markRead": "Segna tutto come visto",
+      "openActivity": "Vedi il registro",
+      "refresh": "Aggiorna",
+      "error": "Impossibile aggiornare il monitoraggio. Riprova tra poco."
+    }
+  }
+}

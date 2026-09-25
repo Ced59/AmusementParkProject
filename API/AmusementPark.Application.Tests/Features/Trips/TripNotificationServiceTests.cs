@@ -1,0 +1,200 @@
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Trips.Ports;
+using AmusementPark.Application.Features.Trips.Results;
+using AmusementPark.Application.Features.Trips.Services;
+using AmusementPark.Core.Domain.Trips;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.Application.Tests.Features.Trips;
+
+public sealed class TripNotificationServiceTests
+{
+    [Fact]
+    public async Task GetAsync_WhenNoSubscriptionExists_ShouldReturnOptInDisabled()
+    {
+        TripPlan trip = CreateTrip();
+        Mock<ITripPlanRepository> plans = AccessiblePlans(trip);
+        Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
+        Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.GetAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .ReturnsAsync((TripNotificationSubscription?)null);
+        TripNotificationService service = new(plans.Object, audit.Object, subscriptions.Object);
+
+        ApplicationResult<TripNotificationStateResult> result = await service.GetAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            CancellationToken.None);
+
+        TripNotificationStateResult state = Assert.IsType<TripNotificationStateResult>(result.Value);
+        Assert.False(state.Enabled);
+        Assert.Equal(0, state.Version);
+        Assert.Equal(0, state.UnreadCount);
+        audit.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task SetEnabledAsync_ShouldStartAfterExistingActivity()
+    {
+        TripPlan trip = CreateTrip();
+        TripMember owner = Assert.Single(trip.Members);
+        Mock<ITripPlanRepository> plans = AccessiblePlans(trip);
+        Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
+        audit.Setup(reader => reader.GetLatestSequenceAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(8);
+        audit.Setup(reader => reader.ListImportantAfterAsync(
+                trip.Id,
+                owner.Id,
+                8,
+                TripNotificationPolicy.MaximumUnreadCount + 1,
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<TripActivityEvent>());
+        Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.GetAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .ReturnsAsync((TripNotificationSubscription?)null);
+        TripNotificationSubscription? created = null;
+        subscriptions.Setup(repository => repository.CreateAsync(
+                It.IsAny<TripNotificationSubscription>(),
+                CancellationToken.None))
+            .Callback<TripNotificationSubscription, CancellationToken>((value, _) => created = value)
+            .ReturnsAsync(true);
+        TripNotificationService service = new(plans.Object, audit.Object, subscriptions.Object);
+
+        ApplicationResult<TripNotificationStateResult> result = await service.SetEnabledAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            true,
+            0,
+            CancellationToken.None);
+
+        Assert.True(Assert.IsType<TripNotificationStateResult>(result.Value).Enabled);
+        Assert.Equal(8, Assert.IsType<TripNotificationSubscription>(created).SeenThroughSequence);
+        subscriptions.VerifyAll();
+        audit.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetAsync_ShouldCountOnlyRepositoryFilteredImportantChanges()
+    {
+        TripPlan trip = CreateTrip();
+        TripMember owner = Assert.Single(trip.Members);
+        TripNotificationSubscription subscription = TripNotificationSubscription.Restore(
+            "subscription-1",
+            trip.Id,
+            trip.OwnerUserId,
+            true,
+            2,
+            trip.CreatedAtUtc,
+            trip.CreatedAtUtc,
+            4);
+        Mock<ITripPlanRepository> plans = AccessiblePlans(trip);
+        Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
+        audit.Setup(reader => reader.ListImportantAfterAsync(
+                trip.Id,
+                owner.Id,
+                2,
+                TripNotificationPolicy.MaximumUnreadCount + 1,
+                CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                Activity(trip, 3, TripActivityKind.DatesChanged),
+                Activity(trip, 4, TripActivityKind.DayUpdated),
+            });
+        Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.GetAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .ReturnsAsync(subscription);
+        TripNotificationService service = new(plans.Object, audit.Object, subscriptions.Object);
+
+        ApplicationResult<TripNotificationStateResult> result = await service.GetAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            CancellationToken.None);
+
+        Assert.Equal(2, Assert.IsType<TripNotificationStateResult>(result.Value).UnreadCount);
+    }
+
+    [Fact]
+    public async Task SetEnabledAsync_WhenVersionIsStale_ShouldExposeCurrentVersionWithoutWriting()
+    {
+        TripPlan trip = CreateTrip();
+        TripNotificationSubscription subscription = TripNotificationSubscription.Restore(
+            "subscription-1",
+            trip.Id,
+            trip.OwnerUserId,
+            true,
+            2,
+            trip.CreatedAtUtc,
+            trip.CreatedAtUtc,
+            4);
+        Mock<ITripPlanRepository> plans = AccessiblePlans(trip);
+        Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
+        Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.GetAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .ReturnsAsync(subscription);
+        TripNotificationService service = new(plans.Object, audit.Object, subscriptions.Object);
+
+        ApplicationResult<TripNotificationStateResult> result = await service.SetEnabledAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            false,
+            3,
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        ApplicationError error = Assert.Single(result.Errors);
+        Assert.Equal("trip.notification.changed-concurrently", error.Code);
+        Assert.Equal(4, error.CurrentVersion);
+        audit.VerifyNoOtherCalls();
+    }
+
+    private static TripPlan CreateTrip()
+    {
+        return TripPlan.Create(
+            TripPlanId.Parse("trip-1"),
+            "owner-1",
+            "Voyage privé",
+            TripDateProposal.None(),
+            null,
+            new DateTime(2027, 4, 5, 9, 0, 0, DateTimeKind.Utc));
+    }
+
+    private static Mock<ITripPlanRepository> AccessiblePlans(TripPlan trip)
+    {
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        plans.Setup(repository => repository.GetAccessibleAsync(
+                trip.OwnerUserId,
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(trip);
+        return plans;
+    }
+
+    private static TripActivityEvent Activity(
+        TripPlan trip,
+        long sequence,
+        TripActivityKind kind)
+    {
+        return new TripActivityEvent(
+            $"activity-{sequence}",
+            trip.Id,
+            null,
+            null,
+            kind,
+            $"operation-{sequence}",
+            sequence,
+            1,
+            trip.CreatedAtUtc.AddMinutes(sequence));
+    }
+}

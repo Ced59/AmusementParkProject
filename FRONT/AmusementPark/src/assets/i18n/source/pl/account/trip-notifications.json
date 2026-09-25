@@ -1,0 +1,21 @@
+{
+  "trips": {
+    "notifications": {
+      "kicker": "Bądź na bieżąco",
+      "title": "Ważne zmiany",
+      "description": "Włącz prywatne śledzenie, aby zauważać ważne decyzje i zmiany wprowadzone przez innych uczestników.",
+      "enabled": "Śledzenie włączone",
+      "disabled": "Śledzenie wyłączone",
+      "loading": "Wczytywanie śledzenia…",
+      "unreadTitle": "zmiany do odkrycia",
+      "unreadDescription": "Dziennik aktywności pokazuje dokładnie, co się zmieniło.",
+      "optInPrivacy": "Nic nie jest wysyłane ani upubliczniane, dopóki nie włączysz śledzenia.",
+      "enableAction": "Powiadamiaj mnie o zmianach",
+      "disableAction": "Wyłącz śledzenie",
+      "markRead": "Oznacz wszystko jako przeczytane",
+      "openActivity": "Zobacz dziennik",
+      "refresh": "Odśwież",
+      "error": "Nie udało się odświeżyć śledzenia. Spróbuj ponownie za chwilę."
+    }
+  }
+}

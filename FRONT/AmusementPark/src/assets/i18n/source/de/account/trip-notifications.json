@@ -1,0 +1,21 @@
+{
+  "trips": {
+    "notifications": {
+      "kicker": "Auf dem Laufenden bleiben",
+      "title": "Wichtige Änderungen",
+      "description": "Aktiviere diese private Beobachtung, um wichtige Entscheidungen und Änderungen anderer Mitglieder zu erkennen.",
+      "enabled": "Beobachtung aktiv",
+      "disabled": "Beobachtung inaktiv",
+      "loading": "Beobachtung wird geladen…",
+      "unreadTitle": "ungelesene Änderungen",
+      "unreadDescription": "Das Aktivitätsprotokoll zeigt dir genau, was sich geändert hat.",
+      "optInPrivacy": "Nichts wird gesendet oder veröffentlicht, solange du diese Beobachtung nicht aktivierst.",
+      "enableAction": "Über Änderungen informieren",
+      "disableAction": "Beobachtung deaktivieren",
+      "markRead": "Alles als gesehen markieren",
+      "openActivity": "Aktivitätsprotokoll öffnen",
+      "refresh": "Aktualisieren",
+      "error": "Die Beobachtung konnte nicht aktualisiert werden. Versuche es gleich noch einmal."
+    }
+  }
+}

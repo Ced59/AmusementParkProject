@@ -287,6 +287,54 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         return documents.Select(ToDomain).ToArray();
     }
 
+    public async Task<long> GetLatestSequenceAsync(
+        TripPlanId tripPlanId,
+        CancellationToken cancellationToken)
+    {
+        TripActivityEventDocument? latest = await this.activities.Find(
+                Builders<TripActivityEventDocument>.Filter.Eq(
+                    static document => document.TripPlanId,
+                    tripPlanId.Value))
+            .SortByDescending(static document => document.Sequence)
+            .FirstOrDefaultAsync(cancellationToken);
+        return latest?.Sequence ?? 0;
+    }
+
+    public async Task<IReadOnlyCollection<TripActivityEvent>> ListImportantAfterAsync(
+        TripPlanId tripPlanId,
+        TripMemberId currentMemberId,
+        long afterSequence,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        if (afterSequence < 0 || limit is < 1 or > 100)
+        {
+            throw new ArgumentOutOfRangeException(nameof(limit));
+        }
+
+        List<TripActivityEventDocument> documents = await this.activities.Find(
+                BuildImportantAfterFilter(tripPlanId, currentMemberId, afterSequence))
+            .SortBy(static document => document.Sequence)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        return documents.Select(ToDomain).ToArray();
+    }
+
+    internal static FilterDefinition<TripActivityEventDocument> BuildImportantAfterFilter(
+        TripPlanId tripPlanId,
+        TripMemberId currentMemberId,
+        long afterSequence)
+    {
+        FilterDefinitionBuilder<TripActivityEventDocument> filters =
+            Builders<TripActivityEventDocument>.Filter;
+        return filters.Eq(static document => document.TripPlanId, tripPlanId.Value)
+            & filters.Gt(static document => document.Sequence, afterSequence)
+            & filters.Ne(static document => document.ActorMemberId, currentMemberId.Value)
+            & filters.In(
+                static document => document.Kind,
+                TripNotificationPolicy.ImportantActivityKinds);
+    }
+
     public static IReadOnlyCollection<CreateIndexModel<TripActivityEventDocument>> BuildIndexes()
     {
         IndexKeysDefinitionBuilder<TripActivityEventDocument> keys =

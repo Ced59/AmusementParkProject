@@ -899,7 +899,36 @@ Pas de chat tant que les testeurs ne démontrent pas qu’un commentaire structu
 | `TRIP-10` | Audit/concurrence | Modifications reconstituables — implémenté le 18 septembre 2026 |
 | `TRIP-11` | Export | Plan portable — implémenté le 25 septembre 2026 |
 | `TRIP-12` | Transition Passeport | Confirmation individuelle — implémenté le 25 septembre 2026 |
-| `TRIP-13` | Pilote collaboratif | Gate franchie |
+| `TRIP-13` | Pilote collaboratif | Gate technique et métier franchie — implémenté le 25 septembre 2026 |
+
+### Implémentation `TRIP-13` — 25 septembre 2026
+
+Chaque membre dispose désormais d’un suivi privé du voyage, désactivé par
+défaut. Une activation explicite démarre au présent, sans transformer
+l’historique en fausses nouveautés. Le compteur borné retient seulement les
+changements collaboratifs importants réalisés par d’autres membres et renvoie
+vers le journal détaillé. Le membre peut actualiser, tout marquer comme vu ou
+désactiver le suivi. Aucun temps réel permanent, push, email ou détournement du
+domaine public `WATCH` n’est introduit.
+
+L’administration dispose d’un tableau de bord lazy-loaded et sans donnée
+personnelle : voyages actifs et collaboratifs, plans avec préférences ou
+décisions, invitations expirées encore retenues, suivis privés actifs, volume
+et répartition de l’audit, ainsi que le nombre de marqueurs en attente de
+matérialisation. Les requêtes sont agrégées et
+n’introduisent aucun N+1.
+
+Le curseur et la version optimiste sont persistés dans une collection MongoDB
+dédiée, avec unicité par voyage et membre. Le départ d’un participant supprime
+son abonnement ; la suppression du voyage purge tous ses abonnements. L’API est
+privée, `no-store`, les lectures sont bornées, et le panneau Angular est traduit
+en huit langues et contenu dès 320 pixels.
+
+La gate valide les capacités techniques et métier sans attendre une cohorte ou
+des visites réelles, conformément à la décision produit. Elle ne prétend pas
+mesurer une adoption inexistante. Le schéma MongoDB, les diagrammes, les
+séquences, les règles de sécurité/performance et les preuves sont détaillés dans
+[`product-growth-trip-13-collaborative-pilot-2026-09-25.md`](../../architecture/product-growth-trip-13-collaborative-pilot-2026-09-25.md).
 
 ## 23. Gate finale `TRIP-G`
 
