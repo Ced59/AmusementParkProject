@@ -250,7 +250,7 @@ jobs:
           npm run architecture:one-class-per-file
 
       - name: Test crawler SSR smoke checks
-        run: node --test tools/seo-ssr-smoke.test.mjs tools/server-graceful-shutdown.test.mjs
+        run: node --test tools/seo-ssr-smoke.test.mjs tools/server-graceful-shutdown.test.mjs tools/disk-page-cache-invalidation-reader.test.mjs
 
       - name: Run frontend tests
         run: npm run test:ci
