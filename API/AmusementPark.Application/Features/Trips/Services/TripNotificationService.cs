@@ -114,9 +114,8 @@ public sealed class TripNotificationService
 
             if (!await this.IsStillAccessibleAsync(access, CancellationToken.None))
             {
-                await this.subscriptions.DeleteForMemberAsync(
-                    access.Trip.Id,
-                    access.UserId,
+                _ = await this.subscriptions.DeleteIfCurrentAsync(
+                    current,
                     CancellationToken.None);
                 return NotFound();
             }

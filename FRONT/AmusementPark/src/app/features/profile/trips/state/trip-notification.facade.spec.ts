@@ -1,5 +1,5 @@
 import { DestroyRef } from '@angular/core';
-import { Subject, of } from 'rxjs';
+import { Subject, of, throwError } from 'rxjs';
 
 import { TripNotificationState } from '@app/models/trips/trip-notification.models';
 import { TripNotificationDataPort } from './trip-notification-data.port';
@@ -66,6 +66,24 @@ describe('TripNotificationFacade', () => {
     staleRefresh.complete();
 
     expect(facade.state()).toEqual(enabled);
+    expect(facade.loading()).toBe(false);
+  });
+
+  it('keeps a mutation error visible after recovering the server state', () => {
+    const disabled: TripNotificationState = state(false, 2, 0);
+    const data: TripNotificationDataPort = {
+      get: vi.fn().mockReturnValue(of(disabled)),
+      setEnabled: vi.fn().mockReturnValue(throwError(() => new Error('conflict'))),
+      markRead: vi.fn()
+    };
+    const facade: TripNotificationFacade = createFacade(data);
+
+    facade.load('trip-1');
+    facade.toggle();
+
+    expect(data.get).toHaveBeenCalledTimes(2);
+    expect(facade.state()).toEqual(disabled);
+    expect(facade.error()).toBe(true);
     expect(facade.loading()).toBe(false);
   });
 });

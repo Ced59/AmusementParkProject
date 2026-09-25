@@ -110,15 +110,17 @@ public sealed class TripNotificationServiceTests
                 trip.OwnerUserId,
                 CancellationToken.None))
             .ReturnsAsync((TripNotificationSubscription?)null);
+        TripNotificationSubscription? created = null;
         subscriptions.Setup(repository => repository.CreateAsync(
                 It.IsAny<TripNotificationSubscription>(),
                 CancellationToken.None))
+            .Callback<TripNotificationSubscription, CancellationToken>(
+                (value, _) => created = value)
             .ReturnsAsync(true);
-        subscriptions.Setup(repository => repository.DeleteForMemberAsync(
-                trip.Id,
-                trip.OwnerUserId,
+        subscriptions.Setup(repository => repository.DeleteIfCurrentAsync(
+                It.Is<TripNotificationSubscription>(value => value == created),
                 CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(true);
         TripNotificationService service = new(plans.Object, audit.Object, subscriptions.Object);
 
         ApplicationResult<TripNotificationStateResult> result = await service.SetEnabledAsync(
@@ -130,6 +132,7 @@ public sealed class TripNotificationServiceTests
 
         Assert.False(result.IsSuccess);
         Assert.Equal("trip.plan.not-found", Assert.Single(result.Errors).Code);
+        Assert.NotNull(created);
         subscriptions.VerifyAll();
         plans.VerifyAll();
         audit.VerifyAll();
@@ -160,16 +163,20 @@ public sealed class TripNotificationServiceTests
                 trip.OwnerUserId,
                 cancellation.Token))
             .ReturnsAsync((TripNotificationSubscription?)null);
+        TripNotificationSubscription? created = null;
         subscriptions.Setup(repository => repository.CreateAsync(
                 It.IsAny<TripNotificationSubscription>(),
                 cancellation.Token))
-            .Callback(cancellation.Cancel)
+            .Callback<TripNotificationSubscription, CancellationToken>((value, _) =>
+            {
+                created = value;
+                cancellation.Cancel();
+            })
             .ReturnsAsync(true);
-        subscriptions.Setup(repository => repository.DeleteForMemberAsync(
-                trip.Id,
-                trip.OwnerUserId,
+        subscriptions.Setup(repository => repository.DeleteIfCurrentAsync(
+                It.Is<TripNotificationSubscription>(value => value == created),
                 CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(true);
         TripNotificationService service = new(plans.Object, audit.Object, subscriptions.Object);
 
         ApplicationResult<TripNotificationStateResult> result = await service.SetEnabledAsync(
@@ -181,6 +188,7 @@ public sealed class TripNotificationServiceTests
 
         Assert.False(result.IsSuccess);
         Assert.Equal("trip.plan.not-found", Assert.Single(result.Errors).Code);
+        Assert.NotNull(created);
         subscriptions.VerifyAll();
         plans.VerifyAll();
         audit.VerifyAll();
@@ -212,9 +220,8 @@ public sealed class TripNotificationServiceTests
                 CancellationToken.None))
             .Callback<TripNotificationSubscription, CancellationToken>((value, _) => created = value)
             .ReturnsAsync(true);
-        subscriptions.Setup(repository => repository.DeleteForMemberAsync(
-                trip.Id,
-                trip.OwnerUserId,
+        subscriptions.Setup(repository => repository.DeleteIfCurrentAsync(
+                It.Is<TripNotificationSubscription>(value => value == created),
                 CancellationToken.None))
             .ThrowsAsync(new IOException("Transient compensation failure."));
         TripNotificationService service = new(plans.Object, audit.Object, subscriptions.Object);

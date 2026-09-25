@@ -369,8 +369,8 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
   la précision du tick, comptages scalaires et agrégations, résolution du
   nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;
-- 21 tests Angular ciblés : façades, effet sans polling, réponse tardive
-  neutralisée, reprise après erreur, libellés agrégés, navigation admin et
+- 22 tests Angular ciblés : façades, effet sans polling, réponse tardive
+  neutralisée, erreur de mutation conservée après reprise, libellés agrégés, navigation admin et
   contrats responsive ;
 - build WebAPI Release réussi ;
 - build Angular production/SSR réussi ;

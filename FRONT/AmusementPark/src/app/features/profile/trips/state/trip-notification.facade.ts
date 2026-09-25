@@ -26,6 +26,10 @@ export class TripNotificationFacade {
   }
 
   load(tripPlanId: string): void {
+    this.loadState(tripPlanId, true);
+  }
+
+  private loadState(tripPlanId: string, clearError: boolean): void {
     const normalizedId: string = tripPlanId.trim();
     if (!normalizedId || this.loadingSignal()) {
       return;
@@ -34,7 +38,9 @@ export class TripNotificationFacade {
     const generation: number = ++this.requestGeneration;
     this.tripPlanId = normalizedId;
     this.loadingSignal.set(true);
-    this.errorSignal.set(false);
+    if (clearError) {
+      this.errorSignal.set(false);
+    }
     this.data.get(normalizedId).pipe(
       takeUntilDestroyed(this.destroyRef),
       finalize((): void => {
@@ -101,7 +107,7 @@ export class TripNotificationFacade {
       error: (): void => {
         if (generation === this.requestGeneration) {
           this.errorSignal.set(true);
-          this.load(this.tripPlanId);
+          this.loadState(this.tripPlanId, false);
         }
       }
     });
