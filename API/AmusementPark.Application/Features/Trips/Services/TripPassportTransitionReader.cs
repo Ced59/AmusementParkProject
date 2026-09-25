@@ -98,7 +98,10 @@ public sealed class TripPassportTransitionReader
                 static group => group.OrderByDescending(visit => visit.UpdatedAtUtc).First());
 
         string[] pastParkIds = days
-            .Where(day => day.LocalDate < destinationToday && day.IsParkAvailable)
+            .Where(day => TripPassportTransitionPolicy.CanConfirmDay(
+                day.LocalDate,
+                destinationToday,
+                day.IsParkAvailable))
             .Select(static day => day.ParkId)
             .Distinct(StringComparer.Ordinal)
             .ToArray();
@@ -137,8 +140,10 @@ public sealed class TripPassportTransitionReader
         TripPassportTransitionDayResult[] results = days.Select(day =>
         {
             existingByDay.TryGetValue((day.ParkId, day.LocalDate), out Visit? existing);
-            bool canConfirm = day.LocalDate < destinationToday
-                && day.IsParkAvailable
+            bool canConfirm = TripPassportTransitionPolicy.CanConfirmDay(
+                    day.LocalDate,
+                    destinationToday,
+                    day.IsParkAvailable)
                 && existing is null;
             IReadOnlyCollection<TripPassportTransitionItemResult> dayItems = canConfirm
                 ? BuildItems(

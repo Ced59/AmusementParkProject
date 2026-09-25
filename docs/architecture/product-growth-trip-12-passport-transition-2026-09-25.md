@@ -45,7 +45,14 @@ l’interface propose de l’ouvrir au lieu d’en créer une seconde.
 
 Le domaine Passeport reste propriétaire de la signification d’un passage. La
 source `TripTransition` complète `RideLogSource` pour conserver la provenance
-de la déclaration sans introduire une règle Voyage dans l’entité `Visit`.
+de la déclaration sans introduire une règle Voyage dans l’entité `Visit`. Sa
+valeur HTTP dédiée reste distincte de `SystemMigration`, afin qu’aucun passage
+issu d’un voyage ne puisse être présenté comme une migration technique.
+
+`TripPassportTransitionPolicy` centralise l’éligibilité d’une journée : le parc
+doit être disponible et la date locale doit être strictement passée dans le
+fuseau de destination. La consultation et la confirmation réutilisent ainsi la
+même règle métier du Core.
 
 ### Application
 
@@ -100,6 +107,9 @@ classDiagram
     class TripPassportTransitionConfirmer {
       +ConfirmAsync(userId, tripPlanId, localDate, parkItemIds)
     }
+    class TripPassportTransitionPolicy {
+      +CanConfirmDay(localDate, destinationToday, isParkAvailable) bool
+    }
     class TripProgramResultFactory {
       +BuildSnapshotAsync(tripPlanId)
     }
@@ -120,8 +130,10 @@ classDiagram
     GetTripPassportTransitionQueryHandler --> TripPassportTransitionReader
     ConfirmTripPassportTransitionCommandHandler --> TripPassportTransitionConfirmer
     TripPassportTransitionReader --> TripProgramResultFactory
+    TripPassportTransitionReader --> TripPassportTransitionPolicy
     TripPassportTransitionReader --> IUserVisitRepository
     TripPassportTransitionConfirmer --> TripProgramResultFactory
+    TripPassportTransitionConfirmer --> TripPassportTransitionPolicy
     TripPassportTransitionConfirmer --> IUserVisitRepository
     TripPassportTransitionConfirmer --> CreateVisitCommandHandler
     TripPassportTransitionConfirmer --> AddRideOccurrencesBatchCommandHandler

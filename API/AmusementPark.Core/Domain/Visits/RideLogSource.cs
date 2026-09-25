@@ -7,5 +7,5 @@ public enum RideLogSource
 {
     Manual = 1,
     Import = 2,
-    TripTransition = 3,
+    TripTransition = 4,
 }

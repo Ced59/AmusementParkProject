@@ -89,9 +89,11 @@ public sealed class TripPassportTransitionConfirmer
         TripDayPlanResult? day = programResult.Value.Program.Days.SingleOrDefault(
             candidate => candidate.LocalDate == localDate);
         if (day is null
-            || !day.IsParkAvailable
             || !TryResolveDestinationToday(trip, out DateOnly destinationToday)
-            || localDate >= destinationToday)
+            || !TripPassportTransitionPolicy.CanConfirmDay(
+                localDate,
+                destinationToday,
+                day.IsParkAvailable))
         {
             return Failure(TripPlanApplicationErrors.PassportTransitionNotReady());
         }
