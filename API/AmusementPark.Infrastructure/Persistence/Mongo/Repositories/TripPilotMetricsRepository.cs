@@ -150,8 +150,19 @@ public sealed class TripPilotMetricsRepository : ITripPilotMetricsRepository
         IMongoCollection<TDocument> collection,
         CancellationToken cancellationToken)
     {
-        BsonDocument[] pipeline =
+        BsonDocument? result = await collection.Aggregate<BsonDocument>(
+                BuildPendingAuditMarkerCountPipeline())
+            .FirstOrDefaultAsync(cancellationToken);
+        return result is null ? 0 : result["count"].ToInt64();
+    }
+
+    internal static BsonDocument[] BuildPendingAuditMarkerCountPipeline()
+    {
+        return new BsonDocument[]
         {
+            new("$match", new BsonDocument(
+                "pendingAuditEvents.operationKey",
+                new BsonDocument("$exists", true))),
             new("$project", new BsonDocument(
                 "count",
                 new BsonDocument("$size", new BsonDocument("$ifNull", new BsonArray
@@ -165,9 +176,6 @@ public sealed class TripPilotMetricsRepository : ITripPilotMetricsRepository
                 { "count", new BsonDocument("$sum", "$count") },
             }),
         };
-        BsonDocument? result = await collection.Aggregate<BsonDocument>(pipeline)
-            .FirstOrDefaultAsync(cancellationToken);
-        return result is null ? 0 : result["count"].ToInt64();
     }
 
     private static async Task<IReadOnlyDictionary<string, long>> CountActivitiesAsync(

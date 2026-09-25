@@ -91,7 +91,9 @@ Le tableau de bord utilise des comptages MongoDB, deux lectures distinctes de
 voyages effectuées par des agrégations `group/count` côté serveur et des
 agrégations par type d’activité. Il ne rapatrie ni les identifiants distincts,
 ni aucun document métier complet, et ne déclenche aucune requête par voyage ou
-par membre.
+par membre. Le comptage des marqueurs commence par un `$match` sur
+`pendingAuditEvents.operationKey`, couvert par l’index sparse de chaque
+collection ; les documents sans marqueur ne sont donc jamais projetés.
 
 La lecture est bornée à 100 événements (`99 + preuve qu’il en reste`) et utilise
 les index du journal sur `tripPlanId`, `sequence` et `createdAt`. Lors de
@@ -387,7 +389,7 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
   agrégées sans contenu privé ;
 - 27 tests Application du périmètre : notifications, départ, reprise de purge
   et pilotage ;
-- 25 tests Infrastructure du périmètre : index, pagination de purge, clôture
+- 26 tests Infrastructure du périmètre : index, pagination de purge, clôture
   d’admission pendant une purge, filtre privé, photographie ciblée des opérations
   en attente, comptages scalaires et agrégations, résolution du
   nettoyage en tâche de fond ;

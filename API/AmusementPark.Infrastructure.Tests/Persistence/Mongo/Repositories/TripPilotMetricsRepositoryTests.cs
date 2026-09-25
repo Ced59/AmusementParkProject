@@ -10,6 +10,17 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class TripPilotMetricsRepositoryTests
 {
     [Fact]
+    public void PendingAuditMarkerCountPipeline_ShouldUseTheSparseMarkerIndexBeforeProjection()
+    {
+        BsonDocument[] pipeline = TripPilotMetricsRepository.BuildPendingAuditMarkerCountPipeline();
+
+        Assert.True(
+            pipeline[0]["$match"]["pendingAuditEvents.operationKey"]["$exists"].AsBoolean);
+        Assert.True(pipeline[1].Contains("$project"));
+        Assert.True(pipeline[2].Contains("$group"));
+    }
+
+    [Fact]
     public void DistinctTripCountPipeline_ShouldReturnOnlyAServerSideScalar()
     {
         BsonDocument filter = new("documentState", "Committed");
