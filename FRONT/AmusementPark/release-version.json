@@ -1,6 +1,20 @@
 {
-  "version": "5.3.79",
+  "version": "5.3.80",
   "history": [
+    {
+      "version": "5.3.80",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "Les futures vues historiques respecteront désormais la précision réellement connue des dates.",
+        "en": "Future history views will now preserve the date precision that is genuinely known.",
+        "de": "Künftige historische Ansichten bewahren nun die tatsächlich bekannte Datumsgenauigkeit.",
+        "nl": "Toekomstige historische weergaven behouden voortaan de werkelijk bekende datumnauwkeurigheid.",
+        "it": "Le future viste storiche rispetteranno ora la precisione delle date realmente conosciuta.",
+        "es": "Las futuras vistas históricas respetarán ahora la precisión realmente conocida de las fechas.",
+        "pl": "Przyszłe widoki historyczne zachowają odtąd rzeczywiście znaną dokładność dat.",
+        "pt": "As futuras vistas históricas passarão a respeitar a precisão das datas realmente conhecida."
+      }
+    },
     {
       "version": "5.3.79",
       "releasedAt": "2026-09-25",
