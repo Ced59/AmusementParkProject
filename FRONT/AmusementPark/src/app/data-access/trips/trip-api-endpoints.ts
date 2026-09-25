@@ -44,6 +44,10 @@ export const TRIP_API_ENDPOINTS = {
     `me/trips/${encodeSegment(tripPlanId)}/coherence`,
   activity: (tripPlanId: string): string =>
     `me/trips/${encodeSegment(tripPlanId)}/activity`,
+  notifications: (tripPlanId: string): string =>
+    `me/trips/${encodeSegment(tripPlanId)}/notifications`,
+  notificationsRead: (tripPlanId: string): string =>
+    `me/trips/${encodeSegment(tripPlanId)}/notifications/read`,
   export: (tripPlanId: string): string =>
     `me/trips/${encodeSegment(tripPlanId)}/export`,
   passportTransition: (tripPlanId: string): string =>

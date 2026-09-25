@@ -1526,6 +1526,23 @@
       "openTrip": "Open the trip",
       "decisionError": "Your response could not be saved. Try again from this same screen."
     },
+    "notifications": {
+      "kicker": "Stay in the loop",
+      "title": "Changes that matter",
+      "description": "Turn on this private watch to spot important decisions and updates made by other members.",
+      "enabled": "Watch enabled",
+      "disabled": "Watch disabled",
+      "loading": "Loading your watch…",
+      "unreadTitle": "changes to discover",
+      "unreadDescription": "The activity log shows exactly what changed.",
+      "optInPrivacy": "Nothing is sent or made public until you turn this watch on.",
+      "enableAction": "Notify me about changes",
+      "disableAction": "Turn off watch",
+      "markRead": "Mark all as seen",
+      "openActivity": "View activity log",
+      "refresh": "Refresh",
+      "error": "The watch could not be refreshed. Try again in a moment."
+    },
     "participants": {
       "kicker": "Trip team",
       "title": "Who is planning this trip?",
@@ -4531,6 +4548,60 @@
       }
     },
     "title": "Administration panel",
+    "tripPilot": {
+      "navTitle": "Trip pilot",
+      "shortcut": "Track usage and technical health of collaborative trips.",
+      "kicker": "Private trips",
+      "title": "Collaborative pilot",
+      "subtitle": "Aggregated indicators without identities or private content to verify value and reliability.",
+      "refresh": "Refresh",
+      "loading": "Loading indicators…",
+      "loadError": "Trip indicators could not be loaded.",
+      "empty": "No indicator is available.",
+      "metrics": {
+        "ariaLabel": "Collaborative pilot indicators",
+        "totalPlans": "Active trips",
+        "collaborativePlans": "Collaborative trips",
+        "preferences": "Trips with preferences",
+        "decisions": "Trips with decisions",
+        "expiredInvitations": "Expired invitations",
+        "subscriptions": "Active private watches",
+        "audit": "Audited events"
+      },
+      "health": {
+        "readyTitle": "Activity log up to date",
+        "readyDescription": "No audit write is waiting to be materialised.",
+        "pendingTitle": "Catch-up in progress",
+        "pendingDescription": "{{count}} writes are still waiting to be materialised in the activity log."
+      },
+      "activity": {
+        "title": "Product activity",
+        "description": "Breakdown of evidence retained in the private activity log.",
+        "empty": "The activity log does not contain any event yet.",
+        "labels": {
+          "tripCreated": "Trip created",
+          "tripRenamed": "Trip renamed",
+          "datesChanged": "Dates changed",
+          "candidateAdded": "Park added",
+          "candidateUpdated": "Park updated",
+          "candidateMoved": "Park reordered",
+          "candidateRemoved": "Park removed",
+          "dayUpdated": "Day updated",
+          "dayRemoved": "Day removed",
+          "invitationCreated": "Invitation created",
+          "invitationRevoked": "Invitation revoked",
+          "invitationAccepted": "Invitation accepted",
+          "invitationDeclined": "Invitation declined",
+          "participantRoleChanged": "Participant role changed",
+          "ownershipTransferred": "Ownership transferred",
+          "participantLeft": "Participant left",
+          "preferencesUpdated": "Preferences updated",
+          "collectiveDecisionUpdated": "Collective decision updated",
+          "planExported": "Plan exported"
+        }
+      },
+      "generatedAt": "Snapshot generated on {{date}} UTC."
+    },
     "users": {
       "total": "Total number of users: {{count}}",
       "empty": "No users found.",

@@ -1,0 +1,53 @@
+<app-ui-card styleClass="admin-list-card trip-pilot">
+  <ng-template appUiTemplate="header">
+    <div class="admin-list-header trip-pilot__header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.tripPilot.kicker' | translate }}</span>
+        <h2>{{ 'admin.tripPilot.title' | translate }}</h2>
+        <p>{{ 'admin.tripPilot.subtitle' | translate }}</p>
+      </div>
+      <button appUiButton type="button" icon="pi pi-refresh"
+        [label]="'admin.tripPilot.refresh' | translate" (click)="facade.load()"></button>
+    </div>
+  </ng-template>
+
+  <app-page-state [state]="state()" loadingMessageKey="admin.tripPilot.loading"
+    errorMessageKey="admin.tripPilot.loadError" emptyMessageKey="admin.tripPilot.empty">
+    @if (metrics(); as current) {
+      <section class="trip-pilot__kpis" [attr.aria-label]="'admin.tripPilot.metrics.ariaLabel' | translate">
+        <article><span>{{ 'admin.tripPilot.metrics.totalPlans' | translate }}</span><strong>{{ current.totalPlans | number }}</strong></article>
+        <article><span>{{ 'admin.tripPilot.metrics.collaborativePlans' | translate }}</span><strong>{{ current.collaborativePlans | number }}</strong></article>
+        <article><span>{{ 'admin.tripPilot.metrics.preferences' | translate }}</span><strong>{{ current.plansWithPreferences | number }}</strong></article>
+        <article><span>{{ 'admin.tripPilot.metrics.decisions' | translate }}</span><strong>{{ current.plansWithDecisions | number }}</strong></article>
+        <article><span>{{ 'admin.tripPilot.metrics.expiredInvitations' | translate }}</span><strong>{{ current.expiredInvitations | number }}</strong></article>
+        <article><span>{{ 'admin.tripPilot.metrics.subscriptions' | translate }}</span><strong>{{ current.enabledNotificationSubscriptions | number }}</strong></article>
+        <article><span>{{ 'admin.tripPilot.metrics.audit' | translate }}</span><strong>{{ current.auditEvents | number }}</strong></article>
+      </section>
+
+      <aside class="trip-pilot__health" [class.trip-pilot__health--warning]="current.pendingAuditMarkers > 0" role="status">
+        <i [class]="current.pendingAuditMarkers > 0 ? 'pi pi-clock' : 'pi pi-check-circle'" aria-hidden="true"></i>
+        <div>
+          <h3>{{ (current.pendingAuditMarkers > 0 ? 'admin.tripPilot.health.pendingTitle' : 'admin.tripPilot.health.readyTitle') | translate }}</h3>
+          <p>{{ (current.pendingAuditMarkers > 0 ? 'admin.tripPilot.health.pendingDescription' : 'admin.tripPilot.health.readyDescription') | translate:{ count: current.pendingAuditMarkers } }}</p>
+        </div>
+      </aside>
+
+      <section class="trip-pilot__activity" aria-labelledby="trip-pilot-activity-title">
+        <div>
+          <h3 id="trip-pilot-activity-title">{{ 'admin.tripPilot.activity.title' | translate }}</h3>
+          <p>{{ 'admin.tripPilot.activity.description' | translate }}</p>
+        </div>
+        @for (item of activity(); track item.key) {
+          <article>
+            <div><span>{{ ('admin.tripPilot.activity.labels.' + item.key[0].toLowerCase() + item.key.slice(1)) | translate }}</span><strong>{{ item.count | number }}</strong></div>
+            <span class="trip-pilot__bar"><i [style.--bar-width]="item.widthPercent + '%'" aria-hidden="true"></i></span>
+          </article>
+        } @empty {
+          <p>{{ 'admin.tripPilot.activity.empty' | translate }}</p>
+        }
+      </section>
+
+      <p class="trip-pilot__generated">{{ 'admin.tripPilot.generatedAt' | translate:{ date: (current.generatedAtUtc | date:'short':'UTC') } }}</p>
+    }
+  </app-page-state>
+</app-ui-card>

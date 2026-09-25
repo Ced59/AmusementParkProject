@@ -210,6 +210,7 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         services.AddSingleton(Mock.Of<ITripChildMutationLeaseRepository>());
         services.AddSingleton(Mock.Of<ITripTimeZoneValidator>());
         services.AddSingleton(Mock.Of<ITripAuditWriter>());
+        services.AddSingleton(Mock.Of<ITripNotificationSubscriptionRepository>());
         services.AddSingleton(Mock.Of<IParkRepository>());
         services.AddSingleton(Mock.Of<IParkItemRepository>());
         services.AddSingleton(Mock.Of<IImageRepository>());

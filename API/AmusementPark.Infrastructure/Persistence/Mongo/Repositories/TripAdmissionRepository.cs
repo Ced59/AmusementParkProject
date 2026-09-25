@@ -92,6 +92,7 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
                 TripPlanStatus.OpenForVotes,
                 TripPlanStatus.Decided,
             })
+            & BuildNoPendingDepartureCleanupFilter(normalizedUserId)
             & new BsonDocumentFilterDefinition<TripPlanDocument>(eligibilityExpression);
         BsonValue nextGeneration = new BsonDocument("$add", new BsonArray
         {
@@ -166,6 +167,15 @@ public sealed class TripAdmissionRepository : ITripAdmissionRepository
                 : current.Members.Count >= TripPlan.MaximumMembers
                     ? TripAdmissionWriteOutcome.MemberLimitReached
                     : TripAdmissionWriteOutcome.Conflict);
+    }
+
+    internal static FilterDefinition<TripPlanDocument> BuildNoPendingDepartureCleanupFilter(
+        string candidateUserId)
+    {
+        string normalizedUserId = NormalizeRequired(candidateUserId, nameof(candidateUserId));
+        return new BsonDocumentFilterDefinition<TripPlanDocument>(new BsonDocument(
+            "departedPreferenceCleanupUserIds",
+            new BsonDocument("$ne", normalizedUserId)));
     }
 
     public async Task<TripAdmissionWriteOutcome> ReserveInvitationAsync(

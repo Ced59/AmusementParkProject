@@ -1,0 +1,21 @@
+{
+  "trips": {
+    "notifications": {
+      "kicker": "Mantém-te a par",
+      "title": "As alterações importantes",
+      "description": "Ativa este acompanhamento privado para detetar decisões e alterações importantes dos outros membros.",
+      "enabled": "Acompanhamento ativo",
+      "disabled": "Acompanhamento desativado",
+      "loading": "A carregar o acompanhamento…",
+      "unreadTitle": "alterações por descobrir",
+      "unreadDescription": "O registo de atividade mostra exatamente o que mudou.",
+      "optInPrivacy": "Nada é enviado ou tornado público até ativares este acompanhamento.",
+      "enableAction": "Avisar-me das alterações",
+      "disableAction": "Desativar o acompanhamento",
+      "markRead": "Marcar tudo como visto",
+      "openActivity": "Ver o registo",
+      "refresh": "Atualizar",
+      "error": "Não foi possível atualizar o acompanhamento. Tenta novamente dentro de instantes."
+    }
+  }
+}

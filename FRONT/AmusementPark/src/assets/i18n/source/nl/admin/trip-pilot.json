@@ -1,0 +1,19 @@
+{
+  "admin": {
+    "tripPilot": {
+      "navTitle": "Reispilot",
+      "shortcut": "Volg gebruik en technische gezondheid van gezamenlijke reizen.",
+      "kicker": "Privéreizen",
+      "title": "Samenwerkingspilot",
+      "subtitle": "Geaggregeerde indicatoren zonder identiteiten of privé-inhoud om waarde en betrouwbaarheid te controleren.",
+      "refresh": "Vernieuwen",
+      "loading": "Indicatoren laden…",
+      "loadError": "De reisindicatoren konden niet worden geladen.",
+      "empty": "Geen indicator beschikbaar.",
+      "metrics": { "ariaLabel": "Indicatoren van de samenwerkingspilot", "totalPlans": "Actieve reizen", "collaborativePlans": "Gezamenlijke reizen", "preferences": "Reizen met voorkeuren", "decisions": "Reizen met beslissingen", "expiredInvitations": "Verlopen uitnodigingen", "subscriptions": "Actieve privévolgingen", "audit": "Gecontroleerde gebeurtenissen" },
+      "health": { "readyTitle": "Activiteitenlogboek bijgewerkt", "readyDescription": "Geen auditschrijving wacht op verwerking.", "pendingTitle": "Inhaalactie loopt", "pendingDescription": "{{count}} schrijfacties wachten nog op verwerking in het logboek." },
+      "activity": { "title": "Productactiviteit", "description": "Verdeling van bewijs in het privélogboek.", "empty": "Het logboek bevat nog geen gebeurtenissen.", "labels": { "tripCreated": "Reis aangemaakt", "tripRenamed": "Reis hernoemd", "datesChanged": "Datums gewijzigd", "candidateAdded": "Park toegevoegd", "candidateUpdated": "Park bijgewerkt", "candidateMoved": "Park opnieuw gerangschikt", "candidateRemoved": "Park verwijderd", "dayUpdated": "Dag bijgewerkt", "dayRemoved": "Dag verwijderd", "invitationCreated": "Uitnodiging aangemaakt", "invitationRevoked": "Uitnodiging ingetrokken", "invitationAccepted": "Uitnodiging geaccepteerd", "invitationDeclined": "Uitnodiging geweigerd", "participantRoleChanged": "Deelnemersrol gewijzigd", "ownershipTransferred": "Eigenaarschap overgedragen", "participantLeft": "Deelnemer vertrokken", "preferencesUpdated": "Voorkeuren bijgewerkt", "collectiveDecisionUpdated": "Groepsbesluit bijgewerkt", "planExported": "Plan geëxporteerd" } },
+      "generatedAt": "Momentopname gemaakt op {{date}} UTC."
+    }
+  }
+}

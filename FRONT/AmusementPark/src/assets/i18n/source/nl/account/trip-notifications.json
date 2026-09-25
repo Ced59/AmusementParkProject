@@ -1,0 +1,21 @@
+{
+  "trips": {
+    "notifications": {
+      "kicker": "Blijf op de hoogte",
+      "title": "Belangrijke wijzigingen",
+      "description": "Schakel deze privévolging in om belangrijke beslissingen en wijzigingen van andere leden te zien.",
+      "enabled": "Volging ingeschakeld",
+      "disabled": "Volging uitgeschakeld",
+      "loading": "Volging laden…",
+      "unreadTitle": "wijzigingen om te bekijken",
+      "unreadDescription": "Het activiteitenlogboek toont precies wat er is veranderd.",
+      "optInPrivacy": "Er wordt niets verzonden of openbaar gemaakt totdat je deze volging inschakelt.",
+      "enableAction": "Meld wijzigingen aan mij",
+      "disableAction": "Volging uitschakelen",
+      "markRead": "Alles als gezien markeren",
+      "openActivity": "Activiteitenlogboek bekijken",
+      "refresh": "Vernieuwen",
+      "error": "De volging kon niet worden vernieuwd. Probeer het straks opnieuw."
+    }
+  }
+}

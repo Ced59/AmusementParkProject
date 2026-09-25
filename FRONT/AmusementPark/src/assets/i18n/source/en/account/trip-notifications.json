@@ -1,0 +1,21 @@
+{
+  "trips": {
+    "notifications": {
+      "kicker": "Stay in the loop",
+      "title": "Changes that matter",
+      "description": "Turn on this private watch to spot important decisions and updates made by other members.",
+      "enabled": "Watch enabled",
+      "disabled": "Watch disabled",
+      "loading": "Loading your watch…",
+      "unreadTitle": "changes to discover",
+      "unreadDescription": "The activity log shows exactly what changed.",
+      "optInPrivacy": "Nothing is sent or made public until you turn this watch on.",
+      "enableAction": "Notify me about changes",
+      "disableAction": "Turn off watch",
+      "markRead": "Mark all as seen",
+      "openActivity": "View activity log",
+      "refresh": "Refresh",
+      "error": "The watch could not be refreshed. Try again in a moment."
+    }
+  }
+}

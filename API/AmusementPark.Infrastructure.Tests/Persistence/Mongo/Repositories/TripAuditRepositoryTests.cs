@@ -46,6 +46,52 @@ public sealed class TripAuditRepositoryTests
     }
 
     [Fact]
+    public void ImportantNotificationFilter_ShouldExcludeTheCurrentActorAndPrivateNoise()
+    {
+        BsonDocument filter = Render(TripAuditRepository.BuildImportantAfterFilter(
+            TripPlanId.Parse("trip-1"),
+            TripMemberId.Parse("member-1"),
+            12,
+            new[] { "pending-before-boundary" }));
+        string rendered = filter.ToJson();
+
+        Assert.Contains("trip-1", rendered, StringComparison.Ordinal);
+        Assert.Contains("member-1", rendered, StringComparison.Ordinal);
+        Assert.Contains("$ne", rendered, StringComparison.Ordinal);
+        Assert.Contains("$gt", rendered, StringComparison.Ordinal);
+        Assert.Contains("$nin", rendered, StringComparison.Ordinal);
+        Assert.Contains("pending-before-boundary", rendered, StringComparison.Ordinal);
+        Assert.Contains(TripActivityKind.TripRenamed.ToString(), rendered, StringComparison.Ordinal);
+        Assert.DoesNotContain(TripActivityKind.PlanExported.ToString(), rendered, StringComparison.Ordinal);
+        Assert.DoesNotContain(TripActivityKind.TripCreated.ToString(), rendered, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void NotificationBoundaryPipeline_ShouldSnapshotOnlyTheRequestedTripMarkers()
+    {
+        BsonDocument[] pipeline = TripAuditRepository.BuildNotificationBoundaryPipeline(
+            TripPlanId.Parse("trip-1"),
+            "tripPlanId");
+        string rendered = pipeline.ToJson();
+
+        Assert.Equal("trip-1", pipeline[0]["$match"]["tripPlanId"].AsString);
+        Assert.Contains("pendingAuditEvents", rendered, StringComparison.Ordinal);
+        Assert.Contains("$filter", rendered, StringComparison.Ordinal);
+        Assert.Contains("$$pending.tripPlanId", rendered, StringComparison.Ordinal);
+        Assert.Contains("trip-1", rendered, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void NotificationBoundaryPipeline_ShouldUseThePlanPrimaryKey()
+    {
+        BsonDocument[] pipeline = TripAuditRepository.BuildNotificationBoundaryPipeline(
+            TripPlanId.Parse("trip-1"),
+            "_id");
+
+        Assert.Equal("trip-1", pipeline[0]["$match"]["_id"].AsString);
+    }
+
+    [Fact]
     public void PendingDocument_ShouldRoundTripWithoutAnAccountIdentifier()
     {
         TripActivityPendingDocument document = new()

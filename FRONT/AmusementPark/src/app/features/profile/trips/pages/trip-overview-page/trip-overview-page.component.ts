@@ -23,6 +23,7 @@ import {
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { TripCandidateCardComponent } from '../../components/trip-candidate-card/trip-candidate-card.component';
 import { TripInvitationPanelComponent } from '../../components/trip-invitation-panel/trip-invitation-panel.component';
+import { TripNotificationPanelComponent } from '../../components/trip-notification-panel/trip-notification-panel.component';
 import { TripParticipantPanelComponent } from '../../components/trip-participant-panel/trip-participant-panel.component';
 import { areTripDateInputsValid, doesTripDateRangeExceedMaximum } from '../../state/trip-date-proposal.helpers';
 import { TripOverviewStateFacade } from '../../state/trip-overview-state.facade';
@@ -51,6 +52,7 @@ interface TripDayDraft {
     UiSurfaceDirective,
     TripCandidateCardComponent,
     TripInvitationPanelComponent,
+    TripNotificationPanelComponent,
     TripParticipantPanelComponent
   ]
 })

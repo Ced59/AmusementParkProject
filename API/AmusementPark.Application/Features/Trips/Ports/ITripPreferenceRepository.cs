@@ -35,12 +35,17 @@ public interface ITripPreferenceRepository
         TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
-    Task CompleteDepartureCleanupAsync(
+    Task<bool> CompleteDepartureCleanupAsync(
         TripPlanId tripPlanId,
         string userId,
         CancellationToken cancellationToken);
 
-    Task<int> ReconcileDepartureCleanupAsync(
+    Task CompleteDepartureCleanupMarkerAsync(
+        TripPlanId tripPlanId,
+        string userId,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<TripDepartureCleanup>> ListPendingDepartureCleanupAsync(
         int limit,
         CancellationToken cancellationToken);
 }

@@ -34,6 +34,7 @@ describe('ADMIN_NAVIGATION_ITEMS', () => {
       'share-moderation',
       'factual-events',
       'watch-pilot',
+      'trip-pilot',
       'technical-stats'
     ]);
     expect(new Set(routes).size).toBe(routes.length);

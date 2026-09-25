@@ -29,7 +29,8 @@ public sealed class TripPlanLifecycleServiceTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync((TripPlan trip, string _, TripActivityWrite? _, CancellationToken _) =>
                 new IdempotentTripPlanCreationResult(IdempotentTripPlanCreationStatus.Created, trip));
-        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult<CreateTripPlanResult> result = await service.CreateAsync(
             "user-1",
@@ -61,7 +62,8 @@ public sealed class TripPlanLifecycleServiceTests
             .ReturnsAsync(new IdempotentTripPlanCreationResult(
                 IdempotentTripPlanCreationStatus.Conflict,
                 null));
-        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult<CreateTripPlanResult> result = await service.CreateAsync(
             "user-1",
@@ -94,7 +96,8 @@ public sealed class TripPlanLifecycleServiceTests
                 IdempotentTripPlanCreationStatus.Replayed,
                 existingTrip));
         Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
-        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult<CreateTripPlanResult> result = await service.CreateAsync(
             "user-1",
@@ -146,6 +149,7 @@ public sealed class TripPlanLifecycleServiceTests
         TripPlanLifecycleService service = new(
             repository.Object,
             timeZoneValidator.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>(),
             activityRecorder: new TripActivityRecorder(writer.Object));
 
         ApplicationResult<CreateTripPlanResult> result = await service.CreateAsync(
@@ -173,7 +177,8 @@ public sealed class TripPlanLifecycleServiceTests
             .ReturnsAsync(new IdempotentTripPlanCreationResult(
                 IdempotentTripPlanCreationStatus.Deleted,
                 null));
-        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult<CreateTripPlanResult> result = await service.CreateAsync(
             "user-1",
@@ -204,7 +209,8 @@ public sealed class TripPlanLifecycleServiceTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(trip);
         Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
-        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult<TripPlanResult> result = await service.RenameAsync(
             "user-1",
@@ -255,6 +261,7 @@ public sealed class TripPlanLifecycleServiceTests
         TripPlanLifecycleService service = new(
             repository.Object,
             timeZoneValidator.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>(),
             timeProvider.Object,
             activityRecorder: new TripActivityRecorder(writer.Object));
 
@@ -296,7 +303,8 @@ public sealed class TripPlanLifecycleServiceTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new TripPlanWriteResult(TripPlanWriteOutcome.Conflict, 4));
         Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
-        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult<TripPlanResult> result = await service.RenameAsync(
             "user-1",
@@ -358,6 +366,7 @@ public sealed class TripPlanLifecycleServiceTests
         TripPlanLifecycleService service = new(
             repository.Object,
             timeZoneValidator.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>(),
             timeProvider.Object);
 
         ApplicationResult<TripPlanResult> result = await service.RenameAsync(
@@ -408,7 +417,15 @@ public sealed class TripPlanLifecycleServiceTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new TripPlanWriteResult(TripPlanWriteOutcome.Success, 2));
         Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
-        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+        Mock<ITripNotificationSubscriptionRepository> notifications = new(MockBehavior.Strict);
+        notifications.Setup(item => item.DeleteForTripAsync(
+                trip.Id,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        TripPlanLifecycleService service = new(
+            repository.Object,
+            timeZoneValidator.Object,
+            notifications.Object);
 
         ApplicationResult result = await service.DeleteAsync(
             "user-1",
@@ -419,6 +436,7 @@ public sealed class TripPlanLifecycleServiceTests
 
         Assert.True(result.IsSuccess);
         repository.VerifyAll();
+        notifications.VerifyAll();
     }
 
     [Fact]
@@ -426,7 +444,8 @@ public sealed class TripPlanLifecycleServiceTests
     {
         Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
         Mock<ITripTimeZoneValidator> timeZoneValidator = new(MockBehavior.Strict);
-        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object);
+        TripPlanLifecycleService service = new(repository.Object, timeZoneValidator.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult result = await service.DeleteAsync(
             "user-1",

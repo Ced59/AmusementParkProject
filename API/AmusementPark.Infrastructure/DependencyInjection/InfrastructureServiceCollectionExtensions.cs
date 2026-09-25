@@ -207,6 +207,9 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ITripAuditWriter>(provider => provider.GetRequiredService<TripAuditRepository>());
         services.AddScoped<ITripAuditReader>(provider => provider.GetRequiredService<TripAuditRepository>());
         services.AddScoped<ITripAuditReconciler>(provider => provider.GetRequiredService<TripAuditRepository>());
+        services.AddScoped<ITripNotificationSubscriptionRepository,
+            TripNotificationSubscriptionRepository>();
+        services.AddScoped<ITripPilotMetricsRepository, TripPilotMetricsRepository>();
         services.AddSingleton<ITripInvitationSecurity, TripInvitationSecurity>();
         services.AddSingleton<ITripTimeZoneValidator, SystemTripTimeZoneValidator>();
         services.AddScoped<IUserNotificationRepository, UserNotificationRepository>();
@@ -233,6 +236,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHostedService<TripInvitationExpirationReconciliationBackgroundService>();
         services.AddHostedService<TripAdmissionReconciliationBackgroundService>();
         services.AddHostedService<TripPreferenceCleanupReconciliationBackgroundService>();
+        services.AddHostedService<TripNotificationCleanupReconciliationBackgroundService>();
         services.AddHostedService<TripAuditReconciliationBackgroundService>();
 
         services.AddScoped<ICountryReadRepository, CountryReadRepository>();

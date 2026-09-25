@@ -47,7 +47,7 @@ internal sealed class TripPreferenceCleanupReconciliationBackgroundService : Bac
             {
                 this.logger.LogError(
                     exception,
-                    "Unable to reconcile departed trip member preference cleanup.");
+                    "Unable to reconcile departed trip member private-data cleanup.");
             }
 
             await Task.Delay(PollInterval, this.timeProvider, stoppingToken);

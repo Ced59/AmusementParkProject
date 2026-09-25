@@ -32,7 +32,11 @@ public sealed class TripParticipantServiceTests
                 new User { Id = "user-1", PublicDisplayName = "Camille" },
                 new User { Id = "user-2", PublicDisplayName = "Alex" },
             });
-        TripParticipantService service = new(plans.Object, preferences.Object, users.Object);
+        TripParticipantService service = new(
+            plans.Object,
+            preferences.Object,
+            users.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult<TripParticipantListResult> result = await service.ListAsync(
             "user-2",
@@ -56,7 +60,11 @@ public sealed class TripParticipantServiceTests
         Mock<IUserRepository> users = new(MockBehavior.Strict);
         plans.Setup(item => item.GetOwnedAsync("user-2", trip.Id, CancellationToken.None))
             .ReturnsAsync((TripPlan?)null);
-        TripParticipantService service = new(plans.Object, preferences.Object, users.Object);
+        TripParticipantService service = new(
+            plans.Object,
+            preferences.Object,
+            users.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult<TripParticipantListResult> result = await service.ChangeRoleAsync(
             "user-2",
@@ -92,7 +100,11 @@ public sealed class TripParticipantServiceTests
                 IsActivated = isActivated,
                 IsBlocked = isBlocked,
             });
-        TripParticipantService service = new(plans.Object, preferences.Object, users.Object);
+        TripParticipantService service = new(
+            plans.Object,
+            preferences.Object,
+            users.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult<TripParticipantListResult> result = await service.TransferOwnershipAsync(
             "user-1",
@@ -125,7 +137,11 @@ public sealed class TripParticipantServiceTests
             .ReturnsAsync(trip);
         users.Setup(item => item.GetByIdAsync("user-2", CancellationToken.None))
             .ReturnsAsync((User?)null);
-        TripParticipantService service = new(plans.Object, preferences.Object, users.Object);
+        TripParticipantService service = new(
+            plans.Object,
+            preferences.Object,
+            users.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>());
 
         ApplicationResult<TripParticipantListResult> result = await service.TransferOwnershipAsync(
             "user-1",
@@ -197,6 +213,7 @@ public sealed class TripParticipantServiceTests
             plans.Object,
             preferences.Object,
             users.Object,
+            Mock.Of<ITripNotificationSubscriptionRepository>(),
             clock.Object,
             recorder);
 
@@ -217,7 +234,7 @@ public sealed class TripParticipantServiceTests
     }
 
     [Fact]
-    public async Task LeaveAsync_WhenDepartureSucceeds_ShouldDeleteTheMembersPreferences()
+    public async Task LeaveAsync_WhenDepartureSucceeds_ShouldDeletePreferencesAndNotifications()
     {
         using CancellationTokenSource requestCancellation = new();
         CancellationToken requestToken = requestCancellation.Token;
@@ -227,6 +244,7 @@ public sealed class TripParticipantServiceTests
         Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
         Mock<IUserRepository> users = new(MockBehavior.Strict);
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        Mock<ITripNotificationSubscriptionRepository> notifications = new(MockBehavior.Strict);
         clock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
         plans.Setup(item => item.GetAccessibleAsync("user-2", trip.Id, requestToken))
             .ReturnsAsync(trip);
@@ -248,8 +266,23 @@ public sealed class TripParticipantServiceTests
                 trip.Id,
                 "user-2",
                 CancellationToken.None))
+            .ReturnsAsync(true);
+        notifications.Setup(item => item.DeleteForMemberAsync(
+                trip.Id,
+                "user-2",
+                CancellationToken.None))
             .Returns(Task.CompletedTask);
-        TripParticipantService service = new(plans.Object, preferences.Object, users.Object, clock.Object);
+        preferences.Setup(item => item.CompleteDepartureCleanupMarkerAsync(
+                trip.Id,
+                "user-2",
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        TripParticipantService service = new(
+            plans.Object,
+            preferences.Object,
+            users.Object,
+            notifications.Object,
+            clock.Object);
 
         ApplicationResult result = await service.LeaveAsync(
             "user-2",
@@ -261,6 +294,66 @@ public sealed class TripParticipantServiceTests
         Assert.DoesNotContain(trip.Members, member => member.UserId == "user-2");
         plans.VerifyAll();
         preferences.VerifyAll();
+        notifications.VerifyAll();
+    }
+
+    [Fact]
+    public async Task LeaveAsync_WhenNotificationCleanupFails_ShouldKeepTheDurableMarker()
+    {
+        TripPlan trip = CreateTripWithMember();
+        long expectedVersion = trip.Version;
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
+        Mock<IUserRepository> users = new(MockBehavior.Strict);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        Mock<ITripNotificationSubscriptionRepository> notifications = new(MockBehavior.Strict);
+        clock.Setup(item => item.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
+        plans.Setup(item => item.GetAccessibleAsync(
+                "user-2",
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(trip);
+        plans.Setup(item => item.ReplaceAccessibleAsync(
+                "user-2",
+                trip,
+                expectedVersion,
+                It.IsAny<TripActivityWrite?>(),
+                CancellationToken.None))
+            .ReturnsAsync(new TripPlanWriteResult(
+                TripPlanWriteOutcome.Success,
+                trip.Version,
+                trip));
+        preferences.Setup(item => item.CompleteDepartureCleanupAsync(
+                trip.Id,
+                "user-2",
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        notifications.Setup(item => item.DeleteForMemberAsync(
+                trip.Id,
+                "user-2",
+                CancellationToken.None))
+            .ThrowsAsync(new IOException("Transient notification cleanup failure."));
+        TripParticipantService service = new(
+            plans.Object,
+            preferences.Object,
+            users.Object,
+            notifications.Object,
+            clock.Object);
+
+        await Assert.ThrowsAsync<IOException>(() => service.LeaveAsync(
+            "user-2",
+            trip.Id.Value,
+            expectedVersion,
+            CancellationToken.None));
+
+        preferences.Verify(item => item.CompleteDepartureCleanupMarkerAsync(
+                It.IsAny<TripPlanId>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+        plans.VerifyAll();
+        preferences.VerifyAll();
+        notifications.VerifyAll();
     }
 
     private static TripPlan CreateTripWithMember()

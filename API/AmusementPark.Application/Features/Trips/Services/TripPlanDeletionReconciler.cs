@@ -7,10 +7,15 @@ namespace AmusementPark.Application.Features.Trips.Services;
 public sealed class TripPlanDeletionReconciler
 {
     private readonly ITripPlanRepository repository;
+    private readonly ITripNotificationSubscriptionRepository notifications;
 
-    public TripPlanDeletionReconciler(ITripPlanRepository repository)
+    public TripPlanDeletionReconciler(
+        ITripPlanRepository repository,
+        ITripNotificationSubscriptionRepository notifications)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        this.notifications = notifications
+            ?? throw new ArgumentNullException(nameof(notifications));
     }
 
     public async Task<int> ReconcileAsync(int limit, CancellationToken cancellationToken)
@@ -28,6 +33,7 @@ public sealed class TripPlanDeletionReconciler
         {
             cancellationToken.ThrowIfCancellationRequested();
             await this.repository.PurgeChildrenAsync(trip.Id, cancellationToken);
+            await this.notifications.DeleteForTripAsync(trip.Id, cancellationToken);
             TripPlanWriteResult result = await this.repository.FinalizeDeletionOwnedAsync(
                 trip,
                 cancellationToken);

@@ -15,17 +15,21 @@ public sealed class TripPlanLifecycleService
 
     private readonly ITripPlanRepository repository;
     private readonly ITripTimeZoneValidator timeZoneValidator;
+    private readonly ITripNotificationSubscriptionRepository notifications;
     private readonly TimeProvider timeProvider;
     private readonly TripActivityRecorder? activityRecorder;
 
     public TripPlanLifecycleService(
         ITripPlanRepository repository,
         ITripTimeZoneValidator timeZoneValidator,
+        ITripNotificationSubscriptionRepository notifications,
         TimeProvider? timeProvider = null,
         TripActivityRecorder? activityRecorder = null)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         this.timeZoneValidator = timeZoneValidator ?? throw new ArgumentNullException(nameof(timeZoneValidator));
+        this.notifications = notifications
+            ?? throw new ArgumentNullException(nameof(notifications));
         this.timeProvider = timeProvider ?? TimeProvider.System;
         this.activityRecorder = activityRecorder;
     }
@@ -333,6 +337,7 @@ public sealed class TripPlanLifecycleService
         if (writeResult.Outcome == TripPlanWriteOutcome.Success)
         {
             await this.repository.PurgeChildrenAsync(trip.Id, CancellationToken.None);
+            await this.notifications.DeleteForTripAsync(trip.Id, CancellationToken.None);
             writeResult = await this.repository.FinalizeDeletionOwnedAsync(trip, CancellationToken.None);
         }
 

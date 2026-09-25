@@ -21,20 +21,25 @@ public sealed class TripPlanDeletionReconcilerTests
             DateTime.UtcNow.AddMinutes(-2));
         trip.BeginDeletion(DateTime.UtcNow.AddMinutes(-1));
         Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        Mock<ITripNotificationSubscriptionRepository> notifications = new(MockBehavior.Strict);
         repository.Setup(item => item.ListPendingDeletionAsync(25, CancellationToken.None))
             .ReturnsAsync(new[] { trip });
         MockSequence sequence = new();
         repository.InSequence(sequence)
             .Setup(item => item.PurgeChildrenAsync(trip.Id, CancellationToken.None))
             .Returns(Task.CompletedTask);
+        notifications.InSequence(sequence)
+            .Setup(item => item.DeleteForTripAsync(trip.Id, CancellationToken.None))
+            .Returns(Task.CompletedTask);
         repository.InSequence(sequence)
             .Setup(item => item.FinalizeDeletionOwnedAsync(trip, CancellationToken.None))
             .ReturnsAsync(new TripPlanWriteResult(TripPlanWriteOutcome.Success, trip.Version));
-        TripPlanDeletionReconciler reconciler = new(repository.Object);
+        TripPlanDeletionReconciler reconciler = new(repository.Object, notifications.Object);
 
         int completed = await reconciler.ReconcileAsync(25, CancellationToken.None);
 
         Assert.Equal(1, completed);
         repository.VerifyAll();
+        notifications.VerifyAll();
     }
 }

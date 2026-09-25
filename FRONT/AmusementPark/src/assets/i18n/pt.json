@@ -1526,6 +1526,23 @@
       "openTrip": "Abrir a viagem",
       "decisionError": "Não foi possível guardar a tua resposta. Tenta novamente neste mesmo ecrã."
     },
+    "notifications": {
+      "kicker": "Mantém-te a par",
+      "title": "As alterações importantes",
+      "description": "Ativa este acompanhamento privado para detetar decisões e alterações importantes dos outros membros.",
+      "enabled": "Acompanhamento ativo",
+      "disabled": "Acompanhamento desativado",
+      "loading": "A carregar o acompanhamento…",
+      "unreadTitle": "alterações por descobrir",
+      "unreadDescription": "O registo de atividade mostra exatamente o que mudou.",
+      "optInPrivacy": "Nada é enviado ou tornado público até ativares este acompanhamento.",
+      "enableAction": "Avisar-me das alterações",
+      "disableAction": "Desativar o acompanhamento",
+      "markRead": "Marcar tudo como visto",
+      "openActivity": "Ver o registo",
+      "refresh": "Atualizar",
+      "error": "Não foi possível atualizar o acompanhamento. Tenta novamente dentro de instantes."
+    },
     "participants": {
       "kicker": "Equipa da viagem",
       "title": "Quem está a preparar esta viagem?",
@@ -4531,6 +4548,60 @@
       }
     },
     "title": "Painel de administração",
+    "tripPilot": {
+      "navTitle": "Piloto de viagens",
+      "shortcut": "Acompanha a utilização e a saúde técnica das viagens colaborativas.",
+      "kicker": "Viagens privadas",
+      "title": "Piloto colaborativo",
+      "subtitle": "Indicadores agregados sem identidades nem conteúdo privado para verificar o valor e a fiabilidade.",
+      "refresh": "Atualizar",
+      "loading": "A carregar os indicadores…",
+      "loadError": "Não foi possível carregar os indicadores das viagens.",
+      "empty": "Nenhum indicador disponível.",
+      "metrics": {
+        "ariaLabel": "Indicadores do piloto colaborativo",
+        "totalPlans": "Viagens ativas",
+        "collaborativePlans": "Viagens partilhadas",
+        "preferences": "Viagens com preferências",
+        "decisions": "Viagens com decisões",
+        "expiredInvitations": "Convites expirados",
+        "subscriptions": "Acompanhamentos privados ativos",
+        "audit": "Eventos auditados"
+      },
+      "health": {
+        "readyTitle": "Registo atualizado",
+        "readyDescription": "Nenhuma escrita de auditoria aguarda materialização.",
+        "pendingTitle": "Recuperação em curso",
+        "pendingDescription": "{{count}} escritas ainda aguardam materialização no registo."
+      },
+      "activity": {
+        "title": "Atividade do produto",
+        "description": "Distribuição das provas conservadas no registo privado.",
+        "empty": "O registo ainda não contém eventos.",
+        "labels": {
+          "tripCreated": "Viagem criada",
+          "tripRenamed": "Viagem renomeada",
+          "datesChanged": "Datas alteradas",
+          "candidateAdded": "Parque adicionado",
+          "candidateUpdated": "Parque atualizado",
+          "candidateMoved": "Parque reordenado",
+          "candidateRemoved": "Parque removido",
+          "dayUpdated": "Dia atualizado",
+          "dayRemoved": "Dia removido",
+          "invitationCreated": "Convite criado",
+          "invitationRevoked": "Convite revogado",
+          "invitationAccepted": "Convite aceite",
+          "invitationDeclined": "Convite recusado",
+          "participantRoleChanged": "Função do participante alterada",
+          "ownershipTransferred": "Propriedade transferida",
+          "participantLeft": "Participante saiu",
+          "preferencesUpdated": "Preferências atualizadas",
+          "collectiveDecisionUpdated": "Decisão coletiva atualizada",
+          "planExported": "Plano exportado"
+        }
+      },
+      "generatedAt": "Instantâneo gerado em {{date}} UTC."
+    },
     "users": {
       "total": "Número total de utilizadores: {{count}}",
       "empty": "Nenhum utilizador encontrado.",

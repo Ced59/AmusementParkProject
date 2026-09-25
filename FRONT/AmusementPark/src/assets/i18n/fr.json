@@ -1526,6 +1526,23 @@
       "openTrip": "Ouvrir le voyage",
       "decisionError": "La réponse n’a pas pu être enregistrée. Réessaie avec ce même écran."
     },
+    "notifications": {
+      "kicker": "Rester au courant",
+      "title": "Les changements qui comptent",
+      "description": "Active ce suivi privé pour repérer les décisions et modifications importantes faites par les autres membres.",
+      "enabled": "Suivi activé",
+      "disabled": "Suivi désactivé",
+      "loading": "Chargement du suivi…",
+      "unreadTitle": "changements à découvrir",
+      "unreadDescription": "Le journal te montre précisément ce qui a évolué.",
+      "optInPrivacy": "Rien n’est envoyé ni rendu public tant que tu n’actives pas ce suivi.",
+      "enableAction": "Me prévenir des changements",
+      "disableAction": "Désactiver le suivi",
+      "markRead": "Tout marquer comme vu",
+      "openActivity": "Voir le journal",
+      "refresh": "Actualiser",
+      "error": "Le suivi n’a pas pu être actualisé. Réessaie dans un instant."
+    },
     "participants": {
       "kicker": "Équipe du voyage",
       "title": "Qui prépare ce voyage ?",
@@ -4531,6 +4548,60 @@
       }
     },
     "title": "Panneau d'administration",
+    "tripPilot": {
+      "navTitle": "Pilote des voyages",
+      "shortcut": "Suivre l’usage et la santé technique des voyages collaboratifs.",
+      "kicker": "Voyages privés",
+      "title": "Pilote collaboratif",
+      "subtitle": "Des indicateurs agrégés, sans identité ni contenu privé, pour vérifier la valeur et la fiabilité du parcours.",
+      "refresh": "Actualiser",
+      "loading": "Chargement des indicateurs…",
+      "loadError": "Impossible de charger les indicateurs des voyages.",
+      "empty": "Aucun indicateur disponible.",
+      "metrics": {
+        "ariaLabel": "Indicateurs du pilote collaboratif",
+        "totalPlans": "Voyages actifs",
+        "collaborativePlans": "Voyages à plusieurs",
+        "preferences": "Voyages avec préférences",
+        "decisions": "Voyages avec décisions",
+        "expiredInvitations": "Invitations expirées",
+        "subscriptions": "Suivis privés actifs",
+        "audit": "Événements audités"
+      },
+      "health": {
+        "readyTitle": "Journal à jour",
+        "readyDescription": "Aucune écriture d’audit n’attend sa matérialisation.",
+        "pendingTitle": "Rattrapage en cours",
+        "pendingDescription": "{{count}} écritures attendent encore leur matérialisation dans le journal."
+      },
+      "activity": {
+        "title": "Activité métier",
+        "description": "Répartition des preuves conservées dans le journal privé.",
+        "empty": "Le journal ne contient encore aucun événement.",
+        "labels": {
+          "tripCreated": "Voyage créé",
+          "tripRenamed": "Voyage renommé",
+          "datesChanged": "Dates modifiées",
+          "candidateAdded": "Parc ajouté",
+          "candidateUpdated": "Parc modifié",
+          "candidateMoved": "Parc réordonné",
+          "candidateRemoved": "Parc retiré",
+          "dayUpdated": "Journée modifiée",
+          "dayRemoved": "Journée retirée",
+          "invitationCreated": "Invitation créée",
+          "invitationRevoked": "Invitation révoquée",
+          "invitationAccepted": "Invitation acceptée",
+          "invitationDeclined": "Invitation refusée",
+          "participantRoleChanged": "Rôle modifié",
+          "ownershipTransferred": "Propriété transférée",
+          "participantLeft": "Participant parti",
+          "preferencesUpdated": "Préférences modifiées",
+          "collectiveDecisionUpdated": "Décision collective modifiée",
+          "planExported": "Plan exporté"
+        }
+      },
+      "generatedAt": "Instantané généré le {{date}} UTC."
+    },
     "users": {
       "total": "Nombre total d'utilisateurs : {{count}}",
       "empty": "Aucun utilisateur trouvé.",

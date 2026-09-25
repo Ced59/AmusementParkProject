@@ -63,6 +63,13 @@
       </p>
     }
 
+    @if (facade.trip(); as trip) {
+      <app-trip-notification-panel
+        [tripPlanId]="trip.tripPlanId"
+        [currentLanguage]="currentLanguage()">
+      </app-trip-notification-panel>
+    }
+
     <section class="trip-section trip-dates" appUiSurface="panel" appUiSurfacePadding="spacious">
       <div class="trip-section__heading">
         <span class="trip-section__step">1</span>

@@ -1,0 +1,70 @@
+<section class="trip-notification-panel" appUiSurface="panel" appUiSurfacePadding="spacious">
+  <div class="trip-notification-panel__heading">
+    <div>
+      <app-ui-kicker tone="sky" iconClass="pi pi-bell">{{ 'trips.notifications.kicker' | translate }}</app-ui-kicker>
+      <h2>{{ 'trips.notifications.title' | translate }}</h2>
+      <p>{{ 'trips.notifications.description' | translate }}</p>
+    </div>
+    @if (facade.state(); as state) {
+      <app-ui-chip [tone]="state.enabled ? 'lime' : 'soft'" [iconClass]="state.enabled ? 'pi pi-bell' : 'pi pi-bell-slash'">
+        {{ (state.enabled ? 'trips.notifications.enabled' : 'trips.notifications.disabled') | translate }}
+      </app-ui-chip>
+    }
+  </div>
+
+  @if (facade.loading() && !facade.state()) {
+    <p role="status" aria-live="polite">{{ 'trips.notifications.loading' | translate }}</p>
+  } @else if (facade.state(); as state) {
+    @if (state.enabled) {
+      <div class="trip-notification-panel__summary" aria-live="polite">
+        <span class="trip-notification-panel__count">{{ state.unreadCount }}{{ state.hasMoreUnread ? '+' : '' }}</span>
+        <div>
+          <strong>{{ 'trips.notifications.unreadTitle' | translate }}</strong>
+          <p>{{ 'trips.notifications.unreadDescription' | translate }}</p>
+        </div>
+      </div>
+    } @else {
+      <p class="trip-notification-panel__privacy">
+        <i class="pi pi-lock" aria-hidden="true"></i>
+        <span>{{ 'trips.notifications.optInPrivacy' | translate }}</span>
+      </p>
+    }
+
+    <div class="trip-notification-panel__actions">
+      <button type="button" appUiButton="primary" [disabled]="facade.saving()" (click)="facade.toggle()">
+        <i class="pi" [class.pi-bell]="!state.enabled" [class.pi-bell-slash]="state.enabled" aria-hidden="true"></i>
+        <span>{{ (state.enabled ? 'trips.notifications.disableAction' : 'trips.notifications.enableAction') | translate }}</span>
+      </button>
+      @if (state.enabled && state.unreadCount > 0) {
+        <button type="button" appUiButton="ghost" [disabled]="facade.saving()" (click)="facade.markRead()">
+          <i class="pi pi-check" aria-hidden="true"></i>
+          <span>{{ 'trips.notifications.markRead' | translate }}</span>
+        </button>
+      }
+      <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'profile', 'trips', tripPlanId(), 'activity']">
+        <i class="pi pi-history" aria-hidden="true"></i>
+        <span>{{ 'trips.notifications.openActivity' | translate }}</span>
+      </a>
+      <button type="button" appUiButton="ghost" [disabled]="facade.loading() || facade.saving()" (click)="facade.refresh()">
+        <i class="pi pi-refresh" aria-hidden="true"></i>
+        <span>{{ 'trips.notifications.refresh' | translate }}</span>
+      </button>
+    </div>
+  } @else if (facade.error()) {
+    <div class="trip-notification-panel__actions">
+      <button
+        type="button"
+        class="trip-notification-panel__retry"
+        appUiButton="ghost"
+        [disabled]="facade.loading() || facade.saving()"
+        (click)="facade.refresh()">
+        <i class="pi pi-refresh" aria-hidden="true"></i>
+        <span>{{ 'trips.notifications.refresh' | translate }}</span>
+      </button>
+    </div>
+  }
+
+  @if (facade.error()) {
+    <p class="trip-notification-panel__error" role="alert">{{ 'trips.notifications.error' | translate }}</p>
+  }
+</section>

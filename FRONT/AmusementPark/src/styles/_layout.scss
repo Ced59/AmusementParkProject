@@ -198,6 +198,10 @@
   .app-account-layout__main {
     margin-bottom: calc(var(--bottom-nav-height) + 1.35rem);
   }
+
+  .app-admin-layout__main {
+    padding-bottom: calc(var(--bottom-nav-height) + 1.35rem);
+  }
 }
 
 /* M10 responsive hardening: keep public/account/admin shells comfortable on tablets. */

@@ -9,4 +9,16 @@ public interface ITripAuditReader
         long? beforeSequence,
         int limit,
         CancellationToken cancellationToken);
+
+    Task<TripNotificationBoundary> GetNotificationBoundaryAsync(
+        TripPlanId tripPlanId,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<TripActivityEvent>> ListImportantAfterAsync(
+        TripPlanId tripPlanId,
+        TripMemberId currentMemberId,
+        long afterSequence,
+        IReadOnlyCollection<string> excludedOperationKeys,
+        int limit,
+        CancellationToken cancellationToken);
 }

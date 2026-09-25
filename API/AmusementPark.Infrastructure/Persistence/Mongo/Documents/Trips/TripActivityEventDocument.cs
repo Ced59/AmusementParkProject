@@ -32,4 +32,5 @@ public sealed class TripActivityEventDocument : MongoDocumentBase
 
     [BsonElement("affectedCount")]
     public int AffectedCount { get; set; }
+
 }
