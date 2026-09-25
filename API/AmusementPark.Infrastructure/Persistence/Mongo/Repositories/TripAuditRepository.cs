@@ -304,16 +304,33 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
         TripPlanId tripPlanId,
         TripMemberId currentMemberId,
         long afterSequence,
+        DateTime occurredAfterUtc,
         int limit,
         CancellationToken cancellationToken)
     {
-        if (afterSequence < 0 || limit is < 1 or > 100)
+        if (afterSequence < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(afterSequence));
+        }
+
+        if (occurredAfterUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException(
+                "The notification baseline must use UTC.",
+                nameof(occurredAfterUtc));
+        }
+
+        if (limit is < 1 or > 100)
         {
             throw new ArgumentOutOfRangeException(nameof(limit));
         }
 
         List<TripActivityEventDocument> documents = await this.activities.Find(
-                BuildImportantAfterFilter(tripPlanId, currentMemberId, afterSequence))
+                BuildImportantAfterFilter(
+                    tripPlanId,
+                    currentMemberId,
+                    afterSequence,
+                    occurredAfterUtc))
             .SortBy(static document => document.Sequence)
             .Limit(limit)
             .ToListAsync(cancellationToken);
@@ -323,12 +340,14 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
     internal static FilterDefinition<TripActivityEventDocument> BuildImportantAfterFilter(
         TripPlanId tripPlanId,
         TripMemberId currentMemberId,
-        long afterSequence)
+        long afterSequence,
+        DateTime occurredAfterUtc)
     {
         FilterDefinitionBuilder<TripActivityEventDocument> filters =
             Builders<TripActivityEventDocument>.Filter;
         return filters.Eq(static document => document.TripPlanId, tripPlanId.Value)
             & filters.Gt(static document => document.Sequence, afterSequence)
+            & filters.Gt(static document => document.CreatedAt, occurredAfterUtc)
             & filters.Ne(static document => document.ActorMemberId, currentMemberId.Value)
             & filters.In(
                 static document => document.Kind,

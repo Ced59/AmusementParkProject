@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, effect, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, input, untracked } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -18,6 +18,9 @@ export class TripNotificationPanelComponent {
   readonly currentLanguage = input.required<string>();
 
   constructor(protected readonly facade: TripNotificationFacade) {
-    effect((): void => this.facade.load(this.tripPlanId()));
+    effect((): void => {
+      const tripPlanId: string = this.tripPlanId();
+      untracked((): void => this.facade.load(tripPlanId));
+    });
   }
 }

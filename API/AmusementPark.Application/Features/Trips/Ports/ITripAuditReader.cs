@@ -18,6 +18,7 @@ public interface ITripAuditReader
         TripPlanId tripPlanId,
         TripMemberId currentMemberId,
         long afterSequence,
+        DateTime occurredAfterUtc,
         int limit,
         CancellationToken cancellationToken);
 }

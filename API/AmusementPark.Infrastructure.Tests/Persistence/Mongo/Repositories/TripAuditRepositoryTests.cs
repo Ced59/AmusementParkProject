@@ -48,16 +48,20 @@ public sealed class TripAuditRepositoryTests
     [Fact]
     public void ImportantNotificationFilter_ShouldExcludeTheCurrentActorAndPrivateNoise()
     {
+        DateTime baselineUtc = new(2027, 4, 5, 10, 0, 0, DateTimeKind.Utc);
         BsonDocument filter = Render(TripAuditRepository.BuildImportantAfterFilter(
             TripPlanId.Parse("trip-1"),
             TripMemberId.Parse("member-1"),
-            12));
+            12,
+            baselineUtc));
         string rendered = filter.ToJson();
 
         Assert.Contains("trip-1", rendered, StringComparison.Ordinal);
         Assert.Contains("member-1", rendered, StringComparison.Ordinal);
         Assert.Contains("$ne", rendered, StringComparison.Ordinal);
         Assert.Contains("$gt", rendered, StringComparison.Ordinal);
+        Assert.Contains("createdAt", rendered, StringComparison.Ordinal);
+        Assert.Contains(baselineUtc.ToString("yyyy-MM-dd"), rendered, StringComparison.Ordinal);
         Assert.Contains(TripActivityKind.TripRenamed.ToString(), rendered, StringComparison.Ordinal);
         Assert.DoesNotContain(TripActivityKind.PlanExported.ToString(), rendered, StringComparison.Ordinal);
         Assert.DoesNotContain(TripActivityKind.TripCreated.ToString(), rendered, StringComparison.Ordinal);

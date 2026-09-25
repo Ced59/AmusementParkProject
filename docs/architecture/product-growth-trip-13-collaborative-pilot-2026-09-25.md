@@ -63,7 +63,8 @@ le compteur visible à 99, avec un indicateur `99+`.
 
 1. vérifie l’accès actif au voyage ;
 2. charge l’abonnement du membre ;
-3. demande au journal les événements importants après son curseur ;
+3. demande au journal les événements importants après son double jalon
+   séquence/date ;
 4. exclut l’identité membre courante au niveau de la requête ;
 5. applique une écriture optimiste lors de l’activation, désactivation ou lecture.
 
@@ -88,8 +89,11 @@ clés de voyage et des agrégations par groupe. Il ne charge aucun document mét
 complet et ne déclenche aucune requête par voyage ou par membre.
 
 La lecture est bornée à 100 événements (`99 + preuve qu’il en reste`) et utilise
-les index du journal sur `tripPlanId` et `sequence`. L’unicité de l’abonnement
-est protégée par un index MongoDB, pas par une vérification en mémoire.
+les index du journal sur `tripPlanId`, `sequence` et `createdAt`. La séquence
+écarte l’activité déjà matérialisée ; `updatedAt`, date du dernier jalon lu,
+écarte aussi un marqueur plus ancien matérialisé en retard. L’unicité de
+l’abonnement est protégée par un index MongoDB, pas par une vérification en
+mémoire.
 
 ### WebAPI
 
@@ -111,7 +115,9 @@ limité en débit et également `no-store`.
 Le panneau suit la chaîne `API service → data port → facade → composant`. Il se
 trouve en haut du voyage, explique clairement l’opt-in, montre le compteur,
 ouvre le journal et permet de tout marquer comme vu. Il n’expose aucun
-identifiant technique.
+identifiant technique. Son effet initial ne suit que l’identifiant du voyage :
+les signaux de chargement de la façade sont lus hors suivi réactif afin de ne
+jamais transformer l’actualisation manuelle en polling involontaire.
 
 La page d’administration « Pilote des voyages » est lazy-loaded et présente les
 indicateurs agrégés, l’état du rattrapage d’audit et une répartition graphique
@@ -128,7 +134,7 @@ trip-notification-subscriptions {
   seenThroughSequence: long,   // dernière séquence globale reconnue
   version: long,               // concurrence optimiste
   createdAt: date,
-  updatedAt: date
+  updatedAt: date              // date UTC du dernier jalon lu/préféré
 }
 ```
 
@@ -212,7 +218,7 @@ sequenceDiagram
     API->>APP: SetEnabledAsync
     APP->>AUDIT: Dernière séquence matérialisée
     AUDIT-->>APP: 42
-    APP->>SUB: Création (seenThroughSequence=42)
+    APP->>SUB: Création (séquence=42, date=maintenant)
     SUB-->>APP: Succès unique
     APP-->>UI: Activé, 0 nouveauté
 
@@ -222,7 +228,7 @@ sequenceDiagram
     UI->>API: GET état
     API->>APP: GetAsync
     APP->>SUB: Charge le curseur 42
-    APP->>AUDIT: Importants après 42, hors membre courant, limite 100
+    APP->>AUDIT: Importants après séquence 42 ET date d’activation
     AUDIT-->>APP: 3 événements
     APP-->>UI: 3 nouveautés
     M->>UI: Tout marquer comme vu
@@ -242,12 +248,17 @@ La façade recharge alors l’état serveur.
 Après une première création, le service relit l’appartenance. Si le membre a
 quitté le voyage ou si celui-ci a été supprimé pendant la course, il compense
 immédiatement l’insertion avant de répondre. Si le départ intervient après
-cette relecture, le nettoyage obligatoire du départ supprime l’abonnement.
+cette relecture, le nettoyage obligatoire du départ supprime l’abonnement. La
+relecture et la compensation utilisent un jeton non annulable : une fermeture
+de l’appel HTTP ne peut pas laisser un abonnement orphelin.
 
-Un événement matérialisé après un « tout marquer comme vu » reçoit une séquence
-supérieure et reste donc visible : la course ne peut pas faire perdre une
-nouveauté. À l’inverse, une action personnelle est filtrée mais sa séquence peut
-être franchie sans risque, puisque le curseur est global au journal du voyage.
+Le jalon de lecture combine la séquence et l’instant UTC. Un marqueur créé avant
+l’activation ou avant « tout marquer comme vu », mais matérialisé en retard,
+reçoit une séquence supérieure sans devenir artificiellement une nouveauté :
+sa date d’occurrence reste antérieure au jalon. Une vraie modification
+postérieure satisfait les deux bornes et reste visible. À l’inverse, une action
+personnelle est filtrée mais sa séquence peut être franchie sans risque, puisque
+le curseur est global au journal du voyage.
 
 ## 8. Confidentialité, sécurité et performance
 
@@ -291,13 +302,15 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
 ## 11. Preuves
 
 - 7 tests Core : activation, réactivation, curseur monotone et politique ;
-- 6 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
-  concurrence, compensation de départ et métriques agrégées sans contenu privé ;
-- 15 tests Application du périmètre : notifications, départ, purge et pilotage ;
+- 7 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
+  concurrence, compensations de départ/annulation et métriques agrégées sans
+  contenu privé ;
+- 16 tests Application du périmètre : notifications, départ, purge et pilotage ;
 - 16 tests Infrastructure du périmètre : index, filtre privé, agrégations et
   résolution du nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;
-- 17 tests Angular ciblés : façades, navigation admin et contrats responsive ;
+- 18 tests Angular ciblés : façades, effet sans polling, navigation admin et
+  contrats responsive ;
 - build WebAPI Release réussi ;
 - build Angular production/SSR réussi ;
 - architecture façade/ports et règle une classe par fichier réussies ;

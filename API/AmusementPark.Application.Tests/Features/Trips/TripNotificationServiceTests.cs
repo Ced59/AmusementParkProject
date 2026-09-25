@@ -41,6 +41,7 @@ public sealed class TripNotificationServiceTests
     {
         TripPlan trip = CreateTrip();
         TripMember owner = Assert.Single(trip.Members);
+        DateTime baselineUtc = new(2027, 4, 5, 10, 0, 0, DateTimeKind.Utc);
         Mock<ITripPlanRepository> plans = AccessiblePlans(trip);
         Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
         audit.Setup(reader => reader.GetLatestSequenceAsync(trip.Id, CancellationToken.None))
@@ -49,6 +50,7 @@ public sealed class TripNotificationServiceTests
                 trip.Id,
                 owner.Id,
                 8,
+                baselineUtc,
                 TripNotificationPolicy.MaximumUnreadCount + 1,
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<TripActivityEvent>());
@@ -64,7 +66,14 @@ public sealed class TripNotificationServiceTests
                 CancellationToken.None))
             .Callback<TripNotificationSubscription, CancellationToken>((value, _) => created = value)
             .ReturnsAsync(true);
-        TripNotificationService service = new(plans.Object, audit.Object, subscriptions.Object);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        clock.Setup(provider => provider.GetUtcNow())
+            .Returns(new DateTimeOffset(baselineUtc));
+        TripNotificationService service = new(
+            plans.Object,
+            audit.Object,
+            subscriptions.Object,
+            clock.Object);
 
         ApplicationResult<TripNotificationStateResult> result = await service.SetEnabledAsync(
             trip.OwnerUserId,
@@ -75,8 +84,10 @@ public sealed class TripNotificationServiceTests
 
         Assert.True(Assert.IsType<TripNotificationStateResult>(result.Value).Enabled);
         Assert.Equal(8, Assert.IsType<TripNotificationSubscription>(created).SeenThroughSequence);
+        Assert.Equal(baselineUtc, created.UpdatedAtUtc);
         subscriptions.VerifyAll();
         audit.VerifyAll();
+        clock.VerifyAll();
     }
 
     [Fact]
@@ -125,6 +136,57 @@ public sealed class TripNotificationServiceTests
     }
 
     [Fact]
+    public async Task SetEnabledAsync_WhenRequestIsCancelledAfterCreation_ShouldStillCompensateDeparture()
+    {
+        using CancellationTokenSource cancellation = new();
+        TripPlan trip = CreateTrip();
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        plans.Setup(repository => repository.GetAccessibleAsync(
+                trip.OwnerUserId,
+                trip.Id,
+                cancellation.Token))
+            .ReturnsAsync(trip);
+        plans.Setup(repository => repository.GetAccessibleAsync(
+                trip.OwnerUserId,
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync((TripPlan?)null);
+        Mock<ITripAuditReader> audit = new(MockBehavior.Strict);
+        audit.Setup(reader => reader.GetLatestSequenceAsync(trip.Id, cancellation.Token))
+            .ReturnsAsync(8);
+        Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.GetAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                cancellation.Token))
+            .ReturnsAsync((TripNotificationSubscription?)null);
+        subscriptions.Setup(repository => repository.CreateAsync(
+                It.IsAny<TripNotificationSubscription>(),
+                cancellation.Token))
+            .Callback(cancellation.Cancel)
+            .ReturnsAsync(true);
+        subscriptions.Setup(repository => repository.DeleteForMemberAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        TripNotificationService service = new(plans.Object, audit.Object, subscriptions.Object);
+
+        ApplicationResult<TripNotificationStateResult> result = await service.SetEnabledAsync(
+            trip.OwnerUserId,
+            trip.Id.Value,
+            true,
+            0,
+            cancellation.Token);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("trip.plan.not-found", Assert.Single(result.Errors).Code);
+        subscriptions.VerifyAll();
+        plans.VerifyAll();
+        audit.VerifyAll();
+    }
+
+    [Fact]
     public async Task GetAsync_ShouldCountOnlyRepositoryFilteredImportantChanges()
     {
         TripPlan trip = CreateTrip();
@@ -144,6 +206,7 @@ public sealed class TripNotificationServiceTests
                 trip.Id,
                 owner.Id,
                 2,
+                subscription.UpdatedAtUtc,
                 TripNotificationPolicy.MaximumUnreadCount + 1,
                 CancellationToken.None))
             .ReturnsAsync(new[]

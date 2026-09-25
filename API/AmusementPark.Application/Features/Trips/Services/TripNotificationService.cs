@@ -95,7 +95,7 @@ public sealed class TripNotificationService
                 return Changed(concurrent?.Version);
             }
 
-            if (!await this.IsStillAccessibleAsync(access, cancellationToken))
+            if (!await this.IsStillAccessibleAsync(access, CancellationToken.None))
             {
                 await this.subscriptions.DeleteForMemberAsync(
                     access.Trip.Id,
@@ -217,6 +217,7 @@ public sealed class TripNotificationService
             access.Trip.Id,
             access.Member.Id,
             subscription.SeenThroughSequence,
+            subscription.UpdatedAtUtc,
             TripNotificationPolicy.MaximumUnreadCount + 1,
             cancellationToken);
         return new TripNotificationStateResult(
