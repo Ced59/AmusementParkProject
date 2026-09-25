@@ -74,6 +74,7 @@ import {
 } from './src/server/ssr/ssr-page-cache-generation-tracker';
 import type { SsrPageCacheGenerationStamp } from './src/server/ssr/ssr-page-cache-generation-tracker';
 import { SsrRenderQueueFullError } from './src/server/ssr/ssr-render-queue-full-error';
+import { readMatchingDiskPageCacheEntry } from './src/server/ssr/disk-page-cache-invalidation-reader';
 import {
   buildPreferredLanguageHomeUrl,
   resolveLanguagePreferenceCookie,
@@ -2991,7 +2992,13 @@ async function clearMatchingDiskPageCache(request: NormalizedCacheInvalidationRe
     const filePath = join(diskPageCacheDirectory, fileName);
 
     try {
-      const serializedEntry: string = readFileSync(filePath, 'utf8');
+      const serializedEntry: string | null = await readMatchingDiskPageCacheEntry(
+        filePath,
+        (cacheKey: string): boolean => isPageCacheKeyMatched(cacheKey, request)
+      );
+      if (serializedEntry === null) {
+        continue;
+      }
       const parsedEntry = JSON.parse(serializedEntry) as PageCacheEntry;
 
       if (!parsedEntry.cacheKey || isPageCacheKeyMatched(parsedEntry.cacheKey, request)) {
@@ -3011,11 +3018,11 @@ async function clearMatchingDiskPageCache(request: NormalizedCacheInvalidationRe
       if (removeDiskPageCacheFile(filePath)) {
         affected += 1;
       }
-    }
-
-    processed += 1;
-    if (processed % targetedInvalidationDiskBatchSize === 0) {
-      await waitForTargetedInvalidationDiskYield();
+    } finally {
+      processed += 1;
+      if (processed % targetedInvalidationDiskBatchSize === 0) {
+        await waitForTargetedInvalidationDiskYield();
+      }
     }
   }
 

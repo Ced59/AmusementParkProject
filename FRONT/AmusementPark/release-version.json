@@ -1,6 +1,20 @@
 {
-  "version": "5.3.74",
+  "version": "5.3.75",
   "history": [
+    {
+      "version": "5.3.75",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "Les pages restent plus réactives pendant les mises à jour du contenu.",
+        "en": "Pages stay more responsive during content updates.",
+        "de": "Seiten reagieren bei Inhaltsaktualisierungen schneller.",
+        "nl": "Pagina’s blijven sneller reageren tijdens inhoudsupdates.",
+        "it": "Le pagine restano più reattive durante gli aggiornamenti dei contenuti.",
+        "es": "Las páginas responden mejor durante las actualizaciones del contenido.",
+        "pl": "Strony działają płynniej podczas aktualizacji treści.",
+        "pt": "As páginas continuam mais rápidas durante as atualizações de conteúdo."
+      }
+    },
     {
       "version": "5.3.74",
       "releasedAt": "2026-09-25",
