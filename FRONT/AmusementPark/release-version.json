@@ -1,6 +1,20 @@
 {
-  "version": "5.3.72",
+  "version": "5.3.73",
   "history": [
+    {
+      "version": "5.3.73",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "L’historique des versions s’affiche à nouveau sans bloquer la page.",
+        "en": "The version history now loads again without blocking the page.",
+        "de": "Der Versionsverlauf wird wieder angezeigt, ohne die Seite zu blockieren.",
+        "nl": "De versiegeschiedenis wordt weer geladen zonder de pagina te blokkeren.",
+        "it": "La cronologia delle versioni viene di nuovo caricata senza bloccare la pagina.",
+        "es": "El historial de versiones vuelve a cargarse sin bloquear la página.",
+        "pl": "Historia wersji znów się ładuje bez blokowania strony.",
+        "pt": "O histórico de versões volta a carregar sem bloquear a página."
+      }
+    },
     {
       "version": "5.3.72",
       "releasedAt": "2026-09-25",

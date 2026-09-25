@@ -1,5 +1,13 @@
-import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
+import { DatePipe, isPlatformBrowser } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  Inject,
+  OnInit,
+  PLATFORM_ID,
+  signal
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
 import { from } from 'rxjs';
@@ -50,7 +58,8 @@ export class VersionHistoryPageComponent implements OnInit {
 
   constructor(
     private readonly translationService: TranslationService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    @Inject(PLATFORM_ID) private readonly platformId: object
   ) {
   }
 
@@ -176,6 +185,14 @@ export class VersionHistoryPageComponent implements OnInit {
   private loadPatchChildren(node: VersionHistoryNode): void {
     const existingChildren: readonly VersionHistoryNode[] | undefined = this.loadedChildrenByNodeId()[node.id];
     if (existingChildren || this.loadingNodeIds().has(node.id)) {
+      return;
+    }
+
+    // Patch chunks are an interactive detail. Waiting for them during SSR keeps
+    // the whole HTTP response open and can make the reverse proxy return 504.
+    // The summary and milestone hierarchy are already rendered server-side;
+    // hydration loads a patch chunk only when the browser needs it.
+    if (!isPlatformBrowser(this.platformId)) {
       return;
     }
 

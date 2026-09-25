@@ -1,6 +1,6 @@
 import type { MockedObject } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
@@ -92,6 +92,32 @@ describe('VersionHistoryPageComponent', () => {
     fixture.detectChanges();
 
     expect(getPatchVersions(host).length).toBe(0);
+  }, 10000);
+
+  it('does not load patch chunks while rendering on the server', async () => {
+    TestBed.resetTestingModule();
+    const translationService: MockedObject<TranslationService> = {
+      getCurrentLang: vi.fn().mockReturnValue('fr'),
+      useLang: vi.fn().mockReturnValue(of(null)),
+      languageChanged: new EventEmitter<string>(),
+    } as unknown as MockedObject<TranslationService>;
+    await TestBed.configureTestingModule({
+      imports: [...COMMON_TEST_IMPORTS, VersionHistoryPageComponent],
+      providers: [
+        ...provideCommonTestDependencies(),
+        { provide: TranslationService, useValue: translationService },
+        { provide: PLATFORM_ID, useValue: 'server' },
+      ],
+    }).compileComponents();
+    const serverFixture: ComponentFixture<VersionHistoryPageComponent> =
+      TestBed.createComponent(VersionHistoryPageComponent);
+
+    serverFixture.detectChanges();
+    expect(await waitForVersionHistorySelector(serverFixture, '.version-entry--major')).toBe(true);
+    const host: HTMLElement = serverFixture.nativeElement as HTMLElement;
+
+    expect(host.querySelector('.version-entry--patch')).toBeNull();
+    expect(host.querySelector('.version-history-loading--inline')).toBeNull();
   }, 10000);
 });
 
