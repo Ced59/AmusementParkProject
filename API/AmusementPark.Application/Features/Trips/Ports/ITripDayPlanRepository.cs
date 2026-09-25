@@ -14,6 +14,7 @@ public interface ITripDayPlanRepository
         long? expectedVersion,
         TripChildMutationLease lease,
         string requestHash,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<TripDayPlanWriteResult> DeleteAsync(
@@ -21,5 +22,6 @@ public interface ITripDayPlanRepository
         DateOnly localDate,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 }

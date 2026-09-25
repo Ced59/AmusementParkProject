@@ -80,6 +80,8 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
                     Name = "ttl_trip_candidate_creation_tombstone",
                     ExpireAfter = TimeSpan.Zero,
                 }),
+            TripActivityPendingMongoDefinitions.BuildPendingIndex<TripParkCandidateDocument>(
+                "ix_trip_candidate_pending_audit"),
         };
     }
 
@@ -197,6 +199,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         TripParkCandidate candidate,
         TripChildMutationLease lease,
         string requestHash,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(candidate);
@@ -308,7 +311,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             & filters.Eq(static document => document.LeaseGeneration, lease.Generation)
             & TripChildMutationMongoDefinitions.BuildCreationLeaseGuard<TripParkCandidateDocument>();
         UpdateDefinitionBuilder<TripParkCandidateDocument> updates = Builders<TripParkCandidateDocument>.Update;
-        UpdateDefinition<TripParkCandidateDocument> update = updates
+        UpdateDefinition<TripParkCandidateDocument> update = TripActivityPendingMongoDefinitions.Append(updates
             .Set(static document => document.CandidateDates, materialized.CandidateDates)
             .Set(static document => document.Source, materialized.Source)
             .Set(static document => document.CandidateState, materialized.CandidateState)
@@ -320,7 +323,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             .Set(static document => document.CreatedAt, materialized.CreatedAt)
             .Set(static document => document.UpdatedAt, materialized.UpdatedAt)
             .Set(static document => document.DocumentState, TripChildDocumentState.Committed)
-            .Unset(static document => document.ReservedExpiresAtUtc);
+            .Unset(static document => document.ReservedExpiresAtUtc), pendingActivity);
         TripParkCandidateDocument? committed = await this.collection.FindOneAndUpdateAsync(
             filter,
             update,
@@ -349,6 +352,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         TripParkCandidate candidate,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(candidate);
@@ -374,7 +378,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             expectedVersion,
             lease);
         UpdateDefinitionBuilder<TripParkCandidateDocument> updates = Builders<TripParkCandidateDocument>.Update;
-        UpdateDefinition<TripParkCandidateDocument> update = updates
+        UpdateDefinition<TripParkCandidateDocument> update = TripActivityPendingMongoDefinitions.Append(updates
             .Set(static document => document.CandidateDates, replacement.CandidateDates)
             .Set(static document => document.CandidateState, replacement.CandidateState)
             .Set(static document => document.CollectiveNote, replacement.CollectiveNote)
@@ -382,7 +386,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             .Set(static document => document.SortPosition, replacement.SortPosition)
             .Set(static document => document.Version, replacement.Version)
             .Set(static document => document.UpdatedAt, replacement.UpdatedAt)
-            .Unset(static document => document.PendingMutation);
+            .Unset(static document => document.PendingMutation), pendingActivity);
         TripParkCandidateDocument? committed = await this.collection.FindOneAndUpdateAsync(
             commitFilter,
             update,
@@ -400,6 +404,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         TripPlanId tripPlanId,
         TripParkCandidateOrderPlan orderPlan,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(orderPlan);
@@ -455,9 +460,11 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
                 static document => document.ParkCandidateOrderVersion,
                 currentPlan.ParkCandidateOrderVersion)
             & TripPlanMongoDefinitions.BuildActiveChildLeaseIdentityFilter(lease);
-        UpdateDefinition<TripPlanDocument> update = Builders<TripPlanDocument>.Update
-            .Set(static document => document.ParkCandidateOrderIds, orderedIds)
-            .Inc(static document => document.ParkCandidateOrderVersion, 1);
+        UpdateDefinition<TripPlanDocument> update = TripActivityPendingMongoDefinitions.Append(
+            Builders<TripPlanDocument>.Update
+                .Set(static document => document.ParkCandidateOrderIds, orderedIds)
+                .Inc(static document => document.ParkCandidateOrderVersion, 1),
+            pendingActivity);
         UpdateResult result = await this.tripPlanCollection.UpdateOneAsync(
             filter,
             update,
@@ -473,6 +480,7 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         long expectedVersion,
         TripChildMutationLease lease,
         DateTime deletedAtUtc,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         if (deletedAtUtc.Kind != DateTimeKind.Utc)
@@ -493,7 +501,9 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
 
         UpdateDefinitionBuilder<TripParkCandidateDocument> updates =
             Builders<TripParkCandidateDocument>.Update;
-        UpdateDefinition<TripParkCandidateDocument> tombstone = updates.Combine(
+        UpdateDefinition<TripParkCandidateDocument> tombstoneExpiry =
+            BuildDeletionTombstoneExpiryUpdate(deletedAtUtc, pendingActivity is not null);
+        UpdateDefinition<TripParkCandidateDocument> tombstone = TripActivityPendingMongoDefinitions.Append(updates.Combine(
             updates.Set(static document => document.ParkId, $"deleted:{candidateId.Value}"),
             updates.Set(static document => document.CandidateDates, new List<string>()),
             updates.Set(static document => document.Source, TripParkCandidateSource.Manual),
@@ -505,12 +515,10 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
             updates.Set(static document => document.Version, checked(expectedVersion + 1)),
             updates.Set(static document => document.DocumentState, TripChildDocumentState.Deleted),
             updates.Unset(static document => document.ReservedExpiresAtUtc),
-            updates.Set(
-                static document => document.TombstoneExpiresAtUtc,
-                deletedAtUtc.Add(TripParkCandidate.CreationReplayRetention)),
+            tombstoneExpiry,
             updates.Unset(static document => document.PendingMutation),
             updates.Set(static document => document.CreatedAt, deletedAtUtc),
-            updates.Set(static document => document.UpdatedAt, deletedAtUtc));
+            updates.Set(static document => document.UpdatedAt, deletedAtUtc)), pendingActivity);
         UpdateResult result = await this.collection.UpdateOneAsync(
             BuildPendingFilter(tripPlanId, candidateId, expectedVersion, lease),
             tombstone,
@@ -518,6 +526,24 @@ public sealed class TripParkCandidateRepository : ITripParkCandidateRepository
         return result.ModifiedCount == 1
             ? new TripParkCandidateWriteResult(TripChildWriteOutcome.Success)
             : new TripParkCandidateWriteResult(TripChildWriteOutcome.LeaseExpired);
+    }
+
+    internal static UpdateDefinition<TripParkCandidateDocument> BuildDeletionTombstoneExpiryUpdate(
+        DateTime deletedAtUtc,
+        bool hasPendingAudit)
+    {
+        if (deletedAtUtc.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException("The deletion timestamp must be UTC.", nameof(deletedAtUtc));
+        }
+
+        UpdateDefinitionBuilder<TripParkCandidateDocument> updates =
+            Builders<TripParkCandidateDocument>.Update;
+        return hasPendingAudit
+            ? updates.Unset(static document => document.TombstoneExpiresAtUtc)
+            : updates.Set(
+                static document => document.TombstoneExpiresAtUtc,
+                deletedAtUtc.Add(TripParkCandidate.CreationReplayRetention));
     }
 
     private async Task<TripParkCandidateDocument?> ReserveMutationAsync(

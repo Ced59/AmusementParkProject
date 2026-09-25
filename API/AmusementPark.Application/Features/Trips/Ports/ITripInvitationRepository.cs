@@ -18,6 +18,7 @@ public interface ITripInvitationRepository
         string requestHash,
         string sealedToken,
         string sealedTokenKeyVersion,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<TripInvitation>> ListActiveAsync(
@@ -37,6 +38,7 @@ public interface ITripInvitationRepository
         TripInvitation invitation,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken);
 
     Task<int> ExpireElapsedAsync(int limit, CancellationToken cancellationToken);

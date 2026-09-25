@@ -46,6 +46,8 @@ public sealed class TripItemDecisionRepository : ITripItemDecisionRepository
                         static document => document.DocumentState,
                         TripChildDocumentState.Reserved),
                 }),
+            TripActivityPendingMongoDefinitions.BuildPendingIndex<TripItemDecisionDocument>(
+                "ix_trip_decision_pending_audit"),
         };
     }
 
@@ -78,6 +80,7 @@ public sealed class TripItemDecisionRepository : ITripItemDecisionRepository
     public async Task<TripItemDecisionWriteResult> CreateAsync(
         TripItemDecision decision,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(decision);
@@ -126,17 +129,21 @@ public sealed class TripItemDecisionRepository : ITripItemDecisionRepository
             & TripChildMutationMongoDefinitions.BuildCreationLeaseGuard<TripItemDecisionDocument>();
         UpdateDefinitionBuilder<TripItemDecisionDocument> updates =
             Builders<TripItemDecisionDocument>.Update;
+        UpdateDefinition<TripItemDecisionDocument> commitUpdate =
+            TripActivityPendingMongoDefinitions.Append(
+                updates
+                    .Set(static document => document.Status, materialized.Status)
+                    .Set(static document => document.Reason, materialized.Reason)
+                    .Set(static document => document.DecidedByUserId, materialized.DecidedByUserId)
+                    .Set(static document => document.Version, materialized.Version)
+                    .Set(static document => document.DocumentState, TripChildDocumentState.Committed)
+                    .Unset(static document => document.ReservedExpiresAtUtc)
+                    .Set(static document => document.CreatedAt, materialized.CreatedAt)
+                    .Set(static document => document.UpdatedAt, materialized.UpdatedAt),
+                pendingActivity);
         TripItemDecisionDocument? committed = await this.collection.FindOneAndUpdateAsync(
             filter,
-            updates
-                .Set(static document => document.Status, materialized.Status)
-                .Set(static document => document.Reason, materialized.Reason)
-                .Set(static document => document.DecidedByUserId, materialized.DecidedByUserId)
-                .Set(static document => document.Version, materialized.Version)
-                .Set(static document => document.DocumentState, TripChildDocumentState.Committed)
-                .Unset(static document => document.ReservedExpiresAtUtc)
-                .Set(static document => document.CreatedAt, materialized.CreatedAt)
-                .Set(static document => document.UpdatedAt, materialized.UpdatedAt),
+            commitUpdate,
             new FindOneAndUpdateOptions<TripItemDecisionDocument, TripItemDecisionDocument>
             {
                 ReturnDocument = ReturnDocument.After,
@@ -154,6 +161,7 @@ public sealed class TripItemDecisionRepository : ITripItemDecisionRepository
         TripItemDecision decision,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(decision);
@@ -192,15 +200,19 @@ public sealed class TripItemDecisionRepository : ITripItemDecisionRepository
             & filters.Eq("pendingMutation.childMutationEpoch", lease.ChildMutationEpoch)
             & filters.Eq("pendingMutation.leaseGeneration", lease.Generation)
             & TripChildMutationMongoDefinitions.BuildPendingLeaseGuard<TripItemDecisionDocument>();
+        UpdateDefinition<TripItemDecisionDocument> commitUpdate =
+            TripActivityPendingMongoDefinitions.Append(
+                Builders<TripItemDecisionDocument>.Update
+                    .Set(static document => document.Status, materialized.Status)
+                    .Set(static document => document.Reason, materialized.Reason)
+                    .Set(static document => document.DecidedByUserId, materialized.DecidedByUserId)
+                    .Set(static document => document.Version, materialized.Version)
+                    .Set(static document => document.UpdatedAt, materialized.UpdatedAt)
+                    .Unset(static document => document.PendingMutation),
+                pendingActivity);
         TripItemDecisionDocument? committed = await this.collection.FindOneAndUpdateAsync(
             commitFilter,
-            Builders<TripItemDecisionDocument>.Update
-                .Set(static document => document.Status, materialized.Status)
-                .Set(static document => document.Reason, materialized.Reason)
-                .Set(static document => document.DecidedByUserId, materialized.DecidedByUserId)
-                .Set(static document => document.Version, materialized.Version)
-                .Set(static document => document.UpdatedAt, materialized.UpdatedAt)
-                .Unset(static document => document.PendingMutation),
+            commitUpdate,
             new FindOneAndUpdateOptions<TripItemDecisionDocument, TripItemDecisionDocument>
             {
                 ReturnDocument = ReturnDocument.After,

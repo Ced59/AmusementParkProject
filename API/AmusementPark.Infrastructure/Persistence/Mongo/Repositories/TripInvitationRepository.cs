@@ -100,6 +100,8 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
                         static document => document.Status,
                         TripInvitationStatus.Prepared),
                 }),
+            TripActivityPendingMongoDefinitions.BuildPendingIndex<TripInvitationDocument>(
+                "ix_trip_invitation_pending_audit"),
         };
     }
 
@@ -122,6 +124,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
         string requestHash,
         string sealedToken,
         string sealedTokenKeyVersion,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(invitation);
@@ -144,6 +147,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
                 existing,
                 lease,
                 normalizedRequestHash,
+                pendingActivity,
                 cancellationToken);
         }
 
@@ -181,7 +185,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
             try
             {
                 await this.collection.InsertOneAsync(shell, cancellationToken: cancellationToken);
-                return await this.ActivateAsync(shell, lease, cancellationToken);
+                return await this.ActivateAsync(shell, lease, pendingActivity, cancellationToken);
             }
             catch (MongoWriteException exception)
                 when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
@@ -198,6 +202,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
                         operationReplay,
                         lease,
                         normalizedRequestHash,
+                        pendingActivity,
                         cancellationToken);
                 }
 
@@ -304,6 +309,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
         TripInvitation invitation,
         long expectedVersion,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(invitation);
@@ -331,13 +337,15 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
                 static document => document.Version,
                 expectedVersion)
             & BuildLeaseTimeGuard(lease),
-            updates.Set(static document => document.Status, TripInvitationStatus.Revoked)
-                .Set(static document => document.RevokedAtUtc, invitation.RevokedAtUtc)
-                .Set(static document => document.UpdatedAt, invitation.UpdatedAtUtc)
-                .Set(static document => document.Version, invitation.Version)
-                .Unset(static document => document.ActiveSlot)
-                .Unset(static document => document.SealedToken)
-                .Unset(static document => document.SealedTokenKeyVersion),
+            AppendPendingAudit(
+                updates.Set(static document => document.Status, TripInvitationStatus.Revoked)
+                    .Set(static document => document.RevokedAtUtc, invitation.RevokedAtUtc)
+                    .Set(static document => document.UpdatedAt, invitation.UpdatedAtUtc)
+                    .Set(static document => document.Version, invitation.Version)
+                    .Unset(static document => document.ActiveSlot)
+                    .Unset(static document => document.SealedToken)
+                    .Unset(static document => document.SealedTokenKeyVersion),
+                pendingActivity),
             cancellationToken: cancellationToken);
         if (result.ModifiedCount == 1)
         {
@@ -372,6 +380,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
         TripInvitationDocument existing,
         TripChildMutationLease lease,
         string requestHash,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         if (!string.Equals(existing.RequestHash, requestHash, StringComparison.Ordinal))
@@ -416,7 +425,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
             cancellationToken);
         return reclaimed is null
             ? new TripInvitationCreationWriteResult(TripInvitationCreationWriteOutcome.LeaseExpired)
-            : await this.ActivateAsync(reclaimed, lease, cancellationToken);
+            : await this.ActivateAsync(reclaimed, lease, pendingActivity, cancellationToken);
     }
 
     private async Task ExpireElapsedInvitationsAsync(
@@ -441,6 +450,7 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
     private async Task<TripInvitationCreationWriteResult> ActivateAsync(
         TripInvitationDocument shell,
         TripChildMutationLease lease,
+        TripActivityWrite? pendingActivity,
         CancellationToken cancellationToken)
     {
         FilterDefinitionBuilder<TripInvitationDocument> filters =
@@ -453,9 +463,11 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
             & filters.Eq(static document => document.ChildMutationEpoch, lease.ChildMutationEpoch)
             & filters.Eq(static document => document.LeaseGeneration, lease.Generation)
             & TripChildMutationMongoDefinitions.BuildCreationLeaseGuard<TripInvitationDocument>(),
-            Builders<TripInvitationDocument>.Update
-                .Set(static document => document.Status, TripInvitationStatus.Active)
-                .Unset(static document => document.ReservedExpiresAtUtc),
+            AppendPendingAudit(
+                Builders<TripInvitationDocument>.Update
+                    .Set(static document => document.Status, TripInvitationStatus.Active)
+                    .Unset(static document => document.ReservedExpiresAtUtc),
+                pendingActivity),
             new FindOneAndUpdateOptions<TripInvitationDocument, TripInvitationDocument>
             {
                 ReturnDocument = ReturnDocument.After,
@@ -484,6 +496,21 @@ public sealed class TripInvitationRepository : ITripInvitationRepository
         return new TripInvitationCreationWriteResult(
             TripInvitationCreationWriteOutcome.Success,
             ToCreationRecord(document, wasReplayed));
+    }
+
+    internal static UpdateDefinition<TripInvitationDocument> AppendPendingAudit(
+        UpdateDefinition<TripInvitationDocument> update,
+        TripActivityWrite? activity)
+    {
+        ArgumentNullException.ThrowIfNull(update);
+        UpdateDefinition<TripInvitationDocument> withMarker =
+            TripActivityPendingMongoDefinitions.Append(update, activity);
+        return activity is null
+            ? withMarker
+            : Builders<TripInvitationDocument>.Update.Combine(
+                withMarker,
+                Builders<TripInvitationDocument>.Update.Unset(
+                    static document => document.RetentionExpiresAtUtc));
     }
 
     private static TripInvitationCreationRecord ToCreationRecord(

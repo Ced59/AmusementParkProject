@@ -59,6 +59,12 @@ public sealed class TripPlanDocument : MongoDocumentBase
     [BsonElement("childMutationLeaseSequence")]
     public long ChildMutationLeaseSequence { get; set; }
 
+    [BsonElement("auditSequence")]
+    public long AuditSequence { get; set; }
+
+    [BsonElement("pendingAuditEvents")]
+    public List<TripActivityPendingDocument> PendingAuditEvents { get; set; } = new();
+
     [BsonElement("activeChildMutationLeases")]
     public List<TripChildMutationLeaseDocument> ActiveChildMutationLeases { get; set; } = new();
 

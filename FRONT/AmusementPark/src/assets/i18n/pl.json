@@ -1365,6 +1365,43 @@
     }
   },
   "trips": {
+    "activity": {
+      "open": "Zobacz historię",
+      "back": "Wróć do podróży",
+      "kicker": "Dziennik podróży",
+      "description": "Sprawdź ważne decyzje i zmiany grupy bez ujawniania prywatnych preferencji.",
+      "refresh": "Odśwież historię",
+      "feedKicker": "Wspólny zapis",
+      "feedTitle": "Co się zmieniło",
+      "feedDescription": "Najnowsze zmiany są widoczne jako pierwsze. Odśwież, gdy chcesz sprawdzić ostatnią modyfikację.",
+      "you": "Ty",
+      "hiddenActor": "Osoba nieujawniona",
+      "loadMore": "Wczytaj wcześniejsze zmiany",
+      "loadError": "Nie udało się wczytać historii podróży.",
+      "loadMoreError": "Nie udało się wczytać wcześniejszych zmian. Możesz spróbować ponownie.",
+      "emptyTitle": "Brak zapisanych zmian",
+      "emptyDescription": "Dziennik zacznie rejestrować kolejne zmiany podróży.",
+      "kinds": {
+        "tripCreated": "Utworzenie podróży · {{actor}}",
+        "tripRenamed": "Zmiana tytułu · {{actor}}",
+        "datesChanged": "Zmiana dat · {{actor}}",
+        "candidateAdded": "Dodanie parku kandydującego · {{actor}}",
+        "candidateUpdated": "Aktualizacja parku kandydującego · {{actor}}",
+        "candidateMoved": "Zmiana kolejności parku · {{actor}}",
+        "candidateRemoved": "Usunięcie parku kandydującego · {{actor}}",
+        "dayUpdated": "Aktualizacja dnia · {{actor}}",
+        "dayRemoved": "Usunięcie dnia · {{actor}}",
+        "invitationCreated": "Utworzenie zaproszenia · {{actor}}",
+        "invitationRevoked": "Cofnięcie zaproszenia · {{actor}}",
+        "invitationAccepted": "Przyjęcie zaproszenia · {{actor}}",
+        "invitationDeclined": "Odrzucenie zaproszenia · {{actor}}",
+        "participantRoleChanged": "Zmiana roli · {{actor}}",
+        "ownershipTransferred": "Przekazanie organizacji · {{actor}}",
+        "participantLeft": "Opuszczenie podróży · {{actor}}",
+        "preferencesUpdated": "Aktualizacja preferencji ({{count}}) · {{actor}}",
+        "collectiveDecisionUpdated": "Aktualizacja decyzji grupowej · {{actor}}"
+      }
+    },
     "invitations": {
       "kicker": "Planujcie razem",
       "title": "Zaproś swoich towarzyszy podróży",

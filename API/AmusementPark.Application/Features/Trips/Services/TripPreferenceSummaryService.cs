@@ -23,6 +23,7 @@ public sealed class TripPreferenceSummaryService
     private readonly IUserRepository users;
     private readonly TripChildMutationExecutor mutationExecutor;
     private readonly TimeProvider timeProvider;
+    private readonly TripActivityRecorder? activityRecorder;
 
     public TripPreferenceSummaryService(
         ITripPlanRepository plans,
@@ -32,7 +33,8 @@ public sealed class TripPreferenceSummaryService
         IImageRepository images,
         IUserRepository users,
         TripChildMutationExecutor mutationExecutor,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         this.plans = plans ?? throw new ArgumentNullException(nameof(plans));
         this.preferences = preferences ?? throw new ArgumentNullException(nameof(preferences));
@@ -42,6 +44,7 @@ public sealed class TripPreferenceSummaryService
         this.users = users ?? throw new ArgumentNullException(nameof(users));
         this.mutationExecutor = mutationExecutor ?? throw new ArgumentNullException(nameof(mutationExecutor));
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.activityRecorder = activityRecorder;
     }
 
     public async Task<ApplicationResult<TripPreferenceSummaryResult>> GetAsync(
@@ -204,13 +207,37 @@ public sealed class TripPreferenceSummaryService
             return Invalid(exception.Message, exception.Code);
         }
 
+        TripActivityWrite? pendingActivity = this.activityRecorder?.CreateWrite(
+            trip,
+            actorUserId,
+            TripActivityKind.CollectiveDecisionUpdated,
+            TripActivityRecorder.ChildOperationKey(
+                TripActivityKind.CollectiveDecisionUpdated,
+                lease),
+            1);
         TripItemDecisionWriteResult written = expectedVersion.HasValue
-            ? await this.decisions.ReplaceAsync(decision, expectedVersion.Value, lease, cancellationToken)
-            : await this.decisions.CreateAsync(decision, lease, cancellationToken);
+            ? await this.decisions.ReplaceAsync(
+                decision,
+                expectedVersion.Value,
+                lease,
+                pendingActivity,
+                cancellationToken)
+            : await this.decisions.CreateAsync(decision, lease, pendingActivity, cancellationToken);
         if (written.Outcome != TripChildWriteOutcome.Success)
         {
             return ApplicationResult<TripPreferenceSummaryResult>.Failure(
                 TripPlanApplicationErrors.DecisionChangedConcurrently(written.CurrentVersion));
+        }
+
+        if (this.activityRecorder is not null)
+        {
+            await this.activityRecorder.RecordAsync(
+                trip,
+                actorUserId,
+                TripActivityKind.CollectiveDecisionUpdated,
+                $"child:{TripActivityKind.CollectiveDecisionUpdated}:{lease.OperationId}:{lease.Generation}",
+                1,
+                CancellationToken.None);
         }
 
         return await this.BuildAsync(trip, actorUserId, cancellationToken, eligible);

@@ -27,6 +27,30 @@ public sealed class TripProgramMongoDefinitionsTests
     }
 
     [Fact]
+    public void CandidateDeletionWithPendingAudit_ShouldDisableTombstoneExpiryUntilMaterialized()
+    {
+        DateTime deletedAtUtc = new(2027, 6, 1, 8, 0, 0, DateTimeKind.Utc);
+        UpdateDefinition<TripParkCandidateDocument> pending =
+            TripParkCandidateRepository.BuildDeletionTombstoneExpiryUpdate(deletedAtUtc, true);
+        UpdateDefinition<TripParkCandidateDocument> materialized =
+            TripParkCandidateRepository.BuildDeletionTombstoneExpiryUpdate(deletedAtUtc, false);
+
+        BsonDocument pendingRendered = pending.Render(new RenderArgs<TripParkCandidateDocument>(
+                BsonSerializer.LookupSerializer<TripParkCandidateDocument>(),
+                BsonSerializer.SerializerRegistry))
+            .AsBsonDocument;
+        BsonDocument materializedRendered = materialized.Render(new RenderArgs<TripParkCandidateDocument>(
+                BsonSerializer.LookupSerializer<TripParkCandidateDocument>(),
+                BsonSerializer.SerializerRegistry))
+            .AsBsonDocument;
+
+        Assert.True(pendingRendered["$unset"].AsBsonDocument.Contains("tombstoneExpiresAtUtc"));
+        Assert.Equal(
+            deletedAtUtc.Add(AmusementPark.Core.Domain.Trips.TripParkCandidate.CreationReplayRetention),
+            materializedRendered["$set"]["tombstoneExpiresAtUtc"].ToUniversalTime());
+    }
+
+    [Fact]
     public void DayIndexes_ShouldGuaranteeOneProgramPerLocalDate()
     {
         IReadOnlyCollection<CreateIndexModel<TripDayPlanDocument>> indexes =

@@ -1,0 +1,21 @@
+{
+  "trips": {
+    "activity": {
+      "open": "View history", "back": "Back to the trip", "kicker": "Trip log",
+      "description": "Review the group’s important decisions and changes without revealing private preferences.",
+      "refresh": "Refresh history", "feedKicker": "Shared record", "feedTitle": "What changed",
+      "feedDescription": "The latest changes appear first. Refresh whenever you want to check a recent update.",
+      "you": "You", "hiddenActor": "Hidden person", "loadMore": "Load earlier changes", "loadError": "The trip history could not be loaded.",
+      "loadMoreError": "Earlier changes could not be loaded. You can try again.",
+      "emptyTitle": "No recorded changes", "emptyDescription": "The log will start with the trip’s next changes.",
+      "kinds": {
+        "tripCreated": "Trip created · {{actor}}", "tripRenamed": "Title changed · {{actor}}", "datesChanged": "Dates changed · {{actor}}",
+        "candidateAdded": "Candidate park added · {{actor}}", "candidateUpdated": "Candidate park updated · {{actor}}", "candidateMoved": "Candidate park reordered · {{actor}}", "candidateRemoved": "Candidate park removed · {{actor}}",
+        "dayUpdated": "Day updated · {{actor}}", "dayRemoved": "Day removed · {{actor}}",
+        "invitationCreated": "Invitation created · {{actor}}", "invitationRevoked": "Invitation revoked · {{actor}}", "invitationAccepted": "Invitation accepted · {{actor}}", "invitationDeclined": "Invitation declined · {{actor}}",
+        "participantRoleChanged": "Member role changed · {{actor}}", "ownershipTransferred": "Trip ownership transferred · {{actor}}", "participantLeft": "Member left the trip · {{actor}}",
+        "preferencesUpdated": "Preferences updated ({{count}}) · {{actor}}", "collectiveDecisionUpdated": "Group decision updated · {{actor}}"
+      }
+    }
+  }
+}

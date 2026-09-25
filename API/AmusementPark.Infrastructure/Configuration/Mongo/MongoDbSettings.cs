@@ -164,6 +164,8 @@ public sealed class MongoDbSettings
 
     public string TripInvitationsCollectionName { get; set; } = "trip-invitations";
 
+    public string TripAuditEventsCollectionName { get; set; } = "trip-audit-events";
+
     public string ParkFitSourceReportsCollectionName { get; set; } =
         "park-fit-source-reports";
 

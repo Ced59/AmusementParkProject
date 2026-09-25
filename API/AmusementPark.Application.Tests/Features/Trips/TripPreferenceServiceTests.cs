@@ -244,8 +244,9 @@ public sealed class TripPreferenceServiceTests
         preferences.Setup(repository => repository.CreateAsync(
                 It.IsAny<TripItemPreference>(),
                 lease,
+                It.IsAny<TripActivityWrite?>(),
                 CancellationToken.None))
-            .Returns((TripItemPreference preference, TripChildMutationLease _, CancellationToken _) =>
+            .Returns((TripItemPreference preference, TripChildMutationLease _, TripActivityWrite? _, CancellationToken _) =>
             {
                 stored.Add(preference);
                 return Task.FromResult(new TripItemPreferenceWriteResult(
@@ -324,7 +325,152 @@ public sealed class TripPreferenceServiceTests
         preferences.Verify(repository => repository.CreateAsync(
             It.IsAny<TripItemPreference>(),
             lease,
+            It.IsAny<TripActivityWrite?>(),
             CancellationToken.None), Times.Exactly(2));
+        leases.VerifyAll();
+    }
+
+    [Fact]
+    public async Task SetAsync_WhenTheBatchPartiallyCommits_ShouldPublishTheCommittedCount()
+    {
+        DateTime nowUtc = new(2027, 3, 4, 10, 0, 0, DateTimeKind.Utc);
+        TripPlan trip = CreateTrip(nowUtc);
+        TripMember owner = Assert.Single(trip.Members);
+        TripParkCandidate candidate = CreateCandidate(trip, owner, nowUtc);
+        TripChildMutationLease lease = new(
+            "preference-operation",
+            owner.Id,
+            trip.ChildMutationEpoch,
+            3,
+            nowUtc.AddMinutes(1));
+        Park park = new()
+        {
+            Id = "park-1",
+            Name = "Parc test",
+            IsVisible = true,
+            Status = ParkStatus.Operating,
+        };
+        ParkItem[] items =
+        {
+            new()
+            {
+                Id = "item-1",
+                ParkId = park.Id,
+                Name = "Grand huit",
+                Category = ParkItemCategory.Attraction,
+                IsVisible = true,
+            },
+            new()
+            {
+                Id = "item-2",
+                ParkId = park.Id,
+                Name = "Tour",
+                Category = ParkItemCategory.Attraction,
+                IsVisible = true,
+            },
+        };
+        Mock<ITripPlanRepository> trips = new(MockBehavior.Strict);
+        trips.Setup(repository => repository.GetAccessibleAsync(
+                trip.OwnerUserId,
+                trip.Id,
+                CancellationToken.None))
+            .ReturnsAsync(trip);
+        Mock<ITripParkCandidateRepository> candidates = new(MockBehavior.Strict);
+        candidates.Setup(repository => repository.ListAsync(trip.Id, CancellationToken.None))
+            .ReturnsAsync(new[] { candidate });
+        Mock<ITripPreferenceRepository> preferences = new(MockBehavior.Strict);
+        preferences.Setup(repository => repository.ListForUserAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<TripItemPreference>());
+        int writeNumber = 0;
+        preferences.Setup(repository => repository.CreateAsync(
+                It.IsAny<TripItemPreference>(),
+                lease,
+                It.Is<TripActivityWrite?>(activity =>
+                    activity != null
+                    && activity.Kind == TripActivityKind.PreferencesUpdated
+                    && activity.AffectedCount == 1
+                    && activity.ChildLeaseOperationId == lease.OperationId
+                    && activity.ChildLeaseEpoch == lease.ChildMutationEpoch
+                    && activity.ChildLeaseGeneration == lease.Generation),
+                CancellationToken.None))
+            .Returns((TripItemPreference preference, TripChildMutationLease _, TripActivityWrite? _, CancellationToken _) =>
+            {
+                writeNumber++;
+                return Task.FromResult(writeNumber == 1
+                    ? new TripItemPreferenceWriteResult(
+                        TripChildWriteOutcome.Success,
+                        preference,
+                        preference.Version)
+                    : new TripItemPreferenceWriteResult(TripChildWriteOutcome.Conflict, null, 4));
+            });
+        Mock<IParkRepository> parks = new(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetByIdsAsync(
+                It.IsAny<IEnumerable<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { park });
+        Mock<IParkItemRepository> parkItems = new(MockBehavior.Strict);
+        parkItems.Setup(repository => repository.GetVisibleOpenAttractionsByParkIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(items);
+        Mock<IImageRepository> images = new(MockBehavior.Strict);
+        Mock<ITripChildMutationLeaseRepository> leases = new(MockBehavior.Strict);
+        leases.Setup(repository => repository.TryAcquireAccessibleAsync(
+                trip.Id,
+                trip.OwnerUserId,
+                owner.Id,
+                trip.Version,
+                trip.ChildMutationEpoch,
+                It.IsAny<string>(),
+                CancellationToken.None))
+            .ReturnsAsync(lease);
+        leases.Setup(repository => repository.ReleaseAsync(trip.Id, lease, CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        Mock<ITripAuditWriter> writer = new(MockBehavior.Strict);
+        writer.Setup(port => port.AppendAsync(
+                It.Is<TripActivityWrite>(activity =>
+                    activity.Kind == TripActivityKind.PreferencesUpdated
+                    && activity.AffectedCount == 1
+                    && activity.ChildLeaseOperationId == lease.OperationId
+                    && activity.ChildLeaseEpoch == lease.ChildMutationEpoch
+                    && activity.ChildLeaseGeneration == lease.Generation
+                    && activity.OperationKey == TripActivityRecorder.ChildOperationKey(
+                        TripActivityKind.PreferencesUpdated,
+                        lease)),
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        TripPreferenceService service = CreateService(
+            trips,
+            candidates,
+            preferences,
+            parks,
+            parkItems,
+            images,
+            leases,
+            clock.Object,
+            new TripActivityRecorder(writer.Object, clock.Object));
+
+        AmusementPark.Application.Errors.ApplicationResult<TripPreferenceBoardResult> result =
+            await service.SetAsync(
+                trip.OwnerUserId,
+                trip.Id.Value,
+                trip.Version,
+                items.Select(item => new TripItemPreferenceInput(
+                    item.Id,
+                    null,
+                    TripItemPreferenceLevel.WantToDo,
+                    null)).ToArray(),
+                CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(2, writeNumber);
+        writer.VerifyAll();
+        images.VerifyNoOtherCalls();
         leases.VerifyAll();
     }
 
@@ -336,7 +482,8 @@ public sealed class TripPreferenceServiceTests
         Mock<IParkItemRepository> parkItems,
         Mock<IImageRepository> images,
         Mock<ITripChildMutationLeaseRepository> leases,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        TripActivityRecorder? activityRecorder = null)
     {
         return new TripPreferenceService(
             trips.Object,
@@ -349,7 +496,8 @@ public sealed class TripPreferenceServiceTests
             new TripChildMutationExecutor(
                 leases.Object,
                 NullLogger<TripChildMutationExecutor>.Instance),
-            timeProvider);
+            timeProvider,
+            activityRecorder);
     }
 
     private static TripPlan CreateTrip(DateTime nowUtc)
