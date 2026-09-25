@@ -94,7 +94,9 @@ par membre.
 La lecture est bornée à 100 événements (`99 + preuve qu’il en reste`) et utilise
 les index du journal sur `tripPlanId`, `sequence` et `createdAt`. La séquence
 écarte l’activité déjà matérialisée ; `updatedAt`, date du dernier jalon lu,
-écarte aussi un marqueur plus ancien matérialisé en retard. L’unicité de
+écarte aussi un marqueur plus ancien matérialisé en retard. La date est inclusive
+à la milliseconde MongoDB : la séquence strictement supérieure départage deux
+événements partageant exactement cette milliseconde. L’unicité de
 l’abonnement est protégée par un index MongoDB, pas par une vérification en
 mémoire.
 
@@ -296,12 +298,18 @@ ultérieure repart donc toujours désactivée. Son curseur n’avance qu’aprè
 réussite complète du lot ; un échec rejoue la même page, et la fin de collection
 ramène le prochain passage au début. Ce balayage borné évite une collection
 secondaire, une charge soudaine et tout abandon silencieux après redémarrage.
+La suppression compare l’identifiant du document, le voyage, l’appartenance,
+le compte et la version lus par le balayage. Si un nouvel abonnement remplace
+l’ancien pendant cette vérification, il ne peut donc pas être supprimé par la
+purge devenue obsolète.
 
 Le jalon de lecture combine la séquence et l’instant UTC. Un marqueur créé avant
 l’activation ou avant « tout marquer comme vu », mais matérialisé en retard,
 reçoit une séquence supérieure sans devenir artificiellement une nouveauté :
 sa date d’occurrence reste antérieure au jalon. Une vraie modification
-postérieure satisfait les deux bornes et reste visible. À l’inverse, une action
+postérieure satisfait les deux bornes et reste visible, y compris lorsque son
+horodatage BSON partage la milliseconde du jalon grâce à sa séquence supérieure.
+À l’inverse, une action
 personnelle est filtrée mais sa séquence peut être franchie sans risque, puisque
 le curseur est global au journal du voyage.
 
@@ -347,18 +355,19 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
 ## 11. Preuves
 
 - 7 tests Core : activation, réactivation, curseur monotone et politique ;
-- 12 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
+- 13 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
   concurrence, compensations de départ/annulation, réconciliation des
   abonnements orphelins ou issus d’une ancienne appartenance et métriques
   agrégées sans contenu privé ;
-- 24 tests Application du périmètre : notifications, départ, reprise de purge
+- 25 tests Application du périmètre : notifications, départ, reprise de purge
   et pilotage ;
-- 20 tests Infrastructure du périmètre : index, pagination de purge, clôture
+- 22 tests Infrastructure du périmètre : index, pagination de purge, clôture
   d’admission pendant une purge, filtre privé, comptages scalaires et
   agrégations, résolution du nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;
-- 20 tests Angular ciblés : façades, effet sans polling, réponse tardive
-  neutralisée, libellés agrégés, navigation admin et contrats responsive ;
+- 21 tests Angular ciblés : façades, effet sans polling, réponse tardive
+  neutralisée, reprise après erreur, libellés agrégés, navigation admin et
+  contrats responsive ;
 - build WebAPI Release réussi ;
 - build Angular production/SSR réussi ;
 - architecture façade/ports et règle une classe par fichier réussies ;

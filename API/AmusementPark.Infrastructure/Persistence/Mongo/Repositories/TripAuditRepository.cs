@@ -347,7 +347,7 @@ public sealed class TripAuditRepository : ITripAuditWriter, ITripAuditReader, IT
             Builders<TripActivityEventDocument>.Filter;
         return filters.Eq(static document => document.TripPlanId, tripPlanId.Value)
             & filters.Gt(static document => document.Sequence, afterSequence)
-            & filters.Gt(static document => document.CreatedAt, occurredAfterUtc)
+            & filters.Gte(static document => document.CreatedAt, occurredAfterUtc)
             & filters.Ne(static document => document.ActorMemberId, currentMemberId.Value)
             & filters.In(
                 static document => document.Kind,

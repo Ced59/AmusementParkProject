@@ -60,6 +60,7 @@ public sealed class TripAuditRepositoryTests
         Assert.Contains("member-1", rendered, StringComparison.Ordinal);
         Assert.Contains("$ne", rendered, StringComparison.Ordinal);
         Assert.Contains("$gt", rendered, StringComparison.Ordinal);
+        Assert.Contains("$gte", rendered, StringComparison.Ordinal);
         Assert.Contains("createdAt", rendered, StringComparison.Ordinal);
         Assert.Contains(baselineUtc.ToString("yyyy-MM-dd"), rendered, StringComparison.Ordinal);
         Assert.Contains(TripActivityKind.TripRenamed.ToString(), rendered, StringComparison.Ordinal);

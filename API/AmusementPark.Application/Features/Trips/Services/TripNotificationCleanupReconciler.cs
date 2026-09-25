@@ -50,11 +50,13 @@ public sealed class TripNotificationCleanupReconciler
                 continue;
             }
 
-            await this.subscriptions.DeleteForMemberAsync(
-                subscription.TripPlanId,
-                subscription.UserId,
+            bool wasDeleted = await this.subscriptions.DeleteIfCurrentAsync(
+                subscription,
                 cancellationToken);
-            deleted++;
+            if (wasDeleted)
+            {
+                deleted++;
+            }
         }
 
         string? nextCursor = batch.Count == limit

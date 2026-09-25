@@ -23,6 +23,10 @@ public interface ITripNotificationSubscriptionRepository
         int limit,
         CancellationToken cancellationToken);
 
+    Task<bool> DeleteIfCurrentAsync(
+        TripNotificationSubscription expectedSubscription,
+        CancellationToken cancellationToken);
+
     Task DeleteForMemberAsync(
         TripPlanId tripPlanId,
         string userId,

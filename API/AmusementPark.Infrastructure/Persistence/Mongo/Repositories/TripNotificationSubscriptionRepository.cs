@@ -102,6 +102,17 @@ public sealed class TripNotificationSubscriptionRepository
         return documents.Select(ToDomain).ToArray();
     }
 
+    public async Task<bool> DeleteIfCurrentAsync(
+        TripNotificationSubscription expectedSubscription,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(expectedSubscription);
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            BuildExactSubscriptionFilter(expectedSubscription),
+            cancellationToken);
+        return result.DeletedCount == 1;
+    }
+
     public async Task DeleteForMemberAsync(
         TripPlanId tripPlanId,
         string userId,
@@ -158,6 +169,19 @@ public sealed class TripNotificationSubscriptionRepository
             : Builders<TripNotificationSubscriptionDocument>.Filter.Gt(
                 static item => item.Id,
                 afterId.Trim());
+    }
+
+    internal static FilterDefinition<TripNotificationSubscriptionDocument>
+        BuildExactSubscriptionFilter(TripNotificationSubscription subscription)
+    {
+        ArgumentNullException.ThrowIfNull(subscription);
+        FilterDefinitionBuilder<TripNotificationSubscriptionDocument> filters =
+            Builders<TripNotificationSubscriptionDocument>.Filter;
+        return filters.Eq(static item => item.Id, subscription.Id)
+            & filters.Eq(static item => item.TripPlanId, subscription.TripPlanId.Value)
+            & filters.Eq(static item => item.MemberId, subscription.MemberId.Value)
+            & filters.Eq(static item => item.UserId, subscription.UserId)
+            & filters.Eq(static item => item.Version, subscription.Version);
     }
 
     private static TripNotificationSubscription ToDomain(

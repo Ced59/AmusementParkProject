@@ -50,6 +50,18 @@
         <span>{{ 'trips.notifications.refresh' | translate }}</span>
       </button>
     </div>
+  } @else if (facade.error()) {
+    <div class="trip-notification-panel__actions">
+      <button
+        type="button"
+        class="trip-notification-panel__retry"
+        appUiButton="ghost"
+        [disabled]="facade.loading() || facade.saving()"
+        (click)="facade.refresh()">
+        <i class="pi pi-refresh" aria-hidden="true"></i>
+        <span>{{ 'trips.notifications.refresh' | translate }}</span>
+      </button>
+    </div>
   }
 
   @if (facade.error()) {

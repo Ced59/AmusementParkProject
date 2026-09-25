@@ -38,11 +38,10 @@ public sealed class TripNotificationCleanupReconcilerTests
                 2,
                 CancellationToken.None))
             .ReturnsAsync(new[] { accessible, orphan });
-        subscriptions.Setup(repository => repository.DeleteForMemberAsync(
-                orphan.TripPlanId,
-                orphan.UserId,
+        subscriptions.Setup(repository => repository.DeleteIfCurrentAsync(
+                orphan,
                 CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(true);
         Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
         plans.Setup(repository => repository.GetAccessibleAsync(
                 accessible.UserId,
@@ -84,9 +83,8 @@ public sealed class TripNotificationCleanupReconcilerTests
                 25,
                 CancellationToken.None))
             .ReturnsAsync(new[] { orphan });
-        subscriptions.Setup(repository => repository.DeleteForMemberAsync(
-                orphan.TripPlanId,
-                orphan.UserId,
+        subscriptions.Setup(repository => repository.DeleteIfCurrentAsync(
+                orphan,
                 CancellationToken.None))
             .ThrowsAsync(new IOException("Transient cleanup failure."));
         Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
@@ -129,11 +127,10 @@ public sealed class TripNotificationCleanupReconcilerTests
                 25,
                 CancellationToken.None))
             .ReturnsAsync(new[] { stale });
-        subscriptions.Setup(repository => repository.DeleteForMemberAsync(
-                stale.TripPlanId,
-                stale.UserId,
+        subscriptions.Setup(repository => repository.DeleteIfCurrentAsync(
+                stale,
                 CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync(true);
         Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
         plans.Setup(repository => repository.GetAccessibleAsync(
                 stale.UserId,
@@ -151,6 +148,45 @@ public sealed class TripNotificationCleanupReconcilerTests
 
         Assert.Equal(1, result.DeletedCount);
         Assert.Null(result.NextCursor);
+        plans.VerifyAll();
+        subscriptions.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReconcileAsync_WhenSubscriptionWasReplaced_ShouldNotDeleteOrCountIt()
+    {
+        TripNotificationSubscription stale = Subscription(
+            "subscription-a",
+            TripPlanId.Parse("trip-2"),
+            TripMemberId.Parse("departed-member"),
+            "user-2");
+        Mock<ITripNotificationSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListForCleanupAsync(
+                null,
+                25,
+                CancellationToken.None))
+            .ReturnsAsync(new[] { stale });
+        subscriptions.Setup(repository => repository.DeleteIfCurrentAsync(
+                stale,
+                CancellationToken.None))
+            .ReturnsAsync(false);
+        Mock<ITripPlanRepository> plans = new(MockBehavior.Strict);
+        plans.Setup(repository => repository.GetAccessibleAsync(
+                stale.UserId,
+                stale.TripPlanId,
+                CancellationToken.None))
+            .ReturnsAsync((TripPlan?)null);
+        TripNotificationCleanupReconciler reconciler = new(
+            plans.Object,
+            subscriptions.Object);
+
+        TripNotificationCleanupBatchResult result = await reconciler.ReconcileAsync(
+            null,
+            25,
+            CancellationToken.None);
+
+        Assert.Equal(1, result.ScannedCount);
+        Assert.Equal(0, result.DeletedCount);
         plans.VerifyAll();
         subscriptions.VerifyAll();
     }

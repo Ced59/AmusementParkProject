@@ -58,4 +58,39 @@ describe('TripNotificationPanelComponent', () => {
     expect(facade.load).toHaveBeenCalledTimes(2);
     expect(facade.load).toHaveBeenLastCalledWith('trip-2');
   });
+
+  it('keeps a retry action available after the initial load fails', async () => {
+    const facade = {
+      state: signal(null).asReadonly(),
+      loading: signal(false).asReadonly(),
+      saving: signal(false).asReadonly(),
+      error: signal(true).asReadonly(),
+      load: vi.fn(),
+      toggle: vi.fn(),
+      markRead: vi.fn(),
+      refresh: vi.fn()
+    };
+
+    await TestBed.configureTestingModule({
+      imports: [...COMMON_TEST_IMPORTS, TripNotificationPanelComponent],
+      providers: provideCommonTestDependencies()
+    })
+      .overrideComponent(TripNotificationPanelComponent, {
+        set: { providers: [{ provide: TripNotificationFacade, useValue: facade }] }
+      })
+      .compileComponents();
+
+    const fixture: ComponentFixture<TripNotificationPanelComponent> =
+      TestBed.createComponent(TripNotificationPanelComponent);
+    fixture.componentRef.setInput('tripPlanId', 'trip-1');
+    fixture.componentRef.setInput('currentLanguage', 'fr');
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    const retry: HTMLButtonElement | null =
+      fixture.nativeElement.querySelector('.trip-notification-panel__retry');
+    expect(retry).not.toBeNull();
+    retry?.click();
+    expect(facade.refresh).toHaveBeenCalledTimes(1);
+  });
 });
