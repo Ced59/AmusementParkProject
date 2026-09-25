@@ -88,9 +88,11 @@ exactement la sélection après une coupure. Une confirmation volontairement
 vide écrit un marqueur de fin sans créer de passage. Ces opérations réutilisent
 les index d’idempotence existants et ne chargent ni notes privées ni contenu de
 visite. Les recherches par date excluent toujours les visites supprimées.
-Lorsqu’un ancien brouillon TRIP-12 a lui-même été supprimé, sa clé de création
-est libérée atomiquement du tombstone avant la nouvelle création : l’historique
-supprimé reste conservé, mais ne peut ni être rejoué ni bloquer l’index unique.
+Lorsqu’un ancien brouillon TRIP-12 a lui-même été supprimé, le tombstone est
+d’abord identifié. Son opération de passages est libérée avant sa clé de
+création de visite : une coupure entre les étapes reste donc rejouable.
+L’historique supprimé reste conservé, mais ne peut ni être rejoué ni bloquer
+les index uniques.
 
 ### WebAPI
 
@@ -133,11 +135,13 @@ classDiagram
       +ListOwnedCreationOperationVisitIdsAsync(userId, operationIds)
       +ResolveExistingCreationAsync(visit, operationId)
       +GetOwnedAsync(visitId, userId)
+      +GetDeletedCreationOperationVisitIdAsync(userId, operationId)
       +ReleaseDeletedCreationOperationAsync(userId, operationId)
     }
     class IRideOccurrenceRepository {
       +ListBatchCreationOperationStatesAsync(userId, operationIds)
       +CompleteEmptyBatchCreationOperationAsync(userId, visitId, operationId)
+      +ReleaseBatchCreationOperationAsync(userId, visitId, operationId)
     }
     class CreateVisitCommandHandler
     class AddRideOccurrencesBatchCommandHandler
@@ -210,6 +214,10 @@ sequenceDiagram
     alt visite manuelle déjà existante
       APP-->>UI: Réutiliser la visite existante
     else aucune visite ou création TRIP-12 rejouée
+      opt ancien brouillon TRIP-12 supprimé
+        APP->>DB: Retrouve le tombstone par clé propriétaire
+        APP->>DB: Libère son opération de passages puis sa clé de visite
+      end
       APP->>VISIT: Création idempotente du brouillon privé
       VISIT->>DB: Insert ou replay par clé déterministe
       alt au moins une attraction cochée
@@ -229,8 +237,9 @@ sequenceDiagram
 ```
 
 Les clés d’opération sont dérivées par SHA-256 de l’identifiant du voyage, du
-membre et de la date. Elles ne contiennent donc pas directement ces valeurs et
-restent stables entre deux tentatives.
+membre, du parc planifié et de la date. Elles ne contiennent donc pas
+directement ces valeurs, restent stables entre deux tentatives et distinguent
+deux parcs successivement programmés le même jour.
 
 ## 7. Schéma MongoDB utilisé
 
@@ -312,8 +321,9 @@ participant.
 | reprise après échec partiel | lectures groupées des empreintes et de l’état du batch, restauration verrouillée des identifiants réservés, exposition `canResume`, puis replay du même brouillon |
 | sélection vide réellement terminée | marqueur idempotent `completed` sans occurrence, relu comme une fin et non comme une reprise |
 | suppression sans blocage fantôme | le filtre exact propriétaire/date exclut les documents avec tombstone |
-| suppression d’un brouillon TRIP-12 | libération ciblée de son ancienne clé avant insert ; le tombstone n’est ni restauré ni supprimé physiquement |
+| suppression d’un brouillon TRIP-12 | résolution du tombstone puis libération ciblée de l’opération de passages avant celle de la visite ; une interruption reste rejouable et le tombstone n’est ni restauré ni supprimé physiquement |
 | catalogue modifié après réservation | le serveur reprend le payload réservé complet sans le reconstruire depuis les seules attractions encore visibles |
+| parc reprogrammé le même jour | le parc fait partie des deux clés d’opération ; la transition du nouveau parc ne rejoue pas celle de l’ancien |
 | pas de fuite SSR/cache | route authentifiée et réponse `no-store` |
 | plan conservé | aucune mutation ou suppression du voyage pendant la transition |
 

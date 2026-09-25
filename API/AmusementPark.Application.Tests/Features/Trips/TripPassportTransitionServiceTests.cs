@@ -160,6 +160,7 @@ public sealed class TripPassportTransitionServiceTests
         string rideOperationId = TripPassportTransitionOperationKeys.Rides(
             trip.Id.Value,
             trip.OwnerUserId,
+            "park-1",
             visitDate);
 
         Mock<ITripPlanRepository> trips = CreateTripRepository(trip);
@@ -259,7 +260,7 @@ public sealed class TripPassportTransitionServiceTests
     }
 
     [Fact]
-    public async Task ConfirmAsync_ShouldCreateAPrivateDraftAndOnlyAddExplicitlySelectedAttractions()
+    public async Task ConfirmAsync_WhenDeletedTransitionExists_ShouldReleaseItsKeysAndCreateSelectedAttractions()
     {
         DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
         DateOnly visitDate = new(2027, 8, 20);
@@ -268,6 +269,7 @@ public sealed class TripPassportTransitionServiceTests
         ParkItem selectedAttraction = CreateAttraction("item-1", "Grand huit");
         ParkItem unselectedAttraction = CreateAttraction("item-2", "Tour prioritaire");
         VisitId visitId = VisitId.New();
+        VisitId deletedVisitId = VisitId.New();
         Visit createdVisit = Visit.Create(
             visitId,
             trip.OwnerUserId,
@@ -290,12 +292,32 @@ public sealed class TripPassportTransitionServiceTests
                 CancellationToken.None))
             .ReturnsAsync(new[] { selectedAttraction, unselectedAttraction });
         Mock<IUserVisitRepository> visits = new(MockBehavior.Strict);
+        Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
         visits.Setup(repository => repository.ListOwnedByExactDatesAsync(
                 trip.OwnerUserId,
                 It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<Visit>());
-        visits.Setup(repository => repository.ReleaseDeletedCreationOperationAsync(
+        MockSequence cleanupSequence = new();
+        visits.InSequence(cleanupSequence).Setup(
+            repository => repository.GetDeletedCreationOperationVisitIdAsync(
+                trip.OwnerUserId,
+                It.Is<string>(operationId => operationId.StartsWith(
+                    "trip-passport-visit:",
+                    StringComparison.Ordinal)),
+                CancellationToken.None))
+            .ReturnsAsync(deletedVisitId);
+        rideOccurrences.InSequence(cleanupSequence).Setup(
+            repository => repository.ReleaseBatchCreationOperationAsync(
+                trip.OwnerUserId,
+                deletedVisitId,
+                It.Is<string>(operationId => operationId.StartsWith(
+                    "trip-passport-rides:",
+                    StringComparison.Ordinal)),
+                CancellationToken.None))
+            .Returns(Task.CompletedTask);
+        visits.InSequence(cleanupSequence).Setup(
+            repository => repository.ReleaseDeletedCreationOperationAsync(
                 trip.OwnerUserId,
                 It.Is<string>(operationId => operationId.StartsWith(
                     "trip-passport-visit:",
@@ -350,7 +372,6 @@ public sealed class TripPassportTransitionServiceTests
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<CreateRideOccurrencesResult>.Success(
                 new CreateRideOccurrencesResult(Array.Empty<RideOccurrenceResult>(), false, false)));
-        Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
         TripPassportTransitionConfirmer confirmer = new(
@@ -424,13 +445,13 @@ public sealed class TripPassportTransitionServiceTests
                 It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[] { visitDate })),
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<Visit>());
-        visits.Setup(repository => repository.ReleaseDeletedCreationOperationAsync(
+        visits.Setup(repository => repository.GetDeletedCreationOperationVisitIdAsync(
                 trip.OwnerUserId,
                 It.Is<string>(operationId => operationId.StartsWith(
                     "trip-passport-visit:",
                     StringComparison.Ordinal)),
                 CancellationToken.None))
-            .Returns(Task.CompletedTask);
+            .ReturnsAsync((VisitId?)null);
         visits.Setup(repository => repository.GetOwnedAsync(
                 visitId,
                 trip.OwnerUserId,
@@ -605,6 +626,7 @@ public sealed class TripPassportTransitionServiceTests
                     TripPassportTransitionOperationKeys.Rides(
                         trip.Id.Value,
                         trip.OwnerUserId,
+                        "park-1",
                         visitDate),
                     false,
                     new[] { selectedAttraction.Id! }),

@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
@@ -96,6 +97,28 @@ public sealed class TripPassportTransitionOperationLookupTests
         Assert.Equal(
             new[] { "hash-1", "hash-2" },
             rendered["operationKeyHash"]["$in"].AsBsonArray
+                .Select(static value => value.AsString));
+    }
+
+    [Fact]
+    public void RideRelease_ShouldTargetOnlyTheOwnedDeletedVisitCreationOperation()
+    {
+        VisitId visitId = VisitId.New();
+        FilterDefinition<UserRideOccurrenceCreationOperationDocument> filter =
+            UserRideOccurrenceCreationOperationMongoDefinitions
+                .BuildBatchCreationReleaseFilter(
+                    " user-1 ",
+                    visitId.Value,
+                    " operation-hash ");
+
+        BsonDocument rendered = Render(filter);
+
+        Assert.Equal("user-1", rendered["userId"].AsString);
+        Assert.Equal(visitId.Value, rendered["visitId"].AsString);
+        Assert.Equal("operation-hash", rendered["operationKeyHash"].AsString);
+        Assert.Equal(
+            new[] { "creation-key-reservation", "creation" },
+            rendered["operationKind"]["$in"].AsBsonArray
                 .Select(static value => value.AsString));
     }
 

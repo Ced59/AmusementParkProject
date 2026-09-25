@@ -115,6 +115,7 @@ public sealed class TripPassportTransitionReader
                 day => TripPassportTransitionOperationKeys.Visit(
                     parsedTripId.Value,
                     normalizedUserId,
+                    day.ParkId,
                     day.LocalDate));
         Dictionary<DateOnly, string> rideOperationIds = eligibleDaysWithVisit
             .ToDictionary(
@@ -122,6 +123,7 @@ public sealed class TripPassportTransitionReader
                 day => TripPassportTransitionOperationKeys.Rides(
                     parsedTripId.Value,
                     normalizedUserId,
+                    day.ParkId,
                     day.LocalDate));
         IReadOnlyCollection<VisitId> transitionVisitIds = visitOperationIds.Count == 0
             ? Array.Empty<VisitId>()

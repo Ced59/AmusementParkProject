@@ -677,6 +677,24 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         }
     }
 
+    public async Task ReleaseBatchCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedUserId = NormalizeRequired(userId, nameof(userId));
+        string operationKeyHash = UserRideOccurrenceCreationFingerprint.HashOperationKey(
+            NormalizeRequired(clientOperationId, nameof(clientOperationId)));
+        await this.operationCollection.DeleteOneAsync(
+            UserRideOccurrenceCreationOperationMongoDefinitions
+                .BuildBatchCreationReleaseFilter(
+                    normalizedUserId,
+                    visitId.Value,
+                    operationKeyHash),
+            cancellationToken);
+    }
+
     public Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
         RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,

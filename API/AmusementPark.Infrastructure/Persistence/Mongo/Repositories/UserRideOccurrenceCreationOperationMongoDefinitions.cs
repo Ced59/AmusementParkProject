@@ -65,6 +65,23 @@ internal static class UserRideOccurrenceCreationOperationMongoDefinitions
                 new[] { "reserved", "pending", "completed" });
     }
 
+    public static FilterDefinition<UserRideOccurrenceCreationOperationDocument>
+        BuildBatchCreationReleaseFilter(
+            string userId,
+            string visitId,
+            string operationKeyHash)
+    {
+        FilterDefinitionBuilder<UserRideOccurrenceCreationOperationDocument> filters =
+            Builders<UserRideOccurrenceCreationOperationDocument>.Filter;
+        return BuildOperationFilter(userId, operationKeyHash)
+            & filters.Eq(
+                static document => document.VisitId,
+                NormalizeRequired(visitId, nameof(visitId)))
+            & filters.In(
+                static document => document.OperationKind,
+                new[] { "creation-key-reservation", "creation" });
+    }
+
     public static IReadOnlyCollection<CreateIndexModel<UserRideOccurrenceCreationOperationDocument>>
         BuildIndexes()
     {

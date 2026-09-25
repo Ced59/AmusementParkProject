@@ -117,6 +117,7 @@ public sealed class TripPassportTransitionConfirmer
         string visitOperationId = TripPassportTransitionOperationKeys.Visit(
             parsedTripId.Value,
             normalizedUserId,
+            day.ParkId,
             localDate);
         bool isTransitionCreation = existingVisit is not null
             && await this.IsTransitionCreationAsync(
@@ -136,6 +137,7 @@ public sealed class TripPassportTransitionConfirmer
         string rideOperationId = TripPassportTransitionOperationKeys.Rides(
             parsedTripId.Value,
             normalizedUserId,
+            day.ParkId,
             localDate);
         RideOccurrenceBatchCreationOperationState? existingRideOperation = null;
         if (isTransitionCreation)
@@ -159,10 +161,23 @@ public sealed class TripPassportTransitionConfirmer
         }
         else
         {
-            await this.visits.ReleaseDeletedCreationOperationAsync(
-                normalizedUserId,
-                visitOperationId,
-                cancellationToken);
+            VisitId? deletedVisitId =
+                await this.visits.GetDeletedCreationOperationVisitIdAsync(
+                    normalizedUserId,
+                    visitOperationId,
+                    cancellationToken);
+            if (deletedVisitId.HasValue)
+            {
+                await this.rideOccurrences.ReleaseBatchCreationOperationAsync(
+                    normalizedUserId,
+                    deletedVisitId.Value,
+                    rideOperationId,
+                    cancellationToken);
+                await this.visits.ReleaseDeletedCreationOperationAsync(
+                    normalizedUserId,
+                    visitOperationId,
+                    cancellationToken);
+            }
         }
 
         IReadOnlyCollection<ParkItem> dayItems = await this.parkItems.GetByParkIdAsync(

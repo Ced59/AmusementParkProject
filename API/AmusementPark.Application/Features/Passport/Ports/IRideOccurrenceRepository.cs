@@ -68,6 +68,12 @@ public interface IRideOccurrenceRepository
         DateTime completedAtUtc,
         CancellationToken cancellationToken);
 
+    Task ReleaseBatchCreationOperationAsync(
+        string userId,
+        VisitId visitId,
+        string clientOperationId,
+        CancellationToken cancellationToken);
+
     Task<IdempotentRideOccurrenceCreationResult> CreateBatchIdempotentAsync(
         RideOccurrenceCreationRequest request,
         IReadOnlyList<RideOccurrence> occurrences,
