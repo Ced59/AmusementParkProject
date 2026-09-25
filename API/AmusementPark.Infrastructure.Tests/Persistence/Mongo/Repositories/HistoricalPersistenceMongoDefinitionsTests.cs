@@ -1,5 +1,6 @@
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Xunit;
 
@@ -44,5 +45,19 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_reviews_resource_date");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_reviews_revision_event");
         Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));
+    }
+
+    [Fact]
+    public void BuildLatestRevisionsPipeline_ShouldSelectOneRevisionPerSourceOnServer()
+    {
+        IReadOnlyCollection<BsonDocument> stages =
+            HistoricalSourceRepository.BuildLatestRevisionsPipeline(new[] { "source-1", "source-2" });
+        BsonDocument[] pipeline = stages.ToArray();
+
+        Assert.Equal(5, pipeline.Length);
+        Assert.True(pipeline[0].Contains("$match"));
+        Assert.Equal(-1, pipeline[1]["$sort"]["revision"].AsInt32);
+        Assert.Equal("$$ROOT", pipeline[2]["$group"]["document"]["$first"].AsString);
+        Assert.True(pipeline[3].Contains("$replaceRoot"));
     }
 }

@@ -5,6 +5,8 @@ namespace AmusementPark.Core.Domain.History;
 /// </summary>
 public sealed class HistoricalFact
 {
+    private const int MaximumSourceReferenceCount = 100;
+
     public HistoricalFact(
         Guid id,
         HistoricalSubject subject,
@@ -189,6 +191,13 @@ public sealed class HistoricalFact
         IReadOnlyCollection<HistoricalSourceRevisionReference> sourceReferences)
     {
         ArgumentNullException.ThrowIfNull(sourceReferences);
+        if (sourceReferences.Count > MaximumSourceReferenceCount)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidSourceScope,
+                $"A historical fact cannot cite more than {MaximumSourceReferenceCount} source revisions.");
+        }
+
         if (sourceReferences.Any(static sourceReference => sourceReference is null))
         {
             throw Invalid(

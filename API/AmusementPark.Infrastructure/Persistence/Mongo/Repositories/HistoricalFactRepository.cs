@@ -13,11 +13,14 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class HistoricalFactRepository : IHistoricalFactRepository
 {
     private readonly IMongoCollection<HistoricalFactDocument> collection;
+    private readonly IMongoCollection<HistoricalSourceDocument> sourceCollection;
 
     public HistoricalFactRepository(IMongoDatabase database, MongoDbSettings settings)
     {
         this.collection = database.GetCollection<HistoricalFactDocument>(
             settings.HistoricalFactsCollectionName);
+        this.sourceCollection = database.GetCollection<HistoricalSourceDocument>(
+            settings.HistoricalSourcesCollectionName);
     }
 
     public async Task<HistoricalRevisionWriteDisposition> AppendRevisionAsync(
@@ -25,6 +28,9 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(fact);
+        IReadOnlyCollection<HistoricalSourceReference> resolvedSources =
+            await this.LoadSourceRevisionsAsync(fact.SourceReferences, cancellationToken);
+        HistoricalFactEvidenceValidator.Validate(fact, resolvedSources);
         HistoricalFactDocument candidate = fact.ToDocument();
         try
         {
@@ -83,5 +89,30 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
     {
         return existing is not null
             && existing.ToBsonDocument().Equals(candidate.ToBsonDocument());
+    }
+
+    private async Task<IReadOnlyCollection<HistoricalSourceReference>> LoadSourceRevisionsAsync(
+        IReadOnlyCollection<HistoricalSourceRevisionReference> sourceReferences,
+        CancellationToken cancellationToken)
+    {
+        if (sourceReferences.Count == 0)
+        {
+            return Array.Empty<HistoricalSourceReference>();
+        }
+
+        FilterDefinitionBuilder<HistoricalSourceDocument> builder =
+            Builders<HistoricalSourceDocument>.Filter;
+        FilterDefinition<HistoricalSourceDocument>[] revisionFilters = sourceReferences
+            .Select(sourceReference =>
+                builder.Eq(
+                    document => document.SourceId,
+                    sourceReference.SourceId.ToString("N", CultureInfo.InvariantCulture))
+                & builder.Eq(document => document.Revision, sourceReference.Revision))
+            .ToArray();
+        List<HistoricalSourceDocument> sources = await this.sourceCollection
+            .Find(builder.Or(revisionFilters))
+            .Limit(sourceReferences.Count)
+            .ToListAsync(cancellationToken);
+        return sources.Select(static source => source.ToDomain()).ToArray();
     }
 }

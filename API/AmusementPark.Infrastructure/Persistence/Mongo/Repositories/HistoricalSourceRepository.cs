@@ -101,18 +101,14 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
                 $"A historical source batch cannot exceed {MaximumBatchSize} identifiers.");
         }
 
-        FilterDefinition<HistoricalSourceDocument> filter = Builders<HistoricalSourceDocument>.Filter
-            .In(document => document.SourceId, normalizedSourceIds);
+        PipelineDefinition<HistoricalSourceDocument, HistoricalSourceDocument> pipeline =
+            PipelineDefinition<HistoricalSourceDocument, HistoricalSourceDocument>.Create(
+                BuildLatestRevisionsPipeline(normalizedSourceIds));
         List<HistoricalSourceDocument> documents = await this.collection
-            .Find(filter)
-            .SortBy(document => document.SourceId)
-            .ThenByDescending(document => document.Revision)
+            .Aggregate(pipeline)
             .ToListAsync(cancellationToken);
 
-        return documents
-            .GroupBy(static document => document.SourceId, StringComparer.Ordinal)
-            .Select(static revisions => revisions.First().ToDomain())
-            .ToArray();
+        return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
     public async Task<IReadOnlyCollection<HistoricalSourceReference>> GetRevisionsAsync(
@@ -159,5 +155,33 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
     {
         return existing is not null
             && existing.ToBsonDocument().Equals(candidate.ToBsonDocument());
+    }
+
+    internal static IReadOnlyCollection<BsonDocument> BuildLatestRevisionsPipeline(
+        IReadOnlyCollection<string> normalizedSourceIds)
+    {
+        ArgumentNullException.ThrowIfNull(normalizedSourceIds);
+        return new BsonDocument[]
+        {
+            new BsonDocument(
+                "$match",
+                new BsonDocument(
+                    "sourceId",
+                    new BsonDocument("$in", new BsonArray(normalizedSourceIds)))),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["sourceId"] = 1,
+                ["revision"] = -1,
+            }),
+            new BsonDocument("$group", new BsonDocument
+            {
+                ["_id"] = "$sourceId",
+                ["document"] = new BsonDocument("$first", "$$ROOT"),
+            }),
+            new BsonDocument(
+                "$replaceRoot",
+                new BsonDocument("newRoot", "$document")),
+            new BsonDocument("$sort", new BsonDocument("sourceId", 1)),
+        };
     }
 }

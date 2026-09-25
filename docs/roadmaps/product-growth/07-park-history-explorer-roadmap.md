@@ -704,6 +704,9 @@ libellé historique figé, sa période structurée, son état de preuve, son ét
 publication, ses sources, sa version de méthodologie et sa chaîne de révisions.
 Chaque preuve citée est figée sur sa révision exacte : une correction future de
 la source ne réécrit donc jamais rétroactivement un fait déjà publié.
+Avant l'insertion, un service de domaine vérifie que ces révisions existent,
+sont admissibles et couvrent ensemble l'identité, le libellé historique, le
+type, la période et, lorsqu'elle existe, la valeur structurée du fait.
 Les combinaisons incohérentes sont refusées dans le Core : un fait vérifié sans
 preuve, un contenu incertain sans explication dans les huit langues ou une
 cible supprimée rendue publique ne peuvent pas atteindre MongoDB.
