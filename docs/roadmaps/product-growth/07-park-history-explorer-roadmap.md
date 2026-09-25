@@ -712,7 +712,8 @@ Les écritures sont append-only et idempotentes : rejouer exactement la même
 révision ne crée pas de doublon, tandis qu'une autre valeur utilisant la même
 identité de révision est signalée comme conflit. Les preuves suivent la même
 discipline et conservent leur référence stable, leur date de consultation, leur
-accessibilité et la partie du fait qu'elles soutiennent. Le journal de revue
+accessibilité et la partie du fait qu'elles soutiennent. Leurs révisions figées
+peuvent être chargées par lot, sans lecture N+1. Le journal de revue
 reste permanent et associe chaque action à la révision concernée sans exposer
 ces informations au public.
 

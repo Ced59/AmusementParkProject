@@ -115,6 +115,44 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
             .ToArray();
     }
 
+    public async Task<IReadOnlyCollection<HistoricalSourceReference>> GetRevisionsAsync(
+        IReadOnlyCollection<HistoricalSourceRevisionReference> sourceReferences,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(sourceReferences);
+        HistoricalSourceRevisionReference[] normalizedReferences = sourceReferences
+            .Distinct()
+            .OrderBy(static sourceReference => sourceReference.SourceId)
+            .ThenBy(static sourceReference => sourceReference.Revision)
+            .ToArray();
+        if (normalizedReferences.Length == 0)
+        {
+            return Array.Empty<HistoricalSourceReference>();
+        }
+
+        if (normalizedReferences.Length > MaximumBatchSize)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(sourceReferences),
+                $"A historical source batch cannot exceed {MaximumBatchSize} revision references.");
+        }
+
+        FilterDefinitionBuilder<HistoricalSourceDocument> builder =
+            Builders<HistoricalSourceDocument>.Filter;
+        FilterDefinition<HistoricalSourceDocument>[] revisionFilters = normalizedReferences
+            .Select(sourceReference =>
+                builder.Eq(document => document.SourceId, sourceReference.SourceId.ToString("N", CultureInfo.InvariantCulture))
+                & builder.Eq(document => document.Revision, sourceReference.Revision))
+            .ToArray();
+        List<HistoricalSourceDocument> documents = await this.collection
+            .Find(builder.Or(revisionFilters))
+            .SortBy(document => document.SourceId)
+            .ThenBy(document => document.Revision)
+            .Limit(normalizedReferences.Length)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     private static bool DocumentsMatch(
         HistoricalSourceDocument? existing,
         HistoricalSourceDocument candidate)
