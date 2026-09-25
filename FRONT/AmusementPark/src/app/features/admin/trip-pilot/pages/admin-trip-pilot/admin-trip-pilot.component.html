@@ -39,7 +39,7 @@
         </div>
         @for (item of activity(); track item.key) {
           <article>
-            <div><span>{{ ('trips.activity.kinds.' + item.key[0].toLowerCase() + item.key.slice(1)) | translate }}</span><strong>{{ item.count | number }}</strong></div>
+            <div><span>{{ ('admin.tripPilot.activity.labels.' + item.key[0].toLowerCase() + item.key.slice(1)) | translate }}</span><strong>{{ item.count | number }}</strong></div>
             <span class="trip-pilot__bar"><i [style.--bar-width]="item.widthPercent + '%'" aria-hidden="true"></i></span>
           </article>
         } @empty {

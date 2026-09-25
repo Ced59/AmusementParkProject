@@ -84,6 +84,24 @@ public sealed class TripNotificationSubscriptionRepository
         return result.MatchedCount == 1;
     }
 
+    public async Task<IReadOnlyCollection<TripNotificationSubscription>> ListForCleanupAsync(
+        string? afterId,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        if (limit is < 1 or > 100)
+        {
+            throw new ArgumentOutOfRangeException(nameof(limit));
+        }
+
+        List<TripNotificationSubscriptionDocument> documents = await this.collection
+            .Find(BuildCleanupPageFilter(afterId))
+            .SortBy(static item => item.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        return documents.Select(ToDomain).ToArray();
+    }
+
     public async Task DeleteForMemberAsync(
         TripPlanId tripPlanId,
         string userId,
@@ -130,6 +148,16 @@ public sealed class TripNotificationSubscriptionRepository
                     .Ascending(static item => item.IsEnabled),
                 new CreateIndexOptions { Name = "ix_trip_notification_user_enabled" }),
         };
+    }
+
+    internal static FilterDefinition<TripNotificationSubscriptionDocument> BuildCleanupPageFilter(
+        string? afterId)
+    {
+        return string.IsNullOrWhiteSpace(afterId)
+            ? Builders<TripNotificationSubscriptionDocument>.Filter.Empty
+            : Builders<TripNotificationSubscriptionDocument>.Filter.Gt(
+                static item => item.Id,
+                afterId.Trim());
     }
 
     private static TripNotificationSubscription ToDomain(

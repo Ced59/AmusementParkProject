@@ -4577,7 +4577,28 @@
       "activity": {
         "title": "Productactiviteit",
         "description": "Verdeling van bewijs in het privélogboek.",
-        "empty": "Het logboek bevat nog geen gebeurtenissen."
+        "empty": "Het logboek bevat nog geen gebeurtenissen.",
+        "labels": {
+          "tripCreated": "Reis aangemaakt",
+          "tripRenamed": "Reis hernoemd",
+          "datesChanged": "Datums gewijzigd",
+          "candidateAdded": "Park toegevoegd",
+          "candidateUpdated": "Park bijgewerkt",
+          "candidateMoved": "Park opnieuw gerangschikt",
+          "candidateRemoved": "Park verwijderd",
+          "dayUpdated": "Dag bijgewerkt",
+          "dayRemoved": "Dag verwijderd",
+          "invitationCreated": "Uitnodiging aangemaakt",
+          "invitationRevoked": "Uitnodiging ingetrokken",
+          "invitationAccepted": "Uitnodiging geaccepteerd",
+          "invitationDeclined": "Uitnodiging geweigerd",
+          "participantRoleChanged": "Deelnemersrol gewijzigd",
+          "ownershipTransferred": "Eigenaarschap overgedragen",
+          "participantLeft": "Deelnemer vertrokken",
+          "preferencesUpdated": "Voorkeuren bijgewerkt",
+          "collectiveDecisionUpdated": "Groepsbesluit bijgewerkt",
+          "planExported": "Plan geëxporteerd"
+        }
       },
       "generatedAt": "Momentopname gemaakt op {{date}} UTC."
     },

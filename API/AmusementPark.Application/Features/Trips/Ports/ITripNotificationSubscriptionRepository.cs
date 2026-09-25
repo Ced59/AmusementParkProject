@@ -18,6 +18,11 @@ public interface ITripNotificationSubscriptionRepository
         long expectedVersion,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<TripNotificationSubscription>> ListForCleanupAsync(
+        string? afterId,
+        int limit,
+        CancellationToken cancellationToken);
+
     Task DeleteForMemberAsync(
         TripPlanId tripPlanId,
         string userId,

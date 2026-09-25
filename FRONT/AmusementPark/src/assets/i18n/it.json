@@ -4577,7 +4577,28 @@
       "activity": {
         "title": "Attività del prodotto",
         "description": "Distribuzione delle prove conservate nel registro privato.",
-        "empty": "Il registro non contiene ancora eventi."
+        "empty": "Il registro non contiene ancora eventi.",
+        "labels": {
+          "tripCreated": "Viaggio creato",
+          "tripRenamed": "Viaggio rinominato",
+          "datesChanged": "Date modificate",
+          "candidateAdded": "Parco aggiunto",
+          "candidateUpdated": "Parco aggiornato",
+          "candidateMoved": "Parco riordinato",
+          "candidateRemoved": "Parco rimosso",
+          "dayUpdated": "Giornata aggiornata",
+          "dayRemoved": "Giornata rimossa",
+          "invitationCreated": "Invito creato",
+          "invitationRevoked": "Invito revocato",
+          "invitationAccepted": "Invito accettato",
+          "invitationDeclined": "Invito rifiutato",
+          "participantRoleChanged": "Ruolo del partecipante modificato",
+          "ownershipTransferred": "Proprietà trasferita",
+          "participantLeft": "Partecipante uscito",
+          "preferencesUpdated": "Preferenze aggiornate",
+          "collectiveDecisionUpdated": "Decisione collettiva aggiornata",
+          "planExported": "Piano esportato"
+        }
       },
       "generatedAt": "Istantanea generata il {{date}} UTC."
     },

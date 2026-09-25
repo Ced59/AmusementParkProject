@@ -121,7 +121,9 @@ jamais transformer l’actualisation manuelle en polling involontaire.
 
 La page d’administration « Pilote des voyages » est lazy-loaded et présente les
 indicateurs agrégés, l’état du rattrapage d’audit et une répartition graphique
-légère des activités. Elle ne rejoint jamais les comptes ou les textes privés.
+légère des activités. Les barres utilisent des libellés agrégés dédiés, sans
+acteur ni variable issue du journal individuel. Elle ne rejoint jamais les
+comptes ou les textes privés.
 
 ## 4. Schéma MongoDB
 
@@ -180,6 +182,7 @@ classDiagram
     class TripNotificationSubscriptionRepository
     class TripAuditRepository
     class TripPreferenceCleanupReconciler
+    class TripNotificationCleanupReconciler
     class ITripPreferenceRepository
     class GetTripPilotMetricsQueryHandler
     class ITripPilotMetricsRepository
@@ -204,6 +207,8 @@ classDiagram
     ITripAuditReader <|.. TripAuditRepository
     TripPreferenceCleanupReconciler --> ITripPreferenceRepository
     TripPreferenceCleanupReconciler --> ITripNotificationSubscriptionRepository
+    TripNotificationCleanupReconciler --> ITripNotificationSubscriptionRepository
+    TripNotificationCleanupReconciler --> ITripPlanRepository
     AdminTripPilotController --> GetTripPilotMetricsQueryHandler
     GetTripPilotMetricsQueryHandler --> ITripPilotMetricsRepository
     ITripPilotMetricsRepository <|.. TripPilotMetricsRepository
@@ -268,6 +273,16 @@ opérations idempotentes dans le même ordre. Une panne MongoDB entre les deux
 laisse donc le marqueur en place et déclenche une nouvelle tentative, au lieu
 de conserver silencieusement un suivi devenu inaccessible.
 
+Une seconde protection traite la course plus rare où le départ ou la suppression
+du voyage se termine juste avant la création de l’abonnement, puis où sa
+compensation MongoDB échoue. Le document d’abonnement lui-même sert alors de
+marqueur durable. Un réconciliateur parcourt au plus 25 abonnements par minute,
+par identifiant opaque croissant, revérifie l’accès actif et supprime uniquement
+les documents devenus inaccessibles. Son curseur n’avance qu’après la réussite
+complète du lot ; un échec rejoue donc la même page, et la fin de collection
+ramène le prochain passage au début. Ce balayage borné évite une collection
+secondaire, une charge soudaine et tout abandon silencieux après redémarrage.
+
 Le jalon de lecture combine la séquence et l’instant UTC. Un marqueur créé avant
 l’activation ou avant « tout marquer comme vu », mais matérialisé en retard,
 reçoit une séquence supérieure sans devenir artificiellement une nouveauté :
@@ -318,16 +333,16 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
 ## 11. Preuves
 
 - 7 tests Core : activation, réactivation, curseur monotone et politique ;
-- 7 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
-  concurrence, compensations de départ/annulation et métriques agrégées sans
-  contenu privé ;
-- 19 tests Application du périmètre : notifications, départ, reprise de purge
+- 10 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
+  concurrence, compensations de départ/annulation, réconciliation des
+  abonnements orphelins et métriques agrégées sans contenu privé ;
+- 22 tests Application du périmètre : notifications, départ, reprise de purge
   et pilotage ;
-- 16 tests Infrastructure du périmètre : index, filtre privé, agrégations et
+- 18 tests Infrastructure du périmètre : index, pagination de purge, filtre privé, agrégations et
   résolution du nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;
-- 18 tests Angular ciblés : façades, effet sans polling, navigation admin et
-  contrats responsive ;
+- 19 tests Angular ciblés : façades, effet sans polling, libellés agrégés,
+  navigation admin et contrats responsive ;
 - build WebAPI Release réussi ;
 - build Angular production/SSR réussi ;
 - architecture façade/ports et règle une classe par fichier réussies ;

@@ -29,7 +29,28 @@
       "activity": {
         "title": "Activité métier",
         "description": "Répartition des preuves conservées dans le journal privé.",
-        "empty": "Le journal ne contient encore aucun événement."
+        "empty": "Le journal ne contient encore aucun événement.",
+        "labels": {
+          "tripCreated": "Voyage créé",
+          "tripRenamed": "Voyage renommé",
+          "datesChanged": "Dates modifiées",
+          "candidateAdded": "Parc ajouté",
+          "candidateUpdated": "Parc modifié",
+          "candidateMoved": "Parc réordonné",
+          "candidateRemoved": "Parc retiré",
+          "dayUpdated": "Journée modifiée",
+          "dayRemoved": "Journée retirée",
+          "invitationCreated": "Invitation créée",
+          "invitationRevoked": "Invitation révoquée",
+          "invitationAccepted": "Invitation acceptée",
+          "invitationDeclined": "Invitation refusée",
+          "participantRoleChanged": "Rôle modifié",
+          "ownershipTransferred": "Propriété transférée",
+          "participantLeft": "Participant parti",
+          "preferencesUpdated": "Préférences modifiées",
+          "collectiveDecisionUpdated": "Décision collective modifiée",
+          "planExported": "Plan exporté"
+        }
       },
       "generatedAt": "Instantané généré le {{date}} UTC."
     }

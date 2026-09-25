@@ -10,6 +10,22 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class TripNotificationSubscriptionRepositoryTests
 {
     [Fact]
+    public void BuildCleanupPageFilter_ShouldContinueAfterOpaqueIdentifier()
+    {
+        FilterDefinition<TripNotificationSubscriptionDocument> filter =
+            TripNotificationSubscriptionRepository.BuildCleanupPageFilter(" subscription-1 ");
+
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<TripNotificationSubscriptionDocument>(
+                BsonSerializer.SerializerRegistry.GetSerializer<TripNotificationSubscriptionDocument>(),
+                BsonSerializer.SerializerRegistry));
+
+        Assert.Equal(
+            new BsonDocument("_id", new BsonDocument("$gt", "subscription-1")),
+            rendered);
+    }
+
+    [Fact]
     public void BuildIndexes_ShouldEnforceOneSubscriptionPerMemberAndTrip()
     {
         IReadOnlyCollection<CreateIndexModel<TripNotificationSubscriptionDocument>> indexes =

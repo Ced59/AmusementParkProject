@@ -4577,7 +4577,28 @@
       "activity": {
         "title": "Product activity",
         "description": "Breakdown of evidence retained in the private activity log.",
-        "empty": "The activity log does not contain any event yet."
+        "empty": "The activity log does not contain any event yet.",
+        "labels": {
+          "tripCreated": "Trip created",
+          "tripRenamed": "Trip renamed",
+          "datesChanged": "Dates changed",
+          "candidateAdded": "Park added",
+          "candidateUpdated": "Park updated",
+          "candidateMoved": "Park reordered",
+          "candidateRemoved": "Park removed",
+          "dayUpdated": "Day updated",
+          "dayRemoved": "Day removed",
+          "invitationCreated": "Invitation created",
+          "invitationRevoked": "Invitation revoked",
+          "invitationAccepted": "Invitation accepted",
+          "invitationDeclined": "Invitation declined",
+          "participantRoleChanged": "Participant role changed",
+          "ownershipTransferred": "Ownership transferred",
+          "participantLeft": "Participant left",
+          "preferencesUpdated": "Preferences updated",
+          "collectiveDecisionUpdated": "Collective decision updated",
+          "planExported": "Plan exported"
+        }
       },
       "generatedAt": "Snapshot generated on {{date}} UTC."
     },

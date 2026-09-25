@@ -4577,7 +4577,28 @@
       "activity": {
         "title": "Produktaktivität",
         "description": "Verteilung der im privaten Aktivitätsprotokoll gespeicherten Nachweise.",
-        "empty": "Das Aktivitätsprotokoll enthält noch kein Ereignis."
+        "empty": "Das Aktivitätsprotokoll enthält noch kein Ereignis.",
+        "labels": {
+          "tripCreated": "Reise erstellt",
+          "tripRenamed": "Reise umbenannt",
+          "datesChanged": "Reisedaten geändert",
+          "candidateAdded": "Park hinzugefügt",
+          "candidateUpdated": "Park aktualisiert",
+          "candidateMoved": "Park neu angeordnet",
+          "candidateRemoved": "Park entfernt",
+          "dayUpdated": "Tag aktualisiert",
+          "dayRemoved": "Tag entfernt",
+          "invitationCreated": "Einladung erstellt",
+          "invitationRevoked": "Einladung widerrufen",
+          "invitationAccepted": "Einladung angenommen",
+          "invitationDeclined": "Einladung abgelehnt",
+          "participantRoleChanged": "Teilnehmerrolle geändert",
+          "ownershipTransferred": "Eigentümerschaft übertragen",
+          "participantLeft": "Teilnehmer ausgetreten",
+          "preferencesUpdated": "Präferenzen aktualisiert",
+          "collectiveDecisionUpdated": "Gruppenentscheidung aktualisiert",
+          "planExported": "Plan exportiert"
+        }
       },
       "generatedAt": "Momentaufnahme erstellt am {{date}} UTC."
     },

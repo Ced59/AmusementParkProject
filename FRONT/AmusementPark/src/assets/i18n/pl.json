@@ -4577,7 +4577,28 @@
       "activity": {
         "title": "Aktywność produktu",
         "description": "Podział dowodów zachowanych w prywatnym dzienniku.",
-        "empty": "Dziennik nie zawiera jeszcze żadnych zdarzeń."
+        "empty": "Dziennik nie zawiera jeszcze żadnych zdarzeń.",
+        "labels": {
+          "tripCreated": "Utworzono podróż",
+          "tripRenamed": "Zmieniono nazwę podróży",
+          "datesChanged": "Zmieniono daty",
+          "candidateAdded": "Dodano park",
+          "candidateUpdated": "Zaktualizowano park",
+          "candidateMoved": "Zmieniono kolejność parków",
+          "candidateRemoved": "Usunięto park",
+          "dayUpdated": "Zaktualizowano dzień",
+          "dayRemoved": "Usunięto dzień",
+          "invitationCreated": "Utworzono zaproszenie",
+          "invitationRevoked": "Cofnięto zaproszenie",
+          "invitationAccepted": "Przyjęto zaproszenie",
+          "invitationDeclined": "Odrzucono zaproszenie",
+          "participantRoleChanged": "Zmieniono rolę uczestnika",
+          "ownershipTransferred": "Przeniesiono własność",
+          "participantLeft": "Uczestnik opuścił podróż",
+          "preferencesUpdated": "Zaktualizowano preferencje",
+          "collectiveDecisionUpdated": "Zaktualizowano wspólną decyzję",
+          "planExported": "Wyeksportowano plan"
+        }
       },
       "generatedAt": "Migawka wygenerowana {{date}} UTC."
     },
