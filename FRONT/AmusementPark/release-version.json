@@ -1,8 +1,8 @@
 {
-  "version": "5.3.77",
+  "version": "5.3.78",
   "history": [
     {
-      "version": "5.3.77",
+      "version": "5.3.78",
       "releasedAt": "2026-09-25",
       "labels": {
         "fr": "Tu peux maintenant suivre les changements importants de tes voyages partagés.",
@@ -13,6 +13,20 @@
         "es": "Ya puedes seguir los cambios importantes de tus viajes compartidos.",
         "pl": "Możesz teraz śledzić ważne zmiany w swoich wspólnych podróżach.",
         "pt": "Agora podes acompanhar as alterações importantes nas tuas viagens partilhadas."
+      }
+    },
+    {
+      "version": "5.3.77",
+      "releasedAt": "2026-09-25",
+      "labels": {
+        "fr": "La liste de complétude des parcs publiés reflète dix nouvelles validations.",
+        "en": "The published park completeness list now reflects ten more validations.",
+        "de": "Die Vollständigkeitsliste veröffentlichter Parks berücksichtigt zehn weitere Prüfungen.",
+        "nl": "De volledigheidslijst van gepubliceerde parken bevat nu tien extra validaties.",
+        "it": "L’elenco di completezza dei parchi pubblicati include ora dieci nuove convalide.",
+        "es": "La lista de integridad de parques publicados incorpora diez nuevas validaciones.",
+        "pl": "Lista kompletności opublikowanych parków uwzględnia teraz dziesięć kolejnych weryfikacji.",
+        "pt": "A lista de completude dos parques publicados inclui agora mais dez validações."
       }
     },
     {
