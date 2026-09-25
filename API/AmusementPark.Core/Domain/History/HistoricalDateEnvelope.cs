@@ -47,6 +47,20 @@ public sealed record HistoricalDateEnvelope
             && (!this.LatestPossibleDate.HasValue || date <= this.LatestPossibleDate.Value);
     }
 
+    public bool Contains(HistoricalDateEnvelope other)
+    {
+        ArgumentNullException.ThrowIfNull(other);
+
+        bool containsStart = !this.EarliestPossibleDate.HasValue
+            || (other.EarliestPossibleDate.HasValue
+                && other.EarliestPossibleDate.Value >= this.EarliestPossibleDate.Value);
+        bool containsEnd = !this.LatestPossibleDate.HasValue
+            || (other.LatestPossibleDate.HasValue
+                && other.LatestPossibleDate.Value <= this.LatestPossibleDate.Value);
+
+        return containsStart && containsEnd;
+    }
+
     public bool Overlaps(HistoricalDateEnvelope other)
     {
         ArgumentNullException.ThrowIfNull(other);

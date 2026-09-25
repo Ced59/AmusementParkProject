@@ -205,6 +205,40 @@ public sealed class HistoricalPeriodTests
     }
 
     [Fact]
+    public void Match_WhenEndIsApproximate_ShouldPreserveCertaintyFromExactStart()
+    {
+        HistoricalPeriod period = new HistoricalPeriod(
+            HistoricalDate.ForDay(1998, 1, 1),
+            HistoricalDate.ForDay(1998, 12, 31, isApproximate: true),
+            PeriodBoundaryConfidence.Confirmed,
+            PeriodBoundaryConfidence.Confirmed);
+
+        Assert.Equal(
+            HistoricalPeriodMatch.EntirelyContained,
+            period.Match(HistoricalInstant.ForDay(1998, 1, 1)));
+        Assert.Equal(
+            HistoricalPeriodMatch.DefinitePartialOverlap,
+            period.Match(HistoricalInstant.ForYear(1998)));
+    }
+
+    [Fact]
+    public void Match_WhenStartIsApproximate_ShouldPreserveCertaintyFromExactEnd()
+    {
+        HistoricalPeriod period = new HistoricalPeriod(
+            HistoricalDate.ForDay(1998, 1, 1, isApproximate: true),
+            HistoricalDate.ForDay(1998, 12, 31),
+            PeriodBoundaryConfidence.Confirmed,
+            PeriodBoundaryConfidence.Confirmed);
+
+        Assert.Equal(
+            HistoricalPeriodMatch.EntirelyContained,
+            period.Match(HistoricalInstant.ForDay(1998, 12, 31)));
+        Assert.Equal(
+            HistoricalPeriodMatch.DefinitePartialOverlap,
+            period.Match(HistoricalInstant.ForYear(1998)));
+    }
+
+    [Fact]
     public void Constructor_WhenConfidenceIsUnknown_ShouldRejectIt()
     {
         HistoricalTemporalValidationException exception = Assert.Throws<HistoricalTemporalValidationException>(

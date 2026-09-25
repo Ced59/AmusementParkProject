@@ -19,6 +19,25 @@ public sealed class HistoricalDateEnvelopeTests
     }
 
     [Fact]
+    public void ContainsEnvelope_ShouldKeepClosedBoundariesInclusive()
+    {
+        HistoricalDateEnvelope envelope = new HistoricalDateEnvelope(
+            new DateOnly(1998, 5, 1),
+            new DateOnly(1998, 5, 31),
+            false);
+        HistoricalDateEnvelope contained = new HistoricalDateEnvelope(
+            new DateOnly(1998, 5, 1),
+            new DateOnly(1998, 5, 31),
+            false);
+
+        Assert.True(envelope.Contains(contained));
+        Assert.False(contained.Contains(new HistoricalDateEnvelope(
+            new DateOnly(1998, 4, 30),
+            new DateOnly(1998, 5, 31),
+            false)));
+    }
+
+    [Fact]
     public void Overlaps_WhenRangesShareOneDay_ShouldReturnTrue()
     {
         HistoricalDateEnvelope first = new HistoricalDateEnvelope(

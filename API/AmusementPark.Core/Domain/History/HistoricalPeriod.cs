@@ -127,111 +127,100 @@ public sealed record HistoricalPeriod
 
     private bool ContainsEntireEnvelope(HistoricalDateEnvelope instantEnvelope)
     {
+        HistoricalDateEnvelope? guaranteedCoverage = this.GetGuaranteedCoverageEnvelope();
+        return guaranteedCoverage is not null
+            && guaranteedCoverage.Contains(instantEnvelope);
+    }
+
+    private bool HasDefiniteOverlap(HistoricalDateEnvelope instantEnvelope)
+    {
         if (this.Ordering == HistoricalPeriodOrdering.Ambiguous)
         {
             return false;
         }
 
-        if (this.Start is not null)
+        HistoricalDateEnvelope? guaranteedCoverage = this.GetGuaranteedCoverageEnvelope();
+        if (guaranteedCoverage is not null && guaranteedCoverage.Overlaps(instantEnvelope))
         {
-            if (this.StartConfidence != PeriodBoundaryConfidence.Confirmed)
-            {
-                return false;
-            }
-
-            if (this.Start.IsApproximate)
-            {
-                return false;
-            }
-
-            DateOnly? latestPossibleStart = this.Start.GetEnvelope().LatestPossibleDate;
-            if (!latestPossibleStart.HasValue
-                || !instantEnvelope.EarliestPossibleDate.HasValue
-                || instantEnvelope.EarliestPossibleDate.Value < latestPossibleStart.Value
-                || (this.Start.HasUncertainBoundary
-                    && instantEnvelope.EarliestPossibleDate.Value == latestPossibleStart.Value))
-            {
-                return false;
-            }
+            return true;
         }
 
-        if (this.End is not null)
+        if (IsUsableBoundary(this.Start, this.StartConfidence)
+            && instantEnvelope.Contains(this.Start!.GetEnvelope()))
         {
-            if (this.EndConfidence != PeriodBoundaryConfidence.Confirmed)
-            {
-                return false;
-            }
-
-            if (this.End.IsApproximate)
-            {
-                return false;
-            }
-
-            DateOnly? earliestPossibleEnd = this.End.GetEnvelope().EarliestPossibleDate;
-            if (!earliestPossibleEnd.HasValue
-                || !instantEnvelope.LatestPossibleDate.HasValue
-                || instantEnvelope.LatestPossibleDate.Value > earliestPossibleEnd.Value
-                || (this.End.HasUncertainBoundary
-                    && instantEnvelope.LatestPossibleDate.Value == earliestPossibleEnd.Value))
-            {
-                return false;
-            }
+            return true;
         }
 
-        return true;
+        return IsUsableBoundary(this.End, this.EndConfidence)
+            && instantEnvelope.Contains(this.End!.GetEnvelope());
     }
 
-    private bool HasDefiniteOverlap(HistoricalDateEnvelope instantEnvelope)
+    private HistoricalDateEnvelope? GetGuaranteedCoverageEnvelope()
     {
-        if (this.Ordering == HistoricalPeriodOrdering.Ambiguous
-            || (this.Start is not null
-                && (this.StartConfidence != PeriodBoundaryConfidence.Confirmed
-                    || this.Start.IsApproximate))
-            || (this.End is not null
-                && (this.EndConfidence != PeriodBoundaryConfidence.Confirmed
-                    || this.End.IsApproximate)))
+        if (this.Ordering == HistoricalPeriodOrdering.Ambiguous)
         {
-            return false;
+            return null;
         }
 
         if (this.IsPoint)
         {
             HistoricalDateEnvelope pointEnvelope = this.Start!.GetEnvelope();
-            return instantEnvelope.EarliestPossibleDate.HasValue
-                && instantEnvelope.LatestPossibleDate.HasValue
-                && pointEnvelope.EarliestPossibleDate.HasValue
-                && pointEnvelope.LatestPossibleDate.HasValue
-                && instantEnvelope.EarliestPossibleDate.Value
-                    <= pointEnvelope.EarliestPossibleDate.Value
-                && instantEnvelope.LatestPossibleDate.Value
-                    >= pointEnvelope.LatestPossibleDate.Value;
+            return IsUsableBoundary(this.Start, this.StartConfidence)
+                && pointEnvelope.IsExactDay
+                    ? pointEnvelope
+                    : null;
         }
 
-        DateOnly? certainStart = this.Start?.GetEnvelope().LatestPossibleDate;
-        if (this.Start is not null && !certainStart.HasValue)
+        bool hasUsableStart = this.Start is null
+            || (IsUsableBoundary(this.Start, this.StartConfidence)
+                && this.Start.GetEnvelope().LatestPossibleDate.HasValue);
+        bool hasUsableEnd = this.End is null
+            || (IsUsableBoundary(this.End, this.EndConfidence)
+                && this.End.GetEnvelope().EarliestPossibleDate.HasValue);
+
+        if (hasUsableStart && hasUsableEnd)
         {
-            return false;
+            DateOnly? certainStart = this.Start?.GetEnvelope().LatestPossibleDate;
+            DateOnly? certainEnd = this.End?.GetEnvelope().EarliestPossibleDate;
+
+            if (certainStart.HasValue
+                && certainEnd.HasValue
+                && certainEnd.Value < certainStart.Value)
+            {
+                return null;
+            }
+
+            return new HistoricalDateEnvelope(certainStart, certainEnd, false);
         }
 
-        DateOnly? certainEnd = this.End?.GetEnvelope().EarliestPossibleDate;
-        if (this.End is not null && !certainEnd.HasValue)
+        if (hasUsableStart && this.Start is not null)
         {
-            return false;
+            HistoricalDateEnvelope startEnvelope = this.Start.GetEnvelope();
+            if (startEnvelope.IsExactDay)
+            {
+                return startEnvelope;
+            }
         }
 
-        if (certainStart.HasValue
-            && certainEnd.HasValue
-            && certainEnd.Value < certainStart.Value)
+        if (hasUsableEnd && this.End is not null)
         {
-            return false;
+            HistoricalDateEnvelope endEnvelope = this.End.GetEnvelope();
+            if (endEnvelope.IsExactDay)
+            {
+                return endEnvelope;
+            }
         }
 
-        HistoricalDateEnvelope certainCoverage = new HistoricalDateEnvelope(
-            certainStart,
-            certainEnd,
-            false);
+        return null;
+    }
 
-        return certainCoverage.Overlaps(instantEnvelope);
+    private static bool IsUsableBoundary(
+        HistoricalDate? boundary,
+        PeriodBoundaryConfidence confidence)
+    {
+        return boundary is not null
+            && confidence == PeriodBoundaryConfidence.Confirmed
+            && !boundary.IsApproximate;
     }
 
     private static HistoricalPeriodOrdering ResolveOrdering(
