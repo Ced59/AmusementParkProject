@@ -289,7 +289,8 @@ techniques et métier testables ; elle ne fabrique pas une preuve d’adoption.
 - 5 tests Application dédiés : opt-in, absence de rétroactivité, compteur,
   concurrence et métriques agrégées sans contenu privé ;
 - 13 tests Application du périmètre : notifications, départ, purge et pilotage ;
-- 15 tests Infrastructure du périmètre : index, filtre privé et agrégations ;
+- 16 tests Infrastructure du périmètre : index, filtre privé, agrégations et
+  résolution du nettoyage en tâche de fond ;
 - 1 test WebAPI du contrat agrégé ;
 - 17 tests Angular ciblés : façades, navigation admin et contrats responsive ;
 - build WebAPI Release réussi ;

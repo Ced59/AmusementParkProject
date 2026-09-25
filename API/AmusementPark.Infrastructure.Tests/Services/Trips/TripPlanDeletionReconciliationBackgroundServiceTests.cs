@@ -16,12 +16,14 @@ public sealed class TripPlanDeletionReconciliationBackgroundServiceTests
     public async Task ReconcileAsync_ShouldResolveTheScopedDeletionReconciler()
     {
         Mock<ITripPlanRepository> repository = new(MockBehavior.Strict);
+        Mock<ITripNotificationSubscriptionRepository> notifications = new(MockBehavior.Strict);
         repository.Setup(item => item.ListPendingDeletionAsync(
                 TripPlanDeletionReconciliationBackgroundService.BatchSize,
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<TripPlan>());
         ServiceCollection services = new();
         services.AddScoped(_ => repository.Object);
+        services.AddScoped(_ => notifications.Object);
         services.AddScoped<TripPlanDeletionReconciler>();
         await using ServiceProvider provider = services.BuildServiceProvider();
         TripPlanDeletionReconciliationBackgroundService service = new(
