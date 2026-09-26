@@ -137,6 +137,78 @@ public sealed class HistoricalReviewEventTargetValidatorTests
         HistoricalReviewEventTargetValidator.ValidateSourceTarget(reviewEvent, source);
     }
 
+    [Fact]
+    public void ValidateFactTransition_WhenEditorialReviewDoesNotAdvance_ShouldRequireReviewUpdate()
+    {
+        HistoricalFact predecessor = CreateLegacyFact();
+        HistoricalFact fact = CreateLegacyFact(revision: 2);
+        HistoricalReviewEvent reviewEvent = CreateEvent(
+            HistoricalReviewResourceType.Fact,
+            fact.Id,
+            fact.Revision,
+            HistoricalReviewEventType.SubmittedForEditorialReview);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalReviewEventTargetValidator.ValidateFactTransition(
+                    reviewEvent,
+                    fact,
+                    predecessor));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidReviewEvent, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void ValidateFactTransition_WhenEditorialReviewIsUpdated_ShouldAcceptReviewUpdate()
+    {
+        HistoricalFact predecessor = CreateLegacyFact();
+        HistoricalFact fact = CreateLegacyFact(revision: 2);
+        HistoricalReviewEvent reviewEvent = CreateEvent(
+            HistoricalReviewResourceType.Fact,
+            fact.Id,
+            fact.Revision,
+            HistoricalReviewEventType.ReviewUpdated);
+
+        HistoricalReviewEventTargetValidator.ValidateFactTarget(reviewEvent, fact);
+        HistoricalReviewEventTargetValidator.ValidateFactTransition(reviewEvent, fact, predecessor);
+    }
+
+    [Fact]
+    public void ValidateSourceTransition_WhenEditorialReviewDoesNotAdvance_ShouldRequireReviewUpdate()
+    {
+        HistoricalSourceReference predecessor = CreateLegacySource();
+        HistoricalSourceReference source = CreateLegacySource(revision: 2);
+        HistoricalReviewEvent reviewEvent = CreateEvent(
+            HistoricalReviewResourceType.Source,
+            source.Id,
+            source.Revision,
+            HistoricalReviewEventType.SubmittedForEditorialReview);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalReviewEventTargetValidator.ValidateSourceTransition(
+                    reviewEvent,
+                    source,
+                    predecessor));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidReviewEvent, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void ValidateSourceTransition_WhenEditorialReviewIsUpdated_ShouldAcceptReviewUpdate()
+    {
+        HistoricalSourceReference predecessor = CreateLegacySource();
+        HistoricalSourceReference source = CreateLegacySource(revision: 2);
+        HistoricalReviewEvent reviewEvent = CreateEvent(
+            HistoricalReviewResourceType.Source,
+            source.Id,
+            source.Revision,
+            HistoricalReviewEventType.ReviewUpdated);
+
+        HistoricalReviewEventTargetValidator.ValidateSourceTarget(reviewEvent, source);
+        HistoricalReviewEventTargetValidator.ValidateSourceTransition(reviewEvent, source, predecessor);
+    }
+
     private static HistoricalReviewEvent CreateEvent(
         HistoricalReviewResourceType resourceType,
         Guid resourceId,
@@ -266,10 +338,11 @@ public sealed class HistoricalReviewEventTargetValidatorTests
             RecordedAtUtc);
     }
 
-    private static HistoricalFact CreateLegacyFact()
+    private static HistoricalFact CreateLegacyFact(int revision = 1)
     {
+        Guid factId = Guid.Parse("22222222-2222-2222-2222-222222222222");
         return new HistoricalFact(
-            Guid.NewGuid(),
+            factId,
             new HistoricalSubject(
                 HistoricalSubjectType.Park,
                 "park-1",
@@ -297,17 +370,17 @@ public sealed class HistoricalReviewEventTargetValidatorTests
             null,
             null,
             "hist-v1-legacy",
-            1,
-            null,
+            revision,
+            revision == 1 ? null : revision - 1,
             RecordedAtUtc,
             HistoricalRevisionOrigin.LegacyMigration);
     }
 
-    private static HistoricalSourceReference CreateLegacySource()
+    private static HistoricalSourceReference CreateLegacySource(int revision = 1)
     {
         return new HistoricalSourceReference(
-            Guid.NewGuid(),
-            1,
+            Guid.Parse("33333333-3333-3333-3333-333333333333"),
+            revision,
             HistoricalSourceType.OfficialWebsite,
             "Source historique héritée",
             "Éditeur historique",

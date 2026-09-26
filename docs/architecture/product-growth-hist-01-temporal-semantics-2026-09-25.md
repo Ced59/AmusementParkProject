@@ -351,6 +351,10 @@ Draft → SourcesAttached → EditorialReview → StructuredValidation → Publi
 `Published`, `Corrected` et `Retracted`. Il n’est pas déduit à la volée du
 journal d’audit. Les transitions invalides sont refusées par le Core et chacune
 ajoute un événement de revue.
+Une modification qui reste dans `Draft` porte `DraftUpdated`. Une modification
+qui reste dans `SourcesAttached`, `EditorialReview` ou `StructuredValidation`
+porte `ReviewUpdated` : elle ne peut pas se faire passer pour une nouvelle
+validation de l’étape.
 
 L’état de workflow indique où en est le travail. L’état de preuve indique ce que
 l’on peut conclure. Ils ne sont pas interchangeables : un fait `Disputed` peut

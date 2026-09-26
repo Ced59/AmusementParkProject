@@ -45,6 +45,10 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
             await this.LoadPredecessorDocumentAsync(source, cancellationToken);
         HistoricalSourceReference? predecessor = predecessorDocument?.ToDomain();
         HistoricalSourceRevisionValidator.ValidatePredecessor(source, predecessor);
+        HistoricalReviewEventTargetValidator.ValidateSourceTransition(
+            transitionReviewEvent,
+            source,
+            predecessor);
         HistoricalReviewEventChronologyValidator.Validate(
             transitionReviewEvent,
             predecessorDocument?.TransitionReviewEvent.ToDomain());

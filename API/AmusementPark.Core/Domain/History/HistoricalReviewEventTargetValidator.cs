@@ -47,6 +47,32 @@ public static class HistoricalReviewEventTargetValidator
         }
     }
 
+    public static void ValidateFactTransition(
+        HistoricalReviewEvent reviewEvent,
+        HistoricalFact fact,
+        HistoricalFact? predecessor)
+    {
+        ArgumentNullException.ThrowIfNull(reviewEvent);
+        ArgumentNullException.ThrowIfNull(fact);
+        ValidateSameStageReviewEvent(
+            reviewEvent.EventType,
+            fact.WorkflowState,
+            predecessor?.WorkflowState);
+    }
+
+    public static void ValidateSourceTransition(
+        HistoricalReviewEvent reviewEvent,
+        HistoricalSourceReference source,
+        HistoricalSourceReference? predecessor)
+    {
+        ArgumentNullException.ThrowIfNull(reviewEvent);
+        ArgumentNullException.ThrowIfNull(source);
+        ValidateSameStageReviewEvent(
+            reviewEvent.EventType,
+            source.WorkflowState,
+            predecessor?.WorkflowState);
+    }
+
     private static bool MatchesLifecycle(
         HistoricalReviewEventType eventType,
         int revision,
@@ -84,8 +110,28 @@ public static class HistoricalReviewEventTargetValidator
             HistoricalReviewEventType.DraftUpdated => revision > 1
                 && workflowState == HistoricalEditorialWorkflowState.Draft
                 && publicationState == HistoricalPublicationState.Draft,
+            HistoricalReviewEventType.ReviewUpdated => revision > 1
+                && (supportsSourcesAttached
+                    && workflowState == HistoricalEditorialWorkflowState.SourcesAttached
+                    || workflowState is HistoricalEditorialWorkflowState.EditorialReview
+                        or HistoricalEditorialWorkflowState.StructuredValidation),
             _ => false,
         };
+    }
+
+    private static void ValidateSameStageReviewEvent(
+        HistoricalReviewEventType eventType,
+        HistoricalEditorialWorkflowState workflowState,
+        HistoricalEditorialWorkflowState? predecessorWorkflowState)
+    {
+        bool remainsInReviewStage = predecessorWorkflowState == workflowState
+            && workflowState is HistoricalEditorialWorkflowState.SourcesAttached
+                or HistoricalEditorialWorkflowState.EditorialReview
+                or HistoricalEditorialWorkflowState.StructuredValidation;
+        if (remainsInReviewStage != (eventType == HistoricalReviewEventType.ReviewUpdated))
+        {
+            throw Invalid();
+        }
     }
 
     private static HistoricalPersistenceValidationException Invalid()

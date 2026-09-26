@@ -52,6 +52,10 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             await this.LoadPredecessorDocumentAsync(fact, cancellationToken);
         HistoricalFact? predecessor = predecessorDocument?.ToDomain();
         HistoricalFactRevisionValidator.ValidatePredecessor(fact, predecessor);
+        HistoricalReviewEventTargetValidator.ValidateFactTransition(
+            transitionReviewEvent,
+            fact,
+            predecessor);
         HistoricalReviewEventChronologyValidator.Validate(
             transitionReviewEvent,
             predecessorDocument?.TransitionReviewEvent.ToDomain());
