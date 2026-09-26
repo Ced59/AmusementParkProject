@@ -141,6 +141,13 @@ internal sealed class HistoricalAttributeSnapshotReducer
                 contributingFactIds.Add(fact.Id);
             }
 
+            if (applicability == HistoricalTransitionApplicability.NotOccurred
+                && KeepsPreviousValueOnRequestedDate(fact, requestedDate))
+            {
+                contributingFactIds.Add(fact.Id);
+                AddPreviousValue(result, fact, reasons);
+            }
+
             result = this.ApplyAccordingToApplicability(result, fact, applicability, reasons);
         }
 
@@ -199,16 +206,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
         HashSet<string> preservedValues = new HashSet<string>(StringComparer.Ordinal);
         foreach (HistoricalFact fact in currentValueTransitions)
         {
-            if (HistoricalAttributeTransitionParser.TryParse(fact, out string? previousValue, out _)
-                && previousValue is not null)
-            {
-                preservedValues.Add(previousValue);
-            }
-            else
-            {
-                reasons.Add(HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue, fact);
-                preservedValues.Add(UnknownValue);
-            }
+            AddPreviousValue(preservedValues, fact, reasons);
         }
 
         if (applicableTransitions.Count == 0)
@@ -288,6 +286,22 @@ internal sealed class HistoricalAttributeSnapshotReducer
 
         result.UnionWith(preservedValues);
         return result;
+    }
+
+    private static void AddPreviousValue(
+        ISet<string> values,
+        HistoricalFact fact,
+        HistoricalSnapshotReasonCollector reasons)
+    {
+        if (HistoricalAttributeTransitionParser.TryParse(fact, out string? previousValue, out _)
+            && previousValue is not null)
+        {
+            values.Add(previousValue);
+            return;
+        }
+
+        reasons.Add(HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue, fact);
+        values.Add(UnknownValue);
     }
 
     private static bool KeepsPreviousValueOnRequestedDate(

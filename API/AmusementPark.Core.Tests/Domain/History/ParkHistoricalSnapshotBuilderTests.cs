@@ -535,6 +535,33 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_WithConflictingLastDayEvidenceInOrderedGroups_PreservesBothCandidates()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact earlierRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(1995, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B");
+        HistoricalFact laterLastDay = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.LastDayOfPreviousValue,
+            "Nom C",
+            "Nom D");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 5, 1),
+            new[] { opening, earlierRenaming, laterLastDay }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Nom B", "Nom C" }, attribute.Candidates);
+        Assert.Contains(laterLastDay.Id, attribute.SupportingFactIds);
+    }
+
+    [Fact]
     public void Build_WithUnorderedSameDayTransitions_ReturnsPossiblyOpen()
     {
         HistoricalDate date = HistoricalDate.ForDay(2000, 1, 1);
