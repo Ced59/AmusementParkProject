@@ -5750,6 +5750,17 @@
       "exploreYear": "Bekijk dit tijdperk",
       "unknownDate": "Datum onbekend",
       "approximateDate": "Rond {{date}}",
+      "datePeriod": "Van {{start}} tot {{end}}",
+      "dateFrom": "Sinds {{date}}",
+      "dateUntil": "Tot {{date}}",
+      "dateQualifiers": {
+        "Early": "Begin {{date}}",
+        "Mid": "Midden {{date}}",
+        "Late": "Eind {{date}}",
+        "Before": "Vóór {{date}}",
+        "After": "Na {{date}}",
+        "Circa": "Rond {{date}}"
+      },
       "timelineSummary": "Samenvatting van de tijdlijn",
       "documentedEvents": "gedocumenteerde gebeurtenissen",
       "page": "pagina",

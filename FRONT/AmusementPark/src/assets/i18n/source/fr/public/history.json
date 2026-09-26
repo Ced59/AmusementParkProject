@@ -7,6 +7,8 @@
       "breadcrumbAria": "Fil d'Ariane historique", "home": "Accueil", "parks": "Parcs", "history": "Histoire",
       "kicker": "Mémoire du parc", "timelineTitle": "L'histoire de {{park}}", "timelineDescription": "Parcours les changements du parc dans l'ordre, avec leur niveau de preuve et leurs sources.",
       "chooseYear": "Explore une année", "exploreYear": "Voir cette époque", "unknownDate": "Date inconnue", "approximateDate": "Vers {{date}}",
+      "datePeriod": "Du {{start}} au {{end}}", "dateFrom": "Depuis {{date}}", "dateUntil": "Jusqu’au {{date}}",
+      "dateQualifiers": { "Early": "Début {{date}}", "Mid": "Milieu {{date}}", "Late": "Fin {{date}}", "Before": "Avant {{date}}", "After": "Après {{date}}", "Circa": "Vers {{date}}" },
       "timelineSummary": "Résumé de la frise", "documentedEvents": "événements documentés", "page": "page", "visibleOnPage": "affichés ici", "timelineAria": "Frise historique du parc",
       "change": "Changement documenté", "unknownValue": "Valeur inconnue", "sourcesCount": "{{count}} source(s)",
       "noEventsTitle": "Aucun événement sur cette page", "noEventsMessage": "La mémoire du parc s'enrichira à mesure que de nouvelles preuves seront validées.",

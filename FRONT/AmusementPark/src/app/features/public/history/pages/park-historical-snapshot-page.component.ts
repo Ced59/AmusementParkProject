@@ -18,7 +18,11 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { HistoryTimelinePageViewModel } from '../models/history-view.model';
 import { ParkHistoryBreadcrumbSeoService } from '../state/park-history-breadcrumb-seo.service';
 import { ParkHistoryExplorerStateFacade } from '../state/park-history-explorer-state.facade';
-import { normalizeHistoricalSnapshotDay, resolveHistoricalSnapshotDays } from '../utils/history-snapshot-date-selection';
+import {
+  isValidHistoricalSnapshotDate,
+  normalizeHistoricalSnapshotDay,
+  resolveHistoricalSnapshotDays
+} from '../utils/history-snapshot-date-selection';
 import {
   PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY,
   ResolvedParkHistoricalSnapshotRouteData
@@ -100,7 +104,7 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
     const year: number = Number(this.selectedYear);
     const month: number | null = this.selectedMonth ? Number(this.selectedMonth) : null;
     const day: number | null = this.selectedDay ? Number(this.selectedDay) : null;
-    if (!this.isValidDate(year, month, day)) {
+    if (!isValidHistoricalSnapshotDate(year, month, day)) {
       return;
     }
 
@@ -186,23 +190,6 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
 
   protected subjectKey(subject: PublicHistoricalSubjectSnapshot): string {
     return `${subject.subjectType}:${subject.subjectId}`;
-  }
-
-  private isValidDate(year: number, month: number | null, day: number | null): boolean {
-    if (!Number.isInteger(year) || year < 1000 || year > 9999 || (day !== null && month === null)) {
-      return false;
-    }
-
-    if (month === null) {
-      return true;
-    }
-
-    if (!Number.isInteger(month) || month < 1 || month > 12 || day === null) {
-      return day === null;
-    }
-
-    const lastDay: number = new Date(Date.UTC(year, month, 0)).getUTCDate();
-    return Number.isInteger(day) && day >= 1 && day <= lastDay;
   }
 
   private enumLabel(group: string, value: string, fallback: string): string {

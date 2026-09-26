@@ -5750,6 +5750,17 @@
       "exploreYear": "Diese Zeit ansehen",
       "unknownDate": "Datum unbekannt",
       "approximateDate": "Um {{date}}",
+      "datePeriod": "Von {{start}} bis {{end}}",
+      "dateFrom": "Seit {{date}}",
+      "dateUntil": "Bis {{date}}",
+      "dateQualifiers": {
+        "Early": "Anfang {{date}}",
+        "Mid": "Mitte {{date}}",
+        "Late": "Ende {{date}}",
+        "Before": "Vor {{date}}",
+        "After": "Nach {{date}}",
+        "Circa": "Um {{date}}"
+      },
       "timelineSummary": "Zusammenfassung der Zeitleiste",
       "documentedEvents": "belegte Ereignisse",
       "page": "Seite",

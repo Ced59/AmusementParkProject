@@ -5750,6 +5750,17 @@
       "exploreYear": "Voir cette époque",
       "unknownDate": "Date inconnue",
       "approximateDate": "Vers {{date}}",
+      "datePeriod": "Du {{start}} au {{end}}",
+      "dateFrom": "Depuis {{date}}",
+      "dateUntil": "Jusqu’au {{date}}",
+      "dateQualifiers": {
+        "Early": "Début {{date}}",
+        "Mid": "Milieu {{date}}",
+        "Late": "Fin {{date}}",
+        "Before": "Avant {{date}}",
+        "After": "Après {{date}}",
+        "Circa": "Vers {{date}}"
+      },
       "timelineSummary": "Résumé de la frise",
       "documentedEvents": "événements documentés",
       "page": "page",

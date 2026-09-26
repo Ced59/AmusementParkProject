@@ -6,6 +6,7 @@ import { PublicParkHistoricalSnapshot, PublicParkHistoricalTimeline } from '@app
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
+import { isValidHistoricalSnapshotDate } from '../utils/history-snapshot-date-selection';
 import { HISTORY_DATA_PORT, HistoryDataPort } from './history-data.ports';
 
 export const PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY = 'parkHistoryExplorer';
@@ -54,7 +55,13 @@ export const parkHistoricalSnapshotResolver: ResolveFn<ResolvedParkHistoricalSna
   const ssrStatus: SsrHttpStatusService = inject(SsrHttpStatusService);
   const historyData: HistoryDataPort = inject(HISTORY_DATA_PORT);
 
-  if (parkId.length === 0 || year === null || month === undefined || day === undefined || (day !== null && month === null)) {
+  if (
+    parkId.length === 0
+    || year === null
+    || month === undefined
+    || day === undefined
+    || !isValidHistoricalSnapshotDate(year, month, day)
+  ) {
     ssrStatus.setNotFound();
     return of({ snapshot: null, year: year ?? 1, month: month ?? null, day: day ?? null });
   }

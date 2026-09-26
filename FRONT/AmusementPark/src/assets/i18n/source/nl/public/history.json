@@ -7,6 +7,8 @@
       "breadcrumbAria": "Historisch kruimelpad", "home": "Home", "parks": "Parken", "history": "Geschiedenis",
       "kicker": "Geheugen van het park", "timelineTitle": "De geschiedenis van {{park}}", "timelineDescription": "Volg de veranderingen van het park in volgorde, met bewijsniveau en bronnen.",
       "chooseYear": "Verken een jaar", "exploreYear": "Bekijk dit tijdperk", "unknownDate": "Datum onbekend", "approximateDate": "Rond {{date}}",
+      "datePeriod": "Van {{start}} tot {{end}}", "dateFrom": "Sinds {{date}}", "dateUntil": "Tot {{date}}",
+      "dateQualifiers": { "Early": "Begin {{date}}", "Mid": "Midden {{date}}", "Late": "Eind {{date}}", "Before": "Vóór {{date}}", "After": "Na {{date}}", "Circa": "Rond {{date}}" },
       "timelineSummary": "Samenvatting van de tijdlijn", "documentedEvents": "gedocumenteerde gebeurtenissen", "page": "pagina", "visibleOnPage": "hier getoond", "timelineAria": "Historische tijdlijn van het park",
       "change": "Gedocumenteerde verandering", "unknownValue": "Onbekende waarde", "sourcesCount": "{{count}} bron(nen)", "noEventsTitle": "Geen gebeurtenissen op deze pagina", "noEventsMessage": "De geschiedenis van het park groeit zodra nieuw bewijs is gevalideerd.",
       "paginationAria": "Paginering van de tijdlijn", "previous": "Vorige", "next": "Volgende", "pageOf": "Pagina {{current}} van {{total}}",

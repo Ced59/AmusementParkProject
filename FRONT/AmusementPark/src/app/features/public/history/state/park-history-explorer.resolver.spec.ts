@@ -82,6 +82,18 @@ describe('park history explorer resolvers', () => {
     expect(ssrStatusService.setNotFound).toHaveBeenCalledTimes(1);
   });
 
+  it('rejects an impossible calendar date as a local not-found response', async () => {
+    const result: ResolvedParkHistoricalSnapshotRouteData = await resolveSnapshot(
+      { id: 'park-1', year: '2025' },
+      { month: '2', day: '31' }
+    );
+
+    expect(result).toEqual({ snapshot: null, year: 2025, month: 2, day: 31 });
+    expect(historyDataPort.getPublicParkSnapshot).not.toHaveBeenCalled();
+    expect(ssrStatusService.setNotFound).toHaveBeenCalledTimes(1);
+    expect(ssrStatusService.setStatus).not.toHaveBeenCalled();
+  });
+
   it('publishes a transient snapshot failure as an SSR 503', async () => {
     historyDataPort.getPublicParkSnapshot.mockReturnValue(
       throwError(() => new HttpErrorResponse({ status: 503 }))

@@ -5750,6 +5750,17 @@
       "exploreYear": "View this era",
       "unknownDate": "Unknown date",
       "approximateDate": "Around {{date}}",
+      "datePeriod": "From {{start}} to {{end}}",
+      "dateFrom": "Since {{date}}",
+      "dateUntil": "Until {{date}}",
+      "dateQualifiers": {
+        "Early": "Early {{date}}",
+        "Mid": "Mid-{{date}}",
+        "Late": "Late {{date}}",
+        "Before": "Before {{date}}",
+        "After": "After {{date}}",
+        "Circa": "Around {{date}}"
+      },
       "timelineSummary": "Timeline summary",
       "documentedEvents": "documented events",
       "page": "page",

@@ -7,6 +7,8 @@
       "breadcrumbAria": "Percorso storico", "home": "Home", "parks": "Parchi", "history": "Storia",
       "kicker": "Memoria del parco", "timelineTitle": "La storia di {{park}}", "timelineDescription": "Segui in ordine i cambiamenti del parco, con il livello di prova e le relative fonti.",
       "chooseYear": "Esplora un anno", "exploreYear": "Vedi quest'epoca", "unknownDate": "Data sconosciuta", "approximateDate": "Intorno a {{date}}",
+      "datePeriod": "Da {{start}} a {{end}}", "dateFrom": "Da {{date}}", "dateUntil": "Fino a {{date}}",
+      "dateQualifiers": { "Early": "Inizio {{date}}", "Mid": "Metà {{date}}", "Late": "Fine {{date}}", "Before": "Prima di {{date}}", "After": "Dopo {{date}}", "Circa": "Intorno a {{date}}" },
       "timelineSummary": "Riepilogo della timeline", "documentedEvents": "eventi documentati", "page": "pagina", "visibleOnPage": "mostrati qui", "timelineAria": "Timeline storica del parco",
       "change": "Cambiamento documentato", "unknownValue": "Valore sconosciuto", "sourcesCount": "{{count}} fonte/i", "noEventsTitle": "Nessun evento in questa pagina", "noEventsMessage": "La storia del parco crescerà quando nuove prove saranno convalidate.",
       "paginationAria": "Paginazione della timeline", "previous": "Precedente", "next": "Successiva", "pageOf": "Pagina {{current}} di {{total}}",

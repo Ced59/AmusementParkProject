@@ -19,6 +19,30 @@ export function normalizeHistoricalSnapshotDay(
   return day >= 1 && day <= lastDay ? day : null;
 }
 
+export function isValidHistoricalSnapshotDate(
+  year: number,
+  month: number | null,
+  day: number | null
+): boolean {
+  if (!Number.isInteger(year) || year < 1000 || year > 9999 || (day !== null && month === null)) {
+    return false;
+  }
+
+  if (month === null) {
+    return true;
+  }
+
+  if (!Number.isInteger(month) || month < 1 || month > 12) {
+    return false;
+  }
+
+  if (day === null) {
+    return true;
+  }
+
+  return normalizeHistoricalSnapshotDay(year, month, day) === day;
+}
+
 export function resolveHistoricalSnapshotDays(year: number, month: number | null): number[] {
   if (month === null) {
     return Array.from({ length: 31 }, (_value: unknown, index: number): number => index + 1);

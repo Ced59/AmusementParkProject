@@ -5750,6 +5750,17 @@
       "exploreYear": "Ver esta época",
       "unknownDate": "Fecha desconocida",
       "approximateDate": "Hacia {{date}}",
+      "datePeriod": "De {{start}} a {{end}}",
+      "dateFrom": "Desde {{date}}",
+      "dateUntil": "Hasta {{date}}",
+      "dateQualifiers": {
+        "Early": "Principios de {{date}}",
+        "Mid": "Mediados de {{date}}",
+        "Late": "Finales de {{date}}",
+        "Before": "Antes de {{date}}",
+        "After": "Después de {{date}}",
+        "Circa": "Hacia {{date}}"
+      },
       "timelineSummary": "Resumen de la cronología",
       "documentedEvents": "acontecimientos documentados",
       "page": "página",

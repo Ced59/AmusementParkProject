@@ -6,7 +6,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { combineLatest } from 'rxjs';
 
 import {
-  PublicHistoricalDate,
   PublicHistoricalTimelineEntry,
   PublicParkHistoricalTimeline
 } from '@app/models/history/public-park-history.models';
@@ -20,6 +19,7 @@ import { HistoryTimelineEventViewModel, HistoryTimelinePageRangeViewModel, Histo
 import { ParkHistoryBreadcrumbSeoService } from '../state/park-history-breadcrumb-seo.service';
 import { ParkHistoryExplorerStateFacade } from '../state/park-history-explorer-state.facade';
 import { resolveHistoryEventTypeLabel } from '../utils/history-event-labels';
+import { formatPublicHistoricalPeriod } from '../utils/historical-period-label';
 import {
   PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY,
   ResolvedParkHistoryTimelineRouteData
@@ -121,21 +121,11 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
   }
 
   protected eventDate(entry: PublicHistoricalTimelineEntry): string {
-    const date: PublicHistoricalDate | null = entry.period.start ?? entry.period.end ?? null;
-    if (!date) {
-      return this.translateService.instant('history.explorer.unknownDate');
-    }
-
-    const options: Intl.DateTimeFormatOptions = date.day
-      ? { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }
-      : date.month
-        ? { month: 'long', year: 'numeric', timeZone: 'UTC' }
-        : { year: 'numeric', timeZone: 'UTC' };
-    const value: Date = new Date(Date.UTC(date.year, (date.month ?? 1) - 1, date.day ?? 1));
-    const formatted: string = new Intl.DateTimeFormat(this.currentLanguage(), options).format(value);
-    return date.isApproximate
-      ? this.translateService.instant('history.explorer.approximateDate', { date: formatted })
-      : formatted;
+    return formatPublicHistoricalPeriod(
+      entry.period,
+      this.currentLanguage(),
+      (key: string, parameters?: Record<string, string>): string => this.translateService.instant(key, parameters)
+    );
   }
 
   protected factTypeLabel(entry: PublicHistoricalTimelineEntry): string {

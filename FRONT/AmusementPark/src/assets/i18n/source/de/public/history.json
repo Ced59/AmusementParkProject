@@ -7,6 +7,8 @@
       "breadcrumbAria": "Historische Brotkrümelnavigation", "home": "Start", "parks": "Parks", "history": "Geschichte",
       "kicker": "Gedächtnis des Parks", "timelineTitle": "Die Geschichte von {{park}}", "timelineDescription": "Verfolge die Veränderungen des Parks mit Belegstufe und Quellen in zeitlicher Reihenfolge.",
       "chooseYear": "Jahr erkunden", "exploreYear": "Diese Zeit ansehen", "unknownDate": "Datum unbekannt", "approximateDate": "Um {{date}}",
+      "datePeriod": "Von {{start}} bis {{end}}", "dateFrom": "Seit {{date}}", "dateUntil": "Bis {{date}}",
+      "dateQualifiers": { "Early": "Anfang {{date}}", "Mid": "Mitte {{date}}", "Late": "Ende {{date}}", "Before": "Vor {{date}}", "After": "Nach {{date}}", "Circa": "Um {{date}}" },
       "timelineSummary": "Zusammenfassung der Zeitleiste", "documentedEvents": "belegte Ereignisse", "page": "Seite", "visibleOnPage": "hier angezeigt", "timelineAria": "Historische Zeitleiste des Parks",
       "change": "Belegte Veränderung", "unknownValue": "Unbekannter Wert", "sourcesCount": "{{count}} Quelle(n)", "noEventsTitle": "Keine Ereignisse auf dieser Seite", "noEventsMessage": "Die Geschichte des Parks wächst, sobald neue Belege geprüft sind.",
       "paginationAria": "Seitennavigation der Zeitleiste", "previous": "Zurück", "next": "Weiter", "pageOf": "Seite {{current}} von {{total}}",

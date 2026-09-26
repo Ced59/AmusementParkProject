@@ -5750,6 +5750,17 @@
       "exploreYear": "Zobacz ten okres",
       "unknownDate": "Data nieznana",
       "approximateDate": "Około {{date}}",
+      "datePeriod": "Od {{start}} do {{end}}",
+      "dateFrom": "Od {{date}}",
+      "dateUntil": "Do {{date}}",
+      "dateQualifiers": {
+        "Early": "Początek {{date}}",
+        "Mid": "Połowa {{date}}",
+        "Late": "Koniec {{date}}",
+        "Before": "Przed {{date}}",
+        "After": "Po {{date}}",
+        "Circa": "Około {{date}}"
+      },
       "timelineSummary": "Podsumowanie osi czasu",
       "documentedEvents": "udokumentowane wydarzenia",
       "page": "strona",
