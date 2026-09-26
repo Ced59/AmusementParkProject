@@ -164,9 +164,19 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
     {
         string normalizedParkId = NormalizeParkId(parkId);
         ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
+        string[] candidateFactIds = await this.LoadParkCandidateFactIdsAsync(
+            normalizedParkId,
+            publicCurrentSubjects,
+            cancellationToken);
+        if (candidateFactIds.Length == 0)
+        {
+            return Array.Empty<HistoricalFact>();
+        }
+
         List<BsonDocument> stages = BuildLatestDecisionEligibleForParkPipeline(
                 normalizedParkId,
-                publicCurrentSubjects)
+                publicCurrentSubjects,
+                candidateFactIds)
             .ToList();
         stages.Add(BuildTimelineSortStage());
         PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument> pipeline =
@@ -191,10 +201,20 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             throw new ArgumentOutOfRangeException(nameof(page));
         }
 
+        string[] candidateFactIds = await this.LoadParkCandidateFactIdsAsync(
+            normalizedParkId,
+            publicCurrentSubjects,
+            cancellationToken);
+        if (candidateFactIds.Length == 0)
+        {
+            return new PagedResult<HistoricalFact>(Array.Empty<HistoricalFact>(), page, pageSize, 0);
+        }
+
         long offset = (long)(page - 1) * pageSize;
         List<BsonDocument> stages = BuildLatestDecisionEligibleForParkPipeline(
                 normalizedParkId,
-                publicCurrentSubjects)
+                publicCurrentSubjects,
+                candidateFactIds)
             .ToList();
         stages.Add(BuildTimelineSortStage());
         stages.Add(new BsonDocument("$facet", new BsonDocument
@@ -232,10 +252,12 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
 
     internal static IReadOnlyCollection<BsonDocument> BuildLatestDecisionEligibleForParkPipeline(
         string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects)
+        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
+        IReadOnlyCollection<string> candidateFactIds)
     {
         string normalizedParkId = NormalizeParkId(parkId);
         ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
+        ArgumentNullException.ThrowIfNull(candidateFactIds);
         BsonDocument[] publicSubjectFilters = publicCurrentSubjects
             .DistinctBy(static subject => (subject.Type, subject.Id))
             .Select(static subject => new BsonDocument
@@ -244,11 +266,6 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
                 ["subject.id"] = subject.Id,
             })
             .ToArray();
-        BsonArray scopeFilters = new BsonArray(publicSubjectFilters);
-        scopeFilters.Add(new BsonDocument
-        {
-            ["subject.contextParkId"] = normalizedParkId,
-        });
         BsonArray publicEligibilityFilters = new BsonArray(
             publicSubjectFilters.Select(static filter => filter.DeepClone()));
         publicEligibilityFilters.Add(new BsonDocument
@@ -259,7 +276,9 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
 
         return new BsonDocument[]
         {
-            new BsonDocument("$match", new BsonDocument("$or", scopeFilters)),
+            new BsonDocument("$match", new BsonDocument(
+                "factId",
+                new BsonDocument("$in", new BsonArray(candidateFactIds)))),
             new BsonDocument("$sort", new BsonDocument
             {
                 ["factId"] = 1,
@@ -283,6 +302,42 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
                 ["$or"] = publicEligibilityFilters,
             }),
         };
+    }
+
+    internal static BsonDocument BuildParkCandidateScopeFilter(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects)
+    {
+        string normalizedParkId = NormalizeParkId(parkId);
+        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
+        BsonArray scopeFilters = new BsonArray(publicCurrentSubjects
+            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .Select(static subject => new BsonDocument
+            {
+                ["subject.type"] = subject.Type.ToString(),
+                ["subject.id"] = subject.Id,
+            }));
+        scopeFilters.Add(new BsonDocument("subject.contextParkId", normalizedParkId));
+        return new BsonDocument("$or", scopeFilters);
+    }
+
+    private async Task<string[]> LoadParkCandidateFactIdsAsync(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<HistoricalFactDocument> scopeFilter =
+            new BsonDocumentFilterDefinition<HistoricalFactDocument>(
+                BuildParkCandidateScopeFilter(parkId, publicCurrentSubjects));
+        using IAsyncCursor<string> cursor = await this.collection.DistinctAsync<string>(
+            "factId",
+            scopeFilter,
+            cancellationToken: cancellationToken);
+        List<string> factIds = await cursor.ToListAsync(cancellationToken);
+        return factIds
+            .Where(static factId => !string.IsNullOrWhiteSpace(factId))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
     }
 
     private static BsonDocument BuildTimelineSortStage()

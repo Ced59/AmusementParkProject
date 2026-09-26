@@ -55,7 +55,8 @@ public sealed class HistoricalFactPublicProjectionMigration
 
         Dictionary<string, string> parkItemScopes = await this.LoadParkItemScopesAsync(cancellationToken);
         Dictionary<string, string> parkZoneScopes = await this.LoadParkZoneScopesAsync(cancellationToken);
-        Dictionary<string, string> narrativeScopes = await this.LoadNarrativeScopesAsync(cancellationToken);
+        Dictionary<(HistoricalSubjectType Type, string Id), string> narrativeScopes =
+            await this.LoadNarrativeScopesAsync(cancellationToken);
         List<WriteModel<HistoricalFactDocument>> writes = new List<WriteModel<HistoricalFactDocument>>(
             Math.Min(facts.Count, WriteBatchSize));
         long modifiedCount = 0;
@@ -97,7 +98,7 @@ public sealed class HistoricalFactPublicProjectionMigration
         HistoricalSubjectDocument subject,
         IReadOnlyDictionary<string, string> parkItemScopes,
         IReadOnlyDictionary<string, string> parkZoneScopes,
-        IReadOnlyDictionary<string, string> narrativeScopes)
+        IReadOnlyDictionary<(HistoricalSubjectType Type, string Id), string> narrativeScopes)
     {
         if (!string.IsNullOrWhiteSpace(subject.ContextParkId))
         {
@@ -108,8 +109,9 @@ public sealed class HistoricalFactPublicProjectionMigration
         {
             HistoricalSubjectType.Park => subject.Id,
             HistoricalSubjectType.ParkItem => parkItemScopes.GetValueOrDefault(subject.Id)
-                ?? narrativeScopes.GetValueOrDefault(subject.Id),
-            HistoricalSubjectType.ParkZone => parkZoneScopes.GetValueOrDefault(subject.Id),
+                ?? narrativeScopes.GetValueOrDefault((HistoricalSubjectType.ParkItem, subject.Id)),
+            HistoricalSubjectType.ParkZone => parkZoneScopes.GetValueOrDefault(subject.Id)
+                ?? narrativeScopes.GetValueOrDefault((HistoricalSubjectType.ParkZone, subject.Id)),
             _ => null,
         };
     }
@@ -146,16 +148,21 @@ public sealed class HistoricalFactPublicProjectionMigration
             .ToDictionary(static zone => zone.Id, static zone => zone.ParkId, StringComparer.Ordinal);
     }
 
-    private async Task<Dictionary<string, string>> LoadNarrativeScopesAsync(
+    private async Task<Dictionary<(HistoricalSubjectType Type, string Id), string>> LoadNarrativeScopesAsync(
         CancellationToken cancellationToken)
     {
-        FilterDefinition<BsonDocument> parkItemNarratives =
-            Builders<BsonDocument>.Filter.Eq(
+        FilterDefinition<BsonDocument> scopedNarratives =
+            Builders<BsonDocument>.Filter.In(
                 "entityType",
-                HistoryEntityType.ParkItem.ToString());
+                new[]
+                {
+                    HistoryEntityType.ParkItem.ToString(),
+                    HistoricalSubjectType.ParkZone.ToString(),
+                });
         List<BsonDocument> narratives = await this.narrativeCollection
-            .Find(parkItemNarratives)
+            .Find(scopedNarratives)
             .Project(Builders<BsonDocument>.Projection
+                .Include("entityType")
                 .Include("ownerId")
                 .Include("contextParkId")
                 .Include("parkId"))
@@ -163,24 +170,27 @@ public sealed class HistoricalFactPublicProjectionMigration
         return narratives
             .Select(static narrative => new
             {
+                SubjectType = ResolveNarrativeSubjectType(ReadString(narrative, "entityType")),
                 SubjectId = ReadString(narrative, "ownerId"),
                 ParkId = ReadString(narrative, "contextParkId")
                     ?? ReadString(narrative, "parkId"),
             })
-            .Where(static scope => scope.SubjectId is not null && scope.ParkId is not null)
-            .GroupBy(static scope => scope.SubjectId!, StringComparer.Ordinal)
+            .Where(static scope => scope.SubjectType.HasValue
+                && scope.SubjectId is not null
+                && scope.ParkId is not null)
+            .GroupBy(static scope => (scope.SubjectType!.Value, scope.SubjectId!))
             .Select(static group => new
             {
-                SubjectId = group.Key,
+                Subject = group.Key,
                 ParkIds = group.Select(static scope => scope.ParkId!)
                     .Distinct(StringComparer.Ordinal)
                     .ToArray(),
             })
             .Where(static scope => scope.ParkIds.Length == 1)
             .ToDictionary(
-                static scope => scope.SubjectId,
+                static scope => scope.Subject,
                 static scope => scope.ParkIds[0],
-                StringComparer.Ordinal);
+                EqualityComparer<(HistoricalSubjectType Type, string Id)>.Default);
     }
 
     private async Task<long> FlushAsync(
@@ -205,6 +215,21 @@ public sealed class HistoricalFactPublicProjectionMigration
         BsonValue value = document.GetValue(fieldName, BsonNull.Value);
         return value.IsString && !string.IsNullOrWhiteSpace(value.AsString)
             ? value.AsString.Trim()
+            : null;
+    }
+
+    private static HistoricalSubjectType? ResolveNarrativeSubjectType(string? entityType)
+    {
+        if (string.Equals(entityType, HistoryEntityType.ParkItem.ToString(), StringComparison.Ordinal))
+        {
+            return HistoricalSubjectType.ParkItem;
+        }
+
+        return string.Equals(
+            entityType,
+            HistoricalSubjectType.ParkZone.ToString(),
+            StringComparison.Ordinal)
+            ? HistoricalSubjectType.ParkZone
             : null;
     }
 }

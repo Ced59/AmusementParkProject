@@ -49,21 +49,45 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
             HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
 
         BsonDocument[] pipeline = HistoricalFactRepository
-            .BuildLatestDecisionEligibleForParkPipeline("park-1", new[] { currentPark })
+            .BuildLatestDecisionEligibleForParkPipeline(
+                "park-1",
+                new[] { currentPark },
+                new[] { "fact-1", "fact-2" })
             .ToArray();
 
         Assert.Equal(5, pipeline.Length);
-        BsonArray initialScope = pipeline[0]["$match"]["$or"].AsBsonArray;
-        Assert.Contains(
-            initialScope,
-            filter => filter.AsBsonDocument.GetValue("subject.contextParkId", BsonNull.Value)
-                == "park-1");
+        BsonArray candidateIds = pipeline[0]["$match"]["factId"]["$in"].AsBsonArray;
+        Assert.Equal(new[] { "fact-1", "fact-2" }, candidateIds.Select(static id => id.AsString));
         Assert.Equal("$$ROOT", pipeline[2]["$group"]["document"]["$first"].AsString);
         BsonArray publicEligibility = pipeline[4]["$match"]["$or"].AsBsonArray;
         Assert.Contains(
             publicEligibility,
             filter => filter.AsBsonDocument.GetValue("subject.publicationPolicy", BsonNull.Value)
                 == HistoricalSubjectPublicationPolicy.HistoricalOnly.ToString());
+    }
+
+    [Fact]
+    public void BuildParkCandidateScopeFilter_ShouldFindCurrentAndDurablyScopedFactChains()
+    {
+        HistoricalSubject currentPark = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+
+        BsonDocument filter = HistoricalFactRepository.BuildParkCandidateScopeFilter(
+            "park-1",
+            new[] { currentPark });
+
+        BsonArray alternatives = filter["$or"].AsBsonArray;
+        Assert.Contains(
+            alternatives,
+            alternative => alternative.AsBsonDocument.GetValue("subject.id", BsonNull.Value)
+                == "park-1");
+        Assert.Contains(
+            alternatives,
+            alternative => alternative.AsBsonDocument.GetValue("subject.contextParkId", BsonNull.Value)
+                == "park-1");
     }
 
     [Fact]

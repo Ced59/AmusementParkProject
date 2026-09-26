@@ -22,9 +22,9 @@ public sealed class HistoricalFactPublicProjectionMigrationTests
             subject,
             new Dictionary<string, string>(),
             new Dictionary<string, string>(),
-            new Dictionary<string, string>
+            new Dictionary<(HistoricalSubjectType Type, string Id), string>
             {
-                ["deleted-item"] = "park-1",
+                [(HistoricalSubjectType.ParkItem, "deleted-item")] = "park-1",
             });
 
         Assert.Equal("park-1", parkId);
@@ -49,8 +49,31 @@ public sealed class HistoricalFactPublicProjectionMigrationTests
                 ["item-1"] = "park-current",
             },
             new Dictionary<string, string>(),
-            new Dictionary<string, string>());
+            new Dictionary<(HistoricalSubjectType Type, string Id), string>());
 
         Assert.Equal("park-frozen", parkId);
+    }
+
+    [Fact]
+    public void ResolveContextParkId_WhenZoneWasDeleted_ShouldUseRetainedNarrativeScope()
+    {
+        HistoricalSubjectDocument subject = new HistoricalSubjectDocument
+        {
+            Type = HistoricalSubjectType.ParkZone,
+            Id = "deleted-zone",
+            HistoricalLabel = "Zone disparue",
+            PublicationPolicy = HistoricalSubjectPublicationPolicy.HistoricalOnly,
+        };
+
+        string? parkId = HistoricalFactPublicProjectionMigration.ResolveContextParkId(
+            subject,
+            new Dictionary<string, string>(),
+            new Dictionary<string, string>(),
+            new Dictionary<(HistoricalSubjectType Type, string Id), string>
+            {
+                [(HistoricalSubjectType.ParkZone, "deleted-zone")] = "park-1",
+            });
+
+        Assert.Equal("park-1", parkId);
     }
 }
