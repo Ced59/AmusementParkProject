@@ -505,6 +505,15 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             }
         }
 
+        if (IsBeforeLatestCoarseFirstClosedBoundary(fact, requestedDate))
+        {
+            result.Add(HistoricalOperationalState.KnownOpen);
+            if (currentStates.Contains(HistoricalOperationalState.KnownClosed))
+            {
+                result.Add(HistoricalOperationalState.KnownClosed);
+            }
+        }
+
         foreach (HistoricalOperationalState state in currentStates)
         {
             result.Add(this.ApplyTransition(
@@ -529,6 +538,20 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             && !envelope.IsExactDay
             && requestedDate >= earliest
             && requestedDate <= latest;
+    }
+
+    private static bool IsBeforeLatestCoarseFirstClosedBoundary(
+        HistoricalFact fact,
+        DateOnly requestedDate)
+    {
+        HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
+        DateOnly earliest = envelope.EarliestPossibleDate ?? DateOnly.MinValue;
+        DateOnly latest = envelope.LatestPossibleDate ?? DateOnly.MaxValue;
+        return fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.FirstClosedDay
+            && !envelope.IsExactDay
+            && requestedDate >= earliest
+            && (requestedDate < latest
+                || !HistoricalTransitionApplicabilityResolver.HasConfirmedBoundary(fact));
     }
 
     private HistoricalOperationalState ApplyTransition(

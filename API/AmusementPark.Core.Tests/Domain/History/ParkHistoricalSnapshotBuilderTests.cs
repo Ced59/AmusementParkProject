@@ -579,6 +579,25 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_InsideCoarseFirstClosedEnvelope_PreservesOpenAndClosedCandidates()
+    {
+        HistoricalFact closure = CreateLifecycleFact(
+            HistoricalFactType.DefinitiveClosure,
+            HistoricalDate.ForYear(2000),
+            LifecycleBoundaryMeaning.FirstClosedDay);
+
+        HistoricalSubjectSnapshot insideEnvelope = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 6, 1),
+            new[] { closure });
+        HistoricalSubjectSnapshot atLatestBoundary = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 12, 31),
+            new[] { closure });
+
+        Assert.Equal(HistoricalOperationalState.PossiblyOpen, insideEnvelope.OperationalState);
+        Assert.Equal(HistoricalOperationalState.KnownClosed, atLatestBoundary.OperationalState);
+    }
+
+    [Fact]
     public void Build_DayBeforeExactReopening_UsesNegativeClosureEvidence()
     {
         HistoricalFact reopening = CreateLifecycleFact(
