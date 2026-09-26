@@ -751,13 +751,15 @@ avant restent ainsi récupérables sans dépendre du nouveau modèle. La collect
 opérationnelle est ensuite remplacée en une seule bascule par les récits
 canoniques ; l'application ne relit ni ne réécrit l'ancienne collection.
 
-Chaque type d'événement connu possède une correspondance explicite vers un fait
-structuré. Les dates gardent leur précision d'origine, l'importance reste
-identique et les changements de nom, logo, exploitant, propriétaire, thème ou
-localisation conservent leurs anciennes et nouvelles valeurs lorsqu'elles sont
-présentes. Une valeur inconnue n'est jamais transformée silencieusement en
-« autre ». Les associations historiques vagues sont conservées dans le récit
-mais ne deviennent pas des relations sans preuve.
+Chaque type d'événement automatiquement convertible possède une correspondance
+explicite vers un fait structuré. Une ouverture saisonnière reste bloquée pour
+classification manuelle : elle ne devient jamais l'ouverture initiale du parc
+ou de l'attraction. Les dates gardent leur précision d'origine, l'importance
+reste identique et les changements de nom, logo, exploitant, propriétaire,
+thème ou localisation conservent leurs anciennes et nouvelles valeurs
+lorsqu'elles sont présentes. Une valeur inconnue n'est jamais transformée
+silencieusement en « autre ». Les associations historiques vagues sont
+conservées dans le récit mais ne deviennent pas des relations sans preuve.
 
 Les sources valides deviennent des références canoniques figées sur leur
 première révision. Les informations absentes ou invalides alimentent un rapport

@@ -201,7 +201,17 @@ internal static class ParkGraphUpsertProcessorStandaloneHistoryExtensions
 
             if (apply && (change.Fields.Count > 0 || existing is null))
             {
-                historyEvent = existing is null ? await processorContext.historyEventRepository.CreateAsync(historyEvent, cancellationToken) : await processorContext.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken) ?? historyEvent;
+                if (existing is not null)
+                {
+                    await processorContext.RetractCanonicalFactBeforeHistoryMutationAsync(
+                        existing,
+                        cancellationToken);
+                }
+
+                historyEvent = existing is null
+                    ? await processorContext.historyEventRepository.CreateAsync(historyEvent, cancellationToken)
+                    : await processorContext.historyEventRepository.UpdateAsync(historyEvent.Id, historyEvent, cancellationToken)
+                        ?? historyEvent;
                 change.EntityId = historyEvent.Id;
             }
 

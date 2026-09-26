@@ -236,6 +236,10 @@ trap cleanup_deployment_attempt EXIT
 
 prepare_personal_ranking_cutover() {
   local migration_completed=""
+  if python3 ./scripts/deployment_transaction.py cutover-pending --resource personal-ranking; then
+    personal_ranking_cutover_started=true
+  fi
+
   migration_completed="$(compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
     mongodb mongosh --quiet \
@@ -267,6 +271,10 @@ prepare_personal_ranking_cutover() {
 
 prepare_historical_history_cutover() {
   local migration_completed=""
+  if python3 ./scripts/deployment_transaction.py cutover-pending --resource historical-history; then
+    historical_history_cutover_started=true
+  fi
+
   migration_completed="$(compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
     mongodb mongosh --quiet \

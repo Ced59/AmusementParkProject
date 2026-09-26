@@ -11,6 +11,12 @@ public static class LegacyHistoryEventTypeMapper
         string? legacyEventType,
         out LegacyHistoryEventTypeMapping? mapping)
     {
+        if (RequiresManualClassification(entityType, legacyEventType))
+        {
+            mapping = null;
+            return false;
+        }
+
         mapping = entityType switch
         {
             HistoryEntityType.Park => MapPark(legacyEventType),
@@ -19,6 +25,27 @@ public static class LegacyHistoryEventTypeMapper
             _ => null,
         };
         return mapping is not null;
+    }
+
+    public static bool RequiresManualClassification(
+        HistoryEntityType entityType,
+        string? legacyEventType)
+    {
+        string? normalizedEventType = legacyEventType?.Trim();
+        return entityType switch
+        {
+            HistoryEntityType.Park => Enum.TryParse(
+                    normalizedEventType,
+                    true,
+                    out ParkHistoryEventType parkEventType)
+                && parkEventType == ParkHistoryEventType.SeasonOpening,
+            HistoryEntityType.ParkItem or HistoryEntityType.StandaloneAttraction => Enum.TryParse(
+                    normalizedEventType,
+                    true,
+                    out ParkItemHistoryEventType parkItemEventType)
+                && parkItemEventType == ParkItemHistoryEventType.SeasonOpening,
+            _ => false,
+        };
     }
 
     private static LegacyHistoryEventTypeMapping? MapPark(string? legacyEventType)
@@ -38,8 +65,7 @@ public static class LegacyHistoryEventTypeMapper
                 or ParkHistoryEventType.InfrastructureChange
                 or ParkHistoryEventType.TransportChange
                 or ParkHistoryEventType.MaintenanceCampaign => Simple(HistoricalFactType.Construction),
-            ParkHistoryEventType.Opening
-                or ParkHistoryEventType.SeasonOpening => Lifecycle(
+            ParkHistoryEventType.Opening => Lifecycle(
                     HistoricalFactType.Opening,
                     LifecycleBoundaryMeaning.FirstOperatingDay),
             ParkHistoryEventType.Closure => Lifecycle(
@@ -129,8 +155,7 @@ public static class LegacyHistoryEventTypeMapper
                 or ParkItemHistoryEventType.ConstructionMilestone
                 or ParkItemHistoryEventType.TestingStart => Simple(HistoricalFactType.Construction),
             ParkItemHistoryEventType.SoftOpening
-                or ParkItemHistoryEventType.Opening
-                or ParkItemHistoryEventType.SeasonOpening => Lifecycle(
+                or ParkItemHistoryEventType.Opening => Lifecycle(
                     HistoricalFactType.Opening,
                     LifecycleBoundaryMeaning.FirstOperatingDay),
             ParkItemHistoryEventType.Closure => Lifecycle(

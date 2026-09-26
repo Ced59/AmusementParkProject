@@ -29,6 +29,15 @@ if ! grep -Fq 'arm-cutover --resource historical-history' "${deploy_script}"; th
   exit 1
 fi
 
+resume_recovery_line="$(grep -n 'cutover-pending --resource historical-history' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+migration_check_line="$(grep -n 'getCollection("historical-migrations")' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+if [ -z "${resume_recovery_line}" ] \
+  || [ -z "${migration_check_line}" ] \
+  || [ "${resume_recovery_line}" -ge "${migration_check_line}" ]; then
+  echo 'A resumed historical cutover must restore its rollback flag before accepting a completed migration.' >&2
+  exit 1
+fi
+
 freeze_script="${deploy_root}/scripts/freeze-legacy-history-5.3.82.js"
 for required_freeze_step in \
   "renameCollection(frozenCollectionName, false)" \

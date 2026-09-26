@@ -4,6 +4,7 @@ using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
@@ -46,6 +47,7 @@ internal sealed class HistoryUpsertTestContext
             .ReturnsAsync((string _, Park park, CancellationToken _) => park);
 
         this.HistoryEventRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        this.HistoricalFactRepository = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         this.HistoryEventRepository
             .Setup(value => value.GetByOwnerKeyAsync(
                 HistoryEntityType.Park,
@@ -89,10 +91,14 @@ internal sealed class HistoryUpsertTestContext
             this.upsertHistoryRepository.Object,
             this.publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
-            historyEventRepository: this.HistoryEventRepository.Object);
+            historyEventRepository: this.HistoryEventRepository.Object,
+            canonicalFactRetractionService:
+                new HistoricalNarrativeCanonicalFactRetractionService(this.HistoricalFactRepository.Object));
     }
 
     public Mock<IHistoryEventRepository> HistoryEventRepository { get; }
+
+    public Mock<IHistoricalFactRepository> HistoricalFactRepository { get; }
 
     private ParkGraphUpsertProcessor Processor { get; }
 

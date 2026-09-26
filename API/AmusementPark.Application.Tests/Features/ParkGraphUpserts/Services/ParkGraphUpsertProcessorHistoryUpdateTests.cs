@@ -4,6 +4,7 @@ using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
@@ -28,6 +29,46 @@ namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Services;
 
 public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
 {
+    [Fact]
+    public async Task ApplyAsync_WhenMigratedNarrativeChanges_ShouldRetractCanonicalFactFirst()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoryEvent existing = BuildExistingEvent();
+        existing.CanonicalFactId = factId;
+        existing.CanonicalizationState = HistoricalNarrativeCanonicalizationState.Migrated;
+        HistoryUpsertTestContext context = new HistoryUpsertTestContext(existing);
+        context.HistoricalFactRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(factId, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(CreateLegacyCanonicalFact(factId, HistoricalSubjectType.Park, "park-1"));
+        context.HistoricalFactRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Id == factId
+                    && fact.State == HistoricalFactState.Retracted
+                    && fact.PublicationState == HistoricalPublicationState.Withdrawn),
+                It.Is<HistoricalReviewEvent>(review => review.EventType == HistoricalReviewEventType.Retracted),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        string document = BuildDocument("""
+        "sources": [
+          {
+            "label": "Nouvelle archive",
+            "url": "https://example.test/new-history"
+          }
+        ]
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await context.ApplyAsync(document);
+
+        Assert.True(result.IsSuccess);
+        context.HistoricalFactRepository.VerifyAll();
+        context.HistoryEventRepository.Verify(
+            repository => repository.UpdateAsync(
+                "history-1",
+                It.Is<HistoryEvent>(historyEvent => historyEvent.CanonicalFactId == factId),
+                It.IsAny<CancellationToken>()),
+            Times.Once);
+    }
+
     [Fact]
     public async Task PreviewAndApplyAsync_WhenExistingArticleTextChanges_ShouldReportAndPersistUpdate()
     {
@@ -422,6 +463,45 @@ public sealed class ParkGraphUpsertProcessorHistoryUpdateTests
                 IsPublished = true,
             },
         };
+    }
+
+    private static HistoricalFact CreateLegacyCanonicalFact(
+        Guid factId,
+        HistoricalSubjectType subjectType,
+        string subjectId)
+    {
+        DateTime recordedAtUtc = DateTime.UtcNow.AddMinutes(-1);
+        return new HistoricalFact(
+            factId,
+            new HistoricalSubject(
+                subjectType,
+                subjectId,
+                "Cible historique",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForYear(1979)),
+            HistoricalFactState.Unverified,
+            HistoricalImportance.Standard,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalLocalizationPolicy.SupportedLanguageCodes
+                .Select(static code => new HistoricalLocalizedText(code, "À vérifier."))
+                .ToArray(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            Array.Empty<HistoricalSourceRevisionReference>(),
+            null,
+            null,
+            "history-1",
+            null,
+            null,
+            "hist-v1-legacy",
+            1,
+            null,
+            recordedAtUtc,
+            HistoricalRevisionOrigin.LegacyMigration);
     }
 
 }

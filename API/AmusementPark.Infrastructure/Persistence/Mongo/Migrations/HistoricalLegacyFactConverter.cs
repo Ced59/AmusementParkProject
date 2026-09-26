@@ -36,6 +36,14 @@ public sealed class HistoricalLegacyFactConverter
             warnings.Add(subjectResolution.AnomalyCode);
         }
 
+        if (LegacyHistoryEventTypeMapper.RequiresManualClassification(
+            historyEvent.EntityType,
+            historyEvent.EventType))
+        {
+            warnings.Add(HistoricalLegacyMigrationAnomalyCodes.ManualLifecycleClassificationRequired);
+            return Blocked(warnings);
+        }
+
         if (!LegacyHistoryEventTypeMapper.TryMap(
                 historyEvent.EntityType,
                 historyEvent.EventType,

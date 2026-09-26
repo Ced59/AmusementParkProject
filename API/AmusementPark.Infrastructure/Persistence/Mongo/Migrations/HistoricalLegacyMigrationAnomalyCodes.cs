@@ -6,6 +6,7 @@ internal static class HistoricalLegacyMigrationAnomalyCodes
     internal const string HiddenSubject = "hidden-subject";
     internal const string NotRelevantSubject = "not-relevant-subject";
     internal const string UnknownEventType = "unknown-event-type";
+    internal const string ManualLifecycleClassificationRequired = "manual-lifecycle-classification-required";
     internal const string InvalidDate = "invalid-date";
     internal const string IncompleteSource = "incomplete-source";
     internal const string InvalidSource = "invalid-source";
