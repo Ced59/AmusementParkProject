@@ -29,18 +29,24 @@ if ! grep -Fq 'arm-cutover --resource historical-history' "${deploy_script}"; th
   exit 1
 fi
 
-if ! grep -Fq "validator: { \$expr: { \$eq: [1, 0] } }" \
-  "${deploy_root}/scripts/freeze-legacy-history-5.3.82.js"; then
-  echo 'The legacy historical collection freeze must reject writes.' >&2
-  exit 1
-fi
+freeze_script="${deploy_root}/scripts/freeze-legacy-history-5.3.82.js"
+for required_freeze_step in \
+  "renameCollection(frozenCollectionName, false)" \
+  "createView(legacyCollectionName, frozenCollectionName, [])" \
+  "legacyInfo[0].type === 'view'"; do
+  if ! grep -Fq "${required_freeze_step}" "${freeze_script}"; then
+    echo "The historical cutover is missing its read-only view step: ${required_freeze_step}" >&2
+    exit 1
+  fi
+done
 
 rollback_script="${deploy_root}/scripts/rollback-history-5.3.82.js"
 for required_filter in \
   "migrationVersion: migrationId" \
   "publicationMethodologyVersion: methodologyVersion" \
   "'transitionReviewEvent.actorUserId': migrationActor" \
-  "validator: {}"; do
+  "getCollection(legacyCollectionName).drop()" \
+  "renameCollection(legacyCollectionName, false)"; do
   if ! grep -Fq "${required_filter}" "${rollback_script}"; then
     echo "Historical rollback is missing its targeted filter: ${required_filter}" >&2
     exit 1
