@@ -477,6 +477,21 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_AfterApproximateOpening_RemainsPossiblyOpen()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 1, 1, isApproximate: true),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 1, 2),
+            new[] { opening });
+
+        Assert.Equal(HistoricalOperationalState.PossiblyOpen, snapshot.OperationalState);
+    }
+
+    [Fact]
     public void Build_OnLatestPossibleDayOfUnboundedPartialTemporaryClosure_RemainsPossiblyOpen()
     {
         HistoricalFact[] facts =
@@ -561,6 +576,45 @@ public sealed class ParkHistoricalSnapshotBuilderTests
             snapshot.Reasons,
             reason => reason.Code == HistoricalSnapshotReasonCode.BeforeConfirmedInitialOpening
                 && reason.FactIds.Contains(opening.Id));
+    }
+
+    [Fact]
+    public void Build_DayBeforeExactReopening_UsesNegativeClosureEvidence()
+    {
+        HistoricalFact reopening = CreateLifecycleFact(
+            HistoricalFactType.Reopening,
+            HistoricalDate.ForDay(2000, 5, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 4, 30),
+            new[] { reopening });
+
+        Assert.Equal(HistoricalOperationalState.KnownClosed, snapshot.OperationalState);
+        Assert.Equal(new[] { reopening.Id }, snapshot.SupportingFactIds);
+    }
+
+    [Fact]
+    public void Build_DayBeforeReopeningWhileStillOpen_ReportsConflict()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact reopening = CreateLifecycleFact(
+            HistoricalFactType.Reopening,
+            HistoricalDate.ForDay(2000, 5, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 4, 30),
+            new[] { opening, reopening });
+
+        Assert.Equal(HistoricalOperationalState.PossiblyOpen, snapshot.OperationalState);
+        Assert.Contains(
+            snapshot.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.InconsistentLifecycleSequence
+                && reason.FactIds.Contains(reopening.Id));
     }
 
     [Fact]
@@ -768,6 +822,27 @@ public sealed class ParkHistoricalSnapshotBuilderTests
 
         Assert.Equal(HistoricalAttributeValueState.Known, attribute.State);
         Assert.Equal("Nom B", attribute.Value);
+    }
+
+    [Fact]
+    public void Build_AfterApproximateRenaming_RemainsAmbiguous()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact renaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 1, 1, isApproximate: true),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 1, 2),
+            new[] { opening, renaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Nom A", "Nom B" }, attribute.Candidates);
     }
 
     [Fact]

@@ -161,6 +161,14 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                 continue;
             }
 
+            if (applicability == HistoricalTransitionApplicability.NotOccurred
+                && IsDayBeforeExactReopening(fact, requestedDate))
+            {
+                contributingFactIds.Add(fact.Id);
+                result = ApplyNegativeClosureEvidence(result, fact, reasons);
+                continue;
+            }
+
             if (applicability != HistoricalTransitionApplicability.NotOccurred)
             {
                 contributingFactIds.Add(fact.Id);
@@ -189,6 +197,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         List<(HistoricalFact Fact, HistoricalTransitionApplicability Applicability, bool HasKnownEnd)>
             applicableTransitions = new();
         List<HistoricalFact> positiveActivityFacts = new();
+        List<HistoricalFact> negativeClosureFacts = new();
         foreach (HistoricalFact fact in group)
         {
             bool temporaryClosureHasKnownEnd = HasKnownReopening(fact, lifecycleFacts);
@@ -208,9 +217,16 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                 contributingFactIds.Add(fact.Id);
                 positiveActivityFacts.Add(fact);
             }
+            else if (IsDayBeforeExactReopening(fact, requestedDate))
+            {
+                contributingFactIds.Add(fact.Id);
+                negativeClosureFacts.Add(fact);
+            }
         }
 
-        if (applicableTransitions.Count == 0 && positiveActivityFacts.Count == 0)
+        if (applicableTransitions.Count == 0
+            && positiveActivityFacts.Count == 0
+            && negativeClosureFacts.Count == 0)
         {
             return states;
         }
@@ -218,6 +234,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         HistoricalFact[] decisionFacts = applicableTransitions
             .Select(static transition => transition.Fact)
             .Concat(positiveActivityFacts)
+            .Concat(negativeClosureFacts)
             .ToArray();
         if (decisionFacts.Length > 1)
         {
@@ -228,9 +245,10 @@ internal sealed class HistoricalLifecycleSnapshotReducer
 
         if (applicableTransitions.Count == 0)
         {
-            return ApplyPositiveActivityEvidence(
+            return ApplyBoundaryEvidence(
                 states,
-                positiveActivityFacts[0],
+                positiveActivityFacts,
+                negativeClosureFacts,
                 reasons);
         }
 
@@ -241,15 +259,11 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                 applicableTransitions,
                 requestedDate,
                 reasons);
-            if (positiveActivityFacts.Count > 0)
-            {
-                largeGroupResult = ApplyPositiveActivityEvidence(
-                    largeGroupResult,
-                    positiveActivityFacts[0],
-                    reasons);
-            }
-
-            return largeGroupResult;
+            return ApplyBoundaryEvidence(
+                largeGroupResult,
+                positiveActivityFacts,
+                negativeClosureFacts,
+                reasons);
         }
 
         int allMask = (1 << applicableTransitions.Count) - 1;
@@ -316,12 +330,28 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             }
         }
 
-        if (positiveActivityFacts.Count > 0)
+        return ApplyBoundaryEvidence(
+            result,
+            positiveActivityFacts,
+            negativeClosureFacts,
+            reasons);
+    }
+
+    private static HashSet<HistoricalOperationalState> ApplyBoundaryEvidence(
+        IReadOnlyCollection<HistoricalOperationalState> states,
+        IReadOnlyCollection<HistoricalFact> positiveActivityFacts,
+        IReadOnlyCollection<HistoricalFact> negativeClosureFacts,
+        HistoricalSnapshotReasonCollector reasons)
+    {
+        HashSet<HistoricalOperationalState> result = states.ToHashSet();
+        foreach (HistoricalFact fact in positiveActivityFacts)
         {
-            result = ApplyPositiveActivityEvidence(
-                result,
-                positiveActivityFacts[0],
-                reasons);
+            result = ApplyPositiveActivityEvidence(result, fact, reasons);
+        }
+
+        foreach (HistoricalFact fact in negativeClosureFacts)
+        {
+            result = ApplyNegativeClosureEvidence(result, fact, reasons);
         }
 
         return result;
@@ -341,6 +371,23 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         }
 
         result.Add(HistoricalOperationalState.KnownOpen);
+        return result;
+    }
+
+    private static HashSet<HistoricalOperationalState> ApplyNegativeClosureEvidence(
+        IReadOnlyCollection<HistoricalOperationalState> states,
+        HistoricalFact fact,
+        HistoricalSnapshotReasonCollector reasons)
+    {
+        HashSet<HistoricalOperationalState> result = states
+            .Where(static state => state != HistoricalOperationalState.Unknown)
+            .ToHashSet();
+        if (result.Contains(HistoricalOperationalState.KnownOpen))
+        {
+            reasons.Add(HistoricalSnapshotReasonCode.InconsistentLifecycleSequence, fact);
+        }
+
+        result.Add(HistoricalOperationalState.KnownClosed);
         return result;
     }
 
@@ -575,6 +622,21 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             && firstClosedDay.HasValue
             && firstClosedDay.Value != DateOnly.MinValue
             && firstClosedDay.Value.AddDays(-1) == requestedDate;
+    }
+
+    private static bool IsDayBeforeExactReopening(
+        HistoricalFact fact,
+        DateOnly requestedDate)
+    {
+        HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
+        DateOnly? firstOperatingDay = envelope.EarliestPossibleDate;
+        return fact.State == HistoricalFactState.Verified
+            && fact.Type == HistoricalFactType.Reopening
+            && fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.FirstOperatingDay
+            && envelope.IsExactDay
+            && firstOperatingDay.HasValue
+            && firstOperatingDay.Value != DateOnly.MinValue
+            && firstOperatingDay.Value.AddDays(-1) == requestedDate;
     }
 
     private static void RecordClosureAgainstClosedState(

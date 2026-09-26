@@ -22,7 +22,9 @@ internal static class HistoricalTransitionApplicabilityResolver
 
         if (requestedDate > latest)
         {
-            return HistoricalTransitionApplicability.Applied;
+            return HasConfirmedBoundary(fact)
+                ? HistoricalTransitionApplicability.Applied
+                : HistoricalTransitionApplicability.Optional;
         }
 
         if (HasConfirmedBoundary(fact))
@@ -80,7 +82,9 @@ internal static class HistoricalTransitionApplicabilityResolver
 
         if (requestedDate > latest)
         {
-            return HistoricalTransitionApplicability.Applied;
+            return HasConfirmedBoundary(fact)
+                ? HistoricalTransitionApplicability.Applied
+                : HistoricalTransitionApplicability.Optional;
         }
 
         if (HasConfirmedBoundary(fact))
