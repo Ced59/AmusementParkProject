@@ -31,6 +31,12 @@ public sealed class HistoricalLegacyMigrationStateDocument
     [BsonElement("sourceDigest")]
     public string SourceDigest { get; set; } = string.Empty;
 
+    [BsonElement("subjectCount")]
+    public long SubjectCount { get; set; }
+
+    [BsonElement("subjectDigest")]
+    public string SubjectDigest { get; set; } = string.Empty;
+
     [BsonElement("backupCount")]
     public long BackupCount { get; set; }
 

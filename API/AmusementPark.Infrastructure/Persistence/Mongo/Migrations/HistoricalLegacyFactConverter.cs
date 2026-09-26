@@ -11,15 +11,18 @@ public sealed class HistoricalLegacyFactConverter
 {
     private readonly IHistoricalFactRepository factRepository;
     private readonly HistoricalLegacySubjectResolver subjectResolver;
+    private readonly HistoricalLegacyOperatorResolver operatorResolver;
     private readonly HistoricalLegacySourceMigrator sourceMigrator;
 
     public HistoricalLegacyFactConverter(
         IHistoricalFactRepository factRepository,
         HistoricalLegacySubjectResolver subjectResolver,
+        HistoricalLegacyOperatorResolver operatorResolver,
         HistoricalLegacySourceMigrator sourceMigrator)
     {
         this.factRepository = factRepository ?? throw new ArgumentNullException(nameof(factRepository));
         this.subjectResolver = subjectResolver ?? throw new ArgumentNullException(nameof(subjectResolver));
+        this.operatorResolver = operatorResolver ?? throw new ArgumentNullException(nameof(operatorResolver));
         this.sourceMigrator = sourceMigrator ?? throw new ArgumentNullException(nameof(sourceMigrator));
     }
 
@@ -51,6 +54,13 @@ public sealed class HistoricalLegacyFactConverter
             || mapping is null)
         {
             warnings.Add(HistoricalLegacyMigrationAnomalyCodes.UnknownEventType);
+            return Blocked(warnings);
+        }
+
+        if (mapping.AttributeKind == HistoricalAttributeKind.Operator
+            && !await this.operatorResolver.AreReferencesResolvedAsync(historyEvent, cancellationToken))
+        {
+            warnings.Add(HistoricalLegacyMigrationAnomalyCodes.UnresolvedOperatorReference);
             return Blocked(warnings);
         }
 

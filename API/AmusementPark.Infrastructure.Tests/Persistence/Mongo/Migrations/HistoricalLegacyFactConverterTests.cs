@@ -141,6 +141,28 @@ public sealed class HistoricalLegacyFactConverterTests
         Assert.Null(result);
     }
 
+    [Fact]
+    public void GetReferenceIds_ShouldNormalizeAndDeduplicateEveryOperatorReference()
+    {
+        HistoryEventDocument historyEvent = new HistoryEventDocument
+        {
+            PreviousOperatorId = " operator-1 ",
+            NewOperatorId = "operator-1",
+        };
+
+        string[] result = HistoricalLegacyOperatorResolver.GetReferenceIds(historyEvent);
+
+        Assert.Equal(new[] { "operator-1" }, result);
+    }
+
+    [Fact]
+    public void GetReferenceIds_WhenTransitionHasNoOperator_ShouldRemainEmpty()
+    {
+        string[] result = HistoricalLegacyOperatorResolver.GetReferenceIds(new HistoryEventDocument());
+
+        Assert.Empty(result);
+    }
+
     [Theory]
     [InlineData(HistoricalFactType.Relocation, HistoricalAttributeKind.Location)]
     [InlineData(HistoricalFactType.ZoneMove, HistoricalAttributeKind.Zone)]

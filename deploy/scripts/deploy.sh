@@ -228,8 +228,23 @@ rollback_incomplete_historical_history_cutover() {
 }
 
 cleanup_deployment_attempt() {
-  rollback_incomplete_historical_history_cutover
-  rollback_incomplete_personal_ranking_cutover
+  local deployment_exit_code=$?
+  local historical_rollback_exit_code=0
+  local ranking_rollback_exit_code=0
+
+  # Each cutover owns a distinct authority. A failure while restoring one must
+  # never prevent the other restoration attempt under `set -e`.
+  rollback_incomplete_historical_history_cutover || historical_rollback_exit_code=$?
+  rollback_incomplete_personal_ranking_cutover || ranking_rollback_exit_code=$?
+
+  if [ "${deployment_exit_code}" -ne 0 ]; then
+    return "${deployment_exit_code}"
+  fi
+  if [ "${historical_rollback_exit_code}" -ne 0 ]; then
+    return "${historical_rollback_exit_code}"
+  fi
+
+  return "${ranking_rollback_exit_code}"
 }
 
 trap cleanup_deployment_attempt EXIT

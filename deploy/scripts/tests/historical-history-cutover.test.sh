@@ -15,6 +15,15 @@ if ! grep -Fq 'rollback_incomplete_historical_history_cutover' "${deploy_script}
   exit 1
 fi
 
+historical_rollback_line="$(grep -n 'rollback_incomplete_historical_history_cutover || historical_rollback_exit_code=$?' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+ranking_rollback_line="$(grep -n 'rollback_incomplete_personal_ranking_cutover || ranking_rollback_exit_code=$?' "${deploy_script}" | head -n 1 | cut -d: -f1)"
+if [ -z "${historical_rollback_line}" ] \
+  || [ -z "${ranking_rollback_line}" ] \
+  || [ "${historical_rollback_line}" -ge "${ranking_rollback_line}" ]; then
+  echo 'Both business cutovers must be restored independently, even when historical rollback fails.' >&2
+  exit 1
+fi
+
 rollback_arm_line="$(grep -n 'historical_history_cutover_started=true' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 freeze_command_line="$(grep -n 'freeze-legacy-history-5.3.82.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${rollback_arm_line}" ] \

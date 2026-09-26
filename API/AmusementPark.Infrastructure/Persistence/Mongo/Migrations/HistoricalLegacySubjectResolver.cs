@@ -38,6 +38,18 @@ public sealed class HistoricalLegacySubjectResolver
             return cached;
         }
 
+        HistoricalLegacySubjectResolution resolution = await this.ResolveCurrentAsync(
+            historyEvent,
+            cancellationToken);
+        this.cache[cacheKey] = resolution;
+        return resolution;
+    }
+
+    public async Task<HistoricalLegacySubjectResolution> ResolveCurrentAsync(
+        HistoryEventDocument historyEvent,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(historyEvent);
         HistoricalLegacySubjectResolution resolution;
         if (historyEvent.EntityType == HistoryEntityType.Park)
         {
@@ -103,7 +115,6 @@ public sealed class HistoricalLegacySubjectResolver
                 "A legacy historical subject type cannot be inferred.");
         }
 
-        this.cache[cacheKey] = resolution;
         return resolution;
     }
 

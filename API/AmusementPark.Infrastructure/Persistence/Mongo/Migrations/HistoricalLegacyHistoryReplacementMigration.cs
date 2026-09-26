@@ -29,6 +29,7 @@ public sealed class HistoricalLegacyHistoryReplacementMigration
     private readonly IMongoCollection<HistoricalFactDocument> factCollection;
     private readonly IMongoCollection<HistoricalSourceDocument> sourceCollection;
     private readonly HistoricalLegacyFactConverter factConverter;
+    private readonly HistoricalLegacySubjectResolver subjectResolver;
     private readonly TimeProvider timeProvider;
     private readonly ILogger<HistoricalLegacyHistoryReplacementMigration> logger;
 
@@ -36,8 +37,9 @@ public sealed class HistoricalLegacyHistoryReplacementMigration
         IMongoDatabase database,
         MongoDbSettings settings,
         HistoricalLegacyFactConverter factConverter,
+        HistoricalLegacySubjectResolver subjectResolver,
         ILogger<HistoricalLegacyHistoryReplacementMigration> logger)
-        : this(database, settings, factConverter, TimeProvider.System, logger)
+        : this(database, settings, factConverter, subjectResolver, TimeProvider.System, logger)
     {
     }
 
@@ -45,12 +47,14 @@ public sealed class HistoricalLegacyHistoryReplacementMigration
         IMongoDatabase database,
         MongoDbSettings settings,
         HistoricalLegacyFactConverter factConverter,
+        HistoricalLegacySubjectResolver subjectResolver,
         TimeProvider timeProvider,
         ILogger<HistoricalLegacyHistoryReplacementMigration> logger)
     {
         ArgumentNullException.ThrowIfNull(database);
         ArgumentNullException.ThrowIfNull(settings);
         this.factConverter = factConverter ?? throw new ArgumentNullException(nameof(factConverter));
+        this.subjectResolver = subjectResolver ?? throw new ArgumentNullException(nameof(subjectResolver));
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         this.legacyCollection = database.GetCollection<BsonDocument>(settings.HistoryEventsCollectionName);
@@ -79,6 +83,9 @@ public sealed class HistoricalLegacyHistoryReplacementMigration
         {
             await this.ResetIncompleteMigrationOutputAsync(cancellationToken);
             (long sourceCount, string sourceDigest) = await this.CalculateSourceSnapshotAsync(cancellationToken);
+            (long subjectCount, string subjectDigest) = await this.CalculateSubjectSnapshotAsync(
+                true,
+                cancellationToken);
             long factCount = 0;
             long sourceReferenceCount = 0;
             long blockedCount = 0;
@@ -112,6 +119,15 @@ public sealed class HistoricalLegacyHistoryReplacementMigration
                     "Legacy history changed while its replacement migration was running.");
             }
 
+            (long finalSubjectCount, string finalSubjectDigest) = await this.CalculateSubjectSnapshotAsync(
+                false,
+                cancellationToken);
+            EnsureSubjectSnapshotUnchanged(
+                subjectCount,
+                subjectDigest,
+                finalSubjectCount,
+                finalSubjectDigest);
+
             long backupCount = await this.backupCollection.CountDocumentsAsync(
                 Builders<BsonDocument>.Filter.Empty,
                 cancellationToken: cancellationToken);
@@ -130,6 +146,8 @@ public sealed class HistoricalLegacyHistoryReplacementMigration
                 leaseOwner,
                 sourceCount,
                 sourceDigest,
+                subjectCount,
+                subjectDigest,
                 backupCount,
                 narrativeCount,
                 factCount,
@@ -263,6 +281,83 @@ public sealed class HistoricalLegacyHistoryReplacementMigration
         return (count, Convert.ToHexString(hash.GetHashAndReset()).ToLowerInvariant());
     }
 
+    private async Task<(long Count, string Digest)> CalculateSubjectSnapshotAsync(
+        bool useCachedResolution,
+        CancellationToken cancellationToken)
+    {
+        HashSet<(string EntityType, string OwnerId)> subjectKeys = new();
+        using IAsyncCursor<BsonDocument> cursor = await this.legacyCollection
+            .Find(Builders<BsonDocument>.Filter.Empty)
+            .Project(Builders<BsonDocument>.Projection.Include("entityType").Include("ownerId"))
+            .ToCursorAsync(cancellationToken);
+        while (await cursor.MoveNextAsync(cancellationToken))
+        {
+            foreach (BsonDocument document in cursor.Current)
+            {
+                string entityType = document.GetValue("entityType", BsonNull.Value).ToString()
+                    ?? string.Empty;
+                string ownerId = document.GetValue("ownerId", BsonNull.Value).ToString()
+                    ?? string.Empty;
+                subjectKeys.Add((entityType, ownerId));
+            }
+        }
+
+        using IncrementalHash hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
+        foreach ((string entityType, string ownerId) in subjectKeys
+                     .OrderBy(static key => key.EntityType, StringComparer.Ordinal)
+                     .ThenBy(static key => key.OwnerId, StringComparer.Ordinal))
+        {
+            BsonDocument snapshot = new BsonDocument
+            {
+                { "entityType", entityType },
+                { "ownerId", ownerId },
+            };
+            if (Enum.TryParse(entityType, true, out HistoryEntityType parsedEntityType)
+                && Enum.IsDefined(parsedEntityType)
+                && !string.IsNullOrWhiteSpace(ownerId))
+            {
+                HistoryEventDocument subjectEvent = new HistoryEventDocument
+                {
+                    EntityType = parsedEntityType,
+                    OwnerId = ownerId,
+                };
+                HistoricalLegacySubjectResolution resolution = useCachedResolution
+                    ? await this.subjectResolver.ResolveAsync(subjectEvent, cancellationToken)
+                    : await this.subjectResolver.ResolveCurrentAsync(subjectEvent, cancellationToken);
+                snapshot.Add("subjectType", resolution.SubjectType.ToString());
+                snapshot.Add("historicalLabel", resolution.HistoricalLabel);
+                snapshot.Add("publicationPolicy", resolution.PublicationPolicy.ToString());
+                snapshot.Add(
+                    "anomalyCode",
+                    resolution.AnomalyCode is null ? BsonNull.Value : resolution.AnomalyCode);
+            }
+            else
+            {
+                snapshot.Add("resolution", "invalid");
+            }
+
+            hash.AppendData(snapshot.ToBson());
+        }
+
+        return (
+            subjectKeys.Count,
+            Convert.ToHexString(hash.GetHashAndReset()).ToLowerInvariant());
+    }
+
+    internal static void EnsureSubjectSnapshotUnchanged(
+        long expectedCount,
+        string expectedDigest,
+        long actualCount,
+        string actualDigest)
+    {
+        if (expectedCount != actualCount
+            || !string.Equals(expectedDigest, actualDigest, StringComparison.Ordinal))
+        {
+            throw new InvalidOperationException(
+                "A historical subject changed while its replacement migration was running.");
+        }
+    }
+
     private async Task EnsureStateExistsAsync(CancellationToken cancellationToken)
     {
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
@@ -337,6 +432,8 @@ public sealed class HistoricalLegacyHistoryReplacementMigration
         string leaseOwner,
         long sourceCount,
         string sourceDigest,
+        long subjectCount,
+        string subjectDigest,
         long backupCount,
         long narrativeCount,
         long factCount,
@@ -353,6 +450,8 @@ public sealed class HistoricalLegacyHistoryReplacementMigration
             Builders<HistoricalLegacyMigrationStateDocument>.Update
                 .Set(static state => state.SourceCount, sourceCount)
                 .Set(static state => state.SourceDigest, sourceDigest)
+                .Set(static state => state.SubjectCount, subjectCount)
+                .Set(static state => state.SubjectDigest, subjectDigest)
                 .Set(static state => state.BackupCount, backupCount)
                 .Set(static state => state.NarrativeCount, narrativeCount)
                 .Set(static state => state.FactCount, factCount)
