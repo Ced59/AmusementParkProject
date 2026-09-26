@@ -15,11 +15,17 @@ public sealed class HistoricalReviewEventRepository : IHistoricalAuditWriter, IH
     internal const int MaximumPageSize = 500;
 
     private readonly IMongoCollection<HistoricalReviewEventDocument> collection;
+    private readonly IMongoCollection<HistoricalFactDocument> factCollection;
+    private readonly IMongoCollection<HistoricalSourceDocument> sourceCollection;
 
     public HistoricalReviewEventRepository(IMongoDatabase database, MongoDbSettings settings)
     {
         this.collection = database.GetCollection<HistoricalReviewEventDocument>(
             settings.HistoricalReviewEventsCollectionName);
+        this.factCollection = database.GetCollection<HistoricalFactDocument>(
+            settings.HistoricalFactsCollectionName);
+        this.sourceCollection = database.GetCollection<HistoricalSourceDocument>(
+            settings.HistoricalSourcesCollectionName);
     }
 
     public async Task<HistoricalRevisionWriteDisposition> AppendAsync(
@@ -27,6 +33,7 @@ public sealed class HistoricalReviewEventRepository : IHistoricalAuditWriter, IH
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(reviewEvent);
+        await this.ValidateTargetAsync(reviewEvent, cancellationToken);
         HistoricalReviewEventDocument candidate = reviewEvent.ToDocument();
         try
         {
@@ -79,5 +86,37 @@ public sealed class HistoricalReviewEventRepository : IHistoricalAuditWriter, IH
     {
         return existing is not null
             && existing.ToBsonDocument().Equals(candidate.ToBsonDocument());
+    }
+
+    private async Task ValidateTargetAsync(
+        HistoricalReviewEvent reviewEvent,
+        CancellationToken cancellationToken)
+    {
+        string normalizedResourceId = reviewEvent.ResourceId.ToString("N", CultureInfo.InvariantCulture);
+        switch (reviewEvent.ResourceType)
+        {
+            case HistoricalReviewResourceType.Fact:
+                HistoricalFactDocument? factDocument = await this.factCollection
+                    .Find(document => document.FactId == normalizedResourceId
+                        && document.Revision == reviewEvent.ResourceRevision)
+                    .FirstOrDefaultAsync(cancellationToken);
+                HistoricalReviewEventTargetValidator.ValidateFactTarget(
+                    reviewEvent,
+                    factDocument?.ToDomain());
+                break;
+            case HistoricalReviewResourceType.Source:
+                HistoricalSourceDocument? sourceDocument = await this.sourceCollection
+                    .Find(document => document.SourceId == normalizedResourceId
+                        && document.Revision == reviewEvent.ResourceRevision)
+                    .FirstOrDefaultAsync(cancellationToken);
+                HistoricalReviewEventTargetValidator.ValidateSourceTarget(
+                    reviewEvent,
+                    sourceDocument?.ToDomain());
+                break;
+            default:
+                throw new HistoricalPersistenceValidationException(
+                    HistoricalPersistenceErrorCodes.InvalidReviewEvent,
+                    "The historical review event resource type is not persistable yet.");
+        }
     }
 }

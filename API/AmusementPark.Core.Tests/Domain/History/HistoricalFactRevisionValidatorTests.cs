@@ -40,12 +40,38 @@ public sealed class HistoricalFactRevisionValidatorTests
             HistoricalFactRevisionValidator.ValidatePredecessor(correction, predecessor));
     }
 
+    [Fact]
+    public void ValidatePredecessor_WhenCorrectionFollowsDraft_ShouldRejectTransition()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact predecessor = CreateFact(
+            factId,
+            1,
+            null,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft);
+        HistoricalFact correction = CreateFact(
+            factId,
+            2,
+            1,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.Corrected,
+            HistoricalPublicationState.Published);
+
+        Assert.Throws<HistoricalPersistenceValidationException>(() =>
+            HistoricalFactRevisionValidator.ValidatePredecessor(correction, predecessor));
+    }
+
     private static HistoricalFact CreateFact(
         Guid factId,
         int revision,
         int? supersedesRevision,
-        DateTime recordedAtUtc)
+        DateTime recordedAtUtc,
+        HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published,
+        HistoricalPublicationState publicationState = HistoricalPublicationState.Published)
     {
+        bool isPublished = publicationState == HistoricalPublicationState.Published;
         return new HistoricalFact(
             factId,
             new HistoricalSubject(
@@ -55,10 +81,10 @@ public sealed class HistoricalFactRevisionValidatorTests
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
             HistoricalFactType.Opening,
             HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
-            HistoricalFactState.Verified,
+            isPublished ? HistoricalFactState.Verified : HistoricalFactState.Unverified,
             HistoricalImportance.Major,
-            HistoricalEditorialWorkflowState.Published,
-            HistoricalPublicationState.Published,
+            workflowState,
+            publicationState,
             Array.Empty<HistoricalLocalizedText>(),
             LifecycleBoundaryMeaning.FirstOperatingDay,
             null,
@@ -68,9 +94,9 @@ public sealed class HistoricalFactRevisionValidatorTests
             null,
             null,
             "history-opening-1998",
-            recordedAtUtc.AddMinutes(-2),
-            recordedAtUtc.AddMinutes(-1),
-            "hist-v1",
+            isPublished ? recordedAtUtc.AddMinutes(-2) : null,
+            isPublished ? recordedAtUtc.AddMinutes(-1) : null,
+            isPublished ? "hist-v1" : null,
             revision,
             supersedesRevision,
             recordedAtUtc);

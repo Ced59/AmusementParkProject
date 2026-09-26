@@ -32,6 +32,7 @@ public sealed class HistoricalSourceReference
         }
 
         ValidateEnums(type, accessibility, workflowState, publicationState);
+        ValidateInitialRevision(revision, workflowState, publicationState);
         string normalizedTitle = NormalizeRequired(title, 500, nameof(title));
         string normalizedPublisher = NormalizeRequired(publisherOrAuthor, 300, nameof(publisherOrAuthor));
         string? normalizedUrl = NormalizeOptionalUri(url, nameof(url));
@@ -154,6 +155,22 @@ public sealed class HistoricalSourceReference
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidFactState,
                 "The historical source workflow and publication states are inconsistent.");
+        }
+    }
+
+    private static void ValidateInitialRevision(
+        int revision,
+        HistoricalEditorialWorkflowState workflowState,
+        HistoricalPublicationState publicationState)
+    {
+        if (revision == 1
+            && (workflowState is HistoricalEditorialWorkflowState.Corrected
+                or HistoricalEditorialWorkflowState.Retracted
+                || publicationState == HistoricalPublicationState.Withdrawn))
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidRevision,
+                "A first historical source revision cannot represent a correction or retraction.");
         }
     }
 

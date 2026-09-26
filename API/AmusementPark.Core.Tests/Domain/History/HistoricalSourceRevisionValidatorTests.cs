@@ -40,10 +40,33 @@ public sealed class HistoricalSourceRevisionValidatorTests
             HistoricalSourceRevisionValidator.ValidatePredecessor(correction, predecessor));
     }
 
+    [Fact]
+    public void ValidatePredecessor_WhenCorrectionFollowsDraft_ShouldRejectTransition()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalSourceReference predecessor = CreateSource(
+            sourceId,
+            1,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft);
+        HistoricalSourceReference correction = CreateSource(
+            sourceId,
+            2,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.Corrected,
+            HistoricalPublicationState.Published);
+
+        Assert.Throws<HistoricalPersistenceValidationException>(() =>
+            HistoricalSourceRevisionValidator.ValidatePredecessor(correction, predecessor));
+    }
+
     private static HistoricalSourceReference CreateSource(
         Guid sourceId,
         int revision,
-        DateTime recordedAtUtc)
+        DateTime recordedAtUtc,
+        HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published,
+        HistoricalPublicationState publicationState = HistoricalPublicationState.Published)
     {
         return new HistoricalSourceReference(
             sourceId,
@@ -60,8 +83,8 @@ public sealed class HistoricalSourceRevisionValidatorTests
             new[] { HistoricalSourceScope.Period },
             null,
             HistoricalSourceAccessibility.Accessible,
-            HistoricalEditorialWorkflowState.Published,
-            HistoricalPublicationState.Published,
+            workflowState,
+            publicationState,
             recordedAtUtc);
     }
 }

@@ -23,10 +23,29 @@ public static class HistoricalSourceRevisionValidator
         if (predecessor is null
             || predecessor.Id != source.Id
             || predecessor.Revision != source.Revision - 1
-            || predecessor.RecordedAtUtc > source.RecordedAtUtc)
+            || predecessor.RecordedAtUtc > source.RecordedAtUtc
+            || !IsWorkflowTransitionValid(source, predecessor))
         {
             throw Invalid();
         }
+    }
+
+    private static bool IsWorkflowTransitionValid(
+        HistoricalSourceReference source,
+        HistoricalSourceReference predecessor)
+    {
+        return source.WorkflowState switch
+        {
+            HistoricalEditorialWorkflowState.Corrected =>
+                predecessor.WorkflowState is HistoricalEditorialWorkflowState.Published
+                    or HistoricalEditorialWorkflowState.Corrected
+                && predecessor.PublicationState == HistoricalPublicationState.Published,
+            HistoricalEditorialWorkflowState.Retracted =>
+                predecessor.WorkflowState is HistoricalEditorialWorkflowState.Published
+                    or HistoricalEditorialWorkflowState.Corrected
+                && predecessor.PublicationState == HistoricalPublicationState.Published,
+            _ => predecessor.WorkflowState is not HistoricalEditorialWorkflowState.Retracted,
+        };
     }
 
     private static HistoricalPersistenceValidationException Invalid()

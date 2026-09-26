@@ -22,10 +22,27 @@ public static class HistoricalFactRevisionValidator
             || fact.SupersedesRevision != fact.Revision - 1
             || predecessor.Id != fact.Id
             || predecessor.Revision != fact.SupersedesRevision
-            || predecessor.RecordedAtUtc > fact.RecordedAtUtc)
+            || predecessor.RecordedAtUtc > fact.RecordedAtUtc
+            || !IsWorkflowTransitionValid(fact, predecessor))
         {
             throw Invalid();
         }
+    }
+
+    private static bool IsWorkflowTransitionValid(HistoricalFact fact, HistoricalFact predecessor)
+    {
+        return fact.WorkflowState switch
+        {
+            HistoricalEditorialWorkflowState.Corrected =>
+                predecessor.WorkflowState is HistoricalEditorialWorkflowState.Published
+                    or HistoricalEditorialWorkflowState.Corrected
+                && predecessor.PublicationState == HistoricalPublicationState.Published,
+            HistoricalEditorialWorkflowState.Retracted =>
+                predecessor.WorkflowState is HistoricalEditorialWorkflowState.Published
+                    or HistoricalEditorialWorkflowState.Corrected
+                && predecessor.PublicationState == HistoricalPublicationState.Published,
+            _ => predecessor.WorkflowState is not HistoricalEditorialWorkflowState.Retracted,
+        };
     }
 
     private static HistoricalPersistenceValidationException Invalid()

@@ -90,6 +90,27 @@ public sealed class HistoricalFactTests
     }
 
     [Fact]
+    public void Constructor_WhenFirstRevisionClaimsCorrection_ShouldRejectFact()
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() => CreateFact(
+                workflowState: HistoricalEditorialWorkflowState.Corrected));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Constructor_WhenPublicationPrecedesVerification_ShouldRejectFact()
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() => CreateFact(
+                verifiedAtUtc: RecordedAtUtc.AddMinutes(-1),
+                publishedAtUtc: RecordedAtUtc.AddMinutes(-2)));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidTimestamp, exception.ErrorCode);
+    }
+
+    [Fact]
     public void Constructor_WhenTwoRevisionsOfSameSourceAreAttached_ShouldRejectFact()
     {
         Guid sourceId = Guid.NewGuid();
@@ -162,7 +183,10 @@ public sealed class HistoricalFactTests
         HistoricalPeriod? period = null,
         int? sequenceWithinDate = null,
         int revision = 1,
-        int? supersedesRevision = null)
+        int? supersedesRevision = null,
+        HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published,
+        DateTime? verifiedAtUtc = null,
+        DateTime? publishedAtUtc = null)
     {
         return new HistoricalFact(
             Guid.NewGuid(),
@@ -175,7 +199,7 @@ public sealed class HistoricalFactTests
             period ?? HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
             state,
             HistoricalImportance.Major,
-            HistoricalEditorialWorkflowState.Published,
+            workflowState,
             HistoricalPublicationState.Published,
             explanations ?? (state == HistoricalFactState.Verified
                 ? Array.Empty<HistoricalLocalizedText>()
@@ -188,8 +212,8 @@ public sealed class HistoricalFactTests
             null,
             null,
             "history-opening-1998",
-            state == HistoricalFactState.Verified ? RecordedAtUtc.AddMinutes(-2) : null,
-            RecordedAtUtc.AddMinutes(-1),
+            verifiedAtUtc ?? (state == HistoricalFactState.Verified ? RecordedAtUtc.AddMinutes(-2) : null),
+            publishedAtUtc ?? RecordedAtUtc.AddMinutes(-1),
             "hist-v1",
             revision,
             supersedesRevision,

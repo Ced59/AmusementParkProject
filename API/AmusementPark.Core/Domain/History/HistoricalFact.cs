@@ -40,7 +40,7 @@ public sealed class HistoricalFact
         ArgumentNullException.ThrowIfNull(subject);
         ArgumentNullException.ThrowIfNull(period);
         ValidateEnums(type, state, importance, workflowState, publicationState);
-        ValidateRevision(revision, supersedesRevision);
+        ValidateRevision(revision, supersedesRevision, workflowState, publicationState);
         EnsureUtc(recordedAtUtc);
         EnsureOptionalUtc(verifiedAtUtc);
         EnsureOptionalUtc(publishedAtUtc);
@@ -49,6 +49,15 @@ public sealed class HistoricalFact
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidTimestamp,
                 "Historical fact lifecycle timestamps cannot follow their recorded revision.");
+        }
+
+        if (verifiedAtUtc.HasValue
+            && publishedAtUtc.HasValue
+            && verifiedAtUtc.Value > publishedAtUtc.Value)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidTimestamp,
+                "A historical fact must be verified before it is published.");
         }
 
         HistoricalSourceRevisionReference[] normalizedSourceReferences =
@@ -172,7 +181,11 @@ public sealed class HistoricalFact
         }
     }
 
-    private static void ValidateRevision(int revision, int? supersedesRevision)
+    private static void ValidateRevision(
+        int revision,
+        int? supersedesRevision,
+        HistoricalEditorialWorkflowState workflowState,
+        HistoricalPublicationState publicationState)
     {
         bool valid = revision == 1
             ? !supersedesRevision.HasValue
@@ -182,6 +195,17 @@ public sealed class HistoricalFact
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidRevision,
                 "A historical fact revision must be positive and identify the previous revision it supersedes.");
+        }
+
+
+        if (revision == 1
+            && (workflowState is HistoricalEditorialWorkflowState.Corrected
+                or HistoricalEditorialWorkflowState.Retracted
+                || publicationState == HistoricalPublicationState.Withdrawn))
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidRevision,
+                "A first historical fact revision cannot represent a correction or retraction.");
         }
     }
 

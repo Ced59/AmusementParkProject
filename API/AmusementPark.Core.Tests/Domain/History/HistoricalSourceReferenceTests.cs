@@ -90,8 +90,19 @@ public sealed class HistoricalSourceReferenceTests
         Assert.Throws<NotSupportedException>(() => scopes[0] = HistoricalSourceScope.StructuredValue);
     }
 
+    [Fact]
+    public void Constructor_WhenFirstRevisionClaimsCorrection_ShouldRejectSource()
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() => CreatePublishedSource(
+                workflowState: HistoricalEditorialWorkflowState.Corrected));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
+    }
+
     private static HistoricalSourceReference CreatePublishedSource(
-        HistoricalSourceAccessibility accessibility = HistoricalSourceAccessibility.Archived)
+        HistoricalSourceAccessibility accessibility = HistoricalSourceAccessibility.Archived,
+        HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published)
     {
         return new HistoricalSourceReference(
             Guid.NewGuid(),
@@ -108,7 +119,7 @@ public sealed class HistoricalSourceReferenceTests
             new[] { HistoricalSourceScope.Period },
             "Preuve relue.",
             accessibility,
-            HistoricalEditorialWorkflowState.Published,
+            workflowState,
             HistoricalPublicationState.Published,
             RecordedAtUtc);
     }
