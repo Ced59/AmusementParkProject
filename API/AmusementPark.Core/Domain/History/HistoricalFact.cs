@@ -84,6 +84,7 @@ public sealed class HistoricalFact
             state,
             workflowState,
             publicationState,
+            revisionOrigin,
             normalizedSourceReferences,
             normalizedExplanations,
             verifiedAtUtc,
@@ -429,6 +430,7 @@ public sealed class HistoricalFact
         HistoricalFactState state,
         HistoricalEditorialWorkflowState workflowState,
         HistoricalPublicationState publicationState,
+        HistoricalRevisionOrigin revisionOrigin,
         IReadOnlyCollection<HistoricalSourceRevisionReference> sourceReferences,
         IReadOnlyCollection<HistoricalLocalizedText> explanations,
         DateTime? verifiedAtUtc,
@@ -457,6 +459,17 @@ public sealed class HistoricalFact
         if (state == HistoricalFactState.Verified && sourceReferences.Count == 0)
         {
             throw Invalid(HistoricalPersistenceErrorCodes.MissingSource, "A verified historical fact requires evidence.");
+        }
+
+        bool ordinaryReviewRequiresEvidence = revisionOrigin == HistoricalRevisionOrigin.Ordinary
+            && workflowState is HistoricalEditorialWorkflowState.SourcesAttached
+                or HistoricalEditorialWorkflowState.EditorialReview
+                or HistoricalEditorialWorkflowState.StructuredValidation;
+        if (ordinaryReviewRequiresEvidence && sourceReferences.Count == 0)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.MissingSource,
+                "An ordinary historical fact requires evidence from the sources-attached stage onward.");
         }
 
         if (state == HistoricalFactState.Verified

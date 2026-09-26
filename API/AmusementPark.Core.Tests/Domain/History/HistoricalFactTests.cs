@@ -29,6 +29,29 @@ public sealed class HistoricalFactTests
         Assert.Equal(HistoricalPersistenceErrorCodes.MissingSource, exception.ErrorCode);
     }
 
+    [Theory]
+    [InlineData(HistoricalEditorialWorkflowState.SourcesAttached)]
+    [InlineData(HistoricalEditorialWorkflowState.EditorialReview)]
+    [InlineData(HistoricalEditorialWorkflowState.StructuredValidation)]
+    public void Constructor_WhenOrdinaryReviewStageHasNoEvidence_ShouldRejectFact(
+        HistoricalEditorialWorkflowState workflowState)
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                CreateUnverifiedPrePublicationFact(workflowState));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.MissingSource, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Constructor_WhenOrdinaryDraftHasNoEvidence_ShouldAcceptFact()
+    {
+        HistoricalFact fact = CreateUnverifiedPrePublicationFact(
+            HistoricalEditorialWorkflowState.Draft);
+
+        Assert.Empty(fact.SourceReferences);
+    }
+
     [Fact]
     public void Constructor_WhenPublishedProbableFactMissesTranslations_ShouldRejectFact()
     {
@@ -408,6 +431,39 @@ public sealed class HistoricalFactTests
             null,
             "history-opening-1998",
             RecordedAtUtc.AddMinutes(-2),
+            null,
+            null,
+            2,
+            1,
+            RecordedAtUtc);
+    }
+
+    private static HistoricalFact CreateUnverifiedPrePublicationFact(
+        HistoricalEditorialWorkflowState workflowState)
+    {
+        return new HistoricalFact(
+            Guid.NewGuid(),
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                "park-1",
+                "Parc exemple",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            HistoricalFactState.Unverified,
+            HistoricalImportance.Major,
+            workflowState,
+            HistoricalPublicationState.Draft,
+            Array.Empty<HistoricalLocalizedText>(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            Array.Empty<HistoricalSourceRevisionReference>(),
+            null,
+            null,
+            "history-opening-1998",
+            null,
             null,
             null,
             2,
