@@ -13,7 +13,13 @@ public sealed class HistoricalFactRevisionValidatorTests
     {
         Guid factId = Guid.NewGuid();
         HistoricalFact predecessor = CreateFact(factId, 1, null, RecordedAtUtc.AddMinutes(-1));
-        HistoricalFact correction = CreateFact(factId, 2, 1, RecordedAtUtc);
+        HistoricalFact correction = CreateFact(
+            factId,
+            2,
+            1,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.Corrected,
+            HistoricalPublicationState.Published);
 
         HistoricalFactRevisionValidator.ValidatePredecessor(correction, predecessor);
     }
@@ -61,6 +67,23 @@ public sealed class HistoricalFactRevisionValidatorTests
 
         Assert.Throws<HistoricalPersistenceValidationException>(() =>
             HistoricalFactRevisionValidator.ValidatePredecessor(correction, predecessor));
+    }
+
+    [Fact]
+    public void ValidatePredecessor_WhenPublishedFactReturnsToDraft_ShouldRejectTransition()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact predecessor = CreateFact(factId, 1, null, RecordedAtUtc.AddMinutes(-1));
+        HistoricalFact draft = CreateFact(
+            factId,
+            2,
+            1,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft);
+
+        Assert.Throws<HistoricalPersistenceValidationException>(() =>
+            HistoricalFactRevisionValidator.ValidatePredecessor(draft, predecessor));
     }
 
     private static HistoricalFact CreateFact(

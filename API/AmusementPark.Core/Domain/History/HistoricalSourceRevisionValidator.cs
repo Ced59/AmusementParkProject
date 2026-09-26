@@ -44,7 +44,9 @@ public static class HistoricalSourceRevisionValidator
                 predecessor.WorkflowState is HistoricalEditorialWorkflowState.Published
                     or HistoricalEditorialWorkflowState.Corrected
                 && predecessor.PublicationState == HistoricalPublicationState.Published,
-            _ => predecessor.WorkflowState is not HistoricalEditorialWorkflowState.Retracted,
+            _ => predecessor.WorkflowState < HistoricalEditorialWorkflowState.Published
+                && source.WorkflowState >= predecessor.WorkflowState
+                && source.WorkflowState <= HistoricalEditorialWorkflowState.Published,
         };
     }
 

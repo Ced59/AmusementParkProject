@@ -79,6 +79,17 @@ public sealed class HistoricalFactTests
     }
 
     [Fact]
+    public void Constructor_WhenRevisionIsNotPositive_ShouldRejectFact()
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() => CreateFact(
+                revision: 0,
+                supersedesRevision: -1));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
+    }
+
+    [Fact]
     public void Constructor_WhenRevisionSkipsLatestPredecessor_ShouldRejectFact()
     {
         HistoricalPersistenceValidationException exception =
@@ -108,6 +119,42 @@ public sealed class HistoricalFactTests
                 publishedAtUtc: RecordedAtUtc.AddMinutes(-2)));
 
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidTimestamp, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Constructor_WhenRetractedStateUsesDraftLifecycle_ShouldRejectFact()
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() => new HistoricalFact(
+                Guid.NewGuid(),
+                new HistoricalSubject(
+                    HistoricalSubjectType.Park,
+                    "park-1",
+                    "Parc exemple",
+                    HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+                HistoricalFactType.Opening,
+                HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+                HistoricalFactState.Retracted,
+                HistoricalImportance.Major,
+                HistoricalEditorialWorkflowState.Draft,
+                HistoricalPublicationState.Draft,
+                Array.Empty<HistoricalLocalizedText>(),
+                LifecycleBoundaryMeaning.FirstOperatingDay,
+                null,
+                null,
+                null,
+                Array.Empty<HistoricalSourceRevisionReference>(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                1,
+                null,
+                RecordedAtUtc));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
     }
 
     [Fact]

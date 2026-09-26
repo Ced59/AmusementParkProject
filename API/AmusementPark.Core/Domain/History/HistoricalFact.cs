@@ -187,9 +187,10 @@ public sealed class HistoricalFact
         HistoricalEditorialWorkflowState workflowState,
         HistoricalPublicationState publicationState)
     {
-        bool valid = revision == 1
-            ? !supersedesRevision.HasValue
-            : supersedesRevision == revision - 1;
+        bool valid = revision >= 1
+            && (revision == 1
+                ? !supersedesRevision.HasValue
+                : supersedesRevision == revision - 1);
         if (!valid)
         {
             throw Invalid(
@@ -376,6 +377,18 @@ public sealed class HistoricalFact
         DateTime? publishedAtUtc,
         string? methodologyVersion)
     {
+        bool retractionLifecycleIsConsistent = state == HistoricalFactState.Retracted
+            ? workflowState == HistoricalEditorialWorkflowState.Retracted
+                && publicationState == HistoricalPublicationState.Withdrawn
+            : workflowState != HistoricalEditorialWorkflowState.Retracted
+                && publicationState != HistoricalPublicationState.Withdrawn;
+        if (!retractionLifecycleIsConsistent)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidFactState,
+                "A retracted historical fact must exclusively use the retracted and withdrawn lifecycle.");
+        }
+
         if ((state == HistoricalFactState.Verified) != verifiedAtUtc.HasValue)
         {
             throw Invalid(
