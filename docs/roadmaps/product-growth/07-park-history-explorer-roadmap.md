@@ -672,7 +672,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | `HIST-04` | Migration/adaptation des historiques existants | Aucune perte de contenu — implémenté le 26 septembre 2026 |
 | `HIST-05` | Builder snapshot | Résultat déterministe — implémenté le 26 septembre 2026 |
 | `HIST-06` | Couverture et ambiguïtés | Partiel visible — implémenté le 26 septembre 2026 |
-| `HIST-07` | API timeline/snapshot | Contrats bornés |
+| `HIST-07` | API timeline/snapshot | Contrats bornés — implémenté le 26 septembre 2026 |
 | `HIST-08` | UI frise et année pilote | SSR accessible |
 | `HIST-09` | Relations/lignées | Aucune déduction silencieuse |
 | `HIST-10` | Comparaison de dates | Diff exact |
@@ -842,6 +842,41 @@ identifiants des faits justificatifs. Les causes d'attribut sont séparées du
 cycle de vie afin qu'un ancien nom incertain ne dégrade pas artificiellement la
 fiabilité de la période d'ouverture. La méthodologie du snapshot passe ainsi à
 `hist-snapshot-v2`, prête à être exposée par `HIST-07`.
+
+### Implémentation `HIST-07` — 26 septembre 2026
+
+Deux routes publiques stables exposent maintenant le registre canonique : la
+frise paginée d'un parc et son snapshot pour une année, un mois ou un jour. Une
+page de frise contient 25 événements par défaut et ne peut jamais dépasser 50 ;
+une page arbitrairement lointaine reste vide sans provoquer de dépassement de
+calcul. Le snapshot renvoie des projections légères : état opérationnel,
+attributs présentables, couverture, raisons d'incertitude et ambiguïtés, sans
+embarquer les récits complets ni les identifiants internes des preuves.
+
+L'Application charge en une seule orchestration le parc, ses éléments, ses
+zones et les dernières révisions de faits correspondantes. MongoDB filtre les
+sujets puis groupe les révisions côté serveur afin de ne rapatrier que la plus
+récente de chaque fait. Un parc ou élément actuellement public suit son état
+de publication courant ; une cible historique masquée n'est retenue que si sa
+politique `HistoricalOnly` l'autorise explicitement. Les brouillons, faits
+retirés, héritages encore en attente de revue et cibles explicitement marquées
+`Suppressed` restent absents des réponses publiques.
+
+La frise charge les sources uniquement pour la page demandée. Elle expose leur
+titre, auteur ou éditeur, lien, référence bibliographique et dates publiques,
+mais jamais leur identifiant, leur numéro de révision ou leur note admin. Les
+valeurs structurées contenant un identifiant d'image, d'exploitant, de
+propriétaire ou de constructeur ne franchissent pas non plus le contrat HTTP.
+Un nom, thème, statut ou autre texte public peut être présenté directement ;
+une zone n'est affichée qu'après résolution vers son libellé. Le snapshot
+indique explicitement lorsqu'un libellé actuel sert de repli faute de nom
+historique certain.
+
+Les contrats transportent la précision réelle des dates, les bornes ouvertes,
+la confiance des limites, les explications localisées des faits incertains et
+les compteurs de couverture. Ils fournissent ainsi à `HIST-08` une base SSR
+accessible sans déplacer les règles temporelles dans Angular ni exposer la
+structure interne de MongoDB.
 
 ## 22. Gate finale `HIST-G`
 

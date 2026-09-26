@@ -18,4 +18,8 @@ public interface IHistoricalFactRepository
     Task<HistoricalFact?> GetLatestRevisionAsync(
         Guid factId,
         CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<HistoricalFact>> GetLatestRevisionsForSubjectsAsync(
+        IReadOnlyCollection<HistoricalSubject> subjects,
+        CancellationToken cancellationToken);
 }

@@ -120,6 +120,41 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         return document?.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<HistoricalFact>> GetLatestRevisionsForSubjectsAsync(
+        IReadOnlyCollection<HistoricalSubject> subjects,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(subjects);
+        HistoricalSubject[] distinctSubjects = subjects
+            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .ToArray();
+        if (distinctSubjects.Length == 0)
+        {
+            return Array.Empty<HistoricalFact>();
+        }
+
+        FilterDefinitionBuilder<HistoricalFactDocument> builder =
+            Builders<HistoricalFactDocument>.Filter;
+        FilterDefinition<HistoricalFactDocument>[] subjectFilters = distinctSubjects
+            .Select(subject => builder.Eq(document => document.Subject.Type, subject.Type)
+                & builder.Eq(document => document.Subject.Id, subject.Id))
+            .ToArray();
+        SortDefinition<HistoricalFactDocument> sort =
+            Builders<HistoricalFactDocument>.Sort
+                .Ascending(static document => document.FactId)
+                .Descending(static document => document.Revision);
+        List<HistoricalFactDocument> documents = await this.collection
+            .Aggregate()
+            .Match(builder.Or(subjectFilters))
+            .Sort(sort)
+            .Group(static document => document.FactId, static revisions => revisions.First())
+            .ToListAsync(cancellationToken);
+
+        return documents
+            .Select(static document => document.ToDomain())
+            .ToArray();
+    }
+
     private static bool DocumentsMatch(
         HistoricalFactDocument? existing,
         HistoricalFactDocument candidate)
