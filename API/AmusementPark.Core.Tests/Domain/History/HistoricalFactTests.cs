@@ -642,6 +642,7 @@ public sealed class HistoricalFactTests
             subjectId,
             factType,
             period ?? HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            HistoricalEvidencePosition.Supports,
             new[]
             {
                 HistoricalSourceScope.SubjectIdentity,

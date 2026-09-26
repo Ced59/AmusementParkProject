@@ -124,6 +124,7 @@ public sealed class HistoricalReviewEventTargetValidatorTests
                     "park-1",
                     HistoricalFactType.Opening,
                     period,
+                    HistoricalEvidencePosition.Supports,
                     new[]
                     {
                         HistoricalSourceScope.SubjectIdentity,

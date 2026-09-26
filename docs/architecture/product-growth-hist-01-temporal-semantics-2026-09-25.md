@@ -275,7 +275,8 @@ ne remplace pas leur qualité.
 
 Chaque citation d'une révision de source mémorise aussi l'assertion exacte à
 laquelle elle s'applique : type et identifiant du sujet, type de fait, période
-et portées précises que cette source couvre pour cette assertion.
+et portées précises que cette source couvre pour cette assertion. La citation
+indique aussi si la source confirme ou contredit l'assertion.
 Une source portant des portées génériques ne peut donc pas valider un fait sur
 un autre parc, une autre attraction, un autre événement ou une autre période.
 Au moins une même source doit couvrir ensemble le sujet, le type et la période ;

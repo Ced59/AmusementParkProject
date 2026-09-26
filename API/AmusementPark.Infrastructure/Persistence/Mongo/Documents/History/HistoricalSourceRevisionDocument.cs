@@ -26,6 +26,10 @@ public sealed class HistoricalSourceRevisionDocument
     [BsonElement("period")]
     public HistoricalPeriodDocument Period { get; set; } = new HistoricalPeriodDocument();
 
+    [BsonElement("position")]
+    [BsonRepresentation(BsonType.String)]
+    public HistoricalEvidencePosition Position { get; set; }
+
     [BsonElement("scopes")]
     public List<HistoricalSourceScope> Scopes { get; set; } = new List<HistoricalSourceScope>();
 }

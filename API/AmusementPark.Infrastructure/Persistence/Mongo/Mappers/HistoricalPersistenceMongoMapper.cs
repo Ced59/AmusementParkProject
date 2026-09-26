@@ -48,6 +48,7 @@ internal static class HistoricalPersistenceMongoMapper
                     SubjectId = sourceReference.SubjectId,
                     FactType = sourceReference.FactType,
                     Period = ToDocument(sourceReference.Period),
+                    Position = sourceReference.Position,
                     Scopes = sourceReference.Scopes.ToList(),
                 })
                 .ToList(),
@@ -92,6 +93,7 @@ internal static class HistoricalPersistenceMongoMapper
                     source.SubjectId,
                     source.FactType,
                     ToDomain(source.Period),
+                    source.Position,
                     source.Scopes))
                 .ToArray(),
             document.StructuredValue,

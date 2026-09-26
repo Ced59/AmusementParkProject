@@ -83,6 +83,7 @@ public static class HistoricalFactEvidenceValidator
         HistoricalSourceRevisionReference[] admissibleReferences = fact.SourceReferences
             .Where(reference => admissibleSourceKeys.Contains((reference.SourceId, reference.Revision)))
             .ToArray();
+        ValidateEvidencePositions(fact, admissibleReferences);
 
         HistoricalSourceScope[] coreScopes =
         {
@@ -131,6 +132,34 @@ public static class HistoricalFactEvidenceValidator
         }
 
         return scopes.ToArray();
+    }
+
+    private static void ValidateEvidencePositions(
+        HistoricalFact fact,
+        IReadOnlyCollection<HistoricalSourceRevisionReference> admissibleReferences)
+    {
+        bool hasSupportingEvidence = admissibleReferences.Any(static reference =>
+            reference.Position == HistoricalEvidencePosition.Supports);
+        bool hasContradictingEvidence = admissibleReferences.Any(static reference =>
+            reference.Position == HistoricalEvidencePosition.Contradicts);
+        if (fact.State == HistoricalFactState.Disputed)
+        {
+            if (!hasSupportingEvidence || !hasContradictingEvidence)
+            {
+                throw Invalid(
+                    HistoricalPersistenceErrorCodes.InvalidFactState,
+                    "A disputed historical fact requires admissible supporting and contradicting evidence.");
+            }
+
+            return;
+        }
+
+        if (fact.State == HistoricalFactState.Verified && hasContradictingEvidence)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidFactState,
+                "A verified historical fact cannot retain admissible contradicting evidence.");
+        }
     }
 
     private static HistoricalPersistenceValidationException Invalid(string code, string message)

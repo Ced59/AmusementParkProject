@@ -42,6 +42,7 @@ public sealed class HistoricalPersistenceMongoMapperTests
                     "park-1",
                     HistoricalFactType.Opening,
                     period,
+                    HistoricalEvidencePosition.Supports,
                     new[]
                     {
                         HistoricalSourceScope.SubjectIdentity,
@@ -80,6 +81,7 @@ public sealed class HistoricalPersistenceMongoMapperTests
         Assert.Equal("park-1", sourceReference.SubjectId);
         Assert.Equal(HistoricalFactType.Opening, sourceReference.FactType);
         Assert.Equal(period, sourceReference.Period);
+        Assert.Equal(HistoricalEvidencePosition.Supports, sourceReference.Position);
         Assert.Equal(5, sourceReference.Scopes.Count);
         Assert.Equal("park-1", restored.Subject.Id);
         Assert.Equal(0, restored.RecordedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);

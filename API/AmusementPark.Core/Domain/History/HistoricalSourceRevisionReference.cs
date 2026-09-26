@@ -9,6 +9,7 @@ public sealed record HistoricalSourceRevisionReference
         string subjectId,
         HistoricalFactType factType,
         HistoricalPeriod period,
+        HistoricalEvidencePosition position,
         IReadOnlyCollection<HistoricalSourceScope> scopes)
     {
         if (sourceId == Guid.Empty)
@@ -25,7 +26,9 @@ public sealed record HistoricalSourceRevisionReference
                 "A historical source revision reference requires a positive revision.");
         }
 
-        if (!Enum.IsDefined(subjectType) || !Enum.IsDefined(factType))
+        if (!Enum.IsDefined(subjectType)
+            || !Enum.IsDefined(factType)
+            || !Enum.IsDefined(position))
         {
             throw new HistoricalPersistenceValidationException(
                 HistoricalPersistenceErrorCodes.InvalidEnum,
@@ -64,6 +67,7 @@ public sealed record HistoricalSourceRevisionReference
         this.SubjectId = normalizedSubjectId;
         this.FactType = factType;
         this.Period = period;
+        this.Position = position;
         this.Scopes = Array.AsReadOnly(normalizedScopes);
     }
 
@@ -78,6 +82,8 @@ public sealed record HistoricalSourceRevisionReference
     public HistoricalFactType FactType { get; }
 
     public HistoricalPeriod Period { get; }
+
+    public HistoricalEvidencePosition Position { get; }
 
     public IReadOnlyList<HistoricalSourceScope> Scopes { get; }
 }

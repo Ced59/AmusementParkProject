@@ -173,6 +173,43 @@ public sealed class HistoricalFactEvidenceValidatorTests
         HistoricalFactEvidenceValidator.Validate(fact, new[] { source });
     }
 
+    [Fact]
+    public void Validate_WhenDisputedFactHasOnlySupportingEvidence_ShouldRejectEvidence()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(
+            new[] { sourceId },
+            state: HistoricalFactState.Disputed);
+        HistoricalSourceReference source = CreateSource(sourceId);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalFactEvidenceValidator.Validate(fact, new[] { source }));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Validate_WhenDisputedFactHasSupportingAndContradictingEvidence_ShouldAcceptEvidence()
+    {
+        Guid supportingSourceId = Guid.NewGuid();
+        Guid contradictingSourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(
+            new[] { supportingSourceId, contradictingSourceId },
+            state: HistoricalFactState.Disputed,
+            referencePositionFactory: sourceId => sourceId == contradictingSourceId
+                ? HistoricalEvidencePosition.Contradicts
+                : HistoricalEvidencePosition.Supports);
+
+        HistoricalFactEvidenceValidator.Validate(
+            fact,
+            new[]
+            {
+                CreateSource(supportingSourceId),
+                CreateSource(contradictingSourceId),
+            });
+    }
+
     private static HistoricalFact CreateFact(Guid sourceId, int? sequenceWithinDate = null)
     {
         return CreateFact(new[] { sourceId }, sequenceWithinDate);
@@ -182,7 +219,9 @@ public sealed class HistoricalFactEvidenceValidatorTests
         IReadOnlyCollection<Guid> sourceIds,
         int? sequenceWithinDate = null,
         string referenceSubjectId = "park-1",
-        Func<Guid, IReadOnlyCollection<HistoricalSourceScope>>? referenceScopesFactory = null)
+        Func<Guid, IReadOnlyCollection<HistoricalSourceScope>>? referenceScopesFactory = null,
+        HistoricalFactState state = HistoricalFactState.Verified,
+        Func<Guid, HistoricalEvidencePosition>? referencePositionFactory = null)
     {
         HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
         return new HistoricalFact(
@@ -194,11 +233,17 @@ public sealed class HistoricalFactEvidenceValidatorTests
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
             HistoricalFactType.Opening,
             period,
-            HistoricalFactState.Verified,
+            state,
             HistoricalImportance.Major,
             HistoricalEditorialWorkflowState.Published,
             HistoricalPublicationState.Published,
-            Array.Empty<HistoricalLocalizedText>(),
+            state == HistoricalFactState.Disputed
+                ? HistoricalLocalizationPolicy.SupportedLanguageCodes
+                    .Select(static languageCode => new HistoricalLocalizedText(
+                        languageCode,
+                        "Les sources admissibles se contredisent."))
+                    .ToArray()
+                : Array.Empty<HistoricalLocalizedText>(),
             LifecycleBoundaryMeaning.FirstOperatingDay,
             null,
             null,
@@ -231,13 +276,15 @@ public sealed class HistoricalFactEvidenceValidatorTests
                         referenceSubjectId,
                         HistoricalFactType.Opening,
                         period,
+                        referencePositionFactory?.Invoke(sourceId)
+                            ?? HistoricalEvidencePosition.Supports,
                         referenceScopes);
                 })
                 .ToArray(),
             null,
             null,
             null,
-            RecordedAtUtc.AddMinutes(-2),
+            state == HistoricalFactState.Verified ? RecordedAtUtc.AddMinutes(-2) : null,
             RecordedAtUtc.AddMinutes(-1),
             "hist-v1",
             5,
