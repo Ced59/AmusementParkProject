@@ -1,0 +1,67 @@
+using AmusementPark.Core.Domain.History;
+using Xunit;
+
+namespace AmusementPark.Core.Tests.Domain.History;
+
+public sealed class HistoricalSourceRevisionValidatorTests
+{
+    private static readonly DateTime RecordedAtUtc =
+        new DateTime(2026, 9, 26, 10, 0, 0, DateTimeKind.Utc);
+
+    [Fact]
+    public void ValidatePredecessor_WhenImmediatelyPriorRevisionExists_ShouldAcceptCorrection()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalSourceReference predecessor = CreateSource(sourceId, 1, RecordedAtUtc.AddMinutes(-1));
+        HistoricalSourceReference correction = CreateSource(sourceId, 2, RecordedAtUtc);
+
+        HistoricalSourceRevisionValidator.ValidatePredecessor(correction, predecessor);
+    }
+
+    [Fact]
+    public void ValidatePredecessor_WhenPriorRevisionIsMissing_ShouldRejectCorrection()
+    {
+        HistoricalSourceReference correction = CreateSource(Guid.NewGuid(), 2, RecordedAtUtc);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalSourceRevisionValidator.ValidatePredecessor(correction, null));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void ValidatePredecessor_WhenPriorRevisionBelongsToAnotherSource_ShouldRejectCorrection()
+    {
+        HistoricalSourceReference predecessor = CreateSource(Guid.NewGuid(), 1, RecordedAtUtc.AddMinutes(-1));
+        HistoricalSourceReference correction = CreateSource(Guid.NewGuid(), 2, RecordedAtUtc);
+
+        Assert.Throws<HistoricalPersistenceValidationException>(() =>
+            HistoricalSourceRevisionValidator.ValidatePredecessor(correction, predecessor));
+    }
+
+    private static HistoricalSourceReference CreateSource(
+        Guid sourceId,
+        int revision,
+        DateTime recordedAtUtc)
+    {
+        return new HistoricalSourceReference(
+            sourceId,
+            revision,
+            HistoricalSourceType.OfficialWebsite,
+            "Page officielle",
+            "Parc exemple",
+            "https://example.com/history",
+            null,
+            new DateOnly(1998, 5, 12),
+            new DateOnly(2026, 9, 25),
+            "fr",
+            null,
+            new[] { HistoricalSourceScope.Period },
+            null,
+            HistoricalSourceAccessibility.Accessible,
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            recordedAtUtc);
+    }
+}

@@ -176,9 +176,7 @@ public sealed class HistoricalFact
     {
         bool valid = revision == 1
             ? !supersedesRevision.HasValue
-            : supersedesRevision.HasValue
-                && supersedesRevision.Value >= 1
-                && supersedesRevision.Value < revision;
+            : supersedesRevision == revision - 1;
         if (!valid)
         {
             throw Invalid(

@@ -19,6 +19,7 @@ public static class HistoricalFactRevisionValidator
         }
 
         if (predecessor is null
+            || fact.SupersedesRevision != fact.Revision - 1
             || predecessor.Id != fact.Id
             || predecessor.Revision != fact.SupersedesRevision
             || predecessor.RecordedAtUtc > fact.RecordedAtUtc)

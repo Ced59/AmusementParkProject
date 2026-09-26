@@ -27,6 +27,8 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(source);
+        HistoricalSourceReference? predecessor = await this.LoadPredecessorAsync(source, cancellationToken);
+        HistoricalSourceRevisionValidator.ValidatePredecessor(source, predecessor);
         HistoricalSourceDocument candidate = source.ToDocument();
         try
         {
@@ -155,6 +157,24 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
     {
         return existing is not null
             && existing.ToBsonDocument().Equals(candidate.ToBsonDocument());
+    }
+
+    private async Task<HistoricalSourceReference?> LoadPredecessorAsync(
+        HistoricalSourceReference source,
+        CancellationToken cancellationToken)
+    {
+        if (source.Revision == 1)
+        {
+            return null;
+        }
+
+        string normalizedSourceId = source.Id.ToString("N", CultureInfo.InvariantCulture);
+        int predecessorRevision = source.Revision - 1;
+        HistoricalSourceDocument? predecessor = await this.collection
+            .Find(document => document.SourceId == normalizedSourceId
+                && document.Revision == predecessorRevision)
+            .FirstOrDefaultAsync(cancellationToken);
+        return predecessor?.ToDomain();
     }
 
     internal static IReadOnlyCollection<BsonDocument> BuildLatestRevisionsPipeline(

@@ -79,6 +79,17 @@ public sealed class HistoricalFactTests
     }
 
     [Fact]
+    public void Constructor_WhenRevisionSkipsLatestPredecessor_ShouldRejectFact()
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() => CreateFact(
+                revision: 3,
+                supersedesRevision: 1));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
+    }
+
+    [Fact]
     public void Constructor_WhenTwoRevisionsOfSameSourceAreAttached_ShouldRejectFact()
     {
         Guid sourceId = Guid.NewGuid();
