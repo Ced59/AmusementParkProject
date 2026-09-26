@@ -202,12 +202,12 @@ public sealed class HistoricalLegacyFactConverter
                     ["previousImageId"] = historyEvent.PreviousLogoImageId,
                     ["nextImageId"] = historyEvent.NewLogoImageId,
                 },
-            HistoricalAttributeKind.Operator or HistoricalAttributeKind.Owner =>
-                new Dictionary<string, string?>
+            HistoricalAttributeKind.Operator => new Dictionary<string, string?>
                 {
                     ["previousId"] = historyEvent.PreviousOperatorId,
                     ["nextId"] = historyEvent.NewOperatorId,
                 },
+            HistoricalAttributeKind.Owner => new Dictionary<string, string?>(),
             HistoricalAttributeKind.Location or HistoricalAttributeKind.Zone =>
                 new Dictionary<string, string?> { ["label"] = historyEvent.LocationLabel },
             _ => new Dictionary<string, string?>(),

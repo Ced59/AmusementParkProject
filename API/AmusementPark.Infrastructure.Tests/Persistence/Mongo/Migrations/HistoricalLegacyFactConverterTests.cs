@@ -64,6 +64,25 @@ public sealed class HistoricalLegacyFactConverterTests
     }
 
     [Fact]
+    public void BuildStructuredValue_WhenOwnershipEventOnlyHasOperatorIds_ShouldRemainUnknown()
+    {
+        HistoryEventDocument historyEvent = new HistoryEventDocument
+        {
+            PreviousOperatorId = "operator-before",
+            NewOperatorId = "operator-after",
+        };
+        LegacyHistoryEventTypeMapping mapping = new LegacyHistoryEventTypeMapping(
+            HistoricalFactType.OwnerChange,
+            null,
+            HistoricalAttributeKind.Owner,
+            AttributeBoundaryMeaning.Unspecified);
+
+        string? result = HistoricalLegacyFactConverter.BuildStructuredValue(historyEvent, mapping);
+
+        Assert.Null(result);
+    }
+
+    [Fact]
     public void BuildLegacyWarnings_ShouldCoverEverySupportedLanguage()
     {
         IReadOnlyCollection<HistoricalLocalizedText> warnings =

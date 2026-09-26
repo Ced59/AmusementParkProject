@@ -165,6 +165,7 @@ jobs:
           deploy/scripts/tests/seo-static-snapshot-policy.test.sh
           deploy/scripts/tests/static-seo-edge.test.sh
           deploy/scripts/tests/personal-ranking-cutover.test.sh
+          deploy/scripts/tests/historical-history-cutover.test.sh
           deploy/scripts/tests/shared-infrastructure-maintenance-env.test.sh
           deploy/scripts/tests/social-publishing-env.test.sh
           deploy/scripts/tests/ssr-warmup-env.test.sh

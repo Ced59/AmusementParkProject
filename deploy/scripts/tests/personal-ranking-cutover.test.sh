@@ -15,6 +15,11 @@ if ! grep -Fq 'rollback_incomplete_personal_ranking_cutover' "${deploy_script}";
   exit 1
 fi
 
+if ! grep -Fq 'arm-cutover --resource personal-ranking' "${deploy_script}"; then
+  echo 'The personal ranking cutover must have an independently tracked transaction resource.' >&2
+  exit 1
+fi
+
 rollback_arm_line="$(grep -n 'personal_ranking_cutover_started=true' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 freeze_command_line="$(grep -n 'freeze-legacy-ranking-shares-5.2.6.js' "${deploy_script}" | head -n 1 | cut -d: -f1)"
 if [ -z "${rollback_arm_line}" ] \

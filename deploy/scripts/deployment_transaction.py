@@ -14,6 +14,7 @@ from deployment_runtime import DeploymentError, DockerRuntime, NAME
 
 PHASES = {"prepared", "abandoning", "switch-candidate", "replace-canonical", "switch-canonical", "cleanup", "complete", "abandoned"}
 SHARED_INFRASTRUCTURE_MAINTENANCE_SETTING = "SHARED_INFRASTRUCTURE_MAINTENANCE"
+CUTOVER_RESOURCES = {"personal-ranking", "historical-history"}
 
 
 def atomic_write(path: Path, content: str, mode=0o600):
@@ -66,12 +67,20 @@ def validate_edge(edge):
 
 
 def validate_state(state):
+    cutover_resources = state.get("cutover_resources") if isinstance(state, dict) else None
     if (not isinstance(state, dict) or state.get("version") != 1 or state.get("phase") not in PHASES
             or not isinstance(state.get("authority_exposed"), bool)
             or not isinstance(state.get("cutover_armed"), bool)
             or not re.fullmatch(r"[a-f0-9]{32}", str(state.get("generation", "")))
             or not re.fullmatch(r"[a-f0-9]{64}", str(state.get("fingerprint", "")))):
         raise DeploymentError("Invalid deployment journal; preserving all containers")
+    if cutover_resources is not None and (
+            not isinstance(cutover_resources, list)
+            or any(not isinstance(resource, str) for resource in cutover_resources)
+            or len(set(cutover_resources)) != len(cutover_resources)
+            or any(resource not in CUTOVER_RESOURCES for resource in cutover_resources)
+            or state["cutover_armed"] != bool(cutover_resources)):
+        raise DeploymentError("Invalid business cutover resources in deployment journal")
     for key in ("original", "candidate", "canonical"):
         pair = state.get(key)
         if not isinstance(pair, dict) or set(pair) != {"api", "front"}:
@@ -130,6 +139,8 @@ class DeploymentTransaction:
         try:
             state = json.loads(self.journal.read_text(encoding="utf-8"))
             validate_state(state)
+            if "cutover_resources" not in state:
+                state["cutover_resources"] = ["personal-ranking"] if state["cutover_armed"] else []
         except (ValueError, KeyError, TypeError, OSError) as error:
             raise DeploymentError("Unreadable deployment journal; no cleanup is safe") from error
         return state
@@ -173,6 +184,7 @@ class DeploymentTransaction:
         generation = uuid.uuid4().hex
         self.state = {"version": 1, "phase": "prepared", "fingerprint": self.runtime.fingerprint,
                       "generation": generation, "authority_exposed": False, "cutover_armed": False,
+                      "cutover_resources": [],
                       "original": original, "candidate": {"api": None, "front": None},
                       "canonical": {"api": None, "front": None}, "transition": None, "route": None,
                       "baseline": {"edge": self.runtime.edge_processes(), "marker": self.runtime.edge_generation(),
@@ -331,6 +343,7 @@ def main():
     parser.add_argument("command", choices=("prepare", "deploy", "rollback-safe", "assert-complete",
                                             "arm-cutover", "cutover-pending", "cutover-restored", "abandon-unexposed",
                                             "quiesce-unexposed", "validate-journal", "maintain-mongodb"))
+    parser.add_argument("--resource", choices=sorted(CUTOVER_RESOURCES))
     args = parser.parse_args()
     directory = Path(__file__).resolve().parent.parent
     if args.command in {"prepare", "deploy", "arm-cutover", "cutover-restored", "abandon-unexposed", "quiesce-unexposed",
@@ -354,13 +367,23 @@ def main():
             return 0 if state is not None else 1
         safe = state is not None and not state["authority_exposed"] and state["phase"] in {"prepared", "abandoning"}
         if args.command in {"arm-cutover", "cutover-restored"}:
+            if args.resource is None:
+                raise DeploymentError("A business cutover resource is required")
             if not safe:
                 raise DeploymentError("Cutover state cannot change after possible public exposure")
             transaction.state = state
-            state["cutover_armed"] = args.command == "arm-cutover"
+            resources = set(state["cutover_resources"])
+            if args.command == "arm-cutover":
+                resources.add(args.resource)
+            else:
+                resources.discard(args.resource)
+            state["cutover_resources"] = sorted(resources)
+            state["cutover_armed"] = bool(resources)
             transaction.save()
             return 0
-        return 0 if safe and (args.command == "rollback-safe" or state["cutover_armed"]) else 1
+        pending = state is not None and (
+            args.resource in state["cutover_resources"] if args.resource is not None else state["cutover_armed"])
+        return 0 if safe and (args.command == "rollback-safe" or pending) else 1
     runtime = DockerRuntime(directory)
     if args.command == "maintain-mongodb":
         consume_shared_infrastructure_maintenance(directory / ".env", "mongodb")
