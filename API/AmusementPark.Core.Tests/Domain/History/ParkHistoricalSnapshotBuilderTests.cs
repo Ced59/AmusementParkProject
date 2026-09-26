@@ -495,6 +495,124 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_BeforeSequencedSameDayRenamings_UsesFirstPreviousValue()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact firstRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B",
+            sequenceWithinDate: 1,
+            id: Guid.Parse("ffffffff-ffff-ffff-ffff-ffffffffffff"));
+        HistoricalFact secondRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom B",
+            "Nom C",
+            sequenceWithinDate: 2,
+            id: Guid.Parse("00000000-0000-0000-0000-000000000001"));
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 4, 30),
+            new[] { opening, secondRenaming, firstRenaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Known, attribute.State);
+        Assert.Equal("Nom A", attribute.Value);
+    }
+
+    [Fact]
+    public void Build_WithBroadAndSequencedSameDayRenamings_PreservesSourcedOrder()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact broadRenaming = CreateAttributeFact(
+            HistoricalDate.ForYear(2000),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom initial",
+            "Nom annuel");
+        HistoricalFact firstRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom initial",
+            "Nom B",
+            sequenceWithinDate: 1);
+        HistoricalFact secondRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom B",
+            "Nom C",
+            sequenceWithinDate: 2);
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2001, 1, 1),
+            new[] { opening, broadRenaming, secondRenaming, firstRenaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Nom C", "Nom annuel" }, attribute.Candidates);
+        Assert.DoesNotContain("Nom B", attribute.Candidates);
+    }
+
+    [Fact]
+    public void Build_WithLargeConnectedAttributeGroup_ExcludesValuesWithRequiredSuccessors()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact broadRenaming = CreateAttributeFact(
+            HistoricalDate.ForYear(2000),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom initial",
+            "Nom annuel");
+        HistoricalFact[] exactRenamings = Enumerable.Range(1, 10)
+            .Select(index => CreateAttributeFact(
+                HistoricalDate.ForDay(2000, index, 1),
+                AttributeBoundaryMeaning.FirstDayOfNewValue,
+                index == 1 ? "Nom initial" : $"Nom {index - 1:D2}",
+                $"Nom {index:D2}"))
+            .ToArray();
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2001, 1, 1),
+            exactRenamings.Append(opening).Append(broadRenaming).ToArray()).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Nom 10", "Nom annuel" }, attribute.Candidates);
+        Assert.DoesNotContain("Nom 01", attribute.Candidates);
+    }
+
+    [Fact]
+    public void Build_WithLargeConnectedLifecycleGroup_ExcludesStatesWithRequiredSuccessors()
+    {
+        HistoricalFact broadOpening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForYear(2000),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact closure = CreateLifecycleFact(
+            HistoricalFactType.Closure,
+            HistoricalDate.ForDay(2000, 1, 1),
+            LifecycleBoundaryMeaning.FirstClosedDay);
+        HistoricalFact[] reopenings = Enumerable.Range(2, 9)
+            .Select(month => CreateLifecycleFact(
+                HistoricalFactType.Reopening,
+                HistoricalDate.ForDay(2000, month, 1),
+                LifecycleBoundaryMeaning.FirstOperatingDay))
+            .ToArray();
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2001, 1, 1),
+            reopenings.Append(closure).Append(broadOpening).ToArray());
+
+        Assert.Equal(HistoricalOperationalState.KnownOpen, snapshot.OperationalState);
+    }
+
+    [Fact]
     public void Build_WithLargeRequiredLifecycleGroup_DoesNotRetainPreGroupState()
     {
         HistoricalDate date = HistoricalDate.ForDay(2000, 1, 1);
@@ -599,7 +717,9 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         HistoricalDate date,
         AttributeBoundaryMeaning boundaryMeaning,
         string previousValue,
-        string nextValue)
+        string nextValue,
+        int? sequenceWithinDate = null,
+        Guid? id = null)
     {
         string structuredValue = string.Concat(
             "{\"previous\":\"",
@@ -614,8 +734,9 @@ public sealed class ParkHistoricalSnapshotBuilderTests
             null,
             HistoricalAttributeKind.Name,
             boundaryMeaning,
-            null,
-            structuredValue);
+            sequenceWithinDate,
+            structuredValue,
+            id);
     }
 
     private static HistoricalFact CreateFact(
@@ -626,10 +747,11 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         HistoricalAttributeKind? attributeKind,
         AttributeBoundaryMeaning? attributeBoundaryMeaning,
         int? sequenceWithinDate,
-        string? structuredValue)
+        string? structuredValue,
+        Guid? id = null)
     {
         return new HistoricalFact(
-            Guid.NewGuid(),
+            id ?? Guid.NewGuid(),
             Subject,
             type,
             period,

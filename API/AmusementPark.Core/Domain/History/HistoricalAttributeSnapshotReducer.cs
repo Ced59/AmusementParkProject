@@ -27,6 +27,8 @@ internal sealed class HistoricalAttributeSnapshotReducer
             HistoricalTransitionOrdering.BuildGroups(facts);
         HistoricalFact? firstFact = facts
             .OrderBy(static fact => HistoricalTransitionOrdering.Earliest(fact))
+            .ThenBy(static fact => HistoricalTransitionOrdering.Latest(fact))
+            .ThenBy(static fact => fact.SequenceWithinDate ?? int.MaxValue)
             .ThenBy(static fact => fact.Id)
             .FirstOrDefault();
         string initialValue = UnknownValue;
@@ -224,8 +226,17 @@ internal sealed class HistoricalAttributeSnapshotReducer
         HashSet<string> result = hasRequiredTransition
             ? new HashSet<string>(StringComparer.Ordinal)
             : new HashSet<string>(values, StringComparer.Ordinal);
+        HistoricalFact[] requiredFacts = transitions
+            .Where(static transition => transition.Applicability == HistoricalTransitionApplicability.Applied)
+            .Select(static transition => transition.Fact)
+            .ToArray();
         foreach ((HistoricalFact fact, _) in transitions)
         {
+            if (requiredFacts.Any(required => HistoricalTransitionOrdering.MustPrecede(fact, required)))
+            {
+                continue;
+            }
+
             result.UnionWith(this.ApplyTransition(values, fact, reasons));
         }
 

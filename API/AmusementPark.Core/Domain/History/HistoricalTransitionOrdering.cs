@@ -71,6 +71,16 @@ internal static class HistoricalTransitionOrdering
 
     internal static bool MustPrecede(HistoricalFact candidate, HistoricalFact other)
     {
+        HistoricalDateEnvelope candidateEnvelope = candidate.Period.GetPossibleEnvelope();
+        HistoricalDateEnvelope otherEnvelope = other.Period.GetPossibleEnvelope();
+        if (candidateEnvelope.IsExactDay
+            && candidateEnvelope == otherEnvelope
+            && candidate.SequenceWithinDate.HasValue
+            && other.SequenceWithinDate.HasValue)
+        {
+            return candidate.SequenceWithinDate.Value < other.SequenceWithinDate.Value;
+        }
+
         return Latest(candidate) < Earliest(other);
     }
 

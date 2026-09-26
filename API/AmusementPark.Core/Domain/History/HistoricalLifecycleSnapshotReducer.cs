@@ -291,8 +291,17 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         HashSet<HistoricalOperationalState> result = hasRequiredTransition
             ? new HashSet<HistoricalOperationalState>()
             : new HashSet<HistoricalOperationalState>(states);
+        HistoricalFact[] requiredFacts = transitions
+            .Where(static transition => transition.Applicability == HistoricalTransitionApplicability.Applied)
+            .Select(static transition => transition.Fact)
+            .ToArray();
         foreach ((HistoricalFact fact, _, bool hasKnownEnd) in transitions)
         {
+            if (requiredFacts.Any(required => HistoricalTransitionOrdering.MustPrecede(fact, required)))
+            {
+                continue;
+            }
+
             result.UnionWith(this.ApplyTransitionToStates(
                 states,
                 fact,
