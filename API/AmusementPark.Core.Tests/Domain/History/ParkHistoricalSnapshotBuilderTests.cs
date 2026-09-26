@@ -126,6 +126,21 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_BeforeVerifiedOpenEndedOpening_ReturnsKnownClosed()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForYear(2000, qualifier: DateQualifier.After),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 6, 1),
+            new[] { opening });
+
+        Assert.Equal(HistoricalOperationalState.KnownClosed, snapshot.OperationalState);
+    }
+
+    [Fact]
     public void Build_BetweenDefinitiveClosureAndReopening_ReturnsKnownClosed()
     {
         HistoricalFact[] facts =
@@ -261,6 +276,29 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         Assert.Contains(
             snapshot.Reasons,
             reason => reason.Code == HistoricalSnapshotReasonCode.UnboundedTemporaryClosure);
+    }
+
+    [Fact]
+    public void Build_DayAfterTemporaryLastOperatingDay_ReturnsKnownClosedOnlyThatDay()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact closure = CreateLifecycleFact(
+            HistoricalFactType.TemporaryClosure,
+            HistoricalDate.ForDay(2005, 6, 1),
+            LifecycleBoundaryMeaning.LastOperatingDay);
+
+        HistoricalSubjectSnapshot firstClosedDay = this.BuildSubject(
+            HistoricalInstant.ForDay(2005, 6, 2),
+            new[] { opening, closure });
+        HistoricalSubjectSnapshot laterDay = this.BuildSubject(
+            HistoricalInstant.ForDay(2005, 6, 3),
+            new[] { opening, closure });
+
+        Assert.Equal(HistoricalOperationalState.KnownClosed, firstClosedDay.OperationalState);
+        Assert.Equal(HistoricalOperationalState.Unknown, laterDay.OperationalState);
     }
 
     [Fact]
@@ -564,6 +602,27 @@ public sealed class ParkHistoricalSnapshotBuilderTests
 
         HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
             HistoricalInstant.ForDay(2000, 1, 1),
+            new[] { opening, renaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Known, attribute.State);
+        Assert.Equal("Ancien nom", attribute.Value);
+    }
+
+    [Fact]
+    public void Build_BeforeVerifiedOpenEndedRenaming_KeepsPreviousValue()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact renaming = CreateAttributeFact(
+            HistoricalDate.ForYear(2000, qualifier: DateQualifier.After),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Ancien nom",
+            "Nouveau nom");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 6, 1),
             new[] { opening, renaming }).Attributes);
 
         Assert.Equal(HistoricalAttributeValueState.Known, attribute.State);

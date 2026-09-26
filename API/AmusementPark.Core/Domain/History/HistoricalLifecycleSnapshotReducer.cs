@@ -27,7 +27,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             HistoricalTransitionOrdering.BuildGroups(lifecycleFacts);
         HistoricalFact? initialOpening = lifecycleFacts
             .Where(static fact => fact.Type == HistoricalFactType.Opening
-                && HistoricalTransitionApplicabilityResolver.IsEvidenceCertain(fact))
+                && fact.State == HistoricalFactState.Verified)
             .OrderBy(static fact => HistoricalTransitionOrdering.Earliest(fact))
             .ThenBy(static fact => fact.Id)
             .FirstOrDefault();
@@ -424,6 +424,12 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             return HistoricalOperationalState.KnownOpen;
         }
 
+        if (IsDayAfterExactLastOperatingDay(fact, requestedDate))
+        {
+            RecordClosureAgainstClosedState(currentState, fact, reasons);
+            return HistoricalOperationalState.KnownClosed;
+        }
+
         if (fact.Type is HistoricalFactType.Opening or HistoricalFactType.Reopening)
         {
             if (currentState == HistoricalOperationalState.KnownOpen)
@@ -470,6 +476,19 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         return fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.LastOperatingDay
             && envelope.IsExactDay
             && envelope.EarliestPossibleDate == requestedDate;
+    }
+
+    private static bool IsDayAfterExactLastOperatingDay(
+        HistoricalFact fact,
+        DateOnly requestedDate)
+    {
+        HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
+        DateOnly? lastOperatingDay = envelope.EarliestPossibleDate;
+        return fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.LastOperatingDay
+            && envelope.IsExactDay
+            && lastOperatingDay.HasValue
+            && lastOperatingDay.Value != DateOnly.MaxValue
+            && lastOperatingDay.Value.AddDays(1) == requestedDate;
     }
 
     private static void RecordClosureAgainstClosedState(

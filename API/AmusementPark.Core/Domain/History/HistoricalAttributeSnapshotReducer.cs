@@ -97,7 +97,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
         HashSet<string> initialValues = new HashSet<string>(StringComparer.Ordinal);
         foreach (HistoricalFact fact in possibleFirstFacts)
         {
-            if (HistoricalTransitionApplicabilityResolver.IsEvidenceCertain(fact)
+            if (fact.State == HistoricalFactState.Verified
                 && HistoricalAttributeTransitionParser.TryParse(
                     fact,
                     out string? previousValue,
