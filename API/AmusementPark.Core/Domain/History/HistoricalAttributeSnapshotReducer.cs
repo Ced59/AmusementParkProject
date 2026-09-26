@@ -142,7 +142,8 @@ internal sealed class HistoricalAttributeSnapshotReducer
             }
 
             if (applicability == HistoricalTransitionApplicability.NotOccurred
-                && KeepsPreviousValueOnRequestedDate(fact, requestedDate))
+                && EstablishesPreviousValueOnRequestedDate(fact, requestedDate)
+                && !HasSequencedSameDayPredecessor(fact, group))
             {
                 contributingFactIds.Add(fact.Id);
                 AddPreviousValue(result, fact, reasons);
@@ -173,7 +174,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
                 contributingFactIds.Add(fact.Id);
                 applicableTransitions.Add((fact, applicability));
             }
-            else if (KeepsPreviousValueOnRequestedDate(fact, requestedDate))
+            else if (EstablishesPreviousValueOnRequestedDate(fact, requestedDate))
             {
                 currentValueTransitions.Add(fact);
             }
@@ -182,6 +183,8 @@ internal sealed class HistoricalAttributeSnapshotReducer
         currentValueTransitions.RemoveAll(currentFact => applicableTransitions.Any(
             transition => transition.Applicability == HistoricalTransitionApplicability.Applied
                 && HistoricalTransitionOrdering.MustPrecede(currentFact, transition.Fact)));
+        currentValueTransitions.RemoveAll(currentFact =>
+            HasSequencedSameDayPredecessor(currentFact, group));
         foreach (HistoricalFact fact in currentValueTransitions)
         {
             contributingFactIds.Add(fact.Id);
@@ -304,14 +307,41 @@ internal sealed class HistoricalAttributeSnapshotReducer
         values.Add(UnknownValue);
     }
 
-    private static bool KeepsPreviousValueOnRequestedDate(
+    private static bool EstablishesPreviousValueOnRequestedDate(
         HistoricalFact fact,
         DateOnly requestedDate)
     {
         HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
-        return fact.AttributeBoundaryMeaning == AttributeBoundaryMeaning.LastDayOfPreviousValue
-            && requestedDate >= (envelope.EarliestPossibleDate ?? DateOnly.MinValue)
-            && requestedDate <= (envelope.LatestPossibleDate ?? DateOnly.MaxValue);
+        if (fact.AttributeBoundaryMeaning == AttributeBoundaryMeaning.LastDayOfPreviousValue)
+        {
+            return requestedDate >= (envelope.EarliestPossibleDate ?? DateOnly.MinValue)
+                && requestedDate <= (envelope.LatestPossibleDate ?? DateOnly.MaxValue);
+        }
+
+        DateOnly? firstDayOfNewValue = envelope.IsExactDay
+            ? envelope.EarliestPossibleDate
+            : null;
+        return fact.AttributeBoundaryMeaning == AttributeBoundaryMeaning.FirstDayOfNewValue
+            && firstDayOfNewValue.HasValue
+            && firstDayOfNewValue.Value != DateOnly.MinValue
+            && firstDayOfNewValue.Value.AddDays(-1) == requestedDate;
+    }
+
+    private static bool HasSequencedSameDayPredecessor(
+        HistoricalFact fact,
+        IReadOnlyCollection<HistoricalFact> group)
+    {
+        if (!fact.SequenceWithinDate.HasValue)
+        {
+            return false;
+        }
+
+        HistoricalDateEnvelope factEnvelope = fact.Period.GetPossibleEnvelope();
+        return factEnvelope.IsExactDay
+            && group.Any(candidate => candidate.Id != fact.Id
+                && candidate.SequenceWithinDate.HasValue
+                && candidate.SequenceWithinDate.Value < fact.SequenceWithinDate.Value
+                && candidate.Period.GetPossibleEnvelope() == factEnvelope);
     }
 
     private static bool PredecessorsWereApplied(
