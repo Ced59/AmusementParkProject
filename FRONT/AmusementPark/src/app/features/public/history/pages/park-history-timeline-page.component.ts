@@ -234,7 +234,7 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
         parkItemName: entry.subjectType === 'ParkItem' ? entry.subjectLabel : null,
         mainImageId: null,
         mainImage: null,
-        articleLink: null,
+        articleLink: this.narrativeLink(entry, timeline),
         sourceCount: entry.sources.length,
         positionPercent: 0,
         isFirstInYear: index === 0
