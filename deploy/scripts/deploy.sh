@@ -47,6 +47,7 @@ deploy_zero_downtime_enabled="${DEPLOY_ZERO_DOWNTIME_ENABLED:-true}"
 shared_infrastructure_maintenance="${SHARED_INFRASTRUCTURE_MAINTENANCE:-none}"
 continuous_warmup_service_name="amusementpark-ssr-warmup.service"
 personal_ranking_cutover_started=false
+historical_history_cutover_started=false
 
 compose() {
   docker compose --project-name "${compose_project_name}" -f compose.prod.yml "$@"
@@ -195,18 +196,65 @@ rollback_incomplete_personal_ranking_cutover() {
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
       < ./scripts/rollback-ranking-shares-5.2.6.js
-  python3 ./scripts/deployment_transaction.py cutover-restored
+  python3 ./scripts/deployment_transaction.py cutover-restored --resource personal-ranking
   personal_ranking_cutover_started=false
 }
 
+rollback_incomplete_historical_history_cutover() {
+  if [ "${historical_history_cutover_started}" != "true" ]; then
+    return 0
+  fi
+
+  if ! python3 ./scripts/deployment_transaction.py rollback-safe; then
+    echo "New authority may be serving; preserving canonical history data and deployment pairs." >&2
+    return 0
+  fi
+
+  # The candidate can still be importing the frozen snapshot. Stop it before
+  # removing migration-owned output and restoring legacy write authority.
+  python3 ./scripts/deployment_transaction.py quiesce-unexposed
+
+  echo "Deployment did not complete; restoring the legacy historical authority..." >&2
+  compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      < ./scripts/rollback-history-5.3.82.js
+  python3 ./scripts/deployment_transaction.py cutover-restored --resource historical-history
+  historical_history_cutover_started=false
+}
+
 cleanup_deployment_attempt() {
-  rollback_incomplete_personal_ranking_cutover
+  local deployment_exit_code=$?
+  local historical_rollback_exit_code=0
+  local ranking_rollback_exit_code=0
+
+  # Each cutover owns a distinct authority. A failure while restoring one must
+  # never prevent the other restoration attempt under `set -e`.
+  rollback_incomplete_historical_history_cutover || historical_rollback_exit_code=$?
+  rollback_incomplete_personal_ranking_cutover || ranking_rollback_exit_code=$?
+
+  if [ "${deployment_exit_code}" -ne 0 ]; then
+    return "${deployment_exit_code}"
+  fi
+  if [ "${historical_rollback_exit_code}" -ne 0 ]; then
+    return "${historical_rollback_exit_code}"
+  fi
+
+  return "${ranking_rollback_exit_code}"
 }
 
 trap cleanup_deployment_attempt EXIT
 
 prepare_personal_ranking_cutover() {
   local migration_completed=""
+  if python3 ./scripts/deployment_transaction.py cutover-pending --resource personal-ranking; then
+    personal_ranking_cutover_started=true
+  fi
+
   migration_completed="$(compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
     mongodb mongosh --quiet \
@@ -224,7 +272,7 @@ prepare_personal_ranking_cutover() {
   echo "Freezing legacy personal ranking share writes before zero-downtime cutover..."
   # Arm rollback before collMod: MongoDB may apply the validator even if the
   # client loses the command response and exits with an error.
-  python3 ./scripts/deployment_transaction.py arm-cutover
+  python3 ./scripts/deployment_transaction.py arm-cutover --resource personal-ranking
   personal_ranking_cutover_started=true
   compose exec -T \
     -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
@@ -234,6 +282,41 @@ prepare_personal_ranking_cutover() {
       --authenticationDatabase admin \
       "${MONGO_DATABASE_NAME:-AmusementPark}" \
       < ./scripts/freeze-legacy-ranking-shares-5.2.6.js
+}
+
+prepare_historical_history_cutover() {
+  local migration_completed=""
+  if python3 ./scripts/deployment_transaction.py cutover-pending --resource historical-history; then
+    historical_history_cutover_started=true
+  fi
+
+  migration_completed="$(compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      --eval 'const state=db.getSiblingDB(process.env.MONGO_APP_DATABASE || "AmusementPark").getCollection("historical-migrations").findOne({_id:"hist-04-history-events-v1"}); print(state && state.completedAtUtc ? "true" : "false");' \
+    | tail -n 1)"
+  if [ "${migration_completed}" = "true" ]; then
+    echo "Legacy historical replacement is already complete."
+    return 0
+  fi
+
+  echo "Freezing legacy historical writes before zero-downtime cutover..."
+  # Arm rollback before collMod: MongoDB may apply the validator even if the
+  # client loses the command response and exits with an error.
+  python3 ./scripts/deployment_transaction.py arm-cutover --resource historical-history
+  historical_history_cutover_started=true
+  compose exec -T \
+    -e MONGO_APP_DATABASE="${MONGO_DATABASE_NAME:-AmusementPark}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}" \
+      --password "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}" \
+      --authenticationDatabase admin \
+      "${MONGO_DATABASE_NAME:-AmusementPark}" \
+      < ./scripts/freeze-legacy-history-5.3.82.js
 }
 
 run_legacy_enum_migrations() {
@@ -372,7 +455,11 @@ wait_for_static_seo_snapshot() {
 ./scripts/validate-production-env.sh .env
 
 if [ "${DEPLOY_ABANDON_UNEXPOSED:-false}" = "true" ]; then
-  if python3 ./scripts/deployment_transaction.py cutover-pending; then
+  if python3 ./scripts/deployment_transaction.py cutover-pending --resource historical-history; then
+    historical_history_cutover_started=true
+    rollback_incomplete_historical_history_cutover
+  fi
+  if python3 ./scripts/deployment_transaction.py cutover-pending --resource personal-ranking; then
     personal_ranking_cutover_started=true
     rollback_incomplete_personal_ranking_cutover
   fi
@@ -429,11 +516,13 @@ esac
 python3 ./scripts/deployment_transaction.py prepare
 if python3 ./scripts/deployment_transaction.py rollback-safe; then
   prepare_personal_ranking_cutover
+  prepare_historical_history_cutover
 else
   echo "Recovering an exposed authority; the legacy cutover must not be reverted or frozen again."
 fi
 python3 ./scripts/deployment_transaction.py deploy
 personal_ranking_cutover_started=false
+historical_history_cutover_started=false
 
 compose ps
 

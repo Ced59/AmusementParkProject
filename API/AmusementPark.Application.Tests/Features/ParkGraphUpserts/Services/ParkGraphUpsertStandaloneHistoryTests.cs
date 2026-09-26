@@ -4,6 +4,8 @@ using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Models;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
@@ -28,6 +30,103 @@ namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Services;
 
 public sealed class ParkGraphUpsertStandaloneHistoryTests
 {
+    [Fact]
+    public async Task ApplyAsync_WhenMigratedStandaloneNarrativeChanges_ShouldRetractCanonicalFactFirst()
+    {
+        Guid factId = Guid.NewGuid();
+        StandaloneAttraction attraction = CreateAttraction();
+        Mock<IStandaloneAttractionRepository> standaloneRepository =
+            new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        standaloneRepository
+            .Setup(repository => repository.GetByIdAsync("standalone-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(attraction);
+        HistoryEvent existing = new HistoryEvent
+        {
+            Id = "history-1",
+            Key = "pendolino-opening-2007",
+            EntityType = HistoryEntityType.StandaloneAttraction,
+            OwnerId = "standalone-1",
+            Year = 2007,
+            DatePrecision = HistoryDatePrecision.Year,
+            EventType = ParkItemHistoryEventType.Opening.ToString(),
+            CanonicalFactId = factId,
+            CanonicalizationState = HistoricalNarrativeCanonicalizationState.Migrated,
+        };
+        Mock<IHistoryEventRepository> historyEventRepository =
+            new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        historyEventRepository
+            .Setup(repository => repository.GetByOwnerKeyAsync(
+                HistoryEntityType.StandaloneAttraction,
+                "standalone-1",
+                "pendolino-opening-2007",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(existing);
+        historyEventRepository
+            .Setup(repository => repository.UpdateAsync(
+                "history-1",
+                It.Is<HistoryEvent>(historyEvent => historyEvent.CanonicalFactId == factId
+                    && historyEvent.IsMajor),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string _, HistoryEvent historyEvent, CancellationToken _) => historyEvent);
+        Mock<IHistoricalFactRepository> historicalFactRepository =
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        historicalFactRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(factId, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(CreateLegacyCanonicalFact(factId));
+        historicalFactRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.State == HistoricalFactState.Retracted
+                    && fact.PublicationState == HistoricalPublicationState.Withdrawn),
+                It.Is<HistoricalReviewEvent>(review => review.EventType == HistoricalReviewEventType.Retracted),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        Mock<ISearchProjectionWriter> searchProjectionWriter =
+            new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        Mock<IParkGraphUpsertHistoryRepository> upsertHistoryRepository = CreateUpsertHistoryRepository();
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier =
+            new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(notifier => notifier.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        ParkGraphUpsertProcessor processor = CreateProcessor(
+            standaloneRepository,
+            historyEventRepository,
+            searchProjectionWriter,
+            upsertHistoryRepository,
+            publicSeoUpdateNotifier,
+            new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object));
+        const string rawJson = """
+        {
+          "documentType": "standaloneAttractionGraph",
+          "identity": { "standaloneAttractionId": "standalone-1" },
+          "standaloneAttraction": { "id": "standalone-1", "name": "Pendolino" },
+          "history": {
+            "events": [
+              {
+                "key": "pendolino-opening-2007",
+                "entityType": "StandaloneAttraction",
+                "ownerId": "standalone-1",
+                "date": "2007",
+                "eventType": "Opening",
+                "isMajor": true
+              }
+            ]
+          }
+        }
+        """;
+        using JsonDocument document = JsonDocument.Parse(rawJson);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(
+            CreateRequest(document, rawJson),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        historicalFactRepository.VerifyAll();
+        historyEventRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
+
     [Fact]
     public async Task PreviewAndApplyAsync_WhenStandaloneGraphContainsHistory_ShouldCreateStandaloneEvent()
     {
@@ -458,7 +557,8 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
         Mock<IHistoryEventRepository> historyEventRepository,
         Mock<ISearchProjectionWriter> searchProjectionWriter,
         Mock<IParkGraphUpsertHistoryRepository> upsertHistoryRepository,
-        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier)
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier,
+        HistoricalNarrativeCanonicalFactRetractionService? canonicalFactRetractionService = null)
     {
         return new ParkGraphUpsertProcessor(
             Mock.Of<IParkRepository>(MockBehavior.Strict),
@@ -474,6 +574,43 @@ public sealed class ParkGraphUpsertStandaloneHistoryTests
             publicSeoUpdateNotifier.Object,
             MeasurementConversionService.Instance,
             historyEventRepository: historyEventRepository.Object,
-            standaloneAttractionRepository: standaloneRepository.Object);
+            standaloneAttractionRepository: standaloneRepository.Object,
+            canonicalFactRetractionService: canonicalFactRetractionService);
+    }
+
+    private static HistoricalFact CreateLegacyCanonicalFact(Guid factId)
+    {
+        DateTime recordedAtUtc = DateTime.UtcNow.AddMinutes(-1);
+        return new HistoricalFact(
+            factId,
+            new HistoricalSubject(
+                HistoricalSubjectType.StandaloneAttraction,
+                "standalone-1",
+                "Pendolino",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForYear(2007)),
+            HistoricalFactState.Unverified,
+            HistoricalImportance.Standard,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalLocalizationPolicy.SupportedLanguageCodes
+                .Select(static code => new HistoricalLocalizedText(code, "À vérifier."))
+                .ToArray(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            Array.Empty<HistoricalSourceRevisionReference>(),
+            null,
+            null,
+            "history-1",
+            null,
+            null,
+            "hist-v1-legacy",
+            1,
+            null,
+            recordedAtUtc,
+            HistoricalRevisionOrigin.LegacyMigration);
     }
 }

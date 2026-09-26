@@ -46,7 +46,8 @@ public static class HistoricalFactRevisionValidator
                     && (predecessor.WorkflowState is HistoricalEditorialWorkflowState.EditorialReview
                         or HistoricalEditorialWorkflowState.StructuredValidation)
                     && predecessor.PublicationState
-                        == HistoricalPublicationState.LegacyPublishedPendingReview,
+                        is HistoricalPublicationState.LegacyPublishedPendingReview
+                            or HistoricalPublicationState.Suppressed,
             _ => predecessor.WorkflowState < HistoricalEditorialWorkflowState.Published
                 && fact.WorkflowState >= predecessor.WorkflowState
                 && (int)fact.WorkflowState <= (int)predecessor.WorkflowState + 1,

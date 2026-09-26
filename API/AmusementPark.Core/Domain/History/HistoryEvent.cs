@@ -60,4 +60,9 @@ public sealed class HistoryEvent : AuditableEntity
     public List<HistorySourceReference> Sources { get; set; } = new();
 
     public HistoryArticle? Article { get; set; }
+
+    public Guid? CanonicalFactId { get; set; }
+
+    public HistoricalNarrativeCanonicalizationState CanonicalizationState { get; set; } =
+        HistoricalNarrativeCanonicalizationState.PendingReview;
 }

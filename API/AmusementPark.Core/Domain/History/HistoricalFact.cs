@@ -170,6 +170,42 @@ public sealed class HistoricalFact
             or HistoricalFactState.Probable
             or HistoricalFactState.Disputed);
 
+    public HistoricalFact CreateRetraction(DateTime recordedAtUtc)
+    {
+        if (this.PublicationState == HistoricalPublicationState.Withdrawn)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidFactState,
+                "A withdrawn historical fact cannot be retracted again.");
+        }
+
+        return new HistoricalFact(
+            this.Id,
+            this.Subject,
+            this.Type,
+            this.Period,
+            HistoricalFactState.Retracted,
+            this.Importance,
+            HistoricalEditorialWorkflowState.Retracted,
+            HistoricalPublicationState.Withdrawn,
+            Array.Empty<HistoricalLocalizedText>(),
+            this.LifecycleBoundaryMeaning,
+            this.AttributeKind,
+            this.AttributeBoundaryMeaning,
+            this.SequenceWithinDate,
+            this.SourceReferences,
+            this.StructuredValue,
+            this.OtherTypeLabel,
+            this.NarrativeContentId,
+            null,
+            null,
+            this.PublicationMethodologyVersion,
+            this.Revision + 1,
+            this.Revision,
+            recordedAtUtc,
+            this.RevisionOrigin);
+    }
+
     private static void ValidateEnums(
         HistoricalFactType type,
         HistoricalFactState state,
@@ -215,13 +251,15 @@ public sealed class HistoricalFact
                     && publicationState == HistoricalPublicationState.Draft),
             HistoricalRevisionOrigin.LegacyMigration => revision != 1
                 || (workflowState == HistoricalEditorialWorkflowState.EditorialReview
-                    && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+                    && publicationState is HistoricalPublicationState.LegacyPublishedPendingReview
+                        or HistoricalPublicationState.Suppressed),
             _ => false,
         };
         bool validPublicationForOrigin = revisionOrigin switch
         {
             HistoricalRevisionOrigin.Ordinary => publicationState
-                != HistoricalPublicationState.LegacyPublishedPendingReview,
+                is not HistoricalPublicationState.LegacyPublishedPendingReview
+                    and not HistoricalPublicationState.Suppressed,
             HistoricalRevisionOrigin.LegacyMigration => publicationState
                 != HistoricalPublicationState.Draft,
             _ => false,
@@ -427,6 +465,7 @@ public sealed class HistoricalFact
             HistoricalFactType.Retheming => HistoricalAttributeKind.Theme,
             HistoricalFactType.ManufacturerChange => HistoricalAttributeKind.Manufacturer,
             HistoricalFactType.ZoneMove => HistoricalAttributeKind.Zone,
+            HistoricalFactType.LogoChange => HistoricalAttributeKind.Logo,
             _ => null,
         };
     }
@@ -505,6 +544,11 @@ public sealed class HistoricalFact
                     is HistoricalEditorialWorkflowState.EditorialReview
                         or HistoricalEditorialWorkflowState.StructuredValidation)
                 && state == HistoricalFactState.Unverified
+                && methodologyVersion is not null,
+            HistoricalPublicationState.Suppressed => revisionOrigin == HistoricalRevisionOrigin.LegacyMigration
+                && workflowState == HistoricalEditorialWorkflowState.EditorialReview
+                && state == HistoricalFactState.Unverified
+                && subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.Suppressed
                 && methodologyVersion is not null,
             HistoricalPublicationState.Withdrawn => workflowState == HistoricalEditorialWorkflowState.Retracted
                 && state == HistoricalFactState.Retracted

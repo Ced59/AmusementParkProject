@@ -631,6 +631,7 @@ private readonly IMongoDatabase database;
     private readonly ILogger<MongoDatabaseInitializer> logger;
     private readonly PersonalRankingShareReplacementMigration personalRankingShareMigration;
     private readonly PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration;
+    private readonly HistoricalLegacyHistoryReplacementMigration historicalLegacyHistoryMigration;
 
     public MongoDatabaseInitializer(
         IMongoDatabase database,
@@ -639,7 +640,8 @@ private readonly IMongoDatabase database;
         IHostEnvironment hostEnvironment,
         ILogger<MongoDatabaseInitializer> logger,
         PersonalRankingShareReplacementMigration personalRankingShareMigration,
-        PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration)
+        PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration,
+        HistoricalLegacyHistoryReplacementMigration historicalLegacyHistoryMigration)
     {
         this.database = database;
         this.settings = settings;
@@ -648,6 +650,7 @@ private readonly IMongoDatabase database;
         this.logger = logger;
         this.personalRankingShareMigration = personalRankingShareMigration;
         this.personalRankingShareAvatarPolicyMigration = personalRankingShareAvatarPolicyMigration;
+        this.historicalLegacyHistoryMigration = historicalLegacyHistoryMigration;
     }
 
     public async Task InitializeAsync(CancellationToken cancellationToken)
@@ -1084,11 +1087,14 @@ private readonly IMongoDatabase database;
         await this.InitializeParkPricingIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.HistoryEventsCollectionName, cancellationToken);
-        await this.InitializeHistoryEventsIndexesAsync(cancellationToken);
-
+        await this.EnsureCollectionExistsAsync(this.settings.HistoricalEventsBackupCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.HistoricalNarrativesCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.HistoricalMigrationsCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.HistoricalMigrationAnomaliesCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalFactsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalSourcesCollectionName, cancellationToken);
         await this.InitializeHistoricalPersistenceIndexesAsync(cancellationToken);
+        await this.InitializeHistoricalMigrationIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkFoundersCollectionName, cancellationToken);
         await this.InitializeParkFoundersIndexesAsync(cancellationToken);
@@ -1110,6 +1116,9 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.StandaloneAttractionsCollectionName, cancellationToken);
         await this.InitializeStandaloneAttractionsIndexesAsync(cancellationToken);
+
+        await this.historicalLegacyHistoryMigration.ExecuteAsync(cancellationToken);
+        await this.InitializeHistoryEventsIndexesAsync(cancellationToken);
 
         AttractionAccessConditionProvenanceMigration parkItemAccessConditionMigration =
             new AttractionAccessConditionProvenanceMigration(
@@ -1233,7 +1242,7 @@ private readonly IMongoDatabase database;
 
 private async Task InitializeHistoryEventsIndexesAsync(CancellationToken cancellationToken)
     {
-        IMongoCollection<HistoryEventDocument> collection = this.database.GetCollection<HistoryEventDocument>(this.settings.HistoryEventsCollectionName);
+        IMongoCollection<HistoryEventDocument> collection = this.database.GetCollection<HistoryEventDocument>(this.settings.HistoricalNarrativesCollectionName);
         List<CreateIndexModel<HistoryEventDocument>> indexes = new List<CreateIndexModel<HistoryEventDocument>>
         {
             new CreateIndexModel<HistoryEventDocument>(
@@ -2238,6 +2247,32 @@ private async Task InitializeParkDataEditorAccessTokensIndexesAsync(Cancellation
         await sources.Indexes.CreateManyAsync(
             HistoricalPersistenceMongoDefinitions.BuildSourceIndexes(),
             cancellationToken);
+    }
+
+    private async Task InitializeHistoricalMigrationIndexesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<HistoricalLegacyMigrationAnomalyDocument> anomalies =
+            this.database.GetCollection<HistoricalLegacyMigrationAnomalyDocument>(
+                this.settings.HistoricalMigrationAnomaliesCollectionName);
+        List<CreateIndexModel<HistoricalLegacyMigrationAnomalyDocument>> indexes =
+            new List<CreateIndexModel<HistoricalLegacyMigrationAnomalyDocument>>
+            {
+                new CreateIndexModel<HistoricalLegacyMigrationAnomalyDocument>(
+                    Builders<HistoricalLegacyMigrationAnomalyDocument>.IndexKeys
+                        .Ascending(static item => item.MigrationId)
+                        .Ascending(static item => item.LegacyEventId),
+                    new CreateIndexOptions
+                    {
+                        Name = "idx_historical_migration_anomaly_event",
+                        Unique = true,
+                    }),
+                new CreateIndexModel<HistoricalLegacyMigrationAnomalyDocument>(
+                    Builders<HistoricalLegacyMigrationAnomalyDocument>.IndexKeys
+                        .Ascending(static item => item.MigrationId)
+                        .Ascending(static item => item.Codes),
+                    new CreateIndexOptions { Name = "idx_historical_migration_anomaly_code" }),
+            };
+        await anomalies.Indexes.CreateManyAsync(indexes, cancellationToken);
     }
 
     private async Task InitializeRefreshTokensIndexesAsync(CancellationToken cancellationToken)

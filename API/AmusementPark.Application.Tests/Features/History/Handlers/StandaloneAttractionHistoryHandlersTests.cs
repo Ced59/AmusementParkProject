@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -26,6 +27,8 @@ public sealed class StandaloneAttractionHistoryHandlersTests
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> historicalFactRepository =
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         Mock<IStandaloneAttractionRepository> standaloneAttractionRepository = new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
         StandaloneAttraction attraction = new StandaloneAttraction
@@ -66,6 +69,7 @@ public sealed class StandaloneAttractionHistoryHandlersTests
             parkRepository.Object,
             parkItemRepository.Object,
             standaloneAttractionRepository.Object,
+            new HistoricalNarrativeCanonicalFactRetractionService(historicalFactRepository.Object),
             sitemapRefreshScheduler.Object);
 
         ApplicationResult<HistoryEvent> result = await handler.HandleAsync(new UpsertHistoryEventCommand(new HistoryEventWriteModel
@@ -84,6 +88,7 @@ public sealed class StandaloneAttractionHistoryHandlersTests
         standaloneAttractionRepository.VerifyAll();
         parkRepository.VerifyNoOtherCalls();
         parkItemRepository.VerifyNoOtherCalls();
+        historicalFactRepository.VerifyNoOtherCalls();
         sitemapRefreshScheduler.VerifyAll();
     }
 

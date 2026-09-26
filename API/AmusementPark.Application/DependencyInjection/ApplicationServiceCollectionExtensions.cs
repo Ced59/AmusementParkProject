@@ -10,6 +10,7 @@ using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.Countries.Services;
 using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.FactualEvents.Services;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.ParkGraphUpserts.Services;
@@ -69,6 +70,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IFactualChangeCaptureService, FactualChangeCaptureService>();
         services.AddScoped<IFactualChangeMaterializationScheduler, FactualChangeMaterializationScheduler>();
         services.AddScoped<FactualChangeEventAdministrationService>();
+        services.AddScoped<HistoricalNarrativeCanonicalFactRetractionService>();
         services.AddDurableBackgroundJobHandler<FactualChangeMaterializationJobHandler>();
         services.AddScoped<ParkItemReferenceValidator>();
         services.AddScoped<CommentTargetResolver>();

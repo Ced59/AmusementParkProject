@@ -208,6 +208,10 @@ public static HistoryEvent ToDomain(this HistoryEventDocument document)
             RelatedParkItemIds = document.RelatedParkItemIds.ToList(),
             Sources = document.Sources.Select(ToDomain).ToList(),
             Article = document.Article?.ToDomain(),
+            CanonicalFactId = Guid.TryParse(document.CanonicalFactId, out Guid canonicalFactId)
+                ? canonicalFactId
+                : null,
+            CanonicalizationState = document.CanonicalizationState,
         };
 
         entity.CreatedAtUtc = document.CreatedAt;
@@ -248,6 +252,8 @@ public static HistoryEvent ToDomain(this HistoryEventDocument document)
             RelatedParkItemIds = entity.RelatedParkItemIds.ToList(),
             Sources = entity.Sources.Select(ToDocument).ToList(),
             Article = entity.Article?.ToDocument(),
+            CanonicalFactId = entity.CanonicalFactId?.ToString("N"),
+            CanonicalizationState = entity.CanonicalizationState,
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };

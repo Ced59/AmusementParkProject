@@ -16,7 +16,8 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
 
     public HistoryEventRepository(IMongoDatabase database, MongoDbSettings settings)
     {
-        this.collection = database.GetCollection<HistoryEventDocument>(settings.HistoryEventsCollectionName);
+        this.collection = database.GetCollection<HistoryEventDocument>(
+            settings.HistoricalNarrativesCollectionName);
     }
 
     public async Task<HistoryEvent?> GetByIdAsync(string eventId, bool includeHidden, CancellationToken cancellationToken)
@@ -249,6 +250,10 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
             {
                 Id = document.Id,
                 CreatedAt = document.CreatedAt,
+                CanonicalFactId = document.CanonicalFactId,
+                CanonicalizationState = document.CanonicalizationState,
+                MigrationVersion = document.MigrationVersion,
+                MigrationWarnings = document.MigrationWarnings,
             })
             .FirstOrDefaultAsync(cancellationToken);
 
@@ -261,6 +266,14 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         document.Id = eventId;
         document.CreatedAt = existing.CreatedAt;
         document.UpdatedAt = DateTime.UtcNow;
+        document.CanonicalFactId = existing.CanonicalFactId;
+        document.CanonicalizationState = HistoricalNarrativeCanonicalizationState.PendingReview;
+        document.MigrationVersion = existing.MigrationVersion;
+        document.MigrationWarnings = existing.MigrationWarnings
+            .Append("narrative-updated-after-migration")
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static warning => warning, StringComparer.Ordinal)
+            .ToList();
 
         ReplaceOneResult result = await this.collection.ReplaceOneAsync(
             current => current.Id == eventId,

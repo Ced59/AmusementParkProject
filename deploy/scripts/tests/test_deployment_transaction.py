@@ -214,6 +214,24 @@ class DeploymentTransactionTests(unittest.TestCase):
             self.transaction.prepare()
         self.assertFalse(self.runtime.events)
 
+    def test_cutover_resource_state_must_match_legacy_boolean(self):
+        self.transaction.prepare()
+        state = self.transaction.read()
+        state["cutover_armed"] = True
+        with self.assertRaisesRegex(DeploymentError, "business cutover resources"):
+            validate_state(state)
+
+    def test_legacy_cutover_journal_is_normalized_as_personal_ranking(self):
+        self.transaction.prepare()
+        state = self.transaction.read()
+        state["cutover_armed"] = True
+        del state["cutover_resources"]
+        self.transaction.journal.write_text(json.dumps(state))
+
+        normalized = self.transaction.read()
+
+        self.assertEqual(normalized["cutover_resources"], ["personal-ranking"])
+
     def test_different_bundle_cannot_overwrite_pending_recovery(self):
         self.transaction.prepare()
         self.runtime.fingerprint = "b" * 64
@@ -256,6 +274,7 @@ class DeploymentTransactionTests(unittest.TestCase):
     def test_unexposed_abandon_stops_candidates_before_business_rollback_is_allowed_to_finish(self):
         self.transaction.prepare()
         self.transaction.state["cutover_armed"] = True
+        self.transaction.state["cutover_resources"] = ["personal-ranking"]
         self.transaction.save()
         self.runtime.fail_at = 2
         with self.assertRaises(Interrupted):
@@ -269,6 +288,7 @@ class DeploymentTransactionTests(unittest.TestCase):
             self.transaction.abandon_unexposed()
         # Equivalent to successful Mongo rollback followed by cutover-restored.
         self.transaction.state["cutover_armed"] = False
+        self.transaction.state["cutover_resources"] = []
         self.transaction.save()
         self.transaction.abandon_unexposed()
         self.assertEqual(self.transaction.read()["phase"], "abandoned")

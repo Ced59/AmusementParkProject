@@ -1,6 +1,20 @@
 {
-  "version": "5.3.81",
+  "version": "5.3.82",
   "history": [
+    {
+      "version": "5.3.82",
+      "releasedAt": "2026-09-26",
+      "labels": {
+        "fr": "Les histoires de parcs existantes sont désormais préservées dans le nouveau registre.",
+        "en": "Existing park histories are now preserved in the new register.",
+        "de": "Bestehende Parkgeschichten werden nun im neuen Register bewahrt.",
+        "nl": "Bestaande parkgeschiedenissen worden voortaan in het nieuwe register bewaard.",
+        "it": "Le storie dei parchi esistenti sono ora conservate nel nuovo registro.",
+        "es": "Las historias existentes de los parques se conservan ahora en el nuevo registro.",
+        "pl": "Istniejące historie parków są teraz zachowywane w nowym rejestrze.",
+        "pt": "As histórias existentes dos parques são agora preservadas no novo registo."
+      }
+    },
     {
       "version": "5.3.81",
       "releasedAt": "2026-09-26",

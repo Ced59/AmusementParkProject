@@ -45,6 +45,7 @@ public static class HistoricalFactSubjectTypeValidator
             or HistoricalFactType.PositioningChange
             or HistoricalFactType.Announcement
             or HistoricalFactType.Construction
+            or HistoricalFactType.LogoChange
             or HistoricalFactType.TemporaryClosure
             or HistoricalFactType.DefinitiveClosure
             or HistoricalFactType.Other;
@@ -69,6 +70,7 @@ public static class HistoricalFactSubjectTypeValidator
             or HistoricalFactType.TechnicalModification
             or HistoricalFactType.Replacement
             or HistoricalFactType.ZoneMove
+            or HistoricalFactType.LogoChange
             or HistoricalFactType.Other;
     }
 
@@ -85,6 +87,7 @@ public static class HistoricalFactSubjectTypeValidator
             or HistoricalFactType.DefinitiveClosure
             or HistoricalFactType.ZoneRenaming
             or HistoricalFactType.Retheming
+            or HistoricalFactType.LogoChange
             or HistoricalFactType.Other;
     }
 
