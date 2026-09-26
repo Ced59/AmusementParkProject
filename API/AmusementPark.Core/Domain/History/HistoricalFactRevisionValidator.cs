@@ -43,7 +43,8 @@ public static class HistoricalFactRevisionValidator
                         or HistoricalEditorialWorkflowState.Corrected
                     && predecessor.PublicationState == HistoricalPublicationState.Published
                 || predecessor.RevisionOrigin == HistoricalRevisionOrigin.LegacyMigration
-                    && predecessor.WorkflowState == HistoricalEditorialWorkflowState.EditorialReview
+                    && (predecessor.WorkflowState is HistoricalEditorialWorkflowState.EditorialReview
+                        or HistoricalEditorialWorkflowState.StructuredValidation)
                     && predecessor.PublicationState
                         == HistoricalPublicationState.LegacyPublishedPendingReview,
             _ => predecessor.WorkflowState < HistoricalEditorialWorkflowState.Published

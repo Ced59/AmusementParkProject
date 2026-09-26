@@ -32,6 +32,32 @@ public static class HistoricalFactEvidenceValidator
                 "Every historical fact source must resolve to the exact immutable revision cited.");
         }
 
+        bool everyReferenceIsBoundToFact = fact.SourceReferences.All(reference =>
+            reference.SubjectType == fact.Subject.Type
+            && string.Equals(reference.SubjectId, fact.Subject.Id, StringComparison.Ordinal)
+            && reference.FactType == fact.Type
+            && reference.Period == fact.Period);
+        if (!everyReferenceIsBoundToFact)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidSourceScope,
+                "Every historical source citation must be bound to the fact assertion it supports.");
+        }
+
+        bool everyCitationScopeIsDeclaredBySource = fact.SourceReferences.All(reference =>
+        {
+            HistoricalSourceReference source = sources.Single(candidate =>
+                candidate.Id == reference.SourceId
+                && candidate.Revision == reference.Revision);
+            return reference.Scopes.All(scope => source.Scopes.Contains(scope));
+        });
+        if (!everyCitationScopeIsDeclaredBySource)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidSourceScope,
+                "A historical source citation cannot claim a scope absent from its source revision.");
+        }
+
         bool requiresAdmissibleEvidence = fact.State == HistoricalFactState.Verified
             || fact.PublicationState == HistoricalPublicationState.Published;
         if (!requiresAdmissibleEvidence)
@@ -58,8 +84,8 @@ public static class HistoricalFactEvidenceValidator
             HistoricalSourceScope.FactType,
             HistoricalSourceScope.Period,
         };
-        bool oneSourceCoversCoreAssertion = sources.Any(source =>
-            coreScopes.All(scope => source.Scopes.Contains(scope)));
+        bool oneSourceCoversCoreAssertion = fact.SourceReferences.Any(reference =>
+            coreScopes.All(scope => reference.Scopes.Contains(scope)));
         if (!oneSourceCoversCoreAssertion)
         {
             throw Invalid(
@@ -67,8 +93,8 @@ public static class HistoricalFactEvidenceValidator
                 "At least one historical source must cover the subject, fact type, and period together.");
         }
 
-        HashSet<HistoricalSourceScope> coveredScopes = sources
-            .SelectMany(static source => source.Scopes)
+        HashSet<HistoricalSourceScope> coveredScopes = fact.SourceReferences
+            .SelectMany(static reference => reference.Scopes)
             .ToHashSet();
         HistoricalSourceScope[] requiredScopes = BuildRequiredScopes(fact);
         if (requiredScopes.Any(scope => !coveredScopes.Contains(scope)))

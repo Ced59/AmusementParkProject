@@ -74,7 +74,19 @@ public sealed class HistoricalFactEvidenceValidatorTests
     {
         Guid identitySourceId = Guid.NewGuid();
         Guid eventSourceId = Guid.NewGuid();
-        HistoricalFact fact = CreateFact(new[] { identitySourceId, eventSourceId });
+        HistoricalFact fact = CreateFact(
+            new[] { identitySourceId, eventSourceId },
+            referenceScopesFactory: sourceId => sourceId == identitySourceId
+                ? new[]
+                {
+                    HistoricalSourceScope.SubjectIdentity,
+                    HistoricalSourceScope.HistoricalLabel,
+                }
+                : new[]
+                {
+                    HistoricalSourceScope.FactType,
+                    HistoricalSourceScope.Period,
+                });
         HistoricalSourceReference identitySource = CreateSource(
             identitySourceId,
             scopes: new[]
@@ -93,6 +105,20 @@ public sealed class HistoricalFactEvidenceValidatorTests
         HistoricalPersistenceValidationException exception =
             Assert.Throws<HistoricalPersistenceValidationException>(() =>
                 HistoricalFactEvidenceValidator.Validate(fact, new[] { identitySource, eventSource }));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidSourceScope, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Validate_WhenCitationIsBoundToAnotherSubject_ShouldRejectEvidence()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(new[] { sourceId }, referenceSubjectId: "park-2");
+        HistoricalSourceReference source = CreateSource(sourceId);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalFactEvidenceValidator.Validate(fact, new[] { source }));
 
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidSourceScope, exception.ErrorCode);
     }
@@ -137,8 +163,11 @@ public sealed class HistoricalFactEvidenceValidatorTests
 
     private static HistoricalFact CreateFact(
         IReadOnlyCollection<Guid> sourceIds,
-        int? sequenceWithinDate = null)
+        int? sequenceWithinDate = null,
+        string referenceSubjectId = "park-1",
+        Func<Guid, IReadOnlyCollection<HistoricalSourceScope>>? referenceScopesFactory = null)
     {
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
         return new HistoricalFact(
             Guid.NewGuid(),
             new HistoricalSubject(
@@ -147,7 +176,7 @@ public sealed class HistoricalFactEvidenceValidatorTests
                 "Parc exemple",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
             HistoricalFactType.Opening,
-            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            period,
             HistoricalFactState.Verified,
             HistoricalImportance.Major,
             HistoricalEditorialWorkflowState.Published,
@@ -158,7 +187,35 @@ public sealed class HistoricalFactEvidenceValidatorTests
             null,
             sequenceWithinDate,
             sourceIds
-                .Select(static sourceId => new HistoricalSourceRevisionReference(sourceId, 2))
+                .Select(sourceId =>
+                {
+                    IReadOnlyCollection<HistoricalSourceScope> referenceScopes =
+                        referenceScopesFactory?.Invoke(sourceId)
+                        ?? (sequenceWithinDate.HasValue
+                            ? new[]
+                            {
+                                HistoricalSourceScope.SubjectIdentity,
+                                HistoricalSourceScope.HistoricalLabel,
+                                HistoricalSourceScope.FactType,
+                                HistoricalSourceScope.Period,
+                                HistoricalSourceScope.SequenceWithinDate,
+                            }
+                            : new[]
+                            {
+                                HistoricalSourceScope.SubjectIdentity,
+                                HistoricalSourceScope.HistoricalLabel,
+                                HistoricalSourceScope.FactType,
+                                HistoricalSourceScope.Period,
+                            });
+                    return new HistoricalSourceRevisionReference(
+                        sourceId,
+                        2,
+                        HistoricalSubjectType.Park,
+                        referenceSubjectId,
+                        HistoricalFactType.Opening,
+                        period,
+                        referenceScopes);
+                })
                 .ToArray(),
             null,
             null,

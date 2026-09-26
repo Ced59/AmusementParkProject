@@ -326,8 +326,8 @@ public sealed class HistoricalFactTests
             Assert.Throws<HistoricalPersistenceValidationException>(() => CreateFact(
                 sourceReferences: new[]
                 {
-                    new HistoricalSourceRevisionReference(sourceId, 1),
-                    new HistoricalSourceRevisionReference(sourceId, 2),
+                    CreateSourceReference(sourceId, 1),
+                    CreateSourceReference(sourceId, 2),
                 }));
 
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
@@ -344,7 +344,7 @@ public sealed class HistoricalFactTests
             fact.SourceReferences);
 
         Assert.Throws<NotSupportedException>(() => explanations[0] = new HistoricalLocalizedText("de", "Geändert."));
-        Assert.Throws<NotSupportedException>(() => sources[0] = new HistoricalSourceRevisionReference(Guid.NewGuid(), 1));
+        Assert.Throws<NotSupportedException>(() => sources[0] = CreateSourceReference());
     }
 
     [Fact]
@@ -369,7 +369,7 @@ public sealed class HistoricalFactTests
                 HistoricalAttributeKind.Name,
                 AttributeBoundaryMeaning.FirstDayOfNewValue,
                 null,
-                new[] { new HistoricalSourceRevisionReference(Guid.NewGuid(), 1) },
+                new[] { CreateSourceReference(factType: HistoricalFactType.Renaming) },
                 null,
                 null,
                 null,
@@ -428,7 +428,7 @@ public sealed class HistoricalFactTests
             null,
             null,
             null,
-            new[] { new HistoricalSourceRevisionReference(Guid.NewGuid(), 1) },
+            new[] { CreateSourceReference() },
             null,
             null,
             "history-opening-1998",
@@ -478,17 +478,18 @@ public sealed class HistoricalFactTests
         HistoricalAttributeKind attributeKind,
         HistoricalPeriod period)
     {
+        HistoricalSubjectType subjectType = type == HistoricalFactType.ZoneRenaming
+            ? HistoricalSubjectType.ParkZone
+            : type is HistoricalFactType.Relocation
+                or HistoricalFactType.Retheming
+                or HistoricalFactType.ManufacturerChange
+                or HistoricalFactType.ZoneMove
+                ? HistoricalSubjectType.ParkItem
+                : HistoricalSubjectType.Park;
         return new HistoricalFact(
             Guid.NewGuid(),
             new HistoricalSubject(
-                type == HistoricalFactType.ZoneRenaming
-                    ? HistoricalSubjectType.ParkZone
-                    : type is HistoricalFactType.Relocation
-                        or HistoricalFactType.Retheming
-                        or HistoricalFactType.ManufacturerChange
-                        or HistoricalFactType.ZoneMove
-                        ? HistoricalSubjectType.ParkItem
-                        : HistoricalSubjectType.Park,
+                subjectType,
                 "park-1",
                 "Parc exemple",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
@@ -503,7 +504,7 @@ public sealed class HistoricalFactTests
             attributeKind,
             AttributeBoundaryMeaning.FirstDayOfNewValue,
             null,
-            new[] { new HistoricalSourceRevisionReference(Guid.NewGuid(), 1) },
+            new[] { CreateSourceReference(subjectType: subjectType, factType: type, period: period) },
             "new-value",
             null,
             "history-attribute-transition",
@@ -519,6 +520,7 @@ public sealed class HistoricalFactTests
         HistoricalSubjectType subjectType,
         HistoricalFactType factType)
     {
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
         HistoricalAttributeKind? attributeKind = factType switch
         {
             HistoricalFactType.OwnerChange => HistoricalAttributeKind.Owner,
@@ -536,7 +538,7 @@ public sealed class HistoricalFactTests
                 "Sujet exemple",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
             factType,
-            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            period,
             HistoricalFactState.Verified,
             HistoricalImportance.Major,
             HistoricalEditorialWorkflowState.Published,
@@ -546,7 +548,14 @@ public sealed class HistoricalFactTests
             attributeKind,
             attributeKind.HasValue ? AttributeBoundaryMeaning.FirstDayOfNewValue : null,
             null,
-            new[] { new HistoricalSourceRevisionReference(Guid.NewGuid(), 1) },
+            new[]
+            {
+                CreateSourceReference(
+                    subjectType: subjectType,
+                    subjectId: "subject-1",
+                    factType: factType,
+                    period: period),
+            },
             attributeKind.HasValue ? "new-value" : null,
             null,
             "history-subject-specific",
@@ -573,15 +582,18 @@ public sealed class HistoricalFactTests
         HistoricalFactType type = HistoricalFactType.Opening,
         LifecycleBoundaryMeaning lifecycleBoundaryMeaning = LifecycleBoundaryMeaning.FirstOperatingDay)
     {
+        HistoricalSubject resolvedSubject = subject ?? new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc exemple",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+        HistoricalPeriod resolvedPeriod = period
+            ?? HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
         return new HistoricalFact(
             Guid.NewGuid(),
-            subject ?? new HistoricalSubject(
-                HistoricalSubjectType.Park,
-                "park-1",
-                "Parc exemple",
-                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            resolvedSubject,
             type,
-            period ?? HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            resolvedPeriod,
             state,
             HistoricalImportance.Major,
             workflowState,
@@ -593,7 +605,14 @@ public sealed class HistoricalFactTests
             null,
             null,
             sequenceWithinDate,
-            sourceReferences ?? new[] { new HistoricalSourceRevisionReference(Guid.NewGuid(), 1) },
+            sourceReferences ?? new[]
+            {
+                CreateSourceReference(
+                    subjectType: resolvedSubject.Type,
+                    subjectId: resolvedSubject.Id,
+                    factType: type,
+                    period: resolvedPeriod),
+            },
             null,
             null,
             "history-opening-1998",
@@ -603,6 +622,30 @@ public sealed class HistoricalFactTests
             revision,
             supersedesRevision,
             RecordedAtUtc);
+    }
+
+    private static HistoricalSourceRevisionReference CreateSourceReference(
+        Guid? sourceId = null,
+        int revision = 1,
+        HistoricalSubjectType subjectType = HistoricalSubjectType.Park,
+        string subjectId = "park-1",
+        HistoricalFactType factType = HistoricalFactType.Opening,
+        HistoricalPeriod? period = null)
+    {
+        return new HistoricalSourceRevisionReference(
+            sourceId ?? Guid.NewGuid(),
+            revision,
+            subjectType,
+            subjectId,
+            factType,
+            period ?? HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            new[]
+            {
+                HistoricalSourceScope.SubjectIdentity,
+                HistoricalSourceScope.HistoricalLabel,
+                HistoricalSourceScope.FactType,
+                HistoricalSourceScope.Period,
+            });
     }
 
     private static IReadOnlyCollection<HistoricalLocalizedText> CreateCompleteExplanations()

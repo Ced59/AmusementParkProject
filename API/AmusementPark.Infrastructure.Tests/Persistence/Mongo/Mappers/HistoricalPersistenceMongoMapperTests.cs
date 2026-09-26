@@ -14,6 +14,7 @@ public sealed class HistoricalPersistenceMongoMapperTests
     public void FactMapping_ShouldRoundTripCanonicalRevisionAtBsonPrecision()
     {
         Guid sourceId = Guid.NewGuid();
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
         HistoricalFact fact = new HistoricalFact(
             Guid.NewGuid(),
             new HistoricalSubject(
@@ -22,7 +23,7 @@ public sealed class HistoricalPersistenceMongoMapperTests
                 "Parc historique",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
             HistoricalFactType.Opening,
-            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            period,
             HistoricalFactState.Verified,
             HistoricalImportance.Major,
             HistoricalEditorialWorkflowState.Published,
@@ -32,7 +33,24 @@ public sealed class HistoricalPersistenceMongoMapperTests
             null,
             null,
             1,
-            new[] { new HistoricalSourceRevisionReference(sourceId, 4) },
+            new[]
+            {
+                new HistoricalSourceRevisionReference(
+                    sourceId,
+                    4,
+                    HistoricalSubjectType.Park,
+                    "park-1",
+                    HistoricalFactType.Opening,
+                    period,
+                    new[]
+                    {
+                        HistoricalSourceScope.SubjectIdentity,
+                        HistoricalSourceScope.HistoricalLabel,
+                        HistoricalSourceScope.FactType,
+                        HistoricalSourceScope.Period,
+                        HistoricalSourceScope.SequenceWithinDate,
+                    }),
+            },
             null,
             null,
             "opening-1998",
@@ -58,6 +76,11 @@ public sealed class HistoricalPersistenceMongoMapperTests
         HistoricalSourceRevisionReference sourceReference = Assert.Single(restored.SourceReferences);
         Assert.Equal(sourceId, sourceReference.SourceId);
         Assert.Equal(4, sourceReference.Revision);
+        Assert.Equal(HistoricalSubjectType.Park, sourceReference.SubjectType);
+        Assert.Equal("park-1", sourceReference.SubjectId);
+        Assert.Equal(HistoricalFactType.Opening, sourceReference.FactType);
+        Assert.Equal(period, sourceReference.Period);
+        Assert.Equal(5, sourceReference.Scopes.Count);
         Assert.Equal("park-1", restored.Subject.Id);
         Assert.Equal(0, restored.RecordedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
         Assert.Equal(0, restored.VerifiedAtUtc?.Ticks % TimeSpan.TicksPerMillisecond);

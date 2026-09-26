@@ -109,22 +109,26 @@ public sealed class HistoricalFactRevisionValidatorTests
             HistoricalFactRevisionValidator.ValidatePredecessor(structuredValidation, predecessor));
     }
 
-    [Fact]
-    public void ValidatePredecessor_WhenLegacyMigrationIsRejected_ShouldAcceptRetraction()
+    [Theory]
+    [InlineData(1, HistoricalEditorialWorkflowState.EditorialReview)]
+    [InlineData(2, HistoricalEditorialWorkflowState.StructuredValidation)]
+    public void ValidatePredecessor_WhenLegacyMigrationIsRejected_ShouldAcceptRetraction(
+        int predecessorRevision,
+        HistoricalEditorialWorkflowState predecessorWorkflowState)
     {
         Guid factId = Guid.NewGuid();
         HistoricalFact predecessor = CreateFact(
             factId,
-            1,
-            null,
+            predecessorRevision,
+            predecessorRevision == 1 ? null : predecessorRevision - 1,
             RecordedAtUtc.AddMinutes(-1),
-            HistoricalEditorialWorkflowState.EditorialReview,
+            predecessorWorkflowState,
             HistoricalPublicationState.LegacyPublishedPendingReview,
             HistoricalRevisionOrigin.LegacyMigration);
         HistoricalFact retraction = CreateFact(
             factId,
-            2,
-            1,
+            predecessorRevision + 1,
+            predecessorRevision,
             RecordedAtUtc,
             HistoricalEditorialWorkflowState.Retracted,
             HistoricalPublicationState.Withdrawn,
@@ -172,6 +176,7 @@ public sealed class HistoricalFactRevisionValidatorTests
         bool isPublished = publicationState == HistoricalPublicationState.Published;
         bool isLegacyMigration = publicationState
             == HistoricalPublicationState.LegacyPublishedPendingReview;
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
         return new HistoricalFact(
             factId,
             new HistoricalSubject(
@@ -180,7 +185,7 @@ public sealed class HistoricalFactRevisionValidatorTests
                 "Parc exemple",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
             HistoricalFactType.Opening,
-            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            period,
             workflowState == HistoricalEditorialWorkflowState.Retracted
                 ? HistoricalFactState.Retracted
                 : isPublished
@@ -198,7 +203,23 @@ public sealed class HistoricalFactRevisionValidatorTests
             null,
             null,
             null,
-            new[] { new HistoricalSourceRevisionReference(Guid.Parse("11111111-1111-1111-1111-111111111111"), 1) },
+            new[]
+            {
+                new HistoricalSourceRevisionReference(
+                    Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                    1,
+                    HistoricalSubjectType.Park,
+                    "park-1",
+                    HistoricalFactType.Opening,
+                    period,
+                    new[]
+                    {
+                        HistoricalSourceScope.SubjectIdentity,
+                        HistoricalSourceScope.HistoricalLabel,
+                        HistoricalSourceScope.FactType,
+                        HistoricalSourceScope.Period,
+                    }),
+            },
             null,
             null,
             "history-opening-1998",

@@ -30,6 +30,7 @@ public sealed class HistoricalSubjectPublicationValidatorTests
 
     private static HistoricalFact CreateFact(HistoricalSubjectPublicationPolicy publicationPolicy)
     {
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
         return new HistoricalFact(
             Guid.NewGuid(),
             new HistoricalSubject(
@@ -38,7 +39,7 @@ public sealed class HistoricalSubjectPublicationValidatorTests
                 "Parc exemple",
                 publicationPolicy),
             HistoricalFactType.Opening,
-            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            period,
             HistoricalFactState.Verified,
             HistoricalImportance.Major,
             HistoricalEditorialWorkflowState.Published,
@@ -48,7 +49,23 @@ public sealed class HistoricalSubjectPublicationValidatorTests
             null,
             null,
             null,
-            new[] { new HistoricalSourceRevisionReference(Guid.NewGuid(), 1) },
+            new[]
+            {
+                new HistoricalSourceRevisionReference(
+                    Guid.NewGuid(),
+                    1,
+                    HistoricalSubjectType.Park,
+                    "park-1",
+                    HistoricalFactType.Opening,
+                    period,
+                    new[]
+                    {
+                        HistoricalSourceScope.SubjectIdentity,
+                        HistoricalSourceScope.HistoricalLabel,
+                        HistoricalSourceScope.FactType,
+                        HistoricalSourceScope.Period,
+                    }),
+            },
             null,
             null,
             "history-opening-1998",

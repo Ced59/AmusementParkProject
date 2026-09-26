@@ -123,20 +123,24 @@ public sealed class HistoricalSourceRevisionValidatorTests
         HistoricalSourceRevisionValidator.ValidatePredecessor(editorialReview, predecessor);
     }
 
-    [Fact]
-    public void ValidatePredecessor_WhenLegacyMigrationIsRejected_ShouldAcceptRetraction()
+    [Theory]
+    [InlineData(1, HistoricalEditorialWorkflowState.EditorialReview)]
+    [InlineData(2, HistoricalEditorialWorkflowState.StructuredValidation)]
+    public void ValidatePredecessor_WhenLegacyMigrationIsRejected_ShouldAcceptRetraction(
+        int predecessorRevision,
+        HistoricalEditorialWorkflowState predecessorWorkflowState)
     {
         Guid sourceId = Guid.NewGuid();
         HistoricalSourceReference predecessor = CreateSource(
             sourceId,
-            1,
+            predecessorRevision,
             RecordedAtUtc.AddMinutes(-1),
-            HistoricalEditorialWorkflowState.EditorialReview,
+            predecessorWorkflowState,
             HistoricalPublicationState.LegacyPublishedPendingReview,
             HistoricalRevisionOrigin.LegacyMigration);
         HistoricalSourceReference retraction = CreateSource(
             sourceId,
-            2,
+            predecessorRevision + 1,
             RecordedAtUtc,
             HistoricalEditorialWorkflowState.Retracted,
             HistoricalPublicationState.Withdrawn,

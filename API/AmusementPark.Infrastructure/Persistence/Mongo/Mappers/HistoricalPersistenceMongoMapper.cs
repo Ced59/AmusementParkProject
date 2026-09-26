@@ -44,6 +44,11 @@ internal static class HistoricalPersistenceMongoMapper
                 {
                     SourceId = sourceReference.SourceId.ToString("N", CultureInfo.InvariantCulture),
                     Revision = sourceReference.Revision,
+                    SubjectType = sourceReference.SubjectType,
+                    SubjectId = sourceReference.SubjectId,
+                    FactType = sourceReference.FactType,
+                    Period = ToDocument(sourceReference.Period),
+                    Scopes = sourceReference.Scopes.ToList(),
                 })
                 .ToList(),
             StructuredValue = fact.StructuredValue,
@@ -82,7 +87,12 @@ internal static class HistoricalPersistenceMongoMapper
             document.Sources
                 .Select(static source => new HistoricalSourceRevisionReference(
                     ParseGuid(source.SourceId),
-                    source.Revision))
+                    source.Revision,
+                    source.SubjectType,
+                    source.SubjectId,
+                    source.FactType,
+                    ToDomain(source.Period),
+                    source.Scopes))
                 .ToArray(),
             document.StructuredValue,
             document.OtherTypeLabel,

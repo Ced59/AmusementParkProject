@@ -1,3 +1,5 @@
+using AmusementPark.Core.Domain.History;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
@@ -9,4 +11,21 @@ public sealed class HistoricalSourceRevisionDocument
 
     [BsonElement("revision")]
     public int Revision { get; set; }
+
+    [BsonElement("subjectType")]
+    [BsonRepresentation(BsonType.String)]
+    public HistoricalSubjectType SubjectType { get; set; }
+
+    [BsonElement("subjectId")]
+    public string SubjectId { get; set; } = string.Empty;
+
+    [BsonElement("factType")]
+    [BsonRepresentation(BsonType.String)]
+    public HistoricalFactType FactType { get; set; }
+
+    [BsonElement("period")]
+    public HistoricalPeriodDocument Period { get; set; } = new HistoricalPeriodDocument();
+
+    [BsonElement("scopes")]
+    public List<HistoricalSourceScope> Scopes { get; set; } = new List<HistoricalSourceScope>();
 }
