@@ -153,6 +153,17 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                     requestedDate,
                     temporaryClosureHasKnownEnd);
             RecordApplicabilityReason(fact, applicability, reasons);
+            if (applicability == HistoricalTransitionApplicability.NotOccurred
+                && IsDayBeforeExactFirstClosedDay(fact, requestedDate))
+            {
+                contributingFactIds.Add(fact.Id);
+                result = new HashSet<HistoricalOperationalState>
+                {
+                    HistoricalOperationalState.KnownOpen,
+                };
+                continue;
+            }
+
             if (applicability != HistoricalTransitionApplicability.NotOccurred)
             {
                 contributingFactIds.Add(fact.Id);
@@ -180,6 +191,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
     {
         List<(HistoricalFact Fact, HistoricalTransitionApplicability Applicability, bool HasKnownEnd)>
             applicableTransitions = new();
+        List<HistoricalFact> positiveActivityFacts = new();
         foreach (HistoricalFact fact in group)
         {
             bool temporaryClosureHasKnownEnd = HasKnownReopening(fact, lifecycleFacts);
@@ -194,27 +206,50 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                 contributingFactIds.Add(fact.Id);
                 applicableTransitions.Add((fact, applicability, temporaryClosureHasKnownEnd));
             }
+            else if (IsDayBeforeExactFirstClosedDay(fact, requestedDate))
+            {
+                contributingFactIds.Add(fact.Id);
+                positiveActivityFacts.Add(fact);
+            }
         }
 
-        if (applicableTransitions.Count == 0)
+        if (applicableTransitions.Count == 0 && positiveActivityFacts.Count == 0)
         {
             return states;
         }
 
-        if (applicableTransitions.Count > 1)
+        HistoricalFact[] decisionFacts = applicableTransitions
+            .Select(static transition => transition.Fact)
+            .Concat(positiveActivityFacts)
+            .ToArray();
+        if (decisionFacts.Length > 1)
         {
             reasons.Add(
                 HistoricalSnapshotReasonCode.AmbiguousTransitionOrder,
-                applicableTransitions.Select(static transition => transition.Fact));
+                decisionFacts);
+        }
+
+        if (applicableTransitions.Count == 0)
+        {
+            return new HashSet<HistoricalOperationalState>
+            {
+                HistoricalOperationalState.KnownOpen,
+            };
         }
 
         if (applicableTransitions.Count > MaximumExactPermutationGroupSize)
         {
-            return this.ApplyLargeUnorderedGroup(
+            HashSet<HistoricalOperationalState> largeGroupResult = this.ApplyLargeUnorderedGroup(
                 states,
                 applicableTransitions,
                 requestedDate,
                 reasons);
+            if (positiveActivityFacts.Count > 0)
+            {
+                largeGroupResult.Add(HistoricalOperationalState.KnownOpen);
+            }
+
+            return largeGroupResult;
         }
 
         int allMask = (1 << applicableTransitions.Count) - 1;
@@ -279,6 +314,11 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             {
                 result.UnionWith(finalStates);
             }
+        }
+
+        if (positiveActivityFacts.Count > 0)
+        {
+            result.Add(HistoricalOperationalState.KnownOpen);
         }
 
         return result;
@@ -489,6 +529,20 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             && lastOperatingDay.HasValue
             && lastOperatingDay.Value != DateOnly.MaxValue
             && lastOperatingDay.Value.AddDays(1) == requestedDate;
+    }
+
+    private static bool IsDayBeforeExactFirstClosedDay(
+        HistoricalFact fact,
+        DateOnly requestedDate)
+    {
+        HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
+        DateOnly? firstClosedDay = envelope.EarliestPossibleDate;
+        return fact.State == HistoricalFactState.Verified
+            && fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.FirstClosedDay
+            && envelope.IsExactDay
+            && firstClosedDay.HasValue
+            && firstClosedDay.Value != DateOnly.MinValue
+            && firstClosedDay.Value.AddDays(-1) == requestedDate;
     }
 
     private static void RecordClosureAgainstClosedState(

@@ -502,6 +502,22 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_DayBeforeExactFirstClosedBoundary_UsesPositiveActivityEvidence()
+    {
+        HistoricalFact closure = CreateLifecycleFact(
+            HistoricalFactType.DefinitiveClosure,
+            HistoricalDate.ForDay(2000, 5, 1),
+            LifecycleBoundaryMeaning.FirstClosedDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 4, 30),
+            new[] { closure });
+
+        Assert.Equal(HistoricalOperationalState.KnownOpen, snapshot.OperationalState);
+        Assert.Equal(new[] { closure.Id }, snapshot.SupportingFactIds);
+    }
+
+    [Fact]
     public void Build_WithProbableOpening_ReturnsPossiblyOpen()
     {
         HistoricalFact opening = CreateLifecycleFact(
@@ -702,6 +718,33 @@ public sealed class ParkHistoricalSnapshotBuilderTests
             attribute.Reasons,
             item => item.Code == HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue);
         Assert.Equal(new[] { malformedRenaming.Id }, reason.FactIds);
+    }
+
+    [Fact]
+    public void Build_DayBeforeCoarseFirstDayBoundary_DoesNotInventPreviousValue()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact earlierRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(1995, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B");
+        HistoricalFact coarseRenaming = CreateAttributeFact(
+            HistoricalDate.ForYear(2000),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom C",
+            "Nom D");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(1999, 12, 31),
+            new[] { opening, earlierRenaming, coarseRenaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Known, attribute.State);
+        Assert.Equal("Nom B", attribute.Value);
+        Assert.DoesNotContain("Nom C", attribute.Candidates);
     }
 
     [Fact]
