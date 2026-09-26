@@ -155,6 +155,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
         ISet<Guid> contributingFactIds)
     {
         List<(HistoricalFact Fact, HistoricalTransitionApplicability Applicability)> applicableTransitions = new();
+        List<HistoricalFact> currentValueTransitions = new();
         foreach (HistoricalFact fact in group)
         {
             HistoricalTransitionApplicability applicability =
@@ -165,23 +166,58 @@ internal sealed class HistoricalAttributeSnapshotReducer
                 contributingFactIds.Add(fact.Id);
                 applicableTransitions.Add((fact, applicability));
             }
+            else if (KeepsPreviousValueOnRequestedDate(fact, requestedDate))
+            {
+                contributingFactIds.Add(fact.Id);
+                currentValueTransitions.Add(fact);
+            }
         }
 
-        if (applicableTransitions.Count == 0)
+        if (applicableTransitions.Count == 0 && currentValueTransitions.Count == 0)
         {
             return values;
         }
 
-        if (applicableTransitions.Count > 1)
+        HistoricalFact[] decisionFacts = applicableTransitions
+            .Select(static transition => transition.Fact)
+            .Concat(currentValueTransitions)
+            .ToArray();
+        if (decisionFacts.Length > 1)
         {
             reasons.Add(
                 HistoricalSnapshotReasonCode.AmbiguousAttributeOrder,
-                applicableTransitions.Select(static transition => transition.Fact));
+                decisionFacts);
+        }
+
+        HashSet<string> preservedValues = new HashSet<string>(StringComparer.Ordinal);
+        foreach (HistoricalFact fact in currentValueTransitions)
+        {
+            if (HistoricalAttributeTransitionParser.TryParse(fact, out string? previousValue, out _)
+                && previousValue is not null)
+            {
+                preservedValues.Add(previousValue);
+            }
+            else
+            {
+                reasons.Add(HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue, fact);
+                preservedValues.Add(UnknownValue);
+            }
+        }
+
+        if (applicableTransitions.Count == 0)
+        {
+            preservedValues.UnionWith(values);
+            return preservedValues;
         }
 
         if (applicableTransitions.Count > MaximumExactPermutationGroupSize)
         {
-            return this.ApplyLargeUnorderedGroup(values, applicableTransitions, reasons);
+            HashSet<string> largeGroupResult = this.ApplyLargeUnorderedGroup(
+                values,
+                applicableTransitions,
+                reasons);
+            largeGroupResult.UnionWith(preservedValues);
+            return largeGroupResult;
         }
 
         int allMask = (1 << applicableTransitions.Count) - 1;
@@ -243,7 +279,18 @@ internal sealed class HistoricalAttributeSnapshotReducer
             }
         }
 
+        result.UnionWith(preservedValues);
         return result;
+    }
+
+    private static bool KeepsPreviousValueOnRequestedDate(
+        HistoricalFact fact,
+        DateOnly requestedDate)
+    {
+        HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
+        return fact.AttributeBoundaryMeaning == AttributeBoundaryMeaning.LastDayOfPreviousValue
+            && requestedDate >= (envelope.EarliestPossibleDate ?? DateOnly.MinValue)
+            && requestedDate <= (envelope.LatestPossibleDate ?? DateOnly.MaxValue);
     }
 
     private static bool PredecessorsWereApplied(
