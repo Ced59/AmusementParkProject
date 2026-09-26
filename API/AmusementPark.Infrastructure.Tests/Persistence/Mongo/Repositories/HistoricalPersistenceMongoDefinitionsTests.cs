@@ -23,6 +23,7 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
             index => index.Options.Name == "idx_historical_facts_revision_unique");
         Assert.True(revision.Options.Unique);
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_subject_start_year");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_park_scope_revision");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_publication_workflow");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_source_revision");
         CreateIndexModel<HistoricalFactDocument> audit = indexes.Single(
@@ -36,6 +37,72 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Equal(-1, auditKeys["transitionReviewEvent.occurredAtUtc"].AsInt32);
         Assert.Equal(-1, auditKeys["revision"].AsInt32);
         Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));
+    }
+
+    [Fact]
+    public void BuildLatestDecisionEligibleForParkPipeline_ShouldDiscoverScopedRetiredSubjectsAfterGroupingLatestRevisions()
+    {
+        HistoricalSubject currentPark = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+
+        BsonDocument[] pipeline = HistoricalFactRepository
+            .BuildLatestDecisionEligibleForParkPipeline(
+                "park-1",
+                new[] { currentPark },
+                "historical-facts")
+            .ToArray();
+
+        Assert.Equal(6, pipeline.Length);
+        Assert.True(pipeline[0]["$match"].AsBsonDocument.Contains("$or"));
+        Assert.Equal("$factId", pipeline[1]["$group"]["_id"].AsString);
+        BsonDocument lookup = pipeline[2]["$lookup"].AsBsonDocument;
+        Assert.Equal("historical-facts", lookup["from"].AsString);
+        BsonArray lookupPipeline = lookup["pipeline"].AsBsonArray;
+        Assert.Equal(3, lookupPipeline.Count);
+        Assert.Equal(-1, lookupPipeline[1]["$sort"]["revision"].AsInt32);
+        Assert.Equal(1, lookupPipeline[2]["$limit"].AsInt32);
+        Assert.Equal("$latestRevision", pipeline[4]["$replaceRoot"]["newRoot"].AsString);
+        BsonArray publicEligibility = pipeline[5]["$match"]["$or"].AsBsonArray;
+        Assert.Contains(
+            publicEligibility,
+            filter => filter.AsBsonDocument.GetValue("subject.publicationPolicy", BsonNull.Value)
+                == HistoricalSubjectPublicationPolicy.HistoricalOnly.ToString());
+        Assert.Contains(
+            publicEligibility,
+            filter => filter.AsBsonDocument.GetValue("subject.id", BsonNull.Value) == "park-1"
+                && filter.AsBsonDocument.GetValue("subject.publicationPolicy", BsonNull.Value)
+                    == HistoricalSubjectPublicationPolicy.FollowCurrentSubject.ToString());
+    }
+
+    [Fact]
+    public void BuildParkCandidateScopeFilter_ShouldFindCurrentAndDurablyScopedFactChains()
+    {
+        HistoricalSubject currentPark = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+
+        BsonDocument filter = HistoricalFactRepository.BuildParkCandidateScopeFilter(
+            "park-1",
+            new[] { currentPark });
+
+        BsonArray alternatives = filter["$or"].AsBsonArray;
+        Assert.Contains(
+            alternatives,
+            alternative => alternative.AsBsonDocument.GetValue("subject.id", BsonNull.Value)
+                == "park-1"
+                && alternative.AsBsonDocument.GetValue(
+                    "subject.publicationPolicy",
+                    BsonNull.Value)
+                    == HistoricalSubjectPublicationPolicy.FollowCurrentSubject.ToString());
+        Assert.Contains(
+            alternatives,
+            alternative => alternative.AsBsonDocument.GetValue("subject.contextParkId", BsonNull.Value)
+                == "park-1");
     }
 
     [Fact]

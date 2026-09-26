@@ -28,4 +28,11 @@ internal static class HistoryApplicationErrors
     {
         return ApplicationError.Validation("history.event-type.invalid", "The history event type is invalid for the selected owner.");
     }
+
+    public static ApplicationError InvalidSnapshotDate()
+    {
+        return ApplicationError.Validation(
+            "history.snapshot.date.invalid",
+            "The requested historical snapshot date is invalid.");
+    }
 }

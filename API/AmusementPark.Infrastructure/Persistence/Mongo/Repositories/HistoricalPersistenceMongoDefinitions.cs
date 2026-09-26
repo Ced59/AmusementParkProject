@@ -33,6 +33,12 @@ internal static class HistoricalPersistenceMongoDefinitions
                 new CreateIndexOptions { Name = "idx_historical_facts_subject_type_revision" }),
             new CreateIndexModel<HistoricalFactDocument>(
                 Builders<HistoricalFactDocument>.IndexKeys
+                    .Ascending("subject.contextParkId")
+                    .Ascending(document => document.FactId)
+                    .Descending(document => document.Revision),
+                new CreateIndexOptions { Name = "idx_historical_facts_park_scope_revision" }),
+            new CreateIndexModel<HistoricalFactDocument>(
+                Builders<HistoricalFactDocument>.IndexKeys
                     .Ascending(document => document.State)
                     .Descending(document => document.VerifiedAtUtc),
                 new CreateIndexOptions { Name = "idx_historical_facts_state_verified" }),

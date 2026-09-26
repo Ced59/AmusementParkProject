@@ -2,9 +2,9 @@ using System.Text.Json;
 
 namespace AmusementPark.Core.Domain.History;
 
-internal static class HistoricalAttributeTransitionParser
+public static class HistoricalAttributeTransitionParser
 {
-    internal static bool TryParse(
+    public static bool TryParse(
         HistoricalFact fact,
         out string? previousValue,
         out string? nextValue)

@@ -6,7 +6,8 @@ public sealed record HistoricalSubject
         HistoricalSubjectType type,
         string id,
         string historicalLabel,
-        HistoricalSubjectPublicationPolicy publicationPolicy)
+        HistoricalSubjectPublicationPolicy publicationPolicy,
+        string? contextParkId = null)
     {
         if (!Enum.IsDefined(type) || !Enum.IsDefined(publicationPolicy))
         {
@@ -19,6 +20,9 @@ public sealed record HistoricalSubject
         this.Id = Normalize(id, 200, nameof(id));
         this.HistoricalLabel = Normalize(historicalLabel, 300, nameof(historicalLabel));
         this.PublicationPolicy = publicationPolicy;
+        this.ContextParkId = type == HistoricalSubjectType.Park
+            ? this.Id
+            : NormalizeOptional(contextParkId, 200, nameof(contextParkId));
     }
 
     public HistoricalSubjectType Type { get; }
@@ -28,6 +32,12 @@ public sealed record HistoricalSubject
     public string HistoricalLabel { get; }
 
     public HistoricalSubjectPublicationPolicy PublicationPolicy { get; }
+
+    /// <summary>
+    /// Identifiant durable du parc auquel rattacher ce sujet dans les vues historiques.
+    /// Il permet de retrouver une cible retirée sans dépendre de son document courant.
+    /// </summary>
+    public string? ContextParkId { get; }
 
     private static string Normalize(string value, int maximumLength, string parameterName)
     {
@@ -43,6 +53,16 @@ public sealed record HistoricalSubject
         }
 
         return normalizedValue;
+    }
+
+    private static string? NormalizeOptional(string? value, int maximumLength, string parameterName)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        return Normalize(value, maximumLength, parameterName);
     }
 
     private static HistoricalPersistenceValidationException Invalid(

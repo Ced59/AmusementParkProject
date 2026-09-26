@@ -17,6 +17,20 @@ public sealed class HistoricalSubjectTests
         Assert.Equal("park-1", subject.Id);
         Assert.Equal("Ancien nom du parc", subject.HistoricalLabel);
         Assert.Equal(HistoricalSubjectPublicationPolicy.HistoricalOnly, subject.PublicationPolicy);
+        Assert.Equal("park-1", subject.ContextParkId);
+    }
+
+    [Fact]
+    public void Constructor_ForParkItem_ShouldNormalizeDurableParkScope()
+    {
+        HistoricalSubject subject = new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            "item-1",
+            "Attraction historique",
+            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            " park-1 ");
+
+        Assert.Equal("park-1", subject.ContextParkId);
     }
 
     [Fact]

@@ -65,10 +65,14 @@ le parc, l’élément de parc, l’attraction autonome, la zone, l’exploitant
 constructeur. Ajouter une famille impose une valeur explicite et un résolveur ;
 un identifiant seul n’est jamais suffisant pour deviner son type.
 
-Une entité retirée de l’offre actuelle garde son identité historique. Sa
+Une entité retirée de l'offre actuelle garde son identité historique. Sa
 suppression fonctionnelle ne cascade donc pas sur les faits, sources, relations
 ou anciennes visites qui la référencent. Si la cible ne peut plus être résolue,
 le système conserve son libellé historique figé et signale une cible retirée.
+Pour les sujets appartenant à un parc, `ContextParkId` conserve également leur
+portée de consultation. Cette association est persistée dans le registre
+canonique : retrouver une attraction supprimée ne dépend ni de sa fiche
+courante ni d'une lecture parallèle de l'ancien système.
 
 La possibilité de conserver cette identité ne la rend pas automatiquement
 publique. Chaque sujet porte une `HistoricalSubjectPublicationPolicy` :
@@ -648,6 +652,7 @@ classDiagram
       +string Id
       +string HistoricalLabel
       +HistoricalSubjectPublicationPolicy PublicationPolicy
+      +string? ContextParkId
     }
     class HistoricalFact {
       +Guid Id

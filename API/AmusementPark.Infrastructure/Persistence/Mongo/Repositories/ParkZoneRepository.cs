@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.ParkZones.Results;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Driver;
@@ -21,11 +22,14 @@ public sealed class ParkZoneRepository : IParkZoneRepository
 {
     private readonly IMongoCollection<ParkZoneDocument> zonesCollection;
     private readonly IMongoCollection<ParkItemDocument> itemsCollection;
+    private readonly IMongoCollection<HistoricalSubjectScopeDocument> historicalSubjectScopesCollection;
 
     public ParkZoneRepository(IMongoDatabase database, MongoDbSettings settings)
     {
         this.zonesCollection = database.GetCollection<ParkZoneDocument>(settings.ParkZonesCollectionName);
         this.itemsCollection = database.GetCollection<ParkItemDocument>(settings.ParkItemsCollectionName);
+        this.historicalSubjectScopesCollection = database.GetCollection<HistoricalSubjectScopeDocument>(
+            settings.HistoricalSubjectScopesCollectionName);
     }
 
     public async Task<IReadOnlyCollection<ParkZone>> GetAllAsync(CancellationToken cancellationToken)
@@ -90,6 +94,20 @@ public sealed class ParkZoneRepository : IParkZoneRepository
 
     public async Task<bool> DeleteAsync(string zoneId, CancellationToken cancellationToken)
     {
+        ParkZoneDocument? zone = await this.zonesCollection
+            .Find(document => document.Id == zoneId)
+            .FirstOrDefaultAsync(cancellationToken);
+        if (zone is not null)
+        {
+            HistoricalSubjectScopeDocument retainedScope =
+                HistoricalSubjectScopeDocument.FromParkZone(zone, DateTime.UtcNow);
+            await this.historicalSubjectScopesCollection.ReplaceOneAsync(
+                scope => scope.Id == retainedScope.Id,
+                retainedScope,
+                new ReplaceOptions { IsUpsert = true },
+                cancellationToken);
+        }
+
         DeleteResult deleteZoneResult = await this.zonesCollection.DeleteOneAsync(
             document => document.Id == zoneId,
             cancellationToken: cancellationToken);

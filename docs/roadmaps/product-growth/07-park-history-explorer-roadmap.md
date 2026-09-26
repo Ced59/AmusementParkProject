@@ -672,7 +672,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | `HIST-04` | Migration/adaptation des historiques existants | Aucune perte de contenu — implémenté le 26 septembre 2026 |
 | `HIST-05` | Builder snapshot | Résultat déterministe — implémenté le 26 septembre 2026 |
 | `HIST-06` | Couverture et ambiguïtés | Partiel visible — implémenté le 26 septembre 2026 |
-| `HIST-07` | API timeline/snapshot | Contrats bornés |
+| `HIST-07` | API timeline/snapshot | Contrats bornés — implémenté le 26 septembre 2026 |
 | `HIST-08` | UI frise et année pilote | SSR accessible |
 | `HIST-09` | Relations/lignées | Aucune déduction silencieuse |
 | `HIST-10` | Comparaison de dates | Diff exact |
@@ -842,6 +842,79 @@ identifiants des faits justificatifs. Les causes d'attribut sont séparées du
 cycle de vie afin qu'un ancien nom incertain ne dégrade pas artificiellement la
 fiabilité de la période d'ouverture. La méthodologie du snapshot passe ainsi à
 `hist-snapshot-v2`, prête à être exposée par `HIST-07`.
+
+### Implémentation `HIST-07` — 26 septembre 2026
+
+Deux routes publiques stables exposent maintenant le registre canonique : la
+frise paginée d'un parc et son snapshot pour une année, un mois ou un jour. Une
+page de frise contient 25 événements par défaut et ne peut jamais dépasser 50 ;
+une page arbitrairement lointaine reste vide sans provoquer de dépassement de
+calcul. Le snapshot renvoie des projections légères : état opérationnel,
+attributs présentables, couverture, raisons d'incertitude et ambiguïtés, sans
+embarquer les récits complets ni les identifiants internes des preuves.
+
+L'Application charge en une seule orchestration le parc, ses éléments et ses
+zones, puis demande au port historique les dernières révisions admissibles.
+MongoDB filtre, groupe, compte, ordonne et pagine les faits côté serveur : une
+requête de frise ne matérialise donc plus tout le registre en mémoire. Un parc
+ou élément actuellement public suit son état
+de publication courant ; une cible historique masquée n'est retenue que si sa
+politique `HistoricalOnly` l'autorise explicitement. Les brouillons, faits
+retirés, héritages encore en attente de revue et cibles explicitement marquées
+`Suppressed` restent absents des réponses publiques.
+
+La sélection MongoDB commence par les chaînes ayant appartenu au périmètre du
+parc, puis rejoint dans la même agrégation leur dernière révision globale avant
+de réappliquer la portée publique. Aucun tableau d'identifiants proportionnel à
+l'historique ne transite par l'Application ou dans une clause `$in`. Une
+correction qui déplace un fait vers un autre parc ne peut donc jamais faire
+réapparaître son ancienne révision dans la frise d'origine.
+
+Chaque sujet de parc conserve désormais un `ContextParkId` durable. Une
+migration MongoDB alimente cette portée sur les révisions existantes depuis les
+entités courantes ou, lorsqu'une attraction a déjà été supprimée, depuis la
+sauvegarde narrative canonique. Cette récupération couvre aussi les anciennes
+zones de parc grâce à un registre de portée durable alimenté avant leur
+suppression, sans prétendre qu'un type narratif inexistant fournirait cette
+information. La cible disparue reste ainsi retrouvable sans
+faire coexister deux moteurs historiques, et son libellé public provient du
+sujet `HistoricalOnly` figé plutôt que d'une fiche courante. La même migration
+persiste la clé d'ordre temporelle dérivée par le Core pour que la pagination
+MongoDB conserve exactement la sémantique des dates partielles.
+
+Le Core refuse désormais de publier un sujet `HistoricalOnly` de type élément
+ou zone sans cette portée de parc durable. Dans un snapshot, un nom issu du
+libellé historique figé est signalé comme `HistoricalLabel` ; le marqueur
+`CurrentFallback` est réservé à une valeur réellement issue de la fiche
+courante.
+
+La résolution publique des zones ignore les zones courantes masquées. Elle ne
+réintroduit le libellé d'une zone retirée que depuis un fait `HistoricalOnly`
+publié et rattaché durablement au parc demandé. Le registre de portée conserve
+en outre le parc dans sa clé afin qu'un identifiant de zone réutilisé par un
+autre parc reste non ambigu et ne bloque jamais une suppression ultérieure.
+Une correspondance avec une fiche publique actuelle n'admet que les faits
+`FollowCurrentSubject`. Un fait `HistoricalOnly` ne peut donc jamais changer de
+parc par simple réutilisation de son identifiant : seule sa portée durable fait
+foi.
+
+La frise charge les sources uniquement pour la page demandée, en lots bornés
+compatibles avec les limites du dépôt même lorsqu'un fait possède beaucoup de
+preuves. Elle expose leur
+titre, auteur ou éditeur, lien, référence bibliographique et dates publiques,
+mais jamais leur identifiant, leur numéro de révision ou leur note admin. Les
+valeurs structurées contenant un identifiant d'image, d'exploitant, de
+propriétaire ou de constructeur ne franchissent pas non plus le contrat HTTP.
+Un nom, thème, statut ou autre texte public peut être présenté directement ;
+une zone n'est affichée qu'après résolution vers son libellé. Le snapshot
+indique explicitement lorsqu'un libellé actuel sert de repli faute de nom
+historique certain.
+
+Les contrats transportent la précision réelle des dates, les bornes ouvertes,
+la confiance des limites, les explications localisées des faits incertains et
+les compteurs de couverture. Ils fournissent ainsi à `HIST-08` une base SSR
+accessible sans déplacer les règles temporelles dans Angular ni exposer la
+structure interne de MongoDB.
 
 ## 22. Gate finale `HIST-G`
 

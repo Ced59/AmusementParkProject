@@ -632,6 +632,7 @@ private readonly IMongoDatabase database;
     private readonly PersonalRankingShareReplacementMigration personalRankingShareMigration;
     private readonly PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration;
     private readonly HistoricalLegacyHistoryReplacementMigration historicalLegacyHistoryMigration;
+    private readonly HistoricalFactPublicProjectionMigration historicalFactPublicProjectionMigration;
 
     public MongoDatabaseInitializer(
         IMongoDatabase database,
@@ -641,7 +642,8 @@ private readonly IMongoDatabase database;
         ILogger<MongoDatabaseInitializer> logger,
         PersonalRankingShareReplacementMigration personalRankingShareMigration,
         PersonalRankingShareAvatarPolicyMigration personalRankingShareAvatarPolicyMigration,
-        HistoricalLegacyHistoryReplacementMigration historicalLegacyHistoryMigration)
+        HistoricalLegacyHistoryReplacementMigration historicalLegacyHistoryMigration,
+        HistoricalFactPublicProjectionMigration historicalFactPublicProjectionMigration)
     {
         this.database = database;
         this.settings = settings;
@@ -651,6 +653,7 @@ private readonly IMongoDatabase database;
         this.personalRankingShareMigration = personalRankingShareMigration;
         this.personalRankingShareAvatarPolicyMigration = personalRankingShareAvatarPolicyMigration;
         this.historicalLegacyHistoryMigration = historicalLegacyHistoryMigration;
+        this.historicalFactPublicProjectionMigration = historicalFactPublicProjectionMigration;
     }
 
     public async Task InitializeAsync(CancellationToken cancellationToken)
@@ -1093,6 +1096,7 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalMigrationAnomaliesCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalFactsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalSourcesCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.HistoricalSubjectScopesCollectionName, cancellationToken);
         await this.InitializeHistoricalPersistenceIndexesAsync(cancellationToken);
         await this.InitializeHistoricalMigrationIndexesAsync(cancellationToken);
 
@@ -1118,6 +1122,15 @@ private readonly IMongoDatabase database;
         await this.InitializeStandaloneAttractionsIndexesAsync(cancellationToken);
 
         await this.historicalLegacyHistoryMigration.ExecuteAsync(cancellationToken);
+        long migratedHistoricalFactProjectionCount =
+            await this.historicalFactPublicProjectionMigration.ExecuteAsync(cancellationToken);
+        if (migratedHistoricalFactProjectionCount > 0)
+        {
+            this.logger.LogInformation(
+                "Migrated {FactCount} historical fact revisions to the public park projection.",
+                migratedHistoricalFactProjectionCount);
+        }
+
         await this.InitializeHistoryEventsIndexesAsync(cancellationToken);
 
         AttractionAccessConditionProvenanceMigration parkItemAccessConditionMigration =

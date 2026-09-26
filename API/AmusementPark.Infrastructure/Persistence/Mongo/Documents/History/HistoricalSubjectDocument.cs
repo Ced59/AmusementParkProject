@@ -19,4 +19,8 @@ public sealed class HistoricalSubjectDocument
     [BsonElement("publicationPolicy")]
     [BsonRepresentation(BsonType.String)]
     public HistoricalSubjectPublicationPolicy PublicationPolicy { get; set; }
+
+    [BsonElement("contextParkId")]
+    [BsonIgnoreIfNull]
+    public string? ContextParkId { get; set; }
 }

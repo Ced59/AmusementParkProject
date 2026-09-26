@@ -98,7 +98,8 @@ public sealed class HistoricalLegacyFactConverter
             subjectResolution.SubjectType,
             subjectResolution.SubjectId,
             historicalLabel,
-            publicationPolicy);
+            publicationPolicy,
+            ResolveContextParkId(historyEvent, subjectResolution));
         string? otherTypeLabel = mapping.FactType == HistoricalFactType.Other
             ? historyEvent.EventType
             : null;
@@ -197,6 +198,25 @@ public sealed class HistoricalLegacyFactConverter
             false,
             sourceReferences.Length,
             warnings);
+    }
+
+    private static string? ResolveContextParkId(
+        HistoryEventDocument historyEvent,
+        HistoricalLegacySubjectResolution subjectResolution)
+    {
+        if (subjectResolution.SubjectType == HistoricalSubjectType.Park)
+        {
+            return subjectResolution.SubjectId;
+        }
+
+        if (subjectResolution.SubjectType != HistoricalSubjectType.ParkItem)
+        {
+            return null;
+        }
+
+        return string.IsNullOrWhiteSpace(historyEvent.ContextParkId)
+            ? historyEvent.ParkId
+            : historyEvent.ContextParkId;
     }
 
     internal static HistoricalDate BuildHistoricalDate(HistoryEventDocument historyEvent)

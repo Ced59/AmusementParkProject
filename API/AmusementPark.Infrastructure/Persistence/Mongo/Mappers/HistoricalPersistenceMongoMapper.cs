@@ -24,6 +24,7 @@ internal static class HistoricalPersistenceMongoMapper
             Subject = ToDocument(fact.Subject),
             Type = fact.Type,
             Period = ToDocument(fact.Period),
+            TimelineSortOrdinal = HistoricalTimelineOrdering.ResolveDayNumber(fact.Period),
             State = fact.State,
             Importance = fact.Importance,
             WorkflowState = fact.WorkflowState,
@@ -222,6 +223,7 @@ internal static class HistoricalPersistenceMongoMapper
             Id = subject.Id,
             HistoricalLabel = subject.HistoricalLabel,
             PublicationPolicy = subject.PublicationPolicy,
+            ContextParkId = subject.ContextParkId,
         };
     }
 
@@ -231,7 +233,8 @@ internal static class HistoricalPersistenceMongoMapper
             document.Type,
             document.Id,
             document.HistoricalLabel,
-            document.PublicationPolicy);
+            document.PublicationPolicy,
+            document.ContextParkId);
     }
 
     private static HistoricalPeriodDocument ToDocument(HistoricalPeriod period)

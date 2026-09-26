@@ -1,6 +1,20 @@
 {
-  "version": "5.3.84",
+  "version": "5.3.85",
   "history": [
+    {
+      "version": "5.3.85",
+      "releasedAt": "2026-09-26",
+      "labels": {
+        "fr": "Les futures frises historiques peuvent désormais consulter des vues datées et leurs sources en toute sécurité.",
+        "en": "Future history timelines can now retrieve dated views and their sources safely.",
+        "de": "Künftige historische Zeitleisten können nun datierte Ansichten und ihre Quellen sicher abrufen.",
+        "nl": "Toekomstige historische tijdlijnen kunnen nu veilig gedateerde weergaven en hun bronnen ophalen.",
+        "it": "Le future cronologie storiche possono ora recuperare in sicurezza viste datate e relative fonti.",
+        "es": "Las futuras cronologías históricas ya pueden consultar de forma segura vistas fechadas y sus fuentes.",
+        "pl": "Przyszłe osie czasu mogą teraz bezpiecznie pobierać widoki dla wybranych dat wraz ze źródłami.",
+        "pt": "As futuras cronologias históricas podem agora consultar com segurança vistas datadas e as respetivas fontes."
+      }
+    },
     {
       "version": "5.3.84",
       "releasedAt": "2026-09-26",

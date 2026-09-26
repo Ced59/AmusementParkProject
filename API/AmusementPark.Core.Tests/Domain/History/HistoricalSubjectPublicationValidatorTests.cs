@@ -28,16 +28,52 @@ public sealed class HistoricalSubjectPublicationValidatorTests
         HistoricalSubjectPublicationValidator.Validate(fact, currentSubjectIsPublic: false);
     }
 
-    private static HistoricalFact CreateFact(HistoricalSubjectPublicationPolicy publicationPolicy)
+    [Theory]
+    [InlineData(HistoricalSubjectType.ParkItem)]
+    [InlineData(HistoricalSubjectType.ParkZone)]
+    public void Validate_WhenHistoricalOnlyParkSubjectHasNoDurableParkScope_ShouldRejectPublication(
+        HistoricalSubjectType subjectType)
+    {
+        HistoricalFact fact = CreateFact(
+            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            subjectType);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalSubjectPublicationValidator.Validate(fact, currentSubjectIsPublic: false));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
+    }
+
+    [Theory]
+    [InlineData(HistoricalSubjectType.ParkItem)]
+    [InlineData(HistoricalSubjectType.ParkZone)]
+    public void Validate_WhenHistoricalOnlyParkSubjectHasDurableParkScope_ShouldAcceptPublication(
+        HistoricalSubjectType subjectType)
+    {
+        HistoricalFact fact = CreateFact(
+            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            subjectType,
+            "park-1");
+
+        HistoricalSubjectPublicationValidator.Validate(fact, currentSubjectIsPublic: false);
+    }
+
+    private static HistoricalFact CreateFact(
+        HistoricalSubjectPublicationPolicy publicationPolicy,
+        HistoricalSubjectType subjectType = HistoricalSubjectType.Park,
+        string? contextParkId = null)
     {
         HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
+        string subjectId = subjectType == HistoricalSubjectType.Park ? "park-1" : "item-1";
         return new HistoricalFact(
             Guid.NewGuid(),
             new HistoricalSubject(
-                HistoricalSubjectType.Park,
-                "park-1",
+                subjectType,
+                subjectId,
                 "Parc exemple",
-                publicationPolicy),
+                publicationPolicy,
+                contextParkId),
             HistoricalFactType.Opening,
             period,
             HistoricalFactState.Verified,
@@ -54,8 +90,8 @@ public sealed class HistoricalSubjectPublicationValidatorTests
                 new HistoricalSourceRevisionReference(
                     Guid.NewGuid(),
                     1,
-                    HistoricalSubjectType.Park,
-                    "park-1",
+                    subjectType,
+                    subjectId,
                     HistoricalFactType.Opening,
                     period,
                     HistoricalEvidencePosition.Supports,

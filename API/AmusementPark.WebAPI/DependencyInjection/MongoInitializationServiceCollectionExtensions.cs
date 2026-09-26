@@ -22,6 +22,7 @@ public static class MongoInitializationServiceCollectionExtensions
         services.AddScoped<PersonalRankingShareReplacementMigration>();
         services.AddScoped<PersonalRankingShareAvatarPolicyMigration>();
         services.AddScoped<HistoricalLegacyHistoryReplacementMigration>();
+        services.AddScoped<HistoricalFactPublicProjectionMigration>();
         services.AddScoped<HistoricalLegacySubjectResolver>();
         services.AddScoped<HistoricalLegacyOperatorResolver>();
         services.AddScoped<HistoricalLegacySourceMigrator>();
