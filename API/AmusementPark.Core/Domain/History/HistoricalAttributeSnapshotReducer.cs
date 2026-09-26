@@ -3,7 +3,7 @@ namespace AmusementPark.Core.Domain.History;
 internal sealed class HistoricalAttributeSnapshotReducer
 {
     private const string UnknownValue = "\u0000";
-    private const int MaximumExactPermutationGroupSize = 10;
+    private const int MaximumExactPermutationGroupSize = 7;
 
     internal IReadOnlyList<HistoricalAttributeSnapshot> Reduce(
         IReadOnlyCollection<HistoricalFact> subjectFacts,

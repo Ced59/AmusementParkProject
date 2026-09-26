@@ -2,7 +2,7 @@ namespace AmusementPark.Core.Domain.History;
 
 internal sealed class HistoricalLifecycleSnapshotReducer
 {
-    private const int MaximumExactPermutationGroupSize = 10;
+    private const int MaximumExactPermutationGroupSize = 7;
 
     internal HistoricalLifecycleReduction Reduce(
         IReadOnlyCollection<HistoricalFact> subjectFacts,
@@ -400,6 +400,13 @@ internal sealed class HistoricalLifecycleSnapshotReducer
 
             reasons.Add(HistoricalSnapshotReasonCode.UnboundedTemporaryClosure, fact);
             return HistoricalOperationalState.Unknown;
+        }
+
+        if (fact.Type == HistoricalFactType.Closure
+            && IsExactFirstClosedDay(fact, requestedDate))
+        {
+            RecordClosureAgainstClosedState(currentState, fact, reasons);
+            return HistoricalOperationalState.KnownClosed;
         }
 
         RecordClosureAgainstClosedState(currentState, fact, reasons);

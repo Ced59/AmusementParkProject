@@ -248,6 +248,29 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_OnExactFirstDayOfGenericClosure_ReturnsKnownClosedOnlyThatDay()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact closure = CreateLifecycleFact(
+            HistoricalFactType.Closure,
+            HistoricalDate.ForDay(2005, 6, 1),
+            LifecycleBoundaryMeaning.FirstClosedDay);
+
+        HistoricalSubjectSnapshot firstClosedDay = this.BuildSubject(
+            HistoricalInstant.ForDay(2005, 6, 1),
+            new[] { opening, closure });
+        HistoricalSubjectSnapshot laterDay = this.BuildSubject(
+            HistoricalInstant.ForDay(2005, 6, 2),
+            new[] { opening, closure });
+
+        Assert.Equal(HistoricalOperationalState.KnownClosed, firstClosedDay.OperationalState);
+        Assert.Equal(HistoricalOperationalState.Unknown, laterDay.OperationalState);
+    }
+
+    [Fact]
     public void Build_DuringTemporaryClosureBoundedByReopening_ReturnsKnownClosed()
     {
         HistoricalFact[] facts =
@@ -585,6 +608,30 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
         Assert.Equal(new[] { "Nom 10", "Nom annuel" }, attribute.Candidates);
         Assert.DoesNotContain("Nom 01", attribute.Candidates);
+    }
+
+    [Fact]
+    public void Build_WithEightCoarseAttributeTransitions_UsesBoundedConservativeReduction()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact[] renamings = Enumerable.Range(1, 8)
+            .Select(index => CreateAttributeFact(
+                HistoricalDate.ForYear(2000),
+                AttributeBoundaryMeaning.FirstDayOfNewValue,
+                "Nom initial",
+                $"Nom {index:D2}"))
+            .ToArray();
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForYear(2000),
+            renamings.Append(opening).ToArray()).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(9, attribute.Candidates.Count);
+        Assert.Contains("Nom initial", attribute.Candidates);
     }
 
     [Fact]
