@@ -158,8 +158,8 @@ public sealed class PublicParkHistoryHttpMappersTests
         HistoricalSubject subject = new(
             HistoricalSubjectType.ParkItem,
             "item-retired",
-            "Attraction disparue",
-            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            "Nom actuel",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
             "park-1");
         HistoricalSubjectSnapshot subjectSnapshot = new(
             subject,
@@ -212,10 +212,12 @@ public sealed class PublicParkHistoryHttpMappersTests
         PublicParkHistoricalSnapshotDto dto = result.ToHttp();
         string json = JsonSerializer.Serialize(dto);
 
-        Assert.Equal("NoEligibleLifecycleFact", Assert.Single(dto.Ambiguities).Code);
+        PublicHistoricalAmbiguityDto ambiguity = Assert.Single(dto.Ambiguities);
+        Assert.Equal("NoEligibleLifecycleFact", ambiguity.Code);
+        Assert.Equal("CurrentFallback", ambiguity.NameOrigin);
         PublicHistoricalSubjectSnapshotDto mappedSubject = Assert.Single(dto.Subjects);
-        Assert.Equal("Attraction disparue", mappedSubject.DisplayName);
-        Assert.Equal("HistoricalLabel", mappedSubject.NameOrigin);
+        Assert.Equal("Nom actuel", mappedSubject.DisplayName);
+        Assert.Equal("CurrentFallback", mappedSubject.NameOrigin);
         Assert.DoesNotContain(internalFactId.ToString(), json, StringComparison.OrdinalIgnoreCase);
     }
 

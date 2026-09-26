@@ -8,6 +8,8 @@ public sealed class PublicHistoricalAmbiguityDto
 
     public string SubjectLabel { get; set; } = string.Empty;
 
+    public string NameOrigin { get; set; } = string.Empty;
+
     public string Code { get; set; } = string.Empty;
 
     public string? AttributeKind { get; set; }

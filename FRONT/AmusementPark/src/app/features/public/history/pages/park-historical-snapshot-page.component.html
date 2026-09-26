@@ -171,7 +171,12 @@
             @for (subject of uncertainSubjects(); track subjectKey(subject)) {
               <li>{{ subject.displayName }} @if (usesCurrentNameFallback(subject)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }</li>
             }
-            @for (ambiguity of currentSnapshot.ambiguities; track ambiguity.subjectType + ambiguity.subjectId + ambiguity.code) { <li>{{ ambiguity.subjectLabel }}</li> }
+            @for (ambiguity of currentSnapshot.ambiguities; track ambiguityKey(ambiguity)) {
+              <li>
+                {{ ambiguity.subjectLabel }}
+                @if (usesCurrentNameFallback(ambiguity)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
+              </li>
+            }
           </ul>
         </section>
       }

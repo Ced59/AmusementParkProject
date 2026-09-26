@@ -105,6 +105,7 @@ export interface PublicHistoricalAmbiguity {
   subjectType: string;
   subjectId: string;
   subjectLabel: string;
+  nameOrigin: string;
   code: string;
   attributeKind?: string | null;
 }

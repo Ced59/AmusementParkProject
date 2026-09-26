@@ -30,17 +30,21 @@ internal static class PublicParkHistoryHttpMappers
         IReadOnlyDictionary<string, string> zoneNames = ResolveSnapshotZoneNames(
             result.Snapshot,
             result.ZoneNames);
+        PublicHistoricalSubjectSnapshotDto[] subjects = result.Snapshot.Subjects
+            .Select(subject => subject.ToHttp(factsById, zoneNames))
+            .ToArray();
+        Dictionary<(string Type, string Id), string> nameOrigins = subjects.ToDictionary(
+            static subject => (subject.SubjectType, subject.SubjectId),
+            static subject => subject.NameOrigin);
         return new PublicParkHistoricalSnapshotDto
         {
             ParkId = result.Park.Id,
             ParkName = result.Park.Name ?? string.Empty,
             RequestedInstant = result.Snapshot.RequestedInstant.ToHttp(),
-            Subjects = result.Snapshot.Subjects
-                .Select(subject => subject.ToHttp(factsById, zoneNames))
-                .ToArray(),
+            Subjects = subjects,
             Coverage = result.Snapshot.Coverage.ToHttp(),
             Ambiguities = result.Snapshot.Ambiguities
-                .Select(static ambiguity => ambiguity.ToHttp())
+                .Select(ambiguity => ambiguity.ToHttp(nameOrigins))
                 .ToArray(),
             MethodologyVersion = result.Snapshot.MethodologyVersion,
         };
@@ -215,13 +219,18 @@ internal static class PublicParkHistoryHttpMappers
         };
     }
 
-    private static PublicHistoricalAmbiguityDto ToHttp(this HistoricalAmbiguity ambiguity)
+    private static PublicHistoricalAmbiguityDto ToHttp(
+        this HistoricalAmbiguity ambiguity,
+        IReadOnlyDictionary<(string Type, string Id), string> nameOrigins)
     {
+        string subjectType = ambiguity.Subject.Type.ToString();
         return new PublicHistoricalAmbiguityDto
         {
-            SubjectType = ambiguity.Subject.Type.ToString(),
+            SubjectType = subjectType,
             SubjectId = ambiguity.Subject.Id,
             SubjectLabel = ambiguity.Subject.HistoricalLabel,
+            NameOrigin = nameOrigins.GetValueOrDefault((subjectType, ambiguity.Subject.Id))
+                ?? ResolveNameOrigin(ambiguity.Subject, null),
             Code = ambiguity.Code.ToString(),
             AttributeKind = ambiguity.AttributeKind?.ToString(),
         };

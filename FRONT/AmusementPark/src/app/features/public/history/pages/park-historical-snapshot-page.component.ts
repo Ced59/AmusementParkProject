@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import {
+  PublicHistoricalAmbiguity,
   PublicHistoricalAttribute,
   PublicHistoricalSubjectSnapshot,
   PublicParkHistoricalSnapshot
@@ -27,7 +28,10 @@ import {
   normalizeHistoricalSnapshotDay,
   resolveHistoricalSnapshotDays
 } from '../utils/history-snapshot-date-selection';
-import { usesCurrentHistoricalSubjectNameFallback } from '../utils/historical-subject-display';
+import {
+  buildPublicHistoricalAmbiguityTrackKey,
+  usesCurrentHistoricalSubjectNameFallback
+} from '../utils/historical-subject-display';
 import {
   PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY,
   ResolvedParkHistoricalSnapshotRouteData
@@ -51,6 +55,7 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
   protected readonly zones = this.stateFacade.zones;
   protected readonly currentLanguage = signal<string>('en');
   protected readonly months: number[] = Array.from({ length: 12 }, (_value: unknown, index: number): number => index + 1);
+  protected readonly ambiguityKey = buildPublicHistoricalAmbiguityTrackKey;
 
   protected selectedYear = new Date().getUTCFullYear();
   protected selectedMonth: number | null = null;
@@ -154,7 +159,9 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
     }) ?? [];
   }
 
-  protected usesCurrentNameFallback(subject: PublicHistoricalSubjectSnapshot): boolean {
+  protected usesCurrentNameFallback(
+    subject: PublicHistoricalSubjectSnapshot | PublicHistoricalAmbiguity
+  ): boolean {
     return usesCurrentHistoricalSubjectNameFallback(subject);
   }
 
