@@ -7,54 +7,6 @@
   grid-template-columns: minmax(6rem, 0.8fr) minmax(8rem, 1.2fr) minmax(5rem, 0.7fr) !important;
 }
 
-.snapshot-years {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 0.75rem;
-  align-items: center;
-  margin-top: 1rem;
-  padding: 0.8rem 1rem;
-  border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--app-surface) 90%, transparent);
-}
-
-.snapshot-years > span {
-  color: var(--app-heading);
-  font-weight: 900;
-}
-
-.snapshot-years > div {
-  display: flex;
-  gap: 0.5rem;
-  min-width: 0;
-  padding: 0.15rem 0.1rem 0.35rem;
-  overflow-x: auto;
-  scrollbar-width: thin;
-}
-
-.snapshot-years button {
-  flex: 0 0 auto;
-  min-width: 3.75rem;
-  min-height: 2.75rem;
-  padding: 0.45rem 0.7rem;
-  border: 1px solid var(--app-border);
-  border-radius: var(--radius-pill);
-  color: var(--app-text);
-  background: var(--app-surface-2);
-  font: inherit;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.snapshot-years button:hover,
-.snapshot-years button:focus-visible,
-.snapshot-years__active {
-  border-color: var(--app-primary) !important;
-  color: var(--app-heading) !important;
-  background: color-mix(in srgb, var(--app-primary) 14%, var(--app-surface)) !important;
-}
-
 .snapshot-overview {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -218,40 +170,12 @@
   color: var(--app-text-muted);
 }
 
-.snapshot-nearby-events,
 .snapshot-uncertain-list {
   display: grid;
   gap: 0.55rem;
   margin: 1rem 0 0;
   padding: 0;
   list-style: none;
-}
-
-.snapshot-nearby-events li {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 0.75rem;
-  align-items: center;
-  min-width: 0;
-  padding: 0.8rem;
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--app-bg) 62%, transparent);
-}
-
-.snapshot-nearby-events time {
-  color: var(--app-primary);
-  font-weight: 900;
-}
-
-.snapshot-nearby-events strong,
-.snapshot-nearby-events span {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.snapshot-nearby-events span {
-  color: var(--app-text-muted);
-  font-size: 0.82rem;
 }
 
 .snapshot-zone-list {
@@ -348,18 +272,6 @@
   .snapshot-zone-list,
   .snapshot-uncertain-list {
     grid-template-columns: minmax(0, 1fr) !important;
-  }
-
-  .snapshot-years {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .snapshot-nearby-events li {
-    grid-template-columns: auto minmax(0, 1fr);
-  }
-
-  .snapshot-nearby-events span {
-    grid-column: 2;
   }
 
   .snapshot-today {

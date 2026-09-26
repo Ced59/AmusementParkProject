@@ -928,9 +928,9 @@ lien Histoire d'un parc doit être affiché.
 Chaque année possède une URL stable et rend côté serveur une reconstitution du
 parc à cette époque. L'inventaire sépare explicitement les éléments ouverts
 avec certitude, ceux qui sont seulement possibles et ceux qui restent inconnus.
-La couverture des noms et des zones, le nombre de références, les ambiguïtés et
-les événements proches empêchent l'interface de donner une fausse impression
-d'exhaustivité. Les vues annuelles restent `noindex,follow` tant que `HIST-13`
+La couverture des noms et des zones, le nombre de références et les ambiguïtés
+empêchent l'interface de donner une fausse impression d'exhaustivité. Les vues
+annuelles restent `noindex,follow` tant que `HIST-13`
 n'a pas sélectionné les seules années éditorialement assez solides pour le SEO.
 
 Les deux vues utilisent des resolvers SSR, une façade d'état dédiée et les
@@ -941,9 +941,8 @@ ou de valeur structurée n'est présenté au visiteur.
 
 Le contrat responsive contient chaque surface dans le viewport, autorise la
 césure des libellés longs et replie champs, métriques, transitions et cartes en
-une colonne sur petit écran. Les années clés défilent dans leur propre zone au
-lieu d'élargir la page. Un test de contrat protège explicitement le rendu à
-partir de 320 pixels.
+une colonne sur petit écran. Un test de contrat protège explicitement le rendu
+à partir de 320 pixels.
 
 ## 22. Gate finale `HIST-G`
 

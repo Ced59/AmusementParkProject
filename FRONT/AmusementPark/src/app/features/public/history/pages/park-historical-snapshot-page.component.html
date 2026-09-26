@@ -32,15 +32,15 @@
         <form class="park-history-date-picker snapshot-date-picker" (ngSubmit)="openSelectedDate(currentSnapshot)">
           <label for="snapshot-year">{{ 'history.explorer.chooseDate' | translate }}</label>
           <div class="snapshot-date-picker__fields">
-            <input id="snapshot-year" name="snapshotYear" type="number" min="1000" max="9999" inputmode="numeric" [(ngModel)]="selectedYear" required [attr.aria-label]="'history.explorer.year' | translate">
-            <select name="snapshotMonth" [(ngModel)]="selectedMonth" [attr.aria-label]="'history.explorer.month' | translate">
+            <input id="snapshot-year" name="snapshotYear" type="number" min="1000" max="9999" inputmode="numeric" [ngModel]="selectedYear" (ngModelChange)="updateSelectedYear($event)" required [attr.aria-label]="'history.explorer.year' | translate">
+            <select name="snapshotMonth" [ngModel]="selectedMonth" (ngModelChange)="updateSelectedMonth($event)" [attr.aria-label]="'history.explorer.month' | translate">
               <option [ngValue]="null">{{ 'history.explorer.wholeYear' | translate }}</option>
               @for (month of months; track month) { <option [ngValue]="month">{{ monthLabel(month) }}</option> }
             </select>
             @if (selectedMonth) {
               <select name="snapshotDay" [(ngModel)]="selectedDay" [attr.aria-label]="'history.explorer.day' | translate">
                 <option [ngValue]="null">{{ 'history.explorer.wholeMonth' | translate }}</option>
-                @for (day of days; track day) { <option [ngValue]="day">{{ day }}</option> }
+                @for (day of availableDays(); track day) { <option [ngValue]="day">{{ day }}</option> }
               </select>
             }
           </div>
@@ -49,17 +49,6 @@
           </button>
         </form>
       </header>
-
-      @if (suggestedYears().length > 0) {
-        <nav class="snapshot-years" [attr.aria-label]="'history.explorer.suggestedYearsAria' | translate">
-          <span>{{ 'history.explorer.keyYears' | translate }}</span>
-          <div>
-            @for (year of suggestedYears(); track year) {
-              <button type="button" [class.snapshot-years__active]="year === currentSnapshot.requestedInstant.year" (click)="openSuggestedYear(currentSnapshot, year)">{{ year }}</button>
-            }
-          </div>
-        </nav>
-      }
 
       <section class="snapshot-overview" [attr.aria-label]="'history.explorer.coverageTitle' | translate">
         <article>
@@ -148,20 +137,6 @@
               </article>
             }
           </div>
-        </section>
-      }
-
-      @if (nearbyEvents().length > 0) {
-        <section class="snapshot-section">
-          <header>
-            <p>{{ 'history.explorer.nearbyKicker' | translate }}</p>
-            <h2>{{ 'history.explorer.nearbyTitle' | translate }}</h2>
-          </header>
-          <ul class="snapshot-nearby-events">
-            @for (event of nearbyEvents(); track event.subjectLabel + event.factType + eventYear(event)) {
-              <li><time>{{ eventYear(event) }}</time><strong>{{ event.subjectLabel }}</strong><span>{{ factTypeLabel(event) }}</span></li>
-            }
-          </ul>
         </section>
       }
 

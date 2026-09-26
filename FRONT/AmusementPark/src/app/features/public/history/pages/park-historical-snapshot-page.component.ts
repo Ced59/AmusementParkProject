@@ -8,9 +8,7 @@ import { combineLatest } from 'rxjs';
 import {
   PublicHistoricalAttribute,
   PublicHistoricalSubjectSnapshot,
-  PublicHistoricalTimelineEntry,
-  PublicParkHistoricalSnapshot,
-  PublicParkHistoricalTimeline
+  PublicParkHistoricalSnapshot
 } from '@app/models/history/public-park-history.models';
 import { Park } from '@app/models/parks/park';
 import { TranslationService } from '@app/services/translation.service';
@@ -20,7 +18,7 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { HistoryTimelinePageViewModel } from '../models/history-view.model';
 import { ParkHistoryBreadcrumbSeoService } from '../state/park-history-breadcrumb-seo.service';
 import { ParkHistoryExplorerStateFacade } from '../state/park-history-explorer-state.facade';
-import { resolveHistoryEventTypeLabel } from '../utils/history-event-labels';
+import { normalizeHistoricalSnapshotDay, resolveHistoricalSnapshotDays } from '../utils/history-snapshot-date-selection';
 import {
   PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY,
   ResolvedParkHistoricalSnapshotRouteData
@@ -42,11 +40,8 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
   protected readonly possiblyOpenSubjects = this.stateFacade.possiblyOpenSubjects;
   protected readonly uncertainSubjects = this.stateFacade.uncertainSubjects;
   protected readonly zones = this.stateFacade.zones;
-  protected readonly nearbyEvents = this.stateFacade.nearbyEvents;
-  protected readonly suggestedYears = this.stateFacade.suggestedYears;
   protected readonly currentLanguage = signal<string>('en');
   protected readonly months: number[] = Array.from({ length: 12 }, (_value: unknown, index: number): number => index + 1);
-  protected readonly days: number[] = Array.from({ length: 31 }, (_value: unknown, index: number): number => index + 1);
 
   protected selectedYear = new Date().getUTCFullYear();
   protected selectedMonth: number | null = null;
@@ -87,7 +82,7 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
         this.selectedYear = resolved?.year ?? this.selectedYear;
         this.selectedMonth = resolved?.month ?? null;
         this.selectedDay = resolved?.day ?? null;
-        this.stateFacade.setResolvedSnapshot(resolved?.snapshot ?? null, resolved?.timeline ?? null);
+        this.stateFacade.setResolvedSnapshot(resolved?.snapshot ?? null);
       });
 
     this.translationService.languageChanged
@@ -115,8 +110,26 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
     );
   }
 
-  protected openSuggestedYear(snapshot: PublicParkHistoricalSnapshot, year: number): void {
-    this.router.navigate([...this.historyLink(snapshot), String(year)]);
+  protected updateSelectedMonth(value: number | null): void {
+    this.selectedMonth = value === null ? null : Number(value);
+    this.selectedDay = normalizeHistoricalSnapshotDay(
+      Number(this.selectedYear),
+      this.selectedMonth,
+      this.selectedDay
+    );
+  }
+
+  protected updateSelectedYear(value: number): void {
+    this.selectedYear = Number(value);
+    this.selectedDay = normalizeHistoricalSnapshotDay(
+      this.selectedYear,
+      this.selectedMonth,
+      this.selectedDay
+    );
+  }
+
+  protected availableDays(): number[] {
+    return resolveHistoricalSnapshotDays(Number(this.selectedYear), this.selectedMonth);
   }
 
   protected parkLink(snapshot: PublicParkHistoricalSnapshot): string[] {
@@ -149,16 +162,6 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
 
   protected attributeValue(attribute: PublicHistoricalAttribute): string {
     return attribute.displayValue ?? attribute.displayCandidates.join(' · ');
-  }
-
-  protected factTypeLabel(event: PublicHistoricalTimelineEntry): string {
-    return event.factType === 'Other' && event.otherTypeLabel
-      ? event.otherTypeLabel
-      : resolveHistoryEventTypeLabel(event.factType, this.currentLanguage());
-  }
-
-  protected eventYear(event: PublicHistoricalTimelineEntry): number | null {
-    return event.period.start?.year ?? event.period.end?.year ?? null;
   }
 
   protected monthLabel(month: number): string {

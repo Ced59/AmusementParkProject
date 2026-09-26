@@ -1,7 +1,6 @@
 import { Injectable, Signal, computed } from '@angular/core';
 
 import {
-  PublicHistoricalTimelineEntry,
   PublicHistoricalSubjectSnapshot,
   PublicParkHistoricalSnapshot,
   PublicParkHistoricalTimeline
@@ -35,23 +34,6 @@ export class ParkHistoryExplorerStateFacade {
   readonly zones: Signal<PublicHistoricalSubjectSnapshot[]> = computed(() =>
     (this.snapshot()?.subjects ?? []).filter((subject: PublicHistoricalSubjectSnapshot): boolean => subject.subjectType === 'ParkZone')
   );
-  readonly suggestedYears: Signal<number[]> = computed(() => {
-    const years: number[] = (this.timeline()?.events ?? [])
-      .flatMap((event) => [event.period.start?.year, event.period.end?.year])
-      .filter((year): year is number => Number.isInteger(year));
-    return [...new Set(years)].sort((left: number, right: number): number => left - right);
-  });
-  readonly nearbyEvents: Signal<PublicHistoricalTimelineEntry[]> = computed(() => {
-    const requestedYear: number | undefined = this.snapshot()?.requestedInstant.year;
-    if (!requestedYear) {
-      return [];
-    }
-
-    return (this.timeline()?.events ?? []).filter((event: PublicHistoricalTimelineEntry): boolean => {
-      const eventYear: number | undefined = event.period.start?.year ?? event.period.end?.year;
-      return eventYear !== undefined && Math.abs(eventYear - requestedYear) <= 1;
-    });
-  });
 
   setResolvedTimeline(timeline: PublicParkHistoricalTimeline | null): void {
     if (timeline) {
@@ -62,20 +44,11 @@ export class ParkHistoryExplorerStateFacade {
     this.timelineStore.setError('history.explorer.errorMessage');
   }
 
-  setResolvedSnapshot(
-    snapshot: PublicParkHistoricalSnapshot | null,
-    timeline: PublicParkHistoricalTimeline | null
-  ): void {
+  setResolvedSnapshot(snapshot: PublicParkHistoricalSnapshot | null): void {
     if (snapshot) {
       this.snapshotStore.setReady(snapshot);
     } else {
       this.snapshotStore.setError('history.explorer.errorMessage');
-    }
-
-    if (timeline) {
-      this.timelineStore.setReady(timeline);
-    } else {
-      this.timelineStore.setEmpty();
     }
   }
 

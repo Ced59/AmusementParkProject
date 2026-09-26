@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
-import { Observable, catchError, forkJoin, map, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 
 import { PublicParkHistoricalSnapshot, PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
@@ -17,7 +17,6 @@ export interface ResolvedParkHistoryTimelineRouteData {
 
 export interface ResolvedParkHistoricalSnapshotRouteData {
   readonly snapshot: PublicParkHistoricalSnapshot | null;
-  readonly timeline: PublicParkHistoricalTimeline | null;
   readonly year: number;
   readonly month: number | null;
   readonly day: number | null;
@@ -57,27 +56,19 @@ export const parkHistoricalSnapshotResolver: ResolveFn<ResolvedParkHistoricalSna
 
   if (parkId.length === 0 || year === null || month === undefined || day === undefined || (day !== null && month === null)) {
     ssrStatus.setNotFound();
-    return of({ snapshot: null, timeline: null, year: year ?? 1, month: month ?? null, day: day ?? null });
+    return of({ snapshot: null, year: year ?? 1, month: month ?? null, day: day ?? null });
   }
 
-  const timeline$: Observable<PublicParkHistoricalTimeline | null> = historyData
-    .getPublicParkTimeline(parkId, anonymousHttpOptions(), 1, 50)
-    .pipe(catchError((): Observable<null> => of(null)));
-
-  return forkJoin({
-    snapshot: historyData.getPublicParkSnapshot(parkId, year, month, day, anonymousHttpOptions()),
-    timeline: timeline$
-  }).pipe(
-    map(({ snapshot, timeline }): ResolvedParkHistoricalSnapshotRouteData => ({
+  return historyData.getPublicParkSnapshot(parkId, year, month, day, anonymousHttpOptions()).pipe(
+    map((snapshot: PublicParkHistoricalSnapshot): ResolvedParkHistoricalSnapshotRouteData => ({
       snapshot,
-      timeline,
       year,
       month,
       day
     })),
     catchError((error: unknown): Observable<ResolvedParkHistoricalSnapshotRouteData> => {
       applySsrPublicDataErrorStatus(error, ssrStatus);
-      return of({ snapshot: null, timeline: null, year, month, day });
+      return of({ snapshot: null, year, month, day });
     })
   );
 };

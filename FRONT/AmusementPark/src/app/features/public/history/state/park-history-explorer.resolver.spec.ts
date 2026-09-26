@@ -51,18 +51,16 @@ describe('park history explorer resolvers', () => {
     );
   });
 
-  it('loads an annual snapshot and timeline context from optional date parameters', async () => {
+  it('loads an annual snapshot from optional date parameters without an unrelated timeline page', async () => {
     const snapshot: PublicParkHistoricalSnapshot = createSnapshot();
-    const timeline: PublicParkHistoricalTimeline = createTimeline();
     historyDataPort.getPublicParkSnapshot.mockReturnValue(of(snapshot));
-    historyDataPort.getPublicParkTimeline.mockReturnValue(of(timeline));
 
     const result: ResolvedParkHistoricalSnapshotRouteData = await resolveSnapshot(
       { id: 'park-1', year: '1998' },
       { month: '7', day: '12' }
     );
 
-    expect(result).toEqual({ snapshot, timeline, year: 1998, month: 7, day: 12 });
+    expect(result).toEqual({ snapshot, year: 1998, month: 7, day: 12 });
     expect(historyDataPort.getPublicParkSnapshot).toHaveBeenCalledWith(
       'park-1',
       1998,
@@ -70,26 +68,7 @@ describe('park history explorer resolvers', () => {
       12,
       expect.objectContaining({ context: expect.any(HttpContext) })
     );
-    expect(historyDataPort.getPublicParkTimeline).toHaveBeenCalledWith(
-      'park-1',
-      expect.objectContaining({ context: expect.any(HttpContext) }),
-      1,
-      50
-    );
-  });
-
-  it('keeps a snapshot available when its optional timeline context fails', async () => {
-    const snapshot: PublicParkHistoricalSnapshot = createSnapshot();
-    historyDataPort.getPublicParkSnapshot.mockReturnValue(of(snapshot));
-    historyDataPort.getPublicParkTimeline.mockReturnValue(
-      throwError(() => new HttpErrorResponse({ status: 503 }))
-    );
-
-    const result: ResolvedParkHistoricalSnapshotRouteData = await resolveSnapshot({ id: 'park-1', year: '1998' });
-
-    expect(result.snapshot).toBe(snapshot);
-    expect(result.timeline).toBeNull();
-    expect(ssrStatusService.setStatus).not.toHaveBeenCalled();
+    expect(historyDataPort.getPublicParkTimeline).not.toHaveBeenCalled();
   });
 
   it('rejects invalid snapshot dates before calling the API', async () => {
@@ -107,8 +86,6 @@ describe('park history explorer resolvers', () => {
     historyDataPort.getPublicParkSnapshot.mockReturnValue(
       throwError(() => new HttpErrorResponse({ status: 503 }))
     );
-    historyDataPort.getPublicParkTimeline.mockReturnValue(of(createTimeline()));
-
     const result: ResolvedParkHistoricalSnapshotRouteData = await resolveSnapshot({ id: 'park-1', year: '1998' });
 
     expect(result.snapshot).toBeNull();

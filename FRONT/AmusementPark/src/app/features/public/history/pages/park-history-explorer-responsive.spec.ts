@@ -22,7 +22,7 @@ describe('park history explorer responsive contract', () => {
     expect(styles).toContain('overflow-wrap: anywhere');
     expect(styles).toContain('@media (max-width: 620px)');
     expect(styles).toContain('grid-template-columns: minmax(0, 1fr) !important');
-    expect(styles).toContain('overflow-x: auto');
+    expect(styles).toContain('.snapshot-date-picker__fields');
   });
 });
 
