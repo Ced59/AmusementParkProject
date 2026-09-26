@@ -84,6 +84,9 @@ public static class HistoricalFactEvidenceValidator
             .Where(reference => admissibleSourceKeys.Contains((reference.SourceId, reference.Revision)))
             .ToArray();
         ValidateEvidencePositions(fact, admissibleReferences);
+        HistoricalSourceRevisionReference[] supportingReferences = admissibleReferences
+            .Where(static reference => reference.Position == HistoricalEvidencePosition.Supports)
+            .ToArray();
 
         HistoricalSourceScope[] coreScopes =
         {
@@ -91,7 +94,7 @@ public static class HistoricalFactEvidenceValidator
             HistoricalSourceScope.FactType,
             HistoricalSourceScope.Period,
         };
-        bool oneSourceCoversCoreAssertion = admissibleReferences.Any(reference =>
+        bool oneSourceCoversCoreAssertion = supportingReferences.Any(reference =>
             coreScopes.All(scope => reference.Scopes.Contains(scope)));
         if (!oneSourceCoversCoreAssertion)
         {
@@ -100,7 +103,7 @@ public static class HistoricalFactEvidenceValidator
                 "At least one historical source must cover the subject, fact type, and period together.");
         }
 
-        HashSet<HistoricalSourceScope> coveredScopes = admissibleReferences
+        HashSet<HistoricalSourceScope> coveredScopes = supportingReferences
             .SelectMany(static reference => reference.Scopes)
             .ToHashSet();
         HistoricalSourceScope[] requiredScopes = BuildRequiredScopes(fact);
@@ -138,27 +141,34 @@ public static class HistoricalFactEvidenceValidator
         HistoricalFact fact,
         IReadOnlyCollection<HistoricalSourceRevisionReference> admissibleReferences)
     {
-        bool hasSupportingEvidence = admissibleReferences.Any(static reference =>
-            reference.Position == HistoricalEvidencePosition.Supports);
-        bool hasContradictingEvidence = admissibleReferences.Any(static reference =>
-            reference.Position == HistoricalEvidencePosition.Contradicts);
+        HistoricalSourceRevisionReference[] supportingReferences = admissibleReferences
+            .Where(static reference => reference.Position == HistoricalEvidencePosition.Supports)
+            .ToArray();
+        HistoricalSourceRevisionReference[] contradictingReferences = admissibleReferences
+            .Where(static reference => reference.Position == HistoricalEvidencePosition.Contradicts)
+            .ToArray();
         if (fact.State == HistoricalFactState.Disputed)
         {
-            if (!hasSupportingEvidence || !hasContradictingEvidence)
+            bool hasSharedDisputedScope = supportingReferences.Any(supportingReference =>
+                contradictingReferences.Any(contradictingReference =>
+                    supportingReference.Scopes.Intersect(contradictingReference.Scopes).Any()));
+            if (supportingReferences.Length == 0
+                || contradictingReferences.Length == 0
+                || !hasSharedDisputedScope)
             {
                 throw Invalid(
                     HistoricalPersistenceErrorCodes.InvalidFactState,
-                    "A disputed historical fact requires admissible supporting and contradicting evidence.");
+                    "A disputed historical fact requires admissible evidence that conflicts on a shared assertion scope.");
             }
 
             return;
         }
 
-        if (fact.State == HistoricalFactState.Verified && hasContradictingEvidence)
+        if (supportingReferences.Length == 0 || contradictingReferences.Length > 0)
         {
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidFactState,
-                "A verified historical fact cannot retain admissible contradicting evidence.");
+                "A verified or probable historical fact requires supporting evidence without an admissible contradiction.");
         }
     }
 

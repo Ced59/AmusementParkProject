@@ -284,7 +284,11 @@ les autres sources peuvent compléter les champs structurés secondaires.
 
 ### 6.2 Contradictions
 
-Les sources contradictoires sont toutes conservées. Le système ne sélectionne
+Les sources contradictoires sont toutes conservées. Deux citations ne sont
+contradictoires que si leurs portées se recouvrent sur au moins une assertion.
+Un fait `Verified` ou `Probable` exige des preuves qui le soutiennent sans
+contradiction admissible ; les portées structurées sont couvertes par ces
+preuves favorables et non par les seules objections. Le système ne sélectionne
 pas automatiquement la date la plus récente, la plus précise ou la plus
 favorable. La divergence produit `Disputed`, une explication éditoriale et, si
 possible, une fourchette. Une résolution ultérieure indique quelles preuves ont

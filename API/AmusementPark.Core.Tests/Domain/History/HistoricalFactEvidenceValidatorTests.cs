@@ -210,6 +210,67 @@ public sealed class HistoricalFactEvidenceValidatorTests
             });
     }
 
+    [Fact]
+    public void Validate_WhenProbableFactHasAdmissibleContradiction_ShouldRejectEvidence()
+    {
+        Guid supportingSourceId = Guid.NewGuid();
+        Guid contradictingSourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(
+            new[] { supportingSourceId, contradictingSourceId },
+            state: HistoricalFactState.Probable,
+            referencePositionFactory: sourceId => sourceId == contradictingSourceId
+                ? HistoricalEvidencePosition.Contradicts
+                : HistoricalEvidencePosition.Supports);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalFactEvidenceValidator.Validate(
+                    fact,
+                    new[]
+                    {
+                        CreateSource(supportingSourceId),
+                        CreateSource(contradictingSourceId),
+                    }));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Validate_WhenDisputedEvidenceDoesNotConflictOnSharedScope_ShouldRejectEvidence()
+    {
+        Guid supportingSourceId = Guid.NewGuid();
+        Guid contradictingSourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(
+            new[] { supportingSourceId, contradictingSourceId },
+            referenceScopesFactory: sourceId => sourceId == contradictingSourceId
+                ? new[] { HistoricalSourceScope.StructuredValue }
+                : new[]
+                {
+                    HistoricalSourceScope.SubjectIdentity,
+                    HistoricalSourceScope.HistoricalLabel,
+                    HistoricalSourceScope.FactType,
+                    HistoricalSourceScope.Period,
+                },
+            state: HistoricalFactState.Disputed,
+            referencePositionFactory: sourceId => sourceId == contradictingSourceId
+                ? HistoricalEvidencePosition.Contradicts
+                : HistoricalEvidencePosition.Supports);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalFactEvidenceValidator.Validate(
+                    fact,
+                    new[]
+                    {
+                        CreateSource(supportingSourceId),
+                        CreateSource(
+                            contradictingSourceId,
+                            scopes: new[] { HistoricalSourceScope.StructuredValue }),
+                    }));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
+    }
+
     private static HistoricalFact CreateFact(Guid sourceId, int? sequenceWithinDate = null)
     {
         return CreateFact(new[] { sourceId }, sequenceWithinDate);
@@ -237,7 +298,7 @@ public sealed class HistoricalFactEvidenceValidatorTests
             HistoricalImportance.Major,
             HistoricalEditorialWorkflowState.Published,
             HistoricalPublicationState.Published,
-            state == HistoricalFactState.Disputed
+            state is HistoricalFactState.Probable or HistoricalFactState.Disputed
                 ? HistoricalLocalizationPolicy.SupportedLanguageCodes
                     .Select(static languageCode => new HistoricalLocalizedText(
                         languageCode,
