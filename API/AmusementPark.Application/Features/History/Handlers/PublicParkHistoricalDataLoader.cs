@@ -74,7 +74,7 @@ public sealed class PublicParkHistoricalDataLoader
 
         IReadOnlyCollection<ParkItem> parkItems = await this.parkItemRepository.GetByParkIdAsync(
             park!.Id,
-            true,
+            false,
             cancellationToken);
         IReadOnlyCollection<ParkZone> parkZones = await this.parkZoneRepository.GetByParkIdAsync(
             park.Id,

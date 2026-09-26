@@ -115,13 +115,25 @@ public sealed class HistoricalFactPublicProjectionMigration
         return subject.Type switch
         {
             HistoricalSubjectType.Park => subject.Id,
-            HistoricalSubjectType.ParkItem => parkItemScopes.GetValueOrDefault(subject.Id)
-                ?? retainedScopes.GetValueOrDefault((HistoricalSubjectType.ParkItem, subject.Id))
-                ?? narrativeScopes.GetValueOrDefault((HistoricalSubjectType.ParkItem, subject.Id)),
-            HistoricalSubjectType.ParkZone => parkZoneScopes.GetValueOrDefault(subject.Id)
-                ?? retainedScopes.GetValueOrDefault((HistoricalSubjectType.ParkZone, subject.Id)),
+            HistoricalSubjectType.ParkItem => ResolveUnambiguousScope(
+                parkItemScopes.GetValueOrDefault(subject.Id),
+                retainedScopes.GetValueOrDefault((HistoricalSubjectType.ParkItem, subject.Id)),
+                narrativeScopes.GetValueOrDefault((HistoricalSubjectType.ParkItem, subject.Id))),
+            HistoricalSubjectType.ParkZone => ResolveUnambiguousScope(
+                parkZoneScopes.GetValueOrDefault(subject.Id),
+                retainedScopes.GetValueOrDefault((HistoricalSubjectType.ParkZone, subject.Id))),
             _ => null,
         };
+    }
+
+    private static string? ResolveUnambiguousScope(params string?[] candidates)
+    {
+        string[] parkIds = candidates
+            .Where(static candidate => !string.IsNullOrWhiteSpace(candidate))
+            .Select(static candidate => candidate!.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        return parkIds.Length == 1 ? parkIds[0] : null;
     }
 
     private async Task<Dictionary<(HistoricalSubjectType Type, string Id), string>> LoadRetainedScopesAsync(

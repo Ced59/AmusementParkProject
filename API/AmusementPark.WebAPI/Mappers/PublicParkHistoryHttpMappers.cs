@@ -27,13 +27,16 @@ internal static class PublicParkHistoryHttpMappers
     public static PublicParkHistoricalSnapshotDto ToHttp(this PublicParkHistoricalSnapshotResult result)
     {
         Dictionary<Guid, HistoricalFact> factsById = result.Facts.ToDictionary(static fact => fact.Id);
+        IReadOnlyDictionary<string, string> zoneNames = ResolveSnapshotZoneNames(
+            result.Snapshot,
+            result.ZoneNames);
         return new PublicParkHistoricalSnapshotDto
         {
             ParkId = result.Park.Id,
             ParkName = result.Park.Name ?? string.Empty,
             RequestedInstant = result.Snapshot.RequestedInstant.ToHttp(),
             Subjects = result.Snapshot.Subjects
-                .Select(subject => subject.ToHttp(factsById, result.ZoneNames))
+                .Select(subject => subject.ToHttp(factsById, zoneNames))
                 .ToArray(),
             Coverage = result.Snapshot.Coverage.ToHttp(),
             Ambiguities = result.Snapshot.Ambiguities
@@ -41,6 +44,27 @@ internal static class PublicParkHistoryHttpMappers
                 .ToArray(),
             MethodologyVersion = result.Snapshot.MethodologyVersion,
         };
+    }
+
+    private static IReadOnlyDictionary<string, string> ResolveSnapshotZoneNames(
+        ParkHistoricalSnapshot snapshot,
+        IReadOnlyDictionary<string, string> currentZoneNames)
+    {
+        Dictionary<string, string> zoneNames = new(currentZoneNames, StringComparer.Ordinal);
+        foreach (HistoricalSubjectSnapshot zone in snapshot.Subjects.Where(
+                     static subject => subject.Subject.Type == HistoricalSubjectType.ParkZone))
+        {
+            HistoricalAttributeSnapshot? historicalName = zone.Attributes.FirstOrDefault(
+                static attribute => attribute.Kind == HistoricalAttributeKind.Name
+                    && attribute.State == HistoricalAttributeValueState.Known
+                    && !string.IsNullOrWhiteSpace(attribute.Value));
+            if (historicalName is not null)
+            {
+                zoneNames[zone.Subject.Id] = historicalName.Value!;
+            }
+        }
+
+        return zoneNames;
     }
 
     private static PublicHistoricalTimelineEntryDto ToHttp(

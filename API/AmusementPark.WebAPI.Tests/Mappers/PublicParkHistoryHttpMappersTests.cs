@@ -189,4 +189,85 @@ public sealed class PublicParkHistoryHttpMappersTests
         Assert.Equal("HistoricalLabel", mappedSubject.NameOrigin);
         Assert.DoesNotContain(internalFactId.ToString(), json, StringComparison.OrdinalIgnoreCase);
     }
+
+    [Fact]
+    public void SnapshotMapping_UsesHistoricalZoneNameAtRequestedInstant()
+    {
+        HistoricalSubject zoneSubject = new(
+            HistoricalSubjectType.ParkZone,
+            "zone-1",
+            "Nom actuel",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalSubject itemSubject = new(
+            HistoricalSubjectType.ParkItem,
+            "item-1",
+            "Attraction témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalAttributeSnapshot historicalZoneName = new(
+            HistoricalAttributeKind.Name,
+            HistoricalAttributeValueState.Known,
+            "Ancien quartier",
+            new[] { "Ancien quartier" },
+            Array.Empty<HistoricalSnapshotReason>(),
+            Array.Empty<Guid>());
+        HistoricalAttributeSnapshot itemZone = new(
+            HistoricalAttributeKind.Zone,
+            HistoricalAttributeValueState.Known,
+            zoneSubject.Id,
+            new[] { zoneSubject.Id },
+            Array.Empty<HistoricalSnapshotReason>(),
+            Array.Empty<Guid>());
+        HistoricalSubjectSnapshot zoneSnapshot = new(
+            zoneSubject,
+            HistoricalOperationalState.Unknown,
+            HistoricalPresenceExtent.None,
+            Array.Empty<HistoricalPresenceInterval>(),
+            new[] { historicalZoneName },
+            Array.Empty<HistoricalSnapshotReason>(),
+            Array.Empty<Guid>());
+        HistoricalSubjectSnapshot itemSnapshot = new(
+            itemSubject,
+            HistoricalOperationalState.Unknown,
+            HistoricalPresenceExtent.None,
+            Array.Empty<HistoricalPresenceInterval>(),
+            new[] { itemZone },
+            Array.Empty<HistoricalSnapshotReason>(),
+            Array.Empty<Guid>());
+        HistoricalCoverage coverage = new(
+            2,
+            0,
+            0,
+            2,
+            new HistoricalFieldCoverage(1, 2),
+            new HistoricalFieldCoverage(1, 1),
+            null,
+            HistoricalCoverageStatus.Partial);
+        ParkHistoricalSnapshot snapshot = new(
+            "park-1",
+            HistoricalInstant.ForYear(1980),
+            new[] { zoneSnapshot, itemSnapshot },
+            coverage,
+            Array.Empty<HistoricalAmbiguity>(),
+            ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion);
+        PublicParkHistoricalSnapshotResult result = new(
+            new Park { Id = "park-1", Name = "Parc témoin", IsVisible = true },
+            snapshot,
+            Array.Empty<HistoricalFact>(),
+            new Dictionary<string, string>
+            {
+                [zoneSubject.Id] = "Nom actuel",
+            });
+
+        PublicParkHistoricalSnapshotDto dto = result.ToHttp();
+
+        PublicHistoricalSubjectSnapshotDto mappedItem = Assert.Single(
+            dto.Subjects,
+            static subject => subject.SubjectType == nameof(HistoricalSubjectType.ParkItem));
+        PublicHistoricalAttributeDto mappedZone = Assert.Single(
+            mappedItem.Attributes,
+            static attribute => attribute.Kind == nameof(HistoricalAttributeKind.Zone));
+        Assert.Equal("Ancien quartier", mappedZone.DisplayValue);
+    }
 }

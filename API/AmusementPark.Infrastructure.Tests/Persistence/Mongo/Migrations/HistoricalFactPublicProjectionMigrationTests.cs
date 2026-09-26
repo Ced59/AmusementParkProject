@@ -81,6 +81,33 @@ public sealed class HistoricalFactPublicProjectionMigrationTests
     }
 
     [Fact]
+    public void ResolveContextParkId_WhenZoneIdWasReusedByAnotherPark_ShouldRejectConflictingScopes()
+    {
+        HistoricalSubjectDocument subject = new HistoricalSubjectDocument
+        {
+            Type = HistoricalSubjectType.ParkZone,
+            Id = "reused-zone",
+            HistoricalLabel = "Zone historique",
+            PublicationPolicy = HistoricalSubjectPublicationPolicy.HistoricalOnly,
+        };
+
+        string? parkId = HistoricalFactPublicProjectionMigration.ResolveContextParkId(
+            subject,
+            new Dictionary<string, string>(),
+            new Dictionary<string, string>
+            {
+                ["reused-zone"] = "park-current",
+            },
+            new Dictionary<(HistoricalSubjectType Type, string Id), string>
+            {
+                [(HistoricalSubjectType.ParkZone, "reused-zone")] = "park-historical",
+            },
+            new Dictionary<(HistoricalSubjectType Type, string Id), string>());
+
+        Assert.Null(parkId);
+    }
+
+    [Fact]
     public void HistoricalSubjectScopeDocument_FromParkZone_ShouldPersistTypedParkScope()
     {
         DateTime retainedAtUtc = new DateTime(2026, 9, 26, 18, 0, 0, DateTimeKind.Utc);

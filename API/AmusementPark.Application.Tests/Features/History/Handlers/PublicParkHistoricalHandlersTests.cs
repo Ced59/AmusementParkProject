@@ -76,7 +76,7 @@ public sealed class PublicParkHistoricalHandlersTests
         parkItemRepository
             .Setup(repository => repository.GetByParkIdAsync(
                 "park-1",
-                true,
+                false,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { visibleItem, historicalItem, hiddenFollowCurrentItem });
         parkZoneRepository
@@ -138,7 +138,7 @@ public sealed class PublicParkHistoricalHandlersTests
         parkItemRepository
             .Setup(repository => repository.GetByParkIdAsync(
                 "park-1",
-                true,
+                false,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkItem>());
         parkZoneRepository
@@ -207,7 +207,7 @@ public sealed class PublicParkHistoricalHandlersTests
         parkItemRepository
             .Setup(repository => repository.GetByParkIdAsync(
                 "park-1",
-                true,
+                false,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkItem>());
         parkZoneRepository
@@ -304,7 +304,7 @@ public sealed class PublicParkHistoricalHandlersTests
         parkItemRepository
             .Setup(repository => repository.GetByParkIdAsync(
                 "park-1",
-                true,
+                false,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkItem>());
         parkZoneRepository
@@ -359,7 +359,7 @@ public sealed class PublicParkHistoricalHandlersTests
         parkItemRepository
             .Setup(repository => repository.GetByParkIdAsync(
                 "park-1",
-                true,
+                false,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkItem>());
         parkZoneRepository
@@ -417,7 +417,7 @@ public sealed class PublicParkHistoricalHandlersTests
         parkItemRepository
             .Setup(repository => repository.GetByParkIdAsync(
                 "park-1",
-                true,
+                false,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { reusedVisibleItem });
         parkZoneRepository
