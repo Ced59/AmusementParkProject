@@ -712,8 +712,10 @@ un port et une façade ; il ne décide jamais si un élément était ouvert.
 ## 13. Persistance, cache et performance
 
 Les collections cibles sont `historical-facts`, `historical-relations`,
-`historical-sources`, `historical-review-events` et, si nécessaire,
-`historical-snapshot-cache`.
+`historical-sources` et, si nécessaire, `historical-snapshot-cache`. Chaque
+révision embarque l'événement de revue qui l'a produite : l'audit est donc
+append-only et atomique avec la révision, sans seconde écriture dans une
+collection séparée.
 
 - index par sujet, période, type et état ;
 - unicité des révisions et audit append-only ;

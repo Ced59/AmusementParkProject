@@ -451,6 +451,14 @@ public sealed class HistoricalFact
             throw Invalid(HistoricalPersistenceErrorCodes.MissingSource, "A verified historical fact requires evidence.");
         }
 
+        if (state == HistoricalFactState.Verified
+            && workflowState < HistoricalEditorialWorkflowState.StructuredValidation)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidFactState,
+                "A historical fact can only be verified after structured validation.");
+        }
+
         bool publicationIsValid = publicationState switch
         {
             HistoricalPublicationState.Draft => workflowState is not HistoricalEditorialWorkflowState.Published

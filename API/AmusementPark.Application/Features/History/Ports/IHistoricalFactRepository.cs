@@ -7,6 +7,7 @@ public interface IHistoricalFactRepository
 {
     Task<HistoricalRevisionWriteDisposition> AppendRevisionAsync(
         HistoricalFact fact,
+        HistoricalReviewEvent transitionReviewEvent,
         CancellationToken cancellationToken);
 
     Task<HistoricalFact?> GetRevisionAsync(

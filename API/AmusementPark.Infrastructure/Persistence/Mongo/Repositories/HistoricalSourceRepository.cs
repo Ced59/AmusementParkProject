@@ -24,10 +24,13 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
 
     public async Task<HistoricalRevisionWriteDisposition> AppendRevisionAsync(
         HistoricalSourceReference source,
+        HistoricalReviewEvent transitionReviewEvent,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(source);
-        HistoricalSourceDocument candidate = source.ToDocument();
+        ArgumentNullException.ThrowIfNull(transitionReviewEvent);
+        HistoricalReviewEventTargetValidator.ValidateSourceTarget(transitionReviewEvent, source);
+        HistoricalSourceDocument candidate = source.ToDocument(transitionReviewEvent);
         HistoricalSourceDocument? durableRevision = await this.collection
             .Find(document => document.Id == candidate.Id)
             .FirstOrDefaultAsync(cancellationToken);

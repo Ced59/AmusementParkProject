@@ -376,8 +376,6 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IHistoricalFactRepository, HistoricalFactRepository>();
         services.AddScoped<IHistoricalSourceRepository, HistoricalSourceRepository>();
         services.AddScoped<HistoricalReviewEventRepository>();
-        services.AddScoped<IHistoricalAuditWriter>(provider =>
-            provider.GetRequiredService<HistoricalReviewEventRepository>());
         services.AddScoped<IHistoricalAuditReader>(provider =>
             provider.GetRequiredService<HistoricalReviewEventRepository>());
         services.AddScoped<IParkWeatherProviderStrategy, OpenMeteoWeatherProviderStrategy>();

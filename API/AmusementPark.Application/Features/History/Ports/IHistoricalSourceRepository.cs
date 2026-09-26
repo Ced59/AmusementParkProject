@@ -7,6 +7,7 @@ public interface IHistoricalSourceRepository
 {
     Task<HistoricalRevisionWriteDisposition> AppendRevisionAsync(
         HistoricalSourceReference source,
+        HistoricalReviewEvent transitionReviewEvent,
         CancellationToken cancellationToken);
 
     Task<HistoricalSourceReference?> GetRevisionAsync(

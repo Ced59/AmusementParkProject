@@ -46,6 +46,11 @@ internal static class HistoricalPersistenceMongoDefinitions
                     .Ascending("sources.sourceId")
                     .Ascending("sources.revision"),
                 new CreateIndexOptions { Name = "idx_historical_facts_source_revision" }),
+            new CreateIndexModel<HistoricalFactDocument>(
+                Builders<HistoricalFactDocument>.IndexKeys
+                    .Ascending(document => document.FactId)
+                    .Descending("transitionReviewEvent.occurredAtUtc"),
+                new CreateIndexOptions { Name = "idx_historical_facts_audit_date" }),
         };
     }
 
@@ -71,26 +76,11 @@ internal static class HistoricalPersistenceMongoDefinitions
                 Builders<HistoricalSourceDocument>.IndexKeys
                     .Ascending(document => document.Url),
                 new CreateIndexOptions { Name = "idx_historical_sources_url" }),
-        };
-    }
-
-    internal static IReadOnlyCollection<CreateIndexModel<HistoricalReviewEventDocument>> BuildReviewEventIndexes()
-    {
-        return new CreateIndexModel<HistoricalReviewEventDocument>[]
-        {
-            new CreateIndexModel<HistoricalReviewEventDocument>(
-                Builders<HistoricalReviewEventDocument>.IndexKeys
-                    .Ascending(document => document.ResourceType)
-                    .Ascending(document => document.ResourceId)
-                    .Descending(document => document.OccurredAtUtc),
-                new CreateIndexOptions { Name = "idx_historical_reviews_resource_date" }),
-            new CreateIndexModel<HistoricalReviewEventDocument>(
-                Builders<HistoricalReviewEventDocument>.IndexKeys
-                    .Ascending(document => document.ResourceType)
-                    .Ascending(document => document.ResourceId)
-                    .Ascending(document => document.ResourceRevision)
-                    .Ascending(document => document.EventType),
-                new CreateIndexOptions { Name = "idx_historical_reviews_revision_event" }),
+            new CreateIndexModel<HistoricalSourceDocument>(
+                Builders<HistoricalSourceDocument>.IndexKeys
+                    .Ascending(document => document.SourceId)
+                    .Descending("transitionReviewEvent.occurredAtUtc"),
+                new CreateIndexOptions { Name = "idx_historical_sources_audit_date" }),
         };
     }
 }

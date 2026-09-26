@@ -299,6 +299,63 @@ public sealed class HistoricalFactTests
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
     }
 
+    [Theory]
+    [InlineData(HistoricalEditorialWorkflowState.Draft)]
+    [InlineData(HistoricalEditorialWorkflowState.SourcesAttached)]
+    [InlineData(HistoricalEditorialWorkflowState.EditorialReview)]
+    public void Constructor_WhenFactIsVerifiedBeforeStructuredValidation_ShouldRejectFact(
+        HistoricalEditorialWorkflowState workflowState)
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                CreateVerifiedPrePublicationFact(workflowState));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Constructor_WhenFactIsVerifiedAtStructuredValidation_ShouldAcceptFact()
+    {
+        HistoricalFact fact = CreateVerifiedPrePublicationFact(
+            HistoricalEditorialWorkflowState.StructuredValidation);
+
+        Assert.Equal(HistoricalFactState.Verified, fact.State);
+        Assert.Equal(HistoricalEditorialWorkflowState.StructuredValidation, fact.WorkflowState);
+    }
+
+    private static HistoricalFact CreateVerifiedPrePublicationFact(
+        HistoricalEditorialWorkflowState workflowState)
+    {
+        return new HistoricalFact(
+            Guid.NewGuid(),
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                "park-1",
+                "Parc exemple",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            HistoricalFactState.Verified,
+            HistoricalImportance.Major,
+            workflowState,
+            HistoricalPublicationState.Draft,
+            Array.Empty<HistoricalLocalizedText>(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            new[] { new HistoricalSourceRevisionReference(Guid.NewGuid(), 1) },
+            null,
+            null,
+            "history-opening-1998",
+            RecordedAtUtc.AddMinutes(-2),
+            null,
+            null,
+            2,
+            1,
+            RecordedAtUtc);
+    }
+
     private static HistoricalFact CreateFact(
         HistoricalFactState state = HistoricalFactState.Verified,
         IReadOnlyCollection<HistoricalSourceRevisionReference>? sourceReferences = null,

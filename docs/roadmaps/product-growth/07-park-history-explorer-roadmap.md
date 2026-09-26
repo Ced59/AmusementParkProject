@@ -399,9 +399,14 @@ IHistoricalSourceRepository
 IParkHistoricalSnapshotBuilder
 IHistoricalCoverageReader
 IHistoricalTargetResolver
-IHistoricalAuditWriter
+IHistoricalAuditReader
 IHistoricalSnapshotCache
 ```
+
+Les ports d'écriture des faits, sources et relations reçoivent obligatoirement
+la transition de revue correspondante. Révision et audit sont persistés dans le
+même document immuable afin qu'aucun état éditorial ne puisse exister sans sa
+trace, y compris sans transaction MongoDB multi-collections.
 
 Cas d’usage :
 
@@ -453,8 +458,11 @@ Collections proposées ou adaptation de l’existant :
 - `historical-facts` ;
 - `historical-relations` ;
 - `historical-sources` ;
-- `historical-review-events` ;
 - `historical-snapshot-cache` facultatif.
+
+Chaque révision de fait, source ou relation embarque son événement de revue
+immuable. Le journal est donc consultable par ressource sans collection
+d'audit dissociée ni risque de double écriture partielle.
 
 Indexes :
 
@@ -716,13 +724,14 @@ révision ne crée pas de doublon, tandis qu'une autre valeur utilisant la même
 identité de révision est signalée comme conflit. Les preuves suivent la même
 discipline et conservent leur référence stable, leur date de consultation, leur
 accessibilité et la partie du fait qu'elles soutiennent. Leurs révisions figées
-peuvent être chargées par lot, sans lecture N+1. Le journal de revue
-reste permanent et associe chaque action à la révision concernée sans exposer
-ces informations au public.
+peuvent être chargées par lot, sans lecture N+1. Chaque révision et son
+événement de revue sont écrits atomiquement dans le même document : le journal
+reste permanent, ne peut pas être omis par un appelant et associe chaque action
+à la révision concernée sans exposer ces informations au public.
 
-MongoDB initialise les collections `historical-facts`, `historical-sources` et
-`historical-review-events` avec des index adaptés aux recherches par sujet,
-période, publication, preuve et révision. Aucun TTL ne peut effacer ce
+MongoDB initialise les collections `historical-facts` et `historical-sources`
+avec des index adaptés aux recherches par sujet, période, publication, preuve,
+révision et audit embarqué. Aucun TTL ne peut effacer ce
 patrimoine. Les ports Application isolent entièrement le Core et les futurs cas
 d'usage de MongoDB. Le modèle historique antérieur n'est pas lu en parallèle :
 sa conversion et la bascule unique restent le jalon `HIST-04`.

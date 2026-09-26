@@ -31,10 +31,13 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
 
     public async Task<HistoricalRevisionWriteDisposition> AppendRevisionAsync(
         HistoricalFact fact,
+        HistoricalReviewEvent transitionReviewEvent,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(fact);
-        HistoricalFactDocument candidate = fact.ToDocument();
+        ArgumentNullException.ThrowIfNull(transitionReviewEvent);
+        HistoricalReviewEventTargetValidator.ValidateFactTarget(transitionReviewEvent, fact);
+        HistoricalFactDocument candidate = fact.ToDocument(transitionReviewEvent);
         HistoricalFactDocument? durableRevision = await this.collection
             .Find(document => document.Id == candidate.Id)
             .FirstOrDefaultAsync(cancellationToken);

@@ -7,9 +7,12 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 
 internal static class HistoricalPersistenceMongoMapper
 {
-    public static HistoricalFactDocument ToDocument(this HistoricalFact fact)
+    public static HistoricalFactDocument ToDocument(
+        this HistoricalFact fact,
+        HistoricalReviewEvent transitionReviewEvent)
     {
         ArgumentNullException.ThrowIfNull(fact);
+        ArgumentNullException.ThrowIfNull(transitionReviewEvent);
         DateTime recordedAtUtc = NormalizeToBsonPrecision(fact.RecordedAtUtc);
         return new HistoricalFactDocument
         {
@@ -49,6 +52,7 @@ internal static class HistoricalPersistenceMongoMapper
             VerifiedAtUtc = NormalizeToBsonPrecision(fact.VerifiedAtUtc),
             PublishedAtUtc = NormalizeToBsonPrecision(fact.PublishedAtUtc),
             PublicationMethodologyVersion = fact.PublicationMethodologyVersion,
+            TransitionReviewEvent = transitionReviewEvent.ToDocument(),
             CreatedAt = recordedAtUtc,
             UpdatedAt = recordedAtUtc,
         };
@@ -92,9 +96,12 @@ internal static class HistoricalPersistenceMongoMapper
             document.RevisionOrigin);
     }
 
-    public static HistoricalSourceDocument ToDocument(this HistoricalSourceReference source)
+    public static HistoricalSourceDocument ToDocument(
+        this HistoricalSourceReference source,
+        HistoricalReviewEvent transitionReviewEvent)
     {
         ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(transitionReviewEvent);
         DateTime recordedAtUtc = NormalizeToBsonPrecision(source.RecordedAtUtc);
         return new HistoricalSourceDocument
         {
@@ -116,6 +123,7 @@ internal static class HistoricalPersistenceMongoMapper
             Accessibility = source.Accessibility,
             WorkflowState = source.WorkflowState,
             PublicationState = source.PublicationState,
+            TransitionReviewEvent = transitionReviewEvent.ToDocument(),
             CreatedAt = recordedAtUtc,
             UpdatedAt = recordedAtUtc,
         };

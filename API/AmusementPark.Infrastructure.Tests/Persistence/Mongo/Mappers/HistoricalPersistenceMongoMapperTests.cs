@@ -43,7 +43,12 @@ public sealed class HistoricalPersistenceMongoMapperTests
             1,
             RecordedAtUtc);
 
-        HistoricalFactDocument document = fact.ToDocument();
+        HistoricalReviewEvent reviewEvent = CreateReviewEvent(
+            HistoricalReviewResourceType.Fact,
+            fact.Id,
+            fact.Revision,
+            HistoricalReviewEventType.Published);
+        HistoricalFactDocument document = fact.ToDocument(reviewEvent);
         HistoricalFact restored = document.ToDomain();
 
         Assert.Equal(fact.Id, restored.Id);
@@ -57,6 +62,7 @@ public sealed class HistoricalPersistenceMongoMapperTests
         Assert.Equal(0, restored.RecordedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
         Assert.Equal(0, restored.VerifiedAtUtc?.Ticks % TimeSpan.TicksPerMillisecond);
         Assert.Equal(0, restored.PublishedAtUtc?.Ticks % TimeSpan.TicksPerMillisecond);
+        Assert.Equal(reviewEvent.Id, document.TransitionReviewEvent.ToDomain().Id);
     }
 
     [Fact]
@@ -81,7 +87,13 @@ public sealed class HistoricalPersistenceMongoMapperTests
             HistoricalPublicationState.Published,
             RecordedAtUtc);
 
-        HistoricalSourceReference restored = source.ToDocument().ToDomain();
+        HistoricalReviewEvent reviewEvent = CreateReviewEvent(
+            HistoricalReviewResourceType.Source,
+            source.Id,
+            source.Revision,
+            HistoricalReviewEventType.Published);
+        HistoricalSourceDocument document = source.ToDocument(reviewEvent);
+        HistoricalSourceReference restored = document.ToDomain();
 
         Assert.Equal(source.Id, restored.Id);
         Assert.Equal(source.Revision, restored.Revision);
@@ -90,6 +102,7 @@ public sealed class HistoricalPersistenceMongoMapperTests
         Assert.Equal(source.AccessedOn, restored.AccessedOn);
         Assert.Equal(source.Scopes, restored.Scopes);
         Assert.Equal(0, restored.RecordedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
+        Assert.Equal(reviewEvent.Id, document.TransitionReviewEvent.ToDomain().Id);
     }
 
     [Fact]
@@ -112,5 +125,22 @@ public sealed class HistoricalPersistenceMongoMapperTests
         Assert.Equal(reviewEvent.ResourceRevision, restored.ResourceRevision);
         Assert.Equal(reviewEvent.PrivateNote, restored.PrivateNote);
         Assert.Equal(0, restored.OccurredAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
+    }
+
+    private static HistoricalReviewEvent CreateReviewEvent(
+        HistoricalReviewResourceType resourceType,
+        Guid resourceId,
+        int resourceRevision,
+        HistoricalReviewEventType eventType)
+    {
+        return new HistoricalReviewEvent(
+            Guid.NewGuid(),
+            resourceType,
+            resourceId,
+            resourceRevision,
+            eventType,
+            "admin-1",
+            null,
+            RecordedAtUtc.AddMinutes(1));
     }
 }

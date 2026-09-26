@@ -97,4 +97,8 @@ public sealed class HistoricalFactDocument : MongoDocumentBase
     [BsonElement("publicationMethodologyVersion")]
     [BsonIgnoreIfNull]
     public string? PublicationMethodologyVersion { get; set; }
+
+    [BsonElement("transitionReviewEvent")]
+    public HistoricalReviewEventDocument TransitionReviewEvent { get; set; } =
+        new HistoricalReviewEventDocument();
 }

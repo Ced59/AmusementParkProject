@@ -70,4 +70,8 @@ public sealed class HistoricalSourceDocument : MongoDocumentBase
     [BsonElement("publicationState")]
     [BsonRepresentation(BsonType.String)]
     public HistoricalPublicationState PublicationState { get; set; }
+
+    [BsonElement("transitionReviewEvent")]
+    public HistoricalReviewEventDocument TransitionReviewEvent { get; set; } =
+        new HistoricalReviewEventDocument();
 }
