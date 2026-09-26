@@ -34,4 +34,12 @@ describe('history event labels', () => {
     expect(resolveHistoryEventTypeLabel('OwnerChange', 'de')).toBe('Eigentümerwechsel');
     expect(resolveHistoryEventTypeLabel('Retheming', 'pt')).toBe('Alteração de tema');
   });
+
+  it('does not disguise distinct canonical facts as legacy event types', () => {
+    expect(resolveHistoryEventTypeLabel('Reduction', 'en')).toBe('Reduction');
+    expect(resolveHistoryEventTypeLabel('ZoneRemoval', 'fr')).toBe('Suppression de zone');
+    expect(resolveHistoryEventTypeLabel('MajorEvent', 'de')).toBe('Bedeutendes Ereignis');
+    expect(resolveHistoryEventTypeLabel('PositioningChange', 'es')).toBe('Cambio de posicionamiento');
+    expect(resolveHistoryEventTypeLabel('ZoneMove', 'pl')).toBe('Przeniesienie strefy');
+  });
 });

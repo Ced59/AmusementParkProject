@@ -747,30 +747,145 @@ export const HISTORY_EVENT_TYPE_LABELS: Record<string, Record<string, string>> =
 
 export const HISTORY_EVENT_LABEL_LANGUAGES: readonly string[] = ['en', 'fr', 'de', 'nl', 'it', 'es', 'pl', 'pt'];
 
-const CANONICAL_FACT_TYPE_LABEL_ALIASES: Readonly<Record<string, string>> = Object.freeze({
-  Renaming: 'Rename',
-  OwnerChange: 'OwnershipChange',
-  Extension: 'Expansion',
-  Reduction: 'Redevelopment',
-  ZoneCreation: 'AreaOpening',
-  ZoneRenaming: 'Rename',
-  ZoneRemoval: 'Closure',
-  MajorEvent: 'OperationalChange',
-  PositioningChange: 'BrandingChange',
-  Construction: 'ConstructionStart',
-  Relocation: 'Transfer',
-  Retheming: 'ThemeChange',
-  TechnicalModification: 'TechnologyChange',
-  ZoneMove: 'ThemedAreaChange'
+const CANONICAL_FACT_TYPE_LABELS: Readonly<Record<string, Readonly<Record<string, string>>>> = Object.freeze({
+  en: Object.freeze({
+    Renaming: 'Renaming',
+    OwnerChange: 'Owner change',
+    Extension: 'Extension',
+    Reduction: 'Reduction',
+    ZoneCreation: 'Zone creation',
+    ZoneRenaming: 'Zone renaming',
+    ZoneRemoval: 'Zone removal',
+    MajorEvent: 'Major event',
+    PositioningChange: 'Positioning change',
+    Construction: 'Construction',
+    Relocation: 'Relocation',
+    Retheming: 'Retheming',
+    TechnicalModification: 'Technical modification',
+    ZoneMove: 'Zone move'
+  }),
+  fr: Object.freeze({
+    Renaming: 'Changement de nom',
+    OwnerChange: 'Changement de propriétaire',
+    Extension: 'Extension',
+    Reduction: 'Réduction',
+    ZoneCreation: 'Création de zone',
+    ZoneRenaming: 'Renommage de zone',
+    ZoneRemoval: 'Suppression de zone',
+    MajorEvent: 'Événement majeur',
+    PositioningChange: 'Changement de positionnement',
+    Construction: 'Construction',
+    Relocation: 'Relocalisation',
+    Retheming: 'Changement de thème',
+    TechnicalModification: 'Modification technique',
+    ZoneMove: 'Déplacement de zone'
+  }),
+  de: Object.freeze({
+    Renaming: 'Umbenennung',
+    OwnerChange: 'Eigentümerwechsel',
+    Extension: 'Erweiterung',
+    Reduction: 'Verkleinerung',
+    ZoneCreation: 'Bereichserstellung',
+    ZoneRenaming: 'Bereichsumbenennung',
+    ZoneRemoval: 'Bereichsentfernung',
+    MajorEvent: 'Bedeutendes Ereignis',
+    PositioningChange: 'Positionierungsänderung',
+    Construction: 'Bau',
+    Relocation: 'Standortverlegung',
+    Retheming: 'Umthematisierung',
+    TechnicalModification: 'Technische Änderung',
+    ZoneMove: 'Bereichsverlegung'
+  }),
+  nl: Object.freeze({
+    Renaming: 'Naamswijziging',
+    OwnerChange: 'Eigenaarswijziging',
+    Extension: 'Uitbreiding',
+    Reduction: 'Verkleining',
+    ZoneCreation: 'Gebiedsaanmaak',
+    ZoneRenaming: 'Hernoeming van gebied',
+    ZoneRemoval: 'Verwijdering van gebied',
+    MajorEvent: 'Belangrijke gebeurtenis',
+    PositioningChange: 'Positioneringswijziging',
+    Construction: 'Bouw',
+    Relocation: 'Verplaatsing',
+    Retheming: 'Herthematisering',
+    TechnicalModification: 'Technische wijziging',
+    ZoneMove: 'Verplaatsing van gebied'
+  }),
+  it: Object.freeze({
+    Renaming: 'Cambio di nome',
+    OwnerChange: 'Cambio di proprietà',
+    Extension: 'Espansione',
+    Reduction: 'Riduzione',
+    ZoneCreation: 'Creazione di area',
+    ZoneRenaming: 'Ridenominazione di area',
+    ZoneRemoval: 'Rimozione di area',
+    MajorEvent: 'Evento importante',
+    PositioningChange: 'Cambio di posizionamento',
+    Construction: 'Costruzione',
+    Relocation: 'Trasferimento',
+    Retheming: 'Cambio di tema',
+    TechnicalModification: 'Modifica tecnica',
+    ZoneMove: 'Spostamento di area'
+  }),
+  es: Object.freeze({
+    Renaming: 'Cambio de nombre',
+    OwnerChange: 'Cambio de propietario',
+    Extension: 'Ampliación',
+    Reduction: 'Reducción',
+    ZoneCreation: 'Creación de zona',
+    ZoneRenaming: 'Cambio de nombre de zona',
+    ZoneRemoval: 'Eliminación de zona',
+    MajorEvent: 'Evento destacado',
+    PositioningChange: 'Cambio de posicionamiento',
+    Construction: 'Construcción',
+    Relocation: 'Reubicación',
+    Retheming: 'Cambio de temática',
+    TechnicalModification: 'Modificación técnica',
+    ZoneMove: 'Traslado de zona'
+  }),
+  pl: Object.freeze({
+    Renaming: 'Zmiana nazwy',
+    OwnerChange: 'Zmiana właściciela',
+    Extension: 'Rozbudowa',
+    Reduction: 'Zmniejszenie',
+    ZoneCreation: 'Utworzenie strefy',
+    ZoneRenaming: 'Zmiana nazwy strefy',
+    ZoneRemoval: 'Usunięcie strefy',
+    MajorEvent: 'Ważne wydarzenie',
+    PositioningChange: 'Zmiana pozycjonowania',
+    Construction: 'Budowa',
+    Relocation: 'Relokacja',
+    Retheming: 'Zmiana motywu',
+    TechnicalModification: 'Modyfikacja techniczna',
+    ZoneMove: 'Przeniesienie strefy'
+  }),
+  pt: Object.freeze({
+    Renaming: 'Alteração de nome',
+    OwnerChange: 'Alteração de proprietário',
+    Extension: 'Expansão',
+    Reduction: 'Redução',
+    ZoneCreation: 'Criação de área',
+    ZoneRenaming: 'Renomeação de área',
+    ZoneRemoval: 'Remoção de área',
+    MajorEvent: 'Evento marcante',
+    PositioningChange: 'Alteração de posicionamento',
+    Construction: 'Construção',
+    Relocation: 'Relocalização',
+    Retheming: 'Alteração de tema',
+    TechnicalModification: 'Modificação técnica',
+    ZoneMove: 'Mudança de área'
+  })
 });
 
 export const HISTORY_EVENT_TYPE_KEYS: readonly string[] = Object.freeze(Object.keys(HISTORY_EVENT_TYPE_LABELS['en']).sort());
 
 export function resolveHistoryEventTypeLabel(eventType: string | null | undefined, language: string): string {
   const normalizedType: string = eventType?.trim() ?? '';
-  const labelKey: string = CANONICAL_FACT_TYPE_LABEL_ALIASES[normalizedType] ?? normalizedType;
-  return HISTORY_EVENT_TYPE_LABELS[language]?.[labelKey]
-    ?? HISTORY_EVENT_TYPE_LABELS['en'][labelKey]
+  return CANONICAL_FACT_TYPE_LABELS[language]?.[normalizedType]
+    ?? CANONICAL_FACT_TYPE_LABELS['en']?.[normalizedType]
+    ?? HISTORY_EVENT_TYPE_LABELS[language]?.[normalizedType]
+    ?? HISTORY_EVENT_TYPE_LABELS['en'][normalizedType]
     ?? splitPascalCase(normalizedType || 'Event');
 }
 

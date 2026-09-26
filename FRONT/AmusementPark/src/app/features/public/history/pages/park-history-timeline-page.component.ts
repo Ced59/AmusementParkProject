@@ -23,6 +23,7 @@ import { HistoryTimelineEventViewModel, HistoryTimelinePageRangeViewModel, Histo
 import { ParkHistoryBreadcrumbSeoService } from '../state/park-history-breadcrumb-seo.service';
 import { ParkHistoryExplorerStateFacade } from '../state/park-history-explorer-state.facade';
 import { resolveHistoryEventTypeLabel } from '../utils/history-event-labels';
+import { resolveHistoricalExplorerDefaultYear } from '../utils/historical-explorer-default-year';
 import { formatPublicHistoricalPeriod } from '../utils/historical-period-label';
 import { resolveDisplayedHistoryPageCount } from '../utils/history-pagination-display';
 import { buildCanonicalHistoryNarrativeLink } from '../utils/history-narrative-link';
@@ -77,7 +78,7 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
         const resolved: ResolvedParkHistoryTimelineRouteData | undefined = data[PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY];
         this.currentPage.set(resolved?.page ?? 1);
         this.stateFacade.setResolvedTimeline(resolved?.timeline ?? null);
-        this.requestedYear = this.latestYear(resolved?.timeline ?? null);
+        this.requestedYear = resolveHistoricalExplorerDefaultYear();
       });
 
     this.translationService.languageChanged
@@ -179,13 +180,6 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
 
   private historyBaseLink(timeline: PublicParkHistoricalTimeline): string[] {
     return this.historyLink(timeline);
-  }
-
-  private latestYear(timeline: PublicParkHistoricalTimeline | null): number | null {
-    const years: number[] = (timeline?.events ?? [])
-      .flatMap((event: PublicHistoricalTimelineEntry) => [event.period.start?.year, event.period.end?.year])
-      .filter((year): year is number => Number.isInteger(year));
-    return years.length > 0 ? Math.max(...years) : new Date().getUTCFullYear();
   }
 
   private enumLabel(group: string, value: string, fallback: string): string {
