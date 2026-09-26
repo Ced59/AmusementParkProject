@@ -17,6 +17,23 @@ public sealed record HistoricalAmbiguity
             throw new ArgumentOutOfRangeException(nameof(code));
         }
 
+        bool requiresAttribute = code is HistoricalSnapshotReasonCode.PartialAttributeBoundary
+            or HistoricalSnapshotReasonCode.AmbiguousAttributeOrder
+            or HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue;
+        bool requiresLifecycle = code is HistoricalSnapshotReasonCode.NoEligibleLifecycleFact
+            or HistoricalSnapshotReasonCode.PartialLifecycleBoundary
+            or HistoricalSnapshotReasonCode.AmbiguousTransitionOrder
+            or HistoricalSnapshotReasonCode.InconsistentLifecycleSequence
+            or HistoricalSnapshotReasonCode.UnboundedTemporaryClosure
+            or HistoricalSnapshotReasonCode.UnclassifiedClosure;
+        if ((requiresAttribute && !attributeKind.HasValue)
+            || (requiresLifecycle && attributeKind.HasValue))
+        {
+            throw new ArgumentException(
+                "The historical ambiguity scope is inconsistent with its reason.",
+                nameof(attributeKind));
+        }
+
         this.Subject = subject;
         this.Code = code;
         this.AttributeKind = attributeKind;

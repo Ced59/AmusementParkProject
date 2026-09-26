@@ -35,4 +35,24 @@ public sealed class HistoricalAmbiguityTests
             null,
             Array.Empty<Guid>()));
     }
+
+    [Fact]
+    public void Constructor_WithAttributeReasonWithoutAttribute_Throws()
+    {
+        Assert.Throws<ArgumentException>(() => new HistoricalAmbiguity(
+            Subject,
+            HistoricalSnapshotReasonCode.PartialAttributeBoundary,
+            null,
+            Array.Empty<Guid>()));
+    }
+
+    [Fact]
+    public void Constructor_WithLifecycleReasonAndAttribute_Throws()
+    {
+        Assert.Throws<ArgumentException>(() => new HistoricalAmbiguity(
+            Subject,
+            HistoricalSnapshotReasonCode.PartialLifecycleBoundary,
+            HistoricalAttributeKind.Name,
+            Array.Empty<Guid>()));
+    }
 }
