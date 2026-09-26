@@ -217,6 +217,14 @@ public sealed class HistoricalLegacyFactConverter
             return null;
         }
 
+        string? requiredNextKey = mapping.AttributeKind.Value switch
+        {
+            HistoricalAttributeKind.Name or HistoricalAttributeKind.MarketPositioning
+                or HistoricalAttributeKind.Theme => "next",
+            HistoricalAttributeKind.Logo => "nextImageId",
+            HistoricalAttributeKind.Operator => "nextId",
+            _ => null,
+        };
         Dictionary<string, string?> values = mapping.AttributeKind.Value switch
         {
             HistoricalAttributeKind.Name or HistoricalAttributeKind.MarketPositioning
@@ -237,7 +245,7 @@ public sealed class HistoricalLegacyFactConverter
                 },
             HistoricalAttributeKind.Owner => new Dictionary<string, string?>(),
             HistoricalAttributeKind.Location or HistoricalAttributeKind.Zone =>
-                new Dictionary<string, string?> { ["label"] = historyEvent.LocationLabel },
+                new Dictionary<string, string?>(),
             _ => new Dictionary<string, string?>(),
         };
         Dictionary<string, string> normalized = values
@@ -246,7 +254,11 @@ public sealed class HistoricalLegacyFactConverter
                 static pair => pair.Key,
                 static pair => pair.Value!.Trim(),
                 StringComparer.Ordinal);
-        return normalized.Count == 0 ? null : JsonSerializer.Serialize(normalized);
+        return normalized.Count == 0
+            || requiredNextKey is null
+            || !normalized.ContainsKey(requiredNextKey)
+                ? null
+                : JsonSerializer.Serialize(normalized);
     }
 
     internal static string ResolveHistoricalLabel(HistoryEventDocument historyEvent, string fallback)

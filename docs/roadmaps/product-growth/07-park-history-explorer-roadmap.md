@@ -757,7 +757,8 @@ classification manuelle : elle ne devient jamais l'ouverture initiale du parc
 ou de l'attraction. Les dates gardent leur précision d'origine, l'importance
 reste identique et les changements de nom, logo, exploitant, propriétaire,
 thème ou localisation conservent leurs anciennes et nouvelles valeurs
-lorsqu'elles sont présentes. Une valeur inconnue n'est jamais transformée
+lorsqu'elles sont présentes. Une transition sans valeur d'arrivée qualifiée
+reste elle aussi bloquée pour classification manuelle. Une valeur inconnue n'est jamais transformée
 silencieusement en « autre ». Les associations historiques vagues sont
 conservées dans le récit mais ne deviennent pas des relations sans preuve.
 

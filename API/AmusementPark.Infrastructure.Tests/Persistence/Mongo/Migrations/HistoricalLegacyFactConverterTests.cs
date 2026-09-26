@@ -82,6 +82,87 @@ public sealed class HistoricalLegacyFactConverterTests
         Assert.Null(result);
     }
 
+    [Theory]
+    [InlineData(HistoricalFactType.Renaming, HistoricalAttributeKind.Name)]
+    [InlineData(HistoricalFactType.Retheming, HistoricalAttributeKind.Theme)]
+    [InlineData(HistoricalFactType.PositioningChange, HistoricalAttributeKind.MarketPositioning)]
+    public void BuildStructuredValue_WhenTextTransitionOnlyHasPreviousValue_ShouldRemainUnknown(
+        HistoricalFactType factType,
+        HistoricalAttributeKind attributeKind)
+    {
+        HistoryEventDocument historyEvent = new HistoryEventDocument
+        {
+            PreviousName = "Ancienne valeur",
+        };
+        LegacyHistoryEventTypeMapping mapping = new LegacyHistoryEventTypeMapping(
+            factType,
+            null,
+            attributeKind,
+            AttributeBoundaryMeaning.Unspecified);
+
+        string? result = HistoricalLegacyFactConverter.BuildStructuredValue(historyEvent, mapping);
+
+        Assert.Null(result);
+    }
+
+    [Fact]
+    public void BuildStructuredValue_WhenLogoTransitionOnlyHasPreviousValue_ShouldRemainUnknown()
+    {
+        HistoryEventDocument historyEvent = new HistoryEventDocument
+        {
+            PreviousLogoImageId = "old-logo",
+        };
+        LegacyHistoryEventTypeMapping mapping = new LegacyHistoryEventTypeMapping(
+            HistoricalFactType.LogoChange,
+            null,
+            HistoricalAttributeKind.Logo,
+            AttributeBoundaryMeaning.Unspecified);
+
+        string? result = HistoricalLegacyFactConverter.BuildStructuredValue(historyEvent, mapping);
+
+        Assert.Null(result);
+    }
+
+    [Fact]
+    public void BuildStructuredValue_WhenOperatorTransitionOnlyHasPreviousValue_ShouldRemainUnknown()
+    {
+        HistoryEventDocument historyEvent = new HistoryEventDocument
+        {
+            PreviousOperatorId = "old-operator",
+        };
+        LegacyHistoryEventTypeMapping mapping = new LegacyHistoryEventTypeMapping(
+            HistoricalFactType.OperatorChange,
+            null,
+            HistoricalAttributeKind.Operator,
+            AttributeBoundaryMeaning.Unspecified);
+
+        string? result = HistoricalLegacyFactConverter.BuildStructuredValue(historyEvent, mapping);
+
+        Assert.Null(result);
+    }
+
+    [Theory]
+    [InlineData(HistoricalFactType.Relocation, HistoricalAttributeKind.Location)]
+    [InlineData(HistoricalFactType.ZoneMove, HistoricalAttributeKind.Zone)]
+    public void BuildStructuredValue_WhenLocationTransitionHasOnlyUnqualifiedLabel_ShouldRemainUnknown(
+        HistoricalFactType factType,
+        HistoricalAttributeKind attributeKind)
+    {
+        HistoryEventDocument historyEvent = new HistoryEventDocument
+        {
+            LocationLabel = "Zone ou emplacement non qualifié",
+        };
+        LegacyHistoryEventTypeMapping mapping = new LegacyHistoryEventTypeMapping(
+            factType,
+            null,
+            attributeKind,
+            AttributeBoundaryMeaning.Unspecified);
+
+        string? result = HistoricalLegacyFactConverter.BuildStructuredValue(historyEvent, mapping);
+
+        Assert.Null(result);
+    }
+
     [Fact]
     public void BuildLegacyWarnings_ShouldCoverEverySupportedLanguage()
     {
