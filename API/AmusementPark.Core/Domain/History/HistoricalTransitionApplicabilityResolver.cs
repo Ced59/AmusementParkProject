@@ -25,6 +25,24 @@ internal static class HistoricalTransitionApplicabilityResolver
             return HistoricalTransitionApplicability.Applied;
         }
 
+        if (HasConfirmedBoundary(fact))
+        {
+            if (requestedDate == earliest
+                && fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.LastOperatingDay)
+            {
+                return HistoricalTransitionApplicability.Applied;
+            }
+
+            if (requestedDate == latest
+                && fact.LifecycleBoundaryMeaning is (LifecycleBoundaryMeaning.FirstOperatingDay
+                    or LifecycleBoundaryMeaning.FirstClosedDay)
+                && (fact.Type != HistoricalFactType.TemporaryClosure
+                    || temporaryClosureHasKnownEnd))
+            {
+                return HistoricalTransitionApplicability.Applied;
+            }
+        }
+
         if (!IsEvidenceCertain(fact))
         {
             return HistoricalTransitionApplicability.Optional;
@@ -35,22 +53,9 @@ internal static class HistoricalTransitionApplicabilityResolver
             return ResolveExactLifecycleBoundary(fact);
         }
 
-        if (requestedDate == earliest
-            && fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.LastOperatingDay)
-        {
-            return HistoricalTransitionApplicability.Applied;
-        }
-
         if (fact.Type == HistoricalFactType.TemporaryClosure && !temporaryClosureHasKnownEnd)
         {
             return HistoricalTransitionApplicability.Optional;
-        }
-
-        if (requestedDate == latest
-            && fact.LifecycleBoundaryMeaning is LifecycleBoundaryMeaning.FirstOperatingDay
-                or LifecycleBoundaryMeaning.FirstClosedDay)
-        {
-            return HistoricalTransitionApplicability.Applied;
         }
 
         return HistoricalTransitionApplicability.Optional;
@@ -78,6 +83,21 @@ internal static class HistoricalTransitionApplicabilityResolver
             return HistoricalTransitionApplicability.Applied;
         }
 
+        if (HasConfirmedBoundary(fact))
+        {
+            if (requestedDate == earliest
+                && fact.AttributeBoundaryMeaning == AttributeBoundaryMeaning.LastDayOfPreviousValue)
+            {
+                return HistoricalTransitionApplicability.NotOccurred;
+            }
+
+            if (requestedDate == latest
+                && fact.AttributeBoundaryMeaning == AttributeBoundaryMeaning.FirstDayOfNewValue)
+            {
+                return HistoricalTransitionApplicability.Applied;
+            }
+        }
+
         if (!IsEvidenceCertain(fact))
         {
             return HistoricalTransitionApplicability.Optional;
@@ -93,28 +113,22 @@ internal static class HistoricalTransitionApplicabilityResolver
             };
         }
 
-        if (requestedDate == earliest
-            && fact.AttributeBoundaryMeaning == AttributeBoundaryMeaning.LastDayOfPreviousValue)
-        {
-            return HistoricalTransitionApplicability.NotOccurred;
-        }
-
-        return requestedDate == latest
-            && fact.AttributeBoundaryMeaning == AttributeBoundaryMeaning.FirstDayOfNewValue
-                ? HistoricalTransitionApplicability.Applied
-                : HistoricalTransitionApplicability.Optional;
+        return HistoricalTransitionApplicability.Optional;
     }
 
     internal static bool IsEvidenceCertain(HistoricalFact fact)
     {
-        HistoricalDate? boundary = fact.Period.Start;
+        return HasConfirmedBoundary(fact)
+            && !fact.Period.Start!.Qualifier.HasValue;
+    }
+
+    internal static bool HasConfirmedBoundary(HistoricalFact fact)
+    {
         return fact.State == HistoricalFactState.Verified
             && fact.Period.IsPoint
             && fact.Period.StartConfidence == PeriodBoundaryConfidence.Confirmed
             && fact.Period.EndConfidence == PeriodBoundaryConfidence.Confirmed
-            && boundary is not null
-            && !boundary.IsApproximate
-            && !boundary.Qualifier.HasValue;
+            && fact.Period.Start is { IsApproximate: false };
     }
 
     private static HistoricalTransitionApplicability ResolveExactLifecycleBoundary(HistoricalFact fact)

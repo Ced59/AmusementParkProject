@@ -462,6 +462,46 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_OnFiniteEdgeOfBeforeQualifiedOpening_ReturnsKnownOpen()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForYear(2000, qualifier: DateQualifier.Before),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(1999, 12, 31),
+            new[] { opening });
+
+        Assert.Equal(HistoricalOperationalState.KnownOpen, snapshot.OperationalState);
+    }
+
+    [Fact]
+    public void Build_OnLatestPossibleDayOfUnboundedPartialTemporaryClosure_RemainsPossiblyOpen()
+    {
+        HistoricalFact[] facts =
+        {
+            CreateLifecycleFact(
+                HistoricalFactType.Opening,
+                HistoricalDate.ForDay(1990, 1, 1),
+                LifecycleBoundaryMeaning.FirstOperatingDay),
+            CreateLifecycleFact(
+                HistoricalFactType.TemporaryClosure,
+                HistoricalDate.ForYear(2000),
+                LifecycleBoundaryMeaning.FirstClosedDay),
+        };
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 12, 31),
+            facts);
+
+        Assert.Equal(HistoricalOperationalState.PossiblyOpen, snapshot.OperationalState);
+        Assert.Contains(
+            snapshot.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.UnboundedTemporaryClosure);
+    }
+
+    [Fact]
     public void Build_WithProbableOpening_ReturnsPossiblyOpen()
     {
         HistoricalFact opening = CreateLifecycleFact(
@@ -616,6 +656,27 @@ public sealed class ParkHistoricalSnapshotBuilderTests
 
         Assert.Equal(new[] { "Nom B", "Nom C" }, onBoundary.Candidates);
         Assert.Equal(new[] { "Nom B", "Nom D" }, afterBoundary.Candidates);
+    }
+
+    [Fact]
+    public void Build_OnFiniteEdgeOfBeforeQualifiedRenaming_UsesNewValue()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact renaming = CreateAttributeFact(
+            HistoricalDate.ForYear(2000, qualifier: DateQualifier.Before),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(1999, 12, 31),
+            new[] { opening, renaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Known, attribute.State);
+        Assert.Equal("Nom B", attribute.Value);
     }
 
     [Fact]
