@@ -31,29 +31,6 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             .OrderBy(static fact => HistoricalTransitionOrdering.Earliest(fact))
             .ThenBy(static fact => fact.Id)
             .FirstOrDefault();
-        if (lifecycleFacts.Count(static fact => fact.Type == HistoricalFactType.Opening) > 1)
-        {
-            reasons.Add(
-                HistoricalSnapshotReasonCode.InconsistentLifecycleSequence,
-                lifecycleFacts.Where(static fact => fact.Type == HistoricalFactType.Opening));
-        }
-
-        foreach (HistoricalFact reopening in lifecycleFacts.Where(
-                     static fact => fact.Type == HistoricalFactType.Reopening))
-        {
-            HistoricalFact[] precedingDefinitiveClosures = lifecycleFacts
-                .Where(fact => fact.Type == HistoricalFactType.DefinitiveClosure
-                    && HistoricalTransitionOrdering.Latest(fact)
-                        < HistoricalTransitionOrdering.Earliest(reopening))
-                .ToArray();
-            if (precedingDefinitiveClosures.Length > 0)
-            {
-                reasons.Add(
-                    HistoricalSnapshotReasonCode.InconsistentLifecycleSequence,
-                    precedingDefinitiveClosures.Append(reopening));
-            }
-        }
-
         List<(DateOnly Date, HashSet<HistoricalOperationalState> States)> dailyStates = new();
         HashSet<Guid> contributingFactIds = new HashSet<Guid>();
         foreach (DateOnly requestedDate in requestedDates)
@@ -88,6 +65,34 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             }
 
             dailyStates.Add((requestedDate, states));
+        }
+
+        HistoricalFact[] contributingLifecycleFacts = lifecycleFacts
+            .Where(fact => contributingFactIds.Contains(fact.Id))
+            .ToArray();
+        HistoricalFact[] contributingOpenings = contributingLifecycleFacts
+            .Where(static fact => fact.Type == HistoricalFactType.Opening)
+            .ToArray();
+        if (contributingOpenings.Length > 1)
+        {
+            reasons.Add(
+                HistoricalSnapshotReasonCode.InconsistentLifecycleSequence,
+                contributingOpenings);
+        }
+
+        foreach (HistoricalFact reopening in contributingLifecycleFacts.Where(
+                     static fact => fact.Type == HistoricalFactType.Reopening))
+        {
+            HistoricalFact[] precedingDefinitiveClosures = contributingLifecycleFacts
+                .Where(fact => fact.Type == HistoricalFactType.DefinitiveClosure
+                    && HistoricalTransitionOrdering.MustPrecede(fact, reopening))
+                .ToArray();
+            if (precedingDefinitiveClosures.Length > 0)
+            {
+                reasons.Add(
+                    HistoricalSnapshotReasonCode.InconsistentLifecycleSequence,
+                    precedingDefinitiveClosures.Append(reopening));
+            }
         }
 
         DateOnly[] confirmedOpenDates = dailyStates
@@ -464,10 +469,9 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             return false;
         }
 
-        DateOnly closureLatest = HistoricalTransitionOrdering.Latest(fact);
         return lifecycleFacts.Any(candidate => candidate.Type == HistoricalFactType.Reopening
             && HistoricalTransitionApplicabilityResolver.IsEvidenceCertain(candidate)
-            && HistoricalTransitionOrdering.Earliest(candidate) > closureLatest);
+            && HistoricalTransitionOrdering.MustPrecede(fact, candidate));
     }
 
     private static bool IsExactFirstClosedDay(HistoricalFact fact, DateOnly requestedDate)

@@ -571,6 +571,34 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_BeforeUnsequencedSameDayRenamings_PreservesPreviousCandidates()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact firstRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Ancien A",
+            "Nouveau A",
+            id: Guid.Parse("ffffffff-ffff-ffff-ffff-ffffffffffff"));
+        HistoricalFact secondRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Ancien B",
+            "Nouveau B",
+            id: Guid.Parse("00000000-0000-0000-0000-000000000001"));
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 4, 30),
+            new[] { opening, secondRenaming, firstRenaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Ancien A", "Ancien B" }, attribute.Candidates);
+    }
+
+    [Fact]
     public void Build_WithBroadAndSequencedSameDayRenamings_PreservesSourcedOrder()
     {
         HistoricalFact opening = CreateLifecycleFact(
@@ -680,6 +708,56 @@ public sealed class ParkHistoricalSnapshotBuilderTests
             reopenings.Append(closure).Append(broadOpening).ToArray());
 
         Assert.Equal(HistoricalOperationalState.KnownOpen, snapshot.OperationalState);
+    }
+
+    [Fact]
+    public void Build_IgnoresFutureDuplicateOpeningInCurrentDiagnostics()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact futureOpening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2030, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2001, 1, 1),
+            new[] { opening, futureOpening });
+
+        Assert.Equal(HistoricalOperationalState.KnownOpen, snapshot.OperationalState);
+        Assert.DoesNotContain(
+            snapshot.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.InconsistentLifecycleSequence);
+    }
+
+    [Fact]
+    public void Build_WithSequencedSameDayReopening_BoundsTemporaryClosure()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact closure = CreateLifecycleFact(
+            HistoricalFactType.TemporaryClosure,
+            HistoricalDate.ForDay(2005, 6, 1),
+            LifecycleBoundaryMeaning.FirstClosedDay,
+            sequenceWithinDate: 1);
+        HistoricalFact reopening = CreateLifecycleFact(
+            HistoricalFactType.Reopening,
+            HistoricalDate.ForDay(2005, 6, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            sequenceWithinDate: 2);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2005, 6, 2),
+            new[] { opening, closure, reopening });
+
+        Assert.Equal(HistoricalOperationalState.KnownOpen, snapshot.OperationalState);
+        Assert.DoesNotContain(
+            snapshot.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.UnboundedTemporaryClosure);
     }
 
     [Fact]

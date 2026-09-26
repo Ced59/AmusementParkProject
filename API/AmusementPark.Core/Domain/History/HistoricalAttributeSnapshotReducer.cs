@@ -25,28 +25,12 @@ internal sealed class HistoricalAttributeSnapshotReducer
         HistoricalSnapshotReasonCollector reasons = new HistoricalSnapshotReasonCollector();
         IReadOnlyList<IReadOnlyList<HistoricalFact>> transitionGroups =
             HistoricalTransitionOrdering.BuildGroups(facts);
-        HistoricalFact? firstFact = facts
-            .OrderBy(static fact => HistoricalTransitionOrdering.Earliest(fact))
-            .ThenBy(static fact => HistoricalTransitionOrdering.Latest(fact))
-            .ThenBy(static fact => fact.SequenceWithinDate ?? int.MaxValue)
-            .ThenBy(static fact => fact.Id)
-            .FirstOrDefault();
-        string initialValue = UnknownValue;
-        if (firstFact is not null
-            && HistoricalTransitionApplicabilityResolver.IsEvidenceCertain(firstFact)
-            && HistoricalAttributeTransitionParser.TryParse(
-                firstFact,
-                out string? previousValue,
-                out _)
-            && previousValue is not null)
-        {
-            initialValue = previousValue;
-        }
+        HashSet<string> initialValues = BuildInitialValues(facts);
 
         HashSet<string> valuesAcrossRequest = new HashSet<string>(StringComparer.Ordinal);
         foreach (DateOnly requestedDate in requestedDates)
         {
-            HashSet<string> values = new HashSet<string>(StringComparer.Ordinal) { initialValue };
+            HashSet<string> values = new HashSet<string>(initialValues, StringComparer.Ordinal);
             foreach (IReadOnlyList<HistoricalFact> group in transitionGroups)
             {
                 values = HistoricalTransitionOrdering.CanUseExplicitSequence(group)
@@ -78,6 +62,38 @@ internal sealed class HistoricalAttributeSnapshotReducer
         }
 
         return new HistoricalAttributeSnapshot(kind, state, value, candidates, reasons.Build());
+    }
+
+    private static HashSet<string> BuildInitialValues(IReadOnlyCollection<HistoricalFact> facts)
+    {
+        HistoricalFact[] possibleFirstFacts = facts
+            .Where(candidate => !facts.Any(other => other.Id != candidate.Id
+                && HistoricalTransitionOrdering.MustPrecede(other, candidate)))
+            .ToArray();
+        HashSet<string> initialValues = new HashSet<string>(StringComparer.Ordinal);
+        foreach (HistoricalFact fact in possibleFirstFacts)
+        {
+            if (HistoricalTransitionApplicabilityResolver.IsEvidenceCertain(fact)
+                && HistoricalAttributeTransitionParser.TryParse(
+                    fact,
+                    out string? previousValue,
+                    out _)
+                && previousValue is not null)
+            {
+                initialValues.Add(previousValue);
+            }
+            else
+            {
+                initialValues.Add(UnknownValue);
+            }
+        }
+
+        if (initialValues.Count == 0)
+        {
+            initialValues.Add(UnknownValue);
+        }
+
+        return initialValues;
     }
 
     private HashSet<string> ApplyOrderedGroup(
