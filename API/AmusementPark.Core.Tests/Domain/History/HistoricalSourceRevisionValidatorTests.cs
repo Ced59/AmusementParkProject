@@ -12,10 +12,10 @@ public sealed class HistoricalSourceRevisionValidatorTests
     public void ValidatePredecessor_WhenImmediatelyPriorRevisionExists_ShouldAcceptCorrection()
     {
         Guid sourceId = Guid.NewGuid();
-        HistoricalSourceReference predecessor = CreateSource(sourceId, 1, RecordedAtUtc.AddMinutes(-1));
+        HistoricalSourceReference predecessor = CreateSource(sourceId, 5, RecordedAtUtc.AddMinutes(-1));
         HistoricalSourceReference correction = CreateSource(
             sourceId,
-            2,
+            6,
             RecordedAtUtc,
             HistoricalEditorialWorkflowState.Corrected,
             HistoricalPublicationState.Published);
@@ -38,8 +38,8 @@ public sealed class HistoricalSourceRevisionValidatorTests
     [Fact]
     public void ValidatePredecessor_WhenPriorRevisionBelongsToAnotherSource_ShouldRejectCorrection()
     {
-        HistoricalSourceReference predecessor = CreateSource(Guid.NewGuid(), 1, RecordedAtUtc.AddMinutes(-1));
-        HistoricalSourceReference correction = CreateSource(Guid.NewGuid(), 2, RecordedAtUtc);
+        HistoricalSourceReference predecessor = CreateSource(Guid.NewGuid(), 5, RecordedAtUtc.AddMinutes(-1));
+        HistoricalSourceReference correction = CreateSource(Guid.NewGuid(), 6, RecordedAtUtc);
 
         Assert.Throws<HistoricalPersistenceValidationException>(() =>
             HistoricalSourceRevisionValidator.ValidatePredecessor(correction, predecessor));
@@ -70,10 +70,10 @@ public sealed class HistoricalSourceRevisionValidatorTests
     public void ValidatePredecessor_WhenPublishedSourceReturnsToDraft_ShouldRejectTransition()
     {
         Guid sourceId = Guid.NewGuid();
-        HistoricalSourceReference predecessor = CreateSource(sourceId, 1, RecordedAtUtc.AddMinutes(-1));
+        HistoricalSourceReference predecessor = CreateSource(sourceId, 5, RecordedAtUtc.AddMinutes(-1));
         HistoricalSourceReference draft = CreateSource(
             sourceId,
-            2,
+            6,
             RecordedAtUtc,
             HistoricalEditorialWorkflowState.Draft,
             HistoricalPublicationState.Draft);
@@ -101,6 +101,26 @@ public sealed class HistoricalSourceRevisionValidatorTests
 
         Assert.Throws<HistoricalPersistenceValidationException>(() =>
             HistoricalSourceRevisionValidator.ValidatePredecessor(structuredValidation, predecessor));
+    }
+
+    [Fact]
+    public void ValidatePredecessor_WhenSourceMovesFromDraftToEditorialReview_ShouldAcceptTransition()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalSourceReference predecessor = CreateSource(
+            sourceId,
+            1,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft);
+        HistoricalSourceReference editorialReview = CreateSource(
+            sourceId,
+            2,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.Draft);
+
+        HistoricalSourceRevisionValidator.ValidatePredecessor(editorialReview, predecessor);
     }
 
     private static HistoricalSourceReference CreateSource(

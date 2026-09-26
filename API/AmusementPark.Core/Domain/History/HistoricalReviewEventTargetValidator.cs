@@ -18,6 +18,7 @@ public static class HistoricalReviewEventTargetValidator
                 fact.Revision,
                 fact.WorkflowState,
                 fact.PublicationState,
+                fact.RevisionOrigin,
                 supportsSourcesAttached: true))
         {
             throw Invalid();
@@ -39,6 +40,7 @@ public static class HistoricalReviewEventTargetValidator
                 source.Revision,
                 source.WorkflowState,
                 source.PublicationState,
+                source.RevisionOrigin,
                 supportsSourcesAttached: false))
         {
             throw Invalid();
@@ -50,11 +52,13 @@ public static class HistoricalReviewEventTargetValidator
         int revision,
         HistoricalEditorialWorkflowState workflowState,
         HistoricalPublicationState publicationState,
+        HistoricalRevisionOrigin revisionOrigin,
         bool supportsSourcesAttached)
     {
         return eventType switch
         {
             HistoricalReviewEventType.Created => revision == 1
+                && revisionOrigin == HistoricalRevisionOrigin.Ordinary
                 && workflowState == HistoricalEditorialWorkflowState.Draft
                 && publicationState == HistoricalPublicationState.Draft,
             HistoricalReviewEventType.SourcesAttached => supportsSourcesAttached
@@ -73,6 +77,7 @@ public static class HistoricalReviewEventTargetValidator
                 && workflowState == HistoricalEditorialWorkflowState.Retracted
                 && publicationState == HistoricalPublicationState.Withdrawn,
             HistoricalReviewEventType.Migrated => revision == 1
+                && revisionOrigin == HistoricalRevisionOrigin.LegacyMigration
                 && workflowState == HistoricalEditorialWorkflowState.EditorialReview
                 && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview,
             _ => false,

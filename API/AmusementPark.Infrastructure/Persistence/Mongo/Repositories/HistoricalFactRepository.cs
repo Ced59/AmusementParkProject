@@ -14,13 +14,19 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
 {
     private readonly IMongoCollection<HistoricalFactDocument> collection;
     private readonly IMongoCollection<HistoricalSourceDocument> sourceCollection;
+    private readonly IHistoricalSubjectPublicationStateReader subjectPublicationStateReader;
 
-    public HistoricalFactRepository(IMongoDatabase database, MongoDbSettings settings)
+    public HistoricalFactRepository(
+        IMongoDatabase database,
+        MongoDbSettings settings,
+        IHistoricalSubjectPublicationStateReader subjectPublicationStateReader)
     {
         this.collection = database.GetCollection<HistoricalFactDocument>(
             settings.HistoricalFactsCollectionName);
         this.sourceCollection = database.GetCollection<HistoricalSourceDocument>(
             settings.HistoricalSourcesCollectionName);
+        this.subjectPublicationStateReader = subjectPublicationStateReader
+            ?? throw new ArgumentNullException(nameof(subjectPublicationStateReader));
     }
 
     public async Task<HistoricalRevisionWriteDisposition> AppendRevisionAsync(
@@ -30,6 +36,13 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         ArgumentNullException.ThrowIfNull(fact);
         HistoricalFact? predecessor = await this.LoadPredecessorAsync(fact, cancellationToken);
         HistoricalFactRevisionValidator.ValidatePredecessor(fact, predecessor);
+        bool requiresCurrentSubjectResolution = fact.Subject.PublicationPolicy
+                == HistoricalSubjectPublicationPolicy.FollowCurrentSubject
+            && fact.PublicationState is HistoricalPublicationState.Published
+                or HistoricalPublicationState.LegacyPublishedPendingReview;
+        bool currentSubjectIsPublic = !requiresCurrentSubjectResolution
+            || await this.subjectPublicationStateReader.IsPublicAsync(fact.Subject, cancellationToken);
+        HistoricalSubjectPublicationValidator.Validate(fact, currentSubjectIsPublic);
         IReadOnlyCollection<HistoricalSourceReference> resolvedSources =
             await this.LoadSourceRevisionsAsync(fact.SourceReferences, cancellationToken);
         HistoricalFactEvidenceValidator.Validate(fact, resolvedSources);

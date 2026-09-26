@@ -129,8 +129,8 @@ public sealed class HistoricalFactEvidenceValidatorTests
             RecordedAtUtc.AddMinutes(-2),
             RecordedAtUtc.AddMinutes(-1),
             "hist-v1",
-            1,
-            null,
+            5,
+            4,
             RecordedAtUtc);
     }
 

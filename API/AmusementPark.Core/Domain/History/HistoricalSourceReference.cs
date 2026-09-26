@@ -19,7 +19,8 @@ public sealed class HistoricalSourceReference
         HistoricalSourceAccessibility accessibility,
         HistoricalEditorialWorkflowState workflowState,
         HistoricalPublicationState publicationState,
-        DateTime recordedAtUtc)
+        DateTime recordedAtUtc,
+        HistoricalRevisionOrigin revisionOrigin = HistoricalRevisionOrigin.Ordinary)
     {
         if (id == Guid.Empty)
         {
@@ -31,8 +32,8 @@ public sealed class HistoricalSourceReference
             throw Invalid(HistoricalPersistenceErrorCodes.InvalidRevision, "A historical source revision must be positive.");
         }
 
-        ValidateEnums(type, accessibility, workflowState, publicationState);
-        ValidateInitialRevision(revision, workflowState, publicationState);
+        ValidateEnums(type, accessibility, workflowState, publicationState, revisionOrigin);
+        ValidateInitialRevision(revision, workflowState, publicationState, revisionOrigin);
         string normalizedTitle = NormalizeRequired(title, 500, nameof(title));
         string normalizedPublisher = NormalizeRequired(publisherOrAuthor, 300, nameof(publisherOrAuthor));
         string? normalizedUrl = NormalizeOptionalUri(url, nameof(url));
@@ -81,6 +82,7 @@ public sealed class HistoricalSourceReference
         this.WorkflowState = workflowState;
         this.PublicationState = publicationState;
         this.RecordedAtUtc = recordedAtUtc;
+        this.RevisionOrigin = revisionOrigin;
     }
 
     public Guid Id { get; }
@@ -117,16 +119,20 @@ public sealed class HistoricalSourceReference
 
     public DateTime RecordedAtUtc { get; }
 
+    public HistoricalRevisionOrigin RevisionOrigin { get; }
+
     private static void ValidateEnums(
         HistoricalSourceType type,
         HistoricalSourceAccessibility accessibility,
         HistoricalEditorialWorkflowState workflowState,
-        HistoricalPublicationState publicationState)
+        HistoricalPublicationState publicationState,
+        HistoricalRevisionOrigin revisionOrigin)
     {
         if (!Enum.IsDefined(type)
             || !Enum.IsDefined(accessibility)
             || !Enum.IsDefined(workflowState)
-            || !Enum.IsDefined(publicationState))
+            || !Enum.IsDefined(publicationState)
+            || !Enum.IsDefined(revisionOrigin))
         {
             throw Invalid(HistoricalPersistenceErrorCodes.InvalidEnum, "A historical source contains an invalid state.");
         }
@@ -161,16 +167,26 @@ public sealed class HistoricalSourceReference
     private static void ValidateInitialRevision(
         int revision,
         HistoricalEditorialWorkflowState workflowState,
-        HistoricalPublicationState publicationState)
+        HistoricalPublicationState publicationState,
+        HistoricalRevisionOrigin revisionOrigin)
     {
-        if (revision == 1
-            && (workflowState is HistoricalEditorialWorkflowState.Corrected
-                or HistoricalEditorialWorkflowState.Retracted
-                || publicationState == HistoricalPublicationState.Withdrawn))
+        bool validInitialRevision = revisionOrigin switch
+        {
+            HistoricalRevisionOrigin.Ordinary => revision != 1
+                || (workflowState == HistoricalEditorialWorkflowState.Draft
+                    && publicationState == HistoricalPublicationState.Draft),
+            HistoricalRevisionOrigin.LegacyMigration => revision != 1
+                || (workflowState == HistoricalEditorialWorkflowState.EditorialReview
+                    && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+            _ => false,
+        };
+        if (!validInitialRevision
+            || (revision > 1
+                && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview))
         {
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidRevision,
-                "A first historical source revision cannot represent a correction or retraction.");
+                "A historical source must start as a draft or through the explicit legacy migration state.");
         }
     }
 

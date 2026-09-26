@@ -123,9 +123,58 @@ public sealed class HistoricalFactTests
     {
         HistoricalPersistenceValidationException exception =
             Assert.Throws<HistoricalPersistenceValidationException>(() => CreateFact(
+                revision: 1,
+                supersedesRevision: null,
                 workflowState: HistoricalEditorialWorkflowState.Corrected));
 
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Constructor_WhenOrdinaryFirstRevisionIsPublished_ShouldRejectFact()
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() => CreateFact(
+                revision: 1,
+                supersedesRevision: null));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Constructor_WhenLegacyMigrationUsesDedicatedInitialState_ShouldAcceptFact()
+    {
+        HistoricalFact fact = new HistoricalFact(
+            Guid.NewGuid(),
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                "park-1",
+                "Parc exemple",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            HistoricalFactState.Unverified,
+            HistoricalImportance.Major,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            CreateCompleteExplanations(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            Array.Empty<HistoricalSourceRevisionReference>(),
+            null,
+            null,
+            "history-opening-1998",
+            null,
+            null,
+            "hist-migration-v1",
+            1,
+            null,
+            RecordedAtUtc,
+            HistoricalRevisionOrigin.LegacyMigration);
+
+        Assert.Equal(HistoricalRevisionOrigin.LegacyMigration, fact.RevisionOrigin);
     }
 
     [Fact]
@@ -168,8 +217,8 @@ public sealed class HistoricalFactTests
                 null,
                 null,
                 null,
+                2,
                 1,
-                null,
                 RecordedAtUtc));
 
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
@@ -233,8 +282,8 @@ public sealed class HistoricalFactTests
                 RecordedAtUtc.AddMinutes(-2),
                 RecordedAtUtc.AddMinutes(-1),
                 "hist-v1",
+                2,
                 1,
-                null,
                 RecordedAtUtc));
 
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
@@ -247,8 +296,8 @@ public sealed class HistoricalFactTests
         HistoricalSubject? subject = null,
         HistoricalPeriod? period = null,
         int? sequenceWithinDate = null,
-        int revision = 1,
-        int? supersedesRevision = null,
+        int revision = 5,
+        int? supersedesRevision = 4,
         HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published,
         DateTime? verifiedAtUtc = null,
         DateTime? publishedAtUtc = null,

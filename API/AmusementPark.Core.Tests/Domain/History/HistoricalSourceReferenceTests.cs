@@ -61,7 +61,7 @@ public sealed class HistoricalSourceReferenceTests
         HistoricalPersistenceValidationException exception =
             Assert.Throws<HistoricalPersistenceValidationException>(() => new HistoricalSourceReference(
                 Guid.NewGuid(),
-                1,
+                2,
                 HistoricalSourceType.OfficialWebsite,
                 "Page officielle",
                 "Parc exemple",
@@ -76,7 +76,8 @@ public sealed class HistoricalSourceReferenceTests
                 HistoricalSourceAccessibility.Accessible,
                 HistoricalEditorialWorkflowState.Published,
                 HistoricalPublicationState.Draft,
-                RecordedAtUtc));
+                RecordedAtUtc,
+                HistoricalRevisionOrigin.Ordinary));
 
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
     }
@@ -95,18 +96,55 @@ public sealed class HistoricalSourceReferenceTests
     {
         HistoricalPersistenceValidationException exception =
             Assert.Throws<HistoricalPersistenceValidationException>(() => CreatePublishedSource(
-                workflowState: HistoricalEditorialWorkflowState.Corrected));
+                workflowState: HistoricalEditorialWorkflowState.Corrected,
+                revision: 1));
 
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
     }
 
+    [Fact]
+    public void Constructor_WhenOrdinaryFirstRevisionIsPublished_ShouldRejectSource()
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() => CreatePublishedSource(revision: 1));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidRevision, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Constructor_WhenLegacyMigrationUsesDedicatedInitialState_ShouldAcceptSource()
+    {
+        HistoricalSourceReference source = new HistoricalSourceReference(
+            Guid.NewGuid(),
+            1,
+            HistoricalSourceType.Archive,
+            "Archive du parc",
+            "Archives municipales",
+            "https://example.com/archive",
+            null,
+            new DateOnly(1998, 5, 12),
+            new DateOnly(2026, 9, 25),
+            "fr",
+            null,
+            new[] { HistoricalSourceScope.Period },
+            null,
+            HistoricalSourceAccessibility.Accessible,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            RecordedAtUtc,
+            HistoricalRevisionOrigin.LegacyMigration);
+
+        Assert.Equal(HistoricalRevisionOrigin.LegacyMigration, source.RevisionOrigin);
+    }
+
     private static HistoricalSourceReference CreatePublishedSource(
         HistoricalSourceAccessibility accessibility = HistoricalSourceAccessibility.Archived,
-        HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published)
+        HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published,
+        int revision = 3)
     {
         return new HistoricalSourceReference(
             Guid.NewGuid(),
-            1,
+            revision,
             HistoricalSourceType.Archive,
             "Archive du parc",
             "Archives municipales",

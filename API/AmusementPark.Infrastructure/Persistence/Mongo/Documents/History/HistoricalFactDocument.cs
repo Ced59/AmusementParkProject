@@ -14,6 +14,10 @@ public sealed class HistoricalFactDocument : MongoDocumentBase
     [BsonElement("revision")]
     public int Revision { get; set; }
 
+    [BsonElement("revisionOrigin")]
+    [BsonRepresentation(BsonType.String)]
+    public HistoricalRevisionOrigin RevisionOrigin { get; set; }
+
     [BsonElement("supersedesRevision")]
     [BsonIgnoreIfNull]
     public int? SupersedesRevision { get; set; }

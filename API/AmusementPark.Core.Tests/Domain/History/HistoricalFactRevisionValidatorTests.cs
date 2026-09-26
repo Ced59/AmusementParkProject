@@ -12,11 +12,11 @@ public sealed class HistoricalFactRevisionValidatorTests
     public void ValidatePredecessor_WhenReferencedRevisionExists_ShouldAcceptCorrection()
     {
         Guid factId = Guid.NewGuid();
-        HistoricalFact predecessor = CreateFact(factId, 1, null, RecordedAtUtc.AddMinutes(-1));
+        HistoricalFact predecessor = CreateFact(factId, 5, 4, RecordedAtUtc.AddMinutes(-1));
         HistoricalFact correction = CreateFact(
             factId,
-            2,
-            1,
+            6,
+            5,
             RecordedAtUtc,
             HistoricalEditorialWorkflowState.Corrected,
             HistoricalPublicationState.Published);
@@ -39,8 +39,8 @@ public sealed class HistoricalFactRevisionValidatorTests
     [Fact]
     public void ValidatePredecessor_WhenRevisionBelongsToAnotherFact_ShouldRejectCorrection()
     {
-        HistoricalFact predecessor = CreateFact(Guid.NewGuid(), 1, null, RecordedAtUtc.AddMinutes(-1));
-        HistoricalFact correction = CreateFact(Guid.NewGuid(), 2, 1, RecordedAtUtc);
+        HistoricalFact predecessor = CreateFact(Guid.NewGuid(), 5, 4, RecordedAtUtc.AddMinutes(-1));
+        HistoricalFact correction = CreateFact(Guid.NewGuid(), 6, 5, RecordedAtUtc);
 
         Assert.Throws<HistoricalPersistenceValidationException>(() =>
             HistoricalFactRevisionValidator.ValidatePredecessor(correction, predecessor));
@@ -73,11 +73,11 @@ public sealed class HistoricalFactRevisionValidatorTests
     public void ValidatePredecessor_WhenPublishedFactReturnsToDraft_ShouldRejectTransition()
     {
         Guid factId = Guid.NewGuid();
-        HistoricalFact predecessor = CreateFact(factId, 1, null, RecordedAtUtc.AddMinutes(-1));
+        HistoricalFact predecessor = CreateFact(factId, 5, 4, RecordedAtUtc.AddMinutes(-1));
         HistoricalFact draft = CreateFact(
             factId,
-            2,
-            1,
+            6,
+            5,
             RecordedAtUtc,
             HistoricalEditorialWorkflowState.Draft,
             HistoricalPublicationState.Draft);

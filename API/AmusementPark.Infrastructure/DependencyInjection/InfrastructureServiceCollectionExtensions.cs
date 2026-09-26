@@ -372,6 +372,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IParkOpeningHoursRepository, ParkOpeningHoursRepository>();
         services.AddScoped<IParkPricingRepository, ParkPricingRepository>();
         services.AddScoped<IHistoryEventRepository, HistoryEventRepository>();
+        services.AddScoped<IHistoricalSubjectPublicationStateReader, HistoricalSubjectPublicationStateReader>();
         services.AddScoped<IHistoricalFactRepository, HistoricalFactRepository>();
         services.AddScoped<IHistoricalSourceRepository, HistoricalSourceRepository>();
         services.AddScoped<HistoricalReviewEventRepository>();

@@ -30,7 +30,8 @@ public sealed class HistoricalFact
         string? publicationMethodologyVersion,
         int revision,
         int? supersedesRevision,
-        DateTime recordedAtUtc)
+        DateTime recordedAtUtc,
+        HistoricalRevisionOrigin revisionOrigin = HistoricalRevisionOrigin.Ordinary)
     {
         if (id == Guid.Empty)
         {
@@ -39,8 +40,8 @@ public sealed class HistoricalFact
 
         ArgumentNullException.ThrowIfNull(subject);
         ArgumentNullException.ThrowIfNull(period);
-        ValidateEnums(type, state, importance, workflowState, publicationState);
-        ValidateRevision(revision, supersedesRevision, workflowState, publicationState);
+        ValidateEnums(type, state, importance, workflowState, publicationState, revisionOrigin);
+        ValidateRevision(revision, supersedesRevision, workflowState, publicationState, revisionOrigin);
         EnsureUtc(recordedAtUtc);
         EnsureOptionalUtc(verifiedAtUtc);
         EnsureOptionalUtc(publishedAtUtc);
@@ -111,6 +112,7 @@ public sealed class HistoricalFact
         this.Revision = revision;
         this.SupersedesRevision = supersedesRevision;
         this.RecordedAtUtc = recordedAtUtc;
+        this.RevisionOrigin = revisionOrigin;
     }
 
     public Guid Id { get; }
@@ -159,6 +161,8 @@ public sealed class HistoricalFact
 
     public DateTime RecordedAtUtc { get; }
 
+    public HistoricalRevisionOrigin RevisionOrigin { get; }
+
     public bool IsDecisionEligible => this.PublicationState == HistoricalPublicationState.Published
         && (this.State is HistoricalFactState.Verified
             or HistoricalFactState.Probable
@@ -169,13 +173,15 @@ public sealed class HistoricalFact
         HistoricalFactState state,
         HistoricalImportance importance,
         HistoricalEditorialWorkflowState workflowState,
-        HistoricalPublicationState publicationState)
+        HistoricalPublicationState publicationState,
+        HistoricalRevisionOrigin revisionOrigin)
     {
         if (!Enum.IsDefined(type)
             || !Enum.IsDefined(state)
             || !Enum.IsDefined(importance)
             || !Enum.IsDefined(workflowState)
-            || !Enum.IsDefined(publicationState))
+            || !Enum.IsDefined(publicationState)
+            || !Enum.IsDefined(revisionOrigin))
         {
             throw Invalid(HistoricalPersistenceErrorCodes.InvalidEnum, "A historical fact contains an invalid state.");
         }
@@ -185,7 +191,8 @@ public sealed class HistoricalFact
         int revision,
         int? supersedesRevision,
         HistoricalEditorialWorkflowState workflowState,
-        HistoricalPublicationState publicationState)
+        HistoricalPublicationState publicationState,
+        HistoricalRevisionOrigin revisionOrigin)
     {
         bool valid = revision >= 1
             && (revision == 1
@@ -199,14 +206,23 @@ public sealed class HistoricalFact
         }
 
 
-        if (revision == 1
-            && (workflowState is HistoricalEditorialWorkflowState.Corrected
-                or HistoricalEditorialWorkflowState.Retracted
-                || publicationState == HistoricalPublicationState.Withdrawn))
+        bool validInitialRevision = revisionOrigin switch
+        {
+            HistoricalRevisionOrigin.Ordinary => revision != 1
+                || (workflowState == HistoricalEditorialWorkflowState.Draft
+                    && publicationState == HistoricalPublicationState.Draft),
+            HistoricalRevisionOrigin.LegacyMigration => revision != 1
+                || (workflowState == HistoricalEditorialWorkflowState.EditorialReview
+                    && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+            _ => false,
+        };
+        if (!validInitialRevision
+            || (revision > 1
+                && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview))
         {
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidRevision,
-                "A first historical fact revision cannot represent a correction or retraction.");
+                "A historical fact must start as a draft or through the explicit legacy migration state.");
         }
     }
 

@@ -23,6 +23,7 @@ public static class HistoricalSourceRevisionValidator
         if (predecessor is null
             || predecessor.Id != source.Id
             || predecessor.Revision != source.Revision - 1
+            || predecessor.RevisionOrigin != source.RevisionOrigin
             || predecessor.RecordedAtUtc > source.RecordedAtUtc
             || !IsWorkflowTransitionValid(source, predecessor))
         {
@@ -44,9 +45,25 @@ public static class HistoricalSourceRevisionValidator
                 predecessor.WorkflowState is HistoricalEditorialWorkflowState.Published
                     or HistoricalEditorialWorkflowState.Corrected
                 && predecessor.PublicationState == HistoricalPublicationState.Published,
-            _ => predecessor.WorkflowState < HistoricalEditorialWorkflowState.Published
-                && source.WorkflowState >= predecessor.WorkflowState
-                && (int)source.WorkflowState <= (int)predecessor.WorkflowState + 1,
+            _ => IsPrePublicationTransitionValid(source.WorkflowState, predecessor.WorkflowState),
+        };
+    }
+
+    private static bool IsPrePublicationTransitionValid(
+        HistoricalEditorialWorkflowState workflowState,
+        HistoricalEditorialWorkflowState predecessorWorkflowState)
+    {
+        return predecessorWorkflowState switch
+        {
+            HistoricalEditorialWorkflowState.Draft => workflowState is HistoricalEditorialWorkflowState.Draft
+                or HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalEditorialWorkflowState.EditorialReview =>
+                workflowState is HistoricalEditorialWorkflowState.EditorialReview
+                    or HistoricalEditorialWorkflowState.StructuredValidation,
+            HistoricalEditorialWorkflowState.StructuredValidation =>
+                workflowState is HistoricalEditorialWorkflowState.StructuredValidation
+                    or HistoricalEditorialWorkflowState.Published,
+            _ => false,
         };
     }
 

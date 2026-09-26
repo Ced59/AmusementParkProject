@@ -49,6 +49,7 @@ public sealed class HistoricalPersistenceMongoMapperTests
         Assert.Equal(fact.Id, restored.Id);
         Assert.Equal(2, restored.Revision);
         Assert.Equal(1, restored.SupersedesRevision);
+        Assert.Equal(HistoricalRevisionOrigin.Ordinary, restored.RevisionOrigin);
         HistoricalSourceRevisionReference sourceReference = Assert.Single(restored.SourceReferences);
         Assert.Equal(sourceId, sourceReference.SourceId);
         Assert.Equal(4, sourceReference.Revision);
@@ -84,6 +85,7 @@ public sealed class HistoricalPersistenceMongoMapperTests
 
         Assert.Equal(source.Id, restored.Id);
         Assert.Equal(source.Revision, restored.Revision);
+        Assert.Equal(HistoricalRevisionOrigin.Ordinary, restored.RevisionOrigin);
         Assert.Equal(source.PublishedOn, restored.PublishedOn);
         Assert.Equal(source.AccessedOn, restored.AccessedOn);
         Assert.Equal(source.Scopes, restored.Scopes);

@@ -16,6 +16,7 @@ internal static class HistoricalPersistenceMongoMapper
             Id = BuildRevisionDocumentId(fact.Id, fact.Revision),
             FactId = fact.Id.ToString("N", CultureInfo.InvariantCulture),
             Revision = fact.Revision,
+            RevisionOrigin = fact.RevisionOrigin,
             SupersedesRevision = fact.SupersedesRevision,
             Subject = ToDocument(fact.Subject),
             Type = fact.Type,
@@ -87,7 +88,8 @@ internal static class HistoricalPersistenceMongoMapper
             document.PublicationMethodologyVersion,
             document.Revision,
             document.SupersedesRevision,
-            NormalizeToBsonPrecision(document.CreatedAt));
+            NormalizeToBsonPrecision(document.CreatedAt),
+            document.RevisionOrigin);
     }
 
     public static HistoricalSourceDocument ToDocument(this HistoricalSourceReference source)
@@ -99,6 +101,7 @@ internal static class HistoricalPersistenceMongoMapper
             Id = BuildRevisionDocumentId(source.Id, source.Revision),
             SourceId = source.Id.ToString("N", CultureInfo.InvariantCulture),
             Revision = source.Revision,
+            RevisionOrigin = source.RevisionOrigin,
             Type = source.Type,
             Title = source.Title,
             PublisherOrAuthor = source.PublisherOrAuthor,
@@ -138,7 +141,8 @@ internal static class HistoricalPersistenceMongoMapper
             document.Accessibility,
             document.WorkflowState,
             document.PublicationState,
-            NormalizeToBsonPrecision(document.CreatedAt));
+            NormalizeToBsonPrecision(document.CreatedAt),
+            document.RevisionOrigin);
     }
 
     public static HistoricalReviewEventDocument ToDocument(this HistoricalReviewEvent reviewEvent)

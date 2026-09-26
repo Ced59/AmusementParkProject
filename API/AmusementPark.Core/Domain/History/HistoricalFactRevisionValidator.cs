@@ -22,6 +22,7 @@ public static class HistoricalFactRevisionValidator
             || fact.SupersedesRevision != fact.Revision - 1
             || predecessor.Id != fact.Id
             || predecessor.Revision != fact.SupersedesRevision
+            || predecessor.RevisionOrigin != fact.RevisionOrigin
             || predecessor.RecordedAtUtc > fact.RecordedAtUtc
             || !IsWorkflowTransitionValid(fact, predecessor))
         {

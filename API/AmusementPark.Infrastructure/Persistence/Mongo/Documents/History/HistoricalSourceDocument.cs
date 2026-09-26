@@ -14,6 +14,10 @@ public sealed class HistoricalSourceDocument : MongoDocumentBase
     [BsonElement("revision")]
     public int Revision { get; set; }
 
+    [BsonElement("revisionOrigin")]
+    [BsonRepresentation(BsonType.String)]
+    public HistoricalRevisionOrigin RevisionOrigin { get; set; }
+
     [BsonElement("type")]
     [BsonRepresentation(BsonType.String)]
     public HistoricalSourceType Type { get; set; }
