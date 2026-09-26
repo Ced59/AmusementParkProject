@@ -513,8 +513,17 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         }
 
         return lifecycleFacts.Any(candidate => candidate.Type == HistoricalFactType.Reopening
-            && HistoricalTransitionApplicabilityResolver.IsEvidenceCertain(candidate)
+            && HasConfirmedReopeningBoundary(candidate)
             && HistoricalTransitionOrdering.MustPrecede(fact, candidate));
+    }
+
+    private static bool HasConfirmedReopeningBoundary(HistoricalFact fact)
+    {
+        return fact.State == HistoricalFactState.Verified
+            && fact.Period.IsPoint
+            && fact.Period.StartConfidence == PeriodBoundaryConfidence.Confirmed
+            && fact.Period.EndConfidence == PeriodBoundaryConfidence.Confirmed
+            && fact.Period.Start is { IsApproximate: false };
     }
 
     private static bool IsExactFirstClosedDay(HistoricalFact fact, DateOnly requestedDate)

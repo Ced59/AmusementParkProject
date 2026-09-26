@@ -432,6 +432,36 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_WithAfterQualifiedReopening_BoundsClosureBeforeItsOpenEnvelope()
+    {
+        HistoricalFact[] facts =
+        {
+            CreateLifecycleFact(
+                HistoricalFactType.Opening,
+                HistoricalDate.ForDay(2000, 1, 1),
+                LifecycleBoundaryMeaning.FirstOperatingDay),
+            CreateLifecycleFact(
+                HistoricalFactType.TemporaryClosure,
+                HistoricalDate.ForDay(2005, 6, 1),
+                LifecycleBoundaryMeaning.FirstClosedDay),
+            CreateLifecycleFact(
+                HistoricalFactType.Reopening,
+                HistoricalDate.ForYear(2007, qualifier: DateQualifier.After),
+                LifecycleBoundaryMeaning.FirstOperatingDay),
+        };
+
+        HistoricalSubjectSnapshot beforeReopeningEnvelope = this.BuildSubject(
+            HistoricalInstant.ForDay(2006, 6, 1),
+            facts);
+        HistoricalSubjectSnapshot insideReopeningEnvelope = this.BuildSubject(
+            HistoricalInstant.ForDay(2008, 6, 1),
+            facts);
+
+        Assert.Equal(HistoricalOperationalState.KnownClosed, beforeReopeningEnvelope.OperationalState);
+        Assert.Equal(HistoricalOperationalState.PossiblyOpen, insideReopeningEnvelope.OperationalState);
+    }
+
+    [Fact]
     public void Build_WithProbableOpening_ReturnsPossiblyOpen()
     {
         HistoricalFact opening = CreateLifecycleFact(
