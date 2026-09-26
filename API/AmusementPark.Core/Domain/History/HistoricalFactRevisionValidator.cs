@@ -40,8 +40,12 @@ public static class HistoricalFactRevisionValidator
                 && predecessor.PublicationState == HistoricalPublicationState.Published,
             HistoricalEditorialWorkflowState.Retracted =>
                 predecessor.WorkflowState is HistoricalEditorialWorkflowState.Published
-                    or HistoricalEditorialWorkflowState.Corrected
-                && predecessor.PublicationState == HistoricalPublicationState.Published,
+                        or HistoricalEditorialWorkflowState.Corrected
+                    && predecessor.PublicationState == HistoricalPublicationState.Published
+                || predecessor.RevisionOrigin == HistoricalRevisionOrigin.LegacyMigration
+                    && predecessor.WorkflowState == HistoricalEditorialWorkflowState.EditorialReview
+                    && predecessor.PublicationState
+                        == HistoricalPublicationState.LegacyPublishedPendingReview,
             _ => predecessor.WorkflowState < HistoricalEditorialWorkflowState.Published
                 && fact.WorkflowState >= predecessor.WorkflowState
                 && (int)fact.WorkflowState <= (int)predecessor.WorkflowState + 1,

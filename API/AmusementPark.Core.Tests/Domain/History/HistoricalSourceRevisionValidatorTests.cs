@@ -123,12 +123,35 @@ public sealed class HistoricalSourceRevisionValidatorTests
         HistoricalSourceRevisionValidator.ValidatePredecessor(editorialReview, predecessor);
     }
 
+    [Fact]
+    public void ValidatePredecessor_WhenLegacyMigrationIsRejected_ShouldAcceptRetraction()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalSourceReference predecessor = CreateSource(
+            sourceId,
+            1,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalRevisionOrigin.LegacyMigration);
+        HistoricalSourceReference retraction = CreateSource(
+            sourceId,
+            2,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.Retracted,
+            HistoricalPublicationState.Withdrawn,
+            HistoricalRevisionOrigin.LegacyMigration);
+
+        HistoricalSourceRevisionValidator.ValidatePredecessor(retraction, predecessor);
+    }
+
     private static HistoricalSourceReference CreateSource(
         Guid sourceId,
         int revision,
         DateTime recordedAtUtc,
         HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published,
-        HistoricalPublicationState publicationState = HistoricalPublicationState.Published)
+        HistoricalPublicationState publicationState = HistoricalPublicationState.Published,
+        HistoricalRevisionOrigin revisionOrigin = HistoricalRevisionOrigin.Ordinary)
     {
         return new HistoricalSourceReference(
             sourceId,
@@ -147,6 +170,7 @@ public sealed class HistoricalSourceRevisionValidatorTests
             HistoricalSourceAccessibility.Accessible,
             workflowState,
             publicationState,
-            recordedAtUtc);
+            recordedAtUtc,
+            revisionOrigin);
     }
 }

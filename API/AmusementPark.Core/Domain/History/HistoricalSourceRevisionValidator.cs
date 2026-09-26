@@ -43,8 +43,12 @@ public static class HistoricalSourceRevisionValidator
                 && predecessor.PublicationState == HistoricalPublicationState.Published,
             HistoricalEditorialWorkflowState.Retracted =>
                 predecessor.WorkflowState is HistoricalEditorialWorkflowState.Published
-                    or HistoricalEditorialWorkflowState.Corrected
-                && predecessor.PublicationState == HistoricalPublicationState.Published,
+                        or HistoricalEditorialWorkflowState.Corrected
+                    && predecessor.PublicationState == HistoricalPublicationState.Published
+                || predecessor.RevisionOrigin == HistoricalRevisionOrigin.LegacyMigration
+                    && predecessor.WorkflowState == HistoricalEditorialWorkflowState.EditorialReview
+                    && predecessor.PublicationState
+                        == HistoricalPublicationState.LegacyPublishedPendingReview,
             _ => IsPrePublicationTransitionValid(source.WorkflowState, predecessor.WorkflowState),
         };
     }

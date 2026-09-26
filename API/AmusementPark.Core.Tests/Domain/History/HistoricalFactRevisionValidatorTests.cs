@@ -109,15 +109,42 @@ public sealed class HistoricalFactRevisionValidatorTests
             HistoricalFactRevisionValidator.ValidatePredecessor(structuredValidation, predecessor));
     }
 
+    [Fact]
+    public void ValidatePredecessor_WhenLegacyMigrationIsRejected_ShouldAcceptRetraction()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact predecessor = CreateFact(
+            factId,
+            1,
+            null,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalRevisionOrigin.LegacyMigration);
+        HistoricalFact retraction = CreateFact(
+            factId,
+            2,
+            1,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.Retracted,
+            HistoricalPublicationState.Withdrawn,
+            HistoricalRevisionOrigin.LegacyMigration);
+
+        HistoricalFactRevisionValidator.ValidatePredecessor(retraction, predecessor);
+    }
+
     private static HistoricalFact CreateFact(
         Guid factId,
         int revision,
         int? supersedesRevision,
         DateTime recordedAtUtc,
         HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published,
-        HistoricalPublicationState publicationState = HistoricalPublicationState.Published)
+        HistoricalPublicationState publicationState = HistoricalPublicationState.Published,
+        HistoricalRevisionOrigin revisionOrigin = HistoricalRevisionOrigin.Ordinary)
     {
         bool isPublished = publicationState == HistoricalPublicationState.Published;
+        bool isLegacyMigration = publicationState
+            == HistoricalPublicationState.LegacyPublishedPendingReview;
         return new HistoricalFact(
             factId,
             new HistoricalSubject(
@@ -127,11 +154,19 @@ public sealed class HistoricalFactRevisionValidatorTests
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
             HistoricalFactType.Opening,
             HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
-            isPublished ? HistoricalFactState.Verified : HistoricalFactState.Unverified,
+            workflowState == HistoricalEditorialWorkflowState.Retracted
+                ? HistoricalFactState.Retracted
+                : isPublished
+                    ? HistoricalFactState.Verified
+                    : HistoricalFactState.Unverified,
             HistoricalImportance.Major,
             workflowState,
             publicationState,
-            Array.Empty<HistoricalLocalizedText>(),
+            isLegacyMigration
+                ? HistoricalLocalizationPolicy.SupportedLanguageCodes
+                    .Select(languageCode => new HistoricalLocalizedText(languageCode, "Migration pending review."))
+                    .ToArray()
+                : Array.Empty<HistoricalLocalizedText>(),
             LifecycleBoundaryMeaning.FirstOperatingDay,
             null,
             null,
@@ -142,9 +177,12 @@ public sealed class HistoricalFactRevisionValidatorTests
             "history-opening-1998",
             isPublished ? recordedAtUtc.AddMinutes(-2) : null,
             isPublished ? recordedAtUtc.AddMinutes(-1) : null,
-            isPublished ? "hist-v1" : null,
+            isPublished || isLegacyMigration || publicationState == HistoricalPublicationState.Withdrawn
+                ? "hist-v1"
+                : null,
             revision,
             supersedesRevision,
-            recordedAtUtc);
+            recordedAtUtc,
+            revisionOrigin);
     }
 }
