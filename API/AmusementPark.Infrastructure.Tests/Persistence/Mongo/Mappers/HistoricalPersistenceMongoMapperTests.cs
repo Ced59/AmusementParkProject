@@ -50,7 +50,12 @@ public sealed class HistoricalPersistenceMongoMapperTests
                         HistoricalSourceScope.FactType,
                         HistoricalSourceScope.Period,
                         HistoricalSourceScope.SequenceWithinDate,
-                    }),
+                        HistoricalSourceScope.Narrative,
+                    },
+                    "Parc historique",
+                    null,
+                    1,
+                    "opening-1998"),
             },
             null,
             null,
@@ -82,7 +87,10 @@ public sealed class HistoricalPersistenceMongoMapperTests
         Assert.Equal(HistoricalFactType.Opening, sourceReference.FactType);
         Assert.Equal(period, sourceReference.Period);
         Assert.Equal(HistoricalEvidencePosition.Supports, sourceReference.Position);
-        Assert.Equal(5, sourceReference.Scopes.Count);
+        Assert.Equal(6, sourceReference.Scopes.Count);
+        Assert.Equal("Parc historique", sourceReference.HistoricalLabel);
+        Assert.Equal(1, sourceReference.SequenceWithinDate);
+        Assert.Equal("opening-1998", sourceReference.NarrativeContentId);
         Assert.Equal("park-1", restored.Subject.Id);
         Assert.Equal(0, restored.RecordedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
         Assert.Equal(0, restored.VerifiedAtUtc?.Ticks % TimeSpan.TicksPerMillisecond);

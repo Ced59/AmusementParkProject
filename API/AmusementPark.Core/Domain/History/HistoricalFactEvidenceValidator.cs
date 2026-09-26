@@ -36,7 +36,21 @@ public static class HistoricalFactEvidenceValidator
             reference.SubjectType == fact.Subject.Type
             && string.Equals(reference.SubjectId, fact.Subject.Id, StringComparison.Ordinal)
             && reference.FactType == fact.Type
-            && reference.Period == fact.Period);
+            && reference.Period == fact.Period
+            && (!reference.Scopes.Contains(HistoricalSourceScope.HistoricalLabel)
+                || string.Equals(
+                    reference.HistoricalLabel,
+                    fact.Subject.HistoricalLabel,
+                    StringComparison.Ordinal))
+            && (!reference.Scopes.Contains(HistoricalSourceScope.StructuredValue)
+                || string.Equals(reference.StructuredValue, fact.StructuredValue, StringComparison.Ordinal))
+            && (!reference.Scopes.Contains(HistoricalSourceScope.SequenceWithinDate)
+                || reference.SequenceWithinDate == fact.SequenceWithinDate)
+            && (!reference.Scopes.Contains(HistoricalSourceScope.Narrative)
+                || string.Equals(
+                    reference.NarrativeContentId,
+                    fact.NarrativeContentId,
+                    StringComparison.Ordinal)));
         if (!everyReferenceIsBoundToFact)
         {
             throw Invalid(
@@ -132,6 +146,11 @@ public static class HistoricalFactEvidenceValidator
         if (fact.SequenceWithinDate.HasValue)
         {
             scopes.Add(HistoricalSourceScope.SequenceWithinDate);
+        }
+
+        if (fact.NarrativeContentId is not null)
+        {
+            scopes.Add(HistoricalSourceScope.Narrative);
         }
 
         return scopes.ToArray();

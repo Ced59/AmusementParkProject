@@ -32,4 +32,20 @@ public sealed class HistoricalSourceRevisionDocument
 
     [BsonElement("scopes")]
     public List<HistoricalSourceScope> Scopes { get; set; } = new List<HistoricalSourceScope>();
+
+    [BsonElement("historicalLabel")]
+    [BsonIgnoreIfNull]
+    public string? HistoricalLabel { get; set; }
+
+    [BsonElement("structuredValue")]
+    [BsonIgnoreIfNull]
+    public string? StructuredValue { get; set; }
+
+    [BsonElement("sequenceWithinDate")]
+    [BsonIgnoreIfNull]
+    public int? SequenceWithinDate { get; set; }
+
+    [BsonElement("narrativeContentId")]
+    [BsonIgnoreIfNull]
+    public string? NarrativeContentId { get; set; }
 }

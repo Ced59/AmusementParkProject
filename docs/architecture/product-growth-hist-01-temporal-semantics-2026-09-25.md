@@ -276,7 +276,10 @@ ne remplace pas leur qualité.
 Chaque citation d'une révision de source mémorise aussi l'assertion exacte à
 laquelle elle s'applique : type et identifiant du sujet, type de fait, période
 et portées précises que cette source couvre pour cette assertion. La citation
-indique aussi si la source confirme ou contredit l'assertion.
+indique aussi si la source confirme ou contredit l'assertion. Les portées qui
+dépendent d'une valeur conservent cette valeur exacte : libellé historique,
+valeur structurée, ordre intra-journalier et récit lié. Une citation antérieure
+ne peut donc pas être réutilisée après correction de la valeur.
 Une source portant des portées génériques ne peut donc pas valider un fait sur
 un autre parc, une autre attraction, un autre événement ou une autre période.
 Au moins une même source doit couvrir ensemble le sujet, le type et la période ;
@@ -585,6 +588,8 @@ rejouable après que le Core et la persistance canoniques auront été livrés.
   de mise en avant, routage d’article et éligibilité sitemap ;
 - conservation d’une copie de sauvegarde et d’un rapport avant bascule ;
 - migration idempotente avec marqueur de version et compteurs avant/après ;
+- la première révision importée porte obligatoirement l'événement d'audit
+  `Migrated`, jamais une transition éditoriale ordinaire ;
 - les enregistrements incomplets deviennent `Unverified`, pas `Verified` ;
 - `HistoryArticle.IsPublished` est migré vers l’état de publication propre du
   récit, indépendamment de celui du fait ;

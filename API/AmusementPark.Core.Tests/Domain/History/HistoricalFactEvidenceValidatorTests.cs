@@ -141,11 +141,53 @@ public sealed class HistoricalFactEvidenceValidatorTests
     }
 
     [Fact]
+    public void Validate_WhenCitationHistoricalLabelDiffers_ShouldRejectEvidence()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(
+            new[] { sourceId },
+            referenceHistoricalLabel: "Ancien libellé sans rapport");
+        HistoricalSourceReference source = CreateSource(sourceId);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalFactEvidenceValidator.Validate(fact, new[] { source }));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidSourceScope, exception.ErrorCode);
+    }
+
+    [Fact]
     public void Validate_WhenSameDaySequenceIsNotCovered_ShouldRejectEvidence()
     {
         Guid sourceId = Guid.NewGuid();
         HistoricalFact fact = CreateFact(sourceId, sequenceWithinDate: 1);
         HistoricalSourceReference source = CreateSource(sourceId);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalFactEvidenceValidator.Validate(fact, new[] { source }));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidSourceScope, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Validate_WhenCitedSameDaySequenceDiffers_ShouldRejectEvidence()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(
+            new[] { sourceId },
+            sequenceWithinDate: 1,
+            referenceSequenceWithinDate: 2);
+        HistoricalSourceReference source = CreateSource(
+            sourceId,
+            scopes: new[]
+            {
+                HistoricalSourceScope.SubjectIdentity,
+                HistoricalSourceScope.HistoricalLabel,
+                HistoricalSourceScope.FactType,
+                HistoricalSourceScope.Period,
+                HistoricalSourceScope.SequenceWithinDate,
+            });
 
         HistoricalPersistenceValidationException exception =
             Assert.Throws<HistoricalPersistenceValidationException>(() =>
@@ -243,7 +285,7 @@ public sealed class HistoricalFactEvidenceValidatorTests
         HistoricalFact fact = CreateFact(
             new[] { supportingSourceId, contradictingSourceId },
             referenceScopesFactory: sourceId => sourceId == contradictingSourceId
-                ? new[] { HistoricalSourceScope.StructuredValue }
+                ? new[] { HistoricalSourceScope.Narrative }
                 : new[]
                 {
                     HistoricalSourceScope.SubjectIdentity,
@@ -254,7 +296,8 @@ public sealed class HistoricalFactEvidenceValidatorTests
             state: HistoricalFactState.Disputed,
             referencePositionFactory: sourceId => sourceId == contradictingSourceId
                 ? HistoricalEvidencePosition.Contradicts
-                : HistoricalEvidencePosition.Supports);
+                : HistoricalEvidencePosition.Supports,
+            narrativeContentId: "narrative-1");
 
         HistoricalPersistenceValidationException exception =
             Assert.Throws<HistoricalPersistenceValidationException>(() =>
@@ -265,7 +308,7 @@ public sealed class HistoricalFactEvidenceValidatorTests
                         CreateSource(supportingSourceId),
                         CreateSource(
                             contradictingSourceId,
-                            scopes: new[] { HistoricalSourceScope.StructuredValue }),
+                            scopes: new[] { HistoricalSourceScope.Narrative }),
                     }));
 
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
@@ -282,7 +325,10 @@ public sealed class HistoricalFactEvidenceValidatorTests
         string referenceSubjectId = "park-1",
         Func<Guid, IReadOnlyCollection<HistoricalSourceScope>>? referenceScopesFactory = null,
         HistoricalFactState state = HistoricalFactState.Verified,
-        Func<Guid, HistoricalEvidencePosition>? referencePositionFactory = null)
+        Func<Guid, HistoricalEvidencePosition>? referencePositionFactory = null,
+        string referenceHistoricalLabel = "Parc exemple",
+        string? narrativeContentId = null,
+        int? referenceSequenceWithinDate = null)
     {
         HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
         return new HistoricalFact(
@@ -339,12 +385,22 @@ public sealed class HistoricalFactEvidenceValidatorTests
                         period,
                         referencePositionFactory?.Invoke(sourceId)
                             ?? HistoricalEvidencePosition.Supports,
-                        referenceScopes);
+                        referenceScopes,
+                        referenceScopes.Contains(HistoricalSourceScope.HistoricalLabel)
+                            ? referenceHistoricalLabel
+                            : null,
+                        null,
+                        referenceScopes.Contains(HistoricalSourceScope.SequenceWithinDate)
+                            ? referenceSequenceWithinDate ?? sequenceWithinDate
+                            : null,
+                        referenceScopes.Contains(HistoricalSourceScope.Narrative)
+                            ? narrativeContentId
+                            : null);
                 })
                 .ToArray(),
             null,
             null,
-            null,
+            narrativeContentId,
             state == HistoricalFactState.Verified ? RecordedAtUtc.AddMinutes(-2) : null,
             RecordedAtUtc.AddMinutes(-1),
             "hist-v1",

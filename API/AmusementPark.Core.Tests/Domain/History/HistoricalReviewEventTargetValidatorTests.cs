@@ -77,6 +77,40 @@ public sealed class HistoricalReviewEventTargetValidatorTests
         HistoricalReviewEventTargetValidator.ValidateSourceTarget(reviewEvent, source);
     }
 
+    [Fact]
+    public void ValidateFactTarget_WhenInitialLegacyRevisionUsesEditorialSubmission_ShouldRejectEvent()
+    {
+        HistoricalFact fact = CreateLegacyFact();
+        HistoricalReviewEvent reviewEvent = CreateEvent(
+            HistoricalReviewResourceType.Fact,
+            fact.Id,
+            fact.Revision,
+            HistoricalReviewEventType.SubmittedForEditorialReview);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalReviewEventTargetValidator.ValidateFactTarget(reviewEvent, fact));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidReviewEvent, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void ValidateSourceTarget_WhenInitialLegacyRevisionUsesEditorialSubmission_ShouldRejectEvent()
+    {
+        HistoricalSourceReference source = CreateLegacySource();
+        HistoricalReviewEvent reviewEvent = CreateEvent(
+            HistoricalReviewResourceType.Source,
+            source.Id,
+            source.Revision,
+            HistoricalReviewEventType.SubmittedForEditorialReview);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalReviewEventTargetValidator.ValidateSourceTarget(reviewEvent, source));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidReviewEvent, exception.ErrorCode);
+    }
+
     private static HistoricalReviewEvent CreateEvent(
         HistoricalReviewResourceType resourceType,
         Guid resourceId,
@@ -131,7 +165,11 @@ public sealed class HistoricalReviewEventTargetValidatorTests
                         HistoricalSourceScope.HistoricalLabel,
                         HistoricalSourceScope.FactType,
                         HistoricalSourceScope.Period,
-                    }),
+                    },
+                    "Parc exemple",
+                    null,
+                    null,
+                    null),
             },
             null,
             null,
@@ -196,5 +234,65 @@ public sealed class HistoricalReviewEventTargetValidatorTests
             HistoricalEditorialWorkflowState.Draft,
             HistoricalPublicationState.Draft,
             RecordedAtUtc);
+    }
+
+    private static HistoricalFact CreateLegacyFact()
+    {
+        return new HistoricalFact(
+            Guid.NewGuid(),
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                "park-1",
+                "Parc exemple",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForYear(1998)),
+            HistoricalFactState.Unverified,
+            HistoricalImportance.Major,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalLocalizationPolicy.SupportedLanguageCodes
+                .Select(static languageCode => new HistoricalLocalizedText(
+                    languageCode,
+                    "Contenu historique hérité en attente de revue."))
+                .ToArray(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            Array.Empty<HistoricalSourceRevisionReference>(),
+            null,
+            null,
+            "legacy-event-1",
+            null,
+            null,
+            "hist-v1-legacy",
+            1,
+            null,
+            RecordedAtUtc,
+            HistoricalRevisionOrigin.LegacyMigration);
+    }
+
+    private static HistoricalSourceReference CreateLegacySource()
+    {
+        return new HistoricalSourceReference(
+            Guid.NewGuid(),
+            1,
+            HistoricalSourceType.OfficialWebsite,
+            "Source historique héritée",
+            "Éditeur historique",
+            "https://example.com/legacy-history",
+            null,
+            null,
+            new DateOnly(2026, 9, 25),
+            "fr",
+            null,
+            new[] { HistoricalSourceScope.Period },
+            null,
+            HistoricalSourceAccessibility.Accessible,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            RecordedAtUtc,
+            HistoricalRevisionOrigin.LegacyMigration);
     }
 }

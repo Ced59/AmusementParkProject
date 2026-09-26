@@ -10,7 +10,11 @@ public sealed record HistoricalSourceRevisionReference
         HistoricalFactType factType,
         HistoricalPeriod period,
         HistoricalEvidencePosition position,
-        IReadOnlyCollection<HistoricalSourceScope> scopes)
+        IReadOnlyCollection<HistoricalSourceScope> scopes,
+        string? historicalLabel,
+        string? structuredValue,
+        int? sequenceWithinDate,
+        string? narrativeContentId)
     {
         if (sourceId == Guid.Empty)
         {
@@ -60,6 +64,25 @@ public sealed record HistoricalSourceRevisionReference
             .Distinct()
             .OrderBy(static scope => scope)
             .ToArray();
+        string? normalizedHistoricalLabel = NormalizeOptional(historicalLabel, 300);
+        string? normalizedStructuredValue = NormalizeOptional(structuredValue, 16000);
+        string? normalizedNarrativeContentId = NormalizeOptional(narrativeContentId, 200);
+        ValidateScopedValue(
+            normalizedScopes,
+            HistoricalSourceScope.HistoricalLabel,
+            normalizedHistoricalLabel is not null);
+        ValidateScopedValue(
+            normalizedScopes,
+            HistoricalSourceScope.StructuredValue,
+            normalizedStructuredValue is not null);
+        ValidateScopedValue(
+            normalizedScopes,
+            HistoricalSourceScope.SequenceWithinDate,
+            sequenceWithinDate.HasValue);
+        ValidateScopedValue(
+            normalizedScopes,
+            HistoricalSourceScope.Narrative,
+            normalizedNarrativeContentId is not null);
 
         this.SourceId = sourceId;
         this.Revision = revision;
@@ -69,6 +92,10 @@ public sealed record HistoricalSourceRevisionReference
         this.Period = period;
         this.Position = position;
         this.Scopes = Array.AsReadOnly(normalizedScopes);
+        this.HistoricalLabel = normalizedHistoricalLabel;
+        this.StructuredValue = normalizedStructuredValue;
+        this.SequenceWithinDate = sequenceWithinDate;
+        this.NarrativeContentId = normalizedNarrativeContentId;
     }
 
     public Guid SourceId { get; }
@@ -86,4 +113,45 @@ public sealed record HistoricalSourceRevisionReference
     public HistoricalEvidencePosition Position { get; }
 
     public IReadOnlyList<HistoricalSourceScope> Scopes { get; }
+
+    public string? HistoricalLabel { get; }
+
+    public string? StructuredValue { get; }
+
+    public int? SequenceWithinDate { get; }
+
+    public string? NarrativeContentId { get; }
+
+    private static string? NormalizeOptional(string? value, int maximumLength)
+    {
+        if (value is null)
+        {
+            return null;
+        }
+
+        string normalizedValue = value.Trim();
+        if (normalizedValue.Length == 0
+            || normalizedValue.Length > maximumLength
+            || normalizedValue.Any(char.IsControl))
+        {
+            throw new HistoricalPersistenceValidationException(
+                HistoricalPersistenceErrorCodes.InvalidSourceScope,
+                "A scoped historical source value is invalid.");
+        }
+
+        return normalizedValue;
+    }
+
+    private static void ValidateScopedValue(
+        IReadOnlyCollection<HistoricalSourceScope> scopes,
+        HistoricalSourceScope scope,
+        bool hasValue)
+    {
+        if (scopes.Contains(scope) != hasValue)
+        {
+            throw new HistoricalPersistenceValidationException(
+                HistoricalPersistenceErrorCodes.InvalidSourceScope,
+                "A historical source citation must persist every value-specific scope exactly.");
+        }
+    }
 }

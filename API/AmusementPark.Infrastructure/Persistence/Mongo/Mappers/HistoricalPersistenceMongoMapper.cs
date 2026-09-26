@@ -50,6 +50,10 @@ internal static class HistoricalPersistenceMongoMapper
                     Period = ToDocument(sourceReference.Period),
                     Position = sourceReference.Position,
                     Scopes = sourceReference.Scopes.ToList(),
+                    HistoricalLabel = sourceReference.HistoricalLabel,
+                    StructuredValue = sourceReference.StructuredValue,
+                    SequenceWithinDate = sourceReference.SequenceWithinDate,
+                    NarrativeContentId = sourceReference.NarrativeContentId,
                 })
                 .ToList(),
             StructuredValue = fact.StructuredValue,
@@ -94,7 +98,11 @@ internal static class HistoricalPersistenceMongoMapper
                     source.FactType,
                     ToDomain(source.Period),
                     source.Position,
-                    source.Scopes))
+                    source.Scopes,
+                    source.HistoricalLabel,
+                    source.StructuredValue,
+                    source.SequenceWithinDate,
+                    source.NarrativeContentId))
                 .ToArray(),
             document.StructuredValue,
             document.OtherTypeLabel,

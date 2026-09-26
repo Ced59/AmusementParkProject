@@ -506,7 +506,14 @@ public sealed class HistoricalFactTests
             attributeKind,
             AttributeBoundaryMeaning.FirstDayOfNewValue,
             null,
-            new[] { CreateSourceReference(subjectType: subjectType, factType: type, period: period) },
+            new[]
+            {
+                CreateSourceReference(
+                    subjectType: subjectType,
+                    factType: type,
+                    period: period,
+                    structuredValue: "new-value"),
+            },
             "new-value",
             null,
             "history-attribute-transition",
@@ -557,7 +564,9 @@ public sealed class HistoricalFactTests
                     subjectType: subjectType,
                     subjectId: "subject-1",
                     factType: factType,
-                    period: period),
+                    period: period,
+                    historicalLabel: "Sujet exemple",
+                    structuredValue: attributeKind.HasValue ? "new-value" : null),
             },
             attributeKind.HasValue ? "new-value" : null,
             null,
@@ -614,7 +623,9 @@ public sealed class HistoricalFactTests
                     subjectType: resolvedSubject.Type,
                     subjectId: resolvedSubject.Id,
                     factType: type,
-                    period: resolvedPeriod),
+                    period: resolvedPeriod,
+                    historicalLabel: resolvedSubject.HistoricalLabel,
+                    sequenceWithinDate: sequenceWithinDate),
             },
             null,
             null,
@@ -633,8 +644,34 @@ public sealed class HistoricalFactTests
         HistoricalSubjectType subjectType = HistoricalSubjectType.Park,
         string subjectId = "park-1",
         HistoricalFactType factType = HistoricalFactType.Opening,
-        HistoricalPeriod? period = null)
+        HistoricalPeriod? period = null,
+        string historicalLabel = "Parc exemple",
+        string? structuredValue = null,
+        int? sequenceWithinDate = null,
+        string? narrativeContentId = null)
     {
+        List<HistoricalSourceScope> scopes = new List<HistoricalSourceScope>
+        {
+            HistoricalSourceScope.SubjectIdentity,
+            HistoricalSourceScope.HistoricalLabel,
+            HistoricalSourceScope.FactType,
+            HistoricalSourceScope.Period,
+        };
+        if (structuredValue is not null)
+        {
+            scopes.Add(HistoricalSourceScope.StructuredValue);
+        }
+
+        if (sequenceWithinDate.HasValue)
+        {
+            scopes.Add(HistoricalSourceScope.SequenceWithinDate);
+        }
+
+        if (narrativeContentId is not null)
+        {
+            scopes.Add(HistoricalSourceScope.Narrative);
+        }
+
         return new HistoricalSourceRevisionReference(
             sourceId ?? Guid.NewGuid(),
             revision,
@@ -643,13 +680,11 @@ public sealed class HistoricalFactTests
             factType,
             period ?? HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
             HistoricalEvidencePosition.Supports,
-            new[]
-            {
-                HistoricalSourceScope.SubjectIdentity,
-                HistoricalSourceScope.HistoricalLabel,
-                HistoricalSourceScope.FactType,
-                HistoricalSourceScope.Period,
-            });
+            scopes,
+            historicalLabel,
+            structuredValue,
+            sequenceWithinDate,
+            narrativeContentId);
     }
 
     private static IReadOnlyCollection<HistoricalLocalizedText> CreateCompleteExplanations()

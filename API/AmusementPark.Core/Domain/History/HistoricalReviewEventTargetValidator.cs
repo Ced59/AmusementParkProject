@@ -64,7 +64,8 @@ public static class HistoricalReviewEventTargetValidator
             HistoricalReviewEventType.SourcesAttached => supportsSourcesAttached
                 && workflowState == HistoricalEditorialWorkflowState.SourcesAttached,
             HistoricalReviewEventType.SubmittedForEditorialReview =>
-                workflowState == HistoricalEditorialWorkflowState.EditorialReview,
+                workflowState == HistoricalEditorialWorkflowState.EditorialReview
+                && (revision != 1 || revisionOrigin != HistoricalRevisionOrigin.LegacyMigration),
             HistoricalReviewEventType.StructuredValidationCompleted =>
                 workflowState == HistoricalEditorialWorkflowState.StructuredValidation,
             HistoricalReviewEventType.Published =>
