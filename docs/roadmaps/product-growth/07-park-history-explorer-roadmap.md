@@ -882,6 +882,12 @@ sujet `HistoricalOnly` figé plutôt que d'une fiche courante. La même migratio
 persiste la clé d'ordre temporelle dérivée par le Core pour que la pagination
 MongoDB conserve exactement la sémantique des dates partielles.
 
+Le Core refuse désormais de publier un sujet `HistoricalOnly` de type élément
+ou zone sans cette portée de parc durable. Dans un snapshot, un nom issu du
+libellé historique figé est signalé comme `HistoricalLabel` ; le marqueur
+`CurrentFallback` est réservé à une valeur réellement issue de la fiche
+courante.
+
 La frise charge les sources uniquement pour la page demandée, en lots bornés
 compatibles avec les limites du dépôt même lorsqu'un fait possède beaucoup de
 preuves. Elle expose leur

@@ -99,13 +99,27 @@ internal static class PublicParkHistoryHttpMappers
             SubjectType = subject.Subject.Type.ToString(),
             SubjectId = subject.Subject.Id,
             DisplayName = historicalName?.DisplayValue ?? subject.Subject.HistoricalLabel,
-            NameOrigin = historicalName is null ? "CurrentFallback" : "Historical",
+            NameOrigin = ResolveNameOrigin(subject.Subject, historicalName),
             OperationalState = subject.OperationalState.ToString(),
             PresenceExtent = subject.PresenceExtent.ToString(),
             Attributes = attributes,
             ReasonCodes = subject.Reasons.Select(static reason => reason.Code.ToString()).ToArray(),
             SupportingSourceCount = sourceCount,
         };
+    }
+
+    private static string ResolveNameOrigin(
+        HistoricalSubject subject,
+        PublicHistoricalAttributeDto? historicalName)
+    {
+        if (historicalName is not null)
+        {
+            return "Historical";
+        }
+
+        return subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.HistoricalOnly
+            ? "HistoricalLabel"
+            : "CurrentFallback";
     }
 
     private static PublicHistoricalAttributeDto ToHttp(

@@ -127,10 +127,11 @@ public sealed class PublicParkHistoryHttpMappersTests
     {
         Guid internalFactId = Guid.NewGuid();
         HistoricalSubject subject = new(
-            HistoricalSubjectType.Park,
-            "park-1",
-            "Parc témoin",
-            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+            HistoricalSubjectType.ParkItem,
+            "item-retired",
+            "Attraction disparue",
+            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            "park-1");
         HistoricalSubjectSnapshot subjectSnapshot = new(
             subject,
             HistoricalOperationalState.Unknown,
@@ -183,6 +184,9 @@ public sealed class PublicParkHistoryHttpMappersTests
         string json = JsonSerializer.Serialize(dto);
 
         Assert.Equal("NoEligibleLifecycleFact", Assert.Single(dto.Ambiguities).Code);
+        PublicHistoricalSubjectSnapshotDto mappedSubject = Assert.Single(dto.Subjects);
+        Assert.Equal("Attraction disparue", mappedSubject.DisplayName);
+        Assert.Equal("HistoricalLabel", mappedSubject.NameOrigin);
         Assert.DoesNotContain(internalFactId.ToString(), json, StringComparison.OrdinalIgnoreCase);
     }
 }

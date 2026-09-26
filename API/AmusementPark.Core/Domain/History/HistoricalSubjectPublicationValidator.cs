@@ -10,6 +10,18 @@ public static class HistoricalSubjectPublicationValidator
         ArgumentNullException.ThrowIfNull(fact);
         bool isPublicRevision = fact.PublicationState is HistoricalPublicationState.Published
             or HistoricalPublicationState.LegacyPublishedPendingReview;
+        bool requiresDurableParkScope = fact.Subject.PublicationPolicy
+                == HistoricalSubjectPublicationPolicy.HistoricalOnly
+            && fact.Subject.Type is HistoricalSubjectType.ParkItem or HistoricalSubjectType.ParkZone;
+        if (isPublicRevision
+            && requiresDurableParkScope
+            && string.IsNullOrWhiteSpace(fact.Subject.ContextParkId))
+        {
+            throw new HistoricalPersistenceValidationException(
+                HistoricalPersistenceErrorCodes.InvalidFactState,
+                "A public historical-only park subject requires a durable park scope.");
+        }
+
         if (isPublicRevision
             && fact.Subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.FollowCurrentSubject
             && !currentSubjectIsPublic)
