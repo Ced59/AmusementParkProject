@@ -669,7 +669,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | [`HIST-01`](../../architecture/product-growth-hist-01-temporal-semantics-2026-09-25.md) | ADR dates, faits, relations et incertitude | Sémantique figée |
 | `HIST-02` | Core temporel | Frontières testées — implémenté le 25 septembre 2026 |
 | `HIST-03` | Persistance faits/sources | Audit et indexes — implémenté le 26 septembre 2026 |
-| `HIST-04` | Migration/adaptation des historiques existants | Aucune perte de contenu |
+| `HIST-04` | Migration/adaptation des historiques existants | Aucune perte de contenu — implémenté le 26 septembre 2026 |
 | `HIST-05` | Builder snapshot | Résultat déterministe |
 | `HIST-06` | Couverture et ambiguïtés | Partiel visible |
 | `HIST-07` | API timeline/snapshot | Contrats bornés |
@@ -740,6 +740,40 @@ révision et audit embarqué. Aucun TTL ne peut effacer ce
 patrimoine. Les ports Application isolent entièrement le Core et les futurs cas
 d'usage de MongoDB. Le modèle historique antérieur n'est pas lu en parallèle :
 sa conversion et la bascule unique restent le jalon `HIST-04`.
+
+### Implémentation `HIST-04` — 26 septembre 2026
+
+Au démarrage du déploiement, une migration versionnée prend un instantané de
+la collection historique antérieure, calcule son empreinte et recopie chaque
+document à l'identique dans une sauvegarde dédiée. Les titres, résumés,
+articles, images, sources, slugs, identifiants liés et indicateurs de mise en
+avant restent ainsi récupérables sans dépendre du nouveau modèle. La collection
+opérationnelle est ensuite remplacée en une seule bascule par les récits
+canoniques ; l'application ne relit ni ne réécrit l'ancienne collection.
+
+Chaque type d'événement connu possède une correspondance explicite vers un fait
+structuré. Les dates gardent leur précision d'origine, l'importance reste
+identique et les changements de nom, logo, exploitant, propriétaire, thème ou
+localisation conservent leurs anciennes et nouvelles valeurs lorsqu'elles sont
+présentes. Une valeur inconnue n'est jamais transformée silencieusement en
+« autre ». Les associations historiques vagues sont conservées dans le récit
+mais ne deviennent pas des relations sans preuve.
+
+Les sources valides deviennent des références canoniques figées sur leur
+première révision. Les informations absentes ou invalides alimentent un rapport
+d'anomalies mesurable. Un contenu visible mais encore non prouvé entre dans la
+file `LegacyPublishedPendingReview`, avec un avertissement dans les huit
+langues, et reste exclu des décisions certaines. Une cible cachée, absente ou
+marquée non pertinente est conservée avec la politique `Suppressed` et ne peut
+pas être exposée par accident. Les conversions impossibles restent
+administrables comme récits bloqués : elles ne sont ni supprimées ni inventées.
+
+La migration possède un bail, un marqueur de réussite, des identités
+déterministes et des compteurs avant/après. Une interruption avant la bascule
+fait reconstruire uniquement la sortie inachevée au prochain démarrage. La
+réussite exige une empreinte source inchangée et l'égalité entre source,
+sauvegarde et récits migrés. MongoDB est donc mis à jour automatiquement par le
+déploiement, sans manipulation manuelle ni coexistence durable de deux moteurs.
 
 ## 22. Gate finale `HIST-G`
 

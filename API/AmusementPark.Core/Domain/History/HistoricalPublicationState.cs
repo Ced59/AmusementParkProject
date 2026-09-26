@@ -6,4 +6,5 @@ public enum HistoricalPublicationState
     Published = 1,
     LegacyPublishedPendingReview = 2,
     Withdrawn = 3,
+    Suppressed = 4,
 }

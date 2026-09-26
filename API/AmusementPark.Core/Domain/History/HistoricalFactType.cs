@@ -27,4 +27,5 @@ public enum HistoricalFactType
     Replacement = 22,
     ZoneMove = 23,
     Other = 24,
+    LogoChange = 25,
 }

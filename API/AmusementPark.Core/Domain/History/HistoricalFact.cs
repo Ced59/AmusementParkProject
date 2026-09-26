@@ -215,13 +215,15 @@ public sealed class HistoricalFact
                     && publicationState == HistoricalPublicationState.Draft),
             HistoricalRevisionOrigin.LegacyMigration => revision != 1
                 || (workflowState == HistoricalEditorialWorkflowState.EditorialReview
-                    && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
+                    && publicationState is HistoricalPublicationState.LegacyPublishedPendingReview
+                        or HistoricalPublicationState.Suppressed),
             _ => false,
         };
         bool validPublicationForOrigin = revisionOrigin switch
         {
             HistoricalRevisionOrigin.Ordinary => publicationState
-                != HistoricalPublicationState.LegacyPublishedPendingReview,
+                is not HistoricalPublicationState.LegacyPublishedPendingReview
+                    and not HistoricalPublicationState.Suppressed,
             HistoricalRevisionOrigin.LegacyMigration => publicationState
                 != HistoricalPublicationState.Draft,
             _ => false,
@@ -427,6 +429,7 @@ public sealed class HistoricalFact
             HistoricalFactType.Retheming => HistoricalAttributeKind.Theme,
             HistoricalFactType.ManufacturerChange => HistoricalAttributeKind.Manufacturer,
             HistoricalFactType.ZoneMove => HistoricalAttributeKind.Zone,
+            HistoricalFactType.LogoChange => HistoricalAttributeKind.Logo,
             _ => null,
         };
     }
@@ -505,6 +508,11 @@ public sealed class HistoricalFact
                     is HistoricalEditorialWorkflowState.EditorialReview
                         or HistoricalEditorialWorkflowState.StructuredValidation)
                 && state == HistoricalFactState.Unverified
+                && methodologyVersion is not null,
+            HistoricalPublicationState.Suppressed => revisionOrigin == HistoricalRevisionOrigin.LegacyMigration
+                && workflowState == HistoricalEditorialWorkflowState.EditorialReview
+                && state == HistoricalFactState.Unverified
+                && subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.Suppressed
                 && methodologyVersion is not null,
             HistoricalPublicationState.Withdrawn => workflowState == HistoricalEditorialWorkflowState.Retracted
                 && state == HistoricalFactState.Retracted

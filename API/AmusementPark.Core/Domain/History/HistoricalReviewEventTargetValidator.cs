@@ -106,7 +106,8 @@ public static class HistoricalReviewEventTargetValidator
             HistoricalReviewEventType.Migrated => revision == 1
                 && revisionOrigin == HistoricalRevisionOrigin.LegacyMigration
                 && workflowState == HistoricalEditorialWorkflowState.EditorialReview
-                && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview,
+                && publicationState is HistoricalPublicationState.LegacyPublishedPendingReview
+                    or HistoricalPublicationState.Suppressed,
             HistoricalReviewEventType.DraftUpdated => revision > 1
                 && workflowState == HistoricalEditorialWorkflowState.Draft
                 && publicationState == HistoricalPublicationState.Draft,

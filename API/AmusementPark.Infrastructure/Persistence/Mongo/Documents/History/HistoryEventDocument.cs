@@ -108,4 +108,20 @@ public sealed class HistoryEventDocument : MongoDocumentBase
     [BsonElement("article")]
     [BsonIgnoreIfNull]
     public HistoryArticleDocument? Article { get; set; }
+
+    [BsonElement("canonicalFactId")]
+    [BsonIgnoreIfNull]
+    public string? CanonicalFactId { get; set; }
+
+    [BsonElement("canonicalizationState")]
+    [BsonRepresentation(BsonType.String)]
+    public HistoricalNarrativeCanonicalizationState CanonicalizationState { get; set; } =
+        HistoricalNarrativeCanonicalizationState.PendingReview;
+
+    [BsonElement("migrationVersion")]
+    [BsonIgnoreIfNull]
+    public string? MigrationVersion { get; set; }
+
+    [BsonElement("migrationWarnings")]
+    public List<string> MigrationWarnings { get; set; } = new List<string>();
 }

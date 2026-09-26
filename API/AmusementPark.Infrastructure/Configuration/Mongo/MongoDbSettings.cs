@@ -252,6 +252,16 @@ public sealed class MongoDbSettings
 
     public string HistoricalSourcesCollectionName { get; set; } = "historical-sources";
 
+    public string HistoricalNarrativesCollectionName { get; set; } = "historical-narratives";
+
+    public string HistoricalMigrationsCollectionName { get; set; } = "historical-migrations";
+
+    public string HistoricalMigrationAnomaliesCollectionName { get; set; } =
+        "historical-migration-anomalies";
+
+    public string HistoricalEventsBackupCollectionName { get; set; } =
+        "history-events-backup-hist-04-v1";
+
     /// <summary>
     /// Lie la configuration et applique des valeurs par défaut.
     /// </summary>
