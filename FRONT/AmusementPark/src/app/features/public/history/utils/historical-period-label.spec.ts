@@ -72,4 +72,17 @@ describe('historical period label', () => {
       'Du 1998 (estimation) au 2001 (date contestée)'
     );
   });
+
+  it('keeps both confidences when coincident boundaries disagree', () => {
+    const period: PublicHistoricalPeriod = {
+      start: { year: 1998, precision: 'Year' },
+      end: { year: 1998, precision: 'Year' },
+      startConfidence: 'Confirmed',
+      endConfidence: 'Disputed'
+    };
+
+    expect(formatPublicHistoricalPeriod(period, 'fr', translate)).toBe(
+      'Du 1998 au 1998 (date contestée)'
+    );
+  });
 });

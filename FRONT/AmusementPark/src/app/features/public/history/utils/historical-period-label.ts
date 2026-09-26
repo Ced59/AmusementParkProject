@@ -17,7 +17,12 @@ export function formatPublicHistoricalPeriod(
     return translate('history.explorer.unknownDate');
   }
 
-  if (start && end && historicalDatesAreEqual(start, end)) {
+  if (
+    start
+    && end
+    && historicalDatesAreEqual(start, end)
+    && period.startConfidence === period.endConfidence
+  ) {
     return formatPublicHistoricalBoundary(start, period.startConfidence, language, translate);
   }
 

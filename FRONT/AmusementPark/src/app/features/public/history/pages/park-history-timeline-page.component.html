@@ -45,7 +45,7 @@
           <span>{{ 'history.explorer.documentedEvents' | translate }}</span>
         </article>
         <article>
-          <strong>{{ currentTimeline.pagination.currentPage }} / {{ currentTimeline.pagination.totalPages }}</strong>
+          <strong>{{ currentTimeline.pagination.currentPage }} / {{ displayedPageCount(currentTimeline) }}</strong>
           <span>{{ 'history.explorer.page' | translate }}</span>
         </article>
         <article>

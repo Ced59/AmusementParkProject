@@ -24,6 +24,7 @@ import { ParkHistoryBreadcrumbSeoService } from '../state/park-history-breadcrum
 import { ParkHistoryExplorerStateFacade } from '../state/park-history-explorer-state.facade';
 import { resolveHistoryEventTypeLabel } from '../utils/history-event-labels';
 import { formatPublicHistoricalPeriod } from '../utils/historical-period-label';
+import { resolveDisplayedHistoryPageCount } from '../utils/history-pagination-display';
 import { buildCanonicalHistoryNarrativeLink } from '../utils/history-narrative-link';
 import {
   PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY,
@@ -118,6 +119,10 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
 
   protected narrativeLink(entry: PublicHistoricalTimelineEntry, timeline: PublicParkHistoricalTimeline): string[] | null {
     return buildCanonicalHistoryNarrativeLink(entry, timeline, this.currentLanguage());
+  }
+
+  protected displayedPageCount(timeline: PublicParkHistoricalTimeline): number {
+    return resolveDisplayedHistoryPageCount(timeline.pagination.totalPages);
   }
 
   protected pageLink(timeline: PublicParkHistoricalTimeline, page: number): string[] {
