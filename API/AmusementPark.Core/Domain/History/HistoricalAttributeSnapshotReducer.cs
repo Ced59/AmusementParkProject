@@ -26,7 +26,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
         IReadOnlyList<IReadOnlyList<HistoricalFact>> transitionGroups =
             HistoricalTransitionOrdering.BuildGroups(facts);
         HistoricalFact[] possibleFirstFacts = FindPossibleFirstFacts(facts);
-        HashSet<string> initialValues = BuildInitialValues(possibleFirstFacts);
+        HashSet<string> initialValues = BuildInitialValues(possibleFirstFacts, reasons);
         HashSet<Guid> contributingFactIds = possibleFirstFacts
             .Select(static fact => fact.Id)
             .ToHashSet();
@@ -92,7 +92,9 @@ internal sealed class HistoricalAttributeSnapshotReducer
             .ToArray();
     }
 
-    private static HashSet<string> BuildInitialValues(IReadOnlyCollection<HistoricalFact> possibleFirstFacts)
+    private static HashSet<string> BuildInitialValues(
+        IReadOnlyCollection<HistoricalFact> possibleFirstFacts,
+        HistoricalSnapshotReasonCollector reasons)
     {
         HashSet<string> initialValues = new HashSet<string>(StringComparer.Ordinal);
         foreach (HistoricalFact fact in possibleFirstFacts)
@@ -111,6 +113,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
             }
             else
             {
+                reasons.Add(HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue, fact);
                 initialValues.Add(UnknownValue);
             }
         }

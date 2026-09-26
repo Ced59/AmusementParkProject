@@ -680,6 +680,31 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_WithMalformedInitialAttributePayload_ReportsItsCause()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact malformedRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B",
+            structuredValueOverride: "{}");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(1999, 1, 1),
+            new[] { opening, malformedRenaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Unknown, attribute.State);
+        HistoricalSnapshotReason reason = Assert.Single(
+            attribute.Reasons,
+            item => item.Code == HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue);
+        Assert.Equal(new[] { malformedRenaming.Id }, reason.FactIds);
+    }
+
+    [Fact]
     public void Build_WithUnorderedSameDayTransitions_ReturnsPossiblyOpen()
     {
         HistoricalDate date = HistoricalDate.ForDay(2000, 1, 1);
@@ -1336,9 +1361,10 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         string nextValue,
         int? sequenceWithinDate = null,
         Guid? id = null,
-        HistoricalFactState state = HistoricalFactState.Verified)
+        HistoricalFactState state = HistoricalFactState.Verified,
+        string? structuredValueOverride = null)
     {
-        string structuredValue = string.Concat(
+        string structuredValue = structuredValueOverride ?? string.Concat(
             "{\"previous\":\"",
             previousValue,
             "\",\"next\":\"",
