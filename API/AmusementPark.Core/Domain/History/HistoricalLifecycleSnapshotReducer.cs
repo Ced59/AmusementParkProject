@@ -484,6 +484,11 @@ internal sealed class HistoricalLifecycleSnapshotReducer
     {
         HashSet<HistoricalOperationalState> currentStates = states.ToHashSet();
         HashSet<HistoricalOperationalState> result = new HashSet<HistoricalOperationalState>();
+        if (IsExactLastOperatingDay(fact, requestedDate))
+        {
+            return ApplyPositiveActivityEvidence(currentStates, fact, reasons);
+        }
+
         if (IsInsideCoarseLastOperatingEnvelope(fact, requestedDate))
         {
             if (currentStates.Count == 1
@@ -567,11 +572,6 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         DateOnly requestedDate,
         HistoricalSnapshotReasonCollector reasons)
     {
-        if (IsExactLastOperatingDay(fact, requestedDate))
-        {
-            return HistoricalOperationalState.KnownOpen;
-        }
-
         if (IsDayAfterExactLastOperatingDay(fact, requestedDate))
         {
             RecordClosureAgainstClosedState(currentState, fact, reasons);
