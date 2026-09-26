@@ -111,6 +111,32 @@ public sealed class HistoricalReviewEventTargetValidatorTests
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidReviewEvent, exception.ErrorCode);
     }
 
+    [Fact]
+    public void ValidateFactTarget_WhenInitialLegacyRevisionUsesMigrated_ShouldAcceptEvent()
+    {
+        HistoricalFact fact = CreateLegacyFact();
+        HistoricalReviewEvent reviewEvent = CreateEvent(
+            HistoricalReviewResourceType.Fact,
+            fact.Id,
+            fact.Revision,
+            HistoricalReviewEventType.Migrated);
+
+        HistoricalReviewEventTargetValidator.ValidateFactTarget(reviewEvent, fact);
+    }
+
+    [Fact]
+    public void ValidateSourceTarget_WhenInitialLegacyRevisionUsesMigrated_ShouldAcceptEvent()
+    {
+        HistoricalSourceReference source = CreateLegacySource();
+        HistoricalReviewEvent reviewEvent = CreateEvent(
+            HistoricalReviewResourceType.Source,
+            source.Id,
+            source.Revision,
+            HistoricalReviewEventType.Migrated);
+
+        HistoricalReviewEventTargetValidator.ValidateSourceTarget(reviewEvent, source);
+    }
+
     private static HistoricalReviewEvent CreateEvent(
         HistoricalReviewResourceType resourceType,
         Guid resourceId,
