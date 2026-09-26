@@ -1,3 +1,4 @@
+using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -30,6 +31,38 @@ public sealed class PublicParkHistoricalDataLoader
         string parkId,
         CancellationToken cancellationToken)
     {
+        PublicParkHistoricalScope? scope = await this.LoadScopeAsync(parkId, cancellationToken);
+        if (scope is null)
+        {
+            return null;
+        }
+
+        IReadOnlyCollection<HistoricalFact> latestFacts =
+            await this.historicalFactRepository.GetLatestDecisionEligibleRevisionsForParkAsync(
+                scope.Park.Id,
+                scope.PublicCurrentSubjects,
+                cancellationToken);
+        HashSet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjects = scope.PublicCurrentSubjects
+            .Select(static subject => (subject.Type, subject.Id))
+            .ToHashSet();
+        HistoricalFact[] publicFacts = latestFacts
+            .Where(fact => CanExposeFact(fact, publicCurrentSubjects, scope.Park.Id))
+            .ToArray();
+        HistoricalSubject[] selectedSubjects = SelectSubjects(
+            scope.PublicCurrentSubjects,
+            publicFacts);
+
+        return new PublicParkHistoricalData(
+            scope.Park,
+            selectedSubjects,
+            publicFacts,
+            scope.ZoneNames);
+    }
+
+    public async Task<PublicParkHistoricalScope?> LoadScopeAsync(
+        string parkId,
+        CancellationToken cancellationToken)
+    {
         Park? park = await this.parkRepository.GetByIdAsync(parkId, false, cancellationToken);
         if (!HistoryPublicVisibility.IsPublicPark(park))
         {
@@ -44,25 +77,12 @@ public sealed class PublicParkHistoricalDataLoader
             park.Id,
             cancellationToken);
         HistoricalSubject[] candidateSubjects = BuildCandidateSubjects(park, parkItems, parkZones);
-        IReadOnlyCollection<HistoricalFact> latestFacts =
-            await this.historicalFactRepository.GetLatestRevisionsForSubjectsAsync(
-                candidateSubjects,
-                cancellationToken);
         HashSet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjects = BuildPublicCurrentSubjectKeys(
             park,
             parkItems,
             parkZones);
-        HistoricalFact[] publicFacts = latestFacts
-            .Where(fact => CanExposeFact(fact, publicCurrentSubjects))
-            .ToArray();
-        HashSet<(HistoricalSubjectType Type, string Id)> frozenHistoricalSubjects = publicFacts
-            .Where(static fact => fact.Subject.PublicationPolicy
-                == HistoricalSubjectPublicationPolicy.HistoricalOnly)
-            .Select(static fact => (fact.Subject.Type, fact.Subject.Id))
-            .ToHashSet();
-        HistoricalSubject[] selectedSubjects = candidateSubjects
-            .Where(subject => publicCurrentSubjects.Contains((subject.Type, subject.Id))
-                || frozenHistoricalSubjects.Contains((subject.Type, subject.Id)))
+        HistoricalSubject[] publicSubjects = candidateSubjects
+            .Where(subject => publicCurrentSubjects.Contains((subject.Type, subject.Id)))
             .ToArray();
         Dictionary<string, string> zoneNames = parkZones
             .Where(static zone => !string.IsNullOrWhiteSpace(zone.Id)
@@ -73,7 +93,22 @@ public sealed class PublicParkHistoricalDataLoader
                 static group => group.First().Name.Trim(),
                 StringComparer.Ordinal);
 
-        return new PublicParkHistoricalData(park, selectedSubjects, publicFacts, zoneNames);
+        return new PublicParkHistoricalScope(park, publicSubjects, zoneNames);
+    }
+
+    public Task<PagedResult<HistoricalFact>> GetTimelinePageAsync(
+        PublicParkHistoricalScope scope,
+        int page,
+        int pageSize,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(scope);
+        return this.historicalFactRepository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+            scope.Park.Id,
+            scope.PublicCurrentSubjects,
+            page,
+            pageSize,
+            cancellationToken);
     }
 
     private static HistoricalSubject[] BuildCandidateSubjects(
@@ -87,18 +122,21 @@ public sealed class PublicParkHistoricalDataLoader
                     HistoricalSubjectType.Park,
                     park.Id,
                     ResolveLabel(park.Name, "Park"),
-                    HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+                    HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                    park.Id),
             }
             .Concat(parkItems.Select(item => new HistoricalSubject(
                 HistoricalSubjectType.ParkItem,
                 item.Id,
                 ResolveLabel(item.Name, "Park item"),
-                HistoricalSubjectPublicationPolicy.FollowCurrentSubject)))
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                park.Id)))
             .Concat(parkZones.Select(zone => new HistoricalSubject(
                 HistoricalSubjectType.ParkZone,
                 zone.Id,
                 ResolveLabel(zone.Name, "Park zone"),
-                HistoricalSubjectPublicationPolicy.FollowCurrentSubject)))
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                park.Id)))
             .DistinctBy(static subject => (subject.Type, subject.Id))
             .ToArray();
     }
@@ -123,7 +161,8 @@ public sealed class PublicParkHistoricalDataLoader
 
     private static bool CanExposeFact(
         HistoricalFact fact,
-        IReadOnlySet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjects)
+        IReadOnlySet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjects,
+        string parkId)
     {
         if (!fact.IsDecisionEligible
             || fact.Subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.Suppressed)
@@ -132,7 +171,30 @@ public sealed class PublicParkHistoricalDataLoader
         }
 
         return fact.Subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.HistoricalOnly
+                && string.Equals(fact.Subject.ContextParkId, parkId, StringComparison.Ordinal)
             || publicCurrentSubjects.Contains((fact.Subject.Type, fact.Subject.Id));
+    }
+
+    private static HistoricalSubject[] SelectSubjects(
+        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
+        IReadOnlyCollection<HistoricalFact> publicFacts)
+    {
+        Dictionary<(HistoricalSubjectType Type, string Id), HistoricalSubject> subjects =
+            publicCurrentSubjects.ToDictionary(static subject => (subject.Type, subject.Id));
+        foreach (HistoricalFact fact in publicFacts
+                     .Where(static fact => fact.Subject.PublicationPolicy
+                         == HistoricalSubjectPublicationPolicy.HistoricalOnly)
+                     .OrderBy(static fact => fact.RecordedAtUtc)
+                     .ThenBy(static fact => fact.Revision))
+        {
+            subjects[(fact.Subject.Type, fact.Subject.Id)] = fact.Subject;
+        }
+
+        return subjects.Values
+            .OrderBy(static subject => subject.Type)
+            .ThenBy(static subject => subject.HistoricalLabel, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(static subject => subject.Id, StringComparer.Ordinal)
+            .ToArray();
     }
 
     private static string ResolveLabel(string? label, string fallback)

@@ -853,16 +853,28 @@ calcul. Le snapshot renvoie des projections légères : état opérationnel,
 attributs présentables, couverture, raisons d'incertitude et ambiguïtés, sans
 embarquer les récits complets ni les identifiants internes des preuves.
 
-L'Application charge en une seule orchestration le parc, ses éléments, ses
-zones et les dernières révisions de faits correspondantes. MongoDB filtre les
-sujets puis groupe les révisions côté serveur afin de ne rapatrier que la plus
-récente de chaque fait. Un parc ou élément actuellement public suit son état
+L'Application charge en une seule orchestration le parc, ses éléments et ses
+zones, puis demande au port historique les dernières révisions admissibles.
+MongoDB filtre, groupe, compte, ordonne et pagine les faits côté serveur : une
+requête de frise ne matérialise donc plus tout le registre en mémoire. Un parc
+ou élément actuellement public suit son état
 de publication courant ; une cible historique masquée n'est retenue que si sa
 politique `HistoricalOnly` l'autorise explicitement. Les brouillons, faits
 retirés, héritages encore en attente de revue et cibles explicitement marquées
 `Suppressed` restent absents des réponses publiques.
 
-La frise charge les sources uniquement pour la page demandée. Elle expose leur
+Chaque sujet de parc conserve désormais un `ContextParkId` durable. Une
+migration MongoDB alimente cette portée sur les révisions existantes depuis les
+entités courantes ou, lorsqu'une attraction a déjà été supprimée, depuis la
+sauvegarde narrative canonique. La cible disparue reste ainsi retrouvable sans
+faire coexister deux moteurs historiques, et son libellé public provient du
+sujet `HistoricalOnly` figé plutôt que d'une fiche courante. La même migration
+persiste la clé d'ordre temporelle dérivée par le Core pour que la pagination
+MongoDB conserve exactement la sémantique des dates partielles.
+
+La frise charge les sources uniquement pour la page demandée, en lots bornés
+compatibles avec les limites du dépôt même lorsqu'un fait possède beaucoup de
+preuves. Elle expose leur
 titre, auteur ou éditeur, lien, référence bibliographique et dates publiques,
 mais jamais leur identifiant, leur numéro de révision ou leur note admin. Les
 valeurs structurées contenant un identifiant d'image, d'exploitant, de

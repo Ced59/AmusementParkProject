@@ -99,6 +99,8 @@ public sealed class HistoricalPersistenceMongoMapperTests
             LifecycleBoundaryMeaning.FirstOperatingDay,
             sourceReference.LifecycleBoundaryMeaning);
         Assert.Equal("park-1", restored.Subject.Id);
+        Assert.Equal("park-1", restored.Subject.ContextParkId);
+        Assert.Equal(new DateOnly(1998, 5, 12).DayNumber, document.TimelineSortOrdinal);
         Assert.Equal(0, restored.RecordedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
         Assert.Equal(0, restored.VerifiedAtUtc?.Ticks % TimeSpan.TicksPerMillisecond);
         Assert.Equal(0, restored.PublishedAtUtc?.Ticks % TimeSpan.TicksPerMillisecond);

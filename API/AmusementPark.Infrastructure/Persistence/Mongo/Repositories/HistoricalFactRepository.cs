@@ -1,4 +1,5 @@
 using System.Globalization;
+using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Core.Domain.History;
@@ -6,6 +7,7 @@ using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -153,6 +155,157 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         return documents
             .Select(static document => document.ToDomain())
             .ToArray();
+    }
+
+    public async Task<IReadOnlyCollection<HistoricalFact>> GetLatestDecisionEligibleRevisionsForParkAsync(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = NormalizeParkId(parkId);
+        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
+        List<BsonDocument> stages = BuildLatestDecisionEligibleForParkPipeline(
+                normalizedParkId,
+                publicCurrentSubjects)
+            .ToList();
+        stages.Add(BuildTimelineSortStage());
+        PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument> pipeline =
+            PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument>.Create(stages);
+        List<HistoricalFactDocument> documents = await this.collection
+            .Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    public async Task<PagedResult<HistoricalFact>> GetLatestDecisionEligibleRevisionsForParkPageAsync(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
+        int page,
+        int pageSize,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = NormalizeParkId(parkId);
+        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
+        if (page < 1 || pageSize < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(page));
+        }
+
+        long offset = (long)(page - 1) * pageSize;
+        List<BsonDocument> stages = BuildLatestDecisionEligibleForParkPipeline(
+                normalizedParkId,
+                publicCurrentSubjects)
+            .ToList();
+        stages.Add(BuildTimelineSortStage());
+        stages.Add(new BsonDocument("$facet", new BsonDocument
+        {
+            ["metadata"] = new BsonArray
+            {
+                new BsonDocument("$count", "total"),
+            },
+            ["items"] = new BsonArray
+            {
+                new BsonDocument("$skip", offset),
+                new BsonDocument("$limit", pageSize),
+            },
+        }));
+        PipelineDefinition<HistoricalFactDocument, BsonDocument> pipeline =
+            PipelineDefinition<HistoricalFactDocument, BsonDocument>.Create(stages);
+        BsonDocument? result = await this.collection
+            .Aggregate(pipeline)
+            .FirstOrDefaultAsync(cancellationToken);
+        if (result is null)
+        {
+            return new PagedResult<HistoricalFact>(Array.Empty<HistoricalFact>(), page, pageSize, 0);
+        }
+
+        BsonArray metadata = result["metadata"].AsBsonArray;
+        long total = metadata.Count == 0
+            ? 0
+            : metadata[0].AsBsonDocument["total"].ToInt64();
+        HistoricalFact[] facts = result["items"].AsBsonArray
+            .Select(static value => BsonSerializer.Deserialize<HistoricalFactDocument>(value.AsBsonDocument))
+            .Select(static document => document.ToDomain())
+            .ToArray();
+        return new PagedResult<HistoricalFact>(facts, page, pageSize, total);
+    }
+
+    internal static IReadOnlyCollection<BsonDocument> BuildLatestDecisionEligibleForParkPipeline(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects)
+    {
+        string normalizedParkId = NormalizeParkId(parkId);
+        ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
+        BsonDocument[] publicSubjectFilters = publicCurrentSubjects
+            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .Select(static subject => new BsonDocument
+            {
+                ["subject.type"] = subject.Type.ToString(),
+                ["subject.id"] = subject.Id,
+            })
+            .ToArray();
+        BsonArray scopeFilters = new BsonArray(publicSubjectFilters);
+        scopeFilters.Add(new BsonDocument
+        {
+            ["subject.contextParkId"] = normalizedParkId,
+        });
+        BsonArray publicEligibilityFilters = new BsonArray(
+            publicSubjectFilters.Select(static filter => filter.DeepClone()));
+        publicEligibilityFilters.Add(new BsonDocument
+        {
+            ["subject.publicationPolicy"] = HistoricalSubjectPublicationPolicy.HistoricalOnly.ToString(),
+            ["subject.contextParkId"] = normalizedParkId,
+        });
+
+        return new BsonDocument[]
+        {
+            new BsonDocument("$match", new BsonDocument("$or", scopeFilters)),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["factId"] = 1,
+                ["revision"] = -1,
+            }),
+            new BsonDocument("$group", new BsonDocument
+            {
+                ["_id"] = "$factId",
+                ["document"] = new BsonDocument("$first", "$$ROOT"),
+            }),
+            new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$document")),
+            new BsonDocument("$match", new BsonDocument
+            {
+                ["publicationState"] = HistoricalPublicationState.Published.ToString(),
+                ["state"] = new BsonDocument("$in", new BsonArray
+                {
+                    HistoricalFactState.Verified.ToString(),
+                    HistoricalFactState.Probable.ToString(),
+                    HistoricalFactState.Disputed.ToString(),
+                }),
+                ["$or"] = publicEligibilityFilters,
+            }),
+        };
+    }
+
+    private static BsonDocument BuildTimelineSortStage()
+    {
+        return new BsonDocument("$sort", new BsonDocument
+        {
+            ["timelineSortOrdinal"] = 1,
+            ["sequenceWithinDate"] = 1,
+            ["subject.historicalLabel"] = 1,
+            ["type"] = 1,
+            ["factId"] = 1,
+        });
+    }
+
+    private static string NormalizeParkId(string parkId)
+    {
+        string normalizedParkId = parkId?.Trim() ?? string.Empty;
+        if (normalizedParkId.Length == 0)
+        {
+            throw new ArgumentException("A park identifier is required.", nameof(parkId));
+        }
+
+        return normalizedParkId;
     }
 
     private static bool DocumentsMatch(

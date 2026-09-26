@@ -32,6 +32,9 @@ public sealed class HistoricalFactDocument : MongoDocumentBase
     [BsonElement("period")]
     public HistoricalPeriodDocument Period { get; set; } = new HistoricalPeriodDocument();
 
+    [BsonElement("timelineSortOrdinal")]
+    public int TimelineSortOrdinal { get; set; }
+
     [BsonElement("state")]
     [BsonRepresentation(BsonType.String)]
     public HistoricalFactState State { get; set; }

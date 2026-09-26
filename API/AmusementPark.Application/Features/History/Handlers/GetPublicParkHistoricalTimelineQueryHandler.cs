@@ -42,27 +42,19 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
         }
 
         string parkId = query.ParkId.Trim();
-        PublicParkHistoricalData? data = await this.dataLoader.LoadAsync(parkId, cancellationToken);
-        if (data is null)
+        PublicParkHistoricalScope? scope = await this.dataLoader.LoadScopeAsync(parkId, cancellationToken);
+        if (scope is null)
         {
             return ApplicationResult<PublicParkHistoricalTimelineResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(Park), parkId));
         }
 
-        HistoricalFact[] orderedFacts = data.Facts
-            .OrderBy(static fact => ResolveSortDate(fact.Period))
-            .ThenBy(static fact => fact.SequenceWithinDate ?? 0)
-            .ThenBy(static fact => fact.Subject.HistoricalLabel, StringComparer.OrdinalIgnoreCase)
-            .ThenBy(static fact => fact.Type)
-            .ThenBy(static fact => fact.Id)
-            .ToArray();
-        long offset = (long)(query.Page - 1) * query.PageSize;
-        HistoricalFact[] pageFacts = offset >= orderedFacts.Length
-            ? Array.Empty<HistoricalFact>()
-            : orderedFacts
-                .Skip((int)offset)
-                .Take(query.PageSize)
-                .ToArray();
+        PagedResult<HistoricalFact> factPage = await this.dataLoader.GetTimelinePageAsync(
+            scope,
+            query.Page,
+            query.PageSize,
+            cancellationToken);
+        HistoricalFact[] pageFacts = factPage.Items.ToArray();
         HistoricalSourceRevisionReference[] sourceReferences = pageFacts
             .SelectMany(static fact => fact.SourceReferences)
             .Distinct()
@@ -90,16 +82,9 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             entries,
             query.Page,
             query.PageSize,
-            orderedFacts.Length);
+            factPage.TotalItems);
 
         return ApplicationResult<PublicParkHistoricalTimelineResult>.Success(
-            new PublicParkHistoricalTimelineResult(data.Park, page, data.ZoneNames));
-    }
-
-    private static DateOnly ResolveSortDate(HistoricalPeriod period)
-    {
-        return period.Start?.GetEnvelope().EarliestPossibleDate
-            ?? period.End?.GetEnvelope().EarliestPossibleDate
-            ?? DateOnly.MinValue;
+            new PublicParkHistoricalTimelineResult(scope.Park, page, scope.ZoneNames));
     }
 }

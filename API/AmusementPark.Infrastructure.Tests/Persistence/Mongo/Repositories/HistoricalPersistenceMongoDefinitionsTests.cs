@@ -23,6 +23,7 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
             index => index.Options.Name == "idx_historical_facts_revision_unique");
         Assert.True(revision.Options.Unique);
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_subject_start_year");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_park_scope_revision");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_publication_workflow");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_source_revision");
         CreateIndexModel<HistoricalFactDocument> audit = indexes.Single(
@@ -36,6 +37,33 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Equal(-1, auditKeys["transitionReviewEvent.occurredAtUtc"].AsInt32);
         Assert.Equal(-1, auditKeys["revision"].AsInt32);
         Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));
+    }
+
+    [Fact]
+    public void BuildLatestDecisionEligibleForParkPipeline_ShouldDiscoverScopedRetiredSubjectsAfterGroupingLatestRevisions()
+    {
+        HistoricalSubject currentPark = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+
+        BsonDocument[] pipeline = HistoricalFactRepository
+            .BuildLatestDecisionEligibleForParkPipeline("park-1", new[] { currentPark })
+            .ToArray();
+
+        Assert.Equal(5, pipeline.Length);
+        BsonArray initialScope = pipeline[0]["$match"]["$or"].AsBsonArray;
+        Assert.Contains(
+            initialScope,
+            filter => filter.AsBsonDocument.GetValue("subject.contextParkId", BsonNull.Value)
+                == "park-1");
+        Assert.Equal("$$ROOT", pipeline[2]["$group"]["document"]["$first"].AsString);
+        BsonArray publicEligibility = pipeline[4]["$match"]["$or"].AsBsonArray;
+        Assert.Contains(
+            publicEligibility,
+            filter => filter.AsBsonDocument.GetValue("subject.publicationPolicy", BsonNull.Value)
+                == HistoricalSubjectPublicationPolicy.HistoricalOnly.ToString());
     }
 
     [Fact]

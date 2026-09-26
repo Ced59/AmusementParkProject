@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
@@ -53,15 +54,17 @@ public sealed class PublicParkHistoricalHandlersTests
             new HistoricalSubject(
                 HistoricalSubjectType.ParkItem,
                 historicalItem.Id,
-                historicalItem.Name,
-                HistoricalSubjectPublicationPolicy.HistoricalOnly),
+                "Libellé historique figé",
+                HistoricalSubjectPublicationPolicy.HistoricalOnly,
+                park.Id),
             1995);
         HistoricalFact hiddenFollowCurrentFact = PublicParkHistoryTestData.CreateOpeningFact(
             new HistoricalSubject(
                 HistoricalSubjectType.ParkItem,
                 hiddenFollowCurrentItem.Id,
                 hiddenFollowCurrentItem.Name,
-                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                park.Id),
             1996);
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
@@ -80,7 +83,8 @@ public sealed class PublicParkHistoricalHandlersTests
             .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkZone>());
         factRepository
-            .Setup(repository => repository.GetLatestRevisionsForSubjectsAsync(
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
+                "park-1",
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { historicalFact, hiddenFollowCurrentFact });
@@ -102,6 +106,10 @@ public sealed class PublicParkHistoricalHandlersTests
         Assert.Contains(snapshot.Snapshot.Subjects, subject => subject.Subject.Id == park.Id);
         Assert.Contains(snapshot.Snapshot.Subjects, subject => subject.Subject.Id == visibleItem.Id);
         Assert.Contains(snapshot.Snapshot.Subjects, subject => subject.Subject.Id == historicalItem.Id);
+        Assert.Contains(
+            snapshot.Snapshot.Subjects,
+            subject => subject.Subject.Id == historicalItem.Id
+                && subject.Subject.HistoricalLabel == "Libellé historique figé");
         Assert.DoesNotContain(snapshot.Snapshot.Subjects, subject => subject.Subject.Id == hiddenFollowCurrentItem.Id);
         Assert.Single(snapshot.Facts);
         Assert.Equal(historicalFact.Id, snapshot.Facts.Single().Id);
@@ -116,8 +124,6 @@ public sealed class PublicParkHistoricalHandlersTests
             park.Id,
             park.Name!,
             HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
-        HistoricalFact first = PublicParkHistoryTestData.CreateOpeningFact(parkSubject, 1990);
-        HistoricalFact second = PublicParkHistoryTestData.CreateOpeningFact(parkSubject, 2000);
         HistoricalFact third = PublicParkHistoryTestData.CreateOpeningFact(parkSubject, 2010);
         HistoricalSourceReference thirdSource = PublicParkHistoryTestData.CreateSource(third);
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
@@ -138,10 +144,13 @@ public sealed class PublicParkHistoricalHandlersTests
             .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkZone>());
         factRepository
-            .Setup(repository => repository.GetLatestRevisionsForSubjectsAsync(
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+                "park-1",
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                2,
+                2,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { second, third, first });
+            .ReturnsAsync(new PagedResult<HistoricalFact>(new[] { third }, 2, 2, 3));
         sourceRepository
             .Setup(repository => repository.GetRevisionsAsync(
                 It.Is<IReadOnlyCollection<HistoricalSourceRevisionReference>>(
@@ -223,12 +232,6 @@ public sealed class PublicParkHistoricalHandlersTests
     public async Task Timeline_WhenPageIsArbitrarilyFar_ReturnsEmptyWithoutOverflowOrSourceRead()
     {
         Park park = PublicParkHistoryTestData.CreatePark();
-        HistoricalSubject parkSubject = new(
-            HistoricalSubjectType.Park,
-            park.Id,
-            park.Name!,
-            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
-        HistoricalFact fact = PublicParkHistoryTestData.CreateOpeningFact(parkSubject, 2000);
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
         Mock<IParkZoneRepository> parkZoneRepository = new(MockBehavior.Strict);
@@ -247,10 +250,17 @@ public sealed class PublicParkHistoricalHandlersTests
             .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkZone>());
         factRepository
-            .Setup(repository => repository.GetLatestRevisionsForSubjectsAsync(
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+                "park-1",
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                int.MaxValue,
+                50,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { fact });
+            .ReturnsAsync(new PagedResult<HistoricalFact>(
+                Array.Empty<HistoricalFact>(),
+                int.MaxValue,
+                50,
+                1));
         PublicParkHistoricalDataLoader loader = CreateLoader(
             parkRepository,
             parkItemRepository,
@@ -264,6 +274,61 @@ public sealed class PublicParkHistoricalHandlersTests
         Assert.True(result.IsSuccess);
         Assert.Empty(Assert.IsType<PublicParkHistoricalTimelineResult>(result.Value).Page.Items);
         sourceRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task Snapshot_IncludesDeletedHistoricalOnlySubjectFromItsDurableParkScope()
+    {
+        Park park = PublicParkHistoryTestData.CreatePark();
+        HistoricalFact deletedItemFact = PublicParkHistoryTestData.CreateOpeningFact(
+            new HistoricalSubject(
+                HistoricalSubjectType.ParkItem,
+                "deleted-item",
+                "Attraction disparue",
+                HistoricalSubjectPublicationPolicy.HistoricalOnly,
+                park.Id),
+            1980);
+        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdAsync(
+                "park-1",
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        parkZoneRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+        factRepository
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
+                "park-1",
+                It.Is<IReadOnlyCollection<HistoricalSubject>>(subjects => subjects.Count == 1),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { deletedItemFact });
+        PublicParkHistoricalDataLoader loader = CreateLoader(
+            parkRepository,
+            parkItemRepository,
+            parkZoneRepository,
+            factRepository);
+        GetPublicParkHistoricalSnapshotQueryHandler handler = new(
+            loader,
+            new ParkHistoricalSnapshotBuilder());
+
+        ApplicationResult<PublicParkHistoricalSnapshotResult> result = await handler.HandleAsync(
+            new GetPublicParkHistoricalSnapshotQuery("park-1", 1981, null, null));
+
+        Assert.True(result.IsSuccess);
+        PublicParkHistoricalSnapshotResult snapshot = Assert.IsType<PublicParkHistoricalSnapshotResult>(result.Value);
+        Assert.Contains(
+            snapshot.Snapshot.Subjects,
+            subject => subject.Subject.Id == "deleted-item"
+                && subject.Subject.HistoricalLabel == "Attraction disparue");
+        Assert.Equal(deletedItemFact.Id, Assert.Single(snapshot.Facts).Id);
     }
 
     private static PublicParkHistoricalDataLoader CreateLoader(
