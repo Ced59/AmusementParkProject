@@ -326,6 +326,13 @@ public sealed class HistoricalFact
                 "Lifecycle boundary meaning must exist only on lifecycle transition facts.");
         }
 
+        if (isLifecycleTransition && !period.IsPoint)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidFactState,
+                "A lifecycle transition must define one historical boundary rather than an interval.");
+        }
+
         if (lifecycleBoundaryMeaning.HasValue
             && !IsLifecycleBoundaryMeaningValid(type, lifecycleBoundaryMeaning.Value))
         {

@@ -86,6 +86,16 @@ public sealed class HistoricalFactTests
     }
 
     [Fact]
+    public void Constructor_WhenLifecycleTransitionUsesOpenPeriod_ShouldRejectFact()
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() => CreateFact(
+                period: HistoricalPeriod.From(HistoricalDate.ForDay(1998, 5, 12))));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
+    }
+
+    [Fact]
     public void Constructor_WhenRevisionDoesNotLinkEarlierRevision_ShouldRejectFact()
     {
         HistoricalPersistenceValidationException exception =
