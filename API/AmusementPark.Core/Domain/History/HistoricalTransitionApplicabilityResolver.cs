@@ -15,7 +15,7 @@ internal static class HistoricalTransitionApplicabilityResolver
             return HistoricalTransitionApplicability.NotOccurred;
         }
 
-        if (!IsEvidenceCertain(fact))
+        if (fact.State != HistoricalFactState.Verified)
         {
             return HistoricalTransitionApplicability.Optional;
         }
@@ -23,6 +23,11 @@ internal static class HistoricalTransitionApplicabilityResolver
         if (requestedDate > latest)
         {
             return HistoricalTransitionApplicability.Applied;
+        }
+
+        if (!IsEvidenceCertain(fact))
+        {
+            return HistoricalTransitionApplicability.Optional;
         }
 
         if (envelope.IsExactDay)
@@ -57,7 +62,7 @@ internal static class HistoricalTransitionApplicabilityResolver
             return HistoricalTransitionApplicability.NotOccurred;
         }
 
-        if (!IsEvidenceCertain(fact))
+        if (fact.State != HistoricalFactState.Verified)
         {
             return HistoricalTransitionApplicability.Optional;
         }
@@ -65,6 +70,11 @@ internal static class HistoricalTransitionApplicabilityResolver
         if (requestedDate > latest)
         {
             return HistoricalTransitionApplicability.Applied;
+        }
+
+        if (!IsEvidenceCertain(fact))
+        {
+            return HistoricalTransitionApplicability.Optional;
         }
 
         if (envelope.IsExactDay)

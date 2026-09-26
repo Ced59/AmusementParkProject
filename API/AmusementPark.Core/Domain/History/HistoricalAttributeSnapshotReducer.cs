@@ -128,7 +128,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
 
         if (applicableTransitions.Count > MaximumExactPermutationGroupSize)
         {
-            return this.ApplyConservativeClosure(values, applicableTransitions, reasons);
+            return this.ApplyLargeUnorderedGroup(values, applicableTransitions, reasons);
         }
 
         int allMask = (1 << applicableTransitions.Count) - 1;
@@ -185,24 +185,20 @@ internal sealed class HistoricalAttributeSnapshotReducer
         return result;
     }
 
-    private HashSet<string> ApplyConservativeClosure(
+    private HashSet<string> ApplyLargeUnorderedGroup(
         HashSet<string> values,
         IReadOnlyCollection<(HistoricalFact Fact, HistoricalTransitionApplicability Applicability)> transitions,
         HistoricalSnapshotReasonCollector reasons)
     {
-        HashSet<string> result = new HashSet<string>(values, StringComparer.Ordinal);
-        bool changed;
-        do
+        bool hasRequiredTransition = transitions.Any(
+            static transition => transition.Applicability == HistoricalTransitionApplicability.Applied);
+        HashSet<string> result = hasRequiredTransition
+            ? new HashSet<string>(StringComparer.Ordinal)
+            : new HashSet<string>(values, StringComparer.Ordinal);
+        foreach ((HistoricalFact fact, _) in transitions)
         {
-            int previousCount = result.Count;
-            foreach ((HistoricalFact fact, _) in transitions)
-            {
-                result.UnionWith(this.ApplyTransition(result, fact, reasons));
-            }
-
-            changed = previousCount != result.Count;
+            result.UnionWith(this.ApplyTransition(values, fact, reasons));
         }
-        while (changed);
 
         return result;
     }

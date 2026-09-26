@@ -183,7 +183,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
 
         if (applicableTransitions.Count > MaximumExactPermutationGroupSize)
         {
-            return this.ApplyConservativeClosure(
+            return this.ApplyLargeUnorderedGroup(
                 states,
                 applicableTransitions,
                 requestedDate,
@@ -249,31 +249,27 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         return result;
     }
 
-    private HashSet<HistoricalOperationalState> ApplyConservativeClosure(
+    private HashSet<HistoricalOperationalState> ApplyLargeUnorderedGroup(
         HashSet<HistoricalOperationalState> states,
         IReadOnlyCollection<(HistoricalFact Fact, HistoricalTransitionApplicability Applicability, bool HasKnownEnd)>
             transitions,
         DateOnly requestedDate,
         HistoricalSnapshotReasonCollector reasons)
     {
-        HashSet<HistoricalOperationalState> result = new HashSet<HistoricalOperationalState>(states);
-        bool changed;
-        do
+        bool hasRequiredTransition = transitions.Any(
+            static transition => transition.Applicability == HistoricalTransitionApplicability.Applied);
+        HashSet<HistoricalOperationalState> result = hasRequiredTransition
+            ? new HashSet<HistoricalOperationalState>()
+            : new HashSet<HistoricalOperationalState>(states);
+        foreach ((HistoricalFact fact, _, bool hasKnownEnd) in transitions)
         {
-            int previousCount = result.Count;
-            foreach ((HistoricalFact fact, _, bool hasKnownEnd) in transitions)
-            {
-                result.UnionWith(this.ApplyTransitionToStates(
-                    result,
-                    fact,
-                    hasKnownEnd,
-                    requestedDate,
-                    reasons));
-            }
-
-            changed = previousCount != result.Count;
+            result.UnionWith(this.ApplyTransitionToStates(
+                states,
+                fact,
+                hasKnownEnd,
+                requestedDate,
+                reasons));
         }
-        while (changed);
 
         return result;
     }

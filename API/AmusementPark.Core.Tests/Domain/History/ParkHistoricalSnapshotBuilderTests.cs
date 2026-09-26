@@ -111,6 +111,21 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_AfterVerifiedBoundedOpening_AppliesTransition()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForYear(2000, qualifier: DateQualifier.Before),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2001, 1, 1),
+            new[] { opening });
+
+        Assert.Equal(HistoricalOperationalState.KnownOpen, snapshot.OperationalState);
+    }
+
+    [Fact]
     public void Build_BetweenDefinitiveClosureAndReopening_ReturnsKnownClosed()
     {
         HistoricalFact[] facts =
@@ -333,6 +348,30 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_ExcludesNarrativeFactFromSupportingFactIds()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1998, 5, 12),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact announcement = CreateFact(
+            HistoricalFactType.Announcement,
+            HistoricalPeriod.Point(HistoricalDate.ForDay(2000, 1, 1)),
+            HistoricalFactState.Verified,
+            null,
+            null,
+            null,
+            null,
+            null);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2001, 1, 1),
+            new[] { announcement, opening });
+
+        Assert.Equal(new[] { opening.Id }, snapshot.SupportingFactIds);
+    }
+
+    [Fact]
     public void Build_OnExactRenamingBoundary_UsesPreviousThenNewName()
     {
         HistoricalFact opening = CreateLifecycleFact(
@@ -380,6 +419,49 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         Assert.Contains(
             attribute.Reasons,
             reason => reason.Code == HistoricalSnapshotReasonCode.PartialAttributeBoundary);
+    }
+
+    [Fact]
+    public void Build_WithLargeRequiredAttributeGroup_DoesNotRetainPreGroupValue()
+    {
+        HistoricalDate date = HistoricalDate.ForDay(2000, 1, 1);
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact[] renamings = Enumerable.Range(1, 11)
+            .Select(index => CreateAttributeFact(
+                date,
+                AttributeBoundaryMeaning.FirstDayOfNewValue,
+                "Valeur initiale",
+                $"Nom {index:D2}"))
+            .ToArray();
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 1, 2),
+            renamings.Append(opening).ToArray()).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(11, attribute.Candidates.Count);
+        Assert.DoesNotContain("Valeur initiale", attribute.Candidates);
+    }
+
+    [Fact]
+    public void Build_WithLargeRequiredLifecycleGroup_DoesNotRetainPreGroupState()
+    {
+        HistoricalDate date = HistoricalDate.ForDay(2000, 1, 1);
+        HistoricalFact[] openings = Enumerable.Range(1, 11)
+            .Select(_ => CreateLifecycleFact(
+                HistoricalFactType.Opening,
+                date,
+                LifecycleBoundaryMeaning.FirstOperatingDay))
+            .ToArray();
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 1, 2),
+            openings);
+
+        Assert.Equal(HistoricalOperationalState.KnownOpen, snapshot.OperationalState);
     }
 
     [Fact]

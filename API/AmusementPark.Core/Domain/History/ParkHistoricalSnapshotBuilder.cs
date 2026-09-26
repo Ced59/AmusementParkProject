@@ -49,7 +49,11 @@ public sealed class ParkHistoricalSnapshotBuilder : IParkHistoricalSnapshotBuild
                 lifecycle.ConfirmedPresenceIntervals,
                 attributes,
                 reasons.Build(),
-                subjectFacts.Select(static fact => fact.Id).ToArray()));
+                lifecycle.SupportingFactIds.Concat(
+                    subjectFacts
+                        .Where(static fact => fact.AttributeKind.HasValue)
+                        .Select(static fact => fact.Id))
+                    .ToArray()));
         }
 
         return new ParkHistoricalSnapshot(
