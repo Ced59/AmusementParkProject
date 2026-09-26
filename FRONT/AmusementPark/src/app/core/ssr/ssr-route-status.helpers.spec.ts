@@ -100,6 +100,7 @@ describe('SSR route status helpers', () => {
       '/fr/park/123/parc-test/pricing',
       '/fr/park/123/parc-test/images',
       '/fr/park/123/parc-test/history',
+      '/fr/park/123/parc-test/history/1998',
       '/fr/park/123/parc-test/history/event-1/ouverture-1987',
       '/fr/park/123/parc-test/videos/456/video-test',
       '/fr/park/123/parc-test/video/s/456/video-test',

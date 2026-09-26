@@ -1,6 +1,20 @@
 {
-  "version": "5.3.86",
+  "version": "5.3.87",
   "history": [
+    {
+      "version": "5.3.87",
+      "releasedAt": "2026-09-26",
+      "labels": {
+        "fr": "L'histoire des parcs se découvre désormais sur une frise sourcée et par année.",
+        "en": "Park history can now be explored through a sourced timeline and year-by-year views.",
+        "de": "Die Geschichte der Parks lässt sich nun über eine belegte Zeitleiste und Jahresansichten erkunden.",
+        "nl": "De geschiedenis van parken is nu te ontdekken via een onderbouwde tijdlijn en jaaroverzichten.",
+        "it": "La storia dei parchi è ora esplorabile attraverso una cronologia documentata e viste per anno.",
+        "es": "La historia de los parques ya puede explorarse con una cronología documentada y vistas por año.",
+        "pl": "Historię parków można teraz poznawać na udokumentowanej osi czasu i w widokach rocznych.",
+        "pt": "A história dos parques pode agora ser explorada numa cronologia documentada e em vistas anuais."
+      }
+    },
     {
       "version": "5.3.86",
       "releasedAt": "2026-09-26",

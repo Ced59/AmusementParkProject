@@ -1,10 +1,32 @@
 {
   "history": {
-    "timeline": {
-      "loadingTitle": "Chargement de l'histoire",
-      "loadingMessage": "La timeline est en cours de chargement.",
-      "errorTitle": "Histoire indisponible",
-      "errorMessage": "La timeline n'a pas pu être chargée pour le moment."
+    "timeline": { "loadingTitle": "Chargement de l'histoire", "loadingMessage": "La frise est en cours de chargement.", "errorTitle": "Histoire indisponible", "errorMessage": "La frise n'a pas pu être chargée pour le moment." },
+    "explorer": {
+      "loadingTitle": "Chargement de l'histoire", "loadingMessage": "Les événements documentés sont en cours de chargement.", "loadingSnapshotMessage": "Le parc de cette époque est en cours de reconstitution.",
+      "errorTitle": "Histoire indisponible", "errorMessage": "Ces informations historiques n'ont pas pu être chargées pour le moment.",
+      "breadcrumbAria": "Fil d'Ariane historique", "home": "Accueil", "parks": "Parcs", "history": "Histoire",
+      "kicker": "Mémoire du parc", "timelineTitle": "L'histoire de {{park}}", "timelineDescription": "Parcours les changements du parc dans l'ordre, avec leur niveau de preuve et leurs sources.",
+      "chooseYear": "Explore une année", "exploreYear": "Voir cette époque", "unknownDate": "Date inconnue", "approximateDate": "Vers {{date}}",
+      "datePeriod": "Du {{start}} au {{end}}", "dateFrom": "Depuis {{date}}", "dateUntil": "Jusqu’au {{date}}",
+      "dateQualifiers": { "Early": "Début {{date}}", "Mid": "Milieu {{date}}", "Late": "Fin {{date}}", "Before": "Avant {{date}}", "After": "Après {{date}}", "Circa": "Vers {{date}}" },
+      "dateConfidence": { "Estimated": "{{date}} (estimation)", "Disputed": "{{date}} (date contestée)" }, "readNarrative": "Lire le récit complet", "currentNameFallback": "Nom actuel utilisé faute de nom historique documenté.",
+      "timelineSummary": "Résumé de la frise", "documentedEvents": "événements documentés", "page": "page", "visibleOnPage": "affichés ici", "timelineAria": "Frise historique du parc",
+      "change": "Changement documenté", "unknownValue": "Valeur inconnue", "sourcesCount": "{{count}} source(s)",
+      "noEventsTitle": "Aucun événement sur cette page", "noEventsMessage": "La mémoire du parc s'enrichira à mesure que de nouvelles preuves seront validées.",
+      "paginationAria": "Pagination de la frise", "previous": "Précédente", "next": "Suivante", "pageOf": "Page {{current}} sur {{total}}",
+      "snapshotKicker": "Voyage dans le temps", "snapshotTitle": "{{park}} en {{year}}", "snapshotDescription": "Une reconstitution prudente de ce qui était ouvert et connu en {{year}}, fondée uniquement sur les preuves disponibles.",
+      "chooseDate": "Choisis une époque", "year": "Année", "month": "Mois", "day": "Jour", "wholeYear": "Toute l'année", "wholeMonth": "Tout le mois", "travelToDate": "Voyager à cette date",
+      "coverageTitle": "Fiabilité de la reconstitution", "reliableSubjects": "éléments datés avec fiabilité", "nameCoverage": "noms documentés", "zoneCoverage": "zones documentées", "supportingReferences": "références d'appui",
+      "coverageExplanation": "Les absences et incertitudes restent visibles : cette page ne transforme jamais une donnée manquante en certitude.",
+      "identityKicker": "Identité", "identityTitle": "Le parc à cette époque", "openKicker": "Inventaire établi", "knownOpenTitle": "Ouverts avec certitude ({{count}})", "noKnownOpen": "Aucun élément ouvert n'est encore établi avec assez de preuves pour cette date.",
+      "possibleKicker": "Périmètre probable", "possiblyOpenTitle": "Peut-être ouverts ({{count}})", "possiblyOpenExplanation": "Les dates disponibles ne permettent pas encore de l'affirmer avec certitude.",
+      "zonesKicker": "Plan de l'époque", "zonesTitle": "Zones documentées",
+      "uncertainKicker": "Transparence", "uncertainTitle": "Ce qui reste incertain", "uncertainExplanation": "Ces éléments sont conservés à part pour ne pas donner une image artificiellement précise du passé.",
+      "todayKicker": "Retour au présent", "todayTitle": "Découvre le parc aujourd'hui", "todayDescription": "Retrouve ses informations actuelles, ses attractions et ses conseils de visite.", "viewToday": "Voir le parc actuel",
+      "evidence": { "Verified": "Vérifié", "Probable": "Probable", "Disputed": "Contesté", "Unverified": "Non vérifié" },
+      "operationalStates": { "KnownOpen": "Ouvert avec certitude", "KnownClosed": "Fermé avec certitude", "PossiblyOpen": "Peut-être ouvert", "Unknown": "État inconnu" },
+      "coverageStatuses": { "Partial": "Couverture partielle", "Substantial": "Couverture solide", "HighConfidence": "Confiance élevée" },
+      "attributes": { "Logo": "Logo", "Zone": "Zone", "Operator": "Exploitant", "Owner": "Propriétaire", "Manufacturer": "Constructeur", "Category": "Catégorie", "Theme": "Thème", "Location": "Emplacement", "Status": "Statut", "MarketPositioning": "Positionnement" }
     }
   }
 }

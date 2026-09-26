@@ -1,0 +1,196 @@
+@let currentSnapshot = snapshot();
+
+<app-page-state
+  [state]="state()"
+  [messages]="{
+    loadingTitleKey: 'history.explorer.loadingTitle',
+    loadingMessageKey: 'history.explorer.loadingSnapshotMessage',
+    errorTitleKey: 'history.explorer.errorTitle',
+    errorMessageKey: 'history.explorer.errorMessage'
+  }">
+  @if (currentSnapshot) {
+    <main class="park-history-page">
+      <nav class="park-history-breadcrumb" [attr.aria-label]="'history.explorer.breadcrumbAria' | translate">
+        <a [routerLink]="['/', currentLanguage(), 'home']">{{ 'history.explorer.home' | translate }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="['/', currentLanguage(), 'parks']">{{ 'history.explorer.parks' | translate }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="parkLink(currentSnapshot)">{{ currentSnapshot.parkName }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="historyLink(currentSnapshot)">{{ 'history.explorer.history' | translate }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <span aria-current="page">{{ currentSnapshot.requestedInstant.year }}</span>
+      </nav>
+
+      <header class="park-history-hero">
+        <div class="park-history-hero__copy">
+          <p class="park-history-kicker"><i class="pi pi-calendar" aria-hidden="true"></i>{{ 'history.explorer.snapshotKicker' | translate }}</p>
+          <h1>{{ 'history.explorer.snapshotTitle' | translate: { park: currentSnapshot.parkName, year: currentSnapshot.requestedInstant.year } }}</h1>
+          <p>{{ 'history.explorer.snapshotDescription' | translate: { year: currentSnapshot.requestedInstant.year } }}</p>
+        </div>
+
+        <form class="park-history-date-picker snapshot-date-picker" (ngSubmit)="openSelectedDate(currentSnapshot)">
+          <label for="snapshot-year">{{ 'history.explorer.chooseDate' | translate }}</label>
+          <div class="snapshot-date-picker__fields">
+            <input id="snapshot-year" name="snapshotYear" type="number" min="1000" max="9999" inputmode="numeric" [ngModel]="selectedYear" (ngModelChange)="updateSelectedYear($event)" required [attr.aria-label]="'history.explorer.year' | translate">
+            <select name="snapshotMonth" [ngModel]="selectedMonth" (ngModelChange)="updateSelectedMonth($event)" [attr.aria-label]="'history.explorer.month' | translate">
+              <option [ngValue]="null">{{ 'history.explorer.wholeYear' | translate }}</option>
+              @for (month of months; track month) { <option [ngValue]="month">{{ monthLabel(month) }}</option> }
+            </select>
+            @if (selectedMonth) {
+              <select name="snapshotDay" [(ngModel)]="selectedDay" [attr.aria-label]="'history.explorer.day' | translate">
+                <option [ngValue]="null">{{ 'history.explorer.wholeMonth' | translate }}</option>
+                @for (day of availableDays(); track day) { <option [ngValue]="day">{{ day }}</option> }
+              </select>
+            }
+          </div>
+          <button class="app-button app-button--primary" type="submit">
+            <i class="pi pi-compass" aria-hidden="true"></i>{{ 'history.explorer.travelToDate' | translate }}
+          </button>
+        </form>
+      </header>
+
+      <section class="snapshot-overview" [attr.aria-label]="'history.explorer.coverageTitle' | translate">
+        <article>
+          <span class="history-badge history-badge--{{ currentSnapshot.coverage.status.toLowerCase() }}">{{ coverageStatus(currentSnapshot) }}</span>
+          <strong>{{ currentSnapshot.coverage.reliablePeriodSubjectCount }} / {{ currentSnapshot.coverage.totalSubjectCount }}</strong>
+          <small>{{ 'history.explorer.reliableSubjects' | translate }}</small>
+        </article>
+        <article>
+          <strong>{{ coveragePercent(currentSnapshot.coverage.name.percentage) }} %</strong>
+          <small>{{ 'history.explorer.nameCoverage' | translate }}</small>
+        </article>
+        <article>
+          <strong>{{ coveragePercent(currentSnapshot.coverage.zone.percentage) }} %</strong>
+          <small>{{ 'history.explorer.zoneCoverage' | translate }}</small>
+        </article>
+        <article>
+          <strong>{{ totalSupportingSources(currentSnapshot) }}</strong>
+          <small>{{ 'history.explorer.supportingReferences' | translate }}</small>
+        </article>
+      </section>
+
+      <p class="snapshot-coverage-note"><i class="pi pi-shield" aria-hidden="true"></i>{{ 'history.explorer.coverageExplanation' | translate }}</p>
+
+      @if (parkIdentity(); as identity) {
+        <section class="snapshot-section">
+          <header>
+            <p>{{ 'history.explorer.identityKicker' | translate }}</p>
+            <h2>{{ 'history.explorer.identityTitle' | translate }}</h2>
+          </header>
+          <article class="snapshot-identity-card">
+            <div>
+              <span class="history-badge {{ stateClass(identity) }}">{{ stateLabel(identity) }}</span>
+              <h3>{{ identity.displayName }}</h3>
+              @if (usesCurrentNameFallback(identity)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
+            </div>
+            @if (visibleAttributes(identity).length > 0) {
+              <dl>
+                @for (attribute of visibleAttributes(identity); track attribute.kind) {
+                  <div><dt>{{ attributeLabel(attribute) }}</dt><dd>{{ attributeValue(attribute) }}</dd></div>
+                }
+              </dl>
+            }
+          </article>
+        </section>
+      }
+
+      <section class="snapshot-section">
+        <header>
+          <p>{{ 'history.explorer.openKicker' | translate }}</p>
+          <h2>{{ 'history.explorer.knownOpenTitle' | translate: { count: knownOpenSubjects().length } }}</h2>
+        </header>
+        @if (knownOpenSubjects().length > 0) {
+          <div class="snapshot-subject-grid">
+            @for (subject of knownOpenSubjects(); track subjectKey(subject)) {
+              <article class="snapshot-subject-card">
+                <span class="history-badge {{ stateClass(subject) }}">{{ stateLabel(subject) }}</span>
+                <h3>{{ subject.displayName }}</h3>
+                @if (usesCurrentNameFallback(subject)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
+                @if (visibleAttributes(subject).length > 0) {
+                  <dl>
+                    @for (attribute of visibleAttributes(subject); track attribute.kind) {
+                      <div><dt>{{ attributeLabel(attribute) }}</dt><dd>{{ attributeValue(attribute) }}</dd></div>
+                    }
+                  </dl>
+                }
+                <small>{{ 'history.explorer.sourcesCount' | translate: { count: subject.supportingSourceCount } }}</small>
+              </article>
+            }
+          </div>
+        } @else {
+          <p class="snapshot-section__empty">{{ 'history.explorer.noKnownOpen' | translate }}</p>
+        }
+      </section>
+
+      @if (possiblyOpenSubjects().length > 0) {
+        <section class="snapshot-section snapshot-section--caution">
+          <header>
+            <p>{{ 'history.explorer.possibleKicker' | translate }}</p>
+            <h2>{{ 'history.explorer.possiblyOpenTitle' | translate: { count: possiblyOpenSubjects().length } }}</h2>
+          </header>
+          <div class="snapshot-subject-grid">
+            @for (subject of possiblyOpenSubjects(); track subjectKey(subject)) {
+              <article class="snapshot-subject-card">
+                <span class="history-badge {{ stateClass(subject) }}">{{ stateLabel(subject) }}</span>
+                <h3>{{ subject.displayName }}</h3>
+                @if (usesCurrentNameFallback(subject)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
+                <p>{{ 'history.explorer.possiblyOpenExplanation' | translate }}</p>
+                <small>{{ 'history.explorer.sourcesCount' | translate: { count: subject.supportingSourceCount } }}</small>
+              </article>
+            }
+          </div>
+        </section>
+      }
+
+      @if (zones().length > 0) {
+        <section class="snapshot-section">
+          <header>
+            <p>{{ 'history.explorer.zonesKicker' | translate }}</p>
+            <h2>{{ 'history.explorer.zonesTitle' | translate }}</h2>
+          </header>
+          <div class="snapshot-zone-list">
+            @for (zone of zones(); track subjectKey(zone)) {
+              <article>
+                <i class="pi pi-map-marker" aria-hidden="true"></i><span>{{ zone.displayName }}</span><small>{{ stateLabel(zone) }}</small>
+                @if (usesCurrentNameFallback(zone)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
+              </article>
+            }
+          </div>
+        </section>
+      }
+
+      @if (uncertainSubjects().length > 0 || currentSnapshot.ambiguities.length > 0) {
+        <section class="snapshot-section snapshot-section--uncertain">
+          <header>
+            <p>{{ 'history.explorer.uncertainKicker' | translate }}</p>
+            <h2>{{ 'history.explorer.uncertainTitle' | translate }}</h2>
+          </header>
+          <p>{{ 'history.explorer.uncertainExplanation' | translate }}</p>
+          <ul class="snapshot-uncertain-list">
+            @for (subject of uncertainSubjects(); track subjectKey(subject)) {
+              <li>{{ subject.displayName }} @if (usesCurrentNameFallback(subject)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }</li>
+            }
+            @for (ambiguity of currentSnapshot.ambiguities; track ambiguityKey(ambiguity)) {
+              <li>
+                {{ ambiguity.subjectLabel }}
+                @if (usesCurrentNameFallback(ambiguity)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
+              </li>
+            }
+          </ul>
+        </section>
+      }
+
+      <section class="snapshot-today">
+        <div>
+          <p>{{ 'history.explorer.todayKicker' | translate }}</p>
+          <h2>{{ 'history.explorer.todayTitle' | translate }}</h2>
+          <span>{{ 'history.explorer.todayDescription' | translate }}</span>
+        </div>
+        <a class="app-button app-button--primary park-history-action" [routerLink]="parkLink(currentSnapshot)">
+          {{ 'history.explorer.viewToday' | translate }}<i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </section>
+    </main>
+  }
+</app-page-state>

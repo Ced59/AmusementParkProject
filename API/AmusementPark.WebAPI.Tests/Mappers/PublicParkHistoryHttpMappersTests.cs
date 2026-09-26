@@ -99,10 +99,35 @@ public sealed class PublicParkHistoryHttpMappersTests
             Name = "Parc témoin",
             IsVisible = true,
         };
+        HistoryEvent narrative = new()
+        {
+            Id = "event-public-1",
+            Slug = "opening-story",
+            Titles = new()
+            {
+                new AmusementPark.Core.Localization.LocalizedText
+                {
+                    LanguageCode = "fr",
+                    Value = "Le récit de l’ouverture",
+                },
+            },
+            Article = new HistoryArticle
+            {
+                IsPublished = true,
+                Slug = "opening-article",
+            },
+        };
         PublicParkHistoricalTimelineResult result = new(
             park,
             new PagedResult<PublicHistoricalTimelineEntryResult>(
-                new[] { new PublicHistoricalTimelineEntryResult(fact, new[] { source }) },
+                new[]
+                {
+                    new PublicHistoricalTimelineEntryResult(
+                        fact,
+                        new[] { source },
+                        narrative,
+                        "Nom public actuel"),
+                },
                 1,
                 25,
                 1),
@@ -114,6 +139,10 @@ public sealed class PublicParkHistoryHttpMappersTests
 
         Assert.Null(entry.PreviousDisplayValue);
         Assert.Null(entry.NextDisplayValue);
+        Assert.Equal("Nom public actuel", entry.CurrentSubjectName);
+        Assert.Equal(narrative.Id, entry.Narrative?.EventId);
+        Assert.Equal("opening-article", entry.Narrative?.Slug);
+        Assert.Equal("Le récit de l’ouverture", Assert.Single(entry.Narrative!.Titles).Value);
         Assert.DoesNotContain(factId.ToString(), json, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain(sourceId.ToString(), json, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain("admin-secret-note", json, StringComparison.Ordinal);
@@ -129,8 +158,8 @@ public sealed class PublicParkHistoryHttpMappersTests
         HistoricalSubject subject = new(
             HistoricalSubjectType.ParkItem,
             "item-retired",
-            "Attraction disparue",
-            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            "Nom actuel",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
             "park-1");
         HistoricalSubjectSnapshot subjectSnapshot = new(
             subject,
@@ -183,10 +212,12 @@ public sealed class PublicParkHistoryHttpMappersTests
         PublicParkHistoricalSnapshotDto dto = result.ToHttp();
         string json = JsonSerializer.Serialize(dto);
 
-        Assert.Equal("NoEligibleLifecycleFact", Assert.Single(dto.Ambiguities).Code);
+        PublicHistoricalAmbiguityDto ambiguity = Assert.Single(dto.Ambiguities);
+        Assert.Equal("NoEligibleLifecycleFact", ambiguity.Code);
+        Assert.Equal("CurrentFallback", ambiguity.NameOrigin);
         PublicHistoricalSubjectSnapshotDto mappedSubject = Assert.Single(dto.Subjects);
-        Assert.Equal("Attraction disparue", mappedSubject.DisplayName);
-        Assert.Equal("HistoricalLabel", mappedSubject.NameOrigin);
+        Assert.Equal("Nom actuel", mappedSubject.DisplayName);
+        Assert.Equal("CurrentFallback", mappedSubject.NameOrigin);
         Assert.DoesNotContain(internalFactId.ToString(), json, StringComparison.OrdinalIgnoreCase);
     }
 

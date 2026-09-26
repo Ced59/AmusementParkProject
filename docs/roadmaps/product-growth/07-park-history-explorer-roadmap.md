@@ -673,7 +673,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | `HIST-05` | Builder snapshot | Résultat déterministe — implémenté le 26 septembre 2026 |
 | `HIST-06` | Couverture et ambiguïtés | Partiel visible — implémenté le 26 septembre 2026 |
 | `HIST-07` | API timeline/snapshot | Contrats bornés — implémenté le 26 septembre 2026 |
-| `HIST-08` | UI frise et année pilote | SSR accessible |
+| `HIST-08` | UI frise et année pilote | SSR accessible — implémenté le 26 septembre 2026 |
 | `HIST-09` | Relations/lignées | Aucune déduction silencieuse |
 | `HIST-10` | Comparaison de dates | Diff exact |
 | `HIST-11` | Intégration Passeport | Anciennes visites contextualisées |
@@ -915,6 +915,34 @@ la confiance des limites, les explications localisées des faits incertains et
 les compteurs de couverture. Ils fournissent ainsi à `HIST-08` une base SSR
 accessible sans déplacer les règles temporelles dans Angular ni exposer la
 structure interne de MongoDB.
+
+### Implémentation `HIST-08` — 26 septembre 2026
+
+La page Histoire d'un parc consomme désormais exclusivement la frise canonique
+de `HIST-07`. Elle présente les événements dans leur ordre historique, leur
+précision de date, leur niveau de preuve, les changements de valeur et les
+sources publiques réellement attachées. L'ancien moteur narratif reste
+disponible pour les articles historiques profonds, mais ne décide plus si le
+lien Histoire d'un parc doit être affiché.
+
+Chaque année possède une URL stable et rend côté serveur une reconstitution du
+parc à cette époque. L'inventaire sépare explicitement les éléments ouverts
+avec certitude, ceux qui sont seulement possibles et ceux qui restent inconnus.
+La couverture des noms et des zones, le nombre de références et les ambiguïtés
+empêchent l'interface de donner une fausse impression d'exhaustivité. Les vues
+annuelles restent `noindex,follow` tant que `HIST-13`
+n'a pas sélectionné les seules années éditorialement assez solides pour le SEO.
+
+Les deux vues utilisent des resolvers SSR, une façade d'état dédiée et les
+ports d'accès existants ; aucune règle temporelle n'a été recopiée dans les
+composants. Les routes, le fil d'Ariane visible et son `BreadcrumbList` JSON-LD
+sont localisés dans les huit langues. Aucun identifiant de preuve, de révision
+ou de valeur structurée n'est présenté au visiteur.
+
+Le contrat responsive contient chaque surface dans le viewport, autorise la
+césure des libellés longs et replie champs, métriques, transitions et cartes en
+une colonne sur petit écran. Un test de contrat protège explicitement le rendu
+à partir de 320 pixels.
 
 ## 22. Gate finale `HIST-G`
 

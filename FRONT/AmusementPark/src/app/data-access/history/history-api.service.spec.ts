@@ -39,4 +39,24 @@ describe('HistoryApiService', () => {
     httpTestingController.expectNone(url);
     expect(receivedStatus).toBe(503);
   });
+
+  it('loads a bounded canonical public timeline', () => {
+    service.getPublicParkTimeline('park/one', {}, 2, 25).subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}public/parks/park%2Fone/history/timeline?page=2&pageSize=25`
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({ parkId: 'park/one', parkName: 'Park', events: [], pagination: {} });
+  });
+
+  it('loads a canonical snapshot without inventing missing date precision', () => {
+    service.getPublicParkSnapshot('park-1', 1998, 7).subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}public/parks/park-1/history/snapshot?year=1998&month=7`
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({ parkId: 'park-1', parkName: 'Park', subjects: [], coverage: {}, ambiguities: [] });
+  });
 });

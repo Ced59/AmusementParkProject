@@ -9,6 +9,10 @@ import {
   HistoryEventWriteModel,
   HistoryTimeline
 } from '@app/models/history/history.models';
+import {
+  PublicParkHistoricalSnapshot,
+  PublicParkHistoricalTimeline
+} from '@app/models/history/public-park-history.models';
 import { PagedCollectionResponse, unwrapPagedCollection } from '@data-access/shared/api-helpers';
 import { PagedResult } from '@shared/models/contracts';
 import { environment } from '../../../environments/environment';
@@ -29,6 +33,16 @@ export class HistoryApiService {
   };
 
   constructor(private readonly http: HttpClient) {
+  }
+
+  getPublicParkTimeline(parkId: string, options: HistoryHttpOptions = {}, page: number = 1, pageSize: number = 50): Observable<PublicParkHistoricalTimeline> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getPublicParkTimeline(parkId, page, pageSize)}`;
+    return this.http.get<PublicParkHistoricalTimeline>(url, options);
+  }
+
+  getPublicParkSnapshot(parkId: string, year: number, month: number | null = null, day: number | null = null, options: HistoryHttpOptions = {}): Observable<PublicParkHistoricalSnapshot> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getPublicParkSnapshot(parkId, year, month, day)}`;
+    return this.http.get<PublicParkHistoricalSnapshot>(url, options);
   }
 
   getParkTimeline(parkId: string, includeParkItems: boolean = false, parkItemIds: readonly string[] = [], options: HistoryHttpOptions = {}, page: number = 1): Observable<HistoryTimeline> {

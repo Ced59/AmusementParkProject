@@ -10,6 +10,8 @@ public sealed class PublicHistoricalTimelineEntryDto
 
     public string SubjectLabel { get; set; } = string.Empty;
 
+    public string? CurrentSubjectName { get; set; }
+
     public string FactType { get; set; } = string.Empty;
 
     public PublicHistoricalPeriodDto Period { get; set; } = new PublicHistoricalPeriodDto();
@@ -25,6 +27,8 @@ public sealed class PublicHistoricalTimelineEntryDto
     public string? NextDisplayValue { get; set; }
 
     public string? OtherTypeLabel { get; set; }
+
+    public PublicHistoricalNarrativeDto? Narrative { get; set; }
 
     public IReadOnlyCollection<LocalizedTextDto> UncertaintyExplanations { get; set; } =
         Array.Empty<LocalizedTextDto>();
