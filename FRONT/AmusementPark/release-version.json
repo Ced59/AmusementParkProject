@@ -1,6 +1,20 @@
 {
-  "version": "5.3.82",
+  "version": "5.3.83",
   "history": [
+    {
+      "version": "5.3.83",
+      "releasedAt": "2026-09-26",
+      "labels": {
+        "fr": "Les états passés des parcs et attractions peuvent désormais être reconstitués sans inventer les dates manquantes.",
+        "en": "Past park and attraction states can now be reconstructed without inventing missing dates.",
+        "de": "Vergangene Zustände von Parks und Attraktionen lassen sich nun rekonstruieren, ohne fehlende Daten zu erfinden.",
+        "nl": "Eerdere toestanden van parken en attracties kunnen nu worden gereconstrueerd zonder ontbrekende datums te verzinnen.",
+        "it": "Gli stati passati di parchi e attrazioni possono ora essere ricostruiti senza inventare le date mancanti.",
+        "es": "Los estados pasados de parques y atracciones ya pueden reconstruirse sin inventar las fechas que faltan.",
+        "pl": "Dawne stany parków i atrakcji można teraz odtworzyć bez wymyślania brakujących dat.",
+        "pt": "Os estados passados de parques e atrações podem agora ser reconstruídos sem inventar datas em falta."
+      }
+    },
     {
       "version": "5.3.82",
       "releasedAt": "2026-09-26",

@@ -670,7 +670,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | `HIST-02` | Core temporel | Frontières testées — implémenté le 25 septembre 2026 |
 | `HIST-03` | Persistance faits/sources | Audit et indexes — implémenté le 26 septembre 2026 |
 | `HIST-04` | Migration/adaptation des historiques existants | Aucune perte de contenu — implémenté le 26 septembre 2026 |
-| `HIST-05` | Builder snapshot | Résultat déterministe |
+| `HIST-05` | Builder snapshot | Résultat déterministe — implémenté le 26 septembre 2026 |
 | `HIST-06` | Couverture et ambiguïtés | Partiel visible |
 | `HIST-07` | API timeline/snapshot | Contrats bornés |
 | `HIST-08` | UI frise et année pilote | SSR accessible |
@@ -777,6 +777,42 @@ fait reconstruire uniquement la sortie inachevée au prochain démarrage. La
 réussite exige une empreinte source inchangée et l'égalité entre source,
 sauvegarde et récits migrés. MongoDB est donc mis à jour automatiquement par le
 déploiement, sans manipulation manuelle ni coexistence durable de deux moteurs.
+
+### Implémentation `HIST-05` — 26 septembre 2026
+
+Le Core peut désormais reconstruire l'état d'un parc, d'une attraction ou
+d'une zone pour un jour, un mois ou une année. Le résultat distingue
+`KnownOpen`, `KnownClosed`, `PossiblyOpen` et `Unknown`. Pour une enveloppe
+mensuelle ou annuelle, il indique aussi si l'activité est prouvée pendant toute
+la période ou seulement sur des sous-intervalles civils explicitement renvoyés.
+Une date partielle reste partielle : une ouverture connue seulement en 1998 ne
+devient jamais artificiellement une ouverture au 1er janvier.
+
+Le réducteur relit toute la suite admissible des ouvertures, fermetures,
+fermetures temporaires et réouvertures. Il respecte `FirstOperatingDay`,
+`LastOperatingDay`, `FirstClosedDay` et les ordres intrajournaliers réellement
+sourcés. Deux transitions dont l'ordre n'est pas démontré produisent une
+ambiguïté stable ; leur identifiant ou leur ordre MongoDB ne sert jamais à
+inventer une vérité. Une fermeture temporaire sans réouverture documentée ne
+prolonge pas arbitrairement un état fermé, tandis qu'une fermeture définitive
+reste applicable jusqu'à une éventuelle réouverture explicite.
+
+Les attributs historiques sont réduits séparément : un changement de nom,
+d'exploitant, de propriétaire, de thème, de zone, de logo ou de localisation ne
+modifie aucun autre attribut. La valeur précédente, la nouvelle valeur et le
+côté de la frontière restent traçables. Les révisions remplacées ou retirées,
+les brouillons et les contenus hérités encore en attente de revue sont exclus
+du calcul décisionnel. Les faits probables ou contestés peuvent expliquer un
+état possible, mais ne créent jamais seuls une certitude.
+
+Le builder est un service de domaine pur et déterministe : il ne dépend ni de
+MongoDB, ni de HTTP, ni d'Angular, et il est enregistré derrière le port
+`IParkHistoricalSnapshotBuilder`. Ses raisons structurées et les identifiants
+des faits concernés préparent les diagnostics de couverture de `HIST-06` et les
+preuves publiques de l'API `HIST-07`. Les tests couvrent notamment les dates
+partielles, les bornes inclusives, les fermetures temporaires bornées ou non,
+les réouvertures, les transitions simultanées, les renommages, les preuves
+probables, les rétractations, le déterminisme et la limite du calendrier.
 
 ## 22. Gate finale `HIST-G`
 
