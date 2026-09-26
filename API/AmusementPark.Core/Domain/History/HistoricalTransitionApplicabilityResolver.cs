@@ -12,7 +12,9 @@ internal static class HistoricalTransitionApplicabilityResolver
         DateOnly latest = envelope.LatestPossibleDate ?? DateOnly.MaxValue;
         if (requestedDate < earliest)
         {
-            return HistoricalTransitionApplicability.NotOccurred;
+            return HasUncertainNonDirectionalPointBoundary(fact)
+                ? HistoricalTransitionApplicability.Optional
+                : HistoricalTransitionApplicability.NotOccurred;
         }
 
         if (fact.State != HistoricalFactState.Verified)
@@ -72,7 +74,9 @@ internal static class HistoricalTransitionApplicabilityResolver
         DateOnly latest = envelope.LatestPossibleDate ?? DateOnly.MaxValue;
         if (requestedDate < earliest)
         {
-            return HistoricalTransitionApplicability.NotOccurred;
+            return HasUncertainNonDirectionalPointBoundary(fact)
+                ? HistoricalTransitionApplicability.Optional
+                : HistoricalTransitionApplicability.NotOccurred;
         }
 
         if (fact.State != HistoricalFactState.Verified)
@@ -133,6 +137,15 @@ internal static class HistoricalTransitionApplicabilityResolver
             && fact.Period.StartConfidence == PeriodBoundaryConfidence.Confirmed
             && fact.Period.EndConfidence == PeriodBoundaryConfidence.Confirmed
             && fact.Period.Start is { IsApproximate: false };
+    }
+
+    private static bool HasUncertainNonDirectionalPointBoundary(HistoricalFact fact)
+    {
+        return fact.Period.IsPoint
+            && fact.Period.Start is { Qualifier: null } boundary
+            && (boundary.IsApproximate
+                || fact.Period.StartConfidence != PeriodBoundaryConfidence.Confirmed
+                || fact.Period.EndConfidence != PeriodBoundaryConfidence.Confirmed);
     }
 
     private static HistoricalTransitionApplicability ResolveExactLifecycleBoundary(HistoricalFact fact)

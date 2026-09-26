@@ -492,6 +492,37 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_BeforeApproximateOpening_RemainsPossiblyOpen()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 1, 1, isApproximate: true),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(1999, 12, 31),
+            new[] { opening });
+
+        Assert.Equal(HistoricalOperationalState.PossiblyOpen, snapshot.OperationalState);
+    }
+
+    [Fact]
+    public void Build_BeforeEstimatedOpening_RemainsPossiblyOpen()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            confidence: PeriodBoundaryConfidence.Estimated);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(1999, 12, 31),
+            new[] { opening });
+
+        Assert.Equal(HistoricalOperationalState.PossiblyOpen, snapshot.OperationalState);
+    }
+
+    [Fact]
     public void Build_OnLatestPossibleDayOfUnboundedPartialTemporaryClosure_RemainsPossiblyOpen()
     {
         HistoricalFact[] facts =
@@ -961,6 +992,49 @@ public sealed class ParkHistoricalSnapshotBuilderTests
 
         HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
             HistoricalInstant.ForDay(2000, 1, 2),
+            new[] { opening, renaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Nom A", "Nom B" }, attribute.Candidates);
+    }
+
+    [Fact]
+    public void Build_BeforeApproximateRenaming_RemainsAmbiguous()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact renaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 1, 1, isApproximate: true),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(1999, 12, 31),
+            new[] { opening, renaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Nom A", "Nom B" }, attribute.Candidates);
+    }
+
+    [Fact]
+    public void Build_BeforeEstimatedRenaming_RemainsAmbiguous()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact renaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 1, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B",
+            confidence: PeriodBoundaryConfidence.Estimated);
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(1999, 12, 31),
             new[] { opening, renaming }).Attributes);
 
         Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
@@ -1735,9 +1809,10 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         HistoricalDate date,
         LifecycleBoundaryMeaning boundaryMeaning,
         HistoricalFactState state = HistoricalFactState.Verified,
-        int? sequenceWithinDate = null)
+        int? sequenceWithinDate = null,
+        PeriodBoundaryConfidence confidence = PeriodBoundaryConfidence.Confirmed)
     {
-        HistoricalPeriod period = HistoricalPeriod.Point(date);
+        HistoricalPeriod period = HistoricalPeriod.Point(date, confidence);
         return CreateFact(
             type,
             period,
@@ -1757,7 +1832,8 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         int? sequenceWithinDate = null,
         Guid? id = null,
         HistoricalFactState state = HistoricalFactState.Verified,
-        string? structuredValueOverride = null)
+        string? structuredValueOverride = null,
+        PeriodBoundaryConfidence confidence = PeriodBoundaryConfidence.Confirmed)
     {
         string structuredValue = structuredValueOverride ?? string.Concat(
             "{\"previous\":\"",
@@ -1767,7 +1843,7 @@ public sealed class ParkHistoricalSnapshotBuilderTests
             "\"}");
         return CreateFact(
             HistoricalFactType.Renaming,
-            HistoricalPeriod.Point(date),
+            HistoricalPeriod.Point(date, confidence),
             state,
             null,
             HistoricalAttributeKind.Name,
