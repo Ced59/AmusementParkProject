@@ -49,7 +49,8 @@ internal static class HistoricalPersistenceMongoDefinitions
             new CreateIndexModel<HistoricalFactDocument>(
                 Builders<HistoricalFactDocument>.IndexKeys
                     .Ascending(document => document.FactId)
-                    .Descending("transitionReviewEvent.occurredAtUtc"),
+                    .Descending("transitionReviewEvent.occurredAtUtc")
+                    .Descending(document => document.Revision),
                 new CreateIndexOptions { Name = "idx_historical_facts_audit_date" }),
         };
     }
@@ -84,7 +85,8 @@ internal static class HistoricalPersistenceMongoDefinitions
             new CreateIndexModel<HistoricalSourceDocument>(
                 Builders<HistoricalSourceDocument>.IndexKeys
                     .Ascending(document => document.SourceId)
-                    .Descending("transitionReviewEvent.occurredAtUtc"),
+                    .Descending("transitionReviewEvent.occurredAtUtc")
+                    .Descending(document => document.Revision),
                 new CreateIndexOptions { Name = "idx_historical_sources_audit_date" }),
         };
     }

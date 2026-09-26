@@ -1,3 +1,5 @@
+using AmusementPark.Application.Features.History.Models;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
@@ -23,7 +25,16 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_subject_start_year");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_publication_workflow");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_source_revision");
-        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_facts_audit_date");
+        CreateIndexModel<HistoricalFactDocument> audit = indexes.Single(
+            index => index.Options.Name == "idx_historical_facts_audit_date");
+        IBsonSerializer<HistoricalFactDocument> factSerializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<HistoricalFactDocument>();
+        BsonDocument auditKeys = audit.Keys.Render(
+            new RenderArgs<HistoricalFactDocument>(
+                factSerializer,
+                BsonSerializer.SerializerRegistry));
+        Assert.Equal(-1, auditKeys["transitionReviewEvent.occurredAtUtc"].AsInt32);
+        Assert.Equal(-1, auditKeys["revision"].AsInt32);
         Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));
     }
 
@@ -47,7 +58,14 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Equal(1, latestRevisionKeys["sourceId"].AsInt32);
         Assert.Equal(-1, latestRevisionKeys["revision"].AsInt32);
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_sources_publication_access");
-        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_sources_audit_date");
+        CreateIndexModel<HistoricalSourceDocument> audit = indexes.Single(
+            index => index.Options.Name == "idx_historical_sources_audit_date");
+        BsonDocument auditKeys = audit.Keys.Render(
+            new RenderArgs<HistoricalSourceDocument>(
+                serializer,
+                BsonSerializer.SerializerRegistry));
+        Assert.Equal(-1, auditKeys["transitionReviewEvent.occurredAtUtc"].AsInt32);
+        Assert.Equal(-1, auditKeys["revision"].AsInt32);
         Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));
     }
 
@@ -80,5 +98,80 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         bool isPublic = HistoricalSubjectPublicationStateReader.IsStandaloneAttractionPublic(attraction);
 
         Assert.False(isPublic);
+    }
+
+    [Fact]
+    public void BuildFactAuditFilter_WhenCursorExists_ShouldSelectOnlyOlderRevisions()
+    {
+        DateTime occurredAtUtc = new DateTime(2026, 9, 26, 10, 0, 0, DateTimeKind.Utc);
+        HistoricalAuditCursor cursor = new HistoricalAuditCursor(occurredAtUtc, 42);
+
+        FilterDefinition<HistoricalFactDocument> filter =
+            HistoricalReviewEventRepository.BuildFactFilter("fact-1", cursor);
+        IBsonSerializer<HistoricalFactDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<HistoricalFactDocument>();
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<HistoricalFactDocument>(serializer, BsonSerializer.SerializerRegistry));
+
+        Assert.Equal("fact-1", rendered["factId"].AsString);
+        BsonArray alternatives = rendered["$or"].AsBsonArray;
+        Assert.Equal(2, alternatives.Count);
+        Assert.True(alternatives[0]["transitionReviewEvent.occurredAtUtc"].AsBsonDocument.Contains("$lt"));
+        Assert.Equal(42, alternatives[1]["revision"]["$lt"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildSourceAuditFilter_WhenCursorExists_ShouldSelectOnlyOlderRevisions()
+    {
+        DateTime occurredAtUtc = new DateTime(2026, 9, 26, 10, 0, 0, DateTimeKind.Utc);
+        HistoricalAuditCursor cursor = new HistoricalAuditCursor(occurredAtUtc, 17);
+
+        FilterDefinition<HistoricalSourceDocument> filter =
+            HistoricalReviewEventRepository.BuildSourceFilter("source-1", cursor);
+        IBsonSerializer<HistoricalSourceDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<HistoricalSourceDocument>();
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<HistoricalSourceDocument>(serializer, BsonSerializer.SerializerRegistry));
+
+        Assert.Equal("source-1", rendered["sourceId"].AsString);
+        BsonArray alternatives = rendered["$or"].AsBsonArray;
+        Assert.Equal(2, alternatives.Count);
+        Assert.True(alternatives[0]["transitionReviewEvent.occurredAtUtc"].AsBsonDocument.Contains("$lt"));
+        Assert.Equal(17, alternatives[1]["revision"]["$lt"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildAuditPage_WhenAnotherBatchExists_ShouldReturnCursorFromLastVisibleEvent()
+    {
+        DateTime occurredAtUtc = new DateTime(2026, 9, 26, 10, 0, 0, DateTimeKind.Utc);
+        HistoricalReviewEventDocument[] documents =
+        {
+            CreateReviewEventDocument(3, occurredAtUtc.AddMinutes(2)),
+            CreateReviewEventDocument(2, occurredAtUtc.AddMinutes(1)),
+            CreateReviewEventDocument(1, occurredAtUtc),
+        };
+
+        HistoricalAuditPage page = HistoricalReviewEventRepository.BuildPage(documents, 2);
+
+        Assert.Equal(2, page.Items.Count);
+        Assert.NotNull(page.NextCursor);
+        Assert.Equal(2, page.NextCursor.ResourceRevision);
+        Assert.Equal(occurredAtUtc.AddMinutes(1), page.NextCursor.OccurredAtUtc);
+    }
+
+    private static HistoricalReviewEventDocument CreateReviewEventDocument(
+        int revision,
+        DateTime occurredAtUtc)
+    {
+        return new HistoricalReviewEventDocument
+        {
+            Id = Guid.NewGuid().ToString("N"),
+            ResourceType = HistoricalReviewResourceType.Fact,
+            ResourceId = Guid.NewGuid().ToString("N"),
+            ResourceRevision = revision,
+            EventType = HistoricalReviewEventType.ReviewUpdated,
+            ActorUserId = "reviewer-1",
+            OccurredAtUtc = occurredAtUtc,
+        };
     }
 }

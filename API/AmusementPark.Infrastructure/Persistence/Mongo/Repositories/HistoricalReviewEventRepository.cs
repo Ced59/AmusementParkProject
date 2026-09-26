@@ -1,4 +1,5 @@
 using System.Globalization;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -23,10 +24,11 @@ public sealed class HistoricalReviewEventRepository : IHistoricalAuditReader
             settings.HistoricalSourcesCollectionName);
     }
 
-    public async Task<IReadOnlyCollection<HistoricalReviewEvent>> ListAsync(
+    public async Task<HistoricalAuditPage> ListAsync(
         HistoricalReviewResourceType resourceType,
         Guid resourceId,
-        int limit,
+        int pageSize,
+        HistoricalAuditCursor? after,
         CancellationToken cancellationToken)
     {
         if (!Enum.IsDefined(resourceType))
@@ -34,41 +36,112 @@ public sealed class HistoricalReviewEventRepository : IHistoricalAuditReader
             throw new ArgumentOutOfRangeException(nameof(resourceType));
         }
 
-        if (resourceId == Guid.Empty || limit <= 0)
+        if (resourceId == Guid.Empty || pageSize <= 0)
         {
-            return Array.Empty<HistoricalReviewEvent>();
+            return new HistoricalAuditPage(Array.Empty<HistoricalReviewEvent>(), null);
         }
 
-        int safeLimit = Math.Min(limit, MaximumPageSize);
+        ValidateCursor(after);
+        int safePageSize = Math.Min(pageSize, MaximumPageSize);
+        int queryLimit = checked(safePageSize + 1);
         string normalizedResourceId = resourceId.ToString("N", CultureInfo.InvariantCulture);
         switch (resourceType)
         {
             case HistoricalReviewResourceType.Fact:
                 List<HistoricalReviewEventDocument> factReviewEvents = await this.factCollection
-                    .Find(document => document.FactId == normalizedResourceId)
+                    .Find(BuildFactFilter(normalizedResourceId, after))
                     .SortByDescending(document => document.TransitionReviewEvent.OccurredAtUtc)
                     .ThenByDescending(document => document.Revision)
-                    .Limit(safeLimit)
+                    .Limit(queryLimit)
                     .Project(document => document.TransitionReviewEvent)
                     .ToListAsync(cancellationToken);
-                return factReviewEvents
-                    .Select(static document => document.ToDomain())
-                    .ToArray();
+                return BuildPage(factReviewEvents, safePageSize);
             case HistoricalReviewResourceType.Source:
                 List<HistoricalReviewEventDocument> sourceReviewEvents = await this.sourceCollection
-                    .Find(document => document.SourceId == normalizedResourceId)
+                    .Find(BuildSourceFilter(normalizedResourceId, after))
                     .SortByDescending(document => document.TransitionReviewEvent.OccurredAtUtc)
                     .ThenByDescending(document => document.Revision)
-                    .Limit(safeLimit)
+                    .Limit(queryLimit)
                     .Project(document => document.TransitionReviewEvent)
                     .ToListAsync(cancellationToken);
-                return sourceReviewEvents
-                    .Select(static document => document.ToDomain())
-                    .ToArray();
+                return BuildPage(sourceReviewEvents, safePageSize);
             default:
                 throw new HistoricalPersistenceValidationException(
                     HistoricalPersistenceErrorCodes.InvalidReviewEvent,
                     "The historical review event resource type is not readable yet.");
+        }
+    }
+
+    internal static FilterDefinition<HistoricalFactDocument> BuildFactFilter(
+        string resourceId,
+        HistoricalAuditCursor? after)
+    {
+        FilterDefinitionBuilder<HistoricalFactDocument> builder = Builders<HistoricalFactDocument>.Filter;
+        FilterDefinition<HistoricalFactDocument> filter = builder.Eq(
+            static document => document.FactId,
+            resourceId);
+        if (after is null)
+        {
+            return filter;
+        }
+
+        return filter & builder.Or(
+            builder.Lt(
+                static document => document.TransitionReviewEvent.OccurredAtUtc,
+                after.OccurredAtUtc),
+            builder.And(
+                builder.Eq(
+                    static document => document.TransitionReviewEvent.OccurredAtUtc,
+                    after.OccurredAtUtc),
+                builder.Lt(static document => document.Revision, after.ResourceRevision)));
+    }
+
+    internal static FilterDefinition<HistoricalSourceDocument> BuildSourceFilter(
+        string resourceId,
+        HistoricalAuditCursor? after)
+    {
+        FilterDefinitionBuilder<HistoricalSourceDocument> builder = Builders<HistoricalSourceDocument>.Filter;
+        FilterDefinition<HistoricalSourceDocument> filter = builder.Eq(
+            static document => document.SourceId,
+            resourceId);
+        if (after is null)
+        {
+            return filter;
+        }
+
+        return filter & builder.Or(
+            builder.Lt(
+                static document => document.TransitionReviewEvent.OccurredAtUtc,
+                after.OccurredAtUtc),
+            builder.And(
+                builder.Eq(
+                    static document => document.TransitionReviewEvent.OccurredAtUtc,
+                    after.OccurredAtUtc),
+                builder.Lt(static document => document.Revision, after.ResourceRevision)));
+    }
+
+    internal static HistoricalAuditPage BuildPage(
+        IReadOnlyCollection<HistoricalReviewEventDocument> documents,
+        int pageSize)
+    {
+        HistoricalReviewEvent[] events = documents
+            .Take(pageSize)
+            .Select(static document => document.ToDomain())
+            .ToArray();
+        HistoricalAuditCursor? nextCursor = documents.Count > pageSize && events.Length > 0
+            ? new HistoricalAuditCursor(
+                events[^1].OccurredAtUtc,
+                events[^1].ResourceRevision)
+            : null;
+        return new HistoricalAuditPage(events, nextCursor);
+    }
+
+    private static void ValidateCursor(HistoricalAuditCursor? after)
+    {
+        if (after is not null
+            && (after.OccurredAtUtc.Kind != DateTimeKind.Utc || after.ResourceRevision < 1))
+        {
+            throw new ArgumentOutOfRangeException(nameof(after));
         }
     }
 }

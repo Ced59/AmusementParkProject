@@ -742,6 +742,9 @@ Les collections cibles sont `historical-facts`, `historical-relations`,
 révision embarque l'événement de revue qui l'a produite : l'audit est donc
 append-only et atomique avec la révision, sans seconde écriture dans une
 collection séparée.
+La lecture de cet audit est paginée par curseur temporel puis numéro de révision :
+la limite d'une page borne la charge sans rendre les anciennes entrées
+inaccessibles.
 
 - index par sujet, période, type et état ;
 - unicité des révisions et audit append-only ;
