@@ -4,6 +4,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.History.Commands;
 using AmusementPark.Application.Features.History.Contracts;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
@@ -19,18 +20,21 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
+    private readonly HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService;
     private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
     public UpsertHistoryEventCommandHandler(
         IHistoryEventRepository historyEventRepository,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
+        HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService,
         ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
         : this(
             historyEventRepository,
             parkRepository,
             parkItemRepository,
             null,
+            canonicalFactRetractionService,
             sitemapRefreshScheduler)
     {
     }
@@ -40,12 +44,15 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IStandaloneAttractionRepository? standaloneAttractionRepository,
+        HistoricalNarrativeCanonicalFactRetractionService canonicalFactRetractionService,
         ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
         this.historyEventRepository = historyEventRepository;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.standaloneAttractionRepository = standaloneAttractionRepository;
+        this.canonicalFactRetractionService = canonicalFactRetractionService
+            ?? throw new ArgumentNullException(nameof(canonicalFactRetractionService));
         this.sitemapRefreshScheduler = sitemapRefreshScheduler;
     }
 
@@ -66,6 +73,13 @@ public sealed class UpsertHistoryEventCommandHandler : ICommandHandler<UpsertHis
         HistoryEvent historyEvent = existing is null
             ? new HistoryEvent()
             : existing;
+
+        if (existing?.CanonicalFactId is Guid canonicalFactId)
+        {
+            await this.canonicalFactRetractionService.RetractAsync(
+                canonicalFactId,
+                cancellationToken);
+        }
 
         this.ApplyWriteModel(historyEvent, command.Event, ownerId, key);
 
