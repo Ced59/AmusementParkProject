@@ -710,6 +710,36 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_DayBeforeReopeningWithProbableSameDayClosure_ReportsConflict()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact probableClosure = CreateLifecycleFact(
+            HistoricalFactType.TemporaryClosure,
+            HistoricalDate.ForDay(2000, 5, 1),
+            LifecycleBoundaryMeaning.FirstClosedDay,
+            state: HistoricalFactState.Probable,
+            sequenceWithinDate: 1);
+        HistoricalFact reopening = CreateLifecycleFact(
+            HistoricalFactType.Reopening,
+            HistoricalDate.ForDay(2000, 5, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            sequenceWithinDate: 2);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 4, 30),
+            new[] { opening, probableClosure, reopening });
+
+        Assert.Equal(HistoricalOperationalState.PossiblyOpen, snapshot.OperationalState);
+        Assert.Contains(
+            snapshot.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.InconsistentLifecycleSequence
+                && reason.FactIds.Contains(reopening.Id));
+    }
+
+    [Fact]
     public void Build_WithProbableOpening_ReturnsPossiblyOpen()
     {
         HistoricalFact opening = CreateLifecycleFact(
@@ -984,6 +1014,62 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         Assert.DoesNotContain(
             attribute.Reasons,
             reason => reason.Code == HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue);
+    }
+
+    [Fact]
+    public void Build_WithMissingPreviousValueOnLastDayBoundary_DoesNotReportInvalidPayload()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact earlierRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(1995, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B");
+        HistoricalFact nextOnlyLastDay = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.LastDayOfPreviousValue,
+            "Valeur ignorée",
+            "Nom D",
+            structuredValueOverride: "{\"next\":\"Nom D\"}");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 5, 1),
+            new[] { opening, earlierRenaming, nextOnlyLastDay }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Nom B" }, attribute.Candidates);
+        Assert.DoesNotContain(
+            attribute.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue);
+    }
+
+    [Fact]
+    public void Build_WithApproximateNominalOrder_PreservesEveryPossibleInitialValue()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact firstRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 1, 1, isApproximate: true),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B");
+        HistoricalFact secondRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 1, 2, isApproximate: true),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom C",
+            "Nom D");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 1, 3),
+            new[] { opening, firstRenaming, secondRenaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Nom A", "Nom B", "Nom C", "Nom D" }, attribute.Candidates);
     }
 
     [Fact]

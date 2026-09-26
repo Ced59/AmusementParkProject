@@ -685,6 +685,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                 && candidate.Type is (HistoricalFactType.Closure
                     or HistoricalFactType.TemporaryClosure
                     or HistoricalFactType.DefinitiveClosure)
+                && candidate.State == HistoricalFactState.Verified
                 && candidate.SequenceWithinDate.HasValue
                 && candidate.SequenceWithinDate.Value < reopening.SequenceWithinDate.Value
                 && candidate.Period.GetPossibleEnvelope() == reopeningEnvelope);

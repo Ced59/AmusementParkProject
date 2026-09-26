@@ -13,23 +13,16 @@ internal static class HistoricalTransitionOrdering
             .ToArray();
         List<IReadOnlyList<HistoricalFact>> groups = new();
         List<HistoricalFact> current = new();
-        DateOnly currentLatest = DateOnly.MinValue;
         foreach (HistoricalFact fact in orderedFacts)
         {
-            DateOnly earliest = Earliest(fact);
-            DateOnly latest = Latest(fact);
-            if (current.Count > 0 && earliest > currentLatest)
+            if (current.Count > 0
+                && current.All(existing => MustPrecede(existing, fact)))
             {
                 groups.Add(current.ToArray());
                 current = new List<HistoricalFact>();
-                currentLatest = latest;
             }
 
             current.Add(fact);
-            if (latest > currentLatest)
-            {
-                currentLatest = latest;
-            }
         }
 
         if (current.Count > 0)
@@ -81,7 +74,17 @@ internal static class HistoricalTransitionOrdering
             return candidate.SequenceWithinDate.Value < other.SequenceWithinDate.Value;
         }
 
-        return Latest(candidate) < Earliest(other);
+        return HasConfirmedTemporalPosition(candidate)
+            && HasConfirmedTemporalPosition(other)
+            && Latest(candidate) < Earliest(other);
+    }
+
+    private static bool HasConfirmedTemporalPosition(HistoricalFact fact)
+    {
+        return fact.Period.IsPoint
+            && fact.Period.StartConfidence == PeriodBoundaryConfidence.Confirmed
+            && fact.Period.EndConfidence == PeriodBoundaryConfidence.Confirmed
+            && fact.Period.Start is { IsApproximate: false };
     }
 
     internal static DateOnly Earliest(HistoricalFact fact)

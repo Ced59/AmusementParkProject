@@ -309,10 +309,13 @@ internal sealed class HistoricalAttributeSnapshotReducer
         HistoricalFact fact,
         HistoricalSnapshotReasonCollector reasons)
     {
-        if (HistoricalAttributeTransitionParser.TryParse(fact, out string? previousValue, out _)
-            && previousValue is not null)
+        bool parsed = HistoricalAttributeTransitionParser.TryParse(
+            fact,
+            out string? previousValue,
+            out _);
+        if (parsed)
         {
-            values.Add(previousValue);
+            values.Add(previousValue ?? UnknownValue);
             return;
         }
 
