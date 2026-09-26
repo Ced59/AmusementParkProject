@@ -78,6 +78,11 @@ public static class HistoricalFactEvidenceValidator
             scopes.Add(HistoricalSourceScope.StructuredValue);
         }
 
+        if (fact.SequenceWithinDate.HasValue)
+        {
+            scopes.Add(HistoricalSourceScope.SequenceWithinDate);
+        }
+
         return scopes.ToArray();
     }
 

@@ -310,6 +310,14 @@ public sealed class HistoricalFact
                 "Lifecycle boundary meaning must exist only on lifecycle transition facts.");
         }
 
+        if (lifecycleBoundaryMeaning.HasValue
+            && !IsLifecycleBoundaryMeaningValid(type, lifecycleBoundaryMeaning.Value))
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidFactState,
+                "Lifecycle boundary meaning is incompatible with the transition type.");
+        }
+
         HistoricalAttributeKind? expectedAttribute = ResolveExpectedAttribute(type);
         bool hasCompleteAttributeBoundary = attributeKind.HasValue && attributeBoundaryMeaning.HasValue;
         if (expectedAttribute.HasValue
@@ -347,6 +355,25 @@ public sealed class HistoricalFact
                     "A historical sequence is only valid for an exact-day point fact.");
             }
         }
+    }
+
+    private static bool IsLifecycleBoundaryMeaningValid(
+        HistoricalFactType type,
+        LifecycleBoundaryMeaning boundaryMeaning)
+    {
+        return type switch
+        {
+            HistoricalFactType.Opening or HistoricalFactType.Reopening =>
+                boundaryMeaning is global::AmusementPark.Core.Domain.History.LifecycleBoundaryMeaning.FirstOperatingDay
+                    or global::AmusementPark.Core.Domain.History.LifecycleBoundaryMeaning.Unspecified,
+            HistoricalFactType.Closure
+                or HistoricalFactType.TemporaryClosure
+                or HistoricalFactType.DefinitiveClosure =>
+                boundaryMeaning is global::AmusementPark.Core.Domain.History.LifecycleBoundaryMeaning.LastOperatingDay
+                    or global::AmusementPark.Core.Domain.History.LifecycleBoundaryMeaning.FirstClosedDay
+                    or global::AmusementPark.Core.Domain.History.LifecycleBoundaryMeaning.Unspecified,
+            _ => false,
+        };
     }
 
     private static HistoricalAttributeKind? ResolveExpectedAttribute(HistoricalFactType type)

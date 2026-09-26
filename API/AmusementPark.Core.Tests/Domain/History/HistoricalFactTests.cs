@@ -67,6 +67,24 @@ public sealed class HistoricalFactTests
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidSequence, exception.ErrorCode);
     }
 
+    [Theory]
+    [InlineData(HistoricalFactType.Opening, LifecycleBoundaryMeaning.FirstClosedDay)]
+    [InlineData(HistoricalFactType.Reopening, LifecycleBoundaryMeaning.LastOperatingDay)]
+    [InlineData(HistoricalFactType.Closure, LifecycleBoundaryMeaning.FirstOperatingDay)]
+    [InlineData(HistoricalFactType.TemporaryClosure, LifecycleBoundaryMeaning.FirstOperatingDay)]
+    [InlineData(HistoricalFactType.DefinitiveClosure, LifecycleBoundaryMeaning.FirstOperatingDay)]
+    public void Constructor_WhenBoundaryMeaningContradictsTransition_ShouldRejectFact(
+        HistoricalFactType type,
+        LifecycleBoundaryMeaning boundaryMeaning)
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() => CreateFact(
+                type: type,
+                lifecycleBoundaryMeaning: boundaryMeaning));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
+    }
+
     [Fact]
     public void Constructor_WhenRevisionDoesNotLinkEarlierRevision_ShouldRejectFact()
     {
@@ -233,7 +251,9 @@ public sealed class HistoricalFactTests
         int? supersedesRevision = null,
         HistoricalEditorialWorkflowState workflowState = HistoricalEditorialWorkflowState.Published,
         DateTime? verifiedAtUtc = null,
-        DateTime? publishedAtUtc = null)
+        DateTime? publishedAtUtc = null,
+        HistoricalFactType type = HistoricalFactType.Opening,
+        LifecycleBoundaryMeaning lifecycleBoundaryMeaning = LifecycleBoundaryMeaning.FirstOperatingDay)
     {
         return new HistoricalFact(
             Guid.NewGuid(),
@@ -242,7 +262,7 @@ public sealed class HistoricalFactTests
                 "park-1",
                 "Parc exemple",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
-            HistoricalFactType.Opening,
+            type,
             period ?? HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
             state,
             HistoricalImportance.Major,
@@ -251,7 +271,7 @@ public sealed class HistoricalFactTests
             explanations ?? (state == HistoricalFactState.Verified
                 ? Array.Empty<HistoricalLocalizedText>()
                 : CreateCompleteExplanations()),
-            LifecycleBoundaryMeaning.FirstOperatingDay,
+            lifecycleBoundaryMeaning,
             null,
             null,
             sequenceWithinDate,

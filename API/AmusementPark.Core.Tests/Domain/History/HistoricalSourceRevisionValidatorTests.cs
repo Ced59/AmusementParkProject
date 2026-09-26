@@ -82,6 +82,27 @@ public sealed class HistoricalSourceRevisionValidatorTests
             HistoricalSourceRevisionValidator.ValidatePredecessor(draft, predecessor));
     }
 
+    [Fact]
+    public void ValidatePredecessor_WhenSourceSkipsWorkflowStage_ShouldRejectTransition()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalSourceReference predecessor = CreateSource(
+            sourceId,
+            1,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft);
+        HistoricalSourceReference structuredValidation = CreateSource(
+            sourceId,
+            2,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.StructuredValidation,
+            HistoricalPublicationState.Draft);
+
+        Assert.Throws<HistoricalPersistenceValidationException>(() =>
+            HistoricalSourceRevisionValidator.ValidatePredecessor(structuredValidation, predecessor));
+    }
+
     private static HistoricalSourceReference CreateSource(
         Guid sourceId,
         int revision,

@@ -86,6 +86,29 @@ public sealed class HistoricalFactRevisionValidatorTests
             HistoricalFactRevisionValidator.ValidatePredecessor(draft, predecessor));
     }
 
+    [Fact]
+    public void ValidatePredecessor_WhenFactSkipsWorkflowStage_ShouldRejectTransition()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact predecessor = CreateFact(
+            factId,
+            1,
+            null,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft);
+        HistoricalFact structuredValidation = CreateFact(
+            factId,
+            2,
+            1,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.StructuredValidation,
+            HistoricalPublicationState.Draft);
+
+        Assert.Throws<HistoricalPersistenceValidationException>(() =>
+            HistoricalFactRevisionValidator.ValidatePredecessor(structuredValidation, predecessor));
+    }
+
     private static HistoricalFact CreateFact(
         Guid factId,
         int revision,

@@ -46,7 +46,7 @@ public static class HistoricalSourceRevisionValidator
                 && predecessor.PublicationState == HistoricalPublicationState.Published,
             _ => predecessor.WorkflowState < HistoricalEditorialWorkflowState.Published
                 && source.WorkflowState >= predecessor.WorkflowState
-                && source.WorkflowState <= HistoricalEditorialWorkflowState.Published,
+                && (int)source.WorkflowState <= (int)predecessor.WorkflowState + 1,
         };
     }
 

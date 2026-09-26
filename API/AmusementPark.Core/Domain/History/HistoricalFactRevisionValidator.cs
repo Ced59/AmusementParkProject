@@ -43,7 +43,7 @@ public static class HistoricalFactRevisionValidator
                 && predecessor.PublicationState == HistoricalPublicationState.Published,
             _ => predecessor.WorkflowState < HistoricalEditorialWorkflowState.Published
                 && fact.WorkflowState >= predecessor.WorkflowState
-                && fact.WorkflowState <= HistoricalEditorialWorkflowState.Published,
+                && (int)fact.WorkflowState <= (int)predecessor.WorkflowState + 1,
         };
     }
 

@@ -8,4 +8,5 @@ public enum HistoricalSourceScope
     StructuredValue = 3,
     HistoricalLabel = 4,
     Narrative = 5,
+    SequenceWithinDate = 6,
 }

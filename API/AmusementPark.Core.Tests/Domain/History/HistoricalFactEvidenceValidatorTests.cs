@@ -69,7 +69,40 @@ public sealed class HistoricalFactEvidenceValidatorTests
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidSourceScope, exception.ErrorCode);
     }
 
-    private static HistoricalFact CreateFact(Guid sourceId)
+    [Fact]
+    public void Validate_WhenSameDaySequenceIsNotCovered_ShouldRejectEvidence()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(sourceId, sequenceWithinDate: 1);
+        HistoricalSourceReference source = CreateSource(sourceId);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalFactEvidenceValidator.Validate(fact, new[] { source }));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidSourceScope, exception.ErrorCode);
+    }
+
+    [Fact]
+    public void Validate_WhenSameDaySequenceIsCovered_ShouldAcceptEvidence()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(sourceId, sequenceWithinDate: 1);
+        HistoricalSourceReference source = CreateSource(
+            sourceId,
+            scopes: new[]
+            {
+                HistoricalSourceScope.SubjectIdentity,
+                HistoricalSourceScope.HistoricalLabel,
+                HistoricalSourceScope.FactType,
+                HistoricalSourceScope.Period,
+                HistoricalSourceScope.SequenceWithinDate,
+            });
+
+        HistoricalFactEvidenceValidator.Validate(fact, new[] { source });
+    }
+
+    private static HistoricalFact CreateFact(Guid sourceId, int? sequenceWithinDate = null)
     {
         return new HistoricalFact(
             Guid.NewGuid(),
@@ -88,7 +121,7 @@ public sealed class HistoricalFactEvidenceValidatorTests
             LifecycleBoundaryMeaning.FirstOperatingDay,
             null,
             null,
-            null,
+            sequenceWithinDate,
             new[] { new HistoricalSourceRevisionReference(sourceId, 2) },
             null,
             null,
