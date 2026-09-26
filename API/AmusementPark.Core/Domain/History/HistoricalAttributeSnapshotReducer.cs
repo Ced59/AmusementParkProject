@@ -168,9 +168,16 @@ internal sealed class HistoricalAttributeSnapshotReducer
             }
             else if (KeepsPreviousValueOnRequestedDate(fact, requestedDate))
             {
-                contributingFactIds.Add(fact.Id);
                 currentValueTransitions.Add(fact);
             }
+        }
+
+        currentValueTransitions.RemoveAll(currentFact => applicableTransitions.Any(
+            transition => transition.Applicability == HistoricalTransitionApplicability.Applied
+                && HistoricalTransitionOrdering.MustPrecede(currentFact, transition.Fact)));
+        foreach (HistoricalFact fact in currentValueTransitions)
+        {
+            contributingFactIds.Add(fact.Id);
         }
 
         if (applicableTransitions.Count == 0 && currentValueTransitions.Count == 0)

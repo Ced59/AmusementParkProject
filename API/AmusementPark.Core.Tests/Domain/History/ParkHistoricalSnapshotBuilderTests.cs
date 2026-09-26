@@ -922,6 +922,40 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_WithBroadAndMixedSameDayBoundaries_PreservesSourcedOrder()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact broadRenaming = CreateAttributeFact(
+            HistoricalDate.ForYear(2000),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom initial",
+            "Nom annuel");
+        HistoricalFact lastDayOfOldName = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.LastDayOfPreviousValue,
+            "Nom A",
+            "Nom B",
+            sequenceWithinDate: 1);
+        HistoricalFact firstDayOfNewName = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom B",
+            "Nom C",
+            sequenceWithinDate: 2);
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 5, 1),
+            new[] { opening, broadRenaming, firstDayOfNewName, lastDayOfOldName }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Nom C", "Nom annuel" }, attribute.Candidates);
+        Assert.DoesNotContain("Nom A", attribute.Candidates);
+    }
+
+    [Fact]
     public void Build_WithLargeConnectedAttributeGroup_ExcludesValuesWithRequiredSuccessors()
     {
         HistoricalFact opening = CreateLifecycleFact(
