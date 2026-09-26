@@ -541,6 +541,29 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_CoarseLastOperatingBoundaryBeforeVerifiedOpening_RemainsClosed()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 6, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact lastOperatingDay = CreateLifecycleFact(
+            HistoricalFactType.Closure,
+            HistoricalDate.ForYear(2000),
+            LifecycleBoundaryMeaning.LastOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 1, 1),
+            new[] { opening, lastOperatingDay });
+
+        Assert.Equal(HistoricalOperationalState.KnownClosed, snapshot.OperationalState);
+        Assert.Contains(
+            snapshot.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.BeforeConfirmedInitialOpening
+                && reason.FactIds.Contains(opening.Id));
+    }
+
+    [Fact]
     public void Build_WithProbableOpening_ReturnsPossiblyOpen()
     {
         HistoricalFact opening = CreateLifecycleFact(

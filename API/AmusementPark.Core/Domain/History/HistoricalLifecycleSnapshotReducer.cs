@@ -435,18 +435,30 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         DateOnly requestedDate,
         HistoricalSnapshotReasonCollector reasons)
     {
+        HashSet<HistoricalOperationalState> currentStates = states.ToHashSet();
         HashSet<HistoricalOperationalState> result = new HashSet<HistoricalOperationalState>();
         if (IsInsideCoarseLastOperatingEnvelope(fact, requestedDate))
         {
+            if (currentStates.Count == 1
+                && currentStates.Contains(HistoricalOperationalState.KnownClosed))
+            {
+                return currentStates;
+            }
+
             result.Add(HistoricalOperationalState.KnownOpen);
             HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
             if (envelope.EarliestPossibleDate == requestedDate)
             {
+                if (currentStates.Contains(HistoricalOperationalState.KnownClosed))
+                {
+                    result.Add(HistoricalOperationalState.KnownClosed);
+                }
+
                 return result;
             }
         }
 
-        foreach (HistoricalOperationalState state in states)
+        foreach (HistoricalOperationalState state in currentStates)
         {
             result.Add(this.ApplyTransition(
                 state,
