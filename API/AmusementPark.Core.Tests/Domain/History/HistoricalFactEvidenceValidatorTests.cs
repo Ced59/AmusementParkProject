@@ -197,6 +197,22 @@ public sealed class HistoricalFactEvidenceValidatorTests
     }
 
     [Fact]
+    public void Validate_WhenCitedBoundaryMeaningDiffers_ShouldRejectEvidence()
+    {
+        Guid sourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(
+            new[] { sourceId },
+            referenceLifecycleBoundaryMeaning: LifecycleBoundaryMeaning.LastOperatingDay);
+        HistoricalSourceReference source = CreateSource(sourceId);
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalFactEvidenceValidator.Validate(fact, new[] { source }));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidSourceScope, exception.ErrorCode);
+    }
+
+    [Fact]
     public void Validate_WhenSameDaySequenceIsCovered_ShouldAcceptEvidence()
     {
         Guid sourceId = Guid.NewGuid();
@@ -328,7 +344,9 @@ public sealed class HistoricalFactEvidenceValidatorTests
         Func<Guid, HistoricalEvidencePosition>? referencePositionFactory = null,
         string referenceHistoricalLabel = "Parc exemple",
         string? narrativeContentId = null,
-        int? referenceSequenceWithinDate = null)
+        int? referenceSequenceWithinDate = null,
+        LifecycleBoundaryMeaning referenceLifecycleBoundaryMeaning =
+            LifecycleBoundaryMeaning.FirstOperatingDay)
     {
         HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12));
         return new HistoricalFact(
@@ -395,7 +413,12 @@ public sealed class HistoricalFactEvidenceValidatorTests
                             : null,
                         referenceScopes.Contains(HistoricalSourceScope.Narrative)
                             ? narrativeContentId
-                            : null);
+                            : null,
+                        referenceScopes.Contains(HistoricalSourceScope.Period)
+                            ? referenceLifecycleBoundaryMeaning
+                            : null,
+                        null,
+                        null);
                 })
                 .ToArray(),
             null,

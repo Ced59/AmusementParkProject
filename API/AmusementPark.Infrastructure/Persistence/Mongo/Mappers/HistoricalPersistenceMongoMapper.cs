@@ -54,6 +54,9 @@ internal static class HistoricalPersistenceMongoMapper
                     StructuredValue = sourceReference.StructuredValue,
                     SequenceWithinDate = sourceReference.SequenceWithinDate,
                     NarrativeContentId = sourceReference.NarrativeContentId,
+                    LifecycleBoundaryMeaning = sourceReference.LifecycleBoundaryMeaning,
+                    AttributeKind = sourceReference.AttributeKind,
+                    AttributeBoundaryMeaning = sourceReference.AttributeBoundaryMeaning,
                 })
                 .ToList(),
             StructuredValue = fact.StructuredValue,
@@ -102,7 +105,10 @@ internal static class HistoricalPersistenceMongoMapper
                     source.HistoricalLabel,
                     source.StructuredValue,
                     source.SequenceWithinDate,
-                    source.NarrativeContentId))
+                    source.NarrativeContentId,
+                    source.LifecycleBoundaryMeaning,
+                    source.AttributeKind,
+                    source.AttributeBoundaryMeaning))
                 .ToArray(),
             document.StructuredValue,
             document.OtherTypeLabel,

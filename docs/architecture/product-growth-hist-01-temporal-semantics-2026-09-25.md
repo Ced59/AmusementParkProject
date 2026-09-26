@@ -279,7 +279,10 @@ et portées précises que cette source couvre pour cette assertion. La citation
 indique aussi si la source confirme ou contredit l'assertion. Les portées qui
 dépendent d'une valeur conservent cette valeur exacte : libellé historique,
 valeur structurée, ordre intra-journalier et récit lié. Une citation antérieure
-ne peut donc pas être réutilisée après correction de la valeur.
+ne peut donc pas être réutilisée après correction de la valeur. Lorsqu'elle
+couvre la période, elle conserve aussi la signification exacte de la borne de
+cycle de vie ou de transition d'attribut ; « dernier jour ouvert » ne peut pas
+devenir silencieusement « premier jour fermé » avec la même preuve.
 Une source portant des portées génériques ne peut donc pas valider un fait sur
 un autre parc, une autre attraction, un autre événement ou une autre période.
 Au moins une même source doit couvrir ensemble le sujet, le type et la période ;

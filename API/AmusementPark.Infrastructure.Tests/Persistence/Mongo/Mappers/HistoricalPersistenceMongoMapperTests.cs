@@ -55,7 +55,10 @@ public sealed class HistoricalPersistenceMongoMapperTests
                     "Parc historique",
                     null,
                     1,
-                    "opening-1998"),
+                    "opening-1998",
+                    LifecycleBoundaryMeaning.FirstOperatingDay,
+                    null,
+                    null),
             },
             null,
             null,
@@ -91,6 +94,9 @@ public sealed class HistoricalPersistenceMongoMapperTests
         Assert.Equal("Parc historique", sourceReference.HistoricalLabel);
         Assert.Equal(1, sourceReference.SequenceWithinDate);
         Assert.Equal("opening-1998", sourceReference.NarrativeContentId);
+        Assert.Equal(
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            sourceReference.LifecycleBoundaryMeaning);
         Assert.Equal("park-1", restored.Subject.Id);
         Assert.Equal(0, restored.RecordedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
         Assert.Equal(0, restored.VerifiedAtUtc?.Ticks % TimeSpan.TicksPerMillisecond);

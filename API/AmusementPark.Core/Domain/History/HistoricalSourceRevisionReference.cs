@@ -14,7 +14,10 @@ public sealed record HistoricalSourceRevisionReference
         string? historicalLabel,
         string? structuredValue,
         int? sequenceWithinDate,
-        string? narrativeContentId)
+        string? narrativeContentId,
+        LifecycleBoundaryMeaning? lifecycleBoundaryMeaning,
+        HistoricalAttributeKind? attributeKind,
+        AttributeBoundaryMeaning? attributeBoundaryMeaning)
     {
         if (sourceId == Guid.Empty)
         {
@@ -83,6 +86,24 @@ public sealed record HistoricalSourceRevisionReference
             normalizedScopes,
             HistoricalSourceScope.Narrative,
             normalizedNarrativeContentId is not null);
+        if (lifecycleBoundaryMeaning.HasValue && !Enum.IsDefined(lifecycleBoundaryMeaning.Value)
+            || attributeKind.HasValue && !Enum.IsDefined(attributeKind.Value)
+            || attributeBoundaryMeaning.HasValue && !Enum.IsDefined(attributeBoundaryMeaning.Value))
+        {
+            throw new HistoricalPersistenceValidationException(
+                HistoricalPersistenceErrorCodes.InvalidEnum,
+                "A historical source citation contains invalid boundary semantics.");
+        }
+
+        bool hasBoundarySemantics = lifecycleBoundaryMeaning.HasValue
+            || attributeKind.HasValue
+            || attributeBoundaryMeaning.HasValue;
+        if (hasBoundarySemantics && !normalizedScopes.Contains(HistoricalSourceScope.Period))
+        {
+            throw new HistoricalPersistenceValidationException(
+                HistoricalPersistenceErrorCodes.InvalidSourceScope,
+                "Historical boundary semantics require the period scope.");
+        }
 
         this.SourceId = sourceId;
         this.Revision = revision;
@@ -96,6 +117,9 @@ public sealed record HistoricalSourceRevisionReference
         this.StructuredValue = normalizedStructuredValue;
         this.SequenceWithinDate = sequenceWithinDate;
         this.NarrativeContentId = normalizedNarrativeContentId;
+        this.LifecycleBoundaryMeaning = lifecycleBoundaryMeaning;
+        this.AttributeKind = attributeKind;
+        this.AttributeBoundaryMeaning = attributeBoundaryMeaning;
     }
 
     public Guid SourceId { get; }
@@ -121,6 +145,12 @@ public sealed record HistoricalSourceRevisionReference
     public int? SequenceWithinDate { get; }
 
     public string? NarrativeContentId { get; }
+
+    public LifecycleBoundaryMeaning? LifecycleBoundaryMeaning { get; }
+
+    public HistoricalAttributeKind? AttributeKind { get; }
+
+    public AttributeBoundaryMeaning? AttributeBoundaryMeaning { get; }
 
     private static string? NormalizeOptional(string? value, int maximumLength)
     {

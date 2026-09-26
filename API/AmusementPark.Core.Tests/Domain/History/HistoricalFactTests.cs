@@ -625,7 +625,8 @@ public sealed class HistoricalFactTests
                     factType: type,
                     period: resolvedPeriod,
                     historicalLabel: resolvedSubject.HistoricalLabel,
-                    sequenceWithinDate: sequenceWithinDate),
+                    sequenceWithinDate: sequenceWithinDate,
+                    lifecycleBoundaryMeaning: lifecycleBoundaryMeaning),
             },
             null,
             null,
@@ -648,8 +649,40 @@ public sealed class HistoricalFactTests
         string historicalLabel = "Parc exemple",
         string? structuredValue = null,
         int? sequenceWithinDate = null,
-        string? narrativeContentId = null)
+        string? narrativeContentId = null,
+        LifecycleBoundaryMeaning? lifecycleBoundaryMeaning = null,
+        HistoricalAttributeKind? attributeKind = null,
+        AttributeBoundaryMeaning? attributeBoundaryMeaning = null)
     {
+        LifecycleBoundaryMeaning? resolvedLifecycleBoundaryMeaning = lifecycleBoundaryMeaning
+            ?? factType switch
+            {
+                HistoricalFactType.Opening or HistoricalFactType.Reopening =>
+                    LifecycleBoundaryMeaning.FirstOperatingDay,
+                HistoricalFactType.Closure
+                    or HistoricalFactType.TemporaryClosure
+                    or HistoricalFactType.DefinitiveClosure =>
+                    LifecycleBoundaryMeaning.LastOperatingDay,
+                _ => null,
+            };
+        HistoricalAttributeKind? resolvedAttributeKind = attributeKind
+            ?? factType switch
+            {
+                HistoricalFactType.Renaming or HistoricalFactType.ZoneRenaming =>
+                    HistoricalAttributeKind.Name,
+                HistoricalFactType.OperatorChange => HistoricalAttributeKind.Operator,
+                HistoricalFactType.OwnerChange => HistoricalAttributeKind.Owner,
+                HistoricalFactType.PositioningChange => HistoricalAttributeKind.MarketPositioning,
+                HistoricalFactType.Retheming => HistoricalAttributeKind.Theme,
+                HistoricalFactType.ManufacturerChange => HistoricalAttributeKind.Manufacturer,
+                HistoricalFactType.ZoneMove => HistoricalAttributeKind.Zone,
+                HistoricalFactType.Relocation => HistoricalAttributeKind.Location,
+                _ => null,
+            };
+        AttributeBoundaryMeaning? resolvedAttributeBoundaryMeaning = attributeBoundaryMeaning
+            ?? (resolvedAttributeKind.HasValue
+                ? AttributeBoundaryMeaning.FirstDayOfNewValue
+                : null);
         List<HistoricalSourceScope> scopes = new List<HistoricalSourceScope>
         {
             HistoricalSourceScope.SubjectIdentity,
@@ -684,7 +717,10 @@ public sealed class HistoricalFactTests
             historicalLabel,
             structuredValue,
             sequenceWithinDate,
-            narrativeContentId);
+            narrativeContentId,
+            resolvedLifecycleBoundaryMeaning,
+            resolvedAttributeKind,
+            resolvedAttributeBoundaryMeaning);
     }
 
     private static IReadOnlyCollection<HistoricalLocalizedText> CreateCompleteExplanations()

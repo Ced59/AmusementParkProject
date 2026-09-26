@@ -50,7 +50,11 @@ public static class HistoricalFactEvidenceValidator
                 || string.Equals(
                     reference.NarrativeContentId,
                     fact.NarrativeContentId,
-                    StringComparison.Ordinal)));
+                    StringComparison.Ordinal))
+            && (!reference.Scopes.Contains(HistoricalSourceScope.Period)
+                || (reference.LifecycleBoundaryMeaning == fact.LifecycleBoundaryMeaning
+                    && reference.AttributeKind == fact.AttributeKind
+                    && reference.AttributeBoundaryMeaning == fact.AttributeBoundaryMeaning)));
         if (!everyReferenceIsBoundToFact)
         {
             throw Invalid(

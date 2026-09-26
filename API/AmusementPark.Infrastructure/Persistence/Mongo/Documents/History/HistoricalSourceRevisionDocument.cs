@@ -48,4 +48,19 @@ public sealed class HistoricalSourceRevisionDocument
     [BsonElement("narrativeContentId")]
     [BsonIgnoreIfNull]
     public string? NarrativeContentId { get; set; }
+
+    [BsonElement("lifecycleBoundaryMeaning")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public LifecycleBoundaryMeaning? LifecycleBoundaryMeaning { get; set; }
+
+    [BsonElement("attributeKind")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public HistoricalAttributeKind? AttributeKind { get; set; }
+
+    [BsonElement("attributeBoundaryMeaning")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public AttributeBoundaryMeaning? AttributeBoundaryMeaning { get; set; }
 }
