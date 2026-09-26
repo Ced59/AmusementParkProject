@@ -123,8 +123,12 @@ internal sealed class HistoricalCoverageEvaluator
         decimal datedPeriodPercentage = Percentage(
             reliablePeriodSubjectCount + partialPeriodSubjectCount,
             totalSubjectCount);
-        bool fieldsAreSubstantial = nameCoverage.Percentage >= MinimumSubstantialFieldPercentage
-            && zoneCoverage.Percentage >= MinimumSubstantialFieldPercentage;
+        bool fieldsAreSubstantial = MeetsMinimumFieldCoverage(
+                nameCoverage,
+                MinimumSubstantialFieldPercentage)
+            && MeetsMinimumFieldCoverage(
+                zoneCoverage,
+                MinimumSubstantialFieldPercentage);
         return reliablePeriodPercentage >= MinimumSubstantialReliablePeriodPercentage
             && datedPeriodPercentage >= MinimumSubstantialDatedPeriodPercentage
             && fieldsAreSubstantial
@@ -136,6 +140,15 @@ internal sealed class HistoricalCoverageEvaluator
     private static decimal Percentage(int numerator, int denominator)
     {
         return 100m * numerator / denominator;
+    }
+
+    private static bool MeetsMinimumFieldCoverage(
+        HistoricalFieldCoverage coverage,
+        decimal minimumPercentage)
+    {
+        return coverage.ApplicableSubjectCount == 0
+            || 100m * coverage.DocumentedSubjectCount
+                >= minimumPercentage * coverage.ApplicableSubjectCount;
     }
 
     private static bool HasUnattributedLifecycleCause(

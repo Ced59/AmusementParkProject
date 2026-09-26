@@ -1907,6 +1907,42 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_WhenDisplayedNameCoverageRoundsUpToThreshold_RemainsPartial()
+    {
+        HistoricalSubject[] subjects = Enumerable.Range(1, 1001)
+            .Select(index => CreateSubject(
+                string.Concat("park-", index),
+                string.Concat("Parc ", index),
+                HistoricalSubjectType.Park))
+            .ToArray();
+        HistoricalFact[] openings = subjects
+            .Select(subject => CreateLifecycleFact(
+                HistoricalFactType.Opening,
+                HistoricalDate.ForDay(1990, 1, 1),
+                LifecycleBoundaryMeaning.FirstOperatingDay,
+                subject: subject))
+            .ToArray();
+        HistoricalFact[] names = subjects
+            .Take(500)
+            .Select(subject => CreateAttributeFact(
+                HistoricalDate.ForDay(1995, 1, 1),
+                AttributeBoundaryMeaning.FirstDayOfNewValue,
+                "Ancien nom",
+                "Nouveau nom",
+                subject: subject))
+            .ToArray();
+
+        ParkHistoricalSnapshot snapshot = this.builder.Build(
+            "park-1",
+            HistoricalInstant.ForDay(2000, 1, 1),
+            subjects,
+            openings.Concat(names).ToArray());
+
+        Assert.Equal(50m, snapshot.Coverage.NameCoverage.Percentage);
+        Assert.Equal(HistoricalCoverageStatus.Partial, snapshot.Coverage.Status);
+    }
+
+    [Fact]
     public void Build_WithSameInputs_IsDeterministicAndSorted()
     {
         HistoricalFact opening = CreateLifecycleFact(
@@ -1971,10 +2007,13 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         return Assert.Single(snapshot.Subjects);
     }
 
-    private static HistoricalSubject CreateSubject(string id, string label)
+    private static HistoricalSubject CreateSubject(
+        string id,
+        string label,
+        HistoricalSubjectType type = HistoricalSubjectType.ParkItem)
     {
         return new HistoricalSubject(
-            HistoricalSubjectType.ParkItem,
+            type,
             id,
             label,
             HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
