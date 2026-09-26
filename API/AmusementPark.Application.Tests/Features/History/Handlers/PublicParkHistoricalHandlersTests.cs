@@ -119,12 +119,13 @@ public sealed class PublicParkHistoricalHandlersTests
     public async Task Timeline_PaginatesAndLoadsOnlySourcesForCurrentPage()
     {
         Park park = PublicParkHistoryTestData.CreatePark();
-        HistoricalSubject parkSubject = new(
-            HistoricalSubjectType.Park,
-            park.Id,
-            park.Name!,
-            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
-        HistoricalFact third = PublicParkHistoryTestData.CreateOpeningFact(parkSubject, 2010);
+        HistoricalSubject removedZoneSubject = new(
+            HistoricalSubjectType.ParkZone,
+            "removed-zone",
+            "Ancienne zone",
+            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            park.Id);
+        HistoricalFact third = PublicParkHistoryTestData.CreateOpeningFact(removedZoneSubject, 2010);
         HistoricalSourceReference thirdSource = PublicParkHistoryTestData.CreateSource(third);
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
@@ -175,7 +176,67 @@ public sealed class PublicParkHistoricalHandlersTests
         PublicHistoricalTimelineEntryResult entry = Assert.Single(timeline.Page.Items);
         Assert.Equal(third.Id, entry.Fact.Id);
         Assert.Equal(thirdSource.Id, Assert.Single(entry.Sources).Id);
+        Assert.Equal("Ancienne zone", timeline.ZoneNames["removed-zone"]);
         sourceRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Snapshot_ZoneNames_ExcludeHiddenCurrentZoneAndIncludeHistoricalOnlyZone()
+    {
+        Park park = PublicParkHistoryTestData.CreatePark();
+        ParkZone visibleZone = PublicParkHistoryTestData.CreateParkZone("visible-zone", "Zone publique");
+        ParkZone hiddenZone = PublicParkHistoryTestData.CreateParkZone(
+            "hidden-zone",
+            "Zone privée",
+            false);
+        HistoricalFact removedZoneFact = PublicParkHistoryTestData.CreateOpeningFact(
+            new HistoricalSubject(
+                HistoricalSubjectType.ParkZone,
+                "removed-zone",
+                "Zone historique publiée",
+                HistoricalSubjectPublicationPolicy.HistoricalOnly,
+                park.Id),
+            1985);
+        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdAsync(
+                "park-1",
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        parkZoneRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { visibleZone, hiddenZone });
+        factRepository
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
+                "park-1",
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { removedZoneFact });
+        PublicParkHistoricalDataLoader loader = CreateLoader(
+            parkRepository,
+            parkItemRepository,
+            parkZoneRepository,
+            factRepository);
+        GetPublicParkHistoricalSnapshotQueryHandler handler = new(
+            loader,
+            new ParkHistoricalSnapshotBuilder());
+
+        ApplicationResult<PublicParkHistoricalSnapshotResult> result = await handler.HandleAsync(
+            new GetPublicParkHistoricalSnapshotQuery("park-1", 1986, null, null));
+
+        Assert.True(result.IsSuccess);
+        PublicParkHistoricalSnapshotResult snapshot = Assert.IsType<PublicParkHistoricalSnapshotResult>(result.Value);
+        Assert.Equal("Zone publique", snapshot.ZoneNames["visible-zone"]);
+        Assert.Equal("Zone historique publiée", snapshot.ZoneNames["removed-zone"]);
+        Assert.DoesNotContain("hidden-zone", snapshot.ZoneNames.Keys);
+        Assert.DoesNotContain("Zone privée", snapshot.ZoneNames.Values);
     }
 
     [Fact]

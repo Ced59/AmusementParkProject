@@ -34,6 +34,20 @@ internal static class PublicParkHistoryTestData
         };
     }
 
+    public static ParkZone CreateParkZone(
+        string id,
+        string name,
+        bool isVisible = true)
+    {
+        return new ParkZone
+        {
+            Id = id,
+            ParkId = "park-1",
+            Name = name,
+            IsVisible = isVisible,
+        };
+    }
+
     public static HistoricalFact CreateOpeningFact(
         HistoricalSubject subject,
         int year,

@@ -51,12 +51,15 @@ public sealed class PublicParkHistoricalDataLoader
         HistoricalSubject[] selectedSubjects = SelectSubjects(
             scope.PublicCurrentSubjects,
             publicFacts);
+        IReadOnlyDictionary<string, string> publicZoneNames = ResolvePublicZoneNames(
+            scope,
+            publicFacts);
 
         return new PublicParkHistoricalData(
             scope.Park,
             selectedSubjects,
             publicFacts,
-            scope.ZoneNames);
+            publicZoneNames);
     }
 
     public async Task<PublicParkHistoricalScope?> LoadScopeAsync(
@@ -85,7 +88,8 @@ public sealed class PublicParkHistoricalDataLoader
             .Where(subject => publicCurrentSubjects.Contains((subject.Type, subject.Id)))
             .ToArray();
         Dictionary<string, string> zoneNames = parkZones
-            .Where(static zone => !string.IsNullOrWhiteSpace(zone.Id)
+            .Where(static zone => zone.IsVisible
+                && !string.IsNullOrWhiteSpace(zone.Id)
                 && !string.IsNullOrWhiteSpace(zone.Name))
             .GroupBy(static zone => zone.Id, StringComparer.Ordinal)
             .ToDictionary(
@@ -94,6 +98,31 @@ public sealed class PublicParkHistoricalDataLoader
                 StringComparer.Ordinal);
 
         return new PublicParkHistoricalScope(park, publicSubjects, zoneNames);
+    }
+
+    public static IReadOnlyDictionary<string, string> ResolvePublicZoneNames(
+        PublicParkHistoricalScope scope,
+        IReadOnlyCollection<HistoricalFact> publicFacts)
+    {
+        ArgumentNullException.ThrowIfNull(scope);
+        ArgumentNullException.ThrowIfNull(publicFacts);
+        Dictionary<string, string> zoneNames = new(scope.ZoneNames, StringComparer.Ordinal);
+        foreach (HistoricalSubject subject in publicFacts
+                     .Where(fact => fact.IsDecisionEligible
+                         && fact.Subject.Type == HistoricalSubjectType.ParkZone
+                         && fact.Subject.PublicationPolicy
+                             == HistoricalSubjectPublicationPolicy.HistoricalOnly
+                         && string.Equals(
+                             fact.Subject.ContextParkId,
+                             scope.Park.Id,
+                             StringComparison.Ordinal))
+                     .Select(static fact => fact.Subject)
+                     .DistinctBy(static subject => subject.Id))
+        {
+            zoneNames.TryAdd(subject.Id, subject.HistoricalLabel);
+        }
+
+        return zoneNames;
     }
 
     public Task<PagedResult<HistoricalFact>> GetTimelinePageAsync(

@@ -92,10 +92,34 @@ public sealed class HistoricalFactPublicProjectionMigrationTests
             },
             retainedAtUtc);
 
-        Assert.Equal("ParkZone:zone-1", scope.Id);
+        Assert.Equal("ParkZone:park-1:zone-1", scope.Id);
         Assert.Equal(HistoricalSubjectType.ParkZone, scope.SubjectType);
         Assert.Equal("zone-1", scope.SubjectId);
         Assert.Equal("park-1", scope.ContextParkId);
         Assert.Equal(retainedAtUtc, scope.UpdatedAt);
+    }
+
+    [Fact]
+    public void HistoricalSubjectScopeDocument_FromParkZone_ShouldSeparateReusedIdsByPark()
+    {
+        DateTime retainedAtUtc = new DateTime(2026, 9, 26, 18, 0, 0, DateTimeKind.Utc);
+        HistoricalSubjectScopeDocument firstParkScope = HistoricalSubjectScopeDocument.FromParkZone(
+            new AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks.ParkZoneDocument
+            {
+                Id = "reused-zone",
+                ParkId = "park-1",
+            },
+            retainedAtUtc);
+        HistoricalSubjectScopeDocument secondParkScope = HistoricalSubjectScopeDocument.FromParkZone(
+            new AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks.ParkZoneDocument
+            {
+                Id = "reused-zone",
+                ParkId = "park-2",
+            },
+            retainedAtUtc);
+
+        Assert.NotEqual(firstParkScope.Id, secondParkScope.Id);
+        Assert.Equal("ParkZone:park-1:reused-zone", firstParkScope.Id);
+        Assert.Equal("ParkZone:park-2:reused-zone", secondParkScope.Id);
     }
 }

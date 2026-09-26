@@ -32,7 +32,7 @@ public sealed class HistoricalSubjectScopeDocument : MongoDocumentBase
 
         return new HistoricalSubjectScopeDocument
         {
-            Id = BuildId(HistoricalSubjectType.ParkZone, zoneId),
+            Id = BuildId(HistoricalSubjectType.ParkZone, zoneId, parkId),
             SubjectType = HistoricalSubjectType.ParkZone,
             SubjectId = zoneId,
             ContextParkId = parkId,
@@ -41,9 +41,13 @@ public sealed class HistoricalSubjectScopeDocument : MongoDocumentBase
         };
     }
 
-    public static string BuildId(HistoricalSubjectType subjectType, string subjectId)
+    public static string BuildId(
+        HistoricalSubjectType subjectType,
+        string subjectId,
+        string contextParkId)
     {
-        return $"{subjectType}:{Normalize(subjectId, nameof(subjectId))}";
+        return $"{subjectType}:{Normalize(contextParkId, nameof(contextParkId))}:" +
+            Normalize(subjectId, nameof(subjectId));
     }
 
     private static string Normalize(string value, string parameterName)

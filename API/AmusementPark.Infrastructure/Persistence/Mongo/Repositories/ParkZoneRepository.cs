@@ -102,8 +102,7 @@ public sealed class ParkZoneRepository : IParkZoneRepository
             HistoricalSubjectScopeDocument retainedScope =
                 HistoricalSubjectScopeDocument.FromParkZone(zone, DateTime.UtcNow);
             await this.historicalSubjectScopesCollection.ReplaceOneAsync(
-                scope => scope.Id == retainedScope.Id
-                    && scope.ContextParkId == retainedScope.ContextParkId,
+                scope => scope.Id == retainedScope.Id,
                 retainedScope,
                 new ReplaceOptions { IsUpsert = true },
                 cancellationToken);

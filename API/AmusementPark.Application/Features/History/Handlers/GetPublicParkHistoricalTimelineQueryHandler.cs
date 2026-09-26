@@ -83,8 +83,10 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             query.Page,
             query.PageSize,
             factPage.TotalItems);
+        IReadOnlyDictionary<string, string> publicZoneNames =
+            PublicParkHistoricalDataLoader.ResolvePublicZoneNames(scope, pageFacts);
 
         return ApplicationResult<PublicParkHistoricalTimelineResult>.Success(
-            new PublicParkHistoricalTimelineResult(scope.Park, page, scope.ZoneNames));
+            new PublicParkHistoricalTimelineResult(scope.Park, page, publicZoneNames));
     }
 }

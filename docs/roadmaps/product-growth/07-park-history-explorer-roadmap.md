@@ -888,6 +888,12 @@ libellé historique figé est signalé comme `HistoricalLabel` ; le marqueur
 `CurrentFallback` est réservé à une valeur réellement issue de la fiche
 courante.
 
+La résolution publique des zones ignore les zones courantes masquées. Elle ne
+réintroduit le libellé d'une zone retirée que depuis un fait `HistoricalOnly`
+publié et rattaché durablement au parc demandé. Le registre de portée conserve
+en outre le parc dans sa clé afin qu'un identifiant de zone réutilisé par un
+autre parc reste non ambigu et ne bloque jamais une suppression ultérieure.
+
 La frise charge les sources uniquement pour la page demandée, en lots bornés
 compatibles avec les limites du dépôt même lorsqu'un fait possède beaucoup de
 preuves. Elle expose leur
