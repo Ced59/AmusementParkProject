@@ -69,6 +69,11 @@ internal static class HistoricalTransitionOrdering
             .ToArray();
     }
 
+    internal static bool MustPrecede(HistoricalFact candidate, HistoricalFact other)
+    {
+        return Latest(candidate) < Earliest(other);
+    }
+
     internal static DateOnly Earliest(HistoricalFact fact)
     {
         return fact.Period.GetPossibleEnvelope().EarliestPossibleDate ?? DateOnly.MinValue;

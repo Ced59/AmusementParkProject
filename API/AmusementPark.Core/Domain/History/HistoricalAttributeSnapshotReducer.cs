@@ -141,48 +141,77 @@ internal sealed class HistoricalAttributeSnapshotReducer
             }
         }
 
-        Dictionary<int, HashSet<string>> valuesByMask = new()
+        HashSet<string> result = new HashSet<string>(StringComparer.Ordinal);
+        for (int targetMask = 0; targetMask <= allMask; targetMask++)
         {
-            [0] = new HashSet<string>(values, StringComparer.Ordinal),
-        };
-        for (int mask = 0; mask <= allMask; mask++)
-        {
-            if (!valuesByMask.TryGetValue(mask, out HashSet<string>? currentValues))
+            if ((targetMask & requiredMask) != requiredMask)
             {
                 continue;
             }
 
-            for (int index = 0; index < applicableTransitions.Count; index++)
+            Dictionary<int, HashSet<string>> valuesByMask = new()
             {
-                int bit = 1 << index;
-                if ((mask & bit) != 0)
+                [0] = new HashSet<string>(values, StringComparer.Ordinal),
+            };
+            for (int mask = 0; mask <= targetMask; mask++)
+            {
+                if ((mask & ~targetMask) != 0
+                    || !valuesByMask.TryGetValue(mask, out HashSet<string>? currentValues))
                 {
                     continue;
                 }
 
-                HistoricalFact fact = applicableTransitions[index].Fact;
-                HashSet<string> nextValues = this.ApplyTransition(currentValues, fact, reasons);
-                int nextMask = mask | bit;
-                if (!valuesByMask.TryGetValue(nextMask, out HashSet<string>? collected))
+                for (int index = 0; index < applicableTransitions.Count; index++)
                 {
-                    collected = new HashSet<string>(StringComparer.Ordinal);
-                    valuesByMask.Add(nextMask, collected);
+                    int bit = 1 << index;
+                    if ((targetMask & bit) == 0
+                        || (mask & bit) != 0
+                        || !PredecessorsWereApplied(applicableTransitions, targetMask, mask, index))
+                    {
+                        continue;
+                    }
+
+                    HistoricalFact fact = applicableTransitions[index].Fact;
+                    HashSet<string> nextValues = this.ApplyTransition(currentValues, fact, reasons);
+                    int nextMask = mask | bit;
+                    if (!valuesByMask.TryGetValue(nextMask, out HashSet<string>? collected))
+                    {
+                        collected = new HashSet<string>(StringComparer.Ordinal);
+                        valuesByMask.Add(nextMask, collected);
+                    }
+
+                    collected.UnionWith(nextValues);
                 }
-
-                collected.UnionWith(nextValues);
             }
-        }
 
-        HashSet<string> result = new HashSet<string>(StringComparer.Ordinal);
-        foreach (KeyValuePair<int, HashSet<string>> entry in valuesByMask)
-        {
-            if ((entry.Key & requiredMask) == requiredMask)
+            if (valuesByMask.TryGetValue(targetMask, out HashSet<string>? finalValues))
             {
-                result.UnionWith(entry.Value);
+                result.UnionWith(finalValues);
             }
         }
 
         return result;
+    }
+
+    private static bool PredecessorsWereApplied(
+        IReadOnlyList<(HistoricalFact Fact, HistoricalTransitionApplicability Applicability)> transitions,
+        int targetMask,
+        int appliedMask,
+        int candidateIndex)
+    {
+        HistoricalFact candidate = transitions[candidateIndex].Fact;
+        for (int index = 0; index < transitions.Count; index++)
+        {
+            int bit = 1 << index;
+            if ((targetMask & bit) != 0
+                && (appliedMask & bit) == 0
+                && HistoricalTransitionOrdering.MustPrecede(transitions[index].Fact, candidate))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private HashSet<string> ApplyLargeUnorderedGroup(

@@ -111,7 +111,7 @@ internal static class HistoricalTransitionApplicabilityResolver
         {
             LifecycleBoundaryMeaning.FirstOperatingDay => HistoricalTransitionApplicability.Applied,
             LifecycleBoundaryMeaning.FirstClosedDay => HistoricalTransitionApplicability.Applied,
-            LifecycleBoundaryMeaning.LastOperatingDay => HistoricalTransitionApplicability.NotOccurred,
+            LifecycleBoundaryMeaning.LastOperatingDay => HistoricalTransitionApplicability.Applied,
             _ => HistoricalTransitionApplicability.Optional,
         };
     }

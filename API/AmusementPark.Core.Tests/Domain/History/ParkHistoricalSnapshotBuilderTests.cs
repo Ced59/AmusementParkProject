@@ -185,6 +185,22 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_WithOnlyLastOperatingDay_ConfirmsActivityOnThatDay()
+    {
+        HistoricalFact closure = CreateLifecycleFact(
+            HistoricalFactType.DefinitiveClosure,
+            HistoricalDate.ForDay(2005, 6, 1),
+            LifecycleBoundaryMeaning.LastOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2005, 6, 1),
+            new[] { closure });
+
+        Assert.Equal(HistoricalOperationalState.KnownOpen, snapshot.OperationalState);
+        Assert.Equal(HistoricalPresenceExtent.EntireRequestedPeriod, snapshot.PresenceExtent);
+    }
+
+    [Fact]
     public void Build_AfterUnboundedTemporaryClosure_ReturnsUnknown()
     {
         HistoricalFact[] facts =
@@ -444,6 +460,38 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
         Assert.Equal(11, attribute.Candidates.Count);
         Assert.DoesNotContain("Valeur initiale", attribute.Candidates);
+    }
+
+    [Fact]
+    public void Build_WithConnectedOverlapGroup_PreservesDefinitePairwiseOrder()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact broadRenaming = CreateAttributeFact(
+            HistoricalDate.ForYear(2000),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom initial",
+            "Nom annuel");
+        HistoricalFact februaryRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 2, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom initial",
+            "Nom février");
+        HistoricalFact novemberRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 11, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom février",
+            "Nom novembre");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2001, 1, 1),
+            new[] { opening, broadRenaming, februaryRenaming, novemberRenaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Ambiguous, attribute.State);
+        Assert.Equal(new[] { "Nom annuel", "Nom novembre" }, attribute.Candidates);
+        Assert.DoesNotContain("Nom février", attribute.Candidates);
     }
 
     [Fact]

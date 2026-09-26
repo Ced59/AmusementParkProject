@@ -200,53 +200,83 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             }
         }
 
-        Dictionary<int, HashSet<HistoricalOperationalState>> statesByMask = new()
+        HashSet<HistoricalOperationalState> result = new HashSet<HistoricalOperationalState>();
+        for (int targetMask = 0; targetMask <= allMask; targetMask++)
         {
-            [0] = new HashSet<HistoricalOperationalState>(states),
-        };
-        for (int mask = 0; mask <= allMask; mask++)
-        {
-            if (!statesByMask.TryGetValue(mask, out HashSet<HistoricalOperationalState>? currentStates))
+            if ((targetMask & requiredMask) != requiredMask)
             {
                 continue;
             }
 
-            for (int index = 0; index < applicableTransitions.Count; index++)
+            Dictionary<int, HashSet<HistoricalOperationalState>> statesByMask = new()
             {
-                int bit = 1 << index;
-                if ((mask & bit) != 0)
+                [0] = new HashSet<HistoricalOperationalState>(states),
+            };
+            for (int mask = 0; mask <= targetMask; mask++)
+            {
+                if ((mask & ~targetMask) != 0
+                    || !statesByMask.TryGetValue(mask, out HashSet<HistoricalOperationalState>? currentStates))
                 {
                     continue;
                 }
 
-                (HistoricalFact fact, _, bool hasKnownEnd) = applicableTransitions[index];
-                HashSet<HistoricalOperationalState> nextStates = this.ApplyTransitionToStates(
-                    currentStates,
-                    fact,
-                    hasKnownEnd,
-                    requestedDate,
-                    reasons);
-                int nextMask = mask | bit;
-                if (!statesByMask.TryGetValue(nextMask, out HashSet<HistoricalOperationalState>? collected))
+                for (int index = 0; index < applicableTransitions.Count; index++)
                 {
-                    collected = new HashSet<HistoricalOperationalState>();
-                    statesByMask.Add(nextMask, collected);
+                    int bit = 1 << index;
+                    if ((targetMask & bit) == 0
+                        || (mask & bit) != 0
+                        || !PredecessorsWereApplied(applicableTransitions, targetMask, mask, index))
+                    {
+                        continue;
+                    }
+
+                    (HistoricalFact fact, _, bool hasKnownEnd) = applicableTransitions[index];
+                    HashSet<HistoricalOperationalState> nextStates = this.ApplyTransitionToStates(
+                        currentStates,
+                        fact,
+                        hasKnownEnd,
+                        requestedDate,
+                        reasons);
+                    int nextMask = mask | bit;
+                    if (!statesByMask.TryGetValue(nextMask, out HashSet<HistoricalOperationalState>? collected))
+                    {
+                        collected = new HashSet<HistoricalOperationalState>();
+                        statesByMask.Add(nextMask, collected);
+                    }
+
+                    collected.UnionWith(nextStates);
                 }
-
-                collected.UnionWith(nextStates);
             }
-        }
 
-        HashSet<HistoricalOperationalState> result = new HashSet<HistoricalOperationalState>();
-        foreach (KeyValuePair<int, HashSet<HistoricalOperationalState>> entry in statesByMask)
-        {
-            if ((entry.Key & requiredMask) == requiredMask)
+            if (statesByMask.TryGetValue(targetMask, out HashSet<HistoricalOperationalState>? finalStates))
             {
-                result.UnionWith(entry.Value);
+                result.UnionWith(finalStates);
             }
         }
 
         return result;
+    }
+
+    private static bool PredecessorsWereApplied(
+        IReadOnlyList<(HistoricalFact Fact, HistoricalTransitionApplicability Applicability, bool HasKnownEnd)>
+            transitions,
+        int targetMask,
+        int appliedMask,
+        int candidateIndex)
+    {
+        HistoricalFact candidate = transitions[candidateIndex].Fact;
+        for (int index = 0; index < transitions.Count; index++)
+        {
+            int bit = 1 << index;
+            if ((targetMask & bit) != 0
+                && (appliedMask & bit) == 0
+                && HistoricalTransitionOrdering.MustPrecede(transitions[index].Fact, candidate))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private HashSet<HistoricalOperationalState> ApplyLargeUnorderedGroup(
@@ -330,6 +360,11 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         DateOnly requestedDate,
         HistoricalSnapshotReasonCollector reasons)
     {
+        if (IsExactLastOperatingDay(fact, requestedDate))
+        {
+            return HistoricalOperationalState.KnownOpen;
+        }
+
         if (fact.Type is HistoricalFactType.Opening or HistoricalFactType.Reopening)
         {
             if (currentState == HistoricalOperationalState.KnownOpen)
@@ -361,6 +396,14 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         RecordClosureAgainstClosedState(currentState, fact, reasons);
         reasons.Add(HistoricalSnapshotReasonCode.UnclassifiedClosure, fact);
         return HistoricalOperationalState.Unknown;
+    }
+
+    private static bool IsExactLastOperatingDay(HistoricalFact fact, DateOnly requestedDate)
+    {
+        HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
+        return fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.LastOperatingDay
+            && envelope.IsExactDay
+            && envelope.EarliestPossibleDate == requestedDate;
     }
 
     private static void RecordClosureAgainstClosedState(
