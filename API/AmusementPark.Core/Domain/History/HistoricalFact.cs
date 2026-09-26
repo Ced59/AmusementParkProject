@@ -353,6 +353,13 @@ public sealed class HistoricalFact
                 "An attribute transition fact requires its matching attribute boundary semantics.");
         }
 
+        if (expectedAttribute.HasValue && !period.IsPoint)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidFactState,
+                "An attribute transition must define one historical boundary rather than an interval.");
+        }
+
         if (!expectedAttribute.HasValue && (attributeKind.HasValue || attributeBoundaryMeaning.HasValue))
         {
             throw Invalid(

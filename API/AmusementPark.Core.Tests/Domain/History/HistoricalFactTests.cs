@@ -95,6 +95,30 @@ public sealed class HistoricalFactTests
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
     }
 
+    [Theory]
+    [InlineData(HistoricalFactType.Renaming, HistoricalAttributeKind.Name)]
+    [InlineData(HistoricalFactType.ZoneRenaming, HistoricalAttributeKind.Name)]
+    [InlineData(HistoricalFactType.OperatorChange, HistoricalAttributeKind.Operator)]
+    [InlineData(HistoricalFactType.OwnerChange, HistoricalAttributeKind.Owner)]
+    [InlineData(HistoricalFactType.PositioningChange, HistoricalAttributeKind.Location)]
+    [InlineData(HistoricalFactType.Relocation, HistoricalAttributeKind.Location)]
+    [InlineData(HistoricalFactType.Retheming, HistoricalAttributeKind.Theme)]
+    [InlineData(HistoricalFactType.ManufacturerChange, HistoricalAttributeKind.Manufacturer)]
+    [InlineData(HistoricalFactType.ZoneMove, HistoricalAttributeKind.Zone)]
+    public void Constructor_WhenAttributeTransitionUsesOpenPeriod_ShouldRejectFact(
+        HistoricalFactType type,
+        HistoricalAttributeKind attributeKind)
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                CreateAttributeTransitionFact(
+                    type,
+                    attributeKind,
+                    HistoricalPeriod.From(HistoricalDate.ForDay(1998, 5, 12))));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
+    }
+
     [Fact]
     public void Constructor_WhenRevisionDoesNotLinkEarlierRevision_ShouldRejectFact()
     {
@@ -351,6 +375,41 @@ public sealed class HistoricalFactTests
             RecordedAtUtc.AddMinutes(-2),
             null,
             null,
+            2,
+            1,
+            RecordedAtUtc);
+    }
+
+    private static HistoricalFact CreateAttributeTransitionFact(
+        HistoricalFactType type,
+        HistoricalAttributeKind attributeKind,
+        HistoricalPeriod period)
+    {
+        return new HistoricalFact(
+            Guid.NewGuid(),
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                "park-1",
+                "Parc exemple",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            type,
+            period,
+            HistoricalFactState.Verified,
+            HistoricalImportance.Major,
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            Array.Empty<HistoricalLocalizedText>(),
+            null,
+            attributeKind,
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            null,
+            new[] { new HistoricalSourceRevisionReference(Guid.NewGuid(), 1) },
+            "new-value",
+            null,
+            "history-attribute-transition",
+            RecordedAtUtc.AddMinutes(-2),
+            RecordedAtUtc.AddMinutes(-1),
+            "hist-v1",
             2,
             1,
             RecordedAtUtc);
