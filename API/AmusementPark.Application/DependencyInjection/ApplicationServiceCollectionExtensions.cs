@@ -36,6 +36,7 @@ using AmusementPark.Application.Features.Trips.Services;
 using AmusementPark.Application.Features.Watchlists.Services;
 using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Application.Validation;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using Microsoft.Extensions.DependencyInjection;
@@ -71,6 +72,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IFactualChangeMaterializationScheduler, FactualChangeMaterializationScheduler>();
         services.AddScoped<FactualChangeEventAdministrationService>();
         services.AddScoped<HistoricalNarrativeCanonicalFactRetractionService>();
+        services.AddSingleton<IParkHistoricalSnapshotBuilder, ParkHistoricalSnapshotBuilder>();
         services.AddDurableBackgroundJobHandler<FactualChangeMaterializationJobHandler>();
         services.AddScoped<ParkItemReferenceValidator>();
         services.AddScoped<CommentTargetResolver>();
