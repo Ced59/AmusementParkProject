@@ -28,6 +28,8 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(fact);
+        HistoricalFact? predecessor = await this.LoadPredecessorAsync(fact, cancellationToken);
+        HistoricalFactRevisionValidator.ValidatePredecessor(fact, predecessor);
         IReadOnlyCollection<HistoricalSourceReference> resolvedSources =
             await this.LoadSourceRevisionsAsync(fact.SourceReferences, cancellationToken);
         HistoricalFactEvidenceValidator.Validate(fact, resolvedSources);
@@ -89,6 +91,24 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
     {
         return existing is not null
             && existing.ToBsonDocument().Equals(candidate.ToBsonDocument());
+    }
+
+    private async Task<HistoricalFact?> LoadPredecessorAsync(
+        HistoricalFact fact,
+        CancellationToken cancellationToken)
+    {
+        if (!fact.SupersedesRevision.HasValue)
+        {
+            return null;
+        }
+
+        string normalizedFactId = fact.Id.ToString("N", CultureInfo.InvariantCulture);
+        int predecessorRevision = fact.SupersedesRevision.Value;
+        HistoricalFactDocument? predecessor = await this.collection
+            .Find(document => document.FactId == normalizedFactId
+                && document.Revision == predecessorRevision)
+            .FirstOrDefaultAsync(cancellationToken);
+        return predecessor?.ToDomain();
     }
 
     private async Task<IReadOnlyCollection<HistoricalSourceReference>> LoadSourceRevisionsAsync(

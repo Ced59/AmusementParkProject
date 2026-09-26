@@ -74,7 +74,7 @@ public sealed class HistoricalSourceReference
         this.AccessedOn = accessedOn;
         this.LanguageCode = normalizedLanguageCode;
         this.ArchiveUrl = normalizedArchiveUrl;
-        this.Scopes = normalizedScopes;
+        this.Scopes = Array.AsReadOnly(normalizedScopes);
         this.AdminNote = NormalizeOptional(adminNote, 4000);
         this.Accessibility = accessibility;
         this.WorkflowState = workflowState;

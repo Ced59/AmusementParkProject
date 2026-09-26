@@ -94,6 +94,20 @@ public sealed class HistoricalFactTests
     }
 
     [Fact]
+    public void Constructor_ShouldExposeValidatedCollectionsAsReadOnly()
+    {
+        HistoricalFact fact = CreateFact(state: HistoricalFactState.Probable);
+
+        IList<HistoricalLocalizedText> explanations = Assert.IsAssignableFrom<IList<HistoricalLocalizedText>>(
+            fact.PublicUncertaintyExplanation);
+        IList<HistoricalSourceRevisionReference> sources = Assert.IsAssignableFrom<IList<HistoricalSourceRevisionReference>>(
+            fact.SourceReferences);
+
+        Assert.Throws<NotSupportedException>(() => explanations[0] = new HistoricalLocalizedText("de", "Geändert."));
+        Assert.Throws<NotSupportedException>(() => sources[0] = new HistoricalSourceRevisionReference(Guid.NewGuid(), 1));
+    }
+
+    [Fact]
     public void Constructor_WhenAttributeTransitionHasNoNewValue_ShouldRejectFact()
     {
         HistoricalPersistenceValidationException exception =

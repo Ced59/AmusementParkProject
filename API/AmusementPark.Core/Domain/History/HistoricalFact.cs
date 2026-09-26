@@ -87,12 +87,12 @@ public sealed class HistoricalFact
         this.Importance = importance;
         this.WorkflowState = workflowState;
         this.PublicationState = publicationState;
-        this.PublicUncertaintyExplanation = normalizedExplanations;
+        this.PublicUncertaintyExplanation = Array.AsReadOnly(normalizedExplanations);
         this.LifecycleBoundaryMeaning = lifecycleBoundaryMeaning;
         this.AttributeKind = attributeKind;
         this.AttributeBoundaryMeaning = attributeBoundaryMeaning;
         this.SequenceWithinDate = sequenceWithinDate;
-        this.SourceReferences = normalizedSourceReferences;
+        this.SourceReferences = Array.AsReadOnly(normalizedSourceReferences);
         this.StructuredValue = normalizedStructuredValue;
         this.OtherTypeLabel = normalizedOtherTypeLabel;
         this.NarrativeContentId = normalizedNarrativeContentId;

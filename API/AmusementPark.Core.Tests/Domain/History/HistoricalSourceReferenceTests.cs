@@ -81,6 +81,15 @@ public sealed class HistoricalSourceReferenceTests
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
     }
 
+    [Fact]
+    public void Constructor_ShouldExposeValidatedScopesAsReadOnly()
+    {
+        HistoricalSourceReference source = CreatePublishedSource();
+        IList<HistoricalSourceScope> scopes = Assert.IsAssignableFrom<IList<HistoricalSourceScope>>(source.Scopes);
+
+        Assert.Throws<NotSupportedException>(() => scopes[0] = HistoricalSourceScope.StructuredValue);
+    }
+
     private static HistoricalSourceReference CreatePublishedSource(
         HistoricalSourceAccessibility accessibility = HistoricalSourceAccessibility.Archived)
     {
