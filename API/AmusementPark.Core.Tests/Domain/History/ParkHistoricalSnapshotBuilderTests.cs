@@ -411,6 +411,29 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_ExcludesFutureLifecycleFactFromCurrentEvidence()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact futureClosure = CreateLifecycleFact(
+            HistoricalFactType.DefinitiveClosure,
+            HistoricalDate.ForDay(2030, 1, 1),
+            LifecycleBoundaryMeaning.FirstClosedDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2001, 1, 1),
+            new[] { opening, futureClosure });
+
+        Assert.Equal(new[] { opening.Id }, snapshot.SupportingFactIds);
+        HistoricalSnapshotReason confirmedActivity = Assert.Single(
+            snapshot.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.ConfirmedActivity);
+        Assert.Equal(new[] { opening.Id }, confirmedActivity.FactIds);
+    }
+
+    [Fact]
     public void Build_OnExactRenamingBoundary_UsesPreviousThenNewName()
     {
         HistoricalFact opening = CreateLifecycleFact(

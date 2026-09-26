@@ -55,6 +55,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         }
 
         List<(DateOnly Date, HashSet<HistoricalOperationalState> States)> dailyStates = new();
+        HashSet<Guid> contributingFactIds = new HashSet<Guid>();
         foreach (DateOnly requestedDate in requestedDates)
         {
             HashSet<HistoricalOperationalState> states = initialOpening is null
@@ -64,13 +65,26 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                 && requestedDate < HistoricalTransitionOrdering.Earliest(initialOpening))
             {
                 reasons.Add(HistoricalSnapshotReasonCode.BeforeConfirmedInitialOpening, initialOpening);
+                contributingFactIds.Add(initialOpening.Id);
             }
 
             foreach (IReadOnlyList<HistoricalFact> group in transitionGroups)
             {
                 states = HistoricalTransitionOrdering.CanUseExplicitSequence(group)
-                    ? this.ApplyOrderedGroup(states, group, lifecycleFacts, requestedDate, reasons)
-                    : this.ApplyUnorderedGroup(states, group, lifecycleFacts, requestedDate, reasons);
+                    ? this.ApplyOrderedGroup(
+                        states,
+                        group,
+                        lifecycleFacts,
+                        requestedDate,
+                        reasons,
+                        contributingFactIds)
+                    : this.ApplyUnorderedGroup(
+                        states,
+                        group,
+                        lifecycleFacts,
+                        requestedDate,
+                        reasons,
+                        contributingFactIds);
             }
 
             dailyStates.Add((requestedDate, states));
@@ -91,13 +105,13 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                 ? HistoricalPresenceExtent.EntireRequestedPeriod
                 : HistoricalPresenceExtent.PartOfRequestedPeriod;
             intervals = BuildIntervals(confirmedOpenDates);
-            reasons.Add(HistoricalSnapshotReasonCode.ConfirmedActivity, lifecycleFacts);
+            reasons.Add(HistoricalSnapshotReasonCode.ConfirmedActivity, contributingFactIds);
         }
         else if (dailyStates.All(static day => day.States.SetEquals(
                      new[] { HistoricalOperationalState.KnownClosed })))
         {
             resultState = HistoricalOperationalState.KnownClosed;
-            reasons.Add(HistoricalSnapshotReasonCode.ConfirmedClosure, lifecycleFacts);
+            reasons.Add(HistoricalSnapshotReasonCode.ConfirmedClosure, contributingFactIds);
         }
         else if (dailyStates.Any(static day => day.States.Contains(HistoricalOperationalState.KnownOpen)))
         {
@@ -113,7 +127,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             presenceExtent,
             intervals,
             reasons.Build(),
-            lifecycleFacts.Select(static fact => fact.Id).Distinct().OrderBy(static id => id).ToArray());
+            contributingFactIds.OrderBy(static id => id).ToArray());
     }
 
     private HashSet<HistoricalOperationalState> ApplyOrderedGroup(
@@ -121,7 +135,8 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         IReadOnlyList<HistoricalFact> group,
         IReadOnlyCollection<HistoricalFact> lifecycleFacts,
         DateOnly requestedDate,
-        HistoricalSnapshotReasonCollector reasons)
+        HistoricalSnapshotReasonCollector reasons,
+        ISet<Guid> contributingFactIds)
     {
         HashSet<HistoricalOperationalState> result = new HashSet<HistoricalOperationalState>(states);
         foreach (HistoricalFact fact in HistoricalTransitionOrdering.OrderByExplicitSequence(group))
@@ -133,6 +148,11 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                     requestedDate,
                     temporaryClosureHasKnownEnd);
             RecordApplicabilityReason(fact, applicability, reasons);
+            if (applicability != HistoricalTransitionApplicability.NotOccurred)
+            {
+                contributingFactIds.Add(fact.Id);
+            }
+
             result = this.ApplyAccordingToApplicability(
                 result,
                 fact,
@@ -150,7 +170,8 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         IReadOnlyList<HistoricalFact> group,
         IReadOnlyCollection<HistoricalFact> lifecycleFacts,
         DateOnly requestedDate,
-        HistoricalSnapshotReasonCollector reasons)
+        HistoricalSnapshotReasonCollector reasons,
+        ISet<Guid> contributingFactIds)
     {
         List<(HistoricalFact Fact, HistoricalTransitionApplicability Applicability, bool HasKnownEnd)>
             applicableTransitions = new();
@@ -165,6 +186,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             RecordApplicabilityReason(fact, applicability, reasons);
             if (applicability != HistoricalTransitionApplicability.NotOccurred)
             {
+                contributingFactIds.Add(fact.Id);
                 applicableTransitions.Add((fact, applicability, temporaryClosureHasKnownEnd));
             }
         }
