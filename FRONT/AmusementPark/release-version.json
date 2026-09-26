@@ -1,6 +1,20 @@
 {
-  "version": "5.3.80",
+  "version": "5.3.81",
   "history": [
+    {
+      "version": "5.3.81",
+      "releasedAt": "2026-09-26",
+      "labels": {
+        "fr": "Les futures histoires de parcs pourront conserver leurs preuves et leurs corrections.",
+        "en": "Future park histories can now retain their evidence and corrections.",
+        "de": "Künftige Parkgeschichten können nun ihre Belege und Korrekturen bewahren.",
+        "nl": "Toekomstige parkgeschiedenissen kunnen voortaan hun bronnen en correcties bewaren.",
+        "it": "Le future storie dei parchi potranno ora conservare prove e correzioni.",
+        "es": "Las futuras historias de los parques podrán conservar sus pruebas y correcciones.",
+        "pl": "Przyszłe historie parków będą mogły zachowywać źródła i korekty.",
+        "pt": "As futuras histórias dos parques poderão agora conservar as suas provas e correções."
+      }
+    },
     {
       "version": "5.3.80",
       "releasedAt": "2026-09-25",

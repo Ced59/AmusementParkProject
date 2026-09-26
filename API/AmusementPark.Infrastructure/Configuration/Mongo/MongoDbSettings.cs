@@ -248,6 +248,10 @@ public sealed class MongoDbSettings
 
     public string HistoryEventsCollectionName { get; set; } = "historyEvents";
 
+    public string HistoricalFactsCollectionName { get; set; } = "historical-facts";
+
+    public string HistoricalSourcesCollectionName { get; set; } = "historical-sources";
+
     /// <summary>
     /// Lie la configuration et applique des valeurs par défaut.
     /// </summary>

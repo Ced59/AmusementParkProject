@@ -399,9 +399,14 @@ IHistoricalSourceRepository
 IParkHistoricalSnapshotBuilder
 IHistoricalCoverageReader
 IHistoricalTargetResolver
-IHistoricalAuditWriter
+IHistoricalAuditReader
 IHistoricalSnapshotCache
 ```
+
+Les ports d'écriture des faits, sources et relations reçoivent obligatoirement
+la transition de revue correspondante. Révision et audit sont persistés dans le
+même document immuable afin qu'aucun état éditorial ne puisse exister sans sa
+trace, y compris sans transaction MongoDB multi-collections.
 
 Cas d’usage :
 
@@ -453,8 +458,11 @@ Collections proposées ou adaptation de l’existant :
 - `historical-facts` ;
 - `historical-relations` ;
 - `historical-sources` ;
-- `historical-review-events` ;
 - `historical-snapshot-cache` facultatif.
+
+Chaque révision de fait, source ou relation embarque son événement de revue
+immuable. Le journal est donc consultable par ressource sans collection
+d'audit dissociée ni risque de double écriture partielle.
 
 Indexes :
 
@@ -660,7 +668,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 |---|---|---|
 | [`HIST-01`](../../architecture/product-growth-hist-01-temporal-semantics-2026-09-25.md) | ADR dates, faits, relations et incertitude | Sémantique figée |
 | `HIST-02` | Core temporel | Frontières testées — implémenté le 25 septembre 2026 |
-| `HIST-03` | Persistance faits/sources | Audit et indexes |
+| `HIST-03` | Persistance faits/sources | Audit et indexes — implémenté le 26 septembre 2026 |
 | `HIST-04` | Migration/adaptation des historiques existants | Aucune perte de contenu |
 | `HIST-05` | Builder snapshot | Résultat déterministe |
 | `HIST-06` | Couverture et ambiguïtés | Partiel visible |
@@ -695,6 +703,43 @@ qualificatifs exclusifs, les limites du calendrier, les périodes inversées,
 les premiers et derniers jours inclus, les enveloppes partielles et les bornes
 incertaines. Aucune persistance, API ou interface n'est introduite dans ce
 jalon ; elles consommeront ces valeurs dans les PR suivantes.
+
+### Implémentation `HIST-03` — 26 septembre 2026
+
+Le registre canonique peut désormais conserver séparément les faits, leurs
+sources et chaque événement de revue. Un fait mémorise son sujet avec son
+libellé historique figé, sa période structurée, son état de preuve, son état de
+publication, ses sources, sa version de méthodologie et sa chaîne de révisions.
+Chaque preuve citée est figée sur sa révision exacte : une correction future de
+la source ne réécrit donc jamais rétroactivement un fait déjà publié.
+Avant l'insertion, un service de domaine vérifie que ces révisions existent,
+sont admissibles et couvrent ensemble l'identité, le libellé historique, le
+type, la période et, lorsqu'elle existe, la valeur structurée du fait.
+Les combinaisons incohérentes sont refusées dans le Core : un fait vérifié sans
+preuve, un contenu incertain sans explication dans les huit langues ou une
+cible supprimée rendue publique ne peuvent pas atteindre MongoDB. La famille du
+fait doit aussi être compatible avec la nature de son sujet : un démontage ne
+peut pas qualifier un parc et une création de zone ne peut pas qualifier une
+attraction.
+
+Les écritures sont append-only et idempotentes : rejouer exactement la même
+révision ne crée pas de doublon, tandis qu'une autre valeur utilisant la même
+identité de révision est signalée comme conflit. Les preuves suivent la même
+discipline et conservent leur référence stable, leur date de consultation, leur
+accessibilité et la partie du fait qu'elles soutiennent. Leurs révisions figées
+peuvent être chargées par lot, sans lecture N+1. Chaque révision et son
+événement de revue sont écrits atomiquement dans le même document : le journal
+reste permanent, ne peut pas être omis par un appelant et associe chaque action
+à la révision concernée sans exposer ces informations au public. Les
+modifications de brouillon possèdent leur propre événement et chaque audit doit
+succéder chronologiquement à celui de la révision précédente.
+
+MongoDB initialise les collections `historical-facts` et `historical-sources`
+avec des index adaptés aux recherches par sujet, période, publication, preuve,
+révision et audit embarqué. Aucun TTL ne peut effacer ce
+patrimoine. Les ports Application isolent entièrement le Core et les futurs cas
+d'usage de MongoDB. Le modèle historique antérieur n'est pas lu en parallèle :
+sa conversion et la bascule unique restent le jalon `HIST-04`.
 
 ## 22. Gate finale `HIST-G`
 

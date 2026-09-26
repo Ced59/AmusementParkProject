@@ -1,0 +1,30 @@
+namespace AmusementPark.Core.Domain.History;
+
+public enum HistoricalFactType
+{
+    Opening = 0,
+    Closure = 1,
+    Reopening = 2,
+    Renaming = 3,
+    OperatorChange = 4,
+    OwnerChange = 5,
+    Extension = 6,
+    Reduction = 7,
+    ZoneCreation = 8,
+    ZoneRenaming = 9,
+    ZoneRemoval = 10,
+    MajorEvent = 11,
+    PositioningChange = 12,
+    Announcement = 13,
+    Construction = 14,
+    TemporaryClosure = 15,
+    DefinitiveClosure = 16,
+    Dismantling = 17,
+    Relocation = 18,
+    Retheming = 19,
+    ManufacturerChange = 20,
+    TechnicalModification = 21,
+    Replacement = 22,
+    ZoneMove = 23,
+    Other = 24,
+}

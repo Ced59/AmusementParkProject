@@ -273,9 +273,29 @@ Une source peut prouver le nom sans prouver le jour exact. La portée est donc
 attachée explicitement aux champs ou assertions couverts. Le nombre de sources
 ne remplace pas leur qualité.
 
+Chaque citation d'une révision de source mémorise aussi l'assertion exacte à
+laquelle elle s'applique : type et identifiant du sujet, type de fait, période
+et portées précises que cette source couvre pour cette assertion. La citation
+indique aussi si la source confirme ou contredit l'assertion. Les portées qui
+dépendent d'une valeur conservent cette valeur exacte : libellé historique,
+libellé d'un type personnalisé, valeur structurée, ordre intra-journalier et
+récit lié. Une citation antérieure
+ne peut donc pas être réutilisée après correction de la valeur. Lorsqu'elle
+couvre la période, elle conserve aussi la signification exacte de la borne de
+cycle de vie ou de transition d'attribut ; « dernier jour ouvert » ne peut pas
+devenir silencieusement « premier jour fermé » avec la même preuve.
+Une source portant des portées génériques ne peut donc pas valider un fait sur
+un autre parc, une autre attraction, un autre événement ou une autre période.
+Au moins une même source doit couvrir ensemble le sujet, le type et la période ;
+les autres sources peuvent compléter les champs structurés secondaires.
+
 ### 6.2 Contradictions
 
-Les sources contradictoires sont toutes conservées. Le système ne sélectionne
+Les sources contradictoires sont toutes conservées. Deux citations ne sont
+contradictoires que si leurs portées se recouvrent sur au moins une assertion.
+Un fait `Verified` ou `Probable` exige des preuves qui le soutiennent sans
+contradiction admissible ; les portées structurées sont couvertes par ces
+preuves favorables et non par les seules objections. Le système ne sélectionne
 pas automatiquement la date la plus récente, la plus précise ou la plus
 favorable. La divergence produit `Disputed`, une explication éditoriale et, si
 possible, une fourchette. Une résolution ultérieure indique quelles preuves ont
@@ -331,6 +351,10 @@ Draft → SourcesAttached → EditorialReview → StructuredValidation → Publi
 `Published`, `Corrected` et `Retracted`. Il n’est pas déduit à la volée du
 journal d’audit. Les transitions invalides sont refusées par le Core et chacune
 ajoute un événement de revue.
+Une modification qui reste dans `Draft` porte `DraftUpdated`. Une modification
+qui reste dans `SourcesAttached`, `EditorialReview` ou `StructuredValidation`
+porte `ReviewUpdated` : elle ne peut pas se faire passer pour une nouvelle
+validation de l’étape.
 
 L’état de workflow indique où en est le travail. L’état de preuve indique ce que
 l’on peut conclure. Ils ne sont pas interchangeables : un fait `Disputed` peut
@@ -572,6 +596,8 @@ rejouable après que le Core et la persistance canoniques auront été livrés.
   de mise en avant, routage d’article et éligibilité sitemap ;
 - conservation d’une copie de sauvegarde et d’un rapport avant bascule ;
 - migration idempotente avec marqueur de version et compteurs avant/après ;
+- la première révision importée porte obligatoirement l'événement d'audit
+  `Migrated`, jamais une transition éditoriale ordinaire ;
 - les enregistrements incomplets deviennent `Unverified`, pas `Verified` ;
 - `HistoryArticle.IsPublished` est migré vers l’état de publication propre du
   récit, indépendamment de celui du fait ;
@@ -712,8 +738,13 @@ un port et une façade ; il ne décide jamais si un élément était ouvert.
 ## 13. Persistance, cache et performance
 
 Les collections cibles sont `historical-facts`, `historical-relations`,
-`historical-sources`, `historical-review-events` et, si nécessaire,
-`historical-snapshot-cache`.
+`historical-sources` et, si nécessaire, `historical-snapshot-cache`. Chaque
+révision embarque l'événement de revue qui l'a produite : l'audit est donc
+append-only et atomique avec la révision, sans seconde écriture dans une
+collection séparée.
+La lecture de cet audit est paginée par curseur temporel puis numéro de révision :
+la limite d'une page borne la charge sans rendre les anciennes entrées
+inaccessibles.
 
 - index par sujet, période, type et état ;
 - unicité des révisions et audit append-only ;
