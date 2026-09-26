@@ -1741,6 +1741,172 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_ReportsReliablePartialAndUndatedPeriodCoverage()
+    {
+        HistoricalSubject reliableSubject = CreateSubject("reliable", "Sujet fiable");
+        HistoricalSubject partialSubject = CreateSubject("partial", "Sujet partiel");
+        HistoricalSubject undatedSubject = CreateSubject("undated", "Sujet sans date");
+        HistoricalFact reliableOpening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            subject: reliableSubject);
+        HistoricalFact partialOpening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 1, 1, isApproximate: true),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            subject: partialSubject);
+
+        ParkHistoricalSnapshot snapshot = this.builder.Build(
+            "park-1",
+            HistoricalInstant.ForDay(1999, 12, 31),
+            new[] { undatedSubject, partialSubject, reliableSubject },
+            new[] { partialOpening, reliableOpening });
+
+        Assert.Equal(3, snapshot.Coverage.TotalSubjectCount);
+        Assert.Equal(1, snapshot.Coverage.ReliablePeriodSubjectCount);
+        Assert.Equal(1, snapshot.Coverage.PartialPeriodSubjectCount);
+        Assert.Equal(1, snapshot.Coverage.UndatedSubjectCount);
+        Assert.Equal(HistoricalCoverageStatus.Partial, snapshot.Coverage.Status);
+        HistoricalAmbiguity undatedAmbiguity = Assert.Single(
+            snapshot.Ambiguities,
+            ambiguity => ambiguity.Subject.Id == undatedSubject.Id
+                && ambiguity.Code == HistoricalSnapshotReasonCode.NoEligibleLifecycleFact);
+        Assert.Empty(undatedAmbiguity.FactIds);
+        HistoricalAmbiguity uncertainAmbiguity = Assert.Single(
+            snapshot.Ambiguities,
+            ambiguity => ambiguity.Subject.Id == partialSubject.Id
+                && ambiguity.Code == HistoricalSnapshotReasonCode.UncertainEvidence);
+        Assert.Equal(new[] { partialOpening.Id }, uncertainAmbiguity.FactIds);
+    }
+
+    [Fact]
+    public void Build_ReportsHistoricalNameAndZoneCoverageForParkItems()
+    {
+        HistoricalSubject documentedSubject = CreateSubject("documented", "Sujet documenté");
+        HistoricalSubject missingSubject = CreateSubject("missing", "Sujet incomplet");
+        HistoricalFact[] facts =
+        {
+            CreateLifecycleFact(
+                HistoricalFactType.Opening,
+                HistoricalDate.ForDay(1990, 1, 1),
+                LifecycleBoundaryMeaning.FirstOperatingDay,
+                subject: documentedSubject),
+            CreateLifecycleFact(
+                HistoricalFactType.Opening,
+                HistoricalDate.ForDay(1990, 1, 1),
+                LifecycleBoundaryMeaning.FirstOperatingDay,
+                subject: missingSubject),
+            CreateAttributeFact(
+                HistoricalDate.ForDay(1995, 1, 1),
+                AttributeBoundaryMeaning.FirstDayOfNewValue,
+                "Ancien nom",
+                "Nouveau nom",
+                subject: documentedSubject),
+            CreateAttributeFact(
+                HistoricalDate.ForDay(1995, 1, 2),
+                AttributeBoundaryMeaning.FirstDayOfNewValue,
+                "Ancienne zone",
+                "Nouvelle zone",
+                type: HistoricalFactType.ZoneMove,
+                kind: HistoricalAttributeKind.Zone,
+                subject: documentedSubject),
+        };
+
+        ParkHistoricalSnapshot snapshot = this.builder.Build(
+            "park-1",
+            HistoricalInstant.ForDay(2000, 1, 1),
+            new[] { documentedSubject, missingSubject },
+            facts);
+
+        Assert.Equal(1, snapshot.Coverage.NameCoverage.DocumentedSubjectCount);
+        Assert.Equal(2, snapshot.Coverage.NameCoverage.ApplicableSubjectCount);
+        Assert.Equal(50m, snapshot.Coverage.NameCoverage.Percentage);
+        Assert.Equal(1, snapshot.Coverage.ZoneCoverage.DocumentedSubjectCount);
+        Assert.Equal(2, snapshot.Coverage.ZoneCoverage.ApplicableSubjectCount);
+        Assert.Equal(50m, snapshot.Coverage.ZoneCoverage.Percentage);
+        Assert.Equal(HistoricalCoverageStatus.Substantial, snapshot.Coverage.Status);
+    }
+
+    [Fact]
+    public void Build_WithCompleteReliableCoverage_ReturnsHighConfidence()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact name = CreateAttributeFact(
+            HistoricalDate.ForDay(1995, 1, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Ancien nom",
+            "Nouveau nom");
+        HistoricalFact zone = CreateAttributeFact(
+            HistoricalDate.ForDay(1995, 1, 2),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Ancienne zone",
+            "Nouvelle zone",
+            type: HistoricalFactType.ZoneMove,
+            kind: HistoricalAttributeKind.Zone);
+
+        ParkHistoricalSnapshot snapshot = this.builder.Build(
+            "park-1",
+            HistoricalInstant.ForDay(2000, 1, 1),
+            new[] { Subject },
+            new[] { opening, name, zone });
+
+        Assert.Equal(HistoricalCoverageStatus.HighConfidence, snapshot.Coverage.Status);
+        Assert.Empty(snapshot.Ambiguities);
+        Assert.Equal(RecordedAtUtc.AddMinutes(-2), snapshot.Coverage.LastReviewedAtUtc);
+        Assert.Equal("hist-snapshot-v2", snapshot.MethodologyVersion);
+    }
+
+    [Fact]
+    public void Build_WithProbableAttributeChange_ExposesStructuredAmbiguity()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact renaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 1, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Ancien nom",
+            "Nouveau nom",
+            state: HistoricalFactState.Probable);
+
+        ParkHistoricalSnapshot snapshot = this.builder.Build(
+            "park-1",
+            HistoricalInstant.ForDay(2001, 1, 1),
+            new[] { Subject },
+            new[] { opening, renaming });
+
+        HistoricalAmbiguity ambiguity = Assert.Single(
+            snapshot.Ambiguities,
+            item => item.Code == HistoricalSnapshotReasonCode.UncertainEvidence
+                && item.AttributeKind == HistoricalAttributeKind.Name);
+        Assert.Single(snapshot.Ambiguities);
+        Assert.Equal(1, snapshot.Coverage.ReliablePeriodSubjectCount);
+        Assert.Equal(0, snapshot.Coverage.PartialPeriodSubjectCount);
+        Assert.Equal(Subject, ambiguity.Subject);
+        Assert.Equal(new[] { renaming.Id }, ambiguity.FactIds);
+    }
+
+    [Fact]
+    public void Build_WithoutSubjects_ReturnsPartialEmptyCoverage()
+    {
+        ParkHistoricalSnapshot snapshot = this.builder.Build(
+            "park-1",
+            HistoricalInstant.ForDay(2000, 1, 1),
+            Array.Empty<HistoricalSubject>(),
+            Array.Empty<HistoricalFact>());
+
+        Assert.Equal(HistoricalCoverageStatus.Partial, snapshot.Coverage.Status);
+        Assert.Equal(0, snapshot.Coverage.TotalSubjectCount);
+        Assert.Null(snapshot.Coverage.LastReviewedAtUtc);
+        Assert.Empty(snapshot.Ambiguities);
+    }
+
+    [Fact]
     public void Build_WithSameInputs_IsDeterministicAndSorted()
     {
         HistoricalFact opening = CreateLifecycleFact(
@@ -1768,6 +1934,7 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         HistoricalSubjectSnapshot firstSubject = Assert.Single(first.Subjects);
         HistoricalSubjectSnapshot secondSubject = Assert.Single(second.Subjects);
         Assert.Equal(first.MethodologyVersion, second.MethodologyVersion);
+        Assert.Equal(first.Coverage, second.Coverage);
         Assert.Equal(firstSubject.OperationalState, secondSubject.OperationalState);
         Assert.Equal(firstSubject.PresenceExtent, secondSubject.PresenceExtent);
         Assert.Equal(firstSubject.ConfirmedPresenceIntervals, secondSubject.ConfirmedPresenceIntervals);
@@ -1804,13 +1971,23 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         return Assert.Single(snapshot.Subjects);
     }
 
+    private static HistoricalSubject CreateSubject(string id, string label)
+    {
+        return new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            id,
+            label,
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+    }
+
     private static HistoricalFact CreateLifecycleFact(
         HistoricalFactType type,
         HistoricalDate date,
         LifecycleBoundaryMeaning boundaryMeaning,
         HistoricalFactState state = HistoricalFactState.Verified,
         int? sequenceWithinDate = null,
-        PeriodBoundaryConfidence confidence = PeriodBoundaryConfidence.Confirmed)
+        PeriodBoundaryConfidence confidence = PeriodBoundaryConfidence.Confirmed,
+        HistoricalSubject? subject = null)
     {
         HistoricalPeriod period = HistoricalPeriod.Point(date, confidence);
         return CreateFact(
@@ -1821,7 +1998,8 @@ public sealed class ParkHistoricalSnapshotBuilderTests
             null,
             null,
             sequenceWithinDate,
-            null);
+            null,
+            subject: subject);
     }
 
     private static HistoricalFact CreateAttributeFact(
@@ -1833,7 +2011,10 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         Guid? id = null,
         HistoricalFactState state = HistoricalFactState.Verified,
         string? structuredValueOverride = null,
-        PeriodBoundaryConfidence confidence = PeriodBoundaryConfidence.Confirmed)
+        PeriodBoundaryConfidence confidence = PeriodBoundaryConfidence.Confirmed,
+        HistoricalFactType type = HistoricalFactType.Renaming,
+        HistoricalAttributeKind kind = HistoricalAttributeKind.Name,
+        HistoricalSubject? subject = null)
     {
         string structuredValue = structuredValueOverride ?? string.Concat(
             "{\"previous\":\"",
@@ -1842,15 +2023,16 @@ public sealed class ParkHistoricalSnapshotBuilderTests
             nextValue,
             "\"}");
         return CreateFact(
-            HistoricalFactType.Renaming,
+            type,
             HistoricalPeriod.Point(date, confidence),
             state,
             null,
-            HistoricalAttributeKind.Name,
+            kind,
             boundaryMeaning,
             sequenceWithinDate,
             structuredValue,
-            id);
+            id,
+            subject);
     }
 
     private static HistoricalFact CreateFact(
@@ -1862,11 +2044,13 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         AttributeBoundaryMeaning? attributeBoundaryMeaning,
         int? sequenceWithinDate,
         string? structuredValue,
-        Guid? id = null)
+        Guid? id = null,
+        HistoricalSubject? subject = null)
     {
+        HistoricalSubject resolvedSubject = subject ?? Subject;
         return new HistoricalFact(
             id ?? Guid.NewGuid(),
-            Subject,
+            resolvedSubject,
             type,
             period,
             state,
@@ -1883,6 +2067,7 @@ public sealed class ParkHistoricalSnapshotBuilderTests
             new[]
             {
                 CreateSourceReference(
+                    resolvedSubject,
                     type,
                     period,
                     lifecycleBoundaryMeaning,
@@ -1903,6 +2088,7 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     private static HistoricalSourceRevisionReference CreateSourceReference(
+        HistoricalSubject subject,
         HistoricalFactType type,
         HistoricalPeriod period,
         LifecycleBoundaryMeaning? lifecycleBoundaryMeaning,
@@ -1931,13 +2117,13 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         return new HistoricalSourceRevisionReference(
             Guid.NewGuid(),
             1,
-            Subject.Type,
-            Subject.Id,
+            subject.Type,
+            subject.Id,
             type,
             period,
             HistoricalEvidencePosition.Supports,
             scopes,
-            Subject.HistoricalLabel,
+            subject.HistoricalLabel,
             structuredValue,
             sequenceWithinDate,
             null,

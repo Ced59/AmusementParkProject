@@ -6,6 +6,8 @@ public sealed record ParkHistoricalSnapshot
         string parkId,
         HistoricalInstant requestedInstant,
         IReadOnlyCollection<HistoricalSubjectSnapshot> subjects,
+        HistoricalCoverage coverage,
+        IReadOnlyCollection<HistoricalAmbiguity> ambiguities,
         string methodologyVersion)
     {
         string normalizedParkId = parkId?.Trim() ?? string.Empty;
@@ -24,6 +26,8 @@ public sealed record ParkHistoricalSnapshot
 
         ArgumentNullException.ThrowIfNull(requestedInstant);
         ArgumentNullException.ThrowIfNull(subjects);
+        ArgumentNullException.ThrowIfNull(coverage);
+        ArgumentNullException.ThrowIfNull(ambiguities);
         HistoricalSubjectSnapshot[] normalizedSubjects = subjects
             .OrderBy(static subject => subject.Subject.Type)
             .ThenBy(static subject => subject.Subject.HistoricalLabel, StringComparer.Ordinal)
@@ -38,9 +42,37 @@ public sealed record ParkHistoricalSnapshot
             throw new ArgumentException("A subject can occur only once in a park historical snapshot.", nameof(subjects));
         }
 
+        if (coverage.TotalSubjectCount != normalizedSubjects.Length)
+        {
+            throw new ArgumentException(
+                "Historical coverage must describe every snapshot subject.",
+                nameof(coverage));
+        }
+
+        HistoricalAmbiguity[] normalizedAmbiguities = ambiguities
+            .OrderBy(static ambiguity => ambiguity.Subject.Type)
+            .ThenBy(static ambiguity => ambiguity.Subject.HistoricalLabel, StringComparer.Ordinal)
+            .ThenBy(static ambiguity => ambiguity.Subject.Id, StringComparer.Ordinal)
+            .ThenBy(static ambiguity => ambiguity.AttributeKind)
+            .ThenBy(static ambiguity => ambiguity.Code)
+            .ToArray();
+        HashSet<(HistoricalSubjectType Type, string Id)> subjectKeys = normalizedSubjects
+            .Select(static subject => (subject.Subject.Type, subject.Subject.Id))
+            .ToHashSet();
+        bool hasForeignAmbiguity = normalizedAmbiguities.Any(ambiguity => !subjectKeys.Contains(
+            (ambiguity.Subject.Type, ambiguity.Subject.Id)));
+        if (hasForeignAmbiguity)
+        {
+            throw new ArgumentException(
+                "A historical ambiguity must target a snapshot subject.",
+                nameof(ambiguities));
+        }
+
         this.ParkId = normalizedParkId;
         this.RequestedInstant = requestedInstant;
         this.Subjects = Array.AsReadOnly(normalizedSubjects);
+        this.Coverage = coverage;
+        this.Ambiguities = Array.AsReadOnly(normalizedAmbiguities);
         this.MethodologyVersion = normalizedMethodologyVersion;
     }
 
@@ -49,6 +81,10 @@ public sealed record ParkHistoricalSnapshot
     public HistoricalInstant RequestedInstant { get; }
 
     public IReadOnlyList<HistoricalSubjectSnapshot> Subjects { get; }
+
+    public HistoricalCoverage Coverage { get; }
+
+    public IReadOnlyList<HistoricalAmbiguity> Ambiguities { get; }
 
     public string MethodologyVersion { get; }
 }
