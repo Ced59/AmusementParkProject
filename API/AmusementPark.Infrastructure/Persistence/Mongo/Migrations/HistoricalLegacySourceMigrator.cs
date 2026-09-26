@@ -16,7 +16,7 @@ public sealed class HistoricalLegacySourceMigrator
             ?? throw new ArgumentNullException(nameof(sourceRepository));
     }
 
-    public async Task<HistoricalSourceRevisionReference[]> MigrateAsync(
+    internal HistoricalLegacySourceMigrationPlan[] Prepare(
         HistoryEventDocument historyEvent,
         HistoricalSubject subject,
         LegacyHistoryEventTypeMapping mapping,
@@ -24,10 +24,10 @@ public sealed class HistoricalLegacySourceMigrator
         string? structuredValue,
         string? otherTypeLabel,
         DateTime recordedAtUtc,
-        List<string> warnings,
-        CancellationToken cancellationToken)
+        List<string> warnings)
     {
-        List<HistoricalSourceRevisionReference> references = new List<HistoricalSourceRevisionReference>();
+        List<HistoricalLegacySourceMigrationPlan> plans =
+            new List<HistoricalLegacySourceMigrationPlan>();
         for (int index = 0; index < historyEvent.Sources.Count; index++)
         {
             HistorySourceReferenceDocument sourceDocument = historyEvent.Sources[index];
@@ -94,16 +94,7 @@ public sealed class HistoricalLegacySourceMigrator
                 HistoricalLegacyHistoryReplacementMigration.MigrationActor,
                 incomplete ? "Référence héritée incomplète." : null,
                 recordedAtUtc);
-            HistoricalRevisionWriteDisposition outcome = await this.sourceRepository.AppendRevisionAsync(
-                source,
-                sourceReview,
-                cancellationToken);
-            if (outcome == HistoricalRevisionWriteDisposition.Conflict)
-            {
-                throw new InvalidOperationException("A canonical historical source migration identity collided.");
-            }
-
-            references.Add(new HistoricalSourceRevisionReference(
+            HistoricalSourceRevisionReference reference = new HistoricalSourceRevisionReference(
                 sourceId,
                 1,
                 subject.Type,
@@ -119,10 +110,29 @@ public sealed class HistoricalLegacySourceMigrator
                 otherTypeLabel,
                 mapping.LifecycleBoundaryMeaning,
                 mapping.AttributeKind,
-                mapping.AttributeBoundaryMeaning));
+                mapping.AttributeBoundaryMeaning);
+            plans.Add(new HistoricalLegacySourceMigrationPlan(source, sourceReview, reference));
         }
 
-        return references.ToArray();
+        return plans.ToArray();
+    }
+
+    internal async Task PersistAsync(
+        IReadOnlyCollection<HistoricalLegacySourceMigrationPlan> plans,
+        CancellationToken cancellationToken)
+    {
+        foreach (HistoricalLegacySourceMigrationPlan plan in plans)
+        {
+            HistoricalRevisionWriteDisposition outcome = await this.sourceRepository.AppendRevisionAsync(
+                plan.Source,
+                plan.ReviewEvent,
+                cancellationToken);
+            if (outcome == HistoricalRevisionWriteDisposition.Conflict)
+            {
+                throw new InvalidOperationException(
+                    "A canonical historical source migration identity collided.");
+            }
+        }
     }
 
     private static HistoricalSourceScope[] BuildSourceScopes(string? structuredValue)

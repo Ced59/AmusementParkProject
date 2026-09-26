@@ -84,7 +84,7 @@ public sealed class HistoricalLegacyFactConverter
         string? otherTypeLabel = mapping.FactType == HistoricalFactType.Other
             ? historyEvent.EventType
             : null;
-        HistoricalSourceRevisionReference[] sourceReferences = await this.sourceMigrator.MigrateAsync(
+        HistoricalLegacySourceMigrationPlan[] sourcePlans = this.sourceMigrator.Prepare(
             historyEvent,
             subject,
             mapping,
@@ -92,8 +92,10 @@ public sealed class HistoricalLegacyFactConverter
             structuredValue,
             otherTypeLabel,
             recordedAtUtc,
-            warnings,
-            cancellationToken);
+            warnings);
+        HistoricalSourceRevisionReference[] sourceReferences = sourcePlans
+            .Select(static plan => plan.Reference)
+            .ToArray();
         if (mapping.FactType == HistoricalFactType.Other && sourceReferences.Length == 0)
         {
             warnings.Add(HistoricalLegacyMigrationAnomalyCodes.IncompleteSource);
@@ -145,10 +147,28 @@ public sealed class HistoricalLegacyFactConverter
             HistoricalLegacyHistoryReplacementMigration.MigrationActor,
             BuildReviewNote(warnings),
             recordedAtUtc);
-        HistoricalRevisionWriteDisposition outcome = await this.factRepository.AppendRevisionAsync(
+        HistoricalSubjectPublicationValidator.Validate(
             fact,
-            reviewEvent,
-            cancellationToken);
+            publicationPolicy != HistoricalSubjectPublicationPolicy.Suppressed);
+        HistoricalFactEvidenceValidator.Validate(
+            fact,
+            sourcePlans.Select(static plan => plan.Source).ToArray());
+        HistoricalRevisionWriteDisposition outcome;
+        try
+        {
+            await this.sourceMigrator.PersistAsync(sourcePlans, cancellationToken);
+            outcome = await this.factRepository.AppendRevisionAsync(
+                fact,
+                reviewEvent,
+                cancellationToken);
+        }
+        catch (HistoricalPersistenceValidationException exception)
+        {
+            throw new InvalidOperationException(
+                "Canonical historical persistence diverged after successful migration prevalidation.",
+                exception);
+        }
+
         if (outcome == HistoricalRevisionWriteDisposition.Conflict)
         {
             throw new InvalidOperationException("A canonical historical fact migration identity collided.");

@@ -66,6 +66,20 @@ public sealed class HistoricalLegacySuppressionTests
         HistoricalReviewEventTargetValidator.ValidateFactTarget(reviewEvent, fact);
     }
 
+    [Fact]
+    public void CreateRetraction_WhenLegacyFactIsSuppressed_ShouldPreserveTheRevisionChain()
+    {
+        HistoricalFact predecessor = CreateSuppressedLegacyFact();
+
+        HistoricalFact retraction = predecessor.CreateRetraction(RecordedAtUtc.AddMinutes(1));
+
+        Assert.Equal(HistoricalFactState.Retracted, retraction.State);
+        Assert.Equal(HistoricalPublicationState.Withdrawn, retraction.PublicationState);
+        Assert.Equal(predecessor.Revision + 1, retraction.Revision);
+        Assert.Equal(predecessor.Revision, retraction.SupersedesRevision);
+        HistoricalFactRevisionValidator.ValidatePredecessor(retraction, predecessor);
+    }
+
     private static HistoricalFact CreateSuppressedLegacyFact()
     {
         return new HistoricalFact(

@@ -2,6 +2,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.History.Commands;
 using AmusementPark.Application.Features.History.Contracts;
 using AmusementPark.Application.Features.History.Handlers;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
@@ -854,7 +855,12 @@ public sealed class HistoryHandlersTests
     public async Task DeleteHistoryEvent_WhenEventExists_ShouldRefreshSitemap()
     {
         Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> historicalFactRepository =
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler = new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        historyRepository
+            .Setup(repository => repository.GetByIdAsync("event-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new HistoryEvent { Id = "event-1" });
         historyRepository
             .Setup(repository => repository.DeleteAsync("event-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
@@ -863,12 +869,63 @@ public sealed class HistoryHandlersTests
             .Returns(Task.CompletedTask);
         DeleteHistoryEventCommandHandler handler = new DeleteHistoryEventCommandHandler(
             historyRepository.Object,
+            historicalFactRepository.Object,
             sitemapRefreshScheduler.Object);
 
         ApplicationResult result = await handler.HandleAsync(new DeleteHistoryEventCommand("event-1"));
 
         Assert.True(result.IsSuccess);
         historyRepository.VerifyAll();
+        historicalFactRepository.VerifyNoOtherCalls();
+        sitemapRefreshScheduler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteHistoryEvent_WhenNarrativeHasCanonicalFact_ShouldRetractItFirst()
+    {
+        Guid factId = Guid.NewGuid();
+        Mock<IHistoryEventRepository> historyRepository = new Mock<IHistoryEventRepository>(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> historicalFactRepository =
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
+            new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        HistoricalFact canonicalFact = CreateLegacyCanonicalFact(factId);
+        historyRepository
+            .Setup(repository => repository.GetByIdAsync("event-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new HistoryEvent
+            {
+                Id = "event-1",
+                CanonicalFactId = factId,
+                CanonicalizationState = HistoricalNarrativeCanonicalizationState.Migrated,
+            });
+        historicalFactRepository
+            .Setup(repository => repository.GetLatestRevisionAsync(factId, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(canonicalFact);
+        historicalFactRepository
+            .Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact => fact.Id == factId
+                    && fact.Revision == 2
+                    && fact.State == HistoricalFactState.Retracted
+                    && fact.PublicationState == HistoricalPublicationState.Withdrawn),
+                It.Is<HistoricalReviewEvent>(review => review.EventType == HistoricalReviewEventType.Retracted),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        historyRepository
+            .Setup(repository => repository.DeleteAsync("event-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        sitemapRefreshScheduler
+            .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        DeleteHistoryEventCommandHandler handler = new DeleteHistoryEventCommandHandler(
+            historyRepository.Object,
+            historicalFactRepository.Object,
+            sitemapRefreshScheduler.Object);
+
+        ApplicationResult result = await handler.HandleAsync(new DeleteHistoryEventCommand("event-1"));
+
+        Assert.True(result.IsSuccess);
+        historyRepository.VerifyAll();
+        historicalFactRepository.VerifyAll();
         sitemapRefreshScheduler.VerifyAll();
     }
 
@@ -886,5 +943,41 @@ public sealed class HistoryHandlersTests
             EventType = ParkHistoryEventType.Redevelopment.ToString(),
             IsVisible = true,
         };
+    }
+
+    private static HistoricalFact CreateLegacyCanonicalFact(Guid factId)
+    {
+        DateTime recordedAtUtc = DateTime.UtcNow.AddMinutes(-1);
+        return new HistoricalFact(
+            factId,
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                "park-1",
+                "Parc exemple",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForYear(1998)),
+            HistoricalFactState.Unverified,
+            HistoricalImportance.Standard,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalLocalizationPolicy.SupportedLanguageCodes
+                .Select(static code => new HistoricalLocalizedText(code, "À vérifier."))
+                .ToArray(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            Array.Empty<HistoricalSourceRevisionReference>(),
+            null,
+            null,
+            "event-1",
+            null,
+            null,
+            "hist-v1-legacy",
+            1,
+            null,
+            recordedAtUtc,
+            HistoricalRevisionOrigin.LegacyMigration);
     }
 }
