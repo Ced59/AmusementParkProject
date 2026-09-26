@@ -162,7 +162,8 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             }
 
             if (applicability == HistoricalTransitionApplicability.NotOccurred
-                && IsDayBeforeExactReopening(fact, requestedDate))
+                && IsDayBeforeExactReopening(fact, requestedDate)
+                && !HasSequencedSameDayClosurePredecessor(fact, group))
             {
                 contributingFactIds.Add(fact.Id);
                 result = ApplyNegativeClosureEvidence(result, fact, reasons);
@@ -217,7 +218,8 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                 contributingFactIds.Add(fact.Id);
                 positiveActivityFacts.Add(fact);
             }
-            else if (IsDayBeforeExactReopening(fact, requestedDate))
+            else if (IsDayBeforeExactReopening(fact, requestedDate)
+                && !HasSequencedSameDayClosurePredecessor(fact, group))
             {
                 contributingFactIds.Add(fact.Id);
                 negativeClosureFacts.Add(fact);
@@ -666,6 +668,26 @@ internal sealed class HistoricalLifecycleSnapshotReducer
             && firstOperatingDay.HasValue
             && firstOperatingDay.Value != DateOnly.MinValue
             && firstOperatingDay.Value.AddDays(-1) == requestedDate;
+    }
+
+    private static bool HasSequencedSameDayClosurePredecessor(
+        HistoricalFact reopening,
+        IReadOnlyCollection<HistoricalFact> group)
+    {
+        if (!reopening.SequenceWithinDate.HasValue)
+        {
+            return false;
+        }
+
+        HistoricalDateEnvelope reopeningEnvelope = reopening.Period.GetPossibleEnvelope();
+        return reopeningEnvelope.IsExactDay
+            && group.Any(candidate => candidate.Id != reopening.Id
+                && candidate.Type is (HistoricalFactType.Closure
+                    or HistoricalFactType.TemporaryClosure
+                    or HistoricalFactType.DefinitiveClosure)
+                && candidate.SequenceWithinDate.HasValue
+                && candidate.SequenceWithinDate.Value < reopening.SequenceWithinDate.Value
+                && candidate.Period.GetPossibleEnvelope() == reopeningEnvelope);
     }
 
     private static void RecordClosureAgainstClosedState(

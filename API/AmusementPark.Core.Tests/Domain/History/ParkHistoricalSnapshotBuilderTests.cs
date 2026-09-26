@@ -682,6 +682,34 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_DayBeforeSequencedSameDayClosureAndReopening_RemainsKnownOpen()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact closure = CreateLifecycleFact(
+            HistoricalFactType.TemporaryClosure,
+            HistoricalDate.ForDay(2000, 5, 1),
+            LifecycleBoundaryMeaning.FirstClosedDay,
+            sequenceWithinDate: 1);
+        HistoricalFact reopening = CreateLifecycleFact(
+            HistoricalFactType.Reopening,
+            HistoricalDate.ForDay(2000, 5, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            sequenceWithinDate: 2);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 4, 30),
+            new[] { opening, closure, reopening });
+
+        Assert.Equal(HistoricalOperationalState.KnownOpen, snapshot.OperationalState);
+        Assert.DoesNotContain(
+            snapshot.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.InconsistentLifecycleSequence);
+    }
+
+    [Fact]
     public void Build_WithProbableOpening_ReturnsPossiblyOpen()
     {
         HistoricalFact opening = CreateLifecycleFact(
