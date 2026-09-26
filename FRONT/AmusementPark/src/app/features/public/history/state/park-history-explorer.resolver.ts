@@ -37,7 +37,15 @@ export const parkHistoryTimelineResolver: ResolveFn<ResolvedParkHistoryTimelineR
   }
 
   return historyData.getPublicParkTimeline(parkId, anonymousHttpOptions(), page, 25).pipe(
-    map((timeline: PublicParkHistoricalTimeline): ResolvedParkHistoryTimelineRouteData => ({ timeline, page })),
+    map((timeline: PublicParkHistoricalTimeline): ResolvedParkHistoryTimelineRouteData => {
+      const lastPage: number = Math.max(1, timeline.pagination.totalPages);
+      if (page > lastPage) {
+        ssrStatus.setNotFound();
+        return { timeline: null, page };
+      }
+
+      return { timeline, page };
+    }),
     catchError((error: unknown): Observable<ResolvedParkHistoryTimelineRouteData> => {
       applySsrPublicDataErrorStatus(error, ssrStatus);
       return of({ timeline: null, page });

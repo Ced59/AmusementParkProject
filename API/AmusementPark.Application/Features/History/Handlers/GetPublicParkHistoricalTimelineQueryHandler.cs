@@ -85,6 +85,9 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
         Dictionary<string, HistoryEvent> publicNarratives = loadedNarratives.ToDictionary(
             static narrative => narrative.Id,
             StringComparer.Ordinal);
+        HashSet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjects = scope.PublicCurrentSubjects
+            .Select(static subject => (subject.Type, subject.Id))
+            .ToHashSet();
         PublicHistoricalTimelineEntryResult[] entries = pageFacts
             .Select(fact => new PublicHistoricalTimelineEntryResult(
                 fact,
@@ -94,9 +97,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                     .Where(static source => source is not null)
                     .Select(static source => source!)
                     .ToArray(),
-                fact.NarrativeContentId is null
-                    ? null
-                    : publicNarratives.GetValueOrDefault(fact.NarrativeContentId)))
+                ResolvePublicNarrative(fact, publicNarratives, publicCurrentSubjects)))
             .ToArray();
         PagedResult<PublicHistoricalTimelineEntryResult> page = new(
             entries,
@@ -108,5 +109,29 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
 
         return ApplicationResult<PublicParkHistoricalTimelineResult>.Success(
             new PublicParkHistoricalTimelineResult(scope.Park, page, publicZoneNames));
+    }
+
+    private static HistoryEvent? ResolvePublicNarrative(
+        HistoricalFact fact,
+        IReadOnlyDictionary<string, HistoryEvent> narratives,
+        IReadOnlySet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjects)
+    {
+        if (fact.NarrativeContentId is null
+            || !narratives.TryGetValue(fact.NarrativeContentId, out HistoryEvent? narrative)
+            || !publicCurrentSubjects.Contains((fact.Subject.Type, fact.Subject.Id)))
+        {
+            return null;
+        }
+
+        HistoryEntityType? expectedEntityType = fact.Subject.Type switch
+        {
+            HistoricalSubjectType.Park => HistoryEntityType.Park,
+            HistoricalSubjectType.ParkItem => HistoryEntityType.ParkItem,
+            _ => null,
+        };
+        return expectedEntityType == narrative.EntityType
+            && string.Equals(narrative.OwnerId, fact.Subject.Id, StringComparison.Ordinal)
+                ? narrative
+                : null;
     }
 }

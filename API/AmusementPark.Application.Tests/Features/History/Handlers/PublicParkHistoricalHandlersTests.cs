@@ -116,25 +116,46 @@ public sealed class PublicParkHistoricalHandlersTests
     }
 
     [Fact]
-    public async Task Timeline_PaginatesAndLoadsOnlySourcesForCurrentPage()
+    public async Task Timeline_LoadsCurrentPageAndExposesNarrativesOnlyForCurrentPublicSubjects()
     {
         Park park = PublicParkHistoryTestData.CreatePark();
-        HistoricalSubject removedZoneSubject = new(
-            HistoricalSubjectType.ParkZone,
-            "removed-zone",
-            "Ancienne zone",
+        ParkItem visibleItem = PublicParkHistoryTestData.CreateParkItem("visible-item", "Attraction visible");
+        HistoricalSubject visibleSubject = new(
+            HistoricalSubjectType.ParkItem,
+            visibleItem.Id,
+            visibleItem.Name,
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            park.Id);
+        HistoricalSubject removedSubject = new(
+            HistoricalSubjectType.ParkItem,
+            "removed-item",
+            "Attraction disparue",
             HistoricalSubjectPublicationPolicy.HistoricalOnly,
             park.Id);
-        HistoricalFact third = PublicParkHistoryTestData.CreateOpeningFact(
-            removedZoneSubject,
+        HistoricalFact visibleFact = PublicParkHistoryTestData.CreateOpeningFact(
+            visibleSubject,
             2010,
-            narrativeContentId: "event-1");
-        HistoricalSourceReference thirdSource = PublicParkHistoryTestData.CreateSource(third);
-        HistoryEvent narrative = new()
+            narrativeContentId: "event-visible");
+        HistoricalFact removedFact = PublicParkHistoryTestData.CreateOpeningFact(
+            removedSubject,
+            1990,
+            narrativeContentId: "event-removed");
+        HistoricalSourceReference visibleSource = PublicParkHistoryTestData.CreateSource(visibleFact);
+        HistoricalSourceReference removedSource = PublicParkHistoryTestData.CreateSource(removedFact);
+        HistoryEvent visibleNarrative = new()
         {
-            Id = "event-1",
-            EntityType = HistoryEntityType.Park,
-            OwnerId = park.Id,
+            Id = "event-visible",
+            EntityType = HistoryEntityType.ParkItem,
+            OwnerId = visibleItem.Id,
+            IsVisible = true,
+            IsMajor = true,
+            Article = new HistoryArticle { IsPublished = true },
+        };
+        HistoryEvent removedNarrative = new()
+        {
+            Id = "event-removed",
+            EntityType = HistoryEntityType.ParkItem,
+            OwnerId = removedSubject.Id,
             IsVisible = true,
             IsMajor = true,
             Article = new HistoryArticle { IsPublished = true },
@@ -153,7 +174,7 @@ public sealed class PublicParkHistoricalHandlersTests
                 "park-1",
                 false,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(Array.Empty<ParkItem>());
+            .ReturnsAsync(new[] { visibleItem });
         parkZoneRepository
             .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkZone>());
@@ -164,20 +185,23 @@ public sealed class PublicParkHistoricalHandlersTests
                 2,
                 2,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new PagedResult<HistoricalFact>(new[] { third }, 2, 2, 3));
+            .ReturnsAsync(new PagedResult<HistoricalFact>(new[] { visibleFact, removedFact }, 2, 2, 4));
         sourceRepository
             .Setup(repository => repository.GetRevisionsAsync(
                 It.Is<IReadOnlyCollection<HistoricalSourceRevisionReference>>(
-                    references => references.Count == 1
-                        && references.Single().SourceId == thirdSource.Id),
+                    references => references.Count == 2
+                        && references.Any(reference => reference.SourceId == visibleSource.Id)
+                        && references.Any(reference => reference.SourceId == removedSource.Id)),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { thirdSource });
+            .ReturnsAsync(new[] { visibleSource, removedSource });
         historyEventRepository
             .Setup(repository => repository.GetPublishedArticlesByIdsAsync(
                 It.Is<IReadOnlyCollection<string>>(
-                    eventIds => eventIds.Count == 1 && eventIds.Single() == narrative.Id),
+                    eventIds => eventIds.Count == 2
+                        && eventIds.Contains(visibleNarrative.Id)
+                        && eventIds.Contains(removedNarrative.Id)),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { narrative });
+            .ReturnsAsync(new[] { visibleNarrative, removedNarrative });
         PublicParkHistoricalDataLoader loader = CreateLoader(
             parkRepository,
             parkItemRepository,
@@ -194,12 +218,18 @@ public sealed class PublicParkHistoricalHandlersTests
         Assert.True(result.IsSuccess);
         PublicParkHistoricalTimelineResult timeline = Assert.IsType<PublicParkHistoricalTimelineResult>(
             result.Value);
-        Assert.Equal(3, timeline.Page.TotalItems);
-        PublicHistoricalTimelineEntryResult entry = Assert.Single(timeline.Page.Items);
-        Assert.Equal(third.Id, entry.Fact.Id);
-        Assert.Equal(thirdSource.Id, Assert.Single(entry.Sources).Id);
-        Assert.Same(narrative, entry.Narrative);
-        Assert.Equal("Ancienne zone", timeline.ZoneNames["removed-zone"]);
+        Assert.Equal(4, timeline.Page.TotalItems);
+        Assert.Equal(2, timeline.Page.Items.Count);
+        PublicHistoricalTimelineEntryResult visibleEntry = Assert.Single(
+            timeline.Page.Items,
+            entry => entry.Fact.Id == visibleFact.Id);
+        PublicHistoricalTimelineEntryResult removedEntry = Assert.Single(
+            timeline.Page.Items,
+            entry => entry.Fact.Id == removedFact.Id);
+        Assert.Equal(visibleSource.Id, Assert.Single(visibleEntry.Sources).Id);
+        Assert.Equal(removedSource.Id, Assert.Single(removedEntry.Sources).Id);
+        Assert.Same(visibleNarrative, visibleEntry.Narrative);
+        Assert.Null(removedEntry.Narrative);
         sourceRepository.VerifyAll();
         historyEventRepository.VerifyAll();
     }

@@ -38,6 +38,7 @@ describe('park history explorer resolvers', () => {
 
   it('loads the requested canonical timeline page anonymously', async () => {
     const timeline: PublicParkHistoricalTimeline = createTimeline();
+    timeline.pagination = { currentPage: 2, itemsPerPage: 25, totalItems: 30, totalPages: 2 };
     historyDataPort.getPublicParkTimeline.mockReturnValue(of(timeline));
 
     const result: ResolvedParkHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1', page: '2' });
@@ -49,6 +50,28 @@ describe('park history explorer resolvers', () => {
       2,
       25
     );
+  });
+
+  it('returns a not-found response for a timeline page beyond the last page', async () => {
+    const timeline: PublicParkHistoricalTimeline = createTimeline();
+    timeline.pagination = { currentPage: 999, itemsPerPage: 25, totalItems: 30, totalPages: 2 };
+    historyDataPort.getPublicParkTimeline.mockReturnValue(of(timeline));
+
+    const result: ResolvedParkHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1', page: '999' });
+
+    expect(result).toEqual({ timeline: null, page: 999 });
+    expect(ssrStatusService.setNotFound).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps the first timeline page valid when no event is documented yet', async () => {
+    const timeline: PublicParkHistoricalTimeline = createTimeline();
+    timeline.pagination = { currentPage: 1, itemsPerPage: 25, totalItems: 0, totalPages: 0 };
+    historyDataPort.getPublicParkTimeline.mockReturnValue(of(timeline));
+
+    const result: ResolvedParkHistoryTimelineRouteData = await resolveTimeline({ id: 'park-1' });
+
+    expect(result).toEqual({ timeline, page: 1 });
+    expect(ssrStatusService.setNotFound).not.toHaveBeenCalled();
   });
 
   it('loads an annual snapshot from optional date parameters without an unrelated timeline page', async () => {
