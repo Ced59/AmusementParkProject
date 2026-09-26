@@ -123,7 +123,7 @@ public sealed class HistoricalFactTests
     [InlineData(HistoricalFactType.ZoneRenaming, HistoricalAttributeKind.Name)]
     [InlineData(HistoricalFactType.OperatorChange, HistoricalAttributeKind.Operator)]
     [InlineData(HistoricalFactType.OwnerChange, HistoricalAttributeKind.Owner)]
-    [InlineData(HistoricalFactType.PositioningChange, HistoricalAttributeKind.Location)]
+    [InlineData(HistoricalFactType.PositioningChange, HistoricalAttributeKind.MarketPositioning)]
     [InlineData(HistoricalFactType.Relocation, HistoricalAttributeKind.Location)]
     [InlineData(HistoricalFactType.Retheming, HistoricalAttributeKind.Theme)]
     [InlineData(HistoricalFactType.ManufacturerChange, HistoricalAttributeKind.Manufacturer)]
@@ -144,6 +144,7 @@ public sealed class HistoricalFactTests
 
     [Theory]
     [InlineData(HistoricalSubjectType.Park, HistoricalFactType.Dismantling)]
+    [InlineData(HistoricalSubjectType.Park, HistoricalFactType.ZoneRenaming)]
     [InlineData(HistoricalSubjectType.ParkItem, HistoricalFactType.ZoneCreation)]
     [InlineData(HistoricalSubjectType.StandaloneAttraction, HistoricalFactType.OwnerChange)]
     [InlineData(HistoricalSubjectType.ParkZone, HistoricalFactType.ManufacturerChange)]
@@ -162,6 +163,7 @@ public sealed class HistoricalFactTests
 
     [Theory]
     [InlineData(HistoricalSubjectType.Park, HistoricalFactType.ZoneCreation)]
+    [InlineData(HistoricalSubjectType.ParkZone, HistoricalFactType.ZoneRenaming)]
     [InlineData(HistoricalSubjectType.ParkItem, HistoricalFactType.Dismantling)]
     [InlineData(HistoricalSubjectType.StandaloneAttraction, HistoricalFactType.ManufacturerChange)]
     [InlineData(HistoricalSubjectType.ParkZone, HistoricalFactType.Retheming)]
@@ -479,12 +481,14 @@ public sealed class HistoricalFactTests
         return new HistoricalFact(
             Guid.NewGuid(),
             new HistoricalSubject(
-                type is HistoricalFactType.Relocation
-                    or HistoricalFactType.Retheming
-                    or HistoricalFactType.ManufacturerChange
-                    or HistoricalFactType.ZoneMove
-                    ? HistoricalSubjectType.ParkItem
-                    : HistoricalSubjectType.Park,
+                type == HistoricalFactType.ZoneRenaming
+                    ? HistoricalSubjectType.ParkZone
+                    : type is HistoricalFactType.Relocation
+                        or HistoricalFactType.Retheming
+                        or HistoricalFactType.ManufacturerChange
+                        or HistoricalFactType.ZoneMove
+                        ? HistoricalSubjectType.ParkItem
+                        : HistoricalSubjectType.Park,
                 "park-1",
                 "Parc exemple",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
@@ -518,7 +522,8 @@ public sealed class HistoricalFactTests
         HistoricalAttributeKind? attributeKind = factType switch
         {
             HistoricalFactType.OwnerChange => HistoricalAttributeKind.Owner,
-            HistoricalFactType.PositioningChange => HistoricalAttributeKind.Location,
+            HistoricalFactType.PositioningChange => HistoricalAttributeKind.MarketPositioning,
+            HistoricalFactType.ZoneRenaming => HistoricalAttributeKind.Name,
             HistoricalFactType.Retheming => HistoricalAttributeKind.Theme,
             HistoricalFactType.ManufacturerChange => HistoricalAttributeKind.Manufacturer,
             _ => null,

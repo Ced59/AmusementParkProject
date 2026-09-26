@@ -218,9 +218,15 @@ public sealed class HistoricalFact
                     && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
             _ => false,
         };
-        if (!validInitialRevision
-            || (revision > 1
-                && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview))
+        bool validPublicationForOrigin = revisionOrigin switch
+        {
+            HistoricalRevisionOrigin.Ordinary => publicationState
+                != HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalRevisionOrigin.LegacyMigration => publicationState
+                != HistoricalPublicationState.Draft,
+            _ => false,
+        };
+        if (!validInitialRevision || !validPublicationForOrigin)
         {
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidRevision,
@@ -416,7 +422,7 @@ public sealed class HistoricalFact
             HistoricalFactType.ZoneRenaming => HistoricalAttributeKind.Name,
             HistoricalFactType.OperatorChange => HistoricalAttributeKind.Operator,
             HistoricalFactType.OwnerChange => HistoricalAttributeKind.Owner,
-            HistoricalFactType.PositioningChange => HistoricalAttributeKind.Location,
+            HistoricalFactType.PositioningChange => HistoricalAttributeKind.MarketPositioning,
             HistoricalFactType.Relocation => HistoricalAttributeKind.Location,
             HistoricalFactType.Retheming => HistoricalAttributeKind.Theme,
             HistoricalFactType.ManufacturerChange => HistoricalAttributeKind.Manufacturer,
@@ -495,7 +501,9 @@ public sealed class HistoricalFact
                 && sourceReferences.Count > 0
                 && publishedAtUtc.HasValue
                 && methodologyVersion is not null,
-            HistoricalPublicationState.LegacyPublishedPendingReview => workflowState == HistoricalEditorialWorkflowState.EditorialReview
+            HistoricalPublicationState.LegacyPublishedPendingReview => (workflowState
+                    is HistoricalEditorialWorkflowState.EditorialReview
+                        or HistoricalEditorialWorkflowState.StructuredValidation)
                 && state == HistoricalFactState.Unverified
                 && methodologyVersion is not null,
             HistoricalPublicationState.Withdrawn => workflowState == HistoricalEditorialWorkflowState.Retracted

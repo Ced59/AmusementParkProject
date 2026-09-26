@@ -44,24 +44,26 @@ public sealed class HistoricalReviewEventRepository : IHistoricalAuditReader
         switch (resourceType)
         {
             case HistoricalReviewResourceType.Fact:
-                List<HistoricalFactDocument> facts = await this.factCollection
+                List<HistoricalReviewEventDocument> factReviewEvents = await this.factCollection
                     .Find(document => document.FactId == normalizedResourceId)
                     .SortByDescending(document => document.TransitionReviewEvent.OccurredAtUtc)
                     .ThenByDescending(document => document.Revision)
                     .Limit(safeLimit)
+                    .Project(document => document.TransitionReviewEvent)
                     .ToListAsync(cancellationToken);
-                return facts
-                    .Select(static document => document.TransitionReviewEvent.ToDomain())
+                return factReviewEvents
+                    .Select(static document => document.ToDomain())
                     .ToArray();
             case HistoricalReviewResourceType.Source:
-                List<HistoricalSourceDocument> sources = await this.sourceCollection
+                List<HistoricalReviewEventDocument> sourceReviewEvents = await this.sourceCollection
                     .Find(document => document.SourceId == normalizedResourceId)
                     .SortByDescending(document => document.TransitionReviewEvent.OccurredAtUtc)
                     .ThenByDescending(document => document.Revision)
                     .Limit(safeLimit)
+                    .Project(document => document.TransitionReviewEvent)
                     .ToListAsync(cancellationToken);
-                return sources
-                    .Select(static document => document.TransitionReviewEvent.ToDomain())
+                return sourceReviewEvents
+                    .Select(static document => document.ToDomain())
                     .ToArray();
             default:
                 throw new HistoricalPersistenceValidationException(

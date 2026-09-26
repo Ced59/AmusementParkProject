@@ -133,6 +133,33 @@ public sealed class HistoricalFactRevisionValidatorTests
         HistoricalFactRevisionValidator.ValidatePredecessor(retraction, predecessor);
     }
 
+    [Fact]
+    public void ValidatePredecessor_WhenLegacyMigrationAdvancesReview_ShouldKeepPendingPublication()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalFact predecessor = CreateFact(
+            factId,
+            1,
+            null,
+            RecordedAtUtc.AddMinutes(-1),
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalRevisionOrigin.LegacyMigration);
+        HistoricalFact structuredValidation = CreateFact(
+            factId,
+            2,
+            1,
+            RecordedAtUtc,
+            HistoricalEditorialWorkflowState.StructuredValidation,
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalRevisionOrigin.LegacyMigration);
+
+        HistoricalFactRevisionValidator.ValidatePredecessor(structuredValidation, predecessor);
+        Assert.Equal(
+            HistoricalPublicationState.LegacyPublishedPendingReview,
+            structuredValidation.PublicationState);
+    }
+
     private static HistoricalFact CreateFact(
         Guid factId,
         int revision,

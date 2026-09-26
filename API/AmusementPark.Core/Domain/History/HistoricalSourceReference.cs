@@ -63,7 +63,7 @@ public sealed class HistoricalSourceReference
         string? normalizedLanguageCode = NormalizeLanguageCode(languageCode);
         string? normalizedArchiveUrl = NormalizeOptionalUri(archiveUrl, nameof(archiveUrl));
         HistoricalSourceScope[] normalizedScopes = NormalizeScopes(scopes);
-        ValidatePublication(workflowState, publicationState, accessibility);
+        ValidatePublication(workflowState, publicationState, accessibility, revisionOrigin);
 
         this.Id = id;
         this.Revision = revision;
@@ -141,7 +141,8 @@ public sealed class HistoricalSourceReference
     private static void ValidatePublication(
         HistoricalEditorialWorkflowState workflowState,
         HistoricalPublicationState publicationState,
-        HistoricalSourceAccessibility accessibility)
+        HistoricalSourceAccessibility accessibility,
+        HistoricalRevisionOrigin revisionOrigin)
     {
         bool valid = publicationState switch
         {
@@ -151,7 +152,10 @@ public sealed class HistoricalSourceReference
             HistoricalPublicationState.Published => (workflowState is HistoricalEditorialWorkflowState.Published
                     or HistoricalEditorialWorkflowState.Corrected)
                 && accessibility is not HistoricalSourceAccessibility.Withdrawn,
-            HistoricalPublicationState.LegacyPublishedPendingReview => workflowState == HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.LegacyPublishedPendingReview => revisionOrigin
+                    == HistoricalRevisionOrigin.LegacyMigration
+                && (workflowState is HistoricalEditorialWorkflowState.EditorialReview
+                    or HistoricalEditorialWorkflowState.StructuredValidation),
             HistoricalPublicationState.Withdrawn => workflowState == HistoricalEditorialWorkflowState.Retracted,
             _ => false,
         };
@@ -180,9 +184,15 @@ public sealed class HistoricalSourceReference
                     && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview),
             _ => false,
         };
-        if (!validInitialRevision
-            || (revision > 1
-                && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview))
+        bool validPublicationForOrigin = revisionOrigin switch
+        {
+            HistoricalRevisionOrigin.Ordinary => publicationState
+                != HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalRevisionOrigin.LegacyMigration => publicationState
+                != HistoricalPublicationState.Draft,
+            _ => false,
+        };
+        if (!validInitialRevision || !validPublicationForOrigin)
         {
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidRevision,

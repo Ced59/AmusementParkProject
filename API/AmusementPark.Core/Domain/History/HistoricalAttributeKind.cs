@@ -12,4 +12,5 @@ public enum HistoricalAttributeKind
     Theme = 7,
     Location = 8,
     Status = 9,
+    MarketPositioning = 10,
 }

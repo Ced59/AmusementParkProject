@@ -40,7 +40,6 @@ public static class HistoricalFactSubjectTypeValidator
             or HistoricalFactType.Extension
             or HistoricalFactType.Reduction
             or HistoricalFactType.ZoneCreation
-            or HistoricalFactType.ZoneRenaming
             or HistoricalFactType.ZoneRemoval
             or HistoricalFactType.MajorEvent
             or HistoricalFactType.PositioningChange
@@ -83,6 +82,7 @@ public static class HistoricalFactSubjectTypeValidator
             or HistoricalFactType.Construction
             or HistoricalFactType.TemporaryClosure
             or HistoricalFactType.DefinitiveClosure
+            or HistoricalFactType.ZoneRenaming
             or HistoricalFactType.Retheming
             or HistoricalFactType.Other;
     }
