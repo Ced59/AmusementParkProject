@@ -589,6 +589,36 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_OnProbableLastDayBoundary_PreservesCurrentValueUntilNextDay()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact earlierRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(1995, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Nom A",
+            "Nom B");
+        HistoricalFact probableLastDay = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.LastDayOfPreviousValue,
+            "Nom C",
+            "Nom D",
+            state: HistoricalFactState.Probable);
+
+        HistoricalAttributeSnapshot onBoundary = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 5, 1),
+            new[] { opening, earlierRenaming, probableLastDay }).Attributes);
+        HistoricalAttributeSnapshot afterBoundary = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 5, 2),
+            new[] { opening, earlierRenaming, probableLastDay }).Attributes);
+
+        Assert.Equal(new[] { "Nom B", "Nom C" }, onBoundary.Candidates);
+        Assert.Equal(new[] { "Nom B", "Nom D" }, afterBoundary.Candidates);
+    }
+
+    [Fact]
     public void Build_WithUnorderedSameDayTransitions_ReturnsPossiblyOpen()
     {
         HistoricalDate date = HistoricalDate.ForDay(2000, 1, 1);

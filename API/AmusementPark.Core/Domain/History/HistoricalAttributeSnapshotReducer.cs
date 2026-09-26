@@ -149,7 +149,12 @@ internal sealed class HistoricalAttributeSnapshotReducer
                 AddPreviousValue(result, fact, reasons);
             }
 
-            result = this.ApplyAccordingToApplicability(result, fact, applicability, reasons);
+            result = this.ApplyAccordingToApplicability(
+                result,
+                fact,
+                applicability,
+                requestedDate,
+                reasons);
         }
 
         return result;
@@ -223,6 +228,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
             HashSet<string> largeGroupResult = this.ApplyLargeUnorderedGroup(
                 values,
                 applicableTransitions,
+                requestedDate,
                 reasons);
             largeGroupResult.UnionWith(preservedValues);
             return largeGroupResult;
@@ -269,7 +275,11 @@ internal sealed class HistoricalAttributeSnapshotReducer
                     }
 
                     HistoricalFact fact = applicableTransitions[index].Fact;
-                    HashSet<string> nextValues = this.ApplyTransition(currentValues, fact, reasons);
+                    HashSet<string> nextValues = this.ApplyTransition(
+                        currentValues,
+                        fact,
+                        requestedDate,
+                        reasons);
                     int nextMask = mask | bit;
                     if (!valuesByMask.TryGetValue(nextMask, out HashSet<string>? collected))
                     {
@@ -368,6 +378,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
     private HashSet<string> ApplyLargeUnorderedGroup(
         HashSet<string> values,
         IReadOnlyCollection<(HistoricalFact Fact, HistoricalTransitionApplicability Applicability)> transitions,
+        DateOnly requestedDate,
         HistoricalSnapshotReasonCollector reasons)
     {
         bool hasRequiredTransition = transitions.Any(
@@ -386,7 +397,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
                 continue;
             }
 
-            result.UnionWith(this.ApplyTransition(values, fact, reasons));
+            result.UnionWith(this.ApplyTransition(values, fact, requestedDate, reasons));
         }
 
         return result;
@@ -396,6 +407,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
         HashSet<string> values,
         HistoricalFact fact,
         HistoricalTransitionApplicability applicability,
+        DateOnly requestedDate,
         HistoricalSnapshotReasonCollector reasons)
     {
         if (applicability == HistoricalTransitionApplicability.NotOccurred)
@@ -403,7 +415,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
             return values;
         }
 
-        HashSet<string> applied = this.ApplyTransition(values, fact, reasons);
+        HashSet<string> applied = this.ApplyTransition(values, fact, requestedDate, reasons);
         if (applicability == HistoricalTransitionApplicability.Applied)
         {
             return applied;
@@ -416,13 +428,36 @@ internal sealed class HistoricalAttributeSnapshotReducer
     private HashSet<string> ApplyTransition(
         IEnumerable<string> values,
         HistoricalFact fact,
+        DateOnly requestedDate,
         HistoricalSnapshotReasonCollector reasons)
     {
-        if (!HistoricalAttributeTransitionParser.TryParse(fact, out _, out string? nextValue)
+        if (!HistoricalAttributeTransitionParser.TryParse(
+                fact,
+                out string? previousValue,
+                out string? nextValue)
             || nextValue is null)
         {
             reasons.Add(HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue, fact);
             return new HashSet<string>(StringComparer.Ordinal) { UnknownValue };
+        }
+
+        HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
+        bool isInsideLastDayEnvelope = fact.AttributeBoundaryMeaning
+                == AttributeBoundaryMeaning.LastDayOfPreviousValue
+            && requestedDate >= (envelope.EarliestPossibleDate ?? DateOnly.MinValue)
+            && requestedDate <= (envelope.LatestPossibleDate ?? DateOnly.MaxValue);
+        if (isInsideLastDayEnvelope && previousValue is not null)
+        {
+            HashSet<string> boundaryValues = new HashSet<string>(StringComparer.Ordinal)
+            {
+                previousValue,
+            };
+            if (!envelope.IsExactDay)
+            {
+                boundaryValues.Add(nextValue);
+            }
+
+            return boundaryValues;
         }
 
         return new HashSet<string>(StringComparer.Ordinal) { nextValue };
