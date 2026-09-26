@@ -376,6 +376,16 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         HistoricalSnapshotReasonCollector reasons)
     {
         HashSet<HistoricalOperationalState> result = new HashSet<HistoricalOperationalState>();
+        if (IsInsideCoarseLastOperatingEnvelope(fact, requestedDate))
+        {
+            result.Add(HistoricalOperationalState.KnownOpen);
+            HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
+            if (envelope.EarliestPossibleDate == requestedDate)
+            {
+                return result;
+            }
+        }
+
         foreach (HistoricalOperationalState state in states)
         {
             result.Add(this.ApplyTransition(
@@ -387,6 +397,19 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         }
 
         return result;
+    }
+
+    private static bool IsInsideCoarseLastOperatingEnvelope(
+        HistoricalFact fact,
+        DateOnly requestedDate)
+    {
+        HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
+        return fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.LastOperatingDay
+            && !envelope.IsExactDay
+            && envelope.EarliestPossibleDate.HasValue
+            && envelope.LatestPossibleDate.HasValue
+            && requestedDate >= envelope.EarliestPossibleDate.Value
+            && requestedDate <= envelope.LatestPossibleDate.Value;
     }
 
     private HistoricalOperationalState ApplyTransition(

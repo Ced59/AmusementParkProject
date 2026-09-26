@@ -25,7 +25,11 @@ internal sealed class HistoricalAttributeSnapshotReducer
         HistoricalSnapshotReasonCollector reasons = new HistoricalSnapshotReasonCollector();
         IReadOnlyList<IReadOnlyList<HistoricalFact>> transitionGroups =
             HistoricalTransitionOrdering.BuildGroups(facts);
-        HashSet<string> initialValues = BuildInitialValues(facts);
+        HistoricalFact[] possibleFirstFacts = FindPossibleFirstFacts(facts);
+        HashSet<string> initialValues = BuildInitialValues(possibleFirstFacts);
+        HashSet<Guid> contributingFactIds = possibleFirstFacts
+            .Select(static fact => fact.Id)
+            .ToHashSet();
 
         HashSet<string> valuesAcrossRequest = new HashSet<string>(StringComparer.Ordinal);
         foreach (DateOnly requestedDate in requestedDates)
@@ -34,8 +38,18 @@ internal sealed class HistoricalAttributeSnapshotReducer
             foreach (IReadOnlyList<HistoricalFact> group in transitionGroups)
             {
                 values = HistoricalTransitionOrdering.CanUseExplicitSequence(group)
-                    ? this.ApplyOrderedGroup(values, group, requestedDate, reasons)
-                    : this.ApplyUnorderedGroup(values, group, requestedDate, reasons);
+                    ? this.ApplyOrderedGroup(
+                        values,
+                        group,
+                        requestedDate,
+                        reasons,
+                        contributingFactIds)
+                    : this.ApplyUnorderedGroup(
+                        values,
+                        group,
+                        requestedDate,
+                        reasons,
+                        contributingFactIds);
             }
 
             valuesAcrossRequest.UnionWith(values);
@@ -61,15 +75,25 @@ internal sealed class HistoricalAttributeSnapshotReducer
             state = HistoricalAttributeValueState.Unknown;
         }
 
-        return new HistoricalAttributeSnapshot(kind, state, value, candidates, reasons.Build());
+        return new HistoricalAttributeSnapshot(
+            kind,
+            state,
+            value,
+            candidates,
+            reasons.Build(),
+            contributingFactIds);
     }
 
-    private static HashSet<string> BuildInitialValues(IReadOnlyCollection<HistoricalFact> facts)
+    private static HistoricalFact[] FindPossibleFirstFacts(IReadOnlyCollection<HistoricalFact> facts)
     {
-        HistoricalFact[] possibleFirstFacts = facts
+        return facts
             .Where(candidate => !facts.Any(other => other.Id != candidate.Id
                 && HistoricalTransitionOrdering.MustPrecede(other, candidate)))
             .ToArray();
+    }
+
+    private static HashSet<string> BuildInitialValues(IReadOnlyCollection<HistoricalFact> possibleFirstFacts)
+    {
         HashSet<string> initialValues = new HashSet<string>(StringComparer.Ordinal);
         foreach (HistoricalFact fact in possibleFirstFacts)
         {
@@ -100,7 +124,8 @@ internal sealed class HistoricalAttributeSnapshotReducer
         HashSet<string> values,
         IReadOnlyList<HistoricalFact> group,
         DateOnly requestedDate,
-        HistoricalSnapshotReasonCollector reasons)
+        HistoricalSnapshotReasonCollector reasons,
+        ISet<Guid> contributingFactIds)
     {
         HashSet<string> result = new HashSet<string>(values, StringComparer.Ordinal);
         foreach (HistoricalFact fact in HistoricalTransitionOrdering.OrderByExplicitSequence(group))
@@ -108,6 +133,11 @@ internal sealed class HistoricalAttributeSnapshotReducer
             HistoricalTransitionApplicability applicability =
                 HistoricalTransitionApplicabilityResolver.ResolveAttribute(fact, requestedDate);
             RecordApplicabilityReason(fact, applicability, reasons);
+            if (applicability != HistoricalTransitionApplicability.NotOccurred)
+            {
+                contributingFactIds.Add(fact.Id);
+            }
+
             result = this.ApplyAccordingToApplicability(result, fact, applicability, reasons);
         }
 
@@ -118,7 +148,8 @@ internal sealed class HistoricalAttributeSnapshotReducer
         HashSet<string> values,
         IReadOnlyList<HistoricalFact> group,
         DateOnly requestedDate,
-        HistoricalSnapshotReasonCollector reasons)
+        HistoricalSnapshotReasonCollector reasons,
+        ISet<Guid> contributingFactIds)
     {
         List<(HistoricalFact Fact, HistoricalTransitionApplicability Applicability)> applicableTransitions = new();
         foreach (HistoricalFact fact in group)
@@ -128,6 +159,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
             RecordApplicabilityReason(fact, applicability, reasons);
             if (applicability != HistoricalTransitionApplicability.NotOccurred)
             {
+                contributingFactIds.Add(fact.Id);
                 applicableTransitions.Add((fact, applicability));
             }
         }

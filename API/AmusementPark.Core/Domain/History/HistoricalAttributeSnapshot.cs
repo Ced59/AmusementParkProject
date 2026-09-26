@@ -7,7 +7,8 @@ public sealed record HistoricalAttributeSnapshot
         HistoricalAttributeValueState state,
         string? value,
         IReadOnlyCollection<string> candidates,
-        IReadOnlyCollection<HistoricalSnapshotReason> reasons)
+        IReadOnlyCollection<HistoricalSnapshotReason> reasons,
+        IReadOnlyCollection<Guid> supportingFactIds)
     {
         if (!Enum.IsDefined(kind) || !Enum.IsDefined(state))
         {
@@ -16,6 +17,7 @@ public sealed record HistoricalAttributeSnapshot
 
         ArgumentNullException.ThrowIfNull(candidates);
         ArgumentNullException.ThrowIfNull(reasons);
+        ArgumentNullException.ThrowIfNull(supportingFactIds);
         string? normalizedValue = string.IsNullOrWhiteSpace(value) ? null : value.Trim();
         string[] normalizedCandidates = candidates
             .Where(static candidate => !string.IsNullOrWhiteSpace(candidate))
@@ -40,6 +42,12 @@ public sealed record HistoricalAttributeSnapshot
         this.Candidates = Array.AsReadOnly(normalizedCandidates);
         this.Reasons = Array.AsReadOnly(
             reasons.OrderBy(static reason => reason.Code).ToArray());
+        this.SupportingFactIds = Array.AsReadOnly(
+            supportingFactIds
+                .Where(static factId => factId != Guid.Empty)
+                .Distinct()
+                .OrderBy(static factId => factId)
+                .ToArray());
     }
 
     public HistoricalAttributeKind Kind { get; }
@@ -51,4 +59,6 @@ public sealed record HistoricalAttributeSnapshot
     public IReadOnlyList<string> Candidates { get; }
 
     public IReadOnlyList<HistoricalSnapshotReason> Reasons { get; }
+
+    public IReadOnlyList<Guid> SupportingFactIds { get; }
 }

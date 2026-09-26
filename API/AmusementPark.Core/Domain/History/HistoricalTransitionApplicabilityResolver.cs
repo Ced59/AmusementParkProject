@@ -35,6 +35,12 @@ internal static class HistoricalTransitionApplicabilityResolver
             return ResolveExactLifecycleBoundary(fact);
         }
 
+        if (requestedDate == earliest
+            && fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.LastOperatingDay)
+        {
+            return HistoricalTransitionApplicability.Applied;
+        }
+
         if (fact.Type == HistoricalFactType.TemporaryClosure && !temporaryClosureHasKnownEnd)
         {
             return HistoricalTransitionApplicability.Optional;
@@ -85,6 +91,12 @@ internal static class HistoricalTransitionApplicabilityResolver
                 AttributeBoundaryMeaning.LastDayOfPreviousValue => HistoricalTransitionApplicability.NotOccurred,
                 _ => HistoricalTransitionApplicability.Optional,
             };
+        }
+
+        if (requestedDate == earliest
+            && fact.AttributeBoundaryMeaning == AttributeBoundaryMeaning.LastDayOfPreviousValue)
+        {
+            return HistoricalTransitionApplicability.NotOccurred;
         }
 
         return requestedDate == latest

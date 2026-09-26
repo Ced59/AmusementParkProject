@@ -50,9 +50,7 @@ public sealed class ParkHistoricalSnapshotBuilder : IParkHistoricalSnapshotBuild
                 attributes,
                 reasons.Build(),
                 lifecycle.SupportingFactIds.Concat(
-                    subjectFacts
-                        .Where(static fact => fact.AttributeKind.HasValue)
-                        .Select(static fact => fact.Id))
+                    attributes.SelectMany(static attribute => attribute.SupportingFactIds))
                     .ToArray()));
         }
 
