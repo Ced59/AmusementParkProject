@@ -404,12 +404,12 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         DateOnly requestedDate)
     {
         HistoricalDateEnvelope envelope = fact.Period.GetPossibleEnvelope();
+        DateOnly earliest = envelope.EarliestPossibleDate ?? DateOnly.MinValue;
+        DateOnly latest = envelope.LatestPossibleDate ?? DateOnly.MaxValue;
         return fact.LifecycleBoundaryMeaning == LifecycleBoundaryMeaning.LastOperatingDay
             && !envelope.IsExactDay
-            && envelope.EarliestPossibleDate.HasValue
-            && envelope.LatestPossibleDate.HasValue
-            && requestedDate >= envelope.EarliestPossibleDate.Value
-            && requestedDate <= envelope.LatestPossibleDate.Value;
+            && requestedDate >= earliest
+            && requestedDate <= latest;
     }
 
     private HistoricalOperationalState ApplyTransition(

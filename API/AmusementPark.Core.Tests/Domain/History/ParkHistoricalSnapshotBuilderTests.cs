@@ -203,6 +203,25 @@ public sealed class ParkHistoricalSnapshotBuilderTests
         Assert.Equal(HistoricalOperationalState.PossiblyOpen, middle.OperationalState);
     }
 
+    [Theory]
+    [InlineData(DateQualifier.Before, 1999)]
+    [InlineData(DateQualifier.After, 2001)]
+    public void Build_InsideOpenEndedLastOperatingBoundary_PreservesPossibleActivity(
+        DateQualifier qualifier,
+        int requestedYear)
+    {
+        HistoricalFact closure = CreateLifecycleFact(
+            HistoricalFactType.DefinitiveClosure,
+            HistoricalDate.ForYear(2000, qualifier: qualifier),
+            LifecycleBoundaryMeaning.LastOperatingDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(requestedYear, 6, 1),
+            new[] { closure });
+
+        Assert.Equal(HistoricalOperationalState.PossiblyOpen, snapshot.OperationalState);
+    }
+
     [Fact]
     public void Build_WithOnlyLastOperatingDay_ConfirmsActivityOnThatDay()
     {
