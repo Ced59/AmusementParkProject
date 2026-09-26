@@ -65,6 +65,7 @@ public static class HistoricalFactSubjectTypeValidator
             or HistoricalFactType.Relocation
             or HistoricalFactType.Retheming
             or HistoricalFactType.ManufacturerChange
+            or HistoricalFactType.OperatorChange
             or HistoricalFactType.TechnicalModification
             or HistoricalFactType.Replacement
             or HistoricalFactType.ZoneMove

@@ -165,7 +165,9 @@ public sealed class HistoricalFactTests
     [InlineData(HistoricalSubjectType.Park, HistoricalFactType.ZoneCreation)]
     [InlineData(HistoricalSubjectType.ParkZone, HistoricalFactType.ZoneRenaming)]
     [InlineData(HistoricalSubjectType.ParkItem, HistoricalFactType.Dismantling)]
+    [InlineData(HistoricalSubjectType.ParkItem, HistoricalFactType.OperatorChange)]
     [InlineData(HistoricalSubjectType.StandaloneAttraction, HistoricalFactType.ManufacturerChange)]
+    [InlineData(HistoricalSubjectType.StandaloneAttraction, HistoricalFactType.OperatorChange)]
     [InlineData(HistoricalSubjectType.ParkZone, HistoricalFactType.Retheming)]
     [InlineData(HistoricalSubjectType.ParkOperator, HistoricalFactType.OwnerChange)]
     [InlineData(HistoricalSubjectType.AttractionManufacturer, HistoricalFactType.PositioningChange)]
@@ -524,6 +526,7 @@ public sealed class HistoricalFactTests
         HistoricalAttributeKind? attributeKind = factType switch
         {
             HistoricalFactType.OwnerChange => HistoricalAttributeKind.Owner,
+            HistoricalFactType.OperatorChange => HistoricalAttributeKind.Operator,
             HistoricalFactType.PositioningChange => HistoricalAttributeKind.MarketPositioning,
             HistoricalFactType.ZoneRenaming => HistoricalAttributeKind.Name,
             HistoricalFactType.Retheming => HistoricalAttributeKind.Theme,
