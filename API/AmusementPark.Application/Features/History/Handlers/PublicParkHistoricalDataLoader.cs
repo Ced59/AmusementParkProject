@@ -199,9 +199,11 @@ public sealed class PublicParkHistoricalDataLoader
             return false;
         }
 
-        return fact.Subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.HistoricalOnly
-                && string.Equals(fact.Subject.ContextParkId, parkId, StringComparison.Ordinal)
-            || publicCurrentSubjects.Contains((fact.Subject.Type, fact.Subject.Id));
+        return (fact.Subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.HistoricalOnly
+                && string.Equals(fact.Subject.ContextParkId, parkId, StringComparison.Ordinal))
+            || (fact.Subject.PublicationPolicy
+                    == HistoricalSubjectPublicationPolicy.FollowCurrentSubject
+                && publicCurrentSubjects.Contains((fact.Subject.Type, fact.Subject.Id)));
     }
 
     private static HistoricalSubject[] SelectSubjects(

@@ -253,6 +253,8 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             {
                 ["subject.type"] = subject.Type.ToString(),
                 ["subject.id"] = subject.Id,
+                ["subject.publicationPolicy"] =
+                    HistoricalSubjectPublicationPolicy.FollowCurrentSubject.ToString(),
             })
             .ToArray();
         BsonArray publicEligibilityFilters = new BsonArray(
@@ -318,6 +320,8 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             {
                 ["subject.type"] = subject.Type.ToString(),
                 ["subject.id"] = subject.Id,
+                ["subject.publicationPolicy"] =
+                    HistoricalSubjectPublicationPolicy.FollowCurrentSubject.ToString(),
             }));
         scopeFilters.Add(new BsonDocument("subject.contextParkId", normalizedParkId));
         return new BsonDocument("$or", scopeFilters);

@@ -70,6 +70,11 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
             publicEligibility,
             filter => filter.AsBsonDocument.GetValue("subject.publicationPolicy", BsonNull.Value)
                 == HistoricalSubjectPublicationPolicy.HistoricalOnly.ToString());
+        Assert.Contains(
+            publicEligibility,
+            filter => filter.AsBsonDocument.GetValue("subject.id", BsonNull.Value) == "park-1"
+                && filter.AsBsonDocument.GetValue("subject.publicationPolicy", BsonNull.Value)
+                    == HistoricalSubjectPublicationPolicy.FollowCurrentSubject.ToString());
     }
 
     [Fact]
@@ -89,7 +94,11 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Contains(
             alternatives,
             alternative => alternative.AsBsonDocument.GetValue("subject.id", BsonNull.Value)
-                == "park-1");
+                == "park-1"
+                && alternative.AsBsonDocument.GetValue(
+                    "subject.publicationPolicy",
+                    BsonNull.Value)
+                    == HistoricalSubjectPublicationPolicy.FollowCurrentSubject.ToString());
         Assert.Contains(
             alternatives,
             alternative => alternative.AsBsonDocument.GetValue("subject.contextParkId", BsonNull.Value)

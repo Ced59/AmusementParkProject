@@ -893,6 +893,10 @@ réintroduit le libellé d'une zone retirée que depuis un fait `HistoricalOnly`
 publié et rattaché durablement au parc demandé. Le registre de portée conserve
 en outre le parc dans sa clé afin qu'un identifiant de zone réutilisé par un
 autre parc reste non ambigu et ne bloque jamais une suppression ultérieure.
+Une correspondance avec une fiche publique actuelle n'admet que les faits
+`FollowCurrentSubject`. Un fait `HistoricalOnly` ne peut donc jamais changer de
+parc par simple réutilisation de son identifiant : seule sa portée durable fait
+foi.
 
 La frise charge les sources uniquement pour la page demandée, en lots bornés
 compatibles avec les limites du dépôt même lorsqu'un fait possède beaucoup de
