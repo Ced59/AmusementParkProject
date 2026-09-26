@@ -76,9 +76,15 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
         StandaloneAttractionDocument? attraction = await this.standaloneAttractions
             .Find(item => item.Id == attractionId)
             .FirstOrDefaultAsync(cancellationToken);
+        return IsStandaloneAttractionPublic(attraction);
+    }
+
+    internal static bool IsStandaloneAttractionPublic(StandaloneAttractionDocument? attraction)
+    {
         return attraction is not null
             && attraction.IsVisible
-            && attraction.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+            && attraction.AdminReviewStatus != AdminReviewStatus.NotRelevant
+            && !ParkItemStatusNormalizer.IsClosedDefinitively(attraction.AttractionDetails?.Status);
     }
 
     private async Task<bool> IsParkZonePublicAsync(string zoneId, CancellationToken cancellationToken)

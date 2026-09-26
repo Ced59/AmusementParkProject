@@ -1,4 +1,6 @@
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -59,5 +61,22 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Equal(-1, pipeline[1]["$sort"]["revision"].AsInt32);
         Assert.Equal("$$ROOT", pipeline[2]["$group"]["document"]["$first"].AsString);
         Assert.True(pipeline[3].Contains("$replaceRoot"));
+    }
+
+    [Fact]
+    public void IsStandaloneAttractionPublic_WhenAttractionIsClosedDefinitively_ShouldReturnFalse()
+    {
+        StandaloneAttractionDocument attraction = new StandaloneAttractionDocument
+        {
+            IsVisible = true,
+            AttractionDetails = new AttractionDetailsDocument
+            {
+                Status = "permanently closed",
+            },
+        };
+
+        bool isPublic = HistoricalSubjectPublicationStateReader.IsStandaloneAttractionPublic(attraction);
+
+        Assert.False(isPublic);
     }
 }

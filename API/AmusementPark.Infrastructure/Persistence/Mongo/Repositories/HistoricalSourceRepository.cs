@@ -27,9 +27,19 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(source);
+        HistoricalSourceDocument candidate = source.ToDocument();
+        HistoricalSourceDocument? durableRevision = await this.collection
+            .Find(document => document.Id == candidate.Id)
+            .FirstOrDefaultAsync(cancellationToken);
+        if (durableRevision is not null)
+        {
+            return DocumentsMatch(durableRevision, candidate)
+                ? HistoricalRevisionWriteDisposition.AlreadyExists
+                : HistoricalRevisionWriteDisposition.Conflict;
+        }
+
         HistoricalSourceReference? predecessor = await this.LoadPredecessorAsync(source, cancellationToken);
         HistoricalSourceRevisionValidator.ValidatePredecessor(source, predecessor);
-        HistoricalSourceDocument candidate = source.ToDocument();
         try
         {
             await this.collection.InsertOneAsync(candidate, cancellationToken: cancellationToken);

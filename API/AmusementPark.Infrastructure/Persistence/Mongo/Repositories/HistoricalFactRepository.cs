@@ -34,6 +34,17 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(fact);
+        HistoricalFactDocument candidate = fact.ToDocument();
+        HistoricalFactDocument? durableRevision = await this.collection
+            .Find(document => document.Id == candidate.Id)
+            .FirstOrDefaultAsync(cancellationToken);
+        if (durableRevision is not null)
+        {
+            return DocumentsMatch(durableRevision, candidate)
+                ? HistoricalRevisionWriteDisposition.AlreadyExists
+                : HistoricalRevisionWriteDisposition.Conflict;
+        }
+
         HistoricalFact? predecessor = await this.LoadPredecessorAsync(fact, cancellationToken);
         HistoricalFactRevisionValidator.ValidatePredecessor(fact, predecessor);
         bool requiresCurrentSubjectResolution = fact.Subject.PublicationPolicy
@@ -46,7 +57,6 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         IReadOnlyCollection<HistoricalSourceReference> resolvedSources =
             await this.LoadSourceRevisionsAsync(fact.SourceReferences, cancellationToken);
         HistoricalFactEvidenceValidator.Validate(fact, resolvedSources);
-        HistoricalFactDocument candidate = fact.ToDocument();
         try
         {
             await this.collection.InsertOneAsync(candidate, cancellationToken: cancellationToken);
