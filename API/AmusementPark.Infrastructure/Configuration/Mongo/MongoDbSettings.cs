@@ -252,6 +252,8 @@ public sealed class MongoDbSettings
 
     public string HistoricalSourcesCollectionName { get; set; } = "historical-sources";
 
+    public string HistoricalSubjectScopesCollectionName { get; set; } = "historical-subject-scopes";
+
     public string HistoricalNarrativesCollectionName { get; set; } = "historical-narratives";
 
     public string HistoricalMigrationsCollectionName { get; set; } = "historical-migrations";

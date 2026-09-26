@@ -1096,6 +1096,7 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalMigrationAnomaliesCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalFactsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalSourcesCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.HistoricalSubjectScopesCollectionName, cancellationToken);
         await this.InitializeHistoricalPersistenceIndexesAsync(cancellationToken);
         await this.InitializeHistoricalMigrationIndexesAsync(cancellationToken);
 

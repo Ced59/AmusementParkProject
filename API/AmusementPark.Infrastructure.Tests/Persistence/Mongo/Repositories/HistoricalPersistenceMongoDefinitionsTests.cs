@@ -52,14 +52,20 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
             .BuildLatestDecisionEligibleForParkPipeline(
                 "park-1",
                 new[] { currentPark },
-                new[] { "fact-1", "fact-2" })
+                "historical-facts")
             .ToArray();
 
-        Assert.Equal(5, pipeline.Length);
-        BsonArray candidateIds = pipeline[0]["$match"]["factId"]["$in"].AsBsonArray;
-        Assert.Equal(new[] { "fact-1", "fact-2" }, candidateIds.Select(static id => id.AsString));
-        Assert.Equal("$$ROOT", pipeline[2]["$group"]["document"]["$first"].AsString);
-        BsonArray publicEligibility = pipeline[4]["$match"]["$or"].AsBsonArray;
+        Assert.Equal(6, pipeline.Length);
+        Assert.True(pipeline[0]["$match"].AsBsonDocument.Contains("$or"));
+        Assert.Equal("$factId", pipeline[1]["$group"]["_id"].AsString);
+        BsonDocument lookup = pipeline[2]["$lookup"].AsBsonDocument;
+        Assert.Equal("historical-facts", lookup["from"].AsString);
+        BsonArray lookupPipeline = lookup["pipeline"].AsBsonArray;
+        Assert.Equal(3, lookupPipeline.Count);
+        Assert.Equal(-1, lookupPipeline[1]["$sort"]["revision"].AsInt32);
+        Assert.Equal(1, lookupPipeline[2]["$limit"].AsInt32);
+        Assert.Equal("$latestRevision", pipeline[4]["$replaceRoot"]["newRoot"].AsString);
+        BsonArray publicEligibility = pipeline[5]["$match"]["$or"].AsBsonArray;
         Assert.Contains(
             publicEligibility,
             filter => filter.AsBsonDocument.GetValue("subject.publicationPolicy", BsonNull.Value)

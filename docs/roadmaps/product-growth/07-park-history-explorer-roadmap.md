@@ -863,17 +863,20 @@ politique `HistoricalOnly` l'autorise explicitement. Les brouillons, faits
 retirés, héritages encore en attente de revue et cibles explicitement marquées
 `Suppressed` restent absents des réponses publiques.
 
-La sélection MongoDB commence par les identifiants de chaînes ayant appartenu
-au périmètre du parc, puis choisit leur dernière révision globale avant de
-réappliquer la portée publique. Une correction qui déplace un fait vers un
-autre parc ne peut donc jamais faire réapparaître son ancienne révision dans la
-frise d'origine.
+La sélection MongoDB commence par les chaînes ayant appartenu au périmètre du
+parc, puis rejoint dans la même agrégation leur dernière révision globale avant
+de réappliquer la portée publique. Aucun tableau d'identifiants proportionnel à
+l'historique ne transite par l'Application ou dans une clause `$in`. Une
+correction qui déplace un fait vers un autre parc ne peut donc jamais faire
+réapparaître son ancienne révision dans la frise d'origine.
 
 Chaque sujet de parc conserve désormais un `ContextParkId` durable. Une
 migration MongoDB alimente cette portée sur les révisions existantes depuis les
 entités courantes ou, lorsqu'une attraction a déjà été supprimée, depuis la
 sauvegarde narrative canonique. Cette récupération couvre aussi les anciennes
-zones de parc lorsque leur document courant a disparu. La cible disparue reste ainsi retrouvable sans
+zones de parc grâce à un registre de portée durable alimenté avant leur
+suppression, sans prétendre qu'un type narratif inexistant fournirait cette
+information. La cible disparue reste ainsi retrouvable sans
 faire coexister deux moteurs historiques, et son libellé public provient du
 sujet `HistoricalOnly` figé plutôt que d'une fiche courante. La même migration
 persiste la clé d'ordre temporelle dérivée par le Core pour que la pagination

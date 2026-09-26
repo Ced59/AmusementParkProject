@@ -14,6 +14,7 @@ public sealed class HistoricalFactPublicProjectionMigration
     private readonly IMongoCollection<HistoricalFactDocument> factCollection;
     private readonly IMongoCollection<ParkItemDocument> parkItemCollection;
     private readonly IMongoCollection<ParkZoneDocument> parkZoneCollection;
+    private readonly IMongoCollection<HistoricalSubjectScopeDocument> subjectScopeCollection;
     private readonly IMongoCollection<BsonDocument> narrativeCollection;
 
     public HistoricalFactPublicProjectionMigration(IMongoDatabase database, MongoDbSettings settings)
@@ -26,6 +27,8 @@ public sealed class HistoricalFactPublicProjectionMigration
             settings.ParkItemsCollectionName);
         this.parkZoneCollection = database.GetCollection<ParkZoneDocument>(
             settings.ParkZonesCollectionName);
+        this.subjectScopeCollection = database.GetCollection<HistoricalSubjectScopeDocument>(
+            settings.HistoricalSubjectScopesCollectionName);
         this.narrativeCollection = database.GetCollection<BsonDocument>(
             settings.HistoricalNarrativesCollectionName);
     }
@@ -55,6 +58,8 @@ public sealed class HistoricalFactPublicProjectionMigration
 
         Dictionary<string, string> parkItemScopes = await this.LoadParkItemScopesAsync(cancellationToken);
         Dictionary<string, string> parkZoneScopes = await this.LoadParkZoneScopesAsync(cancellationToken);
+        Dictionary<(HistoricalSubjectType Type, string Id), string> retainedScopes =
+            await this.LoadRetainedScopesAsync(cancellationToken);
         Dictionary<(HistoricalSubjectType Type, string Id), string> narrativeScopes =
             await this.LoadNarrativeScopesAsync(cancellationToken);
         List<WriteModel<HistoricalFactDocument>> writes = new List<WriteModel<HistoricalFactDocument>>(
@@ -73,6 +78,7 @@ public sealed class HistoricalFactPublicProjectionMigration
                 fact.Subject,
                 parkItemScopes,
                 parkZoneScopes,
+                retainedScopes,
                 narrativeScopes);
             if (!string.IsNullOrWhiteSpace(contextParkId))
             {
@@ -98,6 +104,7 @@ public sealed class HistoricalFactPublicProjectionMigration
         HistoricalSubjectDocument subject,
         IReadOnlyDictionary<string, string> parkItemScopes,
         IReadOnlyDictionary<string, string> parkZoneScopes,
+        IReadOnlyDictionary<(HistoricalSubjectType Type, string Id), string> retainedScopes,
         IReadOnlyDictionary<(HistoricalSubjectType Type, string Id), string> narrativeScopes)
     {
         if (!string.IsNullOrWhiteSpace(subject.ContextParkId))
@@ -109,11 +116,37 @@ public sealed class HistoricalFactPublicProjectionMigration
         {
             HistoricalSubjectType.Park => subject.Id,
             HistoricalSubjectType.ParkItem => parkItemScopes.GetValueOrDefault(subject.Id)
+                ?? retainedScopes.GetValueOrDefault((HistoricalSubjectType.ParkItem, subject.Id))
                 ?? narrativeScopes.GetValueOrDefault((HistoricalSubjectType.ParkItem, subject.Id)),
             HistoricalSubjectType.ParkZone => parkZoneScopes.GetValueOrDefault(subject.Id)
-                ?? narrativeScopes.GetValueOrDefault((HistoricalSubjectType.ParkZone, subject.Id)),
+                ?? retainedScopes.GetValueOrDefault((HistoricalSubjectType.ParkZone, subject.Id)),
             _ => null,
         };
+    }
+
+    private async Task<Dictionary<(HistoricalSubjectType Type, string Id), string>> LoadRetainedScopesAsync(
+        CancellationToken cancellationToken)
+    {
+        List<HistoricalSubjectScopeDocument> scopes = await this.subjectScopeCollection
+            .Find(Builders<HistoricalSubjectScopeDocument>.Filter.Empty)
+            .ToListAsync(cancellationToken);
+        return scopes
+            .Where(static scope => Enum.IsDefined(scope.SubjectType)
+                && !string.IsNullOrWhiteSpace(scope.SubjectId)
+                && !string.IsNullOrWhiteSpace(scope.ContextParkId))
+            .GroupBy(static scope => (scope.SubjectType, scope.SubjectId))
+            .Select(static group => new
+            {
+                Subject = group.Key,
+                ParkIds = group.Select(static scope => scope.ContextParkId)
+                    .Distinct(StringComparer.Ordinal)
+                    .ToArray(),
+            })
+            .Where(static scope => scope.ParkIds.Length == 1)
+            .ToDictionary(
+                static scope => scope.Subject,
+                static scope => scope.ParkIds[0],
+                EqualityComparer<(HistoricalSubjectType Type, string Id)>.Default);
     }
 
     private async Task<Dictionary<string, string>> LoadParkItemScopesAsync(
@@ -152,13 +185,9 @@ public sealed class HistoricalFactPublicProjectionMigration
         CancellationToken cancellationToken)
     {
         FilterDefinition<BsonDocument> scopedNarratives =
-            Builders<BsonDocument>.Filter.In(
+            Builders<BsonDocument>.Filter.Eq(
                 "entityType",
-                new[]
-                {
-                    HistoryEntityType.ParkItem.ToString(),
-                    HistoricalSubjectType.ParkZone.ToString(),
-                });
+                HistoryEntityType.ParkItem.ToString());
         List<BsonDocument> narratives = await this.narrativeCollection
             .Find(scopedNarratives)
             .Project(Builders<BsonDocument>.Projection
@@ -220,16 +249,8 @@ public sealed class HistoricalFactPublicProjectionMigration
 
     private static HistoricalSubjectType? ResolveNarrativeSubjectType(string? entityType)
     {
-        if (string.Equals(entityType, HistoryEntityType.ParkItem.ToString(), StringComparison.Ordinal))
-        {
-            return HistoricalSubjectType.ParkItem;
-        }
-
-        return string.Equals(
-            entityType,
-            HistoricalSubjectType.ParkZone.ToString(),
-            StringComparison.Ordinal)
-            ? HistoricalSubjectType.ParkZone
+        return string.Equals(entityType, HistoryEntityType.ParkItem.ToString(), StringComparison.Ordinal)
+            ? HistoricalSubjectType.ParkItem
             : null;
     }
 }

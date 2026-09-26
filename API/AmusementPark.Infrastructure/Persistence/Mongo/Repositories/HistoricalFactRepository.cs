@@ -17,6 +17,7 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
     private readonly IMongoCollection<HistoricalFactDocument> collection;
     private readonly IMongoCollection<HistoricalSourceDocument> sourceCollection;
     private readonly IHistoricalSubjectPublicationStateReader subjectPublicationStateReader;
+    private readonly string collectionName;
 
     public HistoricalFactRepository(
         IMongoDatabase database,
@@ -25,6 +26,7 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
     {
         this.collection = database.GetCollection<HistoricalFactDocument>(
             settings.HistoricalFactsCollectionName);
+        this.collectionName = settings.HistoricalFactsCollectionName;
         this.sourceCollection = database.GetCollection<HistoricalSourceDocument>(
             settings.HistoricalSourcesCollectionName);
         this.subjectPublicationStateReader = subjectPublicationStateReader
@@ -164,19 +166,10 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
     {
         string normalizedParkId = NormalizeParkId(parkId);
         ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
-        string[] candidateFactIds = await this.LoadParkCandidateFactIdsAsync(
-            normalizedParkId,
-            publicCurrentSubjects,
-            cancellationToken);
-        if (candidateFactIds.Length == 0)
-        {
-            return Array.Empty<HistoricalFact>();
-        }
-
         List<BsonDocument> stages = BuildLatestDecisionEligibleForParkPipeline(
                 normalizedParkId,
                 publicCurrentSubjects,
-                candidateFactIds)
+                this.collectionName)
             .ToList();
         stages.Add(BuildTimelineSortStage());
         PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument> pipeline =
@@ -201,20 +194,11 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             throw new ArgumentOutOfRangeException(nameof(page));
         }
 
-        string[] candidateFactIds = await this.LoadParkCandidateFactIdsAsync(
-            normalizedParkId,
-            publicCurrentSubjects,
-            cancellationToken);
-        if (candidateFactIds.Length == 0)
-        {
-            return new PagedResult<HistoricalFact>(Array.Empty<HistoricalFact>(), page, pageSize, 0);
-        }
-
         long offset = (long)(page - 1) * pageSize;
         List<BsonDocument> stages = BuildLatestDecisionEligibleForParkPipeline(
                 normalizedParkId,
                 publicCurrentSubjects,
-                candidateFactIds)
+                this.collectionName)
             .ToList();
         stages.Add(BuildTimelineSortStage());
         stages.Add(new BsonDocument("$facet", new BsonDocument
@@ -253,11 +237,16 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
     internal static IReadOnlyCollection<BsonDocument> BuildLatestDecisionEligibleForParkPipeline(
         string parkId,
         IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        IReadOnlyCollection<string> candidateFactIds)
+        string collectionName)
     {
         string normalizedParkId = NormalizeParkId(parkId);
         ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
-        ArgumentNullException.ThrowIfNull(candidateFactIds);
+        string normalizedCollectionName = collectionName?.Trim() ?? string.Empty;
+        if (normalizedCollectionName.Length == 0)
+        {
+            throw new ArgumentException("A historical facts collection name is required.", nameof(collectionName));
+        }
+
         BsonDocument[] publicSubjectFilters = publicCurrentSubjects
             .DistinctBy(static subject => (subject.Type, subject.Id))
             .Select(static subject => new BsonDocument
@@ -276,20 +265,33 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
 
         return new BsonDocument[]
         {
-            new BsonDocument("$match", new BsonDocument(
-                "factId",
-                new BsonDocument("$in", new BsonArray(candidateFactIds)))),
-            new BsonDocument("$sort", new BsonDocument
-            {
-                ["factId"] = 1,
-                ["revision"] = -1,
-            }),
+            new BsonDocument("$match", BuildParkCandidateScopeFilter(
+                normalizedParkId,
+                publicCurrentSubjects)),
             new BsonDocument("$group", new BsonDocument
             {
                 ["_id"] = "$factId",
-                ["document"] = new BsonDocument("$first", "$$ROOT"),
             }),
-            new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$document")),
+            new BsonDocument("$lookup", new BsonDocument
+            {
+                ["from"] = normalizedCollectionName,
+                ["let"] = new BsonDocument("candidateFactId", "$_id"),
+                ["pipeline"] = new BsonArray
+                {
+                    new BsonDocument("$match", new BsonDocument(
+                        "$expr",
+                        new BsonDocument("$eq", new BsonArray
+                        {
+                            "$factId",
+                            "$$candidateFactId",
+                        }))),
+                    new BsonDocument("$sort", new BsonDocument("revision", -1)),
+                    new BsonDocument("$limit", 1),
+                },
+                ["as"] = "latestRevision",
+            }),
+            new BsonDocument("$unwind", "$latestRevision"),
+            new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$latestRevision")),
             new BsonDocument("$match", new BsonDocument
             {
                 ["publicationState"] = HistoricalPublicationState.Published.ToString(),
@@ -319,25 +321,6 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             }));
         scopeFilters.Add(new BsonDocument("subject.contextParkId", normalizedParkId));
         return new BsonDocument("$or", scopeFilters);
-    }
-
-    private async Task<string[]> LoadParkCandidateFactIdsAsync(
-        string parkId,
-        IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
-        CancellationToken cancellationToken)
-    {
-        FilterDefinition<HistoricalFactDocument> scopeFilter =
-            new BsonDocumentFilterDefinition<HistoricalFactDocument>(
-                BuildParkCandidateScopeFilter(parkId, publicCurrentSubjects));
-        using IAsyncCursor<string> cursor = await this.collection.DistinctAsync<string>(
-            "factId",
-            scopeFilter,
-            cancellationToken: cancellationToken);
-        List<string> factIds = await cursor.ToListAsync(cancellationToken);
-        return factIds
-            .Where(static factId => !string.IsNullOrWhiteSpace(factId))
-            .Distinct(StringComparer.Ordinal)
-            .ToArray();
     }
 
     private static BsonDocument BuildTimelineSortStage()
