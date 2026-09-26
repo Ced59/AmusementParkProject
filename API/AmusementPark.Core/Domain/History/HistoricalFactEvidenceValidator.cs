@@ -65,18 +65,24 @@ public static class HistoricalFactEvidenceValidator
             return;
         }
 
-        bool allSourcesAreAdmissible = sources.All(static source =>
-            source.PublicationState == HistoricalPublicationState.Published
+        HashSet<(Guid Id, int Revision)> admissibleSourceKeys = sources
+            .Where(static source => source.PublicationState == HistoricalPublicationState.Published
             && (source.WorkflowState is HistoricalEditorialWorkflowState.Published
                 or HistoricalEditorialWorkflowState.Corrected)
             && (source.Accessibility is HistoricalSourceAccessibility.Accessible
-                or HistoricalSourceAccessibility.Archived));
-        if (!allSourcesAreAdmissible)
+                or HistoricalSourceAccessibility.Archived))
+            .Select(static source => (source.Id, source.Revision))
+            .ToHashSet();
+        if (admissibleSourceKeys.Count == 0)
         {
             throw Invalid(
                 HistoricalPersistenceErrorCodes.InvalidFactState,
-                "A verified or published historical fact requires published and accessible evidence revisions.");
+                "A verified or published historical fact requires at least one published and accessible evidence revision.");
         }
+
+        HistoricalSourceRevisionReference[] admissibleReferences = fact.SourceReferences
+            .Where(reference => admissibleSourceKeys.Contains((reference.SourceId, reference.Revision)))
+            .ToArray();
 
         HistoricalSourceScope[] coreScopes =
         {
@@ -84,7 +90,7 @@ public static class HistoricalFactEvidenceValidator
             HistoricalSourceScope.FactType,
             HistoricalSourceScope.Period,
         };
-        bool oneSourceCoversCoreAssertion = fact.SourceReferences.Any(reference =>
+        bool oneSourceCoversCoreAssertion = admissibleReferences.Any(reference =>
             coreScopes.All(scope => reference.Scopes.Contains(scope)));
         if (!oneSourceCoversCoreAssertion)
         {
@@ -93,7 +99,7 @@ public static class HistoricalFactEvidenceValidator
                 "At least one historical source must cover the subject, fact type, and period together.");
         }
 
-        HashSet<HistoricalSourceScope> coveredScopes = fact.SourceReferences
+        HashSet<HistoricalSourceScope> coveredScopes = admissibleReferences
             .SelectMany(static reference => reference.Scopes)
             .ToHashSet();
         HistoricalSourceScope[] requiredScopes = BuildRequiredScopes(fact);

@@ -49,6 +49,23 @@ public sealed class HistoricalFactEvidenceValidatorTests
     }
 
     [Fact]
+    public void Validate_WhenAdmissibleEvidenceHasDraftSupplement_ShouldKeepSupplementalCitation()
+    {
+        Guid admissibleSourceId = Guid.NewGuid();
+        Guid supplementalSourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(new[] { admissibleSourceId, supplementalSourceId });
+        HistoricalSourceReference admissibleSource = CreateSource(admissibleSourceId);
+        HistoricalSourceReference supplementalSource = CreateSource(
+            supplementalSourceId,
+            HistoricalEditorialWorkflowState.EditorialReview,
+            HistoricalPublicationState.Draft);
+
+        HistoricalFactEvidenceValidator.Validate(
+            fact,
+            new[] { admissibleSource, supplementalSource });
+    }
+
+    [Fact]
     public void Validate_WhenEvidenceDoesNotCoverPeriod_ShouldRejectVerifiedFact()
     {
         Guid sourceId = Guid.NewGuid();

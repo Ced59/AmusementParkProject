@@ -137,7 +137,7 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
     {
         ArgumentNullException.ThrowIfNull(sourceReferences);
         HistoricalSourceRevisionReference[] normalizedReferences = sourceReferences
-            .Distinct()
+            .DistinctBy(static sourceReference => (sourceReference.SourceId, sourceReference.Revision))
             .OrderBy(static sourceReference => sourceReference.SourceId)
             .ThenBy(static sourceReference => sourceReference.Revision)
             .ToArray();
