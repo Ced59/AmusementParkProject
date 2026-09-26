@@ -41,6 +41,7 @@ public sealed class HistoricalFact
         ArgumentNullException.ThrowIfNull(subject);
         ArgumentNullException.ThrowIfNull(period);
         ValidateEnums(type, state, importance, workflowState, publicationState, revisionOrigin);
+        HistoricalFactSubjectTypeValidator.Validate(subject.Type, type);
         ValidateRevision(revision, supersedesRevision, workflowState, publicationState, revisionOrigin);
         EnsureUtc(recordedAtUtc);
         EnsureOptionalUtc(verifiedAtUtc);

@@ -119,6 +119,41 @@ public sealed class HistoricalFactTests
         Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
     }
 
+    [Theory]
+    [InlineData(HistoricalSubjectType.Park, HistoricalFactType.Dismantling)]
+    [InlineData(HistoricalSubjectType.ParkItem, HistoricalFactType.ZoneCreation)]
+    [InlineData(HistoricalSubjectType.StandaloneAttraction, HistoricalFactType.OwnerChange)]
+    [InlineData(HistoricalSubjectType.ParkZone, HistoricalFactType.ManufacturerChange)]
+    [InlineData(HistoricalSubjectType.ParkOperator, HistoricalFactType.ZoneMove)]
+    [InlineData(HistoricalSubjectType.AttractionManufacturer, HistoricalFactType.Retheming)]
+    public void Constructor_WhenFactTypeIsIncompatibleWithSubject_ShouldRejectFact(
+        HistoricalSubjectType subjectType,
+        HistoricalFactType factType)
+    {
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                CreateSubjectSpecificFact(subjectType, factType));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidFactState, exception.ErrorCode);
+    }
+
+    [Theory]
+    [InlineData(HistoricalSubjectType.Park, HistoricalFactType.ZoneCreation)]
+    [InlineData(HistoricalSubjectType.ParkItem, HistoricalFactType.Dismantling)]
+    [InlineData(HistoricalSubjectType.StandaloneAttraction, HistoricalFactType.ManufacturerChange)]
+    [InlineData(HistoricalSubjectType.ParkZone, HistoricalFactType.Retheming)]
+    [InlineData(HistoricalSubjectType.ParkOperator, HistoricalFactType.OwnerChange)]
+    [InlineData(HistoricalSubjectType.AttractionManufacturer, HistoricalFactType.PositioningChange)]
+    public void Constructor_WhenFactTypeMatchesSubject_ShouldAcceptFact(
+        HistoricalSubjectType subjectType,
+        HistoricalFactType factType)
+    {
+        HistoricalFact fact = CreateSubjectSpecificFact(subjectType, factType);
+
+        Assert.Equal(subjectType, fact.Subject.Type);
+        Assert.Equal(factType, fact.Type);
+    }
+
     [Fact]
     public void Constructor_WhenRevisionDoesNotLinkEarlierRevision_ShouldRejectFact()
     {
@@ -388,7 +423,12 @@ public sealed class HistoricalFactTests
         return new HistoricalFact(
             Guid.NewGuid(),
             new HistoricalSubject(
-                HistoricalSubjectType.Park,
+                type is HistoricalFactType.Relocation
+                    or HistoricalFactType.Retheming
+                    or HistoricalFactType.ManufacturerChange
+                    or HistoricalFactType.ZoneMove
+                    ? HistoricalSubjectType.ParkItem
+                    : HistoricalSubjectType.Park,
                 "park-1",
                 "Parc exemple",
                 HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
@@ -407,6 +447,48 @@ public sealed class HistoricalFactTests
             "new-value",
             null,
             "history-attribute-transition",
+            RecordedAtUtc.AddMinutes(-2),
+            RecordedAtUtc.AddMinutes(-1),
+            "hist-v1",
+            2,
+            1,
+            RecordedAtUtc);
+    }
+
+    private static HistoricalFact CreateSubjectSpecificFact(
+        HistoricalSubjectType subjectType,
+        HistoricalFactType factType)
+    {
+        HistoricalAttributeKind? attributeKind = factType switch
+        {
+            HistoricalFactType.OwnerChange => HistoricalAttributeKind.Owner,
+            HistoricalFactType.PositioningChange => HistoricalAttributeKind.Location,
+            HistoricalFactType.Retheming => HistoricalAttributeKind.Theme,
+            HistoricalFactType.ManufacturerChange => HistoricalAttributeKind.Manufacturer,
+            _ => null,
+        };
+        return new HistoricalFact(
+            Guid.NewGuid(),
+            new HistoricalSubject(
+                subjectType,
+                "subject-1",
+                "Sujet exemple",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            factType,
+            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            HistoricalFactState.Verified,
+            HistoricalImportance.Major,
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            Array.Empty<HistoricalLocalizedText>(),
+            null,
+            attributeKind,
+            attributeKind.HasValue ? AttributeBoundaryMeaning.FirstDayOfNewValue : null,
+            null,
+            new[] { new HistoricalSourceRevisionReference(Guid.NewGuid(), 1) },
+            attributeKind.HasValue ? "new-value" : null,
+            null,
+            "history-subject-specific",
             RecordedAtUtc.AddMinutes(-2),
             RecordedAtUtc.AddMinutes(-1),
             "hist-v1",

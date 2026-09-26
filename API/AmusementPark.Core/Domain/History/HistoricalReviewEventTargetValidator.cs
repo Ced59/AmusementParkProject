@@ -80,6 +80,9 @@ public static class HistoricalReviewEventTargetValidator
                 && revisionOrigin == HistoricalRevisionOrigin.LegacyMigration
                 && workflowState == HistoricalEditorialWorkflowState.EditorialReview
                 && publicationState == HistoricalPublicationState.LegacyPublishedPendingReview,
+            HistoricalReviewEventType.DraftUpdated => revision > 1
+                && workflowState == HistoricalEditorialWorkflowState.Draft
+                && publicationState == HistoricalPublicationState.Draft,
             _ => false,
         };
     }

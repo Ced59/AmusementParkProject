@@ -51,6 +51,32 @@ public sealed class HistoricalReviewEventTargetValidatorTests
             HistoricalReviewEventTargetValidator.ValidateSourceTarget(reviewEvent, source));
     }
 
+    [Fact]
+    public void ValidateFactTarget_WhenDraftUpdateTargetsLaterDraftRevision_ShouldAcceptEvent()
+    {
+        HistoricalFact fact = CreateDraftFact();
+        HistoricalReviewEvent reviewEvent = CreateEvent(
+            HistoricalReviewResourceType.Fact,
+            fact.Id,
+            fact.Revision,
+            HistoricalReviewEventType.DraftUpdated);
+
+        HistoricalReviewEventTargetValidator.ValidateFactTarget(reviewEvent, fact);
+    }
+
+    [Fact]
+    public void ValidateSourceTarget_WhenDraftUpdateTargetsLaterDraftRevision_ShouldAcceptEvent()
+    {
+        HistoricalSourceReference source = CreateDraftSource(revision: 2);
+        HistoricalReviewEvent reviewEvent = CreateEvent(
+            HistoricalReviewResourceType.Source,
+            source.Id,
+            source.Revision,
+            HistoricalReviewEventType.DraftUpdated);
+
+        HistoricalReviewEventTargetValidator.ValidateSourceTarget(reviewEvent, source);
+    }
+
     private static HistoricalReviewEvent CreateEvent(
         HistoricalReviewResourceType resourceType,
         Guid resourceId,
@@ -100,11 +126,43 @@ public sealed class HistoricalReviewEventTargetValidatorTests
             RecordedAtUtc);
     }
 
-    private static HistoricalSourceReference CreateDraftSource()
+    private static HistoricalFact CreateDraftFact()
+    {
+        return new HistoricalFact(
+            Guid.NewGuid(),
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                "park-1",
+                "Parc exemple",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject),
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForDay(1998, 5, 12)),
+            HistoricalFactState.Unverified,
+            HistoricalImportance.Major,
+            HistoricalEditorialWorkflowState.Draft,
+            HistoricalPublicationState.Draft,
+            Array.Empty<HistoricalLocalizedText>(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            Array.Empty<HistoricalSourceRevisionReference>(),
+            null,
+            null,
+            "history-opening-1998",
+            null,
+            null,
+            null,
+            2,
+            1,
+            RecordedAtUtc);
+    }
+
+    private static HistoricalSourceReference CreateDraftSource(int revision = 1)
     {
         return new HistoricalSourceReference(
             Guid.NewGuid(),
-            1,
+            revision,
             HistoricalSourceType.OfficialWebsite,
             "Page officielle",
             "Parc exemple",

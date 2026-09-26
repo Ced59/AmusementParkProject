@@ -10,4 +10,5 @@ public enum HistoricalReviewEventType
     Corrected = 5,
     Retracted = 6,
     Migrated = 7,
+    DraftUpdated = 8,
 }

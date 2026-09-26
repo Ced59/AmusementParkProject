@@ -717,7 +717,10 @@ sont admissibles et couvrent ensemble l'identité, le libellé historique, le
 type, la période et, lorsqu'elle existe, la valeur structurée du fait.
 Les combinaisons incohérentes sont refusées dans le Core : un fait vérifié sans
 preuve, un contenu incertain sans explication dans les huit langues ou une
-cible supprimée rendue publique ne peuvent pas atteindre MongoDB.
+cible supprimée rendue publique ne peuvent pas atteindre MongoDB. La famille du
+fait doit aussi être compatible avec la nature de son sujet : un démontage ne
+peut pas qualifier un parc et une création de zone ne peut pas qualifier une
+attraction.
 
 Les écritures sont append-only et idempotentes : rejouer exactement la même
 révision ne crée pas de doublon, tandis qu'une autre valeur utilisant la même
@@ -727,7 +730,9 @@ accessibilité et la partie du fait qu'elles soutiennent. Leurs révisions figé
 peuvent être chargées par lot, sans lecture N+1. Chaque révision et son
 événement de revue sont écrits atomiquement dans le même document : le journal
 reste permanent, ne peut pas être omis par un appelant et associe chaque action
-à la révision concernée sans exposer ces informations au public.
+à la révision concernée sans exposer ces informations au public. Les
+modifications de brouillon possèdent leur propre événement et chaque audit doit
+succéder chronologiquement à celui de la révision précédente.
 
 MongoDB initialise les collections `historical-facts` et `historical-sources`
 avec des index adaptés aux recherches par sujet, période, publication, preuve,

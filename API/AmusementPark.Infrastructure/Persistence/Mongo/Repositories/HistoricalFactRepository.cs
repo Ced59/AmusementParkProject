@@ -48,8 +48,13 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
                 : HistoricalRevisionWriteDisposition.Conflict;
         }
 
-        HistoricalFact? predecessor = await this.LoadPredecessorAsync(fact, cancellationToken);
+        HistoricalFactDocument? predecessorDocument =
+            await this.LoadPredecessorDocumentAsync(fact, cancellationToken);
+        HistoricalFact? predecessor = predecessorDocument?.ToDomain();
         HistoricalFactRevisionValidator.ValidatePredecessor(fact, predecessor);
+        HistoricalReviewEventChronologyValidator.Validate(
+            transitionReviewEvent,
+            predecessorDocument?.TransitionReviewEvent.ToDomain());
         bool requiresCurrentSubjectResolution = fact.Subject.PublicationPolicy
                 == HistoricalSubjectPublicationPolicy.FollowCurrentSubject
             && fact.PublicationState is HistoricalPublicationState.Published
@@ -119,7 +124,7 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             && existing.ToBsonDocument().Equals(candidate.ToBsonDocument());
     }
 
-    private async Task<HistoricalFact?> LoadPredecessorAsync(
+    private async Task<HistoricalFactDocument?> LoadPredecessorDocumentAsync(
         HistoricalFact fact,
         CancellationToken cancellationToken)
     {
@@ -130,11 +135,10 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
 
         string normalizedFactId = fact.Id.ToString("N", CultureInfo.InvariantCulture);
         int predecessorRevision = fact.SupersedesRevision.Value;
-        HistoricalFactDocument? predecessor = await this.collection
+        return await this.collection
             .Find(document => document.FactId == normalizedFactId
                 && document.Revision == predecessorRevision)
             .FirstOrDefaultAsync(cancellationToken);
-        return predecessor?.ToDomain();
     }
 
     private async Task<IReadOnlyCollection<HistoricalSourceReference>> LoadSourceRevisionsAsync(

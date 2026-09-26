@@ -41,8 +41,13 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
                 : HistoricalRevisionWriteDisposition.Conflict;
         }
 
-        HistoricalSourceReference? predecessor = await this.LoadPredecessorAsync(source, cancellationToken);
+        HistoricalSourceDocument? predecessorDocument =
+            await this.LoadPredecessorDocumentAsync(source, cancellationToken);
+        HistoricalSourceReference? predecessor = predecessorDocument?.ToDomain();
         HistoricalSourceRevisionValidator.ValidatePredecessor(source, predecessor);
+        HistoricalReviewEventChronologyValidator.Validate(
+            transitionReviewEvent,
+            predecessorDocument?.TransitionReviewEvent.ToDomain());
         try
         {
             await this.collection.InsertOneAsync(candidate, cancellationToken: cancellationToken);
@@ -172,7 +177,7 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
             && existing.ToBsonDocument().Equals(candidate.ToBsonDocument());
     }
 
-    private async Task<HistoricalSourceReference?> LoadPredecessorAsync(
+    private async Task<HistoricalSourceDocument?> LoadPredecessorDocumentAsync(
         HistoricalSourceReference source,
         CancellationToken cancellationToken)
     {
@@ -183,11 +188,10 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
 
         string normalizedSourceId = source.Id.ToString("N", CultureInfo.InvariantCulture);
         int predecessorRevision = source.Revision - 1;
-        HistoricalSourceDocument? predecessor = await this.collection
+        return await this.collection
             .Find(document => document.SourceId == normalizedSourceId
                 && document.Revision == predecessorRevision)
             .FirstOrDefaultAsync(cancellationToken);
-        return predecessor?.ToDomain();
     }
 
     internal static IReadOnlyCollection<BsonDocument> BuildLatestRevisionsPipeline(

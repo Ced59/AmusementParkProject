@@ -3,6 +3,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.StandaloneAttractions;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Xunit;
 
@@ -35,6 +36,16 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         CreateIndexModel<HistoricalSourceDocument> revision = indexes.Single(
             index => index.Options.Name == "idx_historical_sources_revision_unique");
         Assert.True(revision.Options.Unique);
+        CreateIndexModel<HistoricalSourceDocument> latestRevision = indexes.Single(
+            index => index.Options.Name == "idx_historical_sources_latest_revision");
+        IBsonSerializer<HistoricalSourceDocument> serializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<HistoricalSourceDocument>();
+        BsonDocument latestRevisionKeys = latestRevision.Keys.Render(
+            new RenderArgs<HistoricalSourceDocument>(
+                serializer,
+                BsonSerializer.SerializerRegistry));
+        Assert.Equal(1, latestRevisionKeys["sourceId"].AsInt32);
+        Assert.Equal(-1, latestRevisionKeys["revision"].AsInt32);
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_sources_publication_access");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_sources_audit_date");
         Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));

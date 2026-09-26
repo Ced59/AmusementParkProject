@@ -69,6 +69,11 @@ internal static class HistoricalPersistenceMongoDefinitions
                 }),
             new CreateIndexModel<HistoricalSourceDocument>(
                 Builders<HistoricalSourceDocument>.IndexKeys
+                    .Ascending(document => document.SourceId)
+                    .Descending(document => document.Revision),
+                new CreateIndexOptions { Name = "idx_historical_sources_latest_revision" }),
+            new CreateIndexModel<HistoricalSourceDocument>(
+                Builders<HistoricalSourceDocument>.IndexKeys
                     .Ascending(document => document.PublicationState)
                     .Ascending(document => document.Accessibility),
                 new CreateIndexOptions { Name = "idx_historical_sources_publication_access" }),
