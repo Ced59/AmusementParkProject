@@ -459,7 +459,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         }
 
         if (fact.Type == HistoricalFactType.Closure
-            && IsExactFirstClosedDay(fact, requestedDate))
+            && (temporaryClosureHasKnownEnd || IsExactFirstClosedDay(fact, requestedDate)))
         {
             RecordClosureAgainstClosedState(currentState, fact, reasons);
             return HistoricalOperationalState.KnownClosed;
@@ -506,7 +506,8 @@ internal sealed class HistoricalLifecycleSnapshotReducer
         HistoricalFact fact,
         IReadOnlyCollection<HistoricalFact> lifecycleFacts)
     {
-        if (fact.Type != HistoricalFactType.TemporaryClosure)
+        if (fact.Type is not HistoricalFactType.TemporaryClosure
+            and not HistoricalFactType.Closure)
         {
             return false;
         }
