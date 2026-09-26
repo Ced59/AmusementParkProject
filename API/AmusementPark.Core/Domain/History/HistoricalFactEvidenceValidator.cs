@@ -36,6 +36,8 @@ public static class HistoricalFactEvidenceValidator
             reference.SubjectType == fact.Subject.Type
             && string.Equals(reference.SubjectId, fact.Subject.Id, StringComparison.Ordinal)
             && reference.FactType == fact.Type
+            && (!reference.Scopes.Contains(HistoricalSourceScope.FactType)
+                || string.Equals(reference.OtherTypeLabel, fact.OtherTypeLabel, StringComparison.Ordinal))
             && reference.Period == fact.Period
             && (!reference.Scopes.Contains(HistoricalSourceScope.HistoricalLabel)
                 || string.Equals(

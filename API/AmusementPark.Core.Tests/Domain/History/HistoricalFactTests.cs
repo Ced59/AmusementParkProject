@@ -718,6 +718,7 @@ public sealed class HistoricalFactTests
             structuredValue,
             sequenceWithinDate,
             narrativeContentId,
+            null,
             resolvedLifecycleBoundaryMeaning,
             resolvedAttributeKind,
             resolvedAttributeBoundaryMeaning);

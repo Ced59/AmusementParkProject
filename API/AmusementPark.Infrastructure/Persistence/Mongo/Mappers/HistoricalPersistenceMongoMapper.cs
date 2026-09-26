@@ -54,6 +54,7 @@ internal static class HistoricalPersistenceMongoMapper
                     StructuredValue = sourceReference.StructuredValue,
                     SequenceWithinDate = sourceReference.SequenceWithinDate,
                     NarrativeContentId = sourceReference.NarrativeContentId,
+                    OtherTypeLabel = sourceReference.OtherTypeLabel,
                     LifecycleBoundaryMeaning = sourceReference.LifecycleBoundaryMeaning,
                     AttributeKind = sourceReference.AttributeKind,
                     AttributeBoundaryMeaning = sourceReference.AttributeBoundaryMeaning,
@@ -106,6 +107,7 @@ internal static class HistoricalPersistenceMongoMapper
                     source.StructuredValue,
                     source.SequenceWithinDate,
                     source.NarrativeContentId,
+                    source.OtherTypeLabel,
                     source.LifecycleBoundaryMeaning,
                     source.AttributeKind,
                     source.AttributeBoundaryMeaning))

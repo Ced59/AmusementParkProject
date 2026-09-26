@@ -196,6 +196,7 @@ public sealed class HistoricalReviewEventTargetValidatorTests
                     null,
                     null,
                     null,
+                    null,
                     LifecycleBoundaryMeaning.FirstOperatingDay,
                     null,
                     null),

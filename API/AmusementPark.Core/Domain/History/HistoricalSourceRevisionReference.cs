@@ -15,6 +15,7 @@ public sealed record HistoricalSourceRevisionReference
         string? structuredValue,
         int? sequenceWithinDate,
         string? narrativeContentId,
+        string? otherTypeLabel,
         LifecycleBoundaryMeaning? lifecycleBoundaryMeaning,
         HistoricalAttributeKind? attributeKind,
         AttributeBoundaryMeaning? attributeBoundaryMeaning)
@@ -70,6 +71,7 @@ public sealed record HistoricalSourceRevisionReference
         string? normalizedHistoricalLabel = NormalizeOptional(historicalLabel, 300);
         string? normalizedStructuredValue = NormalizeOptional(structuredValue, 16000);
         string? normalizedNarrativeContentId = NormalizeOptional(narrativeContentId, 200);
+        string? normalizedOtherTypeLabel = NormalizeOptional(otherTypeLabel, 200);
         ValidateScopedValue(
             normalizedScopes,
             HistoricalSourceScope.HistoricalLabel,
@@ -86,6 +88,14 @@ public sealed record HistoricalSourceRevisionReference
             normalizedScopes,
             HistoricalSourceScope.Narrative,
             normalizedNarrativeContentId is not null);
+        bool requiresOtherTypeLabel = factType == HistoricalFactType.Other
+            && normalizedScopes.Contains(HistoricalSourceScope.FactType);
+        if (requiresOtherTypeLabel != (normalizedOtherTypeLabel is not null))
+        {
+            throw new HistoricalPersistenceValidationException(
+                HistoricalPersistenceErrorCodes.InvalidSourceScope,
+                "A citation for a custom historical fact type must bind its exact label.");
+        }
         if (lifecycleBoundaryMeaning.HasValue && !Enum.IsDefined(lifecycleBoundaryMeaning.Value)
             || attributeKind.HasValue && !Enum.IsDefined(attributeKind.Value)
             || attributeBoundaryMeaning.HasValue && !Enum.IsDefined(attributeBoundaryMeaning.Value))
@@ -117,6 +127,7 @@ public sealed record HistoricalSourceRevisionReference
         this.StructuredValue = normalizedStructuredValue;
         this.SequenceWithinDate = sequenceWithinDate;
         this.NarrativeContentId = normalizedNarrativeContentId;
+        this.OtherTypeLabel = normalizedOtherTypeLabel;
         this.LifecycleBoundaryMeaning = lifecycleBoundaryMeaning;
         this.AttributeKind = attributeKind;
         this.AttributeBoundaryMeaning = attributeBoundaryMeaning;
@@ -145,6 +156,8 @@ public sealed record HistoricalSourceRevisionReference
     public int? SequenceWithinDate { get; }
 
     public string? NarrativeContentId { get; }
+
+    public string? OtherTypeLabel { get; }
 
     public LifecycleBoundaryMeaning? LifecycleBoundaryMeaning { get; }
 

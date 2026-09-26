@@ -70,6 +70,7 @@ public sealed class HistoricalSubjectPublicationValidatorTests
                     null,
                     null,
                     null,
+                    null,
                     LifecycleBoundaryMeaning.FirstOperatingDay,
                     null,
                     null),

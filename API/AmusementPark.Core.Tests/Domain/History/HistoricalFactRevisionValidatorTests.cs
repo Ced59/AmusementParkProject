@@ -224,6 +224,7 @@ public sealed class HistoricalFactRevisionValidatorTests
                     null,
                     null,
                     null,
+                    null,
                     LifecycleBoundaryMeaning.FirstOperatingDay,
                     null,
                     null),

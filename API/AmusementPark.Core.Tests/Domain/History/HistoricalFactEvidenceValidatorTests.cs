@@ -414,6 +414,7 @@ public sealed class HistoricalFactEvidenceValidatorTests
                         referenceScopes.Contains(HistoricalSourceScope.Narrative)
                             ? narrativeContentId
                             : null,
+                        null,
                         referenceScopes.Contains(HistoricalSourceScope.Period)
                             ? referenceLifecycleBoundaryMeaning
                             : null,

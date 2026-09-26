@@ -49,6 +49,10 @@ public sealed class HistoricalSourceRevisionDocument
     [BsonIgnoreIfNull]
     public string? NarrativeContentId { get; set; }
 
+    [BsonElement("otherTypeLabel")]
+    [BsonIgnoreIfNull]
+    public string? OtherTypeLabel { get; set; }
+
     [BsonElement("lifecycleBoundaryMeaning")]
     [BsonIgnoreIfNull]
     [BsonRepresentation(BsonType.String)]

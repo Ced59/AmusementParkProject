@@ -278,7 +278,8 @@ laquelle elle s'applique : type et identifiant du sujet, type de fait, période
 et portées précises que cette source couvre pour cette assertion. La citation
 indique aussi si la source confirme ou contredit l'assertion. Les portées qui
 dépendent d'une valeur conservent cette valeur exacte : libellé historique,
-valeur structurée, ordre intra-journalier et récit lié. Une citation antérieure
+libellé d'un type personnalisé, valeur structurée, ordre intra-journalier et
+récit lié. Une citation antérieure
 ne peut donc pas être réutilisée après correction de la valeur. Lorsqu'elle
 couvre la période, elle conserve aussi la signification exacte de la borne de
 cycle de vie ou de transition d'attribut ; « dernier jour ouvert » ne peut pas

@@ -56,6 +56,7 @@ public sealed class HistoricalPersistenceMongoMapperTests
                     null,
                     1,
                     "opening-1998",
+                    null,
                     LifecycleBoundaryMeaning.FirstOperatingDay,
                     null,
                     null),
