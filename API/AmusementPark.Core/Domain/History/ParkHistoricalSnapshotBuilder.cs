@@ -2,12 +2,16 @@ namespace AmusementPark.Core.Domain.History;
 
 public sealed class ParkHistoricalSnapshotBuilder : IParkHistoricalSnapshotBuilder
 {
-    public const string CurrentMethodologyVersion = "hist-snapshot-v1";
+    public const string CurrentMethodologyVersion = "hist-snapshot-v2";
 
     private readonly HistoricalLifecycleSnapshotReducer lifecycleReducer =
         new HistoricalLifecycleSnapshotReducer();
     private readonly HistoricalAttributeSnapshotReducer attributeReducer =
         new HistoricalAttributeSnapshotReducer();
+    private readonly HistoricalAmbiguityBuilder ambiguityBuilder =
+        new HistoricalAmbiguityBuilder();
+    private readonly HistoricalCoverageEvaluator coverageEvaluator =
+        new HistoricalCoverageEvaluator();
 
     public ParkHistoricalSnapshot Build(
         string parkId,
@@ -54,10 +58,17 @@ public sealed class ParkHistoricalSnapshotBuilder : IParkHistoricalSnapshotBuild
                     .ToArray()));
         }
 
+        IReadOnlyList<HistoricalAmbiguity> ambiguities = this.ambiguityBuilder.Build(subjectSnapshots);
+        HistoricalCoverage coverage = this.coverageEvaluator.Evaluate(
+            subjectSnapshots,
+            eligibleFacts,
+            ambiguities);
         return new ParkHistoricalSnapshot(
             parkId,
             requestedInstant,
             subjectSnapshots,
+            coverage,
+            ambiguities,
             CurrentMethodologyVersion);
     }
 

@@ -1,6 +1,20 @@
 {
-  "version": "5.3.83",
+  "version": "5.3.84",
   "history": [
+    {
+      "version": "5.3.84",
+      "releasedAt": "2026-09-26",
+      "labels": {
+        "fr": "La fiabilité et les informations manquantes des reconstitutions historiques sont désormais mesurées clairement.",
+        "en": "The reliability and missing information of historical reconstructions are now measured clearly.",
+        "de": "Die Zuverlässigkeit und fehlende Angaben historischer Rekonstruktionen werden nun klar bewertet.",
+        "nl": "De betrouwbaarheid en ontbrekende informatie van historische reconstructies worden voortaan duidelijk gemeten.",
+        "it": "L'affidabilità e le informazioni mancanti delle ricostruzioni storiche sono ora misurate chiaramente.",
+        "es": "La fiabilidad y la información que falta en las reconstrucciones históricas ahora se miden con claridad.",
+        "pl": "Wiarygodność i brakujące informacje w rekonstrukcjach historycznych są teraz jasno mierzone.",
+        "pt": "A fiabilidade e as informações em falta nas reconstruções históricas são agora medidas com clareza."
+      }
+    },
     {
       "version": "5.3.83",
       "releasedAt": "2026-09-26",

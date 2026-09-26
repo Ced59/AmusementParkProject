@@ -671,7 +671,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | `HIST-03` | Persistance faits/sources | Audit et indexes — implémenté le 26 septembre 2026 |
 | `HIST-04` | Migration/adaptation des historiques existants | Aucune perte de contenu — implémenté le 26 septembre 2026 |
 | `HIST-05` | Builder snapshot | Résultat déterministe — implémenté le 26 septembre 2026 |
-| `HIST-06` | Couverture et ambiguïtés | Partiel visible |
+| `HIST-06` | Couverture et ambiguïtés | Partiel visible — implémenté le 26 septembre 2026 |
 | `HIST-07` | API timeline/snapshot | Contrats bornés |
 | `HIST-08` | UI frise et année pilote | SSR accessible |
 | `HIST-09` | Relations/lignées | Aucune déduction silencieuse |
@@ -813,6 +813,35 @@ preuves publiques de l'API `HIST-07`. Les tests couvrent notamment les dates
 partielles, les bornes inclusives, les fermetures temporaires bornées ou non,
 les réouvertures, les transitions simultanées, les renommages, les preuves
 probables, les rétractations, le déterminisme et la limite du calendrier.
+
+### Implémentation `HIST-06` — 26 septembre 2026
+
+Chaque snapshot porte désormais sa propre mesure de couverture. Elle compte
+les sujets dont la période est fiable, ceux dont la période reste partielle et
+ceux qui ne possèdent aucun fait de cycle de vie exploitable. La couverture des
+noms est calculée sur tous les sujets ; celle des zones porte uniquement sur
+les éléments de parc, pour lesquels cette information a un sens. Une valeur
+ambiguë ne compte jamais comme documentée. L'absence de sujet applicable est
+traitée comme « non applicable » à 100 %, mais un snapshot vide reste toujours
+`Partial`.
+
+Le statut global est déterministe. `HighConfidence` exige des périodes, noms et
+zones intégralement documentés sans ambiguïté. `Substantial` exige au moins 50 %
+de périodes fiables, 75 % de sujets datés et 50 % de couverture pour chaque
+champ applicable. Toute autre situation reste `Partial`. Ces seuils qualifient
+la complétude de la reconstitution ; ils ne transforment jamais un fait
+probable en fait certain. La date de dernière revue correspond à la
+vérification UTC la plus récente d'un fait publié concernant les sujets du
+snapshot.
+
+Les manques de dates, bornes partielles, preuves incertaines, ordres ambigus,
+séquences incohérentes, fermetures temporaires non bornées et valeurs
+structurées invalides deviennent des `HistoricalAmbiguity` explicites. Chaque
+diagnostic indique le sujet, l'attribut concerné lorsqu'il existe et les
+identifiants des faits justificatifs. Les causes d'attribut sont séparées du
+cycle de vie afin qu'un ancien nom incertain ne dégrade pas artificiellement la
+fiabilité de la période d'ouverture. La méthodologie du snapshot passe ainsi à
+`hist-snapshot-v2`, prête à être exposée par `HIST-07`.
 
 ## 22. Gate finale `HIST-G`
 
