@@ -28,4 +28,10 @@ describe('history event labels', () => {
       ).toBeTruthy();
     }
   });
+
+  it('localizes canonical historical fact aliases used by the public explorer', () => {
+    expect(resolveHistoryEventTypeLabel('Renaming', 'fr')).toBe('Changement de nom');
+    expect(resolveHistoryEventTypeLabel('OwnerChange', 'de')).toBe('Eigentümerwechsel');
+    expect(resolveHistoryEventTypeLabel('Retheming', 'pt')).toBe('Alteração de tema');
+  });
 });

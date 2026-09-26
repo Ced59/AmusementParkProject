@@ -137,6 +137,7 @@ describe('App routes', () => {
       'attraction/:standaloneAttractionId/:slug/history/page/:page',
       'park/:id/:slug/history',
       'park/:id/:slug/history/page/:page',
+      'park/:id/:slug/history/:year',
       'park/:id/:slug/history/:eventId/:eventSlug',
       'park/:id/:slug/item/:itemId/:itemSlug/history',
       'park/:id/:slug/item/:itemId/:itemSlug/history/page/:page',
@@ -162,6 +163,15 @@ describe('App routes', () => {
       publicRoutes.findIndex(
         (candidate: Route): boolean =>
           candidate.path === 'park/:id/:slug/history/:eventId/:eventSlug',
+      ),
+    );
+    expect(
+      publicRoutes.findIndex(
+        (candidate: Route): boolean => candidate.path === 'park/:id/:slug/history/:year',
+      ),
+    ).toBeLessThan(
+      publicRoutes.findIndex(
+        (candidate: Route): boolean => candidate.path === 'park/:id/:slug/history',
       ),
     );
     expect(

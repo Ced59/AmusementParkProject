@@ -747,12 +747,30 @@ export const HISTORY_EVENT_TYPE_LABELS: Record<string, Record<string, string>> =
 
 export const HISTORY_EVENT_LABEL_LANGUAGES: readonly string[] = ['en', 'fr', 'de', 'nl', 'it', 'es', 'pl', 'pt'];
 
+const CANONICAL_FACT_TYPE_LABEL_ALIASES: Readonly<Record<string, string>> = Object.freeze({
+  Renaming: 'Rename',
+  OwnerChange: 'OwnershipChange',
+  Extension: 'Expansion',
+  Reduction: 'Redevelopment',
+  ZoneCreation: 'AreaOpening',
+  ZoneRenaming: 'Rename',
+  ZoneRemoval: 'Closure',
+  MajorEvent: 'OperationalChange',
+  PositioningChange: 'BrandingChange',
+  Construction: 'ConstructionStart',
+  Relocation: 'Transfer',
+  Retheming: 'ThemeChange',
+  TechnicalModification: 'TechnologyChange',
+  ZoneMove: 'ThemedAreaChange'
+});
+
 export const HISTORY_EVENT_TYPE_KEYS: readonly string[] = Object.freeze(Object.keys(HISTORY_EVENT_TYPE_LABELS['en']).sort());
 
 export function resolveHistoryEventTypeLabel(eventType: string | null | undefined, language: string): string {
   const normalizedType: string = eventType?.trim() ?? '';
-  return HISTORY_EVENT_TYPE_LABELS[language]?.[normalizedType]
-    ?? HISTORY_EVENT_TYPE_LABELS['en'][normalizedType]
+  const labelKey: string = CANONICAL_FACT_TYPE_LABEL_ALIASES[normalizedType] ?? normalizedType;
+  return HISTORY_EVENT_TYPE_LABELS[language]?.[labelKey]
+    ?? HISTORY_EVENT_TYPE_LABELS['en'][labelKey]
     ?? splitPascalCase(normalizedType || 'Event');
 }
 

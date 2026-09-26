@@ -5,6 +5,11 @@ import { authGuard } from '@core/guards/auth.guard';
 import { adminGuard } from '@core/guards/admin.guard';
 import { HISTORY_ARTICLE_ROUTE_DATA_KEY, historyArticleResolver } from '@features/public/history/state/history-article.resolver';
 import { HISTORY_TIMELINE_ROUTE_DATA_KEY, historyTimelineResolver } from '@features/public/history/state/history-timeline.resolver';
+import {
+  PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY,
+  parkHistoricalSnapshotResolver,
+  parkHistoryTimelineResolver
+} from '@features/public/history/state/park-history-explorer.resolver';
 import { languageEntryGuard } from '@core/guards/language-entry.guard';
 
 export const routes: Routes = [
@@ -245,9 +250,9 @@ export const routes: Routes = [
           { path: 'park/:id/:slug/images', loadComponent: () => import('./features/public/parks/pages/park-images-page.component').then((m) => m.ParkImagesPageComponent) },
           {
             path: 'park/:id/:slug/history/page/:page',
-            resolve: { [HISTORY_TIMELINE_ROUTE_DATA_KEY]: historyTimelineResolver },
+            resolve: { [PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY]: parkHistoryTimelineResolver },
             runGuardsAndResolvers: 'paramsOrQueryParamsChange',
-            loadComponent: () => import('./features/public/history/pages/history-timeline-page.component').then((m) => m.HistoryTimelinePageComponent)
+            loadComponent: () => import('./features/public/history/pages/park-history-timeline-page.component').then((m) => m.ParkHistoryTimelinePageComponent)
           },
           {
             path: 'park/:id/:slug/history/:eventId/:eventSlug',
@@ -255,10 +260,16 @@ export const routes: Routes = [
             loadComponent: () => import('./features/public/history/pages/history-article-page.component').then((m) => m.HistoryArticlePageComponent)
           },
           {
-            path: 'park/:id/:slug/history',
-            resolve: { [HISTORY_TIMELINE_ROUTE_DATA_KEY]: historyTimelineResolver },
+            path: 'park/:id/:slug/history/:year',
+            resolve: { [PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY]: parkHistoricalSnapshotResolver },
             runGuardsAndResolvers: 'paramsOrQueryParamsChange',
-            loadComponent: () => import('./features/public/history/pages/history-timeline-page.component').then((m) => m.HistoryTimelinePageComponent)
+            loadComponent: () => import('./features/public/history/pages/park-historical-snapshot-page.component').then((m) => m.ParkHistoricalSnapshotPageComponent)
+          },
+          {
+            path: 'park/:id/:slug/history',
+            resolve: { [PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY]: parkHistoryTimelineResolver },
+            runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+            loadComponent: () => import('./features/public/history/pages/park-history-timeline-page.component').then((m) => m.ParkHistoryTimelinePageComponent)
           },
           { path: 'park/:id/:slug/video/s/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/videos/:videoId/:videoSlug', pathMatch: 'full' },
           { path: 'park/:id/:slug/video/:videoId/:videoSlug', redirectTo: 'park/:id/:slug/videos/:videoId/:videoSlug', pathMatch: 'full' },

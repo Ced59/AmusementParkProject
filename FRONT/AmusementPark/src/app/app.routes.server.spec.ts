@@ -166,4 +166,20 @@ describe('Server routes', () => {
       expect(route?.renderMode, path).toBe(RenderMode.Server);
     }
   });
+
+  it('server-renders the canonical park history explorer and annual snapshots', () => {
+    const expectedPaths: string[] = [
+      ':lang/park/:id/:slug/history',
+      ':lang/park/:id/:slug/history/page/:page',
+      ':lang/park/:id/:slug/history/:year'
+    ];
+
+    for (const path of expectedPaths) {
+      const route: ServerRoute | undefined = serverRoutes.find(
+        (candidate: ServerRoute): boolean => candidate.path === path,
+      );
+
+      expect(route?.renderMode, path).toBe(RenderMode.Server);
+    }
+  });
 });

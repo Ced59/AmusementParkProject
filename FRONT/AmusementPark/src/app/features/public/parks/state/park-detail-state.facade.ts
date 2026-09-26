@@ -13,7 +13,7 @@ import { ParkOpeningHoursCalendar, ParkOpeningHoursDay, ParkOpeningHoursTimeRang
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
-import { HistoryTimeline } from '@app/models/history/history.models';
+import { PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
@@ -24,8 +24,8 @@ import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
+import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
 import { mapNullable } from '@shared/utils/mapping';
@@ -521,20 +521,11 @@ export class ParkDetailStateFacade {
       return;
     }
 
-    this.loadHistoryAvailabilityTimeline(parkId, false);
-  }
-
-  private loadHistoryAvailabilityTimeline(parkId: string, includeParkItems: boolean): void {
-    this.historyApiService.getParkTimeline(parkId, includeParkItems, [], anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (timeline: HistoryTimeline) => {
-        this.hasHistorySignal.set((timeline.events?.length ?? 0) > 0);
+    this.historyApiService.getPublicParkTimeline(parkId, anonymousHttpOptions(), 1, 1).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (timeline: PublicParkHistoricalTimeline) => {
+        this.hasHistorySignal.set(timeline.pagination.totalItems > 0);
       },
-      error: (error: unknown) => {
-        if (!includeParkItems && hasHttpStatus(error, 404)) {
-          this.loadHistoryAvailabilityTimeline(parkId, true);
-          return;
-        }
-
+      error: () => {
         this.hasHistorySignal.set(false);
       }
     });

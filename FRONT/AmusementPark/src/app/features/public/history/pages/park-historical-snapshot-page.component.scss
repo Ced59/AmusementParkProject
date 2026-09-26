@@ -1,0 +1,373 @@
+.snapshot-date-picker {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.snapshot-date-picker__fields {
+  grid-template-columns: minmax(6rem, 0.8fr) minmax(8rem, 1.2fr) minmax(5rem, 0.7fr) !important;
+}
+
+.snapshot-years {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-surface) 90%, transparent);
+}
+
+.snapshot-years > span {
+  color: var(--app-heading);
+  font-weight: 900;
+}
+
+.snapshot-years > div {
+  display: flex;
+  gap: 0.5rem;
+  min-width: 0;
+  padding: 0.15rem 0.1rem 0.35rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.snapshot-years button {
+  flex: 0 0 auto;
+  min-width: 3.75rem;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-pill);
+  color: var(--app-text);
+  background: var(--app-surface-2);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.snapshot-years button:hover,
+.snapshot-years button:focus-visible,
+.snapshot-years__active {
+  border-color: var(--app-primary) !important;
+  color: var(--app-heading) !important;
+  background: color-mix(in srgb, var(--app-primary) 14%, var(--app-surface)) !important;
+}
+
+.snapshot-overview {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.snapshot-overview article {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: var(--app-surface);
+}
+
+.snapshot-overview strong,
+.snapshot-overview small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.snapshot-overview strong {
+  margin-top: 0.65rem;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 4vw, 2.1rem);
+}
+
+.snapshot-overview small {
+  margin-top: 0.25rem;
+  color: var(--app-text-muted);
+  line-height: 1.4;
+}
+
+.snapshot-coverage-note {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin: 0.75rem 0 0;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--app-text-muted);
+  background: color-mix(in srgb, var(--app-accent-cyan) 7%, var(--app-surface));
+  line-height: 1.5;
+}
+
+.snapshot-section {
+  min-width: 0;
+  margin-top: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--app-surface) 95%, transparent), var(--app-surface-2));
+}
+
+.snapshot-section > header p,
+.snapshot-today p {
+  margin: 0;
+  color: var(--app-primary);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.snapshot-section > header h2,
+.snapshot-today h2 {
+  margin: 0.25rem 0 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.55rem, 5vw, 2.4rem);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.snapshot-section--caution {
+  border-color: color-mix(in srgb, var(--app-accent-gold) 32%, var(--app-border));
+}
+
+.snapshot-section--uncertain {
+  border-color: color-mix(in srgb, var(--app-primary) 34%, var(--app-border));
+}
+
+.snapshot-section--uncertain > p,
+.snapshot-subject-card > p {
+  color: var(--app-text-muted);
+  line-height: 1.55;
+}
+
+.snapshot-subject-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.snapshot-subject-card,
+.snapshot-identity-card {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-bg) 62%, transparent);
+}
+
+.snapshot-subject-card h3,
+.snapshot-identity-card h3 {
+  margin: 0.75rem 0 0;
+  color: var(--app-heading);
+  font-size: 1.12rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.snapshot-subject-card > small {
+  display: block;
+  margin-top: 0.85rem;
+  color: var(--app-text-muted);
+}
+
+.snapshot-identity-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.snapshot-subject-card dl,
+.snapshot-identity-card dl {
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
+  margin: 0.8rem 0 0;
+}
+
+.snapshot-subject-card dl div,
+.snapshot-identity-card dl div {
+  display: grid;
+  grid-template-columns: minmax(5rem, 0.75fr) minmax(0, 1.25fr);
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.snapshot-subject-card dt,
+.snapshot-identity-card dt {
+  color: var(--app-text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.snapshot-subject-card dd,
+.snapshot-identity-card dd {
+  min-width: 0;
+  margin: 0;
+  color: var(--app-heading);
+  overflow-wrap: anywhere;
+}
+
+.snapshot-section__empty {
+  margin: 1rem 0 0;
+  color: var(--app-text-muted);
+}
+
+.snapshot-nearby-events,
+.snapshot-uncertain-list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.snapshot-nearby-events li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  min-width: 0;
+  padding: 0.8rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--app-bg) 62%, transparent);
+}
+
+.snapshot-nearby-events time {
+  color: var(--app-primary);
+  font-weight: 900;
+}
+
+.snapshot-nearby-events strong,
+.snapshot-nearby-events span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.snapshot-nearby-events span {
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+}
+
+.snapshot-zone-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.snapshot-zone-list article {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.15rem 0.65rem;
+  min-width: 0;
+  padding: 0.8rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--app-bg) 62%, transparent);
+}
+
+.snapshot-zone-list i {
+  grid-row: 1 / 3;
+  color: var(--app-accent-cyan);
+}
+
+.snapshot-zone-list span,
+.snapshot-zone-list small {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.snapshot-zone-list span {
+  color: var(--app-heading);
+  font-weight: 800;
+}
+
+.snapshot-zone-list small {
+  color: var(--app-text-muted);
+}
+
+.snapshot-uncertain-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.snapshot-uncertain-list li {
+  min-width: 0;
+  padding: 0.7rem 0.8rem;
+  border-left: 3px solid var(--app-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: color-mix(in srgb, var(--app-primary) 6%, var(--app-bg));
+  overflow-wrap: anywhere;
+}
+
+.snapshot-today {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  margin-top: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 32%, var(--app-border));
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--app-accent-cyan) 6%, var(--app-surface));
+}
+
+.snapshot-today > div {
+  min-width: 0;
+}
+
+.snapshot-today span {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--app-text-muted);
+  line-height: 1.5;
+}
+
+.snapshot-today a {
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .snapshot-overview,
+  .snapshot-subject-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .snapshot-date-picker__fields,
+  .snapshot-overview,
+  .snapshot-subject-grid,
+  .snapshot-identity-card,
+  .snapshot-zone-list,
+  .snapshot-uncertain-list {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .snapshot-years {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .snapshot-nearby-events li {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .snapshot-nearby-events span {
+    grid-column: 2;
+  }
+
+  .snapshot-today {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .snapshot-today a {
+    width: 100%;
+  }
+}

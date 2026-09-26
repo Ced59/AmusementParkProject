@@ -1,6 +1,7 @@
 import { Observable, of } from 'rxjs';
 
 import { HistoryArticle, HistoryTimeline } from '@app/models/history/history.models';
+import { PublicParkHistoricalSnapshot, PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
@@ -90,6 +91,14 @@ export class FakeHistoryDataPort implements HistoryDataPort {
     page?: number;
   }[] = [];
   public readonly standaloneTimelineCalls: { standaloneAttractionId: string; page?: number }[] = [];
+
+  getPublicParkTimeline(): Observable<PublicParkHistoricalTimeline> {
+    return of({} as PublicParkHistoricalTimeline);
+  }
+
+  getPublicParkSnapshot(): Observable<PublicParkHistoricalSnapshot> {
+    return of({} as PublicParkHistoricalSnapshot);
+  }
 
   getParkTimeline(
     parkId: string,

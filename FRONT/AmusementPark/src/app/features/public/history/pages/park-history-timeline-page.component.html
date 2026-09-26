@@ -1,0 +1,137 @@
+@let currentTimeline = timeline();
+
+<app-page-state
+  [state]="state()"
+  [messages]="{
+    loadingTitleKey: 'history.explorer.loadingTitle',
+    loadingMessageKey: 'history.explorer.loadingMessage',
+    errorTitleKey: 'history.explorer.errorTitle',
+    errorMessageKey: 'history.explorer.errorMessage'
+  }">
+  @if (currentTimeline) {
+    <main class="park-history-page">
+      <nav class="park-history-breadcrumb" [attr.aria-label]="'history.explorer.breadcrumbAria' | translate">
+        <a [routerLink]="['/', currentLanguage(), 'home']">{{ 'history.explorer.home' | translate }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="['/', currentLanguage(), 'parks']">{{ 'history.explorer.parks' | translate }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="parkLink(currentTimeline)">{{ currentTimeline.parkName }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <span aria-current="page">{{ 'history.explorer.history' | translate }}</span>
+      </nav>
+
+      <header class="park-history-hero">
+        <div class="park-history-hero__copy">
+          <p class="park-history-kicker"><i class="pi pi-history" aria-hidden="true"></i>{{ 'history.explorer.kicker' | translate }}</p>
+          <h1>{{ 'history.explorer.timelineTitle' | translate: { park: currentTimeline.parkName } }}</h1>
+          <p>{{ 'history.explorer.timelineDescription' | translate }}</p>
+        </div>
+
+        <form class="park-history-date-picker" (ngSubmit)="openYear()">
+          <label for="history-year">{{ 'history.explorer.chooseYear' | translate }}</label>
+          <div>
+            <input id="history-year" name="historyYear" type="number" min="1000" max="9999" inputmode="numeric" [(ngModel)]="requestedYear" required>
+            <button class="app-button app-button--primary" type="submit">
+              <i class="pi pi-calendar" aria-hidden="true"></i>
+              <span>{{ 'history.explorer.exploreYear' | translate }}</span>
+            </button>
+          </div>
+        </form>
+      </header>
+
+      <section class="park-history-metrics" [attr.aria-label]="'history.explorer.timelineSummary' | translate">
+        <article>
+          <strong>{{ currentTimeline.pagination.totalItems }}</strong>
+          <span>{{ 'history.explorer.documentedEvents' | translate }}</span>
+        </article>
+        <article>
+          <strong>{{ currentTimeline.pagination.currentPage }} / {{ currentTimeline.pagination.totalPages }}</strong>
+          <span>{{ 'history.explorer.page' | translate }}</span>
+        </article>
+        <article>
+          <strong>{{ currentTimeline.events.length }}</strong>
+          <span>{{ 'history.explorer.visibleOnPage' | translate }}</span>
+        </article>
+      </section>
+
+      @if (currentTimeline.events.length > 0) {
+        <ol class="canonical-history-timeline" [attr.aria-label]="'history.explorer.timelineAria' | translate">
+          @for (event of currentTimeline.events; track eventKey(event, $index)) {
+            <li class="canonical-history-event" [class.canonical-history-event--major]="event.importance === 'Major'">
+              <div class="canonical-history-event__rail" aria-hidden="true"><span></span></div>
+              <article>
+                <header class="canonical-history-event__header">
+                  <time>{{ eventDate(event) }}</time>
+                  <span class="history-badge {{ evidenceClass(event) }}">{{ evidenceLabel(event) }}</span>
+                </header>
+                <p class="canonical-history-event__type">{{ factTypeLabel(event) }}</p>
+                <h2>{{ event.subjectLabel }}</h2>
+
+                @if (hasTransition(event)) {
+                  <div class="history-transition" [attr.aria-label]="'history.explorer.change' | translate">
+                    <span>{{ event.previousDisplayValue || ('history.explorer.unknownValue' | translate) }}</span>
+                    <i class="pi pi-arrow-right" aria-hidden="true"></i>
+                    <strong>{{ event.nextDisplayValue || ('history.explorer.unknownValue' | translate) }}</strong>
+                  </div>
+                }
+
+                @if (uncertainty(event); as explanation) {
+                  <p class="history-uncertainty"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ explanation }}</p>
+                }
+
+                @if (event.sources.length > 0) {
+                  <details class="history-sources">
+                    <summary>{{ 'history.explorer.sourcesCount' | translate: { count: event.sources.length } }}</summary>
+                    <ul>
+                      @for (source of event.sources; track source.title + source.accessedOn) {
+                        <li>
+                          @if (source.url) {
+                            <a [href]="source.url" target="_blank" rel="noopener noreferrer">{{ source.title }}</a>
+                          } @else {
+                            <span>{{ source.title }}</span>
+                          }
+                          @if (source.publisherOrAuthor) { <small>{{ source.publisherOrAuthor }}</small> }
+                        </li>
+                      }
+                    </ul>
+                  </details>
+                }
+              </article>
+            </li>
+          }
+        </ol>
+      } @else {
+        <section class="park-history-empty">
+          <i class="pi pi-calendar-times" aria-hidden="true"></i>
+          <h2>{{ 'history.explorer.noEventsTitle' | translate }}</h2>
+          <p>{{ 'history.explorer.noEventsMessage' | translate }}</p>
+        </section>
+      }
+
+      @if (currentTimeline.pagination.totalPages > 1) {
+        <nav class="park-history-pagination" [attr.aria-label]="'history.explorer.paginationAria' | translate">
+          @if (currentTimeline.pagination.currentPage > 1) {
+            <a class="app-button app-button--ghost" [routerLink]="previousPage(currentTimeline)">
+              <i class="pi pi-arrow-left" aria-hidden="true"></i>{{ 'history.explorer.previous' | translate }}
+            </a>
+          }
+          <span>{{ 'history.explorer.pageOf' | translate: { current: currentTimeline.pagination.currentPage, total: currentTimeline.pagination.totalPages } }}</span>
+          @if (currentTimeline.pagination.currentPage < currentTimeline.pagination.totalPages) {
+            <a class="app-button app-button--ghost" [routerLink]="nextPage(currentTimeline)">
+              {{ 'history.explorer.next' | translate }}<i class="pi pi-arrow-right" aria-hidden="true"></i>
+            </a>
+          }
+        </nav>
+      }
+
+      <app-public-share-panel
+        targetType="Page"
+        [targetId]="currentTimeline.parkId"
+        [targetTitle]="currentTimeline.parkName"
+        titleKey="shareSocial.historyTimeline.title"
+        descriptionKey="shareSocial.historyTimeline.description"
+        textKey="shareSocial.historyTimeline.text">
+      </app-public-share-panel>
+    </main>
+  }
+</app-page-state>

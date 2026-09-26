@@ -1,10 +1,28 @@
 {
   "history": {
-    "timeline": {
-      "loadingTitle": "Geschiedenis laden",
-      "loadingMessage": "De tijdlijn wordt geladen.",
-      "errorTitle": "Geschiedenis niet beschikbaar",
-      "errorMessage": "De tijdlijn kan nu niet worden geladen."
+    "timeline": { "loadingTitle": "Geschiedenis laden", "loadingMessage": "De tijdlijn wordt geladen.", "errorTitle": "Geschiedenis niet beschikbaar", "errorMessage": "De tijdlijn kan momenteel niet worden geladen." },
+    "explorer": {
+      "loadingTitle": "Geschiedenis laden", "loadingMessage": "De gedocumenteerde gebeurtenissen worden geladen.", "loadingSnapshotMessage": "Het park op dit moment wordt gereconstrueerd.",
+      "errorTitle": "Geschiedenis niet beschikbaar", "errorMessage": "Deze historische informatie kan momenteel niet worden geladen.",
+      "breadcrumbAria": "Historisch kruimelpad", "home": "Home", "parks": "Parken", "history": "Geschiedenis",
+      "kicker": "Geheugen van het park", "timelineTitle": "De geschiedenis van {{park}}", "timelineDescription": "Volg de veranderingen van het park in volgorde, met bewijsniveau en bronnen.",
+      "chooseYear": "Verken een jaar", "exploreYear": "Bekijk dit tijdperk", "unknownDate": "Datum onbekend", "approximateDate": "Rond {{date}}",
+      "timelineSummary": "Samenvatting van de tijdlijn", "documentedEvents": "gedocumenteerde gebeurtenissen", "page": "pagina", "visibleOnPage": "hier getoond", "timelineAria": "Historische tijdlijn van het park",
+      "change": "Gedocumenteerde verandering", "unknownValue": "Onbekende waarde", "sourcesCount": "{{count}} bron(nen)", "noEventsTitle": "Geen gebeurtenissen op deze pagina", "noEventsMessage": "De geschiedenis van het park groeit zodra nieuw bewijs is gevalideerd.",
+      "paginationAria": "Paginering van de tijdlijn", "previous": "Vorige", "next": "Volgende", "pageOf": "Pagina {{current}} van {{total}}",
+      "snapshotKicker": "Tijdreis", "snapshotTitle": "{{park}} in {{year}}", "snapshotDescription": "Een voorzichtige reconstructie van wat in {{year}} open en bekend was, uitsluitend op basis van beschikbaar bewijs.",
+      "chooseDate": "Kies een tijdstip", "year": "Jaar", "month": "Maand", "day": "Dag", "wholeYear": "Hele jaar", "wholeMonth": "Hele maand", "travelToDate": "Reis naar deze datum",
+      "suggestedYearsAria": "Voorgestelde sleuteljaren", "keyYears": "Sleuteljaren", "coverageTitle": "Betrouwbaarheid van de reconstructie", "reliableSubjects": "betrouwbaar gedateerde onderdelen", "nameCoverage": "gedocumenteerde namen", "zoneCoverage": "gedocumenteerde zones", "supportingReferences": "ondersteunende bronnen",
+      "coverageExplanation": "Leemtes en onzekerheden blijven zichtbaar: ontbrekende gegevens worden nooit als zekerheid voorgesteld.",
+      "identityKicker": "Identiteit", "identityTitle": "Het park in deze tijd", "openKicker": "Vastgestelde inventaris", "knownOpenTitle": "Zeker open ({{count}})", "noKnownOpen": "Voor deze datum is nog geen geopend onderdeel voldoende onderbouwd.",
+      "possibleKicker": "Waarschijnlijke omvang", "possiblyOpenTitle": "Mogelijk open ({{count}})", "possiblyOpenExplanation": "De beschikbare datums bieden nog geen zekerheid.",
+      "nearbyKicker": "Rond deze datum", "nearbyTitle": "Nabije gebeurtenissen", "zonesKicker": "Kaart van toen", "zonesTitle": "Gedocumenteerde zones",
+      "uncertainKicker": "Transparantie", "uncertainTitle": "Wat onzeker blijft", "uncertainExplanation": "Deze onderdelen staan apart zodat het verleden niet kunstmatig precies lijkt.",
+      "todayKicker": "Terug naar nu", "todayTitle": "Ontdek het park vandaag", "todayDescription": "Bekijk actuele informatie, attracties en bezoektips.", "viewToday": "Bekijk het park nu",
+      "evidence": { "Verified": "Geverifieerd", "Probable": "Waarschijnlijk", "Disputed": "Betwist", "Unverified": "Niet geverifieerd" },
+      "operationalStates": { "KnownOpen": "Zeker open", "KnownClosed": "Zeker gesloten", "PossiblyOpen": "Mogelijk open", "Unknown": "Status onbekend" },
+      "coverageStatuses": { "Partial": "Gedeeltelijke dekking", "Substantial": "Sterke dekking", "HighConfidence": "Hoge zekerheid" },
+      "attributes": { "Logo": "Logo", "Zone": "Zone", "Operator": "Exploitant", "Owner": "Eigenaar", "Manufacturer": "Fabrikant", "Category": "Categorie", "Theme": "Thema", "Location": "Locatie", "Status": "Status", "MarketPositioning": "Positionering" }
     }
   }
 }

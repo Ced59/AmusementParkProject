@@ -9,7 +9,7 @@ import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
-import { HistoryTimeline } from '@app/models/history/history.models';
+import { PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { ParkItemVideoDto } from '@app/models/videos/park-item-video-dto';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
@@ -43,7 +43,7 @@ export interface ParkDetailImagesPort {
 }
 
 export interface ParkDetailHistoryPort {
-  getParkTimeline(parkId: string, includeParkItems?: boolean, parkItemIds?: readonly string[], options?: AnonymousHttpOptions): Observable<HistoryTimeline>;
+  getPublicParkTimeline(parkId: string, options?: AnonymousHttpOptions, page?: number, pageSize?: number): Observable<PublicParkHistoricalTimeline>;
 }
 
 export const PARK_DETAIL_PARKS_PORT = new InjectionToken<ParkDetailParksPort>('PARK_DETAIL_PARKS_PORT', {

@@ -5,7 +5,7 @@ import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ParkItemImageDto } from '@app/models/images/park-item-image-dto';
-import { HistoryTimeline } from '@app/models/history/history.models';
+import { PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import {
@@ -165,55 +165,37 @@ function createImagePage<TItem>(
   };
 }
 
-function createHistoryTimeline(totalEvents: number): HistoryTimeline {
+function createHistoryTimeline(totalEvents: number): PublicParkHistoricalTimeline {
   return {
-    entityType: 'Park',
-    park: createPark(),
-    parkItem: null,
-    includedParkItems: [],
+    parkId: 'park-1',
+    parkName: 'Bellewaerde',
     events:
       totalEvents > 0
         ? [
             {
-              event: {
-                id: 'history-event-1',
-                key: 'opening',
-                entityType: 'Park',
-                ownerId: 'park-1',
-                parkId: 'park-1',
-                parkItemId: null,
-                contextParkId: null,
-                year: 1954,
-                month: null,
-                day: null,
-                datePrecision: 'Year',
-                eventType: 'Opening',
-                isMajor: false,
-                isVisible: true,
-                slug: 'opening',
-                titles: [],
-                summaries: [],
-                mainImageId: null,
-                previousName: null,
-                newName: null,
-                previousLogoImageId: null,
-                newLogoImageId: null,
-                previousOperatorId: null,
-                newOperatorId: null,
-                locationLabel: null,
-                relatedParkIds: [],
-                relatedParkItemIds: [],
-                sources: [],
-                article: null,
-                createdAtUtc: '2026-01-01T00:00:00Z',
-                updatedAtUtc: '2026-01-01T00:00:00Z',
+              subjectType: 'Park',
+              subjectId: 'park-1',
+              subjectLabel: 'Bellewaerde',
+              factType: 'Opening',
+              period: {
+                start: { year: 1954, precision: 'Year' },
+                end: null,
+                startConfidence: 'Certain',
+                endConfidence: 'Unknown'
               },
-              contextPark: null,
-              parkItem: null,
-              mainImage: null,
-            },
+              evidenceState: 'Verified',
+              importance: 'Major',
+              uncertaintyExplanations: [],
+              sources: []
+            }
           ]
         : [],
+    pagination: {
+      totalItems: totalEvents,
+      totalPages: totalEvents > 0 ? 1 : 0,
+      currentPage: 1,
+      itemsPerPage: 1
+    }
   };
 }
 
@@ -458,7 +440,7 @@ describe('ParkDetailStateFacade', () => {
     expect(context.parksPort.openingHoursCalls.length).toBe(1);
     expect(context.parksPort.openingHoursCalls[0].id).toBe('park-1');
     expect(context.historyPort.calls).toEqual([
-      { parkId: 'park-1', includeParkItems: false, parkItemIds: [] },
+      { parkId: 'park-1', page: 1, pageSize: 1 },
     ]);
     expect(context.facade.nearbyState().kind).toBe('ready');
     expect(context.facade.nearbyParks().map((park) => park.id)).toEqual([
@@ -619,28 +601,19 @@ describe('ParkDetailStateFacade', () => {
     ]);
   });
 
-  it('falls back to item timelines when the park-only history check returns not found', () => {
+  it('keeps the history link hidden when the canonical history is unavailable', () => {
     const context = configureFacade();
     context.historyPort.timelineResponses$ = [
       throwError(() => ({ status: 404 })),
-      of(createHistoryTimeline(1)),
     ];
 
     context.facade.setCurrentLanguage('fr');
     context.facade.loadPark('park-1');
 
     expect(context.historyPort.calls).toEqual([
-      { parkId: 'park-1', includeParkItems: false, parkItemIds: [] },
-      { parkId: 'park-1', includeParkItems: true, parkItemIds: [] },
+      { parkId: 'park-1', page: 1, pageSize: 1 },
     ]);
-    expect(context.facade.park()?.historyLink).toEqual([
-      '/',
-      'fr',
-      'park',
-      'park-1',
-      'bellewaerde',
-      'history',
-    ]);
+    expect(context.facade.park()?.historyLink).toBeNull();
   });
 
   it('loads a bounded future opening window when the preview has no upcoming opening', () => {

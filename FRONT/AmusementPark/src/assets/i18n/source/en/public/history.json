@@ -1,10 +1,29 @@
 {
   "history": {
-    "timeline": {
-      "loadingTitle": "Loading history",
-      "loadingMessage": "The timeline is loading.",
-      "errorTitle": "History unavailable",
-      "errorMessage": "The timeline could not be loaded right now."
+    "timeline": { "loadingTitle": "Loading history", "loadingMessage": "The timeline is loading.", "errorTitle": "History unavailable", "errorMessage": "The timeline could not be loaded right now." },
+    "explorer": {
+      "loadingTitle": "Loading history", "loadingMessage": "Documented events are loading.", "loadingSnapshotMessage": "The park at this point in time is being reconstructed.",
+      "errorTitle": "History unavailable", "errorMessage": "This historical information could not be loaded right now.",
+      "breadcrumbAria": "Historical breadcrumb", "home": "Home", "parks": "Parks", "history": "History",
+      "kicker": "Park memory", "timelineTitle": "The history of {{park}}", "timelineDescription": "Follow the park's changes in order, together with their evidence level and sources.",
+      "chooseYear": "Explore a year", "exploreYear": "View this era", "unknownDate": "Unknown date", "approximateDate": "Around {{date}}",
+      "timelineSummary": "Timeline summary", "documentedEvents": "documented events", "page": "page", "visibleOnPage": "shown here", "timelineAria": "Park history timeline",
+      "change": "Documented change", "unknownValue": "Unknown value", "sourcesCount": "{{count}} source(s)",
+      "noEventsTitle": "No events on this page", "noEventsMessage": "The park's history will grow as new evidence is validated.",
+      "paginationAria": "Timeline pagination", "previous": "Previous", "next": "Next", "pageOf": "Page {{current}} of {{total}}",
+      "snapshotKicker": "Time travel", "snapshotTitle": "{{park}} in {{year}}", "snapshotDescription": "A cautious reconstruction of what was open and known in {{year}}, based solely on the available evidence.",
+      "chooseDate": "Choose a point in time", "year": "Year", "month": "Month", "day": "Day", "wholeYear": "Whole year", "wholeMonth": "Whole month", "travelToDate": "Travel to this date",
+      "suggestedYearsAria": "Suggested key years", "keyYears": "Key years", "coverageTitle": "Reconstruction reliability", "reliableSubjects": "reliably dated items", "nameCoverage": "documented names", "zoneCoverage": "documented areas", "supportingReferences": "supporting references",
+      "coverageExplanation": "Gaps and uncertainties remain visible: this page never turns missing data into certainty.",
+      "identityKicker": "Identity", "identityTitle": "The park at this time", "openKicker": "Established inventory", "knownOpenTitle": "Known to be open ({{count}})", "noKnownOpen": "No open item is yet supported by enough evidence for this date.",
+      "possibleKicker": "Probable scope", "possiblyOpenTitle": "Possibly open ({{count}})", "possiblyOpenExplanation": "The available dates do not yet support a definite conclusion.",
+      "nearbyKicker": "Around this date", "nearbyTitle": "Nearby events", "zonesKicker": "Period map", "zonesTitle": "Documented areas",
+      "uncertainKicker": "Transparency", "uncertainTitle": "What remains uncertain", "uncertainExplanation": "These items are kept separate so the past is not presented with artificial precision.",
+      "todayKicker": "Back to the present", "todayTitle": "Discover the park today", "todayDescription": "See its current information, attractions and visitor guidance.", "viewToday": "View today's park",
+      "evidence": { "Verified": "Verified", "Probable": "Probable", "Disputed": "Disputed", "Unverified": "Unverified" },
+      "operationalStates": { "KnownOpen": "Known open", "KnownClosed": "Known closed", "PossiblyOpen": "Possibly open", "Unknown": "Unknown state" },
+      "coverageStatuses": { "Partial": "Partial coverage", "Substantial": "Substantial coverage", "HighConfidence": "High confidence" },
+      "attributes": { "Logo": "Logo", "Zone": "Area", "Operator": "Operator", "Owner": "Owner", "Manufacturer": "Manufacturer", "Category": "Category", "Theme": "Theme", "Location": "Location", "Status": "Status", "MarketPositioning": "Market positioning" }
     }
   }
 }
