@@ -52,6 +52,21 @@ public static class HistoricalFactEvidenceValidator
                 "A verified or published historical fact requires published and accessible evidence revisions.");
         }
 
+        HistoricalSourceScope[] coreScopes =
+        {
+            HistoricalSourceScope.SubjectIdentity,
+            HistoricalSourceScope.FactType,
+            HistoricalSourceScope.Period,
+        };
+        bool oneSourceCoversCoreAssertion = sources.Any(source =>
+            coreScopes.All(scope => source.Scopes.Contains(scope)));
+        if (!oneSourceCoversCoreAssertion)
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidSourceScope,
+                "At least one historical source must cover the subject, fact type, and period together.");
+        }
+
         HashSet<HistoricalSourceScope> coveredScopes = sources
             .SelectMany(static source => source.Scopes)
             .ToHashSet();

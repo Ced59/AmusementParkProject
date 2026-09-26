@@ -70,6 +70,34 @@ public sealed class HistoricalFactEvidenceValidatorTests
     }
 
     [Fact]
+    public void Validate_WhenPartialSourcesOnlyCoverCoreAssertionTogether_ShouldRejectEvidence()
+    {
+        Guid identitySourceId = Guid.NewGuid();
+        Guid eventSourceId = Guid.NewGuid();
+        HistoricalFact fact = CreateFact(new[] { identitySourceId, eventSourceId });
+        HistoricalSourceReference identitySource = CreateSource(
+            identitySourceId,
+            scopes: new[]
+            {
+                HistoricalSourceScope.SubjectIdentity,
+                HistoricalSourceScope.HistoricalLabel,
+            });
+        HistoricalSourceReference eventSource = CreateSource(
+            eventSourceId,
+            scopes: new[]
+            {
+                HistoricalSourceScope.FactType,
+                HistoricalSourceScope.Period,
+            });
+
+        HistoricalPersistenceValidationException exception =
+            Assert.Throws<HistoricalPersistenceValidationException>(() =>
+                HistoricalFactEvidenceValidator.Validate(fact, new[] { identitySource, eventSource }));
+
+        Assert.Equal(HistoricalPersistenceErrorCodes.InvalidSourceScope, exception.ErrorCode);
+    }
+
+    [Fact]
     public void Validate_WhenSameDaySequenceIsNotCovered_ShouldRejectEvidence()
     {
         Guid sourceId = Guid.NewGuid();
@@ -104,6 +132,13 @@ public sealed class HistoricalFactEvidenceValidatorTests
 
     private static HistoricalFact CreateFact(Guid sourceId, int? sequenceWithinDate = null)
     {
+        return CreateFact(new[] { sourceId }, sequenceWithinDate);
+    }
+
+    private static HistoricalFact CreateFact(
+        IReadOnlyCollection<Guid> sourceIds,
+        int? sequenceWithinDate = null)
+    {
         return new HistoricalFact(
             Guid.NewGuid(),
             new HistoricalSubject(
@@ -122,7 +157,9 @@ public sealed class HistoricalFactEvidenceValidatorTests
             null,
             null,
             sequenceWithinDate,
-            new[] { new HistoricalSourceRevisionReference(sourceId, 2) },
+            sourceIds
+                .Select(static sourceId => new HistoricalSourceRevisionReference(sourceId, 2))
+                .ToArray(),
             null,
             null,
             null,
