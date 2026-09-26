@@ -146,7 +146,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
 
             if (applicability == HistoricalTransitionApplicability.NotOccurred
                 && EstablishesPreviousValueOnRequestedDate(fact, requestedDate)
-                && !HasSequencedSameDayPredecessor(fact, group))
+                && !ShouldSuppressSequencedPreviousValue(fact, group))
             {
                 contributingFactIds.Add(fact.Id);
                 AddPreviousValue(result, fact, reasons);
@@ -192,7 +192,7 @@ internal sealed class HistoricalAttributeSnapshotReducer
             transition => transition.Applicability == HistoricalTransitionApplicability.Applied
                 && HistoricalTransitionOrdering.MustPrecede(currentFact, transition.Fact)));
         currentValueTransitions.RemoveAll(currentFact =>
-            HasSequencedSameDayPredecessor(currentFact, group));
+            ShouldSuppressSequencedPreviousValue(currentFact, group));
         foreach (HistoricalFact fact in currentValueTransitions)
         {
             contributingFactIds.Add(fact.Id);
@@ -355,6 +355,14 @@ internal sealed class HistoricalAttributeSnapshotReducer
                 && candidate.SequenceWithinDate.HasValue
                 && candidate.SequenceWithinDate.Value < fact.SequenceWithinDate.Value
                 && candidate.Period.GetPossibleEnvelope() == factEnvelope);
+    }
+
+    private static bool ShouldSuppressSequencedPreviousValue(
+        HistoricalFact fact,
+        IReadOnlyCollection<HistoricalFact> group)
+    {
+        return fact.AttributeBoundaryMeaning == AttributeBoundaryMeaning.FirstDayOfNewValue
+            && HasSequencedSameDayPredecessor(fact, group);
     }
 
     private static bool PredecessorsWereApplied(
