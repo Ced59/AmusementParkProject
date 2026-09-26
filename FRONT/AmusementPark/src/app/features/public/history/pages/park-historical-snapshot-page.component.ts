@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Data, ParamMap, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Data, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { combineLatest } from 'rxjs';
 
 import {
   PublicHistoricalAttribute,
@@ -14,6 +13,11 @@ import { Park } from '@app/models/parks/park';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
+import {
+  buildPublicParkHistoryRouteCommands,
+  buildPublicParkRouteCommands,
+  buildPublicRoutePath
+} from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { HistoryTimelinePageViewModel } from '../models/history-view.model';
 import { ParkHistoryBreadcrumbSeoService } from '../state/park-history-breadcrumb-seo.service';
@@ -23,6 +27,7 @@ import {
   normalizeHistoricalSnapshotDay,
   resolveHistoricalSnapshotDays
 } from '../utils/history-snapshot-date-selection';
+import { usesCurrentHistoricalSubjectNameFallback } from '../utils/historical-subject-display';
 import {
   PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY,
   ResolvedParkHistoricalSnapshotRouteData
@@ -51,8 +56,6 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
   protected selectedMonth: number | null = null;
   protected selectedDay: number | null = null;
 
-  private readonly parkSlug = signal<string>('park');
-
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
@@ -78,10 +81,9 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
     );
     this.currentLanguage.set(initialLanguage);
 
-    combineLatest([this.route.paramMap, this.route.data])
+    this.route.data
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(([params, data]: [ParamMap, Data]): void => {
-        this.parkSlug.set(params.get('slug')?.trim() || 'park');
+      .subscribe((data: Data): void => {
         const resolved: ResolvedParkHistoricalSnapshotRouteData | undefined = data[PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY];
         this.selectedYear = resolved?.year ?? this.selectedYear;
         this.selectedMonth = resolved?.month ?? null;
@@ -137,11 +139,23 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
   }
 
   protected parkLink(snapshot: PublicParkHistoricalSnapshot): string[] {
-    return ['/', this.currentLanguage(), 'park', snapshot.parkId, this.parkSlug()];
+    return buildPublicParkRouteCommands({
+      language: this.currentLanguage(),
+      parkId: snapshot.parkId,
+      parkName: snapshot.parkName
+    }) ?? [];
   }
 
   protected historyLink(snapshot: PublicParkHistoricalSnapshot): string[] {
-    return [...this.parkLink(snapshot), 'history'];
+    return buildPublicParkHistoryRouteCommands({
+      language: this.currentLanguage(),
+      parkId: snapshot.parkId,
+      parkName: snapshot.parkName
+    }) ?? [];
+  }
+
+  protected usesCurrentNameFallback(subject: PublicHistoricalSubjectSnapshot): boolean {
+    return usesCurrentHistoricalSubjectNameFallback(subject);
   }
 
   protected stateLabel(subject: PublicHistoricalSubjectSnapshot): string {
@@ -199,7 +213,11 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
   }
 
   private applySeo(snapshot: PublicParkHistoricalSnapshot): void {
-    const canonicalPath: string = `/${this.currentLanguage()}/park/${encodeURIComponent(snapshot.parkId)}/${encodeURIComponent(this.parkSlug())}/history/${snapshot.requestedInstant.year}`;
+    const historyCommands: string[] = this.historyLink(snapshot);
+    const canonicalPath: string = buildPublicRoutePath([
+      ...historyCommands,
+      String(snapshot.requestedInstant.year)
+    ]) ?? '/';
     this.seoService.applyHistoryTimelineSeo(
       this.toSeoViewModel(snapshot),
       this.currentLanguage(),
@@ -209,7 +227,7 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
     this.breadcrumbSeoService.apply(
       snapshot.parkId,
       snapshot.parkName,
-      this.parkSlug(),
+      historyCommands[4],
       this.currentLanguage(),
       canonicalPath,
       snapshot.requestedInstant.year

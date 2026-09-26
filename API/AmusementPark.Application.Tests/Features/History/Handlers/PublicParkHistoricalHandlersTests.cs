@@ -125,13 +125,26 @@ public sealed class PublicParkHistoricalHandlersTests
             "Ancienne zone",
             HistoricalSubjectPublicationPolicy.HistoricalOnly,
             park.Id);
-        HistoricalFact third = PublicParkHistoryTestData.CreateOpeningFact(removedZoneSubject, 2010);
+        HistoricalFact third = PublicParkHistoryTestData.CreateOpeningFact(
+            removedZoneSubject,
+            2010,
+            narrativeContentId: "event-1");
         HistoricalSourceReference thirdSource = PublicParkHistoryTestData.CreateSource(third);
+        HistoryEvent narrative = new()
+        {
+            Id = "event-1",
+            EntityType = HistoryEntityType.Park,
+            OwnerId = park.Id,
+            IsVisible = true,
+            IsMajor = true,
+            Article = new HistoryArticle { IsPublished = true },
+        };
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
         Mock<IParkZoneRepository> parkZoneRepository = new(MockBehavior.Strict);
         Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sourceRepository = new(MockBehavior.Strict);
+        Mock<IHistoryEventRepository> historyEventRepository = new(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(park);
@@ -159,12 +172,21 @@ public sealed class PublicParkHistoricalHandlersTests
                         && references.Single().SourceId == thirdSource.Id),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { thirdSource });
+        historyEventRepository
+            .Setup(repository => repository.GetPublishedArticlesByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(
+                    eventIds => eventIds.Count == 1 && eventIds.Single() == narrative.Id),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { narrative });
         PublicParkHistoricalDataLoader loader = CreateLoader(
             parkRepository,
             parkItemRepository,
             parkZoneRepository,
             factRepository);
-        GetPublicParkHistoricalTimelineQueryHandler handler = new(loader, sourceRepository.Object);
+        GetPublicParkHistoricalTimelineQueryHandler handler = new(
+            loader,
+            sourceRepository.Object,
+            historyEventRepository.Object);
 
         ApplicationResult<PublicParkHistoricalTimelineResult> result = await handler.HandleAsync(
             new GetPublicParkHistoricalTimelineQuery("park-1", 2, 2));
@@ -176,8 +198,10 @@ public sealed class PublicParkHistoricalHandlersTests
         PublicHistoricalTimelineEntryResult entry = Assert.Single(timeline.Page.Items);
         Assert.Equal(third.Id, entry.Fact.Id);
         Assert.Equal(thirdSource.Id, Assert.Single(entry.Sources).Id);
+        Assert.Same(narrative, entry.Narrative);
         Assert.Equal("Ancienne zone", timeline.ZoneNames["removed-zone"]);
         sourceRepository.VerifyAll();
+        historyEventRepository.VerifyAll();
     }
 
     [Fact]
@@ -250,7 +274,8 @@ public sealed class PublicParkHistoricalHandlersTests
             new Mock<IHistoricalFactRepository>(MockBehavior.Strict));
         GetPublicParkHistoricalTimelineQueryHandler handler = new(
             loader,
-            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict).Object);
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict).Object,
+            new Mock<IHistoryEventRepository>(MockBehavior.Strict).Object);
 
         ApplicationResult<PublicParkHistoricalTimelineResult> result = await handler.HandleAsync(
             new GetPublicParkHistoricalTimelineQuery("park-1", 1, 51));
@@ -277,7 +302,8 @@ public sealed class PublicParkHistoricalHandlersTests
             factRepository);
         GetPublicParkHistoricalTimelineQueryHandler handler = new(
             loader,
-            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict).Object);
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict).Object,
+            new Mock<IHistoryEventRepository>(MockBehavior.Strict).Object);
 
         ApplicationResult<PublicParkHistoricalTimelineResult> result = await handler.HandleAsync(
             new GetPublicParkHistoricalTimelineQuery("park-1"));
@@ -327,7 +353,10 @@ public sealed class PublicParkHistoricalHandlersTests
             parkItemRepository,
             parkZoneRepository,
             factRepository);
-        GetPublicParkHistoricalTimelineQueryHandler handler = new(loader, sourceRepository.Object);
+        GetPublicParkHistoricalTimelineQueryHandler handler = new(
+            loader,
+            sourceRepository.Object,
+            new Mock<IHistoryEventRepository>(MockBehavior.Strict).Object);
 
         ApplicationResult<PublicParkHistoricalTimelineResult> result = await handler.HandleAsync(
             new GetPublicParkHistoricalTimelineQuery("park-1", int.MaxValue, 50));

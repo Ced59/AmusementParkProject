@@ -26,6 +26,8 @@ public sealed class PublicHistoricalTimelineEntryDto
 
     public string? OtherTypeLabel { get; set; }
 
+    public PublicHistoricalNarrativeDto? Narrative { get; set; }
+
     public IReadOnlyCollection<LocalizedTextDto> UncertaintyExplanations { get; set; } =
         Array.Empty<LocalizedTextDto>();
 

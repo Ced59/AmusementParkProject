@@ -9,6 +9,7 @@
       "chooseYear": "Explora um ano", "exploreYear": "Ver esta época", "unknownDate": "Data desconhecida", "approximateDate": "Por volta de {{date}}",
       "datePeriod": "De {{start}} a {{end}}", "dateFrom": "Desde {{date}}", "dateUntil": "Até {{date}}",
       "dateQualifiers": { "Early": "Início de {{date}}", "Mid": "Meados de {{date}}", "Late": "Fim de {{date}}", "Before": "Antes de {{date}}", "After": "Depois de {{date}}", "Circa": "Por volta de {{date}}" },
+      "dateConfidence": { "Estimated": "{{date}} (estimada)", "Disputed": "{{date}} (contestada)" }, "readNarrative": "Ler a história completa", "currentNameFallback": "É apresentado o nome atual porque não existe um nome histórico documentado.",
       "timelineSummary": "Resumo da cronologia", "documentedEvents": "acontecimentos documentados", "page": "página", "visibleOnPage": "mostrados aqui", "timelineAria": "Cronologia histórica do parque",
       "change": "Mudança documentada", "unknownValue": "Valor desconhecido", "sourcesCount": "{{count}} fonte(s)", "noEventsTitle": "Sem acontecimentos nesta página", "noEventsMessage": "A história do parque crescerá à medida que novas provas forem validadas.",
       "paginationAria": "Paginação da cronologia", "previous": "Anterior", "next": "Seguinte", "pageOf": "Página {{current}} de {{total}}",

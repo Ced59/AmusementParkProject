@@ -87,6 +87,22 @@ internal static class PublicParkHistoryHttpMappers
             PreviousDisplayValue = values.PreviousValue,
             NextDisplayValue = values.NextValue,
             OtherTypeLabel = result.Fact.OtherTypeLabel,
+            Narrative = result.Narrative is null
+                ? null
+                : new PublicHistoricalNarrativeDto
+                {
+                    EventId = result.Narrative.Id,
+                    Slug = result.Narrative.Article?.Slug ?? result.Narrative.Slug,
+                    Titles = (result.Narrative.Article?.Titles.Count > 0
+                            ? result.Narrative.Article.Titles
+                            : result.Narrative.Titles)
+                        .Select(static text => new LocalizedTextDto
+                        {
+                            LanguageCode = text.LanguageCode,
+                            Value = text.Value,
+                        })
+                        .ToArray(),
+                },
             UncertaintyExplanations = result.Fact.PublicUncertaintyExplanation
                 .Select(static text => new LocalizedTextDto
                 {

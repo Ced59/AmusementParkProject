@@ -99,10 +99,28 @@ public sealed class PublicParkHistoryHttpMappersTests
             Name = "Parc témoin",
             IsVisible = true,
         };
+        HistoryEvent narrative = new()
+        {
+            Id = "event-public-1",
+            Slug = "opening-story",
+            Titles = new()
+            {
+                new AmusementPark.Core.Localization.LocalizedText
+                {
+                    LanguageCode = "fr",
+                    Value = "Le récit de l’ouverture",
+                },
+            },
+            Article = new HistoryArticle
+            {
+                IsPublished = true,
+                Slug = "opening-article",
+            },
+        };
         PublicParkHistoricalTimelineResult result = new(
             park,
             new PagedResult<PublicHistoricalTimelineEntryResult>(
-                new[] { new PublicHistoricalTimelineEntryResult(fact, new[] { source }) },
+                new[] { new PublicHistoricalTimelineEntryResult(fact, new[] { source }, narrative) },
                 1,
                 25,
                 1),
@@ -114,6 +132,9 @@ public sealed class PublicParkHistoryHttpMappersTests
 
         Assert.Null(entry.PreviousDisplayValue);
         Assert.Null(entry.NextDisplayValue);
+        Assert.Equal(narrative.Id, entry.Narrative?.EventId);
+        Assert.Equal("opening-article", entry.Narrative?.Slug);
+        Assert.Equal("Le récit de l’ouverture", Assert.Single(entry.Narrative!.Titles).Value);
         Assert.DoesNotContain(factId.ToString(), json, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain(sourceId.ToString(), json, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain("admin-secret-note", json, StringComparison.Ordinal);

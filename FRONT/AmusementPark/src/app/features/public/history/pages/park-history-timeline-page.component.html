@@ -79,6 +79,12 @@
                   <p class="history-uncertainty"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ explanation }}</p>
                 }
 
+                @if (narrativeLink(event, currentTimeline); as articleLink) {
+                  <a class="history-narrative-link" [routerLink]="articleLink">
+                    {{ 'history.explorer.readNarrative' | translate }}<i class="pi pi-arrow-right" aria-hidden="true"></i>
+                  </a>
+                }
+
                 @if (event.sources.length > 0) {
                   <details class="history-sources">
                     <summary>{{ 'history.explorer.sourcesCount' | translate: { count: event.sources.length } }}</summary>

@@ -10,7 +10,9 @@ describe('historical period label', () => {
       'history.explorer.dateFrom': 'Depuis {{date}}',
       'history.explorer.dateUntil': 'Jusqu’au {{date}}',
       'history.explorer.dateQualifiers.Before': 'Avant {{date}}',
-      'history.explorer.dateQualifiers.Circa': 'Vers {{date}}'
+      'history.explorer.dateQualifiers.Circa': 'Vers {{date}}',
+      'history.explorer.dateConfidence.Estimated': '{{date}} (estimation)',
+      'history.explorer.dateConfidence.Disputed': '{{date}} (date contestée)'
     };
     return Object.entries(parameters ?? {}).reduce(
       (value: string, [name, replacement]: [string, string]): string => value.replace(`{{${name}}}`, replacement),
@@ -45,16 +47,29 @@ describe('historical period label', () => {
       start: null,
       end: { year: 1998, precision: 'Year', qualifier: 'Before', isApproximate: true },
       startConfidence: 'Confirmed',
-      endConfidence: 'Estimated'
+      endConfidence: 'Confirmed'
     };
     const circaPeriod: PublicHistoricalPeriod = {
       start: { year: 2001, precision: 'Year', qualifier: 'Circa', isApproximate: true },
       end: { year: 2001, precision: 'Year', qualifier: 'Circa', isApproximate: true },
-      startConfidence: 'Estimated',
-      endConfidence: 'Estimated'
+      startConfidence: 'Confirmed',
+      endConfidence: 'Confirmed'
     };
 
     expect(formatPublicHistoricalPeriod(beforePeriod, 'fr', translate)).toBe('Jusqu’au Vers Avant 1998');
     expect(formatPublicHistoricalPeriod(circaPeriod, 'fr', translate)).toBe('Vers 2001');
+  });
+
+  it('keeps the confidence of each boundary visible', () => {
+    const period: PublicHistoricalPeriod = {
+      start: { year: 1998, precision: 'Year' },
+      end: { year: 2001, precision: 'Year' },
+      startConfidence: 'Estimated',
+      endConfidence: 'Disputed'
+    };
+
+    expect(formatPublicHistoricalPeriod(period, 'fr', translate)).toBe(
+      'Du 1998 (estimation) au 2001 (date contestée)'
+    );
   });
 });

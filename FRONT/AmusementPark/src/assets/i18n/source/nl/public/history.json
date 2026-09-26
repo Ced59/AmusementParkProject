@@ -9,6 +9,7 @@
       "chooseYear": "Verken een jaar", "exploreYear": "Bekijk dit tijdperk", "unknownDate": "Datum onbekend", "approximateDate": "Rond {{date}}",
       "datePeriod": "Van {{start}} tot {{end}}", "dateFrom": "Sinds {{date}}", "dateUntil": "Tot {{date}}",
       "dateQualifiers": { "Early": "Begin {{date}}", "Mid": "Midden {{date}}", "Late": "Eind {{date}}", "Before": "Vóór {{date}}", "After": "Na {{date}}", "Circa": "Rond {{date}}" },
+      "dateConfidence": { "Estimated": "{{date}} (geschat)", "Disputed": "{{date}} (betwist)" }, "readNarrative": "Lees het volledige verhaal", "currentNameFallback": "De huidige naam wordt getoond omdat geen historische naam is gedocumenteerd.",
       "timelineSummary": "Samenvatting van de tijdlijn", "documentedEvents": "gedocumenteerde gebeurtenissen", "page": "pagina", "visibleOnPage": "hier getoond", "timelineAria": "Historische tijdlijn van het park",
       "change": "Gedocumenteerde verandering", "unknownValue": "Onbekende waarde", "sourcesCount": "{{count}} bron(nen)", "noEventsTitle": "Geen gebeurtenissen op deze pagina", "noEventsMessage": "De geschiedenis van het park groeit zodra nieuw bewijs is gevalideerd.",
       "paginationAria": "Paginering van de tijdlijn", "previous": "Vorige", "next": "Volgende", "pageOf": "Pagina {{current}} van {{total}}",

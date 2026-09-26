@@ -9,6 +9,7 @@
       "chooseYear": "Explore a year", "exploreYear": "View this era", "unknownDate": "Unknown date", "approximateDate": "Around {{date}}",
       "datePeriod": "From {{start}} to {{end}}", "dateFrom": "Since {{date}}", "dateUntil": "Until {{date}}",
       "dateQualifiers": { "Early": "Early {{date}}", "Mid": "Mid-{{date}}", "Late": "Late {{date}}", "Before": "Before {{date}}", "After": "After {{date}}", "Circa": "Around {{date}}" },
+      "dateConfidence": { "Estimated": "{{date}} (estimated)", "Disputed": "{{date}} (disputed)" }, "readNarrative": "Read the full story", "currentNameFallback": "Current name shown because no historical name is documented.",
       "timelineSummary": "Timeline summary", "documentedEvents": "documented events", "page": "page", "visibleOnPage": "shown here", "timelineAria": "Park history timeline",
       "change": "Documented change", "unknownValue": "Unknown value", "sourcesCount": "{{count}} source(s)",
       "noEventsTitle": "No events on this page", "noEventsMessage": "The park's history will grow as new evidence is validated.",

@@ -92,6 +92,22 @@
   line-height: 1.12;
 }
 
+.history-narrative-link {
+  align-items: center;
+  color: var(--app-color-primary, #ff5a36);
+  display: inline-flex;
+  font-weight: 800;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.history-narrative-link:hover,
+.history-narrative-link:focus-visible {
+  text-decoration: underline;
+}
+
 .history-transition {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);

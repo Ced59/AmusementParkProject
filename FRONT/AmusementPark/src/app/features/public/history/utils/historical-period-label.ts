@@ -18,25 +18,41 @@ export function formatPublicHistoricalPeriod(
   }
 
   if (start && end && historicalDatesAreEqual(start, end)) {
-    return formatPublicHistoricalDate(start, language, translate);
+    return formatPublicHistoricalBoundary(start, period.startConfidence, language, translate);
   }
 
   if (start && end) {
     return translate('history.explorer.datePeriod', {
-      start: formatPublicHistoricalDate(start, language, translate),
-      end: formatPublicHistoricalDate(end, language, translate)
+      start: formatPublicHistoricalBoundary(start, period.startConfidence, language, translate),
+      end: formatPublicHistoricalBoundary(end, period.endConfidence, language, translate)
     });
   }
 
   if (start) {
     return translate('history.explorer.dateFrom', {
-      date: formatPublicHistoricalDate(start, language, translate)
+      date: formatPublicHistoricalBoundary(start, period.startConfidence, language, translate)
     });
   }
 
   return translate('history.explorer.dateUntil', {
-    date: formatPublicHistoricalDate(end!, language, translate)
+    date: formatPublicHistoricalBoundary(end!, period.endConfidence, language, translate)
   });
+}
+
+function formatPublicHistoricalBoundary(
+  date: PublicHistoricalDate,
+  confidence: string,
+  language: string,
+  translate: HistoricalPeriodLabelTranslator
+): string {
+  const formatted: string = formatPublicHistoricalDate(date, language, translate);
+  if (confidence === 'Confirmed') {
+    return formatted;
+  }
+
+  const confidenceKey: string = `history.explorer.dateConfidence.${confidence}`;
+  const qualified: string = translate(confidenceKey, { date: formatted });
+  return qualified === confidenceKey ? formatted : qualified;
 }
 
 function formatPublicHistoricalDate(

@@ -5761,6 +5761,12 @@
         "After": "After {{date}}",
         "Circa": "Around {{date}}"
       },
+      "dateConfidence": {
+        "Estimated": "{{date}} (estimated)",
+        "Disputed": "{{date}} (disputed)"
+      },
+      "readNarrative": "Read the full story",
+      "currentNameFallback": "Current name shown because no historical name is documented.",
       "timelineSummary": "Timeline summary",
       "documentedEvents": "documented events",
       "page": "page",

@@ -5761,6 +5761,12 @@
         "After": "Nach {{date}}",
         "Circa": "Um {{date}}"
       },
+      "dateConfidence": {
+        "Estimated": "{{date}} (geschätzt)",
+        "Disputed": "{{date}} (umstritten)"
+      },
+      "readNarrative": "Die ganze Geschichte lesen",
+      "currentNameFallback": "Der heutige Name wird angezeigt, da kein historischer Name belegt ist.",
       "timelineSummary": "Zusammenfassung der Zeitleiste",
       "documentedEvents": "belegte Ereignisse",
       "page": "Seite",

@@ -7,6 +7,10 @@ public interface IHistoryEventRepository
 {
     Task<HistoryEvent?> GetByIdAsync(string eventId, bool includeHidden, CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<HistoryEvent>> GetPublishedArticlesByIdsAsync(
+        IReadOnlyCollection<string> eventIds,
+        CancellationToken cancellationToken);
+
     Task<HistoryEvent?> GetByOwnerKeyAsync(HistoryEntityType entityType, string ownerId, string key, CancellationToken cancellationToken);
 
     Task<PagedResult<HistoryEvent>> GetAdminPageAsync(int page, int pageSize, HistoryEntityType? entityType, string? ownerId, string? search, CancellationToken cancellationToken);

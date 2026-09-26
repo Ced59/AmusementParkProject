@@ -4,4 +4,5 @@ namespace AmusementPark.Application.Features.History.Results;
 
 public sealed record PublicHistoricalTimelineEntryResult(
     HistoricalFact Fact,
-    IReadOnlyCollection<HistoricalSourceReference> Sources);
+    IReadOnlyCollection<HistoricalSourceReference> Sources,
+    HistoryEvent? Narrative = null);

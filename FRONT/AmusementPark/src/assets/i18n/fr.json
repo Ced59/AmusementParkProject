@@ -5761,6 +5761,12 @@
         "After": "Après {{date}}",
         "Circa": "Vers {{date}}"
       },
+      "dateConfidence": {
+        "Estimated": "{{date}} (estimation)",
+        "Disputed": "{{date}} (date contestée)"
+      },
+      "readNarrative": "Lire le récit complet",
+      "currentNameFallback": "Nom actuel utilisé faute de nom historique documenté.",
       "timelineSummary": "Résumé de la frise",
       "documentedEvents": "événements documentés",
       "page": "page",

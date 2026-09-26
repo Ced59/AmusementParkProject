@@ -52,7 +52,8 @@ internal static class PublicParkHistoryTestData
         HistoricalSubject subject,
         int year,
         Guid? factId = null,
-        Guid? sourceId = null)
+        Guid? sourceId = null,
+        string? narrativeContentId = null)
     {
         HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(year));
         HistoricalSourceRevisionReference sourceReference = CreateSourceReference(
@@ -60,7 +61,8 @@ internal static class PublicParkHistoryTestData
             subject,
             HistoricalFactType.Opening,
             period,
-            LifecycleBoundaryMeaning.FirstOperatingDay);
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            narrativeContentId);
         return new HistoricalFact(
             factId ?? Guid.NewGuid(),
             subject,
@@ -78,7 +80,7 @@ internal static class PublicParkHistoryTestData
             new[] { sourceReference },
             null,
             null,
-            null,
+            narrativeContentId,
             RecordedAtUtc.AddMinutes(-2),
             RecordedAtUtc.AddMinutes(-1),
             ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion,
@@ -116,7 +118,8 @@ internal static class PublicParkHistoryTestData
         HistoricalSubject subject,
         HistoricalFactType factType,
         HistoricalPeriod period,
-        LifecycleBoundaryMeaning lifecycleBoundaryMeaning)
+        LifecycleBoundaryMeaning lifecycleBoundaryMeaning,
+        string? narrativeContentId)
     {
         HistoricalSourceScope[] scopes =
         {
@@ -125,6 +128,10 @@ internal static class PublicParkHistoryTestData
             HistoricalSourceScope.FactType,
             HistoricalSourceScope.Period,
         };
+        if (narrativeContentId is not null)
+        {
+            scopes = scopes.Append(HistoricalSourceScope.Narrative).ToArray();
+        }
         return new HistoricalSourceRevisionReference(
             sourceId,
             2,
@@ -137,7 +144,7 @@ internal static class PublicParkHistoryTestData
             subject.HistoricalLabel,
             null,
             null,
-            null,
+            narrativeContentId,
             null,
             lifecycleBoundaryMeaning,
             null,

@@ -5761,6 +5761,12 @@
         "After": "Na {{date}}",
         "Circa": "Rond {{date}}"
       },
+      "dateConfidence": {
+        "Estimated": "{{date}} (geschat)",
+        "Disputed": "{{date}} (betwist)"
+      },
+      "readNarrative": "Lees het volledige verhaal",
+      "currentNameFallback": "De huidige naam wordt getoond omdat geen historische naam is gedocumenteerd.",
       "timelineSummary": "Samenvatting van de tijdlijn",
       "documentedEvents": "gedocumenteerde gebeurtenissen",
       "page": "pagina",

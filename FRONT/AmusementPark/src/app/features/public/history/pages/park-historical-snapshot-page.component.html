@@ -82,6 +82,7 @@
             <div>
               <span class="history-badge {{ stateClass(identity) }}">{{ stateLabel(identity) }}</span>
               <h3>{{ identity.displayName }}</h3>
+              @if (usesCurrentNameFallback(identity)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
             </div>
             @if (visibleAttributes(identity).length > 0) {
               <dl>
@@ -105,6 +106,7 @@
               <article class="snapshot-subject-card">
                 <span class="history-badge {{ stateClass(subject) }}">{{ stateLabel(subject) }}</span>
                 <h3>{{ subject.displayName }}</h3>
+                @if (usesCurrentNameFallback(subject)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
                 @if (visibleAttributes(subject).length > 0) {
                   <dl>
                     @for (attribute of visibleAttributes(subject); track attribute.kind) {
@@ -132,6 +134,7 @@
               <article class="snapshot-subject-card">
                 <span class="history-badge {{ stateClass(subject) }}">{{ stateLabel(subject) }}</span>
                 <h3>{{ subject.displayName }}</h3>
+                @if (usesCurrentNameFallback(subject)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
                 <p>{{ 'history.explorer.possiblyOpenExplanation' | translate }}</p>
                 <small>{{ 'history.explorer.sourcesCount' | translate: { count: subject.supportingSourceCount } }}</small>
               </article>
@@ -148,7 +151,10 @@
           </header>
           <div class="snapshot-zone-list">
             @for (zone of zones(); track subjectKey(zone)) {
-              <article><i class="pi pi-map-marker" aria-hidden="true"></i><span>{{ zone.displayName }}</span><small>{{ stateLabel(zone) }}</small></article>
+              <article>
+                <i class="pi pi-map-marker" aria-hidden="true"></i><span>{{ zone.displayName }}</span><small>{{ stateLabel(zone) }}</small>
+                @if (usesCurrentNameFallback(zone)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
+              </article>
             }
           </div>
         </section>
@@ -162,7 +168,9 @@
           </header>
           <p>{{ 'history.explorer.uncertainExplanation' | translate }}</p>
           <ul class="snapshot-uncertain-list">
-            @for (subject of uncertainSubjects(); track subjectKey(subject)) { <li>{{ subject.displayName }}</li> }
+            @for (subject of uncertainSubjects(); track subjectKey(subject)) {
+              <li>{{ subject.displayName }} @if (usesCurrentNameFallback(subject)) { <small class="snapshot-name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }</li>
+            }
             @for (ambiguity of currentSnapshot.ambiguities; track ambiguity.subjectType + ambiguity.subjectId + ambiguity.code) { <li>{{ ambiguity.subjectLabel }}</li> }
           </ul>
         </section>

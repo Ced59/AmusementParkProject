@@ -32,6 +32,34 @@ public sealed class HistoryEventRepository : IHistoryEventRepository
         return document?.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<HistoryEvent>> GetPublishedArticlesByIdsAsync(
+        IReadOnlyCollection<string> eventIds,
+        CancellationToken cancellationToken)
+    {
+        string[] normalizedIds = eventIds
+            .Where(static eventId => !string.IsNullOrWhiteSpace(eventId))
+            .Select(static eventId => eventId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedIds.Length == 0)
+        {
+            return Array.Empty<HistoryEvent>();
+        }
+
+        FilterDefinitionBuilder<HistoryEventDocument> builder = Builders<HistoryEventDocument>.Filter;
+        FilterDefinition<HistoryEventDocument> filter =
+            builder.In(document => document.Id, normalizedIds)
+            & builder.Eq(document => document.IsVisible, true)
+            & builder.Eq(document => document.IsMajor, true)
+            & builder.Ne(document => document.Article, null)
+            & builder.Eq("article.isPublished", true);
+        List<HistoryEventDocument> documents = await this.collection.Find(filter)
+            .Project<HistoryEventDocument>(BuildTimelineProjection())
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<HistoryEvent?> GetByOwnerKeyAsync(HistoryEntityType entityType, string ownerId, string key, CancellationToken cancellationToken)
     {
         FilterDefinition<HistoryEventDocument> filter =

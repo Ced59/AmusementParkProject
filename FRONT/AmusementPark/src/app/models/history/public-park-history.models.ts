@@ -46,6 +46,11 @@ export interface PublicHistoricalTimelineEntry {
   previousDisplayValue?: string | null;
   nextDisplayValue?: string | null;
   otherTypeLabel?: string | null;
+  narrative?: {
+    eventId: string;
+    slug?: string | null;
+    titles: PublicHistoricalLocalizedText[];
+  } | null;
   uncertaintyExplanations: PublicHistoricalLocalizedText[];
   sources: PublicHistoricalSource[];
 }

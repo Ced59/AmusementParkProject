@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, effect, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Data, ParamMap, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Data, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { combineLatest } from 'rxjs';
 
 import {
   PublicHistoricalTimelineEntry,
@@ -13,6 +12,11 @@ import { Park } from '@app/models/parks/park';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
+import {
+  buildPublicParkHistoryRouteCommands,
+  buildPublicParkRouteCommands,
+  buildPublicRoutePath
+} from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { HistoryTimelineEventViewModel, HistoryTimelinePageRangeViewModel, HistoryTimelinePageViewModel } from '../models/history-view.model';
@@ -20,6 +24,7 @@ import { ParkHistoryBreadcrumbSeoService } from '../state/park-history-breadcrum
 import { ParkHistoryExplorerStateFacade } from '../state/park-history-explorer-state.facade';
 import { resolveHistoryEventTypeLabel } from '../utils/history-event-labels';
 import { formatPublicHistoricalPeriod } from '../utils/historical-period-label';
+import { buildCanonicalHistoryNarrativeLink } from '../utils/history-narrative-link';
 import {
   PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY,
   ResolvedParkHistoryTimelineRouteData
@@ -40,8 +45,6 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
   protected requestedYear: number | null = null;
 
   private readonly currentPage = signal<number>(1);
-  private readonly parkSlug = signal<string>('park');
-
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
@@ -67,10 +70,9 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
     );
     this.currentLanguage.set(initialLanguage);
 
-    combineLatest([this.route.paramMap, this.route.data])
+    this.route.data
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(([params, data]: [ParamMap, Data]): void => {
-        this.parkSlug.set(params.get('slug')?.trim() || 'park');
+      .subscribe((data: Data): void => {
         const resolved: ResolvedParkHistoryTimelineRouteData | undefined = data[PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY];
         this.currentPage.set(resolved?.page ?? 1);
         this.stateFacade.setResolvedTimeline(resolved?.timeline ?? null);
@@ -99,11 +101,23 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
   }
 
   protected parkLink(timeline: PublicParkHistoricalTimeline): string[] {
-    return ['/', this.currentLanguage(), 'park', timeline.parkId, this.parkSlug()];
+    return buildPublicParkRouteCommands({
+      language: this.currentLanguage(),
+      parkId: timeline.parkId,
+      parkName: timeline.parkName
+    }) ?? [];
   }
 
   protected historyLink(timeline: PublicParkHistoricalTimeline): string[] {
-    return this.historyBaseLink(timeline);
+    return buildPublicParkHistoryRouteCommands({
+      language: this.currentLanguage(),
+      parkId: timeline.parkId,
+      parkName: timeline.parkName
+    }) ?? [];
+  }
+
+  protected narrativeLink(entry: PublicHistoricalTimelineEntry, timeline: PublicParkHistoricalTimeline): string[] | null {
+    return buildCanonicalHistoryNarrativeLink(entry, timeline, this.currentLanguage());
   }
 
   protected pageLink(timeline: PublicParkHistoricalTimeline, page: number): string[] {
@@ -159,7 +173,7 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
   }
 
   private historyBaseLink(timeline: PublicParkHistoricalTimeline): string[] {
-    return [...this.parkLink(timeline), 'history'];
+    return this.historyLink(timeline);
   }
 
   private latestYear(timeline: PublicParkHistoricalTimeline | null): number | null {
@@ -176,9 +190,10 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
   }
 
   private applySeo(timeline: PublicParkHistoricalTimeline): void {
+    const canonicalCommands: string[] = this.historyLink(timeline);
     const canonicalPath: string = this.currentPage() <= 1
-      ? `/${this.currentLanguage()}/park/${encodeURIComponent(timeline.parkId)}/${encodeURIComponent(this.parkSlug())}/history`
-      : `/${this.currentLanguage()}/park/${encodeURIComponent(timeline.parkId)}/${encodeURIComponent(this.parkSlug())}/history/page/${this.currentPage()}`;
+      ? buildPublicRoutePath(canonicalCommands) ?? '/'
+      : buildPublicRoutePath([...canonicalCommands, 'page', String(this.currentPage())]) ?? '/';
     this.seoService.applyHistoryTimelineSeo(
       this.toSeoViewModel(timeline),
       this.currentLanguage(),
@@ -188,7 +203,7 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
     this.breadcrumbSeoService.apply(
       timeline.parkId,
       timeline.parkName,
-      this.parkSlug(),
+      canonicalCommands[4],
       this.currentLanguage(),
       canonicalPath
     );
