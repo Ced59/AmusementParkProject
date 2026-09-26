@@ -598,6 +598,28 @@ public sealed class ParkHistoricalSnapshotBuilderTests
     }
 
     [Fact]
+    public void Build_CoarseFirstClosedBoundaryBeforeVerifiedOpening_RemainsClosed()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(2000, 6, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact closure = CreateLifecycleFact(
+            HistoricalFactType.DefinitiveClosure,
+            HistoricalDate.ForYear(2000),
+            LifecycleBoundaryMeaning.FirstClosedDay);
+
+        HistoricalSubjectSnapshot snapshot = this.BuildSubject(
+            HistoricalInstant.ForDay(2000, 1, 1),
+            new[] { opening, closure });
+
+        Assert.Equal(HistoricalOperationalState.KnownClosed, snapshot.OperationalState);
+        Assert.Contains(
+            snapshot.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.BeforeConfirmedInitialOpening);
+    }
+
+    [Fact]
     public void Build_DayBeforeExactReopening_UsesNegativeClosureEvidence()
     {
         HistoricalFact reopening = CreateLifecycleFact(
@@ -887,6 +909,30 @@ public sealed class ParkHistoricalSnapshotBuilderTests
             attribute.Reasons,
             item => item.Code == HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue);
         Assert.Equal(new[] { malformedRenaming.Id }, reason.FactIds);
+    }
+
+    [Fact]
+    public void Build_WithMissingPreviousAttributeValue_UsesUnexplainedUnknown()
+    {
+        HistoricalFact opening = CreateLifecycleFact(
+            HistoricalFactType.Opening,
+            HistoricalDate.ForDay(1990, 1, 1),
+            LifecycleBoundaryMeaning.FirstOperatingDay);
+        HistoricalFact nextOnlyRenaming = CreateAttributeFact(
+            HistoricalDate.ForDay(2000, 5, 1),
+            AttributeBoundaryMeaning.FirstDayOfNewValue,
+            "Valeur ignorée",
+            "Nom B",
+            structuredValueOverride: "{\"next\":\"Nom B\"}");
+
+        HistoricalAttributeSnapshot attribute = Assert.Single(this.BuildSubject(
+            HistoricalInstant.ForDay(1999, 1, 1),
+            new[] { opening, nextOnlyRenaming }).Attributes);
+
+        Assert.Equal(HistoricalAttributeValueState.Unknown, attribute.State);
+        Assert.DoesNotContain(
+            attribute.Reasons,
+            reason => reason.Code == HistoricalSnapshotReasonCode.InvalidStructuredAttributeValue);
     }
 
     [Fact]

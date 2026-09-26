@@ -507,6 +507,12 @@ internal sealed class HistoricalLifecycleSnapshotReducer
 
         if (IsBeforeLatestCoarseFirstClosedBoundary(fact, requestedDate))
         {
+            if (currentStates.Count == 1
+                && currentStates.Contains(HistoricalOperationalState.KnownClosed))
+            {
+                return currentStates;
+            }
+
             result.Add(HistoricalOperationalState.KnownOpen);
             if (currentStates.Contains(HistoricalOperationalState.KnownClosed))
             {
