@@ -157,10 +157,7 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                 && IsDayBeforeExactFirstClosedDay(fact, requestedDate))
             {
                 contributingFactIds.Add(fact.Id);
-                result = new HashSet<HistoricalOperationalState>
-                {
-                    HistoricalOperationalState.KnownOpen,
-                };
+                result = ApplyPositiveActivityEvidence(result, fact, reasons);
                 continue;
             }
 
@@ -231,10 +228,10 @@ internal sealed class HistoricalLifecycleSnapshotReducer
 
         if (applicableTransitions.Count == 0)
         {
-            return new HashSet<HistoricalOperationalState>
-            {
-                HistoricalOperationalState.KnownOpen,
-            };
+            return ApplyPositiveActivityEvidence(
+                states,
+                positiveActivityFacts[0],
+                reasons);
         }
 
         if (applicableTransitions.Count > MaximumExactPermutationGroupSize)
@@ -246,7 +243,10 @@ internal sealed class HistoricalLifecycleSnapshotReducer
                 reasons);
             if (positiveActivityFacts.Count > 0)
             {
-                largeGroupResult.Add(HistoricalOperationalState.KnownOpen);
+                largeGroupResult = ApplyPositiveActivityEvidence(
+                    largeGroupResult,
+                    positiveActivityFacts[0],
+                    reasons);
             }
 
             return largeGroupResult;
@@ -318,9 +318,29 @@ internal sealed class HistoricalLifecycleSnapshotReducer
 
         if (positiveActivityFacts.Count > 0)
         {
-            result.Add(HistoricalOperationalState.KnownOpen);
+            result = ApplyPositiveActivityEvidence(
+                result,
+                positiveActivityFacts[0],
+                reasons);
         }
 
+        return result;
+    }
+
+    private static HashSet<HistoricalOperationalState> ApplyPositiveActivityEvidence(
+        IReadOnlyCollection<HistoricalOperationalState> states,
+        HistoricalFact fact,
+        HistoricalSnapshotReasonCollector reasons)
+    {
+        HashSet<HistoricalOperationalState> result = states
+            .Where(static state => state != HistoricalOperationalState.Unknown)
+            .ToHashSet();
+        if (result.Contains(HistoricalOperationalState.KnownClosed))
+        {
+            reasons.Add(HistoricalSnapshotReasonCode.InconsistentLifecycleSequence, fact);
+        }
+
+        result.Add(HistoricalOperationalState.KnownOpen);
         return result;
     }
 
