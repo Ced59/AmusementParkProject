@@ -123,7 +123,7 @@ public sealed class PublicParkHistoricalHandlersTests
         HistoricalSubject visibleSubject = new(
             HistoricalSubjectType.ParkItem,
             visibleItem.Id,
-            visibleItem.Name,
+            "Ancien nom documenté",
             HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
             park.Id);
         HistoricalSubject removedSubject = new(
@@ -229,7 +229,9 @@ public sealed class PublicParkHistoricalHandlersTests
         Assert.Equal(visibleSource.Id, Assert.Single(visibleEntry.Sources).Id);
         Assert.Equal(removedSource.Id, Assert.Single(removedEntry.Sources).Id);
         Assert.Same(visibleNarrative, visibleEntry.Narrative);
+        Assert.Equal(visibleItem.Name, visibleEntry.CurrentSubjectName);
         Assert.Null(removedEntry.Narrative);
+        Assert.Null(removedEntry.CurrentSubjectName);
         sourceRepository.VerifyAll();
         historyEventRepository.VerifyAll();
     }

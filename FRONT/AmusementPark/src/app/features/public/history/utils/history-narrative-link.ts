@@ -25,7 +25,7 @@ export function buildCanonicalHistoryNarrativeLink(
       parkId: timeline.parkId,
       parkName: timeline.parkName,
       itemId: entry.subjectId,
-      itemName: entry.subjectLabel,
+      itemName: entry.currentSubjectName ?? entry.subjectLabel,
       eventId: entry.narrative.eventId,
       eventTitle
     });

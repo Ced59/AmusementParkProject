@@ -21,7 +21,12 @@ describe('history narrative link', () => {
   });
 
   it('keeps park item narratives under their contextual item route', () => {
-    const entry: PublicHistoricalTimelineEntry = createEntry('ParkItem', 'item-1', 'Le Grand Huit');
+    const entry: PublicHistoricalTimelineEntry = createEntry(
+      'ParkItem',
+      'item-1',
+      'Ancien Grand Huit',
+      'Le Grand Huit'
+    );
 
     expect(buildCanonicalHistoryNarrativeLink(entry, timeline, 'fr')).toEqual([
       '/', 'fr', 'park', 'park-1', 'parc-asterix', 'item', 'item-1', 'le-grand-huit',
@@ -30,11 +35,17 @@ describe('history narrative link', () => {
   });
 });
 
-function createEntry(subjectType: string, subjectId: string, subjectLabel: string): PublicHistoricalTimelineEntry {
+function createEntry(
+  subjectType: string,
+  subjectId: string,
+  subjectLabel: string,
+  currentSubjectName: string | null = null
+): PublicHistoricalTimelineEntry {
   return {
     subjectType,
     subjectId,
     subjectLabel,
+    currentSubjectName,
     factType: 'Opening',
     period: {
       start: { year: 1989, precision: 'Year' },

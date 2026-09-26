@@ -38,6 +38,7 @@ export interface PublicHistoricalTimelineEntry {
   subjectType: string;
   subjectId: string;
   subjectLabel: string;
+  currentSubjectName?: string | null;
   factType: string;
   period: PublicHistoricalPeriod;
   evidenceState: string;

@@ -10,6 +10,8 @@ public sealed class PublicHistoricalTimelineEntryDto
 
     public string SubjectLabel { get; set; } = string.Empty;
 
+    public string? CurrentSubjectName { get; set; }
+
     public string FactType { get; set; } = string.Empty;
 
     public PublicHistoricalPeriodDto Period { get; set; } = new PublicHistoricalPeriodDto();

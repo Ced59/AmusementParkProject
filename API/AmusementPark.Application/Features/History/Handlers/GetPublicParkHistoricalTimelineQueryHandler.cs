@@ -85,9 +85,8 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
         Dictionary<string, HistoryEvent> publicNarratives = loadedNarratives.ToDictionary(
             static narrative => narrative.Id,
             StringComparer.Ordinal);
-        HashSet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjects = scope.PublicCurrentSubjects
-            .Select(static subject => (subject.Type, subject.Id))
-            .ToHashSet();
+        Dictionary<(HistoricalSubjectType Type, string Id), HistoricalSubject> publicCurrentSubjects =
+            scope.PublicCurrentSubjects.ToDictionary(static subject => (subject.Type, subject.Id));
         PublicHistoricalTimelineEntryResult[] entries = pageFacts
             .Select(fact => new PublicHistoricalTimelineEntryResult(
                 fact,
@@ -97,7 +96,8 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                     .Where(static source => source is not null)
                     .Select(static source => source!)
                     .ToArray(),
-                ResolvePublicNarrative(fact, publicNarratives, publicCurrentSubjects)))
+                ResolvePublicNarrative(fact, publicNarratives, publicCurrentSubjects),
+                ResolveCurrentSubjectName(fact, publicCurrentSubjects)))
             .ToArray();
         PagedResult<PublicHistoricalTimelineEntryResult> page = new(
             entries,
@@ -114,11 +114,11 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
     private static HistoryEvent? ResolvePublicNarrative(
         HistoricalFact fact,
         IReadOnlyDictionary<string, HistoryEvent> narratives,
-        IReadOnlySet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjects)
+        IReadOnlyDictionary<(HistoricalSubjectType Type, string Id), HistoricalSubject> publicCurrentSubjects)
     {
         if (fact.NarrativeContentId is null
             || !narratives.TryGetValue(fact.NarrativeContentId, out HistoryEvent? narrative)
-            || !publicCurrentSubjects.Contains((fact.Subject.Type, fact.Subject.Id)))
+            || !publicCurrentSubjects.ContainsKey((fact.Subject.Type, fact.Subject.Id)))
         {
             return null;
         }
@@ -133,5 +133,17 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             && string.Equals(narrative.OwnerId, fact.Subject.Id, StringComparison.Ordinal)
                 ? narrative
                 : null;
+    }
+
+    private static string? ResolveCurrentSubjectName(
+        HistoricalFact fact,
+        IReadOnlyDictionary<(HistoricalSubjectType Type, string Id), HistoricalSubject> publicCurrentSubjects)
+    {
+        return fact.Subject.Type == HistoricalSubjectType.ParkItem
+            && publicCurrentSubjects.TryGetValue(
+                (fact.Subject.Type, fact.Subject.Id),
+                out HistoricalSubject? currentSubject)
+                    ? currentSubject.HistoricalLabel
+                    : null;
     }
 }

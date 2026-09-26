@@ -120,7 +120,14 @@ public sealed class PublicParkHistoryHttpMappersTests
         PublicParkHistoricalTimelineResult result = new(
             park,
             new PagedResult<PublicHistoricalTimelineEntryResult>(
-                new[] { new PublicHistoricalTimelineEntryResult(fact, new[] { source }, narrative) },
+                new[]
+                {
+                    new PublicHistoricalTimelineEntryResult(
+                        fact,
+                        new[] { source },
+                        narrative,
+                        "Nom public actuel"),
+                },
                 1,
                 25,
                 1),
@@ -132,6 +139,7 @@ public sealed class PublicParkHistoryHttpMappersTests
 
         Assert.Null(entry.PreviousDisplayValue);
         Assert.Null(entry.NextDisplayValue);
+        Assert.Equal("Nom public actuel", entry.CurrentSubjectName);
         Assert.Equal(narrative.Id, entry.Narrative?.EventId);
         Assert.Equal("opening-article", entry.Narrative?.Slug);
         Assert.Equal("Le récit de l’ouverture", Assert.Single(entry.Narrative!.Titles).Value);
