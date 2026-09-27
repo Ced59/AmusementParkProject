@@ -5843,6 +5843,46 @@
         "Status": "Status",
         "MarketPositioning": "Market positioning"
       }
+    },
+    "lineage": {
+      "breadcrumbAria": "Historical lineage breadcrumb",
+      "home": "Home",
+      "kicker": "Evidence-backed historical links",
+      "title": "The lineage of {{subject}}",
+      "description": "Explore only renames, moves, replacements and other links confirmed by sources. No relationship is guessed.",
+      "seoTitle": "Historical lineage of {{subject}}",
+      "seoDescription": "Explore the sourced historical relationships of {{subject}}, their period and evidence level.",
+      "summaryAria": "Lineage summary",
+      "subjectCount": "connected subjects",
+      "relationCount": "documented relationships",
+      "listAria": "Documented historical relationships",
+      "from": "Starting subject",
+      "to": "Related subject",
+      "historicalOnly": "Historical subject",
+      "open": "Explore the lineage",
+      "sources": "{{count}} source(s)",
+      "noPublicSource": "The reference exists, but it cannot be published directly.",
+      "truncated": "This view stops at {{depth}} levels to remain readable. More documented links exist.",
+      "cycle": "This lineage contains a directed cycle shown for transparency.",
+      "notFoundTitle": "Lineage not found",
+      "notFoundMessage": "No published historical relationship is available for this subject.",
+      "evidence": {
+        "Verified": "Verified",
+        "Probable": "Probable",
+        "Disputed": "Disputed",
+        "Unverified": "Unverified"
+      },
+      "relationTypes": {
+        "RenamedTo": "Renamed to",
+        "ReplacedBy": "Replaced by",
+        "MovedTo": "Moved to",
+        "RethemedAs": "Rethemed as",
+        "SuccessorOf": "Successor of",
+        "SamePhysicalAssetAs": "Same physical installation",
+        "SharesLocationWith": "Shares the same location",
+        "OperatedByDuring": "Operated by during this period",
+        "LocatedInZoneDuring": "Located in this area during this period"
+      }
     }
   },
   "home": {

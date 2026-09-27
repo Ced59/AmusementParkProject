@@ -5,4 +5,12 @@ namespace AmusementPark.Application.Features.History.Ports;
 public interface IHistoricalSubjectPublicationStateReader
 {
     Task<bool> IsPublicAsync(HistoricalSubject subject, CancellationToken cancellationToken);
+
+    Task<IReadOnlySet<HistoricalSubjectKey>> GetPublicSubjectKeysAsync(
+        IReadOnlyCollection<HistoricalSubject> subjects,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyDictionary<string, string>> GetPublicParkNamesAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken);
 }

@@ -14,6 +14,7 @@ import { SeoService } from '@core/seo/seo.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import {
   buildPublicParkHistoryRouteCommands,
+  buildPublicHistoricalLineageRouteCommands,
   buildPublicParkRouteCommands,
   buildPublicRoutePath
 } from '@shared/utils/routing/public-detail-route.helpers';
@@ -120,6 +121,19 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
 
   protected narrativeLink(entry: PublicHistoricalTimelineEntry, timeline: PublicParkHistoricalTimeline): string[] | null {
     return buildCanonicalHistoryNarrativeLink(entry, timeline, this.currentLanguage());
+  }
+
+  protected lineageLink(
+    entry: PublicHistoricalTimelineEntry,
+    timeline: PublicParkHistoricalTimeline
+  ): string[] | null {
+    return buildPublicHistoricalLineageRouteCommands({
+      language: this.currentLanguage(),
+      contextParkId: timeline.parkId,
+      subjectType: entry.subjectType,
+      subjectId: entry.subjectId,
+      subjectLabel: entry.subjectLabel
+    });
   }
 
   protected displayedPageCount(timeline: PublicParkHistoricalTimeline): number {

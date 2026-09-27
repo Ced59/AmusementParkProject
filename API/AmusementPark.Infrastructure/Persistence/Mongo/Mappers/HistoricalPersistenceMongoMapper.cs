@@ -7,6 +7,91 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 
 internal static class HistoricalPersistenceMongoMapper
 {
+    public static HistoricalRelationDocument ToDocument(
+        this HistoricalRelation relation,
+        HistoricalReviewEvent transitionReviewEvent)
+    {
+        ArgumentNullException.ThrowIfNull(relation);
+        ArgumentNullException.ThrowIfNull(transitionReviewEvent);
+        DateTime recordedAtUtc = NormalizeToBsonPrecision(relation.RecordedAtUtc);
+        return new HistoricalRelationDocument
+        {
+            Id = BuildRevisionDocumentId(relation.Id, relation.Revision),
+            RelationId = relation.Id.ToString("N", CultureInfo.InvariantCulture),
+            Revision = relation.Revision,
+            RevisionOrigin = relation.RevisionOrigin,
+            SupersedesRevision = relation.SupersedesRevision,
+            Source = ToDocument(relation.Source),
+            Target = ToDocument(relation.Target),
+            Type = relation.Type,
+            Direction = relation.Direction,
+            Period = ToDocument(relation.Period),
+            State = relation.State,
+            WorkflowState = relation.WorkflowState,
+            PublicationState = relation.PublicationState,
+            PublicUncertaintyExplanation = relation.PublicUncertaintyExplanation
+                .Select(static explanation => new LocalizedTextDocument
+                {
+                    LanguageCode = explanation.LanguageCode,
+                    Value = explanation.Value,
+                })
+                .ToList(),
+            Sources = relation.SourceReferences.Select(static reference =>
+                new HistoricalRelationSourceRevisionDocument
+                {
+                    SourceId = reference.SourceId.ToString("N", CultureInfo.InvariantCulture),
+                    Revision = reference.Revision,
+                    SourceSubject = ToDocument(reference.SourceSubject),
+                    TargetSubject = ToDocument(reference.TargetSubject),
+                    RelationType = reference.RelationType,
+                    Period = ToDocument(reference.Period),
+                    Position = reference.Position,
+                    Scopes = reference.Scopes.ToList(),
+                }).ToList(),
+            EditorialNote = relation.EditorialNote,
+            VerifiedAtUtc = NormalizeToBsonPrecision(relation.VerifiedAtUtc),
+            PublishedAtUtc = NormalizeToBsonPrecision(relation.PublishedAtUtc),
+            PublicationMethodologyVersion = relation.PublicationMethodologyVersion,
+            TransitionReviewEvent = transitionReviewEvent.ToDocument(),
+            CreatedAt = recordedAtUtc,
+            UpdatedAt = recordedAtUtc,
+        };
+    }
+
+    public static HistoricalRelation ToDomain(this HistoricalRelationDocument document)
+    {
+        ArgumentNullException.ThrowIfNull(document);
+        return new HistoricalRelation(
+            ParseGuid(document.RelationId),
+            ToDomain(document.Source),
+            ToDomain(document.Target),
+            document.Type,
+            document.Direction,
+            ToDomain(document.Period),
+            document.State,
+            document.WorkflowState,
+            document.PublicationState,
+            document.PublicUncertaintyExplanation.Select(static explanation =>
+                new HistoricalLocalizedText(explanation.LanguageCode, explanation.Value ?? string.Empty)).ToArray(),
+            document.Sources.Select(static reference => new HistoricalRelationSourceRevisionReference(
+                ParseGuid(reference.SourceId),
+                reference.Revision,
+                ToDomain(reference.SourceSubject),
+                ToDomain(reference.TargetSubject),
+                reference.RelationType,
+                ToDomain(reference.Period),
+                reference.Position,
+                reference.Scopes)).ToArray(),
+            document.EditorialNote,
+            NormalizeToBsonPrecision(document.VerifiedAtUtc),
+            NormalizeToBsonPrecision(document.PublishedAtUtc),
+            document.PublicationMethodologyVersion,
+            document.Revision,
+            document.SupersedesRevision,
+            NormalizeToBsonPrecision(document.CreatedAt),
+            document.RevisionOrigin);
+    }
+
     public static HistoricalFactDocument ToDocument(
         this HistoricalFact fact,
         HistoricalReviewEvent transitionReviewEvent)
@@ -227,6 +312,16 @@ internal static class HistoricalPersistenceMongoMapper
         };
     }
 
+    private static HistoricalSubjectKeyDocument ToDocument(HistoricalSubjectKey subject)
+    {
+        return new HistoricalSubjectKeyDocument
+        {
+            Type = subject.Type,
+            Id = subject.Id,
+            ContextParkId = subject.ContextParkId,
+        };
+    }
+
     private static HistoricalSubject ToDomain(HistoricalSubjectDocument document)
     {
         return new HistoricalSubject(
@@ -235,6 +330,11 @@ internal static class HistoricalPersistenceMongoMapper
             document.HistoricalLabel,
             document.PublicationPolicy,
             document.ContextParkId);
+    }
+
+    private static HistoricalSubjectKey ToDomain(HistoricalSubjectKeyDocument document)
+    {
+        return new HistoricalSubjectKey(document.Type, document.Id, document.ContextParkId);
     }
 
     private static HistoricalPeriodDocument ToDocument(HistoricalPeriod period)

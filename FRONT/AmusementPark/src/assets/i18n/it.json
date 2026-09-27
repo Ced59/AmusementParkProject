@@ -5843,6 +5843,46 @@
         "Status": "Stato",
         "MarketPositioning": "Posizionamento"
       }
+    },
+    "lineage": {
+      "breadcrumbAria": "Percorso di navigazione della linea storica",
+      "home": "Home",
+      "kicker": "Legami storici documentati",
+      "title": "La linea storica di {{subject}}",
+      "description": "Scopri solo cambi di nome, spostamenti, sostituzioni e altri legami confermati da fonti. Nessuna relazione viene ipotizzata.",
+      "seoTitle": "Linea storica di {{subject}}",
+      "seoDescription": "Esplora le relazioni storiche documentate di {{subject}}, il loro periodo e il livello delle prove.",
+      "summaryAria": "Riepilogo della linea storica",
+      "subjectCount": "elementi collegati",
+      "relationCount": "relazioni documentate",
+      "listAria": "Relazioni storiche documentate",
+      "from": "Elemento di partenza",
+      "to": "Elemento collegato",
+      "historicalOnly": "Elemento storico",
+      "open": "Esplora la linea storica",
+      "sources": "{{count}} fonte/i",
+      "noPublicSource": "Il riferimento esiste, ma non può essere pubblicato direttamente.",
+      "truncated": "Questa vista si ferma a {{depth}} livelli per restare leggibile. Esistono altri legami documentati.",
+      "cycle": "Questa linea contiene un ciclo diretto mostrato per trasparenza.",
+      "notFoundTitle": "Linea storica non trovata",
+      "notFoundMessage": "Non è disponibile alcuna relazione storica pubblicata per questo elemento.",
+      "evidence": {
+        "Verified": "Verificato",
+        "Probable": "Probabile",
+        "Disputed": "Contestato",
+        "Unverified": "Non verificato"
+      },
+      "relationTypes": {
+        "RenamedTo": "Rinominato in",
+        "ReplacedBy": "Sostituito da",
+        "MovedTo": "Spostato a",
+        "RethemedAs": "Ritematizzato come",
+        "SuccessorOf": "Successore di",
+        "SamePhysicalAssetAs": "Stessa installazione fisica",
+        "SharesLocationWith": "Stessa posizione",
+        "OperatedByDuring": "Gestito da in questo periodo",
+        "LocatedInZoneDuring": "Situato in questa area nel periodo"
+      }
     }
   },
   "home": {

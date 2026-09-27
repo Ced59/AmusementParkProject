@@ -91,6 +91,7 @@ describe('SSR route status helpers', () => {
       '/fr/contact',
       '/fr/versions',
       '/fr/privacy',
+      '/fr/history/lineages/park-1/parkitem/item-1/ancienne-attraction',
       '/fr/attraction/standalone-123/attraction-test',
       '/fr/attraction/standalone-123/attraction-test/history',
       '/fr/attraction/standalone-123/attraction-test/history/page/2',

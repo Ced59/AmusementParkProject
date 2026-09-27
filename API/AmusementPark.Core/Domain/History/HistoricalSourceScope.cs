@@ -9,4 +9,7 @@ public enum HistoricalSourceScope
     HistoricalLabel = 4,
     Narrative = 5,
     SequenceWithinDate = 6,
+    RelationSourceIdentity = 7,
+    RelationTargetIdentity = 8,
+    RelationType = 9,
 }

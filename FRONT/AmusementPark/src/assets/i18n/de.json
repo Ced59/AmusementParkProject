@@ -5843,6 +5843,46 @@
         "Status": "Status",
         "MarketPositioning": "Positionierung"
       }
+    },
+    "lineage": {
+      "breadcrumbAria": "Brotkrümelnavigation zur historischen Linie",
+      "home": "Startseite",
+      "kicker": "Belegte historische Verbindungen",
+      "title": "Die Entwicklungslinie von {{subject}}",
+      "description": "Entdecke nur Umbenennungen, Versetzungen, Ersetzungen und weitere durch Quellen bestätigte Verbindungen. Keine Beziehung wird erraten.",
+      "seoTitle": "Historische Entwicklungslinie von {{subject}}",
+      "seoDescription": "Entdecke die belegten historischen Beziehungen von {{subject}}, ihren Zeitraum und ihre Beweislage.",
+      "summaryAria": "Zusammenfassung der Entwicklungslinie",
+      "subjectCount": "verbundene Elemente",
+      "relationCount": "dokumentierte Beziehungen",
+      "listAria": "Dokumentierte historische Beziehungen",
+      "from": "Ausgangselement",
+      "to": "Verbundenes Element",
+      "historicalOnly": "Historisches Element",
+      "open": "Entwicklungslinie ansehen",
+      "sources": "{{count}} Quelle(n)",
+      "noPublicSource": "Der Nachweis ist vorhanden, kann aber nicht direkt veröffentlicht werden.",
+      "truncated": "Diese Ansicht endet nach {{depth}} Ebenen, damit sie lesbar bleibt. Weitere belegte Verbindungen sind vorhanden.",
+      "cycle": "Diese Entwicklungslinie enthält einen gerichteten Zyklus, der transparent ausgewiesen wird.",
+      "notFoundTitle": "Entwicklungslinie nicht gefunden",
+      "notFoundMessage": "Für dieses Element ist keine veröffentlichte historische Beziehung verfügbar.",
+      "evidence": {
+        "Verified": "Bestätigt",
+        "Probable": "Wahrscheinlich",
+        "Disputed": "Umstritten",
+        "Unverified": "Ungeprüft"
+      },
+      "relationTypes": {
+        "RenamedTo": "Umbenannt in",
+        "ReplacedBy": "Ersetzt durch",
+        "MovedTo": "Versetzt nach",
+        "RethemedAs": "Neu gestaltet als",
+        "SuccessorOf": "Nachfolger von",
+        "SamePhysicalAssetAs": "Dieselbe physische Anlage",
+        "SharesLocationWith": "Gleicher Standort",
+        "OperatedByDuring": "In diesem Zeitraum betrieben von",
+        "LocatedInZoneDuring": "In diesem Zeitraum in diesem Bereich gelegen"
+      }
     }
   },
   "home": {

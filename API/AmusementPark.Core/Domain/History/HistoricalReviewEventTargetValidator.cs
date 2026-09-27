@@ -47,6 +47,28 @@ public static class HistoricalReviewEventTargetValidator
         }
     }
 
+    public static void ValidateRelationTarget(
+        HistoricalReviewEvent reviewEvent,
+        HistoricalRelation? relation)
+    {
+        ArgumentNullException.ThrowIfNull(reviewEvent);
+        if (reviewEvent.ResourceType != HistoricalReviewResourceType.Relation
+            || relation is null
+            || relation.Id != reviewEvent.ResourceId
+            || relation.Revision != reviewEvent.ResourceRevision
+            || reviewEvent.OccurredAtUtc < relation.RecordedAtUtc
+            || !MatchesLifecycle(
+                reviewEvent.EventType,
+                relation.Revision,
+                relation.WorkflowState,
+                relation.PublicationState,
+                relation.RevisionOrigin,
+                supportsSourcesAttached: true))
+        {
+            throw Invalid();
+        }
+    }
+
     public static void ValidateFactTransition(
         HistoricalReviewEvent reviewEvent,
         HistoricalFact fact,
@@ -70,6 +92,19 @@ public static class HistoricalReviewEventTargetValidator
         ValidateSameStageReviewEvent(
             reviewEvent.EventType,
             source.WorkflowState,
+            predecessor?.WorkflowState);
+    }
+
+    public static void ValidateRelationTransition(
+        HistoricalReviewEvent reviewEvent,
+        HistoricalRelation relation,
+        HistoricalRelation? predecessor)
+    {
+        ArgumentNullException.ThrowIfNull(reviewEvent);
+        ArgumentNullException.ThrowIfNull(relation);
+        ValidateSameStageReviewEvent(
+            reviewEvent.EventType,
+            relation.WorkflowState,
             predecessor?.WorkflowState);
     }
 

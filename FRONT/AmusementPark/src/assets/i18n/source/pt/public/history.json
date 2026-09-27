@@ -26,6 +26,13 @@
       "operationalStates": { "KnownOpen": "Aberto com certeza", "KnownClosed": "Fechado com certeza", "PossiblyOpen": "Possivelmente aberto", "Unknown": "Estado desconhecido" },
       "coverageStatuses": { "Partial": "Cobertura parcial", "Substantial": "Cobertura sólida", "HighConfidence": "Confiança elevada" },
       "attributes": { "Logo": "Logótipo", "Zone": "Área", "Operator": "Operador", "Owner": "Proprietário", "Manufacturer": "Fabricante", "Category": "Categoria", "Theme": "Tema", "Location": "Localização", "Status": "Estado", "MarketPositioning": "Posicionamento" }
+    },
+    "lineage": {
+      "breadcrumbAria": "Trilho de navegação da linhagem histórica", "home": "Início", "kicker": "Ligações históricas comprovadas", "title": "A linhagem de {{subject}}", "description": "Descobre apenas mudanças de nome, deslocações, substituições e outras ligações confirmadas por fontes. Nenhuma relação é adivinhada.",
+      "seoTitle": "Linhagem histórica de {{subject}}", "seoDescription": "Explora as relações históricas documentadas de {{subject}}, o seu período e o nível de prova.", "summaryAria": "Resumo da linhagem", "subjectCount": "elementos ligados", "relationCount": "relações documentadas", "listAria": "Relações históricas documentadas",
+      "from": "Elemento de origem", "to": "Elemento relacionado", "historicalOnly": "Elemento histórico", "open": "Explorar a linhagem", "sources": "{{count}} fonte(s)", "noPublicSource": "A referência existe, mas não pode ser publicada diretamente.", "truncated": "Esta vista termina em {{depth}} níveis para se manter legível. Existem mais ligações documentadas.", "cycle": "Esta linhagem contém um ciclo dirigido apresentado por transparência.", "notFoundTitle": "Linhagem não encontrada", "notFoundMessage": "Não existe nenhuma relação histórica publicada para este elemento.",
+      "evidence": { "Verified": "Verificado", "Probable": "Provável", "Disputed": "Contestado", "Unverified": "Não verificado" },
+      "relationTypes": { "RenamedTo": "Renomeado para", "ReplacedBy": "Substituído por", "MovedTo": "Deslocado para", "RethemedAs": "Redesenhado como", "SuccessorOf": "Sucessor de", "SamePhysicalAssetAs": "Mesma instalação física", "SharesLocationWith": "Mesma localização", "OperatedByDuring": "Operado por durante este período", "LocatedInZoneDuring": "Situado nesta área durante este período" }
     }
   }
 }

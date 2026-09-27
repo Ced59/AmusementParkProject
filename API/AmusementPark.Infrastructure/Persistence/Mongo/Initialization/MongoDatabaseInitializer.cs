@@ -1096,6 +1096,7 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalMigrationAnomaliesCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalFactsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalSourcesCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.HistoricalRelationsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalSubjectScopesCollectionName, cancellationToken);
         await this.InitializeHistoricalPersistenceIndexesAsync(cancellationToken);
         await this.InitializeHistoricalMigrationIndexesAsync(cancellationToken);
@@ -2254,11 +2255,16 @@ private async Task InitializeParkDataEditorAccessTokensIndexesAsync(Cancellation
             this.settings.HistoricalFactsCollectionName);
         IMongoCollection<HistoricalSourceDocument> sources = this.database.GetCollection<HistoricalSourceDocument>(
             this.settings.HistoricalSourcesCollectionName);
+        IMongoCollection<HistoricalRelationDocument> relations = this.database.GetCollection<HistoricalRelationDocument>(
+            this.settings.HistoricalRelationsCollectionName);
         await facts.Indexes.CreateManyAsync(
             HistoricalPersistenceMongoDefinitions.BuildFactIndexes(),
             cancellationToken);
         await sources.Indexes.CreateManyAsync(
             HistoricalPersistenceMongoDefinitions.BuildSourceIndexes(),
+            cancellationToken);
+        await relations.Indexes.CreateManyAsync(
+            HistoricalPersistenceMongoDefinitions.BuildRelationIndexes(),
             cancellationToken);
     }
 

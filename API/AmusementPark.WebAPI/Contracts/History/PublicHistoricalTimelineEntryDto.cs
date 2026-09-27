@@ -12,6 +12,8 @@ public sealed class PublicHistoricalTimelineEntryDto
 
     public string? CurrentSubjectName { get; set; }
 
+    public bool HasPublishedLineage { get; set; }
+
     public string FactType { get; set; } = string.Empty;
 
     public PublicHistoricalPeriodDto Period { get; set; } = new PublicHistoricalPeriodDto();

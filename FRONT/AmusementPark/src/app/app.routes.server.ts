@@ -32,6 +32,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/not-found', renderMode: RenderMode.Server },
 
   // Public SEO routes.
+  { path: ':lang/history/lineages/:contextParkId/:subjectType/:subjectId/:subjectSlug', renderMode: RenderMode.Server },
   { path: ':lang/park-operator/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park-founder/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park-manufacturer/:id/:slug', renderMode: RenderMode.Server },

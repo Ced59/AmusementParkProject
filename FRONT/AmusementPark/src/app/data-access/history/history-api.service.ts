@@ -10,6 +10,7 @@ import {
   HistoryTimeline
 } from '@app/models/history/history.models';
 import {
+  PublicHistoricalLineage,
   PublicParkHistoricalSnapshot,
   PublicParkHistoricalTimeline
 } from '@app/models/history/public-park-history.models';
@@ -33,6 +34,11 @@ export class HistoryApiService {
   };
 
   constructor(private readonly http: HttpClient) {
+  }
+
+  getPublicHistoricalLineage(subjectType: string, subjectId: string, contextParkId: string, options: HistoryHttpOptions = {}): Observable<PublicHistoricalLineage> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getPublicHistoricalLineage(subjectType, subjectId, contextParkId)}`;
+    return this.http.get<PublicHistoricalLineage>(url, options);
   }
 
   getPublicParkTimeline(parkId: string, options: HistoryHttpOptions = {}, page: number = 1, pageSize: number = 50): Observable<PublicParkHistoricalTimeline> {

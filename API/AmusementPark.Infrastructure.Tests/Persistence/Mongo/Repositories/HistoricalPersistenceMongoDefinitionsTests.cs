@@ -14,6 +14,78 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class HistoricalPersistenceMongoDefinitionsTests
 {
     [Fact]
+    public void BuildRelationIndexes_ShouldProtectImmutableRevisionsAndReadPaths()
+    {
+        IReadOnlyCollection<CreateIndexModel<HistoricalRelationDocument>> indexes =
+            HistoricalPersistenceMongoDefinitions.BuildRelationIndexes();
+
+        CreateIndexModel<HistoricalRelationDocument> revision = indexes.Single(
+            index => index.Options.Name == "idx_historical_relations_revision_unique");
+        Assert.True(revision.Options.Unique);
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_source_type_revision");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_target_type_revision");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_publication_state");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_source_revision");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_audit_date");
+        CreateIndexModel<HistoricalRelationDocument> source = indexes.Single(
+            index => index.Options.Name == "idx_historical_relations_source_type_revision");
+        IBsonSerializer<HistoricalRelationDocument> relationSerializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<HistoricalRelationDocument>();
+        BsonDocument sourceKeys = source.Keys.Render(
+            new RenderArgs<HistoricalRelationDocument>(
+                relationSerializer,
+                BsonSerializer.SerializerRegistry));
+        Assert.True(sourceKeys.Contains("source.contextParkId"));
+        Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));
+    }
+
+    [Fact]
+    public void BuildLatestTouchingSubjectsPipeline_ShouldReloadLatestRevisionBeforePublicFilter()
+    {
+        IReadOnlyCollection<BsonDocument> stages =
+            HistoricalRelationRepository.BuildLatestTouchingSubjectsPipeline(
+                new[] { new HistoricalSubjectKey(HistoricalSubjectType.ParkItem, "item-1", "park-1") },
+                "historical-relations",
+                25);
+        BsonDocument[] pipeline = stages.ToArray();
+
+        Assert.Equal("$relationId", pipeline[1]["$group"]["_id"].AsString);
+        Assert.Equal("historical-relations", pipeline[2]["$lookup"]["from"].AsString);
+        Assert.Equal(-1, pipeline[2]["$lookup"]["pipeline"][1]["$sort"]["revision"].AsInt32);
+        Assert.Equal("$latest", pipeline[4]["$replaceRoot"]["newRoot"].AsString);
+        Assert.True(pipeline[5]["$match"].AsBsonDocument.Contains("$or"));
+        Assert.Contains(
+            pipeline[5]["$match"]["$or"].AsBsonArray,
+            endpoint => endpoint.AsBsonDocument.Contains("source.contextParkId")
+                && endpoint.AsBsonDocument["source.contextParkId"] == "park-1");
+        Assert.Equal(HistoricalPublicationState.Published.ToString(), pipeline[6]["$match"]["publicationState"].AsString);
+        Assert.Equal(25, pipeline[^1]["$limit"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildLatestTouchingEachSubjectPipeline_ShouldGiveEverySubjectItsOwnBoundedFacet()
+    {
+        IReadOnlyCollection<BsonDocument> stages =
+            HistoricalRelationRepository.BuildLatestTouchingEachSubjectPipeline(
+                new[]
+                {
+                    new HistoricalSubjectKey(HistoricalSubjectType.ParkItem, "dense-item", "park-1"),
+                    new HistoricalSubjectKey(HistoricalSubjectType.ParkItem, "later-item", "park-1"),
+                },
+                "historical-relations",
+                200);
+        BsonDocument[] pipeline = stages.ToArray();
+        BsonDocument facets = pipeline[0]["$facet"].AsBsonDocument;
+
+        Assert.Equal(2, facets.ElementCount);
+        Assert.All(
+            facets.Elements,
+            facet => Assert.Equal(200, facet.Value.AsBsonArray[^1]["$limit"].AsInt32));
+        Assert.Equal("$relationId", pipeline[4]["$group"]["_id"].AsString);
+        Assert.Equal("$relation", pipeline[5]["$replaceRoot"]["newRoot"].AsString);
+    }
+
+    [Fact]
     public void BuildFactIndexes_ShouldProtectImmutableRevisionsAndQueryPaths()
     {
         IReadOnlyCollection<CreateIndexModel<HistoricalFactDocument>> indexes =

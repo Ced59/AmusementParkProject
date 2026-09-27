@@ -69,6 +69,7 @@ function isKnownPublicPageRoute(path: string): boolean {
     || isSharedYearRecapRoute(path)
     || isSharedPassportProfileRoute(path)
     || isSharedProfileComparisonRoute(path)
+    || /^\/[a-z]{2}\/history\/lineages\/[^/]+\/[^/]+\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/attraction\/[^/]+\/[^/]+\/history(?:\/page\/[^/]+)?\/?$/i.test(path)
