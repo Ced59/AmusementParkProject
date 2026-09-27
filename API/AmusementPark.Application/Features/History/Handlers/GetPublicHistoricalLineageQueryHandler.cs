@@ -33,13 +33,22 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
         GetPublicHistoricalLineageQuery query,
         CancellationToken cancellationToken = default)
     {
-        if (!Enum.IsDefined(query.SubjectType) || string.IsNullOrWhiteSpace(query.SubjectId))
+        string normalizedSubjectId = query.SubjectId?.Trim() ?? string.Empty;
+        if (!Enum.IsDefined(query.SubjectType) || normalizedSubjectId.Length == 0)
         {
             return ApplicationResult<PublicHistoricalLineageResult>.Failure(
                 ApplicationErrors.Required("historicalSubject"));
         }
 
-        HistoricalSubjectKey rootKey = new(query.SubjectType, query.SubjectId);
+        if (normalizedSubjectId.Length > 200 || normalizedSubjectId.Any(char.IsControl))
+        {
+            return ApplicationResult<PublicHistoricalLineageResult>.Failure(
+                ApplicationError.Validation(
+                    "history.subject.invalid",
+                    "Le sujet historique demandé est invalide."));
+        }
+
+        HistoricalSubjectKey rootKey = new(query.SubjectType, normalizedSubjectId);
         Dictionary<Guid, HistoricalRelation> loadedRelations = new();
         HashSet<HistoricalSubjectKey> visited = new() { rootKey };
         HashSet<HistoricalSubjectKey> frontier = new() { rootKey };
@@ -133,6 +142,10 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
                 ApplicationErrors.EntityNotFound("historical-lineage", rootKey.Id));
         }
 
+        PublicHistoricalLineageContextParkResult? contextPark = await this.ResolveContextParkAsync(
+            root,
+            cancellationToken);
+
         PublicHistoricalRelationResult[] relationResults = connectedRelations
             .OrderBy(static relation => relation.Period.Start?.Year ?? int.MinValue)
             .ThenBy(static relation => relation.Type)
@@ -154,11 +167,33 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
 
         return ApplicationResult<PublicHistoricalLineageResult>.Success(new PublicHistoricalLineageResult(
             root,
+            contextPark,
             subjects,
             relationResults,
             HistoricalLineageCycleDetector.HasDirectedCycle(connectedRelations),
             isTruncated,
             MaximumDepth));
+    }
+
+    private async Task<PublicHistoricalLineageContextParkResult?> ResolveContextParkAsync(
+        HistoricalSubject root,
+        CancellationToken cancellationToken)
+    {
+        string? parkId = root.Type == HistoricalSubjectType.Park
+            ? root.Id
+            : root.ContextParkId;
+        if (string.IsNullOrWhiteSpace(parkId))
+        {
+            return null;
+        }
+
+        IReadOnlyDictionary<string, string> publicParkNames =
+            await this.subjectPublicationStateReader.GetPublicParkNamesAsync(
+                new[] { parkId },
+                cancellationToken);
+        return publicParkNames.TryGetValue(parkId, out string? parkName)
+            ? new PublicHistoricalLineageContextParkResult(parkId, parkName)
+            : null;
     }
 
     private static void AddNextSubject(
@@ -191,7 +226,7 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
             HistoricalSubjectPublicationPolicy.FollowCurrentSubject => publicCurrentKeys.Contains(ToKey(subject)),
             HistoricalSubjectPublicationPolicy.HistoricalOnly => subject.Type is not HistoricalSubjectType.ParkItem
                     and not HistoricalSubjectType.ParkZone
-                || !string.IsNullOrWhiteSpace(subject.ContextParkId),
+                || publicCurrentKeys.Contains(ToKey(subject)),
             _ => false,
         };
     }

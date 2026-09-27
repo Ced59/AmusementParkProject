@@ -65,6 +65,7 @@ describe('historicalLineageResolver', () => {
 function createLineage(): PublicHistoricalLineage {
   return {
     root: { key: 'subject-1', type: 'ParkItem', label: 'Ancienne attraction', isHistoricalOnly: true },
+    contextPark: { id: 'park-1', name: 'Parc exemple' },
     subjects: [
       { key: 'subject-1', type: 'ParkItem', label: 'Ancienne attraction', isHistoricalOnly: true },
       { key: 'subject-2', type: 'ParkItem', label: 'Nouvelle attraction', isHistoricalOnly: false }

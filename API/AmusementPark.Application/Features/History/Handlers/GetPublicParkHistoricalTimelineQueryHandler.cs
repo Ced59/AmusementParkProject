@@ -200,7 +200,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                 new HistoricalSubjectKey(subject.Type, subject.Id)),
             HistoricalSubjectPublicationPolicy.HistoricalOnly => subject.Type is not HistoricalSubjectType.ParkItem
                     and not HistoricalSubjectType.ParkZone
-                || !string.IsNullOrWhiteSpace(subject.ContextParkId),
+                || publicCurrentKeys.Contains(new HistoricalSubjectKey(subject.Type, subject.Id)),
             _ => false,
         };
     }

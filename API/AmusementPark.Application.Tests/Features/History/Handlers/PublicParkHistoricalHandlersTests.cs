@@ -235,6 +235,7 @@ public sealed class PublicParkHistoricalHandlersTests
             .ReturnsAsync(new HashSet<HistoricalSubjectKey>
             {
                 new HistoricalSubjectKey(visibleSubject.Type, visibleSubject.Id),
+                new HistoricalSubjectKey(visibleRelation.Target.Type, visibleRelation.Target.Id),
             });
         PublicParkHistoricalDataLoader loader = CreateLoader(
             parkRepository,

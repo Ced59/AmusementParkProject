@@ -166,13 +166,13 @@ sequenceDiagram
       REL->>DB: dernières révisions + filtre public
       DB-->>REL: lot borné
     end
-    APP->>PUB: visibilité des sujets par lots
-    PUB->>DB: lectures groupées par type
+    APP->>PUB: visibilité des sujets et parcs de contexte par lots
+    PUB->>DB: lectures groupées par type et parc public
     APP->>SRC: révisions de sources par lot
     SRC->>DB: agrégation bornée
     APP->>APP: retire liens sans preuve publique et branches déconnectées
-    APP-->>API: projection sans identifiants internes
-    API-->>SSR: clés locales subject-1, subject-2...
+    APP-->>API: projection sans identifiants de relation ou de preuve
+    API-->>SSR: clés locales subject-1, subject-2... + parc public de contexte
     SSR-->>V: cartes, périodes, preuve et sources
 ```
 
@@ -189,18 +189,21 @@ La route publique est :
 GET /api/public/history/subjects/{type}/{id}/lineage
 ```
 
-Le paramètre d'URL désigne nécessairement la ressource demandée. Le corps de
-réponse ne répète toutefois aucun identifiant MongoDB ou métier interne : les
-sujets reçoivent des clés locales `subject-1`, `subject-2`, utilisables seulement
-pour relier les cartes de cette réponse. Les identifiants de relation, de
-source et de révision ne sont jamais sérialisés.
+Le paramètre d'URL désigne nécessairement la ressource demandée. Dans le corps,
+les sujets de la relation reçoivent des clés locales `subject-1`, `subject-2`,
+utilisables seulement pour relier les cartes de cette réponse. Le parc public
+de contexte peut fournir son identité de route et son nom afin de construire un
+fil d'Ariane réellement navigable ; son éligibilité publique est revérifiée en
+lot. Les identifiants de relation, de source et de révision ne sont jamais
+sérialisés.
 
 ## Responsive, SSR et SEO
 
 La frise appelle la lignée seulement lorsque son lot borné confirme qu'un lien
-publié touche le sujet. La page dédiée est rendue côté serveur, possède un fil
-d'Ariane visible et un `BreadcrumbList`. Elle reste `noindex,follow` jusqu'au
-jalon `HIST-13`.
+publié touche le sujet. La page dédiée est rendue côté serveur. Son fil d'Ariane
+visible et son `BreadcrumbList` relient Accueil, Parcs, le parc de contexte,
+son Histoire et le sujet consulté. Elle reste `noindex,follow` jusqu'au jalon
+`HIST-13`.
 
 Chaque conteneur utilise `min-width: 0`, `overflow-wrap: anywhere` et une largeur
 bornée au viewport. Sous 560 px, les deux sujets et la flèche passent en colonne,

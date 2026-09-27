@@ -36,6 +36,19 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(subject);
+        if (subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.Suppressed)
+        {
+            return false;
+        }
+
+        if (subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.HistoricalOnly)
+        {
+            return subject.Type is not HistoricalSubjectType.ParkItem
+                    and not HistoricalSubjectType.ParkZone
+                || !string.IsNullOrWhiteSpace(subject.ContextParkId)
+                    && await this.IsParkPublicAsync(subject.ContextParkId, cancellationToken);
+        }
+
         return subject.Type switch
         {
             HistoricalSubjectType.Park => await this.IsParkPublicAsync(subject.Id, cancellationToken),
@@ -70,7 +83,41 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
             publicKeys.UnionWith(publicIdentifiers.Select(id => new HistoricalSubjectKey(group.Key, id)));
         }
 
+        HistoricalSubject[] historicalParkSubjects = subjects
+            .Where(static subject => subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.HistoricalOnly
+                && subject.Type is HistoricalSubjectType.ParkItem or HistoricalSubjectType.ParkZone
+                && !string.IsNullOrWhiteSpace(subject.ContextParkId))
+            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .ToArray();
+        IReadOnlyDictionary<string, string> publicContextParks = await this.GetPublicParkNamesAsync(
+            historicalParkSubjects.Select(static subject => subject.ContextParkId!).ToArray(),
+            cancellationToken);
+        publicKeys.UnionWith(historicalParkSubjects
+            .Where(subject => publicContextParks.ContainsKey(subject.ContextParkId!))
+            .Select(static subject => new HistoricalSubjectKey(subject.Type, subject.Id)));
+
         return publicKeys;
+    }
+
+    public async Task<IReadOnlyDictionary<string, string>> GetPublicParkNamesAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(parkIds);
+        string[] normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedParkIds.Length == 0)
+        {
+            return new Dictionary<string, string>(StringComparer.Ordinal);
+        }
+
+        return (await this.parks.Find(item => normalizedParkIds.Contains(item.Id))
+                .ToListAsync(cancellationToken))
+            .Where(static park => IsParkPublic(park) && !string.IsNullOrWhiteSpace(park.Name))
+            .ToDictionary(static park => park.Id, static park => park.Name!, StringComparer.Ordinal);
     }
 
     private async Task<IReadOnlyCollection<string>> LoadPublicIdentifiersAsync(

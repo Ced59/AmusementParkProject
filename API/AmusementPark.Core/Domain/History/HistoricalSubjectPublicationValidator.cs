@@ -60,12 +60,11 @@ public static class HistoricalSubjectPublicationValidator
 
         if (isPublicRevision
             && (subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.Suppressed
-                || subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.FollowCurrentSubject
-                    && !currentSubjectIsPublic))
+                || !currentSubjectIsPublic))
         {
             throw new HistoricalPersistenceValidationException(
                 HistoricalPersistenceErrorCodes.InvalidRelation,
-                "A public relation cannot expose a suppressed or non-public current subject.");
+                "A public relation cannot expose a suppressed subject or a subject outside a public context.");
         }
     }
 }

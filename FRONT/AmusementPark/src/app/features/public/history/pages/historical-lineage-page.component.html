@@ -2,6 +2,16 @@
   <main class="historical-lineage-page">
     <nav class="historical-lineage-breadcrumb" [attr.aria-label]="'history.lineage.breadcrumbAria' | translate">
       <a [routerLink]="['/', currentLanguage(), 'home']">{{ 'history.lineage.home' | translate }}</a>
+      @if (currentLineage.contextPark && contextParkLink(currentLineage); as parkRoute) {
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="['/', currentLanguage(), 'parks']">{{ 'history.explorer.parks' | translate }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="parkRoute">{{ currentLineage.contextPark.name }}</a>
+        @if (contextHistoryLink(currentLineage); as historyRoute) {
+          <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          <a [routerLink]="historyRoute">{{ 'history.explorer.history' | translate }}</a>
+        }
+      }
       <i class="pi pi-chevron-right" aria-hidden="true"></i>
       <span aria-current="page">{{ currentLineage.root.label }}</span>
     </nav>

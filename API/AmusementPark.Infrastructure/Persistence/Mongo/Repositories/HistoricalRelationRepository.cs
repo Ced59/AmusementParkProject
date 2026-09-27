@@ -58,10 +58,12 @@ public sealed class HistoricalRelationRepository : IHistoricalRelationRepository
         HistoricalReviewEventChronologyValidator.Validate(
             transitionReviewEvent,
             predecessorDocument?.TransitionReviewEvent.ToDomain());
-        bool sourceIsPublic = relation.Source.PublicationPolicy != HistoricalSubjectPublicationPolicy.FollowCurrentSubject
-            || await this.subjectPublicationStateReader.IsPublicAsync(relation.Source, cancellationToken);
-        bool targetIsPublic = relation.Target.PublicationPolicy != HistoricalSubjectPublicationPolicy.FollowCurrentSubject
-            || await this.subjectPublicationStateReader.IsPublicAsync(relation.Target, cancellationToken);
+        bool sourceIsPublic = await this.subjectPublicationStateReader.IsPublicAsync(
+            relation.Source,
+            cancellationToken);
+        bool targetIsPublic = await this.subjectPublicationStateReader.IsPublicAsync(
+            relation.Target,
+            cancellationToken);
         HistoricalSubjectPublicationValidator.Validate(relation, sourceIsPublic, targetIsPublic);
         IReadOnlyCollection<HistoricalSourceReference> sources = await this.sourceRepository.GetRevisionsAsync(
             relation.SourceReferences,

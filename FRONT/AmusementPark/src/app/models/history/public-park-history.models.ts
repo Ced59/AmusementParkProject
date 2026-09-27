@@ -129,8 +129,14 @@ export interface PublicHistoricalLineageRelation {
   sources: PublicHistoricalSource[];
 }
 
+export interface PublicHistoricalLineageContextPark {
+  id: string;
+  name: string;
+}
+
 export interface PublicHistoricalLineage {
   root: PublicHistoricalLineageSubject;
+  contextPark: PublicHistoricalLineageContextPark | null;
   subjects: PublicHistoricalLineageSubject[];
   relations: PublicHistoricalLineageRelation[];
   hasDirectedCycle: boolean;

@@ -10,7 +10,12 @@ import {
 } from '@app/models/history/public-park-history.models';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
-import { buildPublicHistoricalLineageRouteCommands, buildPublicRoutePath } from '@shared/utils/routing/public-detail-route.helpers';
+import {
+  buildPublicHistoricalLineageRouteCommands,
+  buildPublicParkHistoryRouteCommands,
+  buildPublicParkRouteCommands,
+  buildPublicRoutePath
+} from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { HISTORICAL_LINEAGE_ROUTE_DATA_KEY } from '../state/historical-lineage.resolver';
 import { HistoricalLineageBreadcrumbSeoService } from '../state/historical-lineage-breadcrumb-seo.service';
@@ -105,6 +110,26 @@ export class HistoricalLineagePageComponent implements OnInit {
     return `${relation.sourceKey}:${relation.targetKey}:${relation.type}:${index}`;
   }
 
+  protected contextParkLink(lineage: PublicHistoricalLineage): string[] | null {
+    return lineage.contextPark
+      ? buildPublicParkRouteCommands({
+        language: this.currentLanguage(),
+        parkId: lineage.contextPark.id,
+        parkName: lineage.contextPark.name
+      })
+      : null;
+  }
+
+  protected contextHistoryLink(lineage: PublicHistoricalLineage): string[] | null {
+    return lineage.contextPark
+      ? buildPublicParkHistoryRouteCommands({
+        language: this.currentLanguage(),
+        parkId: lineage.contextPark.id,
+        parkName: lineage.contextPark.name
+      })
+      : null;
+  }
+
   private enumLabel(group: string, value: string): string {
     const key: string = `history.lineage.${group}.${value}`;
     const translated: string = this.translateService.instant(key);
@@ -124,6 +149,19 @@ export class HistoricalLineagePageComponent implements OnInit {
     const title: string = this.translateService.instant('history.lineage.seoTitle', { subject: lineage.root.label });
     const description: string = this.translateService.instant('history.lineage.seoDescription', { subject: lineage.root.label });
     this.seoService.applyHistoricalLineageSeo(title, description, this.router.url, canonicalPath);
-    this.breadcrumbSeoService.apply(this.currentLanguage(), title, canonicalPath);
+    const parkPath: string | null = buildPublicRoutePath(this.contextParkLink(lineage));
+    const historyPath: string | null = buildPublicRoutePath(this.contextHistoryLink(lineage));
+    this.breadcrumbSeoService.apply(
+      this.currentLanguage(),
+      title,
+      canonicalPath,
+      lineage.contextPark && parkPath && historyPath
+        ? {
+          parkName: lineage.contextPark.name,
+          parkPath,
+          historyPath
+        }
+        : null
+    );
   }
 }

@@ -21,6 +21,13 @@ internal static class PublicHistoricalLineageHttpMappers
         return new PublicHistoricalLineageDto
         {
             Root = result.Root.ToLineageHttp(publicKeys),
+            ContextPark = result.ContextPark is null
+                ? null
+                : new PublicHistoricalLineageContextParkDto
+                {
+                    Id = result.ContextPark.Id,
+                    Name = result.ContextPark.Name,
+                },
             Subjects = result.Subjects.Select(subject => subject.ToLineageHttp(publicKeys)).ToArray(),
             Relations = result.Relations.Select(relation => relation.ToLineageHttp(publicKeys)).ToArray(),
             HasDirectedCycle = result.HasDirectedCycle,

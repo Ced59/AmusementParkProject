@@ -974,9 +974,13 @@ La frise indique uniquement les événements qui possèdent réellement une
 lignée publiée. La page SSR dédiée restitue chaque lien sous forme de cartes
 accessibles avec les deux libellés, la nature exacte du lien, la période, le
 niveau de preuve, l'incertitude et les sources. Les identifiants internes des
-sujets, relations, preuves et révisions sont remplacés dans la réponse par des
-clés de présentation locales. Une source retirée fait disparaître le lien
-public concerné au lieu de laisser une relation sans preuve visible.
+sujets reliés, relations, preuves et révisions sont remplacés dans la réponse
+par des clés de présentation locales. Seule l'identité publique du parc de
+contexte est transmise pour reconstruire le fil d'Ariane Parc puis Histoire.
+Ce contexte est revérifié : un ancien élément ou une ancienne zone rattachés à
+un parc désormais non public ne peuvent pas être exposés. Une source retirée
+fait disparaître le lien public concerné au lieu de laisser une relation sans
+preuve visible.
 
 La page est localisée dans les huit langues, possède un fil d'Ariane visible et
 un `BreadcrumbList`, reste `noindex,follow` jusqu'à la sélection éditoriale de

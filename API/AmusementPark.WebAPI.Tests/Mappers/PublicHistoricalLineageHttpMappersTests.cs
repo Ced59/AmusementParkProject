@@ -57,6 +57,7 @@ public sealed class PublicHistoricalLineageHttpMappersTests
             RecordedAtUtc);
         PublicHistoricalLineageResult result = new(
             source,
+            new PublicHistoricalLineageContextParkResult("public-park-1", "Parc public"),
             new[] { source, target },
             new[] { new PublicHistoricalRelationResult(relation, Array.Empty<HistoricalSourceReference>()) },
             false,
@@ -67,6 +68,8 @@ public sealed class PublicHistoricalLineageHttpMappersTests
         string json = JsonSerializer.Serialize(dto);
 
         Assert.Equal("subject-1", dto.Root.Key);
+        Assert.Equal("Parc public", Assert.IsType<PublicHistoricalLineageContextParkDto>(
+            dto.ContextPark).Name);
         PublicHistoricalLineageRelationDto relationDto = Assert.Single(dto.Relations);
         Assert.Equal("subject-1", relationDto.SourceKey);
         Assert.Equal("subject-2", relationDto.TargetKey);

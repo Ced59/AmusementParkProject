@@ -57,7 +57,7 @@ describe('HistoryApiService', () => {
       `${environment.apiBaseUrl}public/history/subjects/ParkItem/item%2Fone/lineage`
     );
     expect(request.request.method).toBe('GET');
-    request.flush({ root: {}, subjects: [], relations: [], hasDirectedCycle: false, isTruncated: false, maximumDepth: 4 });
+    request.flush({ root: {}, contextPark: null, subjects: [], relations: [], hasDirectedCycle: false, isTruncated: false, maximumDepth: 4 });
   });
 
   it('loads a canonical snapshot without inventing missing date precision', () => {

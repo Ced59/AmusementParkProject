@@ -4,6 +4,8 @@ public sealed class PublicHistoricalLineageDto
 {
     public PublicHistoricalLineageSubjectDto Root { get; init; } = new PublicHistoricalLineageSubjectDto();
 
+    public PublicHistoricalLineageContextParkDto? ContextPark { get; init; }
+
     public IReadOnlyCollection<PublicHistoricalLineageSubjectDto> Subjects { get; init; } =
         Array.Empty<PublicHistoricalLineageSubjectDto>();
 

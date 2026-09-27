@@ -9,4 +9,8 @@ public interface IHistoricalSubjectPublicationStateReader
     Task<IReadOnlySet<HistoricalSubjectKey>> GetPublicSubjectKeysAsync(
         IReadOnlyCollection<HistoricalSubject> subjects,
         CancellationToken cancellationToken);
+
+    Task<IReadOnlyDictionary<string, string>> GetPublicParkNamesAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken);
 }
