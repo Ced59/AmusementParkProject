@@ -1,0 +1,145 @@
+@let currentComparison = comparison();
+
+<app-page-state
+  [state]="state()"
+  [messages]="{
+    loadingTitleKey: 'history.comparison.loadingTitle',
+    loadingMessageKey: 'history.comparison.loadingMessage',
+    errorTitleKey: 'history.comparison.errorTitle',
+    errorMessageKey: 'history.comparison.errorMessage'
+  }">
+  @if (currentComparison) {
+    <main class="park-history-page history-comparison-page">
+      <nav class="park-history-breadcrumb" [attr.aria-label]="'history.explorer.breadcrumbAria' | translate">
+        <a [routerLink]="['/', currentLanguage(), 'home']">{{ 'history.explorer.home' | translate }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="['/', currentLanguage(), 'parks']">{{ 'history.explorer.parks' | translate }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="parkLink(currentComparison)">{{ currentComparison.parkName }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <a [routerLink]="historyLink(currentComparison)">{{ 'history.explorer.history' | translate }}</a>
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+        <span aria-current="page">{{ 'history.comparison.breadcrumb' | translate }}</span>
+      </nav>
+
+      <header class="park-history-hero history-comparison-hero">
+        <div class="park-history-hero__copy">
+          <p class="park-history-kicker"><i class="pi pi-arrows-h" aria-hidden="true"></i>{{ 'history.comparison.kicker' | translate }}</p>
+          <h1>{{ 'history.comparison.title' | translate: { park: currentComparison.parkName } }}</h1>
+          <p>{{ 'history.comparison.description' | translate }}</p>
+        </div>
+
+        <form class="park-history-date-picker comparison-picker" (ngSubmit)="compareSelectedYears(currentComparison)">
+          <div class="comparison-picker__fields">
+            <label for="comparison-from">{{ 'history.comparison.fromYear' | translate }}</label>
+            <input id="comparison-from" name="comparisonFrom" type="number" min="1000" max="9998" inputmode="numeric" [(ngModel)]="selectedFromYear" required>
+            <span aria-hidden="true">→</span>
+            <label for="comparison-to">{{ 'history.comparison.toYear' | translate }}</label>
+            <input id="comparison-to" name="comparisonTo" type="number" min="1001" max="9999" inputmode="numeric" [(ngModel)]="selectedToYear" required>
+          </div>
+          @if (rangeInvalid()) { <p class="comparison-picker__error">{{ 'history.comparison.invalidRange' | translate }}</p> }
+          <button class="app-button app-button--primary" type="submit" [disabled]="rangeInvalid()">
+            <i class="pi pi-search" aria-hidden="true"></i><span>{{ 'history.comparison.compare' | translate }}</span>
+          </button>
+        </form>
+      </header>
+
+      <section class="comparison-eras" [attr.aria-label]="'history.comparison.periodAria' | translate">
+        <article><small>{{ 'history.comparison.departure' | translate }}</small><strong>{{ currentComparison.fromInstant.year }}</strong></article>
+        <div aria-hidden="true"><span></span><i class="pi pi-arrow-right"></i><span></span></div>
+        <article><small>{{ 'history.comparison.arrival' | translate }}</small><strong>{{ currentComparison.toInstant.year }}</strong></article>
+      </section>
+
+      <section class="comparison-summary" [attr.aria-label]="'history.comparison.summaryAria' | translate">
+        <article class="comparison-summary--opened"><strong>{{ opened().length }}</strong><span>{{ 'history.comparison.opened' | translate }}</span></article>
+        <article class="comparison-summary--closed"><strong>{{ closed().length }}</strong><span>{{ 'history.comparison.closed' | translate }}</span></article>
+        <article class="comparison-summary--changed"><strong>{{ changed().length }}</strong><span>{{ 'history.comparison.changed' | translate }}</span></article>
+        <article class="comparison-summary--uncertain"><strong>{{ uncertain().length }}</strong><span>{{ 'history.comparison.uncertain' | translate }}</span></article>
+      </section>
+
+      @if (currentComparison.categoryNetChanges.length > 0) {
+        <section class="comparison-section category-evolution">
+          <header><p>{{ 'history.comparison.balanceKicker' | translate }}</p><h2>{{ 'history.comparison.balanceTitle' | translate }}</h2></header>
+          <p class="comparison-section__intro">{{ 'history.comparison.balanceDescription' | translate }}</p>
+          <div class="category-evolution__legend"><span>{{ currentComparison.fromInstant.year }}</span><span>{{ currentComparison.toInstant.year }}</span></div>
+          <div class="category-evolution__list">
+            @for (change of currentComparison.categoryNetChanges; track change.category) {
+              <article>
+                <header><strong>{{ categoryLabel(change) }}</strong><span [class.is-positive]="change.netChange > 0" [class.is-negative]="change.netChange < 0">{{ delta(change) }}</span></header>
+                <div class="category-bar"><small>{{ change.fromCount }}</small><span><i class="category-bar__from" [style.width.%]="barWidth(change.fromCount, currentComparison)"></i></span></div>
+                <div class="category-bar"><small>{{ change.toCount }}</small><span><i class="category-bar__to" [style.width.%]="barWidth(change.toCount, currentComparison)"></i></span></div>
+              </article>
+            }
+          </div>
+          @if (!currentComparison.isCategoryComparisonComplete) {
+            <p class="comparison-evidence-note"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ 'history.comparison.incompleteCategories' | translate }}</p>
+          }
+        </section>
+      }
+
+      @if (opened().length > 0) {
+        <section class="comparison-section comparison-section--opened">
+          <header><p>{{ 'history.comparison.newKicker' | translate }}</p><h2>{{ 'history.comparison.openedTitle' | translate: { count: opened().length } }}</h2></header>
+          <div class="comparison-card-grid">
+            @for (subject of opened(); track subject.comparisonKey) {
+              <article class="comparison-card"><span class="comparison-card__icon"><i class="pi pi-plus" aria-hidden="true"></i></span><div><h3>{{ subject.displayName }}</h3>@if (usesCurrentNameFallback(subject)) { <small class="comparison-card__name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }<p>{{ 'history.comparison.openedBetween' | translate: { from: currentComparison.fromInstant.year, to: currentComparison.toInstant.year } }}</p><small>{{ sourceLabel(subject) }}</small></div></article>
+            }
+          </div>
+        </section>
+      }
+
+      @if (closed().length > 0) {
+        <section class="comparison-section comparison-section--closed">
+          <header><p>{{ 'history.comparison.closedKicker' | translate }}</p><h2>{{ 'history.comparison.closedTitle' | translate: { count: closed().length } }}</h2></header>
+          <div class="comparison-card-grid">
+            @for (subject of closed(); track subject.comparisonKey) {
+              <article class="comparison-card"><span class="comparison-card__icon"><i class="pi pi-minus" aria-hidden="true"></i></span><div><h3>{{ subject.displayName }}</h3>@if (usesCurrentNameFallback(subject)) { <small class="comparison-card__name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }<p>{{ 'history.comparison.closedBetween' | translate: { from: currentComparison.fromInstant.year, to: currentComparison.toInstant.year } }}</p><small>{{ sourceLabel(subject) }}</small></div></article>
+            }
+          </div>
+        </section>
+      }
+
+      @if (changed().length > 0) {
+        <section class="comparison-section comparison-section--changed">
+          <header><p>{{ 'history.comparison.transformedKicker' | translate }}</p><h2>{{ 'history.comparison.transformedTitle' | translate: { count: changed().length } }}</h2></header>
+          <div class="comparison-card-grid">
+            @for (subject of changed(); track subject.comparisonKey) {
+              <article class="comparison-card comparison-card--transition">
+                <span class="comparison-card__icon"><i class="pi pi-sync" aria-hidden="true"></i></span>
+                <div><h3>{{ subject.displayName }}</h3>@if (usesCurrentNameFallback(subject)) { <small class="comparison-card__name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }
+                  @if (subject.isRenamed) { <p><strong>{{ subject.previousName }}</strong><i class="pi pi-arrow-right" aria-hidden="true"></i><strong>{{ subject.nextName }}</strong></p> }
+                  @if (subject.isMoved) { <p><span>{{ subject.previousZoneName }}</span><i class="pi pi-arrow-right" aria-hidden="true"></i><span>{{ subject.nextZoneName }}</span></p> }
+                  <small>{{ sourceLabel(subject) }}</small>
+                </div>
+              </article>
+            }
+          </div>
+        </section>
+      }
+
+      @if (uncertain().length > 0) {
+        <section class="comparison-section comparison-section--uncertain">
+          <header><p>{{ 'history.comparison.uncertainKicker' | translate }}</p><h2>{{ 'history.comparison.uncertainTitle' | translate: { count: uncertain().length } }}</h2></header>
+          <p class="comparison-section__intro">{{ 'history.comparison.uncertainDescription' | translate }}</p>
+          <div class="comparison-card-grid">
+            @for (subject of uncertain(); track subject.comparisonKey) {
+              <article class="comparison-card"><span class="comparison-card__icon"><i class="pi pi-question" aria-hidden="true"></i></span><div><h3>{{ subject.displayName }}</h3>@if (usesCurrentNameFallback(subject)) { <small class="comparison-card__name-origin">{{ 'history.explorer.currentNameFallback' | translate }}</small> }<p>{{ 'history.comparison.notEnoughEvidence' | translate }}</p><small>{{ sourceLabel(subject) }}</small></div></article>
+            }
+          </div>
+        </section>
+      }
+
+      @if (stable().length > 0) {
+        <details class="comparison-stable">
+          <summary>{{ 'history.comparison.stableTitle' | translate: { count: stable().length } }}</summary>
+          <ul>@for (subject of stable(); track subject.comparisonKey) { <li>{{ subject.displayName }}</li> }</ul>
+        </details>
+      }
+
+      <aside class="comparison-proof-note">
+        <i class="pi pi-shield" aria-hidden="true"></i>
+        <div><strong>{{ 'history.comparison.proofTitle' | translate }}</strong><p>{{ 'history.comparison.proofDescription' | translate }}</p></div>
+      </aside>
+    </main>
+  }
+</app-page-state>

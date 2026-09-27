@@ -266,6 +266,14 @@
   text-decoration: none;
 }
 
+.snapshot-today__actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}
+
 @media (max-width: 900px) {
   .snapshot-overview,
   .snapshot-subject-grid {
@@ -289,6 +297,10 @@
   }
 
   .snapshot-today a {
+    width: 100%;
+  }
+
+  .snapshot-today__actions {
     width: 100%;
   }
 }

@@ -27,6 +27,17 @@
       "coverageStatuses": { "Partial": "Copertura parziale", "Substantial": "Copertura solida", "HighConfidence": "Affidabilità elevata" },
       "attributes": { "Logo": "Logo", "Zone": "Area", "Operator": "Gestore", "Owner": "Proprietario", "Manufacturer": "Costruttore", "Category": "Categoria", "Theme": "Tema", "Location": "Posizione", "Status": "Stato", "MarketPositioning": "Posizionamento" }
     },
+    "comparison": {
+      "loadingTitle": "Preparazione del confronto", "loadingMessage": "Le due epoche sono in fase di ricostruzione.", "errorTitle": "Confronto non disponibile", "errorMessage": "Questo confronto storico non può essere caricato al momento.",
+      "breadcrumb": "Confronta due epoche", "kicker": "Due epoche, un solo parco", "title": "Come è cambiato {{park}}", "description": "Scegli due anni e scopri cosa è rimasto, cosa ha aperto, chiuso o è cambiato, senza trasformare le lacune in certezze.",
+      "fromYear": "Anno iniziale", "toYear": "Anno finale", "invalidRange": "L’anno iniziale deve precedere quello finale.", "compare": "Confronta le epoche", "periodAria": "Periodo confrontato", "departure": "Inizio", "arrival": "Fine",
+      "summaryAria": "Riepilogo dei cambiamenti", "opened": "aperture accertate", "closed": "chiusure accertate", "changed": "trasformazioni", "uncertain": "situazioni incerte",
+      "balanceKicker": "Panoramica", "balanceTitle": "Evoluzione per categoria", "balanceDescription": "Ogni barra confronta il numero di elementi accertati come aperti nelle due date.", "incompleteCategories": "Alcuni elementi aperti non hanno una categoria storica documentata: il quadro resta quindi parziale.",
+      "newKicker": "Novità accertate", "openedTitle": "Cosa ha aperto ({{count}})", "openedBetween": "Aperto tra il {{from}} e il {{to}}.", "closedKicker": "Scomparse accertate", "closedTitle": "Cosa ha chiuso ({{count}})", "closedBetween": "Chiuso tra il {{from}} e il {{to}}.",
+      "transformedKicker": "Identità in movimento", "transformedTitle": "Cosa è cambiato ({{count}})", "uncertainKicker": "Questioni aperte", "uncertainTitle": "Cosa resta incerto ({{count}})", "uncertainDescription": "Le date o le prove disponibili non permettono ancora una conclusione sicura.", "notEnoughEvidence": "Prove insufficienti per stabilire la presenza in entrambe le date.",
+      "stableTitle": "Presenti in entrambe le epoche senza cambiamenti documentati ({{count}})", "sources": "{{count}} fonte/i di supporto", "proofTitle": "Un confronto fondato sulle prove", "proofDescription": "Il risultato unisce due ricostruzioni indipendenti. Segnala i cambiamenti osservati, ma non inventa mai perché siano avvenuti.",
+      "seoTitle": "{{park}}: confronto storico {{from}}–{{to}}", "seoDescription": "Confronta {{park}} nel {{from}} e nel {{to}}: aperture, chiusure, cambi di nome, spostamenti e incertezze documentate."
+    },
     "lineage": {
       "breadcrumbAria": "Percorso di navigazione della linea storica", "home": "Home", "kicker": "Legami storici documentati", "title": "La linea storica di {{subject}}", "description": "Scopri solo cambi di nome, spostamenti, sostituzioni e altri legami confermati da fonti. Nessuna relazione viene ipotizzata.",
       "seoTitle": "Linea storica di {{subject}}", "seoDescription": "Esplora le relazioni storiche documentate di {{subject}}, il loro periodo e il livello delle prove.", "summaryAria": "Riepilogo della linea storica", "subjectCount": "elementi collegati", "relationCount": "relazioni documentate", "listAria": "Relazioni storiche documentate",

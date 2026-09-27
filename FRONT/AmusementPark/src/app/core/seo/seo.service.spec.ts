@@ -984,6 +984,25 @@ describe('SeoService', () => {
     expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
   });
 
+  it('keeps historical comparisons canonical but outside the search index', () => {
+    service.applyHistoryComparisonSeo(
+      'Mirapolis : comparaison historique 1988–1991',
+      'Compare les deux époques à partir des preuves publiées.',
+      '/fr/park/park-1/mirapolis/history/compare/1988/1991?from=timeline',
+      '/fr/park/park-1/mirapolis/history/compare/1988/1991'
+    );
+
+    expect(documentRef.title).toBe(
+      'Mirapolis : comparaison historique 1988–1991 — Amusement Parks'
+    );
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBe(
+      'http://localhost:4200/fr/park/park-1/mirapolis/history/compare/1988/1991'
+    );
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+  });
+
   it('adds park item context and image fallbacks to history timeline social metadata', () => {
     service.applyHistoryTimelineSeo(
       buildHistoryTimeline({

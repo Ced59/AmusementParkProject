@@ -35,4 +35,11 @@ internal static class HistoryApplicationErrors
             "history.snapshot.date.invalid",
             "The requested historical snapshot date is invalid.");
     }
+
+    public static ApplicationError InvalidComparisonRange()
+    {
+        return ApplicationError.Validation(
+            "history.comparison.range.invalid",
+            "The historical comparison start year must precede its valid end year.");
+    }
 }

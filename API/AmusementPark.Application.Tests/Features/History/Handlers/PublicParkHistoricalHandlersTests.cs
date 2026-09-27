@@ -17,6 +17,82 @@ namespace AmusementPark.Application.Tests.Features.History.Handlers;
 public sealed class PublicParkHistoricalHandlersTests
 {
     [Fact]
+    public async Task Comparison_WhenRangeIsReversed_ReturnsValidationWithoutReadingData()
+    {
+        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
+        PublicParkHistoricalDataLoader loader = CreateLoader(
+            parkRepository,
+            new Mock<IParkItemRepository>(MockBehavior.Strict),
+            new Mock<IParkZoneRepository>(MockBehavior.Strict),
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict));
+        GetPublicParkHistoricalComparisonQueryHandler handler = new(
+            loader,
+            new ParkHistoricalSnapshotBuilder(),
+            new ParkHistoricalComparisonBuilder());
+
+        ApplicationResult<PublicParkHistoricalComparisonResult> result = await handler.HandleAsync(
+            new GetPublicParkHistoricalComparisonQuery("park-1", 2026, 1998));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "history.comparison.range.invalid");
+        parkRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task Comparison_LoadsPublicScopeOnceAndBuildsBothSnapshots()
+    {
+        Park park = PublicParkHistoryTestData.CreatePark();
+        ParkItem item = PublicParkHistoryTestData.CreateParkItem("item-1", "Attraction témoin");
+        HistoricalFact opening = PublicParkHistoryTestData.CreateOpeningFact(
+            new HistoricalSubject(
+                HistoricalSubjectType.ParkItem,
+                item.Id,
+                item.Name,
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                park.Id),
+            2010);
+        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkItemRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { item });
+        parkZoneRepository
+            .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+        factRepository
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
+                "park-1",
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { opening });
+        GetPublicParkHistoricalComparisonQueryHandler handler = new(
+            CreateLoader(parkRepository, parkItemRepository, parkZoneRepository, factRepository),
+            new ParkHistoricalSnapshotBuilder(),
+            new ParkHistoricalComparisonBuilder());
+
+        ApplicationResult<PublicParkHistoricalComparisonResult> result = await handler.HandleAsync(
+            new GetPublicParkHistoricalComparisonQuery("park-1", 1998, 2026));
+
+        Assert.True(result.IsSuccess);
+        PublicParkHistoricalComparisonResult comparison =
+            Assert.IsType<PublicParkHistoricalComparisonResult>(result.Value);
+        Assert.Equal(1998, comparison.Comparison.From.RequestedInstant.Year);
+        Assert.Equal(2026, comparison.Comparison.To.RequestedInstant.Year);
+        Assert.Equal(
+            HistoricalPresenceChange.Opened,
+            comparison.Comparison.Subjects.Single(subject => subject.To.Subject.Id == item.Id).PresenceChange);
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+        factRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task Snapshot_WhenDayHasNoMonth_ReturnsValidationWithoutReadingData()
     {
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);

@@ -28,6 +28,17 @@
       "coverageStatuses": { "Partial": "Partial coverage", "Substantial": "Substantial coverage", "HighConfidence": "High confidence" },
       "attributes": { "Logo": "Logo", "Zone": "Area", "Operator": "Operator", "Owner": "Owner", "Manufacturer": "Manufacturer", "Category": "Category", "Theme": "Theme", "Location": "Location", "Status": "Status", "MarketPositioning": "Market positioning" }
     },
+    "comparison": {
+      "loadingTitle": "Preparing the comparison", "loadingMessage": "Both eras are being reconstructed.", "errorTitle": "Comparison unavailable", "errorMessage": "This historical comparison could not be loaded right now.",
+      "breadcrumb": "Compare two eras", "kicker": "Two eras, one park", "title": "How {{park}} changed", "description": "Choose two years and discover what remained, opened, closed or changed, without turning missing evidence into certainty.",
+      "fromYear": "Starting year", "toYear": "Ending year", "invalidRange": "The starting year must come before the ending year.", "compare": "Compare these eras", "periodAria": "Compared period", "departure": "Start", "arrival": "End",
+      "summaryAria": "Change summary", "opened": "confirmed openings", "closed": "confirmed closures", "changed": "transformations", "uncertain": "uncertain situations",
+      "balanceKicker": "Overview", "balanceTitle": "Change by category", "balanceDescription": "Each bar compares how many elements are confirmed open at each date.", "incompleteCategories": "Some open elements have no documented historical category, so this overview remains partial.",
+      "newKicker": "Confirmed additions", "openedTitle": "What opened ({{count}})", "openedBetween": "Opened between {{from}} and {{to}}.", "closedKicker": "Confirmed departures", "closedTitle": "What closed ({{count}})", "closedBetween": "Closed between {{from}} and {{to}}.",
+      "transformedKicker": "Changing identities", "transformedTitle": "What changed ({{count}})", "uncertainKicker": "Open questions", "uncertainTitle": "What remains uncertain ({{count}})", "uncertainDescription": "The available dates or evidence do not support a firm conclusion yet.", "notEnoughEvidence": "Not enough evidence to establish its presence at both dates.",
+      "stableTitle": "Present in both eras with no documented change ({{count}})", "sources": "{{count}} supporting source(s)", "proofTitle": "An evidence-based comparison", "proofDescription": "The result brings together two independent reconstructions. It reports observed changes but never invents why they happened.",
+      "seoTitle": "{{park}}: historical comparison {{from}}–{{to}}", "seoDescription": "Compare {{park}} in {{from}} and {{to}}: documented openings, closures, renamings, moves and uncertainties."
+    },
     "lineage": {
       "breadcrumbAria": "Historical lineage breadcrumb", "home": "Home", "kicker": "Evidence-backed historical links", "title": "The lineage of {{subject}}", "description": "Explore only renames, moves, replacements and other links confirmed by sources. No relationship is guessed.",
       "seoTitle": "Historical lineage of {{subject}}", "seoDescription": "Explore the sourced historical relationships of {{subject}}, their period and evidence level.", "summaryAria": "Lineage summary", "subjectCount": "connected subjects", "relationCount": "documented relationships", "listAria": "Documented historical relationships",

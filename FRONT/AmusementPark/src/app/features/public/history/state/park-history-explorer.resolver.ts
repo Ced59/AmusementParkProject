@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
 import { Observable, catchError, map, of } from 'rxjs';
 
-import { PublicParkHistoricalSnapshot, PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
+import { PublicParkHistoricalComparison, PublicParkHistoricalSnapshot, PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { applySsrPublicDataErrorStatus } from '@core/ssr/ssr-public-error-status';
@@ -21,6 +21,12 @@ export interface ResolvedParkHistoricalSnapshotRouteData {
   readonly year: number;
   readonly month: number | null;
   readonly day: number | null;
+}
+
+export interface ResolvedParkHistoricalComparisonRouteData {
+  readonly comparison: PublicParkHistoricalComparison | null;
+  readonly fromYear: number;
+  readonly toYear: number;
 }
 
 export const parkHistoryTimelineResolver: ResolveFn<ResolvedParkHistoryTimelineRouteData> = (
@@ -84,6 +90,33 @@ export const parkHistoricalSnapshotResolver: ResolveFn<ResolvedParkHistoricalSna
     catchError((error: unknown): Observable<ResolvedParkHistoricalSnapshotRouteData> => {
       applySsrPublicDataErrorStatus(error, ssrStatus);
       return of({ snapshot: null, year, month, day });
+    })
+  );
+};
+
+export const parkHistoricalComparisonResolver: ResolveFn<ResolvedParkHistoricalComparisonRouteData> = (
+  route: ActivatedRouteSnapshot
+): Observable<ResolvedParkHistoricalComparisonRouteData> => {
+  const parkId: string = route.paramMap.get('id')?.trim() ?? '';
+  const fromYear: number | null = resolveFourDigitYear(route.paramMap.get('fromYear'));
+  const toYear: number | null = resolveFourDigitYear(route.paramMap.get('toYear'));
+  const ssrStatus: SsrHttpStatusService = inject(SsrHttpStatusService);
+  const historyData: HistoryDataPort = inject(HISTORY_DATA_PORT);
+
+  if (parkId.length === 0 || fromYear === null || toYear === null || fromYear >= toYear) {
+    ssrStatus.setNotFound();
+    return of({ comparison: null, fromYear: fromYear ?? 1, toYear: toYear ?? 1 });
+  }
+
+  return historyData.getPublicParkComparison(parkId, fromYear, toYear, anonymousHttpOptions()).pipe(
+    map((comparison: PublicParkHistoricalComparison): ResolvedParkHistoricalComparisonRouteData => ({
+      comparison,
+      fromYear,
+      toYear
+    })),
+    catchError((error: unknown): Observable<ResolvedParkHistoricalComparisonRouteData> => {
+      applySsrPublicDataErrorStatus(error, ssrStatus);
+      return of({ comparison: null, fromYear, toYear });
     })
   );
 };

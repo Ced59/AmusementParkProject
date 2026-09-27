@@ -27,6 +27,17 @@
       "coverageStatuses": { "Partial": "Cobertura parcial", "Substantial": "Cobertura sólida", "HighConfidence": "Confianza alta" },
       "attributes": { "Logo": "Logotipo", "Zone": "Zona", "Operator": "Operador", "Owner": "Propietario", "Manufacturer": "Fabricante", "Category": "Categoría", "Theme": "Temática", "Location": "Ubicación", "Status": "Estado", "MarketPositioning": "Posicionamiento" }
     },
+    "comparison": {
+      "loadingTitle": "Preparando la comparación", "loadingMessage": "Se están reconstruyendo las dos épocas.", "errorTitle": "Comparación no disponible", "errorMessage": "Esta comparación histórica no se ha podido cargar por ahora.",
+      "breadcrumb": "Comparar dos épocas", "kicker": "Dos épocas, un mismo parque", "title": "Cómo cambió {{park}}", "description": "Elige dos años y descubre qué permaneció, abrió, cerró o cambió, sin convertir la falta de pruebas en certezas.",
+      "fromYear": "Año inicial", "toYear": "Año final", "invalidRange": "El año inicial debe ser anterior al año final.", "compare": "Comparar estas épocas", "periodAria": "Periodo comparado", "departure": "Inicio", "arrival": "Final",
+      "summaryAria": "Resumen de cambios", "opened": "aperturas confirmadas", "closed": "cierres confirmados", "changed": "transformaciones", "uncertain": "situaciones inciertas",
+      "balanceKicker": "Vista general", "balanceTitle": "Evolución por categoría", "balanceDescription": "Cada barra compara cuántos elementos constan como abiertos en cada fecha.", "incompleteCategories": "Algunos elementos abiertos no tienen una categoría histórica documentada, por lo que este balance es parcial.",
+      "newKicker": "Novedades confirmadas", "openedTitle": "Lo que abrió ({{count}})", "openedBetween": "Abrió entre {{from}} y {{to}}.", "closedKicker": "Desapariciones confirmadas", "closedTitle": "Lo que cerró ({{count}})", "closedBetween": "Cerró entre {{from}} y {{to}}.",
+      "transformedKicker": "Identidades en movimiento", "transformedTitle": "Lo que cambió ({{count}})", "uncertainKicker": "Cuestiones abiertas", "uncertainTitle": "Lo que sigue incierto ({{count}})", "uncertainDescription": "Las fechas o las pruebas disponibles aún no permiten concluir con seguridad.", "notEnoughEvidence": "No hay pruebas suficientes para confirmar su presencia en ambas fechas.",
+      "stableTitle": "Presentes en ambas épocas sin cambios documentados ({{count}})", "sources": "{{count}} fuente(s) de apoyo", "proofTitle": "Una comparación basada en pruebas", "proofDescription": "El resultado reúne dos reconstrucciones independientes. Muestra los cambios observados, pero nunca inventa por qué ocurrieron.",
+      "seoTitle": "{{park}}: comparación histórica {{from}}–{{to}}", "seoDescription": "Compara {{park}} en {{from}} y {{to}}: aperturas, cierres, cambios de nombre, traslados e incertidumbres documentadas."
+    },
     "lineage": {
       "breadcrumbAria": "Migas de pan del linaje histórico", "home": "Inicio", "kicker": "Vínculos históricos demostrados", "title": "El linaje de {{subject}}", "description": "Descubre solo cambios de nombre, traslados, reemplazos y otros vínculos confirmados por fuentes. No se adivina ninguna relación.",
       "seoTitle": "Linaje histórico de {{subject}}", "seoDescription": "Explora las relaciones históricas documentadas de {{subject}}, su periodo y su nivel de evidencia.", "summaryAria": "Resumen del linaje", "subjectCount": "elementos conectados", "relationCount": "relaciones documentadas", "listAria": "Relaciones históricas documentadas",

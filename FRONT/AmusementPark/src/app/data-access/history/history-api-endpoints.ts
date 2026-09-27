@@ -25,6 +25,7 @@ export const HISTORY_API_ENDPOINTS = {
   getPublicHistoricalLineage: (subjectType: string, subjectId: string, contextParkId: string) => `public/history/subjects/${encodeURIComponent(subjectType)}/${encodeURIComponent(subjectId)}/lineage${buildQuery({ contextParkId })}`,
   getPublicParkTimeline: (parkId: string, page: number = 1, pageSize: number = 50) => `public/parks/${encodeURIComponent(parkId)}/history/timeline${buildQuery({ page, pageSize })}`,
   getPublicParkSnapshot: (parkId: string, year: number, month?: number | null, day?: number | null) => `public/parks/${encodeURIComponent(parkId)}/history/snapshot${buildQuery({ year, month, day })}`,
+  getPublicParkComparison: (parkId: string, fromYear: number, toYear: number) => `public/parks/${encodeURIComponent(parkId)}/history/compare${buildQuery({ fromYear, toYear })}`,
   getParkTimeline: (parkId: string, includeParkItems: boolean = false, parkItemIds: readonly string[] = [], page: number = 1) => {
     const params: string[] = [];
 
