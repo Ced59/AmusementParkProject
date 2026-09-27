@@ -43,18 +43,25 @@ Les règles détaillées sont les suivantes :
   attraction ;
 - un contexte n'est canonique que si un état certain (`KnownOpen` ou
   `KnownClosed`) est soutenu par au moins un fait publié applicable à la date ;
+- la preuve est aussi évaluée attribut par attribut : un fait d'ouverture ou
+  de fermeture prouve l'existence, mais ne prouve ni le nom ni la catégorie ;
+- un nom n'alimente les noms historiques, les transformations ou l'empreinte
+  d'une époque que si un fait publié documente explicitement ce nom à la date
+  concernée ; la même règle s'applique séparément à la catégorie ;
 - la simple présence d'une attraction dans le catalogue actuel, même visible,
   ne constitue jamais à elle seule une preuve historique ;
 - une attraction disparue était `KnownOpen` à la visite et est
   canoniquement `KnownClosed` aujourd'hui ;
-- une transformation exige un nom ou une catégorie canonique différente
-  entre la visite et aujourd'hui ;
+- une transformation exige un nom ou une catégorie différents entre la visite
+  et aujourd'hui, avec une preuve publiée de cet attribut aux deux dates ;
 - une époque de parc correspond à une empreinte déterministe de l'inventaire
   canoniquement ouvert, avec les noms et catégories valables à cette date ;
 - deux visites d'un même parc ne représentent plusieurs époques que si leurs
   empreintes diffèrent ;
 - les données non résolues restent visibles dans le taux de couverture mais
   ne sont jamais devinées ;
+- les libellés actuels de secours peuvent aider à identifier une carte dans
+  l'interface, mais ils sont exclus des agrégats historiques canoniques ;
 - les regroupements de catégories utilisent le type métier détaillé
   (`DarkRide`, `RollerCoaster`, `WaterRide`, etc.) plutôt que l'étiquette
   générique `Attraction` ;

@@ -11,4 +11,20 @@ public static class PassportHistoricalEvidencePolicy
                 or HistoricalOperationalState.KnownClosed
             && snapshot.SupportingFactIds.Count > 0;
     }
+
+    public static bool HasCanonicalAttributeEvidence(
+        HistoricalSubjectSnapshot snapshot,
+        HistoricalAttributeKind kind)
+    {
+        ArgumentNullException.ThrowIfNull(snapshot);
+        if (!Enum.IsDefined(kind))
+        {
+            throw new ArgumentOutOfRangeException(nameof(kind));
+        }
+
+        HistoricalAttributeSnapshot? attribute = snapshot.Attributes
+            .SingleOrDefault(value => value.Kind == kind);
+        return attribute?.State == HistoricalAttributeValueState.Known
+            && attribute.SupportingFactIds.Count > 0;
+    }
 }

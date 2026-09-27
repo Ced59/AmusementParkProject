@@ -165,6 +165,8 @@ public sealed class GetPassportHistoricalStatisticsQueryHandler
             target.Name,
             target.HistoricalClassification ?? target.Category,
             target.OperationalState,
-            target.HasCanonicalEvidence);
+            target.HasCanonicalEvidence,
+            target.HasCanonicalNameEvidence,
+            target.HasCanonicalClassificationEvidence);
     }
 }

@@ -1229,6 +1229,8 @@
         "title": "As transformações que viveste",
         "description": "O nome ou a categoria confirmados na tua visita diferem da identidade atual.",
         "experiencedAs": "Conheceste-a como",
+        "categoryAtVisit": "Categoria durante a visita:",
+        "categoryNow": "Categoria atual:",
         "empty": "Ainda não existe nenhuma transformação confirmada a ligar as tuas visitas ao presente."
       },
       "names": {

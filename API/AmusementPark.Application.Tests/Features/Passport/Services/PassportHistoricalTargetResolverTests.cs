@@ -187,11 +187,15 @@ public sealed class PassportHistoricalTargetResolverTests
         Assert.Equal(HistoricalOperationalState.KnownClosed, target.OperationalState);
         Assert.Equal(HistoricalConsistency.ConfirmedConflict, target.HistoricalConsistency);
         Assert.True(target.HasCanonicalEvidence);
+        Assert.False(target.HasCanonicalNameEvidence);
+        Assert.False(target.HasCanonicalClassificationEvidence);
         Assert.Null(target.MainImageId);
         PassportHistoricalTarget laterTarget = Assert.Single(
             contexts[VisitDate.ForYear(2005)].Targets).Value;
         Assert.Equal(HistoricalOperationalState.KnownOpen, laterTarget.OperationalState);
         Assert.True(laterTarget.HasCanonicalEvidence);
+        Assert.False(laterTarget.HasCanonicalNameEvidence);
+        Assert.False(laterTarget.HasCanonicalClassificationEvidence);
         parks.VerifyAll();
         parkItems.VerifyAll();
         facts.VerifyAll();
@@ -274,6 +278,8 @@ public sealed class PassportHistoricalTargetResolverTests
         PassportHistoricalTarget target = Assert.Single(contexts.Values).Targets[item.Id];
         Assert.False(target.IsValidationFallback);
         Assert.False(target.HasCanonicalEvidence);
+        Assert.False(target.HasCanonicalNameEvidence);
+        Assert.False(target.HasCanonicalClassificationEvidence);
         Assert.Equal(ParkItemType.DarkRide.ToString(), target.HistoricalClassification);
         parks.VerifyAll();
         parkItems.VerifyAll();

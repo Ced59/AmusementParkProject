@@ -19,4 +19,6 @@ public sealed record PassportHistoricalTarget(
     DateOnly? ClosingDate,
     bool IsValidationFallback = false,
     string? HistoricalClassification = null,
-    bool HasCanonicalEvidence = false);
+    bool HasCanonicalEvidence = false,
+    bool HasCanonicalNameEvidence = false,
+    bool HasCanonicalClassificationEvidence = false);

@@ -1229,6 +1229,8 @@
         "title": "De veranderingen die je beleefde",
         "description": "De bevestigde naam of categorie tijdens je bezoek verschilt van de huidige identiteit.",
         "experiencedAs": "Je kende deze als",
+        "categoryAtVisit": "Categorie tijdens je bezoek:",
+        "categoryNow": "Huidige categorie:",
         "empty": "Nog geen bevestigde verandering verbindt je bezoeken met het heden."
       },
       "names": {

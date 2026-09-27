@@ -5,7 +5,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
   PassportHistoricalCategory,
   PassportHistoricalParkEra,
-  PassportHistoricalStatistics
+  PassportHistoricalStatistics,
+  PassportHistoricalTransformation
 } from '@app/models/passport/passport-statistics.models';
 import { TranslationService } from '@app/services/translation.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
@@ -81,6 +82,19 @@ export class PassportHistoricalStatisticsPageComponent implements OnInit {
 
   protected yearRange(firstYear: number, lastYear: number): string {
     return firstYear === lastYear ? String(firstYear) : `${firstYear} – ${lastYear}`;
+  }
+
+  protected classificationLabel(value: string): string {
+    return this.translateService.instant(getParkItemTypeTranslationKey(value));
+  }
+
+  protected classificationList(values: string[]): string {
+    return values.map((value: string): string => this.classificationLabel(value)).join(', ');
+  }
+
+  protected hasCategoryChange(item: PassportHistoricalTransformation): boolean {
+    return item.categoriesAtVisit.some((category: string): boolean =>
+      category.localeCompare(item.currentCategory, undefined, { sensitivity: 'accent' }) !== 0);
   }
 
   protected isEmpty(statistics: PassportHistoricalStatistics): boolean {

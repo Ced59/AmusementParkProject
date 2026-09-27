@@ -200,6 +200,8 @@ public sealed class GetPassportHistoricalStatisticsQueryHandlerTests
             null,
             false,
             "DarkRide",
+            true,
+            true,
             true);
     }
 }

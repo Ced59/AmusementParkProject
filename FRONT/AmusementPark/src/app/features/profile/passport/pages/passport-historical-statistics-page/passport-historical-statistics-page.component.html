@@ -139,7 +139,13 @@
             @for (item of statistics.transformations; track $index) {
               <article>
                 <div><span>{{ item.parkName || ('passport.historicalStatistics.unknownPark' | translate) }}</span><h3>{{ item.currentName }}</h3></div>
-                <p>{{ 'passport.historicalStatistics.transformations.experiencedAs' | translate }} {{ item.namesAtVisit.join(', ') }}</p>
+                @if (item.namesAtVisit.length > 0 && item.namesAtVisit.join(', ') !== item.currentName) {
+                  <p>{{ 'passport.historicalStatistics.transformations.experiencedAs' | translate }} {{ item.namesAtVisit.join(', ') }}</p>
+                }
+                @if (hasCategoryChange(item)) {
+                  <p>{{ 'passport.historicalStatistics.transformations.categoryAtVisit' | translate }} {{ classificationList(item.categoriesAtVisit) }}</p>
+                  <p>{{ 'passport.historicalStatistics.transformations.categoryNow' | translate }} {{ classificationLabel(item.currentCategory) }}</p>
+                }
                 <p>{{ yearRange(item.firstVisitYear, item.lastVisitYear) }}</p>
               </article>
             }

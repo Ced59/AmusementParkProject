@@ -1229,6 +1229,8 @@
         "title": "Przemiany, których doświadczyłeś",
         "description": "Potwierdzona nazwa lub kategoria z dnia wizyty różni się od dzisiejszej tożsamości.",
         "experiencedAs": "Znałeś tę atrakcję jako",
+        "categoryAtVisit": "Kategoria podczas wizyty:",
+        "categoryNow": "Obecna kategoria:",
         "empty": "Żadna potwierdzona przemiana nie łączy jeszcze Twoich wizyt z teraźniejszością."
       },
       "names": {

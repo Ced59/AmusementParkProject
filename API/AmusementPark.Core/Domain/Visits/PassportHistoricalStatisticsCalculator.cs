@@ -65,8 +65,12 @@ public static class PassportHistoricalStatisticsCalculator
             .Select(static target => string.Join(
                 '\u001f',
                 target.ParkItemId,
-                target.Name.ToUpperInvariant(),
-                target.Category.ToUpperInvariant()))
+                target.HasCanonicalNameEvidence
+                    ? target.Name.ToUpperInvariant()
+                    : string.Empty,
+                target.HasCanonicalCategoryEvidence
+                    ? target.Category.ToUpperInvariant()
+                    : string.Empty))
             .ToArray();
         return knownOpenTargets.Length == 0
             ? null
@@ -101,8 +105,8 @@ public static class PassportHistoricalStatisticsCalculator
         IReadOnlyCollection<PassportHistoricalRideContextObservation> rides)
     {
         return rides.Where(static ride => ride.CurrentTarget?.IsCanonical == true
-                && (HasChanged(ride.TargetAtVisit!.Name, ride.CurrentTarget.Name)
-                    || HasChanged(ride.TargetAtVisit.Category, ride.CurrentTarget.Category)))
+                && (HasCanonicalNameChange(ride)
+                    || HasCanonicalCategoryChange(ride)))
             .GroupBy(
                 static ride => (ride.ParkId, ride.ParkItemId),
                 EqualityComparer<(string ParkId, string ParkItemId)>.Default)
@@ -114,11 +118,13 @@ public static class PassportHistoricalStatisticsCalculator
                     group.Key.ParkItemId,
                     current.Name,
                     current.Category,
-                    group.Select(static ride => ride.TargetAtVisit!.Name)
+                    group.Where(static ride => ride.TargetAtVisit!.HasCanonicalNameEvidence)
+                        .Select(static ride => ride.TargetAtVisit!.Name)
                         .Distinct(StringComparer.OrdinalIgnoreCase)
                         .OrderBy(static name => name, StringComparer.OrdinalIgnoreCase)
                         .ToArray(),
-                    group.Select(static ride => ride.TargetAtVisit!.Category)
+                    group.Where(static ride => ride.TargetAtVisit!.HasCanonicalCategoryEvidence)
+                        .Select(static ride => ride.TargetAtVisit!.Category)
                         .Distinct(StringComparer.OrdinalIgnoreCase)
                         .OrderBy(static category => category, StringComparer.OrdinalIgnoreCase)
                         .ToArray(),
@@ -134,7 +140,8 @@ public static class PassportHistoricalStatisticsCalculator
     private static PassportHistoricalNameStatistic[] BuildHistoricalNames(
         IReadOnlyCollection<PassportHistoricalRideContextObservation> rides)
     {
-        return rides.GroupBy(
+        return rides.Where(static ride => ride.TargetAtVisit!.HasCanonicalNameEvidence)
+            .GroupBy(
                 static ride => (ride.ParkId, ride.ParkItemId, ride.TargetAtVisit!.Name),
                 EqualityComparer<(string ParkId, string ParkItemId, string Name)>.Default)
             .Select(group => new PassportHistoricalNameStatistic(
@@ -155,7 +162,8 @@ public static class PassportHistoricalStatisticsCalculator
     private static PassportHistoricalCategoryStatistic[] BuildHistoricalCategories(
         IReadOnlyCollection<PassportHistoricalRideContextObservation> rides)
     {
-        return rides.GroupBy(
+        return rides.Where(static ride => ride.TargetAtVisit!.HasCanonicalCategoryEvidence)
+            .GroupBy(
                 static ride => ride.TargetAtVisit!.Category,
                 StringComparer.OrdinalIgnoreCase)
             .Select(group => new PassportHistoricalCategoryStatistic(
@@ -175,6 +183,22 @@ public static class PassportHistoricalStatisticsCalculator
             historicalValue.Trim(),
             currentValue.Trim(),
             StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool HasCanonicalNameChange(
+        PassportHistoricalRideContextObservation ride)
+    {
+        return ride.TargetAtVisit!.HasCanonicalNameEvidence
+            && ride.CurrentTarget!.HasCanonicalNameEvidence
+            && HasChanged(ride.TargetAtVisit.Name, ride.CurrentTarget.Name);
+    }
+
+    private static bool HasCanonicalCategoryChange(
+        PassportHistoricalRideContextObservation ride)
+    {
+        return ride.TargetAtVisit!.HasCanonicalCategoryEvidence
+            && ride.CurrentTarget!.HasCanonicalCategoryEvidence
+            && HasChanged(ride.TargetAtVisit.Category, ride.CurrentTarget.Category);
     }
 
     private static void EnsureRideVisitsExist(

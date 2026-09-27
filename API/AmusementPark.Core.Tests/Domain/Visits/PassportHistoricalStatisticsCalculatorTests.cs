@@ -82,6 +82,71 @@ public sealed class PassportHistoricalStatisticsCalculatorTests
     }
 
     [Fact]
+    public void Calculate_WithExistenceEvidenceOnly_ShouldNotPromoteFallbackAttributes()
+    {
+        PassportHistoricalTargetStateObservation targetAtVisit = new(
+            "item-1",
+            "Old fallback name",
+            "DarkRide",
+            HistoricalOperationalState.KnownOpen,
+            true);
+        PassportHistoricalTargetStateObservation currentTarget = new(
+            "item-1",
+            "Current fallback name",
+            "RollerCoaster",
+            HistoricalOperationalState.KnownOpen,
+            true);
+        PassportHistoricalVisitContextObservation visit = Visit(
+            "visit-1",
+            2001,
+            targetAtVisit);
+
+        PassportHistoricalStatistics result = PassportHistoricalStatisticsCalculator.Calculate(
+            new[] { visit },
+            new[] { Ride("ride-1", visit, targetAtVisit, currentTarget) });
+
+        Assert.Equal(1, result.CanonicallyResolvedRideCount);
+        Assert.Empty(result.Transformations);
+        Assert.Empty(result.HistoricalNames);
+        Assert.Empty(result.HistoricalCategories);
+    }
+
+    [Fact]
+    public void Calculate_WithCategoryEvidenceOnly_ShouldExposeCategoryTransformation()
+    {
+        PassportHistoricalTargetStateObservation targetAtVisit = new(
+            "item-1",
+            "Fallback name",
+            "DarkRide",
+            HistoricalOperationalState.KnownOpen,
+            true,
+            false,
+            true);
+        PassportHistoricalTargetStateObservation currentTarget = new(
+            "item-1",
+            "Fallback name",
+            "RollerCoaster",
+            HistoricalOperationalState.KnownOpen,
+            true,
+            false,
+            true);
+        PassportHistoricalVisitContextObservation visit = Visit(
+            "visit-1",
+            2001,
+            targetAtVisit);
+
+        PassportHistoricalStatistics result = PassportHistoricalStatisticsCalculator.Calculate(
+            new[] { visit },
+            new[] { Ride("ride-1", visit, targetAtVisit, currentTarget) });
+
+        PassportHistoricalTransformationStatistic transformation =
+            Assert.Single(result.Transformations);
+        Assert.Empty(transformation.NamesAtVisit);
+        Assert.Equal(new[] { "DarkRide" }, transformation.CategoriesAtVisit);
+        Assert.Equal("RollerCoaster", transformation.CurrentCategory);
+    }
+
+    [Fact]
     public void Calculate_WithNonCompletedRide_ShouldNotClaimHistoricalVisit()
     {
         PassportHistoricalTargetStateObservation target = Target(
@@ -149,6 +214,8 @@ public sealed class PassportHistoricalStatisticsCalculatorTests
             name,
             category,
             state,
+            true,
+            true,
             true);
     }
 }

@@ -1229,6 +1229,8 @@
         "title": "Le trasformazioni che hai vissuto",
         "description": "Il nome o la categoria confermati durante la tua visita sono diversi dall'identità attuale.",
         "experiencedAs": "L'hai conosciuta come",
+        "categoryAtVisit": "Categoria durante la visita:",
+        "categoryNow": "Categoria attuale:",
         "empty": "Nessuna trasformazione confermata collega ancora le tue visite al presente."
       },
       "names": {

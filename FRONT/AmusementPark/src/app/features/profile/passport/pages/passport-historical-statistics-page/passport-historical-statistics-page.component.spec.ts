@@ -21,6 +21,8 @@ describe('PassportHistoricalStatisticsPageComponent', () => {
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     expect(host.textContent).toContain('Parc témoin');
     expect(host.textContent).toContain('Ancien Cyclone');
+    expect(host.textContent).toContain('parkExplorer.types.darkRide');
+    expect(host.textContent).toContain('parkExplorer.types.rollerCoaster');
     expect(host.textContent).not.toContain('park-technical-id');
     expect(host.querySelectorAll('app-passport-global-bar-chart')).toHaveLength(2);
     const styles: string = (PassportHistoricalStatisticsPageComponent as unknown as {
@@ -44,7 +46,7 @@ function createStatistics(): PassportHistoricalStatistics {
     parkCountAcrossMultipleEras: 1,
     parksAcrossEras: [{ parkName: 'Parc témoin', firstVisitYear: 2001, lastVisitYear: 2026, visitCount: 2, canonicalEraCount: 2 }],
     disappearedAttractions: [{ parkName: 'Parc témoin', attractionName: 'Ancien Cyclone', firstVisitYear: 2001, lastVisitYear: 2001, completedRideCount: 1 }],
-    transformations: [{ parkName: 'Parc témoin', currentName: 'Nouveau Cyclone', currentCategory: 'Attraction', namesAtVisit: ['Ancien Cyclone'], categoriesAtVisit: ['Attraction'], firstVisitYear: 2001, lastVisitYear: 2001, completedRideCount: 1 }],
+    transformations: [{ parkName: 'Parc témoin', currentName: 'Nouveau Cyclone', currentCategory: 'RollerCoaster', namesAtVisit: ['Nouveau Cyclone'], categoriesAtVisit: ['DarkRide'], firstVisitYear: 2001, lastVisitYear: 2001, completedRideCount: 1 }],
     historicalNames: [{ parkName: 'Parc témoin', nameAtVisit: 'Ancien Cyclone', currentName: 'Nouveau Cyclone', firstVisitYear: 2001, lastVisitYear: 2001, completedRideCount: 1 }],
     historicalCategories: [{ category: 'Attraction', completedRideCount: 2, distinctAttractionCount: 1 }]
   };

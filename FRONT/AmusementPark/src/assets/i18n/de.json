@@ -1229,6 +1229,8 @@
         "title": "Die Veränderungen, die du erlebt hast",
         "description": "Der bestätigte Name oder die Kategorie bei deinem Besuch unterscheidet sich von der heutigen Identität.",
         "experiencedAs": "Du kanntest sie als",
+        "categoryAtVisit": "Kategorie bei deinem Besuch:",
+        "categoryNow": "Heutige Kategorie:",
         "empty": "Noch verbindet keine bestätigte Veränderung deine Besuche mit der Gegenwart."
       },
       "names": {

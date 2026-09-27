@@ -10,7 +10,9 @@ public sealed record PassportHistoricalTargetStateObservation
         string name,
         string category,
         HistoricalOperationalState operationalState,
-        bool isCanonical)
+        bool isCanonical,
+        bool hasCanonicalNameEvidence = false,
+        bool hasCanonicalCategoryEvidence = false)
     {
         this.ParkItemId = IdentifierRules.NormalizeRequired(parkItemId, nameof(parkItemId));
         this.Name = NormalizeRequired(name, nameof(name));
@@ -22,6 +24,8 @@ public sealed record PassportHistoricalTargetStateObservation
 
         this.OperationalState = operationalState;
         this.IsCanonical = isCanonical;
+        this.HasCanonicalNameEvidence = hasCanonicalNameEvidence;
+        this.HasCanonicalCategoryEvidence = hasCanonicalCategoryEvidence;
     }
 
     public string ParkItemId { get; }
@@ -33,6 +37,10 @@ public sealed record PassportHistoricalTargetStateObservation
     public HistoricalOperationalState OperationalState { get; }
 
     public bool IsCanonical { get; }
+
+    public bool HasCanonicalNameEvidence { get; }
+
+    public bool HasCanonicalCategoryEvidence { get; }
 
     private static string NormalizeRequired(string value, string parameterName)
     {

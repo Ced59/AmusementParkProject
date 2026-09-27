@@ -34,9 +34,43 @@ public sealed class PassportHistoricalEvidencePolicyTests
         Assert.False(result);
     }
 
+    [Fact]
+    public void HasCanonicalAttributeEvidence_ShouldRequireAKnownValueAndSupportingFact()
+    {
+        Guid factId = Guid.NewGuid();
+        HistoricalSubjectSnapshot snapshot = CreateSnapshot(
+            HistoricalOperationalState.KnownClosed,
+            new[] { factId },
+            new[]
+            {
+                new HistoricalAttributeSnapshot(
+                    HistoricalAttributeKind.Name,
+                    HistoricalAttributeValueState.Known,
+                    "Ancien nom",
+                    new[] { "Ancien nom" },
+                    Array.Empty<HistoricalSnapshotReason>(),
+                    new[] { factId }),
+                new HistoricalAttributeSnapshot(
+                    HistoricalAttributeKind.Category,
+                    HistoricalAttributeValueState.Known,
+                    "DarkRide",
+                    new[] { "DarkRide" },
+                    Array.Empty<HistoricalSnapshotReason>(),
+                    Array.Empty<Guid>()),
+            });
+
+        Assert.True(PassportHistoricalEvidencePolicy.HasCanonicalAttributeEvidence(
+            snapshot,
+            HistoricalAttributeKind.Name));
+        Assert.False(PassportHistoricalEvidencePolicy.HasCanonicalAttributeEvidence(
+            snapshot,
+            HistoricalAttributeKind.Category));
+    }
+
     private static HistoricalSubjectSnapshot CreateSnapshot(
         HistoricalOperationalState state,
-        IReadOnlyCollection<Guid> supportingFactIds)
+        IReadOnlyCollection<Guid> supportingFactIds,
+        IReadOnlyCollection<HistoricalAttributeSnapshot>? attributes = null)
     {
         HistoricalSubject subject = new(
             HistoricalSubjectType.ParkItem,
@@ -49,7 +83,7 @@ public sealed class PassportHistoricalEvidencePolicyTests
             state,
             HistoricalPresenceExtent.None,
             Array.Empty<HistoricalPresenceInterval>(),
-            Array.Empty<HistoricalAttributeSnapshot>(),
+            attributes ?? Array.Empty<HistoricalAttributeSnapshot>(),
             Array.Empty<HistoricalSnapshotReason>(),
             supportingFactIds);
     }

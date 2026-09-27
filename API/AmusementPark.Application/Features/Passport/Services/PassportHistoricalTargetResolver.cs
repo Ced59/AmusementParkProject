@@ -319,6 +319,11 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             string classification = ResolveHistoricalClassification(
                 historicalCategory,
                 currentTarget);
+            bool hasCanonicalClassificationEvidence =
+                IsDetailedAttractionClassification(historicalCategory)
+                && PassportHistoricalEvidencePolicy.HasCanonicalAttributeEvidence(
+                    subject,
+                    HistoricalAttributeKind.Category);
             string? zoneId = ResolveKnownAttribute(subject, HistoricalAttributeKind.Zone)
                 ?? currentTarget?.ZoneId;
             HistoricalConsistency consistency =
@@ -339,7 +344,11 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                 currentTarget?.ClosingDate,
                 false,
                 classification,
-                PassportHistoricalEvidencePolicy.HasCanonicalVisitEvidence(subject));
+                PassportHistoricalEvidencePolicy.HasCanonicalVisitEvidence(subject),
+                PassportHistoricalEvidencePolicy.HasCanonicalAttributeEvidence(
+                    subject,
+                    HistoricalAttributeKind.Name),
+                hasCanonicalClassificationEvidence);
         }
 
         if (requested is not null)
@@ -413,6 +422,8 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                     target.ClosingDate,
                     includeHiddenCurrentTargets,
                     target.Type.ToString(),
+                    false,
+                    false,
                     false),
                 StringComparer.Ordinal);
         return new PassportHistoricalTargetContext(
@@ -540,6 +551,15 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
         }
 
         return Enum.TryParse(value, true, out ParkItemType type)
+            && ParkItemAdministrationDefaults.IsTypeAllowedForCategory(
+                ParkItemCategory.Attraction,
+                type);
+    }
+
+    private static bool IsDetailedAttractionClassification(string? value)
+    {
+        return Enum.TryParse(value, true, out ParkItemType type)
+            && type != ParkItemType.Attraction
             && ParkItemAdministrationDefaults.IsTypeAllowedForCategory(
                 ParkItemCategory.Attraction,
                 type);
