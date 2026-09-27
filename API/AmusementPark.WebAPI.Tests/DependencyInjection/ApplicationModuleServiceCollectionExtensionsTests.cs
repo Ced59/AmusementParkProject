@@ -14,6 +14,11 @@ using AmusementPark.Application.Features.FactualEvents.Handlers;
 using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.FactualEvents.Queries;
 using AmusementPark.Application.Features.FactualEvents.Results;
+using AmusementPark.Application.Features.HistoricalExistenceReports.Commands;
+using AmusementPark.Application.Features.HistoricalExistenceReports.Handlers;
+using AmusementPark.Application.Features.HistoricalExistenceReports.Ports;
+using AmusementPark.Application.Features.HistoricalExistenceReports.Queries;
+using AmusementPark.Application.Features.HistoricalExistenceReports.Results;
 using AmusementPark.Application.Features.ParkFit.Handlers;
 using AmusementPark.Application.Features.ParkFit.Ports;
 using AmusementPark.Application.Features.ParkFit.Commands;
@@ -22,6 +27,7 @@ using AmusementPark.Application.Features.ParkFit.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
 using AmusementPark.Application.Features.Passport.Commands;
+using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.ParkPricing.Commands;
@@ -145,6 +151,34 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.IsType<VerifyFactualChangeEventCommandHandler>(verifyHandler);
         Assert.IsType<PublishFactualChangeEventCommandHandler>(publishHandler);
         Assert.IsType<GetFactualChangeEventsQueryHandler>(queryHandler);
+    }
+
+    [Fact]
+    public void AddApplicationModules_WhenCalled_ShouldResolveHistoricalExistenceReportHandlers()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+        services.AddApplicationModules(configuration);
+        services.AddSingleton(Mock.Of<IUserVisitRepository>());
+        services.AddSingleton(Mock.Of<IParkRepository>());
+        services.AddSingleton(Mock.Of<IHistoricalExistenceReportRepository>());
+
+        using ServiceProvider serviceProvider = services.BuildServiceProvider();
+
+        Assert.IsType<SubmitHistoricalExistenceReportCommandHandler>(serviceProvider.GetRequiredService<
+            ICommandHandler<
+                SubmitHistoricalExistenceReportCommand,
+                ApplicationResult<HistoricalExistenceReportResult>>>());
+        Assert.IsType<ReviewHistoricalExistenceReportCommandHandler>(serviceProvider.GetRequiredService<
+            ICommandHandler<ReviewHistoricalExistenceReportCommand, ApplicationResult>>());
+        Assert.IsType<ListOwnedHistoricalExistenceReportsQueryHandler>(serviceProvider.GetRequiredService<
+            IQueryHandler<
+                ListOwnedHistoricalExistenceReportsQuery,
+                ApplicationResult<IReadOnlyCollection<HistoricalExistenceReportResult>>>>());
+        Assert.IsType<GetHistoricalExistenceReportsQueryHandler>(serviceProvider.GetRequiredService<
+            IQueryHandler<
+                GetHistoricalExistenceReportsQuery,
+                ApplicationResult<PagedResult<HistoricalExistenceReportResult>>>>());
     }
 
     [Fact]
