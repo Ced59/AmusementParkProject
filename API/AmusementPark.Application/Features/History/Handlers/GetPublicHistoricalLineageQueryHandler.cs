@@ -67,6 +67,7 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
             normalizedSubjectId,
             rootContextParkId);
         Dictionary<Guid, HistoricalRelation> loadedRelations = new();
+        Dictionary<(Guid Id, int Revision), HistoricalSourceReference> publicSources = new();
         HashSet<HistoricalSubjectKey> visited = new() { rootKey };
         HashSet<HistoricalSubjectKey> frontier = new() { rootKey };
         bool isTruncated = false;
@@ -78,16 +79,18 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
                     MaximumRelationsPerLevel,
                     cancellationToken);
             isTruncated |= level.Count >= MaximumRelationsPerLevel;
+            HistoricalRelation[] publicLevel = await this.FilterCurrentlyPublicRelationsAsync(
+                level.Where(relation => !loadedRelations.ContainsKey(relation.Id)
+                        && (frontier.Contains(ToKey(relation.Source))
+                            || frontier.Contains(ToKey(relation.Target))))
+                    .ToArray(),
+                publicSources,
+                cancellationToken);
             HashSet<HistoricalSubjectKey> next = new();
-            foreach (HistoricalRelation relation in level.OrderBy(static relation => relation.Id))
+            foreach (HistoricalRelation relation in publicLevel.OrderBy(static relation => relation.Id))
             {
                 HistoricalSubjectKey sourceKey = ToKey(relation.Source);
                 HistoricalSubjectKey targetKey = ToKey(relation.Target);
-                if (!frontier.Contains(sourceKey) && !frontier.Contains(targetKey))
-                {
-                    continue;
-                }
-
                 HistoricalSubjectKey[] newKeys = new[] { sourceKey, targetKey }
                     .Distinct()
                     .Where(key => !visited.Contains(key))
@@ -113,7 +116,12 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
                     frontier,
                     MaximumRelationsPerLevel,
                     cancellationToken);
-            isTruncated = beyondMaximumDepth.Any(relation =>
+            HistoricalRelation[] publicBeyondMaximumDepth =
+                await this.FilterCurrentlyPublicRelationsAsync(
+                    beyondMaximumDepth,
+                    publicSources,
+                    cancellationToken);
+            isTruncated = publicBeyondMaximumDepth.Any(relation =>
                 !visited.Contains(ToKey(relation.Source)) || !visited.Contains(ToKey(relation.Target)));
         }
 
@@ -123,43 +131,7 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
                 ApplicationErrors.EntityNotFound("historical-lineage", rootKey.Id));
         }
 
-        HistoricalSubject[] loadedSubjects = loadedRelations.Values
-            .SelectMany(static relation => new[] { relation.Source, relation.Target })
-            .DistinctBy(static subject => (subject.Type, subject.Id, subject.ContextParkId))
-            .ToArray();
-        IReadOnlySet<HistoricalSubjectKey> publicCurrentKeys =
-            await this.subjectPublicationStateReader.GetPublicSubjectKeysAsync(
-                loadedSubjects,
-                cancellationToken);
-        HistoricalRelation[] visibleRelations = loadedRelations.Values
-            .Where(relation => IsPublic(relation.Source, publicCurrentKeys)
-                && IsPublic(relation.Target, publicCurrentKeys))
-            .ToArray();
-        HistoricalRelation[] subjectVisibleConnectedRelations = SelectConnectedRelations(rootKey, visibleRelations);
-        HistoricalRelationSourceRevisionReference[] references = subjectVisibleConnectedRelations
-            .SelectMany(static relation => relation.SourceReferences)
-            .DistinctBy(static reference => (reference.SourceId, reference.Revision))
-            .ToArray();
-        IReadOnlyCollection<HistoricalSourceReference> loadedSources = references.Length == 0
-            ? Array.Empty<HistoricalSourceReference>()
-            : await this.sourceRepository.GetRevisionsAsync(references, cancellationToken);
-        IReadOnlyCollection<HistoricalSourceReference> latestSources = loadedSources.Count == 0
-            ? Array.Empty<HistoricalSourceReference>()
-            : await this.sourceRepository.GetLatestRevisionsAsync(
-                loadedSources.Select(static source => source.Id).Distinct().ToArray(),
-                cancellationToken);
-        IReadOnlyCollection<HistoricalSourceReference> currentlyPublicSources =
-            HistoricalRelationEvidenceValidator.FilterCurrentlyAdmissiblePublicSources(
-                loadedSources,
-                latestSources);
-        Dictionary<(Guid Id, int Revision), HistoricalSourceReference> publicSources = currentlyPublicSources
-            .ToDictionary(static source => (source.Id, source.Revision));
-        HistoricalRelation[] evidenceBackedRelations = subjectVisibleConnectedRelations
-            .Where(relation => HistoricalRelationEvidenceValidator.HasAdmissiblePublicSupport(
-                relation,
-                currentlyPublicSources))
-            .ToArray();
-        HistoricalRelation[] connectedRelations = SelectConnectedRelations(rootKey, evidenceBackedRelations);
+        HistoricalRelation[] connectedRelations = SelectConnectedRelations(rootKey, loadedRelations.Values.ToArray());
         HistoricalSubject? root = connectedRelations
             .SelectMany(static relation => new[] { relation.Source, relation.Target })
             .FirstOrDefault(subject => ToKey(subject) == rootKey);
@@ -200,6 +172,60 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
             HistoricalLineageCycleDetector.HasDirectedCycle(connectedRelations),
             isTruncated,
             MaximumDepth));
+    }
+
+    private async Task<HistoricalRelation[]> FilterCurrentlyPublicRelationsAsync(
+        IReadOnlyCollection<HistoricalRelation> relations,
+        IDictionary<(Guid Id, int Revision), HistoricalSourceReference> publicSources,
+        CancellationToken cancellationToken)
+    {
+        if (relations.Count == 0)
+        {
+            return Array.Empty<HistoricalRelation>();
+        }
+
+        HistoricalSubject[] subjects = relations
+            .SelectMany(static relation => new[] { relation.Source, relation.Target })
+            .DistinctBy(static subject => (subject.Type, subject.Id, subject.ContextParkId))
+            .ToArray();
+        IReadOnlySet<HistoricalSubjectKey> publicCurrentKeys =
+            await this.subjectPublicationStateReader.GetPublicSubjectKeysAsync(
+                subjects,
+                cancellationToken);
+        HistoricalRelation[] subjectVisibleRelations = relations
+            .Where(relation => IsPublic(relation.Source, publicCurrentKeys)
+                && IsPublic(relation.Target, publicCurrentKeys))
+            .ToArray();
+        HistoricalRelationSourceRevisionReference[] references = subjectVisibleRelations
+            .SelectMany(static relation => relation.SourceReferences)
+            .DistinctBy(static reference => (reference.SourceId, reference.Revision))
+            .ToArray();
+        if (references.Length == 0)
+        {
+            return Array.Empty<HistoricalRelation>();
+        }
+
+        IReadOnlyCollection<HistoricalSourceReference> loadedSources =
+            await this.sourceRepository.GetRevisionsAsync(references, cancellationToken);
+        IReadOnlyCollection<HistoricalSourceReference> latestSources = loadedSources.Count == 0
+            ? Array.Empty<HistoricalSourceReference>()
+            : await this.sourceRepository.GetLatestRevisionsAsync(
+                loadedSources.Select(static source => source.Id).Distinct().ToArray(),
+                cancellationToken);
+        IReadOnlyCollection<HistoricalSourceReference> currentlyPublicSources =
+            HistoricalRelationEvidenceValidator.FilterCurrentlyAdmissiblePublicSources(
+                loadedSources,
+                latestSources);
+        foreach (HistoricalSourceReference source in currentlyPublicSources)
+        {
+            publicSources[(source.Id, source.Revision)] = source;
+        }
+
+        return subjectVisibleRelations
+            .Where(relation => HistoricalRelationEvidenceValidator.HasAdmissiblePublicSupport(
+                relation,
+                currentlyPublicSources))
+            .ToArray();
     }
 
     private async Task<PublicHistoricalLineageContextParkResult?> ResolveContextParkAsync(

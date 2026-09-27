@@ -240,6 +240,36 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildPublicKeysPreservingContext_WhenOperatorIsPublic_ShouldKeepEveryCandidateContext()
+    {
+        HistoricalSubject[] candidates =
+        {
+            new HistoricalSubject(
+                HistoricalSubjectType.ParkOperator,
+                "operator-1",
+                "Exploitant",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                "park-1"),
+            new HistoricalSubject(
+                HistoricalSubjectType.ParkOperator,
+                "operator-1",
+                "Exploitant",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                "park-2"),
+        };
+
+        HistoricalSubjectKey[] keys = HistoricalSubjectPublicationStateReader
+            .BuildPublicKeysPreservingContext(
+                HistoricalSubjectType.ParkOperator,
+                candidates,
+                new[] { "operator-1" });
+
+        Assert.Contains(keys, static key => key.ContextParkId == "park-1");
+        Assert.Contains(keys, static key => key.ContextParkId == "park-2");
+        Assert.All(keys, static key => Assert.Equal("operator-1", key.Id));
+    }
+
+    [Fact]
     public void BuildFactAuditFilter_WhenCursorExists_ShouldSelectOnlyOlderRevisions()
     {
         DateTime occurredAtUtc = new DateTime(2026, 9, 26, 10, 0, 0, DateTimeKind.Utc);

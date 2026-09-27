@@ -353,6 +353,79 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenRejectedRelationsReachSubjectCap_ShouldStillReturnLaterPublicLineage()
+    {
+        (HistoricalRelation Relation, HistoricalSourceReference Source)[] rejectedData = Enumerable
+            .Range(1, GetPublicHistoricalLineageQueryHandler.MaximumSubjectCount - 1)
+            .Select(index => CreateRelation(
+                false,
+                "item-root",
+                $"hidden-{index}",
+                Guid.Parse($"00000000-0000-0000-0000-{index:D12}")))
+            .ToArray();
+        (HistoricalRelation Relation, HistoricalSourceReference Source) publicData = CreateRelation(
+            false,
+            "item-root",
+            "public-target",
+            Guid.Parse("ffffffff-ffff-ffff-ffff-ffffffffffff"));
+        HistoricalSubjectKey rootKey = ToKey(publicData.Relation.Source);
+        Mock<IHistoricalRelationRepository> relationRepository = new(MockBehavior.Strict);
+        relationRepository
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalSubjectKey>>(),
+                It.IsAny<int>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((IReadOnlyCollection<HistoricalSubjectKey> subjects, int _, CancellationToken _) =>
+                subjects.Contains(rootKey)
+                    ? rejectedData.Select(static item => item.Relation)
+                        .Append(publicData.Relation)
+                        .ToArray()
+                    : Array.Empty<HistoricalRelation>());
+        Mock<IHistoricalSourceRepository> sourceRepository = new(MockBehavior.Strict);
+        sourceRepository
+            .Setup(repository => repository.GetRevisionsAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalRelationSourceRevisionReference>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { publicData.Source });
+        sourceRepository
+            .Setup(repository => repository.GetLatestRevisionsAsync(
+                It.IsAny<IReadOnlyCollection<Guid>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { publicData.Source });
+        Mock<IHistoricalSubjectPublicationStateReader> publicationReader = new(MockBehavior.Strict);
+        publicationReader
+            .Setup(reader => reader.GetPublicSubjectKeysAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new HashSet<HistoricalSubjectKey>
+            {
+                rootKey,
+                ToKey(publicData.Relation.Target),
+            });
+        publicationReader
+            .Setup(reader => reader.GetPublicParkNamesAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, string> { ["park-1"] = "Parc exemple" });
+        GetPublicHistoricalLineageQueryHandler handler = new(
+            relationRepository.Object,
+            sourceRepository.Object,
+            publicationReader.Object);
+
+        ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
+            new GetPublicHistoricalLineageQuery(
+                HistoricalSubjectType.ParkItem,
+                rootKey.Id,
+                rootKey.ContextParkId));
+
+        Assert.True(result.IsSuccess);
+        PublicHistoricalLineageResult lineage = Assert.IsType<PublicHistoricalLineageResult>(result.Value);
+        Assert.Equal(2, lineage.Subjects.Count);
+        Assert.Equal(publicData.Relation.Id, Assert.Single(lineage.Relations).Relation.Id);
+        Assert.False(lineage.IsTruncated);
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenRootCurrentSubjectIsHidden_ShouldReturnNotFound()
     {
         (HistoricalRelation Relation, HistoricalSourceReference Source) data = CreateRelation();
@@ -389,7 +462,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
     private static (HistoricalRelation Relation, HistoricalSourceReference Source) CreateRelation(
         bool historicalOnlySource = false,
         string sourceId = "item-1",
-        string targetId = "item-2")
+        string targetId = "item-2",
+        Guid? relationId = null)
     {
         HistoricalSubject sourceSubject = historicalOnlySource
             ? new HistoricalSubject(
@@ -420,7 +494,7 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
                 HistoricalEvidencePosition.Supports,
                 scopes);
         HistoricalRelation relation = new HistoricalRelation(
-            Guid.NewGuid(),
+            relationId ?? Guid.NewGuid(),
             sourceSubject,
             targetSubject,
             HistoricalRelationType.ReplacedBy,

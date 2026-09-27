@@ -1,6 +1,20 @@
 {
-  "version": "5.3.88",
+  "version": "5.3.89",
   "history": [
+    {
+      "version": "5.3.89",
+      "releasedAt": "2026-09-27",
+      "labels": {
+        "fr": "Les lignées historiques restent complètes lorsque certaines preuves ne sont plus publiques.",
+        "en": "Historical lineages remain complete when some evidence is no longer public.",
+        "de": "Historische Entwicklungslinien bleiben vollständig, wenn einzelne Belege nicht mehr öffentlich sind.",
+        "nl": "Historische lijnen blijven volledig wanneer sommige bronnen niet meer openbaar zijn.",
+        "it": "Le linee storiche restano complete quando alcune prove non sono più pubbliche.",
+        "es": "Los linajes históricos siguen completos cuando algunas pruebas dejan de ser públicas.",
+        "pl": "Linie historyczne pozostają kompletne, gdy część źródeł nie jest już publiczna.",
+        "pt": "As linhagens históricas mantêm-se completas quando algumas provas deixam de ser públicas."
+      }
+    },
     {
       "version": "5.3.88",
       "releasedAt": "2026-09-27",
