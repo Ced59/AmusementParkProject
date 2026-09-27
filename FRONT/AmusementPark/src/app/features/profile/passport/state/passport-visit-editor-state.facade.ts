@@ -2462,6 +2462,7 @@ export class PassportVisitEditorStateFacade {
           evaluationsById.get(selection.parkItemId);
         return evaluation ? {
           ...selection,
+          attractionName: evaluation.name ?? selection.attractionName,
           historicalConsistency: evaluation.historicalConsistency,
           openingDate: evaluation.openingDate,
           closingDate: evaluation.closingDate,

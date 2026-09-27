@@ -39,7 +39,6 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             visit.ParkId,
             visit.Date,
             null,
-            true,
             false,
             cancellationToken);
     }
@@ -66,7 +65,6 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             visit.Date,
             normalizedIds,
             false,
-            false,
             cancellationToken);
     }
 
@@ -91,9 +89,28 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             visit.ParkId,
             visit.Date,
             normalizedIds,
-            false,
             true,
             cancellationToken);
+    }
+
+    public async Task<IReadOnlyDictionary<string, string>> ResolveMainImageIdsAsync(
+        IReadOnlyCollection<string> parkItemIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(parkItemIds);
+        string[] normalizedIds = parkItemIds
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .Select(static id => id.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedIds.Length == 0)
+        {
+            return new Dictionary<string, string>(StringComparer.Ordinal);
+        }
+
+        IReadOnlyDictionary<string, VisitTarget> currentTargets =
+            await this.ResolveCurrentTargetsAsync(normalizedIds, cancellationToken);
+        return await this.ResolveImageIdsAsync(currentTargets.Values, cancellationToken);
     }
 
     public async Task<PassportHistoricalTargetContext> ResolveAsync(
@@ -120,7 +137,6 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             visitDate,
             normalizedIds,
             false,
-            false,
             cancellationToken);
     }
 
@@ -128,7 +144,6 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
         string parkId,
         VisitDate visitDate,
         IReadOnlyCollection<string>? requestedIds,
-        bool includeImages,
         bool includeHiddenCurrentFallback,
         CancellationToken cancellationToken)
     {
@@ -142,7 +157,6 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                 : await this.ResolveCurrentFallbackAsync(
                     parkId,
                     requestedIds,
-                    includeImages,
                     includeHiddenCurrentFallback,
                     cancellationToken);
         }
@@ -163,9 +177,6 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             .ToArray();
         IReadOnlyDictionary<string, VisitTarget> currentTargets =
             await this.ResolveCurrentTargetsAsync(subjectIds, cancellationToken);
-        IReadOnlyDictionary<string, string> imageIds = includeImages
-            ? await this.ResolveImageIdsAsync(currentTargets.Values, cancellationToken)
-            : new Dictionary<string, string>(StringComparer.Ordinal);
         Dictionary<string, PassportHistoricalTarget> targets = new(StringComparer.Ordinal);
         foreach (HistoricalSubjectSnapshot subject in subjectSnapshots)
         {
@@ -195,7 +206,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                 consistency,
                 new HistoricalTargetReference(name, ParkItemCategory.Attraction.ToString()),
                 currentTarget is null || !currentTarget.IsVisible,
-                imageIds.GetValueOrDefault(subject.Subject.Id),
+                null,
                 zoneId,
                 currentTarget?.LifecycleStatus,
                 currentTarget?.OpeningDate,
@@ -213,7 +224,6 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                     await this.ResolveCurrentFallbackAsync(
                         parkId,
                         missingIds,
-                        includeImages,
                         includeHiddenCurrentFallback,
                         cancellationToken);
                 foreach ((string id, PassportHistoricalTarget target) in fallback.Targets)
@@ -233,15 +243,11 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
     private async Task<PassportHistoricalTargetContext> ResolveCurrentFallbackAsync(
         string parkId,
         IReadOnlyCollection<string> requestedIds,
-        bool includeImages,
         bool includeHiddenCurrentTargets,
         CancellationToken cancellationToken)
     {
         IReadOnlyDictionary<string, VisitTarget> currentTargets =
             await this.ResolveCurrentTargetsAsync(requestedIds, cancellationToken);
-        IReadOnlyDictionary<string, string> imageIds = includeImages
-            ? await this.ResolveImageIdsAsync(currentTargets.Values, cancellationToken)
-            : new Dictionary<string, string>(StringComparer.Ordinal);
         Dictionary<string, PassportHistoricalTarget> targets = currentTargets.Values
             .Where(target => (includeHiddenCurrentTargets || target.IsVisible)
                 && string.Equals(target.ParkId, parkId, StringComparison.Ordinal)
@@ -257,11 +263,12 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                     HistoricalConsistency.Unverified,
                     new HistoricalTargetReference(target.Name, target.Category.ToString()),
                     !target.IsVisible,
-                    imageIds.GetValueOrDefault(target.ParkItemId),
+                    null,
                     target.ZoneId,
                     target.LifecycleStatus,
                     target.OpeningDate,
-                    target.ClosingDate),
+                    target.ClosingDate,
+                    includeHiddenCurrentTargets && !target.IsVisible),
                 StringComparer.Ordinal);
         return new PassportHistoricalTargetContext(
             targets,

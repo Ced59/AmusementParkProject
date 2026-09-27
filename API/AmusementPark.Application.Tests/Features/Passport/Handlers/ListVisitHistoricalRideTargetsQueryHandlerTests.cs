@@ -51,6 +51,13 @@ public sealed class ListVisitHistoricalRideTargetsQueryHandlerTests
                 HistoricalCoverageStatus.Substantial,
                 76,
                 "history-v2"));
+        targets.Setup(resolver => resolver.ResolveMainImageIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "ride-open" })),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<string, string>(StringComparer.Ordinal)
+            {
+                ["ride-open"] = "image-open",
+            });
         ListVisitHistoricalRideTargetsQueryHandler handler =
             new ListVisitHistoricalRideTargetsQueryHandler(visits.Object, targets.Object);
 
@@ -69,6 +76,7 @@ public sealed class ListVisitHistoricalRideTargetsQueryHandlerTests
             result.Value);
         VisitRideTargetEvaluationResult item = Assert.Single(page.Items);
         Assert.Equal("ride-open", item.ParkItemId);
+        Assert.Equal("image-open", item.MainImageId);
         Assert.Equal(HistoricalOperationalState.KnownOpen, item.OperationalState);
         Assert.Equal(2, page.TotalItems);
         Assert.Equal(2, page.TotalPages);

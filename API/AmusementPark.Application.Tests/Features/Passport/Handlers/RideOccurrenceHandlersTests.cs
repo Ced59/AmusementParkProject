@@ -864,6 +864,88 @@ public sealed class RideOccurrenceHandlersTests
         targets.VerifyAll();
     }
 
+    [Fact]
+    public async Task Update_WithHiddenValidationFallback_ShouldPreserveStoredHistoricalEvidence()
+    {
+        Visit visit = CreateVisit();
+        HistoricalTargetReference storedTarget =
+            new HistoricalTargetReference("Nom au moment de la visite", "Attraction");
+        RideOccurrence occurrence = RideOccurrence.Create(
+            RideOccurrenceId.Parse("occurrence-hidden"),
+            visit,
+            "item-hidden",
+            1024,
+            new OccurrenceMoment(null, false),
+            RideOccurrenceStatus.Completed,
+            RideLogSource.Manual,
+            HistoricalConsistency.ConfirmedConflict,
+            storedTarget,
+            "Note initiale",
+            NowUtc);
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.GetOwnedAsync(
+                occurrence.Id,
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(occurrence);
+        occurrences.Setup(repository => repository.TryUpdateOwnedAsync(
+                occurrence,
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        PassportHistoricalTarget validationFallback = new PassportHistoricalTarget(
+            occurrence.ParkItemId,
+            visit.ParkId,
+            "Nom actuel masqué",
+            ParkItemCategory.Attraction.ToString(),
+            HistoricalOperationalState.Unknown,
+            HistoricalConsistency.Unverified,
+            new HistoricalTargetReference("Nom actuel masqué", "Attraction"),
+            true,
+            null,
+            null,
+            null,
+            null,
+            null,
+            true);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
+        targets.Setup(resolver => resolver.ResolveRecordedAsync(
+                visit,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Single() == occurrence.ParkItemId),
+                CancellationToken.None))
+            .ReturnsAsync(CreateTargetContext(validationFallback));
+        UpdateRideOccurrenceCommandHandler handler = new UpdateRideOccurrenceCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            targets.Object,
+            CreateClock());
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new UpdateRideOccurrenceCommand(
+                visit.UserId,
+                visit.Id.Value,
+                occurrence.Id.Value,
+                1,
+                null,
+                false,
+                RideOccurrenceStatus.Attempted,
+                "Note corrigée",
+                true));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(HistoricalConsistency.ConfirmedConflict, occurrence.HistoricalConsistency);
+        Assert.Equal(storedTarget, occurrence.HistoricalTarget);
+        Assert.Equal("Note corrigée", occurrence.PrivateNote);
+        Assert.Equal("Nom au moment de la visite", result.Value?.Target?.Name);
+        visits.VerifyAll();
+        occurrences.VerifyAll();
+        targets.VerifyAll();
+    }
+
     [Theory]
     [InlineData(0, RideOccurrenceStatus.Completed)]
     [InlineData(1, (RideOccurrenceStatus)0)]

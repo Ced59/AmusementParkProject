@@ -114,7 +114,12 @@ public sealed class UpdateRideOccurrenceCommandHandler
             return Failure(PassportApplicationErrors.VisitTargetNotAttraction());
         }
 
-        HistoricalConsistency consistency = target.HistoricalConsistency;
+        HistoricalConsistency consistency = target.IsValidationFallback
+            ? occurrence.HistoricalConsistency
+            : target.HistoricalConsistency;
+        HistoricalTargetReference? historicalTarget = target.IsValidationFallback
+            ? occurrence.HistoricalTarget
+            : target.HistoricalTarget;
         if (consistency == HistoricalConsistency.ConfirmedConflict
             && !command.ConfirmHistoricalConflict)
         {
@@ -149,7 +154,7 @@ public sealed class UpdateRideOccurrenceCommandHandler
                 new OccurrenceMoment(command.LocalTime, command.IsApproximate),
                 command.Status,
                 consistency,
-                target.HistoricalTarget,
+                historicalTarget,
                 command.PrivateNote,
                 this.clock.UtcNow);
         }

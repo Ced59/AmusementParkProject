@@ -83,6 +83,7 @@ public sealed class PassportHistoricalTargetResolverTests
         PassportHistoricalTarget target = Assert.Single(recorded.Targets).Value;
         Assert.Equal("Attraction masquée", target.Name);
         Assert.True(target.IsHistoricalOnly);
+        Assert.True(target.IsValidationFallback);
         Assert.Empty(newEntry.Targets);
         parks.VerifyAll();
         currentTargets.VerifyAll();

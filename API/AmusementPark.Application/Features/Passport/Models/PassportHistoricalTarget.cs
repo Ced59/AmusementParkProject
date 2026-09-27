@@ -16,4 +16,5 @@ public sealed record PassportHistoricalTarget(
     string? ZoneId,
     string? LifecycleStatus,
     DateOnly? OpeningDate,
-    DateOnly? ClosingDate);
+    DateOnly? ClosingDate,
+    bool IsValidationFallback = false);

@@ -19,6 +19,10 @@ public interface IPassportHistoricalTargetResolver
         IReadOnlyCollection<string> parkItemIds,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyDictionary<string, string>> ResolveMainImageIdsAsync(
+        IReadOnlyCollection<string> parkItemIds,
+        CancellationToken cancellationToken);
+
     Task<PassportHistoricalTargetContext> ResolveAsync(
         string parkId,
         VisitDate visitDate,

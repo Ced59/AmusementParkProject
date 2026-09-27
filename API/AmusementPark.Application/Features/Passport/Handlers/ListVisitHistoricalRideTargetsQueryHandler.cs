@@ -78,9 +78,19 @@ public sealed class ListVisitHistoricalRideTargetsQueryHandler
         int totalPages = filtered.Length == 0
             ? 1
             : (int)Math.Ceiling(filtered.Length / (double)query.PageSize);
-        VisitRideTargetEvaluationResult[] items = filtered
+        PassportHistoricalTarget[] pageTargets = filtered
             .Skip((query.Page - 1) * query.PageSize)
             .Take(query.PageSize)
+            .ToArray();
+        IReadOnlyDictionary<string, string> imageIds =
+            await this.targetResolver.ResolveMainImageIdsAsync(
+                pageTargets.Select(static target => target.ParkItemId).ToArray(),
+                cancellationToken);
+        VisitRideTargetEvaluationResult[] items = pageTargets
+            .Select(target => target with
+            {
+                MainImageId = imageIds.GetValueOrDefault(target.ParkItemId),
+            })
             .Select(ToResult)
             .ToArray();
 

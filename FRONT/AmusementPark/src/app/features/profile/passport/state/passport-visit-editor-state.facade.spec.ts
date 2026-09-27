@@ -495,6 +495,13 @@ describe('PassportVisitEditorStateFacade', () => {
           closingDate: null
         }]
       )));
+    occurrencesPort.evaluateVisitTargets.mockReturnValue(of([{
+      parkItemId: 'ride-former',
+      name: 'Nom de 2025 pour la sélection',
+      historicalConsistency: 'Unverified',
+      openingDate: null,
+      closingDate: null
+    }]));
     visitsPort.updateVisit.mockReturnValue(of({
       ...visit,
       date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
@@ -503,6 +510,7 @@ describe('PassportVisitEditorStateFacade', () => {
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     facade.load('visit-1', 'fr');
     expect(facade.attractions().map((attraction): string => attraction.name)).toEqual(['Nom de 1990']);
+    facade.toggleAttraction(facade.attractions()[0]);
     facade.updateVisitMetadataDraft({
       precision: 'Year',
       year: 2025,
@@ -521,6 +529,7 @@ describe('PassportVisitEditorStateFacade', () => {
       null
     );
     expect(facade.attractions().map((attraction): string => attraction.name)).toEqual(['Nom de 2025']);
+    expect(facade.selectedAttractions()[0].attractionName).toBe('Nom de 2025 pour la sélection');
   });
 
   it('requires a new selection confirmation after temporal evidence is re-evaluated', () => {
