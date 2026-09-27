@@ -7,8 +7,8 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 190 parcs étaient publiés (`isVisible: true`).
 - Les 190 scores ont été recalculés individuellement avec `Completeness`.
-- 68 parcs atteignent le niveau `Excellent` : 67 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 1 reste dans le backlog à 95.
-- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 118 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **4 parcs** : 0 au niveau `Publishable`, 3 au niveau `Good` et 1 au niveau `Excellent`.
+- 68 parcs atteignent le niveau `Excellent` et satisfont désormais tous la condition de sortie, avec un score strictement supérieur à 95.
+- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 119 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **3 parcs** : 0 au niveau `Publishable`, 3 au niveau `Good` et 0 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -30,11 +30,10 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | 91 | `Good` | La Récré des 3 Curés | FR | `Operating` | `Regional` | 89/98 | `9cebd5ae-dc2c-4c8c-a6a4-d2a2dda33d1c` |
 | 92 | `Good` | AcroJungle Outdoor | FR | `Operating` | `Local` | 89/97 | `1566972b-fbf9-461c-ac92-5df9d6c3358e` |
 
-## Priorité 3 — niveau `Excellent` au seuil (1)
+## Priorité 3 — niveau `Excellent` au seuil (0)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 95 | `Excellent` | Babylon Park Madrid | ES | `Operating` | `Regional` | 90/95 | `6d0efa82-473d-4bcd-a3fe-c839f1291917` |
 
 ## Exceptions explicitement acceptées
 
