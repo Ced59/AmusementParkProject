@@ -159,6 +159,14 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
     }) ?? [];
   }
 
+  protected comparisonLink(snapshot: PublicParkHistoricalSnapshot): string[] {
+    const snapshotYear: number = snapshot.requestedInstant.year;
+    const currentYear: number = new Date().getUTCFullYear();
+    const fromYear: number = snapshotYear < currentYear ? snapshotYear : snapshotYear - 10;
+    const toYear: number = snapshotYear < currentYear ? currentYear : snapshotYear;
+    return [...this.historyLink(snapshot), 'compare', String(fromYear), String(toYear)];
+  }
+
   protected usesCurrentNameFallback(
     subject: PublicHistoricalSubjectSnapshot | PublicHistoricalAmbiguity
   ): boolean {

@@ -11,6 +11,7 @@ import {
 } from '@app/models/history/history.models';
 import {
   PublicHistoricalLineage,
+  PublicParkHistoricalComparison,
   PublicParkHistoricalSnapshot,
   PublicParkHistoricalTimeline
 } from '@app/models/history/public-park-history.models';
@@ -49,6 +50,11 @@ export class HistoryApiService {
   getPublicParkSnapshot(parkId: string, year: number, month: number | null = null, day: number | null = null, options: HistoryHttpOptions = {}): Observable<PublicParkHistoricalSnapshot> {
     const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getPublicParkSnapshot(parkId, year, month, day)}`;
     return this.http.get<PublicParkHistoricalSnapshot>(url, options);
+  }
+
+  getPublicParkComparison(parkId: string, fromYear: number, toYear: number, options: HistoryHttpOptions = {}): Observable<PublicParkHistoricalComparison> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getPublicParkComparison(parkId, fromYear, toYear)}`;
+    return this.http.get<PublicParkHistoricalComparison>(url, options);
   }
 
   getParkTimeline(parkId: string, includeParkItems: boolean = false, parkItemIds: readonly string[] = [], options: HistoryHttpOptions = {}, page: number = 1): Observable<HistoryTimeline> {

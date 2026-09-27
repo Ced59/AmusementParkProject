@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 
 import { HistoryArticle, HistoryTimeline } from '@app/models/history/history.models';
-import { PublicHistoricalLineage, PublicParkHistoricalSnapshot, PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
+import { PublicHistoricalLineage, PublicParkHistoricalComparison, PublicParkHistoricalSnapshot, PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
@@ -102,6 +102,10 @@ export class FakeHistoryDataPort implements HistoryDataPort {
 
   getPublicParkSnapshot(): Observable<PublicParkHistoricalSnapshot> {
     return of({} as PublicParkHistoricalSnapshot);
+  }
+
+  getPublicParkComparison(): Observable<PublicParkHistoricalComparison> {
+    return of({} as PublicParkHistoricalComparison);
   }
 
   getParkTimeline(

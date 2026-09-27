@@ -187,9 +187,14 @@
           <h2>{{ 'history.explorer.todayTitle' | translate }}</h2>
           <span>{{ 'history.explorer.todayDescription' | translate }}</span>
         </div>
-        <a class="app-button app-button--primary park-history-action" [routerLink]="parkLink(currentSnapshot)">
-          {{ 'history.explorer.viewToday' | translate }}<i class="pi pi-arrow-right" aria-hidden="true"></i>
-        </a>
+        <div class="snapshot-today__actions">
+          <a class="app-button app-button--ghost park-history-action" [routerLink]="comparisonLink(currentSnapshot)">
+            {{ 'history.comparison.breadcrumb' | translate }}<i class="pi pi-arrows-h" aria-hidden="true"></i>
+          </a>
+          <a class="app-button app-button--primary park-history-action" [routerLink]="parkLink(currentSnapshot)">
+            {{ 'history.explorer.viewToday' | translate }}<i class="pi pi-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
       </section>
     </main>
   }

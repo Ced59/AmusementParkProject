@@ -69,4 +69,14 @@ describe('HistoryApiService', () => {
     expect(request.request.method).toBe('GET');
     request.flush({ parkId: 'park-1', parkName: 'Park', subjects: [], coverage: {}, ambiguities: [] });
   });
+
+  it('loads a public comparison with both years encoded in the query', () => {
+    service.getPublicParkComparison('park/one', 1998, 2026).subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}public/parks/park%2Fone/history/compare?fromYear=1998&toYear=2026`
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({ parkId: 'park/one', parkName: 'Park', subjects: [], categoryNetChanges: [] });
+  });
 });

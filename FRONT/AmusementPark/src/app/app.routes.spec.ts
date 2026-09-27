@@ -138,6 +138,7 @@ describe('App routes', () => {
       'attraction/:standaloneAttractionId/:slug/history/page/:page',
       'park/:id/:slug/history',
       'park/:id/:slug/history/page/:page',
+      'park/:id/:slug/history/compare/:fromYear/:toYear',
       'park/:id/:slug/history/:year',
       'park/:id/:slug/history/:eventId/:eventSlug',
       'park/:id/:slug/item/:itemId/:itemSlug/history',
@@ -155,6 +156,17 @@ describe('App routes', () => {
       expect(route?.loadComponent, path).toBeDefined();
     }
 
+    expect(
+      publicRoutes.findIndex(
+        (candidate: Route): boolean =>
+          candidate.path === 'park/:id/:slug/history/compare/:fromYear/:toYear',
+      ),
+    ).toBeLessThan(
+      publicRoutes.findIndex(
+        (candidate: Route): boolean =>
+          candidate.path === 'park/:id/:slug/history/:eventId/:eventSlug',
+      ),
+    );
     expect(
       publicRoutes.findIndex(
         (candidate: Route): boolean =>

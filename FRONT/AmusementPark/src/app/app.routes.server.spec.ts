@@ -172,6 +172,7 @@ describe('Server routes', () => {
       ':lang/history/lineages/:contextParkId/:subjectType/:subjectId/:subjectSlug',
       ':lang/park/:id/:slug/history',
       ':lang/park/:id/:slug/history/page/:page',
+      ':lang/park/:id/:slug/history/compare/:fromYear/:toYear',
       ':lang/park/:id/:slug/history/:year'
     ];
 

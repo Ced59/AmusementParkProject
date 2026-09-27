@@ -1,6 +1,20 @@
 {
-  "version": "5.3.89",
+  "version": "5.3.90",
   "history": [
+    {
+      "version": "5.3.90",
+      "releasedAt": "2026-09-27",
+      "labels": {
+        "fr": "Compare désormais deux époques d’un parc et découvre ses changements documentés.",
+        "en": "Compare two eras of a park and discover its documented changes.",
+        "de": "Vergleiche zwei Epochen eines Parks und entdecke seine belegten Veränderungen.",
+        "nl": "Vergelijk twee tijdperken van een park en ontdek de gedocumenteerde veranderingen.",
+        "it": "Confronta due epoche di un parco e scopri i cambiamenti documentati.",
+        "es": "Compara dos épocas de un parque y descubre sus cambios documentados.",
+        "pl": "Porównaj dwie epoki parku i odkryj jego udokumentowane zmiany.",
+        "pt": "Compara duas épocas de um parque e descobre as mudanças documentadas."
+      }
+    },
     {
       "version": "5.3.89",
       "releasedAt": "2026-09-27",

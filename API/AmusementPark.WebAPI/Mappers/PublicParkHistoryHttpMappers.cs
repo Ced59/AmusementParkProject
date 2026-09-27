@@ -50,6 +50,103 @@ internal static class PublicParkHistoryHttpMappers
         };
     }
 
+    public static PublicParkHistoricalComparisonDto ToHttp(this PublicParkHistoricalComparisonResult result)
+    {
+        Dictionary<Guid, HistoricalFact> factsById = result.Facts.ToDictionary(static fact => fact.Id);
+        IReadOnlyDictionary<string, string> fromZoneNames = ResolveSnapshotZoneNames(
+            result.Comparison.From,
+            result.ZoneNames);
+        IReadOnlyDictionary<string, string> toZoneNames = ResolveSnapshotZoneNames(
+            result.Comparison.To,
+            result.ZoneNames);
+        PublicHistoricalSubjectComparisonDto[] subjects = result.Comparison.Subjects
+            .Where(static subject => subject.PresenceChange != HistoricalPresenceChange.AbsentAtBoth)
+            .Select((subject, index) => subject.ToHttp(
+                $"subject-{index + 1}",
+                factsById,
+                fromZoneNames,
+                toZoneNames))
+            .ToArray();
+
+        return new PublicParkHistoricalComparisonDto
+        {
+            ParkId = result.Park.Id,
+            ParkName = result.Park.Name ?? string.Empty,
+            FromInstant = result.Comparison.From.RequestedInstant.ToHttp(),
+            ToInstant = result.Comparison.To.RequestedInstant.ToHttp(),
+            Subjects = subjects,
+            CategoryNetChanges = result.Comparison.CategoryNetChanges
+                .Select(static change => new PublicHistoricalCategoryNetChangeDto
+                {
+                    Category = change.Category,
+                    FromCount = change.FromCount,
+                    ToCount = change.ToCount,
+                    NetChange = change.NetChange,
+                })
+                .ToArray(),
+            FromCoverage = result.Comparison.From.Coverage.ToHttp(),
+            ToCoverage = result.Comparison.To.Coverage.ToHttp(),
+            FromUnclassifiedOpenItemCount = result.Comparison.FromUnclassifiedOpenItemCount,
+            ToUnclassifiedOpenItemCount = result.Comparison.ToUnclassifiedOpenItemCount,
+            IsCategoryComparisonComplete = result.Comparison.IsCategoryComparisonComplete,
+            MethodologyVersion = result.Comparison.MethodologyVersion,
+        };
+    }
+
+    private static PublicHistoricalSubjectComparisonDto ToHttp(
+        this HistoricalSubjectComparison subject,
+        string comparisonKey,
+        IReadOnlyDictionary<Guid, HistoricalFact> factsById,
+        IReadOnlyDictionary<string, string> fromZoneNames,
+        IReadOnlyDictionary<string, string> toZoneNames)
+    {
+        string? previousZoneName = ResolveDisplayValue(
+            HistoricalAttributeKind.Zone,
+            subject.PreviousZoneId,
+            fromZoneNames);
+        string? nextZoneName = ResolveDisplayValue(
+            HistoricalAttributeKind.Zone,
+            subject.NextZoneId,
+            toZoneNames);
+        string displayName = subject.NextName
+            ?? subject.PreviousName
+            ?? subject.To.Subject.HistoricalLabel;
+        return new PublicHistoricalSubjectComparisonDto
+        {
+            ComparisonKey = comparisonKey,
+            SubjectType = subject.To.Subject.Type.ToString(),
+            DisplayName = displayName,
+            NameOrigin = subject.NextName is not null || subject.PreviousName is not null
+                ? "Historical"
+                : ResolveNameOrigin(subject.To.Subject, null),
+            PreviousName = subject.PreviousName,
+            NextName = subject.NextName,
+            PresenceChange = subject.PresenceChange.ToString(),
+            IsRenamed = subject.IsRenamed,
+            IsMoved = subject.IsMoved && previousZoneName is not null && nextZoneName is not null,
+            PreviousZoneName = previousZoneName,
+            NextZoneName = nextZoneName,
+            PreviousCategory = subject.PreviousCategory,
+            NextCategory = subject.NextCategory,
+            FromOperationalState = subject.From.OperationalState.ToString(),
+            ToOperationalState = subject.To.OperationalState.ToString(),
+            FromSupportingSourceCount = CountSupportingSources(subject.From, factsById),
+            ToSupportingSourceCount = CountSupportingSources(subject.To, factsById),
+        };
+    }
+
+    private static int CountSupportingSources(
+        HistoricalSubjectSnapshot subject,
+        IReadOnlyDictionary<Guid, HistoricalFact> factsById)
+    {
+        return subject.SupportingFactIds
+            .Select(factId => factsById.GetValueOrDefault(factId))
+            .Where(static fact => fact is not null)
+            .SelectMany(static fact => fact!.SourceReferences)
+            .Distinct()
+            .Count();
+    }
+
     private static IReadOnlyDictionary<string, string> ResolveSnapshotZoneNames(
         ParkHistoricalSnapshot snapshot,
         IReadOnlyDictionary<string, string> currentZoneNames)

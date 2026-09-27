@@ -8,6 +8,7 @@ import { HISTORY_TIMELINE_ROUTE_DATA_KEY, historyTimelineResolver } from '@featu
 import { HISTORICAL_LINEAGE_ROUTE_DATA_KEY, historicalLineageResolver } from '@features/public/history/state/historical-lineage.resolver';
 import {
   PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY,
+  parkHistoricalComparisonResolver,
   parkHistoricalSnapshotResolver,
   parkHistoryTimelineResolver
 } from '@features/public/history/state/park-history-explorer.resolver';
@@ -260,6 +261,12 @@ export const routes: Routes = [
             resolve: { [PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY]: parkHistoryTimelineResolver },
             runGuardsAndResolvers: 'paramsOrQueryParamsChange',
             loadComponent: () => import('./features/public/history/pages/park-history-timeline-page.component').then((m) => m.ParkHistoryTimelinePageComponent)
+          },
+          {
+            path: 'park/:id/:slug/history/compare/:fromYear/:toYear',
+            resolve: { [PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY]: parkHistoricalComparisonResolver },
+            runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+            loadComponent: () => import('./features/public/history/pages/park-history-comparison-page.component').then((m) => m.ParkHistoryComparisonPageComponent)
           },
           {
             path: 'park/:id/:slug/history/:eventId/:eventSlug',

@@ -4,12 +4,14 @@ import { TestBed } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, convertToParamMap } from '@angular/router';
 import { Observable, firstValueFrom, of, throwError } from 'rxjs';
 
-import { PublicParkHistoricalSnapshot, PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
+import { PublicParkHistoricalComparison, PublicParkHistoricalSnapshot, PublicParkHistoricalTimeline } from '@app/models/history/public-park-history.models';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { HISTORY_DATA_PORT, HistoryDataPort } from './history-data.ports';
 import {
+  ResolvedParkHistoricalComparisonRouteData,
   ResolvedParkHistoricalSnapshotRouteData,
   ResolvedParkHistoryTimelineRouteData,
+  parkHistoricalComparisonResolver,
   parkHistoricalSnapshotResolver,
   parkHistoryTimelineResolver
 } from './park-history-explorer.resolver';
@@ -21,7 +23,8 @@ describe('park history explorer resolvers', () => {
   beforeEach(() => {
     historyDataPort = {
       getPublicParkTimeline: vi.fn().mockName('HistoryDataPort.getPublicParkTimeline'),
-      getPublicParkSnapshot: vi.fn().mockName('HistoryDataPort.getPublicParkSnapshot')
+      getPublicParkSnapshot: vi.fn().mockName('HistoryDataPort.getPublicParkSnapshot'),
+      getPublicParkComparison: vi.fn().mockName('HistoryDataPort.getPublicParkComparison')
     } as unknown as MockedObject<HistoryDataPort>;
     ssrStatusService = {
       setNotFound: vi.fn().mockName('SsrHttpStatusService.setNotFound'),
@@ -126,7 +129,40 @@ describe('park history explorer resolvers', () => {
     expect(result.snapshot).toBeNull();
     expect(ssrStatusService.setStatus).toHaveBeenCalledWith(503);
   });
+
+  it('loads a comparison only when the first year precedes the second', async () => {
+    const comparison: PublicParkHistoricalComparison = createComparison();
+    historyDataPort.getPublicParkComparison.mockReturnValue(of(comparison));
+
+    const result: ResolvedParkHistoricalComparisonRouteData = await resolveComparison({
+      id: 'park-1', fromYear: '1998', toYear: '2026'
+    });
+
+    expect(result).toEqual({ comparison, fromYear: 1998, toYear: 2026 });
+    expect(historyDataPort.getPublicParkComparison).toHaveBeenCalledWith(
+      'park-1', 1998, 2026, expect.objectContaining({ context: expect.any(HttpContext) })
+    );
+  });
+
+  it('rejects a reversed comparison before calling the API', async () => {
+    const result: ResolvedParkHistoricalComparisonRouteData = await resolveComparison({
+      id: 'park-1', fromYear: '2026', toYear: '1998'
+    });
+
+    expect(result.comparison).toBeNull();
+    expect(historyDataPort.getPublicParkComparison).not.toHaveBeenCalled();
+    expect(ssrStatusService.setNotFound).toHaveBeenCalledTimes(1);
+  });
 });
+
+async function resolveComparison(
+  params: Record<string, string>
+): Promise<ResolvedParkHistoricalComparisonRouteData> {
+  const result: Observable<ResolvedParkHistoricalComparisonRouteData> = TestBed.runInInjectionContext(
+    () => parkHistoricalComparisonResolver(createRoute(params), {} as RouterStateSnapshot) as Observable<ResolvedParkHistoricalComparisonRouteData>
+  );
+  return firstValueFrom(result);
+}
 
 async function resolveTimeline(params: Record<string, string>): Promise<ResolvedParkHistoryTimelineRouteData> {
   const result: Observable<ResolvedParkHistoryTimelineRouteData> = TestBed.runInInjectionContext(
@@ -178,5 +214,23 @@ function createSnapshot(): PublicParkHistoricalSnapshot {
     },
     ambiguities: [],
     methodologyVersion: '1.0'
+  };
+}
+
+function createComparison(): PublicParkHistoricalComparison {
+  const coverage = createSnapshot().coverage;
+  return {
+    parkId: 'park-1',
+    parkName: 'Example Park',
+    fromInstant: { year: 1998, precision: 'Year' },
+    toInstant: { year: 2026, precision: 'Year' },
+    subjects: [],
+    categoryNetChanges: [],
+    fromCoverage: coverage,
+    toCoverage: coverage,
+    fromUnclassifiedOpenItemCount: 0,
+    toUnclassifiedOpenItemCount: 0,
+    isCategoryComparisonComplete: true,
+    methodologyVersion: 'hist-compare-v1'
   };
 }

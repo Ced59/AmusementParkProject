@@ -675,7 +675,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | `HIST-07` | API timeline/snapshot | Contrats bornés — implémenté le 26 septembre 2026 |
 | `HIST-08` | UI frise et année pilote | SSR accessible — implémenté le 26 septembre 2026 |
 | [`HIST-09`](../../architecture/product-growth-hist-09-explicit-lineages-2026-09-27.md) | Relations/lignées | Aucune déduction silencieuse — implémenté le 27 septembre 2026 |
-| `HIST-10` | Comparaison de dates | Diff exact |
+| [`HIST-10`](../../architecture/product-growth-hist-10-date-comparison-2026-09-27.md) | Comparaison de dates | Diff exact — implémenté le 27 septembre 2026 |
 | `HIST-11` | Intégration Passeport | Anciennes visites contextualisées |
 | `HIST-12` | Admin diagnostics/revue | Exploitation fiable |
 | `HIST-13` | SEO/partage | Pages clés seulement |
@@ -995,6 +995,36 @@ un `BreadcrumbList`, reste `noindex,follow` jusqu'à la sélection éditoriale d
 et la revue ergonomiques de ces relations dans l'administration restent du
 ressort de `HIST-12`, qui consommera le même port de révision et ne créera pas
 un second système.
+
+### Implémentation `HIST-10` — 27 septembre 2026
+
+Le visiteur peut désormais comparer deux années depuis la frise ou depuis une
+reconstitution annuelle. Une URL stable et rendue côté serveur matérialise la
+période choisie. L'écran présente le bilan net par catégorie, les ouvertures,
+les fermetures, les renommages, les déplacements, les présences stables et les
+situations que les preuves ne permettent pas encore de trancher.
+
+Le calcul reste dans le Core : il rapproche deux snapshots déterministes bâtis
+sur exactement le même périmètre de sujets. Une ouverture exige un état fermé
+établi au départ puis ouvert établi à l'arrivée ; une fermeture applique la
+règle inverse. Toute combinaison impliquant un état possible ou inconnu reste
+incertaine. Un renommage ou un déplacement n'est annoncé que lorsque les deux
+valeurs sont connues et différentes. Le moteur ne possède aucun champ causal
+et ne génère aucune explication de cause.
+
+L'API réutilise un unique chargement public des sujets et des faits, puis bâtit
+les deux snapshots en mémoire. Les identifiants internes des éléments et des
+zones ne franchissent pas le contrat de comparaison : des clés locales servent
+au rendu et les zones sont résolues vers leur nom historique à chaque date.
+Les compteurs de sources sont conservés comme preuves synthétiques, sans
+exposer les identifiants de faits, de sources ou de révisions.
+
+L'interface évite les tableaux horizontaux : les contrôles, cartes, barres et
+transitions utilisent des grilles bornées par `minmax(0, 1fr)`, la césure des
+libellés longs et un repli explicite en une colonne à 520 pixels. Un test de
+contrat protège le viewport à partir de 320 pixels. Les textes, le fil d'Ariane
+visible et son `BreadcrumbList` sont localisés dans les huit langues. La page
+reste `noindex,follow` jusqu'à la sélection éditoriale de `HIST-13`.
 
 ## 22. Gate finale `HIST-G`
 

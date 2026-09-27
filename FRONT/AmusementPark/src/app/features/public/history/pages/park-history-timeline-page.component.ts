@@ -119,6 +119,11 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
     }) ?? [];
   }
 
+  protected comparisonLink(timeline: PublicParkHistoricalTimeline): string[] {
+    const toYear: number = new Date().getUTCFullYear();
+    return [...this.historyBaseLink(timeline), 'compare', String(toYear - 10), String(toYear)];
+  }
+
   protected narrativeLink(entry: PublicHistoricalTimelineEntry, timeline: PublicParkHistoricalTimeline): string[] | null {
     return buildCanonicalHistoryNarrativeLink(entry, timeline, this.currentLanguage());
   }

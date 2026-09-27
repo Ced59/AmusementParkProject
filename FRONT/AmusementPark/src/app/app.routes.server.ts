@@ -41,6 +41,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/attraction/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/images', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/history/page/:page', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug/history/compare/:fromYear/:toYear', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/history/:eventId/:eventSlug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/history/:year', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/history', renderMode: RenderMode.Server },

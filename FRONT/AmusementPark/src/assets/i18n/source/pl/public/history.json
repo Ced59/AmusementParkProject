@@ -27,6 +27,17 @@
       "coverageStatuses": { "Partial": "Częściowe pokrycie", "Substantial": "Solidne pokrycie", "HighConfidence": "Wysoka pewność" },
       "attributes": { "Logo": "Logo", "Zone": "Strefa", "Operator": "Operator", "Owner": "Właściciel", "Manufacturer": "Producent", "Category": "Kategoria", "Theme": "Motyw", "Location": "Lokalizacja", "Status": "Status", "MarketPositioning": "Pozycjonowanie" }
     },
+    "comparison": {
+      "loadingTitle": "Przygotowywanie porównania", "loadingMessage": "Trwa rekonstrukcja obu epok.", "errorTitle": "Porównanie niedostępne", "errorMessage": "Nie udało się teraz wczytać tego porównania historycznego.",
+      "breadcrumb": "Porównaj dwie epoki", "kicker": "Dwie epoki, jeden park", "title": "Jak zmienił się {{park}}", "description": "Wybierz dwa lata i zobacz, co pozostało, otwarto, zamknięto lub zmieniono, bez zamieniania brakujących dowodów w pewniki.",
+      "fromYear": "Rok początkowy", "toYear": "Rok końcowy", "invalidRange": "Rok początkowy musi być wcześniejszy od końcowego.", "compare": "Porównaj te epoki", "periodAria": "Porównywany okres", "departure": "Początek", "arrival": "Koniec",
+      "summaryAria": "Podsumowanie zmian", "opened": "potwierdzone otwarcia", "closed": "potwierdzone zamknięcia", "changed": "przekształcenia", "uncertain": "niepewne przypadki",
+      "balanceKicker": "Przegląd", "balanceTitle": "Zmiana według kategorii", "balanceDescription": "Każdy pasek porównuje liczbę elementów, których otwarcie potwierdzono dla obu dat.", "incompleteCategories": "Niektóre otwarte elementy nie mają udokumentowanej kategorii historycznej, dlatego zestawienie jest częściowe.",
+      "newKicker": "Potwierdzone nowości", "openedTitle": "Co otwarto ({{count}})", "openedBetween": "Otwarto między {{from}} a {{to}}.", "closedKicker": "Potwierdzone odejścia", "closedTitle": "Co zamknięto ({{count}})", "closedBetween": "Zamknięto między {{from}} a {{to}}.",
+      "transformedKicker": "Zmieniające się tożsamości", "transformedTitle": "Co się zmieniło ({{count}})", "uncertainKicker": "Otwarte pytania", "uncertainTitle": "Co pozostaje niepewne ({{count}})", "uncertainDescription": "Dostępne daty lub dowody nie pozwalają jeszcze na pewny wniosek.", "notEnoughEvidence": "Za mało dowodów, aby potwierdzić obecność w obu datach.",
+      "stableTitle": "Obecne w obu epokach bez udokumentowanej zmiany ({{count}})", "sources": "{{count}} źródła pomocnicze", "proofTitle": "Porównanie oparte na dowodach", "proofDescription": "Wynik łączy dwie niezależne rekonstrukcje. Pokazuje zaobserwowane zmiany, ale nigdy nie wymyśla ich przyczyn.",
+      "seoTitle": "{{park}}: porównanie historyczne {{from}}–{{to}}", "seoDescription": "Porównaj {{park}} w latach {{from}} i {{to}}: udokumentowane otwarcia, zamknięcia, zmiany nazw, przeniesienia i niepewności."
+    },
     "lineage": {
       "breadcrumbAria": "Okruszki nawigacyjne linii historycznej", "home": "Strona główna", "kicker": "Udokumentowane powiązania historyczne", "title": "Linia historyczna: {{subject}}", "description": "Poznaj wyłącznie zmiany nazw, przeniesienia, zastąpienia i inne powiązania potwierdzone źródłami. Żadna relacja nie jest zgadywana.",
       "seoTitle": "Linia historyczna: {{subject}}", "seoDescription": "Poznaj udokumentowane relacje historyczne obiektu {{subject}}, ich okres i poziom dowodów.", "summaryAria": "Podsumowanie linii historycznej", "subjectCount": "powiązanych elementów", "relationCount": "udokumentowanych relacji", "listAria": "Udokumentowane relacje historyczne",

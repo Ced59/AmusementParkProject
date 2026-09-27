@@ -24,6 +24,9 @@ public sealed class PublicParkHistoryController : ControllerBase
     private readonly IQueryHandler<
         GetPublicParkHistoricalSnapshotQuery,
         ApplicationResult<PublicParkHistoricalSnapshotResult>> snapshotHandler;
+    private readonly IQueryHandler<
+        GetPublicParkHistoricalComparisonQuery,
+        ApplicationResult<PublicParkHistoricalComparisonResult>> comparisonHandler;
 
     public PublicParkHistoryController(
         IQueryHandler<
@@ -31,10 +34,14 @@ public sealed class PublicParkHistoryController : ControllerBase
             ApplicationResult<PublicParkHistoricalTimelineResult>> timelineHandler,
         IQueryHandler<
             GetPublicParkHistoricalSnapshotQuery,
-            ApplicationResult<PublicParkHistoricalSnapshotResult>> snapshotHandler)
+            ApplicationResult<PublicParkHistoricalSnapshotResult>> snapshotHandler,
+        IQueryHandler<
+            GetPublicParkHistoricalComparisonQuery,
+            ApplicationResult<PublicParkHistoricalComparisonResult>> comparisonHandler)
     {
         this.timelineHandler = timelineHandler;
         this.snapshotHandler = snapshotHandler;
+        this.comparisonHandler = comparisonHandler;
     }
 
     [HttpGet("timeline")]
@@ -68,6 +75,24 @@ public sealed class PublicParkHistoryController : ControllerBase
         ApplicationResult<PublicParkHistoricalSnapshotResult> result =
             await this.snapshotHandler.HandleAsync(
                 new GetPublicParkHistoricalSnapshotQuery(parkId, year, month, day),
+                cancellationToken);
+        return result.IsSuccess && result.Value is not null
+            ? this.Ok(result.Value.ToHttp())
+            : this.ToActionResult(result);
+    }
+
+    [HttpGet("compare")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [ProducesResponseType(typeof(PublicParkHistoricalComparisonDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetComparisonAsync(
+        [FromRoute] string parkId,
+        [FromQuery] int fromYear,
+        [FromQuery] int toYear,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<PublicParkHistoricalComparisonResult> result =
+            await this.comparisonHandler.HandleAsync(
+                new GetPublicParkHistoricalComparisonQuery(parkId, fromYear, toYear),
                 cancellationToken);
         return result.IsSuccess && result.Value is not null
             ? this.Ok(result.Value.ToHttp())

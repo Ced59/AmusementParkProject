@@ -234,6 +234,28 @@
   color: var(--app-text-muted);
 }
 
+.history-comparison-callout {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  min-width: 0;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 34%, var(--app-border));
+  border-radius: var(--radius-lg);
+  color: inherit;
+  background: color-mix(in srgb, var(--app-accent-cyan) 6%, var(--app-surface));
+  text-decoration: none;
+}
+
+.history-comparison-callout > i { color: var(--app-accent-cyan); }
+.history-comparison-callout span,
+.history-comparison-callout strong,
+.history-comparison-callout small { display: block; min-width: 0; overflow-wrap: anywhere; }
+.history-comparison-callout strong { color: var(--app-heading); }
+.history-comparison-callout small { margin-top: 0.25rem; color: var(--app-text-muted); line-height: 1.4; }
+
 @media (max-width: 780px) {
   .park-history-hero {
     grid-template-columns: minmax(0, 1fr);

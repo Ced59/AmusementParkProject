@@ -301,4 +301,126 @@ public sealed class PublicParkHistoryHttpMappersTests
             static attribute => attribute.Kind == nameof(HistoricalAttributeKind.Zone));
         Assert.Equal("Ancien quartier", mappedZone.DisplayValue);
     }
+
+    [Fact]
+    public void ComparisonMapping_UsesOpaqueKeysAndResolvedHistoricalZoneNames()
+    {
+        HistoricalSubject zone = new(
+            HistoricalSubjectType.ParkZone,
+            "zone-technical",
+            "Zone actuelle",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalSubject item = new(
+            HistoricalSubjectType.ParkItem,
+            "item-technical",
+            "Attraction actuelle",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        ParkHistoricalSnapshot from = CreateComparisonSnapshot(
+            1998,
+            zone,
+            item,
+            "Ancienne zone",
+            "Ancien nom");
+        ParkHistoricalSnapshot to = CreateComparisonSnapshot(
+            2026,
+            zone,
+            item,
+            "Nouvelle zone",
+            "Nouveau nom");
+        ParkHistoricalComparison comparison = new ParkHistoricalComparisonBuilder().Build(from, to);
+        PublicParkHistoricalComparisonResult result = new(
+            new Park { Id = "park-1", Name = "Parc témoin", IsVisible = true },
+            comparison,
+            Array.Empty<HistoricalFact>(),
+            new Dictionary<string, string>
+            {
+                [zone.Id] = "Zone actuelle",
+                ["zone-old-technical"] = "Ancienne zone",
+                ["zone-new-technical"] = "Nouvelle zone",
+            });
+
+        PublicParkHistoricalComparisonDto dto = result.ToHttp();
+        PublicHistoricalSubjectComparisonDto mappedItem = Assert.Single(
+            dto.Subjects,
+            static subject => subject.SubjectType == nameof(HistoricalSubjectType.ParkItem));
+        string json = JsonSerializer.Serialize(dto);
+
+        Assert.StartsWith("subject-", mappedItem.ComparisonKey, StringComparison.Ordinal);
+        Assert.Equal("Ancien nom", mappedItem.PreviousName);
+        Assert.Equal("Nouveau nom", mappedItem.NextName);
+        Assert.Equal("Ancienne zone", mappedItem.PreviousZoneName);
+        Assert.Equal("Nouvelle zone", mappedItem.NextZoneName);
+        Assert.True(mappedItem.IsRenamed);
+        Assert.True(mappedItem.IsMoved);
+        Assert.DoesNotContain(item.Id, json, StringComparison.Ordinal);
+        Assert.DoesNotContain(zone.Id, json, StringComparison.Ordinal);
+        Assert.DoesNotContain("zone-old-technical", json, StringComparison.Ordinal);
+        Assert.DoesNotContain("zone-new-technical", json, StringComparison.Ordinal);
+    }
+
+    private static ParkHistoricalSnapshot CreateComparisonSnapshot(
+        int year,
+        HistoricalSubject zone,
+        HistoricalSubject item,
+        string zoneName,
+        string itemName)
+    {
+        HistoricalAttributeSnapshot zoneNameAttribute = CreateKnownAttribute(
+            HistoricalAttributeKind.Name,
+            zoneName);
+        HistoricalSubjectSnapshot zoneSnapshot = new(
+            zone,
+            HistoricalOperationalState.KnownOpen,
+            HistoricalPresenceExtent.EntireRequestedPeriod,
+            new[] { new HistoricalPresenceInterval(new DateOnly(year, 1, 1), new DateOnly(year, 12, 31)) },
+            new[] { zoneNameAttribute },
+            Array.Empty<HistoricalSnapshotReason>(),
+            Array.Empty<Guid>());
+        HistoricalSubjectSnapshot itemSnapshot = new(
+            item,
+            HistoricalOperationalState.KnownOpen,
+            HistoricalPresenceExtent.EntireRequestedPeriod,
+            new[] { new HistoricalPresenceInterval(new DateOnly(year, 1, 1), new DateOnly(year, 12, 31)) },
+            new[]
+            {
+                CreateKnownAttribute(HistoricalAttributeKind.Name, itemName),
+                CreateKnownAttribute(
+                    HistoricalAttributeKind.Zone,
+                    year < 2000 ? "zone-old-technical" : "zone-new-technical"),
+                CreateKnownAttribute(HistoricalAttributeKind.Category, "Ride"),
+            },
+            Array.Empty<HistoricalSnapshotReason>(),
+            Array.Empty<Guid>());
+        HistoricalCoverage coverage = new(
+            2,
+            2,
+            0,
+            0,
+            new HistoricalFieldCoverage(2, 2),
+            new HistoricalFieldCoverage(1, 1),
+            null,
+            HistoricalCoverageStatus.HighConfidence);
+        return new ParkHistoricalSnapshot(
+            "park-1",
+            HistoricalInstant.ForYear(year),
+            new[] { zoneSnapshot, itemSnapshot },
+            coverage,
+            Array.Empty<HistoricalAmbiguity>(),
+            ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion);
+    }
+
+    private static HistoricalAttributeSnapshot CreateKnownAttribute(
+        HistoricalAttributeKind kind,
+        string value)
+    {
+        return new HistoricalAttributeSnapshot(
+            kind,
+            HistoricalAttributeValueState.Known,
+            value,
+            new[] { value },
+            Array.Empty<HistoricalSnapshotReason>(),
+            Array.Empty<Guid>());
+    }
 }

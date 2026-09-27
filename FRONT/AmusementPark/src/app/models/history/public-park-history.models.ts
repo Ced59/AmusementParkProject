@@ -153,3 +153,45 @@ export interface PublicParkHistoricalSnapshot {
   ambiguities: PublicHistoricalAmbiguity[];
   methodologyVersion: string;
 }
+
+export interface PublicHistoricalSubjectComparison {
+  comparisonKey: string;
+  subjectType: string;
+  displayName: string;
+  nameOrigin: string;
+  previousName?: string | null;
+  nextName?: string | null;
+  presenceChange: string;
+  isRenamed: boolean;
+  isMoved: boolean;
+  previousZoneName?: string | null;
+  nextZoneName?: string | null;
+  previousCategory?: string | null;
+  nextCategory?: string | null;
+  fromOperationalState: string;
+  toOperationalState: string;
+  fromSupportingSourceCount: number;
+  toSupportingSourceCount: number;
+}
+
+export interface PublicHistoricalCategoryNetChange {
+  category: string;
+  fromCount: number;
+  toCount: number;
+  netChange: number;
+}
+
+export interface PublicParkHistoricalComparison {
+  parkId: string;
+  parkName: string;
+  fromInstant: PublicHistoricalDate;
+  toInstant: PublicHistoricalDate;
+  subjects: PublicHistoricalSubjectComparison[];
+  categoryNetChanges: PublicHistoricalCategoryNetChange[];
+  fromCoverage: PublicHistoricalCoverage;
+  toCoverage: PublicHistoricalCoverage;
+  fromUnclassifiedOpenItemCount: number;
+  toUnclassifiedOpenItemCount: number;
+  isCategoryComparisonComplete: boolean;
+  methodologyVersion: string;
+}
