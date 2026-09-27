@@ -8,7 +8,7 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 190 parcs étaient publiés (`isVisible: true`).
 - Les 190 scores ont été recalculés individuellement avec `Completeness`.
 - 68 parcs atteignent le niveau `Excellent` et satisfont désormais tous la condition de sortie, avec un score strictement supérieur à 95.
-- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 119 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **3 parcs** : 0 au niveau `Publishable`, 3 au niveau `Good` et 0 au niveau `Excellent`.
+- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 120 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **2 parcs** : 0 au niveau `Publishable`, 2 au niveau `Good` et 0 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,12 +22,11 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (3)
+## Priorité 2 — niveau `Good` (2)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 | 91 | `Good` | Bayside Fun Park | GB | `Operating` | `Local` | 94/103 | `58da350d-0bb4-461f-8f38-188bd59c13e1` |
-| 91 | `Good` | La Récré des 3 Curés | FR | `Operating` | `Regional` | 89/98 | `9cebd5ae-dc2c-4c8c-a6a4-d2a2dda33d1c` |
 | 92 | `Good` | AcroJungle Outdoor | FR | `Operating` | `Local` | 89/97 | `1566972b-fbf9-461c-ac92-5df9d6c3358e` |
 
 ## Priorité 3 — niveau `Excellent` au seuil (0)
