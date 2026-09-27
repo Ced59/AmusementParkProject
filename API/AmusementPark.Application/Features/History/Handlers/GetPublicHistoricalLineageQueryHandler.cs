@@ -71,9 +71,19 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
                     continue;
                 }
 
+                HistoricalSubjectKey[] newKeys = new[] { sourceKey, targetKey }
+                    .Distinct()
+                    .Where(key => !visited.Contains(key))
+                    .ToArray();
+                if (visited.Count + newKeys.Length > MaximumSubjectCount)
+                {
+                    isTruncated = true;
+                    continue;
+                }
+
                 loadedRelations[relation.Id] = relation;
-                AddNextSubject(sourceKey, visited, next, ref isTruncated);
-                AddNextSubject(targetKey, visited, next, ref isTruncated);
+                AddNextSubject(sourceKey, visited, next);
+                AddNextSubject(targetKey, visited, next);
             }
 
             frontier = next;
@@ -199,17 +209,10 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
     private static void AddNextSubject(
         HistoricalSubjectKey key,
         ISet<HistoricalSubjectKey> visited,
-        ISet<HistoricalSubjectKey> next,
-        ref bool isTruncated)
+        ISet<HistoricalSubjectKey> next)
     {
         if (visited.Contains(key))
         {
-            return;
-        }
-
-        if (visited.Count >= MaximumSubjectCount)
-        {
-            isTruncated = true;
             return;
         }
 

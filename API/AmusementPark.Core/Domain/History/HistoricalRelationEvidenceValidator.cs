@@ -77,10 +77,23 @@ public static class HistoricalRelationEvidenceValidator
         ArgumentNullException.ThrowIfNull(relation);
         ArgumentNullException.ThrowIfNull(resolvedSources);
         HashSet<(Guid Id, int Revision)> admissibleKeys = GetAdmissiblePublicSourceKeys(resolvedSources);
-        return relation.SourceReferences.Any(reference =>
-            reference.Position == HistoricalEvidencePosition.Supports
-            && admissibleKeys.Contains((reference.SourceId, reference.Revision))
-            && CoreScopes.All(scope => reference.Scopes.Contains(scope)));
+        HistoricalRelationSourceRevisionReference[] admissible = relation.SourceReferences
+            .Where(reference => admissibleKeys.Contains((reference.SourceId, reference.Revision)))
+            .ToArray();
+        HistoricalRelationSourceRevisionReference[] supporting = admissible
+            .Where(static reference => reference.Position == HistoricalEvidencePosition.Supports)
+            .ToArray();
+        HistoricalRelationSourceRevisionReference[] contradicting = admissible
+            .Where(static reference => reference.Position == HistoricalEvidencePosition.Contradicts)
+            .ToArray();
+        bool oneSourceCoversRelation = supporting.Any(reference =>
+            CoreScopes.All(scope => reference.Scopes.Contains(scope)));
+        bool positionsAreCurrentlyValid = relation.State == HistoricalFactState.Disputed
+            ? supporting.Length > 0
+                && contradicting.Length > 0
+                && supporting.Any(left => contradicting.Any(right => left.Scopes.Intersect(right.Scopes).Any()))
+            : supporting.Length > 0 && contradicting.Length == 0;
+        return oneSourceCoversRelation && positionsAreCurrentlyValid;
     }
 
     public static IReadOnlyCollection<HistoricalSourceReference> FilterCurrentlyAdmissiblePublicSources(

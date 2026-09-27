@@ -65,6 +65,99 @@ public sealed class HistoricalRelationEvidenceValidatorTests
     }
 
     [Fact]
+    public void HasAdmissiblePublicSupport_WhenDisputedContradictionIsNoLongerPublic_ShouldReturnFalse()
+    {
+        HistoricalRelation original = HistoricalRelationTests.CreatePublishedRelation();
+        HistoricalRelationSourceRevisionReference supporting = Assert.Single(original.SourceReferences);
+        HistoricalRelationSourceRevisionReference contradicting = HistoricalRelationTests.CreateEvidenceReference(
+            Guid.NewGuid(),
+            original.Source,
+            original.Target,
+            original.Type,
+            original.Period,
+            HistoricalEvidencePosition.Contradicts);
+        HistoricalRelation disputed = new HistoricalRelation(
+            original.Id,
+            original.Source,
+            original.Target,
+            original.Type,
+            original.Direction,
+            original.Period,
+            HistoricalFactState.Disputed,
+            original.WorkflowState,
+            original.PublicationState,
+            HistoricalLocalizationPolicy.SupportedLanguageCodes
+                .Select(static language => new HistoricalLocalizedText(
+                    language,
+                    "Les sources publiées divergent sur cette relation."))
+                .ToArray(),
+            new[] { supporting, contradicting },
+            original.EditorialNote,
+            null,
+            original.PublishedAtUtc,
+            original.PublicationMethodologyVersion,
+            original.Revision,
+            original.SupersedesRevision,
+            original.RecordedAtUtc);
+        HistoricalSourceReference publicSupportingSource = CreateSource(
+            supporting.SourceId,
+            supporting.Scopes);
+
+        bool hasPublicSupport = HistoricalRelationEvidenceValidator.HasAdmissiblePublicSupport(
+            disputed,
+            new[] { publicSupportingSource });
+
+        Assert.False(hasPublicSupport);
+    }
+
+    [Fact]
+    public void HasAdmissiblePublicSupport_WhenDisputedEvidenceKeepsBothPositions_ShouldReturnTrue()
+    {
+        HistoricalRelation original = HistoricalRelationTests.CreatePublishedRelation();
+        HistoricalRelationSourceRevisionReference supporting = Assert.Single(original.SourceReferences);
+        HistoricalRelationSourceRevisionReference contradicting = HistoricalRelationTests.CreateEvidenceReference(
+            Guid.NewGuid(),
+            original.Source,
+            original.Target,
+            original.Type,
+            original.Period,
+            HistoricalEvidencePosition.Contradicts);
+        HistoricalRelation disputed = new HistoricalRelation(
+            original.Id,
+            original.Source,
+            original.Target,
+            original.Type,
+            original.Direction,
+            original.Period,
+            HistoricalFactState.Disputed,
+            original.WorkflowState,
+            original.PublicationState,
+            HistoricalLocalizationPolicy.SupportedLanguageCodes
+                .Select(static language => new HistoricalLocalizedText(
+                    language,
+                    "Les sources publiées divergent sur cette relation."))
+                .ToArray(),
+            new[] { supporting, contradicting },
+            original.EditorialNote,
+            null,
+            original.PublishedAtUtc,
+            original.PublicationMethodologyVersion,
+            original.Revision,
+            original.SupersedesRevision,
+            original.RecordedAtUtc);
+
+        bool hasPublicSupport = HistoricalRelationEvidenceValidator.HasAdmissiblePublicSupport(
+            disputed,
+            new[]
+            {
+                CreateSource(supporting.SourceId, supporting.Scopes),
+                CreateSource(contradicting.SourceId, contradicting.Scopes),
+            });
+
+        Assert.True(hasPublicSupport);
+    }
+
+    [Fact]
     public void FilterCurrentlyAdmissiblePublicSources_WhenLatestRevisionIsWithdrawn_ShouldHidePublishedRevision()
     {
         HistoricalRelation relation = HistoricalRelationTests.CreatePublishedRelation();
