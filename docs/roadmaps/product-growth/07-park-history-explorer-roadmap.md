@@ -973,6 +973,10 @@ une ancienne révision. La traversée publique est bornée à quatre niveaux,
 soixante sujets et deux cents relations par lot. Les états de publication des
 sujets et les sources sont résolus par lots, sans N+1.
 
+La frise utilise en plus des facettes bornées par sujet, groupées par lots de
+vingt, afin qu'une lignée très dense ne masque jamais l'existence d'une lignée
+sur un autre événement de la même page.
+
 La frise indique uniquement les événements qui possèdent réellement une
 lignée publiée. La page SSR dédiée restitue chaque lien sous forme de cartes
 accessibles avec les deux libellés, la nature exacte du lien, la période, le

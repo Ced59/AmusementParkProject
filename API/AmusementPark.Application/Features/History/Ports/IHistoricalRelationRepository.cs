@@ -18,4 +18,9 @@ public interface IHistoricalRelationRepository
         IReadOnlyCollection<HistoricalSubjectKey> subjects,
         int limit,
         CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<HistoricalRelation>> GetLatestDecisionEligibleRevisionsTouchingEachSubjectAsync(
+        IReadOnlyCollection<HistoricalSubjectKey> subjects,
+        int limitPerSubject,
+        CancellationToken cancellationToken);
 }

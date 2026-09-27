@@ -13,6 +13,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
     IQueryHandler<GetPublicParkHistoricalTimelineQuery, ApplicationResult<PublicParkHistoricalTimelineResult>>
 {
     private const int MaximumLineageRelations = 200;
+    private const int MaximumLineageSubjectsPerBatch = 20;
 
     private readonly PublicParkHistoricalDataLoader dataLoader;
     private readonly IHistoricalSourceRepository historicalSourceRepository;
@@ -150,11 +151,22 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                 fact.Subject.ContextParkId))
             .Distinct()
             .ToArray();
-        IReadOnlyCollection<HistoricalRelation> relations =
-            await this.historicalRelationRepository.GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
-                keys,
-                MaximumLineageRelations,
-                cancellationToken);
+        Dictionary<Guid, HistoricalRelation> relationsById = new();
+        foreach (HistoricalSubjectKey[] keyBatch in keys.Chunk(MaximumLineageSubjectsPerBatch))
+        {
+            IReadOnlyCollection<HistoricalRelation> batchRelations =
+                await this.historicalRelationRepository
+                    .GetLatestDecisionEligibleRevisionsTouchingEachSubjectAsync(
+                        keyBatch,
+                        MaximumLineageRelations,
+                        cancellationToken);
+            foreach (HistoricalRelation relation in batchRelations)
+            {
+                relationsById[relation.Id] = relation;
+            }
+        }
+
+        HistoricalRelation[] relations = relationsById.Values.ToArray();
         HistoricalSubject[] relationSubjects = relations
             .SelectMany(static relation => new[] { relation.Source, relation.Target })
             .DistinctBy(static subject => (subject.Type, subject.Id, subject.ContextParkId))

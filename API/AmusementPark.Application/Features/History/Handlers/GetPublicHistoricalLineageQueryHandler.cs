@@ -47,6 +47,9 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
             || normalizedSubjectId.Any(char.IsControl)
             || normalizedContextParkId is not null
                 && (normalizedContextParkId.Length > 200 || normalizedContextParkId.Any(char.IsControl))
+            || query.SubjectType == HistoricalSubjectType.Park
+                && normalizedContextParkId is not null
+                && !string.Equals(normalizedContextParkId, normalizedSubjectId, StringComparison.Ordinal)
             || query.SubjectType is HistoricalSubjectType.ParkItem or HistoricalSubjectType.ParkZone
                 && normalizedContextParkId is null)
         {

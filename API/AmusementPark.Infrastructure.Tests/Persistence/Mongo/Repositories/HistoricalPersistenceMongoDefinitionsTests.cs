@@ -63,6 +63,29 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildLatestTouchingEachSubjectPipeline_ShouldGiveEverySubjectItsOwnBoundedFacet()
+    {
+        IReadOnlyCollection<BsonDocument> stages =
+            HistoricalRelationRepository.BuildLatestTouchingEachSubjectPipeline(
+                new[]
+                {
+                    new HistoricalSubjectKey(HistoricalSubjectType.ParkItem, "dense-item", "park-1"),
+                    new HistoricalSubjectKey(HistoricalSubjectType.ParkItem, "later-item", "park-1"),
+                },
+                "historical-relations",
+                200);
+        BsonDocument[] pipeline = stages.ToArray();
+        BsonDocument facets = pipeline[0]["$facet"].AsBsonDocument;
+
+        Assert.Equal(2, facets.ElementCount);
+        Assert.All(
+            facets.Elements,
+            facet => Assert.Equal(200, facet.Value.AsBsonArray[^1]["$limit"].AsInt32));
+        Assert.Equal("$relationId", pipeline[4]["$group"]["_id"].AsString);
+        Assert.Equal("$relation", pipeline[5]["$replaceRoot"]["newRoot"].AsString);
+    }
+
+    [Fact]
     public void BuildFactIndexes_ShouldProtectImmutableRevisionsAndQueryPaths()
     {
         IReadOnlyCollection<CreateIndexModel<HistoricalFactDocument>> indexes =

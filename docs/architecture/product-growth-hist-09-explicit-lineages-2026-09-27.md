@@ -50,6 +50,12 @@ moins une preuve favorable et une preuve contradictoire portant sur une portée
 commune. `Probable` et `Disputed` exigent une explication publique dans les huit
 langues.
 
+Sur une page de frise, la détection des accès aux lignées répartit le budget
+MongoDB équitablement par sujet. Les sujets sont groupés par lots de vingt dans
+une agrégation à facettes ; chacun possède sa propre limite de deux cents
+relations avant déduplication. Une attraction très reliée ne peut donc pas
+consommer le budget d'une autre carte ni faire disparaître son accès.
+
 ## Modèle de classes
 
 ```mermaid

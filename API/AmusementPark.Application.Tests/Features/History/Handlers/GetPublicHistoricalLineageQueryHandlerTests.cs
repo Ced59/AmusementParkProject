@@ -190,6 +190,28 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
     }
 
     [Fact]
+    public async Task HandleAsync_WhenParkContextDoesNotMatchParkSubject_ShouldReturnValidation()
+    {
+        Mock<IHistoricalRelationRepository> relationRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sourceRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalSubjectPublicationStateReader> publicationReader = new(MockBehavior.Strict);
+        GetPublicHistoricalLineageQueryHandler handler = new(
+            relationRepository.Object,
+            sourceRepository.Object,
+            publicationReader.Object);
+
+        ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
+            new GetPublicHistoricalLineageQuery(
+                HistoricalSubjectType.Park,
+                "real-park",
+                "other-park"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "history.subject.invalid");
+        relationRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task HandleAsync_WhenSupportingSourceWasWithdrawn_ShouldNotExposeLineage()
     {
         (HistoricalRelation Relation, HistoricalSourceReference Source) data = CreateRelation();

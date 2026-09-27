@@ -14,6 +14,7 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class HistoricalRelationRepository : IHistoricalRelationRepository
 {
     internal const int MaximumReadBatchSize = 200;
+    internal const int MaximumFairSubjectBatchSize = 20;
 
     private readonly IMongoCollection<HistoricalRelationDocument> collection;
     private readonly IHistoricalSourceRepository sourceRepository;
@@ -125,6 +126,30 @@ public sealed class HistoricalRelationRepository : IHistoricalRelationRepository
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
+    public async Task<IReadOnlyCollection<HistoricalRelation>>
+        GetLatestDecisionEligibleRevisionsTouchingEachSubjectAsync(
+            IReadOnlyCollection<HistoricalSubjectKey> subjects,
+            int limitPerSubject,
+            CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(subjects);
+        HistoricalSubjectKey[] keys = subjects.Distinct().ToArray();
+        if (keys.Length == 0)
+        {
+            return Array.Empty<HistoricalRelation>();
+        }
+
+        PipelineDefinition<HistoricalRelationDocument, HistoricalRelationDocument> pipeline =
+            PipelineDefinition<HistoricalRelationDocument, HistoricalRelationDocument>.Create(
+                BuildLatestTouchingEachSubjectPipeline(
+                    keys,
+                    this.collectionName,
+                    limitPerSubject));
+        List<HistoricalRelationDocument> documents = await this.collection.Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     internal static IReadOnlyCollection<BsonDocument> BuildLatestTouchingSubjectsPipeline(
         IReadOnlyCollection<HistoricalSubjectKey> subjects,
         string collectionName,
@@ -182,6 +207,57 @@ public sealed class HistoricalRelationRepository : IHistoricalRelationRepository
             }),
             new BsonDocument("$sort", new BsonDocument { ["period.start.year"] = 1, ["relationId"] = 1 }),
             new BsonDocument("$limit", limit),
+        };
+    }
+
+    internal static IReadOnlyCollection<BsonDocument> BuildLatestTouchingEachSubjectPipeline(
+        IReadOnlyCollection<HistoricalSubjectKey> subjects,
+        string collectionName,
+        int limitPerSubject)
+    {
+        ArgumentNullException.ThrowIfNull(subjects);
+        HistoricalSubjectKey[] keys = subjects.Distinct().ToArray();
+        if (keys.Length == 0 || keys.Length > MaximumFairSubjectBatchSize)
+        {
+            throw new ArgumentOutOfRangeException(nameof(subjects));
+        }
+
+        if (limitPerSubject < 1 || limitPerSubject > MaximumReadBatchSize)
+        {
+            throw new ArgumentOutOfRangeException(nameof(limitPerSubject));
+        }
+
+        BsonDocument facets = new();
+        BsonArray facetReferences = new();
+        for (int index = 0; index < keys.Length; index++)
+        {
+            string facetName = $"subject_{index}";
+            facets[facetName] = new BsonArray(BuildLatestTouchingSubjectsPipeline(
+                new[] { keys[index] },
+                collectionName,
+                limitPerSubject));
+            facetReferences.Add($"${facetName}");
+        }
+
+        return new BsonDocument[]
+        {
+            new BsonDocument("$facet", facets),
+            new BsonDocument("$project", new BsonDocument(
+                "relations",
+                new BsonDocument("$concatArrays", facetReferences))),
+            new BsonDocument("$unwind", "$relations"),
+            new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$relations")),
+            new BsonDocument("$group", new BsonDocument
+            {
+                ["_id"] = "$relationId",
+                ["relation"] = new BsonDocument("$first", "$$ROOT"),
+            }),
+            new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$relation")),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["period.start.year"] = 1,
+                ["relationId"] = 1,
+            }),
         };
     }
 

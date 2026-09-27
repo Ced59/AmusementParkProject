@@ -223,7 +223,7 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { visibleNarrative, removedNarrative });
         relationRepository
-            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsTouchingEachSubjectAsync(
                 It.Is<IReadOnlyCollection<HistoricalSubjectKey>>(keys => keys.Count == 2),
                 200,
                 It.IsAny<CancellationToken>()))
