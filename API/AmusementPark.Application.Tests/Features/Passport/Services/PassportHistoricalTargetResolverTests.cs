@@ -128,17 +128,11 @@ public sealed class PassportHistoricalTargetResolverTests
                 false,
                 CancellationToken.None))
             .ReturnsAsync(park);
-        parkItems.Setup(repository => repository.GetByParkIdAsync(
-                park.Id,
-                false,
+        parkItems.Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { item.Id })),
                 CancellationToken.None))
             .ReturnsAsync(new[] { item });
-        zones.Setup(repository => repository.GetByParkIdAsync(
-                park.Id,
-                CancellationToken.None))
-            .ReturnsAsync(Array.Empty<ParkZone>());
-        facts.Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
-                park.Id,
+        facts.Setup(repository => repository.GetLatestRevisionsForSubjectsAsync(
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
                 CancellationToken.None))
             .ReturnsAsync(new[] { opening });
@@ -196,16 +190,155 @@ public sealed class PassportHistoricalTargetResolverTests
         Assert.Equal(HistoricalOperationalState.KnownOpen, laterTarget.OperationalState);
         parks.VerifyAll();
         parkItems.VerifyAll();
-        zones.VerifyAll();
         facts.VerifyAll();
         currentTargets.VerifyAll();
         parks.Verify(repository => repository.GetByIdAsync(
             park.Id,
             false,
             CancellationToken.None), Times.Once);
+        facts.Verify(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
+            It.IsAny<string>(),
+            It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+            It.IsAny<CancellationToken>()), Times.Never);
         currentTargets.Verify(resolver => resolver.ResolveAsync(
             It.IsAny<IReadOnlyCollection<string>>(),
             CancellationToken.None), Times.Once);
+        zones.VerifyNoOtherCalls();
         images.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ShouldNotRestoreACanonicallyNonAttractionSubject()
+    {
+        Park park = PublicParkHistoryTestData.CreatePark();
+        ParkItem item = PublicParkHistoryTestData.CreateParkItem("item-1", "Ancienne attraction");
+        item.Category = ParkItemCategory.Attraction;
+        HistoricalSubject subject = new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            item.Id,
+            item.Name,
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            park.Id);
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetByIdAsync(
+                park.Id,
+                false,
+                CancellationToken.None))
+            .ReturnsAsync(park);
+        Mock<IParkItemRepository> parkItems = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItems.Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { item.Id })),
+                CancellationToken.None))
+            .ReturnsAsync(new[] { item });
+        Mock<IParkZoneRepository> zones = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> facts =
+            new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        facts.Setup(repository => repository.GetLatestRevisionsForSubjectsAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<HistoricalFact>());
+        Mock<IParkHistoricalSnapshotBuilder> snapshots =
+            new Mock<IParkHistoricalSnapshotBuilder>(MockBehavior.Strict);
+        snapshots.Setup(builder => builder.Build(
+                park.Id,
+                It.IsAny<HistoricalInstant>(),
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<IReadOnlyCollection<HistoricalFact>>()))
+            .Returns((string _, HistoricalInstant instant,
+                IReadOnlyCollection<HistoricalSubject> __,
+                IReadOnlyCollection<HistoricalFact> ___) => CreateNonAttractionSnapshot(
+                    park.Id,
+                    instant,
+                    subject));
+        Mock<IVisitTargetResolver> currentTargets =
+            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        currentTargets.Setup(resolver => resolver.ResolveAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { item.Id })),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
+            {
+                [item.Id] = new VisitTarget(
+                    item.Id,
+                    park.Id,
+                    item.Name,
+                    ParkItemCategory.Attraction,
+                    null,
+                    null),
+            });
+        Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
+        PassportHistoricalTargetResolver resolver = new PassportHistoricalTargetResolver(
+            new PublicParkHistoricalDataLoader(
+                parks.Object,
+                parkItems.Object,
+                zones.Object,
+                facts.Object),
+            snapshots.Object,
+            currentTargets.Object,
+            images.Object);
+        Visit visit = Visit.Create(
+            VisitId.Parse("visit-1"),
+            "owner-1",
+            park.Id,
+            VisitDate.ForYear(1990),
+            null,
+            LocalServiceDayConvention.VisitStartLocalDate,
+            null,
+            null,
+            new DateTime(2026, 9, 27, 8, 0, 0, DateTimeKind.Utc));
+
+        PassportHistoricalTargetContext context = await resolver.ResolveAsync(
+            visit,
+            new[] { item.Id },
+            CancellationToken.None);
+
+        Assert.Empty(context.Targets);
+        Assert.Contains(item.Id, context.CanonicallyExcludedParkItemIds);
+        parks.VerifyAll();
+        parkItems.VerifyAll();
+        facts.VerifyAll();
+        snapshots.VerifyAll();
+        currentTargets.VerifyAll();
+        zones.VerifyNoOtherCalls();
+        images.VerifyNoOtherCalls();
+    }
+
+    private static ParkHistoricalSnapshot CreateNonAttractionSnapshot(
+        string parkId,
+        HistoricalInstant instant,
+        HistoricalSubject subject)
+    {
+        HistoricalSubjectSnapshot snapshot = new HistoricalSubjectSnapshot(
+            subject,
+            HistoricalOperationalState.Unknown,
+            HistoricalPresenceExtent.None,
+            Array.Empty<HistoricalPresenceInterval>(),
+            new[]
+            {
+                new HistoricalAttributeSnapshot(
+                    HistoricalAttributeKind.Category,
+                    HistoricalAttributeValueState.Known,
+                    ParkItemCategory.Restaurant.ToString(),
+                    new[] { ParkItemCategory.Restaurant.ToString() },
+                    Array.Empty<HistoricalSnapshotReason>(),
+                    Array.Empty<Guid>()),
+            },
+            Array.Empty<HistoricalSnapshotReason>(),
+            Array.Empty<Guid>());
+        HistoricalCoverage coverage = new HistoricalCoverage(
+            1,
+            0,
+            0,
+            1,
+            new HistoricalFieldCoverage(0, 1),
+            new HistoricalFieldCoverage(0, 1),
+            null,
+            HistoricalCoverageStatus.Partial);
+        return new ParkHistoricalSnapshot(
+            parkId,
+            instant,
+            new[] { snapshot },
+            coverage,
+            Array.Empty<HistoricalAmbiguity>(),
+            ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion);
     }
 }

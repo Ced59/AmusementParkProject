@@ -128,7 +128,7 @@ public sealed class TripPassportTransitionServiceTests
         Assert.Equal(new DateOnly(2027, 8, 22), result.Value!.DestinationToday);
         TripPassportTransitionDayResult pastDay = result.Value.Days.Single(day => day.LocalDate == pastDate);
         Assert.True(pastDay.CanConfirm);
-        Assert.Equal(3, pastDay.Attractions.Count);
+        Assert.Equal(2, pastDay.Attractions.Count);
         TripPassportTransitionItemResult preferred = pastDay.Attractions.Single(
             item => item.ParkItemId == preferredAttraction.Id);
         Assert.Equal("Grand huit historique", preferred.Name);
@@ -138,6 +138,9 @@ public sealed class TripPassportTransitionServiceTests
             item => item.ParkItemId == "item-historical");
         Assert.Equal("Attraction disparue", historicalOnly.Name);
         Assert.Null(historicalOnly.MainImageId);
+        Assert.DoesNotContain(
+            pastDay.Attractions,
+            item => item.ParkItemId == neutralAttraction.Id);
         TripPassportTransitionDayResult futureDay = result.Value.Days.Single(
             day => day.LocalDate == futureDate);
         Assert.False(futureDay.CanConfirm);
@@ -1338,7 +1341,12 @@ public sealed class TripPassportTransitionServiceTests
                 StringComparer.Ordinal),
             HistoricalCoverageStatus.HighConfidence,
             100,
-            ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion);
+            ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion)
+        {
+            CanonicallyExcludedParkItemIds = new HashSet<string>(
+                new[] { "item-2" },
+                StringComparer.Ordinal),
+        };
     }
 
     private static PassportHistoricalTarget CreateHistoricalTarget(

@@ -387,6 +387,8 @@ public sealed class TripPassportTransitionReader
                     target.OperationalState != HistoricalOperationalState.KnownClosed)
                 .Select(static target => target.ParkItemId))
             .Distinct(StringComparer.Ordinal)
+            .Where(id => historicalTargetContext?.CanonicallyExcludedParkItemIds.Contains(id)
+                != true)
             .Where(id => historicalTargets.GetValueOrDefault(id)?.OperationalState
                 != HistoricalOperationalState.KnownClosed)
             .ToArray();

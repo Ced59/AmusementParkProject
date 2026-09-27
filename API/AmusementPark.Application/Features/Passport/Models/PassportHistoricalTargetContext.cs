@@ -6,4 +6,8 @@ public sealed record PassportHistoricalTargetContext(
     IReadOnlyDictionary<string, PassportHistoricalTarget> Targets,
     HistoricalCoverageStatus CoverageStatus,
     int CoveragePercent,
-    string MethodologyVersion);
+    string MethodologyVersion)
+{
+    public IReadOnlySet<string> CanonicallyExcludedParkItemIds { get; init; } =
+        new HashSet<string>(StringComparer.Ordinal);
+}

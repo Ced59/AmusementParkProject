@@ -162,8 +162,9 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             return new Dictionary<VisitDate, PassportHistoricalTargetContext>();
         }
 
-        PublicParkHistoricalData? data = await this.historicalDataLoader.LoadAsync(
+        PublicParkHistoricalData? data = await this.historicalDataLoader.LoadParkItemsAsync(
             normalizedParkId,
+            normalizedIds,
             cancellationToken);
         IReadOnlyDictionary<string, VisitTarget> currentTargets =
             await this.ResolveCurrentTargetsAsync(normalizedIds, cancellationToken);
@@ -237,9 +238,12 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
         bool includeHiddenCurrentFallback,
         CancellationToken cancellationToken)
     {
-        PublicParkHistoricalData? data = await this.historicalDataLoader.LoadAsync(
-            parkId,
-            cancellationToken);
+        PublicParkHistoricalData? data = requestedIds is null
+            ? await this.historicalDataLoader.LoadAsync(parkId, cancellationToken)
+            : await this.historicalDataLoader.LoadParkItemsAsync(
+                parkId,
+                requestedIds,
+                cancellationToken);
         if (data is null)
         {
             return requestedIds is null
@@ -287,6 +291,18 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             .Where(subject => subject.Subject.Type == HistoricalSubjectType.ParkItem
                 && (requested is null || requested.Contains(subject.Subject.Id)))
             .ToArray();
+        HashSet<string> canonicallyExcludedIds = subjectSnapshots
+            .Where(subject =>
+            {
+                string? category = ResolveKnownAttribute(subject, HistoricalAttributeKind.Category);
+                return category is not null
+                    && !string.Equals(
+                        category,
+                        ParkItemCategory.Attraction.ToString(),
+                        StringComparison.OrdinalIgnoreCase);
+            })
+            .Select(static subject => subject.Subject.Id)
+            .ToHashSet(StringComparer.Ordinal);
         Dictionary<string, PassportHistoricalTarget> targets = new(StringComparer.Ordinal);
         foreach (HistoricalSubjectSnapshot subject in subjectSnapshots)
         {
@@ -326,7 +342,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
         if (requested is not null)
         {
             string[] missingIds = requested
-                .Where(id => !targets.ContainsKey(id))
+                .Where(id => !targets.ContainsKey(id) && !canonicallyExcludedIds.Contains(id))
                 .ToArray();
             if (missingIds.Length > 0)
             {
@@ -347,7 +363,10 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             targets,
             snapshot.Coverage.Status,
             CalculateCoveragePercent(snapshot.Coverage),
-            snapshot.MethodologyVersion);
+            snapshot.MethodologyVersion)
+        {
+            CanonicallyExcludedParkItemIds = canonicallyExcludedIds,
+        };
     }
 
     private async Task<PassportHistoricalTargetContext> ResolveCurrentFallbackAsync(
