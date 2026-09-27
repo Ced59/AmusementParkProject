@@ -645,6 +645,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            CreateHistoricalTargetResolver().Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -701,7 +702,7 @@ public sealed class TripPassportTransitionServiceTests
                 "park-1",
                 false,
                 CancellationToken.None))
-            .ReturnsAsync(new[] { selectedAttraction, unselectedAttraction });
+            .ReturnsAsync(new[] { unselectedAttraction });
         Mock<IUserVisitRepository> visits = new(MockBehavior.Strict);
         Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
         visits.Setup(repository => repository.ListOwnedByExactDatesAsync(
@@ -790,6 +791,17 @@ public sealed class TripPassportTransitionServiceTests
                 new CreateRideOccurrencesResult(Array.Empty<RideOccurrenceResult>(), false, false)));
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        Mock<IPassportHistoricalTargetResolver> historicalTargets =
+            new(MockBehavior.Strict);
+        historicalTargets.Setup(resolver => resolver.ResolveAsync(
+                "park-1",
+                VisitDate.ForDay(2027, 8, 20),
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[]
+                {
+                    selectedAttraction.Id!,
+                })),
+                CancellationToken.None))
+            .ReturnsAsync(CreateTripHistoricalTargetContext());
         TripPassportTransitionConfirmer confirmer = new(
             trips.Object,
             new TripProgramResultFactory(
@@ -803,6 +815,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            historicalTargets.Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -824,6 +837,7 @@ public sealed class TripPassportTransitionServiceTests
         parkItems.VerifyAll();
         dates.VerifyAll();
         clock.VerifyAll();
+        historicalTargets.VerifyAll();
     }
 
     [Fact]
@@ -967,6 +981,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            CreateHistoricalTargetResolver().Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -1027,6 +1042,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            CreateHistoricalTargetResolver().Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -1155,6 +1171,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            CreateHistoricalTargetResolver().Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -1300,6 +1317,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            CreateHistoricalTargetResolver().Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -1347,6 +1365,22 @@ public sealed class TripPassportTransitionServiceTests
                 new[] { "item-2" },
                 StringComparer.Ordinal),
         };
+    }
+
+    private static Mock<IPassportHistoricalTargetResolver> CreateHistoricalTargetResolver()
+    {
+        Mock<IPassportHistoricalTargetResolver> resolver = new(MockBehavior.Strict);
+        resolver.Setup(item => item.ResolveAsync(
+                It.IsAny<string>(),
+                It.IsAny<VisitDate>(),
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PassportHistoricalTargetContext(
+                new Dictionary<string, PassportHistoricalTarget>(StringComparer.Ordinal),
+                HistoricalCoverageStatus.Partial,
+                0,
+                ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion));
+        return resolver;
     }
 
     private static PassportHistoricalTarget CreateHistoricalTarget(

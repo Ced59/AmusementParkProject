@@ -381,17 +381,10 @@ public sealed class TripPassportTransitionReader
         IReadOnlyDictionary<string, PassportHistoricalTarget> historicalTargets =
             historicalTargetContext?.Targets
             ?? new Dictionary<string, PassportHistoricalTarget>(StringComparer.Ordinal);
-        string[] candidateIds = currentItems.Keys
-            .Concat(historicalTargets.Values
-                .Where(static target =>
-                    target.OperationalState != HistoricalOperationalState.KnownClosed)
-                .Select(static target => target.ParkItemId))
-            .Distinct(StringComparer.Ordinal)
-            .Where(id => historicalTargetContext?.CanonicallyExcludedParkItemIds.Contains(id)
-                != true)
-            .Where(id => historicalTargets.GetValueOrDefault(id)?.OperationalState
-                != HistoricalOperationalState.KnownClosed)
-            .ToArray();
+        IReadOnlySet<string> candidateIds =
+            TripPassportTransitionSelectionPolicy.ResolveSelectableIds(
+                items,
+                historicalTargetContext);
         return candidateIds.Select(id =>
             {
                 currentItems.TryGetValue(id, out ParkItem? currentItem);

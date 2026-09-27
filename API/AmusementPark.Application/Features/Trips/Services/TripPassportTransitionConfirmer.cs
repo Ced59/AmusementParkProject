@@ -25,6 +25,7 @@ public sealed class TripPassportTransitionConfirmer
     private readonly IUserVisitRepository visits;
     private readonly IRideOccurrenceRepository rideOccurrences;
     private readonly IPassportLocalDateResolver localDateResolver;
+    private readonly IPassportHistoricalTargetResolver historicalTargets;
     private readonly ICommandHandler<CreateVisitCommand,
         ApplicationResult<CreateVisitResult>> createVisitHandler;
     private readonly ICommandHandler<AddRideOccurrencesBatchCommand,
@@ -42,6 +43,7 @@ public sealed class TripPassportTransitionConfirmer
             ApplicationResult<CreateVisitResult>> createVisitHandler,
         ICommandHandler<AddRideOccurrencesBatchCommand,
             ApplicationResult<CreateRideOccurrencesResult>> addRidesHandler,
+        IPassportHistoricalTargetResolver historicalTargets,
         TimeProvider? timeProvider = null)
     {
         this.trips = trips ?? throw new ArgumentNullException(nameof(trips));
@@ -56,6 +58,8 @@ public sealed class TripPassportTransitionConfirmer
             ?? throw new ArgumentNullException(nameof(createVisitHandler));
         this.addRidesHandler = addRidesHandler
             ?? throw new ArgumentNullException(nameof(addRidesHandler));
+        this.historicalTargets = historicalTargets
+            ?? throw new ArgumentNullException(nameof(historicalTargets));
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -240,12 +244,20 @@ public sealed class TripPassportTransitionConfirmer
             day.ParkId,
             includeHidden: false,
             cancellationToken);
-        HashSet<string> selectableIds = dayItems
-            .Where(static item => item.Category == ParkItemCategory.Attraction
-                && item.IsVisible
-                && !string.IsNullOrWhiteSpace(item.Id))
-            .Select(static item => item.Id!)
-            .ToHashSet(StringComparer.Ordinal);
+        PassportHistoricalTargetContext? historicalContext = null;
+        if (existingRideOperation is null && normalizedItemIds.Length > 0)
+        {
+            historicalContext = await this.historicalTargets.ResolveAsync(
+                day.ParkId,
+                VisitDate.ForDay(localDate.Year, localDate.Month, localDate.Day),
+                normalizedItemIds,
+                cancellationToken);
+        }
+
+        IReadOnlySet<string> selectableIds =
+            TripPassportTransitionSelectionPolicy.ResolveSelectableIds(
+                dayItems,
+                historicalContext);
         if (existingRideOperation is null
             && normalizedItemIds.Any(itemId => !selectableIds.Contains(itemId)))
         {
