@@ -1101,7 +1101,8 @@
       "actions": {
         "back": "Wróć do paszportu",
         "retry": "Spróbuj ponownie",
-        "clearFilters": "Wyczyść filtry"
+        "clearFilters": "Wyczyść filtry",
+        "openHistory": "Odkryj moją historię"
       },
       "loading": {
         "title": "Obliczamy podsumowanie",
@@ -1169,6 +1170,75 @@
         "rideAverage": "Średnia przejazdów / 5",
         "ratedRides": "Ocenione przejazdy"
       }
+    },
+    "historicalStatistics": {
+      "kicker": "Twoja historia parków",
+      "title": "Epoki w Twoim paszporcie",
+      "description": "Poznaj przemiany, dawne nazwy i zniknięte atrakcje, których naprawdę doświadczyłeś podczas wizyt.",
+      "actions": {
+        "back": "Wróć do statystyk",
+        "retry": "Spróbuj ponownie"
+      },
+      "loading": {
+        "title": "Odtwarzamy Twoją historię",
+        "description": "Łączymy Twoje wizyty z opublikowanymi dowodami historycznymi."
+      },
+      "errors": {
+        "title": "Nie udało się odtworzyć Twojej historii",
+        "load": "Statystyki historyczne są teraz niedostępne.",
+        "authentication": "Zaloguj się ponownie, aby zobaczyć tę prywatną stronę."
+      },
+      "empty": {
+        "title": "Twoja historia zaczyna się tutaj",
+        "description": "Dodaj wizytę, aby zacząć łączyć paszport z rozwojem parków."
+      },
+      "summary": {
+        "label": "Osobiste podsumowanie historyczne",
+        "firstVisit": "Pierwszy rok wizyty",
+        "eras": "Parki poznane w kilku epokach",
+        "disappeared": "Atrakcje, które już zniknęły",
+        "transformations": "Doświadczone przemiany",
+        "historicalNames": "Poznane nazwy",
+        "coverage": "Przejazdy poparte dowodami"
+      },
+      "evidence": {
+        "title": "Wyłącznie na podstawie opublikowanych dowodów",
+        "description": "Oczekujące zgłoszenie ani niepewna informacja nigdy nie stają się statystyką. Pokrycie pokazuje, ile Twoich przejazdów może rzeczywiście wyjaśnić kanoniczna historia."
+      },
+      "unknownPark": "Park niedostępny",
+      "eras": {
+        "title": "Epoki, których doświadczyłeś",
+        "description": "Nowy stan liczymy wtedy, gdy między wizytami zmienia się potwierdzona lista otwartych atrakcji, ich nazwy lub kategorie.",
+        "legendEras": "Odrębne stany historyczne",
+        "legendVisits": "Wizyty",
+        "empty": "Nie ma jeszcze dość dowodów, aby rozróżnić kilka epok."
+      },
+      "categories": {
+        "title": "Twoje kategorie na przestrzeni lat",
+        "description": "Kategorie odpowiadają dacie każdego przejazdu, a nie dzisiejszemu katalogowi.",
+        "legendRides": "Odbyte przejazdy",
+        "legendAttractions": "Różne atrakcje",
+        "empty": "Brak potwierdzonych kategorii historycznych."
+      },
+      "disappeared": {
+        "title": "Byłeś tam, zanim zniknęły",
+        "description": "Te atrakcje były potwierdzone jako otwarte podczas Twojego przejazdu, a dziś są potwierdzone jako zamknięte.",
+        "empty": "W Twoim paszporcie nie potwierdzono jeszcze żadnej znikniętej atrakcji."
+      },
+      "transformations": {
+        "title": "Przemiany, których doświadczyłeś",
+        "description": "Potwierdzona nazwa lub kategoria z dnia wizyty różni się od dzisiejszej tożsamości.",
+        "experiencedAs": "Znałeś tę atrakcję jako",
+        "empty": "Żadna potwierdzona przemiana nie łączy jeszcze Twoich wizyt z teraźniejszością."
+      },
+      "names": {
+        "title": "Nazwy w czasie Twoich wizyt",
+        "description": "Każdą nazwę pokazujemy w dokładnym kontekście Twojego przejazdu.",
+        "now": "Dzisiaj:",
+        "empty": "Brak potwierdzonych nazw historycznych."
+      },
+      "completedRides": "odbyte przejazdy",
+      "privacy": "Te statystyki pozostają prywatne. Nie trafiają do żadnego udostępnienia, chyba że polityka udostępniania wyraźnie na to pozwala."
     }
   },
   "passportProfileShare": {

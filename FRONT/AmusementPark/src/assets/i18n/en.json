@@ -1101,7 +1101,8 @@
       "actions": {
         "back": "Back to passport",
         "retry": "Try again",
-        "clearFilters": "Clear filters"
+        "clearFilters": "Clear filters",
+        "openHistory": "Explore my history"
       },
       "loading": {
         "title": "Building your overview",
@@ -1169,6 +1170,75 @@
         "rideAverage": "Ride average / 5",
         "ratedRides": "Rated rides"
       }
+    },
+    "historicalStatistics": {
+      "kicker": "Your park history",
+      "title": "The eras in your passport",
+      "description": "See the transformations, former names and vanished attractions that your visits genuinely crossed.",
+      "actions": {
+        "back": "Back to statistics",
+        "retry": "Try again"
+      },
+      "loading": {
+        "title": "Rebuilding your history",
+        "description": "We are matching your visits with published historical evidence."
+      },
+      "errors": {
+        "title": "We could not rebuild your history",
+        "load": "Historical statistics are unavailable right now.",
+        "authentication": "Sign in again to view this private page."
+      },
+      "empty": {
+        "title": "Your history starts here",
+        "description": "Add a visit to begin connecting your passport with the way parks have evolved."
+      },
+      "summary": {
+        "label": "Personal history summary",
+        "firstVisit": "First year visited",
+        "eras": "Parks experienced across several eras",
+        "disappeared": "Attractions now gone",
+        "transformations": "Transformations experienced",
+        "historicalNames": "Names encountered",
+        "coverage": "Rides backed by evidence"
+      },
+      "evidence": {
+        "title": "Built only from published evidence",
+        "description": "A pending report or uncertain record never becomes a statistic. Coverage shows how many of your rides the canonical history can genuinely explain."
+      },
+      "unknownPark": "Unavailable park",
+      "eras": {
+        "title": "The eras you experienced",
+        "description": "A new state is counted when the confirmed open inventory, its names or its categories change between your visits.",
+        "legendEras": "Distinct historical states",
+        "legendVisits": "Visits",
+        "empty": "There is not enough evidence yet to distinguish several eras."
+      },
+      "categories": {
+        "title": "Your categories through time",
+        "description": "Categories reflect the date of each ride, not today's catalogue.",
+        "legendRides": "Completed rides",
+        "legendAttractions": "Distinct attractions",
+        "empty": "No confirmed historical category yet."
+      },
+      "disappeared": {
+        "title": "You were there before they disappeared",
+        "description": "These attractions were confirmed open when you rode them and are confirmed closed today.",
+        "empty": "No vanished attraction has been established in your passport yet."
+      },
+      "transformations": {
+        "title": "The transformations you experienced",
+        "description": "The confirmed name or category at your visit differs from today's identity.",
+        "experiencedAs": "You knew it as",
+        "empty": "No confirmed transformation connects your visits with the present yet."
+      },
+      "names": {
+        "title": "Names at the time of your visits",
+        "description": "Each name is restored in the exact context in which you rode.",
+        "now": "Today:",
+        "empty": "No confirmed historical name yet."
+      },
+      "completedRides": "completed rides",
+      "privacy": "These statistics remain private. They are never included in a share unless a sharing policy explicitly allows it."
     }
   },
   "passportProfileShare": {

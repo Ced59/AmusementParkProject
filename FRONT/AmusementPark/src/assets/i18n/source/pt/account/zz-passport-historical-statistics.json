@@ -1,0 +1,24 @@
+{
+  "passport": {
+    "globalStatistics": { "actions": { "openHistory": "Explorar a minha história" } },
+    "historicalStatistics": {
+      "kicker": "A tua história nos parques",
+      "title": "As épocas do teu passaporte",
+      "description": "Descobre as transformações, os nomes antigos e as atrações desaparecidas que atravessaste realmente nas tuas visitas.",
+      "actions": { "back": "Voltar às estatísticas", "retry": "Tentar novamente" },
+      "loading": { "title": "A reconstruir a tua história", "description": "Estamos a relacionar as tuas visitas com provas históricas publicadas." },
+      "errors": { "title": "Não foi possível reconstruir a tua história", "load": "As estatísticas históricas não estão disponíveis neste momento.", "authentication": "Inicia sessão novamente para consultares esta página privada." },
+      "empty": { "title": "A tua história começa aqui", "description": "Adiciona uma visita para começares a ligar o teu passaporte à evolução dos parques." },
+      "summary": { "label": "Resumo histórico pessoal", "firstVisit": "Primeiro ano de visita", "eras": "Parques vividos em várias épocas", "disappeared": "Atrações hoje desaparecidas", "transformations": "Transformações vividas", "historicalNames": "Nomes conhecidos", "coverage": "Voltas apoiadas por provas" },
+      "evidence": { "title": "Apenas com provas publicadas", "description": "Uma denúncia pendente ou um dado incerto nunca se torna uma estatística. A cobertura mostra quantas das tuas voltas podem ser realmente explicadas pela história canónica." },
+      "unknownPark": "Parque indisponível",
+      "eras": { "title": "As épocas que viveste", "description": "Conta-se um novo estado quando o inventário confirmado como aberto, os nomes ou as categorias mudam entre as tuas visitas.", "legendEras": "Estados históricos distintos", "legendVisits": "Visitas", "empty": "Ainda não existem provas suficientes para distinguir várias épocas." },
+      "categories": { "title": "As tuas categorias ao longo do tempo", "description": "As categorias correspondem à data de cada volta, não ao catálogo atual.", "legendRides": "Voltas realizadas", "legendAttractions": "Atrações distintas", "empty": "Ainda não existe nenhuma categoria histórica confirmada." },
+      "disappeared": { "title": "Estiveste lá antes de desaparecerem", "description": "Estas atrações estavam confirmadas como abertas quando andaste nelas e hoje estão confirmadas como fechadas.", "empty": "Ainda não foi confirmada nenhuma atração desaparecida no teu passaporte." },
+      "transformations": { "title": "As transformações que viveste", "description": "O nome ou a categoria confirmados na tua visita diferem da identidade atual.", "experiencedAs": "Conheceste-a como", "empty": "Ainda não existe nenhuma transformação confirmada a ligar as tuas visitas ao presente." },
+      "names": { "title": "Os nomes no momento das tuas visitas", "description": "Cada nome é apresentado no contexto exato em que realizaste a volta.", "now": "Hoje:", "empty": "Ainda não existe nenhum nome histórico confirmado." },
+      "completedRides": "voltas realizadas",
+      "privacy": "Estas estatísticas continuam privadas. Só são incluídas numa partilha quando uma política de partilha o autoriza explicitamente."
+    }
+  }
+}

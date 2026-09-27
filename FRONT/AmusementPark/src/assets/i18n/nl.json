@@ -1101,7 +1101,8 @@
       "actions": {
         "back": "Terug naar paspoort",
         "retry": "Opnieuw proberen",
-        "clearFilters": "Filters wissen"
+        "clearFilters": "Filters wissen",
+        "openHistory": "Mijn geschiedenis ontdekken"
       },
       "loading": {
         "title": "Je overzicht wordt berekend",
@@ -1169,6 +1170,75 @@
         "rideAverage": "Ritgemiddelde / 5",
         "ratedRides": "Beoordeelde ritten"
       }
+    },
+    "historicalStatistics": {
+      "kicker": "Jouw parkgeschiedenis",
+      "title": "De tijdperken in je paspoort",
+      "description": "Ontdek de veranderingen, vroegere namen en verdwenen attracties die je tijdens je bezoeken echt hebt meegemaakt.",
+      "actions": {
+        "back": "Terug naar de statistieken",
+        "retry": "Opnieuw proberen"
+      },
+      "loading": {
+        "title": "Je geschiedenis wordt opgebouwd",
+        "description": "We koppelen je bezoeken aan gepubliceerde historische bewijzen."
+      },
+      "errors": {
+        "title": "We konden je geschiedenis niet opbouwen",
+        "load": "De historische statistieken zijn momenteel niet beschikbaar.",
+        "authentication": "Meld je opnieuw aan om deze privépagina te bekijken."
+      },
+      "empty": {
+        "title": "Je geschiedenis begint hier",
+        "description": "Voeg een bezoek toe om je paspoort aan de ontwikkeling van parken te koppelen."
+      },
+      "summary": {
+        "label": "Persoonlijk historisch overzicht",
+        "firstVisit": "Eerste bezoekjaar",
+        "eras": "Parken in meerdere tijdperken beleefd",
+        "disappeared": "Attracties die nu verdwenen zijn",
+        "transformations": "Beleefde veranderingen",
+        "historicalNames": "Namen die je kende",
+        "coverage": "Ritten met historisch bewijs"
+      },
+      "evidence": {
+        "title": "Alleen gebaseerd op gepubliceerd bewijs",
+        "description": "Een openstaande melding of onzeker gegeven wordt nooit een statistiek. De dekking toont hoeveel van je ritten de canonieke geschiedenis werkelijk kan verklaren."
+      },
+      "unknownPark": "Park niet beschikbaar",
+      "eras": {
+        "title": "De tijdperken die je beleefde",
+        "description": "Een nieuwe toestand telt wanneer het bevestigde open aanbod, de namen of de categorieën tussen je bezoeken veranderen.",
+        "legendEras": "Afzonderlijke historische toestanden",
+        "legendVisits": "Bezoeken",
+        "empty": "Er is nog niet genoeg bewijs om meerdere tijdperken te onderscheiden."
+      },
+      "categories": {
+        "title": "Jouw categorieën door de tijd",
+        "description": "De categorieën horen bij de datum van elke rit, niet bij de huidige catalogus.",
+        "legendRides": "Gemaakte ritten",
+        "legendAttractions": "Verschillende attracties",
+        "empty": "Nog geen bevestigde historische categorie."
+      },
+      "disappeared": {
+        "title": "Jij was er vóór ze verdwenen",
+        "description": "Deze attracties waren bevestigd open toen je ze bezocht en zijn vandaag bevestigd gesloten.",
+        "empty": "Er is nog geen verdwenen attractie in je paspoort vastgesteld."
+      },
+      "transformations": {
+        "title": "De veranderingen die je beleefde",
+        "description": "De bevestigde naam of categorie tijdens je bezoek verschilt van de huidige identiteit.",
+        "experiencedAs": "Je kende deze als",
+        "empty": "Nog geen bevestigde verandering verbindt je bezoeken met het heden."
+      },
+      "names": {
+        "title": "Namen ten tijde van je bezoeken",
+        "description": "Elke naam wordt getoond in de precieze context waarin je de rit maakte.",
+        "now": "Vandaag:",
+        "empty": "Nog geen bevestigde historische naam."
+      },
+      "completedRides": "gemaakte ritten",
+      "privacy": "Deze statistieken blijven privé. Ze worden alleen gedeeld wanneer een deelbeleid dat uitdrukkelijk toestaat."
     }
   },
   "passportProfileShare": {

@@ -13,6 +13,7 @@ describe('PassportStatisticsApiService', () => {
     service.getItemStatistics('item/one').subscribe();
     service.getParkStatistics('park/one').subscribe();
     service.getYearStatistics(2026).subscribe();
+    service.getHistoricalStatistics().subscribe();
 
     expect(httpClient.get).toHaveBeenNthCalledWith(
       1,
@@ -32,6 +33,11 @@ describe('PassportStatisticsApiService', () => {
     expect(httpClient.get).toHaveBeenNthCalledWith(
       4,
       `${environment.apiBaseUrl}me/passport/years/2026/stats`,
+      { transferCache: false }
+    );
+    expect(httpClient.get).toHaveBeenNthCalledWith(
+      5,
+      `${environment.apiBaseUrl}me/passport/stats/history`,
       { transferCache: false }
     );
   });

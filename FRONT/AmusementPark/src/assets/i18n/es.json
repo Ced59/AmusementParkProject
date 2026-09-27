@@ -1101,7 +1101,8 @@
       "actions": {
         "back": "Volver al pasaporte",
         "retry": "Reintentar",
-        "clearFilters": "Borrar filtros"
+        "clearFilters": "Borrar filtros",
+        "openHistory": "Explorar mi historia"
       },
       "loading": {
         "title": "Calculando tu resumen",
@@ -1169,6 +1170,75 @@
         "rideAverage": "Media de recorridos / 5",
         "ratedRides": "Recorridos valorados"
       }
+    },
+    "historicalStatistics": {
+      "kicker": "Tu historia en los parques",
+      "title": "Las épocas de tu pasaporte",
+      "description": "Descubre las transformaciones, los nombres anteriores y las atracciones desaparecidas que realmente viviste en tus visitas.",
+      "actions": {
+        "back": "Volver a las estadísticas",
+        "retry": "Volver a intentarlo"
+      },
+      "loading": {
+        "title": "Reconstruyendo tu historia",
+        "description": "Estamos relacionando tus visitas con pruebas históricas publicadas."
+      },
+      "errors": {
+        "title": "No pudimos reconstruir tu historia",
+        "load": "Las estadísticas históricas no están disponibles ahora mismo.",
+        "authentication": "Vuelve a iniciar sesión para consultar esta página privada."
+      },
+      "empty": {
+        "title": "Tu historia empieza aquí",
+        "description": "Añade una visita para empezar a relacionar tu pasaporte con la evolución de los parques."
+      },
+      "summary": {
+        "label": "Resumen histórico personal",
+        "firstVisit": "Primer año de visita",
+        "eras": "Parques vividos en varias épocas",
+        "disappeared": "Atracciones hoy desaparecidas",
+        "transformations": "Transformaciones vividas",
+        "historicalNames": "Nombres conocidos",
+        "coverage": "Viajes respaldados por pruebas"
+      },
+      "evidence": {
+        "title": "Solo a partir de pruebas publicadas",
+        "description": "Un aviso pendiente o un dato incierto nunca se convierte en estadística. La cobertura muestra cuántos de tus viajes puede explicar realmente la historia canónica."
+      },
+      "unknownPark": "Parque no disponible",
+      "eras": {
+        "title": "Las épocas que has vivido",
+        "description": "Se cuenta un nuevo estado cuando cambian el inventario confirmado como abierto, sus nombres o sus categorías entre tus visitas.",
+        "legendEras": "Estados históricos distintos",
+        "legendVisits": "Visitas",
+        "empty": "Todavía no hay pruebas suficientes para distinguir varias épocas."
+      },
+      "categories": {
+        "title": "Tus categorías a lo largo del tiempo",
+        "description": "Las categorías corresponden a la fecha de cada viaje, no al catálogo actual.",
+        "legendRides": "Viajes realizados",
+        "legendAttractions": "Atracciones distintas",
+        "empty": "Todavía no hay ninguna categoría histórica confirmada."
+      },
+      "disappeared": {
+        "title": "Estuviste allí antes de que desaparecieran",
+        "description": "Estas atracciones estaban confirmadas como abiertas cuando subiste y hoy están confirmadas como cerradas.",
+        "empty": "Todavía no hay ninguna atracción desaparecida confirmada en tu pasaporte."
+      },
+      "transformations": {
+        "title": "Las transformaciones que viviste",
+        "description": "El nombre o la categoría confirmados en tu visita difieren de la identidad actual.",
+        "experiencedAs": "La conociste como",
+        "empty": "Todavía no hay ninguna transformación confirmada que conecte tus visitas con el presente."
+      },
+      "names": {
+        "title": "Los nombres en el momento de tus visitas",
+        "description": "Cada nombre se recupera en el contexto exacto en el que subiste.",
+        "now": "Hoy:",
+        "empty": "Todavía no hay ningún nombre histórico confirmado."
+      },
+      "completedRides": "viajes realizados",
+      "privacy": "Estas estadísticas siguen siendo privadas. No se incluyen en ningún contenido compartido salvo que una política lo autorice expresamente."
     }
   },
   "passportProfileShare": {

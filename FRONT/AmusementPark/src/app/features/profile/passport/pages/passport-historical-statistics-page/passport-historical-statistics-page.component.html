@@ -1,0 +1,181 @@
+<article class="passport-history-stats">
+  <header class="passport-history-stats__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <button appUiButton="ghost" type="button" class="passport-history-stats__back" (click)="backToStatistics()">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>{{ 'passport.historicalStatistics.actions.back' | translate }}</span>
+    </button>
+    <app-ui-kicker tone="gold" iconClass="pi pi-history">
+      {{ 'passport.historicalStatistics.kicker' | translate }}
+    </app-ui-kicker>
+    <div class="passport-history-stats__heading">
+      <div>
+        <h1>{{ 'passport.historicalStatistics.title' | translate }}</h1>
+        <p>{{ 'passport.historicalStatistics.description' | translate }}</p>
+      </div>
+      <app-ui-chip tone="primary" iconClass="pi pi-lock">
+        {{ 'passport.statistics.private' | translate }}
+      </app-ui-chip>
+    </div>
+  </header>
+
+  @if (facade.loading() && !facade.statistics()) {
+    <app-page-state
+      state="loading"
+      [loadingTitleKey]="'passport.historicalStatistics.loading.title'"
+      [loadingMessageKey]="'passport.historicalStatistics.loading.description'">
+    </app-page-state>
+  } @else if (facade.errorKey() && !facade.statistics()) {
+    <section class="passport-history-stats__state" appUiSurface="panel" role="alert">
+      <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+      <h2>{{ 'passport.historicalStatistics.errors.title' | translate }}</h2>
+      <p>{{ facade.errorKey()! | translate }}</p>
+      <button appUiButton="primary" type="button" (click)="facade.load()">
+        {{ 'passport.historicalStatistics.actions.retry' | translate }}
+      </button>
+    </section>
+  } @else if (facade.statistics(); as statistics) {
+    @if (isEmpty(statistics)) {
+      <section class="passport-history-stats__state" appUiSurface="panel">
+        <i class="pi pi-ticket" aria-hidden="true"></i>
+        <h2>{{ 'passport.historicalStatistics.empty.title' | translate }}</h2>
+        <p>{{ 'passport.historicalStatistics.empty.description' | translate }}</p>
+      </section>
+    } @else {
+      <section class="passport-history-stats__cards" [attr.aria-label]="'passport.historicalStatistics.summary.label' | translate">
+        <article appUiSurface="panel">
+          <span>{{ 'passport.historicalStatistics.summary.firstVisit' | translate }}</span>
+          <strong>{{ statistics.firstVisitYear ?? '—' }}</strong>
+        </article>
+        <article appUiSurface="panel">
+          <span>{{ 'passport.historicalStatistics.summary.eras' | translate }}</span>
+          <strong>{{ statistics.parkCountAcrossMultipleEras }}</strong>
+        </article>
+        <article appUiSurface="panel">
+          <span>{{ 'passport.historicalStatistics.summary.disappeared' | translate }}</span>
+          <strong>{{ statistics.disappearedAttractions.length }}</strong>
+        </article>
+        <article appUiSurface="panel">
+          <span>{{ 'passport.historicalStatistics.summary.transformations' | translate }}</span>
+          <strong>{{ statistics.transformations.length }}</strong>
+        </article>
+        <article appUiSurface="panel">
+          <span>{{ 'passport.historicalStatistics.summary.historicalNames' | translate }}</span>
+          <strong>{{ statistics.historicalNames.length }}</strong>
+        </article>
+        <article appUiSurface="panel">
+          <span>{{ 'passport.historicalStatistics.summary.coverage' | translate }}</span>
+          <strong>{{ coveragePercent(statistics.canonicalCoverageRate) }}</strong>
+          <small>{{ statistics.canonicallyResolvedRideCount }} / {{ statistics.completedRideCount }}</small>
+        </article>
+      </section>
+
+      <aside class="passport-history-stats__evidence" appUiSurface="panel" role="note">
+        <i class="pi pi-shield" aria-hidden="true"></i>
+        <div>
+          <h2>{{ 'passport.historicalStatistics.evidence.title' | translate }}</h2>
+          <p>{{ 'passport.historicalStatistics.evidence.description' | translate }}</p>
+        </div>
+      </aside>
+
+      <div class="passport-history-stats__charts">
+        <section appUiSurface="panel">
+          <app-passport-global-bar-chart
+            [titleKey]="'passport.historicalStatistics.eras.title'"
+            [descriptionKey]="'passport.historicalStatistics.eras.description'"
+            [primaryLegendKey]="'passport.historicalStatistics.eras.legendEras'"
+            [secondaryLegendKey]="'passport.historicalStatistics.eras.legendVisits'"
+            [emptyKey]="'passport.historicalStatistics.eras.empty'"
+            [rows]="parkEraRows(statistics)">
+          </app-passport-global-bar-chart>
+        </section>
+        <section appUiSurface="panel">
+          <app-passport-global-bar-chart
+            [titleKey]="'passport.historicalStatistics.categories.title'"
+            [descriptionKey]="'passport.historicalStatistics.categories.description'"
+            [primaryLegendKey]="'passport.historicalStatistics.categories.legendRides'"
+            [secondaryLegendKey]="'passport.historicalStatistics.categories.legendAttractions'"
+            [emptyKey]="'passport.historicalStatistics.categories.empty'"
+            [rows]="categoryRows(statistics)">
+          </app-passport-global-bar-chart>
+        </section>
+      </div>
+
+      <section class="passport-history-stats__section" appUiSurface="panel">
+        <div class="passport-history-stats__section-heading">
+          <i class="pi pi-eye-slash" aria-hidden="true"></i>
+          <div>
+            <h2>{{ 'passport.historicalStatistics.disappeared.title' | translate }}</h2>
+            <p>{{ 'passport.historicalStatistics.disappeared.description' | translate }}</p>
+          </div>
+        </div>
+        @if (statistics.disappearedAttractions.length === 0) {
+          <p class="passport-history-stats__empty">{{ 'passport.historicalStatistics.disappeared.empty' | translate }}</p>
+        } @else {
+          <div class="passport-history-stats__list">
+            @for (item of statistics.disappearedAttractions; track $index) {
+              <article>
+                <div><span>{{ item.parkName || ('passport.historicalStatistics.unknownPark' | translate) }}</span><h3>{{ item.attractionName }}</h3></div>
+                <p>{{ yearRange(item.firstVisitYear, item.lastVisitYear) }}</p>
+                <strong>{{ item.completedRideCount }}</strong>
+                <small>{{ 'passport.historicalStatistics.completedRides' | translate }}</small>
+              </article>
+            }
+          </div>
+        }
+      </section>
+
+      <section class="passport-history-stats__section" appUiSurface="panel">
+        <div class="passport-history-stats__section-heading">
+          <i class="pi pi-sync" aria-hidden="true"></i>
+          <div>
+            <h2>{{ 'passport.historicalStatistics.transformations.title' | translate }}</h2>
+            <p>{{ 'passport.historicalStatistics.transformations.description' | translate }}</p>
+          </div>
+        </div>
+        @if (statistics.transformations.length === 0) {
+          <p class="passport-history-stats__empty">{{ 'passport.historicalStatistics.transformations.empty' | translate }}</p>
+        } @else {
+          <div class="passport-history-stats__list passport-history-stats__list--wide">
+            @for (item of statistics.transformations; track $index) {
+              <article>
+                <div><span>{{ item.parkName || ('passport.historicalStatistics.unknownPark' | translate) }}</span><h3>{{ item.currentName }}</h3></div>
+                <p>{{ 'passport.historicalStatistics.transformations.experiencedAs' | translate }} {{ item.namesAtVisit.join(', ') }}</p>
+                <p>{{ yearRange(item.firstVisitYear, item.lastVisitYear) }}</p>
+              </article>
+            }
+          </div>
+        }
+      </section>
+
+      <section class="passport-history-stats__section" appUiSurface="panel">
+        <div class="passport-history-stats__section-heading">
+          <i class="pi pi-tag" aria-hidden="true"></i>
+          <div>
+            <h2>{{ 'passport.historicalStatistics.names.title' | translate }}</h2>
+            <p>{{ 'passport.historicalStatistics.names.description' | translate }}</p>
+          </div>
+        </div>
+        @if (statistics.historicalNames.length === 0) {
+          <p class="passport-history-stats__empty">{{ 'passport.historicalStatistics.names.empty' | translate }}</p>
+        } @else {
+          <div class="passport-history-stats__list">
+            @for (item of statistics.historicalNames; track $index) {
+              <article>
+                <div><span>{{ item.parkName || ('passport.historicalStatistics.unknownPark' | translate) }}</span><h3>{{ item.nameAtVisit }}</h3></div>
+                @if (item.currentName && item.currentName !== item.nameAtVisit) {
+                  <p>{{ 'passport.historicalStatistics.names.now' | translate }} {{ item.currentName }}</p>
+                }
+                <p>{{ yearRange(item.firstVisitYear, item.lastVisitYear) }}</p>
+              </article>
+            }
+          </div>
+        }
+      </section>
+
+      <p class="passport-history-stats__privacy" role="note">
+        <i class="pi pi-lock" aria-hidden="true"></i>
+        {{ 'passport.historicalStatistics.privacy' | translate }}
+      </p>
+    }
+  }
+</article>

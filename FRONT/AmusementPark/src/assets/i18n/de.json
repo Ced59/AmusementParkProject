@@ -1101,7 +1101,8 @@
       "actions": {
         "back": "Zurück zum Besuchspass",
         "retry": "Erneut versuchen",
-        "clearFilters": "Filter löschen"
+        "clearFilters": "Filter löschen",
+        "openHistory": "Meine Geschichte entdecken"
       },
       "loading": {
         "title": "Deine Übersicht wird berechnet",
@@ -1169,6 +1170,75 @@
         "rideAverage": "Fahrtdurchschnitt / 5",
         "ratedRides": "Bewertete Fahrten"
       }
+    },
+    "historicalStatistics": {
+      "kicker": "Deine Parkgeschichte",
+      "title": "Die Epochen deines Passes",
+      "description": "Entdecke Umbauten, frühere Namen und verschwundene Attraktionen, die du bei deinen Besuchen wirklich erlebt hast.",
+      "actions": {
+        "back": "Zurück zu den Statistiken",
+        "retry": "Erneut versuchen"
+      },
+      "loading": {
+        "title": "Deine Geschichte wird rekonstruiert",
+        "description": "Wir gleichen deine Besuche mit veröffentlichten historischen Belegen ab."
+      },
+      "errors": {
+        "title": "Deine Geschichte konnte nicht rekonstruiert werden",
+        "load": "Die historischen Statistiken sind momentan nicht verfügbar.",
+        "authentication": "Melde dich erneut an, um diese private Seite zu sehen."
+      },
+      "empty": {
+        "title": "Deine Geschichte beginnt hier",
+        "description": "Füge einen Besuch hinzu, um deinen Pass mit der Entwicklung der Parks zu verbinden."
+      },
+      "summary": {
+        "label": "Persönliche historische Zusammenfassung",
+        "firstVisit": "Erstes Besuchsjahr",
+        "eras": "Parks in mehreren Epochen erlebt",
+        "disappeared": "Heute verschwundene Attraktionen",
+        "transformations": "Erlebte Veränderungen",
+        "historicalNames": "Erlebte Namen",
+        "coverage": "Durch Belege erklärte Fahrten"
+      },
+      "evidence": {
+        "title": "Nur aus veröffentlichten Belegen",
+        "description": "Eine ausstehende Meldung oder eine unsichere Angabe wird nie zur Statistik. Die Abdeckung zeigt, wie viele deiner Fahrten die kanonische Geschichte wirklich erklären kann."
+      },
+      "unknownPark": "Park nicht verfügbar",
+      "eras": {
+        "title": "Die Epochen, die du erlebt hast",
+        "description": "Ein neuer Zustand zählt, wenn sich der bestätigt geöffnete Bestand, seine Namen oder Kategorien zwischen deinen Besuchen ändern.",
+        "legendEras": "Unterschiedliche historische Zustände",
+        "legendVisits": "Besuche",
+        "empty": "Es gibt noch nicht genug Belege für mehrere Epochen."
+      },
+      "categories": {
+        "title": "Deine Kategorien im Lauf der Zeit",
+        "description": "Die Kategorien entsprechen dem Datum jeder Fahrt, nicht dem heutigen Katalog.",
+        "legendRides": "Absolvierte Fahrten",
+        "legendAttractions": "Verschiedene Attraktionen",
+        "empty": "Noch keine bestätigte historische Kategorie."
+      },
+      "disappeared": {
+        "title": "Du warst vor ihrem Verschwinden dort",
+        "description": "Diese Attraktionen waren bei deiner Fahrt bestätigt geöffnet und sind heute bestätigt geschlossen.",
+        "empty": "Noch ist keine verschwundene Attraktion in deinem Pass belegt."
+      },
+      "transformations": {
+        "title": "Die Veränderungen, die du erlebt hast",
+        "description": "Der bestätigte Name oder die Kategorie bei deinem Besuch unterscheidet sich von der heutigen Identität.",
+        "experiencedAs": "Du kanntest sie als",
+        "empty": "Noch verbindet keine bestätigte Veränderung deine Besuche mit der Gegenwart."
+      },
+      "names": {
+        "title": "Namen zum Zeitpunkt deiner Besuche",
+        "description": "Jeder Name wird in dem genauen Kontext gezeigt, in dem du gefahren bist.",
+        "now": "Heute:",
+        "empty": "Noch kein bestätigter historischer Name."
+      },
+      "completedRides": "absolvierte Fahrten",
+      "privacy": "Diese Statistiken bleiben privat. Sie erscheinen nur dann in einer Freigabe, wenn eine Freigaberichtlinie dies ausdrücklich vorsieht."
     }
   },
   "passportProfileShare": {

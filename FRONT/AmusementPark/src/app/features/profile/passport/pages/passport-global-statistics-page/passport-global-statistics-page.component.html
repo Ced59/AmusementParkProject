@@ -12,6 +12,10 @@
       </div>
       <app-ui-chip tone="primary" iconClass="pi pi-lock">{{ 'passport.statistics.private' | translate }}</app-ui-chip>
     </div>
+    <button appUiButton="soft" type="button" class="passport-global-statistics__history" (click)="openHistoricalStatistics()">
+      <i class="pi pi-history" aria-hidden="true"></i>
+      <span>{{ 'passport.globalStatistics.actions.openHistory' | translate }}</span>
+    </button>
   </header>
 
   @if (facade.loading() && !facade.statistics()) {

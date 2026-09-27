@@ -47,6 +47,17 @@ export class PassportGlobalStatisticsPageComponent implements OnInit {
     void this.router.navigate(['/', this.currentLanguage(), 'profile', 'passport']);
   }
 
+  protected openHistoricalStatistics(): void {
+    void this.router.navigate([
+      '/',
+      this.currentLanguage(),
+      'profile',
+      'passport',
+      'statistics',
+      'history'
+    ]);
+  }
+
   protected onYearChange(value: string): void {
     this.facade.selectYear(value ? Number(value) : null);
   }

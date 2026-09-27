@@ -3,6 +3,7 @@
 .passport-global-statistics { display: grid; gap: clamp(1rem, 2.5vw, 1.5rem); overflow-x: clip; }
 .passport-global-statistics__hero { display: grid; gap: .8rem; border-color: color-mix(in srgb, var(--c-sky) 35%, var(--app-border)); background: radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--c-sky) 18%, transparent), transparent 34%), var(--app-surface); }
 .passport-global-statistics__back { width: fit-content; max-width: 100%; }
+.passport-global-statistics__history { width: fit-content; max-width: 100%; }
 .passport-global-statistics__heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
 h1, h2, p { margin: 0; overflow-wrap: anywhere; }
 h1 { color: var(--app-heading); font-family: var(--font-display); font-size: clamp(2rem, 7vw, 4.2rem); line-height: 1; text-transform: uppercase; }

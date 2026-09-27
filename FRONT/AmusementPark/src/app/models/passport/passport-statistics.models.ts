@@ -47,6 +47,62 @@ export interface PassportGlobalStatistics {
   ratingEvolution: PassportGlobalRatingEvolution[];
 }
 
+export interface PassportHistoricalParkEra {
+  parkName: string | null;
+  firstVisitYear: number;
+  lastVisitYear: number;
+  visitCount: number;
+  canonicalEraCount: number;
+}
+
+export interface PassportHistoricalDisappearedAttraction {
+  parkName: string | null;
+  attractionName: string;
+  firstVisitYear: number;
+  lastVisitYear: number;
+  completedRideCount: number;
+}
+
+export interface PassportHistoricalTransformation {
+  parkName: string | null;
+  currentName: string;
+  currentCategory: string;
+  namesAtVisit: string[];
+  categoriesAtVisit: string[];
+  firstVisitYear: number;
+  lastVisitYear: number;
+  completedRideCount: number;
+}
+
+export interface PassportHistoricalName {
+  parkName: string | null;
+  nameAtVisit: string;
+  currentName: string | null;
+  firstVisitYear: number;
+  lastVisitYear: number;
+  completedRideCount: number;
+}
+
+export interface PassportHistoricalCategory {
+  category: string;
+  completedRideCount: number;
+  distinctAttractionCount: number;
+}
+
+export interface PassportHistoricalStatistics {
+  visitCount: number;
+  firstVisitYear: number | null;
+  completedRideCount: number;
+  canonicallyResolvedRideCount: number;
+  canonicalCoverageRate: number;
+  parkCountAcrossMultipleEras: number;
+  parksAcrossEras: PassportHistoricalParkEra[];
+  disappearedAttractions: PassportHistoricalDisappearedAttraction[];
+  transformations: PassportHistoricalTransformation[];
+  historicalNames: PassportHistoricalName[];
+  historicalCategories: PassportHistoricalCategory[];
+}
+
 export type PassportRatingTrendKind = 'Stable' | 'Rising' | 'Falling' | 0 | 1 | 2;
 
 export interface PassportRatingDistribution {
