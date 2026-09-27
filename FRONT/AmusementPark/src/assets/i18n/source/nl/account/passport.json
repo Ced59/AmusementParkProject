@@ -407,7 +407,18 @@
         "results": "Attracties voor dit bezoek",
         "historical": "historisch",
         "pagination": "Attractiepagina’s",
-        "page": "Pagina {{current}} van {{total}}"
+        "page": "Pagina {{current}} van {{total}}",
+        "historicalScopeLabel": "Context op de bezoekdatum",
+        "knownOpen": "Zeker geopend",
+        "possiblyOpen": "Mogelijk geopend",
+        "allHistory": "Volledige parkgeschiedenis",
+        "historyCoverage": "Beschikbare historische dekking: {{percent}}%",
+        "operationalState": {
+          "KnownOpen": "Zeker geopend",
+          "KnownClosed": "Zeker gesloten",
+          "PossiblyOpen": "Mogelijk geopend",
+          "Unknown": "Historische status onbekend"
+        }
       },
       "selection": {
         "title": "Vermeldingen om toe te voegen",

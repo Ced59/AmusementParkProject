@@ -407,7 +407,18 @@
         "results": "Atrakcje dostępne dla tej wizyty",
         "historical": "historyczna",
         "pagination": "Strony atrakcji",
-        "page": "Strona {{current}} z {{total}}"
+        "page": "Strona {{current}} z {{total}}",
+        "historicalScopeLabel": "Kontekst w dniu wizyty",
+        "knownOpen": "Na pewno otwarte",
+        "possiblyOpen": "Prawdopodobnie otwarte",
+        "allHistory": "Cała historia parku",
+        "historyCoverage": "Dostępne pokrycie historyczne: {{percent}}%",
+        "operationalState": {
+          "KnownOpen": "Na pewno otwarta",
+          "KnownClosed": "Na pewno zamknięta",
+          "PossiblyOpen": "Prawdopodobnie otwarta",
+          "Unknown": "Stan historyczny nieznany"
+        }
       },
       "selection": {
         "title": "Wpisy do dodania",

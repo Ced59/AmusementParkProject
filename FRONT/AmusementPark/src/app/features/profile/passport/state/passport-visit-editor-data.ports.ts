@@ -1,6 +1,5 @@
 import { inject, InjectionToken } from '@angular/core';
 
-import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { PassportOperationIdService } from '@data-access/passport/passport-operation-id.service';
@@ -17,7 +16,7 @@ export interface PassportVisitEditorVisitsPort extends Pick<
 
 export interface PassportVisitEditorOccurrencesPort extends Pick<
   PassportRideOccurrencesApiService,
-  'list' | 'get' | 'evaluateVisitTargets' | 'addBatch' | 'update' | 'delete' | 'reorder'
+  'list' | 'get' | 'evaluateVisitTargets' | 'listHistoricalTargets' | 'addBatch' | 'update' | 'delete' | 'reorder'
   | 'upsertAssessment' | 'deleteAssessment'
 > {
 }
@@ -26,9 +25,6 @@ export interface PassportVisitEditorParksPort extends Pick<ParksApiService, 'get
 }
 
 export interface PassportVisitEditorZonesPort extends Pick<ParkZonesApiService, 'getParkZonesByParkId'> {
-}
-
-export interface PassportVisitEditorAttractionsPort extends Pick<ParkItemsApiService, 'getParkItemsByParkIdPage'> {
 }
 
 export interface PassportVisitEditorOperationIdPort extends Pick<PassportOperationIdService, 'create'> {
@@ -52,11 +48,6 @@ export const PASSPORT_VISIT_EDITOR_PARKS_PORT = new InjectionToken<PassportVisit
 export const PASSPORT_VISIT_EDITOR_ZONES_PORT = new InjectionToken<PassportVisitEditorZonesPort>(
   'PASSPORT_VISIT_EDITOR_ZONES_PORT',
   { providedIn: 'root', factory: () => inject(ParkZonesApiService) }
-);
-
-export const PASSPORT_VISIT_EDITOR_ATTRACTIONS_PORT = new InjectionToken<PassportVisitEditorAttractionsPort>(
-  'PASSPORT_VISIT_EDITOR_ATTRACTIONS_PORT',
-  { providedIn: 'root', factory: () => inject(ParkItemsApiService) }
 );
 
 export const PASSPORT_VISIT_EDITOR_OPERATION_ID_PORT = new InjectionToken<PassportVisitEditorOperationIdPort>(

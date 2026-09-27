@@ -54,6 +54,7 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(styles).toContain('.passport-selection-card__quantity');
     expect(styles).toContain('container-type: inline-size');
     expect(styles).toContain('@container passport-selector (max-width: 46rem)');
+    expect(styles).toContain('.passport-history-context');
     expect(styles).toContain('touch-action: manipulation');
     expect(styles).toContain('.passport-occurrence__drag-handle');
     expect(styles).toContain('touch-action: none');
@@ -400,7 +401,7 @@ describe('PassportVisitEditorPageComponent responsive contract', () => {
     expect(facade.load).toHaveBeenNthCalledWith(2, 'visit-2', 'de');
     expect(controls.searchControl.value).toBe('');
     expect(controls.zoneControl.value).toBe('');
-    expect(controls.lifecycleControl.value).toBe('all');
+    expect(controls.lifecycleControl.value).toBe('KnownOpen');
     expect(controls.deleteConfirmationId()).toBeNull();
     expect(controls.assessmentDeleteConfirmation()).toBe(false);
     expect(controls.rideAssessmentDeleteConfirmationId()).toBeNull();

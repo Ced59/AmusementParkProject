@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Visits;
 
 namespace AmusementPark.Application.Features.Passport.Handlers;
@@ -16,11 +17,11 @@ public sealed class EvaluateVisitRideTargetsQueryHandler
     private const int MaximumTargetCount = 100;
 
     private readonly IUserVisitRepository visitRepository;
-    private readonly IVisitTargetResolver targetResolver;
+    private readonly IPassportHistoricalTargetResolver targetResolver;
 
     public EvaluateVisitRideTargetsQueryHandler(
         IUserVisitRepository visitRepository,
-        IVisitTargetResolver targetResolver)
+        IPassportHistoricalTargetResolver targetResolver)
     {
         this.visitRepository = visitRepository;
         this.targetResolver = targetResolver;
@@ -61,35 +62,40 @@ public sealed class EvaluateVisitRideTargetsQueryHandler
             return Failure(PassportApplicationErrors.VisitNotFound());
         }
 
-        IReadOnlyDictionary<string, VisitTarget> targets =
-            await this.targetResolver.ResolveAsync(parkItemIds, cancellationToken);
+        PassportHistoricalTargetContext context =
+            await this.targetResolver.ResolveAsync(visit, parkItemIds, cancellationToken);
         List<VisitRideTargetEvaluationResult> evaluations = new List<VisitRideTargetEvaluationResult>(
             parkItemIds.Length);
         foreach (string parkItemId in parkItemIds)
         {
-            ApplicationError? targetError = PassportRideOccurrenceHandlerSupport.ValidateTargetIdentity(
-                visit.ParkId,
-                parkItemId,
-                targets,
-                out VisitTarget? target);
-            if (targetError is not null || target is null)
-            {
-                return Failure(targetError ?? PassportApplicationErrors.VisitTargetNotFound());
-            }
-
-            if (!target.IsVisible)
+            if (!context.Targets.TryGetValue(parkItemId, out PassportHistoricalTarget? target))
             {
                 return Failure(PassportApplicationErrors.VisitTargetNotFound());
             }
 
-            HistoricalConsistency consistency =
-                RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
-                    visit.Date,
-                    target.OpeningDate,
-                    target.ClosingDate);
+            if (!string.Equals(target.ParkId, visit.ParkId, StringComparison.Ordinal))
+            {
+                return Failure(PassportApplicationErrors.VisitTargetParkMismatch());
+            }
+
+            if (!string.Equals(
+                    target.Category,
+                    ParkItemCategory.Attraction.ToString(),
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                return Failure(PassportApplicationErrors.VisitTargetNotAttraction());
+            }
+
             evaluations.Add(new VisitRideTargetEvaluationResult(
                 target.ParkItemId,
-                consistency,
+                target.Name,
+                target.Category,
+                target.OperationalState,
+                target.HistoricalConsistency,
+                target.IsHistoricalOnly,
+                target.MainImageId,
+                target.ZoneId,
+                target.LifecycleStatus,
                 target.OpeningDate,
                 target.ClosingDate));
         }

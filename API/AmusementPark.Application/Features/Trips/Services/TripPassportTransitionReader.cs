@@ -24,6 +24,7 @@ public sealed class TripPassportTransitionReader
     private readonly IUserVisitRepository visits;
     private readonly IRideOccurrenceRepository rideOccurrences;
     private readonly IPassportLocalDateResolver localDateResolver;
+    private readonly IPassportHistoricalTargetResolver? historicalTargets;
     private readonly TimeProvider timeProvider;
 
     public TripPassportTransitionReader(
@@ -35,7 +36,8 @@ public sealed class TripPassportTransitionReader
         IUserVisitRepository visits,
         IRideOccurrenceRepository rideOccurrences,
         IPassportLocalDateResolver localDateResolver,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        IPassportHistoricalTargetResolver? historicalTargets = null)
     {
         this.trips = trips ?? throw new ArgumentNullException(nameof(trips));
         this.programFactory = programFactory ?? throw new ArgumentNullException(nameof(programFactory));
@@ -47,6 +49,7 @@ public sealed class TripPassportTransitionReader
             ?? throw new ArgumentNullException(nameof(rideOccurrences));
         this.localDateResolver = localDateResolver
             ?? throw new ArgumentNullException(nameof(localDateResolver));
+        this.historicalTargets = historicalTargets;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -233,6 +236,37 @@ public sealed class TripPassportTransitionReader
                 ImageCategory.ParkItem,
                 true,
                 cancellationToken);
+        Dictionary<(string ParkId, DateOnly Date), PassportHistoricalTargetContext>
+            historicalTargetsByDay = new();
+        if (this.historicalTargets is not null)
+        {
+            foreach (TripDayPlanResult day in days.Where(day =>
+                TripPassportTransitionPolicy.CanConfirmDay(
+                    day.LocalDate,
+                    destinationToday,
+                    day.IsParkAvailable)
+                || resumableDates.Contains(day.LocalDate)))
+            {
+                string[] dayTargetIds = attractions
+                    .Where(item => string.Equals(item.ParkId, day.ParkId, StringComparison.Ordinal))
+                    .Select(static item => item.Id!)
+                    .ToArray();
+                if (dayTargetIds.Length == 0)
+                {
+                    continue;
+                }
+
+                historicalTargetsByDay[(day.ParkId, day.LocalDate)] =
+                    await this.historicalTargets.ResolveAsync(
+                        day.ParkId,
+                        VisitDate.ForDay(
+                            day.LocalDate.Year,
+                            day.LocalDate.Month,
+                            day.LocalDate.Day),
+                        dayTargetIds,
+                        cancellationToken);
+            }
+        }
 
         TripPassportTransitionDayResult[] results = days.Select(day =>
         {
@@ -277,6 +311,7 @@ public sealed class TripPassportTransitionReader
                     day.LocalDate,
                     preferenceByItem,
                     imageIds,
+                    historicalTargetsByDay.GetValueOrDefault((day.ParkId, day.LocalDate)),
                     isSelectionLocked
                         ? rideOperation!.ParkItemIds.ToHashSet(StringComparer.Ordinal)
                         : new HashSet<string>(StringComparer.Ordinal))
@@ -330,9 +365,9 @@ public sealed class TripPassportTransitionReader
         DateOnly localDate,
         IReadOnlyDictionary<string, TripItemPreferenceLevel> preferenceByItem,
         IReadOnlyDictionary<string, string> imageIds,
+        PassportHistoricalTargetContext? historicalTargetContext,
         IReadOnlySet<string> preselectedItemIds)
     {
-        VisitDate visitDate = VisitDate.ForDay(localDate.Year, localDate.Month, localDate.Day);
         return items.OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
             .ThenBy(static item => item.Id, StringComparer.Ordinal)
             .Select(item => new TripPassportTransitionItemResult(
@@ -342,17 +377,10 @@ public sealed class TripPassportTransitionReader
                 preferenceByItem.GetValueOrDefault(
                     item.Id!,
                     TripItemPreferenceLevel.Unknown),
-                RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
-                    visitDate,
-                    ToDateOnly(item.AttractionDetails?.OpeningDate),
-                    ToDateOnly(item.AttractionDetails?.ClosingDate)),
+                historicalTargetContext?.Targets.GetValueOrDefault(item.Id!)
+                    ?.HistoricalConsistency ?? HistoricalConsistency.Unverified,
                 preselectedItemIds.Contains(item.Id!)))
             .ToArray();
-    }
-
-    private static DateOnly? ToDateOnly(DateTime? value)
-    {
-        return value.HasValue ? DateOnly.FromDateTime(value.Value) : null;
     }
 
     private static bool TryNormalizeIdentity(

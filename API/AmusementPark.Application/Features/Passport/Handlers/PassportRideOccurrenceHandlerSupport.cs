@@ -91,27 +91,26 @@ internal static class PassportRideOccurrenceHandlerSupport
     public static ApplicationError? ValidateTargets(
         Visit visit,
         IReadOnlyCollection<RideOccurrenceCreationItem> items,
-        IReadOnlyDictionary<string, VisitTarget> targets)
+        IReadOnlyDictionary<string, PassportHistoricalTarget> targets)
     {
         foreach (RideOccurrenceCreationItem item in items)
         {
             string parkItemId = item.ParkItemId.Trim();
-            ApplicationError? identityError = ValidateTargetIdentity(
-                visit.ParkId,
-                parkItemId,
-                targets,
-                out VisitTarget? target);
-            if (identityError is not null || target is null)
+            if (!targets.TryGetValue(parkItemId, out PassportHistoricalTarget? target)
+                || !string.Equals(target.ParkId, visit.ParkId, StringComparison.Ordinal))
             {
-                return identityError;
+                return PassportApplicationErrors.VisitTargetNotFound();
             }
 
-            HistoricalConsistency consistency =
-                RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
-                    visit.Date,
-                    target.OpeningDate,
-                    target.ClosingDate);
-            if (consistency == HistoricalConsistency.ConfirmedConflict
+            if (!string.Equals(
+                    target.Category,
+                    ParkItemCategory.Attraction.ToString(),
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                return PassportApplicationErrors.VisitTargetNotAttraction();
+            }
+
+            if (target.HistoricalConsistency == HistoricalConsistency.ConfirmedConflict
                 && !item.ConfirmHistoricalConflict)
             {
                 return PassportApplicationErrors.HistoricalConflictConfirmationRequired();

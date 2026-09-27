@@ -1,5 +1,6 @@
 import {
   PassportHistoricalConsistency,
+  PassportHistoricalOperationalState,
   PassportRideOccurrence,
   PassportRideOccurrenceStatus
 } from '@app/models/passport/passport-ride-occurrence.models';
@@ -15,6 +16,7 @@ export interface PassportVisitEditorAttraction {
   zoneId: string | null;
   lifecycleStatus: string | null;
   isHistorical: boolean;
+  operationalState: PassportHistoricalOperationalState;
   historicalConsistency: PassportHistoricalConsistency;
   openingDate: string | null;
   closingDate: string | null;

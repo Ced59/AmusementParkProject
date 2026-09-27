@@ -34,9 +34,33 @@ export function mapParkItemToVisitEditorAttraction(
     zoneId: item.zoneId?.trim() || null,
     lifecycleStatus,
     isHistorical: lifecycleStatus !== null && historicalStatuses.has(lifecycleStatus),
+    operationalState: evaluation?.operationalState ?? 'Unknown',
     historicalConsistency: evaluation?.historicalConsistency ?? 'Unverified',
     openingDate: evaluation?.openingDate ?? null,
     closingDate: evaluation?.closingDate ?? null
+  };
+}
+
+export function mapHistoricalTargetToVisitEditorAttraction(
+  target: PassportVisitRideTargetEvaluation
+): PassportVisitEditorAttraction | null {
+  const id: string = target.parkItemId?.trim() ?? '';
+  const name: string = target.name?.trim() ?? '';
+  if (!id || !name || target.category !== 'Attraction') {
+    return null;
+  }
+
+  return {
+    id,
+    name,
+    mainImageId: target.mainImageId?.trim() || null,
+    zoneId: target.zoneId?.trim() || null,
+    lifecycleStatus: target.lifecycleStatus?.trim() || null,
+    isHistorical: target.isHistoricalOnly === true,
+    operationalState: target.operationalState ?? 'Unknown',
+    historicalConsistency: target.historicalConsistency,
+    openingDate: target.openingDate ?? null,
+    closingDate: target.closingDate ?? null
   };
 }
 

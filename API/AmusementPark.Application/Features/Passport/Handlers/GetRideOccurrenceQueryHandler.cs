@@ -15,12 +15,12 @@ public sealed class GetRideOccurrenceQueryHandler
 {
     private readonly IUserVisitRepository visitRepository;
     private readonly IRideOccurrenceRepository occurrenceRepository;
-    private readonly IVisitTargetResolver targetResolver;
+    private readonly IPassportHistoricalTargetResolver targetResolver;
 
     public GetRideOccurrenceQueryHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
-        IVisitTargetResolver targetResolver)
+        IPassportHistoricalTargetResolver targetResolver)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
@@ -62,12 +62,15 @@ public sealed class GetRideOccurrenceQueryHandler
                 PassportApplicationErrors.RideOccurrenceNotFound());
         }
 
-        IReadOnlyDictionary<string, VisitTarget> targets =
+        PassportHistoricalTargetContext targetContext =
             await this.targetResolver.ResolveAsync(
+                visit,
                 new[] { occurrence.ParkItemId },
                 cancellationToken);
-        targets.TryGetValue(occurrence.ParkItemId, out VisitTarget? target);
+        targetContext.Targets.TryGetValue(
+            occurrence.ParkItemId,
+            out PassportHistoricalTarget? target);
         return ApplicationResult<RideOccurrenceResult>.Success(
-            PassportRideOccurrenceResultFactory.Create(occurrence, target, visit.Date));
+            PassportRideOccurrenceResultFactory.Create(occurrence, target));
     }
 }

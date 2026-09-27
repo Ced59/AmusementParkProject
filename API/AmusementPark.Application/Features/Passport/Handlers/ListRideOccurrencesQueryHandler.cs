@@ -15,12 +15,12 @@ public sealed class ListRideOccurrencesQueryHandler
 {
     private readonly IUserVisitRepository visitRepository;
     private readonly IRideOccurrenceRepository occurrenceRepository;
-    private readonly IVisitTargetResolver targetResolver;
+    private readonly IPassportHistoricalTargetResolver targetResolver;
 
     public ListRideOccurrencesQueryHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
-        IVisitTargetResolver targetResolver)
+        IPassportHistoricalTargetResolver targetResolver)
     {
         this.visitRepository = visitRepository;
         this.occurrenceRepository = occurrenceRepository;
@@ -57,20 +57,28 @@ public sealed class ListRideOccurrencesQueryHandler
         RideOccurrencePage page = await this.occurrenceRepository.ListOwnedByVisitAsync(
             new RideOccurrenceListCriteria(visitId, userId, query.Limit, query.After),
             cancellationToken);
-        IReadOnlyDictionary<string, VisitTarget> targets = page.Items.Count == 0
-            ? new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
-            : await this.targetResolver.ResolveAsync(
+        IReadOnlyDictionary<string, PassportHistoricalTarget> targets;
+        if (page.Items.Count == 0)
+        {
+            targets = new Dictionary<string, PassportHistoricalTarget>(StringComparer.Ordinal);
+        }
+        else
+        {
+            PassportHistoricalTargetContext targetContext = await this.targetResolver.ResolveAsync(
+                visit,
                 page.Items
                     .Select(static occurrence => occurrence.ParkItemId)
                     .Distinct(StringComparer.Ordinal)
                     .ToArray(),
                 cancellationToken);
+            targets = targetContext.Targets;
+        }
         return ApplicationResult<RideOccurrencePageResult>.Success(
             new RideOccurrencePageResult(
                 page.Items.Select(occurrence =>
                 {
-                    targets.TryGetValue(occurrence.ParkItemId, out VisitTarget? target);
-                    return PassportRideOccurrenceResultFactory.Create(occurrence, target, visit.Date);
+                    targets.TryGetValue(occurrence.ParkItemId, out PassportHistoricalTarget? target);
+                    return PassportRideOccurrenceResultFactory.Create(occurrence, target);
                 }).ToArray(),
                 page.NextCursor));
     }

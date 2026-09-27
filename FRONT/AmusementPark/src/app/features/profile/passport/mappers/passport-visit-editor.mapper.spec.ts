@@ -5,6 +5,7 @@ import {
   mapAttractionSelectionToRequest,
   mapOccurrenceEditToRequest,
   mapOccurrenceToEditDraft,
+  mapHistoricalTargetToVisitEditorAttraction,
   mapParkItemToVisitEditorAttraction,
   mapParkZoneToVisitEditorZone,
   normalizeCount,
@@ -49,6 +50,33 @@ describe('passport visit editor mapper', () => {
     }, 'fr')).toEqual({ id: 'zone-1', name: 'Le Village' });
   });
 
+  it('maps a historical-only target with its period identity and canonical state', () => {
+    expect(mapHistoricalTargetToVisitEditorAttraction({
+      parkItemId: 'ride-retired',
+      name: '  Le Cyclone  ',
+      category: 'Attraction',
+      operationalState: 'PossiblyOpen',
+      historicalConsistency: 'Unverified',
+      isHistoricalOnly: true,
+      mainImageId: ' image-1 ',
+      zoneId: ' zone-old ',
+      lifecycleStatus: 'Removed',
+      openingDate: '1987-01-01',
+      closingDate: '1994-12-31'
+    })).toEqual({
+      id: 'ride-retired',
+      name: 'Le Cyclone',
+      mainImageId: 'image-1',
+      zoneId: 'zone-old',
+      lifecycleStatus: 'Removed',
+      isHistorical: true,
+      operationalState: 'PossiblyOpen',
+      historicalConsistency: 'Unverified',
+      openingDate: '1987-01-01',
+      closingDate: '1994-12-31'
+    });
+  });
+
   it('normalizes count, optional text and API time while disabling time for imprecise visits', () => {
     const selection = createAttractionSelection({
       id: 'ride-1',
@@ -57,6 +85,7 @@ describe('passport visit editor mapper', () => {
       zoneId: null,
       lifecycleStatus: 'Operating',
       isHistorical: false,
+      operationalState: 'KnownOpen',
       historicalConsistency: 'Verified',
       openingDate: '2020-01-01',
       closingDate: null

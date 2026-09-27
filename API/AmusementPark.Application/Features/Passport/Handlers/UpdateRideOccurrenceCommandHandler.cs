@@ -15,7 +15,7 @@ public sealed class UpdateRideOccurrenceCommandHandler
 {
     private readonly IUserVisitRepository visitRepository;
     private readonly IRideOccurrenceRepository occurrenceRepository;
-    private readonly IVisitTargetResolver targetResolver;
+    private readonly IPassportHistoricalTargetResolver targetResolver;
     private readonly IPassportClock clock;
     private readonly IPassportAuditPublisher? auditPublisher;
     private readonly IVisitContentMutationLeaseManager? contentMutationLeaseManager;
@@ -23,7 +23,7 @@ public sealed class UpdateRideOccurrenceCommandHandler
     internal UpdateRideOccurrenceCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
-        IVisitTargetResolver targetResolver,
+        IPassportHistoricalTargetResolver targetResolver,
         IPassportClock clock)
         : this(visitRepository, occurrenceRepository, targetResolver, clock, null!, null!)
     {
@@ -32,7 +32,7 @@ public sealed class UpdateRideOccurrenceCommandHandler
     public UpdateRideOccurrenceCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
-        IVisitTargetResolver targetResolver,
+        IPassportHistoricalTargetResolver targetResolver,
         IPassportClock clock,
         IPassportAuditPublisher auditPublisher,
         IVisitContentMutationLeaseManager contentMutationLeaseManager)
@@ -90,10 +90,13 @@ public sealed class UpdateRideOccurrenceCommandHandler
             return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
         }
 
-        IReadOnlyDictionary<string, VisitTarget> targets = await this.targetResolver.ResolveAsync(
+        PassportHistoricalTargetContext targetContext = await this.targetResolver.ResolveAsync(
+            visit,
             new[] { occurrence.ParkItemId },
             cancellationToken);
-        if (!targets.TryGetValue(occurrence.ParkItemId, out VisitTarget? target))
+        if (!targetContext.Targets.TryGetValue(
+                occurrence.ParkItemId,
+                out PassportHistoricalTarget? target))
         {
             return Failure(PassportApplicationErrors.VisitTargetNotFound());
         }
@@ -103,16 +106,15 @@ public sealed class UpdateRideOccurrenceCommandHandler
             return Failure(PassportApplicationErrors.VisitTargetParkMismatch());
         }
 
-        if (target.Category != ParkItemCategory.Attraction)
+        if (!string.Equals(
+                target.Category,
+                ParkItemCategory.Attraction.ToString(),
+                StringComparison.OrdinalIgnoreCase))
         {
             return Failure(PassportApplicationErrors.VisitTargetNotAttraction());
         }
 
-        HistoricalConsistency consistency =
-            RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
-                visit.Date,
-                target.OpeningDate,
-                target.ClosingDate);
+        HistoricalConsistency consistency = target.HistoricalConsistency;
         if (consistency == HistoricalConsistency.ConfirmedConflict
             && !command.ConfirmHistoricalConflict)
         {
@@ -147,7 +149,7 @@ public sealed class UpdateRideOccurrenceCommandHandler
                 new OccurrenceMoment(command.LocalTime, command.IsApproximate),
                 command.Status,
                 consistency,
-                null,
+                target.HistoricalTarget,
                 command.PrivateNote,
                 this.clock.UtcNow);
         }

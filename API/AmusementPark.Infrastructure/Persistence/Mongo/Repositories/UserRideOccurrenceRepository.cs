@@ -2819,6 +2819,16 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
             {
                 return false;
             }
+
+            HistoricalTargetReference? preparedTarget = preparation.HistoricalTargets is not null
+                && index < preparation.HistoricalTargets.Count
+                    ? preparation.HistoricalTargets[index]
+                    : null;
+            if (preparedTarget
+                != requested.Items[index].CreationSnapshot.HistoricalTarget.ToDomain())
+            {
+                return false;
+            }
         }
 
         return true;
@@ -2848,6 +2858,14 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                         Index = index,
                         ParkItemId = request.Items[index].ParkItemId,
                         HistoricalConsistency = consistency,
+                        HistoricalTargetName = preparation.HistoricalTargets is not null
+                            && index < preparation.HistoricalTargets.Count
+                                ? preparation.HistoricalTargets[index]?.Name
+                                : null,
+                        HistoricalTargetCategory = preparation.HistoricalTargets is not null
+                            && index < preparation.HistoricalTargets.Count
+                                ? preparation.HistoricalTargets[index]?.Category
+                                : null,
                     })
                 .ToList(),
         };
@@ -2943,10 +2961,19 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
                 document.Items
                     .OrderBy(static item => item.Index)
                     .Select(static item => item.HistoricalConsistency)
+                    .ToArray(),
+                document.Items
+                    .OrderBy(static item => item.Index)
+                    .Select(static item => string.IsNullOrWhiteSpace(item.HistoricalTargetName)
+                        ? null
+                        : new HistoricalTargetReference(
+                            item.HistoricalTargetName,
+                            item.HistoricalTargetCategory))
                     .ToArray());
             return true;
         }
-        catch (VisitDateValidationException)
+        catch (Exception exception) when (exception is VisitDateValidationException
+            or RideOccurrenceValidationException)
         {
             return false;
         }
@@ -2962,7 +2989,9 @@ public sealed class UserRideOccurrenceRepository : IRideOccurrenceRepository
         if (!Enum.IsDefined(preparation.ServiceDayConvention)
             || preparation.HistoricalConsistencies.Count != request.Items.Count
             || preparation.HistoricalConsistencies.Any(
-                static consistency => !Enum.IsDefined(consistency)))
+                static consistency => !Enum.IsDefined(consistency))
+            || (preparation.HistoricalTargets is not null
+                && preparation.HistoricalTargets.Count != request.Items.Count))
         {
             throw new ArgumentException(
                 "The ride occurrence creation preparation is invalid.",

@@ -8,10 +8,10 @@ import { debounceTime, distinctUntilChanged, skip } from 'rxjs';
 
 import {
   PassportRideOccurrence,
+  PassportHistoricalRideTargetScope,
   PassportRideOccurrenceStatus
 } from '@app/models/passport/passport-ride-occurrence.models';
 import { PassportVisitDatePrecision, PassportVisitStatus } from '@app/models/passport/passport-visit.models';
-import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 import { TranslationService } from '@app/services/translation.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { RatingInputComponent } from '@shared/components/rating-input/rating-input.component';
@@ -71,7 +71,7 @@ export class PassportVisitEditorPageComponent {
   protected readonly facade: PassportVisitEditorStateFacade;
   protected readonly searchControl = new FormControl<string>('', { nonNullable: true });
   protected readonly zoneControl = new FormControl<string>('', { nonNullable: true });
-  protected readonly lifecycleControl = new FormControl<ClosedEntityFilter>('all', { nonNullable: true });
+  protected readonly lifecycleControl = new FormControl<PassportHistoricalRideTargetScope>('KnownOpen', { nonNullable: true });
   protected readonly deleteConfirmationId = signal<string | null>(null);
   protected readonly assessmentDeleteConfirmation = signal<boolean>(false);
   protected readonly rideAssessmentDeleteConfirmationId = signal<string | null>(null);
@@ -139,7 +139,7 @@ export class PassportVisitEditorPageComponent {
       this.rideAssessmentDeleteConfirmationId.set(null);
       this.searchControl.setValue('', { emitEvent: false });
       this.zoneControl.setValue('', { emitEvent: false });
-      this.lifecycleControl.setValue('all', { emitEvent: false });
+      this.lifecycleControl.setValue('KnownOpen', { emitEvent: false });
       this.timelineDragging.set(false);
       this.facade.load(visitId, this.currentLanguage());
     });
@@ -218,8 +218,8 @@ export class PassportVisitEditorPageComponent {
   protected clearFilters(): void {
     this.searchControl.setValue('', { emitEvent: false });
     this.zoneControl.setValue('', { emitEvent: false });
-    this.lifecycleControl.setValue('all', { emitEvent: false });
-    this.facade.applyAttractionFilters('', null, 'all');
+    this.lifecycleControl.setValue('KnownOpen', { emitEvent: false });
+    this.facade.applyAttractionFilters('', null, 'KnownOpen');
   }
 
   protected visitStatusLabelKey(status: PassportVisitStatus): string {

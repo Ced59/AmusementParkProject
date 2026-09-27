@@ -15,7 +15,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
 {
     private readonly IUserVisitRepository visitRepository;
     private readonly IRideOccurrenceRepository occurrenceRepository;
-    private readonly IVisitTargetResolver targetResolver;
+    private readonly IPassportHistoricalTargetResolver targetResolver;
     private readonly RideOccurrenceAppendOrderNormalizer appendOrderNormalizer;
     private readonly IPassportClock clock;
     private readonly IPassportAuditPublisher? auditPublisher;
@@ -24,7 +24,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
     internal AddRideOccurrencesBatchCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
-        IVisitTargetResolver targetResolver,
+        IPassportHistoricalTargetResolver targetResolver,
         RideOccurrenceAppendOrderNormalizer appendOrderNormalizer,
         IPassportClock clock)
         : this(
@@ -41,7 +41,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
     public AddRideOccurrencesBatchCommandHandler(
         IUserVisitRepository visitRepository,
         IRideOccurrenceRepository occurrenceRepository,
-        IVisitTargetResolver targetResolver,
+        IPassportHistoricalTargetResolver targetResolver,
         RideOccurrenceAppendOrderNormalizer appendOrderNormalizer,
         IPassportClock clock,
         IPassportAuditPublisher auditPublisher,
@@ -219,7 +219,8 @@ public sealed class AddRideOccurrencesBatchCommandHandler
             return Failure(editableError);
         }
 
-        IReadOnlyDictionary<string, VisitTarget> targets = await this.targetResolver.ResolveAsync(
+        PassportHistoricalTargetContext targetContext = await this.targetResolver.ResolveAsync(
+            visit,
             expanded.Select(static item => item.ParkItemId.Trim())
                 .Distinct(StringComparer.Ordinal)
                 .ToArray(),
@@ -227,7 +228,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         ApplicationError? targetError = PassportRideOccurrenceHandlerSupport.ValidateTargets(
             visit,
             expanded,
-            targets);
+            targetContext.Targets);
         if (targetError is not null)
         {
             return Failure(targetError);
@@ -236,7 +237,7 @@ public sealed class AddRideOccurrencesBatchCommandHandler
         RideOccurrenceCreationPreparation preparation = CreatePreparation(
             visit,
             expanded,
-            targets);
+            targetContext.Targets);
         reservation =
             await this.occurrenceRepository.ReserveBatchCreationKeyAsync(
                 creationRequest,
@@ -443,7 +444,10 @@ public sealed class AddRideOccurrencesBatchCommandHandler
                 item.Status,
                 creationRequest.Items[index].Source,
                 preparation.HistoricalConsistencies[index],
-                null,
+                preparation.HistoricalTargets is not null
+                    && index < preparation.HistoricalTargets.Count
+                        ? preparation.HistoricalTargets[index]
+                        : null,
                 item.PrivateNote,
                 nowUtc));
         }
@@ -454,19 +458,15 @@ public sealed class AddRideOccurrencesBatchCommandHandler
     private static RideOccurrenceCreationPreparation CreatePreparation(
         Visit visit,
         IReadOnlyList<RideOccurrenceCreationItem> items,
-        IReadOnlyDictionary<string, VisitTarget> targets)
+        IReadOnlyDictionary<string, PassportHistoricalTarget> targets)
     {
         return new RideOccurrenceCreationPreparation(
             visit.ParkId,
             visit.Date,
             visit.TimeZoneId,
             visit.ServiceDayConvention,
-            items.Select(item =>
-                RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
-                    visit.Date,
-                    targets[item.ParkItemId.Trim()].OpeningDate,
-                    targets[item.ParkItemId.Trim()].ClosingDate))
-                .ToArray());
+            items.Select(item => targets[item.ParkItemId.Trim()].HistoricalConsistency).ToArray(),
+            items.Select(item => targets[item.ParkItemId.Trim()].HistoricalTarget).ToArray());
     }
 
     private static Visit CreateVisitContext(

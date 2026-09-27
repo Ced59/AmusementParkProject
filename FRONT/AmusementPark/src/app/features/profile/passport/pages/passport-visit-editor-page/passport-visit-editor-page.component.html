@@ -400,11 +400,11 @@
           </label>
 
           <label class="app-field">
-            <span class="app-field__label">{{ 'passport.editor.selector.lifecycleLabel' | translate }}</span>
+            <span class="app-field__label">{{ 'passport.editor.selector.historicalScopeLabel' | translate }}</span>
             <select class="app-input" [formControl]="lifecycleControl">
-              <option value="all">{{ 'passport.editor.selector.allLifecycles' | translate }}</option>
-              <option value="openOnly">{{ 'passport.editor.selector.noRecordedClosure' | translate }}</option>
-              <option value="closedOnly">{{ 'passport.editor.selector.closedOrRemoved' | translate }}</option>
+              <option value="KnownOpen">{{ 'passport.editor.selector.knownOpen' | translate }} ({{ facade.historicalTargetSummary().knownOpenCount }})</option>
+              <option value="PossiblyOpen">{{ 'passport.editor.selector.possiblyOpen' | translate }} ({{ facade.historicalTargetSummary().possiblyOpenCount }})</option>
+              <option value="AllHistory">{{ 'passport.editor.selector.allHistory' | translate }} ({{ facade.historicalTargetSummary().allHistoryCount }})</option>
             </select>
           </label>
 
@@ -417,6 +417,11 @@
             <i class="pi pi-bolt" aria-hidden="true"></i>
             {{ 'passport.editor.selector.instantSearchHint' | translate }}
           </p>
+        </div>
+
+        <div class="passport-history-context" role="status">
+          <i class="pi pi-history" aria-hidden="true"></i>
+          <span>{{ 'passport.editor.selector.historyCoverage' | translate:{ percent: facade.historicalTargetSummary().coveragePercent } }}</span>
         </div>
 
         @if (facade.attractionErrorKey(); as attractionErrorKey) {
@@ -489,7 +494,7 @@
                 <span class="passport-attraction__body">
                   <strong>{{ attraction.name }}</strong>
                   <small>
-                    {{ lifecycleLabelKey(attraction.lifecycleStatus) | translate }}
+                    {{ ('passport.editor.selector.operationalState.' + attraction.operationalState) | translate }}
                     @if (attraction.isHistorical) {
                       · {{ 'passport.editor.selector.historical' | translate }}
                     }

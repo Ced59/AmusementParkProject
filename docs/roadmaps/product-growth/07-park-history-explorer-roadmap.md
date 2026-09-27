@@ -676,7 +676,9 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | `HIST-08` | UI frise et année pilote | SSR accessible — implémenté le 26 septembre 2026 |
 | [`HIST-09`](../../architecture/product-growth-hist-09-explicit-lineages-2026-09-27.md) | Relations/lignées | Aucune déduction silencieuse — implémenté le 27 septembre 2026 |
 | [`HIST-10`](../../architecture/product-growth-hist-10-date-comparison-2026-09-27.md) | Comparaison de dates | Diff exact — implémenté le 27 septembre 2026 |
-| `HIST-11` | Intégration Passeport | Anciennes visites contextualisées |
+| [`HIST-11A`](../../architecture/product-growth-hist-11a-passport-context-2026-09-27.md) | Catalogue historique du Passeport | États canoniques, identité d’époque et revalidation non destructive — implémenté le 27 septembre 2026 |
+| `HIST-11B` | Signalement « cet élément existait » | Mémoire proposée sans devenir une preuve avant revue |
+| `HIST-11C` | Statistiques historiques personnelles | Époques, transformations et attractions disparues, privées par défaut |
 | `HIST-12` | Admin diagnostics/revue | Exploitation fiable |
 | `HIST-13` | SEO/partage | Pages clés seulement |
 | `HIST-14` | Extension parcs | Gate par parc |

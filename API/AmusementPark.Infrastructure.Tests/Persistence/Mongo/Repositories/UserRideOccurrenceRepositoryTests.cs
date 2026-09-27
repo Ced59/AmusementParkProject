@@ -31,7 +31,7 @@ public sealed class UserRideOccurrenceRepositoryTests
                 MockBehavior.Strict);
         RideOccurrenceCreationRequest request = CreateRequest(
             new[] { CreateOccurrence("occurrence-1", "item-1", 1024) });
-        RideOccurrenceCreationPreparation preparation = CreatePreparation();
+        RideOccurrenceCreationPreparation preparation = CreatePreparationWithHistoricalTarget();
         UserRideOccurrenceCreationOperationDocument? captured = null;
         operationCollection.Setup(value => value.InsertOneAsync(
                 It.IsAny<UserRideOccurrenceCreationOperationDocument>(),
@@ -73,6 +73,12 @@ public sealed class UserRideOccurrenceRepositoryTests
         Assert.Equal(
             HistoricalConsistency.Verified,
             Assert.Single(captured.CreationPreparation.Items).HistoricalConsistency);
+        Assert.Equal(
+            "Nom à la date de visite",
+            Assert.Single(captured.CreationPreparation.Items).HistoricalTargetName);
+        Assert.Equal(
+            "Attraction",
+            Assert.Single(captured.CreationPreparation.Items).HistoricalTargetCategory);
         operationCollection.VerifyAll();
         collection.VerifyNoOtherCalls();
     }
@@ -3411,6 +3417,20 @@ public sealed class UserRideOccurrenceRepositoryTests
             new[] { HistoricalConsistency.Verified });
     }
 
+    private static RideOccurrenceCreationPreparation CreatePreparationWithHistoricalTarget()
+    {
+        return new RideOccurrenceCreationPreparation(
+            "park-1",
+            VisitDate.ForDay(2026, 9, 3),
+            "Europe/Paris",
+            LocalServiceDayConvention.VisitStartLocalDate,
+            new[] { HistoricalConsistency.Verified },
+            new HistoricalTargetReference?[]
+            {
+                new HistoricalTargetReference("Nom à la date de visite", "Attraction"),
+            });
+    }
+
     private static UserRideOccurrenceCreationPreparationDocument CreatePreparationDocument(
         RideOccurrenceCreationPreparation preparation)
     {
@@ -3433,6 +3453,8 @@ public sealed class UserRideOccurrenceRepositoryTests
                     {
                         Index = index,
                         HistoricalConsistency = consistency,
+                        HistoricalTargetName = preparation.HistoricalTargets?[index]?.Name,
+                        HistoricalTargetCategory = preparation.HistoricalTargets?[index]?.Category,
                     })
                 .ToList(),
         };

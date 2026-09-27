@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Passport.Models;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Visits;
 using Moq;
@@ -33,26 +34,22 @@ public sealed class EvaluateVisitRideTargetsQueryHandlerTests
                 "owner-1",
                 CancellationToken.None))
             .ReturnsAsync(visit);
-        Mock<IVisitTargetResolver> targetResolver =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targetResolver =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         targetResolver.Setup(value => value.ResolveAsync(
+                visit,
                 It.Is<IReadOnlyCollection<string>>(ids =>
                     ids.SequenceEqual(new[] { "active", "closed", "unknown" })),
                 CancellationToken.None))
-            .ReturnsAsync(new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
-            {
-                ["active"] = CreateTarget(
-                    "active",
-                    "Attraction active",
-                    new DateOnly(2020, 1, 1),
-                    null),
-                ["closed"] = CreateTarget(
+            .ReturnsAsync(CreateContext(
+                CreateTarget("active", "Attraction active", HistoricalOperationalState.KnownOpen),
+                CreateTarget(
                     "closed",
                     "Attraction fermée",
+                    HistoricalOperationalState.KnownClosed,
                     new DateOnly(2010, 1, 1),
                     new DateOnly(2020, 12, 31)),
-                ["unknown"] = CreateTarget("unknown", "Dates inconnues", null, null),
-            });
+                CreateTarget("unknown", "Dates inconnues", HistoricalOperationalState.Unknown)));
         EvaluateVisitRideTargetsQueryHandler handler =
             new EvaluateVisitRideTargetsQueryHandler(
                 visitRepository.Object,
@@ -92,8 +89,8 @@ public sealed class EvaluateVisitRideTargetsQueryHandlerTests
                 "owner-1",
                 CancellationToken.None))
             .ReturnsAsync((Visit?)null);
-        Mock<IVisitTargetResolver> targetResolver =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targetResolver =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         EvaluateVisitRideTargetsQueryHandler handler =
             new EvaluateVisitRideTargetsQueryHandler(
                 visitRepository.Object,
@@ -124,21 +121,26 @@ public sealed class EvaluateVisitRideTargetsQueryHandlerTests
                 "owner-1",
                 CancellationToken.None))
             .ReturnsAsync(visit);
-        Mock<IVisitTargetResolver> targetResolver =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targetResolver =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         targetResolver.Setup(value => value.ResolveAsync(
+                visit,
                 It.Is<IReadOnlyCollection<string>>(ids => ids.Single() == "item-1"),
                 CancellationToken.None))
-            .ReturnsAsync(new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
-            {
-                ["item-1"] = new VisitTarget(
-                    "item-1",
-                    "another-park",
-                    "Autre parc",
-                    ParkItemCategory.Attraction,
-                    null,
-                    null),
-            });
+            .ReturnsAsync(CreateContext(new PassportHistoricalTarget(
+                "item-1",
+                "another-park",
+                "Autre parc",
+                ParkItemCategory.Attraction.ToString(),
+                HistoricalOperationalState.Unknown,
+                HistoricalConsistency.Unverified,
+                new HistoricalTargetReference("Autre parc", ParkItemCategory.Attraction.ToString()),
+                false,
+                null,
+                null,
+                null,
+                null,
+                null)));
         EvaluateVisitRideTargetsQueryHandler handler =
             new EvaluateVisitRideTargetsQueryHandler(
                 visitRepository.Object,
@@ -169,19 +171,13 @@ public sealed class EvaluateVisitRideTargetsQueryHandlerTests
                 "owner-1",
                 CancellationToken.None))
             .ReturnsAsync(visit);
-        Mock<IVisitTargetResolver> targetResolver =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targetResolver =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         targetResolver.Setup(value => value.ResolveAsync(
+                visit,
                 It.Is<IReadOnlyCollection<string>>(ids => ids.Single() == "hidden-item"),
                 CancellationToken.None))
-            .ReturnsAsync(new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
-            {
-                ["hidden-item"] = CreateTarget(
-                    "hidden-item",
-                    "Attraction cachée",
-                    new DateOnly(1990, 1, 1),
-                    new DateOnly(2000, 1, 1)) with { IsVisible = false },
-            });
+            .ReturnsAsync(CreateContext());
         EvaluateVisitRideTargetsQueryHandler handler =
             new EvaluateVisitRideTargetsQueryHandler(
                 visitRepository.Object,
@@ -215,18 +211,36 @@ public sealed class EvaluateVisitRideTargetsQueryHandlerTests
             NowUtc);
     }
 
-    private static VisitTarget CreateTarget(
+    private static PassportHistoricalTarget CreateTarget(
         string id,
         string name,
-        DateOnly? openingDate,
-        DateOnly? closingDate)
+        HistoricalOperationalState operationalState,
+        DateOnly? openingDate = null,
+        DateOnly? closingDate = null)
     {
-        return new VisitTarget(
+        return new PassportHistoricalTarget(
             id,
             "park-1",
             name,
-            ParkItemCategory.Attraction,
+            ParkItemCategory.Attraction.ToString(),
+            operationalState,
+            RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(operationalState),
+            new HistoricalTargetReference(name, ParkItemCategory.Attraction.ToString()),
+            false,
+            null,
+            null,
+            null,
             openingDate,
             closingDate);
+    }
+
+    private static PassportHistoricalTargetContext CreateContext(
+        params PassportHistoricalTarget[] targets)
+    {
+        return new PassportHistoricalTargetContext(
+            targets.ToDictionary(static target => target.ParkItemId, StringComparer.Ordinal),
+            HistoricalCoverageStatus.HighConfidence,
+            100,
+            "history-v1");
     }
 }

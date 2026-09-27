@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Visits;
 using Xunit;
 
@@ -143,46 +144,18 @@ public sealed class RideOccurrenceOrderPlannerTests
     }
 
     [Theory]
-    [InlineData(1997, 1995, 2000, HistoricalConsistency.Verified)]
-    [InlineData(1980, 1995, 2000, HistoricalConsistency.ConfirmedConflict)]
-    [InlineData(2010, 1995, 2000, HistoricalConsistency.ConfirmedConflict)]
-    public void HistoricalConsistency_ForExactDay_ShouldRespectKnownBounds(
-        int visitYear,
-        int openingYear,
-        int closingYear,
+    [InlineData(HistoricalOperationalState.KnownOpen, HistoricalConsistency.Verified)]
+    [InlineData(HistoricalOperationalState.KnownClosed, HistoricalConsistency.ConfirmedConflict)]
+    [InlineData(HistoricalOperationalState.PossiblyOpen, HistoricalConsistency.Unverified)]
+    [InlineData(HistoricalOperationalState.Unknown, HistoricalConsistency.Unverified)]
+    public void HistoricalConsistency_ShouldFollowCanonicalOperationalState(
+        HistoricalOperationalState operationalState,
         HistoricalConsistency expected)
     {
         HistoricalConsistency result =
-            RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
-                VisitDate.ForDay(visitYear, 6, 15),
-                new DateOnly(openingYear, 1, 1),
-                new DateOnly(closingYear, 12, 31));
+            RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(operationalState);
 
         Assert.Equal(expected, result);
-    }
-
-    [Fact]
-    public void HistoricalConsistency_ForPartiallyOverlappingYear_ShouldRemainUnverified()
-    {
-        HistoricalConsistency result =
-            RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
-                VisitDate.ForYear(2000),
-                new DateOnly(2000, 7, 1),
-                null);
-
-        Assert.Equal(HistoricalConsistency.Unverified, result);
-    }
-
-    [Fact]
-    public void HistoricalConsistency_WithoutKnownBounds_ShouldRemainUnverified()
-    {
-        HistoricalConsistency result =
-            RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(
-                VisitDate.ForDay(2000, 1, 1),
-                null,
-                null);
-
-        Assert.Equal(HistoricalConsistency.Unverified, result);
     }
 
     private static RideOccurrence CreateOccurrence(string id, long position)

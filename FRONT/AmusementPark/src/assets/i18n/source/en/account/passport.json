@@ -480,7 +480,18 @@
         "results": "Attractions available for this visit",
         "historical": "historical",
         "pagination": "Attraction pages",
-        "page": "Page {{current}} of {{total}}"
+        "page": "Page {{current}} of {{total}}",
+        "historicalScopeLabel": "Context on the visit date",
+        "knownOpen": "Known to be open",
+        "possiblyOpen": "Possibly open",
+        "allHistory": "The park’s full history",
+        "historyCoverage": "Available historical coverage: {{percent}}%",
+        "operationalState": {
+          "KnownOpen": "Known to be open",
+          "KnownClosed": "Known to be closed",
+          "PossiblyOpen": "Possibly open",
+          "Unknown": "Historical state unknown"
+        }
       },
       "selection": {
         "title": "Entries to add",

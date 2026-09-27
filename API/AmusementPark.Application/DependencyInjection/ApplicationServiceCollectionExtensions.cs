@@ -237,6 +237,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IPersonalRankingShareSourceRevisionGuard, PersonalRankingShareSourceRevisionGuard>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddScoped<IVisitTargetResolver, VisitTargetResolver>();
+        services.AddScoped<IPassportHistoricalTargetResolver, PassportHistoricalTargetResolver>();
         services.AddSingleton<IVisitExportWriter, CanonicalVisitExportWriter>();
         services.AddScoped<IPassportWatchlistExportSource, PassportWatchlistExportSource>();
         services.AddScoped<PassportExportScheduler>();
