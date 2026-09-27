@@ -163,8 +163,8 @@ public sealed class GetPassportHistoricalStatisticsQueryHandler
         return new PassportHistoricalTargetStateObservation(
             target.ParkItemId,
             target.Name,
-            target.Category,
+            target.HistoricalClassification ?? target.Category,
             target.OperationalState,
-            !target.IsValidationFallback);
+            target.HasCanonicalEvidence);
     }
 }

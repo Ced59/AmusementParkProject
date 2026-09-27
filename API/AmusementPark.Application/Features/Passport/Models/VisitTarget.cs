@@ -11,4 +11,5 @@ public sealed record VisitTarget(
     DateOnly? ClosingDate,
     string? LifecycleStatus = null,
     bool IsVisible = true,
-    string? ZoneId = null);
+    string? ZoneId = null,
+    ParkItemType Type = ParkItemType.Attraction);

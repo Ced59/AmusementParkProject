@@ -50,7 +50,8 @@ public sealed class VisitTargetReadRepository : IVisitTargetReadRepository
                 ToDateOnly(document.AttractionDetails?.ClosingDate),
                 NormalizeLifecycleStatus(document.AttractionDetails?.Status),
                 document.IsVisible,
-                document.ZoneId))
+                document.ZoneId,
+                document.Type))
             .ToArray();
     }
 
@@ -61,6 +62,7 @@ public sealed class VisitTargetReadRepository : IVisitTargetReadRepository
             .Include(document => document.ParkId)
             .Include(document => document.Name)
             .Include(document => document.Category)
+            .Include(document => document.Type)
             .Include(document => document.ZoneId)
             .Include(document => document.IsVisible)
             .Include(document => document.AttractionDetails!.OpeningDate)

@@ -41,6 +41,10 @@ Les règles détaillées sont les suivantes :
 
 - seuls les tours au statut `Completed` alimentent les statistiques par
   attraction ;
+- un contexte n'est canonique que si un état certain (`KnownOpen` ou
+  `KnownClosed`) est soutenu par au moins un fait publié applicable à la date ;
+- la simple présence d'une attraction dans le catalogue actuel, même visible,
+  ne constitue jamais à elle seule une preuve historique ;
 - une attraction disparue était `KnownOpen` à la visite et est
   canoniquement `KnownClosed` aujourd'hui ;
 - une transformation exige un nom ou une catégorie canonique différente
@@ -51,6 +55,9 @@ Les règles détaillées sont les suivantes :
   empreintes diffèrent ;
 - les données non résolues restent visibles dans le taux de couverture mais
   ne sont jamais devinées ;
+- les regroupements de catégories utilisent le type métier détaillé
+  (`DarkRide`, `RollerCoaster`, `WaterRide`, etc.) plutôt que l'étiquette
+  générique `Attraction` ;
 - l'année de première visite vient de toutes les visites privées, tandis que
   les statistiques d'attractions exigent une preuve canonique.
 

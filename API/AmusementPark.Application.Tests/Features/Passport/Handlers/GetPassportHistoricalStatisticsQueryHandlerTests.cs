@@ -77,6 +77,7 @@ public sealed class GetPassportHistoricalStatisticsQueryHandlerTests
         Assert.Equal(1, result.Value!.CanonicallyResolvedRideCount);
         Assert.Equal("Example Park", Assert.Single(result.Value.DisappearedAttractions).ParkName);
         Assert.Equal("Old Name", Assert.Single(result.Value.HistoricalNames).NameAtVisit);
+        Assert.Equal("DarkRide", Assert.Single(result.Value.HistoricalCategories).Category);
         resolver.Verify(item => item.ResolveAllManyAsync(
             "park-1",
             It.Is<IReadOnlyCollection<VisitDate>>(dates => dates.Count == 2),
@@ -98,6 +99,73 @@ public sealed class GetPassportHistoricalStatisticsQueryHandlerTests
 
         Assert.False(result.IsSuccess);
         sourceReader.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WithoutDateSpecificEvidence_ShouldNotClaimCanonicalCoverage()
+    {
+        PassportVisitStatisticsObservation visit = new(
+            "visit-1",
+            "park-1",
+            VisitDate.ForYear(2001),
+            null);
+        PassportRideStatisticsObservation ride = new(
+            "ride-1",
+            visit.VisitId,
+            visit.ParkId,
+            "item-1",
+            visit.VisitDate,
+            RideOccurrenceStatus.Completed,
+            null,
+            null,
+            null);
+        Mock<IPassportScopeStatisticsSourceReader> sourceReader = new();
+        sourceReader.Setup(reader => reader.ReadGlobalAsync(
+                "user-1",
+                null,
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PassportGlobalStatisticsSource(
+                new[] { 2001 },
+                new[] { "park-1" },
+                new[] { visit },
+                new[] { ride }));
+        PassportHistoricalTarget unsupportedTarget = Target(
+            "Current Name",
+            HistoricalOperationalState.Unknown) with
+        {
+            HasCanonicalEvidence = false,
+        };
+        Mock<IPassportHistoricalTargetResolver> resolver = new();
+        resolver.Setup(item => item.ResolveAllManyAsync(
+                "park-1",
+                It.IsAny<IReadOnlyCollection<VisitDate>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((
+                string parkId,
+                IReadOnlyCollection<VisitDate> dates,
+                CancellationToken cancellationToken) => dates.ToDictionary(
+                    static date => date,
+                    _ => Context(unsupportedTarget)));
+        Mock<IParkNameReadRepository> parkNames = new();
+        parkNames.Setup(repository => repository.GetNamesByIdsAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, string?>());
+        GetPassportHistoricalStatisticsQueryHandler handler = new(
+            sourceReader.Object,
+            resolver.Object,
+            parkNames.Object);
+
+        AmusementPark.Application.Errors.ApplicationResult<PassportHistoricalStatisticsResult>
+            result = await handler.HandleAsync(
+                new GetPassportHistoricalStatisticsQuery("user-1"));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(1, result.Value!.CompletedRideCount);
+        Assert.Equal(0, result.Value.CanonicallyResolvedRideCount);
+        Assert.Empty(result.Value.HistoricalCategories);
+        Assert.Empty(result.Value.HistoricalNames);
     }
 
     private static PassportHistoricalTargetContext Context(PassportHistoricalTarget target)
@@ -129,6 +197,9 @@ public sealed class GetPassportHistoricalStatisticsQueryHandlerTests
             null,
             null,
             null,
-            null);
+            null,
+            false,
+            "DarkRide",
+            true);
     }
 }

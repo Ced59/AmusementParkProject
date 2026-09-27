@@ -9,7 +9,7 @@ import {
 } from '@app/models/passport/passport-statistics.models';
 import { TranslationService } from '@app/services/translation.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
-import { getParkItemCategoryTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { PassportGlobalBarChartComponent } from '../../components/passport-global-bar-chart/passport-global-bar-chart.component';
 import { PassportGlobalBarChartRow } from '../../models/passport-global-chart.models';
@@ -72,7 +72,7 @@ export class PassportHistoricalStatisticsPageComponent implements OnInit {
     return statistics.historicalCategories.map(
       (item: PassportHistoricalCategory, index: number): PassportGlobalBarChartRow => ({
         id: String(index),
-        label: this.translateService.instant(getParkItemCategoryTranslationKey(item.category)),
+        label: this.translateService.instant(getParkItemTypeTranslationKey(item.category)),
         primaryValue: item.completedRideCount,
         secondaryValue: item.distinctAttractionCount
       })
