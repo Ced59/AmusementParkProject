@@ -139,8 +139,12 @@ export class HistoricalLineagePageComponent implements OnInit {
   private applySeo(lineage: PublicHistoricalLineage): void {
     const subjectType: string = this.route.snapshot.paramMap.get('subjectType')?.trim() ?? lineage.root.type;
     const subjectId: string = this.route.snapshot.paramMap.get('subjectId')?.trim() ?? '';
+    const contextParkId: string = this.route.snapshot.paramMap.get('contextParkId')?.trim()
+      ?? lineage.contextPark?.id
+      ?? '';
     const canonicalCommands: string[] = buildPublicHistoricalLineageRouteCommands({
       language: this.currentLanguage(),
+      contextParkId,
       subjectType,
       subjectId,
       subjectLabel: lineage.root.label

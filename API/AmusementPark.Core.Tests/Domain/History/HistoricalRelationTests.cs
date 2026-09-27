@@ -34,6 +34,34 @@ public sealed class HistoricalRelationTests
     }
 
     [Fact]
+    public void Constructor_WhenIdentifierIsReusedAcrossParks_ShouldKeepSubjectsDistinct()
+    {
+        HistoricalSubject source = new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            "shared-item",
+            "Attraction du premier parc",
+            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            "park-1");
+        HistoricalSubject target = new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            "shared-item",
+            "Attraction du second parc",
+            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            "park-2");
+
+        HistoricalRelation relation = CreateDraftRelation(
+            source,
+            target,
+            HistoricalRelationType.MovedTo,
+            HistoricalRelationDirection.Directed);
+
+        Assert.NotEqual(
+            new HistoricalSubjectKey(source.Type, source.Id, source.ContextParkId),
+            new HistoricalSubjectKey(target.Type, target.Id, target.ContextParkId));
+        Assert.Equal("park-2", relation.Target.ContextParkId);
+    }
+
+    [Fact]
     public void Constructor_WhenDirectionDoesNotMatchType_ShouldRejectRelation()
     {
         HistoricalPersistenceValidationException exception =
@@ -136,8 +164,8 @@ public sealed class HistoricalRelationTests
         return new HistoricalRelationSourceRevisionReference(
             sourceId,
             2,
-            new HistoricalSubjectKey(source.Type, source.Id),
-            new HistoricalSubjectKey(target.Type, target.Id),
+            new HistoricalSubjectKey(source.Type, source.Id, source.ContextParkId),
+            new HistoricalSubjectKey(target.Type, target.Id, target.ContextParkId),
             type,
             period,
             position,

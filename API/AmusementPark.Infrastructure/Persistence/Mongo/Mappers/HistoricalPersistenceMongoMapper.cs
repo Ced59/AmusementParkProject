@@ -314,7 +314,12 @@ internal static class HistoricalPersistenceMongoMapper
 
     private static HistoricalSubjectKeyDocument ToDocument(HistoricalSubjectKey subject)
     {
-        return new HistoricalSubjectKeyDocument { Type = subject.Type, Id = subject.Id };
+        return new HistoricalSubjectKeyDocument
+        {
+            Type = subject.Type,
+            Id = subject.Id,
+            ContextParkId = subject.ContextParkId,
+        };
     }
 
     private static HistoricalSubject ToDomain(HistoricalSubjectDocument document)
@@ -329,7 +334,7 @@ internal static class HistoricalPersistenceMongoMapper
 
     private static HistoricalSubjectKey ToDomain(HistoricalSubjectKeyDocument document)
     {
-        return new HistoricalSubjectKey(document.Type, document.Id);
+        return new HistoricalSubjectKey(document.Type, document.Id, document.ContextParkId);
     }
 
     private static HistoricalPeriodDocument ToDocument(HistoricalPeriod period)

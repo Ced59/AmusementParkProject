@@ -39,8 +39,9 @@ export interface PublicHistoryArticleRouteTarget extends PublicParkRouteTarget {
 }
 
 export interface PublicHistoricalLineageRouteTarget {
-  language: string | null | undefined;
-  subjectType: string | null | undefined;
+    language: string | null | undefined;
+    contextParkId: string | null | undefined;
+    subjectType: string | null | undefined;
   subjectId: string | null | undefined;
   subjectLabel: string | null | undefined;
 }
@@ -218,20 +219,22 @@ export function buildPublicParkHistoryRouteCommands(target: PublicParkRouteTarge
 }
 
 export function buildPublicHistoricalLineageRouteCommands(target: PublicHistoricalLineageRouteTarget): string[] | null {
-  const subjectType: string | null = normalizeRouteValue(target.subjectType)?.toLowerCase() ?? null;
+    const contextParkId: string | null = normalizeRouteValue(target.contextParkId);
+    const subjectType: string | null = normalizeRouteValue(target.subjectType)?.toLowerCase() ?? null;
   const subjectId: string | null = normalizeRouteValue(target.subjectId);
   const subjectLabel: string | null = normalizeRouteValue(target.subjectLabel);
 
-  if (!subjectType || !subjectId || !subjectLabel) {
+    if (!contextParkId || !subjectType || !subjectId || !subjectLabel) {
     return null;
   }
 
   return [
     '/',
     resolveSupportedLanguage(target.language),
-    'history',
-    'lineages',
-    subjectType,
+      'history',
+      'lineages',
+      contextParkId,
+      subjectType,
     subjectId,
     buildEntitySlug(subjectLabel, 'history')
   ];

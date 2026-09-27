@@ -52,10 +52,10 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
         return subject.Type switch
         {
             HistoricalSubjectType.Park => await this.IsParkPublicAsync(subject.Id, cancellationToken),
-            HistoricalSubjectType.ParkItem => await this.IsParkItemPublicAsync(subject.Id, cancellationToken),
+            HistoricalSubjectType.ParkItem => await this.IsParkItemPublicAsync(subject, cancellationToken),
             HistoricalSubjectType.StandaloneAttraction =>
                 await this.IsStandaloneAttractionPublicAsync(subject.Id, cancellationToken),
-            HistoricalSubjectType.ParkZone => await this.IsParkZonePublicAsync(subject.Id, cancellationToken),
+            HistoricalSubjectType.ParkZone => await this.IsParkZonePublicAsync(subject, cancellationToken),
             HistoricalSubjectType.ParkOperator => await this.IsParkOperatorPublicAsync(subject.Id, cancellationToken),
             HistoricalSubjectType.AttractionManufacturer =>
                 await this.IsAttractionManufacturerPublicAsync(subject.Id, cancellationToken),
@@ -70,31 +70,33 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
         ArgumentNullException.ThrowIfNull(subjects);
         HistoricalSubject[] candidates = subjects
             .Where(static subject => subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.FollowCurrentSubject)
-            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .DistinctBy(static subject => (subject.Type, subject.Id, subject.ContextParkId))
             .ToArray();
         HashSet<HistoricalSubjectKey> publicKeys = new();
         foreach (IGrouping<HistoricalSubjectType, HistoricalSubject> group in candidates.GroupBy(static subject => subject.Type))
         {
-            string[] identifiers = group.Select(static subject => subject.Id).Distinct(StringComparer.Ordinal).ToArray();
-            IReadOnlyCollection<string> publicIdentifiers = await this.LoadPublicIdentifiersAsync(
+            IReadOnlyCollection<HistoricalSubjectKey> publicGroupKeys = await this.LoadPublicKeysAsync(
                 group.Key,
-                identifiers,
+                group.ToArray(),
                 cancellationToken);
-            publicKeys.UnionWith(publicIdentifiers.Select(id => new HistoricalSubjectKey(group.Key, id)));
+            publicKeys.UnionWith(publicGroupKeys);
         }
 
         HistoricalSubject[] historicalParkSubjects = subjects
             .Where(static subject => subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.HistoricalOnly
                 && subject.Type is HistoricalSubjectType.ParkItem or HistoricalSubjectType.ParkZone
                 && !string.IsNullOrWhiteSpace(subject.ContextParkId))
-            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .DistinctBy(static subject => (subject.Type, subject.Id, subject.ContextParkId))
             .ToArray();
         IReadOnlyDictionary<string, string> publicContextParks = await this.GetPublicParkNamesAsync(
             historicalParkSubjects.Select(static subject => subject.ContextParkId!).ToArray(),
             cancellationToken);
         publicKeys.UnionWith(historicalParkSubjects
             .Where(subject => publicContextParks.ContainsKey(subject.ContextParkId!))
-            .Select(static subject => new HistoricalSubjectKey(subject.Type, subject.Id)));
+            .Select(static subject => new HistoricalSubjectKey(
+                subject.Type,
+                subject.Id,
+                subject.ContextParkId)));
 
         return publicKeys;
     }
@@ -120,40 +122,48 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
             .ToDictionary(static park => park.Id, static park => park.Name!, StringComparer.Ordinal);
     }
 
-    private async Task<IReadOnlyCollection<string>> LoadPublicIdentifiersAsync(
+    private async Task<IReadOnlyCollection<HistoricalSubjectKey>> LoadPublicKeysAsync(
         HistoricalSubjectType type,
-        IReadOnlyCollection<string> identifiers,
+        IReadOnlyCollection<HistoricalSubject> subjects,
         CancellationToken cancellationToken)
     {
+        string[] identifiers = subjects
+            .Select(static subject => subject.Id)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
         return type switch
         {
             HistoricalSubjectType.Park => (await this.parks.Find(item => identifiers.Contains(item.Id))
                     .ToListAsync(cancellationToken))
                 .Where(IsParkPublic)
-                .Select(static item => item.Id)
+                .Select(static item => new HistoricalSubjectKey(HistoricalSubjectType.Park, item.Id, item.Id))
                 .ToArray(),
-            HistoricalSubjectType.ParkItem => await this.LoadPublicParkItemIdentifiersAsync(identifiers, cancellationToken),
+            HistoricalSubjectType.ParkItem => await this.LoadPublicParkItemKeysAsync(identifiers, cancellationToken),
             HistoricalSubjectType.StandaloneAttraction => (await this.standaloneAttractions
                     .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
                 .Where(IsStandaloneAttractionPublic)
-                .Select(static item => item.Id)
+                .Select(static item => new HistoricalSubjectKey(
+                    HistoricalSubjectType.StandaloneAttraction,
+                    item.Id))
                 .ToArray(),
-            HistoricalSubjectType.ParkZone => await this.LoadPublicZoneIdentifiersAsync(identifiers, cancellationToken),
+            HistoricalSubjectType.ParkZone => await this.LoadPublicZoneKeysAsync(identifiers, cancellationToken),
             HistoricalSubjectType.ParkOperator => (await this.parkOperators
                     .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
                 .Where(static item => item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
-                .Select(static item => item.Id)
+                .Select(static item => new HistoricalSubjectKey(HistoricalSubjectType.ParkOperator, item.Id))
                 .ToArray(),
             HistoricalSubjectType.AttractionManufacturer => (await this.attractionManufacturers
                     .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
                 .Where(static item => item.IsVisible && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
-                .Select(static item => item.Id)
+                .Select(static item => new HistoricalSubjectKey(
+                    HistoricalSubjectType.AttractionManufacturer,
+                    item.Id))
                 .ToArray(),
-            _ => Array.Empty<string>(),
+            _ => Array.Empty<HistoricalSubjectKey>(),
         };
     }
 
-    private async Task<IReadOnlyCollection<string>> LoadPublicParkItemIdentifiersAsync(
+    private async Task<IReadOnlyCollection<HistoricalSubjectKey>> LoadPublicParkItemKeysAsync(
         IReadOnlyCollection<string> identifiers,
         CancellationToken cancellationToken)
     {
@@ -168,11 +178,14 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
         return items.Where(item => item.IsVisible
                 && item.AdminReviewStatus != AdminReviewStatus.NotRelevant
                 && publicParkIds.Contains(item.ParkId))
-            .Select(static item => item.Id)
+            .Select(static item => new HistoricalSubjectKey(
+                HistoricalSubjectType.ParkItem,
+                item.Id,
+                item.ParkId))
             .ToArray();
     }
 
-    private async Task<IReadOnlyCollection<string>> LoadPublicZoneIdentifiersAsync(
+    private async Task<IReadOnlyCollection<HistoricalSubjectKey>> LoadPublicZoneKeysAsync(
         IReadOnlyCollection<string> identifiers,
         CancellationToken cancellationToken)
     {
@@ -185,7 +198,10 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
             .Select(static item => item.Id)
             .ToHashSet(StringComparer.Ordinal);
         return zones.Where(zone => zone.IsVisible && publicParkIds.Contains(zone.ParkId))
-            .Select(static zone => zone.Id)
+            .Select(static zone => new HistoricalSubjectKey(
+                HistoricalSubjectType.ParkZone,
+                zone.Id,
+                zone.ParkId))
             .ToArray();
     }
 
@@ -197,14 +213,18 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
         return IsParkPublic(park);
     }
 
-    private async Task<bool> IsParkItemPublicAsync(string parkItemId, CancellationToken cancellationToken)
+    private async Task<bool> IsParkItemPublicAsync(
+        HistoricalSubject subject,
+        CancellationToken cancellationToken)
     {
         ParkItemDocument? parkItem = await this.parkItems
-            .Find(item => item.Id == parkItemId)
+            .Find(item => item.Id == subject.Id)
             .FirstOrDefaultAsync(cancellationToken);
         return parkItem is not null
             && parkItem.IsVisible
             && parkItem.AdminReviewStatus != AdminReviewStatus.NotRelevant
+            && (subject.ContextParkId is null
+                || string.Equals(subject.ContextParkId, parkItem.ParkId, StringComparison.Ordinal))
             && await this.IsParkPublicAsync(parkItem.ParkId, cancellationToken);
     }
 
@@ -226,13 +246,17 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
             && !ParkItemStatusNormalizer.IsClosedDefinitively(attraction.AttractionDetails?.Status);
     }
 
-    private async Task<bool> IsParkZonePublicAsync(string zoneId, CancellationToken cancellationToken)
+    private async Task<bool> IsParkZonePublicAsync(
+        HistoricalSubject subject,
+        CancellationToken cancellationToken)
     {
         ParkZoneDocument? zone = await this.parkZones
-            .Find(item => item.Id == zoneId)
+            .Find(item => item.Id == subject.Id)
             .FirstOrDefaultAsync(cancellationToken);
         return zone is not null
             && zone.IsVisible
+            && (subject.ContextParkId is null
+                || string.Equals(subject.ContextParkId, zone.ParkId, StringComparison.Ordinal))
             && await this.IsParkPublicAsync(zone.ParkId, cancellationToken);
     }
 

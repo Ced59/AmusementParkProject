@@ -953,6 +953,9 @@ zone. Chaque révision relie deux sujets typés, conserve sa direction et sa
 période exactes, cite les révisions de sources qui prouvent précisément cette
 assertion et embarque son événement de revue. Une relation symétrique possède
 un ordre canonique et n'est donc pas enregistrée deux fois en sens inverse.
+L'identité d'un sujet de relation inclut durablement son parc de contexte : la
+réutilisation d'un même identifiant par deux parcs ne fusionne ni leurs preuves,
+ni leur visibilité, ni leurs graphes.
 
 La publication refuse les auto-relations, les couples de types incompatibles,
 les sujets courants non publics, les portées historiques insuffisantes et les

@@ -37,6 +37,7 @@ public sealed class PublicHistoricalLineageController : ControllerBase
     public async Task<IActionResult> GetAsync(
         [FromRoute] string type,
         [FromRoute] string id,
+        [FromQuery] string? contextParkId,
         CancellationToken cancellationToken = default)
     {
         if (!Enum.TryParse(type, true, out HistoricalSubjectType subjectType)
@@ -46,7 +47,7 @@ public sealed class PublicHistoricalLineageController : ControllerBase
         }
 
         ApplicationResult<PublicHistoricalLineageResult> result = await this.handler.HandleAsync(
-            new GetPublicHistoricalLineageQuery(subjectType, id),
+            new GetPublicHistoricalLineageQuery(subjectType, id, contextParkId),
             cancellationToken);
         return result.IsSuccess && result.Value is not null
             ? this.Ok(result.Value.ToHttp())

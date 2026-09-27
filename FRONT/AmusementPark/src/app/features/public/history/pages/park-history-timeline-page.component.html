@@ -85,7 +85,7 @@
                   </a>
                 }
 
-                @if (event.hasPublishedLineage && lineageLink(event); as lineageRoute) {
+                @if (event.hasPublishedLineage && lineageLink(event, currentTimeline); as lineageRoute) {
                   <a class="history-lineage-link" [routerLink]="lineageRoute">
                     <i class="pi pi-sitemap" aria-hidden="true"></i>
                     {{ 'history.lineage.open' | translate }}

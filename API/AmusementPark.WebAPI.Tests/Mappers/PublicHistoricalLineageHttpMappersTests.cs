@@ -35,8 +35,8 @@ public sealed class PublicHistoricalLineageHttpMappersTests
                 new HistoricalRelationSourceRevisionReference(
                     sourceId,
                     2,
-                    new HistoricalSubjectKey(source.Type, source.Id),
-                    new HistoricalSubjectKey(target.Type, target.Id),
+                    new HistoricalSubjectKey(source.Type, source.Id, source.ContextParkId),
+                    new HistoricalSubjectKey(target.Type, target.Id, target.ContextParkId),
                     HistoricalRelationType.ReplacedBy,
                     period,
                     HistoricalEvidencePosition.Supports,

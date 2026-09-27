@@ -117,7 +117,8 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                 ResolveCurrentSubjectName(fact, publicCurrentSubjects),
                 subjectsWithLineage.Contains(new HistoricalSubjectKey(
                     fact.Subject.Type,
-                    fact.Subject.Id))))
+                    fact.Subject.Id,
+                    fact.Subject.ContextParkId))))
             .ToArray();
         PagedResult<PublicHistoricalTimelineEntryResult> page = new(
             entries,
@@ -143,7 +144,10 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
         }
 
         HistoricalSubjectKey[] keys = facts
-            .Select(static fact => new HistoricalSubjectKey(fact.Subject.Type, fact.Subject.Id))
+            .Select(static fact => new HistoricalSubjectKey(
+                fact.Subject.Type,
+                fact.Subject.Id,
+                fact.Subject.ContextParkId))
             .Distinct()
             .ToArray();
         IReadOnlyCollection<HistoricalRelation> relations =
@@ -153,7 +157,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                 cancellationToken);
         HistoricalSubject[] relationSubjects = relations
             .SelectMany(static relation => new[] { relation.Source, relation.Target })
-            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .DistinctBy(static subject => (subject.Type, subject.Id, subject.ContextParkId))
             .ToArray();
         IReadOnlySet<HistoricalSubjectKey> publicCurrentKeys =
             await this.subjectPublicationStateReader.GetPublicSubjectKeysAsync(
@@ -183,8 +187,14 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                     currentlyPublicSources))
             .SelectMany(static relation => new[]
             {
-                new HistoricalSubjectKey(relation.Source.Type, relation.Source.Id),
-                new HistoricalSubjectKey(relation.Target.Type, relation.Target.Id),
+                new HistoricalSubjectKey(
+                    relation.Source.Type,
+                    relation.Source.Id,
+                    relation.Source.ContextParkId),
+                new HistoricalSubjectKey(
+                    relation.Target.Type,
+                    relation.Target.Id,
+                    relation.Target.ContextParkId),
             })
             .Where(keys.Contains)
             .ToHashSet();
@@ -197,10 +207,13 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
         return subject.PublicationPolicy switch
         {
             HistoricalSubjectPublicationPolicy.FollowCurrentSubject => publicCurrentKeys.Contains(
-                new HistoricalSubjectKey(subject.Type, subject.Id)),
+                new HistoricalSubjectKey(subject.Type, subject.Id, subject.ContextParkId)),
             HistoricalSubjectPublicationPolicy.HistoricalOnly => subject.Type is not HistoricalSubjectType.ParkItem
                     and not HistoricalSubjectType.ParkZone
-                || publicCurrentKeys.Contains(new HistoricalSubjectKey(subject.Type, subject.Id)),
+                || publicCurrentKeys.Contains(new HistoricalSubjectKey(
+                    subject.Type,
+                    subject.Id,
+                    subject.ContextParkId)),
             _ => false,
         };
     }

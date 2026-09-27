@@ -7,12 +7,16 @@ public static class HistoricalLineageCycleDetector
         ArgumentNullException.ThrowIfNull(relations);
         Dictionary<HistoricalSubjectKey, HistoricalSubjectKey[]> adjacency = relations
             .Where(static relation => relation.Direction == HistoricalRelationDirection.Directed)
-            .GroupBy(static relation => new HistoricalSubjectKey(relation.Source.Type, relation.Source.Id))
+            .GroupBy(static relation => new HistoricalSubjectKey(
+                relation.Source.Type,
+                relation.Source.Id,
+                relation.Source.ContextParkId))
             .ToDictionary(
                 static group => group.Key,
                 static group => group.Select(relation => new HistoricalSubjectKey(
                         relation.Target.Type,
-                        relation.Target.Id))
+                        relation.Target.Id,
+                        relation.Target.ContextParkId))
                     .Distinct()
                     .ToArray());
         HashSet<HistoricalSubjectKey> visited = new();

@@ -7,4 +7,5 @@ namespace AmusementPark.Application.Features.History.Queries;
 
 public sealed record GetPublicHistoricalLineageQuery(
     HistoricalSubjectType SubjectType,
-    string SubjectId) : IQuery<ApplicationResult<PublicHistoricalLineageResult>>;
+    string SubjectId,
+    string? ContextParkId = null) : IQuery<ApplicationResult<PublicHistoricalLineageResult>>;

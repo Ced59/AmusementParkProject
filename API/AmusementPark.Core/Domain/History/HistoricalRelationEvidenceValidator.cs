@@ -26,8 +26,14 @@ public static class HistoricalRelationEvidenceValidator
             throw Invalid(HistoricalPersistenceErrorCodes.MissingSource, "Every relation source revision must resolve exactly.");
         }
 
-        HistoricalSubjectKey sourceKey = new(relation.Source.Type, relation.Source.Id);
-        HistoricalSubjectKey targetKey = new(relation.Target.Type, relation.Target.Id);
+        HistoricalSubjectKey sourceKey = new(
+            relation.Source.Type,
+            relation.Source.Id,
+            relation.Source.ContextParkId);
+        HistoricalSubjectKey targetKey = new(
+            relation.Target.Type,
+            relation.Target.Id,
+            relation.Target.ContextParkId);
         bool citationsAreBound = relation.SourceReferences.All(reference =>
             reference.SourceSubject == sourceKey
             && reference.TargetSubject == targetKey

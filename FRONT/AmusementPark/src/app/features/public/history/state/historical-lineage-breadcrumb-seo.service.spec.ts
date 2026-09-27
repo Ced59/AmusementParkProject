@@ -15,7 +15,7 @@ describe('HistoricalLineageBreadcrumbSeoService', () => {
     service.apply(
       'fr',
       'Lignée historique de Le Grand Huit',
-      '/fr/history/lineages/parkitem/item-1/le-grand-huit',
+      '/fr/history/lineages/park-1/parkitem/item-1/le-grand-huit',
       {
         parkName: 'Parc exemple',
         parkPath: '/fr/park/park-1/parc-exemple',
@@ -34,7 +34,7 @@ describe('HistoricalLineageBreadcrumbSeoService', () => {
           expect.objectContaining({
             position: 5,
             name: 'Lignée historique de Le Grand Huit',
-            item: 'https://amusement-parks.fun/fr/history/lineages/parkitem/item-1/le-grand-huit'
+            item: 'https://amusement-parks.fun/fr/history/lineages/park-1/parkitem/item-1/le-grand-huit'
           })
         ]
       })

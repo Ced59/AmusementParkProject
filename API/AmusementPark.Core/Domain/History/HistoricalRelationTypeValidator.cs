@@ -15,7 +15,9 @@ public static class HistoricalRelationTypeValidator
             throw Invalid("A historical relation requires a valid type and direction.");
         }
 
-        if (source.Type == target.Type && string.Equals(source.Id, target.Id, StringComparison.Ordinal))
+        if (source.Type == target.Type
+            && string.Equals(source.Id, target.Id, StringComparison.Ordinal)
+            && string.Equals(source.ContextParkId, target.ContextParkId, StringComparison.Ordinal))
         {
             throw Invalid("A historical subject cannot be related to itself.");
         }
@@ -39,9 +41,15 @@ public static class HistoricalRelationTypeValidator
     private static int CompareSubjects(HistoricalSubject left, HistoricalSubject right)
     {
         int typeComparison = left.Type.CompareTo(right.Type);
-        return typeComparison != 0
-            ? typeComparison
-            : string.Compare(left.Id, right.Id, StringComparison.Ordinal);
+        if (typeComparison != 0)
+        {
+            return typeComparison;
+        }
+
+        int idComparison = string.Compare(left.Id, right.Id, StringComparison.Ordinal);
+        return idComparison != 0
+            ? idComparison
+            : string.Compare(left.ContextParkId, right.ContextParkId, StringComparison.Ordinal);
     }
 
     private static bool AreSubjectsCompatible(

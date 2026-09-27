@@ -971,14 +971,14 @@ describe('SeoService', () => {
     service.applyHistoricalLineageSeo(
       'Liens historiques de l’attraction',
       'Découvre les liens historiques explicites et leurs sources.',
-      '/fr/history/lineages/parkitem/internal-id/wrong-slug?from=timeline',
-      '/fr/history/lineages/parkitem/internal-id/le-grand-huit'
+      '/fr/history/lineages/park-1/parkitem/internal-id/wrong-slug?from=timeline',
+      '/fr/history/lineages/park-1/parkitem/internal-id/le-grand-huit'
     );
 
     expect(documentRef.title).toBe('Liens historiques de l’attraction — Amusement Parks');
     expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
     expect(readCanonicalHref()).toBe(
-      'http://localhost:4200/fr/history/lineages/parkitem/internal-id/le-grand-huit'
+      'http://localhost:4200/fr/history/lineages/park-1/parkitem/internal-id/le-grand-huit'
     );
     expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
     expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);

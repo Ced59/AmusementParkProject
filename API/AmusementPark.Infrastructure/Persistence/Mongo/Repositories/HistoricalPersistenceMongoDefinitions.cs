@@ -18,6 +18,7 @@ internal static class HistoricalPersistenceMongoDefinitions
                 Builders<HistoricalRelationDocument>.IndexKeys
                     .Ascending("source.type")
                     .Ascending("source.id")
+                    .Ascending("source.contextParkId")
                     .Ascending(document => document.Type)
                     .Descending(document => document.Revision),
                 new CreateIndexOptions { Name = "idx_historical_relations_source_type_revision" }),
@@ -25,6 +26,7 @@ internal static class HistoricalPersistenceMongoDefinitions
                 Builders<HistoricalRelationDocument>.IndexKeys
                     .Ascending("target.type")
                     .Ascending("target.id")
+                    .Ascending("target.contextParkId")
                     .Ascending(document => document.Type)
                     .Descending(document => document.Revision),
                 new CreateIndexOptions { Name = "idx_historical_relations_target_type_revision" }),

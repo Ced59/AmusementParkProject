@@ -15,10 +15,11 @@ export const historicalLineageResolver: ResolveFn<PublicHistoricalLineage | null
 ): Observable<PublicHistoricalLineage | null> => {
   const subjectType: string = route.paramMap.get('subjectType')?.trim() ?? '';
   const subjectId: string = route.paramMap.get('subjectId')?.trim() ?? '';
+  const contextParkId: string = route.paramMap.get('contextParkId')?.trim() ?? '';
   const ssrStatus: SsrHttpStatusService = inject(SsrHttpStatusService);
   const historyData: HistoryDataPort = inject(HISTORY_DATA_PORT);
 
-  if (subjectType.length === 0 || subjectId.length === 0) {
+  if (contextParkId.length === 0 || subjectType.length === 0 || subjectId.length === 0) {
     ssrStatus.setNotFound();
     return of(null);
   }
@@ -26,6 +27,7 @@ export const historicalLineageResolver: ResolveFn<PublicHistoricalLineage | null
   return historyData.getPublicHistoricalLineage(
     subjectType,
     subjectId,
+    contextParkId,
     anonymousHttpOptions()
   ).pipe(
     map((lineage: PublicHistoricalLineage): PublicHistoricalLineage => lineage),

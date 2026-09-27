@@ -34,13 +34,21 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
         CancellationToken cancellationToken = default)
     {
         string normalizedSubjectId = query.SubjectId?.Trim() ?? string.Empty;
+        string? normalizedContextParkId = string.IsNullOrWhiteSpace(query.ContextParkId)
+            ? null
+            : query.ContextParkId.Trim();
         if (!Enum.IsDefined(query.SubjectType) || normalizedSubjectId.Length == 0)
         {
             return ApplicationResult<PublicHistoricalLineageResult>.Failure(
                 ApplicationErrors.Required("historicalSubject"));
         }
 
-        if (normalizedSubjectId.Length > 200 || normalizedSubjectId.Any(char.IsControl))
+        if (normalizedSubjectId.Length > 200
+            || normalizedSubjectId.Any(char.IsControl)
+            || normalizedContextParkId is not null
+                && (normalizedContextParkId.Length > 200 || normalizedContextParkId.Any(char.IsControl))
+            || query.SubjectType is HistoricalSubjectType.ParkItem or HistoricalSubjectType.ParkZone
+                && normalizedContextParkId is null)
         {
             return ApplicationResult<PublicHistoricalLineageResult>.Failure(
                 ApplicationError.Validation(
@@ -48,7 +56,13 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
                     "Le sujet historique demandé est invalide."));
         }
 
-        HistoricalSubjectKey rootKey = new(query.SubjectType, normalizedSubjectId);
+        string? rootContextParkId = query.SubjectType == HistoricalSubjectType.Park
+            ? normalizedSubjectId
+            : normalizedContextParkId;
+        HistoricalSubjectKey rootKey = new(
+            query.SubjectType,
+            normalizedSubjectId,
+            rootContextParkId);
         Dictionary<Guid, HistoricalRelation> loadedRelations = new();
         HashSet<HistoricalSubjectKey> visited = new() { rootKey };
         HashSet<HistoricalSubjectKey> frontier = new() { rootKey };
@@ -108,7 +122,7 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
 
         HistoricalSubject[] loadedSubjects = loadedRelations.Values
             .SelectMany(static relation => new[] { relation.Source, relation.Target })
-            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .DistinctBy(static subject => (subject.Type, subject.Id, subject.ContextParkId))
             .ToArray();
         IReadOnlySet<HistoricalSubjectKey> publicCurrentKeys =
             await this.subjectPublicationStateReader.GetPublicSubjectKeysAsync(
@@ -170,7 +184,7 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
             .ToArray();
         HistoricalSubject[] subjects = connectedRelations
             .SelectMany(static relation => new[] { relation.Source, relation.Target })
-            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .DistinctBy(static subject => (subject.Type, subject.Id, subject.ContextParkId))
             .OrderBy(static subject => subject.HistoricalLabel, StringComparer.OrdinalIgnoreCase)
             .ThenBy(static subject => subject.Type)
             .ToArray();
@@ -265,6 +279,6 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
 
     private static HistoricalSubjectKey ToKey(HistoricalSubject subject)
     {
-        return new HistoricalSubjectKey(subject.Type, subject.Id);
+        return new HistoricalSubjectKey(subject.Type, subject.Id, subject.ContextParkId);
     }
 }

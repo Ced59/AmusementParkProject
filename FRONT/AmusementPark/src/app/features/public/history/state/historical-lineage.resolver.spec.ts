@@ -39,6 +39,7 @@ describe('historicalLineageResolver', () => {
     expect(historyDataPort.getPublicHistoricalLineage).toHaveBeenCalledWith(
       'ParkItem',
       'item-1',
+      'park-1',
       expect.objectContaining({ context: expect.any(HttpContext) })
     );
   });
@@ -54,7 +55,7 @@ describe('historicalLineageResolver', () => {
 
   function resolveLineage(subjectType: string, subjectId: string): Promise<PublicHistoricalLineage | null> {
     const route = {
-      paramMap: convertToParamMap({ subjectType, subjectId })
+      paramMap: convertToParamMap({ contextParkId: 'park-1', subjectType, subjectId })
     } as ActivatedRouteSnapshot;
     return TestBed.runInInjectionContext(() => firstValueFrom(
       historicalLineageResolver(route, {} as RouterStateSnapshot) as Observable<PublicHistoricalLineage | null>

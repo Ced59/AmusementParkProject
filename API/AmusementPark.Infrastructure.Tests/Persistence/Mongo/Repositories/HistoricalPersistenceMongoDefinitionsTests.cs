@@ -27,6 +27,15 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_publication_state");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_source_revision");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_audit_date");
+        CreateIndexModel<HistoricalRelationDocument> source = indexes.Single(
+            index => index.Options.Name == "idx_historical_relations_source_type_revision");
+        IBsonSerializer<HistoricalRelationDocument> relationSerializer =
+            BsonSerializer.SerializerRegistry.GetSerializer<HistoricalRelationDocument>();
+        BsonDocument sourceKeys = source.Keys.Render(
+            new RenderArgs<HistoricalRelationDocument>(
+                relationSerializer,
+                BsonSerializer.SerializerRegistry));
+        Assert.True(sourceKeys.Contains("source.contextParkId"));
         Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));
     }
 
@@ -35,7 +44,7 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
     {
         IReadOnlyCollection<BsonDocument> stages =
             HistoricalRelationRepository.BuildLatestTouchingSubjectsPipeline(
-                new[] { new HistoricalSubjectKey(HistoricalSubjectType.ParkItem, "item-1") },
+                new[] { new HistoricalSubjectKey(HistoricalSubjectType.ParkItem, "item-1", "park-1") },
                 "historical-relations",
                 25);
         BsonDocument[] pipeline = stages.ToArray();
@@ -45,6 +54,10 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Equal(-1, pipeline[2]["$lookup"]["pipeline"][1]["$sort"]["revision"].AsInt32);
         Assert.Equal("$latest", pipeline[4]["$replaceRoot"]["newRoot"].AsString);
         Assert.True(pipeline[5]["$match"].AsBsonDocument.Contains("$or"));
+        Assert.Contains(
+            pipeline[5]["$match"]["$or"].AsBsonArray,
+            endpoint => endpoint.AsBsonDocument.Contains("source.contextParkId")
+                && endpoint.AsBsonDocument["source.contextParkId"] == "park-1");
         Assert.Equal(HistoricalPublicationState.Published.ToString(), pipeline[6]["$match"]["publicationState"].AsString);
         Assert.Equal(25, pipeline[^1]["$limit"].AsInt32);
     }

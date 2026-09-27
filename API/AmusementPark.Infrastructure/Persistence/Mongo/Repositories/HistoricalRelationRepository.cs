@@ -148,8 +148,8 @@ public sealed class HistoricalRelationRepository : IHistoricalRelationRepository
 
         BsonArray endpoints = new(subjects.SelectMany(static subject => new[]
         {
-            new BsonDocument { ["source.type"] = subject.Type.ToString(), ["source.id"] = subject.Id },
-            new BsonDocument { ["target.type"] = subject.Type.ToString(), ["target.id"] = subject.Id },
+            BuildEndpoint("source", subject),
+            BuildEndpoint("target", subject),
         }));
         return new BsonDocument[]
         {
@@ -182,6 +182,18 @@ public sealed class HistoricalRelationRepository : IHistoricalRelationRepository
             }),
             new BsonDocument("$sort", new BsonDocument { ["period.start.year"] = 1, ["relationId"] = 1 }),
             new BsonDocument("$limit", limit),
+        };
+    }
+
+    private static BsonDocument BuildEndpoint(string endpoint, HistoricalSubjectKey subject)
+    {
+        return new BsonDocument
+        {
+            [$"{endpoint}.type"] = subject.Type.ToString(),
+            [$"{endpoint}.id"] = subject.Id,
+            [$"{endpoint}.contextParkId"] = subject.ContextParkId is null
+                ? BsonNull.Value
+                : subject.ContextParkId,
         };
     }
 

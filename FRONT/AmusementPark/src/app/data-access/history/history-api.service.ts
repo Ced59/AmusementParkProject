@@ -36,8 +36,8 @@ export class HistoryApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getPublicHistoricalLineage(subjectType: string, subjectId: string, options: HistoryHttpOptions = {}): Observable<PublicHistoricalLineage> {
-    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getPublicHistoricalLineage(subjectType, subjectId)}`;
+  getPublicHistoricalLineage(subjectType: string, subjectId: string, contextParkId: string, options: HistoryHttpOptions = {}): Observable<PublicHistoricalLineage> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getPublicHistoricalLineage(subjectType, subjectId, contextParkId)}`;
     return this.http.get<PublicHistoricalLineage>(url, options);
   }
 

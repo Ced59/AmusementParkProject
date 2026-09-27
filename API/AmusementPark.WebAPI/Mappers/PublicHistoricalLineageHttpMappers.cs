@@ -9,14 +9,14 @@ internal static class PublicHistoricalLineageHttpMappers
 {
     public static PublicHistoricalLineageDto ToHttp(this PublicHistoricalLineageResult result)
     {
-        Dictionary<(HistoricalSubjectType Type, string Id), string> publicKeys = result.Subjects
+        Dictionary<(HistoricalSubjectType Type, string Id, string? ContextParkId), string> publicKeys = result.Subjects
             .Select((subject, index) => new
             {
                 Subject = subject,
                 Key = $"subject-{index + 1}",
             })
             .ToDictionary(
-                static item => (item.Subject.Type, item.Subject.Id),
+                static item => (item.Subject.Type, item.Subject.Id, item.Subject.ContextParkId),
                 static item => item.Key);
         return new PublicHistoricalLineageDto
         {
@@ -38,11 +38,11 @@ internal static class PublicHistoricalLineageHttpMappers
 
     private static PublicHistoricalLineageSubjectDto ToLineageHttp(
         this HistoricalSubject subject,
-        IReadOnlyDictionary<(HistoricalSubjectType Type, string Id), string> publicKeys)
+        IReadOnlyDictionary<(HistoricalSubjectType Type, string Id, string? ContextParkId), string> publicKeys)
     {
         return new PublicHistoricalLineageSubjectDto
         {
-            Key = publicKeys[(subject.Type, subject.Id)],
+            Key = publicKeys[(subject.Type, subject.Id, subject.ContextParkId)],
             Type = subject.Type.ToString(),
             Label = subject.HistoricalLabel,
             IsHistoricalOnly = subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.HistoricalOnly,
@@ -51,13 +51,19 @@ internal static class PublicHistoricalLineageHttpMappers
 
     private static PublicHistoricalLineageRelationDto ToLineageHttp(
         this PublicHistoricalRelationResult result,
-        IReadOnlyDictionary<(HistoricalSubjectType Type, string Id), string> publicKeys)
+        IReadOnlyDictionary<(HistoricalSubjectType Type, string Id, string? ContextParkId), string> publicKeys)
     {
         HistoricalRelation relation = result.Relation;
         return new PublicHistoricalLineageRelationDto
         {
-            SourceKey = publicKeys[(relation.Source.Type, relation.Source.Id)],
-            TargetKey = publicKeys[(relation.Target.Type, relation.Target.Id)],
+            SourceKey = publicKeys[(
+                relation.Source.Type,
+                relation.Source.Id,
+                relation.Source.ContextParkId)],
+            TargetKey = publicKeys[(
+                relation.Target.Type,
+                relation.Target.Id,
+                relation.Target.ContextParkId)],
             Type = relation.Type.ToString(),
             Direction = relation.Direction.ToString(),
             Period = relation.Period.ToLineageHttp(),

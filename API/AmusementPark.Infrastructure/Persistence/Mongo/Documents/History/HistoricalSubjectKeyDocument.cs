@@ -12,4 +12,8 @@ public sealed class HistoricalSubjectKeyDocument
 
     [BsonElement("id")]
     public string Id { get; set; } = string.Empty;
+
+    [BsonElement("contextParkId")]
+    [BsonIgnoreIfNull]
+    public string? ContextParkId { get; set; }
 }

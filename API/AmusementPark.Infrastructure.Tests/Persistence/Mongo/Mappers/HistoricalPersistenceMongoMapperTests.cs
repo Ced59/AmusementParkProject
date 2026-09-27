@@ -43,8 +43,8 @@ public sealed class HistoricalPersistenceMongoMapperTests
                 new HistoricalRelationSourceRevisionReference(
                     sourceId,
                     2,
-                    new HistoricalSubjectKey(source.Type, source.Id),
-                    new HistoricalSubjectKey(target.Type, target.Id),
+                    new HistoricalSubjectKey(source.Type, source.Id, source.ContextParkId),
+                    new HistoricalSubjectKey(target.Type, target.Id, target.ContextParkId),
                     HistoricalRelationType.ReplacedBy,
                     period,
                     HistoricalEvidencePosition.Supports,
@@ -76,8 +76,10 @@ public sealed class HistoricalPersistenceMongoMapperTests
         Assert.Equal(HistoricalRelationType.ReplacedBy, restored.Type);
         Assert.Equal("item-1", restored.Source.Id);
         Assert.Equal("item-2", restored.Target.Id);
+        Assert.Equal("park-1", restored.Source.ContextParkId);
         HistoricalRelationSourceRevisionReference reference = Assert.Single(restored.SourceReferences);
         Assert.Equal(sourceId, reference.SourceId);
+        Assert.Equal("park-1", reference.SourceSubject.ContextParkId);
         Assert.Equal(period, reference.Period);
         Assert.Equal(reviewEvent.Id, document.TransitionReviewEvent.ToDomain().Id);
         Assert.Equal(0, restored.RecordedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);

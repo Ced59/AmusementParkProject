@@ -59,7 +59,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(
                 data.Relation.Source.Type,
-                data.Relation.Source.Id));
+                data.Relation.Source.Id,
+                data.Relation.Source.ContextParkId));
 
         Assert.True(result.IsSuccess);
         PublicHistoricalLineageResult lineage = Assert.IsType<PublicHistoricalLineageResult>(result.Value);
@@ -97,11 +98,76 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
             publicationReader.Object);
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
-            new GetPublicHistoricalLineageQuery(data.Relation.Source.Type, data.Relation.Source.Id));
+            new GetPublicHistoricalLineageQuery(
+                data.Relation.Source.Type,
+                data.Relation.Source.Id,
+                data.Relation.Source.ContextParkId));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "historical-lineage.not-found");
         sourceRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenIdentifierIsReusedByHiddenPark_ShouldKeepLineageInsidePublicContext()
+    {
+        (HistoricalRelation Relation, HistoricalSourceReference Source) publicData = CreateRelation();
+        (HistoricalRelation Relation, HistoricalSourceReference Source) hiddenData = CreateRelation(
+            true,
+            publicData.Relation.Source.Id,
+            "hidden-target");
+        Mock<IHistoricalRelationRepository> relationRepository = new(MockBehavior.Strict);
+        relationRepository
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalSubjectKey>>(),
+                It.IsAny<int>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { publicData.Relation, hiddenData.Relation });
+        Mock<IHistoricalSourceRepository> sourceRepository = new(MockBehavior.Strict);
+        sourceRepository
+            .Setup(repository => repository.GetRevisionsAsync(
+                It.Is<IReadOnlyCollection<HistoricalRelationSourceRevisionReference>>(references =>
+                    references.Count == 1 && references.Single().SourceId == publicData.Source.Id),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { publicData.Source });
+        sourceRepository
+            .Setup(repository => repository.GetLatestRevisionsAsync(
+                It.Is<IReadOnlyCollection<Guid>>(ids => ids.Count == 1 && ids.Contains(publicData.Source.Id)),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { publicData.Source });
+        Mock<IHistoricalSubjectPublicationStateReader> publicationReader = new(MockBehavior.Strict);
+        publicationReader
+            .Setup(reader => reader.GetPublicSubjectKeysAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new HashSet<HistoricalSubjectKey>
+            {
+                ToKey(publicData.Relation.Source),
+                ToKey(publicData.Relation.Target),
+                ToKey(hiddenData.Relation.Target),
+            });
+        publicationReader
+            .Setup(reader => reader.GetPublicParkNamesAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dictionary<string, string> { ["park-1"] = "Parc exemple" });
+        GetPublicHistoricalLineageQueryHandler handler = new(
+            relationRepository.Object,
+            sourceRepository.Object,
+            publicationReader.Object);
+
+        ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
+            new GetPublicHistoricalLineageQuery(
+                publicData.Relation.Source.Type,
+                publicData.Relation.Source.Id,
+                publicData.Relation.Source.ContextParkId));
+
+        Assert.True(result.IsSuccess);
+        PublicHistoricalLineageResult lineage = Assert.IsType<PublicHistoricalLineageResult>(result.Value);
+        Assert.Single(lineage.Relations);
+        Assert.DoesNotContain(
+            lineage.Subjects,
+            subject => subject.ContextParkId == hiddenData.Relation.Source.ContextParkId);
     }
 
     [Fact]
@@ -162,7 +228,10 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
             publicationReader.Object);
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
-            new GetPublicHistoricalLineageQuery(data.Relation.Source.Type, data.Relation.Source.Id));
+            new GetPublicHistoricalLineageQuery(
+                data.Relation.Source.Type,
+                data.Relation.Source.Id,
+                data.Relation.Source.ContextParkId));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "historical-lineage.not-found");
@@ -186,7 +255,7 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
             publicationReader.Object);
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
-            new GetPublicHistoricalLineageQuery(HistoricalSubjectType.ParkItem, "item-1"));
+            new GetPublicHistoricalLineageQuery(HistoricalSubjectType.ParkItem, "item-1", "park-1"));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "historical-lineage.not-found");
@@ -249,7 +318,10 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
             publicationReader.Object);
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
-            new GetPublicHistoricalLineageQuery(HistoricalSubjectType.ParkItem, rootKey.Id));
+            new GetPublicHistoricalLineageQuery(
+                HistoricalSubjectType.ParkItem,
+                rootKey.Id,
+                rootKey.ContextParkId));
 
         Assert.True(result.IsSuccess);
         PublicHistoricalLineageResult lineage = Assert.IsType<PublicHistoricalLineageResult>(result.Value);
@@ -284,7 +356,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(
                 data.Relation.Source.Type,
-                data.Relation.Source.Id));
+                data.Relation.Source.Id,
+                data.Relation.Source.ContextParkId));
 
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "historical-lineage.not-found");
@@ -398,6 +471,6 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
 
     private static HistoricalSubjectKey ToKey(HistoricalSubject subject)
     {
-        return new HistoricalSubjectKey(subject.Type, subject.Id);
+        return new HistoricalSubjectKey(subject.Type, subject.Id, subject.ContextParkId);
     }
 }

@@ -51,10 +51,10 @@ describe('HistoryApiService', () => {
   });
 
   it('loads a public lineage with encoded subject coordinates', () => {
-    service.getPublicHistoricalLineage('ParkItem', 'item/one').subscribe();
+    service.getPublicHistoricalLineage('ParkItem', 'item/one', 'park/one').subscribe();
 
     const request = httpTestingController.expectOne(
-      `${environment.apiBaseUrl}public/history/subjects/ParkItem/item%2Fone/lineage`
+      `${environment.apiBaseUrl}public/history/subjects/ParkItem/item%2Fone/lineage?contextParkId=park%2Fone`
     );
     expect(request.request.method).toBe('GET');
     request.flush({ root: {}, contextPark: null, subjects: [], relations: [], hasDirectedCycle: false, isTruncated: false, maximumDepth: 4 });

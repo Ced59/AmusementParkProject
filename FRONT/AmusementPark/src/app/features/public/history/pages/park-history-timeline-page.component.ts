@@ -123,9 +123,13 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
     return buildCanonicalHistoryNarrativeLink(entry, timeline, this.currentLanguage());
   }
 
-  protected lineageLink(entry: PublicHistoricalTimelineEntry): string[] | null {
+  protected lineageLink(
+    entry: PublicHistoricalTimelineEntry,
+    timeline: PublicParkHistoricalTimeline
+  ): string[] | null {
     return buildPublicHistoricalLineageRouteCommands({
       language: this.currentLanguage(),
+      contextParkId: timeline.parkId,
       subjectType: entry.subjectType,
       subjectId: entry.subjectId,
       subjectLabel: entry.subjectLabel

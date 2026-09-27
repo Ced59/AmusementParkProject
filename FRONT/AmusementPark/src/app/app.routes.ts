@@ -233,7 +233,7 @@ export const routes: Routes = [
           { path: 'not-found', loadComponent: () => import('./features/public/not-found/pages/public-not-found-page.component').then((m) => m.PublicNotFoundPageComponent) },
 
           {
-            path: 'history/lineages/:subjectType/:subjectId/:subjectSlug',
+            path: 'history/lineages/:contextParkId/:subjectType/:subjectId/:subjectSlug',
             resolve: { [HISTORICAL_LINEAGE_ROUTE_DATA_KEY]: historicalLineageResolver },
             loadComponent: () => import('./features/public/history/pages/historical-lineage-page.component').then((m) => m.HistoricalLineagePageComponent)
           },

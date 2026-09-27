@@ -234,8 +234,14 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new HashSet<HistoricalSubjectKey>
             {
-                new HistoricalSubjectKey(visibleSubject.Type, visibleSubject.Id),
-                new HistoricalSubjectKey(visibleRelation.Target.Type, visibleRelation.Target.Id),
+                new HistoricalSubjectKey(
+                    visibleSubject.Type,
+                    visibleSubject.Id,
+                    visibleSubject.ContextParkId),
+                new HistoricalSubjectKey(
+                    visibleRelation.Target.Type,
+                    visibleRelation.Target.Id,
+                    visibleRelation.Target.ContextParkId),
             });
         PublicParkHistoricalDataLoader loader = CreateLoader(
             parkRepository,
@@ -592,8 +598,8 @@ public sealed class PublicParkHistoricalHandlersTests
                 new HistoricalRelationSourceRevisionReference(
                     sourceId,
                     2,
-                    new HistoricalSubjectKey(source.Type, source.Id),
-                    new HistoricalSubjectKey(target.Type, target.Id),
+                    new HistoricalSubjectKey(source.Type, source.Id, source.ContextParkId),
+                    new HistoricalSubjectKey(target.Type, target.Id, target.ContextParkId),
                     HistoricalRelationType.ReplacedBy,
                     period,
                     HistoricalEvidencePosition.Supports,

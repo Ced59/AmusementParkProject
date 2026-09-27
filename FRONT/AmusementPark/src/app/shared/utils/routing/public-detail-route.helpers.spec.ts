@@ -80,12 +80,14 @@ describe('public detail route helpers', () => {
   it('builds a localized lineage route and rejects incomplete subjects', () => {
     expect(buildPublicHistoricalLineageRouteCommands({
       language: 'fr',
+      contextParkId: 'park-1',
       subjectType: 'ParkItem',
       subjectId: 'item-1',
       subjectLabel: 'Le Grand Huit'
-    })).toEqual(['/', 'fr', 'history', 'lineages', 'parkitem', 'item-1', 'le-grand-huit']);
+    })).toEqual(['/', 'fr', 'history', 'lineages', 'park-1', 'parkitem', 'item-1', 'le-grand-huit']);
     expect(buildPublicHistoricalLineageRouteCommands({
       language: 'fr',
+      contextParkId: 'park-1',
       subjectType: 'ParkItem',
       subjectId: ' ',
       subjectLabel: 'Le Grand Huit'

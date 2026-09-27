@@ -7,7 +7,7 @@ import { PublicHistoricalLineage, PublicParkHistoricalSnapshot, PublicParkHistor
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
 export interface HistoryDataPort {
-  getPublicHistoricalLineage(subjectType: string, subjectId: string, options?: AnonymousHttpOptions): Observable<PublicHistoricalLineage>;
+  getPublicHistoricalLineage(subjectType: string, subjectId: string, contextParkId: string, options?: AnonymousHttpOptions): Observable<PublicHistoricalLineage>;
   getPublicParkTimeline(parkId: string, options?: AnonymousHttpOptions, page?: number, pageSize?: number): Observable<PublicParkHistoricalTimeline>;
   getPublicParkSnapshot(parkId: string, year: number, month?: number | null, day?: number | null, options?: AnonymousHttpOptions): Observable<PublicParkHistoricalSnapshot>;
   getParkTimeline(parkId: string, includeParkItems?: boolean, parkItemIds?: readonly string[], options?: AnonymousHttpOptions, page?: number): Observable<HistoryTimeline>;

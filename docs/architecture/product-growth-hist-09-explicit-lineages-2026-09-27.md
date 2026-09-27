@@ -159,7 +159,7 @@ sequenceDiagram
     participant SRC as SourceRepository
     participant DB as MongoDB
     V->>SSR: Ouvre une lignée depuis la frise
-    SSR->>API: GET /public/history/subjects/{type}/{id}/lineage
+    SSR->>API: GET /public/history/subjects/{type}/{id}/lineage?contextParkId={parkId}
     API->>APP: GetPublicHistoricalLineageQuery
     loop maximum 4 niveaux
       APP->>REL: relations touchant le front courant
@@ -186,10 +186,17 @@ un graphe illimité.
 La route publique est :
 
 ```text
-GET /api/public/history/subjects/{type}/{id}/lineage
+GET /api/public/history/subjects/{type}/{id}/lineage?contextParkId={parkId}
 ```
 
-Le paramètre d'URL désigne nécessairement la ressource demandée. Dans le corps,
+L'identité canonique d'un sujet est le triplet type, identifiant et parc de
+contexte. Le parc de contexte est obligatoire pour un élément ou une zone :
+deux anciens sujets provenant de parcs différents ne fusionnent donc jamais,
+même si un identifiant technique a été réutilisé. Cette portée fait partie des
+clés de traversée, des références de preuve et des index MongoDB ; le dépôt la
+filtre dès la requête et l'Application la revérifie avant exposition.
+
+Les paramètres d'URL désignent nécessairement la ressource demandée. Dans le corps,
 les sujets de la relation reçoivent des clés locales `subject-1`, `subject-2`,
 utilisables seulement pour relier les cartes de cette réponse. Le parc public
 de contexte peut fournir son identité de route et son nom afin de construire un
@@ -204,6 +211,11 @@ publié touche le sujet. La page dédiée est rendue côté serveur. Son fil d'A
 visible et son `BreadcrumbList` relient Accueil, Parcs, le parc de contexte,
 son Histoire et le sujet consulté. Elle reste `noindex,follow` jusqu'au jalon
 `HIST-13`.
+
+La route Angular porte également le parc de contexte avant le type de sujet :
+`/{lang}/history/lineages/{contextParkId}/{type}/{id}/{slug}`. Son canonical et
+son rendu SSR conservent cette portée afin qu'une lignée ne soit jamais
+adressable sous l'identité d'un autre parc.
 
 Chaque conteneur utilise `min-width: 0`, `overflow-wrap: anywhere` et une largeur
 bornée au viewport. Sous 560 px, les deux sujets et la flèche passent en colonne,
