@@ -5843,6 +5843,46 @@
         "Status": "Status",
         "MarketPositioning": "Positionering"
       }
+    },
+    "lineage": {
+      "breadcrumbAria": "Broodkruimelpad van de historische lijn",
+      "home": "Home",
+      "kicker": "Bewezen historische verbanden",
+      "title": "De historische lijn van {{subject}}",
+      "description": "Ontdek alleen naamswijzigingen, verplaatsingen, vervangingen en andere door bronnen bevestigde verbanden. Geen relatie wordt geraden.",
+      "seoTitle": "Historische lijn van {{subject}}",
+      "seoDescription": "Ontdek de onderbouwde historische relaties van {{subject}}, hun periode en bewijsniveau.",
+      "summaryAria": "Samenvatting van de historische lijn",
+      "subjectCount": "verbonden onderdelen",
+      "relationCount": "gedocumenteerde relaties",
+      "listAria": "Gedocumenteerde historische relaties",
+      "from": "Beginelement",
+      "to": "Verbonden element",
+      "historicalOnly": "Historisch element",
+      "open": "Bekijk de historische lijn",
+      "sources": "{{count}} bron(nen)",
+      "noPublicSource": "De referentie bestaat, maar kan niet rechtstreeks worden gepubliceerd.",
+      "truncated": "Deze weergave stopt na {{depth}} niveaus om leesbaar te blijven. Er bestaan meer gedocumenteerde verbanden.",
+      "cycle": "Deze lijn bevat een gerichte cyclus die voor transparantie wordt getoond.",
+      "notFoundTitle": "Historische lijn niet gevonden",
+      "notFoundMessage": "Voor dit element is geen gepubliceerde historische relatie beschikbaar.",
+      "evidence": {
+        "Verified": "Geverifieerd",
+        "Probable": "Waarschijnlijk",
+        "Disputed": "Betwist",
+        "Unverified": "Niet geverifieerd"
+      },
+      "relationTypes": {
+        "RenamedTo": "Hernoemd naar",
+        "ReplacedBy": "Vervangen door",
+        "MovedTo": "Verplaatst naar",
+        "RethemedAs": "Herthematiseerd als",
+        "SuccessorOf": "Opvolger van",
+        "SamePhysicalAssetAs": "Dezelfde fysieke installatie",
+        "SharesLocationWith": "Dezelfde locatie",
+        "OperatedByDuring": "In deze periode geëxploiteerd door",
+        "LocatedInZoneDuring": "In deze periode in dit gebied gelegen"
+      }
     }
   },
   "home": {

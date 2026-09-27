@@ -5843,6 +5843,46 @@
         "Status": "Statut",
         "MarketPositioning": "Positionnement"
       }
+    },
+    "lineage": {
+      "breadcrumbAria": "Fil d’Ariane de la lignée historique",
+      "home": "Accueil",
+      "kicker": "Liens historiques prouvés",
+      "title": "La lignée de {{subject}}",
+      "description": "Découvre uniquement les renommages, déplacements, remplacements et autres liens confirmés par des sources. Aucune relation n’est devinée.",
+      "seoTitle": "Lignée historique de {{subject}}",
+      "seoDescription": "Explore les relations historiques sourcées de {{subject}}, leur période et leur niveau de preuve.",
+      "summaryAria": "Résumé de la lignée",
+      "subjectCount": "éléments reliés",
+      "relationCount": "relations documentées",
+      "listAria": "Relations historiques documentées",
+      "from": "Élément de départ",
+      "to": "Élément lié",
+      "historicalOnly": "Élément historique",
+      "open": "Explorer la lignée",
+      "sources": "{{count}} source(s)",
+      "noPublicSource": "La référence existe, mais elle n’est pas publiable directement.",
+      "truncated": "Cette vue s’arrête à {{depth}} niveaux pour rester lisible. D’autres liens documentés existent.",
+      "cycle": "Cette lignée contient un cycle dirigé signalé pour transparence.",
+      "notFoundTitle": "Lignée introuvable",
+      "notFoundMessage": "Aucune relation historique publiée n’est disponible pour cet élément.",
+      "evidence": {
+        "Verified": "Vérifié",
+        "Probable": "Probable",
+        "Disputed": "Contesté",
+        "Unverified": "Non vérifié"
+      },
+      "relationTypes": {
+        "RenamedTo": "Renommé en",
+        "ReplacedBy": "Remplacé par",
+        "MovedTo": "Déplacé vers",
+        "RethemedAs": "Reconverti en",
+        "SuccessorOf": "Successeur de",
+        "SamePhysicalAssetAs": "Même installation physique",
+        "SharesLocationWith": "Même emplacement",
+        "OperatedByDuring": "Exploité par pendant cette période",
+        "LocatedInZoneDuring": "Situé dans cette zone pendant cette période"
+      }
     }
   },
   "home": {

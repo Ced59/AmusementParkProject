@@ -169,6 +169,7 @@ describe('Server routes', () => {
 
   it('server-renders the canonical park history explorer and annual snapshots', () => {
     const expectedPaths: string[] = [
+      ':lang/history/lineages/:subjectType/:subjectId/:subjectSlug',
       ':lang/park/:id/:slug/history',
       ':lang/park/:id/:slug/history/page/:page',
       ':lang/park/:id/:slug/history/:year'

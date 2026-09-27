@@ -39,6 +39,7 @@ export interface PublicHistoricalTimelineEntry {
   subjectId: string;
   subjectLabel: string;
   currentSubjectName?: string | null;
+  hasPublishedLineage?: boolean;
   factType: string;
   period: PublicHistoricalPeriod;
   evidenceState: string;
@@ -108,6 +109,33 @@ export interface PublicHistoricalAmbiguity {
   nameOrigin: string;
   code: string;
   attributeKind?: string | null;
+}
+
+export interface PublicHistoricalLineageSubject {
+  key: string;
+  type: string;
+  label: string;
+  isHistoricalOnly: boolean;
+}
+
+export interface PublicHistoricalLineageRelation {
+  sourceKey: string;
+  targetKey: string;
+  type: string;
+  direction: string;
+  period: PublicHistoricalPeriod;
+  evidenceState: string;
+  uncertaintyExplanations: PublicHistoricalLocalizedText[];
+  sources: PublicHistoricalSource[];
+}
+
+export interface PublicHistoricalLineage {
+  root: PublicHistoricalLineageSubject;
+  subjects: PublicHistoricalLineageSubject[];
+  relations: PublicHistoricalLineageRelation[];
+  hasDirectedCycle: boolean;
+  isTruncated: boolean;
+  maximumDepth: number;
 }
 
 export interface PublicParkHistoricalSnapshot {

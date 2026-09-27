@@ -5,6 +5,47 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class HistoricalPersistenceMongoDefinitions
 {
+    internal static IReadOnlyCollection<CreateIndexModel<HistoricalRelationDocument>> BuildRelationIndexes()
+    {
+        return new CreateIndexModel<HistoricalRelationDocument>[]
+        {
+            new CreateIndexModel<HistoricalRelationDocument>(
+                Builders<HistoricalRelationDocument>.IndexKeys
+                    .Ascending(document => document.RelationId)
+                    .Ascending(document => document.Revision),
+                new CreateIndexOptions { Name = "idx_historical_relations_revision_unique", Unique = true }),
+            new CreateIndexModel<HistoricalRelationDocument>(
+                Builders<HistoricalRelationDocument>.IndexKeys
+                    .Ascending("source.type")
+                    .Ascending("source.id")
+                    .Ascending(document => document.Type)
+                    .Descending(document => document.Revision),
+                new CreateIndexOptions { Name = "idx_historical_relations_source_type_revision" }),
+            new CreateIndexModel<HistoricalRelationDocument>(
+                Builders<HistoricalRelationDocument>.IndexKeys
+                    .Ascending("target.type")
+                    .Ascending("target.id")
+                    .Ascending(document => document.Type)
+                    .Descending(document => document.Revision),
+                new CreateIndexOptions { Name = "idx_historical_relations_target_type_revision" }),
+            new CreateIndexModel<HistoricalRelationDocument>(
+                Builders<HistoricalRelationDocument>.IndexKeys
+                    .Ascending(document => document.PublicationState)
+                    .Ascending(document => document.State),
+                new CreateIndexOptions { Name = "idx_historical_relations_publication_state" }),
+            new CreateIndexModel<HistoricalRelationDocument>(
+                Builders<HistoricalRelationDocument>.IndexKeys
+                    .Ascending("sources.sourceId")
+                    .Ascending("sources.revision"),
+                new CreateIndexOptions { Name = "idx_historical_relations_source_revision" }),
+            new CreateIndexModel<HistoricalRelationDocument>(
+                Builders<HistoricalRelationDocument>.IndexKeys
+                    .Descending("transitionReviewEvent.occurredAtUtc")
+                    .Descending(document => document.Revision),
+                new CreateIndexOptions { Name = "idx_historical_relations_audit_date" }),
+        };
+    }
+
     internal static IReadOnlyCollection<CreateIndexModel<HistoricalFactDocument>> BuildFactIndexes()
     {
         return new CreateIndexModel<HistoricalFactDocument>[]

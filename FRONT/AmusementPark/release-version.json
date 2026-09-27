@@ -1,6 +1,20 @@
 {
-  "version": "5.3.87",
+  "version": "5.3.88",
   "history": [
+    {
+      "version": "5.3.88",
+      "releasedAt": "2026-09-27",
+      "labels": {
+        "fr": "Les lignées historiques relient désormais les attractions avec leurs preuves.",
+        "en": "Historical lineages now connect attractions with their supporting evidence.",
+        "de": "Historische Entwicklungslinien verbinden Attraktionen nun mit ihren Belegen.",
+        "nl": "Historische lijnen verbinden attracties nu met hun onderliggende bronnen.",
+        "it": "Le linee storiche collegano ora le attrazioni alle relative prove.",
+        "es": "Los linajes históricos ya conectan las atracciones con sus pruebas.",
+        "pl": "Linie historyczne łączą teraz atrakcje z potwierdzającymi je źródłami.",
+        "pt": "As linhagens históricas ligam agora as atrações às respetivas provas."
+      }
+    },
     {
       "version": "5.3.87",
       "releasedAt": "2026-09-26",

@@ -1,5 +1,6 @@
 import { ParkHistoricalSnapshotPageComponent } from './park-historical-snapshot-page.component';
 import { ParkHistoryTimelinePageComponent } from './park-history-timeline-page.component';
+import { HistoricalLineagePageComponent } from './historical-lineage-page.component';
 
 describe('park history explorer responsive contract', () => {
   it('contains the canonical timeline inside a 320 pixel viewport', () => {
@@ -23,6 +24,17 @@ describe('park history explorer responsive contract', () => {
     expect(styles).toContain('@media (max-width: 620px)');
     expect(styles).toContain('grid-template-columns: minmax(0, 1fr) !important');
     expect(styles).toContain('.snapshot-date-picker__fields');
+  });
+
+  it('stacks lineage connections and wraps source labels inside a 320 pixel viewport', () => {
+    const styles: string = componentStyles(HistoricalLineagePageComponent);
+
+    expect(styles).toContain('max-width: 100%');
+    expect(styles).toContain('overflow-x: clip');
+    expect(styles).toContain('min-width: 0');
+    expect(styles).toContain('overflow-wrap: anywhere');
+    expect(styles).toContain('@media (max-width: 560px)');
+    expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
   });
 });
 

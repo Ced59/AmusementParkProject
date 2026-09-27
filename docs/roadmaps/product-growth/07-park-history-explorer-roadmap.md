@@ -674,7 +674,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | `HIST-06` | Couverture et ambiguïtés | Partiel visible — implémenté le 26 septembre 2026 |
 | `HIST-07` | API timeline/snapshot | Contrats bornés — implémenté le 26 septembre 2026 |
 | `HIST-08` | UI frise et année pilote | SSR accessible — implémenté le 26 septembre 2026 |
-| `HIST-09` | Relations/lignées | Aucune déduction silencieuse |
+| [`HIST-09`](../../architecture/product-growth-hist-09-explicit-lineages-2026-09-27.md) | Relations/lignées | Aucune déduction silencieuse — implémenté le 27 septembre 2026 |
 | `HIST-10` | Comparaison de dates | Diff exact |
 | `HIST-11` | Intégration Passeport | Anciennes visites contextualisées |
 | `HIST-12` | Admin diagnostics/revue | Exploitation fiable |
@@ -943,6 +943,47 @@ Le contrat responsive contient chaque surface dans le viewport, autorise la
 césure des libellés longs et replie champs, métriques, transitions et cartes en
 une colonne sur petit écran. Un test de contrat protège explicitement le rendu
 à partir de 320 pixels.
+
+### Implémentation `HIST-09` — 27 septembre 2026
+
+Le registre canonique distingue désormais neuf relations explicites :
+renommage, remplacement, déplacement, rethématisation, succession, identité
+physique, emplacement partagé, période d'exploitation et appartenance à une
+zone. Chaque révision relie deux sujets typés, conserve sa direction et sa
+période exactes, cite les révisions de sources qui prouvent précisément cette
+assertion et embarque son événement de revue. Une relation symétrique possède
+un ordre canonique et n'est donc pas enregistrée deux fois en sens inverse.
+
+La publication refuse les auto-relations, les couples de types incompatibles,
+les sujets courants non publics, les portées historiques insuffisantes et les
+preuves qui ne couvrent pas à la fois les deux identités, le type de lien et sa
+période. Une relation probable ou contestée doit expliquer son incertitude
+dans les huit langues. Une correction ajoute une révision immuable ; une
+rétractation ne réécrit jamais l'historique. Aucun ancien lien narratif n'est
+converti automatiquement : l'absence de preuve reste une absence de relation.
+
+MongoDB stocke ces chaînes dans `historical-relations`, avec unicité de la
+révision, index source, cible, publication, preuve et audit. La lecture recharge
+d'abord la dernière révision globale de chaque relation avant de vérifier son
+état public : une relation corrigée ou retirée ne peut donc pas ressusciter par
+une ancienne révision. La traversée publique est bornée à quatre niveaux,
+soixante sujets et deux cents relations par lot. Les états de publication des
+sujets et les sources sont résolus par lots, sans N+1.
+
+La frise indique uniquement les événements qui possèdent réellement une
+lignée publiée. La page SSR dédiée restitue chaque lien sous forme de cartes
+accessibles avec les deux libellés, la nature exacte du lien, la période, le
+niveau de preuve, l'incertitude et les sources. Les identifiants internes des
+sujets, relations, preuves et révisions sont remplacés dans la réponse par des
+clés de présentation locales. Une source retirée fait disparaître le lien
+public concerné au lieu de laisser une relation sans preuve visible.
+
+La page est localisée dans les huit langues, possède un fil d'Ariane visible et
+un `BreadcrumbList`, reste `noindex,follow` jusqu'à la sélection éditoriale de
+`HIST-13` et se replie en une colonne sans débordement dès 560 pixels. La saisie
+et la revue ergonomiques de ces relations dans l'administration restent du
+ressort de `HIST-12`, qui consommera le même port de révision et ne créera pas
+un second système.
 
 ## 22. Gate finale `HIST-G`
 

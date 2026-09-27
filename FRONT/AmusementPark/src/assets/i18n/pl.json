@@ -5843,6 +5843,46 @@
         "Status": "Status",
         "MarketPositioning": "Pozycjonowanie"
       }
+    },
+    "lineage": {
+      "breadcrumbAria": "Okruszki nawigacyjne linii historycznej",
+      "home": "Strona główna",
+      "kicker": "Udokumentowane powiązania historyczne",
+      "title": "Linia historyczna: {{subject}}",
+      "description": "Poznaj wyłącznie zmiany nazw, przeniesienia, zastąpienia i inne powiązania potwierdzone źródłami. Żadna relacja nie jest zgadywana.",
+      "seoTitle": "Linia historyczna: {{subject}}",
+      "seoDescription": "Poznaj udokumentowane relacje historyczne obiektu {{subject}}, ich okres i poziom dowodów.",
+      "summaryAria": "Podsumowanie linii historycznej",
+      "subjectCount": "powiązanych elementów",
+      "relationCount": "udokumentowanych relacji",
+      "listAria": "Udokumentowane relacje historyczne",
+      "from": "Element początkowy",
+      "to": "Element powiązany",
+      "historicalOnly": "Element historyczny",
+      "open": "Poznaj linię historyczną",
+      "sources": "Źródła: {{count}}",
+      "noPublicSource": "Odwołanie istnieje, ale nie może zostać opublikowane bezpośrednio.",
+      "truncated": "Widok zatrzymuje się na {{depth}} poziomach, aby zachować czytelność. Istnieją dalsze udokumentowane powiązania.",
+      "cycle": "Ta linia zawiera cykl skierowany pokazany dla przejrzystości.",
+      "notFoundTitle": "Nie znaleziono linii historycznej",
+      "notFoundMessage": "Dla tego elementu nie ma opublikowanej relacji historycznej.",
+      "evidence": {
+        "Verified": "Zweryfikowane",
+        "Probable": "Prawdopodobne",
+        "Disputed": "Sporne",
+        "Unverified": "Niezweryfikowane"
+      },
+      "relationTypes": {
+        "RenamedTo": "Przemianowano na",
+        "ReplacedBy": "Zastąpiono przez",
+        "MovedTo": "Przeniesiono do",
+        "RethemedAs": "Zmieniono temat na",
+        "SuccessorOf": "Następca",
+        "SamePhysicalAssetAs": "Ta sama instalacja fizyczna",
+        "SharesLocationWith": "Ta sama lokalizacja",
+        "OperatedByDuring": "Obsługiwane w tym okresie przez",
+        "LocatedInZoneDuring": "Położone w tym obszarze w tym okresie"
+      }
     }
   },
   "home": {

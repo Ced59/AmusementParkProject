@@ -50,6 +50,98 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
         };
     }
 
+    public async Task<IReadOnlySet<HistoricalSubjectKey>> GetPublicSubjectKeysAsync(
+        IReadOnlyCollection<HistoricalSubject> subjects,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(subjects);
+        HistoricalSubject[] candidates = subjects
+            .Where(static subject => subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.FollowCurrentSubject)
+            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .ToArray();
+        HashSet<HistoricalSubjectKey> publicKeys = new();
+        foreach (IGrouping<HistoricalSubjectType, HistoricalSubject> group in candidates.GroupBy(static subject => subject.Type))
+        {
+            string[] identifiers = group.Select(static subject => subject.Id).Distinct(StringComparer.Ordinal).ToArray();
+            IReadOnlyCollection<string> publicIdentifiers = await this.LoadPublicIdentifiersAsync(
+                group.Key,
+                identifiers,
+                cancellationToken);
+            publicKeys.UnionWith(publicIdentifiers.Select(id => new HistoricalSubjectKey(group.Key, id)));
+        }
+
+        return publicKeys;
+    }
+
+    private async Task<IReadOnlyCollection<string>> LoadPublicIdentifiersAsync(
+        HistoricalSubjectType type,
+        IReadOnlyCollection<string> identifiers,
+        CancellationToken cancellationToken)
+    {
+        return type switch
+        {
+            HistoricalSubjectType.Park => (await this.parks.Find(item => identifiers.Contains(item.Id))
+                    .ToListAsync(cancellationToken))
+                .Where(IsParkPublic)
+                .Select(static item => item.Id)
+                .ToArray(),
+            HistoricalSubjectType.ParkItem => await this.LoadPublicParkItemIdentifiersAsync(identifiers, cancellationToken),
+            HistoricalSubjectType.StandaloneAttraction => (await this.standaloneAttractions
+                    .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
+                .Where(IsStandaloneAttractionPublic)
+                .Select(static item => item.Id)
+                .ToArray(),
+            HistoricalSubjectType.ParkZone => await this.LoadPublicZoneIdentifiersAsync(identifiers, cancellationToken),
+            HistoricalSubjectType.ParkOperator => (await this.parkOperators
+                    .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
+                .Where(static item => item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+                .Select(static item => item.Id)
+                .ToArray(),
+            HistoricalSubjectType.AttractionManufacturer => (await this.attractionManufacturers
+                    .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
+                .Where(static item => item.IsVisible && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+                .Select(static item => item.Id)
+                .ToArray(),
+            _ => Array.Empty<string>(),
+        };
+    }
+
+    private async Task<IReadOnlyCollection<string>> LoadPublicParkItemIdentifiersAsync(
+        IReadOnlyCollection<string> identifiers,
+        CancellationToken cancellationToken)
+    {
+        List<ParkItemDocument> items = await this.parkItems.Find(item => identifiers.Contains(item.Id))
+            .ToListAsync(cancellationToken);
+        string[] parkIds = items.Select(static item => item.ParkId).Distinct(StringComparer.Ordinal).ToArray();
+        HashSet<string> publicParkIds = (await this.parks.Find(item => parkIds.Contains(item.Id))
+                .ToListAsync(cancellationToken))
+            .Where(IsParkPublic)
+            .Select(static item => item.Id)
+            .ToHashSet(StringComparer.Ordinal);
+        return items.Where(item => item.IsVisible
+                && item.AdminReviewStatus != AdminReviewStatus.NotRelevant
+                && publicParkIds.Contains(item.ParkId))
+            .Select(static item => item.Id)
+            .ToArray();
+    }
+
+    private async Task<IReadOnlyCollection<string>> LoadPublicZoneIdentifiersAsync(
+        IReadOnlyCollection<string> identifiers,
+        CancellationToken cancellationToken)
+    {
+        List<ParkZoneDocument> zones = await this.parkZones.Find(item => identifiers.Contains(item.Id))
+            .ToListAsync(cancellationToken);
+        string[] parkIds = zones.Select(static item => item.ParkId).Distinct(StringComparer.Ordinal).ToArray();
+        HashSet<string> publicParkIds = (await this.parks.Find(item => parkIds.Contains(item.Id))
+                .ToListAsync(cancellationToken))
+            .Where(IsParkPublic)
+            .Select(static item => item.Id)
+            .ToHashSet(StringComparer.Ordinal);
+        return zones.Where(zone => zone.IsVisible && publicParkIds.Contains(zone.ParkId))
+            .Select(static zone => zone.Id)
+            .ToArray();
+    }
+
     private async Task<bool> IsParkPublicAsync(string parkId, CancellationToken cancellationToken)
     {
         ParkDocument? park = await this.parks

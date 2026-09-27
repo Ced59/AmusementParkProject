@@ -142,6 +142,8 @@ public sealed class PublicParkHistoricalHandlersTests
             narrativeContentId: "event-removed");
         HistoricalSourceReference visibleSource = PublicParkHistoryTestData.CreateSource(visibleFact);
         HistoricalSourceReference removedSource = PublicParkHistoryTestData.CreateSource(removedFact);
+        HistoricalRelation visibleRelation = CreatePublishedRelation(visibleSubject);
+        HistoricalSourceReference relationSource = CreateRelationSource(visibleRelation);
         HistoryEvent visibleNarrative = new()
         {
             Id = "event-visible",
@@ -166,6 +168,8 @@ public sealed class PublicParkHistoricalHandlersTests
         Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sourceRepository = new(MockBehavior.Strict);
         Mock<IHistoryEventRepository> historyEventRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalRelationRepository> relationRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalSubjectPublicationStateReader> publicationReader = new(MockBehavior.Strict);
         parkRepository
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(park);
@@ -194,6 +198,22 @@ public sealed class PublicParkHistoricalHandlersTests
                         && references.Any(reference => reference.SourceId == removedSource.Id)),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { visibleSource, removedSource });
+        sourceRepository
+            .Setup(repository => repository.GetRevisionsAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalRelationSourceRevisionReference>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { relationSource });
+        sourceRepository
+            .Setup(repository => repository.GetLatestRevisionsAsync(
+                It.Is<IReadOnlyCollection<Guid>>(ids => ids.Count == 2),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { visibleSource, removedSource });
+        sourceRepository
+            .Setup(repository => repository.GetLatestRevisionsAsync(
+                It.Is<IReadOnlyCollection<Guid>>(
+                    ids => ids.Count == 1 && ids.Contains(relationSource.Id)),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { relationSource });
         historyEventRepository
             .Setup(repository => repository.GetPublishedArticlesByIdsAsync(
                 It.Is<IReadOnlyCollection<string>>(
@@ -202,6 +222,20 @@ public sealed class PublicParkHistoricalHandlersTests
                         && eventIds.Contains(removedNarrative.Id)),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { visibleNarrative, removedNarrative });
+        relationRepository
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
+                It.Is<IReadOnlyCollection<HistoricalSubjectKey>>(keys => keys.Count == 2),
+                200,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { visibleRelation });
+        publicationReader
+            .Setup(reader => reader.GetPublicSubjectKeysAsync(
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new HashSet<HistoricalSubjectKey>
+            {
+                new HistoricalSubjectKey(visibleSubject.Type, visibleSubject.Id),
+            });
         PublicParkHistoricalDataLoader loader = CreateLoader(
             parkRepository,
             parkItemRepository,
@@ -210,7 +244,9 @@ public sealed class PublicParkHistoricalHandlersTests
         GetPublicParkHistoricalTimelineQueryHandler handler = new(
             loader,
             sourceRepository.Object,
-            historyEventRepository.Object);
+            historyEventRepository.Object,
+            relationRepository.Object,
+            publicationReader.Object);
 
         ApplicationResult<PublicParkHistoricalTimelineResult> result = await handler.HandleAsync(
             new GetPublicParkHistoricalTimelineQuery("park-1", 2, 2));
@@ -230,10 +266,14 @@ public sealed class PublicParkHistoricalHandlersTests
         Assert.Equal(removedSource.Id, Assert.Single(removedEntry.Sources).Id);
         Assert.Same(visibleNarrative, visibleEntry.Narrative);
         Assert.Equal(visibleItem.Name, visibleEntry.CurrentSubjectName);
+        Assert.True(visibleEntry.HasPublishedLineage);
         Assert.Null(removedEntry.Narrative);
         Assert.Null(removedEntry.CurrentSubjectName);
+        Assert.False(removedEntry.HasPublishedLineage);
         sourceRepository.VerifyAll();
         historyEventRepository.VerifyAll();
+        relationRepository.VerifyAll();
+        publicationReader.VerifyAll();
     }
 
     [Fact]
@@ -523,5 +563,76 @@ public sealed class PublicParkHistoricalHandlersTests
             parkItemRepository.Object,
             parkZoneRepository.Object,
             factRepository.Object);
+    }
+
+    private static HistoricalRelation CreatePublishedRelation(HistoricalSubject source)
+    {
+        HistoricalSubject target = new(
+            HistoricalSubjectType.ParkItem,
+            "successor-item",
+            "Attraction suivante",
+            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            source.ContextParkId);
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(2011));
+        Guid sourceId = Guid.NewGuid();
+        return new HistoricalRelation(
+            Guid.NewGuid(),
+            source,
+            target,
+            HistoricalRelationType.ReplacedBy,
+            HistoricalRelationDirection.Directed,
+            period,
+            HistoricalFactState.Verified,
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            Array.Empty<HistoricalLocalizedText>(),
+            new[]
+            {
+                new HistoricalRelationSourceRevisionReference(
+                    sourceId,
+                    2,
+                    new HistoricalSubjectKey(source.Type, source.Id),
+                    new HistoricalSubjectKey(target.Type, target.Id),
+                    HistoricalRelationType.ReplacedBy,
+                    period,
+                    HistoricalEvidencePosition.Supports,
+                    new[]
+                    {
+                        HistoricalSourceScope.RelationSourceIdentity,
+                        HistoricalSourceScope.RelationTargetIdentity,
+                        HistoricalSourceScope.RelationType,
+                        HistoricalSourceScope.Period,
+                    }),
+            },
+            null,
+            new DateTime(2026, 9, 27, 9, 58, 0, DateTimeKind.Utc),
+            new DateTime(2026, 9, 27, 9, 59, 0, DateTimeKind.Utc),
+            "hist-v1",
+            2,
+            1,
+            new DateTime(2026, 9, 27, 10, 0, 0, DateTimeKind.Utc));
+    }
+
+    private static HistoricalSourceReference CreateRelationSource(HistoricalRelation relation)
+    {
+        HistoricalRelationSourceRevisionReference reference = Assert.Single(relation.SourceReferences);
+        return new HistoricalSourceReference(
+            reference.SourceId,
+            reference.Revision,
+            HistoricalSourceType.OfficialWebsite,
+            "Historique officiel",
+            "Parc exemple",
+            "https://example.com/history",
+            null,
+            new DateOnly(2011, 1, 1),
+            new DateOnly(2026, 9, 27),
+            "fr",
+            null,
+            reference.Scopes,
+            null,
+            HistoricalSourceAccessibility.Accessible,
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            new DateTime(2026, 9, 27, 10, 0, 0, DateTimeKind.Utc));
     }
 }

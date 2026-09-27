@@ -31,4 +31,41 @@ public static class HistoricalSubjectPublicationValidator
                 "A public historical fact cannot follow a current subject that is not public.");
         }
     }
+
+    public static void Validate(
+        HistoricalRelation relation,
+        bool currentSourceIsPublic,
+        bool currentTargetIsPublic)
+    {
+        ArgumentNullException.ThrowIfNull(relation);
+        bool isPublicRevision = relation.PublicationState == HistoricalPublicationState.Published;
+        ValidateRelationSubject(relation.Source, isPublicRevision, currentSourceIsPublic);
+        ValidateRelationSubject(relation.Target, isPublicRevision, currentTargetIsPublic);
+    }
+
+    private static void ValidateRelationSubject(
+        HistoricalSubject subject,
+        bool isPublicRevision,
+        bool currentSubjectIsPublic)
+    {
+        bool requiresDurableParkScope = subject.PublicationPolicy
+                == HistoricalSubjectPublicationPolicy.HistoricalOnly
+            && subject.Type is HistoricalSubjectType.ParkItem or HistoricalSubjectType.ParkZone;
+        if (isPublicRevision && requiresDurableParkScope && string.IsNullOrWhiteSpace(subject.ContextParkId))
+        {
+            throw new HistoricalPersistenceValidationException(
+                HistoricalPersistenceErrorCodes.InvalidRelation,
+                "A public historical-only relation subject requires a durable park scope.");
+        }
+
+        if (isPublicRevision
+            && (subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.Suppressed
+                || subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.FollowCurrentSubject
+                    && !currentSubjectIsPublic))
+        {
+            throw new HistoricalPersistenceValidationException(
+                HistoricalPersistenceErrorCodes.InvalidRelation,
+                "A public relation cannot expose a suppressed or non-public current subject.");
+        }
+    }
 }

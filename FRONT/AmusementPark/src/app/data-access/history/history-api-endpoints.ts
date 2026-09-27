@@ -22,6 +22,7 @@ function buildQuery(params: Record<string, string | number | boolean | null | un
 }
 
 export const HISTORY_API_ENDPOINTS = {
+  getPublicHistoricalLineage: (subjectType: string, subjectId: string) => `public/history/subjects/${encodeURIComponent(subjectType)}/${encodeURIComponent(subjectId)}/lineage`,
   getPublicParkTimeline: (parkId: string, page: number = 1, pageSize: number = 50) => `public/parks/${encodeURIComponent(parkId)}/history/timeline${buildQuery({ page, pageSize })}`,
   getPublicParkSnapshot: (parkId: string, year: number, month?: number | null, day?: number | null) => `public/parks/${encodeURIComponent(parkId)}/history/snapshot${buildQuery({ year, month, day })}`,
   getParkTimeline: (parkId: string, includeParkItems: boolean = false, parkItemIds: readonly string[] = [], page: number = 1) => {

@@ -15,4 +15,5 @@ public static class HistoricalPersistenceErrorCodes
     public const string InvalidSourceReference = "history.persistence.invalid_source_reference";
     public const string InvalidSourceScope = "history.persistence.invalid_source_scope";
     public const string InvalidReviewEvent = "history.persistence.invalid_review_event";
+    public const string InvalidRelation = "history.persistence.invalid_relation";
 }

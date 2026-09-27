@@ -118,19 +118,17 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
             return Array.Empty<HistoricalSourceReference>();
         }
 
-        if (normalizedSourceIds.Length > MaximumBatchSize)
+        List<HistoricalSourceDocument> documents = new List<HistoricalSourceDocument>(
+            normalizedSourceIds.Length);
+        foreach (string[] batch in normalizedSourceIds.Chunk(MaximumBatchSize))
         {
-            throw new ArgumentOutOfRangeException(
-                nameof(sourceIds),
-                $"A historical source batch cannot exceed {MaximumBatchSize} identifiers.");
+            PipelineDefinition<HistoricalSourceDocument, HistoricalSourceDocument> pipeline =
+                PipelineDefinition<HistoricalSourceDocument, HistoricalSourceDocument>.Create(
+                    BuildLatestRevisionsPipeline(batch));
+            documents.AddRange(await this.collection
+                .Aggregate(pipeline)
+                .ToListAsync(cancellationToken));
         }
-
-        PipelineDefinition<HistoricalSourceDocument, HistoricalSourceDocument> pipeline =
-            PipelineDefinition<HistoricalSourceDocument, HistoricalSourceDocument>.Create(
-                BuildLatestRevisionsPipeline(normalizedSourceIds));
-        List<HistoricalSourceDocument> documents = await this.collection
-            .Aggregate(pipeline)
-            .ToListAsync(cancellationToken);
 
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
@@ -170,6 +168,39 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
                 .Limit(batch.Length)
                 .ToListAsync(cancellationToken);
             documents.AddRange(batchDocuments);
+        }
+
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    public async Task<IReadOnlyCollection<HistoricalSourceReference>> GetRevisionsAsync(
+        IReadOnlyCollection<HistoricalRelationSourceRevisionReference> sourceReferences,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(sourceReferences);
+        (Guid SourceId, int Revision)[] normalizedReferences = sourceReferences
+            .Select(static reference => (reference.SourceId, reference.Revision))
+            .Distinct()
+            .OrderBy(static reference => reference.SourceId)
+            .ThenBy(static reference => reference.Revision)
+            .ToArray();
+        if (normalizedReferences.Length == 0)
+        {
+            return Array.Empty<HistoricalSourceReference>();
+        }
+
+        FilterDefinitionBuilder<HistoricalSourceDocument> builder = Builders<HistoricalSourceDocument>.Filter;
+        List<HistoricalSourceDocument> documents = new(normalizedReferences.Length);
+        foreach ((Guid SourceId, int Revision)[] batch in normalizedReferences.Chunk(MaximumBatchSize))
+        {
+            FilterDefinition<HistoricalSourceDocument>[] filters = batch.Select(reference =>
+                builder.Eq(
+                    document => document.SourceId,
+                    reference.SourceId.ToString("N", CultureInfo.InvariantCulture))
+                & builder.Eq(document => document.Revision, reference.Revision)).ToArray();
+            documents.AddRange(await this.collection.Find(builder.Or(filters))
+                .Limit(batch.Length)
+                .ToListAsync(cancellationToken));
         }
 
         return documents.Select(static document => document.ToDomain()).ToArray();

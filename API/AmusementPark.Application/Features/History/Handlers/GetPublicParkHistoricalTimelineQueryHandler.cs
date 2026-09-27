@@ -12,18 +12,26 @@ namespace AmusementPark.Application.Features.History.Handlers;
 public sealed class GetPublicParkHistoricalTimelineQueryHandler :
     IQueryHandler<GetPublicParkHistoricalTimelineQuery, ApplicationResult<PublicParkHistoricalTimelineResult>>
 {
+    private const int MaximumLineageRelations = 200;
+
     private readonly PublicParkHistoricalDataLoader dataLoader;
     private readonly IHistoricalSourceRepository historicalSourceRepository;
     private readonly IHistoryEventRepository historyEventRepository;
+    private readonly IHistoricalRelationRepository? historicalRelationRepository;
+    private readonly IHistoricalSubjectPublicationStateReader? subjectPublicationStateReader;
 
     public GetPublicParkHistoricalTimelineQueryHandler(
         PublicParkHistoricalDataLoader dataLoader,
         IHistoricalSourceRepository historicalSourceRepository,
-        IHistoryEventRepository historyEventRepository)
+        IHistoryEventRepository historyEventRepository,
+        IHistoricalRelationRepository? historicalRelationRepository = null,
+        IHistoricalSubjectPublicationStateReader? subjectPublicationStateReader = null)
     {
         this.dataLoader = dataLoader;
         this.historicalSourceRepository = historicalSourceRepository;
         this.historyEventRepository = historyEventRepository;
+        this.historicalRelationRepository = historicalRelationRepository;
+        this.subjectPublicationStateReader = subjectPublicationStateReader;
     }
 
     public async Task<ApplicationResult<PublicParkHistoricalTimelineResult>> HandleAsync(
@@ -67,9 +75,15 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             : await this.historicalSourceRepository.GetRevisionsAsync(
                 sourceReferences,
                 cancellationToken);
-        Dictionary<(Guid Id, int Revision), HistoricalSourceReference> publicSources = loadedSources
-            .Where(static source => source.PublicationState == HistoricalPublicationState.Published
-                && source.Accessibility != HistoricalSourceAccessibility.Withdrawn)
+        IReadOnlyCollection<HistoricalSourceReference> latestTimelineSources = loadedSources.Count == 0
+            ? Array.Empty<HistoricalSourceReference>()
+            : await this.historicalSourceRepository.GetLatestRevisionsAsync(
+                loadedSources.Select(static source => source.Id).Distinct().ToArray(),
+                cancellationToken);
+        Dictionary<(Guid Id, int Revision), HistoricalSourceReference> publicSources =
+            HistoricalRelationEvidenceValidator.FilterCurrentlyAdmissiblePublicSources(
+                loadedSources,
+                latestTimelineSources)
             .ToDictionary(static source => (source.Id, source.Revision));
         string[] narrativeIds = pageFacts
             .Select(static fact => fact.NarrativeContentId)
@@ -87,6 +101,9 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             StringComparer.Ordinal);
         Dictionary<(HistoricalSubjectType Type, string Id), HistoricalSubject> publicCurrentSubjects =
             scope.PublicCurrentSubjects.ToDictionary(static subject => (subject.Type, subject.Id));
+        HashSet<HistoricalSubjectKey> subjectsWithLineage = await this.LoadSubjectsWithLineageAsync(
+            pageFacts,
+            cancellationToken);
         PublicHistoricalTimelineEntryResult[] entries = pageFacts
             .Select(fact => new PublicHistoricalTimelineEntryResult(
                 fact,
@@ -97,7 +114,10 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
                     .Select(static source => source!)
                     .ToArray(),
                 ResolvePublicNarrative(fact, publicNarratives, publicCurrentSubjects),
-                ResolveCurrentSubjectName(fact, publicCurrentSubjects)))
+                ResolveCurrentSubjectName(fact, publicCurrentSubjects),
+                subjectsWithLineage.Contains(new HistoricalSubjectKey(
+                    fact.Subject.Type,
+                    fact.Subject.Id))))
             .ToArray();
         PagedResult<PublicHistoricalTimelineEntryResult> page = new(
             entries,
@@ -109,6 +129,80 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
 
         return ApplicationResult<PublicParkHistoricalTimelineResult>.Success(
             new PublicParkHistoricalTimelineResult(scope.Park, page, publicZoneNames));
+    }
+
+    private async Task<HashSet<HistoricalSubjectKey>> LoadSubjectsWithLineageAsync(
+        IReadOnlyCollection<HistoricalFact> facts,
+        CancellationToken cancellationToken)
+    {
+        if (this.historicalRelationRepository is null
+            || this.subjectPublicationStateReader is null
+            || facts.Count == 0)
+        {
+            return new HashSet<HistoricalSubjectKey>();
+        }
+
+        HistoricalSubjectKey[] keys = facts
+            .Select(static fact => new HistoricalSubjectKey(fact.Subject.Type, fact.Subject.Id))
+            .Distinct()
+            .ToArray();
+        IReadOnlyCollection<HistoricalRelation> relations =
+            await this.historicalRelationRepository.GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
+                keys,
+                MaximumLineageRelations,
+                cancellationToken);
+        HistoricalSubject[] relationSubjects = relations
+            .SelectMany(static relation => new[] { relation.Source, relation.Target })
+            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .ToArray();
+        IReadOnlySet<HistoricalSubjectKey> publicCurrentKeys =
+            await this.subjectPublicationStateReader.GetPublicSubjectKeysAsync(
+                relationSubjects,
+                cancellationToken);
+        HistoricalRelationSourceRevisionReference[] references = relations
+            .SelectMany(static relation => relation.SourceReferences)
+            .DistinctBy(static reference => (reference.SourceId, reference.Revision))
+            .ToArray();
+        IReadOnlyCollection<HistoricalSourceReference> sources = references.Length == 0
+            ? Array.Empty<HistoricalSourceReference>()
+            : await this.historicalSourceRepository.GetRevisionsAsync(references, cancellationToken);
+        IReadOnlyCollection<HistoricalSourceReference> latestSources = sources.Count == 0
+            ? Array.Empty<HistoricalSourceReference>()
+            : await this.historicalSourceRepository.GetLatestRevisionsAsync(
+                sources.Select(static source => source.Id).Distinct().ToArray(),
+                cancellationToken);
+        IReadOnlyCollection<HistoricalSourceReference> currentlyPublicSources =
+            HistoricalRelationEvidenceValidator.FilterCurrentlyAdmissiblePublicSources(
+                sources,
+                latestSources);
+        return relations
+            .Where(relation => IsPublic(relation.Source, publicCurrentKeys)
+                && IsPublic(relation.Target, publicCurrentKeys)
+                && HistoricalRelationEvidenceValidator.HasAdmissiblePublicSupport(
+                    relation,
+                    currentlyPublicSources))
+            .SelectMany(static relation => new[]
+            {
+                new HistoricalSubjectKey(relation.Source.Type, relation.Source.Id),
+                new HistoricalSubjectKey(relation.Target.Type, relation.Target.Id),
+            })
+            .Where(keys.Contains)
+            .ToHashSet();
+    }
+
+    private static bool IsPublic(
+        HistoricalSubject subject,
+        IReadOnlySet<HistoricalSubjectKey> publicCurrentKeys)
+    {
+        return subject.PublicationPolicy switch
+        {
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject => publicCurrentKeys.Contains(
+                new HistoricalSubjectKey(subject.Type, subject.Id)),
+            HistoricalSubjectPublicationPolicy.HistoricalOnly => subject.Type is not HistoricalSubjectType.ParkItem
+                    and not HistoricalSubjectType.ParkZone
+                || !string.IsNullOrWhiteSpace(subject.ContextParkId),
+            _ => false,
+        };
     }
 
     private static HistoryEvent? ResolvePublicNarrative(

@@ -2825,6 +2825,19 @@ export class SeoService {
     });
   }
 
+  applyHistoricalLineageSeo(title: string, description: string, url: string, canonicalPath: string): void {
+    const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
+    this.apply({
+      title: `${title} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
+      robots: 'noindex,follow',
+      alternates: [],
+      imageAlt: title,
+      jsonLd: []
+    });
+  }
+
   applyHistoryArticleSeo(article: HistoryArticlePageViewModel, language: string, url: string, canonicalPath: string | null = null): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: HistorySeoCopy = HISTORY_SEO_COPY[normalizedLanguage] ?? HISTORY_SEO_COPY[SEO_DEFAULT_LANGUAGE];

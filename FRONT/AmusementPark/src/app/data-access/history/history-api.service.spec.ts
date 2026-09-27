@@ -50,6 +50,16 @@ describe('HistoryApiService', () => {
     request.flush({ parkId: 'park/one', parkName: 'Park', events: [], pagination: {} });
   });
 
+  it('loads a public lineage with encoded subject coordinates', () => {
+    service.getPublicHistoricalLineage('ParkItem', 'item/one').subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}public/history/subjects/ParkItem/item%2Fone/lineage`
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({ root: {}, subjects: [], relations: [], hasDirectedCycle: false, isTruncated: false, maximumDepth: 4 });
+  });
+
   it('loads a canonical snapshot without inventing missing date precision', () => {
     service.getPublicParkSnapshot('park-1', 1998, 7).subscribe();
 

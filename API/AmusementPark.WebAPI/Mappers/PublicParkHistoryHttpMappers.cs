@@ -84,6 +84,7 @@ internal static class PublicParkHistoryHttpMappers
             SubjectId = result.Fact.Subject.Id,
             SubjectLabel = ResolveSubjectLabel(result.Fact.Subject),
             CurrentSubjectName = result.CurrentSubjectName,
+            HasPublishedLineage = result.HasPublishedLineage,
             FactType = result.Fact.Type.ToString(),
             Period = result.Fact.Period.ToHttp(),
             EvidenceState = result.Fact.State.ToString(),

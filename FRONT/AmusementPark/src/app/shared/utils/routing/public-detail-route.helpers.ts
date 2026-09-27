@@ -38,6 +38,13 @@ export interface PublicHistoryArticleRouteTarget extends PublicParkRouteTarget {
   eventTitle: string | null | undefined;
 }
 
+export interface PublicHistoricalLineageRouteTarget {
+  language: string | null | undefined;
+  subjectType: string | null | undefined;
+  subjectId: string | null | undefined;
+  subjectLabel: string | null | undefined;
+}
+
 export interface PublicParkItemHistoryArticleRouteTarget extends PublicParkItemRouteTarget {
   eventId: string | null | undefined;
   eventTitle: string | null | undefined;
@@ -208,6 +215,26 @@ export function buildPublicParkHistoryRouteCommands(target: PublicParkRouteTarge
   }
 
   return [...parkRouteCommands, 'history'];
+}
+
+export function buildPublicHistoricalLineageRouteCommands(target: PublicHistoricalLineageRouteTarget): string[] | null {
+  const subjectType: string | null = normalizeRouteValue(target.subjectType)?.toLowerCase() ?? null;
+  const subjectId: string | null = normalizeRouteValue(target.subjectId);
+  const subjectLabel: string | null = normalizeRouteValue(target.subjectLabel);
+
+  if (!subjectType || !subjectId || !subjectLabel) {
+    return null;
+  }
+
+  return [
+    '/',
+    resolveSupportedLanguage(target.language),
+    'history',
+    'lineages',
+    subjectType,
+    subjectId,
+    buildEntitySlug(subjectLabel, 'history')
+  ];
 }
 
 export function buildPublicParkHistoryArticleRouteCommands(target: PublicHistoryArticleRouteTarget): string[] | null {

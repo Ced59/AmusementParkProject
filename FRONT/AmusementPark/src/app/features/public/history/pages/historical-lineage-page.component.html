@@ -1,0 +1,97 @@
+@if (lineage(); as currentLineage) {
+  <main class="historical-lineage-page">
+    <nav class="historical-lineage-breadcrumb" [attr.aria-label]="'history.lineage.breadcrumbAria' | translate">
+      <a [routerLink]="['/', currentLanguage(), 'home']">{{ 'history.lineage.home' | translate }}</a>
+      <i class="pi pi-chevron-right" aria-hidden="true"></i>
+      <span aria-current="page">{{ currentLineage.root.label }}</span>
+    </nav>
+
+    <header class="historical-lineage-hero">
+      <p class="historical-lineage-kicker"><i class="pi pi-sitemap" aria-hidden="true"></i>{{ 'history.lineage.kicker' | translate }}</p>
+      <h1>{{ 'history.lineage.title' | translate: { subject: currentLineage.root.label } }}</h1>
+      <p>{{ 'history.lineage.description' | translate }}</p>
+      <div class="historical-lineage-summary" [attr.aria-label]="'history.lineage.summaryAria' | translate">
+        <span><strong>{{ currentLineage.subjects.length }}</strong>{{ 'history.lineage.subjectCount' | translate }}</span>
+        <span><strong>{{ currentLineage.relations.length }}</strong>{{ 'history.lineage.relationCount' | translate }}</span>
+      </div>
+    </header>
+
+    @if (currentLineage.isTruncated) {
+      <aside class="historical-lineage-notice">
+        <i class="pi pi-info-circle" aria-hidden="true"></i>
+        <p>{{ 'history.lineage.truncated' | translate: { depth: currentLineage.maximumDepth } }}</p>
+      </aside>
+    }
+    @if (currentLineage.hasDirectedCycle) {
+      <aside class="historical-lineage-notice historical-lineage-notice--warning">
+        <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+        <p>{{ 'history.lineage.cycle' | translate }}</p>
+      </aside>
+    }
+
+    <section class="historical-lineage-list" [attr.aria-label]="'history.lineage.listAria' | translate">
+      @for (relation of currentLineage.relations; track relationKey(relation, $index)) {
+        @let source = subject(relation.sourceKey);
+        @let target = subject(relation.targetKey);
+        @if (source && target) {
+          <article class="historical-lineage-card">
+            <div class="historical-lineage-card__connection">
+              <div class="historical-lineage-subject">
+                <small>{{ 'history.lineage.from' | translate }}</small>
+                <strong>{{ source.label }}</strong>
+                @if (source.isHistoricalOnly) { <span>{{ 'history.lineage.historicalOnly' | translate }}</span> }
+              </div>
+              <div class="historical-lineage-arrow" aria-hidden="true">
+                <i [class]="relation.direction === 'Symmetric' ? 'pi pi-arrows-h' : 'pi pi-arrow-right'"></i>
+              </div>
+              <div class="historical-lineage-subject">
+                <small>{{ 'history.lineage.to' | translate }}</small>
+                <strong>{{ target.label }}</strong>
+                @if (target.isHistoricalOnly) { <span>{{ 'history.lineage.historicalOnly' | translate }}</span> }
+              </div>
+            </div>
+
+            <div class="historical-lineage-card__facts">
+              <span class="historical-lineage-type">{{ relationType(relation) }}</span>
+              <span><i class="pi pi-calendar" aria-hidden="true"></i>{{ period(relation) }}</span>
+              <span><i class="pi pi-shield" aria-hidden="true"></i>{{ evidence(relation) }}</span>
+            </div>
+
+            @if (uncertainty(relation); as explanation) {
+              <p class="historical-lineage-uncertainty"><i class="pi pi-info-circle" aria-hidden="true"></i>{{ explanation }}</p>
+            }
+
+            <details class="historical-lineage-sources">
+              <summary>{{ 'history.lineage.sources' | translate: { count: relation.sources.length } }}</summary>
+              @if (relation.sources.length > 0) {
+                <ul>
+                  @for (sourceReference of relation.sources; track $index) {
+                    <li>
+                      @if (sourceReference.url) {
+                        <a [href]="sourceReference.url" target="_blank" rel="noopener noreferrer">{{ sourceReference.title }}</a>
+                      } @else {
+                        <span>{{ sourceReference.title }}</span>
+                      }
+                      @if (sourceReference.publisherOrAuthor) { <small>{{ sourceReference.publisherOrAuthor }}</small> }
+                    </li>
+                  }
+                </ul>
+              } @else {
+                <p>{{ 'history.lineage.noPublicSource' | translate }}</p>
+              }
+            </details>
+          </article>
+        }
+      }
+    </section>
+  </main>
+} @else {
+  <main class="historical-lineage-page">
+    <section class="historical-lineage-empty">
+      <i class="pi pi-search" aria-hidden="true"></i>
+      <h1>{{ 'history.lineage.notFoundTitle' | translate }}</h1>
+      <p>{{ 'history.lineage.notFoundMessage' | translate }}</p>
+      <a class="app-button app-button--primary" [routerLink]="['/', currentLanguage(), 'home']">{{ 'history.lineage.home' | translate }}</a>
+    </section>
+  </main>
+}

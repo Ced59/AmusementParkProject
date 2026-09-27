@@ -5,6 +5,7 @@ import { authGuard } from '@core/guards/auth.guard';
 import { adminGuard } from '@core/guards/admin.guard';
 import { HISTORY_ARTICLE_ROUTE_DATA_KEY, historyArticleResolver } from '@features/public/history/state/history-article.resolver';
 import { HISTORY_TIMELINE_ROUTE_DATA_KEY, historyTimelineResolver } from '@features/public/history/state/history-timeline.resolver';
+import { HISTORICAL_LINEAGE_ROUTE_DATA_KEY, historicalLineageResolver } from '@features/public/history/state/historical-lineage.resolver';
 import {
   PARK_HISTORY_EXPLORER_ROUTE_DATA_KEY,
   parkHistoricalSnapshotResolver,
@@ -230,6 +231,12 @@ export const routes: Routes = [
           { path: 'versions', loadComponent: () => import('@features/public/version-history/pages/version-history-page.component').then((m) => m.VersionHistoryPageComponent) },
           { path: 'privacy', loadComponent: () => import('./features/public/legal/pages/privacy-policy-page.component').then((m) => m.PrivacyPolicyPageComponent) },
           { path: 'not-found', loadComponent: () => import('./features/public/not-found/pages/public-not-found-page.component').then((m) => m.PublicNotFoundPageComponent) },
+
+          {
+            path: 'history/lineages/:subjectType/:subjectId/:subjectSlug',
+            resolve: { [HISTORICAL_LINEAGE_ROUTE_DATA_KEY]: historicalLineageResolver },
+            loadComponent: () => import('./features/public/history/pages/historical-lineage-page.component').then((m) => m.HistoricalLineagePageComponent)
+          },
 
           { path: 'park-operator/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'operator' } },
           { path: 'park-founder/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'founder' } },

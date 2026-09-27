@@ -11,6 +11,79 @@ public sealed class HistoricalPersistenceMongoMapperTests
         new DateTime(2026, 9, 26, 10, 0, 0, DateTimeKind.Utc).AddTicks(9876);
 
     [Fact]
+    public void RelationMapping_ShouldRoundTripExactAssertionAndAuditEvent()
+    {
+        HistoricalSubject source = new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            "item-1",
+            "Ancienne attraction",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalSubject target = new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            "item-2",
+            "Nouvelle attraction",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(2001));
+        Guid sourceId = Guid.NewGuid();
+        HistoricalRelation relation = new HistoricalRelation(
+            Guid.NewGuid(),
+            source,
+            target,
+            HistoricalRelationType.ReplacedBy,
+            HistoricalRelationDirection.Directed,
+            period,
+            HistoricalFactState.Verified,
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            Array.Empty<HistoricalLocalizedText>(),
+            new[]
+            {
+                new HistoricalRelationSourceRevisionReference(
+                    sourceId,
+                    2,
+                    new HistoricalSubjectKey(source.Type, source.Id),
+                    new HistoricalSubjectKey(target.Type, target.Id),
+                    HistoricalRelationType.ReplacedBy,
+                    period,
+                    HistoricalEvidencePosition.Supports,
+                    new[]
+                    {
+                        HistoricalSourceScope.RelationSourceIdentity,
+                        HistoricalSourceScope.RelationTargetIdentity,
+                        HistoricalSourceScope.RelationType,
+                        HistoricalSourceScope.Period,
+                    }),
+            },
+            "Lien confirmé.",
+            RecordedAtUtc.AddMinutes(-2),
+            RecordedAtUtc.AddMinutes(-1),
+            "hist-v1",
+            2,
+            1,
+            RecordedAtUtc);
+        HistoricalReviewEvent reviewEvent = CreateReviewEvent(
+            HistoricalReviewResourceType.Relation,
+            relation.Id,
+            relation.Revision,
+            HistoricalReviewEventType.Published);
+
+        HistoricalRelationDocument document = relation.ToDocument(reviewEvent);
+        HistoricalRelation restored = document.ToDomain();
+
+        Assert.Equal(relation.Id, restored.Id);
+        Assert.Equal(HistoricalRelationType.ReplacedBy, restored.Type);
+        Assert.Equal("item-1", restored.Source.Id);
+        Assert.Equal("item-2", restored.Target.Id);
+        HistoricalRelationSourceRevisionReference reference = Assert.Single(restored.SourceReferences);
+        Assert.Equal(sourceId, reference.SourceId);
+        Assert.Equal(period, reference.Period);
+        Assert.Equal(reviewEvent.Id, document.TransitionReviewEvent.ToDomain().Id);
+        Assert.Equal(0, restored.RecordedAtUtc.Ticks % TimeSpan.TicksPerMillisecond);
+    }
+
+    [Fact]
     public void FactMapping_ShouldRoundTripCanonicalRevisionAtBsonPrecision()
     {
         Guid sourceId = Guid.NewGuid();

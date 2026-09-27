@@ -1,4 +1,5 @@
 import {
+  buildPublicHistoricalLineageRouteCommands,
   buildPublicParkItemImagesRouteCommands,
   buildPublicParkItemVideoRouteCommands,
   buildPublicParkItemVideosRouteCommands,
@@ -74,6 +75,21 @@ describe('public detail route helpers', () => {
       .toEqual(['/', 'pt', 'park-manufacturer', 'mf1', 'intamin']);
     expect(buildPublicParkReferenceRouteCommands({ language: 'pt', referenceId: 'fd1', referenceName: 'Founder', kind: 'founder' }))
       .toEqual(['/', 'pt', 'park-founder', 'fd1', 'founder']);
+  });
+
+  it('builds a localized lineage route and rejects incomplete subjects', () => {
+    expect(buildPublicHistoricalLineageRouteCommands({
+      language: 'fr',
+      subjectType: 'ParkItem',
+      subjectId: 'item-1',
+      subjectLabel: 'Le Grand Huit'
+    })).toEqual(['/', 'fr', 'history', 'lineages', 'parkitem', 'item-1', 'le-grand-huit']);
+    expect(buildPublicHistoricalLineageRouteCommands({
+      language: 'fr',
+      subjectType: 'ParkItem',
+      subjectId: ' ',
+      subjectLabel: 'Le Grand Huit'
+    })).toBeNull();
   });
 
   it('preserves required fallback slug segments in public canonical route commands', () => {

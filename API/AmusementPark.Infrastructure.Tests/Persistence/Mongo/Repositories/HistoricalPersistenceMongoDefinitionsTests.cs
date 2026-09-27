@@ -14,6 +14,42 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class HistoricalPersistenceMongoDefinitionsTests
 {
     [Fact]
+    public void BuildRelationIndexes_ShouldProtectImmutableRevisionsAndReadPaths()
+    {
+        IReadOnlyCollection<CreateIndexModel<HistoricalRelationDocument>> indexes =
+            HistoricalPersistenceMongoDefinitions.BuildRelationIndexes();
+
+        CreateIndexModel<HistoricalRelationDocument> revision = indexes.Single(
+            index => index.Options.Name == "idx_historical_relations_revision_unique");
+        Assert.True(revision.Options.Unique);
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_source_type_revision");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_target_type_revision");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_publication_state");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_source_revision");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_audit_date");
+        Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));
+    }
+
+    [Fact]
+    public void BuildLatestTouchingSubjectsPipeline_ShouldReloadLatestRevisionBeforePublicFilter()
+    {
+        IReadOnlyCollection<BsonDocument> stages =
+            HistoricalRelationRepository.BuildLatestTouchingSubjectsPipeline(
+                new[] { new HistoricalSubjectKey(HistoricalSubjectType.ParkItem, "item-1") },
+                "historical-relations",
+                25);
+        BsonDocument[] pipeline = stages.ToArray();
+
+        Assert.Equal("$relationId", pipeline[1]["$group"]["_id"].AsString);
+        Assert.Equal("historical-relations", pipeline[2]["$lookup"]["from"].AsString);
+        Assert.Equal(-1, pipeline[2]["$lookup"]["pipeline"][1]["$sort"]["revision"].AsInt32);
+        Assert.Equal("$latest", pipeline[4]["$replaceRoot"]["newRoot"].AsString);
+        Assert.True(pipeline[5]["$match"].AsBsonDocument.Contains("$or"));
+        Assert.Equal(HistoricalPublicationState.Published.ToString(), pipeline[6]["$match"]["publicationState"].AsString);
+        Assert.Equal(25, pipeline[^1]["$limit"].AsInt32);
+    }
+
+    [Fact]
     public void BuildFactIndexes_ShouldProtectImmutableRevisionsAndQueryPaths()
     {
         IReadOnlyCollection<CreateIndexModel<HistoricalFactDocument>> indexes =

@@ -103,6 +103,29 @@
   text-decoration: none;
 }
 
+.history-lineage-link {
+  display: inline-flex;
+  gap: 0.55rem;
+  align-items: center;
+  max-width: 100%;
+  min-height: 2.75rem;
+  margin-top: 0.8rem;
+  margin-right: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 45%, var(--app-border));
+  border-radius: var(--radius-pill);
+  color: var(--app-accent-cyan);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.history-lineage-link:hover,
+.history-lineage-link:focus-visible {
+  border-color: var(--app-accent-cyan);
+  background: color-mix(in srgb, var(--app-accent-cyan) 8%, transparent);
+}
+
 .history-narrative-link:hover,
 .history-narrative-link:focus-visible {
   text-decoration: underline;
