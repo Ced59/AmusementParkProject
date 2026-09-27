@@ -6,4 +6,5 @@ public sealed record RideOccurrenceTargetResult(
     string? LifecycleStatus,
     bool IsHistoricalSnapshot,
     DateOnly? OpeningDate = null,
-    DateOnly? ClosingDate = null);
+    DateOnly? ClosingDate = null,
+    bool IsResolved = false);

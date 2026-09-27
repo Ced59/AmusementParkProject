@@ -4,6 +4,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.Passport;
@@ -40,7 +41,14 @@ public sealed class PassportVisitRideTargetsControllerTests
                 {
                     new VisitRideTargetEvaluationResult(
                         "item-1",
+                        "Attraction historique",
+                        "Attraction",
+                        HistoricalOperationalState.KnownClosed,
                         HistoricalConsistency.ConfirmedConflict,
+                        true,
+                        null,
+                        null,
+                        "ClosedDefinitively",
                         new DateOnly(2000, 1, 1),
                         new DateOnly(2010, 12, 31)),
                 }));

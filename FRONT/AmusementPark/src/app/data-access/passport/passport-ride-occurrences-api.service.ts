@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -7,6 +7,8 @@ import {
   PassportRideOccurrence,
   PassportRideOccurrenceMutationResult,
   PassportRideOccurrencePage,
+  PassportHistoricalRideTargetPage,
+  PassportHistoricalRideTargetScope,
   PassportVisitRideTargetEvaluation,
   ReorderPassportRideOccurrenceRequest,
   UpsertPassportRideAssessmentRequest,
@@ -33,6 +35,32 @@ export class PassportRideOccurrencesApiService {
   ): Observable<PassportVisitRideTargetEvaluation[]> {
     const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.evaluateVisitTargets(visitId)}`;
     return this.http.post<PassportVisitRideTargetEvaluation[]>(url, { parkItemIds });
+  }
+
+  listHistoricalTargets(
+    visitId: string,
+    page: number,
+    pageSize: number,
+    scope: PassportHistoricalRideTargetScope,
+    search: string = '',
+    zoneId: string | null = null
+  ): Observable<PassportHistoricalRideTargetPage> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_RIDE_OCCURRENCES_API_ENDPOINTS.historicalTargets(visitId)}`;
+    let params: HttpParams = new HttpParams()
+      .set('page', page)
+      .set('pageSize', pageSize)
+      .set('scope', scope);
+    if (search.trim()) {
+      params = params.set('search', search.trim());
+    }
+    if (zoneId?.trim()) {
+      params = params.set('zoneId', zoneId.trim());
+    }
+
+    return this.http.get<PassportHistoricalRideTargetPage>(url, {
+      params,
+      transferCache: false
+    });
   }
 
   list(visitId: string, cursor: string | null = null, limit: number = 50): Observable<PassportRideOccurrencePage> {

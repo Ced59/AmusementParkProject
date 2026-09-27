@@ -10,4 +10,5 @@ public sealed record VisitTarget(
     DateOnly? OpeningDate,
     DateOnly? ClosingDate,
     string? LifecycleStatus = null,
-    bool IsVisible = true);
+    bool IsVisible = true,
+    string? ZoneId = null);

@@ -9,6 +9,10 @@ export type PassportRideLogSource = 'Manual' | 'Import' | 'SystemMigration' | 'T
 
 export type PassportHistoricalConsistency = 'Verified' | 'Unverified' | 'ConfirmedConflict';
 
+export type PassportHistoricalOperationalState = 'KnownOpen' | 'KnownClosed' | 'PossiblyOpen' | 'Unknown';
+
+export type PassportHistoricalRideTargetScope = 'KnownOpen' | 'PossiblyOpen' | 'AllHistory';
+
 export type PassportRideOccurrencePlacement = 'First' | 'Last' | 'Before' | 'After';
 
 export interface PassportRideOccurrenceMoment {
@@ -21,15 +25,37 @@ export interface PassportRideOccurrenceTarget {
   category: string | null;
   lifecycleStatus: string | null;
   isHistoricalSnapshot: boolean;
+  isResolved?: boolean;
   openingDate?: string | null;
   closingDate?: string | null;
 }
 
 export interface PassportVisitRideTargetEvaluation {
   parkItemId: string;
+  name?: string;
+  category?: string;
+  operationalState?: PassportHistoricalOperationalState;
   historicalConsistency: PassportHistoricalConsistency;
+  isHistoricalOnly?: boolean;
+  mainImageId?: string | null;
+  zoneId?: string | null;
+  lifecycleStatus?: string | null;
   openingDate: string | null;
   closingDate: string | null;
+}
+
+export interface PassportHistoricalRideTargetPage {
+  items: PassportVisitRideTargetEvaluation[];
+  currentPage: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+  knownOpenCount: number;
+  possiblyOpenCount: number;
+  allHistoryCount: number;
+  coverageStatus: 'Partial' | 'Substantial' | 'HighConfidence';
+  coveragePercent: number;
+  methodologyVersion: string;
 }
 
 export interface PassportRideAssessment {

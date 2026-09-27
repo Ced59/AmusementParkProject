@@ -18,4 +18,12 @@ public sealed class UserRideOccurrenceCreationPreparationItemDocument
     [BsonElement("historicalConsistency")]
     [BsonRepresentation(BsonType.String)]
     public HistoricalConsistency HistoricalConsistency { get; set; }
+
+    [BsonElement("historicalTargetName")]
+    [BsonIgnoreIfNull]
+    public string? HistoricalTargetName { get; set; }
+
+    [BsonElement("historicalTargetCategory")]
+    [BsonIgnoreIfNull]
+    public string? HistoricalTargetCategory { get; set; }
 }

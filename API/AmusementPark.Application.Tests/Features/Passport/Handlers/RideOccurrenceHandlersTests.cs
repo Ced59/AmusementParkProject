@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Queries;
 using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.Passport.Services;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Visits;
 using Moq;
@@ -28,7 +29,7 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(
             new VisitTarget(
                 "item-1",
                 "park-1",
@@ -104,8 +105,8 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         Mock<IPassportAuditPublisher> audit =
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
         Mock<IVisitContentMutationLeaseManager> leases =
@@ -140,7 +141,7 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(
             new VisitTarget(
                 "item-1",
                 "park-1",
@@ -200,7 +201,7 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(
             new VisitTarget(
                 "item-1",
                 "park-1",
@@ -289,7 +290,7 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(
             new VisitTarget(
                 "item-1",
                 "park-1",
@@ -401,8 +402,8 @@ public sealed class RideOccurrenceHandlersTests
             new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         Mock<IPassportClock> clock = new Mock<IPassportClock>(MockBehavior.Strict);
         occurrences.Setup(repository => repository.ResolveExistingBatchCreationAsync(
                 It.Is<RideOccurrenceCreationRequest>(request =>
@@ -439,7 +440,7 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(
             new VisitTarget(
                 "item-1",
                 "park-1",
@@ -488,7 +489,7 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(
             new VisitTarget(
                 "item-1",
                 "park-1",
@@ -538,8 +539,8 @@ public sealed class RideOccurrenceHandlersTests
             new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         RideOccurrenceCreationPreparation preparation =
             new RideOccurrenceCreationPreparation(
                 "park-1",
@@ -606,8 +607,8 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         Mock<IPassportAuditPublisher> audit =
             new Mock<IPassportAuditPublisher>(MockBehavior.Strict);
         Mock<IVisitContentMutationLeaseManager> leases =
@@ -675,7 +676,7 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(
             new VisitTarget(
                 "item-1",
                 "park-1",
@@ -713,7 +714,7 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(
             new VisitTarget(
                 "item-1",
                 "park-1",
@@ -783,8 +784,8 @@ public sealed class RideOccurrenceHandlersTests
                 "owner-1",
                 CancellationToken.None))
             .ReturnsAsync(occurrence);
-        Mock<IVisitTargetResolver> targets =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         UpdateRideOccurrenceCommandHandler handler = new UpdateRideOccurrenceCommandHandler(
             visits.Object,
             occurrences.Object,
@@ -810,7 +811,7 @@ public sealed class RideOccurrenceHandlersTests
     }
 
     [Fact]
-    public async Task Update_WithNoChangedFields_ShouldStillFenceTheLoadedVersion()
+    public async Task Update_WhenHistoricalIdentityIsFirstCaptured_ShouldFenceTheUpdate()
     {
         Visit visit = CreateVisit();
         RideOccurrence occurrence = CreateOccurrence(visit, "occurrence-1", 1024);
@@ -823,14 +824,12 @@ public sealed class RideOccurrenceHandlersTests
                 visit.UserId,
                 CancellationToken.None))
             .ReturnsAsync(occurrence);
-        occurrences.Setup(repository => repository.TryConfirmOwnedVersionAsync(
-                occurrence.Id,
-                visit.Id,
-                visit.UserId,
+        occurrences.Setup(repository => repository.TryUpdateOwnedAsync(
+                occurrence,
                 1,
                 CancellationToken.None))
             .ReturnsAsync(false);
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(
+        Mock<IPassportHistoricalTargetResolver> targets = CreateRecordedTargetResolver(
             new VisitTarget(
                 occurrence.ParkItemId,
                 visit.ParkId,
@@ -858,7 +857,90 @@ public sealed class RideOccurrenceHandlersTests
 
         Assert.False(result.IsSuccess);
         Assert.Equal("ride-occurrence.version-conflict", Assert.Single(result.Errors).Code);
-        Assert.Equal(1, occurrence.Version);
+        Assert.Equal(2, occurrence.Version);
+        Assert.Equal("Attraction", occurrence.HistoricalTarget?.Name);
+        visits.VerifyAll();
+        occurrences.VerifyAll();
+        targets.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Update_WithHiddenValidationFallback_ShouldPreserveStoredHistoricalEvidence()
+    {
+        Visit visit = CreateVisit();
+        HistoricalTargetReference storedTarget =
+            new HistoricalTargetReference("Nom au moment de la visite", "Attraction");
+        RideOccurrence occurrence = RideOccurrence.Create(
+            RideOccurrenceId.Parse("occurrence-hidden"),
+            visit,
+            "item-hidden",
+            1024,
+            new OccurrenceMoment(null, false),
+            RideOccurrenceStatus.Completed,
+            RideLogSource.Manual,
+            HistoricalConsistency.ConfirmedConflict,
+            storedTarget,
+            "Note initiale",
+            NowUtc);
+        Mock<IUserVisitRepository> visits = CreateVisitRepository(visit);
+        Mock<IRideOccurrenceRepository> occurrences =
+            new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
+        occurrences.Setup(repository => repository.GetOwnedAsync(
+                occurrence.Id,
+                visit.Id,
+                visit.UserId,
+                CancellationToken.None))
+            .ReturnsAsync(occurrence);
+        occurrences.Setup(repository => repository.TryUpdateOwnedAsync(
+                occurrence,
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(true);
+        PassportHistoricalTarget validationFallback = new PassportHistoricalTarget(
+            occurrence.ParkItemId,
+            visit.ParkId,
+            "Nom actuel masqué",
+            ParkItemCategory.Attraction.ToString(),
+            HistoricalOperationalState.Unknown,
+            HistoricalConsistency.Unverified,
+            new HistoricalTargetReference("Nom actuel masqué", "Attraction"),
+            true,
+            null,
+            null,
+            null,
+            null,
+            null,
+            true);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
+        targets.Setup(resolver => resolver.ResolveRecordedAsync(
+                visit,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Single() == occurrence.ParkItemId),
+                CancellationToken.None))
+            .ReturnsAsync(CreateTargetContext(validationFallback));
+        UpdateRideOccurrenceCommandHandler handler = new UpdateRideOccurrenceCommandHandler(
+            visits.Object,
+            occurrences.Object,
+            targets.Object,
+            CreateClock());
+
+        ApplicationResult<RideOccurrenceResult> result = await handler.HandleAsync(
+            new UpdateRideOccurrenceCommand(
+                visit.UserId,
+                visit.Id.Value,
+                occurrence.Id.Value,
+                1,
+                null,
+                false,
+                RideOccurrenceStatus.Attempted,
+                "Note corrigée",
+                true));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(HistoricalConsistency.ConfirmedConflict, occurrence.HistoricalConsistency);
+        Assert.Equal(storedTarget, occurrence.HistoricalTarget);
+        Assert.Equal("Note corrigée", occurrence.PrivateNote);
+        Assert.Equal("Nom au moment de la visite", result.Value?.Target?.Name);
         visits.VerifyAll();
         occurrences.VerifyAll();
         targets.VerifyAll();
@@ -875,8 +957,8 @@ public sealed class RideOccurrenceHandlersTests
             new Mock<IUserVisitRepository>(MockBehavior.Strict);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         UpdateRideOccurrenceCommandHandler handler = new UpdateRideOccurrenceCommandHandler(
             visits.Object,
             occurrences.Object,
@@ -1138,7 +1220,7 @@ public sealed class RideOccurrenceHandlersTests
             null,
             null,
             "Operating");
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(target);
+        Mock<IPassportHistoricalTargetResolver> targets = CreateRecordedTargetResolver(target);
         GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
             visits.Object,
             occurrences.Object,
@@ -1174,8 +1256,8 @@ public sealed class RideOccurrenceHandlersTests
                 visit.UserId,
                 CancellationToken.None))
             .ReturnsAsync((RideOccurrence?)null);
-        Mock<IVisitTargetResolver> targets =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
             visits.Object,
             occurrences.Object,
@@ -1203,8 +1285,8 @@ public sealed class RideOccurrenceHandlersTests
             .ReturnsAsync((Visit?)null);
         Mock<IRideOccurrenceRepository> occurrences =
             new Mock<IRideOccurrenceRepository>(MockBehavior.Strict);
-        Mock<IVisitTargetResolver> targets =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
             visits.Object,
             occurrences.Object,
@@ -1238,12 +1320,13 @@ public sealed class RideOccurrenceHandlersTests
                 visit.UserId,
                 CancellationToken.None))
             .ReturnsAsync(occurrence);
-        Mock<IVisitTargetResolver> targets =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
-        targets.Setup(resolver => resolver.ResolveAsync(
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
+        targets.Setup(resolver => resolver.ResolveRecordedAsync(
+                visit,
                 It.Is<IReadOnlyCollection<string>>(ids => ids.Single() == occurrence.ParkItemId),
                 CancellationToken.None))
-            .ReturnsAsync(new Dictionary<string, VisitTarget>());
+            .ReturnsAsync(CreateTargetContext());
         GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
             visits.Object,
             occurrences.Object,
@@ -1287,7 +1370,7 @@ public sealed class RideOccurrenceHandlersTests
             null,
             null,
             "Operating");
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(movedTarget);
+        Mock<IPassportHistoricalTargetResolver> targets = CreateRecordedTargetResolver(movedTarget);
         GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
             visits.Object,
             occurrences.Object,
@@ -1328,7 +1411,7 @@ public sealed class RideOccurrenceHandlersTests
             new DateOnly(2000, 1, 1),
             new DateOnly(2020, 12, 31),
             "ClosedDefinitively");
-        Mock<IVisitTargetResolver> targets = CreateTargetResolver(target);
+        Mock<IPassportHistoricalTargetResolver> targets = CreateRecordedTargetResolver(target);
         ListRideOccurrencesQueryHandler handler = new ListRideOccurrencesQueryHandler(
             visits.Object,
             occurrences.Object,
@@ -1377,8 +1460,7 @@ public sealed class RideOccurrenceHandlersTests
         RideOccurrenceResult storedResult = PassportRideOccurrenceResultFactory.Create(occurrence);
         RideOccurrenceResult refreshedResult = PassportRideOccurrenceResultFactory.Create(
             occurrence,
-            target,
-            visit.Date);
+            CreateHistoricalTarget(target));
 
         Assert.True(storedResult.HistoricalConflictConfirmed);
         Assert.Equal(HistoricalConsistency.ConfirmedConflict, refreshedResult.HistoricalConsistency);
@@ -1394,27 +1476,49 @@ public sealed class RideOccurrenceHandlersTests
             "occurrence-hidden",
             1024,
             new HistoricalTargetReference("Nom conservé dans la visite", "Attraction"));
-        VisitTarget hiddenTarget = new VisitTarget(
-            occurrence.ParkItemId,
-            visit.ParkId,
-            "Nom courant masqué",
-            ParkItemCategory.Attraction,
-            new DateOnly(2027, 1, 1),
-            new DateOnly(2028, 12, 31),
-            "Operating",
-            false);
-
-        RideOccurrenceResult result = PassportRideOccurrenceResultFactory.Create(
-            occurrence,
-            hiddenTarget,
-            visit.Date);
+        RideOccurrenceResult result = PassportRideOccurrenceResultFactory.Create(occurrence);
 
         Assert.Equal(HistoricalConsistency.Verified, result.HistoricalConsistency);
         RideOccurrenceTargetResult targetResult = Assert.IsType<RideOccurrenceTargetResult>(result.Target);
         Assert.True(targetResult.IsHistoricalSnapshot);
+        Assert.False(targetResult.IsResolved);
         Assert.Equal("Nom conservé dans la visite", targetResult.Name);
         Assert.Null(targetResult.OpeningDate);
         Assert.Null(targetResult.ClosingDate);
+    }
+
+    [Fact]
+    public void ResultFactory_ShouldKeepAValidationFallbackResolvedWithoutReplacingItsSnapshot()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(
+            visit,
+            "occurrence-fallback",
+            1024,
+            new HistoricalTargetReference("Nom conservé dans la visite", "Attraction"));
+        PassportHistoricalTarget fallback = CreateHistoricalTarget(new VisitTarget(
+            occurrence.ParkItemId,
+            visit.ParkId,
+            "Nom courant masqué",
+            ParkItemCategory.Attraction,
+            null,
+            null,
+            "Removed",
+            false)) with
+        {
+            IsHistoricalOnly = true,
+            IsValidationFallback = true,
+        };
+
+        RideOccurrenceResult result = PassportRideOccurrenceResultFactory.Create(
+            occurrence,
+            fallback);
+
+        RideOccurrenceTargetResult target = Assert.IsType<RideOccurrenceTargetResult>(result.Target);
+        Assert.Equal("Nom conservé dans la visite", target.Name);
+        Assert.True(target.IsHistoricalSnapshot);
+        Assert.True(target.IsResolved);
+        Assert.Equal(occurrence.HistoricalConsistency, result.HistoricalConsistency);
     }
 
     private static AddRideOccurrencesBatchCommand CreateBatchCommand(
@@ -1455,7 +1559,7 @@ public sealed class RideOccurrenceHandlersTests
     private static AddRideOccurrencesBatchCommandHandler CreateAddHandler(
         Mock<IUserVisitRepository> visits,
         Mock<IRideOccurrenceRepository> occurrences,
-        Mock<IVisitTargetResolver> targets,
+        Mock<IPassportHistoricalTargetResolver> targets,
         IPassportClock clock)
     {
         return new AddRideOccurrencesBatchCommandHandler(
@@ -1497,18 +1601,64 @@ public sealed class RideOccurrenceHandlersTests
                 RideOccurrenceCreationKeyReservationStatus.Missing));
     }
 
-    private static Mock<IVisitTargetResolver> CreateTargetResolver(VisitTarget target)
+    private static Mock<IPassportHistoricalTargetResolver> CreateTargetResolver(VisitTarget target)
     {
-        Mock<IVisitTargetResolver> targets =
-            new Mock<IVisitTargetResolver>(MockBehavior.Strict);
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         targets.Setup(resolver => resolver.ResolveAsync(
+                It.IsAny<Visit>(),
                 It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
-            .ReturnsAsync(new Dictionary<string, VisitTarget>
-            {
-                [target.ParkItemId] = target,
-            });
+            .ReturnsAsync(CreateTargetContext(CreateHistoricalTarget(target)));
         return targets;
+    }
+
+    private static Mock<IPassportHistoricalTargetResolver> CreateRecordedTargetResolver(
+        VisitTarget target)
+    {
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
+        targets.Setup(resolver => resolver.ResolveRecordedAsync(
+                It.IsAny<Visit>(),
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(CreateTargetContext(CreateHistoricalTarget(target)));
+        return targets;
+    }
+
+    private static PassportHistoricalTargetContext CreateTargetContext(
+        params PassportHistoricalTarget[] targets)
+    {
+        return new PassportHistoricalTargetContext(
+            targets.ToDictionary(static target => target.ParkItemId, StringComparer.Ordinal),
+            HistoricalCoverageStatus.HighConfidence,
+            100,
+            "history-v1");
+    }
+
+    private static PassportHistoricalTarget CreateHistoricalTarget(VisitTarget target)
+    {
+        DateOnly visitDate = new DateOnly(2026, 9, 3);
+        HistoricalOperationalState operationalState =
+            target.OpeningDate.HasValue && target.OpeningDate.Value > visitDate
+                || target.ClosingDate.HasValue && target.ClosingDate.Value < visitDate
+                    ? HistoricalOperationalState.KnownClosed
+                    : HistoricalOperationalState.KnownOpen;
+        string category = target.Category.ToString();
+        return new PassportHistoricalTarget(
+            target.ParkItemId,
+            target.ParkId,
+            target.Name,
+            category,
+            operationalState,
+            RideOccurrenceHistoricalConsistencyEvaluator.Evaluate(operationalState),
+            new HistoricalTargetReference(target.Name, category),
+            false,
+            null,
+            target.ZoneId,
+            target.LifecycleStatus,
+            target.OpeningDate,
+            target.ClosingDate);
     }
 
     private static IPassportClock CreateClock()

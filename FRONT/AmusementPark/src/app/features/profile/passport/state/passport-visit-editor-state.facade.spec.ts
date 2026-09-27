@@ -1,11 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
-import { of, Subject, throwError } from 'rxjs';
+import { map, Observable, of, Subject, switchMap, throwError } from 'rxjs';
 
 import {
   PassportRideOccurrence,
-  PassportRideOccurrenceMutationResult
+  PassportHistoricalRideTargetPage,
+  PassportRideOccurrenceMutationResult,
+  PassportVisitRideTargetEvaluation
 } from '@app/models/passport/passport-ride-occurrence.models';
 import { PassportVisit } from '@app/models/passport/passport-visit.models';
 import { ParkItem } from '@app/models/parks/park-item';
@@ -13,7 +15,6 @@ import { ToastMessageService } from '@app/services/messages/toast-message.servic
 import { PASSPORT_PRODUCT_ANALYTICS_PORT } from '@core/analytics/passport-product-analytics.port';
 import { PagedResult } from '@shared/models/contracts';
 import {
-  PASSPORT_VISIT_EDITOR_ATTRACTIONS_PORT,
   PASSPORT_VISIT_EDITOR_OCCURRENCES_PORT,
   PASSPORT_VISIT_EDITOR_OPERATION_ID_PORT,
   PASSPORT_VISIT_EDITOR_PARKS_PORT,
@@ -41,6 +42,7 @@ describe('PassportVisitEditorStateFacade', () => {
     list: ReturnType<typeof vi.fn>;
     get: ReturnType<typeof vi.fn>;
     evaluateVisitTargets: ReturnType<typeof vi.fn>;
+    listHistoricalTargets: ReturnType<typeof vi.fn>;
     addBatch: ReturnType<typeof vi.fn>;
     update: ReturnType<typeof vi.fn>;
     delete: ReturnType<typeof vi.fn>;
@@ -66,15 +68,69 @@ describe('PassportVisitEditorStateFacade', () => {
       upsertParkAssessment: vi.fn(),
       deleteParkAssessment: vi.fn()
     };
+    const getParkItemsByParkIdPage = vi.fn((
+      _parkId: string,
+      _page: number,
+      _pageSize: number,
+      _criteria?: unknown,
+      _options?: unknown
+    ): Observable<PagedResult<ParkItem>> => of({
+        items: [{
+          id: 'ride-1',
+          parkId: 'park-1',
+          name: 'Grand Huit',
+          category: 'Attraction',
+          type: 'RollerCoaster',
+          latitude: null,
+          longitude: null,
+          attractionDetails: { status: 'Operating' }
+        }],
+        pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+      }));
+    attractionsPort = {
+      getParkItemsByParkIdPage
+    };
+    const evaluateVisitTargets = vi.fn((
+      _visitId: string,
+      _parkItemIds: string[]
+    ): Observable<PassportVisitRideTargetEvaluation[]> => of([{
+      parkItemId: 'ride-1',
+      historicalConsistency: 'Verified',
+      openingDate: '2020-01-01',
+      closingDate: null
+    }]));
     occurrencesPort = {
       list: vi.fn().mockReturnValue(of({ items: [firstOccurrence, secondOccurrence], nextCursor: null })),
       get: vi.fn(),
-      evaluateVisitTargets: vi.fn().mockReturnValue(of([{
-        parkItemId: 'ride-1',
-        historicalConsistency: 'Verified',
-        openingDate: '2020-01-01',
-        closingDate: null
-      }])),
+      evaluateVisitTargets,
+      listHistoricalTargets: vi.fn((
+        visitId: string,
+        page: number,
+        pageSize: number,
+        scope: string,
+        search: string,
+        zoneId: string | null
+      ) => getParkItemsByParkIdPage(
+        'park-1',
+        page,
+        pageSize,
+        {
+          includeHidden: false,
+          closedFilter: scope === 'KnownOpen' ? 'openOnly' : 'all',
+          category: 'Attraction',
+          search: search || null,
+          zoneId
+        },
+        { closedFilter: scope === 'KnownOpen' ? 'openOnly' : 'all' }
+      ).pipe(switchMap((result: PagedResult<ParkItem>) => {
+        const publicAttractions: ParkItem[] = result.items.filter((item: ParkItem): boolean =>
+          item.category === 'Attraction' && item.isVisible !== false);
+        return evaluateVisitTargets(
+          visitId,
+          publicAttractions.map((item: ParkItem): string => item.id!)
+        ).pipe(map((evaluations: PassportVisitRideTargetEvaluation[]): PassportHistoricalRideTargetPage =>
+          createHistoricalTargetPage(result, publicAttractions, evaluations)));
+      }))),
       addBatch: vi.fn(),
       update: vi.fn(),
       delete: vi.fn(),
@@ -95,21 +151,6 @@ describe('PassportVisitEditorStateFacade', () => {
         ]
       }]))
     };
-    attractionsPort = {
-      getParkItemsByParkIdPage: vi.fn().mockReturnValue(of({
-        items: [{
-          id: 'ride-1',
-          parkId: 'park-1',
-          name: 'Grand Huit',
-          category: 'Attraction',
-          type: 'RollerCoaster',
-          latitude: null,
-          longitude: null,
-          attractionDetails: { status: 'Operating' }
-        }],
-        pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
-      }))
-    };
     operationIds = { create: vi.fn().mockReturnValue('operation-stable') };
     analyticsTrack = vi.fn();
 
@@ -120,7 +161,6 @@ describe('PassportVisitEditorStateFacade', () => {
         { provide: PASSPORT_VISIT_EDITOR_OCCURRENCES_PORT, useValue: occurrencesPort },
         { provide: PASSPORT_VISIT_EDITOR_PARKS_PORT, useValue: parksPort },
         { provide: PASSPORT_VISIT_EDITOR_ZONES_PORT, useValue: zonesPort },
-        { provide: PASSPORT_VISIT_EDITOR_ATTRACTIONS_PORT, useValue: attractionsPort },
         { provide: PASSPORT_VISIT_EDITOR_OPERATION_ID_PORT, useValue: operationIds },
         { provide: PASSPORT_PRODUCT_ANALYTICS_PORT, useValue: { track: analyticsTrack } },
         { provide: ToastMessageService, useValue: { add: vi.fn() } },
@@ -148,8 +188,8 @@ describe('PassportVisitEditorStateFacade', () => {
       'park-1',
       1,
       24,
-      { includeHidden: false, closedFilter: 'all', category: 'Attraction', search: null, zoneId: null },
-      { closedFilter: 'all' }
+      { includeHidden: false, closedFilter: 'openOnly', category: 'Attraction', search: null, zoneId: null },
+      { closedFilter: 'openOnly' }
     );
   });
 
@@ -216,11 +256,11 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.selectionCanSubmit()).toBe(true);
   });
 
-  it('applies search, zone and lifecycle filters to both attraction catalogue filters', () => {
+  it('applies search, zone and historical scope to the attraction catalogue', () => {
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     facade.load('visit-1', 'fr');
 
-    facade.applyAttractionFilters('ancienne', 'zone-1', 'closedOnly');
+    facade.applyAttractionFilters('ancienne', 'zone-1', 'AllHistory');
 
     expect(attractionsPort.getParkItemsByParkIdPage).toHaveBeenLastCalledWith(
       'park-1',
@@ -228,12 +268,12 @@ describe('PassportVisitEditorStateFacade', () => {
       24,
       {
         includeHidden: false,
-        closedFilter: 'closedOnly',
+        closedFilter: 'all',
         category: 'Attraction',
         search: 'ancienne',
         zoneId: 'zone-1'
       },
-      { closedFilter: 'closedOnly' }
+      { closedFilter: 'all' }
     );
   });
 
@@ -246,8 +286,8 @@ describe('PassportVisitEditorStateFacade', () => {
       .mockReturnValueOnce(olderResult)
       .mockReturnValueOnce(latestResult);
 
-    facade.applyAttractionFilters('ancien', null, 'all');
-    facade.applyAttractionFilters('récent', null, 'all');
+    facade.applyAttractionFilters('ancien', null, 'AllHistory');
+    facade.applyAttractionFilters('récent', null, 'AllHistory');
 
     latestResult.next({
       items: [createParkItem('ride-latest', 'Résultat récent')],
@@ -425,6 +465,134 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
   });
 
+  it('reloads the active historical catalogue page after a visit date change', () => {
+    const initialItem: ParkItem = createParkItem('ride-former', 'Nom de 1990');
+    const refreshedItem: ParkItem = createParkItem('ride-current', 'Nom de 2025');
+    occurrencesPort.listHistoricalTargets
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [initialItem],
+          pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+        },
+        [initialItem],
+        [{
+          parkItemId: 'ride-former',
+          historicalConsistency: 'Verified',
+          openingDate: null,
+          closingDate: null
+        }]
+      )))
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [refreshedItem],
+          pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+        },
+        [refreshedItem],
+        [{
+          parkItemId: 'ride-current',
+          historicalConsistency: 'Verified',
+          openingDate: null,
+          closingDate: null
+        }]
+      )));
+    occurrencesPort.evaluateVisitTargets.mockReturnValue(of([{
+      parkItemId: 'ride-former',
+      name: 'Nom de 2025 pour la sélection',
+      historicalConsistency: 'Unverified',
+      openingDate: null,
+      closingDate: null
+    }]));
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    expect(facade.attractions().map((attraction): string => attraction.name)).toEqual(['Nom de 1990']);
+    facade.toggleAttraction(facade.attractions()[0]);
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 2025,
+      isApproximate: true
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(occurrencesPort.listHistoricalTargets).toHaveBeenCalledTimes(2);
+    expect(occurrencesPort.listHistoricalTargets).toHaveBeenLastCalledWith(
+      'visit-1',
+      1,
+      24,
+      'KnownOpen',
+      '',
+      null
+    );
+    expect(facade.attractions().map((attraction): string => attraction.name)).toEqual(['Nom de 2025']);
+    expect(facade.selectedAttractions()[0].attractionName).toBe('Nom de 2025 pour la sélection');
+  });
+
+  it('returns to the last available catalogue page when a date change shrinks the result set', () => {
+    const firstPageItem: ParkItem = createParkItem('ride-first', 'Première page');
+    const secondPageItem: ParkItem = createParkItem('ride-second', 'Deuxième page');
+    const refreshedItem: ParkItem = createParkItem('ride-refreshed', 'Catalogue actualisé');
+    occurrencesPort.listHistoricalTargets
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [firstPageItem],
+          pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 25, totalPages: 2 }
+        },
+        [firstPageItem],
+        []
+      )))
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [secondPageItem],
+          pagination: { currentPage: 2, itemsPerPage: 24, totalItems: 25, totalPages: 2 }
+        },
+        [secondPageItem],
+        []
+      )))
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [],
+          pagination: { currentPage: 2, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+        },
+        [],
+        []
+      )))
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [refreshedItem],
+          pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+        },
+        [refreshedItem],
+        []
+      )));
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 1990, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.goToAttractionPage(2);
+    expect(facade.attractionPagination().currentPage).toBe(2);
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 1990,
+      isApproximate: true
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(occurrencesPort.listHistoricalTargets).toHaveBeenCalledTimes(4);
+    expect(occurrencesPort.listHistoricalTargets.mock.calls.at(-1)?.[1]).toBe(1);
+    expect(facade.attractionPagination().currentPage).toBe(1);
+    expect(facade.attractions().map((attraction): string => attraction.name))
+      .toEqual(['Catalogue actualisé']);
+  });
+
   it('requires a new selection confirmation after temporal evidence is re-evaluated', () => {
     visitsPort.updateVisit.mockReturnValue(of({
       ...visit,
@@ -506,7 +674,7 @@ describe('PassportVisitEditorStateFacade', () => {
     facade.saveVisitMetadata();
 
     expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(2);
-    expect(occurrencesPort.evaluateVisitTargets.mock.calls.map((call) => call[1].length)).toEqual([100, 4]);
+    expect(occurrencesPort.evaluateVisitTargets.mock.calls.map((call) => call[1].length)).toEqual([4, 100]);
   });
 
   it('keeps additions blocked until stale target evaluations can be retried', () => {
@@ -2420,6 +2588,32 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
   });
 
+  it('allows editing when a historical-only target is still canonically resolved', () => {
+    const resolvedHistoricalOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      target: {
+        name: 'Attraction historique résolue',
+        category: 'Attraction',
+        lifecycleStatus: 'Removed',
+        isHistoricalSnapshot: true,
+        isResolved: true
+      }
+    };
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    const canUpdate: boolean = facade.canUpdateOccurrence(resolvedHistoricalOccurrence, {
+      status: 'Attempted',
+      localTime: '',
+      isApproximate: false,
+      privateNote: '',
+      confirmHistoricalConflict: false
+    });
+
+    expect(canUpdate).toBe(true);
+    expect(facade.hasResolvedOccurrenceTarget(resolvedHistoricalOccurrence)).toBe(true);
+  });
+
   it('keeps the private timeline usable when public park metadata is no longer available', () => {
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     parksPort.getParkById.mockReturnValue(throwError(() => new Error('hidden')));
@@ -2482,5 +2676,49 @@ function createParkItem(id: string, name: string): ParkItem {
     latitude: null,
     longitude: null,
     attractionDetails: { status: 'Operating' }
+  };
+}
+
+function createHistoricalTargetPage(
+  page: PagedResult<ParkItem>,
+  attractions: readonly ParkItem[],
+  evaluations: readonly PassportVisitRideTargetEvaluation[]
+): PassportHistoricalRideTargetPage {
+  const evaluationsById: ReadonlyMap<string, PassportVisitRideTargetEvaluation> = new Map(
+    evaluations.map((evaluation: PassportVisitRideTargetEvaluation) => [evaluation.parkItemId, evaluation])
+  );
+  const items: PassportVisitRideTargetEvaluation[] = attractions.map((attraction: ParkItem) => {
+    const evaluation: PassportVisitRideTargetEvaluation | undefined = evaluationsById.get(attraction.id!);
+    const consistency = evaluation?.historicalConsistency ?? 'Unverified';
+    return {
+      parkItemId: attraction.id!,
+      name: attraction.name,
+      category: 'Attraction',
+      operationalState: consistency === 'Verified'
+        ? 'KnownOpen'
+        : consistency === 'ConfirmedConflict'
+          ? 'KnownClosed'
+          : 'Unknown',
+      historicalConsistency: consistency,
+      isHistoricalOnly: false,
+      mainImageId: attraction.mainImageId ?? null,
+      zoneId: attraction.zoneId ?? null,
+      lifecycleStatus: attraction.attractionDetails?.status ?? null,
+      openingDate: evaluation?.openingDate ?? null,
+      closingDate: evaluation?.closingDate ?? null
+    };
+  });
+  return {
+    items,
+    currentPage: page.pagination.currentPage,
+    pageSize: page.pagination.itemsPerPage,
+    totalItems: page.pagination.totalItems,
+    totalPages: page.pagination.totalPages,
+    knownOpenCount: items.filter((item) => item.operationalState === 'KnownOpen').length,
+    possiblyOpenCount: items.filter((item) => item.operationalState === 'PossiblyOpen').length,
+    allHistoryCount: page.pagination.totalItems,
+    coverageStatus: 'HighConfidence',
+    coveragePercent: 100,
+    methodologyVersion: 'history-v1'
   };
 }

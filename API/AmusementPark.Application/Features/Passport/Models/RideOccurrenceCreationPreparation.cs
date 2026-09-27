@@ -7,4 +7,5 @@ public sealed record RideOccurrenceCreationPreparation(
     VisitDate VisitDate,
     string? TimeZoneId,
     LocalServiceDayConvention ServiceDayConvention,
-    IReadOnlyList<HistoricalConsistency> HistoricalConsistencies);
+    IReadOnlyList<HistoricalConsistency> HistoricalConsistencies,
+    IReadOnlyList<HistoricalTargetReference?>? HistoricalTargets = null);

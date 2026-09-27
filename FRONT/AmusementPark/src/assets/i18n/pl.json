@@ -929,6 +929,17 @@
         "historical": "historyczna",
         "pagination": "Strony atrakcji",
         "page": "Strona {{current}} z {{total}}",
+        "historicalScopeLabel": "Kontekst w dniu wizyty",
+        "knownOpen": "Na pewno otwarte",
+        "possiblyOpen": "Prawdopodobnie otwarte",
+        "allHistory": "Cała historia parku",
+        "historyCoverage": "Dostępne pokrycie historyczne: {{percent}}%",
+        "operationalState": {
+          "KnownOpen": "Na pewno otwarta",
+          "KnownClosed": "Na pewno zamknięta",
+          "PossiblyOpen": "Prawdopodobnie otwarta",
+          "Unknown": "Stan historyczny nieznany"
+        },
         "lifecycleLabel": "Dostępność",
         "allLifecycles": "Wszystkie atrakcje",
         "noRecordedClosure": "Bez zarejestrowanego zamknięcia",

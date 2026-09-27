@@ -1,42 +1,26 @@
+using AmusementPark.Core.Domain.History;
+
 namespace AmusementPark.Core.Domain.Visits;
 
 /// <summary>
-/// Compare une date de visite imprécise aux bornes historiques réellement connues.
+/// Traduit l'état canonique d'un sujet à la date de visite en cohérence Passeport.
 /// </summary>
 public static class RideOccurrenceHistoricalConsistencyEvaluator
 {
-    public static HistoricalConsistency Evaluate(
-        VisitDate visitDate,
-        DateOnly? openingDate,
-        DateOnly? closingDate)
+    public static HistoricalConsistency Evaluate(HistoricalOperationalState operationalState)
     {
-        ArgumentNullException.ThrowIfNull(visitDate);
-        if (openingDate.HasValue
-            && closingDate.HasValue
-            && closingDate.Value < openingDate.Value)
+        if (!Enum.IsDefined(operationalState))
         {
-            return HistoricalConsistency.Unverified;
+            throw new ArgumentOutOfRangeException(nameof(operationalState));
         }
 
-        DateOnly earliest = visitDate.GetEarliestPossibleDate();
-        DateOnly latest = visitDate.GetLatestPossibleDate();
-        if ((openingDate.HasValue && latest < openingDate.Value)
-            || (closingDate.HasValue && earliest > closingDate.Value))
+        return operationalState switch
         {
-            return HistoricalConsistency.ConfirmedConflict;
-        }
-
-        if (!openingDate.HasValue && !closingDate.HasValue)
-        {
-            return HistoricalConsistency.Unverified;
-        }
-
-        bool entireRangeAfterOpening = !openingDate.HasValue
-            || earliest >= openingDate.Value;
-        bool entireRangeBeforeClosing = !closingDate.HasValue
-            || latest <= closingDate.Value;
-        return entireRangeAfterOpening && entireRangeBeforeClosing
-            ? HistoricalConsistency.Verified
-            : HistoricalConsistency.Unverified;
+            HistoricalOperationalState.KnownOpen => HistoricalConsistency.Verified,
+            HistoricalOperationalState.KnownClosed => HistoricalConsistency.ConfirmedConflict,
+            HistoricalOperationalState.PossiblyOpen => HistoricalConsistency.Unverified,
+            HistoricalOperationalState.Unknown => HistoricalConsistency.Unverified,
+            _ => throw new ArgumentOutOfRangeException(nameof(operationalState)),
+        };
     }
 }

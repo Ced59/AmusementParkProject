@@ -51,6 +51,34 @@ describe('PassportRideOccurrencesApiService', () => {
     );
   });
 
+  it('loads the canonical historical catalogue with private non-transferable paging', () => {
+    const httpClient = { get: vi.fn().mockReturnValue(of({ items: [] })) };
+    const service: PassportRideOccurrencesApiService = new PassportRideOccurrencesApiService(
+      httpClient as unknown as HttpClient
+    );
+
+    service.listHistoricalTargets(
+      'visit/one',
+      2,
+      24,
+      'PossiblyOpen',
+      '  ancienne  ',
+      ' zone-1 '
+    ).subscribe();
+
+    const call: unknown[] = httpClient.get.mock.calls[0];
+    expect(call[0]).toBe(
+      `${environment.apiBaseUrl}me/passport/visits/visit%2Fone/historical-ride-targets`
+    );
+    const options = call[1] as { params: { get: (name: string) => string | null }; transferCache: boolean };
+    expect(options.params.get('page')).toBe('2');
+    expect(options.params.get('pageSize')).toBe('24');
+    expect(options.params.get('scope')).toBe('PossiblyOpen');
+    expect(options.params.get('search')).toBe('ancienne');
+    expect(options.params.get('zoneId')).toBe('zone-1');
+    expect(options.transferCache).toBe(false);
+  });
+
   it('loads one private occurrence with transfer caching disabled for mutation recovery', () => {
     const httpClient = { get: vi.fn().mockReturnValue(of(createOccurrence())) };
     const service: PassportRideOccurrencesApiService = new PassportRideOccurrencesApiService(

@@ -407,7 +407,18 @@
         "results": "Für diesen Besuch verfügbare Attraktionen",
         "historical": "historisch",
         "pagination": "Attraktionsseiten",
-        "page": "Seite {{current}} von {{total}}"
+        "page": "Seite {{current}} von {{total}}",
+        "historicalScopeLabel": "Kontext am Besuchsdatum",
+        "knownOpen": "Sicher geöffnet",
+        "possiblyOpen": "Möglicherweise geöffnet",
+        "allHistory": "Gesamte Parkgeschichte",
+        "historyCoverage": "Verfügbare historische Abdeckung: {{percent}} %",
+        "operationalState": {
+          "KnownOpen": "Sicher geöffnet",
+          "KnownClosed": "Sicher geschlossen",
+          "PossiblyOpen": "Möglicherweise geöffnet",
+          "Unknown": "Historischer Status unbekannt"
+        }
       },
       "selection": {
         "title": "Hinzuzufügende Einträge",

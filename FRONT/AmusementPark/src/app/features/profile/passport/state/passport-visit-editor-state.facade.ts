@@ -13,6 +13,8 @@ import {
   PassportRideOccurrenceMutationResult,
   PassportRideOccurrencePage,
   PassportRideOccurrencePlacement,
+  PassportHistoricalRideTargetPage,
+  PassportHistoricalRideTargetScope,
   PassportVisitRideTargetEvaluation,
   ReorderPassportRideOccurrenceRequest,
   UpsertPassportRideAssessmentRequest
@@ -27,24 +29,22 @@ import {
   UpdatePassportVisitRequest,
   UpsertPassportVisitParkAssessmentRequest
 } from '@app/models/passport/passport-visit.models';
-import { ParkItem } from '@app/models/parks/park-item';
 import { Park } from '@app/models/parks/park';
 import { ParkZone } from '@app/models/parks/park-zone';
-import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import {
   PASSPORT_PRODUCT_ANALYTICS_PORT,
   PassportProductAnalyticsPort
 } from '@core/analytics/passport-product-analytics.port';
 import { passportRideCountBucket } from '@core/analytics/passport-product-event.model';
-import { PagedResult, PaginationContract } from '@shared/models/contracts';
+import { PaginationContract } from '@shared/models/contracts';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 import {
   createAttractionSelection,
   mapAttractionSelectionToRequest,
   mapOccurrenceToEditDraft,
   mapOccurrenceEditToRequest,
-  mapParkItemToVisitEditorAttraction,
+  mapHistoricalTargetToVisitEditorAttraction,
   mapParkZoneToVisitEditorZone,
   normalizeCount
 } from '../mappers/passport-visit-editor.mapper';
@@ -64,13 +64,11 @@ import {
   PassportVisitEditorZone
 } from '../models/passport-visit-editor.models';
 import {
-  PASSPORT_VISIT_EDITOR_ATTRACTIONS_PORT,
   PASSPORT_VISIT_EDITOR_OCCURRENCES_PORT,
   PASSPORT_VISIT_EDITOR_OPERATION_ID_PORT,
   PASSPORT_VISIT_EDITOR_PARKS_PORT,
   PASSPORT_VISIT_EDITOR_VISITS_PORT,
   PASSPORT_VISIT_EDITOR_ZONES_PORT,
-  PassportVisitEditorAttractionsPort,
   PassportVisitEditorOccurrencesPort,
   PassportVisitEditorOperationIdPort,
   PassportVisitEditorParksPort,
@@ -81,13 +79,8 @@ import {
 interface InitialVisitEditorData {
   park: Park | null;
   zones: ParkZone[];
-  attractions: EvaluatedAttractionPage | null;
+  attractions: PassportHistoricalRideTargetPage | null;
   occurrences: PassportRideOccurrencePage | null;
-}
-
-interface EvaluatedAttractionPage {
-  page: PagedResult<ParkItem>;
-  evaluations: PassportVisitRideTargetEvaluation[];
 }
 
 interface PendingIdempotentMutation {
@@ -151,6 +144,19 @@ export class PassportVisitEditorStateFacade {
     totalItems: 0,
     totalPages: 0
   });
+  private readonly historicalTargetSummarySignal = signal<{
+    knownOpenCount: number;
+    possiblyOpenCount: number;
+    allHistoryCount: number;
+    coveragePercent: number;
+    coverageStatus: string;
+  }>({
+    knownOpenCount: 0,
+    possiblyOpenCount: 0,
+    allHistoryCount: 0,
+    coveragePercent: 0,
+    coverageStatus: 'Partial'
+  });
   private readonly selectedAttractionsSignal = signal<PassportAttractionSelectionDraft[]>([]);
   private readonly occurrencesSignal = signal<PassportRideOccurrence[]>([]);
   private readonly editDraftsSignal = signal<Readonly<Record<string, PassportOccurrenceEditDraft>>>({});
@@ -187,7 +193,7 @@ export class PassportVisitEditorStateFacade {
   private currentLanguage: string = 'en';
   private currentAttractionSearch: string = '';
   private currentZoneId: string | null = null;
-  private currentAttractionClosedFilter: ClosedEntityFilter = 'all';
+  private currentAttractionScope: PassportHistoricalRideTargetScope = 'KnownOpen';
   private visitInstanceGeneration: number = 0;
   private editorLoadGeneration: number = 0;
   private attractionLoadGeneration: number = 0;
@@ -252,6 +258,7 @@ export class PassportVisitEditorStateFacade {
   readonly zones: Signal<PassportVisitEditorZone[]> = this.zonesSignal.asReadonly();
   readonly attractions: Signal<PassportVisitEditorAttraction[]> = this.attractionsSignal.asReadonly();
   readonly attractionPagination: Signal<PaginationContract> = this.attractionPaginationSignal.asReadonly();
+  readonly historicalTargetSummary = this.historicalTargetSummarySignal.asReadonly();
   readonly selectedAttractions: Signal<PassportAttractionSelectionDraft[]> = this.selectedAttractionsSignal.asReadonly();
   readonly occurrences: Signal<PassportRideOccurrence[]> = this.occurrencesSignal.asReadonly();
   readonly editDrafts: Signal<Readonly<Record<string, PassportOccurrenceEditDraft>>> = this.editDraftsSignal.asReadonly();
@@ -325,7 +332,6 @@ export class PassportVisitEditorStateFacade {
     @Inject(PASSPORT_VISIT_EDITOR_OCCURRENCES_PORT) private readonly occurrencesApi: PassportVisitEditorOccurrencesPort,
     @Inject(PASSPORT_VISIT_EDITOR_PARKS_PORT) private readonly parksApi: PassportVisitEditorParksPort,
     @Inject(PASSPORT_VISIT_EDITOR_ZONES_PORT) private readonly zonesApi: PassportVisitEditorZonesPort,
-    @Inject(PASSPORT_VISIT_EDITOR_ATTRACTIONS_PORT) private readonly attractionsApi: PassportVisitEditorAttractionsPort,
     @Inject(PASSPORT_VISIT_EDITOR_OPERATION_ID_PORT) private readonly operationIds: PassportVisitEditorOperationIdPort,
     @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
     private readonly productAnalytics: PassportProductAnalyticsPort,
@@ -427,11 +433,11 @@ export class PassportVisitEditorStateFacade {
   applyAttractionFilters(
     search: string,
     zoneId: string | null,
-    closedFilter: ClosedEntityFilter = 'all'
+    scope: PassportHistoricalRideTargetScope = 'KnownOpen'
   ): void {
     this.currentAttractionSearch = search.trim();
     this.currentZoneId = zoneId?.trim() || null;
-    this.currentAttractionClosedFilter = closedFilter;
+    this.currentAttractionScope = scope;
     this.loadAttractionPage(1);
   }
 
@@ -692,13 +698,17 @@ export class PassportVisitEditorStateFacade {
 
   canUpdateOccurrence(occurrence: PassportRideOccurrence, draft: PassportOccurrenceEditDraft): boolean {
     return this.currentVisitId !== null
-      && occurrence.target != null
-      && !occurrence.target.isHistoricalSnapshot
-      && occurrence.target.category === 'Attraction'
+      && this.hasResolvedOccurrenceTarget(occurrence)
+      && occurrence.target?.category === 'Attraction'
       && !this.timelineConsistencyStaleSignal()
       && !this.historicalEvidenceRecoverySignal()
       && !this.isOccurrenceBusy(occurrence.id)
       && (occurrence.historicalConsistency !== 'ConfirmedConflict' || draft.confirmHistoricalConflict);
+  }
+
+  hasResolvedOccurrenceTarget(occurrence: PassportRideOccurrence): boolean {
+    return occurrence.target != null
+      && (occurrence.target.isResolved ?? !occurrence.target.isHistoricalSnapshot);
   }
 
   updateOccurrenceDraft(occurrenceId: string, patch: Partial<PassportOccurrenceEditDraft>): void {
@@ -727,7 +737,7 @@ export class PassportVisitEditorStateFacade {
       && !this.historicalEvidenceRecoverySignal()
       && !this.isOccurrenceBusy(occurrence.id)
       && (hasPendingSubmission || (occurrence.target != null
-        && !occurrence.target.isHistoricalSnapshot
+        && this.hasResolvedOccurrenceTarget(occurrence)
         && occurrence.target.category === 'Attraction'
         && (occurrence.historicalConsistency !== 'ConfirmedConflict' || conflictConfirmed)));
   }
@@ -1564,7 +1574,7 @@ export class PassportVisitEditorStateFacade {
         visit.id,
         parkId,
         attractionPage
-      ).pipe(catchError(() => of<EvaluatedAttractionPage | null>(null))),
+      ).pipe(catchError(() => of<PassportHistoricalRideTargetPage | null>(null))),
       occurrences: this.occurrencesApi.list(
         visit.id,
         null,
@@ -1637,7 +1647,7 @@ export class PassportVisitEditorStateFacade {
     this.attractionErrorKeySignal.set(null);
     this.loadEvaluatedAttractionPage(visit.id, visit.parkId, page)
       .pipe(take(1), takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (result: EvaluatedAttractionPage): void => {
+      next: (result: PassportHistoricalRideTargetPage): void => {
         if (attractionGeneration !== this.attractionLoadGeneration) {
           return;
         }
@@ -1658,39 +1668,17 @@ export class PassportVisitEditorStateFacade {
 
   private loadEvaluatedAttractionPage(
     visitId: string,
-    parkId: string,
+    _parkId: string,
     page: number
-  ): Observable<EvaluatedAttractionPage> {
-    return this.attractionsApi.getParkItemsByParkIdPage(
-      parkId,
+  ): Observable<PassportHistoricalRideTargetPage> {
+    return this.occurrencesApi.listHistoricalTargets(
+      visitId,
       page,
       PassportVisitEditorStateFacade.AttractionPageSize,
-      {
-        includeHidden: false,
-        closedFilter: this.currentAttractionClosedFilter,
-        category: 'Attraction',
-        search: this.currentAttractionSearch || null,
-        zoneId: this.currentZoneId
-      },
-      { closedFilter: this.currentAttractionClosedFilter }
-    ).pipe(switchMap((result: PagedResult<ParkItem>): Observable<EvaluatedAttractionPage> => {
-      const visibleItems: ParkItem[] = result.items.filter(
-        (item: ParkItem): boolean => item.isVisible !== false
-      );
-      const parkItemIds: string[] = visibleItems
-        .map((item: ParkItem): string => item.id?.trim() ?? '')
-        .filter((id: string): boolean => id.length > 0);
-      if (parkItemIds.length === 0) {
-        return of({ page: { ...result, items: visibleItems }, evaluations: [] });
-      }
-
-      return this.evaluateVisitTargetsInBatches(visitId, parkItemIds).pipe(
-        map((evaluations: PassportVisitRideTargetEvaluation[]): EvaluatedAttractionPage => ({
-          page: { ...result, items: visibleItems },
-          evaluations
-        }))
-      );
-    }));
+      this.currentAttractionScope,
+      this.currentAttractionSearch,
+      this.currentZoneId
+    );
   }
 
   private evaluateVisitTargetsInBatches(
@@ -1712,22 +1700,25 @@ export class PassportVisitEditorStateFacade {
     ));
   }
 
-  private applyAttractionPage(result: EvaluatedAttractionPage): void {
-    const evaluationsById: ReadonlyMap<string, PassportVisitRideTargetEvaluation> = new Map(
-      result.evaluations.map(
-        (evaluation: PassportVisitRideTargetEvaluation): [string, PassportVisitRideTargetEvaluation] =>
-          [evaluation.parkItemId, evaluation]
-      )
-    );
-    const attractions: PassportVisitEditorAttraction[] = result.page.items
-      .map((item: ParkItem): PassportVisitEditorAttraction | null =>
-        mapParkItemToVisitEditorAttraction(
-          item,
-          item.id ? evaluationsById.get(item.id) ?? null : null
-        ))
+  private applyAttractionPage(result: PassportHistoricalRideTargetPage): void {
+    const attractions: PassportVisitEditorAttraction[] = result.items
+      .map((item: PassportVisitRideTargetEvaluation): PassportVisitEditorAttraction | null =>
+        mapHistoricalTargetToVisitEditorAttraction(item))
       .filter((item: PassportVisitEditorAttraction | null): item is PassportVisitEditorAttraction => item !== null);
     this.attractionsSignal.set(attractions);
-    this.attractionPaginationSignal.set(result.page.pagination);
+    this.attractionPaginationSignal.set({
+      currentPage: result.currentPage,
+      itemsPerPage: result.pageSize,
+      totalItems: result.totalItems,
+      totalPages: result.totalPages
+    });
+    this.historicalTargetSummarySignal.set({
+      knownOpenCount: result.knownOpenCount,
+      possiblyOpenCount: result.possiblyOpenCount,
+      allHistoryCount: result.allHistoryCount,
+      coveragePercent: result.coveragePercent,
+      coverageStatus: result.coverageStatus
+    });
     this.rememberAttractionNames(attractions);
   }
 
@@ -2359,7 +2350,7 @@ export class PassportVisitEditorStateFacade {
 
   private refreshHistoricalEvidence(visitId: string): void {
     this.timelineConsistencyStaleSignal.set(true);
-    this.refreshLoadedTargetEvaluations(visitId);
+    this.refreshHistoricalCatalogueAndEvaluations(visitId);
     this.reloadTimeline();
   }
 
@@ -2396,15 +2387,9 @@ export class PassportVisitEditorStateFacade {
     });
   }
 
-  private refreshLoadedTargetEvaluations(visitId: string): void {
-    const parkItemIds: string[] = Array.from(new Set<string>([
-      ...this.attractionsSignal().map((attraction: PassportVisitEditorAttraction): string => attraction.id),
-      ...this.selectedAttractionsSignal().map(
-        (selection: PassportAttractionSelectionDraft): string => selection.parkItemId
-      )
-    ]));
-    if (parkItemIds.length === 0) {
-      this.targetEvaluationsStaleSignal.set(false);
+  private refreshHistoricalCatalogueAndEvaluations(visitId: string): void {
+    const visit: PassportVisit | null = this.visitSignal();
+    if (!visit || visit.id !== visitId) {
       return;
     }
 
@@ -2412,16 +2397,42 @@ export class PassportVisitEditorStateFacade {
     this.targetEvaluationsStaleSignal.set(true);
     this.attractionsLoadingSignal.set(true);
     this.attractionErrorKeySignal.set(null);
-    this.evaluateVisitTargetsInBatches(visitId, parkItemIds).pipe(
+    this.loadEvaluatedAttractionPage(
+      visitId,
+      visit.parkId,
+      this.attractionPaginationSignal().currentPage
+    ).pipe(
+      switchMap((result: PassportHistoricalRideTargetPage) =>
+        result.currentPage > result.totalPages
+          ? this.loadEvaluatedAttractionPage(visitId, visit.parkId, result.totalPages)
+          : of(result)
+      ),
+      switchMap((result: PassportHistoricalRideTargetPage) => {
+        const pageIds: ReadonlySet<string> = new Set<string>(
+          result.items.map((item: PassportVisitRideTargetEvaluation): string => item.parkItemId)
+        );
+        const offPageSelectionIds: string[] = Array.from(new Set<string>(
+          this.selectedAttractionsSignal()
+            .map((selection: PassportAttractionSelectionDraft): string => selection.parkItemId)
+            .filter((parkItemId: string): boolean => !pageIds.has(parkItemId))
+        ));
+        return this.evaluateVisitTargetsInBatches(visitId, offPageSelectionIds).pipe(
+          map((evaluations: PassportVisitRideTargetEvaluation[]) => ({
+            result,
+            evaluations: [...result.items, ...evaluations]
+          }))
+        );
+      }),
       take(1),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe({
-      next: (evaluations: PassportVisitRideTargetEvaluation[]): void => {
+      next: ({ result, evaluations }): void => {
         if (attractionGeneration !== this.attractionLoadGeneration) {
           return;
         }
 
         this.attractionsLoadingSignal.set(false);
+        this.applyAttractionPage(result);
         this.applyTargetEvaluations(evaluations);
         this.targetEvaluationsStaleSignal.set(false);
       },
@@ -2460,6 +2471,7 @@ export class PassportVisitEditorStateFacade {
           evaluationsById.get(selection.parkItemId);
         return evaluation ? {
           ...selection,
+          attractionName: evaluation.name ?? selection.attractionName,
           historicalConsistency: evaluation.historicalConsistency,
           openingDate: evaluation.openingDate,
           closingDate: evaluation.closingDate,
@@ -2731,7 +2743,7 @@ export class PassportVisitEditorStateFacade {
     this.currentLanguage = language.trim().toLowerCase() || 'en';
     this.currentAttractionSearch = '';
     this.currentZoneId = null;
-    this.currentAttractionClosedFilter = 'all';
+    this.currentAttractionScope = 'KnownOpen';
     this.visitSignal.set(null);
     this.metadataDraftSignal.set({
       precision: 'Day',
@@ -2758,6 +2770,13 @@ export class PassportVisitEditorStateFacade {
     this.assessmentErrorKeySignal.set(null);
     this.parkNameSignal.set('');
     this.zonesSignal.set([]);
+    this.historicalTargetSummarySignal.set({
+      knownOpenCount: 0,
+      possiblyOpenCount: 0,
+      allHistoryCount: 0,
+      coveragePercent: 0,
+      coverageStatus: 'Partial'
+    });
     this.attractionsSignal.set([]);
     this.selectedAttractionsSignal.set([]);
     this.persistedEditFingerprints.clear();

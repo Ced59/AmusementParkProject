@@ -62,6 +62,72 @@ public sealed class PublicParkHistoricalDataLoader
             publicZoneNames);
     }
 
+    public async Task<PublicParkHistoricalData?> LoadParkItemsAsync(
+        string parkId,
+        IReadOnlyCollection<string> parkItemIds,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = parkId?.Trim() ?? string.Empty;
+        ArgumentNullException.ThrowIfNull(parkItemIds);
+        string[] normalizedIds = parkItemIds
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .Select(static id => id.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedParkId.Length == 0 || normalizedIds.Length == 0)
+        {
+            return null;
+        }
+
+        Park? park = await this.parkRepository.GetByIdAsync(
+            normalizedParkId,
+            false,
+            cancellationToken);
+        if (!HistoryPublicVisibility.IsPublicPark(park))
+        {
+            return null;
+        }
+
+        IReadOnlyCollection<ParkItem> loadedItems =
+            await this.parkItemRepository.GetByIdsAsync(normalizedIds, cancellationToken);
+        HistoricalSubject[] publicCurrentSubjects = loadedItems
+            .Where(item => string.Equals(item.ParkId, normalizedParkId, StringComparison.Ordinal)
+                && HistoryPublicVisibility.IsPublicParkItem(item))
+            .Select(item => new HistoricalSubject(
+                HistoricalSubjectType.ParkItem,
+                item.Id,
+                ResolveLabel(item.Name, "Park item"),
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                normalizedParkId))
+            .DistinctBy(static subject => subject.Id)
+            .ToArray();
+        HistoricalSubject[] requestedSubjects = normalizedIds
+            .Select(id => new HistoricalSubject(
+                HistoricalSubjectType.ParkItem,
+                id,
+                "Park item",
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                normalizedParkId))
+            .ToArray();
+        IReadOnlyCollection<HistoricalFact> latestFacts =
+            await this.historicalFactRepository.GetLatestRevisionsForSubjectsAsync(
+                requestedSubjects,
+                cancellationToken);
+        HashSet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjectKeys =
+            publicCurrentSubjects
+                .Select(static subject => (subject.Type, subject.Id))
+                .ToHashSet();
+        HistoricalFact[] publicFacts = latestFacts
+            .Where(fact => CanExposeFact(fact, publicCurrentSubjectKeys, normalizedParkId))
+            .ToArray();
+
+        return new PublicParkHistoricalData(
+            park!,
+            SelectSubjects(publicCurrentSubjects, publicFacts),
+            publicFacts,
+            new Dictionary<string, string>(StringComparer.Ordinal));
+    }
+
     public async Task<PublicParkHistoricalScope?> LoadScopeAsync(
         string parkId,
         CancellationToken cancellationToken)

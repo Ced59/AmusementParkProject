@@ -531,6 +531,27 @@
   color: var(--app-primary);
 }
 
+.passport-history-context {
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.7rem 0.8rem;
+  align-items: flex-start;
+  gap: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--app-info, #38bdf8) 30%, var(--app-border));
+  border-radius: var(--app-radius-md);
+  background: color-mix(in srgb, var(--app-info, #38bdf8) 8%, var(--app-surface));
+  color: var(--app-text-muted);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.passport-history-context i {
+  flex: 0 0 auto;
+  margin-top: 0.15rem;
+  color: var(--app-info, #38bdf8);
+}
+
 .passport-filters .app-field,
 .passport-entry-form .app-field {
   min-width: 0;

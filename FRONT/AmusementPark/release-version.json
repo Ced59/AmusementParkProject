@@ -1,6 +1,20 @@
 {
-  "version": "5.3.90",
+  "version": "5.3.91",
   "history": [
+    {
+      "version": "5.3.91",
+      "releasedAt": "2026-09-27",
+      "labels": {
+        "fr": "Ton Passeport replace désormais les attractions dans l’époque de ta visite.",
+        "en": "Your Passport now places attractions in the era of your visit.",
+        "de": "Dein Pass ordnet Attraktionen jetzt der Zeit deines Besuchs zu.",
+        "nl": "Je Paspoort plaatst attracties nu in de periode van je bezoek.",
+        "it": "Il tuo Passaporto colloca ora le attrazioni nell’epoca della visita.",
+        "es": "Tu Pasaporte sitúa ahora las atracciones en la época de tu visita.",
+        "pl": "Twój Paszport przypisuje teraz atrakcje do okresu Twojej wizyty.",
+        "pt": "O teu Passaporte situa agora as atrações na época da tua visita."
+      }
+    },
     {
       "version": "5.3.90",
       "releasedAt": "2026-09-27",

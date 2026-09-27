@@ -10,6 +10,7 @@ using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Results;
 using AmusementPark.Application.Features.Trips.Services;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Trips;
@@ -26,12 +27,14 @@ public sealed class TripPassportTransitionServiceTests
     {
         DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
         DateOnly pastDate = new(2027, 8, 20);
+        DateOnly secondPastDate = new(2027, 8, 21);
         DateOnly futureDate = new(2027, 8, 23);
-        TripPlan trip = CreateTrip(nowUtc, pastDate, futureDate);
+        TripPlan trip = CreateTrip(nowUtc, pastDate, secondPastDate, futureDate);
         TripMember owner = Assert.Single(trip.Members);
         TripDayPlan[] days =
         {
             CreateDay(trip, "park-1", pastDate, nowUtc),
+            CreateDay(trip, "park-1", secondPastDate, nowUtc),
             CreateDay(trip, "park-1", futureDate, nowUtc),
         };
         ParkItem preferredAttraction = CreateAttraction("item-1", "Grand huit");
@@ -79,6 +82,7 @@ public sealed class TripPassportTransitionServiceTests
                 It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[]
                 {
                     pastDate,
+                    secondPastDate,
                     futureDate,
                 })),
                 CancellationToken.None))
@@ -89,6 +93,16 @@ public sealed class TripPassportTransitionServiceTests
             .Returns(new DateOnly(2027, 8, 22));
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        Mock<IPassportHistoricalTargetResolver> historicalTargets = new(MockBehavior.Strict);
+        historicalTargets.Setup(resolver => resolver.ResolveAllManyAsync(
+                "park-1",
+                It.Is<IReadOnlyCollection<VisitDate>>(visitDates => visitDates.Count == 2),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<VisitDate, PassportHistoricalTargetContext>
+            {
+                [VisitDate.ForDay(2027, 8, 20)] = CreateTripHistoricalTargetContext(),
+                [VisitDate.ForDay(2027, 8, 21)] = CreateTripHistoricalTargetContext(),
+            });
         TripPassportTransitionReader reader = new(
             trips.Object,
             new TripProgramResultFactory(
@@ -102,7 +116,8 @@ public sealed class TripPassportTransitionServiceTests
             visits.Object,
             rideOccurrences.Object,
             dates.Object,
-            clock.Object);
+            clock.Object,
+            historicalTargets.Object);
 
         ApplicationResult<TripPassportTransitionResult> result = await reader.GetAsync(
             trip.OwnerUserId,
@@ -116,8 +131,16 @@ public sealed class TripPassportTransitionServiceTests
         Assert.Equal(2, pastDay.Attractions.Count);
         TripPassportTransitionItemResult preferred = pastDay.Attractions.Single(
             item => item.ParkItemId == preferredAttraction.Id);
+        Assert.Equal("Grand huit historique", preferred.Name);
         Assert.Equal(TripItemPreferenceLevel.MustDo, preferred.OwnPreference);
         Assert.Equal("image-1", preferred.MainImageId);
+        TripPassportTransitionItemResult historicalOnly = pastDay.Attractions.Single(
+            item => item.ParkItemId == "item-historical");
+        Assert.Equal("Attraction disparue", historicalOnly.Name);
+        Assert.Null(historicalOnly.MainImageId);
+        Assert.DoesNotContain(
+            pastDay.Attractions,
+            item => item.ParkItemId == neutralAttraction.Id);
         TripPassportTransitionDayResult futureDay = result.Value.Days.Single(
             day => day.LocalDate == futureDate);
         Assert.False(futureDay.CanConfirm);
@@ -133,6 +156,7 @@ public sealed class TripPassportTransitionServiceTests
         rideOccurrences.VerifyAll();
         dates.VerifyAll();
         clock.VerifyAll();
+        historicalTargets.VerifyAll();
     }
 
     [Theory]
@@ -621,6 +645,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            CreateHistoricalTargetResolver().Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -677,7 +702,7 @@ public sealed class TripPassportTransitionServiceTests
                 "park-1",
                 false,
                 CancellationToken.None))
-            .ReturnsAsync(new[] { selectedAttraction, unselectedAttraction });
+            .ReturnsAsync(new[] { unselectedAttraction });
         Mock<IUserVisitRepository> visits = new(MockBehavior.Strict);
         Mock<IRideOccurrenceRepository> rideOccurrences = new(MockBehavior.Strict);
         visits.Setup(repository => repository.ListOwnedByExactDatesAsync(
@@ -766,6 +791,17 @@ public sealed class TripPassportTransitionServiceTests
                 new CreateRideOccurrencesResult(Array.Empty<RideOccurrenceResult>(), false, false)));
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        Mock<IPassportHistoricalTargetResolver> historicalTargets =
+            new(MockBehavior.Strict);
+        historicalTargets.Setup(resolver => resolver.ResolveAsync(
+                "park-1",
+                VisitDate.ForDay(2027, 8, 20),
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[]
+                {
+                    selectedAttraction.Id!,
+                })),
+                CancellationToken.None))
+            .ReturnsAsync(CreateTripHistoricalTargetContext());
         TripPassportTransitionConfirmer confirmer = new(
             trips.Object,
             new TripProgramResultFactory(
@@ -779,6 +815,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            historicalTargets.Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -800,6 +837,7 @@ public sealed class TripPassportTransitionServiceTests
         parkItems.VerifyAll();
         dates.VerifyAll();
         clock.VerifyAll();
+        historicalTargets.VerifyAll();
     }
 
     [Fact]
@@ -943,6 +981,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            CreateHistoricalTargetResolver().Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -1003,6 +1042,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            CreateHistoricalTargetResolver().Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -1131,6 +1171,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            CreateHistoricalTargetResolver().Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -1276,6 +1317,7 @@ public sealed class TripPassportTransitionServiceTests
             dates.Object,
             createVisit.Object,
             addRides.Object,
+            CreateHistoricalTargetResolver().Object,
             clock.Object);
 
         ApplicationResult<ConfirmTripPassportTransitionResult> result = await confirmer.ConfirmAsync(
@@ -1299,6 +1341,67 @@ public sealed class TripPassportTransitionServiceTests
         parkItems.VerifyAll();
         dates.VerifyAll();
         clock.VerifyAll();
+    }
+
+    private static PassportHistoricalTargetContext CreateTripHistoricalTargetContext()
+    {
+        PassportHistoricalTarget renamed = CreateHistoricalTarget(
+            "item-1",
+            "Grand huit historique",
+            false);
+        PassportHistoricalTarget historicalOnly = CreateHistoricalTarget(
+            "item-historical",
+            "Attraction disparue",
+            true);
+        return new PassportHistoricalTargetContext(
+            new[] { renamed, historicalOnly }.ToDictionary(
+                static target => target.ParkItemId,
+                StringComparer.Ordinal),
+            HistoricalCoverageStatus.HighConfidence,
+            100,
+            ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion)
+        {
+            CanonicallyExcludedParkItemIds = new HashSet<string>(
+                new[] { "item-2" },
+                StringComparer.Ordinal),
+        };
+    }
+
+    private static Mock<IPassportHistoricalTargetResolver> CreateHistoricalTargetResolver()
+    {
+        Mock<IPassportHistoricalTargetResolver> resolver = new(MockBehavior.Strict);
+        resolver.Setup(item => item.ResolveAsync(
+                It.IsAny<string>(),
+                It.IsAny<VisitDate>(),
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PassportHistoricalTargetContext(
+                new Dictionary<string, PassportHistoricalTarget>(StringComparer.Ordinal),
+                HistoricalCoverageStatus.Partial,
+                0,
+                ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion));
+        return resolver;
+    }
+
+    private static PassportHistoricalTarget CreateHistoricalTarget(
+        string id,
+        string name,
+        bool isHistoricalOnly)
+    {
+        return new PassportHistoricalTarget(
+            id,
+            "park-1",
+            name,
+            ParkItemCategory.Attraction.ToString(),
+            HistoricalOperationalState.KnownOpen,
+            HistoricalConsistency.Verified,
+            new HistoricalTargetReference(name, ParkItemCategory.Attraction.ToString()),
+            isHistoricalOnly,
+            null,
+            null,
+            null,
+            null,
+            null);
     }
 
     private static TripPlan CreateTrip(DateTime nowUtc, params DateOnly[] dates)

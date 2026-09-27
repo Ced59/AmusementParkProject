@@ -13,6 +13,8 @@ public sealed class PassportRideOccurrenceTargetDto
 
     public bool IsHistoricalSnapshot { get; init; }
 
+    public bool IsResolved { get; init; }
+
     public DateOnly? OpeningDate { get; init; }
 
     public DateOnly? ClosingDate { get; init; }
