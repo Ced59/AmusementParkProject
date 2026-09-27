@@ -465,6 +465,64 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(occurrencesPort.list).toHaveBeenCalledTimes(2);
   });
 
+  it('reloads the active historical catalogue page after a visit date change', () => {
+    const initialItem: ParkItem = createParkItem('ride-former', 'Nom de 1990');
+    const refreshedItem: ParkItem = createParkItem('ride-current', 'Nom de 2025');
+    occurrencesPort.listHistoricalTargets
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [initialItem],
+          pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+        },
+        [initialItem],
+        [{
+          parkItemId: 'ride-former',
+          historicalConsistency: 'Verified',
+          openingDate: null,
+          closingDate: null
+        }]
+      )))
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [refreshedItem],
+          pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+        },
+        [refreshedItem],
+        [{
+          parkItemId: 'ride-current',
+          historicalConsistency: 'Verified',
+          openingDate: null,
+          closingDate: null
+        }]
+      )));
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 2025, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    expect(facade.attractions().map((attraction): string => attraction.name)).toEqual(['Nom de 1990']);
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 2025,
+      isApproximate: true
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(occurrencesPort.listHistoricalTargets).toHaveBeenCalledTimes(2);
+    expect(occurrencesPort.listHistoricalTargets).toHaveBeenLastCalledWith(
+      'visit-1',
+      1,
+      24,
+      'KnownOpen',
+      '',
+      null
+    );
+    expect(facade.attractions().map((attraction): string => attraction.name)).toEqual(['Nom de 2025']);
+  });
+
   it('requires a new selection confirmation after temporal evidence is re-evaluated', () => {
     visitsPort.updateVisit.mockReturnValue(of({
       ...visit,
@@ -546,7 +604,7 @@ describe('PassportVisitEditorStateFacade', () => {
     facade.saveVisitMetadata();
 
     expect(occurrencesPort.evaluateVisitTargets).toHaveBeenCalledTimes(2);
-    expect(occurrencesPort.evaluateVisitTargets.mock.calls.map((call) => call[1].length)).toEqual([100, 4]);
+    expect(occurrencesPort.evaluateVisitTargets.mock.calls.map((call) => call[1].length)).toEqual([4, 100]);
   });
 
   it('keeps additions blocked until stale target evaluations can be retried', () => {

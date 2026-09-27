@@ -2346,7 +2346,7 @@ export class PassportVisitEditorStateFacade {
 
   private refreshHistoricalEvidence(visitId: string): void {
     this.timelineConsistencyStaleSignal.set(true);
-    this.refreshLoadedTargetEvaluations(visitId);
+    this.refreshHistoricalCatalogueAndEvaluations(visitId);
     this.reloadTimeline();
   }
 
@@ -2383,15 +2383,9 @@ export class PassportVisitEditorStateFacade {
     });
   }
 
-  private refreshLoadedTargetEvaluations(visitId: string): void {
-    const parkItemIds: string[] = Array.from(new Set<string>([
-      ...this.attractionsSignal().map((attraction: PassportVisitEditorAttraction): string => attraction.id),
-      ...this.selectedAttractionsSignal().map(
-        (selection: PassportAttractionSelectionDraft): string => selection.parkItemId
-      )
-    ]));
-    if (parkItemIds.length === 0) {
-      this.targetEvaluationsStaleSignal.set(false);
+  private refreshHistoricalCatalogueAndEvaluations(visitId: string): void {
+    const visit: PassportVisit | null = this.visitSignal();
+    if (!visit || visit.id !== visitId) {
       return;
     }
 
@@ -2399,16 +2393,37 @@ export class PassportVisitEditorStateFacade {
     this.targetEvaluationsStaleSignal.set(true);
     this.attractionsLoadingSignal.set(true);
     this.attractionErrorKeySignal.set(null);
-    this.evaluateVisitTargetsInBatches(visitId, parkItemIds).pipe(
+    this.loadEvaluatedAttractionPage(
+      visitId,
+      visit.parkId,
+      this.attractionPaginationSignal().currentPage
+    ).pipe(
+      switchMap((result: PassportHistoricalRideTargetPage) => {
+        const pageIds: ReadonlySet<string> = new Set<string>(
+          result.items.map((item: PassportVisitRideTargetEvaluation): string => item.parkItemId)
+        );
+        const offPageSelectionIds: string[] = Array.from(new Set<string>(
+          this.selectedAttractionsSignal()
+            .map((selection: PassportAttractionSelectionDraft): string => selection.parkItemId)
+            .filter((parkItemId: string): boolean => !pageIds.has(parkItemId))
+        ));
+        return this.evaluateVisitTargetsInBatches(visitId, offPageSelectionIds).pipe(
+          map((evaluations: PassportVisitRideTargetEvaluation[]) => ({
+            result,
+            evaluations: [...result.items, ...evaluations]
+          }))
+        );
+      }),
       take(1),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe({
-      next: (evaluations: PassportVisitRideTargetEvaluation[]): void => {
+      next: ({ result, evaluations }): void => {
         if (attractionGeneration !== this.attractionLoadGeneration) {
           return;
         }
 
         this.attractionsLoadingSignal.set(false);
+        this.applyAttractionPage(result);
         this.applyTargetEvaluations(evaluations);
         this.targetEvaluationsStaleSignal.set(false);
       },

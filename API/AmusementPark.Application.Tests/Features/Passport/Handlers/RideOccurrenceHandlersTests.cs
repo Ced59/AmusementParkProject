@@ -829,7 +829,7 @@ public sealed class RideOccurrenceHandlersTests
                 1,
                 CancellationToken.None))
             .ReturnsAsync(false);
-        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(
+        Mock<IPassportHistoricalTargetResolver> targets = CreateRecordedTargetResolver(
             new VisitTarget(
                 occurrence.ParkItemId,
                 visit.ParkId,
@@ -1489,6 +1489,19 @@ public sealed class RideOccurrenceHandlersTests
         Mock<IPassportHistoricalTargetResolver> targets =
             new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
         targets.Setup(resolver => resolver.ResolveAsync(
+                It.IsAny<Visit>(),
+                It.IsAny<IReadOnlyCollection<string>>(),
+                CancellationToken.None))
+            .ReturnsAsync(CreateTargetContext(CreateHistoricalTarget(target)));
+        return targets;
+    }
+
+    private static Mock<IPassportHistoricalTargetResolver> CreateRecordedTargetResolver(
+        VisitTarget target)
+    {
+        Mock<IPassportHistoricalTargetResolver> targets =
+            new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
+        targets.Setup(resolver => resolver.ResolveRecordedAsync(
                 It.IsAny<Visit>(),
                 It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))

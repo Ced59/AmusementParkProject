@@ -40,6 +40,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             visit.Date,
             null,
             true,
+            false,
             cancellationToken);
     }
 
@@ -65,6 +66,33 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             visit.Date,
             normalizedIds,
             false,
+            false,
+            cancellationToken);
+    }
+
+    public async Task<PassportHistoricalTargetContext> ResolveRecordedAsync(
+        Visit visit,
+        IReadOnlyCollection<string> parkItemIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(visit);
+        ArgumentNullException.ThrowIfNull(parkItemIds);
+        string[] normalizedIds = parkItemIds
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .Select(static id => id.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedIds.Length == 0)
+        {
+            return EmptyContext();
+        }
+
+        return await this.ResolveCoreAsync(
+            visit.ParkId,
+            visit.Date,
+            normalizedIds,
+            false,
+            true,
             cancellationToken);
     }
 
@@ -92,6 +120,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             visitDate,
             normalizedIds,
             false,
+            false,
             cancellationToken);
     }
 
@@ -100,6 +129,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
         VisitDate visitDate,
         IReadOnlyCollection<string>? requestedIds,
         bool includeImages,
+        bool includeHiddenCurrentFallback,
         CancellationToken cancellationToken)
     {
         PublicParkHistoricalData? data = await this.historicalDataLoader.LoadAsync(
@@ -113,6 +143,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                     parkId,
                     requestedIds,
                     includeImages,
+                    includeHiddenCurrentFallback,
                     cancellationToken);
         }
 
@@ -183,6 +214,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                         parkId,
                         missingIds,
                         includeImages,
+                        includeHiddenCurrentFallback,
                         cancellationToken);
                 foreach ((string id, PassportHistoricalTarget target) in fallback.Targets)
                 {
@@ -202,6 +234,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
         string parkId,
         IReadOnlyCollection<string> requestedIds,
         bool includeImages,
+        bool includeHiddenCurrentTargets,
         CancellationToken cancellationToken)
     {
         IReadOnlyDictionary<string, VisitTarget> currentTargets =
@@ -210,7 +243,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             ? await this.ResolveImageIdsAsync(currentTargets.Values, cancellationToken)
             : new Dictionary<string, string>(StringComparer.Ordinal);
         Dictionary<string, PassportHistoricalTarget> targets = currentTargets.Values
-            .Where(target => target.IsVisible
+            .Where(target => (includeHiddenCurrentTargets || target.IsVisible)
                 && string.Equals(target.ParkId, parkId, StringComparison.Ordinal)
                 && target.Category == ParkItemCategory.Attraction)
             .ToDictionary(
@@ -223,7 +256,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                     HistoricalOperationalState.Unknown,
                     HistoricalConsistency.Unverified,
                     new HistoricalTargetReference(target.Name, target.Category.ToString()),
-                    false,
+                    !target.IsVisible,
                     imageIds.GetValueOrDefault(target.ParkItemId),
                     target.ZoneId,
                     target.LifecycleStatus,

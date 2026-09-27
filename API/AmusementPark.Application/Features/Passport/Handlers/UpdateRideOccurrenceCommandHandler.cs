@@ -90,7 +90,7 @@ public sealed class UpdateRideOccurrenceCommandHandler
             return Failure(PassportApplicationErrors.RideOccurrenceConcurrencyConflict());
         }
 
-        PassportHistoricalTargetContext targetContext = await this.targetResolver.ResolveAsync(
+        PassportHistoricalTargetContext targetContext = await this.targetResolver.ResolveRecordedAsync(
             visit,
             new[] { occurrence.ParkItemId },
             cancellationToken);
