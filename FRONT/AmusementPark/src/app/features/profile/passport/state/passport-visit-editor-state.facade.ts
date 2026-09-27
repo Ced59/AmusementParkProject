@@ -2398,6 +2398,11 @@ export class PassportVisitEditorStateFacade {
       visit.parkId,
       this.attractionPaginationSignal().currentPage
     ).pipe(
+      switchMap((result: PassportHistoricalRideTargetPage) =>
+        result.currentPage > result.totalPages
+          ? this.loadEvaluatedAttractionPage(visitId, visit.parkId, result.totalPages)
+          : of(result)
+      ),
       switchMap((result: PassportHistoricalRideTargetPage) => {
         const pageIds: ReadonlySet<string> = new Set<string>(
           result.items.map((item: PassportVisitRideTargetEvaluation): string => item.parkItemId)

@@ -532,6 +532,67 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(facade.selectedAttractions()[0].attractionName).toBe('Nom de 2025 pour la sélection');
   });
 
+  it('returns to the last available catalogue page when a date change shrinks the result set', () => {
+    const firstPageItem: ParkItem = createParkItem('ride-first', 'Première page');
+    const secondPageItem: ParkItem = createParkItem('ride-second', 'Deuxième page');
+    const refreshedItem: ParkItem = createParkItem('ride-refreshed', 'Catalogue actualisé');
+    occurrencesPort.listHistoricalTargets
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [firstPageItem],
+          pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 25, totalPages: 2 }
+        },
+        [firstPageItem],
+        []
+      )))
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [secondPageItem],
+          pagination: { currentPage: 2, itemsPerPage: 24, totalItems: 25, totalPages: 2 }
+        },
+        [secondPageItem],
+        []
+      )))
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [],
+          pagination: { currentPage: 2, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+        },
+        [],
+        []
+      )))
+      .mockReturnValueOnce(of(createHistoricalTargetPage(
+        {
+          items: [refreshedItem],
+          pagination: { currentPage: 1, itemsPerPage: 24, totalItems: 1, totalPages: 1 }
+        },
+        [refreshedItem],
+        []
+      )));
+    visitsPort.updateVisit.mockReturnValue(of({
+      ...visit,
+      date: { year: 1990, month: null, day: null, precision: 'Year', isApproximate: true },
+      version: 2
+    }));
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+    facade.goToAttractionPage(2);
+    expect(facade.attractionPagination().currentPage).toBe(2);
+    facade.updateVisitMetadataDraft({
+      precision: 'Year',
+      year: 1990,
+      isApproximate: true
+    });
+
+    facade.saveVisitMetadata();
+
+    expect(occurrencesPort.listHistoricalTargets).toHaveBeenCalledTimes(4);
+    expect(occurrencesPort.listHistoricalTargets.mock.calls.at(-1)?.[1]).toBe(1);
+    expect(facade.attractionPagination().currentPage).toBe(1);
+    expect(facade.attractions().map((attraction): string => attraction.name))
+      .toEqual(['Catalogue actualisé']);
+  });
+
   it('requires a new selection confirmation after temporal evidence is re-evaluated', () => {
     visitsPort.updateVisit.mockReturnValue(of({
       ...visit,

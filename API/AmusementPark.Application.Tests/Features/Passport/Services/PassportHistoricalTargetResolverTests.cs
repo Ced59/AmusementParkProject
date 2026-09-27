@@ -94,10 +94,11 @@ public sealed class PassportHistoricalTargetResolverTests
     }
 
     [Fact]
-    public async Task ResolveAsync_ShouldUseCanonicalHistoryAndSkipImagesForValidation()
+    public async Task ResolveManyAsync_ShouldHydrateCanonicalHistoryOnceAndBoundStoredNames()
     {
         Park park = PublicParkHistoryTestData.CreatePark();
-        ParkItem item = PublicParkHistoryTestData.CreateParkItem("ride-1", "Nom actuel");
+        string currentName = new string('N', 250);
+        ParkItem item = PublicParkHistoryTestData.CreateParkItem("ride-1", currentName);
         item.Category = ParkItemCategory.Attraction;
         HistoricalSubject subject = new HistoricalSubject(
             HistoricalSubjectType.ParkItem,
@@ -166,21 +167,34 @@ public sealed class PassportHistoricalTargetResolverTests
             null,
             new DateTime(2026, 9, 27, 8, 0, 0, DateTimeKind.Utc));
 
-        PassportHistoricalTargetContext context = await resolver.ResolveAsync(
-            visit,
+        IReadOnlyDictionary<VisitDate, PassportHistoricalTargetContext> contexts =
+            await resolver.ResolveManyAsync(
+            park.Id,
+            new[] { visit.Date, VisitDate.ForYear(2005) },
             new[] { item.Id },
             CancellationToken.None);
 
-        PassportHistoricalTarget target = Assert.Single(context.Targets).Value;
-        Assert.Equal("Nom actuel", target.Name);
+        PassportHistoricalTarget target = Assert.Single(contexts[visit.Date].Targets).Value;
+        Assert.Equal(currentName, target.Name);
+        Assert.Equal(HistoricalTargetReference.MaximumNameLength, target.HistoricalTarget.Name.Length);
         Assert.Equal(HistoricalOperationalState.KnownClosed, target.OperationalState);
         Assert.Equal(HistoricalConsistency.ConfirmedConflict, target.HistoricalConsistency);
         Assert.Null(target.MainImageId);
+        PassportHistoricalTarget laterTarget = Assert.Single(
+            contexts[VisitDate.ForYear(2005)].Targets).Value;
+        Assert.Equal(HistoricalOperationalState.KnownOpen, laterTarget.OperationalState);
         parks.VerifyAll();
         parkItems.VerifyAll();
         zones.VerifyAll();
         facts.VerifyAll();
         currentTargets.VerifyAll();
+        parks.Verify(repository => repository.GetByIdAsync(
+            park.Id,
+            false,
+            CancellationToken.None), Times.Once);
+        currentTargets.Verify(resolver => resolver.ResolveAsync(
+            It.IsAny<IReadOnlyCollection<string>>(),
+            CancellationToken.None), Times.Once);
         images.VerifyNoOtherCalls();
     }
 }

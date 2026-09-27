@@ -240,15 +240,19 @@ public sealed class TripPassportTransitionReader
             historicalTargetsByDay = new();
         if (this.historicalTargets is not null)
         {
-            foreach (TripDayPlanResult day in days.Where(day =>
-                TripPassportTransitionPolicy.CanConfirmDay(
-                    day.LocalDate,
-                    destinationToday,
-                    day.IsParkAvailable)
-                || resumableDates.Contains(day.LocalDate)))
+            TripDayPlanResult[] historicalDays = days.Where(day =>
+                    TripPassportTransitionPolicy.CanConfirmDay(
+                        day.LocalDate,
+                        destinationToday,
+                        day.IsParkAvailable)
+                    || resumableDates.Contains(day.LocalDate))
+                .ToArray();
+            foreach (IGrouping<string, TripDayPlanResult> parkDays in historicalDays.GroupBy(
+                static day => day.ParkId,
+                StringComparer.Ordinal))
             {
                 string[] dayTargetIds = attractions
-                    .Where(item => string.Equals(item.ParkId, day.ParkId, StringComparison.Ordinal))
+                    .Where(item => string.Equals(item.ParkId, parkDays.Key, StringComparison.Ordinal))
                     .Select(static item => item.Id!)
                     .ToArray();
                 if (dayTargetIds.Length == 0)
@@ -256,15 +260,27 @@ public sealed class TripPassportTransitionReader
                     continue;
                 }
 
-                historicalTargetsByDay[(day.ParkId, day.LocalDate)] =
-                    await this.historicalTargets.ResolveAsync(
-                        day.ParkId,
-                        VisitDate.ForDay(
-                            day.LocalDate.Year,
-                            day.LocalDate.Month,
-                            day.LocalDate.Day),
+                Dictionary<DateOnly, VisitDate> visitDateByDay = parkDays.ToDictionary(
+                    static day => day.LocalDate,
+                    static day => VisitDate.ForDay(
+                        day.LocalDate.Year,
+                        day.LocalDate.Month,
+                        day.LocalDate.Day));
+                IReadOnlyDictionary<VisitDate, PassportHistoricalTargetContext> parkContexts =
+                    await this.historicalTargets.ResolveManyAsync(
+                        parkDays.Key,
+                        visitDateByDay.Values.ToArray(),
                         dayTargetIds,
                         cancellationToken);
+                foreach ((DateOnly localDate, VisitDate visitDate) in visitDateByDay)
+                {
+                    if (parkContexts.TryGetValue(
+                            visitDate,
+                            out PassportHistoricalTargetContext? context))
+                    {
+                        historicalTargetsByDay[(parkDays.Key, localDate)] = context;
+                    }
+                }
             }
         }
 

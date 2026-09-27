@@ -10,6 +10,7 @@ using AmusementPark.Application.Features.Passport.Results;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Results;
 using AmusementPark.Application.Features.Trips.Services;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Trips;
@@ -26,12 +27,14 @@ public sealed class TripPassportTransitionServiceTests
     {
         DateTime nowUtc = new(2027, 8, 22, 10, 0, 0, DateTimeKind.Utc);
         DateOnly pastDate = new(2027, 8, 20);
+        DateOnly secondPastDate = new(2027, 8, 21);
         DateOnly futureDate = new(2027, 8, 23);
-        TripPlan trip = CreateTrip(nowUtc, pastDate, futureDate);
+        TripPlan trip = CreateTrip(nowUtc, pastDate, secondPastDate, futureDate);
         TripMember owner = Assert.Single(trip.Members);
         TripDayPlan[] days =
         {
             CreateDay(trip, "park-1", pastDate, nowUtc),
+            CreateDay(trip, "park-1", secondPastDate, nowUtc),
             CreateDay(trip, "park-1", futureDate, nowUtc),
         };
         ParkItem preferredAttraction = CreateAttraction("item-1", "Grand huit");
@@ -79,6 +82,7 @@ public sealed class TripPassportTransitionServiceTests
                 It.Is<IReadOnlyCollection<DateOnly>>(dates => dates.SequenceEqual(new[]
                 {
                     pastDate,
+                    secondPastDate,
                     futureDate,
                 })),
                 CancellationToken.None))
@@ -89,6 +93,17 @@ public sealed class TripPassportTransitionServiceTests
             .Returns(new DateOnly(2027, 8, 22));
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
+        Mock<IPassportHistoricalTargetResolver> historicalTargets = new(MockBehavior.Strict);
+        historicalTargets.Setup(resolver => resolver.ResolveManyAsync(
+                "park-1",
+                It.Is<IReadOnlyCollection<VisitDate>>(visitDates => visitDates.Count == 2),
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 2),
+                CancellationToken.None))
+            .ReturnsAsync(new Dictionary<VisitDate, PassportHistoricalTargetContext>
+            {
+                [VisitDate.ForDay(2027, 8, 20)] = CreateEmptyHistoricalTargetContext(),
+                [VisitDate.ForDay(2027, 8, 21)] = CreateEmptyHistoricalTargetContext(),
+            });
         TripPassportTransitionReader reader = new(
             trips.Object,
             new TripProgramResultFactory(
@@ -102,7 +117,8 @@ public sealed class TripPassportTransitionServiceTests
             visits.Object,
             rideOccurrences.Object,
             dates.Object,
-            clock.Object);
+            clock.Object,
+            historicalTargets.Object);
 
         ApplicationResult<TripPassportTransitionResult> result = await reader.GetAsync(
             trip.OwnerUserId,
@@ -133,6 +149,7 @@ public sealed class TripPassportTransitionServiceTests
         rideOccurrences.VerifyAll();
         dates.VerifyAll();
         clock.VerifyAll();
+        historicalTargets.VerifyAll();
     }
 
     [Theory]
@@ -1299,6 +1316,15 @@ public sealed class TripPassportTransitionServiceTests
         parkItems.VerifyAll();
         dates.VerifyAll();
         clock.VerifyAll();
+    }
+
+    private static PassportHistoricalTargetContext CreateEmptyHistoricalTargetContext()
+    {
+        return new PassportHistoricalTargetContext(
+            new Dictionary<string, PassportHistoricalTarget>(StringComparer.Ordinal),
+            HistoricalCoverageStatus.Partial,
+            0,
+            ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion);
     }
 
     private static TripPlan CreateTrip(DateTime nowUtc, params DateOnly[] dates)

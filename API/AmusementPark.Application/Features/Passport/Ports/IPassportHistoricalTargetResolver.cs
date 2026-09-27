@@ -28,4 +28,10 @@ public interface IPassportHistoricalTargetResolver
         VisitDate visitDate,
         IReadOnlyCollection<string> parkItemIds,
         CancellationToken cancellationToken);
+
+    Task<IReadOnlyDictionary<VisitDate, PassportHistoricalTargetContext>> ResolveManyAsync(
+        string parkId,
+        IReadOnlyCollection<VisitDate> visitDates,
+        IReadOnlyCollection<string> parkItemIds,
+        CancellationToken cancellationToken);
 }

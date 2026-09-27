@@ -140,6 +140,55 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             cancellationToken);
     }
 
+    public async Task<IReadOnlyDictionary<VisitDate, PassportHistoricalTargetContext>> ResolveManyAsync(
+        string parkId,
+        IReadOnlyCollection<VisitDate> visitDates,
+        IReadOnlyCollection<string> parkItemIds,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = parkId?.Trim() ?? string.Empty;
+        ArgumentNullException.ThrowIfNull(visitDates);
+        ArgumentNullException.ThrowIfNull(parkItemIds);
+        VisitDate[] normalizedDates = visitDates.Distinct().ToArray();
+        string[] normalizedIds = parkItemIds
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .Select(static id => id.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedParkId.Length == 0
+            || normalizedDates.Length == 0
+            || normalizedIds.Length == 0)
+        {
+            return new Dictionary<VisitDate, PassportHistoricalTargetContext>();
+        }
+
+        PublicParkHistoricalData? data = await this.historicalDataLoader.LoadAsync(
+            normalizedParkId,
+            cancellationToken);
+        IReadOnlyDictionary<string, VisitTarget> currentTargets =
+            await this.ResolveCurrentTargetsAsync(normalizedIds, cancellationToken);
+        if (data is null)
+        {
+            PassportHistoricalTargetContext fallback = CreateCurrentFallbackContext(
+                normalizedParkId,
+                currentTargets.Values,
+                false);
+            return normalizedDates.ToDictionary(
+                static date => date,
+                _ => fallback);
+        }
+
+        return normalizedDates.ToDictionary(
+            static date => date,
+            date => this.BuildContext(
+                normalizedParkId,
+                date,
+                normalizedIds,
+                false,
+                data,
+                currentTargets));
+    }
+
     private async Task<PassportHistoricalTargetContext> ResolveCoreAsync(
         string parkId,
         VisitDate visitDate,
@@ -161,6 +210,32 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                     cancellationToken);
         }
 
+        string[] currentTargetIds = requestedIds is null
+            ? data.Subjects
+                .Where(static subject => subject.Type == HistoricalSubjectType.ParkItem)
+                .Select(static subject => subject.Id)
+                .Distinct(StringComparer.Ordinal)
+                .ToArray()
+            : requestedIds.Distinct(StringComparer.Ordinal).ToArray();
+        IReadOnlyDictionary<string, VisitTarget> currentTargets =
+            await this.ResolveCurrentTargetsAsync(currentTargetIds, cancellationToken);
+        return this.BuildContext(
+            parkId,
+            visitDate,
+            requestedIds,
+            includeHiddenCurrentFallback,
+            data,
+            currentTargets);
+    }
+
+    private PassportHistoricalTargetContext BuildContext(
+        string parkId,
+        VisitDate visitDate,
+        IReadOnlyCollection<string>? requestedIds,
+        bool includeHiddenCurrentFallback,
+        PublicParkHistoricalData data,
+        IReadOnlyDictionary<string, VisitTarget> currentTargets)
+    {
         ParkHistoricalSnapshot snapshot = this.snapshotBuilder.Build(
             parkId,
             ToHistoricalInstant(visitDate),
@@ -171,12 +246,6 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             .Where(subject => subject.Subject.Type == HistoricalSubjectType.ParkItem
                 && (requested is null || requested.Contains(subject.Subject.Id)))
             .ToArray();
-        string[] subjectIds = subjectSnapshots
-            .Select(static subject => subject.Subject.Id)
-            .Distinct(StringComparer.Ordinal)
-            .ToArray();
-        IReadOnlyDictionary<string, VisitTarget> currentTargets =
-            await this.ResolveCurrentTargetsAsync(subjectIds, cancellationToken);
         Dictionary<string, PassportHistoricalTarget> targets = new(StringComparer.Ordinal);
         foreach (HistoricalSubjectSnapshot subject in subjectSnapshots)
         {
@@ -204,7 +273,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                 ParkItemCategory.Attraction.ToString(),
                 subject.OperationalState,
                 consistency,
-                new HistoricalTargetReference(name, ParkItemCategory.Attraction.ToString()),
+                CreateHistoricalTargetReference(name, ParkItemCategory.Attraction.ToString()),
                 currentTarget is null || !currentTarget.IsVisible,
                 null,
                 zoneId,
@@ -220,12 +289,12 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                 .ToArray();
             if (missingIds.Length > 0)
             {
-                PassportHistoricalTargetContext fallback =
-                    await this.ResolveCurrentFallbackAsync(
-                        parkId,
-                        missingIds,
-                        includeHiddenCurrentFallback,
-                        cancellationToken);
+                PassportHistoricalTargetContext fallback = CreateCurrentFallbackContext(
+                    parkId,
+                    currentTargets.Values.Where(target => missingIds.Contains(
+                        target.ParkItemId,
+                        StringComparer.Ordinal)),
+                    includeHiddenCurrentFallback);
                 foreach ((string id, PassportHistoricalTarget target) in fallback.Targets)
                 {
                     targets.TryAdd(id, target);
@@ -248,7 +317,18 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
     {
         IReadOnlyDictionary<string, VisitTarget> currentTargets =
             await this.ResolveCurrentTargetsAsync(requestedIds, cancellationToken);
-        Dictionary<string, PassportHistoricalTarget> targets = currentTargets.Values
+        return CreateCurrentFallbackContext(
+            parkId,
+            currentTargets.Values,
+            includeHiddenCurrentTargets);
+    }
+
+    private static PassportHistoricalTargetContext CreateCurrentFallbackContext(
+        string parkId,
+        IEnumerable<VisitTarget> currentTargets,
+        bool includeHiddenCurrentTargets)
+    {
+        Dictionary<string, PassportHistoricalTarget> targets = currentTargets
             .Where(target => (includeHiddenCurrentTargets || target.IsVisible)
                 && string.Equals(target.ParkId, parkId, StringComparison.Ordinal)
                 && target.Category == ParkItemCategory.Attraction)
@@ -261,7 +341,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                     target.Category.ToString(),
                     HistoricalOperationalState.Unknown,
                     HistoricalConsistency.Unverified,
-                    new HistoricalTargetReference(target.Name, target.Category.ToString()),
+                    CreateHistoricalTargetReference(target.Name, target.Category.ToString()),
                     !target.IsVisible,
                     null,
                     target.ZoneId,
@@ -331,6 +411,26 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             VisitDatePrecision.Year => HistoricalInstant.ForYear(visitDate.Year),
             _ => throw new ArgumentOutOfRangeException(nameof(visitDate)),
         };
+    }
+
+    private static HistoricalTargetReference CreateHistoricalTargetReference(
+        string name,
+        string? category)
+    {
+        string normalizedName = name.Trim();
+        if (normalizedName.Length > HistoricalTargetReference.MaximumNameLength)
+        {
+            int snapshotLength = HistoricalTargetReference.MaximumNameLength;
+            if (char.IsHighSurrogate(normalizedName[snapshotLength - 1])
+                && char.IsLowSurrogate(normalizedName[snapshotLength]))
+            {
+                snapshotLength -= 1;
+            }
+
+            normalizedName = normalizedName[..snapshotLength].TrimEnd();
+        }
+
+        return new HistoricalTargetReference(normalizedName, category);
     }
 
     private static string? ResolveKnownAttribute(
