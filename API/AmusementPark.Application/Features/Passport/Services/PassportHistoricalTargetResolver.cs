@@ -189,6 +189,47 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                 currentTargets));
     }
 
+    public async Task<IReadOnlyDictionary<VisitDate, PassportHistoricalTargetContext>> ResolveAllManyAsync(
+        string parkId,
+        IReadOnlyCollection<VisitDate> visitDates,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = parkId?.Trim() ?? string.Empty;
+        ArgumentNullException.ThrowIfNull(visitDates);
+        VisitDate[] normalizedDates = visitDates.Distinct().ToArray();
+        if (normalizedParkId.Length == 0 || normalizedDates.Length == 0)
+        {
+            return new Dictionary<VisitDate, PassportHistoricalTargetContext>();
+        }
+
+        PublicParkHistoricalData? data = await this.historicalDataLoader.LoadAsync(
+            normalizedParkId,
+            cancellationToken);
+        if (data is null)
+        {
+            return normalizedDates.ToDictionary(
+                static date => date,
+                _ => EmptyContext());
+        }
+
+        string[] currentTargetIds = data.Subjects
+            .Where(static subject => subject.Type == HistoricalSubjectType.ParkItem)
+            .Select(static subject => subject.Id)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        IReadOnlyDictionary<string, VisitTarget> currentTargets =
+            await this.ResolveCurrentTargetsAsync(currentTargetIds, cancellationToken);
+        return normalizedDates.ToDictionary(
+            static date => date,
+            date => this.BuildContext(
+                normalizedParkId,
+                date,
+                null,
+                false,
+                data,
+                currentTargets));
+    }
+
     private async Task<PassportHistoricalTargetContext> ResolveCoreAsync(
         string parkId,
         VisitDate visitDate,

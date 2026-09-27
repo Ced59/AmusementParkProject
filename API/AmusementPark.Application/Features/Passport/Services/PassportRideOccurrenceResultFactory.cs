@@ -16,7 +16,9 @@ internal static class PassportRideOccurrenceResultFactory
                 ? target
                 : null;
         HistoricalConsistency historicalConsistency =
-            resolvedTarget?.HistoricalConsistency ?? occurrence.HistoricalConsistency;
+            resolvedTarget is null || resolvedTarget.IsValidationFallback
+                ? occurrence.HistoricalConsistency
+                : resolvedTarget.HistoricalConsistency;
 
         return new RideOccurrenceResult(
             occurrence.Id.Value,
@@ -44,7 +46,7 @@ internal static class PassportRideOccurrenceResultFactory
                     occurrence.Assessment.Revision,
                     occurrence.Assessment.CreatedAtUtc,
                     occurrence.Assessment.UpdatedAtUtc),
-            resolvedTarget is null
+            (resolvedTarget is null || resolvedTarget.IsValidationFallback)
                 && occurrence.HistoricalConsistency == HistoricalConsistency.ConfirmedConflict);
     }
 
@@ -55,13 +57,26 @@ internal static class PassportRideOccurrenceResultFactory
         if (target is not null
             && string.Equals(target.ParkId, occurrence.ParkId, StringComparison.Ordinal))
         {
+            if (target.IsValidationFallback && occurrence.HistoricalTarget is not null)
+            {
+                return new RideOccurrenceTargetResult(
+                    occurrence.HistoricalTarget.Name,
+                    occurrence.HistoricalTarget.Category,
+                    target.LifecycleStatus,
+                    true,
+                    target.OpeningDate,
+                    target.ClosingDate,
+                    true);
+            }
+
             return new RideOccurrenceTargetResult(
                 target.Name,
                 target.Category,
                 target.LifecycleStatus,
                 target.IsHistoricalOnly,
                 target.OpeningDate,
-                target.ClosingDate);
+                target.ClosingDate,
+                true);
         }
 
         return occurrence.HistoricalTarget is null
@@ -70,6 +85,9 @@ internal static class PassportRideOccurrenceResultFactory
                 occurrence.HistoricalTarget.Name,
                 occurrence.HistoricalTarget.Category,
                 null,
-                true);
+                true,
+                null,
+                null,
+                false);
     }
 }

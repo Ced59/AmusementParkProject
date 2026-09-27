@@ -972,7 +972,7 @@
                   </div>
 
                   <div class="passport-occurrence__actions">
-                    @if (row.occurrence.target?.category === 'Attraction' && row.occurrence.target?.isHistoricalSnapshot === false) {
+                    @if (row.occurrence.target?.category === 'Attraction' && facade.hasResolvedOccurrenceTarget(row.occurrence)) {
                       <details>
                         <summary>{{ 'passport.editor.actions.edit' | translate }}</summary>
                         @if (facade.editDrafts()[row.occurrence.id]; as draft) {

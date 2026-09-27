@@ -1220,7 +1220,7 @@ public sealed class RideOccurrenceHandlersTests
             null,
             null,
             "Operating");
-        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(target);
+        Mock<IPassportHistoricalTargetResolver> targets = CreateRecordedTargetResolver(target);
         GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
             visits.Object,
             occurrences.Object,
@@ -1322,7 +1322,7 @@ public sealed class RideOccurrenceHandlersTests
             .ReturnsAsync(occurrence);
         Mock<IPassportHistoricalTargetResolver> targets =
             new Mock<IPassportHistoricalTargetResolver>(MockBehavior.Strict);
-        targets.Setup(resolver => resolver.ResolveAsync(
+        targets.Setup(resolver => resolver.ResolveRecordedAsync(
                 visit,
                 It.Is<IReadOnlyCollection<string>>(ids => ids.Single() == occurrence.ParkItemId),
                 CancellationToken.None))
@@ -1370,7 +1370,7 @@ public sealed class RideOccurrenceHandlersTests
             null,
             null,
             "Operating");
-        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(movedTarget);
+        Mock<IPassportHistoricalTargetResolver> targets = CreateRecordedTargetResolver(movedTarget);
         GetRideOccurrenceQueryHandler handler = new GetRideOccurrenceQueryHandler(
             visits.Object,
             occurrences.Object,
@@ -1411,7 +1411,7 @@ public sealed class RideOccurrenceHandlersTests
             new DateOnly(2000, 1, 1),
             new DateOnly(2020, 12, 31),
             "ClosedDefinitively");
-        Mock<IPassportHistoricalTargetResolver> targets = CreateTargetResolver(target);
+        Mock<IPassportHistoricalTargetResolver> targets = CreateRecordedTargetResolver(target);
         ListRideOccurrencesQueryHandler handler = new ListRideOccurrencesQueryHandler(
             visits.Object,
             occurrences.Object,
@@ -1481,9 +1481,44 @@ public sealed class RideOccurrenceHandlersTests
         Assert.Equal(HistoricalConsistency.Verified, result.HistoricalConsistency);
         RideOccurrenceTargetResult targetResult = Assert.IsType<RideOccurrenceTargetResult>(result.Target);
         Assert.True(targetResult.IsHistoricalSnapshot);
+        Assert.False(targetResult.IsResolved);
         Assert.Equal("Nom conservé dans la visite", targetResult.Name);
         Assert.Null(targetResult.OpeningDate);
         Assert.Null(targetResult.ClosingDate);
+    }
+
+    [Fact]
+    public void ResultFactory_ShouldKeepAValidationFallbackResolvedWithoutReplacingItsSnapshot()
+    {
+        Visit visit = CreateVisit();
+        RideOccurrence occurrence = CreateOccurrence(
+            visit,
+            "occurrence-fallback",
+            1024,
+            new HistoricalTargetReference("Nom conservé dans la visite", "Attraction"));
+        PassportHistoricalTarget fallback = CreateHistoricalTarget(new VisitTarget(
+            occurrence.ParkItemId,
+            visit.ParkId,
+            "Nom courant masqué",
+            ParkItemCategory.Attraction,
+            null,
+            null,
+            "Removed",
+            false)) with
+        {
+            IsHistoricalOnly = true,
+            IsValidationFallback = true,
+        };
+
+        RideOccurrenceResult result = PassportRideOccurrenceResultFactory.Create(
+            occurrence,
+            fallback);
+
+        RideOccurrenceTargetResult target = Assert.IsType<RideOccurrenceTargetResult>(result.Target);
+        Assert.Equal("Nom conservé dans la visite", target.Name);
+        Assert.True(target.IsHistoricalSnapshot);
+        Assert.True(target.IsResolved);
+        Assert.Equal(occurrence.HistoricalConsistency, result.HistoricalConsistency);
     }
 
     private static AddRideOccurrencesBatchCommand CreateBatchCommand(

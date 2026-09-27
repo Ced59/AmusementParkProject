@@ -25,6 +25,7 @@ export interface PassportRideOccurrenceTarget {
   category: string | null;
   lifecycleStatus: string | null;
   isHistoricalSnapshot: boolean;
+  isResolved?: boolean;
   openingDate?: string | null;
   closingDate?: string | null;
 }

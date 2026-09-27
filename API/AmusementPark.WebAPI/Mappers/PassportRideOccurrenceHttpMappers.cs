@@ -100,6 +100,7 @@ internal static class PassportRideOccurrenceHttpMappers
                     Category = result.Target.Category,
                     LifecycleStatus = result.Target.LifecycleStatus,
                     IsHistoricalSnapshot = result.Target.IsHistoricalSnapshot,
+                    IsResolved = result.Target.IsResolved,
                     OpeningDate = result.Target.OpeningDate,
                     ClosingDate = result.Target.ClosingDate,
                 },

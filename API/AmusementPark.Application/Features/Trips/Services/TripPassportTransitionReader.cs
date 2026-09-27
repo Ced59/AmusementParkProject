@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Application.Features.Trips.Ports;
 using AmusementPark.Application.Features.Trips.Results;
+using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Identifiers;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -251,15 +252,6 @@ public sealed class TripPassportTransitionReader
                 static day => day.ParkId,
                 StringComparer.Ordinal))
             {
-                string[] dayTargetIds = attractions
-                    .Where(item => string.Equals(item.ParkId, parkDays.Key, StringComparison.Ordinal))
-                    .Select(static item => item.Id!)
-                    .ToArray();
-                if (dayTargetIds.Length == 0)
-                {
-                    continue;
-                }
-
                 Dictionary<DateOnly, VisitDate> visitDateByDay = parkDays.ToDictionary(
                     static day => day.LocalDate,
                     static day => VisitDate.ForDay(
@@ -267,10 +259,9 @@ public sealed class TripPassportTransitionReader
                         day.LocalDate.Month,
                         day.LocalDate.Day));
                 IReadOnlyDictionary<VisitDate, PassportHistoricalTargetContext> parkContexts =
-                    await this.historicalTargets.ResolveManyAsync(
+                    await this.historicalTargets.ResolveAllManyAsync(
                         parkDays.Key,
                         visitDateByDay.Values.ToArray(),
-                        dayTargetIds,
                         cancellationToken);
                 foreach ((DateOnly localDate, VisitDate visitDate) in visitDateByDay)
                 {
@@ -384,18 +375,40 @@ public sealed class TripPassportTransitionReader
         PassportHistoricalTargetContext? historicalTargetContext,
         IReadOnlySet<string> preselectedItemIds)
     {
-        return items.OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
-            .ThenBy(static item => item.Id, StringComparer.Ordinal)
-            .Select(item => new TripPassportTransitionItemResult(
-                item.Id!,
-                item.Name.Trim(),
-                imageIds.GetValueOrDefault(item.Id!),
-                preferenceByItem.GetValueOrDefault(
-                    item.Id!,
-                    TripItemPreferenceLevel.Unknown),
-                historicalTargetContext?.Targets.GetValueOrDefault(item.Id!)
-                    ?.HistoricalConsistency ?? HistoricalConsistency.Unverified,
-                preselectedItemIds.Contains(item.Id!)))
+        Dictionary<string, ParkItem> currentItems = items.ToDictionary(
+            static item => item.Id!,
+            StringComparer.Ordinal);
+        IReadOnlyDictionary<string, PassportHistoricalTarget> historicalTargets =
+            historicalTargetContext?.Targets
+            ?? new Dictionary<string, PassportHistoricalTarget>(StringComparer.Ordinal);
+        string[] candidateIds = currentItems.Keys
+            .Concat(historicalTargets.Values
+                .Where(static target =>
+                    target.OperationalState != HistoricalOperationalState.KnownClosed)
+                .Select(static target => target.ParkItemId))
+            .Distinct(StringComparer.Ordinal)
+            .Where(id => historicalTargets.GetValueOrDefault(id)?.OperationalState
+                != HistoricalOperationalState.KnownClosed)
+            .ToArray();
+        return candidateIds.Select(id =>
+            {
+                currentItems.TryGetValue(id, out ParkItem? currentItem);
+                PassportHistoricalTarget? historicalTarget =
+                    historicalTargets.GetValueOrDefault(id);
+                string name = historicalTarget?.Name ?? currentItem!.Name.Trim();
+                return new TripPassportTransitionItemResult(
+                    id,
+                    name,
+                    imageIds.GetValueOrDefault(id),
+                    preferenceByItem.GetValueOrDefault(
+                        id,
+                        TripItemPreferenceLevel.Unknown),
+                    historicalTarget?.HistoricalConsistency
+                        ?? HistoricalConsistency.Unverified,
+                    preselectedItemIds.Contains(id));
+            })
+            .OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(static item => item.ParkItemId, StringComparer.Ordinal)
             .ToArray();
     }
 

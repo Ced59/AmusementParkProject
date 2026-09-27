@@ -94,15 +94,14 @@ public sealed class TripPassportTransitionServiceTests
         Mock<TimeProvider> clock = new(MockBehavior.Strict);
         clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(nowUtc));
         Mock<IPassportHistoricalTargetResolver> historicalTargets = new(MockBehavior.Strict);
-        historicalTargets.Setup(resolver => resolver.ResolveManyAsync(
+        historicalTargets.Setup(resolver => resolver.ResolveAllManyAsync(
                 "park-1",
                 It.Is<IReadOnlyCollection<VisitDate>>(visitDates => visitDates.Count == 2),
-                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 2),
                 CancellationToken.None))
             .ReturnsAsync(new Dictionary<VisitDate, PassportHistoricalTargetContext>
             {
-                [VisitDate.ForDay(2027, 8, 20)] = CreateEmptyHistoricalTargetContext(),
-                [VisitDate.ForDay(2027, 8, 21)] = CreateEmptyHistoricalTargetContext(),
+                [VisitDate.ForDay(2027, 8, 20)] = CreateTripHistoricalTargetContext(),
+                [VisitDate.ForDay(2027, 8, 21)] = CreateTripHistoricalTargetContext(),
             });
         TripPassportTransitionReader reader = new(
             trips.Object,
@@ -129,11 +128,16 @@ public sealed class TripPassportTransitionServiceTests
         Assert.Equal(new DateOnly(2027, 8, 22), result.Value!.DestinationToday);
         TripPassportTransitionDayResult pastDay = result.Value.Days.Single(day => day.LocalDate == pastDate);
         Assert.True(pastDay.CanConfirm);
-        Assert.Equal(2, pastDay.Attractions.Count);
+        Assert.Equal(3, pastDay.Attractions.Count);
         TripPassportTransitionItemResult preferred = pastDay.Attractions.Single(
             item => item.ParkItemId == preferredAttraction.Id);
+        Assert.Equal("Grand huit historique", preferred.Name);
         Assert.Equal(TripItemPreferenceLevel.MustDo, preferred.OwnPreference);
         Assert.Equal("image-1", preferred.MainImageId);
+        TripPassportTransitionItemResult historicalOnly = pastDay.Attractions.Single(
+            item => item.ParkItemId == "item-historical");
+        Assert.Equal("Attraction disparue", historicalOnly.Name);
+        Assert.Null(historicalOnly.MainImageId);
         TripPassportTransitionDayResult futureDay = result.Value.Days.Single(
             day => day.LocalDate == futureDate);
         Assert.False(futureDay.CanConfirm);
@@ -1318,13 +1322,44 @@ public sealed class TripPassportTransitionServiceTests
         clock.VerifyAll();
     }
 
-    private static PassportHistoricalTargetContext CreateEmptyHistoricalTargetContext()
+    private static PassportHistoricalTargetContext CreateTripHistoricalTargetContext()
     {
+        PassportHistoricalTarget renamed = CreateHistoricalTarget(
+            "item-1",
+            "Grand huit historique",
+            false);
+        PassportHistoricalTarget historicalOnly = CreateHistoricalTarget(
+            "item-historical",
+            "Attraction disparue",
+            true);
         return new PassportHistoricalTargetContext(
-            new Dictionary<string, PassportHistoricalTarget>(StringComparer.Ordinal),
-            HistoricalCoverageStatus.Partial,
-            0,
+            new[] { renamed, historicalOnly }.ToDictionary(
+                static target => target.ParkItemId,
+                StringComparer.Ordinal),
+            HistoricalCoverageStatus.HighConfidence,
+            100,
             ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion);
+    }
+
+    private static PassportHistoricalTarget CreateHistoricalTarget(
+        string id,
+        string name,
+        bool isHistoricalOnly)
+    {
+        return new PassportHistoricalTarget(
+            id,
+            "park-1",
+            name,
+            ParkItemCategory.Attraction.ToString(),
+            HistoricalOperationalState.KnownOpen,
+            HistoricalConsistency.Verified,
+            new HistoricalTargetReference(name, ParkItemCategory.Attraction.ToString()),
+            isHistoricalOnly,
+            null,
+            null,
+            null,
+            null,
+            null);
     }
 
     private static TripPlan CreateTrip(DateTime nowUtc, params DateOnly[] dates)

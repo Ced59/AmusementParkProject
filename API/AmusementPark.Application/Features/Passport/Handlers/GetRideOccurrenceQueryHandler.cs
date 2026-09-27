@@ -63,7 +63,7 @@ public sealed class GetRideOccurrenceQueryHandler
         }
 
         PassportHistoricalTargetContext targetContext =
-            await this.targetResolver.ResolveAsync(
+            await this.targetResolver.ResolveRecordedAsync(
                 visit,
                 new[] { occurrence.ParkItemId },
                 cancellationToken);

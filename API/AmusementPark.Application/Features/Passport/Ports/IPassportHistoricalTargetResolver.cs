@@ -34,4 +34,9 @@ public interface IPassportHistoricalTargetResolver
         IReadOnlyCollection<VisitDate> visitDates,
         IReadOnlyCollection<string> parkItemIds,
         CancellationToken cancellationToken);
+
+    Task<IReadOnlyDictionary<VisitDate, PassportHistoricalTargetContext>> ResolveAllManyAsync(
+        string parkId,
+        IReadOnlyCollection<VisitDate> visitDates,
+        CancellationToken cancellationToken);
 }

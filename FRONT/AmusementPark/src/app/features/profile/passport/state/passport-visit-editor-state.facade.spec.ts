@@ -2588,6 +2588,32 @@ describe('PassportVisitEditorStateFacade', () => {
     expect(occurrencesPort.addBatch).not.toHaveBeenCalled();
   });
 
+  it('allows editing when a historical-only target is still canonically resolved', () => {
+    const resolvedHistoricalOccurrence: PassportRideOccurrence = {
+      ...firstOccurrence,
+      target: {
+        name: 'Attraction historique résolue',
+        category: 'Attraction',
+        lifecycleStatus: 'Removed',
+        isHistoricalSnapshot: true,
+        isResolved: true
+      }
+    };
+    const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
+    facade.load('visit-1', 'fr');
+
+    const canUpdate: boolean = facade.canUpdateOccurrence(resolvedHistoricalOccurrence, {
+      status: 'Attempted',
+      localTime: '',
+      isApproximate: false,
+      privateNote: '',
+      confirmHistoricalConflict: false
+    });
+
+    expect(canUpdate).toBe(true);
+    expect(facade.hasResolvedOccurrenceTarget(resolvedHistoricalOccurrence)).toBe(true);
+  });
+
   it('keeps the private timeline usable when public park metadata is no longer available', () => {
     const facade: PassportVisitEditorStateFacade = TestBed.inject(PassportVisitEditorStateFacade);
     parksPort.getParkById.mockReturnValue(throwError(() => new Error('hidden')));

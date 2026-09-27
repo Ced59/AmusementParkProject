@@ -64,7 +64,7 @@ public sealed class ListRideOccurrencesQueryHandler
         }
         else
         {
-            PassportHistoricalTargetContext targetContext = await this.targetResolver.ResolveAsync(
+            PassportHistoricalTargetContext targetContext = await this.targetResolver.ResolveRecordedAsync(
                 visit,
                 page.Items
                     .Select(static occurrence => occurrence.ParkItemId)

@@ -698,13 +698,17 @@ export class PassportVisitEditorStateFacade {
 
   canUpdateOccurrence(occurrence: PassportRideOccurrence, draft: PassportOccurrenceEditDraft): boolean {
     return this.currentVisitId !== null
-      && occurrence.target != null
-      && !occurrence.target.isHistoricalSnapshot
-      && occurrence.target.category === 'Attraction'
+      && this.hasResolvedOccurrenceTarget(occurrence)
+      && occurrence.target?.category === 'Attraction'
       && !this.timelineConsistencyStaleSignal()
       && !this.historicalEvidenceRecoverySignal()
       && !this.isOccurrenceBusy(occurrence.id)
       && (occurrence.historicalConsistency !== 'ConfirmedConflict' || draft.confirmHistoricalConflict);
+  }
+
+  hasResolvedOccurrenceTarget(occurrence: PassportRideOccurrence): boolean {
+    return occurrence.target != null
+      && (occurrence.target.isResolved ?? !occurrence.target.isHistoricalSnapshot);
   }
 
   updateOccurrenceDraft(occurrenceId: string, patch: Partial<PassportOccurrenceEditDraft>): void {
@@ -733,7 +737,7 @@ export class PassportVisitEditorStateFacade {
       && !this.historicalEvidenceRecoverySignal()
       && !this.isOccurrenceBusy(occurrence.id)
       && (hasPendingSubmission || (occurrence.target != null
-        && !occurrence.target.isHistoricalSnapshot
+        && this.hasResolvedOccurrenceTarget(occurrence)
         && occurrence.target.category === 'Attraction'
         && (occurrence.historicalConsistency !== 'ConfirmedConflict' || conflictConfirmed)));
   }
