@@ -185,7 +185,10 @@ sequenceDiagram
 La traversée est bornée à quatre niveaux, soixante sujets et deux cents
 relations par lot. Un contrôle supplémentaire détecte réellement si une suite
 existe au-delà de la profondeur publique. La page l'indique alors sans charger
-un graphe illimité.
+un graphe illimité. Le plafond de sujets est appliqué après le contrôle de la
+visibilité courante et des preuves publiques : une relation retirée ou masquée
+ne peut donc pas prendre la place d'une relation publique située plus loin dans
+le même lot.
 
 ## Contrat public et confidentialité technique
 

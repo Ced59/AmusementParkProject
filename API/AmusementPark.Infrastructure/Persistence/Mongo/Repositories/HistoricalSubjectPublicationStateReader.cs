@@ -139,28 +139,47 @@ public sealed class HistoricalSubjectPublicationStateReader : IHistoricalSubject
                 .Select(static item => new HistoricalSubjectKey(HistoricalSubjectType.Park, item.Id, item.Id))
                 .ToArray(),
             HistoricalSubjectType.ParkItem => await this.LoadPublicParkItemKeysAsync(identifiers, cancellationToken),
-            HistoricalSubjectType.StandaloneAttraction => (await this.standaloneAttractions
-                    .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
-                .Where(IsStandaloneAttractionPublic)
-                .Select(static item => new HistoricalSubjectKey(
-                    HistoricalSubjectType.StandaloneAttraction,
-                    item.Id))
-                .ToArray(),
+            HistoricalSubjectType.StandaloneAttraction => BuildPublicKeysPreservingContext(
+                HistoricalSubjectType.StandaloneAttraction,
+                subjects,
+                (await this.standaloneAttractions
+                        .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
+                    .Where(IsStandaloneAttractionPublic)
+                    .Select(static item => item.Id)),
             HistoricalSubjectType.ParkZone => await this.LoadPublicZoneKeysAsync(identifiers, cancellationToken),
-            HistoricalSubjectType.ParkOperator => (await this.parkOperators
-                    .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
-                .Where(static item => item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
-                .Select(static item => new HistoricalSubjectKey(HistoricalSubjectType.ParkOperator, item.Id))
-                .ToArray(),
-            HistoricalSubjectType.AttractionManufacturer => (await this.attractionManufacturers
-                    .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
-                .Where(static item => item.IsVisible && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
-                .Select(static item => new HistoricalSubjectKey(
-                    HistoricalSubjectType.AttractionManufacturer,
-                    item.Id))
-                .ToArray(),
+            HistoricalSubjectType.ParkOperator => BuildPublicKeysPreservingContext(
+                HistoricalSubjectType.ParkOperator,
+                subjects,
+                (await this.parkOperators
+                        .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
+                    .Where(static item => item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+                    .Select(static item => item.Id)),
+            HistoricalSubjectType.AttractionManufacturer => BuildPublicKeysPreservingContext(
+                HistoricalSubjectType.AttractionManufacturer,
+                subjects,
+                (await this.attractionManufacturers
+                        .Find(item => identifiers.Contains(item.Id)).ToListAsync(cancellationToken))
+                    .Where(static item => item.IsVisible
+                        && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+                    .Select(static item => item.Id)),
             _ => Array.Empty<HistoricalSubjectKey>(),
         };
+    }
+
+    internal static HistoricalSubjectKey[] BuildPublicKeysPreservingContext(
+        HistoricalSubjectType type,
+        IReadOnlyCollection<HistoricalSubject> candidates,
+        IEnumerable<string> publicIdentifiers)
+    {
+        HashSet<string> publicIdentifierSet = publicIdentifiers.ToHashSet(StringComparer.Ordinal);
+        return candidates
+            .Where(subject => subject.Type == type && publicIdentifierSet.Contains(subject.Id))
+            .Select(static subject => new HistoricalSubjectKey(
+                subject.Type,
+                subject.Id,
+                subject.ContextParkId))
+            .Distinct()
+            .ToArray();
     }
 
     private async Task<IReadOnlyCollection<HistoricalSubjectKey>> LoadPublicParkItemKeysAsync(
