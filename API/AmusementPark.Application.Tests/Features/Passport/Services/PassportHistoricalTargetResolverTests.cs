@@ -19,10 +19,11 @@ namespace AmusementPark.Application.Tests.Features.Passport.Services;
 public sealed class PassportHistoricalTargetResolverTests
 {
     [Fact]
-    public async Task ResolveRecordedAsync_ShouldKeepHiddenExistingTargetWithoutExposingItForNewEntries()
+    public async Task ResolveRecordedAsync_ShouldMarkEveryCurrentFallbackAsValidationOnly()
     {
         const string ParkId = "park-1";
         const string ParkItemId = "hidden-ride";
+        const string VisibleParkItemId = "visible-ride";
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItems = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IParkZoneRepository> zones = new Mock<IParkZoneRepository>(MockBehavior.Strict);
@@ -36,20 +37,20 @@ public sealed class PassportHistoricalTargetResolverTests
         Mock<IVisitTargetResolver> currentTargets =
             new Mock<IVisitTargetResolver>(MockBehavior.Strict);
         currentTargets.Setup(resolver => resolver.ResolveAsync(
-                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { ParkItemId })),
+                It.IsAny<IReadOnlyCollection<string>>(),
                 CancellationToken.None))
-            .ReturnsAsync(new Dictionary<string, VisitTarget>(StringComparer.Ordinal)
-            {
-                [ParkItemId] = new VisitTarget(
-                    ParkItemId,
+            .ReturnsAsync((IReadOnlyCollection<string> ids, CancellationToken _) => ids.ToDictionary(
+                static id => id,
+                id => new VisitTarget(
+                    id,
                     ParkId,
-                    "Attraction masquée",
+                    id == ParkItemId ? "Attraction masquée" : "Attraction visible",
                     ParkItemCategory.Attraction,
                     null,
                     null,
                     null,
-                    false),
-            });
+                    id == VisibleParkItemId),
+                StringComparer.Ordinal));
         Mock<IImageRepository> images = new Mock<IImageRepository>(MockBehavior.Strict);
         PassportHistoricalTargetResolver resolver = new PassportHistoricalTargetResolver(
             new PublicParkHistoricalDataLoader(
@@ -79,12 +80,22 @@ public sealed class PassportHistoricalTargetResolverTests
             visit,
             new[] { ParkItemId },
             CancellationToken.None);
+        PassportHistoricalTargetContext visibleRecorded = await resolver.ResolveRecordedAsync(
+            visit,
+            new[] { VisibleParkItemId },
+            CancellationToken.None);
+        PassportHistoricalTargetContext visibleNewEntry = await resolver.ResolveAsync(
+            visit,
+            new[] { VisibleParkItemId },
+            CancellationToken.None);
 
         PassportHistoricalTarget target = Assert.Single(recorded.Targets).Value;
         Assert.Equal("Attraction masquée", target.Name);
         Assert.True(target.IsHistoricalOnly);
         Assert.True(target.IsValidationFallback);
         Assert.Empty(newEntry.Targets);
+        Assert.True(Assert.Single(visibleRecorded.Targets).Value.IsValidationFallback);
+        Assert.False(Assert.Single(visibleNewEntry.Targets).Value.IsValidationFallback);
         parks.VerifyAll();
         currentTargets.VerifyAll();
         parkItems.VerifyNoOtherCalls();

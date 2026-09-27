@@ -348,7 +348,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                     target.LifecycleStatus,
                     target.OpeningDate,
                     target.ClosingDate,
-                    includeHiddenCurrentTargets && !target.IsVisible),
+                    includeHiddenCurrentTargets),
                 StringComparer.Ordinal);
         return new PassportHistoricalTargetContext(
             targets,
