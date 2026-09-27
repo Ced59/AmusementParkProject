@@ -289,8 +289,11 @@ public sealed class PassportHistoricalTargetResolverTests
         images.VerifyNoOtherCalls();
     }
 
-    [Fact]
-    public async Task ResolveAsync_ShouldNotRestoreACanonicallyNonAttractionSubject()
+    [Theory]
+    [InlineData(ParkItemCategory.Restaurant)]
+    [InlineData(ParkItemCategory.Other)]
+    public async Task ResolveAsync_ShouldNotRestoreACanonicallyNonAttractionSubject(
+        ParkItemCategory historicalCategory)
     {
         Park park = PublicParkHistoryTestData.CreatePark();
         ParkItem item = PublicParkHistoryTestData.CreateParkItem("item-1", "Ancienne attraction");
@@ -331,7 +334,8 @@ public sealed class PassportHistoricalTargetResolverTests
                 IReadOnlyCollection<HistoricalFact> ___) => CreateNonAttractionSnapshot(
                     park.Id,
                     instant,
-                    subject));
+                    subject,
+                    historicalCategory));
         Mock<IVisitTargetResolver> currentTargets =
             new Mock<IVisitTargetResolver>(MockBehavior.Strict);
         currentTargets.Setup(resolver => resolver.ResolveAsync(
@@ -387,7 +391,8 @@ public sealed class PassportHistoricalTargetResolverTests
     private static ParkHistoricalSnapshot CreateNonAttractionSnapshot(
         string parkId,
         HistoricalInstant instant,
-        HistoricalSubject subject)
+        HistoricalSubject subject,
+        ParkItemCategory historicalCategory)
     {
         HistoricalSubjectSnapshot snapshot = new HistoricalSubjectSnapshot(
             subject,
@@ -399,8 +404,8 @@ public sealed class PassportHistoricalTargetResolverTests
                 new HistoricalAttributeSnapshot(
                     HistoricalAttributeKind.Category,
                     HistoricalAttributeValueState.Known,
-                    ParkItemCategory.Restaurant.ToString(),
-                    new[] { ParkItemCategory.Restaurant.ToString() },
+                    historicalCategory.ToString(),
+                    new[] { historicalCategory.ToString() },
                     Array.Empty<HistoricalSnapshotReason>(),
                     Array.Empty<Guid>()),
             },

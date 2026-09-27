@@ -65,6 +65,9 @@ Les règles détaillées sont les suivantes :
 - les regroupements de catégories utilisent le type métier détaillé
   (`DarkRide`, `RollerCoaster`, `WaterRide`, etc.) plutôt que l'étiquette
   générique `Attraction` ;
+- les valeurs qui existent à la fois comme catégorie générale et comme type
+  détaillé sont interprétées d'abord comme catégories : notamment `Other` ne
+  peut jamais être supposé être une attraction sans preuve plus précise ;
 - l'année de première visite vient de toutes les visites privées, tandis que
   les statistiques d'attractions exigent une preuve canonique.
 

@@ -524,14 +524,9 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
         string? historicalCategory,
         VisitTarget? currentTarget)
     {
-        if (Enum.TryParse(
-                historicalCategory,
-                true,
-                out ParkItemType historicalType)
-            && historicalType != ParkItemType.Attraction
-            && ParkItemAdministrationDefaults.IsTypeAllowedForCategory(
-                ParkItemCategory.Attraction,
-                historicalType))
+        if (HistoricalParkItemClassificationPolicy.TryResolveDetailedAttractionType(
+            historicalCategory,
+            out ParkItemType historicalType))
         {
             return historicalType.ToString();
         }
@@ -542,27 +537,14 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
 
     private static bool IsAttractionClassification(string? value)
     {
-        if (string.Equals(
-                value,
-                ParkItemCategory.Attraction.ToString(),
-                StringComparison.OrdinalIgnoreCase))
-        {
-            return true;
-        }
-
-        return Enum.TryParse(value, true, out ParkItemType type)
-            && ParkItemAdministrationDefaults.IsTypeAllowedForCategory(
-                ParkItemCategory.Attraction,
-                type);
+        return HistoricalParkItemClassificationPolicy.IsAttractionClassification(value);
     }
 
     private static bool IsDetailedAttractionClassification(string? value)
     {
-        return Enum.TryParse(value, true, out ParkItemType type)
-            && type != ParkItemType.Attraction
-            && ParkItemAdministrationDefaults.IsTypeAllowedForCategory(
-                ParkItemCategory.Attraction,
-                type);
+        return HistoricalParkItemClassificationPolicy.TryResolveDetailedAttractionType(
+            value,
+            out ParkItemType _);
     }
 
     private static int CalculateCoveragePercent(HistoricalCoverage coverage)
