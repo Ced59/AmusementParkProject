@@ -1,0 +1,35 @@
+{
+  "passport": {
+    "historicalExistenceReport": {
+      "kicker": "Memória do parque",
+      "title": "Falta uma atração nesta visita?",
+      "description": "Partilha aquilo de que te lembras para ajudar a equipa a completar a história do parque.",
+      "open": "Comunicar uma atração",
+      "trust": "A comunicação continua associada à tua visita privada. Inicia uma pesquisa e nunca se torna um facto público sem revisão humana e fontes fiáveis.",
+      "nameLabel": "Nome da atração",
+      "namePlaceholder": "O nome de que te lembras",
+      "nameError": "Indica um nome de atração válido.",
+      "sourceUrlLabel": "Ligação para uma fonte (opcional)",
+      "sourceUrlError": "Utiliza uma ligação segura que comece por https://.",
+      "sourceReferenceLabel": "Outra referência (opcional)",
+      "sourceReferencePlaceholder": "Brochura, mapa, bilhete, ano…",
+      "detailsLabel": "Aquilo de que te lembras (opcional)",
+      "detailsPlaceholder": "Zona, aparência, nome anterior ou outra pista útil…",
+      "send": "Enviar comunicação",
+      "sending": "A enviar…",
+      "success": "Comunicação enviada. Obrigado por ajudares a preservar esta memória.",
+      "conflict": "Já existe uma comunicação pendente para este nome e esta visita.",
+      "rateLimited": "Enviaste várias comunicações recentemente. Tenta novamente mais tarde.",
+      "error": "Não foi possível enviar a comunicação. Tenta novamente dentro de instantes.",
+      "loading": "A carregar as tuas comunicações…",
+      "loadError": "Não foi possível carregar as tuas comunicações.",
+      "retry": "Tentar novamente",
+      "historyTitle": "As tuas comunicações para esta visita",
+      "status": {
+        "Pending": "Por verificar",
+        "AcceptedForResearch": "Selecionada para pesquisa",
+        "Dismissed": "Não retida"
+      }
+    }
+  }
+}

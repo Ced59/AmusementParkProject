@@ -1,0 +1,131 @@
+<section class="history-report" appUiSurface="panel" aria-labelledby="history-report-title">
+  <div class="history-report__heading">
+    <div>
+      <span class="history-report__kicker">
+        <i class="pi pi-history" aria-hidden="true"></i>
+        {{ 'passport.historicalExistenceReport.kicker' | translate }}
+      </span>
+      <h2 id="history-report-title">{{ 'passport.historicalExistenceReport.title' | translate }}</h2>
+      <p>{{ 'passport.historicalExistenceReport.description' | translate }}</p>
+    </div>
+    <button appUiButton="soft" type="button" [attr.aria-expanded]="expanded()" (click)="toggle()">
+      <i class="pi pi-flag" aria-hidden="true"></i>
+      <span>{{ 'passport.historicalExistenceReport.open' | translate }}</span>
+    </button>
+  </div>
+
+  <p class="history-report__trust" role="note">
+    <i class="pi pi-shield" aria-hidden="true"></i>
+    <span>{{ 'passport.historicalExistenceReport.trust' | translate }}</span>
+  </p>
+
+  @if (expanded()) {
+    <form class="history-report__form" [formGroup]="form" (ngSubmit)="submit()">
+      <label class="app-field history-report__wide">
+        <span class="app-field__label">{{ 'passport.historicalExistenceReport.nameLabel' | translate }}</span>
+        <input
+          class="app-input"
+          type="text"
+          autocomplete="off"
+          maxlength="250"
+          formControlName="claimedName"
+          [placeholder]="'passport.historicalExistenceReport.namePlaceholder' | translate" />
+        @if (form.controls.claimedName.touched && form.controls.claimedName.invalid) {
+          <small class="history-report__error">{{ 'passport.historicalExistenceReport.nameError' | translate }}</small>
+        }
+      </label>
+
+      <label class="app-field">
+        <span class="app-field__label">{{ 'passport.historicalExistenceReport.sourceUrlLabel' | translate }}</span>
+        <input
+          class="app-input"
+          type="url"
+          inputmode="url"
+          maxlength="1000"
+          formControlName="sourceUrl"
+          placeholder="https://" />
+        @if (form.controls.sourceUrl.touched && form.controls.sourceUrl.invalid) {
+          <small class="history-report__error">{{ 'passport.historicalExistenceReport.sourceUrlError' | translate }}</small>
+        }
+      </label>
+
+      <label class="app-field">
+        <span class="app-field__label">{{ 'passport.historicalExistenceReport.sourceReferenceLabel' | translate }}</span>
+        <input
+          class="app-input"
+          type="text"
+          maxlength="1000"
+          formControlName="sourceReference"
+          [placeholder]="'passport.historicalExistenceReport.sourceReferencePlaceholder' | translate" />
+      </label>
+
+      <label class="app-field history-report__wide">
+        <span class="app-field__label">{{ 'passport.historicalExistenceReport.detailsLabel' | translate }}</span>
+        <textarea
+          rows="3"
+          maxlength="1000"
+          formControlName="details"
+          [placeholder]="'passport.historicalExistenceReport.detailsPlaceholder' | translate">
+        </textarea>
+      </label>
+
+      <div class="history-report__actions history-report__wide">
+        <button appUiButton="primary" type="submit" [disabled]="submissionStatus() === 'submitting'">
+          @if (submissionStatus() === 'submitting') {
+            <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+          } @else {
+            <i class="pi pi-send" aria-hidden="true"></i>
+          }
+          <span>{{ (submissionStatus() === 'submitting'
+            ? 'passport.historicalExistenceReport.sending'
+            : 'passport.historicalExistenceReport.send') | translate }}</span>
+        </button>
+        <p aria-live="polite">
+          @if (submissionStatus() === 'success') {
+            <span class="history-report__success">{{ 'passport.historicalExistenceReport.success' | translate }}</span>
+          } @else if (submissionStatus() === 'conflict') {
+            <span class="history-report__error">{{ 'passport.historicalExistenceReport.conflict' | translate }}</span>
+          } @else if (submissionStatus() === 'rateLimited') {
+            <span class="history-report__error">{{ 'passport.historicalExistenceReport.rateLimited' | translate }}</span>
+          } @else if (submissionStatus() === 'error') {
+            <span class="history-report__error">{{ 'passport.historicalExistenceReport.error' | translate }}</span>
+          }
+        </p>
+      </div>
+    </form>
+  }
+
+  @if (loading()) {
+    <p class="history-report__loading" role="status">
+      <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+      {{ 'passport.historicalExistenceReport.loading' | translate }}
+    </p>
+  } @else if (loadError()) {
+    <div class="history-report__load-error" role="alert">
+      <span>{{ 'passport.historicalExistenceReport.loadError' | translate }}</span>
+      <button appUiButton="ghost" type="button" (click)="retry()">
+        {{ 'passport.historicalExistenceReport.retry' | translate }}
+      </button>
+    </div>
+  } @else if (reports().length > 0) {
+    <div class="history-report__history">
+      <h3>{{ 'passport.historicalExistenceReport.historyTitle' | translate }}</h3>
+      <div class="history-report__list">
+        @for (report of reports(); track report.reportId) {
+          <article class="history-report__item">
+            <div>
+              <strong>{{ report.claimedName }}</strong>
+              <span>{{ report.parkName }}</span>
+            </div>
+            <app-ui-chip [tone]="report.status === 'Pending' ? 'gold' : report.status === 'AcceptedForResearch' ? 'lime' : 'soft'">
+              {{ statusKey(report) | translate }}
+            </app-ui-chip>
+            @if (report.decisionNote) {
+              <p>{{ report.decisionNote }}</p>
+            }
+          </article>
+        }
+      </div>
+    </div>
+  }
+</section>

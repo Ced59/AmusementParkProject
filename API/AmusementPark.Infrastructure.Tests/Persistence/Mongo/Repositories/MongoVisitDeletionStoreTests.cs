@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.Passport.Services;
 using AmusementPark.Application.Features.Sharing.Services;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using MongoDB.Bson;
@@ -42,6 +43,10 @@ public sealed class MongoVisitDeletionStoreTests
             MongoVisitDeletionStore.BuildOccurrencePurgeFilter("visit-1", "owner-1"));
         BsonDocument auditFilter = Render(
             MongoVisitDeletionStore.BuildAuditPurgeFilter("visit-1", "owner-1"));
+        BsonDocument historicalReportFilter = Render(
+            MongoVisitDeletionStore.BuildHistoricalExistenceReportPurgeFilter(
+                "visit-1",
+                "owner-1"));
         BsonDocument publicationFilter = Render(
             MongoVisitDeletionStore.BuildSharePublicationPurgeFilter(
                 "visit-1",
@@ -56,6 +61,8 @@ public sealed class MongoVisitDeletionStoreTests
         Assert.Equal("owner-1", occurrenceFilter["userId"].AsString);
         Assert.Equal("visit-1", auditFilter["event.visitId"].AsString);
         Assert.Equal("owner-1", auditFilter["event.userId"].AsString);
+        Assert.Equal("visit-1", historicalReportFilter["visitId"].AsString);
+        Assert.Equal("owner-1", historicalReportFilter["ownerUserId"].AsString);
         Assert.Equal(
             VisitRecapShareSourceScope.Create("owner-1", "visit-1"),
             publicationFilter["sourceScopeKey"].AsString);

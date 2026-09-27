@@ -248,6 +248,9 @@ public sealed class MongoDbSettings
 
     public string HistoryEventsCollectionName { get; set; } = "historyEvents";
 
+    public string HistoricalExistenceReportsCollectionName { get; set; } =
+        "historical-existence-reports";
+
     public string HistoricalFactsCollectionName { get; set; } = "historical-facts";
 
     public string HistoricalSourcesCollectionName { get; set; } = "historical-sources";

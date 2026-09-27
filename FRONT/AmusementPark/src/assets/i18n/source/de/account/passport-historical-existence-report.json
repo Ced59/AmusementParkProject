@@ -1,0 +1,35 @@
+{
+  "passport": {
+    "historicalExistenceReport": {
+      "kicker": "Parkerinnerung",
+      "title": "Fehlt bei diesem Besuch eine Attraktion?",
+      "description": "Teile deine Erinnerung, damit das Team die Geschichte des Parks vervollständigen kann.",
+      "open": "Attraktion melden",
+      "trust": "Deine Meldung bleibt mit deinem privaten Besuch verknüpft. Sie stößt eine Recherche an und wird ohne menschliche Prüfung und verlässliche Quellen nie zu einer öffentlichen Tatsache.",
+      "nameLabel": "Name der Attraktion",
+      "namePlaceholder": "Der Name, an den du dich erinnerst",
+      "nameError": "Gib einen gültigen Namen der Attraktion ein.",
+      "sourceUrlLabel": "Link zu einer Quelle (optional)",
+      "sourceUrlError": "Verwende einen sicheren Link, der mit https:// beginnt.",
+      "sourceReferenceLabel": "Andere Referenz (optional)",
+      "sourceReferencePlaceholder": "Broschüre, Plan, Ticket, Jahr…",
+      "detailsLabel": "Woran du dich erinnerst (optional)",
+      "detailsPlaceholder": "Bereich, Aussehen, früherer Name oder ein anderer nützlicher Hinweis…",
+      "send": "Meldung senden",
+      "sending": "Wird gesendet…",
+      "success": "Meldung gesendet. Danke, dass du hilfst, diese Erinnerung zu bewahren.",
+      "conflict": "Für diesen Namen und Besuch liegt bereits eine Meldung zur Prüfung vor.",
+      "rateLimited": "Du hast kürzlich mehrere Meldungen gesendet. Versuche es später erneut.",
+      "error": "Die Meldung konnte nicht gesendet werden. Versuche es gleich noch einmal.",
+      "loading": "Deine Meldungen werden geladen…",
+      "loadError": "Deine Meldungen konnten nicht geladen werden.",
+      "retry": "Erneut versuchen",
+      "historyTitle": "Deine Meldungen für diesen Besuch",
+      "status": {
+        "Pending": "Zu prüfen",
+        "AcceptedForResearch": "Für Recherche vorgemerkt",
+        "Dismissed": "Nicht übernommen"
+      }
+    }
+  }
+}

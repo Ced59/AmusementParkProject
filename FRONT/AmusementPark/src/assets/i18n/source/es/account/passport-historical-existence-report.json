@@ -1,0 +1,35 @@
+{
+  "passport": {
+    "historicalExistenceReport": {
+      "kicker": "Memoria del parque",
+      "title": "¿Falta una atracción en esta visita?",
+      "description": "Comparte lo que recuerdas para ayudar al equipo a completar la historia del parque.",
+      "open": "Informar de una atracción",
+      "trust": "Tu aviso permanece vinculado a tu visita privada. Inicia una investigación y nunca se convierte en un hecho público sin revisión humana y fuentes fiables.",
+      "nameLabel": "Nombre de la atracción",
+      "namePlaceholder": "El nombre que recuerdas",
+      "nameError": "Indica un nombre de atracción válido.",
+      "sourceUrlLabel": "Enlace a una fuente (opcional)",
+      "sourceUrlError": "Usa un enlace seguro que empiece por https://.",
+      "sourceReferenceLabel": "Otra referencia (opcional)",
+      "sourceReferencePlaceholder": "Folleto, mapa, entrada, año…",
+      "detailsLabel": "Lo que recuerdas (opcional)",
+      "detailsPlaceholder": "Zona, aspecto, nombre anterior u otra pista útil…",
+      "send": "Enviar aviso",
+      "sending": "Enviando…",
+      "success": "Aviso enviado. Gracias por ayudar a conservar este recuerdo.",
+      "conflict": "Ya hay un aviso pendiente para este nombre y esta visita.",
+      "rateLimited": "Has enviado varios avisos recientemente. Inténtalo más tarde.",
+      "error": "No se ha podido enviar el aviso. Inténtalo de nuevo en un momento.",
+      "loading": "Cargando tus avisos…",
+      "loadError": "No se han podido cargar tus avisos.",
+      "retry": "Reintentar",
+      "historyTitle": "Tus avisos para esta visita",
+      "status": {
+        "Pending": "Por verificar",
+        "AcceptedForResearch": "Seleccionado para investigar",
+        "Dismissed": "No retenido"
+      }
+    }
+  }
+}

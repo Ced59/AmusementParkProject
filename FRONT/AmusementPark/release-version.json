@@ -1,6 +1,20 @@
 {
-  "version": "5.3.91",
+  "version": "5.3.92",
   "history": [
+    {
+      "version": "5.3.92",
+      "releasedAt": "2026-09-27",
+      "labels": {
+        "fr": "Signale une attraction manquante depuis une visite de ton Passeport.",
+        "en": "Report a missing attraction from a visit in your Passport.",
+        "de": "Melde eine fehlende Attraktion direkt aus einem Besuch in deinem Pass.",
+        "nl": "Meld een ontbrekende attractie vanuit een bezoek in je Paspoort.",
+        "it": "Segnala un’attrazione mancante da una visita nel tuo Passaporto.",
+        "es": "Informa de una atracción que falta desde una visita de tu Pasaporte.",
+        "pl": "Zgłoś brakującą atrakcję bezpośrednio z wizyty w swoim Paszporcie.",
+        "pt": "Comunica uma atração em falta a partir de uma visita no teu Passaporte."
+      }
+    },
     {
       "version": "5.3.91",
       "releasedAt": "2026-09-27",

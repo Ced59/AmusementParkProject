@@ -19,6 +19,9 @@ public static class RateLimitPolicyNames
     public const string RatingDiagnostics = "rating-diagnostics";
     public const string PassportExports = "passport-exports";
     public const string PassportExportDownloads = "passport-export-downloads";
+    public const string HistoricalExistenceReports = "historical-existence-reports";
+    public const string HistoricalExistenceReportAdministration =
+        "historical-existence-report-administration";
     public const string SharePublicationPreviews = "share-publication-previews";
     public const string SharePublicationConfirmations = "share-publication-confirmations";
     public const string ShareModerationReports = "share-moderation-reports";

@@ -286,6 +286,37 @@
     }
   },
   "passport": {
+    "historicalExistenceReport": {
+      "kicker": "Mémoire du parc",
+      "title": "Une attraction manque pour cette visite ?",
+      "description": "Signale ce dont tu te souviens pour aider l’équipe à compléter l’historique du parc.",
+      "open": "Signaler une attraction",
+      "trust": "Ton signalement reste lié à ta visite privée. Il ouvre une recherche et ne devient jamais un fait public sans vérification humaine et sources fiables.",
+      "nameLabel": "Nom de l’attraction",
+      "namePlaceholder": "Le nom dont tu te souviens",
+      "nameError": "Indique un nom d’attraction valide.",
+      "sourceUrlLabel": "Lien vers une source (facultatif)",
+      "sourceUrlError": "Utilise un lien sécurisé commençant par https://.",
+      "sourceReferenceLabel": "Autre référence (facultatif)",
+      "sourceReferencePlaceholder": "Brochure, plan, billet, année…",
+      "detailsLabel": "Ce dont tu te souviens (facultatif)",
+      "detailsPlaceholder": "Zone, apparence, ancien nom ou autre indice utile…",
+      "send": "Envoyer le signalement",
+      "sending": "Envoi…",
+      "success": "Signalement envoyé. Merci d’aider à préserver cette mémoire.",
+      "conflict": "Un signalement en attente existe déjà pour ce nom et cette visite.",
+      "rateLimited": "Tu as envoyé plusieurs signalements récemment. Réessaie plus tard.",
+      "error": "Le signalement n’a pas pu être envoyé. Réessaie dans un instant.",
+      "loading": "Chargement de tes signalements…",
+      "loadError": "Tes signalements n’ont pas pu être chargés.",
+      "retry": "Réessayer",
+      "historyTitle": "Tes signalements pour cette visite",
+      "status": {
+        "Pending": "À vérifier",
+        "AcceptedForResearch": "Retenu pour recherche",
+        "Dismissed": "Non retenu"
+      }
+    },
     "overview": {
       "actions": {
         "sharePassport": "Partager mon passeport",
