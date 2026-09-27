@@ -5,6 +5,7 @@ using AmusementPark.Core.Domain.Identifiers;
 using AmusementPark.Core.Domain.Sharing;
 using AmusementPark.Core.Domain.Visits;
 using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Visits;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
@@ -37,6 +38,7 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
     private readonly IMongoCollection<UserRideOccurrenceDocument> occurrences;
     private readonly IMongoCollection<UserRideOccurrenceCreationOperationDocument> operations;
     private readonly IMongoCollection<PassportAuditJournalDocument> auditEvents;
+    private readonly IMongoCollection<HistoricalExistenceReportDocument> historicalReports;
     private readonly IMongoCollection<SharePublicationDocument> sharePublications;
     private readonly IMongoCollection<VisitRecapShareSnapshotDocument> shareSnapshots;
 
@@ -52,6 +54,8 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             settings.UserRideOccurrenceOperationsCollectionName);
         this.auditEvents = database.GetCollection<PassportAuditJournalDocument>(
             settings.PassportAuditEventsCollectionName);
+        this.historicalReports = database.GetCollection<HistoricalExistenceReportDocument>(
+            settings.HistoricalExistenceReportsCollectionName);
         this.sharePublications = database.GetCollection<SharePublicationDocument>(
             settings.SharePublicationsCollectionName);
         this.shareSnapshots = database.GetCollection<VisitRecapShareSnapshotDocument>(
@@ -407,6 +411,13 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
                 BuildAuditPurgeFilter(visitId.Value, normalizedUserId),
                 maximumDocumentsPerCollection,
                 cancellationToken);
+            deletedCount += await DeleteBatchAsync(
+                this.historicalReports,
+                BuildHistoricalExistenceReportPurgeFilter(
+                    visitId.Value,
+                    normalizedUserId),
+                maximumDocumentsPerCollection,
+                cancellationToken);
 
             List<string> sharePublicationIds = await this.sharePublications
                 .Find(BuildSharePublicationPurgeFilter(visitId.Value, normalizedUserId))
@@ -539,15 +550,21 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
                 BuildSharePublicationPurgeFilter(visitId, userId))
             .Project(static document => document.Id)
             .AnyAsync(cancellationToken);
+        Task<bool> historicalReportsRemain = this.historicalReports.Find(
+                BuildHistoricalExistenceReportPurgeFilter(visitId, userId))
+            .Project(static document => document.Id)
+            .AnyAsync(cancellationToken);
         await Task.WhenAll(
             operationsRemain,
             occurrencesRemain,
             auditsRemain,
-            sharePublicationsRemain);
+            sharePublicationsRemain,
+            historicalReportsRemain);
         return await operationsRemain
             || await occurrencesRemain
             || await auditsRemain
-            || await sharePublicationsRemain;
+            || await sharePublicationsRemain
+            || await historicalReportsRemain;
     }
 
     private async Task<bool> HasPendingAuditMarkersAsync(
@@ -635,6 +652,15 @@ public sealed class MongoVisitDeletionStore : IVisitDeletionStore
             Builders<PassportAuditJournalDocument>.Filter;
         return filters.Eq(static document => document.Event.VisitId, visitId)
             & filters.Eq(static document => document.Event.UserId, userId);
+    }
+
+    internal static FilterDefinition<HistoricalExistenceReportDocument>
+        BuildHistoricalExistenceReportPurgeFilter(string visitId, string userId)
+    {
+        FilterDefinitionBuilder<HistoricalExistenceReportDocument> filters =
+            Builders<HistoricalExistenceReportDocument>.Filter;
+        return filters.Eq(static document => document.VisitId, visitId)
+            & filters.Eq(static document => document.OwnerUserId, userId);
     }
 
     internal static FilterDefinition<SharePublicationDocument>

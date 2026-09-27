@@ -286,6 +286,37 @@
     }
   },
   "passport": {
+    "historicalExistenceReport": {
+      "kicker": "Pamięć parku",
+      "title": "Brakuje atrakcji przy tej wizycie?",
+      "description": "Podziel się tym, co pamiętasz, aby pomóc zespołowi uzupełnić historię parku.",
+      "open": "Zgłoś atrakcję",
+      "trust": "Zgłoszenie pozostaje powiązane z Twoją prywatną wizytą. Rozpoczyna badanie i nigdy nie staje się publicznym faktem bez weryfikacji przez człowieka i wiarygodnych źródeł.",
+      "nameLabel": "Nazwa atrakcji",
+      "namePlaceholder": "Nazwa, którą pamiętasz",
+      "nameError": "Wpisz prawidłową nazwę atrakcji.",
+      "sourceUrlLabel": "Link do źródła (opcjonalnie)",
+      "sourceUrlError": "Użyj bezpiecznego linku zaczynającego się od https://.",
+      "sourceReferenceLabel": "Inne źródło (opcjonalnie)",
+      "sourceReferencePlaceholder": "Broszura, mapa, bilet, rok…",
+      "detailsLabel": "Co pamiętasz (opcjonalnie)",
+      "detailsPlaceholder": "Strefa, wygląd, dawna nazwa lub inna przydatna wskazówka…",
+      "send": "Wyślij zgłoszenie",
+      "sending": "Wysyłanie…",
+      "success": "Zgłoszenie wysłane. Dziękujemy za pomoc w zachowaniu tej pamięci.",
+      "conflict": "Dla tej nazwy i wizyty istnieje już oczekujące zgłoszenie.",
+      "rateLimited": "Ostatnio wysłano kilka zgłoszeń. Spróbuj ponownie później.",
+      "error": "Nie udało się wysłać zgłoszenia. Spróbuj ponownie za chwilę.",
+      "loading": "Wczytywanie Twoich zgłoszeń…",
+      "loadError": "Nie udało się wczytać Twoich zgłoszeń.",
+      "retry": "Spróbuj ponownie",
+      "historyTitle": "Twoje zgłoszenia dla tej wizyty",
+      "status": {
+        "Pending": "Do sprawdzenia",
+        "AcceptedForResearch": "Przyjęte do zbadania",
+        "Dismissed": "Nieprzyjęte"
+      }
+    },
     "overview": {
       "actions": {
         "sharePassport": "Udostępnij mój paszport",

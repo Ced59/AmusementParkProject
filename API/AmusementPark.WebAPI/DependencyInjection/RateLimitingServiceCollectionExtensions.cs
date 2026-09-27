@@ -58,6 +58,9 @@ public static class RateLimitingServiceCollectionExtensions
         FixedWindowRateLimitSettings passportExportSettings = configuration
             .GetSection("RateLimiting:Passport:Exports")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 600);
+        FixedWindowRateLimitSettings historicalExistenceReportSettings = configuration
+            .GetSection("RateLimiting:Passport:HistoricalExistenceReports")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(10, 3600);
         FixedWindowRateLimitSettings passportExportDownloadSettings = configuration
             .GetSection("RateLimiting:Passport:ExportDownloads")
             .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 600);
@@ -124,6 +127,11 @@ public static class RateLimitingServiceCollectionExtensions
                 RateLimitPartition.GetFixedWindowLimiter(
                     partitionKey: GetAuthenticatedUserPartitionKey(context),
                     factory: _ => CreateFixedWindowOptions(passportExportSettings)));
+            options.AddPolicy(RateLimitPolicyNames.HistoricalExistenceReports, context =>
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: GetAuthenticatedUserPartitionKey(context),
+                    factory: _ => CreateFixedWindowOptions(
+                        historicalExistenceReportSettings)));
             options.AddPolicy(RateLimitPolicyNames.PassportExportDownloads, context =>
                 IsPassportExportDownload(context)
                     ? RateLimitPartition.GetFixedWindowLimiter(
@@ -192,6 +200,14 @@ public static class RateLimitingServiceCollectionExtensions
                 limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
                 limiterOptions.QueueLimit = 0;
             });
+            options.AddConcurrencyLimiter(
+                RateLimitPolicyNames.HistoricalExistenceReportAdministration,
+                limiterOptions =>
+                {
+                    limiterOptions.PermitLimit = 1;
+                    limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                    limiterOptions.QueueLimit = 0;
+                });
             options.AddConcurrencyLimiter(RateLimitPolicyNames.FactualEventAdministration, limiterOptions =>
             {
                 limiterOptions.PermitLimit = 1;

@@ -1,0 +1,35 @@
+{
+  "passport": {
+    "historicalExistenceReport": {
+      "kicker": "Park memory",
+      "title": "Is an attraction missing from this visit?",
+      "description": "Share what you remember to help the team complete the park’s history.",
+      "open": "Report an attraction",
+      "trust": "Your report stays linked to your private visit. It starts research and never becomes a public fact without human review and reliable sources.",
+      "nameLabel": "Attraction name",
+      "namePlaceholder": "The name you remember",
+      "nameError": "Enter a valid attraction name.",
+      "sourceUrlLabel": "Source link (optional)",
+      "sourceUrlError": "Use a secure link starting with https://.",
+      "sourceReferenceLabel": "Other reference (optional)",
+      "sourceReferencePlaceholder": "Brochure, map, ticket, year…",
+      "detailsLabel": "What you remember (optional)",
+      "detailsPlaceholder": "Area, appearance, former name or another useful clue…",
+      "send": "Send report",
+      "sending": "Sending…",
+      "success": "Report sent. Thanks for helping preserve this memory.",
+      "conflict": "A pending report already exists for this name and visit.",
+      "rateLimited": "You have sent several reports recently. Try again later.",
+      "error": "The report could not be sent. Try again in a moment.",
+      "loading": "Loading your reports…",
+      "loadError": "Your reports could not be loaded.",
+      "retry": "Try again",
+      "historyTitle": "Your reports for this visit",
+      "status": {
+        "Pending": "To be checked",
+        "AcceptedForResearch": "Selected for research",
+        "Dismissed": "Not retained"
+      }
+    }
+  }
+}

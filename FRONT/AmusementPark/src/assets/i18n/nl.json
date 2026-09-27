@@ -286,6 +286,37 @@
     }
   },
   "passport": {
+    "historicalExistenceReport": {
+      "kicker": "Parkherinnering",
+      "title": "Ontbreekt er een attractie bij dit bezoek?",
+      "description": "Deel wat je je herinnert en help het team de geschiedenis van het park aan te vullen.",
+      "open": "Een attractie melden",
+      "trust": "Je melding blijft gekoppeld aan je privébezoek. Ze start onderzoek en wordt nooit een openbaar feit zonder menselijke controle en betrouwbare bronnen.",
+      "nameLabel": "Naam van de attractie",
+      "namePlaceholder": "De naam die je je herinnert",
+      "nameError": "Vul een geldige attractienaam in.",
+      "sourceUrlLabel": "Link naar een bron (optioneel)",
+      "sourceUrlError": "Gebruik een veilige link die begint met https://.",
+      "sourceReferenceLabel": "Andere verwijzing (optioneel)",
+      "sourceReferencePlaceholder": "Brochure, plattegrond, ticket, jaar…",
+      "detailsLabel": "Wat je je herinnert (optioneel)",
+      "detailsPlaceholder": "Gebied, uiterlijk, vroegere naam of een andere nuttige aanwijzing…",
+      "send": "Melding versturen",
+      "sending": "Versturen…",
+      "success": "Melding verstuurd. Bedankt dat je helpt deze herinnering te bewaren.",
+      "conflict": "Er is al een melding in afwachting voor deze naam en dit bezoek.",
+      "rateLimited": "Je hebt onlangs meerdere meldingen verstuurd. Probeer het later opnieuw.",
+      "error": "De melding kon niet worden verstuurd. Probeer het zo opnieuw.",
+      "loading": "Je meldingen worden geladen…",
+      "loadError": "Je meldingen konden niet worden geladen.",
+      "retry": "Opnieuw proberen",
+      "historyTitle": "Je meldingen voor dit bezoek",
+      "status": {
+        "Pending": "Te controleren",
+        "AcceptedForResearch": "Geselecteerd voor onderzoek",
+        "Dismissed": "Niet weerhouden"
+      }
+    },
     "overview": {
       "actions": {
         "sharePassport": "Mijn paspoort delen",

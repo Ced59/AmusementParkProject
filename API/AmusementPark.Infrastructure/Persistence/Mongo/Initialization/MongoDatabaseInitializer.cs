@@ -853,6 +853,15 @@ private readonly IMongoDatabase database;
             ParkFitSourceReportMongoDefinitions.BuildIndexes(),
             cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.HistoricalExistenceReportsCollectionName,
+            cancellationToken);
+        IMongoCollection<HistoricalExistenceReportDocument> historicalExistenceReportsCollection =
+            this.database.GetCollection<HistoricalExistenceReportDocument>(
+                this.settings.HistoricalExistenceReportsCollectionName);
+        await historicalExistenceReportsCollection.Indexes.CreateManyAsync(
+            HistoricalExistenceReportMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.ParkFitPilotDailyMetricsCollectionName,
             cancellationToken);
         IMongoCollection<ParkFitPilotDailyMetricsDocument> parkFitPilotMetricsCollection =

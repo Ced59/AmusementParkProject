@@ -10,6 +10,7 @@ using AmusementPark.Application.Features.DataSources.Ports;
 using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.HistoricalExistenceReports.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkDataEditorTokens.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
@@ -287,6 +288,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IParkFitGroupProfileRepository, ParkFitGroupProfileRepository>();
         services.AddScoped<IUserCollectionEntryRepository, UserCollectionEntryRepository>();
         services.AddScoped<IParkFitSourceReportRepository, ParkFitSourceReportRepository>();
+        services.AddScoped<IHistoricalExistenceReportRepository,
+            HistoricalExistenceReportRepository>();
         services.AddScoped<IParkFitPilotMetricsRepository, ParkFitPilotMetricsRepository>();
         services.AddScoped<IParkFitCandidatePortfolioReadRepository,
             ParkFitCandidatePortfolioReadRepository>();

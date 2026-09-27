@@ -1,0 +1,35 @@
+{
+  "passport": {
+    "historicalExistenceReport": {
+      "kicker": "Memoria del parco",
+      "title": "Manca un’attrazione in questa visita?",
+      "description": "Condividi ciò che ricordi per aiutare il team a completare la storia del parco.",
+      "open": "Segnala un’attrazione",
+      "trust": "La segnalazione resta collegata alla tua visita privata. Avvia una ricerca e non diventa mai un fatto pubblico senza verifica umana e fonti affidabili.",
+      "nameLabel": "Nome dell’attrazione",
+      "namePlaceholder": "Il nome che ricordi",
+      "nameError": "Inserisci un nome valido per l’attrazione.",
+      "sourceUrlLabel": "Link a una fonte (facoltativo)",
+      "sourceUrlError": "Usa un link sicuro che inizi con https://.",
+      "sourceReferenceLabel": "Altro riferimento (facoltativo)",
+      "sourceReferencePlaceholder": "Brochure, mappa, biglietto, anno…",
+      "detailsLabel": "Ciò che ricordi (facoltativo)",
+      "detailsPlaceholder": "Area, aspetto, vecchio nome o un altro indizio utile…",
+      "send": "Invia segnalazione",
+      "sending": "Invio…",
+      "success": "Segnalazione inviata. Grazie per contribuire a preservare questo ricordo.",
+      "conflict": "Esiste già una segnalazione in attesa per questo nome e questa visita.",
+      "rateLimited": "Hai inviato diverse segnalazioni di recente. Riprova più tardi.",
+      "error": "Impossibile inviare la segnalazione. Riprova tra poco.",
+      "loading": "Caricamento delle tue segnalazioni…",
+      "loadError": "Impossibile caricare le tue segnalazioni.",
+      "retry": "Riprova",
+      "historyTitle": "Le tue segnalazioni per questa visita",
+      "status": {
+        "Pending": "Da verificare",
+        "AcceptedForResearch": "Selezionata per la ricerca",
+        "Dismissed": "Non accolta"
+      }
+    }
+  }
+}
