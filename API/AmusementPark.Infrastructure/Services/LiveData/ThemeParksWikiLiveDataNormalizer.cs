@@ -27,17 +27,12 @@ internal static class ThemeParksWikiLiveDataNormalizer
         List<ExternalLiveObservation> observations = new List<ExternalLiveObservation>();
         if (liveData.GetArrayLength() == 0)
         {
-            boundedDiagnostics.Add(new LiveProviderDiagnostic(LiveProviderDiagnosticCodes.EmptyResponse));
+            AddDiagnostic(boundedDiagnostics, LiveProviderDiagnosticCodes.EmptyResponse);
             return observations.AsReadOnly();
         }
 
         foreach (JsonElement item in liveData.EnumerateArray())
         {
-            if (boundedDiagnostics.Count >= ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount)
-            {
-                break;
-            }
-
             ExternalLiveObservation? observation = NormalizeItem(item, boundedDiagnostics);
             if (observation is not null)
             {
@@ -54,16 +49,14 @@ internal static class ThemeParksWikiLiveDataNormalizer
     {
         if (item.ValueKind != JsonValueKind.Object)
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
-                LiveProviderDiagnosticCodes.InvalidObservation));
+            AddDiagnostic(diagnostics, LiveProviderDiagnosticCodes.InvalidObservation);
             return null;
         }
 
         if (!TryReadJsonString(ReadProperty(item, "id"), false, out string? rawExternalTargetId)
             || !TryNormalizeExternalTargetId(rawExternalTargetId, out string externalTargetId))
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
-                LiveProviderDiagnosticCodes.InvalidObservation));
+            AddDiagnostic(diagnostics, LiveProviderDiagnosticCodes.InvalidObservation);
             return null;
         }
 
@@ -72,9 +65,10 @@ internal static class ThemeParksWikiLiveDataNormalizer
             || !TryReadJsonString(ReadProperty(item, "status"), true, out string? status)
             || !TryReadJsonString(ReadProperty(item, "lastUpdated"), false, out string? lastUpdated))
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
+            AddDiagnostic(
+                diagnostics,
                 LiveProviderDiagnosticCodes.InvalidObservation,
-                externalTargetId));
+                externalTargetId);
             return null;
         }
 
@@ -86,7 +80,7 @@ internal static class ThemeParksWikiLiveDataNormalizer
                 && !TryMapTargetType(entityType, out LiveTargetType _)
                     ? LiveProviderDiagnosticCodes.UnsupportedEntityType
                     : LiveProviderDiagnosticCodes.InvalidObservation;
-            diagnostics.Add(new LiveProviderDiagnostic(code, externalTargetId));
+            AddDiagnostic(diagnostics, code, externalTargetId);
             return null;
         }
 
@@ -107,25 +101,26 @@ internal static class ThemeParksWikiLiveDataNormalizer
                 queues);
             if (observation.HasStatusQueueConflict)
             {
-                diagnostics.Add(new LiveProviderDiagnostic(
+                AddDiagnostic(
+                    diagnostics,
                     LiveProviderDiagnosticCodes.StatusQueueConflict,
                     externalTargetId,
-                    "queue.waitTime"));
+                    "queue.waitTime");
             }
 
             return observation;
         }
         catch (LiveDataValidationException)
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
+            AddDiagnostic(
+                diagnostics,
                 LiveProviderDiagnosticCodes.InvalidObservation,
-                externalTargetId));
+                externalTargetId);
             return null;
         }
         catch (IdentifierValidationException)
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
-                LiveProviderDiagnosticCodes.InvalidObservation));
+            AddDiagnostic(diagnostics, LiveProviderDiagnosticCodes.InvalidObservation);
             return null;
         }
     }
@@ -145,10 +140,11 @@ internal static class ThemeParksWikiLiveDataNormalizer
         };
         if (status == LiveOperationalStatus.Unknown)
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
+            AddDiagnostic(
+                diagnostics,
                 LiveProviderDiagnosticCodes.UnknownStatus,
                 externalTargetId,
-                "status"));
+                "status");
         }
 
         return status;
@@ -168,36 +164,34 @@ internal static class ThemeParksWikiLiveDataNormalizer
 
         if (queueElement.Value.ValueKind != JsonValueKind.Object)
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
+            AddDiagnostic(
+                diagnostics,
                 LiveProviderDiagnosticCodes.InvalidQueueValue,
                 externalTargetId,
-                "queue"));
+                "queue");
             return queues.AsReadOnly();
         }
 
         HashSet<LiveQueueKind> seenKinds = new HashSet<LiveQueueKind>();
         foreach (JsonProperty queueProperty in queueElement.Value.EnumerateObject())
         {
-            if (diagnostics.Count >= ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount)
-            {
-                break;
-            }
-
             if (!TryMapQueueKind(queueProperty.Name, out LiveQueueKind kind))
             {
-                diagnostics.Add(new LiveProviderDiagnostic(
+                AddDiagnostic(
+                    diagnostics,
                     LiveProviderDiagnosticCodes.UnknownQueueKind,
                     externalTargetId,
-                    NormalizeDiagnosticField(queueProperty.Name)));
+                    NormalizeDiagnosticField(queueProperty.Name));
                 continue;
             }
 
             if (!seenKinds.Add(kind) || queueProperty.Value.ValueKind != JsonValueKind.Object)
             {
-                diagnostics.Add(new LiveProviderDiagnostic(
+                AddDiagnostic(
+                    diagnostics,
                     LiveProviderDiagnosticCodes.InvalidQueueValue,
                     externalTargetId,
-                    queueProperty.Name));
+                    queueProperty.Name);
                 continue;
             }
 
@@ -223,10 +217,11 @@ internal static class ThemeParksWikiLiveDataNormalizer
     {
         if (!HasRequiredQueueProperties(kind, value))
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
+            AddDiagnostic(
+                diagnostics,
                 LiveProviderDiagnosticCodes.InvalidQueueValue,
                 externalTargetId,
-                kind.ToString()));
+                kind.ToString());
             return null;
         }
 
@@ -292,10 +287,11 @@ internal static class ThemeParksWikiLiveDataNormalizer
         }
         catch (LiveDataValidationException)
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
+            AddDiagnostic(
+                diagnostics,
                 LiveProviderDiagnosticCodes.InvalidQueueValue,
                 externalTargetId,
-                kind.ToString()));
+                kind.ToString());
             return null;
         }
     }
@@ -317,10 +313,11 @@ internal static class ThemeParksWikiLiveDataNormalizer
             return parsedValue;
         }
 
-        diagnostics.Add(new LiveProviderDiagnostic(
+        AddDiagnostic(
+            diagnostics,
             LiveProviderDiagnosticCodes.InvalidQueueValue,
             externalTargetId,
-            propertyName));
+            propertyName);
         return null;
     }
 
@@ -342,10 +339,11 @@ internal static class ThemeParksWikiLiveDataNormalizer
             return parsedValue;
         }
 
-        diagnostics.Add(new LiveProviderDiagnostic(
+        AddDiagnostic(
+            diagnostics,
             LiveProviderDiagnosticCodes.InvalidQueueValue,
             externalTargetId,
-            propertyName));
+            propertyName);
         return null;
     }
 
@@ -378,10 +376,11 @@ internal static class ThemeParksWikiLiveDataNormalizer
 
         if (price.ValueKind != JsonValueKind.Object)
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
+            AddDiagnostic(
+                diagnostics,
                 LiveProviderDiagnosticCodes.InvalidQueueValue,
                 externalTargetId,
-                "price"));
+                "price");
             return;
         }
 
@@ -395,10 +394,11 @@ internal static class ThemeParksWikiLiveDataNormalizer
             }
             else
             {
-                diagnostics.Add(new LiveProviderDiagnostic(
+                AddDiagnostic(
+                    diagnostics,
                     LiveProviderDiagnosticCodes.InvalidQueueValue,
                     externalTargetId,
-                    "price.amount"));
+                    "price.amount");
             }
         }
     }
@@ -444,10 +444,23 @@ internal static class ThemeParksWikiLiveDataNormalizer
     {
         if (availability == LiveQueueAvailability.Unknown)
         {
-            diagnostics.Add(new LiveProviderDiagnostic(
+            AddDiagnostic(
+                diagnostics,
                 LiveProviderDiagnosticCodes.UnknownQueueState,
                 externalTargetId,
-                "queue.state"));
+                "queue.state");
+        }
+    }
+
+    private static void AddDiagnostic(
+        ICollection<LiveProviderDiagnostic> diagnostics,
+        string code,
+        string? externalTargetId = null,
+        string? field = null)
+    {
+        if (diagnostics.Count < ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount)
+        {
+            diagnostics.Add(new LiveProviderDiagnostic(code, externalTargetId, field));
         }
     }
 

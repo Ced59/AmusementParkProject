@@ -390,6 +390,13 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
                 + "\"status\":\"OPERATING\","
                 + "\"lastUpdated\":\"2026-09-28T10:00:00Z\","
                 + $"\"queue\":{{{queueProperties}}}"
+                + "},{"
+                + "\"id\":\"following-valid-attraction\","
+                + "\"name\":\"Following valid attraction\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:05:00Z\","
+                + "\"queue\":{}"
                 + "}]}",
         };
 
@@ -397,7 +404,9 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
             new LiveProviderReadRequest("park-root"),
             CancellationToken.None);
 
-        Assert.Single(result.Observations);
+        Assert.Equal(2, result.Observations.Count);
+        Assert.Contains(result.Observations, static observation =>
+            observation.ExternalTargetId == "following-valid-attraction");
         Assert.Equal(ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount, result.Diagnostics.Count);
         Assert.All(result.Diagnostics, static diagnostic =>
             Assert.Equal(LiveProviderDiagnosticCodes.UnknownQueueKind, diagnostic.Code));

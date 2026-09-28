@@ -105,7 +105,8 @@ Le client :
 - lit le flux avec une borne mémoire même sans `Content-Length` ;
 - transmet `If-None-Match` et restitue seulement un ETag réutilisable par le
   contrat suivant ;
-- limite les diagnostics d'un payload à 1 000 et cesse alors sa normalisation ;
+- limite les diagnostics d'un payload à 1 000 tout en continuant à conserver les
+  observations valides suivantes ;
 - calcule une empreinte SHA-256 du payload reçu ;
 - ne contient aucun retry : le respect des quotas appartient à `LIVE-05`.
 
