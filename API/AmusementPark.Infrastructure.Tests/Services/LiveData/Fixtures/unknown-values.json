@@ -1,0 +1,49 @@
+{
+  "id": "park-root",
+  "liveData": [
+    {
+      "id": "future-ride",
+      "name": "Future Ride",
+      "entityType": "ATTRACTION",
+      "status": "LIMITED_MAGIC_MODE",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {
+        "RETURN_TIME": {
+          "state": "NEW_STATE",
+          "returnStart": null,
+          "returnEnd": null
+        },
+        "EXPRESS": { "waitTime": 7 },
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX": { "waitTime": 9 }
+      }
+    },
+    {
+      "id": "destination-root",
+      "name": "Destination",
+      "entityType": "DESTINATION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00Z"
+    },
+    {
+      "id": "invalid-clock",
+      "name": "Invalid Clock",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "not-a-date"
+    },
+    {
+      "id": "invalid\u0001identifier",
+      "name": "Invalid Identifier",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:04:00Z"
+    },
+    {
+      "id": "missing-offset",
+      "name": "Missing Offset",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:05:00"
+    }
+  ]
+}

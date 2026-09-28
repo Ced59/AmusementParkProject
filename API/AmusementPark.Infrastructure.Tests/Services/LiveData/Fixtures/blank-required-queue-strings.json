@@ -1,0 +1,35 @@
+{
+  "id": "park-root",
+  "liveData": [
+    {
+      "id": "blank-required-queue-strings",
+      "name": "Blank Required Queue Strings",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {
+        "RETURN_TIME": {
+          "state": "   ",
+          "returnStart": null,
+          "returnEnd": null
+        },
+        "BOARDING_GROUP": {
+          "allocationStatus": "AVAILABLE",
+          "currentGroupStart": null,
+          "currentGroupEnd": null,
+          "nextAllocationTime": "",
+          "estimatedWait": null
+        },
+        "PAID_RETURN_TIME": {
+          "state": "AVAILABLE",
+          "returnStart": null,
+          "returnEnd": null,
+          "price": {
+            "amount": 1200,
+            "currency": " "
+          }
+        }
+      }
+    }
+  ]
+}

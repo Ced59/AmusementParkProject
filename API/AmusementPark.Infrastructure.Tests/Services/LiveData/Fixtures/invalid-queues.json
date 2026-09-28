@@ -1,0 +1,29 @@
+{
+  "id": "park-root",
+  "liveData": [
+    {
+      "id": "invalid-queues",
+      "name": "Invalid Queues",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {
+        "STANDBY": { "waitTime": -1 },
+        "SINGLE_RIDER": {},
+        "RETURN_TIME": {
+          "state": 42,
+          "returnStart": null,
+          "returnEnd": null
+        },
+        "PAID_STANDBY": { "waitTime": 1.5 },
+        "BOARDING_GROUP": {
+          "allocationStatus": "AVAILABLE",
+          "currentGroupStart": 20,
+          "currentGroupEnd": 10,
+          "nextAllocationTime": null,
+          "estimatedWait": 12
+        }
+      }
+    }
+  ]
+}

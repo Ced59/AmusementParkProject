@@ -1,0 +1,48 @@
+{
+  "id": "park-root",
+  "liveData": [
+    {
+      "id": "valid-attraction",
+      "name": "Valid attraction",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {}
+    },
+    {
+      "id": "invalid-name",
+      "name": 42,
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {}
+    },
+    {
+      "id": "invalid-status",
+      "name": "Invalid status",
+      "entityType": "ATTRACTION",
+      "status": {},
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {}
+    },
+    {
+      "id": "invalid-timestamp",
+      "name": "Invalid timestamp",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": false,
+      "queue": {}
+    },
+    {
+      "id": 123,
+      "name": "Invalid identifier",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {}
+    },
+    42,
+    "invalid-array-entry",
+    null
+  ]
+}

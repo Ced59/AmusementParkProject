@@ -1,0 +1,793 @@
+using System.Net;
+using AmusementPark.Application.Features.LiveData.Models;
+using AmusementPark.Core.Domain.LiveData;
+using AmusementPark.Infrastructure.Services.LiveData;
+using Xunit;
+
+namespace AmusementPark.Infrastructure.Tests.Services.LiveData;
+
+public sealed class ThemeParksWikiLiveDataAdapterTests
+{
+    [Fact]
+    public async Task FetchLatestAsync_WithCompleteFixture_ShouldNormalizeAllStatusesAndQueues()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("complete.json"),
+            EntityTag = "\"complete-v1\"",
+        };
+        ThemeParksWikiLiveDataAdapter adapter = CreateAdapter(handler);
+
+        LiveProviderReadResult result = await adapter.FetchLatestAsync(
+            new LiveProviderReadRequest("park/root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Success, result.Disposition);
+        Assert.Equal("themeparks-wiki", adapter.SourceId.Value);
+        Assert.Equal("\"complete-v1\"", result.EntityTag);
+        Assert.Equal(64, result.PayloadSha256?.Length);
+        Assert.Equal(4, result.Observations.Count);
+        Assert.Empty(result.Diagnostics);
+        ExternalLiveObservation operating = result.Observations.Single(observation =>
+            observation.ExternalTargetId == "attraction-operating");
+        Assert.Equal(LiveOperationalStatus.Open, operating.Status);
+        Assert.Equal(6, operating.Queues.Count);
+        Assert.Equal(0, operating.Queues.Single(queue => queue.Kind == LiveQueueKind.Standby).WaitTimeMinutes);
+        Assert.Null(operating.Queues.Single(queue => queue.Kind == LiveQueueKind.SingleRider).WaitTimeMinutes);
+        Assert.Equal(
+            LiveQueueAvailability.TemporarilyFull,
+            operating.Queues.Single(queue => queue.Kind == LiveQueueKind.PaidReturnTime).Availability);
+        Assert.Equal(
+            0,
+            operating.Queues.Single(queue => queue.Kind == LiveQueueKind.PaidReturnTime).PriceMinorUnits);
+        Assert.True(operating.Queues.Single(queue => queue.Kind == LiveQueueKind.BoardingGroup).IsEstimated);
+        Assert.Contains(result.Observations, static observation =>
+            observation.Status == LiveOperationalStatus.Down && observation.TargetType == LiveTargetType.Park);
+        Assert.Contains(result.Observations, static observation =>
+            observation.Status == LiveOperationalStatus.Closed);
+        Assert.Contains(result.Observations, static observation =>
+            observation.Status == LiveOperationalStatus.Maintenance);
+        HttpRequestMessage sentRequest = Assert.Single(handler.Requests);
+        Assert.Equal("/v1/entity/park%2Froot/live", sentRequest.RequestUri?.AbsolutePath);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WithUnknownFixture_ShouldUseSafeFallbacksAndDiagnostics()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("unknown-values.json"),
+        };
+        ThemeParksWikiLiveDataAdapter adapter = CreateAdapter(handler);
+
+        LiveProviderReadResult result = await adapter.FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal(LiveOperationalStatus.Unknown, observation.Status);
+        Assert.Equal(
+            LiveQueueAvailability.Unknown,
+            Assert.Single(observation.Queues).Availability);
+        Assert.Contains(result.Diagnostics, static diagnostic =>
+            diagnostic.Code == LiveProviderDiagnosticCodes.UnknownStatus);
+        Assert.Contains(result.Diagnostics, static diagnostic =>
+            diagnostic.Code == LiveProviderDiagnosticCodes.UnknownQueueState);
+        Assert.Equal(
+            2,
+            result.Diagnostics.Count(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.UnknownQueueKind));
+        Assert.All(
+            result.Diagnostics.Where(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.UnknownQueueKind),
+            static diagnostic => Assert.True(diagnostic.Field?.Length <= 100));
+        Assert.Contains(result.Diagnostics, static diagnostic =>
+            diagnostic.Code == LiveProviderDiagnosticCodes.UnsupportedEntityType);
+        Assert.Equal(
+            3,
+            result.Diagnostics.Count(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.InvalidObservation));
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WithInvalidQueues_ShouldNeverCoerceValuesToZero()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("invalid-queues.json"),
+        };
+        ThemeParksWikiLiveDataAdapter adapter = CreateAdapter(handler);
+
+        LiveProviderReadResult result = await adapter.FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.DoesNotContain(observation.Queues, static queue => queue.WaitTimeMinutes == 0);
+        Assert.DoesNotContain(observation.Queues, static queue => queue.Kind == LiveQueueKind.ReturnTime);
+        Assert.DoesNotContain(observation.Queues, static queue => queue.Kind == LiveQueueKind.PaidStandby);
+        Assert.True(result.Diagnostics.Count(diagnostic =>
+            diagnostic.Code == LiveProviderDiagnosticCodes.InvalidQueueValue) >= 5);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenRequiredQueueValuesCannotBeParsed_ShouldRejectAffectedQueues()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("unparseable-required-queue-values.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        LiveQueueObservation queue = Assert.Single(observation.Queues);
+        Assert.Equal(LiveQueueKind.Standby, queue.Kind);
+        Assert.Equal(15, queue.WaitTimeMinutes);
+        Assert.Equal(
+            4,
+            result.Diagnostics.Count(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.InvalidQueueValue));
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenRequiredQueueStringsAreBlank_ShouldRejectAffectedQueues()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("blank-required-queue-strings.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Empty(observation.Queues);
+        Assert.Equal(
+            3,
+            result.Diagnostics.Count(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.InvalidQueueValue));
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenQueueContainsCrossKindFields_ShouldIgnoreForeignFacts()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("cross-kind-fields.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        LiveQueueObservation standby = observation.Queues.Single(static queue =>
+            queue.Kind == LiveQueueKind.Standby);
+        Assert.Equal(5, standby.WaitTimeMinutes);
+        Assert.Null(standby.ReturnStartUtc);
+        Assert.Null(standby.PriceMinorUnits);
+
+        LiveQueueObservation returnTime = observation.Queues.Single(static queue =>
+            queue.Kind == LiveQueueKind.ReturnTime);
+        Assert.Null(returnTime.WaitTimeMinutes);
+        Assert.Equal(new DateTime(2026, 9, 28, 10, 30, 0, DateTimeKind.Utc), returnTime.ReturnStartUtc);
+        Assert.Null(returnTime.PriceMinorUnits);
+
+        LiveQueueObservation boardingGroup = observation.Queues.Single(static queue =>
+            queue.Kind == LiveQueueKind.BoardingGroup);
+        Assert.Equal(12, boardingGroup.WaitTimeMinutes);
+        Assert.Null(boardingGroup.ReturnStartUtc);
+        Assert.Null(boardingGroup.PriceMinorUnits);
+        Assert.Empty(result.Diagnostics);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenItemsOrFieldsHaveWrongTypes_ShouldKeepValidSiblings()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("wrong-item-field-types.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal("valid-attraction", observation.ExternalTargetId);
+        Assert.Equal(
+            7,
+            result.Diagnostics.Count(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.InvalidObservation));
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenTimestampIsNotRfc3339_ShouldKeepOnlyStrictDates()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("non-rfc3339-timestamps.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal("valid-attraction", observation.ExternalTargetId);
+        Assert.Equal(
+            new DateTime(2026, 9, 28, 8, 0, 0, DateTimeKind.Utc),
+            observation.SourceUpdatedAtUtc);
+        Assert.Equal(
+            3,
+            result.Diagnostics.Count(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.InvalidObservation));
+        Assert.Contains(result.Diagnostics, static diagnostic =>
+            diagnostic.Code == LiveProviderDiagnosticCodes.InvalidQueueValue);
+        Assert.DoesNotContain(observation.Queues, static queue =>
+            queue.Kind == LiveQueueKind.PaidReturnTime);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WithHighPrecisionRfc3339Timestamps_ShouldReduceToDateTimePrecision()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("high-precision-timestamps.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal(
+            new DateTime(2026, 9, 28, 10, 0, 0, DateTimeKind.Utc).AddTicks(1234567),
+            observation.SourceUpdatedAtUtc);
+        LiveQueueObservation queue = Assert.Single(observation.Queues);
+        Assert.Equal(
+            new DateTime(2026, 9, 28, 8, 30, 0, DateTimeKind.Utc).AddTicks(9876543),
+            queue.ReturnStartUtc);
+        Assert.Empty(result.Diagnostics);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WithEmptyFixture_ShouldReturnSuccessfulEmptyBatchWithDiagnostic()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("empty.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Success, result.Disposition);
+        Assert.Empty(result.Observations);
+        Assert.Equal(
+            LiveProviderDiagnosticCodes.EmptyResponse,
+            Assert.Single(result.Diagnostics).Code);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenStandbyWaitIsOmittedBySchema_ShouldKeepUnknownWait()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("standby-without-wait.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        LiveQueueObservation queue = Assert.Single(observation.Queues);
+        Assert.Equal(LiveQueueKind.Standby, queue.Kind);
+        Assert.Null(queue.WaitTimeMinutes);
+        Assert.Empty(result.Diagnostics);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenClosedTargetReportsWait_ShouldEmitConflictDiagnostic()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("closed-with-wait.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal(LiveOperationalStatus.Closed, observation.Status);
+        Assert.Equal(25, Assert.Single(observation.Queues).WaitTimeMinutes);
+        Assert.Equal(
+            LiveProviderDiagnosticCodes.StatusQueueConflict,
+            Assert.Single(result.Diagnostics).Code);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenNotModified_ShouldForwardConditionalEntityTag()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            StatusCode = HttpStatusCode.NotModified,
+            EntityTag = "\"unexpected-v2\"",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root", "\"previous-v1\""),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.NotModified, result.Disposition);
+        Assert.Equal("\"previous-v1\"", result.EntityTag);
+        HttpRequestMessage request = Assert.Single(handler.Requests);
+        Assert.Contains(request.Headers.IfNoneMatch, static tag => tag.Tag == "\"previous-v1\"");
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenUnconditionalResponseIsNotModified_ShouldReturnUnavailable()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            StatusCode = HttpStatusCode.NotModified,
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Unavailable, result.Disposition);
+        Assert.Null(result.EntityTag);
+        Assert.Empty(result.Observations);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenRateLimited_ShouldExposeRetryAfterWithoutRetrying()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            StatusCode = HttpStatusCode.TooManyRequests,
+            RetryAfter = TimeSpan.FromSeconds(90),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.RateLimited, result.Disposition);
+        Assert.Equal(TimeSpan.FromSeconds(90), result.RetryAfter);
+        Assert.Single(handler.Requests);
+    }
+
+    [Theory]
+    [InlineData(HttpStatusCode.Unauthorized)]
+    [InlineData(HttpStatusCode.InternalServerError)]
+    [InlineData(HttpStatusCode.Accepted)]
+    [InlineData(HttpStatusCode.NoContent)]
+    [InlineData(HttpStatusCode.PartialContent)]
+    public async Task FetchLatestAsync_WhenProviderDoesNotReturnFullPayload_ShouldReturnUnavailable(
+        HttpStatusCode statusCode)
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            StatusCode = statusCode,
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Unavailable, result.Disposition);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenPayloadIsMalformed_ShouldReturnInvalidPayloadWithHash()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{not-json",
+            EntityTag = "\"rejected-v1\"",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.InvalidPayload, result.Disposition);
+        Assert.Equal(64, result.PayloadSha256?.Length);
+        Assert.Empty(result.Observations);
+        Assert.Null(result.EntityTag);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenResponseRootDoesNotMatchRequest_ShouldRejectPayload()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"another-park\",\"liveData\":[]}",
+            EntityTag = "\"wrong-root-v1\"",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.InvalidPayload, result.Disposition);
+        Assert.Equal(64, result.PayloadSha256?.Length);
+        Assert.Empty(result.Observations);
+        Assert.Null(result.EntityTag);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenResponseRootContainsDuplicateProperties_ShouldRejectPayload()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"id\":\"other-park\",\"liveData\":[]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.InvalidPayload, result.Disposition);
+        Assert.Empty(result.Observations);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenObservationContainsDuplicateScalar_ShouldRejectObservation()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"liveData\":[{"
+                + "\"id\":\"ride-a\",\"id\":\"ride-b\","
+                + "\"name\":\"Ambiguous ride\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:00:00Z\""
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Empty(result.Observations);
+        Assert.Equal(
+            LiveProviderDiagnosticCodes.InvalidObservation,
+            Assert.Single(result.Diagnostics).Code);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenQueueContainsDuplicateScalar_ShouldRejectQueue()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"liveData\":[{"
+                + "\"id\":\"ride-a\","
+                + "\"name\":\"Ambiguous queue\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:00:00Z\","
+                + "\"queue\":{\"STANDBY\":{\"waitTime\":5,\"waitTime\":20}}"
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Empty(observation.Queues);
+        Assert.Equal(
+            LiveProviderDiagnosticCodes.InvalidQueueValue,
+            Assert.Single(result.Diagnostics).Code);
+    }
+
+    [Theory]
+    [InlineData("{}")]
+    [InlineData("{\"liveData\":null}")]
+    public async Task FetchLatestAsync_WhenRequiredLiveDataArrayIsAbsent_ShouldReturnInvalidPayload(
+        string payload)
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = payload,
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.InvalidPayload, result.Disposition);
+        Assert.Equal(64, result.PayloadSha256?.Length);
+        Assert.Empty(result.Observations);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenObservationCountExceedsBound_ShouldRejectBeforeNormalization()
+    {
+        string entries = string.Join(
+            ',',
+            Enumerable.Repeat("0", ThemeParksWikiLiveDataAdapter.MaximumObservationCount + 1));
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = $"{{\"id\":\"park-root\",\"liveData\":[{entries}]}}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.InvalidPayload, result.Disposition);
+        Assert.Empty(result.Observations);
+        Assert.Empty(result.Diagnostics);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenTargetIsRepeated_ShouldKeepFirstValidObservation()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"liveData\":[{"
+                + "\"id\":\"duplicate-attraction\","
+                + "\"name\":\"First observation\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:00:00Z\""
+                + "},{"
+                + "\"id\":\"duplicate-attraction\","
+                + "\"name\":\"Conflicting observation\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"CLOSED\","
+                + "\"lastUpdated\":\"2026-09-28T10:01:00Z\""
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal("First observation", observation.DisplayName);
+        Assert.Equal(LiveOperationalStatus.Open, observation.Status);
+        LiveProviderDiagnostic diagnostic = Assert.Single(result.Diagnostics);
+        Assert.Equal(LiveProviderDiagnosticCodes.DuplicateObservation, diagnostic.Code);
+        Assert.Equal("duplicate-attraction", diagnostic.ExternalTargetId);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenQueueMembersExceedBound_ShouldRejectQueueAndKeepLaterObservation()
+    {
+        string queueProperties = string.Join(
+            ',',
+            Enumerable.Range(0, ThemeParksWikiLiveDataAdapter.MaximumJsonObjectMemberCount + 1)
+                .Select(static index => $"\"UNKNOWN_{index}\":{{}}"));
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"liveData\":[{"
+                + "\"id\":\"bounded-attraction\","
+                + "\"name\":\"Bounded attraction\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:00:00Z\","
+                + $"\"queue\":{{{queueProperties}}}"
+                + "},{"
+                + "\"id\":\"following-valid-attraction\","
+                + "\"name\":\"Following valid attraction\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:05:00Z\","
+                + "\"queue\":{}"
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(2, result.Observations.Count);
+        ExternalLiveObservation boundedObservation = Assert.Single(
+            result.Observations,
+            static observation => observation.ExternalTargetId == "bounded-attraction");
+        Assert.Empty(boundedObservation.Queues);
+        Assert.Contains(result.Observations, static observation =>
+            observation.ExternalTargetId == "following-valid-attraction");
+        LiveProviderDiagnostic diagnostic = Assert.Single(result.Diagnostics);
+        Assert.Equal(LiveProviderDiagnosticCodes.InvalidQueueValue, diagnostic.Code);
+        Assert.Equal("queue", diagnostic.Field);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenRecognizedQueueContainsTooManyMembers_ShouldRejectOnlyThatQueue()
+    {
+        string queueMembers = string.Join(
+            ',',
+            Enumerable.Range(0, ThemeParksWikiLiveDataAdapter.MaximumJsonObjectMemberCount + 1)
+                .Select(static index => $"\"extra_{index}\":null"));
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"liveData\":[{"
+                + "\"id\":\"bounded-attraction\","
+                + "\"name\":\"Bounded attraction\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:00:00Z\","
+                + $"\"queue\":{{\"STANDBY\":{{{queueMembers}}},"
+                + "\"RETURN_TIME\":{\"returnStart\":null,\"returnEnd\":null,\"state\":\"AVAILABLE\"}}"
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        LiveQueueObservation queue = Assert.Single(observation.Queues);
+        Assert.Equal(LiveQueueKind.ReturnTime, queue.Kind);
+        LiveProviderDiagnostic diagnostic = Assert.Single(result.Diagnostics);
+        Assert.Equal(LiveProviderDiagnosticCodes.InvalidQueueValue, diagnostic.Code);
+        Assert.Equal("STANDBY", diagnostic.Field);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenDiagnosticsExceedBudget_ShouldStopAtBoundAndKeepObservations()
+    {
+        string invalidObservations = string.Join(
+            ',',
+            Enumerable.Range(0, ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount + 1)
+                .Select(static index => "{"
+                    + $"\"id\":\"unknown-queue-{index}\","
+                    + "\"name\":\"Unknown queue attraction\","
+                    + "\"entityType\":\"ATTRACTION\","
+                    + "\"status\":\"OPERATING\","
+                    + "\"lastUpdated\":\"2026-09-28T10:00:00Z\","
+                    + "\"queue\":{\"UNKNOWN\":{}}"
+                    + "}"));
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = $"{{\"id\":\"park-root\",\"liveData\":[{invalidObservations},{{"
+                + "\"id\":\"following-valid-attraction\","
+                + "\"name\":\"Following valid attraction\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:05:00Z\","
+                + "\"queue\":{}"
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(
+            ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount + 2,
+            result.Observations.Count);
+        Assert.Contains(result.Observations, static observation =>
+            observation.ExternalTargetId == "following-valid-attraction");
+        Assert.Equal(ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount, result.Diagnostics.Count);
+        Assert.All(result.Diagnostics, static diagnostic =>
+            Assert.Equal(LiveProviderDiagnosticCodes.UnknownQueueKind, diagnostic.Code));
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenResponseEntityTagExceedsRequestBound_ShouldDiscardTag()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("empty.json"),
+            EntityTag = $"\"{new string('a', LiveProviderReadRequest.MaximumEntityTagLength)}\"",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Success, result.Disposition);
+        Assert.Null(result.EntityTag);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenDeclaredPayloadIsTooLarge_ShouldRejectBeforeReading()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            DeclaredContentLength = ThemeParksWikiLiveDataAdapter.MaximumResponseBytes + 1L,
+            EntityTag = "\"too-large-v1\"",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.ResponseTooLarge, result.Disposition);
+        Assert.Null(result.EntityTag);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenProviderTimesOut_ShouldReturnUnavailable()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            ThrowTimeout = true,
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Unavailable, result.Disposition);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenResponseBodyStalls_ShouldEnforceWholeRequestDeadline()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            ResponseStream = new StallingLiveDataReadStream(),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(
+                handler,
+                TimeSpan.FromMilliseconds(25))
+            .FetchLatestAsync(
+                new LiveProviderReadRequest("park-root"),
+                CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Unavailable, result.Disposition);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenResponseStreamFails_ShouldReturnUnavailable()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            ResponseStream = new FailingLiveDataReadStream(),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Unavailable, result.Disposition);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenCompressedResponseIsCorrupt_ShouldReturnUnavailable()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            ResponseStream = new InvalidCompressedLiveDataReadStream(),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Unavailable, result.Disposition);
+    }
+
+    private static ThemeParksWikiLiveDataAdapter CreateAdapter(
+        ThemeParksWikiTestHttpMessageHandler handler,
+        TimeSpan? requestTimeout = null)
+    {
+        HttpClient httpClient = new HttpClient(handler)
+        {
+            BaseAddress = new Uri("https://api.themeparks.wiki/", UriKind.Absolute),
+        };
+        return requestTimeout.HasValue
+            ? new ThemeParksWikiLiveDataAdapter(
+                new LiveDataTestHttpClientFactory(httpClient),
+                TimeProvider.System,
+                requestTimeout.Value)
+            : new ThemeParksWikiLiveDataAdapter(new LiveDataTestHttpClientFactory(httpClient));
+    }
+}

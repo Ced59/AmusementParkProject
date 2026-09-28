@@ -1,0 +1,15 @@
+{
+  "id": "park-root",
+  "liveData": [
+    {
+      "id": "closed-with-wait",
+      "name": "Closed With Wait",
+      "entityType": "ATTRACTION",
+      "status": "CLOSED",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {
+        "STANDBY": { "waitTime": 25 }
+      }
+    }
+  ]
+}

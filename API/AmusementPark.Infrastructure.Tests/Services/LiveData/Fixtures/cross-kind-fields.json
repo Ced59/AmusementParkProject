@@ -1,0 +1,38 @@
+{
+  "id": "park-root",
+  "liveData": [
+    {
+      "id": "cross-kind-fields",
+      "name": "Cross Kind Fields",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {
+        "STANDBY": {
+          "waitTime": 5,
+          "returnStart": "2026-09-28T10:30:00Z",
+          "estimatedWait": 90,
+          "price": { "amount": 500, "currency": "EUR" }
+        },
+        "RETURN_TIME": {
+          "state": "AVAILABLE",
+          "returnStart": "2026-09-28T10:30:00Z",
+          "returnEnd": "2026-09-28T11:00:00Z",
+          "waitTime": 30,
+          "estimatedWait": 40,
+          "price": { "amount": 600, "currency": "EUR" }
+        },
+        "BOARDING_GROUP": {
+          "allocationStatus": "AVAILABLE",
+          "currentGroupStart": 10,
+          "currentGroupEnd": 20,
+          "nextAllocationTime": "2026-09-28T11:15:00Z",
+          "estimatedWait": 12,
+          "waitTime": 99,
+          "returnStart": "2026-09-28T12:00:00Z",
+          "price": { "amount": 700, "currency": "EUR" }
+        }
+      }
+    }
+  ]
+}

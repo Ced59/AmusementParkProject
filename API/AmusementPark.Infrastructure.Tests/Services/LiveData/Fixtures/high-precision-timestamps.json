@@ -1,0 +1,19 @@
+{
+  "id": "park-root",
+  "liveData": [
+    {
+      "id": "high-precision-timestamps",
+      "name": "High Precision Timestamps",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00.123456789Z",
+      "queue": {
+        "RETURN_TIME": {
+          "state": "AVAILABLE",
+          "returnStart": "2026-09-28T10:30:00.987654321+02:00",
+          "returnEnd": null
+        }
+      }
+    }
+  ]
+}

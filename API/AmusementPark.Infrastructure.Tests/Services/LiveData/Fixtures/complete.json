@@ -1,0 +1,59 @@
+{
+  "id": "park/root",
+  "name": "Pilot Park",
+  "entityType": "PARK",
+  "timezone": "Europe/Paris",
+  "liveData": [
+    {
+      "id": "attraction-operating",
+      "name": "Operating Ride",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {
+        "STANDBY": { "waitTime": 0 },
+        "SINGLE_RIDER": { "waitTime": null },
+        "RETURN_TIME": {
+          "state": "AVAILABLE",
+          "returnStart": "2026-09-28T10:30:00Z",
+          "returnEnd": "2026-09-28T11:00:00Z"
+        },
+        "PAID_RETURN_TIME": {
+          "state": "TEMP_FULL",
+          "returnStart": null,
+          "returnEnd": null,
+          "price": { "amount": 0, "currency": "EUR", "formatted": "0 €" }
+        },
+        "BOARDING_GROUP": {
+          "allocationStatus": "PAUSED",
+          "currentGroupStart": 12,
+          "currentGroupEnd": 18,
+          "nextAllocationTime": "2026-09-28T11:15:00Z",
+          "estimatedWait": 25
+        },
+        "PAID_STANDBY": { "waitTime": 3 }
+      }
+    },
+    {
+      "id": "park-down",
+      "name": "Down Park",
+      "entityType": "PARK",
+      "status": "DOWN",
+      "lastUpdated": "2026-09-28T10:01:00+00:00"
+    },
+    {
+      "id": "restaurant-closed",
+      "name": "Closed Restaurant",
+      "entityType": "RESTAURANT",
+      "status": "CLOSED",
+      "lastUpdated": "2026-09-28T10:02:00Z"
+    },
+    {
+      "id": "show-maintenance",
+      "name": "Maintenance Show",
+      "entityType": "SHOW",
+      "status": "REFURBISHMENT",
+      "lastUpdated": "2026-09-28T10:03:00Z"
+    }
+  ]
+}

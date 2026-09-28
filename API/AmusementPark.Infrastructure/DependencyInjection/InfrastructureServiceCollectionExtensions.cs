@@ -65,6 +65,7 @@ using AmusementPark.Infrastructure.Services.FactualEvents;
 using AmusementPark.Infrastructure.Services.Comments;
 using AmusementPark.Infrastructure.Services.Images;
 using AmusementPark.Infrastructure.Services.History;
+using AmusementPark.Infrastructure.Services.LiveData;
 using AmusementPark.Infrastructure.Services.Parks;
 using AmusementPark.Infrastructure.Services.Seo;
 using AmusementPark.Infrastructure.Services.Sharing;
@@ -157,6 +158,18 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHttpClient(OpenMeteoWeatherProviderStrategy.HttpClientName, client =>
         {
             client.Timeout = TimeSpan.FromSeconds(parkWeatherSettings.RequestTimeoutSeconds);
+        });
+        services.AddHttpClient(ThemeParksWikiLiveDataAdapter.HttpClientName, static client =>
+        {
+            client.BaseAddress = new Uri("https://api.themeparks.wiki/", UriKind.Absolute);
+            client.Timeout = ThemeParksWikiLiveDataAdapter.RequestTimeout;
+            client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("AmusementParkProject-LivePilot/1.0");
+        })
+        .ConfigurePrimaryHttpMessageHandler(static () => new HttpClientHandler
+        {
+            AllowAutoRedirect = false,
+            AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate | DecompressionMethods.Brotli,
         });
         services.AddHttpClient(RemoteImageImporter.HttpClientName, static client =>
         {
@@ -388,6 +401,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IHistoricalAuditReader>(provider =>
             provider.GetRequiredService<HistoricalReviewEventRepository>());
         services.AddScoped<ILiveTargetMappingRepository, LiveTargetMappingRepository>();
+        services.AddScoped<ILiveDataProviderAdapter, ThemeParksWikiLiveDataAdapter>();
         services.AddScoped<IParkWeatherProviderStrategy, OpenMeteoWeatherProviderStrategy>();
         services.AddScoped<IParkWeatherProviderStrategyResolver, ParkWeatherProviderStrategyResolver>();
         services.AddSingleton<IParkWeatherRefreshQueue, ParkWeatherRefreshQueue>();
