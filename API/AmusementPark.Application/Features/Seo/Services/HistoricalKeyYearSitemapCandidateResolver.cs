@@ -27,14 +27,34 @@ public static class HistoricalKeyYearSitemapCandidateResolver
                 static group => group.Key,
                 static group => group.First(),
                 StringComparer.Ordinal);
+        IReadOnlyDictionary<string, ParkItem[]> publicItemsByPark = parkItems
+            .Where(IsPublicParkItem)
+            .Where(static item => !string.IsNullOrWhiteSpace(item.ParkId))
+            .GroupBy(static item => item.ParkId, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.ToArray(),
+                StringComparer.Ordinal);
+        IReadOnlyDictionary<string, ParkZone[]> publicZonesByPark = parkZones
+            .Where(static zone => zone.IsVisible)
+            .Where(static zone => !string.IsNullOrWhiteSpace(zone.ParkId))
+            .GroupBy(static zone => zone.ParkId, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group.ToArray(),
+                StringComparer.Ordinal);
         Dictionary<string, HistoricalSubject[]> currentSubjectsByPark = publicParks.Values
             .ToDictionary(
                 static park => park.Id,
-                park => BuildCurrentSubjects(park, parkItems, parkZones),
+                park => BuildCurrentSubjects(
+                    park,
+                    publicItemsByPark.GetValueOrDefault(park.Id) ?? Array.Empty<ParkItem>(),
+                    publicZonesByPark.GetValueOrDefault(park.Id) ?? Array.Empty<ParkZone>()),
                 StringComparer.Ordinal);
-        HashSet<(HistoricalSubjectType Type, string Id)> currentSubjectKeys = currentSubjectsByPark.Values
+        HashSet<(HistoricalSubjectType Type, string Id, string ContextParkId)> currentSubjectKeys =
+            currentSubjectsByPark.Values
             .SelectMany(static subjects => subjects)
-            .Select(static subject => (subject.Type, subject.Id))
+            .Select(static subject => (subject.Type, subject.Id, subject.ContextParkId!))
             .ToHashSet();
         HistoricalFact[] publicFacts = facts
             .Where(static fact => fact.IsDecisionEligible)
@@ -95,8 +115,8 @@ public static class HistoricalKeyYearSitemapCandidateResolver
 
     private static HistoricalSubject[] BuildCurrentSubjects(
         Park park,
-        IReadOnlyCollection<ParkItem> parkItems,
-        IReadOnlyCollection<ParkZone> parkZones)
+        IReadOnlyCollection<ParkItem> publicParkItems,
+        IReadOnlyCollection<ParkZone> publicParkZones)
     {
         return new[]
             {
@@ -107,18 +127,14 @@ public static class HistoricalKeyYearSitemapCandidateResolver
                     HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
                     park.Id),
             }
-            .Concat(parkItems
-                .Where(item => string.Equals(item.ParkId, park.Id, StringComparison.Ordinal)
-                    && IsPublicParkItem(item))
+            .Concat(publicParkItems
                 .Select(item => new HistoricalSubject(
                     HistoricalSubjectType.ParkItem,
                     item.Id,
                     ResolveLabel(item.Name, "Park item"),
                     HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
                     park.Id)))
-            .Concat(parkZones
-                .Where(zone => string.Equals(zone.ParkId, park.Id, StringComparison.Ordinal)
-                    && zone.IsVisible)
+            .Concat(publicParkZones
                 .Select(zone => new HistoricalSubject(
                     HistoricalSubjectType.ParkZone,
                     zone.Id,
@@ -132,7 +148,7 @@ public static class HistoricalKeyYearSitemapCandidateResolver
     private static bool CanExpose(
         HistoricalFact fact,
         IReadOnlyDictionary<string, Park> publicParks,
-        IReadOnlySet<(HistoricalSubjectType Type, string Id)> currentSubjectKeys)
+        IReadOnlySet<(HistoricalSubjectType Type, string Id, string ContextParkId)> currentSubjectKeys)
     {
         string parkId = ResolveParkId(fact);
         if (parkId.Length == 0
@@ -143,7 +159,7 @@ public static class HistoricalKeyYearSitemapCandidateResolver
         }
 
         return fact.Subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.HistoricalOnly
-            || currentSubjectKeys.Contains((fact.Subject.Type, fact.Subject.Id));
+            || currentSubjectKeys.Contains((fact.Subject.Type, fact.Subject.Id, parkId));
     }
 
     private static string ResolveParkId(HistoricalFact fact)
