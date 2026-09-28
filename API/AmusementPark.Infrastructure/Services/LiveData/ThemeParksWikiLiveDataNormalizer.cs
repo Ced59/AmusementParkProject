@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Text.Json;
 using AmusementPark.Application.Features.LiveData.Models;
 using AmusementPark.Core.Domain.LiveData;
+using AmusementPark.Core.Domain.Identifiers;
 
 namespace AmusementPark.Infrastructure.Services.LiveData;
 
@@ -74,6 +75,12 @@ internal static class ThemeParksWikiLiveDataNormalizer
             diagnostics.Add(new LiveProviderDiagnostic(
                 LiveProviderDiagnosticCodes.InvalidObservation,
                 externalTargetId));
+            return null;
+        }
+        catch (IdentifierValidationException)
+        {
+            diagnostics.Add(new LiveProviderDiagnostic(
+                LiveProviderDiagnosticCodes.InvalidObservation));
             return null;
         }
     }
@@ -419,24 +426,51 @@ internal static class ThemeParksWikiLiveDataNormalizer
         {
             LiveQueueKind.Standby => true,
             LiveQueueKind.SingleRider or LiveQueueKind.PaidStandby =>
-                value.TryGetProperty("waitTime", out JsonElement _),
+                HasNullablePropertyOfKind(value, "waitTime", JsonValueKind.Number),
             LiveQueueKind.ReturnTime =>
-                value.TryGetProperty("state", out JsonElement _)
-                && value.TryGetProperty("returnStart", out JsonElement _)
-                && value.TryGetProperty("returnEnd", out JsonElement _),
+                HasNullablePropertyOfKind(value, "state", JsonValueKind.String)
+                && HasNullablePropertyOfKind(value, "returnStart", JsonValueKind.String)
+                && HasNullablePropertyOfKind(value, "returnEnd", JsonValueKind.String),
             LiveQueueKind.PaidReturnTime =>
-                value.TryGetProperty("state", out JsonElement _)
-                && value.TryGetProperty("returnStart", out JsonElement _)
-                && value.TryGetProperty("returnEnd", out JsonElement _)
-                && value.TryGetProperty("price", out JsonElement _),
+                HasNullablePropertyOfKind(value, "state", JsonValueKind.String)
+                && HasNullablePropertyOfKind(value, "returnStart", JsonValueKind.String)
+                && HasNullablePropertyOfKind(value, "returnEnd", JsonValueKind.String)
+                && HasValidRequiredPrice(value),
             LiveQueueKind.BoardingGroup =>
-                value.TryGetProperty("allocationStatus", out JsonElement _)
-                && value.TryGetProperty("currentGroupStart", out JsonElement _)
-                && value.TryGetProperty("currentGroupEnd", out JsonElement _)
-                && value.TryGetProperty("nextAllocationTime", out JsonElement _)
-                && value.TryGetProperty("estimatedWait", out JsonElement _),
+                HasNullablePropertyOfKind(value, "allocationStatus", JsonValueKind.String)
+                && HasNullablePropertyOfKind(value, "currentGroupStart", JsonValueKind.Number)
+                && HasNullablePropertyOfKind(value, "currentGroupEnd", JsonValueKind.Number)
+                && HasNullablePropertyOfKind(value, "nextAllocationTime", JsonValueKind.String)
+                && HasNullablePropertyOfKind(value, "estimatedWait", JsonValueKind.Number),
             _ => false,
         };
+    }
+
+    private static bool HasNullablePropertyOfKind(
+        JsonElement parent,
+        string propertyName,
+        JsonValueKind expectedKind)
+    {
+        return parent.TryGetProperty(propertyName, out JsonElement value)
+            && (value.ValueKind == JsonValueKind.Null || value.ValueKind == expectedKind);
+    }
+
+    private static bool HasValidRequiredPrice(JsonElement parent)
+    {
+        if (!parent.TryGetProperty("price", out JsonElement price))
+        {
+            return false;
+        }
+
+        if (price.ValueKind == JsonValueKind.Null)
+        {
+            return true;
+        }
+
+        return price.ValueKind == JsonValueKind.Object
+            && HasNullablePropertyOfKind(price, "amount", JsonValueKind.Number)
+            && price.TryGetProperty("currency", out JsonElement currency)
+            && currency.ValueKind == JsonValueKind.String;
     }
 
     private static bool TryParseUtc(string? value, out DateTime utcValue)

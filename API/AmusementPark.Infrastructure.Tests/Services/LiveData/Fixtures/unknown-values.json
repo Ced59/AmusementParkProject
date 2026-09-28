@@ -28,6 +28,13 @@
       "entityType": "ATTRACTION",
       "status": "OPERATING",
       "lastUpdated": "not-a-date"
+    },
+    {
+      "id": "invalid\u0001identifier",
+      "name": "Invalid Identifier",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:04:00Z"
     }
   ]
 }

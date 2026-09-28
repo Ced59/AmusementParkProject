@@ -162,7 +162,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHttpClient(ThemeParksWikiLiveDataAdapter.HttpClientName, static client =>
         {
             client.BaseAddress = new Uri("https://api.themeparks.wiki/", UriKind.Absolute);
-            client.Timeout = TimeSpan.FromSeconds(10);
+            client.Timeout = ThemeParksWikiLiveDataAdapter.RequestTimeout;
             client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
             client.DefaultRequestHeaders.UserAgent.ParseAdd("AmusementParkProject-LivePilot/1.0");
         })

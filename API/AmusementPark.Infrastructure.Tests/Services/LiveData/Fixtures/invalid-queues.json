@@ -9,6 +9,11 @@
       "queue": {
         "STANDBY": { "waitTime": -1 },
         "SINGLE_RIDER": {},
+        "RETURN_TIME": {
+          "state": 42,
+          "returnStart": null,
+          "returnEnd": null
+        },
         "PAID_STANDBY": { "waitTime": 1.5 },
         "BOARDING_GROUP": {
           "allocationStatus": "AVAILABLE",

@@ -13,6 +13,8 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
 
     public const int MaximumResponseBytes = 2 * 1024 * 1024;
 
+    public static readonly TimeSpan RequestTimeout = TimeSpan.FromSeconds(10);
+
     private const string Version = "themeparks-wiki-rest-v1/1.14.0-adapter-1";
     private static readonly LiveDataSourceId ProviderSourceId = LiveDataSourceId.Parse("themeparks-wiki");
     private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions
@@ -21,19 +23,27 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
     };
 
     private readonly IHttpClientFactory httpClientFactory;
+    private readonly TimeSpan requestTimeout;
     private readonly TimeProvider timeProvider;
 
     public ThemeParksWikiLiveDataAdapter(IHttpClientFactory httpClientFactory)
-        : this(httpClientFactory, TimeProvider.System)
+        : this(httpClientFactory, TimeProvider.System, RequestTimeout)
     {
     }
 
     internal ThemeParksWikiLiveDataAdapter(
         IHttpClientFactory httpClientFactory,
-        TimeProvider timeProvider)
+        TimeProvider timeProvider,
+        TimeSpan requestTimeout)
     {
+        if (requestTimeout <= TimeSpan.Zero)
+        {
+            throw new ArgumentOutOfRangeException(nameof(requestTimeout));
+        }
+
         this.httpClientFactory = httpClientFactory;
         this.timeProvider = timeProvider;
+        this.requestTimeout = requestTimeout;
     }
 
     public LiveDataSourceId SourceId => ProviderSourceId;
@@ -54,12 +64,15 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
             httpRequest.Headers.TryAddWithoutValidation("If-None-Match", request.EntityTag);
         }
 
+        using CancellationTokenSource requestDeadline =
+            CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        requestDeadline.CancelAfter(this.requestTimeout);
         try
         {
             using HttpResponseMessage response = await httpClient.SendAsync(
                 httpRequest,
                 HttpCompletionOption.ResponseHeadersRead,
-                cancellationToken);
+                requestDeadline.Token);
             DateTime receivedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
             string? entityTag = response.Headers.ETag?.ToString();
 
@@ -96,7 +109,9 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                     entityTag: entityTag);
             }
 
-            byte[]? payload = await ReadBoundedPayloadAsync(response.Content, cancellationToken);
+            byte[]? payload = await ReadBoundedPayloadAsync(
+                response.Content,
+                requestDeadline.Token);
             if (payload is null)
             {
                 return new LiveProviderReadResult(
@@ -149,6 +164,12 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                 this.timeProvider.GetUtcNow().UtcDateTime);
         }
         catch (HttpRequestException)
+        {
+            return new LiveProviderReadResult(
+                LiveProviderReadDisposition.Unavailable,
+                this.timeProvider.GetUtcNow().UtcDateTime);
+        }
+        catch (IOException)
         {
             return new LiveProviderReadResult(
                 LiveProviderReadDisposition.Unavailable,

@@ -10,6 +10,8 @@ internal sealed class ThemeParksWikiTestHttpMessageHandler : HttpMessageHandler
 
     public string Content { get; init; } = "{}";
 
+    public Stream? ResponseStream { get; init; }
+
     public string? EntityTag { get; init; }
 
     public TimeSpan? RetryAfter { get; init; }
@@ -33,7 +35,9 @@ internal sealed class ThemeParksWikiTestHttpMessageHandler : HttpMessageHandler
 
         HttpResponseMessage response = new HttpResponseMessage(this.StatusCode)
         {
-            Content = new StringContent(this.Content, Encoding.UTF8, "application/json"),
+            Content = this.ResponseStream is null
+                ? new StringContent(this.Content, Encoding.UTF8, "application/json")
+                : new StreamContent(this.ResponseStream),
         };
         if (this.EntityTag is not null)
         {
