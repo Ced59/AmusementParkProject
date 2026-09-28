@@ -17,4 +17,14 @@ public static class LiveDataErrorCodes
     public const string MissingAttribution = "live-data.missing-attribution";
 
     public const string InvalidFreshnessThresholds = "live-data.invalid-freshness-thresholds";
+
+    public const string InvalidMapping = "live-data.invalid-mapping";
+
+    public const string InvalidMappingTransition = "live-data.invalid-mapping-transition";
+
+    public const string InvalidRevision = "live-data.invalid-revision";
+
+    public const string MappingCountryMismatch = "live-data.mapping-country-mismatch";
+
+    public const string MappingTargetTypeMismatch = "live-data.mapping-target-type-mismatch";
 }

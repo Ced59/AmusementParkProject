@@ -1,0 +1,16 @@
+{
+  "admin": {
+    "liveMappings": {
+      "navTitle": "Live-Daten-Zuordnungen", "shortcut": "Zuordnungen zwischen Live-Quelle und Parks oder Attraktionen prüfen.", "kicker": "Vertrauen in Live-Daten", "title": "Entitätszuordnungen",
+      "subtitle": "Bestätige, welche interne Entität zu jeder Anbieterkennung gehört, ohne ungefähre Treffer zu veröffentlichen.", "refresh": "Aktualisieren", "ruleTitle": "Eine menschliche Prüfung ist erforderlich",
+      "ruleDescription": "Ein Vorschlag bleibt auch bei sehr ähnlichem Namen ein Kandidat. Nur eine geprüfte Zuordnung darf Live-Daten liefern.", "loading": "Zuordnungen werden geladen…", "empty": "Keine Zuordnung entspricht diesen Filtern.",
+      "listAria": "Zuordnungen von Live-Entitäten", "paginationAria": "Seitennavigation der Live-Zuordnungen", "previous": "Zurück", "next": "Weiter", "page": "Seite {{page}} von {{total}}", "revision": "Revision {{revision}}",
+      "eligible": "Für Live-Daten freigegeben", "externalTitle": "Anbieterentität", "internalTitle": "Website-Entität", "unresolved": "Noch zu identifizieren", "create": { "title": "Kandidaten hinzufügen", "action": "Kandidaten erstellen" },
+      "fields": { "source": "Quelle", "type": "Entitätstyp", "externalId": "Anbieterkennung", "externalName": "Name beim Anbieter", "country": "Land (ISO 2)", "externalParkId": "Parkkennung beim Anbieter", "externalParkName": "Parkname beim Anbieter", "internalTargetIdOptional": "Vorgeschlagenes internes Ziel (optional)", "internalParkIdOptional": "Vorgeschlagener interner Park (optional)", "internalTargetId": "Interne Zielkennung", "internalParkId": "Interne Parkkennung", "reviewNote": "Begründung der Entscheidung" },
+      "filters": { "search": "Suche", "searchPlaceholder": "Anbietername oder -kennung", "status": "Status", "type": "Typ", "all": "Alle", "apply": "Filtern", "clear": "Löschen" },
+      "status": { "Candidate": "Zu prüfen", "Verified": "Geprüft", "Suspended": "Ausgesetzt", "Superseded": "Ersetzt", "Rejected": "Abgelehnt" }, "type": { "Park": "Park", "ParkItem": "Attraktion oder Ort" },
+      "confidence": { "Low": "Geringes Vertrauen", "Medium": "Mittleres Vertrauen", "High": "Hohes Vertrauen" }, "review": { "title": "Zuordnung prüfen", "verify": "Bestätigen", "correct": "Ziel korrigieren", "suspend": "Aussetzen", "reject": "Ablehnen", "supersede": "Dauerhaft ersetzen" },
+      "messages": { "created": "Der Kandidat wurde hinzugefügt.", "reviewed": "Die Entscheidung wurde im Verlauf gespeichert." }, "errors": { "load": "Die Live-Zuordnungen konnten nicht geladen werden.", "mutation": "Die Entscheidung konnte nicht gespeichert werden. Lade die Liste neu und versuche es erneut." }
+    }
+  }
+}

@@ -1,8 +1,8 @@
 {
-  "version": "5.4.2",
+  "version": "5.4.3",
   "history": [
     {
-      "version": "5.4.2",
+      "version": "5.4.3",
       "releasedAt": "2026-09-28",
       "labels": {
         "fr": "Les descriptions affichées dans les moteurs de recherche évitent les titres répétés.",
@@ -13,6 +13,20 @@
         "es": "Las descripciones en los buscadores evitan repetir los encabezados.",
         "pl": "Opisy w wyszukiwarkach nie powtarzają już nagłówków.",
         "pt": "As descrições nos motores de pesquisa evitam a repetição dos títulos."
+      }
+    },
+    {
+      "version": "5.4.2",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "Les futures informations en direct sont reliées aux bons parcs et attractions après vérification.",
+        "en": "Future live information is linked to the correct parks and attractions after review.",
+        "de": "Künftige Live-Informationen werden nach Prüfung den richtigen Parks und Attraktionen zugeordnet.",
+        "nl": "Toekomstige live-informatie wordt na controle aan de juiste parken en attracties gekoppeld.",
+        "it": "Le future informazioni in tempo reale vengono associate ai parchi e alle attrazioni corretti dopo la verifica.",
+        "es": "La futura información en directo se vincula a los parques y atracciones correctos tras su revisión.",
+        "pl": "Przyszłe informacje na żywo są po weryfikacji przypisywane do właściwych parków i atrakcji.",
+        "pt": "As futuras informações em direto são associadas aos parques e atrações corretos após validação."
       }
     },
     {

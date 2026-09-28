@@ -116,6 +116,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/history/pages/admin-history/admin-history.component').then((m) => m.AdminHistoryComponent)
           },
           {
+            path: 'live-mappings',
+            loadComponent: () => import('@features/admin/live-data/pages/admin-live-target-mappings/admin-live-target-mappings.component').then((m) => m.AdminLiveTargetMappingsComponent)
+          },
+          {
             path: 'audit-logs',
             loadComponent: () => import('@features/admin/audit-logs/pages/admin-audit-logs/admin-audit-logs.component').then((m) => m.AdminAuditLogsComponent)
           },
