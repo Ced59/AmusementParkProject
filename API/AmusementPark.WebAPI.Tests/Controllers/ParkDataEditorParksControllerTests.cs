@@ -44,6 +44,9 @@ public sealed class ParkDataEditorParksControllerTests
                     LanguageCode = "fr",
                     FirstDocumentIndex = 4,
                     SecondDocumentIndex = 12,
+                    FirstDocumentSha256 = new string('a', 64),
+                    SecondDocumentSha256 = new string('b', 64),
+                    FingerprintSha256 = new string('c', 64),
                 },
             }));
 
@@ -66,6 +69,9 @@ public sealed class ParkDataEditorParksControllerTests
         Assert.Equal("fr", score.FormulaicPublicTextIssue.LanguageCode);
         Assert.Equal(4, score.FormulaicPublicTextIssue.FirstDocumentIndex);
         Assert.Equal(12, score.FormulaicPublicTextIssue.SecondDocumentIndex);
+        Assert.Equal(new string('a', 64), score.FormulaicPublicTextIssue.FirstDocumentSha256);
+        Assert.Equal(new string('b', 64), score.FormulaicPublicTextIssue.SecondDocumentSha256);
+        Assert.Equal(new string('c', 64), score.FormulaicPublicTextIssue.FingerprintSha256);
         handler.VerifyAll();
     }
 

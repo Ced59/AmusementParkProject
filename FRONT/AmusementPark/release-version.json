@@ -1,6 +1,20 @@
 {
-  "version": "5.3.95",
+  "version": "5.3.96",
   "history": [
+    {
+      "version": "5.3.96",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "Les diagnostics de qualité des fiches de parc ont été affinés.",
+        "en": "Park profile quality diagnostics have been refined.",
+        "de": "Die Qualitätsdiagnosen der Parkprofile wurden verfeinert.",
+        "nl": "De kwaliteitsdiagnostiek van parkprofielen is verfijnd.",
+        "it": "La diagnostica di qualità delle schede dei parchi è stata affinata.",
+        "es": "Se han afinado los diagnósticos de calidad de las fichas de parques.",
+        "pl": "Udoskonalono diagnostykę jakości profili parków.",
+        "pt": "Os diagnósticos de qualidade das fichas dos parques foram aperfeiçoados."
+      }
+    },
     {
       "version": "5.3.95",
       "releasedAt": "2026-09-28",

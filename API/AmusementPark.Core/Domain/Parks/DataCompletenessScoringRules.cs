@@ -1,6 +1,8 @@
 using AmusementPark.Core.Geo;
 using AmusementPark.Core.Localization;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace AmusementPark.Core.Domain.Parks;
@@ -288,14 +290,24 @@ public static class DataCompletenessScoringRules
         foreach ((int Index, LocalizedText Text) indexedPublicText in populatedPublicTexts)
         {
             LocalizedText publicText = indexedPublicText.Text;
-            if (SingleOccurrenceFormulaRegexes.Any(regex => regex.IsMatch(NormalizePublicText(publicText.Value!))))
+            string normalizedPublicText = NormalizePublicText(publicText.Value!);
+            foreach (Regex formulaRegex in SingleOccurrenceFormulaRegexes)
             {
+                Match match = formulaRegex.Match(normalizedPublicText);
+                if (!match.Success)
+                {
+                    continue;
+                }
+
                 return new FormulaicPublicTextIssue
                 {
                     MatchType = "single-formula",
                     LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
                     FirstDocumentIndex = indexedPublicText.Index,
                     SecondDocumentIndex = indexedPublicText.Index,
+                    FirstDocumentSha256 = ComputeSha256(publicText.Value!),
+                    SecondDocumentSha256 = ComputeSha256(publicText.Value!),
+                    FingerprintSha256 = ComputeSha256(match.Value),
                 };
             }
         }
@@ -355,6 +367,9 @@ public static class DataCompletenessScoringRules
                             LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
                             FirstDocumentIndex = firstSentenceDocumentIndex.Value,
                             SecondDocumentIndex = indexedPublicText.Index,
+                            FirstDocumentSha256 = ComputeDocumentSha256(populatedPublicTexts, firstSentenceDocumentIndex.Value),
+                            SecondDocumentSha256 = ComputeSha256(publicText.Value!),
+                            FingerprintSha256 = ComputeSha256(sentenceFingerprint),
                         };
                     }
 
@@ -374,6 +389,9 @@ public static class DataCompletenessScoringRules
                                 LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
                                 FirstDocumentIndex = firstSequenceDocumentIndex.Value,
                                 SecondDocumentIndex = indexedPublicText.Index,
+                                FirstDocumentSha256 = ComputeDocumentSha256(populatedPublicTexts, firstSequenceDocumentIndex.Value),
+                                SecondDocumentSha256 = ComputeSha256(publicText.Value!),
+                                FingerprintSha256 = ComputeSha256(sequenceFingerprint),
                             };
                         }
                     }
@@ -382,6 +400,19 @@ public static class DataCompletenessScoringRules
         }
 
         return null;
+    }
+
+    private static string ComputeDocumentSha256(
+        IReadOnlyList<(int Index, LocalizedText Text)> publicTexts,
+        int documentIndex)
+    {
+        return ComputeSha256(publicTexts[documentIndex - 1].Text.Value!);
+    }
+
+    private static string ComputeSha256(string value)
+    {
+        byte[] bytes = Encoding.UTF8.GetBytes(value);
+        return Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
     }
 
     private static int? FindFirstDocumentIndex(

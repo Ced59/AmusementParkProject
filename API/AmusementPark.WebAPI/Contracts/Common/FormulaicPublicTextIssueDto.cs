@@ -9,4 +9,10 @@ public sealed class FormulaicPublicTextIssueDto
     public int FirstDocumentIndex { get; set; }
 
     public int SecondDocumentIndex { get; set; }
+
+    public string FirstDocumentSha256 { get; set; } = string.Empty;
+
+    public string SecondDocumentSha256 { get; set; } = string.Empty;
+
+    public string FingerprintSha256 { get; set; } = string.Empty;
 }

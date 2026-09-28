@@ -168,6 +168,10 @@ public sealed class ParkDataCompletenessScoreTests
         Assert.Equal("fr", issue.LanguageCode);
         Assert.Equal(1, issue.FirstDocumentIndex);
         Assert.Equal(3, issue.SecondDocumentIndex);
+        Assert.Equal(64, issue.FirstDocumentSha256.Length);
+        Assert.Equal(64, issue.SecondDocumentSha256.Length);
+        Assert.Equal(64, issue.FingerprintSha256.Length);
+        Assert.NotEqual(issue.FirstDocumentSha256, issue.SecondDocumentSha256);
     }
 
     [Fact]
@@ -452,6 +456,9 @@ public sealed class ParkDataCompletenessScoreTests
             LanguageCode = "fr",
             FirstDocumentIndex = 3,
             SecondDocumentIndex = 9,
+            FirstDocumentSha256 = new string('a', 64),
+            SecondDocumentSha256 = new string('b', 64),
+            FingerprintSha256 = new string('c', 64),
         };
         ParkDataCompletenessContext context = CreateRichParkContext() with
         {

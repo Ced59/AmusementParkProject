@@ -593,6 +593,9 @@ internal static class ParksHttpMappers
                     LanguageCode = value.FormulaicPublicTextIssue.LanguageCode,
                     FirstDocumentIndex = value.FormulaicPublicTextIssue.FirstDocumentIndex,
                     SecondDocumentIndex = value.FormulaicPublicTextIssue.SecondDocumentIndex,
+                    FirstDocumentSha256 = value.FormulaicPublicTextIssue.FirstDocumentSha256,
+                    SecondDocumentSha256 = value.FormulaicPublicTextIssue.SecondDocumentSha256,
+                    FingerprintSha256 = value.FormulaicPublicTextIssue.FingerprintSha256,
                 },
         };
     }
