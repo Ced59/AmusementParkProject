@@ -223,9 +223,13 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
             new DateTime(2026, 9, 28, 8, 0, 0, DateTimeKind.Utc),
             observation.SourceUpdatedAtUtc);
         Assert.Equal(
-            2,
+            3,
             result.Diagnostics.Count(static diagnostic =>
                 diagnostic.Code == LiveProviderDiagnosticCodes.InvalidObservation));
+        Assert.Contains(result.Diagnostics, static diagnostic =>
+            diagnostic.Code == LiveProviderDiagnosticCodes.InvalidQueueValue);
+        Assert.DoesNotContain(observation.Queues, static queue =>
+            queue.Kind == LiveQueueKind.PaidReturnTime);
     }
 
     [Fact]

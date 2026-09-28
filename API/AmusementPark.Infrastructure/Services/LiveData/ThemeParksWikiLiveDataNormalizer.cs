@@ -621,6 +621,15 @@ internal static class ThemeParksWikiLiveDataNormalizer
             return false;
         }
 
+        if (string.Equals(
+            match.Groups["offset"].Value,
+            "-00:00",
+            StringComparison.Ordinal))
+        {
+            utcValue = default;
+            return false;
+        }
+
         Group fraction = match.Groups["fraction"];
         string parseableValue = fraction.Success && fraction.Length > 7
             ? string.Concat(

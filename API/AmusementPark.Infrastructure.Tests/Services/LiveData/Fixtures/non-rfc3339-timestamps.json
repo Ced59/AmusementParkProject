@@ -12,6 +12,12 @@
           "state": "AVAILABLE",
           "returnStart": "2026-09-28T10:30:00+02:00",
           "returnEnd": "2026-09-28T11:00:00+02:00"
+        },
+        "PAID_RETURN_TIME": {
+          "state": "AVAILABLE",
+          "returnStart": "2026-09-28T10:30:00-00:00",
+          "returnEnd": null,
+          "price": null
         }
       }
     },
@@ -29,6 +35,14 @@
       "entityType": "ATTRACTION",
       "status": "OPERATING",
       "lastUpdated": " 2026-09-28T10:00:00Z ",
+      "queue": {}
+    },
+    {
+      "id": "unknown-offset",
+      "name": "Unknown offset",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00-00:00",
       "queue": {}
     }
   ]
