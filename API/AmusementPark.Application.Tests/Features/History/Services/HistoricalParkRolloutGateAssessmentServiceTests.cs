@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Tests.Features.History.Handlers;
 using AmusementPark.Core.Domain.History;
 using Moq;
@@ -107,7 +108,114 @@ public sealed class HistoricalParkRolloutGateAssessmentServiceTests
         sources.VerifyAll();
     }
 
+    [Fact]
+    public async Task AssessManyAsync_ShouldLoadSourceRevisionsOnceForAllParks()
+    {
+        HistoricalSubject firstPark = new(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Premier parc",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalSubject secondPark = new(
+            HistoricalSubjectType.Park,
+            "park-2",
+            "Second parc",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-2");
+        HistoricalFact[] firstFacts =
+        {
+            PublicParkHistoryTestData.CreateOpeningFact(firstPark, 1998),
+            PublicParkHistoryTestData.CreateOpeningFact(
+                firstPark,
+                1990,
+                importance: HistoricalImportance.Standard),
+        };
+        HistoricalFact[] secondFacts =
+        {
+            PublicParkHistoryTestData.CreateOpeningFact(secondPark, 2001),
+            PublicParkHistoryTestData.CreateOpeningFact(
+                secondPark,
+                1995,
+                importance: HistoricalImportance.Standard),
+        };
+        HistoricalSourceReference[] sourceRevisions = firstFacts
+            .Concat(secondFacts)
+            .Select(PublicParkHistoryTestData.CreateSource)
+            .ToArray();
+        Mock<IHistoricalSourceRepository> sources = new(MockBehavior.Strict);
+        sources
+            .Setup(repository => repository.GetRevisionsAsync(
+                It.Is<IReadOnlyCollection<HistoricalSourceRevisionReference>>(references =>
+                    references.Count == 4),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(sourceRevisions);
+        sources
+            .Setup(repository => repository.GetLatestRevisionsAsync(
+                It.Is<IReadOnlyCollection<Guid>>(sourceIds => sourceIds.Count == 4),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(sourceRevisions);
+        Mock<IParkHistoricalSnapshotBuilder> snapshotBuilder = new(MockBehavior.Strict);
+        snapshotBuilder
+            .Setup(builder => builder.Build(
+                It.IsAny<string>(),
+                It.IsAny<HistoricalInstant>(),
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<IReadOnlyCollection<HistoricalFact>>()))
+            .Returns((
+                string parkId,
+                HistoricalInstant instant,
+                IReadOnlyCollection<HistoricalSubject> subjects,
+                IReadOnlyCollection<HistoricalFact> facts) => CreateEligibleSnapshot(
+                    parkId,
+                    instant,
+                    subjects.Single(),
+                    facts.Select(static fact => fact.Id).ToArray()));
+        HistoricalParkRolloutGateAssessmentService service = new(
+            snapshotBuilder.Object,
+            new HistoricalParkRolloutGateEvaluator(),
+            sources.Object);
+
+        IReadOnlyDictionary<string, HistoricalParkRolloutGate> result =
+            await service.AssessManyAsync(
+                new[]
+                {
+                    new HistoricalParkRolloutGateAssessmentRequest(
+                        firstPark.ContextParkId!,
+                        new[] { firstPark },
+                        firstFacts),
+                    new HistoricalParkRolloutGateAssessmentRequest(
+                        secondPark.ContextParkId!,
+                        new[] { secondPark },
+                        secondFacts),
+                },
+                CancellationToken.None);
+
+        Assert.True(result["park-1"].IsOpen);
+        Assert.True(result["park-2"].IsOpen);
+        sources.Verify(repository => repository.GetRevisionsAsync(
+            It.IsAny<IReadOnlyCollection<HistoricalSourceRevisionReference>>(),
+            It.IsAny<CancellationToken>()), Times.Once);
+        sources.Verify(repository => repository.GetLatestRevisionsAsync(
+            It.IsAny<IReadOnlyCollection<Guid>>(),
+            It.IsAny<CancellationToken>()), Times.Once);
+        sources.VerifyNoOtherCalls();
+    }
+
     private static ParkHistoricalSnapshot CreateEligibleSnapshot(
+        HistoricalSubject subject,
+        params Guid[] supportingFactIds)
+    {
+        return CreateEligibleSnapshot(
+            "park-1",
+            HistoricalInstant.ForYear(1998),
+            subject,
+            supportingFactIds);
+    }
+
+    private static ParkHistoricalSnapshot CreateEligibleSnapshot(
+        string parkId,
+        HistoricalInstant instant,
         HistoricalSubject subject,
         params Guid[] supportingFactIds)
     {
@@ -129,8 +237,8 @@ public sealed class HistoricalParkRolloutGateAssessmentServiceTests
             DateTime.UtcNow,
             HistoricalCoverageStatus.Substantial);
         return new ParkHistoricalSnapshot(
-            "park-1",
-            HistoricalInstant.ForYear(1998),
+            parkId,
+            instant,
             new[] { subjectSnapshot },
             coverage,
             Array.Empty<HistoricalAmbiguity>(),

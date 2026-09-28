@@ -26,17 +26,74 @@ public sealed class HistoricalParkRolloutGateAssessmentService : IHistoricalPark
         IReadOnlyCollection<HistoricalFact> facts,
         CancellationToken cancellationToken)
     {
-        if (string.IsNullOrWhiteSpace(parkId))
+        HistoricalFact[] publicFacts = ValidateAndFilterPublicFacts(parkId, subjects, facts);
+        IReadOnlySet<(Guid SourceId, int Revision)> admissibleSourceRevisions =
+            await this.LoadCurrentlyAdmissibleSourceRevisionsAsync(publicFacts, cancellationToken);
+        return this.AssessWithAdmissibleSources(
+            parkId.Trim(),
+            subjects,
+            publicFacts,
+            admissibleSourceRevisions);
+    }
+
+    public async Task<IReadOnlyDictionary<string, HistoricalParkRolloutGate>> AssessManyAsync(
+        IReadOnlyCollection<HistoricalParkRolloutGateAssessmentRequest> requests,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(requests);
+        if (requests.Count == 0)
         {
-            throw new ArgumentException("A park identifier is required.", nameof(parkId));
+            return new Dictionary<string, HistoricalParkRolloutGate>(StringComparer.Ordinal);
         }
 
-        ArgumentNullException.ThrowIfNull(subjects);
-        ArgumentNullException.ThrowIfNull(facts);
-        HistoricalFact[] publicFacts = facts
-            .Where(static fact => fact.IsDecisionEligible
-                && fact.Subject.PublicationPolicy != HistoricalSubjectPublicationPolicy.Suppressed)
-            .ToArray();
+        List<(string ParkId, IReadOnlyCollection<HistoricalSubject> Subjects, HistoricalFact[] Facts)>
+            normalizedRequests = new(requests.Count);
+        HashSet<string> parkIds = new(StringComparer.Ordinal);
+        foreach (HistoricalParkRolloutGateAssessmentRequest request in requests)
+        {
+            ArgumentNullException.ThrowIfNull(request);
+            HistoricalFact[] publicFacts = ValidateAndFilterPublicFacts(
+                request.ParkId,
+                request.Subjects,
+                request.Facts);
+            string parkId = request.ParkId.Trim();
+            if (!parkIds.Add(parkId))
+            {
+                throw new ArgumentException(
+                    $"The park '{parkId}' can only be assessed once per batch.",
+                    nameof(requests));
+            }
+
+            normalizedRequests.Add((parkId, request.Subjects, publicFacts));
+        }
+
+        IReadOnlySet<(Guid SourceId, int Revision)> admissibleSourceRevisions =
+            await this.LoadCurrentlyAdmissibleSourceRevisionsAsync(
+                normalizedRequests.SelectMany(static request => request.Facts).ToArray(),
+                cancellationToken);
+        Dictionary<string, HistoricalParkRolloutGate> assessments =
+            new(StringComparer.Ordinal);
+        foreach ((string parkId, IReadOnlyCollection<HistoricalSubject> subjects, HistoricalFact[] facts)
+                 in normalizedRequests)
+        {
+            assessments.Add(
+                parkId,
+                this.AssessWithAdmissibleSources(
+                    parkId,
+                    subjects,
+                    facts,
+                    admissibleSourceRevisions));
+        }
+
+        return assessments;
+    }
+
+    private HistoricalParkRolloutGate AssessWithAdmissibleSources(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> subjects,
+        IReadOnlyCollection<HistoricalFact> publicFacts,
+        IReadOnlySet<(Guid SourceId, int Revision)> admissibleSourceRevisions)
+    {
         int[] candidateYears = publicFacts
             .Where(static fact => fact.Importance == HistoricalImportance.Major)
             .SelectMany(static fact => ResolveBoundaryYears(fact.Period))
@@ -46,14 +103,12 @@ public sealed class HistoricalParkRolloutGateAssessmentService : IHistoricalPark
         int[] indexableKeyYears = candidateYears
             .Where(year => HistoricalSnapshotSeoEligibilityEvaluator.IsIndexableKeyYear(
                 this.snapshotBuilder.Build(
-                    parkId.Trim(),
+                    parkId,
                     HistoricalInstant.ForYear(year),
                     subjects,
                     publicFacts),
                 publicFacts))
             .ToArray();
-        IReadOnlySet<(Guid SourceId, int Revision)> admissibleSourceRevisions =
-            await this.LoadCurrentlyAdmissibleSourceRevisionsAsync(publicFacts, cancellationToken);
         return this.gateEvaluator.Evaluate(
             publicFacts,
             indexableKeyYears,
@@ -124,6 +179,24 @@ public sealed class HistoricalParkRolloutGateAssessmentService : IHistoricalPark
                 latestRevisions)
             .Select(static source => (source.Id, source.Revision))
             .ToHashSet();
+    }
+
+    private static HistoricalFact[] ValidateAndFilterPublicFacts(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> subjects,
+        IReadOnlyCollection<HistoricalFact> facts)
+    {
+        if (string.IsNullOrWhiteSpace(parkId))
+        {
+            throw new ArgumentException("A park identifier is required.", nameof(parkId));
+        }
+
+        ArgumentNullException.ThrowIfNull(subjects);
+        ArgumentNullException.ThrowIfNull(facts);
+        return facts
+            .Where(static fact => fact.IsDecisionEligible
+                && fact.Subject.PublicationPolicy != HistoricalSubjectPublicationPolicy.Suppressed)
+            .ToArray();
     }
 
     private static bool IsPublicFact(

@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Core.Domain.History;
@@ -63,7 +64,7 @@ public static class HistoricalKeyYearSitemapCandidateResolver
             .Where(fact => CanExpose(fact, publicParks, currentSubjectKeys))
             .ToArray();
 
-        List<HistoricalKeyYearSitemapCandidate> candidates = new List<HistoricalKeyYearSitemapCandidate>();
+        List<HistoricalParkRolloutGateAssessmentRequest> assessmentRequests = new();
         foreach (IGrouping<string, HistoricalFact> parkFactsGroup in publicFacts
                      .GroupBy(ResolveParkId, StringComparer.Ordinal)
                      .Where(static group => group.Key.Length > 0))
@@ -83,21 +84,35 @@ public static class HistoricalKeyYearSitemapCandidateResolver
                     .Select(static fact => fact.Subject))
                 .DistinctBy(static subject => (subject.Type, subject.Id))
                 .ToArray();
-            HistoricalParkRolloutGate rolloutGate = await rolloutGateAssessmentService.AssessAsync(
+            assessmentRequests.Add(new HistoricalParkRolloutGateAssessmentRequest(
                 parkId,
                 subjects,
-                parkFacts,
+                parkFacts));
+        }
+
+        IReadOnlyDictionary<string, HistoricalParkRolloutGate> rolloutGates =
+            await rolloutGateAssessmentService.AssessManyAsync(
+                assessmentRequests,
                 cancellationToken);
+        List<HistoricalKeyYearSitemapCandidate> candidates = new();
+        foreach (HistoricalParkRolloutGateAssessmentRequest request in assessmentRequests)
+        {
+            if (!publicParks.TryGetValue(request.ParkId, out Park? park)
+                || !rolloutGates.TryGetValue(request.ParkId, out HistoricalParkRolloutGate? rolloutGate))
+            {
+                continue;
+            }
+
             if (!rolloutGate.IsOpen)
             {
                 continue;
             }
 
-            DateTime lastModifiedAtUtc = parkFacts.Max(static fact => fact.RecordedAtUtc);
+            DateTime lastModifiedAtUtc = request.Facts.Max(static fact => fact.RecordedAtUtc);
             foreach (int year in rolloutGate.IndexableKeyYears)
             {
                 candidates.Add(new HistoricalKeyYearSitemapCandidate(
-                    parkId,
+                    request.ParkId,
                     park.Name ?? string.Empty,
                     year,
                     lastModifiedAtUtc));

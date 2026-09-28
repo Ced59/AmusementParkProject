@@ -11,6 +11,10 @@ public interface IHistoricalParkRolloutGateAssessmentService
         IReadOnlyCollection<HistoricalFact> facts,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyDictionary<string, HistoricalParkRolloutGate>> AssessManyAsync(
+        IReadOnlyCollection<HistoricalParkRolloutGateAssessmentRequest> requests,
+        CancellationToken cancellationToken);
+
     Task<HistoricalParkRolloutGate> AssessPublicParkAsync(
         HistoricalParkEditorialScope scope,
         IReadOnlyCollection<HistoricalFact> facts,
