@@ -77,6 +77,16 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
             return ToLease(existing);
         }
 
+        LivePollingStateDocument? replaced = await this.TryReplaceTargetAsync(
+            request,
+            leaseToken,
+            leaseFilter,
+            cancellationToken);
+        if (replaced is not null)
+        {
+            return ToLease(replaced);
+        }
+
         LivePollingStateDocument created = new LivePollingStateDocument
         {
             Id = Guid.NewGuid().ToString("N"),
@@ -99,6 +109,48 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
         {
             return null;
         }
+    }
+
+    private async Task<LivePollingStateDocument?> TryReplaceTargetAsync(
+        LivePollingLeaseRequest request,
+        string leaseToken,
+        FilterDefinition<LivePollingStateDocument> leaseFilter,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<LivePollingStateDocument> replacementFilter =
+            Builders<LivePollingStateDocument>.Filter.Eq(
+                static document => document.SourceId,
+                request.SourceId.Value)
+            & Builders<LivePollingStateDocument>.Filter.Ne(
+                static document => document.ExternalEntityId,
+                request.ExternalEntityId)
+            & leaseFilter;
+        UpdateDefinition<LivePollingStateDocument> replacementUpdate =
+            Builders<LivePollingStateDocument>.Update
+                .Set(static document => document.ExternalEntityId, request.ExternalEntityId)
+                .Set(static document => document.LeaseOwner, request.LeaseOwner)
+                .Set(static document => document.LeaseToken, leaseToken)
+                .Set(
+                    static document => document.LeaseExpiresAtUtc,
+                    request.NowUtc.Add(request.LeaseDuration))
+                .Set(
+                    static document => document.NextAttemptAtUtc,
+                    request.NowUtc.Add(request.CrashRecoveryCooldown))
+                .Set(static document => document.ConsecutiveFailures, 0)
+                .Set(static document => document.UpdatedAt, request.NowUtc)
+                .Unset(static document => document.EntityTag)
+                .Unset(static document => document.LastPolledAtUtc)
+                .Unset(static document => document.LastSuccessfulPollAtUtc)
+                .Unset(static document => document.CircuitOpenUntilUtc)
+                .Unset(static document => document.LastDisposition);
+        return await this.collection.FindOneAndUpdateAsync(
+            replacementFilter,
+            replacementUpdate,
+            new FindOneAndUpdateOptions<LivePollingStateDocument>
+            {
+                ReturnDocument = ReturnDocument.After,
+            },
+            cancellationToken);
     }
 
     public async Task<bool> CompleteAsync(

@@ -96,6 +96,18 @@ l'état d'un successeur après une pause ou un redémarrage. L'acquisition avanc
 un crash au pire moment ne peut donc jamais transformer l'expiration du lease en
 relance agressive.
 
+Si l'identifiant de la cible pilote est corrigé dans la configuration, l'état
+unique de la source est remplacé atomiquement dès que son éventuel lease a
+expiré. L'ETag, les échecs et les dates de la précédente cible sont alors
+réinitialisés afin de ne pas contaminer la planification du nouveau parc et
+d'éviter toute suppression Mongo manuelle.
+
+Si l'identifiant de la cible pilote est corrigé dans la configuration, l'état
+unique de la source est remplacé atomiquement dès que son éventuel lease a
+expiré. L'ETag, les échecs et les dates de la précédente cible sont alors
+réinitialisés afin de ne pas contaminer la planification du nouveau parc et
+d'éviter toute suppression Mongo manuelle.
+
 ## Backoff, `Retry-After` et circuit breaker
 
 Une réussite ou un `304 Not Modified` remet le compteur d'échecs à zéro. Un
