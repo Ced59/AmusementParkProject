@@ -9,4 +9,10 @@ public sealed record FormulaicPublicTextIssue
     public required int FirstDocumentIndex { get; init; }
 
     public required int SecondDocumentIndex { get; init; }
+
+    public required string FirstDocumentSha256 { get; init; }
+
+    public required string SecondDocumentSha256 { get; init; }
+
+    public required string FingerprintSha256 { get; init; }
 }
