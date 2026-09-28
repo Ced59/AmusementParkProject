@@ -1,0 +1,33 @@
+{
+  "liveData": [
+    {
+      "id": "unparseable-required-queue-values",
+      "name": "Unparseable Required Queue Values",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {
+        "STANDBY": { "waitTime": 15 },
+        "PAID_STANDBY": { "waitTime": 1.5 },
+        "RETURN_TIME": {
+          "state": "AVAILABLE",
+          "returnStart": "not-a-timestamp",
+          "returnEnd": null
+        },
+        "PAID_RETURN_TIME": {
+          "state": "AVAILABLE",
+          "returnStart": null,
+          "returnEnd": null,
+          "price": { "amount": 12.5, "currency": "USD" }
+        },
+        "BOARDING_GROUP": {
+          "allocationStatus": "AVAILABLE",
+          "currentGroupStart": 1.5,
+          "currentGroupEnd": 10,
+          "nextAllocationTime": null,
+          "estimatedWait": 12
+        }
+      }
+    }
+  ]
+}

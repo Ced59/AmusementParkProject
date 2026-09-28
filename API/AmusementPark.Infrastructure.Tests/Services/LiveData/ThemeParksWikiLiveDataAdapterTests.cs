@@ -105,8 +105,31 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         ExternalLiveObservation observation = Assert.Single(result.Observations);
         Assert.DoesNotContain(observation.Queues, static queue => queue.WaitTimeMinutes == 0);
         Assert.DoesNotContain(observation.Queues, static queue => queue.Kind == LiveQueueKind.ReturnTime);
+        Assert.DoesNotContain(observation.Queues, static queue => queue.Kind == LiveQueueKind.PaidStandby);
         Assert.True(result.Diagnostics.Count(diagnostic =>
             diagnostic.Code == LiveProviderDiagnosticCodes.InvalidQueueValue) >= 5);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenRequiredQueueValuesCannotBeParsed_ShouldRejectAffectedQueues()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("unparseable-required-queue-values.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        LiveQueueObservation queue = Assert.Single(observation.Queues);
+        Assert.Equal(LiveQueueKind.Standby, queue.Kind);
+        Assert.Equal(15, queue.WaitTimeMinutes);
+        Assert.Equal(
+            4,
+            result.Diagnostics.Count(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.InvalidQueueValue));
     }
 
     [Fact]

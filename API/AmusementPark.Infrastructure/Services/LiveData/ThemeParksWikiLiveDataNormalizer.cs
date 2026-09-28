@@ -494,26 +494,55 @@ internal static class ThemeParksWikiLiveDataNormalizer
     {
         return kind switch
         {
-            LiveQueueKind.Standby => true,
+            LiveQueueKind.Standby =>
+                HasOptionalNullableInt32Property(value, "waitTime"),
             LiveQueueKind.SingleRider or LiveQueueKind.PaidStandby =>
-                HasNullablePropertyOfKind(value, "waitTime", JsonValueKind.Number),
+                HasRequiredNullableInt32Property(value, "waitTime"),
             LiveQueueKind.ReturnTime =>
                 HasNullablePropertyOfKind(value, "state", JsonValueKind.String)
-                && HasNullablePropertyOfKind(value, "returnStart", JsonValueKind.String)
-                && HasNullablePropertyOfKind(value, "returnEnd", JsonValueKind.String),
+                && HasRequiredNullableUtcProperty(value, "returnStart")
+                && HasRequiredNullableUtcProperty(value, "returnEnd"),
             LiveQueueKind.PaidReturnTime =>
                 HasNullablePropertyOfKind(value, "state", JsonValueKind.String)
-                && HasNullablePropertyOfKind(value, "returnStart", JsonValueKind.String)
-                && HasNullablePropertyOfKind(value, "returnEnd", JsonValueKind.String)
+                && HasRequiredNullableUtcProperty(value, "returnStart")
+                && HasRequiredNullableUtcProperty(value, "returnEnd")
                 && HasValidRequiredPrice(value),
             LiveQueueKind.BoardingGroup =>
                 HasNullablePropertyOfKind(value, "allocationStatus", JsonValueKind.String)
-                && HasNullablePropertyOfKind(value, "currentGroupStart", JsonValueKind.Number)
-                && HasNullablePropertyOfKind(value, "currentGroupEnd", JsonValueKind.Number)
-                && HasNullablePropertyOfKind(value, "nextAllocationTime", JsonValueKind.String)
-                && HasNullablePropertyOfKind(value, "estimatedWait", JsonValueKind.Number),
+                && HasRequiredNullableInt32Property(value, "currentGroupStart")
+                && HasRequiredNullableInt32Property(value, "currentGroupEnd")
+                && HasRequiredNullableUtcProperty(value, "nextAllocationTime")
+                && HasRequiredNullableInt32Property(value, "estimatedWait"),
             _ => false,
         };
+    }
+
+    private static bool HasOptionalNullableInt32Property(
+        JsonElement parent,
+        string propertyName)
+    {
+        return !parent.TryGetProperty(propertyName, out JsonElement value)
+            || value.ValueKind == JsonValueKind.Null
+            || value.ValueKind == JsonValueKind.Number && value.TryGetInt32(out int _);
+    }
+
+    private static bool HasRequiredNullableInt32Property(
+        JsonElement parent,
+        string propertyName)
+    {
+        return parent.TryGetProperty(propertyName, out JsonElement value)
+            && (value.ValueKind == JsonValueKind.Null
+                || value.ValueKind == JsonValueKind.Number && value.TryGetInt32(out int _));
+    }
+
+    private static bool HasRequiredNullableUtcProperty(
+        JsonElement parent,
+        string propertyName)
+    {
+        return parent.TryGetProperty(propertyName, out JsonElement value)
+            && (value.ValueKind == JsonValueKind.Null
+                || value.ValueKind == JsonValueKind.String
+                && TryParseUtc(value.GetString(), out DateTime _));
     }
 
     private static bool HasNullablePropertyOfKind(
@@ -549,7 +578,9 @@ internal static class ThemeParksWikiLiveDataNormalizer
         }
 
         return price.ValueKind == JsonValueKind.Object
-            && HasNullablePropertyOfKind(price, "amount", JsonValueKind.Number)
+            && price.TryGetProperty("amount", out JsonElement amount)
+            && (amount.ValueKind == JsonValueKind.Null
+                || amount.ValueKind == JsonValueKind.Number && amount.TryGetInt64(out long _))
             && price.TryGetProperty("currency", out JsonElement currency)
             && currency.ValueKind == JsonValueKind.String
             && !string.IsNullOrWhiteSpace(currency.GetString());
