@@ -2,18 +2,19 @@
 
 > Code programme : `LIVE`
 >
-> Statut : `LIVE-01` à `LIVE-04` livrés le 28 septembre 2026. La
+> Statut : `LIVE-01` à `LIVE-05` livrés au 29 septembre 2026. La
 > source pilote est autorisée pour un spike interne latest-only, le contrat de
 > provenance/fraîcheur est implémenté et les mappings humains sont versionnés et
-> pilotables. L'adaptateur pilote traduit désormais strictement les statuts et
-> files du fournisseur ; aucune collecte planifiée ni généralisation publique
-> n'est encore autorisée avant les gates de charge, quarantaine et exploitation.
+> pilotables. L'adaptateur pilote traduit strictement les statuts et files du
+> fournisseur, et son ordonnanceur est borné mais désactivé par défaut ; aucune
+> collecte active ni généralisation publique n'est encore autorisée avant les
+> gates de stockage latest, quarantaine et exploitation.
 >
 > Dépendances : `RANK`, `PASS`, `WATCH`, qualité/observabilité transverse et contrats de source validés.
 >
 > Principe : une donnée live affiche toujours sa source, son âge et son état. Une prévision affiche une fourchette, une méthode et un niveau de confiance. L’absence de donnée n’est jamais transformée en zéro minute.
 
-## État d'implémentation au 28 septembre 2026
+## État d'implémentation au 29 septembre 2026
 
 `LIVE-01` a sélectionné ThemeParks.wiki REST v1 comme source pilote et
 Phantasialand comme parc du futur spike borné. La décision, les droits, les
@@ -49,8 +50,15 @@ zéro et absence. Les valeurs nouvelles deviennent inconnues et produisent un
 diagnostic au lieu d'être assimilées à une ouverture. Le détail est consigné dans
 [`product-growth-live-04-provider-adapter-2026-09-28.md`](../../architecture/product-growth-live-04-provider-adapter-2026-09-28.md).
 
-Le prochain jalon est `LIVE-05` : ajouter l'ordonnanceur borné, les budgets et le
-circuit breaker, toujours sans affichage public.
+`LIVE-05` a livré la boucle séquentielle dédiée, le lease Mongo distribué, la
+fenêtre horaire locale, le jitter, le backoff, le respect de `Retry-After` et le
+circuit breaker. La configuration versionnée reste désactivée et sans cible : le
+déploiement ne déclenche donc aucun appel externe. Le détail est consigné dans
+[`product-growth-live-05-bounded-scheduler-2026-09-29.md`](../../architecture/product-growth-live-05-bounded-scheduler-2026-09-29.md).
+
+Le prochain jalon est `LIVE-06` : conserver uniquement le dernier état normalisé
+sans permettre à une observation ancienne d'écraser une observation récente,
+toujours sans affichage public.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -766,7 +774,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-02`](../../architecture/product-growth-live-02-provenance-freshness-2026-09-28.md) | ✅ Modèle provenance/fraîcheur | Sémantique de domaine testée, sans exposition publique |
 | [`LIVE-03`](../../architecture/product-growth-live-03-verified-target-mapping-2026-09-28.md) | ✅ Mapping et admin | Aucun mapping heuristique public |
 | [`LIVE-04`](../../architecture/product-growth-live-04-provider-adapter-2026-09-28.md) | ✅ Adaptateur pilote | Fixtures complètes |
-| `LIVE-05` | Scheduler/circuit breaker/budgets | Charge bornée |
+| [`LIVE-05`](../../architecture/product-growth-live-05-bounded-scheduler-2026-09-29.md) | ✅ Scheduler/circuit breaker/budgets | Charge bornée |
 | `LIVE-06` | Latest store | Pas d’écrasement ancien |
 | `LIVE-07` | Quarantaine/anomalies | Données douteuses isolées |
 | `LIVE-08` | API latest/cache | Source et âge obligatoires |
@@ -825,6 +833,21 @@ un état sûr. Core interdit les champs étrangers à un type de file et signale
 contradiction fermeture/attente sans effacer le fait reçu. Les fixtures couvrent
 les six files, les quatre statuts connus, `0` contre `null`, les valeurs futures,
 les champs invalides, les réponses vides et les principaux incidents HTTP.
+
+### Implémentation `LIVE-05` — 29 septembre 2026
+
+La version `5.4.5` ajoute un ordonnanceur interne désactivé par défaut, limité à
+un fournisseur et un parc pilotes. Un lease Mongo atomique empêche deux instances
+de collecter simultanément la même cible. La boucle dédiée est séquentielle et ne
+consomme aucun slot des jobs métier généraux.
+
+Le domaine impose au moins cinq minutes entre deux appels, une fenêtre active
+dans le fuseau local du parc, un jitter positif, un backoff exponentiel borné et
+un circuit breaker persistant. Les réponses `429` honorent `Retry-After`, les
+ETag sont réutilisés et les crashes libèrent implicitement la cible à l'expiration
+du lease. Des métriques comptent les issues, durées et ouvertures de circuit sans
+journaliser les payloads. Aucun temps d'attente n'est encore stocké : cette
+responsabilité est réservée à `LIVE-06`.
 
 ## 24. Gate finale `LIVE-G`
 

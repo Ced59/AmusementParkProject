@@ -31,4 +31,6 @@ public static class LiveDataErrorCodes
     public const string InvalidWaitTime = "live-data.invalid-wait-time";
 
     public const string InvalidQueue = "live-data.invalid-queue";
+
+    public const string InvalidPollingPolicy = "live-data.invalid-polling-policy";
 }

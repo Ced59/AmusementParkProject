@@ -261,6 +261,8 @@ public sealed class MongoDbSettings
 
     public string LiveTargetMappingsCollectionName { get; set; } = "live-target-mappings";
 
+    public string LivePollingStatesCollectionName { get; set; } = "live-polling-states";
+
     public string HistoricalNarrativesCollectionName { get; set; } = "historical-narratives";
 
     public string HistoricalMigrationsCollectionName { get; set; } = "historical-migrations";

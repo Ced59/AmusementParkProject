@@ -85,6 +85,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<PublicParkHistoricalDataLoader>();
         services.AddScoped<IHistoricalParkRolloutGateAccessService, HistoricalParkRolloutGateAccessService>();
         services.AddScoped<LiveTargetReferenceResolver>();
+        services.AddScoped<LivePollingOrchestrator>();
         services.AddDurableBackgroundJobHandler<FactualChangeMaterializationJobHandler>();
         services.AddScoped<ParkItemReferenceValidator>();
         services.AddScoped<CommentTargetResolver>();

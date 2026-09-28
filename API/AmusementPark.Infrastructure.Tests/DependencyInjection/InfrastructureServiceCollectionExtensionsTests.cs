@@ -37,6 +37,25 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
     }
 
     [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterBoundedLivePollingServices()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor repository = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(ILivePollingStateRepository));
+        Assert.Equal(typeof(LivePollingStateRepository), repository.ImplementationType);
+        Assert.Equal(ServiceLifetime.Scoped, repository.Lifetime);
+        Assert.Contains(
+            services,
+            static service => service.ServiceType == typeof(IHostedService)
+                && service.ImplementationType == typeof(LivePollingBackgroundService));
+    }
+
+    [Fact]
     public void AddInfrastructure_WhenCalled_ShouldRegisterTechnicalStatsProvider()
     {
         ServiceCollection services = new ServiceCollection();
