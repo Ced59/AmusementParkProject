@@ -19,6 +19,17 @@ public sealed class LiveLatestObservation
             throw new ArgumentOutOfRangeException(nameof(status));
         }
 
+        LiveFreshnessAssessment freshness = freshnessPolicy.Assess(
+            provenance.ObservedAtUtc,
+            provenance.NormalizedAtUtc);
+        if (freshness.State == LiveFreshnessState.Unavailable)
+        {
+            throw new LiveDataValidationException(
+                LiveDataErrorCodes.InvalidTimestamp,
+                "An unavailable live timestamp cannot participate in latest-state ordering.",
+                nameof(provenance));
+        }
+
         List<LiveQueueObservation> normalizedQueues = queues.ToList();
         if (normalizedQueues.Any(static queue => queue is null)
             || normalizedQueues.GroupBy(static queue => queue.Kind).Any(static group => group.Count() > 1))

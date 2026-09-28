@@ -26,6 +26,7 @@ aux futurs écrans, sans créer d'historique ni activer le polling en production
 - `0 minute`, absence de valeur, fermeture et état inconnu restent distincts ;
 - provenance, versions, niveau de confiance, hash et politique de fraîcheur restent attachés à la photographie ;
 - un échec de stockage ne valide ni le succès du poll ni son nouvel ETag.
+- une heure source au-delà de la dérive future autorisée est rejetée avant l'ordre latest.
 
 ## Architecture
 
@@ -142,6 +143,8 @@ Les tests ciblés prouvent :
 ## Limites et suite
 
 Les entrées inconnues ou inéligibles sont comptées mais pas encore conservées.
+Les horodatages futurs invalides sont également comptés et rejetés afin de ne
+jamais bloquer une cible sur une photographie artificiellement récente.
 `LIVE-07` ajoutera leur quarantaine, leurs diagnostics et leur rejeu contrôlé
 après correction d'un mapping. `LIVE-08` seulement ajoutera une API latest avec
 cache, source et âge obligatoires. Aucun affichage public n'est autorisé avant

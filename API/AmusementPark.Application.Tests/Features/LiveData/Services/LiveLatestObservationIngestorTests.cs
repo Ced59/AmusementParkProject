@@ -92,6 +92,32 @@ public sealed class LiveLatestObservationIngestorTests
         Assert.Equal("external-2", persisted.Provenance.ExternalTargetId);
     }
 
+    [Fact]
+    public async Task IngestAsync_ShouldRejectTimestampBeyondAcceptedFutureSkew()
+    {
+        ExternalLiveTargetMapping mapping = CreateVerifiedMapping("external-1", "item-1");
+        Mock<ILiveTargetMappingRepository> mappings = CreateMappingRepository(new[] { mapping });
+        Mock<ILiveLatestObservationRepository> latest =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        latest
+            .Setup(value => value.WriteLatestAsync(
+                It.Is<IReadOnlyCollection<LiveLatestObservation>>(observations =>
+                    observations.Count == 0),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveLatestObservationWriteResult(0, 0, 0));
+        LiveLatestObservationIngestor ingestor = new LiveLatestObservationIngestor(
+            mappings.Object,
+            latest.Object,
+            new FixedTimeProvider(ReceivedAtUtc));
+
+        LiveLatestObservationIngestionResult result = await ingestor.IngestAsync(
+            CreateRequest(CreateObservation("external-1", ReceivedAtUtc.AddYears(1))),
+            CancellationToken.None);
+
+        Assert.Equal(0, result.PersistedCount);
+        Assert.Equal(1, result.InvalidFreshnessCount);
+    }
+
     private static Mock<ILiveTargetMappingRepository> CreateMappingRepository(
         IReadOnlyCollection<ExternalLiveTargetMapping> returnedMappings)
     {

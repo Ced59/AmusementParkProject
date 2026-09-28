@@ -375,7 +375,7 @@ public sealed class LivePollingOrchestratorTests
             .Setup(value => value.IngestAsync(
                 It.IsAny<LiveLatestObservationIngestionRequest>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new LiveLatestObservationIngestionResult(0, 0, 0, 0));
+            .ReturnsAsync(new LiveLatestObservationIngestionResult(0, 0, 0, 0, 0));
         return ingestor;
     }
 

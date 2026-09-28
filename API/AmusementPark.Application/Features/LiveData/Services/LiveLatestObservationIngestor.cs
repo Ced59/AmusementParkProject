@@ -56,6 +56,7 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             new Dictionary<string, LiveLatestObservation>(StringComparer.Ordinal);
         int unmappedCount = 0;
         int ineligibleCount = 0;
+        int invalidFreshnessCount = 0;
         DateTime normalizedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         if (normalizedAtUtc < request.ReceivedAtUtc)
         {
@@ -77,6 +78,15 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
                 || mapping.Target.Type != observation.TargetType)
             {
                 ineligibleCount++;
+                continue;
+            }
+
+            LiveFreshnessAssessment freshness = request.FreshnessPolicy.Assess(
+                observation.SourceUpdatedAtUtc,
+                normalizedAtUtc);
+            if (freshness.State == LiveFreshnessState.Unavailable)
+            {
+                invalidFreshnessCount++;
                 continue;
             }
 
@@ -115,7 +125,8 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             writeResult.InsertedCount + writeResult.UpdatedCount,
             writeResult.IgnoredCount,
             unmappedCount,
-            ineligibleCount);
+            ineligibleCount,
+            invalidFreshnessCount);
     }
 
     private static bool IsPreferred(

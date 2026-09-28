@@ -39,6 +39,14 @@ public sealed class LiveLatestObservationTests
         Assert.True(observation.HasStatusQueueConflict);
     }
 
+    [Fact]
+    public void Constructor_ShouldRejectTimestampBeyondAcceptedFutureSkew()
+    {
+        Assert.Throws<LiveDataValidationException>(() => CreateObservation(
+            ObservedAtUtc.AddMinutes(2),
+            ObservedAtUtc));
+    }
+
     private static LiveLatestObservation CreateObservation(
         DateTime observedAtUtc,
         DateTime receivedAtUtc,

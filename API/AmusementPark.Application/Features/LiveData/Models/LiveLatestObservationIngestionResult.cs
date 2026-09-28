@@ -4,4 +4,5 @@ public sealed record LiveLatestObservationIngestionResult(
     int PersistedCount,
     int IgnoredAsOlderCount,
     int UnmappedCount,
-    int IneligibleCount);
+    int IneligibleCount,
+    int InvalidFreshnessCount);
