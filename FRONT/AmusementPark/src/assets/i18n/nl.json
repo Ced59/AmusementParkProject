@@ -2692,7 +2692,8 @@
         "errors": {
           "searchFailed": "De parken kunnen niet worden doorzocht.",
           "loadFailed": "De historische controle van dit park kan niet worden geladen."
-        }
+        },
+        "openWorkbench": "Redactiewerkplaats openen"
       },
       "errors": {
         "loadFailed": "Historische gebeurtenissen kunnen niet worden geladen.",
@@ -2700,6 +2701,224 @@
         "invalidJson": "Een JSON-veld is ongeldig.",
         "saveFailed": "Deze gebeurtenis kan niet worden opgeslagen.",
         "deleteFailed": "Deze gebeurtenis kan niet worden verwijderd."
+      },
+      "workbench": {
+        "kicker": "Canonieke werkplaats",
+        "title": "Controleerbare geschiedenis opbouwen",
+        "subtitle": "Leg feiten vast, koppel bewijs, bekijk de gevolgen en publiceer elke revisie zonder het verleden te overschrijven.",
+        "loading": "Historische werkplaats wordt geopend…",
+        "parkKicker": "Geselecteerd park",
+        "parkHint": "Alle onderstaande bronnen horen bij het canonieke historische register.",
+        "blockers": "blokkering(en)",
+        "actions": {
+          "diagnostics": "Diagnose bekijken",
+          "create": "Bron maken",
+          "newFact": "Feit toevoegen",
+          "newFactHint": "Een gedateerde, controleerbare gebeurtenis",
+          "newRelation": "Twee onderwerpen koppelen",
+          "newRelationHint": "Een afstamming, verplaatsing of opvolging",
+          "newSource": "Bewijs toevoegen",
+          "newSourceHint": "Een duurzame, gekwalificeerde bron",
+          "edit": "Bewerken",
+          "preview": "Voorbeeld",
+          "advanceTo": "Doorgaan naar: {{stage}}",
+          "retract": "Intrekken",
+          "cancel": "Annuleren",
+          "saveSource": "Bewijs opslaan",
+          "saveFact": "Feit opslaan",
+          "saveRelation": "Relatie opslaan"
+        },
+        "workflow": {
+          "title": "Redactioneel proces",
+          "Draft": "Concept",
+          "SourcesAttached": "Bewijs gekoppeld",
+          "EditorialReview": "Redactionele controle",
+          "StructuredValidation": "Gestructureerde validatie",
+          "Published": "Gepubliceerd",
+          "Corrected": "Gecorrigeerd",
+          "Retracted": "Ingetrokken"
+        },
+        "facts": {
+          "kicker": "Beweringen",
+          "title": "Historische feiten",
+          "empty": "Voor dit park is nog geen feit vastgelegd."
+        },
+        "relations": {
+          "kicker": "Continuïteit",
+          "title": "Historische relaties",
+          "empty": "Er is nog geen relatie vastgelegd."
+        },
+        "sources": {
+          "kicker": "Bewijs",
+          "title": "Bronnenbibliotheek",
+          "hint": "Gepubliceerde, toegankelijke bronnen kunnen meerdere exacte beweringen ondersteunen."
+        },
+        "preview": {
+          "kicker": "Impact vóór publicatie",
+          "ready": "Bewijs en structuur laten publicatie toe.",
+          "blocked": "De voorvertoning heeft blokkeringen gevonden.",
+          "before": "Voor",
+          "after": "Na",
+          "openSubjects": "open onderwerpen",
+          "changedSubjects": "{{count}} gewijzigd(e) onderwerp(en)",
+          "ambiguities": "Onduidelijkheden: {{before}} → {{after}}",
+          "visits": "{{count}} mogelijk betrokken bezoek(en)"
+        },
+        "sourceEditor": {
+          "kicker": "Nieuw bewijs",
+          "createTitle": "Bron documenteren",
+          "editTitle": "Bron corrigeren",
+          "type": "Soort",
+          "title": "Titel",
+          "publisher": "Uitgever of auteur",
+          "language": "Taal",
+          "url": "Stabiel adres",
+          "reference": "Bibliografische referentie",
+          "publishedOn": "Publicatiedatum",
+          "accessedOn": "Raadpleegdatum",
+          "archiveUrl": "Gearchiveerde kopie",
+          "accessibility": "Toegankelijkheid",
+          "note": "Privénotitie voor controle",
+          "scopeHint": "Selecteer alleen de gestructureerde velden die dit bewijs werkelijk staaft; elk citaat blijft aan één exacte bewering gekoppeld.",
+          "scopeMissing": "Selecteer minstens één veld dat door dit bewijs wordt gestaafd."
+        },
+        "factEditor": {
+          "kicker": "Gedateerde bewering",
+          "createTitle": "Nieuw historisch feit",
+          "editTitle": "Feit corrigeren",
+          "hint": "Beschrijf feit, datum en bewijs zonder ontbrekende nauwkeurigheid te verzinnen.",
+          "subject": "Onderwerp",
+          "type": "Soort feit",
+          "state": "Zekerheid",
+          "importance": "Belang",
+          "precision": "Datumnauwkeurigheid",
+          "startDate": "Periode",
+          "year": "Jaar",
+          "month": "Maand",
+          "day": "Dag",
+          "interval": "Dit feit beslaat een periode",
+          "endYear": "Eindjaar",
+          "approximate": "Datum bij benadering",
+          "confidence": "Zekerheid van grenzen",
+          "value": "Nieuwe gestructureerde waarde",
+          "valuePlaceholder": "Naam, exploitant, zone, thema…",
+          "otherType": "Naam van aangepast type",
+          "evidence": "Gekoppeld bewijs",
+          "evidenceHint": "Kies documenten die precies dit feit ondersteunen.",
+          "noSources": "Voeg eerst bewijs toe aan de bibliotheek.",
+          "contradicts": "Deze bron spreekt tegen",
+          "uncertainty": "Openbare uitleg van onzekerheid",
+          "uncertaintyHint": "Voor publicatie is natuurlijke tekst in alle acht talen nodig.",
+          "uncertaintyMissing": "Vul alle acht versies in.",
+          "reviewNote": "Privénotitie bij revisie"
+        },
+        "relationEditor": {
+          "kicker": "Gedocumenteerde koppeling",
+          "createTitle": "Nieuwe historische relatie",
+          "editTitle": "Relatie corrigeren",
+          "hint": "Koppel identiteiten zonder ze samen te voegen en bewaar de periode.",
+          "source": "Startonderwerp",
+          "target": "Doelonderwerp",
+          "type": "Soort koppeling",
+          "direction": "Richting",
+          "year": "Jaar",
+          "state": "Zekerheid",
+          "note": "Privé redactionele notitie"
+        },
+        "factStates": {
+          "Unverified": "Te controleren",
+          "Verified": "Geverifieerd",
+          "Probable": "Waarschijnlijk",
+          "Disputed": "Betwist",
+          "Retracted": "Ingetrokken"
+        },
+        "importance": {
+          "Standard": "Standaard",
+          "Major": "Belangrijk"
+        },
+        "confidence": {
+          "Confirmed": "Bevestigd",
+          "Estimated": "Geschat",
+          "Disputed": "Betwist"
+        },
+        "directions": {
+          "Directed": "Gericht",
+          "Symmetric": "Symmetrisch"
+        },
+        "accessibility": {
+          "Accessible": "Toegankelijk",
+          "Archived": "Gearchiveerd",
+          "Unavailable": "Niet beschikbaar"
+        },
+        "sourceTypes": {
+          "OfficialWebsite": "Officiële website",
+          "OfficialPublication": "Officiële publicatie",
+          "Press": "Pers",
+          "Book": "Boek",
+          "Academic": "Academisch onderzoek",
+          "Archive": "Archief",
+          "Database": "Databank",
+          "Other": "Anders"
+        },
+        "sourceScopes": {
+          "SubjectIdentity": "Identiteit van het onderwerp",
+          "FactType": "Feittype",
+          "Period": "Datum of periode",
+          "StructuredValue": "Gestructureerde waarde",
+          "HistoricalLabel": "Historische naam",
+          "Narrative": "Verhaal",
+          "SequenceWithinDate": "Volgorde op dezelfde datum",
+          "RelationSourceIdentity": "Oorsprong van de relatie",
+          "RelationTargetIdentity": "Doel van de relatie",
+          "RelationType": "Relatietype"
+        },
+        "factTypes": {
+          "Opening": "Opening",
+          "Closure": "Sluiting",
+          "Reopening": "Heropening",
+          "Renaming": "Naamswijziging",
+          "OperatorChange": "Wijziging exploitant",
+          "OwnerChange": "Wijziging eigenaar",
+          "Extension": "Uitbreiding",
+          "Reduction": "Verkleining",
+          "ZoneCreation": "Aanleg zone",
+          "ZoneRenaming": "Hernoeming zone",
+          "ZoneRemoval": "Verwijdering zone",
+          "MajorEvent": "Belangrijke gebeurtenis",
+          "PositioningChange": "Wijziging positionering",
+          "Announcement": "Aankondiging",
+          "Construction": "Bouw",
+          "TemporaryClosure": "Tijdelijke sluiting",
+          "DefinitiveClosure": "Definitieve sluiting",
+          "Dismantling": "Ontmanteling",
+          "Relocation": "Verplaatsing",
+          "Retheming": "Nieuw thema",
+          "ManufacturerChange": "Wijziging fabrikant",
+          "TechnicalModification": "Technische wijziging",
+          "Replacement": "Vervanging",
+          "ZoneMove": "Verplaatsing van zone",
+          "LogoChange": "Logowijziging",
+          "Other": "Anders"
+        },
+        "relationTypes": {
+          "RenamedTo": "Hernoemd tot",
+          "ReplacedBy": "Vervangen door",
+          "MovedTo": "Verplaatst naar",
+          "RethemedAs": "Herthematiseerd als",
+          "SuccessorOf": "Opvolger van",
+          "SamePhysicalAssetAs": "Dezelfde fysieke installatie als",
+          "SharesLocationWith": "Deelt locatie met",
+          "OperatedByDuring": "Geëxploiteerd door tijdens",
+          "LocatedInZoneDuring": "Gelegen in zone tijdens"
+        },
+        "messages": {
+          "saved": "De nieuwe revisie is opgeslagen."
+        },
+        "errors": {
+          "loadFailed": "De historische werkplaats kan niet worden geladen.",
+          "saveFailed": "De revisie kon niet worden opgeslagen.",
+          "previewFailed": "De impact kan niet worden bekeken."
+        }
       }
     },
     "images": {

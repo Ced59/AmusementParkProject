@@ -106,6 +106,7 @@
         "title": "Diagnostic avant publication",
         "subtitle": "Contrôle la cohérence, les preuves et l’impact des données historiques d’un parc avant de les diffuser.",
         "backToEditor": "Retour aux timelines",
+        "openWorkbench": "Ouvrir l’atelier éditorial",
         "loading": "Analyse de l’histoire du parc…",
         "search": {
           "title": "Choisir un parc",
@@ -176,6 +177,37 @@
           "searchFailed": "Impossible de rechercher les parcs.",
           "loadFailed": "Impossible de charger le diagnostic historique de ce parc."
         }
+      },
+      "workbench": {
+        "kicker": "Atelier canonique",
+        "title": "Construire une histoire vérifiable",
+        "subtitle": "Saisis les faits, relie leurs preuves, visualise leur impact puis publie chaque révision sans écraser le passé.",
+        "loading": "Ouverture de l’atelier historique…",
+        "parkKicker": "Parc sélectionné",
+        "parkHint": "Toutes les ressources ci-dessous appartiennent au registre historique canonique.",
+        "blockers": "blocage(s)",
+        "actions": {
+          "diagnostics": "Voir le diagnostic", "create": "Créer une ressource", "newFact": "Ajouter un fait", "newFactHint": "Un événement daté et vérifiable", "newRelation": "Relier deux sujets", "newRelationHint": "Une filiation, un déplacement ou une succession", "newSource": "Ajouter une preuve", "newSourceHint": "Une source durable et qualifiée", "edit": "Modifier", "preview": "Prévisualiser", "advanceTo": "Passer à : {{stage}}", "retract": "Rétracter", "cancel": "Annuler", "saveSource": "Enregistrer la preuve", "saveFact": "Enregistrer le fait", "saveRelation": "Enregistrer la relation"
+        },
+        "workflow": { "title": "Parcours éditorial", "Draft": "Brouillon", "SourcesAttached": "Preuves liées", "EditorialReview": "Revue éditoriale", "StructuredValidation": "Validation structurée", "Published": "Publié", "Corrected": "Corrigé", "Retracted": "Rétracté" },
+        "facts": { "kicker": "Assertions", "title": "Faits historiques", "empty": "Aucun fait n’est encore documenté pour ce parc." },
+        "relations": { "kicker": "Continuités", "title": "Relations historiques", "empty": "Aucune relation n’est encore documentée." },
+        "sources": { "kicker": "Preuves", "title": "Bibliothèque de sources", "hint": "Les sources publiées et accessibles peuvent justifier plusieurs assertions exactes." },
+        "preview": { "kicker": "Impact avant publication", "ready": "Les preuves et la structure permettent la publication.", "blocked": "La prévisualisation a détecté des éléments bloquants.", "before": "Avant", "after": "Après", "openSubjects": "sujets ouverts", "changedSubjects": "{{count}} sujet(s) modifié(s)", "ambiguities": "Ambiguïtés : {{before}} → {{after}}", "visits": "{{count}} visite(s) potentiellement concernée(s)" },
+        "sourceEditor": { "kicker": "Nouvelle preuve", "createTitle": "Documenter une source", "editTitle": "Corriger la source", "type": "Nature", "title": "Titre", "publisher": "Éditeur ou auteur", "language": "Langue", "url": "Adresse stable", "reference": "Référence bibliographique", "publishedOn": "Date de publication", "accessedOn": "Date de consultation", "archiveUrl": "Copie archivée", "accessibility": "Accessibilité", "note": "Note privée de revue", "scopeHint": "Sélectionne uniquement les champs structurés que cette preuve justifie réellement ; chaque citation reste ensuite liée à une assertion précise.", "scopeMissing": "Sélectionne au moins un champ justifié par cette preuve." },
+        "factEditor": { "kicker": "Assertion datée", "createTitle": "Nouveau fait historique", "editTitle": "Corriger le fait", "hint": "Décris le fait, sa date et ses preuves sans inventer une précision absente.", "subject": "Sujet", "type": "Type de fait", "state": "Niveau de certitude", "importance": "Importance", "precision": "Précision de date", "startDate": "Période", "year": "Année", "month": "Mois", "day": "Jour", "interval": "Ce fait couvre une période", "endYear": "Année de fin", "approximate": "Date approximative", "confidence": "Confiance dans les bornes", "value": "Nouvelle valeur structurée", "valuePlaceholder": "Nom, exploitant, zone, thème…", "otherType": "Libellé du type personnalisé", "evidence": "Preuves liées", "evidenceHint": "Sélectionne les documents qui étayent exactement ce fait.", "noSources": "Ajoute d’abord une preuve dans la bibliothèque.", "contradicts": "Cette source contredit", "uncertainty": "Explication publique de l’incertitude", "uncertaintyHint": "Une formulation éditoriale naturelle est nécessaire dans les huit langues avant publication.", "uncertaintyMissing": "Renseigne les huit versions de l’explication.", "reviewNote": "Note privée pour la révision" },
+        "relationEditor": { "kicker": "Lien documenté", "createTitle": "Nouvelle relation historique", "editTitle": "Corriger la relation", "hint": "Relie les identités sans les fusionner et conserve la période du lien.", "source": "Sujet de départ", "target": "Sujet d’arrivée", "type": "Nature du lien", "direction": "Direction", "year": "Année", "state": "Niveau de certitude", "note": "Note éditoriale privée" },
+        "factStates": { "Unverified": "À vérifier", "Verified": "Vérifié", "Probable": "Probable", "Disputed": "Contesté", "Retracted": "Rétracté" },
+        "importance": { "Standard": "Standard", "Major": "Majeur" },
+        "confidence": { "Confirmed": "Confirmée", "Estimated": "Estimée", "Disputed": "Contestée" },
+        "directions": { "Directed": "Orientée", "Symmetric": "Symétrique" },
+        "accessibility": { "Accessible": "Accessible", "Archived": "Archivée", "Unavailable": "Indisponible" },
+        "sourceTypes": { "OfficialWebsite": "Site officiel", "OfficialPublication": "Publication officielle", "Press": "Presse", "Book": "Livre", "Academic": "Recherche académique", "Archive": "Archive", "Database": "Base de données", "Other": "Autre" },
+        "sourceScopes": { "SubjectIdentity": "Identité du sujet", "FactType": "Nature du fait", "Period": "Date ou période", "StructuredValue": "Valeur structurée", "HistoricalLabel": "Nom historique", "Narrative": "Récit", "SequenceWithinDate": "Ordre à date identique", "RelationSourceIdentity": "Origine de la relation", "RelationTargetIdentity": "Cible de la relation", "RelationType": "Nature de la relation" },
+        "factTypes": { "Opening": "Ouverture", "Closure": "Fermeture", "Reopening": "Réouverture", "Renaming": "Changement de nom", "OperatorChange": "Changement d’exploitant", "OwnerChange": "Changement de propriétaire", "Extension": "Extension", "Reduction": "Réduction", "ZoneCreation": "Création de zone", "ZoneRenaming": "Renommage de zone", "ZoneRemoval": "Suppression de zone", "MajorEvent": "Événement majeur", "PositioningChange": "Changement de positionnement", "Announcement": "Annonce", "Construction": "Construction", "TemporaryClosure": "Fermeture temporaire", "DefinitiveClosure": "Fermeture définitive", "Dismantling": "Démontage", "Relocation": "Déplacement", "Retheming": "Nouveau thème", "ManufacturerChange": "Changement de constructeur", "TechnicalModification": "Modification technique", "Replacement": "Remplacement", "ZoneMove": "Changement de zone", "LogoChange": "Changement de logo", "Other": "Autre" },
+        "relationTypes": { "RenamedTo": "Renommé en", "ReplacedBy": "Remplacé par", "MovedTo": "Déplacé vers", "RethemedAs": "Redécoré en", "SuccessorOf": "Successeur de", "SamePhysicalAssetAs": "Même installation physique", "SharesLocationWith": "Emplacement partagé avec", "OperatedByDuring": "Exploité par pendant", "LocatedInZoneDuring": "Situé dans la zone pendant" },
+        "messages": { "saved": "La nouvelle révision a été enregistrée." },
+        "errors": { "loadFailed": "Impossible de charger l’atelier historique.", "saveFailed": "La révision n’a pas pu être enregistrée.", "previewFailed": "L’impact ne peut pas être prévisualisé." }
       },
       "errors": {
         "loadFailed": "Impossible de charger les événements historiques.",

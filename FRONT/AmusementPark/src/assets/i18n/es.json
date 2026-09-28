@@ -2692,7 +2692,8 @@
         "errors": {
           "searchFailed": "No se pueden buscar los parques.",
           "loadFailed": "No se puede cargar el diagnóstico histórico de este parque."
-        }
+        },
+        "openWorkbench": "Abrir el taller editorial"
       },
       "errors": {
         "loadFailed": "No se pueden cargar los eventos históricos.",
@@ -2700,6 +2701,224 @@
         "invalidJson": "Un campo JSON no es válido.",
         "saveFailed": "No se puede guardar este evento.",
         "deleteFailed": "No se puede eliminar este evento."
+      },
+      "workbench": {
+        "kicker": "Taller canónico",
+        "title": "Construye una historia verificable",
+        "subtitle": "Registra hechos, enlaza pruebas, previsualiza el impacto y publica cada revisión sin sobrescribir el pasado.",
+        "loading": "Abriendo el taller histórico…",
+        "parkKicker": "Parque seleccionado",
+        "parkHint": "Todos los recursos siguientes pertenecen al registro histórico canónico.",
+        "blockers": "bloqueo(s)",
+        "actions": {
+          "diagnostics": "Ver diagnóstico",
+          "create": "Crear un recurso",
+          "newFact": "Añadir un hecho",
+          "newFactHint": "Un evento fechado y verificable",
+          "newRelation": "Relacionar dos sujetos",
+          "newRelationHint": "Una filiación, traslado o sucesión",
+          "newSource": "Añadir una prueba",
+          "newSourceHint": "Una fuente duradera y cualificada",
+          "edit": "Editar",
+          "preview": "Previsualizar",
+          "advanceTo": "Pasar a: {{stage}}",
+          "retract": "Retirar",
+          "cancel": "Cancelar",
+          "saveSource": "Guardar la prueba",
+          "saveFact": "Guardar el hecho",
+          "saveRelation": "Guardar la relación"
+        },
+        "workflow": {
+          "title": "Flujo editorial",
+          "Draft": "Borrador",
+          "SourcesAttached": "Pruebas enlazadas",
+          "EditorialReview": "Revisión editorial",
+          "StructuredValidation": "Validación estructurada",
+          "Published": "Publicado",
+          "Corrected": "Corregido",
+          "Retracted": "Retirado"
+        },
+        "facts": {
+          "kicker": "Afirmaciones",
+          "title": "Hechos históricos",
+          "empty": "Aún no hay hechos documentados para este parque."
+        },
+        "relations": {
+          "kicker": "Continuidades",
+          "title": "Relaciones históricas",
+          "empty": "Aún no hay relaciones documentadas."
+        },
+        "sources": {
+          "kicker": "Pruebas",
+          "title": "Biblioteca de fuentes",
+          "hint": "Las fuentes publicadas y accesibles pueden respaldar varias afirmaciones exactas."
+        },
+        "preview": {
+          "kicker": "Impacto antes de publicar",
+          "ready": "Las pruebas y la estructura permiten publicar.",
+          "blocked": "La previsualización ha detectado elementos bloqueantes.",
+          "before": "Antes",
+          "after": "Después",
+          "openSubjects": "sujetos abiertos",
+          "changedSubjects": "{{count}} sujeto(s) modificado(s)",
+          "ambiguities": "Ambigüedades: {{before}} → {{after}}",
+          "visits": "{{count}} visita(s) potencialmente afectada(s)"
+        },
+        "sourceEditor": {
+          "kicker": "Nueva prueba",
+          "createTitle": "Documentar una fuente",
+          "editTitle": "Corregir la fuente",
+          "type": "Naturaleza",
+          "title": "Título",
+          "publisher": "Editor o autor",
+          "language": "Idioma",
+          "url": "Dirección estable",
+          "reference": "Referencia bibliográfica",
+          "publishedOn": "Fecha de publicación",
+          "accessedOn": "Fecha de consulta",
+          "archiveUrl": "Copia archivada",
+          "accessibility": "Accesibilidad",
+          "note": "Nota privada de revisión",
+          "scopeHint": "Selecciona únicamente los campos estructurados que esta prueba respalda realmente; cada cita queda vinculada a una afirmación exacta.",
+          "scopeMissing": "Selecciona al menos un campo respaldado por esta prueba."
+        },
+        "factEditor": {
+          "kicker": "Afirmación fechada",
+          "createTitle": "Nuevo hecho histórico",
+          "editTitle": "Corregir el hecho",
+          "hint": "Describe el hecho, la fecha y las pruebas sin inventar una precisión ausente.",
+          "subject": "Sujeto",
+          "type": "Tipo de hecho",
+          "state": "Nivel de certeza",
+          "importance": "Importancia",
+          "precision": "Precisión de fecha",
+          "startDate": "Periodo",
+          "year": "Año",
+          "month": "Mes",
+          "day": "Día",
+          "interval": "Este hecho abarca un periodo",
+          "endYear": "Año final",
+          "approximate": "Fecha aproximada",
+          "confidence": "Confianza en los límites",
+          "value": "Nuevo valor estructurado",
+          "valuePlaceholder": "Nombre, operador, zona, tema…",
+          "otherType": "Etiqueta del tipo personalizado",
+          "evidence": "Pruebas enlazadas",
+          "evidenceHint": "Selecciona los documentos que respaldan exactamente este hecho.",
+          "noSources": "Añade primero una prueba a la biblioteca.",
+          "contradicts": "Esta fuente contradice",
+          "uncertainty": "Explicación pública de la incertidumbre",
+          "uncertaintyHint": "Antes de publicar se necesita un texto editorial natural en los ocho idiomas.",
+          "uncertaintyMissing": "Completa las ocho versiones.",
+          "reviewNote": "Nota privada para la revisión"
+        },
+        "relationEditor": {
+          "kicker": "Vínculo documentado",
+          "createTitle": "Nueva relación histórica",
+          "editTitle": "Corregir la relación",
+          "hint": "Relaciona identidades sin fusionarlas y conserva el periodo del vínculo.",
+          "source": "Sujeto de origen",
+          "target": "Sujeto de destino",
+          "type": "Naturaleza del vínculo",
+          "direction": "Dirección",
+          "year": "Año",
+          "state": "Nivel de certeza",
+          "note": "Nota editorial privada"
+        },
+        "factStates": {
+          "Unverified": "Por verificar",
+          "Verified": "Verificado",
+          "Probable": "Probable",
+          "Disputed": "Discutido",
+          "Retracted": "Retirado"
+        },
+        "importance": {
+          "Standard": "Estándar",
+          "Major": "Importante"
+        },
+        "confidence": {
+          "Confirmed": "Confirmada",
+          "Estimated": "Estimada",
+          "Disputed": "Discutida"
+        },
+        "directions": {
+          "Directed": "Dirigida",
+          "Symmetric": "Simétrica"
+        },
+        "accessibility": {
+          "Accessible": "Accesible",
+          "Archived": "Archivada",
+          "Unavailable": "No disponible"
+        },
+        "sourceTypes": {
+          "OfficialWebsite": "Sitio oficial",
+          "OfficialPublication": "Publicación oficial",
+          "Press": "Prensa",
+          "Book": "Libro",
+          "Academic": "Investigación académica",
+          "Archive": "Archivo",
+          "Database": "Base de datos",
+          "Other": "Otra"
+        },
+        "sourceScopes": {
+          "SubjectIdentity": "Identidad del sujeto",
+          "FactType": "Tipo de hecho",
+          "Period": "Fecha o periodo",
+          "StructuredValue": "Valor estructurado",
+          "HistoricalLabel": "Nombre histórico",
+          "Narrative": "Relato",
+          "SequenceWithinDate": "Orden en la misma fecha",
+          "RelationSourceIdentity": "Origen de la relación",
+          "RelationTargetIdentity": "Destino de la relación",
+          "RelationType": "Tipo de relación"
+        },
+        "factTypes": {
+          "Opening": "Apertura",
+          "Closure": "Cierre",
+          "Reopening": "Reapertura",
+          "Renaming": "Cambio de nombre",
+          "OperatorChange": "Cambio de operador",
+          "OwnerChange": "Cambio de propietario",
+          "Extension": "Ampliación",
+          "Reduction": "Reducción",
+          "ZoneCreation": "Creación de zona",
+          "ZoneRenaming": "Cambio de nombre de zona",
+          "ZoneRemoval": "Eliminación de zona",
+          "MajorEvent": "Evento importante",
+          "PositioningChange": "Cambio de posicionamiento",
+          "Announcement": "Anuncio",
+          "Construction": "Construcción",
+          "TemporaryClosure": "Cierre temporal",
+          "DefinitiveClosure": "Cierre definitivo",
+          "Dismantling": "Desmontaje",
+          "Relocation": "Traslado",
+          "Retheming": "Cambio de temática",
+          "ManufacturerChange": "Cambio de fabricante",
+          "TechnicalModification": "Modificación técnica",
+          "Replacement": "Sustitución",
+          "ZoneMove": "Cambio de zona",
+          "LogoChange": "Cambio de logotipo",
+          "Other": "Otro"
+        },
+        "relationTypes": {
+          "RenamedTo": "Renombrado como",
+          "ReplacedBy": "Sustituido por",
+          "MovedTo": "Trasladado a",
+          "RethemedAs": "Retematizado como",
+          "SuccessorOf": "Sucesor de",
+          "SamePhysicalAssetAs": "Misma instalación física que",
+          "SharesLocationWith": "Comparte ubicación con",
+          "OperatedByDuring": "Operado por durante",
+          "LocatedInZoneDuring": "Situado en la zona durante"
+        },
+        "messages": {
+          "saved": "La nueva revisión se ha guardado."
+        },
+        "errors": {
+          "loadFailed": "No se puede cargar el taller histórico.",
+          "saveFailed": "No se ha podido guardar la revisión.",
+          "previewFailed": "No se puede previsualizar el impacto."
+        }
       }
     },
     "images": {

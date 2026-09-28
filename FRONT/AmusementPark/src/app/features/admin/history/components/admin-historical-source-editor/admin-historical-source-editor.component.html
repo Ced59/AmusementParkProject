@@ -1,0 +1,79 @@
+<form class="editor" [formGroup]="form" (ngSubmit)="submit()">
+  <header>
+    <div>
+      <span class="kicker">{{ 'admin.history.workbench.sourceEditor.kicker' | translate }}</span>
+      <h3>{{ (source ? 'admin.history.workbench.sourceEditor.editTitle' : 'admin.history.workbench.sourceEditor.createTitle') | translate }}</h3>
+    </div>
+    <span class="pi pi-book" aria-hidden="true"></span>
+  </header>
+
+  <div class="editor__grid">
+    <label>
+      <span>{{ 'admin.history.workbench.sourceEditor.type' | translate }}</span>
+      <select formControlName="type">
+        @for (type of sourceTypes; track type) { <option [value]="type">{{ 'admin.history.workbench.sourceTypes.' + type | translate }}</option> }
+      </select>
+    </label>
+    <label class="editor__wide">
+      <span>{{ 'admin.history.workbench.sourceEditor.title' | translate }}</span>
+      <input type="text" formControlName="title" autocomplete="off">
+    </label>
+    <label>
+      <span>{{ 'admin.history.workbench.sourceEditor.publisher' | translate }}</span>
+      <input type="text" formControlName="publisherOrAuthor" autocomplete="organization">
+    </label>
+    <label>
+      <span>{{ 'admin.history.workbench.sourceEditor.language' | translate }}</span>
+      <input type="text" formControlName="languageCode" maxlength="12">
+    </label>
+    <label class="editor__wide">
+      <span>{{ 'admin.history.workbench.sourceEditor.url' | translate }}</span>
+      <input type="url" formControlName="url" inputmode="url" placeholder="https://">
+    </label>
+    <label class="editor__wide">
+      <span>{{ 'admin.history.workbench.sourceEditor.reference' | translate }}</span>
+      <input type="text" formControlName="bibliographicReference">
+    </label>
+    <label>
+      <span>{{ 'admin.history.workbench.sourceEditor.publishedOn' | translate }}</span>
+      <input type="date" formControlName="publishedOn">
+    </label>
+    <label>
+      <span>{{ 'admin.history.workbench.sourceEditor.accessedOn' | translate }}</span>
+      <input type="date" formControlName="accessedOn">
+    </label>
+    <label class="editor__wide">
+      <span>{{ 'admin.history.workbench.sourceEditor.archiveUrl' | translate }}</span>
+      <input type="url" formControlName="archiveUrl" inputmode="url" placeholder="https://">
+    </label>
+    <label>
+      <span>{{ 'admin.history.workbench.sourceEditor.accessibility' | translate }}</span>
+      <select formControlName="accessibility">
+        <option value="Accessible">{{ 'admin.history.workbench.accessibility.Accessible' | translate }}</option>
+        <option value="Archived">{{ 'admin.history.workbench.accessibility.Archived' | translate }}</option>
+        <option value="Unavailable">{{ 'admin.history.workbench.accessibility.Unavailable' | translate }}</option>
+      </select>
+    </label>
+    <label class="editor__wide">
+      <span>{{ 'admin.history.workbench.sourceEditor.note' | translate }}</span>
+      <textarea rows="3" formControlName="adminNote"></textarea>
+    </label>
+  </div>
+
+  <section class="editor__scopes">
+    <p class="editor__hint"><span class="pi pi-shield" aria-hidden="true"></span>{{ 'admin.history.workbench.sourceEditor.scopeHint' | translate }}</p>
+    <div class="editor__scope-grid">
+      @for (scope of sourceScopes; track scope) {
+        <button type="button" (click)="toggleScope(scope)" [attr.aria-pressed]="selectedScopes().has(scope)" [class.editor__scope--selected]="selectedScopes().has(scope)">
+          <span class="pi" [class.pi-check-circle]="selectedScopes().has(scope)" [class.pi-circle]="!selectedScopes().has(scope)" aria-hidden="true"></span>
+          {{ 'admin.history.workbench.sourceScopes.' + scope | translate }}
+        </button>
+      }
+    </div>
+    @if (scopeMissing()) { <p class="editor__error" role="alert">{{ 'admin.history.workbench.sourceEditor.scopeMissing' | translate }}</p> }
+  </section>
+  <div class="editor__actions">
+    <button type="button" class="btn-nav btn-nav--ghost" (click)="cancelled.emit()">{{ 'admin.history.workbench.actions.cancel' | translate }}</button>
+    <button type="submit" class="btn-nav" [disabled]="busy">{{ 'admin.history.workbench.actions.saveSource' | translate }}</button>
+  </div>
+</form>

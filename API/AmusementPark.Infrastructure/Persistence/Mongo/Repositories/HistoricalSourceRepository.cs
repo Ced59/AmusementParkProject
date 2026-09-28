@@ -133,6 +133,20 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
+    public async Task<IReadOnlyCollection<HistoricalSourceReference>> GetRecentLatestRevisionsAsync(
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        int boundedLimit = Math.Clamp(limit, 1, 200);
+        PipelineDefinition<HistoricalSourceDocument, HistoricalSourceDocument> pipeline =
+            PipelineDefinition<HistoricalSourceDocument, HistoricalSourceDocument>.Create(
+                BuildRecentLatestRevisionsPipeline(boundedLimit));
+        List<HistoricalSourceDocument> documents = await this.collection
+            .Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<IReadOnlyCollection<HistoricalSourceReference>> GetRevisionsAsync(
         IReadOnlyCollection<HistoricalSourceRevisionReference> sourceReferences,
         CancellationToken cancellationToken)
@@ -256,6 +270,33 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
                 "$replaceRoot",
                 new BsonDocument("newRoot", "$document")),
             new BsonDocument("$sort", new BsonDocument("sourceId", 1)),
+        };
+    }
+
+    internal static IReadOnlyCollection<BsonDocument> BuildRecentLatestRevisionsPipeline(int limit)
+    {
+        if (limit < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(limit));
+        }
+
+        return new BsonDocument[]
+        {
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["sourceId"] = 1,
+                ["revision"] = -1,
+            }),
+            new BsonDocument("$group", new BsonDocument
+            {
+                ["_id"] = "$sourceId",
+                ["document"] = new BsonDocument("$first", "$$ROOT"),
+            }),
+            new BsonDocument(
+                "$replaceRoot",
+                new BsonDocument("newRoot", "$document")),
+            new BsonDocument("$sort", new BsonDocument("createdAt", -1)),
+            new BsonDocument("$limit", limit),
         };
     }
 }

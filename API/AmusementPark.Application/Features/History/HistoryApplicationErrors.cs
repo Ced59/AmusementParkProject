@@ -42,4 +42,26 @@ internal static class HistoryApplicationErrors
             "history.comparison.range.invalid",
             "The historical comparison start year must precede its valid end year.");
     }
+
+    public static ApplicationError InvalidEditorialResource(string message)
+    {
+        return ApplicationError.Validation(
+            "history.editorial.invalid",
+            message);
+    }
+
+    public static ApplicationError EditorialResourceNotFound(string resourceType, Guid resourceId)
+    {
+        return ApplicationError.NotFound(
+            "history.editorial.not-found",
+            $"The historical {resourceType} '{resourceId}' was not found.");
+    }
+
+    public static ApplicationError EditorialRevisionConflict(int currentRevision)
+    {
+        return ApplicationError.Conflict(
+            "history.editorial.revision-conflict",
+            "The historical resource changed during this edit. Reload its latest revision.",
+            currentRevision);
+    }
 }

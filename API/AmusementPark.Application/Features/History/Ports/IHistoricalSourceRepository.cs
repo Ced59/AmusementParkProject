@@ -30,4 +30,8 @@ public interface IHistoricalSourceRepository
     Task<IReadOnlyCollection<HistoricalSourceReference>> GetLatestRevisionsAsync(
         IReadOnlyCollection<Guid> sourceIds,
         CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<HistoricalSourceReference>> GetRecentLatestRevisionsAsync(
+        int limit,
+        CancellationToken cancellationToken);
 }

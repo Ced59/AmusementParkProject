@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
@@ -127,9 +128,10 @@ public sealed class GetAdminHistoricalParkDiagnosticsQueryHandlerTests
         Mock<IHistoricalVisitDiagnosticsReader> visits)
     {
         return new GetAdminHistoricalParkDiagnosticsQueryHandler(
-            parks.Object,
-            items.Object,
-            zones.Object,
+            new HistoricalParkEditorialScopeLoader(
+                parks.Object,
+                items.Object,
+                zones.Object),
             facts.Object,
             relations.Object,
             visits.Object,
