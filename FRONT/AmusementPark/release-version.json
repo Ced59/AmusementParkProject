@@ -1,6 +1,20 @@
 {
-  "version": "5.3.98",
+  "version": "5.3.99",
   "history": [
+    {
+      "version": "5.3.99",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "La fiabilité des outils d’administration a été améliorée.",
+        "en": "Admin tool reliability has been improved.",
+        "de": "Die Zuverlässigkeit der Verwaltungswerkzeuge wurde verbessert.",
+        "nl": "De betrouwbaarheid van de beheertools is verbeterd.",
+        "it": "L’affidabilità degli strumenti di amministrazione è stata migliorata.",
+        "es": "Se ha mejorado la fiabilidad de las herramientas de administración.",
+        "pl": "Poprawiono niezawodność narzędzi administracyjnych.",
+        "pt": "A fiabilidade das ferramentas de administração foi melhorada."
+      }
+    },
     {
       "version": "5.3.98",
       "releasedAt": "2026-09-28",

@@ -103,7 +103,9 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
         Task<IReadOnlyCollection<Image>> manufacturerImagesTask = includeImages && includeReferences && manufacturerIds.Count > 0 ? this.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, manufacturerIds, null, cancellationToken) : Task.FromResult<IReadOnlyCollection<Image>>(Array.Empty<Image>());
         Task<ParkOpeningHoursSchedule?> openingHoursTask = !includeOpeningHours || this.openingHoursRepository is null ? Task.FromResult<ParkOpeningHoursSchedule?>(null) : this.openingHoursRepository.GetByParkIdAsync(park.Id, cancellationToken);
         Task<ParkPricingEntity?> pricingTask = !includePricing || this.pricingRepository is null || !park.Status.IsOpenToVisitors() ? Task.FromResult<ParkPricingEntity?>(null) : this.pricingRepository.GetByParkIdAsync(park.Id, cancellationToken);
-        Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = !includeHistory || this.historyEventRepository is null ? Task.FromResult<IReadOnlyCollection<HistoryEvent>>(Array.Empty<HistoryEvent>()) : this.historyEventRepository.GetParkTimelineAsync(park.Id, true, true, itemIds, cancellationToken);
+        Task<IReadOnlyCollection<HistoryEvent>> historyEventsTask = !includeHistory || this.historyEventRepository is null
+            ? Task.FromResult<IReadOnlyCollection<HistoryEvent>>(Array.Empty<HistoryEvent>())
+            : ParkGraphHistoryExportLoader.LoadAsync(this.historyEventRepository, park.Id, itemIds, cancellationToken);
         Task<ParkGraphExportReferences?> referencesTask = includeReferences ? this.MapOptionalReferencesAsync(park, manufacturerIds, cancellationToken) : Task.FromResult<ParkGraphExportReferences?>(null);
         await Task.WhenAll(parkImagesTask, itemImagesTask, founderImagesTask, operatorImagesTask, manufacturerImagesTask, openingHoursTask, pricingTask, historyEventsTask, referencesTask);
         IReadOnlyCollection<Image> parkImages = await parkImagesTask;
