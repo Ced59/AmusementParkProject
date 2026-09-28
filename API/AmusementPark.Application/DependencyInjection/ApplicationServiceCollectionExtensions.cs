@@ -80,7 +80,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<IParkHistoricalComparisonBuilder, ParkHistoricalComparisonBuilder>();
         services.AddSingleton<HistoricalParkDiagnosticsEvaluator>();
         services.AddSingleton<HistoricalParkRolloutGateEvaluator>();
-        services.AddSingleton<IHistoricalParkRolloutGateAssessmentService, HistoricalParkRolloutGateAssessmentService>();
+        services.AddScoped<IHistoricalParkRolloutGateAssessmentService, HistoricalParkRolloutGateAssessmentService>();
         services.AddScoped<PublicParkHistoricalDataLoader>();
         services.AddScoped<IHistoricalParkRolloutGateAccessService, HistoricalParkRolloutGateAccessService>();
         services.AddDurableBackgroundJobHandler<FactualChangeMaterializationJobHandler>();
