@@ -1114,7 +1114,8 @@ ajouts conservent les largeurs fluides et les focus visibles sur mobile.
 L’explorateur n’est plus considéré comme disponible dès qu’un récit narratif
 ou un fait isolé existe. Une gate métier unique, calculée dans le Core, exige
 au moins deux faits structurés publiés dont les sources sont encore
-publiquement admissibles, un jalon majeur et une année clé dont la
+publiquement admissibles et couvrent encore toute l’assertion selon leur
+position favorable ou contradictoire, un jalon majeur et une année clé dont la
 reconstitution possède déjà la couverture substantielle définie par
 `HIST-13`. Aucun volume de visites, de passages ou de membres n’entre dans la
 décision.
@@ -1126,14 +1127,17 @@ années clés et aucun des deux n’énumère un parc en attente. L’administra
 affiche le résultat, les quatre critères, leurs compteurs et les années
 qualifiées avec une présentation responsive.
 
-La timeline conserve sa pagination Mongo bornée. La génération SEO lit toutes
-les dernières révisions des seuls parcs publics, sans plafond global qui ferait
-disparaître un parc ancien lorsque le corpus grandit.
+La timeline conserve sa pagination Mongo bornée. Son verdict de gate est mis
+en cache cinq minutes par parc et périmètre public, invalidé à chaque nouvelle
+révision de fait ou de source, afin de ne pas reconstruire l’historique complet
+pour chaque page. La génération SEO lit toutes les dernières révisions des
+seuls parcs publics, sans plafond global qui ferait disparaître un parc ancien
+lorsque le corpus grandit.
 
 La gate n’est ni un flag permanent ni une seconde persistance : elle est
-recalculée depuis les faits canoniques à chaque lecture. Aucune migration Mongo
-n’est nécessaire et aucun état d’activation ne peut diverger des preuves
-publiées.
+recalculée depuis les faits canoniques après invalidation ou expiration du
+cache. Aucune migration Mongo n’est nécessaire et aucun état d’activation ne
+peut diverger durablement des preuves publiées.
 
 ## 22. Gate finale `HIST-G`
 

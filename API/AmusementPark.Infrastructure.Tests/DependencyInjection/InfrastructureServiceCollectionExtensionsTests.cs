@@ -1,10 +1,12 @@
 using AmusementPark.Application.Features.BackgroundJobs.Ports;
+using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.Passport.Ports;
 using AmusementPark.Application.Features.TechnicalStats.Ports;
 using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Infrastructure.Configuration.BackgroundJobs;
 using AmusementPark.Infrastructure.DependencyInjection;
 using AmusementPark.Infrastructure.Services.BackgroundJobs;
+using AmusementPark.Infrastructure.Services.History;
 using AmusementPark.Infrastructure.Services.Passport;
 using AmusementPark.Infrastructure.Services.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -297,6 +299,23 @@ public sealed class InfrastructureServiceCollectionExtensionsTests
             static service =>
                 service.ServiceType == typeof(IHostedService) &&
                 service.ImplementationType == typeof(RatingRankingRebuildReconciliationBackgroundService));
+    }
+
+    [Fact]
+    public void AddInfrastructure_WhenCalled_ShouldRegisterHistoricalRolloutGateCacheAsSingleton()
+    {
+        ServiceCollection services = new ServiceCollection();
+        IConfiguration configuration = new ConfigurationBuilder().Build();
+
+        services.AddInfrastructure(configuration);
+
+        ServiceDescriptor registration = Assert.Single(
+            services,
+            static service => service.ServiceType == typeof(IHistoricalParkRolloutGateCache));
+        Assert.Equal(
+            typeof(InMemoryHistoricalParkRolloutGateCache),
+            registration.ImplementationType);
+        Assert.Equal(ServiceLifetime.Singleton, registration.Lifetime);
     }
 
 }

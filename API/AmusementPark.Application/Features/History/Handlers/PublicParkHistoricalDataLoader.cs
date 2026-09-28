@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Services;
@@ -16,19 +18,22 @@ public sealed class PublicParkHistoricalDataLoader
     private readonly IParkZoneRepository parkZoneRepository;
     private readonly IHistoricalFactRepository historicalFactRepository;
     private readonly IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService;
+    private readonly IHistoricalParkRolloutGateCache? rolloutGateCache;
 
     public PublicParkHistoricalDataLoader(
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IParkZoneRepository parkZoneRepository,
         IHistoricalFactRepository historicalFactRepository,
-        IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService)
+        IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService,
+        IHistoricalParkRolloutGateCache? rolloutGateCache = null)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.parkZoneRepository = parkZoneRepository;
         this.historicalFactRepository = historicalFactRepository;
         this.rolloutGateAssessmentService = rolloutGateAssessmentService;
+        this.rolloutGateCache = rolloutGateCache;
     }
 
     public async Task<PublicParkHistoricalData?> LoadAsync(
@@ -60,6 +65,15 @@ public sealed class PublicParkHistoricalDataLoader
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(scope);
+        if (this.rolloutGateCache is not null)
+        {
+            return await this.rolloutGateCache.GetOrCreateAsync(
+                scope.Park.Id,
+                BuildScopeFingerprint(scope),
+                async token => (await this.LoadProjectionAsync(scope, token)).Gate,
+                cancellationToken);
+        }
+
         (HistoricalSubject[] Subjects, HistoricalFact[] Facts, HistoricalParkRolloutGate Gate) projection =
             await this.LoadProjectionAsync(scope, cancellationToken);
         return projection.Gate;
@@ -337,5 +351,22 @@ public sealed class PublicParkHistoricalDataLoader
     private static string ResolveLabel(string? label, string fallback)
     {
         return string.IsNullOrWhiteSpace(label) ? fallback : label.Trim();
+    }
+
+    private static string BuildScopeFingerprint(PublicParkHistoricalScope scope)
+    {
+        string canonicalScope = string.Join(
+            '|',
+            scope.PublicCurrentSubjects
+                .OrderBy(static subject => subject.Type)
+                .ThenBy(static subject => subject.Id, StringComparer.Ordinal)
+                .ThenBy(static subject => subject.ContextParkId, StringComparer.Ordinal)
+                .Select(static subject =>
+                {
+                    string contextParkId = subject.ContextParkId ?? string.Empty;
+                    return $"{(int)subject.Type}:{subject.Id.Length}:{subject.Id}:"
+                        + $"{contextParkId.Length}:{contextParkId}";
+                }));
+        return Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(canonicalScope)));
     }
 }

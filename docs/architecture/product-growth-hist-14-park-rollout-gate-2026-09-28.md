@@ -14,8 +14,11 @@ jamais à ouvrir l’explorateur.
 La gate est ouverte lorsque les quatre preuves suivantes sont réunies :
 
 1. au moins deux faits structurés sont publiés et admissibles à la décision ;
-2. chaque fait publié possède au moins une source dont la dernière révision est
-   encore publiée et accessible ou archivée ;
+2. chaque fait publié possède encore une preuve complète : source favorable
+   couvrant identité, type, période et champs structurés ; un fait contesté
+   conserve en plus des preuves favorables et contradictoires sur un périmètre
+   commun. Les dernières révisions des sources doivent rester publiées et
+   accessibles ou archivées ;
 3. au moins un fait est qualifié de jalon majeur ;
 4. au moins une borne de jalon majeur produit une année clé indexable selon
    `HIST-13` : snapshot annuel, couverture au moins substantielle et deux faits
@@ -102,7 +105,12 @@ ni migration manuelle, ni backfill, ni double système à synchroniser.
 Les snapshots ne sont construits que pour les années de début ou de fin des
 faits majeurs. La gate évalue la projection complète du parc, puis la timeline
 charge uniquement la page demandée grâce à la pagination Mongo existante : le
-tri et le volume du résultat public restent bornés par `pageSize`. Les
+tri et le volume du résultat public restent bornés par `pageSize`. Le verdict
+est conservé cinq minutes en mémoire par parc et par empreinte du périmètre
+public. Toute nouvelle révision de fait ou de source invalide immédiatement la
+génération complète du cache ; un changement de parc, d’item ou de zone produit
+une nouvelle empreinte. Un verrou par parc évite les reconstructions parallèles
+sur un cache froid. Les
 sitemaps XML et HTML refusent les branches d’un parc fermé. Le lecteur SEO
 filtre d’abord sur les identifiants des parcs publics indexés, puis charge sans
 troncature leurs dernières révisions admissibles ; un parc ancien ne disparaît
@@ -110,13 +118,16 @@ donc pas lorsque le corpus global dépasse une limite arbitraire.
 
 ## Preuves automatisées
 
-- Core : ouverture, absence d’année clé, nombre insuffisant de faits, source
-  manquante et absence de jalon majeur ;
+- Core : ouverture, absence d’année clé, nombre insuffisant de faits, preuve
+  incomplète, fait contesté privé de sa preuve favorable et absence de jalon
+  majeur ;
 - Application : sélection bornée des seules années majeures ;
 - Application : fermeture après retrait de la dernière révision d’une source ;
 - Application : timeline et lignée indisponibles lorsque la gate est fermée ;
 - Infrastructure : lecture complète ciblée sur les seuls parcs publics, sans
   plafond global ;
+- Infrastructure : cache borné, changement de périmètre, invalidation et
+  enregistrement singleton ;
 - Application : sitemaps XML et HTML limités aux parcs ouverts et aux années
   qualifiées ;
 - WebAPI : transport du verdict, des compteurs et des années sans identifiant

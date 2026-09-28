@@ -13,7 +13,10 @@ public sealed class HistoricalParkRolloutGateAccessService : IHistoricalParkRoll
 
     public async Task<bool> IsOpenAsync(string parkId, CancellationToken cancellationToken)
     {
-        PublicParkHistoricalData? data = await this.dataLoader.LoadAsync(parkId, cancellationToken);
-        return data?.RolloutGate?.IsOpen == true;
+        PublicParkHistoricalScope? scope = await this.dataLoader.LoadScopeAsync(
+            parkId,
+            cancellationToken);
+        return scope is not null
+            && (await this.dataLoader.AssessRolloutGateAsync(scope, cancellationToken)).IsOpen;
     }
 }
