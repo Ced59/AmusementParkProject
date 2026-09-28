@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Parks;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Commands;
 using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkZones.Handlers;
@@ -12,11 +13,16 @@ public sealed class UpdateParkZoneCommandHandler : ICommandHandler<UpdateParkZon
 {
     private readonly IParkZoneRepository parkZoneRepository;
     private readonly IParkRepository parkRepository;
+    private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
-    public UpdateParkZoneCommandHandler(IParkZoneRepository parkZoneRepository, IParkRepository parkRepository)
+    public UpdateParkZoneCommandHandler(
+        IParkZoneRepository parkZoneRepository,
+        IParkRepository parkRepository,
+        ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
         this.parkZoneRepository = parkZoneRepository;
         this.parkRepository = parkRepository;
+        this.sitemapRefreshScheduler = sitemapRefreshScheduler;
     }
 
     public async Task<ApplicationResult<ParkZone>> HandleAsync(UpdateParkZoneCommand command, CancellationToken cancellationToken = default)
@@ -59,6 +65,7 @@ public sealed class UpdateParkZoneCommandHandler : ICommandHandler<UpdateParkZon
                 return ApplicationResult<ParkZone>.Failure(ParkZoneApplicationErrors.ErrorUpdatingParkZone());
             }
 
+            await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
             return ApplicationResult<ParkZone>.Success(updated);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

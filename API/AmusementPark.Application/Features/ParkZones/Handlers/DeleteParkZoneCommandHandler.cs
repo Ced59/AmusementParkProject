@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkZones.Commands;
 using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkZones.Handlers;
@@ -9,10 +10,14 @@ namespace AmusementPark.Application.Features.ParkZones.Handlers;
 public sealed class DeleteParkZoneCommandHandler : ICommandHandler<DeleteParkZoneCommand, ApplicationResult>
 {
     private readonly IParkZoneRepository parkZoneRepository;
+    private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
 
-    public DeleteParkZoneCommandHandler(IParkZoneRepository parkZoneRepository)
+    public DeleteParkZoneCommandHandler(
+        IParkZoneRepository parkZoneRepository,
+        ISeoSitemapRefreshScheduler sitemapRefreshScheduler)
     {
         this.parkZoneRepository = parkZoneRepository;
+        this.sitemapRefreshScheduler = sitemapRefreshScheduler;
     }
 
     public async Task<ApplicationResult> HandleAsync(DeleteParkZoneCommand command, CancellationToken cancellationToken = default)
@@ -36,6 +41,7 @@ public sealed class DeleteParkZoneCommandHandler : ICommandHandler<DeleteParkZon
                 return ApplicationResult.Failure(ParkZoneApplicationErrors.ErrorDeletingParkZone());
             }
 
+            await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
             return ApplicationResult.Success();
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

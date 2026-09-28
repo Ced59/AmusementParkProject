@@ -69,6 +69,9 @@ flowchart LR
 - la publication, la correction ou la rétractation réussie d’un fait public
   programme immédiatement une régénération du sitemap persistant ; un brouillon
   ou une mutation en conflit ne déclenche aucun travail inutile.
+- la création, la modification ou la suppression réussie d’une zone programme
+  aussi cette régénération, car sa visibilité peut modifier l’éligibilité
+  publique d’une année historique.
 
 ## Canonicalisation et partage
 
@@ -119,6 +122,8 @@ actif à la livraison applicative.
 - Application : exclusion des sujets masqués et sélection des années candidates ;
 - Application : régénération du sitemap après publication, correction ou
   rétractation d’un fait public ;
+- Application : régénération après création, modification ou suppression d’une
+  zone de parc ;
 - sitemap : émission de la timeline et de la seule année clé, dans chaque langue ;
 - Infrastructure : ordre de l’agrégation Mongo et filtre des dernières révisions
   publiées ;
