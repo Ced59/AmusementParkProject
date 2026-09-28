@@ -1,6 +1,20 @@
 {
-  "version": "5.3.93",
+  "version": "5.3.94",
   "history": [
+    {
+      "version": "5.3.94",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "Le suivi de qualité des fiches de parc a été actualisé.",
+        "en": "Park profile quality tracking has been updated.",
+        "de": "Die Qualitätskontrolle der Parkprofile wurde aktualisiert.",
+        "nl": "De kwaliteitsopvolging van parkprofielen is bijgewerkt.",
+        "it": "Il monitoraggio della qualità delle schede dei parchi è stato aggiornato.",
+        "es": "Se ha actualizado el seguimiento de calidad de las fichas de parques.",
+        "pl": "Zaktualizowano monitorowanie jakości profili parków.",
+        "pt": "O acompanhamento da qualidade das fichas dos parques foi atualizado."
+      }
+    },
     {
       "version": "5.3.93",
       "releasedAt": "2026-09-27",
