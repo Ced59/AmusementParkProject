@@ -82,6 +82,27 @@ public sealed class HistoricalParkRolloutGateEvaluatorTests
         Assert.Equal(0, result.MajorFactCount);
     }
 
+    [Fact]
+    public void Evaluate_WhenDisputedFactLosesCurrentSupportingEvidence_ShouldKeepParkClosed()
+    {
+        HistoricalFact disputedFact = CreateDisputedFact(1998, HistoricalImportance.Major);
+        HistoricalFact supportingFact = CreateFact(1990, HistoricalImportance.Standard);
+        HistoricalSourceRevisionReference contradictingReference = disputedFact.SourceReferences
+            .Single(static reference => reference.Position == HistoricalEvidencePosition.Contradicts);
+        HashSet<(Guid SourceId, int Revision)> admissibleSources = SourceKeys(supportingFact)
+            .Append((contradictingReference.SourceId, contradictingReference.Revision))
+            .ToHashSet();
+
+        HistoricalParkRolloutGate result = new HistoricalParkRolloutGateEvaluator().Evaluate(
+            new[] { disputedFact, supportingFact },
+            new[] { 1998 },
+            admissibleSources);
+
+        Assert.False(result.IsOpen);
+        Assert.False(result.HasCompleteSourceCoverage);
+        Assert.Equal(1, result.SourcedFactCount);
+    }
+
     private static HistoricalFact CreateFact(int year, HistoricalImportance importance)
     {
         HistoricalSubject subject = new(
@@ -138,6 +159,58 @@ public sealed class HistoricalParkRolloutGateEvaluatorTests
             2,
             1,
             RecordedAtUtc);
+    }
+
+    private static HistoricalFact CreateDisputedFact(int year, HistoricalImportance importance)
+    {
+        HistoricalFact supportingFact = CreateFact(year, importance);
+        HistoricalSourceRevisionReference supportingReference = supportingFact.SourceReferences.Single();
+        HistoricalSourceRevisionReference contradictingReference = new(
+            Guid.NewGuid(),
+            1,
+            supportingFact.Subject.Type,
+            supportingFact.Subject.Id,
+            supportingFact.Type,
+            supportingFact.Period,
+            HistoricalEvidencePosition.Contradicts,
+            supportingReference.Scopes,
+            supportingReference.HistoricalLabel,
+            supportingReference.StructuredValue,
+            supportingReference.SequenceWithinDate,
+            supportingReference.NarrativeContentId,
+            supportingReference.OtherTypeLabel,
+            supportingReference.LifecycleBoundaryMeaning,
+            supportingReference.AttributeKind,
+            supportingReference.AttributeBoundaryMeaning);
+        return new HistoricalFact(
+            supportingFact.Id,
+            supportingFact.Subject,
+            supportingFact.Type,
+            supportingFact.Period,
+            HistoricalFactState.Disputed,
+            supportingFact.Importance,
+            supportingFact.WorkflowState,
+            supportingFact.PublicationState,
+            HistoricalLocalizationPolicy.SupportedLanguageCodes
+                .Select(static languageCode => new HistoricalLocalizedText(
+                    languageCode,
+                    "Les sources admissibles se contredisent."))
+                .ToArray(),
+            supportingFact.LifecycleBoundaryMeaning,
+            supportingFact.AttributeKind,
+            supportingFact.AttributeBoundaryMeaning,
+            supportingFact.SequenceWithinDate,
+            new[] { supportingReference, contradictingReference },
+            supportingFact.StructuredValue,
+            supportingFact.OtherTypeLabel,
+            supportingFact.NarrativeContentId,
+            null,
+            supportingFact.PublishedAtUtc,
+            supportingFact.PublicationMethodologyVersion,
+            supportingFact.Revision,
+            supportingFact.SupersedesRevision,
+            supportingFact.RecordedAtUtc,
+            supportingFact.RevisionOrigin);
     }
 
     private static IReadOnlySet<(Guid SourceId, int Revision)> SourceKeys(

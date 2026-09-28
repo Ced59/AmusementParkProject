@@ -6,6 +6,13 @@ namespace AmusementPark.Core.Domain.History;
 /// </summary>
 public static class HistoricalFactEvidenceValidator
 {
+    private static readonly HistoricalSourceScope[] CoreScopes =
+    {
+        HistoricalSourceScope.SubjectIdentity,
+        HistoricalSourceScope.FactType,
+        HistoricalSourceScope.Period,
+    };
+
     public static void Validate(
         HistoricalFact fact,
         IReadOnlyCollection<HistoricalSourceReference> resolvedSources)
@@ -103,19 +110,20 @@ public static class HistoricalFactEvidenceValidator
         HistoricalSourceRevisionReference[] admissibleReferences = fact.SourceReferences
             .Where(reference => admissibleSourceKeys.Contains((reference.SourceId, reference.Revision)))
             .ToArray();
-        ValidateEvidencePositions(fact, admissibleReferences);
+        if (!HasValidEvidencePositions(fact, admissibleReferences))
+        {
+            throw Invalid(
+                HistoricalPersistenceErrorCodes.InvalidFactState,
+                fact.State == HistoricalFactState.Disputed
+                    ? "A disputed historical fact requires admissible evidence that conflicts on a shared assertion scope."
+                    : "A verified or probable historical fact requires supporting evidence without an admissible contradiction.");
+        }
+
         HistoricalSourceRevisionReference[] supportingReferences = admissibleReferences
             .Where(static reference => reference.Position == HistoricalEvidencePosition.Supports)
             .ToArray();
-
-        HistoricalSourceScope[] coreScopes =
-        {
-            HistoricalSourceScope.SubjectIdentity,
-            HistoricalSourceScope.FactType,
-            HistoricalSourceScope.Period,
-        };
         bool oneSourceCoversCoreAssertion = supportingReferences.Any(reference =>
-            coreScopes.All(scope => reference.Scopes.Contains(scope)));
+            CoreScopes.All(scope => reference.Scopes.Contains(scope)));
         if (!oneSourceCoversCoreAssertion)
         {
             throw Invalid(
@@ -133,6 +141,36 @@ public static class HistoricalFactEvidenceValidator
                 HistoricalPersistenceErrorCodes.InvalidSourceScope,
                 "Historical evidence does not cover every structured part of the fact.");
         }
+    }
+
+    public static bool HasCurrentlyAdmissiblePublicEvidence(
+        HistoricalFact fact,
+        IReadOnlySet<(Guid SourceId, int Revision)> currentlyAdmissibleSourceRevisions)
+    {
+        ArgumentNullException.ThrowIfNull(fact);
+        ArgumentNullException.ThrowIfNull(currentlyAdmissibleSourceRevisions);
+        HistoricalSourceRevisionReference[] admissibleReferences = fact.SourceReferences
+            .Where(reference => currentlyAdmissibleSourceRevisions.Contains(
+                (reference.SourceId, reference.Revision)))
+            .ToArray();
+        if (!HasValidEvidencePositions(fact, admissibleReferences))
+        {
+            return false;
+        }
+
+        HistoricalSourceRevisionReference[] supportingReferences = admissibleReferences
+            .Where(static reference => reference.Position == HistoricalEvidencePosition.Supports)
+            .ToArray();
+        if (!supportingReferences.Any(reference =>
+                CoreScopes.All(scope => reference.Scopes.Contains(scope))))
+        {
+            return false;
+        }
+
+        HashSet<HistoricalSourceScope> coveredScopes = supportingReferences
+            .SelectMany(static reference => reference.Scopes)
+            .ToHashSet();
+        return BuildRequiredScopes(fact).All(coveredScopes.Contains);
     }
 
     private static HistoricalSourceScope[] BuildRequiredScopes(HistoricalFact fact)
@@ -162,7 +200,7 @@ public static class HistoricalFactEvidenceValidator
         return scopes.ToArray();
     }
 
-    private static void ValidateEvidencePositions(
+    private static bool HasValidEvidencePositions(
         HistoricalFact fact,
         IReadOnlyCollection<HistoricalSourceRevisionReference> admissibleReferences)
     {
@@ -174,27 +212,14 @@ public static class HistoricalFactEvidenceValidator
             .ToArray();
         if (fact.State == HistoricalFactState.Disputed)
         {
-            bool hasSharedDisputedScope = supportingReferences.Any(supportingReference =>
+            return supportingReferences.Length > 0
+                && contradictingReferences.Length > 0
+                && supportingReferences.Any(supportingReference =>
                 contradictingReferences.Any(contradictingReference =>
                     supportingReference.Scopes.Intersect(contradictingReference.Scopes).Any()));
-            if (supportingReferences.Length == 0
-                || contradictingReferences.Length == 0
-                || !hasSharedDisputedScope)
-            {
-                throw Invalid(
-                    HistoricalPersistenceErrorCodes.InvalidFactState,
-                    "A disputed historical fact requires admissible evidence that conflicts on a shared assertion scope.");
-            }
-
-            return;
         }
 
-        if (supportingReferences.Length == 0 || contradictingReferences.Length > 0)
-        {
-            throw Invalid(
-                HistoricalPersistenceErrorCodes.InvalidFactState,
-                "A verified or probable historical fact requires supporting evidence without an admissible contradiction.");
-        }
+        return supportingReferences.Length > 0 && contradictingReferences.Length == 0;
     }
 
     private static HistoricalPersistenceValidationException Invalid(string code, string message)

@@ -18,8 +18,10 @@ public sealed class HistoricalParkRolloutGateEvaluator
             .ToArray();
         return new HistoricalParkRolloutGate(
             publishedFacts.Length,
-            publishedFacts.Count(fact => fact.SourceReferences.Any(reference =>
-                currentlyAdmissibleSourceRevisions.Contains((reference.SourceId, reference.Revision)))),
+            publishedFacts.Count(fact =>
+                HistoricalFactEvidenceValidator.HasCurrentlyAdmissiblePublicEvidence(
+                    fact,
+                    currentlyAdmissibleSourceRevisions)),
             publishedFacts.Count(static fact => fact.Importance == HistoricalImportance.Major),
             indexableKeyYears);
     }
