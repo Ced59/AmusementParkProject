@@ -17,6 +17,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -267,7 +268,8 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandler : IQueryHandler<GetPub
     internal readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     internal readonly ITechnicalPageRepository technicalPageRepository;
     internal readonly ISeoSitemapSnapshotRepository sitemapSnapshotRepository;
-    public GetPublicHtmlSitemapNodesQueryHandler(IParkRepository parkRepository, IParkItemRepository parkItemRepository, IParkZoneRepository parkZoneRepository, IParkOpeningHoursRepository openingHoursRepository, IParkPricingRepository pricingRepository, IImageRepository imageRepository, IVideoRepository videoRepository, IHistoryEventRepository historyEventRepository, IParkOperatorRepository parkOperatorRepository, IParkFounderRepository parkFounderRepository, IAttractionManufacturerRepository attractionManufacturerRepository, ITechnicalPageRepository technicalPageRepository, ISeoSitemapSnapshotRepository sitemapSnapshotRepository)
+    internal readonly IHistoricalParkRolloutGateAccessService rolloutGateAccessService;
+    public GetPublicHtmlSitemapNodesQueryHandler(IParkRepository parkRepository, IParkItemRepository parkItemRepository, IParkZoneRepository parkZoneRepository, IParkOpeningHoursRepository openingHoursRepository, IParkPricingRepository pricingRepository, IImageRepository imageRepository, IVideoRepository videoRepository, IHistoryEventRepository historyEventRepository, IParkOperatorRepository parkOperatorRepository, IParkFounderRepository parkFounderRepository, IAttractionManufacturerRepository attractionManufacturerRepository, ITechnicalPageRepository technicalPageRepository, ISeoSitemapSnapshotRepository sitemapSnapshotRepository, IHistoricalParkRolloutGateAccessService rolloutGateAccessService)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
@@ -282,6 +284,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandler : IQueryHandler<GetPub
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.technicalPageRepository = technicalPageRepository;
         this.sitemapSnapshotRepository = sitemapSnapshotRepository;
+        this.rolloutGateAccessService = rolloutGateAccessService;
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>>> HandleAsync(GetPublicHtmlSitemapNodesQuery query, CancellationToken cancellationToken = default)

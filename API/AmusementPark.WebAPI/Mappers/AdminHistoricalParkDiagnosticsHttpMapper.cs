@@ -28,6 +28,18 @@ public static class AdminHistoricalParkDiagnosticsHttpMapper
                 ConfirmedConflictVisitCount = result.VisitCounts.ConfirmedConflictVisitCount,
                 UnverifiedVisitCount = result.VisitCounts.UnverifiedVisitCount,
             },
+            RolloutGate = new AdminHistoricalParkRolloutGateDto
+            {
+                IsOpen = result.RolloutGate.IsOpen,
+                HasEnoughStructuredFacts = result.RolloutGate.HasEnoughStructuredFacts,
+                HasCompleteSourceCoverage = result.RolloutGate.HasCompleteSourceCoverage,
+                HasMajorMilestone = result.RolloutGate.HasMajorMilestone,
+                HasIndexableKeyYear = result.RolloutGate.HasIndexableKeyYear,
+                PublishedFactCount = result.RolloutGate.PublishedFactCount,
+                SourcedFactCount = result.RolloutGate.SourcedFactCount,
+                MajorFactCount = result.RolloutGate.MajorFactCount,
+                IndexableKeyYears = result.RolloutGate.IndexableKeyYears,
+            },
         };
     }
 

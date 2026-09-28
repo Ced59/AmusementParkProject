@@ -7,4 +7,5 @@ public sealed record PublicParkHistoricalData(
     Park Park,
     IReadOnlyCollection<HistoricalSubject> Subjects,
     IReadOnlyCollection<HistoricalFact> Facts,
-    IReadOnlyDictionary<string, string> ZoneNames);
+    IReadOnlyDictionary<string, string> ZoneNames,
+    HistoricalParkRolloutGate? RolloutGate);

@@ -22,4 +22,6 @@ public sealed class AdminHistoricalParkDiagnosticsDto
         Array.Empty<AdminHistoricalWorkflowStageDto>();
 
     public AdminHistoricalVisitDiagnosticsDto Visits { get; init; } = new();
+
+    public AdminHistoricalParkRolloutGateDto RolloutGate { get; init; } = new();
 }

@@ -123,6 +123,19 @@
           "blocked": "Corrections required",
           "ready": "No blocker detected"
         },
+        "rollout": {
+          "kicker": "Per-park rollout",
+          "openTitle": "Public explorer enabled",
+          "blockedTitle": "Public explorer pending",
+          "openHint": "Published facts support a sufficiently documented historical experience.",
+          "blockedHint": "Complete the missing criteria before exposing this history publicly.",
+          "structuredFacts": "{{current}} published structured fact(s) · minimum {{required}}",
+          "sources": "{{sourced}} sourced fact(s) out of {{total}}",
+          "majorMilestone": "{{count}} published major milestone(s)",
+          "keyYear": "{{count}} key year(s) with sufficient coverage",
+          "years": "Key years: {{years}}",
+          "independence": "This decision relies only on published historical facts, never on the number of visits or members."
+        },
         "kpis": {
           "blockers": "Blockers",
           "blockersHint": "Fix before publication",

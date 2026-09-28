@@ -872,7 +872,7 @@ public sealed class SitemapSectionProvidersTests
     }
 
     [Fact]
-    public async Task HistoryTimelinesProvider_WhenVisibleEventsExist_ShouldReturnTimelineUrlsOnly()
+    public async Task HistoryTimelinesProvider_WhenOnlyLegacyNarrativesExist_ShouldNotActivateParkExplorer()
     {
         DateTime olderUpdate = new DateTime(2026, 1, 2, 0, 0, 0, DateTimeKind.Utc);
         DateTime newerUpdate = new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc);
@@ -949,9 +949,7 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(2, urls.Count);
-        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/mirapolis/history" && url.LastModifiedUtc == newerUpdate);
-        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/mirapolis/history");
+        Assert.Empty(urls);
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("/item/item-1/", StringComparison.OrdinalIgnoreCase));
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("park-major", StringComparison.OrdinalIgnoreCase));
         historyRepository.VerifyAll();
@@ -960,7 +958,7 @@ public sealed class SitemapSectionProvidersTests
     }
 
     [Fact]
-    public async Task HistoryTimelinesProvider_WhenPublicParkHasLifecycleDates_ShouldReturnAutomaticTimelineUrls()
+    public async Task HistoryTimelinesProvider_WhenOnlyLegacyLifecycleDatesExist_ShouldNotActivateParkExplorer()
     {
         DateTime updatedAtUtc = new DateTime(2026, 4, 5, 0, 0, 0, DateTimeKind.Utc);
         Park[] parks = new[]
@@ -1000,16 +998,14 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(2, urls.Count);
-        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/mirapolis/history" && url.LastModifiedUtc == updatedAtUtc);
-        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/mirapolis/history");
+        Assert.Empty(urls);
         historyRepository.VerifyAll();
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
     }
 
     [Fact]
-    public async Task HistoryTimelinesProvider_WhenPublicItemHasLifecycleDates_ShouldReturnItemAndParentParkTimelineUrls()
+    public async Task HistoryTimelinesProvider_WhenOnlyItemLifecycleDatesExist_ShouldKeepItemTimelineWithoutParkExplorer()
     {
         DateTime updatedAtUtc = new DateTime(2026, 4, 6, 0, 0, 0, DateTimeKind.Utc);
         Park[] parks = new[]
@@ -1057,8 +1053,8 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(2, urls.Count);
-        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/mirapolis/history" && url.LastModifiedUtc == updatedAtUtc);
+        Assert.Single(urls);
+        Assert.DoesNotContain(urls, static url => url.RelativePath == "/fr/park/park-1/mirapolis/history");
         Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/mirapolis/item/item-1/mira-looping/history" && url.LastModifiedUtc == updatedAtUtc);
         historyRepository.VerifyAll();
         parkRepository.VerifyAll();

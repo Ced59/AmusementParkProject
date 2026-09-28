@@ -77,11 +77,29 @@ public sealed class HistoricalParkEditorialScopeLoader
                 park.Id)))
             .DistinctBy(static subject => (subject.Type, subject.Id))
             .ToArray();
+        bool isPublicPark = park.IsVisible && park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
+        HashSet<(HistoricalSubjectType Type, string Id)> publicSubjectKeys = new();
+        if (isPublicPark)
+        {
+            publicSubjectKeys.Add((HistoricalSubjectType.Park, park.Id));
+            publicSubjectKeys.UnionWith(items
+                .Where(static item => item.IsVisible
+                    && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+                .Select(static item => (HistoricalSubjectType.ParkItem, item.Id)));
+            publicSubjectKeys.UnionWith(zones
+                .Where(static zone => zone.IsVisible)
+                .Select(static zone => (HistoricalSubjectType.ParkZone, zone.Id)));
+        }
+        HistoricalSubject[] publicCurrentSubjects = currentSubjects
+            .Where(subject => publicSubjectKeys.Contains((subject.Type, subject.Id)))
+            .ToArray();
 
         return new HistoricalParkEditorialScope(
             park.Id,
             ResolveLabel(park.Name, "Park"),
+            isPublicPark,
             currentSubjects,
+            publicCurrentSubjects,
             zones.Select(static zone => zone.Id).Distinct().ToArray());
     }
 

@@ -220,7 +220,9 @@ internal static class GetPublicHtmlSitemapNodesQueryHandlerParkNodesExtensions
     internal static async Task<IReadOnlyCollection<PublicHtmlSitemapNode>> BuildParkHistoryArticleNodesAsync(this GetPublicHtmlSitemapNodesQueryHandler processorContext, string language, string parkId, CancellationToken cancellationToken)
     {
         Park? park = await processorContext.GetPublicParkAsync(parkId, cancellationToken);
-        if (park is null)
+        if (park is null
+            || string.IsNullOrWhiteSpace(park.Id)
+            || !await processorContext.rolloutGateAccessService.IsOpenAsync(park.Id, cancellationToken))
         {
             return Array.Empty<PublicHtmlSitemapNode>();
         }

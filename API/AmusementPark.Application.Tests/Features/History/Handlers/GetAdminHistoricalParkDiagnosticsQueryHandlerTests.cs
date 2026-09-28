@@ -111,6 +111,7 @@ public sealed class GetAdminHistoricalParkDiagnosticsQueryHandlerTests
         Assert.Equal("Parc témoin", result.Value.ParkName);
         Assert.Equal(4, result.Value.VisitCounts.PotentiallyInconsistentVisitCount);
         Assert.Empty(result.Value.Diagnostics.Issues);
+        Assert.False(result.Value.RolloutGate.IsOpen);
         parks.VerifyAll();
         items.VerifyAll();
         zones.VerifyAll();
@@ -135,6 +136,11 @@ public sealed class GetAdminHistoricalParkDiagnosticsQueryHandlerTests
             facts.Object,
             relations.Object,
             visits.Object,
-            new HistoricalParkDiagnosticsEvaluator());
+            new HistoricalParkDiagnosticsEvaluator(),
+            new HistoricalParkRolloutGateAssessmentService(
+                new ParkHistoricalSnapshotBuilder(),
+                new HistoricalParkRolloutGateEvaluator(),
+                PublicParkHistoryTestData.CreatePublicSourceRepository(
+                    Array.Empty<HistoricalFact>())));
     }
 }

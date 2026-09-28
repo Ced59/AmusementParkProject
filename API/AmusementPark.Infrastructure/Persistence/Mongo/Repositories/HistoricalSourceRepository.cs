@@ -15,11 +15,17 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
     internal const int MaximumBatchSize = 500;
 
     private readonly IMongoCollection<HistoricalSourceDocument> collection;
+    private readonly IHistoricalParkRolloutGateCache rolloutGateCache;
 
-    public HistoricalSourceRepository(IMongoDatabase database, MongoDbSettings settings)
+    public HistoricalSourceRepository(
+        IMongoDatabase database,
+        MongoDbSettings settings,
+        IHistoricalParkRolloutGateCache rolloutGateCache)
     {
         this.collection = database.GetCollection<HistoricalSourceDocument>(
             settings.HistoricalSourcesCollectionName);
+        this.rolloutGateCache = rolloutGateCache
+            ?? throw new ArgumentNullException(nameof(rolloutGateCache));
     }
 
     public async Task<HistoricalRevisionWriteDisposition> AppendRevisionAsync(
@@ -55,6 +61,7 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
         try
         {
             await this.collection.InsertOneAsync(candidate, cancellationToken: cancellationToken);
+            this.rolloutGateCache.Invalidate();
             return HistoricalRevisionWriteDisposition.Created;
         }
         catch (MongoWriteException exception)

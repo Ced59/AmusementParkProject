@@ -79,6 +79,50 @@
         {{ 'admin.history.diagnostics.openWorkbench' | translate }}
       </a>
 
+      <article
+        class="admin-card history-diagnostics__rollout"
+        [class.history-diagnostics__rollout--open]="facade.isRolloutOpen()">
+        <div class="history-diagnostics__rollout-head">
+          <span
+            class="history-diagnostics__rollout-icon pi"
+            [class.pi-lock-open]="facade.isRolloutOpen()"
+            [class.pi-lock]="!facade.isRolloutOpen()"
+            aria-hidden="true"></span>
+          <div>
+            <span class="kicker">{{ 'admin.history.diagnostics.rollout.kicker' | translate }}</span>
+            <h3>{{ (facade.isRolloutOpen() ? 'admin.history.diagnostics.rollout.openTitle' : 'admin.history.diagnostics.rollout.blockedTitle') | translate }}</h3>
+            <p>{{ (facade.isRolloutOpen() ? 'admin.history.diagnostics.rollout.openHint' : 'admin.history.diagnostics.rollout.blockedHint') | translate }}</p>
+          </div>
+        </div>
+        <ul class="history-diagnostics__rollout-checks">
+          <li [class.is-ready]="diagnostics.rolloutGate.hasEnoughStructuredFacts">
+            <span class="pi" [class.pi-check-circle]="diagnostics.rolloutGate.hasEnoughStructuredFacts" [class.pi-circle]="!diagnostics.rolloutGate.hasEnoughStructuredFacts" aria-hidden="true"></span>
+            <span>{{ 'admin.history.diagnostics.rollout.structuredFacts' | translate: { current: diagnostics.rolloutGate.publishedFactCount, required: 2 } }}</span>
+          </li>
+          <li [class.is-ready]="diagnostics.rolloutGate.hasCompleteSourceCoverage">
+            <span class="pi" [class.pi-check-circle]="diagnostics.rolloutGate.hasCompleteSourceCoverage" [class.pi-circle]="!diagnostics.rolloutGate.hasCompleteSourceCoverage" aria-hidden="true"></span>
+            <span>{{ 'admin.history.diagnostics.rollout.sources' | translate: { sourced: diagnostics.rolloutGate.sourcedFactCount, total: diagnostics.rolloutGate.publishedFactCount } }}</span>
+          </li>
+          <li [class.is-ready]="diagnostics.rolloutGate.hasMajorMilestone">
+            <span class="pi" [class.pi-check-circle]="diagnostics.rolloutGate.hasMajorMilestone" [class.pi-circle]="!diagnostics.rolloutGate.hasMajorMilestone" aria-hidden="true"></span>
+            <span>{{ 'admin.history.diagnostics.rollout.majorMilestone' | translate: { count: diagnostics.rolloutGate.majorFactCount } }}</span>
+          </li>
+          <li [class.is-ready]="diagnostics.rolloutGate.hasIndexableKeyYear">
+            <span class="pi" [class.pi-check-circle]="diagnostics.rolloutGate.hasIndexableKeyYear" [class.pi-circle]="!diagnostics.rolloutGate.hasIndexableKeyYear" aria-hidden="true"></span>
+            <span>{{ 'admin.history.diagnostics.rollout.keyYear' | translate: { count: diagnostics.rolloutGate.indexableKeyYears.length } }}</span>
+          </li>
+        </ul>
+        @if (diagnostics.rolloutGate.indexableKeyYears.length > 0) {
+          <p class="history-diagnostics__rollout-years">
+            {{ 'admin.history.diagnostics.rollout.years' | translate: { years: diagnostics.rolloutGate.indexableKeyYears.join(', ') } }}
+          </p>
+        }
+        <p class="history-diagnostics__rollout-independence">
+          <span class="pi pi-shield" aria-hidden="true"></span>
+          {{ 'admin.history.diagnostics.rollout.independence' | translate }}
+        </p>
+      </article>
+
       <div class="history-diagnostics__kpis">
         <article class="admin-card history-diagnostics__kpi history-diagnostics__kpi--critical">
           <span>{{ 'admin.history.diagnostics.kpis.blockers' | translate }}</span>

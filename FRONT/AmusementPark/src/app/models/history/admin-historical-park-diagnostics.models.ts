@@ -30,6 +30,18 @@ export interface AdminHistoricalVisitDiagnostics {
   unverifiedVisitCount: number;
 }
 
+export interface AdminHistoricalParkRolloutGate {
+  isOpen: boolean;
+  hasEnoughStructuredFacts: boolean;
+  hasCompleteSourceCoverage: boolean;
+  hasMajorMilestone: boolean;
+  hasIndexableKeyYear: boolean;
+  publishedFactCount: number;
+  sourcedFactCount: number;
+  majorFactCount: number;
+  indexableKeyYears: number[];
+}
+
 export interface AdminHistoricalParkDiagnostics {
   parkId: string;
   parkName: string;
@@ -40,4 +52,5 @@ export interface AdminHistoricalParkDiagnostics {
   decadeCoverage: AdminHistoricalDecadeCoverage[];
   workflow: AdminHistoricalWorkflowStage[];
   visits: AdminHistoricalVisitDiagnostics;
+  rolloutGate: AdminHistoricalParkRolloutGate;
 }

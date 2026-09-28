@@ -4,7 +4,7 @@ namespace AmusementPark.Application.Features.History.Ports;
 
 public interface IHistoricalKeyYearFactReader
 {
-    Task<IReadOnlyCollection<HistoricalFact>> GetLatestDecisionEligibleRevisionsAsync(
-        int limit,
+    Task<IReadOnlyCollection<HistoricalFact>> GetLatestDecisionEligibleRevisionsForParksAsync(
+        IReadOnlyCollection<string> parkIds,
         CancellationToken cancellationToken);
 }

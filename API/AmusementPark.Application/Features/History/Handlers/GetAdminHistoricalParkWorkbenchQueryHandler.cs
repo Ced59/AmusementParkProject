@@ -23,6 +23,7 @@ public sealed class GetAdminHistoricalParkWorkbenchQueryHandler :
     private readonly IHistoricalSourceRepository sourceRepository;
     private readonly IHistoricalVisitDiagnosticsReader visitDiagnosticsReader;
     private readonly HistoricalParkDiagnosticsEvaluator diagnosticsEvaluator;
+    private readonly IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService;
 
     public GetAdminHistoricalParkWorkbenchQueryHandler(
         HistoricalParkEditorialScopeLoader scopeLoader,
@@ -30,7 +31,8 @@ public sealed class GetAdminHistoricalParkWorkbenchQueryHandler :
         IHistoricalRelationRepository relationRepository,
         IHistoricalSourceRepository sourceRepository,
         IHistoricalVisitDiagnosticsReader visitDiagnosticsReader,
-        HistoricalParkDiagnosticsEvaluator diagnosticsEvaluator)
+        HistoricalParkDiagnosticsEvaluator diagnosticsEvaluator,
+        IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService)
     {
         this.scopeLoader = scopeLoader;
         this.factRepository = factRepository;
@@ -38,6 +40,7 @@ public sealed class GetAdminHistoricalParkWorkbenchQueryHandler :
         this.sourceRepository = sourceRepository;
         this.visitDiagnosticsReader = visitDiagnosticsReader;
         this.diagnosticsEvaluator = diagnosticsEvaluator;
+        this.rolloutGateAssessmentService = rolloutGateAssessmentService;
     }
 
     public async Task<ApplicationResult<AdminHistoricalParkWorkbenchResult>> HandleAsync(
@@ -121,6 +124,10 @@ public sealed class GetAdminHistoricalParkWorkbenchQueryHandler :
                 relations.OrderByDescending(static relation => relation.RecordedAtUtc).ToArray(),
                 sources,
                 diagnostics,
-                await visitsTask));
+                await visitsTask,
+                await this.rolloutGateAssessmentService.AssessPublicParkAsync(
+                    scope,
+                    facts,
+                    cancellationToken)));
     }
 }

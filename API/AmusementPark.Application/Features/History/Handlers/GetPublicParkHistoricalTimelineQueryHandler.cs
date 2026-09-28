@@ -55,7 +55,8 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
 
         string parkId = query.ParkId.Trim();
         PublicParkHistoricalScope? scope = await this.dataLoader.LoadScopeAsync(parkId, cancellationToken);
-        if (scope is null)
+        if (scope is null
+            || !(await this.dataLoader.AssessRolloutGateAsync(scope, cancellationToken)).IsOpen)
         {
             return ApplicationResult<PublicParkHistoricalTimelineResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(Park), parkId));

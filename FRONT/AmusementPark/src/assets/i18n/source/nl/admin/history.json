@@ -122,6 +122,19 @@
           "blocked": "Correcties vereist",
           "ready": "Geen blokkering gevonden"
         },
+        "rollout": {
+          "kicker": "Uitrol per park",
+          "openTitle": "Openbare verkenner geactiveerd",
+          "blockedTitle": "Openbare verkenner nog niet gereed",
+          "openHint": "De gepubliceerde feiten bieden voldoende onderbouwing voor historische verkenning.",
+          "blockedHint": "Vul de ontbrekende criteria aan voordat deze geschiedenis openbaar wordt.",
+          "structuredFacts": "{{current}} gepubliceerde gestructureerde feiten · minimaal {{required}}",
+          "sources": "{{sourced}} van {{total}} feiten met bronnen",
+          "majorMilestone": "{{count}} gepubliceerde belangrijke mijlpalen",
+          "keyYear": "{{count}} sleuteljaren met voldoende dekking",
+          "years": "Sleuteljaren: {{years}}",
+          "independence": "Deze beslissing is uitsluitend gebaseerd op gepubliceerde historische feiten, nooit op het aantal bezoeken of leden."
+        },
         "kpis": {
           "blockers": "Blokkeringen",
           "blockersHint": "Te corrigeren vóór publicatie",

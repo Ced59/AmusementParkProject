@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
@@ -116,8 +117,11 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         snapshotRepository.VerifyAll();
     }
 
-    [Fact]
-    public async Task HandleAsync_WhenClosedVisibleItemHasHistory_ShouldExposeParkHistoryNode()
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task HandleAsync_WhenClosedVisibleItemHasHistory_ShouldRespectParkRolloutGate(
+        bool rolloutGateIsOpen)
     {
         Park park = new Park
         {
@@ -226,7 +230,8 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
             imageRepository,
             videoRepository,
             historyRepository,
-            pricingRepository: pricingRepository);
+            pricingRepository: pricingRepository,
+            rolloutGateIsOpen: rolloutGateIsOpen);
 
         ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> result = await handler.HandleAsync(
             new GetPublicHtmlSitemapNodesQuery("fr", "park:park-1", new[] { "fr", "en" }),
@@ -235,7 +240,10 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
         Assert.Contains(result.Value, static node => node.Id == "park-items:park-1" && node.RelativeUrl == "/fr/park/park-1/magic-park/items");
-        Assert.Contains(result.Value, static node => node.Id == "park-history:park-1" && node.RelativeUrl == "/fr/park/park-1/magic-park/history");
+        Assert.Equal(
+            rolloutGateIsOpen,
+            result.Value.Any(static node => node.Id == "park-history:park-1"
+                && node.RelativeUrl == "/fr/park/park-1/magic-park/history"));
         Assert.Contains(result.Value, static node => node.Id == "park-pricing:park-1" && node.RelativeUrl == "/fr/park/park-1/magic-park/pricing");
 
         ApplicationResult<IReadOnlyCollection<PublicHtmlSitemapNode>> itemNodesResult = await handler.HandleAsync(
@@ -526,8 +534,13 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
         Mock<IAttractionManufacturerRepository>? attractionManufacturerRepository = null,
         Mock<ITechnicalPageRepository>? technicalPageRepository = null,
         Mock<ISeoSitemapSnapshotRepository>? sitemapSnapshotRepository = null,
-        Mock<IParkPricingRepository>? pricingRepository = null)
+        Mock<IParkPricingRepository>? pricingRepository = null,
+        bool rolloutGateIsOpen = true)
     {
+        Mock<IHistoricalParkRolloutGateAccessService> rolloutGate = new(MockBehavior.Strict);
+        rolloutGate
+            .Setup(service => service.IsOpenAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(rolloutGateIsOpen);
         return new GetPublicHtmlSitemapNodesQueryHandler(
             parkRepository.Object,
             parkItemRepository.Object,
@@ -541,6 +554,7 @@ public sealed class GetPublicHtmlSitemapNodesQueryHandlerTests
             parkFounderRepository?.Object ?? Mock.Of<IParkFounderRepository>(),
             attractionManufacturerRepository?.Object ?? Mock.Of<IAttractionManufacturerRepository>(),
             technicalPageRepository?.Object ?? Mock.Of<ITechnicalPageRepository>(),
-            sitemapSnapshotRepository?.Object ?? Mock.Of<ISeoSitemapSnapshotRepository>());
+            sitemapSnapshotRepository?.Object ?? Mock.Of<ISeoSitemapSnapshotRepository>(),
+            rolloutGate.Object);
     }
 }

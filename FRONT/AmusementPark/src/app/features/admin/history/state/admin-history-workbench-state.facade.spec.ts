@@ -105,6 +105,17 @@ function createWorkbench(parkId: string): AdminHistoricalParkWorkbench {
         potentiallyInconsistentVisitCount: 0,
         confirmedConflictVisitCount: 0,
         unverifiedVisitCount: 0
+      },
+      rolloutGate: {
+        isOpen: false,
+        hasEnoughStructuredFacts: false,
+        hasCompleteSourceCoverage: false,
+        hasMajorMilestone: false,
+        hasIndexableKeyYear: false,
+        publishedFactCount: 0,
+        sourcedFactCount: 0,
+        majorFactCount: 0,
+        indexableKeyYears: []
       }
     }
   };

@@ -66,7 +66,8 @@ public sealed class AdminHistoricalParkDiagnosticsControllerTests
             "park-1",
             "Parc témoin",
             diagnostics,
-            new HistoricalVisitDiagnosticCounts(5, 2, 4));
+            new HistoricalVisitDiagnosticCounts(5, 2, 4),
+            new HistoricalParkRolloutGate(2, 2, 1, new[] { 1998 }));
         Mock<IQueryHandler<
             GetAdminHistoricalParkDiagnosticsQuery,
             ApplicationResult<AdminHistoricalParkDiagnosticsResult>>> handler =
@@ -89,6 +90,8 @@ public sealed class AdminHistoricalParkDiagnosticsControllerTests
         Assert.Equal(0, response.BlockingIssueCount);
         Assert.Equal("MissingSource", Assert.Single(response.Issues).Code);
         Assert.Equal(5, response.Visits.PotentiallyInconsistentVisitCount);
+        Assert.True(response.RolloutGate.IsOpen);
+        Assert.Equal(new[] { 1998 }, response.RolloutGate.IndexableKeyYears);
         Assert.DoesNotContain("user", response.GetType().GetProperties()
             .Select(static property => property.Name), StringComparer.OrdinalIgnoreCase);
         handler.VerifyAll();

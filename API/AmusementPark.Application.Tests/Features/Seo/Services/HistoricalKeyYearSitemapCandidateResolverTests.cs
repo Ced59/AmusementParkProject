@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Tests.Features.History.Handlers;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Services;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
@@ -13,7 +14,7 @@ namespace AmusementPark.Application.Tests.Features.Seo.Services;
 public sealed class HistoricalKeyYearSitemapCandidateResolverTests
 {
     [Fact]
-    public void Resolve_WithMajorDocumentedYear_AddsOnlyCanonicalYearCandidate()
+    public async Task ResolveAsync_WithMajorDocumentedYear_AddsOnlyCanonicalYearCandidate()
     {
         Park park = PublicParkHistoryTestData.CreatePark();
         ParkItem item = PublicParkHistoryTestData.CreateParkItem("item-1", "Attraction témoin");
@@ -50,19 +51,20 @@ public sealed class HistoricalKeyYearSitemapCandidateResolverTests
                     itemOpening.Id));
 
         IReadOnlyCollection<HistoricalKeyYearSitemapCandidate> result =
-            HistoricalKeyYearSitemapCandidateResolver.Resolve(
+            await HistoricalKeyYearSitemapCandidateResolver.ResolveAsync(
                 new[] { park },
                 new[] { item },
                 Array.Empty<ParkZone>(),
                 new[] { parkOpening, itemOpening },
-                snapshotBuilder.Object);
+                CreateAssessment(snapshotBuilder.Object, new[] { parkOpening, itemOpening }),
+                CancellationToken.None);
 
         Assert.Contains(result, candidate => candidate.ParkId == park.Id && candidate.Year == 1998);
         Assert.All(result, candidate => Assert.Contains(candidate.Year, new[] { 1990, 1998 }));
     }
 
     [Fact]
-    public void Resolve_WithHiddenCurrentSubject_DoesNotUseItsFact()
+    public async Task ResolveAsync_WithHiddenCurrentSubject_DoesNotUseItsFact()
     {
         Park park = PublicParkHistoryTestData.CreatePark();
         ParkItem hiddenItem = PublicParkHistoryTestData.CreateParkItem("hidden-item", "Attraction masquée", false);
@@ -76,18 +78,19 @@ public sealed class HistoricalKeyYearSitemapCandidateResolverTests
         Mock<IParkHistoricalSnapshotBuilder> snapshotBuilder = new Mock<IParkHistoricalSnapshotBuilder>(MockBehavior.Strict);
 
         IReadOnlyCollection<HistoricalKeyYearSitemapCandidate> result =
-            HistoricalKeyYearSitemapCandidateResolver.Resolve(
+            await HistoricalKeyYearSitemapCandidateResolver.ResolveAsync(
                 new[] { park },
                 new[] { hiddenItem },
                 Array.Empty<ParkZone>(),
                 new[] { hiddenFact },
-                snapshotBuilder.Object);
+                CreateAssessment(snapshotBuilder.Object, Array.Empty<HistoricalFact>()),
+                CancellationToken.None);
 
         Assert.Empty(result);
     }
 
     [Fact]
-    public void Resolve_WithSubjectMovedToAnotherPark_DoesNotExposeItsFormerParkFact()
+    public async Task ResolveAsync_WithSubjectMovedToAnotherPark_DoesNotExposeItsFormerParkFact()
     {
         Park formerPark = PublicParkHistoryTestData.CreatePark();
         formerPark.Id = "park-former";
@@ -108,12 +111,13 @@ public sealed class HistoricalKeyYearSitemapCandidateResolverTests
             new Mock<IParkHistoricalSnapshotBuilder>(MockBehavior.Strict);
 
         IReadOnlyCollection<HistoricalKeyYearSitemapCandidate> result =
-            HistoricalKeyYearSitemapCandidateResolver.Resolve(
+            await HistoricalKeyYearSitemapCandidateResolver.ResolveAsync(
                 new[] { formerPark, currentPark },
                 new[] { movedItem },
                 Array.Empty<ParkZone>(),
                 new[] { formerFact },
-                snapshotBuilder.Object);
+                CreateAssessment(snapshotBuilder.Object, Array.Empty<HistoricalFact>()),
+                CancellationToken.None);
 
         Assert.Empty(result);
         snapshotBuilder.VerifyNoOtherCalls();
@@ -149,5 +153,15 @@ public sealed class HistoricalKeyYearSitemapCandidateResolverTests
             coverage,
             Array.Empty<HistoricalAmbiguity>(),
             ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion);
+    }
+
+    private static HistoricalParkRolloutGateAssessmentService CreateAssessment(
+        IParkHistoricalSnapshotBuilder snapshotBuilder,
+        IReadOnlyCollection<HistoricalFact> facts)
+    {
+        return new HistoricalParkRolloutGateAssessmentService(
+            snapshotBuilder,
+            new HistoricalParkRolloutGateEvaluator(),
+            PublicParkHistoryTestData.CreatePublicSourceRepository(facts));
     }
 }

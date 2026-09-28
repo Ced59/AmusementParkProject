@@ -2640,6 +2640,19 @@
           "blocked": "Wymagane poprawki",
           "ready": "Nie wykryto blokady"
         },
+        "rollout": {
+          "kicker": "Udostępnianie według parku",
+          "openTitle": "Publiczny eksplorator aktywny",
+          "blockedTitle": "Publiczny eksplorator oczekuje",
+          "openHint": "Opublikowane fakty pozwalają na wystarczająco udokumentowane poznawanie historii.",
+          "blockedHint": "Uzupełnij brakujące kryteria, zanim ta historia stanie się publiczna.",
+          "structuredFacts": "{{current}} opublikowanych faktów strukturalnych · minimum {{required}}",
+          "sources": "{{sourced}} z {{total}} faktów ma źródła",
+          "majorMilestone": "{{count}} opublikowanych ważnych wydarzeń",
+          "keyYear": "{{count}} kluczowych lat z wystarczającym pokryciem",
+          "years": "Kluczowe lata: {{years}}",
+          "independence": "Ta decyzja opiera się wyłącznie na opublikowanych faktach historycznych, nigdy na liczbie wizyt ani użytkowników."
+        },
         "kpis": {
           "blockers": "Blokady",
           "blockersHint": "Do poprawienia przed publikacją",

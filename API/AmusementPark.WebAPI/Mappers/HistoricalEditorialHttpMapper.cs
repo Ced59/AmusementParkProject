@@ -25,7 +25,8 @@ public static class HistoricalEditorialHttpMapper
                 result.ParkId,
                 result.ParkName,
                 result.Diagnostics,
-                result.VisitCounts).ToHttp(),
+                result.VisitCounts,
+                result.RolloutGate).ToHttp(),
         };
     }
 

@@ -157,6 +157,12 @@ internal static class GetPublicHtmlSitemapNodesQueryHandlerHelpersExtensions
 
     internal static async Task<bool> HasParkHistoryAsync(this GetPublicHtmlSitemapNodesQueryHandler processorContext, Park park, IReadOnlyCollection<ParkItem> publicItems, IReadOnlyCollection<string>? itemIdsWithExplicitHistory, CancellationToken cancellationToken)
     {
+        if (string.IsNullOrWhiteSpace(park.Id)
+            || !await processorContext.rolloutGateAccessService.IsOpenAsync(park.Id, cancellationToken))
+        {
+            return false;
+        }
+
         if (AutomaticHistoryEventFactory.HasLifecycleDate(park) || publicItems.Any(AutomaticHistoryEventFactory.HasLifecycleDate))
         {
             return true;

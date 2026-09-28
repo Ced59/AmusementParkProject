@@ -1,6 +1,7 @@
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Contracts;
@@ -56,7 +57,9 @@ public sealed class HistoryKeyYearSitemapSectionProviderTests
             .Setup(repository => repository.GetAllAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkZone>());
         factReader
-            .Setup(reader => reader.GetLatestDecisionEligibleRevisionsAsync(50000, It.IsAny<CancellationToken>()))
+            .Setup(reader => reader.GetLatestDecisionEligibleRevisionsForParksAsync(
+                It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { park.Id })),
+                It.IsAny<CancellationToken>()))
             .ReturnsAsync(facts);
         snapshotBuilder
             .Setup(builder => builder.Build(
@@ -73,7 +76,10 @@ public sealed class HistoryKeyYearSitemapSectionProviderTests
             null,
             zoneRepository.Object,
             factReader.Object,
-            snapshotBuilder.Object);
+            new HistoricalParkRolloutGateAssessmentService(
+                snapshotBuilder.Object,
+                new HistoricalParkRolloutGateEvaluator(),
+                PublicParkHistoryTestData.CreatePublicSourceRepository(facts)));
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(
             new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } },

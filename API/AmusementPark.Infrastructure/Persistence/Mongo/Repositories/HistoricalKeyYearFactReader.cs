@@ -11,23 +11,31 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class HistoricalKeyYearFactReader : IHistoricalKeyYearFactReader
 {
     private readonly IMongoCollection<HistoricalFactDocument> collection;
+    private readonly string collectionName;
 
     public HistoricalKeyYearFactReader(IMongoDatabase database, MongoDbSettings settings)
     {
+        this.collectionName = settings.HistoricalFactsCollectionName;
         this.collection = database.GetCollection<HistoricalFactDocument>(
-            settings.HistoricalFactsCollectionName);
+            this.collectionName);
     }
 
-    public async Task<IReadOnlyCollection<HistoricalFact>> GetLatestDecisionEligibleRevisionsAsync(
-        int limit,
+    public async Task<IReadOnlyCollection<HistoricalFact>> GetLatestDecisionEligibleRevisionsForParksAsync(
+        IReadOnlyCollection<string> parkIds,
         CancellationToken cancellationToken)
     {
-        if (limit < 1)
+        ArgumentNullException.ThrowIfNull(parkIds);
+        string[] normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedParkIds.Length == 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(limit));
+            return Array.Empty<HistoricalFact>();
         }
 
-        BsonDocument[] stages = BuildPipeline(limit).ToArray();
+        BsonDocument[] stages = BuildPipeline(normalizedParkIds, this.collectionName).ToArray();
         PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument> pipeline =
             PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument>.Create(stages);
         List<HistoricalFactDocument> documents = await this.collection
@@ -37,28 +45,63 @@ public sealed class HistoricalKeyYearFactReader : IHistoricalKeyYearFactReader
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
-    internal static IReadOnlyCollection<BsonDocument> BuildPipeline(int limit)
+    internal static IReadOnlyCollection<BsonDocument> BuildPipeline(
+        IReadOnlyCollection<string> parkIds,
+        string collectionName)
     {
-        if (limit < 1)
+        ArgumentNullException.ThrowIfNull(parkIds);
+        string normalizedCollectionName = collectionName?.Trim() ?? string.Empty;
+        if (normalizedCollectionName.Length == 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(limit));
+            throw new ArgumentException(
+                "A historical facts collection name is required.",
+                nameof(collectionName));
+        }
+
+        string[] normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedParkIds.Length == 0)
+        {
+            throw new ArgumentException("At least one park identifier is required.", nameof(parkIds));
         }
 
         return new BsonDocument[]
         {
-            new BsonDocument("$sort", new BsonDocument
-            {
-                ["factId"] = -1,
-                ["revision"] = -1,
-            }),
+            new BsonDocument("$match", new BsonDocument(
+                "subject.contextParkId",
+                new BsonDocument("$in", new BsonArray(normalizedParkIds)))),
             new BsonDocument("$group", new BsonDocument
             {
                 ["_id"] = "$factId",
-                ["latestRevision"] = new BsonDocument("$first", "$$ROOT"),
             }),
+            new BsonDocument("$lookup", new BsonDocument
+            {
+                ["from"] = normalizedCollectionName,
+                ["let"] = new BsonDocument("candidateFactId", "$_id"),
+                ["pipeline"] = new BsonArray
+                {
+                    new BsonDocument("$match", new BsonDocument(
+                        "$expr",
+                        new BsonDocument("$eq", new BsonArray
+                        {
+                            "$factId",
+                            "$$candidateFactId",
+                        }))),
+                    new BsonDocument("$sort", new BsonDocument("revision", -1)),
+                    new BsonDocument("$limit", 1),
+                },
+                ["as"] = "latestRevision",
+            }),
+            new BsonDocument("$unwind", "$latestRevision"),
             new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$latestRevision")),
             new BsonDocument("$match", new BsonDocument
             {
+                ["subject.contextParkId"] = new BsonDocument(
+                    "$in",
+                    new BsonArray(normalizedParkIds)),
                 ["publicationState"] = HistoricalPublicationState.Published.ToString(),
                 ["state"] = new BsonDocument("$in", new BsonArray
                 {
@@ -72,7 +115,6 @@ public sealed class HistoricalKeyYearFactReader : IHistoricalKeyYearFactReader
                 ["createdAt"] = -1,
                 ["factId"] = 1,
             }),
-            new BsonDocument("$limit", limit),
         };
     }
 }

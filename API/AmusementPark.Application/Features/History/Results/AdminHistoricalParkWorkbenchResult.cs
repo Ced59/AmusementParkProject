@@ -11,4 +11,5 @@ public sealed record AdminHistoricalParkWorkbenchResult(
     IReadOnlyCollection<HistoricalRelation> Relations,
     IReadOnlyCollection<HistoricalSourceReference> Sources,
     HistoricalParkDiagnostics Diagnostics,
-    HistoricalVisitDiagnosticCounts VisitCounts);
+    HistoricalVisitDiagnosticCounts VisitCounts,
+    HistoricalParkRolloutGate RolloutGate);

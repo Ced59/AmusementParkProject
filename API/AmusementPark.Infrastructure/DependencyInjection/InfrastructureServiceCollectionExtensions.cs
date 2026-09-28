@@ -63,6 +63,7 @@ using AmusementPark.Infrastructure.Services.Email;
 using AmusementPark.Infrastructure.Services.FactualEvents;
 using AmusementPark.Infrastructure.Services.Comments;
 using AmusementPark.Infrastructure.Services.Images;
+using AmusementPark.Infrastructure.Services.History;
 using AmusementPark.Infrastructure.Services.Parks;
 using AmusementPark.Infrastructure.Services.Seo;
 using AmusementPark.Infrastructure.Services.Sharing;
@@ -355,6 +356,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddSingleton<IPassportTimeZoneValidator, SystemPassportTimeZoneValidator>();
         services.AddSingleton<IPassportLocalDateResolver, SystemPassportLocalDateResolver>();
         services.AddSingleton<IRatingRankSnapshotCache, InMemoryRatingRankSnapshotCache>();
+        services.AddSingleton<IHistoricalParkRolloutGateCache, InMemoryHistoricalParkRolloutGateCache>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IParkDataEditorAccessTokenRepository, ParkDataEditorAccessTokenRepository>();

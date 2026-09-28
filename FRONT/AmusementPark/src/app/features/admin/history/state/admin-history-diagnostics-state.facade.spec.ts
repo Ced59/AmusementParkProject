@@ -56,6 +56,7 @@ describe('AdminHistoryDiagnosticsStateFacade', () => {
     expect(getDiagnostics).toHaveBeenCalledWith('park-1');
     expect(facade.diagnostics()?.parkName).toBe('Phantasialand');
     expect(facade.hasBlockingIssues()).toBe(true);
+    expect(facade.isRolloutOpen()).toBe(true);
     expect(facade.loading()).toBe(false);
   });
 
@@ -101,6 +102,17 @@ function createDiagnostics(blockingIssueCount: number): AdminHistoricalParkDiagn
       potentiallyInconsistentVisitCount: 2,
       confirmedConflictVisitCount: 1,
       unverifiedVisitCount: 1
+    },
+    rolloutGate: {
+      isOpen: true,
+      hasEnoughStructuredFacts: true,
+      hasCompleteSourceCoverage: true,
+      hasMajorMilestone: true,
+      hasIndexableKeyYear: true,
+      publishedFactCount: 2,
+      sourcedFactCount: 2,
+      majorFactCount: 1,
+      indexableKeyYears: [1998]
     }
   };
 }

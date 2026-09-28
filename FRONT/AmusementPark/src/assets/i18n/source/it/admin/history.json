@@ -122,6 +122,19 @@
           "blocked": "Correzioni necessarie",
           "ready": "Nessun blocco rilevato"
         },
+        "rollout": {
+          "kicker": "Attivazione per parco",
+          "openTitle": "Esploratore pubblico attivato",
+          "blockedTitle": "Esploratore pubblico in attesa",
+          "openHint": "I fatti pubblicati sostengono un’esplorazione storica sufficientemente documentata.",
+          "blockedHint": "Completa i criteri mancanti prima di rendere pubblica questa storia.",
+          "structuredFacts": "{{current}} fatti strutturati pubblicati · minimo {{required}}",
+          "sources": "{{sourced}} fatti con fonti su {{total}}",
+          "majorMilestone": "{{count}} tappe principali pubblicate",
+          "keyYear": "{{count}} anni chiave con copertura sufficiente",
+          "years": "Anni chiave: {{years}}",
+          "independence": "Questa decisione dipende soltanto dai fatti storici pubblicati, mai dal numero di visite o di membri."
+        },
         "kpis": {
           "blockers": "Blocchi",
           "blockersHint": "Da correggere prima della pubblicazione",
