@@ -8,29 +8,39 @@ public sealed class LivePollingOrchestrator
 {
     private readonly IReadOnlyCollection<ILiveDataProviderAdapter> adapters;
     private readonly ILivePollingStateRepository stateRepository;
+    private readonly ILiveLatestObservationIngestor latestObservationIngestor;
     private readonly TimeProvider timeProvider;
     private readonly Func<double> jitterSample;
 
     public LivePollingOrchestrator(
         IEnumerable<ILiveDataProviderAdapter> adapters,
-        ILivePollingStateRepository stateRepository)
-        : this(adapters, stateRepository, TimeProvider.System, Random.Shared.NextDouble)
+        ILivePollingStateRepository stateRepository,
+        ILiveLatestObservationIngestor latestObservationIngestor)
+        : this(
+            adapters,
+            stateRepository,
+            latestObservationIngestor,
+            TimeProvider.System,
+            Random.Shared.NextDouble)
     {
     }
 
     internal LivePollingOrchestrator(
         IEnumerable<ILiveDataProviderAdapter> adapters,
         ILivePollingStateRepository stateRepository,
+        ILiveLatestObservationIngestor latestObservationIngestor,
         TimeProvider timeProvider,
         Func<double> jitterSample)
     {
         ArgumentNullException.ThrowIfNull(adapters);
         ArgumentNullException.ThrowIfNull(stateRepository);
+        ArgumentNullException.ThrowIfNull(latestObservationIngestor);
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(jitterSample);
 
         this.adapters = adapters.ToArray();
         this.stateRepository = stateRepository;
+        this.latestObservationIngestor = latestObservationIngestor;
         this.timeProvider = timeProvider;
         this.jitterSample = jitterSample;
     }
@@ -112,6 +122,7 @@ public sealed class LivePollingOrchestrator
         return await this.CompleteProviderResultAsync(
             target,
             lease,
+            adapter,
             providerResult,
             jitter,
             cancellationToken);
@@ -120,10 +131,43 @@ public sealed class LivePollingOrchestrator
     private async Task<LivePollingExecutionResult> CompleteProviderResultAsync(
         LivePollingTarget target,
         LivePollingLease lease,
+        ILiveDataProviderAdapter adapter,
         LiveProviderReadResult providerResult,
         TimeSpan jitter,
         CancellationToken cancellationToken)
     {
+        if (providerResult.Disposition == LiveProviderReadDisposition.Success)
+        {
+            try
+            {
+                await this.latestObservationIngestor.IngestAsync(
+                    new LiveLatestObservationIngestionRequest(
+                        adapter.SourceId,
+                        adapter.AdapterVersion,
+                        adapter.UsagePolicyVersion,
+                        adapter.TransformationVersion,
+                        adapter.Confidence,
+                        adapter.FreshnessPolicy,
+                        providerResult.ReceivedAtUtc,
+                        providerResult.Observations,
+                        providerResult.PayloadSha256),
+                    cancellationToken);
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                return await this.CompleteFailureAsync(
+                    target,
+                    lease,
+                    providerResult.ReceivedAtUtc,
+                    jitter,
+                    cancellationToken);
+            }
+        }
+
         LivePollingAttemptOutcome outcome = MapOutcome(providerResult.Disposition);
         TimeSpan retryAfter = providerResult.RetryAfter ?? TimeSpan.Zero;
         LivePollingSchedule schedule = target.Policy.PlanNext(

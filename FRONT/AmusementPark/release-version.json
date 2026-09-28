@@ -1,6 +1,20 @@
 {
-  "version": "5.4.5",
+  "version": "5.4.6",
   "history": [
+    {
+      "version": "5.4.6",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les futures informations en direct conservent toujours l’état le plus récent.",
+        "en": "Future live information always keeps the most recent state.",
+        "de": "Künftige Live-Informationen behalten stets den neuesten Stand.",
+        "nl": "Toekomstige live-informatie bewaart altijd de meest recente status.",
+        "it": "Le future informazioni in tempo reale conservano sempre lo stato più recente.",
+        "es": "La futura información en directo conserva siempre el estado más reciente.",
+        "pl": "Przyszłe informacje na żywo zawsze zachowują najnowszy stan.",
+        "pt": "As futuras informações em direto conservam sempre o estado mais recente."
+      }
+    },
     {
       "version": "5.4.5",
       "releasedAt": "2026-09-29",

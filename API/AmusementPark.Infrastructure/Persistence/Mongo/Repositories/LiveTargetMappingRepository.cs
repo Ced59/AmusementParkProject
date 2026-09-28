@@ -60,6 +60,53 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
         return document?.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<ExternalLiveTargetMapping>> GetLatestByExternalTargetIdsAsync(
+        LiveDataSourceId sourceId,
+        IReadOnlyCollection<string> externalTargetIds,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(externalTargetIds);
+        string[] normalizedIds = externalTargetIds
+            .Where(static value => !string.IsNullOrWhiteSpace(value))
+            .Select(static value => value.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedIds.Length == 0)
+        {
+            return Array.Empty<ExternalLiveTargetMapping>();
+        }
+
+        List<BsonDocument> stages = new List<BsonDocument>
+        {
+            new BsonDocument("$match", new BsonDocument
+            {
+                ["sourceId"] = sourceId.Value,
+                ["externalTarget.id"] = new BsonDocument(
+                    "$in",
+                    new BsonArray(normalizedIds)),
+            }),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["externalTarget.id"] = 1,
+                ["revision"] = -1,
+            }),
+            new BsonDocument("$group", new BsonDocument
+            {
+                ["_id"] = "$externalTarget.id",
+                ["document"] = new BsonDocument("$first", "$$ROOT"),
+            }),
+            new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$document")),
+        };
+        PipelineDefinition<ExternalLiveTargetMappingDocument, BsonDocument> pipeline =
+            PipelineDefinition<ExternalLiveTargetMappingDocument, BsonDocument>.Create(stages);
+        List<BsonDocument> documents = await this.collection.Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        return documents
+            .Select(static document => BsonSerializer.Deserialize<ExternalLiveTargetMappingDocument>(document))
+            .Select(static document => document.ToDomain())
+            .ToArray();
+    }
+
     public async Task<PagedResult<ExternalLiveTargetMapping>> SearchLatestAsync(
         LiveTargetMappingSearchCriteria criteria,
         CancellationToken cancellationToken)
