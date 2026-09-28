@@ -7,8 +7,8 @@ Audit initial effectué le **13 août 2026 à 07:26 CEST**, puis rafraîchi à *
 - 2 980 fiches ont été parcourues sur 60 pages.
 - 190 parcs étaient publiés (`isVisible: true`).
 - Les 190 scores ont été recalculés individuellement avec `Completeness`.
-- 68 parcs atteignent le niveau `Excellent` : 66 satisfont la condition de sortie, avec un score strictement supérieur à 95, et 2 restent dans le backlog à 95.
-- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 111 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **11 parcs** : 0 au niveau `Publishable`, 9 au niveau `Good` et 2 au niveau `Excellent`.
+- 68 parcs atteignent le niveau `Excellent` et satisfont désormais tous la condition de sortie, avec un score strictement supérieur à 95.
+- **124 parcs publiés avaient un score inférieur ou égal à 95 lors du rafraîchissement de référence** ; après 121 retraits validés et les 2 exceptions explicites enregistrées ci-dessous, le backlog actif contient **1 parc** : 0 au niveau `Publishable`, 1 au niveau `Good` et 0 au niveau `Excellent`.
 - Aucun écart n’a été relevé entre le score détaillé et le score résumé par la recherche.
 
 La cible vient de [la spécification de scoring](../codex-guidelines/data-quality-completeness-scoring.md) et le traitement de cette liste suit le [workflow du backlog des parcs publiés](../codex-guidelines/published-park-backlog-workflow.md). Le critère d’entrée est désormais un score inférieur ou égal à 95 et la condition de sortie un score strictement supérieur à 95. Le score ne remplace jamais l’audit éditorial complet de l’étape 9 ni l’absence de bloqueur de publication.
@@ -22,26 +22,16 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 
-## Priorité 2 — niveau `Good` (9)
+## Priorité 2 — niveau `Good` (1)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
 | 91 | `Good` | Bayside Fun Park | GB | `Operating` | `Local` | 94/103 | `58da350d-0bb4-461f-8f38-188bd59c13e1` |
-| 91 | `Good` | La Récré des 3 Curés | FR | `Operating` | `Regional` | 89/98 | `9cebd5ae-dc2c-4c8c-a6a4-d2a2dda33d1c` |
-| 92 | `Good` | AcroJungle Outdoor | FR | `Operating` | `Local` | 89/97 | `1566972b-fbf9-461c-ac92-5df9d6c3358e` |
-| 93 | `Good` | Denain Évasion | FR | `Operating` | `Local` | 95/102 | `acdd7664-cf2b-42c6-b05a-7f67ee307aee` |
-| 93 | `Good` | Le Ch'ti Parc | FR | `Operating` | `Local` | 95/102 | `da07fda1-4b87-4142-85d2-23e4c0bbb585` |
-| 93 | `Good` | Six Flags Qiddiya City | SA | `Operating` | `International` | 103/111 | `31da33cc-fc22-4abd-b474-217ae730a1ef` |
-| 94 | `Good` | ABpark | LV | `Operating` | `National` | 103/109 | `153fb94d-ade2-4ff7-a245-bb40a022e355` |
-| 94 | `Good` | BalatoniBob Szabadidőpark | HU | `Operating` | `Regional` | 95/101 | `eb2e46b1-7970-4eb5-b648-30a6d8ac290b` |
-| 94 | `Good` | Bengtson's Pumpkin Farm | US | `Operating` | `Regional` | 92/98 | `430369d7-6665-4c3b-ae21-6121ef2a3733` |
 
-## Priorité 3 — niveau `Excellent` au seuil (2)
+## Priorité 3 — niveau `Excellent` au seuil (0)
 
 | Score | Niveau | Parc | Pays | Statut | Audience | Points | Identifiant |
 | ---: | --- | --- | --- | --- | --- | ---: | --- |
-| 95 | `Excellent` | Babylon Park London | GB | `Operating` | `Regional` | 95/100 | `6c9557a4-c49c-4eb3-ace0-b1817927a0b3` |
-| 95 | `Excellent` | Babylon Park Madrid | ES | `Operating` | `Regional` | 90/95 | `6d0efa82-473d-4bcd-a3fe-c839f1291917` |
 
 ## Exceptions explicitement acceptées
 
