@@ -8,6 +8,7 @@ compose_file="${deploy_directory}/compose.prod.yml"
 temp_dir="$(mktemp -d)"
 container_name="amusementpark-static-seo-edge-test-${RANDOM}-$$"
 front_container_name="${container_name}-front"
+outer_container_name="${container_name}-outer"
 network_name="${container_name}-network"
 live_nginx_directory="${temp_dir}/nginx"
 live_static_policy="${live_nginx_directory}/seo-static-routing.conf"
@@ -25,6 +26,7 @@ sed \
 cleanup() {
   docker rm -f "${container_name}" >/dev/null 2>&1 || true
   docker rm -f "${front_container_name}" >/dev/null 2>&1 || true
+  docker rm -f "${outer_container_name}" >/dev/null 2>&1 || true
   docker network rm "${network_name}" >/dev/null 2>&1 || true
   rm -rf "${temp_dir}"
 }
@@ -39,6 +41,12 @@ printf '%s\n' \
   '<?xml version="1.0" encoding="utf-8"?>' \
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>' \
   > "${temp_dir}/seo/current/parks-fr.xml"
+{
+  printf '%s\n' '<?xml version="1.0" encoding="utf-8"?>' \
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://example.test/fr/home</loc></url>'
+  head -c 262144 /dev/zero | tr '\0' ' '
+  printf '%s\n' '</urlset>'
+} > "${temp_dir}/seo/current/large-fr.xml"
 printf '%s\n' \
   'User-agent: *' \
   'Disallow:' \
@@ -171,6 +179,7 @@ assert_header() {
 }
 
 assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static source header'
+assert_header 'X-Accel-Buffering:[[:space:]]*no' 'outer proxy streaming directive for the index'
 assert_header 'Content-Type:[[:space:]]*text/xml' 'initial legacy XML content type'
 assert_header 'Cache-Control:[[:space:]]*public, max-age=600' 'public cache policy'
 assert_header 'X-Content-Type-Options:[[:space:]]*nosniff' 'content type protection'
@@ -209,8 +218,66 @@ for _attempt in $(seq 1 20); do
   sleep 1
 done
 assert_header 'X-AmusementPark-SEO-Source:[[:space:]]*static' 'static child sitemap source header'
+assert_header 'X-Accel-Buffering:[[:space:]]*no' 'outer proxy streaming directive for child sitemaps'
 assert_header 'Content-Type:[[:space:]]*application/xml;[[:space:]]*charset=utf-8' 'child sitemap XML UTF-8 content type'
 assert_header "Content-Security-Policy:[[:space:]]*default-src 'none'; style-src 'unsafe-inline'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" 'child sitemap XML viewer-compatible content security policy'
+
+# Reproduce the production proxy_temp outage of July 5-6. The outer proxy
+# deliberately has no temporary directory and sends slowly enough to require
+# disk buffering unless the static origin disables it through X-Accel-Buffering.
+cat > "${temp_dir}/outer.conf" <<EOF
+worker_processes 1;
+pid /var/run/nginx.pid;
+events { worker_connections 128; }
+http {
+  proxy_temp_path /tmp/sitemap-proxy-temp 1 2;
+  proxy_buffering on;
+  proxy_buffer_size 4k;
+  proxy_buffers 4 4k;
+  proxy_busy_buffers_size 8k;
+  limit_rate 64k;
+  server {
+    listen 8080;
+    location / {
+      proxy_pass http://${container_name}:4000;
+    }
+    location = /buffering-control.xml {
+      proxy_ignore_headers X-Accel-Buffering;
+      proxy_pass http://${container_name}:4000/large-fr.xml;
+    }
+  }
+}
+EOF
+docker run -d \
+  --name "${outer_container_name}" \
+  --network "${network_name}" \
+  --read-only \
+  --tmpfs /var/cache/nginx \
+  --tmpfs /var/run \
+  --tmpfs /tmp \
+  -v "${temp_dir}/outer.conf:/etc/nginx/nginx.conf:ro" \
+  nginx:1.29-alpine >/dev/null
+docker exec "${outer_container_name}" nginx -t
+# This exact path belongs only to the disposable test container.
+docker exec "${outer_container_name}" rm -rf /tmp/sitemap-proxy-temp
+docker exec "${outer_container_name}" sh -c \
+  'wget -q -O /tmp/control.xml http://127.0.0.1:8080/buffering-control.xml 2>/dev/null || true; cat /tmp/control.xml' \
+  > "${temp_dir}/buffered.xml"
+if cmp -s "${temp_dir}/seo/current/large-fr.xml" "${temp_dir}/buffered.xml"; then
+  echo 'The negative control must reproduce truncation when proxy buffering is forced.' >&2
+  exit 1
+fi
+if ! docker logs "${outer_container_name}" 2>&1 | grep -q 'sitemap-proxy-temp.*failed'; then
+  echo 'The negative control must fail because the proxy temporary directory is missing.' >&2
+  exit 1
+fi
+docker exec "${outer_container_name}" sh -ec \
+  'wget -q -O /tmp/received.xml http://127.0.0.1:8080/large-fr.xml; cat /tmp/received.xml' \
+  > "${temp_dir}/received.xml"
+if ! cmp -s "${temp_dir}/seo/current/large-fr.xml" "${temp_dir}/received.xml"; then
+  echo 'Static XML must arrive byte-for-byte through an outer proxy without a writable temporary directory.' >&2
+  exit 1
+fi
 
 cp "${deploy_directory}/nginx/seo-static-false.conf" "${live_static_policy}.next"
 mv -f "${live_static_policy}.next" "${live_static_policy}"
