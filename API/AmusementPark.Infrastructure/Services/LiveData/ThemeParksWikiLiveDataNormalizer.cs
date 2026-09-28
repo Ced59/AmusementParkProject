@@ -454,8 +454,19 @@ internal static class ThemeParksWikiLiveDataNormalizer
         string propertyName,
         JsonValueKind expectedKind)
     {
-        return parent.TryGetProperty(propertyName, out JsonElement value)
-            && (value.ValueKind == JsonValueKind.Null || value.ValueKind == expectedKind);
+        if (!parent.TryGetProperty(propertyName, out JsonElement value))
+        {
+            return false;
+        }
+
+        if (value.ValueKind == JsonValueKind.Null)
+        {
+            return true;
+        }
+
+        return value.ValueKind == expectedKind
+            && (expectedKind != JsonValueKind.String
+                || !string.IsNullOrWhiteSpace(value.GetString()));
     }
 
     private static bool HasValidRequiredPrice(JsonElement parent)
@@ -473,7 +484,8 @@ internal static class ThemeParksWikiLiveDataNormalizer
         return price.ValueKind == JsonValueKind.Object
             && HasNullablePropertyOfKind(price, "amount", JsonValueKind.Number)
             && price.TryGetProperty("currency", out JsonElement currency)
-            && currency.ValueKind == JsonValueKind.String;
+            && currency.ValueKind == JsonValueKind.String
+            && !string.IsNullOrWhiteSpace(currency.GetString());
     }
 
     private static bool TryParseUtc(string? value, out DateTime utcValue)
