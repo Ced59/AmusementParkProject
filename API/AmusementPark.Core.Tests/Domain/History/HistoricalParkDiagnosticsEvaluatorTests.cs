@@ -146,6 +146,32 @@ public sealed class HistoricalParkDiagnosticsEvaluatorTests
         Assert.Equal("Attraction", overlap.Subject?.HistoricalLabel);
     }
 
+    [Fact]
+    public void Evaluate_WithReversedNominalYearsInAmbiguousPeriod_ShouldBuildCoverageWithoutThrowing()
+    {
+        HistoricalSubject subject = CreateSubject(HistoricalSubjectType.Park, "park-1", "Parc");
+        HistoricalPeriod ambiguousPeriod = new(
+            HistoricalDate.ForYear(2020, qualifier: DateQualifier.Before),
+            HistoricalDate.ForYear(1990, qualifier: DateQualifier.After),
+            PeriodBoundaryConfidence.Confirmed,
+            PeriodBoundaryConfidence.Confirmed);
+        HistoricalFact fact = CreateDraftFact(
+            subject,
+            HistoricalFactType.MajorEvent,
+            ambiguousPeriod);
+
+        HistoricalParkDiagnostics result = new HistoricalParkDiagnosticsEvaluator().Evaluate(
+            new[] { fact },
+            Array.Empty<HistoricalRelation>(),
+            Array.Empty<string>());
+
+        Assert.Contains(result.Issues, static issue =>
+            issue.Code == HistoricalDiagnosticCode.AmbiguousInterval);
+        Assert.Equal(
+            new[] { 1990, 2000, 2010, 2020 },
+            result.DecadeCoverage.Select(static coverage => coverage.Decade));
+    }
+
     private static HistoricalFact CreateDraftFact(
         HistoricalSubject subject,
         HistoricalFactType type,

@@ -309,8 +309,8 @@ public sealed class HistoricalParkDiagnosticsEvaluator
             return Array.Empty<int>();
         }
 
-        int firstDecade = firstYear.Value / 10 * 10;
-        int lastDecade = lastYear.Value / 10 * 10;
+        int firstDecade = Math.Min(firstYear.Value, lastYear.Value) / 10 * 10;
+        int lastDecade = Math.Max(firstYear.Value, lastYear.Value) / 10 * 10;
         return Enumerable.Range(0, (lastDecade - firstDecade) / 10 + 1)
             .Select(index => firstDecade + index * 10);
     }
