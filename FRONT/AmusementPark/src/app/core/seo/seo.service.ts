@@ -2838,6 +2838,32 @@ export class SeoService {
     });
   }
 
+  applyParkHistoricalSnapshotSeo(
+    title: string,
+    description: string,
+    contextLabel: string,
+    isIndexableKeyYear: boolean,
+    url: string,
+    canonicalPath: string
+  ): void {
+    const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
+    this.apply({
+      title: `${title} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
+      robots: isIndexableKeyYear ? 'index,follow' : 'noindex,follow',
+      alternates: isIndexableKeyYear ? this.hreflangService.buildAlternates(seoUrl) : [],
+      imageAlt: contextLabel,
+      jsonLd: isIndexableKeyYear ? [{
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: title,
+        description,
+        url: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl)
+      }] : []
+    });
+  }
+
   applyHistoryComparisonSeo(title: string, description: string, url: string, canonicalPath: string): void {
     const seoUrl: string = this.resolveSeoUrl(url, canonicalPath);
     this.apply({

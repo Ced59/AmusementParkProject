@@ -2180,6 +2180,7 @@
       "itemsTitle": "Ricordi scelti",
       "limits": "Il proprietario ha nascosto volontariamente alcune informazioni oppure non erano disponibili.",
       "openPark": "Scopri il parco",
+      "openHistory": "Vedi il parco in quell’epoca",
       "ctaTitle": "Quali parchi hai vissuto?",
       "ctaDescription": "Inizia gratuitamente una bozza locale, anche senza creare un account.",
       "loading": "Apertura del ricordo..."
@@ -8752,6 +8753,11 @@
       "title": "Condividi questa timeline",
       "description": "Invia la storia di {{title}} a qualcuno che ama seguire le tappe principali.",
       "text": "Esplora la storia di {{title}} su AmusementPark."
+    },
+    "historySnapshot": {
+      "title": "Condividi quest’epoca",
+      "description": "Invia questa ricostruzione documentata di {{title}} a chi ama viaggiare nel tempo.",
+      "text": "Scopri {{title}} in quell’epoca su AmusementPark."
     },
     "historyArticle": {
       "title": "Condividi questo articolo",

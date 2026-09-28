@@ -2180,6 +2180,7 @@
       "itemsTitle": "Les souvenirs choisis",
       "limits": "Le propriétaire a volontairement masqué certaines informations ou elles n’étaient pas disponibles.",
       "openPark": "Découvrir le parc",
+      "openHistory": "Voir le parc à cette époque",
       "ctaTitle": "Et toi, quels parcs as-tu vécus ?",
       "ctaDescription": "Commence gratuitement un brouillon local, même sans créer de compte.",
       "loading": "Ouverture du souvenir..."
@@ -8752,6 +8753,11 @@
       "title": "Partager cette timeline",
       "description": "Envoie l’histoire de {{title}} à quelqu’un qui aime suivre les grands jalons.",
       "text": "Explore l’histoire de {{title}} sur AmusementPark."
+    },
+    "historySnapshot": {
+      "title": "Partager cette époque",
+      "description": "Envoie cette reconstitution documentée de {{title}} à quelqu’un qui aime remonter le temps.",
+      "text": "Découvre {{title}} à cette époque sur AmusementPark."
     },
     "historyArticle": {
       "title": "Partager cet article",

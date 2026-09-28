@@ -89,6 +89,11 @@
       "description": "Send the history of {{title}} to someone who enjoys key milestones.",
       "text": "Explore the history of {{title}} on AmusementPark."
     },
+    "historySnapshot": {
+      "title": "Share this era",
+      "description": "Send this documented reconstruction of {{title}} to someone who enjoys travelling through time.",
+      "text": "Discover {{title}} at that time on AmusementPark."
+    },
     "historyArticle": {
       "title": "Share this article",
       "description": "Send this article to someone interested in {{title}}.",

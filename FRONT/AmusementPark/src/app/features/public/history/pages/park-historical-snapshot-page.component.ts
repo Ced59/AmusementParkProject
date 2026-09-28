@@ -10,7 +10,6 @@ import {
   PublicHistoricalSubjectSnapshot,
   PublicParkHistoricalSnapshot
 } from '@app/models/history/public-park-history.models';
-import { Park } from '@app/models/parks/park';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
@@ -20,7 +19,7 @@ import {
   buildPublicRoutePath
 } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
-import { HistoryTimelinePageViewModel } from '../models/history-view.model';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { ParkHistoryBreadcrumbSeoService } from '../state/park-history-breadcrumb-seo.service';
 import { ParkHistoryExplorerStateFacade } from '../state/park-history-explorer-state.facade';
 import {
@@ -43,7 +42,7 @@ import {
   styleUrls: ['./park-history-explorer.shared.scss', './park-historical-snapshot-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ParkHistoryExplorerStateFacade],
-  imports: [FormsModule, PageStateComponent, RouterLink, TranslateModule]
+  imports: [FormsModule, PageStateComponent, PublicSharePanelComponent, RouterLink, TranslateModule]
 })
 export class ParkHistoricalSnapshotPageComponent implements OnInit {
   protected readonly state = this.stateFacade.snapshotState;
@@ -233,9 +232,18 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
       ...historyCommands,
       String(snapshot.requestedInstant.year)
     ]) ?? '/';
-    this.seoService.applyHistoryTimelineSeo(
-      this.toSeoViewModel(snapshot),
-      this.currentLanguage(),
+    const title: string = this.translateService.instant('history.explorer.snapshotTitle', {
+      park: snapshot.parkName,
+      year: snapshot.requestedInstant.year
+    });
+    const description: string = this.translateService.instant('history.explorer.snapshotDescription', {
+      year: snapshot.requestedInstant.year
+    });
+    this.seoService.applyParkHistoricalSnapshotSeo(
+      title,
+      description,
+      snapshot.parkName,
+      snapshot.isIndexableKeyYear,
       this.router.url,
       canonicalPath
     );
@@ -249,32 +257,4 @@ export class ParkHistoricalSnapshotPageComponent implements OnInit {
     );
   }
 
-  private toSeoViewModel(snapshot: PublicParkHistoricalSnapshot): HistoryTimelinePageViewModel {
-    const park: Park = { id: snapshot.parkId, name: snapshot.parkName } as Park;
-    return {
-      entityType: 'Park',
-      title: this.translateService.instant('history.explorer.snapshotTitle', {
-        park: snapshot.parkName,
-        year: snapshot.requestedInstant.year
-      }),
-      subtitle: this.translateService.instant('history.explorer.snapshotDescription', {
-        year: snapshot.requestedInstant.year
-      }),
-      ownerName: snapshot.parkName,
-      park,
-      parkItem: null,
-      includedParkItems: [],
-      showParkItemControls: false,
-      events: [],
-      pagination: {
-        currentPage: 1,
-        itemsPerPage: 1,
-        totalItems: 0,
-        totalPages: 1
-      },
-      pageRanges: [],
-      yearStart: snapshot.requestedInstant.year,
-      yearEnd: snapshot.requestedInstant.year
-    };
-  }
 }

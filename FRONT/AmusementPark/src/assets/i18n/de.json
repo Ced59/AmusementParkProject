@@ -2180,6 +2180,7 @@
       "itemsTitle": "Ausgewählte Erinnerungen",
       "limits": "Der Besitzer hat einige Angaben bewusst ausgeblendet oder sie waren nicht verfügbar.",
       "openPark": "Park entdecken",
+      "openHistory": "Park zu dieser Zeit ansehen",
       "ctaTitle": "Welche Parks hast du erlebt?",
       "ctaDescription": "Starte kostenlos einen lokalen Entwurf, auch ohne Konto.",
       "loading": "Erinnerung wird geöffnet..."
@@ -8752,6 +8753,11 @@
       "title": "Diese Zeitleiste teilen",
       "description": "Sende die Geschichte von {{title}} an jemanden, der wichtige Meilensteine mag.",
       "text": "Entdecke die Geschichte von {{title}} auf AmusementPark."
+    },
+    "historySnapshot": {
+      "title": "Diese Epoche teilen",
+      "description": "Sende diese belegte Rekonstruktion von {{title}} an jemanden, der gern durch die Zeit reist.",
+      "text": "Entdecke {{title}} zu dieser Zeit auf AmusementPark."
     },
     "historyArticle": {
       "title": "Diesen Artikel teilen",

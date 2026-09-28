@@ -89,6 +89,11 @@
       "description": "Stuur de geschiedenis van {{title}} naar iemand die belangrijke mijlpalen volgt.",
       "text": "Ontdek de geschiedenis van {{title}} op AmusementPark."
     },
+    "historySnapshot": {
+      "title": "Dit tijdperk delen",
+      "description": "Stuur deze gedocumenteerde reconstructie van {{title}} naar iemand die graag terugreist in de tijd.",
+      "text": "Ontdek {{title}} in die tijd op AmusementPark."
+    },
     "historyArticle": {
       "title": "Dit artikel delen",
       "description": "Stuur dit artikel naar iemand met interesse in {{title}}.",

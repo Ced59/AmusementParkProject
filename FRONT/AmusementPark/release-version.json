@@ -1,6 +1,20 @@
 {
-  "version": "5.3.101",
+  "version": "5.3.102",
   "history": [
+    {
+      "version": "5.3.102",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "Les années marquantes des parcs sont plus faciles à découvrir et à partager.",
+        "en": "Landmark years in park history are easier to discover and share.",
+        "de": "Prägende Jahre der Parkgeschichte lassen sich leichter entdecken und teilen.",
+        "nl": "Belangrijke jaren uit de parkgeschiedenis zijn makkelijker te ontdekken en te delen.",
+        "it": "Gli anni più significativi della storia dei parchi sono più facili da scoprire e condividere.",
+        "es": "Los años más importantes de la historia de los parques son más fáciles de descubrir y compartir.",
+        "pl": "Najważniejsze lata w historii parków można łatwiej odkrywać i udostępniać.",
+        "pt": "Os anos mais marcantes da história dos parques são mais fáceis de descobrir e partilhar."
+      }
+    },
     {
       "version": "5.3.101",
       "releasedAt": "2026-09-28",

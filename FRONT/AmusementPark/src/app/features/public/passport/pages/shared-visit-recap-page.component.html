@@ -112,6 +112,9 @@
       @if (parkRoute(); as parkLink) {
         <a class="shared-visit__park-link" appUiButton="ghost" [routerLink]="parkLink"><i class="pi pi-map" aria-hidden="true"></i>{{ 'visitRecapShare.public.openPark' | translate }}</a>
       }
+      @if (historicalSnapshotRoute(); as historicalLink) {
+        <a class="shared-visit__park-link" appUiButton="ghost" [routerLink]="historicalLink"><i class="pi pi-history" aria-hidden="true"></i>{{ 'visitRecapShare.public.openHistory' | translate }}</a>
+      }
     </article>
 
     <section class="shared-visit__footer-grid">

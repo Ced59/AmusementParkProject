@@ -2180,6 +2180,7 @@
       "itemsTitle": "Wybrane wspomnienia",
       "limits": "Właściciel celowo ukrył część informacji albo nie były one dostępne.",
       "openPark": "Odkryj park",
+      "openHistory": "Zobacz park w tamtym czasie",
       "ctaTitle": "Które parki masz już we wspomnieniach?",
       "ctaDescription": "Zacznij bezpłatny lokalny szkic, nawet bez zakładania konta.",
       "loading": "Otwieranie wspomnienia..."
@@ -8752,6 +8753,11 @@
       "title": "Udostępnij tę oś czasu",
       "description": "Wyślij historię {{title}} komuś, kto lubi śledzić ważne etapy.",
       "text": "Poznaj historię {{title}} w AmusementPark."
+    },
+    "historySnapshot": {
+      "title": "Udostępnij tę epokę",
+      "description": "Wyślij tę udokumentowaną rekonstrukcję {{title}} komuś, kto lubi podróże w czasie.",
+      "text": "Poznaj {{title}} w tamtym czasie w AmusementPark."
     },
     "historyArticle": {
       "title": "Udostępnij ten artykuł",

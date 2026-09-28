@@ -128,6 +128,14 @@ export class ParkHistoryTimelinePageComponent implements OnInit {
     return buildCanonicalHistoryNarrativeLink(entry, timeline, this.currentLanguage());
   }
 
+  protected snapshotLink(
+    entry: PublicHistoricalTimelineEntry,
+    timeline: PublicParkHistoricalTimeline
+  ): string[] | null {
+    const year: number | undefined = entry.period.start?.year ?? entry.period.end?.year;
+    return year ? [...this.historyBaseLink(timeline), String(year)] : null;
+  }
+
   protected lineageLink(
     entry: PublicHistoricalTimelineEntry,
     timeline: PublicParkHistoricalTimeline

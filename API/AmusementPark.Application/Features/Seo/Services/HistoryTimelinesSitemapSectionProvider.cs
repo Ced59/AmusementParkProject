@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
@@ -15,22 +16,32 @@ namespace AmusementPark.Application.Features.Seo.Services;
 public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProvider
 {
     private const int PublicHistoryEventLimit = 50000;
+    private const int PublicHistoricalFactLimit = 50000;
 
     private readonly IHistoryEventRepository historyEventRepository;
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly IStandaloneAttractionRepository? standaloneAttractionRepository;
+    private readonly IParkZoneRepository? parkZoneRepository;
+    private readonly IHistoricalKeyYearFactReader? historicalKeyYearFactReader;
+    private readonly IParkHistoricalSnapshotBuilder? snapshotBuilder;
 
     public HistoryTimelinesSitemapSectionProvider(
         IHistoryEventRepository historyEventRepository,
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
-        IStandaloneAttractionRepository? standaloneAttractionRepository = null)
+        IStandaloneAttractionRepository? standaloneAttractionRepository = null,
+        IParkZoneRepository? parkZoneRepository = null,
+        IHistoricalKeyYearFactReader? historicalKeyYearFactReader = null,
+        IParkHistoricalSnapshotBuilder? snapshotBuilder = null)
     {
         this.historyEventRepository = historyEventRepository;
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.standaloneAttractionRepository = standaloneAttractionRepository;
+        this.parkZoneRepository = parkZoneRepository;
+        this.historicalKeyYearFactReader = historicalKeyYearFactReader;
+        this.snapshotBuilder = snapshotBuilder;
     }
 
     public string Key => SitemapSectionKeys.History;
@@ -108,7 +119,64 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
             }
         }
 
+        await this.AddKeyYearSnapshotUrlsAsync(
+            urlsByPath,
+            resolvedData,
+            automaticParkCandidates,
+            automaticItemCandidates,
+            cancellationToken);
+
         return urlsByPath.Values.OrderBy(static url => url.RelativePath, StringComparer.OrdinalIgnoreCase).ToList();
+    }
+
+    private async Task AddKeyYearSnapshotUrlsAsync(
+        Dictionary<string, SitemapUrlEntry> urlsByPath,
+        HistorySitemapResolvedData resolvedData,
+        IReadOnlyCollection<Park> parks,
+        IReadOnlyCollection<ParkItem> parkItems,
+        CancellationToken cancellationToken)
+    {
+        if (this.parkZoneRepository is null
+            || this.historicalKeyYearFactReader is null
+            || this.snapshotBuilder is null)
+        {
+            return;
+        }
+
+        IReadOnlyCollection<ParkZone> parkZones = await this.parkZoneRepository.GetAllAsync(cancellationToken);
+        IReadOnlyCollection<HistoricalFact> facts =
+            await this.historicalKeyYearFactReader.GetLatestDecisionEligibleRevisionsAsync(
+                PublicHistoricalFactLimit,
+                cancellationToken);
+        IReadOnlyCollection<HistoricalKeyYearSitemapCandidate> candidates =
+            HistoricalKeyYearSitemapCandidateResolver.Resolve(
+                parks,
+                parkItems,
+                parkZones,
+                facts,
+                this.snapshotBuilder);
+
+        foreach (HistoricalKeyYearSitemapCandidate candidate in candidates)
+        {
+            string parkSlug = SeoSlugService.ToSlug(candidate.ParkName, "park");
+            string timelinePathWithoutLanguage = $"park/{candidate.ParkId}/{parkSlug}/history";
+            string snapshotPathWithoutLanguage = $"{timelinePathWithoutLanguage}/{candidate.Year}";
+            foreach (string language in resolvedData.Languages)
+            {
+                HistorySitemapCandidateResolver.AddOrRefreshUrl(
+                    urlsByPath,
+                    $"/{language}/{timelinePathWithoutLanguage}",
+                    candidate.LastModifiedAtUtc,
+                    "monthly",
+                    0.72m);
+                HistorySitemapCandidateResolver.AddOrRefreshUrl(
+                    urlsByPath,
+                    $"/{language}/{snapshotPathWithoutLanguage}",
+                    candidate.LastModifiedAtUtc,
+                    "yearly",
+                    0.68m);
+            }
+        }
     }
 
     private static async Task<IReadOnlyCollection<Park>> LoadPublicHistoryParksAsync(
@@ -133,8 +201,7 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
                 cancellationToken);
 
             parks.AddRange(page.Items.Where(static park =>
-                HistorySitemapCandidateResolver.IsPublicHistoryPark(park) &&
-                AutomaticHistoryEventFactory.HasLifecycleDate(park)));
+                HistorySitemapCandidateResolver.IsPublicHistoryPark(park)));
 
             if (page.Items.Count == 0 || page.Page >= page.TotalPages)
             {
@@ -173,8 +240,7 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
                 sortField: ParkItemAdminSortField.ParkId);
 
             items.AddRange(page.Items.Where(static item =>
-                HistorySitemapCandidateResolver.IsPublicHistoryItem(item) &&
-                AutomaticHistoryEventFactory.HasLifecycleDate(item)));
+                HistorySitemapCandidateResolver.IsPublicHistoryItem(item)));
 
             if (page.Items.Count == 0 || page.Page >= page.TotalPages)
             {

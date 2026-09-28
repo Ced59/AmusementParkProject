@@ -47,6 +47,7 @@ internal static class PublicParkHistoryHttpMappers
                 .Select(ambiguity => ambiguity.ToHttp(nameOrigins))
                 .ToArray(),
             MethodologyVersion = result.Snapshot.MethodologyVersion,
+            IsIndexableKeyYear = result.IsIndexableKeyYear,
         };
     }
 

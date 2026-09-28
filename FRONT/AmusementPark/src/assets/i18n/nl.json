@@ -2180,6 +2180,7 @@
       "itemsTitle": "Gekozen herinneringen",
       "limits": "De eigenaar heeft sommige informatie bewust verborgen of ze was niet beschikbaar.",
       "openPark": "Ontdek het park",
+      "openHistory": "Bekijk het park in die tijd",
       "ctaTitle": "Welke parken heb jij beleefd?",
       "ctaDescription": "Start gratis een lokaal concept, ook zonder account.",
       "loading": "Herinnering openen..."
@@ -8752,6 +8753,11 @@
       "title": "Deze tijdlijn delen",
       "description": "Stuur de geschiedenis van {{title}} naar iemand die belangrijke mijlpalen volgt.",
       "text": "Ontdek de geschiedenis van {{title}} op AmusementPark."
+    },
+    "historySnapshot": {
+      "title": "Dit tijdperk delen",
+      "description": "Stuur deze gedocumenteerde reconstructie van {{title}} naar iemand die graag terugreist in de tijd.",
+      "text": "Ontdek {{title}} in die tijd op AmusementPark."
     },
     "historyArticle": {
       "title": "Dit artikel delen",

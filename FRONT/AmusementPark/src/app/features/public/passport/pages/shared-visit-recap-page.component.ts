@@ -13,7 +13,10 @@ import { CanonicalUrlService } from '@core/seo/canonical-url.service';
 import { SeoService } from '@core/seo/seo.service';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { buildShareSocialImageUrl } from '@data-access/sharing/share-social-image-url';
-import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import {
+  buildPublicParkHistoryRouteCommands,
+  buildPublicParkRouteCommands
+} from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { PublicShareReportComponent } from '@ui/sharing/public-share-report/public-share-report.component';
@@ -44,6 +47,19 @@ export class SharedVisitRecapPageComponent implements OnInit {
         parkName: recap.parkName
       })
       : null;
+  });
+  protected readonly historicalSnapshotRoute: Signal<string[] | null> = computed(() => {
+    const recap: SharedVisitRecapContent | undefined = this.result()?.visitRecap;
+    if (!recap?.date) {
+      return null;
+    }
+
+    const historyRoute: string[] | null = buildPublicParkHistoryRouteCommands({
+      language: this.currentLang(),
+      parkId: recap.parkId,
+      parkName: recap.parkName
+    });
+    return historyRoute ? [...historyRoute, String(recap.date.year)] : null;
   });
 
   constructor(
