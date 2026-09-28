@@ -89,6 +89,11 @@
       "description": "Sende die Geschichte von {{title}} an jemanden, der wichtige Meilensteine mag.",
       "text": "Entdecke die Geschichte von {{title}} auf AmusementPark."
     },
+    "historySnapshot": {
+      "title": "Diese Epoche teilen",
+      "description": "Sende diese belegte Rekonstruktion von {{title}} an jemanden, der gern durch die Zeit reist.",
+      "text": "Entdecke {{title}} zu dieser Zeit auf AmusementPark."
+    },
     "historyArticle": {
       "title": "Diesen Artikel teilen",
       "description": "Sende diesen Artikel an jemanden, der sich für {{title}} interessiert.",

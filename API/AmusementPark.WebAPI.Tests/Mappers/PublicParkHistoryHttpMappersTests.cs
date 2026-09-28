@@ -207,7 +207,8 @@ public sealed class PublicParkHistoryHttpMappersTests
             park,
             snapshot,
             Array.Empty<HistoricalFact>(),
-            new Dictionary<string, string>());
+            new Dictionary<string, string>(),
+            true);
 
         PublicParkHistoricalSnapshotDto dto = result.ToHttp();
         string json = JsonSerializer.Serialize(dto);
@@ -219,6 +220,7 @@ public sealed class PublicParkHistoryHttpMappersTests
         Assert.Equal("Nom actuel", mappedSubject.DisplayName);
         Assert.Equal("CurrentFallback", mappedSubject.NameOrigin);
         Assert.DoesNotContain(internalFactId.ToString(), json, StringComparison.OrdinalIgnoreCase);
+        Assert.True(dto.IsIndexableKeyYear);
     }
 
     [Fact]
@@ -289,7 +291,8 @@ public sealed class PublicParkHistoryHttpMappersTests
             new Dictionary<string, string>
             {
                 [zoneSubject.Id] = "Nom actuel",
-            });
+            },
+            false);
 
         PublicParkHistoricalSnapshotDto dto = result.ToHttp();
 

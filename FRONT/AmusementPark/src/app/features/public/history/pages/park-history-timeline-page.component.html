@@ -67,7 +67,11 @@
               <div class="canonical-history-event__rail" aria-hidden="true"><span></span></div>
               <article>
                 <header class="canonical-history-event__header">
-                  <time>{{ eventDate(event) }}</time>
+                  @if (snapshotLink(event, currentTimeline); as yearLink) {
+                    <a [routerLink]="yearLink"><time>{{ eventDate(event) }}</time></a>
+                  } @else {
+                    <time>{{ eventDate(event) }}</time>
+                  }
                   <span class="history-badge {{ evidenceClass(event) }}">{{ evidenceLabel(event) }}</span>
                 </header>
                 <p class="canonical-history-event__type">{{ factTypeLabel(event) }}</p>

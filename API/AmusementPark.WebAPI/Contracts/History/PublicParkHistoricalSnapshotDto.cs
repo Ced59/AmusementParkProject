@@ -17,4 +17,6 @@ public sealed class PublicParkHistoricalSnapshotDto
         Array.Empty<PublicHistoricalAmbiguityDto>();
 
     public string MethodologyVersion { get; set; } = string.Empty;
+
+    public bool IsIndexableKeyYear { get; set; }
 }

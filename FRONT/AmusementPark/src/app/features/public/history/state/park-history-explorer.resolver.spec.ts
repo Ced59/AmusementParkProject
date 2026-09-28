@@ -213,7 +213,8 @@ function createSnapshot(): PublicParkHistoricalSnapshot {
       status: 'Partial'
     },
     ambiguities: [],
-    methodologyVersion: '1.0'
+    methodologyVersion: '1.0',
+    isIndexableKeyYear: false
   };
 }
 

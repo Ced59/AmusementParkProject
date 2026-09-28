@@ -152,6 +152,7 @@ export interface PublicParkHistoricalSnapshot {
   coverage: PublicHistoricalCoverage;
   ambiguities: PublicHistoricalAmbiguity[];
   methodologyVersion: string;
+  isIndexableKeyYear: boolean;
 }
 
 export interface PublicHistoricalSubjectComparison {

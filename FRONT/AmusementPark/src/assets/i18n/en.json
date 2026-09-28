@@ -2180,6 +2180,7 @@
       "itemsTitle": "Chosen memories",
       "limits": "The owner intentionally hid some information, or it was not available.",
       "openPark": "Discover the park",
+      "openHistory": "See the park at that time",
       "ctaTitle": "Which parks have you experienced?",
       "ctaDescription": "Start a free local draft, even without creating an account.",
       "loading": "Opening the memory..."
@@ -8752,6 +8753,11 @@
       "title": "Share this timeline",
       "description": "Send the history of {{title}} to someone who enjoys key milestones.",
       "text": "Explore the history of {{title}} on AmusementPark."
+    },
+    "historySnapshot": {
+      "title": "Share this era",
+      "description": "Send this documented reconstruction of {{title}} to someone who enjoys travelling through time.",
+      "text": "Discover {{title}} at that time on AmusementPark."
     },
     "historyArticle": {
       "title": "Share this article",

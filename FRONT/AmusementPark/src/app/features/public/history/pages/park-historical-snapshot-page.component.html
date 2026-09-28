@@ -196,6 +196,15 @@
           </a>
         </div>
       </section>
+
+      <app-public-share-panel
+        targetType="Page"
+        [targetId]="currentSnapshot.parkId + ':' + currentSnapshot.requestedInstant.year"
+        [targetTitle]="currentSnapshot.parkName + ' · ' + currentSnapshot.requestedInstant.year"
+        titleKey="shareSocial.historySnapshot.title"
+        descriptionKey="shareSocial.historySnapshot.description"
+        textKey="shareSocial.historySnapshot.text">
+      </app-public-share-panel>
     </main>
   }
 </app-page-state>

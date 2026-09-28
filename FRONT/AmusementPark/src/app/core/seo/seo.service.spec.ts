@@ -984,6 +984,43 @@ describe('SeoService', () => {
     expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
   });
 
+  it('indexes documented key-year snapshots with localized alternates and structured data', () => {
+    service.applyParkHistoricalSnapshotSeo(
+      'Mirapolis en 1988',
+      'Découvre le parc et ses attractions en 1988 à partir de faits documentés.',
+      'Mirapolis',
+      true,
+      '/fr/park/park-1/mirapolis/history/1988?month=6',
+      '/fr/park/park-1/mirapolis/history/1988'
+    );
+
+    expect(documentRef.title).toBe('Mirapolis en 1988 — Amusement Parks');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+    expect(readCanonicalHref()).toBe(
+      'http://localhost:4200/fr/park/park-1/mirapolis/history/1988'
+    );
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).not.toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(1);
+  });
+
+  it('canonicalizes exploratory snapshot dates to the year while keeping them out of the index', () => {
+    service.applyParkHistoricalSnapshotSeo(
+      'Mirapolis en juin 1988',
+      'Reconstitution exploratoire du parc en juin 1988.',
+      'Mirapolis',
+      false,
+      '/fr/park/park-1/mirapolis/history/1988?month=6',
+      '/fr/park/park-1/mirapolis/history/1988'
+    );
+
+    expect(readMetaContent('meta[name="robots"]')).toBe('noindex,follow');
+    expect(readCanonicalHref()).toBe(
+      'http://localhost:4200/fr/park/park-1/mirapolis/history/1988'
+    );
+    expect(documentRef.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+    expect(documentRef.head.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
+  });
+
   it('keeps historical comparisons canonical but outside the search index', () => {
     service.applyHistoryComparisonSeo(
       'Mirapolis : comparaison historique 1988–1991',

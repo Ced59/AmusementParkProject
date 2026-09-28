@@ -65,7 +65,8 @@ function createSnapshot(subjects: PublicHistoricalSubjectSnapshot[]): PublicPark
       status: 'Substantial'
     },
     ambiguities: [],
-    methodologyVersion: '1.0'
+    methodologyVersion: '1.0',
+    isIndexableKeyYear: false
   };
 }
 

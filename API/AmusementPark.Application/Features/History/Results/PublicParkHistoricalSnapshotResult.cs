@@ -7,4 +7,5 @@ public sealed record PublicParkHistoricalSnapshotResult(
     Park Park,
     ParkHistoricalSnapshot Snapshot,
     IReadOnlyCollection<HistoricalFact> Facts,
-    IReadOnlyDictionary<string, string> ZoneNames);
+    IReadOnlyDictionary<string, string> ZoneNames,
+    bool IsIndexableKeyYear);

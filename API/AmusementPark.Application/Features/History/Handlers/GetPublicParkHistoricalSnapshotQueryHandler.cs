@@ -56,7 +56,10 @@ public sealed class GetPublicParkHistoricalSnapshotQueryHandler :
                 data.Park,
                 snapshot,
                 data.Facts,
-                data.ZoneNames));
+                data.ZoneNames,
+                HistoricalSnapshotSeoEligibilityEvaluator.IsIndexableKeyYear(
+                    snapshot,
+                    data.Facts)));
     }
 
     private static HistoricalInstant? BuildInstant(int year, int? month, int? day)

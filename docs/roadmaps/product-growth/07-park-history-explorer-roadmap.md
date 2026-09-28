@@ -682,7 +682,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | `HIST-12` | Admin diagnostics/revue | Exploitation fiable — implémenté le 28 septembre 2026 |
 | [`HIST-12A`](../../architecture/product-growth-hist-12a-history-admin-diagnostics-2026-09-28.md) | Diagnostic qualité par parc | Incohérences, preuves, couverture et impact Passeport anonymisé — implémenté le 28 septembre 2026 |
 | [`HIST-12B`](../../architecture/product-growth-hist-12b-history-editorial-workbench-2026-09-28.md) | Atelier éditorial canonique | Édition, revue, aperçu public et impact avant publication — implémenté le 28 septembre 2026 |
-| `HIST-13` | SEO/partage | Pages clés seulement |
+| [`HIST-13`](../../architecture/product-growth-hist-13-key-history-pages-seo-2026-09-28.md) | SEO/partage | Années clés seulement, canonical et partage contextualisé — implémenté le 28 septembre 2026 |
 | `HIST-14` | Extension parcs | Gate par parc |
 
 ### Implémentation `HIST-02` — 25 septembre 2026
@@ -1085,6 +1085,29 @@ façade et un port de données, et ne possède aucune règle historique. Ses car
 largeurs et autorisent la césure des contenus longs. Les contrats de responsive,
 les routes HTTP, les transitions et le rechargement après mutation sont
 protégés par des tests.
+
+### Implémentation `HIST-13` — 28 septembre 2026
+
+Une reconstitution annuelle devient désormais une année clé indexable seulement
+si elle correspond à la borne d’un fait majeur, repose sur au moins deux faits
+publiés réellement utilisés et possède une couverture au moins substantielle.
+Cette décision est calculée dans le Core et transmise par l’API ; le frontend ne
+duplique aucune règle métier.
+
+Les sélections au mois ou au jour et les années insuffisamment documentées
+restent consultables mais utilisent `noindex,follow`. Leur canonical est
+normalisé sur l’année. Les années clés reçoivent les alternates localisés et un
+JSON-LD prudent. Le sitemap charge les dernières révisions publiées par lots,
+ne construit que les années candidates issues des événements majeurs et n’énumère
+jamais toutes les dates possibles. Une publication, correction ou rétractation
+de fait public programme sa régénération afin que les années ajoutées ou retirées
+ne dépendent pas d’un rafraîchissement sans rapport.
+
+La timeline rend les dates d’événement cliquables vers le snapshot annuel. Un
+récapitulatif de visite public relie également le visiteur à l’état historique
+du parc lorsque sa date est publique. Le panneau de partage commun est disponible
+sur le snapshot avec le parc et l’année, sans créer un mécanisme parallèle. Ces
+ajouts conservent les largeurs fluides et les focus visibles sur mobile.
 
 ## 22. Gate finale `HIST-G`
 

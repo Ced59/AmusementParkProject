@@ -75,6 +75,20 @@
   font-weight: 900;
 }
 
+.canonical-history-event__header a {
+  border-radius: 0.5rem;
+  display: inline-flex;
+  max-width: 100%;
+  text-decoration-color: color-mix(in srgb, var(--app-primary) 70%, transparent);
+  text-decoration-thickness: 0.12rem;
+  text-underline-offset: 0.25rem;
+}
+
+.canonical-history-event__header a:focus-visible {
+  outline: 0.15rem solid var(--app-primary);
+  outline-offset: 0.2rem;
+}
+
 .canonical-history-event__type {
   margin: 0.85rem 0 0.3rem;
   color: var(--app-primary);

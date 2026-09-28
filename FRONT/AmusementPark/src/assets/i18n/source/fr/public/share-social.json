@@ -89,6 +89,11 @@
       "description": "Envoie l’histoire de {{title}} à quelqu’un qui aime suivre les grands jalons.",
       "text": "Explore l’histoire de {{title}} sur AmusementPark."
     },
+    "historySnapshot": {
+      "title": "Partager cette époque",
+      "description": "Envoie cette reconstitution documentée de {{title}} à quelqu’un qui aime remonter le temps.",
+      "text": "Découvre {{title}} à cette époque sur AmusementPark."
+    },
     "historyArticle": {
       "title": "Partager cet article",
       "description": "Envoie cet article à quelqu’un qui s’intéresse à {{title}}.",
