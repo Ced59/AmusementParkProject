@@ -245,6 +245,7 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
         };
         HistoryEvent historyEvent = new HistoryEvent
         {
+            Id = "event-1",
             Key = "item-opening",
             EntityType = HistoryEntityType.ParkItem,
             OwnerId = "item-1",
@@ -252,6 +253,17 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
             ContextParkId = "park-1",
             Year = 2001,
             EventType = ParkItemHistoryEventType.Opening.ToString(),
+        };
+        HistoryEvent previousLocationEvent = new HistoryEvent
+        {
+            Id = "event-2",
+            Key = "item-previous-location",
+            EntityType = HistoryEntityType.ParkItem,
+            OwnerId = "item-1",
+            ParkItemId = "item-1",
+            ContextParkId = "park-2",
+            Year = 1999,
+            EventType = ParkItemHistoryEventType.RelocationArrival.ToString(),
         };
 
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
@@ -276,6 +288,13 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { historyEvent });
+        historyEventRepository
+            .Setup(repository => repository.GetOwnerTimelinesAsync(
+                HistoryEntityType.ParkItem,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })),
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { previousLocationEvent, historyEvent });
 
         ExportBulkParkGraphJsonQueryHandler handler = CreateHandler(
             parkRepository.Object,
@@ -295,11 +314,17 @@ public sealed class ExportBulkParkGraphJsonQueryHandlerTests
         Assert.NotNull(result.Value);
 
         using JsonDocument document = JsonDocument.Parse(result.Value.Content);
-        JsonElement exportedEvent = document.RootElement
+        JsonElement exportedEvents = document.RootElement
             .GetProperty("parks")[0]
             .GetProperty("history")
-            .GetProperty("events")[0];
+            .GetProperty("events");
 
+        Assert.Equal(2, exportedEvents.GetArrayLength());
+        JsonElement previousLocation = exportedEvents[0];
+        JsonElement exportedEvent = exportedEvents[1];
+
+        Assert.Equal("item-previous-location", previousLocation.GetProperty("key").GetString());
+        Assert.Equal("park-2", previousLocation.GetProperty("contextParkId").GetString());
         Assert.Equal("item-1", exportedEvent.GetProperty("ownerId").GetString());
         Assert.Equal("item-1", exportedEvent.GetProperty("parkItemId").GetString());
         Assert.Equal("park-1", exportedEvent.GetProperty("contextParkId").GetString());

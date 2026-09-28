@@ -176,10 +176,9 @@ public sealed class BulkParkGraphJsonExportDataLoader
                 .Where(static itemId => !string.IsNullOrWhiteSpace(itemId))
                 .Distinct(StringComparer.Ordinal)
                 .ToList();
-            historyEventsByParkId[parkId] = await this.historyEventRepository.GetParkTimelineAsync(
+            historyEventsByParkId[parkId] = await ParkGraphHistoryExportLoader.LoadAsync(
+                this.historyEventRepository,
                 parkId,
-                true,
-                true,
                 itemIds,
                 cancellationToken);
         }

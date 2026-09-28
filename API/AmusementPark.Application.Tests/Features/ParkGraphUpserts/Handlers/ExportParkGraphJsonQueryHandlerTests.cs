@@ -493,6 +493,13 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
                 It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.Contains("item-1")),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { parkHistoryEvent, itemHistoryEvent });
+        historyEventRepository
+            .Setup(repository => repository.GetOwnerTimelinesAsync(
+                HistoryEntityType.ParkItem,
+                It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.Contains("item-1")),
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { itemHistoryEvent });
 
         ExportParkGraphJsonQueryHandler handler = new ExportParkGraphJsonQueryHandler(
             parkRepository.Object,
