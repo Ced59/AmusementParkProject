@@ -86,6 +86,39 @@ public sealed class HistoricalKeyYearSitemapCandidateResolverTests
         Assert.Empty(result);
     }
 
+    [Fact]
+    public void Resolve_WithSubjectMovedToAnotherPark_DoesNotExposeItsFormerParkFact()
+    {
+        Park formerPark = PublicParkHistoryTestData.CreatePark();
+        formerPark.Id = "park-former";
+        formerPark.Name = "Ancien parc";
+        Park currentPark = PublicParkHistoryTestData.CreatePark();
+        currentPark.Id = "park-current";
+        currentPark.Name = "Parc actuel";
+        ParkItem movedItem = PublicParkHistoryTestData.CreateParkItem("moved-item", "Attraction déplacée");
+        movedItem.ParkId = currentPark.Id;
+        HistoricalSubject formerSubject = new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            movedItem.Id,
+            movedItem.Name!,
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            formerPark.Id);
+        HistoricalFact formerFact = PublicParkHistoryTestData.CreateOpeningFact(formerSubject, 1998);
+        Mock<IParkHistoricalSnapshotBuilder> snapshotBuilder =
+            new Mock<IParkHistoricalSnapshotBuilder>(MockBehavior.Strict);
+
+        IReadOnlyCollection<HistoricalKeyYearSitemapCandidate> result =
+            HistoricalKeyYearSitemapCandidateResolver.Resolve(
+                new[] { formerPark, currentPark },
+                new[] { movedItem },
+                Array.Empty<ParkZone>(),
+                new[] { formerFact },
+                snapshotBuilder.Object);
+
+        Assert.Empty(result);
+        snapshotBuilder.VerifyNoOtherCalls();
+    }
+
     private static ParkHistoricalSnapshot CreateEligibleSnapshot(
         string parkId,
         HistoricalInstant instant,

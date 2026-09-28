@@ -1,6 +1,20 @@
 {
-  "version": "5.3.102",
+  "version": "5.3.103",
   "history": [
+    {
+      "version": "5.3.103",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "La découverte des années marquantes reste cohérente quand le contenu d’un parc évolue.",
+        "en": "Landmark-year discovery stays consistent as a park’s content evolves.",
+        "de": "Die Entdeckung prägender Jahre bleibt auch bei Änderungen der Parkinhalte konsistent.",
+        "nl": "Belangrijke jaren blijven consistent vindbaar wanneer de inhoud van een park verandert.",
+        "it": "La scoperta degli anni più significativi resta coerente quando i contenuti di un parco evolvono.",
+        "es": "El descubrimiento de los años más importantes sigue siendo coherente cuando evoluciona el contenido de un parque.",
+        "pl": "Odkrywanie najważniejszych lat pozostaje spójne, gdy zawartość parku się zmienia.",
+        "pt": "A descoberta dos anos mais marcantes mantém-se coerente quando o conteúdo de um parque evolui."
+      }
+    },
     {
       "version": "5.3.102",
       "releasedAt": "2026-09-28",
