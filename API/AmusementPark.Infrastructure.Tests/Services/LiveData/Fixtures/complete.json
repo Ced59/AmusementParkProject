@@ -1,5 +1,5 @@
 {
-  "id": "park-root",
+  "id": "park/root",
   "name": "Pilot Park",
   "entityType": "PARK",
   "timezone": "Europe/Paris",

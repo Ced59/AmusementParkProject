@@ -315,6 +315,7 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
         {
             StatusCode = HttpStatusCode.NotModified,
+            EntityTag = "\"unexpected-v2\"",
         };
 
         LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
@@ -372,6 +373,7 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
         {
             Content = "{not-json",
+            EntityTag = "\"rejected-v1\"",
         };
 
         LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
@@ -381,6 +383,26 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         Assert.Equal(LiveProviderReadDisposition.InvalidPayload, result.Disposition);
         Assert.Equal(64, result.PayloadSha256?.Length);
         Assert.Empty(result.Observations);
+        Assert.Null(result.EntityTag);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenResponseRootDoesNotMatchRequest_ShouldRejectPayload()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"another-park\",\"liveData\":[]}",
+            EntityTag = "\"wrong-root-v1\"",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.InvalidPayload, result.Disposition);
+        Assert.Equal(64, result.PayloadSha256?.Length);
+        Assert.Empty(result.Observations);
+        Assert.Null(result.EntityTag);
     }
 
     [Theory]
@@ -411,7 +433,7 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
             Enumerable.Repeat("0", ThemeParksWikiLiveDataAdapter.MaximumObservationCount + 1));
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
         {
-            Content = $"{{\"liveData\":[{entries}]}}",
+            Content = $"{{\"id\":\"park-root\",\"liveData\":[{entries}]}}",
         };
 
         LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
@@ -432,7 +454,7 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
                 .Select(static index => $"\"UNKNOWN_{index}\":{{}}"));
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
         {
-            Content = "{\"liveData\":[{"
+            Content = "{\"id\":\"park-root\",\"liveData\":[{"
                 + "\"id\":\"bounded-attraction\","
                 + "\"name\":\"Bounded attraction\","
                 + "\"entityType\":\"ATTRACTION\","
@@ -484,6 +506,7 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
         {
             DeclaredContentLength = ThemeParksWikiLiveDataAdapter.MaximumResponseBytes + 1L,
+            EntityTag = "\"too-large-v1\"",
         };
 
         LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
@@ -491,6 +514,7 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
             CancellationToken.None);
 
         Assert.Equal(LiveProviderReadDisposition.ResponseTooLarge, result.Disposition);
+        Assert.Null(result.EntityTag);
     }
 
     [Fact]

@@ -81,7 +81,7 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                 return new LiveProviderReadResult(
                     LiveProviderReadDisposition.NotModified,
                     receivedAtUtc,
-                    entityTag: entityTag ?? request.EntityTag);
+                    entityTag: request.EntityTag);
             }
 
             if (response.StatusCode == HttpStatusCode.TooManyRequests)
@@ -89,7 +89,6 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                 return new LiveProviderReadResult(
                     LiveProviderReadDisposition.RateLimited,
                     receivedAtUtc,
-                    entityTag: entityTag,
                     retryAfter: ResolveRetryAfter(response, receivedAtUtc));
             }
 
@@ -97,16 +96,14 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
             {
                 return new LiveProviderReadResult(
                     LiveProviderReadDisposition.Unavailable,
-                    receivedAtUtc,
-                    entityTag: entityTag);
+                    receivedAtUtc);
             }
 
             if (response.Content.Headers.ContentLength > MaximumResponseBytes)
             {
                 return new LiveProviderReadResult(
                     LiveProviderReadDisposition.ResponseTooLarge,
-                    receivedAtUtc,
-                    entityTag: entityTag);
+                    receivedAtUtc);
             }
 
             byte[]? payload = await ReadBoundedPayloadAsync(
@@ -116,8 +113,7 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
             {
                 return new LiveProviderReadResult(
                     LiveProviderReadDisposition.ResponseTooLarge,
-                    receivedAtUtc,
-                    entityTag: entityTag);
+                    receivedAtUtc);
             }
 
             string payloadSha256 = Convert.ToHexString(SHA256.HashData(payload)).ToLowerInvariant();
@@ -131,7 +127,6 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                 return new LiveProviderReadResult(
                     LiveProviderReadDisposition.InvalidPayload,
                     receivedAtUtc,
-                    entityTag: entityTag,
                     payloadSha256: payloadSha256);
             }
 
@@ -139,6 +134,12 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
             {
                 JsonElement root = providerDocument.RootElement;
                 if (root.ValueKind != JsonValueKind.Object
+                    || !root.TryGetProperty("id", out JsonElement rootId)
+                    || rootId.ValueKind != JsonValueKind.String
+                    || !string.Equals(
+                        rootId.GetString(),
+                        request.ExternalEntityId,
+                        StringComparison.Ordinal)
                     || !root.TryGetProperty("liveData", out JsonElement liveData)
                     || liveData.ValueKind != JsonValueKind.Array
                     || liveData.GetArrayLength() > MaximumObservationCount)
@@ -146,7 +147,6 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                     return new LiveProviderReadResult(
                         LiveProviderReadDisposition.InvalidPayload,
                         receivedAtUtc,
-                        entityTag: entityTag,
                         payloadSha256: payloadSha256);
                 }
 
