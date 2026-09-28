@@ -29,7 +29,7 @@ import {
   isImageGalleryIndexable
 } from './seo-page-value-policy';
 import { SeoRoutePolicyService } from './seo-route-policy.service';
-import { normalizeSeoText, truncateSeoText } from './seo-text.utils';
+import { normalizeSeoDescription, normalizeSeoText, truncateSeoText } from './seo-text.utils';
 import { buildPublicSitemapCanonicalUrl, resolvePublicSitemapSeoCopy } from './public-sitemap-seo.helpers';
 import { PublicDirectoryKind, buildPublicDirectoryPagePath, resolvePublicDirectoryLocation } from '@shared/utils/routing/public-directory-location';
 import { resolvePaginationLabels } from '@shared/utils/pagination/pagination-labels';
@@ -2181,7 +2181,7 @@ export class SeoService {
       ? lifecycleCopy.description(park.name, locationLabel, lifecycleStatusLabel)
       : copy.description(park.name, locationLabel);
     const descriptionSource: string | null = lifecycleStatusLabel ? null : park.description;
-    const description: string = truncateSeoText(normalizeSeoText(descriptionSource, descriptionFallback), 160);
+    const description: string = truncateSeoText(normalizeSeoDescription(descriptionSource, descriptionFallback), 160);
 
     this.apply({
       title: `${title} — ${SITE_NAME}`,
@@ -2727,7 +2727,7 @@ export class SeoService {
       this.normalizeOptionalText(reference.legalName),
       attractionCount
     );
-    const description: string = normalizeSeoText(stripHtml(reference.richDescription), fallbackDescription);
+    const description: string = normalizeSeoDescription(reference.richDescription, fallbackDescription);
     const imageId: string | null = this.normalizeOptionalText(reference.heroLogoImageId)
       ?? this.normalizeOptionalText(reference.photos?.[0]?.imageId);
 
@@ -2756,7 +2756,7 @@ export class SeoService {
 
     this.apply({
       title,
-      description: truncateSeoText(normalizeSeoText(detail.description, descriptionFallback), 160),
+      description: truncateSeoText(normalizeSeoDescription(detail.description, descriptionFallback), 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(seoUrl),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(seoUrl),
@@ -2782,7 +2782,7 @@ export class SeoService {
       .join(', ');
     const fallbackDescription: string = copy.description(attractionName, locationLabel);
     const localizedDescription: string = resolveLocalizedText(attraction.descriptions, normalizedLanguage, '');
-    const description: string = normalizeSeoText(stripHtml(localizedDescription), fallbackDescription);
+    const description: string = normalizeSeoDescription(localizedDescription, fallbackDescription);
 
     this.apply({
       title: `${copy.title(attractionName, locationLabel)} — ${SITE_NAME}`,
@@ -3984,7 +3984,7 @@ export class SeoService {
       };
     }
 
-    const description: string = normalizeSeoText(detail.description, '');
+    const description: string = normalizeSeoDescription(detail.description, '');
     if (description) {
       itemJsonLd['description'] = truncateSeoText(description, 300);
     }

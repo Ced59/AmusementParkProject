@@ -1,6 +1,20 @@
 {
-  "version": "5.4.2",
+  "version": "5.4.3",
   "history": [
+    {
+      "version": "5.4.3",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "Les descriptions affichées dans les moteurs de recherche évitent les titres répétés.",
+        "en": "Descriptions shown in search engines avoid repeated headings.",
+        "de": "Beschreibungen in Suchmaschinen enthalten keine wiederholten Überschriften mehr.",
+        "nl": "Beschrijvingen in zoekmachines vermijden herhaalde koppen.",
+        "it": "Le descrizioni nei motori di ricerca evitano la ripetizione dei titoli.",
+        "es": "Las descripciones en los buscadores evitan repetir los encabezados.",
+        "pl": "Opisy w wyszukiwarkach nie powtarzają już nagłówków.",
+        "pt": "As descrições nos motores de pesquisa evitam a repetição dos títulos."
+      }
+    },
     {
       "version": "5.4.2",
       "releasedAt": "2026-09-28",
