@@ -191,9 +191,14 @@ internal static class ThemeParksWikiLiveDataNormalizer
             return null;
         }
 
-        int? waitTimeMinutes = kind == LiveQueueKind.BoardingGroup
-            ? ReadOptionalInt(value, "estimatedWait", externalTargetId, diagnostics)
-            : ReadOptionalInt(value, "waitTime", externalTargetId, diagnostics);
+        int? waitTimeMinutes = kind switch
+        {
+            LiveQueueKind.Standby or LiveQueueKind.SingleRider or LiveQueueKind.PaidStandby =>
+                ReadOptionalInt(value, "waitTime", externalTargetId, diagnostics),
+            LiveQueueKind.BoardingGroup =>
+                ReadOptionalInt(value, "estimatedWait", externalTargetId, diagnostics),
+            _ => null,
+        };
         LiveQueueAvailability availability = kind switch
         {
             LiveQueueKind.ReturnTime or LiveQueueKind.PaidReturnTime =>
@@ -203,32 +208,33 @@ internal static class ThemeParksWikiLiveDataNormalizer
             _ => LiveQueueAvailability.Unspecified,
         };
 
-        DateTime? returnStartUtc = ReadOptionalUtc(
-            value,
-            "returnStart",
-            externalTargetId,
-            diagnostics);
-        DateTime? returnEndUtc = ReadOptionalUtc(
-            value,
-            "returnEnd",
-            externalTargetId,
-            diagnostics);
-        int? currentGroupStart = ReadOptionalInt(
-            value,
-            "currentGroupStart",
-            externalTargetId,
-            diagnostics);
-        int? currentGroupEnd = ReadOptionalInt(
-            value,
-            "currentGroupEnd",
-            externalTargetId,
-            diagnostics);
-        DateTime? nextAllocationUtc = ReadOptionalUtc(
-            value,
-            "nextAllocationTime",
-            externalTargetId,
-            diagnostics);
-        ReadPrice(value, externalTargetId, diagnostics, out long? priceMinorUnits, out string? currencyCode);
+        bool isReturnTime = kind is LiveQueueKind.ReturnTime or LiveQueueKind.PaidReturnTime;
+        DateTime? returnStartUtc = isReturnTime
+            ? ReadOptionalUtc(value, "returnStart", externalTargetId, diagnostics)
+            : null;
+        DateTime? returnEndUtc = isReturnTime
+            ? ReadOptionalUtc(value, "returnEnd", externalTargetId, diagnostics)
+            : null;
+        int? currentGroupStart = kind == LiveQueueKind.BoardingGroup
+            ? ReadOptionalInt(value, "currentGroupStart", externalTargetId, diagnostics)
+            : null;
+        int? currentGroupEnd = kind == LiveQueueKind.BoardingGroup
+            ? ReadOptionalInt(value, "currentGroupEnd", externalTargetId, diagnostics)
+            : null;
+        DateTime? nextAllocationUtc = kind == LiveQueueKind.BoardingGroup
+            ? ReadOptionalUtc(value, "nextAllocationTime", externalTargetId, diagnostics)
+            : null;
+        long? priceMinorUnits = null;
+        string? currencyCode = null;
+        if (kind == LiveQueueKind.PaidReturnTime)
+        {
+            ReadPrice(
+                value,
+                externalTargetId,
+                diagnostics,
+                out priceMinorUnits,
+                out currencyCode);
+        }
 
         try
         {

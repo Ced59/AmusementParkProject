@@ -130,6 +130,39 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     }
 
     [Fact]
+    public async Task FetchLatestAsync_WhenQueueContainsCrossKindFields_ShouldIgnoreForeignFacts()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("cross-kind-fields.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        LiveQueueObservation standby = observation.Queues.Single(static queue =>
+            queue.Kind == LiveQueueKind.Standby);
+        Assert.Equal(5, standby.WaitTimeMinutes);
+        Assert.Null(standby.ReturnStartUtc);
+        Assert.Null(standby.PriceMinorUnits);
+
+        LiveQueueObservation returnTime = observation.Queues.Single(static queue =>
+            queue.Kind == LiveQueueKind.ReturnTime);
+        Assert.Null(returnTime.WaitTimeMinutes);
+        Assert.Equal(new DateTime(2026, 9, 28, 10, 30, 0, DateTimeKind.Utc), returnTime.ReturnStartUtc);
+        Assert.Null(returnTime.PriceMinorUnits);
+
+        LiveQueueObservation boardingGroup = observation.Queues.Single(static queue =>
+            queue.Kind == LiveQueueKind.BoardingGroup);
+        Assert.Equal(12, boardingGroup.WaitTimeMinutes);
+        Assert.Null(boardingGroup.ReturnStartUtc);
+        Assert.Null(boardingGroup.PriceMinorUnits);
+        Assert.Empty(result.Diagnostics);
+    }
+
+    [Fact]
     public async Task FetchLatestAsync_WithEmptyFixture_ShouldReturnSuccessfulEmptyBatchWithDiagnostic()
     {
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
