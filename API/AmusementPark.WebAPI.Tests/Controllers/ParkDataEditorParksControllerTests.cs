@@ -36,7 +36,16 @@ public sealed class ParkDataEditorParksControllerTests
             .ReturnsAsync(ApplicationResult<DataCompletenessScore>.Success(DataCompletenessScore.FromPoints(
                 100,
                 100,
-                "public-text.forbidden-editorial-language")));
+                "public-text.forbidden-editorial-language") with
+            {
+                FormulaicPublicTextIssue = new FormulaicPublicTextIssue
+                {
+                    MatchType = "long-sequence",
+                    LanguageCode = "fr",
+                    FirstDocumentIndex = 4,
+                    SecondDocumentIndex = 12,
+                },
+            }));
 
         ParkDataEditorParksController controller = new ParkDataEditorParksController(
             Mock.Of<IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<ParkListResult>>>>(MockBehavior.Strict),
@@ -52,6 +61,11 @@ public sealed class ParkDataEditorParksControllerTests
         DataCompletenessScoreDto score = Assert.IsType<DataCompletenessScoreDto>(ok.Value);
         Assert.Equal(95, score.CompletenessScore);
         Assert.Equal(new[] { "public-text.forbidden-editorial-language" }, score.PublicationBlockers);
+        Assert.NotNull(score.FormulaicPublicTextIssue);
+        Assert.Equal("long-sequence", score.FormulaicPublicTextIssue.MatchType);
+        Assert.Equal("fr", score.FormulaicPublicTextIssue.LanguageCode);
+        Assert.Equal(4, score.FormulaicPublicTextIssue.FirstDocumentIndex);
+        Assert.Equal(12, score.FormulaicPublicTextIssue.SecondDocumentIndex);
         handler.VerifyAll();
     }
 

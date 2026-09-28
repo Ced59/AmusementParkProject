@@ -178,7 +178,7 @@ internal static class DataCompletenessContextFactory
                 parkOperator,
                 manufacturers,
                 referenceImages);
-            bool hasNoFormulaicPublicText = !DataCompletenessScoringRules.HasFormulaicPublicText(
+            FormulaicPublicTextIssue? formulaicPublicTextIssue = DataCompletenessScoringRules.FindFormulaicPublicTextIssue(
                 CollectParkPublicTexts(
                     park,
                     currentParkItems,
@@ -189,6 +189,7 @@ internal static class DataCompletenessContextFactory
                     scoreParkItemHistory,
                     projectCurrentParkForPublication),
                 CollectParkEntityNames(park, currentParkItems, currentZones, scoreParkHistory, scoreParkItemHistory));
+            bool hasNoFormulaicPublicText = formulaicPublicTextIssue is null;
 
             ParkDataCompletenessContext context = new ParkDataCompletenessContext
             {
@@ -237,6 +238,7 @@ internal static class DataCompletenessContextFactory
                 HasStructuredTechnicalDataOnly = hasNoForbiddenPublicText,
                 HasNoForbiddenPublicText = hasNoForbiddenPublicText,
                 HasNoFormulaicPublicText = hasNoFormulaicPublicText,
+                FormulaicPublicTextIssue = formulaicPublicTextIssue,
                 HasDocumentedRemainingDebt = projectCurrentParkForPublication
                     ? false
                     : park.AdminReviewStatus != AdminReviewStatus.Validated,

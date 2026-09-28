@@ -271,16 +271,33 @@ public static class DataCompletenessScoringRules
         IEnumerable<LocalizedText> publicTexts,
         IEnumerable<string?> entityNames)
     {
+        return FindFormulaicPublicTextIssue(publicTexts, entityNames) is not null;
+    }
+
+    public static FormulaicPublicTextIssue? FindFormulaicPublicTextIssue(
+        IEnumerable<LocalizedText> publicTexts,
+        IEnumerable<string?> entityNames)
+    {
         ArgumentNullException.ThrowIfNull(publicTexts);
         ArgumentNullException.ThrowIfNull(entityNames);
 
-        List<LocalizedText> populatedPublicTexts = publicTexts
+        List<(int Index, LocalizedText Text)> populatedPublicTexts = publicTexts
             .Where(static text => !string.IsNullOrWhiteSpace(text.Value))
+            .Select(static (text, index) => (Index: index + 1, Text: text))
             .ToList();
-        if (populatedPublicTexts.Any(text =>
-            SingleOccurrenceFormulaRegexes.Any(regex => regex.IsMatch(NormalizePublicText(text.Value!)))))
+        foreach ((int Index, LocalizedText Text) indexedPublicText in populatedPublicTexts)
         {
-            return true;
+            LocalizedText publicText = indexedPublicText.Text;
+            if (SingleOccurrenceFormulaRegexes.Any(regex => regex.IsMatch(NormalizePublicText(publicText.Value!))))
+            {
+                return new FormulaicPublicTextIssue
+                {
+                    MatchType = "single-formula",
+                    LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
+                    FirstDocumentIndex = indexedPublicText.Index,
+                    SecondDocumentIndex = indexedPublicText.Index,
+                };
+            }
         }
 
         List<string> normalizedEntityNames = entityNames
@@ -292,19 +309,18 @@ public static class DataCompletenessScoringRules
             .ToList();
         Dictionary<string, int> firstDocumentBySentence = new Dictionary<string, int>(StringComparer.Ordinal);
         Dictionary<string, int> firstDocumentByLongSequence = new Dictionary<string, int>(StringComparer.Ordinal);
-        int documentIndex = 0;
 
-        foreach (IGrouping<string, LocalizedText> languageGroup in populatedPublicTexts
+        foreach (IGrouping<string, (int Index, LocalizedText Text)> languageGroup in populatedPublicTexts
             .GroupBy(
-                static text => string.IsNullOrWhiteSpace(text.LanguageCode) ? "und" : text.LanguageCode.Trim(),
+                static indexedText => NormalizeLanguageCode(indexedText.Text.LanguageCode),
                 StringComparer.OrdinalIgnoreCase))
         {
             firstDocumentBySentence.Clear();
             firstDocumentByLongSequence.Clear();
 
-            foreach (LocalizedText publicText in languageGroup)
+            foreach ((int Index, LocalizedText Text) indexedPublicText in languageGroup)
             {
-                documentIndex += 1;
+                LocalizedText publicText = indexedPublicText.Text;
                 string decodedValue = WebUtility.HtmlDecode(publicText.Value ?? string.Empty);
                 string withBoundaries = HtmlBlockBoundaryRegex.Replace(decodedValue, ". ");
                 string withoutHtml = HtmlTagRegex.Replace(withBoundaries, " ");
@@ -327,39 +343,64 @@ public static class DataCompletenessScoringRules
                     }
 
                     string sentenceFingerprint = string.Join(' ', words);
-                    if (WasSeenInAnotherDocument(firstDocumentBySentence, sentenceFingerprint, documentIndex))
+                    int? firstSentenceDocumentIndex = FindFirstDocumentIndex(
+                        firstDocumentBySentence,
+                        sentenceFingerprint,
+                        indexedPublicText.Index);
+                    if (firstSentenceDocumentIndex.HasValue)
                     {
-                        return true;
+                        return new FormulaicPublicTextIssue
+                        {
+                            MatchType = "sentence",
+                            LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
+                            FirstDocumentIndex = firstSentenceDocumentIndex.Value,
+                            SecondDocumentIndex = indexedPublicText.Index,
+                        };
                     }
 
                     const int longSequenceWordCount = 9;
                     for (int index = 0; index <= words.Count - longSequenceWordCount; index += 1)
                     {
                         string sequenceFingerprint = string.Join(' ', words.Skip(index).Take(longSequenceWordCount));
-                        if (WasSeenInAnotherDocument(firstDocumentByLongSequence, sequenceFingerprint, documentIndex))
+                        int? firstSequenceDocumentIndex = FindFirstDocumentIndex(
+                            firstDocumentByLongSequence,
+                            sequenceFingerprint,
+                            indexedPublicText.Index);
+                        if (firstSequenceDocumentIndex.HasValue)
                         {
-                            return true;
+                            return new FormulaicPublicTextIssue
+                            {
+                                MatchType = "long-sequence",
+                                LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
+                                FirstDocumentIndex = firstSequenceDocumentIndex.Value,
+                                SecondDocumentIndex = indexedPublicText.Index,
+                            };
                         }
                     }
                 }
             }
         }
 
-        return false;
+        return null;
     }
 
-    private static bool WasSeenInAnotherDocument(
+    private static int? FindFirstDocumentIndex(
         IDictionary<string, int> firstDocumentByFingerprint,
         string fingerprint,
         int documentIndex)
     {
         if (firstDocumentByFingerprint.TryGetValue(fingerprint, out int firstDocumentIndex))
         {
-            return firstDocumentIndex != documentIndex;
+            return firstDocumentIndex == documentIndex ? null : firstDocumentIndex;
         }
 
         firstDocumentByFingerprint[fingerprint] = documentIndex;
-        return false;
+        return null;
+    }
+
+    private static string NormalizeLanguageCode(string? languageCode)
+    {
+        return string.IsNullOrWhiteSpace(languageCode) ? "und" : languageCode.Trim();
     }
 
     private static string NormalizePublicText(string value)

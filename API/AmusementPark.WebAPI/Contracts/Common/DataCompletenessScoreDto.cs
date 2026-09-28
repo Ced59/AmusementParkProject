@@ -11,4 +11,6 @@ public sealed class DataCompletenessScoreDto
     public int EarnedPoints { get; set; }
 
     public List<string> PublicationBlockers { get; set; } = new List<string>();
+
+    public FormulaicPublicTextIssueDto? FormulaicPublicTextIssue { get; set; }
 }

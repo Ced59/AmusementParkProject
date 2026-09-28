@@ -14,6 +14,8 @@ public sealed record DataCompletenessScore
 
     public string? PublicationBlocker { get; init; }
 
+    public FormulaicPublicTextIssue? FormulaicPublicTextIssue { get; init; }
+
     public static DataCompletenessScore FromPoints(
         int earnedPoints,
         int applicableMaxPoints,
