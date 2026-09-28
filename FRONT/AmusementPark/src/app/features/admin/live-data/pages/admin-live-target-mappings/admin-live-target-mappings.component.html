@@ -1,0 +1,220 @@
+<app-ui-card styleClass="admin-list-card live-mappings">
+  <ng-template appUiTemplate="header">
+    <div class="admin-list-header live-mappings__header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.liveMappings.kicker' | translate }}</span>
+        <h2>{{ 'admin.liveMappings.title' | translate }}</h2>
+        <p>{{ 'admin.liveMappings.subtitle' | translate }}</p>
+      </div>
+      <button appUiButton type="button" icon="pi pi-refresh"
+        [label]="'admin.liveMappings.refresh' | translate" (click)="reload()"></button>
+    </div>
+  </ng-template>
+
+  <section class="live-mappings__rule" aria-labelledby="live-mapping-rule-title">
+    <i class="pi pi-shield" aria-hidden="true"></i>
+    <div>
+      <h3 id="live-mapping-rule-title">{{ 'admin.liveMappings.ruleTitle' | translate }}</h3>
+      <p>{{ 'admin.liveMappings.ruleDescription' | translate }}</p>
+    </div>
+  </section>
+
+  <details class="live-mappings__create">
+    <summary><i class="pi pi-plus" aria-hidden="true"></i>{{ 'admin.liveMappings.create.title' | translate }}</summary>
+    <form class="live-mappings__form" (ngSubmit)="createCandidate()">
+      <label>
+        <span>{{ 'admin.liveMappings.fields.source' | translate }}</span>
+        <input name="sourceId" type="text" maxlength="256" [(ngModel)]="sourceId" autocomplete="off">
+      </label>
+      <label>
+        <span>{{ 'admin.liveMappings.fields.type' | translate }}</span>
+        <select name="candidateTargetType" [(ngModel)]="candidateTargetType">
+          @for (type of targetTypes; track type) {
+            <option [ngValue]="type">{{ typeKey(type) | translate }}</option>
+          }
+        </select>
+      </label>
+      <label>
+        <span>{{ 'admin.liveMappings.fields.externalId' | translate }}</span>
+        <input name="externalTargetId" type="text" maxlength="256" [(ngModel)]="externalTargetId" autocomplete="off">
+      </label>
+      <label>
+        <span>{{ 'admin.liveMappings.fields.externalName' | translate }}</span>
+        <input name="externalDisplayName" type="text" maxlength="300" [(ngModel)]="externalDisplayName" autocomplete="off">
+      </label>
+      <label>
+        <span>{{ 'admin.liveMappings.fields.country' | translate }}</span>
+        <input name="externalCountryCode" type="text" maxlength="2" [(ngModel)]="externalCountryCode" autocomplete="off">
+      </label>
+      @if (candidateTargetType === 'ParkItem') {
+        <label>
+          <span>{{ 'admin.liveMappings.fields.externalParkId' | translate }}</span>
+          <input name="externalParentTargetId" type="text" maxlength="256" [(ngModel)]="externalParentTargetId" autocomplete="off">
+        </label>
+        <label>
+          <span>{{ 'admin.liveMappings.fields.externalParkName' | translate }}</span>
+          <input name="externalParentDisplayName" type="text" maxlength="300" [(ngModel)]="externalParentDisplayName" autocomplete="off">
+        </label>
+      }
+      <label>
+        <span>{{ 'admin.liveMappings.fields.internalTargetIdOptional' | translate }}</span>
+        <input name="suggestedInternalTargetId" type="text" maxlength="256" [(ngModel)]="suggestedInternalTargetId" autocomplete="off">
+      </label>
+      <label>
+        <span>{{ 'admin.liveMappings.fields.internalParkIdOptional' | translate }}</span>
+        <input name="suggestedParkId" type="text" maxlength="256" [(ngModel)]="suggestedParkId" autocomplete="off">
+      </label>
+      <button appUiButton type="submit" icon="pi pi-plus"
+        [disabled]="!canCreateCandidate() || mutationPending()"
+        [label]="'admin.liveMappings.create.action' | translate"></button>
+    </form>
+  </details>
+
+  <form class="live-mappings__filters" (ngSubmit)="applyFilters()">
+    <label>
+      <span>{{ 'admin.liveMappings.filters.search' | translate }}</span>
+      <input name="search" type="search" maxlength="200" [(ngModel)]="search"
+        [placeholder]="'admin.liveMappings.filters.searchPlaceholder' | translate">
+    </label>
+    <label>
+      <span>{{ 'admin.liveMappings.filters.status' | translate }}</span>
+      <select name="status" [(ngModel)]="status">
+        <option value="">{{ 'admin.liveMappings.filters.all' | translate }}</option>
+        @for (candidateStatus of statuses; track candidateStatus) {
+          <option [ngValue]="candidateStatus">{{ statusKey(candidateStatus) | translate }}</option>
+        }
+      </select>
+    </label>
+    <label>
+      <span>{{ 'admin.liveMappings.filters.type' | translate }}</span>
+      <select name="targetType" [(ngModel)]="targetType">
+        <option value="">{{ 'admin.liveMappings.filters.all' | translate }}</option>
+        @for (type of targetTypes; track type) {
+          <option [ngValue]="type">{{ typeKey(type) | translate }}</option>
+        }
+      </select>
+    </label>
+    <div class="live-mappings__filter-actions">
+      <button appUiButton type="submit" icon="pi pi-search"
+        [label]="'admin.liveMappings.filters.apply' | translate"></button>
+      <button appUiButton type="button" class="p-button-outlined" icon="pi pi-times"
+        [label]="'admin.liveMappings.filters.clear' | translate" (click)="clearFilters()"></button>
+    </div>
+  </form>
+
+  @if (feedbackKey()) {
+    <p class="live-mappings__feedback live-mappings__feedback--success" role="status">{{ feedbackKey()! | translate }}</p>
+  }
+  @if (mutationErrorKey()) {
+    <p class="live-mappings__feedback live-mappings__feedback--error" role="alert">{{ mutationErrorKey()! | translate }}</p>
+  }
+
+  <app-page-state [state]="state()" loadingMessageKey="admin.liveMappings.loading"
+    errorMessageKey="admin.liveMappings.errors.load" emptyMessageKey="admin.liveMappings.empty">
+    <section class="live-mappings__list" [attr.aria-label]="'admin.liveMappings.listAria' | translate">
+      @for (mapping of mappings(); track mapping.mappingId) {
+        <article class="live-mappings__card">
+          <header>
+            <div>
+              <span class="live-mappings__source">{{ mapping.sourceId }}</span>
+              <h3>{{ mapping.externalTarget.displayName }}</h3>
+              <p>{{ typeKey(mapping.externalTarget.type) | translate }} · {{ mapping.externalTarget.countryCode }}</p>
+            </div>
+            <span [class]="statusClass(mapping.status)">{{ statusKey(mapping.status) | translate }}</span>
+          </header>
+
+          <div class="live-mappings__identity">
+            <div>
+              <span>{{ 'admin.liveMappings.externalTitle' | translate }}</span>
+              <strong>{{ mapping.externalTarget.displayName }}</strong>
+              <small>{{ mapping.externalTarget.id }}</small>
+              @if (mapping.externalTarget.parentDisplayName) {
+                <small>{{ mapping.externalTarget.parentDisplayName }}</small>
+              }
+            </div>
+            <i class="pi pi-arrow-right" aria-hidden="true"></i>
+            <div [class.live-mappings__unresolved]="!mapping.target">
+              <span>{{ 'admin.liveMappings.internalTitle' | translate }}</span>
+              <strong>{{ mapping.target?.displayName || ('admin.liveMappings.unresolved' | translate) }}</strong>
+              @if (mapping.target) {
+                <small>{{ mapping.target.parkDisplayName }}</small>
+                <small>{{ mapping.target.id }}</small>
+              }
+            </div>
+          </div>
+
+          <div class="live-mappings__meta">
+            <span><i class="pi pi-history" aria-hidden="true"></i>{{ 'admin.liveMappings.revision' | translate:{ revision: mapping.revision } }}</span>
+            <span><i class="pi pi-sparkles" aria-hidden="true"></i>{{ ('admin.liveMappings.confidence.' + mapping.confidence) | translate }}</span>
+            @if (mapping.isEligibleForLiveUse) {
+              <span class="live-mappings__eligible"><i class="pi pi-check-circle" aria-hidden="true"></i>{{ 'admin.liveMappings.eligible' | translate }}</span>
+            }
+          </div>
+
+          @if (mapping.status === 'Candidate' || mapping.status === 'Suspended' || mapping.status === 'Verified') {
+            <details class="live-mappings__review">
+              <summary>{{ 'admin.liveMappings.review.title' | translate }}</summary>
+              <div class="live-mappings__review-fields">
+                <label>
+                  <span>{{ 'admin.liveMappings.fields.internalTargetId' | translate }}</span>
+                  <input type="text" [name]="'target-' + mapping.mappingId" maxlength="256"
+                    [ngModel]="targetIdFor(mapping)" (ngModelChange)="setTargetId(mapping.mappingId, $event)" autocomplete="off">
+                </label>
+                <label>
+                  <span>{{ 'admin.liveMappings.fields.internalParkId' | translate }}</span>
+                  <input type="text" [name]="'park-' + mapping.mappingId" maxlength="256"
+                    [ngModel]="parkIdFor(mapping)" (ngModelChange)="setParkId(mapping.mappingId, $event)" autocomplete="off">
+                </label>
+                <label class="live-mappings__note">
+                  <span>{{ 'admin.liveMappings.fields.reviewNote' | translate }}</span>
+                  <textarea [name]="'note-' + mapping.mappingId" rows="3" maxlength="2000"
+                    [ngModel]="noteFor(mapping)" (ngModelChange)="setReviewNote(mapping.mappingId, $event)"></textarea>
+                </label>
+              </div>
+              <div class="live-mappings__review-actions">
+                @if (mapping.status === 'Candidate' || mapping.status === 'Suspended') {
+                  <button appUiButton type="button" icon="pi pi-check"
+                    [disabled]="!canReview(mapping, 'Verify') || mutationPending()"
+                    [label]="'admin.liveMappings.review.verify' | translate"
+                    (click)="review(mapping, 'Verify')"></button>
+                }
+                @if (mapping.status === 'Verified') {
+                  <button appUiButton type="button" icon="pi pi-pencil"
+                    [disabled]="!canReview(mapping, 'Correct') || mutationPending()"
+                    [label]="'admin.liveMappings.review.correct' | translate"
+                    (click)="review(mapping, 'Correct')"></button>
+                  <button appUiButton type="button" class="p-button-outlined" icon="pi pi-pause"
+                    [disabled]="!canReview(mapping, 'Suspend') || mutationPending()"
+                    [label]="'admin.liveMappings.review.suspend' | translate"
+                    (click)="review(mapping, 'Suspend')"></button>
+                }
+                @if (mapping.status === 'Candidate') {
+                  <button appUiButton type="button" class="p-button-danger p-button-outlined" icon="pi pi-times"
+                    [disabled]="!canReview(mapping, 'Reject') || mutationPending()"
+                    [label]="'admin.liveMappings.review.reject' | translate"
+                    (click)="review(mapping, 'Reject')"></button>
+                }
+                @if (mapping.status === 'Verified' || mapping.status === 'Suspended') {
+                  <button appUiButton type="button" class="p-button-danger p-button-outlined" icon="pi pi-stop-circle"
+                    [disabled]="!canReview(mapping, 'Supersede') || mutationPending()"
+                    [label]="'admin.liveMappings.review.supersede' | translate"
+                    (click)="review(mapping, 'Supersede')"></button>
+                }
+              </div>
+            </details>
+          }
+        </article>
+      }
+    </section>
+
+    <nav class="live-mappings__pagination" [attr.aria-label]="'admin.liveMappings.paginationAria' | translate">
+      <button appUiButton type="button" class="p-button-outlined" icon="pi pi-chevron-left"
+        [disabled]="!canGoPrevious()" [label]="'admin.liveMappings.previous' | translate"
+        (click)="reload(page - 1)"></button>
+      <span>{{ 'admin.liveMappings.page' | translate:{ page: page, total: (pagination()?.totalPages || 1) } }}</span>
+      <button appUiButton type="button" class="p-button-outlined" icon="pi pi-chevron-right" iconPos="right"
+        [disabled]="!canGoNext()" [label]="'admin.liveMappings.next' | translate"
+        (click)="reload(page + 1)"></button>
+    </nav>
+  </app-page-state>
+</app-ui-card>

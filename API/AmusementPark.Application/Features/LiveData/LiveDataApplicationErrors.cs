@@ -1,0 +1,56 @@
+using AmusementPark.Application.Errors;
+
+namespace AmusementPark.Application.Features.LiveData;
+
+public static class LiveDataApplicationErrors
+{
+    public static ApplicationError InvalidMapping(string? message = null)
+    {
+        return ApplicationError.Validation(
+            "live-data.mapping.invalid",
+            message ?? "The live target mapping is invalid.");
+    }
+
+    public static ApplicationError MappingNotFound()
+    {
+        return ApplicationError.NotFound(
+            "live-data.mapping.not-found",
+            "The live target mapping was not found.");
+    }
+
+    public static ApplicationError TargetNotFound()
+    {
+        return ApplicationError.NotFound(
+            "live-data.target.not-found",
+            "The selected internal live target was not found or is inconsistent with its park.");
+    }
+
+    public static ApplicationError Conflict(int currentRevision)
+    {
+        return ApplicationError.Conflict(
+            "live-data.mapping.revision-conflict",
+            "The live target mapping changed during this edit. Reload its latest revision.",
+            currentRevision);
+    }
+
+    public static ApplicationError AlreadyExists()
+    {
+        return ApplicationError.Conflict(
+            "live-data.mapping.already-exists",
+            "A mapping already exists for this source target.");
+    }
+
+    public static ApplicationError InvalidTransition(string? message = null)
+    {
+        return ApplicationError.RuleViolation(
+            "live-data.mapping.invalid-transition",
+            message ?? "The requested live mapping transition is not allowed.");
+    }
+
+    public static ApplicationError InvalidSearch()
+    {
+        return ApplicationError.Validation(
+            "live-data.mapping.search.invalid",
+            "The live mapping search is invalid.");
+    }
+}

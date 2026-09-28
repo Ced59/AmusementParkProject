@@ -3129,6 +3129,87 @@
         }
       }
     },
+    "liveMappings": {
+      "navTitle": "Associazioni dei dati live",
+      "shortcut": "Verifica le associazioni tra la fonte live e parchi o attrazioni.",
+      "kicker": "Affidabilità dei dati live",
+      "title": "Associazioni delle entità",
+      "subtitle": "Conferma quale entità interna corrisponde a ogni identificativo del fornitore senza pubblicare corrispondenze approssimative.",
+      "refresh": "Aggiorna",
+      "ruleTitle": "La verifica umana è obbligatoria",
+      "ruleDescription": "Un suggerimento resta un candidato anche con un nome molto simile. Solo un’associazione verificata può alimentare i dati live.",
+      "loading": "Caricamento delle associazioni…",
+      "empty": "Nessuna associazione corrisponde a questi filtri.",
+      "listAria": "Associazioni delle entità live",
+      "paginationAria": "Paginazione delle associazioni live",
+      "previous": "Precedente",
+      "next": "Successiva",
+      "page": "Pagina {{page}} di {{total}}",
+      "revision": "Revisione {{revision}}",
+      "eligible": "Utilizzabile per i dati live",
+      "externalTitle": "Entità del fornitore",
+      "internalTitle": "Entità del sito",
+      "unresolved": "Da identificare",
+      "create": {
+        "title": "Aggiungi un candidato",
+        "action": "Crea candidato"
+      },
+      "fields": {
+        "source": "Fonte",
+        "type": "Tipo di entità",
+        "externalId": "Identificativo del fornitore",
+        "externalName": "Nome del fornitore",
+        "country": "Paese (ISO 2)",
+        "externalParkId": "Identificativo del parco del fornitore",
+        "externalParkName": "Nome del parco del fornitore",
+        "internalTargetIdOptional": "Destinazione interna suggerita (facoltativa)",
+        "internalParkIdOptional": "Parco interno suggerito (facoltativo)",
+        "internalTargetId": "Identificativo della destinazione interna",
+        "internalParkId": "Identificativo del parco interno",
+        "reviewNote": "Motivo della decisione"
+      },
+      "filters": {
+        "search": "Cerca",
+        "searchPlaceholder": "Nome o identificativo del fornitore",
+        "status": "Stato",
+        "type": "Tipo",
+        "all": "Tutti",
+        "apply": "Filtra",
+        "clear": "Cancella"
+      },
+      "status": {
+        "Candidate": "Da verificare",
+        "Verified": "Verificata",
+        "Suspended": "Sospesa",
+        "Superseded": "Sostituita",
+        "Rejected": "Rifiutata"
+      },
+      "type": {
+        "Park": "Parco",
+        "ParkItem": "Attrazione o luogo"
+      },
+      "confidence": {
+        "Low": "Affidabilità bassa",
+        "Medium": "Affidabilità media",
+        "High": "Affidabilità alta"
+      },
+      "review": {
+        "title": "Verifica questa associazione",
+        "verify": "Conferma",
+        "correct": "Correggi destinazione",
+        "suspend": "Sospendi",
+        "reject": "Rifiuta",
+        "supersede": "Sostituisci definitivamente"
+      },
+      "messages": {
+        "created": "Il candidato è stato aggiunto.",
+        "reviewed": "La decisione è stata registrata nella cronologia."
+      },
+      "errors": {
+        "load": "Impossibile caricare le associazioni live.",
+        "mutation": "Impossibile salvare la decisione. Ricarica l’elenco e riprova."
+      }
+    },
     "loading": "Caricamento...",
     "m14": {
       "kicker": "Amministrazione",

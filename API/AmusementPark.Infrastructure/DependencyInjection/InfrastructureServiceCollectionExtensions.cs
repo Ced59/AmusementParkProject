@@ -11,6 +11,7 @@ using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.HistoricalExistenceReports.Ports;
+using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkDataEditorTokens.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
@@ -386,6 +387,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<HistoricalReviewEventRepository>();
         services.AddScoped<IHistoricalAuditReader>(provider =>
             provider.GetRequiredService<HistoricalReviewEventRepository>());
+        services.AddScoped<ILiveTargetMappingRepository, LiveTargetMappingRepository>();
         services.AddScoped<IParkWeatherProviderStrategy, OpenMeteoWeatherProviderStrategy>();
         services.AddScoped<IParkWeatherProviderStrategyResolver, ParkWeatherProviderStrategyResolver>();
         services.AddSingleton<IParkWeatherRefreshQueue, ParkWeatherRefreshQueue>();

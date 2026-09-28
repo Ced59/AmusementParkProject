@@ -2,10 +2,11 @@
 
 > Code programme : `LIVE`
 >
-> Statut : `LIVE-01` et `LIVE-02` livrés le 28 septembre 2026. La source pilote
-> est autorisée pour un spike interne latest-only et le contrat de provenance et
-> fraîcheur est implémenté ; aucune généralisation publique n'est encore autorisée
-> avant les gates de mapping, charge et exploitation.
+> Statut : `LIVE-01`, `LIVE-02` et `LIVE-03` livrés le 28 septembre 2026. La
+> source pilote est autorisée pour un spike interne latest-only, le contrat de
+> provenance/fraîcheur est implémenté et les mappings humains sont versionnés et
+> pilotables ; aucune généralisation publique n'est encore autorisée avant les
+> gates de charge, quarantaine et exploitation.
 >
 > Dépendances : `RANK`, `PASS`, `WATCH`, qualité/observabilité transverse et contrats de source validés.
 >
@@ -34,8 +35,14 @@ Les trente tests ciblés couvrent notamment les frontières temporelles, l'absen
 d'horodatage et les dérives d'horloge. La décision est détaillée dans
 [`product-growth-live-02-provenance-freshness-2026-09-28.md`](../../architecture/product-growth-live-02-provenance-freshness-2026-09-28.md).
 
-Le prochain jalon est `LIVE-03` : créer les mappings vérifiés et leur pilotage
-administratif, sans mapping heuristique publié.
+`LIVE-03` a livré le mapping append-only des identifiants fournisseur vers les
+parcs et attractions internes, les transitions humaines vérifiées, la protection
+contre les révisions concurrentes et un écran d'administration responsive. Le
+détail est consigné dans
+[`product-growth-live-03-verified-target-mapping-2026-09-28.md`](../../architecture/product-growth-live-03-verified-target-mapping-2026-09-28.md).
+
+Le prochain jalon est `LIVE-04` : implémenter l'adaptateur fournisseur pilote avec
+des fixtures exhaustives, toujours sans affichage public.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -749,7 +756,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 |---|---|---|
 | `LIVE-01` | ✅ Inventaire juridique/technique des sources | ThemeParks.wiki autorisée pour un spike interne latest-only |
 | [`LIVE-02`](../../architecture/product-growth-live-02-provenance-freshness-2026-09-28.md) | ✅ Modèle provenance/fraîcheur | Sémantique de domaine testée, sans exposition publique |
-| `LIVE-03` | Mapping et admin | Aucun mapping heuristique public |
+| [`LIVE-03`](../../architecture/product-growth-live-03-verified-target-mapping-2026-09-28.md) | ✅ Mapping et admin | Aucun mapping heuristique public |
 | `LIVE-04` | Adaptateur pilote | Fixtures complètes |
 | `LIVE-05` | Scheduler/circuit breaker/budgets | Charge bornée |
 | `LIVE-06` | Latest store | Pas d’écrasement ancien |
@@ -777,6 +784,21 @@ l'appelant. Elle distingue les cinq états sans jamais transformer une donnée
 absente ou incohérente en valeur courante. Le modèle reste dans Core : aucune
 dépendance HTTP, MongoDB, fournisseur ou interface n'a été introduite. Aucun appel
 externe, stockage, endpoint ou affichage live n'est encore actif.
+
+### Implémentation `LIVE-03` — 28 septembre 2026
+
+La version `5.4.1` ajoute une chaîne de correspondance vérifiée entre les
+identifiants externes et les entités réelles du produit. Chaque création,
+validation, correction, suspension, rejet ou remplacement produit une révision
+immuable, avec acteur, motif et contrôle de concurrence. Un candidat ne peut
+jamais alimenter le live, même lorsque son nom ressemble exactement à celui d'une
+attraction.
+
+MongoDB conserve toutes les révisions dans une nouvelle collection indexée. Les
+cas d'usage restent derrière des ports Application et l'administration utilise
+des endpoints protégés, audités et limités. L'écran Angular en cartes permet de
+comparer les deux côtés puis de décider sur ordinateur ou mobile sans débordement
+horizontal. Aucun fournisseur n'est encore appelé et rien n'est public.
 
 ## 24. Gate finale `LIVE-G`
 

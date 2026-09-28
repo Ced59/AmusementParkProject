@@ -1,0 +1,26 @@
+using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.LiveData.Models;
+using AmusementPark.Core.Domain.LiveData;
+
+namespace AmusementPark.Application.Features.LiveData.Ports;
+
+public interface ILiveTargetMappingRepository
+{
+    Task<ExternalLiveTargetMapping?> GetLatestByIdAsync(
+        Guid mappingId,
+        CancellationToken cancellationToken);
+
+    Task<ExternalLiveTargetMapping?> GetLatestByNaturalKeyAsync(
+        LiveDataSourceId sourceId,
+        string externalTargetId,
+        CancellationToken cancellationToken);
+
+    Task<PagedResult<ExternalLiveTargetMapping>> SearchLatestAsync(
+        LiveTargetMappingSearchCriteria criteria,
+        CancellationToken cancellationToken);
+
+    Task<LiveTargetMappingWriteOutcome> AppendRevisionAsync(
+        ExternalLiveTargetMapping mapping,
+        int expectedRevision,
+        CancellationToken cancellationToken);
+}

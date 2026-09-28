@@ -3129,6 +3129,87 @@
         }
       }
     },
+    "liveMappings": {
+      "navTitle": "Mappings des données live",
+      "shortcut": "Vérifier les correspondances entre la source live et les parcs ou attractions.",
+      "kicker": "Confiance des données live",
+      "title": "Correspondances des entités",
+      "subtitle": "Valide quelle entité interne correspond à chaque identifiant fournisseur, sans publier de rapprochement approximatif.",
+      "refresh": "Actualiser",
+      "ruleTitle": "Une validation humaine est obligatoire",
+      "ruleDescription": "Une suggestion, même très proche par son nom, reste un candidat. Seule une correspondance vérifiée peut alimenter le live.",
+      "loading": "Chargement des correspondances…",
+      "empty": "Aucune correspondance ne répond à ces filtres.",
+      "listAria": "Correspondances des entités live",
+      "paginationAria": "Pagination des correspondances live",
+      "previous": "Précédente",
+      "next": "Suivante",
+      "page": "Page {{page}} sur {{total}}",
+      "revision": "Révision {{revision}}",
+      "eligible": "Utilisable par le live",
+      "externalTitle": "Entité fournisseur",
+      "internalTitle": "Entité du site",
+      "unresolved": "À identifier",
+      "create": {
+        "title": "Ajouter un candidat",
+        "action": "Créer le candidat"
+      },
+      "fields": {
+        "source": "Source",
+        "type": "Type d’entité",
+        "externalId": "Identifiant fournisseur",
+        "externalName": "Nom chez le fournisseur",
+        "country": "Pays (ISO 2)",
+        "externalParkId": "Identifiant du parc fournisseur",
+        "externalParkName": "Nom du parc fournisseur",
+        "internalTargetIdOptional": "Cible interne suggérée (facultatif)",
+        "internalParkIdOptional": "Parc interne suggéré (facultatif)",
+        "internalTargetId": "Identifiant de la cible interne",
+        "internalParkId": "Identifiant du parc interne",
+        "reviewNote": "Motif de la décision"
+      },
+      "filters": {
+        "search": "Recherche",
+        "searchPlaceholder": "Nom ou identifiant fournisseur",
+        "status": "État",
+        "type": "Type",
+        "all": "Tous",
+        "apply": "Filtrer",
+        "clear": "Effacer"
+      },
+      "status": {
+        "Candidate": "À vérifier",
+        "Verified": "Vérifiée",
+        "Suspended": "Suspendue",
+        "Superseded": "Remplacée",
+        "Rejected": "Rejetée"
+      },
+      "type": {
+        "Park": "Parc",
+        "ParkItem": "Attraction ou lieu"
+      },
+      "confidence": {
+        "Low": "Confiance faible",
+        "Medium": "Confiance moyenne",
+        "High": "Confiance élevée"
+      },
+      "review": {
+        "title": "Examiner cette correspondance",
+        "verify": "Valider",
+        "correct": "Corriger la cible",
+        "suspend": "Suspendre",
+        "reject": "Rejeter",
+        "supersede": "Remplacer définitivement"
+      },
+      "messages": {
+        "created": "Le candidat a été ajouté.",
+        "reviewed": "La décision a été enregistrée dans l’historique."
+      },
+      "errors": {
+        "load": "Impossible de charger les correspondances live.",
+        "mutation": "La décision n’a pas pu être enregistrée. Recharge la liste et réessaie."
+      }
+    },
     "loading": "Chargement...",
     "m14": {
       "kicker": "Administration",
