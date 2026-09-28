@@ -6,6 +6,10 @@
       <p class="admin-muted">{{ 'admin.history.subtitle' | translate }}</p>
     </div>
     <div class="admin-history__header-actions">
+      <a class="btn-nav btn-nav--ghost" [routerLink]="['diagnostics']">
+        <span class="pi pi-chart-bar" aria-hidden="true"></span>
+        {{ 'admin.history.actions.openDiagnostics' | translate }}
+      </a>
       <button type="button" class="btn-nav btn-nav--ghost" (click)="startCreate('Park')">
         <span class="pi pi-map" aria-hidden="true"></span>
         {{ 'admin.history.actions.createPark' | translate }}

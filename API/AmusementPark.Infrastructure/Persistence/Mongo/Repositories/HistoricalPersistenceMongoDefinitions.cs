@@ -32,6 +32,18 @@ internal static class HistoricalPersistenceMongoDefinitions
                 new CreateIndexOptions { Name = "idx_historical_relations_target_type_revision" }),
             new CreateIndexModel<HistoricalRelationDocument>(
                 Builders<HistoricalRelationDocument>.IndexKeys
+                    .Ascending("source.contextParkId")
+                    .Ascending(document => document.RelationId)
+                    .Descending(document => document.Revision),
+                new CreateIndexOptions { Name = "idx_historical_relations_source_park_revision" }),
+            new CreateIndexModel<HistoricalRelationDocument>(
+                Builders<HistoricalRelationDocument>.IndexKeys
+                    .Ascending("target.contextParkId")
+                    .Ascending(document => document.RelationId)
+                    .Descending(document => document.Revision),
+                new CreateIndexOptions { Name = "idx_historical_relations_target_park_revision" }),
+            new CreateIndexModel<HistoricalRelationDocument>(
+                Builders<HistoricalRelationDocument>.IndexKeys
                     .Ascending(document => document.PublicationState)
                     .Ascending(document => document.State),
                 new CreateIndexOptions { Name = "idx_historical_relations_publication_state" }),

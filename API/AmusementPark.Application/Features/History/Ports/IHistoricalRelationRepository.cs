@@ -14,6 +14,11 @@ public interface IHistoricalRelationRepository
         Guid relationId,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<HistoricalRelation>> GetLatestRevisionsForParkAsync(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubjectKey> currentSubjects,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<HistoricalRelation>> GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
         IReadOnlyCollection<HistoricalSubjectKey> subjects,
         int limit,

@@ -2550,6 +2550,7 @@
         "edit": "Edit",
         "delete": "Delete",
         "insertArticleTemplate": "Article template",
+        "openDiagnostics": "Check data",
         "save": "Save",
         "cancel": "Cancel"
       },
@@ -2616,6 +2617,82 @@
       "messages": {
         "saved": "History event saved.",
         "deleted": "History event deleted."
+      },
+      "diagnostics": {
+        "kicker": "Historical quality",
+        "title": "Pre-publication diagnostics",
+        "subtitle": "Check a park’s historical consistency, evidence and impact before publishing it.",
+        "backToEditor": "Back to timelines",
+        "loading": "Analysing the park’s history…",
+        "search": {
+          "title": "Choose a park",
+          "hint": "Search by name: no technical identifier is required.",
+          "label": "Park name",
+          "placeholder": "For example, Phantasialand",
+          "submit": "Search",
+          "searching": "Searching…",
+          "results": "Matching parks"
+        },
+        "report": {
+          "kicker": "Reliability report",
+          "summary": "A business view of evidence, inconsistencies and validation stages.",
+          "blocked": "Corrections required",
+          "ready": "No blocker detected"
+        },
+        "kpis": {
+          "blockers": "Blockers",
+          "blockersHint": "Fix before publication",
+          "facts": "Tracked facts",
+          "factsHint": "Latest known revisions",
+          "relations": "Relations",
+          "relationsHint": "Lineage, zones and transformations",
+          "visits": "Visits to review",
+          "visitsHint": "Anonymous count, no profile exposed"
+        },
+        "severity": {
+          "Information": "Information",
+          "Warning": "Review",
+          "Error": "Blocking"
+        },
+        "issues": {
+          "title": "Items to address",
+          "hint": "Blockers compromise consistency; warnings need editorial review.",
+          "empty": "No active inconsistency was detected.",
+          "MissingStartDate": "Missing start date",
+          "MissingEndDate": "Missing end date",
+          "AmbiguousInterval": "Ambiguous date interval",
+          "OpeningAfterClosure": "Opening recorded after a closure",
+          "IncompatibleLineageCycle": "Incompatible lineage cycle",
+          "OverlappingNames": "Several names overlap",
+          "MissingZone": "Historical zone not found",
+          "MissingSource": "Documentary evidence missing"
+        },
+        "workflow": {
+          "title": "Editorial progress",
+          "hint": "Every stage remains visible even when one person handles the whole review.",
+          "Draft": "Draft",
+          "SourcesAttached": "Sources attached",
+          "EditorialReview": "Editorial review",
+          "StructuredValidation": "Structured validation",
+          "Published": "Published",
+          "Corrected": "Corrected",
+          "Retracted": "Retracted"
+        },
+        "coverage": {
+          "title": "Coverage by decade",
+          "hint": "Evidence levels remain visible without hiding less documented periods.",
+          "empty": "No historical period has been documented yet.",
+          "resources": "{{count}} item(s)",
+          "sources": "{{percentage}}% sourced · {{count}} piece(s) of evidence"
+        },
+        "privacy": {
+          "title": "Anonymised passport impact",
+          "text": "{{conflicts}} visit(s) contain a confirmed conflict and {{unverified}} remain unverifiable. No member or private content is exposed."
+        },
+        "errors": {
+          "searchFailed": "Parks could not be searched.",
+          "loadFailed": "This park’s historical diagnostics could not be loaded."
+        }
       },
       "errors": {
         "loadFailed": "Unable to load history events.",

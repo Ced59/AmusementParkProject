@@ -159,6 +159,27 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             .ToArray();
     }
 
+    public async Task<IReadOnlyCollection<HistoricalFact>> GetLatestRevisionsForParkAsync(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> currentSubjects,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = NormalizeParkId(parkId);
+        ArgumentNullException.ThrowIfNull(currentSubjects);
+        List<BsonDocument> stages = BuildLatestForParkPipeline(
+                normalizedParkId,
+                currentSubjects,
+                this.collectionName)
+            .ToList();
+        stages.Add(BuildTimelineSortStage());
+        PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument> pipeline =
+            PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument>.Create(stages);
+        List<HistoricalFactDocument> documents = await this.collection
+            .Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<IReadOnlyCollection<HistoricalFact>> GetLatestDecisionEligibleRevisionsForParkAsync(
         string parkId,
         IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
@@ -265,11 +286,45 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             ["subject.contextParkId"] = normalizedParkId,
         });
 
+        return BuildLatestForParkPipeline(
+                normalizedParkId,
+                publicCurrentSubjects,
+                normalizedCollectionName)
+            .Concat(new[]
+            {
+            new BsonDocument("$match", new BsonDocument
+            {
+                ["publicationState"] = HistoricalPublicationState.Published.ToString(),
+                ["state"] = new BsonDocument("$in", new BsonArray
+                {
+                    HistoricalFactState.Verified.ToString(),
+                    HistoricalFactState.Probable.ToString(),
+                    HistoricalFactState.Disputed.ToString(),
+                }),
+                ["$or"] = publicEligibilityFilters,
+            }),
+            })
+            .ToArray();
+    }
+
+    internal static IReadOnlyCollection<BsonDocument> BuildLatestForParkPipeline(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> currentSubjects,
+        string collectionName)
+    {
+        string normalizedParkId = NormalizeParkId(parkId);
+        ArgumentNullException.ThrowIfNull(currentSubjects);
+        string normalizedCollectionName = collectionName?.Trim() ?? string.Empty;
+        if (normalizedCollectionName.Length == 0)
+        {
+            throw new ArgumentException("A historical facts collection name is required.", nameof(collectionName));
+        }
+
         return new BsonDocument[]
         {
             new BsonDocument("$match", BuildParkCandidateScopeFilter(
                 normalizedParkId,
-                publicCurrentSubjects)),
+                currentSubjects)),
             new BsonDocument("$group", new BsonDocument
             {
                 ["_id"] = "$factId",
@@ -294,17 +349,9 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             }),
             new BsonDocument("$unwind", "$latestRevision"),
             new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$latestRevision")),
-            new BsonDocument("$match", new BsonDocument
-            {
-                ["publicationState"] = HistoricalPublicationState.Published.ToString(),
-                ["state"] = new BsonDocument("$in", new BsonArray
-                {
-                    HistoricalFactState.Verified.ToString(),
-                    HistoricalFactState.Probable.ToString(),
-                    HistoricalFactState.Disputed.ToString(),
-                }),
-                ["$or"] = publicEligibilityFilters,
-            }),
+            new BsonDocument("$match", BuildParkCandidateScopeFilter(
+                normalizedParkId,
+                currentSubjects)),
         };
     }
 

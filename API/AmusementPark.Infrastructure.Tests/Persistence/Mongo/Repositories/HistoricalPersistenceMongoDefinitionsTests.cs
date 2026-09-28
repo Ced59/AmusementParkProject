@@ -24,6 +24,8 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.True(revision.Options.Unique);
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_source_type_revision");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_target_type_revision");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_source_park_revision");
+        Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_target_park_revision");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_publication_state");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_source_revision");
         Assert.Contains(indexes, index => index.Options.Name == "idx_historical_relations_audit_date");
@@ -37,6 +39,40 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
                 BsonSerializer.SerializerRegistry));
         Assert.True(sourceKeys.Contains("source.contextParkId"));
         Assert.All(indexes, index => Assert.Null(index.Options.ExpireAfter));
+    }
+
+    [Fact]
+    public void BuildLatestForParkPipelines_ShouldReloadLatestThenReapplyScopeWithoutPublicFiltering()
+    {
+        HistoricalSubject park = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc témoin",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+
+        BsonDocument[] factPipeline = HistoricalFactRepository.BuildLatestForParkPipeline(
+                "park-1",
+                new[] { park },
+                "historical-facts")
+            .ToArray();
+        BsonDocument[] relationPipeline = HistoricalRelationRepository.BuildLatestForParkPipeline(
+                "park-1",
+                new[] { new HistoricalSubjectKey(HistoricalSubjectType.Park, "park-1") },
+                "historical-relations")
+            .ToArray();
+
+        Assert.Equal("$factId", factPipeline[1]["$group"]["_id"].AsString);
+        Assert.Equal(-1, factPipeline[2]["$lookup"]["pipeline"][1]["$sort"]["revision"].AsInt32);
+        Assert.True(factPipeline[^1]["$match"].AsBsonDocument.Contains("$or"));
+        Assert.DoesNotContain(factPipeline, stage =>
+            stage.Contains("$match")
+            && stage["$match"].AsBsonDocument.Contains("publicationState"));
+        Assert.Equal("$relationId", relationPipeline[1]["$group"]["_id"].AsString);
+        Assert.Equal(-1, relationPipeline[2]["$lookup"]["pipeline"][1]["$sort"]["revision"].AsInt32);
+        Assert.True(relationPipeline[^2]["$match"].AsBsonDocument.Contains("$or"));
+        Assert.DoesNotContain(relationPipeline, stage =>
+            stage.Contains("$match")
+            && stage["$match"].AsBsonDocument.Contains("publicationState"));
     }
 
     [Fact]
@@ -127,7 +163,7 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
                 "historical-facts")
             .ToArray();
 
-        Assert.Equal(6, pipeline.Length);
+        Assert.Equal(7, pipeline.Length);
         Assert.True(pipeline[0]["$match"].AsBsonDocument.Contains("$or"));
         Assert.Equal("$factId", pipeline[1]["$group"]["_id"].AsString);
         BsonDocument lookup = pipeline[2]["$lookup"].AsBsonDocument;
@@ -137,7 +173,8 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
         Assert.Equal(-1, lookupPipeline[1]["$sort"]["revision"].AsInt32);
         Assert.Equal(1, lookupPipeline[2]["$limit"].AsInt32);
         Assert.Equal("$latestRevision", pipeline[4]["$replaceRoot"]["newRoot"].AsString);
-        BsonArray publicEligibility = pipeline[5]["$match"]["$or"].AsBsonArray;
+        Assert.True(pipeline[5]["$match"].AsBsonDocument.Contains("$or"));
+        BsonArray publicEligibility = pipeline[6]["$match"]["$or"].AsBsonArray;
         Assert.Contains(
             publicEligibility,
             filter => filter.AsBsonDocument.GetValue("subject.publicationPolicy", BsonNull.Value)

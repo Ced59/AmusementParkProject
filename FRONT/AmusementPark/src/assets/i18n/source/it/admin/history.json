@@ -33,6 +33,7 @@
         "edit": "Modifica",
         "delete": "Elimina",
         "insertArticleTemplate": "Modello articolo",
+        "openDiagnostics": "Verifica i dati",
         "save": "Salva",
         "cancel": "Annulla"
       },
@@ -99,6 +100,82 @@
       "messages": {
         "saved": "Evento storico salvato.",
         "deleted": "Evento storico eliminato."
+      },
+      "diagnostics": {
+        "kicker": "Qualità storica",
+        "title": "Diagnostica prima della pubblicazione",
+        "subtitle": "Verifica coerenza, prove e impatto dei dati storici di un parco prima di pubblicarli.",
+        "backToEditor": "Torna alle timeline",
+        "loading": "Analisi della storia del parco…",
+        "search": {
+          "title": "Scegli un parco",
+          "hint": "Cerca per nome: non serve alcun identificativo tecnico.",
+          "label": "Nome del parco",
+          "placeholder": "Es. Phantasialand",
+          "submit": "Cerca",
+          "searching": "Ricerca…",
+          "results": "Parchi trovati"
+        },
+        "report": {
+          "kicker": "Rapporto di affidabilità",
+          "summary": "Una vista funzionale di prove, incoerenze e fasi di convalida.",
+          "blocked": "Correzioni necessarie",
+          "ready": "Nessun blocco rilevato"
+        },
+        "kpis": {
+          "blockers": "Blocchi",
+          "blockersHint": "Da correggere prima della pubblicazione",
+          "facts": "Fatti monitorati",
+          "factsHint": "Ultime revisioni note",
+          "relations": "Relazioni",
+          "relationsHint": "Discendenze, zone e trasformazioni",
+          "visits": "Visite da riesaminare",
+          "visitsHint": "Conteggio anonimo, senza profili esposti"
+        },
+        "severity": {
+          "Information": "Informazione",
+          "Warning": "Da verificare",
+          "Error": "Bloccante"
+        },
+        "issues": {
+          "title": "Punti da trattare",
+          "hint": "I blocchi compromettono la coerenza; gli avvisi richiedono una verifica editoriale.",
+          "empty": "Non è stata rilevata alcuna incoerenza attiva.",
+          "MissingStartDate": "Data di inizio mancante",
+          "MissingEndDate": "Data di fine mancante",
+          "AmbiguousInterval": "Intervallo di date ambiguo",
+          "OpeningAfterClosure": "Apertura registrata dopo una chiusura",
+          "IncompatibleLineageCycle": "Ciclo incompatibile nella discendenza",
+          "OverlappingNames": "Più nomi si sovrappongono",
+          "MissingZone": "Zona storica non trovata",
+          "MissingSource": "Prova documentale mancante"
+        },
+        "workflow": {
+          "title": "Avanzamento editoriale",
+          "hint": "Ogni fase resta visibile, anche quando una sola persona gestisce l’intera revisione.",
+          "Draft": "Bozza",
+          "SourcesAttached": "Fonti collegate",
+          "EditorialReview": "Revisione editoriale",
+          "StructuredValidation": "Convalida strutturata",
+          "Published": "Pubblicato",
+          "Corrected": "Corretto",
+          "Retracted": "Ritirato"
+        },
+        "coverage": {
+          "title": "Copertura per decennio",
+          "hint": "Il livello delle prove è mostrato senza nascondere i periodi meno documentati.",
+          "empty": "Nessun periodo storico è ancora documentato.",
+          "resources": "{{count}} elemento/i",
+          "sources": "{{percentage}} % con fonti · {{count}} prova/e"
+        },
+        "privacy": {
+          "title": "Impatto anonimizzato sui passaporti",
+          "text": "{{conflicts}} visita/e contengono un conflitto confermato e {{unverified}} non sono ancora verificabili. Non vengono mostrati membri né contenuti privati."
+        },
+        "errors": {
+          "searchFailed": "Impossibile cercare i parchi.",
+          "loadFailed": "Impossibile caricare la diagnostica storica di questo parco."
+        }
       },
       "errors": {
         "loadFailed": "Impossibile caricare gli eventi storici.",

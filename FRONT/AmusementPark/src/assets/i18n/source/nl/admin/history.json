@@ -33,6 +33,7 @@
         "edit": "Bewerken",
         "delete": "Verwijderen",
         "insertArticleTemplate": "Artikelsjabloon",
+        "openDiagnostics": "Gegevens controleren",
         "save": "Opslaan",
         "cancel": "Annuleren"
       },
@@ -99,6 +100,82 @@
       "messages": {
         "saved": "Historische gebeurtenis opgeslagen.",
         "deleted": "Historische gebeurtenis verwijderd."
+      },
+      "diagnostics": {
+        "kicker": "Historische kwaliteit",
+        "title": "Controle vóór publicatie",
+        "subtitle": "Controleer de samenhang, bewijzen en impact van de historische gegevens van een park voordat ze worden gepubliceerd.",
+        "backToEditor": "Terug naar de tijdlijnen",
+        "loading": "De geschiedenis van het park wordt geanalyseerd…",
+        "search": {
+          "title": "Kies een park",
+          "hint": "Zoek op naam: een technische identificatie is niet nodig.",
+          "label": "Parknaam",
+          "placeholder": "Bijv. Phantasialand",
+          "submit": "Zoeken",
+          "searching": "Zoeken…",
+          "results": "Gevonden parken"
+        },
+        "report": {
+          "kicker": "Betrouwbaarheidsrapport",
+          "summary": "Een functioneel overzicht van bewijzen, tegenstrijdigheden en validatiestappen.",
+          "blocked": "Correcties vereist",
+          "ready": "Geen blokkering gevonden"
+        },
+        "kpis": {
+          "blockers": "Blokkeringen",
+          "blockersHint": "Te corrigeren vóór publicatie",
+          "facts": "Gevolgde feiten",
+          "factsHint": "Laatst bekende revisies",
+          "relations": "Relaties",
+          "relationsHint": "Afstamming, zones en transformaties",
+          "visits": "Te herbekijken bezoeken",
+          "visitsHint": "Anonieme telling zonder getoonde profielen"
+        },
+        "severity": {
+          "Information": "Informatie",
+          "Warning": "Te controleren",
+          "Error": "Blokkerend"
+        },
+        "issues": {
+          "title": "Te behandelen punten",
+          "hint": "Blokkeringen brengen de samenhang in gevaar; waarschuwingen vragen om redactionele controle.",
+          "empty": "Er is geen actieve tegenstrijdigheid gevonden.",
+          "MissingStartDate": "Begindatum ontbreekt",
+          "MissingEndDate": "Einddatum ontbreekt",
+          "AmbiguousInterval": "Onduidelijk datuminterval",
+          "OpeningAfterClosure": "Opening geregistreerd na een sluiting",
+          "IncompatibleLineageCycle": "Onverenigbare cyclus in de afstamming",
+          "OverlappingNames": "Meerdere namen overlappen",
+          "MissingZone": "Historische zone niet gevonden",
+          "MissingSource": "Documentair bewijs ontbreekt"
+        },
+        "workflow": {
+          "title": "Redactionele voortgang",
+          "hint": "Elke stap blijft zichtbaar, ook wanneer één persoon de volledige controle uitvoert.",
+          "Draft": "Concept",
+          "SourcesAttached": "Bronnen gekoppeld",
+          "EditorialReview": "Redactionele controle",
+          "StructuredValidation": "Gestructureerde validatie",
+          "Published": "Gepubliceerd",
+          "Corrected": "Gecorrigeerd",
+          "Retracted": "Ingetrokken"
+        },
+        "coverage": {
+          "title": "Dekking per decennium",
+          "hint": "Het bewijsniveau wordt getoond zonder minder gedocumenteerde periodes te verbergen.",
+          "empty": "Er is nog geen historische periode gedocumenteerd.",
+          "resources": "{{count}} element(en)",
+          "sources": "{{percentage}} % onderbouwd · {{count}} bewijsstuk(ken)"
+        },
+        "privacy": {
+          "title": "Geanonimiseerde paspoortimpact",
+          "text": "{{conflicts}} bezoek(en) bevatten een bevestigd conflict en {{unverified}} zijn nog niet verifieerbaar. Er worden geen leden of privé-inhoud getoond."
+        },
+        "errors": {
+          "searchFailed": "De parken kunnen niet worden doorzocht.",
+          "loadFailed": "De historische controle van dit park kan niet worden geladen."
+        }
       },
       "errors": {
         "loadFailed": "Historische gebeurtenissen kunnen niet worden geladen.",

@@ -33,6 +33,7 @@
         "edit": "Bearbeiten",
         "delete": "Löschen",
         "insertArticleTemplate": "Artikelvorlage",
+        "openDiagnostics": "Daten prüfen",
         "save": "Speichern",
         "cancel": "Abbrechen"
       },
@@ -99,6 +100,82 @@
       "messages": {
         "saved": "Historisches Ereignis gespeichert.",
         "deleted": "Historisches Ereignis gelöscht."
+      },
+      "diagnostics": {
+        "kicker": "Historische Qualität",
+        "title": "Prüfung vor der Veröffentlichung",
+        "subtitle": "Prüfe Konsistenz, Belege und Auswirkungen der historischen Daten eines Parks, bevor sie veröffentlicht werden.",
+        "backToEditor": "Zurück zu den Zeitlinien",
+        "loading": "Die Geschichte des Parks wird analysiert…",
+        "search": {
+          "title": "Park auswählen",
+          "hint": "Suche nach dem Namen: Eine technische Kennung ist nicht nötig.",
+          "label": "Parkname",
+          "placeholder": "z. B. Phantasialand",
+          "submit": "Suchen",
+          "searching": "Suche…",
+          "results": "Gefundene Parks"
+        },
+        "report": {
+          "kicker": "Zuverlässigkeitsbericht",
+          "summary": "Eine fachliche Übersicht über Belege, Widersprüche und Prüfschritte.",
+          "blocked": "Korrekturen erforderlich",
+          "ready": "Keine Blockierung erkannt"
+        },
+        "kpis": {
+          "blockers": "Blockierungen",
+          "blockersHint": "Vor der Veröffentlichung zu korrigieren",
+          "facts": "Erfasste Fakten",
+          "factsHint": "Neueste bekannte Fassungen",
+          "relations": "Beziehungen",
+          "relationsHint": "Abstammungen, Bereiche und Umwandlungen",
+          "visits": "Zu prüfende Besuche",
+          "visitsHint": "Anonyme Zählung ohne offengelegte Profile"
+        },
+        "severity": {
+          "Information": "Information",
+          "Warning": "Zu prüfen",
+          "Error": "Blockierend"
+        },
+        "issues": {
+          "title": "Zu bearbeitende Punkte",
+          "hint": "Blockierungen gefährden die Konsistenz; Warnungen erfordern eine redaktionelle Prüfung.",
+          "empty": "Es wurde kein aktiver Widerspruch erkannt.",
+          "MissingStartDate": "Startdatum fehlt",
+          "MissingEndDate": "Enddatum fehlt",
+          "AmbiguousInterval": "Mehrdeutiger Datumszeitraum",
+          "OpeningAfterClosure": "Eröffnung nach einer Schließung erfasst",
+          "IncompatibleLineageCycle": "Unvereinbarer Kreislauf in der Abstammung",
+          "OverlappingNames": "Mehrere Namen überschneiden sich",
+          "MissingZone": "Historischer Bereich nicht gefunden",
+          "MissingSource": "Dokumentarischer Beleg fehlt"
+        },
+        "workflow": {
+          "title": "Redaktioneller Fortschritt",
+          "hint": "Jeder Schritt bleibt sichtbar, auch wenn eine Person die gesamte Prüfung übernimmt.",
+          "Draft": "Entwurf",
+          "SourcesAttached": "Quellen verknüpft",
+          "EditorialReview": "Redaktionelle Prüfung",
+          "StructuredValidation": "Strukturierte Validierung",
+          "Published": "Veröffentlicht",
+          "Corrected": "Korrigiert",
+          "Retracted": "Zurückgezogen"
+        },
+        "coverage": {
+          "title": "Abdeckung nach Jahrzehnt",
+          "hint": "Die Beleglage wird gezeigt, ohne schwächer dokumentierte Zeiträume zu verbergen.",
+          "empty": "Noch kein historischer Zeitraum ist dokumentiert.",
+          "resources": "{{count}} Element(e)",
+          "sources": "{{percentage}} % belegt · {{count}} Nachweis(e)"
+        },
+        "privacy": {
+          "title": "Anonymisierte Passauswirkung",
+          "text": "{{conflicts}} Besuch(e) enthalten einen bestätigten Konflikt und {{unverified}} sind noch nicht überprüfbar. Es werden weder Mitglieder noch private Inhalte offengelegt."
+        },
+        "errors": {
+          "searchFailed": "Die Parks können nicht durchsucht werden.",
+          "loadFailed": "Die historische Prüfung dieses Parks kann nicht geladen werden."
+        }
       },
       "errors": {
         "loadFailed": "Historische Ereignisse können nicht geladen werden.",
