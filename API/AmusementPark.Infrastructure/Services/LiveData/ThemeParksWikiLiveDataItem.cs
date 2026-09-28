@@ -6,19 +6,19 @@ namespace AmusementPark.Infrastructure.Services.LiveData;
 internal sealed class ThemeParksWikiLiveDataItem
 {
     [JsonPropertyName("id")]
-    public string? Id { get; set; }
+    public JsonElement? Id { get; set; }
 
     [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    public JsonElement? Name { get; set; }
 
     [JsonPropertyName("entityType")]
-    public string? EntityType { get; set; }
+    public JsonElement? EntityType { get; set; }
 
     [JsonPropertyName("status")]
-    public string? Status { get; set; }
+    public JsonElement? Status { get; set; }
 
     [JsonPropertyName("lastUpdated")]
-    public string? LastUpdated { get; set; }
+    public JsonElement? LastUpdated { get; set; }
 
     [JsonPropertyName("queue")]
     public JsonElement? Queue { get; set; }

@@ -163,6 +163,49 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     }
 
     [Fact]
+    public async Task FetchLatestAsync_WhenItemFieldsHaveWrongTypes_ShouldKeepValidSiblings()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("wrong-item-field-types.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal("valid-attraction", observation.ExternalTargetId);
+        Assert.Equal(
+            4,
+            result.Diagnostics.Count(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.InvalidObservation));
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenTimestampIsNotRfc3339_ShouldKeepOnlyStrictDates()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("non-rfc3339-timestamps.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal("valid-attraction", observation.ExternalTargetId);
+        Assert.Equal(
+            new DateTime(2026, 9, 28, 8, 0, 0, DateTimeKind.Utc),
+            observation.SourceUpdatedAtUtc);
+        Assert.Equal(
+            2,
+            result.Diagnostics.Count(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.InvalidObservation));
+    }
+
+    [Fact]
     public async Task FetchLatestAsync_WithEmptyFixture_ShouldReturnSuccessfulEmptyBatchWithDiagnostic()
     {
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler

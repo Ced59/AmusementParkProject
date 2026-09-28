@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using AmusementPark.Application.Features.LiveData.Models;
 using AmusementPark.Core.Domain.LiveData;
 using AmusementPark.Core.Domain.Identifiers;
@@ -8,6 +9,11 @@ namespace AmusementPark.Infrastructure.Services.LiveData;
 
 internal static class ThemeParksWikiLiveDataNormalizer
 {
+    private static readonly Regex Rfc3339Pattern = new Regex(
+        "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,7})?(?:Z|[+-]\\d{2}:\\d{2})$",
+        RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.NonBacktracking,
+        TimeSpan.FromMilliseconds(100));
+
     public static IReadOnlyCollection<ExternalLiveObservation> Normalize(
         ThemeParksWikiLiveDataResponse response,
         ICollection<LiveProviderDiagnostic> diagnostics)
@@ -38,31 +44,50 @@ internal static class ThemeParksWikiLiveDataNormalizer
         ThemeParksWikiLiveDataItem? item,
         ICollection<LiveProviderDiagnostic> diagnostics)
     {
-        if (item is null || !TryNormalizeExternalTargetId(item.Id, out string externalTargetId))
+        if (item is null)
         {
             diagnostics.Add(new LiveProviderDiagnostic(
                 LiveProviderDiagnosticCodes.InvalidObservation));
             return null;
         }
 
-        if (string.IsNullOrWhiteSpace(item.Name)
-            || !TryMapTargetType(item.EntityType, out LiveTargetType targetType)
-            || !TryParseUtc(item.LastUpdated, out DateTime sourceUpdatedAtUtc))
+        if (!TryReadJsonString(item.Id, false, out string? rawExternalTargetId)
+            || !TryNormalizeExternalTargetId(rawExternalTargetId, out string externalTargetId))
         {
-            string code = !string.IsNullOrWhiteSpace(item.EntityType)
-                && !TryMapTargetType(item.EntityType, out LiveTargetType _)
+            diagnostics.Add(new LiveProviderDiagnostic(
+                LiveProviderDiagnosticCodes.InvalidObservation));
+            return null;
+        }
+
+        if (!TryReadJsonString(item.Name, false, out string? name)
+            || !TryReadJsonString(item.EntityType, false, out string? entityType)
+            || !TryReadJsonString(item.Status, true, out string? status)
+            || !TryReadJsonString(item.LastUpdated, false, out string? lastUpdated))
+        {
+            diagnostics.Add(new LiveProviderDiagnostic(
+                LiveProviderDiagnosticCodes.InvalidObservation,
+                externalTargetId));
+            return null;
+        }
+
+        if (string.IsNullOrWhiteSpace(name)
+            || !TryMapTargetType(entityType, out LiveTargetType targetType)
+            || !TryParseUtc(lastUpdated, out DateTime sourceUpdatedAtUtc))
+        {
+            string code = !string.IsNullOrWhiteSpace(entityType)
+                && !TryMapTargetType(entityType, out LiveTargetType _)
                     ? LiveProviderDiagnosticCodes.UnsupportedEntityType
                     : LiveProviderDiagnosticCodes.InvalidObservation;
             diagnostics.Add(new LiveProviderDiagnostic(code, externalTargetId));
             return null;
         }
 
-        LiveOperationalStatus status = MapStatus(item.Status, externalTargetId, diagnostics);
+        LiveOperationalStatus operationalStatus = MapStatus(status, externalTargetId, diagnostics);
         IReadOnlyCollection<LiveQueueObservation> queues = NormalizeQueues(
             item.Queue,
             externalTargetId,
             diagnostics);
-        if (status == LiveOperationalStatus.Closed
+        if (operationalStatus == LiveOperationalStatus.Closed
             && queues.Any(static queue => queue.WaitTimeMinutes.HasValue))
         {
             diagnostics.Add(new LiveProviderDiagnostic(
@@ -75,9 +100,9 @@ internal static class ThemeParksWikiLiveDataNormalizer
         {
             return new ExternalLiveObservation(
                 externalTargetId,
-                item.Name,
+                name,
                 targetType,
-                status,
+                operationalStatus,
                 sourceUpdatedAtUtc,
                 queues);
         }
@@ -291,13 +316,14 @@ internal static class ThemeParksWikiLiveDataNormalizer
         string externalTargetId,
         ICollection<LiveProviderDiagnostic> diagnostics)
     {
-        string? value = ReadOptionalString(parent, propertyName);
-        if (value is null)
+        if (!parent.TryGetProperty(propertyName, out JsonElement value)
+            || value.ValueKind == JsonValueKind.Null)
         {
             return null;
         }
 
-        if (TryParseUtc(value, out DateTime parsedValue))
+        if (value.ValueKind == JsonValueKind.String
+            && TryParseUtc(value.GetString(), out DateTime parsedValue))
         {
             return parsedValue;
         }
@@ -504,25 +530,40 @@ internal static class ThemeParksWikiLiveDataNormalizer
 
     private static bool TryParseUtc(string? value, out DateTime utcValue)
     {
-        string normalizedValue = value?.Trim() ?? string.Empty;
-        int timeSeparatorIndex = normalizedValue.IndexOf('T', StringComparison.OrdinalIgnoreCase);
-        bool hasZuluOffset = normalizedValue.EndsWith("Z", StringComparison.OrdinalIgnoreCase);
-        bool hasSignedOffset = timeSeparatorIndex >= 0
-            && (normalizedValue.LastIndexOf('+') > timeSeparatorIndex
-                || normalizedValue.LastIndexOf('-') > timeSeparatorIndex);
-        if (!hasZuluOffset && !hasSignedOffset)
+        if (value is null || value.Length > 40 || !Rfc3339Pattern.IsMatch(value))
         {
             utcValue = default;
             return false;
         }
 
         bool parsed = DateTimeOffset.TryParse(
-            normalizedValue,
+            value,
             CultureInfo.InvariantCulture,
             DateTimeStyles.None,
             out DateTimeOffset parsedValue);
         utcValue = parsed ? parsedValue.UtcDateTime : default;
         return parsed;
+    }
+
+    private static bool TryReadJsonString(
+        JsonElement? element,
+        bool allowNull,
+        out string? value)
+    {
+        value = null;
+        if (!element.HasValue
+            || element.Value.ValueKind is JsonValueKind.Null or JsonValueKind.Undefined)
+        {
+            return allowNull;
+        }
+
+        if (element.Value.ValueKind != JsonValueKind.String)
+        {
+            return false;
+        }
+
+        value = element.Value.GetString();
+        return true;
     }
 
     private static bool TryNormalizeExternalTargetId(string? value, out string externalTargetId)
