@@ -1,6 +1,20 @@
 {
-  "version": "5.4.0",
+  "version": "5.4.1",
   "history": [
+    {
+      "version": "5.4.1",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "L’accès des moteurs de recherche aux plans du site est plus fiable.",
+        "en": "Search engines can access the sitemaps more reliably.",
+        "de": "Suchmaschinen können zuverlässiger auf die Sitemaps zugreifen.",
+        "nl": "Zoekmachines kunnen de sitemaps betrouwbaarder bereiken.",
+        "it": "I motori di ricerca possono accedere alle sitemap in modo più affidabile.",
+        "es": "Los motores de búsqueda pueden acceder a los mapas del sitio de forma más fiable.",
+        "pl": "Wyszukiwarki mogą teraz niezawodniej uzyskiwać dostęp do map witryny.",
+        "pt": "Os motores de pesquisa podem aceder aos mapas do site de forma mais fiável."
+      }
+    },
     {
       "version": "5.4.0",
       "releasedAt": "2026-09-28",
