@@ -76,6 +76,15 @@ public sealed class ReviewLiveTargetMappingCommandHandler
                 return ApplicationResult<LiveTargetMappingResult>.Failure(
                     LiveDataApplicationErrors.TargetNotFound());
             }
+
+            if (!await this.HasCoherentVerifiedParentAsync(
+                current,
+                target,
+                cancellationToken))
+            {
+                return ApplicationResult<LiveTargetMappingResult>.Failure(
+                    LiveDataApplicationErrors.ParentMappingNotVerified());
+            }
         }
 
         try
@@ -114,11 +123,17 @@ public sealed class ReviewLiveTargetMappingCommandHandler
                 revised,
                 current.Revision,
                 cancellationToken);
-            return outcome == LiveTargetMappingWriteOutcome.Created
-                ? ApplicationResult<LiveTargetMappingResult>.Success(
-                    LiveTargetMappingResultFactory.Create(revised))
-                : ApplicationResult<LiveTargetMappingResult>.Failure(
-                    LiveDataApplicationErrors.Conflict(current.Revision));
+            if (outcome == LiveTargetMappingWriteOutcome.Created)
+            {
+                return ApplicationResult<LiveTargetMappingResult>.Success(
+                    LiveTargetMappingResultFactory.Create(revised));
+            }
+
+            ExternalLiveTargetMapping? latest = await this.repository.GetLatestByIdAsync(
+                current.Id,
+                cancellationToken);
+            return ApplicationResult<LiveTargetMappingResult>.Failure(
+                LiveDataApplicationErrors.Conflict(latest?.Revision ?? current.Revision));
         }
         catch (LiveDataValidationException exception)
         {
@@ -128,5 +143,26 @@ public sealed class ReviewLiveTargetMappingCommandHandler
                     ? LiveDataApplicationErrors.InvalidTransition(exception.Message)
                     : LiveDataApplicationErrors.InvalidMapping(exception.Message));
         }
+    }
+
+    private async Task<bool> HasCoherentVerifiedParentAsync(
+        ExternalLiveTargetMapping mapping,
+        LiveTargetReference target,
+        CancellationToken cancellationToken)
+    {
+        if (mapping.ExternalTarget.Type == LiveTargetType.Park)
+        {
+            return true;
+        }
+
+        ExternalLiveTargetMapping? parent = await this.repository.GetLatestByNaturalKeyAsync(
+            mapping.SourceId,
+            mapping.ExternalTarget.ParentId!,
+            cancellationToken);
+        return parent is not null
+            && parent.ExternalTarget.Type == LiveTargetType.Park
+            && parent.IsEligibleForLiveUse
+            && parent.Target is not null
+            && string.Equals(parent.Target.ParkId, target.ParkId, StringComparison.Ordinal);
     }
 }

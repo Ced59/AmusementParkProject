@@ -25,6 +25,13 @@ public static class LiveDataApplicationErrors
             "The selected internal live target was not found or is inconsistent with its park.");
     }
 
+    public static ApplicationError ParentMappingNotVerified()
+    {
+        return ApplicationError.RuleViolation(
+            "live-data.mapping.parent-not-verified",
+            "A park item can only be verified when its external parent park is verified against the same internal park.");
+    }
+
     public static ApplicationError Conflict(int currentRevision)
     {
         return ApplicationError.Conflict(

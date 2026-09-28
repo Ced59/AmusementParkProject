@@ -32,7 +32,7 @@ aucune donnée live au public. Ces responsabilités restent séparées dans
 - `Candidate` n'est jamais éligible au live ;
 - `Verified` exige une cible interne existante, une confiance `High` et un
   administrateur identifié ;
-- parc, attraction, pays et parc parent doivent rester cohérents ;
+- parc, attraction, pays et parc parent doivent rester cohérents ; une attraction ne peut être vérifiée que si son parc parent externe possède déjà une correspondance vérifiée vers le même parc interne ;
 - une correction doit changer de cible et comporter un motif ;
 - suspension, rejet et remplacement ferment la période de validité et exigent un
   motif ;

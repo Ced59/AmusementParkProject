@@ -98,7 +98,8 @@ public sealed class ExternalLiveTargetDescriptor
     internal static string NormalizeCountryCode(string? value, string parameterName)
     {
         string normalizedValue = value?.Trim().ToUpperInvariant() ?? string.Empty;
-        if (normalizedValue.Length != 2 || normalizedValue.Any(static character => !char.IsLetter(character)))
+        if (normalizedValue.Length != 2
+            || normalizedValue.Any(static character => character is < 'A' or > 'Z'))
         {
             throw Invalid(
                 LiveDataErrorCodes.InvalidMapping,

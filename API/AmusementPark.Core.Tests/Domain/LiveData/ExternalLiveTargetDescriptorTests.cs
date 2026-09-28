@@ -52,4 +52,22 @@ public sealed class ExternalLiveTargetDescriptorTests
 
         Assert.Equal(LiveDataErrorCodes.InvalidMapping, exception.Code);
     }
+
+    [Theory]
+    [InlineData("ÉÉ")]
+    [InlineData("日本")]
+    [InlineData("D1")]
+    public void Constructor_WithNonAsciiCountryCode_ShouldRejectDescriptor(string countryCode)
+    {
+        LiveDataValidationException exception = Assert.Throws<LiveDataValidationException>(
+            () => new ExternalLiveTargetDescriptor(
+                LiveTargetType.Park,
+                "external-park",
+                null,
+                "Phantasialand",
+                null,
+                countryCode));
+
+        Assert.Equal(LiveDataErrorCodes.InvalidMapping, exception.Code);
+    }
 }
