@@ -25,6 +25,7 @@ internal static class ThemeParksWikiLiveDataNormalizer
                 diagnostics,
                 ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount);
         List<ExternalLiveObservation> observations = new List<ExternalLiveObservation>();
+        HashSet<string> acceptedExternalTargetIds = new HashSet<string>(StringComparer.Ordinal);
         if (liveData.GetArrayLength() == 0)
         {
             AddDiagnostic(boundedDiagnostics, LiveProviderDiagnosticCodes.EmptyResponse);
@@ -36,6 +37,15 @@ internal static class ThemeParksWikiLiveDataNormalizer
             ExternalLiveObservation? observation = NormalizeItem(item, boundedDiagnostics);
             if (observation is not null)
             {
+                if (!acceptedExternalTargetIds.Add(observation.ExternalTargetId))
+                {
+                    AddDiagnostic(
+                        boundedDiagnostics,
+                        LiveProviderDiagnosticCodes.DuplicateObservation,
+                        observation.ExternalTargetId);
+                    continue;
+                }
+
                 observations.Add(observation);
             }
         }

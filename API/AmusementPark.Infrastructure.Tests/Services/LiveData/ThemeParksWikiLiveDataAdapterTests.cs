@@ -463,6 +463,38 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     }
 
     [Fact]
+    public async Task FetchLatestAsync_WhenTargetIsRepeated_ShouldKeepFirstValidObservation()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"liveData\":[{"
+                + "\"id\":\"duplicate-attraction\","
+                + "\"name\":\"First observation\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:00:00Z\""
+                + "},{"
+                + "\"id\":\"duplicate-attraction\","
+                + "\"name\":\"Conflicting observation\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"CLOSED\","
+                + "\"lastUpdated\":\"2026-09-28T10:01:00Z\""
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal("First observation", observation.DisplayName);
+        Assert.Equal(LiveOperationalStatus.Open, observation.Status);
+        LiveProviderDiagnostic diagnostic = Assert.Single(result.Diagnostics);
+        Assert.Equal(LiveProviderDiagnosticCodes.DuplicateObservation, diagnostic.Code);
+        Assert.Equal("duplicate-attraction", diagnostic.ExternalTargetId);
+    }
+
+    [Fact]
     public async Task FetchLatestAsync_WhenQueuePropertiesExceedDiagnosticBudget_ShouldStopAtBound()
     {
         string queueProperties = string.Join(

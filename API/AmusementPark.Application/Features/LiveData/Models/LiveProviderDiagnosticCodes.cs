@@ -6,6 +6,8 @@ public static class LiveProviderDiagnosticCodes
 
     public const string InvalidObservation = "live-provider.invalid-observation";
 
+    public const string DuplicateObservation = "live-provider.duplicate-observation";
+
     public const string UnknownStatus = "live-provider.unknown-status";
 
     public const string UnknownQueueState = "live-provider.unknown-queue-state";
