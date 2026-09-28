@@ -13,4 +13,20 @@ describe('admin history workbench responsive contract', () => {
     expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
     expect(styles).toContain('flex: 1 1 100%');
   });
+
+  it('does not expose an edit action for terminal retracted resources', () => {
+    const harness = workbenchPrototype();
+
+    expect(harness.canEdit('Retracted')).toBe(false);
+    expect(harness.canEdit('Published')).toBe(true);
+    expect(harness.canEdit('Draft')).toBe(true);
+  });
 });
+
+function workbenchPrototype(): {
+  canEdit: (stage: 'Draft' | 'Published' | 'Retracted') => boolean;
+} {
+  return AdminHistoryWorkbenchComponent.prototype as unknown as {
+    canEdit: (stage: 'Draft' | 'Published' | 'Retracted') => boolean;
+  };
+}

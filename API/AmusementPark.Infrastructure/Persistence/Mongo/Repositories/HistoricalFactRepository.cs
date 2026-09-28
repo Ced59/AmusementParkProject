@@ -362,11 +362,14 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
         string normalizedParkId = NormalizeParkId(parkId);
         ArgumentNullException.ThrowIfNull(publicCurrentSubjects);
         BsonArray scopeFilters = new BsonArray(publicCurrentSubjects
-            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .DistinctBy(static subject => (subject.Type, subject.Id, subject.ContextParkId))
             .Select(static subject => new BsonDocument
             {
                 ["subject.type"] = subject.Type.ToString(),
                 ["subject.id"] = subject.Id,
+                ["subject.contextParkId"] = subject.ContextParkId is null
+                    ? BsonNull.Value
+                    : new BsonString(subject.ContextParkId),
                 ["subject.publicationPolicy"] =
                     HistoricalSubjectPublicationPolicy.FollowCurrentSubject.ToString(),
             }));

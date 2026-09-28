@@ -125,6 +125,10 @@ export class AdminHistoryWorkbenchComponent implements OnInit {
     return stage === 'Published' || stage === 'Corrected';
   }
 
+  protected canEdit(stage: HistoricalWorkflowState): boolean {
+    return stage !== 'Retracted';
+  }
+
   protected periodLabel(fact: AdminHistoricalFact | AdminHistoricalRelation): string {
     const start: string = this.dateLabel(fact.period.start);
     const end: string = this.dateLabel(fact.period.end);
