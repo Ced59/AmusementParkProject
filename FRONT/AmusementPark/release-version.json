@@ -1,6 +1,20 @@
 {
-  "version": "5.3.104",
+  "version": "5.3.105",
   "history": [
+    {
+      "version": "5.3.105",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "La future donnée en direct repose désormais sur une source attribuée et réversible.",
+        "en": "Future live data now has an attributed, reversible source foundation.",
+        "de": "Künftige Live-Daten stützen sich nun auf eine gekennzeichnete und reversible Quelle.",
+        "nl": "Toekomstige livegegevens steunen nu op een vermelde en omkeerbare bron.",
+        "it": "I futuri dati in tempo reale poggiano ora su una fonte attribuita e reversibile.",
+        "es": "Los futuros datos en directo se apoyan ahora en una fuente atribuida y reversible.",
+        "pl": "Przyszłe dane na żywo opierają się teraz na oznaczonym i odwracalnym źródle.",
+        "pt": "Os futuros dados em direto assentam agora numa fonte atribuída e reversível."
+      }
+    },
     {
       "version": "5.3.104",
       "releasedAt": "2026-09-28",
