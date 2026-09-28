@@ -80,6 +80,7 @@ public sealed class LivePollingStateRepositoryTests
         Assert.Contains("new-park", replacementFilter.ToJson(), StringComparison.Ordinal);
         Assert.Contains("$ne", replacementFilter.ToJson(), StringComparison.Ordinal);
         Assert.Contains("nextAttemptAtUtc", replacementFilter.ToJson(), StringComparison.Ordinal);
+        Assert.Contains("circuitOpenUntilUtc", replacementFilter.ToJson(), StringComparison.Ordinal);
         Assert.Contains("$lte", replacementFilter.ToJson(), StringComparison.Ordinal);
 
         BsonDocument replacementUpdate = Render(updates[1]);

@@ -98,10 +98,10 @@ relance agressive.
 
 Si l'identifiant de la cible pilote est corrigé dans la configuration, l'état
 unique de la source est remplacé atomiquement dès que son éventuel lease a
-expiré et que le délai minimal de la source est écoulé. L'ETag, les échecs et
-les dates de la précédente cible sont alors réinitialisés afin de ne pas
-contaminer la planification du nouveau parc et d'éviter toute suppression Mongo
-manuelle.
+expiré, que le délai minimal de la source est écoulé et que son circuit est
+refermé. L'ETag, les échecs et les dates de la précédente cible sont alors
+réinitialisés afin de ne pas contaminer la planification du nouveau parc et
+d'éviter toute suppression Mongo manuelle.
 
 ## Backoff, `Retry-After` et circuit breaker
 

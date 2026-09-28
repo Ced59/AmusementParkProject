@@ -81,6 +81,7 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
             request,
             leaseToken,
             dueFilter,
+            circuitFilter,
             leaseFilter,
             cancellationToken);
         if (replaced is not null)
@@ -116,6 +117,7 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
         LivePollingLeaseRequest request,
         string leaseToken,
         FilterDefinition<LivePollingStateDocument> dueFilter,
+        FilterDefinition<LivePollingStateDocument> circuitFilter,
         FilterDefinition<LivePollingStateDocument> leaseFilter,
         CancellationToken cancellationToken)
     {
@@ -127,6 +129,7 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
                 static document => document.ExternalEntityId,
                 request.ExternalEntityId)
             & dueFilter
+            & circuitFilter
             & leaseFilter;
         UpdateDefinition<LivePollingStateDocument> replacementUpdate =
             Builders<LivePollingStateDocument>.Update
