@@ -1099,7 +1099,9 @@ restent consultables mais utilisent `noindex,follow`. Leur canonical est
 normalisé sur l’année. Les années clés reçoivent les alternates localisés et un
 JSON-LD prudent. Le sitemap charge les dernières révisions publiées par lots,
 ne construit que les années candidates issues des événements majeurs et n’énumère
-jamais toutes les dates possibles.
+jamais toutes les dates possibles. Une publication, correction ou rétractation
+de fait public programme sa régénération afin que les années ajoutées ou retirées
+ne dépendent pas d’un rafraîchissement sans rapport.
 
 La timeline rend les dates d’événement cliquables vers le snapshot annuel. Un
 récapitulatif de visite public relie également le visiteur à l’état historique

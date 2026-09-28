@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Results;
 using AmusementPark.Application.Features.History.Services;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.History;
 using Moq;
 using Xunit;
@@ -27,6 +28,8 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             new Mock<IHistoricalRelationRepository>(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sources =
             new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
+            new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
         sources.Setup(repository => repository.GetLatestRevisionAsync(
                 source.Id,
                 It.IsAny<CancellationToken>()))
@@ -48,6 +51,7 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             relations.Object,
             sources.Object,
             new HistoricalLineagePublicationValidator(relations.Object),
+            sitemapRefreshScheduler.Object,
             new FixedHistoryEditorialTimeProvider(Now));
 
         ApplicationResult<HistoricalEditorialMutationResult> result = await handler.HandleAsync(
@@ -65,6 +69,7 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
         facts.VerifyNoOtherCalls();
         relations.VerifyNoOtherCalls();
         sources.VerifyAll();
+        sitemapRefreshScheduler.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -76,6 +81,8 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             new Mock<IHistoricalRelationRepository>(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sources =
             new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
+            new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
         sources.Setup(repository => repository.GetLatestRevisionAsync(
                 source.Id,
                 It.IsAny<CancellationToken>()))
@@ -85,6 +92,7 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             relations.Object,
             sources.Object,
             new HistoricalLineagePublicationValidator(relations.Object),
+            sitemapRefreshScheduler.Object,
             new FixedHistoryEditorialTimeProvider(Now));
 
         ApplicationResult<HistoricalEditorialMutationResult> result = await handler.HandleAsync(
@@ -100,6 +108,58 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
         facts.VerifyNoOtherCalls();
         relations.VerifyNoOtherCalls();
         sources.VerifyAll();
+        sitemapRefreshScheduler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenFactBecomesPublished_ShouldRefreshSitemap()
+    {
+        HistoricalFact fact = CreateValidatedFact();
+        Mock<IHistoricalFactRepository> facts = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalRelationRepository> relations =
+            new Mock<IHistoricalRelationRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sources =
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
+            new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        facts.Setup(repository => repository.GetLatestRevisionAsync(
+                fact.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(fact);
+        facts.Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(candidate =>
+                    candidate.Id == fact.Id
+                    && candidate.Revision == fact.Revision + 1
+                    && candidate.WorkflowState == HistoricalEditorialWorkflowState.Published
+                    && candidate.PublicationState == HistoricalPublicationState.Published),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        sitemapRefreshScheduler
+            .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        AdvanceHistoricalEditorialResourceCommandHandler handler = new AdvanceHistoricalEditorialResourceCommandHandler(
+            facts.Object,
+            relations.Object,
+            sources.Object,
+            new HistoricalLineagePublicationValidator(relations.Object),
+            sitemapRefreshScheduler.Object,
+            new FixedHistoryEditorialTimeProvider(Now));
+
+        ApplicationResult<HistoricalEditorialMutationResult> result = await handler.HandleAsync(
+            new AdvanceHistoricalEditorialResourceCommand(
+                HistoricalReviewResourceType.Fact,
+                fact.Id,
+                fact.Revision,
+                "admin-1",
+                "Publication"));
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal(HistoricalPublicationState.Published, result.Value?.PublicationState);
+        facts.VerifyAll();
+        relations.VerifyNoOtherCalls();
+        sources.VerifyNoOtherCalls();
+        sitemapRefreshScheduler.VerifyAll();
     }
 
     [Fact]
@@ -137,6 +197,8 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             new Mock<IHistoricalRelationRepository>(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sources =
             new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
+            new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
         relations.Setup(repository => repository.GetLatestRevisionAsync(
                 candidate.Id,
                 It.IsAny<CancellationToken>()))
@@ -162,6 +224,7 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             relations.Object,
             sources.Object,
             new HistoricalLineagePublicationValidator(relations.Object),
+            sitemapRefreshScheduler.Object,
             new FixedHistoryEditorialTimeProvider(Now));
 
         ApplicationResult<HistoricalEditorialMutationResult> result = await handler.HandleAsync(
@@ -177,6 +240,7 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
         facts.VerifyNoOtherCalls();
         relations.VerifyAll();
         sources.VerifyNoOtherCalls();
+        sitemapRefreshScheduler.VerifyNoOtherCalls();
     }
 
     private static HistoricalSourceReference CreateDraftSource()
@@ -198,6 +262,65 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             HistoricalSourceAccessibility.Accessible,
             HistoricalEditorialWorkflowState.Draft,
             HistoricalPublicationState.Draft,
+            RecordedAtUtc);
+    }
+
+    private static HistoricalFact CreateValidatedFact()
+    {
+        HistoricalSubject subject = new HistoricalSubject(
+            HistoricalSubjectType.Park,
+            "park-1",
+            "Parc exemple",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(2001));
+        HistoricalSourceRevisionReference sourceReference = new HistoricalSourceRevisionReference(
+            Guid.NewGuid(),
+            1,
+            subject.Type,
+            subject.Id,
+            HistoricalFactType.Opening,
+            period,
+            HistoricalEvidencePosition.Supports,
+            new[]
+            {
+                HistoricalSourceScope.SubjectIdentity,
+                HistoricalSourceScope.HistoricalLabel,
+                HistoricalSourceScope.FactType,
+                HistoricalSourceScope.Period,
+            },
+            subject.HistoricalLabel,
+            null,
+            null,
+            null,
+            null,
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null);
+
+        return new HistoricalFact(
+            Guid.NewGuid(),
+            subject,
+            HistoricalFactType.Opening,
+            period,
+            HistoricalFactState.Verified,
+            HistoricalImportance.Major,
+            HistoricalEditorialWorkflowState.StructuredValidation,
+            HistoricalPublicationState.Draft,
+            Array.Empty<HistoricalLocalizedText>(),
+            LifecycleBoundaryMeaning.FirstOperatingDay,
+            null,
+            null,
+            null,
+            new[] { sourceReference },
+            null,
+            null,
+            null,
+            RecordedAtUtc.AddMinutes(-1),
+            null,
+            null,
+            4,
+            3,
             RecordedAtUtc);
     }
 

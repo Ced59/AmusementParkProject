@@ -9,6 +9,7 @@ using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
@@ -35,6 +36,8 @@ public sealed class SaveHistoricalFactCommandHandlerTests
             new Mock<IHistoricalRelationRepository>(MockBehavior.Strict);
         Mock<IHistoricalSourceRepository> sources =
             new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
+            new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
         parks.Setup(repository => repository.GetByIdAsync(
                 park.Id,
                 true,
@@ -83,6 +86,7 @@ public sealed class SaveHistoricalFactCommandHandlerTests
             new HistoricalParkEditorialSubjectResolver(facts.Object, relations.Object),
             facts.Object,
             sources.Object,
+            sitemapRefreshScheduler.Object,
             new FixedHistoryEditorialTimeProvider(Now));
         HistoricalPeriodInput period = new HistoricalPeriodInput(
             new HistoricalDateInput(2001, null, null, HistoryDatePrecision.Year, false, null),
@@ -129,6 +133,124 @@ public sealed class SaveHistoricalFactCommandHandlerTests
         facts.VerifyAll();
         relations.VerifyAll();
         sources.VerifyAll();
+        sitemapRefreshScheduler.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenPublishedFactIsCorrected_ShouldRefreshSitemap()
+    {
+        Park park = PublicParkHistoryTestData.CreatePark(false);
+        ParkItem item = PublicParkHistoryTestData.CreateParkItem("item-1", "Attraction historique", false);
+        HistoricalSubject subject = new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            item.Id,
+            item.Name!,
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            park.Id);
+        HistoricalFact previous = PublicParkHistoryTestData.CreateOpeningFact(subject, 2001);
+        HistoricalSourceReference selectedSource = PublicParkHistoryTestData.CreateSource(previous);
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> zones = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> facts = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalRelationRepository> relations =
+            new Mock<IHistoricalRelationRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sources =
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapRefreshScheduler> sitemapRefreshScheduler =
+            new Mock<ISeoSitemapRefreshScheduler>(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetByIdAsync(
+                park.Id,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        items.Setup(repository => repository.GetByParkIdAsync(
+                park.Id,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { item });
+        zones.Setup(repository => repository.GetByParkIdAsync(
+                park.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+        facts.Setup(repository => repository.GetLatestRevisionAsync(
+                previous.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(previous);
+        sources.Setup(repository => repository.GetRevisionsAsync(
+                It.Is<IReadOnlyCollection<HistoricalSourceRevisionKey>>(revisions =>
+                    revisions.Single().SourceId == selectedSource.Id
+                    && revisions.Single().Revision == selectedSource.Revision),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { selectedSource });
+        facts.Setup(repository => repository.AppendRevisionAsync(
+                It.Is<HistoricalFact>(fact =>
+                    fact.Id == previous.Id
+                    && fact.Revision == previous.Revision + 1
+                    && fact.WorkflowState == HistoricalEditorialWorkflowState.Corrected
+                    && fact.PublicationState == HistoricalPublicationState.Published),
+                It.IsAny<HistoricalReviewEvent>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(HistoricalRevisionWriteDisposition.Created);
+        sitemapRefreshScheduler
+            .Setup(scheduler => scheduler.RequestRefreshAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        HistoricalParkEditorialScopeLoader scopeLoader = new HistoricalParkEditorialScopeLoader(
+            parks.Object,
+            items.Object,
+            zones.Object);
+        SaveHistoricalFactCommandHandler handler = new SaveHistoricalFactCommandHandler(
+            scopeLoader,
+            new HistoricalParkEditorialSubjectResolver(facts.Object, relations.Object),
+            facts.Object,
+            sources.Object,
+            sitemapRefreshScheduler.Object,
+            new FixedHistoryEditorialTimeProvider(Now));
+        HistoricalFactDraftInput draft = new HistoricalFactDraftInput(
+            subject.Type,
+            subject.Id,
+            previous.Type,
+            new HistoricalPeriodInput(
+                new HistoricalDateInput(2001, null, null, HistoryDatePrecision.Year, false, null),
+                new HistoricalDateInput(2001, null, null, HistoryDatePrecision.Year, false, null),
+                PeriodBoundaryConfidence.Confirmed,
+                PeriodBoundaryConfidence.Confirmed),
+            previous.State,
+            previous.Importance,
+            previous.PublicUncertaintyExplanation,
+            previous.LifecycleBoundaryMeaning,
+            previous.AttributeKind,
+            previous.AttributeBoundaryMeaning,
+            previous.SequenceWithinDate,
+            new[]
+            {
+                new HistoricalEvidenceSourceInput(
+                    selectedSource.Id,
+                    selectedSource.Revision,
+                    HistoricalEvidencePosition.Supports),
+            },
+            previous.StructuredValue,
+            previous.OtherTypeLabel,
+            previous.NarrativeContentId,
+            park.Id);
+
+        ApplicationResult<HistoricalEditorialMutationResult> result = await handler.HandleAsync(
+            new SaveHistoricalFactCommand(
+                park.Id,
+                previous.Id,
+                previous.Revision,
+                draft,
+                "admin-1",
+                "Correction publique"));
+
+        Assert.True(result.IsSuccess);
+        parks.VerifyAll();
+        items.VerifyAll();
+        zones.VerifyAll();
+        facts.VerifyAll();
+        relations.VerifyNoOtherCalls();
+        sources.VerifyAll();
+        sitemapRefreshScheduler.VerifyAll();
     }
 
     private static HistoricalSourceReference CreateSource(int revision)

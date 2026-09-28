@@ -5,6 +5,7 @@ using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Results;
 using AmusementPark.Application.Features.History.Services;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.History.Handlers;
@@ -20,6 +21,7 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandler :
     private readonly IHistoricalRelationRepository relationRepository;
     private readonly IHistoricalSourceRepository sourceRepository;
     private readonly HistoricalLineagePublicationValidator lineagePublicationValidator;
+    private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
     private readonly TimeProvider timeProvider;
 
     public AdvanceHistoricalEditorialResourceCommandHandler(
@@ -27,12 +29,14 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandler :
         IHistoricalRelationRepository relationRepository,
         IHistoricalSourceRepository sourceRepository,
         HistoricalLineagePublicationValidator lineagePublicationValidator,
+        ISeoSitemapRefreshScheduler sitemapRefreshScheduler,
         TimeProvider? timeProvider = null)
     {
         this.factRepository = factRepository;
         this.relationRepository = relationRepository;
         this.sourceRepository = sourceRepository;
         this.lineagePublicationValidator = lineagePublicationValidator;
+        this.sitemapRefreshScheduler = sitemapRefreshScheduler;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -122,15 +126,23 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandler :
                 fact,
                 CreateReviewEvent(command, fact.Revision, targetStage, recordedAtUtc),
                 cancellationToken);
-        return disposition == HistoricalRevisionWriteDisposition.Conflict
-            ? Conflict(previous.Revision)
-            : Success(
-                HistoricalReviewResourceType.Fact,
-                fact.Id,
-                fact.Revision,
-                fact.WorkflowState,
-                fact.PublicationState,
-                fact.State);
+        if (disposition == HistoricalRevisionWriteDisposition.Conflict)
+        {
+            return Conflict(previous.Revision);
+        }
+
+        if (isPublication)
+        {
+            await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
+        }
+
+        return Success(
+            HistoricalReviewResourceType.Fact,
+            fact.Id,
+            fact.Revision,
+            fact.WorkflowState,
+            fact.PublicationState,
+            fact.State);
     }
 
     private async Task<ApplicationResult<HistoricalEditorialMutationResult>> AdvanceSourceAsync(

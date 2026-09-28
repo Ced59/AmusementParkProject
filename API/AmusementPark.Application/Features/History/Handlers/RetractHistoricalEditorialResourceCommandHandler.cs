@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.History.Commands;
 using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Results;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.History.Handlers;
@@ -16,17 +17,20 @@ public sealed class RetractHistoricalEditorialResourceCommandHandler :
     private readonly IHistoricalFactRepository factRepository;
     private readonly IHistoricalRelationRepository relationRepository;
     private readonly IHistoricalSourceRepository sourceRepository;
+    private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
     private readonly TimeProvider timeProvider;
 
     public RetractHistoricalEditorialResourceCommandHandler(
         IHistoricalFactRepository factRepository,
         IHistoricalRelationRepository relationRepository,
         IHistoricalSourceRepository sourceRepository,
+        ISeoSitemapRefreshScheduler sitemapRefreshScheduler,
         TimeProvider? timeProvider = null)
     {
         this.factRepository = factRepository;
         this.relationRepository = relationRepository;
         this.sourceRepository = sourceRepository;
+        this.sitemapRefreshScheduler = sitemapRefreshScheduler;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -81,13 +85,17 @@ public sealed class RetractHistoricalEditorialResourceCommandHandler :
                 retraction,
                 CreateReviewEvent(command, retraction.Revision, recordedAtUtc),
                 cancellationToken);
-        return disposition == HistoricalRevisionWriteDisposition.Conflict
-            ? Conflict(previous.Revision)
-            : Success(
-                HistoricalReviewResourceType.Fact,
-                retraction.Id,
-                retraction.Revision,
-                retraction.State);
+        if (disposition == HistoricalRevisionWriteDisposition.Conflict)
+        {
+            return Conflict(previous.Revision);
+        }
+
+        await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
+        return Success(
+            HistoricalReviewResourceType.Fact,
+            retraction.Id,
+            retraction.Revision,
+            retraction.State);
     }
 
     private async Task<ApplicationResult<HistoricalEditorialMutationResult>> RetractSourceAsync(

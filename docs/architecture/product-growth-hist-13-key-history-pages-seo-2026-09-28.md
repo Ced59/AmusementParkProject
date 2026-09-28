@@ -66,6 +66,9 @@ flowchart LR
 - les sujets masqués avec une politique liée à leur fiche actuelle ne peuvent
   pas rendre une année publique ; un sujet `HistoricalOnly` explicitement
   publié reste admissible.
+- la publication, la correction ou la rétractation réussie d’un fait public
+  programme immédiatement une régénération du sitemap persistant ; un brouillon
+  ou une mutation en conflit ne déclenche aucun travail inutile.
 
 ## Canonicalisation et partage
 
@@ -114,6 +117,8 @@ actif à la livraison applicative.
 
 - Core : précision, événement majeur, couverture et nombre minimal de faits ;
 - Application : exclusion des sujets masqués et sélection des années candidates ;
+- Application : régénération du sitemap après publication, correction ou
+  rétractation d’un fait public ;
 - sitemap : émission de la timeline et de la seule année clé, dans chaque langue ;
 - Infrastructure : ordre de l’agrégation Mongo et filtre des dernières révisions
   publiées ;

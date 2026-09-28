@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Results;
 using AmusementPark.Application.Features.History.Services;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 
@@ -22,6 +23,7 @@ public sealed class SaveHistoricalFactCommandHandler :
     private readonly HistoricalParkEditorialSubjectResolver subjectResolver;
     private readonly IHistoricalFactRepository factRepository;
     private readonly IHistoricalSourceRepository sourceRepository;
+    private readonly ISeoSitemapRefreshScheduler sitemapRefreshScheduler;
     private readonly TimeProvider timeProvider;
 
     public SaveHistoricalFactCommandHandler(
@@ -29,12 +31,14 @@ public sealed class SaveHistoricalFactCommandHandler :
         HistoricalParkEditorialSubjectResolver subjectResolver,
         IHistoricalFactRepository factRepository,
         IHistoricalSourceRepository sourceRepository,
+        ISeoSitemapRefreshScheduler sitemapRefreshScheduler,
         TimeProvider? timeProvider = null)
     {
         this.scopeLoader = scopeLoader;
         this.subjectResolver = subjectResolver;
         this.factRepository = factRepository;
         this.sourceRepository = sourceRepository;
+        this.sitemapRefreshScheduler = sitemapRefreshScheduler;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -175,6 +179,11 @@ public sealed class SaveHistoricalFactCommandHandler :
             {
                 return ApplicationResult<HistoricalEditorialMutationResult>.Failure(
                     HistoryApplicationErrors.EditorialRevisionConflict(previous?.Revision ?? 0));
+            }
+
+            if (fact.PublicationState == HistoricalPublicationState.Published)
+            {
+                await this.sitemapRefreshScheduler.RequestRefreshAsync(cancellationToken);
             }
 
             return ApplicationResult<HistoricalEditorialMutationResult>.Success(
