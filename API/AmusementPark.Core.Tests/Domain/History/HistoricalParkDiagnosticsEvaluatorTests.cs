@@ -41,6 +41,55 @@ public sealed class HistoricalParkDiagnosticsEvaluatorTests
     }
 
     [Fact]
+    public void Evaluate_WithOpeningAfterTemporaryClosure_ShouldExposeLifecycleBlocker()
+    {
+        HistoricalSubject subject = CreateSubject(HistoricalSubjectType.ParkItem, "item-1", "Le Carrousel");
+        HistoricalFact temporaryClosure = CreateDraftFact(
+            subject,
+            HistoricalFactType.TemporaryClosure,
+            HistoricalPeriod.Point(HistoricalDate.ForDay(2000, 3, 1)));
+        HistoricalFact invalidOpening = CreateDraftFact(
+            subject,
+            HistoricalFactType.Opening,
+            HistoricalPeriod.Point(HistoricalDate.ForDay(2000, 3, 2)));
+
+        HistoricalParkDiagnostics result = new HistoricalParkDiagnosticsEvaluator().Evaluate(
+            new[] { temporaryClosure, invalidOpening },
+            Array.Empty<HistoricalRelation>(),
+            Array.Empty<string>());
+
+        Assert.Contains(result.Issues, issue =>
+            issue.Code == HistoricalDiagnosticCode.OpeningAfterClosure
+            && issue.FactId == invalidOpening.Id);
+    }
+
+    [Fact]
+    public void Evaluate_WithSequencedSameDayOpeningAfterClosure_ShouldExposeLifecycleBlocker()
+    {
+        HistoricalSubject subject = CreateSubject(HistoricalSubjectType.ParkItem, "item-1", "Le Carrousel");
+        HistoricalPeriod date = HistoricalPeriod.Point(HistoricalDate.ForDay(2000, 3, 1));
+        HistoricalFact closure = CreateDraftFact(
+            subject,
+            HistoricalFactType.Closure,
+            date,
+            sequenceWithinDate: 1);
+        HistoricalFact invalidOpening = CreateDraftFact(
+            subject,
+            HistoricalFactType.Opening,
+            date,
+            sequenceWithinDate: 2);
+
+        HistoricalParkDiagnostics result = new HistoricalParkDiagnosticsEvaluator().Evaluate(
+            new[] { closure, invalidOpening },
+            Array.Empty<HistoricalRelation>(),
+            Array.Empty<string>());
+
+        Assert.Contains(result.Issues, issue =>
+            issue.Code == HistoricalDiagnosticCode.OpeningAfterClosure
+            && issue.FactId == invalidOpening.Id);
+    }
+
+    [Fact]
     public void Evaluate_WithCyclicLineageAndUnknownZone_ShouldExposeBothBlockers()
     {
         HistoricalRelation first = HistoricalRelationTests.CreatePublishedRelation(
@@ -101,7 +150,8 @@ public sealed class HistoricalParkDiagnosticsEvaluatorTests
         HistoricalSubject subject,
         HistoricalFactType type,
         HistoricalPeriod period,
-        string? structuredValue = null)
+        string? structuredValue = null,
+        int? sequenceWithinDate = null)
     {
         bool lifecycle = type is HistoricalFactType.Opening
             or HistoricalFactType.Closure
@@ -131,7 +181,7 @@ public sealed class HistoricalParkDiagnosticsEvaluatorTests
             lifecycle ? lifecycleBoundary : null,
             nameChange ? HistoricalAttributeKind.Name : null,
             nameChange ? AttributeBoundaryMeaning.FirstDayOfNewValue : null,
-            null,
+            sequenceWithinDate,
             Array.Empty<HistoricalSourceRevisionReference>(),
             structuredValue,
             null,

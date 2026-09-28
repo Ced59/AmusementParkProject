@@ -137,6 +137,7 @@ public sealed class HistoricalParkDiagnosticsEvaluator
     {
         HistoricalFact[] closures = facts.Where(static fact => fact.Type is
                 HistoricalFactType.Closure
+                or HistoricalFactType.TemporaryClosure
                 or HistoricalFactType.DefinitiveClosure)
             .ToArray();
         foreach (HistoricalFact opening in facts.Where(static fact => fact.Type == HistoricalFactType.Opening))
@@ -150,7 +151,8 @@ public sealed class HistoricalParkDiagnosticsEvaluator
             bool followsClosure = closures.Any(closure =>
                 SameSubject(opening.Subject, closure.Subject)
                 && closure.Period.End?.GetEnvelope().LatestPossibleDate is DateOnly closureLatest
-                && closureLatest < openingEarliest.Value);
+                && (closureLatest < openingEarliest.Value
+                    || HistoricalTransitionOrdering.MustPrecede(closure, opening)));
             if (followsClosure)
             {
                 issues.Add(new HistoricalParkDiagnosticIssue(
