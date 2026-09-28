@@ -22,6 +22,8 @@ public static class RateLimitPolicyNames
     public const string HistoricalExistenceReports = "historical-existence-reports";
     public const string HistoricalExistenceReportAdministration =
         "historical-existence-report-administration";
+    public const string HistoricalEditorialAdministration =
+        "historical-editorial-administration";
     public const string SharePublicationPreviews = "share-publication-previews";
     public const string SharePublicationConfirmations = "share-publication-confirmations";
     public const string ShareModerationReports = "share-moderation-reports";

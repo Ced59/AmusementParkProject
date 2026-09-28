@@ -2692,7 +2692,8 @@
         "errors": {
           "searchFailed": "Die Parks können nicht durchsucht werden.",
           "loadFailed": "Die historische Prüfung dieses Parks kann nicht geladen werden."
-        }
+        },
+        "openWorkbench": "Redaktionswerkstatt öffnen"
       },
       "errors": {
         "loadFailed": "Historische Ereignisse können nicht geladen werden.",
@@ -2700,6 +2701,224 @@
         "invalidJson": "Ein JSON-Feld ist ungültig.",
         "saveFailed": "Dieses Ereignis kann nicht gespeichert werden.",
         "deleteFailed": "Dieses Ereignis kann nicht gelöscht werden."
+      },
+      "workbench": {
+        "kicker": "Kanonische Werkstatt",
+        "title": "Nachprüfbare Geschichte erstellen",
+        "subtitle": "Erfasse Fakten, verknüpfe Belege, prüfe die Auswirkungen und veröffentliche jede Revision, ohne die Vergangenheit zu überschreiben.",
+        "loading": "Historische Werkstatt wird geöffnet…",
+        "parkKicker": "Ausgewählter Park",
+        "parkHint": "Alle folgenden Ressourcen gehören zum kanonischen historischen Register.",
+        "blockers": "Blockade(n)",
+        "actions": {
+          "diagnostics": "Diagnose anzeigen",
+          "create": "Ressource erstellen",
+          "newFact": "Fakt hinzufügen",
+          "newFactHint": "Ein datiertes, belegbares Ereignis",
+          "newRelation": "Zwei Objekte verknüpfen",
+          "newRelationHint": "Abstammung, Umzug oder Nachfolge",
+          "newSource": "Beleg hinzufügen",
+          "newSourceHint": "Eine dauerhafte, qualifizierte Quelle",
+          "edit": "Bearbeiten",
+          "preview": "Vorschau",
+          "advanceTo": "Weiter zu: {{stage}}",
+          "retract": "Zurückziehen",
+          "cancel": "Abbrechen",
+          "saveSource": "Beleg speichern",
+          "saveFact": "Fakt speichern",
+          "saveRelation": "Beziehung speichern"
+        },
+        "workflow": {
+          "title": "Redaktioneller Ablauf",
+          "Draft": "Entwurf",
+          "SourcesAttached": "Belege verknüpft",
+          "EditorialReview": "Redaktionelle Prüfung",
+          "StructuredValidation": "Strukturprüfung",
+          "Published": "Veröffentlicht",
+          "Corrected": "Korrigiert",
+          "Retracted": "Zurückgezogen"
+        },
+        "facts": {
+          "kicker": "Aussagen",
+          "title": "Historische Fakten",
+          "empty": "Für diesen Park ist noch kein Fakt dokumentiert."
+        },
+        "relations": {
+          "kicker": "Kontinuitäten",
+          "title": "Historische Beziehungen",
+          "empty": "Noch keine Beziehung dokumentiert."
+        },
+        "sources": {
+          "kicker": "Belege",
+          "title": "Quellenbibliothek",
+          "hint": "Veröffentlichte und zugängliche Quellen können mehrere genaue Aussagen belegen."
+        },
+        "preview": {
+          "kicker": "Auswirkung vor Veröffentlichung",
+          "ready": "Belege und Struktur erlauben die Veröffentlichung.",
+          "blocked": "Die Vorschau hat blockierende Punkte gefunden.",
+          "before": "Vorher",
+          "after": "Nachher",
+          "openSubjects": "geöffnete Objekte",
+          "changedSubjects": "{{count}} geänderte(s) Objekt(e)",
+          "ambiguities": "Mehrdeutigkeiten: {{before}} → {{after}}",
+          "visits": "{{count}} möglicherweise betroffene Besuche"
+        },
+        "sourceEditor": {
+          "kicker": "Neuer Beleg",
+          "createTitle": "Quelle dokumentieren",
+          "editTitle": "Quelle korrigieren",
+          "type": "Art",
+          "title": "Titel",
+          "publisher": "Herausgeber oder Autor",
+          "language": "Sprache",
+          "url": "Stabile Adresse",
+          "reference": "Bibliografische Angabe",
+          "publishedOn": "Veröffentlichungsdatum",
+          "accessedOn": "Abrufdatum",
+          "archiveUrl": "Archivierte Kopie",
+          "accessibility": "Zugänglichkeit",
+          "note": "Private Prüfnotiz",
+          "scopeHint": "Wähle nur die strukturierten Felder aus, die dieser Beleg tatsächlich stützt; jedes Zitat bleibt an eine genaue Aussage gebunden.",
+          "scopeMissing": "Wähle mindestens ein Feld aus, das dieser Beleg stützt."
+        },
+        "factEditor": {
+          "kicker": "Datierte Aussage",
+          "createTitle": "Neuer historischer Fakt",
+          "editTitle": "Fakt korrigieren",
+          "hint": "Beschreibe Fakt, Datum und Belege, ohne fehlende Genauigkeit zu erfinden.",
+          "subject": "Objekt",
+          "type": "Faktart",
+          "state": "Sicherheitsgrad",
+          "importance": "Bedeutung",
+          "precision": "Datumsgenauigkeit",
+          "startDate": "Zeitraum",
+          "year": "Jahr",
+          "month": "Monat",
+          "day": "Tag",
+          "interval": "Dieser Fakt umfasst einen Zeitraum",
+          "endYear": "Endjahr",
+          "approximate": "Ungefähres Datum",
+          "confidence": "Sicherheit der Grenzen",
+          "value": "Neuer strukturierter Wert",
+          "valuePlaceholder": "Name, Betreiber, Bereich, Thema…",
+          "otherType": "Bezeichnung der eigenen Art",
+          "evidence": "Verknüpfte Belege",
+          "evidenceHint": "Wähle Dokumente, die genau diesen Fakt stützen.",
+          "noSources": "Füge zuerst einen Beleg zur Bibliothek hinzu.",
+          "contradicts": "Diese Quelle widerspricht",
+          "uncertainty": "Öffentliche Erklärung der Unsicherheit",
+          "uncertaintyHint": "Vor der Veröffentlichung ist ein natürlicher Text in allen acht Sprachen nötig.",
+          "uncertaintyMissing": "Vervollständige alle acht Fassungen.",
+          "reviewNote": "Private Revisionsnotiz"
+        },
+        "relationEditor": {
+          "kicker": "Belegte Verbindung",
+          "createTitle": "Neue historische Beziehung",
+          "editTitle": "Beziehung korrigieren",
+          "hint": "Verknüpfe Identitäten, ohne sie zusammenzuführen, und bewahre den Zeitraum.",
+          "source": "Ausgangsobjekt",
+          "target": "Zielobjekt",
+          "type": "Verbindungsart",
+          "direction": "Richtung",
+          "year": "Jahr",
+          "state": "Sicherheitsgrad",
+          "note": "Private Redaktionsnotiz"
+        },
+        "factStates": {
+          "Unverified": "Zu prüfen",
+          "Verified": "Bestätigt",
+          "Probable": "Wahrscheinlich",
+          "Disputed": "Umstritten",
+          "Retracted": "Zurückgezogen"
+        },
+        "importance": {
+          "Standard": "Standard",
+          "Major": "Bedeutend"
+        },
+        "confidence": {
+          "Confirmed": "Bestätigt",
+          "Estimated": "Geschätzt",
+          "Disputed": "Umstritten"
+        },
+        "directions": {
+          "Directed": "Gerichtet",
+          "Symmetric": "Symmetrisch"
+        },
+        "accessibility": {
+          "Accessible": "Zugänglich",
+          "Archived": "Archiviert",
+          "Unavailable": "Nicht verfügbar"
+        },
+        "sourceTypes": {
+          "OfficialWebsite": "Offizielle Website",
+          "OfficialPublication": "Offizielle Veröffentlichung",
+          "Press": "Presse",
+          "Book": "Buch",
+          "Academic": "Wissenschaftliche Arbeit",
+          "Archive": "Archiv",
+          "Database": "Datenbank",
+          "Other": "Andere"
+        },
+        "sourceScopes": {
+          "SubjectIdentity": "Identität des Objekts",
+          "FactType": "Faktart",
+          "Period": "Datum oder Zeitraum",
+          "StructuredValue": "Strukturierter Wert",
+          "HistoricalLabel": "Historischer Name",
+          "Narrative": "Erzählung",
+          "SequenceWithinDate": "Reihenfolge am selben Datum",
+          "RelationSourceIdentity": "Ausgang der Beziehung",
+          "RelationTargetIdentity": "Ziel der Beziehung",
+          "RelationType": "Beziehungsart"
+        },
+        "factTypes": {
+          "Opening": "Eröffnung",
+          "Closure": "Schließung",
+          "Reopening": "Wiedereröffnung",
+          "Renaming": "Umbenennung",
+          "OperatorChange": "Betreiberwechsel",
+          "OwnerChange": "Eigentümerwechsel",
+          "Extension": "Erweiterung",
+          "Reduction": "Verkleinerung",
+          "ZoneCreation": "Bereichsgründung",
+          "ZoneRenaming": "Bereichsumbenennung",
+          "ZoneRemoval": "Bereichsauflösung",
+          "MajorEvent": "Wichtiges Ereignis",
+          "PositioningChange": "Neupositionierung",
+          "Announcement": "Ankündigung",
+          "Construction": "Bau",
+          "TemporaryClosure": "Vorübergehende Schließung",
+          "DefinitiveClosure": "Endgültige Schließung",
+          "Dismantling": "Demontage",
+          "Relocation": "Verlagerung",
+          "Retheming": "Neuthematisierung",
+          "ManufacturerChange": "Herstellerwechsel",
+          "TechnicalModification": "Technische Änderung",
+          "Replacement": "Ersetzung",
+          "ZoneMove": "Bereichswechsel",
+          "LogoChange": "Logoänderung",
+          "Other": "Andere"
+        },
+        "relationTypes": {
+          "RenamedTo": "Umbenannt in",
+          "ReplacedBy": "Ersetzt durch",
+          "MovedTo": "Verlegt nach",
+          "RethemedAs": "Neuthematisiert als",
+          "SuccessorOf": "Nachfolger von",
+          "SamePhysicalAssetAs": "Dieselbe physische Anlage wie",
+          "SharesLocationWith": "Teilt den Standort mit",
+          "OperatedByDuring": "Betrieben von während",
+          "LocatedInZoneDuring": "Im Bereich gelegen während"
+        },
+        "messages": {
+          "saved": "Die neue Revision wurde gespeichert."
+        },
+        "errors": {
+          "loadFailed": "Die historische Werkstatt kann nicht geladen werden.",
+          "saveFailed": "Die Revision konnte nicht gespeichert werden.",
+          "previewFailed": "Die Auswirkung kann nicht angezeigt werden."
+        }
       }
     },
     "images": {

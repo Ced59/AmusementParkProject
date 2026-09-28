@@ -16,6 +16,15 @@ import {
   PublicParkHistoricalTimeline
 } from '@app/models/history/public-park-history.models';
 import { AdminHistoricalParkDiagnostics } from '@app/models/history/admin-historical-park-diagnostics.models';
+import {
+  AdminHistoricalParkWorkbench,
+  HistoricalEditorialMutation,
+  HistoricalEditorialResourceType,
+  HistoricalPublicationImpactPreview,
+  SaveHistoricalFactRequest,
+  SaveHistoricalRelationRequest,
+  SaveHistoricalSourceRequest
+} from '@app/models/history/admin-historical-workbench.models';
 import { PagedCollectionResponse, unwrapPagedCollection } from '@data-access/shared/api-helpers';
 import { PagedResult } from '@shared/models/contracts';
 import { environment } from '../../../environments/environment';
@@ -104,6 +113,69 @@ export class HistoryApiService {
   getAdminParkDiagnostics(parkId: string): Observable<AdminHistoricalParkDiagnostics> {
     const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getAdminParkDiagnostics(parkId)}`;
     return this.http.get<AdminHistoricalParkDiagnostics>(url);
+  }
+
+  getAdminParkWorkbench(parkId: string): Observable<AdminHistoricalParkWorkbench> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getAdminParkWorkbench(parkId)}`;
+    return this.http.get<AdminHistoricalParkWorkbench>(url);
+  }
+
+  previewAdminHistoricalImpact(parkId: string, resourceType: HistoricalEditorialResourceType, resourceId: string, year: number | null): Observable<HistoricalPublicationImpactPreview> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.previewAdminHistoricalImpact(parkId)}`;
+    return this.http.post<HistoricalPublicationImpactPreview>(url, { resourceType, resourceId, year }, this.jsonHttpOptions);
+  }
+
+  saveAdminHistoricalSource(sourceId: string | null, request: SaveHistoricalSourceRequest): Observable<HistoricalEditorialMutation> {
+    const url: string = `${environment.apiBaseUrl}${sourceId
+      ? HISTORY_API_ENDPOINTS.updateAdminHistoricalSource(sourceId)
+      : HISTORY_API_ENDPOINTS.createAdminHistoricalSource}`;
+    return sourceId
+      ? this.http.patch<HistoricalEditorialMutation>(url, request, this.jsonHttpOptions)
+      : this.http.post<HistoricalEditorialMutation>(url, request, this.jsonHttpOptions);
+  }
+
+  saveAdminHistoricalFact(parkId: string, factId: string | null, request: SaveHistoricalFactRequest): Observable<HistoricalEditorialMutation> {
+    const url: string = `${environment.apiBaseUrl}${factId
+      ? HISTORY_API_ENDPOINTS.updateAdminHistoricalFact(parkId, factId)
+      : HISTORY_API_ENDPOINTS.createAdminHistoricalFact(parkId)}`;
+    return factId
+      ? this.http.patch<HistoricalEditorialMutation>(url, request, this.jsonHttpOptions)
+      : this.http.post<HistoricalEditorialMutation>(url, request, this.jsonHttpOptions);
+  }
+
+  saveAdminHistoricalRelation(parkId: string, relationId: string | null, request: SaveHistoricalRelationRequest): Observable<HistoricalEditorialMutation> {
+    const url: string = `${environment.apiBaseUrl}${relationId
+      ? HISTORY_API_ENDPOINTS.updateAdminHistoricalRelation(parkId, relationId)
+      : HISTORY_API_ENDPOINTS.createAdminHistoricalRelation(parkId)}`;
+    return relationId
+      ? this.http.patch<HistoricalEditorialMutation>(url, request, this.jsonHttpOptions)
+      : this.http.post<HistoricalEditorialMutation>(url, request, this.jsonHttpOptions);
+  }
+
+  advanceAdminHistoricalResource(resourceType: HistoricalEditorialResourceType, resourceId: string, expectedRevision: number, reviewNote: string | null): Observable<HistoricalEditorialMutation> {
+    const endpoint: string = resourceType === 'Fact'
+      ? HISTORY_API_ENDPOINTS.reviewAdminHistoricalFact(resourceId)
+      : resourceType === 'Relation'
+        ? HISTORY_API_ENDPOINTS.reviewAdminHistoricalRelation(resourceId)
+        : HISTORY_API_ENDPOINTS.reviewAdminHistoricalSource(resourceId);
+    return this.http.post<HistoricalEditorialMutation>(
+      `${environment.apiBaseUrl}${endpoint}`,
+      { expectedRevision, reviewNote },
+      this.jsonHttpOptions
+    );
+  }
+
+  retractAdminHistoricalResource(resourceType: HistoricalEditorialResourceType, resourceId: string, expectedRevision: number, reviewNote: string | null): Observable<HistoricalEditorialMutation> {
+    const endpoint: string = resourceType === 'Fact'
+      ? HISTORY_API_ENDPOINTS.retractAdminHistoricalFact(resourceId)
+      : resourceType === 'Relation'
+        ? HISTORY_API_ENDPOINTS.retractAdminHistoricalRelation(resourceId)
+        : HISTORY_API_ENDPOINTS.retractAdminHistoricalSource(resourceId);
+    return this.http.post<HistoricalEditorialMutation>(
+      `${environment.apiBaseUrl}${endpoint}`,
+      { expectedRevision, reviewNote },
+      this.jsonHttpOptions
+    );
   }
 
   createAdminEvent(request: HistoryEventWriteModel): Observable<HistoryEvent> {

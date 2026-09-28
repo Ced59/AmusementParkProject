@@ -103,4 +103,36 @@ describe('HistoryApiService', () => {
       }
     });
   });
+
+  it('loads the canonical editorial workbench with an encoded park identifier', () => {
+    service.getAdminParkWorkbench('park/one').subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/history/parks/park%2Fone/workbench`
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({ parkId: 'park/one', parkName: 'Park', subjects: [], facts: [], relations: [], sources: [], diagnostics: {} });
+  });
+
+  it('previews publication impact without mutating the resource', () => {
+    service.previewAdminHistoricalImpact('park/one', 'Fact', 'fact/one', 1998).subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/history/parks/park%2Fone/workbench/preview`
+    );
+    expect(request.request.method).toBe('POST');
+    expect(request.request.body).toEqual({ resourceType: 'Fact', resourceId: 'fact/one', year: 1998 });
+    request.flush({ resourceType: 'Fact', resourceId: 'fact/one' });
+  });
+
+  it('advances exactly the expected source revision through its dedicated review route', () => {
+    service.advanceAdminHistoricalResource('Source', 'source/one', 4, 'Reviewed').subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/history/sources/source%2Fone/review`
+    );
+    expect(request.request.method).toBe('POST');
+    expect(request.request.body).toEqual({ expectedRevision: 4, reviewNote: 'Reviewed' });
+    request.flush({ resourceType: 'Source', resourceId: 'source/one', revision: 5 });
+  });
 });

@@ -1,0 +1,33 @@
+<form class="editor" [formGroup]="form" (ngSubmit)="submit()">
+  <header><div><span class="kicker">{{ 'admin.history.workbench.relationEditor.kicker' | translate }}</span><h3>{{ (relation ? 'admin.history.workbench.relationEditor.editTitle' : 'admin.history.workbench.relationEditor.createTitle') | translate }}</h3><p>{{ 'admin.history.workbench.relationEditor.hint' | translate }}</p></div><span class="pi pi-share-alt" aria-hidden="true"></span></header>
+  <div class="editor__grid">
+    <label><span>{{ 'admin.history.workbench.relationEditor.source' | translate }}</span><select formControlName="sourceSubjectKey" [attr.disabled]="relation ? true : null">@for (subject of subjects; track subjectKey(subject)) { <option [value]="subjectKey(subject)">{{ subject.label }}</option> }</select></label>
+    <label><span>{{ 'admin.history.workbench.relationEditor.target' | translate }}</span><select formControlName="targetSubjectKey" [attr.disabled]="relation ? true : null">@for (subject of subjects; track subjectKey(subject)) { <option [value]="subjectKey(subject)">{{ subject.label }}</option> }</select></label>
+    <label><span>{{ 'admin.history.workbench.relationEditor.type' | translate }}</span><select formControlName="type">@for (type of relationTypes; track type) { <option [value]="type">{{ 'admin.history.workbench.relationTypes.' + type | translate }}</option> }</select></label>
+    <label><span>{{ 'admin.history.workbench.relationEditor.direction' | translate }}</span><select formControlName="direction"><option value="Directed">{{ 'admin.history.workbench.directions.Directed' | translate }}</option><option value="Symmetric">{{ 'admin.history.workbench.directions.Symmetric' | translate }}</option></select></label>
+    <label><span>{{ 'admin.history.workbench.relationEditor.year' | translate }}</span><input type="number" min="1" max="9999" formControlName="year"></label>
+    <label><span>{{ 'admin.history.workbench.relationEditor.state' | translate }}</span><select formControlName="state"><option value="Unverified">{{ 'admin.history.workbench.factStates.Unverified' | translate }}</option><option value="Verified">{{ 'admin.history.workbench.factStates.Verified' | translate }}</option><option value="Probable">{{ 'admin.history.workbench.factStates.Probable' | translate }}</option><option value="Disputed">{{ 'admin.history.workbench.factStates.Disputed' | translate }}</option></select></label>
+    <label><span>{{ 'admin.history.workbench.factEditor.confidence' | translate }}</span><select formControlName="confidence"><option value="Confirmed">{{ 'admin.history.workbench.confidence.Confirmed' | translate }}</option><option value="Estimated">{{ 'admin.history.workbench.confidence.Estimated' | translate }}</option><option value="Disputed">{{ 'admin.history.workbench.confidence.Disputed' | translate }}</option></select></label>
+    <label class="editor__check"><input type="checkbox" formControlName="approximate"><span>{{ 'admin.history.workbench.factEditor.approximate' | translate }}</span></label>
+    <label class="editor__wide"><span>{{ 'admin.history.workbench.relationEditor.note' | translate }}</span><textarea rows="3" formControlName="editorialNote"></textarea></label>
+  </div>
+  @if (isUncertain()) {
+    <section class="editor__uncertainty">
+      <div><strong>{{ 'admin.history.workbench.factEditor.uncertainty' | translate }}</strong><p>{{ 'admin.history.workbench.factEditor.uncertaintyHint' | translate }}</p></div>
+      <div class="editor__grid">
+        <label><span>FR</span><textarea rows="2" formControlName="uncertaintyFr"></textarea></label>
+        <label><span>EN</span><textarea rows="2" formControlName="uncertaintyEn"></textarea></label>
+        <label><span>DE</span><textarea rows="2" formControlName="uncertaintyDe"></textarea></label>
+        <label><span>NL</span><textarea rows="2" formControlName="uncertaintyNl"></textarea></label>
+        <label><span>IT</span><textarea rows="2" formControlName="uncertaintyIt"></textarea></label>
+        <label><span>ES</span><textarea rows="2" formControlName="uncertaintyEs"></textarea></label>
+        <label><span>PL</span><textarea rows="2" formControlName="uncertaintyPl"></textarea></label>
+        <label><span>PT</span><textarea rows="2" formControlName="uncertaintyPt"></textarea></label>
+      </div>
+      @if (uncertaintyMissing()) { <p class="editor__error" role="alert">{{ 'admin.history.workbench.factEditor.uncertaintyMissing' | translate }}</p> }
+    </section>
+  }
+  <section class="editor__evidence"><div><strong>{{ 'admin.history.workbench.factEditor.evidence' | translate }}</strong><p>{{ 'admin.history.workbench.factEditor.evidenceHint' | translate }}</p></div><div class="editor__source-grid">@for (source of sources; track source.id) { <article class="editor__source" [class.editor__source--selected]="selectedSourceIds().has(source.id)"><button type="button" (click)="toggleSource(source.id)" [attr.aria-pressed]="selectedSourceIds().has(source.id)"><span class="pi" [class.pi-check-circle]="selectedSourceIds().has(source.id)" [class.pi-circle]="!selectedSourceIds().has(source.id)" aria-hidden="true"></span><span><strong>{{ source.title }}</strong><small>{{ source.publisherOrAuthor }}</small></span></button>@if (selectedSourceIds().has(source.id) && form.controls.state.value === 'Disputed') { <button type="button" class="editor__contradiction" [class.editor__contradiction--active]="contradictingSourceIds().has(source.id)" (click)="markContradicting(source.id)">{{ 'admin.history.workbench.factEditor.contradicts' | translate }}</button> }</article> }</div></section>
+  <label><span>{{ 'admin.history.workbench.factEditor.reviewNote' | translate }}</span><textarea rows="2" formControlName="reviewNote"></textarea></label>
+  <div class="editor__actions"><button type="button" class="btn-nav btn-nav--ghost" (click)="cancelled.emit()">{{ 'admin.history.workbench.actions.cancel' | translate }}</button><button type="submit" class="btn-nav" [disabled]="busy">{{ 'admin.history.workbench.actions.saveRelation' | translate }}</button></div>
+</form>

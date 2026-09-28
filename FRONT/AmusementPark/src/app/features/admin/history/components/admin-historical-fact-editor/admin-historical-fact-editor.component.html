@@ -1,0 +1,125 @@
+<form class="editor" [formGroup]="form" (ngSubmit)="submit()">
+  <header>
+    <div>
+      <span class="kicker">{{ 'admin.history.workbench.factEditor.kicker' | translate }}</span>
+      <h3>{{ (fact ? 'admin.history.workbench.factEditor.editTitle' : 'admin.history.workbench.factEditor.createTitle') | translate }}</h3>
+      <p>{{ 'admin.history.workbench.factEditor.hint' | translate }}</p>
+    </div>
+    <span class="pi pi-calendar" aria-hidden="true"></span>
+  </header>
+
+  <div class="editor__grid">
+    <label class="editor__wide">
+      <span>{{ 'admin.history.workbench.factEditor.subject' | translate }}</span>
+      <select formControlName="subjectKey" [attr.disabled]="fact ? true : null">
+        @for (subject of subjects; track subjectKey(subject)) { <option [value]="subjectKey(subject)">{{ subject.label }}</option> }
+      </select>
+    </label>
+    <label>
+      <span>{{ 'admin.history.workbench.factEditor.type' | translate }}</span>
+      <select formControlName="type">
+        @for (type of factTypes; track type) { <option [value]="type">{{ 'admin.history.workbench.factTypes.' + type | translate }}</option> }
+      </select>
+    </label>
+    <label>
+      <span>{{ 'admin.history.workbench.factEditor.state' | translate }}</span>
+      <select formControlName="state">
+        <option value="Unverified">{{ 'admin.history.workbench.factStates.Unverified' | translate }}</option>
+        <option value="Verified">{{ 'admin.history.workbench.factStates.Verified' | translate }}</option>
+        <option value="Probable">{{ 'admin.history.workbench.factStates.Probable' | translate }}</option>
+        <option value="Disputed">{{ 'admin.history.workbench.factStates.Disputed' | translate }}</option>
+      </select>
+    </label>
+    <label>
+      <span>{{ 'admin.history.workbench.factEditor.importance' | translate }}</span>
+      <select formControlName="importance">
+        <option value="Standard">{{ 'admin.history.workbench.importance.Standard' | translate }}</option>
+        <option value="Major">{{ 'admin.history.workbench.importance.Major' | translate }}</option>
+      </select>
+    </label>
+    <label>
+      <span>{{ 'admin.history.workbench.factEditor.precision' | translate }}</span>
+      <select formControlName="precision">
+        <option value="Year">{{ 'admin.history.precision.Year' | translate }}</option>
+        <option value="Month">{{ 'admin.history.precision.Month' | translate }}</option>
+        <option value="Day">{{ 'admin.history.precision.Day' | translate }}</option>
+      </select>
+    </label>
+  </div>
+
+  <section class="editor__date">
+    <strong>{{ 'admin.history.workbench.factEditor.startDate' | translate }}</strong>
+    <div class="editor__date-grid">
+      <label><span>{{ 'admin.history.workbench.factEditor.year' | translate }}</span><input type="number" min="1" max="9999" formControlName="startYear"></label>
+      @if (form.controls.precision.value !== 'Year') { <label><span>{{ 'admin.history.workbench.factEditor.month' | translate }}</span><input type="number" min="1" max="12" formControlName="startMonth"></label> }
+      @if (form.controls.precision.value === 'Day') { <label><span>{{ 'admin.history.workbench.factEditor.day' | translate }}</span><input type="number" min="1" max="31" formControlName="startDay"></label> }
+    </div>
+    <label class="editor__check"><input type="checkbox" formControlName="hasEnd"><span>{{ 'admin.history.workbench.factEditor.interval' | translate }}</span></label>
+    @if (form.controls.hasEnd.value) {
+      <div class="editor__date-grid">
+        <label><span>{{ 'admin.history.workbench.factEditor.endYear' | translate }}</span><input type="number" min="1" max="9999" formControlName="endYear"></label>
+        @if (form.controls.precision.value !== 'Year') { <label><span>{{ 'admin.history.workbench.factEditor.month' | translate }}</span><input type="number" min="1" max="12" formControlName="endMonth"></label> }
+        @if (form.controls.precision.value === 'Day') { <label><span>{{ 'admin.history.workbench.factEditor.day' | translate }}</span><input type="number" min="1" max="31" formControlName="endDay"></label> }
+      </div>
+    }
+    <div class="editor__date-options">
+      <label class="editor__check"><input type="checkbox" formControlName="approximate"><span>{{ 'admin.history.workbench.factEditor.approximate' | translate }}</span></label>
+      <label><span>{{ 'admin.history.workbench.factEditor.confidence' | translate }}</span><select formControlName="confidence"><option value="Confirmed">{{ 'admin.history.workbench.confidence.Confirmed' | translate }}</option><option value="Estimated">{{ 'admin.history.workbench.confidence.Estimated' | translate }}</option><option value="Disputed">{{ 'admin.history.workbench.confidence.Disputed' | translate }}</option></select></label>
+    </div>
+  </section>
+
+  <label class="editor__field">
+    <span>{{ 'admin.history.workbench.factEditor.value' | translate }}</span>
+    <input type="text" formControlName="structuredValue" [placeholder]="'admin.history.workbench.factEditor.valuePlaceholder' | translate">
+  </label>
+  @if (form.controls.type.value === 'Other') {
+    <label class="editor__field"><span>{{ 'admin.history.workbench.factEditor.otherType' | translate }}</span><input type="text" formControlName="otherTypeLabel"></label>
+  }
+
+  <section class="editor__evidence">
+    <div>
+      <strong>{{ 'admin.history.workbench.factEditor.evidence' | translate }}</strong>
+      <p>{{ 'admin.history.workbench.factEditor.evidenceHint' | translate }}</p>
+    </div>
+    @if (sources.length === 0) {
+      <p class="editor__empty">{{ 'admin.history.workbench.factEditor.noSources' | translate }}</p>
+    } @else {
+      <div class="editor__source-grid">
+        @for (source of sources; track source.id) {
+          <article class="editor__source" [class.editor__source--selected]="selectedSourceIds().has(source.id)">
+            <button type="button" (click)="toggleSource(source.id)" [attr.aria-pressed]="selectedSourceIds().has(source.id)">
+              <span class="pi" [class.pi-check-circle]="selectedSourceIds().has(source.id)" [class.pi-circle]="!selectedSourceIds().has(source.id)" aria-hidden="true"></span>
+              <span><strong>{{ source.title }}</strong><small>{{ source.publisherOrAuthor }}</small></span>
+            </button>
+            @if (selectedSourceIds().has(source.id) && form.controls.state.value === 'Disputed') {
+              <button type="button" class="editor__contradiction" [class.editor__contradiction--active]="contradictingSourceIds().has(source.id)" (click)="markContradicting(source.id)">{{ 'admin.history.workbench.factEditor.contradicts' | translate }}</button>
+            }
+          </article>
+        }
+      </div>
+    }
+  </section>
+
+  @if (isUncertain()) {
+    <section class="editor__uncertainty">
+      <div><strong>{{ 'admin.history.workbench.factEditor.uncertainty' | translate }}</strong><p>{{ 'admin.history.workbench.factEditor.uncertaintyHint' | translate }}</p></div>
+      <div class="editor__grid">
+        <label><span>FR</span><textarea rows="2" formControlName="uncertaintyFr"></textarea></label>
+        <label><span>EN</span><textarea rows="2" formControlName="uncertaintyEn"></textarea></label>
+        <label><span>DE</span><textarea rows="2" formControlName="uncertaintyDe"></textarea></label>
+        <label><span>NL</span><textarea rows="2" formControlName="uncertaintyNl"></textarea></label>
+        <label><span>IT</span><textarea rows="2" formControlName="uncertaintyIt"></textarea></label>
+        <label><span>ES</span><textarea rows="2" formControlName="uncertaintyEs"></textarea></label>
+        <label><span>PL</span><textarea rows="2" formControlName="uncertaintyPl"></textarea></label>
+        <label><span>PT</span><textarea rows="2" formControlName="uncertaintyPt"></textarea></label>
+      </div>
+      @if (uncertaintyMissing()) { <p class="editor__error" role="alert">{{ 'admin.history.workbench.factEditor.uncertaintyMissing' | translate }}</p> }
+    </section>
+  }
+
+  <label class="editor__field"><span>{{ 'admin.history.workbench.factEditor.reviewNote' | translate }}</span><textarea rows="2" formControlName="reviewNote"></textarea></label>
+  <div class="editor__actions">
+    <button type="button" class="btn-nav btn-nav--ghost" (click)="cancelled.emit()">{{ 'admin.history.workbench.actions.cancel' | translate }}</button>
+    <button type="submit" class="btn-nav" [disabled]="busy">{{ 'admin.history.workbench.actions.saveFact' | translate }}</button>
+  </div>
+</form>

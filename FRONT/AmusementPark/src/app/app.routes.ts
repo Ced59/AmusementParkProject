@@ -108,6 +108,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/history/pages/admin-history-diagnostics/admin-history-diagnostics.component').then((m) => m.AdminHistoryDiagnosticsComponent)
           },
           {
+            path: 'history/workbench/:parkId',
+            loadComponent: () => import('@features/admin/history/pages/admin-history-workbench/admin-history-workbench.component').then((m) => m.AdminHistoryWorkbenchComponent)
+          },
+          {
             path: 'history',
             loadComponent: () => import('@features/admin/history/pages/admin-history/admin-history.component').then((m) => m.AdminHistoryComponent)
           },

@@ -1,0 +1,72 @@
+<section class="workbench admin-surface">
+  <header class="workbench__header">
+    <div>
+      <span class="kicker kicker--sky">{{ 'admin.history.workbench.kicker' | translate }}</span>
+      <h1 class="admin-page-title">{{ 'admin.history.workbench.title' | translate }}</h1>
+      <p class="admin-muted">{{ 'admin.history.workbench.subtitle' | translate }}</p>
+    </div>
+    <a class="btn-nav btn-nav--ghost" [routerLink]="['../../diagnostics']" [queryParams]="{ parkId: facade.workbench()?.parkId }"><span class="pi pi-chart-bar" aria-hidden="true"></span>{{ 'admin.history.workbench.actions.diagnostics' | translate }}</a>
+  </header>
+
+  @if (facade.errorKey(); as errorKey) { <p class="admin-alert admin-alert--error" role="alert">{{ errorKey | translate }}</p> }
+  @if (facade.messageKey(); as messageKey) { <p class="admin-alert admin-alert--success" role="status">{{ messageKey | translate }}</p> }
+  @if (facade.loading()) { <article class="workbench__loading"><span class="pi pi-spin pi-spinner" aria-hidden="true"></span>{{ 'admin.history.workbench.loading' | translate }}</article> }
+
+  @if (facade.workbench(); as workbench) {
+    <section class="workbench__hero">
+      <div><span>{{ 'admin.history.workbench.parkKicker' | translate }}</span><h2>{{ workbench.parkName }}</h2><p>{{ 'admin.history.workbench.parkHint' | translate }}</p></div>
+      <div class="workbench__score"><strong>{{ workbench.diagnostics.blockingIssueCount }}</strong><span>{{ 'admin.history.workbench.blockers' | translate }}</span></div>
+    </section>
+
+    <section class="workbench__rail" [attr.aria-label]="'admin.history.workbench.workflow.title' | translate">
+      @for (stage of stages; track stage; let index = $index) { <div><span>{{ index + 1 }}</span><strong>{{ 'admin.history.workbench.workflow.' + stage | translate }}</strong></div> }
+    </section>
+
+    <nav class="workbench__create" [attr.aria-label]="'admin.history.workbench.actions.create' | translate">
+      <button type="button" (click)="openFactEditor()"><span class="pi pi-calendar-plus" aria-hidden="true"></span><strong>{{ 'admin.history.workbench.actions.newFact' | translate }}</strong><small>{{ 'admin.history.workbench.actions.newFactHint' | translate }}</small></button>
+      <button type="button" (click)="openRelationEditor()"><span class="pi pi-share-alt" aria-hidden="true"></span><strong>{{ 'admin.history.workbench.actions.newRelation' | translate }}</strong><small>{{ 'admin.history.workbench.actions.newRelationHint' | translate }}</small></button>
+      <button type="button" (click)="openSourceEditor()"><span class="pi pi-book" aria-hidden="true"></span><strong>{{ 'admin.history.workbench.actions.newSource' | translate }}</strong><small>{{ 'admin.history.workbench.actions.newSourceHint' | translate }}</small></button>
+    </nav>
+
+    @if (activeEditor() === 'fact') { <app-admin-historical-fact-editor [subjects]="factSubjects()" [sources]="workbench.sources" [fact]="editingFact()" [busy]="facade.busy()" (submitted)="saveFact($event)" (cancelled)="closeEditor()" /> }
+    @if (activeEditor() === 'relation') { <app-admin-historical-relation-editor [subjects]="workbench.subjects" [sources]="workbench.sources" [relation]="editingRelation()" [busy]="facade.busy()" (submitted)="saveRelation($event)" (cancelled)="closeEditor()" /> }
+    @if (activeEditor() === 'source') { <app-admin-historical-source-editor [source]="editingSource()" [busy]="facade.busy()" (submitted)="saveSource($event)" (cancelled)="closeEditor()" /> }
+
+    @if (facade.preview(); as preview) {
+      <aside class="workbench__preview" [class.workbench__preview--blocked]="!preview.canPublish">
+        <header><div><span class="kicker">{{ 'admin.history.workbench.preview.kicker' | translate }}</span><h3>{{ preview.resourceLabel }}</h3></div><strong>{{ preview.previewYear }}</strong></header>
+        <p>{{ (preview.canPublish ? 'admin.history.workbench.preview.ready' : 'admin.history.workbench.preview.blocked') | translate }}</p>
+        <div class="workbench__comparison"><article><span>{{ 'admin.history.workbench.preview.before' | translate }}</span><strong>{{ preview.before.knownOpenSubjectCount }}</strong><small>{{ 'admin.history.workbench.preview.openSubjects' | translate }}</small></article><span class="pi pi-arrow-right" aria-hidden="true"></span><article><span>{{ 'admin.history.workbench.preview.after' | translate }}</span><strong>{{ preview.after.knownOpenSubjectCount }}</strong><small>{{ 'admin.history.workbench.preview.openSubjects' | translate }}</small></article></div>
+        <div class="workbench__impact"><span>{{ 'admin.history.workbench.preview.changedSubjects' | translate: { count: preview.changedSubjectCount } }}</span><span>{{ 'admin.history.workbench.preview.ambiguities' | translate: { before: preview.before.ambiguityCount, after: preview.after.ambiguityCount } }}</span><span>{{ 'admin.history.workbench.preview.visits' | translate: { count: preview.visits.potentiallyInconsistentVisitCount } }}</span></div>
+      </aside>
+    }
+
+    <div class="workbench__columns">
+      <section class="workbench__section">
+        <header><div><span class="kicker">{{ 'admin.history.workbench.facts.kicker' | translate }}</span><h2>{{ 'admin.history.workbench.facts.title' | translate }}</h2></div><span>{{ workbench.facts.length }}</span></header>
+        @if (workbench.facts.length === 0) { <p class="workbench__empty">{{ 'admin.history.workbench.facts.empty' | translate }}</p> }
+        @for (fact of workbench.facts; track fact.id) {
+          <article class="resource-card">
+            <header><div><span class="resource-card__type">{{ 'admin.history.workbench.factTypes.' + fact.type | translate }}</span><h3>{{ fact.subject.label }}</h3></div><span class="resource-card__stage" [attr.data-stage]="fact.workflowState">{{ 'admin.history.workbench.workflow.' + fact.workflowState | translate }}</span></header>
+            <div class="resource-card__meta"><span class="pi pi-calendar" aria-hidden="true"></span><span>{{ periodLabel(fact) }}</span><span class="pi pi-shield" aria-hidden="true"></span><span>{{ 'admin.history.workbench.factStates.' + fact.state | translate }}</span><span class="pi pi-book" aria-hidden="true"></span><span>{{ fact.sources.length }}</span></div>
+            @if (fact.structuredValue) { <p class="resource-card__value">{{ fact.structuredValue }}</p> }
+            <div class="resource-card__actions">@if (canEdit(fact.workflowState)) { <button type="button" (click)="openFactEditor(fact)"><span class="pi pi-pencil" aria-hidden="true"></span>{{ 'admin.history.workbench.actions.edit' | translate }}</button> }<button type="button" (click)="preview('Fact', fact.id, fact.period.start?.year ?? null)"><span class="pi pi-eye" aria-hidden="true"></span>{{ 'admin.history.workbench.actions.preview' | translate }}</button>@if (canAdvance(fact.workflowState)) { <button type="button" class="resource-card__primary" [disabled]="facade.busy()" (click)="advance('Fact', fact.id, fact.revision)">{{ 'admin.history.workbench.actions.advanceTo' | translate: { stage: (nextStageKey(fact.workflowState, 'Fact') | translate) } }}</button> }@if (canRetract(fact.workflowState)) { <button type="button" class="resource-card__danger" [disabled]="facade.busy()" (click)="retract('Fact', fact.id, fact.revision)">{{ 'admin.history.workbench.actions.retract' | translate }}</button> }</div>
+          </article>
+        }
+      </section>
+
+      <section class="workbench__section">
+        <header><div><span class="kicker">{{ 'admin.history.workbench.relations.kicker' | translate }}</span><h2>{{ 'admin.history.workbench.relations.title' | translate }}</h2></div><span>{{ workbench.relations.length }}</span></header>
+        @if (workbench.relations.length === 0) { <p class="workbench__empty">{{ 'admin.history.workbench.relations.empty' | translate }}</p> }
+        @for (relation of workbench.relations; track relation.id) {
+          <article class="resource-card"><header><div><span class="resource-card__type">{{ 'admin.history.workbench.relationTypes.' + relation.type | translate }}</span><h3>{{ relation.source.label }} <span aria-hidden="true">→</span> {{ relation.target.label }}</h3></div><span class="resource-card__stage" [attr.data-stage]="relation.workflowState">{{ 'admin.history.workbench.workflow.' + relation.workflowState | translate }}</span></header><div class="resource-card__meta"><span class="pi pi-calendar" aria-hidden="true"></span><span>{{ periodLabel(relation) }}</span><span class="pi pi-book" aria-hidden="true"></span><span>{{ relation.sources.length }}</span></div><div class="resource-card__actions">@if (canEdit(relation.workflowState)) { <button type="button" (click)="openRelationEditor(relation)"><span class="pi pi-pencil" aria-hidden="true"></span>{{ 'admin.history.workbench.actions.edit' | translate }}</button> }<button type="button" (click)="preview('Relation', relation.id, relation.period.start?.year ?? null)"><span class="pi pi-eye" aria-hidden="true"></span>{{ 'admin.history.workbench.actions.preview' | translate }}</button>@if (canAdvance(relation.workflowState)) { <button type="button" class="resource-card__primary" [disabled]="facade.busy()" (click)="advance('Relation', relation.id, relation.revision)">{{ 'admin.history.workbench.actions.advanceTo' | translate: { stage: (nextStageKey(relation.workflowState, 'Relation') | translate) } }}</button> }@if (canRetract(relation.workflowState)) { <button type="button" class="resource-card__danger" [disabled]="facade.busy()" (click)="retract('Relation', relation.id, relation.revision)">{{ 'admin.history.workbench.actions.retract' | translate }}</button> }</div></article>
+        }
+      </section>
+    </div>
+
+    <section class="workbench__section workbench__sources">
+      <header><div><span class="kicker">{{ 'admin.history.workbench.sources.kicker' | translate }}</span><h2>{{ 'admin.history.workbench.sources.title' | translate }}</h2><p>{{ 'admin.history.workbench.sources.hint' | translate }}</p></div><span>{{ workbench.sources.length }}</span></header>
+      <div class="workbench__source-grid">@for (source of workbench.sources; track source.id) { <article class="source-card"><header><span class="pi pi-book" aria-hidden="true"></span><div><h3>{{ source.title }}</h3><p>{{ source.publisherOrAuthor }}</p></div><span class="resource-card__stage" [attr.data-stage]="source.workflowState">{{ 'admin.history.workbench.workflow.' + source.workflowState | translate }}</span></header><p class="source-card__link">{{ source.url || source.bibliographicReference }}</p><div class="resource-card__actions">@if (canEdit(source.workflowState)) { <button type="button" (click)="openSourceEditor(source)"><span class="pi pi-pencil" aria-hidden="true"></span>{{ 'admin.history.workbench.actions.edit' | translate }}</button> }@if (canAdvance(source.workflowState)) { <button type="button" class="resource-card__primary" [disabled]="facade.busy()" (click)="advance('Source', source.id, source.revision)">{{ 'admin.history.workbench.actions.advanceTo' | translate: { stage: (nextStageKey(source.workflowState, 'Source') | translate) } }}</button> }@if (canRetract(source.workflowState)) { <button type="button" class="resource-card__danger" [disabled]="facade.busy()" (click)="retract('Source', source.id, source.revision)">{{ 'admin.history.workbench.actions.retract' | translate }}</button> }</div></article> }</div>
+    </section>
+  }
+</section>

@@ -2692,7 +2692,8 @@
         "errors": {
           "searchFailed": "Não foi possível pesquisar os parques.",
           "loadFailed": "Não foi possível carregar o diagnóstico histórico deste parque."
-        }
+        },
+        "openWorkbench": "Abrir o espaço editorial"
       },
       "errors": {
         "loadFailed": "Não foi possível carregar os eventos históricos.",
@@ -2700,6 +2701,224 @@
         "invalidJson": "Um campo JSON é inválido.",
         "saveFailed": "Não foi possível guardar este evento.",
         "deleteFailed": "Não foi possível eliminar este evento."
+      },
+      "workbench": {
+        "kicker": "Espaço canónico",
+        "title": "Constrói uma história verificável",
+        "subtitle": "Regista factos, associa provas, antevê o impacto e publica cada revisão sem apagar o passado.",
+        "loading": "A abrir o espaço histórico…",
+        "parkKicker": "Parque selecionado",
+        "parkHint": "Todos os recursos abaixo pertencem ao registo histórico canónico.",
+        "blockers": "bloqueio(s)",
+        "actions": {
+          "diagnostics": "Ver diagnóstico",
+          "create": "Criar um recurso",
+          "newFact": "Adicionar um facto",
+          "newFactHint": "Um acontecimento datado e verificável",
+          "newRelation": "Ligar dois elementos",
+          "newRelationHint": "Uma linhagem, deslocação ou sucessão",
+          "newSource": "Adicionar uma prova",
+          "newSourceHint": "Uma fonte duradoura e qualificada",
+          "edit": "Editar",
+          "preview": "Pré-visualizar",
+          "advanceTo": "Avançar para: {{stage}}",
+          "retract": "Retirar",
+          "cancel": "Cancelar",
+          "saveSource": "Guardar a prova",
+          "saveFact": "Guardar o facto",
+          "saveRelation": "Guardar a relação"
+        },
+        "workflow": {
+          "title": "Fluxo editorial",
+          "Draft": "Rascunho",
+          "SourcesAttached": "Provas associadas",
+          "EditorialReview": "Revisão editorial",
+          "StructuredValidation": "Validação estruturada",
+          "Published": "Publicado",
+          "Corrected": "Corrigido",
+          "Retracted": "Retirado"
+        },
+        "facts": {
+          "kicker": "Afirmações",
+          "title": "Factos históricos",
+          "empty": "Ainda não foi documentado qualquer facto para este parque."
+        },
+        "relations": {
+          "kicker": "Continuidades",
+          "title": "Relações históricas",
+          "empty": "Ainda não foi documentada qualquer relação."
+        },
+        "sources": {
+          "kicker": "Provas",
+          "title": "Biblioteca de fontes",
+          "hint": "Fontes publicadas e acessíveis podem sustentar várias afirmações exatas."
+        },
+        "preview": {
+          "kicker": "Impacto antes da publicação",
+          "ready": "As provas e a estrutura permitem a publicação.",
+          "blocked": "A pré-visualização encontrou elementos bloqueadores.",
+          "before": "Antes",
+          "after": "Depois",
+          "openSubjects": "elementos abertos",
+          "changedSubjects": "{{count}} elemento(s) alterado(s)",
+          "ambiguities": "Ambiguidades: {{before}} → {{after}}",
+          "visits": "{{count}} visita(s) potencialmente afetada(s)"
+        },
+        "sourceEditor": {
+          "kicker": "Nova prova",
+          "createTitle": "Documentar uma fonte",
+          "editTitle": "Corrigir a fonte",
+          "type": "Natureza",
+          "title": "Título",
+          "publisher": "Editor ou autor",
+          "language": "Idioma",
+          "url": "Endereço estável",
+          "reference": "Referência bibliográfica",
+          "publishedOn": "Data de publicação",
+          "accessedOn": "Data de consulta",
+          "archiveUrl": "Cópia arquivada",
+          "accessibility": "Acessibilidade",
+          "note": "Nota privada de revisão",
+          "scopeHint": "Seleciona apenas os campos estruturados que esta prova sustenta realmente; cada citação fica depois ligada a uma afirmação exata.",
+          "scopeMissing": "Seleciona pelo menos um campo sustentado por esta prova."
+        },
+        "factEditor": {
+          "kicker": "Afirmação datada",
+          "createTitle": "Novo facto histórico",
+          "editTitle": "Corrigir o facto",
+          "hint": "Descreve o facto, a data e as provas sem inventar uma precisão inexistente.",
+          "subject": "Elemento",
+          "type": "Tipo de facto",
+          "state": "Nível de certeza",
+          "importance": "Importância",
+          "precision": "Precisão da data",
+          "startDate": "Período",
+          "year": "Ano",
+          "month": "Mês",
+          "day": "Dia",
+          "interval": "Este facto abrange um período",
+          "endYear": "Ano final",
+          "approximate": "Data aproximada",
+          "confidence": "Confiança nos limites",
+          "value": "Novo valor estruturado",
+          "valuePlaceholder": "Nome, operador, zona, tema…",
+          "otherType": "Designação do tipo personalizado",
+          "evidence": "Provas associadas",
+          "evidenceHint": "Seleciona os documentos que sustentam exatamente este facto.",
+          "noSources": "Adiciona primeiro uma prova à biblioteca.",
+          "contradicts": "Esta fonte contradiz",
+          "uncertainty": "Explicação pública da incerteza",
+          "uncertaintyHint": "Antes da publicação é necessário um texto editorial natural nos oito idiomas.",
+          "uncertaintyMissing": "Preenche as oito versões da explicação.",
+          "reviewNote": "Nota privada para a revisão"
+        },
+        "relationEditor": {
+          "kicker": "Ligação documentada",
+          "createTitle": "Nova relação histórica",
+          "editTitle": "Corrigir a relação",
+          "hint": "Liga identidades sem as fundir e preserva o período da ligação.",
+          "source": "Elemento de origem",
+          "target": "Elemento de destino",
+          "type": "Natureza da ligação",
+          "direction": "Direção",
+          "year": "Ano",
+          "state": "Nível de certeza",
+          "note": "Nota editorial privada"
+        },
+        "factStates": {
+          "Unverified": "Por verificar",
+          "Verified": "Verificado",
+          "Probable": "Provável",
+          "Disputed": "Contestado",
+          "Retracted": "Retirado"
+        },
+        "importance": {
+          "Standard": "Padrão",
+          "Major": "Importante"
+        },
+        "confidence": {
+          "Confirmed": "Confirmada",
+          "Estimated": "Estimada",
+          "Disputed": "Contestada"
+        },
+        "directions": {
+          "Directed": "Direcionada",
+          "Symmetric": "Simétrica"
+        },
+        "accessibility": {
+          "Accessible": "Acessível",
+          "Archived": "Arquivada",
+          "Unavailable": "Indisponível"
+        },
+        "sourceTypes": {
+          "OfficialWebsite": "Site oficial",
+          "OfficialPublication": "Publicação oficial",
+          "Press": "Imprensa",
+          "Book": "Livro",
+          "Academic": "Investigação académica",
+          "Archive": "Arquivo",
+          "Database": "Base de dados",
+          "Other": "Outra"
+        },
+        "sourceScopes": {
+          "SubjectIdentity": "Identidade do elemento",
+          "FactType": "Tipo de facto",
+          "Period": "Data ou período",
+          "StructuredValue": "Valor estruturado",
+          "HistoricalLabel": "Nome histórico",
+          "Narrative": "Narrativa",
+          "SequenceWithinDate": "Ordem na mesma data",
+          "RelationSourceIdentity": "Origem da relação",
+          "RelationTargetIdentity": "Destino da relação",
+          "RelationType": "Tipo de relação"
+        },
+        "factTypes": {
+          "Opening": "Abertura",
+          "Closure": "Encerramento",
+          "Reopening": "Reabertura",
+          "Renaming": "Mudança de nome",
+          "OperatorChange": "Mudança de operador",
+          "OwnerChange": "Mudança de proprietário",
+          "Extension": "Ampliação",
+          "Reduction": "Redução",
+          "ZoneCreation": "Criação de zona",
+          "ZoneRenaming": "Mudança de nome da zona",
+          "ZoneRemoval": "Remoção da zona",
+          "MajorEvent": "Acontecimento importante",
+          "PositioningChange": "Mudança de posicionamento",
+          "Announcement": "Anúncio",
+          "Construction": "Construção",
+          "TemporaryClosure": "Encerramento temporário",
+          "DefinitiveClosure": "Encerramento definitivo",
+          "Dismantling": "Desmontagem",
+          "Relocation": "Deslocação",
+          "Retheming": "Mudança de temática",
+          "ManufacturerChange": "Mudança de fabricante",
+          "TechnicalModification": "Modificação técnica",
+          "Replacement": "Substituição",
+          "ZoneMove": "Mudança de zona",
+          "LogoChange": "Mudança de logótipo",
+          "Other": "Outro"
+        },
+        "relationTypes": {
+          "RenamedTo": "Renomeado como",
+          "ReplacedBy": "Substituído por",
+          "MovedTo": "Deslocado para",
+          "RethemedAs": "Reconvertido tematicamente em",
+          "SuccessorOf": "Sucessor de",
+          "SamePhysicalAssetAs": "A mesma instalação física que",
+          "SharesLocationWith": "Partilha a localização com",
+          "OperatedByDuring": "Operado durante o período por",
+          "LocatedInZoneDuring": "Situado durante o período na zona"
+        },
+        "messages": {
+          "saved": "A nova revisão foi guardada."
+        },
+        "errors": {
+          "loadFailed": "Não foi possível carregar o espaço histórico.",
+          "saveFailed": "Não foi possível guardar a revisão.",
+          "previewFailed": "Não foi possível pré-visualizar o impacto."
+        }
       }
     },
     "images": {

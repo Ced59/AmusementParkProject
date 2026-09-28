@@ -679,9 +679,9 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | [`HIST-11A`](../../architecture/product-growth-hist-11a-passport-context-2026-09-27.md) | Catalogue historique du Passeport | États canoniques, identité d’époque et revalidation non destructive — implémenté le 27 septembre 2026 |
 | [`HIST-11B`](../../architecture/product-growth-hist-11b-historical-existence-reports-2026-09-27.md) | Signalement « cet élément existait » | Mémoire proposée sans devenir une preuve avant revue — implémenté le 27 septembre 2026 |
 | [`HIST-11C`](../../architecture/product-growth-hist-11c-passport-historical-statistics-2026-09-27.md) | Statistiques historiques personnelles | Époques, transformations et attractions disparues, privées par défaut — implémenté le 27 septembre 2026 |
-| `HIST-12` | Admin diagnostics/revue | Exploitation fiable — en cours |
+| `HIST-12` | Admin diagnostics/revue | Exploitation fiable — implémenté le 28 septembre 2026 |
 | [`HIST-12A`](../../architecture/product-growth-hist-12a-history-admin-diagnostics-2026-09-28.md) | Diagnostic qualité par parc | Incohérences, preuves, couverture et impact Passeport anonymisé — implémenté le 28 septembre 2026 |
-| `HIST-12B` | Atelier éditorial canonique | Édition, revue, aperçu public et impact avant publication |
+| [`HIST-12B`](../../architecture/product-growth-hist-12b-history-editorial-workbench-2026-09-28.md) | Atelier éditorial canonique | Édition, revue, aperçu public et impact avant publication — implémenté le 28 septembre 2026 |
 | `HIST-13` | SEO/partage | Pages clés seulement |
 | `HIST-14` | Extension parcs | Gate par parc |
 
@@ -1055,8 +1055,36 @@ second système historique.
 L’écran Angular utilise les ports et la façade existants, se replie en une
 colonne sur mobile et protège les textes longs contre tout débordement du
 viewport. Les libellés sont disponibles dans les huit langues. `HIST-12B`
-complètera ce rapport par l’atelier d’édition et de revue canonique, l’aperçu
-public et la simulation d’impact avant publication.
+s’appuie sur ce rapport dans le même parcours d’administration.
+
+### Implémentation `HIST-12B` — 28 septembre 2026
+
+L’administration dispose désormais d’un atelier relié au diagnostic d’un
+parc. Elle peut créer ou corriger une source, un fait daté ou une relation,
+choisir précisément les champs que chaque preuve documentaire justifie et
+faire avancer chaque ressource dans les étapes visibles de la revue. Les
+informations probables ou contestées exigent une explication publique dans les
+huit langues avant de pouvoir être publiées.
+
+Chaque sauvegarde ajoute une révision immuable et son événement d’audit. Une
+révision attendue empêche d’écraser le travail d’une autre session. Les faits,
+relations et sources publiés sont corrigés par une nouvelle révision publique
+et peuvent être retirés explicitement ; aucune ressource canonique n’est
+modifiée ou supprimée silencieusement.
+
+Avant la dernière transition, l’atelier construit une proposition de
+publication en mémoire, contrôle les preuves et leurs portées exactes, puis
+compare le snapshot annuel courant au snapshot proposé. L’administrateur voit
+les sujets modifiés, les ambiguïtés, la couverture et le nombre agrégé de
+visites potentiellement concernées. Cette prévisualisation ne publie rien et
+n’expose aucune donnée privée du Passeport.
+
+L’écran est chargé paresseusement dans le bundle d’administration, utilise une
+façade et un port de données, et ne possède aucune règle historique. Ses cartes,
+éditeurs et actions se replient en une colonne sur mobile, bornent toutes les
+largeurs et autorisent la césure des contenus longs. Les contrats de responsive,
+les routes HTTP, les transitions et le rechargement après mutation sont
+protégés par des tests.
 
 ## 22. Gate finale `HIST-G`
 

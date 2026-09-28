@@ -133,44 +133,31 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
+    public async Task<IReadOnlyCollection<HistoricalSourceReference>> GetRecentLatestRevisionsAsync(
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        int boundedLimit = Math.Clamp(limit, 1, 200);
+        PipelineDefinition<HistoricalSourceDocument, HistoricalSourceDocument> pipeline =
+            PipelineDefinition<HistoricalSourceDocument, HistoricalSourceDocument>.Create(
+                BuildRecentLatestRevisionsPipeline(boundedLimit));
+        List<HistoricalSourceDocument> documents = await this.collection
+            .Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<IReadOnlyCollection<HistoricalSourceReference>> GetRevisionsAsync(
         IReadOnlyCollection<HistoricalSourceRevisionReference> sourceReferences,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(sourceReferences);
-        HistoricalSourceRevisionReference[] normalizedReferences = sourceReferences
-            .DistinctBy(static sourceReference => (sourceReference.SourceId, sourceReference.Revision))
-            .OrderBy(static sourceReference => sourceReference.SourceId)
-            .ThenBy(static sourceReference => sourceReference.Revision)
+        HistoricalSourceRevisionKey[] revisionKeys = sourceReferences
+            .Select(static reference => new HistoricalSourceRevisionKey(
+                reference.SourceId,
+                reference.Revision))
             .ToArray();
-        if (normalizedReferences.Length == 0)
-        {
-            return Array.Empty<HistoricalSourceReference>();
-        }
-
-        FilterDefinitionBuilder<HistoricalSourceDocument> builder =
-            Builders<HistoricalSourceDocument>.Filter;
-        List<HistoricalSourceDocument> documents = new List<HistoricalSourceDocument>(
-            normalizedReferences.Length);
-        foreach (HistoricalSourceRevisionReference[] batch in normalizedReferences.Chunk(MaximumBatchSize))
-        {
-            FilterDefinition<HistoricalSourceDocument>[] revisionFilters = batch
-                .Select(sourceReference =>
-                    builder.Eq(
-                        document => document.SourceId,
-                        sourceReference.SourceId.ToString("N", CultureInfo.InvariantCulture))
-                    & builder.Eq(document => document.Revision, sourceReference.Revision))
-                .ToArray();
-            List<HistoricalSourceDocument> batchDocuments = await this.collection
-                .Find(builder.Or(revisionFilters))
-                .SortBy(document => document.SourceId)
-                .ThenBy(document => document.Revision)
-                .Limit(batch.Length)
-                .ToListAsync(cancellationToken);
-            documents.AddRange(batchDocuments);
-        }
-
-        return documents.Select(static document => document.ToDomain()).ToArray();
+        return await this.GetRevisionsAsync(revisionKeys, cancellationToken);
     }
 
     public async Task<IReadOnlyCollection<HistoricalSourceReference>> GetRevisionsAsync(
@@ -178,8 +165,20 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(sourceReferences);
-        (Guid SourceId, int Revision)[] normalizedReferences = sourceReferences
-            .Select(static reference => (reference.SourceId, reference.Revision))
+        HistoricalSourceRevisionKey[] revisionKeys = sourceReferences
+            .Select(static reference => new HistoricalSourceRevisionKey(
+                reference.SourceId,
+                reference.Revision))
+            .ToArray();
+        return await this.GetRevisionsAsync(revisionKeys, cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<HistoricalSourceReference>> GetRevisionsAsync(
+        IReadOnlyCollection<HistoricalSourceRevisionKey> sourceReferences,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(sourceReferences);
+        HistoricalSourceRevisionKey[] normalizedReferences = sourceReferences
             .Distinct()
             .OrderBy(static reference => reference.SourceId)
             .ThenBy(static reference => reference.Revision)
@@ -191,7 +190,7 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
 
         FilterDefinitionBuilder<HistoricalSourceDocument> builder = Builders<HistoricalSourceDocument>.Filter;
         List<HistoricalSourceDocument> documents = new(normalizedReferences.Length);
-        foreach ((Guid SourceId, int Revision)[] batch in normalizedReferences.Chunk(MaximumBatchSize))
+        foreach (HistoricalSourceRevisionKey[] batch in normalizedReferences.Chunk(MaximumBatchSize))
         {
             FilterDefinition<HistoricalSourceDocument>[] filters = batch.Select(reference =>
                 builder.Eq(
@@ -256,6 +255,33 @@ public sealed class HistoricalSourceRepository : IHistoricalSourceRepository
                 "$replaceRoot",
                 new BsonDocument("newRoot", "$document")),
             new BsonDocument("$sort", new BsonDocument("sourceId", 1)),
+        };
+    }
+
+    internal static IReadOnlyCollection<BsonDocument> BuildRecentLatestRevisionsPipeline(int limit)
+    {
+        if (limit < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(limit));
+        }
+
+        return new BsonDocument[]
+        {
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["sourceId"] = 1,
+                ["revision"] = -1,
+            }),
+            new BsonDocument("$group", new BsonDocument
+            {
+                ["_id"] = "$sourceId",
+                ["document"] = new BsonDocument("$first", "$$ROOT"),
+            }),
+            new BsonDocument(
+                "$replaceRoot",
+                new BsonDocument("newRoot", "$document")),
+            new BsonDocument("$sort", new BsonDocument("createdAt", -1)),
+            new BsonDocument("$limit", limit),
         };
     }
 }

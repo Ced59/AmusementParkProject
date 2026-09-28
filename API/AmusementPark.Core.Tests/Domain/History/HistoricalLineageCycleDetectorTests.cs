@@ -42,4 +42,17 @@ public sealed class HistoricalLineageCycleDetectorTests
 
         Assert.False(HistoricalLineageCycleDetector.HasDirectedCycle(new[] { relation }));
     }
+
+    [Fact]
+    public void HasIncompatibleLineageCycle_WhenRelationIsNotLineage_ShouldReturnFalse()
+    {
+        HistoricalRelation relation = HistoricalRelationTests.CreatePublishedRelation(
+            type: HistoricalRelationType.SamePhysicalAssetAs,
+            direction: HistoricalRelationDirection.Symmetric);
+
+        Assert.False(HistoricalLineageCycleDetector.HasIncompatibleLineageCycle(new[]
+        {
+            relation,
+        }));
+    }
 }

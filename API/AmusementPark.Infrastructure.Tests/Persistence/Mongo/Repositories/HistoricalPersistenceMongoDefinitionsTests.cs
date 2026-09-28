@@ -154,7 +154,8 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
             HistoricalSubjectType.Park,
             "park-1",
             "Parc témoin",
-            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
 
         BsonDocument[] pipeline = HistoricalFactRepository
             .BuildLatestDecisionEligibleForParkPipeline(
@@ -204,6 +205,8 @@ public sealed class HistoricalPersistenceMongoDefinitionsTests
             alternatives,
             alternative => alternative.AsBsonDocument.GetValue("subject.id", BsonNull.Value)
                 == "park-1"
+                && alternative.AsBsonDocument.GetValue("subject.contextParkId", BsonNull.Value)
+                    == "park-1"
                 && alternative.AsBsonDocument.GetValue(
                     "subject.publicationPolicy",
                     BsonNull.Value)

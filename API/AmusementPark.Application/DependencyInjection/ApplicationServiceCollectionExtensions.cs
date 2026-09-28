@@ -73,6 +73,9 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IFactualChangeMaterializationScheduler, FactualChangeMaterializationScheduler>();
         services.AddScoped<FactualChangeEventAdministrationService>();
         services.AddScoped<HistoricalNarrativeCanonicalFactRetractionService>();
+        services.AddScoped<HistoricalParkEditorialScopeLoader>();
+        services.AddScoped<HistoricalParkEditorialSubjectResolver>();
+        services.AddScoped<HistoricalLineagePublicationValidator>();
         services.AddSingleton<IParkHistoricalSnapshotBuilder, ParkHistoricalSnapshotBuilder>();
         services.AddSingleton<IParkHistoricalComparisonBuilder, ParkHistoricalComparisonBuilder>();
         services.AddSingleton<HistoricalParkDiagnosticsEvaluator>();

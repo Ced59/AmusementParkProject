@@ -74,6 +74,11 @@
         </span>
       </header>
 
+      <a class="btn-nav" [routerLink]="['../workbench', diagnostics.parkId]">
+        <span class="pi pi-pencil" aria-hidden="true"></span>
+        {{ 'admin.history.diagnostics.openWorkbench' | translate }}
+      </a>
+
       <div class="history-diagnostics__kpis">
         <article class="admin-card history-diagnostics__kpi history-diagnostics__kpi--critical">
           <span>{{ 'admin.history.diagnostics.kpis.blockers' | translate }}</span>
