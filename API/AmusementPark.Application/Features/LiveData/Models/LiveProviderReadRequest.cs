@@ -11,6 +11,12 @@ public sealed class LiveProviderReadRequest
         string normalizedExternalEntityId = IdentifierRules.NormalizeRequired(
             externalEntityId,
             nameof(externalEntityId));
+        if (normalizedExternalEntityId is "." or "..")
+        {
+            throw new ArgumentException(
+                "A provider entity identifier cannot be a relative path segment.",
+                nameof(externalEntityId));
+        }
 
         string? normalizedEntityTag = string.IsNullOrWhiteSpace(entityTag)
             ? null

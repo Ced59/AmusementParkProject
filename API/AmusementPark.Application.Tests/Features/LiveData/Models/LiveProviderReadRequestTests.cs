@@ -26,4 +26,12 @@ public sealed class LiveProviderReadRequestTests
 
         Assert.Equal(IdentifierErrorCodes.TooLong, exception.ErrorCode);
     }
+
+    [Theory]
+    [InlineData(".")]
+    [InlineData("..")]
+    public void Constructor_WhenIdentifierIsRelativePathSegment_ShouldRejectValue(string identifier)
+    {
+        Assert.Throws<ArgumentException>(() => new LiveProviderReadRequest(identifier));
+    }
 }
