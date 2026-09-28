@@ -2,6 +2,31 @@ namespace AmusementPark.Core.Domain.History;
 
 public static class HistoricalLineageCycleDetector
 {
+    private static readonly IReadOnlySet<HistoricalRelationType> LineageRelationTypes =
+        new HashSet<HistoricalRelationType>
+        {
+            HistoricalRelationType.RenamedTo,
+            HistoricalRelationType.ReplacedBy,
+            HistoricalRelationType.MovedTo,
+            HistoricalRelationType.RethemedAs,
+            HistoricalRelationType.SuccessorOf,
+        };
+
+    public static bool IsLineageType(HistoricalRelationType relationType)
+    {
+        return LineageRelationTypes.Contains(relationType);
+    }
+
+    public static bool HasIncompatibleLineageCycle(
+        IReadOnlyCollection<HistoricalRelation> relations)
+    {
+        ArgumentNullException.ThrowIfNull(relations);
+        HistoricalRelation[] lineageRelations = relations
+            .Where(static relation => IsLineageType(relation.Type))
+            .ToArray();
+        return HasDirectedCycle(lineageRelations);
+    }
+
     public static bool HasDirectedCycle(IReadOnlyCollection<HistoricalRelation> relations)
     {
         ArgumentNullException.ThrowIfNull(relations);

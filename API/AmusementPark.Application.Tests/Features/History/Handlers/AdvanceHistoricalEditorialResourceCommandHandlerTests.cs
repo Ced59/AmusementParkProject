@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Results;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Core.Domain.History;
 using Moq;
 using Xunit;
@@ -46,6 +47,7 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             facts.Object,
             relations.Object,
             sources.Object,
+            new HistoricalLineagePublicationValidator(relations.Object),
             new FixedHistoryEditorialTimeProvider(Now));
 
         ApplicationResult<HistoricalEditorialMutationResult> result = await handler.HandleAsync(
@@ -82,6 +84,7 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             facts.Object,
             relations.Object,
             sources.Object,
+            new HistoricalLineagePublicationValidator(relations.Object),
             new FixedHistoryEditorialTimeProvider(Now));
 
         ApplicationResult<HistoricalEditorialMutationResult> result = await handler.HandleAsync(
@@ -97,6 +100,59 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
         facts.VerifyNoOtherCalls();
         relations.VerifyNoOtherCalls();
         sources.VerifyAll();
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenRelationPublicationWouldCloseLineageCycle_ShouldRejectPublication()
+    {
+        HistoricalRelation candidate = CreateRelation(
+            "item-1",
+            "item-2",
+            HistoricalEditorialWorkflowState.StructuredValidation,
+            HistoricalPublicationState.Draft,
+            4,
+            3);
+        HistoricalRelation existing = CreateRelation(
+            "item-2",
+            "item-1",
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            4,
+            3);
+        Mock<IHistoricalFactRepository> facts = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalRelationRepository> relations =
+            new Mock<IHistoricalRelationRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sources =
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        relations.Setup(repository => repository.GetLatestRevisionAsync(
+                candidate.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(candidate);
+        relations.Setup(repository => repository.GetLatestRevisionsForParkAsync(
+                "park-1",
+                It.Is<IReadOnlyCollection<HistoricalSubjectKey>>(subjects => subjects.Count == 2),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { candidate, existing });
+        AdvanceHistoricalEditorialResourceCommandHandler handler = new AdvanceHistoricalEditorialResourceCommandHandler(
+            facts.Object,
+            relations.Object,
+            sources.Object,
+            new HistoricalLineagePublicationValidator(relations.Object),
+            new FixedHistoryEditorialTimeProvider(Now));
+
+        ApplicationResult<HistoricalEditorialMutationResult> result = await handler.HandleAsync(
+            new AdvanceHistoricalEditorialResourceCommand(
+                HistoricalReviewResourceType.Relation,
+                candidate.Id,
+                candidate.Revision,
+                "admin-1",
+                "Validation structurée"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "history.editorial.lineage-cycle");
+        facts.VerifyNoOtherCalls();
+        relations.VerifyAll();
+        sources.VerifyNoOtherCalls();
     }
 
     private static HistoricalSourceReference CreateDraftSource()
@@ -118,6 +174,64 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             HistoricalSourceAccessibility.Accessible,
             HistoricalEditorialWorkflowState.Draft,
             HistoricalPublicationState.Draft,
+            RecordedAtUtc);
+    }
+
+    private static HistoricalRelation CreateRelation(
+        string sourceId,
+        string targetId,
+        HistoricalEditorialWorkflowState workflowState,
+        HistoricalPublicationState publicationState,
+        int revision,
+        int? supersedesRevision)
+    {
+        HistoricalSubject source = new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            sourceId,
+            sourceId,
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalSubject target = new HistoricalSubject(
+            HistoricalSubjectType.ParkItem,
+            targetId,
+            targetId,
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
+        HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(2001));
+        HistoricalRelationSourceRevisionReference evidence = new HistoricalRelationSourceRevisionReference(
+            Guid.NewGuid(),
+            1,
+            new HistoricalSubjectKey(source.Type, source.Id, source.ContextParkId),
+            new HistoricalSubjectKey(target.Type, target.Id, target.ContextParkId),
+            HistoricalRelationType.ReplacedBy,
+            period,
+            HistoricalEvidencePosition.Supports,
+            new[]
+            {
+                HistoricalSourceScope.RelationSourceIdentity,
+                HistoricalSourceScope.RelationTargetIdentity,
+                HistoricalSourceScope.RelationType,
+                HistoricalSourceScope.Period,
+            });
+        bool isPublished = publicationState == HistoricalPublicationState.Published;
+        return new HistoricalRelation(
+            Guid.NewGuid(),
+            source,
+            target,
+            HistoricalRelationType.ReplacedBy,
+            HistoricalRelationDirection.Directed,
+            period,
+            HistoricalFactState.Verified,
+            workflowState,
+            publicationState,
+            Array.Empty<HistoricalLocalizedText>(),
+            new[] { evidence },
+            null,
+            RecordedAtUtc.AddMinutes(-1),
+            isPublished ? RecordedAtUtc : null,
+            isPublished ? "historical-editor-v1" : null,
+            revision,
+            supersedesRevision,
             RecordedAtUtc);
     }
 }

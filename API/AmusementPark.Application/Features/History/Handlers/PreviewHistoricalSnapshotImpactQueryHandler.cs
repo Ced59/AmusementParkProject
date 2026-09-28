@@ -23,6 +23,7 @@ public sealed class PreviewHistoricalSnapshotImpactQueryHandler :
     private readonly IHistoricalSourceRepository sourceRepository;
     private readonly IHistoricalVisitDiagnosticsReader visitDiagnosticsReader;
     private readonly IParkHistoricalSnapshotBuilder snapshotBuilder;
+    private readonly HistoricalLineagePublicationValidator lineagePublicationValidator;
     private readonly TimeProvider timeProvider;
 
     public PreviewHistoricalSnapshotImpactQueryHandler(
@@ -32,6 +33,7 @@ public sealed class PreviewHistoricalSnapshotImpactQueryHandler :
         IHistoricalSourceRepository sourceRepository,
         IHistoricalVisitDiagnosticsReader visitDiagnosticsReader,
         IParkHistoricalSnapshotBuilder snapshotBuilder,
+        HistoricalLineagePublicationValidator lineagePublicationValidator,
         TimeProvider? timeProvider = null)
     {
         this.scopeLoader = scopeLoader;
@@ -40,6 +42,7 @@ public sealed class PreviewHistoricalSnapshotImpactQueryHandler :
         this.sourceRepository = sourceRepository;
         this.visitDiagnosticsReader = visitDiagnosticsReader;
         this.snapshotBuilder = snapshotBuilder;
+        this.lineagePublicationValidator = lineagePublicationValidator;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -180,6 +183,12 @@ public sealed class PreviewHistoricalSnapshotImpactQueryHandler :
         {
             HistoricalRelation publishedCandidate = ToPublished(candidate);
             HistoricalRelationEvidenceValidator.Validate(publishedCandidate, sources);
+            if (await this.lineagePublicationValidator.WouldCreateCycleAsync(
+                    publishedCandidate,
+                    cancellationToken))
+            {
+                blockers.Add("history.editorial.lineage-cycle");
+            }
         }
         catch (ArgumentException exception)
         {

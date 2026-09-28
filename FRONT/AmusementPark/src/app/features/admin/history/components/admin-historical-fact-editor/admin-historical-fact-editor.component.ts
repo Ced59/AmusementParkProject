@@ -264,19 +264,23 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
       value.approximate,
       originalStartQualifier
     );
-    const end: HistoricalDateRequest | null = value.hasEnd
-      ? this.buildDate(
-          value.endYear,
-          value.endMonth,
-          value.endDay,
-          value.precision,
-          this.resolveEndApproximation(value),
-          this.resolvePreservedQualifier(
-            this.fact?.period.end?.qualifier ?? null,
-            this.resolveEndApproximation(value)
+    const originalEnd: HistoricalDateRequest | null = this.fact?.period.end ?? null;
+    const preserveOriginalEnd: boolean = !!originalEnd
+      && value.hasEnd
+      && !this.hasEndEditorChanged(value, this.fact?.period ?? null);
+    const endApproximation: boolean = this.resolveEndApproximation(value);
+    const end: HistoricalDateRequest | null = preserveOriginalEnd && originalEnd
+      ? { ...originalEnd }
+      : value.hasEnd
+        ? this.buildDate(
+            value.endYear,
+            value.endMonth,
+            value.endDay,
+            originalEnd?.precision ?? value.precision,
+            endApproximation,
+            this.resolvePreservedQualifier(originalEnd?.qualifier ?? null, endApproximation)
           )
-        )
-      : this.fact?.period.end === null ? null : start;
+        : originalEnd === null ? null : start;
     if (!start || value.hasEnd && !end) {
       return null;
     }
@@ -357,6 +361,25 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
       && left.precision === right.precision
       && left.isApproximate === right.isApproximate
       && left.qualifier === right.qualifier;
+  }
+
+  private hasEndEditorChanged(
+    value: ReturnType<HistoricalFactFormGroup['getRawValue']>,
+    period: AdminHistoricalPeriod | null
+  ): boolean {
+    const controls = this.form.controls;
+    if (controls.hasEnd.dirty || controls.endYear.dirty || controls.endMonth.dirty || controls.endDay.dirty) {
+      return true;
+    }
+
+    const originalHasDistinctEnd: boolean = !!period?.end
+      && (!period.start || !this.sameDate(period.start, period.end));
+    return value.hasEnd !== originalHasDistinctEnd
+      || value.hasEnd && (
+        value.endYear !== period?.end?.year
+        || value.endMonth !== period?.end?.month
+        || value.endDay !== period?.end?.day
+      );
   }
 
   private toPeriodRequest(period: AdminHistoricalPeriod): HistoricalPeriodRequest {

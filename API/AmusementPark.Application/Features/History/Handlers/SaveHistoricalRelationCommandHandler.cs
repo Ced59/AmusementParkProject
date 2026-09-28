@@ -19,17 +19,20 @@ public sealed class SaveHistoricalRelationCommandHandler :
     private const string MethodologyVersion = "historical-editor-v1";
 
     private readonly HistoricalParkEditorialScopeLoader scopeLoader;
+    private readonly HistoricalParkEditorialSubjectResolver subjectResolver;
     private readonly IHistoricalRelationRepository relationRepository;
     private readonly IHistoricalSourceRepository sourceRepository;
     private readonly TimeProvider timeProvider;
 
     public SaveHistoricalRelationCommandHandler(
         HistoricalParkEditorialScopeLoader scopeLoader,
+        HistoricalParkEditorialSubjectResolver subjectResolver,
         IHistoricalRelationRepository relationRepository,
         IHistoricalSourceRepository sourceRepository,
         TimeProvider? timeProvider = null)
     {
         this.scopeLoader = scopeLoader;
+        this.subjectResolver = subjectResolver;
         this.relationRepository = relationRepository;
         this.sourceRepository = sourceRepository;
         this.timeProvider = timeProvider ?? TimeProvider.System;
@@ -78,14 +81,17 @@ public sealed class SaveHistoricalRelationCommandHandler :
         try
         {
             HistoricalRelationDraftInput draft = command.Draft;
+            IReadOnlyCollection<HistoricalSubject> editableSubjects = previous is null
+                ? await this.subjectResolver.LoadAsync(scope, cancellationToken)
+                : scope.CurrentSubjects;
             HistoricalSubject sourceSubject = previous?.Source
                 ?? HistoricalEditorialInputMapper.ResolveSubject(
-                    scope.CurrentSubjects,
+                    editableSubjects,
                     draft.SourceSubjectType,
                     draft.SourceSubjectId);
             HistoricalSubject targetSubject = previous?.Target
                 ?? HistoricalEditorialInputMapper.ResolveSubject(
-                    scope.CurrentSubjects,
+                    editableSubjects,
                     draft.TargetSubjectType,
                     draft.TargetSubjectId);
             EnsureSubjectUnchanged(
@@ -180,11 +186,13 @@ public sealed class SaveHistoricalRelationCommandHandler :
         IReadOnlyCollection<HistoricalEvidenceSourceInput> references,
         CancellationToken cancellationToken)
     {
-        Guid[] sourceIds = references
-            .Select(static reference => reference.SourceId)
+        HistoricalSourceRevisionKey[] sourceRevisions = references
+            .Select(static reference => new HistoricalSourceRevisionKey(
+                reference.SourceId,
+                reference.Revision))
             .Distinct()
             .ToArray();
-        return await this.sourceRepository.GetLatestRevisionsAsync(sourceIds, cancellationToken);
+        return await this.sourceRepository.GetRevisionsAsync(sourceRevisions, cancellationToken);
     }
 
     private DateTime ResolveRecordedAt(DateTime? previousRecordedAtUtc)

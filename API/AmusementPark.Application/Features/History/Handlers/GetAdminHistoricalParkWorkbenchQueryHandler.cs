@@ -103,17 +103,10 @@ public sealed class GetAdminHistoricalParkWorkbenchQueryHandler :
             .DistinctBy(static source => source.Id)
             .OrderByDescending(static source => source.RecordedAtUtc)
             .ToArray();
-        HistoricalSubject[] subjects = scope.CurrentSubjects
-            .Concat(facts.Select(static fact => fact.Subject))
-            .Concat(relations.SelectMany(static relation => new[]
-            {
-                relation.Source,
-                relation.Target,
-            }))
-            .DistinctBy(static subject => (subject.Type, subject.Id))
-            .OrderBy(static subject => subject.Type)
-            .ThenBy(static subject => subject.HistoricalLabel, StringComparer.OrdinalIgnoreCase)
-            .ToArray();
+        IReadOnlyCollection<HistoricalSubject> subjects = HistoricalParkEditorialSubjectResolver.Merge(
+            scope.CurrentSubjects,
+            facts,
+            relations);
         HistoricalParkDiagnostics diagnostics = this.diagnosticsEvaluator.Evaluate(
             facts,
             relations,

@@ -95,5 +95,19 @@ describe('AdminHistoricalFactEditorComponent', () => {
     expect(request!.narrativeContentId).toBe('story-42');
     expect(request!.attributeKind).toBe('Name');
     expect(request!.attributeBoundaryMeaning).toBe('FirstDayOfNewValue');
+
+    request = null;
+    const editor = component as unknown as {
+      form: { controls: { startYear: { setValue(value: number): void; markAsDirty(): void } } };
+      submit(): void;
+    };
+    editor.form.controls.startYear.setValue(1999);
+    editor.form.controls.startYear.markAsDirty();
+    editor.submit();
+
+    expect(request).not.toBeNull();
+    expect(request!.period.start?.year).toBe(1999);
+    expect(request!.period.end).toEqual(fact.period.end);
+    expect(request!.period.endConfidence).toBe('Disputed');
   });
 });

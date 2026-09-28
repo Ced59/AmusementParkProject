@@ -27,6 +27,10 @@ public interface IHistoricalSourceRepository
         IReadOnlyCollection<HistoricalRelationSourceRevisionReference> sourceReferences,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<HistoricalSourceReference>> GetRevisionsAsync(
+        IReadOnlyCollection<HistoricalSourceRevisionKey> sourceReferences,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<HistoricalSourceReference>> GetLatestRevisionsAsync(
         IReadOnlyCollection<Guid> sourceIds,
         CancellationToken cancellationToken);

@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.History.Commands;
 using AmusementPark.Application.Features.History.Models;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Results;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.History.Handlers;
@@ -18,17 +19,20 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandler :
     private readonly IHistoricalFactRepository factRepository;
     private readonly IHistoricalRelationRepository relationRepository;
     private readonly IHistoricalSourceRepository sourceRepository;
+    private readonly HistoricalLineagePublicationValidator lineagePublicationValidator;
     private readonly TimeProvider timeProvider;
 
     public AdvanceHistoricalEditorialResourceCommandHandler(
         IHistoricalFactRepository factRepository,
         IHistoricalRelationRepository relationRepository,
         IHistoricalSourceRepository sourceRepository,
+        HistoricalLineagePublicationValidator lineagePublicationValidator,
         TimeProvider? timeProvider = null)
     {
         this.factRepository = factRepository;
         this.relationRepository = relationRepository;
         this.sourceRepository = sourceRepository;
+        this.lineagePublicationValidator = lineagePublicationValidator;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -233,6 +237,15 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandler :
             previous.Revision,
             recordedAtUtc,
             previous.RevisionOrigin);
+        if (isPublication
+            && await this.lineagePublicationValidator.WouldCreateCycleAsync(
+                relation,
+                cancellationToken))
+        {
+            return ApplicationResult<HistoricalEditorialMutationResult>.Failure(
+                HistoryApplicationErrors.IncompatibleLineageCycle());
+        }
+
         HistoricalRevisionWriteDisposition disposition =
             await this.relationRepository.AppendRevisionAsync(
                 relation,

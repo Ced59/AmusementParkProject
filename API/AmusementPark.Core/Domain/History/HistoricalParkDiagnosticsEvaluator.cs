@@ -2,16 +2,6 @@ namespace AmusementPark.Core.Domain.History;
 
 public sealed class HistoricalParkDiagnosticsEvaluator
 {
-    private static readonly IReadOnlySet<HistoricalRelationType> LineageRelationTypes =
-        new HashSet<HistoricalRelationType>
-        {
-            HistoricalRelationType.RenamedTo,
-            HistoricalRelationType.ReplacedBy,
-            HistoricalRelationType.MovedTo,
-            HistoricalRelationType.RethemedAs,
-            HistoricalRelationType.SuccessorOf,
-        };
-
     public HistoricalParkDiagnostics Evaluate(
         IReadOnlyCollection<HistoricalFact> facts,
         IReadOnlyCollection<HistoricalRelation> relations,
@@ -169,10 +159,7 @@ public sealed class HistoricalParkDiagnosticsEvaluator
         IReadOnlyCollection<HistoricalRelation> relations,
         ICollection<HistoricalParkDiagnosticIssue> issues)
     {
-        HistoricalRelation[] lineageRelations = relations
-            .Where(relation => LineageRelationTypes.Contains(relation.Type))
-            .ToArray();
-        if (!HistoricalLineageCycleDetector.HasDirectedCycle(lineageRelations))
+        if (!HistoricalLineageCycleDetector.HasIncompatibleLineageCycle(relations))
         {
             return;
         }

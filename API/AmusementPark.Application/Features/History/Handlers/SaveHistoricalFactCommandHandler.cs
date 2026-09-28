@@ -19,17 +19,20 @@ public sealed class SaveHistoricalFactCommandHandler :
     private const string MethodologyVersion = "historical-editor-v1";
 
     private readonly HistoricalParkEditorialScopeLoader scopeLoader;
+    private readonly HistoricalParkEditorialSubjectResolver subjectResolver;
     private readonly IHistoricalFactRepository factRepository;
     private readonly IHistoricalSourceRepository sourceRepository;
     private readonly TimeProvider timeProvider;
 
     public SaveHistoricalFactCommandHandler(
         HistoricalParkEditorialScopeLoader scopeLoader,
+        HistoricalParkEditorialSubjectResolver subjectResolver,
         IHistoricalFactRepository factRepository,
         IHistoricalSourceRepository sourceRepository,
         TimeProvider? timeProvider = null)
     {
         this.scopeLoader = scopeLoader;
+        this.subjectResolver = subjectResolver;
         this.factRepository = factRepository;
         this.sourceRepository = sourceRepository;
         this.timeProvider = timeProvider ?? TimeProvider.System;
@@ -74,9 +77,12 @@ public sealed class SaveHistoricalFactCommandHandler :
         try
         {
             HistoricalFactDraftInput draft = command.Draft;
+            IReadOnlyCollection<HistoricalSubject> editableSubjects = previous is null
+                ? await this.subjectResolver.LoadAsync(scope, cancellationToken)
+                : scope.CurrentSubjects;
             HistoricalSubject subject = previous?.Subject
                 ?? HistoricalEditorialInputMapper.ResolveSubject(
-                    scope.CurrentSubjects,
+                    editableSubjects,
                     draft.SubjectType,
                     draft.SubjectId);
             if (subject.Type != draft.SubjectType
@@ -173,11 +179,13 @@ public sealed class SaveHistoricalFactCommandHandler :
         IReadOnlyCollection<HistoricalEvidenceSourceInput> references,
         CancellationToken cancellationToken)
     {
-        Guid[] sourceIds = references
-            .Select(static reference => reference.SourceId)
+        HistoricalSourceRevisionKey[] sourceRevisions = references
+            .Select(static reference => new HistoricalSourceRevisionKey(
+                reference.SourceId,
+                reference.Revision))
             .Distinct()
             .ToArray();
-        return await this.sourceRepository.GetLatestRevisionsAsync(sourceIds, cancellationToken);
+        return await this.sourceRepository.GetRevisionsAsync(sourceRevisions, cancellationToken);
     }
 
     private DateTime ResolveRecordedAt(DateTime? previousRecordedAtUtc)

@@ -64,4 +64,11 @@ internal static class HistoryApplicationErrors
             "The historical resource changed during this edit. Reload its latest revision.",
             currentRevision);
     }
+
+    public static ApplicationError IncompatibleLineageCycle()
+    {
+        return ApplicationError.Validation(
+            "history.editorial.lineage-cycle",
+            "Publishing this historical relation would create an incompatible lineage cycle.");
+    }
 }
