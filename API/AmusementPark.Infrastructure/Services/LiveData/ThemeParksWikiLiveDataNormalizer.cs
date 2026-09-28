@@ -201,6 +201,17 @@ internal static class ThemeParksWikiLiveDataNormalizer
             return queues.AsReadOnly();
         }
 
+        if (queueElement.Value.GetPropertyCount()
+            > ThemeParksWikiLiveDataAdapter.MaximumQueueMemberCount)
+        {
+            AddDiagnostic(
+                diagnostics,
+                LiveProviderDiagnosticCodes.InvalidQueueValue,
+                externalTargetId,
+                "queue");
+            return queues.AsReadOnly();
+        }
+
         HashSet<LiveQueueKind> seenKinds = new HashSet<LiveQueueKind>();
         foreach (JsonProperty queueProperty in queueElement.Value.EnumerateObject())
         {

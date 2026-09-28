@@ -565,11 +565,11 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     }
 
     [Fact]
-    public async Task FetchLatestAsync_WhenQueuePropertiesExceedDiagnosticBudget_ShouldStopAtBound()
+    public async Task FetchLatestAsync_WhenQueueMembersExceedBound_ShouldRejectQueueAndKeepLaterObservation()
     {
         string queueProperties = string.Join(
             ',',
-            Enumerable.Range(0, ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount + 1)
+            Enumerable.Range(0, ThemeParksWikiLiveDataAdapter.MaximumQueueMemberCount + 1)
                 .Select(static index => $"\"UNKNOWN_{index}\":{{}}"));
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
         {
@@ -595,6 +595,50 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
             CancellationToken.None);
 
         Assert.Equal(2, result.Observations.Count);
+        ExternalLiveObservation boundedObservation = Assert.Single(
+            result.Observations,
+            static observation => observation.ExternalTargetId == "bounded-attraction");
+        Assert.Empty(boundedObservation.Queues);
+        Assert.Contains(result.Observations, static observation =>
+            observation.ExternalTargetId == "following-valid-attraction");
+        LiveProviderDiagnostic diagnostic = Assert.Single(result.Diagnostics);
+        Assert.Equal(LiveProviderDiagnosticCodes.InvalidQueueValue, diagnostic.Code);
+        Assert.Equal("queue", diagnostic.Field);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenDiagnosticsExceedBudget_ShouldStopAtBoundAndKeepObservations()
+    {
+        string invalidObservations = string.Join(
+            ',',
+            Enumerable.Range(0, ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount + 1)
+                .Select(static index => "{"
+                    + $"\"id\":\"unknown-queue-{index}\","
+                    + "\"name\":\"Unknown queue attraction\","
+                    + "\"entityType\":\"ATTRACTION\","
+                    + "\"status\":\"OPERATING\","
+                    + "\"lastUpdated\":\"2026-09-28T10:00:00Z\","
+                    + "\"queue\":{\"UNKNOWN\":{}}"
+                    + "}"));
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = $"{{\"id\":\"park-root\",\"liveData\":[{invalidObservations},{{"
+                + "\"id\":\"following-valid-attraction\","
+                + "\"name\":\"Following valid attraction\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:05:00Z\","
+                + "\"queue\":{}"
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(
+            ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount + 2,
+            result.Observations.Count);
         Assert.Contains(result.Observations, static observation =>
             observation.ExternalTargetId == "following-valid-attraction");
         Assert.Equal(ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount, result.Diagnostics.Count);

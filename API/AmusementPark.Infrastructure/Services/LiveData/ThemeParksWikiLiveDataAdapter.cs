@@ -17,6 +17,8 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
 
     public const int MaximumDiagnosticCount = 1_000;
 
+    public const int MaximumQueueMemberCount = 32;
+
     public static readonly TimeSpan RequestTimeout = TimeSpan.FromSeconds(10);
 
     private const string Version = "themeparks-wiki-rest-v1/1.14.0-adapter-1";
