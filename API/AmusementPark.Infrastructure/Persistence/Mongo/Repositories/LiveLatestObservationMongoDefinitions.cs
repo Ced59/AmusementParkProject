@@ -52,20 +52,26 @@ public static class LiveLatestObservationMongoDefinitions
         LiveLatestObservationDocument incoming)
     {
         BsonDocument serialized = incoming.ToBsonDocument();
-        BsonValue observedAt = serialized["provenance"].AsBsonDocument["observedAtUtc"];
-        BsonValue receivedAt = serialized["provenance"].AsBsonDocument["receivedAtUtc"];
+        BsonValue observedAtTicks = serialized["provenance"].AsBsonDocument["observedAtUtcTicks"];
+        BsonValue receivedAtTicks = serialized["provenance"].AsBsonDocument["receivedAtUtcTicks"];
         BsonDocument isNewer = new BsonDocument("$or", new BsonArray
         {
             new BsonDocument("$eq", new BsonArray
             {
-                new BsonDocument("$type", "$provenance.observedAtUtc"),
+                new BsonDocument("$type", "$provenance.observedAtUtcTicks"),
                 "missing",
             }),
-            new BsonDocument("$lt", new BsonArray { "$provenance.observedAtUtc", observedAt }),
+            new BsonDocument(
+                "$lt",
+                new BsonArray { "$provenance.observedAtUtcTicks", observedAtTicks }),
             new BsonDocument("$and", new BsonArray
             {
-                new BsonDocument("$eq", new BsonArray { "$provenance.observedAtUtc", observedAt }),
-                new BsonDocument("$lt", new BsonArray { "$provenance.receivedAtUtc", receivedAt }),
+                new BsonDocument(
+                    "$eq",
+                    new BsonArray { "$provenance.observedAtUtcTicks", observedAtTicks }),
+                new BsonDocument(
+                    "$lt",
+                    new BsonArray { "$provenance.receivedAtUtcTicks", receivedAtTicks }),
             }),
         });
         BsonDocument values = new BsonDocument

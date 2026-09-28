@@ -15,7 +15,7 @@ public static class LiveLatestObservationMongoMapper
             provenance.NormalizedAtUtc);
         return new LiveLatestObservationDocument
         {
-            Id = $"{provenance.SourceId.Value}:{observation.Target.Type}:{observation.Target.Id}",
+            Id = BuildId(provenance.SourceId, observation.Target),
             CreatedAt = provenance.NormalizedAtUtc,
             UpdatedAt = provenance.NormalizedAtUtc,
             SourceId = provenance.SourceId.Value,
@@ -26,7 +26,9 @@ public static class LiveLatestObservationMongoMapper
             {
                 ExternalTargetId = provenance.ExternalTargetId,
                 ObservedAtUtc = provenance.ObservedAtUtc,
+                ObservedAtUtcTicks = provenance.ObservedAtUtc.Ticks,
                 ReceivedAtUtc = provenance.ReceivedAtUtc,
+                ReceivedAtUtcTicks = provenance.ReceivedAtUtc.Ticks,
                 NormalizedAtUtc = provenance.NormalizedAtUtc,
                 CorrelationId = provenance.CorrelationId,
                 AdapterVersion = provenance.AdapterVersion,
@@ -48,6 +50,12 @@ public static class LiveLatestObservationMongoMapper
             PayloadSha256 = observation.PayloadSha256,
             HasStatusQueueConflict = observation.HasStatusQueueConflict,
         };
+    }
+
+    private static string BuildId(LiveDataSourceId sourceId, LiveTargetReference target)
+    {
+        string source = sourceId.Value;
+        return $"{source.Length}:{source}|{(int)target.Type}|{target.Id.Length}:{target.Id}";
     }
 
     private static LiveTargetReferenceDocument ToDocument(LiveTargetReference target)

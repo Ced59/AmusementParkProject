@@ -97,7 +97,7 @@ Collection `live-latest-observations` :
 | `target` | type, identifiant, parc parent et libellés internes |
 | `status` | état opérationnel typé |
 | `queues[]` | files, attente, fenêtres, groupes et prix sans perte de `0` |
-| `provenance` | identifiant externe, trois horodatages, corrélation et versions |
+| `provenance` | identifiant externe, trois horodatages, ticks de récence, corrélation et versions |
 | `freshnessPolicy` | seuils et version utilisés pour interpréter l'âge |
 | `expiresAtUtc` | instant au-delà duquel la photographie est expirée |
 | `payloadSha256` | preuve d'identité du payload source sans conserver le brut |
@@ -109,6 +109,11 @@ source et cible. Un second index `(target.parkId, target.type, expiresAtUtc)`
 prépare la lecture bornée par parc de `LIVE-08`. `expiresAtUtc` n'est pas un TTL :
 le dernier état expiré reste disponible pour expliquer l'indisponibilité, sans
 être présenté comme frais.
+
+Les dates BSON restent disponibles pour les requêtes temporelles. Les ticks UTC
+associés aux heures d'observation et de réception préservent en plus la précision
+du contrat .NET dans l'arbitrage, y compris lorsque deux mesures appartiennent à
+la même milliseconde.
 
 ## Performance et bornes
 
@@ -124,12 +129,14 @@ le dernier état expiré reste disponible pour expliquer l'indisponibilité, san
 Les tests ciblés prouvent :
 
 - l'ordre `observedAt`, puis `receivedAt` ;
+- l'ordre sub-milliseconde malgré la précision native des dates BSON ;
 - la non-régression face à une réponse ancienne reçue plus tard ;
 - la conservation exacte d'une attente à zéro ;
 - la résolution des mappings en un seul lot ;
 - le rejet des mappings suspendus ;
 - la déduplication de deux identifiants externes vers une même cible ;
 - l'index naturel unique et les deux comparaisons du pipeline Mongo ;
+- l'absence de collision de l'identifiant synthétique pour des identifiants opaques ;
 - l'absence de validation de l'ETag lorsque la persistance échoue.
 
 ## Limites et suite

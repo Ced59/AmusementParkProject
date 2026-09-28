@@ -14,9 +14,15 @@ public sealed class LiveObservationProvenanceDocument
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
     public DateTime ObservedAtUtc { get; set; }
 
+    [BsonElement("observedAtUtcTicks")]
+    public long ObservedAtUtcTicks { get; set; }
+
     [BsonElement("receivedAtUtc")]
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
     public DateTime ReceivedAtUtc { get; set; }
+
+    [BsonElement("receivedAtUtcTicks")]
+    public long ReceivedAtUtcTicks { get; set; }
 
     [BsonElement("normalizedAtUtc")]
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]

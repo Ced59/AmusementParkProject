@@ -12,7 +12,7 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class LiveLatestObservationMongoDefinitionsTests
 {
     private static readonly DateTime ObservedAtUtc =
-        new DateTime(2026, 9, 29, 12, 0, 0, DateTimeKind.Utc);
+        new DateTime(2026, 9, 29, 12, 0, 0, DateTimeKind.Utc).AddTicks(9);
 
     [Fact]
     public void BuildIndexes_ShouldKeepOneLatestObservationPerSourceAndTarget()
@@ -45,10 +45,19 @@ public sealed class LiveLatestObservationMongoDefinitionsTests
                 BsonSerializer.SerializerRegistry));
         string json = rendered.ToJson();
 
-        Assert.Contains("$provenance.observedAtUtc", json, StringComparison.Ordinal);
-        Assert.Contains("$provenance.receivedAtUtc", json, StringComparison.Ordinal);
+        Assert.Contains("$provenance.observedAtUtcTicks", json, StringComparison.Ordinal);
+        Assert.Contains("$provenance.receivedAtUtcTicks", json, StringComparison.Ordinal);
         Assert.Contains("$_incomingIsNewer", json, StringComparison.Ordinal);
         Assert.Contains("$unset", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void ToDocument_ShouldUseAnUnambiguousNaturalKeyEncoding()
+    {
+        LiveLatestObservation first = CreateObservation("a", "ParkItem:x");
+        LiveLatestObservation second = CreateObservation("a:ParkItem", "x");
+
+        Assert.NotEqual(first.ToDocument().Id, second.ToDocument().Id);
     }
 
     [Fact]
@@ -57,18 +66,21 @@ public sealed class LiveLatestObservationMongoDefinitionsTests
         LiveLatestObservationDocument document = CreateObservation().ToDocument();
 
         Assert.Equal(0, Assert.Single(document.Queues).WaitTimeMinutes);
+        Assert.Equal(ObservedAtUtc.Ticks, document.Provenance.ObservedAtUtcTicks);
         Assert.Equal(ObservedAtUtc.AddMinutes(30), document.ExpiresAtUtc);
         Assert.Equal("freshness-1", document.FreshnessPolicy.Version);
         Assert.Equal(new string('c', 64), document.PayloadSha256);
     }
 
-    private static LiveLatestObservation CreateObservation()
+    private static LiveLatestObservation CreateObservation(
+        string sourceId = "source",
+        string targetId = "item-1")
     {
         DateTime receivedAtUtc = ObservedAtUtc.AddSeconds(10);
         return new LiveLatestObservation(
             new LiveTargetReference(
                 LiveTargetType.ParkItem,
-                "item-1",
+                targetId,
                 "park-1",
                 "Attraction",
                 "Park",
@@ -76,7 +88,7 @@ public sealed class LiveLatestObservationMongoDefinitionsTests
             LiveOperationalStatus.Open,
             new[] { new LiveQueueObservation(LiveQueueKind.Standby, 0, false) },
             new LiveObservationProvenance(
-                LiveDataSourceId.Parse("source"),
+                LiveDataSourceId.Parse(sourceId),
                 "external-1",
                 ObservedAtUtc,
                 receivedAtUtc,
