@@ -168,6 +168,26 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     }
 
     [Fact]
+    public async Task FetchLatestAsync_WhenClosedTargetReportsWait_ShouldEmitConflictDiagnostic()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("closed-with-wait.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal(LiveOperationalStatus.Closed, observation.Status);
+        Assert.Equal(25, Assert.Single(observation.Queues).WaitTimeMinutes);
+        Assert.Equal(
+            LiveProviderDiagnosticCodes.StatusQueueConflict,
+            Assert.Single(result.Diagnostics).Code);
+    }
+
+    [Fact]
     public async Task FetchLatestAsync_WhenNotModified_ShouldForwardConditionalEntityTag()
     {
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
@@ -312,6 +332,21 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
         {
             ResponseStream = new FailingLiveDataReadStream(),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Unavailable, result.Disposition);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenCompressedResponseIsCorrupt_ShouldReturnUnavailable()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            ResponseStream = new InvalidCompressedLiveDataReadStream(),
         };
 
         LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(

@@ -62,6 +62,14 @@ internal static class ThemeParksWikiLiveDataNormalizer
             item.Queue,
             externalTargetId,
             diagnostics);
+        if (status == LiveOperationalStatus.Closed
+            && queues.Any(static queue => queue.WaitTimeMinutes.HasValue))
+        {
+            diagnostics.Add(new LiveProviderDiagnostic(
+                LiveProviderDiagnosticCodes.StatusQueueConflict,
+                externalTargetId,
+                "queue.waitTime"));
+        }
 
         try
         {

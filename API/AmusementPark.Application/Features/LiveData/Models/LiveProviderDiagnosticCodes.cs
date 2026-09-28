@@ -14,5 +14,7 @@ public static class LiveProviderDiagnosticCodes
 
     public const string InvalidQueueValue = "live-provider.invalid-queue-value";
 
+    public const string StatusQueueConflict = "live-provider.status-queue-conflict";
+
     public const string UnsupportedEntityType = "live-provider.unsupported-entity-type";
 }

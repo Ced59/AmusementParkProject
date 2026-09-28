@@ -175,6 +175,12 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                 LiveProviderReadDisposition.Unavailable,
                 this.timeProvider.GetUtcNow().UtcDateTime);
         }
+        catch (InvalidDataException)
+        {
+            return new LiveProviderReadResult(
+                LiveProviderReadDisposition.Unavailable,
+                this.timeProvider.GetUtcNow().UtcDateTime);
+        }
     }
 
     private static async Task<byte[]?> ReadBoundedPayloadAsync(
