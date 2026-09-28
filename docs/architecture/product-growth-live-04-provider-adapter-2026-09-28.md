@@ -34,7 +34,7 @@ Application
             ↑
 Infrastructure
   ThemeParksWikiLiveDataAdapter
-  DTO JSON + normaliseur fournisseur
+  document JSON borné + normaliseur fournisseur
 ```
 
 - **Core** définit les faits métier indépendants de toute API.
@@ -78,6 +78,12 @@ convertie en zéro. Le contrat fournisseur rend `STANDBY.waitTime` facultatif :
 son absence est donc conservée comme attente inconnue, comme une valeur `null`,
 sans inventer une erreur de schéma.
 
+Core refuse aussi les mélanges impossibles entre familles : une file classique ne
+peut pas recevoir une fenêtre de retour, une file à créneau ne peut pas recevoir
+une attente, et prix et devise sont indissociables. Le conflit « fermé avec une
+attente publiée » reste conservé comme fait reçu mais est signalé par un invariant
+de domaine, quel que soit l'adaptateur futur.
+
 ## 5. Contrat transport sûr
 
 Le résultat de lecture distingue :
@@ -86,7 +92,8 @@ Le résultat de lecture distingue :
 - `NotModified` pour un `304` ;
 - `RateLimited` avec `Retry-After` pour un `429` ;
 - `Unavailable` pour les erreurs réseau, timeouts, `401` et `5xx` ;
-- `InvalidPayload` pour un JSON illisible ;
+- `InvalidPayload` pour un JSON illisible, une enveloppe invalide ou plus de
+  10 000 observations ;
 - `ResponseTooLarge` au-delà de 2 Mio.
 
 Le client :
@@ -96,7 +103,9 @@ Le client :
 - refuse les redirections ;
 - limite chaque requête à dix secondes ;
 - lit le flux avec une borne mémoire même sans `Content-Length` ;
-- transmet `If-None-Match` et restitue l'ETag ;
+- transmet `If-None-Match` et restitue seulement un ETag réutilisable par le
+  contrat suivant ;
+- limite les diagnostics d'un payload à 1 000 et cesse alors sa normalisation ;
 - calcule une empreinte SHA-256 du payload reçu ;
 - ne contient aucun retry : le respect des quotas appartient à `LIVE-05`.
 
@@ -128,8 +137,11 @@ Les fixtures versionnées couvrent :
 - les six types de file et leurs champs spécifiques ;
 - zéro, absence et valeur invalide ;
 - entité non supportée et horodatage illisible ;
+- dates RFC 3339 strictes et isolation des entrées ou champs JSON mal typés ;
+- contradictions de domaine et champs étrangers à une famille de file ;
+- plafonds du nombre d'observations, de propriétés de file et de diagnostics ;
 - lot vide ;
-- ETag/304, 429/Retry-After, 401, 500, timeout ;
+- ETag/304, ETag excessif, 429/Retry-After, 401, 500, timeout ;
 - JSON invalide et réponse annoncée trop volumineuse.
 
 Les tests Core vérifient en plus les bornes, l'unicité des files et les fenêtres

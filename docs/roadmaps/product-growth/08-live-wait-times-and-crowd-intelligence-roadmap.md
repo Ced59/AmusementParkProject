@@ -818,10 +818,13 @@ Infrastructure ; Application ne connaît qu'un port générique et Core porte le
 L'adaptateur utilise une URL fixe en HTTPS, refuse les redirections, borne le
 timeout et le corps de réponse à 2 Mio, transmet les ETag et expose les 429 sans
 relance automatique. Il conserve un hash SHA-256 du payload pour la future chaîne
-de preuve. Les valeurs de statut ou de file inconnues sont diagnostiquées et
-reviennent dans un état sûr. Les fixtures couvrent les six files, les quatre
-statuts connus, `0` contre `null`, les valeurs futures, les champs invalides, les
-réponses vides et les principaux incidents HTTP.
+de preuve. La normalisation refuse plus de 10 000 observations, limite les
+diagnostics à 1 000 et isole les entrées mal formées sans perdre leurs voisines.
+Les valeurs de statut ou de file inconnues sont diagnostiquées et reviennent dans
+un état sûr. Core interdit les champs étrangers à un type de file et signale la
+contradiction fermeture/attente sans effacer le fait reçu. Les fixtures couvrent
+les six files, les quatre statuts connus, `0` contre `null`, les valeurs futures,
+les champs invalides, les réponses vides et les principaux incidents HTTP.
 
 ## 24. Gate finale `LIVE-G`
 
