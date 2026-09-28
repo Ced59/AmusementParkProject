@@ -10,7 +10,8 @@ public sealed class LivePollingLeaseRequest
         string externalEntityId,
         string leaseOwner,
         DateTime nowUtc,
-        TimeSpan leaseDuration)
+        TimeSpan leaseDuration,
+        TimeSpan crashRecoveryCooldown)
     {
         _ = sourceId.Value;
         string normalizedExternalEntityId = IdentifierRules.NormalizeRequired(
@@ -30,11 +31,18 @@ public sealed class LivePollingLeaseRequest
             throw new ArgumentOutOfRangeException(nameof(leaseDuration));
         }
 
+        if (crashRecoveryCooldown < LivePollingPolicy.MinimumPollingInterval
+            || crashRecoveryCooldown > LivePollingPolicy.MaximumDelay)
+        {
+            throw new ArgumentOutOfRangeException(nameof(crashRecoveryCooldown));
+        }
+
         this.SourceId = sourceId;
         this.ExternalEntityId = normalizedExternalEntityId;
         this.LeaseOwner = normalizedLeaseOwner;
         this.NowUtc = nowUtc;
         this.LeaseDuration = leaseDuration;
+        this.CrashRecoveryCooldown = crashRecoveryCooldown;
     }
 
     public LiveDataSourceId SourceId { get; }
@@ -46,4 +54,6 @@ public sealed class LivePollingLeaseRequest
     public DateTime NowUtc { get; }
 
     public TimeSpan LeaseDuration { get; }
+
+    public TimeSpan CrashRecoveryCooldown { get; }
 }

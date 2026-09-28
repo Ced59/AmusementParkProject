@@ -60,6 +60,9 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
                 .Set(
                     static document => document.LeaseExpiresAtUtc,
                     request.NowUtc.Add(request.LeaseDuration))
+                .Set(
+                    static document => document.NextAttemptAtUtc,
+                    request.NowUtc.Add(request.CrashRecoveryCooldown))
                 .Set(static document => document.UpdatedAt, request.NowUtc);
         LivePollingStateDocument? existing = await this.collection.FindOneAndUpdateAsync(
             targetFilter & dueFilter & circuitFilter & leaseFilter,
@@ -82,6 +85,7 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
             LeaseOwner = request.LeaseOwner,
             LeaseToken = leaseToken,
             LeaseExpiresAtUtc = request.NowUtc.Add(request.LeaseDuration),
+            NextAttemptAtUtc = request.NowUtc.Add(request.CrashRecoveryCooldown),
             CreatedAt = request.NowUtc,
             UpdatedAt = request.NowUtc,
         };

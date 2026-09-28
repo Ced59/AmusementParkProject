@@ -91,13 +91,17 @@ même source. L'acquisition atomique n'est possible que si :
 
 Le lease dure moins que l'intervalle minimal de collecte. La clôture vérifie le
 propriétaire, le jeton et l'expiration : un ancien worker ne peut donc pas écraser
-l'état d'un successeur après une pause ou un redémarrage.
+l'état d'un successeur après une pause ou un redémarrage. L'acquisition avance
+également l'échéance d'au moins un intervalle complet **avant** l'appel réseau :
+un crash au pire moment ne peut donc jamais transformer l'expiration du lease en
+relance agressive.
 
 ## Backoff, `Retry-After` et circuit breaker
 
 Une réussite ou un `304 Not Modified` remet le compteur d'échecs à zéro. Un
 incident applique un backoff exponentiel borné. Un `429` respecte la durée
-`Retry-After` lorsqu'elle dépasse le délai calculé. Après le seuil configuré, le
+`Retry-After` à partir de la réception effective de la réponse lorsqu'elle dépasse
+le délai calculé. Après le seuil configuré, le
 circuit s'ouvre pour la durée prévue. Le jitter évite que plusieurs processus se
 réveillent exactement au même instant sans réduire l'intervalle minimal.
 

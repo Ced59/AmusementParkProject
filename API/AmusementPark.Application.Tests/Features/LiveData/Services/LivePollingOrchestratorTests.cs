@@ -31,6 +31,32 @@ public sealed class LivePollingOrchestratorTests
     }
 
     [Fact]
+    public async Task ExecuteAsync_WhenAcquiringLease_ShouldPersistCrashRecoveryCooldown()
+    {
+        LivePollingLeaseRequest? savedRequest = null;
+        Mock<ILivePollingStateRepository> repository =
+            new Mock<ILivePollingStateRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.TryAcquireAsync(
+                It.IsAny<LivePollingLeaseRequest>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingLeaseRequest, CancellationToken>(
+                (request, _) => savedRequest = request)
+            .ReturnsAsync((LivePollingLease?)null);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        LivePollingOrchestrator orchestrator = CreateOrchestrator(repository, adapter);
+
+        await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.NotNull(savedRequest);
+        Assert.Equal(TimeSpan.FromMinutes(5), savedRequest.CrashRecoveryCooldown);
+    }
+
+    [Fact]
     public async Task ExecuteAsync_OutsideActiveWindow_ShouldScheduleNextOpeningWithoutProviderCall()
     {
         DateTime nightUtc = new DateTime(2026, 9, 29, 2, 0, 0, DateTimeKind.Utc);
@@ -116,13 +142,14 @@ public sealed class LivePollingOrchestratorTests
                 (completion, _) => savedCompletion = completion)
             .ReturnsAsync(true);
         Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        DateTime receivedAtUtc = NowUtc.AddSeconds(10);
         adapter
             .Setup(value => value.FetchLatestAsync(
                 It.IsAny<LiveProviderReadRequest>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new LiveProviderReadResult(
                 LiveProviderReadDisposition.RateLimited,
-                NowUtc,
+                receivedAtUtc,
                 retryAfter: TimeSpan.FromMinutes(20)));
         LivePollingOrchestrator orchestrator = CreateOrchestrator(repository, adapter);
 
@@ -134,7 +161,7 @@ public sealed class LivePollingOrchestratorTests
 
         Assert.Equal(LivePollingExecutionDisposition.RateLimited, result.Disposition);
         Assert.NotNull(savedCompletion);
-        Assert.Equal(NowUtc.AddMinutes(20), savedCompletion.NextAttemptAtUtc);
+        Assert.Equal(receivedAtUtc.AddMinutes(20), savedCompletion.NextAttemptAtUtc);
         Assert.Equal(1, savedCompletion.ConsecutiveFailures);
     }
 

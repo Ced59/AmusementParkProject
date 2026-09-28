@@ -49,7 +49,8 @@ public sealed class LivePollingOrchestrator
                 target.ExternalEntityId,
                 leaseOwner,
                 nowUtc,
-                leaseDuration),
+                leaseDuration,
+                target.Policy.PollingInterval),
             cancellationToken);
         if (lease is null)
         {
@@ -101,7 +102,6 @@ public sealed class LivePollingOrchestrator
             target,
             lease,
             providerResult,
-            nowUtc,
             jitter,
             cancellationToken);
     }
@@ -110,14 +110,13 @@ public sealed class LivePollingOrchestrator
         LivePollingTarget target,
         LivePollingLease lease,
         LiveProviderReadResult providerResult,
-        DateTime attemptedAtUtc,
         TimeSpan jitter,
         CancellationToken cancellationToken)
     {
         LivePollingAttemptOutcome outcome = MapOutcome(providerResult.Disposition);
         TimeSpan retryAfter = providerResult.RetryAfter ?? TimeSpan.Zero;
         LivePollingSchedule schedule = target.Policy.PlanNext(
-            attemptedAtUtc,
+            providerResult.ReceivedAtUtc,
             outcome,
             lease.ConsecutiveFailures,
             retryAfter,
