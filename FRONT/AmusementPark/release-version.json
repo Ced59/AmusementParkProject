@@ -1,6 +1,20 @@
 {
-  "version": "5.3.94",
+  "version": "5.3.95",
   "history": [
+    {
+      "version": "5.3.95",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "Les contrôles de qualité des fiches de parc ont été améliorés.",
+        "en": "Park profile quality checks have been improved.",
+        "de": "Die Qualitätsprüfungen der Parkprofile wurden verbessert.",
+        "nl": "De kwaliteitscontroles van parkprofielen zijn verbeterd.",
+        "it": "I controlli di qualità delle schede dei parchi sono stati migliorati.",
+        "es": "Se han mejorado los controles de calidad de las fichas de parques.",
+        "pl": "Ulepszono kontrole jakości profili parków.",
+        "pt": "Os controlos de qualidade das fichas dos parques foram melhorados."
+      }
+    },
     {
       "version": "5.3.94",
       "releasedAt": "2026-09-28",

@@ -252,7 +252,10 @@ public sealed class Park : GeolocatedEntityBase
         score.AddIfApplicable(score.HasMissingPoints, scoreContext.HasDocumentedRemainingDebt, 1);
         score.AddIfApplicable(isValidatedForPublication, isValidatedForPublication, 1);
 
-        return score.Build();
+        return score.Build() with
+        {
+            FormulaicPublicTextIssue = scoreContext.FormulaicPublicTextIssue,
+        };
     }
 
     private bool HasRelevantDateInformation()

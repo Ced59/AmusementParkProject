@@ -585,6 +585,15 @@ internal static class ParksHttpMappers
             PublicationBlockers = value.PublicationBlocker is null
                 ? new List<string>()
                 : new List<string> { value.PublicationBlocker },
+            FormulaicPublicTextIssue = value.FormulaicPublicTextIssue is null
+                ? null
+                : new FormulaicPublicTextIssueDto
+                {
+                    MatchType = value.FormulaicPublicTextIssue.MatchType,
+                    LanguageCode = value.FormulaicPublicTextIssue.LanguageCode,
+                    FirstDocumentIndex = value.FormulaicPublicTextIssue.FirstDocumentIndex,
+                    SecondDocumentIndex = value.FormulaicPublicTextIssue.SecondDocumentIndex,
+                },
         };
     }
 

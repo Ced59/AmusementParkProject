@@ -92,6 +92,8 @@ public sealed record ParkDataCompletenessContext
 
     public bool HasNoFormulaicPublicText { get; init; } = true;
 
+    public FormulaicPublicTextIssue? FormulaicPublicTextIssue { get; init; }
+
     public bool HasDocumentedRemainingDebt { get; init; }
 
     public bool HasPublicSeoSignals { get; init; }

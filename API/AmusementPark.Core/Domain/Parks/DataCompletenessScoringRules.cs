@@ -271,16 +271,32 @@ public static class DataCompletenessScoringRules
         IEnumerable<LocalizedText> publicTexts,
         IEnumerable<string?> entityNames)
     {
+        return FindFormulaicPublicTextIssue(publicTexts, entityNames) is not null;
+    }
+
+    public static FormulaicPublicTextIssue? FindFormulaicPublicTextIssue(
+        IEnumerable<LocalizedText> publicTexts,
+        IEnumerable<string?> entityNames)
+    {
         ArgumentNullException.ThrowIfNull(publicTexts);
         ArgumentNullException.ThrowIfNull(entityNames);
 
         List<LocalizedText> populatedPublicTexts = publicTexts
             .Where(static text => !string.IsNullOrWhiteSpace(text.Value))
             .ToList();
-        if (populatedPublicTexts.Any(text =>
-            SingleOccurrenceFormulaRegexes.Any(regex => regex.IsMatch(NormalizePublicText(text.Value!)))))
+        for (int index = 0; index < populatedPublicTexts.Count; index += 1)
         {
-            return true;
+            LocalizedText publicText = populatedPublicTexts[index];
+            if (SingleOccurrenceFormulaRegexes.Any(regex => regex.IsMatch(NormalizePublicText(publicText.Value!))))
+            {
+                return new FormulaicPublicTextIssue
+                {
+                    MatchType = "single-formula",
+                    LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
+                    FirstDocumentIndex = index + 1,
+                    SecondDocumentIndex = index + 1,
+                };
+            }
         }
 
         List<string> normalizedEntityNames = entityNames
@@ -327,39 +343,64 @@ public static class DataCompletenessScoringRules
                     }
 
                     string sentenceFingerprint = string.Join(' ', words);
-                    if (WasSeenInAnotherDocument(firstDocumentBySentence, sentenceFingerprint, documentIndex))
+                    int? firstSentenceDocumentIndex = FindFirstDocumentIndex(
+                        firstDocumentBySentence,
+                        sentenceFingerprint,
+                        documentIndex);
+                    if (firstSentenceDocumentIndex.HasValue)
                     {
-                        return true;
+                        return new FormulaicPublicTextIssue
+                        {
+                            MatchType = "sentence",
+                            LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
+                            FirstDocumentIndex = firstSentenceDocumentIndex.Value,
+                            SecondDocumentIndex = documentIndex,
+                        };
                     }
 
                     const int longSequenceWordCount = 9;
                     for (int index = 0; index <= words.Count - longSequenceWordCount; index += 1)
                     {
                         string sequenceFingerprint = string.Join(' ', words.Skip(index).Take(longSequenceWordCount));
-                        if (WasSeenInAnotherDocument(firstDocumentByLongSequence, sequenceFingerprint, documentIndex))
+                        int? firstSequenceDocumentIndex = FindFirstDocumentIndex(
+                            firstDocumentByLongSequence,
+                            sequenceFingerprint,
+                            documentIndex);
+                        if (firstSequenceDocumentIndex.HasValue)
                         {
-                            return true;
+                            return new FormulaicPublicTextIssue
+                            {
+                                MatchType = "long-sequence",
+                                LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
+                                FirstDocumentIndex = firstSequenceDocumentIndex.Value,
+                                SecondDocumentIndex = documentIndex,
+                            };
                         }
                     }
                 }
             }
         }
 
-        return false;
+        return null;
     }
 
-    private static bool WasSeenInAnotherDocument(
+    private static int? FindFirstDocumentIndex(
         IDictionary<string, int> firstDocumentByFingerprint,
         string fingerprint,
         int documentIndex)
     {
         if (firstDocumentByFingerprint.TryGetValue(fingerprint, out int firstDocumentIndex))
         {
-            return firstDocumentIndex != documentIndex;
+            return firstDocumentIndex == documentIndex ? null : firstDocumentIndex;
         }
 
         firstDocumentByFingerprint[fingerprint] = documentIndex;
-        return false;
+        return null;
+    }
+
+    private static string NormalizeLanguageCode(string? languageCode)
+    {
+        return string.IsNullOrWhiteSpace(languageCode) ? "und" : languageCode.Trim();
     }
 
     private static string NormalizePublicText(string value)

@@ -150,6 +150,27 @@ public sealed class ParkDataCompletenessScoreTests
     }
 
     [Fact]
+    public void FindFormulaicPublicTextIssue_WhenLongSequenceRepeats_ShouldReturnDocumentCoordinates()
+    {
+        List<LocalizedText> publicTexts = new List<LocalizedText>
+        {
+            new("fr", "Une façade rouge borde la plage et éclaire la promenade pendant la soirée."),
+            new("en", "A unique English description remains outside the French comparison group."),
+            new("fr", "La façade rouge borde la plage et éclaire la promenade pendant la fermeture."),
+        };
+
+        FormulaicPublicTextIssue? issue = DataCompletenessScoringRules.FindFormulaicPublicTextIssue(
+            publicTexts,
+            Array.Empty<string?>());
+
+        Assert.NotNull(issue);
+        Assert.Equal("long-sequence", issue.MatchType);
+        Assert.Equal("fr", issue.LanguageCode);
+        Assert.Equal(1, issue.FirstDocumentIndex);
+        Assert.Equal(2, issue.SecondDocumentIndex);
+    }
+
+    [Fact]
     public void CalculateDataCompletenessScore_WhenParkHasNoOfficialZones_DoesNotApplyZonePoints()
     {
         Park park = CreatePublishablePark();
@@ -425,15 +446,24 @@ public sealed class ParkDataCompletenessScoreTests
     public void CalculateDataCompletenessScore_WhenPublicCorpusIsFormulaic_ShouldExposeBlockerAndCapScore()
     {
         Park park = CreatePublishablePark();
+        FormulaicPublicTextIssue issue = new FormulaicPublicTextIssue
+        {
+            MatchType = "sentence",
+            LanguageCode = "fr",
+            FirstDocumentIndex = 3,
+            SecondDocumentIndex = 9,
+        };
         ParkDataCompletenessContext context = CreateRichParkContext() with
         {
             HasNoFormulaicPublicText = false,
+            FormulaicPublicTextIssue = issue,
         };
 
         DataCompletenessScore score = park.CalculateDataCompletenessScore(context);
 
         Assert.Equal(95, score.CompletenessScore);
         Assert.Equal("public-text.formulaic-content", score.PublicationBlocker);
+        Assert.Same(issue, score.FormulaicPublicTextIssue);
     }
 
     [Fact]
