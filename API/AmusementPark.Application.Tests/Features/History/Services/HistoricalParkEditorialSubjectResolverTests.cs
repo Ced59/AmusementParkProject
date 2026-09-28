@@ -10,11 +10,13 @@ public sealed class HistoricalParkEditorialSubjectResolverTests
     public void Merge_ShouldKeepHistoricalOnlySubjectsSelectable()
     {
         HistoricalSubject currentSubject = CreateSubject(
-            "item-current",
-            HistoricalSubjectPublicationPolicy.FollowCurrentSubject);
+            "shared-item",
+            HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+            "park-1");
         HistoricalSubject historicalSubject = CreateSubject(
-            "item-retired",
-            HistoricalSubjectPublicationPolicy.HistoricalOnly);
+            "shared-item",
+            HistoricalSubjectPublicationPolicy.HistoricalOnly,
+            "park-2");
         HistoricalRelation relation = new HistoricalRelation(
             Guid.NewGuid(),
             historicalSubject,
@@ -44,18 +46,20 @@ public sealed class HistoricalParkEditorialSubjectResolverTests
         Assert.Equal(2, subjects.Count);
         Assert.Contains(subjects, subject =>
             subject.Id == historicalSubject.Id
+            && subject.ContextParkId == "park-2"
             && subject.PublicationPolicy == HistoricalSubjectPublicationPolicy.HistoricalOnly);
     }
 
     private static HistoricalSubject CreateSubject(
         string id,
-        HistoricalSubjectPublicationPolicy publicationPolicy)
+        HistoricalSubjectPublicationPolicy publicationPolicy,
+        string contextParkId)
     {
         return new HistoricalSubject(
             HistoricalSubjectType.ParkItem,
             id,
             id,
             publicationPolicy,
-            "park-1");
+            contextParkId);
     }
 }

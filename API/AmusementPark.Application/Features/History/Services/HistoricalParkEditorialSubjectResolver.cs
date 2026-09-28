@@ -57,7 +57,7 @@ public sealed class HistoricalParkEditorialSubjectResolver
                 relation.Source,
                 relation.Target,
             }))
-            .DistinctBy(static subject => (subject.Type, subject.Id))
+            .DistinctBy(static subject => (subject.Type, subject.Id, subject.ContextParkId))
             .OrderBy(static subject => subject.Type)
             .ThenBy(static subject => subject.HistoricalLabel, StringComparer.OrdinalIgnoreCase)
             .ToArray();

@@ -63,7 +63,7 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
   protected readonly factTypes = HISTORICAL_FACT_TYPES;
   protected readonly languages = HISTORICAL_LANGUAGE_CODES;
   protected readonly selectedSourceIds = signal<ReadonlyMap<string, number>>(new Map<string, number>());
-  protected readonly contradictingSourceId = signal<string | null>(null);
+  protected readonly contradictingSourceIds = signal<ReadonlySet<string>>(new Set<string>());
   protected readonly uncertaintyMissing = signal<boolean>(false);
   protected readonly form = new FormGroup<HistoricalFactForm>({
     subjectKey: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
@@ -103,8 +103,10 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
     const selected: Map<string, number> = new Map(this.selectedSourceIds());
     if (selected.has(sourceId)) {
       selected.delete(sourceId);
-      if (this.contradictingSourceId() === sourceId) {
-        this.contradictingSourceId.set(null);
+      if (this.contradictingSourceIds().has(sourceId)) {
+        const contradictions: Set<string> = new Set(this.contradictingSourceIds());
+        contradictions.delete(sourceId);
+        this.contradictingSourceIds.set(contradictions);
       }
     } else {
       const source: AdminHistoricalSource | undefined = this.sources.find(
@@ -125,7 +127,14 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
       return;
     }
 
-    this.contradictingSourceId.set(this.contradictingSourceId() === sourceId ? null : sourceId);
+    const contradictions: Set<string> = new Set(this.contradictingSourceIds());
+    if (contradictions.has(sourceId)) {
+      contradictions.delete(sourceId);
+    } else {
+      contradictions.add(sourceId);
+    }
+
+    this.contradictingSourceIds.set(contradictions);
   }
 
   protected isUncertain(): boolean {
@@ -188,7 +197,7 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
         sources: Array.from(selectedSourceIds.entries()).map(([sourceId, revision]: [string, number]) => ({
           sourceId,
           revision,
-          position: this.contradictingSourceId() === sourceId ? 'Contradicts' as const : 'Supports' as const
+          position: this.contradictingSourceIds().has(sourceId) ? 'Contradicts' as const : 'Supports' as const
         })),
         structuredValue: this.optional(value.structuredValue),
         otherTypeLabel: value.type === 'Other' ? this.optional(value.otherTypeLabel) : null,
@@ -199,7 +208,7 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
   }
 
   protected subjectKey(subject: AdminHistoricalSubject): string {
-    return `${subject.type}::${subject.id}`;
+    return `${subject.type}::${subject.id}::${subject.contextParkId ?? ''}`;
   }
 
   protected formatSource(source: AdminHistoricalSource): string {
@@ -243,7 +252,11 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
     this.selectedSourceIds.set(new Map(
       (fact?.sources ?? []).map((source: AdminHistoricalEvidence): [string, number] => [source.sourceId, source.revision])
     ));
-    this.contradictingSourceId.set(fact?.sources.find((source): boolean => source.position === 'Contradicts')?.sourceId ?? null);
+    this.contradictingSourceIds.set(new Set(
+      (fact?.sources ?? [])
+        .filter((source: AdminHistoricalEvidence): boolean => source.position === 'Contradicts')
+        .map((source: AdminHistoricalEvidence): string => source.sourceId)
+    ));
     this.uncertaintyMissing.set(false);
   }
 

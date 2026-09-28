@@ -201,7 +201,9 @@ public static class HistoricalEditorialHttpMapper
                     state,
                     explanations,
                     sources,
-                    request.EditorialNote),
+                    request.EditorialNote,
+                    request.SourceSubjectContextParkId,
+                    request.TargetSubjectContextParkId),
                 actorUserId,
                 request.ReviewNote);
             return true;
@@ -218,6 +220,7 @@ public static class HistoricalEditorialHttpMapper
         {
             Type = subject.Type.ToString(),
             Id = subject.Id,
+            ContextParkId = subject.ContextParkId,
             Label = subject.HistoricalLabel,
             PublicationPolicy = subject.PublicationPolicy.ToString(),
         };

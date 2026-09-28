@@ -13,4 +13,6 @@ public sealed record HistoricalRelationDraftInput(
     HistoricalFactState State,
     IReadOnlyCollection<HistoricalLocalizedText> PublicUncertaintyExplanation,
     IReadOnlyCollection<HistoricalEvidenceSourceInput> Sources,
-    string? EditorialNote);
+    string? EditorialNote,
+    string? SourceSubjectContextParkId,
+    string? TargetSubjectContextParkId);

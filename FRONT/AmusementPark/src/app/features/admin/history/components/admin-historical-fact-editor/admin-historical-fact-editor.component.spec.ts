@@ -13,6 +13,7 @@ describe('AdminHistoricalFactEditorComponent', () => {
     const subject: AdminHistoricalSubject = {
       type: 'ParkItem',
       id: 'item-1',
+      contextParkId: 'park-1',
       label: 'Attraction historique',
       publicationPolicy: 'Public'
     };
@@ -68,14 +69,17 @@ describe('AdminHistoricalFactEditorComponent', () => {
       attributeKind: 'Name',
       attributeBoundaryMeaning: 'FirstDayOfNewValue',
       sequenceWithinDate: 4,
-      sources: [{ sourceId: source.id, revision: 1, position: 'Supports' }],
+      sources: [
+        { sourceId: source.id, revision: 1, position: 'Contradicts' },
+        { sourceId: 'source-2', revision: 2, position: 'Contradicts' }
+      ],
       structuredValue: 'Nouveau nom',
       otherTypeLabel: null,
       narrativeContentId: 'story-42'
     };
     const component: AdminHistoricalFactEditorComponent = new AdminHistoricalFactEditorComponent();
     component.subjects = [subject];
-    component.sources = [source];
+    component.sources = [source, { ...source, id: 'source-2', revision: 4 }];
     component.fact = fact;
     component.ngOnChanges({
       fact: new SimpleChange(null, fact, true),

@@ -55,7 +55,7 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
   protected readonly relationTypes = HISTORICAL_RELATION_TYPES;
   protected readonly languages = HISTORICAL_LANGUAGE_CODES;
   protected readonly selectedSourceIds = signal<ReadonlyMap<string, number>>(new Map<string, number>());
-  protected readonly contradictingSourceId = signal<string | null>(null);
+  protected readonly contradictingSourceIds = signal<ReadonlySet<string>>(new Set<string>());
   protected readonly uncertaintyMissing = signal<boolean>(false);
   protected readonly form = new FormGroup<HistoricalRelationForm>({
     sourceSubjectKey: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
@@ -88,8 +88,10 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
     const selected: Map<string, number> = new Map(this.selectedSourceIds());
     if (selected.has(sourceId)) {
       selected.delete(sourceId);
-      if (this.contradictingSourceId() === sourceId) {
-        this.contradictingSourceId.set(null);
+      if (this.contradictingSourceIds().has(sourceId)) {
+        const contradictions: Set<string> = new Set(this.contradictingSourceIds());
+        contradictions.delete(sourceId);
+        this.contradictingSourceIds.set(contradictions);
       }
     } else {
       const source: AdminHistoricalSource | undefined = this.sources.find(
@@ -107,7 +109,14 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
 
   protected markContradicting(sourceId: string): void {
     if (this.selectedSourceIds().has(sourceId)) {
-      this.contradictingSourceId.set(this.contradictingSourceId() === sourceId ? null : sourceId);
+      const contradictions: Set<string> = new Set(this.contradictingSourceIds());
+      if (contradictions.has(sourceId)) {
+        contradictions.delete(sourceId);
+      } else {
+        contradictions.add(sourceId);
+      }
+
+      this.contradictingSourceIds.set(contradictions);
     }
   }
 
@@ -151,8 +160,10 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
         expectedRevision: this.relation?.revision ?? null,
         sourceSubjectType: sourceSubject.type,
         sourceSubjectId: sourceSubject.id,
+        sourceSubjectContextParkId: sourceSubject.contextParkId,
         targetSubjectType: targetSubject.type,
         targetSubjectId: targetSubject.id,
+        targetSubjectContextParkId: targetSubject.contextParkId,
         type: value.type,
         direction: value.direction,
         period: this.buildPeriod(value, date),
@@ -161,7 +172,7 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
         sources: Array.from(selected.entries()).map(([sourceId, revision]: [string, number]) => ({
           sourceId,
           revision,
-          position: this.contradictingSourceId() === sourceId ? 'Contradicts' as const : 'Supports' as const
+          position: this.contradictingSourceIds().has(sourceId) ? 'Contradicts' as const : 'Supports' as const
         })),
         editorialNote: this.optional(value.editorialNote),
         reviewNote: this.optional(value.reviewNote)
@@ -170,7 +181,7 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
   }
 
   protected subjectKey(subject: AdminHistoricalSubject): string {
-    return `${subject.type}::${subject.id}`;
+    return `${subject.type}::${subject.id}::${subject.contextParkId ?? ''}`;
   }
 
   private resetFromRelation(): void {
@@ -201,7 +212,11 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
     this.selectedSourceIds.set(new Map(
       (relation?.sources ?? []).map((source: AdminHistoricalEvidence): [string, number] => [source.sourceId, source.revision])
     ));
-    this.contradictingSourceId.set(relation?.sources.find((source): boolean => source.position === 'Contradicts')?.sourceId ?? null);
+    this.contradictingSourceIds.set(new Set(
+      (relation?.sources ?? [])
+        .filter((source: AdminHistoricalEvidence): boolean => source.position === 'Contradicts')
+        .map((source: AdminHistoricalEvidence): string => source.sourceId)
+    ));
     this.uncertaintyMissing.set(false);
   }
 

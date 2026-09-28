@@ -92,7 +92,7 @@
               <span><strong>{{ source.title }}</strong><small>{{ source.publisherOrAuthor }}</small></span>
             </button>
             @if (selectedSourceIds().has(source.id) && form.controls.state.value === 'Disputed') {
-              <button type="button" class="editor__contradiction" [class.editor__contradiction--active]="contradictingSourceId() === source.id" (click)="markContradicting(source.id)">{{ 'admin.history.workbench.factEditor.contradicts' | translate }}</button>
+              <button type="button" class="editor__contradiction" [class.editor__contradiction--active]="contradictingSourceIds().has(source.id)" (click)="markContradicting(source.id)">{{ 'admin.history.workbench.factEditor.contradicts' | translate }}</button>
             }
           </article>
         }

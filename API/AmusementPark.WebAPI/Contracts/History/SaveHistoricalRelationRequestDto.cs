@@ -8,9 +8,13 @@ public sealed class SaveHistoricalRelationRequestDto
 
     public string SourceSubjectId { get; init; } = string.Empty;
 
+    public string? SourceSubjectContextParkId { get; init; }
+
     public string TargetSubjectType { get; init; } = string.Empty;
 
     public string TargetSubjectId { get; init; } = string.Empty;
+
+    public string? TargetSubjectContextParkId { get; init; }
 
     public string Type { get; init; } = string.Empty;
 

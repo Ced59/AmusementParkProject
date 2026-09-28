@@ -12,13 +12,15 @@ describe('AdminHistoricalRelationEditorComponent', () => {
   it('round-trips immutable evidence and the complete relation period', () => {
     const sourceSubject: AdminHistoricalSubject = {
       type: 'ParkItem',
-      id: 'item-1',
+      id: 'shared-item',
+      contextParkId: 'park-1',
       label: 'Ancien nom',
       publicationPolicy: 'Public'
     };
     const targetSubject: AdminHistoricalSubject = {
       type: 'ParkItem',
-      id: 'item-2',
+      id: 'shared-item',
+      contextParkId: 'park-2',
       label: 'Nouveau nom',
       publicationPolicy: 'Public'
     };
@@ -71,12 +73,15 @@ describe('AdminHistoricalRelationEditorComponent', () => {
       workflowState: 'Published',
       publicationState: 'Published',
       publicUncertaintyExplanation: [],
-      sources: [{ sourceId: source.id, revision: 2, position: 'Contradicts' }],
+      sources: [
+        { sourceId: source.id, revision: 2, position: 'Contradicts' },
+        { sourceId: 'source-2', revision: 3, position: 'Contradicts' }
+      ],
       editorialNote: 'Relation documentée.'
     };
     const component: AdminHistoricalRelationEditorComponent = new AdminHistoricalRelationEditorComponent();
     component.subjects = [sourceSubject, targetSubject];
-    component.sources = [source];
+    component.sources = [source, { ...source, id: 'source-2', revision: 7 }];
     component.relation = relation;
     component.ngOnChanges({
       relation: new SimpleChange(null, relation, true),
@@ -92,5 +97,7 @@ describe('AdminHistoricalRelationEditorComponent', () => {
     expect(request).not.toBeNull();
     expect(request!.period).toEqual(relation.period);
     expect(request!.sources).toEqual(relation.sources);
+    expect(request!.sourceSubjectContextParkId).toBe('park-1');
+    expect(request!.targetSubjectContextParkId).toBe('park-2');
   });
 });

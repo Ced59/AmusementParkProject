@@ -26,14 +26,32 @@ public static class HistoricalEditorialInputMapper
     public static HistoricalSubject ResolveSubject(
         IReadOnlyCollection<HistoricalSubject> subjects,
         HistoricalSubjectType subjectType,
-        string subjectId)
+        string subjectId,
+        string? contextParkId = null)
     {
         ArgumentNullException.ThrowIfNull(subjects);
         string normalizedSubjectId = subjectId?.Trim() ?? string.Empty;
-        return subjects.FirstOrDefault(subject =>
+        string? normalizedContextParkId = string.IsNullOrWhiteSpace(contextParkId)
+            ? null
+            : contextParkId.Trim();
+        HistoricalSubject[] candidates = subjects.Where(subject =>
                 subject.Type == subjectType
                 && string.Equals(subject.Id, normalizedSubjectId, StringComparison.Ordinal))
-            ?? throw new HistoricalPersistenceValidationException(
+            .ToArray();
+        HistoricalSubject? subject = null;
+        if (normalizedContextParkId is null && candidates.Length == 1)
+        {
+            subject = candidates[0];
+        }
+        else if (normalizedContextParkId is not null)
+        {
+            subject = candidates.FirstOrDefault(candidate => string.Equals(
+                candidate.ContextParkId,
+                normalizedContextParkId,
+                StringComparison.Ordinal));
+        }
+
+        return subject ?? throw new HistoricalPersistenceValidationException(
                 HistoricalPersistenceErrorCodes.InvalidIdentifier,
                 "The selected historical subject does not belong to this park.",
                 nameof(subjectId));

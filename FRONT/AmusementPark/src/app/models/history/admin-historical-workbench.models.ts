@@ -25,6 +25,7 @@ export interface AdminHistoricalPeriod {
 export interface AdminHistoricalSubject {
   type: HistoricalSubjectType;
   id: string;
+  contextParkId: string | null;
   label: string;
   publicationPolicy: string;
 }
@@ -169,8 +170,10 @@ export interface SaveHistoricalRelationRequest {
   expectedRevision: number | null;
   sourceSubjectType: HistoricalSubjectType;
   sourceSubjectId: string;
+  sourceSubjectContextParkId: string | null;
   targetSubjectType: HistoricalSubjectType;
   targetSubjectId: string;
+  targetSubjectContextParkId: string | null;
   type: string;
   direction: string;
   period: HistoricalPeriodRequest;

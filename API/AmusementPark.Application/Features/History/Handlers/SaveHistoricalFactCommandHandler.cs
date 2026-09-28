@@ -84,7 +84,8 @@ public sealed class SaveHistoricalFactCommandHandler :
                 ?? HistoricalEditorialInputMapper.ResolveSubject(
                     editableSubjects,
                     draft.SubjectType,
-                    draft.SubjectId);
+                    draft.SubjectId,
+                    scope.ParkId);
             if (subject.Type != draft.SubjectType
                 || !string.Equals(subject.Id, draft.SubjectId.Trim(), StringComparison.Ordinal))
             {
