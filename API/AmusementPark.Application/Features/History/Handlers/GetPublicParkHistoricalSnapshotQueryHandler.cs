@@ -40,7 +40,7 @@ public sealed class GetPublicParkHistoricalSnapshotQueryHandler :
 
         string parkId = query.ParkId.Trim();
         PublicParkHistoricalData? data = await this.dataLoader.LoadAsync(parkId, cancellationToken);
-        if (data is null)
+        if (data is null || data.RolloutGate?.IsOpen != true)
         {
             return ApplicationResult<PublicParkHistoricalSnapshotResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(Park), parkId));

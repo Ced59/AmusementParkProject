@@ -4,6 +4,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.History.Handlers;
@@ -18,15 +19,18 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
     private readonly IHistoricalRelationRepository relationRepository;
     private readonly IHistoricalSourceRepository sourceRepository;
     private readonly IHistoricalSubjectPublicationStateReader subjectPublicationStateReader;
+    private readonly IHistoricalParkRolloutGateAccessService rolloutGateAccessService;
 
     public GetPublicHistoricalLineageQueryHandler(
         IHistoricalRelationRepository relationRepository,
         IHistoricalSourceRepository sourceRepository,
-        IHistoricalSubjectPublicationStateReader subjectPublicationStateReader)
+        IHistoricalSubjectPublicationStateReader subjectPublicationStateReader,
+        IHistoricalParkRolloutGateAccessService rolloutGateAccessService)
     {
         this.relationRepository = relationRepository;
         this.sourceRepository = sourceRepository;
         this.subjectPublicationStateReader = subjectPublicationStateReader;
+        this.rolloutGateAccessService = rolloutGateAccessService;
     }
 
     public async Task<ApplicationResult<PublicHistoricalLineageResult>> HandleAsync(
@@ -62,6 +66,13 @@ public sealed class GetPublicHistoricalLineageQueryHandler :
         string? rootContextParkId = query.SubjectType == HistoricalSubjectType.Park
             ? normalizedSubjectId
             : normalizedContextParkId;
+        if (rootContextParkId is null
+            || !await this.rolloutGateAccessService.IsOpenAsync(rootContextParkId, cancellationToken))
+        {
+            return ApplicationResult<PublicHistoricalLineageResult>.Failure(
+                ApplicationErrors.EntityNotFound("historical-lineage", normalizedSubjectId));
+        }
+
         HistoricalSubjectKey rootKey = new(
             query.SubjectType,
             normalizedSubjectId,

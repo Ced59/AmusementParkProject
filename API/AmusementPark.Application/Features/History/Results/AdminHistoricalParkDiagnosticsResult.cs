@@ -7,4 +7,5 @@ public sealed record AdminHistoricalParkDiagnosticsResult(
     string ParkId,
     string ParkName,
     HistoricalParkDiagnostics Diagnostics,
-    HistoricalVisitDiagnosticCounts VisitCounts);
+    HistoricalVisitDiagnosticCounts VisitCounts,
+    HistoricalParkRolloutGate RolloutGate);

@@ -122,6 +122,19 @@
           "blocked": "São necessárias correções",
           "ready": "Nenhum bloqueio detetado"
         },
+        "rollout": {
+          "kicker": "Ativação por parque",
+          "openTitle": "Explorador público ativado",
+          "blockedTitle": "Explorador público pendente",
+          "openHint": "Os factos publicados permitem uma exploração histórica suficientemente documentada.",
+          "blockedHint": "Completa os critérios em falta antes de apresentar esta história ao público.",
+          "structuredFacts": "{{current}} factos estruturados publicados · mínimo {{required}}",
+          "sources": "{{sourced}} factos com fontes em {{total}}",
+          "majorMilestone": "{{count}} marcos principais publicados",
+          "keyYear": "{{count}} anos-chave com cobertura suficiente",
+          "years": "Anos-chave: {{years}}",
+          "independence": "Esta decisão depende apenas dos factos históricos publicados, nunca do número de visitas ou membros."
+        },
         "kpis": {
           "blockers": "Bloqueios",
           "blockersHint": "A corrigir antes da publicação",

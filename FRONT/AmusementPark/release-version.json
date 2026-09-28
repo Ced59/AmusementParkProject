@@ -1,6 +1,20 @@
 {
-  "version": "5.3.103",
+  "version": "5.3.104",
   "history": [
+    {
+      "version": "5.3.104",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "L’exploration historique s’ouvre parc par parc lorsque les contenus sont suffisamment documentés.",
+        "en": "Historical exploration opens park by park when content is sufficiently documented.",
+        "de": "Die historische Erkundung wird Park für Park freigeschaltet, sobald die Inhalte ausreichend dokumentiert sind.",
+        "nl": "Historische verkenning wordt per park geopend zodra de inhoud voldoende is gedocumenteerd.",
+        "it": "L’esplorazione storica si apre parco per parco quando i contenuti sono sufficientemente documentati.",
+        "es": "La exploración histórica se abre parque por parque cuando los contenidos están suficientemente documentados.",
+        "pl": "Odkrywanie historii jest udostępniane dla każdego parku, gdy treści są wystarczająco udokumentowane.",
+        "pt": "A exploração histórica é ativada parque a parque quando os conteúdos estão suficientemente documentados."
+      }
+    },
     {
       "version": "5.3.103",
       "releasedAt": "2026-09-28",

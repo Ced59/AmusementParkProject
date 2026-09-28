@@ -2640,6 +2640,19 @@
           "blocked": "Se requieren correcciones",
           "ready": "No se ha detectado ningún bloqueo"
         },
+        "rollout": {
+          "kicker": "Activación por parque",
+          "openTitle": "Explorador público activado",
+          "blockedTitle": "Explorador público pendiente",
+          "openHint": "Los hechos publicados permiten una exploración histórica suficientemente documentada.",
+          "blockedHint": "Completa los criterios pendientes antes de mostrar esta historia al público.",
+          "structuredFacts": "{{current}} hechos estructurados publicados · mínimo {{required}}",
+          "sources": "{{sourced}} hechos con fuentes de {{total}}",
+          "majorMilestone": "{{count}} hitos principales publicados",
+          "keyYear": "{{count}} años clave con cobertura suficiente",
+          "years": "Años clave: {{years}}",
+          "independence": "Esta decisión depende únicamente de los hechos históricos publicados, nunca del número de visitas o miembros."
+        },
         "kpis": {
           "blockers": "Bloqueos",
           "blockersHint": "Deben corregirse antes de publicar",

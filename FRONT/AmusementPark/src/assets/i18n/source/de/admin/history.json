@@ -122,6 +122,19 @@
           "blocked": "Korrekturen erforderlich",
           "ready": "Keine Blockierung erkannt"
         },
+        "rollout": {
+          "kicker": "Freigabe pro Park",
+          "openTitle": "Öffentlicher Explorer aktiviert",
+          "blockedTitle": "Öffentlicher Explorer noch nicht bereit",
+          "openHint": "Die veröffentlichten Fakten ermöglichen eine ausreichend belegte historische Erkundung.",
+          "blockedHint": "Vervollständige die fehlenden Kriterien, bevor diese Geschichte öffentlich erscheint.",
+          "structuredFacts": "{{current}} veröffentlichte strukturierte Fakten · mindestens {{required}}",
+          "sources": "{{sourced}} von {{total}} Fakten mit Quellen",
+          "majorMilestone": "{{count}} veröffentlichte wichtige Meilensteine",
+          "keyYear": "{{count}} Schlüsseljahre mit ausreichender Abdeckung",
+          "years": "Schlüsseljahre: {{years}}",
+          "independence": "Diese Entscheidung beruht ausschließlich auf veröffentlichten historischen Fakten, niemals auf der Zahl der Besuche oder Mitglieder."
+        },
         "kpis": {
           "blockers": "Blockierungen",
           "blockersHint": "Vor der Veröffentlichung zu korrigieren",

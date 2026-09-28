@@ -683,7 +683,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | [`HIST-12A`](../../architecture/product-growth-hist-12a-history-admin-diagnostics-2026-09-28.md) | Diagnostic qualité par parc | Incohérences, preuves, couverture et impact Passeport anonymisé — implémenté le 28 septembre 2026 |
 | [`HIST-12B`](../../architecture/product-growth-hist-12b-history-editorial-workbench-2026-09-28.md) | Atelier éditorial canonique | Édition, revue, aperçu public et impact avant publication — implémenté le 28 septembre 2026 |
 | [`HIST-13`](../../architecture/product-growth-hist-13-key-history-pages-seo-2026-09-28.md) | SEO/partage | Années clés seulement, canonical et partage contextualisé — implémenté le 28 septembre 2026 |
-| `HIST-14` | Extension parcs | Gate par parc |
+| [`HIST-14`](../../architecture/product-growth-hist-14-park-rollout-gate-2026-09-28.md) | Extension parcs | Gate qualité calculée par parc, indépendante des visites — implémenté le 28 septembre 2026 |
 
 ### Implémentation `HIST-02` — 25 septembre 2026
 
@@ -1108,6 +1108,27 @@ récapitulatif de visite public relie également le visiteur à l’état histor
 du parc lorsque sa date est publique. Le panneau de partage commun est disponible
 sur le snapshot avec le parc et l’année, sans créer un mécanisme parallèle. Ces
 ajouts conservent les largeurs fluides et les focus visibles sur mobile.
+
+### Implémentation `HIST-14` — 28 septembre 2026
+
+L’explorateur n’est plus considéré comme disponible dès qu’un récit narratif
+ou un fait isolé existe. Une gate métier unique, calculée dans le Core, exige
+au moins deux faits structurés publiés et sourcés, un jalon majeur et une année
+clé dont la reconstitution possède déjà la couverture substantielle définie
+par `HIST-13`. Aucun volume de visites, de passages ou de membres n’entre dans
+la décision.
+
+Le même verdict ferme ou ouvre la timeline, les snapshots, les comparaisons et
+les lignées ; un accès profond ne peut donc pas contourner la gate. Les
+sitemaps XML et HTML réutilisent le même verdict, le XML reprend exactement ses
+années clés et aucun des deux n’énumère un parc en attente. L’administration
+affiche le résultat, les quatre critères, leurs compteurs et les années
+qualifiées avec une présentation responsive.
+
+La gate n’est ni un flag permanent ni une seconde persistance : elle est
+recalculée depuis les faits canoniques à chaque lecture. Aucune migration Mongo
+n’est nécessaire et aucun état d’activation ne peut diverger des preuves
+publiées.
 
 ## 22. Gate finale `HIST-G`
 

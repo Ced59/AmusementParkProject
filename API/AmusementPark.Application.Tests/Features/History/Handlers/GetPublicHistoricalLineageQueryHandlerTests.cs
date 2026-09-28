@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Core.Domain.History;
 using Moq;
 using Xunit;
@@ -13,6 +14,34 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
 {
     private static readonly DateTime RecordedAtUtc =
         new DateTime(2026, 9, 27, 10, 0, 0, DateTimeKind.Utc);
+
+    [Fact]
+    public async Task HandleAsync_WhenParkRolloutGateIsClosed_ShouldNotReadRelations()
+    {
+        Mock<IHistoricalRelationRepository> relations = new(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sources = new(MockBehavior.Strict);
+        Mock<IHistoricalSubjectPublicationStateReader> publication = new(MockBehavior.Strict);
+        Mock<IHistoricalParkRolloutGateAccessService> gate = new(MockBehavior.Strict);
+        gate.Setup(service => service.IsOpenAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);
+        GetPublicHistoricalLineageQueryHandler handler = new(
+            relations.Object,
+            sources.Object,
+            publication.Object,
+            gate.Object);
+
+        ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
+            new GetPublicHistoricalLineageQuery(
+                HistoricalSubjectType.ParkItem,
+                "item-1",
+                "park-1"));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "historical-lineage.not-found");
+        relations.VerifyNoOtherCalls();
+        sources.VerifyNoOtherCalls();
+        publication.VerifyNoOtherCalls();
+    }
 
     [Fact]
     public async Task HandleAsync_WhenPublishedRelationIsVisible_ShouldReturnExactSourcedLineage()
@@ -54,7 +83,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         GetPublicHistoricalLineageQueryHandler handler = new(
             relationRepository.Object,
             sourceRepository.Object,
-            publicationReader.Object);
+            publicationReader.Object,
+            CreateOpenRolloutGate());
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(
@@ -95,7 +125,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         GetPublicHistoricalLineageQueryHandler handler = new(
             relationRepository.Object,
             sourceRepository.Object,
-            publicationReader.Object);
+            publicationReader.Object,
+            CreateOpenRolloutGate());
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(
@@ -154,7 +185,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         GetPublicHistoricalLineageQueryHandler handler = new(
             relationRepository.Object,
             sourceRepository.Object,
-            publicationReader.Object);
+            publicationReader.Object,
+            CreateOpenRolloutGate());
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(
@@ -179,7 +211,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         GetPublicHistoricalLineageQueryHandler handler = new(
             relationRepository.Object,
             sourceRepository.Object,
-            publicationReader.Object);
+            publicationReader.Object,
+            CreateOpenRolloutGate());
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(HistoricalSubjectType.ParkItem, new string('x', 201)));
@@ -198,7 +231,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         GetPublicHistoricalLineageQueryHandler handler = new(
             relationRepository.Object,
             sourceRepository.Object,
-            publicationReader.Object);
+            publicationReader.Object,
+            CreateOpenRolloutGate());
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(
@@ -247,7 +281,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         GetPublicHistoricalLineageQueryHandler handler = new(
             relationRepository.Object,
             sourceRepository.Object,
-            publicationReader.Object);
+            publicationReader.Object,
+            CreateOpenRolloutGate());
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(
@@ -274,7 +309,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         GetPublicHistoricalLineageQueryHandler handler = new(
             relationRepository.Object,
             sourceRepository.Object,
-            publicationReader.Object);
+            publicationReader.Object,
+            CreateOpenRolloutGate());
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(HistoricalSubjectType.ParkItem, "item-1", "park-1"));
@@ -337,7 +373,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         GetPublicHistoricalLineageQueryHandler handler = new(
             relationRepository.Object,
             sourceRepository.Object,
-            publicationReader.Object);
+            publicationReader.Object,
+            CreateOpenRolloutGate());
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(
@@ -410,7 +447,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         GetPublicHistoricalLineageQueryHandler handler = new(
             relationRepository.Object,
             sourceRepository.Object,
-            publicationReader.Object);
+            publicationReader.Object,
+            CreateOpenRolloutGate());
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(
@@ -446,7 +484,8 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
         GetPublicHistoricalLineageQueryHandler handler = new(
             relationRepository.Object,
             sourceRepository.Object,
-            publicationReader.Object);
+            publicationReader.Object,
+            CreateOpenRolloutGate());
 
         ApplicationResult<PublicHistoricalLineageResult> result = await handler.HandleAsync(
             new GetPublicHistoricalLineageQuery(
@@ -568,5 +607,15 @@ public sealed class GetPublicHistoricalLineageQueryHandlerTests
     private static HistoricalSubjectKey ToKey(HistoricalSubject subject)
     {
         return new HistoricalSubjectKey(subject.Type, subject.Id, subject.ContextParkId);
+    }
+
+    private static IHistoricalParkRolloutGateAccessService CreateOpenRolloutGate()
+    {
+        Mock<IHistoricalParkRolloutGateAccessService> gate = new(MockBehavior.Strict);
+        gate.Setup(service => service.IsOpenAsync(
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        return gate.Object;
     }
 }

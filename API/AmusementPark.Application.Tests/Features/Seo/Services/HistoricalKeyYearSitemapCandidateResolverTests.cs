@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Tests.Features.History.Handlers;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Services;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
@@ -55,7 +56,7 @@ public sealed class HistoricalKeyYearSitemapCandidateResolverTests
                 new[] { item },
                 Array.Empty<ParkZone>(),
                 new[] { parkOpening, itemOpening },
-                snapshotBuilder.Object);
+                CreateAssessment(snapshotBuilder.Object));
 
         Assert.Contains(result, candidate => candidate.ParkId == park.Id && candidate.Year == 1998);
         Assert.All(result, candidate => Assert.Contains(candidate.Year, new[] { 1990, 1998 }));
@@ -81,7 +82,7 @@ public sealed class HistoricalKeyYearSitemapCandidateResolverTests
                 new[] { hiddenItem },
                 Array.Empty<ParkZone>(),
                 new[] { hiddenFact },
-                snapshotBuilder.Object);
+                CreateAssessment(snapshotBuilder.Object));
 
         Assert.Empty(result);
     }
@@ -113,7 +114,7 @@ public sealed class HistoricalKeyYearSitemapCandidateResolverTests
                 new[] { movedItem },
                 Array.Empty<ParkZone>(),
                 new[] { formerFact },
-                snapshotBuilder.Object);
+                CreateAssessment(snapshotBuilder.Object));
 
         Assert.Empty(result);
         snapshotBuilder.VerifyNoOtherCalls();
@@ -149,5 +150,13 @@ public sealed class HistoricalKeyYearSitemapCandidateResolverTests
             coverage,
             Array.Empty<HistoricalAmbiguity>(),
             ParkHistoricalSnapshotBuilder.CurrentMethodologyVersion);
+    }
+
+    private static HistoricalParkRolloutGateAssessmentService CreateAssessment(
+        IParkHistoricalSnapshotBuilder snapshotBuilder)
+    {
+        return new HistoricalParkRolloutGateAssessmentService(
+            snapshotBuilder,
+            new HistoricalParkRolloutGateEvaluator());
     }
 }

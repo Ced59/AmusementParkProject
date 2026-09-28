@@ -1,5 +1,6 @@
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
@@ -14,17 +15,20 @@ public sealed class PublicParkHistoricalDataLoader
     private readonly IParkItemRepository parkItemRepository;
     private readonly IParkZoneRepository parkZoneRepository;
     private readonly IHistoricalFactRepository historicalFactRepository;
+    private readonly IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService;
 
     public PublicParkHistoricalDataLoader(
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IParkZoneRepository parkZoneRepository,
-        IHistoricalFactRepository historicalFactRepository)
+        IHistoricalFactRepository historicalFactRepository,
+        IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.parkZoneRepository = parkZoneRepository;
         this.historicalFactRepository = historicalFactRepository;
+        this.rolloutGateAssessmentService = rolloutGateAssessmentService;
     }
 
     public async Task<PublicParkHistoricalData?> LoadAsync(
@@ -42,8 +46,11 @@ public sealed class PublicParkHistoricalDataLoader
                 scope.Park.Id,
                 scope.PublicCurrentSubjects,
                 cancellationToken);
-        HashSet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjects = scope.PublicCurrentSubjects
-            .Select(static subject => (subject.Type, subject.Id))
+        HashSet<HistoricalSubjectKey> publicCurrentSubjects = scope.PublicCurrentSubjects
+            .Select(static subject => new HistoricalSubjectKey(
+                subject.Type,
+                subject.Id,
+                subject.ContextParkId))
             .ToHashSet();
         HistoricalFact[] publicFacts = latestFacts
             .Where(fact => CanExposeFact(fact, publicCurrentSubjects, scope.Park.Id))
@@ -54,12 +61,17 @@ public sealed class PublicParkHistoricalDataLoader
         IReadOnlyDictionary<string, string> publicZoneNames = ResolvePublicZoneNames(
             scope,
             publicFacts);
+        HistoricalParkRolloutGate rolloutGate = this.rolloutGateAssessmentService.Assess(
+            scope.Park.Id,
+            selectedSubjects,
+            publicFacts);
 
         return new PublicParkHistoricalData(
             scope.Park,
             selectedSubjects,
             publicFacts,
-            publicZoneNames);
+            publicZoneNames,
+            rolloutGate);
     }
 
     public async Task<PublicParkHistoricalData?> LoadParkItemsAsync(
@@ -113,9 +125,12 @@ public sealed class PublicParkHistoricalDataLoader
             await this.historicalFactRepository.GetLatestRevisionsForSubjectsAsync(
                 requestedSubjects,
                 cancellationToken);
-        HashSet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjectKeys =
+        HashSet<HistoricalSubjectKey> publicCurrentSubjectKeys =
             publicCurrentSubjects
-                .Select(static subject => (subject.Type, subject.Id))
+                .Select(static subject => new HistoricalSubjectKey(
+                    subject.Type,
+                    subject.Id,
+                    subject.ContextParkId))
                 .ToHashSet();
         HistoricalFact[] publicFacts = latestFacts
             .Where(fact => CanExposeFact(fact, publicCurrentSubjectKeys, normalizedParkId))
@@ -125,7 +140,8 @@ public sealed class PublicParkHistoricalDataLoader
             park!,
             SelectSubjects(publicCurrentSubjects, publicFacts),
             publicFacts,
-            new Dictionary<string, string>(StringComparer.Ordinal));
+            new Dictionary<string, string>(StringComparer.Ordinal),
+            null);
     }
 
     public async Task<PublicParkHistoricalScope?> LoadScopeAsync(
@@ -191,19 +207,27 @@ public sealed class PublicParkHistoricalDataLoader
         return zoneNames;
     }
 
-    public Task<PagedResult<HistoricalFact>> GetTimelinePageAsync(
-        PublicParkHistoricalScope scope,
+    public PagedResult<HistoricalFact> GetTimelinePage(
+        PublicParkHistoricalData data,
         int page,
-        int pageSize,
-        CancellationToken cancellationToken)
+        int pageSize)
     {
-        ArgumentNullException.ThrowIfNull(scope);
-        return this.historicalFactRepository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
-            scope.Park.Id,
-            scope.PublicCurrentSubjects,
-            page,
-            pageSize,
-            cancellationToken);
+        ArgumentNullException.ThrowIfNull(data);
+        HistoricalFact[] orderedFacts = data.Facts
+            .OrderBy(static fact => HistoricalTimelineOrdering.ResolveDayNumber(fact.Period))
+            .ThenBy(static fact => fact.SequenceWithinDate)
+            .ThenBy(static fact => fact.Subject.HistoricalLabel, StringComparer.Ordinal)
+            .ThenBy(static fact => fact.Type)
+            .ThenBy(static fact => fact.Id)
+            .ToArray();
+        long offset = (long)(page - 1) * pageSize;
+        HistoricalFact[] pageFacts = offset >= orderedFacts.LongLength
+            ? Array.Empty<HistoricalFact>()
+            : orderedFacts
+                .Skip((int)offset)
+                .Take(pageSize)
+                .ToArray();
+        return new PagedResult<HistoricalFact>(pageFacts, page, pageSize, orderedFacts.Length);
     }
 
     private static HistoricalSubject[] BuildCandidateSubjects(
@@ -256,7 +280,7 @@ public sealed class PublicParkHistoricalDataLoader
 
     private static bool CanExposeFact(
         HistoricalFact fact,
-        IReadOnlySet<(HistoricalSubjectType Type, string Id)> publicCurrentSubjects,
+        IReadOnlySet<HistoricalSubjectKey> publicCurrentSubjects,
         string parkId)
     {
         if (!fact.IsDecisionEligible
@@ -269,7 +293,10 @@ public sealed class PublicParkHistoricalDataLoader
                 && string.Equals(fact.Subject.ContextParkId, parkId, StringComparison.Ordinal))
             || (fact.Subject.PublicationPolicy
                     == HistoricalSubjectPublicationPolicy.FollowCurrentSubject
-                && publicCurrentSubjects.Contains((fact.Subject.Type, fact.Subject.Id)));
+                && publicCurrentSubjects.Contains(new HistoricalSubjectKey(
+                    fact.Subject.Type,
+                    fact.Subject.Id,
+                    fact.Subject.ContextParkId)));
     }
 
     private static HistoricalSubject[] SelectSubjects(

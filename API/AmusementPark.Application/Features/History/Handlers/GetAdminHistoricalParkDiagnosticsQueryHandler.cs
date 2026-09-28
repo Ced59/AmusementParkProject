@@ -20,19 +20,22 @@ public sealed class GetAdminHistoricalParkDiagnosticsQueryHandler :
     private readonly IHistoricalRelationRepository relationRepository;
     private readonly IHistoricalVisitDiagnosticsReader visitDiagnosticsReader;
     private readonly HistoricalParkDiagnosticsEvaluator diagnosticsEvaluator;
+    private readonly IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService;
 
     public GetAdminHistoricalParkDiagnosticsQueryHandler(
         HistoricalParkEditorialScopeLoader scopeLoader,
         IHistoricalFactRepository factRepository,
         IHistoricalRelationRepository relationRepository,
         IHistoricalVisitDiagnosticsReader visitDiagnosticsReader,
-        HistoricalParkDiagnosticsEvaluator diagnosticsEvaluator)
+        HistoricalParkDiagnosticsEvaluator diagnosticsEvaluator,
+        IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService)
     {
         this.scopeLoader = scopeLoader;
         this.factRepository = factRepository;
         this.relationRepository = relationRepository;
         this.visitDiagnosticsReader = visitDiagnosticsReader;
         this.diagnosticsEvaluator = diagnosticsEvaluator;
+        this.rolloutGateAssessmentService = rolloutGateAssessmentService;
     }
 
     public async Task<ApplicationResult<AdminHistoricalParkDiagnosticsResult>> HandleAsync(
@@ -76,16 +79,20 @@ public sealed class GetAdminHistoricalParkDiagnosticsQueryHandler :
             this.visitDiagnosticsReader.GetCountsAsync(parkId, cancellationToken);
         await Task.WhenAll(factsTask, relationsTask, visitsTask);
 
+        IReadOnlyCollection<HistoricalFact> facts = await factsTask;
         HistoricalParkDiagnostics diagnostics = this.diagnosticsEvaluator.Evaluate(
-            await factsTask,
+            facts,
             await relationsTask,
             scope.CurrentZoneIds);
+        HistoricalParkRolloutGate rolloutGate =
+            this.rolloutGateAssessmentService.AssessPublicPark(scope, facts);
         return ApplicationResult<AdminHistoricalParkDiagnosticsResult>.Success(
             new AdminHistoricalParkDiagnosticsResult(
                 scope.ParkId,
                 scope.ParkName,
                 diagnostics,
-                await visitsTask));
+                await visitsTask,
+                rolloutGate));
     }
 
 }

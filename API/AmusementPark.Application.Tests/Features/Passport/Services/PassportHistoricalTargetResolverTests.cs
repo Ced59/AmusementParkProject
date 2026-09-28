@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -57,7 +58,8 @@ public sealed class PassportHistoricalTargetResolverTests
                 parks.Object,
                 parkItems.Object,
                 zones.Object,
-                facts.Object),
+                facts.Object,
+                CreateRolloutGateAssessmentService()),
             new ParkHistoricalSnapshotBuilder(),
             currentTargets.Object,
             images.Object);
@@ -159,7 +161,8 @@ public sealed class PassportHistoricalTargetResolverTests
                 parks.Object,
                 parkItems.Object,
                 zones.Object,
-                facts.Object),
+                facts.Object,
+                CreateRolloutGateAssessmentService()),
             new ParkHistoricalSnapshotBuilder(),
             currentTargets.Object,
             images.Object);
@@ -263,7 +266,8 @@ public sealed class PassportHistoricalTargetResolverTests
                 parks.Object,
                 parkItems.Object,
                 zones.Object,
-                facts.Object),
+                facts.Object,
+                CreateRolloutGateAssessmentService()),
             new ParkHistoricalSnapshotBuilder(),
             currentTargets.Object,
             images.Object);
@@ -357,7 +361,8 @@ public sealed class PassportHistoricalTargetResolverTests
                 parks.Object,
                 parkItems.Object,
                 zones.Object,
-                facts.Object),
+                facts.Object,
+                CreateRolloutGateAssessmentService()),
             snapshots.Object,
             currentTargets.Object,
             images.Object);
@@ -386,6 +391,13 @@ public sealed class PassportHistoricalTargetResolverTests
         currentTargets.VerifyAll();
         zones.VerifyNoOtherCalls();
         images.VerifyNoOtherCalls();
+    }
+
+    private static HistoricalParkRolloutGateAssessmentService CreateRolloutGateAssessmentService()
+    {
+        return new HistoricalParkRolloutGateAssessmentService(
+            new ParkHistoricalSnapshotBuilder(),
+            new HistoricalParkRolloutGateEvaluator());
     }
 
     private static ParkHistoricalSnapshot CreateNonAttractionSnapshot(

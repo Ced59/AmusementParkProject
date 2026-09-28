@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.History.Ports;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
@@ -12,13 +13,13 @@ public static class HistoricalKeyYearSitemapCandidateResolver
         IReadOnlyCollection<ParkItem> parkItems,
         IReadOnlyCollection<ParkZone> parkZones,
         IReadOnlyCollection<HistoricalFact> facts,
-        IParkHistoricalSnapshotBuilder snapshotBuilder)
+        IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService)
     {
         ArgumentNullException.ThrowIfNull(parks);
         ArgumentNullException.ThrowIfNull(parkItems);
         ArgumentNullException.ThrowIfNull(parkZones);
         ArgumentNullException.ThrowIfNull(facts);
-        ArgumentNullException.ThrowIfNull(snapshotBuilder);
+        ArgumentNullException.ThrowIfNull(rolloutGateAssessmentService);
 
         Dictionary<string, Park> publicParks = parks
             .Where(IsPublicPark)
@@ -81,29 +82,23 @@ public static class HistoricalKeyYearSitemapCandidateResolver
                     .Select(static fact => fact.Subject))
                 .DistinctBy(static subject => (subject.Type, subject.Id))
                 .ToArray();
-            DateTime lastModifiedAtUtc = parkFacts.Max(static fact => fact.RecordedAtUtc);
-            int[] keyYearCandidates = parkFacts
-                .Where(static fact => fact.Importance == HistoricalImportance.Major)
-                .SelectMany(static fact => BoundaryYears(fact.Period))
-                .Distinct()
-                .Order()
-                .ToArray();
-
-            foreach (int year in keyYearCandidates)
+            HistoricalParkRolloutGate rolloutGate = rolloutGateAssessmentService.Assess(
+                parkId,
+                subjects,
+                parkFacts);
+            if (!rolloutGate.IsOpen)
             {
-                ParkHistoricalSnapshot snapshot = snapshotBuilder.Build(
+                continue;
+            }
+
+            DateTime lastModifiedAtUtc = parkFacts.Max(static fact => fact.RecordedAtUtc);
+            foreach (int year in rolloutGate.IndexableKeyYears)
+            {
+                candidates.Add(new HistoricalKeyYearSitemapCandidate(
                     parkId,
-                    HistoricalInstant.ForYear(year),
-                    subjects,
-                    parkFacts);
-                if (HistoricalSnapshotSeoEligibilityEvaluator.IsIndexableKeyYear(snapshot, parkFacts))
-                {
-                    candidates.Add(new HistoricalKeyYearSitemapCandidate(
-                        parkId,
-                        park.Name ?? string.Empty,
-                        year,
-                        lastModifiedAtUtc));
-                }
+                    park.Name ?? string.Empty,
+                    year,
+                    lastModifiedAtUtc));
             }
         }
 
@@ -166,19 +161,6 @@ public static class HistoricalKeyYearSitemapCandidateResolver
     {
         return fact.Subject.ContextParkId
             ?? (fact.Subject.Type == HistoricalSubjectType.Park ? fact.Subject.Id : string.Empty);
-    }
-
-    private static IEnumerable<int> BoundaryYears(HistoricalPeriod period)
-    {
-        if (period.Start is not null)
-        {
-            yield return period.Start.Year;
-        }
-
-        if (period.End is not null && period.End.Year != period.Start?.Year)
-        {
-            yield return period.End.Year;
-        }
     }
 
     private static bool IsPublicPark(Park park)

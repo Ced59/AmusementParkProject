@@ -54,18 +54,17 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
         }
 
         string parkId = query.ParkId.Trim();
-        PublicParkHistoricalScope? scope = await this.dataLoader.LoadScopeAsync(parkId, cancellationToken);
-        if (scope is null)
+        PublicParkHistoricalData? data = await this.dataLoader.LoadAsync(parkId, cancellationToken);
+        if (data is null || data.RolloutGate?.IsOpen != true)
         {
             return ApplicationResult<PublicParkHistoricalTimelineResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(Park), parkId));
         }
 
-        PagedResult<HistoricalFact> factPage = await this.dataLoader.GetTimelinePageAsync(
-            scope,
+        PagedResult<HistoricalFact> factPage = this.dataLoader.GetTimelinePage(
+            data,
             query.Page,
-            query.PageSize,
-            cancellationToken);
+            query.PageSize);
         HistoricalFact[] pageFacts = factPage.Items.ToArray();
         HistoricalSourceRevisionReference[] sourceReferences = pageFacts
             .SelectMany(static fact => fact.SourceReferences)
@@ -101,7 +100,10 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             static narrative => narrative.Id,
             StringComparer.Ordinal);
         Dictionary<(HistoricalSubjectType Type, string Id), HistoricalSubject> publicCurrentSubjects =
-            scope.PublicCurrentSubjects.ToDictionary(static subject => (subject.Type, subject.Id));
+            data.Subjects
+                .Where(static subject => subject.PublicationPolicy
+                    == HistoricalSubjectPublicationPolicy.FollowCurrentSubject)
+                .ToDictionary(static subject => (subject.Type, subject.Id));
         HashSet<HistoricalSubjectKey> subjectsWithLineage = await this.LoadSubjectsWithLineageAsync(
             pageFacts,
             cancellationToken);
@@ -127,10 +129,10 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             query.PageSize,
             factPage.TotalItems);
         IReadOnlyDictionary<string, string> publicZoneNames =
-            PublicParkHistoricalDataLoader.ResolvePublicZoneNames(scope, pageFacts);
+            data.ZoneNames;
 
         return ApplicationResult<PublicParkHistoricalTimelineResult>.Success(
-            new PublicParkHistoricalTimelineResult(scope.Park, page, publicZoneNames));
+            new PublicParkHistoricalTimelineResult(data.Park, page, publicZoneNames));
     }
 
     private async Task<HashSet<HistoricalSubjectKey>> LoadSubjectsWithLineageAsync(

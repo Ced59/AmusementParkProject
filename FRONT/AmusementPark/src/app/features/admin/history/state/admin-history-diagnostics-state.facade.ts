@@ -32,6 +32,9 @@ export class AdminHistoryDiagnosticsStateFacade {
   public readonly hasBlockingIssues: Signal<boolean> = computed(
     (): boolean => (this.diagnosticsSignal()?.blockingIssueCount ?? 0) > 0
   );
+  public readonly isRolloutOpen: Signal<boolean> = computed(
+    (): boolean => this.diagnosticsSignal()?.rolloutGate.isOpen ?? false
+  );
 
   constructor(
     @Inject(ADMIN_HISTORY_DIAGNOSTICS_DATA_PORT)

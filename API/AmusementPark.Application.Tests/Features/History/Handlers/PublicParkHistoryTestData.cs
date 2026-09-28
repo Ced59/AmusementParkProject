@@ -53,7 +53,8 @@ internal static class PublicParkHistoryTestData
         int year,
         Guid? factId = null,
         Guid? sourceId = null,
-        string? narrativeContentId = null)
+        string? narrativeContentId = null,
+        HistoricalImportance importance = HistoricalImportance.Major)
     {
         HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(year));
         HistoricalSourceRevisionReference sourceReference = CreateSourceReference(
@@ -69,7 +70,7 @@ internal static class PublicParkHistoryTestData
             HistoricalFactType.Opening,
             period,
             HistoricalFactState.Verified,
-            HistoricalImportance.Major,
+            importance,
             HistoricalEditorialWorkflowState.Published,
             HistoricalPublicationState.Published,
             Array.Empty<HistoricalLocalizedText>(),

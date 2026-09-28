@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.History.Queries;
 using AmusementPark.Application.Features.History.Results;
+using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
@@ -90,6 +91,50 @@ public sealed class PublicParkHistoricalHandlersTests
         parkItemRepository.VerifyAll();
         parkZoneRepository.VerifyAll();
         factRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task Timeline_WhenParkRolloutGateIsClosed_ShouldRemainUnavailable()
+    {
+        Park park = PublicParkHistoryTestData.CreatePark();
+        Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> factRepository = new(MockBehavior.Strict);
+        parkRepository.Setup(repository => repository.GetByIdAsync(
+                park.Id,
+                false,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkItemRepository.Setup(repository => repository.GetByParkIdAsync(
+                park.Id,
+                false,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        parkZoneRepository.Setup(repository => repository.GetByParkIdAsync(
+                park.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+        factRepository.Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
+                park.Id,
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<HistoricalFact>());
+        GetPublicParkHistoricalTimelineQueryHandler handler = new(
+            CreateLoader(
+                parkRepository,
+                parkItemRepository,
+                parkZoneRepository,
+                factRepository,
+                false),
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict).Object,
+            new Mock<IHistoryEventRepository>(MockBehavior.Strict).Object);
+
+        ApplicationResult<PublicParkHistoricalTimelineResult> result = await handler.HandleAsync(
+            new GetPublicParkHistoricalTimelineQuery(park.Id));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "park.not-found");
     }
 
     [Fact]
@@ -216,6 +261,12 @@ public sealed class PublicParkHistoricalHandlersTests
             removedSubject,
             1990,
             narrativeContentId: "event-removed");
+        HistoricalFact earlierFact = PublicParkHistoryTestData.CreateOpeningFact(
+            removedSubject,
+            1970);
+        HistoricalFact laterEarlierFact = PublicParkHistoryTestData.CreateOpeningFact(
+            removedSubject,
+            1980);
         HistoricalSourceReference visibleSource = PublicParkHistoryTestData.CreateSource(visibleFact);
         HistoricalSourceReference removedSource = PublicParkHistoryTestData.CreateSource(removedFact);
         HistoricalRelation visibleRelation = CreatePublishedRelation(visibleSubject);
@@ -259,13 +310,11 @@ public sealed class PublicParkHistoricalHandlersTests
             .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkZone>());
         factRepository
-            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
                 "park-1",
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
-                2,
-                2,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new PagedResult<HistoricalFact>(new[] { visibleFact, removedFact }, 2, 2, 4));
+            .ReturnsAsync(new[] { visibleFact, removedFact, earlierFact, laterEarlierFact });
         sourceRepository
             .Setup(repository => repository.GetRevisionsAsync(
                 It.Is<IReadOnlyCollection<HistoricalSourceRevisionReference>>(
@@ -474,6 +523,14 @@ public sealed class PublicParkHistoricalHandlersTests
     public async Task Timeline_WhenPageIsArbitrarilyFar_ReturnsEmptyWithoutOverflowOrSourceRead()
     {
         Park park = PublicParkHistoryTestData.CreatePark();
+        HistoricalFact parkFact = PublicParkHistoryTestData.CreateOpeningFact(
+            new HistoricalSubject(
+                HistoricalSubjectType.Park,
+                park.Id,
+                park.Name!,
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
+                park.Id),
+            1998);
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
         Mock<IParkItemRepository> parkItemRepository = new(MockBehavior.Strict);
         Mock<IParkZoneRepository> parkZoneRepository = new(MockBehavior.Strict);
@@ -492,17 +549,11 @@ public sealed class PublicParkHistoricalHandlersTests
             .Setup(repository => repository.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkZone>());
         factRepository
-            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkAsync(
                 "park-1",
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
-                int.MaxValue,
-                50,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new PagedResult<HistoricalFact>(
-                Array.Empty<HistoricalFact>(),
-                int.MaxValue,
-                50,
-                1));
+            .ReturnsAsync(new[] { parkFact });
         PublicParkHistoricalDataLoader loader = CreateLoader(
             parkRepository,
             parkItemRepository,
@@ -577,7 +628,7 @@ public sealed class PublicParkHistoricalHandlersTests
     }
 
     [Fact]
-    public async Task Snapshot_DoesNotAttachForeignHistoricalOnlyFactToReusedCurrentId()
+    public async Task Snapshot_DoesNotAttachFormerParkFactToMovedCurrentSubject()
     {
         Park park = PublicParkHistoryTestData.CreatePark();
         ParkItem reusedVisibleItem = PublicParkHistoryTestData.CreateParkItem(
@@ -588,7 +639,7 @@ public sealed class PublicParkHistoricalHandlersTests
                 HistoricalSubjectType.ParkItem,
                 reusedVisibleItem.Id,
                 "Ancienne attraction étrangère",
-                HistoricalSubjectPublicationPolicy.HistoricalOnly,
+                HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
                 "another-park"),
             1975);
         Mock<IParkRepository> parkRepository = new(MockBehavior.Strict);
@@ -639,13 +690,23 @@ public sealed class PublicParkHistoricalHandlersTests
         Mock<IParkRepository> parkRepository,
         Mock<IParkItemRepository> parkItemRepository,
         Mock<IParkZoneRepository> parkZoneRepository,
-        Mock<IHistoricalFactRepository> factRepository)
+        Mock<IHistoricalFactRepository> factRepository,
+        bool rolloutIsOpen = true)
     {
+        Mock<IHistoricalParkRolloutGateAssessmentService> rolloutGate = new(MockBehavior.Strict);
+        rolloutGate.Setup(service => service.Assess(
+                It.IsAny<string>(),
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<IReadOnlyCollection<HistoricalFact>>()))
+            .Returns(rolloutIsOpen
+                ? new HistoricalParkRolloutGate(2, 2, 1, new[] { 1998 })
+                : new HistoricalParkRolloutGate(0, 0, 0, Array.Empty<int>()));
         return new PublicParkHistoricalDataLoader(
             parkRepository.Object,
             parkItemRepository.Object,
             parkZoneRepository.Object,
-            factRepository.Object);
+            factRepository.Object,
+            rolloutGate.Object);
     }
 
     private static HistoricalRelation CreatePublishedRelation(HistoricalSubject source)
