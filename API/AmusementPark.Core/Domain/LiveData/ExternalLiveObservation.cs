@@ -57,6 +57,10 @@ public sealed class ExternalLiveObservation
 
     public IReadOnlyCollection<LiveQueueObservation> Queues { get; }
 
+    public bool HasStatusQueueConflict =>
+        this.Status == LiveOperationalStatus.Closed
+        && this.Queues.Any(static queue => queue.WaitTimeMinutes.HasValue);
+
     private static string NormalizeDisplayName(string? value)
     {
         string normalizedValue = value?.Trim() ?? string.Empty;

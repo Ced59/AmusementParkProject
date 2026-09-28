@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace AmusementPark.Infrastructure.Services.LiveData;
@@ -5,5 +6,5 @@ namespace AmusementPark.Infrastructure.Services.LiveData;
 internal sealed class ThemeParksWikiLiveDataResponse
 {
     [JsonPropertyName("liveData")]
-    public List<ThemeParksWikiLiveDataItem>? LiveData { get; set; }
+    public List<JsonElement>? LiveData { get; set; }
 }

@@ -163,7 +163,7 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     }
 
     [Fact]
-    public async Task FetchLatestAsync_WhenItemFieldsHaveWrongTypes_ShouldKeepValidSiblings()
+    public async Task FetchLatestAsync_WhenItemsOrFieldsHaveWrongTypes_ShouldKeepValidSiblings()
     {
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
         {
@@ -177,7 +177,7 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         ExternalLiveObservation observation = Assert.Single(result.Observations);
         Assert.Equal("valid-attraction", observation.ExternalTargetId);
         Assert.Equal(
-            4,
+            7,
             result.Diagnostics.Count(static diagnostic =>
                 diagnostic.Code == LiveProviderDiagnosticCodes.InvalidObservation));
     }

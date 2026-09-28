@@ -28,7 +28,7 @@ internal static class ThemeParksWikiLiveDataNormalizer
             return observations.AsReadOnly();
         }
 
-        foreach (ThemeParksWikiLiveDataItem item in response.LiveData)
+        foreach (JsonElement item in response.LiveData)
         {
             ExternalLiveObservation? observation = NormalizeItem(item, diagnostics);
             if (observation is not null)
@@ -41,17 +41,17 @@ internal static class ThemeParksWikiLiveDataNormalizer
     }
 
     private static ExternalLiveObservation? NormalizeItem(
-        ThemeParksWikiLiveDataItem? item,
+        JsonElement item,
         ICollection<LiveProviderDiagnostic> diagnostics)
     {
-        if (item is null)
+        if (item.ValueKind != JsonValueKind.Object)
         {
             diagnostics.Add(new LiveProviderDiagnostic(
                 LiveProviderDiagnosticCodes.InvalidObservation));
             return null;
         }
 
-        if (!TryReadJsonString(item.Id, false, out string? rawExternalTargetId)
+        if (!TryReadJsonString(ReadProperty(item, "id"), false, out string? rawExternalTargetId)
             || !TryNormalizeExternalTargetId(rawExternalTargetId, out string externalTargetId))
         {
             diagnostics.Add(new LiveProviderDiagnostic(
@@ -59,10 +59,10 @@ internal static class ThemeParksWikiLiveDataNormalizer
             return null;
         }
 
-        if (!TryReadJsonString(item.Name, false, out string? name)
-            || !TryReadJsonString(item.EntityType, false, out string? entityType)
-            || !TryReadJsonString(item.Status, true, out string? status)
-            || !TryReadJsonString(item.LastUpdated, false, out string? lastUpdated))
+        if (!TryReadJsonString(ReadProperty(item, "name"), false, out string? name)
+            || !TryReadJsonString(ReadProperty(item, "entityType"), false, out string? entityType)
+            || !TryReadJsonString(ReadProperty(item, "status"), true, out string? status)
+            || !TryReadJsonString(ReadProperty(item, "lastUpdated"), false, out string? lastUpdated))
         {
             diagnostics.Add(new LiveProviderDiagnostic(
                 LiveProviderDiagnosticCodes.InvalidObservation,
@@ -84,27 +84,28 @@ internal static class ThemeParksWikiLiveDataNormalizer
 
         LiveOperationalStatus operationalStatus = MapStatus(status, externalTargetId, diagnostics);
         IReadOnlyCollection<LiveQueueObservation> queues = NormalizeQueues(
-            item.Queue,
+            ReadProperty(item, "queue"),
             externalTargetId,
             diagnostics);
-        if (operationalStatus == LiveOperationalStatus.Closed
-            && queues.Any(static queue => queue.WaitTimeMinutes.HasValue))
-        {
-            diagnostics.Add(new LiveProviderDiagnostic(
-                LiveProviderDiagnosticCodes.StatusQueueConflict,
-                externalTargetId,
-                "queue.waitTime"));
-        }
 
         try
         {
-            return new ExternalLiveObservation(
+            ExternalLiveObservation observation = new ExternalLiveObservation(
                 externalTargetId,
                 name,
                 targetType,
                 operationalStatus,
                 sourceUpdatedAtUtc,
                 queues);
+            if (observation.HasStatusQueueConflict)
+            {
+                diagnostics.Add(new LiveProviderDiagnostic(
+                    LiveProviderDiagnosticCodes.StatusQueueConflict,
+                    externalTargetId,
+                    "queue.waitTime"));
+            }
+
+            return observation;
         }
         catch (LiveDataValidationException)
         {
@@ -564,6 +565,13 @@ internal static class ThemeParksWikiLiveDataNormalizer
 
         value = element.Value.GetString();
         return true;
+    }
+
+    private static JsonElement? ReadProperty(JsonElement parent, string propertyName)
+    {
+        return parent.TryGetProperty(propertyName, out JsonElement value)
+            ? value
+            : null;
     }
 
     private static bool TryNormalizeExternalTargetId(string? value, out string externalTargetId)

@@ -51,4 +51,31 @@ public sealed class ExternalLiveObservationTests
 
         Assert.Equal(LiveDataErrorCodes.InvalidQueue, exception.Code);
     }
+
+    [Theory]
+    [InlineData(LiveOperationalStatus.Closed, 0, true)]
+    [InlineData(LiveOperationalStatus.Closed, 25, true)]
+    [InlineData(LiveOperationalStatus.Closed, null, false)]
+    [InlineData(LiveOperationalStatus.Open, 25, false)]
+    public void HasStatusQueueConflict_ShouldDetectClosedTargetsWithReportedWait(
+        LiveOperationalStatus status,
+        int? waitTimeMinutes,
+        bool expected)
+    {
+        ExternalLiveObservation observation = new ExternalLiveObservation(
+            "ride-1",
+            "Ride One",
+            LiveTargetType.ParkItem,
+            status,
+            new DateTime(2026, 9, 28, 10, 0, 0, DateTimeKind.Utc),
+            new[]
+            {
+                new LiveQueueObservation(
+                    LiveQueueKind.Standby,
+                    waitTimeMinutes,
+                    isEstimated: false),
+            });
+
+        Assert.Equal(expected, observation.HasStatusQueueConflict);
+    }
 }
