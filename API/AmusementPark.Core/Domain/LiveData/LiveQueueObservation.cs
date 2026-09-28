@@ -139,16 +139,36 @@ public sealed class LiveQueueObservation
         bool hasBoardingGroupFacts = currentGroupStart.HasValue
             || currentGroupEnd.HasValue
             || nextAllocationUtc.HasValue;
+        bool isReturnTimeAvailability = availability is
+            LiveQueueAvailability.Unspecified
+            or LiveQueueAvailability.Available
+            or LiveQueueAvailability.TemporarilyFull
+            or LiveQueueAvailability.Finished
+            or LiveQueueAvailability.Unknown;
+        bool isBoardingGroupAvailability = availability is
+            LiveQueueAvailability.Unspecified
+            or LiveQueueAvailability.Available
+            or LiveQueueAvailability.Paused
+            or LiveQueueAvailability.Closed
+            or LiveQueueAvailability.Unknown;
         bool isValid = kind switch
         {
             LiveQueueKind.Standby or LiveQueueKind.SingleRider or LiveQueueKind.PaidStandby =>
                 !hasReturnTimeFacts && !hasBoardingGroupFacts && !priceMinorUnits.HasValue,
             LiveQueueKind.ReturnTime =>
-                !waitTimeMinutes.HasValue && !hasBoardingGroupFacts && !priceMinorUnits.HasValue,
+                !waitTimeMinutes.HasValue
+                && !hasBoardingGroupFacts
+                && !priceMinorUnits.HasValue
+                && isReturnTimeAvailability,
             LiveQueueKind.PaidReturnTime =>
-                !waitTimeMinutes.HasValue && !hasBoardingGroupFacts,
+                !waitTimeMinutes.HasValue
+                && !hasBoardingGroupFacts
+                && isReturnTimeAvailability,
             LiveQueueKind.BoardingGroup =>
-                !returnStartUtc.HasValue && !returnEndUtc.HasValue && !priceMinorUnits.HasValue,
+                !returnStartUtc.HasValue
+                && !returnEndUtc.HasValue
+                && !priceMinorUnits.HasValue
+                && isBoardingGroupAvailability,
             _ => false,
         };
         if (!isValid)

@@ -101,4 +101,30 @@ public sealed class LiveQueueObservationTests
         Assert.Equal(1250, observation.PriceMinorUnits);
         Assert.Equal("EUR", observation.CurrencyCode);
     }
+
+    [Fact]
+    public void Constructor_WhenReturnTimeUsesBoardingGroupAvailability_ShouldRejectQueue()
+    {
+        LiveDataValidationException exception = Assert.Throws<LiveDataValidationException>(() =>
+            new LiveQueueObservation(
+                LiveQueueKind.ReturnTime,
+                null,
+                isEstimated: false,
+                availability: LiveQueueAvailability.Paused));
+
+        Assert.Equal(LiveDataErrorCodes.InvalidQueue, exception.Code);
+    }
+
+    [Fact]
+    public void Constructor_WhenBoardingGroupUsesReturnTimeAvailability_ShouldRejectQueue()
+    {
+        LiveDataValidationException exception = Assert.Throws<LiveDataValidationException>(() =>
+            new LiveQueueObservation(
+                LiveQueueKind.BoardingGroup,
+                null,
+                isEstimated: true,
+                availability: LiveQueueAvailability.TemporarilyFull));
+
+        Assert.Equal(LiveDataErrorCodes.InvalidQueue, exception.Code);
+    }
 }
