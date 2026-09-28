@@ -678,7 +678,7 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | [`HIST-10`](../../architecture/product-growth-hist-10-date-comparison-2026-09-27.md) | Comparaison de dates | Diff exact — implémenté le 27 septembre 2026 |
 | [`HIST-11A`](../../architecture/product-growth-hist-11a-passport-context-2026-09-27.md) | Catalogue historique du Passeport | États canoniques, identité d’époque et revalidation non destructive — implémenté le 27 septembre 2026 |
 | [`HIST-11B`](../../architecture/product-growth-hist-11b-historical-existence-reports-2026-09-27.md) | Signalement « cet élément existait » | Mémoire proposée sans devenir une preuve avant revue — implémenté le 27 septembre 2026 |
-| `HIST-11C` | Statistiques historiques personnelles | Époques, transformations et attractions disparues, privées par défaut |
+| [`HIST-11C`](../../architecture/product-growth-hist-11c-passport-historical-statistics-2026-09-27.md) | Statistiques historiques personnelles | Époques, transformations et attractions disparues, privées par défaut — implémenté le 27 septembre 2026 |
 | `HIST-12` | Admin diagnostics/revue | Exploitation fiable |
 | `HIST-13` | SEO/partage | Pages clés seulement |
 | `HIST-14` | Extension parcs | Gate par parc |

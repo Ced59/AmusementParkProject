@@ -1101,7 +1101,8 @@
       "actions": {
         "back": "Torna al passaporto",
         "retry": "Riprova",
-        "clearFilters": "Cancella filtri"
+        "clearFilters": "Cancella filtri",
+        "openHistory": "Esplora la mia storia"
       },
       "loading": {
         "title": "Calcolo del riepilogo",
@@ -1169,6 +1170,77 @@
         "rideAverage": "Media giri / 5",
         "ratedRides": "Giri valutati"
       }
+    },
+    "historicalStatistics": {
+      "kicker": "La tua storia nei parchi",
+      "title": "Le epoche del tuo passaporto",
+      "description": "Ritrova le trasformazioni, i vecchi nomi e le attrazioni scomparse che hai davvero attraversato durante le tue visite.",
+      "actions": {
+        "back": "Torna alle statistiche",
+        "retry": "Riprova"
+      },
+      "loading": {
+        "title": "Stiamo ricostruendo la tua storia",
+        "description": "Stiamo collegando le tue visite alle prove storiche pubblicate."
+      },
+      "errors": {
+        "title": "Non siamo riusciti a ricostruire la tua storia",
+        "load": "Le statistiche storiche non sono disponibili in questo momento.",
+        "authentication": "Accedi di nuovo per consultare questa pagina privata."
+      },
+      "empty": {
+        "title": "La tua storia comincia qui",
+        "description": "Aggiungi una visita per iniziare a collegare il tuo passaporto all'evoluzione dei parchi."
+      },
+      "summary": {
+        "label": "Riepilogo storico personale",
+        "firstVisit": "Primo anno di visita",
+        "eras": "Parchi vissuti in più epoche",
+        "disappeared": "Attrazioni oggi scomparse",
+        "transformations": "Trasformazioni vissute",
+        "historicalNames": "Nomi incontrati",
+        "coverage": "Giri supportati da prove"
+      },
+      "evidence": {
+        "title": "Solo da prove pubblicate",
+        "description": "Una segnalazione in attesa o un dato incerto non diventa mai una statistica. La copertura mostra quanti dei tuoi giri possono essere realmente spiegati dalla storia canonica."
+      },
+      "unknownPark": "Parco non disponibile",
+      "eras": {
+        "title": "Le epoche che hai vissuto",
+        "description": "Viene contato un nuovo stato quando l'inventario confermato aperto, i suoi nomi o le sue categorie cambiano tra le tue visite.",
+        "legendEras": "Stati storici distinti",
+        "legendVisits": "Visite",
+        "empty": "Non ci sono ancora prove sufficienti per distinguere più epoche."
+      },
+      "categories": {
+        "title": "Le tue categorie nel tempo",
+        "description": "Le categorie corrispondono alla data di ogni giro, non al catalogo attuale.",
+        "legendRides": "Giri effettuati",
+        "legendAttractions": "Attrazioni distinte",
+        "empty": "Nessuna categoria storica confermata per ora."
+      },
+      "disappeared": {
+        "title": "C'eri prima che scomparissero",
+        "description": "Queste attrazioni erano confermate aperte durante il tuo giro e oggi sono confermate chiuse.",
+        "empty": "Nel tuo passaporto non è ancora confermata alcuna attrazione scomparsa."
+      },
+      "transformations": {
+        "title": "Le trasformazioni che hai vissuto",
+        "description": "Il nome o la categoria confermati durante la tua visita sono diversi dall'identità attuale.",
+        "experiencedAs": "L'hai conosciuta come",
+        "categoryAtVisit": "Categoria durante la visita:",
+        "categoryNow": "Categoria attuale:",
+        "empty": "Nessuna trasformazione confermata collega ancora le tue visite al presente."
+      },
+      "names": {
+        "title": "I nomi al momento delle tue visite",
+        "description": "Ogni nome viene restituito nel contesto esatto in cui hai effettuato il giro.",
+        "now": "Oggi:",
+        "empty": "Nessun nome storico confermato per ora."
+      },
+      "completedRides": "giri effettuati",
+      "privacy": "Queste statistiche restano private. Non vengono incluse in alcuna condivisione, salvo autorizzazione esplicita di una politica di condivisione."
     }
   },
   "passportProfileShare": {

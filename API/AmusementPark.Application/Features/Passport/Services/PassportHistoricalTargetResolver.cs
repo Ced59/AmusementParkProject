@@ -296,10 +296,7 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
             {
                 string? category = ResolveKnownAttribute(subject, HistoricalAttributeKind.Category);
                 return category is not null
-                    && !string.Equals(
-                        category,
-                        ParkItemCategory.Attraction.ToString(),
-                        StringComparison.OrdinalIgnoreCase);
+                    && !IsAttractionClassification(category);
             })
             .Select(static subject => subject.Subject.Id)
             .ToHashSet(StringComparer.Ordinal);
@@ -307,18 +304,26 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
         foreach (HistoricalSubjectSnapshot subject in subjectSnapshots)
         {
             currentTargets.TryGetValue(subject.Subject.Id, out VisitTarget? currentTarget);
-            string? category = ResolveKnownAttribute(subject, HistoricalAttributeKind.Category)
+            string? historicalCategory = ResolveKnownAttribute(
+                subject,
+                HistoricalAttributeKind.Category);
+            string? category = historicalCategory
                 ?? currentTarget?.Category.ToString();
-            if (!string.Equals(
-                    category,
-                    ParkItemCategory.Attraction.ToString(),
-                    StringComparison.OrdinalIgnoreCase))
+            if (!IsAttractionClassification(category))
             {
                 continue;
             }
 
             string name = ResolveKnownAttribute(subject, HistoricalAttributeKind.Name)
                 ?? subject.Subject.HistoricalLabel;
+            string classification = ResolveHistoricalClassification(
+                historicalCategory,
+                currentTarget);
+            bool hasCanonicalClassificationEvidence =
+                IsDetailedAttractionClassification(historicalCategory)
+                && PassportHistoricalEvidencePolicy.HasCanonicalAttributeEvidence(
+                    subject,
+                    HistoricalAttributeKind.Category);
             string? zoneId = ResolveKnownAttribute(subject, HistoricalAttributeKind.Zone)
                 ?? currentTarget?.ZoneId;
             HistoricalConsistency consistency =
@@ -336,7 +341,14 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                 zoneId,
                 currentTarget?.LifecycleStatus,
                 currentTarget?.OpeningDate,
-                currentTarget?.ClosingDate);
+                currentTarget?.ClosingDate,
+                false,
+                classification,
+                PassportHistoricalEvidencePolicy.HasCanonicalVisitEvidence(subject),
+                PassportHistoricalEvidencePolicy.HasCanonicalAttributeEvidence(
+                    subject,
+                    HistoricalAttributeKind.Name),
+                hasCanonicalClassificationEvidence);
         }
 
         if (requested is not null)
@@ -408,7 +420,11 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
                     target.LifecycleStatus,
                     target.OpeningDate,
                     target.ClosingDate,
-                    includeHiddenCurrentTargets),
+                    includeHiddenCurrentTargets,
+                    target.Type.ToString(),
+                    false,
+                    false,
+                    false),
                 StringComparer.Ordinal);
         return new PassportHistoricalTargetContext(
             targets,
@@ -502,6 +518,33 @@ public sealed class PassportHistoricalTargetResolver : IPassportHistoricalTarget
         return attribute?.State == HistoricalAttributeValueState.Known
             ? attribute.Value
             : null;
+    }
+
+    private static string ResolveHistoricalClassification(
+        string? historicalCategory,
+        VisitTarget? currentTarget)
+    {
+        if (HistoricalParkItemClassificationPolicy.TryResolveDetailedAttractionType(
+            historicalCategory,
+            out ParkItemType historicalType))
+        {
+            return historicalType.ToString();
+        }
+
+        return currentTarget?.Type.ToString()
+            ?? ParkItemType.Attraction.ToString();
+    }
+
+    private static bool IsAttractionClassification(string? value)
+    {
+        return HistoricalParkItemClassificationPolicy.IsAttractionClassification(value);
+    }
+
+    private static bool IsDetailedAttractionClassification(string? value)
+    {
+        return HistoricalParkItemClassificationPolicy.TryResolveDetailedAttractionType(
+            value,
+            out ParkItemType _);
     }
 
     private static int CalculateCoveragePercent(HistoricalCoverage coverage)

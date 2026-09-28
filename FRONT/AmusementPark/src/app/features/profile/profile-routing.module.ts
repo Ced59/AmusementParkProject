@@ -83,6 +83,12 @@ export const PROFILE_ROUTES: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'passport/statistics/history',
+    loadComponent: () => import('./passport/pages/passport-historical-statistics-page/passport-historical-statistics-page.component')
+      .then((module) => module.PassportHistoricalStatisticsPageComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'passport/statistics',
     loadComponent: () => import('./passport/pages/passport-global-statistics-page/passport-global-statistics-page.component')
       .then((module) => module.PassportGlobalStatisticsPageComponent),

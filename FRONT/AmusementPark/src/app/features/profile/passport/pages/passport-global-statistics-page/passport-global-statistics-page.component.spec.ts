@@ -21,6 +21,7 @@ describe('PassportGlobalStatisticsPageComponent', () => {
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     expect(host.textContent).toContain('Parc test');
+    expect(host.querySelector('.passport-global-statistics__history')).not.toBeNull();
     expect(host.textContent).not.toContain('park-technical-id');
     expect(host.querySelectorAll('table').length).toBeGreaterThan(0);
     const styles: string = (PassportGlobalStatisticsPageComponent as unknown as { ɵcmp: { styles: string[] } }).ɵcmp.styles.join('\n');

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import {
   PassportGlobalStatistics,
+  PassportHistoricalStatistics,
   PassportItemStatistics,
   PassportParkStatistics,
   PassportYearStatistics
@@ -26,6 +27,11 @@ export class PassportStatisticsApiService {
       params['parkId'] = parkId;
     }
     return this.http.get<PassportGlobalStatistics>(url, { params, transferCache: false });
+  }
+
+  getHistoricalStatistics(): Observable<PassportHistoricalStatistics> {
+    const url: string = `${environment.apiBaseUrl}${PASSPORT_STATISTICS_API_ENDPOINTS.history}`;
+    return this.http.get<PassportHistoricalStatistics>(url, { transferCache: false });
   }
 
   getItemStatistics(parkItemId: string): Observable<PassportItemStatistics> {

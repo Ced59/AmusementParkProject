@@ -1,6 +1,20 @@
 {
-  "version": "5.3.92",
+  "version": "5.3.93",
   "history": [
+    {
+      "version": "5.3.93",
+      "releasedAt": "2026-09-27",
+      "labels": {
+        "fr": "Découvre les époques, transformations et attractions disparues de ton Passeport.",
+        "en": "Discover the eras, transformations and disappeared attractions in your Passport.",
+        "de": "Entdecke die Epochen, Veränderungen und verschwundenen Attraktionen in deinem Pass.",
+        "nl": "Ontdek de tijdperken, veranderingen en verdwenen attracties in je Paspoort.",
+        "it": "Scopri le epoche, le trasformazioni e le attrazioni scomparse nel tuo Passaporto.",
+        "es": "Descubre las épocas, transformaciones y atracciones desaparecidas de tu Pasaporte.",
+        "pl": "Odkrywaj epoki, przemiany i nieistniejące już atrakcje w swoim Paszporcie.",
+        "pt": "Descobre as épocas, transformações e atrações desaparecidas do teu Passaporte."
+      }
+    },
     {
       "version": "5.3.92",
       "releasedAt": "2026-09-27",
