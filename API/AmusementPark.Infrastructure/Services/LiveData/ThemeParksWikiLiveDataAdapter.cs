@@ -137,7 +137,7 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                     payloadSha256: payloadSha256);
             }
 
-            if (providerResponse is null)
+            if (providerResponse?.LiveData is null)
             {
                 return new LiveProviderReadResult(
                     LiveProviderReadDisposition.InvalidPayload,

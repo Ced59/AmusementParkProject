@@ -238,6 +238,26 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         Assert.Empty(result.Observations);
     }
 
+    [Theory]
+    [InlineData("{}")]
+    [InlineData("{\"liveData\":null}")]
+    public async Task FetchLatestAsync_WhenRequiredLiveDataArrayIsAbsent_ShouldReturnInvalidPayload(
+        string payload)
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = payload,
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.InvalidPayload, result.Disposition);
+        Assert.Equal(64, result.PayloadSha256?.Length);
+        Assert.Empty(result.Observations);
+    }
+
     [Fact]
     public async Task FetchLatestAsync_WhenDeclaredPayloadIsTooLarge_ShouldRejectBeforeReading()
     {
