@@ -1,3 +1,5 @@
+using AmusementPark.Core.Domain.Identifiers;
+
 namespace AmusementPark.Application.Features.LiveData.Models;
 
 public sealed class LiveProviderDiagnostic
@@ -13,7 +15,10 @@ public sealed class LiveProviderDiagnostic
         }
 
         this.Code = normalizedCode;
-        this.ExternalTargetId = NormalizeOptional(externalTargetId, 200, nameof(externalTargetId));
+        this.ExternalTargetId = NormalizeOptional(
+            externalTargetId,
+            IdentifierRules.MaximumLength,
+            nameof(externalTargetId));
         this.Field = NormalizeOptional(field, 100, nameof(field));
     }
 

@@ -38,15 +38,18 @@ internal static class ThemeParksWikiLiveDataNormalizer
         ThemeParksWikiLiveDataItem? item,
         ICollection<LiveProviderDiagnostic> diagnostics)
     {
-        string? externalTargetId = NormalizeOptional(item?.Id);
-        if (item is null
-            || externalTargetId is null
-            || string.IsNullOrWhiteSpace(item.Name)
+        if (item is null || !TryNormalizeExternalTargetId(item.Id, out string externalTargetId))
+        {
+            diagnostics.Add(new LiveProviderDiagnostic(
+                LiveProviderDiagnosticCodes.InvalidObservation));
+            return null;
+        }
+
+        if (string.IsNullOrWhiteSpace(item.Name)
             || !TryMapTargetType(item.EntityType, out LiveTargetType targetType)
             || !TryParseUtc(item.LastUpdated, out DateTime sourceUpdatedAtUtc))
         {
-            string code = item is not null
-                && !string.IsNullOrWhiteSpace(item.EntityType)
+            string code = !string.IsNullOrWhiteSpace(item.EntityType)
                 && !TryMapTargetType(item.EntityType, out LiveTargetType _)
                     ? LiveProviderDiagnosticCodes.UnsupportedEntityType
                     : LiveProviderDiagnosticCodes.InvalidObservation;
@@ -138,7 +141,7 @@ internal static class ThemeParksWikiLiveDataNormalizer
                 diagnostics.Add(new LiveProviderDiagnostic(
                     LiveProviderDiagnosticCodes.UnknownQueueKind,
                     externalTargetId,
-                    queueProperty.Name));
+                    NormalizeDiagnosticField(queueProperty.Name)));
                 continue;
             }
 
@@ -475,13 +478,52 @@ internal static class ThemeParksWikiLiveDataNormalizer
 
     private static bool TryParseUtc(string? value, out DateTime utcValue)
     {
+        string normalizedValue = value?.Trim() ?? string.Empty;
+        int timeSeparatorIndex = normalizedValue.IndexOf('T', StringComparison.OrdinalIgnoreCase);
+        bool hasZuluOffset = normalizedValue.EndsWith("Z", StringComparison.OrdinalIgnoreCase);
+        bool hasSignedOffset = timeSeparatorIndex >= 0
+            && (normalizedValue.LastIndexOf('+') > timeSeparatorIndex
+                || normalizedValue.LastIndexOf('-') > timeSeparatorIndex);
+        if (!hasZuluOffset && !hasSignedOffset)
+        {
+            utcValue = default;
+            return false;
+        }
+
         bool parsed = DateTimeOffset.TryParse(
-            value,
+            normalizedValue,
             CultureInfo.InvariantCulture,
-            DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeUniversal,
+            DateTimeStyles.None,
             out DateTimeOffset parsedValue);
         utcValue = parsed ? parsedValue.UtcDateTime : default;
         return parsed;
+    }
+
+    private static bool TryNormalizeExternalTargetId(string? value, out string externalTargetId)
+    {
+        try
+        {
+            externalTargetId = IdentifierRules.NormalizeRequired(value, nameof(value));
+            return true;
+        }
+        catch (IdentifierValidationException)
+        {
+            externalTargetId = string.Empty;
+            return false;
+        }
+    }
+
+    private static string? NormalizeDiagnosticField(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value) || value.Any(char.IsControl))
+        {
+            return null;
+        }
+
+        string normalizedValue = value.Trim();
+        return normalizedValue.Length <= 100
+            ? normalizedValue
+            : normalizedValue[..100];
     }
 
     private static string? NormalizeOptional(string? value)

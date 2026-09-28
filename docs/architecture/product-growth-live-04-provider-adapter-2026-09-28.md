@@ -74,7 +74,9 @@ que d'autres sources puissent les exprimer sans déformer le modèle.
 Les minutes sont des entiers compris entre 0 et 1 440. `null` signifie que le
 fournisseur ne publie pas de valeur ; `0` reste un zéro explicite. Une valeur
 fractionnaire, négative ou hors borne produit un diagnostic et n'est jamais
-convertie en zéro.
+convertie en zéro. Le contrat fournisseur rend `STANDBY.waitTime` facultatif :
+son absence est donc conservée comme attente inconnue, comme une valeur `null`,
+sans inventer une erreur de schéma.
 
 ## 5. Contrat transport sûr
 

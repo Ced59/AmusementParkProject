@@ -12,7 +12,8 @@
           "returnStart": null,
           "returnEnd": null
         },
-        "EXPRESS": { "waitTime": 7 }
+        "EXPRESS": { "waitTime": 7 },
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX": { "waitTime": 9 }
       }
     },
     {
@@ -35,6 +36,13 @@
       "entityType": "ATTRACTION",
       "status": "OPERATING",
       "lastUpdated": "2026-09-28T10:04:00Z"
+    },
+    {
+      "id": "missing-offset",
+      "name": "Missing Offset",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:05:00"
     }
   ]
 }

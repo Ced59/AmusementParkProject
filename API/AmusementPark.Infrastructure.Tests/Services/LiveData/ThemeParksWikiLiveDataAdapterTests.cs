@@ -73,12 +73,18 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
             diagnostic.Code == LiveProviderDiagnosticCodes.UnknownStatus);
         Assert.Contains(result.Diagnostics, static diagnostic =>
             diagnostic.Code == LiveProviderDiagnosticCodes.UnknownQueueState);
-        Assert.Contains(result.Diagnostics, static diagnostic =>
-            diagnostic.Code == LiveProviderDiagnosticCodes.UnknownQueueKind);
+        Assert.Equal(
+            2,
+            result.Diagnostics.Count(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.UnknownQueueKind));
+        Assert.All(
+            result.Diagnostics.Where(static diagnostic =>
+                diagnostic.Code == LiveProviderDiagnosticCodes.UnknownQueueKind),
+            static diagnostic => Assert.True(diagnostic.Field?.Length <= 100));
         Assert.Contains(result.Diagnostics, static diagnostic =>
             diagnostic.Code == LiveProviderDiagnosticCodes.UnsupportedEntityType);
         Assert.Equal(
-            2,
+            3,
             result.Diagnostics.Count(static diagnostic =>
                 diagnostic.Code == LiveProviderDiagnosticCodes.InvalidObservation));
     }
@@ -120,6 +126,25 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         Assert.Equal(
             LiveProviderDiagnosticCodes.EmptyResponse,
             Assert.Single(result.Diagnostics).Code);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenStandbyWaitIsOmittedBySchema_ShouldKeepUnknownWait()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("standby-without-wait.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        LiveQueueObservation queue = Assert.Single(observation.Queues);
+        Assert.Equal(LiveQueueKind.Standby, queue.Kind);
+        Assert.Null(queue.WaitTimeMinutes);
+        Assert.Empty(result.Diagnostics);
     }
 
     [Fact]
