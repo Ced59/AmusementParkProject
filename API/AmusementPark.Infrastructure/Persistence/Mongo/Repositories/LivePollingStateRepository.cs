@@ -80,6 +80,7 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
         LivePollingStateDocument? replaced = await this.TryReplaceTargetAsync(
             request,
             leaseToken,
+            dueFilter,
             leaseFilter,
             cancellationToken);
         if (replaced is not null)
@@ -114,6 +115,7 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
     private async Task<LivePollingStateDocument?> TryReplaceTargetAsync(
         LivePollingLeaseRequest request,
         string leaseToken,
+        FilterDefinition<LivePollingStateDocument> dueFilter,
         FilterDefinition<LivePollingStateDocument> leaseFilter,
         CancellationToken cancellationToken)
     {
@@ -124,6 +126,7 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
             & Builders<LivePollingStateDocument>.Filter.Ne(
                 static document => document.ExternalEntityId,
                 request.ExternalEntityId)
+            & dueFilter
             & leaseFilter;
         UpdateDefinition<LivePollingStateDocument> replacementUpdate =
             Builders<LivePollingStateDocument>.Update
