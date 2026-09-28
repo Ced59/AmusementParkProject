@@ -20,16 +20,25 @@ internal static class ThemeParksWikiLiveDataNormalizer
     {
         ArgumentNullException.ThrowIfNull(diagnostics);
 
+        BoundedLiveProviderDiagnosticCollection boundedDiagnostics =
+            new BoundedLiveProviderDiagnosticCollection(
+                diagnostics,
+                ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount);
         List<ExternalLiveObservation> observations = new List<ExternalLiveObservation>();
         if (liveData.GetArrayLength() == 0)
         {
-            diagnostics.Add(new LiveProviderDiagnostic(LiveProviderDiagnosticCodes.EmptyResponse));
+            boundedDiagnostics.Add(new LiveProviderDiagnostic(LiveProviderDiagnosticCodes.EmptyResponse));
             return observations.AsReadOnly();
         }
 
         foreach (JsonElement item in liveData.EnumerateArray())
         {
-            ExternalLiveObservation? observation = NormalizeItem(item, diagnostics);
+            if (boundedDiagnostics.Count >= ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount)
+            {
+                break;
+            }
+
+            ExternalLiveObservation? observation = NormalizeItem(item, boundedDiagnostics);
             if (observation is not null)
             {
                 observations.Add(observation);
@@ -169,6 +178,11 @@ internal static class ThemeParksWikiLiveDataNormalizer
         HashSet<LiveQueueKind> seenKinds = new HashSet<LiveQueueKind>();
         foreach (JsonProperty queueProperty in queueElement.Value.EnumerateObject())
         {
+            if (diagnostics.Count >= ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount)
+            {
+                break;
+            }
+
             if (!TryMapQueueKind(queueProperty.Name, out LiveQueueKind kind))
             {
                 diagnostics.Add(new LiveProviderDiagnostic(

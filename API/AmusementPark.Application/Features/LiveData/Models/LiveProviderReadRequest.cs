@@ -2,6 +2,8 @@ namespace AmusementPark.Application.Features.LiveData.Models;
 
 public sealed class LiveProviderReadRequest
 {
+    public const int MaximumEntityTagLength = 500;
+
     public LiveProviderReadRequest(string externalEntityId, string? entityTag = null)
     {
         string normalizedExternalEntityId = externalEntityId?.Trim() ?? string.Empty;
@@ -17,7 +19,8 @@ public sealed class LiveProviderReadRequest
             ? null
             : entityTag.Trim();
         if (normalizedEntityTag is not null
-            && (normalizedEntityTag.Length > 500 || normalizedEntityTag.Any(char.IsControl)))
+            && (normalizedEntityTag.Length > MaximumEntityTagLength
+                || normalizedEntityTag.Any(char.IsControl)))
         {
             throw new ArgumentException(
                 "A provider entity tag cannot exceed 500 characters.",

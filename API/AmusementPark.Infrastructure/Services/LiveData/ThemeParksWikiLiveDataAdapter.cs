@@ -15,6 +15,8 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
 
     public const int MaximumObservationCount = 10_000;
 
+    public const int MaximumDiagnosticCount = 1_000;
+
     public static readonly TimeSpan RequestTimeout = TimeSpan.FromSeconds(10);
 
     private const string Version = "themeparks-wiki-rest-v1/1.14.0-adapter-1";
@@ -72,7 +74,7 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                 HttpCompletionOption.ResponseHeadersRead,
                 requestDeadline.Token);
             DateTime receivedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-            string? entityTag = response.Headers.ETag?.ToString();
+            string? entityTag = NormalizeResponseEntityTag(response.Headers.ETag?.ToString());
 
             if (response.StatusCode == HttpStatusCode.NotModified)
             {
@@ -228,5 +230,19 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
         }
 
         return null;
+    }
+
+    private static string? NormalizeResponseEntityTag(string? entityTag)
+    {
+        if (string.IsNullOrWhiteSpace(entityTag))
+        {
+            return null;
+        }
+
+        string normalizedEntityTag = entityTag.Trim();
+        return normalizedEntityTag.Length <= LiveProviderReadRequest.MaximumEntityTagLength
+            && !normalizedEntityTag.Any(char.IsControl)
+                ? normalizedEntityTag
+                : null;
     }
 }

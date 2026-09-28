@@ -375,6 +375,52 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     }
 
     [Fact]
+    public async Task FetchLatestAsync_WhenQueuePropertiesExceedDiagnosticBudget_ShouldStopAtBound()
+    {
+        string queueProperties = string.Join(
+            ',',
+            Enumerable.Range(0, ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount + 1)
+                .Select(static index => $"\"UNKNOWN_{index}\":{{}}"));
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"liveData\":[{"
+                + "\"id\":\"bounded-attraction\","
+                + "\"name\":\"Bounded attraction\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:00:00Z\","
+                + $"\"queue\":{{{queueProperties}}}"
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Single(result.Observations);
+        Assert.Equal(ThemeParksWikiLiveDataAdapter.MaximumDiagnosticCount, result.Diagnostics.Count);
+        Assert.All(result.Diagnostics, static diagnostic =>
+            Assert.Equal(LiveProviderDiagnosticCodes.UnknownQueueKind, diagnostic.Code));
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenResponseEntityTagExceedsRequestBound_ShouldDiscardTag()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("empty.json"),
+            EntityTag = $"\"{new string('a', LiveProviderReadRequest.MaximumEntityTagLength)}\"",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Success, result.Disposition);
+        Assert.Null(result.EntityTag);
+    }
+
+    [Fact]
     public async Task FetchLatestAsync_WhenDeclaredPayloadIsTooLarge_ShouldRejectBeforeReading()
     {
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
