@@ -329,6 +329,23 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     }
 
     [Fact]
+    public async Task FetchLatestAsync_WhenUnconditionalResponseIsNotModified_ShouldReturnUnavailable()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            StatusCode = HttpStatusCode.NotModified,
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.Unavailable, result.Disposition);
+        Assert.Null(result.EntityTag);
+        Assert.Empty(result.Observations);
+    }
+
+    [Fact]
     public async Task FetchLatestAsync_WhenRateLimited_ShouldExposeRetryAfterWithoutRetrying()
     {
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler

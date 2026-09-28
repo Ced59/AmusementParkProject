@@ -78,6 +78,13 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
 
             if (response.StatusCode == HttpStatusCode.NotModified)
             {
+                if (request.EntityTag is null)
+                {
+                    return new LiveProviderReadResult(
+                        LiveProviderReadDisposition.Unavailable,
+                        receivedAtUtc);
+                }
+
                 return new LiveProviderReadResult(
                     LiveProviderReadDisposition.NotModified,
                     receivedAtUtc,
