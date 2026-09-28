@@ -1,5 +1,6 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Subject, catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { AdminHistoricalParkDiagnostics } from '@app/models/history/admin-historical-park-diagnostics.models';
 import { Park } from '@app/models/parks/park';
@@ -20,6 +21,7 @@ export class AdminHistoryDiagnosticsStateFacade {
   private readonly searchingSignal = signal<boolean>(false);
   private readonly loadingSignal = signal<boolean>(false);
   private readonly errorKeySignal = signal<string | null>(null);
+  private readonly parkLoadRequests = new Subject<string>();
 
   public readonly searchResults: Signal<readonly Park[]> = this.searchResultsSignal.asReadonly();
   public readonly diagnostics: Signal<AdminHistoricalParkDiagnostics | null> =
@@ -38,6 +40,27 @@ export class AdminHistoryDiagnosticsStateFacade {
     private readonly parksPort: AdminHistoryDiagnosticsParksPort,
     private readonly destroyRef: DestroyRef
   ) {
+    this.parkLoadRequests.pipe(
+      tap((): void => {
+        this.loadingSignal.set(true);
+        this.errorKeySignal.set(null);
+      }),
+      switchMap((parkId: string) => this.diagnosticsPort.getAdminParkDiagnostics(parkId).pipe(
+        map((diagnostics: AdminHistoricalParkDiagnostics) => ({
+          diagnostics,
+          errorKey: null as string | null
+        })),
+        catchError(() => of({
+          diagnostics: null,
+          errorKey: 'admin.history.diagnostics.errors.loadFailed'
+        }))
+      )),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe(({ diagnostics, errorKey }): void => {
+      this.diagnosticsSignal.set(diagnostics);
+      this.errorKeySignal.set(errorKey);
+      this.loadingSignal.set(false);
+    });
   }
 
   public search(query: string): void {
@@ -65,24 +88,10 @@ export class AdminHistoryDiagnosticsStateFacade {
 
   public load(parkId: string): void {
     const normalizedParkId: string = parkId.trim();
-    if (normalizedParkId.length === 0 || this.loadingSignal()) {
+    if (normalizedParkId.length === 0) {
       return;
     }
 
-    this.loadingSignal.set(true);
-    this.errorKeySignal.set(null);
-    this.diagnosticsPort.getAdminParkDiagnostics(normalizedParkId)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (diagnostics: AdminHistoricalParkDiagnostics): void => {
-          this.diagnosticsSignal.set(diagnostics);
-          this.loadingSignal.set(false);
-        },
-        error: (): void => {
-          this.diagnosticsSignal.set(null);
-          this.loadingSignal.set(false);
-          this.errorKeySignal.set('admin.history.diagnostics.errors.loadFailed');
-        }
-      });
+    this.parkLoadRequests.next(normalizedParkId);
   }
 }

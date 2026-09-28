@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, Subject, of, throwError } from 'rxjs';
 import { vi } from 'vitest';
 
 import { AdminHistoricalParkDiagnostics } from '@app/models/history/admin-historical-park-diagnostics.models';
@@ -67,6 +67,23 @@ describe('AdminHistoryDiagnosticsStateFacade', () => {
 
     expect(facade.diagnostics()).toBeNull();
     expect(facade.errorKey()).toBe('admin.history.diagnostics.errors.loadFailed');
+  });
+
+  it('keeps the latest park selection when an earlier request finishes later', () => {
+    const first = new Subject<AdminHistoricalParkDiagnostics>();
+    const second = new Subject<AdminHistoricalParkDiagnostics>();
+    getDiagnostics.mockImplementation((parkId: string): Observable<AdminHistoricalParkDiagnostics> =>
+      parkId === 'park-1' ? first : second
+    );
+
+    facade.load('park-1');
+    facade.load('park-2');
+    first.next({ ...createDiagnostics(0), parkId: 'park-1', parkName: 'Premier parc' });
+    second.next({ ...createDiagnostics(0), parkId: 'park-2', parkName: 'Second parc' });
+
+    expect(facade.diagnostics()?.parkId).toBe('park-2');
+    expect(facade.diagnostics()?.parkName).toBe('Second parc');
+    expect(facade.loading()).toBe(false);
   });
 });
 

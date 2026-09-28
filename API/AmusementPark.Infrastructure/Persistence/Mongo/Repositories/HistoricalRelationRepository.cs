@@ -275,6 +275,9 @@ public sealed class HistoricalRelationRepository : IHistoricalRelationRepository
             }),
             new BsonDocument("$unwind", "$latest"),
             new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$latest")),
+            new BsonDocument("$match", new BsonDocument(
+                "$or",
+                new BsonArray(scopeFilters.Select(static filter => filter.DeepClone())))),
             new BsonDocument("$sort", new BsonDocument
             {
                 ["period.start.year"] = 1,

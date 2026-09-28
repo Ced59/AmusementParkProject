@@ -349,6 +349,9 @@ public sealed class HistoricalFactRepository : IHistoricalFactRepository
             }),
             new BsonDocument("$unwind", "$latestRevision"),
             new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$latestRevision")),
+            new BsonDocument("$match", BuildParkCandidateScopeFilter(
+                normalizedParkId,
+                currentSubjects)),
         };
     }
 
