@@ -147,6 +147,95 @@ public sealed class PassportHistoricalStatisticsCalculatorTests
     }
 
     [Fact]
+    public void Calculate_WithEvidenceGainedBetweenVisits_ShouldNotInventAnotherEra()
+    {
+        PassportHistoricalTargetStateObservation undocumentedTarget = new(
+            "item-1",
+            "Fallback name",
+            "Attraction",
+            HistoricalOperationalState.KnownOpen,
+            true);
+        PassportHistoricalTargetStateObservation documentedTarget = new(
+            "item-1",
+            "Canonical name",
+            "DarkRide",
+            HistoricalOperationalState.KnownOpen,
+            true,
+            true,
+            true);
+        PassportHistoricalVisitContextObservation firstVisit = Visit(
+            "visit-1",
+            2001,
+            undocumentedTarget);
+        PassportHistoricalVisitContextObservation secondVisit = Visit(
+            "visit-2",
+            2002,
+            documentedTarget);
+
+        PassportHistoricalStatistics result = PassportHistoricalStatisticsCalculator.Calculate(
+            new[] { firstVisit, secondVisit },
+            Array.Empty<PassportHistoricalRideContextObservation>());
+
+        Assert.Equal(1, Assert.Single(result.ParksAcrossEras).CanonicalEraCount);
+        Assert.Equal(0, result.ParkCountAcrossMultipleEras);
+    }
+
+    [Fact]
+    public void Calculate_WithInventoryKnownOnOneVisitOnly_ShouldNotInventAnotherEra()
+    {
+        PassportHistoricalTargetStateObservation firstTarget = Target(
+            "item-1",
+            "First attraction",
+            "DarkRide",
+            HistoricalOperationalState.KnownOpen);
+        PassportHistoricalTargetStateObservation secondTarget = Target(
+            "item-2",
+            "Second attraction",
+            "RollerCoaster",
+            HistoricalOperationalState.KnownOpen);
+
+        PassportHistoricalStatistics result = PassportHistoricalStatisticsCalculator.Calculate(
+            new[]
+            {
+                Visit("visit-1", 2001, firstTarget),
+                Visit("visit-2", 2002, firstTarget, secondTarget),
+            },
+            Array.Empty<PassportHistoricalRideContextObservation>());
+
+        Assert.Equal(1, Assert.Single(result.ParksAcrossEras).CanonicalEraCount);
+    }
+
+    [Fact]
+    public void Calculate_WithInventoryChangeProvenOnBothVisits_ShouldCountAnotherEra()
+    {
+        PassportHistoricalTargetStateObservation stableTarget = Target(
+            "item-1",
+            "Stable attraction",
+            "DarkRide",
+            HistoricalOperationalState.KnownOpen);
+        PassportHistoricalTargetStateObservation openTarget = Target(
+            "item-2",
+            "Closing attraction",
+            "RollerCoaster",
+            HistoricalOperationalState.KnownOpen);
+        PassportHistoricalTargetStateObservation closedTarget = Target(
+            "item-2",
+            "Closing attraction",
+            "RollerCoaster",
+            HistoricalOperationalState.KnownClosed);
+
+        PassportHistoricalStatistics result = PassportHistoricalStatisticsCalculator.Calculate(
+            new[]
+            {
+                Visit("visit-1", 2001, stableTarget, openTarget),
+                Visit("visit-2", 2002, stableTarget, closedTarget),
+            },
+            Array.Empty<PassportHistoricalRideContextObservation>());
+
+        Assert.Equal(2, Assert.Single(result.ParksAcrossEras).CanonicalEraCount);
+    }
+
+    [Fact]
     public void Calculate_WithNonCompletedRide_ShouldNotClaimHistoricalVisit()
     {
         PassportHistoricalTargetStateObservation target = Target(

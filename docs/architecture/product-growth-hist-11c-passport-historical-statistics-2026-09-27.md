@@ -57,7 +57,9 @@ Les règles détaillées sont les suivantes :
 - une époque de parc correspond à une empreinte déterministe de l'inventaire
   canoniquement ouvert, avec les noms et catégories valables à cette date ;
 - deux visites d'un même parc ne représentent plusieurs époques que si leurs
-  empreintes diffèrent ;
+  états diffèrent sur une dimension prouvée des deux côtés ; l'arrivée d'une
+  preuve de nom ou de catégorie précédemment manquante améliore la couverture
+  sans inventer une transformation ;
 - les données non résolues restent visibles dans le taux de couverture mais
   ne sont jamais devinées ;
 - les libellés actuels de secours peuvent aider à identifier une carte dans

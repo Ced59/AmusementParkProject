@@ -45,36 +45,112 @@ public static class PassportHistoricalStatisticsCalculator
                 group.Min(static visit => visit.VisitDate.Year),
                 group.Max(static visit => visit.VisitDate.Year),
                 group.LongCount(),
-                group.Select(CreateCanonicalEraFingerprint)
-                    .Where(static fingerprint => fingerprint is not null)
-                    .Distinct(StringComparer.Ordinal)
-                    .LongCount()))
+                CountCanonicalEras(group)))
             .OrderByDescending(static park => park.CanonicalEraCount)
             .ThenBy(static park => park.FirstVisitYear)
             .ThenBy(static park => park.ParkId, StringComparer.Ordinal)
             .ToArray();
     }
 
-    private static string? CreateCanonicalEraFingerprint(
-        PassportHistoricalVisitContextObservation visit)
+    private static long CountCanonicalEras(
+        IEnumerable<PassportHistoricalVisitContextObservation> visits)
     {
-        string[] knownOpenTargets = visit.Targets
-            .Where(static target => target.IsCanonical
-                && target.OperationalState == HistoricalOperationalState.KnownOpen)
-            .OrderBy(static target => target.ParkItemId, StringComparer.Ordinal)
-            .Select(static target => string.Join(
-                '\u001f',
-                target.ParkItemId,
-                target.HasCanonicalNameEvidence
-                    ? target.Name.ToUpperInvariant()
-                    : string.Empty,
-                target.HasCanonicalCategoryEvidence
-                    ? target.Category.ToUpperInvariant()
-                    : string.Empty))
-            .ToArray();
-        return knownOpenTargets.Length == 0
-            ? null
-            : string.Join('\u001e', knownOpenTargets);
+        List<Dictionary<string, PassportHistoricalTargetStateObservation>> eras = new();
+        foreach (PassportHistoricalVisitContextObservation visit in visits
+            .OrderBy(static value => value.VisitDate.ChronologicalOrderValue)
+            .ThenBy(static value => value.VisitId, StringComparer.Ordinal))
+        {
+            Dictionary<string, PassportHistoricalTargetStateObservation> evidence = visit.Targets
+                .Where(static target => target.IsCanonical
+                    && target.OperationalState is HistoricalOperationalState.KnownOpen
+                        or HistoricalOperationalState.KnownClosed)
+                .ToDictionary(static target => target.ParkItemId, StringComparer.Ordinal);
+            if (!evidence.Values.Any(static target =>
+                target.OperationalState == HistoricalOperationalState.KnownOpen))
+            {
+                continue;
+            }
+
+            Dictionary<string, PassportHistoricalTargetStateObservation>? compatible = eras
+                .FirstOrDefault(existing => !HasProvenEraDifference(existing, evidence));
+            if (compatible is null)
+            {
+                eras.Add(evidence);
+                continue;
+            }
+
+            MergeCompatibleEraEvidence(compatible, evidence);
+        }
+
+        return eras.LongCount();
+    }
+
+    private static bool HasProvenEraDifference(
+        IReadOnlyDictionary<string, PassportHistoricalTargetStateObservation> left,
+        IReadOnlyDictionary<string, PassportHistoricalTargetStateObservation> right)
+    {
+        foreach ((string parkItemId, PassportHistoricalTargetStateObservation leftTarget)
+            in left)
+        {
+            if (!right.TryGetValue(
+                parkItemId,
+                out PassportHistoricalTargetStateObservation? rightTarget))
+            {
+                continue;
+            }
+
+            if (leftTarget.OperationalState != rightTarget.OperationalState)
+            {
+                return true;
+            }
+
+            if (leftTarget.OperationalState != HistoricalOperationalState.KnownOpen)
+            {
+                continue;
+            }
+
+            if (leftTarget.HasCanonicalNameEvidence
+                && rightTarget.HasCanonicalNameEvidence
+                && HasChanged(leftTarget.Name, rightTarget.Name))
+            {
+                return true;
+            }
+
+            if (leftTarget.HasCanonicalCategoryEvidence
+                && rightTarget.HasCanonicalCategoryEvidence
+                && HasChanged(leftTarget.Category, rightTarget.Category))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static void MergeCompatibleEraEvidence(
+        IDictionary<string, PassportHistoricalTargetStateObservation> existing,
+        IReadOnlyDictionary<string, PassportHistoricalTargetStateObservation> additional)
+    {
+        foreach ((string parkItemId, PassportHistoricalTargetStateObservation target)
+            in additional)
+        {
+            if (!existing.TryGetValue(
+                parkItemId,
+                out PassportHistoricalTargetStateObservation? current))
+            {
+                existing[parkItemId] = target;
+                continue;
+            }
+
+            existing[parkItemId] = new PassportHistoricalTargetStateObservation(
+                parkItemId,
+                target.HasCanonicalNameEvidence ? target.Name : current.Name,
+                target.HasCanonicalCategoryEvidence ? target.Category : current.Category,
+                target.OperationalState,
+                true,
+                current.HasCanonicalNameEvidence || target.HasCanonicalNameEvidence,
+                current.HasCanonicalCategoryEvidence || target.HasCanonicalCategoryEvidence);
+        }
     }
 
     private static PassportHistoricalDisappearedAttractionStatistic[]
