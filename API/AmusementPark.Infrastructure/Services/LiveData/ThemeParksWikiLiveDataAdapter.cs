@@ -13,14 +13,12 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
 
     public const int MaximumResponseBytes = 2 * 1024 * 1024;
 
+    public const int MaximumObservationCount = 10_000;
+
     public static readonly TimeSpan RequestTimeout = TimeSpan.FromSeconds(10);
 
     private const string Version = "themeparks-wiki-rest-v1/1.14.0-adapter-1";
     private static readonly LiveDataSourceId ProviderSourceId = LiveDataSourceId.Parse("themeparks-wiki");
-    private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions
-    {
-        PropertyNameCaseInsensitive = true,
-    };
 
     private readonly IHttpClientFactory httpClientFactory;
     private readonly TimeSpan requestTimeout;
@@ -121,12 +119,10 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
             }
 
             string payloadSha256 = Convert.ToHexString(SHA256.HashData(payload)).ToLowerInvariant();
-            ThemeParksWikiLiveDataResponse? providerResponse;
+            JsonDocument providerDocument;
             try
             {
-                providerResponse = JsonSerializer.Deserialize<ThemeParksWikiLiveDataResponse>(
-                    payload,
-                    JsonOptions);
+                providerDocument = JsonDocument.Parse(payload);
             }
             catch (JsonException)
             {
@@ -137,25 +133,32 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                     payloadSha256: payloadSha256);
             }
 
-            if (providerResponse?.LiveData is null)
+            using (providerDocument)
             {
+                JsonElement root = providerDocument.RootElement;
+                if (root.ValueKind != JsonValueKind.Object
+                    || !root.TryGetProperty("liveData", out JsonElement liveData)
+                    || liveData.ValueKind != JsonValueKind.Array
+                    || liveData.GetArrayLength() > MaximumObservationCount)
+                {
+                    return new LiveProviderReadResult(
+                        LiveProviderReadDisposition.InvalidPayload,
+                        receivedAtUtc,
+                        entityTag: entityTag,
+                        payloadSha256: payloadSha256);
+                }
+
+                List<LiveProviderDiagnostic> diagnostics = new List<LiveProviderDiagnostic>();
+                IReadOnlyCollection<ExternalLiveObservation> observations =
+                    ThemeParksWikiLiveDataNormalizer.Normalize(liveData, diagnostics);
                 return new LiveProviderReadResult(
-                    LiveProviderReadDisposition.InvalidPayload,
+                    LiveProviderReadDisposition.Success,
                     receivedAtUtc,
-                    entityTag: entityTag,
+                    observations,
+                    diagnostics,
+                    entityTag,
                     payloadSha256: payloadSha256);
             }
-
-            List<LiveProviderDiagnostic> diagnostics = new List<LiveProviderDiagnostic>();
-            IReadOnlyCollection<ExternalLiveObservation> observations =
-                ThemeParksWikiLiveDataNormalizer.Normalize(providerResponse, diagnostics);
-            return new LiveProviderReadResult(
-                LiveProviderReadDisposition.Success,
-                receivedAtUtc,
-                observations,
-                diagnostics,
-                entityTag,
-                payloadSha256: payloadSha256);
         }
         catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
         {

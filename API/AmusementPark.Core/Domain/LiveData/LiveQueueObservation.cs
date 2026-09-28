@@ -43,13 +43,24 @@ public sealed class LiveQueueObservation
         }
 
         string? normalizedCurrencyCode = NormalizeCurrencyCode(currencyCode);
-        if (priceMinorUnits.HasValue && normalizedCurrencyCode is null)
+        if (priceMinorUnits.HasValue != (normalizedCurrencyCode is not null))
         {
             throw Invalid(
                 LiveDataErrorCodes.InvalidQueue,
-                "A priced live queue requires a currency code.",
+                "A live queue price and its currency must be provided together.",
                 nameof(currencyCode));
         }
+
+        ValidateFieldsForKind(
+            kind,
+            waitTimeMinutes,
+            availability,
+            returnStartUtc,
+            returnEndUtc,
+            currentGroupStart,
+            currentGroupEnd,
+            nextAllocationUtc,
+            priceMinorUnits);
 
         this.Kind = kind;
         this.WaitTimeMinutes = waitTimeMinutes;
@@ -108,6 +119,44 @@ public sealed class LiveQueueObservation
             throw Invalid(
                 LiveDataErrorCodes.InvalidQueue,
                 "A live boarding group range is invalid.");
+        }
+    }
+
+    private static void ValidateFieldsForKind(
+        LiveQueueKind kind,
+        int? waitTimeMinutes,
+        LiveQueueAvailability availability,
+        DateTime? returnStartUtc,
+        DateTime? returnEndUtc,
+        int? currentGroupStart,
+        int? currentGroupEnd,
+        DateTime? nextAllocationUtc,
+        long? priceMinorUnits)
+    {
+        bool hasReturnTimeFacts = availability != LiveQueueAvailability.Unspecified
+            || returnStartUtc.HasValue
+            || returnEndUtc.HasValue;
+        bool hasBoardingGroupFacts = currentGroupStart.HasValue
+            || currentGroupEnd.HasValue
+            || nextAllocationUtc.HasValue;
+        bool isValid = kind switch
+        {
+            LiveQueueKind.Standby or LiveQueueKind.SingleRider or LiveQueueKind.PaidStandby =>
+                !hasReturnTimeFacts && !hasBoardingGroupFacts && !priceMinorUnits.HasValue,
+            LiveQueueKind.ReturnTime =>
+                !waitTimeMinutes.HasValue && !hasBoardingGroupFacts && !priceMinorUnits.HasValue,
+            LiveQueueKind.PaidReturnTime =>
+                !waitTimeMinutes.HasValue && !hasBoardingGroupFacts,
+            LiveQueueKind.BoardingGroup =>
+                !returnStartUtc.HasValue && !returnEndUtc.HasValue && !priceMinorUnits.HasValue,
+            _ => false,
+        };
+        if (!isValid)
+        {
+            throw Invalid(
+                LiveDataErrorCodes.InvalidQueue,
+                "A live queue contains facts that do not belong to its kind.",
+                nameof(kind));
         }
     }
 

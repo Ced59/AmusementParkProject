@@ -15,20 +15,19 @@ internal static class ThemeParksWikiLiveDataNormalizer
         TimeSpan.FromMilliseconds(100));
 
     public static IReadOnlyCollection<ExternalLiveObservation> Normalize(
-        ThemeParksWikiLiveDataResponse response,
+        JsonElement liveData,
         ICollection<LiveProviderDiagnostic> diagnostics)
     {
-        ArgumentNullException.ThrowIfNull(response);
         ArgumentNullException.ThrowIfNull(diagnostics);
 
         List<ExternalLiveObservation> observations = new List<ExternalLiveObservation>();
-        if (response.LiveData is null || response.LiveData.Count == 0)
+        if (liveData.GetArrayLength() == 0)
         {
             diagnostics.Add(new LiveProviderDiagnostic(LiveProviderDiagnosticCodes.EmptyResponse));
             return observations.AsReadOnly();
         }
 
-        foreach (JsonElement item in response.LiveData)
+        foreach (JsonElement item in liveData.EnumerateArray())
         {
             ExternalLiveObservation? observation = NormalizeItem(item, diagnostics);
             if (observation is not null)

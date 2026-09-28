@@ -355,6 +355,26 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     }
 
     [Fact]
+    public async Task FetchLatestAsync_WhenObservationCountExceedsBound_ShouldRejectBeforeNormalization()
+    {
+        string entries = string.Join(
+            ',',
+            Enumerable.Repeat("0", ThemeParksWikiLiveDataAdapter.MaximumObservationCount + 1));
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = $"{{\"liveData\":[{entries}]}}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.InvalidPayload, result.Disposition);
+        Assert.Empty(result.Observations);
+        Assert.Empty(result.Diagnostics);
+    }
+
+    [Fact]
     public async Task FetchLatestAsync_WhenDeclaredPayloadIsTooLarge_ShouldRejectBeforeReading()
     {
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler

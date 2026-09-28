@@ -47,4 +47,58 @@ public sealed class LiveQueueObservationTests
 
         Assert.Equal(LiveDataErrorCodes.InvalidQueue, exception.Code);
     }
+
+    [Fact]
+    public void Constructor_WhenStandbyContainsReturnTimeFacts_ShouldRejectQueue()
+    {
+        LiveDataValidationException exception = Assert.Throws<LiveDataValidationException>(() =>
+            new LiveQueueObservation(
+                LiveQueueKind.Standby,
+                15,
+                isEstimated: false,
+                returnStartUtc: new DateTime(2026, 9, 28, 10, 0, 0, DateTimeKind.Utc)));
+
+        Assert.Equal(LiveDataErrorCodes.InvalidQueue, exception.Code);
+    }
+
+    [Fact]
+    public void Constructor_WhenReturnTimeContainsWait_ShouldRejectQueue()
+    {
+        LiveDataValidationException exception = Assert.Throws<LiveDataValidationException>(() =>
+            new LiveQueueObservation(
+                LiveQueueKind.ReturnTime,
+                15,
+                isEstimated: false,
+                availability: LiveQueueAvailability.Available));
+
+        Assert.Equal(LiveDataErrorCodes.InvalidQueue, exception.Code);
+    }
+
+    [Fact]
+    public void Constructor_WhenCurrencyHasNoPrice_ShouldRejectQueue()
+    {
+        LiveDataValidationException exception = Assert.Throws<LiveDataValidationException>(() =>
+            new LiveQueueObservation(
+                LiveQueueKind.PaidReturnTime,
+                null,
+                isEstimated: false,
+                currencyCode: "EUR"));
+
+        Assert.Equal(LiveDataErrorCodes.InvalidQueue, exception.Code);
+    }
+
+    [Fact]
+    public void Constructor_WhenPaidReturnTimeContainsPrice_ShouldPreserveQueue()
+    {
+        LiveQueueObservation observation = new LiveQueueObservation(
+            LiveQueueKind.PaidReturnTime,
+            null,
+            isEstimated: false,
+            availability: LiveQueueAvailability.Available,
+            priceMinorUnits: 1250,
+            currencyCode: "eur");
+
+        Assert.Equal(1250, observation.PriceMinorUnits);
+        Assert.Equal("EUR", observation.CurrencyCode);
+    }
 }
