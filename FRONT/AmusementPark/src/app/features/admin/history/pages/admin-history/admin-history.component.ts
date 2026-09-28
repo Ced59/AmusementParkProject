@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { InputText } from '@shared/ui/primitives/inputtext';
 import { Tag } from '@shared/ui/primitives/tag';
@@ -74,6 +74,7 @@ function createLocalizedItems(preferredLanguage: string, value: string): Localiz
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    RouterLink,
     TranslateModule,
     InputText,
     Tag

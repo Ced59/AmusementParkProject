@@ -101,6 +101,24 @@ public sealed class HistoricalRelationRepository : IHistoricalRelationRepository
         return document?.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<HistoricalRelation>> GetLatestRevisionsForParkAsync(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubjectKey> currentSubjects,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = NormalizeParkId(parkId);
+        ArgumentNullException.ThrowIfNull(currentSubjects);
+        PipelineDefinition<HistoricalRelationDocument, HistoricalRelationDocument> pipeline =
+            PipelineDefinition<HistoricalRelationDocument, HistoricalRelationDocument>.Create(
+                BuildLatestForParkPipeline(
+                    normalizedParkId,
+                    currentSubjects,
+                    this.collectionName));
+        List<HistoricalRelationDocument> documents = await this.collection.Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<IReadOnlyCollection<HistoricalRelation>> GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
         IReadOnlyCollection<HistoricalSubjectKey> subjects,
         int limit,
@@ -210,6 +228,61 @@ public sealed class HistoricalRelationRepository : IHistoricalRelationRepository
         };
     }
 
+    internal static IReadOnlyCollection<BsonDocument> BuildLatestForParkPipeline(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubjectKey> currentSubjects,
+        string collectionName)
+    {
+        string normalizedParkId = NormalizeParkId(parkId);
+        ArgumentNullException.ThrowIfNull(currentSubjects);
+        string normalizedCollectionName = collectionName?.Trim() ?? string.Empty;
+        if (normalizedCollectionName.Length == 0)
+        {
+            throw new ArgumentException("A MongoDB collection name is required.", nameof(collectionName));
+        }
+
+        BsonArray scopeFilters = new(currentSubjects
+            .Distinct()
+            .SelectMany(static subject => new[]
+            {
+                BuildEndpoint("source", subject),
+                BuildEndpoint("target", subject),
+            }));
+        scopeFilters.Add(new BsonDocument("source.contextParkId", normalizedParkId));
+        scopeFilters.Add(new BsonDocument("target.contextParkId", normalizedParkId));
+
+        return new BsonDocument[]
+        {
+            new BsonDocument("$match", new BsonDocument("$or", scopeFilters)),
+            new BsonDocument("$group", new BsonDocument("_id", "$relationId")),
+            new BsonDocument("$lookup", new BsonDocument
+            {
+                ["from"] = normalizedCollectionName,
+                ["let"] = new BsonDocument("candidateId", "$_id"),
+                ["pipeline"] = new BsonArray
+                {
+                    new BsonDocument("$match", new BsonDocument(
+                        "$expr",
+                        new BsonDocument("$eq", new BsonArray
+                        {
+                            "$relationId",
+                            "$$candidateId",
+                        }))),
+                    new BsonDocument("$sort", new BsonDocument("revision", -1)),
+                    new BsonDocument("$limit", 1),
+                },
+                ["as"] = "latest",
+            }),
+            new BsonDocument("$unwind", "$latest"),
+            new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$latest")),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["period.start.year"] = 1,
+                ["relationId"] = 1,
+            }),
+        };
+    }
+
     internal static IReadOnlyCollection<BsonDocument> BuildLatestTouchingEachSubjectPipeline(
         IReadOnlyCollection<HistoricalSubjectKey> subjects,
         string collectionName,
@@ -271,6 +344,17 @@ public sealed class HistoricalRelationRepository : IHistoricalRelationRepository
                 ? BsonNull.Value
                 : subject.ContextParkId,
         };
+    }
+
+    private static string NormalizeParkId(string parkId)
+    {
+        string normalizedParkId = parkId?.Trim() ?? string.Empty;
+        if (normalizedParkId.Length == 0)
+        {
+            throw new ArgumentException("A park identifier is required.", nameof(parkId));
+        }
+
+        return normalizedParkId;
     }
 
     private async Task<HistoricalRelationDocument?> LoadPredecessorAsync(

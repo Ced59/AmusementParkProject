@@ -56,6 +56,7 @@ export const HISTORY_API_ENDPOINTS = {
     search: query.search ?? null,
     includeHidden: query.includeHidden ?? null
   })}`,
+  getAdminParkDiagnostics: (parkId: string) => `admin/history/parks/${encodeURIComponent(parkId)}/diagnostics`,
   createAdminEvent: 'admin/history/events',
   updateAdminEvent: (eventId: string) => `admin/history/events/${encodeURIComponent(eventId)}`,
   deleteAdminEvent: (eventId: string) => `admin/history/events/${encodeURIComponent(eventId)}`

@@ -285,6 +285,20 @@ describe('App routes', () => {
     expect(route?.loadComponent).toBeDefined();
   });
 
+  it('exposes history diagnostics before the broader admin history route', () => {
+    const adminRoutes: Route[] = getAdminRoutes();
+    const diagnosticsIndex: number = adminRoutes.findIndex(
+      (candidate: Route): boolean => candidate.path === 'history/diagnostics'
+    );
+    const historyIndex: number = adminRoutes.findIndex(
+      (candidate: Route): boolean => candidate.path === 'history'
+    );
+
+    expect(diagnosticsIndex).toBeGreaterThanOrEqual(0);
+    expect(diagnosticsIndex).toBeLessThan(historyIndex);
+    expect(adminRoutes[diagnosticsIndex]?.loadComponent).toBeDefined();
+  });
+
   it('lazy loads social publishing behind the admin layout', () => {
     const adminRoutes: Route[] = getAdminRoutes();
     const route: Route | undefined = adminRoutes.find(

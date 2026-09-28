@@ -2550,6 +2550,7 @@
         "edit": "Modifier",
         "delete": "Supprimer",
         "insertArticleTemplate": "Modèle d’article",
+        "openDiagnostics": "Contrôler les données",
         "save": "Enregistrer",
         "cancel": "Annuler"
       },
@@ -2616,6 +2617,82 @@
       "messages": {
         "saved": "Événement historique enregistré.",
         "deleted": "Événement historique supprimé."
+      },
+      "diagnostics": {
+        "kicker": "Qualité historique",
+        "title": "Diagnostic avant publication",
+        "subtitle": "Contrôle la cohérence, les preuves et l’impact des données historiques d’un parc avant de les diffuser.",
+        "backToEditor": "Retour aux timelines",
+        "loading": "Analyse de l’histoire du parc…",
+        "search": {
+          "title": "Choisir un parc",
+          "hint": "Recherche par nom : aucun identifiant technique n’est nécessaire.",
+          "label": "Nom du parc",
+          "placeholder": "Ex. Phantasialand",
+          "submit": "Rechercher",
+          "searching": "Recherche…",
+          "results": "Parcs trouvés"
+        },
+        "report": {
+          "kicker": "Rapport de fiabilité",
+          "summary": "Une vue métier des preuves, incohérences et étapes de validation.",
+          "blocked": "Corrections requises",
+          "ready": "Aucun blocage détecté"
+        },
+        "kpis": {
+          "blockers": "Blocages",
+          "blockersHint": "À corriger avant publication",
+          "facts": "Faits suivis",
+          "factsHint": "Dernières révisions connues",
+          "relations": "Relations",
+          "relationsHint": "Filiations, zones et transformations",
+          "visits": "Visites à réexaminer",
+          "visitsHint": "Comptage anonyme, sans profil exposé"
+        },
+        "severity": {
+          "Information": "Information",
+          "Warning": "À vérifier",
+          "Error": "Bloquant"
+        },
+        "issues": {
+          "title": "Points à traiter",
+          "hint": "Les blocages compromettent la cohérence ; les avertissements demandent une vérification éditoriale.",
+          "empty": "Aucune incohérence active n’a été détectée.",
+          "MissingStartDate": "Date de début manquante",
+          "MissingEndDate": "Date de fin manquante",
+          "AmbiguousInterval": "Intervalle de dates ambigu",
+          "OpeningAfterClosure": "Ouverture enregistrée après une fermeture",
+          "IncompatibleLineageCycle": "Cycle incompatible dans la filiation",
+          "OverlappingNames": "Plusieurs noms se chevauchent",
+          "MissingZone": "Zone historique introuvable",
+          "MissingSource": "Preuve documentaire manquante"
+        },
+        "workflow": {
+          "title": "Avancement éditorial",
+          "hint": "Chaque étape reste visible, même lorsqu’une seule personne assure toute la revue.",
+          "Draft": "Brouillon",
+          "SourcesAttached": "Sources liées",
+          "EditorialReview": "Revue éditoriale",
+          "StructuredValidation": "Validation structurée",
+          "Published": "Publié",
+          "Corrected": "Corrigé",
+          "Retracted": "Rétracté"
+        },
+        "coverage": {
+          "title": "Couverture par décennie",
+          "hint": "Le niveau de preuve apparaît sans masquer les périodes moins documentées.",
+          "empty": "Aucune période historique n’est encore documentée.",
+          "resources": "{{count}} élément(s)",
+          "sources": "{{percentage}} % sourcés · {{count}} preuve(s)"
+        },
+        "privacy": {
+          "title": "Impact passeport anonymisé",
+          "text": "{{conflicts}} visite(s) contiennent un conflit confirmé et {{unverified}} restent non vérifiables. Aucun membre ni contenu privé n’est exposé."
+        },
+        "errors": {
+          "searchFailed": "Impossible de rechercher les parcs.",
+          "loadFailed": "Impossible de charger le diagnostic historique de ce parc."
+        }
       },
       "errors": {
         "loadFailed": "Impossible de charger les événements historiques.",

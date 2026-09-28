@@ -15,6 +15,7 @@ import {
   PublicParkHistoricalSnapshot,
   PublicParkHistoricalTimeline
 } from '@app/models/history/public-park-history.models';
+import { AdminHistoricalParkDiagnostics } from '@app/models/history/admin-historical-park-diagnostics.models';
 import { PagedCollectionResponse, unwrapPagedCollection } from '@data-access/shared/api-helpers';
 import { PagedResult } from '@shared/models/contracts';
 import { environment } from '../../../environments/environment';
@@ -98,6 +99,11 @@ export class HistoryApiService {
         return unwrapPagedCollection<HistoryEvent>(response);
       })
     );
+  }
+
+  getAdminParkDiagnostics(parkId: string): Observable<AdminHistoricalParkDiagnostics> {
+    const url: string = `${environment.apiBaseUrl}${HISTORY_API_ENDPOINTS.getAdminParkDiagnostics(parkId)}`;
+    return this.http.get<AdminHistoricalParkDiagnostics>(url);
   }
 
   createAdminEvent(request: HistoryEventWriteModel): Observable<HistoryEvent> {

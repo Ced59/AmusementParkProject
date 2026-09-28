@@ -33,6 +33,7 @@
         "edit": "Edytuj",
         "delete": "Usuń",
         "insertArticleTemplate": "Szablon artykułu",
+        "openDiagnostics": "Sprawdź dane",
         "save": "Zapisz",
         "cancel": "Anuluj"
       },
@@ -99,6 +100,82 @@
       "messages": {
         "saved": "Wydarzenie historyczne zapisane.",
         "deleted": "Wydarzenie historyczne usunięte."
+      },
+      "diagnostics": {
+        "kicker": "Jakość danych historycznych",
+        "title": "Diagnostyka przed publikacją",
+        "subtitle": "Sprawdź spójność, dowody i wpływ danych historycznych parku przed ich opublikowaniem.",
+        "backToEditor": "Wróć do osi czasu",
+        "loading": "Analizowanie historii parku…",
+        "search": {
+          "title": "Wybierz park",
+          "hint": "Wyszukaj po nazwie: identyfikator techniczny nie jest potrzebny.",
+          "label": "Nazwa parku",
+          "placeholder": "Np. Phantasialand",
+          "submit": "Szukaj",
+          "searching": "Wyszukiwanie…",
+          "results": "Znalezione parki"
+        },
+        "report": {
+          "kicker": "Raport wiarygodności",
+          "summary": "Biznesowy obraz dowodów, niespójności i etapów zatwierdzania.",
+          "blocked": "Wymagane poprawki",
+          "ready": "Nie wykryto blokady"
+        },
+        "kpis": {
+          "blockers": "Blokady",
+          "blockersHint": "Do poprawienia przed publikacją",
+          "facts": "Śledzone fakty",
+          "factsHint": "Najnowsze znane wersje",
+          "relations": "Relacje",
+          "relationsHint": "Pochodzenie, strefy i przekształcenia",
+          "visits": "Wizyty do ponownej oceny",
+          "visitsHint": "Anonimowa liczba bez ujawniania profili"
+        },
+        "severity": {
+          "Information": "Informacja",
+          "Warning": "Do sprawdzenia",
+          "Error": "Blokujące"
+        },
+        "issues": {
+          "title": "Punkty do rozwiązania",
+          "hint": "Blokady zagrażają spójności; ostrzeżenia wymagają weryfikacji redakcyjnej.",
+          "empty": "Nie wykryto żadnej aktywnej niespójności.",
+          "MissingStartDate": "Brak daty początkowej",
+          "MissingEndDate": "Brak daty końcowej",
+          "AmbiguousInterval": "Niejednoznaczny zakres dat",
+          "OpeningAfterClosure": "Otwarcie zapisane po zamknięciu",
+          "IncompatibleLineageCycle": "Niezgodny cykl w pochodzeniu",
+          "OverlappingNames": "Kilka nazw nakłada się na siebie",
+          "MissingZone": "Nie znaleziono historycznej strefy",
+          "MissingSource": "Brak dowodu źródłowego"
+        },
+        "workflow": {
+          "title": "Postęp redakcyjny",
+          "hint": "Każdy etap pozostaje widoczny, nawet gdy jedna osoba wykonuje całą weryfikację.",
+          "Draft": "Szkic",
+          "SourcesAttached": "Źródła dołączone",
+          "EditorialReview": "Weryfikacja redakcyjna",
+          "StructuredValidation": "Walidacja strukturalna",
+          "Published": "Opublikowane",
+          "Corrected": "Poprawione",
+          "Retracted": "Wycofane"
+        },
+        "coverage": {
+          "title": "Pokrycie według dekad",
+          "hint": "Poziom udokumentowania jest widoczny bez ukrywania słabiej opisanych okresów.",
+          "empty": "Nie udokumentowano jeszcze żadnego okresu historycznego.",
+          "resources": "{{count}} element(y)",
+          "sources": "{{percentage}} % ze źródłami · {{count}} dowód/dowody"
+        },
+        "privacy": {
+          "title": "Zanonimizowany wpływ na paszporty",
+          "text": "{{conflicts}} wizyta/wizyty zawierają potwierdzony konflikt, a {{unverified}} nadal nie można zweryfikować. Żaden użytkownik ani prywatna treść nie są ujawniane."
+        },
+        "errors": {
+          "searchFailed": "Nie można wyszukać parków.",
+          "loadFailed": "Nie można załadować diagnostyki historycznej tego parku."
+        }
       },
       "errors": {
         "loadFailed": "Nie można załadować wydarzeń historycznych.",

@@ -79,4 +79,28 @@ describe('HistoryApiService', () => {
     expect(request.request.method).toBe('GET');
     request.flush({ parkId: 'park/one', parkName: 'Park', subjects: [], categoryNetChanges: [] });
   });
+
+  it('loads admin diagnostics with an encoded park identifier', () => {
+    service.getAdminParkDiagnostics('park/one').subscribe();
+
+    const request = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}admin/history/parks/park%2Fone/diagnostics`
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush({
+      parkId: 'park/one',
+      parkName: 'Park',
+      factCount: 0,
+      relationCount: 0,
+      blockingIssueCount: 0,
+      issues: [],
+      decadeCoverage: [],
+      workflow: [],
+      visits: {
+        potentiallyInconsistentVisitCount: 0,
+        confirmedConflictVisitCount: 0,
+        unverifiedVisitCount: 0
+      }
+    });
+  });
 });

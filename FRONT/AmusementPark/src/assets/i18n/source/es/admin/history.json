@@ -33,6 +33,7 @@
         "edit": "Editar",
         "delete": "Eliminar",
         "insertArticleTemplate": "Plantilla de artículo",
+        "openDiagnostics": "Comprobar datos",
         "save": "Guardar",
         "cancel": "Cancelar"
       },
@@ -99,6 +100,82 @@
       "messages": {
         "saved": "Evento histórico guardado.",
         "deleted": "Evento histórico eliminado."
+      },
+      "diagnostics": {
+        "kicker": "Calidad histórica",
+        "title": "Diagnóstico antes de publicar",
+        "subtitle": "Comprueba la coherencia, las pruebas y el impacto de los datos históricos de un parque antes de difundirlos.",
+        "backToEditor": "Volver a las cronologías",
+        "loading": "Analizando la historia del parque…",
+        "search": {
+          "title": "Elegir un parque",
+          "hint": "Busca por nombre: no necesitas ningún identificador técnico.",
+          "label": "Nombre del parque",
+          "placeholder": "Ej. Phantasialand",
+          "submit": "Buscar",
+          "searching": "Buscando…",
+          "results": "Parques encontrados"
+        },
+        "report": {
+          "kicker": "Informe de fiabilidad",
+          "summary": "Una vista funcional de las pruebas, incoherencias y etapas de validación.",
+          "blocked": "Se requieren correcciones",
+          "ready": "No se ha detectado ningún bloqueo"
+        },
+        "kpis": {
+          "blockers": "Bloqueos",
+          "blockersHint": "Deben corregirse antes de publicar",
+          "facts": "Hechos seguidos",
+          "factsHint": "Últimas revisiones conocidas",
+          "relations": "Relaciones",
+          "relationsHint": "Linajes, zonas y transformaciones",
+          "visits": "Visitas que revisar",
+          "visitsHint": "Recuento anónimo, sin perfiles expuestos"
+        },
+        "severity": {
+          "Information": "Información",
+          "Warning": "Por comprobar",
+          "Error": "Bloqueante"
+        },
+        "issues": {
+          "title": "Puntos pendientes",
+          "hint": "Los bloqueos comprometen la coherencia; los avisos requieren una revisión editorial.",
+          "empty": "No se ha detectado ninguna incoherencia activa.",
+          "MissingStartDate": "Falta la fecha de inicio",
+          "MissingEndDate": "Falta la fecha de fin",
+          "AmbiguousInterval": "Intervalo de fechas ambiguo",
+          "OpeningAfterClosure": "Apertura registrada después de un cierre",
+          "IncompatibleLineageCycle": "Ciclo incompatible en el linaje",
+          "OverlappingNames": "Se solapan varios nombres",
+          "MissingZone": "No se encuentra la zona histórica",
+          "MissingSource": "Falta una prueba documental"
+        },
+        "workflow": {
+          "title": "Avance editorial",
+          "hint": "Cada etapa permanece visible, aunque una sola persona se encargue de toda la revisión.",
+          "Draft": "Borrador",
+          "SourcesAttached": "Fuentes vinculadas",
+          "EditorialReview": "Revisión editorial",
+          "StructuredValidation": "Validación estructurada",
+          "Published": "Publicado",
+          "Corrected": "Corregido",
+          "Retracted": "Retirado"
+        },
+        "coverage": {
+          "title": "Cobertura por década",
+          "hint": "El nivel de pruebas se muestra sin ocultar los periodos menos documentados.",
+          "empty": "Todavía no hay ningún periodo histórico documentado.",
+          "resources": "{{count}} elemento(s)",
+          "sources": "{{percentage}} % con fuentes · {{count}} prueba(s)"
+        },
+        "privacy": {
+          "title": "Impacto anonimizado en pasaportes",
+          "text": "{{conflicts}} visita(s) contienen un conflicto confirmado y {{unverified}} siguen sin poder verificarse. No se muestra ningún miembro ni contenido privado."
+        },
+        "errors": {
+          "searchFailed": "No se pueden buscar los parques.",
+          "loadFailed": "No se puede cargar el diagnóstico histórico de este parque."
+        }
       },
       "errors": {
         "loadFailed": "No se pueden cargar los eventos históricos.",

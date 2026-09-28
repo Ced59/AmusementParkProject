@@ -223,6 +223,17 @@ internal static class UserRideOccurrenceMongoDefinitions
                 new CreateIndexOptions { Name = "idx_user_ride_occurrences_user_park_visit" }),
             new CreateIndexModel<UserRideOccurrenceDocument>(
                 Builders<UserRideOccurrenceDocument>.IndexKeys
+                    .Ascending(static document => document.ParkId)
+                    .Ascending(static document => document.Status)
+                    .Ascending(static document => document.HistoricalConsistency)
+                    .Ascending(static document => document.DeletedAtUtc)
+                    .Ascending(static document => document.VisitId),
+                new CreateIndexOptions
+                {
+                    Name = "idx_user_ride_occurrences_park_historical_diagnostics",
+                }),
+            new CreateIndexModel<UserRideOccurrenceDocument>(
+                Builders<UserRideOccurrenceDocument>.IndexKeys
                     .Ascending(static document => document.VisitId)
                     .Ascending(static document => document.Status),
                 new CreateIndexOptions { Name = "idx_user_ride_occurrences_visit_status" }),

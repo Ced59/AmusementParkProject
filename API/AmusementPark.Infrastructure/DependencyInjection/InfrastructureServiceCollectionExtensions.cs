@@ -379,6 +379,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IHistoricalFactRepository, HistoricalFactRepository>();
         services.AddScoped<IHistoricalSourceRepository, HistoricalSourceRepository>();
         services.AddScoped<IHistoricalRelationRepository, HistoricalRelationRepository>();
+        services.AddScoped<IHistoricalVisitDiagnosticsReader, HistoricalVisitDiagnosticsReader>();
         services.AddScoped<HistoricalReviewEventRepository>();
         services.AddScoped<IHistoricalAuditReader>(provider =>
             provider.GetRequiredService<HistoricalReviewEventRepository>());

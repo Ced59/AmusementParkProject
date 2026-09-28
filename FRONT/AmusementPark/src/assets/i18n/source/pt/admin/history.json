@@ -33,6 +33,7 @@
         "edit": "Editar",
         "delete": "Eliminar",
         "insertArticleTemplate": "Modelo de artigo",
+        "openDiagnostics": "Verificar dados",
         "save": "Guardar",
         "cancel": "Cancelar"
       },
@@ -99,6 +100,82 @@
       "messages": {
         "saved": "Evento histórico guardado.",
         "deleted": "Evento histórico eliminado."
+      },
+      "diagnostics": {
+        "kicker": "Qualidade histórica",
+        "title": "Diagnóstico antes da publicação",
+        "subtitle": "Verifica a coerência, as provas e o impacto dos dados históricos de um parque antes de os publicares.",
+        "backToEditor": "Voltar às linhas do tempo",
+        "loading": "A analisar a história do parque…",
+        "search": {
+          "title": "Escolher um parque",
+          "hint": "Pesquisa pelo nome: não precisas de nenhum identificador técnico.",
+          "label": "Nome do parque",
+          "placeholder": "Ex. Phantasialand",
+          "submit": "Pesquisar",
+          "searching": "A pesquisar…",
+          "results": "Parques encontrados"
+        },
+        "report": {
+          "kicker": "Relatório de fiabilidade",
+          "summary": "Uma visão funcional das provas, incoerências e etapas de validação.",
+          "blocked": "São necessárias correções",
+          "ready": "Nenhum bloqueio detetado"
+        },
+        "kpis": {
+          "blockers": "Bloqueios",
+          "blockersHint": "A corrigir antes da publicação",
+          "facts": "Factos acompanhados",
+          "factsHint": "Últimas revisões conhecidas",
+          "relations": "Relações",
+          "relationsHint": "Linhagens, zonas e transformações",
+          "visits": "Visitas a rever",
+          "visitsHint": "Contagem anónima, sem perfis expostos"
+        },
+        "severity": {
+          "Information": "Informação",
+          "Warning": "A verificar",
+          "Error": "Bloqueador"
+        },
+        "issues": {
+          "title": "Pontos a tratar",
+          "hint": "Os bloqueios comprometem a coerência; os avisos exigem uma revisão editorial.",
+          "empty": "Não foi detetada nenhuma incoerência ativa.",
+          "MissingStartDate": "Data de início em falta",
+          "MissingEndDate": "Data de fim em falta",
+          "AmbiguousInterval": "Intervalo de datas ambíguo",
+          "OpeningAfterClosure": "Abertura registada após um encerramento",
+          "IncompatibleLineageCycle": "Ciclo incompatível na linhagem",
+          "OverlappingNames": "Vários nomes sobrepõem-se",
+          "MissingZone": "Zona histórica não encontrada",
+          "MissingSource": "Prova documental em falta"
+        },
+        "workflow": {
+          "title": "Progresso editorial",
+          "hint": "Cada etapa continua visível, mesmo quando uma só pessoa assegura toda a revisão.",
+          "Draft": "Rascunho",
+          "SourcesAttached": "Fontes associadas",
+          "EditorialReview": "Revisão editorial",
+          "StructuredValidation": "Validação estruturada",
+          "Published": "Publicado",
+          "Corrected": "Corrigido",
+          "Retracted": "Retirado"
+        },
+        "coverage": {
+          "title": "Cobertura por década",
+          "hint": "O nível de prova é mostrado sem ocultar os períodos menos documentados.",
+          "empty": "Ainda não existe nenhum período histórico documentado.",
+          "resources": "{{count}} elemento(s)",
+          "sources": "{{percentage}} % com fontes · {{count}} prova(s)"
+        },
+        "privacy": {
+          "title": "Impacto anonimizado nos passaportes",
+          "text": "{{conflicts}} visita(s) contêm um conflito confirmado e {{unverified}} continuam sem poder ser verificadas. Nenhum membro nem conteúdo privado é exposto."
+        },
+        "errors": {
+          "searchFailed": "Não foi possível pesquisar os parques.",
+          "loadFailed": "Não foi possível carregar o diagnóstico histórico deste parque."
+        }
       },
       "errors": {
         "loadFailed": "Não foi possível carregar os eventos históricos.",

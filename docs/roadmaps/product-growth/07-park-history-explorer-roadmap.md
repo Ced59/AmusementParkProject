@@ -679,7 +679,9 @@ Chaque parc est activé individuellement. Une histoire narrative existante ne su
 | [`HIST-11A`](../../architecture/product-growth-hist-11a-passport-context-2026-09-27.md) | Catalogue historique du Passeport | États canoniques, identité d’époque et revalidation non destructive — implémenté le 27 septembre 2026 |
 | [`HIST-11B`](../../architecture/product-growth-hist-11b-historical-existence-reports-2026-09-27.md) | Signalement « cet élément existait » | Mémoire proposée sans devenir une preuve avant revue — implémenté le 27 septembre 2026 |
 | [`HIST-11C`](../../architecture/product-growth-hist-11c-passport-historical-statistics-2026-09-27.md) | Statistiques historiques personnelles | Époques, transformations et attractions disparues, privées par défaut — implémenté le 27 septembre 2026 |
-| `HIST-12` | Admin diagnostics/revue | Exploitation fiable |
+| `HIST-12` | Admin diagnostics/revue | Exploitation fiable — en cours |
+| [`HIST-12A`](../../architecture/product-growth-hist-12a-history-admin-diagnostics-2026-09-28.md) | Diagnostic qualité par parc | Incohérences, preuves, couverture et impact Passeport anonymisé — implémenté le 28 septembre 2026 |
+| `HIST-12B` | Atelier éditorial canonique | Édition, revue, aperçu public et impact avant publication |
 | `HIST-13` | SEO/partage | Pages clés seulement |
 | `HIST-14` | Extension parcs | Gate par parc |
 
@@ -1027,6 +1029,34 @@ libellés longs et un repli explicite en une colonne à 520 pixels. Un test de
 contrat protège le viewport à partir de 320 pixels. Les textes, le fil d'Ariane
 visible et son `BreadcrumbList` sont localisés dans les huit langues. La page
 reste `noindex,follow` jusqu'à la sélection éditoriale de `HIST-13`.
+
+### Implémentation `HIST-12A` — 28 septembre 2026
+
+L’administration dispose d’un diagnostic historique accessible par le nom du
+parc, sans demander ni afficher d’identifiant technique. Le rapport regroupe
+les blocages et avertissements actifs : dates incomplètes ou ambiguës,
+ouverture incohérente après fermeture, cycle de filiation, noms qui se
+chevauchent, zone historique introuvable et preuve documentaire manquante.
+
+Le moteur de diagnostic appartient au Core et travaille sur les dernières
+révisions canoniques, y compris les brouillons et éléments masqués nécessaires
+à une revue d’administration. Il restitue aussi l’avancement éditorial et la
+couverture par décennie. La lecture Mongo recharge la dernière révision de
+chaque chaîne avant le calcul afin qu’une ancienne version ne puisse pas créer
+un faux signal.
+
+L’impact Passeport reste volontairement agrégé : seuls les nombres distincts
+de visites terminées en conflit confirmé ou encore non vérifiables sont
+retournés. Aucun identifiant de membre, commentaire, note privée ou contenu de
+visite ne franchit le port applicatif. Des indexes ciblés couvrent les
+diagnostics par parc sans introduire de nouveau schéma documentaire ni de
+second système historique.
+
+L’écran Angular utilise les ports et la façade existants, se replie en une
+colonne sur mobile et protège les textes longs contre tout débordement du
+viewport. Les libellés sont disponibles dans les huit langues. `HIST-12B`
+complètera ce rapport par l’atelier d’édition et de revue canonique, l’aperçu
+public et la simulation d’impact avant publication.
 
 ## 22. Gate finale `HIST-G`
 

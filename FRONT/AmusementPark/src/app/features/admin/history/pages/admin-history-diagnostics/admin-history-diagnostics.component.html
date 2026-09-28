@@ -1,0 +1,192 @@
+<section class="history-diagnostics admin-surface">
+  <header class="history-diagnostics__header">
+    <div>
+      <span class="kicker kicker--sky">{{ 'admin.history.diagnostics.kicker' | translate }}</span>
+      <h1 class="admin-page-title">{{ 'admin.history.diagnostics.title' | translate }}</h1>
+      <p class="admin-muted">{{ 'admin.history.diagnostics.subtitle' | translate }}</p>
+    </div>
+    <a class="btn-nav btn-nav--ghost" [routerLink]="['../']">
+      <span class="pi pi-arrow-left" aria-hidden="true"></span>
+      {{ 'admin.history.diagnostics.backToEditor' | translate }}
+    </a>
+  </header>
+
+  <article class="admin-card history-diagnostics__search">
+    <div>
+      <h2>{{ 'admin.history.diagnostics.search.title' | translate }}</h2>
+      <p class="admin-muted">{{ 'admin.history.diagnostics.search.hint' | translate }}</p>
+    </div>
+    <form (ngSubmit)="search()">
+      <label for="history-diagnostics-search">{{ 'admin.history.diagnostics.search.label' | translate }}</label>
+      <div class="history-diagnostics__search-row">
+        <input
+          id="history-diagnostics-search"
+          class="admin-input"
+          type="search"
+          [formControl]="searchControl"
+          [placeholder]="'admin.history.diagnostics.search.placeholder' | translate"
+          autocomplete="off">
+        <button class="btn-nav" type="submit" [disabled]="facade.searching()">
+          <span class="pi pi-search" aria-hidden="true"></span>
+          {{ (facade.searching() ? 'admin.history.diagnostics.search.searching' : 'admin.history.diagnostics.search.submit') | translate }}
+        </button>
+      </div>
+    </form>
+
+    @if (facade.searchResults().length > 0) {
+      <div class="history-diagnostics__results" role="list" [attr.aria-label]="'admin.history.diagnostics.search.results' | translate">
+        @for (park of facade.searchResults(); track trackPark($index, park)) {
+          <button type="button" class="history-diagnostics__park" role="listitem" (click)="selectPark(park)">
+            <span class="pi pi-building" aria-hidden="true"></span>
+            <span>
+              <strong>{{ parkLabel(park) }}</strong>
+              @if (park.countryCode) {<small>{{ park.countryCode }}</small>}
+            </span>
+            <span class="pi pi-arrow-right" aria-hidden="true"></span>
+          </button>
+        }
+      </div>
+    }
+  </article>
+
+  @if (facade.errorKey(); as errorKey) {
+    <p class="admin-alert admin-alert--error" role="alert">{{ errorKey | translate }}</p>
+  }
+
+  @if (facade.loading()) {
+    <article class="admin-card history-diagnostics__loading" aria-live="polite">
+      <span class="pi pi-spin pi-spinner" aria-hidden="true"></span>
+      {{ 'admin.history.diagnostics.loading' | translate }}
+    </article>
+  }
+
+  @if (facade.diagnostics(); as diagnostics) {
+    <section class="history-diagnostics__report" aria-live="polite">
+      <header class="history-diagnostics__report-header">
+        <div>
+          <span class="kicker">{{ 'admin.history.diagnostics.report.kicker' | translate }}</span>
+          <h2>{{ diagnostics.parkName }}</h2>
+          <p>{{ 'admin.history.diagnostics.report.summary' | translate }}</p>
+        </div>
+        <span class="history-diagnostics__health" [class.history-diagnostics__health--blocked]="facade.hasBlockingIssues()">
+          <span class="pi" [class.pi-check-circle]="!facade.hasBlockingIssues()" [class.pi-exclamation-triangle]="facade.hasBlockingIssues()" aria-hidden="true"></span>
+          {{ (facade.hasBlockingIssues() ? 'admin.history.diagnostics.report.blocked' : 'admin.history.diagnostics.report.ready') | translate }}
+        </span>
+      </header>
+
+      <div class="history-diagnostics__kpis">
+        <article class="admin-card history-diagnostics__kpi history-diagnostics__kpi--critical">
+          <span>{{ 'admin.history.diagnostics.kpis.blockers' | translate }}</span>
+          <strong>{{ diagnostics.blockingIssueCount }}</strong>
+          <small>{{ 'admin.history.diagnostics.kpis.blockersHint' | translate }}</small>
+        </article>
+        <article class="admin-card history-diagnostics__kpi">
+          <span>{{ 'admin.history.diagnostics.kpis.facts' | translate }}</span>
+          <strong>{{ diagnostics.factCount }}</strong>
+          <small>{{ 'admin.history.diagnostics.kpis.factsHint' | translate }}</small>
+        </article>
+        <article class="admin-card history-diagnostics__kpi">
+          <span>{{ 'admin.history.diagnostics.kpis.relations' | translate }}</span>
+          <strong>{{ diagnostics.relationCount }}</strong>
+          <small>{{ 'admin.history.diagnostics.kpis.relationsHint' | translate }}</small>
+        </article>
+        <article class="admin-card history-diagnostics__kpi history-diagnostics__kpi--visits">
+          <span>{{ 'admin.history.diagnostics.kpis.visits' | translate }}</span>
+          <strong>{{ diagnostics.visits.potentiallyInconsistentVisitCount }}</strong>
+          <small>{{ 'admin.history.diagnostics.kpis.visitsHint' | translate }}</small>
+        </article>
+      </div>
+
+      <article class="admin-card history-diagnostics__workflow">
+        <div class="history-diagnostics__section-head">
+          <div>
+            <h3>{{ 'admin.history.diagnostics.workflow.title' | translate }}</h3>
+            <p>{{ 'admin.history.diagnostics.workflow.hint' | translate }}</p>
+          </div>
+        </div>
+        <div class="history-diagnostics__workflow-steps">
+          @for (stage of diagnostics.workflow; track stage.stage) {
+            <div class="history-diagnostics__workflow-step">
+              <span>{{ workflowKey(stage) | translate }}</span>
+              <strong>{{ stage.resourceCount }}</strong>
+            </div>
+          }
+        </div>
+      </article>
+
+      <div class="history-diagnostics__columns">
+        <article class="admin-card history-diagnostics__issues">
+          <div class="history-diagnostics__section-head">
+            <div>
+              <h3>{{ 'admin.history.diagnostics.issues.title' | translate }}</h3>
+              <p>{{ 'admin.history.diagnostics.issues.hint' | translate }}</p>
+            </div>
+            <span>{{ diagnostics.issues.length }}</span>
+          </div>
+
+          @if (diagnostics.issues.length === 0) {
+            <p class="history-diagnostics__empty">
+              <span class="pi pi-check-circle" aria-hidden="true"></span>
+              {{ 'admin.history.diagnostics.issues.empty' | translate }}
+            </p>
+          } @else {
+            <div class="history-diagnostics__issue-list">
+              @for (issue of diagnostics.issues; track trackIssue($index, issue)) {
+                <article class="history-diagnostics__issue" [attr.data-severity]="issue.severity">
+                  <span class="history-diagnostics__issue-icon pi" [class.pi-times-circle]="issue.severity === 'Error'" [class.pi-exclamation-triangle]="issue.severity === 'Warning'" [class.pi-info-circle]="issue.severity === 'Information'" aria-hidden="true"></span>
+                  <div>
+                    <div class="history-diagnostics__issue-heading">
+                      <strong>{{ issueKey(issue) | translate }}</strong>
+                      <span>{{ severityKey(issue.severity) | translate }}</span>
+                    </div>
+                    @if (subjectLabel(issue)) {
+                      <p>{{ subjectLabel(issue) }}</p>
+                    }
+                  </div>
+                </article>
+              }
+            </div>
+          }
+        </article>
+
+        <article class="admin-card history-diagnostics__coverage">
+          <div class="history-diagnostics__section-head">
+            <div>
+              <h3>{{ 'admin.history.diagnostics.coverage.title' | translate }}</h3>
+              <p>{{ 'admin.history.diagnostics.coverage.hint' | translate }}</p>
+            </div>
+          </div>
+          @if (diagnostics.decadeCoverage.length === 0) {
+            <p class="history-diagnostics__empty">{{ 'admin.history.diagnostics.coverage.empty' | translate }}</p>
+          } @else {
+            <div class="history-diagnostics__decades">
+              @for (coverage of diagnostics.decadeCoverage; track coverage.decade) {
+                <div class="history-diagnostics__decade">
+                  <div>
+                    <strong>{{ coverage.decade }}–{{ coverage.decade + 9 }}</strong>
+                    <span>{{ 'admin.history.diagnostics.coverage.resources' | translate: { count: coverage.resourceCount } }}</span>
+                  </div>
+                  <div class="history-diagnostics__coverage-track" aria-hidden="true">
+                    <span [style.width.%]="coverage.sourceCoveragePercentage"></span>
+                  </div>
+                  <small>{{ 'admin.history.diagnostics.coverage.sources' | translate: { percentage: coverage.sourceCoveragePercentage, count: coverage.sourcedResourceCount } }}</small>
+                </div>
+              }
+            </div>
+          }
+        </article>
+      </div>
+
+      <aside class="history-diagnostics__privacy">
+        <span class="pi pi-shield" aria-hidden="true"></span>
+        <div>
+          <strong>{{ 'admin.history.diagnostics.privacy.title' | translate }}</strong>
+          <p>{{ 'admin.history.diagnostics.privacy.text' | translate: {
+            conflicts: diagnostics.visits.confirmedConflictVisitCount,
+            unverified: diagnostics.visits.unverifiedVisitCount
+          } }}</p>
+        </div>
+      </aside>
+    </section>
+  }
+</section>

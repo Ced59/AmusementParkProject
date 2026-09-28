@@ -24,6 +24,11 @@ public interface IHistoricalFactRepository
         IReadOnlyCollection<HistoricalSubject> subjects,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<HistoricalFact>> GetLatestRevisionsForParkAsync(
+        string parkId,
+        IReadOnlyCollection<HistoricalSubject> currentSubjects,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<HistoricalFact>> GetLatestDecisionEligibleRevisionsForParkAsync(
         string parkId,
         IReadOnlyCollection<HistoricalSubject> publicCurrentSubjects,
