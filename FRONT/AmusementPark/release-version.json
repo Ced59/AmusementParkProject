@@ -1,6 +1,20 @@
 {
-  "version": "5.3.105",
+  "version": "5.4.0",
   "history": [
+    {
+      "version": "5.4.0",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "Les futures informations en direct distingueront clairement les données fraîches, vieillissantes et expirées.",
+        "en": "Future live information will clearly distinguish fresh, aging and expired data.",
+        "de": "Künftige Live-Informationen unterscheiden klar zwischen frischen, alternden und abgelaufenen Daten.",
+        "nl": "Toekomstige live-informatie maakt duidelijk onderscheid tussen verse, verouderende en verlopen gegevens.",
+        "it": "Le future informazioni in tempo reale distingueranno chiaramente i dati recenti, invecchiati e scaduti.",
+        "es": "La futura información en directo distinguirá claramente los datos recientes, envejecidos y caducados.",
+        "pl": "Przyszłe informacje na żywo wyraźnie odróżnią dane świeże, starzejące się i wygasłe.",
+        "pt": "As futuras informações em direto distinguirão claramente dados recentes, envelhecidos e expirados."
+      }
+    },
     {
       "version": "5.3.105",
       "releasedAt": "2026-09-28",

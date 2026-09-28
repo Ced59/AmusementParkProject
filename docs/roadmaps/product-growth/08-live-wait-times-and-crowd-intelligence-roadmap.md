@@ -2,9 +2,10 @@
 
 > Code programme : `LIVE`
 >
-> Statut : `LIVE-01` livré le 28 septembre 2026. La source pilote est autorisée
-> pour un spike interne latest-only ; aucune généralisation publique n'est encore
-> autorisée avant les gates de mapping, fraîcheur, charge et exploitation.
+> Statut : `LIVE-01` et `LIVE-02` livrés le 28 septembre 2026. La source pilote
+> est autorisée pour un spike interne latest-only et le contrat de provenance et
+> fraîcheur est implémenté ; aucune généralisation publique n'est encore autorisée
+> avant les gates de mapping, charge et exploitation.
 >
 > Dépendances : `RANK`, `PASS`, `WATCH`, qualité/observabilité transverse et contrats de source validés.
 >
@@ -26,8 +27,15 @@ La gate `LIVE-A` est franchie uniquement pour un spike interne sur le latest :
 - état sûr « indisponible » lorsque la source est suspendue ;
 - nouvelle revue obligatoire avant `LIVE-D` et avant tout stockage historique.
 
-Le prochain jalon est `LIVE-02` : construire les primitives de provenance et de
-fraîcheur indépendantes du fournisseur, sans encore appeler l'API externe.
+`LIVE-02` a livré dans le domaine pur les sources et leurs politiques d'usage, la
+provenance versionnée de chaque observation, les niveaux de confiance et la
+qualification déterministe `Fresh`, `Aging`, `Stale`, `Expired` ou `Unavailable`.
+Les trente tests ciblés couvrent notamment les frontières temporelles, l'absence
+d'horodatage et les dérives d'horloge. La décision est détaillée dans
+[`product-growth-live-02-provenance-freshness-2026-09-28.md`](../../architecture/product-growth-live-02-provenance-freshness-2026-09-28.md).
+
+Le prochain jalon est `LIVE-03` : créer les mappings vérifiés et leur pilotage
+administratif, sans mapping heuristique publié.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -740,7 +748,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | PR | Contenu | Critère |
 |---|---|---|
 | `LIVE-01` | ✅ Inventaire juridique/technique des sources | ThemeParks.wiki autorisée pour un spike interne latest-only |
-| `LIVE-02` | Modèle provenance/fraîcheur | Sémantique publique |
+| [`LIVE-02`](../../architecture/product-growth-live-02-provenance-freshness-2026-09-28.md) | ✅ Modèle provenance/fraîcheur | Sémantique de domaine testée, sans exposition publique |
 | `LIVE-03` | Mapping et admin | Aucun mapping heuristique public |
 | `LIVE-04` | Adaptateur pilote | Fixtures complètes |
 | `LIVE-05` | Scheduler/circuit breaker/budgets | Charge bornée |
@@ -754,6 +762,21 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | `LIVE-13` | Statistiques descriptives | Volumes/lacunes visibles |
 | `LIVE-14` | Étude prévision/backtest | Peut conclure à l’abandon |
 | `LIVE-15` | Prévision publique conditionnelle | Intervalle et erreur publiés |
+
+### Implémentation `LIVE-02` — 28 septembre 2026
+
+La version `5.4.0` introduit un langage commun indépendant du fournisseur pour
+qualifier toute future donnée live. Une observation conserve son origine, les
+heures d'observation, de réception et de normalisation, les versions du contrat,
+de l'adaptateur, du mapping et de la transformation ainsi qu'un niveau de
+confiance explicite. La licence et l'attribution restent donc auditables après
+normalisation.
+
+Une politique pure calcule l'âge et l'expiration à partir d'une heure fournie par
+l'appelant. Elle distingue les cinq états sans jamais transformer une donnée
+absente ou incohérente en valeur courante. Le modèle reste dans Core : aucune
+dépendance HTTP, MongoDB, fournisseur ou interface n'a été introduite. Aucun appel
+externe, stockage, endpoint ou affichage live n'est encore actif.
 
 ## 24. Gate finale `LIVE-G`
 
