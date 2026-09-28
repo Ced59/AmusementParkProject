@@ -28,7 +28,7 @@
       <button type="button" (click)="openSourceEditor()"><span class="pi pi-book" aria-hidden="true"></span><strong>{{ 'admin.history.workbench.actions.newSource' | translate }}</strong><small>{{ 'admin.history.workbench.actions.newSourceHint' | translate }}</small></button>
     </nav>
 
-    @if (activeEditor() === 'fact') { <app-admin-historical-fact-editor [subjects]="workbench.subjects" [sources]="workbench.sources" [fact]="editingFact()" [busy]="facade.busy()" (submitted)="saveFact($event)" (cancelled)="closeEditor()" /> }
+    @if (activeEditor() === 'fact') { <app-admin-historical-fact-editor [subjects]="factSubjects()" [sources]="workbench.sources" [fact]="editingFact()" [busy]="facade.busy()" (submitted)="saveFact($event)" (cancelled)="closeEditor()" /> }
     @if (activeEditor() === 'relation') { <app-admin-historical-relation-editor [subjects]="workbench.subjects" [sources]="workbench.sources" [relation]="editingRelation()" [busy]="facade.busy()" (submitted)="saveRelation($event)" (cancelled)="closeEditor()" /> }
     @if (activeEditor() === 'source') { <app-admin-historical-source-editor [source]="editingSource()" [busy]="facade.busy()" (submitted)="saveSource($event)" (cancelled)="closeEditor()" /> }
 

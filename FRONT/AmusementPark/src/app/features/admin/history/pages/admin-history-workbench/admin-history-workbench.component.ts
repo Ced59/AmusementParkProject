@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -8,6 +8,7 @@ import {
   AdminHistoricalFact,
   AdminHistoricalRelation,
   AdminHistoricalSource,
+  AdminHistoricalSubject,
   HistoricalEditorialResourceType,
   HistoricalWorkflowState,
   SaveHistoricalFactRequest,
@@ -18,6 +19,7 @@ import { AdminHistoricalFactEditorComponent } from '../../components/admin-histo
 import { AdminHistoricalRelationEditorComponent } from '../../components/admin-historical-relation-editor/admin-historical-relation-editor.component';
 import { AdminHistoricalSourceEditorComponent } from '../../components/admin-historical-source-editor/admin-historical-source-editor.component';
 import { HISTORICAL_WORKFLOW_STAGES } from '../../models/admin-historical-workbench-options';
+import { filterHistoricalFactSubjectsForPark } from '../../models/admin-historical-workbench-subjects';
 import { AdminHistoryWorkbenchStateFacade } from '../../state/admin-history-workbench-state.facade';
 
 type WorkbenchEditor = 'fact' | 'relation' | 'source' | null;
@@ -47,6 +49,12 @@ export class AdminHistoryWorkbenchComponent implements OnInit {
   protected readonly editingFact = signal<AdminHistoricalFact | null>(null);
   protected readonly editingRelation = signal<AdminHistoricalRelation | null>(null);
   protected readonly editingSource = signal<AdminHistoricalSource | null>(null);
+  protected readonly factSubjects = computed<readonly AdminHistoricalSubject[]>(() => {
+    const workbench = this.facade.workbench();
+    return workbench
+      ? filterHistoricalFactSubjectsForPark(workbench.subjects, workbench.parkId)
+      : [];
+  });
 
   public ngOnInit(): void {
     const parkId: string = this.route.snapshot.paramMap.get('parkId')?.trim() ?? '';
