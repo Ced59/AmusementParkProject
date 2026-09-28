@@ -125,6 +125,9 @@ public sealed class GetAdminHistoricalParkWorkbenchQueryHandler :
                 sources,
                 diagnostics,
                 await visitsTask,
-                this.rolloutGateAssessmentService.AssessPublicPark(scope, facts)));
+                await this.rolloutGateAssessmentService.AssessPublicParkAsync(
+                    scope,
+                    facts,
+                    cancellationToken)));
     }
 }

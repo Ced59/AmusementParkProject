@@ -8,12 +8,13 @@ namespace AmusementPark.Application.Features.Seo.Services;
 
 public static class HistoricalKeyYearSitemapCandidateResolver
 {
-    public static IReadOnlyCollection<HistoricalKeyYearSitemapCandidate> Resolve(
+    public static async Task<IReadOnlyCollection<HistoricalKeyYearSitemapCandidate>> ResolveAsync(
         IReadOnlyCollection<Park> parks,
         IReadOnlyCollection<ParkItem> parkItems,
         IReadOnlyCollection<ParkZone> parkZones,
         IReadOnlyCollection<HistoricalFact> facts,
-        IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService)
+        IHistoricalParkRolloutGateAssessmentService rolloutGateAssessmentService,
+        CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(parks);
         ArgumentNullException.ThrowIfNull(parkItems);
@@ -82,10 +83,11 @@ public static class HistoricalKeyYearSitemapCandidateResolver
                     .Select(static fact => fact.Subject))
                 .DistinctBy(static subject => (subject.Type, subject.Id))
                 .ToArray();
-            HistoricalParkRolloutGate rolloutGate = rolloutGateAssessmentService.Assess(
+            HistoricalParkRolloutGate rolloutGate = await rolloutGateAssessmentService.AssessAsync(
                 parkId,
                 subjects,
-                parkFacts);
+                parkFacts,
+                cancellationToken);
             if (!rolloutGate.IsOpen)
             {
                 continue;

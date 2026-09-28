@@ -16,7 +16,8 @@ public sealed class HistoricalParkRolloutGateEvaluatorTests
 
         HistoricalParkRolloutGate result = new HistoricalParkRolloutGateEvaluator().Evaluate(
             new[] { majorFact, supportingFact },
-            new[] { 1998 });
+            new[] { 1998 },
+            SourceKeys(majorFact, supportingFact));
 
         Assert.True(result.IsOpen);
         Assert.Equal(2, result.PublishedFactCount);
@@ -33,7 +34,8 @@ public sealed class HistoricalParkRolloutGateEvaluatorTests
 
         HistoricalParkRolloutGate result = new HistoricalParkRolloutGateEvaluator().Evaluate(
             new[] { majorFact, supportingFact },
-            Array.Empty<int>());
+            Array.Empty<int>(),
+            SourceKeys(majorFact, supportingFact));
 
         Assert.False(result.IsOpen);
         Assert.True(result.HasEnoughStructuredFacts);
@@ -45,9 +47,11 @@ public sealed class HistoricalParkRolloutGateEvaluatorTests
     [Fact]
     public void Evaluate_WithOnlyOneStructuredFact_ShouldKeepParkClosed()
     {
+        HistoricalFact fact = CreateFact(1998, HistoricalImportance.Major);
         HistoricalParkRolloutGate result = new HistoricalParkRolloutGateEvaluator().Evaluate(
-            new[] { CreateFact(1998, HistoricalImportance.Major) },
-            new[] { 1998 });
+            new[] { fact },
+            new[] { 1998 },
+            SourceKeys(fact));
 
         Assert.False(result.IsOpen);
         Assert.False(result.HasEnoughStructuredFacts);
@@ -66,13 +70,12 @@ public sealed class HistoricalParkRolloutGateEvaluatorTests
     [Fact]
     public void Evaluate_WithoutMajorMilestone_ShouldKeepParkClosed()
     {
+        HistoricalFact firstFact = CreateFact(1998, HistoricalImportance.Standard);
+        HistoricalFact secondFact = CreateFact(1990, HistoricalImportance.Standard);
         HistoricalParkRolloutGate result = new HistoricalParkRolloutGateEvaluator().Evaluate(
-            new[]
-            {
-                CreateFact(1998, HistoricalImportance.Standard),
-                CreateFact(1990, HistoricalImportance.Standard),
-            },
-            new[] { 1998 });
+            new[] { firstFact, secondFact },
+            new[] { 1998 },
+            SourceKeys(firstFact, secondFact));
 
         Assert.False(result.IsOpen);
         Assert.False(result.HasMajorMilestone);
@@ -135,5 +138,14 @@ public sealed class HistoricalParkRolloutGateEvaluatorTests
             2,
             1,
             RecordedAtUtc);
+    }
+
+    private static IReadOnlySet<(Guid SourceId, int Revision)> SourceKeys(
+        params HistoricalFact[] facts)
+    {
+        return facts
+            .SelectMany(static fact => fact.SourceReferences)
+            .Select(static reference => (reference.SourceId, reference.Revision))
+            .ToHashSet();
     }
 }

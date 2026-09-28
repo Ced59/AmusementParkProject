@@ -139,6 +139,8 @@ public sealed class GetAdminHistoricalParkDiagnosticsQueryHandlerTests
             new HistoricalParkDiagnosticsEvaluator(),
             new HistoricalParkRolloutGateAssessmentService(
                 new ParkHistoricalSnapshotBuilder(),
-                new HistoricalParkRolloutGateEvaluator()));
+                new HistoricalParkRolloutGateEvaluator(),
+                PublicParkHistoryTestData.CreatePublicSourceRepository(
+                    Array.Empty<HistoricalFact>())));
     }
 }

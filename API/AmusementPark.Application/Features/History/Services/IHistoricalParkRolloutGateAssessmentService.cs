@@ -5,12 +5,14 @@ namespace AmusementPark.Application.Features.History.Services;
 
 public interface IHistoricalParkRolloutGateAssessmentService
 {
-    HistoricalParkRolloutGate Assess(
+    Task<HistoricalParkRolloutGate> AssessAsync(
         string parkId,
         IReadOnlyCollection<HistoricalSubject> subjects,
-        IReadOnlyCollection<HistoricalFact> facts);
+        IReadOnlyCollection<HistoricalFact> facts,
+        CancellationToken cancellationToken);
 
-    HistoricalParkRolloutGate AssessPublicPark(
+    Task<HistoricalParkRolloutGate> AssessPublicParkAsync(
         HistoricalParkEditorialScope scope,
-        IReadOnlyCollection<HistoricalFact> facts);
+        IReadOnlyCollection<HistoricalFact> facts,
+        CancellationToken cancellationToken);
 }

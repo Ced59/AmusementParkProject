@@ -18,16 +18,22 @@ public sealed class HistoricalKeyYearFactReader : IHistoricalKeyYearFactReader
             settings.HistoricalFactsCollectionName);
     }
 
-    public async Task<IReadOnlyCollection<HistoricalFact>> GetLatestDecisionEligibleRevisionsAsync(
-        int limit,
+    public async Task<IReadOnlyCollection<HistoricalFact>> GetLatestDecisionEligibleRevisionsForParksAsync(
+        IReadOnlyCollection<string> parkIds,
         CancellationToken cancellationToken)
     {
-        if (limit < 1)
+        ArgumentNullException.ThrowIfNull(parkIds);
+        string[] normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedParkIds.Length == 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(limit));
+            return Array.Empty<HistoricalFact>();
         }
 
-        BsonDocument[] stages = BuildPipeline(limit).ToArray();
+        BsonDocument[] stages = BuildPipeline(normalizedParkIds).ToArray();
         PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument> pipeline =
             PipelineDefinition<HistoricalFactDocument, HistoricalFactDocument>.Create(stages);
         List<HistoricalFactDocument> documents = await this.collection
@@ -37,15 +43,25 @@ public sealed class HistoricalKeyYearFactReader : IHistoricalKeyYearFactReader
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
-    internal static IReadOnlyCollection<BsonDocument> BuildPipeline(int limit)
+    internal static IReadOnlyCollection<BsonDocument> BuildPipeline(
+        IReadOnlyCollection<string> parkIds)
     {
-        if (limit < 1)
+        ArgumentNullException.ThrowIfNull(parkIds);
+        string[] normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (normalizedParkIds.Length == 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(limit));
+            throw new ArgumentException("At least one park identifier is required.", nameof(parkIds));
         }
 
         return new BsonDocument[]
         {
+            new BsonDocument("$match", new BsonDocument(
+                "subject.contextParkId",
+                new BsonDocument("$in", new BsonArray(normalizedParkIds)))),
             new BsonDocument("$sort", new BsonDocument
             {
                 ["factId"] = -1,
@@ -72,7 +88,6 @@ public sealed class HistoricalKeyYearFactReader : IHistoricalKeyYearFactReader
                 ["createdAt"] = -1,
                 ["factId"] = 1,
             }),
-            new BsonDocument("$limit", limit),
         };
     }
 }

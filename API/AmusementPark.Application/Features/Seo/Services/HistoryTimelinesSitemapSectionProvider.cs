@@ -17,7 +17,6 @@ namespace AmusementPark.Application.Features.Seo.Services;
 public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProvider
 {
     private const int PublicHistoryEventLimit = 50000;
-    private const int PublicHistoricalFactLimit = 50000;
 
     private readonly IHistoryEventRepository historyEventRepository;
     private readonly IParkRepository parkRepository;
@@ -153,16 +152,23 @@ public sealed class HistoryTimelinesSitemapSectionProvider : ISitemapSectionProv
         }
 
         IReadOnlyCollection<ParkZone> parkZones = await this.parkZoneRepository.GetAllAsync(cancellationToken);
+        string[] parkIds = parks
+            .Select(static park => park.Id)
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId!)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
         IReadOnlyCollection<HistoricalFact> facts =
-            await this.historicalKeyYearFactReader.GetLatestDecisionEligibleRevisionsAsync(
-                PublicHistoricalFactLimit,
+            await this.historicalKeyYearFactReader.GetLatestDecisionEligibleRevisionsForParksAsync(
+                parkIds,
                 cancellationToken);
-        return HistoricalKeyYearSitemapCandidateResolver.Resolve(
+        return await HistoricalKeyYearSitemapCandidateResolver.ResolveAsync(
             parks,
             parkItems,
             parkZones,
             facts,
-            this.rolloutGateAssessmentService);
+            this.rolloutGateAssessmentService,
+            cancellationToken);
     }
 
     private static void AddKeyYearSnapshotUrls(

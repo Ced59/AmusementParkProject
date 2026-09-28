@@ -1113,10 +1113,11 @@ ajouts conservent les largeurs fluides et les focus visibles sur mobile.
 
 L’explorateur n’est plus considéré comme disponible dès qu’un récit narratif
 ou un fait isolé existe. Une gate métier unique, calculée dans le Core, exige
-au moins deux faits structurés publiés et sourcés, un jalon majeur et une année
-clé dont la reconstitution possède déjà la couverture substantielle définie
-par `HIST-13`. Aucun volume de visites, de passages ou de membres n’entre dans
-la décision.
+au moins deux faits structurés publiés dont les sources sont encore
+publiquement admissibles, un jalon majeur et une année clé dont la
+reconstitution possède déjà la couverture substantielle définie par
+`HIST-13`. Aucun volume de visites, de passages ou de membres n’entre dans la
+décision.
 
 Le même verdict ferme ou ouvre la timeline, les snapshots, les comparaisons et
 les lignées ; un accès profond ne peut donc pas contourner la gate. Les
@@ -1124,6 +1125,10 @@ sitemaps XML et HTML réutilisent le même verdict, le XML reprend exactement se
 années clés et aucun des deux n’énumère un parc en attente. L’administration
 affiche le résultat, les quatre critères, leurs compteurs et les années
 qualifiées avec une présentation responsive.
+
+La timeline conserve sa pagination Mongo bornée. La génération SEO lit toutes
+les dernières révisions des seuls parcs publics, sans plafond global qui ferait
+disparaître un parc ancien lorsque le corpus grandit.
 
 La gate n’est ni un flag permanent ni une seconde persistance : elle est
 recalculée depuis les faits canoniques à chaque lecture. Aucune migration Mongo

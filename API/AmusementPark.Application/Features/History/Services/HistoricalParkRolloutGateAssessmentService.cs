@@ -1,4 +1,5 @@
 using AmusementPark.Application.Features.History.Models;
+using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Core.Domain.History;
 
 namespace AmusementPark.Application.Features.History.Services;
@@ -7,19 +8,23 @@ public sealed class HistoricalParkRolloutGateAssessmentService : IHistoricalPark
 {
     private readonly IParkHistoricalSnapshotBuilder snapshotBuilder;
     private readonly HistoricalParkRolloutGateEvaluator gateEvaluator;
+    private readonly IHistoricalSourceRepository sourceRepository;
 
     public HistoricalParkRolloutGateAssessmentService(
         IParkHistoricalSnapshotBuilder snapshotBuilder,
-        HistoricalParkRolloutGateEvaluator gateEvaluator)
+        HistoricalParkRolloutGateEvaluator gateEvaluator,
+        IHistoricalSourceRepository sourceRepository)
     {
         this.snapshotBuilder = snapshotBuilder;
         this.gateEvaluator = gateEvaluator;
+        this.sourceRepository = sourceRepository;
     }
 
-    public HistoricalParkRolloutGate Assess(
+    public async Task<HistoricalParkRolloutGate> AssessAsync(
         string parkId,
         IReadOnlyCollection<HistoricalSubject> subjects,
-        IReadOnlyCollection<HistoricalFact> facts)
+        IReadOnlyCollection<HistoricalFact> facts,
+        CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(parkId))
         {
@@ -47,18 +52,28 @@ public sealed class HistoricalParkRolloutGateAssessmentService : IHistoricalPark
                     publicFacts),
                 publicFacts))
             .ToArray();
-        return this.gateEvaluator.Evaluate(publicFacts, indexableKeyYears);
+        IReadOnlySet<(Guid SourceId, int Revision)> admissibleSourceRevisions =
+            await this.LoadCurrentlyAdmissibleSourceRevisionsAsync(publicFacts, cancellationToken);
+        return this.gateEvaluator.Evaluate(
+            publicFacts,
+            indexableKeyYears,
+            admissibleSourceRevisions);
     }
 
-    public HistoricalParkRolloutGate AssessPublicPark(
+    public Task<HistoricalParkRolloutGate> AssessPublicParkAsync(
         HistoricalParkEditorialScope scope,
-        IReadOnlyCollection<HistoricalFact> facts)
+        IReadOnlyCollection<HistoricalFact> facts,
+        CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(scope);
         ArgumentNullException.ThrowIfNull(facts);
         if (!scope.IsPublicPark)
         {
-            return this.Assess(scope.ParkId, Array.Empty<HistoricalSubject>(), Array.Empty<HistoricalFact>());
+            return this.AssessAsync(
+                scope.ParkId,
+                Array.Empty<HistoricalSubject>(),
+                Array.Empty<HistoricalFact>(),
+                cancellationToken);
         }
 
         HashSet<HistoricalSubjectKey> publicCurrentSubjectKeys = scope.PublicCurrentSubjects
@@ -80,7 +95,35 @@ public sealed class HistoricalParkRolloutGateAssessmentService : IHistoricalPark
                 subject.Id,
                 subject.ContextParkId))
             .ToArray();
-        return this.Assess(scope.ParkId, publicSubjects, publicFacts);
+        return this.AssessAsync(scope.ParkId, publicSubjects, publicFacts, cancellationToken);
+    }
+
+    private async Task<IReadOnlySet<(Guid SourceId, int Revision)>>
+        LoadCurrentlyAdmissibleSourceRevisionsAsync(
+            IReadOnlyCollection<HistoricalFact> facts,
+            CancellationToken cancellationToken)
+    {
+        HistoricalSourceRevisionReference[] references = facts
+            .SelectMany(static fact => fact.SourceReferences)
+            .DistinctBy(static reference => (reference.SourceId, reference.Revision))
+            .ToArray();
+        if (references.Length == 0)
+        {
+            return new HashSet<(Guid SourceId, int Revision)>();
+        }
+
+        IReadOnlyCollection<HistoricalSourceReference> resolvedRevisions =
+            await this.sourceRepository.GetRevisionsAsync(references, cancellationToken);
+        IReadOnlyCollection<HistoricalSourceReference> latestRevisions = resolvedRevisions.Count == 0
+            ? Array.Empty<HistoricalSourceReference>()
+            : await this.sourceRepository.GetLatestRevisionsAsync(
+                resolvedRevisions.Select(static source => source.Id).Distinct().ToArray(),
+                cancellationToken);
+        return HistoricalRelationEvidenceValidator.FilterCurrentlyAdmissiblePublicSources(
+                resolvedRevisions,
+                latestRevisions)
+            .Select(static source => (source.Id, source.Revision))
+            .ToHashSet();
     }
 
     private static bool IsPublicFact(

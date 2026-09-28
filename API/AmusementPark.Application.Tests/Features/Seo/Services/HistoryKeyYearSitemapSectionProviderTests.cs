@@ -57,7 +57,9 @@ public sealed class HistoryKeyYearSitemapSectionProviderTests
             .Setup(repository => repository.GetAllAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<ParkZone>());
         factReader
-            .Setup(reader => reader.GetLatestDecisionEligibleRevisionsAsync(50000, It.IsAny<CancellationToken>()))
+            .Setup(reader => reader.GetLatestDecisionEligibleRevisionsForParksAsync(
+                It.Is<IReadOnlyCollection<string>>(parkIds => parkIds.SequenceEqual(new[] { park.Id })),
+                It.IsAny<CancellationToken>()))
             .ReturnsAsync(facts);
         snapshotBuilder
             .Setup(builder => builder.Build(
@@ -76,7 +78,8 @@ public sealed class HistoryKeyYearSitemapSectionProviderTests
             factReader.Object,
             new HistoricalParkRolloutGateAssessmentService(
                 snapshotBuilder.Object,
-                new HistoricalParkRolloutGateEvaluator()));
+                new HistoricalParkRolloutGateEvaluator(),
+                PublicParkHistoryTestData.CreatePublicSourceRepository(facts)));
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(
             new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } },

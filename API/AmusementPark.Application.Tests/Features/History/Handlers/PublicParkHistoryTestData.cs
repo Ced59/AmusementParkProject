@@ -1,5 +1,7 @@
+using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.Parks;
+using Moq;
 
 namespace AmusementPark.Application.Tests.Features.History.Handlers;
 
@@ -112,6 +114,31 @@ internal static class PublicParkHistoryTestData
             HistoricalPublicationState.Published,
             RecordedAtUtc,
             HistoricalRevisionOrigin.Ordinary);
+    }
+
+    public static IHistoricalSourceRepository CreatePublicSourceRepository(
+        IReadOnlyCollection<HistoricalFact> facts)
+    {
+        HistoricalSourceReference[] sources = facts
+            .Where(static fact => fact.SourceReferences.Count == 1)
+            .Select(CreateSource)
+            .ToArray();
+        Mock<IHistoricalSourceRepository> repository = new(MockBehavior.Strict);
+        if (sources.Length > 0)
+        {
+            repository
+                .Setup(value => value.GetRevisionsAsync(
+                    It.IsAny<IReadOnlyCollection<HistoricalSourceRevisionReference>>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(sources);
+            repository
+                .Setup(value => value.GetLatestRevisionsAsync(
+                    It.IsAny<IReadOnlyCollection<Guid>>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(sources);
+        }
+
+        return repository.Object;
     }
 
     private static HistoricalSourceRevisionReference CreateSourceReference(

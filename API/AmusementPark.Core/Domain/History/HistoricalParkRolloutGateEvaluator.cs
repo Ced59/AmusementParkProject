@@ -4,10 +4,12 @@ public sealed class HistoricalParkRolloutGateEvaluator
 {
     public HistoricalParkRolloutGate Evaluate(
         IReadOnlyCollection<HistoricalFact> facts,
-        IReadOnlyCollection<int> indexableKeyYears)
+        IReadOnlyCollection<int> indexableKeyYears,
+        IReadOnlySet<(Guid SourceId, int Revision)> currentlyAdmissibleSourceRevisions)
     {
         ArgumentNullException.ThrowIfNull(facts);
         ArgumentNullException.ThrowIfNull(indexableKeyYears);
+        ArgumentNullException.ThrowIfNull(currentlyAdmissibleSourceRevisions);
 
         HistoricalFact[] publishedFacts = facts
             .Where(static fact => fact.IsDecisionEligible
@@ -16,7 +18,8 @@ public sealed class HistoricalParkRolloutGateEvaluator
             .ToArray();
         return new HistoricalParkRolloutGate(
             publishedFacts.Length,
-            publishedFacts.Count(static fact => fact.SourceReferences.Count > 0),
+            publishedFacts.Count(fact => fact.SourceReferences.Any(reference =>
+                currentlyAdmissibleSourceRevisions.Contains((reference.SourceId, reference.Revision)))),
             publishedFacts.Count(static fact => fact.Importance == HistoricalImportance.Major),
             indexableKeyYears);
     }

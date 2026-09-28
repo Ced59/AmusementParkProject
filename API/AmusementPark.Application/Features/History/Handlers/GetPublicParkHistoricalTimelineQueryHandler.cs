@@ -54,17 +54,19 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
         }
 
         string parkId = query.ParkId.Trim();
-        PublicParkHistoricalData? data = await this.dataLoader.LoadAsync(parkId, cancellationToken);
-        if (data is null || data.RolloutGate?.IsOpen != true)
+        PublicParkHistoricalScope? scope = await this.dataLoader.LoadScopeAsync(parkId, cancellationToken);
+        if (scope is null
+            || !(await this.dataLoader.AssessRolloutGateAsync(scope, cancellationToken)).IsOpen)
         {
             return ApplicationResult<PublicParkHistoricalTimelineResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(Park), parkId));
         }
 
-        PagedResult<HistoricalFact> factPage = this.dataLoader.GetTimelinePage(
-            data,
+        PagedResult<HistoricalFact> factPage = await this.dataLoader.GetTimelinePageAsync(
+            scope,
             query.Page,
-            query.PageSize);
+            query.PageSize,
+            cancellationToken);
         HistoricalFact[] pageFacts = factPage.Items.ToArray();
         HistoricalSourceRevisionReference[] sourceReferences = pageFacts
             .SelectMany(static fact => fact.SourceReferences)
@@ -100,10 +102,7 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             static narrative => narrative.Id,
             StringComparer.Ordinal);
         Dictionary<(HistoricalSubjectType Type, string Id), HistoricalSubject> publicCurrentSubjects =
-            data.Subjects
-                .Where(static subject => subject.PublicationPolicy
-                    == HistoricalSubjectPublicationPolicy.FollowCurrentSubject)
-                .ToDictionary(static subject => (subject.Type, subject.Id));
+            scope.PublicCurrentSubjects.ToDictionary(static subject => (subject.Type, subject.Id));
         HashSet<HistoricalSubjectKey> subjectsWithLineage = await this.LoadSubjectsWithLineageAsync(
             pageFacts,
             cancellationToken);
@@ -129,10 +128,10 @@ public sealed class GetPublicParkHistoricalTimelineQueryHandler :
             query.PageSize,
             factPage.TotalItems);
         IReadOnlyDictionary<string, string> publicZoneNames =
-            data.ZoneNames;
+            PublicParkHistoricalDataLoader.ResolvePublicZoneNames(scope, pageFacts);
 
         return ApplicationResult<PublicParkHistoricalTimelineResult>.Success(
-            new PublicParkHistoricalTimelineResult(data.Park, page, publicZoneNames));
+            new PublicParkHistoricalTimelineResult(scope.Park, page, publicZoneNames));
     }
 
     private async Task<HashSet<HistoricalSubjectKey>> LoadSubjectsWithLineageAsync(

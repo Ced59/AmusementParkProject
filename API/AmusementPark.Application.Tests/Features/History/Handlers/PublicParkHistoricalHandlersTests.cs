@@ -315,6 +315,18 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { visibleFact, removedFact, earlierFact, laterEarlierFact });
+        factRepository
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+                "park-1",
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                2,
+                2,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<HistoricalFact>(
+                new[] { visibleFact, removedFact },
+                2,
+                2,
+                4));
         sourceRepository
             .Setup(repository => repository.GetRevisionsAsync(
                 It.Is<IReadOnlyCollection<HistoricalSourceRevisionReference>>(
@@ -554,6 +566,18 @@ public sealed class PublicParkHistoricalHandlersTests
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { parkFact });
+        factRepository
+            .Setup(repository => repository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+                "park-1",
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                int.MaxValue,
+                50,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new PagedResult<HistoricalFact>(
+                Array.Empty<HistoricalFact>(),
+                int.MaxValue,
+                50,
+                1));
         PublicParkHistoricalDataLoader loader = CreateLoader(
             parkRepository,
             parkItemRepository,
@@ -694,11 +718,12 @@ public sealed class PublicParkHistoricalHandlersTests
         bool rolloutIsOpen = true)
     {
         Mock<IHistoricalParkRolloutGateAssessmentService> rolloutGate = new(MockBehavior.Strict);
-        rolloutGate.Setup(service => service.Assess(
+        rolloutGate.Setup(service => service.AssessAsync(
                 It.IsAny<string>(),
                 It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
-                It.IsAny<IReadOnlyCollection<HistoricalFact>>()))
-            .Returns(rolloutIsOpen
+                It.IsAny<IReadOnlyCollection<HistoricalFact>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(rolloutIsOpen
                 ? new HistoricalParkRolloutGate(2, 2, 1, new[] { 1998 })
                 : new HistoricalParkRolloutGate(0, 0, 0, Array.Empty<int>()));
         return new PublicParkHistoricalDataLoader(

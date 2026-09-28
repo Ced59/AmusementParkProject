@@ -397,7 +397,9 @@ public sealed class PassportHistoricalTargetResolverTests
     {
         return new HistoricalParkRolloutGateAssessmentService(
             new ParkHistoricalSnapshotBuilder(),
-            new HistoricalParkRolloutGateEvaluator());
+            new HistoricalParkRolloutGateEvaluator(),
+            PublicParkHistoryTestData.CreatePublicSourceRepository(
+                Array.Empty<HistoricalFact>()));
     }
 
     private static ParkHistoricalSnapshot CreateNonAttractionSnapshot(

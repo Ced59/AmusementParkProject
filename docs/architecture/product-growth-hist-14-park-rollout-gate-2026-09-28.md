@@ -14,7 +14,8 @@ jamais à ouvrir l’explorateur.
 La gate est ouverte lorsque les quatre preuves suivantes sont réunies :
 
 1. au moins deux faits structurés sont publiés et admissibles à la décision ;
-2. chaque fait publié possède au moins une référence de source ;
+2. chaque fait publié possède au moins une source dont la dernière révision est
+   encore publiée et accessible ou archivée ;
 3. au moins un fait est qualifié de jalon majeur ;
 4. au moins une borne de jalon majeur produit une année clé indexable selon
    `HIST-13` : snapshot annuel, couverture au moins substantielle et deux faits
@@ -28,7 +29,7 @@ documentée n’est pas assimilée à une absence de qualité.
 
 ```mermaid
 flowchart LR
-    Mongo[(Faits historiques<br/>canoniques)] --> Repo[Ports de lecture]
+    Mongo[(Faits et sources<br/>canoniques)] --> Repo[Ports de lecture]
     Repo --> Projection[Projection publique<br/>du parc]
     Projection --> KeyYears[Snapshots des seules<br/>bornes majeures]
     KeyYears --> Core[Gate métier Core]
@@ -41,7 +42,9 @@ flowchart LR
 - `HistoricalParkRolloutGateEvaluator` possède les seuils et le verdict pur ;
 - `HistoricalParkRolloutGateAssessmentService` orchestre les snapshots des
   seules années candidates et réutilise
-  `HistoricalSnapshotSeoEligibilityEvaluator` ;
+  `HistoricalSnapshotSeoEligibilityEvaluator`. Il résout aussi la révision
+  actuelle des sources : une preuve retirée ne maintient jamais la gate
+  ouverte grâce à son ancienne référence figée ;
 - `PublicParkHistoricalDataLoader` applique la visibilité du parc, des items et
   des zones avant l’évaluation ;
 - les handlers publics échouent comme une ressource absente lorsque la gate est
@@ -63,6 +66,7 @@ sequenceDiagram
     U->>H: Ouvre une timeline, une année ou une comparaison
     H->>L: Charge le parc et ses faits publics
     L->>A: Évalue le parc
+    A->>A: Vérifie les révisions actuelles des sources
     loop Bornes des faits majeurs uniquement
         A->>S: Reconstruit l’année candidate
         S-->>A: Snapshot + couverture + faits utilisés
@@ -96,17 +100,23 @@ est une vue calculée des collections historiques existantes ; il n’existe don
 ni migration manuelle, ni backfill, ni double système à synchroniser.
 
 Les snapshots ne sont construits que pour les années de début ou de fin des
-faits majeurs. La timeline charge une projection publique du parc une seule
-fois puis effectue sa pagination déterministe en mémoire ; elle ne relit pas la
-même collection pour décider de la gate. Les sitemaps XML et HTML refusent les
-branches d’un parc fermé. Le sitemap XML travaille sur son lot global déjà
-borné et réutilise directement les années qualifiées par la gate.
+faits majeurs. La gate évalue la projection complète du parc, puis la timeline
+charge uniquement la page demandée grâce à la pagination Mongo existante : le
+tri et le volume du résultat public restent bornés par `pageSize`. Les
+sitemaps XML et HTML refusent les branches d’un parc fermé. Le lecteur SEO
+filtre d’abord sur les identifiants des parcs publics indexés, puis charge sans
+troncature leurs dernières révisions admissibles ; un parc ancien ne disparaît
+donc pas lorsque le corpus global dépasse une limite arbitraire.
 
 ## Preuves automatisées
 
-- Core : ouverture, absence d’année clé et nombre insuffisant de faits ;
+- Core : ouverture, absence d’année clé, nombre insuffisant de faits, source
+  manquante et absence de jalon majeur ;
 - Application : sélection bornée des seules années majeures ;
+- Application : fermeture après retrait de la dernière révision d’une source ;
 - Application : timeline et lignée indisponibles lorsque la gate est fermée ;
+- Infrastructure : lecture complète ciblée sur les seuls parcs publics, sans
+  plafond global ;
 - Application : sitemaps XML et HTML limités aux parcs ouverts et aux années
   qualifiées ;
 - WebAPI : transport du verdict, des compteurs et des années sans identifiant

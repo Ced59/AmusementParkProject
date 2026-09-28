@@ -41,29 +41,10 @@ public sealed class PublicParkHistoricalDataLoader
             return null;
         }
 
-        IReadOnlyCollection<HistoricalFact> latestFacts =
-            await this.historicalFactRepository.GetLatestDecisionEligibleRevisionsForParkAsync(
-                scope.Park.Id,
-                scope.PublicCurrentSubjects,
-                cancellationToken);
-        HashSet<HistoricalSubjectKey> publicCurrentSubjects = scope.PublicCurrentSubjects
-            .Select(static subject => new HistoricalSubjectKey(
-                subject.Type,
-                subject.Id,
-                subject.ContextParkId))
-            .ToHashSet();
-        HistoricalFact[] publicFacts = latestFacts
-            .Where(fact => CanExposeFact(fact, publicCurrentSubjects, scope.Park.Id))
-            .ToArray();
-        HistoricalSubject[] selectedSubjects = SelectSubjects(
-            scope.PublicCurrentSubjects,
-            publicFacts);
+        (HistoricalSubject[] selectedSubjects, HistoricalFact[] publicFacts, HistoricalParkRolloutGate rolloutGate) =
+            await this.LoadProjectionAsync(scope, cancellationToken);
         IReadOnlyDictionary<string, string> publicZoneNames = ResolvePublicZoneNames(
             scope,
-            publicFacts);
-        HistoricalParkRolloutGate rolloutGate = this.rolloutGateAssessmentService.Assess(
-            scope.Park.Id,
-            selectedSubjects,
             publicFacts);
 
         return new PublicParkHistoricalData(
@@ -72,6 +53,16 @@ public sealed class PublicParkHistoricalDataLoader
             publicFacts,
             publicZoneNames,
             rolloutGate);
+    }
+
+    public async Task<HistoricalParkRolloutGate> AssessRolloutGateAsync(
+        PublicParkHistoricalScope scope,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(scope);
+        (HistoricalSubject[] Subjects, HistoricalFact[] Facts, HistoricalParkRolloutGate Gate) projection =
+            await this.LoadProjectionAsync(scope, cancellationToken);
+        return projection.Gate;
     }
 
     public async Task<PublicParkHistoricalData?> LoadParkItemsAsync(
@@ -207,27 +198,49 @@ public sealed class PublicParkHistoricalDataLoader
         return zoneNames;
     }
 
-    public PagedResult<HistoricalFact> GetTimelinePage(
-        PublicParkHistoricalData data,
+    public Task<PagedResult<HistoricalFact>> GetTimelinePageAsync(
+        PublicParkHistoricalScope scope,
         int page,
-        int pageSize)
+        int pageSize,
+        CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(data);
-        HistoricalFact[] orderedFacts = data.Facts
-            .OrderBy(static fact => HistoricalTimelineOrdering.ResolveDayNumber(fact.Period))
-            .ThenBy(static fact => fact.SequenceWithinDate)
-            .ThenBy(static fact => fact.Subject.HistoricalLabel, StringComparer.Ordinal)
-            .ThenBy(static fact => fact.Type)
-            .ThenBy(static fact => fact.Id)
+        ArgumentNullException.ThrowIfNull(scope);
+        return this.historicalFactRepository.GetLatestDecisionEligibleRevisionsForParkPageAsync(
+            scope.Park.Id,
+            scope.PublicCurrentSubjects,
+            page,
+            pageSize,
+            cancellationToken);
+    }
+
+    private async Task<(HistoricalSubject[] Subjects, HistoricalFact[] Facts, HistoricalParkRolloutGate Gate)>
+        LoadProjectionAsync(
+            PublicParkHistoricalScope scope,
+            CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<HistoricalFact> latestFacts =
+            await this.historicalFactRepository.GetLatestDecisionEligibleRevisionsForParkAsync(
+                scope.Park.Id,
+                scope.PublicCurrentSubjects,
+                cancellationToken);
+        HashSet<HistoricalSubjectKey> publicCurrentSubjects = scope.PublicCurrentSubjects
+            .Select(static subject => new HistoricalSubjectKey(
+                subject.Type,
+                subject.Id,
+                subject.ContextParkId))
+            .ToHashSet();
+        HistoricalFact[] publicFacts = latestFacts
+            .Where(fact => CanExposeFact(fact, publicCurrentSubjects, scope.Park.Id))
             .ToArray();
-        long offset = (long)(page - 1) * pageSize;
-        HistoricalFact[] pageFacts = offset >= orderedFacts.LongLength
-            ? Array.Empty<HistoricalFact>()
-            : orderedFacts
-                .Skip((int)offset)
-                .Take(pageSize)
-                .ToArray();
-        return new PagedResult<HistoricalFact>(pageFacts, page, pageSize, orderedFacts.Length);
+        HistoricalSubject[] selectedSubjects = SelectSubjects(
+            scope.PublicCurrentSubjects,
+            publicFacts);
+        HistoricalParkRolloutGate rolloutGate = await this.rolloutGateAssessmentService.AssessAsync(
+            scope.Park.Id,
+            selectedSubjects,
+            publicFacts,
+            cancellationToken);
+        return (selectedSubjects, publicFacts, rolloutGate);
     }
 
     private static HistoricalSubject[] BuildCandidateSubjects(

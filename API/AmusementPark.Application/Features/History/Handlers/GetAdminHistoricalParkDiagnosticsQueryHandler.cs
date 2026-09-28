@@ -85,7 +85,10 @@ public sealed class GetAdminHistoricalParkDiagnosticsQueryHandler :
             await relationsTask,
             scope.CurrentZoneIds);
         HistoricalParkRolloutGate rolloutGate =
-            this.rolloutGateAssessmentService.AssessPublicPark(scope, facts);
+            await this.rolloutGateAssessmentService.AssessPublicParkAsync(
+                scope,
+                facts,
+                cancellationToken);
         return ApplicationResult<AdminHistoricalParkDiagnosticsResult>.Success(
             new AdminHistoricalParkDiagnosticsResult(
                 scope.ParkId,
