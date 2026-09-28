@@ -259,6 +259,8 @@ public sealed class MongoDbSettings
 
     public string HistoricalSubjectScopesCollectionName { get; set; } = "historical-subject-scopes";
 
+    public string LiveTargetMappingsCollectionName { get; set; } = "live-target-mappings";
+
     public string HistoricalNarrativesCollectionName { get; set; } = "historical-narratives";
 
     public string HistoricalMigrationsCollectionName { get; set; } = "historical-migrations";

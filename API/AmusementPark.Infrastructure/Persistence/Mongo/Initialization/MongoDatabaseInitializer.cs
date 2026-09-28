@@ -11,6 +11,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Countries;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.History;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.LiveData;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkFit;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Sharing;
@@ -1109,6 +1110,11 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalSubjectScopesCollectionName, cancellationToken);
         await this.InitializeHistoricalPersistenceIndexesAsync(cancellationToken);
         await this.InitializeHistoricalMigrationIndexesAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(
+            this.settings.LiveTargetMappingsCollectionName,
+            cancellationToken);
+        await this.InitializeLiveTargetMappingIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkFoundersCollectionName, cancellationToken);
         await this.InitializeParkFoundersIndexesAsync(cancellationToken);
@@ -2274,6 +2280,16 @@ private async Task InitializeParkDataEditorAccessTokensIndexesAsync(Cancellation
             cancellationToken);
         await relations.Indexes.CreateManyAsync(
             HistoricalPersistenceMongoDefinitions.BuildRelationIndexes(),
+            cancellationToken);
+    }
+
+    private async Task InitializeLiveTargetMappingIndexesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<ExternalLiveTargetMappingDocument> mappings =
+            this.database.GetCollection<ExternalLiveTargetMappingDocument>(
+                this.settings.LiveTargetMappingsCollectionName);
+        await mappings.Indexes.CreateManyAsync(
+            LiveTargetMappingMongoDefinitions.BuildIndexes(),
             cancellationToken);
     }
 

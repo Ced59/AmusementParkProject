@@ -3129,6 +3129,87 @@
         }
       }
     },
+    "liveMappings": {
+      "navTitle": "Mapowania danych na żywo",
+      "shortcut": "Sprawdzaj powiązania między źródłem na żywo a parkami lub atrakcjami.",
+      "kicker": "Wiarygodność danych na żywo",
+      "title": "Mapowania obiektów",
+      "subtitle": "Potwierdź, który obiekt wewnętrzny odpowiada identyfikatorowi dostawcy, bez publikowania przybliżonych dopasowań.",
+      "refresh": "Odśwież",
+      "ruleTitle": "Weryfikacja człowieka jest obowiązkowa",
+      "ruleDescription": "Sugestia pozostaje kandydatem nawet przy bardzo podobnej nazwie. Tylko zweryfikowane mapowanie może zasilać dane na żywo.",
+      "loading": "Ładowanie mapowań…",
+      "empty": "Żadne mapowanie nie pasuje do tych filtrów.",
+      "listAria": "Mapowania obiektów na żywo",
+      "paginationAria": "Stronicowanie mapowań na żywo",
+      "previous": "Poprzednia",
+      "next": "Następna",
+      "page": "Strona {{page}} z {{total}}",
+      "revision": "Rewizja {{revision}}",
+      "eligible": "Dopuszczone do danych na żywo",
+      "externalTitle": "Obiekt dostawcy",
+      "internalTitle": "Obiekt serwisu",
+      "unresolved": "Do zidentyfikowania",
+      "create": {
+        "title": "Dodaj kandydata",
+        "action": "Utwórz kandydata"
+      },
+      "fields": {
+        "source": "Źródło",
+        "type": "Typ obiektu",
+        "externalId": "Identyfikator dostawcy",
+        "externalName": "Nazwa u dostawcy",
+        "country": "Kraj (ISO 2)",
+        "externalParkId": "Identyfikator parku u dostawcy",
+        "externalParkName": "Nazwa parku u dostawcy",
+        "internalTargetIdOptional": "Sugerowany cel wewnętrzny (opcjonalnie)",
+        "internalParkIdOptional": "Sugerowany park wewnętrzny (opcjonalnie)",
+        "internalTargetId": "Identyfikator celu wewnętrznego",
+        "internalParkId": "Identyfikator parku wewnętrznego",
+        "reviewNote": "Powód decyzji"
+      },
+      "filters": {
+        "search": "Szukaj",
+        "searchPlaceholder": "Nazwa lub identyfikator dostawcy",
+        "status": "Stan",
+        "type": "Typ",
+        "all": "Wszystkie",
+        "apply": "Filtruj",
+        "clear": "Wyczyść"
+      },
+      "status": {
+        "Candidate": "Do sprawdzenia",
+        "Verified": "Zweryfikowane",
+        "Suspended": "Wstrzymane",
+        "Superseded": "Zastąpione",
+        "Rejected": "Odrzucone"
+      },
+      "type": {
+        "Park": "Park",
+        "ParkItem": "Atrakcja lub miejsce"
+      },
+      "confidence": {
+        "Low": "Niska wiarygodność",
+        "Medium": "Średnia wiarygodność",
+        "High": "Wysoka wiarygodność"
+      },
+      "review": {
+        "title": "Sprawdź to mapowanie",
+        "verify": "Zatwierdź",
+        "correct": "Popraw cel",
+        "suspend": "Wstrzymaj",
+        "reject": "Odrzuć",
+        "supersede": "Zastąp definitywnie"
+      },
+      "messages": {
+        "created": "Kandydat został dodany.",
+        "reviewed": "Decyzja została zapisana w historii."
+      },
+      "errors": {
+        "load": "Nie udało się załadować mapowań na żywo.",
+        "mutation": "Nie udało się zapisać decyzji. Odśwież listę i spróbuj ponownie."
+      }
+    },
     "loading": "Ładowanie...",
     "m14": {
       "kicker": "Administracja",

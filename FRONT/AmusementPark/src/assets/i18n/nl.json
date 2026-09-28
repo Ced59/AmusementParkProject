@@ -3129,6 +3129,87 @@
         }
       }
     },
+    "liveMappings": {
+      "navTitle": "Koppelingen voor livegegevens",
+      "shortcut": "Controleer koppelingen tussen de livebron en parken of attracties.",
+      "kicker": "Betrouwbare livegegevens",
+      "title": "Entiteitskoppelingen",
+      "subtitle": "Bevestig welke interne entiteit bij elke provider-ID hoort, zonder globale overeenkomsten te publiceren.",
+      "refresh": "Vernieuwen",
+      "ruleTitle": "Menselijke controle is verplicht",
+      "ruleDescription": "Een suggestie blijft een kandidaat, ook bij een sterk gelijkende naam. Alleen een geverifieerde koppeling mag livegegevens voeden.",
+      "loading": "Koppelingen laden…",
+      "empty": "Geen koppeling voldoet aan deze filters.",
+      "listAria": "Koppelingen van live-entiteiten",
+      "paginationAria": "Paginering van live-koppelingen",
+      "previous": "Vorige",
+      "next": "Volgende",
+      "page": "Pagina {{page}} van {{total}}",
+      "revision": "Revisie {{revision}}",
+      "eligible": "Geschikt voor livegegevens",
+      "externalTitle": "Provider-entiteit",
+      "internalTitle": "Site-entiteit",
+      "unresolved": "Nog te identificeren",
+      "create": {
+        "title": "Kandidaat toevoegen",
+        "action": "Kandidaat maken"
+      },
+      "fields": {
+        "source": "Bron",
+        "type": "Entiteitstype",
+        "externalId": "Provider-ID",
+        "externalName": "Naam bij provider",
+        "country": "Land (ISO 2)",
+        "externalParkId": "Park-ID bij provider",
+        "externalParkName": "Parknaam bij provider",
+        "internalTargetIdOptional": "Voorgesteld intern doel (optioneel)",
+        "internalParkIdOptional": "Voorgesteld intern park (optioneel)",
+        "internalTargetId": "Interne doel-ID",
+        "internalParkId": "Interne park-ID",
+        "reviewNote": "Reden van de beslissing"
+      },
+      "filters": {
+        "search": "Zoeken",
+        "searchPlaceholder": "Providernaam of -ID",
+        "status": "Status",
+        "type": "Type",
+        "all": "Alle",
+        "apply": "Filteren",
+        "clear": "Wissen"
+      },
+      "status": {
+        "Candidate": "Te controleren",
+        "Verified": "Geverifieerd",
+        "Suspended": "Opgeschort",
+        "Superseded": "Vervangen",
+        "Rejected": "Afgewezen"
+      },
+      "type": {
+        "Park": "Park",
+        "ParkItem": "Attractie of plek"
+      },
+      "confidence": {
+        "Low": "Lage betrouwbaarheid",
+        "Medium": "Gemiddelde betrouwbaarheid",
+        "High": "Hoge betrouwbaarheid"
+      },
+      "review": {
+        "title": "Deze koppeling controleren",
+        "verify": "Verifiëren",
+        "correct": "Doel corrigeren",
+        "suspend": "Opschorten",
+        "reject": "Afwijzen",
+        "supersede": "Definitief vervangen"
+      },
+      "messages": {
+        "created": "De kandidaat is toegevoegd.",
+        "reviewed": "De beslissing is in de geschiedenis opgeslagen."
+      },
+      "errors": {
+        "load": "De live-koppelingen konden niet worden geladen.",
+        "mutation": "De beslissing kon niet worden opgeslagen. Laad de lijst opnieuw en probeer het nogmaals."
+      }
+    },
     "loading": "Laden...",
     "m14": {
       "kicker": "Administratie",

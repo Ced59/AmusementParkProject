@@ -1,0 +1,33 @@
+{
+  "admin": {
+    "liveMappings": {
+      "navTitle": "Live data mappings",
+      "shortcut": "Review links between the live source and parks or attractions.",
+      "kicker": "Live data trust",
+      "title": "Entity mappings",
+      "subtitle": "Confirm which internal entity matches each provider identifier without publishing approximate matches.",
+      "refresh": "Refresh",
+      "ruleTitle": "Human review is mandatory",
+      "ruleDescription": "A suggestion remains a candidate, even when the name is very similar. Only a verified mapping can feed live data.",
+      "loading": "Loading mappings…",
+      "empty": "No mapping matches these filters.",
+      "listAria": "Live entity mappings",
+      "paginationAria": "Live mapping pagination",
+      "previous": "Previous", "next": "Next", "page": "Page {{page}} of {{total}}", "revision": "Revision {{revision}}", "eligible": "Eligible for live data",
+      "externalTitle": "Provider entity", "internalTitle": "Site entity", "unresolved": "Needs identification",
+      "create": { "title": "Add a candidate", "action": "Create candidate" },
+      "fields": {
+        "source": "Source", "type": "Entity type", "externalId": "Provider identifier", "externalName": "Provider name", "country": "Country (ISO 2)",
+        "externalParkId": "Provider park identifier", "externalParkName": "Provider park name", "internalTargetIdOptional": "Suggested internal target (optional)",
+        "internalParkIdOptional": "Suggested internal park (optional)", "internalTargetId": "Internal target identifier", "internalParkId": "Internal park identifier", "reviewNote": "Decision reason"
+      },
+      "filters": { "search": "Search", "searchPlaceholder": "Provider name or identifier", "status": "Status", "type": "Type", "all": "All", "apply": "Filter", "clear": "Clear" },
+      "status": { "Candidate": "Needs review", "Verified": "Verified", "Suspended": "Suspended", "Superseded": "Superseded", "Rejected": "Rejected" },
+      "type": { "Park": "Park", "ParkItem": "Attraction or place" },
+      "confidence": { "Low": "Low confidence", "Medium": "Medium confidence", "High": "High confidence" },
+      "review": { "title": "Review this mapping", "verify": "Verify", "correct": "Correct target", "suspend": "Suspend", "reject": "Reject", "supersede": "Replace permanently" },
+      "messages": { "created": "The candidate was added.", "reviewed": "The decision was recorded in the history." },
+      "errors": { "load": "Unable to load live mappings.", "mutation": "The decision could not be saved. Reload the list and try again." }
+    }
+  }
+}

@@ -21,6 +21,7 @@ describe('ADMIN_NAVIGATION_ITEMS', () => {
       'park-graph-upserts',
       'bulk-park-graph-upserts',
       'history',
+      'live-mappings',
       'audit-logs',
       'seo-sitemaps',
       'park-weather',

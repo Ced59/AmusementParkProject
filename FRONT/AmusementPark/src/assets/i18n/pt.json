@@ -3129,6 +3129,87 @@
         }
       }
     },
+    "liveMappings": {
+      "navTitle": "Mapeamentos de dados em direto",
+      "shortcut": "Revê as correspondências entre a fonte em direto e parques ou atrações.",
+      "kicker": "Confiança nos dados em direto",
+      "title": "Mapeamentos de entidades",
+      "subtitle": "Confirma que entidade interna corresponde a cada identificador do fornecedor sem publicar correspondências aproximadas.",
+      "refresh": "Atualizar",
+      "ruleTitle": "A validação humana é obrigatória",
+      "ruleDescription": "Uma sugestão continua a ser candidata mesmo com um nome muito semelhante. Só um mapeamento verificado pode alimentar dados em direto.",
+      "loading": "A carregar mapeamentos…",
+      "empty": "Nenhum mapeamento corresponde a estes filtros.",
+      "listAria": "Mapeamentos de entidades em direto",
+      "paginationAria": "Paginação dos mapeamentos em direto",
+      "previous": "Anterior",
+      "next": "Seguinte",
+      "page": "Página {{page}} de {{total}}",
+      "revision": "Revisão {{revision}}",
+      "eligible": "Elegível para dados em direto",
+      "externalTitle": "Entidade do fornecedor",
+      "internalTitle": "Entidade do site",
+      "unresolved": "Por identificar",
+      "create": {
+        "title": "Adicionar candidata",
+        "action": "Criar candidata"
+      },
+      "fields": {
+        "source": "Fonte",
+        "type": "Tipo de entidade",
+        "externalId": "Identificador do fornecedor",
+        "externalName": "Nome no fornecedor",
+        "country": "País (ISO 2)",
+        "externalParkId": "Identificador do parque no fornecedor",
+        "externalParkName": "Nome do parque no fornecedor",
+        "internalTargetIdOptional": "Destino interno sugerido (opcional)",
+        "internalParkIdOptional": "Parque interno sugerido (opcional)",
+        "internalTargetId": "Identificador do destino interno",
+        "internalParkId": "Identificador do parque interno",
+        "reviewNote": "Motivo da decisão"
+      },
+      "filters": {
+        "search": "Pesquisar",
+        "searchPlaceholder": "Nome ou identificador do fornecedor",
+        "status": "Estado",
+        "type": "Tipo",
+        "all": "Todos",
+        "apply": "Filtrar",
+        "clear": "Limpar"
+      },
+      "status": {
+        "Candidate": "Por verificar",
+        "Verified": "Verificado",
+        "Suspended": "Suspenso",
+        "Superseded": "Substituído",
+        "Rejected": "Rejeitado"
+      },
+      "type": {
+        "Park": "Parque",
+        "ParkItem": "Atração ou local"
+      },
+      "confidence": {
+        "Low": "Confiança baixa",
+        "Medium": "Confiança média",
+        "High": "Confiança alta"
+      },
+      "review": {
+        "title": "Rever este mapeamento",
+        "verify": "Validar",
+        "correct": "Corrigir destino",
+        "suspend": "Suspender",
+        "reject": "Rejeitar",
+        "supersede": "Substituir definitivamente"
+      },
+      "messages": {
+        "created": "A candidata foi adicionada.",
+        "reviewed": "A decisão foi guardada no histórico."
+      },
+      "errors": {
+        "load": "Não foi possível carregar os mapeamentos em direto.",
+        "mutation": "Não foi possível guardar a decisão. Atualiza a lista e tenta novamente."
+      }
+    },
     "loading": "A carregar...",
     "m14": {
       "kicker": "Administração",
