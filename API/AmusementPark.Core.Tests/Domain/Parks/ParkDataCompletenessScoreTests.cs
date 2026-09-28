@@ -172,6 +172,9 @@ public sealed class ParkDataCompletenessScoreTests
         Assert.Equal(64, issue.SecondDocumentSha256.Length);
         Assert.Equal(64, issue.FingerprintSha256.Length);
         Assert.NotEqual(issue.FirstDocumentSha256, issue.SecondDocumentSha256);
+        Assert.Equal("Une façade rouge borde la plage et éclaire la promenade pendant la soirée.", issue.FirstDocumentPreview);
+        Assert.Equal("La façade rouge borde la plage et éclaire la promenade pendant la fermeture.", issue.SecondDocumentPreview);
+        Assert.Equal("façade rouge borde la plage et éclaire la promenade", issue.FingerprintPreview);
     }
 
     [Fact]
@@ -459,6 +462,9 @@ public sealed class ParkDataCompletenessScoreTests
             FirstDocumentSha256 = new string('a', 64),
             SecondDocumentSha256 = new string('b', 64),
             FingerprintSha256 = new string('c', 64),
+            FirstDocumentPreview = "First document preview",
+            SecondDocumentPreview = "Second document preview",
+            FingerprintPreview = "Repeated fingerprint",
         };
         ParkDataCompletenessContext context = CreateRichParkContext() with
         {

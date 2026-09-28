@@ -15,4 +15,10 @@ public sealed record FormulaicPublicTextIssue
     public required string SecondDocumentSha256 { get; init; }
 
     public required string FingerprintSha256 { get; init; }
+
+    public required string FirstDocumentPreview { get; init; }
+
+    public required string SecondDocumentPreview { get; init; }
+
+    public required string FingerprintPreview { get; init; }
 }

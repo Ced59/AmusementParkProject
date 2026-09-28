@@ -596,6 +596,9 @@ internal static class ParksHttpMappers
                     FirstDocumentSha256 = value.FormulaicPublicTextIssue.FirstDocumentSha256,
                     SecondDocumentSha256 = value.FormulaicPublicTextIssue.SecondDocumentSha256,
                     FingerprintSha256 = value.FormulaicPublicTextIssue.FingerprintSha256,
+                    FirstDocumentPreview = value.FormulaicPublicTextIssue.FirstDocumentPreview,
+                    SecondDocumentPreview = value.FormulaicPublicTextIssue.SecondDocumentPreview,
+                    FingerprintPreview = value.FormulaicPublicTextIssue.FingerprintPreview,
                 },
         };
     }

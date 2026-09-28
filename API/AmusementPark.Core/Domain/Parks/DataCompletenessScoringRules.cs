@@ -308,6 +308,9 @@ public static class DataCompletenessScoringRules
                     FirstDocumentSha256 = ComputeSha256(publicText.Value!),
                     SecondDocumentSha256 = ComputeSha256(publicText.Value!),
                     FingerprintSha256 = ComputeSha256(match.Value),
+                    FirstDocumentPreview = CreateDiagnosticPreview(publicText.Value!),
+                    SecondDocumentPreview = CreateDiagnosticPreview(publicText.Value!),
+                    FingerprintPreview = CreateDiagnosticPreview(match.Value),
                 };
             }
         }
@@ -370,6 +373,9 @@ public static class DataCompletenessScoringRules
                             FirstDocumentSha256 = ComputeDocumentSha256(populatedPublicTexts, firstSentenceDocumentIndex.Value),
                             SecondDocumentSha256 = ComputeSha256(publicText.Value!),
                             FingerprintSha256 = ComputeSha256(sentenceFingerprint),
+                            FirstDocumentPreview = CreateDocumentPreview(populatedPublicTexts, firstSentenceDocumentIndex.Value),
+                            SecondDocumentPreview = CreateDiagnosticPreview(publicText.Value!),
+                            FingerprintPreview = CreateDiagnosticPreview(sentenceFingerprint),
                         };
                     }
 
@@ -392,6 +398,9 @@ public static class DataCompletenessScoringRules
                                 FirstDocumentSha256 = ComputeDocumentSha256(populatedPublicTexts, firstSequenceDocumentIndex.Value),
                                 SecondDocumentSha256 = ComputeSha256(publicText.Value!),
                                 FingerprintSha256 = ComputeSha256(sequenceFingerprint),
+                                FirstDocumentPreview = CreateDocumentPreview(populatedPublicTexts, firstSequenceDocumentIndex.Value),
+                                SecondDocumentPreview = CreateDiagnosticPreview(publicText.Value!),
+                                FingerprintPreview = CreateDiagnosticPreview(sequenceFingerprint),
                             };
                         }
                     }
@@ -407,6 +416,22 @@ public static class DataCompletenessScoringRules
         int documentIndex)
     {
         return ComputeSha256(publicTexts[documentIndex - 1].Text.Value!);
+    }
+
+    private static string CreateDocumentPreview(
+        IReadOnlyList<(int Index, LocalizedText Text)> publicTexts,
+        int documentIndex)
+    {
+        return CreateDiagnosticPreview(publicTexts[documentIndex - 1].Text.Value!);
+    }
+
+    private static string CreateDiagnosticPreview(string value)
+    {
+        const int maximumLength = 240;
+        string normalizedValue = NormalizePublicText(value);
+        return normalizedValue.Length <= maximumLength
+            ? normalizedValue
+            : normalizedValue[..maximumLength] + "…";
     }
 
     private static string ComputeSha256(string value)
