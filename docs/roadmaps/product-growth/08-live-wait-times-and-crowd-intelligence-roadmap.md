@@ -2,11 +2,32 @@
 
 > Code programme : `LIVE`
 >
-> Statut : étude et phase tardive. Aucune implémentation n’est autorisée par ce document avant les gates de source, de droits, de mapping, de fraîcheur, de charge et d’exploitation.
+> Statut : `LIVE-01` livré le 28 septembre 2026. La source pilote est autorisée
+> pour un spike interne latest-only ; aucune généralisation publique n'est encore
+> autorisée avant les gates de mapping, fraîcheur, charge et exploitation.
 >
 > Dépendances : `RANK`, `PASS`, `WATCH`, qualité/observabilité transverse et contrats de source validés.
 >
 > Principe : une donnée live affiche toujours sa source, son âge et son état. Une prévision affiche une fourchette, une méthode et un niveau de confiance. L’absence de donnée n’est jamais transformée en zéro minute.
+
+## État d'implémentation au 28 septembre 2026
+
+`LIVE-01` a sélectionné ThemeParks.wiki REST v1 comme source pilote et
+Phantasialand comme parc du futur spike borné. La décision, les droits, les
+empreintes documentaires, l'attribution, les quotas, la politique de stockage, les
+conditions d'arrêt et le budget VPS sont consignés dans
+[`product-growth-live-01-source-inventory-2026-09-28.md`](../../architecture/product-growth-live-01-source-inventory-2026-09-28.md).
+
+La gate `LIVE-A` est franchie uniquement pour un spike interne sur le latest :
+
+- une source, un parc, un poll au plus toutes les cinq minutes ;
+- aucun endpoint ni affichage public ;
+- aucun historique, export ou miroir du flux ;
+- état sûr « indisponible » lorsque la source est suspendue ;
+- nouvelle revue obligatoire avant `LIVE-D` et avant tout stockage historique.
+
+Le prochain jalon est `LIVE-02` : construire les primitives de provenance et de
+fraîcheur indépendantes du fournisseur, sans encore appeler l'API externe.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -718,7 +739,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 
 | PR | Contenu | Critère |
 |---|---|---|
-| `LIVE-01` | Inventaire juridique/technique des sources | Source pilote autorisée |
+| `LIVE-01` | ✅ Inventaire juridique/technique des sources | ThemeParks.wiki autorisée pour un spike interne latest-only |
 | `LIVE-02` | Modèle provenance/fraîcheur | Sémantique publique |
 | `LIVE-03` | Mapping et admin | Aucun mapping heuristique public |
 | `LIVE-04` | Adaptateur pilote | Fixtures complètes |
