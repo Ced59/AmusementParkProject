@@ -95,6 +95,7 @@ describe('AdminHistoricalFactEditorComponent', () => {
     expect(request).not.toBeNull();
     expect(request!.period).toEqual(fact.period);
     expect(request!.sources).toEqual(fact.sources);
+    expect(request!.subjectContextParkId).toBe('park-1');
     expect(request!.sequenceWithinDate).toBe(4);
     expect(request!.narrativeContentId).toBe('story-42');
     expect(request!.attributeKind).toBe('Name');

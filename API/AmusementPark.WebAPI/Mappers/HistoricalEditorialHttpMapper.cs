@@ -151,7 +151,8 @@ public static class HistoricalEditorialHttpMapper
                     sources,
                     request.StructuredValue,
                     request.OtherTypeLabel,
-                    request.NarrativeContentId),
+                    request.NarrativeContentId,
+                    request.SubjectContextParkId),
                 actorUserId,
                 request.ReviewNote);
             return true;

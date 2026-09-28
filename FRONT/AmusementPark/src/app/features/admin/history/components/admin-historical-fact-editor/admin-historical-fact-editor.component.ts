@@ -183,6 +183,7 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
         expectedRevision: this.fact?.revision ?? null,
         subjectType: subject.type,
         subjectId: subject.id,
+        subjectContextParkId: subject.contextParkId,
         type: value.type,
         period,
         state: value.state,

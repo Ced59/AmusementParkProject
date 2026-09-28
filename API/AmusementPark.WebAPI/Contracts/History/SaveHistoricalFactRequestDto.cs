@@ -8,6 +8,8 @@ public sealed class SaveHistoricalFactRequestDto
 
     public string SubjectId { get; init; } = string.Empty;
 
+    public string? SubjectContextParkId { get; init; }
+
     public string Type { get; init; } = string.Empty;
 
     public HistoricalPeriodRequestDto Period { get; init; } = new();

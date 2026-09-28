@@ -150,6 +150,7 @@ export interface SaveHistoricalFactRequest {
   expectedRevision: number | null;
   subjectType: HistoricalSubjectType;
   subjectId: string;
+  subjectContextParkId: string | null;
   type: string;
   period: HistoricalPeriodRequest;
   state: HistoricalFactState;

@@ -17,4 +17,5 @@ public sealed record HistoricalFactDraftInput(
     IReadOnlyCollection<HistoricalEvidenceSourceInput> Sources,
     string? StructuredValue,
     string? OtherTypeLabel,
-    string? NarrativeContentId);
+    string? NarrativeContentId,
+    string? SubjectContextParkId);

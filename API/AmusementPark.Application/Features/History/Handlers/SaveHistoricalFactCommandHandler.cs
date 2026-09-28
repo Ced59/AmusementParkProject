@@ -77,6 +77,17 @@ public sealed class SaveHistoricalFactCommandHandler :
         try
         {
             HistoricalFactDraftInput draft = command.Draft;
+            if (!string.IsNullOrWhiteSpace(draft.SubjectContextParkId)
+                && !string.Equals(
+                    draft.SubjectContextParkId.Trim(),
+                    scope.ParkId,
+                    StringComparison.Ordinal))
+            {
+                throw new HistoricalPersistenceValidationException(
+                    HistoricalPersistenceErrorCodes.InvalidIdentifier,
+                    "A historical fact created through a park must belong to that park.");
+            }
+
             IReadOnlyCollection<HistoricalSubject> editableSubjects = previous is null
                 ? await this.subjectResolver.LoadAsync(scope, cancellationToken)
                 : scope.CurrentSubjects;
@@ -85,7 +96,7 @@ public sealed class SaveHistoricalFactCommandHandler :
                     editableSubjects,
                     draft.SubjectType,
                     draft.SubjectId,
-                    scope.ParkId);
+                    draft.SubjectContextParkId ?? scope.ParkId);
             if (subject.Type != draft.SubjectType
                 || !string.Equals(subject.Id, draft.SubjectId.Trim(), StringComparison.Ordinal))
             {

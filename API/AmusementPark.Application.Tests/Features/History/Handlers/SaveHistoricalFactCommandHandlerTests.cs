@@ -110,7 +110,8 @@ public sealed class SaveHistoricalFactCommandHandlerTests
             },
             null,
             null,
-            null);
+            null,
+            item.ParkId);
 
         ApplicationResult<HistoricalEditorialMutationResult> result = await handler.HandleAsync(
             new SaveHistoricalFactCommand(
