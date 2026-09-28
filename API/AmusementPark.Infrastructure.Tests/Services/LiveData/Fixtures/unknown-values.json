@@ -1,0 +1,33 @@
+{
+  "liveData": [
+    {
+      "id": "future-ride",
+      "name": "Future Ride",
+      "entityType": "ATTRACTION",
+      "status": "LIMITED_MAGIC_MODE",
+      "lastUpdated": "2026-09-28T10:00:00Z",
+      "queue": {
+        "RETURN_TIME": {
+          "state": "NEW_STATE",
+          "returnStart": null,
+          "returnEnd": null
+        },
+        "EXPRESS": { "waitTime": 7 }
+      }
+    },
+    {
+      "id": "destination-root",
+      "name": "Destination",
+      "entityType": "DESTINATION",
+      "status": "OPERATING",
+      "lastUpdated": "2026-09-28T10:00:00Z"
+    },
+    {
+      "id": "invalid-clock",
+      "name": "Invalid Clock",
+      "entityType": "ATTRACTION",
+      "status": "OPERATING",
+      "lastUpdated": "not-a-date"
+    }
+  ]
+}

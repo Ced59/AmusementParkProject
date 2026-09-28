@@ -1,6 +1,20 @@
 {
-  "version": "5.4.3",
+  "version": "5.4.4",
   "history": [
+    {
+      "version": "5.4.4",
+      "releasedAt": "2026-09-28",
+      "labels": {
+        "fr": "Les futures informations en direct distinguent fiablement les attentes, fermetures et données inconnues.",
+        "en": "Future live information reliably distinguishes waits, closures and unknown data.",
+        "de": "Künftige Live-Informationen unterscheiden Wartezeiten, Schließungen und unbekannte Daten zuverlässig.",
+        "nl": "Toekomstige live-informatie maakt betrouwbaar onderscheid tussen wachttijden, sluitingen en onbekende gegevens.",
+        "it": "Le future informazioni in tempo reale distinguono in modo affidabile attese, chiusure e dati sconosciuti.",
+        "es": "La futura información en directo distingue de forma fiable las esperas, los cierres y los datos desconocidos.",
+        "pl": "Przyszłe informacje na żywo niezawodnie rozróżniają czasy oczekiwania, zamknięcia i nieznane dane.",
+        "pt": "As futuras informações em direto distinguem de forma fiável esperas, encerramentos e dados desconhecidos."
+      }
+    },
     {
       "version": "5.4.3",
       "releasedAt": "2026-09-28",

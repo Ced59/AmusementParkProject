@@ -28,4 +28,8 @@
     <ProjectReference Include="..\AmusementPark.Application\AmusementPark.Application.csproj" />
     <ProjectReference Include="..\AmusementPark.Core\AmusementPark.Core.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Services\LiveData\Fixtures\*.json" />
+  </ItemGroup>
 </Project>

@@ -2,11 +2,12 @@
 
 > Code programme : `LIVE`
 >
-> Statut : `LIVE-01`, `LIVE-02` et `LIVE-03` livrés le 28 septembre 2026. La
+> Statut : `LIVE-01` à `LIVE-04` livrés le 28 septembre 2026. La
 > source pilote est autorisée pour un spike interne latest-only, le contrat de
 > provenance/fraîcheur est implémenté et les mappings humains sont versionnés et
-> pilotables ; aucune généralisation publique n'est encore autorisée avant les
-> gates de charge, quarantaine et exploitation.
+> pilotables. L'adaptateur pilote traduit désormais strictement les statuts et
+> files du fournisseur ; aucune collecte planifiée ni généralisation publique
+> n'est encore autorisée avant les gates de charge, quarantaine et exploitation.
 >
 > Dépendances : `RANK`, `PASS`, `WATCH`, qualité/observabilité transverse et contrats de source validés.
 >
@@ -41,8 +42,15 @@ contre les révisions concurrentes et un écran d'administration responsive. Le
 détail est consigné dans
 [`product-growth-live-03-verified-target-mapping-2026-09-28.md`](../../architecture/product-growth-live-03-verified-target-mapping-2026-09-28.md).
 
-Le prochain jalon est `LIVE-04` : implémenter l'adaptateur fournisseur pilote avec
-des fixtures exhaustives, toujours sans affichage public.
+`LIVE-04` a livré l'adaptateur ThemeParks.wiki derrière un port Application et un
+modèle Core indépendant du fournisseur. Les statuts, les six familles de files,
+les fenêtres de retour, groupes virtuels et tarifs sont normalisés sans confondre
+zéro et absence. Les valeurs nouvelles deviennent inconnues et produisent un
+diagnostic au lieu d'être assimilées à une ouverture. Le détail est consigné dans
+[`product-growth-live-04-provider-adapter-2026-09-28.md`](../../architecture/product-growth-live-04-provider-adapter-2026-09-28.md).
+
+Le prochain jalon est `LIVE-05` : ajouter l'ordonnanceur borné, les budgets et le
+circuit breaker, toujours sans affichage public.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -757,7 +765,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | `LIVE-01` | ✅ Inventaire juridique/technique des sources | ThemeParks.wiki autorisée pour un spike interne latest-only |
 | [`LIVE-02`](../../architecture/product-growth-live-02-provenance-freshness-2026-09-28.md) | ✅ Modèle provenance/fraîcheur | Sémantique de domaine testée, sans exposition publique |
 | [`LIVE-03`](../../architecture/product-growth-live-03-verified-target-mapping-2026-09-28.md) | ✅ Mapping et admin | Aucun mapping heuristique public |
-| `LIVE-04` | Adaptateur pilote | Fixtures complètes |
+| [`LIVE-04`](../../architecture/product-growth-live-04-provider-adapter-2026-09-28.md) | ✅ Adaptateur pilote | Fixtures complètes |
 | `LIVE-05` | Scheduler/circuit breaker/budgets | Charge bornée |
 | `LIVE-06` | Latest store | Pas d’écrasement ancien |
 | `LIVE-07` | Quarantaine/anomalies | Données douteuses isolées |
@@ -799,6 +807,21 @@ cas d'usage restent derrière des ports Application et l'administration utilise
 des endpoints protégés, audités et limités. L'écran Angular en cartes permet de
 comparer les deux côtés puis de décider sur ordinateur ou mobile sans débordement
 horizontal. Aucun fournisseur n'est encore appelé et rien n'est public.
+
+### Implémentation `LIVE-04` — 28 septembre 2026
+
+La version `5.4.4` introduit l'adaptateur pilote ThemeParks.wiki REST v1 sans
+activer de polling ni d'endpoint public. Le fournisseur reste cantonné à
+Infrastructure ; Application ne connaît qu'un port générique et Core porte les
+états, types de files et observations normalisées.
+
+L'adaptateur utilise une URL fixe en HTTPS, refuse les redirections, borne le
+timeout et le corps de réponse à 2 Mio, transmet les ETag et expose les 429 sans
+relance automatique. Il conserve un hash SHA-256 du payload pour la future chaîne
+de preuve. Les valeurs de statut ou de file inconnues sont diagnostiquées et
+reviennent dans un état sûr. Les fixtures couvrent les six files, les quatre
+statuts connus, `0` contre `null`, les valeurs futures, les champs invalides, les
+réponses vides et les principaux incidents HTTP.
 
 ## 24. Gate finale `LIVE-G`
 

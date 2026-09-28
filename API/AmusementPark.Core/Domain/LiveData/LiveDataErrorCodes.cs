@@ -27,4 +27,8 @@ public static class LiveDataErrorCodes
     public const string MappingCountryMismatch = "live-data.mapping-country-mismatch";
 
     public const string MappingTargetTypeMismatch = "live-data.mapping-target-type-mismatch";
+
+    public const string InvalidWaitTime = "live-data.invalid-wait-time";
+
+    public const string InvalidQueue = "live-data.invalid-queue";
 }
