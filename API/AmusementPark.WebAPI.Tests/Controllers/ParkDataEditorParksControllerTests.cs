@@ -47,6 +47,9 @@ public sealed class ParkDataEditorParksControllerTests
                     FirstDocumentSha256 = new string('a', 64),
                     SecondDocumentSha256 = new string('b', 64),
                     FingerprintSha256 = new string('c', 64),
+                    FirstDocumentPreview = "First document preview",
+                    SecondDocumentPreview = "Second document preview",
+                    FingerprintPreview = "Repeated fingerprint",
                 },
             }));
 
@@ -72,6 +75,9 @@ public sealed class ParkDataEditorParksControllerTests
         Assert.Equal(new string('a', 64), score.FormulaicPublicTextIssue.FirstDocumentSha256);
         Assert.Equal(new string('b', 64), score.FormulaicPublicTextIssue.SecondDocumentSha256);
         Assert.Equal(new string('c', 64), score.FormulaicPublicTextIssue.FingerprintSha256);
+        Assert.Equal("First document preview", score.FormulaicPublicTextIssue.FirstDocumentPreview);
+        Assert.Equal("Second document preview", score.FormulaicPublicTextIssue.SecondDocumentPreview);
+        Assert.Equal("Repeated fingerprint", score.FormulaicPublicTextIssue.FingerprintPreview);
         handler.VerifyAll();
     }
 

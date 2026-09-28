@@ -15,4 +15,10 @@ public sealed class FormulaicPublicTextIssueDto
     public string SecondDocumentSha256 { get; set; } = string.Empty;
 
     public string FingerprintSha256 { get; set; } = string.Empty;
+
+    public string FirstDocumentPreview { get; set; } = string.Empty;
+
+    public string SecondDocumentPreview { get; set; } = string.Empty;
+
+    public string FingerprintPreview { get; set; } = string.Empty;
 }
