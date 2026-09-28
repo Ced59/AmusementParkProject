@@ -10,7 +10,7 @@ namespace AmusementPark.Infrastructure.Services.LiveData;
 internal static class ThemeParksWikiLiveDataNormalizer
 {
     private static readonly Regex Rfc3339Pattern = new Regex(
-        "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,7})?(?:Z|[+-]\\d{2}:\\d{2})$",
+        "^(?<date>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})(?:\\.(?<fraction>\\d+))?(?<offset>Z|[+-]\\d{2}:\\d{2})$",
         RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.NonBacktracking,
         TimeSpan.FromMilliseconds(100));
 
@@ -588,14 +588,39 @@ internal static class ThemeParksWikiLiveDataNormalizer
 
     private static bool TryParseUtc(string? value, out DateTime utcValue)
     {
-        if (value is null || value.Length > 40 || !Rfc3339Pattern.IsMatch(value))
+        if (value is null)
         {
             utcValue = default;
             return false;
         }
 
+        Match match;
+        try
+        {
+            match = Rfc3339Pattern.Match(value);
+        }
+        catch (RegexMatchTimeoutException)
+        {
+            utcValue = default;
+            return false;
+        }
+
+        if (!match.Success)
+        {
+            utcValue = default;
+            return false;
+        }
+
+        Group fraction = match.Groups["fraction"];
+        string parseableValue = fraction.Success && fraction.Length > 7
+            ? string.Concat(
+                match.Groups["date"].Value,
+                ".",
+                fraction.Value.AsSpan(0, 7),
+                match.Groups["offset"].Value)
+            : value;
         bool parsed = DateTimeOffset.TryParse(
-            value,
+            parseableValue,
             CultureInfo.InvariantCulture,
             DateTimeStyles.None,
             out DateTimeOffset parsedValue);

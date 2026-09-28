@@ -229,6 +229,29 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     }
 
     [Fact]
+    public async Task FetchLatestAsync_WithHighPrecisionRfc3339Timestamps_ShouldReduceToDateTimePrecision()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = ThemeParksWikiFixtureLoader.Read("high-precision-timestamps.json"),
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Equal(
+            new DateTime(2026, 9, 28, 10, 0, 0, DateTimeKind.Utc).AddTicks(1234567),
+            observation.SourceUpdatedAtUtc);
+        LiveQueueObservation queue = Assert.Single(observation.Queues);
+        Assert.Equal(
+            new DateTime(2026, 9, 28, 8, 30, 0, DateTimeKind.Utc).AddTicks(9876543),
+            queue.ReturnStartUtc);
+        Assert.Empty(result.Diagnostics);
+    }
+
+    [Fact]
     public async Task FetchLatestAsync_WithEmptyFixture_ShouldReturnSuccessfulEmptyBatchWithDiagnostic()
     {
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
