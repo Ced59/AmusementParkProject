@@ -70,9 +70,11 @@ public sealed class SaveHistoricalRelationCommandHandlerTests
                 previous.Id,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(previous);
-        relations.Setup(repository => repository.GetLatestRevisionsForParkAsync(
-                park.Id,
-                It.IsAny<IReadOnlyCollection<HistoricalSubjectKey>>(),
+        relations.Setup(repository => repository.GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
+                It.Is<IReadOnlyCollection<HistoricalSubjectKey>>(subjects =>
+                    subjects.Count == 1
+                    && subjects.Single().Id == second.Id),
+                200,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { previous, reverse });
         sources.Setup(repository => repository.GetRevisionsAsync(

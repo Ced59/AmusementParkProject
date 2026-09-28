@@ -111,14 +111,27 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
             HistoricalEditorialWorkflowState.StructuredValidation,
             HistoricalPublicationState.Draft,
             4,
-            3);
-        HistoricalRelation existing = CreateRelation(
+            3,
+            "park-1",
+            "park-2");
+        HistoricalRelation intermediate = CreateRelation(
             "item-2",
+            "item-3",
+            HistoricalEditorialWorkflowState.Published,
+            HistoricalPublicationState.Published,
+            4,
+            3,
+            "park-2",
+            "park-3");
+        HistoricalRelation closing = CreateRelation(
+            "item-3",
             "item-1",
             HistoricalEditorialWorkflowState.Published,
             HistoricalPublicationState.Published,
             4,
-            3);
+            3,
+            "park-3",
+            "park-1");
         Mock<IHistoricalFactRepository> facts = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
         Mock<IHistoricalRelationRepository> relations =
             new Mock<IHistoricalRelationRepository>(MockBehavior.Strict);
@@ -128,11 +141,22 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
                 candidate.Id,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(candidate);
-        relations.Setup(repository => repository.GetLatestRevisionsForParkAsync(
-                "park-1",
-                It.Is<IReadOnlyCollection<HistoricalSubjectKey>>(subjects => subjects.Count == 2),
+        relations.Setup(repository => repository.GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
+                It.Is<IReadOnlyCollection<HistoricalSubjectKey>>(subjects =>
+                    subjects.Count == 1
+                    && subjects.Single().Id == "item-2"
+                    && subjects.Single().ContextParkId == "park-2"),
+                200,
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[] { candidate, existing });
+            .ReturnsAsync(new[] { intermediate });
+        relations.Setup(repository => repository.GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
+                It.Is<IReadOnlyCollection<HistoricalSubjectKey>>(subjects =>
+                    subjects.Count == 1
+                    && subjects.Single().Id == "item-3"
+                    && subjects.Single().ContextParkId == "park-3"),
+                200,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { closing });
         AdvanceHistoricalEditorialResourceCommandHandler handler = new AdvanceHistoricalEditorialResourceCommandHandler(
             facts.Object,
             relations.Object,
@@ -183,20 +207,22 @@ public sealed class AdvanceHistoricalEditorialResourceCommandHandlerTests
         HistoricalEditorialWorkflowState workflowState,
         HistoricalPublicationState publicationState,
         int revision,
-        int? supersedesRevision)
+        int? supersedesRevision,
+        string sourceContextParkId = "park-1",
+        string targetContextParkId = "park-1")
     {
         HistoricalSubject source = new HistoricalSubject(
             HistoricalSubjectType.ParkItem,
             sourceId,
             sourceId,
             HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
-            "park-1");
+            sourceContextParkId);
         HistoricalSubject target = new HistoricalSubject(
             HistoricalSubjectType.ParkItem,
             targetId,
             targetId,
             HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
-            "park-1");
+            targetContextParkId);
         HistoricalPeriod period = HistoricalPeriod.Point(HistoricalDate.ForYear(2001));
         HistoricalRelationSourceRevisionReference evidence = new HistoricalRelationSourceRevisionReference(
             Guid.NewGuid(),

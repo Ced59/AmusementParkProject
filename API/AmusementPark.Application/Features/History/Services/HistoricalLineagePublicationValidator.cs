@@ -5,6 +5,9 @@ namespace AmusementPark.Application.Features.History.Services;
 
 public sealed class HistoricalLineagePublicationValidator
 {
+    private const int MaximumRelationsPerLevel = 200;
+    private const int MaximumSubjectCount = 200;
+
     private readonly IHistoricalRelationRepository relationRepository;
 
     public HistoricalLineagePublicationValidator(IHistoricalRelationRepository relationRepository)
@@ -23,38 +26,58 @@ public sealed class HistoricalLineagePublicationValidator
             return false;
         }
 
-        string parkId = ResolveParkId(publishedCandidate);
-        HistoricalSubjectKey[] candidateSubjects =
+        HistoricalSubjectKey candidateSource = ToKey(publishedCandidate.Source);
+        HistoricalSubjectKey candidateTarget = ToKey(publishedCandidate.Target);
+        HashSet<HistoricalSubjectKey> visited = new HashSet<HistoricalSubjectKey>
         {
-            ToKey(publishedCandidate.Source),
-            ToKey(publishedCandidate.Target),
+            candidateTarget,
         };
-        IReadOnlyCollection<HistoricalRelation> currentRelations =
-            await this.relationRepository.GetLatestRevisionsForParkAsync(
-                parkId,
-                candidateSubjects,
-                cancellationToken);
-        HistoricalRelation[] proposedRelations = currentRelations
-            .Where(relation => relation.Id != publishedCandidate.Id && relation.IsDecisionEligible)
-            .Append(publishedCandidate)
-            .ToArray();
-        return HistoricalLineageCycleDetector.HasIncompatibleLineageCycle(proposedRelations);
-    }
-
-    private static string ResolveParkId(HistoricalRelation relation)
-    {
-        string? parkId = relation.Source.ContextParkId
-            ?? relation.Target.ContextParkId
-            ?? (relation.Source.Type == HistoricalSubjectType.Park ? relation.Source.Id : null)
-            ?? (relation.Target.Type == HistoricalSubjectType.Park ? relation.Target.Id : null);
-        if (string.IsNullOrWhiteSpace(parkId))
+        HashSet<HistoricalSubjectKey> frontier = new HashSet<HistoricalSubjectKey>
         {
-            throw new HistoricalPersistenceValidationException(
-                HistoricalPersistenceErrorCodes.InvalidIdentifier,
-                "A historical lineage relation requires a park context.");
+            candidateTarget,
+        };
+        while (frontier.Count > 0)
+        {
+            IReadOnlyCollection<HistoricalRelation> currentRelations =
+                await this.relationRepository.GetLatestDecisionEligibleRevisionsTouchingSubjectsAsync(
+                    frontier,
+                    MaximumRelationsPerLevel,
+                    cancellationToken);
+            HashSet<HistoricalSubjectKey> next = new HashSet<HistoricalSubjectKey>();
+            foreach (HistoricalRelation relation in currentRelations.Where(relation =>
+                         relation.Id != publishedCandidate.Id
+                         && relation.IsDecisionEligible
+                         && relation.Direction == HistoricalRelationDirection.Directed
+                         && HistoricalLineageCycleDetector.IsLineageType(relation.Type)))
+            {
+                HistoricalSubjectKey source = ToKey(relation.Source);
+                if (!frontier.Contains(source))
+                {
+                    continue;
+                }
+
+                HistoricalSubjectKey target = ToKey(relation.Target);
+                if (target == candidateSource)
+                {
+                    return true;
+                }
+
+                if (visited.Add(target))
+                {
+                    next.Add(target);
+                }
+            }
+
+            if (currentRelations.Count >= MaximumRelationsPerLevel
+                || visited.Count > MaximumSubjectCount)
+            {
+                return true;
+            }
+
+            frontier = next;
         }
 
-        return parkId.Trim();
+        return false;
     }
 
     private static HistoricalSubjectKey ToKey(HistoricalSubject subject)
