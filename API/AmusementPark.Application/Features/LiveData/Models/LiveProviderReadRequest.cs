@@ -1,3 +1,5 @@
+using AmusementPark.Core.Domain.Identifiers;
+
 namespace AmusementPark.Application.Features.LiveData.Models;
 
 public sealed class LiveProviderReadRequest
@@ -6,14 +8,9 @@ public sealed class LiveProviderReadRequest
 
     public LiveProviderReadRequest(string externalEntityId, string? entityTag = null)
     {
-        string normalizedExternalEntityId = externalEntityId?.Trim() ?? string.Empty;
-        if (normalizedExternalEntityId.Length is 0 or > 200
-            || normalizedExternalEntityId.Any(char.IsControl))
-        {
-            throw new ArgumentException(
-                "A provider entity identifier is required and cannot exceed 200 characters.",
-                nameof(externalEntityId));
-        }
+        string normalizedExternalEntityId = IdentifierRules.NormalizeRequired(
+            externalEntityId,
+            nameof(externalEntityId));
 
         string? normalizedEntityTag = string.IsNullOrWhiteSpace(entityTag)
             ? null
