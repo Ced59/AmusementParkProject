@@ -17,7 +17,7 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
 
     public const int MaximumDiagnosticCount = 1_000;
 
-    public const int MaximumQueueMemberCount = 32;
+    public const int MaximumJsonObjectMemberCount = 32;
 
     public static readonly TimeSpan RequestTimeout = TimeSpan.FromSeconds(10);
 
@@ -143,7 +143,7 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
             {
                 JsonElement root = providerDocument.RootElement;
                 if (root.ValueKind != JsonValueKind.Object
-                    || ThemeParksWikiLiveDataNormalizer.HasDuplicateProperties(root)
+                    || ThemeParksWikiLiveDataNormalizer.HasDuplicateOrExcessProperties(root)
                     || !root.TryGetProperty("id", out JsonElement rootId)
                     || rootId.ValueKind != JsonValueKind.String
                     || !string.Equals(

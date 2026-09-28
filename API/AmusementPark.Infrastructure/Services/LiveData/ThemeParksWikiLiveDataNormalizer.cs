@@ -53,7 +53,7 @@ internal static class ThemeParksWikiLiveDataNormalizer
         return observations.AsReadOnly();
     }
 
-    internal static bool HasDuplicateProperties(JsonElement value)
+    internal static bool HasDuplicateOrExcessProperties(JsonElement value)
     {
         if (value.ValueKind != JsonValueKind.Object)
         {
@@ -63,7 +63,8 @@ internal static class ThemeParksWikiLiveDataNormalizer
         HashSet<string> propertyNames = new HashSet<string>(StringComparer.Ordinal);
         foreach (JsonProperty property in value.EnumerateObject())
         {
-            if (!propertyNames.Add(property.Name))
+            if (propertyNames.Count >= ThemeParksWikiLiveDataAdapter.MaximumJsonObjectMemberCount
+                || !propertyNames.Add(property.Name))
             {
                 return true;
             }
@@ -76,7 +77,7 @@ internal static class ThemeParksWikiLiveDataNormalizer
         JsonElement item,
         ICollection<LiveProviderDiagnostic> diagnostics)
     {
-        if (item.ValueKind != JsonValueKind.Object || HasDuplicateProperties(item))
+        if (item.ValueKind != JsonValueKind.Object || HasDuplicateOrExcessProperties(item))
         {
             AddDiagnostic(diagnostics, LiveProviderDiagnosticCodes.InvalidObservation);
             return null;
@@ -191,18 +192,8 @@ internal static class ThemeParksWikiLiveDataNormalizer
             return queues.AsReadOnly();
         }
 
-        if (queueElement.Value.ValueKind != JsonValueKind.Object)
-        {
-            AddDiagnostic(
-                diagnostics,
-                LiveProviderDiagnosticCodes.InvalidQueueValue,
-                externalTargetId,
-                "queue");
-            return queues.AsReadOnly();
-        }
-
-        if (queueElement.Value.GetPropertyCount()
-            > ThemeParksWikiLiveDataAdapter.MaximumQueueMemberCount)
+        if (queueElement.Value.ValueKind != JsonValueKind.Object
+            || HasDuplicateOrExcessProperties(queueElement.Value))
         {
             AddDiagnostic(
                 diagnostics,
@@ -227,7 +218,7 @@ internal static class ThemeParksWikiLiveDataNormalizer
 
             if (!seenKinds.Add(kind)
                 || queueProperty.Value.ValueKind != JsonValueKind.Object
-                || HasDuplicateProperties(queueProperty.Value))
+                || HasDuplicateOrExcessProperties(queueProperty.Value))
             {
                 AddDiagnostic(
                     diagnostics,
@@ -620,7 +611,7 @@ internal static class ThemeParksWikiLiveDataNormalizer
         }
 
         return price.ValueKind == JsonValueKind.Object
-            && !HasDuplicateProperties(price)
+            && !HasDuplicateOrExcessProperties(price)
             && price.TryGetProperty("amount", out JsonElement amount)
             && (amount.ValueKind == JsonValueKind.Null
                 || amount.ValueKind == JsonValueKind.Number && amount.TryGetInt64(out long _))

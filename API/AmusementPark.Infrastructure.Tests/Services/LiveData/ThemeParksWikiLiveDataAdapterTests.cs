@@ -569,7 +569,7 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     {
         string queueProperties = string.Join(
             ',',
-            Enumerable.Range(0, ThemeParksWikiLiveDataAdapter.MaximumQueueMemberCount + 1)
+            Enumerable.Range(0, ThemeParksWikiLiveDataAdapter.MaximumJsonObjectMemberCount + 1)
                 .Select(static index => $"\"UNKNOWN_{index}\":{{}}"));
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
         {
@@ -604,6 +604,38 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         LiveProviderDiagnostic diagnostic = Assert.Single(result.Diagnostics);
         Assert.Equal(LiveProviderDiagnosticCodes.InvalidQueueValue, diagnostic.Code);
         Assert.Equal("queue", diagnostic.Field);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenRecognizedQueueContainsTooManyMembers_ShouldRejectOnlyThatQueue()
+    {
+        string queueMembers = string.Join(
+            ',',
+            Enumerable.Range(0, ThemeParksWikiLiveDataAdapter.MaximumJsonObjectMemberCount + 1)
+                .Select(static index => $"\"extra_{index}\":null"));
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"liveData\":[{"
+                + "\"id\":\"bounded-attraction\","
+                + "\"name\":\"Bounded attraction\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:00:00Z\","
+                + $"\"queue\":{{\"STANDBY\":{{{queueMembers}}},"
+                + "\"RETURN_TIME\":{\"returnStart\":null,\"returnEnd\":null,\"state\":\"AVAILABLE\"}}"
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        LiveQueueObservation queue = Assert.Single(observation.Queues);
+        Assert.Equal(LiveQueueKind.ReturnTime, queue.Kind);
+        LiveProviderDiagnostic diagnostic = Assert.Single(result.Diagnostics);
+        Assert.Equal(LiveProviderDiagnosticCodes.InvalidQueueValue, diagnostic.Code);
+        Assert.Equal("STANDBY", diagnostic.Field);
     }
 
     [Fact]
