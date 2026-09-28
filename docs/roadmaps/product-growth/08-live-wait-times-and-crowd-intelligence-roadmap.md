@@ -787,7 +787,7 @@ externe, stockage, endpoint ou affichage live n'est encore actif.
 
 ### Implémentation `LIVE-03` — 28 septembre 2026
 
-La version `5.4.1` ajoute une chaîne de correspondance vérifiée entre les
+La version `5.4.2` ajoute une chaîne de correspondance vérifiée entre les
 identifiants externes et les entités réelles du produit. Chaque création,
 validation, correction, suspension, rejet ou remplacement produit une révision
 immuable, avec acteur, motif et contrôle de concurrence. Un candidat ne peut

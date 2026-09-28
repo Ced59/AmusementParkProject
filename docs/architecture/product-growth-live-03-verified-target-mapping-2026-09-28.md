@@ -2,7 +2,7 @@
 
 > Décision du 28 septembre 2026.
 >
-> Version : **5.4.1**.
+> Version : **5.4.2**.
 >
 > Statut : **socle de mapping et pilotage administratif livré**.
 
