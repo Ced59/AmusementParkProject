@@ -281,11 +281,11 @@ public static class DataCompletenessScoringRules
         ArgumentNullException.ThrowIfNull(publicTexts);
         ArgumentNullException.ThrowIfNull(entityNames);
 
-        List<IndexedPublicText> populatedPublicTexts = publicTexts
+        List<(int Index, LocalizedText Text)> populatedPublicTexts = publicTexts
             .Where(static text => !string.IsNullOrWhiteSpace(text.Value))
-            .Select(static (text, index) => new IndexedPublicText(index + 1, text))
+            .Select(static (text, index) => (Index: index + 1, Text: text))
             .ToList();
-        foreach (IndexedPublicText indexedPublicText in populatedPublicTexts)
+        foreach ((int Index, LocalizedText Text) indexedPublicText in populatedPublicTexts)
         {
             LocalizedText publicText = indexedPublicText.Text;
             if (SingleOccurrenceFormulaRegexes.Any(regex => regex.IsMatch(NormalizePublicText(publicText.Value!))))
@@ -310,7 +310,7 @@ public static class DataCompletenessScoringRules
         Dictionary<string, int> firstDocumentBySentence = new Dictionary<string, int>(StringComparer.Ordinal);
         Dictionary<string, int> firstDocumentByLongSequence = new Dictionary<string, int>(StringComparer.Ordinal);
 
-        foreach (IGrouping<string, IndexedPublicText> languageGroup in populatedPublicTexts
+        foreach (IGrouping<string, (int Index, LocalizedText Text)> languageGroup in populatedPublicTexts
             .GroupBy(
                 static indexedText => NormalizeLanguageCode(indexedText.Text.LanguageCode),
                 StringComparer.OrdinalIgnoreCase))
@@ -318,7 +318,7 @@ public static class DataCompletenessScoringRules
             firstDocumentBySentence.Clear();
             firstDocumentByLongSequence.Clear();
 
-            foreach (IndexedPublicText indexedPublicText in languageGroup)
+            foreach ((int Index, LocalizedText Text) indexedPublicText in languageGroup)
             {
                 LocalizedText publicText = indexedPublicText.Text;
                 string decodedValue = WebUtility.HtmlDecode(publicText.Value ?? string.Empty);
@@ -409,6 +409,4 @@ public static class DataCompletenessScoringRules
         string withoutHtml = HtmlTagRegex.Replace(decodedValue, " ");
         return WhitespaceRegex.Replace(withoutHtml, " ").Trim();
     }
-
-    private sealed record IndexedPublicText(int Index, LocalizedText Text);
 }
