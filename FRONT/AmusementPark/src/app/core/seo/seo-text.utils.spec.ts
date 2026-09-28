@@ -40,6 +40,18 @@ describe('seo text utils', () => {
       expect(normalizeSeoDescription('<h2>Un lieu historique</h2><p>&nbsp;</p>', 'fallback')).toBe('Un lieu historique');
     });
 
+    it('decodes stored encoded rich HTML before extracting its prose', () => {
+      const value: string = '&lt;h2&gt;Tom &amp;amp; Jerry&lt;/h2&gt;&lt;p&gt;Tom &amp;amp; Jerry jouent au parc.&lt;/p&gt;&lt;script&gt;ignored()&lt;/script&gt;';
+
+      expect(normalizeSeoDescription(value, 'fallback')).toBe('Tom & Jerry jouent au parc.');
+      expect(normalizeSeoDescription('&lt;h2&gt;Un lieu historique&lt;/h2&gt;', 'fallback')).toBe('Un lieu historique');
+    });
+
+    it('preserves escaped comparison signs in prose', () => {
+      expect(normalizeSeoDescription('Taille &lt; 120 cm et âge &gt; 3 ans', 'fallback')).toBe('Taille < 120 cm et âge > 3 ans');
+      expect(normalizeSeoDescription('&lt;p&gt;Taille &amp;lt; 120 cm et âge &amp;gt; 3 ans&lt;/p&gt;', 'fallback')).toBe('Taille < 120 cm et âge > 3 ans');
+    });
+
     it('uses the supplied fallback when the entire description is empty', () => {
       expect(normalizeSeoDescription(null, 'fallback')).toBe('fallback');
       expect(normalizeSeoDescription('<h2>&nbsp;</h2><script>ignored()</script>', 'fallback')).toBe('fallback');

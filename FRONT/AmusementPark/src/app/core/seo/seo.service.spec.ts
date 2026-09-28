@@ -431,6 +431,18 @@ describe('SeoService', () => {
     expect(readJsonLdScripts().find(value => value['name'] === 'Starfish')?.['description']).toBe(prose);
   });
 
+  it('extracts encoded rich park item prose for metadata and structured data', () => {
+    const detail: ParkItemDetailViewModel = buildParkItemDetail({
+      name: 'Starfish',
+      description: '&lt;h2&gt;Starfish&lt;/h2&gt;&lt;p&gt;Starfish était un manège circulaire.&lt;/p&gt;'
+    });
+
+    service.applyParkItemDetailSeo(detail, 'fr', '/fr/park/park-1/demo/item/item-1/starfish');
+
+    expect(readMetaContent('meta[name="description"]')).toBe('Starfish était un manège circulaire.');
+    expect(readJsonLdScripts().find(value => value['name'] === 'Starfish')?.['description']).toBe('Starfish était un manège circulaire.');
+  });
+
   it.each(['Planned', 'UnderConstruction', 'Cancelled'] as const)('keeps a %s park item generic even when its category describes a business', parkStatus => {
     const detail: ParkItemDetailViewModel = buildParkItemDetail({
       category: 'Hotel',
