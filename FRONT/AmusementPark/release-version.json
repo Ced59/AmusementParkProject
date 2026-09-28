@@ -1,6 +1,20 @@
 {
-  "version": "5.4.4",
+  "version": "5.4.5",
   "history": [
+    {
+      "version": "5.4.5",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "La future collecte des informations en direct protège les performances et les sources externes.",
+        "en": "Future live data collection protects performance and external sources.",
+        "de": "Die künftige Erfassung von Live-Daten schützt Leistung und externe Quellen.",
+        "nl": "De toekomstige verzameling van livegegevens beschermt prestaties en externe bronnen.",
+        "it": "La futura raccolta dei dati in tempo reale protegge le prestazioni e le fonti esterne.",
+        "es": "La futura recopilación de datos en directo protege el rendimiento y las fuentes externas.",
+        "pl": "Przyszłe pobieranie danych na żywo chroni wydajność i źródła zewnętrzne.",
+        "pt": "A futura recolha de dados em direto protege o desempenho e as fontes externas."
+      }
+    },
     {
       "version": "5.4.4",
       "releasedAt": "2026-09-28",

@@ -44,6 +44,7 @@ using AmusementPark.Infrastructure.Configuration.BackgroundJobs;
 using AmusementPark.Infrastructure.Configuration.Email;
 using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Images;
+using AmusementPark.Infrastructure.Configuration.LiveData;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Configuration.Ssr;
 using AmusementPark.Infrastructure.Configuration.SocialPublishing;
@@ -102,6 +103,9 @@ public static class InfrastructureServiceCollectionExtensions
         DurableBackgroundJobWorkerSettings durableBackgroundJobWorkerSettings =
             DurableBackgroundJobWorkerSettings.Bind(configuration);
         services.AddSingleton(durableBackgroundJobWorkerSettings);
+
+        LiveDataPollingSettings liveDataPollingSettings = LiveDataPollingSettings.Bind(configuration);
+        services.AddSingleton(liveDataPollingSettings);
 
         MinioImageStorageSettings minioSettings = configuration.GetSection(MinioImageStorageSettings.SectionName).Get<MinioImageStorageSettings>() ?? new MinioImageStorageSettings();
         services.AddSingleton(minioSettings);
@@ -402,6 +406,9 @@ public static class InfrastructureServiceCollectionExtensions
             provider.GetRequiredService<HistoricalReviewEventRepository>());
         services.AddScoped<ILiveTargetMappingRepository, LiveTargetMappingRepository>();
         services.AddScoped<ILiveDataProviderAdapter, ThemeParksWikiLiveDataAdapter>();
+        services.AddScoped<ILivePollingStateRepository, LivePollingStateRepository>();
+        services.AddSingleton<LivePollingMetrics>();
+        services.AddHostedService<LivePollingBackgroundService>();
         services.AddScoped<IParkWeatherProviderStrategy, OpenMeteoWeatherProviderStrategy>();
         services.AddScoped<IParkWeatherProviderStrategyResolver, ParkWeatherProviderStrategyResolver>();
         services.AddSingleton<IParkWeatherRefreshQueue, ParkWeatherRefreshQueue>();

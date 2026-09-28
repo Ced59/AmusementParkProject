@@ -1,0 +1,241 @@
+using AmusementPark.Application.Features.LiveData.Models;
+using AmusementPark.Application.Features.LiveData.Ports;
+using AmusementPark.Application.Features.LiveData.Services;
+using AmusementPark.Core.Domain.LiveData;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.Application.Tests.Features.LiveData.Services;
+
+public sealed class LivePollingOrchestratorTests
+{
+    private static readonly DateTime NowUtc =
+        new DateTime(2026, 9, 29, 12, 0, 0, DateTimeKind.Utc);
+    private static readonly LiveDataSourceId SourceId = LiveDataSourceId.Parse("pilot");
+
+    [Fact]
+    public async Task ExecuteAsync_WhenTargetIsNotDue_ShouldNotCallProvider()
+    {
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithoutLease();
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        LivePollingOrchestrator orchestrator = CreateOrchestrator(repository, adapter);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.NotDue, result.Disposition);
+        adapter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_OutsideActiveWindow_ShouldScheduleNextOpeningWithoutProviderCall()
+    {
+        DateTime nightUtc = new DateTime(2026, 9, 29, 2, 0, 0, DateTimeKind.Utc);
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease();
+        LivePollingCompletion? savedCompletion = null;
+        repository
+            .Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingCompletion, CancellationToken>(
+                (completion, _) => savedCompletion = completion)
+            .ReturnsAsync(true);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        LivePollingOrchestrator orchestrator = new LivePollingOrchestrator(
+            new[] { adapter.Object },
+            repository.Object,
+            new FixedTimeProvider(nightUtc),
+            static () => 0);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.OutsideActiveWindow, result.Disposition);
+        Assert.NotNull(savedCompletion);
+        Assert.Equal(
+            new DateTime(2026, 9, 29, 6, 0, 0, DateTimeKind.Utc),
+            savedCompletion.NextAttemptAtUtc);
+        adapter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_AfterSuccess_ShouldForwardEntityTagAndResetSchedule()
+    {
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease(
+            entityTag: "\"old\"",
+            consecutiveFailures: 3);
+        LivePollingCompletion? savedCompletion = null;
+        repository
+            .Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingCompletion, CancellationToken>(
+                (completion, _) => savedCompletion = completion)
+            .ReturnsAsync(true);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        adapter
+            .Setup(value => value.FetchLatestAsync(
+                It.Is<LiveProviderReadRequest>(request => request.EntityTag == "\"old\""),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveProviderReadResult(
+                LiveProviderReadDisposition.Success,
+                NowUtc,
+                entityTag: "\"new\""));
+        LivePollingOrchestrator orchestrator = CreateOrchestrator(repository, adapter);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.Success, result.Disposition);
+        Assert.NotNull(savedCompletion);
+        Assert.Equal(0, savedCompletion.ConsecutiveFailures);
+        Assert.Equal(NowUtc.AddMinutes(5), savedCompletion.NextAttemptAtUtc);
+        Assert.True(savedCompletion.ReplaceEntityTag);
+        Assert.Equal("\"new\"", savedCompletion.EntityTag);
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_WhenRateLimited_ShouldHonorRetryAfter()
+    {
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease();
+        LivePollingCompletion? savedCompletion = null;
+        repository
+            .Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingCompletion, CancellationToken>(
+                (completion, _) => savedCompletion = completion)
+            .ReturnsAsync(true);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        adapter
+            .Setup(value => value.FetchLatestAsync(
+                It.IsAny<LiveProviderReadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveProviderReadResult(
+                LiveProviderReadDisposition.RateLimited,
+                NowUtc,
+                retryAfter: TimeSpan.FromMinutes(20)));
+        LivePollingOrchestrator orchestrator = CreateOrchestrator(repository, adapter);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.RateLimited, result.Disposition);
+        Assert.NotNull(savedCompletion);
+        Assert.Equal(NowUtc.AddMinutes(20), savedCompletion.NextAttemptAtUtc);
+        Assert.Equal(1, savedCompletion.ConsecutiveFailures);
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_WhenProviderThrowsAtThreshold_ShouldOpenCircuit()
+    {
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease(
+            consecutiveFailures: 4);
+        LivePollingCompletion? savedCompletion = null;
+        repository
+            .Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingCompletion, CancellationToken>(
+                (completion, _) => savedCompletion = completion)
+            .ReturnsAsync(true);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        adapter
+            .Setup(value => value.FetchLatestAsync(
+                It.IsAny<LiveProviderReadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new HttpRequestException("Provider unavailable"));
+        LivePollingOrchestrator orchestrator = CreateOrchestrator(repository, adapter);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.Failed, result.Disposition);
+        Assert.True(result.CircuitOpened);
+        Assert.NotNull(savedCompletion);
+        Assert.Equal(NowUtc.AddMinutes(30), savedCompletion.CircuitOpenUntilUtc);
+        Assert.Equal(NowUtc.AddHours(1), savedCompletion.NextAttemptAtUtc);
+    }
+
+    private static LivePollingOrchestrator CreateOrchestrator(
+        Mock<ILivePollingStateRepository> repository,
+        Mock<ILiveDataProviderAdapter> adapter)
+    {
+        return new LivePollingOrchestrator(
+            new[] { adapter.Object },
+            repository.Object,
+            new FixedTimeProvider(NowUtc),
+            static () => 0);
+    }
+
+    private static Mock<ILivePollingStateRepository> CreateRepositoryWithoutLease()
+    {
+        Mock<ILivePollingStateRepository> repository =
+            new Mock<ILivePollingStateRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.TryAcquireAsync(
+                It.IsAny<LivePollingLeaseRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((LivePollingLease?)null);
+        return repository;
+    }
+
+    private static Mock<ILivePollingStateRepository> CreateRepositoryWithLease(
+        string? entityTag = null,
+        int consecutiveFailures = 0)
+    {
+        Mock<ILivePollingStateRepository> repository =
+            new Mock<ILivePollingStateRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.TryAcquireAsync(
+                It.IsAny<LivePollingLeaseRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LivePollingLease(
+                SourceId,
+                "entity-1",
+                "worker-1",
+                "lease-1",
+                entityTag,
+                consecutiveFailures,
+                null));
+        return repository;
+    }
+
+    private static Mock<ILiveDataProviderAdapter> CreateAdapter()
+    {
+        Mock<ILiveDataProviderAdapter> adapter =
+            new Mock<ILiveDataProviderAdapter>(MockBehavior.Strict);
+        adapter.SetupGet(static value => value.SourceId).Returns(SourceId);
+        return adapter;
+    }
+
+    private static LivePollingTarget CreateTarget()
+    {
+        return new LivePollingTarget(
+            SourceId,
+            "entity-1",
+            new LivePollingActiveWindow(TimeZoneInfo.Utc, 6, 23),
+            new LivePollingPolicy(
+                TimeSpan.FromMinutes(5),
+                TimeSpan.FromMinutes(5),
+                TimeSpan.FromHours(1),
+                5,
+                TimeSpan.FromMinutes(30)),
+            TimeSpan.Zero);
+    }
+}
