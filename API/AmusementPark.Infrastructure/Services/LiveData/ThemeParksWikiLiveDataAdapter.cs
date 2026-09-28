@@ -93,7 +93,7 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
                     retryAfter: ResolveRetryAfter(response, receivedAtUtc));
             }
 
-            if (!response.IsSuccessStatusCode)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 return new LiveProviderReadResult(
                     LiveProviderReadDisposition.Unavailable,

@@ -302,7 +302,10 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
     [Theory]
     [InlineData(HttpStatusCode.Unauthorized)]
     [InlineData(HttpStatusCode.InternalServerError)]
-    public async Task FetchLatestAsync_WhenProviderRejectsRequest_ShouldReturnUnavailable(
+    [InlineData(HttpStatusCode.Accepted)]
+    [InlineData(HttpStatusCode.NoContent)]
+    [InlineData(HttpStatusCode.PartialContent)]
+    public async Task FetchLatestAsync_WhenProviderDoesNotReturnFullPayload_ShouldReturnUnavailable(
         HttpStatusCode statusCode)
     {
         ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
