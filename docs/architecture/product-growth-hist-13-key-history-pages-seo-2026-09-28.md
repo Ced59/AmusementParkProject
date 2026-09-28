@@ -61,6 +61,8 @@ flowchart LR
   révision de chaque fait, puis ne conserve que les faits publiés admissibles ;
 - le sitemap charge les présentations publiques en lots et ne construit des
   snapshots que pour les années candidates portées par des faits majeurs ;
+- la sélection des dernières révisions parcourt à rebours l’index composé
+  `factId/revision` existant et évite un tri MongoDB bloquant en mémoire ;
 - aucun balayage de toutes les années et aucune requête par parc ne sont
   introduits ;
 - les sujets masqués avec une politique liée à leur fiche actuelle ne peuvent

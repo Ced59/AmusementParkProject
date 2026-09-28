@@ -48,7 +48,7 @@ public sealed class HistoricalKeyYearFactReader : IHistoricalKeyYearFactReader
         {
             new BsonDocument("$sort", new BsonDocument
             {
-                ["factId"] = 1,
+                ["factId"] = -1,
                 ["revision"] = -1,
             }),
             new BsonDocument("$group", new BsonDocument

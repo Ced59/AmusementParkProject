@@ -10,8 +10,11 @@ public sealed class HistoricalKeyYearFactReaderTests
     public void BuildPipeline_SelectsLatestPublishedDecisionEligibleRevisionsWithinLimit()
     {
         IReadOnlyCollection<BsonDocument> pipeline = HistoricalKeyYearFactReader.BuildPipeline(250);
+        BsonDocument latestRevisionSort = pipeline.First()["$sort"].AsBsonDocument;
         string rendered = string.Join("\n", pipeline.Select(static stage => stage.ToJson()));
 
+        Assert.Equal(-1, latestRevisionSort["factId"].AsInt32);
+        Assert.Equal(-1, latestRevisionSort["revision"].AsInt32);
         Assert.Contains("$group", rendered, StringComparison.Ordinal);
         Assert.Contains("$first", rendered, StringComparison.Ordinal);
         Assert.Contains("Published", rendered, StringComparison.Ordinal);
