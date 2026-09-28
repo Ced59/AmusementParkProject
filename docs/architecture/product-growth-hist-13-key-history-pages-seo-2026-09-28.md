@@ -61,6 +61,9 @@ flowchart LR
   révision de chaque fait, puis ne conserve que les faits publiés admissibles ;
 - le sitemap charge les présentations publiques en lots et ne construit des
   snapshots que pour les années candidates portées par des faits majeurs ;
+- les attractions et zones visibles sont regroupées une seule fois par parc ;
+  leur identité publique inclut le parc propriétaire afin qu’un déplacement ne
+  réactive pas un fait `FollowCurrentSubject` dans son ancien parc ;
 - la sélection des dernières révisions parcourt à rebours l’index composé
   `factId/revision` existant et évite un tri MongoDB bloquant en mémoire ;
 - aucun balayage de toutes les années et aucune requête par parc ne sont
