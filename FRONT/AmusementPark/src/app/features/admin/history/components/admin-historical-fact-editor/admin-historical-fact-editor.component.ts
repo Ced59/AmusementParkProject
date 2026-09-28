@@ -3,8 +3,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { TranslateModule } from '@ngx-translate/core';
 
 import {
+  AdminHistoricalEvidence,
   AdminHistoricalFact,
   AdminHistoricalLocalizedText,
+  AdminHistoricalPeriod,
   AdminHistoricalSource,
   AdminHistoricalSubject,
   HistoricalDateRequest,
@@ -60,7 +62,7 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
 
   protected readonly factTypes = HISTORICAL_FACT_TYPES;
   protected readonly languages = HISTORICAL_LANGUAGE_CODES;
-  protected readonly selectedSourceIds = signal<ReadonlySet<string>>(new Set<string>());
+  protected readonly selectedSourceIds = signal<ReadonlyMap<string, number>>(new Map<string, number>());
   protected readonly contradictingSourceId = signal<string | null>(null);
   protected readonly uncertaintyMissing = signal<boolean>(false);
   protected readonly form = new FormGroup<HistoricalFactForm>({
@@ -98,14 +100,21 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
   }
 
   protected toggleSource(sourceId: string): void {
-    const selected: Set<string> = new Set(this.selectedSourceIds());
+    const selected: Map<string, number> = new Map(this.selectedSourceIds());
     if (selected.has(sourceId)) {
       selected.delete(sourceId);
       if (this.contradictingSourceId() === sourceId) {
         this.contradictingSourceId.set(null);
       }
     } else {
-      selected.add(sourceId);
+      const source: AdminHistoricalSource | undefined = this.sources.find(
+        (candidate: AdminHistoricalSource): boolean => candidate.id === sourceId
+      );
+      if (!source) {
+        return;
+      }
+
+      selected.set(sourceId, source.revision);
     }
 
     this.selectedSourceIds.set(selected);
@@ -151,9 +160,14 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
       return;
     }
 
-    const lifecycleBoundaryMeaning: string | null = this.lifecycleBoundary(value.type);
-    const attributeKind: string | null = this.attributeKind(value.type);
-    const selectedSourceIds: ReadonlySet<string> = this.selectedSourceIds();
+    const preservesFactType: boolean = this.fact?.type === value.type;
+    const lifecycleBoundaryMeaning: string | null = preservesFactType
+      ? this.fact?.lifecycleBoundaryMeaning ?? null
+      : this.lifecycleBoundary(value.type);
+    const attributeKind: string | null = preservesFactType
+      ? this.fact?.attributeKind ?? null
+      : this.attributeKind(value.type);
+    const selectedSourceIds: ReadonlyMap<string, number> = this.selectedSourceIds();
     this.submitted.emit({
       factId: this.fact?.id ?? null,
       request: {
@@ -167,18 +181,18 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
         publicUncertaintyExplanation: explanations,
         lifecycleBoundaryMeaning,
         attributeKind,
-        attributeBoundaryMeaning: attributeKind ? 'FirstDayOfNewValue' : null,
-        sequenceWithinDate: null,
-        sources: this.sources
-          .filter((source: AdminHistoricalSource): boolean => selectedSourceIds.has(source.id))
-          .map((source: AdminHistoricalSource) => ({
-            sourceId: source.id,
-            revision: source.revision,
-            position: this.contradictingSourceId() === source.id ? 'Contradicts' as const : 'Supports' as const
-          })),
+        attributeBoundaryMeaning: preservesFactType
+          ? this.fact?.attributeBoundaryMeaning ?? null
+          : attributeKind ? 'FirstDayOfNewValue' : null,
+        sequenceWithinDate: this.fact?.sequenceWithinDate ?? null,
+        sources: Array.from(selectedSourceIds.entries()).map(([sourceId, revision]: [string, number]) => ({
+          sourceId,
+          revision,
+          position: this.contradictingSourceId() === sourceId ? 'Contradicts' as const : 'Supports' as const
+        })),
         structuredValue: this.optional(value.structuredValue),
         otherTypeLabel: value.type === 'Other' ? this.optional(value.otherTypeLabel) : null,
-        narrativeContentId: null,
+        narrativeContentId: this.fact?.narrativeContentId ?? null,
         reviewNote: this.optional(value.reviewNote)
       }
     });
@@ -226,23 +240,44 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
       uncertaintyPl: explanations['pl'] ?? '',
       uncertaintyPt: explanations['pt'] ?? ''
     });
-    this.selectedSourceIds.set(new Set((fact?.sources ?? []).map((source): string => source.sourceId)));
+    this.selectedSourceIds.set(new Map(
+      (fact?.sources ?? []).map((source: AdminHistoricalEvidence): [string, number] => [source.sourceId, source.revision])
+    ));
     this.contradictingSourceId.set(fact?.sources.find((source): boolean => source.position === 'Contradicts')?.sourceId ?? null);
     this.uncertaintyMissing.set(false);
   }
 
   private buildPeriod(value: ReturnType<HistoricalFactFormGroup['getRawValue']>): HistoricalPeriodRequest | null {
+    if (this.fact && !this.hasPeriodEditorChanged(value, this.fact.period)) {
+      return this.toPeriodRequest(this.fact.period);
+    }
+
+    const originalStartQualifier: string | null = this.resolvePreservedQualifier(
+      this.fact?.period.start?.qualifier ?? null,
+      value.approximate
+    );
     const start: HistoricalDateRequest | null = this.buildDate(
       value.startYear,
       value.startMonth,
       value.startDay,
       value.precision,
-      value.approximate
+      value.approximate,
+      originalStartQualifier
     );
     const end: HistoricalDateRequest | null = value.hasEnd
-      ? this.buildDate(value.endYear, value.endMonth, value.endDay, value.precision, value.approximate)
-      : start;
-    if (!start || !end) {
+      ? this.buildDate(
+          value.endYear,
+          value.endMonth,
+          value.endDay,
+          value.precision,
+          this.resolveEndApproximation(value),
+          this.resolvePreservedQualifier(
+            this.fact?.period.end?.qualifier ?? null,
+            this.resolveEndApproximation(value)
+          )
+        )
+      : this.fact?.period.end === null ? null : start;
+    if (!start || value.hasEnd && !end) {
       return null;
     }
 
@@ -250,11 +285,18 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
       start,
       end,
       startConfidence: value.confidence,
-      endConfidence: value.confidence
+      endConfidence: this.resolveEndConfidence(value)
     };
   }
 
-  private buildDate(year: number | null, month: number | null, day: number | null, precision: 'Year' | 'Month' | 'Day', approximate: boolean): HistoricalDateRequest | null {
+  private buildDate(
+    year: number | null,
+    month: number | null,
+    day: number | null,
+    precision: 'Year' | 'Month' | 'Day',
+    approximate: boolean,
+    qualifier: string | null
+  ): HistoricalDateRequest | null {
     if (!year || precision !== 'Year' && !month || precision === 'Day' && !day) {
       return null;
     }
@@ -265,8 +307,83 @@ export class AdminHistoricalFactEditorComponent implements OnChanges {
       day: precision === 'Day' ? day : null,
       precision,
       isApproximate: approximate,
-      qualifier: null
+      qualifier
     };
+  }
+
+  private hasPeriodEditorChanged(
+    value: ReturnType<HistoricalFactFormGroup['getRawValue']>,
+    period: AdminHistoricalPeriod
+  ): boolean {
+    const controls = this.form.controls;
+    if (
+      controls.precision.dirty
+      || controls.startYear.dirty
+      || controls.startMonth.dirty
+      || controls.startDay.dirty
+      || controls.hasEnd.dirty
+      || controls.endYear.dirty
+      || controls.endMonth.dirty
+      || controls.endDay.dirty
+      || controls.approximate.dirty
+      || controls.confidence.dirty
+    ) {
+      return true;
+    }
+
+    if (!period.start) {
+      return false;
+    }
+
+    const hasDistinctEnd: boolean = !!period.end && !this.sameDate(period.start, period.end);
+    return value.precision !== period.start.precision
+      || value.startYear !== period.start.year
+      || value.startMonth !== period.start.month
+      || value.startDay !== period.start.day
+      || value.hasEnd !== hasDistinctEnd
+      || hasDistinctEnd && (
+        value.endYear !== period.end?.year
+        || value.endMonth !== period.end?.month
+        || value.endDay !== period.end?.day
+      )
+      || value.approximate !== period.start.isApproximate
+      || value.confidence !== period.startConfidence;
+  }
+
+  private sameDate(left: HistoricalDateRequest, right: HistoricalDateRequest): boolean {
+    return left.year === right.year
+      && left.month === right.month
+      && left.day === right.day
+      && left.precision === right.precision
+      && left.isApproximate === right.isApproximate
+      && left.qualifier === right.qualifier;
+  }
+
+  private toPeriodRequest(period: AdminHistoricalPeriod): HistoricalPeriodRequest {
+    return {
+      start: period.start ? { ...period.start } : null,
+      end: period.end ? { ...period.end } : null,
+      startConfidence: period.startConfidence,
+      endConfidence: period.endConfidence
+    };
+  }
+
+  private resolveEndApproximation(value: ReturnType<HistoricalFactFormGroup['getRawValue']>): boolean {
+    const originalPeriod: AdminHistoricalPeriod | undefined = this.fact?.period;
+    return originalPeriod && value.approximate === originalPeriod.start?.isApproximate
+      ? originalPeriod.end?.isApproximate ?? value.approximate
+      : value.approximate;
+  }
+
+  private resolveEndConfidence(value: ReturnType<HistoricalFactFormGroup['getRawValue']>): string {
+    const originalPeriod: AdminHistoricalPeriod | undefined = this.fact?.period;
+    return originalPeriod && value.confidence === originalPeriod.startConfidence
+      ? originalPeriod.endConfidence
+      : value.confidence;
+  }
+
+  private resolvePreservedQualifier(qualifier: string | null, approximate: boolean): string | null {
+    return qualifier === 'Circa' && !approximate ? null : qualifier;
   }
 
   private buildExplanations(value: ReturnType<HistoricalFactFormGroup['getRawValue']>): AdminHistoricalLocalizedText[] {

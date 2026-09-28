@@ -3,12 +3,15 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { TranslateModule } from '@ngx-translate/core';
 
 import {
+  AdminHistoricalEvidence,
   AdminHistoricalLocalizedText,
+  AdminHistoricalPeriod,
   AdminHistoricalRelation,
   AdminHistoricalSource,
   AdminHistoricalSubject,
   HistoricalDateRequest,
   HistoricalFactState,
+  HistoricalPeriodRequest,
   SaveHistoricalRelationRequest
 } from '@app/models/history/admin-historical-workbench.models';
 import { HISTORICAL_LANGUAGE_CODES, HISTORICAL_RELATION_TYPES } from '../../models/admin-historical-workbench-options';
@@ -51,7 +54,7 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
 
   protected readonly relationTypes = HISTORICAL_RELATION_TYPES;
   protected readonly languages = HISTORICAL_LANGUAGE_CODES;
-  protected readonly selectedSourceIds = signal<ReadonlySet<string>>(new Set<string>());
+  protected readonly selectedSourceIds = signal<ReadonlyMap<string, number>>(new Map<string, number>());
   protected readonly contradictingSourceId = signal<string | null>(null);
   protected readonly uncertaintyMissing = signal<boolean>(false);
   protected readonly form = new FormGroup<HistoricalRelationForm>({
@@ -82,14 +85,21 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
   }
 
   protected toggleSource(sourceId: string): void {
-    const selected: Set<string> = new Set(this.selectedSourceIds());
+    const selected: Map<string, number> = new Map(this.selectedSourceIds());
     if (selected.has(sourceId)) {
       selected.delete(sourceId);
       if (this.contradictingSourceId() === sourceId) {
         this.contradictingSourceId.set(null);
       }
     } else {
-      selected.add(sourceId);
+      const source: AdminHistoricalSource | undefined = this.sources.find(
+        (candidate: AdminHistoricalSource): boolean => candidate.id === sourceId
+      );
+      if (!source) {
+        return;
+      }
+
+      selected.set(sourceId, source.revision);
     }
 
     this.selectedSourceIds.set(selected);
@@ -134,7 +144,7 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
       isApproximate: value.approximate,
       qualifier: null
     };
-    const selected: ReadonlySet<string> = this.selectedSourceIds();
+    const selected: ReadonlyMap<string, number> = this.selectedSourceIds();
     this.submitted.emit({
       relationId: this.relation?.id ?? null,
       request: {
@@ -145,21 +155,14 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
         targetSubjectId: targetSubject.id,
         type: value.type,
         direction: value.direction,
-        period: {
-          start: date,
-          end: date,
-          startConfidence: value.confidence,
-          endConfidence: value.confidence
-        },
+        period: this.buildPeriod(value, date),
         state: value.state,
         publicUncertaintyExplanation: explanations,
-        sources: this.sources
-          .filter((source: AdminHistoricalSource): boolean => selected.has(source.id))
-          .map((source: AdminHistoricalSource) => ({
-            sourceId: source.id,
-            revision: source.revision,
-            position: this.contradictingSourceId() === source.id ? 'Contradicts' as const : 'Supports' as const
-          })),
+        sources: Array.from(selected.entries()).map(([sourceId, revision]: [string, number]) => ({
+          sourceId,
+          revision,
+          position: this.contradictingSourceId() === sourceId ? 'Contradicts' as const : 'Supports' as const
+        })),
         editorialNote: this.optional(value.editorialNote),
         reviewNote: this.optional(value.reviewNote)
       }
@@ -195,7 +198,9 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
       uncertaintyPl: explanations['pl'] ?? '',
       uncertaintyPt: explanations['pt'] ?? ''
     });
-    this.selectedSourceIds.set(new Set((relation?.sources ?? []).map((source): string => source.sourceId)));
+    this.selectedSourceIds.set(new Map(
+      (relation?.sources ?? []).map((source: AdminHistoricalEvidence): [string, number] => [source.sourceId, source.revision])
+    ));
     this.contradictingSourceId.set(relation?.sources.find((source): boolean => source.position === 'Contradicts')?.sourceId ?? null);
     this.uncertaintyMissing.set(false);
   }
@@ -208,6 +213,65 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
     return this.languages
       .map((languageCode: string): AdminHistoricalLocalizedText => ({ languageCode, value: values[languageCode]?.trim() ?? '' }))
       .filter((item: AdminHistoricalLocalizedText): boolean => item.value.length > 0);
+  }
+
+  private buildPeriod(
+    value: ReturnType<HistoricalRelationFormGroup['getRawValue']>,
+    newRelationDate: HistoricalDateRequest
+  ): HistoricalPeriodRequest {
+    const period: AdminHistoricalPeriod | undefined = this.relation?.period;
+    if (!period) {
+      return {
+        start: newRelationDate,
+        end: newRelationDate,
+        startConfidence: value.confidence,
+        endConfidence: value.confidence
+      };
+    }
+
+    const startChanged: boolean = this.form.controls.year.dirty
+      || this.form.controls.approximate.dirty
+      || this.form.controls.confidence.dirty
+      || value.year !== period.start?.year
+      || value.approximate !== period.start?.isApproximate
+      || value.confidence !== period.startConfidence;
+    if (!startChanged || !period.start) {
+      return this.toPeriodRequest(period);
+    }
+
+    const updatedStart: HistoricalDateRequest = {
+      ...period.start,
+      year: value.year,
+      isApproximate: value.approximate,
+      qualifier: period.start.qualifier === 'Circa' && !value.approximate
+        ? null
+        : period.start.qualifier
+    };
+    const wasPoint: boolean = !!period.end && this.sameDate(period.start, period.end);
+    return {
+      start: updatedStart,
+      end: wasPoint ? { ...updatedStart } : period.end ? { ...period.end } : null,
+      startConfidence: value.confidence,
+      endConfidence: wasPoint ? value.confidence : period.endConfidence
+    };
+  }
+
+  private sameDate(left: HistoricalDateRequest, right: HistoricalDateRequest): boolean {
+    return left.year === right.year
+      && left.month === right.month
+      && left.day === right.day
+      && left.precision === right.precision
+      && left.isApproximate === right.isApproximate
+      && left.qualifier === right.qualifier;
+  }
+
+  private toPeriodRequest(period: AdminHistoricalPeriod): HistoricalPeriodRequest {
+    return {
+      start: period.start ? { ...period.start } : null,
+      end: period.end ? { ...period.end } : null,
+      startConfidence: period.startConfidence,
+      endConfidence: period.endConfidence
+    };
   }
 
   private resolveSubject(key: string): AdminHistoricalSubject | undefined {
