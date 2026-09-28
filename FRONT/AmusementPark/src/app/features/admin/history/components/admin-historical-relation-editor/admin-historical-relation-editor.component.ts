@@ -263,11 +263,12 @@ export class AdminHistoricalRelationEditorComponent implements OnChanges {
         : period.start.qualifier
     };
     const wasPoint: boolean = !!period.end && this.sameDate(period.start, period.end);
+    const hadSharedConfidence: boolean = period.startConfidence === period.endConfidence;
     return {
       start: updatedStart,
       end: wasPoint ? { ...updatedStart } : period.end ? { ...period.end } : null,
       startConfidence: value.confidence,
-      endConfidence: wasPoint ? value.confidence : period.endConfidence
+      endConfidence: wasPoint && hadSharedConfidence ? value.confidence : period.endConfidence
     };
   }
 

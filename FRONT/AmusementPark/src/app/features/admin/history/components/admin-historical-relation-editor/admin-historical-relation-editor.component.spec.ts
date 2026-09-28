@@ -99,5 +99,38 @@ describe('AdminHistoricalRelationEditorComponent', () => {
     expect(request!.sources).toEqual(relation.sources);
     expect(request!.sourceSubjectContextParkId).toBe('park-1');
     expect(request!.targetSubjectContextParkId).toBe('park-2');
+
+    const pointDate = {
+      year: 2005,
+      month: 6,
+      day: 1,
+      precision: 'Day' as const,
+      isApproximate: false,
+      qualifier: null
+    };
+    const pointRelation: AdminHistoricalRelation = {
+      ...relation,
+      period: {
+        start: pointDate,
+        end: { ...pointDate },
+        startConfidence: 'Confirmed',
+        endConfidence: 'Disputed'
+      }
+    };
+    component.relation = pointRelation;
+    component.ngOnChanges({ relation: new SimpleChange(relation, pointRelation, false) });
+    request = null;
+    const editor = component as unknown as {
+      form: { controls: { year: { setValue(value: number): void; markAsDirty(): void } } };
+      submit(): void;
+    };
+    editor.form.controls.year.setValue(2006);
+    editor.form.controls.year.markAsDirty();
+    editor.submit();
+
+    expect(request).not.toBeNull();
+    expect(request!.period.start?.year).toBe(2006);
+    expect(request!.period.end?.year).toBe(2006);
+    expect(request!.period.endConfidence).toBe('Disputed');
   });
 });

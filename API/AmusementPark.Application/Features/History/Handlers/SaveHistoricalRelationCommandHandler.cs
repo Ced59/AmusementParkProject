@@ -99,6 +99,15 @@ public sealed class SaveHistoricalRelationCommandHandler :
                     draft.TargetSubjectType,
                     draft.TargetSubjectId,
                     draft.TargetSubjectContextParkId);
+            if (previous is null
+                && !BelongsToPark(sourceSubject, scope.ParkId)
+                && !BelongsToPark(targetSubject, scope.ParkId))
+            {
+                throw new HistoricalPersistenceValidationException(
+                    HistoricalPersistenceErrorCodes.InvalidIdentifier,
+                    "A historical relation created through a park must touch that park.");
+            }
+
             EnsureSubjectUnchanged(
                 sourceSubject,
                 draft.SourceSubjectType,

@@ -140,14 +140,121 @@ public sealed class SaveHistoricalRelationCommandHandlerTests
         sources.VerifyAll();
     }
 
-    private static HistoricalSubject CreateSubject(string id)
+    [Fact]
+    public async Task HandleAsync_WhenNewRelationDoesNotTouchRoutedPark_ShouldRejectCreation()
+    {
+        Park park = PublicParkHistoryTestData.CreatePark(false);
+        HistoricalSubject local = CreateSubject("item-local");
+        HistoricalSubject externalLeft = CreateSubject("item-external-left", "park-2");
+        HistoricalSubject externalRight = CreateSubject("item-external-right", "park-3");
+        Guid sourceId = Guid.NewGuid();
+        HistoricalRelation leftLink = CreatePublishedRelation(
+            local,
+            externalLeft,
+            HistoricalRelationType.ReplacedBy,
+            HistoricalRelationDirection.Directed,
+            sourceId);
+        HistoricalRelation rightLink = CreatePublishedRelation(
+            local,
+            externalRight,
+            HistoricalRelationType.ReplacedBy,
+            HistoricalRelationDirection.Directed,
+            sourceId);
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> zones = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IHistoricalFactRepository> facts = new Mock<IHistoricalFactRepository>(MockBehavior.Strict);
+        Mock<IHistoricalRelationRepository> relations =
+            new Mock<IHistoricalRelationRepository>(MockBehavior.Strict);
+        Mock<IHistoricalSourceRepository> sources =
+            new Mock<IHistoricalSourceRepository>(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetByIdAsync(
+                park.Id,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        items.Setup(repository => repository.GetByParkIdAsync(
+                park.Id,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                PublicParkHistoryTestData.CreateParkItem(local.Id, local.HistoricalLabel, false),
+            });
+        zones.Setup(repository => repository.GetByParkIdAsync(
+                park.Id,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+        facts.Setup(repository => repository.GetLatestRevisionsForParkAsync(
+                park.Id,
+                It.IsAny<IReadOnlyCollection<HistoricalSubject>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<HistoricalFact>());
+        relations.Setup(repository => repository.GetLatestRevisionsForParkAsync(
+                park.Id,
+                It.IsAny<IReadOnlyCollection<HistoricalSubjectKey>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { leftLink, rightLink });
+        HistoricalParkEditorialScopeLoader scopeLoader = new HistoricalParkEditorialScopeLoader(
+            parks.Object,
+            items.Object,
+            zones.Object);
+        SaveHistoricalRelationCommandHandler handler = new SaveHistoricalRelationCommandHandler(
+            scopeLoader,
+            new HistoricalParkEditorialSubjectResolver(facts.Object, relations.Object),
+            new HistoricalLineagePublicationValidator(relations.Object),
+            relations.Object,
+            sources.Object,
+            new FixedHistoryEditorialTimeProvider(Now));
+        HistoricalPeriodInput period = new HistoricalPeriodInput(
+            new HistoricalDateInput(2001, null, null, HistoryDatePrecision.Year, false, null),
+            new HistoricalDateInput(2001, null, null, HistoryDatePrecision.Year, false, null),
+            PeriodBoundaryConfidence.Confirmed,
+            PeriodBoundaryConfidence.Confirmed);
+        HistoricalRelationDraftInput draft = new HistoricalRelationDraftInput(
+            externalLeft.Type,
+            externalLeft.Id,
+            externalRight.Type,
+            externalRight.Id,
+            HistoricalRelationType.ReplacedBy,
+            HistoricalRelationDirection.Directed,
+            period,
+            HistoricalFactState.Unverified,
+            Array.Empty<HistoricalLocalizedText>(),
+            Array.Empty<HistoricalEvidenceSourceInput>(),
+            null,
+            externalLeft.ContextParkId,
+            externalRight.ContextParkId);
+
+        ApplicationResult<HistoricalEditorialMutationResult> result = await handler.HandleAsync(
+            new SaveHistoricalRelationCommand(
+                park.Id,
+                null,
+                null,
+                draft,
+                "admin-1",
+                null));
+
+        Assert.False(result.IsSuccess);
+        Assert.Contains(result.Errors, static error => error.Code == "history.editorial.invalid");
+        parks.VerifyAll();
+        items.VerifyAll();
+        zones.VerifyAll();
+        facts.VerifyAll();
+        relations.VerifyAll();
+        sources.VerifyNoOtherCalls();
+    }
+
+    private static HistoricalSubject CreateSubject(
+        string id,
+        string contextParkId = "park-1")
     {
         return new HistoricalSubject(
             HistoricalSubjectType.ParkItem,
             id,
             id,
             HistoricalSubjectPublicationPolicy.FollowCurrentSubject,
-            "park-1");
+            contextParkId);
     }
 
     private static HistoricalRelation CreatePublishedRelation(
