@@ -53,11 +53,30 @@ internal static class ThemeParksWikiLiveDataNormalizer
         return observations.AsReadOnly();
     }
 
+    internal static bool HasDuplicateProperties(JsonElement value)
+    {
+        if (value.ValueKind != JsonValueKind.Object)
+        {
+            return false;
+        }
+
+        HashSet<string> propertyNames = new HashSet<string>(StringComparer.Ordinal);
+        foreach (JsonProperty property in value.EnumerateObject())
+        {
+            if (!propertyNames.Add(property.Name))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private static ExternalLiveObservation? NormalizeItem(
         JsonElement item,
         ICollection<LiveProviderDiagnostic> diagnostics)
     {
-        if (item.ValueKind != JsonValueKind.Object)
+        if (item.ValueKind != JsonValueKind.Object || HasDuplicateProperties(item))
         {
             AddDiagnostic(diagnostics, LiveProviderDiagnosticCodes.InvalidObservation);
             return null;
@@ -195,7 +214,9 @@ internal static class ThemeParksWikiLiveDataNormalizer
                 continue;
             }
 
-            if (!seenKinds.Add(kind) || queueProperty.Value.ValueKind != JsonValueKind.Object)
+            if (!seenKinds.Add(kind)
+                || queueProperty.Value.ValueKind != JsonValueKind.Object
+                || HasDuplicateProperties(queueProperty.Value))
             {
                 AddDiagnostic(
                     diagnostics,
@@ -588,6 +609,7 @@ internal static class ThemeParksWikiLiveDataNormalizer
         }
 
         return price.ValueKind == JsonValueKind.Object
+            && !HasDuplicateProperties(price)
             && price.TryGetProperty("amount", out JsonElement amount)
             && (amount.ValueKind == JsonValueKind.Null
                 || amount.ValueKind == JsonValueKind.Number && amount.TryGetInt64(out long _))

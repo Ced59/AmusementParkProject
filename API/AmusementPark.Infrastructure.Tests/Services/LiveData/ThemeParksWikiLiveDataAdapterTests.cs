@@ -426,6 +426,72 @@ public sealed class ThemeParksWikiLiveDataAdapterTests
         Assert.Null(result.EntityTag);
     }
 
+    [Fact]
+    public async Task FetchLatestAsync_WhenResponseRootContainsDuplicateProperties_ShouldRejectPayload()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"id\":\"other-park\",\"liveData\":[]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Equal(LiveProviderReadDisposition.InvalidPayload, result.Disposition);
+        Assert.Empty(result.Observations);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenObservationContainsDuplicateScalar_ShouldRejectObservation()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"liveData\":[{"
+                + "\"id\":\"ride-a\",\"id\":\"ride-b\","
+                + "\"name\":\"Ambiguous ride\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:00:00Z\""
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        Assert.Empty(result.Observations);
+        Assert.Equal(
+            LiveProviderDiagnosticCodes.InvalidObservation,
+            Assert.Single(result.Diagnostics).Code);
+    }
+
+    [Fact]
+    public async Task FetchLatestAsync_WhenQueueContainsDuplicateScalar_ShouldRejectQueue()
+    {
+        ThemeParksWikiTestHttpMessageHandler handler = new ThemeParksWikiTestHttpMessageHandler
+        {
+            Content = "{\"id\":\"park-root\",\"liveData\":[{"
+                + "\"id\":\"ride-a\","
+                + "\"name\":\"Ambiguous queue\","
+                + "\"entityType\":\"ATTRACTION\","
+                + "\"status\":\"OPERATING\","
+                + "\"lastUpdated\":\"2026-09-28T10:00:00Z\","
+                + "\"queue\":{\"STANDBY\":{\"waitTime\":5,\"waitTime\":20}}"
+                + "}]}",
+        };
+
+        LiveProviderReadResult result = await CreateAdapter(handler).FetchLatestAsync(
+            new LiveProviderReadRequest("park-root"),
+            CancellationToken.None);
+
+        ExternalLiveObservation observation = Assert.Single(result.Observations);
+        Assert.Empty(observation.Queues);
+        Assert.Equal(
+            LiveProviderDiagnosticCodes.InvalidQueueValue,
+            Assert.Single(result.Diagnostics).Code);
+    }
+
     [Theory]
     [InlineData("{}")]
     [InlineData("{\"liveData\":null}")]

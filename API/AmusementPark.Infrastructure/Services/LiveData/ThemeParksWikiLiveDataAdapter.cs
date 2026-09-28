@@ -141,6 +141,7 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
             {
                 JsonElement root = providerDocument.RootElement;
                 if (root.ValueKind != JsonValueKind.Object
+                    || ThemeParksWikiLiveDataNormalizer.HasDuplicateProperties(root)
                     || !root.TryGetProperty("id", out JsonElement rootId)
                     || rootId.ValueKind != JsonValueKind.String
                     || !string.Equals(
@@ -241,15 +242,8 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
 
     private static string? NormalizeResponseEntityTag(string? entityTag)
     {
-        if (string.IsNullOrWhiteSpace(entityTag))
-        {
-            return null;
-        }
-
-        string normalizedEntityTag = entityTag.Trim();
-        return normalizedEntityTag.Length <= LiveProviderReadRequest.MaximumEntityTagLength
-            && !normalizedEntityTag.Any(char.IsControl)
-                ? normalizedEntityTag
-                : null;
+        return LiveProviderEntityTag.TryNormalize(entityTag, out string? normalizedEntityTag)
+            ? normalizedEntityTag
+            : null;
     }
 }

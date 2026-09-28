@@ -28,6 +28,13 @@ public sealed class LiveProviderReadResult
             throw new ArgumentOutOfRangeException(nameof(retryAfter));
         }
 
+        if (!LiveProviderEntityTag.TryNormalize(entityTag, out string? normalizedEntityTag))
+        {
+            throw new ArgumentException(
+                "A provider entity tag must be a concrete strong or weak HTTP entity tag.",
+                nameof(entityTag));
+        }
+
         string? normalizedPayloadSha256 = NormalizeHash(payloadSha256);
         List<ExternalLiveObservation> normalizedObservations = observations?.ToList()
             ?? new List<ExternalLiveObservation>();
@@ -43,7 +50,7 @@ public sealed class LiveProviderReadResult
         this.ReceivedAtUtc = receivedAtUtc;
         this.Observations = normalizedObservations.AsReadOnly();
         this.Diagnostics = normalizedDiagnostics.AsReadOnly();
-        this.EntityTag = string.IsNullOrWhiteSpace(entityTag) ? null : entityTag.Trim();
+        this.EntityTag = normalizedEntityTag;
         this.RetryAfter = retryAfter;
         this.PayloadSha256 = normalizedPayloadSha256;
     }

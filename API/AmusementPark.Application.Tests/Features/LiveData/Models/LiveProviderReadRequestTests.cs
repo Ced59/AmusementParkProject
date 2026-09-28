@@ -34,4 +34,25 @@ public sealed class LiveProviderReadRequestTests
     {
         Assert.Throws<ArgumentException>(() => new LiveProviderReadRequest(identifier));
     }
+
+    [Theory]
+    [InlineData("\"strong-v1\"")]
+    [InlineData("W/\"weak-v1\"")]
+    public void Constructor_WhenEntityTagIsConcrete_ShouldAcceptValue(string entityTag)
+    {
+        LiveProviderReadRequest request = new LiveProviderReadRequest("park-root", entityTag);
+
+        Assert.Equal(entityTag, request.EntityTag);
+    }
+
+    [Theory]
+    [InlineData("*")]
+    [InlineData("weak-v1")]
+    [InlineData("w/\"lowercase-weak-prefix\"")]
+    [InlineData("\"embedded\"quote\"")]
+    public void Constructor_WhenEntityTagIsNotConcrete_ShouldRejectValue(string entityTag)
+    {
+        Assert.Throws<ArgumentException>(() =>
+            new LiveProviderReadRequest("park-root", entityTag));
+    }
 }
