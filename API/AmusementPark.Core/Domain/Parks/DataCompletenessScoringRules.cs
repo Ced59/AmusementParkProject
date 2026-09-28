@@ -281,20 +281,21 @@ public static class DataCompletenessScoringRules
         ArgumentNullException.ThrowIfNull(publicTexts);
         ArgumentNullException.ThrowIfNull(entityNames);
 
-        List<LocalizedText> populatedPublicTexts = publicTexts
+        List<IndexedPublicText> populatedPublicTexts = publicTexts
             .Where(static text => !string.IsNullOrWhiteSpace(text.Value))
+            .Select(static (text, index) => new IndexedPublicText(index + 1, text))
             .ToList();
-        for (int index = 0; index < populatedPublicTexts.Count; index += 1)
+        foreach (IndexedPublicText indexedPublicText in populatedPublicTexts)
         {
-            LocalizedText publicText = populatedPublicTexts[index];
+            LocalizedText publicText = indexedPublicText.Text;
             if (SingleOccurrenceFormulaRegexes.Any(regex => regex.IsMatch(NormalizePublicText(publicText.Value!))))
             {
                 return new FormulaicPublicTextIssue
                 {
                     MatchType = "single-formula",
                     LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
-                    FirstDocumentIndex = index + 1,
-                    SecondDocumentIndex = index + 1,
+                    FirstDocumentIndex = indexedPublicText.Index,
+                    SecondDocumentIndex = indexedPublicText.Index,
                 };
             }
         }
@@ -308,19 +309,18 @@ public static class DataCompletenessScoringRules
             .ToList();
         Dictionary<string, int> firstDocumentBySentence = new Dictionary<string, int>(StringComparer.Ordinal);
         Dictionary<string, int> firstDocumentByLongSequence = new Dictionary<string, int>(StringComparer.Ordinal);
-        int documentIndex = 0;
 
-        foreach (IGrouping<string, LocalizedText> languageGroup in populatedPublicTexts
+        foreach (IGrouping<string, IndexedPublicText> languageGroup in populatedPublicTexts
             .GroupBy(
-                static text => string.IsNullOrWhiteSpace(text.LanguageCode) ? "und" : text.LanguageCode.Trim(),
+                static indexedText => NormalizeLanguageCode(indexedText.Text.LanguageCode),
                 StringComparer.OrdinalIgnoreCase))
         {
             firstDocumentBySentence.Clear();
             firstDocumentByLongSequence.Clear();
 
-            foreach (LocalizedText publicText in languageGroup)
+            foreach (IndexedPublicText indexedPublicText in languageGroup)
             {
-                documentIndex += 1;
+                LocalizedText publicText = indexedPublicText.Text;
                 string decodedValue = WebUtility.HtmlDecode(publicText.Value ?? string.Empty);
                 string withBoundaries = HtmlBlockBoundaryRegex.Replace(decodedValue, ". ");
                 string withoutHtml = HtmlTagRegex.Replace(withBoundaries, " ");
@@ -346,7 +346,7 @@ public static class DataCompletenessScoringRules
                     int? firstSentenceDocumentIndex = FindFirstDocumentIndex(
                         firstDocumentBySentence,
                         sentenceFingerprint,
-                        documentIndex);
+                        indexedPublicText.Index);
                     if (firstSentenceDocumentIndex.HasValue)
                     {
                         return new FormulaicPublicTextIssue
@@ -354,7 +354,7 @@ public static class DataCompletenessScoringRules
                             MatchType = "sentence",
                             LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
                             FirstDocumentIndex = firstSentenceDocumentIndex.Value,
-                            SecondDocumentIndex = documentIndex,
+                            SecondDocumentIndex = indexedPublicText.Index,
                         };
                     }
 
@@ -365,7 +365,7 @@ public static class DataCompletenessScoringRules
                         int? firstSequenceDocumentIndex = FindFirstDocumentIndex(
                             firstDocumentByLongSequence,
                             sequenceFingerprint,
-                            documentIndex);
+                            indexedPublicText.Index);
                         if (firstSequenceDocumentIndex.HasValue)
                         {
                             return new FormulaicPublicTextIssue
@@ -373,7 +373,7 @@ public static class DataCompletenessScoringRules
                                 MatchType = "long-sequence",
                                 LanguageCode = NormalizeLanguageCode(publicText.LanguageCode),
                                 FirstDocumentIndex = firstSequenceDocumentIndex.Value,
-                                SecondDocumentIndex = documentIndex,
+                                SecondDocumentIndex = indexedPublicText.Index,
                             };
                         }
                     }
@@ -409,4 +409,6 @@ public static class DataCompletenessScoringRules
         string withoutHtml = HtmlTagRegex.Replace(decodedValue, " ");
         return WhitespaceRegex.Replace(withoutHtml, " ").Trim();
     }
+
+    private sealed record IndexedPublicText(int Index, LocalizedText Text);
 }

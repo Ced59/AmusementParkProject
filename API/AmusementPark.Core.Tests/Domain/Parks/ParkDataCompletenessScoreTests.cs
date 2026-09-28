@@ -167,7 +167,7 @@ public sealed class ParkDataCompletenessScoreTests
         Assert.Equal("long-sequence", issue.MatchType);
         Assert.Equal("fr", issue.LanguageCode);
         Assert.Equal(1, issue.FirstDocumentIndex);
-        Assert.Equal(2, issue.SecondDocumentIndex);
+        Assert.Equal(3, issue.SecondDocumentIndex);
     }
 
     [Fact]
