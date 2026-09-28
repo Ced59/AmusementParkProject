@@ -414,6 +414,23 @@ describe('SeoService', () => {
     );
   });
 
+  it.each([
+    ['fr', 'Starfish était un manège circulaire.'],
+    ['de', 'Starfish war ein Rundfahrgeschäft.']
+  ])('extracts the %s park item description from prose without repeating its heading', (language, prose) => {
+    const detail: ParkItemDetailViewModel = buildParkItemDetail({
+      name: 'Starfish',
+      description: `<h2>Starfish</h2><p>${prose}</p>`
+    });
+
+    service.applyParkItemDetailSeo(detail, language, `/${language}/park/park-1/demo/item/item-1/starfish`);
+
+    expect(readMetaContent('meta[name="description"]')).toBe(prose);
+    expect(readMetaContent('meta[property="og:description"]')).toBe(prose);
+    expect(readMetaContent('meta[name="twitter:description"]')).toBe(prose);
+    expect(readJsonLdScripts().find(value => value['name'] === 'Starfish')?.['description']).toBe(prose);
+  });
+
   it.each(['Planned', 'UnderConstruction', 'Cancelled'] as const)('keeps a %s park item generic even when its category describes a business', parkStatus => {
     const detail: ParkItemDetailViewModel = buildParkItemDetail({
       category: 'Hotel',

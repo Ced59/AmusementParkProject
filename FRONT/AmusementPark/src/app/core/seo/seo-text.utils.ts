@@ -8,6 +8,13 @@ export function normalizeSeoText(value: string | null | undefined, fallback: str
   return normalizedValue;
 }
 
+export function normalizeSeoDescription(value: string | null | undefined, fallback: string): string {
+  const body: string | undefined = value?.replace(/<h([1-6])\b[^>]*>[\s\S]*?<\/h\1\s*>/gi, ' ');
+  const normalizedBody: string = normalizeSeoText(body, '');
+
+  return normalizedBody || normalizeSeoText(value, fallback);
+}
+
 export function truncateSeoText(value: string, maxLength: number): string {
   if (value.length <= maxLength) {
     return value;
