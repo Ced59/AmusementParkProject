@@ -89,6 +89,10 @@ même source. L'acquisition atomique n'est possible que si :
 - le circuit n'est plus ouvert ;
 - aucun lease valide n'existe.
 
+L'heure est relue après l'acquisition afin qu'un accès Mongo chevauchant une
+frontière d'ouverture ou de fermeture n'autorise pas un appel hors fenêtre et
+ne reporte pas non plus à tort une collecte devenue autorisée.
+
 Le lease dure moins que l'intervalle minimal de collecte. La clôture vérifie le
 propriétaire, le jeton et l'expiration : un ancien worker ne peut donc pas écraser
 l'état d'un successeur après une pause ou un redémarrage. L'acquisition avance

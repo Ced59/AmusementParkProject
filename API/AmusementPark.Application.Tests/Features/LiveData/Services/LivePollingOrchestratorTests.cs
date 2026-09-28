@@ -91,6 +91,64 @@ public sealed class LivePollingOrchestratorTests
     }
 
     [Fact]
+    public async Task ExecuteAsync_WhenLeaseAcquisitionCrossesClosingTime_ShouldUseFreshTime()
+    {
+        DateTime requestedAtUtc = new DateTime(2026, 9, 29, 22, 59, 59, DateTimeKind.Utc);
+        DateTime acquiredAtUtc = new DateTime(2026, 9, 29, 23, 0, 0, DateTimeKind.Utc);
+        LivePollingLeaseRequest? savedRequest = null;
+        LivePollingCompletion? savedCompletion = null;
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease();
+        repository
+            .Setup(value => value.TryAcquireAsync(
+                It.IsAny<LivePollingLeaseRequest>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingLeaseRequest, CancellationToken>(
+                (request, _) => savedRequest = request)
+            .ReturnsAsync(new LivePollingLease(
+                SourceId,
+                "entity-1",
+                "worker-1",
+                "lease-1",
+                null,
+                0,
+                null));
+        repository
+            .Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingCompletion, CancellationToken>(
+                (completion, _) => savedCompletion = completion)
+            .ReturnsAsync(true);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
+        timeProvider
+            .SetupSequence(static value => value.GetUtcNow())
+            .Returns(new DateTimeOffset(requestedAtUtc))
+            .Returns(new DateTimeOffset(acquiredAtUtc));
+        LivePollingOrchestrator orchestrator = new LivePollingOrchestrator(
+            new[] { adapter.Object },
+            repository.Object,
+            timeProvider.Object,
+            static () => 0);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.OutsideActiveWindow, result.Disposition);
+        Assert.NotNull(savedRequest);
+        Assert.Equal(requestedAtUtc, savedRequest.NowUtc);
+        Assert.NotNull(savedCompletion);
+        Assert.Equal(acquiredAtUtc, savedCompletion.CompletedAtUtc);
+        Assert.Equal(
+            new DateTime(2026, 9, 30, 6, 0, 0, DateTimeKind.Utc),
+            savedCompletion.NextAttemptAtUtc);
+        adapter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task ExecuteAsync_AfterSuccess_ShouldForwardEntityTagAndResetSchedule()
     {
         Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease(

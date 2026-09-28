@@ -42,13 +42,13 @@ public sealed class LivePollingOrchestrator
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(target);
-        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        DateTime acquisitionRequestedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         LivePollingLease? lease = await this.stateRepository.TryAcquireAsync(
             new LivePollingLeaseRequest(
                 target.SourceId,
                 target.ExternalEntityId,
                 leaseOwner,
-                nowUtc,
+                acquisitionRequestedAtUtc,
                 leaseDuration,
                 target.Policy.PollingInterval),
             cancellationToken);
@@ -57,14 +57,15 @@ public sealed class LivePollingOrchestrator
             return new LivePollingExecutionResult(LivePollingExecutionDisposition.NotDue);
         }
 
+        DateTime executionStartedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         TimeSpan jitter = this.CreateJitter(target.MaximumJitter);
-        if (!target.ActiveWindow.Contains(nowUtc))
+        if (!target.ActiveWindow.Contains(executionStartedAtUtc))
         {
-            DateTime nextOpeningUtc = target.ActiveWindow.GetNextOpeningUtc(nowUtc).Add(jitter);
+            DateTime nextOpeningUtc = target.ActiveWindow.GetNextOpeningUtc(executionStartedAtUtc).Add(jitter);
             LivePollingCompletion outsideWindow = new LivePollingCompletion(
                 lease,
                 LivePollingCompletionDisposition.OutsideActiveWindow,
-                nowUtc,
+                executionStartedAtUtc,
                 nextOpeningUtc,
                 lease.ConsecutiveFailures,
                 lease.CircuitOpenUntilUtc,
@@ -79,7 +80,12 @@ public sealed class LivePollingOrchestrator
             candidate => candidate.SourceId == target.SourceId);
         if (adapter is null)
         {
-            return await this.CompleteFailureAsync(target, lease, nowUtc, jitter, cancellationToken);
+            return await this.CompleteFailureAsync(
+                target,
+                lease,
+                executionStartedAtUtc,
+                jitter,
+                cancellationToken);
         }
 
         LiveProviderReadResult providerResult;
@@ -95,7 +101,12 @@ public sealed class LivePollingOrchestrator
         }
         catch (Exception)
         {
-            return await this.CompleteFailureAsync(target, lease, nowUtc, jitter, cancellationToken);
+            return await this.CompleteFailureAsync(
+                target,
+                lease,
+                executionStartedAtUtc,
+                jitter,
+                cancellationToken);
         }
 
         return await this.CompleteProviderResultAsync(
