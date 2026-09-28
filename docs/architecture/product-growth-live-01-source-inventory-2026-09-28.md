@@ -34,17 +34,19 @@ reste une surface du produit destinée aux visiteurs et ne constitue pas un
 ## 2. Sources officielles examinées
 
 Les pages suivantes ont été relues le 28 septembre 2026 à 15:47 UTC. Les empreintes
-portent sur les réponses UTF-8 reçues ce jour ; elles permettent de détecter une
-modification lors de la prochaine revue, sans prétendre remplacer le texte
-contractuel publié par son propriétaire.
+portent sur les réponses UTF-8 reçues ce jour. Les deux documents contractuels qui
+fondent l'autorisation et les quotas ont aussi été enregistrés dans Internet
+Archive. Leur contenu brut archivé produit exactement la même empreinte que la
+réponse contrôlée : la preuve reste donc relisible si la page courante change ou
+disparaît.
 
-| Document | URL canonique | SHA-256 observé |
-|---|---|---|
-| Conditions d'utilisation | <https://www.themeparks.wiki/terms> | `9de79351b8dd76118213d4ab41e5d50063a329235f68da5a5a4c62261440916d` |
-| Offres et quotas | <https://www.themeparks.wiki/pricing> | `b11570d57f5a95c8f2d1feabe32984c7929a901539093162f9572317bffd39e6` |
-| Fiabilité | <https://www.themeparks.wiki/reliability> | `53a6d1d17c19533cc8acf11f7d1c263b4fa9171f9afb1702df9cd42831b2d2c0` |
-| Couverture | <https://www.themeparks.wiki/coverage> | `04b4c8cfc68fe5e9e8eddddf11fb8301ac4d84cc7520e6cdd427885eb2d5a867` |
-| Contrat OpenAPI v1 | <https://api.themeparks.wiki/docs/v1.json> | `9be6d30cb9e43ffcfb9bb225af873a2850bbaf87dd6a9f465225e6b7c3540502` |
+| Document | URL canonique | Archive immuable | SHA-256 observé |
+|---|---|---|---|
+| Conditions d'utilisation | <https://www.themeparks.wiki/terms> | [28 septembre 2026, 15:55:47 UTC](https://web.archive.org/web/20260928155547id_/https://www.themeparks.wiki/terms) | `9de79351b8dd76118213d4ab41e5d50063a329235f68da5a5a4c62261440916d` |
+| Offres et quotas | <https://www.themeparks.wiki/pricing> | [28 septembre 2026, 15:56:05 UTC](https://web.archive.org/web/20260928155605id_/https://www.themeparks.wiki/pricing) | `b11570d57f5a95c8f2d1feabe32984c7929a901539093162f9572317bffd39e6` |
+| Fiabilité | <https://www.themeparks.wiki/reliability> | Référence courante, non contractuelle | `53a6d1d17c19533cc8acf11f7d1c263b4fa9171f9afb1702df9cd42831b2d2c0` |
+| Couverture | <https://www.themeparks.wiki/coverage> | Référence courante, variable par nature | `04b4c8cfc68fe5e9e8eddddf11fb8301ac4d84cc7520e6cdd427885eb2d5a867` |
+| Contrat OpenAPI v1 | <https://api.themeparks.wiki/docs/v1.json> | Version technique identifiée ci-dessous | `9be6d30cb9e43ffcfb9bb225af873a2850bbaf87dd6a9f465225e6b7c3540502` |
 
 Version OpenAPI observée : `1.14.0+c249aaa`.
 
