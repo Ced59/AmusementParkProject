@@ -54,6 +54,15 @@
       "closed": "Cerrada",
       "unknown": "Disponibilidad desconocida"
     },
+    "queueDetails": {
+      "returnWindow": "Franja {{start}}–{{end}}",
+      "returnFrom": "Regreso desde las {{time}}",
+      "returnUntil": "Regreso antes de las {{time}}",
+      "groupRange": "Grupos {{start}}–{{end}}",
+      "group": "Grupo {{value}}",
+      "nextAllocation": "Próxima asignación a las {{time}}",
+      "price": "Acceso de pago: {{price}}"
+    },
     "age": {
       "unknown": "Hora de observación desconocida",
       "justNow": "Actualizado ahora mismo",

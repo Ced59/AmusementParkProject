@@ -75,6 +75,50 @@ export class PublicLivePanelComponent {
     return isPublicLiveQueueWaitUsable(queue);
   }
 
+  protected isReturnQueue(queue: PublicLiveQueue): boolean {
+    return queue.kind === 'ReturnTime' || queue.kind === 'PaidReturnTime';
+  }
+
+  protected isBoardingGroupQueue(queue: PublicLiveQueue): boolean {
+    return queue.kind === 'BoardingGroup';
+  }
+
+  protected formatQueueTime(value: string | null): string | null {
+    if (!value) {
+      return null;
+    }
+
+    const date: Date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return null;
+    }
+
+    try {
+      return new Intl.DateTimeFormat(this.currentLanguage, {
+        timeZone: this.timeZoneId ?? undefined,
+        hour: '2-digit',
+        minute: '2-digit'
+      }).format(date);
+    } catch {
+      return null;
+    }
+  }
+
+  protected formatQueuePrice(queue: PublicLiveQueue): string | null {
+    if (queue.priceMinorUnits === null || !queue.currencyCode) {
+      return null;
+    }
+
+    try {
+      return new Intl.NumberFormat(this.currentLanguage, {
+        style: 'currency',
+        currency: queue.currencyCode
+      }).format(queue.priceMinorUnits / 100);
+    } catch {
+      return null;
+    }
+  }
+
   protected attributionSources(target: PublicLiveTarget): readonly PublicLiveSource[] {
     return resolvePublicLiveAttributionSources(target, this.mode === 'park' ? this.visibleItems() : []);
   }

@@ -191,6 +191,11 @@
   color: var(--app-heading);
 }
 
+.live-queue .live-queue__detail {
+  color: var(--app-text);
+  line-height: 1.4;
+}
+
 .live-filters {
   display: flex;
   flex-wrap: wrap;

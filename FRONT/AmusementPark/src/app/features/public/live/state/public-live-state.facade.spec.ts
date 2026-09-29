@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, Subject, of, throwError } from 'rxjs';
 
 import { PublicLiveTarget, PublicParkLiveItems } from '@app/models/live-data/public-live.models';
 import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
@@ -59,6 +59,22 @@ describe('PublicLiveStateFacade', () => {
     vi.advanceTimersByTime(600_000);
     facade.refresh();
     expect(port.getParkItem).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps the offline warning when an in-flight request succeeds after disconnection', () => {
+    const response: Subject<PublicLiveTarget> = new Subject<PublicLiveTarget>();
+    const onlineSpy = vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(true);
+    const port: PublicLiveDataPort = createPort({ getParkItem: () => response.asObservable() });
+    const facade: PublicLiveStateFacade = configureFacade(port, true);
+
+    facade.watchParkItem('item-1');
+    onlineSpy.mockReturnValue(false);
+    window.dispatchEvent(new Event('offline'));
+    response.next(createTarget());
+    response.complete();
+
+    expect(facade.state().kind).toBe('ready');
+    expect(facade.state().isOnline).toBe(false);
   });
 
   it('does not poll during server-side rendering', () => {

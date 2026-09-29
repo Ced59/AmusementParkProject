@@ -117,7 +117,7 @@ export class PublicLiveStateFacade {
           target: result.target,
           items: result.items,
           isRefreshing: false,
-          isOnline: true,
+          isOnline: navigator.onLine,
           refreshFailed: false,
           lastSuccessfulRefreshUtc: new Date().toISOString()
         });

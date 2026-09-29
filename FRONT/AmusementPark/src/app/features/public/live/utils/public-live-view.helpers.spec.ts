@@ -37,13 +37,19 @@ describe('public live view helpers', () => {
       .toEqual(['zero', 'short']);
   });
 
-  it('does not include an unknown status in the available filter', () => {
+  it('includes only open or limited operations in the available filter', () => {
     const open: PublicLiveTarget = createTarget({ targetId: 'open' });
+    const limited: PublicLiveTarget = createTarget({
+      targetId: 'limited',
+      status: 'OperatingWithLimitations'
+    });
+    const delayed: PublicLiveTarget = createTarget({ targetId: 'delayed', status: 'Delayed' });
     const unknown: PublicLiveTarget = createTarget({ targetId: 'unknown', status: 'Unknown' });
     const missing: PublicLiveTarget = createTarget({ targetId: 'missing', status: null });
 
-    expect(filterPublicLiveTargets([open, unknown, missing], 'available').map((item) => item.targetId))
-      .toEqual(['open']);
+    expect(filterPublicLiveTargets([open, limited, delayed, unknown, missing], 'available')
+      .map((item: PublicLiveTarget) => item.targetId))
+      .toEqual(['open', 'limited']);
   });
 
   it('attributes displayed child observations and uses their oldest age conservatively', () => {

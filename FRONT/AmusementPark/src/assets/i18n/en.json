@@ -6025,6 +6025,15 @@
       "closed": "Closed",
       "unknown": "Availability unknown"
     },
+    "queueDetails": {
+      "returnWindow": "Window {{start}}–{{end}}",
+      "returnFrom": "Return from {{time}}",
+      "returnUntil": "Return before {{time}}",
+      "groupRange": "Groups {{start}}–{{end}}",
+      "group": "Group {{value}}",
+      "nextAllocation": "Next allocation at {{time}}",
+      "price": "Paid access: {{price}}"
+    },
     "age": {
       "unknown": "Observation time unknown",
       "justNow": "Updated just now",

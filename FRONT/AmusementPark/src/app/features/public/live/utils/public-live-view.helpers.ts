@@ -11,6 +11,11 @@ const CLOSED_STATUSES: readonly string[] = [
   'Removed'
 ];
 
+const AVAILABLE_STATUSES: readonly string[] = [
+  'Open',
+  'OperatingWithLimitations'
+];
+
 export function resolvePublicLiveAttributionSources(
   target: PublicLiveTarget,
   displayedItems: readonly PublicLiveTarget[]
@@ -94,8 +99,7 @@ export function filterPublicLiveTargets(
       return targets.filter((target: PublicLiveTarget) =>
         target.availability === 'Current'
         && target.status !== null
-        && target.status !== 'Unknown'
-        && !isPublicLiveTargetClosed(target));
+        && AVAILABLE_STATUSES.includes(target.status));
     case 'shortWait':
       return targets.filter((target: PublicLiveTarget) => {
         const waitTimeMinutes: number | null = resolvePublicLiveWaitMinutes(target);

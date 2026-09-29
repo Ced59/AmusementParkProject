@@ -54,6 +54,15 @@
       "closed": "Gesloten",
       "unknown": "Beschikbaarheid onbekend"
     },
+    "queueDetails": {
+      "returnWindow": "Tijdvak {{start}}–{{end}}",
+      "returnFrom": "Terugkeer vanaf {{time}}",
+      "returnUntil": "Terugkeer vóór {{time}}",
+      "groupRange": "Groepen {{start}}–{{end}}",
+      "group": "Groep {{value}}",
+      "nextAllocation": "Volgende toewijzing om {{time}}",
+      "price": "Betaalde toegang: {{price}}"
+    },
     "age": {
       "unknown": "Tijdstip van waarneming onbekend",
       "justNow": "Zojuist bijgewerkt",

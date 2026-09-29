@@ -6025,6 +6025,15 @@
       "closed": "Fechada",
       "unknown": "Disponibilidade desconhecida"
     },
+    "queueDetails": {
+      "returnWindow": "Janela {{start}}–{{end}}",
+      "returnFrom": "Regresso a partir das {{time}}",
+      "returnUntil": "Regresso até às {{time}}",
+      "groupRange": "Grupos {{start}}–{{end}}",
+      "group": "Grupo {{value}}",
+      "nextAllocation": "Próxima atribuição às {{time}}",
+      "price": "Acesso pago: {{price}}"
+    },
     "age": {
       "unknown": "Hora da observação desconhecida",
       "justNow": "Atualizado agora",

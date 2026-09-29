@@ -93,6 +93,49 @@
               @if (queue.isEstimated) {
                 <small>{{ 'liveData.estimated' | translate }}</small>
               }
+              @if (isReturnQueue(queue)) {
+                @if (formatQueueTime(queue.returnStartUtc); as returnStart) {
+                  @if (formatQueueTime(queue.returnEndUtc); as returnEnd) {
+                    <small class="live-queue__detail">
+                      {{ 'liveData.queueDetails.returnWindow' | translate: { start: returnStart, end: returnEnd } }}
+                    </small>
+                  } @else {
+                    <small class="live-queue__detail">
+                      {{ 'liveData.queueDetails.returnFrom' | translate: { time: returnStart } }}
+                    </small>
+                  }
+                } @else if (formatQueueTime(queue.returnEndUtc); as returnEnd) {
+                  <small class="live-queue__detail">
+                    {{ 'liveData.queueDetails.returnUntil' | translate: { time: returnEnd } }}
+                  </small>
+                }
+              }
+              @if (isBoardingGroupQueue(queue)) {
+                @if (queue.currentGroupStart !== null && queue.currentGroupEnd !== null) {
+                  <small class="live-queue__detail">
+                    {{ 'liveData.queueDetails.groupRange' | translate: {
+                      start: queue.currentGroupStart,
+                      end: queue.currentGroupEnd
+                    } }}
+                  </small>
+                } @else if (queue.currentGroupStart !== null || queue.currentGroupEnd !== null) {
+                  <small class="live-queue__detail">
+                    {{ 'liveData.queueDetails.group' | translate: {
+                      value: queue.currentGroupStart ?? queue.currentGroupEnd
+                    } }}
+                  </small>
+                }
+                @if (formatQueueTime(queue.nextAllocationUtc); as nextAllocation) {
+                  <small class="live-queue__detail">
+                    {{ 'liveData.queueDetails.nextAllocation' | translate: { time: nextAllocation } }}
+                  </small>
+                }
+              }
+              @if (formatQueuePrice(queue); as price) {
+                <small class="live-queue__detail">
+                  {{ 'liveData.queueDetails.price' | translate: { price: price } }}
+                </small>
+              }
             </article>
           }
         </div>

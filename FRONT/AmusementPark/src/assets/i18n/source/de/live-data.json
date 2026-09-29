@@ -54,6 +54,15 @@
       "closed": "Geschlossen",
       "unknown": "Verfügbarkeit unbekannt"
     },
+    "queueDetails": {
+      "returnWindow": "Zeitfenster {{start}}–{{end}}",
+      "returnFrom": "Rückkehr ab {{time}}",
+      "returnUntil": "Rückkehr bis {{time}}",
+      "groupRange": "Gruppen {{start}}–{{end}}",
+      "group": "Gruppe {{value}}",
+      "nextAllocation": "Nächste Vergabe um {{time}}",
+      "price": "Kostenpflichtiger Zugang: {{price}}"
+    },
     "age": {
       "unknown": "Beobachtungszeit unbekannt",
       "justNow": "Gerade aktualisiert",
