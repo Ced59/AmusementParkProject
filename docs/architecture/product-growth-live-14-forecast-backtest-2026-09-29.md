@@ -29,7 +29,8 @@ Avant le calcul :
 2. le parc et l’attraction sont résolus dans les référentiels applicatifs ;
 3. seuls les identifiants externes encore rattachés par un mapping humain
    vérifié sont conservés ;
-4. les doublons au même instant gardent la réception la plus récente ;
+4. les doublons au même instant gardent la réception la plus récente connue à
+   la fin de la période étudiée ;
 5. les buckets tronqués, états non opérationnels et attentes `Standby` absentes
    sont exclus ;
 6. les observations valides d’une même heure locale deviennent un seul point :
@@ -50,9 +51,13 @@ les 84 jours qui le précèdent :
 | Intervalle | percentiles 10 % et 90 % du même jour de semaine et de la même heure |
 
 La référence exige 28 journées d’apprentissage. La candidate et son intervalle
-en exigent 8 pour le segment concerné. Le point courant est ajouté à
-l’apprentissage seulement après son évaluation : aucune valeur future ne peut
-donc fuiter dans la prévision testée.
+en exigent 8 pour le segment concerné. Un point horaire n’entre dans
+l’apprentissage qu’après la réception de toutes les observations qui ont
+produit sa médiane. Une donnée retardée ou une correction tardive reste donc
+invisible aux plis antérieurs à sa réception. Le point courant est ajouté
+seulement après son évaluation : aucune valeur future ne peut fuiter dans la
+prévision testée. Cette sémantique est identifiée par la version d’étude
+`live-wait-backtest-v2`.
 
 ```text
 84 jours strictement antérieurs                         point à vérifier

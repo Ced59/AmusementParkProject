@@ -25,20 +25,27 @@ public sealed class LiveWaitForecastBacktestCalculator
         }
 
         LiveWaitHistoryObservation[] uniqueObservations = observations
-            .Where(observation => observation.ObservedAtUtc < evaluationToUtc)
+            .Where(observation => observation.ObservedAtUtc < evaluationToUtc
+                && observation.ReceivedAtUtc <= evaluationToUtc)
             .GroupBy(static observation => observation.ObservedAtUtc)
             .Select(static group => group
                 .OrderByDescending(static observation => observation.ReceivedAtUtc)
                 .First())
             .OrderBy(static observation => observation.ObservedAtUtc)
             .ToArray();
-        (DateTime TimestampUtc, DateOnly LocalDate, DayOfWeek DayOfWeek, int LocalHour, double Wait)[] points =
-            BuildHourlyPoints(uniqueObservations, activeWindow);
-        Dictionary<int, Queue<(DateTime TimestampUtc, double Wait)>> baselineHistory =
-            new Dictionary<int, Queue<(DateTime, double)>>();
-        Dictionary<(DayOfWeek DayOfWeek, int LocalHour), Queue<(DateTime TimestampUtc, double Wait)>>
+        (
+            DateTime TimestampUtc,
+            DateTime AvailableAtUtc,
+            DateOnly LocalDate,
+            DayOfWeek DayOfWeek,
+            int LocalHour,
+            double Wait)[] points = BuildHourlyPoints(uniqueObservations, activeWindow);
+        Dictionary<int, List<(DateTime TimestampUtc, double Wait)>> baselineHistory =
+            new Dictionary<int, List<(DateTime, double)>>();
+        Dictionary<(DayOfWeek DayOfWeek, int LocalHour), List<(DateTime TimestampUtc, double Wait)>>
             candidateHistory =
-                new Dictionary<(DayOfWeek, int), Queue<(DateTime, double)>>();
+                new Dictionary<(DayOfWeek, int), List<(DateTime, double)>>();
+        PriorityQueue<int, DateTime> pendingTrainingPoints = new();
         List<(
             DateTime TimestampUtc,
             DateOnly LocalDate,
@@ -47,27 +54,53 @@ public sealed class LiveWaitForecastBacktestCalculator
             bool IntervalHit,
             double IntervalWidth)> folds = new();
 
-        foreach ((DateTime TimestampUtc, DateOnly LocalDate, DayOfWeek DayOfWeek, int LocalHour, double Wait) point in points)
+        for (int pointIndex = 0; pointIndex < points.Length; pointIndex++)
         {
-            Queue<(DateTime TimestampUtc, double Wait)> baselineQueue = GetOrCreate(
+            (
+                DateTime TimestampUtc,
+                DateTime AvailableAtUtc,
+                DateOnly LocalDate,
+                DayOfWeek DayOfWeek,
+                int LocalHour,
+                double Wait) point = points[pointIndex];
+            while (pendingTrainingPoints.TryPeek(out int trainingPointIndex, out DateTime availableAtUtc)
+                && availableAtUtc <= point.TimestampUtc)
+            {
+                pendingTrainingPoints.Dequeue();
+                (
+                    DateTime TimestampUtc,
+                    DateTime AvailableAtUtc,
+                    DateOnly LocalDate,
+                    DayOfWeek DayOfWeek,
+                    int LocalHour,
+                    double Wait) trainingPoint = points[trainingPointIndex];
+                GetOrCreate(baselineHistory, trainingPoint.LocalHour)
+                    .Add((trainingPoint.TimestampUtc, trainingPoint.Wait));
+                GetOrCreate(
+                        candidateHistory,
+                        (trainingPoint.DayOfWeek, trainingPoint.LocalHour))
+                    .Add((trainingPoint.TimestampUtc, trainingPoint.Wait));
+            }
+
+            List<(DateTime TimestampUtc, double Wait)> baselineValuesByTime = GetOrCreate(
                 baselineHistory,
                 point.LocalHour);
-            Queue<(DateTime TimestampUtc, double Wait)> candidateQueue = GetOrCreate(
+            List<(DateTime TimestampUtc, double Wait)> candidateValuesByTime = GetOrCreate(
                 candidateHistory,
                 (point.DayOfWeek, point.LocalHour));
             DateTime trainingStartsAtUtc = point.TimestampUtc.AddDays(-this.policy.TrainingWindowDays);
-            Prune(baselineQueue, trainingStartsAtUtc);
-            Prune(candidateQueue, trainingStartsAtUtc);
+            Prune(baselineValuesByTime, trainingStartsAtUtc);
+            Prune(candidateValuesByTime, trainingStartsAtUtc);
 
             if (point.TimestampUtc >= evaluationFromUtc
-                && baselineQueue.Count >= this.policy.MinimumBaselineTrainingDays
-                && candidateQueue.Count >= this.policy.MinimumCandidateTrainingDays)
+                && baselineValuesByTime.Count >= this.policy.MinimumBaselineTrainingDays
+                && candidateValuesByTime.Count >= this.policy.MinimumCandidateTrainingDays)
             {
-                double[] baselineValues = baselineQueue
+                double[] baselineValues = baselineValuesByTime
                     .Select(static value => value.Wait)
                     .Order()
                     .ToArray();
-                double[] candidateValues = candidateQueue
+                double[] candidateValues = candidateValuesByTime
                     .Select(static value => value.Wait)
                     .Order()
                     .ToArray();
@@ -84,8 +117,7 @@ public sealed class LiveWaitForecastBacktestCalculator
                     upperBound - lowerBound));
             }
 
-            baselineQueue.Enqueue((point.TimestampUtc, point.Wait));
-            candidateQueue.Enqueue((point.TimestampUtc, point.Wait));
+            pendingTrainingPoints.Enqueue(pointIndex, point.AvailableAtUtc);
         }
 
         return this.BuildReport(
@@ -227,7 +259,13 @@ public sealed class LiveWaitForecastBacktestCalculator
             this.policy);
     }
 
-    private static (DateTime TimestampUtc, DateOnly LocalDate, DayOfWeek DayOfWeek, int LocalHour, double Wait)[]
+    private static (
+        DateTime TimestampUtc,
+        DateTime AvailableAtUtc,
+        DateOnly LocalDate,
+        DayOfWeek DayOfWeek,
+        int LocalHour,
+        double Wait)[]
         BuildHourlyPoints(
             IReadOnlyCollection<LiveWaitHistoryObservation> observations,
             LivePollingActiveWindow activeWindow)
@@ -252,6 +290,7 @@ public sealed class LiveWaitForecastBacktestCalculator
             .GroupBy(static value => (DateOnly.FromDateTime(value.Local), value.Local.Hour))
             .Select(static group => (
                 TimestampUtc: group.Min(static value => value.Observation.ObservedAtUtc),
+                AvailableAtUtc: group.Max(static value => value.Observation.ReceivedAtUtc),
                 LocalDate: group.Key.Item1,
                 DayOfWeek: group.Key.Item1.DayOfWeek,
                 LocalHour: group.Key.Hour,
@@ -260,14 +299,14 @@ public sealed class LiveWaitForecastBacktestCalculator
             .ToArray();
     }
 
-    private static Queue<(DateTime TimestampUtc, double Wait)> GetOrCreate<TKey>(
-        IDictionary<TKey, Queue<(DateTime TimestampUtc, double Wait)>> histories,
+    private static List<(DateTime TimestampUtc, double Wait)> GetOrCreate<TKey>(
+        IDictionary<TKey, List<(DateTime TimestampUtc, double Wait)>> histories,
         TKey key)
         where TKey : notnull
     {
-        if (!histories.TryGetValue(key, out Queue<(DateTime TimestampUtc, double Wait)>? history))
+        if (!histories.TryGetValue(key, out List<(DateTime TimestampUtc, double Wait)>? history))
         {
-            history = new Queue<(DateTime, double)>();
+            history = new List<(DateTime, double)>();
             histories.Add(key, history);
         }
 
@@ -275,14 +314,10 @@ public sealed class LiveWaitForecastBacktestCalculator
     }
 
     private static void Prune(
-        Queue<(DateTime TimestampUtc, double Wait)> history,
+        List<(DateTime TimestampUtc, double Wait)> history,
         DateTime startsAtUtc)
     {
-        while (history.TryPeek(out (DateTime TimestampUtc, double Wait) value)
-            && value.TimestampUtc < startsAtUtc)
-        {
-            history.Dequeue();
-        }
+        history.RemoveAll(value => value.TimestampUtc < startsAtUtc);
     }
 
     private static LiveWaitForecastBacktestMetric BuildMetric(

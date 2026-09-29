@@ -2,7 +2,7 @@ namespace AmusementPark.Core.Domain.LiveData;
 
 public sealed class LiveWaitForecastBacktestPolicy
 {
-    public const string StudyVersion = "live-wait-backtest-v1";
+    public const string StudyVersion = "live-wait-backtest-v2";
     public const string BaselineMethod = "rolling-hourly-median-v1";
     public const string CandidateMethod = "rolling-weekday-hour-median-v1";
     public const string IntervalMethod = "rolling-weekday-hour-p10-p90-v1";

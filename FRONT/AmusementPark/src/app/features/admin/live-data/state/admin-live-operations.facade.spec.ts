@@ -108,7 +108,7 @@ describe('AdminLiveOperationsFacade', () => {
 function createBacktest(): LiveWaitForecastBacktest {
   return {
     targetDisplayName: 'Taron', parkDisplayName: 'Phantasialand',
-    studyVersion: 'live-wait-backtest-v1', verdict: 'InsufficientData',
+    studyVersion: 'live-wait-backtest-v2', verdict: 'InsufficientData',
     reasons: ['InsufficientEvaluationPoints'],
     evaluationFromUtc: '2026-06-01T00:00:00Z', evaluationToUtc: '2026-09-01T00:00:00Z',
     timeZoneId: 'Europe/Paris', sourceObservationCount: 10, hourlyPointCount: 2,

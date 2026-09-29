@@ -131,6 +131,48 @@ public sealed class LiveWaitForecastBacktestCalculatorTests
     }
 
     [Fact]
+    public void Calculate_ShouldNotUseTrainingPointsBeforeTheyAreReceived()
+    {
+        LiveWaitForecastBacktestCalculator calculator = CreateCalculator();
+        DateTime fromUtc = StartsAtUtc.AddDays(120);
+        DateTime toUtc = StartsAtUtc.AddDays(240);
+        IReadOnlyCollection<LiveWaitHistoryObservation> complete = CreateDailyObservations(
+            240,
+            timestamp => 10 + (((int)timestamp.DayOfWeek) * 10));
+        LiveWaitHistoryObservation[] withoutDelayedPeriod = complete
+            .Where(observation => observation.ObservedAtUtc < StartsAtUtc.AddDays(40)
+                || observation.ObservedAtUtc > StartsAtUtc.AddDays(70))
+            .ToArray();
+        List<LiveWaitHistoryObservation> withDelayedPeriod = withoutDelayedPeriod.ToList();
+        DateTime lateReceiptUtc = toUtc.AddMinutes(-1);
+        withDelayedPeriod.AddRange(Enumerable.Range(40, 31)
+            .Select(day => CreateObservation(
+                StartsAtUtc.AddDays(day),
+                500,
+                lateReceiptUtc)));
+
+        LiveWaitForecastBacktestReport withoutDelayed = calculator.Calculate(
+            withoutDelayedPeriod,
+            fromUtc,
+            toUtc,
+            CreateActiveWindow());
+        LiveWaitForecastBacktestReport withDelayed = calculator.Calculate(
+            withDelayedPeriod,
+            fromUtc,
+            toUtc,
+            CreateActiveWindow());
+
+        Assert.Equal(withoutDelayed.EvaluationPointCount, withDelayed.EvaluationPointCount);
+        Assert.Equal(
+            withoutDelayed.Baseline?.MeanAbsoluteErrorMinutes,
+            withDelayed.Baseline?.MeanAbsoluteErrorMinutes);
+        Assert.Equal(
+            withoutDelayed.Candidate?.MeanAbsoluteErrorMinutes,
+            withDelayed.Candidate?.MeanAbsoluteErrorMinutes);
+        Assert.Equal(withoutDelayed.IntervalCoveragePercent, withDelayed.IntervalCoveragePercent);
+    }
+
+    [Fact]
     public void Policy_ShouldUseRawMetricsAtDecisionBoundaries()
     {
         LiveWaitForecastBacktestPolicy policy = new LiveWaitForecastBacktestPolicy();
@@ -165,13 +207,14 @@ public sealed class LiveWaitForecastBacktestCalculatorTests
 
     private static LiveWaitHistoryObservation CreateObservation(
         DateTime observedAtUtc,
-        int waitMinutes)
+        int waitMinutes,
+        DateTime? receivedAtUtc = null)
     {
         return new LiveWaitHistoryObservation(
             "external-item-1",
             "mapping-1",
             observedAtUtc,
-            observedAtUtc.AddSeconds(1),
+            receivedAtUtc ?? observedAtUtc.AddSeconds(1),
             LiveOperationalStatus.Open,
             new[]
             {
