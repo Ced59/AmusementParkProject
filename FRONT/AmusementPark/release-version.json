@@ -5,14 +5,14 @@
       "version": "5.4.17",
       "releasedAt": "2026-09-29",
       "labels": {
-        "fr": "Le pilotage des données live gagne des outils d’analyse de fiabilité.",
-        "en": "Live data operations gain reliability analysis tools.",
-        "de": "Die Live-Datensteuerung erhält Werkzeuge zur Zuverlässigkeitsanalyse.",
-        "nl": "Het beheer van livegegevens krijgt hulpmiddelen voor betrouwbaarheidsanalyse.",
-        "it": "La gestione dei dati in tempo reale ottiene strumenti di analisi dell’affidabilità.",
-        "es": "La gestión de datos en directo incorpora herramientas de análisis de fiabilidad.",
-        "pl": "Zarządzanie danymi na żywo zyskuje narzędzia do analizy wiarygodności.",
-        "pt": "A gestão de dados em direto recebe ferramentas de análise de fiabilidade."
+        "fr": "Améliorations ergonomiques de l’administration.",
+        "en": "Administration usability improvements.",
+        "de": "Verbesserungen der Bedienbarkeit in der Verwaltung.",
+        "nl": "Gebruiksvriendelijkheidsverbeteringen voor het beheer.",
+        "it": "Miglioramenti all’usabilità dell’amministrazione.",
+        "es": "Mejoras de usabilidad en la administración.",
+        "pl": "Ulepszenia użyteczności panelu administracyjnego.",
+        "pt": "Melhorias de usabilidade na administração."
       }
     },
     {
