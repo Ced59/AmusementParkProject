@@ -2,7 +2,7 @@
 
 > Code programme : `QUAL`
 >
-> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` et `QUAL-02` sont livrés au 29 septembre 2026.
+> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` à `QUAL-04` sont livrés au 29 septembre 2026.
 >
 > Principe : une fonctionnalité n’est pas validée parce qu’elle compile ou parce qu’elle augmente un compteur. Elle doit être comprise, utile, accessible, fiable, réversible, respectueuse de la vie privée et supportable avec les moyens réels du projet.
 
@@ -827,7 +827,7 @@ d'usage réel n'est donc revendiquée.
 | [`QUAL-01`](../../architecture/product-growth-qual-01-analytics-event-plan-2026-09-29.md) | ADR analytics et plan d’événements — livré le 29 septembre 2026 | Finalités/minimisation validées |
 | [`QUAL-02`](../../architecture/product-growth-qual-02-feature-flags-2026-09-29.md) | Infrastructure feature flags — livré le 29 septembre 2026 | Fallback/kill switch |
 | [`QUAL-03`](../../architecture/product-growth-qual-03-performance-error-baseline-2026-09-29.md) | Baseline performance/erreurs — livré le 29 septembre 2026 | État avant produit connu |
-| `QUAL-04` | Matrice privacy et export/suppression | Champs catalogués |
+| [`QUAL-04`](../../architecture/product-growth-qual-04-privacy-export-deletion-matrix-2026-09-29.md) | Matrice privacy et export/suppression — livré le 29 septembre 2026 | Champs catalogués |
 | `QUAL-05` | Helpers d’instrumentation typés | Pas d’événements ad hoc |
 | `QUAL-06` | Dashboards funnel/fiabilité | Questions utiles uniquement |
 | `QUAL-07` | Automatisation accessibilité/i18n | Régressions détectées |
@@ -876,6 +876,22 @@ familles de résultat et des EventId stables, emploient le modèle de route et n
 recopient plus query string ni user-agent. Aucune persistance ni dépendance n'est
 ajoutée ; les futurs dashboards réutiliseront ces signaux au lieu de créer une
 seconde observabilité.
+
+### Implémentation `QUAL-04` — 29 septembre 2026
+
+Le registre versionné de confidentialité applique les douze dimensions de cette
+roadmap à huit surfaces métier, 116 documents et 1 105 champs persistés. Il décrit
+les visibilités privées ou explicitement publiées, les exports réellement couverts,
+les rétentions, les sous-traitants et les accès support sans présenter les
+capacités partielles comme terminées.
+
+La CI relit les documents MongoDB et refuse une forme persistée modifiée sans revue
+du registre. Elle détecte également les documents portant des marqueurs probables
+de données personnelles et exige leur classement ou une exclusion justifiée. Le
+constat principal est volontairement explicite : Partage et Alertes possèdent déjà
+des participants de purge solides, mais l'export de compte fédéré et le coordinateur
+global de suppression restent à construire avant d'exposer une promesse complète
+au membre.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 

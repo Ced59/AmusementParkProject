@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-29",
+  "scope": "Tous les champs déclarés par les documents C# listés héritent de la politique de leur surface, y compris les identifiants fonctionnels, versions et horodatages techniques. Les champs Id, CreatedAt et UpdatedAt hérités de MongoDocumentBase sont des données de liaison internes soumises à la même rétention et à la même suppression que leur document.",
+  "globalDefaults": {
+    "privacy": "Privé tant qu'une action explicite et réversible ne publie pas une projection dédiée.",
+    "indexing": "Interdite pour les données privées, non listées ou techniques.",
+    "logging": "Aucun texte privé, secret, jeton, adresse e-mail ou identifiant de ressource concret dans les logs applicatifs.",
+    "minimization": "La projection publique et l'export utilisent des identifiants lisibles propres au document produit, jamais les identifiants MongoDB ou de compte.",
+    "accountDeletion": "Écart connu : les participants Partage et Alertes existent, mais aucun orchestrateur transversal ne garantit encore la suppression complète et ordonnée du compte."
+  },
+  "surfaces": [
+    {
+      "id": "identity-and-access",
+      "label": "Compte, identité et accès",
+      "sources": [
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Users/*Document.cs"
+      ],
+      "reviewedSchemaSha256": "d4205d6300b10fdeaa8e9fb58f78c43f2d51fed9189aeca412cbf4dcbce2b70f",
+      "policy": {
+        "purpose": "Créer le compte, authentifier son propriétaire, mémoriser ses préférences et sécuriser les accès ordinaires ou d'édition.",
+        "necessity": "L'adresse e-mail et les preuves d'authentification sont nécessaires au compte ; le nom, l'avatar et les connexions externes restent optionnels selon le parcours.",
+        "visibility": "Privée par défaut. Seuls le pseudonyme public et l'avatar peuvent alimenter une projection publique explicitement demandée ; mots de passe et jetons ne sont jamais exposés.",
+        "legalBasisOrConsent": "Exécution du service demandé pour le compte et intérêt légitime de sécurité ; connexion externe seulement après choix explicite du membre.",
+        "retention": "Pendant la vie du compte ; jetons avec échéance courte ou révocation, preuves de sécurité conservées uniquement pendant leur fenêtre opérationnelle.",
+        "export": "Écart : le passeport exporte les données produit mais il n'existe pas encore d'export transversal incluant l'identité et toutes les préférences de compte.",
+        "deletion": "Écart bloquant : aucun coordinateur global ne purge encore identité, sessions et participants métier dans une opération complète.",
+        "processor": "Hébergement MongoDB de première partie ; fournisseur OAuth uniquement lorsqu'il est choisi par le membre ; transport SMTP pour les e-mails transactionnels.",
+        "analytics": "Aucun secret d'authentification n'est envoyé à l'analytics ; les mesures de connexion restent agrégées et sans contenu du profil.",
+        "encryption": "TLS en transit ; mot de passe et jetons persistés sous forme de hash ; secrets de fournisseur non inclus dans les réponses ni les logs.",
+        "supportAccess": "Accès administratif restreint au strict diagnostic ; aucun affichage des hashes ou jetons et aucune usurpation implicite du compte.",
+        "audit": "Connexions, révocations et changements sensibles utilisent les traces de sécurité existantes sans recopier les secrets."
+      }
+    },
+    {
+      "id": "passport-and-ratings",
+      "label": "Passeport, visites, passages et notes",
+      "sources": [
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Visits/*Document.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Ratings/UserRatingDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Ratings/RatingRankingMutationRecoveryTargetDocument.cs"
+      ],
+      "reviewedSchemaSha256": "0e3540aa3449d137c6d3ff7f59687877856fac96d0b47dc2e0e75790dd8a904d",
+      "policy": {
+        "purpose": "Conserver l'historique personnel des visites, passages, évaluations, préférences de suggestion et exports demandés par le membre.",
+        "necessity": "Les références de parc et de date structurent le passeport ; horaires précis, textes privés et notes sont facultatifs.",
+        "visibility": "Privée par défaut. Une publication ne lit qu'une projection de partage dédiée et ne recopie jamais les notes ou commentaires privés hors du périmètre choisi.",
+        "legalBasisOrConsent": "Exécution du service de passeport ; toute projection publique repose sur une action explicite, ciblée et révocable.",
+        "retention": "Jusqu'à suppression par le membre ; opérations et audits bornés par leur utilité de cohérence ; fichiers d'export et morceaux expirent automatiquement.",
+        "export": "Couvert par l'export canonique JSON ou CSV du passeport avec noms lisibles, références locales et sans identifiant MongoDB ou identifiant de compte.",
+        "deletion": "Suppression unitaire des visites disponible ; purge complète du compte non garantie tant que le coordinateur transversal manque.",
+        "processor": "Persistance MongoDB de première partie ; aucun sous-traitant produit nécessaire au calcul des statistiques privées.",
+        "analytics": "Interactions de suggestion minimisées et dissociées des textes privés ; aucune note privée ni date de visite précise dans les événements analytics.",
+        "encryption": "TLS en transit et protection de l'hébergement au repos ; clés d'idempotence hachées et textes privés exclus des journaux.",
+        "supportAccess": "Accès support exceptionnel et restreint ; les écrans administratifs ne doivent pas exposer les commentaires privés.",
+        "audit": "Journal métier versionné des changements sans duplication du texte privé ; corrélation par identifiants techniques internes non publics."
+      }
+    },
+    {
+      "id": "explicit-sharing",
+      "label": "Partages publics et comparaisons",
+      "sources": [
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Sharing/*Document.cs"
+      ],
+      "reviewedSchemaSha256": "293eb866496878778e389ca1f151e74166ede6cbb8c208d2d85bbfb05a000a2c",
+      "policy": {
+        "purpose": "Publier une sélection consentie du passeport, produire des récapitulatifs et permettre une comparaison entre profils publics.",
+        "necessity": "Aucune donnée de partage n'est nécessaire au passeport privé ; chaque publication, invitation ou comparaison est facultative.",
+        "visibility": "Mélangée mais cloisonnée : sources et jetons restent privés, projections publiées deviennent publiques ou non listées selon le choix explicite enregistré.",
+        "legalBasisOrConsent": "Consentement explicite matérialisé par la politique de contenu, l'empreinte de sélection et l'action de publication ou d'acceptation.",
+        "retention": "Jusqu'à révocation ou expiration selon le type ; invitations, leases et états de migration ont une fenêtre opérationnelle bornée.",
+        "export": "Les partages liés au passeport sont inclus dans l'export canonique ; les comparaisons restent un écart de l'export transversal de compte.",
+        "deletion": "Participant IShareAccountDeletionService implémenté et idempotent ; activation globale impossible tant que le coordinateur de compte n'existe pas.",
+        "processor": "Persistance et cache de première partie ; aucun réseau social n'est requis pour rendre un partage web accessible.",
+        "analytics": "Mesure agrégée de consultation possible sans exposer le contenu privé source ni les jetons d'invitation.",
+        "encryption": "TLS ; jetons opaques ou hachés ; caches publics alimentés uniquement par la projection publiée et invalidés à la révocation.",
+        "supportAccess": "Modération et diagnostic limités aux projections ou signalements nécessaires ; contenu source privé non affiché par défaut.",
+        "audit": "Révisions source, publications, révocations, acceptations et modérations sont versionnées et corrélables."
+      }
+    },
+    {
+      "id": "watchlists-and-notifications",
+      "label": "Favoris, envies, alertes et notifications",
+      "sources": [
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Watchlists/*Document.cs"
+      ],
+      "reviewedSchemaSha256": "4f387b0ad1c9510ff5856055ce7a0e8770d68f0c9dc31147872e0b7c8d253683",
+      "policy": {
+        "purpose": "Mémoriser les intentions privées, surveiller des changements factuels et livrer les alertes choisies par le membre.",
+        "necessity": "Surface entièrement optionnelle ; seuils, notes privées, canaux et fréquence ne sont persistés qu'après une action du membre.",
+        "visibility": "Strictement privée ; les métriques pilote ne contiennent que des agrégats et aucune liste d'intentions n'est rendue publique.",
+        "legalBasisOrConsent": "Exécution de la veille demandée ; l'e-mail exige un consentement explicite, versionné et révocable.",
+        "retention": "Abonnements jusqu'à retrait ; alertes, tentatives et leases expirent selon leur TTL ; preuve de consentement gardée pendant la durée nécessaire.",
+        "export": "Couvert dans les exports JSON et CSV du passeport, avec libellés lisibles et sans identifiants techniques internes.",
+        "deletion": "Participant IWatchlistAccountDeletionService implémenté avec fence ; il attend encore l'orchestrateur transversal de suppression du compte.",
+        "processor": "MongoDB de première partie et fournisseur SMTP uniquement si le canal e-mail est activé.",
+        "analytics": "Métriques d'usage agrégées, sans note privée, cible individuelle ni contenu de notification personnel.",
+        "encryption": "TLS et stockage protégé ; contenu privé exclu des logs, clés de travail et déduplication non exposées au client.",
+        "supportAccess": "Diagnostic restreint aux statuts de livraison et codes stables ; note privée et historique d'intentions masqués.",
+        "audit": "Consentement, distribution et état des notifications disposent de preuves versionnées et de reçus bornés."
+      }
+    },
+    {
+      "id": "trip-planning",
+      "label": "Voyages et collaboration",
+      "sources": [
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Trips/*Document.cs"
+      ],
+      "reviewedSchemaSha256": "9c1fd069f5230c9aa82ab22b71216fa4f8f883a32c66729d3ae75be0ec14cb26",
+      "policy": {
+        "purpose": "Construire un voyage privé, inviter des participants et synchroniser préférences, décisions et programme du groupe.",
+        "necessity": "Le plan, ses membres et ses dates sont nécessaires au voyage choisi ; e-mail cible, notes, préférences et blocs détaillés restent facultatifs.",
+        "visibility": "Privée aux membres admis du voyage ; l'aperçu d'invitation est minimisé et ne donne jamais accès au plan complet.",
+        "legalBasisOrConsent": "Exécution du service collaboratif ; admission explicite par invitation et contrôles de rôle pour chaque lecture ou mutation.",
+        "retention": "Jusqu'à suppression du voyage ; invitations, fences, tombstones et opérations ont des expirations techniques dédiées.",
+        "export": "Export portable d'un voyage implémenté ; écart restant pour un export unique regroupant automatiquement tous les voyages du compte.",
+        "deletion": "Suppression métier d'un voyage disponible ; aucune purge globale garantie au départ d'un compte faute d'orchestrateur transversal.",
+        "processor": "MongoDB de première partie ; SMTP éventuel pour transmettre l'invitation sans révéler le plan complet.",
+        "analytics": "Mesure agrégée du funnel sans titre, note, e-mail, jeton, date détaillée ou identité de membre.",
+        "encryption": "TLS ; jetons scellés ou hachés, HMAC d'e-mail et clés d'opération hachées ; données privées absentes des logs.",
+        "supportAccess": "Support limité aux états, rôles et codes de cohérence ; contenu du programme et préférences masqués par défaut.",
+        "audit": "Séquence d'activité et événements en attente versionnent les opérations sans recopier les secrets d'invitation."
+      }
+    },
+    {
+      "id": "park-fit-profiles",
+      "label": "Profils de groupe Park Fit",
+      "sources": [
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/ParkFit/ParkFitGroupProfileDocument.cs"
+      ],
+      "reviewedSchemaSha256": "24cc9db372b4243e168c4d8b69343760add7d4dfc2bd0ae09bb75ab4ebcba3d9",
+      "policy": {
+        "purpose": "Calculer une compatibilité explicable entre un groupe privé et les conditions d'accès des attractions.",
+        "necessity": "Profil optionnel ; taille, âge et accompagnement ne sont demandés que pour améliorer le calcul choisi.",
+        "visibility": "Strictement privée au propriétaire ; aucune indexation, publication automatique ou réutilisation dans les classements.",
+        "legalBasisOrConsent": "Exécution du calcul demandé et sauvegarde uniquement après action explicite du propriétaire.",
+        "retention": "Jusqu'à suppression du profil ou du compte ; aucune conservation dérivée nécessaire après suppression.",
+        "export": "Export dédié du profil de groupe disponible ; intégration à un export transversal de compte encore manquante.",
+        "deletion": "Suppression dédiée disponible ; raccordement au futur coordinateur global de compte à réaliser.",
+        "processor": "Calcul et persistance de première partie, sans transfert à un fournisseur de recommandation externe.",
+        "analytics": "Uniquement volumes et résultats agrégés ; aucun âge, taille, alias ou composition individuelle dans l'événementiel.",
+        "encryption": "TLS et stockage protégé ; absence de profil personnel dans les logs applicatifs.",
+        "supportAccess": "Aucun accès support ordinaire au détail du groupe ; diagnostic par codes de règles et versions.",
+        "audit": "Version du profil et méthode de calcul rendent le résultat reproductible sans journaliser les attributs personnels."
+      }
+    },
+    {
+      "id": "community-content-and-support",
+      "label": "Commentaires, médias, signalements et contact",
+      "sources": [
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Comments/CommentDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Images/ImageDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Contact/ContactGrievanceDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/History/HistoricalExistenceReportDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/ParkFit/ParkFitSourceReportDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/SocialShare/SocialShareEventDocument.cs"
+      ],
+      "reviewedSchemaSha256": "87694e77e7274960b3cc0d1bf6ce0da6021728cc1abb2ecfd2479966239e9e52",
+      "policy": {
+        "purpose": "Publier du contenu choisi, traiter une demande de contact ou examiner un signalement factuel avec les preuves nécessaires.",
+        "necessity": "Chaque contribution est optionnelle ; IP et user-agent ne servent qu'à la protection anti-abus des formulaires concernés.",
+        "visibility": "Commentaires et médias ne deviennent publics qu'après publication ; brouillons, signalements, contact, IP et notes de décision restent privés.",
+        "legalBasisOrConsent": "Action explicite de contribution ou demande de support ; intérêt légitime limité pour modération, sécurité et preuve de traitement.",
+        "retention": "Contenu public jusqu'à retrait selon les règles produit ; brouillons et réservations expirent ; demandes et preuves anti-abus suivent une durée support bornée à formaliser.",
+        "export": "Écart : commentaires, médias et demandes de support ne sont pas encore réunis dans un export transversal de compte.",
+        "deletion": "Suppressions locales existent selon la ressource ; aucune garantie de purge complète lors de la suppression du compte.",
+        "processor": "MongoDB et stockage média de première partie ; aucun contenu n'est transmis à un réseau social par le simple suivi d'un partage.",
+        "analytics": "Canal et cible de partage peuvent être agrégés ; message, image privée, IP, user-agent et détail du signalement sont exclus.",
+        "encryption": "TLS ; réservations et jetons techniques opaques ; IP, user-agent et contenu privé interdits dans les logs génériques.",
+        "supportAccess": "Accès restreint aux équipes habilitées pour modérer ou répondre ; séparation entre contenu public et notes privées.",
+        "audit": "Révision, statut de modération et décision sont traçables sans publier les données de contact ou les notes internes."
+      }
+    },
+    {
+      "id": "administration-and-security-audit",
+      "label": "Administration, décisions et audit de sécurité",
+      "sources": [
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/AdminAudit/AdminAuditLogDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/FeatureFlags/FeatureFlagStateDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/History/HistoricalReviewEventDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/ParkFit/ParkFitOperationalDecisionDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/ParkGraphUpserts/ParkGraphUpsertHistoryDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/SocialPublishing/SocialPublicationDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Seo/SeoSitemapGenerationHistoryDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/LiveData/ExternalLiveTargetMappingDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/LiveData/LiveOperationalControlDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/LiveData/LiveQualityIncidentDocument.cs"
+      ],
+      "reviewedSchemaSha256": "add45a36b04b5ce2fea6f6173e8ccd679d6420be8d99fb39d6cc9d85f1fbe237",
+      "policy": {
+        "purpose": "Attribuer les décisions sensibles, diagnostiquer les incidents et démontrer les changements administratifs ou de sécurité.",
+        "necessity": "Identité d'acteur et contexte minimal nécessaires à la responsabilité ; contenu brut, secrets et données métier privées sont exclus.",
+        "visibility": "Administration restreinte uniquement ; aucune indexation, réponse publique ou exposition dans les écrans membre.",
+        "legalBasisOrConsent": "Intérêt légitime de sécurité, intégrité et administration du service ; obligations de preuve selon l'action concernée.",
+        "retention": "Durée de sécurité et d'audit définie par catégorie ; besoin de formaliser les durées chiffrées et l'anonymisation finale.",
+        "export": "Exclusion justifiée de l'export produit lorsqu'elle protégerait la sécurité ou des tiers ; fournir séparément les données personnelles exigibles après revue.",
+        "deletion": "Conservation minimisée ou anonymisation à prévoir selon obligation ; ne doit jamais bloquer silencieusement la suppression des données produit.",
+        "processor": "Persistance et observabilité de première partie ; publication sociale uniquement après action administrative explicite distincte.",
+        "analytics": "Aucun journal d'administration envoyé aux outils marketing ; seuls taux d'erreur et volumes agrégés sont admissibles.",
+        "encryption": "TLS et contrôle d'accès fort ; pas de token, mot de passe, payload privé, query string ou user-agent complet dans les logs génériques.",
+        "supportAccess": "Réservé aux rôles autorisés avec besoin opérationnel ; consultation elle-même soumise aux contrôles existants.",
+        "audit": "Surface d'audit par définition, avec acteur, date, action, résultat et trace de corrélation minimisés."
+      }
+    }
+  ],
+  "discoveryExclusions": [
+    {
+      "source": "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/CaptainCoaster/CaptainCoasterSyncLogEntryDocument.cs",
+      "reason": "Journal d'import de catalogue externe sans identité de membre ni contenu fourni par un utilisateur."
+    },
+    {
+      "source": "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/CaptainCoaster/CaptainCoasterSyncSessionDocument.cs",
+      "reason": "État technique d'une synchronisation de catalogue, sans identité ou contribution d'un membre."
+    },
+    {
+      "source": "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Parks/ParkReferenceContactDetailsDocument.cs",
+      "reason": "Coordonnées professionnelles publiées comme référence d'un parc, distinctes des données d'un compte ou d'un visiteur."
+    },
+    {
+      "source": "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Weather/ParkWeatherRunDocument.cs",
+      "reason": "Message de traitement météo associé à un parc, pas à une personne ou à un compte."
+    }
+  ]
+}

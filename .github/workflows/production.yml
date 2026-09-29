@@ -256,6 +256,11 @@ jobs:
       - name: Test performance baseline tools
         run: npm run test:performance-tools
 
+      - name: Enforce personal-data catalog
+        run: |
+          npm run privacy:catalog:test
+          npm run privacy:catalog
+
       - name: Run frontend tests
         run: npm run test:ci
 
