@@ -64,7 +64,12 @@ public sealed class ParkWeatherRefreshOrchestrator
             await this.NotifyAutomaticRunStartedSafelyAsync(run, runWarnings, cancellationToken);
             IReadOnlyCollection<Park> parks = await this.ResolveTargetParksAsync(run, cancellationToken);
             IReadOnlyCollection<StandaloneAttraction> standaloneAttractions =
-                await this.ResolveTargetStandaloneAttractionsAsync(run, cancellationToken);
+                await StandaloneAttractionWeatherTargetResolver.ResolveAsync(
+                    run,
+                    this.standaloneAttractionRepository,
+                    this.standaloneWeatherRepository,
+                    this.runRepository,
+                    cancellationToken);
             run.TotalParkCount = parks.Count + standaloneAttractions.Count;
             await this.runRepository.UpdateAsync(run, cancellationToken);
 
@@ -195,54 +200,6 @@ public sealed class ParkWeatherRefreshOrchestrator
         return parks
             .Where(static park => park.IsVisible)
             .Where(HasValidCoordinates)
-            .ToList();
-    }
-
-    private async Task<IReadOnlyCollection<StandaloneAttraction>> ResolveTargetStandaloneAttractionsAsync(
-        ParkWeatherRun run,
-        CancellationToken cancellationToken)
-    {
-        if (this.standaloneAttractionRepository is null
-            || this.standaloneWeatherRepository is null)
-        {
-            return Array.Empty<StandaloneAttraction>();
-        }
-
-        if (run.Scope == ParkWeatherRefreshScope.FullVisibleParks)
-        {
-            IReadOnlyCollection<StandaloneAttraction> visibleAttractions =
-                await this.standaloneAttractionRepository.GetVisibleMapPointsAsync(
-                new StandaloneAttractionSearchCriteria(
-                    null,
-                    Array.Empty<string>(),
-                    Array.Empty<string>()),
-                cancellationToken);
-            return visibleAttractions
-                .Where(HasValidCoordinates)
-                .Where(static attraction =>
-                    ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
-                .ToList();
-        }
-
-        if (run.Scope != ParkWeatherRefreshScope.FailedFromRun)
-        {
-            return Array.Empty<StandaloneAttraction>();
-        }
-
-        IReadOnlyCollection<ParkWeatherRunItem> failedItems = await this.runRepository.GetRunItemsAsync(
-            run.SourceRunId ?? string.Empty,
-            ParkWeatherRunItemStatus.Failed,
-            cancellationToken);
-        IReadOnlyCollection<StandaloneAttraction> attractions =
-            await this.standaloneAttractionRepository.GetByIdsAsync(
-                failedItems.Select(static item => item.ParkId).ToList(),
-                cancellationToken);
-
-        return attractions
-            .Where(static attraction => attraction.IsVisible)
-            .Where(HasValidCoordinates)
-            .Where(static attraction =>
-                ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
             .ToList();
     }
 
@@ -634,12 +591,6 @@ public sealed class ParkWeatherRefreshOrchestrator
     {
         return park.Position is not null
             && (park.Position.Latitude != 0d || park.Position.Longitude != 0d);
-    }
-
-    private static bool HasValidCoordinates(StandaloneAttraction attraction)
-    {
-        return attraction.Position is not null
-            && (attraction.Position.Latitude != 0d || attraction.Position.Longitude != 0d);
     }
 
     private static ParkWeatherLocation ToWeatherLocation(Park park)
