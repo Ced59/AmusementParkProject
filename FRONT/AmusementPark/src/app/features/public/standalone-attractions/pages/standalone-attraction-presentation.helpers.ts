@@ -19,25 +19,43 @@ export interface StandaloneAttractionDetailRow {
   translationKey: string | null;
 }
 
+const SUPPORTED_TYPE_SEGMENTS: ReadonlySet<string> = new Set<string>([
+  'attraction',
+  'rollerCoaster',
+  'waterRide',
+  'flatRide',
+  'darkRide',
+  'familyRide',
+  'thrillRide',
+  'transportRide',
+  'walkThrough',
+  'playground',
+  'interactiveExperience',
+  'cinema',
+  'dropTower',
+  'observationRide',
+  'animalExhibit',
+  'restaurant',
+  'snack',
+  'hotel',
+  'show',
+  'shop',
+  'game',
+  'meetAndGreet',
+  'service',
+  'toilets',
+  'firstAid',
+  'information',
+  'locker',
+  'parking',
+  'transport',
+  'station',
+  'other'
+]);
+
 export function getStandaloneAttractionTypeTranslationKey(type: StandaloneAttraction['type']): string {
   const segment: string = normalizeTranslationSegment(type, 'other');
-
-  if (segment === 'rollerCoaster' || segment === 'waterRide' || segment === 'flatRide' || segment === 'darkRide') {
-    return `publicCounts.${segment}.one`;
-  }
-
-  switch (segment) {
-    case 'restaurant':
-    case 'hotel':
-    case 'show':
-    case 'shop':
-    case 'service':
-    case 'transport':
-    case 'other':
-      return `home.categories.${segment}`;
-    default:
-      return 'home.categories.attraction';
-  }
+  return `standaloneAttractionTypes.${SUPPORTED_TYPE_SEGMENTS.has(segment) ? segment : 'other'}`;
 }
 
 export function getStandaloneAttractionStatusTranslationKey(status: string | null | undefined): string | null {
