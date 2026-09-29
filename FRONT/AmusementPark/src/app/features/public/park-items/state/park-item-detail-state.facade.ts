@@ -5,6 +5,7 @@ import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
+import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
 import { HistoryTimeline } from '@app/models/history/history.models';
@@ -44,6 +45,7 @@ import {
 interface ParkItemDetailSourceData {
   item: ParkItem;
   park: Park | null;
+  parkTimeZoneId: string | null;
   manufacturerName: string | null;
   zoneName: string | null;
   relatedItems: ParkItem[];
@@ -60,6 +62,9 @@ export class ParkItemDetailStateFacade {
   private readonly currentLanguageSignal = signal('en');
 
   public readonly state = this.screenStateStore.state;
+  public readonly parkTimeZoneId: Signal<string | null> = computed(
+    (): string | null => this.screenStateStore.data()?.parkTimeZoneId ?? null
+  );
   public readonly detail: Signal<ParkItemDetailViewModel | null> = computed(() => {
     const sourceData: ParkItemDetailSourceData | undefined = this.screenStateStore.data();
 
@@ -112,6 +117,7 @@ export class ParkItemDetailStateFacade {
         this.screenStateStore.setReady({
           item,
           park: null,
+          parkTimeZoneId: null,
           manufacturerName: null,
           zoneName: null,
           relatedItems: [],
@@ -146,6 +152,26 @@ export class ParkItemDetailStateFacade {
         applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
 
         this.screenStateStore.setError('parkItems.detail.errorMessage', this.screenStateStore.data());
+      }
+    });
+
+    this.parksApiService.getParkOpeningHours(
+      item.parkId,
+      null,
+      null,
+      anonymousHttpOptions()
+    ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (calendar: ParkOpeningHoursCalendar) => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          parkTimeZoneId: calendar.timeZoneId?.trim() || null
+        }));
+      },
+      error: (): void => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          parkTimeZoneId: null
+        }));
       }
     });
 

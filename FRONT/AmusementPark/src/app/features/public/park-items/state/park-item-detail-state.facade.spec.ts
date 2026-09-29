@@ -402,6 +402,7 @@ describe('ParkItemDetailStateFacade', () => {
     ).toEqual(['/', 'fr', 'technical', 'lap-bar']);
     expect(context.itemsPort.itemCalls).toEqual(['item-1']);
     expect(context.parksPort.calls).toEqual(['park-1']);
+    expect(context.facade.parkTimeZoneId()).toBe('Europe/Berlin');
     expect(context.itemsPort.siblingCalls).toEqual(['item-1']);
     expect(context.itemsPort.relatedCalls).toEqual(['item-1:3']);
     expect(context.manufacturersPort.calls).toEqual(['manufacturer-1']);

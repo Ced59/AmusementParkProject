@@ -77,6 +77,46 @@ describe('PublicLiveStateFacade', () => {
     expect(facade.state().isOnline).toBe(false);
   });
 
+  it('expires current operational facts locally while the browser is offline', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-09-29T10:00:00Z'));
+    const onlineSpy = vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(true);
+    const target: PublicLiveTarget = createTarget({ expiresAtUtc: '2026-09-29T10:00:30Z' });
+    const port: PublicLiveDataPort = createPort({ getParkItem: () => of(target) });
+    const facade: PublicLiveStateFacade = configureFacade(port, true);
+
+    facade.watchParkItem('item-1');
+    onlineSpy.mockReturnValue(false);
+    window.dispatchEvent(new Event('offline'));
+    vi.advanceTimersByTime(30_001);
+
+    expect(facade.state().target?.availability).toBe('Expired');
+    expect(facade.state().target?.freshness).toBe('Expired');
+    expect(facade.state().isOnline).toBe(false);
+  });
+
+  it('does not restore expired facts when the refresh triggered at expiry fails', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-09-29T10:00:00Z'));
+    const target: PublicLiveTarget = createTarget({ expiresAtUtc: '2026-09-29T10:00:30Z' });
+    let requestCount: number = 0;
+    const port: PublicLiveDataPort = createPort({
+      getParkItem: () => {
+        requestCount++;
+        return requestCount === 1
+          ? of(target)
+          : throwError(() => new HttpErrorResponse({ status: 503 }));
+      }
+    });
+    const facade: PublicLiveStateFacade = configureFacade(port, true);
+
+    facade.watchParkItem('item-1');
+    vi.advanceTimersByTime(30_001);
+
+    expect(facade.state().target?.availability).toBe('Expired');
+    expect(facade.state().refreshFailed).toBe(true);
+  });
+
   it('does not poll during server-side rendering', () => {
     const port: PublicLiveDataPort = createPort();
     const facade: PublicLiveStateFacade = configureFacade(port, false);
@@ -124,7 +164,11 @@ function createPort(overrides: PortOverrides = {}): PublicLiveDataPort {
   };
 }
 
-function createTarget(): PublicLiveTarget {
+interface TargetOverrides {
+  readonly expiresAtUtc?: string | null;
+}
+
+function createTarget(overrides: TargetOverrides = {}): PublicLiveTarget {
   return {
     targetId: 'item-1',
     targetType: 'ParkItem',
@@ -139,7 +183,9 @@ function createTarget(): PublicLiveTarget {
     receivedAtUtc: '2026-09-29T09:59:01Z',
     ageSeconds: 60,
     freshness: 'Fresh',
-    expiresAtUtc: '2026-09-29T10:04:00Z',
+    expiresAtUtc: overrides.expiresAtUtc === undefined
+      ? '2026-09-29T10:04:00Z'
+      : overrides.expiresAtUtc,
     source: null,
     confidence: 'High'
   };

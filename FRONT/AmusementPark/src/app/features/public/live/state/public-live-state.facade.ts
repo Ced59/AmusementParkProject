@@ -24,6 +24,7 @@ export class PublicLiveStateFacade {
   private currentMode: PublicLiveDisplayMode | null = null;
   private currentTargetId: string | null = null;
   private refreshTimeoutId: number | null = null;
+  private expirationTimeoutId: number | null = null;
   private requestSubscription: Subscription | null = null;
 
   readonly state: Signal<PublicLiveViewState> = this.stateSignal.asReadonly();
@@ -61,6 +62,7 @@ export class PublicLiveStateFacade {
     }
 
     this.cancelScheduledRefresh();
+    this.cancelScheduledExpiration();
     this.requestSubscription?.unsubscribe();
     this.requestSubscription = null;
     this.currentMode = mode;
@@ -87,7 +89,6 @@ export class PublicLiveStateFacade {
       return;
     }
 
-    const previousState: PublicLiveViewState = this.stateSignal();
     this.stateSignal.update((state: PublicLiveViewState) => ({
       ...state,
       kind: state.target ? 'ready' : 'loading',
@@ -121,11 +122,13 @@ export class PublicLiveStateFacade {
           refreshFailed: false,
           lastSuccessfulRefreshUtc: new Date().toISOString()
         });
+        this.scheduleNextExpiration(result.target, result.items);
         this.scheduleNextRefresh(result.target, result.items);
       },
       error: (error: unknown) => {
         this.requestSubscription = null;
         const endpointDisabled: boolean = error instanceof HttpErrorResponse && error.status === 404;
+        const fallbackState: PublicLiveViewState = this.stateSignal();
         this.stateSignal.set(endpointDisabled
           ? {
             ...INITIAL_PUBLIC_LIVE_VIEW_STATE,
@@ -135,18 +138,19 @@ export class PublicLiveStateFacade {
             refreshFailed: false
           }
           : {
-            ...previousState,
-            kind: previousState.target ? 'ready' : 'error',
+            ...fallbackState,
+            kind: fallbackState.target ? 'ready' : 'error',
             mode: this.currentMode,
             isRefreshing: false,
             isOnline: navigator.onLine,
             refreshFailed: true
           });
         if (endpointDisabled) {
+          this.cancelScheduledExpiration();
           return;
         }
 
-        this.scheduleNextRefresh(previousState.target, previousState.items);
+        this.scheduleNextRefresh(fallbackState.target, fallbackState.items);
       }
     });
     this.requestSubscription = subscription.closed ? null : subscription;
@@ -163,6 +167,57 @@ export class PublicLiveStateFacade {
       this.refreshTimeoutId = null;
       this.loadCurrentTarget();
     }, delay);
+  }
+
+  private scheduleNextExpiration(
+    target: PublicLiveTarget | null,
+    items: readonly PublicLiveTarget[]
+  ): void {
+    this.cancelScheduledExpiration();
+    const now: number = Date.now();
+    const nextExpiration: number | null = [target, ...items]
+      .filter((candidate: PublicLiveTarget | null): candidate is PublicLiveTarget =>
+        candidate !== null && candidate.availability === 'Current')
+      .map((candidate: PublicLiveTarget) => candidate.expiresAtUtc
+        ? Date.parse(candidate.expiresAtUtc)
+        : Number.NaN)
+      .filter((expiresAt: number) => Number.isFinite(expiresAt))
+      .reduce<number | null>((earliest: number | null, expiresAt: number) =>
+        earliest === null || expiresAt < earliest ? expiresAt : earliest, null);
+
+    if (nextExpiration === null) {
+      return;
+    }
+
+    const delay: number = Math.max(0, nextExpiration - now);
+    this.expirationTimeoutId = window.setTimeout((): void => {
+      this.expirationTimeoutId = null;
+      this.expireCurrentObservations();
+    }, Math.min(delay, 2_147_483_647));
+  }
+
+  private expireCurrentObservations(): void {
+    const now: number = Date.now();
+    const state: PublicLiveViewState = this.stateSignal();
+    const target: PublicLiveTarget | null = this.expireTarget(state.target, now);
+    const items: readonly PublicLiveTarget[] = state.items.map(
+      (item: PublicLiveTarget) => this.expireTarget(item, now) ?? item
+    );
+    this.stateSignal.set({ ...state, target, items });
+    this.scheduleNextExpiration(target, items);
+  }
+
+  private expireTarget(target: PublicLiveTarget | null, now: number): PublicLiveTarget | null {
+    if (!target || target.availability !== 'Current' || !target.expiresAtUtc) {
+      return target;
+    }
+
+    const expiresAt: number = Date.parse(target.expiresAtUtc);
+    if (!Number.isFinite(expiresAt) || expiresAt > now) {
+      return target;
+    }
+
+    return { ...target, availability: 'Expired', freshness: 'Expired' };
   }
 
   private readonly handleVisibilityChange = (): void => {
@@ -195,8 +250,16 @@ export class PublicLiveStateFacade {
     }
   }
 
+  private cancelScheduledExpiration(): void {
+    if (this.expirationTimeoutId !== null) {
+      window.clearTimeout(this.expirationTimeoutId);
+      this.expirationTimeoutId = null;
+    }
+  }
+
   private dispose(): void {
     this.cancelScheduledRefresh();
+    this.cancelScheduledExpiration();
     this.requestSubscription?.unsubscribe();
     this.requestSubscription = null;
     if (this.ssrRuntimeService.isBrowserRuntime()) {

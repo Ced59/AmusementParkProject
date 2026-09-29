@@ -71,6 +71,13 @@ describe('public live view helpers', () => {
     expect(resolvePublicLiveFreshnessReference(park, [recent, older]).targetId).toBe('older');
   });
 
+  it('keeps a just-received child as a known freshness reference when the park age is absent', () => {
+    const park: PublicLiveTarget = createTarget({ targetId: 'park', ageSeconds: null });
+    const justReceived: PublicLiveTarget = createTarget({ targetId: 'child', ageSeconds: 0 });
+
+    expect(resolvePublicLiveFreshnessReference(park, [justReceived]).targetId).toBe('child');
+  });
+
   it('does not replace an unknown standby wait with another queue or show a closed queue value', () => {
     const unknownStandby: PublicLiveTarget = {
       ...createTarget({ waitTimeMinutes: null }),

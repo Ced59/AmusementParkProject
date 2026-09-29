@@ -98,6 +98,7 @@ export class ParkItemDetailViewComponent {
   @Input() heroImageSrcWidth: number | null = 960;
   @Input() currentLang: string = 'en';
   @Input() liveState: PublicLiveViewState | null = null;
+  @Input() liveTimeZoneId: string | null = null;
 
   @Output() backToItemsClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() liveRefreshClicked: EventEmitter<void> = new EventEmitter<void>();

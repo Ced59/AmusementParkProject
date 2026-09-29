@@ -14,6 +14,17 @@ describe('PublicLivePanelComponent queue presentation', () => {
     expect(view.formatQueueTime(null)).toBeNull();
   });
 
+  it('labels queue timestamps as UTC when the park timezone is unavailable', () => {
+    const component: PublicLivePanelComponent = new PublicLivePanelComponent();
+    component.currentLanguage = 'en';
+    component.timeZoneId = null;
+    const view = component as unknown as {
+      formatQueueTime: (value: string | null) => string | null;
+    };
+
+    expect(view.formatQueueTime('2026-09-29T12:00:00Z')).toMatch(/12:00.*UTC/);
+  });
+
   it('formats queue prices from minor units and rejects incomplete prices', () => {
     const component: PublicLivePanelComponent = new PublicLivePanelComponent();
     component.currentLanguage = 'fr';

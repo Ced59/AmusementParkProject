@@ -94,11 +94,13 @@ export class PublicLivePanelComponent {
     }
 
     try {
-      return new Intl.DateTimeFormat(this.currentLanguage, {
-        timeZone: this.timeZoneId ?? undefined,
+      const hasParkTimeZone: boolean = Boolean(this.timeZoneId?.trim());
+      const formatted: string = new Intl.DateTimeFormat(this.currentLanguage, {
+        timeZone: hasParkTimeZone ? this.timeZoneId! : 'UTC',
         hour: '2-digit',
         minute: '2-digit'
       }).format(date);
+      return hasParkTimeZone ? formatted : `${formatted} UTC`;
     } catch {
       return null;
     }

@@ -37,7 +37,9 @@ export function resolvePublicLiveFreshnessReference(
     .filter((candidate: PublicLiveTarget) => candidate.ageSeconds !== null)
     .reduce(
       (oldest: PublicLiveTarget, candidate: PublicLiveTarget) =>
-        (candidate.ageSeconds ?? 0) > (oldest.ageSeconds ?? 0) ? candidate : oldest,
+        oldest.ageSeconds === null || (candidate.ageSeconds ?? 0) > oldest.ageSeconds
+          ? candidate
+          : oldest,
       target
     );
 }

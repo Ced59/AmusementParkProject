@@ -5,6 +5,7 @@ import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
+import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
 import { HistoryTimeline } from '@app/models/history/history.models';
@@ -30,6 +31,12 @@ export interface ParkItemDetailItemsPort {
 
 export interface ParkItemDetailParksPort {
   getParkById(id: string, options?: AnonymousHttpOptions): Observable<Park>;
+  getParkOpeningHours(
+    id: string,
+    from?: string | null,
+    to?: string | null,
+    options?: AnonymousHttpOptions
+  ): Observable<ParkOpeningHoursCalendar>;
 }
 
 export interface ParkItemDetailManufacturersPort {

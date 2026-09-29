@@ -28,6 +28,7 @@ export class ParkItemDetailPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly detail = this.stateFacade.detail;
   protected readonly liveState = this.liveStateFacade.state;
+  protected readonly parkTimeZoneId = this.stateFacade.parkTimeZoneId;
   protected readonly currentLanguage = signal<string>('en');
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
