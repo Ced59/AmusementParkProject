@@ -46,7 +46,29 @@ describe('LiveAlertInboxFacade', () => {
     facade.dismiss(notification);
 
     expect(facade.dashboard()).toEqual(dashboard);
-    expect(facade.error()).toBe(true);
+    expect(facade.error()).toBe(false);
+    expect(facade.actionError()).toBe(true);
+    expect(facade.refreshError()).toBe(false);
+  });
+
+  it('distinguishes a failed refresh after the mutation already succeeded', () => {
+    const notification: LiveAlertNotification = buildNotification();
+    const dashboard: LiveAlertDashboard = {
+      subscriptions: [], notifications: [notification], unreadCount: 1, retentionDays: 30
+    };
+    const dataPort: LiveAlertsDataPort = buildPort(dashboard);
+    dataPort.getDashboard = vi.fn()
+      .mockReturnValueOnce(of(dashboard))
+      .mockReturnValueOnce(throwError(() => new Error('refresh unavailable')));
+    const facade: LiveAlertInboxFacade = createFacade(dataPort);
+    facade.load();
+
+    facade.dismiss(notification);
+
+    expect(facade.dashboard()).toEqual(dashboard);
+    expect(facade.error()).toBe(false);
+    expect(facade.actionError()).toBe(false);
+    expect(facade.refreshError()).toBe(true);
   });
 });
 

@@ -24,9 +24,14 @@
       <button appUiButton="ghost" type="button" (click)="facade.load()">{{ 'liveAlerts.feedback.retry' | translate }}</button>
     </p>
   } @else if (facade.dashboard(); as dashboard) {
-    @if (facade.error()) {
+    @if (facade.actionError()) {
       <p class="live-inbox__message live-inbox__message--error" role="alert">
         {{ 'liveAlerts.feedback.actionError' | translate }}
+        <button appUiButton="ghost" type="button" (click)="facade.load()">{{ 'liveAlerts.feedback.refresh' | translate }}</button>
+      </p>
+    } @else if (facade.refreshError()) {
+      <p class="live-inbox__message live-inbox__message--error" role="alert">
+        {{ 'liveAlerts.feedback.error' | translate }}
         <button appUiButton="ghost" type="button" (click)="facade.load()">{{ 'liveAlerts.feedback.refresh' | translate }}</button>
       </p>
     }

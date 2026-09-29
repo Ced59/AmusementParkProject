@@ -416,6 +416,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ILiveQualityIncidentRepository, LiveQualityIncidentRepository>();
         services.AddSingleton<LivePollingMetrics>();
         services.AddHostedService<LivePollingBackgroundService>();
+        services.AddHostedService<LiveAlertPendingDeliveryBackgroundService>();
         services.AddScoped<IParkWeatherProviderStrategy, OpenMeteoWeatherProviderStrategy>();
         services.AddScoped<IParkWeatherProviderStrategyResolver, ParkWeatherProviderStrategyResolver>();
         services.AddSingleton<IParkWeatherRefreshQueue, ParkWeatherRefreshQueue>();

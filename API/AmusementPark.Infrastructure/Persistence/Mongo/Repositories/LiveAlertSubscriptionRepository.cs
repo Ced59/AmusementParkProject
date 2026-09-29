@@ -195,23 +195,19 @@ public sealed class LiveAlertSubscriptionRepository : ILiveAlertSubscriptionRepo
         CancellationToken cancellationToken)
     {
         string normalizedUserId = IdentifierRules.NormalizeRequired(userId, nameof(userId));
-        DeleteResult result = await this.collection.DeleteOneAsync(
-            item => item.Id == subscriptionId.Value
-                && item.UserId == normalizedUserId
-                && item.Version == expectedVersion,
-            cancellationToken);
-        if (result.DeletedCount == 1)
+        if (expectedVersion < 1)
         {
-            return WatchSubscriptionWriteOutcome.Success;
+            throw new ArgumentOutOfRangeException(nameof(expectedVersion));
         }
 
-        long existing = await this.collection.CountDocumentsAsync(
-            item => item.Id == subscriptionId.Value && item.UserId == normalizedUserId,
-            new CountOptions { Limit = 1 },
+        DeleteResult result = await this.collection.DeleteOneAsync(
+            LiveAlertMongoDefinitions.BuildOwnedDeleteFilter(
+                normalizedUserId,
+                subscriptionId.Value),
             cancellationToken);
-        return existing == 0
-            ? WatchSubscriptionWriteOutcome.NotFound
-            : WatchSubscriptionWriteOutcome.Conflict;
+        return result.DeletedCount == 1
+            ? WatchSubscriptionWriteOutcome.Success
+            : WatchSubscriptionWriteOutcome.NotFound;
     }
 
     private static void EnsureUtc(DateTime value)
