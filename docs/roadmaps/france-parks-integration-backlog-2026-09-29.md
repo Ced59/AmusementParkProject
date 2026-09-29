@@ -9,7 +9,7 @@ Chaque ligne active est traitée avec le workflow `PARK_DATA_EDITOR`, les étape
 1. la fiche et ses contenus retenus sont réellement publics sur le site, le score post-publication est strictement supérieur à 95, aucun bloqueur ne subsiste et la page publique a été contrôlée anonymement ;
 2. l'annonce Facebook officielle de cette même fiche est au statut `Published`, sans recréer une publication existante.
 
-Une fusion de doublons, une migration vers `StandaloneAttraction` ou un classement `NotRelevant` ne compte pas comme publication d'un parc : ces cas restent documentés dans les anomalies et ne déclenchent pas d'annonce Facebook artificielle.
+Une fusion de doublons ou un classement `NotRelevant` ne compte pas comme publication d'un parc et ne déclenche pas d'annonce Facebook artificielle. Une ligne d'attraction autonome suit en revanche sa propre fiche publique : elle ne peut être retirée qu'après publication et contrôle anonyme de la `StandaloneAttraction`, annonce Facebook `Published`, puis suppression effective de l'ancien parkItem et de l'ancien parc artificiel lorsqu'ils existent. Le simple masquage ou classement `NotRelevant` du legacy ne suffit pas.
 
 La demande du 29 septembre 2026 autorise explicitement la publication Facebook de chaque fiche terminée. Cette autorisation sociale est propre à ce lot français et ne doit pas être déduite d'une future demande de complétude ordinaire.
 
@@ -236,7 +236,7 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 ## 6. Attractions autonomes à migrer ou intégrer
 
-Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parc et son éventuel parkItem ne sont retirés qu'après la migration contrôlée et la vérification de la nouvelle entité `StandaloneAttraction`.
+Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
 - [ ] Alpe d'Huez — parc legacy `bdd0bc83-428d-47e9-9af6-260a20cb769b` — luge sur rail fixe confirmée par la station
 - [ ] Bernex — parc legacy `2577454a-3e59-4a71-be60-2183b0c95915`

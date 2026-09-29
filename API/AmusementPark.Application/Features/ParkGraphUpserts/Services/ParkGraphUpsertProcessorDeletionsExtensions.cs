@@ -37,10 +37,52 @@ using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.SocialPublishing;
 using AmusementPark.Application.Features.Parks.Contracts;
+using AmusementPark.Core.Domain.Comments;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 internal static class ParkGraphUpsertProcessorDeletionsExtensions
 {
+    internal static void ValidateTargetParkDeletionPreflight(
+        this ParkGraphUpsertProcessor processorContext,
+        JsonElement root,
+        JsonElement? parkPatch,
+        Park targetPark,
+        ParkGraphUpsertResult result)
+    {
+        List<ParkGraphDeletionRequest> requests = ParkGraphUpsertProcessorDeletionsExtensions.ReadDeletionRequests(root, result);
+        bool deletesTargetPark = requests.Any(request =>
+            string.Equals(request.Id, targetPark.Id, StringComparison.Ordinal)
+            && (string.IsNullOrWhiteSpace(request.EntityType)
+                || string.Equals(
+                    ParkGraphUpsertProcessorDeletionsExtensions.NormalizeDeletionEntityType(request.EntityType),
+                    "Park",
+                    StringComparison.Ordinal)));
+        if (!deletesTargetPark)
+        {
+            return;
+        }
+
+        List<string> blockers = new List<string>();
+        if (parkPatch.HasValue)
+        {
+            blockers.Add("le document de suppression ne doit contenir aucune mutation 'park'");
+        }
+
+        if (targetPark.IsVisible || targetPark.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+        {
+            blockers.Add("le parc enregistré doit déjà être masqué et classé NotRelevant avant cette requête");
+        }
+
+        if (blockers.Count > 0)
+        {
+            processorContext.AddSkippedDeletionChange(
+                result,
+                "Park",
+                targetPark.Id,
+                $"Suppression Park '{targetPark.Id}' refusée : {string.Join(" ; ", blockers)}.");
+        }
+    }
+
     internal static async Task<ParkGraphUpsertItemSeoChanges> ProcessDeletionsAsync(this ParkGraphUpsertProcessor processorContext, JsonElement root, Park targetPark, ParkGraphUpsertResult result, bool apply, CancellationToken cancellationToken)
     {
         ParkGraphUpsertItemSeoChanges seoChanges = new ParkGraphUpsertItemSeoChanges();
@@ -63,6 +105,12 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             if (!await processorContext.IsDeletionTargetInTargetParkAsync(target, targetPark, cancellationToken))
             {
                 processorContext.AddSkippedDeletionChange(result, target.EntityType, target.Id, $"Suppression {target.EntityType} '{target.Id}' refusée : l'élément n'appartient pas au parc cible '{targetPark.Id}'.");
+                continue;
+            }
+
+            if (target.ParkItem is not null
+                && !await processorContext.CanDeleteParkItemAsync(target.ParkItem, result, cancellationToken))
+            {
                 continue;
             }
 
@@ -353,6 +401,9 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
         IReadOnlyCollection<HistoryEvent> historyEvents = processorContext.historyEventRepository is null
             ? Array.Empty<HistoryEvent>()
             : await processorContext.historyEventRepository.GetOwnerTimelineAsync(HistoryEntityType.Park, park.Id, true, cancellationToken);
+        long? commentCount = processorContext.commentRepository is null
+            ? null
+            : await processorContext.commentRepository.CountByTargetAsync(CommentTargetType.Park, park.Id, cancellationToken);
 
         List<string> dependencies = new List<string>();
         if (items.Count > 0)
@@ -390,6 +441,15 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             dependencies.Add($"{historyEvents.Count} événement(s) historique(s)");
         }
 
+        if (!commentCount.HasValue)
+        {
+            dependencies.Add("la vérification des commentaires est indisponible");
+        }
+        else if (commentCount.Value > 0)
+        {
+            dependencies.Add($"{commentCount.Value} commentaire(s)");
+        }
+
         if (dependencies.Count == 0)
         {
             return true;
@@ -400,6 +460,31 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             "Park",
             park.Id,
             $"Suppression Park '{park.Id}' refusée : retirer d'abord les dépendances contrôlées suivantes : {string.Join(", ", dependencies)}.");
+        return false;
+    }
+
+    internal static async Task<bool> CanDeleteParkItemAsync(
+        this ParkGraphUpsertProcessor processorContext,
+        ParkItem item,
+        ParkGraphUpsertResult result,
+        CancellationToken cancellationToken)
+    {
+        long? commentCount = processorContext.commentRepository is null
+            ? null
+            : await processorContext.commentRepository.CountByTargetAsync(CommentTargetType.ParkItem, item.Id, cancellationToken);
+        if (commentCount == 0)
+        {
+            return true;
+        }
+
+        string dependency = commentCount.HasValue
+            ? $"{commentCount.Value} commentaire(s)"
+            : "la vérification des commentaires est indisponible";
+        processorContext.AddSkippedDeletionChange(
+            result,
+            "ParkItem",
+            item.Id,
+            $"Suppression ParkItem '{item.Id}' refusée : retirer d'abord la dépendance contrôlée suivante : {dependency}.");
         return false;
     }
 

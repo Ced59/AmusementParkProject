@@ -37,6 +37,7 @@ using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
 using AmusementPark.Core.Domain.SocialPublishing;
 using AmusementPark.Application.Features.Parks.Contracts;
+using AmusementPark.Application.Features.Comments.Ports;
 
 namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 public sealed class ParkGraphUpsertProcessor
@@ -56,7 +57,7 @@ public sealed class ParkGraphUpsertProcessor
     /// The legacy constructor remains available so existing focused tests can keep supplying
     /// only the dependencies required by the scenario they exercise.
     /// </summary>
-    public ParkGraphUpsertProcessor(IParkRepository parkRepository, IParkZoneRepository parkZoneRepository, IParkItemRepository parkItemRepository, IParkFounderRepository parkFounderRepository, IParkOperatorRepository parkOperatorRepository, IAttractionManufacturerRepository attractionManufacturerRepository, IImageRepository imageRepository, IRemoteImageImporter remoteImageImporter, ISearchProjectionWriter searchProjectionWriter, IParkGraphUpsertHistoryRepository historyRepository, IPublicSeoUpdateNotifier publicSeoUpdateNotifier, IMeasurementConversionService measurementConversionService, IParkPricingRepository parkPricingRepository, IImageBinaryStorage imageBinaryStorage, IParkOpeningHoursRepository? parkOpeningHoursRepository = null, ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer = null, ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null, IHistoryEventRepository? historyEventRepository = null, IStandaloneAttractionRepository? standaloneAttractionRepository = null, ISocialPublicationService? socialPublicationService = null, IParkOfficialMapBinaryStorage? parkOfficialMapBinaryStorage = null, IParkOpeningHoursFactualChangeCapture? openingHoursFactualChangeCapture = null, HistoricalNarrativeCanonicalFactRetractionService? canonicalFactRetractionService = null) : this(parkRepository, parkZoneRepository, parkItemRepository, parkFounderRepository, parkOperatorRepository, attractionManufacturerRepository, imageRepository, remoteImageImporter, searchProjectionWriter, historyRepository, publicSeoUpdateNotifier, measurementConversionService, parkOpeningHoursRepository, parkOpeningHoursScheduleNormalizer, parkOpeningHoursCoverageSegmentBuilder, historyEventRepository, standaloneAttractionRepository, socialPublicationService, imageBinaryStorage, parkOfficialMapBinaryStorage, openingHoursFactualChangeCapture, canonicalFactRetractionService)
+    public ParkGraphUpsertProcessor(IParkRepository parkRepository, IParkZoneRepository parkZoneRepository, IParkItemRepository parkItemRepository, IParkFounderRepository parkFounderRepository, IParkOperatorRepository parkOperatorRepository, IAttractionManufacturerRepository attractionManufacturerRepository, IImageRepository imageRepository, IRemoteImageImporter remoteImageImporter, ISearchProjectionWriter searchProjectionWriter, IParkGraphUpsertHistoryRepository historyRepository, IPublicSeoUpdateNotifier publicSeoUpdateNotifier, IMeasurementConversionService measurementConversionService, IParkPricingRepository parkPricingRepository, IImageBinaryStorage imageBinaryStorage, IParkOpeningHoursRepository? parkOpeningHoursRepository = null, ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer = null, ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null, IHistoryEventRepository? historyEventRepository = null, IStandaloneAttractionRepository? standaloneAttractionRepository = null, ISocialPublicationService? socialPublicationService = null, IParkOfficialMapBinaryStorage? parkOfficialMapBinaryStorage = null, IParkOpeningHoursFactualChangeCapture? openingHoursFactualChangeCapture = null, HistoricalNarrativeCanonicalFactRetractionService? canonicalFactRetractionService = null, ICommentRepository? commentRepository = null) : this(parkRepository, parkZoneRepository, parkItemRepository, parkFounderRepository, parkOperatorRepository, attractionManufacturerRepository, imageRepository, remoteImageImporter, searchProjectionWriter, historyRepository, publicSeoUpdateNotifier, measurementConversionService, parkOpeningHoursRepository, parkOpeningHoursScheduleNormalizer, parkOpeningHoursCoverageSegmentBuilder, historyEventRepository, standaloneAttractionRepository, socialPublicationService, imageBinaryStorage, parkOfficialMapBinaryStorage, openingHoursFactualChangeCapture, canonicalFactRetractionService, commentRepository)
     {
         this.parkPricingRepository = parkPricingRepository;
     }
@@ -83,7 +84,8 @@ public sealed class ParkGraphUpsertProcessor
     internal readonly HistoricalNarrativeCanonicalFactRetractionService? canonicalFactRetractionService;
     internal readonly ISocialPublicationService? socialPublicationService;
     internal readonly IParkOfficialMapBinaryStorage? parkOfficialMapBinaryStorage;
-    public ParkGraphUpsertProcessor(IParkRepository parkRepository, IParkZoneRepository parkZoneRepository, IParkItemRepository parkItemRepository, IParkFounderRepository parkFounderRepository, IParkOperatorRepository parkOperatorRepository, IAttractionManufacturerRepository attractionManufacturerRepository, IImageRepository imageRepository, IRemoteImageImporter remoteImageImporter, ISearchProjectionWriter searchProjectionWriter, IParkGraphUpsertHistoryRepository historyRepository, IPublicSeoUpdateNotifier publicSeoUpdateNotifier, IMeasurementConversionService measurementConversionService, IParkOpeningHoursRepository? parkOpeningHoursRepository = null, ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer = null, ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null, IHistoryEventRepository? historyEventRepository = null, IStandaloneAttractionRepository? standaloneAttractionRepository = null, ISocialPublicationService? socialPublicationService = null, IImageBinaryStorage? imageBinaryStorage = null, IParkOfficialMapBinaryStorage? parkOfficialMapBinaryStorage = null, IParkOpeningHoursFactualChangeCapture? openingHoursFactualChangeCapture = null, HistoricalNarrativeCanonicalFactRetractionService? canonicalFactRetractionService = null)
+    internal readonly ICommentRepository? commentRepository;
+    public ParkGraphUpsertProcessor(IParkRepository parkRepository, IParkZoneRepository parkZoneRepository, IParkItemRepository parkItemRepository, IParkFounderRepository parkFounderRepository, IParkOperatorRepository parkOperatorRepository, IAttractionManufacturerRepository attractionManufacturerRepository, IImageRepository imageRepository, IRemoteImageImporter remoteImageImporter, ISearchProjectionWriter searchProjectionWriter, IParkGraphUpsertHistoryRepository historyRepository, IPublicSeoUpdateNotifier publicSeoUpdateNotifier, IMeasurementConversionService measurementConversionService, IParkOpeningHoursRepository? parkOpeningHoursRepository = null, ParkOpeningHoursScheduleNormalizer? parkOpeningHoursScheduleNormalizer = null, ParkOpeningHoursCoverageSegmentBuilder? parkOpeningHoursCoverageSegmentBuilder = null, IHistoryEventRepository? historyEventRepository = null, IStandaloneAttractionRepository? standaloneAttractionRepository = null, ISocialPublicationService? socialPublicationService = null, IImageBinaryStorage? imageBinaryStorage = null, IParkOfficialMapBinaryStorage? parkOfficialMapBinaryStorage = null, IParkOpeningHoursFactualChangeCapture? openingHoursFactualChangeCapture = null, HistoricalNarrativeCanonicalFactRetractionService? canonicalFactRetractionService = null, ICommentRepository? commentRepository = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -107,6 +109,7 @@ public sealed class ParkGraphUpsertProcessor
         this.socialPublicationService = socialPublicationService;
         this.imageBinaryStorage = imageBinaryStorage;
         this.parkOfficialMapBinaryStorage = parkOfficialMapBinaryStorage;
+        this.commentRepository = commentRepository;
     }
 
     internal async Task RetractCanonicalFactBeforeHistoryMutationAsync(
@@ -266,6 +269,19 @@ public sealed class ParkGraphUpsertProcessor
             ParkGraphUpsertProcessorResolutionExtensions.FinalizeCounts(result);
             await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
             return apply ? ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas être appliqué car aucun parc cible fiable n'a été résolu.")) : ApplicationResult<ParkGraphUpsertResult>.Success(result);
+        }
+
+        this.ValidateTargetParkDeletionPreflight(root, parkPatch, targetPark, result);
+        if (result.Errors.Count > 0)
+        {
+            result.TargetParkId = targetPark.Id;
+            result.TargetParkName = targetPark.Name;
+            result.CanApply = false;
+            ParkGraphUpsertProcessorResolutionExtensions.FinalizeCounts(result);
+            await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
+            return apply
+                ? ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas être appliqué car la suppression du parc cible est invalide."))
+                : ApplicationResult<ParkGraphUpsertResult>.Success(result);
         }
 
         await this.PreflightOfficialMapsAsync(root, targetPark, parkPatch, result, cancellationToken);

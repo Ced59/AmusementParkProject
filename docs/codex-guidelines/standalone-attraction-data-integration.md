@@ -24,7 +24,8 @@ Si une attraction isolée existe déjà comme parc mono-attraction :
 - renseigner `legacyParkId` et `legacyParkItemId` ;
 - utiliser l’interface admin `Attractions isolées` ou un JSON `standaloneAttractionGraph` avec bloc `migration` ;
 - dans l’interface admin, rechercher l’ancien parc legacy depuis le bloc de migration, sélectionner le résultat, puis vérifier les IDs remplis avant de lancer la migration ;
-- masquer ou retirer le parc legacy et son item seulement après migration contrôlée.
+- ne masquer ou classer `NotRelevant` le parc legacy et son item qu'au cours de la migration contrôlée ; lorsque la demande autorise leur suppression, supprimer ensuite le parkItem puis le parc artificiel avec le workflow `PARK_DATA_EDITOR`, après publication et contrôle anonyme de la nouvelle fiche ;
+- refuser la clôture du traitement tant que le legacy existe encore lorsqu'une suppression a été demandée, ou tant qu'une dépendance (image, zone, horaires, tarif, historique, carte officielle ou commentaire) bloque sa suppression.
 
 Exemple Bardonecchia :
 
