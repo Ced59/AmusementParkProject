@@ -12,6 +12,27 @@ namespace AmusementPark.Infrastructure.Tests.Persistence.Mongo.Repositories;
 public sealed class LiveQualityIncidentRepositoryTests
 {
     [Fact]
+    public void BuildScopedReplayFilter_ShouldRestrictSourceAndConfiguredTargets()
+    {
+        FilterDefinition<LiveQualityIncidentDocument> filter =
+            LiveQualityIncidentRepository.BuildScopedReplayFilter(
+                LiveDataSourceId.Parse("source-current"),
+                new[] { "target-a", "target-b", "target-a" },
+                new DateTime(2026, 9, 29, 12, 0, 0, DateTimeKind.Utc));
+
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<LiveQualityIncidentDocument>(
+                BsonSerializer.LookupSerializer<LiveQualityIncidentDocument>(),
+                BsonSerializer.SerializerRegistry));
+        string json = rendered.ToJson();
+
+        Assert.Contains("source-current", json, StringComparison.Ordinal);
+        Assert.Contains("observation.externalTargetId", json, StringComparison.Ordinal);
+        Assert.Contains("target-a", json, StringComparison.Ordinal);
+        Assert.Contains("target-b", json, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void BuildInsert_ShouldPreserveExactAuditTicksThroughBson()
     {
         DateTime receivedAtUtc =

@@ -53,8 +53,11 @@ en mémoire par une coordination distribuée avant la mise à l’échelle.
 L’annulation de la requête est respectée jusqu’à l’entrée dans cette frontière.
 Une fois la mutation critique engagée, la lecture de révision, l’ajout du
 contrôle et la reconstruction du résultat vont au bout sans dépendre de la
-connexion cliente ; les filtres HTTP peuvent ainsi toujours invalider le cache
-et journaliser une décision déjà durable.
+connexion cliente. La photographie nécessaire au résultat est chargée avant
+l’ajout puis complétée en mémoire avec la révision durable : aucune lecture
+MongoDB faillible ne subsiste après le point d’engagement. Les filtres HTTP
+peuvent ainsi toujours invalider le cache et journaliser une décision déjà
+durable.
 
 ## Exploitation
 
@@ -74,8 +77,10 @@ et la politique interdit son stockage lorsque la génération a changé pendant 
 requête. Une réponse tardive ne peut donc pas repeupler le cache évincé.
 Le nombre total d’incidents en attente reste visible, tandis qu’un compteur
 distinct pilote le bouton de rejeu avec les seuls incidents encore rejouables ;
-les diagnostics fournisseur et conflits de statut ne provoquent plus d’action à
-vide.
+ce compteur et le lot relu sont limités à la source et aux cibles du parc pilote
+actuellement configuré. Les incidents d’une ancienne configuration ne peuvent
+donc ni activer le bouton ni retarder le lot courant. Les diagnostics fournisseur
+et conflits de statut ne provoquent plus d’action à vide.
 
 ## Retour arrière
 

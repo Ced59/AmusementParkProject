@@ -10,6 +10,7 @@ public sealed class LiveQualityIncidentReplayService
     private const int MaximumBatchSize = 100;
     private readonly ILiveQualityIncidentRepository incidentRepository;
     private readonly ILiveTargetMappingRepository mappingRepository;
+    private readonly ILiveDataSourceCatalog sourceCatalog;
     private readonly ILiveLatestObservationRepository latestRepository;
     private readonly ILiveOperationalGate operationalGate;
     private readonly LiveOperationalObservationWriter operationalWriter;
@@ -19,12 +20,14 @@ public sealed class LiveQualityIncidentReplayService
         ILiveQualityIncidentRepository incidentRepository,
         ILiveTargetMappingRepository mappingRepository,
         ILiveLatestObservationRepository latestRepository,
-        ILiveOperationalGate operationalGate)
+        ILiveOperationalGate operationalGate,
+        ILiveDataSourceCatalog sourceCatalog)
         : this(
             incidentRepository,
             mappingRepository,
             latestRepository,
             operationalGate,
+            sourceCatalog,
             new LiveOperationalWriteCoordinator(),
             TimeProvider.System)
     {
@@ -35,12 +38,14 @@ public sealed class LiveQualityIncidentReplayService
         ILiveTargetMappingRepository mappingRepository,
         ILiveLatestObservationRepository latestRepository,
         ILiveOperationalGate operationalGate,
+        ILiveDataSourceCatalog sourceCatalog,
         LiveOperationalWriteCoordinator coordinator)
         : this(
             incidentRepository,
             mappingRepository,
             latestRepository,
             operationalGate,
+            sourceCatalog,
             coordinator,
             TimeProvider.System)
     {
@@ -51,12 +56,14 @@ public sealed class LiveQualityIncidentReplayService
         ILiveTargetMappingRepository mappingRepository,
         ILiveLatestObservationRepository latestRepository,
         ILiveOperationalGate operationalGate,
+        ILiveDataSourceCatalog sourceCatalog,
         TimeProvider timeProvider)
         : this(
             incidentRepository,
             mappingRepository,
             latestRepository,
             operationalGate,
+            sourceCatalog,
             new LiveOperationalWriteCoordinator(),
             timeProvider)
     {
@@ -67,6 +74,7 @@ public sealed class LiveQualityIncidentReplayService
         ILiveTargetMappingRepository mappingRepository,
         ILiveLatestObservationRepository latestRepository,
         ILiveOperationalGate operationalGate,
+        ILiveDataSourceCatalog sourceCatalog,
         LiveOperationalWriteCoordinator coordinator,
         TimeProvider timeProvider)
     {
@@ -74,6 +82,8 @@ public sealed class LiveQualityIncidentReplayService
             ?? throw new ArgumentNullException(nameof(incidentRepository));
         this.mappingRepository = mappingRepository
             ?? throw new ArgumentNullException(nameof(mappingRepository));
+        this.sourceCatalog = sourceCatalog
+            ?? throw new ArgumentNullException(nameof(sourceCatalog));
         this.latestRepository = latestRepository
             ?? throw new ArgumentNullException(nameof(latestRepository));
         this.operationalGate = operationalGate
@@ -100,8 +110,25 @@ public sealed class LiveQualityIncidentReplayService
             nameof(resolvedByUserId));
 
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        LivePollingTarget? configuredTarget = this.sourceCatalog.ConfiguredPollingTarget;
+        if (configuredTarget is null)
+        {
+            return new LiveQualityReplayResult(0, 0, 0, 0, 0);
+        }
+
+        IReadOnlyCollection<ExternalLiveTargetMapping> configuredMappings =
+            await this.mappingRepository.GetLatestByExternalEntityAsync(
+                configuredTarget.SourceId,
+                configuredTarget.ExternalEntityId,
+                cancellationToken);
+        string[] configuredExternalTargetIds = configuredMappings
+            .Select(static mapping => mapping.ExternalTarget.Id)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
         IReadOnlyCollection<LiveQualityIncident> candidates =
             await this.incidentRepository.GetReplayCandidatesAsync(
+                configuredTarget.SourceId,
+                configuredExternalTargetIds,
                 maximumCount,
                 nowUtc,
                 cancellationToken);

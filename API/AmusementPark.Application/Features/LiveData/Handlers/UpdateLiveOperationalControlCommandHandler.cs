@@ -127,6 +127,11 @@ public sealed class UpdateLiveOperationalControlCommandHandler
                                 current?.Revision ?? 0));
                     }
 
+                    LiveOperationalGateSnapshot gate = await this.operationalGate.LoadAsync(
+                        sourceId,
+                        configuredTarget.ExternalEntityId,
+                        commitCancellationToken);
+
                     DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
                     LiveOperationalControl next = current is null
                         ? new LiveOperationalControl(
@@ -160,17 +165,14 @@ public sealed class UpdateLiveOperationalControlCommandHandler
                                 latest?.Revision ?? 0));
                     }
 
-                    LiveOperationalGateSnapshot gate = await this.operationalGate.LoadAsync(
-                        sourceId,
-                        configuredTarget.ExternalEntityId,
-                        commitCancellationToken);
+                    LiveOperationalGateSnapshot committedGate = gate.WithControl(next);
                     return ApplicationResult<LiveOperationalScopeResult>.Success(
                         this.resultFactory.Create(
                             scope,
                             labels.Value.DisplayName,
                             labels.Value.ParentDisplayName,
                             next,
-                            gate));
+                            committedGate));
                 },
                 cancellationToken);
         }

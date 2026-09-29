@@ -73,6 +73,7 @@ public sealed class LiveOperationsDashboardReaderTests
             .ReturnsAsync(3);
         incidents.Setup(value => value.CountReplayablePendingAsync(
                 sourceId,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0),
                 NowUtc,
                 CancellationToken.None))
             .ReturnsAsync(1);

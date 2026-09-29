@@ -79,6 +79,10 @@ public sealed class UpdateLiveOperationalControlCommandHandlerTests
         Assert.Equal("Provider incident", saved.Reason);
         Assert.False(result.Value!.EffectiveCollectionEnabled);
         Assert.False(result.Value.EffectivePublicReadEnabled);
+        gate.Verify(value => value.LoadAsync(
+            SourceId,
+            "external-park",
+            CancellationToken.None), Times.Once);
     }
 
     [Fact]
@@ -141,7 +145,10 @@ public sealed class UpdateLiveOperationalControlCommandHandlerTests
         Assert.True(requestCancellation.IsCancellationRequested);
         Assert.True(result.IsSuccess);
         Assert.False(result.Value!.EffectiveCollectionEnabled);
-        gate.VerifyAll();
+        gate.Verify(value => value.LoadAsync(
+            SourceId,
+            "external-park",
+            CancellationToken.None), Times.Once);
     }
 
     private static Mock<ILiveDataSourceCatalog> CreateCatalog()

@@ -21,6 +21,8 @@ public sealed class LiveQualityIncidentReplayServiceTests
             new Mock<ILiveQualityIncidentRepository>(MockBehavior.Strict);
         incidents
             .Setup(value => value.GetReplayCandidatesAsync(
+                SourceId,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Contains("external-1")),
                 25,
                 NowUtc,
                 It.IsAny<CancellationToken>()))
@@ -41,6 +43,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
         Mock<ILiveTargetMappingRepository> mappings =
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
         ExternalLiveTargetMapping mapping = CreateVerifiedMapping();
+        SetupConfiguredMappings(mappings, new[] { mapping });
         mappings
             .Setup(value => value.GetLatestByExternalTargetIdsAsync(
                 SourceId,
@@ -62,6 +65,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             mappings.Object,
             latest.Object,
             CreateAllowingGate(),
+            CreateCatalog(),
             new FixedTimeProvider(NowUtc));
 
         LiveQualityReplayResult result = await service.ReplayAsync(
@@ -83,6 +87,8 @@ public sealed class LiveQualityIncidentReplayServiceTests
             new Mock<ILiveQualityIncidentRepository>(MockBehavior.Strict);
         incidents
             .Setup(value => value.GetReplayCandidatesAsync(
+                SourceId,
+                It.IsAny<IReadOnlyCollection<string>>(),
                 1,
                 NowUtc,
                 It.IsAny<CancellationToken>()))
@@ -102,6 +108,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             .Returns(Task.CompletedTask);
         Mock<ILiveTargetMappingRepository> mappings =
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        SetupConfiguredMappings(mappings, new[] { CreateVerifiedMapping() });
         mappings
             .Setup(value => value.GetLatestByExternalTargetIdsAsync(
                 SourceId,
@@ -120,6 +127,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             mappings.Object,
             latest.Object,
             CreateAllowingGate(),
+            CreateCatalog(),
             new FixedTimeProvider(NowUtc));
 
         LiveQualityReplayResult result = await service.ReplayAsync(
@@ -132,36 +140,41 @@ public sealed class LiveQualityIncidentReplayServiceTests
     }
 
     [Fact]
-    public async Task ReplayAsync_ShouldKeepSourcesDistinctAndSelectAliasDeterministically()
+    public async Task ReplayAsync_ShouldSelectCurrentEntityAliasDeterministically()
     {
-        LiveDataSourceId secondSourceId = LiveDataSourceId.Parse("source-b");
         LiveQualityIncident aliasZ = CreateIncident(SourceId, "external-z");
         LiveQualityIncident aliasA = CreateIncident(SourceId, "external-a");
-        LiveQualityIncident secondSource = CreateIncident(secondSourceId, "external-b");
-        LiveQualityIncident[] candidates = { aliasZ, secondSource, aliasA };
+        LiveQualityIncident[] candidates = { aliasZ, aliasA };
         Mock<ILiveQualityIncidentRepository> incidents =
             new Mock<ILiveQualityIncidentRepository>(MockBehavior.Strict);
         incidents
             .Setup(value => value.GetReplayCandidatesAsync(
+                SourceId,
+                It.IsAny<IReadOnlyCollection<string>>(),
                 10,
                 NowUtc,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(candidates);
         incidents
             .Setup(value => value.MarkReplayAttemptedAsync(
-                It.Is<IReadOnlyCollection<Guid>>(ids => ids.Count == 3),
+                It.Is<IReadOnlyCollection<Guid>>(ids => ids.Count == 2),
                 NowUtc,
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
         incidents
             .Setup(value => value.MarkResolvedAsync(
-                It.Is<IReadOnlyCollection<Guid>>(ids => ids.Count == 3),
+                It.Is<IReadOnlyCollection<Guid>>(ids => ids.Count == 2),
                 NowUtc,
                 "admin-1",
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(3);
+            .ReturnsAsync(2);
         Mock<ILiveTargetMappingRepository> mappings =
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        SetupConfiguredMappings(mappings, new[]
+        {
+            CreateVerifiedMapping(SourceId, "external-z", "item-1"),
+            CreateVerifiedMapping(SourceId, "external-a", "item-1"),
+        });
         mappings
             .Setup(value => value.GetLatestByExternalTargetIdsAsync(
                 SourceId,
@@ -171,15 +184,6 @@ public sealed class LiveQualityIncidentReplayServiceTests
             {
                 CreateVerifiedMapping(SourceId, "external-z", "item-1"),
                 CreateVerifiedMapping(SourceId, "external-a", "item-1"),
-            });
-        mappings
-            .Setup(value => value.GetLatestByExternalTargetIdsAsync(
-                secondSourceId,
-                It.IsAny<IReadOnlyCollection<string>>(),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new[]
-            {
-                CreateVerifiedMapping(secondSourceId, "external-b", "item-1"),
             });
         List<LiveLatestObservation> stored = new List<LiveLatestObservation>();
         Mock<ILiveLatestObservationRepository> latest =
@@ -197,6 +201,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             mappings.Object,
             latest.Object,
             CreateAllowingGate(),
+            CreateCatalog(),
             new FixedTimeProvider(NowUtc));
 
         LiveQualityReplayResult result = await service.ReplayAsync(
@@ -204,15 +209,9 @@ public sealed class LiveQualityIncidentReplayServiceTests
             "admin-1",
             CancellationToken.None);
 
-        Assert.Equal(3, result.ResolvedCount);
-        Assert.Equal(2, stored.Count);
-        LiveLatestObservation firstSource = Assert.Single(
-            stored,
-            observation => observation.Provenance.SourceId == SourceId);
-        Assert.Equal("external-a", firstSource.Provenance.ExternalTargetId);
-        Assert.Single(
-            stored,
-            observation => observation.Provenance.SourceId == secondSourceId);
+        Assert.Equal(2, result.ResolvedCount);
+        LiveLatestObservation selected = Assert.Single(stored);
+        Assert.Equal("external-a", selected.Provenance.ExternalTargetId);
     }
 
     [Fact]
@@ -222,6 +221,8 @@ public sealed class LiveQualityIncidentReplayServiceTests
         Mock<ILiveQualityIncidentRepository> incidents =
             new Mock<ILiveQualityIncidentRepository>(MockBehavior.Strict);
         incidents.Setup(value => value.GetReplayCandidatesAsync(
+                SourceId,
+                It.IsAny<IReadOnlyCollection<string>>(),
                 1,
                 NowUtc,
                 It.IsAny<CancellationToken>()))
@@ -239,6 +240,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             .ReturnsAsync(0);
         Mock<ILiveTargetMappingRepository> mappings =
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        SetupConfiguredMappings(mappings, new[] { CreateVerifiedMapping() });
         mappings.Setup(value => value.GetLatestByExternalTargetIdsAsync(
                 SourceId,
                 It.IsAny<IReadOnlyCollection<string>>(),
@@ -266,6 +268,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             mappings.Object,
             latest.Object,
             gate.Object,
+            CreateCatalog(),
             new FixedTimeProvider(NowUtc));
 
         LiveQualityReplayResult result = await service.ReplayAsync(
@@ -281,6 +284,36 @@ public sealed class LiveQualityIncidentReplayServiceTests
     private static LiveQualityIncident CreateIncident()
     {
         return CreateIncident(SourceId, "external-1");
+    }
+
+    private static ILiveDataSourceCatalog CreateCatalog()
+    {
+        Mock<ILiveDataSourceCatalog> catalog =
+            new Mock<ILiveDataSourceCatalog>(MockBehavior.Strict);
+        catalog.SetupGet(static value => value.ConfiguredPollingTarget)
+            .Returns(new LivePollingTarget(
+                SourceId,
+                "external-park",
+                new LivePollingActiveWindow(TimeZoneInfo.Utc, 6, 23),
+                new LivePollingPolicy(
+                    TimeSpan.FromMinutes(5),
+                    TimeSpan.FromMinutes(5),
+                    TimeSpan.FromHours(1),
+                    5,
+                    TimeSpan.FromMinutes(30)),
+                TimeSpan.Zero));
+        return catalog.Object;
+    }
+
+    private static void SetupConfiguredMappings(
+        Mock<ILiveTargetMappingRepository> mappings,
+        IReadOnlyCollection<ExternalLiveTargetMapping> configuredMappings)
+    {
+        mappings.Setup(value => value.GetLatestByExternalEntityAsync(
+                SourceId,
+                "external-park",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(configuredMappings);
     }
 
     private static LiveQualityIncident CreateIncident(

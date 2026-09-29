@@ -32,6 +32,21 @@ public sealed class LiveOperationalGateSnapshot
 
     public IReadOnlyCollection<LiveOperationalControl> Controls => this.controls;
 
+    public LiveOperationalGateSnapshot WithControl(LiveOperationalControl control)
+    {
+        ArgumentNullException.ThrowIfNull(control);
+        LiveOperationalControl[] updatedControls = this.controls
+            .Where(existing => !existing.Scope.Equals(control.Scope))
+            .Append(control)
+            .ToArray();
+        return new LiveOperationalGateSnapshot(
+            this.ConfiguredCollectionEnabled,
+            this.ConfiguredPublicReadEnabled,
+            this.ExternalEntityId,
+            updatedControls,
+            this.policy);
+    }
+
     public bool AllowsCollection(
         string? parkId = null,
         LiveTargetType? targetType = null,

@@ -11,6 +11,7 @@ public interface ILiveQualityIncidentRepository
 
     Task<long> CountReplayablePendingAsync(
         LiveDataSourceId sourceId,
+        IReadOnlyCollection<string> externalTargetIds,
         DateTime nowUtc,
         CancellationToken cancellationToken);
 
@@ -19,6 +20,8 @@ public interface ILiveQualityIncidentRepository
         CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<LiveQualityIncident>> GetReplayCandidatesAsync(
+        LiveDataSourceId sourceId,
+        IReadOnlyCollection<string> externalTargetIds,
         int maximumCount,
         DateTime nowUtc,
         CancellationToken cancellationToken);
