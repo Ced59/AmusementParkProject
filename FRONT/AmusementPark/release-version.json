@@ -1,6 +1,20 @@
 {
-  "version": "5.4.19",
+  "version": "5.4.20",
   "history": [
+    {
+      "version": "5.4.20",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "La mesure de l’usage est mieux encadrée pour protéger tes données.",
+        "en": "Usage measurement is better governed to protect your data.",
+        "de": "Die Nutzungsmessung ist zum Schutz deiner Daten klarer geregelt.",
+        "nl": "Gebruiksmeting is beter geregeld om je gegevens te beschermen.",
+        "it": "La misurazione dell’utilizzo è regolata meglio per proteggere i tuoi dati.",
+        "es": "La medición del uso está mejor regulada para proteger tus datos.",
+        "pt": "A medição da utilização está mais bem regulada para proteger os teus dados.",
+        "pl": "Pomiar korzystania jest lepiej uregulowany, aby chronić Twoje dane."
+      }
+    },
     {
       "version": "5.4.19",
       "releasedAt": "2026-09-29",
