@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import {
   ParkAdmissionPriceOffer,
@@ -10,6 +10,10 @@ import {
   ParkPricing
 } from '@app/models/parks/park-pricing';
 import { LocalizedItem } from '@app/models/shared/localized-item';
+import {
+  formatParkPrice,
+  ParkPriceFormattingLabels
+} from '@app/features/public/parks/models/park-pricing.presentation';
 import { ScreenState } from '@shared/models/contracts';
 import { SafeExternalUrlPipe } from '@shared/pipes';
 import { resolveLocalizedText } from '@shared/utils/localization/localized-text.helpers';
@@ -18,6 +22,7 @@ interface StandaloneAttractionPriceSummary {
   key: string;
   label: string;
   price: string;
+  purchaseUrl: string | null;
 }
 
 @Component({
@@ -32,6 +37,8 @@ export class StandaloneAttractionPricingCardComponent {
   @Input() pricing: ParkPricing | null = null;
   @Input() state: ScreenState<unknown, string> | null = null;
   @Input() currentLanguage: string = 'en';
+
+  constructor(private readonly ngxTranslateService: TranslateService) {}
 
   get isLoading(): boolean {
     return this.state?.kind === 'loading';
@@ -53,7 +60,8 @@ export class StandaloneAttractionPricingCardComponent {
           : {
               key: `admission:${offer.id || offer.code}`,
               label: this.localizedText(offer.labels, offer.code),
-              price
+              price,
+              purchaseUrl: offer.purchaseUrl ?? null
             };
       })
       .filter((summary: StandaloneAttractionPriceSummary | null): summary is StandaloneAttractionPriceSummary => summary !== null);
@@ -68,7 +76,8 @@ export class StandaloneAttractionPricingCardComponent {
           : {
               key: `annual-pass:${offer.id || offer.code}`,
               label: this.localizedText(offer.names, offer.code),
-              price
+              price,
+              purchaseUrl: offer.purchaseUrl ?? null
             };
       })
       .filter((summary: StandaloneAttractionPriceSummary | null): summary is StandaloneAttractionPriceSummary => summary !== null);
@@ -83,7 +92,8 @@ export class StandaloneAttractionPricingCardComponent {
           : {
               key: `parking:${offer.id || offer.code}`,
               label: this.localizedText(offer.labels, offer.code),
-              price
+              price,
+              purchaseUrl: offer.purchaseUrl ?? null
             };
       })
       .filter((summary: StandaloneAttractionPriceSummary | null): summary is StandaloneAttractionPriceSummary => summary !== null);
@@ -95,7 +105,8 @@ export class StandaloneAttractionPricingCardComponent {
           : {
               key: `credit:${offer.id || `${offer.unitCode}:${offer.quantity}`}`,
               label: this.localizedText(offer.labels, `${offer.quantity} ${offer.unitCode}`),
-              price: this.formatAmount(amount, this.pricing!.currencyCode)
+              price: this.formatAmount(amount, this.pricing!.currencyCode),
+              purchaseUrl: offer.purchaseUrl ?? null
             };
       })
       .filter((summary: StandaloneAttractionPriceSummary | null): summary is StandaloneAttractionPriceSummary => summary !== null);
@@ -113,25 +124,12 @@ export class StandaloneAttractionPricingCardComponent {
   }
 
   private formatPriceValue(value: ParkPriceValue | null, currencyCode: string): string {
-    if (!value) {
-      return '';
-    }
-
-    if (Number.isFinite(value.amount)) {
-      return this.formatAmount(value.amount!, currencyCode);
-    }
-
-    const minimum: string | null = Number.isFinite(value.minimumAmount)
-      ? this.formatAmount(value.minimumAmount!, currencyCode)
-      : null;
-    const maximum: string | null = Number.isFinite(value.maximumAmount)
-      ? this.formatAmount(value.maximumAmount!, currencyCode)
-      : null;
-    if (minimum && maximum) {
-      return `${minimum} – ${maximum}`;
-    }
-
-    return minimum ? `≥ ${minimum}` : maximum ? `≤ ${maximum}` : '';
+    const labels: ParkPriceFormattingLabels = {
+      from: this.ngxTranslateService.instant('parkPricing.price.from'),
+      upTo: this.ngxTranslateService.instant('parkPricing.price.upTo'),
+      dynamic: this.ngxTranslateService.instant('parkPricing.price.dynamic')
+    };
+    return formatParkPrice(value, currencyCode, this.currentLanguage, labels) ?? '';
   }
 
   private formatAmount(amount: number, currencyCode: string): string {

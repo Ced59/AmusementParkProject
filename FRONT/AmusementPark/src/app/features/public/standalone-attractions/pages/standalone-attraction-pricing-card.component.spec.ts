@@ -1,9 +1,10 @@
 import { ParkPricing } from '@app/models/parks/park-pricing';
+import { TranslateService } from '@ngx-translate/core';
 import { StandaloneAttractionPricingCardComponent } from './standalone-attraction-pricing-card.component';
 
 describe('StandaloneAttractionPricingCardComponent', () => {
   it('builds localized summaries for every supported offer type', () => {
-    const component = new StandaloneAttractionPricingCardComponent();
+    const component = createComponent();
     component.currentLanguage = 'fr';
     component.pricing = createPricing();
 
@@ -17,7 +18,41 @@ describe('StandaloneAttractionPricingCardComponent', () => {
     expect(component.summaries[3].label).toBe('Dix crédits');
     expect(component.summaries[3].price).toContain('15');
   });
+
+  it('keeps unbounded dynamic prices and offer purchase links visible', () => {
+    const component = createComponent();
+    component.currentLanguage = 'fr';
+    const pricing: ParkPricing = createPricing();
+    pricing.purchaseUrl = null;
+    pricing.admissionOffers = [{
+      ...pricing.admissionOffers[0],
+      gatePrice: { mode: 'Dynamic' },
+      purchaseUrl: 'https://example.test/buy-ticket'
+    }];
+    pricing.annualPasses = [];
+    pricing.parkingOffers = [];
+    pricing.creditOffers = [];
+    component.pricing = pricing;
+
+    expect(component.summaries).toEqual([
+      expect.objectContaining({
+        price: 'tarif dynamique',
+        purchaseUrl: 'https://example.test/buy-ticket'
+      })
+    ]);
+  });
 });
+
+function createComponent(): StandaloneAttractionPricingCardComponent {
+  const translateService: TranslateService = {
+    instant: (key: string): string => ({
+      'parkPricing.price.from': 'à partir de',
+      'parkPricing.price.upTo': 'jusqu’à',
+      'parkPricing.price.dynamic': 'tarif dynamique'
+    })[key] ?? key
+  } as unknown as TranslateService;
+  return new StandaloneAttractionPricingCardComponent(translateService);
+}
 
 function createPricing(): ParkPricing {
   return {

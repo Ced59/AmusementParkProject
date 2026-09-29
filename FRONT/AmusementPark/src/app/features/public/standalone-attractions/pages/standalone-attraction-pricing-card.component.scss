@@ -71,10 +71,23 @@
 }
 
 .standalone-pricing-card__offers dd {
+  display: grid;
+  justify-items: end;
+  gap: 0.25rem;
   margin: 0;
   color: var(--app-heading);
   font-weight: 850;
   text-align: right;
+}
+
+.standalone-pricing-card__offer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--app-primary);
+  font-size: 0.76rem;
+  font-weight: 750;
+  text-decoration: none;
 }
 
 .standalone-pricing-card__link {

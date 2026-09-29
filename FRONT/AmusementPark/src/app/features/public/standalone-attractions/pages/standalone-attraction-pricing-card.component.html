@@ -12,7 +12,19 @@
       @for (summary of summaries; track summary.key) {
         <div>
           <dt>{{ summary.label }}</dt>
-          <dd>{{ summary.price }}</dd>
+          <dd>
+            <span>{{ summary.price }}</span>
+            @if (summary.purchaseUrl) {
+              <a
+                class="standalone-pricing-card__offer-link"
+                [href]="summary.purchaseUrl | safeExternalUrl"
+                target="_blank"
+                rel="noreferrer noopener">
+                <span>{{ 'parkPricing.actions.buyOffer' | translate }}</span>
+                <i class="pi pi-external-link" aria-hidden="true"></i>
+              </a>
+            }
+          </dd>
         </div>
       }
     </dl>
