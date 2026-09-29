@@ -11,6 +11,13 @@ public static class LiveDataApplicationErrors
             "Public live data is not enabled.");
     }
 
+    public static ApplicationError PublicReadTemporarilySuspended()
+    {
+        return ApplicationError.NotFound(
+            "live-data.public-read.temporarily-suspended",
+            "Public live data is temporarily suspended.");
+    }
+
     public static ApplicationError InvalidMapping(string? message = null)
     {
         return ApplicationError.Validation(

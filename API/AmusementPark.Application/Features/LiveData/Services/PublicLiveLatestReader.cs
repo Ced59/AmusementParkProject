@@ -81,7 +81,7 @@ public sealed class PublicLiveLatestReader
         if (!gate.AllowsPublicRead(normalizedParkId, LiveTargetType.Park, normalizedParkId))
         {
             return ApplicationResult<PublicLiveTargetResult>.Failure(
-                LiveDataApplicationErrors.PublicReadDisabled());
+                LiveDataApplicationErrors.PublicReadTemporarilySuspended());
         }
 
         IReadOnlyCollection<LivePublicTargetCoverage> coverage =
@@ -169,7 +169,7 @@ public sealed class PublicLiveLatestReader
             normalizedParkItemId))
         {
             return ApplicationResult<PublicLiveTargetResult>.Failure(
-                LiveDataApplicationErrors.PublicReadDisabled());
+                LiveDataApplicationErrors.PublicReadTemporarilySuspended());
         }
 
         IReadOnlyCollection<LivePublicTargetCoverage> coverage =
@@ -249,7 +249,7 @@ public sealed class PublicLiveLatestReader
         if (!gate.AllowsPublicRead(normalizedParkId, LiveTargetType.Park, normalizedParkId))
         {
             return ApplicationResult<PublicParkLiveItemsResult>.Failure(
-                LiveDataApplicationErrors.PublicReadDisabled());
+                LiveDataApplicationErrors.PublicReadTemporarilySuspended());
         }
 
         IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetByParkIdAsync(

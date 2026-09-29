@@ -63,7 +63,9 @@ public sealed class PublicLiveLatestReaderTests
             await reader.ReadParkItemAsync("item-1", CancellationToken.None);
 
         Assert.False(result.IsSuccess);
-        Assert.Equal("live-data.public-read.disabled", Assert.Single(result.Errors).Code);
+        Assert.Equal(
+            "live-data.public-read.temporarily-suspended",
+            Assert.Single(result.Errors).Code);
         mappings.VerifyNoOtherCalls();
         observations.VerifyNoOtherCalls();
     }

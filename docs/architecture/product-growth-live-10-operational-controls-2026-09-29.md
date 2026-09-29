@@ -43,6 +43,12 @@ donc pas bloquer un parc remappé. Le rejeu de quarantaine applique
 arrêtée. La lecture publique applique la même hiérarchie et conserve la réponse
 publique neutre existante lorsque le direct est masqué.
 
+Le contrat distingue une désactivation permanente de configuration d’un arrêt
+opérationnel temporaire. Dans les deux cas, le navigateur retire immédiatement
+les données live. Pour le second seulement, un onglet déjà ouvert conserve des
+tentatives espacées et bornées afin de restaurer le bloc après reprise, sans
+rechargement manuel ni exposition de données pendant l’arrêt.
+
 La mutation d’un contrôle, l’admission d’un appel fournisseur et la dernière
 vérification précédant une écriture partagent une frontière sérialisée par
 source et entité externe. Un appel ou une écriture déjà engagé se termine donc

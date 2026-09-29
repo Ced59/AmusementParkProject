@@ -5,6 +5,7 @@ import { Observable, Subscription, forkJoin, map } from 'rxjs';
 
 import { PublicLiveTarget, PublicParkLiveItems } from '@app/models/live-data/public-live.models';
 import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
+import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 import {
   INITIAL_PUBLIC_LIVE_VIEW_STATE,
   PublicLiveDisplayMode,
@@ -27,6 +28,7 @@ export class PublicLiveStateFacade {
   private expirationTimeoutId: number | null = null;
   private ageTimeoutId: number | null = null;
   private requestSubscription: Subscription | null = null;
+  private isTemporarilySuspended: boolean = false;
 
   readonly state: Signal<PublicLiveViewState> = this.stateSignal.asReadonly();
 
@@ -67,6 +69,7 @@ export class PublicLiveStateFacade {
     this.cancelScheduledAgeUpdate();
     this.requestSubscription?.unsubscribe();
     this.requestSubscription = null;
+    this.isTemporarilySuspended = false;
     this.currentMode = mode;
     this.currentTargetId = targetId;
     this.stateSignal.set({
@@ -84,7 +87,7 @@ export class PublicLiveStateFacade {
       || !this.currentMode
       || !this.currentTargetId
       || this.requestSubscription
-      || this.stateSignal().kind === 'disabled'
+      || (this.stateSignal().kind === 'disabled' && !this.isTemporarilySuspended)
       || this.document.hidden
       || !navigator.onLine
     ) {
@@ -114,6 +117,7 @@ export class PublicLiveStateFacade {
     const subscription: Subscription = request.subscribe({
       next: (result: PublicLiveLoadResult) => {
         this.requestSubscription = null;
+        this.isTemporarilySuspended = false;
         const now: number = Date.now();
         const target: PublicLiveTarget = this.ageTarget(result.target, now);
         const items: readonly PublicLiveTarget[] = result.items.map(
@@ -136,6 +140,9 @@ export class PublicLiveStateFacade {
       error: (error: unknown) => {
         this.requestSubscription = null;
         const endpointDisabled: boolean = error instanceof HttpErrorResponse && error.status === 404;
+        const endpointTemporarilySuspended: boolean = endpointDisabled
+          && extractApiProblemDetails(error)?.errorCode === 'live-data.public-read.temporarily-suspended';
+        this.isTemporarilySuspended = endpointTemporarilySuspended;
         const fallbackState: PublicLiveViewState = this.stateSignal();
         this.stateSignal.set(endpointDisabled
           ? {
@@ -156,6 +163,9 @@ export class PublicLiveStateFacade {
         if (endpointDisabled) {
           this.cancelScheduledExpiration();
           this.cancelScheduledAgeUpdate();
+          if (endpointTemporarilySuspended) {
+            this.scheduleNextRefresh(null, []);
+          }
           return;
         }
 
