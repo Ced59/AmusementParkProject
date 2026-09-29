@@ -350,7 +350,7 @@ Ne passer `isVisible` à `true` que pour les entités :
 2. Publier de façon ciblée les images validées, puis les articles et contenus dépendants prêts, pendant que le nouveau parc reste masqué. Réutiliser les IDs d’images exportés ; ne pas réimporter les fichiers.
 3. Vérifier les statuts, descriptions, images courantes et sources des parkItems publiables. Ne pas rendre visible un item legacy inconnu au seul motif que la consigne dit « tout publier ».
 4. Passer le parc à `Validated` et visible en dernier.
-5. Contrôler anonymement la fiche publique, le logo, les attractions, les historiques et les articles dans les langues prises en charge.
+5. Contrôler anonymement la fiche publique, le logo, les attractions, les historiques et les articles dans les langues prises en charge. Inspecter aussi le rendu mobile réel des cartes de détails : aucun nom d’enum brut (`RollerCoaster`, `Operating`, etc.), code pays, GUID, ID de référence ou autre valeur technique ne doit être présenté au visiteur. Les constructeurs, exploitants et fondateurs liés doivent afficher leur nom résolu ; si la référence publique ne peut pas être résolue, masquer la ligne plutôt que révéler son ID. Ne pas traduire artificiellement les marques, noms de modèles ou désignations techniques établies comme `Alpine coaster`. Ce contrôle est bloquant avant l’annonce Facebook.
 6. Recontrôler le score et lancer un Preview d’idempotence : aucune modification inattendue ne doit rester.
 
 Une défaillance d’une annonce sociale ou d’un service périphérique ne doit pas être confondue avec l’échec de publication des données. Rapporter les deux résultats séparément et ne jamais appeler une route d’administration non autorisée pour compenser.

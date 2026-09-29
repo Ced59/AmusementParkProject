@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
@@ -21,10 +22,19 @@ import { SafeRichHtmlPipe } from '@shared/pipes';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
 import { MapMarker } from '@app/models/map/map-marker';
 import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
+import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent } from '@ui/primitives';
 import { resolveLocalizedText } from '@shared/utils/localization/localized-text.helpers';
 import { buildPublicRoutePath, buildPublicStandaloneAttractionRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { StandaloneAttractionDetailReferenceFacade } from './standalone-attraction-detail-reference.facade';
+import {
+  buildStandaloneAttractionDetailRows,
+  getStandaloneAttractionStatusTranslationKey,
+  getStandaloneAttractionSubtypeLabel,
+  getStandaloneAttractionTypeTranslationKey,
+  StandaloneAttractionDetailRow
+} from './standalone-attraction-presentation.helpers';
 
 interface StandaloneAttractionPublicCopy {
   standalone: string;
@@ -276,15 +286,18 @@ const PUBLIC_COPY: Record<string, StandaloneAttractionPublicCopy> = {
 @Component({
   selector: 'app-standalone-attraction-detail-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, PageStateComponent, ImageDisplayComponent, SafeRichHtmlPipe, LeafletMapComponent, UiButtonDirective, UiChipComponent, UiKickerComponent],
+  imports: [CommonModule, RouterLink, TranslateModule, PageStateComponent, ImageDisplayComponent, SafeRichHtmlPipe, LeafletMapComponent, UiButtonDirective, UiChipComponent, UiKickerComponent],
   templateUrl: './standalone-attraction-detail-page.component.html',
   styleUrl: './standalone-attraction-detail-page.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [StandaloneAttractionDetailReferenceFacade]
 })
 export class StandaloneAttractionDetailPageComponent implements OnInit {
+  private readonly referenceFacade: StandaloneAttractionDetailReferenceFacade = inject(StandaloneAttractionDetailReferenceFacade);
   protected readonly state = signal<ScreenState<StandaloneAttraction, string>>({ kind: 'loading' });
   protected readonly attraction = signal<StandaloneAttraction | null>(null);
   protected readonly photos = signal<ImageDto[]>([]);
+  protected readonly manufacturerName = this.referenceFacade.manufacturerName;
   protected readonly currentLanguage = signal<string>('en');
   protected readonly heroImage = computed<ImageDto | null>(() => this.photos()[0] ?? null);
   protected readonly hasCoordinates = computed<boolean>(() => {
@@ -317,33 +330,38 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
     const current: StandaloneAttraction | null = this.attraction();
     return resolveLocalizedText(current?.descriptions, this.currentLanguage(), '');
   });
-  protected readonly detailsRows = computed<Array<{ label: string; value: string }>>(() => {
+  protected readonly detailsRows = computed<StandaloneAttractionDetailRow[]>(() => {
     const current: StandaloneAttraction | null = this.attraction();
 
     if (!current) {
       return [];
     }
 
-    return [
-      { label: this.t('type'), value: current.type },
-      { label: this.t('subtype'), value: current.subtype ?? '' },
-      { label: this.t('model'), value: current.attractionDetails?.model ?? '' },
-      { label: this.t('status'), value: current.attractionDetails?.status ?? '' },
-      { label: this.t('manufacturer'), value: current.attractionDetails?.manufacturerId ?? '' },
-      { label: this.t('length'), value: this.formatMetric(current.attractionDetails?.lengthInMeters, 'm') },
-      { label: this.t('speed'), value: this.formatMetric(current.attractionDetails?.speedInKmH, 'km/h') },
-      { label: this.t('duration'), value: this.formatMetric(current.attractionDetails?.durationInSeconds, 's') }
-    ].filter((row: { label: string; value: string }) => row.value.length > 0);
+    return buildStandaloneAttractionDetailRows(
+      current,
+      {
+        type: this.t('type'),
+        subtype: this.t('subtype'),
+        model: this.t('model'),
+        status: this.t('status'),
+        manufacturer: this.t('manufacturer'),
+        length: this.t('length'),
+        speed: this.t('speed'),
+        duration: this.t('duration')
+      },
+      this.manufacturerName(),
+      (value: number | null | undefined, suffix: string): string => this.formatMetric(value, suffix)
+    );
   });
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
-
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly apiService: StandaloneAttractionsApiService,
     private readonly imagesApiService: ImagesApiService,
     private readonly translationService: TranslationService,
+    private readonly countryDisplayService: CountryDisplayService,
     private readonly seoService: SeoService,
     private readonly ssrHttpStatusService: SsrHttpStatusService,
     private readonly mapMarkerPopupActionService: MapMarkerPopupActionService
@@ -377,7 +395,7 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
 
   protected getLocationRows(current: StandaloneAttraction): Array<{ label: string; value: string }> {
     return [
-      { label: this.t('country'), value: current.countryCode ?? '' },
+      { label: this.t('country'), value: this.countryDisplayService.resolveLocalizedCountryName(current.countryCode, this.currentLanguage()) ?? '' },
       { label: this.t('city'), value: current.city ?? '' },
       { label: this.t('address'), value: [current.street, current.postalCode].filter(Boolean).join(', ') },
       { label: this.t('coordinates'), value: this.formatCoordinates(current) }
@@ -385,7 +403,12 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
   }
 
   protected getHeroLocation(current: StandaloneAttraction): string {
-    return [current.city, current.countryCode]
+    const countryName: string | null = this.countryDisplayService.resolveLocalizedCountryName(
+      current.countryCode,
+      this.currentLanguage()
+    );
+
+    return [current.city, countryName]
       .filter((value: string | null | undefined): value is string => !!value)
       .join(', ');
   }
@@ -398,6 +421,18 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
     }
 
     return value;
+  }
+
+  protected typeTranslationKey(current: StandaloneAttraction): string {
+    return getStandaloneAttractionTypeTranslationKey(current.type);
+  }
+
+  protected statusTranslationKey(current: StandaloneAttraction): string | null {
+    return getStandaloneAttractionStatusTranslationKey(current.attractionDetails?.status);
+  }
+
+  protected subtypeLabel(current: StandaloneAttraction): string {
+    return getStandaloneAttractionSubtypeLabel(current.subtype);
   }
 
   protected historyLink(current: StandaloneAttraction): string[] {
@@ -419,6 +454,7 @@ export class StandaloneAttractionDetailPageComponent implements OnInit {
         this.state.set({ kind: 'ready', data: attraction });
         this.applySeo();
         this.loadHeroImage(attraction);
+        this.referenceFacade.loadManufacturer(attraction);
       },
       error: (error: unknown) => {
         applySsrPublicDataErrorStatus(error, this.ssrHttpStatusService);
