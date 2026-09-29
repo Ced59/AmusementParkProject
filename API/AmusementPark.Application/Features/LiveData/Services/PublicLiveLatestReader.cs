@@ -55,6 +55,7 @@ public sealed class PublicLiveLatestReader
             await this.observationRepository.GetByTargetAsync(
                 LiveTargetType.Park,
                 normalizedParkId,
+                normalizedParkId,
                 cancellationToken);
         DateTime asOfUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         PublicLiveTargetResult result = this.resultFactory.Create(
@@ -100,6 +101,7 @@ public sealed class PublicLiveLatestReader
             await this.observationRepository.GetByTargetAsync(
                 LiveTargetType.ParkItem,
                 normalizedParkItemId,
+                item.ParkId,
                 cancellationToken);
         DateTime asOfUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         PublicLiveTargetResult result = this.resultFactory.Create(

@@ -47,9 +47,10 @@ public sealed class LiveLatestObservationMongoDefinitionsTests
                 BsonSerializer.LookupSerializer<LiveLatestObservationDocument>(),
                 BsonSerializer.SerializerRegistry));
 
-        Assert.Equal(2, keys.ElementCount);
+        Assert.Equal(3, keys.ElementCount);
         Assert.Equal(1, keys["target.type"].AsInt32);
         Assert.Equal(1, keys["target.id"].AsInt32);
+        Assert.Equal(1, keys["target.parkId"].AsInt32);
     }
 
     [Fact]

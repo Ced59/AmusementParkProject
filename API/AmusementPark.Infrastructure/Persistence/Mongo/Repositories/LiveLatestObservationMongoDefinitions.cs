@@ -31,7 +31,8 @@ public static class LiveLatestObservationMongoDefinitions
             new(
                 Builders<LiveLatestObservationDocument>.IndexKeys
                     .Ascending("target.type")
-                    .Ascending("target.id"),
+                    .Ascending("target.id")
+                    .Ascending("target.parkId"),
                 new CreateIndexOptions { Name = "idx_live_latest_target_type_id" }),
         };
     }

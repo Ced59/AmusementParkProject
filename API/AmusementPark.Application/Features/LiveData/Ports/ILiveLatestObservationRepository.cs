@@ -8,6 +8,7 @@ public interface ILiveLatestObservationRepository
     Task<IReadOnlyCollection<LiveLatestObservation>> GetByTargetAsync(
         LiveTargetType targetType,
         string targetId,
+        string parkId,
         CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<LiveLatestObservation>> GetParkItemsAsync(

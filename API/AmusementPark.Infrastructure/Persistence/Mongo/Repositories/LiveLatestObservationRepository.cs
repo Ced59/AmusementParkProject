@@ -23,9 +23,11 @@ public sealed class LiveLatestObservationRepository : ILiveLatestObservationRepo
     public async Task<IReadOnlyCollection<LiveLatestObservation>> GetByTargetAsync(
         LiveTargetType targetType,
         string targetId,
+        string parkId,
         CancellationToken cancellationToken)
     {
         string normalizedTargetId = NormalizeIdentifier(targetId, nameof(targetId));
+        string normalizedParkId = NormalizeIdentifier(parkId, nameof(parkId));
         FilterDefinition<LiveLatestObservationDocument> filter =
             Builders<LiveLatestObservationDocument>.Filter.And(
                 Builders<LiveLatestObservationDocument>.Filter.Eq(
@@ -33,7 +35,10 @@ public sealed class LiveLatestObservationRepository : ILiveLatestObservationRepo
                     targetType.ToString()),
                 Builders<LiveLatestObservationDocument>.Filter.Eq(
                     "target.id",
-                    normalizedTargetId));
+                    normalizedTargetId),
+                Builders<LiveLatestObservationDocument>.Filter.Eq(
+                    "target.parkId",
+                    normalizedParkId));
         List<LiveLatestObservationDocument> documents = await this.collection
             .Find(filter)
             .Limit(16)

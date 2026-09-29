@@ -160,6 +160,7 @@ public sealed class PublicLiveLatestReaderTests
         observations.Setup(repository => repository.GetByTargetAsync(
                 LiveTargetType.ParkItem,
                 "item-1",
+                "park-1",
                 CancellationToken.None))
             .ReturnsAsync(observationsToReturn);
         return CreateReader(parks, items, observations);
