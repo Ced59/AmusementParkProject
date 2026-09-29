@@ -51,7 +51,9 @@ public sealed class PublicLiveController : ControllerBase
             new GetPublicParkLiveQuery(parkId),
             cancellationToken);
         return result.IsSuccess && result.Value is not null
-            ? this.ToConditionalResponse(result.Value.ToHttp())
+            ? this.ToConditionalResponse(
+                result.Value.ToHttp(),
+                PublicLiveCacheLifetimeCalculator.Resolve(result.Value))
             : this.ToActionResult(result);
     }
 
@@ -68,7 +70,9 @@ public sealed class PublicLiveController : ControllerBase
             new GetPublicParkItemLiveQuery(itemId),
             cancellationToken);
         return result.IsSuccess && result.Value is not null
-            ? this.ToConditionalResponse(result.Value.ToHttp())
+            ? this.ToConditionalResponse(
+                result.Value.ToHttp(),
+                PublicLiveCacheLifetimeCalculator.Resolve(result.Value))
             : this.ToActionResult(result);
     }
 
@@ -85,14 +89,18 @@ public sealed class PublicLiveController : ControllerBase
             new GetPublicParkLiveItemsQuery(parkId),
             cancellationToken);
         return result.IsSuccess && result.Value is not null
-            ? this.ToConditionalResponse(result.Value.ToHttp())
+            ? this.ToConditionalResponse(
+                result.Value.ToHttp(),
+                PublicLiveCacheLifetimeCalculator.Resolve(result.Value))
             : this.ToActionResult(result);
     }
 
-    private IActionResult ToConditionalResponse<TValue>(TValue value)
+    private IActionResult ToConditionalResponse<TValue>(TValue value, TimeSpan cacheLifetime)
     {
         string entityTag = PublicLiveEntityTagFactory.Create(value);
-        this.Response.Headers.CacheControl = "public,max-age=30,must-revalidate";
+        long maxAgeSeconds = checked((long)cacheLifetime.TotalSeconds);
+        this.HttpContext.Items[PublicLiveExpirationOutputCachePolicy.CacheLifetimeItemKey] = cacheLifetime;
+        this.Response.Headers.CacheControl = $"public,max-age={maxAgeSeconds},must-revalidate";
         this.Response.Headers.ETag = entityTag;
         this.Response.Headers.Vary = "Accept-Language";
         if (EntityTagMatcher.Matches(this.Request.Headers.IfNoneMatch, entityTag))

@@ -17,5 +17,6 @@ public sealed record PublicLiveTargetResult(
     long? AgeSeconds,
     LiveFreshnessState? Freshness,
     DateTime? ExpiresAtUtc,
+    DateTime? FreshnessTransitionAtUtc,
     PublicLiveSourceResult? Source,
     LiveDataConfidence? Confidence);

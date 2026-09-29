@@ -56,7 +56,7 @@ flowchart LR
     R --> S[Politique Core de sélection]
     S --> R
     R --> API
-    API --> E[ETag + cache 30 s]
+    API --> E[ETag + cache au plus 30 s]
 ```
 
 Les contrôleurs ne portent aucune règle métier. Le domaine choisit la source,
@@ -65,11 +65,13 @@ MongoDB et décrit la source, et WebAPI mappe le résultat HTTP.
 
 ## Cache, fraîcheur et performances
 
-- output cache anonyme : 30 secondes, inférieur au TTL minimal de 30 minutes ;
-- `Cache-Control: public,max-age=30,must-revalidate` ;
+- output cache anonyme : 30 secondes au maximum, raccourci à la prochaine
+  transition de fraîcheur de l'observation sélectionnée ;
+- `Cache-Control: public,max-age=<durée bornée>,must-revalidate` ;
 - ETag SHA-256 déterministe sur le DTO public ;
-- instant de lecture groupé par tranche de 30 secondes pour stabiliser l'âge et
-  l'ETag sans figer la transition vers `Aging`, `Stale` ou `Expired` ;
+- instant réel de la requête pour calculer l'âge et l'état ; l'ETag reste stable
+  uniquement pendant la durée de cache, qui expire avant `Aging`, `Stale` ou
+  `Expired` ;
 - requêtes Mongo bornées à 16 sources par cible et 2 000 observations par parc ;
 - index existant `(parkId, type, expiresAtUtc)` réutilisé ;
 - rate limiting global des lectures publiques et CORS first-party existants ;

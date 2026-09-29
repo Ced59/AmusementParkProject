@@ -106,6 +106,7 @@ public sealed class PublicLiveControllerTests
             120,
             LiveFreshnessState.Fresh,
             asOfUtc.AddMinutes(28),
+            asOfUtc.AddMinutes(8),
             new PublicLiveSourceResult(
                 "themeparks-wiki",
                 "ThemeParks.wiki",

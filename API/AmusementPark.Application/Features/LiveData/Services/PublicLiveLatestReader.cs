@@ -10,8 +10,6 @@ namespace AmusementPark.Application.Features.LiveData.Services;
 
 public sealed class PublicLiveLatestReader
 {
-    public static readonly TimeSpan ResponseTimeBucket = TimeSpan.FromSeconds(30);
-
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly ILiveLatestObservationRepository observationRepository;
@@ -58,7 +56,7 @@ public sealed class PublicLiveLatestReader
                 LiveTargetType.Park,
                 normalizedParkId,
                 cancellationToken);
-        DateTime asOfUtc = this.GetResponseAsOfUtc();
+        DateTime asOfUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         PublicLiveTargetResult result = this.resultFactory.Create(
             normalizedParkId,
             LiveTargetType.Park,
@@ -103,7 +101,7 @@ public sealed class PublicLiveLatestReader
                 LiveTargetType.ParkItem,
                 normalizedParkItemId,
                 cancellationToken);
-        DateTime asOfUtc = this.GetResponseAsOfUtc();
+        DateTime asOfUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         PublicLiveTargetResult result = this.resultFactory.Create(
             normalizedParkItemId,
             LiveTargetType.ParkItem,
@@ -151,7 +149,7 @@ public sealed class PublicLiveLatestReader
                 static group => group.Key,
                 static group => (IReadOnlyCollection<LiveLatestObservation>)group.ToList().AsReadOnly(),
                 StringComparer.Ordinal);
-        DateTime asOfUtc = this.GetResponseAsOfUtc();
+        DateTime asOfUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         string parkDisplayName = park.Name ?? string.Empty;
         List<PublicLiveTargetResult> results = (await itemsTask)
             .OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
@@ -173,13 +171,6 @@ public sealed class PublicLiveLatestReader
                 parkDisplayName,
                 asOfUtc,
                 results.AsReadOnly()));
-    }
-
-    private DateTime GetResponseAsOfUtc()
-    {
-        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        long bucketTicks = ResponseTimeBucket.Ticks;
-        return new DateTime(nowUtc.Ticks - (nowUtc.Ticks % bucketTicks), DateTimeKind.Utc);
     }
 
     private static string? NormalizeIdentifier(string? value)

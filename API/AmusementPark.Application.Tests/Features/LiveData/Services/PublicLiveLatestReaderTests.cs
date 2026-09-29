@@ -34,9 +34,10 @@ public sealed class PublicLiveLatestReaderTests
         PublicLiveTargetResult value = Assert.IsType<PublicLiveTargetResult>(result.Value);
         Assert.Equal(PublicLiveAvailability.Current, value.Availability);
         Assert.Equal(waitTimeMinutes, Assert.Single(value.Queues).WaitTimeMinutes);
-        Assert.Equal(103, value.AgeSeconds);
+        Assert.Equal(120, value.AgeSeconds);
         Assert.Equal("Powered by ThemeParks.wiki", value.Source?.AttributionText);
-        Assert.Equal(new DateTime(2026, 9, 29, 12, 0, 0, DateTimeKind.Utc), value.AsOfUtc);
+        Assert.Equal(NowUtc, value.AsOfUtc);
+        Assert.Equal(NowUtc.AddMinutes(8), value.FreshnessTransitionAtUtc);
     }
 
     [Fact]
@@ -70,6 +71,24 @@ public sealed class PublicLiveLatestReaderTests
         Assert.Empty(value.Queues);
         Assert.Equal(LiveFreshnessState.Expired, value.Freshness);
         Assert.NotNull(value.Source);
+    }
+
+    [Fact]
+    public async Task ReadParkItemAsync_WhenObservationExpiredInsideFormerBucket_ShouldHideFacts()
+    {
+        LiveLatestObservation observation = CreateObservation(
+            new DateTime(2026, 9, 29, 11, 30, 1, DateTimeKind.Utc),
+            35);
+        PublicLiveLatestReader reader = CreateReader(observation);
+
+        AmusementPark.Application.Errors.ApplicationResult<PublicLiveTargetResult> result =
+            await reader.ReadParkItemAsync("item-1", CancellationToken.None);
+
+        PublicLiveTargetResult value = Assert.IsType<PublicLiveTargetResult>(result.Value);
+        Assert.Equal(NowUtc, value.AsOfUtc);
+        Assert.Equal(PublicLiveAvailability.Expired, value.Availability);
+        Assert.Null(value.Status);
+        Assert.Empty(value.Queues);
     }
 
     [Fact]

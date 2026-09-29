@@ -81,6 +81,7 @@ public sealed class PublicLiveTargetResultFactory
             freshness.Age.HasValue ? checked((long)freshness.Age.Value.TotalSeconds) : null,
             freshness.State,
             freshness.ExpiresAtUtc,
+            ResolveNextFreshnessTransition(selected, freshness),
             new PublicLiveSourceResult(
                 presentation.Source.Id.Value,
                 presentation.Source.DisplayName,
@@ -114,7 +115,23 @@ public sealed class PublicLiveTargetResultFactory
             null,
             null,
             null,
+            null,
             null);
+    }
+
+    private static DateTime? ResolveNextFreshnessTransition(
+        LiveLatestObservation observation,
+        LiveFreshnessAssessment freshness)
+    {
+        return freshness.State switch
+        {
+            LiveFreshnessState.Fresh => observation.Provenance.ObservedAtUtc
+                .Add(observation.FreshnessPolicy.FreshUntil),
+            LiveFreshnessState.Aging => observation.Provenance.ObservedAtUtc
+                .Add(observation.FreshnessPolicy.AgingUntil),
+            LiveFreshnessState.Stale => freshness.ExpiresAtUtc,
+            _ => null,
+        };
     }
 
     private static PublicLiveQueueResult ToPublicQueue(LiveQueueObservation queue)

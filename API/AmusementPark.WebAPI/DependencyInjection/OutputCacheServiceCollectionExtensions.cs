@@ -17,6 +17,7 @@ public static class OutputCacheServiceCollectionExtensions
 
         services.AddSingleton<PricingDateBoundaryOutputCachePolicy>();
         services.AddSingleton<RatingRankingGenerationOutputCachePolicy>();
+        services.AddSingleton<PublicLiveExpirationOutputCachePolicy>();
 
         services.AddOutputCache(options =>
         {
@@ -107,7 +108,8 @@ public static class OutputCacheServiceCollectionExtensions
                 .Cache()
                 .Expire(TimeSpan.FromSeconds(30))
                 .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
-                .Tag(ApiOutputCachePolicyNames.PublicLiveDataTag));
+                .Tag(ApiOutputCachePolicyNames.PublicLiveDataTag)
+                .AddPolicy<PublicLiveExpirationOutputCachePolicy>());
 
             options.AddPolicy(ApiOutputCachePolicyNames.PublicReferenceData, policy => policy
                 .With(IsAnonymousCacheCandidate)
