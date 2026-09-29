@@ -6,26 +6,32 @@ namespace AmusementPark.Application.Features.LiveData.Services;
 
 public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngestor
 {
+    private static readonly TimeSpan IncidentRetention = TimeSpan.FromDays(7);
     private readonly ILiveTargetMappingRepository mappingRepository;
     private readonly ILiveLatestObservationRepository latestRepository;
+    private readonly ILiveQualityIncidentRepository incidentRepository;
     private readonly TimeProvider timeProvider;
 
     public LiveLatestObservationIngestor(
         ILiveTargetMappingRepository mappingRepository,
-        ILiveLatestObservationRepository latestRepository)
-        : this(mappingRepository, latestRepository, TimeProvider.System)
+        ILiveLatestObservationRepository latestRepository,
+        ILiveQualityIncidentRepository incidentRepository)
+        : this(mappingRepository, latestRepository, incidentRepository, TimeProvider.System)
     {
     }
 
     internal LiveLatestObservationIngestor(
         ILiveTargetMappingRepository mappingRepository,
         ILiveLatestObservationRepository latestRepository,
+        ILiveQualityIncidentRepository incidentRepository,
         TimeProvider timeProvider)
     {
         this.mappingRepository = mappingRepository
             ?? throw new ArgumentNullException(nameof(mappingRepository));
         this.latestRepository = latestRepository
             ?? throw new ArgumentNullException(nameof(latestRepository));
+        this.incidentRepository = incidentRepository
+            ?? throw new ArgumentNullException(nameof(incidentRepository));
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -54,6 +60,7 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
                 StringComparer.Ordinal);
         Dictionary<string, LiveLatestObservation> latestByInternalTarget =
             new Dictionary<string, LiveLatestObservation>(StringComparer.Ordinal);
+        List<LiveQualityIncident> incidents = new List<LiveQualityIncident>();
         int unmappedCount = 0;
         int ineligibleCount = 0;
         int invalidFreshnessCount = 0;
@@ -69,6 +76,15 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             if (!mappingsByExternalId.TryGetValue(observation.ExternalTargetId, out ExternalLiveTargetMapping? mapping))
             {
                 unmappedCount++;
+                incidents.Add(CreateIncident(
+                    request,
+                    observation,
+                    LiveQualityIncidentReason.UnmappedTarget,
+                    null,
+                    null,
+                    null,
+                    normalizedAtUtc,
+                    correlationId));
                 continue;
             }
 
@@ -78,6 +94,15 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
                 || mapping.Target.Type != observation.TargetType)
             {
                 ineligibleCount++;
+                incidents.Add(CreateIncident(
+                    request,
+                    observation,
+                    LiveQualityIncidentReason.IneligibleMapping,
+                    null,
+                    null,
+                    null,
+                    normalizedAtUtc,
+                    correlationId));
                 continue;
             }
 
@@ -87,6 +112,29 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             if (freshness.State == LiveFreshnessState.Unavailable)
             {
                 invalidFreshnessCount++;
+                incidents.Add(CreateIncident(
+                    request,
+                    observation,
+                    LiveQualityIncidentReason.InvalidFreshness,
+                    null,
+                    null,
+                    null,
+                    normalizedAtUtc,
+                    correlationId));
+                continue;
+            }
+
+            if (observation.HasStatusQueueConflict)
+            {
+                incidents.Add(CreateIncident(
+                    request,
+                    observation,
+                    LiveQualityIncidentReason.StatusQueueConflict,
+                    LiveProviderDiagnosticCodes.StatusQueueConflict,
+                    observation.ExternalTargetId,
+                    "queues",
+                    normalizedAtUtc,
+                    correlationId));
                 continue;
             }
 
@@ -117,6 +165,21 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             }
         }
 
+        foreach (LiveProviderDiagnostic diagnostic in request.Diagnostics)
+        {
+            incidents.Add(CreateIncident(
+                request,
+                null,
+                LiveQualityIncidentReason.ProviderDiagnostic,
+                diagnostic.Code,
+                diagnostic.ExternalTargetId,
+                diagnostic.Field,
+                normalizedAtUtc,
+                correlationId));
+        }
+
+        await this.incidentRepository.SaveAsync(incidents, cancellationToken);
+
         LiveLatestObservationWriteResult writeResult =
             await this.latestRepository.WriteLatestAsync(
                 latestByInternalTarget.Values.ToArray(),
@@ -126,7 +189,40 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             writeResult.IgnoredCount,
             unmappedCount,
             ineligibleCount,
-            invalidFreshnessCount);
+            invalidFreshnessCount,
+            incidents.Count(static incident =>
+                incident.Reason != LiveQualityIncidentReason.ProviderDiagnostic),
+            request.Diagnostics.Count);
+    }
+
+    private static LiveQualityIncident CreateIncident(
+        LiveLatestObservationIngestionRequest request,
+        ExternalLiveObservation? observation,
+        LiveQualityIncidentReason reason,
+        string? diagnosticCode,
+        string? diagnosticExternalTargetId,
+        string? diagnosticField,
+        DateTime detectedAtUtc,
+        string correlationId)
+    {
+        return new LiveQualityIncident(
+            Guid.NewGuid(),
+            request.SourceId,
+            observation,
+            reason,
+            diagnosticCode,
+            diagnosticExternalTargetId,
+            diagnosticField,
+            request.ReceivedAtUtc,
+            detectedAtUtc,
+            detectedAtUtc.Add(IncidentRetention),
+            correlationId,
+            request.AdapterVersion,
+            request.UsagePolicyVersion,
+            request.TransformationVersion,
+            request.Confidence,
+            request.FreshnessPolicy,
+            request.PayloadSha256);
     }
 
     private static bool IsPreferred(

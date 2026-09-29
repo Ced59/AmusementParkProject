@@ -60,4 +60,11 @@ public static class LiveDataApplicationErrors
             "live-data.mapping.search.invalid",
             "The live mapping search is invalid.");
     }
+
+    public static ApplicationError InvalidReplay()
+    {
+        return ApplicationError.Validation(
+            "live-data.quality.replay.invalid",
+            "The live quality replay request is invalid.");
+    }
 }

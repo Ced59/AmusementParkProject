@@ -265,6 +265,8 @@ public sealed class MongoDbSettings
 
     public string LiveLatestObservationsCollectionName { get; set; } = "live-latest-observations";
 
+    public string LiveQualityIncidentsCollectionName { get; set; } = "live-quarantine";
+
     public string HistoricalNarrativesCollectionName { get; set; } = "historical-narratives";
 
     public string HistoricalMigrationsCollectionName { get; set; } = "historical-migrations";

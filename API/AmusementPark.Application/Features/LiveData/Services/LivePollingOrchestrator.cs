@@ -150,6 +150,7 @@ public sealed class LivePollingOrchestrator
                         adapter.FreshnessPolicy,
                         providerResult.ReceivedAtUtc,
                         providerResult.Observations,
+                        providerResult.Diagnostics,
                         providerResult.PayloadSha256),
                     cancellationToken);
             }

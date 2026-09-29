@@ -1,6 +1,20 @@
 {
-  "version": "5.4.6",
+  "version": "5.4.7",
   "history": [
+    {
+      "version": "5.4.7",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les futures informations en direct isolent les données douteuses avant tout affichage.",
+        "en": "Future live information isolates doubtful data before it is displayed.",
+        "de": "Künftige Live-Informationen isolieren fragwürdige Daten vor jeder Anzeige.",
+        "nl": "Toekomstige live-informatie isoleert twijfelachtige gegevens vóór weergave.",
+        "it": "Le future informazioni in tempo reale isolano i dati dubbi prima della visualizzazione.",
+        "es": "La futura información en directo aísla los datos dudosos antes de mostrarlos.",
+        "pl": "Przyszłe informacje na żywo izolują wątpliwe dane przed ich wyświetleniem.",
+        "pt": "As futuras informações em direto isolam dados duvidosos antes da apresentação."
+      }
+    },
     {
       "version": "5.4.6",
       "releasedAt": "2026-09-29",

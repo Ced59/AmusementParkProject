@@ -2,13 +2,13 @@
 
 > Code programme : `LIVE`
 >
-> Statut : `LIVE-01` à `LIVE-06` livrés au 29 septembre 2026. La
+> Statut : `LIVE-01` à `LIVE-07` livrés au 29 septembre 2026. La
 > source pilote est autorisée pour un spike interne latest-only, le contrat de
 > provenance/fraîcheur est implémenté et les mappings humains sont versionnés et
 > pilotables. L'adaptateur pilote traduit strictement les statuts et files du
 > fournisseur, et son ordonnanceur est borné mais désactivé par défaut ; aucune
-> collecte active ni généralisation publique n'est encore autorisée avant les
-> gates de quarantaine et d'exploitation.
+> collecte active ni généralisation publique n'est encore autorisée avant la
+> gate d'exploitation.
 >
 > Dépendances : `RANK`, `PASS`, `WATCH`, qualité/observabilité transverse et contrats de source validés.
 >
@@ -62,8 +62,15 @@ source puis l'heure de réception : une réponse retardée ne peut donc jamais
 écraser une observation plus récente. Le détail est consigné dans
 [`product-growth-live-06-latest-store-2026-09-29.md`](../../architecture/product-growth-live-06-latest-store-2026-09-29.md).
 
-Le prochain jalon est `LIVE-07` : isoler les observations douteuses ou non
-reliées et permettre leur rejeu après correction, toujours sans affichage public.
+`LIVE-07` a livré le sas de qualité : mappings absents ou inéligibles,
+horodatages impossibles, contradictions métier et diagnostics fournisseur sont
+conservés temporairement hors du latest. Après correction d'un mapping, une
+commande administrateur bornée et auditée peut rejouer le lot sans réintroduire
+une donnée ancienne. Le détail est consigné dans
+[`product-growth-live-07-quarantine-anomalies-2026-09-29.md`](../../architecture/product-growth-live-07-quarantine-anomalies-2026-09-29.md).
+
+Le prochain jalon est `LIVE-08` : fournir l'API de lecture latest mise en cache,
+avec source, âge et état obligatoires, toujours sans activer la collecte.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -781,7 +788,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-04`](../../architecture/product-growth-live-04-provider-adapter-2026-09-28.md) | ✅ Adaptateur pilote | Fixtures complètes |
 | [`LIVE-05`](../../architecture/product-growth-live-05-bounded-scheduler-2026-09-29.md) | ✅ Scheduler/circuit breaker/budgets | Charge bornée |
 | [`LIVE-06`](../../architecture/product-growth-live-06-latest-store-2026-09-29.md) | ✅ Latest store | Pas d’écrasement ancien |
-| `LIVE-07` | Quarantaine/anomalies | Données douteuses isolées |
+| [`LIVE-07`](../../architecture/product-growth-live-07-quarantine-anomalies-2026-09-29.md) | ✅ Quarantaine/anomalies | Données douteuses isolées |
 | `LIVE-08` | API latest/cache | Source et âge obligatoires |
 | `LIVE-09` | UI pilote | 0/unknown/closed distincts |
 | `LIVE-10` | Kill switches/ops | Arrêt immédiat possible |
@@ -868,8 +875,24 @@ versions du même instant. La concurrence ne peut donc pas faire régresser le
 dernier état. Un échec de stockage transforme la collecte en échec et ne mémorise
 pas son ETag, afin que le payload puisse être rejoué au passage suivant. La
 collection n'est ni historisée, ni exposée par une API ou une interface ; le
-polling reste désactivé. Les cibles inconnues et anomalies seront isolées par
-`LIVE-07` avant toute exploitation.
+polling reste désactivé. Les cibles inconnues et anomalies sont désormais
+isolées par `LIVE-07` avant toute exploitation.
+
+### Implémentation `LIVE-07` — 29 septembre 2026
+
+La version `5.4.7` introduit une quarantaine courte et idempotente avant toute
+écriture latest. Les observations non reliées, les mappings inéligibles, les
+heures impossibles, les contradictions fermeture/attente et les diagnostics de
+l'adaptateur conservent une preuve minimisée pendant sept jours, sans payload
+brut. Une défaillance de ce stockage invalide tout le poll afin de ne perdre
+aucun signal qualité.
+
+Une commande administrateur protégée, auditée et limitée rejoue de 1 à 100
+incidents après correction humaine. Elle recharge les mappings actuels, applique
+de nouveau les règles du domaine, déduplique chaque couple source/cible et laisse
+bloquée toute donnée encore douteuse. L'écriture latest monotone empêche toujours une ancienne
+photographie de régresser l'état. Le polling demeure désactivé et aucune API ou
+interface publique n'est ajoutée.
 
 ## 24. Gate finale `LIVE-G`
 
