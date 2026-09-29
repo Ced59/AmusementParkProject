@@ -39,7 +39,6 @@ export interface LiveOperationsSummary {
   readonly candidateMappingCount: number;
   readonly suspendedMappingCount: number;
   readonly pendingIncidentCount: number;
-  readonly coverageTruncated: boolean;
 }
 
 export interface LiveOperationsDashboard {

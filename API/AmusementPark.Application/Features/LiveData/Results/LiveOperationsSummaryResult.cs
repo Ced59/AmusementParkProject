@@ -5,5 +5,4 @@ public sealed record LiveOperationsSummaryResult(
     int EligibleMappingCount,
     int CandidateMappingCount,
     int SuspendedMappingCount,
-    long PendingIncidentCount,
-    bool CoverageTruncated);
+    long PendingIncidentCount);

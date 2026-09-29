@@ -1,4 +1,3 @@
-using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.LiveData.Models;
 using AmusementPark.Application.Features.LiveData.Ports;
@@ -9,7 +8,6 @@ namespace AmusementPark.Application.Features.LiveData.Services;
 
 public sealed class LiveOperationsDashboardReader
 {
-    private const int MaximumMappings = 500;
     private readonly ILiveDataSourceCatalog sourceCatalog;
     private readonly IReadOnlyCollection<ILiveDataProviderAdapter> adapters;
     private readonly ILiveTargetMappingRepository mappingRepository;
@@ -56,15 +54,10 @@ public sealed class LiveOperationsDashboardReader
         }
 
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        Task<PagedResult<ExternalLiveTargetMapping>> mappingsTask =
-            this.mappingRepository.SearchLatestAsync(
-                new LiveTargetMappingSearchCriteria(
-                    1,
-                    MaximumMappings,
-                    target.SourceId.Value,
-                    null,
-                    null,
-                    null),
+        Task<IReadOnlyCollection<ExternalLiveTargetMapping>> mappingsTask =
+            this.mappingRepository.GetLatestByExternalEntityAsync(
+                target.SourceId,
+                target.ExternalEntityId,
                 cancellationToken);
         Task<LivePollingStateSnapshot?> pollingTask = this.pollingStateRepository.GetAsync(
             target.SourceId,
@@ -80,15 +73,12 @@ public sealed class LiveOperationsDashboardReader
             cancellationToken);
         await Task.WhenAll(mappingsTask, pollingTask, incidentsTask, gateTask);
 
-        PagedResult<ExternalLiveTargetMapping> mappingPage = await mappingsTask;
+        IReadOnlyCollection<ExternalLiveTargetMapping> mappings = await mappingsTask;
         LiveOperationalGateSnapshot gate = await gateTask;
-        ExternalLiveTargetMapping[] relevantMappings = mappingPage.Items
-            .Where(mapping => IsInConfiguredEntity(mapping, target.ExternalEntityId))
-            .ToArray();
         LiveOperationalScopeResult[] scopes = BuildScopes(
             source,
             target,
-            relevantMappings,
+            mappings,
             gate,
             this.scopeResultFactory);
         LivePollingStateSnapshot? polling = await pollingTask;
@@ -115,12 +105,11 @@ public sealed class LiveOperationsDashboardReader
                 polling?.LeaseActive ?? false,
                 polling?.LeaseExpiresAtUtc),
             new LiveOperationsSummaryResult(
-                relevantMappings.Length,
-                relevantMappings.Count(static mapping => mapping.IsEligibleForLiveUse),
-                relevantMappings.Count(static mapping => mapping.Status == LiveMappingStatus.Candidate),
-                relevantMappings.Count(static mapping => mapping.Status == LiveMappingStatus.Suspended),
-                await incidentsTask,
-                mappingPage.TotalItems > MaximumMappings),
+                mappings.Count,
+                mappings.Count(static mapping => mapping.IsEligibleForLiveUse),
+                mappings.Count(static mapping => mapping.Status == LiveMappingStatus.Candidate),
+                mappings.Count(static mapping => mapping.Status == LiveMappingStatus.Suspended),
+                await incidentsTask),
             scopes,
             nowUtc);
         return ApplicationResult<LiveOperationsDashboardResult>.Success(result);
@@ -179,17 +168,4 @@ public sealed class LiveOperationsDashboardReader
             .ToArray();
     }
 
-    private static bool IsInConfiguredEntity(
-        ExternalLiveTargetMapping mapping,
-        string externalEntityId)
-    {
-        return string.Equals(
-                mapping.ExternalTarget.Id,
-                externalEntityId,
-                StringComparison.Ordinal)
-            || string.Equals(
-                mapping.ExternalTarget.ParentId,
-                externalEntityId,
-                StringComparison.Ordinal);
-    }
 }

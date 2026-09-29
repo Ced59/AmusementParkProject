@@ -56,4 +56,40 @@ public sealed class LiveTargetMappingMongoDefinitionsTests
                 out BsonValue? value)
                 && value == "external-park-1");
     }
+
+    [Fact]
+    public void BuildLatestByExternalEntityPipeline_ShouldFilterAfterLatestRevisionSelection()
+    {
+        IReadOnlyCollection<BsonDocument> stages =
+            LiveTargetMappingRepository.BuildLatestByExternalEntityPipeline(
+                LiveDataSourceId.Parse("themeparks-wiki"),
+                "external-park-1");
+
+        BsonDocument[] matches = stages
+            .Where(static stage => stage.Contains("$match"))
+            .Select(static stage => stage["$match"].AsBsonDocument)
+            .ToArray();
+        Assert.Equal("themeparks-wiki", matches[0]["sourceId"].AsString);
+        BsonArray externalScope = matches[1]["$or"].AsBsonArray;
+        Assert.Contains(
+            externalScope,
+            static clause => clause.AsBsonDocument.TryGetValue(
+                "externalTarget.id",
+                out BsonValue? value)
+                && value == "external-park-1");
+        Assert.Contains(
+            externalScope,
+            static clause => clause.AsBsonDocument.TryGetValue(
+                "externalTarget.parentId",
+                out BsonValue? value)
+                && value == "external-park-1");
+        int groupIndex = Array.FindIndex(
+            stages.ToArray(),
+            static stage => stage.Contains("$group"));
+        int externalMatchIndex = Array.FindIndex(
+            stages.ToArray(),
+            static stage => stage.Contains("$match")
+                && stage["$match"].AsBsonDocument.Contains("$or"));
+        Assert.True(groupIndex < externalMatchIndex);
+    }
 }

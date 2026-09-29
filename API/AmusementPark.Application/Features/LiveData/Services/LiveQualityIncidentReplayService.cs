@@ -11,13 +11,20 @@ public sealed class LiveQualityIncidentReplayService
     private readonly ILiveQualityIncidentRepository incidentRepository;
     private readonly ILiveTargetMappingRepository mappingRepository;
     private readonly ILiveLatestObservationRepository latestRepository;
+    private readonly ILiveOperationalGate operationalGate;
     private readonly TimeProvider timeProvider;
 
     public LiveQualityIncidentReplayService(
         ILiveQualityIncidentRepository incidentRepository,
         ILiveTargetMappingRepository mappingRepository,
-        ILiveLatestObservationRepository latestRepository)
-        : this(incidentRepository, mappingRepository, latestRepository, TimeProvider.System)
+        ILiveLatestObservationRepository latestRepository,
+        ILiveOperationalGate operationalGate)
+        : this(
+            incidentRepository,
+            mappingRepository,
+            latestRepository,
+            operationalGate,
+            TimeProvider.System)
     {
     }
 
@@ -25,6 +32,7 @@ public sealed class LiveQualityIncidentReplayService
         ILiveQualityIncidentRepository incidentRepository,
         ILiveTargetMappingRepository mappingRepository,
         ILiveLatestObservationRepository latestRepository,
+        ILiveOperationalGate operationalGate,
         TimeProvider timeProvider)
     {
         this.incidentRepository = incidentRepository
@@ -33,6 +41,8 @@ public sealed class LiveQualityIncidentReplayService
             ?? throw new ArgumentNullException(nameof(mappingRepository));
         this.latestRepository = latestRepository
             ?? throw new ArgumentNullException(nameof(latestRepository));
+        this.operationalGate = operationalGate
+            ?? throw new ArgumentNullException(nameof(operationalGate));
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -76,6 +86,9 @@ public sealed class LiveQualityIncidentReplayService
         Dictionary<
             (LiveDataSourceId SourceId, LiveTargetType TargetType, string TargetId),
             LiveLatestObservation> latestByInternalTarget = new();
+        Dictionary<
+            (LiveDataSourceId SourceId, string ExternalEntityId),
+            LiveOperationalGateSnapshot> gates = new();
         List<Guid> resolvedIds = new List<Guid>();
         foreach (IGrouping<LiveDataSourceId, LiveQualityIncident> sourceGroup in candidates
                      .GroupBy(static incident => incident.SourceId))
@@ -102,6 +115,27 @@ public sealed class LiveQualityIncidentReplayService
                     || mapping.Target is null
                     || mapping.ExternalTarget.Type != observation.TargetType
                     || mapping.Target.Type != observation.TargetType)
+                {
+                    continue;
+                }
+
+                string externalEntityId = mapping.ExternalTarget.Type == LiveTargetType.Park
+                    ? mapping.ExternalTarget.Id
+                    : mapping.ExternalTarget.ParentId!;
+                (LiveDataSourceId, string) gateKey = (incident.SourceId, externalEntityId);
+                if (!gates.TryGetValue(gateKey, out LiveOperationalGateSnapshot? gate))
+                {
+                    gate = await this.operationalGate.LoadAsync(
+                        incident.SourceId,
+                        externalEntityId,
+                        cancellationToken);
+                    gates[gateKey] = gate;
+                }
+
+                if (!gate.AllowsCollection(
+                        mapping.Target.ParkId,
+                        mapping.Target.Type,
+                        mapping.Target.Id))
                 {
                     continue;
                 }

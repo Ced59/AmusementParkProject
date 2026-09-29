@@ -61,6 +61,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             incidents.Object,
             mappings.Object,
             latest.Object,
+            CreateAllowingGate(),
             new FixedTimeProvider(NowUtc));
 
         LiveQualityReplayResult result = await service.ReplayAsync(
@@ -118,6 +119,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             incidents.Object,
             mappings.Object,
             latest.Object,
+            CreateAllowingGate(),
             new FixedTimeProvider(NowUtc));
 
         LiveQualityReplayResult result = await service.ReplayAsync(
@@ -193,6 +195,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             incidents.Object,
             mappings.Object,
             latest.Object,
+            CreateAllowingGate(),
             new FixedTimeProvider(NowUtc));
 
         LiveQualityReplayResult result = await service.ReplayAsync(
@@ -209,6 +212,69 @@ public sealed class LiveQualityIncidentReplayServiceTests
         Assert.Single(
             stored,
             observation => observation.Provenance.SourceId == secondSourceId);
+    }
+
+    [Fact]
+    public async Task ReplayAsync_WhenCollectionIsStopped_ShouldKeepIncidentPending()
+    {
+        LiveQualityIncident incident = CreateIncident();
+        Mock<ILiveQualityIncidentRepository> incidents =
+            new Mock<ILiveQualityIncidentRepository>(MockBehavior.Strict);
+        incidents.Setup(value => value.GetReplayCandidatesAsync(
+                1,
+                NowUtc,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { incident });
+        incidents.Setup(value => value.MarkReplayAttemptedAsync(
+                It.Is<IReadOnlyCollection<Guid>>(ids => ids.Single() == incident.Id),
+                NowUtc,
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        incidents.Setup(value => value.MarkResolvedAsync(
+                It.Is<IReadOnlyCollection<Guid>>(ids => ids.Count == 0),
+                NowUtc,
+                "admin-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(0);
+        Mock<ILiveTargetMappingRepository> mappings =
+            new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        mappings.Setup(value => value.GetLatestByExternalTargetIdsAsync(
+                SourceId,
+                It.IsAny<IReadOnlyCollection<string>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { CreateVerifiedMapping() });
+        Mock<ILiveLatestObservationRepository> latest =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        latest.Setup(value => value.WriteLatestAsync(
+                It.Is<IReadOnlyCollection<LiveLatestObservation>>(values => values.Count == 0),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveLatestObservationWriteResult(0, 0, 0));
+        Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.Setup(value => value.LoadAsync(
+                SourceId,
+                "external-park",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveOperationalGateSnapshot(
+                false,
+                true,
+                "external-park",
+                Array.Empty<LiveOperationalControl>(),
+                new LiveOperationalControlPolicy()));
+        LiveQualityIncidentReplayService service = new LiveQualityIncidentReplayService(
+            incidents.Object,
+            mappings.Object,
+            latest.Object,
+            gate.Object,
+            new FixedTimeProvider(NowUtc));
+
+        LiveQualityReplayResult result = await service.ReplayAsync(
+            1,
+            "admin-1",
+            CancellationToken.None);
+
+        Assert.Equal(0, result.ResolvedCount);
+        Assert.Equal(1, result.StillBlockedCount);
+        Assert.Equal(0, result.PersistedCount);
     }
 
     private static LiveQualityIncident CreateIncident()
@@ -291,5 +357,23 @@ public sealed class LiveQualityIncidentReplayServiceTests
             TimeSpan.FromMinutes(10),
             TimeSpan.FromMinutes(20),
             TimeSpan.FromMinutes(1));
+    }
+
+    private static ILiveOperationalGate CreateAllowingGate()
+    {
+        Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.Setup(value => value.LoadAsync(
+                It.IsAny<LiveDataSourceId>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .Returns<LiveDataSourceId, string, CancellationToken>(
+                (sourceId, externalEntityId, _) => Task.FromResult(
+                    new LiveOperationalGateSnapshot(
+                        true,
+                        true,
+                        externalEntityId,
+                        Array.Empty<LiveOperationalControl>(),
+                        new LiveOperationalControlPolicy())));
+        return gate.Object;
     }
 }

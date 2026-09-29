@@ -20,6 +20,11 @@ public interface ILiveTargetMappingRepository
         IReadOnlyCollection<string> externalTargetIds,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<ExternalLiveTargetMapping>> GetLatestByExternalEntityAsync(
+        LiveDataSourceId sourceId,
+        string externalEntityId,
+        CancellationToken cancellationToken);
+
     Task<IReadOnlyCollection<LivePublicTargetCoverage>> GetEligiblePublicTargetCoverageByParkAsync(
         LiveDataSourceId sourceId,
         string externalEntityId,

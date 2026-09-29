@@ -1,4 +1,3 @@
-using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.LiveData.Models;
 using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.LiveData.Results;
@@ -59,14 +58,11 @@ public sealed class LiveOperationsDashboardReaderTests
         adapter.SetupGet(static value => value.UsagePolicyVersion).Returns("policy-1");
         Mock<ILiveTargetMappingRepository> mappings =
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
-        mappings.Setup(value => value.SearchLatestAsync(
-                It.Is<LiveTargetMappingSearchCriteria>(criteria => criteria.SourceId == sourceId.Value),
+        mappings.Setup(value => value.GetLatestByExternalEntityAsync(
+                sourceId,
+                "external-park",
                 CancellationToken.None))
-            .ReturnsAsync(new PagedResult<ExternalLiveTargetMapping>(
-                Array.Empty<ExternalLiveTargetMapping>(),
-                1,
-                500,
-                0));
+            .ReturnsAsync(Array.Empty<ExternalLiveTargetMapping>());
         Mock<ILivePollingStateRepository> polling =
             new Mock<ILivePollingStateRepository>(MockBehavior.Strict);
         polling.Setup(value => value.GetAsync(sourceId, "external-park", CancellationToken.None))

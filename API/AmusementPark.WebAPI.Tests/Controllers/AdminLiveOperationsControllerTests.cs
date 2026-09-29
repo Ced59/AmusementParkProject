@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Security.Claims;
+using System.Text.Json;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.LiveData.Commands;
@@ -22,6 +23,14 @@ namespace AmusementPark.WebAPI.Tests.Controllers;
 
 public sealed class AdminLiveOperationsControllerTests
 {
+    [Fact]
+    public void ScopeType_ShouldSerializeAsPublicContractName()
+    {
+        string json = JsonSerializer.Serialize(LiveOperationalScopeTypeDto.Target);
+
+        Assert.Equal("\"Target\"", json);
+    }
+
     [Fact]
     public void Controller_ShouldProtectAndAuditOperationalControlUpdates()
     {

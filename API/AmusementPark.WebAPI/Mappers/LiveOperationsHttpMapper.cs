@@ -100,7 +100,6 @@ public static class LiveOperationsHttpMapper
             CandidateMappingCount = result.CandidateMappingCount,
             SuspendedMappingCount = result.SuspendedMappingCount,
             PendingIncidentCount = result.PendingIncidentCount,
-            CoverageTruncated = result.CoverageTruncated,
         };
     }
 }

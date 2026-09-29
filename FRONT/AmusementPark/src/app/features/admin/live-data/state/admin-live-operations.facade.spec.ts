@@ -66,7 +66,7 @@ function createDashboard(): LiveOperationsDashboard {
       lastSuccessfulPollAtUtc: null, consecutiveFailures: 0, circuitOpenUntilUtc: null,
       lastDisposition: null, leaseActive: false, leaseExpiresAtUtc: null },
     summary: { mappingCount: 1, eligibleMappingCount: 1, candidateMappingCount: 0,
-      suspendedMappingCount: 0, pendingIncidentCount: 0, coverageTruncated: false },
+      suspendedMappingCount: 0, pendingIncidentCount: 0 },
     scopes: [scope], generatedAtUtc: '2026-09-29T09:00:00Z'
   };
 }
