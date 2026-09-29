@@ -250,6 +250,9 @@ jobs:
           npm run architecture:one-class-per-file:test
           npm run architecture:one-class-per-file
 
+      - name: Enforce typed product analytics
+        run: npm run architecture:product-analytics
+
       - name: Test crawler SSR smoke checks
         run: node --test tools/seo-ssr-smoke.test.mjs tools/server-graceful-shutdown.test.mjs tools/disk-page-cache-invalidation-reader.test.mjs
 

@@ -2,7 +2,7 @@
 
 > Code programme : `QUAL`
 >
-> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` à `QUAL-04` sont livrés au 29 septembre 2026.
+> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` à `QUAL-05` sont livrés au 29 septembre 2026.
 >
 > Principe : une fonctionnalité n’est pas validée parce qu’elle compile ou parce qu’elle augmente un compteur. Elle doit être comprise, utile, accessible, fiable, réversible, respectueuse de la vie privée et supportable avec les moyens réels du projet.
 
@@ -828,7 +828,7 @@ d'usage réel n'est donc revendiquée.
 | [`QUAL-02`](../../architecture/product-growth-qual-02-feature-flags-2026-09-29.md) | Infrastructure feature flags — livré le 29 septembre 2026 | Fallback/kill switch |
 | [`QUAL-03`](../../architecture/product-growth-qual-03-performance-error-baseline-2026-09-29.md) | Baseline performance/erreurs — livré le 29 septembre 2026 | État avant produit connu |
 | [`QUAL-04`](../../architecture/product-growth-qual-04-privacy-export-deletion-matrix-2026-09-29.md) | Matrice privacy et export/suppression — livré le 29 septembre 2026 | Champs catalogués |
-| `QUAL-05` | Helpers d’instrumentation typés | Pas d’événements ad hoc |
+| [`QUAL-05`](../../architecture/product-growth-qual-05-typed-product-analytics-2026-09-29.md) | Helpers d’instrumentation typés — livré le 29 septembre 2026 | Pas d’événements ad hoc |
 | `QUAL-06` | Dashboards funnel/fiabilité | Questions utiles uniquement |
 | `QUAL-07` | Automatisation accessibilité/i18n | Régressions détectées |
 | `QUAL-08` | Tests cross-user et sécurité | Parcours critiques |
@@ -892,6 +892,17 @@ constat principal est volontairement explicite : Partage et Alertes possèdent d
 des participants de purge solides, mais l'export de compte fédéré et le coordinateur
 global de suppression restent à construire avant d'exposer une promesse complète
 au membre.
+
+### Implémentation `QUAL-05` — 29 septembre 2026
+
+Les événements produit PASS et SHARE utilisent désormais un port et un adaptateur
+Matomo communs. Le contrat v1 couvre 54 événements fermés des huit familles et
+rejette toute propriété manquante, supplémentaire ou invalide avant émission. Le
+consentement, l'exclusion SSR et l'absence d'identifiants métier sont testés. Une
+garde CI interdit le retour des anciens ports, la création d'un second adaptateur
+ou la construction d'une requête Matomo depuis une feature. Les familles non
+activées restent un vocabulaire réservé : ce jalon ne crée pas de nouvelle collecte
+ni de stockage MongoDB.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 

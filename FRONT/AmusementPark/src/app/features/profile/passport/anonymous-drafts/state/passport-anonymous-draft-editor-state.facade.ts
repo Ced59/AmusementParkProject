@@ -9,9 +9,9 @@ import { mapParkItemToVisitEditorAttraction } from '../../mappers/passport-visit
 import { PassportOperationIdService } from '@data-access/passport/passport-operation-id.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import {
-  PASSPORT_PRODUCT_ANALYTICS_PORT,
-  PassportProductAnalyticsPort
-} from '@core/analytics/passport-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import { passportRideCountBucket } from '@core/analytics/passport-product-event.model';
 import {
   PASSPORT_ANONYMOUS_DRAFT_MAX_RIDE_COUNT,
@@ -64,8 +64,8 @@ export class PassportAnonymousDraftEditorStateFacade {
     private readonly store: PassportAnonymousDraftStorePort,
     @Inject(PASSPORT_ANONYMOUS_DRAFT_ATTRACTIONS_PORT)
     private readonly attractionsApi: PassportAnonymousDraftAttractionsPort,
-    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: PassportProductAnalyticsPort,
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort,
     private readonly operationIds: PassportOperationIdService
   ) {
   }

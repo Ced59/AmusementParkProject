@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EMPTY, Observable, catchError, finalize, switchMap, takeWhile, tap, timer } from 'rxjs';
 
 import { PassportExport, PassportExportFormat } from '@app/models/passport/passport-export.models';
-import { PASSPORT_PRODUCT_ANALYTICS_PORT } from '@core/analytics/passport-product-analytics.port';
+import { PRODUCT_ANALYTICS_PORT } from '@core/analytics/product-analytics.port';
 import { PASSPORT_EXPORT_API_PORT } from './passport-export-state-data.ports';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class PassportExportStateFacade {
   private readonly destroyRef = inject(DestroyRef);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly document = inject(DOCUMENT);
-  private readonly productAnalytics = inject(PASSPORT_PRODUCT_ANALYTICS_PORT);
+  private readonly productAnalytics = inject(PRODUCT_ANALYTICS_PORT);
   private readonly exportState = signal<PassportExport | null>(null);
   private readonly requestingState = signal<boolean>(false);
   private readonly downloadingState = signal<boolean>(false);

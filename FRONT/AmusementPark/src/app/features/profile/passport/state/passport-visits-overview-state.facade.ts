@@ -4,9 +4,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PassportVisit, PassportVisitPage } from '@app/models/passport/passport-visit.models';
 import { TranslationService } from '@app/services/translation.service';
 import {
-  PASSPORT_PRODUCT_ANALYTICS_PORT,
-  PassportProductAnalyticsPort
-} from '@core/analytics/passport-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import { mapPassportVisitOverviewItem } from '../mappers/passport-visits-overview.mapper';
 import { PassportVisitOverviewItemViewModel } from '../models/passport-visits-overview.models';
 import {
@@ -45,8 +45,8 @@ export class PassportVisitsOverviewStateFacade {
   constructor(
     @Inject(PASSPORT_VISITS_OVERVIEW_API_PORT)
     private readonly visitsApi: PassportVisitsOverviewApiPort,
-    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: PassportProductAnalyticsPort,
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort,
     private readonly translationService: TranslationService,
     private readonly destroyRef: DestroyRef
   ) {

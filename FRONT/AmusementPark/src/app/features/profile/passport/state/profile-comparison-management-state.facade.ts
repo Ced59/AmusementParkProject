@@ -3,9 +3,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ProfileComparisonSummary } from '@app/models/sharing/profile-comparison.models';
 import {
-  SHARE_PRODUCT_ANALYTICS_PORT,
-  ShareProductAnalyticsPort,
-} from '@core/analytics/share-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort,
+} from '@core/analytics/product-analytics.port';
 import {
   PROFILE_COMPARISON_MANAGEMENT_PORT,
   ProfileComparisonManagementPort,
@@ -29,8 +29,8 @@ export class ProfileComparisonManagementStateFacade {
     @Inject(PROFILE_COMPARISON_MANAGEMENT_PORT)
     private readonly port: ProfileComparisonManagementPort,
     private readonly destroyRef: DestroyRef,
-    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined },
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort = { track: (): void => undefined },
   ) {}
 
   public load(): void {

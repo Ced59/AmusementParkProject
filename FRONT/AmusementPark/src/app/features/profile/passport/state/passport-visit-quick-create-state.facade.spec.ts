@@ -4,7 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 
 import { CreatePassportVisitRequest, PassportVisit } from '@app/models/passport/passport-visit.models';
 import { AuthService } from '@app/services/auth/auth.service';
-import { PassportProductAnalyticsPort } from '@core/analytics/passport-product-analytics.port';
+import { ProductAnalyticsPort } from '@core/analytics/product-analytics.port';
 import { PassportProductEvent } from '@core/analytics/passport-product-event.model';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -276,7 +276,7 @@ function createFacade(
   api: FakeVisitApi,
   auth: FakeAuthService = new FakeAuthService(),
   anonymousDrafts: PassportAnonymousDraftStorePort = createDraftStore(),
-  analytics: PassportProductAnalyticsPort = { track: vi.fn() }
+  analytics: ProductAnalyticsPort = { track: vi.fn() }
 ): PassportVisitQuickCreateStateFacade {
   return new PassportVisitQuickCreateStateFacade(
     api,

@@ -9,9 +9,9 @@ import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import {
-  PASSPORT_PRODUCT_ANALYTICS_PORT,
-  PassportProductAnalyticsPort
-} from '@core/analytics/passport-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import { PassportProductSource } from '@core/analytics/passport-product-event.model';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
 import { PassportParkOption, PassportVisitQuickCreateDraft } from '../models/passport-visit-quick-create.models';
@@ -67,8 +67,8 @@ export class PassportVisitQuickCreateStateFacade {
     @Inject(PASSPORT_VISIT_QUICK_CREATE_PARKS_PORT) private readonly parksApi: PassportVisitQuickCreateParksPort,
     @Inject(PASSPORT_VISIT_OPERATION_ID_PORT) private readonly operationIds: PassportVisitOperationIdPort,
     @Inject(PASSPORT_ANONYMOUS_DRAFT_STORE_PORT) private readonly anonymousDrafts: PassportAnonymousDraftStorePort,
-    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: PassportProductAnalyticsPort,
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort,
     private readonly authService: AuthService,
     private readonly messages: ToastMessageService,
     private readonly translateService: TranslateService,

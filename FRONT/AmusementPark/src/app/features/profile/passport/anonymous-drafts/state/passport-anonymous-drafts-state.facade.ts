@@ -2,9 +2,9 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, Signal, computed, signal } from '@angular/core';
 
 import {
-  PASSPORT_PRODUCT_ANALYTICS_PORT,
-  PassportProductAnalyticsPort
-} from '@core/analytics/passport-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import { PassportAnonymousDraft } from '../models/passport-anonymous-draft.models';
 import {
   PASSPORT_ANONYMOUS_DRAFT_STORE_PORT,
@@ -29,8 +29,8 @@ export class PassportAnonymousDraftsStateFacade {
   constructor(
     @Inject(PASSPORT_ANONYMOUS_DRAFT_STORE_PORT)
     private readonly store: PassportAnonymousDraftStorePort,
-    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: PassportProductAnalyticsPort,
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort,
     @Inject(DOCUMENT) private readonly document: Document
   ) {
   }

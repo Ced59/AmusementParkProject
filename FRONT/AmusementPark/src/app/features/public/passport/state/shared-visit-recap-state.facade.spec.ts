@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { Observable, of, throwError } from 'rxjs';
 
 import { SharedVisitRecap } from '@app/models/sharing/share-publication.models';
-import { SHARE_PRODUCT_ANALYTICS_PORT } from '@core/analytics/share-product-analytics.port';
+import { PRODUCT_ANALYTICS_PORT } from '@core/analytics/product-analytics.port';
 import { ShareProductEvent } from '@core/analytics/share-product-event.model';
 import { SHARED_VISIT_RECAP_PORT, SharedVisitRecapPort } from './shared-visit-recap-state-data.ports';
 import { SharedVisitRecapStateFacade } from './shared-visit-recap-state.facade';
@@ -18,7 +18,7 @@ describe('SharedVisitRecapStateFacade', () => {
         SharedVisitRecapStateFacade,
         { provide: SHARED_VISIT_RECAP_PORT, useValue: port },
         {
-          provide: SHARE_PRODUCT_ANALYTICS_PORT,
+          provide: PRODUCT_ANALYTICS_PORT,
           useValue: {
             track: (event: ShareProductEvent): void => {
               analyticsEvents.push(event);
@@ -52,7 +52,7 @@ describe('SharedVisitRecapStateFacade', () => {
         SharedVisitRecapStateFacade,
         { provide: SHARED_VISIT_RECAP_PORT, useValue: port },
         {
-          provide: SHARE_PRODUCT_ANALYTICS_PORT,
+          provide: PRODUCT_ANALYTICS_PORT,
           useValue: {
             track: (event: ShareProductEvent): void => {
               analyticsEvents.push(event);
