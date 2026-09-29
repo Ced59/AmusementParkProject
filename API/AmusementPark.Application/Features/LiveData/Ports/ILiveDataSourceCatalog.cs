@@ -7,5 +7,7 @@ public interface ILiveDataSourceCatalog
 {
     bool IsPublicReadEnabled { get; }
 
+    LivePollingTarget? PublicPollingTarget { get; }
+
     LiveDataSourcePresentation? Find(LiveDataSourceId sourceId);
 }

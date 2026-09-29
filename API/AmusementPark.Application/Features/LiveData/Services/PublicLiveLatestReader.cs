@@ -1,4 +1,5 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.LiveData.Models;
 using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.LiveData.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -46,6 +47,13 @@ public sealed class PublicLiveLatestReader
                 LiveDataApplicationErrors.PublicReadDisabled());
         }
 
+        LivePollingTarget? publicTarget = this.sourceCatalog.PublicPollingTarget;
+        if (publicTarget is null)
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         string? normalizedParkId = NormalizeIdentifier(parkId);
         if (normalizedParkId is null)
         {
@@ -65,6 +73,8 @@ public sealed class PublicLiveLatestReader
 
         IReadOnlyCollection<string> coveredTargetIds =
             await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+                publicTarget.SourceId,
+                publicTarget.ExternalEntityId,
                 normalizedParkId,
                 cancellationToken);
         if (coveredTargetIds.Count == 0)
@@ -101,6 +111,13 @@ public sealed class PublicLiveLatestReader
                 LiveDataApplicationErrors.PublicReadDisabled());
         }
 
+        LivePollingTarget? publicTarget = this.sourceCatalog.PublicPollingTarget;
+        if (publicTarget is null)
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         string? normalizedParkItemId = NormalizeIdentifier(parkItemId);
         if (normalizedParkItemId is null)
         {
@@ -127,6 +144,8 @@ public sealed class PublicLiveLatestReader
 
         IReadOnlyCollection<string> coveredTargetIds =
             await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+                publicTarget.SourceId,
+                publicTarget.ExternalEntityId,
                 item.ParkId,
                 cancellationToken);
         if (!coveredTargetIds.Contains(normalizedParkItemId, StringComparer.Ordinal))
@@ -163,6 +182,13 @@ public sealed class PublicLiveLatestReader
                 LiveDataApplicationErrors.PublicReadDisabled());
         }
 
+        LivePollingTarget? publicTarget = this.sourceCatalog.PublicPollingTarget;
+        if (publicTarget is null)
+        {
+            return ApplicationResult<PublicParkLiveItemsResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         string? normalizedParkId = NormalizeIdentifier(parkId);
         if (normalizedParkId is null)
         {
@@ -186,6 +212,8 @@ public sealed class PublicLiveLatestReader
             cancellationToken);
         IReadOnlyCollection<string> coveredTargetIds =
             await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+                publicTarget.SourceId,
+                publicTarget.ExternalEntityId,
                 normalizedParkId,
                 cancellationToken);
         HashSet<string> coveredTargetIdSet = coveredTargetIds.ToHashSet(StringComparer.Ordinal);

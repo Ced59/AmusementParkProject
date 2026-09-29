@@ -21,6 +21,8 @@ public interface ILiveTargetMappingRepository
         CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<string>> GetEligibleInternalTargetIdsByParkAsync(
+        LiveDataSourceId sourceId,
+        string externalEntityId,
         string internalParkId,
         CancellationToken cancellationToken);
 

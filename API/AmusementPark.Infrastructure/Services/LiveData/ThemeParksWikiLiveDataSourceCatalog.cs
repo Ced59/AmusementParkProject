@@ -12,13 +12,11 @@ public sealed class ThemeParksWikiLiveDataSourceCatalog : ILiveDataSourceCatalog
     public ThemeParksWikiLiveDataSourceCatalog(LiveDataPollingSettings settings)
     {
         ArgumentNullException.ThrowIfNull(settings);
-        this.IsPublicReadEnabled = settings.Enabled
-            && settings.PublicReadEnabled
-            && settings.Targets.Any(static target => target.Enabled
-                && string.Equals(
-                    target.SourceId?.Trim(),
-                    "themeparks-wiki",
-                    StringComparison.Ordinal));
+        this.PublicPollingTarget = settings.Enabled && settings.PublicReadEnabled
+            ? settings.BuildEnabledTargets().SingleOrDefault(static target =>
+                target.SourceId == LiveDataSourceId.Parse("themeparks-wiki"))
+            : null;
+        this.IsPublicReadEnabled = this.PublicPollingTarget is not null;
         this.presentation = new LiveDataSourcePresentation(
             new LiveDataSource(
                 LiveDataSourceId.Parse("themeparks-wiki"),
@@ -42,6 +40,8 @@ public sealed class ThemeParksWikiLiveDataSourceCatalog : ILiveDataSourceCatalog
     }
 
     public bool IsPublicReadEnabled { get; }
+
+    public LivePollingTarget? PublicPollingTarget { get; }
 
     public LiveDataSourcePresentation? Find(LiveDataSourceId sourceId)
     {

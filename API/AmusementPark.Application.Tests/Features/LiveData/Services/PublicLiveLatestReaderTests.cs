@@ -93,6 +93,8 @@ public sealed class PublicLiveLatestReaderTests
         parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
             .ReturnsAsync(CreatePark());
         mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+                LiveDataSourceId.Parse("themeparks-wiki"),
+                "external-park-1",
                 "park-1",
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<string>());
@@ -118,6 +120,8 @@ public sealed class PublicLiveLatestReaderTests
         parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
             .ReturnsAsync(CreatePark());
         mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+                LiveDataSourceId.Parse("themeparks-wiki"),
+                "external-park-1",
                 "park-1",
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<string>());
@@ -206,6 +210,8 @@ public sealed class PublicLiveLatestReaderTests
                 CreateItem("uncovered", "Restaurant"),
             });
         mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+                LiveDataSourceId.Parse("themeparks-wiki"),
+                "external-park-1",
                 "park-1",
                 CancellationToken.None))
             .ReturnsAsync(new[] { "visible-1", "visible-2", "hidden-item" });
@@ -239,6 +245,8 @@ public sealed class PublicLiveLatestReaderTests
         Mock<ILiveTargetMappingRepository> mappings =
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
         mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+                LiveDataSourceId.Parse("themeparks-wiki"),
+                "external-park-1",
                 "park-1",
                 CancellationToken.None))
             .ReturnsAsync(new[] { "item-1" });
@@ -267,6 +275,7 @@ public sealed class PublicLiveLatestReaderTests
         if (sourceCatalog is null)
         {
             catalog.SetupGet(value => value.IsPublicReadEnabled).Returns(true);
+            catalog.SetupGet(value => value.PublicPollingTarget).Returns(CreatePollingTarget());
         }
         catalog.Setup(value => value.Find(LiveDataSourceId.Parse("themeparks-wiki")))
             .Returns(CreatePresentation());
@@ -277,6 +286,8 @@ public sealed class PublicLiveLatestReaderTests
         {
             mappingRepository = new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
             mappingRepository.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+                    LiveDataSourceId.Parse("themeparks-wiki"),
+                    "external-park-1",
                     "park-1",
                     CancellationToken.None))
                 .ReturnsAsync(new[] { "item-1" });
@@ -352,6 +363,21 @@ public sealed class PublicLiveLatestReaderTests
             100,
             "Powered by ThemeParks.wiki",
             "https://themeparks.wiki/");
+    }
+
+    private static LivePollingTarget CreatePollingTarget()
+    {
+        return new LivePollingTarget(
+            LiveDataSourceId.Parse("themeparks-wiki"),
+            "external-park-1",
+            new LivePollingActiveWindow(TimeZoneInfo.Utc, 6, 23),
+            new LivePollingPolicy(
+                TimeSpan.FromMinutes(5),
+                TimeSpan.FromMinutes(5),
+                TimeSpan.FromHours(1),
+                5,
+                TimeSpan.FromMinutes(30)),
+            TimeSpan.Zero);
     }
 
     private static Park CreatePark()

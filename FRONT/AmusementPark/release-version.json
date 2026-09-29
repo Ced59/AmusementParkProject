@@ -1,6 +1,20 @@
 {
-  "version": "5.4.9",
+  "version": "5.4.10",
   "history": [
+    {
+      "version": "5.4.10",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les informations en direct restent limitées aux parcs activés.",
+        "en": "Live information remains limited to enabled parks.",
+        "de": "Live-Informationen bleiben auf aktivierte Parks beschränkt.",
+        "nl": "Live-informatie blijft beperkt tot geactiveerde parken.",
+        "it": "Le informazioni in tempo reale restano limitate ai parchi attivati.",
+        "es": "La información en directo queda limitada a los parques activados.",
+        "pl": "Informacje na żywo pozostają ograniczone do włączonych parków.",
+        "pt": "As informações em direto ficam limitadas aos parques ativados."
+      }
+    },
     {
       "version": "5.4.9",
       "releasedAt": "2026-09-29",
