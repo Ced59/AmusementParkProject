@@ -5970,6 +5970,95 @@
       "openProvider": "Open provider page"
     }
   },
+  "liveData": {
+    "kicker": "Live",
+    "parkTitle": "The park right now",
+    "itemTitle": "Wait and availability",
+    "parkSubtitle": "See the current state of covered attractions without confusing a wait, a closure and missing information.",
+    "itemSubtitle": "Operational information kept separate from reviews, ratings and your visit log.",
+    "localTime": "Local time: {{time}}",
+    "refresh": "Refresh",
+    "offline": "You are offline. The latest received information remains visible.",
+    "refreshError": "The refresh failed. The latest received information remains visible.",
+    "loading": "Loading live information…",
+    "errorTitle": "Live information is temporarily unavailable",
+    "errorMessage": "Try again in a moment without leaving this page.",
+    "currentStatus": "Current status",
+    "confidence": {
+      "Low": "Low confidence",
+      "Medium": "Medium confidence",
+      "High": "High confidence"
+    },
+    "minutesShort": "min",
+    "noWait": "no wait",
+    "waitUnknown": "wait unknown",
+    "estimated": "Estimate",
+    "queueTitle": "Available queues",
+    "noItems": "No attraction is covered by live information yet.",
+    "availability": {
+      "noObservation": "No recent observation",
+      "expired": "Expired information",
+      "unavailable": "Information unavailable"
+    },
+    "status": {
+      "open": "Open",
+      "closed": "Closed",
+      "temporarilyClosed": "Temporarily closed",
+      "delayed": "Opening delayed",
+      "down": "Currently down",
+      "weatherClosed": "Closed due to weather",
+      "maintenance": "Under maintenance",
+      "operatingWithLimitations": "Open with limitations",
+      "unknown": "Status unknown",
+      "notOperatingToday": "Not operating today",
+      "removed": "Removed from operation"
+    },
+    "queue": {
+      "standby": "Standby queue",
+      "singleRider": "Single Rider",
+      "returnTime": "Return time",
+      "paidReturnTime": "Paid return time",
+      "boardingGroup": "Boarding group",
+      "paidStandby": "Paid standby"
+    },
+    "queueAvailability": {
+      "unspecified": "Availability unknown",
+      "available": "Available",
+      "temporarilyFull": "Temporarily full",
+      "finished": "Finished for today",
+      "paused": "Paused",
+      "closed": "Closed",
+      "unknown": "Availability unknown"
+    },
+    "queueDetails": {
+      "returnWindow": "Window {{start}}–{{end}}",
+      "returnFrom": "Return from {{time}}",
+      "returnUntil": "Return before {{time}}",
+      "groupRange": "Groups {{start}}–{{end}}",
+      "group": "Group {{value}}",
+      "nextAllocation": "Next allocation at {{time}}",
+      "price": "Paid access: {{price}}"
+    },
+    "age": {
+      "unknown": "Observation time unknown",
+      "justNow": "Updated just now",
+      "minutes": "Updated {{value}} min ago",
+      "hours": "Updated {{value}} h ago"
+    },
+    "filters": {
+      "label": "Filter live attractions",
+      "all": "All",
+      "available": "Available",
+      "shortWait": "20 min or less",
+      "closed": "Closed",
+      "unknown": "No information",
+      "empty": "No attraction matches this filter."
+    },
+    "methodology": {
+      "title": "How should I read this information?",
+      "description": "The displayed time comes from the credited source and has the age shown here. Zero minutes means that a genuine zero wait was received; a dash means that no reliable time is available. Expired data is never presented as current."
+    }
+  },
   "aboutPage": {
     "seo": {
       "title": "About AmusementPark — Your amusement park guide",

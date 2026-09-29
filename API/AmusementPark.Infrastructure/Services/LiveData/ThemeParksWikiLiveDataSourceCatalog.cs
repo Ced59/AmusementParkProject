@@ -12,7 +12,7 @@ public sealed class ThemeParksWikiLiveDataSourceCatalog : ILiveDataSourceCatalog
     public ThemeParksWikiLiveDataSourceCatalog(LiveDataPollingSettings settings)
     {
         ArgumentNullException.ThrowIfNull(settings);
-        bool isEnabled = settings.Enabled
+        this.IsPublicReadEnabled = settings.Enabled
             && settings.PublicReadEnabled
             && settings.Targets.Any(static target => target.Enabled
                 && string.Equals(
@@ -35,11 +35,13 @@ public sealed class ThemeParksWikiLiveDataSourceCatalog : ILiveDataSourceCatalog
                     new DateTime(2026, 9, 28, 15, 47, 0, DateTimeKind.Utc)),
                 TimeSpan.FromMinutes(5),
                 TimeSpan.FromMinutes(30),
-                isEnabled ? LiveDataSourceStatus.Active : LiveDataSourceStatus.Suspended),
+                this.IsPublicReadEnabled ? LiveDataSourceStatus.Active : LiveDataSourceStatus.Suspended),
             100,
             "Powered by ThemeParks.wiki",
             "https://themeparks.wiki/");
     }
+
+    public bool IsPublicReadEnabled { get; }
 
     public LiveDataSourcePresentation? Find(LiveDataSourceId sourceId)
     {

@@ -175,6 +175,16 @@
         [parkName]="currentPark.name">
       </app-park-lifecycle-notice>
 
+      @if (liveState; as currentLiveState) {
+        <app-public-live-panel
+          [state]="currentLiveState"
+          mode="park"
+          [currentLanguage]="currentLang"
+          [timeZoneId]="openingHours?.timeZoneId ?? weather?.days?.[0]?.timeZone ?? null"
+          (refreshClicked)="refreshLiveData()">
+        </app-public-live-panel>
+      }
+
       <div class="park-detail__body">
         <main class="park-main">
           @if (currentPark.stats.length > 0) {

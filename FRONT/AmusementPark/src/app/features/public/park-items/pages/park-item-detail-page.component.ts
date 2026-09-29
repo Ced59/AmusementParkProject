@@ -11,13 +11,14 @@ import { ParkItemDetailViewComponent } from '../ui/park-item-detail-view.compone
 import { SeoService } from '@core/seo/seo.service';
 import { LcpImagePreloadService } from '@core/performance/lcp-image-preload.service';
 import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events';
+import { PublicLiveStateFacade } from '@features/public/live/state/public-live-state.facade';
 
 @Component({
   selector: 'app-park-item-detail-page',
   templateUrl: './park-item-detail-page.component.html',
   styleUrls: ['./park-item-detail-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ParkItemDetailStateFacade],
+  providers: [ParkItemDetailStateFacade, PublicLiveStateFacade],
   imports: [ParkItemDetailViewComponent]
 })
 export class ParkItemDetailPageComponent implements OnInit {
@@ -26,6 +27,8 @@ export class ParkItemDetailPageComponent implements OnInit {
   protected readonly heroImageSrcWidth: number = 960;
   protected readonly state = this.stateFacade.state;
   protected readonly detail = this.stateFacade.detail;
+  protected readonly liveState = this.liveStateFacade.state;
+  protected readonly parkTimeZoneId = this.stateFacade.parkTimeZoneId;
   protected readonly currentLanguage = signal<string>('en');
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -36,6 +39,7 @@ export class ParkItemDetailPageComponent implements OnInit {
     private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly stateFacade: ParkItemDetailStateFacade,
+    private readonly liveStateFacade: PublicLiveStateFacade,
     private readonly seoService: SeoService,
     private readonly lcpImagePreloadService: LcpImagePreloadService,
     private readonly contextualBlockRefreshEvents: AdminContextualBlockRefreshEvents
@@ -89,6 +93,7 @@ export class ParkItemDetailPageComponent implements OnInit {
       }
 
       this.stateFacade.loadItem(itemId);
+      this.liveStateFacade.watchParkItem(itemId);
     });
 
     this.contextualBlockRefreshEvents.appliedBlock$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event: AdminContextualBlockAppliedEvent) => {
@@ -120,6 +125,10 @@ export class ParkItemDetailPageComponent implements OnInit {
     }
 
     this.router.navigate(['/', this.currentLanguage(), 'parks']);
+  }
+
+  refreshLiveData(): void {
+    this.liveStateFacade.refresh();
   }
 
   private preloadHeroImage(heroImageId: string | null): void {

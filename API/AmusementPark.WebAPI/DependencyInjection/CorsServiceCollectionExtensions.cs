@@ -29,12 +29,12 @@ public static class CorsServiceCollectionExtensions
         string[] allowedMethods = NormalizeTokens(corsSettings.AllowedMethods, ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]);
         string[] allowedHeaders = IncludeRequiredTokens(
             corsSettings.AllowedHeaders,
-            ["Authorization", "Content-Type", "Accept-Language", "X-Requested-With", AdminPublicViewSimulation.RequestHeaderName, "Idempotency-Key"],
-            ["Idempotency-Key"]);
+            ["Authorization", "Content-Type", "Accept-Language", "X-Requested-With", AdminPublicViewSimulation.RequestHeaderName, "Idempotency-Key", "If-None-Match"],
+            ["Idempotency-Key", "If-None-Match"]);
         string[] exposedHeaders = IncludeRequiredTokens(
             corsSettings.ExposedHeaders,
-            ["Retry-After", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset", AdminPublicViewSimulation.AppliedResponseHeaderName, "Idempotency-Replayed", "Ride-Order-Normalized"],
-            ["Idempotency-Replayed", "Ride-Order-Normalized"]);
+            ["Retry-After", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset", AdminPublicViewSimulation.AppliedResponseHeaderName, "Idempotency-Replayed", "Ride-Order-Normalized", "ETag"],
+            ["Idempotency-Replayed", "Ride-Order-Normalized", "ETag"]);
 
         CorsSettings normalizedSettings = new CorsSettings
         {

@@ -38,6 +38,12 @@ public sealed class CorsServiceCollectionExtensionsTests
                 "Idempotency-Key",
                 StringComparison.OrdinalIgnoreCase));
         Assert.Contains(
+            settings.AllowedHeaders,
+            static header => string.Equals(
+                header,
+                "If-None-Match",
+                StringComparison.OrdinalIgnoreCase));
+        Assert.Contains(
             settings.ExposedHeaders,
             static header => string.Equals(
                 header,
@@ -48,6 +54,12 @@ public sealed class CorsServiceCollectionExtensionsTests
             static header => string.Equals(
                 header,
                 "Ride-Order-Normalized",
+                StringComparison.OrdinalIgnoreCase));
+        Assert.Contains(
+            settings.ExposedHeaders,
+            static header => string.Equals(
+                header,
+                "ETag",
                 StringComparison.OrdinalIgnoreCase));
     }
 }

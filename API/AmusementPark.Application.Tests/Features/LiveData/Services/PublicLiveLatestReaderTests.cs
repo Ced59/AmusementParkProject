@@ -16,6 +16,29 @@ public sealed class PublicLiveLatestReaderTests
     private static readonly DateTime NowUtc =
         new DateTime(2026, 9, 29, 12, 0, 17, DateTimeKind.Utc);
 
+    [Fact]
+    public async Task ReadParkAsync_WhenPublicReadIsDisabled_ShouldReturnNotFoundWithoutReadingData()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ILiveLatestObservationRepository> observations =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        Mock<ILiveTargetMappingRepository> mappings =
+            new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        Mock<ILiveDataSourceCatalog> catalog = new Mock<ILiveDataSourceCatalog>(MockBehavior.Strict);
+        catalog.SetupGet(value => value.IsPublicReadEnabled).Returns(false);
+        PublicLiveLatestReader reader = CreateReader(parks, items, observations, mappings, catalog);
+
+        AmusementPark.Application.Errors.ApplicationResult<PublicLiveTargetResult> result =
+            await reader.ReadParkAsync("park-1", CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("live-data.public-read.disabled", Assert.Single(result.Errors).Code);
+        parks.VerifyNoOtherCalls();
+        items.VerifyNoOtherCalls();
+        observations.VerifyNoOtherCalls();
+    }
+
     [Theory]
     [InlineData(0)]
     [InlineData(null)]
@@ -54,6 +77,58 @@ public sealed class PublicLiveLatestReaderTests
         Assert.Empty(value.Queues);
         Assert.Null(value.Source);
         Assert.Null(value.AgeSeconds);
+    }
+
+    [Fact]
+    public async Task ReadParkItemAsync_WhenTargetIsOutsideCoveredMappings_ShouldHideLiveData()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ILiveLatestObservationRepository> observations =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        Mock<ILiveTargetMappingRepository> mappings =
+            new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        items.Setup(repository => repository.GetByIdAsync("item-1", false, CancellationToken.None))
+            .ReturnsAsync(CreateItem());
+        parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
+            .ReturnsAsync(CreatePark());
+        mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+                "park-1",
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<string>());
+        PublicLiveLatestReader reader = CreateReader(parks, items, observations, mappings);
+
+        AmusementPark.Application.Errors.ApplicationResult<PublicLiveTargetResult> result =
+            await reader.ReadParkItemAsync("item-1", CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("live-data.public-read.disabled", Assert.Single(result.Errors).Code);
+        observations.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ReadParkAsync_WhenParkHasNoCoveredTarget_ShouldHideLiveData()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ILiveLatestObservationRepository> observations =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        Mock<ILiveTargetMappingRepository> mappings =
+            new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
+            .ReturnsAsync(CreatePark());
+        mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+                "park-1",
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<string>());
+        PublicLiveLatestReader reader = CreateReader(parks, items, observations, mappings);
+
+        AmusementPark.Application.Errors.ApplicationResult<PublicLiveTargetResult> result =
+            await reader.ReadParkAsync("park-1", CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("live-data.public-read.disabled", Assert.Single(result.Errors).Code);
+        observations.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -113,12 +188,14 @@ public sealed class PublicLiveLatestReaderTests
     }
 
     [Fact]
-    public async Task ReadParkItemsAsync_ShouldReadObservationsOnlyForVisibleItems()
+    public async Task ReadParkItemsAsync_ShouldReturnOnlyVisibleItemsCoveredByVerifiedMappings()
     {
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<ILiveLatestObservationRepository> observations =
             new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        Mock<ILiveTargetMappingRepository> mappings =
+            new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
         parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
             .ReturnsAsync(CreatePark());
         items.Setup(repository => repository.GetByParkIdAsync("park-1", false, CancellationToken.None))
@@ -126,14 +203,19 @@ public sealed class PublicLiveLatestReaderTests
             {
                 CreateItem("visible-2", "Beta"),
                 CreateItem("visible-1", "Alpha"),
+                CreateItem("uncovered", "Restaurant"),
             });
+        mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+                "park-1",
+                CancellationToken.None))
+            .ReturnsAsync(new[] { "visible-1", "visible-2", "hidden-item" });
         observations.Setup(repository => repository.GetParkItemsAsync(
                 "park-1",
                 It.Is<IReadOnlyCollection<string>>(targetIds =>
                     targetIds.SequenceEqual(new[] { "visible-2", "visible-1" })),
                 CancellationToken.None))
             .ReturnsAsync(Array.Empty<LiveLatestObservation>());
-        PublicLiveLatestReader reader = CreateReader(parks, items, observations);
+        PublicLiveLatestReader reader = CreateReader(parks, items, observations, mappings);
 
         AmusementPark.Application.Errors.ApplicationResult<PublicParkLiveItemsResult> result =
             await reader.ReadParkItemsAsync("park-1", CancellationToken.None);
@@ -145,6 +227,7 @@ public sealed class PublicLiveLatestReaderTests
             value.Items,
             static item => Assert.Equal(PublicLiveAvailability.NoObservation, item.Availability));
         observations.VerifyAll();
+        mappings.VerifyAll();
     }
 
     private static PublicLiveLatestReader CreateReader(params LiveLatestObservation[] observationsToReturn)
@@ -153,6 +236,12 @@ public sealed class PublicLiveLatestReaderTests
         Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<ILiveLatestObservationRepository> observations =
             new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        Mock<ILiveTargetMappingRepository> mappings =
+            new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+                "park-1",
+                CancellationToken.None))
+            .ReturnsAsync(new[] { "item-1" });
         items.Setup(repository => repository.GetByIdAsync("item-1", false, CancellationToken.None))
             .ReturnsAsync(CreateItem());
         parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
@@ -163,23 +252,45 @@ public sealed class PublicLiveLatestReaderTests
                 "park-1",
                 CancellationToken.None))
             .ReturnsAsync(observationsToReturn);
-        return CreateReader(parks, items, observations);
+        return CreateReader(parks, items, observations, mappings);
     }
 
     private static PublicLiveLatestReader CreateReader(
         Mock<IParkRepository> parks,
         Mock<IParkItemRepository> items,
-        Mock<ILiveLatestObservationRepository> observations)
+        Mock<ILiveLatestObservationRepository> observations,
+        Mock<ILiveTargetMappingRepository>? mappings = null,
+        Mock<ILiveDataSourceCatalog>? sourceCatalog = null)
     {
-        Mock<ILiveDataSourceCatalog> catalog = new Mock<ILiveDataSourceCatalog>(MockBehavior.Strict);
+        Mock<ILiveDataSourceCatalog> catalog = sourceCatalog
+            ?? new Mock<ILiveDataSourceCatalog>(MockBehavior.Strict);
+        if (sourceCatalog is null)
+        {
+            catalog.SetupGet(value => value.IsPublicReadEnabled).Returns(true);
+        }
         catalog.Setup(value => value.Find(LiveDataSourceId.Parse("themeparks-wiki")))
             .Returns(CreatePresentation());
         Mock<TimeProvider> clock = new Mock<TimeProvider>(MockBehavior.Strict);
         clock.Setup(value => value.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
+        Mock<ILiveTargetMappingRepository> mappingRepository;
+        if (mappings is null)
+        {
+            mappingRepository = new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+            mappingRepository.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+                    "park-1",
+                    CancellationToken.None))
+                .ReturnsAsync(new[] { "item-1" });
+        }
+        else
+        {
+            mappingRepository = mappings;
+        }
         return new PublicLiveLatestReader(
             parks.Object,
             items.Object,
             observations.Object,
+            mappingRepository.Object,
+            catalog.Object,
             new PublicLiveTargetResultFactory(
                 catalog.Object,
                 new LiveLatestObservationSelectionPolicy()),

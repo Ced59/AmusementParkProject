@@ -1,0 +1,91 @@
+{
+  "liveData": {
+    "kicker": "En direct",
+    "parkTitle": "Le parc maintenant",
+    "itemTitle": "Attente et disponibilité",
+    "parkSubtitle": "Consulte l’état actuel des attractions couvertes sans confondre attente, fermeture et donnée inconnue.",
+    "itemSubtitle": "Une information opérationnelle distincte des avis, des notes et de ton journal de visite.",
+    "localTime": "Heure locale : {{time}}",
+    "refresh": "Actualiser",
+    "offline": "Tu es hors ligne. La dernière information reçue reste affichée.",
+    "refreshError": "L’actualisation a échoué. La dernière information reçue reste affichée.",
+    "loading": "Chargement des informations en direct…",
+    "errorTitle": "Le direct est momentanément inaccessible",
+    "errorMessage": "Réessaie dans un instant sans quitter la fiche.",
+    "currentStatus": "État actuel",
+    "confidence": {
+      "Low": "Confiance faible",
+      "Medium": "Confiance moyenne",
+      "High": "Confiance élevée"
+    },
+    "minutesShort": "min",
+    "noWait": "sans attente",
+    "waitUnknown": "attente inconnue",
+    "estimated": "Estimation",
+    "queueTitle": "Files disponibles",
+    "noItems": "Aucune attraction couverte par le direct pour le moment.",
+    "availability": {
+      "noObservation": "Aucune observation récente",
+      "expired": "Information expirée",
+      "unavailable": "Information indisponible"
+    },
+    "status": {
+      "open": "Ouvert",
+      "closed": "Fermé",
+      "temporarilyClosed": "Fermé temporairement",
+      "delayed": "Ouverture retardée",
+      "down": "Interruption en cours",
+      "weatherClosed": "Fermé à cause de la météo",
+      "maintenance": "En maintenance",
+      "operatingWithLimitations": "Ouvert avec restrictions",
+      "unknown": "État inconnu",
+      "notOperatingToday": "Ne fonctionne pas aujourd’hui",
+      "removed": "Retiré de l’exploitation"
+    },
+    "queue": {
+      "standby": "File classique",
+      "singleRider": "Single Rider",
+      "returnTime": "Créneau de retour",
+      "paidReturnTime": "Créneau payant",
+      "boardingGroup": "Groupe d’embarquement",
+      "paidStandby": "File payante"
+    },
+    "queueAvailability": {
+      "unspecified": "Disponibilité inconnue",
+      "available": "Disponible",
+      "temporarilyFull": "Complet temporairement",
+      "finished": "Terminé pour aujourd’hui",
+      "paused": "En pause",
+      "closed": "Fermé",
+      "unknown": "Disponibilité inconnue"
+    },
+    "queueDetails": {
+      "returnWindow": "Créneau {{start}}–{{end}}",
+      "returnFrom": "Retour à partir de {{time}}",
+      "returnUntil": "Retour avant {{time}}",
+      "groupRange": "Groupes {{start}}–{{end}}",
+      "group": "Groupe {{value}}",
+      "nextAllocation": "Prochaine attribution à {{time}}",
+      "price": "Accès payant : {{price}}"
+    },
+    "age": {
+      "unknown": "Heure d’observation inconnue",
+      "justNow": "Mis à jour à l’instant",
+      "minutes": "Mis à jour il y a {{value}} min",
+      "hours": "Mis à jour il y a {{value}} h"
+    },
+    "filters": {
+      "label": "Filtrer les attractions en direct",
+      "all": "Toutes",
+      "available": "Accessibles",
+      "shortWait": "20 min ou moins",
+      "closed": "Fermées",
+      "unknown": "Sans information",
+      "empty": "Aucune attraction ne correspond à ce filtre."
+    },
+    "methodology": {
+      "title": "Comment lire ces informations ?",
+      "description": "Le temps affiché vient de la source citée et correspond à l’âge indiqué. Zéro minute signifie bien qu’une attente nulle a été reçue ; un tiret signifie qu’aucun temps fiable n’est disponible. Une donnée expirée n’est jamais présentée comme actuelle."
+    }
+  }
+}

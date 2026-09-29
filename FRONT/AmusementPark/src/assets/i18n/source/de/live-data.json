@@ -1,0 +1,91 @@
+{
+  "liveData": {
+    "kicker": "Live",
+    "parkTitle": "Der Park im Moment",
+    "itemTitle": "Wartezeit und Verfügbarkeit",
+    "parkSubtitle": "Sieh den aktuellen Zustand der erfassten Attraktionen, ohne Wartezeit, Schließung und fehlende Information zu verwechseln.",
+    "itemSubtitle": "Betriebsinformationen, klar getrennt von Bewertungen, Noten und deinem Besuchstagebuch.",
+    "localTime": "Ortszeit: {{time}}",
+    "refresh": "Aktualisieren",
+    "offline": "Du bist offline. Die zuletzt empfangene Information bleibt sichtbar.",
+    "refreshError": "Die Aktualisierung ist fehlgeschlagen. Die zuletzt empfangene Information bleibt sichtbar.",
+    "loading": "Live-Informationen werden geladen…",
+    "errorTitle": "Live-Informationen sind vorübergehend nicht verfügbar",
+    "errorMessage": "Versuche es gleich noch einmal, ohne diese Seite zu verlassen.",
+    "currentStatus": "Aktueller Status",
+    "confidence": {
+      "Low": "Geringes Vertrauen",
+      "Medium": "Mittleres Vertrauen",
+      "High": "Hohes Vertrauen"
+    },
+    "minutesShort": "Min.",
+    "noWait": "keine Wartezeit",
+    "waitUnknown": "Wartezeit unbekannt",
+    "estimated": "Schätzung",
+    "queueTitle": "Verfügbare Warteschlangen",
+    "noItems": "Noch ist keine Attraktion mit Live-Informationen erfasst.",
+    "availability": {
+      "noObservation": "Keine aktuelle Beobachtung",
+      "expired": "Information abgelaufen",
+      "unavailable": "Information nicht verfügbar"
+    },
+    "status": {
+      "open": "Geöffnet",
+      "closed": "Geschlossen",
+      "temporarilyClosed": "Vorübergehend geschlossen",
+      "delayed": "Öffnung verzögert",
+      "down": "Derzeit außer Betrieb",
+      "weatherClosed": "Wetterbedingt geschlossen",
+      "maintenance": "In Wartung",
+      "operatingWithLimitations": "Mit Einschränkungen geöffnet",
+      "unknown": "Status unbekannt",
+      "notOperatingToday": "Heute nicht in Betrieb",
+      "removed": "Außer Betrieb genommen"
+    },
+    "queue": {
+      "standby": "Normale Warteschlange",
+      "singleRider": "Single Rider",
+      "returnTime": "Rückkehrzeit",
+      "paidReturnTime": "Kostenpflichtige Rückkehrzeit",
+      "boardingGroup": "Boarding-Gruppe",
+      "paidStandby": "Kostenpflichtige Warteschlange"
+    },
+    "queueAvailability": {
+      "unspecified": "Verfügbarkeit unbekannt",
+      "available": "Verfügbar",
+      "temporarilyFull": "Vorübergehend voll",
+      "finished": "Für heute beendet",
+      "paused": "Pausiert",
+      "closed": "Geschlossen",
+      "unknown": "Verfügbarkeit unbekannt"
+    },
+    "queueDetails": {
+      "returnWindow": "Zeitfenster {{start}}–{{end}}",
+      "returnFrom": "Rückkehr ab {{time}}",
+      "returnUntil": "Rückkehr bis {{time}}",
+      "groupRange": "Gruppen {{start}}–{{end}}",
+      "group": "Gruppe {{value}}",
+      "nextAllocation": "Nächste Vergabe um {{time}}",
+      "price": "Kostenpflichtiger Zugang: {{price}}"
+    },
+    "age": {
+      "unknown": "Beobachtungszeit unbekannt",
+      "justNow": "Gerade aktualisiert",
+      "minutes": "Vor {{value}} Min. aktualisiert",
+      "hours": "Vor {{value}} Std. aktualisiert"
+    },
+    "filters": {
+      "label": "Live-Attraktionen filtern",
+      "all": "Alle",
+      "available": "Verfügbar",
+      "shortWait": "20 Min. oder weniger",
+      "closed": "Geschlossen",
+      "unknown": "Ohne Information",
+      "empty": "Keine Attraktion entspricht diesem Filter."
+    },
+    "methodology": {
+      "title": "Wie sind diese Informationen zu lesen?",
+      "description": "Die angezeigte Zeit stammt aus der genannten Quelle und besitzt das hier angegebene Alter. Null Minuten bedeuten, dass tatsächlich keine Wartezeit gemeldet wurde; ein Gedankenstrich bedeutet, dass keine verlässliche Zeit vorliegt. Abgelaufene Daten werden nie als aktuell dargestellt."
+    }
+  }
+}

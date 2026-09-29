@@ -4,6 +4,13 @@ namespace AmusementPark.Application.Features.LiveData;
 
 public static class LiveDataApplicationErrors
 {
+    public static ApplicationError PublicReadDisabled()
+    {
+        return ApplicationError.NotFound(
+            "live-data.public-read.disabled",
+            "Public live data is not enabled.");
+    }
+
     public static ApplicationError InvalidMapping(string? message = null)
     {
         return ApplicationError.Validation(

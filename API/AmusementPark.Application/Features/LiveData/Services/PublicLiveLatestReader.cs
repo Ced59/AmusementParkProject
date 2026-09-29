@@ -13,6 +13,8 @@ public sealed class PublicLiveLatestReader
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly ILiveLatestObservationRepository observationRepository;
+    private readonly ILiveTargetMappingRepository mappingRepository;
+    private readonly ILiveDataSourceCatalog sourceCatalog;
     private readonly PublicLiveTargetResultFactory resultFactory;
     private readonly TimeProvider timeProvider;
 
@@ -20,12 +22,16 @@ public sealed class PublicLiveLatestReader
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         ILiveLatestObservationRepository observationRepository,
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveDataSourceCatalog sourceCatalog,
         PublicLiveTargetResultFactory resultFactory,
         TimeProvider? timeProvider = null)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.observationRepository = observationRepository;
+        this.mappingRepository = mappingRepository;
+        this.sourceCatalog = sourceCatalog;
         this.resultFactory = resultFactory;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
@@ -34,6 +40,12 @@ public sealed class PublicLiveLatestReader
         string parkId,
         CancellationToken cancellationToken)
     {
+        if (!this.sourceCatalog.IsPublicReadEnabled)
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         string? normalizedParkId = NormalizeIdentifier(parkId);
         if (normalizedParkId is null)
         {
@@ -49,6 +61,16 @@ public sealed class PublicLiveLatestReader
         {
             return ApplicationResult<PublicLiveTargetResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(Park), normalizedParkId));
+        }
+
+        IReadOnlyCollection<string> coveredTargetIds =
+            await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+                normalizedParkId,
+                cancellationToken);
+        if (coveredTargetIds.Count == 0)
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
         }
 
         IReadOnlyCollection<LiveLatestObservation> observations =
@@ -73,6 +95,12 @@ public sealed class PublicLiveLatestReader
         string parkItemId,
         CancellationToken cancellationToken)
     {
+        if (!this.sourceCatalog.IsPublicReadEnabled)
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         string? normalizedParkItemId = NormalizeIdentifier(parkItemId);
         if (normalizedParkItemId is null)
         {
@@ -97,6 +125,16 @@ public sealed class PublicLiveLatestReader
                 ApplicationErrors.EntityNotFound(nameof(ParkItem), normalizedParkItemId));
         }
 
+        IReadOnlyCollection<string> coveredTargetIds =
+            await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+                item.ParkId,
+                cancellationToken);
+        if (!coveredTargetIds.Contains(normalizedParkItemId, StringComparer.Ordinal))
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         IReadOnlyCollection<LiveLatestObservation> observations =
             await this.observationRepository.GetByTargetAsync(
                 LiveTargetType.ParkItem,
@@ -119,6 +157,12 @@ public sealed class PublicLiveLatestReader
         string parkId,
         CancellationToken cancellationToken)
     {
+        if (!this.sourceCatalog.IsPublicReadEnabled)
+        {
+            return ApplicationResult<PublicParkLiveItemsResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         string? normalizedParkId = NormalizeIdentifier(parkId);
         if (normalizedParkId is null)
         {
@@ -140,7 +184,15 @@ public sealed class PublicLiveLatestReader
             normalizedParkId,
             false,
             cancellationToken);
-        IReadOnlyCollection<string> visibleTargetIds = items
+        IReadOnlyCollection<string> coveredTargetIds =
+            await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+                normalizedParkId,
+                cancellationToken);
+        HashSet<string> coveredTargetIdSet = coveredTargetIds.ToHashSet(StringComparer.Ordinal);
+        ParkItem[] coveredItems = items
+            .Where(item => coveredTargetIdSet.Contains(item.Id))
+            .ToArray();
+        IReadOnlyCollection<string> visibleTargetIds = coveredItems
             .Select(static item => item.Id)
             .ToList()
             .AsReadOnly();
@@ -158,7 +210,7 @@ public sealed class PublicLiveLatestReader
                 StringComparer.Ordinal);
         DateTime asOfUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         string parkDisplayName = park.Name ?? string.Empty;
-        List<PublicLiveTargetResult> results = items
+        List<PublicLiveTargetResult> results = coveredItems
             .OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
             .ThenBy(static item => item.Id, StringComparer.Ordinal)
             .Select(item => this.resultFactory.Create(

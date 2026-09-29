@@ -1,6 +1,20 @@
 {
-  "version": "5.4.8",
+  "version": "5.4.9",
   "history": [
+    {
+      "version": "5.4.9",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les fiches affichent clairement les attentes et disponibilités en direct.",
+        "en": "Detail pages clearly show live waits and availability.",
+        "de": "Detailseiten zeigen Live-Wartezeiten und Verfügbarkeit klar an.",
+        "nl": "Detailpagina’s tonen live wachttijden en beschikbaarheid duidelijk.",
+        "it": "Le schede mostrano chiaramente attese e disponibilità in tempo reale.",
+        "es": "Las fichas muestran claramente las esperas y la disponibilidad en directo.",
+        "pl": "Strony szczegółów jasno pokazują czasy oczekiwania i dostępność na żywo.",
+        "pt": "As páginas de detalhe mostram claramente esperas e disponibilidade em direto."
+      }
+    },
     {
       "version": "5.4.8",
       "releasedAt": "2026-09-29",

@@ -107,6 +107,51 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
             .ToArray();
     }
 
+    public async Task<IReadOnlyCollection<string>> GetEligibleInternalTargetIdsByParkAsync(
+        string internalParkId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedParkId = internalParkId?.Trim() ?? string.Empty;
+        if (normalizedParkId.Length == 0)
+        {
+            return Array.Empty<string>();
+        }
+
+        List<BsonDocument> stages = new List<BsonDocument>
+        {
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["mappingId"] = 1,
+                ["revision"] = -1,
+            }),
+            new BsonDocument("$group", new BsonDocument
+            {
+                ["_id"] = "$mappingId",
+                ["document"] = new BsonDocument("$first", "$$ROOT"),
+            }),
+            new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$document")),
+            new BsonDocument("$match", new BsonDocument
+            {
+                ["status"] = LiveMappingStatus.Verified.ToString(),
+                ["validToUtc"] = BsonNull.Value,
+                ["target.parkId"] = normalizedParkId,
+                ["target.id"] = new BsonDocument("$type", "string"),
+            }),
+            new BsonDocument("$group", new BsonDocument
+            {
+                ["_id"] = "$target.id",
+            }),
+            new BsonDocument("$sort", new BsonDocument("_id", 1)),
+        };
+        PipelineDefinition<ExternalLiveTargetMappingDocument, BsonDocument> pipeline =
+            PipelineDefinition<ExternalLiveTargetMappingDocument, BsonDocument>.Create(stages);
+        List<BsonDocument> documents = await this.collection.Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        return documents
+            .Select(static document => document["_id"].AsString)
+            .ToArray();
+    }
+
     public async Task<PagedResult<ExternalLiveTargetMapping>> SearchLatestAsync(
         LiveTargetMappingSearchCriteria criteria,
         CancellationToken cancellationToken)

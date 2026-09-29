@@ -12,13 +12,14 @@ import { SeoService } from '@core/seo/seo.service';
 import { LcpImagePreloadService } from '@core/performance/lcp-image-preload.service';
 import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events';
 import { PassportVisitQuickCreateComponent } from '@features/profile/passport/components/passport-visit-quick-create/passport-visit-quick-create.component';
+import { PublicLiveStateFacade } from '@features/public/live/state/public-live-state.facade';
 
 @Component({
   selector: 'app-park-detail-page',
   templateUrl: './park-detail-page.component.html',
   styleUrls: ['./park-detail-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ParkDetailStateFacade],
+  providers: [ParkDetailStateFacade, PublicLiveStateFacade],
   imports: [ParkDetailViewComponent, PassportVisitQuickCreateComponent]
 })
 export class ParkDetailPageComponent implements OnInit {
@@ -35,6 +36,7 @@ export class ParkDetailPageComponent implements OnInit {
   protected readonly nearbyParks = this.stateFacade.nearbyParks;
   protected readonly summary = this.stateFacade.summary;
   protected readonly socialImageId = this.stateFacade.socialImageId;
+  protected readonly liveState = this.liveStateFacade.state;
   protected readonly currentLang = signal<string>('en');
   protected visitDialogVisible: boolean = false;
 
@@ -46,6 +48,7 @@ export class ParkDetailPageComponent implements OnInit {
     private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly stateFacade: ParkDetailStateFacade,
+    private readonly liveStateFacade: PublicLiveStateFacade,
     private readonly seoService: SeoService,
     private readonly lcpImagePreloadService: LcpImagePreloadService,
     private readonly contextualBlockRefreshEvents: AdminContextualBlockRefreshEvents
@@ -93,6 +96,7 @@ export class ParkDetailPageComponent implements OnInit {
       }
 
       this.stateFacade.loadPark(id);
+      this.liveStateFacade.watchPark(id);
     });
 
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
@@ -130,6 +134,10 @@ export class ParkDetailPageComponent implements OnInit {
 
   openVisitDialog(): void {
     this.visitDialogVisible = true;
+  }
+
+  refreshLiveData(): void {
+    this.liveStateFacade.refresh();
   }
 
   private preloadHeroImage(heroImageId: string | null): void {

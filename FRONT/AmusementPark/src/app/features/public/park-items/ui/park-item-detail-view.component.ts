@@ -24,6 +24,8 @@ import { ParkLifecycleNoticeComponent } from '@features/public/parks/ui/park-lif
 import { ParkItemPassportRidePanelComponent } from './park-item-passport-ride-panel.component';
 import { UserCollectionActionsComponent } from '@features/collections/ui/user-collection-actions.component';
 import { WatchSubscriptionActionComponent } from '@features/watchlists/ui/watch-subscription-action.component';
+import { PublicLiveViewState } from '@features/public/live/models/public-live-view-state.model';
+import { PublicLivePanelComponent } from '@features/public/live/ui/public-live-panel.component';
 
 @Component({
   selector: 'app-park-item-detail-view',
@@ -53,7 +55,8 @@ import { WatchSubscriptionActionComponent } from '@features/watchlists/ui/watch-
     ParkLifecycleNoticeComponent,
     ParkItemPassportRidePanelComponent,
     UserCollectionActionsComponent,
-    WatchSubscriptionActionComponent
+    WatchSubscriptionActionComponent,
+    PublicLivePanelComponent
   ]
 })
 export class ParkItemDetailViewComponent {
@@ -94,8 +97,11 @@ export class ParkItemDetailViewComponent {
   @Input() heroImageSizes: string = '(max-width: 900px) 100vw, 900px';
   @Input() heroImageSrcWidth: number | null = 960;
   @Input() currentLang: string = 'en';
+  @Input() liveState: PublicLiveViewState | null = null;
+  @Input() liveTimeZoneId: string | null = null;
 
   @Output() backToItemsClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() liveRefreshClicked: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private readonly mapDirectionsUrlService: MapDirectionsUrlService,
@@ -132,6 +138,10 @@ export class ParkItemDetailViewComponent {
 
   goBackToItems(): void {
     this.backToItemsClicked.emit();
+  }
+
+  refreshLiveData(): void {
+    this.liveRefreshClicked.emit();
   }
 
   selectLocationPoint(pointId: string): void {

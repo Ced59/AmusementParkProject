@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, Subject, of, throwError } from 'rxjs';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { HistoryTimeline } from '@app/models/history/history.models';
 import { Park } from '@app/models/parks/park';
+import { ParkOpeningHoursCalendar } from '@app/models/parks/park-opening-hours';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
 import { TechnicalPage } from '@app/models/technical-pages/technical-page';
@@ -402,6 +403,13 @@ describe('ParkItemDetailStateFacade', () => {
     ).toEqual(['/', 'fr', 'technical', 'lap-bar']);
     expect(context.itemsPort.itemCalls).toEqual(['item-1']);
     expect(context.parksPort.calls).toEqual(['park-1']);
+    expect(context.facade.parkTimeZoneId()).toBe('Europe/Berlin');
+    expect(context.parksPort.openingHoursCalls).toHaveLength(1);
+    expect(context.parksPort.openingHoursCalls[0]?.id).toBe('park-1');
+    expect(context.parksPort.openingHoursCalls[0]?.from).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(context.parksPort.openingHoursCalls[0]?.to).toBe(
+      context.parksPort.openingHoursCalls[0]?.from
+    );
     expect(context.itemsPort.siblingCalls).toEqual(['item-1']);
     expect(context.itemsPort.relatedCalls).toEqual(['item-1:3']);
     expect(context.manufacturersPort.calls).toEqual(['manufacturer-1']);
@@ -425,6 +433,48 @@ describe('ParkItemDetailStateFacade', () => {
     ]);
     expect(context.historyPort.calls).toEqual(['item-1']);
     expect(context.technicalPagesPort.callCount).toBe(1);
+  });
+
+  it('ignores a timezone response received from the previous item route', () => {
+    const context = configureFacade();
+    const firstItemResponse: Subject<ParkItem> = new Subject<ParkItem>();
+    const secondItemResponse: Subject<ParkItem> = new Subject<ParkItem>();
+    const firstTimeZoneResponse: Subject<ParkOpeningHoursCalendar> =
+      new Subject<ParkOpeningHoursCalendar>();
+    vi.spyOn(context.itemsPort, 'getParkItemById').mockImplementation(
+      (itemId: string): Observable<ParkItem> => itemId === 'item-1'
+        ? firstItemResponse.asObservable()
+        : secondItemResponse.asObservable()
+    );
+    context.parksPort.openingHoursResponse$ = firstTimeZoneResponse.asObservable();
+
+    context.facade.loadItem('item-1');
+    firstItemResponse.next(createParkItem());
+    context.parksPort.openingHoursResponse$ = of({
+      parkId: 'park-2',
+      timeZoneId: 'Europe/London',
+      updatedAtUtc: '2026-09-29T00:00:00Z',
+      firstDate: null,
+      lastDate: null,
+      fromDate: '2026-09-29',
+      toDate: '2026-09-29',
+      days: [],
+    });
+    context.facade.loadItem('item-2');
+    secondItemResponse.next(createParkItem({ id: 'item-2', parkId: 'park-2' }));
+
+    expect(context.facade.parkTimeZoneId()).toBe('Europe/London');
+    firstTimeZoneResponse.next({
+      parkId: 'park-1',
+      timeZoneId: 'America/New_York',
+      updatedAtUtc: '2026-09-29T00:00:00Z',
+      firstDate: null,
+      lastDate: null,
+      fromDate: '2026-09-29',
+      toDate: '2026-09-29',
+      days: [],
+    });
+    expect(context.facade.parkTimeZoneId()).toBe('Europe/London');
   });
 
   it('skips technical link index and deep related data during minimal SSR rendering', () => {

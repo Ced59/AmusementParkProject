@@ -1,0 +1,235 @@
+@if (state.kind !== 'idle' && state.kind !== 'disabled') {
+  <section class="live-panel" [attr.data-mode]="mode" aria-live="polite">
+    <header class="live-panel__header">
+      <div class="live-panel__heading">
+        <app-ui-kicker iconClass="pi pi-bolt">{{ 'liveData.kicker' | translate }}</app-ui-kicker>
+        <h2>{{ (mode === 'park' ? 'liveData.parkTitle' : 'liveData.itemTitle') | translate }}</h2>
+        <p>{{ (mode === 'park' ? 'liveData.parkSubtitle' : 'liveData.itemSubtitle') | translate }}</p>
+      </div>
+
+      <div class="live-panel__header-actions">
+        @if (localTime(); as parkLocalTime) {
+          <span class="live-panel__local-time">
+            <i class="pi pi-clock" aria-hidden="true"></i>
+            {{ 'liveData.localTime' | translate:{ time: parkLocalTime } }}
+          </span>
+        }
+        <button
+          appUiButton="ghost"
+          type="button"
+          [disabled]="state.isRefreshing || !state.isOnline"
+          (click)="refresh()">
+          <i class="pi pi-refresh" [class.live-panel__spin]="state.isRefreshing" aria-hidden="true"></i>
+          <span>{{ 'liveData.refresh' | translate }}</span>
+        </button>
+      </div>
+    </header>
+
+    @if (!state.isOnline) {
+      <div class="live-panel__network" role="status">
+        <i class="pi pi-wifi" aria-hidden="true"></i>
+        <span>{{ 'liveData.offline' | translate }}</span>
+      </div>
+    }
+
+    @if (state.refreshFailed && state.target) {
+      <div class="live-panel__network" role="status">
+        <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+        <span>{{ 'liveData.refreshError' | translate }}</span>
+      </div>
+    }
+
+    @if (state.kind === 'loading') {
+      <div class="live-panel__loading">
+        <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+        <span>{{ 'liveData.loading' | translate }}</span>
+      </div>
+    } @else if (state.kind === 'error' && !state.target) {
+      <div class="live-panel__empty live-panel__empty--error">
+        <i class="pi pi-exclamation-circle" aria-hidden="true"></i>
+        <div>
+          <strong>{{ 'liveData.errorTitle' | translate }}</strong>
+          <p>{{ 'liveData.errorMessage' | translate }}</p>
+        </div>
+      </div>
+    } @else if (state.target; as target) {
+      <article class="live-overview" [attr.data-tone]="statusTone(target)">
+        <span class="live-overview__pulse" aria-hidden="true"></span>
+        <div class="live-overview__copy">
+          <span>{{ 'liveData.currentStatus' | translate }}</span>
+          <strong>{{ statusLabelKey(target) | translate }}</strong>
+          @if (confidenceLabelKey(target); as confidenceKey) {
+            <small class="live-confidence">{{ confidenceKey | translate }}</small>
+          }
+        </div>
+
+        @if (mode === 'item' && target.availability === 'Current' && !isClosed(target)) {
+          @if (waitMinutes(target); as minutes) {
+            <div class="live-overview__wait">
+              <strong>{{ minutes }}</strong>
+              <span>{{ 'liveData.minutesShort' | translate }}</span>
+            </div>
+          } @else if (waitMinutes(target) === 0) {
+            <div class="live-overview__wait live-overview__wait--zero">
+              <strong>0</strong>
+              <span>{{ 'liveData.noWait' | translate }}</span>
+            </div>
+          } @else {
+            <div class="live-overview__wait live-overview__wait--unknown">
+              <strong>—</strong>
+              <span>{{ 'liveData.waitUnknown' | translate }}</span>
+            </div>
+          }
+        }
+      </article>
+
+      @if (mode === 'item' && target.queues.length > 0 && target.availability === 'Current' && !isClosed(target)) {
+        <div class="live-queues" [attr.aria-label]="'liveData.queueTitle' | translate">
+          @for (queue of target.queues; track queue.kind) {
+            <article class="live-queue">
+              <span>{{ queueLabelKey(queue) | translate }}</span>
+              @if (queueHasUsableWait(queue)) {
+                <strong>{{ queue.waitTimeMinutes }} {{ 'liveData.minutesShort' | translate }}</strong>
+              } @else {
+                <strong>{{ queueAvailabilityLabelKey(queue) | translate }}</strong>
+              }
+              @if (queue.isEstimated) {
+                <small>{{ 'liveData.estimated' | translate }}</small>
+              }
+              @if (isReturnQueue(queue)) {
+                @if (formatQueueTime(queue.returnStartUtc); as returnStart) {
+                  @if (formatQueueTime(queue.returnEndUtc); as returnEnd) {
+                    <small class="live-queue__detail">
+                      {{ 'liveData.queueDetails.returnWindow' | translate: { start: returnStart, end: returnEnd } }}
+                    </small>
+                  } @else {
+                    <small class="live-queue__detail">
+                      {{ 'liveData.queueDetails.returnFrom' | translate: { time: returnStart } }}
+                    </small>
+                  }
+                } @else if (formatQueueTime(queue.returnEndUtc); as returnEnd) {
+                  <small class="live-queue__detail">
+                    {{ 'liveData.queueDetails.returnUntil' | translate: { time: returnEnd } }}
+                  </small>
+                }
+              }
+              @if (isBoardingGroupQueue(queue)) {
+                @if (queue.currentGroupStart !== null && queue.currentGroupEnd !== null) {
+                  <small class="live-queue__detail">
+                    {{ 'liveData.queueDetails.groupRange' | translate: {
+                      start: queue.currentGroupStart,
+                      end: queue.currentGroupEnd
+                    } }}
+                  </small>
+                } @else if (queue.currentGroupStart !== null || queue.currentGroupEnd !== null) {
+                  <small class="live-queue__detail">
+                    {{ 'liveData.queueDetails.group' | translate: {
+                      value: queue.currentGroupStart ?? queue.currentGroupEnd
+                    } }}
+                  </small>
+                }
+                @if (formatQueueTime(queue.nextAllocationUtc); as nextAllocation) {
+                  <small class="live-queue__detail">
+                    {{ 'liveData.queueDetails.nextAllocation' | translate: { time: nextAllocation } }}
+                  </small>
+                }
+              }
+              @if (formatQueuePrice(queue); as price) {
+                <small class="live-queue__detail">
+                  {{ 'liveData.queueDetails.price' | translate: { price: price } }}
+                </small>
+              }
+            </article>
+          }
+        </div>
+      }
+
+      @if (mode === 'park') {
+        @if (state.items.length > 0) {
+          <nav class="live-filters" [attr.aria-label]="'liveData.filters.label' | translate">
+            @for (filter of filters; track filter) {
+              <button
+                type="button"
+                class="live-filter"
+                [class.live-filter--active]="selectedFilter() === filter"
+                [attr.aria-pressed]="selectedFilter() === filter"
+                (click)="selectFilter(filter)">
+                {{ ('liveData.filters.' + filter) | translate }}
+              </button>
+            }
+          </nav>
+
+          @if (visibleItems().length > 0) {
+            <div class="live-items">
+              @for (item of visibleItems(); track item.targetId) {
+                <article class="live-item" [attr.data-tone]="statusTone(item)">
+                  <div class="live-item__identity">
+                    @if (itemRoute(item); as route) {
+                      <a [routerLink]="route">{{ item.displayName }}</a>
+                    } @else {
+                      <strong>{{ item.displayName }}</strong>
+                    }
+                    <span>{{ statusLabelKey(item) | translate }}</span>
+                    @if (confidenceLabelKey(item); as confidenceKey) {
+                      <small class="live-confidence">{{ confidenceKey | translate }}</small>
+                    }
+                  </div>
+
+                  @if (item.availability === 'Current' && !isClosed(item)) {
+                    @if (waitMinutes(item); as minutes) {
+                      <div class="live-item__wait">
+                        <strong>{{ minutes }}</strong>
+                        <span>{{ 'liveData.minutesShort' | translate }}</span>
+                      </div>
+                    } @else if (waitMinutes(item) === 0) {
+                      <div class="live-item__wait live-item__wait--zero">
+                        <strong>0</strong>
+                        <span>{{ 'liveData.noWait' | translate }}</span>
+                      </div>
+                    } @else {
+                      <div class="live-item__wait live-item__wait--unknown">
+                        <strong>—</strong>
+                        <span>{{ 'liveData.waitUnknown' | translate }}</span>
+                      </div>
+                    }
+                  } @else {
+                    <app-ui-chip [tone]="isClosed(item) ? 'rose' : 'soft'">
+                      {{ statusLabelKey(item) | translate }}
+                    </app-ui-chip>
+                  }
+                </article>
+              }
+            </div>
+          } @else {
+            <div class="live-panel__empty">
+              <i class="pi pi-filter-slash" aria-hidden="true"></i>
+              <span>{{ 'liveData.filters.empty' | translate }}</span>
+            </div>
+          }
+        } @else {
+          <div class="live-panel__empty">
+            <i class="pi pi-info-circle" aria-hidden="true"></i>
+            <span>{{ 'liveData.noItems' | translate }}</span>
+          </div>
+        }
+      }
+
+      <footer class="live-panel__footer">
+        <div class="live-panel__freshness">
+          <i class="pi pi-history" aria-hidden="true"></i>
+          <span>{{ ageLabelKey(freshnessReference(target)) | translate:ageParameters(freshnessReference(target)) }}</span>
+        </div>
+        @for (source of attributionSources(target); track source.id + source.attributionUrl) {
+          <a [href]="source.attributionUrl" target="_blank" rel="noreferrer noopener">
+            {{ source.attributionText }}
+            <i class="pi pi-external-link" aria-hidden="true"></i>
+          </a>
+        }
+        <details class="live-panel__method">
+          <summary>{{ 'liveData.methodology.title' | translate }}</summary>
+          <p>{{ 'liveData.methodology.description' | translate }}</p>
+        </details>
+      </footer>
+    }
+  </section>
+}

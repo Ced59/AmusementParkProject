@@ -1,0 +1,91 @@
+{
+  "liveData": {
+    "kicker": "En directo",
+    "parkTitle": "El parque ahora",
+    "itemTitle": "Espera y disponibilidad",
+    "parkSubtitle": "Consulta el estado actual de las atracciones cubiertas sin confundir espera, cierre e información desconocida.",
+    "itemSubtitle": "Información operativa separada de las reseñas, las valoraciones y tu diario de visita.",
+    "localTime": "Hora local: {{time}}",
+    "refresh": "Actualizar",
+    "offline": "No tienes conexión. La última información recibida sigue visible.",
+    "refreshError": "La actualización ha fallado. La última información recibida sigue visible.",
+    "loading": "Cargando información en directo…",
+    "errorTitle": "La información en directo no está disponible temporalmente",
+    "errorMessage": "Vuelve a intentarlo en un momento sin salir de esta página.",
+    "currentStatus": "Estado actual",
+    "confidence": {
+      "Low": "Confianza baja",
+      "Medium": "Confianza media",
+      "High": "Confianza alta"
+    },
+    "minutesShort": "min",
+    "noWait": "sin espera",
+    "waitUnknown": "espera desconocida",
+    "estimated": "Estimación",
+    "queueTitle": "Colas disponibles",
+    "noItems": "Todavía no hay atracciones cubiertas por la información en directo.",
+    "availability": {
+      "noObservation": "Sin observación reciente",
+      "expired": "Información caducada",
+      "unavailable": "Información no disponible"
+    },
+    "status": {
+      "open": "Abierto",
+      "closed": "Cerrado",
+      "temporarilyClosed": "Cerrado temporalmente",
+      "delayed": "Apertura retrasada",
+      "down": "Interrupción en curso",
+      "weatherClosed": "Cerrado por el tiempo",
+      "maintenance": "En mantenimiento",
+      "operatingWithLimitations": "Abierto con limitaciones",
+      "unknown": "Estado desconocido",
+      "notOperatingToday": "No funciona hoy",
+      "removed": "Retirado de la operación"
+    },
+    "queue": {
+      "standby": "Cola normal",
+      "singleRider": "Single Rider",
+      "returnTime": "Hora de regreso",
+      "paidReturnTime": "Hora de regreso de pago",
+      "boardingGroup": "Grupo de embarque",
+      "paidStandby": "Cola de pago"
+    },
+    "queueAvailability": {
+      "unspecified": "Disponibilidad desconocida",
+      "available": "Disponible",
+      "temporarilyFull": "Completa temporalmente",
+      "finished": "Finalizada por hoy",
+      "paused": "En pausa",
+      "closed": "Cerrada",
+      "unknown": "Disponibilidad desconocida"
+    },
+    "queueDetails": {
+      "returnWindow": "Franja {{start}}–{{end}}",
+      "returnFrom": "Regreso desde las {{time}}",
+      "returnUntil": "Regreso antes de las {{time}}",
+      "groupRange": "Grupos {{start}}–{{end}}",
+      "group": "Grupo {{value}}",
+      "nextAllocation": "Próxima asignación a las {{time}}",
+      "price": "Acceso de pago: {{price}}"
+    },
+    "age": {
+      "unknown": "Hora de observación desconocida",
+      "justNow": "Actualizado ahora mismo",
+      "minutes": "Actualizado hace {{value}} min",
+      "hours": "Actualizado hace {{value}} h"
+    },
+    "filters": {
+      "label": "Filtrar atracciones en directo",
+      "all": "Todas",
+      "available": "Disponibles",
+      "shortWait": "20 min o menos",
+      "closed": "Cerradas",
+      "unknown": "Sin información",
+      "empty": "Ninguna atracción coincide con este filtro."
+    },
+    "methodology": {
+      "title": "¿Cómo se interpreta esta información?",
+      "description": "El tiempo mostrado procede de la fuente citada y tiene la antigüedad indicada. Cero minutos significa que se recibió una espera realmente nula; un guion significa que no hay un tiempo fiable. Los datos caducados nunca se presentan como actuales."
+    }
+  }
+}

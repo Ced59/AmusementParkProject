@@ -6,6 +6,7 @@
   [weatherState]="weatherState()"
   [openingHours]="openingHours()"
   [openingHoursState]="openingHoursState()"
+  [liveState]="liveState()"
   [nearbyParks]="nearbyParks()"
   [nearbyState]="nearbyState()"
   [currentLang]="currentLang()"
@@ -14,6 +15,7 @@
   [heroImageSrcWidth]="heroImageSrcWidth"
   (backClicked)="goBack()"
   (exploreClicked)="goToExplore()"
+  (liveRefreshClicked)="refreshLiveData()"
   (visitCreateClicked)="openVisitDialog()">
 </app-park-detail-view>
 
