@@ -1,6 +1,12 @@
 import { LiveTargetType } from './live-target-mapping.models';
 
 export type LiveOperationalScopeType = 'Source' | 'Park' | 'Target';
+export type LivePollingDisposition =
+  | 'OutsideActiveWindow'
+  | 'Success'
+  | 'NotModified'
+  | 'RateLimited'
+  | 'Failed';
 
 export interface LiveOperationalScope {
   readonly scopeType: LiveOperationalScopeType;
@@ -28,7 +34,7 @@ export interface LiveOperationsPolling {
   readonly lastSuccessfulPollAtUtc: string | null;
   readonly consecutiveFailures: number;
   readonly circuitOpenUntilUtc: string | null;
-  readonly lastDisposition: string | null;
+  readonly lastDisposition: LivePollingDisposition | null;
   readonly leaseActive: boolean;
   readonly leaseExpiresAtUtc: string | null;
 }

@@ -3239,7 +3239,14 @@
         "lastStatus": "Laatste resultaat",
         "nextAttempt": "Volgende poging",
         "circuit": "Beveiligingscircuit",
-        "closed": "Gesloten, normale werking"
+        "closed": "Gesloten, normale werking",
+        "disposition": {
+          "OutsideActiveWindow": "Buiten het verzamelvenster",
+          "Success": "Geslaagd",
+          "NotModified": "Geen wijziging",
+          "RateLimited": "Beperkt door de bron",
+          "Failed": "Mislukt"
+        }
       },
       "controls": {
         "kicker": "Noodstop",

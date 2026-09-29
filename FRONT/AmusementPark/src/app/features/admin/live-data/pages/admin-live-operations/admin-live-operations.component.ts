@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import {
   LiveOperationalScope,
+  LivePollingDisposition,
   UpdateLiveOperationalControlRequest
 } from '@app/models/admin/live-data/live-operations.models';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
@@ -129,6 +130,10 @@ export class AdminLiveOperationsComponent implements OnInit {
 
   protected stateSeverity(enabled: boolean): 'success' | 'danger' {
     return enabled ? 'success' : 'danger';
+  }
+
+  protected pollingDispositionKey(disposition: LivePollingDisposition): string {
+    return `admin.liveOperations.polling.disposition.${disposition}`;
   }
 
   private openChange(

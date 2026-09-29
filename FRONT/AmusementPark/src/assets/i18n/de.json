@@ -3239,7 +3239,14 @@
         "lastStatus": "Letztes Ergebnis",
         "nextAttempt": "Nächster Versuch",
         "circuit": "Schutzschaltung",
-        "closed": "Geschlossen, Normalbetrieb"
+        "closed": "Geschlossen, Normalbetrieb",
+        "disposition": {
+          "OutsideActiveWindow": "Außerhalb des Erfassungszeitraums",
+          "Success": "Erfolgreich",
+          "NotModified": "Keine Änderung",
+          "RateLimited": "Von der Quelle begrenzt",
+          "Failed": "Fehlgeschlagen"
+        }
       },
       "controls": {
         "kicker": "Not-Aus",

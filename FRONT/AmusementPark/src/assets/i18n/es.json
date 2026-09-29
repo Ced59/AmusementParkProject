@@ -3239,7 +3239,14 @@
         "lastStatus": "Último resultado",
         "nextAttempt": "Próximo intento",
         "circuit": "Circuito de protección",
-        "closed": "Cerrado, funcionamiento normal"
+        "closed": "Cerrado, funcionamiento normal",
+        "disposition": {
+          "OutsideActiveWindow": "Fuera de la ventana de recopilación",
+          "Success": "Correcto",
+          "NotModified": "Sin cambios",
+          "RateLimited": "Limitado por la fuente",
+          "Failed": "Fallido"
+        }
       },
       "controls": {
         "kicker": "Parada de emergencia",

@@ -3239,7 +3239,14 @@
         "lastStatus": "Ostatni wynik",
         "nextAttempt": "Następna próba",
         "circuit": "Obwód ochronny",
-        "closed": "Zamknięty, normalne działanie"
+        "closed": "Zamknięty, normalne działanie",
+        "disposition": {
+          "OutsideActiveWindow": "Poza oknem zbierania",
+          "Success": "Powodzenie",
+          "NotModified": "Bez zmian",
+          "RateLimited": "Ograniczone przez źródło",
+          "Failed": "Niepowodzenie"
+        }
       },
       "controls": {
         "kicker": "Zatrzymanie awaryjne",

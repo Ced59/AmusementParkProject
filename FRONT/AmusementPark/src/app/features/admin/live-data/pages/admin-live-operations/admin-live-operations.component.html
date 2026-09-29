@@ -87,7 +87,7 @@
         </div>
         <dl>
           <div><dt>{{ 'admin.liveOperations.polling.lastSuccess' | translate }}</dt><dd>{{ data.polling.lastSuccessfulPollAtUtc ? (data.polling.lastSuccessfulPollAtUtc | date:'short':'UTC') : ('admin.liveOperations.never' | translate) }}</dd></div>
-          <div><dt>{{ 'admin.liveOperations.polling.lastStatus' | translate }}</dt><dd>{{ data.polling.lastDisposition ?? ('admin.liveOperations.never' | translate) }}</dd></div>
+          <div><dt>{{ 'admin.liveOperations.polling.lastStatus' | translate }}</dt><dd>{{ data.polling.lastDisposition ? (pollingDispositionKey(data.polling.lastDisposition) | translate) : ('admin.liveOperations.never' | translate) }}</dd></div>
           <div><dt>{{ 'admin.liveOperations.polling.nextAttempt' | translate }}</dt><dd>{{ data.polling.nextAttemptAtUtc ? (data.polling.nextAttemptAtUtc | date:'short':'UTC') : '—' }}</dd></div>
           <div><dt>{{ 'admin.liveOperations.polling.circuit' | translate }}</dt><dd>{{ data.polling.circuitOpenUntilUtc ? (data.polling.circuitOpenUntilUtc | date:'short':'UTC') : ('admin.liveOperations.polling.closed' | translate) }}</dd></div>
         </dl>

@@ -5,14 +5,14 @@
       "version": "5.4.11",
       "releasedAt": "2026-09-29",
       "labels": {
-        "fr": "Le direct peut être interrompu immédiatement et précisément.",
-        "en": "Live information can be stopped immediately and precisely.",
-        "de": "Live-Informationen können sofort und gezielt gestoppt werden.",
-        "nl": "Live-informatie kan direct en gericht worden gestopt.",
-        "it": "Le informazioni in tempo reale possono essere interrotte subito e con precisione.",
-        "es": "La información en directo puede detenerse de inmediato y con precisión.",
-        "pl": "Informacje na żywo można natychmiast i precyzyjnie zatrzymać.",
-        "pt": "As informações em direto podem ser interrompidas de imediato e com precisão."
+        "fr": "Améliorations de l’ergonomie d’administration.",
+        "en": "Administration usability improvements.",
+        "de": "Verbesserungen der Bedienbarkeit im Administrationsbereich.",
+        "nl": "Verbeteringen aan het gebruiksgemak van de administratie.",
+        "it": "Miglioramenti all’usabilità dell’amministrazione.",
+        "es": "Mejoras de usabilidad en la administración.",
+        "pl": "Ulepszenia użyteczności panelu administracyjnego.",
+        "pt": "Melhorias de usabilidade na administração."
       }
     },
     {

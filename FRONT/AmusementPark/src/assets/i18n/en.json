@@ -3239,7 +3239,14 @@
         "lastStatus": "Last result",
         "nextAttempt": "Next attempt",
         "circuit": "Protection circuit",
-        "closed": "Closed, normal operation"
+        "closed": "Closed, normal operation",
+        "disposition": {
+          "OutsideActiveWindow": "Outside collection window",
+          "Success": "Successful",
+          "NotModified": "No change",
+          "RateLimited": "Limited by the source",
+          "Failed": "Failed"
+        }
       },
       "controls": {
         "kicker": "Emergency stop",
