@@ -46,6 +46,28 @@ public sealed class StandaloneAttractionVisitorInformationHandlersTests
     }
 
     [Fact]
+    public async Task GetOpeningHoursSchedule_WhenPublicAttractionIsNotOperating_ShouldNotExposeStoredSchedule()
+    {
+        StandaloneAttraction attraction = CreateOperatingAttraction();
+        attraction.AttractionDetails!.Status = ParkItemStatusNormalizer.TemporarilyClosed;
+        Mock<IStandaloneAttractionRepository> attractionRepository = CreateAttractionRepository(attraction);
+        Mock<IStandaloneAttractionOpeningHoursRepository> openingHoursRepository =
+            new Mock<IStandaloneAttractionOpeningHoursRepository>(MockBehavior.Strict);
+        GetStandaloneAttractionOpeningHoursScheduleQueryHandler handler = new GetStandaloneAttractionOpeningHoursScheduleQueryHandler(
+            attractionRepository.Object,
+            openingHoursRepository.Object);
+
+        ApplicationResult<AmusementPark.Application.Features.ParkOpeningHours.Results.ParkOpeningHoursScheduleResult> result =
+            await handler.HandleAsync(
+                new GetStandaloneAttractionOpeningHoursScheduleQuery("standalone-1", IncludeHidden: false),
+                CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        attractionRepository.VerifyAll();
+        openingHoursRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task GetPricing_WhenAdminRequestsExistingPricing_ShouldReturnIt()
     {
         StandaloneAttraction attraction = CreateOperatingAttraction();
@@ -74,6 +96,27 @@ public sealed class StandaloneAttractionVisitorInformationHandlersTests
         Assert.Equal("EUR", result.Value!.CurrencyCode);
         attractionRepository.VerifyAll();
         pricingRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetPricing_WhenPublicAttractionIsNotOperating_ShouldNotExposeStoredPricing()
+    {
+        StandaloneAttraction attraction = CreateOperatingAttraction();
+        attraction.AttractionDetails!.Status = ParkItemStatusNormalizer.Planned;
+        Mock<IStandaloneAttractionRepository> attractionRepository = CreateAttractionRepository(attraction);
+        Mock<IStandaloneAttractionPricingRepository> pricingRepository =
+            new Mock<IStandaloneAttractionPricingRepository>(MockBehavior.Strict);
+        GetStandaloneAttractionPricingQueryHandler handler = new GetStandaloneAttractionPricingQueryHandler(
+            attractionRepository.Object,
+            pricingRepository.Object);
+
+        ApplicationResult<ParkPricingEntity> result = await handler.HandleAsync(
+            new GetStandaloneAttractionPricingQuery("standalone-1", IncludeHidden: false),
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        attractionRepository.VerifyAll();
+        pricingRepository.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -111,6 +154,29 @@ public sealed class StandaloneAttractionVisitorInformationHandlersTests
         Assert.Empty(result.Value.Days);
         attractionRepository.VerifyAll();
         weatherRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task GetWeather_WhenAttractionIsNotOperating_ShouldNotExposeStoredForecast()
+    {
+        StandaloneAttraction attraction = CreateOperatingAttraction();
+        attraction.AttractionDetails!.Status = ParkItemStatusNormalizer.UnderConstruction;
+        Mock<IStandaloneAttractionRepository> attractionRepository = CreateAttractionRepository(attraction);
+        Mock<IStandaloneAttractionWeatherRepository> weatherRepository =
+            new Mock<IStandaloneAttractionWeatherRepository>(MockBehavior.Strict);
+        GetStandaloneAttractionWeatherForecastQueryHandler handler = new GetStandaloneAttractionWeatherForecastQueryHandler(
+            attractionRepository.Object,
+            weatherRepository.Object,
+            new ParkWeatherLocalDateResolver());
+
+        ApplicationResult<AmusementPark.Application.Features.ParkWeather.Results.ParkWeatherForecastResult> result =
+            await handler.HandleAsync(
+                new GetStandaloneAttractionWeatherForecastQuery("standalone-1", 7),
+                CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        attractionRepository.VerifyAll();
+        weatherRepository.VerifyNoOtherCalls();
     }
 
     private static Mock<IStandaloneAttractionRepository> CreateAttractionRepository(

@@ -18,6 +18,12 @@ internal static class ParkGraphUpsertProcessorStandaloneVisitorInformationExtens
         bool apply,
         CancellationToken cancellationToken)
     {
+        if (!ParkGraphUpsertProcessorOpeningHoursExtensions.HasOpeningHoursPatch(root)
+            && !ParkGraphUpsertProcessorPricingExtensions.HasPricingPatch(root))
+        {
+            return false;
+        }
+
         if (string.IsNullOrWhiteSpace(standaloneAttractionId)
             || processorContext.standaloneAttractionRepository is null)
         {
@@ -85,12 +91,12 @@ internal static class ParkGraphUpsertProcessorStandaloneVisitorInformationExtens
             return false;
         }
 
-        if (ParkItemStatusNormalizer.IsClosedDefinitively(attraction.AttractionDetails?.Status))
+        if (!ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
         {
             change.ChangeType = "Skipped";
             result.Changes.Add(change);
             result.Errors.Add(
-                "openingHours ne peut pas contenir d'horaires actuels pour une attraction autonome définitivement fermée.");
+                "openingHours ne peut contenir des horaires actuels que pour une attraction autonome Operating.");
             return false;
         }
 
@@ -196,12 +202,12 @@ internal static class ParkGraphUpsertProcessorStandaloneVisitorInformationExtens
             return false;
         }
 
-        if (ParkItemStatusNormalizer.IsClosedDefinitively(attraction.AttractionDetails?.Status))
+        if (!ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
         {
             change.ChangeType = "Skipped";
             result.Changes.Add(change);
             result.Errors.Add(
-                "pricing ne peut pas contenir de tarifs actuels pour une attraction autonome définitivement fermée.");
+                "pricing ne peut contenir des tarifs actuels que pour une attraction autonome Operating.");
             return false;
         }
 

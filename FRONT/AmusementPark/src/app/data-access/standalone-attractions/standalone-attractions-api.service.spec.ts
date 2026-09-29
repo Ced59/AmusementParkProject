@@ -76,6 +76,28 @@ describe('StandaloneAttractionsApiService', () => {
     request.flush([{ id: 'standalone-1' }]);
   });
 
+  it('loads public hours, pricing and weather for a standalone attraction', () => {
+    service.getOpeningHours('standalone 1').subscribe();
+    service.getPricing('standalone 1').subscribe();
+    service.getWeather('standalone 1').subscribe();
+
+    const openingHoursRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}standalone-attractions/standalone%201/opening-hours`
+    );
+    const pricingRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}standalone-attractions/standalone%201/pricing`
+    );
+    const weatherRequest = httpTestingController.expectOne(
+      `${environment.apiBaseUrl}standalone-attractions/standalone%201/weather`
+    );
+    expect(openingHoursRequest.request.method).toBe('GET');
+    expect(pricingRequest.request.method).toBe('GET');
+    expect(weatherRequest.request.method).toBe('GET');
+    openingHoursRequest.flush({ parkId: 'standalone 1', days: [] });
+    pricingRequest.flush({ parkId: 'standalone 1', currencyCode: 'EUR' });
+    weatherRequest.flush({ parkId: 'standalone 1', days: [] });
+  });
+
   it('downloads standalone export through HttpClient as a blob', () => {
     const responseBlob: Blob = new Blob(['{}'], { type: 'application/json' });
 

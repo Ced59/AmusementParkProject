@@ -44,6 +44,13 @@ public sealed class GetStandaloneAttractionPricingQueryHandler :
                 StandaloneAttractionVisitorInformationApplicationErrors.AttractionNotFound());
         }
 
+        if (!query.IncludeHidden
+            && !ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
+        {
+            return ApplicationResult<ParkPricingEntity>.Failure(
+                StandaloneAttractionVisitorInformationApplicationErrors.PricingNotFound());
+        }
+
         ParkPricingEntity? pricing =
             await this.pricingRepository.GetByStandaloneAttractionIdAsync(
                 attractionId,
@@ -129,7 +136,7 @@ public sealed class UpsertStandaloneAttractionPricingCommandHandler :
                 StandaloneAttractionVisitorInformationApplicationErrors.AttractionNotFound());
         }
 
-        if (ParkItemStatusNormalizer.IsClosedDefinitively(attraction.AttractionDetails?.Status))
+        if (!ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
         {
             return ApplicationResult<ParkPricingEntity>.Failure(
                 StandaloneAttractionVisitorInformationApplicationErrors.CurrentInformationNotAllowed());

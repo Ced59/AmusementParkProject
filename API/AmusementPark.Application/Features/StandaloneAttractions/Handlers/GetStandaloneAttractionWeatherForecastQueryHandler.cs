@@ -38,7 +38,7 @@ public sealed class GetStandaloneAttractionWeatherForecastQueryHandler :
                 includeHidden: false,
                 cancellationToken);
         if (attraction is null
-            || ParkItemStatusNormalizer.IsClosedDefinitively(attraction.AttractionDetails?.Status))
+            || !ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
         {
             return ApplicationResult<ParkWeatherForecastResult>.Failure(
                 StandaloneAttractionVisitorInformationApplicationErrors.AttractionNotFound());

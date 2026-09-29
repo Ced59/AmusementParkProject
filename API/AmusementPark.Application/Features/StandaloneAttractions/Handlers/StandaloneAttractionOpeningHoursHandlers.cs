@@ -44,6 +44,13 @@ public sealed class GetStandaloneAttractionOpeningHoursCalendarQueryHandler :
                 StandaloneAttractionVisitorInformationApplicationErrors.AttractionNotFound());
         }
 
+        if (!query.IncludeHidden
+            && !ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
+        {
+            return ApplicationResult<ParkOpeningHoursCalendarResult>.Failure(
+                StandaloneAttractionVisitorInformationApplicationErrors.OpeningHoursNotFound());
+        }
+
         ParkOpeningHoursSchedule? schedule =
             await this.openingHoursRepository.GetByStandaloneAttractionIdAsync(
                 attractionId,
@@ -91,6 +98,13 @@ public sealed class GetStandaloneAttractionOpeningHoursScheduleQueryHandler :
         {
             return ApplicationResult<ParkOpeningHoursScheduleResult>.Failure(
                 StandaloneAttractionVisitorInformationApplicationErrors.AttractionNotFound());
+        }
+
+        if (!query.IncludeHidden
+            && !ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
+        {
+            return ApplicationResult<ParkOpeningHoursScheduleResult>.Failure(
+                StandaloneAttractionVisitorInformationApplicationErrors.OpeningHoursNotFound());
         }
 
         ParkOpeningHoursSchedule? schedule =
@@ -149,7 +163,7 @@ public sealed class UpsertStandaloneAttractionOpeningHoursCommandHandler :
                 StandaloneAttractionVisitorInformationApplicationErrors.AttractionNotFound());
         }
 
-        if (ParkItemStatusNormalizer.IsClosedDefinitively(attraction.AttractionDetails?.Status))
+        if (!ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
         {
             return ApplicationResult<ParkOpeningHoursSchedule>.Failure(
                 StandaloneAttractionVisitorInformationApplicationErrors.CurrentInformationNotAllowed());

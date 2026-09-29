@@ -220,8 +220,7 @@ public sealed class ParkWeatherRefreshOrchestrator
             return visibleAttractions
                 .Where(HasValidCoordinates)
                 .Where(static attraction =>
-                    !ParkItemStatusNormalizer.IsClosedDefinitively(
-                        attraction.AttractionDetails?.Status))
+                    ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
                 .ToList();
         }
 
@@ -243,8 +242,7 @@ public sealed class ParkWeatherRefreshOrchestrator
             .Where(static attraction => attraction.IsVisible)
             .Where(HasValidCoordinates)
             .Where(static attraction =>
-                !ParkItemStatusNormalizer.IsClosedDefinitively(
-                    attraction.AttractionDetails?.Status))
+                ParkItemStatusNormalizer.IsOperating(attraction.AttractionDetails?.Status))
             .ToList();
     }
 
