@@ -11,6 +11,7 @@ public sealed class LivePollingLease
         string leaseOwner,
         string leaseToken,
         string? entityTag,
+        DateTime? lastSuccessfulPollAtUtc,
         int consecutiveFailures,
         DateTime? circuitOpenUntilUtc)
     {
@@ -39,11 +40,20 @@ public sealed class LivePollingLease
             throw new ArgumentException("The circuit timestamp must be UTC.", nameof(circuitOpenUntilUtc));
         }
 
+        if (lastSuccessfulPollAtUtc is not null
+            && lastSuccessfulPollAtUtc.Value.Kind != DateTimeKind.Utc)
+        {
+            throw new ArgumentException(
+                "The last successful poll timestamp must be UTC.",
+                nameof(lastSuccessfulPollAtUtc));
+        }
+
         this.SourceId = sourceId;
         this.ExternalEntityId = normalizedExternalEntityId;
         this.LeaseOwner = normalizedLeaseOwner;
         this.LeaseToken = normalizedLeaseToken;
         this.EntityTag = normalizedEntityTag;
+        this.LastSuccessfulPollAtUtc = lastSuccessfulPollAtUtc;
         this.ConsecutiveFailures = consecutiveFailures;
         this.CircuitOpenUntilUtc = circuitOpenUntilUtc;
     }
@@ -57,6 +67,8 @@ public sealed class LivePollingLease
     public string LeaseToken { get; }
 
     public string? EntityTag { get; }
+
+    public DateTime? LastSuccessfulPollAtUtc { get; }
 
     public int ConsecutiveFailures { get; }
 

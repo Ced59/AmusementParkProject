@@ -257,6 +257,7 @@ public sealed class LivePollingStateRepository : ILivePollingStateRepository
             document.LeaseOwner ?? throw new InvalidOperationException("The polling lease owner is missing."),
             document.LeaseToken ?? throw new InvalidOperationException("The polling lease token is missing."),
             document.EntityTag,
+            document.LastSuccessfulPollAtUtc,
             document.ConsecutiveFailures,
             document.CircuitOpenUntilUtc);
     }

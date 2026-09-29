@@ -116,8 +116,12 @@ public sealed class LivePollingOrchestrator
         LiveProviderReadResult providerResult;
         try
         {
+            string? entityTag = gate.RequiresUnconditionalRefresh(
+                lease.LastSuccessfulPollAtUtc)
+                ? null
+                : lease.EntityTag;
             providerResult = await adapter.FetchLatestAsync(
-                new LiveProviderReadRequest(target.ExternalEntityId, lease.EntityTag),
+                new LiveProviderReadRequest(target.ExternalEntityId, entityTag),
                 cancellationToken);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -151,12 +155,11 @@ public sealed class LivePollingOrchestrator
         TimeSpan jitter,
         CancellationToken cancellationToken)
     {
-        LiveLatestObservationIngestionResult? ingestionResult = null;
         if (providerResult.Disposition == LiveProviderReadDisposition.Success)
         {
             try
             {
-                ingestionResult = await this.latestObservationIngestor.IngestAsync(
+                await this.latestObservationIngestor.IngestAsync(
                     new LiveLatestObservationIngestionRequest(
                         adapter.SourceId,
                         adapter.AdapterVersion,
@@ -198,8 +201,6 @@ public sealed class LivePollingOrchestrator
         bool successful = providerResult.Disposition is LiveProviderReadDisposition.Success
             or LiveProviderReadDisposition.NotModified;
         bool replaceEntityTag = providerResult.Disposition == LiveProviderReadDisposition.Success;
-        bool observationsWereSuppressed =
-            ingestionResult?.SuppressedByOperationalControlCount > 0;
         LivePollingCompletion completion = new LivePollingCompletion(
             lease,
             completionDisposition,
@@ -209,7 +210,7 @@ public sealed class LivePollingOrchestrator
             schedule.CircuitOpenUntilUtc,
             successful ? providerResult.ReceivedAtUtc : null,
             replaceEntityTag,
-            observationsWereSuppressed ? null : providerResult.EntityTag);
+            providerResult.EntityTag);
         await this.EnsureCompletedAsync(completion, cancellationToken);
 
         return new LivePollingExecutionResult(

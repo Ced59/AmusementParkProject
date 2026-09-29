@@ -137,6 +137,7 @@ public sealed class LivePollingOrchestratorTests
                 "worker-1",
                 "lease-1",
                 null,
+                null,
                 0,
                 null));
         repository
@@ -217,7 +218,7 @@ public sealed class LivePollingOrchestratorTests
     }
 
     [Fact]
-    public async Task ExecuteAsync_WhenOperationalControlSuppressesData_ShouldClearEntityTag()
+    public async Task ExecuteAsync_WhenOperationalControlSuppressesData_ShouldPreserveConditionalPolling()
     {
         Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease(
             entityTag: "\"old\"");
@@ -266,7 +267,59 @@ public sealed class LivePollingOrchestratorTests
         Assert.Equal(LivePollingExecutionDisposition.Success, result.Disposition);
         Assert.NotNull(savedCompletion);
         Assert.True(savedCompletion.ReplaceEntityTag);
-        Assert.Null(savedCompletion.EntityTag);
+        Assert.Equal("\"new\"", savedCompletion.EntityTag);
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_AfterCollectionResume_ShouldFetchOnceWithoutEntityTag()
+    {
+        DateTime lastSuccessfulPollAtUtc = NowUtc.AddMinutes(-10);
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease(
+            entityTag: "\"old\"",
+            lastSuccessfulPollAtUtc: lastSuccessfulPollAtUtc);
+        repository
+            .Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        adapter
+            .Setup(value => value.FetchLatestAsync(
+                It.Is<LiveProviderReadRequest>(request => request.EntityTag == null),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveProviderReadResult(
+                LiveProviderReadDisposition.Success,
+                NowUtc,
+                entityTag: "\"new\""));
+        LiveOperationalControl resumed = new LiveOperationalControl(
+            Guid.NewGuid(),
+            new LiveOperationalControlScope(
+                LiveOperationalScopeType.Target,
+                SourceId,
+                "entity-1",
+                "park-1",
+                LiveTargetType.ParkItem,
+                "item-1"),
+            true,
+            true,
+            2,
+            1,
+            "admin-1",
+            "Réouverture du périmètre",
+            NowUtc.AddMinutes(-5));
+        LivePollingOrchestrator orchestrator = CreateOrchestrator(
+            repository,
+            adapter,
+            operationalGate: CreateOperationalGate(controls: new[] { resumed }));
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.Success, result.Disposition);
+        adapter.VerifyAll();
     }
 
     [Fact]
@@ -385,13 +438,14 @@ public sealed class LivePollingOrchestratorTests
     private static LivePollingOrchestrator CreateOrchestrator(
         Mock<ILivePollingStateRepository> repository,
         Mock<ILiveDataProviderAdapter> adapter,
-        Mock<ILiveLatestObservationIngestor>? ingestor = null)
+        Mock<ILiveLatestObservationIngestor>? ingestor = null,
+        Mock<ILiveOperationalGate>? operationalGate = null)
     {
         return new LivePollingOrchestrator(
             new[] { adapter.Object },
             repository.Object,
             (ingestor ?? CreateIngestor()).Object,
-            CreateOperationalGate().Object,
+            (operationalGate ?? CreateOperationalGate()).Object,
             new FixedTimeProvider(NowUtc),
             static () => 0);
     }
@@ -410,6 +464,7 @@ public sealed class LivePollingOrchestratorTests
 
     private static Mock<ILivePollingStateRepository> CreateRepositoryWithLease(
         string? entityTag = null,
+        DateTime? lastSuccessfulPollAtUtc = null,
         int consecutiveFailures = 0)
     {
         Mock<ILivePollingStateRepository> repository =
@@ -424,6 +479,7 @@ public sealed class LivePollingOrchestratorTests
                 "worker-1",
                 "lease-1",
                 entityTag,
+                lastSuccessfulPollAtUtc,
                 consecutiveFailures,
                 null));
         return repository;
@@ -460,7 +516,9 @@ public sealed class LivePollingOrchestratorTests
         return ingestor;
     }
 
-    private static Mock<ILiveOperationalGate> CreateOperationalGate(bool collectionEnabled = true)
+    private static Mock<ILiveOperationalGate> CreateOperationalGate(
+        bool collectionEnabled = true,
+        IReadOnlyCollection<LiveOperationalControl>? controls = null)
     {
         Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
         gate.Setup(value => value.LoadAsync(
@@ -472,7 +530,7 @@ public sealed class LivePollingOrchestratorTests
                     collectionEnabled,
                     true,
                     externalEntityId,
-                    Array.Empty<LiveOperationalControl>(),
+                    controls ?? Array.Empty<LiveOperationalControl>(),
                     new LiveOperationalControlPolicy()));
         return gate;
     }

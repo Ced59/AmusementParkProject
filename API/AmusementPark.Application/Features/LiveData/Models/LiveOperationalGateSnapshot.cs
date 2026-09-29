@@ -74,4 +74,20 @@ public sealed class LiveOperationalGateSnapshot
             targetType,
             targetId);
     }
+
+    public bool RequiresUnconditionalRefresh(DateTime? lastSuccessfulPollAtUtc)
+    {
+        LiveOperationalControl? latestEnabledControl = this.controls
+            .Where(control => control.CollectionEnabled
+                && (control.Scope.Type == LiveOperationalScopeType.Source
+                    || string.Equals(
+                        control.Scope.ExternalEntityId,
+                        this.ExternalEntityId,
+                        StringComparison.Ordinal)))
+            .OrderByDescending(static control => control.RecordedAtUtc)
+            .FirstOrDefault();
+        return latestEnabledControl is not null
+            && (!lastSuccessfulPollAtUtc.HasValue
+                || latestEnabledControl.RecordedAtUtc > lastSuccessfulPollAtUtc.Value);
+    }
 }

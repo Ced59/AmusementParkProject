@@ -67,4 +67,34 @@ public sealed class ThemeParksWikiLiveDataSourceCatalogTests
         Assert.Equal("Powered by ThemeParks.wiki", source?.AttributionText);
         Assert.False(source?.Source.UsagePolicy.RedistributionAllowed);
     }
+
+    [Fact]
+    public void Find_WhenCandidatePollingIsDisabled_ShouldKeepStoredPublicReadsAvailable()
+    {
+        LiveDataPollingSettings settings = new LiveDataPollingSettings
+        {
+            Enabled = false,
+            PublicReadEnabled = true,
+            OperationalMutationsEnabled = false,
+            Targets = new List<LiveDataPollingTargetSettings>
+            {
+                new LiveDataPollingTargetSettings
+                {
+                    Enabled = true,
+                    SourceId = "themeparks-wiki",
+                    ExternalEntityId = "external-park-1",
+                },
+            },
+        };
+        ThemeParksWikiLiveDataSourceCatalog catalog =
+            new ThemeParksWikiLiveDataSourceCatalog(settings);
+
+        AmusementPark.Application.Features.LiveData.Models.LiveDataSourcePresentation? source =
+            catalog.Find(LiveDataSourceId.Parse("themeparks-wiki"));
+
+        Assert.False(catalog.IsCollectionEnabled);
+        Assert.True(catalog.IsPublicReadEnabled);
+        Assert.Equal("external-park-1", catalog.PublicPollingTarget?.ExternalEntityId);
+        Assert.Equal(LiveDataSourceStatus.Active, source?.Source.Status);
+    }
 }

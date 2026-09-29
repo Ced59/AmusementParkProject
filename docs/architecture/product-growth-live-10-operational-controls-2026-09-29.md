@@ -50,7 +50,9 @@ observations devenues interdites. Cette règle couvre la collecte normale et le
 rejeu de quarantaine. En régime stable, la production n’exécute qu’une instance
 canonique de l’API. Pendant la bascule transactionnelle, le candidat qui
 coexiste avec l’ancienne instance démarre avec la collecte live désactivée et
-refuse, en `503` avec `Retry-After`, les mutations de contrôle et les rejeux.
+refuse, en `503` avec `Retry-After`, les mutations de contrôle et les rejeux. La
+lecture publique reste indépendante : le candidat continue à restituer le
+dernier état stocké avec sa fraîcheur réelle pendant toute la bascule.
 L’ancienne instance peut donc finir ses écritures sous sa frontière locale sans
 qu’un arrêt soit confirmé par un autre processus ; seule la nouvelle instance
 canonique réactive ensuite collecte et mutations. Un passage futur à plusieurs
@@ -71,9 +73,13 @@ token indépendant de la connexion cliente ; une déconnexion après engagement
 ne peut donc ni annuler la trace ni empêcher l’invalidation englobante.
 
 Lorsqu’une réponse fournisseur contient des observations supprimées par un
-contrôle, son `ETag` n’est pas conservé. Le prochain appel après réouverture est
-donc inconditionnel et ne peut pas recevoir un `304` qui laisserait absentes les
-données volontairement écartées pendant l’arrêt.
+contrôle granulaire, son `ETag` reste conservé : un arrêt long ne transforme pas
+chaque cycle en téléchargement complet inutile. La révision de réouverture est
+comparée à l’heure de la dernière collecte réussie. Le premier appel qui suit
+une réouverture omet alors une seule fois l’`ETag`, puis la réponse complète
+réarme le polling conditionnel. Un `304` ne peut donc pas laisser absentes les
+données volontairement écartées pendant l’arrêt, sans accroître durablement la
+charge fournisseur.
 
 ## Exploitation
 

@@ -15,7 +15,8 @@ public sealed class ThemeParksWikiLiveDataSourceCatalog : ILiveDataSourceCatalog
         this.ConfiguredPollingTarget = settings.BuildEnabledTargets().SingleOrDefault(static target =>
             target.SourceId == LiveDataSourceId.Parse("themeparks-wiki"));
         this.IsCollectionEnabled = settings.Enabled && this.ConfiguredPollingTarget is not null;
-        this.IsPublicReadEnabled = this.IsCollectionEnabled && settings.PublicReadEnabled;
+        this.IsPublicReadEnabled = settings.PublicReadEnabled
+            && this.ConfiguredPollingTarget is not null;
         this.PublicPollingTarget = this.IsPublicReadEnabled
             ? this.ConfiguredPollingTarget
             : null;
@@ -35,7 +36,9 @@ public sealed class ThemeParksWikiLiveDataSourceCatalog : ILiveDataSourceCatalog
                     new DateTime(2026, 9, 28, 15, 47, 0, DateTimeKind.Utc)),
                 TimeSpan.FromMinutes(5),
                 TimeSpan.FromMinutes(30),
-                this.IsCollectionEnabled ? LiveDataSourceStatus.Active : LiveDataSourceStatus.Suspended),
+                this.IsCollectionEnabled || this.IsPublicReadEnabled
+                    ? LiveDataSourceStatus.Active
+                    : LiveDataSourceStatus.Suspended),
             100,
             "Powered by ThemeParks.wiki",
             "https://themeparks.wiki/");
