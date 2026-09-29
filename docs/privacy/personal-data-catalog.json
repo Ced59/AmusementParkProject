@@ -16,7 +16,7 @@
       "sources": [
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Users/*Document.cs"
       ],
-      "reviewedSchemaSha256": "2f6d39038997bac2179fb35584098150c8ade25b7dec514eab875dae5fa2b6ef",
+      "reviewedSchemaSha256": "d4205d6300b10fdeaa8e9fb58f78c43f2d51fed9189aeca412cbf4dcbce2b70f",
       "policy": {
         "purpose": "Créer le compte, authentifier son propriétaire, mémoriser ses préférences et sécuriser les accès ordinaires ou d'édition.",
         "necessity": "L'adresse e-mail et les preuves d'authentification sont nécessaires au compte ; le nom, l'avatar et les connexions externes restent optionnels selon le parcours.",
@@ -40,7 +40,7 @@
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Ratings/UserRatingDocument.cs",
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Ratings/RatingRankingMutationRecoveryTargetDocument.cs"
       ],
-      "reviewedSchemaSha256": "8444d8fa322b2caec90d0b5bbb09761852d44ea3e58cc07d850a52f210af3800",
+      "reviewedSchemaSha256": "0e3540aa3449d137c6d3ff7f59687877856fac96d0b47dc2e0e75790dd8a904d",
       "policy": {
         "purpose": "Conserver l'historique personnel des visites, passages, évaluations, préférences de suggestion et exports demandés par le membre.",
         "necessity": "Les références de parc et de date structurent le passeport ; horaires précis, textes privés et notes sont facultatifs.",
@@ -62,7 +62,7 @@
       "sources": [
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Sharing/*Document.cs"
       ],
-      "reviewedSchemaSha256": "f77c2d5bcf45064b1523628427cdd16acd8baf04ebba37e8e5bb0baffcfda2fb",
+      "reviewedSchemaSha256": "293eb866496878778e389ca1f151e74166ede6cbb8c208d2d85bbfb05a000a2c",
       "policy": {
         "purpose": "Publier une sélection consentie du passeport, produire des récapitulatifs et permettre une comparaison entre profils publics.",
         "necessity": "Aucune donnée de partage n'est nécessaire au passeport privé ; chaque publication, invitation ou comparaison est facultative.",
@@ -84,7 +84,7 @@
       "sources": [
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Watchlists/*Document.cs"
       ],
-      "reviewedSchemaSha256": "36ed00f85f14d6fddee07d5e5f02f64d7ca74e77cf68e926dd306656994f987a",
+      "reviewedSchemaSha256": "4f387b0ad1c9510ff5856055ce7a0e8770d68f0c9dc31147872e0b7c8d253683",
       "policy": {
         "purpose": "Mémoriser les intentions privées, surveiller des changements factuels et livrer les alertes choisies par le membre.",
         "necessity": "Surface entièrement optionnelle ; seuils, notes privées, canaux et fréquence ne sont persistés qu'après une action du membre.",
@@ -106,7 +106,7 @@
       "sources": [
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Trips/*Document.cs"
       ],
-      "reviewedSchemaSha256": "fc39cce51bdc87b404c5b2e4e7572958a668a7c614390d8ae5f39eb514a0c782",
+      "reviewedSchemaSha256": "9c1fd069f5230c9aa82ab22b71216fa4f8f883a32c66729d3ae75be0ec14cb26",
       "policy": {
         "purpose": "Construire un voyage privé, inviter des participants et synchroniser préférences, décisions et programme du groupe.",
         "necessity": "Le plan, ses membres et ses dates sont nécessaires au voyage choisi ; e-mail cible, notes, préférences et blocs détaillés restent facultatifs.",
@@ -128,7 +128,7 @@
       "sources": [
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/ParkFit/ParkFitGroupProfileDocument.cs"
       ],
-      "reviewedSchemaSha256": "88f8f5607209c523d33a8c48916aa6894d859edd317adb6da2e19c10698f7f44",
+      "reviewedSchemaSha256": "24cc9db372b4243e168c4d8b69343760add7d4dfc2bd0ae09bb75ab4ebcba3d9",
       "policy": {
         "purpose": "Calculer une compatibilité explicable entre un groupe privé et les conditions d'accès des attractions.",
         "necessity": "Profil optionnel ; taille, âge et accompagnement ne sont demandés que pour améliorer le calcul choisi.",
@@ -155,7 +155,7 @@
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/ParkFit/ParkFitSourceReportDocument.cs",
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/SocialShare/SocialShareEventDocument.cs"
       ],
-      "reviewedSchemaSha256": "61b8f02fb6f1d30a6cdddf9c8c91817b69279fb7d7ff6dd341a1e3bba79e8e30",
+      "reviewedSchemaSha256": "87694e77e7274960b3cc0d1bf6ce0da6021728cc1abb2ecfd2479966239e9e52",
       "policy": {
         "purpose": "Publier du contenu choisi, traiter une demande de contact ou examiner un signalement factuel avec les preuves nécessaires.",
         "necessity": "Chaque contribution est optionnelle ; IP et user-agent ne servent qu'à la protection anti-abus des formulaires concernés.",
@@ -181,11 +181,12 @@
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/ParkFit/ParkFitOperationalDecisionDocument.cs",
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/ParkGraphUpserts/ParkGraphUpsertHistoryDocument.cs",
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/SocialPublishing/SocialPublicationDocument.cs",
+        "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/Seo/SeoSitemapGenerationHistoryDocument.cs",
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/LiveData/ExternalLiveTargetMappingDocument.cs",
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/LiveData/LiveOperationalControlDocument.cs",
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/LiveData/LiveQualityIncidentDocument.cs"
       ],
-      "reviewedSchemaSha256": "dd805d87faad25e4993e516671dd9c1638b8af0a0b6c3c31518cde90c72fd2a1",
+      "reviewedSchemaSha256": "add45a36b04b5ce2fea6f6173e8ccd679d6420be8d99fb39d6cc9d85f1fbe237",
       "policy": {
         "purpose": "Attribuer les décisions sensibles, diagnostiquer les incidents et démontrer les changements administratifs ou de sécurité.",
         "necessity": "Identité d'acteur et contexte minimal nécessaires à la responsabilité ; contenu brut, secrets et données métier privées sont exclus.",

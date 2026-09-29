@@ -880,7 +880,7 @@ seconde observabilité.
 ### Implémentation `QUAL-04` — 29 septembre 2026
 
 Le registre versionné de confidentialité applique les douze dimensions de cette
-roadmap à huit surfaces métier, 115 documents et 1 094 champs persistés. Il décrit
+roadmap à huit surfaces métier, 116 documents et 1 105 champs persistés. Il décrit
 les visibilités privées ou explicitement publiées, les exports réellement couverts,
 les rétentions, les sous-traitants et les accès support sans présenter les
 capacités partielles comme terminées.

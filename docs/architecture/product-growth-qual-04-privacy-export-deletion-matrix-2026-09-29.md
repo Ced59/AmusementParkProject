@@ -14,8 +14,8 @@ ce qui n'est que partiellement raccordé et ce qui manque réellement.
 Le catalogue versionné couvre actuellement :
 
 - 8 surfaces métier ;
-- 115 documents MongoDB ou documents imbriqués ;
-- 1 094 champs persistés déclarés dans le code ;
+- 116 documents MongoDB ou documents imbriqués ;
+- 1 105 champs persistés déclarés dans le code ;
 - les champs techniques hérités `Id`, `CreatedAt` et `UpdatedAt`, qui suivent la
   politique de rétention et de suppression de leur document ;
 - les 12 dimensions exigées par la roadmap pour chaque champ : finalité,
@@ -82,10 +82,12 @@ Angular. Il :
 1. charge le catalogue ;
 2. vérifie les 12 dimensions de chaque surface ;
 3. lit les propriétés persistées des documents C# ;
-4. recalcule une empreinte stable par surface ;
+4. recalcule une empreinte stable par surface à partir du nom sérialisé BSON, du
+   type, de la nullabilité, du caractère requis et des attributs de persistance ;
 5. échoue si un document ou un champ a changé sans nouvelle revue ;
 6. recherche dans tous les documents MongoDB les marqueurs probables de données
-   personnelles (`UserId`, e-mail, IP, jeton, texte privé, etc.) ;
+   personnelles (tout suffixe `UserId` ou `UserEmail`, e-mail, IP, jeton, texte
+   privé, etc.) ;
 7. échoue si un document détecté n'est ni classé ni exclu avec une justification.
 
 Les tests prouvent aussi qu'une dimension supprimée ou une empreinte non revue est

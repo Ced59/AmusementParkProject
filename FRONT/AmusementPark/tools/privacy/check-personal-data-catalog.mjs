@@ -26,7 +26,7 @@ const requiredPolicyKeys = [
   'audit',
 ];
 
-const personalFieldPattern = /^(?:UserId|OwnerUserId|AuthorUserId|ActorUserId|CreatorUserId|AcceptorUserId|ReviewedByUserId|ChangedByUserId|RequestedByUserId|DecidedByUserId|CandidateUserId|AcceptingUserId|Email|ActorEmail|FirstName|LastName|PublicDisplayName|HashedPassword|TokenHash|IpAddress|UserAgent|PrivateComment|PrivateNote|TargetEmailHmac|InviterDisplayName|ReporterUserId|DraftOwnerId|Message)$/;
+const personalFieldPattern = /(?:UserId|UserEmail)$|^(?:Email|ActorEmail|FirstName|LastName|PublicDisplayName|HashedPassword|TokenHash|IpAddress|UserAgent|PrivateComment|PrivateNote|TargetEmailHmac|InviterDisplayName|DraftOwnerId|Message)$/;
 
 function normalizePath(value) {
   return value.replaceAll('\\', '/');
@@ -65,28 +65,56 @@ function resolveSource(source) {
     .map((entry) => join(directory, entry));
 }
 
-function readDocumentShape(absolutePath) {
-  const source = readFileSync(absolutePath, 'utf8');
+export function parseDocumentShape(source, sourceName) {
   const classMatch = source.match(/(?:public|internal)\s+(?:sealed\s+)?(?:partial\s+)?class\s+(\w+)/);
   const recordMatch = source.match(/(?:public|internal)\s+(?:sealed\s+)?(?:partial\s+)?record\s+(\w+)/);
   const typeName = classMatch?.[1] ?? recordMatch?.[1];
-  const properties = [...source.matchAll(
-    /public\s+(?:required\s+)?[^\r\n{]+?\s+(\w+)\s*\{\s*get;/g,
-  )]
-    .map((match) => match[1])
-    .sort((left, right) => left.localeCompare(right));
+  const propertyPattern = /((?:\s*\[Bson[^\]\r\n]*\]\s*\r?\n)*)\s*public\s+(required\s+)?([^\r\n{]+?)\s+(\w+)\s*\{\s*get;/g;
+  const properties = [...source.matchAll(propertyPattern)]
+    .map((match) => ({
+      attributes: [...match[1].matchAll(/\[\s*(Bson[^\]]+)\]/g)]
+        .map((attribute) => attribute[1].replace(/\s+/g, ' ').trim())
+        .sort((left, right) => left.localeCompare(right)),
+      isRequired: Boolean(match[2]),
+      name: match[4],
+      type: match[3].replace(/\s+/g, ' ').trim(),
+    }))
+    .sort((left, right) => left.name.localeCompare(right.name));
 
   if (!typeName || properties.length === 0) {
     throw new Error(
-      `Le document ${normalizePath(relative(repositoryRoot, absolutePath))} n'expose aucune forme persistée analysable.`,
+      `Le document ${sourceName} n'expose aucune forme persistée analysable.`,
     );
   }
 
   return {
-    source: normalizePath(relative(repositoryRoot, absolutePath)),
+    source: sourceName,
     typeName,
     properties,
   };
+}
+
+function readDocumentShape(absolutePath) {
+  const sourceName = normalizePath(relative(repositoryRoot, absolutePath));
+  return parseDocumentShape(readFileSync(absolutePath, 'utf8'), sourceName);
+}
+
+export function computeDocumentsDigest(documents) {
+  const canonicalShape = documents
+    .map((document) => {
+      const properties = document.properties
+        .map((property) => [
+          property.name,
+          property.type,
+          property.isRequired ? 'required' : 'optional',
+          property.attributes.join('|'),
+        ].join(':'))
+        .join(',');
+      return `${document.source}|${document.typeName}|${properties}`;
+    })
+    .join('\n');
+
+  return createHash('sha256').update(canonicalShape).digest('hex');
 }
 
 export function computeSurfaceShape(surface) {
@@ -94,13 +122,10 @@ export function computeSurfaceShape(surface) {
     .flatMap(resolveSource)
     .sort((left, right) => left.localeCompare(right));
   const documents = paths.map(readDocumentShape);
-  const canonicalShape = documents
-    .map((document) => `${document.source}|${document.typeName}|${document.properties.join(',')}`)
-    .join('\n');
 
   return {
     documents,
-    digest: createHash('sha256').update(canonicalShape).digest('hex'),
+    digest: computeDocumentsDigest(documents),
   };
 }
 
@@ -135,13 +160,13 @@ function validateDiscovery(catalog, coveredSources, errors) {
       errors.push(`${source}: une source cataloguée ne doit pas aussi être exclue.`);
     }
     const candidate = candidatesBySource.get(source);
-    if (candidate && !candidate.properties.some((property) => personalFieldPattern.test(property))) {
+    if (candidate && !candidate.properties.some((property) => personalFieldPattern.test(property.name))) {
       errors.push(`${source}: exclusion obsolète, aucun marqueur personnel probable ne subsiste.`);
     }
   }
 
   for (const candidate of candidates) {
-    const hasPersonalMarker = candidate.properties.some((property) => personalFieldPattern.test(property));
+    const hasPersonalMarker = candidate.properties.some((property) => personalFieldPattern.test(property.name));
     if (!hasPersonalMarker) {
       continue;
     }

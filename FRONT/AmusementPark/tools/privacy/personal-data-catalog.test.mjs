@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
 import {
+  computeDocumentsDigest,
+  parseDocumentShape,
   personalDataCatalogPath,
   validateCatalog,
 } from './check-personal-data-catalog.mjs';
@@ -35,4 +37,33 @@ test('an unreviewed persisted shape fails validation', () => {
   const result = validateCatalog(catalog);
 
   assert.ok(result.errors.some((error) => error.includes('forme persistée a changé')));
+});
+
+test('the persisted schema digest includes type, nullability and BSON mapping', () => {
+  const baseline = parseDocumentShape(`
+    public sealed class ExampleDocument
+    {
+      [BsonElement("email")]
+      public string? Email { get; set; }
+    }
+  `, 'ExampleDocument.cs');
+  const changedType = parseDocumentShape(`
+    public sealed class ExampleDocument
+    {
+      [BsonElement("email")]
+      public string Email { get; set; } = string.Empty;
+    }
+  `, 'ExampleDocument.cs');
+  const changedMapping = parseDocumentShape(`
+    public sealed class ExampleDocument
+    {
+      [BsonElement("contactEmail")]
+      public string? Email { get; set; }
+    }
+  `, 'ExampleDocument.cs');
+
+  const baselineDigest = computeDocumentsDigest([baseline]);
+
+  assert.notEqual(computeDocumentsDigest([changedType]), baselineDigest);
+  assert.notEqual(computeDocumentsDigest([changedMapping]), baselineDigest);
 });
