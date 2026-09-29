@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { PassportProductAnalyticsPort } from '@core/analytics/passport-product-analytics.port';
+import { ProductAnalyticsPort } from '@core/analytics/product-analytics.port';
 import { PassportAnonymousDraft } from '../models/passport-anonymous-draft.models';
 import { PassportAnonymousDraftStorePort } from './passport-anonymous-draft-store.ports';
 import { PassportAnonymousDraftsStateFacade } from './passport-anonymous-drafts-state.facade';
@@ -9,7 +9,7 @@ describe('PassportAnonymousDraftsStateFacade', () => {
   it('removes a draft from the visible list only after its local deletion succeeds', async () => {
     const draft: PassportAnonymousDraft = createDraft();
     const store: PassportAnonymousDraftStorePort = createStore([draft]);
-    const analytics: PassportProductAnalyticsPort = { track: vi.fn() };
+    const analytics: ProductAnalyticsPort = { track: vi.fn() };
     const facade: PassportAnonymousDraftsStateFacade = createFacade(store, analytics);
 
     await facade.load();
@@ -29,7 +29,7 @@ describe('PassportAnonymousDraftsStateFacade', () => {
     const draft: PassportAnonymousDraft = createDraft();
     const store: PassportAnonymousDraftStorePort = createStore([draft]);
     vi.mocked(store.delete).mockRejectedValueOnce(new Error('IndexedDB unavailable'));
-    const analytics: PassportProductAnalyticsPort = { track: vi.fn() };
+    const analytics: ProductAnalyticsPort = { track: vi.fn() };
     const facade: PassportAnonymousDraftsStateFacade = createFacade(store, analytics);
 
     await facade.load();
@@ -84,7 +84,7 @@ describe('PassportAnonymousDraftsStateFacade', () => {
 
 function createFacade(
   store: PassportAnonymousDraftStorePort,
-  analytics: PassportProductAnalyticsPort = { track: vi.fn() }
+  analytics: ProductAnalyticsPort = { track: vi.fn() }
 ): PassportAnonymousDraftsStateFacade {
   return new PassportAnonymousDraftsStateFacade(store, analytics, document);
 }

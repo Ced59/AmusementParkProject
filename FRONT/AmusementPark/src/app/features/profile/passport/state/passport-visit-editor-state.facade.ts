@@ -33,9 +33,9 @@ import { Park } from '@app/models/parks/park';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import {
-  PASSPORT_PRODUCT_ANALYTICS_PORT,
-  PassportProductAnalyticsPort
-} from '@core/analytics/passport-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import { passportRideCountBucket } from '@core/analytics/passport-product-event.model';
 import { PaginationContract } from '@shared/models/contracts';
 import { extractApiProblemDetails } from '@shared/utils/security/error-display.helpers';
@@ -333,8 +333,8 @@ export class PassportVisitEditorStateFacade {
     @Inject(PASSPORT_VISIT_EDITOR_PARKS_PORT) private readonly parksApi: PassportVisitEditorParksPort,
     @Inject(PASSPORT_VISIT_EDITOR_ZONES_PORT) private readonly zonesApi: PassportVisitEditorZonesPort,
     @Inject(PASSPORT_VISIT_EDITOR_OPERATION_ID_PORT) private readonly operationIds: PassportVisitEditorOperationIdPort,
-    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: PassportProductAnalyticsPort,
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort,
     private readonly messages: ToastMessageService,
     private readonly translateService: TranslateService,
     private readonly destroyRef: DestroyRef

@@ -12,9 +12,9 @@ import {
 } from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import {
-  SHARE_PRODUCT_ANALYTICS_PORT,
-  ShareProductAnalyticsPort
-} from '@core/analytics/share-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import { USER_RANKING_SHARE_PORT, UserRankingSharePort } from './user-ranking-share-state-data.ports';
 
 @Injectable()
@@ -50,8 +50,8 @@ export class UserRankingShareStateFacade {
     private readonly toastMessageService: ToastMessageService,
     private readonly translateService: TranslateService,
     private readonly destroyRef: DestroyRef,
-    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 

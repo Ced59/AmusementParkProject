@@ -6,7 +6,7 @@ import {
   UserParkItemRatingRankingsPage,
   UserParkRatingRankingsPage,
 } from '@app/models/ratings/rating.models';
-import { SHARE_PRODUCT_ANALYTICS_PORT } from '@core/analytics/share-product-analytics.port';
+import { PRODUCT_ANALYTICS_PORT } from '@core/analytics/product-analytics.port';
 import { ShareProductEvent } from '@core/analytics/share-product-event.model';
 import { DEFAULT_PAGINATION } from '@shared/models/contracts';
 import {
@@ -29,7 +29,7 @@ describe('SharedUserRankingsStateFacade', () => {
         SharedUserRankingsStateFacade,
         { provide: SHARED_USER_RANKINGS_PORT, useValue: port },
         {
-          provide: SHARE_PRODUCT_ANALYTICS_PORT,
+          provide: PRODUCT_ANALYTICS_PORT,
           useValue: {
             track: (event: ShareProductEvent): void => {
               analyticsEvents.push(event);

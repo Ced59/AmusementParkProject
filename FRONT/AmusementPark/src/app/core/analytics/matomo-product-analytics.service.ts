@@ -3,11 +3,15 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { CookieConsentService } from '@core/privacy/cookie-consent.service';
 import { environment } from '../../../environments/environment';
-import type { ShareProductAnalyticsPort } from './share-product-analytics.port';
-import { ShareProductEvent } from './share-product-event.model';
+import {
+  ProductAnalyticsPayload,
+  serializeProductAnalyticsEvent
+} from './product-analytics-contract';
+import type { ConsentedProductAnalyticsEvent } from './product-analytics-event.model';
+import type { ProductAnalyticsPort } from './product-analytics.port';
 
 @Injectable({ providedIn: 'root' })
-export class MatomoShareProductAnalyticsService implements ShareProductAnalyticsPort {
+export class MatomoProductAnalyticsService implements ProductAnalyticsPort {
   private readonly isBrowser: boolean;
 
   constructor(
@@ -18,8 +22,13 @@ export class MatomoShareProductAnalyticsService implements ShareProductAnalytics
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
-  track(event: ShareProductEvent): void {
+  track(event: ConsentedProductAnalyticsEvent): void {
     if (!this.canTrack()) {
+      return;
+    }
+
+    const payload: ProductAnalyticsPayload | null = serializeProductAnalyticsEvent(event);
+    if (payload === null || payload.channel !== 'matomo-consented') {
       return;
     }
 
@@ -27,11 +36,14 @@ export class MatomoShareProductAnalyticsService implements ShareProductAnalytics
     trackingUrl.searchParams.set('idsite', environment.analytics.matomoSiteId.toString());
     trackingUrl.searchParams.set('rec', '1');
     trackingUrl.searchParams.set('apiv', '1');
-    trackingUrl.searchParams.set('url', new URL('product/share', environment.baseUrl).toString());
-    trackingUrl.searchParams.set('action_name', 'Share product event');
-    trackingUrl.searchParams.set('e_c', 'Share');
-    trackingUrl.searchParams.set('e_a', event.type);
-    trackingUrl.searchParams.set('e_n', `recap-type=${event.recapType}`);
+    trackingUrl.searchParams.set(
+      'url',
+      new URL(`product/${payload.route}`, environment.baseUrl).toString()
+    );
+    trackingUrl.searchParams.set('action_name', payload.actionName);
+    trackingUrl.searchParams.set('e_c', payload.category);
+    trackingUrl.searchParams.set('e_a', payload.action);
+    trackingUrl.searchParams.set('e_n', payload.label);
     trackingUrl.searchParams.set('rand', `${Date.now()}-${Math.random().toString(36).slice(2)}`);
 
     const imageConstructor: typeof Image | undefined = this.document.defaultView?.Image;

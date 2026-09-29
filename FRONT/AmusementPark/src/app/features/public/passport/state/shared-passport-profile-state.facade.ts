@@ -3,9 +3,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { SharedPassportProfile } from '@app/models/sharing/share-publication.models';
 import {
-  SHARE_PRODUCT_ANALYTICS_PORT,
-  ShareProductAnalyticsPort
-} from '@core/analytics/share-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import { SHARED_PASSPORT_PROFILE_PORT, SharedPassportProfilePort } from './shared-passport-profile-state-data.ports';
 
 @Injectable()
@@ -26,8 +26,8 @@ export class SharedPassportProfileStateFacade {
   constructor(
     @Inject(SHARED_PASSPORT_PROFILE_PORT) private readonly port: SharedPassportProfilePort,
     private readonly destroyRef: DestroyRef,
-    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 

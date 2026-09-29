@@ -15,7 +15,9 @@ export type ShareProductEventType =
   | 'share_cta_passport_started'
   | 'share_render_failed';
 
-export interface ShareProductEvent {
-  readonly type: ShareProductEventType;
-  readonly recapType: ShareProductRecapType;
-}
+export type ShareProductEvent = {
+  readonly [EventType in ShareProductEventType]: {
+    readonly type: EventType;
+    readonly recapType: ShareProductRecapType;
+  };
+}[ShareProductEventType];

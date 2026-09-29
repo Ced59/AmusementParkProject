@@ -15,9 +15,9 @@ import {
 } from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import {
-  SHARE_PRODUCT_ANALYTICS_PORT,
-  ShareProductAnalyticsPort
-} from '@core/analytics/share-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import { YEAR_RECAP_SHARE_PORT, YearRecapSharePort } from './year-recap-share-state-data.ports';
 
 @Injectable()
@@ -67,8 +67,8 @@ export class YearRecapShareStateFacade {
     private readonly toastMessageService: ToastMessageService,
     private readonly translateService: TranslateService,
     private readonly destroyRef: DestroyRef,
-    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 

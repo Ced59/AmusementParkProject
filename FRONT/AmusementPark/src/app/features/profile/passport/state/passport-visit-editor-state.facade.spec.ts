@@ -12,7 +12,7 @@ import {
 import { PassportVisit } from '@app/models/passport/passport-visit.models';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
-import { PASSPORT_PRODUCT_ANALYTICS_PORT } from '@core/analytics/passport-product-analytics.port';
+import { PRODUCT_ANALYTICS_PORT } from '@core/analytics/product-analytics.port';
 import { PagedResult } from '@shared/models/contracts';
 import {
   PASSPORT_VISIT_EDITOR_OCCURRENCES_PORT,
@@ -162,7 +162,7 @@ describe('PassportVisitEditorStateFacade', () => {
         { provide: PASSPORT_VISIT_EDITOR_PARKS_PORT, useValue: parksPort },
         { provide: PASSPORT_VISIT_EDITOR_ZONES_PORT, useValue: zonesPort },
         { provide: PASSPORT_VISIT_EDITOR_OPERATION_ID_PORT, useValue: operationIds },
-        { provide: PASSPORT_PRODUCT_ANALYTICS_PORT, useValue: { track: analyticsTrack } },
+        { provide: PRODUCT_ANALYTICS_PORT, useValue: { track: analyticsTrack } },
         { provide: ToastMessageService, useValue: { add: vi.fn() } },
         { provide: TranslateService, useValue: { instant: (key: string): string => key } }
       ]

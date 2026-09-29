@@ -1,6 +1,20 @@
 {
-  "version": "5.4.24",
+  "version": "5.4.25",
   "history": [
+    {
+      "version": "5.4.25",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "La mesure des fonctionnalités est plus cohérente et respectueuse de tes données.",
+        "en": "Feature measurement is more consistent and respectful of your data.",
+        "de": "Die Funktionsmessung ist einheitlicher und respektiert deine Daten besser.",
+        "nl": "Functiemeting is consistenter en gaat zorgvuldiger om met je gegevens.",
+        "it": "La misurazione delle funzionalità è più coerente e rispettosa dei tuoi dati.",
+        "es": "La medición de las funciones es más coherente y respetuosa con tus datos.",
+        "pt": "A medição das funcionalidades é mais coerente e respeita melhor os teus dados.",
+        "pl": "Pomiar funkcji jest spójniejszy i lepiej chroni Twoje dane."
+      }
+    },
     {
       "version": "5.4.24",
       "releasedAt": "2026-09-29",

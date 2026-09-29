@@ -9,9 +9,9 @@ import {
   PassportYearStatistics
 } from '@app/models/passport/passport-statistics.models';
 import {
-  PASSPORT_PRODUCT_ANALYTICS_PORT,
-  PassportProductAnalyticsPort
-} from '@core/analytics/passport-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import {
   mapItemStatisticsView,
   mapParkStatisticsView,
@@ -48,8 +48,8 @@ export class PassportStatisticsStateFacade {
 
   constructor(
     @Inject(PASSPORT_STATISTICS_API_PORT) private readonly statisticsApi: PassportStatisticsApiPort,
-    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: PassportProductAnalyticsPort,
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort,
     private readonly destroyRef: DestroyRef
   ) {
   }

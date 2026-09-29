@@ -4,9 +4,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { PassportGlobalStatistics } from '@app/models/passport/passport-statistics.models';
 import {
-  PASSPORT_PRODUCT_ANALYTICS_PORT,
-  PassportProductAnalyticsPort
-} from '@core/analytics/passport-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import {
   PASSPORT_GLOBAL_STATISTICS_FILTER_STORE,
   PassportGlobalStatisticsFilter,
@@ -36,8 +36,8 @@ export class PassportGlobalStatisticsStateFacade {
     @Inject(PASSPORT_STATISTICS_API_PORT) private readonly statisticsApi: PassportStatisticsApiPort,
     @Inject(PASSPORT_GLOBAL_STATISTICS_FILTER_STORE)
     private readonly filterStore: PassportGlobalStatisticsFilterStorePort,
-    @Inject(PASSPORT_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: PassportProductAnalyticsPort,
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort,
     private readonly destroyRef: DestroyRef
   ) {
   }

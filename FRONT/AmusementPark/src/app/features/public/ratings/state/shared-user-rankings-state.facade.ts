@@ -10,9 +10,9 @@ import {
   SharedUserRankingProfile
 } from '@app/models/ratings/rating.models';
 import {
-  SHARE_PRODUCT_ANALYTICS_PORT,
-  ShareProductAnalyticsPort
-} from '@core/analytics/share-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import { PaginationContract } from '@shared/models/contracts';
 import { SHARED_USER_RANKINGS_PORT, SharedUserRankingsPort } from './shared-user-rankings-state-data.ports';
 
@@ -57,8 +57,8 @@ export class SharedUserRankingsStateFacade {
   constructor(
     @Inject(SHARED_USER_RANKINGS_PORT) private readonly ratingsPort: SharedUserRankingsPort,
     private readonly destroyRef: DestroyRef,
-    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 

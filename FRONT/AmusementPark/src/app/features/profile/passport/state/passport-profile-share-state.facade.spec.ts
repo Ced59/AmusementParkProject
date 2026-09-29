@@ -9,7 +9,7 @@ import {
   SharePublicationSettings
 } from '@app/models/sharing/share-publication.models';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
-import { SHARE_PRODUCT_ANALYTICS_PORT } from '@core/analytics/share-product-analytics.port';
+import { PRODUCT_ANALYTICS_PORT } from '@core/analytics/product-analytics.port';
 import { ShareProductEvent } from '@core/analytics/share-product-event.model';
 import { TranslateService } from '@ngx-translate/core';
 import { PASSPORT_PROFILE_SHARE_PORT, PassportProfileSharePort } from './passport-profile-share-state-data.ports';
@@ -58,7 +58,7 @@ describe('PassportProfileShareStateFacade', () => {
       PassportProfileShareStateFacade,
       { provide: PASSPORT_PROFILE_SHARE_PORT, useValue: port },
       {
-        provide: SHARE_PRODUCT_ANALYTICS_PORT,
+        provide: PRODUCT_ANALYTICS_PORT,
         useValue: {
           track: (event: ShareProductEvent): void => {
             analyticsEvents.push(event);

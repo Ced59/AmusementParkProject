@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
-import { SHARE_PRODUCT_ANALYTICS_PORT } from '@core/analytics/share-product-analytics.port';
+import { PRODUCT_ANALYTICS_PORT } from '@core/analytics/product-analytics.port';
 import { ShareProductEvent } from '@core/analytics/share-product-event.model';
 import { TranslateService } from '@ngx-translate/core';
 import { FakeUserRankingSharePort } from './test-helpers/profile-ratings-panel.component/fake-user-ranking-share-port';
@@ -18,7 +18,7 @@ describe('UserRankingShareStateFacade', () => {
       { provide: ToastMessageService, useValue: { add: vi.fn() } },
       { provide: TranslateService, useValue: { instant: (key: string): string => key } },
       {
-        provide: SHARE_PRODUCT_ANALYTICS_PORT,
+        provide: PRODUCT_ANALYTICS_PORT,
         useValue: {
           track: (event: ShareProductEvent): void => {
             analyticsEvents.push(event);

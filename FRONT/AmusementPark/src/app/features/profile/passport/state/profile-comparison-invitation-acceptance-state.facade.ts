@@ -6,9 +6,9 @@ import {
   ProfileComparisonInvitationPreview
 } from '@app/models/sharing/profile-comparison-invitation.models';
 import {
-  SHARE_PRODUCT_ANALYTICS_PORT,
-  ShareProductAnalyticsPort
-} from '@core/analytics/share-product-analytics.port';
+  PRODUCT_ANALYTICS_PORT,
+  ProductAnalyticsPort
+} from '@core/analytics/product-analytics.port';
 import {
   PROFILE_COMPARISON_INVITATION_PORT,
   ProfileComparisonInvitationPort
@@ -35,8 +35,8 @@ export class ProfileComparisonInvitationAcceptanceStateFacade {
     @Inject(PROFILE_COMPARISON_INVITATION_PORT)
     private readonly port: ProfileComparisonInvitationPort,
     private readonly destroyRef: DestroyRef,
-    @Inject(SHARE_PRODUCT_ANALYTICS_PORT)
-    private readonly productAnalytics: ShareProductAnalyticsPort = { track: (): void => undefined }
+    @Inject(PRODUCT_ANALYTICS_PORT)
+    private readonly productAnalytics: ProductAnalyticsPort = { track: (): void => undefined }
   ) {
   }
 
