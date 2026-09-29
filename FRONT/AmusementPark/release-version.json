@@ -1,6 +1,20 @@
 {
-  "version": "5.4.25",
+  "version": "5.4.26",
   "history": [
+    {
+      "version": "5.4.26",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "La sécurité technique du site a été renforcée.",
+        "en": "The site’s technical security has been strengthened.",
+        "de": "Die technische Sicherheit der Website wurde verbessert.",
+        "nl": "De technische beveiliging van de site is versterkt.",
+        "it": "La sicurezza tecnica del sito è stata rafforzata.",
+        "es": "Se ha reforzado la seguridad técnica del sitio.",
+        "pt": "A segurança técnica do site foi reforçada.",
+        "pl": "Wzmocniono techniczne zabezpieczenia strony."
+      }
+    },
     {
       "version": "5.4.25",
       "releasedAt": "2026-09-29",
