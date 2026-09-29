@@ -67,11 +67,13 @@ MongoDB et décrit la source, et WebAPI mappe le résultat HTTP.
 
 - output cache anonyme : 30 secondes au maximum, raccourci à la prochaine
   transition de fraîcheur de l'observation sélectionnée ;
-- `Cache-Control: public,max-age=<durée bornée>,must-revalidate` ;
+- cache navigateur révalidé à chaque lecture (`Cache-Control:
+  public,max-age=0,must-revalidate`) afin qu'un intermédiaire ne puisse jamais
+  redémarrer une durée de fraîcheur déjà entamée ;
 - ETag SHA-256 déterministe sur le DTO public ;
 - instant réel de la requête pour calculer l'âge et l'état ; l'ETag reste stable
-  uniquement pendant la durée de cache, qui expire avant `Aging`, `Stale` ou
-  `Expired` ;
+  uniquement pendant la durée de cache serveur, calculée au moment où la réponse
+  est réellement stockée et qui expire avant `Aging`, `Stale` ou `Expired` ;
 - requêtes Mongo bornées à 16 sources par cible et 2 000 observations par parc ;
 - index `(parkId, type, expiresAtUtc)` pour une liste de parc et index
   `(type, id)` dédié aux lectures unitaires ;

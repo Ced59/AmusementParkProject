@@ -29,7 +29,11 @@ public sealed class PublicLiveControllerTests
         Assert.Equal("Powered by ThemeParks.wiki", dto.Source?.AttributionText);
         Assert.Equal(0, Assert.Single(dto.Queues).WaitTimeMinutes);
         Assert.StartsWith("\"", controller.Response.Headers.ETag.ToString(), StringComparison.Ordinal);
-        Assert.Equal("public,max-age=30,must-revalidate", controller.Response.Headers.CacheControl);
+        Assert.Equal("public,max-age=0,must-revalidate", controller.Response.Headers.CacheControl);
+        DateTime transition = Assert.IsType<DateTime>(
+            controller.HttpContext.Items[
+                PublicLiveExpirationOutputCachePolicy.FreshnessTransitionItemKey]);
+        Assert.Equal(target.FreshnessTransitionAtUtc, transition);
     }
 
     [Fact]

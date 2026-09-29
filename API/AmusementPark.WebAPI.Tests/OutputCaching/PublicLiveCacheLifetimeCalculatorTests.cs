@@ -11,34 +11,39 @@ public sealed class PublicLiveCacheLifetimeCalculatorTests
         new DateTime(2026, 9, 29, 12, 0, 29, DateTimeKind.Utc);
 
     [Fact]
-    public void Resolve_WhenFreshnessChangesBeforeMaximum_ShouldStopAtTransition()
+    public void ResolveLifetime_WhenFreshnessChangesBeforeMaximum_ShouldStopAtTransition()
     {
         PublicLiveTargetResult target = CreateTarget(AsOfUtc.AddSeconds(1.9));
+        DateTime? transitionAtUtc = PublicLiveCacheLifetimeCalculator.ResolveTransitionAtUtc(target);
 
-        TimeSpan lifetime = PublicLiveCacheLifetimeCalculator.Resolve(target);
+        TimeSpan lifetime = PublicLiveCacheLifetimeCalculator.ResolveLifetime(AsOfUtc, transitionAtUtc);
 
         Assert.Equal(TimeSpan.FromSeconds(1), lifetime);
     }
 
     [Fact]
-    public void Resolve_WhenFreshnessTransitionIsImmediate_ShouldDisableCaching()
+    public void ResolveLifetime_WhenResponseWorkConsumesRemainingSecond_ShouldDisableCaching()
     {
-        PublicLiveTargetResult target = CreateTarget(AsOfUtc.AddMilliseconds(500));
+        PublicLiveTargetResult target = CreateTarget(AsOfUtc.AddSeconds(1.1));
+        DateTime? transitionAtUtc = PublicLiveCacheLifetimeCalculator.ResolveTransitionAtUtc(target);
 
-        TimeSpan lifetime = PublicLiveCacheLifetimeCalculator.Resolve(target);
+        TimeSpan lifetime = PublicLiveCacheLifetimeCalculator.ResolveLifetime(
+            AsOfUtc.AddMilliseconds(200),
+            transitionAtUtc);
 
         Assert.Equal(TimeSpan.Zero, lifetime);
     }
 
     [Fact]
-    public void Resolve_WhenNoCurrentObservation_ShouldUseMaximumLifetime()
+    public void ResolveLifetime_WhenNoCurrentObservation_ShouldUseMaximumLifetime()
     {
         PublicLiveTargetResult target = CreateTarget(null) with
         {
             Availability = PublicLiveAvailability.Expired,
         };
 
-        TimeSpan lifetime = PublicLiveCacheLifetimeCalculator.Resolve(target);
+        DateTime? transitionAtUtc = PublicLiveCacheLifetimeCalculator.ResolveTransitionAtUtc(target);
+        TimeSpan lifetime = PublicLiveCacheLifetimeCalculator.ResolveLifetime(AsOfUtc, transitionAtUtc);
 
         Assert.Equal(TimeSpan.FromSeconds(30), lifetime);
     }

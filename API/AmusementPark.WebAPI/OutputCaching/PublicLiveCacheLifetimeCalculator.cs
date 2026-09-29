@@ -6,33 +6,34 @@ public static class PublicLiveCacheLifetimeCalculator
 {
     private static readonly TimeSpan MaximumLifetime = TimeSpan.FromSeconds(30);
 
-    public static TimeSpan Resolve(PublicLiveTargetResult target)
+    public static DateTime? ResolveTransitionAtUtc(PublicLiveTargetResult target)
     {
         ArgumentNullException.ThrowIfNull(target);
-        return Resolve(target.AsOfUtc, new[] { target });
+        return target.Availability == PublicLiveAvailability.Current
+            ? target.FreshnessTransitionAtUtc
+            : null;
     }
 
-    public static TimeSpan Resolve(PublicParkLiveItemsResult parkItems)
+    public static DateTime? ResolveTransitionAtUtc(PublicParkLiveItemsResult parkItems)
     {
         ArgumentNullException.ThrowIfNull(parkItems);
-        return Resolve(parkItems.AsOfUtc, parkItems.Items);
-    }
-
-    private static TimeSpan Resolve(
-        DateTime asOfUtc,
-        IEnumerable<PublicLiveTargetResult> targets)
-    {
-        DateTime? earliestTransitionUtc = targets
+        return parkItems.Items
             .Where(static target => target.Availability == PublicLiveAvailability.Current)
             .Select(static target => target.FreshnessTransitionAtUtc)
             .Where(static transition => transition.HasValue)
             .Min();
-        if (!earliestTransitionUtc.HasValue)
+    }
+
+    public static TimeSpan ResolveLifetime(
+        DateTime responseStoredAtUtc,
+        DateTime? freshnessTransitionAtUtc)
+    {
+        if (!freshnessTransitionAtUtc.HasValue)
         {
             return MaximumLifetime;
         }
 
-        TimeSpan untilTransition = earliestTransitionUtc.Value - asOfUtc;
+        TimeSpan untilTransition = freshnessTransitionAtUtc.Value - responseStoredAtUtc;
         if (untilTransition <= TimeSpan.Zero)
         {
             return TimeSpan.Zero;

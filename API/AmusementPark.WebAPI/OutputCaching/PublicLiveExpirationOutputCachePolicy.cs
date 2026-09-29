@@ -4,7 +4,14 @@ namespace AmusementPark.WebAPI.OutputCaching;
 
 public sealed class PublicLiveExpirationOutputCachePolicy : IOutputCachePolicy
 {
-    public const string CacheLifetimeItemKey = "public-live-cache-lifetime";
+    public const string FreshnessTransitionItemKey = "public-live-freshness-transition";
+
+    private readonly TimeProvider timeProvider;
+
+    public PublicLiveExpirationOutputCachePolicy(TimeProvider timeProvider)
+    {
+        this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
+    }
 
     public ValueTask CacheRequestAsync(
         OutputCacheContext context,
@@ -25,11 +32,18 @@ public sealed class PublicLiveExpirationOutputCachePolicy : IOutputCachePolicy
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(context);
-        if (!context.HttpContext.Items.TryGetValue(CacheLifetimeItemKey, out object? value)
-            || value is not TimeSpan lifetime)
+        if (!context.HttpContext.Items.TryGetValue(FreshnessTransitionItemKey, out object? value))
         {
             return ValueTask.CompletedTask;
         }
+
+        DateTime? freshnessTransitionAtUtc = value is DateTime transitionAtUtc
+            ? transitionAtUtc
+            : null;
+        DateTime responseStoredAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        TimeSpan lifetime = PublicLiveCacheLifetimeCalculator.ResolveLifetime(
+            responseStoredAtUtc,
+            freshnessTransitionAtUtc);
 
         if (lifetime <= TimeSpan.Zero)
         {
