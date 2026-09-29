@@ -1,6 +1,20 @@
 {
-  "version": "5.4.14",
+  "version": "5.4.15",
   "history": [
+    {
+      "version": "5.4.15",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "L’historique des informations en direct prépare des tendances plus fiables.",
+        "en": "Live information history prepares more reliable trends.",
+        "de": "Der Verlauf der Live-Informationen ermöglicht zuverlässigere Trends.",
+        "nl": "De geschiedenis van live-informatie maakt betrouwbaardere trends mogelijk.",
+        "it": "La cronologia delle informazioni in tempo reale prepara tendenze più affidabili.",
+        "es": "El historial de la información en directo prepara tendencias más fiables.",
+        "pl": "Historia informacji na żywo umożliwia tworzenie bardziej wiarygodnych trendów.",
+        "pt": "O histórico das informações em direto prepara tendências mais fiáveis."
+      }
+    },
     {
       "version": "5.4.14",
       "releasedAt": "2026-09-29",

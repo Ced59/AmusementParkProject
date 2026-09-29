@@ -1155,6 +1155,13 @@ private readonly IMongoDatabase database;
 
         await this.InitializeLiveLatestObservationIndexesAsync(cancellationToken);
         await this.EnsureCollectionExistsAsync(
+            this.settings.LiveRawHistoryCollectionName,
+            cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.LiveHistoryBucketsCollectionName,
+            cancellationToken);
+        await this.InitializeLiveHistoryIndexesAsync(cancellationToken);
+        await this.EnsureCollectionExistsAsync(
             this.settings.LiveQualityIncidentsCollectionName,
             cancellationToken);
         await this.InitializeLiveQualityIncidentIndexesAsync(cancellationToken);
@@ -2369,6 +2376,22 @@ private async Task InitializeParkDataEditorAccessTokensIndexesAsync(Cancellation
                 this.settings.LiveQualityIncidentsCollectionName);
         await incidents.Indexes.CreateManyAsync(
             LiveQualityIncidentMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+    }
+
+    private async Task InitializeLiveHistoryIndexesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<LiveLatestObservationDocument> rawObservations =
+            this.database.GetCollection<LiveLatestObservationDocument>(
+                this.settings.LiveRawHistoryCollectionName);
+        await rawObservations.Indexes.CreateManyAsync(
+            LiveHistoryMongoDefinitions.BuildRawIndexes(),
+            cancellationToken);
+        IMongoCollection<LiveHistoryBucketDocument> buckets =
+            this.database.GetCollection<LiveHistoryBucketDocument>(
+                this.settings.LiveHistoryBucketsCollectionName);
+        await buckets.Indexes.CreateManyAsync(
+            LiveHistoryMongoDefinitions.BuildBucketIndexes(),
             cancellationToken);
     }
 

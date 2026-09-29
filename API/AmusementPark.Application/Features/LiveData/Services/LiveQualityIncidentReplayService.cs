@@ -14,6 +14,7 @@ public sealed class LiveQualityIncidentReplayService
     private readonly ILiveLatestObservationRepository latestRepository;
     private readonly ILiveOperationalGate operationalGate;
     private readonly LiveOperationalObservationWriter operationalWriter;
+    private readonly LiveHistoryCaptureService? historyCaptureService;
     private readonly TimeProvider timeProvider;
 
     internal LiveQualityIncidentReplayService(
@@ -29,7 +30,8 @@ public sealed class LiveQualityIncidentReplayService
             operationalGate,
             sourceCatalog,
             new LiveOperationalWriteCoordinator(),
-            TimeProvider.System)
+            TimeProvider.System,
+            null)
     {
     }
 
@@ -47,7 +49,28 @@ public sealed class LiveQualityIncidentReplayService
             operationalGate,
             sourceCatalog,
             coordinator,
-            TimeProvider.System)
+            TimeProvider.System,
+            null)
+    {
+    }
+
+    public LiveQualityIncidentReplayService(
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveLatestObservationRepository latestRepository,
+        ILiveOperationalGate operationalGate,
+        ILiveDataSourceCatalog sourceCatalog,
+        LiveOperationalWriteCoordinator coordinator,
+        LiveHistoryCaptureService historyCaptureService)
+        : this(
+            incidentRepository,
+            mappingRepository,
+            latestRepository,
+            operationalGate,
+            sourceCatalog,
+            coordinator,
+            TimeProvider.System,
+            historyCaptureService)
     {
     }
 
@@ -65,7 +88,8 @@ public sealed class LiveQualityIncidentReplayService
             operationalGate,
             sourceCatalog,
             new LiveOperationalWriteCoordinator(),
-            timeProvider)
+            timeProvider,
+            null)
     {
     }
 
@@ -76,7 +100,8 @@ public sealed class LiveQualityIncidentReplayService
         ILiveOperationalGate operationalGate,
         ILiveDataSourceCatalog sourceCatalog,
         LiveOperationalWriteCoordinator coordinator,
-        TimeProvider timeProvider)
+        TimeProvider timeProvider,
+        LiveHistoryCaptureService? historyCaptureService)
     {
         this.incidentRepository = incidentRepository
             ?? throw new ArgumentNullException(nameof(incidentRepository));
@@ -92,6 +117,7 @@ public sealed class LiveQualityIncidentReplayService
             this.latestRepository,
             this.operationalGate,
             coordinator);
+        this.historyCaptureService = historyCaptureService;
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -288,6 +314,14 @@ public sealed class LiveQualityIncidentReplayService
                         writeGroup.Key.ExternalEntityId,
                         writeGroup.Select(static pair => pair.Value).ToArray(),
                         cancellationToken);
+                if (this.historyCaptureService is not null
+                    && operationalWrite.WriteResult.CommittedObservations.Count > 0)
+                {
+                    await this.historyCaptureService.CaptureAsync(
+                        operationalWrite.WriteResult.CommittedObservations,
+                        cancellationToken);
+                }
+
                 persistedCount += operationalWrite.WriteResult.InsertedCount
                     + operationalWrite.WriteResult.UpdatedCount;
                 ignoredCount += operationalWrite.WriteResult.IgnoredCount;
