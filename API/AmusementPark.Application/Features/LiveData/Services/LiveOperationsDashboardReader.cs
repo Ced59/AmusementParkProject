@@ -151,25 +151,34 @@ public sealed class LiveOperationsDashboardReader
                     source.Source.DisplayName,
                     null),
             };
-        definitions.AddRange(mappings
+        LiveTargetReference[] eligibleReferences = mappings
             .Where(static mapping => mapping.IsEligibleForLiveUse && mapping.Target is not null)
-            .Select(mapping =>
-            {
-                LiveTargetReference reference = mapping.Target!;
-                LiveOperationalScopeType scopeType = reference.Type == LiveTargetType.Park
-                    ? LiveOperationalScopeType.Park
-                    : LiveOperationalScopeType.Target;
-                return (
+            .Select(static mapping => mapping.Target!)
+            .ToArray();
+        definitions.AddRange(eligibleReferences
+            .Select(reference => (
+                new LiveOperationalControlScope(
+                    LiveOperationalScopeType.Park,
+                    target.SourceId,
+                    target.ExternalEntityId,
+                    reference.ParkId,
+                    null,
+                    null),
+                reference.ParkDisplayName,
+                (string?)null))
+            .DistinctBy(static definition => definition.Item1));
+        definitions.AddRange(eligibleReferences
+            .Where(static reference => reference.Type != LiveTargetType.Park)
+            .Select(reference => (
                     new LiveOperationalControlScope(
-                        scopeType,
+                        LiveOperationalScopeType.Target,
                         target.SourceId,
                         target.ExternalEntityId,
                         reference.ParkId,
-                        scopeType == LiveOperationalScopeType.Target ? reference.Type : null,
-                        scopeType == LiveOperationalScopeType.Target ? reference.Id : null),
+                        reference.Type,
+                        reference.Id),
                     reference.DisplayName,
-                    reference.Type == LiveTargetType.Park ? null : reference.ParkDisplayName);
-            })
+                    (string?)reference.ParkDisplayName))
             .DistinctBy(static definition => definition.Item1));
         return definitions
             .OrderBy(static definition => definition.Scope.Type)

@@ -151,11 +151,12 @@ public sealed class LivePollingOrchestrator
         TimeSpan jitter,
         CancellationToken cancellationToken)
     {
+        LiveLatestObservationIngestionResult? ingestionResult = null;
         if (providerResult.Disposition == LiveProviderReadDisposition.Success)
         {
             try
             {
-                await this.latestObservationIngestor.IngestAsync(
+                ingestionResult = await this.latestObservationIngestor.IngestAsync(
                     new LiveLatestObservationIngestionRequest(
                         adapter.SourceId,
                         adapter.AdapterVersion,
@@ -197,6 +198,8 @@ public sealed class LivePollingOrchestrator
         bool successful = providerResult.Disposition is LiveProviderReadDisposition.Success
             or LiveProviderReadDisposition.NotModified;
         bool replaceEntityTag = providerResult.Disposition == LiveProviderReadDisposition.Success;
+        bool observationsWereSuppressed =
+            ingestionResult?.SuppressedByOperationalControlCount > 0;
         LivePollingCompletion completion = new LivePollingCompletion(
             lease,
             completionDisposition,
@@ -206,7 +209,7 @@ public sealed class LivePollingOrchestrator
             schedule.CircuitOpenUntilUtc,
             successful ? providerResult.ReceivedAtUtc : null,
             replaceEntityTag,
-            providerResult.EntityTag);
+            observationsWereSuppressed ? null : providerResult.EntityTag);
         await this.EnsureCompletedAsync(completion, cancellationToken);
 
         return new LivePollingExecutionResult(

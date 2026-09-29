@@ -222,10 +222,13 @@ public sealed class UpdateLiveOperationalControlCommandHandler
                 configuredTarget.ExternalEntityId,
                 scope.InternalParkId!,
                 cancellationToken);
-        if (!coverage.Any(item => string.Equals(
-            item.InternalTargetId,
-            targetId,
-            StringComparison.Ordinal)))
+        bool isCovered = scope.Type == LiveOperationalScopeType.Park
+            ? coverage.Count > 0
+            : coverage.Any(item => string.Equals(
+                item.InternalTargetId,
+                targetId,
+                StringComparison.Ordinal));
+        if (!isCovered)
         {
             return null;
         }

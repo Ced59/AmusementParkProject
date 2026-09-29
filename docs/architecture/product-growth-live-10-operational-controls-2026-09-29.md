@@ -59,13 +59,21 @@ MongoDB faillible ne subsiste après le point d’engagement. Les filtres HTTP
 peuvent ainsi toujours invalider le cache et journaliser une décision déjà
 durable.
 
+Lorsqu’une réponse fournisseur contient des observations supprimées par un
+contrôle, son `ETag` n’est pas conservé. Le prochain appel après réouverture est
+donc inconditionnel et ne peut pas recevoir un `304` qui laisserait absentes les
+données volontairement écartées pendant l’arrêt.
+
 ## Exploitation
 
 Le tableau de bord présente la dernière collecte réussie, le prochain passage,
 le circuit de protection, les échecs consécutifs, la couverture de mapping, la
 quarantaine, les versions d’adaptateur/transformation et la politique de licence.
 La couverture charge toutes les révisions courantes appartenant au parc pilote,
-sans troncature par une page globale de la source. Chaque changement exige un
+sans troncature par une page globale de la source. Un périmètre parc est dérivé
+dès qu’au moins une attraction de ce parc possède un mapping éligible : l’arrêt
+global reste donc disponible même si le fournisseur ne publie pas de ligne
+distincte pour le parc lui-même. Chaque changement exige un
 motif, utilise une révision attendue contre les
 écrasements concurrents et reste présent dans l’historique. Le rejeu de la
 quarantaine reste borné à 100 incidents par action.

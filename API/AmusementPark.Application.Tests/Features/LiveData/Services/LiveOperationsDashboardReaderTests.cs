@@ -58,11 +58,12 @@ public sealed class LiveOperationsDashboardReaderTests
         adapter.SetupGet(static value => value.UsagePolicyVersion).Returns("policy-1");
         Mock<ILiveTargetMappingRepository> mappings =
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        ExternalLiveTargetMapping itemMapping = CreateVerifiedItemMapping(sourceId);
         mappings.Setup(value => value.GetLatestByExternalEntityAsync(
                 sourceId,
                 "external-park",
                 CancellationToken.None))
-            .ReturnsAsync(Array.Empty<ExternalLiveTargetMapping>());
+            .ReturnsAsync(new[] { itemMapping });
         Mock<ILivePollingStateRepository> polling =
             new Mock<ILivePollingStateRepository>(MockBehavior.Strict);
         polling.Setup(value => value.GetAsync(sourceId, "external-park", CancellationToken.None))
@@ -73,7 +74,8 @@ public sealed class LiveOperationsDashboardReaderTests
             .ReturnsAsync(3);
         incidents.Setup(value => value.CountReplayablePendingAsync(
                 sourceId,
-                It.Is<IReadOnlyCollection<string>>(ids => ids.Count == 0),
+                It.Is<IReadOnlyCollection<string>>(ids =>
+                    ids.Count == 1 && ids.Contains("external-item")),
                 NowUtc,
                 CancellationToken.None))
             .ReturnsAsync(1);
@@ -103,9 +105,48 @@ public sealed class LiveOperationsDashboardReaderTests
         Assert.True(result.Value.ConfiguredPublicReadEnabled);
         Assert.Equal(3, result.Value.Summary.PendingIncidentCount);
         Assert.Equal(1, result.Value.Summary.ReplayablePendingIncidentCount);
-        LiveOperationalScopeResult scope = Assert.Single(result.Value.Scopes);
-        Assert.Equal(LiveOperationalScopeType.Source, scope.ScopeType);
-        Assert.False(scope.EffectiveCollectionEnabled);
-        Assert.True(scope.EffectivePublicReadEnabled);
+        Assert.Equal(3, result.Value.Scopes.Count);
+        LiveOperationalScopeResult sourceScope = Assert.Single(
+            result.Value.Scopes,
+            static scope => scope.ScopeType == LiveOperationalScopeType.Source);
+        Assert.False(sourceScope.EffectiveCollectionEnabled);
+        Assert.True(sourceScope.EffectivePublicReadEnabled);
+        LiveOperationalScopeResult parkScope = Assert.Single(
+            result.Value.Scopes,
+            static scope => scope.ScopeType == LiveOperationalScopeType.Park);
+        Assert.Equal("park-1", parkScope.InternalParkId);
+        Assert.Equal("Park", parkScope.DisplayName);
+        Assert.Single(
+            result.Value.Scopes,
+            static scope => scope.ScopeType == LiveOperationalScopeType.Target);
+    }
+
+    private static ExternalLiveTargetMapping CreateVerifiedItemMapping(
+        LiveDataSourceId sourceId)
+    {
+        ExternalLiveTargetMapping candidate = ExternalLiveTargetMapping.CreateCandidate(
+            Guid.NewGuid(),
+            sourceId,
+            new ExternalLiveTargetDescriptor(
+                LiveTargetType.ParkItem,
+                "external-item",
+                "external-park",
+                "Attraction",
+                "Park",
+                "FR"),
+            null,
+            LiveMappingConfidence.Medium,
+            NowUtc.AddDays(-1));
+        return candidate.Verify(
+            new LiveTargetReference(
+                LiveTargetType.ParkItem,
+                "item-1",
+                "park-1",
+                "Attraction",
+                "Park",
+                "FR"),
+            "admin-1",
+            null,
+            NowUtc.AddHours(-1));
     }
 }

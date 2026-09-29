@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Tests.Features.LiveData.Services;
 using AmusementPark.Core.Domain.LiveData;
+using AmusementPark.Core.Domain.Parks;
 using Moq;
 using Xunit;
 
@@ -149,6 +150,80 @@ public sealed class UpdateLiveOperationalControlCommandHandlerTests
             SourceId,
             "external-park",
             CancellationToken.None), Times.Once);
+    }
+
+    [Fact]
+    public async Task HandleAsync_WhenOnlyParkItemsAreMapped_ShouldAllowParkControl()
+    {
+        Mock<ILiveOperationalControlRepository> repository =
+            new Mock<ILiveOperationalControlRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetLatestAsync(
+                It.IsAny<LiveOperationalControlScope>(),
+                CancellationToken.None))
+            .ReturnsAsync((LiveOperationalControl?)null);
+        repository.Setup(value => value.AppendRevisionAsync(
+                It.Is<LiveOperationalControl>(control =>
+                    control.Scope.Type == LiveOperationalScopeType.Park
+                    && control.Scope.InternalParkId == "park-1"),
+                0,
+                CancellationToken.None))
+            .ReturnsAsync(LiveOperationalControlWriteOutcome.Created);
+        Mock<ILiveTargetMappingRepository> mappings =
+            new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        mappings.Setup(value => value.GetEligiblePublicTargetCoverageByParkAsync(
+                SourceId,
+                "external-park",
+                "park-1",
+                CancellationToken.None))
+            .ReturnsAsync(new[] { new LivePublicTargetCoverage("item-1", "external-item") });
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        parks.Setup(value => value.GetByIdAsync("park-1", true, CancellationToken.None))
+            .ReturnsAsync(new Park
+            {
+                Id = "park-1",
+                Name = "Park",
+                CountryCode = "FR",
+                IsVisible = true,
+            });
+        Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.Setup(value => value.LoadAsync(SourceId, "external-park", CancellationToken.None))
+            .ReturnsAsync(new LiveOperationalGateSnapshot(
+                true,
+                true,
+                "external-park",
+                Array.Empty<LiveOperationalControl>(),
+                new LiveOperationalControlPolicy()));
+        UpdateLiveOperationalControlCommandHandler handler =
+            new UpdateLiveOperationalControlCommandHandler(
+                repository.Object,
+                mappings.Object,
+                CreateCatalog().Object,
+                new LiveTargetReferenceResolver(
+                    parks.Object,
+                    new Mock<IParkItemRepository>(MockBehavior.Strict).Object),
+                gate.Object,
+                new LiveOperationalScopeResultFactory(),
+                new FixedTimeProvider(NowUtc));
+
+        AmusementPark.Application.Errors.ApplicationResult<LiveOperationalScopeResult> result =
+            await handler.HandleAsync(
+                new UpdateLiveOperationalControlCommand(
+                    LiveOperationalScopeType.Park,
+                    SourceId.Value,
+                    "external-park",
+                    "park-1",
+                    null,
+                    null,
+                    false,
+                    false,
+                    0,
+                    "Park incident",
+                    "admin-1"),
+                CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("Park", result.Value!.DisplayName);
+        Assert.False(result.Value.EffectiveCollectionEnabled);
     }
 
     private static Mock<ILiveDataSourceCatalog> CreateCatalog()

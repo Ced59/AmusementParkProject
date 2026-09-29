@@ -217,6 +217,59 @@ public sealed class LivePollingOrchestratorTests
     }
 
     [Fact]
+    public async Task ExecuteAsync_WhenOperationalControlSuppressesData_ShouldClearEntityTag()
+    {
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease(
+            entityTag: "\"old\"");
+        LivePollingCompletion? savedCompletion = null;
+        repository
+            .Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingCompletion, CancellationToken>(
+                (completion, _) => savedCompletion = completion)
+            .ReturnsAsync(true);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        adapter
+            .Setup(value => value.FetchLatestAsync(
+                It.IsAny<LiveProviderReadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveProviderReadResult(
+                LiveProviderReadDisposition.Success,
+                NowUtc,
+                entityTag: "\"new\""));
+        Mock<ILiveLatestObservationIngestor> ingestor = CreateIngestor();
+        ingestor
+            .Setup(value => value.IngestAsync(
+                It.IsAny<LiveLatestObservationIngestionRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveLatestObservationIngestionResult(
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0));
+        LivePollingOrchestrator orchestrator = CreateOrchestrator(
+            repository,
+            adapter,
+            ingestor);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.Success, result.Disposition);
+        Assert.NotNull(savedCompletion);
+        Assert.True(savedCompletion.ReplaceEntityTag);
+        Assert.Null(savedCompletion.EntityTag);
+    }
+
+    [Fact]
     public async Task ExecuteAsync_WhenLatestPersistenceFails_ShouldFailWithoutReplacingEntityTag()
     {
         Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease(
