@@ -155,10 +155,11 @@ export class ParkItemDetailStateFacade {
       }
     });
 
+    const timeZoneReferenceDate: string = new Date().toISOString().slice(0, 10);
     this.parksApiService.getParkOpeningHours(
       item.parkId,
-      null,
-      null,
+      timeZoneReferenceDate,
+      timeZoneReferenceDate,
       anonymousHttpOptions()
     ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (calendar: ParkOpeningHoursCalendar) => {

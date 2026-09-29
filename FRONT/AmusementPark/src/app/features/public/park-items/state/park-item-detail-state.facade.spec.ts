@@ -403,6 +403,12 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.itemsPort.itemCalls).toEqual(['item-1']);
     expect(context.parksPort.calls).toEqual(['park-1']);
     expect(context.facade.parkTimeZoneId()).toBe('Europe/Berlin');
+    expect(context.parksPort.openingHoursCalls).toHaveLength(1);
+    expect(context.parksPort.openingHoursCalls[0]?.id).toBe('park-1');
+    expect(context.parksPort.openingHoursCalls[0]?.from).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(context.parksPort.openingHoursCalls[0]?.to).toBe(
+      context.parksPort.openingHoursCalls[0]?.from
+    );
     expect(context.itemsPort.siblingCalls).toEqual(['item-1']);
     expect(context.itemsPort.relatedCalls).toEqual(['item-1:3']);
     expect(context.manufacturersPort.calls).toEqual(['manufacturer-1']);

@@ -21,6 +21,11 @@ public static class LiveTargetMappingMongoDefinitions
                 }),
             new(
                 Builders<ExternalLiveTargetMappingDocument>.IndexKeys
+                    .Ascending(static document => document.MappingId)
+                    .Descending(static document => document.Revision),
+                new CreateIndexOptions { Name = "idx_live_target_mapping_latest_revision" }),
+            new(
+                Builders<ExternalLiveTargetMappingDocument>.IndexKeys
                     .Ascending(static document => document.SourceId)
                     .Ascending("externalTarget.id")
                     .Ascending(static document => document.Revision),

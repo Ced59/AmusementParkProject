@@ -30,13 +30,23 @@ export class FakeParksPort implements ParkItemDetailParksPort {
     days: []
   });
   public readonly calls: string[] = [];
+  public readonly openingHoursCalls: Array<{
+    id: string;
+    from: string | null | undefined;
+    to: string | null | undefined;
+  }> = [];
 
   getParkById(id: string): Observable<Park> {
     this.calls.push(id);
     return this.parkResponse$;
   }
 
-  getParkOpeningHours(): Observable<ParkOpeningHoursCalendar> {
+  getParkOpeningHours(
+    id: string,
+    from?: string | null,
+    to?: string | null
+  ): Observable<ParkOpeningHoursCalendar> {
+    this.openingHoursCalls.push({ id, from, to });
     return this.openingHoursResponse$;
   }
 }
