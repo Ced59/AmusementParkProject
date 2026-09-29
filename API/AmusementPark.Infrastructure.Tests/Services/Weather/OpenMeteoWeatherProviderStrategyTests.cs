@@ -1,8 +1,9 @@
 using System.Net;
 using System.Text;
+using AmusementPark.Application.Features.ParkWeather.Contracts;
 using AmusementPark.Application.Features.ParkWeather.Ports;
-using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Weather;
+using AmusementPark.Core.Geo;
 using AmusementPark.Infrastructure.Configuration.Weather;
 using AmusementPark.Infrastructure.Services.Weather;
 using Xunit;
@@ -24,7 +25,7 @@ public sealed class OpenMeteoWeatherProviderStrategyTests
                 OpenMeteoArchiveBaseUrl = "https://weather.test/archive",
                 MinimumDelayBetweenProviderRequestsMilliseconds = 0,
             });
-        Park park = CreatePark();
+        ParkWeatherLocation park = CreatePark();
 
         ParkWeatherProviderResult result = await strategy.FetchDailyForecastAsync(
             park,
@@ -57,7 +58,7 @@ public sealed class OpenMeteoWeatherProviderStrategyTests
                 OpenMeteoArchiveBaseUrl = "https://weather.test/archive",
                 MinimumDelayBetweenProviderRequestsMilliseconds = 0,
             });
-        Park park = CreatePark();
+        ParkWeatherLocation park = CreatePark();
 
         ParkWeatherProviderResult result = await strategy.FetchDailyForecastAsync(
             park,
@@ -84,7 +85,7 @@ public sealed class OpenMeteoWeatherProviderStrategyTests
                 OpenMeteoArchiveBaseUrl = "https://weather.test/archive",
                 MinimumDelayBetweenProviderRequestsMilliseconds = 0,
             });
-        Park park = CreatePark();
+        ParkWeatherLocation park = CreatePark();
 
         await strategy.FetchDailyObservationsAsync(
             park,
@@ -107,17 +108,12 @@ public sealed class OpenMeteoWeatherProviderStrategyTests
             uri.Query.Contains("end_date=2025-06-21", StringComparison.Ordinal));
     }
 
-    private static Park CreatePark()
+    private static ParkWeatherLocation CreatePark()
     {
-        Park park = new Park
-        {
-            Id = "park-1",
-            Name = "Timezone Park",
-            IsVisible = true,
-            AdminReviewStatus = AdminReviewStatus.Validated,
-        };
-        park.SetPosition(40.71, -74.01);
-        return park;
+        return new ParkWeatherLocation(
+            "park-1",
+            "Timezone Park",
+            new GeoPoint(40.71, -74.01));
     }
 
 
