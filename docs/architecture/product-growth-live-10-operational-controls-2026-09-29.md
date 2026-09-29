@@ -50,6 +50,11 @@ observations devenues interdites. Cette règle couvre la collecte normale et le
 rejeu de quarantaine. Le déploiement de production n’exécute qu’une instance de
 l’API ; un passage futur à plusieurs instances devra remplacer cette frontière
 en mémoire par une coordination distribuée avant la mise à l’échelle.
+L’annulation de la requête est respectée jusqu’à l’entrée dans cette frontière.
+Une fois la mutation critique engagée, la lecture de révision, l’ajout du
+contrôle et la reconstruction du résultat vont au bout sans dépendre de la
+connexion cliente ; les filtres HTTP peuvent ainsi toujours invalider le cache
+et journaliser une décision déjà durable.
 
 ## Exploitation
 

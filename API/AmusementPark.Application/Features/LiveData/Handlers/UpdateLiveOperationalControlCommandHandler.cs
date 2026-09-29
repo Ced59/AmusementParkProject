@@ -113,11 +113,12 @@ public sealed class UpdateLiveOperationalControlCommandHandler
             return await this.coordinator.RunAsync(
                 sourceId,
                 configuredTarget.ExternalEntityId,
-                async boundaryCancellationToken =>
+                async _ =>
                 {
+                    CancellationToken commitCancellationToken = CancellationToken.None;
                     LiveOperationalControl? current = await this.repository.GetLatestAsync(
                         scope,
-                        boundaryCancellationToken);
+                        commitCancellationToken);
                     if ((current is null && command.ExpectedRevision != 0)
                         || (current is not null && current.Revision != command.ExpectedRevision))
                     {
@@ -148,12 +149,12 @@ public sealed class UpdateLiveOperationalControlCommandHandler
                         await this.repository.AppendRevisionAsync(
                             next,
                             command.ExpectedRevision,
-                            boundaryCancellationToken);
+                            commitCancellationToken);
                     if (outcome != LiveOperationalControlWriteOutcome.Created)
                     {
                         LiveOperationalControl? latest = await this.repository.GetLatestAsync(
                             scope,
-                            boundaryCancellationToken);
+                            commitCancellationToken);
                         return ApplicationResult<LiveOperationalScopeResult>.Failure(
                             LiveDataApplicationErrors.OperationalControlConflict(
                                 latest?.Revision ?? 0));
@@ -162,7 +163,7 @@ public sealed class UpdateLiveOperationalControlCommandHandler
                     LiveOperationalGateSnapshot gate = await this.operationalGate.LoadAsync(
                         sourceId,
                         configuredTarget.ExternalEntityId,
-                        boundaryCancellationToken);
+                        commitCancellationToken);
                     return ApplicationResult<LiveOperationalScopeResult>.Success(
                         this.resultFactory.Create(
                             scope,

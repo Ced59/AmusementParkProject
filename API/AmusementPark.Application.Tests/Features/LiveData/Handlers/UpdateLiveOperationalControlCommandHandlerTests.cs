@@ -81,6 +81,69 @@ public sealed class UpdateLiveOperationalControlCommandHandlerTests
         Assert.False(result.Value.EffectivePublicReadEnabled);
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenRequestIsCancelledAfterAppend_ShouldCompleteCommittedMutation()
+    {
+        using CancellationTokenSource requestCancellation = new CancellationTokenSource();
+        LiveOperationalControl? saved = null;
+        Mock<ILiveOperationalControlRepository> repository =
+            new Mock<ILiveOperationalControlRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.GetLatestAsync(
+                It.IsAny<LiveOperationalControlScope>(),
+                CancellationToken.None))
+            .ReturnsAsync((LiveOperationalControl?)null);
+        repository.Setup(value => value.AppendRevisionAsync(
+                It.IsAny<LiveOperationalControl>(),
+                0,
+                CancellationToken.None))
+            .Callback<LiveOperationalControl, int, CancellationToken>((control, _, _) =>
+            {
+                saved = control;
+                requestCancellation.Cancel();
+            })
+            .ReturnsAsync(LiveOperationalControlWriteOutcome.Created);
+        Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.Setup(value => value.LoadAsync(SourceId, "external-park", CancellationToken.None))
+            .ReturnsAsync(() => new LiveOperationalGateSnapshot(
+                true,
+                true,
+                "external-park",
+                saved is null ? Array.Empty<LiveOperationalControl>() : new[] { saved },
+                new LiveOperationalControlPolicy()));
+        UpdateLiveOperationalControlCommandHandler handler =
+            new UpdateLiveOperationalControlCommandHandler(
+                repository.Object,
+                new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict).Object,
+                CreateCatalog().Object,
+                new LiveTargetReferenceResolver(
+                    new Mock<IParkRepository>(MockBehavior.Strict).Object,
+                    new Mock<IParkItemRepository>(MockBehavior.Strict).Object),
+                gate.Object,
+                new LiveOperationalScopeResultFactory(),
+                new FixedTimeProvider(NowUtc));
+
+        AmusementPark.Application.Errors.ApplicationResult<LiveOperationalScopeResult> result =
+            await handler.HandleAsync(
+                new UpdateLiveOperationalControlCommand(
+                    LiveOperationalScopeType.Source,
+                    SourceId.Value,
+                    null,
+                    null,
+                    null,
+                    null,
+                    false,
+                    false,
+                    0,
+                    "Provider incident",
+                    "admin-1"),
+                requestCancellation.Token);
+
+        Assert.True(requestCancellation.IsCancellationRequested);
+        Assert.True(result.IsSuccess);
+        Assert.False(result.Value!.EffectiveCollectionEnabled);
+        gate.VerifyAll();
+    }
+
     private static Mock<ILiveDataSourceCatalog> CreateCatalog()
     {
         Mock<ILiveDataSourceCatalog> catalog =
