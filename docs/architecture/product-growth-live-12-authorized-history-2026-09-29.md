@@ -82,7 +82,7 @@ le latest déjà disponible.
 
 ```text
 live-history-raw                    live-history-buckets
-├─ _id source/cible/observedAt      ├─ _id source/cible/bucketStart
+├─ _id source/cible/observedAt      ├─ _id source/cible/bucketStart/politique
 ├─ sourceId                         ├─ sourceId
 ├─ target                           ├─ target
 ├─ status                           ├─ bucketStartUtc / bucketEndUtc

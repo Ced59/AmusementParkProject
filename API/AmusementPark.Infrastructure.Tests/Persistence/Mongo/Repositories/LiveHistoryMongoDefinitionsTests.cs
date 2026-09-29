@@ -75,7 +75,20 @@ public sealed class LiveHistoryMongoDefinitionsTests
             StringComparison.Ordinal);
     }
 
-    private static LiveLatestObservation CreateObservation()
+    [Fact]
+    public void ToHistoryBucketDocument_WhenPolicyChanges_ShouldUseSeparateBucket()
+    {
+        LiveHistoryBucketDocument previousPolicy = CreateObservation("usage-1")
+            .ToHistoryBucketDocument(RetentionPolicy);
+        LiveHistoryBucketDocument currentPolicy = CreateObservation("usage-2")
+            .ToHistoryBucketDocument(RetentionPolicy);
+
+        Assert.NotEqual(previousPolicy.Id, currentPolicy.Id);
+        Assert.Equal("usage-1", previousPolicy.UsagePolicyVersion);
+        Assert.Equal("usage-2", currentPolicy.UsagePolicyVersion);
+    }
+
+    private static LiveLatestObservation CreateObservation(string usagePolicyVersion = "usage-1")
     {
         DateTime receivedAtUtc = ObservedAtUtc.AddSeconds(10);
         return new LiveLatestObservation(
@@ -98,7 +111,7 @@ public sealed class LiveHistoryMongoDefinitionsTests
                 "adapter-1",
                 "mapping-1",
                 LiveDataConfidence.Medium,
-                "usage-1",
+                usagePolicyVersion,
                 "transform-1"),
             new LiveFreshnessPolicy(
                 "freshness-1",

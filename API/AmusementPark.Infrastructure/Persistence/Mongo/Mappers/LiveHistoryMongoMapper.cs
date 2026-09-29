@@ -30,7 +30,10 @@ public static class LiveHistoryMongoMapper
         DateTime bucketEndUtc = bucketStartUtc.Add(retentionPolicy.BucketDuration);
         return new LiveHistoryBucketDocument
         {
-            Id = BuildObservationId(latest.Id, bucketStartUtc.Ticks),
+            Id = BuildBucketId(
+                latest.Id,
+                bucketStartUtc.Ticks,
+                observation.Provenance.UsagePolicyVersion),
             CreatedAt = observation.Provenance.NormalizedAtUtc,
             UpdatedAt = observation.Provenance.NormalizedAtUtc,
             SourceId = observation.Provenance.SourceId.Value,
@@ -60,5 +63,14 @@ public static class LiveHistoryMongoMapper
     private static string BuildObservationId(string targetNaturalId, long timeBucketTicks)
     {
         return $"{targetNaturalId.Length}:{targetNaturalId}|{timeBucketTicks}";
+    }
+
+    private static string BuildBucketId(
+        string targetNaturalId,
+        long bucketStartTicks,
+        string usagePolicyVersion)
+    {
+        string timedTargetId = BuildObservationId(targetNaturalId, bucketStartTicks);
+        return $"{timedTargetId.Length}:{timedTargetId}|{usagePolicyVersion.Length}:{usagePolicyVersion}";
     }
 }
