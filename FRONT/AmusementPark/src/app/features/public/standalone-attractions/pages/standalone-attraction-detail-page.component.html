@@ -25,9 +25,9 @@
           <div class="standalone-hero__chips">
             <app-ui-kicker iconClass="pi pi-bolt">{{ t('standalone') }}</app-ui-kicker>
             <app-ui-chip tone="soft" iconClass="pi pi-map-marker" *ngIf="getHeroLocation(current)">{{ getHeroLocation(current) }}</app-ui-chip>
-            <app-ui-chip tone="gold" iconClass="pi pi-tag">{{ current.type }}</app-ui-chip>
-            <app-ui-chip tone="sky" iconClass="pi pi-sparkles" *ngIf="current.subtype">{{ current.subtype }}</app-ui-chip>
-            <app-ui-chip tone="lime" iconClass="pi pi-circle-fill" *ngIf="current.attractionDetails?.status">{{ current.attractionDetails?.status }}</app-ui-chip>
+            <app-ui-chip tone="gold" iconClass="pi pi-tag">{{ typeTranslationKey(current) | translate }}</app-ui-chip>
+            <app-ui-chip tone="sky" iconClass="pi pi-sparkles" *ngIf="current.subtype">{{ subtypeLabel(current) }}</app-ui-chip>
+            <app-ui-chip tone="lime" iconClass="pi pi-circle-fill" *ngIf="statusTranslationKey(current) as statusKey">{{ statusKey | translate }}</app-ui-chip>
           </div>
 
           <h1>{{ current.name }}</h1>
@@ -69,7 +69,7 @@
           <div class="standalone-data-grid">
             <div class="standalone-data-row" *ngFor="let row of detailsRows()">
               <span>{{ row.label }}</span>
-              <strong>{{ row.value }}</strong>
+              <strong>{{ row.translationKey ? (row.translationKey | translate) : row.value }}</strong>
             </div>
           </div>
         </section>

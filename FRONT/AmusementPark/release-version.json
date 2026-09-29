@@ -1,6 +1,20 @@
 {
-  "version": "5.4.28",
+  "version": "5.4.29",
   "history": [
+    {
+      "version": "5.4.29",
+      "releasedAt": "2026-09-30",
+      "labels": {
+        "fr": "Les fiches des attractions isolées affichent des informations plus claires.",
+        "en": "Standalone attraction pages display clearer information.",
+        "de": "Die Seiten eigenständiger Attraktionen zeigen klarere Informationen.",
+        "nl": "Pagina’s van losstaande attracties tonen duidelijkere informatie.",
+        "it": "Le schede delle attrazioni isolate mostrano informazioni più chiare.",
+        "es": "Las fichas de las atracciones aisladas muestran información más clara.",
+        "pt": "As páginas das atrações isoladas apresentam informações mais claras.",
+        "pl": "Strony samodzielnych atrakcji wyświetlają czytelniejsze informacje."
+      }
+    },
     {
       "version": "5.4.28",
       "releasedAt": "2026-09-29",
