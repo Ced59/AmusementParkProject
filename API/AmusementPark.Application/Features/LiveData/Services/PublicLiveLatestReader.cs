@@ -134,15 +134,20 @@ public sealed class PublicLiveLatestReader
                 ApplicationErrors.EntityNotFound(nameof(Park), normalizedParkId));
         }
 
-        Task<IReadOnlyCollection<ParkItem>> itemsTask = this.parkItemRepository.GetByParkIdAsync(
+        IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetByParkIdAsync(
             normalizedParkId,
             false,
             cancellationToken);
-        Task<IReadOnlyCollection<LiveLatestObservation>> observationsTask =
-            this.observationRepository.GetParkItemsAsync(normalizedParkId, cancellationToken);
-        await Task.WhenAll(itemsTask, observationsTask);
+        IReadOnlyCollection<string> visibleTargetIds = items
+            .Select(static item => item.Id)
+            .ToList()
+            .AsReadOnly();
+        IReadOnlyCollection<LiveLatestObservation> observations =
+            await this.observationRepository.GetParkItemsAsync(
+                normalizedParkId,
+                visibleTargetIds,
+                cancellationToken);
 
-        IReadOnlyCollection<LiveLatestObservation> observations = await observationsTask;
         Dictionary<string, IReadOnlyCollection<LiveLatestObservation>> observationsByTarget = observations
             .GroupBy(static observation => observation.Target.Id, StringComparer.Ordinal)
             .ToDictionary(
@@ -151,7 +156,7 @@ public sealed class PublicLiveLatestReader
                 StringComparer.Ordinal);
         DateTime asOfUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         string parkDisplayName = park.Name ?? string.Empty;
-        List<PublicLiveTargetResult> results = (await itemsTask)
+        List<PublicLiveTargetResult> results = items
             .OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
             .ThenBy(static item => item.Id, StringComparer.Ordinal)
             .Select(item => this.resultFactory.Create(

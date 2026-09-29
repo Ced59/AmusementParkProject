@@ -12,6 +12,7 @@ public interface ILiveLatestObservationRepository
 
     Task<IReadOnlyCollection<LiveLatestObservation>> GetParkItemsAsync(
         string parkId,
+        IReadOnlyCollection<string> targetIds,
         CancellationToken cancellationToken);
 
     Task<LiveLatestObservationWriteResult> WriteLatestAsync(

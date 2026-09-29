@@ -10,6 +10,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class LiveLatestObservationRepository : ILiveLatestObservationRepository
 {
+    private const int MaximumTargetIdsPerQuery = 250;
+
     private readonly IMongoCollection<LiveLatestObservationDocument> collection;
 
     public LiveLatestObservationRepository(IMongoDatabase database, MongoDbSettings settings)
@@ -41,21 +43,36 @@ public sealed class LiveLatestObservationRepository : ILiveLatestObservationRepo
 
     public async Task<IReadOnlyCollection<LiveLatestObservation>> GetParkItemsAsync(
         string parkId,
+        IReadOnlyCollection<string> targetIds,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(targetIds);
         string normalizedParkId = NormalizeIdentifier(parkId, nameof(parkId));
-        FilterDefinition<LiveLatestObservationDocument> filter =
-            Builders<LiveLatestObservationDocument>.Filter.And(
-                Builders<LiveLatestObservationDocument>.Filter.Eq(
-                    "target.type",
-                    LiveTargetType.ParkItem.ToString()),
-                Builders<LiveLatestObservationDocument>.Filter.Eq(
-                    "target.parkId",
-                    normalizedParkId));
-        List<LiveLatestObservationDocument> documents = await this.collection
-            .Find(filter)
-            .Limit(2_000)
-            .ToListAsync(cancellationToken);
+        List<string> normalizedTargetIds = targetIds
+            .Select(targetId => NormalizeIdentifier(targetId, nameof(targetIds)))
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static targetId => targetId, StringComparer.Ordinal)
+            .ToList();
+        if (normalizedTargetIds.Count == 0)
+        {
+            return Array.Empty<LiveLatestObservation>();
+        }
+
+        List<LiveLatestObservationDocument> documents = new List<LiveLatestObservationDocument>();
+        foreach (string[] targetIdBatch in normalizedTargetIds.Chunk(MaximumTargetIdsPerQuery))
+        {
+            FilterDefinition<LiveLatestObservationDocument> filter =
+                LiveLatestObservationMongoDefinitions.BuildParkItemsReadFilter(
+                    normalizedParkId,
+                    targetIdBatch);
+            List<LiveLatestObservationDocument> batch = await this.collection
+                .Find(filter)
+                .SortBy(static document => document.Target.Id)
+                .ThenBy(static document => document.SourceId)
+                .ToListAsync(cancellationToken);
+            documents.AddRange(batch);
+        }
+
         return documents.Select(static document => document.ToDomain()).ToList().AsReadOnly();
     }
 

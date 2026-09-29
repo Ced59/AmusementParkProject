@@ -53,6 +53,25 @@ public sealed class LiveLatestObservationMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildParkItemsReadFilter_ShouldRestrictReadToVisibleTargetIds()
+    {
+        FilterDefinition<LiveLatestObservationDocument> filter =
+            LiveLatestObservationMongoDefinitions.BuildParkItemsReadFilter(
+                "park-1",
+                new[] { "visible-1", "visible-2" });
+
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<LiveLatestObservationDocument>(
+                BsonSerializer.LookupSerializer<LiveLatestObservationDocument>(),
+                BsonSerializer.SerializerRegistry));
+
+        Assert.Equal(LiveTargetType.ParkItem.ToString(), rendered["target.type"].AsString);
+        Assert.Equal("park-1", rendered["target.parkId"].AsString);
+        BsonArray targetIds = rendered["target.id"].AsBsonDocument["$in"].AsBsonArray;
+        Assert.Equal(new[] { "visible-1", "visible-2" }, targetIds.Select(static value => value.AsString));
+    }
+
+    [Fact]
     public void BuildMonotonicUpdate_ShouldCompareObservedThenReceivedTimestamp()
     {
         LiveLatestObservationDocument document = CreateObservation().ToDocument();

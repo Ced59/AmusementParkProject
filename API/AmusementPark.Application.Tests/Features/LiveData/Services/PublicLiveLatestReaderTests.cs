@@ -112,6 +112,41 @@ public sealed class PublicLiveLatestReaderTests
         observations.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task ReadParkItemsAsync_ShouldReadObservationsOnlyForVisibleItems()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ILiveLatestObservationRepository> observations =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
+            .ReturnsAsync(CreatePark());
+        items.Setup(repository => repository.GetByParkIdAsync("park-1", false, CancellationToken.None))
+            .ReturnsAsync(new[]
+            {
+                CreateItem("visible-2", "Beta"),
+                CreateItem("visible-1", "Alpha"),
+            });
+        observations.Setup(repository => repository.GetParkItemsAsync(
+                "park-1",
+                It.Is<IReadOnlyCollection<string>>(targetIds =>
+                    targetIds.SequenceEqual(new[] { "visible-2", "visible-1" })),
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<LiveLatestObservation>());
+        PublicLiveLatestReader reader = CreateReader(parks, items, observations);
+
+        AmusementPark.Application.Errors.ApplicationResult<PublicParkLiveItemsResult> result =
+            await reader.ReadParkItemsAsync("park-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        PublicParkLiveItemsResult value = Assert.IsType<PublicParkLiveItemsResult>(result.Value);
+        Assert.Equal(new[] { "visible-1", "visible-2" }, value.Items.Select(static item => item.TargetId));
+        Assert.All(
+            value.Items,
+            static item => Assert.Equal(PublicLiveAvailability.NoObservation, item.Availability));
+        observations.VerifyAll();
+    }
+
     private static PublicLiveLatestReader CreateReader(params LiveLatestObservation[] observationsToReturn)
     {
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
@@ -212,13 +247,15 @@ public sealed class PublicLiveLatestReaderTests
         return new Park { Id = "park-1", Name = "Park", IsVisible = true };
     }
 
-    private static ParkItem CreateItem()
+    private static ParkItem CreateItem(
+        string id = "item-1",
+        string name = "Attraction")
     {
         return new ParkItem
         {
-            Id = "item-1",
+            Id = id,
             ParkId = "park-1",
-            Name = "Attraction",
+            Name = name,
             IsVisible = true,
         };
     }
