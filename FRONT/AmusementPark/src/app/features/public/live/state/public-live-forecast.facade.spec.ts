@@ -70,6 +70,22 @@ describe('PublicLiveForecastFacade', () => {
     expect(port.getParkItemForecast).toHaveBeenCalledTimes(2);
   });
 
+  it('avoids a tight retry loop when an intermediary returns an expired forecast', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-09-29T14:00:00Z'));
+    const port: PublicLiveDataPort = createPort(() => of(createForecast()));
+    const facade: PublicLiveForecastFacade = configureFacade(port);
+
+    facade.load('item-1');
+    vi.advanceTimersByTime(29_999);
+
+    expect(port.getParkItemForecast).toHaveBeenCalledTimes(1);
+
+    vi.advanceTimersByTime(1);
+
+    expect(port.getParkItemForecast).toHaveBeenCalledTimes(2);
+  });
+
   it('refreshes the current item on demand', () => {
     const port: PublicLiveDataPort = createPort(() => of(createForecast()));
     const facade: PublicLiveForecastFacade = configureFacade(port);

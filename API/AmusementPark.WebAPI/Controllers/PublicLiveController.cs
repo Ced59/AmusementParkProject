@@ -64,7 +64,7 @@ public sealed class PublicLiveController : ControllerBase
         return result.IsSuccess && result.Value is not null
             ? this.ToConditionalResponse(
                 result.Value.ToHttp(),
-                result.Value.FreshnessExpiresAtUtc)
+                PublicLiveCacheLifetimeCalculator.ResolveTransitionAtUtc(result.Value))
             : this.ToActionResult(result);
     }
 

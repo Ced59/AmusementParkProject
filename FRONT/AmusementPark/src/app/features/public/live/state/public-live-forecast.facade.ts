@@ -12,6 +12,7 @@ import { PUBLIC_LIVE_DATA_PORT, PublicLiveDataPort } from './public-live-data.po
 @Injectable()
 export class PublicLiveForecastFacade {
   private static readonly unavailableRetryDelayMs: number = 15 * 60 * 1000;
+  private static readonly expiredResponseRetryDelayMs: number = 30 * 1000;
 
   private readonly stateSignal = signal<PublicLiveForecastViewState>(INITIAL_PUBLIC_LIVE_FORECAST_VIEW_STATE);
   private currentItemId: string | null = null;
@@ -70,9 +71,10 @@ export class PublicLiveForecastFacade {
 
   private scheduleRefreshAt(timestampUtc: string): void {
     const timestamp: number = Date.parse(timestampUtc);
-    const delay: number = Number.isFinite(timestamp)
-      ? Math.max(1, timestamp - Date.now())
-      : PublicLiveForecastFacade.unavailableRetryDelayMs;
+    const remainingDelay: number = timestamp - Date.now();
+    const delay: number = Number.isFinite(timestamp) && remainingDelay > 0
+      ? remainingDelay
+      : PublicLiveForecastFacade.expiredResponseRetryDelayMs;
     this.scheduleRefreshAfter(delay);
   }
 

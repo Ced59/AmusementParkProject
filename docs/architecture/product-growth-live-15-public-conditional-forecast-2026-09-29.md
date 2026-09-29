@@ -118,8 +118,9 @@ sequenceDiagram
 - `Infrastructure` conserve les buckets existants ; aucun nouveau schéma ni
   aucune migration MongoDB n’est nécessaire.
 - `WebAPI` expose un endpoint anonyme borné, ETag et mis en cache au plus trente
-  secondes, sans jamais dépasser l'expiration de l'observation live qui autorise
-  la prévision. Les invalidations LIVE existantes restent applicables.
+  secondes, sans jamais dépasser la première échéance entre l'expiration de
+  l'observation live et la fin du créneau prédit. Les invalidations LIVE
+  existantes restent applicables.
 - `Infrastructure` mémorise séparément pendant quinze minutes le calcul
   historique positif ou négatif. Le contrôle léger de l'état live reste donc
   hors de ce cache long : une fermeture récente empêche la réponse publique sans

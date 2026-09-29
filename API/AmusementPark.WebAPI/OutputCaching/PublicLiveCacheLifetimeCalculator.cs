@@ -24,6 +24,14 @@ public static class PublicLiveCacheLifetimeCalculator
             .Min();
     }
 
+    public static DateTime ResolveTransitionAtUtc(PublicLiveForecastResult forecast)
+    {
+        ArgumentNullException.ThrowIfNull(forecast);
+        return forecast.Forecast.ForecastToUtc < forecast.FreshnessExpiresAtUtc
+            ? forecast.Forecast.ForecastToUtc
+            : forecast.FreshnessExpiresAtUtc;
+    }
+
     public static TimeSpan ResolveLifetime(
         DateTime responseStoredAtUtc,
         DateTime? freshnessTransitionAtUtc)

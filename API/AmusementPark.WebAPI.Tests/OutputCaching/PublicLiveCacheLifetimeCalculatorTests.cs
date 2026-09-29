@@ -48,6 +48,32 @@ public sealed class PublicLiveCacheLifetimeCalculatorTests
         Assert.Equal(TimeSpan.FromSeconds(30), lifetime);
     }
 
+    [Fact]
+    public void ResolveTransitionAtUtc_WhenForecastEndsFirst_ShouldUseForecastEnd()
+    {
+        PublicLiveForecastResult forecast = CreateForecast(
+            AsOfUtc.AddMinutes(20),
+            AsOfUtc.AddMinutes(30));
+
+        DateTime transitionAtUtc =
+            PublicLiveCacheLifetimeCalculator.ResolveTransitionAtUtc(forecast);
+
+        Assert.Equal(AsOfUtc.AddMinutes(20), transitionAtUtc);
+    }
+
+    [Fact]
+    public void ResolveTransitionAtUtc_WhenFreshnessExpiresFirst_ShouldUseFreshnessExpiration()
+    {
+        PublicLiveForecastResult forecast = CreateForecast(
+            AsOfUtc.AddMinutes(30),
+            AsOfUtc.AddMinutes(20));
+
+        DateTime transitionAtUtc =
+            PublicLiveCacheLifetimeCalculator.ResolveTransitionAtUtc(forecast);
+
+        Assert.Equal(AsOfUtc.AddMinutes(20), transitionAtUtc);
+    }
+
     private static PublicLiveTargetResult CreateTarget(DateTime? refreshAfterUtc)
     {
         return new PublicLiveTargetResult(
@@ -68,5 +94,38 @@ public sealed class PublicLiveCacheLifetimeCalculatorTests
             refreshAfterUtc,
             null,
             LiveDataConfidence.Medium);
+    }
+
+    private static PublicLiveForecastResult CreateForecast(
+        DateTime forecastToUtc,
+        DateTime freshnessExpiresAtUtc)
+    {
+        return new PublicLiveForecastResult(
+            "Attraction",
+            "Park",
+            "Europe/Paris",
+            new LiveWaitForecast(
+                forecastToUtc.AddHours(-1),
+                forecastToUtc,
+                AsOfUtc,
+                25d,
+                15d,
+                35d,
+                12),
+            LiveWaitForecastBacktestPolicy.StudyVersion,
+            LiveWaitForecastBacktestPolicy.CandidateMethod,
+            LiveWaitForecastBacktestPolicy.IntervalMethod,
+            4d,
+            82d,
+            AsOfUtc.AddDays(-90),
+            AsOfUtc,
+            120,
+            freshnessExpiresAtUtc,
+            new PublicLiveSourceResult(
+                "themeparks-wiki",
+                "ThemeParks.wiki",
+                LiveDataSourceType.AuthorizedAggregator,
+                "Powered by ThemeParks.wiki",
+                "https://themeparks.wiki/"));
     }
 }
