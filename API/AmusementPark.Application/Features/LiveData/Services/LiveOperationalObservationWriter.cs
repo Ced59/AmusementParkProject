@@ -9,19 +9,16 @@ public sealed class LiveOperationalObservationWriter
     private readonly ILiveLatestObservationRepository repository;
     private readonly ILiveOperationalGate operationalGate;
     private readonly LiveOperationalWriteCoordinator coordinator;
-    private readonly LiveHistoryCaptureService? historyCaptureService;
 
     public LiveOperationalObservationWriter(
         ILiveLatestObservationRepository repository,
         ILiveOperationalGate operationalGate,
-        LiveOperationalWriteCoordinator coordinator,
-        LiveHistoryCaptureService? historyCaptureService = null)
+        LiveOperationalWriteCoordinator coordinator)
     {
         this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         this.operationalGate = operationalGate
             ?? throw new ArgumentNullException(nameof(operationalGate));
         this.coordinator = coordinator ?? throw new ArgumentNullException(nameof(coordinator));
-        this.historyCaptureService = historyCaptureService;
     }
 
     public Task<LiveOperationalObservationWriteResult> WriteAsync(
@@ -49,14 +46,6 @@ public sealed class LiveOperationalObservationWriter
                 LiveLatestObservationWriteResult result = await this.repository.WriteLatestAsync(
                     accepted,
                     boundaryCancellationToken);
-                if (this.historyCaptureService is not null
-                    && result.CommittedObservations.Count > 0)
-                {
-                    await this.historyCaptureService.CaptureAsync(
-                        result.CommittedObservations,
-                        boundaryCancellationToken);
-                }
-
                 return new LiveOperationalObservationWriteResult(result, accepted);
             },
             cancellationToken);

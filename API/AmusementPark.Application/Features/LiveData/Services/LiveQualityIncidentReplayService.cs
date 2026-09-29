@@ -14,6 +14,7 @@ public sealed class LiveQualityIncidentReplayService
     private readonly ILiveLatestObservationRepository latestRepository;
     private readonly ILiveOperationalGate operationalGate;
     private readonly LiveOperationalObservationWriter operationalWriter;
+    private readonly LiveHistoryCaptureService? historyCaptureService;
     private readonly TimeProvider timeProvider;
 
     internal LiveQualityIncidentReplayService(
@@ -115,8 +116,8 @@ public sealed class LiveQualityIncidentReplayService
         this.operationalWriter = new LiveOperationalObservationWriter(
             this.latestRepository,
             this.operationalGate,
-            coordinator,
-            historyCaptureService);
+            coordinator);
+        this.historyCaptureService = historyCaptureService;
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -313,6 +314,14 @@ public sealed class LiveQualityIncidentReplayService
                         writeGroup.Key.ExternalEntityId,
                         writeGroup.Select(static pair => pair.Value).ToArray(),
                         cancellationToken);
+                if (this.historyCaptureService is not null
+                    && operationalWrite.WriteResult.CommittedObservations.Count > 0)
+                {
+                    await this.historyCaptureService.CaptureAsync(
+                        operationalWrite.WriteResult.CommittedObservations,
+                        cancellationToken);
+                }
+
                 persistedCount += operationalWrite.WriteResult.InsertedCount
                     + operationalWrite.WriteResult.UpdatedCount;
                 ignoredCount += operationalWrite.WriteResult.IgnoredCount;

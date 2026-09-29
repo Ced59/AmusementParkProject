@@ -1,3 +1,4 @@
+using System.Runtime.ExceptionServices;
 using AmusementPark.Application.Features.LiveData.Models;
 using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.Watchlists.Services;
@@ -14,6 +15,7 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
     private readonly ILiveOperationalGate operationalGate;
     private readonly LiveOperationalObservationWriter operationalWriter;
     private readonly LiveAlertEvaluationService? liveAlertEvaluationService;
+    private readonly LiveHistoryCaptureService? historyCaptureService;
     private readonly TimeProvider timeProvider;
 
     internal LiveLatestObservationIngestor(
@@ -129,9 +131,9 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
         this.operationalWriter = new LiveOperationalObservationWriter(
             this.latestRepository,
             this.operationalGate,
-            coordinator,
-            historyCaptureService);
+            coordinator);
         this.liveAlertEvaluationService = liveAlertEvaluationService;
+        this.historyCaptureService = historyCaptureService;
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -308,8 +310,6 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
 
         LiveLatestObservationWriteResult writeResult;
         int suppressedAtWriteBoundary = 0;
-        IReadOnlyCollection<LiveLatestObservation> committedAlertObservations =
-            Array.Empty<LiveLatestObservation>();
         if (externalEntityId.Length == 0)
         {
             writeResult = await this.latestRepository.WriteLatestAsync(
@@ -325,16 +325,41 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
                     latestByInternalTarget.Values.ToArray(),
                     cancellationToken);
             writeResult = operationalWrite.WriteResult;
-            committedAlertObservations = writeResult.CommittedObservations;
             suppressedAtWriteBoundary = latestByInternalTarget.Count
                 - operationalWrite.AcceptedObservations.Count;
         }
 
-        if (this.liveAlertEvaluationService is not null && committedAlertObservations.Count > 0)
+        IReadOnlyCollection<LiveLatestObservation> committedObservations =
+            writeResult.CommittedObservations;
+        Exception? historyFailure = null;
+        if (this.historyCaptureService is not null && committedObservations.Count > 0)
+        {
+            try
+            {
+                await this.historyCaptureService.CaptureAsync(
+                    committedObservations,
+                    cancellationToken);
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                historyFailure = exception;
+            }
+        }
+
+        if (this.liveAlertEvaluationService is not null && committedObservations.Count > 0)
         {
             await this.liveAlertEvaluationService.EvaluateAsync(
-                committedAlertObservations,
+                committedObservations,
                 cancellationToken);
+        }
+
+        if (historyFailure is not null)
+        {
+            ExceptionDispatchInfo.Capture(historyFailure).Throw();
         }
 
         return new LiveLatestObservationIngestionResult(

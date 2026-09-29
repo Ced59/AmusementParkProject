@@ -68,7 +68,10 @@ upsert brut par source/cible/instant observé
 upsert borné dans le bucket UTC de la cible
       │
       ▼
-fin du poll, puis évaluation indépendante des alertes
+évaluation des alertes sur le latest déjà validé
+      │
+      ▼
+fin du poll ou échec signalé si l'historique n'a pas été conservé
 ```
 
 Les identifiants naturels rendent un rejeu idempotent. Une même observation
@@ -76,7 +79,10 @@ remplace sa version de bucket seulement si elle est reçue de nouveau, sans
 multiplier les documents bruts ni les échantillons. Si l'écriture
 historique échoue après le latest, le poll reste en échec et son ETag n'est pas
 validé : le fournisseur peut être relu au passage suivant sans faire régresser
-le latest déjà disponible.
+le latest déjà disponible. L'évaluation des alertes reçoit tout de même cette
+valeur validée avant que l'échec historique soit remonté : une réouverture ou un
+franchissement bref ne disparaît donc pas du seul fait d'une panne du stockage
+historique.
 
 ## Modèle MongoDB
 

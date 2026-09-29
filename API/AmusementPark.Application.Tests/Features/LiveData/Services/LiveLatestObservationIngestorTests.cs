@@ -1,6 +1,8 @@
 using AmusementPark.Application.Features.LiveData.Models;
 using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.LiveData.Services;
+using AmusementPark.Application.Features.Watchlists.Ports;
+using AmusementPark.Application.Features.Watchlists.Services;
 using AmusementPark.Core.Domain.LiveData;
 using Moq;
 using Xunit;
@@ -278,6 +280,91 @@ public sealed class LiveLatestObservationIngestorTests
             CancellationToken.None));
 
         latest.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task IngestAsync_WhenHistoryFails_ShouldStillEvaluateAlertsThenReportFailure()
+    {
+        Mock<ILiveTargetMappingRepository> mappings = CreateMappingRepository(
+            new[] { CreateVerifiedMapping("external-1", "item-1") });
+        Mock<ILiveLatestObservationRepository> latest =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        latest.Setup(value => value.WriteLatestAsync(
+                It.IsAny<IReadOnlyCollection<LiveLatestObservation>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((
+                IReadOnlyCollection<LiveLatestObservation> observations,
+                CancellationToken _) => new LiveLatestObservationWriteResult(
+                    1,
+                    0,
+                    0,
+                    observations));
+        LiveDataSource source = new LiveDataSource(
+            SourceId,
+            LiveDataSourceType.AuthorizedAggregator,
+            "Source",
+            new SourceUsagePolicy(
+                "usage-1",
+                "https://example.org/terms",
+                true,
+                true,
+                false,
+                true,
+                "live.source.attribution",
+                ReceivedAtUtc),
+            TimeSpan.FromMinutes(5),
+            TimeSpan.FromMinutes(30),
+            LiveDataSourceStatus.Active,
+            new LiveHistoryRetentionPolicy(
+                TimeSpan.FromDays(7),
+                TimeSpan.FromDays(400),
+                TimeSpan.FromHours(1)));
+        Mock<ILiveDataSourceCatalog> catalog = new Mock<ILiveDataSourceCatalog>(
+            MockBehavior.Strict);
+        catalog.Setup(value => value.Find(SourceId))
+            .Returns(new LiveDataSourcePresentation(
+                source,
+                100,
+                "Source attribution",
+                "https://example.org/"));
+        catalog.SetupGet(value => value.PublicPollingTarget).Returns((LivePollingTarget?)null);
+        catalog.SetupGet(value => value.IsPublicReadEnabled).Returns(false);
+        Mock<ILiveHistoryRepository> history = new Mock<ILiveHistoryRepository>(
+            MockBehavior.Strict);
+        history.Setup(value => value.StoreAsync(
+                It.IsAny<IReadOnlyCollection<LiveLatestObservation>>(),
+                It.IsAny<LiveHistoryRetentionPolicy>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new InvalidOperationException("history unavailable"));
+        Mock<ILiveAlertSubscriptionRepository> subscriptions =
+            new Mock<ILiveAlertSubscriptionRepository>(MockBehavior.Strict);
+        Mock<ILiveAlertNotificationRepository> notifications =
+            new Mock<ILiveAlertNotificationRepository>(MockBehavior.Strict);
+        Mock<ILiveOperationalGate> gate = CreateOperationalGate();
+        LiveLatestObservationIngestor ingestor = new LiveLatestObservationIngestor(
+            mappings.Object,
+            latest.Object,
+            CreateIncidentRepository().Object,
+            gate.Object,
+            new LiveOperationalWriteCoordinator(),
+            new LiveAlertEvaluationService(
+                subscriptions.Object,
+                notifications.Object,
+                catalog.Object,
+                gate.Object),
+            new LiveHistoryCaptureService(catalog.Object, history.Object));
+
+        InvalidOperationException exception = await Assert.ThrowsAsync<InvalidOperationException>(
+            () => ingestor.IngestAsync(
+                CreateRequest(CreateObservation("external-1", ReceivedAtUtc.AddMinutes(-1))),
+                CancellationToken.None));
+
+        Assert.Equal("history unavailable", exception.Message);
+        catalog.VerifyGet(value => value.PublicPollingTarget, Times.Once);
+        catalog.VerifyGet(value => value.IsPublicReadEnabled, Times.Once);
+        subscriptions.VerifyNoOtherCalls();
+        notifications.VerifyNoOtherCalls();
+        history.VerifyAll();
     }
 
     private static Mock<ILiveTargetMappingRepository> CreateMappingRepository(

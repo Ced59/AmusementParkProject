@@ -36,57 +36,6 @@ public sealed class LiveHistoryCaptureServiceTests
         repository.VerifyAll();
     }
 
-    [Fact]
-    public async Task OperationalWriter_ShouldCaptureValueCommittedByLatestStore()
-    {
-        LiveLatestObservation observation = CreateObservation("usage-1");
-        Mock<ILiveHistoryRepository> historyRepository = new Mock<ILiveHistoryRepository>(
-            MockBehavior.Strict);
-        historyRepository.Setup(value => value.StoreAsync(
-                It.Is<IReadOnlyCollection<LiveLatestObservation>>(items =>
-                    items.Single() == observation),
-                It.IsAny<LiveHistoryRetentionPolicy>(),
-                It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
-        LiveHistoryCaptureService historyCaptureService = new LiveHistoryCaptureService(
-            CreateCatalog(CreateSource(historicalStorageAllowed: true)).Object,
-            historyRepository.Object);
-        Mock<ILiveLatestObservationRepository> latestRepository =
-            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
-        latestRepository.Setup(value => value.WriteLatestAsync(
-                It.IsAny<IReadOnlyCollection<LiveLatestObservation>>(),
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new LiveLatestObservationWriteResult(
-                1,
-                0,
-                0,
-                new[] { observation }));
-        Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
-        gate.Setup(value => value.LoadAsync(
-                SourceId,
-                "external-park",
-                It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new LiveOperationalGateSnapshot(
-                true,
-                true,
-                "external-park",
-                Array.Empty<LiveOperationalControl>(),
-                new LiveOperationalControlPolicy()));
-        LiveOperationalObservationWriter writer = new LiveOperationalObservationWriter(
-            latestRepository.Object,
-            gate.Object,
-            new LiveOperationalWriteCoordinator(),
-            historyCaptureService);
-
-        await writer.WriteAsync(
-            SourceId,
-            "external-park",
-            new[] { observation },
-            CancellationToken.None);
-
-        historyRepository.VerifyAll();
-    }
-
     [Theory]
     [InlineData(false, "usage-1")]
     [InlineData(true, "superseded-policy")]
