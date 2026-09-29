@@ -110,6 +110,8 @@ export interface LiveWaitForecastBacktestMetric {
 
 export interface LiveWaitForecastBacktestPolicy {
   readonly trainingWindowDays: number;
+  readonly minimumBaselineTrainingDays: number;
+  readonly minimumCandidateTrainingDays: number;
   readonly minimumEvaluationDays: number;
   readonly minimumEvaluationPoints: number;
   readonly requiredMaeImprovementPercent: number;
@@ -117,6 +119,7 @@ export interface LiveWaitForecastBacktestPolicy {
   readonly minimumIntervalCoveragePercent: number;
   readonly maximumUsefulMedianIntervalWidthMinutes: number;
   readonly driftThresholdPercent: number;
+  readonly minimumDriftIncreaseMinutes: number;
 }
 
 export interface LiveWaitForecastBacktest {

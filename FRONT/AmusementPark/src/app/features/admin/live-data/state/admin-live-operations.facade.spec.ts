@@ -117,10 +117,12 @@ function createBacktest(): LiveWaitForecastBacktest {
     intervalCoveragePercent: null, medianIntervalWidthMinutes: null,
     olderCandidateMaeMinutes: null, recentCandidateMaeMinutes: null, driftPercent: null,
     driftDetected: false,
-    policy: { trainingWindowDays: 84, minimumEvaluationDays: 14,
+    policy: { trainingWindowDays: 84, minimumBaselineTrainingDays: 28,
+      minimumCandidateTrainingDays: 8, minimumEvaluationDays: 14,
       minimumEvaluationPoints: 100, requiredMaeImprovementPercent: 5,
       nominalIntervalCoveragePercent: 80, minimumIntervalCoveragePercent: 70,
-      maximumUsefulMedianIntervalWidthMinutes: 60, driftThresholdPercent: 25 },
+      maximumUsefulMedianIntervalWidthMinutes: 60, driftThresholdPercent: 25,
+      minimumDriftIncreaseMinutes: 3 },
     generatedAtUtc: '2026-09-29T00:00:00Z'
   };
 }

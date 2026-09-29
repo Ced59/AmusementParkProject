@@ -3347,6 +3347,10 @@
         "candidateMethod": "Testowana metoda",
         "intervalMethod": "Testowany przedział",
         "drift": "Ostatni dryf",
+        "trainingMinimums": "Minimum uczenia",
+        "trainingMinimumsValue": "odniesienie: {{baseline}} dni · metoda: {{candidate}} dni",
+        "driftThreshold": "Próg dryfu",
+        "driftThresholdValue": "{{percent}}% i {{minutes}} min",
         "verdict": {
           "InsufficientData": "Niewystarczające dane",
           "Abandon": "Zalecane porzucenie",

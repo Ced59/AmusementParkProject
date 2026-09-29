@@ -3347,6 +3347,10 @@
         "candidateMethod": "Geteste methode",
         "intervalMethod": "Getest interval",
         "drift": "Recente drift",
+        "trainingMinimums": "Minimum voor training",
+        "trainingMinimumsValue": "referentie: {{baseline}} dagen · methode: {{candidate}} dagen",
+        "driftThreshold": "Driftdrempel",
+        "driftThresholdValue": "{{percent}}% en {{minutes}} min",
         "verdict": {
           "InsufficientData": "Onvoldoende gegevens",
           "Abandon": "Stoppen aanbevolen",

@@ -3347,6 +3347,10 @@
         "candidateMethod": "Geprüfte Methode",
         "intervalMethod": "Geprüftes Intervall",
         "drift": "Aktuelle Drift",
+        "trainingMinimums": "Mindesttraining",
+        "trainingMinimumsValue": "Referenz: {{baseline}} Tage · Methode: {{candidate}} Tage",
+        "driftThreshold": "Driftschwelle",
+        "driftThresholdValue": "{{percent}} % und {{minutes}} Min.",
         "verdict": {
           "InsufficientData": "Unzureichende Daten",
           "Abandon": "Abbruch empfohlen",

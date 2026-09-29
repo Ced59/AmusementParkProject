@@ -155,35 +155,39 @@ public sealed class LiveWaitForecastBacktestCalculator
         LiveWaitForecastBacktestMetric candidate = BuildMetric(
             LiveWaitForecastBacktestPolicy.CandidateMethod,
             candidateErrors);
-        double improvementPercent = baseline.MeanAbsoluteErrorMinutes <= 0d
-            ? candidate.MeanAbsoluteErrorMinutes <= 0d ? 0d : -100d
-            : Math.Round(
-                (baseline.MeanAbsoluteErrorMinutes - candidate.MeanAbsoluteErrorMinutes)
-                * 100d
-                / baseline.MeanAbsoluteErrorMinutes,
-                1);
-        double intervalCoveragePercent = Math.Round(
-            folds.Count(static fold => fold.IntervalHit) * 100d / folds.Count,
-            1);
-        double medianIntervalWidth = Math.Round(
-            Percentile(folds.Select(static fold => fold.IntervalWidth).Order().ToArray(), 0.50d),
-            1);
+        double baselineMeanAbsoluteError = MeanRaw(baselineErrors);
+        double candidateMeanAbsoluteError = MeanRaw(candidateErrors);
+        double rawImprovementPercent = this.policy.CalculateMaeImprovementPercent(
+            baselineMeanAbsoluteError,
+            candidateMeanAbsoluteError);
+        double improvementPercent = Math.Round(rawImprovementPercent, 1);
+        double rawIntervalCoveragePercent =
+            folds.Count(static fold => fold.IntervalHit) * 100d / folds.Count;
+        double intervalCoveragePercent = Math.Round(rawIntervalCoveragePercent, 1);
+        double rawMedianIntervalWidth = Percentile(
+            folds.Select(static fold => fold.IntervalWidth).Order().ToArray(),
+            0.50d);
+        double medianIntervalWidth = Math.Round(rawMedianIntervalWidth, 1);
         int half = folds.Count / 2;
-        double olderMae = Mean(folds.Take(half).Select(static fold => fold.CandidateError));
-        double recentMae = Mean(folds.Skip(half).Select(static fold => fold.CandidateError));
+        double rawOlderMae = MeanRaw(folds.Take(half).Select(static fold => fold.CandidateError));
+        double rawRecentMae = MeanRaw(folds.Skip(half).Select(static fold => fold.CandidateError));
+        double olderMae = Math.Round(rawOlderMae, 1);
+        double recentMae = Math.Round(rawRecentMae, 1);
         double driftPercent = Math.Round(
-            (recentMae - olderMae) * 100d / Math.Max(olderMae, 1d),
+            this.policy.CalculateDriftPercent(rawOlderMae, rawRecentMae),
             1);
-        bool driftDetected = recentMae - olderMae >= this.policy.MinimumDriftIncreaseMinutes
-            && driftPercent >= this.policy.DriftThresholdPercent;
+        bool driftDetected = this.policy.IsDriftDetected(rawOlderMae, rawRecentMae);
 
-        if (improvementPercent < this.policy.RequiredMaeImprovementPercent)
+        if (!this.policy.HasRequiredMaeImprovement(
+            baselineMeanAbsoluteError,
+            candidateMeanAbsoluteError))
         {
             reasons.Add(LiveWaitForecastBacktestReason.BaselineNotBeaten);
         }
 
-        if (intervalCoveragePercent < this.policy.MinimumIntervalCoveragePercent
-            || medianIntervalWidth > this.policy.MaximumUsefulMedianIntervalWidthMinutes)
+        if (!this.policy.IsIntervalUseful(
+            rawIntervalCoveragePercent,
+            rawMedianIntervalWidth))
         {
             reasons.Add(LiveWaitForecastBacktestReason.IntervalMiscalibrated);
         }
@@ -287,17 +291,17 @@ public sealed class LiveWaitForecastBacktestCalculator
     {
         return new LiveWaitForecastBacktestMetric(
             method,
-            Mean(sortedErrors),
+            Math.Round(MeanRaw(sortedErrors), 1),
             Math.Round(Percentile(sortedErrors, 0.50d), 1),
             Math.Round(Percentile(sortedErrors, 0.90d), 1));
     }
 
-    private static double Mean(IEnumerable<double> values)
+    private static double MeanRaw(IEnumerable<double> values)
     {
         double[] materialized = values.ToArray();
         return materialized.Length == 0
             ? 0d
-            : Math.Round(materialized.Average(), 1);
+            : materialized.Average();
     }
 
     private static double Percentile(IReadOnlyList<double> sortedValues, double percentile)

@@ -3347,6 +3347,10 @@
         "candidateMethod": "Metodo testato",
         "intervalMethod": "Intervallo testato",
         "drift": "Deriva recente",
+        "trainingMinimums": "Minimi di addestramento",
+        "trainingMinimumsValue": "riferimento: {{baseline}} giorni · metodo: {{candidate}} giorni",
+        "driftThreshold": "Soglia di deriva",
+        "driftThresholdValue": "{{percent}}% e {{minutes}} min",
         "verdict": {
           "InsufficientData": "Dati insufficienti",
           "Abandon": "Abbandono consigliato",

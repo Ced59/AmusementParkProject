@@ -97,6 +97,9 @@ public sealed class AdminLiveForecastBacktestsControllerTests
         Assert.Equal(
             "InsufficientEvaluationPoints",
             Assert.Single(response.Reasons));
+        Assert.Equal(28, response.Policy.MinimumBaselineTrainingDays);
+        Assert.Equal(8, response.Policy.MinimumCandidateTrainingDays);
+        Assert.Equal(3d, response.Policy.MinimumDriftIncreaseMinutes);
         handler.VerifyAll();
     }
 }

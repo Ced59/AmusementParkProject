@@ -130,6 +130,19 @@ public sealed class LiveWaitForecastBacktestCalculatorTests
         Assert.True(report.RecentCandidateMaeMinutes > report.OlderCandidateMaeMinutes);
     }
 
+    [Fact]
+    public void Policy_ShouldUseRawMetricsAtDecisionBoundaries()
+    {
+        LiveWaitForecastBacktestPolicy policy = new LiveWaitForecastBacktestPolicy();
+
+        Assert.False(policy.HasRequiredMaeImprovement(10.04d, 9.54d));
+        Assert.True(policy.HasRequiredMaeImprovement(10d, 9.5d));
+        Assert.False(policy.IsIntervalUseful(69.96d, 59.96d));
+        Assert.False(policy.IsIntervalUseful(70.04d, 60.04d));
+        Assert.False(policy.IsDriftDetected(10d, 12.99d));
+        Assert.True(policy.IsDriftDetected(10d, 13d));
+    }
+
     private static LiveWaitForecastBacktestCalculator CreateCalculator()
     {
         return new LiveWaitForecastBacktestCalculator(new LiveWaitForecastBacktestPolicy());

@@ -38,6 +38,8 @@ public static class LiveWaitForecastBacktestHttpMapper
             Policy = new LiveWaitForecastBacktestPolicyDto
             {
                 TrainingWindowDays = report.Policy.TrainingWindowDays,
+                MinimumBaselineTrainingDays = report.Policy.MinimumBaselineTrainingDays,
+                MinimumCandidateTrainingDays = report.Policy.MinimumCandidateTrainingDays,
                 MinimumEvaluationDays = report.Policy.MinimumEvaluationDays,
                 MinimumEvaluationPoints = report.Policy.MinimumEvaluationPoints,
                 RequiredMaeImprovementPercent = report.Policy.RequiredMaeImprovementPercent,
@@ -46,6 +48,7 @@ public static class LiveWaitForecastBacktestHttpMapper
                 MaximumUsefulMedianIntervalWidthMinutes =
                     report.Policy.MaximumUsefulMedianIntervalWidthMinutes,
                 DriftThresholdPercent = report.Policy.DriftThresholdPercent,
+                MinimumDriftIncreaseMinutes = report.Policy.MinimumDriftIncreaseMinutes,
             },
             GeneratedAtUtc = result.GeneratedAtUtc,
         };

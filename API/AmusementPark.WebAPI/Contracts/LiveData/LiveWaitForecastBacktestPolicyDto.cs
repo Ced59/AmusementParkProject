@@ -4,6 +4,10 @@ public sealed class LiveWaitForecastBacktestPolicyDto
 {
     public int TrainingWindowDays { get; set; }
 
+    public int MinimumBaselineTrainingDays { get; set; }
+
+    public int MinimumCandidateTrainingDays { get; set; }
+
     public int MinimumEvaluationDays { get; set; }
 
     public int MinimumEvaluationPoints { get; set; }
@@ -17,4 +21,6 @@ public sealed class LiveWaitForecastBacktestPolicyDto
     public double MaximumUsefulMedianIntervalWidthMinutes { get; set; }
 
     public double DriftThresholdPercent { get; set; }
+
+    public double MinimumDriftIncreaseMinutes { get; set; }
 }

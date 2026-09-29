@@ -3347,6 +3347,10 @@
         "candidateMethod": "Tested method",
         "intervalMethod": "Tested interval",
         "drift": "Recent drift",
+        "trainingMinimums": "Training minimums",
+        "trainingMinimumsValue": "baseline: {{baseline}} days · method: {{candidate}} days",
+        "driftThreshold": "Drift threshold",
+        "driftThresholdValue": "{{percent}}% and {{minutes}} min",
         "verdict": {
           "InsufficientData": "Insufficient data",
           "Abandon": "Abandon recommended",
