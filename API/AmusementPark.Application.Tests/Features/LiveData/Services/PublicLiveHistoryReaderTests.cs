@@ -232,12 +232,17 @@ public sealed class PublicLiveHistoryReaderTests
                 new LiveOperationalControlPolicy()));
         Mock<TimeProvider> clock = new Mock<TimeProvider>(MockBehavior.Strict);
         clock.Setup(value => value.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
+        Mock<ILivePublicExperienceGate> publicExperienceGate =
+            new Mock<ILivePublicExperienceGate>(MockBehavior.Strict);
+        publicExperienceGate.Setup(value => value.IsEnabledAsync(CancellationToken.None))
+            .ReturnsAsync(true);
         return new PublicLiveHistoryReader(
             parkRepository.Object,
             itemRepository.Object,
             history.Object,
             mappingRepository.Object,
             catalog.Object,
+            publicExperienceGate.Object,
             gate.Object,
             new LiveWaitHistoryStatisticsCalculator(),
             clock.Object);

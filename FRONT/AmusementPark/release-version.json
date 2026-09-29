@@ -1,6 +1,20 @@
 {
-  "version": "5.4.20",
+  "version": "5.4.21",
   "history": [
+    {
+      "version": "5.4.21",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "La fiabilité du service a été renforcée.",
+        "en": "Service reliability has been strengthened.",
+        "de": "Die Zuverlässigkeit des Dienstes wurde verbessert.",
+        "nl": "De betrouwbaarheid van de dienst is verbeterd.",
+        "it": "L’affidabilità del servizio è stata rafforzata.",
+        "es": "Se ha reforzado la fiabilidad del servicio.",
+        "pt": "A fiabilidade do serviço foi reforçada.",
+        "pl": "Zwiększono niezawodność usługi."
+      }
+    },
     {
       "version": "5.4.20",
       "releasedAt": "2026-09-29",

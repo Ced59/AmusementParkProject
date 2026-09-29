@@ -209,6 +209,10 @@ public sealed class PublicLiveForecastReaderTests
                 Func<CancellationToken, Task<PublicLiveForecastComputation?>> factory,
                 CancellationToken token) => factory(token));
         LiveWaitForecastBacktestPolicy policy = new LiveWaitForecastBacktestPolicy();
+        Mock<ILivePublicExperienceGate> publicExperienceGate =
+            new Mock<ILivePublicExperienceGate>(MockBehavior.Strict);
+        publicExperienceGate.Setup(value => value.IsEnabledAsync(CancellationToken.None))
+            .ReturnsAsync(true);
         return new PublicLiveForecastReader(
             parks.Object,
             items.Object,
@@ -216,6 +220,7 @@ public sealed class PublicLiveForecastReaderTests
             latest.Object,
             mappings.Object,
             catalog.Object,
+            publicExperienceGate.Object,
             gate.Object,
             computationCache.Object,
             new LiveWaitForecastBacktestCalculator(policy),

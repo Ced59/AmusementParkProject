@@ -33,6 +33,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.BackgroundJobs;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Comments;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Contact;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FactualEvents;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.FeatureFlags;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkGraphUpserts;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkOpeningHours;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.ParkPricing;
@@ -1182,6 +1183,11 @@ private readonly IMongoDatabase database;
             this.settings.LiveOperationalControlsCollectionName,
             cancellationToken);
         await this.InitializeLiveOperationalControlIndexesAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(
+            this.settings.FeatureFlagStatesCollectionName,
+            cancellationToken);
+        await this.InitializeFeatureFlagIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkFoundersCollectionName, cancellationToken);
         await this.InitializeParkFoundersIndexesAsync(cancellationToken);
@@ -2416,6 +2422,16 @@ private async Task InitializeParkDataEditorAccessTokensIndexesAsync(Cancellation
                 this.settings.LiveOperationalControlsCollectionName);
         await controls.Indexes.CreateManyAsync(
             LiveOperationalControlMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+    }
+
+    private async Task InitializeFeatureFlagIndexesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<FeatureFlagStateDocument> states =
+            this.database.GetCollection<FeatureFlagStateDocument>(
+                this.settings.FeatureFlagStatesCollectionName);
+        await states.Indexes.CreateManyAsync(
+            FeatureFlagMongoDefinitions.BuildIndexes(),
             cancellationToken);
     }
 

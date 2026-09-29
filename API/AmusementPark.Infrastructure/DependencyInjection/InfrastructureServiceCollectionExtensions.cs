@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.DataSources.Ports;
 using AmusementPark.Application.Features.FactualEvents.Ports;
+using AmusementPark.Application.Features.FeatureFlags.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.HistoricalExistenceReports.Ports;
@@ -414,6 +415,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddSingleton<ILiveDataSourceCatalog, ThemeParksWikiLiveDataSourceCatalog>();
         services.AddScoped<ILivePollingStateRepository, LivePollingStateRepository>();
         services.AddScoped<ILiveOperationalControlRepository, LiveOperationalControlRepository>();
+        services.AddScoped<IFeatureFlagStateRepository, FeatureFlagStateRepository>();
         services.AddScoped<ILiveLatestObservationRepository, LiveLatestObservationRepository>();
         services.AddScoped<LiveHistoryRepository>();
         services.AddScoped<ILiveHistoryRepository>(provider =>

@@ -10,6 +10,8 @@ using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.Countries.Services;
 using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.FactualEvents.Services;
+using AmusementPark.Application.Features.FeatureFlags.Ports;
+using AmusementPark.Application.Features.FeatureFlags.Services;
 using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Services;
 using AmusementPark.Application.Features.LiveData.Ports;
@@ -68,6 +70,10 @@ public static class ApplicationServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(services);
 
         services.AddSingleton<PagedQueryValidator>();
+        services.AddSingleton<IFeatureFlagCatalog, FeatureFlagCatalog>();
+        services.AddScoped<IFeatureFlagEvaluator, FeatureFlagEvaluator>();
+        services.AddScoped<FeatureFlagAdministrationService>();
+        services.AddScoped<PublicFeatureCapabilityReader>();
         services.AddSingleton<IApplicationValidator<AmusementPark.Application.Common.Requests.PagedQuery>, PagedQueryValidator>();
         services.AddScoped<IDurableBackgroundJobHandlerResolver, DurableBackgroundJobHandlerRegistry>();
         services.AddSingleton<DurableBackgroundJobRetryDelayCalculator>();
@@ -94,6 +100,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<LiveOperationalControlPolicy>();
         services.AddSingleton<LiveOperationalWriteCoordinator>();
         services.AddScoped<ILiveOperationalGate, LiveOperationalGate>();
+        services.AddScoped<ILivePublicExperienceGate, LivePublicExperienceGate>();
         services.AddScoped<LiveOperationalScopeResultFactory>();
         services.AddScoped<LiveOperationsDashboardReader>();
         services.AddSingleton<LiveLatestObservationSelectionPolicy>();
