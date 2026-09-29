@@ -34,6 +34,45 @@ public sealed class LiveLatestObservationMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildIndexes_ShouldSupportBoundedSingleTargetReads()
+    {
+        IReadOnlyCollection<CreateIndexModel<LiveLatestObservationDocument>> indexes =
+            LiveLatestObservationMongoDefinitions.BuildIndexes();
+
+        CreateIndexModel<LiveLatestObservationDocument> targetLookup = Assert.Single(
+            indexes,
+            static index => index.Options.Name == "idx_live_latest_target_type_id");
+        BsonDocument keys = targetLookup.Keys.Render(
+            new RenderArgs<LiveLatestObservationDocument>(
+                BsonSerializer.LookupSerializer<LiveLatestObservationDocument>(),
+                BsonSerializer.SerializerRegistry));
+
+        Assert.Equal(3, keys.ElementCount);
+        Assert.Equal(1, keys["target.type"].AsInt32);
+        Assert.Equal(1, keys["target.id"].AsInt32);
+        Assert.Equal(1, keys["target.parkId"].AsInt32);
+    }
+
+    [Fact]
+    public void BuildParkItemsReadFilter_ShouldRestrictReadToVisibleTargetIds()
+    {
+        FilterDefinition<LiveLatestObservationDocument> filter =
+            LiveLatestObservationMongoDefinitions.BuildParkItemsReadFilter(
+                "park-1",
+                new[] { "visible-1", "visible-2" });
+
+        BsonDocument rendered = filter.Render(
+            new RenderArgs<LiveLatestObservationDocument>(
+                BsonSerializer.LookupSerializer<LiveLatestObservationDocument>(),
+                BsonSerializer.SerializerRegistry));
+
+        Assert.Equal(LiveTargetType.ParkItem.ToString(), rendered["target.type"].AsString);
+        Assert.Equal("park-1", rendered["target.parkId"].AsString);
+        BsonArray targetIds = rendered["target.id"].AsBsonDocument["$in"].AsBsonArray;
+        Assert.Equal(new[] { "visible-1", "visible-2" }, targetIds.Select(static value => value.AsString));
+    }
+
+    [Fact]
     public void BuildMonotonicUpdate_ShouldCompareObservedThenReceivedTimestamp()
     {
         LiveLatestObservationDocument document = CreateObservation().ToDocument();
@@ -67,9 +106,40 @@ public sealed class LiveLatestObservationMongoDefinitionsTests
 
         Assert.Equal(0, Assert.Single(document.Queues).WaitTimeMinutes);
         Assert.Equal(ObservedAtUtc.Ticks, document.Provenance.ObservedAtUtcTicks);
+        Assert.Equal(
+            ObservedAtUtc.AddSeconds(10).Ticks,
+            document.Provenance.NormalizedAtUtcTicks);
         Assert.Equal(ObservedAtUtc.AddMinutes(30), document.ExpiresAtUtc);
         Assert.Equal("freshness-1", document.FreshnessPolicy.Version);
         Assert.Equal(new string('c', 64), document.PayloadSha256);
+    }
+
+    [Fact]
+    public void ToDomain_ShouldRestoreSubMillisecondTimestampsAndZeroWait()
+    {
+        LiveLatestObservation expected = CreateObservation();
+
+        LiveLatestObservation actual = expected.ToDocument().ToDomain();
+
+        Assert.Equal(expected.Provenance.ObservedAtUtc, actual.Provenance.ObservedAtUtc);
+        Assert.Equal(expected.Provenance.ReceivedAtUtc, actual.Provenance.ReceivedAtUtc);
+        Assert.Equal(expected.Provenance.NormalizedAtUtc, actual.Provenance.NormalizedAtUtc);
+        Assert.Equal(0, Assert.Single(actual.Queues).WaitTimeMinutes);
+    }
+
+    [Fact]
+    public void ToDomain_ShouldKeepLegacyNormalizedTimestampAfterExactReceivedTimestamp()
+    {
+        LiveLatestObservationDocument document = CreateObservation().ToDocument();
+        document.Provenance.NormalizedAtUtcTicks = 0;
+        document.Provenance.NormalizedAtUtc = new DateTime(
+            document.Provenance.ReceivedAtUtc.Ticks -
+                (document.Provenance.ReceivedAtUtc.Ticks % TimeSpan.TicksPerMillisecond),
+            DateTimeKind.Utc);
+
+        LiveLatestObservation actual = document.ToDomain();
+
+        Assert.Equal(actual.Provenance.ReceivedAtUtc, actual.Provenance.NormalizedAtUtc);
     }
 
     private static LiveLatestObservation CreateObservation(

@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.LiveData;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.LiveData;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -27,6 +28,12 @@ public static class LiveLatestObservationMongoDefinitions
                     .Ascending("target.type")
                     .Ascending("expiresAtUtc"),
                 new CreateIndexOptions { Name = "idx_live_latest_park_type_expiration" }),
+            new(
+                Builders<LiveLatestObservationDocument>.IndexKeys
+                    .Ascending("target.type")
+                    .Ascending("target.id")
+                    .Ascending("target.parkId"),
+                new CreateIndexOptions { Name = "idx_live_latest_target_type_id" }),
         };
     }
 
@@ -46,6 +53,29 @@ public static class LiveLatestObservationMongoDefinitions
             Builders<LiveLatestObservationDocument>.Filter.Eq(
                 "target.id",
                 incoming.Target.Id));
+    }
+
+    public static FilterDefinition<LiveLatestObservationDocument> BuildParkItemsReadFilter(
+        string parkId,
+        IReadOnlyCollection<string> targetIds)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(parkId);
+        ArgumentNullException.ThrowIfNull(targetIds);
+        if (targetIds.Count == 0)
+        {
+            throw new ArgumentException("At least one target identifier is required.", nameof(targetIds));
+        }
+
+        return Builders<LiveLatestObservationDocument>.Filter.And(
+            Builders<LiveLatestObservationDocument>.Filter.Eq(
+                "target.type",
+                LiveTargetType.ParkItem.ToString()),
+            Builders<LiveLatestObservationDocument>.Filter.Eq(
+                "target.parkId",
+                parkId),
+            Builders<LiveLatestObservationDocument>.Filter.In(
+                "target.id",
+                targetIds));
     }
 
     public static UpdateDefinition<LiveLatestObservationDocument> BuildMonotonicUpdate(

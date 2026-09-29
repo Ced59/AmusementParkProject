@@ -2,13 +2,13 @@
 
 > Code programme : `LIVE`
 >
-> Statut : `LIVE-01` à `LIVE-07` livrés au 29 septembre 2026. La
+> Statut : `LIVE-01` à `LIVE-08` livrés au 29 septembre 2026. La
 > source pilote est autorisée pour un spike interne latest-only, le contrat de
 > provenance/fraîcheur est implémenté et les mappings humains sont versionnés et
 > pilotables. L'adaptateur pilote traduit strictement les statuts et files du
 > fournisseur, et son ordonnanceur est borné mais désactivé par défaut ; aucune
-> collecte active ni généralisation publique n'est encore autorisée avant la
-> gate d'exploitation.
+> collecte active ni donnée publique n'est encore activée avant l'interface
+> first-party et l'ouverture explicite des deux interrupteurs d'exploitation.
 >
 > Dépendances : `RANK`, `PASS`, `WATCH`, qualité/observabilité transverse et contrats de source validés.
 >
@@ -69,8 +69,16 @@ commande administrateur bornée et auditée peut rejouer le lot sans réintrodui
 une donnée ancienne. Le détail est consigné dans
 [`product-growth-live-07-quarantine-anomalies-2026-09-29.md`](../../architecture/product-growth-live-07-quarantine-anomalies-2026-09-29.md).
 
-Le prochain jalon est `LIVE-08` : fournir l'API de lecture latest mise en cache,
-avec source, âge et état obligatoires, toujours sans activer la collecte.
+`LIVE-08` livre les trois lectures first-party bornées par parc ou élément. Le
+contrat distingue courant, expiré, indisponible et absent, conserve `0` contre
+`null`, fournit source, attribution, âge et confiance, et masque les faits
+opérationnels expirés. Le cache de 30 secondes et son ETag ne dépassent jamais la
+fraîcheur métier. Le détail est consigné dans
+[`product-growth-live-08-latest-api-cache-2026-09-29.md`](../../architecture/product-growth-live-08-latest-api-cache-2026-09-29.md).
+
+Le prochain jalon est `LIVE-09` : afficher ces états sur les fiches parc et
+attraction avec une UX responsive, une attribution visible et une actualisation
+respectueuse de la visibilité de l'onglet.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -789,7 +797,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-05`](../../architecture/product-growth-live-05-bounded-scheduler-2026-09-29.md) | ✅ Scheduler/circuit breaker/budgets | Charge bornée |
 | [`LIVE-06`](../../architecture/product-growth-live-06-latest-store-2026-09-29.md) | ✅ Latest store | Pas d’écrasement ancien |
 | [`LIVE-07`](../../architecture/product-growth-live-07-quarantine-anomalies-2026-09-29.md) | ✅ Quarantaine/anomalies | Données douteuses isolées |
-| `LIVE-08` | API latest/cache | Source et âge obligatoires |
+| [`LIVE-08`](../../architecture/product-growth-live-08-latest-api-cache-2026-09-29.md) | ✅ API latest/cache | Source et âge obligatoires |
 | `LIVE-09` | UI pilote | 0/unknown/closed distincts |
 | `LIVE-10` | Kill switches/ops | Arrêt immédiat possible |
 | `LIVE-11` | Alertes temporaires | Hystérésis/expiration |
@@ -893,6 +901,22 @@ de nouveau les règles du domaine, déduplique chaque couple source/cible et lai
 bloquée toute donnée encore douteuse. L'écriture latest monotone empêche toujours une ancienne
 photographie de régresser l'état. Le polling demeure désactivé et aucune API ou
 interface publique n'est ajoutée.
+
+### Implémentation `LIVE-08` — 29 septembre 2026
+
+La version `5.4.8` ajoute les lectures publiques latest limitées à une fiche parc
+ou élément. Une réponse explicite sépare observation courante, expirée,
+indisponible et absente. Le temps zéro n'est jamais confondu avec l'absence ; les
+faits opérationnels d'une observation expirée sont retirés, tandis que sa source,
+son âge et son expiration restent disponibles pour expliquer l'indisponibilité.
+
+La sélection de source est déterministe dans Core et ne fusionne jamais deux
+provenances. Application vérifie les entités publiques, Infrastructure fournit le
+catalogue juridique et MongoDB, et WebAPI borne le canal avec ETag, cache de 30
+secondes, rate limiting et CORS existants. Une migration idempotente unifie les
+anciens timestamps Mongo. L'attribution ThemeParks.wiki accompagne chaque donnée,
+mais collecte et lecture publique restent désactivées par défaut jusqu'à
+`LIVE-09` et à l'ouverture explicite des interrupteurs d'exploitation.
 
 ## 24. Gate finale `LIVE-G`
 

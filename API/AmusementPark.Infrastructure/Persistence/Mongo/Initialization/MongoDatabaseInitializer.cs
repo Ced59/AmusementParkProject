@@ -1122,6 +1122,19 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(
             this.settings.LiveLatestObservationsCollectionName,
             cancellationToken);
+        LiveLatestObservationNormalizedTicksMigration liveLatestTicksMigration =
+            new LiveLatestObservationNormalizedTicksMigration(
+                this.database.GetCollection<BsonDocument>(
+                    this.settings.LiveLatestObservationsCollectionName));
+        long migratedLiveLatestObservationCount =
+            await liveLatestTicksMigration.MigrateAsync(cancellationToken);
+        if (migratedLiveLatestObservationCount > 0)
+        {
+            this.logger.LogInformation(
+                "Migrated exact normalized timestamps for {ObservationCount} live latest observations.",
+                migratedLiveLatestObservationCount);
+        }
+
         await this.InitializeLiveLatestObservationIndexesAsync(cancellationToken);
         await this.EnsureCollectionExistsAsync(
             this.settings.LiveQualityIncidentsCollectionName,

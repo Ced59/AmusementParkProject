@@ -40,6 +40,7 @@ using AmusementPark.Application.Features.Watchlists.Services;
 using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.History;
+using AmusementPark.Core.Domain.LiveData;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Ratings;
 using Microsoft.Extensions.DependencyInjection;
@@ -89,6 +90,9 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ILiveLatestObservationIngestor, LiveLatestObservationIngestor>();
         services.AddScoped<LiveQualityIncidentReplayService>();
         services.AddScoped<LivePollingOrchestrator>();
+        services.AddSingleton<LiveLatestObservationSelectionPolicy>();
+        services.AddScoped<PublicLiveTargetResultFactory>();
+        services.AddScoped<PublicLiveLatestReader>();
         services.AddDurableBackgroundJobHandler<FactualChangeMaterializationJobHandler>();
         services.AddScoped<ParkItemReferenceValidator>();
         services.AddScoped<CommentTargetResolver>();

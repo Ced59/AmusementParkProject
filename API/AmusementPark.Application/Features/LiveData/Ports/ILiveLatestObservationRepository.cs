@@ -5,6 +5,17 @@ namespace AmusementPark.Application.Features.LiveData.Ports;
 
 public interface ILiveLatestObservationRepository
 {
+    Task<IReadOnlyCollection<LiveLatestObservation>> GetByTargetAsync(
+        LiveTargetType targetType,
+        string targetId,
+        string parkId,
+        CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<LiveLatestObservation>> GetParkItemsAsync(
+        string parkId,
+        IReadOnlyCollection<string> targetIds,
+        CancellationToken cancellationToken);
+
     Task<LiveLatestObservationWriteResult> WriteLatestAsync(
         IReadOnlyCollection<LiveLatestObservation> observations,
         CancellationToken cancellationToken);

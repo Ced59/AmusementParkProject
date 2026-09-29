@@ -17,6 +17,8 @@ public static class OutputCacheServiceCollectionExtensions
 
         services.AddSingleton<PricingDateBoundaryOutputCachePolicy>();
         services.AddSingleton<RatingRankingGenerationOutputCachePolicy>();
+        services.AddSingleton<PublicLiveExpirationOutputCachePolicy>(
+            static _ => new PublicLiveExpirationOutputCachePolicy(TimeProvider.System));
 
         services.AddOutputCache(options =>
         {
@@ -101,6 +103,15 @@ public static class OutputCacheServiceCollectionExtensions
                 .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
                 .SetVaryByQuery("*")
                 .Tag(ApiOutputCachePolicyNames.PublicWeatherDataTag));
+
+            options.AddPolicy(ApiOutputCachePolicyNames.PublicLiveData, policy => policy
+                .With(IsAnonymousCacheCandidate)
+                .Cache()
+                .Expire(TimeSpan.FromSeconds(30))
+                .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
+                .Tag(ApiOutputCachePolicyNames.PublicDataTag)
+                .Tag(ApiOutputCachePolicyNames.PublicLiveDataTag)
+                .AddPolicy<PublicLiveExpirationOutputCachePolicy>());
 
             options.AddPolicy(ApiOutputCachePolicyNames.PublicReferenceData, policy => policy
                 .With(IsAnonymousCacheCandidate)

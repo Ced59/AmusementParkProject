@@ -406,6 +406,7 @@ public static class InfrastructureServiceCollectionExtensions
             provider.GetRequiredService<HistoricalReviewEventRepository>());
         services.AddScoped<ILiveTargetMappingRepository, LiveTargetMappingRepository>();
         services.AddScoped<ILiveDataProviderAdapter, ThemeParksWikiLiveDataAdapter>();
+        services.AddSingleton<ILiveDataSourceCatalog, ThemeParksWikiLiveDataSourceCatalog>();
         services.AddScoped<ILivePollingStateRepository, LivePollingStateRepository>();
         services.AddScoped<ILiveLatestObservationRepository, LiveLatestObservationRepository>();
         services.AddScoped<ILiveQualityIncidentRepository, LiveQualityIncidentRepository>();
