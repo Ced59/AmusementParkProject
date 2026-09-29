@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -57,43 +58,68 @@ public sealed class ApiPerformanceLoggingMiddleware
     private void LogRequest(HttpContext context, double elapsedMilliseconds, int statusCode)
     {
         bool isSlow = elapsedMilliseconds >= Math.Max(1, this.options.SlowRequestThresholdMilliseconds);
-        bool hasAuthorizationHeader = context.Request.Headers.ContainsKey("Authorization");
-        bool hasCookieHeader = context.Request.Headers.ContainsKey("Cookie");
         bool isAuthenticated = context.User.Identity?.IsAuthenticated == true;
-        string userAgent = context.Request.Headers["User-Agent"].ToString();
-        string queryString = context.Request.QueryString.HasValue ? context.Request.QueryString.Value ?? string.Empty : string.Empty;
-        string safePath = SensitiveRequestPathSanitizer.Sanitize(context.Request.Path);
+        string routeTemplate = this.GetRouteTemplate(context);
+        ApiPerformanceOutcome outcome = ApiPerformanceOutcomeClassifier.Classify(statusCode);
+        string statusFamily = ApiPerformanceOutcomeClassifier.GetStatusFamily(statusCode);
         double roundedElapsedMilliseconds = Math.Round(elapsedMilliseconds, 2);
+
+        if (outcome == ApiPerformanceOutcome.ServerError)
+        {
+            this.logger.LogError(
+                ApiPerformanceLogEvents.ServerError,
+                "API request {Method} {RouteTemplate} responded {StatusCode} ({StatusFamily}, {Outcome}) in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, TraceId={TraceId}.",
+                context.Request.Method,
+                routeTemplate,
+                statusCode,
+                statusFamily,
+                outcome,
+                roundedElapsedMilliseconds,
+                isAuthenticated,
+                context.TraceIdentifier);
+            return;
+        }
 
         if (isSlow)
         {
             this.logger.LogWarning(
-                "Slow API request {Method} {Path}{QueryString} responded {StatusCode} in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, AuthorizationHeader={HasAuthorizationHeader}, CookieHeader={HasCookieHeader}, UserAgent={UserAgent}, TraceId={TraceId}.",
+                ApiPerformanceLogEvents.SlowRequest,
+                "Slow API request {Method} {RouteTemplate} responded {StatusCode} ({StatusFamily}, {Outcome}) in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, TraceId={TraceId}.",
                 context.Request.Method,
-                safePath,
-                queryString,
+                routeTemplate,
                 statusCode,
+                statusFamily,
+                outcome,
                 roundedElapsedMilliseconds,
                 isAuthenticated,
-                hasAuthorizationHeader,
-                hasCookieHeader,
-                userAgent,
                 context.TraceIdentifier);
             return;
         }
 
         this.logger.LogInformation(
-            "API request {Method} {Path}{QueryString} responded {StatusCode} in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, AuthorizationHeader={HasAuthorizationHeader}, CookieHeader={HasCookieHeader}, UserAgent={UserAgent}, TraceId={TraceId}.",
+            ApiPerformanceLogEvents.RequestCompleted,
+            "API request {Method} {RouteTemplate} responded {StatusCode} ({StatusFamily}, {Outcome}) in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, TraceId={TraceId}.",
             context.Request.Method,
-            safePath,
-            queryString,
+            routeTemplate,
             statusCode,
+            statusFamily,
+            outcome,
             roundedElapsedMilliseconds,
             isAuthenticated,
-            hasAuthorizationHeader,
-            hasCookieHeader,
-            userAgent,
             context.TraceIdentifier);
+    }
+
+    private string GetRouteTemplate(HttpContext context)
+    {
+        RouteEndpoint? routeEndpoint = context.GetEndpoint() as RouteEndpoint;
+        string? rawPattern = routeEndpoint?.RoutePattern.RawText;
+
+        if (!string.IsNullOrWhiteSpace(rawPattern))
+        {
+            return rawPattern;
+        }
+
+        return SensitiveRequestPathSanitizer.Sanitize(context.Request.Path);
     }
 
     private bool ShouldLog(double elapsedMilliseconds, int statusCode)

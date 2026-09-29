@@ -253,11 +253,17 @@ jobs:
       - name: Test crawler SSR smoke checks
         run: node --test tools/seo-ssr-smoke.test.mjs tools/server-graceful-shutdown.test.mjs tools/disk-page-cache-invalidation-reader.test.mjs
 
+      - name: Test performance baseline tools
+        run: npm run test:performance-tools
+
       - name: Run frontend tests
         run: npm run test:ci
 
       - name: Build frontend production SSR
         run: npm run build -- --configuration production
+
+      - name: Enforce frontend bundle budgets
+        run: npm run performance:bundle
 
       - name: Upload frontend coverage
         if: always()

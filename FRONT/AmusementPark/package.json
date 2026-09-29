@@ -25,6 +25,9 @@
     "architecture:facade-ports": "node tools/architecture/check-facade-data-ports.mjs",
     "architecture:one-class-per-file": "node tools/architecture/check-one-class-per-file.mjs",
     "architecture:one-class-per-file:test": "node --test tools/architecture/one-class-per-file.test.mjs",
+    "test:performance-tools": "node --test tools/performance/performance-baseline.test.mjs tools/performance/bundle-budget.test.mjs",
+    "performance:baseline": "node tools/performance/performance-baseline.mjs",
+    "performance:bundle": "node tools/performance/bundle-budget.mjs",
     "i18n:build": "node tools/i18n-build.mjs",
     "i18n:check": "node tools/i18n-build.mjs --check && node tools/i18n-check.mjs"
   },

@@ -1,6 +1,20 @@
 {
-  "version": "5.4.21",
+  "version": "5.4.22",
   "history": [
+    {
+      "version": "5.4.22",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les performances et les erreurs sont mieux surveillées.",
+        "en": "Performance and errors are monitored more closely.",
+        "de": "Leistung und Fehler werden besser überwacht.",
+        "nl": "Prestaties en fouten worden beter bewaakt.",
+        "it": "Le prestazioni e gli errori sono monitorati meglio.",
+        "es": "El rendimiento y los errores se supervisan mejor.",
+        "pt": "O desempenho e os erros são monitorizados mais de perto.",
+        "pl": "Wydajność i błędy są dokładniej monitorowane."
+      }
+    },
     {
       "version": "5.4.21",
       "releasedAt": "2026-09-29",
