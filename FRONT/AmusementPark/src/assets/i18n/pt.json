@@ -5970,6 +5970,81 @@
       "openProvider": "Abrir página do fornecedor"
     }
   },
+  "liveData": {
+    "kicker": "Em direto",
+    "parkTitle": "O parque neste momento",
+    "itemTitle": "Espera e disponibilidade",
+    "parkSubtitle": "Consulta o estado atual das atrações abrangidas sem confundir espera, encerramento e informação desconhecida.",
+    "itemSubtitle": "Informação operacional separada das opiniões, classificações e do teu diário de visita.",
+    "localTime": "Hora local: {{time}}",
+    "refresh": "Atualizar",
+    "offline": "Estás offline. A última informação recebida continua visível.",
+    "refreshError": "A atualização falhou. A última informação recebida continua visível.",
+    "loading": "A carregar informações em direto…",
+    "errorTitle": "A informação em direto está temporariamente indisponível",
+    "errorMessage": "Tenta novamente daqui a pouco sem sair desta página.",
+    "currentStatus": "Estado atual",
+    "minutesShort": "min",
+    "noWait": "sem espera",
+    "waitUnknown": "espera desconhecida",
+    "estimated": "Estimativa",
+    "queueTitle": "Filas disponíveis",
+    "noItems": "Ainda não há atrações abrangidas pela informação em direto.",
+    "availability": {
+      "noObservation": "Sem observação recente",
+      "expired": "Informação expirada",
+      "unavailable": "Informação indisponível"
+    },
+    "status": {
+      "open": "Aberto",
+      "closed": "Fechado",
+      "temporarilyClosed": "Temporariamente fechado",
+      "delayed": "Abertura atrasada",
+      "down": "Interrupção em curso",
+      "weatherClosed": "Fechado devido ao tempo",
+      "maintenance": "Em manutenção",
+      "operatingWithLimitations": "Aberto com limitações",
+      "unknown": "Estado desconhecido",
+      "notOperatingToday": "Não funciona hoje",
+      "removed": "Retirado de funcionamento"
+    },
+    "queue": {
+      "standby": "Fila normal",
+      "singleRider": "Single Rider",
+      "returnTime": "Hora de regresso",
+      "paidReturnTime": "Hora de regresso paga",
+      "boardingGroup": "Grupo de embarque",
+      "paidStandby": "Fila paga"
+    },
+    "queueAvailability": {
+      "unspecified": "Disponibilidade desconhecida",
+      "available": "Disponível",
+      "temporarilyFull": "Temporariamente cheia",
+      "finished": "Terminada por hoje",
+      "paused": "Em pausa",
+      "closed": "Fechada",
+      "unknown": "Disponibilidade desconhecida"
+    },
+    "age": {
+      "unknown": "Hora da observação desconhecida",
+      "justNow": "Atualizado agora",
+      "minutes": "Atualizado há {{value}} min",
+      "hours": "Atualizado há {{value}} h"
+    },
+    "filters": {
+      "label": "Filtrar atrações em direto",
+      "all": "Todas",
+      "available": "Disponíveis",
+      "shortWait": "20 min ou menos",
+      "closed": "Fechadas",
+      "unknown": "Sem informação",
+      "empty": "Nenhuma atração corresponde a este filtro."
+    },
+    "methodology": {
+      "title": "Como ler estas informações?",
+      "description": "O tempo apresentado vem da fonte indicada e tem a idade aqui mostrada. Zero minutos significa que foi recebida uma espera realmente nula; um travessão significa que não existe um tempo fiável. Os dados expirados nunca são apresentados como atuais."
+    }
+  },
   "aboutPage": {
     "seo": {
       "title": "Sobre o AmusementPark — O teu guia de parques de diversão",

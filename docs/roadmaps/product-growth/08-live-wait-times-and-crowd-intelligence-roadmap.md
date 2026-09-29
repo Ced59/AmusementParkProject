@@ -798,7 +798,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-06`](../../architecture/product-growth-live-06-latest-store-2026-09-29.md) | ✅ Latest store | Pas d’écrasement ancien |
 | [`LIVE-07`](../../architecture/product-growth-live-07-quarantine-anomalies-2026-09-29.md) | ✅ Quarantaine/anomalies | Données douteuses isolées |
 | [`LIVE-08`](../../architecture/product-growth-live-08-latest-api-cache-2026-09-29.md) | ✅ API latest/cache | Source et âge obligatoires |
-| `LIVE-09` | UI pilote | 0/unknown/closed distincts |
+| [`LIVE-09`](../../architecture/product-growth-live-09-public-ui-2026-09-29.md) | ✅ UI pilote | 0/unknown/closed distincts |
 | `LIVE-10` | Kill switches/ops | Arrêt immédiat possible |
 | `LIVE-11` | Alertes temporaires | Hystérésis/expiration |
 | `LIVE-12` | Historique autorisé | Rétention et buckets |
@@ -917,6 +917,21 @@ secondes, rate limiting et CORS existants. Une migration idempotente unifie les
 anciens timestamps Mongo. L'attribution ThemeParks.wiki accompagne chaque donnée,
 mais collecte et lecture publique restent désactivées par défaut jusqu'à
 `LIVE-09` et à l'ouverture explicite des interrupteurs d'exploitation.
+
+### Implémentation `LIVE-09` — 29 septembre 2026
+
+La version `5.4.9` ajoute un bloc « En direct » compact aux fiches parc et
+attraction. L’interface distingue explicitement zéro minute, attente inconnue,
+fermeture, information expirée et absence d’observation. Une fiche parc peut
+filtrer les attractions couvertes, tandis qu’une fiche attraction détaille les
+files disponibles sans mélanger ces faits opérationnels avec les notes, avis ou
+passages du passeport.
+
+Le navigateur conserve l’ETag, adapte son prochain contrôle à l’expiration la
+plus proche et arrête toute actualisation lorsque l’onglet est masqué ou hors
+ligne. La source, l’âge et une explication publique restent visibles. Le bloc ne
+s’affiche pas tant que la lecture publique du pilote est désactivée ; son
+ouverture opérationnelle reste volontairement réservée à `LIVE-10`.
 
 ## 24. Gate finale `LIVE-G`
 

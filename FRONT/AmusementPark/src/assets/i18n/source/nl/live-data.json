@@ -1,0 +1,77 @@
+{
+  "liveData": {
+    "kicker": "Live",
+    "parkTitle": "Het park op dit moment",
+    "itemTitle": "Wachttijd en beschikbaarheid",
+    "parkSubtitle": "Bekijk de huidige toestand van de opgenomen attracties zonder wachttijd, sluiting en ontbrekende informatie te verwarren.",
+    "itemSubtitle": "Operationele informatie die losstaat van beoordelingen, scores en je bezoekdagboek.",
+    "localTime": "Lokale tijd: {{time}}",
+    "refresh": "Vernieuwen",
+    "offline": "Je bent offline. De laatst ontvangen informatie blijft zichtbaar.",
+    "refreshError": "Vernieuwen is mislukt. De laatst ontvangen informatie blijft zichtbaar.",
+    "loading": "Live-informatie laden…",
+    "errorTitle": "Live-informatie is tijdelijk niet beschikbaar",
+    "errorMessage": "Probeer het straks opnieuw zonder deze pagina te verlaten.",
+    "currentStatus": "Huidige status",
+    "minutesShort": "min",
+    "noWait": "geen wachttijd",
+    "waitUnknown": "wachttijd onbekend",
+    "estimated": "Schatting",
+    "queueTitle": "Beschikbare wachtrijen",
+    "noItems": "Er zijn nog geen attracties met live-informatie.",
+    "availability": {
+      "noObservation": "Geen recente waarneming",
+      "expired": "Informatie verlopen",
+      "unavailable": "Informatie niet beschikbaar"
+    },
+    "status": {
+      "open": "Open",
+      "closed": "Gesloten",
+      "temporarilyClosed": "Tijdelijk gesloten",
+      "delayed": "Opening vertraagd",
+      "down": "Momenteel buiten gebruik",
+      "weatherClosed": "Gesloten door het weer",
+      "maintenance": "In onderhoud",
+      "operatingWithLimitations": "Open met beperkingen",
+      "unknown": "Status onbekend",
+      "notOperatingToday": "Vandaag niet in gebruik",
+      "removed": "Uit bedrijf genomen"
+    },
+    "queue": {
+      "standby": "Gewone wachtrij",
+      "singleRider": "Single Rider",
+      "returnTime": "Terugkeertijd",
+      "paidReturnTime": "Betaalde terugkeertijd",
+      "boardingGroup": "Instapgroep",
+      "paidStandby": "Betaalde wachtrij"
+    },
+    "queueAvailability": {
+      "unspecified": "Beschikbaarheid onbekend",
+      "available": "Beschikbaar",
+      "temporarilyFull": "Tijdelijk vol",
+      "finished": "Voor vandaag beëindigd",
+      "paused": "Gepauzeerd",
+      "closed": "Gesloten",
+      "unknown": "Beschikbaarheid onbekend"
+    },
+    "age": {
+      "unknown": "Tijdstip van waarneming onbekend",
+      "justNow": "Zojuist bijgewerkt",
+      "minutes": "{{value}} min geleden bijgewerkt",
+      "hours": "{{value}} uur geleden bijgewerkt"
+    },
+    "filters": {
+      "label": "Live-attracties filteren",
+      "all": "Alle",
+      "available": "Beschikbaar",
+      "shortWait": "20 min of minder",
+      "closed": "Gesloten",
+      "unknown": "Zonder informatie",
+      "empty": "Geen attractie voldoet aan dit filter."
+    },
+    "methodology": {
+      "title": "Hoe lees je deze informatie?",
+      "description": "De getoonde tijd komt van de vermelde bron en heeft de hier aangegeven leeftijd. Nul minuten betekent dat werkelijk geen wachttijd is ontvangen; een streepje betekent dat er geen betrouwbare tijd beschikbaar is. Verlopen gegevens worden nooit als actueel getoond."
+    }
+  }
+}

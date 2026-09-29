@@ -5970,6 +5970,81 @@
       "openProvider": "Apri pagina del provider"
     }
   },
+  "liveData": {
+    "kicker": "In tempo reale",
+    "parkTitle": "Il parco in questo momento",
+    "itemTitle": "Attesa e disponibilità",
+    "parkSubtitle": "Consulta lo stato attuale delle attrazioni coperte senza confondere attesa, chiusura e informazione sconosciuta.",
+    "itemSubtitle": "Informazioni operative separate da recensioni, valutazioni e diario della visita.",
+    "localTime": "Ora locale: {{time}}",
+    "refresh": "Aggiorna",
+    "offline": "Sei offline. L’ultima informazione ricevuta resta visibile.",
+    "refreshError": "L’aggiornamento non è riuscito. L’ultima informazione ricevuta resta visibile.",
+    "loading": "Caricamento delle informazioni in tempo reale…",
+    "errorTitle": "Le informazioni in tempo reale non sono temporaneamente disponibili",
+    "errorMessage": "Riprova tra poco senza lasciare questa pagina.",
+    "currentStatus": "Stato attuale",
+    "minutesShort": "min",
+    "noWait": "nessuna attesa",
+    "waitUnknown": "attesa sconosciuta",
+    "estimated": "Stima",
+    "queueTitle": "Code disponibili",
+    "noItems": "Nessuna attrazione è ancora coperta dalle informazioni in tempo reale.",
+    "availability": {
+      "noObservation": "Nessuna osservazione recente",
+      "expired": "Informazione scaduta",
+      "unavailable": "Informazione non disponibile"
+    },
+    "status": {
+      "open": "Aperto",
+      "closed": "Chiuso",
+      "temporarilyClosed": "Temporaneamente chiuso",
+      "delayed": "Apertura ritardata",
+      "down": "Interruzione in corso",
+      "weatherClosed": "Chiuso per condizioni meteo",
+      "maintenance": "In manutenzione",
+      "operatingWithLimitations": "Aperto con limitazioni",
+      "unknown": "Stato sconosciuto",
+      "notOperatingToday": "Non operativo oggi",
+      "removed": "Rimosso dall’esercizio"
+    },
+    "queue": {
+      "standby": "Coda normale",
+      "singleRider": "Single Rider",
+      "returnTime": "Orario di ritorno",
+      "paidReturnTime": "Orario di ritorno a pagamento",
+      "boardingGroup": "Gruppo d’imbarco",
+      "paidStandby": "Coda a pagamento"
+    },
+    "queueAvailability": {
+      "unspecified": "Disponibilità sconosciuta",
+      "available": "Disponibile",
+      "temporarilyFull": "Temporaneamente completa",
+      "finished": "Terminata per oggi",
+      "paused": "In pausa",
+      "closed": "Chiusa",
+      "unknown": "Disponibilità sconosciuta"
+    },
+    "age": {
+      "unknown": "Ora dell’osservazione sconosciuta",
+      "justNow": "Aggiornato ora",
+      "minutes": "Aggiornato {{value}} min fa",
+      "hours": "Aggiornato {{value}} h fa"
+    },
+    "filters": {
+      "label": "Filtra le attrazioni in tempo reale",
+      "all": "Tutte",
+      "available": "Disponibili",
+      "shortWait": "20 min o meno",
+      "closed": "Chiuse",
+      "unknown": "Senza informazioni",
+      "empty": "Nessuna attrazione corrisponde a questo filtro."
+    },
+    "methodology": {
+      "title": "Come si leggono queste informazioni?",
+      "description": "Il tempo mostrato proviene dalla fonte citata e ha l’età indicata. Zero minuti significa che è stata ricevuta un’attesa realmente nulla; un trattino indica che non è disponibile un tempo affidabile. I dati scaduti non vengono mai presentati come attuali."
+    }
+  },
   "aboutPage": {
     "seo": {
       "title": "Chi è AmusementPark — La tua guida ai parchi divertimento",

@@ -187,6 +187,14 @@
 
     <app-park-lifecycle-notice [status]="currentDetail.parkStatus" [parkName]="currentDetail.parkName"></app-park-lifecycle-notice>
 
+    <app-public-live-panel
+      *ngIf="liveState as currentLiveState"
+      [state]="currentLiveState"
+      mode="item"
+      [currentLanguage]="currentLang"
+      (refreshClicked)="refreshLiveData()">
+    </app-public-live-panel>
+
     <app-park-item-passport-ride-panel
       *ngIf="currentDetail.canLogRide && currentDetail.id && currentDetail.parkId"
       [parkItemId]="currentDetail.id"

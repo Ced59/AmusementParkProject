@@ -1,0 +1,127 @@
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { PublicLiveQueue, PublicLiveTarget } from '@app/models/live-data/public-live.models';
+import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import { UiButtonDirective, UiChipComponent, UiKickerComponent } from '@ui/primitives';
+import { PublicLiveFilter } from '../models/public-live-filter.model';
+import { PublicLiveDisplayMode, PublicLiveViewState } from '../models/public-live-view-state.model';
+import {
+  filterPublicLiveTargets,
+  isPublicLiveQueueWaitUsable,
+  isPublicLiveTargetClosed,
+  resolvePublicLiveStatusLabelKey,
+  resolvePublicLiveTone,
+  resolvePublicLiveWaitMinutes
+} from '../utils/public-live-view.helpers';
+
+@Component({
+  selector: 'app-public-live-panel',
+  templateUrl: './public-live-panel.component.html',
+  styleUrls: ['./public-live-panel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent]
+})
+export class PublicLivePanelComponent {
+  @Input({ required: true }) state!: PublicLiveViewState;
+  @Input({ required: true }) mode!: PublicLiveDisplayMode;
+  @Input() currentLanguage: string = 'en';
+  @Input() timeZoneId: string | null = null;
+  @Output() refreshClicked: EventEmitter<void> = new EventEmitter<void>();
+
+  protected readonly selectedFilter = signal<PublicLiveFilter>('all');
+  protected readonly filters: readonly PublicLiveFilter[] = ['all', 'available', 'shortWait', 'closed', 'unknown'];
+
+  refresh(): void {
+    this.refreshClicked.emit();
+  }
+
+  selectFilter(filter: PublicLiveFilter): void {
+    this.selectedFilter.set(filter);
+  }
+
+  protected visibleItems(): readonly PublicLiveTarget[] {
+    return filterPublicLiveTargets(this.state.items, this.selectedFilter());
+  }
+
+  protected statusLabelKey(target: PublicLiveTarget): string {
+    return resolvePublicLiveStatusLabelKey(target);
+  }
+
+  protected statusTone(target: PublicLiveTarget): 'open' | 'closed' | 'limited' | 'unknown' {
+    return resolvePublicLiveTone(target);
+  }
+
+  protected waitMinutes(target: PublicLiveTarget): number | null {
+    return resolvePublicLiveWaitMinutes(target);
+  }
+
+  protected isClosed(target: PublicLiveTarget): boolean {
+    return isPublicLiveTargetClosed(target);
+  }
+
+  protected queueLabelKey(queue: PublicLiveQueue): string {
+    return `liveData.queue.${queue.kind.charAt(0).toLowerCase()}${queue.kind.slice(1)}`;
+  }
+
+  protected queueAvailabilityLabelKey(queue: PublicLiveQueue): string {
+    return `liveData.queueAvailability.${queue.availability.charAt(0).toLowerCase()}${queue.availability.slice(1)}`;
+  }
+
+  protected queueHasUsableWait(queue: PublicLiveQueue): boolean {
+    return isPublicLiveQueueWaitUsable(queue);
+  }
+
+  protected ageLabelKey(target: PublicLiveTarget): string {
+    const ageSeconds: number | null = target.ageSeconds;
+    if (ageSeconds === null) {
+      return 'liveData.age.unknown';
+    }
+
+    if (ageSeconds < 60) {
+      return 'liveData.age.justNow';
+    }
+
+    if (ageSeconds < 3_600) {
+      return 'liveData.age.minutes';
+    }
+
+    return 'liveData.age.hours';
+  }
+
+  protected ageParameters(target: PublicLiveTarget): { value: number } {
+    const ageSeconds: number = Math.max(0, target.ageSeconds ?? 0);
+    return {
+      value: ageSeconds < 3_600
+        ? Math.max(1, Math.floor(ageSeconds / 60))
+        : Math.max(1, Math.floor(ageSeconds / 3_600))
+    };
+  }
+
+  protected localTime(): string | null {
+    if (!this.timeZoneId) {
+      return null;
+    }
+
+    try {
+      return new Intl.DateTimeFormat(this.currentLanguage, {
+        timeZone: this.timeZoneId,
+        hour: '2-digit',
+        minute: '2-digit'
+      }).format(new Date());
+    } catch {
+      return null;
+    }
+  }
+
+  protected itemRoute(target: PublicLiveTarget): string[] | null {
+    return buildPublicParkItemRouteCommands({
+      language: this.currentLanguage,
+      parkId: target.parkId,
+      parkName: target.parkDisplayName,
+      itemId: target.targetId,
+      itemName: target.displayName
+    });
+  }
+}

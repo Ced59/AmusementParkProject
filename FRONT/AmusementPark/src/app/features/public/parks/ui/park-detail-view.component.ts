@@ -28,6 +28,8 @@ import { CommentSummaryLinkComponent } from '@features/public/comments/ui/commen
 import { ParkLifecycleNoticeComponent } from './park-lifecycle-notice.component';
 import { UserCollectionActionsComponent } from '@features/collections/ui/user-collection-actions.component';
 import { WatchSubscriptionActionComponent } from '@features/watchlists/ui/watch-subscription-action.component';
+import { PublicLiveViewState } from '@features/public/live/models/public-live-view-state.model';
+import { PublicLivePanelComponent } from '@features/public/live/ui/public-live-panel.component';
 
 @Component({
   selector: 'app-park-detail-view',
@@ -56,7 +58,8 @@ import { WatchSubscriptionActionComponent } from '@features/watchlists/ui/watch-
     ParkLifecycleNoticeComponent,
     PublicContextualBlockDirective,
     UserCollectionActionsComponent,
-    WatchSubscriptionActionComponent
+    WatchSubscriptionActionComponent,
+    PublicLivePanelComponent
   ]
 })
 export class ParkDetailViewComponent {
@@ -67,6 +70,7 @@ export class ParkDetailViewComponent {
   @Input() weatherState: ScreenState<unknown, string> | null = null;
   @Input() openingHours: ParkOpeningHoursCalendar | null = null;
   @Input() openingHoursState: ScreenState<unknown, string> | null = null;
+  @Input() liveState: PublicLiveViewState | null = null;
   @Input() nearbyParks: ParkCardModel[] = [];
   @Input() nearbyState: ScreenState<unknown, string> | null = null;
   @Input() currentLang: string = 'en';
@@ -76,6 +80,7 @@ export class ParkDetailViewComponent {
   @Output() backClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() exploreClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() visitCreateClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() liveRefreshClicked: EventEmitter<void> = new EventEmitter<void>();
 
   goBack(): void {
     this.backClicked.emit();
@@ -87,6 +92,10 @@ export class ParkDetailViewComponent {
 
   createVisit(): void {
     this.visitCreateClicked.emit();
+  }
+
+  refreshLiveData(): void {
+    this.liveRefreshClicked.emit();
   }
 
   protected getContextualBlock(type: PublicContextualBlockType, currentPark: ParkDetailViewModel): PublicContextualBlockMarker {
