@@ -71,13 +71,13 @@ public sealed class PublicLiveLatestReader
                 ApplicationErrors.EntityNotFound(nameof(Park), normalizedParkId));
         }
 
-        IReadOnlyCollection<string> coveredTargetIds =
-            await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+        IReadOnlyCollection<LivePublicTargetCoverage> coverage =
+            await this.mappingRepository.GetEligiblePublicTargetCoverageByParkAsync(
                 publicTarget.SourceId,
                 publicTarget.ExternalEntityId,
                 normalizedParkId,
                 cancellationToken);
-        if (coveredTargetIds.Count == 0)
+        if (coverage.Count == 0)
         {
             return ApplicationResult<PublicLiveTargetResult>.Failure(
                 LiveDataApplicationErrors.PublicReadDisabled());
@@ -89,6 +89,10 @@ public sealed class PublicLiveLatestReader
                 normalizedParkId,
                 normalizedParkId,
                 cancellationToken);
+        observations = FilterCoveredObservations(
+            observations,
+            publicTarget.SourceId,
+            BuildCoverageByInternalTarget(coverage));
         DateTime asOfUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         PublicLiveTargetResult result = this.resultFactory.Create(
             normalizedParkId,
@@ -142,13 +146,15 @@ public sealed class PublicLiveLatestReader
                 ApplicationErrors.EntityNotFound(nameof(ParkItem), normalizedParkItemId));
         }
 
-        IReadOnlyCollection<string> coveredTargetIds =
-            await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+        IReadOnlyCollection<LivePublicTargetCoverage> coverage =
+            await this.mappingRepository.GetEligiblePublicTargetCoverageByParkAsync(
                 publicTarget.SourceId,
                 publicTarget.ExternalEntityId,
                 item.ParkId,
                 cancellationToken);
-        if (!coveredTargetIds.Contains(normalizedParkItemId, StringComparer.Ordinal))
+        Dictionary<string, HashSet<string>> coverageByInternalTarget =
+            BuildCoverageByInternalTarget(coverage);
+        if (!coverageByInternalTarget.ContainsKey(normalizedParkItemId))
         {
             return ApplicationResult<PublicLiveTargetResult>.Failure(
                 LiveDataApplicationErrors.PublicReadDisabled());
@@ -160,6 +166,10 @@ public sealed class PublicLiveLatestReader
                 normalizedParkItemId,
                 item.ParkId,
                 cancellationToken);
+        observations = FilterCoveredObservations(
+            observations,
+            publicTarget.SourceId,
+            coverageByInternalTarget);
         DateTime asOfUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         PublicLiveTargetResult result = this.resultFactory.Create(
             normalizedParkItemId,
@@ -210,15 +220,16 @@ public sealed class PublicLiveLatestReader
             normalizedParkId,
             false,
             cancellationToken);
-        IReadOnlyCollection<string> coveredTargetIds =
-            await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+        IReadOnlyCollection<LivePublicTargetCoverage> coverage =
+            await this.mappingRepository.GetEligiblePublicTargetCoverageByParkAsync(
                 publicTarget.SourceId,
                 publicTarget.ExternalEntityId,
                 normalizedParkId,
                 cancellationToken);
-        HashSet<string> coveredTargetIdSet = coveredTargetIds.ToHashSet(StringComparer.Ordinal);
+        Dictionary<string, HashSet<string>> coverageByInternalTarget =
+            BuildCoverageByInternalTarget(coverage);
         ParkItem[] coveredItems = items
-            .Where(item => coveredTargetIdSet.Contains(item.Id))
+            .Where(item => coverageByInternalTarget.ContainsKey(item.Id))
             .ToArray();
         IReadOnlyCollection<string> visibleTargetIds = coveredItems
             .Select(static item => item.Id)
@@ -229,6 +240,10 @@ public sealed class PublicLiveLatestReader
                 normalizedParkId,
                 visibleTargetIds,
                 cancellationToken);
+        observations = FilterCoveredObservations(
+            observations,
+            publicTarget.SourceId,
+            coverageByInternalTarget);
 
         Dictionary<string, IReadOnlyCollection<LiveLatestObservation>> observationsByTarget = observations
             .GroupBy(static observation => observation.Target.Id, StringComparer.Ordinal)
@@ -263,5 +278,33 @@ public sealed class PublicLiveLatestReader
     private static string? NormalizeIdentifier(string? value)
     {
         return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
+    }
+
+    private static Dictionary<string, HashSet<string>> BuildCoverageByInternalTarget(
+        IReadOnlyCollection<LivePublicTargetCoverage> coverage)
+    {
+        return coverage
+            .GroupBy(static item => item.InternalTargetId, StringComparer.Ordinal)
+            .ToDictionary(
+                static group => group.Key,
+                static group => group
+                    .Select(static item => item.ExternalTargetId)
+                    .ToHashSet(StringComparer.Ordinal),
+                StringComparer.Ordinal);
+    }
+
+    private static IReadOnlyCollection<LiveLatestObservation> FilterCoveredObservations(
+        IReadOnlyCollection<LiveLatestObservation> observations,
+        LiveDataSourceId sourceId,
+        IReadOnlyDictionary<string, HashSet<string>> coverageByInternalTarget)
+    {
+        return observations
+            .Where(observation => observation.Provenance.SourceId == sourceId
+                && coverageByInternalTarget.TryGetValue(
+                    observation.Target.Id,
+                    out HashSet<string>? externalTargetIds)
+                && externalTargetIds.Contains(observation.Provenance.ExternalTargetId))
+            .ToList()
+            .AsReadOnly();
     }
 }

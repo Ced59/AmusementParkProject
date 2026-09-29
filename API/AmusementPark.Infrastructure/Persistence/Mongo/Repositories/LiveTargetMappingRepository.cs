@@ -107,7 +107,7 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
             .ToArray();
     }
 
-    public async Task<IReadOnlyCollection<string>> GetEligibleInternalTargetIdsByParkAsync(
+    public async Task<IReadOnlyCollection<LivePublicTargetCoverage>> GetEligiblePublicTargetCoverageByParkAsync(
         LiveDataSourceId sourceId,
         string externalEntityId,
         string internalParkId,
@@ -118,10 +118,10 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
         string normalizedParkId = internalParkId?.Trim() ?? string.Empty;
         if (normalizedExternalEntityId.Length == 0 || normalizedParkId.Length == 0)
         {
-            return Array.Empty<string>();
+            return Array.Empty<LivePublicTargetCoverage>();
         }
 
-        IReadOnlyCollection<BsonDocument> stages = BuildEligibleInternalTargetIdsByParkPipeline(
+        IReadOnlyCollection<BsonDocument> stages = BuildEligiblePublicTargetCoverageByParkPipeline(
             sourceId,
             normalizedExternalEntityId,
             normalizedParkId);
@@ -130,11 +130,13 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
         List<BsonDocument> documents = await this.collection.Aggregate(pipeline)
             .ToListAsync(cancellationToken);
         return documents
-            .Select(static document => document["_id"].AsString)
+            .Select(static document => new LivePublicTargetCoverage(
+                document["_id"]["internalTargetId"].AsString,
+                document["_id"]["externalTargetId"].AsString))
             .ToArray();
     }
 
-    internal static IReadOnlyCollection<BsonDocument> BuildEligibleInternalTargetIdsByParkPipeline(
+    internal static IReadOnlyCollection<BsonDocument> BuildEligiblePublicTargetCoverageByParkPipeline(
         LiveDataSourceId sourceId,
         string externalEntityId,
         string internalParkId)
@@ -167,9 +169,17 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
             }),
             new BsonDocument("$group", new BsonDocument
             {
-                ["_id"] = "$target.id",
+                ["_id"] = new BsonDocument
+                {
+                    ["internalTargetId"] = "$target.id",
+                    ["externalTargetId"] = "$externalTarget.id",
+                },
             }),
-            new BsonDocument("$sort", new BsonDocument("_id", 1)),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["_id.internalTargetId"] = 1,
+                ["_id.externalTargetId"] = 1,
+            }),
         };
     }
 

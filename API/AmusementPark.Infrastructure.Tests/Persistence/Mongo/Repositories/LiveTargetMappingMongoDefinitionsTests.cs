@@ -29,10 +29,10 @@ public sealed class LiveTargetMappingMongoDefinitionsTests
     }
 
     [Fact]
-    public void BuildEligibleInternalTargetIdsByParkPipeline_ShouldScopeTheConfiguredPilot()
+    public void BuildEligiblePublicTargetCoverageByParkPipeline_ShouldScopeTheConfiguredPilot()
     {
         IReadOnlyCollection<BsonDocument> stages =
-            LiveTargetMappingRepository.BuildEligibleInternalTargetIdsByParkPipeline(
+            LiveTargetMappingRepository.BuildEligiblePublicTargetCoverageByParkPipeline(
                 LiveDataSourceId.Parse("themeparks-wiki"),
                 "external-park-1",
                 "internal-park-1");

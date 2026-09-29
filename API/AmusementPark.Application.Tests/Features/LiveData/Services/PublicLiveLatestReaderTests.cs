@@ -80,6 +80,25 @@ public sealed class PublicLiveLatestReaderTests
     }
 
     [Fact]
+    public async Task ReadParkItemAsync_WhenObservationComesFromReplacedExternalTarget_ShouldIgnoreIt()
+    {
+        LiveLatestObservation observation = CreateObservation(
+            NowUtc.AddMinutes(-2),
+            25,
+            "external-replaced");
+        PublicLiveLatestReader reader = CreateReader(observation);
+
+        AmusementPark.Application.Errors.ApplicationResult<PublicLiveTargetResult> result =
+            await reader.ReadParkItemAsync("item-1", CancellationToken.None);
+
+        PublicLiveTargetResult value = Assert.IsType<PublicLiveTargetResult>(result.Value);
+        Assert.Equal(PublicLiveAvailability.NoObservation, value.Availability);
+        Assert.Null(value.Status);
+        Assert.Empty(value.Queues);
+        Assert.Null(value.Source);
+    }
+
+    [Fact]
     public async Task ReadParkItemAsync_WhenTargetIsOutsideCoveredMappings_ShouldHideLiveData()
     {
         Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
@@ -92,12 +111,12 @@ public sealed class PublicLiveLatestReaderTests
             .ReturnsAsync(CreateItem());
         parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
             .ReturnsAsync(CreatePark());
-        mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+        mappings.Setup(repository => repository.GetEligiblePublicTargetCoverageByParkAsync(
                 LiveDataSourceId.Parse("themeparks-wiki"),
                 "external-park-1",
                 "park-1",
                 CancellationToken.None))
-            .ReturnsAsync(Array.Empty<string>());
+            .ReturnsAsync(Array.Empty<LivePublicTargetCoverage>());
         PublicLiveLatestReader reader = CreateReader(parks, items, observations, mappings);
 
         AmusementPark.Application.Errors.ApplicationResult<PublicLiveTargetResult> result =
@@ -119,12 +138,12 @@ public sealed class PublicLiveLatestReaderTests
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
         parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
             .ReturnsAsync(CreatePark());
-        mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+        mappings.Setup(repository => repository.GetEligiblePublicTargetCoverageByParkAsync(
                 LiveDataSourceId.Parse("themeparks-wiki"),
                 "external-park-1",
                 "park-1",
                 CancellationToken.None))
-            .ReturnsAsync(Array.Empty<string>());
+            .ReturnsAsync(Array.Empty<LivePublicTargetCoverage>());
         PublicLiveLatestReader reader = CreateReader(parks, items, observations, mappings);
 
         AmusementPark.Application.Errors.ApplicationResult<PublicLiveTargetResult> result =
@@ -209,12 +228,17 @@ public sealed class PublicLiveLatestReaderTests
                 CreateItem("visible-1", "Alpha"),
                 CreateItem("uncovered", "Restaurant"),
             });
-        mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+        mappings.Setup(repository => repository.GetEligiblePublicTargetCoverageByParkAsync(
                 LiveDataSourceId.Parse("themeparks-wiki"),
                 "external-park-1",
                 "park-1",
                 CancellationToken.None))
-            .ReturnsAsync(new[] { "visible-1", "visible-2", "hidden-item" });
+            .ReturnsAsync(new[]
+            {
+                new LivePublicTargetCoverage("visible-1", "external-visible-1"),
+                new LivePublicTargetCoverage("visible-2", "external-visible-2"),
+                new LivePublicTargetCoverage("hidden-item", "external-hidden"),
+            });
         observations.Setup(repository => repository.GetParkItemsAsync(
                 "park-1",
                 It.Is<IReadOnlyCollection<string>>(targetIds =>
@@ -244,12 +268,12 @@ public sealed class PublicLiveLatestReaderTests
             new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
         Mock<ILiveTargetMappingRepository> mappings =
             new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
-        mappings.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+        mappings.Setup(repository => repository.GetEligiblePublicTargetCoverageByParkAsync(
                 LiveDataSourceId.Parse("themeparks-wiki"),
                 "external-park-1",
                 "park-1",
                 CancellationToken.None))
-            .ReturnsAsync(new[] { "item-1" });
+            .ReturnsAsync(new[] { new LivePublicTargetCoverage("item-1", "external-1") });
         items.Setup(repository => repository.GetByIdAsync("item-1", false, CancellationToken.None))
             .ReturnsAsync(CreateItem());
         parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
@@ -285,12 +309,12 @@ public sealed class PublicLiveLatestReaderTests
         if (mappings is null)
         {
             mappingRepository = new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
-            mappingRepository.Setup(repository => repository.GetEligibleInternalTargetIdsByParkAsync(
+            mappingRepository.Setup(repository => repository.GetEligiblePublicTargetCoverageByParkAsync(
                     LiveDataSourceId.Parse("themeparks-wiki"),
                     "external-park-1",
                     "park-1",
                     CancellationToken.None))
-                .ReturnsAsync(new[] { "item-1" });
+                .ReturnsAsync(new[] { new LivePublicTargetCoverage("item-1", "external-1") });
         }
         else
         {
@@ -308,7 +332,10 @@ public sealed class PublicLiveLatestReaderTests
             clock.Object);
     }
 
-    private static LiveLatestObservation CreateObservation(DateTime observedAtUtc, int? waitTimeMinutes)
+    private static LiveLatestObservation CreateObservation(
+        DateTime observedAtUtc,
+        int? waitTimeMinutes,
+        string externalTargetId = "external-1")
     {
         return new LiveLatestObservation(
             new LiveTargetReference(
@@ -322,7 +349,7 @@ public sealed class PublicLiveLatestReaderTests
             new[] { new LiveQueueObservation(LiveQueueKind.Standby, waitTimeMinutes, false) },
             new LiveObservationProvenance(
                 LiveDataSourceId.Parse("themeparks-wiki"),
-                "external-1",
+                externalTargetId,
                 observedAtUtc,
                 observedAtUtc.AddSeconds(1),
                 observedAtUtc.AddSeconds(2),
