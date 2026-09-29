@@ -80,6 +80,29 @@ public sealed class PublicLiveHistoryReaderTests
     }
 
     [Fact]
+    public async Task ReadParkItemAsync_RejectsDefaultPeriodThatWouldUnderflow()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ILiveHistoryStatisticsRepository> history =
+            new Mock<ILiveHistoryStatisticsRepository>(MockBehavior.Strict);
+        PublicLiveHistoryReader reader = CreateReader(history, parks, items);
+
+        ApplicationResult<PublicLiveHistoryResult> result = await reader.ReadParkItemAsync(
+            "item-1",
+            null,
+            new DateTimeOffset(DateTime.SpecifyKind(DateTime.MinValue, DateTimeKind.Utc)),
+            "hour",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("live-data.history.period.invalid", Assert.Single(result.Errors).Code);
+        parks.VerifyNoOtherCalls();
+        items.VerifyNoOtherCalls();
+        history.VerifyNoOtherCalls();
+    }
+
+    [Fact]
     public async Task ReadParkItemAsync_HidesHistoryWhenTargetIsNotCovered()
     {
         Mock<ILiveHistoryStatisticsRepository> history =

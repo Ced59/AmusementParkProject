@@ -90,6 +90,14 @@ public sealed class PublicLiveHistoryReader
 
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         DateTime toUtc = requestedTo?.UtcDateTime ?? nowUtc;
+        if (!requestedFrom.HasValue
+            && toUtc.Ticks < DefaultPeriod.Ticks)
+        {
+            return ApplicationResult<PublicLiveHistoryResult>.Failure(
+                LiveDataApplicationErrors.InvalidHistoryPeriod(
+                    "The live history period must be between one hour and ninety days and cannot be in the future."));
+        }
+
         DateTime fromUtc = requestedFrom?.UtcDateTime ?? toUtc.Subtract(DefaultPeriod);
         TimeSpan duration = toUtc - fromUtc;
         if (duration < MinimumPeriod
