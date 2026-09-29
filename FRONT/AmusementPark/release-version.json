@@ -1,6 +1,20 @@
 {
-  "version": "5.4.13",
+  "version": "5.4.14",
   "history": [
+    {
+      "version": "5.4.14",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les alertes n’interrompent jamais l’actualisation des informations en direct.",
+        "en": "Alerts never interrupt live information updates.",
+        "de": "Alarme unterbrechen niemals die Aktualisierung der Live-Informationen.",
+        "nl": "Meldingen onderbreken nooit het vernieuwen van live-informatie.",
+        "it": "Gli avvisi non interrompono mai l’aggiornamento delle informazioni in tempo reale.",
+        "es": "Las alertas nunca interrumpen la actualización de la información en directo.",
+        "pl": "Alerty nigdy nie przerywają aktualizacji informacji na żywo.",
+        "pt": "Os alertas nunca interrompem a atualização das informações em direto."
+      }
+    },
     {
       "version": "5.4.13",
       "releasedAt": "2026-09-29",
