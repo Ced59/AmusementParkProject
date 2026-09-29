@@ -1,6 +1,20 @@
 {
-  "version": "5.4.22",
+  "version": "5.4.23",
   "history": [
+    {
+      "version": "5.4.23",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "La confidentialité de tes données est mieux encadrée.",
+        "en": "The privacy of your data is governed more clearly.",
+        "de": "Der Schutz deiner Daten ist klarer geregelt.",
+        "nl": "De privacy van je gegevens is duidelijker geregeld.",
+        "it": "La privacy dei tuoi dati è regolata in modo più chiaro.",
+        "es": "La privacidad de tus datos está regulada con mayor claridad.",
+        "pt": "A privacidade dos teus dados está regulamentada de forma mais clara.",
+        "pl": "Zasady ochrony Twoich danych są teraz jaśniejsze."
+      }
+    },
     {
       "version": "5.4.22",
       "releasedAt": "2026-09-29",
