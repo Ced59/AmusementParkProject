@@ -1016,9 +1016,11 @@ fiche publique, mapping humain et contrôles opérationnels sont revérifiés av
 de charger au plus 174 jours. Un verdict insuffisant ou défavorable, moins de
 huit jours comparables, un créneau hors journée ou une erreur laisse la page
 sans prévision. Le calcul partagé appartient à Core, le contrat ne contient pas
-d'identifiant technique de cible et le cache public de quinze minutes borne la
-charge. Angular charge la carte hors SSR et la replie sur une colonne jusqu'à
-320 px. Aucun changement de schéma MongoDB n'est requis.
+d'identifiant technique de cible. Le calcul positif ou négatif est mémorisé
+quinze minutes tandis que le cache HTTP reste limité à trente secondes : l'état
+live est ainsi revérifié sans répéter le backtest à chaque visite. Angular charge
+la carte hors SSR et la replie sur une colonne jusqu'à 320 px. Aucun changement
+de schéma MongoDB n'est requis.
 
 ## 24. Gate finale `LIVE-G`
 

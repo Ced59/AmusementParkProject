@@ -59,7 +59,7 @@ describe('PublicLiveForecastFacade', () => {
     expect(port.getParkItemForecast).toHaveBeenCalledTimes(2);
   });
 
-  it('retries an unavailable forecast after the server cache window', () => {
+  it('retries an unavailable forecast after the bounded retry window', () => {
     vi.useFakeTimers();
     const port: PublicLiveDataPort = createPort(() => throwError(() => new Error('unavailable')));
     const facade: PublicLiveForecastFacade = configureFacade(port);

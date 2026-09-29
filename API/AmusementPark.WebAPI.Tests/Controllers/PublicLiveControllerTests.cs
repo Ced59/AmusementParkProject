@@ -112,10 +112,6 @@ public sealed class PublicLiveControllerTests
         Assert.Equal(4d, dto.MeanAbsoluteErrorMinutes);
         Assert.DoesNotContain("item-1", System.Text.Json.JsonSerializer.Serialize(dto));
         Assert.Equal(
-            TimeSpan.FromMinutes(15),
-            controller.HttpContext.Items[
-                PublicLiveExpirationOutputCachePolicy.MaximumLifetimeItemKey]);
-        Assert.Equal(
             forecast.FreshnessExpiresAtUtc,
             controller.HttpContext.Items[
                 PublicLiveExpirationOutputCachePolicy.FreshnessTransitionItemKey]);

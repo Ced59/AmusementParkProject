@@ -117,9 +117,13 @@ sequenceDiagram
   accès au port historique.
 - `Infrastructure` conserve les buckets existants ; aucun nouveau schéma ni
   aucune migration MongoDB n’est nécessaire.
-- `WebAPI` expose un endpoint anonyme borné, ETag et mis en cache au plus
-  quinze minutes, sans jamais dépasser l'expiration de l'observation live qui
-  autorise la prévision. Les invalidations LIVE existantes restent applicables.
+- `WebAPI` expose un endpoint anonyme borné, ETag et mis en cache au plus trente
+  secondes, sans jamais dépasser l'expiration de l'observation live qui autorise
+  la prévision. Les invalidations LIVE existantes restent applicables.
+- `Infrastructure` mémorise séparément pendant quinze minutes le calcul
+  historique positif ou négatif. Le contrôle léger de l'état live reste donc
+  hors de ce cache long : une fermeture récente empêche la réponse publique sans
+  relire ni recalculer les 174 jours d'historique.
 - `Angular` appelle l’endpoint derrière le port et la façade publics, hors SSR.
   Une réponse absente ou en erreur ne laisse ni squelette ni message trompeur.
   La carte est aussi masquée dès que le bloc live courant signale une fermeture
@@ -129,9 +133,12 @@ sequenceDiagram
 
 ## Performance, responsive et accessibilité
 
-Le calcul ne porte que sur une attraction et au plus 174 jours. Le cache de
-quinze minutes évite de répéter le backtest à chaque visite. Il est invalidé par
-les mutations LIVE comme les autres réponses publiques de ce domaine.
+Le calcul ne porte que sur une attraction et au plus 174 jours. Son cache
+applicatif de quinze minutes conserve également le verdict négatif afin qu'une
+absence normale de prévision ne répète pas le backtest à chaque visite. Un
+verrou par clé évite les recalculs concurrents. Le cache HTTP de trente secondes
+reste volontairement court pour revalider régulièrement l'état ouvert et les
+contrôles opérationnels.
 
 La carte utilise uniquement des grilles `minmax(0, 1fr)`, des conteneurs
 `min-width: 0`, des retours de texte forcés et aucun défilement horizontal. À

@@ -20,6 +20,7 @@ public sealed class PublicLiveForecastReader
     private readonly ILiveTargetMappingRepository mappingRepository;
     private readonly ILiveDataSourceCatalog sourceCatalog;
     private readonly ILiveOperationalGate operationalGate;
+    private readonly IPublicLiveForecastComputationCache computationCache;
     private readonly LiveWaitForecastBacktestCalculator backtestCalculator;
     private readonly LiveWaitForecastCalculator forecastCalculator;
     private readonly LiveWaitForecastBacktestPolicy policy;
@@ -34,6 +35,7 @@ public sealed class PublicLiveForecastReader
         ILiveTargetMappingRepository mappingRepository,
         ILiveDataSourceCatalog sourceCatalog,
         ILiveOperationalGate operationalGate,
+        IPublicLiveForecastComputationCache computationCache,
         LiveWaitForecastBacktestCalculator backtestCalculator,
         LiveWaitForecastCalculator forecastCalculator,
         LiveWaitForecastBacktestPolicy policy,
@@ -47,6 +49,7 @@ public sealed class PublicLiveForecastReader
         this.mappingRepository = mappingRepository;
         this.sourceCatalog = sourceCatalog;
         this.operationalGate = operationalGate;
+        this.computationCache = computationCache;
         this.backtestCalculator = backtestCalculator;
         this.forecastCalculator = forecastCalculator;
         this.policy = policy;
@@ -160,13 +163,69 @@ public sealed class PublicLiveForecastReader
             return Unavailable();
         }
 
+        string computationCacheKey = BuildComputationCacheKey(
+            publicTarget.SourceId,
+            normalizedParkItemId,
+            presentation.Source.UsagePolicy.Version,
+            retentionPolicy.StorageKey,
+            eligibleExternalTargets,
+            nowUtc);
+        PublicLiveForecastComputation? computation =
+            await this.computationCache.GetOrCreateAsync(
+                computationCacheKey,
+                token => this.CalculateComputationAsync(
+                    publicTarget,
+                    presentation,
+                    retentionPolicy,
+                    normalizedParkItemId,
+                    eligibleExternalTargets,
+                    nowUtc,
+                    token),
+                cancellationToken);
+        if (computation is null)
+        {
+            return Unavailable();
+        }
+
+        return ApplicationResult<PublicLiveForecastResult>.Success(
+            new PublicLiveForecastResult(
+                item.Name,
+                park.Name ?? string.Empty,
+                computation.TimeZoneId,
+                computation.Forecast,
+                computation.StudyVersion,
+                computation.Method,
+                computation.IntervalMethod,
+                computation.MeanAbsoluteErrorMinutes,
+                computation.IntervalCoveragePercent,
+                computation.EvaluationFromUtc,
+                computation.EvaluationToUtc,
+                computation.EvaluationPointCount,
+                latestFreshness.ExpiresAtUtc.Value,
+                new PublicLiveSourceResult(
+                    presentation.Source.Id.Value,
+                    presentation.Source.DisplayName,
+                    presentation.Source.Type,
+                    presentation.AttributionText,
+                    presentation.AttributionUrl)));
+    }
+
+    private async Task<PublicLiveForecastComputation?> CalculateComputationAsync(
+        LivePollingTarget publicTarget,
+        LiveDataSourcePresentation presentation,
+        LiveHistoryRetentionPolicy retentionPolicy,
+        string parkItemId,
+        IReadOnlySet<string> eligibleExternalTargets,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
         DateTime evaluationFromUtc = nowUtc.Subtract(EvaluationPeriod);
         DateTime historyFromUtc = evaluationFromUtc.AddDays(-this.policy.TrainingWindowDays);
         IReadOnlyCollection<LiveWaitHistoryObservation> observations =
             await this.historyRepository.GetAsync(
                 publicTarget.SourceId,
                 LiveTargetType.ParkItem,
-                normalizedParkItemId,
+                parkItemId,
                 presentation.Source.UsagePolicy.Version,
                 retentionPolicy.StorageKey,
                 retentionPolicy.BucketDuration,
@@ -185,22 +244,16 @@ public sealed class PublicLiveForecastReader
             || report.Candidate is null
             || !report.IntervalCoveragePercent.HasValue)
         {
-            return Unavailable();
+            return null;
         }
 
         LiveWaitForecast? forecast = this.forecastCalculator.Calculate(
             eligibleObservations,
             nowUtc,
             publicTarget.ActiveWindow);
-        if (forecast is null)
-        {
-            return Unavailable();
-        }
-
-        return ApplicationResult<PublicLiveForecastResult>.Success(
-            new PublicLiveForecastResult(
-                item.Name,
-                park.Name ?? string.Empty,
+        return forecast is null
+            ? null
+            : new PublicLiveForecastComputation(
                 report.TimeZoneId,
                 forecast,
                 report.StudyVersion,
@@ -210,14 +263,30 @@ public sealed class PublicLiveForecastReader
                 report.IntervalCoveragePercent.Value,
                 report.EvaluationFromUtc,
                 report.EvaluationToUtc,
-                report.EvaluationPointCount,
-                latestFreshness.ExpiresAtUtc.Value,
-                new PublicLiveSourceResult(
-                    presentation.Source.Id.Value,
-                    presentation.Source.DisplayName,
-                    presentation.Source.Type,
-                    presentation.AttributionText,
-                    presentation.AttributionUrl)));
+                report.EvaluationPointCount);
+    }
+
+    private static string BuildComputationCacheKey(
+        LiveDataSourceId sourceId,
+        string parkItemId,
+        string usagePolicyVersion,
+        string storageKey,
+        IReadOnlySet<string> eligibleExternalTargets,
+        DateTime nowUtc)
+    {
+        long fifteenMinuteWindow = nowUtc.Ticks / TimeSpan.FromMinutes(15).Ticks;
+        string externalTargets = string.Join(
+            '\u001f',
+            eligibleExternalTargets.Order(StringComparer.Ordinal));
+        return string.Join(
+            ':',
+            "public-live-forecast",
+            sourceId.Value,
+            parkItemId,
+            usagePolicyVersion,
+            storageKey,
+            fifteenMinuteWindow,
+            externalTargets);
     }
 
     private static ApplicationResult<PublicLiveForecastResult> Unavailable()

@@ -198,6 +198,16 @@ public sealed class PublicLiveForecastReaderTests
 
         Mock<TimeProvider> clock = new Mock<TimeProvider>(MockBehavior.Strict);
         clock.Setup(value => value.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
+        Mock<IPublicLiveForecastComputationCache> computationCache =
+            new Mock<IPublicLiveForecastComputationCache>(MockBehavior.Strict);
+        computationCache.Setup(cache => cache.GetOrCreateAsync(
+                It.IsAny<string>(),
+                It.IsAny<Func<CancellationToken, Task<PublicLiveForecastComputation?>>>(),
+                CancellationToken.None))
+            .Returns((
+                string _,
+                Func<CancellationToken, Task<PublicLiveForecastComputation?>> factory,
+                CancellationToken token) => factory(token));
         LiveWaitForecastBacktestPolicy policy = new LiveWaitForecastBacktestPolicy();
         return new PublicLiveForecastReader(
             parks.Object,
@@ -207,6 +217,7 @@ public sealed class PublicLiveForecastReaderTests
             mappings.Object,
             catalog.Object,
             gate.Object,
+            computationCache.Object,
             new LiveWaitForecastBacktestCalculator(policy),
             new LiveWaitForecastCalculator(policy),
             policy,

@@ -57,8 +57,6 @@ public sealed class PublicLiveController : ControllerBase
         [FromRoute] string itemId,
         CancellationToken cancellationToken = default)
     {
-        this.HttpContext.Items[PublicLiveExpirationOutputCachePolicy.MaximumLifetimeItemKey] =
-            TimeSpan.FromMinutes(15);
         ApplicationResult<PublicLiveForecastResult> result =
             await this.parkItemForecastHandler.HandleAsync(
                 new GetPublicParkItemLiveForecastQuery(itemId),
@@ -151,17 +149,11 @@ public sealed class PublicLiveController : ControllerBase
 
     private IActionResult ToConditionalResponse<TValue>(
         TValue value,
-        DateTime? freshnessTransitionAtUtc,
-        TimeSpan? maximumLifetime = null)
+        DateTime? freshnessTransitionAtUtc)
     {
         string entityTag = PublicLiveEntityTagFactory.Create(value);
         this.HttpContext.Items[PublicLiveExpirationOutputCachePolicy.FreshnessTransitionItemKey] =
             freshnessTransitionAtUtc;
-        if (maximumLifetime.HasValue)
-        {
-            this.HttpContext.Items[PublicLiveExpirationOutputCachePolicy.MaximumLifetimeItemKey] =
-                maximumLifetime.Value;
-        }
         this.Response.Headers.CacheControl = "public,max-age=0,must-revalidate";
         this.Response.Headers.ETag = entityTag;
         this.Response.Headers.Vary = "Accept-Language";

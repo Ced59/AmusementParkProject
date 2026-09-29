@@ -6,7 +6,6 @@ namespace AmusementPark.WebAPI.OutputCaching;
 public sealed class PublicLiveExpirationOutputCachePolicy : IOutputCachePolicy
 {
     public const string FreshnessTransitionItemKey = "public-live-freshness-transition";
-    public const string MaximumLifetimeItemKey = "public-live-maximum-lifetime";
     public const string GenerationItemKey = "public-live-cache-generation";
 
     private readonly TimeProvider timeProvider;
@@ -57,17 +56,10 @@ public sealed class PublicLiveExpirationOutputCachePolicy : IOutputCachePolicy
         DateTime? freshnessTransitionAtUtc = value is DateTime transitionAtUtc
             ? transitionAtUtc
             : null;
-        TimeSpan maximumLifetime = context.HttpContext.Items.TryGetValue(
-                MaximumLifetimeItemKey,
-                out object? lifetimeValue)
-            && lifetimeValue is TimeSpan configuredLifetime
-                ? configuredLifetime
-                : PublicLiveCacheLifetimeCalculator.DefaultMaximumLifetime;
         DateTime responseStoredAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         TimeSpan lifetime = PublicLiveCacheLifetimeCalculator.ResolveLifetime(
             responseStoredAtUtc,
-            freshnessTransitionAtUtc,
-            maximumLifetime);
+            freshnessTransitionAtUtc);
 
         if (lifetime <= TimeSpan.Zero)
         {

@@ -119,7 +119,7 @@ public static class OutputCacheServiceCollectionExtensions
             options.AddPolicy(ApiOutputCachePolicyNames.PublicLiveForecastData, policy => policy
                 .With(IsAnonymousCacheCandidate)
                 .Cache()
-                .Expire(TimeSpan.FromMinutes(15))
+                .Expire(TimeSpan.FromSeconds(30))
                 .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
                 .Tag(ApiOutputCachePolicyNames.PublicDataTag)
                 .Tag(ApiOutputCachePolicyNames.PublicLiveDataTag)
