@@ -201,13 +201,14 @@ public sealed class ParkGraphUpsertProcessor
             await this.ProcessReferencesAsync(references, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
             ParkGraphUpsertMergeSummary standaloneMergeSummary = await this.ProcessMergesAsync(root, manufacturerKeys, result, apply, cancellationToken);
             Dictionary<string, string> standaloneAttractionKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            bool standaloneAttractionChanged = await this.ProcessStandaloneAttractionAsync(root, request.CreateIfMissing, operatorKeys, manufacturerKeys, standaloneMergeSummary.ManufacturerIdRemaps, standaloneAttractionKeys, result, apply, cancellationToken);
+            (bool standaloneAttractionChanged, StandaloneAttraction? targetStandaloneAttraction) =
+                await this.ProcessStandaloneAttractionAsync(root, request.CreateIfMissing, operatorKeys, manufacturerKeys, standaloneMergeSummary.ManufacturerIdRemaps, standaloneAttractionKeys, result, apply, cancellationToken);
             bool standaloneVisitorInformationChanged = false;
             if (result.Errors.Count == 0)
             {
                 standaloneVisitorInformationChanged = await this.ProcessStandaloneVisitorInformationAsync(
                     root,
-                    result.TargetStandaloneAttractionId,
+                    targetStandaloneAttraction,
                     result,
                     apply,
                     cancellationToken);

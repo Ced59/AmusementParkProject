@@ -33,6 +33,89 @@ namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Services;
 public sealed class ParkGraphUpsertStandaloneHistoryTests
 {
     [Fact]
+    public async Task PreviewAsync_WhenCreatingStandaloneWithOpeningHours_ShouldUseInMemoryAttraction()
+    {
+        Mock<IStandaloneAttractionRepository> standaloneRepository =
+            new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict);
+        standaloneRepository
+            .Setup(repository => repository.FindByLegacyAsync(null, null, It.IsAny<CancellationToken>()))
+            .ReturnsAsync((StandaloneAttraction?)null);
+        standaloneRepository
+            .Setup(repository => repository.GetByIdAsync(
+                It.IsAny<string>(),
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((StandaloneAttraction?)null);
+        Mock<IStandaloneAttractionOpeningHoursRepository> openingHoursRepository =
+            new Mock<IStandaloneAttractionOpeningHoursRepository>(MockBehavior.Strict);
+        openingHoursRepository
+            .Setup(repository => repository.GetByStandaloneAttractionIdAsync(
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ParkOpeningHoursSchedule?)null);
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        Mock<IParkGraphUpsertHistoryRepository> upsertHistoryRepository = CreateUpsertHistoryRepository();
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        ParkGraphUpsertProcessor processor = CreateProcessor(
+            standaloneRepository,
+            new Mock<IHistoryEventRepository>(MockBehavior.Strict),
+            searchProjectionWriter,
+            upsertHistoryRepository,
+            publicSeoUpdateNotifier,
+            standaloneOpeningHoursRepository: openingHoursRepository.Object);
+        const string rawJson = """
+        {
+          "documentType": "standaloneAttractionGraph",
+          "mode": "merge",
+          "standaloneAttraction": {
+            "name": "Pendolino",
+            "countryCode": "AT",
+            "type": "RollerCoaster",
+            "attractionDetails": {
+              "status": "Operating"
+            }
+          },
+          "openingHours": {
+            "timeZoneId": "Europe/Vienna",
+            "sourceUrl": "https://example.test/hours",
+            "regularRules": [
+              {
+                "startDate": "2026-01-01",
+                "endDate": "2026-12-31",
+                "daysOfWeek": ["Monday"],
+                "isClosed": true,
+                "timeRanges": []
+              }
+            ],
+            "dateOverrides": []
+          }
+        }
+        """;
+        using JsonDocument document = JsonDocument.Parse(rawJson);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.PreviewAsync(
+            CreateRequest(document, rawJson, true),
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(
+            result.IsSuccess,
+            string.Join(" | ", result.Errors.Select(static error => error.Message)));
+        Assert.True(result.Value!.CanApply, string.Join(" | ", result.Value.Errors));
+        Assert.Empty(result.Value.Errors);
+        Assert.False(string.IsNullOrWhiteSpace(result.Value.TargetStandaloneAttractionId));
+        Assert.Contains(result.Value.Changes, change =>
+            change.EntityType == "StandaloneAttractionOpeningHours"
+            && change.EntityId == result.Value.TargetStandaloneAttractionId
+            && change.ChangeType == "Created");
+        standaloneRepository.VerifyAll();
+        openingHoursRepository.VerifyAll();
+        searchProjectionWriter.VerifyNoOtherCalls();
+        publicSeoUpdateNotifier.VerifyNoOtherCalls();
+        upsertHistoryRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenStandaloneVisitorInformationIsValid_ShouldPersistHoursAndPricing()
     {
         StandaloneAttraction attraction = CreateAttraction();

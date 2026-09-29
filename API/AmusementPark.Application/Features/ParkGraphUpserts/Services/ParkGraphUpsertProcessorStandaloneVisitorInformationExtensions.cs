@@ -13,7 +13,7 @@ internal static class ParkGraphUpsertProcessorStandaloneVisitorInformationExtens
     internal static async Task<bool> ProcessStandaloneVisitorInformationAsync(
         this ParkGraphUpsertProcessor processorContext,
         JsonElement root,
-        string? standaloneAttractionId,
+        StandaloneAttraction? attraction,
         ParkGraphUpsertResult result,
         bool apply,
         CancellationToken cancellationToken)
@@ -24,21 +24,8 @@ internal static class ParkGraphUpsertProcessorStandaloneVisitorInformationExtens
             return false;
         }
 
-        if (string.IsNullOrWhiteSpace(standaloneAttractionId)
-            || processorContext.standaloneAttractionRepository is null)
-        {
-            return false;
-        }
-
-        StandaloneAttraction? attraction =
-            await processorContext.standaloneAttractionRepository.GetByIdAsync(
-                standaloneAttractionId,
-                includeHidden: true,
-                cancellationToken);
         if (attraction is null)
         {
-            result.Errors.Add(
-                $"Aucune attraction autonome ne correspond à l'identifiant '{standaloneAttractionId}'.");
             return false;
         }
 
