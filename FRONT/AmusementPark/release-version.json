@@ -1,6 +1,20 @@
 {
-  "version": "5.4.25",
+  "version": "5.4.26",
   "history": [
+    {
+      "version": "5.4.26",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "La sécurité des dépendances du site a été renforcée.",
+        "en": "The security of site dependencies has been strengthened.",
+        "de": "Die Sicherheit der Website-Abhängigkeiten wurde verbessert.",
+        "nl": "De beveiliging van de website-afhankelijkheden is verbeterd.",
+        "it": "La sicurezza delle dipendenze del sito è stata rafforzata.",
+        "es": "Se ha reforzado la seguridad de las dependencias del sitio.",
+        "pt": "A segurança das dependências do site foi reforçada.",
+        "pl": "Wzmocniono bezpieczeństwo zależności witryny."
+      }
+    },
     {
       "version": "5.4.25",
       "releasedAt": "2026-09-29",
