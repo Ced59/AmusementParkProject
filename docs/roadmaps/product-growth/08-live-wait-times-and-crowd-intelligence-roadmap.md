@@ -985,7 +985,7 @@ déborder du viewport et conserve une description accessible de chaque tranche.
 
 ### Implémentation `LIVE-14` — 29 septembre 2026
 
-La version `5.4.17` ajoute au pilotage live une étude reproductible par
+La version `5.4.18` ajoute au pilotage live une étude reproductible par
 attraction. Chaque attente évaluée est une médiane horaire et n'est comparée
 qu'à des données strictement antérieures : une référence « même heure » affronte
 une candidate « même jour de semaine et même heure ». Le rapport montre les MAE,
