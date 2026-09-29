@@ -193,6 +193,14 @@ export const ADMIN_NAVIGATION_ITEMS: readonly AdminNavigationItem[] = [
     exact: false
   },
   {
+    id: 'product-quality',
+    segments: ['product-quality'],
+    iconClass: 'pi pi-chart-pie',
+    titleKey: 'admin.productQuality.navTitle',
+    descriptionKey: 'admin.productQuality.shortcut',
+    exact: false
+  },
+  {
     id: 'passport-beta',
     segments: ['passport-beta'],
     iconClass: 'pi pi-chart-line',

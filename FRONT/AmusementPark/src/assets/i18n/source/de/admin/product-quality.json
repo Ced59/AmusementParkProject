@@ -1,0 +1,27 @@
+{
+  "admin": {
+    "productQuality": {
+      "navTitle": "Produktqualitätsübersicht",
+      "shortcut": "Verknüpft jede Geschäftsfrage mit Belegen, Grenzen und Steuerungswerkzeugen.",
+      "kicker": "Qualität · Entscheidung",
+      "title": "Produktqualitätsübersicht",
+      "subtitle": "Zeigt Geschäftsfrage, Belegquelle und Grenzen jedes Moduls, ohne Daten mit Einwilligung, interne Aggregate und technische Metriken zu vermischen.",
+      "legend": "Reifegrade der Nachweise",
+      "principle": { "title": "Signale lesen, ohne sie zu überbewerten", "description": "Ein Rohvolumen reicht nie aus. Funnel, Zuverlässigkeit und qualitative Rückmeldungen müssen gemeinsam betrachtet werden, bevor eine Funktion erweitert, korrigiert oder eingestellt wird.", "privacy": "Auf dieser Seite werden weder Identitäten noch Rohdaten zusammengeführt." },
+      "states": { "ready": "Entscheidung unterstützt", "split": "Getrennte Quellen", "operational": "Betriebliche Überwachung" },
+      "channels": { "firstParty": "Minimierte interne Aggregate", "mixed": "Analytics mit Einwilligung und getrennte interne Überwachung", "technical": "Diagnosen und technische Metriken" },
+      "labels": { "question": "Geschäftsfrage", "evidence": "Verfügbare Nachweise", "limit": "Interpretationsgrenze", "channel": "Kanal" },
+      "openModule": "Modul öffnen",
+      "modules": {
+        "rank": { "title": "Vertrauenswürdige Rankings", "question": "Bleiben Rankings bei schwacher Beweislage verständlich und zuverlässig?", "evidence": "Diagnosen zu Nachweisen, Ausschlüssen, Richtlinienversionen und Neuaufbauten.", "limit": "Aufrufe der Methodik bleiben reserviert: Aufrufzahlen messen kein Vertrauen." },
+        "pass": { "title": "Besuchspass", "question": "Bietet der Pass genug Nutzen für einen zweiten erfassten Besuch?", "evidence": "Aggregierte Kohorte aus erstem und zweitem Besuch, Abschlüssen und Tagestrend.", "limit": "Die North-Star-Metrik ersetzt weder Interviews noch die Prüfung der eingegebenen Datenqualität." },
+        "share": { "title": "Kontrolliertes Teilen", "question": "Werden Freigaben bewusst veröffentlicht, angesehen und ohne Kontrollverlust widerrufen?", "evidence": "Funnel mit Einwilligung in Matomo; Moderation und Widerrufe im internen Modul.", "limit": "Die Quellen bleiben getrennt: Keine Freigabe-ID darf sie miteinander verbinden." },
+        "fit": { "title": "Park-Fit-Empfehlungen", "question": "Wird die Empfehlung trotz unbekannter Daten abgeschlossen?", "evidence": "Starts, Abschlüsse, Abbrüche, Fälle ohne Ergebnis, Unbekanntes und Meldungen.", "limit": "Eine hohe Abschlussquote allein bestätigt nicht die Relevanz der Ergebnisse." },
+        "watch": { "title": "Faktenbasierte Hinweise", "question": "Kommen Hinweise rechtzeitig, nur einmal und ohne irrezuführen an?", "evidence": "Aggregierte Zustellungen, Duplikate, Latenz, Fehler, Warteschlange und Meldungen.", "limit": "Hinweisvolumen oder E-Mail-Klicks sind nie ein eigenständiges Ziel." },
+        "trip": { "title": "Gemeinsame Reisen", "question": "Können Gruppen Präferenzen erfassen und anschließend eine nutzbare Entscheidung treffen?", "evidence": "Aggregierte gemeinsame Pläne, Präferenzen, Entscheidungen und Audit-Marker.", "limit": "Metriken legen keine Teilnehmenden, Ziele oder genauen Entscheidungen offen." },
+        "hist": { "title": "Geschichten und Zeitleisten", "question": "Ist die historische Abdeckung ausreichend belegt, um verständlich zu sein?", "evidence": "Diagnosen zu Snapshots, Quellen, Widersprüchen und Verarbeitung.", "limit": "Das Öffnen einer Zeitleiste ist niemals ein historischer Beleg." },
+        "live": { "title": "Live-Daten", "question": "Bleiben Live-Daten aktuell, verfügbar und zuverlässig genug für die Anzeige?", "evidence": "Aktualität, Anbieter, Kreisläufe, Quarantänen und Prognosegenauigkeit.", "limit": "Kein Park, keine Attraktion, genaue Wartezeit oder Position fließt in Produktanalytics ein." }
+      }
+    }
+  }
+}

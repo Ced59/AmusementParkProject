@@ -4615,6 +4615,86 @@
         "description": "Dit scherm ontvangt alleen totalen. Geen lid-, bezoek- of park-ID, bezoekdatum of beoordeling verlaat de aggregatie."
       }
     },
+    "productQuality": {
+      "navTitle": "Overzicht productkwaliteit",
+      "shortcut": "Koppelt elke bedrijfsvraag aan bewijs, grenzen en beheertools.",
+      "kicker": "Kwaliteit · beslissing",
+      "title": "Overzicht productkwaliteit",
+      "subtitle": "Bekijk per module de bedrijfsvraag, bewijsbron en grenzen zonder gegevens met toestemming, interne aggregaten en technische statistieken te vermengen.",
+      "legend": "Volwassenheidsniveaus van bewijs",
+      "principle": {
+        "title": "Signalen lezen zonder ze te overdrijven",
+        "description": "Een ruw volume is nooit genoeg. Combineer funnel, betrouwbaarheid en kwalitatieve feedback voordat je een functie uitbreidt, corrigeert of stopzet.",
+        "privacy": "Op deze pagina worden geen identiteiten of ruwe gegevens samengebracht."
+      },
+      "states": {
+        "ready": "Beslissing ondersteund",
+        "split": "Bronnen gescheiden",
+        "operational": "Operationele bewaking"
+      },
+      "channels": {
+        "firstParty": "Geminimaliseerde interne aggregaten",
+        "mixed": "Analytics met toestemming en gescheiden interne bewaking",
+        "technical": "Diagnostiek en technische statistieken"
+      },
+      "labels": {
+        "question": "Bedrijfsvraag",
+        "evidence": "Beschikbaar bewijs",
+        "limit": "Interpretatiegrens",
+        "channel": "Kanaal"
+      },
+      "openModule": "Module openen",
+      "modules": {
+        "rank": {
+          "title": "Betrouwbare ranglijsten",
+          "question": "Blijven ranglijsten begrijpelijk en betrouwbaar wanneer het bewijs zwak is?",
+          "evidence": "Diagnostiek van bewijs, uitsluitingen, beleidsversies en heropbouw.",
+          "limit": "Het openen van de methode blijft gereserveerd: het aantal weergaven meet geen vertrouwen."
+        },
+        "pass": {
+          "title": "Bezoekenpaspoort",
+          "question": "Biedt het Paspoort genoeg waarde om tot een tweede geregistreerd bezoek te leiden?",
+          "evidence": "Geaggregeerd cohort van eerste en tweede bezoeken, voltooiingen en dagelijkse trend.",
+          "limit": "De north star vervangt interviews of controles op de kwaliteit van ingevoerde gegevens niet."
+        },
+        "share": {
+          "title": "Beheerst delen",
+          "question": "Worden deelpagina’s bewust gepubliceerd, bekeken en weer ingetrokken zonder controleverlies?",
+          "evidence": "Funnel met toestemming in Matomo; moderatie en intrekkingen in de interne module.",
+          "limit": "De bronnen blijven gescheiden: geen deel-ID mag ze met elkaar verbinden."
+        },
+        "fit": {
+          "title": "Park Fit-aanbevelingen",
+          "question": "Wordt de aanbeveling ondanks onbekende gegevens afgerond?",
+          "evidence": "Starts, voltooiingen, afhakers, geen resultaten, onbekenden en meldingen.",
+          "limit": "Een hoog voltooiingspercentage bewijst op zichzelf niet dat de resultaten relevant zijn."
+        },
+        "watch": {
+          "title": "Feitelijke meldingen",
+          "question": "Komen meldingen op tijd, slechts één keer en zonder misleiding aan?",
+          "evidence": "Geaggregeerde leveringen, duplicaten, vertraging, fouten, wachtrij en meldingen.",
+          "limit": "Het aantal meldingen of e-mailklikken is nooit een doel op zichzelf."
+        },
+        "trip": {
+          "title": "Gezamenlijke reizen",
+          "question": "Kunnen groepen voorkeuren vastleggen en daarna tot een bruikbare beslissing komen?",
+          "evidence": "Geaggregeerde gezamenlijke plannen, voorkeuren, beslissingen en auditmarkeringen.",
+          "limit": "Statistieken tonen geen deelnemers, bestemmingen of exacte keuzes."
+        },
+        "hist": {
+          "title": "Verhalen en tijdlijnen",
+          "question": "Is de historische dekking voldoende onderbouwd om begrepen te worden?",
+          "evidence": "Diagnostiek van snapshots, bronnen, inconsistenties en verwerking.",
+          "limit": "Het openen van een tijdlijn is nooit historisch bewijs."
+        },
+        "live": {
+          "title": "Livegegevens",
+          "question": "Blijven livegegevens actueel, beschikbaar en betrouwbaar genoeg om te tonen?",
+          "evidence": "Actualiteit, leveranciers, circuits, quarantaines en voorspellingsnauwkeurigheid.",
+          "limit": "Geen park, attractie, exacte wachttijd of locatie komt in productanalytics terecht."
+        }
+      }
+    },
     "publicViewToolbar": {
       "ariaLabel": "Adminbalk voor publieke weergave",
       "viewMode": "Publieke weergave",

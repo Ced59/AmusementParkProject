@@ -1,0 +1,27 @@
+{
+  "admin": {
+    "productQuality": {
+      "navTitle": "Osservatorio della qualità del prodotto",
+      "shortcut": "Collega ogni domanda di business alle prove, ai limiti e agli strumenti di gestione.",
+      "kicker": "Qualità · decisione",
+      "title": "Osservatorio della qualità del prodotto",
+      "subtitle": "Consulta la domanda di business, la fonte delle prove e i limiti di ogni modulo senza mescolare dati autorizzati, aggregati interni e metriche tecniche.",
+      "legend": "Livelli di maturità delle prove",
+      "principle": { "title": "Leggere i segnali senza sopravvalutarli", "description": "Un volume grezzo non basta mai. Incrocia funnel, affidabilità e riscontri qualitativi prima di estendere, correggere o interrompere una funzionalità.", "privacy": "In questa pagina non vengono riuniti dati identificativi o grezzi." },
+      "states": { "ready": "Decisione supportata", "split": "Fonti separate", "operational": "Monitoraggio operativo" },
+      "channels": { "firstParty": "Aggregati interni minimizzati", "mixed": "Analytics autorizzati e monitoraggio interno separato", "technical": "Diagnostica e metriche tecniche" },
+      "labels": { "question": "Domanda di business", "evidence": "Prove disponibili", "limit": "Limite di interpretazione", "channel": "Canale" },
+      "openModule": "Apri il modulo",
+      "modules": {
+        "rank": { "title": "Classifiche affidabili", "question": "Le classifiche restano comprensibili e affidabili quando le prove sono deboli?", "evidence": "Diagnostica di prove, esclusioni, versioni delle regole e ricostruzioni.", "limit": "Le aperture della metodologia restano riservate: il volume delle visualizzazioni non misura la fiducia." },
+        "pass": { "title": "Passaporto delle visite", "question": "Il Passaporto offre abbastanza valore da portare a una seconda visita registrata?", "evidence": "Coorte aggregata della prima e seconda visita, completamenti e andamento giornaliero.", "limit": "La north star non sostituisce né le interviste né il controllo della qualità dei dati inseriti." },
+        "share": { "title": "Condivisioni controllate", "question": "Le condivisioni vengono pubblicate, consultate e revocate volontariamente senza perdere il controllo?", "evidence": "Funnel autorizzato in Matomo; moderazione e revoche nel modulo interno.", "limit": "Le fonti restano separate: nessun identificativo di condivisione può collegarle." },
+        "fit": { "title": "Consigli Park Fit", "question": "Il consiglio viene completato nonostante i dati sconosciuti?", "evidence": "Avvii, completamenti, abbandoni, nessun risultato, dati sconosciuti e segnalazioni.", "limit": "Un alto tasso di completamento non convalida da solo la pertinenza dei risultati." },
+        "watch": { "title": "Avvisi fattuali", "question": "Gli avvisi arrivano in tempo, una sola volta e senza trarre in inganno?", "evidence": "Consegne, duplicati, latenza, errori, coda e segnalazioni aggregate.", "limit": "Il volume degli avvisi o i clic sulle e-mail non sono mai un obiettivo isolato." },
+        "trip": { "title": "Viaggi collaborativi", "question": "I gruppi riescono a registrare preferenze e poi a prendere una decisione utilizzabile?", "evidence": "Piani collaborativi, preferenze, decisioni e indicatori di audit aggregati.", "limit": "Le metriche non espongono partecipanti, destinazioni o scelte esatte." },
+        "hist": { "title": "Storie e cronologie", "question": "La copertura storica è sufficientemente documentata per essere compresa?", "evidence": "Diagnostica di snapshot, fonti, incoerenze ed elaborazioni.", "limit": "L’apertura di una cronologia non costituisce mai una prova storica." },
+        "live": { "title": "Dati in tempo reale", "question": "I dati live restano aggiornati, disponibili e abbastanza affidabili da essere mostrati?", "evidence": "Aggiornamento, fornitori, circuiti, quarantene e precisione delle previsioni.", "limit": "Nessun parco, attrazione, attesa esatta o posizione entra nell’analytics di prodotto." }
+      }
+    }
+  }
+}
