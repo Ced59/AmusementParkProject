@@ -77,13 +77,12 @@ describe('StandaloneAttractionsApiService', () => {
   });
 
   it('loads public hours, pricing and weather for a standalone attraction', () => {
-    service.getOpeningHours('standalone 1').subscribe();
+    service.getOpeningHours('standalone 1', '2026-09-28', '2026-10-14').subscribe();
     service.getPricing('standalone 1').subscribe();
     service.getWeather('standalone 1').subscribe();
 
-    const openingHoursRequest = httpTestingController.expectOne(
-      `${environment.apiBaseUrl}standalone-attractions/standalone%201/opening-hours`
-    );
+    const openingHoursRequest = httpTestingController.expectOne((candidate) =>
+      candidate.url === `${environment.apiBaseUrl}standalone-attractions/standalone%201/opening-hours`);
     const pricingRequest = httpTestingController.expectOne(
       `${environment.apiBaseUrl}standalone-attractions/standalone%201/pricing`
     );
@@ -91,6 +90,8 @@ describe('StandaloneAttractionsApiService', () => {
       `${environment.apiBaseUrl}standalone-attractions/standalone%201/weather`
     );
     expect(openingHoursRequest.request.method).toBe('GET');
+    expect(openingHoursRequest.request.params.get('from')).toBe('2026-09-28');
+    expect(openingHoursRequest.request.params.get('to')).toBe('2026-10-14');
     expect(pricingRequest.request.method).toBe('GET');
     expect(weatherRequest.request.method).toBe('GET');
     openingHoursRequest.flush({ parkId: 'standalone 1', days: [] });

@@ -41,6 +41,24 @@ describe('StandaloneAttractionPricingCardComponent', () => {
       })
     ]);
   });
+
+  it('does not truncate later offer families when admission has four offers', () => {
+    const component = createComponent();
+    const pricing: ParkPricing = createPricing();
+    pricing.admissionOffers = [0, 1, 2, 3].map((index: number) => ({
+      ...pricing.admissionOffers[0],
+      id: `admission-${index}`,
+      code: `admission-${index}`
+    }));
+    component.pricing = pricing;
+
+    expect(component.summaries).toHaveLength(7);
+    expect(component.summaries.map((summary) => summary.key)).toEqual(expect.arrayContaining([
+      'annual-pass:season-pass',
+      'parking:day-parking',
+      'credit:ride:10'
+    ]));
+  });
 });
 
 function createComponent(): StandaloneAttractionPricingCardComponent {

@@ -58,10 +58,18 @@ export class StandaloneAttractionsApiService {
     return this.http.get<StandaloneAttraction>(`${this.baseUrl}/${encodeURIComponent(id)}`, options);
   }
 
-  getOpeningHours(id: string, options: StandaloneAttractionsHttpOptions = {}): Observable<ParkOpeningHoursCalendar> {
+  getOpeningHours(
+    id: string,
+    from?: string | null,
+    to?: string | null,
+    options: StandaloneAttractionsHttpOptions = {}
+  ): Observable<ParkOpeningHoursCalendar> {
+    let params: HttpParams = new HttpParams();
+    params = this.appendString(params, 'from', from);
+    params = this.appendString(params, 'to', to);
     return this.http.get<ParkOpeningHoursCalendar>(
       `${this.baseUrl}/${encodeURIComponent(id)}/opening-hours`,
-      options
+      { ...options, params }
     );
   }
 

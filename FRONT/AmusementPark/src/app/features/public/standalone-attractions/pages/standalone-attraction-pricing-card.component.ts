@@ -116,7 +116,7 @@ export class StandaloneAttractionPricingCardComponent {
       ...annualPassSummaries,
       ...parkingSummaries,
       ...creditSummaries
-    ].slice(0, 4);
+    ];
   }
 
   private localizedText(values: LocalizedItem<string>[], fallback: string): string {
