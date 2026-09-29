@@ -60,6 +60,12 @@ la prochaine heure entière lorsqu’elle appartient encore à la fenêtre de
 collecte du même jour local. Cette règle évite d’annoncer une attente pour une
 journée dont les horaires réels ne sont pas prouvés par ce sous-système.
 
+La borne horaire est calculée dans le fuseau du parc, puis convertie en UTC.
+Cela conserve les vraies heures rondes dans les fuseaux à décalage de 30 ou 45
+minutes. Lors d'un changement d'heure, le domaine saute une heure locale
+inexistante et choisit l'occurrence tardive d'une heure répétée afin de publier
+un intervalle local explicite et chronologique.
+
 ## Calcul de la valeur
 
 Pour l’heure visée, le domaine conserve les points des 84 derniers jours ayant :

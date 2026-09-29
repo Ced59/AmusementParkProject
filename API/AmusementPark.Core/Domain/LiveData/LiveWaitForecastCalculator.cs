@@ -18,7 +18,12 @@ public sealed class LiveWaitForecastCalculator
         ArgumentNullException.ThrowIfNull(activeWindow);
         EnsureUtc(calculatedAtUtc, nameof(calculatedAtUtc));
 
-        DateTime forecastFromUtc = NextWholeHour(calculatedAtUtc);
+        DateTime forecastFromUtc = ResolveFollowingLocalHourBoundary(
+            calculatedAtUtc,
+            activeWindow.TimeZone);
+        DateTime forecastToUtc = ResolveFollowingLocalHourBoundary(
+            forecastFromUtc,
+            activeWindow.TimeZone);
         DateTime calculatedLocal = TimeZoneInfo.ConvertTimeFromUtc(
             calculatedAtUtc,
             activeWindow.TimeZone);
@@ -48,7 +53,7 @@ public sealed class LiveWaitForecastCalculator
 
         return new LiveWaitForecast(
             forecastFromUtc,
-            forecastFromUtc.AddHours(1),
+            forecastToUtc,
             calculatedAtUtc,
             Math.Round(LiveWaitForecastObservationSeries.Percentile(comparableWaits, 0.50d), 1),
             Math.Round(LiveWaitForecastObservationSeries.Percentile(comparableWaits, 0.10d), 1),
@@ -56,11 +61,48 @@ public sealed class LiveWaitForecastCalculator
             comparableWaits.Length);
     }
 
-    private static DateTime NextWholeHour(DateTime timestampUtc)
+    private static DateTime ResolveFollowingLocalHourBoundary(
+        DateTime timestampUtc,
+        TimeZoneInfo timeZone)
     {
-        long hourTicks = TimeSpan.TicksPerHour;
-        long nextHourTicks = ((timestampUtc.Ticks / hourTicks) + 1) * hourTicks;
-        return new DateTime(nextHourTicks, DateTimeKind.Utc);
+        DateTime timestampLocal = TimeZoneInfo.ConvertTimeFromUtc(timestampUtc, timeZone);
+        DateTime localBoundary = DateTime.SpecifyKind(
+            new DateTime(
+                timestampLocal.Year,
+                timestampLocal.Month,
+                timestampLocal.Day,
+                timestampLocal.Hour,
+                0,
+                0).AddHours(1),
+            DateTimeKind.Unspecified);
+
+        for (int candidateIndex = 0; candidateIndex < 24; candidateIndex++)
+        {
+            if (timeZone.IsInvalidTime(localBoundary))
+            {
+                localBoundary = localBoundary.AddHours(1);
+                continue;
+            }
+
+            DateTime[] candidatesUtc = timeZone.IsAmbiguousTime(localBoundary)
+                ? timeZone.GetAmbiguousTimeOffsets(localBoundary)
+                    .Select(offset => new DateTimeOffset(localBoundary, offset).UtcDateTime)
+                    .OrderDescending()
+                    .ToArray()
+                : new[] { TimeZoneInfo.ConvertTimeToUtc(localBoundary, timeZone) };
+            foreach (DateTime candidateUtc in candidatesUtc)
+            {
+                if (candidateUtc > timestampUtc)
+                {
+                    return candidateUtc;
+                }
+            }
+
+            localBoundary = localBoundary.AddHours(1);
+        }
+
+        throw new InvalidOperationException(
+            "A following local-hour boundary could not be resolved for the configured time zone.");
     }
 
     private static void EnsureUtc(DateTime value, string parameterName)
