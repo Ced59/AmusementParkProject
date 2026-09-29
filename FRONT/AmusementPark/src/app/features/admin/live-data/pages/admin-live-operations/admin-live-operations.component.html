@@ -261,6 +261,12 @@
               <span>{{ 'admin.liveOperations.backtest.intervalCoverage' | translate }}</span>
               <strong>{{ study.intervalCoveragePercent !== null ? ((study.intervalCoveragePercent | number:'1.1-1') + ' %') : '—' }}</strong>
               <small>{{ 'admin.liveOperations.backtest.expected' | translate:{ value: study.policy.nominalIntervalCoveragePercent } }}</small>
+              <small>{{ 'admin.liveOperations.backtest.minimumAccepted' | translate:{ value: study.policy.minimumIntervalCoveragePercent } }}</small>
+              <small>
+                {{ 'admin.liveOperations.backtest.medianIntervalWidth' | translate }}
+                {{ study.medianIntervalWidthMinutes !== null ? ((study.medianIntervalWidthMinutes | number:'1.1-1') + ' min') : '—' }}
+                · {{ 'admin.liveOperations.backtest.maximum' | translate:{ value: study.policy.maximumUsefulMedianIntervalWidthMinutes } }}
+              </small>
             </article>
           </div>
 
