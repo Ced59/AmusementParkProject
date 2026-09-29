@@ -107,7 +107,7 @@ Pour couper l’accès depuis Codex :
 | Préparer puis publier explicitement un lien Facebook | `GET park-data-editor/social-publications/facebook/draft`, puis `POST park-data-editor/social-publications/facebook` |
 | Révoquer le jeton courant | `DELETE park-data-editor/tokens/current` |
 
-Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les autres opérations de réseaux sociaux, le SEO, les sources de données, une route générale de suppression ou les autres fonctions d’administration. La seule suppression disponible est le lot contrôlé `suppr` d’un parc, limité aux images, parkItems et zones explicitement identifiés et autorisés.
+Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les autres opérations de réseaux sociaux, le SEO, les sources de données, une route générale de suppression ou les autres fonctions d’administration. La seule suppression disponible est le lot contrôlé `suppr` d’un parc, limité aux images, parkItems, zones et au parc cible lui-même lorsqu’ils sont explicitement identifiés et autorisés. La suppression du parc parent est refusée tant qu’il est visible, qu’il n’est pas classé `NotRelevant` ou qu’une dépendance contrôlée subsiste.
 
 `SearchParks` accepte `-Page` et `-PageSize` pour parcourir séquentiellement l’inventaire complet sans contourner le client officiel. La taille de page est limitée à 50 et chaque page doit être traitée avant d’appeler la suivante.
 
@@ -236,7 +236,8 @@ Une commande de complétude ou de publication n’autorise jamais implicitement 
 - `targetParkId` et `identity.parkId`, lorsqu’il est présent, désignent exactement le parc annoncé ;
 - `createIfMissing` et `replaceCollections` valent `false`, tandis que `document.mode` vaut `merge` ;
 - `suppr` contient exactement un objet avec uniquement `entityType` et `id` ; un nettoyage de plusieurs doublons est une file d’opérations unitaires, strictement séquentielles ;
-- les seuls types acceptés sont `Image`, `ParkItem` et `ParkZone` ; aucun identifiant nu, alias implicite ou suppression par absence n’est accepté ;
+- les seuls types acceptés sont `Image`, `ParkItem`, `ParkZone` et `Park` ; aucun identifiant nu, alias implicite ou suppression par absence n’est accepté ;
+- une cible `Park` doit reprendre exactement le `ParkId` annoncé, être masquée et classée `NotRelevant`, puis venir après la suppression unitaire de ses images, parkItems et zones ; la Preview refuse aussi le parc tant que des cartes officielles, horaires, tarifs ou événements historiques subsistent ;
 - les IDs proviennent d’un export frais et chaque dépendance à retirer est listée explicitement ; pour un doublon d’image, vérifier notamment qu’il n’est ni courant ni publié et que la copie conservée est bien identifiée ;
 - toute suppression d’un contenu public, courant ou partagé exige une instruction spécifique qui annonce cette conséquence ;
 - aucun warning, aucune erreur, aucune cible manquante et aucune mutation supplémentaire ne sont tolérés entre la Preview et l’Apply.
@@ -275,7 +276,7 @@ L’exécution utilise exclusivement le client officiel et un reçu dédié, non
   -ReceiptPath .\work\park-duplicates.deletion-preview-receipt.json
 ```
 
-`PreviewDeletion` exige exactement un changement `Deleted` correspondant à la cible annoncée et refuse tout warning ou changement inattendu. `ApplyDeletion` vérifie à nouveau le parc, le hash, l’âge du reçu et l’identité de la cible. Le serveur résout et valide la totalité de tout document `suppr` avant la première mutation, rejette les cibles répétées et interrompt le traitement au premier échec. Le client contrôlé impose en plus une seule cible par Apply : une panne ne peut donc pas produire la réussite partielle d’un lot multi-cible. Une image n’est considérée supprimée que lorsque toutes ses variantes binaires ont été retirées du stockage avant ses métadonnées. Un échec binaire conserve donc les métadonnées et fait échouer l’opération. Les parkItems et zones sont supprimés par leurs repositories applicatifs ; leurs images ou dépendances éventuelles doivent faire l’objet de leurs propres opérations unitaires préalablement contrôlées.
+`PreviewDeletion` exige exactement un changement `Deleted` correspondant à la cible annoncée et refuse tout warning ou changement inattendu. `ApplyDeletion` vérifie à nouveau le parc, le hash, l’âge du reçu et l’identité de la cible. Le serveur résout et valide la totalité de tout document `suppr` avant la première mutation, rejette les cibles répétées et interrompt le traitement au premier échec. Le client contrôlé impose en plus une seule cible par Apply : une panne ne peut donc pas produire la réussite partielle d’un lot multi-cible. Une image n’est considérée supprimée que lorsque toutes ses variantes binaires ont été retirées du stockage avant ses métadonnées. Un échec binaire conserve donc les métadonnées et fait échouer l’opération. Les parkItems et zones sont supprimés par leurs repositories applicatifs ; leurs images ou dépendances éventuelles doivent faire l’objet de leurs propres opérations unitaires préalablement contrôlées. Le parc parent est toujours la dernière cible de la file et sa suppression retire aussi sa projection de recherche sans la recréer ensuite.
 
 Après Apply, produire l’export ciblé nécessaire pour prouver l’absence de chaque ID et la conservation des entités attendues. Après une réponse perdue ou ambiguë, vérifier l’état global et l’historique puis réexécuter une Preview : ne jamais relancer directement `ApplyDeletion`.
 

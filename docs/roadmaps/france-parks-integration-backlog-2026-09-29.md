@@ -11,6 +11,8 @@ Chaque ligne active est traitée avec le workflow `PARK_DATA_EDITOR`, les étape
 
 Une fusion de doublons, une migration vers `StandaloneAttraction` ou un classement `NotRelevant` ne compte pas comme publication d'un parc : ces cas restent documentés dans les anomalies et ne déclenchent pas d'annonce Facebook artificielle.
 
+La demande du 29 septembre 2026 autorise explicitement la publication Facebook de chaque fiche terminée. Cette autorisation sociale est propre à ce lot français et ne doit pas être déduite d'une future demande de complétude ordinaire.
+
 ## Sources et photographie initiale
 
 - Recherche séquentielle `PARK_DATA_EDITOR` du 29 septembre 2026 : 268 enregistrements avec `countryCode: FR`, dont 30 visibles, 137 invisibles à revoir ou traiter et 101 invisibles déjà classés `NotRelevant`.
@@ -28,7 +30,7 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 13 |
 | Fiches privées existantes à intégrer | 80 | 80 |
-| Parcs en activité absents de la photographie FR | 61 | 61 |
+| Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 42 | 42 |
@@ -303,7 +305,7 @@ Ces 17 fiches étaient strictement au-dessus de 95 et sans bloqueur lors du calc
 
 ## Nettoyage préalable : faux parcs à supprimer
 
-Ces 99 cibles sont invisibles et déjà classées `NotRelevant`. Elles correspondent à des personnes, familles, exploitants forains, sociétés sans parc fixe ou libellés manifestement non publiables. Chaque suppression doit utiliser `PreviewDeletion` puis `ApplyDeletion`, supprimer préalablement les dépendances indiquées par l'export et le Preview, et prouver ensuite l'absence du parc et de ses parkItems. `L’île aux Enfants` est volontairement exclu de ce lot tant que son identité n'est pas tranchée ; Alpe d'Huez a été reclassée dans la file des attractions autonomes après confirmation de sa luge sur rail fixe.
+Ces 99 cibles sont invisibles et déjà classées `NotRelevant`. Elles correspondent à des personnes, familles, exploitants forains, sociétés sans parc fixe ou libellés manifestement non publiables. Chaque suppression doit utiliser `PreviewDeletion` puis `ApplyDeletion`, retirer unitairement les dépendances indiquées par l'export et le Preview, supprimer le parc parent en toute dernière opération contrôlée, puis prouver l'absence du parc et de ses parkItems. `L’île aux Enfants` est volontairement exclu de ce lot tant que son identité n'est pas tranchée ; Alpe d'Huez a été reclassée dans la file des attractions autonomes après confirmation de sa luge sur rail fixe.
 
 - [ ] Alexis Coquoz — `fd223f71-faf3-408a-a6a7-d9a9ca7f7892`
 - [ ] Anthony Prunier — `28e3f84a-99c5-4201-b099-3e1ab317253f`

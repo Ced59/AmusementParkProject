@@ -52,4 +52,6 @@ internal sealed class ParkGraphDeletionTarget
     public ParkItem? ParkItem { get; init; }
 
     public ParkZone? ParkZone { get; init; }
+
+    public Park? Park { get; init; }
 }

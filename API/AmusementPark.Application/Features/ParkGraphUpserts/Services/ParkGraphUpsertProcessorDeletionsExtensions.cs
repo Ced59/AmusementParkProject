@@ -28,6 +28,7 @@ using System.Text;
 using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.ParkOpeningHours.Ports;
+using AmusementPark.Application.Features.ParkOpeningHours.Models;
 using AmusementPark.Application.Features.ParkOpeningHours.Services;
 using AmusementPark.Application.Features.ParkPricing.Ports;
 using AmusementPark.Application.Features.ParkPricing.Services;
@@ -173,6 +174,35 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             };
         }
 
+        if (string.Equals(normalizedEntityType, "Park", StringComparison.Ordinal))
+        {
+            Park? park = await processorContext.parkRepository.GetByIdAsync(id, true, cancellationToken);
+            if (park is null)
+            {
+                processorContext.AddSkippedDeletionChange(result, "Park", id, $"Suppression Park '{id}' impossible : parc introuvable.");
+                return null;
+            }
+
+            if (park.IsVisible || park.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+            {
+                processorContext.AddSkippedDeletionChange(result, "Park", id, $"Suppression Park '{id}' refusée : seul un parc masqué et classé NotRelevant peut être supprimé par ce workflow contrôlé.");
+                return null;
+            }
+
+            if (!await processorContext.CanDeleteParkAsync(park, result, cancellationToken))
+            {
+                return null;
+            }
+
+            return new ParkGraphDeletionTarget
+            {
+                EntityType = "Park",
+                Id = park.Id,
+                DisplayName = park.Name ?? park.Id,
+                Park = park,
+            };
+        }
+
         processorContext.AddSkippedDeletionChange(result, request.EntityType ?? "Unknown", id, $"Suppression '{request.EntityType}' impossible : type non pris en charge par le JSON upsert.");
         return null;
     }
@@ -269,6 +299,18 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             return await processorContext.parkZoneRepository.DeleteAsync(target.ParkZone.Id, cancellationToken);
         }
 
+        if (target.Park is not null)
+        {
+            bool deleted = await processorContext.parkRepository.DeleteAsync(target.Park.Id, cancellationToken);
+            if (!deleted)
+            {
+                return false;
+            }
+
+            await processorContext.searchProjectionWriter.DeleteAsync(SearchProjectionResourceTypes.Parks, target.Park.Id, cancellationToken);
+            return true;
+        }
+
         return false;
     }
 
@@ -289,6 +331,75 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             return await processorContext.IsImageDeletionTargetInTargetParkAsync(target.Image, targetPark, cancellationToken);
         }
 
+        if (target.Park is not null)
+        {
+            return string.Equals(target.Park.Id, targetPark.Id, StringComparison.Ordinal);
+        }
+
+        return false;
+    }
+
+    internal static async Task<bool> CanDeleteParkAsync(this ParkGraphUpsertProcessor processorContext, Park park, ParkGraphUpsertResult result, CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<ParkItem> items = await processorContext.parkItemRepository.GetByParkIdAsync(park.Id, true, cancellationToken);
+        IReadOnlyCollection<ParkZone> zones = await processorContext.parkZoneRepository.GetByParkIdAsync(park.Id, cancellationToken);
+        IReadOnlyCollection<Image> images = await processorContext.imageRepository.GetByOwnersAsync(ImageOwnerType.Park, new[] { park.Id }, null, cancellationToken);
+        ParkOpeningHoursSchedule? openingHours = processorContext.parkOpeningHoursRepository is null
+            ? null
+            : await processorContext.parkOpeningHoursRepository.GetByParkIdAsync(park.Id, cancellationToken);
+        ParkPricingEntity? pricing = processorContext.parkPricingRepository is null
+            ? null
+            : await processorContext.parkPricingRepository.GetByParkIdAsync(park.Id, cancellationToken);
+        IReadOnlyCollection<HistoryEvent> historyEvents = processorContext.historyEventRepository is null
+            ? Array.Empty<HistoryEvent>()
+            : await processorContext.historyEventRepository.GetOwnerTimelineAsync(HistoryEntityType.Park, park.Id, true, cancellationToken);
+
+        List<string> dependencies = new List<string>();
+        if (items.Count > 0)
+        {
+            dependencies.Add($"{items.Count} parkItem(s)");
+        }
+
+        if (zones.Count > 0)
+        {
+            dependencies.Add($"{zones.Count} zone(s)");
+        }
+
+        if (images.Count > 0)
+        {
+            dependencies.Add($"{images.Count} image(s) de parc");
+        }
+
+        if (park.OfficialMaps.Count > 0)
+        {
+            dependencies.Add($"{park.OfficialMaps.Count} carte(s) officielle(s)");
+        }
+
+        if (openingHours is not null)
+        {
+            dependencies.Add("des horaires");
+        }
+
+        if (pricing is not null)
+        {
+            dependencies.Add("une tarification");
+        }
+
+        if (historyEvents.Count > 0)
+        {
+            dependencies.Add($"{historyEvents.Count} événement(s) historique(s)");
+        }
+
+        if (dependencies.Count == 0)
+        {
+            return true;
+        }
+
+        processorContext.AddSkippedDeletionChange(
+            result,
+            "Park",
+            park.Id,
+            $"Suppression Park '{park.Id}' refusée : retirer d'abord les dépendances contrôlées suivantes : {string.Join(", ", dependencies)}.");
         return false;
     }
 
@@ -503,6 +614,7 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             "image" or "images" => "Image",
             "parkitem" or "parkitems" or "item" or "items" or "attraction" or "attractions" => "ParkItem",
             "parkzone" or "parkzones" or "zone" or "zones" => "ParkZone",
+            "park" or "parks" or "parc" or "parcs" => "Park",
             _ => entityType.Trim(),
         };
     }

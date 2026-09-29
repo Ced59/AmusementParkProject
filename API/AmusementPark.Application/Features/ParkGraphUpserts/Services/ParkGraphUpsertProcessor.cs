@@ -325,9 +325,17 @@ public sealed class ParkGraphUpsertProcessor
         await this.ProcessHistoryEventsAsync(root, targetPark, itemKeys, imageKeys, result, apply, cancellationToken);
         ParkGraphUpsertItemSeoChanges deletionSeoChanges = await this.ProcessDeletionsAsync(root, targetPark, result, apply, cancellationToken);
         itemSeoChanges.MergeFrom(deletionSeoChanges);
+        bool targetParkDeleted = result.Changes.Any(change =>
+            string.Equals(change.EntityType, "Park", StringComparison.Ordinal)
+            && string.Equals(change.EntityId, targetPark.Id, StringComparison.Ordinal)
+            && string.Equals(change.ChangeType, "Deleted", StringComparison.Ordinal));
         if (apply)
         {
-            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, targetPark.Id, cancellationToken);
+            if (!targetParkDeleted)
+            {
+                await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, targetPark.Id, cancellationToken);
+            }
+
             if (itemSeoChanges.ChangedItemIds.Count > 0)
             {
                 await this.searchProjectionWriter.UpsertManyAsync(SearchProjectionResourceTypes.ParkItems, itemSeoChanges.ChangedItemIds, cancellationToken);
@@ -339,10 +347,16 @@ public sealed class ParkGraphUpsertProcessor
                 {
                     previousParkSnapshot
                 }.Concat(mergeSummary.PreviousParks).ToList();
-                await this.publicSeoUpdateNotifier.NotifyAsync(new PublicSeoUpdate { PreviousParks = previousParks, CurrentParks = PublicSeoParkSnapshot.FromParks(new[] { targetPark }).Concat(mergeSummary.CurrentParks).ToList(), PreviousParkItems = itemSeoChanges.PreviousItems.Concat(mergeSummary.PreviousParkItems).ToList(), CurrentParkItems = itemSeoChanges.CurrentItems.Concat(mergeSummary.CurrentParkItems).ToList(), PreviousParkZones = zoneSeoChanges.PreviousZones, CurrentParkZones = zoneSeoChanges.CurrentZones, IncludeDiscoveryPages = true, }, cancellationToken);
+                IReadOnlyCollection<PublicSeoParkSnapshot> currentParks = targetParkDeleted
+                    ? mergeSummary.CurrentParks
+                    : PublicSeoParkSnapshot.FromParks(new[] { targetPark }).Concat(mergeSummary.CurrentParks).ToList();
+                await this.publicSeoUpdateNotifier.NotifyAsync(new PublicSeoUpdate { PreviousParks = previousParks, CurrentParks = currentParks, PreviousParkItems = itemSeoChanges.PreviousItems.Concat(mergeSummary.PreviousParkItems).ToList(), CurrentParkItems = itemSeoChanges.CurrentItems.Concat(mergeSummary.CurrentParkItems).ToList(), PreviousParkZones = zoneSeoChanges.PreviousZones, CurrentParkZones = zoneSeoChanges.CurrentZones, IncludeDiscoveryPages = true, }, cancellationToken);
             }
 
-            await this.PublishNewlyVisibleParkAsync(targetPark, wasPubliclyDiscoverable, requestedByUserId, result, cancellationToken);
+            if (!targetParkDeleted)
+            {
+                await this.PublishNewlyVisibleParkAsync(targetPark, wasPubliclyDiscoverable, requestedByUserId, result, cancellationToken);
+            }
         }
 
         ParkGraphUpsertProcessorResolutionExtensions.FinalizeCounts(result);
