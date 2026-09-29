@@ -82,8 +82,8 @@ public sealed class LiveOperationalControlScope : IEquatable<LiveOperationalCont
 
         if (this.Type == LiveOperationalScopeType.Park)
         {
-            return internalParkId is null
-                || string.Equals(this.InternalParkId, internalParkId, StringComparison.Ordinal);
+            return internalParkId is not null
+                && string.Equals(this.InternalParkId, internalParkId, StringComparison.Ordinal);
         }
 
         return targetType.HasValue

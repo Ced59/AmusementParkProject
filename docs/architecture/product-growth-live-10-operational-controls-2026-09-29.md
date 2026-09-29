@@ -34,11 +34,13 @@ contrôle source ──► contrôle parc ──► contrôle attraction
         └──────── un seul « non » arrête le périmètre ───────┘
 ```
 
-La collecte est vérifiée avant de prendre un lease ou d’appeler le fournisseur,
-puis une seconde fois par cible avant persistance. Le rejeu de quarantaine
-applique également ce contrôle et laisse l’incident en attente tant que la
-collecte est arrêtée. La lecture publique applique la même hiérarchie et
-conserve la réponse publique neutre existante lorsque le direct est masqué.
+La configuration et le contrôle source sont vérifiés avant de prendre un lease
+ou d’appeler le fournisseur. Les contrôles parc et attraction s’appliquent une
+fois le mapping interne courant connu, avant persistance : un ancien contrôle de
+parc ne peut donc pas bloquer un parc remappé. Le rejeu de quarantaine applique
+également ce contrôle et laisse l’incident en attente tant que la collecte est
+arrêtée. La lecture publique applique la même hiérarchie et conserve la réponse
+publique neutre existante lorsque le direct est masqué.
 
 ## Exploitation
 
@@ -50,6 +52,8 @@ sans troncature par une page globale de la source. Chaque changement exige un
 motif, utilise une révision attendue contre les
 écrasements concurrents et reste présent dans l’historique. Le rejeu de la
 quarantaine reste borné à 100 incidents par action.
+Après une mutation réussie, le cache HTTP du direct est évincé par son tag dédié
+sans refroidir les autres données publiques ni les pages SSR.
 
 ## Retour arrière
 

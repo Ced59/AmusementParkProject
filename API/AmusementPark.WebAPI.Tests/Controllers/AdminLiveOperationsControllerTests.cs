@@ -11,6 +11,7 @@ using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.LiveData;
 using AmusementPark.WebAPI.Controllers;
 using AmusementPark.WebAPI.Filters;
+using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.RateLimiting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -48,6 +49,9 @@ public sealed class AdminLiveOperationsControllerTests
             RateLimitPolicyNames.LiveDataAdministration,
             update.GetCustomAttribute<EnableRateLimitingAttribute>()?.PolicyName);
         Assert.NotNull(update.GetCustomAttribute<AdminAuditAttribute>());
+        InvalidatesPublicCacheAttribute cacheInvalidation = Assert.IsType<InvalidatesPublicCacheAttribute>(
+            update.GetCustomAttribute<InvalidatesPublicCacheAttribute>());
+        Assert.Equal(PublicCacheScope.LiveData, Assert.Single(cacheInvalidation.Scopes));
     }
 
     [Fact]

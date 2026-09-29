@@ -8,6 +8,7 @@ using AmusementPark.WebAPI.Contracts.LiveData;
 using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
+using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
@@ -60,6 +61,7 @@ public sealed class AdminLiveOperationsController : ControllerBase
     [HttpPut("controls")]
     [EnableRateLimiting(RateLimitPolicyNames.LiveDataAdministration)]
     [AdminAudit("live.operations.control.update", "LiveOperationalControl", StaticTargetId = "scope")]
+    [InvalidatesPublicCache(PublicCacheScope.LiveData)]
     [ProducesResponseType(typeof(LiveOperationalScopeDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateControlAsync(
         [FromBody] UpdateLiveOperationalControlRequestDto request,

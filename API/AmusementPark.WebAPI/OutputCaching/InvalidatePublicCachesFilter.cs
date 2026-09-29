@@ -313,6 +313,7 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
                 PublicCacheScope.Data => ApiOutputCachePolicyNames.PublicDataTag,
                 PublicCacheScope.ReferenceData => ApiOutputCachePolicyNames.PublicReferenceDataTag,
                 PublicCacheScope.Seo => ApiOutputCachePolicyNames.PublicSeoTag,
+                PublicCacheScope.LiveData => ApiOutputCachePolicyNames.PublicLiveDataTag,
                 _ => throw new ArgumentOutOfRangeException(nameof(scopes), scope, "Unsupported public cache scope.")
             })
             .Distinct(StringComparer.Ordinal)

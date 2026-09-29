@@ -23,6 +23,27 @@ namespace AmusementPark.WebAPI.Tests.OutputCaching;
 public sealed class SsrPageCacheInvalidationRequestResolverTests
 {
     [Fact]
+    public async Task ResolveAsync_ForLiveData_ShouldNotInvalidateSsrOrSeoDocuments()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext(
+            "AdminLiveOperations",
+            new Dictionary<string, object?>());
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request =
+            await resolver.ResolveAsync(
+                context,
+                null,
+                new[] { PublicCacheScope.LiveData },
+                CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Empty(request.Paths);
+        Assert.Empty(request.Prefixes);
+        Assert.False(request.IncludeSeoDocuments);
+    }
+
+    [Fact]
     public async Task ResolveAsync_ForParkPricingUpdate_ShouldTargetOnlyTheParkAndSeoDocuments()
     {
         SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();

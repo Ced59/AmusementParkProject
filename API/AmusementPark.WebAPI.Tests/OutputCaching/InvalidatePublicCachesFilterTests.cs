@@ -15,6 +15,35 @@ namespace AmusementPark.WebAPI.Tests.OutputCaching;
 public sealed class InvalidatePublicCachesFilterTests
 {
     [Fact]
+    public async Task OnActionExecutionAsync_WhenLiveMutationSucceeds_ShouldEvictOnlyLiveOutputCache()
+    {
+        Mock<IOutputCacheStore> outputCacheStore =
+            CreateOutputCacheStore(ApiOutputCachePolicyNames.PublicLiveDataTag);
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator =
+            new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver =
+            CreateResolver(CreateNoOpRequest());
+        InvalidatePublicCachesFilter filter = CreateFilter(
+            outputCacheStore,
+            ssrPageCacheInvalidator,
+            resolver);
+        ActionExecutingContext context = CreateExecutingContext(
+            HttpMethods.Put,
+            new InvalidatesPublicCacheAttribute(PublicCacheScope.LiveData));
+
+        await filter.OnActionExecutionAsync(
+            context,
+            () => Task.FromResult(CreateExecutedContext(context)));
+
+        outputCacheStore.VerifyAll();
+        ssrPageCacheInvalidator.Verify(
+            value => value.InvalidateAsync(
+                It.IsAny<SsrPageCacheInvalidationRequest>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+    }
+
+    [Fact]
     public async Task OnActionExecutionAsync_WhenSuccessfulMutationWithScopes_ShouldEvictTagsAndInvalidateSsr()
     {
         Mock<IOutputCacheStore> outputCacheStore = new Mock<IOutputCacheStore>(MockBehavior.Strict);

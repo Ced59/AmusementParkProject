@@ -12,5 +12,8 @@ public enum PublicCacheScope
     ReferenceData,
 
     /// <summary>Documents SEO (robots.txt, sitemaps).</summary>
-    Seo
+    Seo,
+
+    /// <summary>Données opérationnelles en direct.</summary>
+    LiveData
 }

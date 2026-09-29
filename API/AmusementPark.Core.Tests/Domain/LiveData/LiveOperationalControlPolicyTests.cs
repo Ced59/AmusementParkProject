@@ -89,6 +89,37 @@ public sealed class LiveOperationalControlPolicyTests
     }
 
     [Fact]
+    public void AllowsCollection_WhenParkContextIsUnknown_ShouldIgnoreParkControl()
+    {
+        LiveOperationalControl parkControl = CreateControl(
+            new LiveOperationalControlScope(
+                LiveOperationalScopeType.Park,
+                SourceId,
+                "external-park",
+                "park-old",
+                null,
+                null),
+            false,
+            false);
+        LiveOperationalControlPolicy policy = new LiveOperationalControlPolicy();
+
+        Assert.True(policy.AllowsCollection(
+            true,
+            new[] { parkControl },
+            "external-park"));
+        Assert.False(policy.AllowsCollection(
+            true,
+            new[] { parkControl },
+            "external-park",
+            "park-old"));
+        Assert.True(policy.AllowsCollection(
+            true,
+            new[] { parkControl },
+            "external-park",
+            "park-new"));
+    }
+
+    [Fact]
     public void Revise_ShouldPreserveIdentityAndAppendRevision()
     {
         LiveOperationalControl current = CreateControl(

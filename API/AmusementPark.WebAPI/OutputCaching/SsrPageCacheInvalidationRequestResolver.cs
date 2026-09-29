@@ -64,7 +64,9 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         ArgumentNullException.ThrowIfNull(context);
         ArgumentNullException.ThrowIfNull(scopes);
 
-        bool includeSeoDocuments = scopes.Count > 0;
+        bool includeSeoDocuments = scopes.Contains(PublicCacheScope.Data)
+            || scopes.Contains(PublicCacheScope.ReferenceData)
+            || scopes.Contains(PublicCacheScope.Seo);
         bool hasPageImpact = scopes.Contains(PublicCacheScope.Data) || scopes.Contains(PublicCacheScope.ReferenceData);
 
         if (!hasPageImpact)
