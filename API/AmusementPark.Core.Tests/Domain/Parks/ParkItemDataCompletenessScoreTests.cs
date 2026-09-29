@@ -106,6 +106,22 @@ public sealed class ParkItemDataCompletenessScoreTests
     }
 
     [Fact]
+    public void CalculateDataCompletenessScore_WhenNameAndAccessLabelContainLegitimateMetrics_ShouldNotExposeBlocker()
+    {
+        ParkItem attraction = CreateMechanicalAttraction();
+        attraction.Name = "La Piscine 25 Mètres";
+        attraction.AttractionDetails!.AccessConditions[0].Label = new List<LocalizedText>
+        {
+            new LocalizedText("fr", "Taille minimale : 120 cm"),
+            new LocalizedText("en", "Minimum height: 120 cm"),
+        };
+
+        DataCompletenessScore score = attraction.CalculateDataCompletenessScore(CreateRichParkItemContext());
+
+        Assert.NotEqual("public-text.forbidden-editorial-language", score.PublicationBlocker);
+    }
+
+    [Fact]
     public void CalculateDataCompletenessScore_WhenDisplayedTechnicalTextContainsHtmlEntity_ShouldExposeBlockerAndCapScore()
     {
         ParkItem attraction = CreateMechanicalAttraction();

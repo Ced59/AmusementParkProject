@@ -129,8 +129,8 @@ public sealed class ParkItem : GeolocatedEntityBase
     {
         ParkItemDataCompletenessContext scoreContext = context ?? new ParkItemDataCompletenessContext();
         DataCompletenessScoreBuilder score = new DataCompletenessScoreBuilder();
-        bool hasForbiddenPublicText = DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.Name)
-            || DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.Subtype)
+        bool hasForbiddenPublicText = DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(this.Name)
+            || DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(this.Subtype)
             || this.Descriptions.Any(static description => DataCompletenessScoringRules.HasForbiddenRichPublicText(description.Value))
             || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.Model)
             || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.Status)
@@ -141,10 +141,10 @@ public sealed class ParkItem : GeolocatedEntityBase
             || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.OpeningDateText)
             || DataCompletenessScoringRules.HasHtmlEntity(this.AttractionDetails?.ClosingDateText)
             || this.AttractionDetails?.AccessConditions.Any(static condition =>
-                condition.CustomTypeLabel.Any(static label => DataCompletenessScoringRules.HasForbiddenPlainPublicText(label.Value))
-                || condition.Label.Any(static label => DataCompletenessScoringRules.HasForbiddenPlainPublicText(label.Value))
-                || condition.Description.Any(static description => DataCompletenessScoringRules.HasForbiddenPlainPublicText(description.Value))
-                || condition.SourceSummary.Any(static summary => DataCompletenessScoringRules.HasForbiddenPlainPublicText(summary.Value))) == true
+                condition.CustomTypeLabel.Any(static label => DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(label.Value))
+                || condition.Label.Any(static label => DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(label.Value))
+                || condition.Description.Any(static description => DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(description.Value))
+                || condition.SourceSummary.Any(static summary => DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(summary.Value))) == true
             || !scoreContext.HasNoForbiddenPublicText;
 
         score.AddPublicationBlocker(

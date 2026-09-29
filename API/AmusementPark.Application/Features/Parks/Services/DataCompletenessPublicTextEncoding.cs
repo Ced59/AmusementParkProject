@@ -162,8 +162,8 @@ internal static class DataCompletenessPublicTextEncoding
         return !parkItems
                 .Where(static item => item.IsVisible && item.AdminReviewStatus != AdminReviewStatus.NotRelevant)
                 .Any(static item =>
-                    DataCompletenessScoringRules.HasForbiddenPlainPublicText(item.Name)
-                    || DataCompletenessScoringRules.HasForbiddenPlainPublicText(item.Subtype)
+                    DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(item.Name)
+                    || DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(item.Subtype)
                     || HasForbiddenLocalizedRichPublicText(item.Descriptions)
                     || HasForbiddenAttractionDetailPublicText(item)
                     || HasForbiddenAccessConditionPublicText(item))
@@ -268,25 +268,25 @@ internal static class DataCompletenessPublicTextEncoding
         IEnumerable<ParkCreditOffer> creditOffers)
     {
         return admissionOffers.Any(static offer =>
-                HasForbiddenLocalizedPlainPublicText(offer.Labels)
-                || HasForbiddenLocalizedPlainPublicText(offer.Conditions))
+                HasForbiddenLocalizedStructuredLabelPublicText(offer.Labels)
+                || HasForbiddenLocalizedStructuredLabelPublicText(offer.Conditions))
             || annualPasses.Any(static offer =>
-                HasForbiddenLocalizedPlainPublicText(offer.Names)
-                || HasForbiddenLocalizedPlainPublicText(offer.Conditions))
+                HasForbiddenLocalizedStructuredLabelPublicText(offer.Names)
+                || HasForbiddenLocalizedStructuredLabelPublicText(offer.Conditions))
             || parkingOffers.Any(static offer =>
-                HasForbiddenLocalizedPlainPublicText(offer.Labels)
-                || HasForbiddenLocalizedPlainPublicText(offer.Conditions))
+                HasForbiddenLocalizedStructuredLabelPublicText(offer.Labels)
+                || HasForbiddenLocalizedStructuredLabelPublicText(offer.Conditions))
             || creditOffers.Any(static offer =>
-                HasForbiddenLocalizedPlainPublicText(offer.Labels)
-                || HasForbiddenLocalizedPlainPublicText(offer.Conditions));
+                HasForbiddenLocalizedStructuredLabelPublicText(offer.Labels)
+                || HasForbiddenLocalizedStructuredLabelPublicText(offer.Conditions));
     }
 
     private static bool HasForbiddenAccessConditionPublicText(ParkItem item)
     {
         return item.AttractionDetails?.AccessConditions.Any(static condition =>
-            HasForbiddenLocalizedPlainPublicText(condition.CustomTypeLabel)
-            || HasForbiddenLocalizedPlainPublicText(condition.Label)
-            || HasForbiddenLocalizedPlainPublicText(condition.Description)) == true;
+            HasForbiddenLocalizedStructuredLabelPublicText(condition.CustomTypeLabel)
+            || HasForbiddenLocalizedStructuredLabelPublicText(condition.Label)
+            || HasForbiddenLocalizedStructuredLabelPublicText(condition.Description)) == true;
     }
 
     private static bool HasForbiddenAttractionDetailPublicText(ParkItem item)
@@ -339,6 +339,11 @@ internal static class DataCompletenessPublicTextEncoding
     private static bool HasForbiddenLocalizedPlainPublicText(IEnumerable<LocalizedText> values)
     {
         return values.Any(static value => DataCompletenessScoringRules.HasForbiddenPlainPublicText(value.Value));
+    }
+
+    private static bool HasForbiddenLocalizedStructuredLabelPublicText(IEnumerable<LocalizedText> values)
+    {
+        return values.Any(static value => DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(value.Value));
     }
 
     private static bool HasForbiddenLocalizedRichPublicText(IEnumerable<LocalizedText> values)
