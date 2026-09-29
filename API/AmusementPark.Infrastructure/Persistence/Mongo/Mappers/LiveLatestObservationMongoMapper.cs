@@ -132,7 +132,7 @@ public static class LiveLatestObservationMongoMapper
         };
     }
 
-    private static LiveQueueObservation ToDomain(LiveQueueObservationDocument queue)
+    public static LiveQueueObservation ToDomain(this LiveQueueObservationDocument queue)
     {
         return new LiveQueueObservation(
             queue.Kind,

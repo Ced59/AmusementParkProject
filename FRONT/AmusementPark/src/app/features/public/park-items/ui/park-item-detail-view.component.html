@@ -193,6 +193,8 @@
       mode="item"
       [currentLanguage]="currentLang"
       [timeZoneId]="liveTimeZoneId"
+      [historyState]="liveHistoryState"
+      (historyRetryClicked)="liveHistoryRetryClicked.emit()"
       (refreshClicked)="refreshLiveData()">
     </app-public-live-panel>
 

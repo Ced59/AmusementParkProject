@@ -1,0 +1,118 @@
+@if (state.kind === 'loading') {
+  <section class="live-history live-history--loading" aria-live="polite">
+    <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+    <span>{{ 'liveData.history.loading' | translate }}</span>
+  </section>
+} @else if (state.kind === 'error') {
+  <section class="live-history live-history--error" aria-live="polite">
+    <div>
+      <strong>{{ 'liveData.history.errorTitle' | translate }}</strong>
+      <p>{{ 'liveData.history.errorMessage' | translate }}</p>
+    </div>
+    <button appUiButton="ghost" type="button" (click)="retry()">
+      <i class="pi pi-refresh" aria-hidden="true"></i>
+      {{ 'liveData.history.retry' | translate }}
+    </button>
+  </section>
+} @else if (state.kind === 'ready' && state.history; as history) {
+  <section class="live-history" aria-labelledby="live-history-title">
+    <header class="live-history__header">
+      <div>
+        <app-ui-kicker iconClass="pi pi-chart-bar">{{ 'liveData.history.kicker' | translate }}</app-ui-kicker>
+        <h3 id="live-history-title">{{ 'liveData.history.title' | translate }}</h3>
+        <p>{{ 'liveData.history.subtitle' | translate }}</p>
+      </div>
+      <span class="live-history__status" [attr.data-status]="history.dataStatus">
+        {{ statusLabelKey(history) | translate }}
+      </span>
+    </header>
+
+    <div class="live-history__period">
+      <i class="pi pi-calendar" aria-hidden="true"></i>
+      <span>{{ periodLabel(history) }}</span>
+    </div>
+
+    <div class="live-history__summary">
+      <article>
+        <strong>{{ history.comparableDays }}</strong>
+        <span>{{ 'liveData.history.summary.comparableDays' | translate }}</span>
+      </article>
+      <article>
+        <strong>{{ history.usableWaitCount }}</strong>
+        <span>{{ 'liveData.history.summary.usableObservations' | translate }}</span>
+      </article>
+      <article>
+        <strong>{{ history.coveragePercent }} %</strong>
+        <span>{{ 'liveData.history.summary.coverage' | translate }}</span>
+      </article>
+      <article>
+        <strong>{{ history.exclusions.total }}</strong>
+        <span>{{ 'liveData.history.summary.excluded' | translate }}</span>
+      </article>
+    </div>
+
+    <div class="live-history__legend" aria-hidden="true">
+      <span><i class="live-history__legend-line"></i>{{ 'liveData.history.chart.robustRange' | translate }}</span>
+      <span><i class="live-history__legend-box"></i>{{ 'liveData.history.chart.quartiles' | translate }}</span>
+      <span><i class="live-history__legend-dot"></i>{{ 'liveData.history.chart.median' | translate }}</span>
+    </div>
+
+    <div class="live-history__chart" role="list" [attr.aria-label]="'liveData.history.chart.label' | translate">
+      @for (hour of history.hours; track hour.localHour) {
+        <article class="live-history-hour" role="listitem" [attr.data-status]="hour.dataStatus">
+          <div class="live-history-hour__label">
+            <strong>{{ hourLabel(hour.localHour) }}</strong>
+            <span>{{ hourStatusLabelKey(hour) | translate }}</span>
+          </div>
+
+          @if (hasStatistics(hour)) {
+            <div class="live-history-hour__plot" role="img" [attr.aria-label]="chartAriaLabel(hour)">
+              <span
+                class="live-history-hour__range"
+                [style.left.%]="metricPosition(history, hour.robustMinimumMinutes)"
+                [style.width.%]="rangeWidth(history, hour.robustMinimumMinutes, hour.robustMaximumMinutes)">
+              </span>
+              <span
+                class="live-history-hour__quartiles"
+                [style.left.%]="metricPosition(history, hour.firstQuartileMinutes)"
+                [style.width.%]="rangeWidth(history, hour.firstQuartileMinutes, hour.thirdQuartileMinutes)">
+              </span>
+              <span
+                class="live-history-hour__median"
+                [style.left.%]="metricPosition(history, hour.medianMinutes)">
+              </span>
+            </div>
+            <div class="live-history-hour__metrics">
+              <strong>{{ 'liveData.history.chart.medianValue' | translate:{ value: hour.medianMinutes } }}</strong>
+              <span>{{ 'liveData.history.chart.evidence' | translate:{ observations: hour.usableWaitCount, days: hour.comparableDays } }}</span>
+            </div>
+          } @else {
+            <div class="live-history-hour__gap" role="img" [attr.aria-label]="chartAriaLabel(hour)">
+              <span>{{ 'liveData.history.chart.gap' | translate }}</span>
+            </div>
+          }
+        </article>
+      }
+    </div>
+
+    <details class="live-history__method">
+      <summary>{{ 'liveData.history.method.title' | translate }}</summary>
+      <p>{{ 'liveData.history.method.description' | translate }}</p>
+      <ul>
+        <li>{{ 'liveData.history.method.nonOperating' | translate:{ value: history.exclusions.nonOperatingStatus } }}</li>
+        <li>{{ 'liveData.history.method.missingWait' | translate:{ value: history.exclusions.missingStandbyWait } }}</li>
+        <li>{{ 'liveData.history.method.duplicates' | translate:{ value: history.exclusions.duplicateObservations } }}</li>
+        <li>{{ 'liveData.history.method.outsideWindow' | translate:{ value: history.exclusions.outsideActiveWindow } }}</li>
+      </ul>
+      @if (history.truncatedObservationCount > 0) {
+        <p class="live-history__warning">
+          {{ 'liveData.history.method.truncated' | translate:{ value: history.truncatedObservationCount } }}
+        </p>
+      }
+      <a [href]="history.source.attributionUrl" target="_blank" rel="noreferrer noopener">
+        {{ history.source.attributionText }}
+        <i class="pi pi-external-link" aria-hidden="true"></i>
+      </a>
+    </details>
+  </section>
+}

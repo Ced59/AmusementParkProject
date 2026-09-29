@@ -104,10 +104,13 @@ live-history-raw                    live-history-buckets
                                     └─ expiresAtUtc (TTL, 400 j)
 ```
 
-Le brut reste interne et n'a aucun contrôleur. Le bucket ne conserve ni hash de
-payload, ni corrélation, ni identifiant externe : seulement ce qui sera utile au
-calcul descriptif. Les noms de cible sont des photographies d'affichage et les
-clés internes ne sont jamais un libellé de repli destiné au visiteur.
+Le brut reste interne et n'a aucun contrôleur. Depuis LIVE-13, chaque échantillon
+de bucket conserve l'identifiant externe et la version du mapping strictement
+comme preuves internes : ils permettent d'écarter une observation après une
+correction de correspondance. Ces valeurs ne sortent jamais dans le contrat
+public. Le bucket ne conserve toujours ni hash de payload ni corrélation. Les
+noms de cible sont des photographies d'affichage et les clés internes ne sont
+jamais un libellé de repli destiné au visiteur.
 Un bucket conserve au plus 24 échantillons, soit deux fois le volume nominal du
 polling à cinq minutes. Au-delà, les plus récents sont gardés et `isTruncated`
 rend explicitement cette perte visible aux statistiques futures.
@@ -127,7 +130,9 @@ réétiqueter, prolonger ou mélanger les observations déjà conservées.
 - aucune route WebAPI et aucun composant Angular ne sont ajoutés par ce jalon.
 
 L'initialiseur MongoDB crée les collections et index de façon idempotente au
-déploiement. Aucune opération manuelle sur MongoDB n'est nécessaire.
+déploiement. LIVE-13 supprime automatiquement les buckets transitoires dépourvus
+de preuve de mapping avant d'activer leur lecture ; aucun adaptateur d'ancien
+schéma ne coexiste et aucune opération manuelle sur MongoDB n'est nécessaire.
 
 ## Limites avant LIVE-13
 

@@ -7,6 +7,12 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.LiveData;
 [BsonIgnoreExtraElements]
 public sealed class LiveHistoryBucketSampleDocument
 {
+    [BsonElement("externalTargetId")]
+    public string ExternalTargetId { get; set; } = string.Empty;
+
+    [BsonElement("mappingVersion")]
+    public string MappingVersion { get; set; } = string.Empty;
+
     [BsonElement("sampleId")]
     public string SampleId { get; set; } = string.Empty;
 

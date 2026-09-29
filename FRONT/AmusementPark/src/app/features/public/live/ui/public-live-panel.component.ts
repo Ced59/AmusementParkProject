@@ -7,6 +7,7 @@ import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-d
 import { UiButtonDirective, UiChipComponent, UiKickerComponent } from '@ui/primitives';
 import { LiveAlertActionComponent } from '@features/watchlists/ui/live-alert-action.component';
 import { PublicLiveFilter } from '../models/public-live-filter.model';
+import { PublicLiveHistoryViewState } from '../models/public-live-history-view-state.model';
 import { PublicLiveDisplayMode, PublicLiveViewState } from '../models/public-live-view-state.model';
 import {
   filterPublicLiveTargets,
@@ -18,6 +19,7 @@ import {
   resolvePublicLiveTone,
   resolvePublicLiveWaitMinutes
 } from '../utils/public-live-view.helpers';
+import { PublicLiveHistoryPanelComponent } from './public-live-history-panel.component';
 
 @Component({
   selector: 'app-public-live-panel',
@@ -28,6 +30,7 @@ import {
     RouterLink,
     TranslateModule,
     LiveAlertActionComponent,
+    PublicLiveHistoryPanelComponent,
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent
@@ -38,13 +41,19 @@ export class PublicLivePanelComponent {
   @Input({ required: true }) mode!: PublicLiveDisplayMode;
   @Input() currentLanguage: string = 'en';
   @Input() timeZoneId: string | null = null;
+  @Input() historyState: PublicLiveHistoryViewState | null = null;
   @Output() refreshClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() historyRetryClicked: EventEmitter<void> = new EventEmitter<void>();
 
   protected readonly selectedFilter = signal<PublicLiveFilter>('all');
   protected readonly filters: readonly PublicLiveFilter[] = ['all', 'available', 'shortWait', 'closed', 'unknown'];
 
   refresh(): void {
     this.refreshClicked.emit();
+  }
+
+  retryHistory(): void {
+    this.historyRetryClicked.emit();
   }
 
   selectFilter(filter: PublicLiveFilter): void {

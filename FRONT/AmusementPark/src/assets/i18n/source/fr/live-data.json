@@ -86,6 +86,47 @@
     "methodology": {
       "title": "Comment lire ces informations ?",
       "description": "Le temps affiché vient de la source citée et correspond à l’âge indiqué. Zéro minute signifie bien qu’une attente nulle a été reçue ; un tiret signifie qu’aucun temps fiable n’est disponible. Une donnée expirée n’est jamais présentée comme actuelle."
+    },
+    "history": {
+      "loading": "Analyse de l’historique des attentes…",
+      "errorTitle": "L’historique est momentanément inaccessible",
+      "errorMessage": "L’état actuel reste disponible. Tu peux relancer uniquement l’analyse historique.",
+      "retry": "Réessayer",
+      "kicker": "Tendances observées",
+      "title": "Attente habituelle selon l’heure",
+      "subtitle": "Ces repères décrivent uniquement les observations passées. Ils ne prédisent pas ton attente lors d’une prochaine visite.",
+      "status": {
+        "unavailable": "Pas encore de données",
+        "insufficient": "Données insuffisantes",
+        "sparse": "Historique partiel",
+        "usable": "Historique exploitable"
+      },
+      "summary": {
+        "comparableDays": "jours comparables",
+        "usableObservations": "attentes exploitables",
+        "coverage": "couverture",
+        "excluded": "observations écartées"
+      },
+      "chart": {
+        "label": "Attentes observées par heure locale",
+        "robustRange": "plage habituelle",
+        "quartiles": "moitié centrale",
+        "median": "médiane",
+        "medianValue": "Médiane : {{value}} min",
+        "evidence": "{{observations}} attentes · {{days}} jours",
+        "gap": "Pas assez de données",
+        "gapAria": "À {{hour}}, les données sont insuffisantes.",
+        "valueAria": "À {{hour}}, attente médiane de {{median}} minutes, moitié centrale entre {{firstQuartile}} et {{thirdQuartile}} minutes, d’après {{observations}} observations sur {{days}} jours."
+      },
+      "method": {
+        "title": "Méthode et données écartées",
+        "description": "La médiane résiste mieux aux journées exceptionnelles qu’une moyenne. La moitié centrale correspond aux quartiles ; la plage habituelle écarte les 10 % de valeurs les plus basses et les 10 % les plus hautes. Les heures sans preuve suffisante restent volontairement vides.",
+        "nonOperating": "{{value}} observation écartée car l’attraction ne fonctionnait pas",
+        "missingWait": "{{value}} observation sans attente de file classique",
+        "duplicates": "{{value}} doublon remplacé par la réception la plus récente",
+        "outsideWindow": "{{value}} observation hors fenêtre de collecte",
+        "truncated": "{{value}} observation provient d’une tranche ayant atteint sa limite de stockage ; le statut reste donc prudent."
+      }
     }
   }
 }

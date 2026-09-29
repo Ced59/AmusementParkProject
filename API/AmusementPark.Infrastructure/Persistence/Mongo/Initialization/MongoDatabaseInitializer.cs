@@ -1160,6 +1160,19 @@ private readonly IMongoDatabase database;
         await this.EnsureCollectionExistsAsync(
             this.settings.LiveHistoryBucketsCollectionName,
             cancellationToken);
+        LiveHistoryBucketMappingEvidenceMigration liveHistoryMappingEvidenceMigration =
+            new LiveHistoryBucketMappingEvidenceMigration(
+                this.database.GetCollection<BsonDocument>(
+                    this.settings.LiveHistoryBucketsCollectionName));
+        long deletedAmbiguousLiveHistoryBucketCount =
+            await liveHistoryMappingEvidenceMigration.MigrateAsync(cancellationToken);
+        if (deletedAmbiguousLiveHistoryBucketCount > 0)
+        {
+            this.logger.LogInformation(
+                "Deleted {BucketCount} live history buckets without target mapping evidence.",
+                deletedAmbiguousLiveHistoryBucketCount);
+        }
+
         await this.InitializeLiveHistoryIndexesAsync(cancellationToken);
         await this.EnsureCollectionExistsAsync(
             this.settings.LiveQualityIncidentsCollectionName,

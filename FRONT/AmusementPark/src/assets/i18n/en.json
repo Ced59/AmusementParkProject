@@ -6223,6 +6223,47 @@
     "methodology": {
       "title": "How should I read this information?",
       "description": "The displayed time comes from the credited source and has the age shown here. Zero minutes means that a genuine zero wait was received; a dash means that no reliable time is available. Expired data is never presented as current."
+    },
+    "history": {
+      "loading": "Analysing wait history…",
+      "errorTitle": "History is temporarily unavailable",
+      "errorMessage": "Current information remains available. You can retry the historical analysis only.",
+      "retry": "Try again",
+      "kicker": "Observed trends",
+      "title": "Typical wait by time of day",
+      "subtitle": "These markers only describe past observations. They do not predict your wait on a future visit.",
+      "status": {
+        "unavailable": "No data yet",
+        "insufficient": "Not enough data",
+        "sparse": "Partial history",
+        "usable": "Usable history"
+      },
+      "summary": {
+        "comparableDays": "comparable days",
+        "usableObservations": "usable waits",
+        "coverage": "coverage",
+        "excluded": "excluded observations"
+      },
+      "chart": {
+        "label": "Observed waits by local hour",
+        "robustRange": "typical range",
+        "quartiles": "middle half",
+        "median": "median",
+        "medianValue": "Median: {{value}} min",
+        "evidence": "{{observations}} waits · {{days}} days",
+        "gap": "Not enough data",
+        "gapAria": "At {{hour}}, there is not enough data.",
+        "valueAria": "At {{hour}}, the median wait is {{median}} minutes, with the middle half between {{firstQuartile}} and {{thirdQuartile}} minutes, based on {{observations}} observations across {{days}} days."
+      },
+      "method": {
+        "title": "Method and excluded data",
+        "description": "The median is less affected by exceptional days than an average. The middle half is the interquartile range; the typical range removes the lowest and highest 10% of values. Hours without enough evidence are deliberately left blank.",
+        "nonOperating": "{{value}} observation excluded because the attraction was not operating",
+        "missingWait": "{{value}} observation without a standby wait",
+        "duplicates": "{{value}} duplicate replaced by the latest reception",
+        "outsideWindow": "{{value}} observation outside the collection window",
+        "truncated": "{{value}} observation comes from a time bucket that reached its storage limit, so the status remains cautious."
+      }
     }
   },
   "aboutPage": {

@@ -77,3 +77,50 @@ export interface PublicParkLiveItems {
   readonly asOfUtc: string;
   readonly items: readonly PublicLiveTarget[];
 }
+
+export type PublicLiveHistoryDataStatus = 'Unavailable' | 'Insufficient' | 'Sparse' | 'Usable';
+
+export interface PublicLiveHistoryExclusions {
+  readonly duplicateObservations: number;
+  readonly outsideActiveWindow: number;
+  readonly nonOperatingStatus: number;
+  readonly missingStandbyWait: number;
+  readonly total: number;
+}
+
+export interface PublicLiveHistoryHour {
+  readonly localHour: number;
+  readonly dataStatus: PublicLiveHistoryDataStatus;
+  readonly expectedObservationCount: number;
+  readonly observationCount: number;
+  readonly usableWaitCount: number;
+  readonly daysCovered: number;
+  readonly comparableDays: number;
+  readonly coveragePercent: number;
+  readonly robustMinimumMinutes: number | null;
+  readonly firstQuartileMinutes: number | null;
+  readonly medianMinutes: number | null;
+  readonly thirdQuartileMinutes: number | null;
+  readonly robustMaximumMinutes: number | null;
+}
+
+export interface PublicLiveHistory {
+  readonly targetId: string;
+  readonly displayName: string;
+  readonly parkId: string;
+  readonly parkDisplayName: string;
+  readonly fromUtc: string;
+  readonly toUtc: string;
+  readonly timeZoneId: string;
+  readonly dataStatus: PublicLiveHistoryDataStatus;
+  readonly expectedObservationCount: number;
+  readonly observationCount: number;
+  readonly usableWaitCount: number;
+  readonly daysCovered: number;
+  readonly comparableDays: number;
+  readonly coveragePercent: number;
+  readonly truncatedObservationCount: number;
+  readonly exclusions: PublicLiveHistoryExclusions;
+  readonly hours: readonly PublicLiveHistoryHour[];
+  readonly source: PublicLiveSource;
+}

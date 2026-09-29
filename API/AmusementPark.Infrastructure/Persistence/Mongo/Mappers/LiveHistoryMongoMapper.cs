@@ -53,6 +53,8 @@ public static class LiveHistoryMongoMapper
             {
                 new LiveHistoryBucketSampleDocument
                 {
+                    ExternalTargetId = observation.Provenance.ExternalTargetId,
+                    MappingVersion = observation.Provenance.MappingVersion,
                     SampleId = observation.Provenance.ObservedAtUtc.Ticks.ToString(
                         System.Globalization.CultureInfo.InvariantCulture),
                     ObservedAtUtc = observation.Provenance.ObservedAtUtc,

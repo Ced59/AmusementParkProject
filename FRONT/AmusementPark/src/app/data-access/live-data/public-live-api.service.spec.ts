@@ -1,7 +1,7 @@
 import { HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { PublicLiveTarget } from '@app/models/live-data/public-live.models';
+import { PublicLiveHistory, PublicLiveTarget } from '@app/models/live-data/public-live.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { environment } from '../../../environments/environment';
 import { PublicLiveApiService } from './public-live-api.service';
@@ -57,6 +57,20 @@ describe('PublicLiveApiService', () => {
     expect(retainedRequest.request.headers.get('If-None-Match')).toBe('"live-20"');
     retainedRequest.flush(null, { status: 304, statusText: 'Not Modified' });
   });
+
+  it('loads hourly item history without exposing raw observations in the URL', () => {
+    const history: PublicLiveHistory = createHistory();
+
+    service.getParkItemHistory('item/one').subscribe((result: PublicLiveHistory) => {
+      expect(result).toEqual(history);
+    });
+
+    const request = http.expectOne(
+      `${environment.apiBaseUrl}public/live/items/item%2Fone/history?bucket=hour`
+    );
+    expect(request.request.method).toBe('GET');
+    request.flush(history);
+  });
 });
 
 function createTarget(): PublicLiveTarget {
@@ -77,5 +91,40 @@ function createTarget(): PublicLiveTarget {
     expiresAtUtc: '2026-09-29T10:04:00Z',
     source: null,
     confidence: 'High'
+  };
+}
+
+function createHistory(): PublicLiveHistory {
+  return {
+    targetId: 'item/one',
+    displayName: 'Example attraction',
+    parkId: 'park-1',
+    parkDisplayName: 'Example park',
+    fromUtc: '2026-08-30T10:00:00Z',
+    toUtc: '2026-09-29T10:00:00Z',
+    timeZoneId: 'Europe/Paris',
+    dataStatus: 'Insufficient',
+    expectedObservationCount: 100,
+    observationCount: 1,
+    usableWaitCount: 1,
+    daysCovered: 1,
+    comparableDays: 1,
+    coveragePercent: 1,
+    truncatedObservationCount: 0,
+    exclusions: {
+      duplicateObservations: 0,
+      outsideActiveWindow: 0,
+      nonOperatingStatus: 0,
+      missingStandbyWait: 0,
+      total: 0
+    },
+    hours: [],
+    source: {
+      id: 'themeparks-wiki',
+      displayName: 'ThemeParks.wiki',
+      type: 'AuthorizedAggregator',
+      attributionText: 'Powered by ThemeParks.wiki',
+      attributionUrl: 'https://themeparks.wiki/'
+    }
   };
 }

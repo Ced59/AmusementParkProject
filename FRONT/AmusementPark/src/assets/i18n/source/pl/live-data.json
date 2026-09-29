@@ -86,6 +86,47 @@
     "methodology": {
       "title": "Jak czytać te informacje?",
       "description": "Wyświetlany czas pochodzi z podanego źródła i ma wskazany tutaj wiek. Zero minut oznacza, że otrzymano rzeczywisty zerowy czas oczekiwania; kreska oznacza brak wiarygodnego czasu. Wygasłe dane nigdy nie są przedstawiane jako aktualne."
+    },
+    "history": {
+      "loading": "Analizowanie historii czasu oczekiwania…",
+      "errorTitle": "Historia jest chwilowo niedostępna",
+      "errorMessage": "Aktualne informacje pozostają dostępne. Możesz ponowić tylko analizę historyczną.",
+      "retry": "Spróbuj ponownie",
+      "kicker": "Zaobserwowane trendy",
+      "title": "Typowy czas oczekiwania według pory dnia",
+      "subtitle": "Te wartości opisują wyłącznie wcześniejsze obserwacje. Nie przewidują czasu oczekiwania podczas kolejnej wizyty.",
+      "status": {
+        "unavailable": "Brak danych",
+        "insufficient": "Za mało danych",
+        "sparse": "Częściowa historia",
+        "usable": "Użyteczna historia"
+      },
+      "summary": {
+        "comparableDays": "porównywalne dni",
+        "usableObservations": "użyteczne czasy",
+        "coverage": "pokrycie",
+        "excluded": "pominięte obserwacje"
+      },
+      "chart": {
+        "label": "Zaobserwowany czas oczekiwania według czasu lokalnego",
+        "robustRange": "typowy zakres",
+        "quartiles": "środkowa połowa",
+        "median": "mediana",
+        "medianValue": "Mediana: {{value}} min",
+        "evidence": "{{observations}} czasów · {{days}} dni",
+        "gap": "Za mało danych",
+        "gapAria": "O {{hour}} brakuje wystarczających danych.",
+        "valueAria": "O {{hour}} mediana czasu oczekiwania wynosi {{median}} minut, środkowa połowa mieści się między {{firstQuartile}} a {{thirdQuartile}} minut, na podstawie {{observations}} obserwacji z {{days}} dni."
+      },
+      "method": {
+        "title": "Metoda i pominięte dane",
+        "description": "Mediana jest mniej podatna na wyjątkowe dni niż średnia. Środkowa połowa to rozstęp międzykwartylowy; typowy zakres pomija najniższe i najwyższe 10% wartości. Godziny bez wystarczających dowodów celowo pozostają puste.",
+        "nonOperating": "{{value}} obserwacja pominięta, ponieważ atrakcja nie działała",
+        "missingWait": "{{value}} obserwacja bez czasu oczekiwania w zwykłej kolejce",
+        "duplicates": "{{value}} duplikat zastąpiony najnowszym odbiorem",
+        "outsideWindow": "{{value}} obserwacja poza oknem zbierania",
+        "truncated": "{{value}} obserwacja pochodzi z przedziału, który osiągnął limit przechowywania, dlatego status pozostaje ostrożny."
+      }
     }
   }
 }

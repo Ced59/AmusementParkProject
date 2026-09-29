@@ -6,7 +6,9 @@
   [heroImageSrcWidth]="heroImageSrcWidth"
   [currentLang]="currentLanguage()"
   [liveState]="liveState()"
+  [liveHistoryState]="liveHistoryState()"
   [liveTimeZoneId]="parkTimeZoneId()"
   (liveRefreshClicked)="refreshLiveData()"
+  (liveHistoryRetryClicked)="retryLiveHistory()"
   (backToItemsClicked)="goBackToItems()">
 </app-park-item-detail-view>

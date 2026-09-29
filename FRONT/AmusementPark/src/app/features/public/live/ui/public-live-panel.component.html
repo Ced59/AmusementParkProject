@@ -146,6 +146,13 @@
 
       @if (mode === 'item') {
         <app-live-alert-action [target]="target"></app-live-alert-action>
+        @if (historyState; as currentHistoryState) {
+          <app-public-live-history-panel
+            [state]="currentHistoryState"
+            [currentLanguage]="currentLanguage"
+            (retryClicked)="retryHistory()">
+          </app-public-live-history-panel>
+        }
       }
 
       @if (mode === 'park') {

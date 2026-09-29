@@ -6223,6 +6223,47 @@
     "methodology": {
       "title": "Hoe lees je deze informatie?",
       "description": "De getoonde tijd komt van de vermelde bron en heeft de hier aangegeven leeftijd. Nul minuten betekent dat werkelijk geen wachttijd is ontvangen; een streepje betekent dat er geen betrouwbare tijd beschikbaar is. Verlopen gegevens worden nooit als actueel getoond."
+    },
+    "history": {
+      "loading": "Wachttijdgeschiedenis analyseren…",
+      "errorTitle": "De geschiedenis is tijdelijk niet beschikbaar",
+      "errorMessage": "De actuele informatie blijft beschikbaar. Je kunt alleen de historische analyse opnieuw proberen.",
+      "retry": "Opnieuw proberen",
+      "kicker": "Waargenomen trends",
+      "title": "Gebruikelijke wachttijd per tijdstip",
+      "subtitle": "Deze aanduidingen beschrijven alleen eerdere waarnemingen. Ze voorspellen je wachttijd bij een volgend bezoek niet.",
+      "status": {
+        "unavailable": "Nog geen gegevens",
+        "insufficient": "Onvoldoende gegevens",
+        "sparse": "Gedeeltelijke geschiedenis",
+        "usable": "Bruikbare geschiedenis"
+      },
+      "summary": {
+        "comparableDays": "vergelijkbare dagen",
+        "usableObservations": "bruikbare wachttijden",
+        "coverage": "dekking",
+        "excluded": "uitgesloten waarnemingen"
+      },
+      "chart": {
+        "label": "Waargenomen wachttijden per lokaal uur",
+        "robustRange": "gebruikelijke bandbreedte",
+        "quartiles": "middelste helft",
+        "median": "mediaan",
+        "medianValue": "Mediaan: {{value}} min",
+        "evidence": "{{observations}} wachttijden · {{days}} dagen",
+        "gap": "Onvoldoende gegevens",
+        "gapAria": "Om {{hour}} zijn er onvoldoende gegevens.",
+        "valueAria": "Om {{hour}} is de mediane wachttijd {{median}} minuten, met de middelste helft tussen {{firstQuartile}} en {{thirdQuartile}} minuten, op basis van {{observations}} waarnemingen over {{days}} dagen."
+      },
+      "method": {
+        "title": "Methode en uitgesloten gegevens",
+        "description": "De mediaan wordt minder beïnvloed door uitzonderlijke dagen dan een gemiddelde. De middelste helft is het interkwartielbereik; de gebruikelijke bandbreedte laat de laagste en hoogste 10% van de waarden weg. Uren zonder voldoende bewijs blijven bewust leeg.",
+        "nonOperating": "{{value}} waarneming uitgesloten omdat de attractie niet in bedrijf was",
+        "missingWait": "{{value}} waarneming zonder wachttijd voor de gewone rij",
+        "duplicates": "{{value}} duplicaat vervangen door de meest recente ontvangst",
+        "outsideWindow": "{{value}} waarneming buiten het verzamelvenster",
+        "truncated": "{{value}} waarneming komt uit een tijdvak dat zijn opslaglimiet bereikte; de status blijft daarom voorzichtig."
+      }
     }
   },
   "aboutPage": {

@@ -86,6 +86,47 @@
     "methodology": {
       "title": "Wie sind diese Informationen zu lesen?",
       "description": "Die angezeigte Zeit stammt aus der genannten Quelle und besitzt das hier angegebene Alter. Null Minuten bedeuten, dass tatsächlich keine Wartezeit gemeldet wurde; ein Gedankenstrich bedeutet, dass keine verlässliche Zeit vorliegt. Abgelaufene Daten werden nie als aktuell dargestellt."
+    },
+    "history": {
+      "loading": "Wartezeitverlauf wird analysiert…",
+      "errorTitle": "Der Verlauf ist vorübergehend nicht verfügbar",
+      "errorMessage": "Die aktuellen Informationen bleiben verfügbar. Du kannst nur die Verlaufsanalyse erneut laden.",
+      "retry": "Erneut versuchen",
+      "kicker": "Beobachtete Trends",
+      "title": "Typische Wartezeit nach Tageszeit",
+      "subtitle": "Diese Werte beschreiben nur vergangene Beobachtungen. Sie sagen deine Wartezeit bei einem künftigen Besuch nicht voraus.",
+      "status": {
+        "unavailable": "Noch keine Daten",
+        "insufficient": "Nicht genügend Daten",
+        "sparse": "Unvollständiger Verlauf",
+        "usable": "Nutzbarer Verlauf"
+      },
+      "summary": {
+        "comparableDays": "vergleichbare Tage",
+        "usableObservations": "nutzbare Wartezeiten",
+        "coverage": "Abdeckung",
+        "excluded": "ausgeschlossene Beobachtungen"
+      },
+      "chart": {
+        "label": "Beobachtete Wartezeiten nach Ortszeit",
+        "robustRange": "typischer Bereich",
+        "quartiles": "mittlere Hälfte",
+        "median": "Median",
+        "medianValue": "Median: {{value}} Min.",
+        "evidence": "{{observations}} Wartezeiten · {{days}} Tage",
+        "gap": "Nicht genügend Daten",
+        "gapAria": "Um {{hour}} liegen nicht genügend Daten vor.",
+        "valueAria": "Um {{hour}} beträgt die mediane Wartezeit {{median}} Minuten; die mittlere Hälfte liegt zwischen {{firstQuartile}} und {{thirdQuartile}} Minuten. Grundlage sind {{observations}} Beobachtungen an {{days}} Tagen."
+      },
+      "method": {
+        "title": "Methode und ausgeschlossene Daten",
+        "description": "Der Median wird von außergewöhnlichen Tagen weniger beeinflusst als ein Durchschnitt. Die mittlere Hälfte entspricht dem Interquartilsabstand; der typische Bereich lässt die niedrigsten und höchsten 10 % der Werte weg. Stunden ohne ausreichende Belege bleiben bewusst leer.",
+        "nonOperating": "{{value}} Beobachtung ausgeschlossen, weil die Attraktion nicht in Betrieb war",
+        "missingWait": "{{value}} Beobachtung ohne Wartezeit der regulären Warteschlange",
+        "duplicates": "{{value}} Duplikat durch den neuesten Empfang ersetzt",
+        "outsideWindow": "{{value}} Beobachtung außerhalb des Erfassungsfensters",
+        "truncated": "{{value}} Beobachtung stammt aus einem Zeitfenster, das sein Speicherlimit erreicht hat; der Status bleibt daher vorsichtig."
+      }
     }
   }
 }
