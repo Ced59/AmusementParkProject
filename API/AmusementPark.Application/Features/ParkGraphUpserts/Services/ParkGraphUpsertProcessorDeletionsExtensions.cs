@@ -23,14 +23,9 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Parks.Services;
-using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 using System.Text;
 using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.History.Ports;
-using AmusementPark.Application.Features.ParkOpeningHours.Ports;
-using AmusementPark.Application.Features.ParkOpeningHours.Services;
-using AmusementPark.Application.Features.ParkPricing.Ports;
-using AmusementPark.Application.Features.ParkPricing.Services;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.SocialPublishing.Ports;
 using AmusementPark.Application.Features.StandaloneAttractions.Ports;
@@ -62,6 +57,12 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             if (!await processorContext.IsDeletionTargetInTargetParkAsync(target, targetPark, cancellationToken))
             {
                 processorContext.AddSkippedDeletionChange(result, target.EntityType, target.Id, $"Suppression {target.EntityType} '{target.Id}' refusée : l'élément n'appartient pas au parc cible '{targetPark.Id}'.");
+                continue;
+            }
+
+            if (target.ParkItem is not null
+                && !await processorContext.CanDeleteParkItemAsync(target.ParkItem, result, cancellationToken))
+            {
                 continue;
             }
 
@@ -173,6 +174,35 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             };
         }
 
+        if (string.Equals(normalizedEntityType, "Park", StringComparison.Ordinal))
+        {
+            Park? park = await processorContext.parkRepository.GetByIdAsync(id, true, cancellationToken);
+            if (park is null)
+            {
+                processorContext.AddSkippedDeletionChange(result, "Park", id, $"Suppression Park '{id}' impossible : parc introuvable.");
+                return null;
+            }
+
+            if (park.IsVisible || park.AdminReviewStatus != AdminReviewStatus.NotRelevant)
+            {
+                processorContext.AddSkippedDeletionChange(result, "Park", id, $"Suppression Park '{id}' refusée : seul un parc masqué et classé NotRelevant peut être supprimé par ce workflow contrôlé.");
+                return null;
+            }
+
+            if (!await processorContext.CanDeleteParkAsync(park, result, cancellationToken))
+            {
+                return null;
+            }
+
+            return new ParkGraphDeletionTarget
+            {
+                EntityType = "Park",
+                Id = park.Id,
+                DisplayName = park.Name ?? park.Id,
+                Park = park,
+            };
+        }
+
         processorContext.AddSkippedDeletionChange(result, request.EntityType ?? "Unknown", id, $"Suppression '{request.EntityType}' impossible : type non pris en charge par le JSON upsert.");
         return null;
     }
@@ -269,6 +299,18 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             return await processorContext.parkZoneRepository.DeleteAsync(target.ParkZone.Id, cancellationToken);
         }
 
+        if (target.Park is not null)
+        {
+            bool deleted = await processorContext.parkRepository.DeleteAsync(target.Park.Id, cancellationToken);
+            if (!deleted)
+            {
+                return false;
+            }
+
+            await processorContext.searchProjectionWriter.DeleteAsync(SearchProjectionResourceTypes.Parks, target.Park.Id, cancellationToken);
+            return true;
+        }
+
         return false;
     }
 
@@ -287,6 +329,11 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
         if (target.Image is not null)
         {
             return await processorContext.IsImageDeletionTargetInTargetParkAsync(target.Image, targetPark, cancellationToken);
+        }
+
+        if (target.Park is not null)
+        {
+            return string.Equals(target.Park.Id, targetPark.Id, StringComparison.Ordinal);
         }
 
         return false;
@@ -503,6 +550,7 @@ internal static class ParkGraphUpsertProcessorDeletionsExtensions
             "image" or "images" => "Image",
             "parkitem" or "parkitems" or "item" or "items" or "attraction" or "attractions" => "ParkItem",
             "parkzone" or "parkzones" or "zone" or "zones" => "ParkZone",
+            "park" or "parks" or "parc" or "parcs" => "Park",
             _ => entityType.Trim(),
         };
     }

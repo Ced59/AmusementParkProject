@@ -147,6 +147,19 @@ public sealed class CommentRepository : ICommentRepository
             cancellationToken: cancellationToken);
     }
 
+    public Task<long> CountByTargetAsync(
+        CommentTargetType targetType,
+        string targetId,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<CommentDocument> filter =
+            Builders<CommentDocument>.Filter.Eq(static document => document.TargetType, targetType)
+            & Builders<CommentDocument>.Filter.Eq(static document => document.TargetId, targetId.Trim());
+        return this.commentsCollection.CountDocumentsAsync(
+            filter,
+            cancellationToken: cancellationToken);
+    }
+
     public Task<long> CountPublishedByTargetAndLanguageAsync(
         CommentTargetType targetType,
         string targetId,

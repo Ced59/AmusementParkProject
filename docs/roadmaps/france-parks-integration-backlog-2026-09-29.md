@@ -9,7 +9,9 @@ Chaque ligne active est traitée avec le workflow `PARK_DATA_EDITOR`, les étape
 1. la fiche et ses contenus retenus sont réellement publics sur le site, le score post-publication est strictement supérieur à 95, aucun bloqueur ne subsiste et la page publique a été contrôlée anonymement ;
 2. l'annonce Facebook officielle de cette même fiche est au statut `Published`, sans recréer une publication existante.
 
-Une fusion de doublons, une migration vers `StandaloneAttraction` ou un classement `NotRelevant` ne compte pas comme publication d'un parc : ces cas restent documentés dans les anomalies et ne déclenchent pas d'annonce Facebook artificielle.
+Une fusion de doublons ou un classement `NotRelevant` ne compte pas comme publication d'un parc et ne déclenche pas d'annonce Facebook artificielle. Une ligne d'attraction autonome suit en revanche sa propre fiche publique : elle ne peut être retirée qu'après publication et contrôle anonyme de la `StandaloneAttraction`, annonce Facebook `Published`, puis suppression effective de l'ancien parkItem et de l'ancien parc artificiel lorsqu'ils existent. Le simple masquage ou classement `NotRelevant` du legacy ne suffit pas.
+
+La demande du 29 septembre 2026 autorise explicitement la publication Facebook de chaque fiche terminée. Cette autorisation sociale est propre à ce lot français et ne doit pas être déduite d'une future demande de complétude ordinaire.
 
 ## Sources et photographie initiale
 
@@ -28,7 +30,7 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 | --- | ---: | ---: |
 | Fiches déjà publiques à compléter | 13 | 13 |
 | Fiches privées existantes à intégrer | 80 | 80 |
-| Parcs en activité absents de la photographie FR | 61 | 61 |
+| Parcs en activité absents de la photographie FR | 60 | 60 |
 | Fiches historiques privées existantes | 10 | 10 |
 | Parcs historiques absents de la photographie FR | 20 | 20 |
 | Attractions autonomes à migrer ou intégrer | 42 | 42 |
@@ -234,7 +236,7 @@ Le statut « en activité » ci-dessous est une hypothèse de tri, pas une donn�
 
 ## 6. Attractions autonomes à migrer ou intégrer
 
-Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parc et son éventuel parkItem ne sont retirés qu'après la migration contrôlée et la vérification de la nouvelle entité `StandaloneAttraction`.
+Ces cibles suivent le workflow `standaloneAttractionGraph`. Le nom du domaine ou de la station sert à identifier l'installation fixe réelle ; il ne doit pas devenir le nom public d'un faux parc. L'ancien parkItem puis l'ancien parc artificiel sont supprimés, dans cet ordre, uniquement après la migration contrôlée, la publication et la vérification publique de la nouvelle entité `StandaloneAttraction`. Toute dépendance restante doit bloquer la suppression et être traitée explicitement ; un legacy seulement masqué ou `NotRelevant` ne clôt pas la ligne.
 
 - [ ] Alpe d'Huez — parc legacy `bdd0bc83-428d-47e9-9af6-260a20cb769b` — luge sur rail fixe confirmée par la station
 - [ ] Bernex — parc legacy `2577454a-3e59-4a71-be60-2183b0c95915`
@@ -303,7 +305,7 @@ Ces 17 fiches étaient strictement au-dessus de 95 et sans bloqueur lors du calc
 
 ## Nettoyage préalable : faux parcs à supprimer
 
-Ces 99 cibles sont invisibles et déjà classées `NotRelevant`. Elles correspondent à des personnes, familles, exploitants forains, sociétés sans parc fixe ou libellés manifestement non publiables. Chaque suppression doit utiliser `PreviewDeletion` puis `ApplyDeletion`, supprimer préalablement les dépendances indiquées par l'export et le Preview, et prouver ensuite l'absence du parc et de ses parkItems. `L’île aux Enfants` est volontairement exclu de ce lot tant que son identité n'est pas tranchée ; Alpe d'Huez a été reclassée dans la file des attractions autonomes après confirmation de sa luge sur rail fixe.
+Ces 99 cibles sont invisibles et déjà classées `NotRelevant`. Elles correspondent à des personnes, familles, exploitants forains, sociétés sans parc fixe ou libellés manifestement non publiables. Chaque suppression doit utiliser `PreviewDeletion` puis `ApplyDeletion`, retirer unitairement les dépendances indiquées par l'export et le Preview, supprimer le parc parent en toute dernière opération contrôlée, puis prouver l'absence du parc et de ses parkItems. `L’île aux Enfants` est volontairement exclu de ce lot tant que son identité n'est pas tranchée ; Alpe d'Huez a été reclassée dans la file des attractions autonomes après confirmation de sa luge sur rail fixe.
 
 - [ ] Alexis Coquoz — `fd223f71-faf3-408a-a6a7-d9a9ca7f7892`
 - [ ] Anthony Prunier — `28e3f84a-99c5-4201-b099-3e1ab317253f`

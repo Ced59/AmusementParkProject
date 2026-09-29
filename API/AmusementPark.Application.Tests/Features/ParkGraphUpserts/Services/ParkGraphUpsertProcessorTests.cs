@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.Comments.Ports;
 using AmusementPark.Application.Features.History.Ports;
 using AmusementPark.Application.Features.FactualEvents.Models;
 using AmusementPark.Application.Features.Images.Contracts;
@@ -29,6 +30,7 @@ using AmusementPark.Core.Domain.History;
 using AmusementPark.Core.Domain.FactualEvents;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Comments;
 using AmusementPark.Core.Localization;
 using Moq;
 using Xunit;
@@ -56,6 +58,9 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Contains(
             dependencyInjectionConstructor.GetParameters(),
             static parameter => parameter.ParameterType == typeof(IParkOfficialMapBinaryStorage));
+        Assert.Contains(
+            dependencyInjectionConstructor.GetParameters(),
+            static parameter => parameter.ParameterType == typeof(ICommentRepository));
     }
 
     [Fact]
@@ -2375,6 +2380,10 @@ public sealed class ParkGraphUpsertProcessorTests
                 It.Is<PublicSeoUpdate>(update => update.PreviousParkItems.Any(previousItem => previousItem.Id == "item-1")),
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(value => value.CountByTargetAsync(CommentTargetType.ParkItem, "item-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(0);
 
         ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
             parkRepository.Object,
@@ -2388,7 +2397,8 @@ public sealed class ParkGraphUpsertProcessorTests
             searchProjectionWriter.Object,
             historyRepository.Object,
             publicSeoUpdateNotifier.Object,
-            MeasurementConversionService.Instance);
+            MeasurementConversionService.Instance,
+            commentRepository: commentRepository.Object);
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -2423,6 +2433,7 @@ public sealed class ParkGraphUpsertProcessorTests
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
+        commentRepository.VerifyAll();
     }
 
     [Fact]
@@ -2501,6 +2512,10 @@ public sealed class ParkGraphUpsertProcessorTests
                 It.Is<PublicSeoUpdate>(update => update.PreviousParkItems.Any(previousItem => previousItem.Id == "item-1")),
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(value => value.CountByTargetAsync(CommentTargetType.ParkItem, "item-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(0);
 
         ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
             parkRepository.Object,
@@ -2514,7 +2529,8 @@ public sealed class ParkGraphUpsertProcessorTests
             searchProjectionWriter.Object,
             historyRepository.Object,
             publicSeoUpdateNotifier.Object,
-            MeasurementConversionService.Instance);
+            MeasurementConversionService.Instance,
+            commentRepository: commentRepository.Object);
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -2553,6 +2569,7 @@ public sealed class ParkGraphUpsertProcessorTests
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
+        commentRepository.VerifyAll();
     }
 
     [Fact]
@@ -2609,6 +2626,10 @@ public sealed class ParkGraphUpsertProcessorTests
         publicSeoUpdateNotifier
             .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(value => value.CountByTargetAsync(CommentTargetType.ParkItem, "item-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(0);
 
         ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
             parkRepository.Object,
@@ -2622,7 +2643,8 @@ public sealed class ParkGraphUpsertProcessorTests
             searchProjectionWriter.Object,
             historyRepository.Object,
             publicSeoUpdateNotifier.Object,
-            MeasurementConversionService.Instance);
+            MeasurementConversionService.Instance,
+            commentRepository: commentRepository.Object);
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -2662,6 +2684,7 @@ public sealed class ParkGraphUpsertProcessorTests
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
         publicSeoUpdateNotifier.VerifyAll();
+        commentRepository.VerifyAll();
     }
 
     [Fact]
@@ -4766,6 +4789,371 @@ public sealed class ParkGraphUpsertProcessorTests
             It.IsAny<CancellationToken>()), Times.Never);
         parkRepository.VerifyAll();
         historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenHiddenNotRelevantParkHasNoDependencies_ShouldDeleteParkAndSearchProjection()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Legacy showman record",
+            CountryCode = "FR",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.NotRelevant,
+        };
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.DeleteAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        parkZoneRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByOwnersAsync(
+                ImageOwnerType.Park,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Image>());
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.DeleteAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(
+                It.Is<PublicSeoUpdate>(update => update.CurrentParks.Count == 0 && update.IncludeDiscoveryPages),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(value => value.CountByTargetAsync(CommentTargetType.Park, "park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(0);
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            parkZoneRepository.Object,
+            parkItemRepository.Object,
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            imageRepository.Object,
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance,
+            commentRepository: commentRepository.Object);
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "suppr": [
+            {
+              "entityType": "Park",
+              "id": "park-1"
+            }
+          ]
+        }
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(
+            new ParkGraphUpsertRequest
+            {
+                TargetParkId = "park-1",
+                Document = document.RootElement.Clone(),
+                RawJson = document.RootElement.GetRawText(),
+            },
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.True(result.Value!.IsApplied);
+        ParkGraphUpsertChange deletion = Assert.Single(
+            result.Value.Changes,
+            change => change.EntityType == "Park" && change.ChangeType == "Deleted");
+        Assert.Equal("park-1", deletion.EntityId);
+        Assert.Equal(1, result.Value.Counts.Deleted);
+        searchProjectionWriter.Verify(
+            value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, It.IsAny<string>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+        commentRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenParkDeletionDocumentAlsoMutatesPark_ShouldRejectBeforePersistingMutation()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Public park",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.Validated,
+        };
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance);
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "park": {
+            "isVisible": false,
+            "adminReviewStatus": "NotRelevant"
+          },
+          "suppr": [
+            {
+              "entityType": "Park",
+              "id": "park-1"
+            }
+          ]
+        }
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(
+            new ParkGraphUpsertRequest
+            {
+                TargetParkId = "park-1",
+                Document = document.RootElement.Clone(),
+                RawJson = document.RootElement.GetRawText(),
+            },
+            "user-1",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        parkRepository.Verify(value => value.UpdateAsync(
+            It.IsAny<string>(),
+            It.IsAny<Park>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        parkRepository.Verify(value => value.DeleteAsync(
+            It.IsAny<string>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+        Assert.True(park.IsVisible);
+        Assert.Equal(AdminReviewStatus.Validated, park.AdminReviewStatus);
+        parkRepository.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task PreviewAsync_WhenParkDeletionTargetsVisiblePark_ShouldRejectWithoutReadingDependencies()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Public park",
+            CountryCode = "FR",
+            IsVisible = true,
+            AdminReviewStatus = AdminReviewStatus.NotRelevant,
+        };
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance);
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "suppr": [
+            {
+              "entityType": "Park",
+              "id": "park-1"
+            }
+          ]
+        }
+        """);
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.PreviewAsync(
+            new ParkGraphUpsertRequest
+            {
+                TargetParkId = "park-1",
+                Document = document.RootElement.Clone(),
+                RawJson = document.RootElement.GetRawText(),
+            },
+            "user-1",
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.False(result.Value!.CanApply);
+        Assert.Contains(result.Value.Errors, error => error.Contains("masqué", StringComparison.Ordinal));
+        parkRepository.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CanDeleteParkAsync_WhenParkItemRemains_ShouldRejectAndListDependency()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Legacy record",
+            CountryCode = "FR",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.NotRelevant,
+        };
+        ParkItem item = new ParkItem
+        {
+            Id = "item-1",
+            ParkId = "park-1",
+            Name = "Legacy ride",
+        };
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { item });
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        parkZoneRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByOwnersAsync(
+                ImageOwnerType.Park,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Image>());
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(value => value.CountByTargetAsync(CommentTargetType.Park, "park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(0);
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            parkZoneRepository.Object,
+            parkItemRepository.Object,
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            imageRepository.Object,
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            Mock.Of<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict),
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance,
+            commentRepository: commentRepository.Object);
+        ParkGraphUpsertResult result = new ParkGraphUpsertResult();
+
+        bool canDelete = await processor.CanDeleteParkAsync(park, result, CancellationToken.None);
+
+        Assert.False(canDelete);
+        Assert.Contains(result.Errors, error => error.Contains("1 parkItem", StringComparison.Ordinal));
+        Assert.Contains(result.Changes, change => change.EntityType == "Park" && change.ChangeType == "Skipped");
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        commentRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task CanDeleteParkAsync_WhenCommentRemains_ShouldRejectAndListDependency()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Legacy record",
+            CountryCode = "FR",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.NotRelevant,
+        };
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        parkZoneRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkZone>());
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.GetByOwnersAsync(
+                ImageOwnerType.Park,
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                null,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Image>());
+        Mock<ICommentRepository> commentRepository = new Mock<ICommentRepository>(MockBehavior.Strict);
+        commentRepository
+            .Setup(value => value.CountByTargetAsync(CommentTargetType.Park, "park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(2);
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            Mock.Of<IParkRepository>(MockBehavior.Strict),
+            parkZoneRepository.Object,
+            parkItemRepository.Object,
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            imageRepository.Object,
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            Mock.Of<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict),
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance,
+            commentRepository: commentRepository.Object);
+        ParkGraphUpsertResult result = new ParkGraphUpsertResult();
+
+        bool canDelete = await processor.CanDeleteParkAsync(park, result, CancellationToken.None);
+
+        Assert.False(canDelete);
+        Assert.Contains(result.Errors, error => error.Contains("2 commentaire", StringComparison.Ordinal));
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        commentRepository.VerifyAll();
     }
 
 

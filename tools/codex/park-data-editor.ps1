@@ -337,6 +337,24 @@ function Write-JsonFile {
     [IO.File]::WriteAllText($Path, $json, [System.Text.UTF8Encoding]::new($false))
 }
 
+function ConvertTo-ReceiptUtcDateTime {
+    param([object]$Value)
+
+    if ($Value -is [DateTime]) {
+        return ([DateTime]$Value).ToUniversalTime()
+    }
+
+    if ($Value -is [DateTimeOffset]) {
+        return ([DateTimeOffset]$Value).UtcDateTime
+    }
+
+    $text = [Convert]::ToString($Value, [Globalization.CultureInfo]::InvariantCulture)
+    return [DateTimeOffset]::Parse(
+        $text,
+        [Globalization.CultureInfo]::InvariantCulture,
+        [Globalization.DateTimeStyles]::AssumeUniversal -bor [Globalization.DateTimeStyles]::AdjustToUniversal).UtcDateTime
+}
+
 function Get-DefaultOutputPath {
     param([string]$InputPath, [string]$Suffix)
 
@@ -414,7 +432,7 @@ function Assert-ParkDataDeletionRequest {
     }
 
     $allowedEntityTypes = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
-    foreach ($entityType in @('Image', 'ParkItem', 'ParkZone')) {
+    foreach ($entityType in @('Image', 'ParkItem', 'ParkZone', 'Park')) {
         $allowedEntityTypes.Add($entityType) | Out-Null
     }
     $seenTargets = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
@@ -429,7 +447,12 @@ function Assert-ParkDataDeletionRequest {
         if ($entryProperties.Count -ne 2 -or $null -eq $entityTypeProperty -or $null -eq $idProperty -or
             -not $allowedEntityTypes.Contains([string]$entityTypeProperty.Value) -or
             [string]::IsNullOrWhiteSpace([string]$idProperty.Value)) {
-            throw 'Every controlled deletion entry must contain only a supported entityType (Image, ParkItem or ParkZone) and a non-empty id.'
+            throw 'Every controlled deletion entry must contain only a supported entityType (Image, ParkItem, ParkZone or Park) and a non-empty id.'
+        }
+
+        if ([string]::Equals([string]$entityTypeProperty.Value, 'Park', [StringComparison]::Ordinal) -and
+            -not [string]::Equals(([string]$idProperty.Value).Trim(), $TargetParkId.Trim(), [StringComparison]::Ordinal)) {
+            throw 'A controlled Park deletion must target the exact ParkId announced to the client.'
         }
 
         $targetKey = "$([string]$entityTypeProperty.Value):$(([string]$idProperty.Value).Trim())"
@@ -1304,7 +1327,7 @@ switch ($Action) {
         $resolvedReceiptPath = Resolve-RequiredFile -Path $ReceiptPath -ParameterName 'ReceiptPath'
         $receipt = [IO.File]::ReadAllText($resolvedReceiptPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
         $currentHash = (Get-FileHash -LiteralPath $resolvedJsonPath -Algorithm SHA256).Hash
-        $receiptAge = [DateTime]::UtcNow - [DateTime]::Parse($receipt.createdAtUtc).ToUniversalTime()
+        $receiptAge = [DateTime]::UtcNow - (ConvertTo-ReceiptUtcDateTime -Value $receipt.createdAtUtc)
         if ($receipt.schemaVersion -ne 1 -or $receipt.apiBaseUrl -ne $ApiBaseUrl -or
             $receipt.jsonSha256 -ne $currentHash -or -not $receipt.canApply -or
             $receipt.errorCount -gt 0 -or ($receipt.warningCount -gt 0 -and -not $receipt.warningsApproved) -or
@@ -1375,7 +1398,7 @@ switch ($Action) {
         $expectedDeletionCount = Assert-ParkDataDeletionRequest -Request $jsonBody -TargetParkId $ParkId
         $receipt = [IO.File]::ReadAllText($resolvedReceiptPath, [Text.Encoding]::UTF8) | ConvertFrom-Json
         $currentHash = (Get-FileHash -LiteralPath $resolvedJsonPath -Algorithm SHA256).Hash
-        $receiptAge = [DateTime]::UtcNow - [DateTime]::Parse($receipt.createdAtUtc).ToUniversalTime()
+        $receiptAge = [DateTime]::UtcNow - (ConvertTo-ReceiptUtcDateTime -Value $receipt.createdAtUtc)
         $workflowProperty = $receipt.PSObject.Properties['workflow']
         $targetParkProperty = $receipt.PSObject.Properties['targetParkId']
         $expectedCountProperty = $receipt.PSObject.Properties['expectedDeletionCount']
