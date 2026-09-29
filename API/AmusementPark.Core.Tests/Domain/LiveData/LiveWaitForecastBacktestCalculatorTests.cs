@@ -170,6 +170,9 @@ public sealed class LiveWaitForecastBacktestCalculatorTests
             withoutDelayed.Candidate?.MeanAbsoluteErrorMinutes,
             withDelayed.Candidate?.MeanAbsoluteErrorMinutes);
         Assert.Equal(withoutDelayed.IntervalCoveragePercent, withDelayed.IntervalCoveragePercent);
+        Assert.Equal(
+            withoutDelayed.MedianIntervalWidthMinutes,
+            withDelayed.MedianIntervalWidthMinutes);
     }
 
     [Fact]
