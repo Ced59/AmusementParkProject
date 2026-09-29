@@ -170,15 +170,14 @@
                     <strong>{{ ('admin.liveOperations.confirm.' + selected.actionKey) | translate }}</strong>
                     <label>
                       <span>{{ 'admin.liveOperations.confirm.reason' | translate }}</span>
-                      <textarea
-                        rows="3"
+                      <input
+                        type="text"
                         maxlength="500"
                         [formControl]="reason"
                         [placeholder]="'admin.liveOperations.confirm.placeholder' | translate">
-                      </textarea>
                     </label>
                     <div>
-                      <button appUiButton type="submit" [disabled]="reason.value.trim().length < 3">
+                      <button appUiButton type="submit" [disabled]="!isReasonValid()">
                         {{ 'admin.liveOperations.confirm.apply' | translate }}
                       </button>
                       <button appUiButton type="button" class="p-button-secondary" (click)="cancel()">

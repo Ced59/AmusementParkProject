@@ -15,6 +15,7 @@ import { ButtonDirective } from '@shared/ui/primitives/button';
 import { Card } from '@shared/ui/primitives/card';
 import { Tag } from '@shared/ui/primitives/tag';
 import { AdminLiveOperationsFacade } from '../../state/admin-live-operations.facade';
+import { isValidLiveOperationalReason } from './live-operational-reason.validator';
 
 interface PendingLiveOperationalChange {
   readonly scope: LiveOperationalScope;
@@ -81,7 +82,7 @@ export class AdminLiveOperationsComponent implements OnInit {
   protected confirm(): void {
     const change: PendingLiveOperationalChange | null = this.pendingChange();
     const reason: string = this.reason.value.trim();
-    if (change === null || reason.length < 3) {
+    if (change === null || !isValidLiveOperationalReason(reason)) {
       return;
     }
 
@@ -105,6 +106,10 @@ export class AdminLiveOperationsComponent implements OnInit {
   protected cancel(): void {
     this.pendingChange.set(null);
     this.reason.setValue('');
+  }
+
+  protected isReasonValid(): boolean {
+    return isValidLiveOperationalReason(this.reason.value);
   }
 
   protected scopeKey(scope: LiveOperationalScope): string {
