@@ -282,7 +282,8 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
 
         LiveLatestObservationWriteResult writeResult;
         int suppressedAtWriteBoundary = 0;
-        IReadOnlyCollection<LiveLatestObservation> acceptedObservations = Array.Empty<LiveLatestObservation>();
+        IReadOnlyCollection<LiveLatestObservation> committedAlertObservations =
+            Array.Empty<LiveLatestObservation>();
         if (externalEntityId.Length == 0)
         {
             writeResult = await this.latestRepository.WriteLatestAsync(
@@ -298,15 +299,15 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
                     latestByInternalTarget.Values.ToArray(),
                     cancellationToken);
             writeResult = operationalWrite.WriteResult;
-            acceptedObservations = operationalWrite.AcceptedObservations;
+            committedAlertObservations = writeResult.CommittedObservations;
             suppressedAtWriteBoundary = latestByInternalTarget.Count
                 - operationalWrite.AcceptedObservations.Count;
         }
 
-        if (this.liveAlertEvaluationService is not null && acceptedObservations.Count > 0)
+        if (this.liveAlertEvaluationService is not null && committedAlertObservations.Count > 0)
         {
             await this.liveAlertEvaluationService.EvaluateAsync(
-                acceptedObservations,
+                committedAlertObservations,
                 cancellationToken);
         }
 

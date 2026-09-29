@@ -10,6 +10,7 @@ public sealed class LiveAlertSubscription
     public const int MaximumDurationMinutes = 720;
     public const int CooldownMinutes = 30;
     public const int WaitHysteresisMinutes = 5;
+    public const int PendingDeliveryRetentionDays = 7;
 
     private LiveAlertSubscription(
         LiveAlertSubscriptionId id,
@@ -106,6 +107,12 @@ public sealed class LiveAlertSubscription
     public DateTime? LastTriggeredAtUtc { get; private set; }
 
     public LiveAlertTrigger? PendingTrigger { get; private set; }
+
+    public DateTime RetentionExpiresAtUtc => this.PendingTrigger is null
+        ? this.ExpiresAtUtc
+        : Max(
+            this.ExpiresAtUtc,
+            this.PendingTrigger.TriggeredAtUtc.AddDays(PendingDeliveryRetentionDays));
 
     public long Version { get; private set; }
 
@@ -377,5 +384,10 @@ public sealed class LiveAlertSubscription
         {
             throw new ArgumentException("Live alert timestamps must use UTC.", parameterName);
         }
+    }
+
+    private static DateTime Max(DateTime left, DateTime right)
+    {
+        return left >= right ? left : right;
     }
 }

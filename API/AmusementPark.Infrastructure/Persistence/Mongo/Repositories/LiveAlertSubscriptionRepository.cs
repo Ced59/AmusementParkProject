@@ -92,7 +92,7 @@ public sealed class LiveAlertSubscriptionRepository : ILiveAlertSubscriptionRepo
         }
 
         List<LiveAlertSubscriptionDocument> documents = await this.collection.Find(
-            document => document.PendingTrigger != null && document.ExpiresAt > nowUtc)
+            LiveAlertMongoDefinitions.BuildPendingDeliveryFilter(nowUtc))
             .SortBy(static document => document.PendingTrigger!.TriggeredAt)
             .ThenBy(static document => document.Id)
             .Limit(limit)
@@ -119,7 +119,9 @@ public sealed class LiveAlertSubscriptionRepository : ILiveAlertSubscriptionRepo
         try
         {
             await this.collection.DeleteManyAsync(
-                document => document.UserId == subscription.UserId && document.ExpiresAt <= nowUtc,
+                document => document.UserId == subscription.UserId
+                    && document.ExpiresAt <= nowUtc
+                    && document.PendingTrigger == null,
                 cancellationToken);
             LiveAlertSubscriptionDocument document = subscription.ToDocument();
             for (int quotaSlot = 0;
@@ -174,6 +176,7 @@ public sealed class LiveAlertSubscriptionRepository : ILiveAlertSubscriptionRepo
                 .Set(static item => item.IsArmed, document.IsArmed)
                 .Set(static item => item.LastTriggeredAt, document.LastTriggeredAt)
                 .Set(static item => item.PendingTrigger, document.PendingTrigger)
+                .Set(static item => item.RetentionExpiresAt, document.RetentionExpiresAt)
                 .Set(static item => item.UpdatedAt, document.UpdatedAt)
                 .Set(static item => item.Version, document.Version);
         UpdateResult result = await this.collection.UpdateOneAsync(

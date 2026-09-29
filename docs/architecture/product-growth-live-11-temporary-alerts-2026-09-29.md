@@ -77,7 +77,7 @@ poll fournisseur
 normalisation + contrôles LIVE-02…10
       │
       ▼
-écriture latest monotone
+écriture latest monotone + relecture de la valeur réellement retenue
       │
       ▼
 LiveAlertEvaluationService
@@ -96,10 +96,13 @@ Chaque notification possède une clé de déclenchement unique fondée sur
 l’abonnement et l’heure observée. Une même observation ne peut donc pas produire
 de doublon. Tant que cette notification n’a pas été créée ou reconnue comme
 déjà créée, le déclenchement reste durablement en attente et bloque l’avancement
-de l’abonnement. Les notifications visibles sont conservées 30 jours ; les
-documents expirés sont supprimés par TTL. Les abonnements ont leur propre TTL et sont
-également filtrés par date dans chaque lecture, sans dépendre du délai de
-nettoyage de MongoDB.
+de l’abonnement. Cette sortie reste livrable jusqu’à sept jours après son
+déclenchement, même si la durée fonctionnelle de l’abonnement se termine entre-
+temps. Les notifications visibles sont conservées 30 jours ; les documents
+expirés sont supprimés par TTL. L’expiration métier des abonnements reste
+filtrée dans chaque lecture ; leur expiration technique attend seulement la
+livraison d’une éventuelle sortie durable, sans dépendre du délai de nettoyage
+de MongoDB.
 
 ## Modèle MongoDB
 
@@ -109,11 +112,12 @@ live-alert-subscriptions             live-alert-notifications
 ├─ userId                            ├─ userId
 ├─ targetId / parkId                 ├─ subscriptionId
 ├─ type / thresholdMinutes           ├─ targetId / parkId
-├─ createdAt / expiresAt (TTL)       ├─ transition + seuil
+├─ createdAt / expiresAt             ├─ transition + seuil
 ├─ dernier statut / attente / heure  ├─ sourceId / observedAt / âge
 ├─ isArmed / lastTriggeredAt         ├─ deliveredAt / status
 ├─ pendingTrigger (sortie durable)   ├─ expiresAt (TTL)
-├─ quotaSlot (unique par membre)     ├─ triggerKey (unique)
+├─ retentionExpiresAt (TTL)          ├─ triggerKey (unique)
+├─ quotaSlot (unique par membre)     │
 └─ version                           └─ version
 ```
 

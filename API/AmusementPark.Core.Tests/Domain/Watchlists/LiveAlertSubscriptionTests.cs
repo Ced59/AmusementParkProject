@@ -185,6 +185,31 @@ public sealed class LiveAlertSubscriptionTests
         Assert.Null(subscription.LastWaitMinutes);
     }
 
+    [Fact]
+    public void PendingTrigger_ShouldOutliveSubscriptionUntilDeliveryIsAcknowledged()
+    {
+        DateTime expiresAtUtc = StartUtc.AddMinutes(30);
+        DateTime triggeredAtUtc = StartUtc.AddMinutes(29);
+        LiveAlertSubscription subscription = CreateSubscription(
+            LiveAlertType.WaitBelow,
+            30,
+            CreateObservation(StartUtc, LiveOperationalStatus.Open, 40),
+            expiresAtUtc);
+
+        LiveAlertTrigger? trigger = subscription.Evaluate(
+            CreateObservation(triggeredAtUtc, LiveOperationalStatus.Open, 20),
+            triggeredAtUtc);
+
+        Assert.NotNull(trigger);
+        Assert.Equal(
+            triggeredAtUtc.AddDays(LiveAlertSubscription.PendingDeliveryRetentionDays),
+            subscription.RetentionExpiresAtUtc);
+
+        subscription.MarkPendingTriggerDelivered();
+
+        Assert.Equal(expiresAtUtc, subscription.RetentionExpiresAtUtc);
+    }
+
     private static LiveAlertSubscription CreateSubscription(
         LiveAlertType type,
         int? thresholdMinutes,

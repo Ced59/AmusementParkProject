@@ -5,6 +5,17 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 internal static class LiveAlertMongoDefinitions
 {
+    public static FilterDefinition<LiveAlertSubscriptionDocument> BuildPendingDeliveryFilter(
+        DateTime nowUtc)
+    {
+        return Builders<LiveAlertSubscriptionDocument>.Filter.Ne(
+                static document => document.PendingTrigger,
+                null)
+            & Builders<LiveAlertSubscriptionDocument>.Filter.Gt(
+                static document => document.RetentionExpiresAt,
+                nowUtc);
+    }
+
     public static IReadOnlyCollection<CreateIndexModel<LiveAlertSubscriptionDocument>> BuildSubscriptionIndexes()
     {
         return new List<CreateIndexModel<LiveAlertSubscriptionDocument>>
@@ -29,10 +40,11 @@ internal static class LiveAlertMongoDefinitions
             new(
                 Builders<LiveAlertSubscriptionDocument>.IndexKeys
                     .Ascending(static document => document.PendingTrigger!.TriggeredAt)
-                    .Ascending(static document => document.ExpiresAt),
+                    .Ascending(static document => document.RetentionExpiresAt),
                 new CreateIndexOptions { Name = "ix_live_alert_subscription_pending_delivery" }),
             new(
-                Builders<LiveAlertSubscriptionDocument>.IndexKeys.Ascending(static document => document.ExpiresAt),
+                Builders<LiveAlertSubscriptionDocument>.IndexKeys.Ascending(
+                    static document => document.RetentionExpiresAt),
                 new CreateIndexOptions { ExpireAfter = TimeSpan.Zero, Name = "ttl_live_alert_subscription" }),
         };
     }

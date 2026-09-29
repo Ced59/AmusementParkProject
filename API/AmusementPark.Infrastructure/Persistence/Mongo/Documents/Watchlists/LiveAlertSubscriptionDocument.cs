@@ -27,6 +27,9 @@ public sealed class LiveAlertSubscriptionDocument : MongoDocumentBase
     [BsonElement("expiresAt")]
     public DateTime ExpiresAt { get; set; }
 
+    [BsonElement("retentionExpiresAt")]
+    public DateTime RetentionExpiresAt { get; set; }
+
     [BsonElement("lastObservedAt")]
     [BsonIgnoreIfNull]
     public DateTime? LastObservedAt { get; set; }

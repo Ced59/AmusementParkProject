@@ -19,6 +19,7 @@ internal static class LiveAlertSubscriptionMongoMapper
             CreatedAt = subscription.CreatedAtUtc,
             UpdatedAt = subscription.LastObservedAtUtc ?? subscription.CreatedAtUtc,
             ExpiresAt = subscription.ExpiresAtUtc,
+            RetentionExpiresAt = subscription.RetentionExpiresAtUtc,
             LastObservedAt = subscription.LastObservedAtUtc,
             LastStatus = subscription.LastStatus,
             LastWaitMinutes = subscription.LastWaitMinutes,
