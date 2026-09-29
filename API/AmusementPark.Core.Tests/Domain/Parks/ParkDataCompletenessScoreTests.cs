@@ -58,6 +58,24 @@ public sealed class ParkDataCompletenessScoreTests
     }
 
     [Theory]
+    [InlineData("Minimum height: 120 cm")]
+    [InlineData("Taille minimale : 120 cm")]
+    [InlineData("La Piscine 25 Mètres")]
+    [InlineData("Parking 12 €")]
+    public void HasForbiddenPlainPublicText_WhenLegitimateLabelContainsMetric_ShouldAccept(string value)
+    {
+        Assert.False(DataCompletenessScoringRules.HasForbiddenPlainPublicText(value));
+    }
+
+    [Theory]
+    [InlineData("Audit admin : taille minimale 120 cm")]
+    [InlineData("The public page confirms a minimum height of 120 cm")]
+    public void HasForbiddenPlainPublicText_WhenMetricLabelContainsEditorialJargon_ShouldReject(string value)
+    {
+        Assert.True(DataCompletenessScoringRules.HasForbiddenPlainPublicText(value));
+    }
+
+    [Theory]
     [InlineData("<p>L&amp;rsquo;ancien parc.</p>")]
     [InlineData("<p>L&amp;#8217;ancien parc.</p>")]
     [InlineData("<p>Rock &amp;amp; Roll.</p>")]

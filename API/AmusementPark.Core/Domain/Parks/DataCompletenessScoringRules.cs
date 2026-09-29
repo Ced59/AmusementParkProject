@@ -226,7 +226,7 @@ public static class DataCompletenessScoringRules
             return true;
         }
 
-        return HasForbiddenEditorialPublicText(value);
+        return HasForbiddenEditorialPublicText(value, rejectTechnicalMetrics: true);
     }
 
     public static bool HasForbiddenPlainPublicText(string? value)
@@ -241,16 +241,16 @@ public static class DataCompletenessScoringRules
             return true;
         }
 
-        return HasForbiddenEditorialPublicText(value);
+        return HasForbiddenEditorialPublicText(value, rejectTechnicalMetrics: false);
     }
 
-    private static bool HasForbiddenEditorialPublicText(string value)
+    private static bool HasForbiddenEditorialPublicText(string value, bool rejectTechnicalMetrics)
     {
 
         string normalizedValue = NormalizePublicText(value);
         if (InternalJargonRegex.IsMatch(normalizedValue)
             || ForbiddenEditorialPhrases.Any(phrase => normalizedValue.Contains(phrase, StringComparison.OrdinalIgnoreCase))
-            || RawTechnicalMetricRegex.IsMatch(normalizedValue))
+            || (rejectTechnicalMetrics && RawTechnicalMetricRegex.IsMatch(normalizedValue)))
         {
             return true;
         }
