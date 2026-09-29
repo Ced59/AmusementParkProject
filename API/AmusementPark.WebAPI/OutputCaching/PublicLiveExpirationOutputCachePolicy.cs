@@ -48,6 +48,7 @@ public sealed class PublicLiveExpirationOutputCachePolicy : IOutputCachePolicy
             || requestGeneration != this.generation.Current)
         {
             context.AllowCacheStorage = false;
+            context.HttpContext.Response.Headers.CacheControl = "no-store";
             return ValueTask.CompletedTask;
         }
 

@@ -92,6 +92,7 @@ public sealed class PublicLiveExpirationOutputCachePolicyTests
         await policy.ServeResponseAsync(context, CancellationToken.None);
 
         Assert.False(context.AllowCacheStorage);
+        Assert.Equal("no-store", httpContext.Response.Headers.CacheControl.ToString());
     }
 
     private static PublicLiveExpirationOutputCachePolicy CreatePolicy(

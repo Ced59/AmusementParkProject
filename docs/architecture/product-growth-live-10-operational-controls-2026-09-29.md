@@ -109,7 +109,9 @@ sans refroidir les autres données publiques ni les pages SSR.
 Une génération dédiée entre aussi dans la clé du cache du direct. Si une réponse
 publique avait commencé avant l’arrêt, elle reste liée à l’ancienne génération
 et la politique interdit son stockage lorsque la génération a changé pendant la
-requête. Une réponse tardive ne peut donc pas repeupler le cache évincé.
+requête. Cette réponse tardive est aussi marquée `no-store` afin qu’un navigateur
+ou proxy intermédiaire ne puisse pas la conserver après l’arrêt. Elle ne peut
+donc repeupler aucun cache évincé.
 Le nombre total d’incidents en attente reste visible, tandis qu’un compteur
 distinct pilote le bouton de rejeu avec les seuls incidents encore rejouables
 dont le mapping courant est éligible. Ce compteur et le lot relu sont limités
