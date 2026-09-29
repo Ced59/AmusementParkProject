@@ -16,6 +16,27 @@ public sealed class PublicLiveLatestReaderTests
     private static readonly DateTime NowUtc =
         new DateTime(2026, 9, 29, 12, 0, 17, DateTimeKind.Utc);
 
+    [Fact]
+    public async Task ReadParkAsync_WhenPublicReadIsDisabled_ShouldReturnNotFoundWithoutReadingData()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ILiveLatestObservationRepository> observations =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        Mock<ILiveDataSourceCatalog> catalog = new Mock<ILiveDataSourceCatalog>(MockBehavior.Strict);
+        catalog.SetupGet(value => value.IsPublicReadEnabled).Returns(false);
+        PublicLiveLatestReader reader = CreateReader(parks, items, observations, catalog);
+
+        AmusementPark.Application.Errors.ApplicationResult<PublicLiveTargetResult> result =
+            await reader.ReadParkAsync("park-1", CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("live-data.public-read.disabled", Assert.Single(result.Errors).Code);
+        parks.VerifyNoOtherCalls();
+        items.VerifyNoOtherCalls();
+        observations.VerifyNoOtherCalls();
+    }
+
     [Theory]
     [InlineData(0)]
     [InlineData(null)]
@@ -169,9 +190,15 @@ public sealed class PublicLiveLatestReaderTests
     private static PublicLiveLatestReader CreateReader(
         Mock<IParkRepository> parks,
         Mock<IParkItemRepository> items,
-        Mock<ILiveLatestObservationRepository> observations)
+        Mock<ILiveLatestObservationRepository> observations,
+        Mock<ILiveDataSourceCatalog>? sourceCatalog = null)
     {
-        Mock<ILiveDataSourceCatalog> catalog = new Mock<ILiveDataSourceCatalog>(MockBehavior.Strict);
+        Mock<ILiveDataSourceCatalog> catalog = sourceCatalog
+            ?? new Mock<ILiveDataSourceCatalog>(MockBehavior.Strict);
+        if (sourceCatalog is null)
+        {
+            catalog.SetupGet(value => value.IsPublicReadEnabled).Returns(true);
+        }
         catalog.Setup(value => value.Find(LiveDataSourceId.Parse("themeparks-wiki")))
             .Returns(CreatePresentation());
         Mock<TimeProvider> clock = new Mock<TimeProvider>(MockBehavior.Strict);
@@ -180,6 +207,7 @@ public sealed class PublicLiveLatestReaderTests
             parks.Object,
             items.Object,
             observations.Object,
+            catalog.Object,
             new PublicLiveTargetResultFactory(
                 catalog.Object,
                 new LiveLatestObservationSelectionPolicy()),

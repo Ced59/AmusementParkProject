@@ -2,6 +2,8 @@ import { PublicLiveTarget } from '@app/models/live-data/public-live.models';
 import {
   filterPublicLiveTargets,
   isPublicLiveTargetClosed,
+  resolvePublicLiveAttributionSources,
+  resolvePublicLiveFreshnessReference,
   resolvePublicLiveStatusLabelKey,
   resolvePublicLiveWaitMinutes
 } from './public-live-view.helpers';
@@ -35,6 +37,34 @@ describe('public live view helpers', () => {
       .toEqual(['zero', 'short']);
   });
 
+  it('does not include an unknown status in the available filter', () => {
+    const open: PublicLiveTarget = createTarget({ targetId: 'open' });
+    const unknown: PublicLiveTarget = createTarget({ targetId: 'unknown', status: 'Unknown' });
+    const missing: PublicLiveTarget = createTarget({ targetId: 'missing', status: null });
+
+    expect(filterPublicLiveTargets([open, unknown, missing], 'available').map((item) => item.targetId))
+      .toEqual(['open']);
+  });
+
+  it('attributes displayed child observations and uses their oldest age conservatively', () => {
+    const park: PublicLiveTarget = createTarget({ targetId: 'park', ageSeconds: null });
+    const recent: PublicLiveTarget = createTarget({
+      targetId: 'recent',
+      ageSeconds: 60,
+      sourceId: 'source-a'
+    });
+    const older: PublicLiveTarget = createTarget({
+      targetId: 'older',
+      ageSeconds: 600,
+      sourceId: 'source-a'
+    });
+
+    expect(resolvePublicLiveAttributionSources(park, [recent, older])).toHaveLength(1);
+    expect(resolvePublicLiveAttributionSources(park, [recent, older])[0].attributionText)
+      .toBe('Powered by source-a');
+    expect(resolvePublicLiveFreshnessReference(park, [recent, older]).targetId).toBe('older');
+  });
+
   it('does not replace an unknown standby wait with another queue or show a closed queue value', () => {
     const unknownStandby: PublicLiveTarget = {
       ...createTarget({ waitTimeMinutes: null }),
@@ -58,6 +88,8 @@ interface TargetOverrides {
   readonly availability?: PublicLiveTarget['availability'];
   readonly status?: PublicLiveTarget['status'];
   readonly waitTimeMinutes?: number | null;
+  readonly ageSeconds?: number | null;
+  readonly sourceId?: string;
 }
 
 function createTarget(overrides: TargetOverrides = {}): PublicLiveTarget {
@@ -68,7 +100,7 @@ function createTarget(overrides: TargetOverrides = {}): PublicLiveTarget {
     parkId: 'park-1',
     parkDisplayName: 'Example park',
     availability: overrides.availability ?? 'Current',
-    status: overrides.status ?? 'Open',
+    status: overrides.status === undefined ? 'Open' : overrides.status,
     queues: [{
       kind: 'Standby',
       waitTimeMinutes: overrides.waitTimeMinutes === undefined ? 10 : overrides.waitTimeMinutes,
@@ -85,10 +117,16 @@ function createTarget(overrides: TargetOverrides = {}): PublicLiveTarget {
     asOfUtc: '2026-09-29T10:00:00Z',
     observedAtUtc: '2026-09-29T09:59:00Z',
     receivedAtUtc: '2026-09-29T09:59:01Z',
-    ageSeconds: 60,
+    ageSeconds: overrides.ageSeconds === undefined ? 60 : overrides.ageSeconds,
     freshness: 'Fresh',
     expiresAtUtc: '2026-09-29T10:04:00Z',
-    source: null,
+    source: overrides.sourceId ? {
+      id: overrides.sourceId,
+      displayName: overrides.sourceId,
+      type: 'AuthorizedAggregator',
+      attributionText: `Powered by ${overrides.sourceId}`,
+      attributionUrl: `https://${overrides.sourceId}.example/`
+    } : null,
     confidence: 'High'
   };
 }

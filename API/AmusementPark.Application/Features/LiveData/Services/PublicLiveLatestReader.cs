@@ -13,6 +13,7 @@ public sealed class PublicLiveLatestReader
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly ILiveLatestObservationRepository observationRepository;
+    private readonly ILiveDataSourceCatalog sourceCatalog;
     private readonly PublicLiveTargetResultFactory resultFactory;
     private readonly TimeProvider timeProvider;
 
@@ -20,12 +21,14 @@ public sealed class PublicLiveLatestReader
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         ILiveLatestObservationRepository observationRepository,
+        ILiveDataSourceCatalog sourceCatalog,
         PublicLiveTargetResultFactory resultFactory,
         TimeProvider? timeProvider = null)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.observationRepository = observationRepository;
+        this.sourceCatalog = sourceCatalog;
         this.resultFactory = resultFactory;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
@@ -34,6 +37,12 @@ public sealed class PublicLiveLatestReader
         string parkId,
         CancellationToken cancellationToken)
     {
+        if (!this.sourceCatalog.IsPublicReadEnabled)
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         string? normalizedParkId = NormalizeIdentifier(parkId);
         if (normalizedParkId is null)
         {
@@ -73,6 +82,12 @@ public sealed class PublicLiveLatestReader
         string parkItemId,
         CancellationToken cancellationToken)
     {
+        if (!this.sourceCatalog.IsPublicReadEnabled)
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         string? normalizedParkItemId = NormalizeIdentifier(parkItemId);
         if (normalizedParkItemId is null)
         {
@@ -119,6 +134,12 @@ public sealed class PublicLiveLatestReader
         string parkId,
         CancellationToken cancellationToken)
     {
+        if (!this.sourceCatalog.IsPublicReadEnabled)
+        {
+            return ApplicationResult<PublicParkLiveItemsResult>.Failure(
+                LiveDataApplicationErrors.PublicReadDisabled());
+        }
+
         string? normalizedParkId = NormalizeIdentifier(parkId);
         if (normalizedParkId is null)
         {

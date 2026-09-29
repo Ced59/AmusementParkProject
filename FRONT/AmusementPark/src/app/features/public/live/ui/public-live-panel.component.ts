@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, signal
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { PublicLiveQueue, PublicLiveTarget } from '@app/models/live-data/public-live.models';
+import { PublicLiveQueue, PublicLiveSource, PublicLiveTarget } from '@app/models/live-data/public-live.models';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent } from '@ui/primitives';
 import { PublicLiveFilter } from '../models/public-live-filter.model';
@@ -11,6 +11,8 @@ import {
   filterPublicLiveTargets,
   isPublicLiveQueueWaitUsable,
   isPublicLiveTargetClosed,
+  resolvePublicLiveAttributionSources,
+  resolvePublicLiveFreshnessReference,
   resolvePublicLiveStatusLabelKey,
   resolvePublicLiveTone,
   resolvePublicLiveWaitMinutes
@@ -71,6 +73,14 @@ export class PublicLivePanelComponent {
 
   protected queueHasUsableWait(queue: PublicLiveQueue): boolean {
     return isPublicLiveQueueWaitUsable(queue);
+  }
+
+  protected attributionSources(target: PublicLiveTarget): readonly PublicLiveSource[] {
+    return resolvePublicLiveAttributionSources(target, this.mode === 'park' ? this.visibleItems() : []);
+  }
+
+  protected freshnessReference(target: PublicLiveTarget): PublicLiveTarget {
+    return resolvePublicLiveFreshnessReference(target, this.mode === 'park' ? this.visibleItems() : []);
   }
 
   protected ageLabelKey(target: PublicLiveTarget): string {

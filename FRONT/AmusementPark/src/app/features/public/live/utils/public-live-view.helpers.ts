@@ -1,4 +1,4 @@
-import { PublicLiveQueue, PublicLiveTarget } from '@app/models/live-data/public-live.models';
+import { PublicLiveQueue, PublicLiveSource, PublicLiveTarget } from '@app/models/live-data/public-live.models';
 import { PublicLiveFilter } from '../models/public-live-filter.model';
 
 const CLOSED_STATUSES: readonly string[] = [
@@ -10,6 +10,32 @@ const CLOSED_STATUSES: readonly string[] = [
   'NotOperatingToday',
   'Removed'
 ];
+
+export function resolvePublicLiveAttributionSources(
+  target: PublicLiveTarget,
+  displayedItems: readonly PublicLiveTarget[]
+): readonly PublicLiveSource[] {
+  const uniqueSources: Map<string, PublicLiveSource> = new Map<string, PublicLiveSource>();
+  [target, ...displayedItems].forEach((candidate: PublicLiveTarget) => {
+    if (candidate.source) {
+      uniqueSources.set(`${candidate.source.id}|${candidate.source.attributionUrl}`, candidate.source);
+    }
+  });
+  return [...uniqueSources.values()];
+}
+
+export function resolvePublicLiveFreshnessReference(
+  target: PublicLiveTarget,
+  displayedItems: readonly PublicLiveTarget[]
+): PublicLiveTarget {
+  return [target, ...displayedItems]
+    .filter((candidate: PublicLiveTarget) => candidate.ageSeconds !== null)
+    .reduce(
+      (oldest: PublicLiveTarget, candidate: PublicLiveTarget) =>
+        (candidate.ageSeconds ?? 0) > (oldest.ageSeconds ?? 0) ? candidate : oldest,
+      target
+    );
+}
 
 export function isPublicLiveTargetClosed(target: PublicLiveTarget): boolean {
   return target.availability === 'Current'
@@ -65,7 +91,11 @@ export function filterPublicLiveTargets(
 ): readonly PublicLiveTarget[] {
   switch (filter) {
     case 'available':
-      return targets.filter((target: PublicLiveTarget) => target.availability === 'Current' && !isPublicLiveTargetClosed(target));
+      return targets.filter((target: PublicLiveTarget) =>
+        target.availability === 'Current'
+        && target.status !== null
+        && target.status !== 'Unknown'
+        && !isPublicLiveTargetClosed(target));
     case 'shortWait':
       return targets.filter((target: PublicLiveTarget) => {
         const waitTimeMinutes: number | null = resolvePublicLiveWaitMinutes(target);
