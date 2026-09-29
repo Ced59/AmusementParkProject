@@ -162,6 +162,19 @@
                   (click)="openPublicReadChange(scope)">
                   {{ (scope.publicReadEnabled ? 'admin.liveOperations.actions.hidePublicly' : 'admin.liveOperations.actions.showPublicly') | translate }}
                 </button>
+                @if (canRunBacktest(scope)) {
+                  <button
+                    appUiButton
+                    type="button"
+                    class="p-button-secondary"
+                    [disabled]="backtestPendingTargetId() !== null"
+                    (click)="runBacktest(scope)">
+                    <i class="pi pi-chart-line" aria-hidden="true"></i>
+                    {{ (backtestPendingTargetId() === scope.internalTargetId
+                      ? 'admin.liveOperations.backtest.running'
+                      : 'admin.liveOperations.backtest.run') | translate }}
+                  </button>
+                }
               </div>
 
               @if (pendingChange(); as selected) {
@@ -191,6 +204,103 @@
           }
         </div>
       </section>
+
+      @if (backtestErrorKey()) {
+        <p class="live-operations__feedback live-operations__feedback--error" role="alert">
+          {{ backtestErrorKey()! | translate }}
+        </p>
+      }
+
+      @if (backtest(); as study) {
+        <section class="live-operations__backtest" aria-labelledby="live-operations-backtest-title">
+          <div class="live-operations__section-heading">
+            <div>
+              <span class="admin-kicker">{{ 'admin.liveOperations.backtest.kicker' | translate }}</span>
+              <h3 id="live-operations-backtest-title">{{ study.targetDisplayName }}</h3>
+              <p>{{ study.parkDisplayName }} · {{ 'admin.liveOperations.backtest.period' | translate:{
+                from: (study.evaluationFromUtc | date:'shortDate':'UTC'),
+                to: (study.evaluationToUtc | date:'shortDate':'UTC')
+              } }}</p>
+            </div>
+            <app-ui-tag
+              [value]="backtestVerdictKey(study.verdict) | translate"
+              [severity]="backtestSeverity(study.verdict)">
+            </app-ui-tag>
+          </div>
+
+          <p class="live-operations__backtest-warning">
+            <i class="pi pi-shield" aria-hidden="true"></i>
+            {{ 'admin.liveOperations.backtest.notPublic' | translate }}
+          </p>
+
+          <div class="live-operations__backtest-metrics">
+            <article>
+              <span>{{ 'admin.liveOperations.backtest.evaluationPoints' | translate }}</span>
+              <strong>{{ study.evaluationPointCount }}</strong>
+              <small>{{ 'admin.liveOperations.backtest.minimum' | translate:{ value: study.policy.minimumEvaluationPoints } }}</small>
+            </article>
+            <article>
+              <span>{{ 'admin.liveOperations.backtest.evaluationDays' | translate }}</span>
+              <strong>{{ study.evaluationDays }}</strong>
+              <small>{{ 'admin.liveOperations.backtest.minimum' | translate:{ value: study.policy.minimumEvaluationDays } }}</small>
+            </article>
+            <article>
+              <span>{{ 'admin.liveOperations.backtest.baselineMae' | translate }}</span>
+              <strong>{{ study.baseline ? ((study.baseline.meanAbsoluteErrorMinutes | number:'1.1-1') + ' min') : '—' }}</strong>
+            </article>
+            <article>
+              <span>{{ 'admin.liveOperations.backtest.candidateMae' | translate }}</span>
+              <strong>{{ study.candidate ? ((study.candidate.meanAbsoluteErrorMinutes | number:'1.1-1') + ' min') : '—' }}</strong>
+            </article>
+            <article>
+              <span>{{ 'admin.liveOperations.backtest.improvement' | translate }}</span>
+              <strong>{{ study.maeImprovementPercent !== null ? ((study.maeImprovementPercent | number:'1.1-1') + ' %') : '—' }}</strong>
+              <small>{{ 'admin.liveOperations.backtest.required' | translate:{ value: study.policy.requiredMaeImprovementPercent } }}</small>
+            </article>
+            <article>
+              <span>{{ 'admin.liveOperations.backtest.intervalCoverage' | translate }}</span>
+              <strong>{{ study.intervalCoveragePercent !== null ? ((study.intervalCoveragePercent | number:'1.1-1') + ' %') : '—' }}</strong>
+              <small>{{ 'admin.liveOperations.backtest.expected' | translate:{ value: study.policy.nominalIntervalCoveragePercent } }}</small>
+              <small>{{ 'admin.liveOperations.backtest.minimumAccepted' | translate:{ value: study.policy.minimumIntervalCoveragePercent } }}</small>
+              <small>
+                {{ 'admin.liveOperations.backtest.medianIntervalWidth' | translate }}
+                {{ study.medianIntervalWidthMinutes !== null ? ((study.medianIntervalWidthMinutes | number:'1.1-1') + ' min') : '—' }}
+                · {{ 'admin.liveOperations.backtest.maximum' | translate:{ value: study.policy.maximumUsefulMedianIntervalWidthMinutes } }}
+              </small>
+            </article>
+          </div>
+
+          <ul class="live-operations__backtest-reasons">
+            @for (reason of study.reasons; track reason) {
+              <li>{{ backtestReasonKey(reason) | translate }}</li>
+            }
+          </ul>
+
+          <details class="live-operations__backtest-method">
+            <summary>{{ 'admin.liveOperations.backtest.methodTitle' | translate }}</summary>
+            <p>{{ 'admin.liveOperations.backtest.methodDescription' | translate:{ days: study.policy.trainingWindowDays } }}</p>
+            <dl>
+              <div><dt>{{ 'admin.liveOperations.backtest.baselineMethod' | translate }}</dt><dd>{{ study.baselineMethod }}</dd></div>
+              <div><dt>{{ 'admin.liveOperations.backtest.candidateMethod' | translate }}</dt><dd>{{ study.candidateMethod }}</dd></div>
+              <div><dt>{{ 'admin.liveOperations.backtest.intervalMethod' | translate }}</dt><dd>{{ study.intervalMethod }}</dd></div>
+              <div><dt>{{ 'admin.liveOperations.backtest.drift' | translate }}</dt><dd>{{ study.driftPercent !== null ? ((study.driftPercent | number:'1.1-1') + ' %') : '—' }}</dd></div>
+              <div>
+                <dt>{{ 'admin.liveOperations.backtest.driftMae' | translate }}</dt>
+                <dd>
+                  @if (study.olderCandidateMaeMinutes !== null && study.recentCandidateMaeMinutes !== null) {
+                    {{ study.olderCandidateMaeMinutes | number:'1.1-1' }} min →
+                    {{ study.recentCandidateMaeMinutes | number:'1.1-1' }} min
+                  } @else {
+                    —
+                  }
+                </dd>
+              </div>
+              <div><dt>{{ 'admin.liveOperations.backtest.trainingMinimums' | translate }}</dt><dd>{{ 'admin.liveOperations.backtest.trainingMinimumsValue' | translate:{ baseline: study.policy.minimumBaselineTrainingDays, candidate: study.policy.minimumCandidateTrainingDays } }}</dd></div>
+              <div><dt>{{ 'admin.liveOperations.backtest.driftThreshold' | translate }}</dt><dd>{{ 'admin.liveOperations.backtest.driftThresholdValue' | translate:{ percent: study.policy.driftThresholdPercent, minutes: study.policy.minimumDriftIncreaseMinutes } }}</dd></div>
+            </dl>
+          </details>
+        </section>
+      }
 
       <details class="live-operations__technical">
         <summary>{{ 'admin.liveOperations.technical.title' | translate }}</summary>

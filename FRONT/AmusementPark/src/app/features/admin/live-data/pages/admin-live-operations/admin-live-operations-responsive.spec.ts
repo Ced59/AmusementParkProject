@@ -11,5 +11,7 @@ describe('AdminLiveOperationsComponent responsive contract', () => {
     expect(styles).toContain('@media (max-width: 40rem)');
     expect(styles).toContain('grid-template-columns: minmax(0, 1fr)');
     expect(styles).toContain('overflow-wrap: anywhere');
+    expect(styles).toContain('.live-operations__backtest-metrics');
+    expect(styles).toContain('.live-operations__backtest-method');
   });
 });

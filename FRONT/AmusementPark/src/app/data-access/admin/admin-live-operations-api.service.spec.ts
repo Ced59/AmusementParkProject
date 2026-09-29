@@ -48,6 +48,21 @@ describe('AdminLiveOperationsApiService', () => {
     pending.flush({ examinedCount: 0, resolvedCount: 0, stillBlockedCount: 0, persistedCount: 0, ignoredAsOlderCount: 0 });
     http.verify();
   });
+
+  it('loads a bounded forecast backtest for one attraction', () => {
+    TestBed.configureTestingModule({ providers: provideCommonTestDependencies() });
+    const service: AdminLiveOperationsApiService = TestBed.inject(AdminLiveOperationsApiService);
+    const http: HttpTestingController = TestBed.inject(HttpTestingController);
+
+    service.getForecastBacktest('item/1').subscribe();
+
+    const pending = http.expectOne(
+      `${environment.apiBaseUrl}admin/live/forecast-backtests/item%2F1`
+    );
+    expect(pending.request.method).toBe('GET');
+    pending.flush({});
+    http.verify();
+  });
 });
 
 function createScope(): LiveOperationalScope {

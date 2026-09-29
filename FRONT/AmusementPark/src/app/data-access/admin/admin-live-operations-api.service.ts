@@ -6,6 +6,7 @@ import {
   LiveOperationalScope,
   LiveOperationsDashboard,
   LiveQualityReplay,
+  LiveWaitForecastBacktest,
   UpdateLiveOperationalControlRequest
 } from '@app/models/admin/live-data/live-operations.models';
 import { environment } from '../../../environments/environment';
@@ -31,6 +32,12 @@ export class AdminLiveOperationsApiService {
     return this.http.post<LiveQualityReplay>(
       `${environment.apiBaseUrl}admin/live/quality/quarantine/replay`,
       { maximumCount }
+    );
+  }
+
+  getForecastBacktest(parkItemId: string): Observable<LiveWaitForecastBacktest> {
+    return this.http.get<LiveWaitForecastBacktest>(
+      `${environment.apiBaseUrl}admin/live/forecast-backtests/${encodeURIComponent(parkItemId)}`
     );
   }
 }

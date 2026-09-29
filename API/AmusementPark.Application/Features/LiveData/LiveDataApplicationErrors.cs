@@ -25,6 +25,20 @@ public static class LiveDataApplicationErrors
             message ?? "The requested live history period is invalid.");
     }
 
+    public static ApplicationError InvalidBacktestPeriod(string? message = null)
+    {
+        return ApplicationError.Validation(
+            "live-data.backtest.period.invalid",
+            message ?? "The requested live forecast backtest period is invalid.");
+    }
+
+    public static ApplicationError BacktestUnavailable()
+    {
+        return ApplicationError.NotFound(
+            "live-data.backtest.unavailable",
+            "No eligible live history is available for this target.");
+    }
+
     public static ApplicationError InvalidMapping(string? message = null)
     {
         return ApplicationError.Validation(

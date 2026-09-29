@@ -6,6 +6,7 @@ import {
   LiveOperationalScope,
   LiveOperationsDashboard,
   LiveQualityReplay,
+  LiveWaitForecastBacktest,
   UpdateLiveOperationalControlRequest
 } from '@app/models/admin/live-data/live-operations.models';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -19,6 +20,9 @@ export class AdminLiveOperationsFacade {
   private readonly store = new SignalScreenStateStore<LiveOperationsDashboard>();
   private readonly pendingScopeKeySignal: WritableSignal<string | null> = signal(null);
   private readonly replayPendingSignal: WritableSignal<boolean> = signal(false);
+  private readonly backtestPendingTargetIdSignal: WritableSignal<string | null> = signal(null);
+  private readonly backtestSignal: WritableSignal<LiveWaitForecastBacktest | null> = signal(null);
+  private readonly backtestErrorKeySignal: WritableSignal<string | null> = signal(null);
   private readonly feedbackKeySignal: WritableSignal<string | null> = signal(null);
   private readonly mutationErrorKeySignal: WritableSignal<string | null> = signal(null);
   private generation: number = 0;
@@ -30,6 +34,9 @@ export class AdminLiveOperationsFacade {
   );
   readonly pendingScopeKey = this.pendingScopeKeySignal.asReadonly();
   readonly replayPending = this.replayPendingSignal.asReadonly();
+  readonly backtestPendingTargetId = this.backtestPendingTargetIdSignal.asReadonly();
+  readonly backtest = this.backtestSignal.asReadonly();
+  readonly backtestErrorKey = this.backtestErrorKeySignal.asReadonly();
   readonly feedbackKey = this.feedbackKeySignal.asReadonly();
   readonly mutationErrorKey = this.mutationErrorKeySignal.asReadonly();
 
@@ -111,6 +118,28 @@ export class AdminLiveOperationsFacade {
         error: (): void => {
           this.replayPendingSignal.set(false);
           this.mutationErrorKeySignal.set('admin.liveOperations.errors.replay');
+        }
+      });
+  }
+
+  runForecastBacktest(parkItemId: string): void {
+    if (this.backtestPendingTargetIdSignal() !== null) {
+      return;
+    }
+
+    this.backtestPendingTargetIdSignal.set(parkItemId);
+    this.backtestSignal.set(null);
+    this.backtestErrorKeySignal.set(null);
+    this.dataPort.getForecastBacktest(parkItemId)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (result: LiveWaitForecastBacktest): void => {
+          this.backtestPendingTargetIdSignal.set(null);
+          this.backtestSignal.set(result);
+        },
+        error: (): void => {
+          this.backtestPendingTargetIdSignal.set(null);
+          this.backtestErrorKeySignal.set('admin.liveOperations.backtest.error');
         }
       });
   }
