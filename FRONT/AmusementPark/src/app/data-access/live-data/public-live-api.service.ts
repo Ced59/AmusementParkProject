@@ -15,6 +15,7 @@ interface CachedPublicLiveResponse {
   providedIn: 'root'
 })
 export class PublicLiveApiService {
+  private static readonly MAX_CACHED_RESPONSES = 20;
   private readonly responseCache = new Map<string, CachedPublicLiveResponse>();
 
   constructor(private readonly http: HttpClient) {
@@ -54,7 +55,7 @@ export class PublicLiveApiService {
           throw new Error('The live-data response body is missing.');
         }
 
-        this.responseCache.set(url, {
+        this.cacheResponse(url, {
           body: response.body,
           entityTag: response.headers.get('ETag')
         });
@@ -62,11 +63,25 @@ export class PublicLiveApiService {
       }),
       catchError((error: unknown) => {
         if (error instanceof HttpErrorResponse && error.status === 304 && cachedResponse) {
+          this.cacheResponse(url, cachedResponse);
           return of(cachedResponse.body as TResponse);
         }
 
         return throwError(() => error);
       })
     );
+  }
+
+  private cacheResponse(url: string, response: CachedPublicLiveResponse): void {
+    this.responseCache.delete(url);
+    this.responseCache.set(url, response);
+    while (this.responseCache.size > PublicLiveApiService.MAX_CACHED_RESPONSES) {
+      const oldestUrl: string | undefined = this.responseCache.keys().next().value;
+      if (!oldestUrl) {
+        break;
+      }
+
+      this.responseCache.delete(oldestUrl);
+    }
   }
 }

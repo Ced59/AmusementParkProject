@@ -11,6 +11,7 @@ import { PublicLiveStateFacade } from './public-live-state.facade';
 describe('PublicLiveStateFacade', () => {
   afterEach(() => {
     TestBed.resetTestingModule();
+    vi.useRealTimers();
     vi.restoreAllMocks();
   });
 
@@ -46,6 +47,7 @@ describe('PublicLiveStateFacade', () => {
   });
 
   it('keeps the pilot invisible when public live reads are disabled', () => {
+    vi.useFakeTimers();
     const port: PublicLiveDataPort = createPort({
       getParkItem: () => throwError(() => new HttpErrorResponse({ status: 404 }))
     });
@@ -54,6 +56,9 @@ describe('PublicLiveStateFacade', () => {
     facade.watchParkItem('item-1');
 
     expect(facade.state().kind).toBe('disabled');
+    vi.advanceTimersByTime(600_000);
+    facade.refresh();
+    expect(port.getParkItem).toHaveBeenCalledTimes(1);
   });
 
   it('does not poll during server-side rendering', () => {

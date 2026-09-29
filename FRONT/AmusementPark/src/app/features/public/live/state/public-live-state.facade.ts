@@ -80,6 +80,7 @@ export class PublicLiveStateFacade {
       || !this.currentMode
       || !this.currentTargetId
       || this.requestSubscription
+      || this.stateSignal().kind === 'disabled'
       || this.document.hidden
       || !navigator.onLine
     ) {
@@ -141,6 +142,10 @@ export class PublicLiveStateFacade {
             isOnline: navigator.onLine,
             refreshFailed: true
           });
+        if (endpointDisabled) {
+          return;
+        }
+
         this.scheduleNextRefresh(previousState.target, previousState.items);
       }
     });

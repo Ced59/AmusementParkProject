@@ -36,6 +36,27 @@ describe('PublicLiveApiService', () => {
 
     expect(received).toEqual([target, target]);
   });
+
+  it('evicts the oldest response when the live cache reaches its bound', () => {
+    for (let index: number = 0; index <= 20; index++) {
+      service.getParkItem(`item-${index}`).subscribe();
+      const request = http.expectOne(`${environment.apiBaseUrl}public/live/items/item-${index}`);
+      request.flush(
+        { ...createTarget(), targetId: `item-${index}` },
+        { headers: { ETag: `"live-${index}"` } }
+      );
+    }
+
+    service.getParkItem('item-0').subscribe();
+    const evictedRequest = http.expectOne(`${environment.apiBaseUrl}public/live/items/item-0`);
+    expect(evictedRequest.request.headers.has('If-None-Match')).toBe(false);
+    evictedRequest.flush(createTarget());
+
+    service.getParkItem('item-20').subscribe();
+    const retainedRequest = http.expectOne(`${environment.apiBaseUrl}public/live/items/item-20`);
+    expect(retainedRequest.request.headers.get('If-None-Match')).toBe('"live-20"');
+    retainedRequest.flush(null, { status: 304, statusText: 'Not Modified' });
+  });
 });
 
 function createTarget(): PublicLiveTarget {
