@@ -91,7 +91,7 @@ public sealed class LiveWaitForecastBacktestReader
 
         ParkItem? item = await this.parkItemRepository.GetByIdAsync(
             normalizedParkItemId,
-            false,
+            true,
             cancellationToken);
         if (item is null)
         {
@@ -99,7 +99,7 @@ public sealed class LiveWaitForecastBacktestReader
                 ApplicationErrors.EntityNotFound(nameof(ParkItem), normalizedParkItemId));
         }
 
-        Park? park = await this.parkRepository.GetByIdAsync(item.ParkId, false, cancellationToken);
+        Park? park = await this.parkRepository.GetByIdAsync(item.ParkId, true, cancellationToken);
         if (park is null)
         {
             return ApplicationResult<LiveWaitForecastBacktestResult>.Failure(

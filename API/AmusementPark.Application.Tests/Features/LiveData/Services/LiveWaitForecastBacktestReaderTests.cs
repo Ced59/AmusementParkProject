@@ -18,7 +18,7 @@ public sealed class LiveWaitForecastBacktestReaderTests
         new DateTime(2026, 9, 29, 12, 0, 0, DateTimeKind.Utc);
 
     [Fact]
-    public async Task ReadAsync_ShouldReturnNamedInconclusiveStudyAndFilterFormerMapping()
+    public async Task ReadAsync_ShouldResolveHiddenMappedTargetAndFilterFormerMapping()
     {
         DateTime evaluationFromUtc = NowUtc.AddDays(-90);
         DateTime historyFromUtc = evaluationFromUtc.AddDays(-84);
@@ -118,23 +118,23 @@ public sealed class LiveWaitForecastBacktestReaderTests
         {
             parkRepository.Setup(repository => repository.GetByIdAsync(
                     "park-1",
-                    false,
+                    true,
                     CancellationToken.None))
-                .ReturnsAsync(new Park { Id = "park-1", Name = "Park", IsVisible = true });
+                .ReturnsAsync(new Park { Id = "park-1", Name = "Park", IsVisible = false });
         }
 
         if (items is null)
         {
             itemRepository.Setup(repository => repository.GetByIdAsync(
                     "item-1",
-                    false,
+                    true,
                     CancellationToken.None))
                 .ReturnsAsync(new ParkItem
                 {
                     Id = "item-1",
                     ParkId = "park-1",
                     Name = "Attraction",
-                    IsVisible = true,
+                    IsVisible = false,
                 });
         }
 
