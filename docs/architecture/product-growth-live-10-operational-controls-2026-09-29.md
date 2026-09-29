@@ -42,6 +42,15 @@ parc ne peut donc pas bloquer un parc remappé. Le rejeu de quarantaine applique
 arrêtée. La lecture publique applique la même hiérarchie et conserve la réponse
 publique neutre existante lorsque le direct est masqué.
 
+La mutation d’un contrôle et la dernière vérification précédant une écriture
+partagent une frontière sérialisée par source et entité externe. Une écriture
+déjà engagée se termine donc avant que l’arrêt soit confirmé ; toute écriture
+qui vient ensuite recharge les contrôles dans cette frontière et supprime les
+observations devenues interdites. Cette règle couvre la collecte normale et le
+rejeu de quarantaine. Le déploiement de production n’exécute qu’une instance de
+l’API ; un passage futur à plusieurs instances devra remplacer cette frontière
+en mémoire par une coordination distribuée avant la mise à l’échelle.
+
 ## Exploitation
 
 Le tableau de bord présente la dernière collecte réussie, le prochain passage,

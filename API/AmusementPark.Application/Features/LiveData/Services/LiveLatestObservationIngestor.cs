@@ -11,9 +11,10 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
     private readonly ILiveLatestObservationRepository latestRepository;
     private readonly ILiveQualityIncidentRepository incidentRepository;
     private readonly ILiveOperationalGate operationalGate;
+    private readonly LiveOperationalObservationWriter operationalWriter;
     private readonly TimeProvider timeProvider;
 
-    public LiveLatestObservationIngestor(
+    internal LiveLatestObservationIngestor(
         ILiveTargetMappingRepository mappingRepository,
         ILiveLatestObservationRepository latestRepository,
         ILiveQualityIncidentRepository incidentRepository,
@@ -23,6 +24,23 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             latestRepository,
             incidentRepository,
             operationalGate,
+            new LiveOperationalWriteCoordinator(),
+            TimeProvider.System)
+    {
+    }
+
+    public LiveLatestObservationIngestor(
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveLatestObservationRepository latestRepository,
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveOperationalGate operationalGate,
+        LiveOperationalWriteCoordinator coordinator)
+        : this(
+            mappingRepository,
+            latestRepository,
+            incidentRepository,
+            operationalGate,
+            coordinator,
             TimeProvider.System)
     {
     }
@@ -33,6 +51,23 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
         ILiveQualityIncidentRepository incidentRepository,
         ILiveOperationalGate operationalGate,
         TimeProvider timeProvider)
+        : this(
+            mappingRepository,
+            latestRepository,
+            incidentRepository,
+            operationalGate,
+            new LiveOperationalWriteCoordinator(),
+            timeProvider)
+    {
+    }
+
+    internal LiveLatestObservationIngestor(
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveLatestObservationRepository latestRepository,
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveOperationalGate operationalGate,
+        LiveOperationalWriteCoordinator coordinator,
+        TimeProvider timeProvider)
     {
         this.mappingRepository = mappingRepository
             ?? throw new ArgumentNullException(nameof(mappingRepository));
@@ -42,6 +77,10 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             ?? throw new ArgumentNullException(nameof(incidentRepository));
         this.operationalGate = operationalGate
             ?? throw new ArgumentNullException(nameof(operationalGate));
+        this.operationalWriter = new LiveOperationalObservationWriter(
+            this.latestRepository,
+            this.operationalGate,
+            coordinator);
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -216,16 +255,33 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
 
         await this.incidentRepository.SaveAsync(incidents, cancellationToken);
 
-        LiveLatestObservationWriteResult writeResult =
-            await this.latestRepository.WriteLatestAsync(
+        LiveLatestObservationWriteResult writeResult;
+        int suppressedAtWriteBoundary = 0;
+        if (externalEntityId.Length == 0)
+        {
+            writeResult = await this.latestRepository.WriteLatestAsync(
                 latestByInternalTarget.Values.ToArray(),
                 cancellationToken);
+        }
+        else
+        {
+            LiveOperationalObservationWriteResult operationalWrite =
+                await this.operationalWriter.WriteAsync(
+                    request.SourceId,
+                    externalEntityId,
+                    latestByInternalTarget.Values.ToArray(),
+                    cancellationToken);
+            writeResult = operationalWrite.WriteResult;
+            suppressedAtWriteBoundary = latestByInternalTarget.Count
+                - operationalWrite.AcceptedObservations.Count;
+        }
+
         return new LiveLatestObservationIngestionResult(
             writeResult.InsertedCount + writeResult.UpdatedCount,
             writeResult.IgnoredCount,
             unmappedCount,
             ineligibleCount,
-            suppressedByOperationalControlCount,
+            suppressedByOperationalControlCount + suppressedAtWriteBoundary,
             invalidFreshnessCount,
             incidents.Count(static incident =>
                 incident.Reason != LiveQualityIncidentReason.ProviderDiagnostic),

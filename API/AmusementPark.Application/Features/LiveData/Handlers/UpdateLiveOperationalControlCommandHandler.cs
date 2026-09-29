@@ -20,7 +20,28 @@ public sealed class UpdateLiveOperationalControlCommandHandler
     private readonly LiveTargetReferenceResolver targetResolver;
     private readonly ILiveOperationalGate operationalGate;
     private readonly LiveOperationalScopeResultFactory resultFactory;
+    private readonly LiveOperationalWriteCoordinator coordinator;
     private readonly TimeProvider timeProvider;
+
+    internal UpdateLiveOperationalControlCommandHandler(
+        ILiveOperationalControlRepository repository,
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveDataSourceCatalog sourceCatalog,
+        LiveTargetReferenceResolver targetResolver,
+        ILiveOperationalGate operationalGate,
+        LiveOperationalScopeResultFactory resultFactory,
+        TimeProvider? timeProvider = null)
+        : this(
+            repository,
+            mappingRepository,
+            sourceCatalog,
+            targetResolver,
+            operationalGate,
+            resultFactory,
+            new LiveOperationalWriteCoordinator(),
+            timeProvider)
+    {
+    }
 
     public UpdateLiveOperationalControlCommandHandler(
         ILiveOperationalControlRepository repository,
@@ -29,6 +50,7 @@ public sealed class UpdateLiveOperationalControlCommandHandler
         LiveTargetReferenceResolver targetResolver,
         ILiveOperationalGate operationalGate,
         LiveOperationalScopeResultFactory resultFactory,
+        LiveOperationalWriteCoordinator coordinator,
         TimeProvider? timeProvider = null)
     {
         this.repository = repository;
@@ -37,6 +59,7 @@ public sealed class UpdateLiveOperationalControlCommandHandler
         this.targetResolver = targetResolver;
         this.operationalGate = operationalGate;
         this.resultFactory = resultFactory;
+        this.coordinator = coordinator ?? throw new ArgumentNullException(nameof(coordinator));
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
 
@@ -87,58 +110,68 @@ public sealed class UpdateLiveOperationalControlCommandHandler
                 return Invalid();
             }
 
-            LiveOperationalControl? current = await this.repository.GetLatestAsync(
-                scope,
-                cancellationToken);
-            if ((current is null && command.ExpectedRevision != 0)
-                || (current is not null && current.Revision != command.ExpectedRevision))
-            {
-                return ApplicationResult<LiveOperationalScopeResult>.Failure(
-                    LiveDataApplicationErrors.OperationalControlConflict(current?.Revision ?? 0));
-            }
-
-            DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-            LiveOperationalControl next = current is null
-                ? new LiveOperationalControl(
-                    Guid.NewGuid(),
-                    scope,
-                    command.CollectionEnabled,
-                    command.PublicReadEnabled,
-                    1,
-                    null,
-                    command.ChangedByUserId,
-                    command.Reason,
-                    nowUtc)
-                : current.Revise(
-                    command.CollectionEnabled,
-                    command.PublicReadEnabled,
-                    command.ChangedByUserId,
-                    command.Reason,
-                    nowUtc);
-            LiveOperationalControlWriteOutcome outcome = await this.repository.AppendRevisionAsync(
-                next,
-                command.ExpectedRevision,
-                cancellationToken);
-            if (outcome != LiveOperationalControlWriteOutcome.Created)
-            {
-                LiveOperationalControl? latest = await this.repository.GetLatestAsync(
-                    scope,
-                    cancellationToken);
-                return ApplicationResult<LiveOperationalScopeResult>.Failure(
-                    LiveDataApplicationErrors.OperationalControlConflict(latest?.Revision ?? 0));
-            }
-
-            LiveOperationalGateSnapshot gate = await this.operationalGate.LoadAsync(
+            return await this.coordinator.RunAsync(
                 sourceId,
                 configuredTarget.ExternalEntityId,
+                async boundaryCancellationToken =>
+                {
+                    LiveOperationalControl? current = await this.repository.GetLatestAsync(
+                        scope,
+                        boundaryCancellationToken);
+                    if ((current is null && command.ExpectedRevision != 0)
+                        || (current is not null && current.Revision != command.ExpectedRevision))
+                    {
+                        return ApplicationResult<LiveOperationalScopeResult>.Failure(
+                            LiveDataApplicationErrors.OperationalControlConflict(
+                                current?.Revision ?? 0));
+                    }
+
+                    DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+                    LiveOperationalControl next = current is null
+                        ? new LiveOperationalControl(
+                            Guid.NewGuid(),
+                            scope,
+                            command.CollectionEnabled,
+                            command.PublicReadEnabled,
+                            1,
+                            null,
+                            command.ChangedByUserId,
+                            command.Reason,
+                            nowUtc)
+                        : current.Revise(
+                            command.CollectionEnabled,
+                            command.PublicReadEnabled,
+                            command.ChangedByUserId,
+                            command.Reason,
+                            nowUtc);
+                    LiveOperationalControlWriteOutcome outcome =
+                        await this.repository.AppendRevisionAsync(
+                            next,
+                            command.ExpectedRevision,
+                            boundaryCancellationToken);
+                    if (outcome != LiveOperationalControlWriteOutcome.Created)
+                    {
+                        LiveOperationalControl? latest = await this.repository.GetLatestAsync(
+                            scope,
+                            boundaryCancellationToken);
+                        return ApplicationResult<LiveOperationalScopeResult>.Failure(
+                            LiveDataApplicationErrors.OperationalControlConflict(
+                                latest?.Revision ?? 0));
+                    }
+
+                    LiveOperationalGateSnapshot gate = await this.operationalGate.LoadAsync(
+                        sourceId,
+                        configuredTarget.ExternalEntityId,
+                        boundaryCancellationToken);
+                    return ApplicationResult<LiveOperationalScopeResult>.Success(
+                        this.resultFactory.Create(
+                            scope,
+                            labels.Value.DisplayName,
+                            labels.Value.ParentDisplayName,
+                            next,
+                            gate));
+                },
                 cancellationToken);
-            return ApplicationResult<LiveOperationalScopeResult>.Success(
-                this.resultFactory.Create(
-                    scope,
-                    labels.Value.DisplayName,
-                    labels.Value.ParentDisplayName,
-                    next,
-                    gate));
         }
         catch (Exception exception) when (
             exception is LiveDataValidationException

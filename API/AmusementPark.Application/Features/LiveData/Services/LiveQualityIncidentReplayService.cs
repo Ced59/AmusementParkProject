@@ -12,9 +12,10 @@ public sealed class LiveQualityIncidentReplayService
     private readonly ILiveTargetMappingRepository mappingRepository;
     private readonly ILiveLatestObservationRepository latestRepository;
     private readonly ILiveOperationalGate operationalGate;
+    private readonly LiveOperationalObservationWriter operationalWriter;
     private readonly TimeProvider timeProvider;
 
-    public LiveQualityIncidentReplayService(
+    internal LiveQualityIncidentReplayService(
         ILiveQualityIncidentRepository incidentRepository,
         ILiveTargetMappingRepository mappingRepository,
         ILiveLatestObservationRepository latestRepository,
@@ -24,6 +25,23 @@ public sealed class LiveQualityIncidentReplayService
             mappingRepository,
             latestRepository,
             operationalGate,
+            new LiveOperationalWriteCoordinator(),
+            TimeProvider.System)
+    {
+    }
+
+    public LiveQualityIncidentReplayService(
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveLatestObservationRepository latestRepository,
+        ILiveOperationalGate operationalGate,
+        LiveOperationalWriteCoordinator coordinator)
+        : this(
+            incidentRepository,
+            mappingRepository,
+            latestRepository,
+            operationalGate,
+            coordinator,
             TimeProvider.System)
     {
     }
@@ -34,6 +52,23 @@ public sealed class LiveQualityIncidentReplayService
         ILiveLatestObservationRepository latestRepository,
         ILiveOperationalGate operationalGate,
         TimeProvider timeProvider)
+        : this(
+            incidentRepository,
+            mappingRepository,
+            latestRepository,
+            operationalGate,
+            new LiveOperationalWriteCoordinator(),
+            timeProvider)
+    {
+    }
+
+    internal LiveQualityIncidentReplayService(
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveLatestObservationRepository latestRepository,
+        ILiveOperationalGate operationalGate,
+        LiveOperationalWriteCoordinator coordinator,
+        TimeProvider timeProvider)
     {
         this.incidentRepository = incidentRepository
             ?? throw new ArgumentNullException(nameof(incidentRepository));
@@ -43,6 +78,10 @@ public sealed class LiveQualityIncidentReplayService
             ?? throw new ArgumentNullException(nameof(latestRepository));
         this.operationalGate = operationalGate
             ?? throw new ArgumentNullException(nameof(operationalGate));
+        this.operationalWriter = new LiveOperationalObservationWriter(
+            this.latestRepository,
+            this.operationalGate,
+            coordinator);
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -89,7 +128,13 @@ public sealed class LiveQualityIncidentReplayService
         Dictionary<
             (LiveDataSourceId SourceId, string ExternalEntityId),
             LiveOperationalGateSnapshot> gates = new();
-        List<Guid> resolvedIds = new List<Guid>();
+        Dictionary<
+            (LiveDataSourceId SourceId, LiveTargetType TargetType, string TargetId),
+            string> externalEntityByInternalTarget = new();
+        Dictionary<
+            Guid,
+            (LiveDataSourceId SourceId, LiveTargetType TargetType, string TargetId)>
+            resolvableIncidentTargets = new();
         foreach (IGrouping<LiveDataSourceId, LiveQualityIncident> sourceGroup in candidates
                      .GroupBy(static incident => incident.SourceId))
         {
@@ -175,15 +220,63 @@ public sealed class LiveQualityIncidentReplayService
                     || IsPreferred(candidate, current))
                 {
                     latestByInternalTarget[key] = candidate;
+                    externalEntityByInternalTarget[key] = externalEntityId;
                 }
 
-                resolvedIds.Add(incident.Id);
+                resolvableIncidentTargets[incident.Id] = key;
             }
         }
 
-        LiveLatestObservationWriteResult writeResult = await this.latestRepository.WriteLatestAsync(
-            latestByInternalTarget.Values.ToArray(),
-            cancellationToken);
+        int persistedCount = 0;
+        int ignoredCount = 0;
+        HashSet<
+            (LiveDataSourceId SourceId, LiveTargetType TargetType, string TargetId)>
+            acceptedTargets = new();
+        if (latestByInternalTarget.Count == 0)
+        {
+            LiveLatestObservationWriteResult emptyWrite =
+                await this.latestRepository.WriteLatestAsync(
+                    Array.Empty<LiveLatestObservation>(),
+                    cancellationToken);
+            ignoredCount = emptyWrite.IgnoredCount;
+        }
+        else
+        {
+            IEnumerable<IGrouping<
+                (LiveDataSourceId SourceId, string ExternalEntityId),
+                KeyValuePair<
+                    (LiveDataSourceId SourceId, LiveTargetType TargetType, string TargetId),
+                    LiveLatestObservation>>> writeGroups = latestByInternalTarget.GroupBy(pair =>
+                        (pair.Key.SourceId, externalEntityByInternalTarget[pair.Key]));
+            foreach (IGrouping<
+                         (LiveDataSourceId SourceId, string ExternalEntityId),
+                         KeyValuePair<
+                             (LiveDataSourceId SourceId, LiveTargetType TargetType, string TargetId),
+                             LiveLatestObservation>> writeGroup in writeGroups)
+            {
+                LiveOperationalObservationWriteResult operationalWrite =
+                    await this.operationalWriter.WriteAsync(
+                        writeGroup.Key.SourceId,
+                        writeGroup.Key.ExternalEntityId,
+                        writeGroup.Select(static pair => pair.Value).ToArray(),
+                        cancellationToken);
+                persistedCount += operationalWrite.WriteResult.InsertedCount
+                    + operationalWrite.WriteResult.UpdatedCount;
+                ignoredCount += operationalWrite.WriteResult.IgnoredCount;
+                foreach (LiveLatestObservation accepted in operationalWrite.AcceptedObservations)
+                {
+                    acceptedTargets.Add((
+                        writeGroup.Key.SourceId,
+                        accepted.Target.Type,
+                        accepted.Target.Id));
+                }
+            }
+        }
+
+        Guid[] resolvedIds = resolvableIncidentTargets
+            .Where(pair => acceptedTargets.Contains(pair.Value))
+            .Select(static pair => pair.Key)
+            .ToArray();
         int resolvedCount = await this.incidentRepository.MarkResolvedAsync(
             resolvedIds,
             replayedAtUtc,
@@ -193,8 +286,8 @@ public sealed class LiveQualityIncidentReplayService
             candidates.Count,
             resolvedCount,
             candidates.Count - resolvedCount,
-            writeResult.InsertedCount + writeResult.UpdatedCount,
-            writeResult.IgnoredCount);
+            persistedCount,
+            ignoredCount);
     }
 
     private static bool IsPreferred(

@@ -91,6 +91,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<LiveQualityIncidentReplayService>();
         services.AddScoped<LivePollingOrchestrator>();
         services.AddSingleton<LiveOperationalControlPolicy>();
+        services.AddSingleton<LiveOperationalWriteCoordinator>();
         services.AddScoped<ILiveOperationalGate, LiveOperationalGate>();
         services.AddScoped<LiveOperationalScopeResultFactory>();
         services.AddScoped<LiveOperationsDashboardReader>();

@@ -181,7 +181,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             {
                 CreateVerifiedMapping(secondSourceId, "external-b", "item-1"),
             });
-        IReadOnlyCollection<LiveLatestObservation>? stored = null;
+        List<LiveLatestObservation> stored = new List<LiveLatestObservation>();
         Mock<ILiveLatestObservationRepository> latest =
             new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
         latest
@@ -189,8 +189,9 @@ public sealed class LiveQualityIncidentReplayServiceTests
                 It.IsAny<IReadOnlyCollection<LiveLatestObservation>>(),
                 It.IsAny<CancellationToken>()))
             .Callback<IReadOnlyCollection<LiveLatestObservation>, CancellationToken>(
-                (observations, _) => stored = observations)
-            .ReturnsAsync(new LiveLatestObservationWriteResult(2, 0, 0));
+                (observations, _) => stored.AddRange(observations))
+            .ReturnsAsync((IReadOnlyCollection<LiveLatestObservation> observations, CancellationToken _) =>
+                new LiveLatestObservationWriteResult(observations.Count, 0, 0));
         LiveQualityIncidentReplayService service = new LiveQualityIncidentReplayService(
             incidents.Object,
             mappings.Object,
@@ -204,7 +205,7 @@ public sealed class LiveQualityIncidentReplayServiceTests
             CancellationToken.None);
 
         Assert.Equal(3, result.ResolvedCount);
-        Assert.Equal(2, stored!.Count);
+        Assert.Equal(2, stored.Count);
         LiveLatestObservation firstSource = Assert.Single(
             stored,
             observation => observation.Provenance.SourceId == SourceId);
