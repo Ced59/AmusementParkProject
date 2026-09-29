@@ -1,15 +1,20 @@
 using AmusementPark.Application.Features.LiveData.Models;
+using AmusementPark.Application.Features.LiveData.Ports;
 using Microsoft.Extensions.Configuration;
 
 namespace AmusementPark.Infrastructure.Configuration.LiveData;
 
-public sealed class LiveDataPollingSettings
+public sealed class LiveDataPollingSettings : ILiveOperationalMutationAvailability
 {
     public const string SectionName = "LiveDataPolling";
 
     public bool Enabled { get; set; }
 
     public bool PublicReadEnabled { get; set; }
+
+    public bool OperationalMutationsEnabled { get; set; } = true;
+
+    public bool IsEnabled => this.OperationalMutationsEnabled;
 
     public int LoopDelaySeconds { get; set; } = 15;
 

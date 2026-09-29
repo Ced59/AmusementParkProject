@@ -4,6 +4,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.LiveData.Commands;
 using AmusementPark.Application.Features.LiveData.Models;
+using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.LiveData;
 using AmusementPark.WebAPI.Controllers;
@@ -53,7 +54,9 @@ public sealed class AdminLiveQualityControllerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(ApplicationResult<LiveQualityReplayResult>.Success(
                 new LiveQualityReplayResult(10, 7, 3, 6, 1)));
-        AdminLiveQualityController controller = new AdminLiveQualityController(handler.Object)
+        AdminLiveQualityController controller = new AdminLiveQualityController(
+            handler.Object,
+            CreateMutationAvailability(true).Object)
         {
             ControllerContext = new ControllerContext
             {
@@ -76,5 +79,39 @@ public sealed class AdminLiveQualityControllerTests
         Assert.Equal(7, response.ResolvedCount);
         Assert.Equal(3, response.StillBlockedCount);
         handler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ReplayAsync_ShouldFailClosedDuringDeploymentOverlap()
+    {
+        Mock<ICommandHandler<
+            ReplayLiveQualityIncidentsCommand,
+            ApplicationResult<LiveQualityReplayResult>>> handler = new(MockBehavior.Strict);
+        AdminLiveQualityController controller = new AdminLiveQualityController(
+            handler.Object,
+            CreateMutationAvailability(false).Object)
+        {
+            ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext(),
+            },
+        };
+
+        IActionResult action = await controller.ReplayAsync(
+            new ReplayLiveQualityIncidentsRequestDto { MaximumCount = 10 },
+            CancellationToken.None);
+
+        ObjectResult unavailable = Assert.IsType<ObjectResult>(action);
+        Assert.Equal(StatusCodes.Status503ServiceUnavailable, unavailable.StatusCode);
+        Assert.Equal("30", controller.Response.Headers.RetryAfter);
+        handler.VerifyNoOtherCalls();
+    }
+
+    private static Mock<ILiveOperationalMutationAvailability> CreateMutationAvailability(
+        bool enabled)
+    {
+        Mock<ILiveOperationalMutationAvailability> availability = new(MockBehavior.Strict);
+        availability.SetupGet(value => value.IsEnabled).Returns(enabled);
+        return availability;
     }
 }

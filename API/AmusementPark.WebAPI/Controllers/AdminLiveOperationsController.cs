@@ -1,6 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.LiveData.Commands;
+using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.LiveData.Queries;
 using AmusementPark.Application.Features.LiveData.Results;
 using AmusementPark.WebAPI.Authorization;
@@ -25,12 +26,15 @@ namespace AmusementPark.WebAPI.Controllers;
 [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
 public sealed class AdminLiveOperationsController : ControllerBase
 {
+    private const int DeploymentRetryAfterSeconds = 30;
+
     private readonly IQueryHandler<
         GetAdminLiveOperationsQuery,
         ApplicationResult<LiveOperationsDashboardResult>> queryHandler;
     private readonly ICommandHandler<
         UpdateLiveOperationalControlCommand,
         ApplicationResult<LiveOperationalScopeResult>> updateHandler;
+    private readonly ILiveOperationalMutationAvailability mutationAvailability;
 
     public AdminLiveOperationsController(
         IQueryHandler<
@@ -38,10 +42,12 @@ public sealed class AdminLiveOperationsController : ControllerBase
             ApplicationResult<LiveOperationsDashboardResult>> queryHandler,
         ICommandHandler<
             UpdateLiveOperationalControlCommand,
-            ApplicationResult<LiveOperationalScopeResult>> updateHandler)
+            ApplicationResult<LiveOperationalScopeResult>> updateHandler,
+        ILiveOperationalMutationAvailability mutationAvailability)
     {
         this.queryHandler = queryHandler;
         this.updateHandler = updateHandler;
+        this.mutationAvailability = mutationAvailability;
     }
 
     [HttpGet]
@@ -67,6 +73,14 @@ public sealed class AdminLiveOperationsController : ControllerBase
         [FromBody] UpdateLiveOperationalControlRequestDto request,
         CancellationToken cancellationToken = default)
     {
+        if (!this.mutationAvailability.IsEnabled)
+        {
+            return this.ToServiceUnavailableProblemDetailsResult(
+                "Live operational changes are briefly paused while a deployment switches API authority. Retry after the indicated delay.",
+                "live-data.operational-mutation.temporarily-unavailable",
+                DeploymentRetryAfterSeconds);
+        }
+
         string? changedByUserId = this.User.GetUserId();
         if (string.IsNullOrWhiteSpace(changedByUserId))
         {

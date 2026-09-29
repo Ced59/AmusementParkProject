@@ -4,6 +4,7 @@ using System.Text.Json;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.LiveData.Commands;
+using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.LiveData.Queries;
 using AmusementPark.Application.Features.LiveData.Results;
 using AmusementPark.Core.Domain.LiveData;
@@ -93,7 +94,8 @@ public sealed class AdminLiveOperationsControllerTests
             .ReturnsAsync(ApplicationResult<LiveOperationalScopeResult>.Success(updated));
         AdminLiveOperationsController controller = new AdminLiveOperationsController(
             queryHandler.Object,
-            updateHandler.Object)
+            updateHandler.Object,
+            CreateMutationAvailability(true).Object)
         {
             ControllerContext = new ControllerContext
             {
@@ -123,5 +125,45 @@ public sealed class AdminLiveOperationsControllerTests
         Assert.Equal(2, response.Revision);
         Assert.False(response.CollectionEnabled);
         updateHandler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task UpdateControlAsync_ShouldFailClosedDuringDeploymentOverlap()
+    {
+        Mock<IQueryHandler<
+            GetAdminLiveOperationsQuery,
+            ApplicationResult<LiveOperationsDashboardResult>>> queryHandler =
+            new(MockBehavior.Strict);
+        Mock<ICommandHandler<
+            UpdateLiveOperationalControlCommand,
+            ApplicationResult<LiveOperationalScopeResult>>> updateHandler =
+            new(MockBehavior.Strict);
+        AdminLiveOperationsController controller = new AdminLiveOperationsController(
+            queryHandler.Object,
+            updateHandler.Object,
+            CreateMutationAvailability(false).Object)
+        {
+            ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext(),
+            },
+        };
+
+        IActionResult action = await controller.UpdateControlAsync(
+            new UpdateLiveOperationalControlRequestDto(),
+            CancellationToken.None);
+
+        ObjectResult unavailable = Assert.IsType<ObjectResult>(action);
+        Assert.Equal(StatusCodes.Status503ServiceUnavailable, unavailable.StatusCode);
+        Assert.Equal("30", controller.Response.Headers.RetryAfter);
+        updateHandler.VerifyNoOtherCalls();
+    }
+
+    private static Mock<ILiveOperationalMutationAvailability> CreateMutationAvailability(
+        bool enabled)
+    {
+        Mock<ILiveOperationalMutationAvailability> availability = new(MockBehavior.Strict);
+        availability.SetupGet(value => value.IsEnabled).Returns(enabled);
+        return availability;
     }
 }

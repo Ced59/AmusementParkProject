@@ -47,9 +47,16 @@ partagent une frontière sérialisée par source et entité externe. Une écritu
 déjà engagée se termine donc avant que l’arrêt soit confirmé ; toute écriture
 qui vient ensuite recharge les contrôles dans cette frontière et supprime les
 observations devenues interdites. Cette règle couvre la collecte normale et le
-rejeu de quarantaine. Le déploiement de production n’exécute qu’une instance de
-l’API ; un passage futur à plusieurs instances devra remplacer cette frontière
-en mémoire par une coordination distribuée avant la mise à l’échelle.
+rejeu de quarantaine. En régime stable, la production n’exécute qu’une instance
+canonique de l’API. Pendant la bascule transactionnelle, le candidat qui
+coexiste avec l’ancienne instance démarre avec la collecte live désactivée et
+refuse, en `503` avec `Retry-After`, les mutations de contrôle et les rejeux.
+L’ancienne instance peut donc finir ses écritures sous sa frontière locale sans
+qu’un arrêt soit confirmé par un autre processus ; seule la nouvelle instance
+canonique réactive ensuite collecte et mutations. Un passage futur à plusieurs
+instances actives simultanément devra remplacer cette clôture de déploiement et
+la frontière en mémoire par une coordination distribuée avant la mise à
+l’échelle.
 L’annulation de la requête est respectée jusqu’à l’entrée dans cette frontière.
 Une fois une mutation critique ou une écriture d’observation engagée, la lecture
 du contrôle, l’écriture MongoDB et la reconstruction du résultat vont au bout

@@ -106,6 +106,7 @@ public static class InfrastructureServiceCollectionExtensions
 
         LiveDataPollingSettings liveDataPollingSettings = LiveDataPollingSettings.Bind(configuration);
         services.AddSingleton(liveDataPollingSettings);
+        services.AddSingleton<ILiveOperationalMutationAvailability>(liveDataPollingSettings);
 
         MinioImageStorageSettings minioSettings = configuration.GetSection(MinioImageStorageSettings.SectionName).Get<MinioImageStorageSettings>() ?? new MinioImageStorageSettings();
         services.AddSingleton(minioSettings);
