@@ -100,6 +100,9 @@ public sealed class AdminLiveForecastBacktestsControllerTests
         Assert.Equal(28, response.Policy.MinimumBaselineTrainingDays);
         Assert.Equal(8, response.Policy.MinimumCandidateTrainingDays);
         Assert.Equal(3d, response.Policy.MinimumDriftIncreaseMinutes);
+        Assert.Equal(LiveWaitForecastBacktestPolicy.BaselineMethod, response.BaselineMethod);
+        Assert.Equal(LiveWaitForecastBacktestPolicy.CandidateMethod, response.CandidateMethod);
+        Assert.Equal(LiveWaitForecastBacktestPolicy.IntervalMethod, response.IntervalMethod);
         handler.VerifyAll();
     }
 }

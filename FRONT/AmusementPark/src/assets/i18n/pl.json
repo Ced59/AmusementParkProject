@@ -3350,6 +3350,7 @@
         "candidateMethod": "Testowana metoda",
         "intervalMethod": "Testowany przedział",
         "drift": "Ostatni dryf",
+        "driftMae": "Starszy → najnowszy błąd",
         "trainingMinimums": "Minimum uczenia",
         "trainingMinimumsValue": "odniesienie: {{baseline}} dni · metoda: {{candidate}} dni",
         "driftThreshold": "Próg dryfu",

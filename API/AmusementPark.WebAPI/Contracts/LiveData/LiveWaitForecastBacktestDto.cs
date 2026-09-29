@@ -32,6 +32,10 @@ public sealed class LiveWaitForecastBacktestDto
 
     public double? MaeImprovementPercent { get; set; }
 
+    public string BaselineMethod { get; set; } = string.Empty;
+
+    public string CandidateMethod { get; set; } = string.Empty;
+
     public string IntervalMethod { get; set; } = string.Empty;
 
     public double? IntervalCoveragePercent { get; set; }

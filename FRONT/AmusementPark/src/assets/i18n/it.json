@@ -3350,6 +3350,7 @@
         "candidateMethod": "Metodo testato",
         "intervalMethod": "Intervallo testato",
         "drift": "Deriva recente",
+        "driftMae": "Errore precedente → recente",
         "trainingMinimums": "Minimi di addestramento",
         "trainingMinimumsValue": "riferimento: {{baseline}} giorni · metodo: {{candidate}} giorni",
         "driftThreshold": "Soglia di deriva",

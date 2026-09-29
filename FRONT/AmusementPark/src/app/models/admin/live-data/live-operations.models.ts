@@ -138,6 +138,8 @@ export interface LiveWaitForecastBacktest {
   readonly baseline: LiveWaitForecastBacktestMetric | null;
   readonly candidate: LiveWaitForecastBacktestMetric | null;
   readonly maeImprovementPercent: number | null;
+  readonly baselineMethod: string;
+  readonly candidateMethod: string;
   readonly intervalMethod: string;
   readonly intervalCoveragePercent: number | null;
   readonly medianIntervalWidthMinutes: number | null;

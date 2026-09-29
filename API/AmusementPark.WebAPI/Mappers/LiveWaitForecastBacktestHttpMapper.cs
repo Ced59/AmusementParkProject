@@ -28,6 +28,8 @@ public static class LiveWaitForecastBacktestHttpMapper
             Baseline = report.Baseline?.ToHttp(),
             Candidate = report.Candidate?.ToHttp(),
             MaeImprovementPercent = report.MaeImprovementPercent,
+            BaselineMethod = LiveWaitForecastBacktestPolicy.BaselineMethod,
+            CandidateMethod = LiveWaitForecastBacktestPolicy.CandidateMethod,
             IntervalMethod = LiveWaitForecastBacktestPolicy.IntervalMethod,
             IntervalCoveragePercent = report.IntervalCoveragePercent,
             MedianIntervalWidthMinutes = report.MedianIntervalWidthMinutes,

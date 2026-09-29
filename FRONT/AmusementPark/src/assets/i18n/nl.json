@@ -3350,6 +3350,7 @@
         "candidateMethod": "Geteste methode",
         "intervalMethod": "Getest interval",
         "drift": "Recente drift",
+        "driftMae": "Oudere → recente fout",
         "trainingMinimums": "Minimum voor training",
         "trainingMinimumsValue": "referentie: {{baseline}} dagen · methode: {{candidate}} dagen",
         "driftThreshold": "Driftdrempel",

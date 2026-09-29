@@ -3350,6 +3350,7 @@
         "candidateMethod": "Tested method",
         "intervalMethod": "Tested interval",
         "drift": "Recent drift",
+        "driftMae": "Older → recent error",
         "trainingMinimums": "Training minimums",
         "trainingMinimumsValue": "baseline: {{baseline}} days · method: {{candidate}} days",
         "driftThreshold": "Drift threshold",

@@ -280,10 +280,21 @@
             <summary>{{ 'admin.liveOperations.backtest.methodTitle' | translate }}</summary>
             <p>{{ 'admin.liveOperations.backtest.methodDescription' | translate:{ days: study.policy.trainingWindowDays } }}</p>
             <dl>
-              <div><dt>{{ 'admin.liveOperations.backtest.baselineMethod' | translate }}</dt><dd>{{ study.baseline?.method ?? 'rolling-hourly-median-v1' }}</dd></div>
-              <div><dt>{{ 'admin.liveOperations.backtest.candidateMethod' | translate }}</dt><dd>{{ study.candidate?.method ?? 'rolling-weekday-hour-median-v1' }}</dd></div>
+              <div><dt>{{ 'admin.liveOperations.backtest.baselineMethod' | translate }}</dt><dd>{{ study.baselineMethod }}</dd></div>
+              <div><dt>{{ 'admin.liveOperations.backtest.candidateMethod' | translate }}</dt><dd>{{ study.candidateMethod }}</dd></div>
               <div><dt>{{ 'admin.liveOperations.backtest.intervalMethod' | translate }}</dt><dd>{{ study.intervalMethod }}</dd></div>
               <div><dt>{{ 'admin.liveOperations.backtest.drift' | translate }}</dt><dd>{{ study.driftPercent !== null ? ((study.driftPercent | number:'1.1-1') + ' %') : '—' }}</dd></div>
+              <div>
+                <dt>{{ 'admin.liveOperations.backtest.driftMae' | translate }}</dt>
+                <dd>
+                  @if (study.olderCandidateMaeMinutes !== null && study.recentCandidateMaeMinutes !== null) {
+                    {{ study.olderCandidateMaeMinutes | number:'1.1-1' }} min →
+                    {{ study.recentCandidateMaeMinutes | number:'1.1-1' }} min
+                  } @else {
+                    —
+                  }
+                </dd>
+              </div>
               <div><dt>{{ 'admin.liveOperations.backtest.trainingMinimums' | translate }}</dt><dd>{{ 'admin.liveOperations.backtest.trainingMinimumsValue' | translate:{ baseline: study.policy.minimumBaselineTrainingDays, candidate: study.policy.minimumCandidateTrainingDays } }}</dd></div>
               <div><dt>{{ 'admin.liveOperations.backtest.driftThreshold' | translate }}</dt><dd>{{ 'admin.liveOperations.backtest.driftThresholdValue' | translate:{ percent: study.policy.driftThresholdPercent, minutes: study.policy.minimumDriftIncreaseMinutes } }}</dd></div>
             </dl>

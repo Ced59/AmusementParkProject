@@ -3350,6 +3350,7 @@
         "candidateMethod": "Geprüfte Methode",
         "intervalMethod": "Geprüftes Intervall",
         "drift": "Aktuelle Drift",
+        "driftMae": "Älterer → aktueller Fehler",
         "trainingMinimums": "Mindesttraining",
         "trainingMinimumsValue": "Referenz: {{baseline}} Tage · Methode: {{candidate}} Tage",
         "driftThreshold": "Driftschwelle",
