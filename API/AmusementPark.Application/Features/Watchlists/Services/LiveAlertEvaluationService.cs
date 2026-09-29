@@ -38,7 +38,6 @@ public sealed class LiveAlertEvaluationService
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(observations);
-        await this.RetryPendingAsync(cancellationToken);
 
         try
         {
@@ -151,8 +150,7 @@ public sealed class LiveAlertEvaluationService
         DateTime nowUtc,
         CancellationToken cancellationToken)
     {
-        if (subscription.PendingTrigger is not null
-            && !await this.DeliverPendingTriggerAsync(subscription, cancellationToken))
+        if (subscription.PendingTrigger is not null)
         {
             return;
         }
@@ -163,20 +161,16 @@ public sealed class LiveAlertEvaluationService
         }
 
         long expectedVersion = subscription.Version;
-        LiveAlertTrigger? trigger = subscription.Evaluate(observation, nowUtc);
+        _ = subscription.Evaluate(observation, nowUtc);
         if (subscription.Version == expectedVersion)
         {
             return;
         }
 
-        WatchSubscriptionWriteOutcome outcome = await this.subscriptionRepository.ReplaceAsync(
+        _ = await this.subscriptionRepository.ReplaceAsync(
             subscription,
             expectedVersion,
             cancellationToken);
-        if (outcome == WatchSubscriptionWriteOutcome.Success && trigger is not null)
-        {
-            await this.DeliverPendingTriggerSafelyAsync(subscription, cancellationToken);
-        }
     }
 
     private async Task<bool> DeliverPendingTriggerSafelyAsync(

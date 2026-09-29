@@ -95,9 +95,12 @@ LiveAlertSubscription.Evaluate
 déclenchement durable dans l’abonnement
       │
       ▼
-notification idempotente ──► acquittement ──► centre WATCH ──► fiche attraction
-      ▲
-      └── réconciliation indépendante chaque minute en cas d’échec
+fin du chemin critique du polling
+      │
+      └──► réconciliation indépendante chaque minute
+                │
+                ▼
+      notification idempotente ──► acquittement ──► centre WATCH
 ```
 
 Chaque notification possède une clé de déclenchement unique fondée sur
@@ -110,7 +113,9 @@ temps. Les notifications visibles sont conservées 30 jours ; les documents
 expirés sont supprimés par TTL. L’expiration métier des abonnements reste
 filtrée dans chaque lecture ; leur expiration technique attend seulement la
 livraison d’une éventuelle sortie durable, sans dépendre du délai de nettoyage
-de MongoDB.
+de MongoDB. Le polling n’attend jamais cette livraison : il persiste la sortie
+et rend la main, puis le worker dédié prend seul en charge toutes les écritures
+de notification.
 
 ## Modèle MongoDB
 
