@@ -21,6 +21,7 @@
         "all": "Todas",
         "previous": "Foto anterior",
         "next": "Foto seguinte",
+        "select": "Mostrar a foto {{name}}",
         "openFullscreen": "Abrir em ecrã inteiro",
         "closeFullscreen": "Fechar ecrã inteiro",
         "openSource": "Abrir {{name}}",

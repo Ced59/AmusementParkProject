@@ -104,6 +104,7 @@
                   appUiButton
                   type="button"
                   (click)="uploadLogo.emit()"
+                  [attr.aria-label]="(logosUploading ? 'admin.loading' : 'admin.parks.logos.uploadButton') | translate"
                   [disabled]="selectedLogoCount === 0 || logosUploading">
                   @if (!logosUploading) {
                     <span>

@@ -2,7 +2,7 @@
 
 > Code programme : `QUAL`
 >
-> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` à `QUAL-06` sont livrés au 29 septembre 2026.
+> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` à `QUAL-07` sont livrés au 30 septembre 2026.
 >
 > Principe : une fonctionnalité n’est pas validée parce qu’elle compile ou parce qu’elle augmente un compteur. Elle doit être comprise, utile, accessible, fiable, réversible, respectueuse de la vie privée et supportable avec les moyens réels du projet.
 
@@ -830,7 +830,7 @@ d'usage réel n'est donc revendiquée.
 | [`QUAL-04`](../../architecture/product-growth-qual-04-privacy-export-deletion-matrix-2026-09-29.md) | Matrice privacy et export/suppression — livré le 29 septembre 2026 | Champs catalogués |
 | [`QUAL-05`](../../architecture/product-growth-qual-05-typed-product-analytics-2026-09-29.md) | Helpers d’instrumentation typés — livré le 29 septembre 2026 | Pas d’événements ad hoc |
 | [`QUAL-06`](../../architecture/product-growth-qual-06-product-decision-dashboards-2026-09-29.md) | Dashboards funnel/fiabilité — livré le 29 septembre 2026 | Questions utiles uniquement |
-| `QUAL-07` | Automatisation accessibilité/i18n | Régressions détectées |
+| [`QUAL-07`](../../architecture/product-growth-qual-07-accessibility-i18n-automation-2026-09-30.md) | Automatisation accessibilité/i18n — livré le 30 septembre 2026 | Régressions détectées |
 | `QUAL-08` | Tests cross-user et sécurité | Parcours critiques |
 | `QUAL-09` | Runbooks et alerting | Incidents opérables |
 | `QUAL-10` | Protocole beta/recherche | Tests comparables |
@@ -917,6 +917,20 @@ contient que les routes et les classifications de preuve. Les sources consenties
 les agrégats first-party et les métriques techniques restent séparés. L'écran est
 protégé par les gardes admin existants, localisé en huit langues et conçu pour
 rester contenu jusqu'aux mobiles de 360 pixels et au paysage de faible hauteur.
+
+### Implémentation `QUAL-07` — 30 septembre 2026
+
+La CI analyse désormais les templates Angular externes et inline avant chaque
+livraison. Toute nouvelle image sans alternative, action native sans nom accessible
+ou cible de clic non native sans clavier et sémantique interactive bloque la PR.
+L’analyse reste statique et n’ajoute donc aucun poids au navigateur ni au VPS.
+
+La validation des huit langues est devenue une gate explicite de la CI. Elle
+conserve les contrôles de clés et de placeholders et interdit aussi toute nouvelle
+collision de feuille entre modules source. Les 23 constats d’accessibilité et les
+24 collisions historiques sont inventoriés dans des baselines versionnées : aucune
+nouvelle dette n’est tolérée et chaque résolution doit réduire volontairement la
+baseline.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 

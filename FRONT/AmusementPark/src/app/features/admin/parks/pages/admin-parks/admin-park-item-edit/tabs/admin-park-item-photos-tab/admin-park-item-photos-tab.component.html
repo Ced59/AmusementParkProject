@@ -187,6 +187,7 @@
                 }
                 <button appUiButton type="button"
                   (click)="uploadPhoto.emit()"
+                  [attr.aria-label]="(photosUploading ? 'admin.loading' : 'admin.parks.items.photos.uploadButton') | translate"
                   [disabled]="!canUploadSelectedPhotos">
                   @if (!photosUploading) {
                     <span>

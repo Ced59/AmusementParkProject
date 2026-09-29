@@ -122,6 +122,7 @@
           <input
             [type]="field.type ?? 'text'"
             class="file-input"
+            [attr.aria-label]="field.label"
             [ngModel]="captainCoasterPipelineFacade.getSettingValue(field.key)"
             (ngModelChange)="captainCoasterPipelineFacade.setSettingValue(field.key, $event)"
             [placeholder]="field.placeholder" />

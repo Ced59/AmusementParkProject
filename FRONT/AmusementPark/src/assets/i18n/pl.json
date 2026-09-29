@@ -6140,6 +6140,7 @@
         "all": "Wszystkie",
         "previous": "Poprzednie zdjęcie",
         "next": "Następne zdjęcie",
+        "select": "Pokaż zdjęcie {{name}}",
         "openFullscreen": "Otwórz pełny ekran",
         "closeFullscreen": "Zamknij pełny ekran",
         "openSource": "Otwórz {{name}}",
