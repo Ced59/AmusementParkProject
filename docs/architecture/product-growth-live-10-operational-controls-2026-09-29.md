@@ -57,7 +57,9 @@ connexion cliente. La photographie nécessaire au résultat est chargée avant
 l’ajout puis complétée en mémoire avec la révision durable : aucune lecture
 MongoDB faillible ne subsiste après le point d’engagement. Les filtres HTTP
 peuvent ainsi toujours invalider le cache et journaliser une décision déjà
-durable.
+durable. L’écriture d’audit qui suit une action réussie utilise elle aussi un
+token indépendant de la connexion cliente ; une déconnexion après engagement
+ne peut donc ni annuler la trace ni empêcher l’invalidation englobante.
 
 Lorsqu’une réponse fournisseur contient des observations supprimées par un
 contrôle, son `ETag` n’est pas conservé. Le prochain appel après réouverture est

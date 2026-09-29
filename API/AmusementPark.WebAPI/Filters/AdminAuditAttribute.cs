@@ -89,11 +89,7 @@ public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
 
         try
         {
-            await writer.WriteAsync(entry, context.HttpContext.RequestAborted);
-        }
-        catch (OperationCanceledException) when (context.HttpContext.RequestAborted.IsCancellationRequested)
-        {
-            throw;
+            await writer.WriteAsync(entry, CancellationToken.None);
         }
         catch (Exception exception)
         {

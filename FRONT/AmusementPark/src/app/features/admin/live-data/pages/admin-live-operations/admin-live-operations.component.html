@@ -92,7 +92,7 @@
           <div><dt>{{ 'admin.liveOperations.polling.circuit' | translate }}</dt><dd>{{ data.polling.circuitOpenUntilUtc ? (data.polling.circuitOpenUntilUtc | date:'short':'UTC') : ('admin.liveOperations.polling.closed' | translate) }}</dd></div>
         </dl>
         <div class="live-operations__tool-actions">
-          <a appUiButton routerLink="/admin/live-mappings" class="p-button-secondary">
+          <a appUiButton routerLink="../live-mappings" class="p-button-secondary">
             <i class="pi pi-sitemap" aria-hidden="true"></i>
             {{ 'admin.liveOperations.actions.mappings' | translate }}
           </a>
