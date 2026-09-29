@@ -75,7 +75,7 @@ const fitDurationBands = allowedValues(
   'UnderThreeSeconds',
   'ThreeSecondsOrMore'
 );
-const methodVersion = matching(/^\(?:park-fit\|live-forecast\)-\d{4}-\d{2}$/);
+const methodVersion = matching(/^(?:park-fit|live-forecast)-\d{4}-\d{2}$/);
 const historyCoverageLevels = allowedValues('none', 'partial', 'complete');
 
 export const PRODUCT_ANALYTICS_EVENT_CONTRACTS = {
