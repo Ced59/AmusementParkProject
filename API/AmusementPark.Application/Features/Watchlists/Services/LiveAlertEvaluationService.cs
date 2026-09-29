@@ -8,6 +8,7 @@ namespace AmusementPark.Application.Features.Watchlists.Services;
 
 public sealed class LiveAlertEvaluationService
 {
+    private const int MaximumPendingDeliveryBatch = 500;
     private readonly ILiveAlertSubscriptionRepository subscriptionRepository;
     private readonly ILiveAlertNotificationRepository notificationRepository;
     private readonly ILiveDataSourceCatalog sourceCatalog;
@@ -32,13 +33,23 @@ public sealed class LiveAlertEvaluationService
         IReadOnlyCollection<LiveLatestObservation> observations,
         CancellationToken cancellationToken)
     {
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
+        IReadOnlyCollection<LiveAlertSubscription> pendingSubscriptions =
+            await this.subscriptionRepository.ListPendingAsync(
+                nowUtc,
+                MaximumPendingDeliveryBatch,
+                cancellationToken);
+        foreach (LiveAlertSubscription pendingSubscription in pendingSubscriptions)
+        {
+            _ = await this.DeliverPendingTriggerAsync(pendingSubscription, cancellationToken);
+        }
+
         LivePollingTarget? publicTarget = this.sourceCatalog.PublicPollingTarget;
         if (!this.sourceCatalog.IsPublicReadEnabled || publicTarget is null)
         {
             return;
         }
 
-        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         LiveOperationalGateSnapshot gate = await this.operationalGate.LoadAsync(
             publicTarget.SourceId,
             publicTarget.ExternalEntityId,
@@ -66,6 +77,12 @@ public sealed class LiveAlertEvaluationService
                 cancellationToken);
         foreach (LiveAlertSubscription subscription in subscriptions)
         {
+            if (subscription.PendingTrigger is not null
+                && !await this.DeliverPendingTriggerAsync(subscription, cancellationToken))
+            {
+                continue;
+            }
+
             if (!eligible.TryGetValue(subscription.TargetId, out LiveLatestObservation? observation))
             {
                 continue;
@@ -84,12 +101,40 @@ public sealed class LiveAlertEvaluationService
                 cancellationToken);
             if (outcome == WatchSubscriptionWriteOutcome.Success && trigger is not null)
             {
-                LiveAlertNotification notification = LiveAlertNotification.Create(
-                    LiveAlertNotificationId.New(),
-                    subscription,
-                    trigger);
-                _ = await this.notificationRepository.CreateAsync(notification, cancellationToken);
+                _ = await this.DeliverPendingTriggerAsync(subscription, cancellationToken);
             }
         }
+    }
+
+    private async Task<bool> DeliverPendingTriggerAsync(
+        LiveAlertSubscription subscription,
+        CancellationToken cancellationToken)
+    {
+        LiveAlertTrigger? pendingTrigger = subscription.PendingTrigger;
+        if (pendingTrigger is null)
+        {
+            return true;
+        }
+
+        LiveAlertNotification notification = LiveAlertNotification.Create(
+            LiveAlertNotificationId.New(),
+            subscription,
+            pendingTrigger);
+        UserNotificationWriteOutcome notificationOutcome =
+            await this.notificationRepository.CreateAsync(notification, cancellationToken);
+        if (notificationOutcome is not UserNotificationWriteOutcome.Success
+            and not UserNotificationWriteOutcome.AlreadyExists)
+        {
+            return false;
+        }
+
+        long expectedVersion = subscription.Version;
+        subscription.MarkPendingTriggerDelivered();
+        WatchSubscriptionWriteOutcome subscriptionOutcome =
+            await this.subscriptionRepository.ReplaceAsync(
+                subscription,
+                expectedVersion,
+                cancellationToken);
+        return subscriptionOutcome == WatchSubscriptionWriteOutcome.Success;
     }
 }

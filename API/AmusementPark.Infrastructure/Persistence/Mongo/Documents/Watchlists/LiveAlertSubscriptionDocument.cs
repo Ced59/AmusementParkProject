@@ -46,6 +46,13 @@ public sealed class LiveAlertSubscriptionDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? LastTriggeredAt { get; set; }
 
+    [BsonElement("pendingTrigger")]
+    [BsonIgnoreIfNull]
+    public LiveAlertTriggerDocument? PendingTrigger { get; set; }
+
+    [BsonElement("quotaSlot")]
+    public int QuotaSlot { get; set; }
+
     [BsonElement("version")]
     public long Version { get; set; }
 }

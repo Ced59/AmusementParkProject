@@ -111,7 +111,9 @@
     "feedback": {
       "loading": "Chargement des alertes…",
       "error": "Impossible de traiter les alertes en direct.",
-      "retry": "Réessayer"
+      "retry": "Réessayer",
+      "actionError": "L’action n’a pas abouti. Tes alertes affichées n’ont pas été modifiées.",
+      "refresh": "Actualiser"
     },
     "inbox": {
       "kicker": "Direct · WATCH",

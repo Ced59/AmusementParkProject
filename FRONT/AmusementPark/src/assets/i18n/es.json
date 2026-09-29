@@ -111,7 +111,9 @@
     "feedback": {
       "loading": "Cargando alertas…",
       "error": "No se pudieron procesar las alertas en directo.",
-      "retry": "Reintentar"
+      "retry": "Reintentar",
+      "actionError": "La acción no se ha completado. Las alertas mostradas no han cambiado.",
+      "refresh": "Actualizar"
     },
     "inbox": {
       "kicker": "En directo · WATCH",

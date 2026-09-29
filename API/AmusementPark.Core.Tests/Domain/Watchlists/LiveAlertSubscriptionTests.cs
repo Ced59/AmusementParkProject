@@ -19,6 +19,7 @@ public sealed class LiveAlertSubscriptionTests
         LiveAlertTrigger? first = subscription.Evaluate(
             CreateObservation(StartUtc.AddMinutes(1), LiveOperationalStatus.Open, 29),
             StartUtc.AddMinutes(1));
+        subscription.MarkPendingTriggerDelivered();
         LiveAlertTrigger? oscillation = subscription.Evaluate(
             CreateObservation(StartUtc.AddMinutes(2), LiveOperationalStatus.Open, 31),
             StartUtc.AddMinutes(2));
@@ -129,6 +130,7 @@ public sealed class LiveAlertSubscriptionTests
         LiveAlertTrigger? first = subscription.Evaluate(
             CreateObservation(StartUtc.AddMinutes(1), LiveOperationalStatus.Open, null),
             StartUtc.AddMinutes(1));
+        subscription.MarkPendingTriggerDelivered();
         _ = subscription.Evaluate(
             CreateObservation(StartUtc.AddMinutes(2), LiveOperationalStatus.Closed, null),
             StartUtc.AddMinutes(2));
@@ -138,6 +140,49 @@ public sealed class LiveAlertSubscriptionTests
 
         Assert.NotNull(first);
         Assert.Null(duringCooldown);
+    }
+
+    [Theory]
+    [InlineData(LiveOperationalStatus.Unknown)]
+    [InlineData(LiveOperationalStatus.Delayed)]
+    [InlineData(LiveOperationalStatus.OperatingWithLimitations)]
+    [InlineData(LiveOperationalStatus.Removed)]
+    public void Evaluate_ShouldNotTreatNonClosureStatusAsReopening(
+        LiveOperationalStatus initialStatus)
+    {
+        LiveAlertSubscription subscription = CreateSubscription(
+            LiveAlertType.Reopened,
+            null,
+            CreateObservation(StartUtc, initialStatus, null));
+
+        LiveAlertTrigger? trigger = subscription.Evaluate(
+            CreateObservation(StartUtc.AddMinutes(1), LiveOperationalStatus.Open, 10),
+            StartUtc.AddMinutes(1));
+
+        Assert.Null(trigger);
+    }
+
+    [Theory]
+    [InlineData(LiveOperationalStatus.Closed)]
+    [InlineData(LiveOperationalStatus.Down)]
+    [InlineData(LiveOperationalStatus.WeatherClosed)]
+    [InlineData(LiveOperationalStatus.Maintenance)]
+    [InlineData(LiveOperationalStatus.NotOperatingToday)]
+    [InlineData(LiveOperationalStatus.Removed)]
+    public void Evaluate_ShouldSuppressWaitAlertWhenStatusIsNotOperational(
+        LiveOperationalStatus status)
+    {
+        LiveAlertSubscription subscription = CreateSubscription(
+            LiveAlertType.WaitBelow,
+            30,
+            CreateObservation(StartUtc, LiveOperationalStatus.Open, 40));
+
+        LiveAlertTrigger? trigger = subscription.Evaluate(
+            CreateObservation(StartUtc.AddMinutes(1), status, 10),
+            StartUtc.AddMinutes(1));
+
+        Assert.Null(trigger);
+        Assert.Null(subscription.LastWaitMinutes);
     }
 
     private static LiveAlertSubscription CreateSubscription(

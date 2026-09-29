@@ -111,7 +111,9 @@
     "feedback": {
       "loading": "Alarme werden geladen…",
       "error": "Live-Alarme konnten nicht verarbeitet werden.",
-      "retry": "Erneut versuchen"
+      "retry": "Erneut versuchen",
+      "actionError": "Die Aktion konnte nicht abgeschlossen werden. Die angezeigten Alarme wurden nicht geändert.",
+      "refresh": "Aktualisieren"
     },
     "inbox": {
       "kicker": "Live · WATCH",

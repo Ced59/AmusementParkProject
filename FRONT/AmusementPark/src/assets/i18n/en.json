@@ -111,7 +111,9 @@
     "feedback": {
       "loading": "Loading alerts…",
       "error": "Live alerts could not be processed.",
-      "retry": "Try again"
+      "retry": "Try again",
+      "actionError": "The action did not complete. The alerts shown have not changed.",
+      "refresh": "Refresh"
     },
     "inbox": {
       "kicker": "Live · WATCH",

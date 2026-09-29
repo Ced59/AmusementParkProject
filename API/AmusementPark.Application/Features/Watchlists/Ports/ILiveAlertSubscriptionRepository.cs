@@ -15,6 +15,11 @@ public interface ILiveAlertSubscriptionRepository
         DateTime nowUtc,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<LiveAlertSubscription>> ListPendingAsync(
+        DateTime nowUtc,
+        int limit,
+        CancellationToken cancellationToken);
+
     Task<WatchSubscriptionWriteOutcome> CreateAsync(
         LiveAlertSubscription subscription,
         DateTime nowUtc,

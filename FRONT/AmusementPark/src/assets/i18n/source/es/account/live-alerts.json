@@ -10,7 +10,7 @@
       "Degraded": { "label": "Servicio degradado", "active": "Degradación vigilada", "notification": "La atracción funciona de forma degradada" }
     },
     "durations": { "60": "1 h", "180": "3 h", "360": "6 h", "720": "Hoy" },
-    "feedback": { "loading": "Cargando alertas…", "error": "No se pudieron procesar las alertas en directo.", "retry": "Reintentar" },
+    "feedback": { "loading": "Cargando alertas…", "error": "No se pudieron procesar las alertas en directo.", "retry": "Reintentar", "actionError": "La acción no se ha completado. Las alertas mostradas no han cambiado.", "refresh": "Actualizar" },
     "inbox": { "kicker": "En directo · WATCH", "title": "Tus alertas temporales", "description": "Cambios de espera y funcionamiento que elegiste seguir.", "unread": "{{ count }} nueva(s)", "activeTitle": "Alertas activas", "targetUnavailable": "Atracción no disponible", "new": "Nueva", "read": "Leída", "source": "Fuente: {{ source }}", "sourceUnavailable": "Fuente en directo verificada", "age": "El dato tenía {{ seconds }} s al activarse", "view": "Ver la atracción", "markRead": "Marcar como leída", "dismiss": "Ocultar", "empty": "Aún no hay alertas en directo activas o recibidas." }
   }
 }

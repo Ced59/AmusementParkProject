@@ -18,9 +18,19 @@ internal static class LiveAlertMongoDefinitions
                 new CreateIndexOptions { Unique = true, Name = "uq_live_alert_subscription_identity" }),
             new(
                 Builders<LiveAlertSubscriptionDocument>.IndexKeys
+                    .Ascending(static document => document.UserId)
+                    .Ascending(static document => document.QuotaSlot),
+                new CreateIndexOptions { Unique = true, Name = "uq_live_alert_subscription_quota_slot" }),
+            new(
+                Builders<LiveAlertSubscriptionDocument>.IndexKeys
                     .Ascending(static document => document.TargetId)
                     .Ascending(static document => document.ExpiresAt),
                 new CreateIndexOptions { Name = "ix_live_alert_subscription_evaluation" }),
+            new(
+                Builders<LiveAlertSubscriptionDocument>.IndexKeys
+                    .Ascending(static document => document.PendingTrigger!.TriggeredAt)
+                    .Ascending(static document => document.ExpiresAt),
+                new CreateIndexOptions { Name = "ix_live_alert_subscription_pending_delivery" }),
             new(
                 Builders<LiveAlertSubscriptionDocument>.IndexKeys.Ascending(static document => document.ExpiresAt),
                 new CreateIndexOptions { ExpireAfter = TimeSpan.Zero, Name = "ttl_live_alert_subscription" }),

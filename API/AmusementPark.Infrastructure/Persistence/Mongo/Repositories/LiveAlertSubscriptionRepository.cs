@@ -80,6 +80,26 @@ public sealed class LiveAlertSubscriptionRepository : ILiveAlertSubscriptionRepo
         return documents.Select(static document => document.ToDomain()).ToArray();
     }
 
+    public async Task<IReadOnlyCollection<LiveAlertSubscription>> ListPendingAsync(
+        DateTime nowUtc,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        EnsureUtc(nowUtc);
+        if (limit is < 1 or > 1000)
+        {
+            throw new ArgumentOutOfRangeException(nameof(limit));
+        }
+
+        List<LiveAlertSubscriptionDocument> documents = await this.collection.Find(
+            document => document.PendingTrigger != null && document.ExpiresAt > nowUtc)
+            .SortBy(static document => document.PendingTrigger!.TriggeredAt)
+            .ThenBy(static document => document.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+        return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
     public async Task<WatchSubscriptionWriteOutcome> CreateAsync(
         LiveAlertSubscription subscription,
         DateTime nowUtc,
@@ -98,34 +118,41 @@ public sealed class LiveAlertSubscriptionRepository : ILiveAlertSubscriptionRepo
 
         try
         {
-            long activeCount = await this.collection.CountDocumentsAsync(
-                document => document.UserId == subscription.UserId && document.ExpiresAt > nowUtc,
-                new CountOptions { Limit = LiveAlertSubscription.MaximumSubscriptionsPerUser },
+            await this.collection.DeleteManyAsync(
+                document => document.UserId == subscription.UserId && document.ExpiresAt <= nowUtc,
                 cancellationToken);
-            if (activeCount >= LiveAlertSubscription.MaximumSubscriptionsPerUser)
+            LiveAlertSubscriptionDocument document = subscription.ToDocument();
+            for (int quotaSlot = 0;
+                 quotaSlot < LiveAlertSubscription.MaximumSubscriptionsPerUser;
+                 quotaSlot++)
             {
-                return WatchSubscriptionWriteOutcome.LimitReached;
+                document.QuotaSlot = quotaSlot;
+                try
+                {
+                    await this.collection.InsertOneAsync(
+                        document,
+                        cancellationToken: cancellationToken);
+                    return WatchSubscriptionWriteOutcome.Success;
+                }
+                catch (MongoWriteException exception)
+                    when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
+                {
+                    long duplicateCount = await this.collection.CountDocumentsAsync(
+                        item => item.UserId == subscription.UserId
+                            && item.TargetId == subscription.TargetId
+                            && item.Type == subscription.Type
+                            && item.ThresholdMinutes == subscription.ThresholdMinutes
+                            && item.ExpiresAt > nowUtc,
+                        new CountOptions { Limit = 1 },
+                        cancellationToken);
+                    if (duplicateCount > 0)
+                    {
+                        return WatchSubscriptionWriteOutcome.AlreadyExists;
+                    }
+                }
             }
 
-            await this.collection.DeleteManyAsync(
-                document => document.UserId == subscription.UserId
-                    && document.TargetId == subscription.TargetId
-                    && document.Type == subscription.Type
-                    && document.ThresholdMinutes == subscription.ThresholdMinutes
-                    && document.ExpiresAt <= nowUtc,
-                cancellationToken);
-            try
-            {
-                await this.collection.InsertOneAsync(
-                    subscription.ToDocument(),
-                    cancellationToken: cancellationToken);
-                return WatchSubscriptionWriteOutcome.Success;
-            }
-            catch (MongoWriteException exception)
-                when (exception.WriteError?.Category == ServerErrorCategory.DuplicateKey)
-            {
-                return WatchSubscriptionWriteOutcome.AlreadyExists;
-            }
+            return WatchSubscriptionWriteOutcome.LimitReached;
         }
         finally
         {
@@ -146,6 +173,7 @@ public sealed class LiveAlertSubscriptionRepository : ILiveAlertSubscriptionRepo
                 .Set(static item => item.LastWaitMinutes, document.LastWaitMinutes)
                 .Set(static item => item.IsArmed, document.IsArmed)
                 .Set(static item => item.LastTriggeredAt, document.LastTriggeredAt)
+                .Set(static item => item.PendingTrigger, document.PendingTrigger)
                 .Set(static item => item.UpdatedAt, document.UpdatedAt)
                 .Set(static item => item.Version, document.Version);
         UpdateResult result = await this.collection.UpdateOneAsync(

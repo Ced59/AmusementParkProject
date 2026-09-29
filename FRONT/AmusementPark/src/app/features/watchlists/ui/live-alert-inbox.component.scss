@@ -129,6 +129,10 @@
   color: var(--c-rose);
 }
 
+.live-inbox__message--error button {
+  margin-inline-start: 0.5rem;
+}
+
 @media (max-width: 40rem) {
   .live-inbox__header {
     grid-template-columns: auto minmax(0, 1fr);

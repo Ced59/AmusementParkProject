@@ -10,7 +10,7 @@
       "Degraded": { "label": "Serviço degradado", "active": "Degradação acompanhada", "notification": "A atração está a funcionar de forma degradada" }
     },
     "durations": { "60": "1 h", "180": "3 h", "360": "6 h", "720": "Hoje" },
-    "feedback": { "loading": "A carregar alertas…", "error": "Não foi possível processar os alertas em direto.", "retry": "Tentar novamente" },
+    "feedback": { "loading": "A carregar alertas…", "error": "Não foi possível processar os alertas em direto.", "retry": "Tentar novamente", "actionError": "Não foi possível concluir a ação. Os alertas apresentados não foram alterados.", "refresh": "Atualizar" },
     "inbox": { "kicker": "Em direto · WATCH", "title": "Os teus alertas temporários", "description": "Mudanças de espera e funcionamento que escolheste acompanhar.", "unread": "{{ count }} novos", "activeTitle": "Alertas ativos", "targetUnavailable": "Atração indisponível", "new": "Novo", "read": "Lido", "source": "Fonte: {{ source }}", "sourceUnavailable": "Fonte live verificada", "age": "Os dados tinham {{ seconds }} s ao ativar", "view": "Ver atração", "markRead": "Marcar como lido", "dismiss": "Ocultar", "empty": "Ainda não há alertas em direto ativos ou recebidos." }
   }
 }

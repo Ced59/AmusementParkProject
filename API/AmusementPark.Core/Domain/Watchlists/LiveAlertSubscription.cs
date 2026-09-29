@@ -25,6 +25,7 @@ public sealed class LiveAlertSubscription
         int? lastWaitMinutes,
         bool isArmed,
         DateTime? lastTriggeredAtUtc,
+        LiveAlertTrigger? pendingTrigger,
         long version)
     {
         _ = id.Value;
@@ -49,6 +50,16 @@ public sealed class LiveAlertSubscription
             EnsureUtc(lastTriggeredAtUtc.Value, nameof(lastTriggeredAtUtc));
         }
 
+        if (pendingTrigger is not null)
+        {
+            ValidatePendingTrigger(
+                pendingTrigger,
+                type,
+                thresholdMinutes,
+                lastObservedAtUtc,
+                lastTriggeredAtUtc);
+        }
+
         if (expiresAtUtc <= createdAtUtc || version < 1)
         {
             throw new ArgumentException("The live alert lifecycle is invalid.");
@@ -64,6 +75,7 @@ public sealed class LiveAlertSubscription
         this.LastWaitMinutes = lastWaitMinutes;
         this.IsArmed = isArmed;
         this.LastTriggeredAtUtc = lastTriggeredAtUtc;
+        this.PendingTrigger = pendingTrigger;
         this.Version = version;
     }
 
@@ -92,6 +104,8 @@ public sealed class LiveAlertSubscription
     public bool IsArmed { get; private set; }
 
     public DateTime? LastTriggeredAtUtc { get; private set; }
+
+    public LiveAlertTrigger? PendingTrigger { get; private set; }
 
     public long Version { get; private set; }
 
@@ -134,6 +148,7 @@ public sealed class LiveAlertSubscription
             waitMinutes,
             ResolveArmed(type, thresholdMinutes, seed.Status, waitMinutes),
             null,
+            null,
             1);
     }
 
@@ -151,6 +166,7 @@ public sealed class LiveAlertSubscription
         int? lastWaitMinutes,
         bool isArmed,
         DateTime? lastTriggeredAtUtc,
+        LiveAlertTrigger? pendingTrigger,
         long version)
     {
         return new LiveAlertSubscription(
@@ -167,6 +183,7 @@ public sealed class LiveAlertSubscription
             lastWaitMinutes,
             isArmed,
             lastTriggeredAtUtc,
+            pendingTrigger,
             version);
     }
 
@@ -177,6 +194,7 @@ public sealed class LiveAlertSubscription
         if (!this.IsActive(nowUtc)
             || !string.Equals(observation.Target.Id, this.TargetId, StringComparison.Ordinal)
             || !string.Equals(observation.Target.ParkId, this.ParkId, StringComparison.Ordinal)
+            || this.PendingTrigger is not null
             || this.LastObservedAtUtc >= observation.Provenance.ObservedAtUtc)
         {
             return null;
@@ -196,12 +214,15 @@ public sealed class LiveAlertSubscription
         bool triggered = this.Type switch
         {
             LiveAlertType.Reopened => this.IsArmed && canTrigger
+                && IsClosedForReopening(this.LastStatus)
                 && observation.Status == LiveOperationalStatus.Open,
             LiveAlertType.Degraded => this.IsArmed && canTrigger
                 && IsDegraded(observation.Status),
             LiveAlertType.WaitBelow => this.IsArmed && canTrigger
+                && IsWaitOperational(observation.Status)
                 && waitMinutes.HasValue && waitMinutes.Value <= this.ThresholdMinutes,
             LiveAlertType.WaitAbove => this.IsArmed && canTrigger
+                && IsWaitOperational(observation.Status)
                 && waitMinutes.HasValue && waitMinutes.Value >= this.ThresholdMinutes,
             _ => false,
         };
@@ -226,10 +247,22 @@ public sealed class LiveAlertSubscription
         if (triggered)
         {
             this.LastTriggeredAtUtc = nowUtc;
+            this.PendingTrigger = trigger;
         }
 
         this.Version++;
         return trigger;
+    }
+
+    public void MarkPendingTriggerDelivered()
+    {
+        if (this.PendingTrigger is null)
+        {
+            return;
+        }
+
+        this.PendingTrigger = null;
+        this.Version++;
     }
 
     private bool ResolveNextArmed(
@@ -244,7 +277,7 @@ public sealed class LiveAlertSubscription
 
         return this.Type switch
         {
-            LiveAlertType.Reopened => status != LiveOperationalStatus.Open,
+            LiveAlertType.Reopened => IsClosedForReopening(status),
             LiveAlertType.Degraded => !IsDegraded(status),
             LiveAlertType.WaitBelow when waitMinutes.HasValue =>
                 this.IsArmed || waitMinutes.Value >= this.ThresholdMinutes + WaitHysteresisMinutes,
@@ -262,7 +295,7 @@ public sealed class LiveAlertSubscription
     {
         return type switch
         {
-            LiveAlertType.Reopened => status != LiveOperationalStatus.Open,
+            LiveAlertType.Reopened => IsClosedForReopening(status),
             LiveAlertType.Degraded => !IsDegraded(status),
             LiveAlertType.WaitBelow => waitMinutes >= thresholdMinutes + WaitHysteresisMinutes,
             LiveAlertType.WaitAbove => waitMinutes <= thresholdMinutes - WaitHysteresisMinutes,
@@ -277,8 +310,30 @@ public sealed class LiveAlertSubscription
             or LiveOperationalStatus.OperatingWithLimitations;
     }
 
+    private static bool IsClosedForReopening(LiveOperationalStatus? status)
+    {
+        return status is LiveOperationalStatus.Closed
+            or LiveOperationalStatus.TemporarilyClosed
+            or LiveOperationalStatus.Down
+            or LiveOperationalStatus.WeatherClosed
+            or LiveOperationalStatus.Maintenance
+            or LiveOperationalStatus.NotOperatingToday;
+    }
+
+    private static bool IsWaitOperational(LiveOperationalStatus status)
+    {
+        return status is LiveOperationalStatus.Open
+            or LiveOperationalStatus.Delayed
+            or LiveOperationalStatus.OperatingWithLimitations;
+    }
+
     private static int? ResolveWaitMinutes(LiveLatestObservation observation)
     {
+        if (!IsWaitOperational(observation.Status))
+        {
+            return null;
+        }
+
         return observation.Queues
             .Where(static queue => queue.Kind == LiveQueueKind.Standby)
             .Select(static queue => queue.WaitTimeMinutes)
@@ -293,6 +348,27 @@ public sealed class LiveAlertSubscription
         {
             throw new ArgumentException("A wait alert requires a threshold between 5 and 300 minutes.", nameof(thresholdMinutes));
         }
+    }
+
+    private static void ValidatePendingTrigger(
+        LiveAlertTrigger trigger,
+        LiveAlertType type,
+        int? thresholdMinutes,
+        DateTime? lastObservedAtUtc,
+        DateTime? lastTriggeredAtUtc)
+    {
+        if (trigger.Type != type
+            || trigger.ThresholdMinutes != thresholdMinutes
+            || !Enum.IsDefined(trigger.CurrentStatus)
+            || trigger.AgeSeconds < 0
+            || trigger.ObservedAtUtc != lastObservedAtUtc
+            || trigger.TriggeredAtUtc != lastTriggeredAtUtc)
+        {
+            throw new ArgumentException("The pending live alert trigger is inconsistent.", nameof(trigger));
+        }
+
+        EnsureUtc(trigger.ObservedAtUtc, nameof(trigger));
+        EnsureUtc(trigger.TriggeredAtUtc, nameof(trigger));
     }
 
     private static void EnsureUtc(DateTime value, string parameterName)

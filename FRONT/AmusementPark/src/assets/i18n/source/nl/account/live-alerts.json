@@ -10,7 +10,7 @@
       "Degraded": { "label": "Beperkte werking", "active": "Beperking wordt gevolgd", "notification": "Deze attractie werkt beperkt" }
     },
     "durations": { "60": "1 uur", "180": "3 uur", "360": "6 uur", "720": "Vandaag" },
-    "feedback": { "loading": "Meldingen laden…", "error": "Live-meldingen konden niet worden verwerkt.", "retry": "Opnieuw proberen" },
+    "feedback": { "loading": "Meldingen laden…", "error": "Live-meldingen konden niet worden verwerkt.", "retry": "Opnieuw proberen", "actionError": "De actie is niet voltooid. De getoonde meldingen zijn niet gewijzigd.", "refresh": "Vernieuwen" },
     "inbox": { "kicker": "Live · WATCH", "title": "Je tijdelijke meldingen", "description": "Wijzigingen in wachttijd en werking die je volgt.", "unread": "{{ count }} nieuw", "activeTitle": "Actieve meldingen", "targetUnavailable": "Attractie niet beschikbaar", "new": "Nieuw", "read": "Gelezen", "source": "Bron: {{ source }}", "sourceUnavailable": "Geverifieerde livebron", "age": "Gegevens waren {{ seconds }} s oud bij activering", "view": "Attractie bekijken", "markRead": "Als gelezen markeren", "dismiss": "Verbergen", "empty": "Nog geen actieve of ontvangen live-meldingen." }
   }
 }

@@ -1,5 +1,5 @@
 import { DestroyRef } from '@angular/core';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 import { LiveAlertDashboard, LiveAlertNotification } from '@app/models/watchlists/live-alert.model';
 import { LiveAlertInboxFacade } from './live-alert-inbox.facade';
@@ -31,6 +31,22 @@ describe('LiveAlertInboxFacade', () => {
     facade.markRead(notification);
 
     expect(dataPort.markRead).not.toHaveBeenCalled();
+  });
+
+  it('keeps the dashboard and exposes a mutation failure', () => {
+    const notification: LiveAlertNotification = buildNotification();
+    const dashboard: LiveAlertDashboard = {
+      subscriptions: [], notifications: [notification], unreadCount: 1, retentionDays: 30
+    };
+    const dataPort: LiveAlertsDataPort = buildPort(dashboard);
+    dataPort.dismiss = vi.fn().mockReturnValue(throwError(() => new Error('network')));
+    const facade: LiveAlertInboxFacade = createFacade(dataPort);
+    facade.load();
+
+    facade.dismiss(notification);
+
+    expect(facade.dashboard()).toEqual(dashboard);
+    expect(facade.error()).toBe(true);
   });
 });
 

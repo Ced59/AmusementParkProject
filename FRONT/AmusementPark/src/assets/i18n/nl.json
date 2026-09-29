@@ -111,7 +111,9 @@
     "feedback": {
       "loading": "Meldingen laden…",
       "error": "Live-meldingen konden niet worden verwerkt.",
-      "retry": "Opnieuw proberen"
+      "retry": "Opnieuw proberen",
+      "actionError": "De actie is niet voltooid. De getoonde meldingen zijn niet gewijzigd.",
+      "refresh": "Vernieuwen"
     },
     "inbox": {
       "kicker": "Live · WATCH",

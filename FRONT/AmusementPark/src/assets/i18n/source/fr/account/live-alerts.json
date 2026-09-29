@@ -10,7 +10,7 @@
       "Degraded": { "label": "Service dégradé", "active": "Dégradation surveillée", "notification": "Le fonctionnement de l’attraction est dégradé" }
     },
     "durations": { "60": "1 h", "180": "3 h", "360": "6 h", "720": "Aujourd’hui" },
-    "feedback": { "loading": "Chargement des alertes…", "error": "Impossible de traiter les alertes en direct.", "retry": "Réessayer" },
+    "feedback": { "loading": "Chargement des alertes…", "error": "Impossible de traiter les alertes en direct.", "retry": "Réessayer", "actionError": "L’action n’a pas abouti. Tes alertes affichées n’ont pas été modifiées.", "refresh": "Actualiser" },
     "inbox": { "kicker": "Direct · WATCH", "title": "Tes alertes temporaires", "description": "Les changements d’attente et de fonctionnement que tu as choisi de suivre.", "unread": "{{ count }} nouvelle(s)", "activeTitle": "Alertes actives", "targetUnavailable": "Attraction indisponible", "new": "Nouveau", "read": "Lu", "source": "Source : {{ source }}", "sourceUnavailable": "Source live vérifiée", "age": "Donnée âgée de {{ seconds }} s au déclenchement", "view": "Voir l’attraction", "markRead": "Marquer comme lu", "dismiss": "Masquer", "empty": "Aucune alerte en direct active ou reçue pour le moment." }
   }
 }

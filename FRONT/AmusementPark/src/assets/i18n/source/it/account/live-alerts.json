@@ -10,7 +10,7 @@
       "Degraded": { "label": "Servizio degradato", "active": "Degrado monitorato", "notification": "L’attrazione funziona in modalità degradata" }
     },
     "durations": { "60": "1 h", "180": "3 h", "360": "6 h", "720": "Oggi" },
-    "feedback": { "loading": "Caricamento avvisi…", "error": "Impossibile elaborare gli avvisi in tempo reale.", "retry": "Riprova" },
+    "feedback": { "loading": "Caricamento avvisi…", "error": "Impossibile elaborare gli avvisi in tempo reale.", "retry": "Riprova", "actionError": "L’azione non è stata completata. Gli avvisi mostrati non sono cambiati.", "refresh": "Aggiorna" },
     "inbox": { "kicker": "In tempo reale · WATCH", "title": "I tuoi avvisi temporanei", "description": "I cambiamenti di attesa e funzionamento che hai scelto di seguire.", "unread": "{{ count }} nuovi", "activeTitle": "Avvisi attivi", "targetUnavailable": "Attrazione non disponibile", "new": "Nuovo", "read": "Letto", "source": "Fonte: {{ source }}", "sourceUnavailable": "Fonte live verificata", "age": "Il dato aveva {{ seconds }} s all’attivazione", "view": "Vedi attrazione", "markRead": "Segna come letto", "dismiss": "Nascondi", "empty": "Nessun avviso in tempo reale attivo o ricevuto." }
   }
 }

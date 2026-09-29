@@ -111,7 +111,9 @@
     "feedback": {
       "loading": "Caricamento avvisi…",
       "error": "Impossibile elaborare gli avvisi in tempo reale.",
-      "retry": "Riprova"
+      "retry": "Riprova",
+      "actionError": "L’azione non è stata completata. Gli avvisi mostrati non sono cambiati.",
+      "refresh": "Aggiorna"
     },
     "inbox": {
       "kicker": "In tempo reale · WATCH",

@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.LiveData;
 using AmusementPark.Core.Domain.Watchlists;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Watchlists;
 
@@ -23,6 +24,7 @@ internal static class LiveAlertSubscriptionMongoMapper
             LastWaitMinutes = subscription.LastWaitMinutes,
             IsArmed = subscription.IsArmed,
             LastTriggeredAt = subscription.LastTriggeredAtUtc,
+            PendingTrigger = subscription.PendingTrigger?.ToDocument(),
             Version = subscription.Version,
         };
     }
@@ -43,6 +45,39 @@ internal static class LiveAlertSubscriptionMongoMapper
             document.LastWaitMinutes,
             document.IsArmed,
             document.LastTriggeredAt,
+            document.PendingTrigger?.ToDomain(),
             document.Version);
+    }
+
+    private static LiveAlertTriggerDocument ToDocument(this LiveAlertTrigger trigger)
+    {
+        return new LiveAlertTriggerDocument
+        {
+            Type = trigger.Type,
+            PreviousStatus = trigger.PreviousStatus,
+            CurrentStatus = trigger.CurrentStatus,
+            PreviousWaitMinutes = trigger.PreviousWaitMinutes,
+            CurrentWaitMinutes = trigger.CurrentWaitMinutes,
+            ThresholdMinutes = trigger.ThresholdMinutes,
+            SourceId = trigger.SourceId.Value,
+            ObservedAt = trigger.ObservedAtUtc,
+            TriggeredAt = trigger.TriggeredAtUtc,
+            AgeSeconds = trigger.AgeSeconds,
+        };
+    }
+
+    private static LiveAlertTrigger ToDomain(this LiveAlertTriggerDocument document)
+    {
+        return new LiveAlertTrigger(
+            document.Type,
+            document.PreviousStatus,
+            document.CurrentStatus,
+            document.PreviousWaitMinutes,
+            document.CurrentWaitMinutes,
+            document.ThresholdMinutes,
+            LiveDataSourceId.Parse(document.SourceId),
+            document.ObservedAt,
+            document.TriggeredAt,
+            document.AgeSeconds);
     }
 }

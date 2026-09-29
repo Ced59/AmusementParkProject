@@ -30,6 +30,11 @@ public sealed class LiveAlertEvaluationServiceTests
         LiveLatestObservation current = CreateObservation(NowUtc.AddMinutes(-1), 25);
         Mock<ILiveAlertSubscriptionRepository> subscriptions =
             new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListPendingAsync(
+                NowUtc,
+                500,
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<LiveAlertSubscription>());
         subscriptions.Setup(repository => repository.ListActiveMatchingAsync(
                 It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })),
                 NowUtc,
@@ -38,6 +43,11 @@ public sealed class LiveAlertEvaluationServiceTests
         subscriptions.Setup(repository => repository.ReplaceAsync(
                 subscription,
                 1,
+                CancellationToken.None))
+            .ReturnsAsync(WatchSubscriptionWriteOutcome.Success);
+        subscriptions.Setup(repository => repository.ReplaceAsync(
+                subscription,
+                2,
                 CancellationToken.None))
             .ReturnsAsync(WatchSubscriptionWriteOutcome.Success);
         LiveAlertNotification? created = null;
@@ -66,8 +76,72 @@ public sealed class LiveAlertEvaluationServiceTests
         Assert.Equal(25, created.CurrentWaitMinutes);
         Assert.Equal(60, created.AgeSeconds);
         Assert.Equal(UserNotificationStatus.Delivered, created.Status);
+        Assert.Null(subscription.PendingTrigger);
         subscriptions.VerifyAll();
         notifications.VerifyAll();
+    }
+
+    [Fact]
+    public async Task EvaluateAsync_ShouldRetryDurablePendingTriggerAfterNotificationFailure()
+    {
+        LiveAlertSubscription subscription = LiveAlertSubscription.Create(
+            LiveAlertSubscriptionId.New(),
+            "member-1",
+            "item-1",
+            "park-1",
+            LiveAlertType.WaitBelow,
+            30,
+            NowUtc.AddMinutes(-2),
+            NowUtc.AddHours(2),
+            CreateObservation(NowUtc.AddMinutes(-2), 40));
+        LiveLatestObservation current = CreateObservation(NowUtc.AddMinutes(-1), 25);
+        Mock<ILiveAlertSubscriptionRepository> subscriptions = new(MockBehavior.Strict);
+        subscriptions.SetupSequence(repository => repository.ListPendingAsync(
+                NowUtc,
+                500,
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<LiveAlertSubscription>())
+            .ReturnsAsync(new[] { subscription });
+        subscriptions.Setup(repository => repository.ListActiveMatchingAsync(
+                It.IsAny<IReadOnlyCollection<string>>(),
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(new[] { subscription });
+        subscriptions.Setup(repository => repository.ReplaceAsync(
+                subscription,
+                1,
+                CancellationToken.None))
+            .ReturnsAsync(WatchSubscriptionWriteOutcome.Success);
+        subscriptions.Setup(repository => repository.ReplaceAsync(
+                subscription,
+                2,
+                CancellationToken.None))
+            .ReturnsAsync(WatchSubscriptionWriteOutcome.Success);
+        Mock<ILiveAlertNotificationRepository> notifications = new(MockBehavior.Strict);
+        notifications.SetupSequence(repository => repository.CreateAsync(
+                It.IsAny<LiveAlertNotification>(),
+                CancellationToken.None))
+            .ThrowsAsync(new InvalidOperationException("temporary write failure"))
+            .ReturnsAsync(UserNotificationWriteOutcome.Success);
+        Mock<TimeProvider> clock = new(MockBehavior.Strict);
+        clock.Setup(provider => provider.GetUtcNow()).Returns(new DateTimeOffset(NowUtc));
+        LiveAlertEvaluationService service = new(
+            subscriptions.Object,
+            notifications.Object,
+            CreateCatalog().Object,
+            CreateGate().Object,
+            clock.Object);
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            service.EvaluateAsync(new[] { current }, CancellationToken.None));
+        Assert.NotNull(subscription.PendingTrigger);
+
+        await service.EvaluateAsync(new[] { current }, CancellationToken.None);
+
+        Assert.Null(subscription.PendingTrigger);
+        notifications.Verify(repository => repository.CreateAsync(
+            It.IsAny<LiveAlertNotification>(), CancellationToken.None), Times.Exactly(2));
+        subscriptions.VerifyAll();
     }
 
     [Fact]
@@ -75,6 +149,11 @@ public sealed class LiveAlertEvaluationServiceTests
     {
         Mock<ILiveAlertSubscriptionRepository> subscriptions =
             new(MockBehavior.Strict);
+        subscriptions.Setup(repository => repository.ListPendingAsync(
+                It.IsAny<DateTime>(),
+                500,
+                CancellationToken.None))
+            .ReturnsAsync(Array.Empty<LiveAlertSubscription>());
         Mock<ILiveAlertNotificationRepository> notifications =
             new(MockBehavior.Strict);
         Mock<ILiveDataSourceCatalog> catalog = new(MockBehavior.Strict);
@@ -91,6 +170,8 @@ public sealed class LiveAlertEvaluationServiceTests
             new[] { CreateObservation(NowUtc.AddMinutes(-1), 25) },
             CancellationToken.None);
 
+        subscriptions.Verify(repository => repository.ListPendingAsync(
+            It.IsAny<DateTime>(), 500, CancellationToken.None), Times.Once);
         subscriptions.VerifyNoOtherCalls();
         notifications.VerifyNoOtherCalls();
         gate.VerifyNoOtherCalls();

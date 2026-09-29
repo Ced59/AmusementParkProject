@@ -111,7 +111,9 @@
     "feedback": {
       "loading": "Ładowanie alertów…",
       "error": "Nie udało się przetworzyć alertów na żywo.",
-      "retry": "Spróbuj ponownie"
+      "retry": "Spróbuj ponownie",
+      "actionError": "Nie udało się wykonać działania. Wyświetlane alerty nie zostały zmienione.",
+      "refresh": "Odśwież"
     },
     "inbox": {
       "kicker": "Na żywo · WATCH",

@@ -31,7 +31,10 @@ observation fraîche et publique
  cooldown de 30 min terminé ? ── non ──► mémoriser sans notifier
              │ oui
              ▼
- notification WATCH + état désarmé
+état désarmé + déclenchement durable à livrer
+             │
+             ▼
+notification WATCH idempotente + acquittement du déclenchement
              │
              ▼
  réarmement après retour stable au-delà d’une marge de 5 min
@@ -52,7 +55,9 @@ cooldown de 30 minutes.
   fraîcheur, calcule la fin de journée dans le fuseau du parc, orchestre
   l’évaluation et enrichit le résultat avec les noms et images publics.
 - `Infrastructure` conserve abonnements et notifications dans deux collections
-  dédiées. Les index d’unicité, d’évaluation, de boîte de réception et TTL sont
+  dédiées. Le déclenchement à livrer est écrit dans l’abonnement avant la
+  notification : une interruption ne peut donc pas perdre l’alerte. Les index
+  d’unicité, de quota atomique, d’évaluation, de boîte de réception et TTL sont
   créés automatiquement au démarrage. La suppression de compte purge aussi ces
   données.
 - `WebAPI` expose seulement des endpoints `me` authentifiés, sans cache, avec
@@ -81,13 +86,18 @@ LiveAlertEvaluationService
 LiveAlertSubscription.Evaluate
       │ transition fraîche + armée + cooldown
       ▼
-notification idempotente ──► centre WATCH ──► fiche attraction
+déclenchement durable dans l’abonnement
+      │
+      ▼
+notification idempotente ──► acquittement ──► centre WATCH ──► fiche attraction
 ```
 
 Chaque notification possède une clé de déclenchement unique fondée sur
 l’abonnement et l’heure observée. Une même observation ne peut donc pas produire
-de doublon. Les notifications visibles sont conservées 30 jours ; les documents
-expirés sont supprimés par TTL. Les abonnements ont leur propre TTL et sont
+de doublon. Tant que cette notification n’a pas été créée ou reconnue comme
+déjà créée, le déclenchement reste durablement en attente et bloque l’avancement
+de l’abonnement. Les notifications visibles sont conservées 30 jours ; les
+documents expirés sont supprimés par TTL. Les abonnements ont leur propre TTL et sont
 également filtrés par date dans chaque lecture, sans dépendre du délai de
 nettoyage de MongoDB.
 
@@ -102,9 +112,9 @@ live-alert-subscriptions             live-alert-notifications
 ├─ createdAt / expiresAt (TTL)       ├─ transition + seuil
 ├─ dernier statut / attente / heure  ├─ sourceId / observedAt / âge
 ├─ isArmed / lastTriggeredAt         ├─ deliveredAt / status
-└─ version                           ├─ expiresAt (TTL)
-                                     ├─ triggerKey (unique)
-                                     └─ version
+├─ pendingTrigger (sortie durable)   ├─ expiresAt (TTL)
+├─ quotaSlot (unique par membre)     ├─ triggerKey (unique)
+└─ version                           └─ version
 ```
 
 Aucune migration manuelle n’est requise : ce sont de nouvelles collections et

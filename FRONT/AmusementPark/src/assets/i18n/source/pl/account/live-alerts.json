@@ -10,7 +10,7 @@
       "Degraded": { "label": "Ograniczone działanie", "active": "Śledzenie ograniczeń", "notification": "Atrakcja działa w ograniczonym trybie" }
     },
     "durations": { "60": "1 godz.", "180": "3 godz.", "360": "6 godz.", "720": "Dzisiaj" },
-    "feedback": { "loading": "Ładowanie alertów…", "error": "Nie udało się przetworzyć alertów na żywo.", "retry": "Spróbuj ponownie" },
+    "feedback": { "loading": "Ładowanie alertów…", "error": "Nie udało się przetworzyć alertów na żywo.", "retry": "Spróbuj ponownie", "actionError": "Nie udało się wykonać działania. Wyświetlane alerty nie zostały zmienione.", "refresh": "Odśwież" },
     "inbox": { "kicker": "Na żywo · WATCH", "title": "Twoje alerty tymczasowe", "description": "Wybrane przez ciebie zmiany czasu oczekiwania i działania.", "unread": "{{ count }} nowych", "activeTitle": "Aktywne alerty", "targetUnavailable": "Atrakcja niedostępna", "new": "Nowe", "read": "Przeczytane", "source": "Źródło: {{ source }}", "sourceUnavailable": "Zweryfikowane źródło live", "age": "W chwili wyzwolenia dane miały {{ seconds }} s", "view": "Zobacz atrakcję", "markRead": "Oznacz jako przeczytane", "dismiss": "Ukryj", "empty": "Brak aktywnych lub odebranych alertów na żywo." }
   }
 }
