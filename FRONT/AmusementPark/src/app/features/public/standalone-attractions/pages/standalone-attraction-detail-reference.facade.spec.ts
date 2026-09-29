@@ -2,6 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { Observable, Subject } from 'rxjs';
 
 import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
+import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
+import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
+import { ManufacturersHttpOptions } from '@data-access/manufacturers/manufacturers-api.service';
 import {
   STANDALONE_ATTRACTION_DETAIL_MANUFACTURERS_PORT,
   StandaloneAttractionDetailManufacturersPort
@@ -10,13 +13,23 @@ import { StandaloneAttractionDetailReferenceFacade } from './standalone-attracti
 
 describe('StandaloneAttractionDetailReferenceFacade', () => {
   let facade: StandaloneAttractionDetailReferenceFacade;
-  let responses: Map<string, Subject<{ name?: string | null }>>;
+  let responses: Map<string, Subject<AttractionManufacturer>>;
+  let requestedIncludeHidden: boolean | null;
+  let requestedOptions: ManufacturersHttpOptions | null;
 
   beforeEach(() => {
-    responses = new Map<string, Subject<{ name?: string | null }>>();
+    responses = new Map<string, Subject<AttractionManufacturer>>();
+    requestedIncludeHidden = null;
+    requestedOptions = null;
     const manufacturersPort: StandaloneAttractionDetailManufacturersPort = {
-      getAttractionManufacturerById: (id: string): Observable<{ name?: string | null }> => {
-        const response: Subject<{ name?: string | null }> = new Subject<{ name?: string | null }>();
+      getAttractionManufacturerById: (
+        id: string,
+        includeHidden: boolean = false,
+        options: ManufacturersHttpOptions = {}
+      ): Observable<AttractionManufacturer> => {
+        requestedIncludeHidden = includeHidden;
+        requestedOptions = options;
+        const response: Subject<AttractionManufacturer> = new Subject<AttractionManufacturer>();
         responses.set(id, response);
         return response.asObservable();
       }
@@ -40,6 +53,8 @@ describe('StandaloneAttractionDetailReferenceFacade', () => {
     responses.get('manufacturer-1')?.next({ name: ' Wiegand ' });
 
     expect(facade.manufacturerName()).toBe('Wiegand');
+    expect(requestedIncludeHidden).toBe(false);
+    expect(requestedOptions?.context?.get(SKIP_AUTHORIZATION_HEADER)).toBe(true);
   });
 
   it('ignores a response for an attraction that is no longer active', () => {

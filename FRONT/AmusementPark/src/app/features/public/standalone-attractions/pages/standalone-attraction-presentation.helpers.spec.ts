@@ -37,7 +37,8 @@ describe('standalone attraction presentation helpers', () => {
   };
 
   it('uses public translation keys instead of raw enum values', () => {
-    expect(getStandaloneAttractionTypeTranslationKey('RollerCoaster')).toBe('parkExplorer.types.rollerCoaster');
+    expect(getStandaloneAttractionTypeTranslationKey('RollerCoaster')).toBe('publicCounts.rollerCoaster.one');
+    expect(getStandaloneAttractionTypeTranslationKey('FamilyRide')).toBe('home.categories.attraction');
     expect(getStandaloneAttractionStatusTranslationKey('Operating')).toBe('parkItems.statuses.operating');
     expect(getStandaloneAttractionStatusTranslationKey('unexpected-value')).toBe('parkItems.statuses.unknown');
   });

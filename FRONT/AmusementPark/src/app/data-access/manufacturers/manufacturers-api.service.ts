@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, expand, map, Observable, reduce } from 'rxjs';
 
@@ -8,6 +8,10 @@ import { AttractionManufacturer } from '@app/models/parks/attraction-manufacture
 import { PagedResult } from '@shared/models/contracts';
 import { PagedCollectionResponse, unwrapCollection, unwrapPagedCollection } from '../shared/api-helpers';
 import { MANUFACTURERS_API_ENDPOINTS } from './manufacturers-api-endpoints';
+
+export interface ManufacturersHttpOptions {
+  readonly context?: HttpContext;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -59,10 +63,14 @@ export class ManufacturersApiService {
     );
   }
 
-  getAttractionManufacturerById(id: string, includeHidden: boolean = false): Observable<AttractionManufacturer> {
+  getAttractionManufacturerById(
+    id: string,
+    includeHidden: boolean = false,
+    options: ManufacturersHttpOptions = {}
+  ): Observable<AttractionManufacturer> {
     const url: string = `${environment.apiBaseUrl}${MANUFACTURERS_API_ENDPOINTS.getAttractionManufacturerById(id)}`;
     const params: HttpParams = includeHidden ? new HttpParams().set('includeHidden', 'true') : new HttpParams();
-    return this.http.get<AttractionManufacturer>(url, { params });
+    return this.http.get<AttractionManufacturer>(url, { ...options, params });
   }
 
   createAttractionManufacturer(manufacturer: AttractionManufacturer): Observable<AttractionManufacturer> {

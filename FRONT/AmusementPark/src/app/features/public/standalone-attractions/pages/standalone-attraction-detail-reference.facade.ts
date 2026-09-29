@@ -2,6 +2,7 @@ import { DestroyRef, Injectable, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
+import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import {
   STANDALONE_ATTRACTION_DETAIL_MANUFACTURERS_PORT,
   StandaloneAttractionDetailManufacturersPort
@@ -28,7 +29,7 @@ export class StandaloneAttractionDetailReferenceFacade {
       return;
     }
 
-    this.manufacturersPort.getAttractionManufacturerById(manufacturerId)
+    this.manufacturersPort.getAttractionManufacturerById(manufacturerId, false, anonymousHttpOptions())
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (manufacturer: { name?: string | null }) => {

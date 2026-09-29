@@ -1,5 +1,5 @@
 import { StandaloneAttraction } from '@app/models/standalone-attractions/standalone-attraction';
-import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { normalizeTranslationSegment } from '@shared/utils/display/display-label.helpers';
 import { getAttractionStatusValueKey } from '@shared/utils/display/park-item-presentation.helpers';
 
 export interface StandaloneAttractionDetailLabels {
@@ -20,7 +20,24 @@ export interface StandaloneAttractionDetailRow {
 }
 
 export function getStandaloneAttractionTypeTranslationKey(type: StandaloneAttraction['type']): string {
-  return getParkItemTypeTranslationKey(type);
+  const segment: string = normalizeTranslationSegment(type, 'other');
+
+  if (segment === 'rollerCoaster' || segment === 'waterRide' || segment === 'flatRide' || segment === 'darkRide') {
+    return `publicCounts.${segment}.one`;
+  }
+
+  switch (segment) {
+    case 'restaurant':
+    case 'hotel':
+    case 'show':
+    case 'shop':
+    case 'service':
+    case 'transport':
+    case 'other':
+      return `home.categories.${segment}`;
+    default:
+      return 'home.categories.attraction';
+  }
 }
 
 export function getStandaloneAttractionStatusTranslationKey(status: string | null | undefined): string | null {
