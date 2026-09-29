@@ -13,8 +13,13 @@ public sealed class ParkPricingRepository : IParkPricingRepository
     private readonly IMongoCollection<ParkPricingDocument> collection;
 
     public ParkPricingRepository(IMongoDatabase database, MongoDbSettings settings)
+        : this(database, settings.ParkPricingCollectionName)
     {
-        this.collection = database.GetCollection<ParkPricingDocument>(settings.ParkPricingCollectionName);
+    }
+
+    internal ParkPricingRepository(IMongoDatabase database, string collectionName)
+    {
+        this.collection = database.GetCollection<ParkPricingDocument>(collectionName);
     }
 
     public async Task<ParkPricingEntity?> GetByParkIdAsync(string parkId, CancellationToken cancellationToken)

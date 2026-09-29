@@ -19,6 +19,7 @@ using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
 using Moq;
 using Xunit;
+using ParkPricingEntity = AmusementPark.Core.Domain.Parks.ParkPricing;
 
 namespace AmusementPark.Application.Tests.Features.ParkGraphUpserts.Handlers;
 
@@ -106,6 +107,32 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
                 true,
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { historyEvent });
+        ParkOpeningHoursSchedule openingHours = new ParkOpeningHoursSchedule
+        {
+            ParkId = "standalone-1",
+            TimeZoneId = "Europe/Vienna",
+            SourceUrl = "https://example.com/hours",
+        };
+        Mock<IStandaloneAttractionOpeningHoursRepository> openingHoursRepository =
+            new Mock<IStandaloneAttractionOpeningHoursRepository>(MockBehavior.Strict);
+        openingHoursRepository
+            .Setup(repository => repository.GetByStandaloneAttractionIdAsync(
+                "standalone-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(openingHours);
+        ParkPricingEntity pricing = new ParkPricingEntity
+        {
+            ParkId = "standalone-1",
+            CurrencyCode = "EUR",
+            SourceUrl = "https://example.com/prices",
+        };
+        Mock<IStandaloneAttractionPricingRepository> pricingRepository =
+            new Mock<IStandaloneAttractionPricingRepository>(MockBehavior.Strict);
+        pricingRepository
+            .Setup(repository => repository.GetByStandaloneAttractionIdAsync(
+                "standalone-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(pricing);
 
         ExportParkGraphJsonQueryHandler handler = new ExportParkGraphJsonQueryHandler(
             Mock.Of<IParkRepository>(MockBehavior.Strict),
@@ -116,7 +143,9 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             imageRepository.Object,
             historyEventRepository: historyRepository.Object,
-            standaloneAttractionRepository: standaloneRepository.Object);
+            standaloneAttractionRepository: standaloneRepository.Object,
+            standaloneOpeningHoursRepository: openingHoursRepository.Object,
+            standalonePricingRepository: pricingRepository.Object);
 
         ApplicationResult<ParkGraphJsonExportResult> result = await handler.HandleAsync(
             new ExportStandaloneAttractionGraphJsonQuery("standalone-1"),
@@ -139,9 +168,19 @@ public sealed class ExportStandaloneAttractionGraphJsonQueryHandlerTests
         Assert.Equal(
             JsonValueKind.Null,
             document.RootElement.GetProperty("standaloneAttraction").GetProperty("attractionDetails").GetProperty("manufacturerKey").ValueKind);
+        JsonElement exportedOpeningHours = document.RootElement.GetProperty("openingHours");
+        Assert.Equal("standalone-1", exportedOpeningHours.GetProperty("standaloneAttractionId").GetString());
+        Assert.False(exportedOpeningHours.TryGetProperty("parkId", out _));
+        Assert.Equal("Europe/Vienna", exportedOpeningHours.GetProperty("timeZoneId").GetString());
+        JsonElement exportedPricing = document.RootElement.GetProperty("pricing");
+        Assert.Equal("standalone-1", exportedPricing.GetProperty("standaloneAttractionId").GetString());
+        Assert.False(exportedPricing.TryGetProperty("parkId", out _));
+        Assert.Equal("EUR", exportedPricing.GetProperty("currencyCode").GetString());
 
         standaloneRepository.VerifyAll();
         imageRepository.VerifyAll();
         historyRepository.VerifyAll();
+        openingHoursRepository.VerifyAll();
+        pricingRepository.VerifyAll();
     }
 }

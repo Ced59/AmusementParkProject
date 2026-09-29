@@ -250,6 +250,15 @@ public sealed class MongoDbSettings
 
     public string ParkPricingCollectionName { get; set; } = "parkPricing";
 
+    public string StandaloneAttractionWeatherDailySnapshotsCollectionName { get; set; } =
+        "standaloneAttractionWeatherDailySnapshots";
+
+    public string StandaloneAttractionOpeningHoursCollectionName { get; set; } =
+        "standaloneAttractionOpeningHours";
+
+    public string StandaloneAttractionPricingCollectionName { get; set; } =
+        "standaloneAttractionPricing";
+
     public string HistoryEventsCollectionName { get; set; } = "historyEvents";
 
     public string HistoricalExistenceReportsCollectionName { get; set; } =

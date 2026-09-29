@@ -44,7 +44,9 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
     internal readonly IParkOpeningHoursRepository? openingHoursRepository;
     internal readonly IHistoryEventRepository? historyEventRepository;
     internal readonly IParkPricingRepository? pricingRepository;
-    public ExportParkGraphJsonQueryHandler(IParkRepository parkRepository, IParkZoneRepository parkZoneRepository, IParkItemRepository parkItemRepository, IParkFounderRepository parkFounderRepository, IParkOperatorRepository parkOperatorRepository, IAttractionManufacturerRepository attractionManufacturerRepository, IImageRepository imageRepository, IParkOpeningHoursRepository? openingHoursRepository = null, IHistoryEventRepository? historyEventRepository = null, IStandaloneAttractionRepository? standaloneAttractionRepository = null, IParkPricingRepository? pricingRepository = null)
+    internal readonly IStandaloneAttractionOpeningHoursRepository? standaloneOpeningHoursRepository;
+    internal readonly IStandaloneAttractionPricingRepository? standalonePricingRepository;
+    public ExportParkGraphJsonQueryHandler(IParkRepository parkRepository, IParkZoneRepository parkZoneRepository, IParkItemRepository parkItemRepository, IParkFounderRepository parkFounderRepository, IParkOperatorRepository parkOperatorRepository, IAttractionManufacturerRepository attractionManufacturerRepository, IImageRepository imageRepository, IParkOpeningHoursRepository? openingHoursRepository = null, IHistoryEventRepository? historyEventRepository = null, IStandaloneAttractionRepository? standaloneAttractionRepository = null, IParkPricingRepository? pricingRepository = null, IStandaloneAttractionOpeningHoursRepository? standaloneOpeningHoursRepository = null, IStandaloneAttractionPricingRepository? standalonePricingRepository = null)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -57,6 +59,8 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
         this.historyEventRepository = historyEventRepository;
         this.standaloneAttractionRepository = standaloneAttractionRepository;
         this.pricingRepository = pricingRepository;
+        this.standaloneOpeningHoursRepository = standaloneOpeningHoursRepository;
+        this.standalonePricingRepository = standalonePricingRepository;
     }
 
     public async Task<ApplicationResult<ParkGraphJsonExportResult>> HandleAsync(ExportParkGraphJsonQuery query, CancellationToken cancellationToken = default)

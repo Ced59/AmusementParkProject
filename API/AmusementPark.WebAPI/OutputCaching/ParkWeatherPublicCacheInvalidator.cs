@@ -37,7 +37,18 @@ public sealed class ParkWeatherPublicCacheInvalidator : IParkWeatherCacheInvalid
 
     public async Task InvalidateUpdatedWeatherAsync(IReadOnlyCollection<Park> parks, CancellationToken cancellationToken)
     {
-        if (parks.Count == 0)
+        await this.InvalidateUpdatedWeatherAsync(
+            parks,
+            Array.Empty<StandaloneAttraction>(),
+            cancellationToken);
+    }
+
+    public async Task InvalidateUpdatedWeatherAsync(
+        IReadOnlyCollection<Park> parks,
+        IReadOnlyCollection<StandaloneAttraction> standaloneAttractions,
+        CancellationToken cancellationToken)
+    {
+        if (parks.Count == 0 && standaloneAttractions.Count == 0)
         {
             return;
         }
@@ -51,7 +62,9 @@ public sealed class ParkWeatherPublicCacheInvalidator : IParkWeatherCacheInvalid
             this.logger.LogWarning(exception, "Weather API output cache eviction failed.");
         }
 
-        SsrPageCacheInvalidationRequest request = BuildSsrInvalidationRequest(parks);
+        SsrPageCacheInvalidationRequest request = BuildSsrInvalidationRequest(
+            parks,
+            standaloneAttractions);
         if (request.Paths.Count == 0)
         {
             return;
@@ -67,7 +80,9 @@ public sealed class ParkWeatherPublicCacheInvalidator : IParkWeatherCacheInvalid
         }
     }
 
-    private static SsrPageCacheInvalidationRequest BuildSsrInvalidationRequest(IReadOnlyCollection<Park> parks)
+    private static SsrPageCacheInvalidationRequest BuildSsrInvalidationRequest(
+        IReadOnlyCollection<Park> parks,
+        IReadOnlyCollection<StandaloneAttraction> standaloneAttractions)
     {
         HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
 
@@ -83,6 +98,20 @@ public sealed class ParkWeatherPublicCacheInvalidator : IParkWeatherCacheInvalid
                 string basePath = BuildParkBasePath(language, park);
                 paths.Add(basePath);
                 paths.Add($"{basePath}/weather");
+            }
+        }
+
+        foreach (StandaloneAttraction attraction in standaloneAttractions)
+        {
+            if (string.IsNullOrWhiteSpace(attraction.Id))
+            {
+                continue;
+            }
+
+            foreach (string language in PublicLanguages)
+            {
+                string slug = SeoSlugService.ToSlug(attraction.Name, "attraction");
+                paths.Add($"/{language}/attraction/{attraction.Id}/{slug}");
             }
         }
 

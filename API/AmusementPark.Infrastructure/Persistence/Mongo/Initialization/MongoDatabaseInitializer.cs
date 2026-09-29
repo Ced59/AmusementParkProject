@@ -1096,6 +1096,10 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkOpeningHoursCollectionName, cancellationToken);
         await this.InitializeParkOpeningHoursIndexesAsync(cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.StandaloneAttractionOpeningHoursCollectionName,
+            cancellationToken);
+        await this.InitializeStandaloneAttractionOpeningHoursIndexesAsync(cancellationToken);
         OpeningCalendarFactualEvidenceMigration openingCalendarEvidenceMigration = new OpeningCalendarFactualEvidenceMigration(
             this.database.GetCollection<FactualChangeEventDocument>(
                 this.settings.FactualChangeEventsCollectionName),
@@ -1117,6 +1121,10 @@ private readonly IMongoDatabase database;
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkPricingCollectionName, cancellationToken);
         await this.InitializeParkPricingIndexesAsync(cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.StandaloneAttractionPricingCollectionName,
+            cancellationToken);
+        await this.InitializeStandaloneAttractionPricingIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.HistoryEventsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.HistoricalEventsBackupCollectionName, cancellationToken);
@@ -1277,9 +1285,13 @@ private readonly IMongoDatabase database;
         await this.InitializeCaptainCoasterComparisonResultsIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkWeatherDailySnapshotsCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.StandaloneAttractionWeatherDailySnapshotsCollectionName,
+            cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.ParkWeatherRunsCollectionName, cancellationToken);
         await this.EnsureCollectionExistsAsync(this.settings.ParkWeatherRunItemsCollectionName, cancellationToken);
         await this.InitializeParkWeatherIndexesAsync(cancellationToken);
+        await this.InitializeStandaloneAttractionWeatherIndexesAsync(cancellationToken);
 
         await this.InitializeAdminUserAsync(cancellationToken);
         await this.BackfillPublicAccountIdentitiesAsync(cancellationToken);
@@ -1464,6 +1476,18 @@ private async Task InitializeParkOpeningHoursIndexesAsync(CancellationToken canc
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
     }
 
+    private async Task InitializeStandaloneAttractionOpeningHoursIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<ParkOpeningHoursScheduleDocument> collection =
+            this.database.GetCollection<ParkOpeningHoursScheduleDocument>(
+                this.settings.StandaloneAttractionOpeningHoursCollectionName);
+
+        await collection.Indexes.CreateManyAsync(
+            BuildParkOpeningHoursIndexes(),
+            cancellationToken: cancellationToken);
+    }
+
     internal static IReadOnlyCollection<CreateIndexModel<ParkOpeningHoursScheduleDocument>> BuildParkOpeningHoursIndexes()
     {
         return new List<CreateIndexModel<ParkOpeningHoursScheduleDocument>>
@@ -1494,6 +1518,18 @@ private async Task InitializeParkPricingIndexesAsync(CancellationToken cancellat
         IReadOnlyCollection<CreateIndexModel<ParkPricingDocument>> indexes = BuildParkPricingIndexes();
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
+    }
+
+    private async Task InitializeStandaloneAttractionPricingIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<ParkPricingDocument> collection =
+            this.database.GetCollection<ParkPricingDocument>(
+                this.settings.StandaloneAttractionPricingCollectionName);
+
+        await collection.Indexes.CreateManyAsync(
+            BuildParkPricingIndexes(),
+            cancellationToken: cancellationToken);
     }
 
     internal static IReadOnlyCollection<CreateIndexModel<ParkPricingDocument>> BuildParkPricingIndexes()
@@ -2062,6 +2098,40 @@ private async Task InitializeParkWeatherIndexesAsync(CancellationToken cancellat
         };
 
         await itemsCollection.Indexes.CreateManyAsync(itemIndexes, cancellationToken: cancellationToken);
+    }
+
+    private async Task InitializeStandaloneAttractionWeatherIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<ParkWeatherDailySnapshotDocument> collection =
+            this.database.GetCollection<ParkWeatherDailySnapshotDocument>(
+                this.settings.StandaloneAttractionWeatherDailySnapshotsCollectionName);
+
+        List<CreateIndexModel<ParkWeatherDailySnapshotDocument>> indexes =
+            new List<CreateIndexModel<ParkWeatherDailySnapshotDocument>>
+            {
+                new CreateIndexModel<ParkWeatherDailySnapshotDocument>(
+                    Builders<ParkWeatherDailySnapshotDocument>.IndexKeys
+                        .Ascending(item => item.ParkId)
+                        .Ascending(item => item.LocalDate)
+                        .Ascending(item => item.DataKind),
+                    new CreateIndexOptions
+                    {
+                        Name = "idx_standalone_weather_snapshot_unique",
+                        Unique = true,
+                    }),
+                new CreateIndexModel<ParkWeatherDailySnapshotDocument>(
+                    Builders<ParkWeatherDailySnapshotDocument>.IndexKeys
+                        .Ascending(item => item.ParkId)
+                        .Ascending(item => item.DataKind)
+                        .Ascending(item => item.LocalDate),
+                    new CreateIndexOptions
+                    {
+                        Name = "idx_standalone_weather_snapshot_read",
+                    }),
+            };
+
+        await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
     }
 
 private async Task InitializeRankingSnapshotIndexesAsync(CancellationToken cancellationToken)
