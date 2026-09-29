@@ -34,6 +34,25 @@ public sealed class LiveLatestObservationMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildIndexes_ShouldSupportBoundedSingleTargetReads()
+    {
+        IReadOnlyCollection<CreateIndexModel<LiveLatestObservationDocument>> indexes =
+            LiveLatestObservationMongoDefinitions.BuildIndexes();
+
+        CreateIndexModel<LiveLatestObservationDocument> targetLookup = Assert.Single(
+            indexes,
+            static index => index.Options.Name == "idx_live_latest_target_type_id");
+        BsonDocument keys = targetLookup.Keys.Render(
+            new RenderArgs<LiveLatestObservationDocument>(
+                BsonSerializer.LookupSerializer<LiveLatestObservationDocument>(),
+                BsonSerializer.SerializerRegistry));
+
+        Assert.Equal(2, keys.ElementCount);
+        Assert.Equal(1, keys["target.type"].AsInt32);
+        Assert.Equal(1, keys["target.id"].AsInt32);
+    }
+
+    [Fact]
     public void BuildMonotonicUpdate_ShouldCompareObservedThenReceivedTimestamp()
     {
         LiveLatestObservationDocument document = CreateObservation().ToDocument();

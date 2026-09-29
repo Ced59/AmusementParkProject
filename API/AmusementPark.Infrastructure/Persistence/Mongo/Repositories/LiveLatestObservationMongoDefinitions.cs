@@ -27,6 +27,11 @@ public static class LiveLatestObservationMongoDefinitions
                     .Ascending("target.type")
                     .Ascending("expiresAtUtc"),
                 new CreateIndexOptions { Name = "idx_live_latest_park_type_expiration" }),
+            new(
+                Builders<LiveLatestObservationDocument>.IndexKeys
+                    .Ascending("target.type")
+                    .Ascending("target.id"),
+                new CreateIndexOptions { Name = "idx_live_latest_target_type_id" }),
         };
     }
 
