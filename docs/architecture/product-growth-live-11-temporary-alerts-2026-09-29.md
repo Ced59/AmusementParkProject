@@ -59,14 +59,20 @@ cooldown de 30 minutes.
   notification : une interruption ne peut donc pas perdre l’alerte. Les index
   d’unicité, de quota atomique, d’évaluation, de boîte de réception et TTL sont
   créés automatiquement au démarrage. La suppression de compte purge aussi ces
-  données.
+  données. Une réconciliation indépendante retente chaque minute les
+  déclenchements non livrés : une panne de notification ne dégrade jamais le
+  circuit de collecte ni l’affichage live.
 - `WebAPI` expose seulement des endpoints `me` authentifiés, sans cache, avec
-  contrôle de concurrence par version pour les suppressions et changements
-  d’état.
+  contrôle de concurrence par version pour les changements d’état. Une
+  suppression vérifie l’identité du membre et l’identifiant stable, mais ne peut
+  pas être bloquée par une version que l’évaluation automatique vient seule de
+  faire évoluer.
 - le frontend accède aux données par un port et des façades dédiés. La création
   est intégrée uniquement à la fiche attraction ; la boîte de réception rejoint
   le centre WATCH existant. Les cartes et actions passent en une colonne sur
-  écran étroit et restent bornées au viewport.
+  écran étroit et restent bornées au viewport. Une action refusée et un simple
+  échec du rechargement qui suit une action réussie sont affichés comme deux
+  situations distinctes.
 
 ## Flux de déclenchement
 
@@ -90,6 +96,8 @@ déclenchement durable dans l’abonnement
       │
       ▼
 notification idempotente ──► acquittement ──► centre WATCH ──► fiche attraction
+      ▲
+      └── réconciliation indépendante chaque minute en cas d’échec
 ```
 
 Chaque notification possède une clé de déclenchement unique fondée sur

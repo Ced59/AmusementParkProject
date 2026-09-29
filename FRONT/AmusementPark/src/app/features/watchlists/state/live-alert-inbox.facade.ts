@@ -15,11 +15,15 @@ export class LiveAlertInboxFacade {
   private readonly loadingSignal = signal<boolean>(false);
   private readonly mutatingIdSignal = signal<string | null>(null);
   private readonly errorSignal = signal<boolean>(false);
+  private readonly actionErrorSignal = signal<boolean>(false);
+  private readonly refreshErrorSignal = signal<boolean>(false);
 
   readonly dashboard: Signal<LiveAlertDashboard | null> = this.dashboardSignal.asReadonly();
   readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   readonly mutatingId: Signal<string | null> = this.mutatingIdSignal.asReadonly();
   readonly error: Signal<boolean> = this.errorSignal.asReadonly();
+  readonly actionError: Signal<boolean> = this.actionErrorSignal.asReadonly();
+  readonly refreshError: Signal<boolean> = this.refreshErrorSignal.asReadonly();
 
   constructor(
     @Inject(LIVE_ALERTS_DATA_PORT) private readonly dataPort: LiveAlertsDataPort,
@@ -28,14 +32,32 @@ export class LiveAlertInboxFacade {
   }
 
   load(): void {
+    this.actionErrorSignal.set(false);
+    this.refreshErrorSignal.set(false);
+    this.loadDashboard(this.dashboardSignal() !== null);
+  }
+
+  private loadDashboard(afterSuccessfulMutation: boolean): void {
     this.loadingSignal.set(true);
-    this.errorSignal.set(false);
+    if (!afterSuccessfulMutation) {
+      this.errorSignal.set(false);
+    }
     this.dataPort.getDashboard().pipe(
       takeUntilDestroyed(this.destroyRef),
       finalize((): void => this.loadingSignal.set(false))
     ).subscribe({
-      next: (dashboard: LiveAlertDashboard): void => this.dashboardSignal.set(dashboard),
-      error: (): void => this.errorSignal.set(true)
+      next: (dashboard: LiveAlertDashboard): void => {
+        this.dashboardSignal.set(dashboard);
+        this.errorSignal.set(false);
+        this.refreshErrorSignal.set(false);
+      },
+      error: (): void => {
+        if (afterSuccessfulMutation) {
+          this.refreshErrorSignal.set(true);
+        } else {
+          this.errorSignal.set(true);
+        }
+      }
     });
   }
 
@@ -66,13 +88,14 @@ export class LiveAlertInboxFacade {
     }
 
     this.mutatingIdSignal.set(id);
-    this.errorSignal.set(false);
+    this.actionErrorSignal.set(false);
+    this.refreshErrorSignal.set(false);
     request.pipe(
       takeUntilDestroyed(this.destroyRef),
       finalize((): void => this.mutatingIdSignal.set(null))
     ).subscribe({
-      next: (): void => this.load(),
-      error: (): void => this.errorSignal.set(true)
+      next: (): void => this.loadDashboard(true),
+      error: (): void => this.actionErrorSignal.set(true)
     });
   }
 }

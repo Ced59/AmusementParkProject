@@ -3,6 +3,7 @@ using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.Watchlists.Ports;
 using AmusementPark.Core.Domain.LiveData;
 using AmusementPark.Core.Domain.Watchlists;
+using Microsoft.Extensions.Logging;
 
 namespace AmusementPark.Application.Features.Watchlists.Services;
 
@@ -14,36 +15,81 @@ public sealed class LiveAlertEvaluationService
     private readonly ILiveDataSourceCatalog sourceCatalog;
     private readonly ILiveOperationalGate operationalGate;
     private readonly TimeProvider timeProvider;
+    private readonly ILogger<LiveAlertEvaluationService>? logger;
 
     public LiveAlertEvaluationService(
         ILiveAlertSubscriptionRepository subscriptionRepository,
         ILiveAlertNotificationRepository notificationRepository,
         ILiveDataSourceCatalog sourceCatalog,
         ILiveOperationalGate operationalGate,
-        TimeProvider? timeProvider = null)
+        TimeProvider? timeProvider = null,
+        ILogger<LiveAlertEvaluationService>? logger = null)
     {
         this.subscriptionRepository = subscriptionRepository;
         this.notificationRepository = notificationRepository;
         this.sourceCatalog = sourceCatalog;
         this.operationalGate = operationalGate;
         this.timeProvider = timeProvider ?? TimeProvider.System;
+        this.logger = logger;
     }
 
     public async Task EvaluateAsync(
         IReadOnlyCollection<LiveLatestObservation> observations,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(observations);
+        await this.RetryPendingAsync(cancellationToken);
+
+        try
+        {
+            await this.EvaluateCurrentObservationsAsync(observations, cancellationToken);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            this.logger?.LogError(
+                exception,
+                "Live alert evaluation failed after live observations were committed; polling remains healthy and the next reconciliation will retry.");
+        }
+    }
+
+    public async Task RetryPendingAsync(CancellationToken cancellationToken)
+    {
         DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
-        IReadOnlyCollection<LiveAlertSubscription> pendingSubscriptions =
-            await this.subscriptionRepository.ListPendingAsync(
+        try
+        {
+            IReadOnlyCollection<LiveAlertSubscription> pendingSubscriptions =
+                await this.subscriptionRepository.ListPendingAsync(
                 nowUtc,
                 MaximumPendingDeliveryBatch,
                 cancellationToken);
-        foreach (LiveAlertSubscription pendingSubscription in pendingSubscriptions)
-        {
-            _ = await this.DeliverPendingTriggerAsync(pendingSubscription, cancellationToken);
+            foreach (LiveAlertSubscription pendingSubscription in pendingSubscriptions)
+            {
+                await this.DeliverPendingTriggerSafelyAsync(
+                    pendingSubscription,
+                    cancellationToken);
+            }
         }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            this.logger?.LogError(
+                exception,
+                "Pending live alert reconciliation failed and will be retried independently of live polling.");
+        }
+    }
 
+    private async Task EvaluateCurrentObservationsAsync(
+        IReadOnlyCollection<LiveLatestObservation> observations,
+        CancellationToken cancellationToken)
+    {
+        DateTime nowUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         LivePollingTarget? publicTarget = this.sourceCatalog.PublicPollingTarget;
         if (!this.sourceCatalog.IsPublicReadEnabled || publicTarget is null)
         {
@@ -77,32 +123,81 @@ public sealed class LiveAlertEvaluationService
                 cancellationToken);
         foreach (LiveAlertSubscription subscription in subscriptions)
         {
-            if (subscription.PendingTrigger is not null
-                && !await this.DeliverPendingTriggerAsync(subscription, cancellationToken))
+            try
             {
-                continue;
+                await this.EvaluateSubscriptionAsync(
+                    subscription,
+                    eligible,
+                    nowUtc,
+                    cancellationToken);
             }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                this.logger?.LogError(
+                    exception,
+                    "Live alert subscription {SubscriptionId} could not be evaluated and will be retried without failing live polling.",
+                    subscription.Id.Value);
+            }
+        }
+    }
 
-            if (!eligible.TryGetValue(subscription.TargetId, out LiveLatestObservation? observation))
-            {
-                continue;
-            }
+    private async Task EvaluateSubscriptionAsync(
+        LiveAlertSubscription subscription,
+        IReadOnlyDictionary<string, LiveLatestObservation> eligible,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
+        if (subscription.PendingTrigger is not null
+            && !await this.DeliverPendingTriggerAsync(subscription, cancellationToken))
+        {
+            return;
+        }
 
-            long expectedVersion = subscription.Version;
-            LiveAlertTrigger? trigger = subscription.Evaluate(observation, nowUtc);
-            if (subscription.Version == expectedVersion)
-            {
-                continue;
-            }
+        if (!eligible.TryGetValue(subscription.TargetId, out LiveLatestObservation? observation))
+        {
+            return;
+        }
 
-            WatchSubscriptionWriteOutcome outcome = await this.subscriptionRepository.ReplaceAsync(
-                subscription,
-                expectedVersion,
-                cancellationToken);
-            if (outcome == WatchSubscriptionWriteOutcome.Success && trigger is not null)
-            {
-                _ = await this.DeliverPendingTriggerAsync(subscription, cancellationToken);
-            }
+        long expectedVersion = subscription.Version;
+        LiveAlertTrigger? trigger = subscription.Evaluate(observation, nowUtc);
+        if (subscription.Version == expectedVersion)
+        {
+            return;
+        }
+
+        WatchSubscriptionWriteOutcome outcome = await this.subscriptionRepository.ReplaceAsync(
+            subscription,
+            expectedVersion,
+            cancellationToken);
+        if (outcome == WatchSubscriptionWriteOutcome.Success && trigger is not null)
+        {
+            await this.DeliverPendingTriggerSafelyAsync(subscription, cancellationToken);
+        }
+    }
+
+    private async Task<bool> DeliverPendingTriggerSafelyAsync(
+        LiveAlertSubscription subscription,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await this.DeliverPendingTriggerAsync(subscription, cancellationToken);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            this.logger?.LogError(
+                exception,
+                "Pending live alert for subscription {SubscriptionId} could not be delivered and remains durable for retry.",
+                subscription.Id.Value);
+            return false;
         }
     }
 

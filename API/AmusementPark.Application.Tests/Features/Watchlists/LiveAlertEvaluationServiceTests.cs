@@ -132,11 +132,10 @@ public sealed class LiveAlertEvaluationServiceTests
             CreateGate().Object,
             clock.Object);
 
-        await Assert.ThrowsAsync<InvalidOperationException>(() =>
-            service.EvaluateAsync(new[] { current }, CancellationToken.None));
+        await service.EvaluateAsync(new[] { current }, CancellationToken.None);
         Assert.NotNull(subscription.PendingTrigger);
 
-        await service.EvaluateAsync(new[] { current }, CancellationToken.None);
+        await service.RetryPendingAsync(CancellationToken.None);
 
         Assert.Null(subscription.PendingTrigger);
         notifications.Verify(repository => repository.CreateAsync(
