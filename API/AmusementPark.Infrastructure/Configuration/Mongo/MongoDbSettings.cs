@@ -277,6 +277,8 @@ public sealed class MongoDbSettings
 
     public string LiveOperationalControlsCollectionName { get; set; } = "live-operational-controls";
 
+    public string FeatureFlagStatesCollectionName { get; set; } = "feature-flag-states";
+
     public string HistoricalNarrativesCollectionName { get; set; } = "historical-narratives";
 
     public string HistoricalMigrationsCollectionName { get; set; } = "historical-migrations";

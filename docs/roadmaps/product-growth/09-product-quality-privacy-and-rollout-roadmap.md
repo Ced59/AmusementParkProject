@@ -2,7 +2,7 @@
 
 > Code programme : `QUAL`
 >
-> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` est livré au 29 septembre 2026.
+> Statut : transverse. Cette roadmap commence avant `RANK-01` et accompagne toutes les autres. `QUAL-01` et `QUAL-02` sont livrés au 29 septembre 2026.
 >
 > Principe : une fonctionnalité n’est pas validée parce qu’elle compile ou parce qu’elle augmente un compteur. Elle doit être comprise, utile, accessible, fiable, réversible, respectueuse de la vie privée et supportable avec les moyens réels du projet.
 
@@ -825,7 +825,7 @@ d'usage réel n'est donc revendiquée.
 | PR | Contenu | Critère |
 |---|---|---|
 | [`QUAL-01`](../../architecture/product-growth-qual-01-analytics-event-plan-2026-09-29.md) | ADR analytics et plan d’événements — livré le 29 septembre 2026 | Finalités/minimisation validées |
-| `QUAL-02` | Infrastructure feature flags | Fallback/kill switch |
+| [`QUAL-02`](../../architecture/product-growth-qual-02-feature-flags-2026-09-29.md) | Infrastructure feature flags — livré le 29 septembre 2026 | Fallback/kill switch |
 | `QUAL-03` | Baseline performance/erreurs | État avant produit connu |
 | `QUAL-04` | Matrice privacy et export/suppression | Champs catalogués |
 | `QUAL-05` | Helpers d’instrumentation typés | Pas d’événements ad hoc |
@@ -849,6 +849,19 @@ moteur. Il prépare leur migration directe vers les helpers communs de `QUAL-05`
 borne la conservation à 180 jours pour les événements tiers bruts et réserve les
 cohortes de valeur récurrente aux calculs internes minimisés. Aucun schéma MongoDB
 ni comportement public n’est modifié par cet ADR.
+
+### Implémentation `QUAL-02` — 29 septembre 2026
+
+Le moteur commun de feature flags porte désormais une définition versionnée,
+une date de retrait, un propriétaire, un défaut, un repli sûr, des dépendances et
+des critères de nettoyage. Les overrides opérationnels sont des révisions MongoDB
+immuables protégées par concurrence optimiste, cache court et audit administrateur.
+
+Le premier branchement `live:public-experience` permet de couper attentes,
+historique et prévision sans supprimer les observations et sans casser les fiches
+parc ou attraction. La panne du stockage ferme cette capacité par sécurité. Le
+client public ne reçoit que la clé exposable et son état booléen ; les raisons,
+auteurs et détails d'administration restent privés.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 

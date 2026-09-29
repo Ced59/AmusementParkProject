@@ -1,0 +1,26 @@
+namespace AmusementPark.WebAPI.Contracts.FeatureFlags;
+
+public sealed record FeatureFlagAdministrationDto(
+    string Key,
+    string Description,
+    string Owner,
+    DateOnly CreatedOn,
+    DateOnly TargetRemovalOn,
+    string Kind,
+    bool DefaultEnabled,
+    bool SafeFallbackEnabled,
+    IReadOnlyCollection<string> Environments,
+    IReadOnlyCollection<string> Cohorts,
+    IReadOnlyCollection<string> Dependencies,
+    string Metrics,
+    string Fallback,
+    string Cleanup,
+    bool ExposeToClient,
+    string Environment,
+    bool IsEnabled,
+    string EvaluationSource,
+    bool? EnabledOverride,
+    int Revision,
+    string? Reason,
+    string? ChangedByUserId,
+    DateTime? RecordedAtUtc);

@@ -1,3 +1,4 @@
+using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.LiveData.Models;
 using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.LiveData.Results;
@@ -15,6 +16,34 @@ public sealed class PublicLiveLatestReaderTests
 {
     private static readonly DateTime NowUtc =
         new DateTime(2026, 9, 29, 12, 0, 17, DateTimeKind.Utc);
+
+    [Fact]
+    public async Task ReadParkAsync_WhenPublicExperienceFlagIsDisabled_ShouldReturnNotFoundWithoutReadingData()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ILiveLatestObservationRepository> observations =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        Mock<ILivePublicExperienceGate> publicExperienceGate =
+            new Mock<ILivePublicExperienceGate>(MockBehavior.Strict);
+        publicExperienceGate.Setup(value => value.IsEnabledAsync(CancellationToken.None))
+            .ReturnsAsync(false);
+        PublicLiveLatestReader reader = CreateReader(
+            parks,
+            items,
+            observations,
+            publicExperienceGate: publicExperienceGate);
+
+        ApplicationResult<PublicLiveTargetResult> result = await reader.ReadParkAsync(
+            "park-1",
+            CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal("live-data.public-read.disabled", Assert.Single(result.Errors).Code);
+        parks.VerifyNoOtherCalls();
+        items.VerifyNoOtherCalls();
+        observations.VerifyNoOtherCalls();
+    }
 
     [Fact]
     public async Task ReadParkAsync_WhenPublicReadIsDisabled_ShouldReturnNotFoundWithoutReadingData()
@@ -324,7 +353,8 @@ public sealed class PublicLiveLatestReaderTests
         Mock<ILiveLatestObservationRepository> observations,
         Mock<ILiveTargetMappingRepository>? mappings = null,
         Mock<ILiveDataSourceCatalog>? sourceCatalog = null,
-        Mock<ILiveOperationalGate>? operationalGate = null)
+        Mock<ILiveOperationalGate>? operationalGate = null,
+        Mock<ILivePublicExperienceGate>? publicExperienceGate = null)
     {
         Mock<ILiveDataSourceCatalog> catalog = sourceCatalog
             ?? new Mock<ILiveDataSourceCatalog>(MockBehavior.Strict);
@@ -352,12 +382,20 @@ public sealed class PublicLiveLatestReaderTests
         {
             mappingRepository = mappings;
         }
+        Mock<ILivePublicExperienceGate> experienceGate = publicExperienceGate
+            ?? new Mock<ILivePublicExperienceGate>(MockBehavior.Strict);
+        if (publicExperienceGate is null)
+        {
+            experienceGate.Setup(value => value.IsEnabledAsync(CancellationToken.None))
+                .ReturnsAsync(true);
+        }
         return new PublicLiveLatestReader(
             parks.Object,
             items.Object,
             observations.Object,
             mappingRepository.Object,
             catalog.Object,
+            experienceGate.Object,
             (operationalGate ?? CreateOperationalGate()).Object,
             new PublicLiveTargetResultFactory(
                 catalog.Object,

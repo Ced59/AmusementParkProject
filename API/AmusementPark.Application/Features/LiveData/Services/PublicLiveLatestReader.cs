@@ -16,6 +16,7 @@ public sealed class PublicLiveLatestReader
     private readonly ILiveLatestObservationRepository observationRepository;
     private readonly ILiveTargetMappingRepository mappingRepository;
     private readonly ILiveDataSourceCatalog sourceCatalog;
+    private readonly ILivePublicExperienceGate publicExperienceGate;
     private readonly ILiveOperationalGate operationalGate;
     private readonly PublicLiveTargetResultFactory resultFactory;
     private readonly TimeProvider timeProvider;
@@ -26,6 +27,7 @@ public sealed class PublicLiveLatestReader
         ILiveLatestObservationRepository observationRepository,
         ILiveTargetMappingRepository mappingRepository,
         ILiveDataSourceCatalog sourceCatalog,
+        ILivePublicExperienceGate publicExperienceGate,
         ILiveOperationalGate operationalGate,
         PublicLiveTargetResultFactory resultFactory,
         TimeProvider? timeProvider = null)
@@ -35,6 +37,7 @@ public sealed class PublicLiveLatestReader
         this.observationRepository = observationRepository;
         this.mappingRepository = mappingRepository;
         this.sourceCatalog = sourceCatalog;
+        this.publicExperienceGate = publicExperienceGate;
         this.operationalGate = operationalGate;
         this.resultFactory = resultFactory;
         this.timeProvider = timeProvider ?? TimeProvider.System;
@@ -44,7 +47,8 @@ public sealed class PublicLiveLatestReader
         string parkId,
         CancellationToken cancellationToken)
     {
-        if (!this.sourceCatalog.IsPublicReadEnabled)
+        if (!await this.publicExperienceGate.IsEnabledAsync(cancellationToken)
+            || !this.sourceCatalog.IsPublicReadEnabled)
         {
             return ApplicationResult<PublicLiveTargetResult>.Failure(
                 LiveDataApplicationErrors.PublicReadDisabled());
@@ -122,7 +126,8 @@ public sealed class PublicLiveLatestReader
         string parkItemId,
         CancellationToken cancellationToken)
     {
-        if (!this.sourceCatalog.IsPublicReadEnabled)
+        if (!await this.publicExperienceGate.IsEnabledAsync(cancellationToken)
+            || !this.sourceCatalog.IsPublicReadEnabled)
         {
             return ApplicationResult<PublicLiveTargetResult>.Failure(
                 LiveDataApplicationErrors.PublicReadDisabled());
@@ -212,7 +217,8 @@ public sealed class PublicLiveLatestReader
         string parkId,
         CancellationToken cancellationToken)
     {
-        if (!this.sourceCatalog.IsPublicReadEnabled)
+        if (!await this.publicExperienceGate.IsEnabledAsync(cancellationToken)
+            || !this.sourceCatalog.IsPublicReadEnabled)
         {
             return ApplicationResult<PublicParkLiveItemsResult>.Failure(
                 LiveDataApplicationErrors.PublicReadDisabled());

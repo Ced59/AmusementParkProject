@@ -21,6 +21,7 @@ public sealed class PublicLiveHistoryReader
     private readonly ILiveHistoryStatisticsRepository historyRepository;
     private readonly ILiveTargetMappingRepository mappingRepository;
     private readonly ILiveDataSourceCatalog sourceCatalog;
+    private readonly ILivePublicExperienceGate publicExperienceGate;
     private readonly ILiveOperationalGate operationalGate;
     private readonly LiveWaitHistoryStatisticsCalculator calculator;
     private readonly TimeProvider timeProvider;
@@ -31,6 +32,7 @@ public sealed class PublicLiveHistoryReader
         ILiveHistoryStatisticsRepository historyRepository,
         ILiveTargetMappingRepository mappingRepository,
         ILiveDataSourceCatalog sourceCatalog,
+        ILivePublicExperienceGate publicExperienceGate,
         ILiveOperationalGate operationalGate,
         LiveWaitHistoryStatisticsCalculator calculator,
         TimeProvider? timeProvider = null)
@@ -40,6 +42,7 @@ public sealed class PublicLiveHistoryReader
         this.historyRepository = historyRepository;
         this.mappingRepository = mappingRepository;
         this.sourceCatalog = sourceCatalog;
+        this.publicExperienceGate = publicExperienceGate;
         this.operationalGate = operationalGate;
         this.calculator = calculator;
         this.timeProvider = timeProvider ?? TimeProvider.System;
@@ -60,7 +63,8 @@ public sealed class PublicLiveHistoryReader
                     "Only hourly live history is currently available."));
         }
 
-        if (!this.sourceCatalog.IsPublicReadEnabled)
+        if (!await this.publicExperienceGate.IsEnabledAsync(cancellationToken)
+            || !this.sourceCatalog.IsPublicReadEnabled)
         {
             return ApplicationResult<PublicLiveHistoryResult>.Failure(
                 LiveDataApplicationErrors.PublicReadDisabled());

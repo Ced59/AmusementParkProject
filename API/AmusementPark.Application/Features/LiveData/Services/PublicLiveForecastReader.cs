@@ -19,6 +19,7 @@ public sealed class PublicLiveForecastReader
     private readonly ILiveLatestObservationRepository latestObservationRepository;
     private readonly ILiveTargetMappingRepository mappingRepository;
     private readonly ILiveDataSourceCatalog sourceCatalog;
+    private readonly ILivePublicExperienceGate publicExperienceGate;
     private readonly ILiveOperationalGate operationalGate;
     private readonly IPublicLiveForecastComputationCache computationCache;
     private readonly LiveWaitForecastBacktestCalculator backtestCalculator;
@@ -34,6 +35,7 @@ public sealed class PublicLiveForecastReader
         ILiveLatestObservationRepository latestObservationRepository,
         ILiveTargetMappingRepository mappingRepository,
         ILiveDataSourceCatalog sourceCatalog,
+        ILivePublicExperienceGate publicExperienceGate,
         ILiveOperationalGate operationalGate,
         IPublicLiveForecastComputationCache computationCache,
         LiveWaitForecastBacktestCalculator backtestCalculator,
@@ -48,6 +50,7 @@ public sealed class PublicLiveForecastReader
         this.latestObservationRepository = latestObservationRepository;
         this.mappingRepository = mappingRepository;
         this.sourceCatalog = sourceCatalog;
+        this.publicExperienceGate = publicExperienceGate;
         this.operationalGate = operationalGate;
         this.computationCache = computationCache;
         this.backtestCalculator = backtestCalculator;
@@ -68,7 +71,8 @@ public sealed class PublicLiveForecastReader
                 ApplicationErrors.Required("parkItemId"));
         }
 
-        if (!this.sourceCatalog.IsPublicReadEnabled)
+        if (!await this.publicExperienceGate.IsEnabledAsync(cancellationToken)
+            || !this.sourceCatalog.IsPublicReadEnabled)
         {
             return Unavailable();
         }
