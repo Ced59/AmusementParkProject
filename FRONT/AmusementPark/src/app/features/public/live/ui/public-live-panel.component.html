@@ -146,6 +146,14 @@
 
       @if (mode === 'item') {
         <app-live-alert-action [target]="target"></app-live-alert-action>
+        @if (target.availability === 'Current' && !isClosed(target)) {
+          @if (forecastState; as currentForecastState) {
+            <app-public-live-forecast-card
+              [state]="currentForecastState"
+              [currentLanguage]="currentLanguage">
+            </app-public-live-forecast-card>
+          }
+        }
         @if (historyState; as currentHistoryState) {
           <app-public-live-history-panel
             [state]="currentHistoryState"

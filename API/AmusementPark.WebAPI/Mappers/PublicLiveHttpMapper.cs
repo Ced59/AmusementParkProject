@@ -5,6 +5,35 @@ namespace AmusementPark.WebAPI.Mappers;
 
 public static class PublicLiveHttpMapper
 {
+    public static PublicLiveForecastDto ToHttp(this PublicLiveForecastResult result)
+    {
+        return new PublicLiveForecastDto(
+            result.TargetDisplayName,
+            result.ParkDisplayName,
+            result.TimeZoneId,
+            result.Forecast.ForecastFromUtc,
+            result.Forecast.ForecastToUtc,
+            result.Forecast.CalculatedAtUtc,
+            result.Forecast.ExpectedWaitMinutes,
+            result.Forecast.LowerBoundMinutes,
+            result.Forecast.UpperBoundMinutes,
+            result.Forecast.TrainingDayCount,
+            result.StudyVersion,
+            result.Method,
+            result.IntervalMethod,
+            result.MeanAbsoluteErrorMinutes,
+            result.IntervalCoveragePercent,
+            result.EvaluationFromUtc,
+            result.EvaluationToUtc,
+            result.EvaluationPointCount,
+            new PublicLiveSourceDto(
+                result.Source.Id,
+                result.Source.DisplayName,
+                result.Source.Type.ToString(),
+                result.Source.AttributionText,
+                result.Source.AttributionUrl));
+    }
+
     public static PublicLiveHistoryDto ToHttp(this PublicLiveHistoryResult result)
     {
         return new PublicLiveHistoryDto(

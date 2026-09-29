@@ -378,6 +378,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddSingleton<IPassportLocalDateResolver, SystemPassportLocalDateResolver>();
         services.AddSingleton<IRatingRankSnapshotCache, InMemoryRatingRankSnapshotCache>();
         services.AddSingleton<IHistoricalParkRolloutGateCache, InMemoryHistoricalParkRolloutGateCache>();
+        services.AddSingleton<IPublicLiveForecastComputationCache,
+            InMemoryPublicLiveForecastComputationCache>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IParkDataEditorAccessTokenRepository, ParkDataEditorAccessTokenRepository>();

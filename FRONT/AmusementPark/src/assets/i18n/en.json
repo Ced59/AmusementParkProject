@@ -6268,6 +6268,28 @@
       "title": "How should I read this information?",
       "description": "The displayed time comes from the credited source and has the age shown here. Zero minutes means that a genuine zero wait was received; a dash means that no reliable time is available. Expired data is never presented as current."
     },
+    "forecast": {
+      "kicker": "Verified forecast",
+      "title": "Estimated wait from {{time}}",
+      "subtitle": "This estimate only appears because the method proved more reliable than our reference on past data.",
+      "verified": "Reliability checked",
+      "minutes": "estimated minutes",
+      "rangeLabel": "Plausible range",
+      "rangeValue": "{{from}} to {{to}} min",
+      "errorLabel": "Measured average error",
+      "errorValue": "{{value}} min",
+      "coverageLabel": "Forecasts within range",
+      "coverageValue": "{{value}}%",
+      "methodLabel": "Method",
+      "calculatedLabel": "Calculated on",
+      "evidenceLabel": "Evidence used",
+      "evidenceValue": "{{points}} checks · {{days}} comparable days",
+      "disclaimer": "A forecast remains an estimate: attendance and operations can change quickly.",
+      "method": {
+        "weekdayHourMedian": "Median for the same weekday and hour",
+        "verifiedHistorical": "Verified historical method"
+      }
+    },
     "history": {
       "loading": "Analysing wait history…",
       "errorTitle": "History is temporarily unavailable",

@@ -52,11 +52,7 @@ public sealed class PublicLiveExpirationOutputCachePolicy : IOutputCachePolicy
             return ValueTask.CompletedTask;
         }
 
-        if (!context.HttpContext.Items.TryGetValue(FreshnessTransitionItemKey, out object? value))
-        {
-            return ValueTask.CompletedTask;
-        }
-
+        context.HttpContext.Items.TryGetValue(FreshnessTransitionItemKey, out object? value);
         DateTime? freshnessTransitionAtUtc = value is DateTime transitionAtUtc
             ? transitionAtUtc
             : null;

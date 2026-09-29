@@ -15,6 +15,7 @@ public static class ApiOutputCachePolicyNames
     public const string PublicPricingData = "public-pricing-data";
     public const string PublicWeatherDataShort = "public-weather-data-short";
     public const string PublicLiveData = "public-live-data";
+    public const string PublicLiveForecastData = "public-live-forecast-data";
     public const string PublicReferenceData = "public-reference-data";
 
     public const string PublicSeoTag = "public-seo";

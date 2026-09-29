@@ -92,9 +92,35 @@ public sealed class PublicLiveControllerTests
         Assert.StartsWith("\"", controller.Response.Headers.ETag.ToString(), StringComparison.Ordinal);
     }
 
+    [Fact]
+    public async Task GetParkItemForecastAsync_ShouldReturnEvidenceWithoutTechnicalTargetIds()
+    {
+        PublicLiveForecastResult forecast = CreateForecast();
+        PublicLiveController controller = CreateController(
+            CreateTarget(),
+            forecastResult: forecast);
+
+        IActionResult result = await controller.GetParkItemForecastAsync(
+            "item-1",
+            CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        PublicLiveForecastDto dto = Assert.IsType<PublicLiveForecastDto>(ok.Value);
+        Assert.Equal("Attraction", dto.TargetDisplayName);
+        Assert.Equal(25d, dto.ExpectedWaitMinutes);
+        Assert.Equal(LiveWaitForecastBacktestPolicy.CandidateMethod, dto.Method);
+        Assert.Equal(4d, dto.MeanAbsoluteErrorMinutes);
+        Assert.DoesNotContain("item-1", System.Text.Json.JsonSerializer.Serialize(dto));
+        Assert.Equal(
+            PublicLiveCacheLifetimeCalculator.ResolveTransitionAtUtc(forecast),
+            controller.HttpContext.Items[
+                PublicLiveExpirationOutputCachePolicy.FreshnessTransitionItemKey]);
+    }
+
     private static PublicLiveController CreateController(
         PublicLiveTargetResult target,
-        PublicLiveHistoryResult? historyResult = null)
+        PublicLiveHistoryResult? historyResult = null,
+        PublicLiveForecastResult? forecastResult = null)
     {
         Mock<IQueryHandler<GetPublicParkLiveQuery, ApplicationResult<PublicLiveTargetResult>>> park =
             new Mock<IQueryHandler<GetPublicParkLiveQuery, ApplicationResult<PublicLiveTargetResult>>>(
@@ -108,6 +134,9 @@ public sealed class PublicLiveControllerTests
         Mock<IQueryHandler<GetPublicParkItemLiveHistoryQuery, ApplicationResult<PublicLiveHistoryResult>>> history =
             new Mock<IQueryHandler<GetPublicParkItemLiveHistoryQuery, ApplicationResult<PublicLiveHistoryResult>>>(
                 MockBehavior.Strict);
+        Mock<IQueryHandler<GetPublicParkItemLiveForecastQuery, ApplicationResult<PublicLiveForecastResult>>> forecast =
+            new Mock<IQueryHandler<GetPublicParkItemLiveForecastQuery, ApplicationResult<PublicLiveForecastResult>>>(
+                MockBehavior.Strict);
         park.Setup(handler => handler.HandleAsync(
                 It.Is<GetPublicParkLiveQuery>(query => query.ParkId == "park-1"),
                 CancellationToken.None))
@@ -120,11 +149,19 @@ public sealed class PublicLiveControllerTests
                     CancellationToken.None))
                 .ReturnsAsync(ApplicationResult<PublicLiveHistoryResult>.Success(historyResult));
         }
+        if (forecastResult is not null)
+        {
+            forecast.Setup(handler => handler.HandleAsync(
+                    It.Is<GetPublicParkItemLiveForecastQuery>(query => query.ParkItemId == "item-1"),
+                    CancellationToken.None))
+                .ReturnsAsync(ApplicationResult<PublicLiveForecastResult>.Success(forecastResult));
+        }
         PublicLiveController controller = new PublicLiveController(
             park.Object,
             item.Object,
             items.Object,
-            history.Object)
+            history.Object,
+            forecast.Object)
         {
             ControllerContext = new ControllerContext
             {
@@ -213,6 +250,38 @@ public sealed class PublicLiveControllerTests
                     15d,
                     15d),
             },
+            new PublicLiveSourceResult(
+                "themeparks-wiki",
+                "ThemeParks.wiki",
+                LiveDataSourceType.AuthorizedAggregator,
+                "Powered by ThemeParks.wiki",
+                "https://themeparks.wiki/"));
+    }
+
+    private static PublicLiveForecastResult CreateForecast()
+    {
+        DateTime calculatedAtUtc = new DateTime(2026, 9, 29, 12, 30, 0, DateTimeKind.Utc);
+        return new PublicLiveForecastResult(
+            "Attraction",
+            "Park",
+            "Europe/Paris",
+            new LiveWaitForecast(
+                calculatedAtUtc.AddMinutes(30),
+                calculatedAtUtc.AddMinutes(90),
+                calculatedAtUtc,
+                25d,
+                15d,
+                35d,
+                12),
+            LiveWaitForecastBacktestPolicy.StudyVersion,
+            LiveWaitForecastBacktestPolicy.CandidateMethod,
+            LiveWaitForecastBacktestPolicy.IntervalMethod,
+            4d,
+            82d,
+            calculatedAtUtc.AddDays(-90),
+            calculatedAtUtc,
+            120,
+            calculatedAtUtc.AddMinutes(8),
             new PublicLiveSourceResult(
                 "themeparks-wiki",
                 "ThemeParks.wiki",

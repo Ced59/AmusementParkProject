@@ -116,6 +116,15 @@ public static class OutputCacheServiceCollectionExtensions
                 .Tag(ApiOutputCachePolicyNames.PublicLiveDataTag)
                 .AddPolicy<PublicLiveExpirationOutputCachePolicy>());
 
+            options.AddPolicy(ApiOutputCachePolicyNames.PublicLiveForecastData, policy => policy
+                .With(IsAnonymousCacheCandidate)
+                .Cache()
+                .Expire(TimeSpan.FromSeconds(30))
+                .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
+                .Tag(ApiOutputCachePolicyNames.PublicDataTag)
+                .Tag(ApiOutputCachePolicyNames.PublicLiveDataTag)
+                .AddPolicy<PublicLiveExpirationOutputCachePolicy>());
+
             options.AddPolicy(ApiOutputCachePolicyNames.PublicReferenceData, policy => policy
                 .With(IsAnonymousCacheCandidate)
                 .Cache()

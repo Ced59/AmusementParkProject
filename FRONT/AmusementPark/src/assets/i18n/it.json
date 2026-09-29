@@ -6268,6 +6268,28 @@
       "title": "Come si leggono queste informazioni?",
       "description": "Il tempo mostrato proviene dalla fonte citata e ha l’età indicata. Zero minuti significa che è stata ricevuta un’attesa realmente nulla; un trattino indica che non è disponibile un tempo affidabile. I dati scaduti non vengono mai presentati come attuali."
     },
+    "forecast": {
+      "kicker": "Previsione verificata",
+      "title": "Attesa stimata dalle {{time}}",
+      "subtitle": "Questa stima appare solo perché il metodo si è dimostrato più affidabile del nostro riferimento sui dati passati.",
+      "verified": "Affidabilità verificata",
+      "minutes": "minuti stimati",
+      "rangeLabel": "Intervallo plausibile",
+      "rangeValue": "da {{from}} a {{to}} min",
+      "errorLabel": "Errore medio misurato",
+      "errorValue": "{{value}} min",
+      "coverageLabel": "Previsioni nell’intervallo",
+      "coverageValue": "{{value}} %",
+      "methodLabel": "Metodo",
+      "calculatedLabel": "Calcolata il",
+      "evidenceLabel": "Prove utilizzate",
+      "evidenceValue": "{{points}} verifiche · {{days}} giorni confrontabili",
+      "disclaimer": "Una previsione resta una stima: affluenza e operatività possono cambiare rapidamente.",
+      "method": {
+        "weekdayHourMedian": "Mediana dello stesso giorno della settimana alla stessa ora",
+        "verifiedHistorical": "Metodo storico verificato"
+      }
+    },
     "history": {
       "loading": "Analisi dello storico delle attese…",
       "errorTitle": "Lo storico non è temporaneamente disponibile",

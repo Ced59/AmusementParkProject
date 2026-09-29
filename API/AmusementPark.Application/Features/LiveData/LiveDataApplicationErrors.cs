@@ -39,6 +39,13 @@ public static class LiveDataApplicationErrors
             "No eligible live history is available for this target.");
     }
 
+    public static ApplicationError ForecastUnavailable()
+    {
+        return ApplicationError.NotFound(
+            "live-data.forecast.unavailable",
+            "No verified live wait forecast is available for this target.");
+    }
+
     public static ApplicationError InvalidMapping(string? message = null)
     {
         return ApplicationError.Validation(

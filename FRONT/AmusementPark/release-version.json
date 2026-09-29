@@ -1,6 +1,20 @@
 {
-  "version": "5.4.18",
+  "version": "5.4.19",
   "history": [
+    {
+      "version": "5.4.19",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les fiches éligibles affichent une prévision d’attente avec sa fourchette de confiance.",
+        "en": "Eligible detail pages show a wait forecast with its confidence range.",
+        "de": "Geeignete Detailseiten zeigen eine Wartezeitprognose mit ihrem Vertrauensbereich.",
+        "nl": "Geschikte detailpagina’s tonen een wachttijdvoorspelling met het betrouwbaarheidsbereik.",
+        "it": "Le schede idonee mostrano una previsione dell’attesa con il relativo intervallo di confidenza.",
+        "es": "Las fichas aptas muestran una previsión de espera con su intervalo de confianza.",
+        "pl": "Kwalifikujące się strony pokazują prognozę czasu oczekiwania wraz z zakresem ufności.",
+        "pt": "As páginas elegíveis mostram uma previsão de espera com o respetivo intervalo de confiança."
+      }
+    },
     {
       "version": "5.4.18",
       "releasedAt": "2026-09-29",

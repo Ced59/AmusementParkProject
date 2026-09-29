@@ -6268,6 +6268,28 @@
       "title": "Comment lire ces informations ?",
       "description": "Le temps affiché vient de la source citée et correspond à l’âge indiqué. Zéro minute signifie bien qu’une attente nulle a été reçue ; un tiret signifie qu’aucun temps fiable n’est disponible. Une donnée expirée n’est jamais présentée comme actuelle."
     },
+    "forecast": {
+      "kicker": "Prévision vérifiée",
+      "title": "Attente estimée de {{time}}",
+      "subtitle": "Cette estimation apparaît uniquement parce que la méthode a été plus fiable que notre référence sur les données passées.",
+      "verified": "Fiabilité contrôlée",
+      "minutes": "minutes estimées",
+      "rangeLabel": "Fourchette plausible",
+      "rangeValue": "de {{from}} à {{to}} min",
+      "errorLabel": "Erreur moyenne mesurée",
+      "errorValue": "{{value}} min",
+      "coverageLabel": "Prévisions dans la fourchette",
+      "coverageValue": "{{value}} %",
+      "methodLabel": "Méthode",
+      "calculatedLabel": "Calcul effectué le",
+      "evidenceLabel": "Preuves utilisées",
+      "evidenceValue": "{{points}} contrôles · {{days}} jours comparables",
+      "disclaimer": "Une prévision reste une estimation : l’affluence et l’exploitation peuvent changer rapidement.",
+      "method": {
+        "weekdayHourMedian": "Médiane du même jour de semaine à la même heure",
+        "verifiedHistorical": "Méthode historique vérifiée"
+      }
+    },
     "history": {
       "loading": "Analyse de l’historique des attentes…",
       "errorTitle": "L’historique est momentanément inaccessible",

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, throwError } from 'rxjs';
 
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
-import { PublicLiveHistory, PublicLiveTarget, PublicParkLiveItems } from '@app/models/live-data/public-live.models';
+import { PublicLiveForecast, PublicLiveHistory, PublicLiveTarget, PublicParkLiveItems } from '@app/models/live-data/public-live.models';
 import { environment } from '../../../environments/environment';
 
 interface CachedPublicLiveResponse {
@@ -42,6 +42,12 @@ export class PublicLiveApiService {
   getParkItemHistory(itemId: string): Observable<PublicLiveHistory> {
     return this.getConditional<PublicLiveHistory>(
       `${environment.apiBaseUrl}public/live/items/${encodeURIComponent(itemId)}/history?bucket=hour`
+    );
+  }
+
+  getParkItemForecast(itemId: string): Observable<PublicLiveForecast> {
+    return this.getConditional<PublicLiveForecast>(
+      `${environment.apiBaseUrl}public/live/items/${encodeURIComponent(itemId)}/forecast`
     );
   }
 

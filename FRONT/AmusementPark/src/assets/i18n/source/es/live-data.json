@@ -87,6 +87,28 @@
       "title": "¿Cómo se interpreta esta información?",
       "description": "El tiempo mostrado procede de la fuente citada y tiene la antigüedad indicada. Cero minutos significa que se recibió una espera realmente nula; un guion significa que no hay un tiempo fiable. Los datos caducados nunca se presentan como actuales."
     },
+    "forecast": {
+      "kicker": "Previsión verificada",
+      "title": "Espera estimada de {{time}}",
+      "subtitle": "Esta estimación solo aparece porque el método fue más fiable que nuestra referencia con los datos anteriores.",
+      "verified": "Fiabilidad comprobada",
+      "minutes": "minutos estimados",
+      "rangeLabel": "Intervalo plausible",
+      "rangeValue": "de {{from}} a {{to}} min",
+      "errorLabel": "Error medio medido",
+      "errorValue": "{{value}} min",
+      "coverageLabel": "Previsiones dentro del intervalo",
+      "coverageValue": "{{value}} %",
+      "methodLabel": "Método",
+      "calculatedLabel": "Calculado el",
+      "evidenceLabel": "Evidencias utilizadas",
+      "evidenceValue": "{{points}} controles · {{days}} días comparables",
+      "disclaimer": "Una previsión sigue siendo una estimación: la afluencia y el funcionamiento pueden cambiar rápidamente.",
+      "method": {
+        "weekdayHourMedian": "Mediana del mismo día de la semana a la misma hora",
+        "verifiedHistorical": "Método histórico verificado"
+      }
+    },
     "history": {
       "loading": "Analizando el historial de esperas…",
       "errorTitle": "El historial no está disponible temporalmente",

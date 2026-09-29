@@ -8,6 +8,7 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent } from '@ui/primi
 import { LiveAlertActionComponent } from '@features/watchlists/ui/live-alert-action.component';
 import { PublicLiveFilter } from '../models/public-live-filter.model';
 import { PublicLiveHistoryViewState } from '../models/public-live-history-view-state.model';
+import { PublicLiveForecastViewState } from '../models/public-live-forecast-view-state.model';
 import { PublicLiveDisplayMode, PublicLiveViewState } from '../models/public-live-view-state.model';
 import {
   filterPublicLiveTargets,
@@ -20,6 +21,7 @@ import {
   resolvePublicLiveWaitMinutes
 } from '../utils/public-live-view.helpers';
 import { PublicLiveHistoryPanelComponent } from './public-live-history-panel.component';
+import { PublicLiveForecastCardComponent } from './public-live-forecast-card.component';
 
 @Component({
   selector: 'app-public-live-panel',
@@ -30,6 +32,7 @@ import { PublicLiveHistoryPanelComponent } from './public-live-history-panel.com
     RouterLink,
     TranslateModule,
     LiveAlertActionComponent,
+    PublicLiveForecastCardComponent,
     PublicLiveHistoryPanelComponent,
     UiButtonDirective,
     UiChipComponent,
@@ -42,6 +45,7 @@ export class PublicLivePanelComponent {
   @Input() currentLanguage: string = 'en';
   @Input() timeZoneId: string | null = null;
   @Input() historyState: PublicLiveHistoryViewState | null = null;
+  @Input() forecastState: PublicLiveForecastViewState | null = null;
   @Output() refreshClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() historyRetryClicked: EventEmitter<void> = new EventEmitter<void>();
 

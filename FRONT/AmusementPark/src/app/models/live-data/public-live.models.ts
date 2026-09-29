@@ -124,3 +124,25 @@ export interface PublicLiveHistory {
   readonly hours: readonly PublicLiveHistoryHour[];
   readonly source: PublicLiveSource;
 }
+
+export interface PublicLiveForecast {
+  readonly targetDisplayName: string;
+  readonly parkDisplayName: string;
+  readonly timeZoneId: string;
+  readonly forecastFromUtc: string;
+  readonly forecastToUtc: string;
+  readonly calculatedAtUtc: string;
+  readonly expectedWaitMinutes: number;
+  readonly lowerBoundMinutes: number;
+  readonly upperBoundMinutes: number;
+  readonly trainingDayCount: number;
+  readonly studyVersion: string;
+  readonly method: string;
+  readonly intervalMethod: string;
+  readonly meanAbsoluteErrorMinutes: number;
+  readonly intervalCoveragePercent: number;
+  readonly evaluationFromUtc: string;
+  readonly evaluationToUtc: string;
+  readonly evaluationPointCount: number;
+  readonly source: PublicLiveSource;
+}

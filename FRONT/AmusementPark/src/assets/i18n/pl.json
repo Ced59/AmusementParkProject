@@ -6268,6 +6268,28 @@
       "title": "Jak czytać te informacje?",
       "description": "Wyświetlany czas pochodzi z podanego źródła i ma wskazany tutaj wiek. Zero minut oznacza, że otrzymano rzeczywisty zerowy czas oczekiwania; kreska oznacza brak wiarygodnego czasu. Wygasłe dane nigdy nie są przedstawiane jako aktualne."
     },
+    "forecast": {
+      "kicker": "Zweryfikowana prognoza",
+      "title": "Szacowany czas oczekiwania od {{time}}",
+      "subtitle": "Ta prognoza pojawia się tylko dlatego, że metoda okazała się na danych historycznych dokładniejsza od naszego punktu odniesienia.",
+      "verified": "Wiarygodność sprawdzona",
+      "minutes": "szacowanych minut",
+      "rangeLabel": "Prawdopodobny zakres",
+      "rangeValue": "od {{from}} do {{to}} min",
+      "errorLabel": "Zmierzony średni błąd",
+      "errorValue": "{{value}} min",
+      "coverageLabel": "Prognozy mieszczące się w zakresie",
+      "coverageValue": "{{value}}%",
+      "methodLabel": "Metoda",
+      "calculatedLabel": "Obliczono",
+      "evidenceLabel": "Wykorzystane dowody",
+      "evidenceValue": "{{points}} kontroli · {{days}} porównywalnych dni",
+      "disclaimer": "Prognoza pozostaje szacunkiem: frekwencja i działanie atrakcji mogą szybko się zmienić.",
+      "method": {
+        "weekdayHourMedian": "Mediana dla tego samego dnia tygodnia i godziny",
+        "verifiedHistorical": "Zweryfikowana metoda historyczna"
+      }
+    },
     "history": {
       "loading": "Analizowanie historii czasu oczekiwania…",
       "errorTitle": "Historia jest chwilowo niedostępna",
