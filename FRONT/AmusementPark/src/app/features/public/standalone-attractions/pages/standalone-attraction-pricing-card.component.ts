@@ -3,7 +3,9 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import {
   ParkAdmissionPriceOffer,
+  ParkAnnualPassOffer,
   ParkCreditOffer,
+  ParkParkingPriceOffer,
   ParkPriceValue,
   ParkPricing
 } from '@app/models/parks/park-pricing';
@@ -49,7 +51,37 @@ export class StandaloneAttractionPricingCardComponent {
         return price.length === 0
           ? null
           : {
-              key: offer.id || offer.code,
+              key: `admission:${offer.id || offer.code}`,
+              label: this.localizedText(offer.labels, offer.code),
+              price
+            };
+      })
+      .filter((summary: StandaloneAttractionPriceSummary | null): summary is StandaloneAttractionPriceSummary => summary !== null);
+    const annualPassSummaries: StandaloneAttractionPriceSummary[] = this.pricing.annualPasses
+      .map((offer: ParkAnnualPassOffer): StandaloneAttractionPriceSummary | null => {
+        const price: string = this.formatPriceValue(
+          offer.onlinePrice ?? offer.gatePrice ?? null,
+          this.pricing!.currencyCode
+        );
+        return price.length === 0
+          ? null
+          : {
+              key: `annual-pass:${offer.id || offer.code}`,
+              label: this.localizedText(offer.names, offer.code),
+              price
+            };
+      })
+      .filter((summary: StandaloneAttractionPriceSummary | null): summary is StandaloneAttractionPriceSummary => summary !== null);
+    const parkingSummaries: StandaloneAttractionPriceSummary[] = this.pricing.parkingOffers
+      .map((offer: ParkParkingPriceOffer): StandaloneAttractionPriceSummary | null => {
+        const price: string = this.formatPriceValue(
+          offer.onlinePrice ?? offer.gatePrice ?? null,
+          this.pricing!.currencyCode
+        );
+        return price.length === 0
+          ? null
+          : {
+              key: `parking:${offer.id || offer.code}`,
               label: this.localizedText(offer.labels, offer.code),
               price
             };
@@ -61,14 +93,19 @@ export class StandaloneAttractionPricingCardComponent {
         return amount === null
           ? null
           : {
-              key: offer.id || `${offer.unitCode}:${offer.quantity}`,
+              key: `credit:${offer.id || `${offer.unitCode}:${offer.quantity}`}`,
               label: this.localizedText(offer.labels, `${offer.quantity} ${offer.unitCode}`),
               price: this.formatAmount(amount, this.pricing!.currencyCode)
             };
       })
       .filter((summary: StandaloneAttractionPriceSummary | null): summary is StandaloneAttractionPriceSummary => summary !== null);
 
-    return [...admissionSummaries, ...creditSummaries].slice(0, 4);
+    return [
+      ...admissionSummaries,
+      ...annualPassSummaries,
+      ...parkingSummaries,
+      ...creditSummaries
+    ].slice(0, 4);
   }
 
   private localizedText(values: LocalizedItem<string>[], fallback: string): string {

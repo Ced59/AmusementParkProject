@@ -2,16 +2,20 @@ import { ParkPricing } from '@app/models/parks/park-pricing';
 import { StandaloneAttractionPricingCardComponent } from './standalone-attraction-pricing-card.component';
 
 describe('StandaloneAttractionPricingCardComponent', () => {
-  it('builds localized summaries for admission and credit offers', () => {
+  it('builds localized summaries for every supported offer type', () => {
     const component = new StandaloneAttractionPricingCardComponent();
     component.currentLanguage = 'fr';
     component.pricing = createPricing();
 
-    expect(component.summaries).toHaveLength(2);
+    expect(component.summaries).toHaveLength(4);
     expect(component.summaries[0].label).toBe('Un passage');
     expect(component.summaries[0].price).toContain('9');
-    expect(component.summaries[1].label).toBe('Dix crédits');
-    expect(component.summaries[1].price).toContain('15');
+    expect(component.summaries[1].label).toBe('Pass saison');
+    expect(component.summaries[1].price).toContain('99');
+    expect(component.summaries[2].label).toBe('Parking journée');
+    expect(component.summaries[2].price).toContain('6');
+    expect(component.summaries[3].label).toBe('Dix crédits');
+    expect(component.summaries[3].price).toContain('15');
   });
 });
 
@@ -31,8 +35,26 @@ function createPricing(): ParkPricing {
       conditions: [],
       sortOrder: 1
     }],
-    annualPasses: [],
-    parkingOffers: [],
+    annualPasses: [{
+      code: 'season-pass',
+      names: [
+        { languageCode: 'fr', value: 'Pass saison' },
+        { languageCode: 'en', value: 'Season pass' }
+      ],
+      onlinePrice: { mode: 'Fixed', amount: 99 },
+      conditions: [],
+      sortOrder: 2
+    }],
+    parkingOffers: [{
+      code: 'day-parking',
+      labels: [
+        { languageCode: 'fr', value: 'Parking journée' },
+        { languageCode: 'en', value: 'Day parking' }
+      ],
+      gatePrice: { mode: 'Fixed', amount: 6 },
+      conditions: [],
+      sortOrder: 3
+    }],
     creditOffers: [{
       unitCode: 'ride',
       quantity: 10,
@@ -42,7 +64,7 @@ function createPricing(): ParkPricing {
       ],
       prices: { onlinePrice: 15 },
       conditions: [],
-      sortOrder: 2
+      sortOrder: 4
     }]
   };
 }
