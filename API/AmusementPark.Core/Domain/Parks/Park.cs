@@ -129,7 +129,7 @@ public sealed class Park : GeolocatedEntityBase
         bool isValidatedForPublication = this.AdminReviewStatus == AdminReviewStatus.Validated
             || (scoreContext.ProjectForPublication && this.AdminReviewStatus != AdminReviewStatus.NotRelevant);
         bool isPotentiallyPublishable = this.IsPotentiallyPublishable(scoreContext.ProjectForPublication);
-        bool hasForbiddenPublicText = DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.Name)
+        bool hasForbiddenPublicText = DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(this.Name)
             || DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.OpeningDateText)
             || DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.ClosingDateText)
             || DataCompletenessScoringRules.HasForbiddenPlainPublicText(this.Street)

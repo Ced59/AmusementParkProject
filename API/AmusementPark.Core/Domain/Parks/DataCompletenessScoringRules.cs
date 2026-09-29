@@ -241,6 +241,21 @@ public static class DataCompletenessScoringRules
             return true;
         }
 
+        return HasForbiddenEditorialPublicText(value, rejectTechnicalMetrics: true);
+    }
+
+    public static bool HasForbiddenStructuredLabelPublicText(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return false;
+        }
+
+        if (HasHtmlEntity(value))
+        {
+            return true;
+        }
+
         return HasForbiddenEditorialPublicText(value, rejectTechnicalMetrics: false);
     }
 

@@ -62,15 +62,23 @@ public sealed class ParkDataCompletenessScoreTests
     [InlineData("Taille minimale : 120 cm")]
     [InlineData("La Piscine 25 Mètres")]
     [InlineData("Parking 12 €")]
-    public void HasForbiddenPlainPublicText_WhenLegitimateLabelContainsMetric_ShouldAccept(string value)
+    public void HasForbiddenStructuredLabelPublicText_WhenLegitimateLabelContainsMetric_ShouldAccept(string value)
     {
-        Assert.False(DataCompletenessScoringRules.HasForbiddenPlainPublicText(value));
+        Assert.False(DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(value));
     }
 
     [Theory]
     [InlineData("Audit admin : taille minimale 120 cm")]
     [InlineData("The public page confirms a minimum height of 120 cm")]
-    public void HasForbiddenPlainPublicText_WhenMetricLabelContainsEditorialJargon_ShouldReject(string value)
+    public void HasForbiddenStructuredLabelPublicText_WhenMetricLabelContainsEditorialJargon_ShouldReject(string value)
+    {
+        Assert.True(DataCompletenessScoringRules.HasForbiddenStructuredLabelPublicText(value));
+    }
+
+    [Theory]
+    [InlineData("The coaster reaches 88 km/h.")]
+    [InlineData("Une vitesse de 88 km/h est atteinte.")]
+    public void HasForbiddenPlainPublicText_WhenNarrativeContainsTechnicalMetric_ShouldReject(string value)
     {
         Assert.True(DataCompletenessScoringRules.HasForbiddenPlainPublicText(value));
     }
