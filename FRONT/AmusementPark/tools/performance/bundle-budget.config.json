@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "maximumInitialBytes": 1000000,
+  "maximumLargestLazyChunkBytes": 300000,
+  "maximumTotalJavaScriptBytes": 7200000,
+  "maximumTotalStylesheetBytes": 250000
+}

@@ -826,7 +826,7 @@ d'usage réel n'est donc revendiquée.
 |---|---|---|
 | [`QUAL-01`](../../architecture/product-growth-qual-01-analytics-event-plan-2026-09-29.md) | ADR analytics et plan d’événements — livré le 29 septembre 2026 | Finalités/minimisation validées |
 | [`QUAL-02`](../../architecture/product-growth-qual-02-feature-flags-2026-09-29.md) | Infrastructure feature flags — livré le 29 septembre 2026 | Fallback/kill switch |
-| `QUAL-03` | Baseline performance/erreurs | État avant produit connu |
+| [`QUAL-03`](../../architecture/product-growth-qual-03-performance-error-baseline-2026-09-29.md) | Baseline performance/erreurs — livré le 29 septembre 2026 | État avant produit connu |
 | `QUAL-04` | Matrice privacy et export/suppression | Champs catalogués |
 | `QUAL-05` | Helpers d’instrumentation typés | Pas d’événements ad hoc |
 | `QUAL-06` | Dashboards funnel/fiabilité | Questions utiles uniquement |
@@ -862,6 +862,20 @@ historique et prévision sans supprimer les observations et sans casser les fich
 parc ou attraction. La panne du stockage ferme cette capacité par sécurité. Le
 client public ne reçoit que la clé exposable et son état booléen ; les raisons,
 auteurs et détails d'administration restent privés.
+
+### Implémentation `QUAL-03` — 29 septembre 2026
+
+La production `5.4.21` fournit le point zéro de six cibles publiques avec cinq
+échantillons mesurés après échauffement : trente réponses réussies, p95 de 16 à
+38 ms et modes SSR explicitement relevés. Park Fit apparaît honnêtement en repli
+CSR, contrairement aux trois autres pages servies depuis le cache SSR.
+
+La CI bloque désormais les hausses non décidées du chargement initial, du plus gros
+chunk différé, du JavaScript total et du CSS total. Les logs API possèdent des
+familles de résultat et des EventId stables, emploient le modèle de route et ne
+recopient plus query string ni user-agent. Aucune persistance ni dépendance n'est
+ajoutée ; les futurs dashboards réutiliseront ces signaux au lieu de créer une
+seconde observabilité.
 
 ## 25. Checklist de gate pour toute fonctionnalité
 
