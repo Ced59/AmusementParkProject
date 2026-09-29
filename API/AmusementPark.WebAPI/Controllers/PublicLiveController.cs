@@ -27,15 +27,42 @@ public sealed class PublicLiveController : ControllerBase
     private readonly IQueryHandler<
         GetPublicParkLiveItemsQuery,
         ApplicationResult<PublicParkLiveItemsResult>> parkItemsHandler;
+    private readonly IQueryHandler<
+        GetPublicParkItemLiveHistoryQuery,
+        ApplicationResult<PublicLiveHistoryResult>> parkItemHistoryHandler;
 
     public PublicLiveController(
         IQueryHandler<GetPublicParkLiveQuery, ApplicationResult<PublicLiveTargetResult>> parkHandler,
         IQueryHandler<GetPublicParkItemLiveQuery, ApplicationResult<PublicLiveTargetResult>> parkItemHandler,
-        IQueryHandler<GetPublicParkLiveItemsQuery, ApplicationResult<PublicParkLiveItemsResult>> parkItemsHandler)
+        IQueryHandler<GetPublicParkLiveItemsQuery, ApplicationResult<PublicParkLiveItemsResult>> parkItemsHandler,
+        IQueryHandler<GetPublicParkItemLiveHistoryQuery, ApplicationResult<PublicLiveHistoryResult>> parkItemHistoryHandler)
     {
         this.parkHandler = parkHandler;
         this.parkItemHandler = parkItemHandler;
         this.parkItemsHandler = parkItemsHandler;
+        this.parkItemHistoryHandler = parkItemHistoryHandler;
+    }
+
+    [HttpGet("items/{itemId}/history")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicLiveData)]
+    [ProducesResponseType(typeof(PublicLiveHistoryDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status304NotModified)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetParkItemHistoryAsync(
+        [FromRoute] string itemId,
+        [FromQuery] DateTimeOffset? from = null,
+        [FromQuery] DateTimeOffset? to = null,
+        [FromQuery] string? bucket = "hour",
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<PublicLiveHistoryResult> result =
+            await this.parkItemHistoryHandler.HandleAsync(
+                new GetPublicParkItemLiveHistoryQuery(itemId, from, to, bucket),
+                cancellationToken);
+        return result.IsSuccess && result.Value is not null
+            ? this.ToConditionalResponse(result.Value.ToHttp(), null)
+            : this.ToActionResult(result);
     }
 
     [HttpGet("parks/{parkId}")]

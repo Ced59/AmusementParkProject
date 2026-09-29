@@ -34,6 +34,54 @@ public sealed class LiveHistoryMongoDefinitionsTests
     }
 
     [Fact]
+    public void BuildBucketIndexes_ShouldBoundStatisticsQueriesBySourcePolicyTargetAndPeriod()
+    {
+        CreateIndexModel<LiveHistoryBucketDocument> statisticsIndex = Assert.Single(
+            LiveHistoryMongoDefinitions.BuildBucketIndexes(),
+            static index => index.Options.Name == "idx_live_history_bucket_statistics_v1");
+
+        string keys = statisticsIndex.Keys.Render(
+            new RenderArgs<LiveHistoryBucketDocument>(
+                BsonSerializer.LookupSerializer<LiveHistoryBucketDocument>(),
+                BsonSerializer.SerializerRegistry)).ToJson();
+
+        Assert.Contains("sourceId", keys, StringComparison.Ordinal);
+        Assert.Contains("target.type", keys, StringComparison.Ordinal);
+        Assert.Contains("target.id", keys, StringComparison.Ordinal);
+        Assert.Contains("usagePolicyVersion", keys, StringComparison.Ordinal);
+        Assert.Contains("retentionPolicyKey", keys, StringComparison.Ordinal);
+        Assert.Contains("bucketStartUtc", keys, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void BuildStatisticsFilter_ShouldUseSerializedTargetAndBothPeriodBounds()
+    {
+        DateTime fromUtc = new DateTime(2026, 9, 1, 0, 0, 0, DateTimeKind.Utc);
+        DateTime toUtc = fromUtc.AddDays(30);
+
+        BsonDocument rendered = LiveHistoryMongoDefinitions.BuildStatisticsFilter(
+                LiveDataSourceId.Parse("source"),
+                LiveTargetType.ParkItem,
+                "item-1",
+                "usage-1",
+                RetentionPolicy.StorageKey,
+                RetentionPolicy.BucketDuration,
+                fromUtc,
+                toUtc)
+            .Render(new RenderArgs<LiveHistoryBucketDocument>(
+                BsonSerializer.LookupSerializer<LiveHistoryBucketDocument>(),
+                BsonSerializer.SerializerRegistry));
+
+        Assert.Equal("source", rendered["sourceId"].AsString);
+        string json = rendered.ToJson();
+        Assert.Contains("ParkItem", json, StringComparison.Ordinal);
+        Assert.Contains("item-1", json, StringComparison.Ordinal);
+        Assert.True(rendered["bucketStartUtc"].AsBsonDocument.Contains("$gte"));
+        Assert.True(rendered["bucketStartUtc"].AsBsonDocument.Contains("$lt"));
+        Assert.True(rendered["bucketEndUtc"].AsBsonDocument.Contains("$gt"));
+    }
+
+    [Fact]
     public void ToHistoryDocuments_ShouldApplyShortRawAndLongBucketRetention()
     {
         LiveLatestObservation observation = CreateObservation();
@@ -47,6 +95,8 @@ public sealed class LiveHistoryMongoDefinitionsTests
             bucket.BucketStartUtc);
         Assert.Equal(bucket.BucketStartUtc.AddHours(1).AddDays(400), bucket.ExpiresAtUtc);
         LiveHistoryBucketSampleDocument sample = Assert.Single(bucket.Samples);
+        Assert.Equal("external-1", sample.ExternalTargetId);
+        Assert.Equal("mapping-1", sample.MappingVersion);
         Assert.Equal(ObservedAtUtc.Ticks, sample.ObservedAtUtcTicks);
         Assert.Equal(0, Assert.Single(sample.Queues).WaitTimeMinutes);
         Assert.NotEqual(observation.ToDocument().Id, raw.Id);

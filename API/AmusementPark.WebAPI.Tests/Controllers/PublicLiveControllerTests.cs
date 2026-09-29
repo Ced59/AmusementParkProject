@@ -70,7 +70,31 @@ public sealed class PublicLiveControllerTests
             PublicLiveEntityTagFactory.Create(changed));
     }
 
-    private static PublicLiveController CreateController(PublicLiveTargetResult target)
+    [Fact]
+    public async Task GetParkItemHistoryAsync_ShouldReturnAggregatesAndEntityTag()
+    {
+        PublicLiveHistoryResult history = CreateHistory();
+        PublicLiveController controller = CreateController(CreateTarget(), history);
+
+        IActionResult result = await controller.GetParkItemHistoryAsync(
+            "item-1",
+            null,
+            null,
+            "hour",
+            CancellationToken.None);
+
+        OkObjectResult ok = Assert.IsType<OkObjectResult>(result);
+        PublicLiveHistoryDto dto = Assert.IsType<PublicLiveHistoryDto>(ok.Value);
+        Assert.Equal("Attraction", dto.DisplayName);
+        Assert.Equal("Insufficient", dto.DataStatus);
+        Assert.Equal(15d, Assert.Single(dto.Hours).MedianMinutes);
+        Assert.Equal("Powered by ThemeParks.wiki", dto.Source.AttributionText);
+        Assert.StartsWith("\"", controller.Response.Headers.ETag.ToString(), StringComparison.Ordinal);
+    }
+
+    private static PublicLiveController CreateController(
+        PublicLiveTargetResult target,
+        PublicLiveHistoryResult? historyResult = null)
     {
         Mock<IQueryHandler<GetPublicParkLiveQuery, ApplicationResult<PublicLiveTargetResult>>> park =
             new Mock<IQueryHandler<GetPublicParkLiveQuery, ApplicationResult<PublicLiveTargetResult>>>(
@@ -81,14 +105,26 @@ public sealed class PublicLiveControllerTests
         Mock<IQueryHandler<GetPublicParkLiveItemsQuery, ApplicationResult<PublicParkLiveItemsResult>>> items =
             new Mock<IQueryHandler<GetPublicParkLiveItemsQuery, ApplicationResult<PublicParkLiveItemsResult>>>(
                 MockBehavior.Strict);
+        Mock<IQueryHandler<GetPublicParkItemLiveHistoryQuery, ApplicationResult<PublicLiveHistoryResult>>> history =
+            new Mock<IQueryHandler<GetPublicParkItemLiveHistoryQuery, ApplicationResult<PublicLiveHistoryResult>>>(
+                MockBehavior.Strict);
         park.Setup(handler => handler.HandleAsync(
                 It.Is<GetPublicParkLiveQuery>(query => query.ParkId == "park-1"),
                 CancellationToken.None))
             .ReturnsAsync(ApplicationResult<PublicLiveTargetResult>.Success(target));
+        if (historyResult is not null)
+        {
+            history.Setup(handler => handler.HandleAsync(
+                    It.Is<GetPublicParkItemLiveHistoryQuery>(query =>
+                        query.ParkItemId == "item-1" && query.Bucket == "hour"),
+                    CancellationToken.None))
+                .ReturnsAsync(ApplicationResult<PublicLiveHistoryResult>.Success(historyResult));
+        }
         PublicLiveController controller = new PublicLiveController(
             park.Object,
             item.Object,
-            items.Object)
+            items.Object,
+            history.Object)
         {
             ControllerContext = new ControllerContext
             {
@@ -138,5 +174,50 @@ public sealed class PublicLiveControllerTests
                 "Powered by ThemeParks.wiki",
                 "https://themeparks.wiki/"),
             LiveDataConfidence.Medium);
+    }
+
+    private static PublicLiveHistoryResult CreateHistory()
+    {
+        DateTime toUtc = new DateTime(2026, 9, 29, 12, 0, 0, DateTimeKind.Utc);
+        return new PublicLiveHistoryResult(
+            "item-1",
+            "Attraction",
+            "park-1",
+            "Park",
+            toUtc.AddDays(-30),
+            toUtc,
+            "Europe/Paris",
+            LiveWaitHistoryDataStatus.Insufficient,
+            100,
+            2,
+            1,
+            1,
+            1,
+            2d,
+            0,
+            new PublicLiveHistoryExclusionsResult(0, 0, 1, 0, 1),
+            new[]
+            {
+                new PublicLiveHistoryHourResult(
+                    10,
+                    LiveWaitHistoryDataStatus.Insufficient,
+                    10,
+                    2,
+                    1,
+                    1,
+                    1,
+                    20d,
+                    15d,
+                    15d,
+                    15d,
+                    15d,
+                    15d),
+            },
+            new PublicLiveSourceResult(
+                "themeparks-wiki",
+                "ThemeParks.wiki",
+                LiveDataSourceType.AuthorizedAggregator,
+                "Powered by ThemeParks.wiki",
+                "https://themeparks.wiki/"));
     }
 }

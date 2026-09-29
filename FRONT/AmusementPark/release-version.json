@@ -1,6 +1,20 @@
 {
-  "version": "5.4.15",
+  "version": "5.4.16",
   "history": [
+    {
+      "version": "5.4.16",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les fiches montrent les tendances d’attente et la qualité des données observées.",
+        "en": "Detail pages show observed wait trends and data quality.",
+        "de": "Detailseiten zeigen beobachtete Wartetrends und die Datenqualität.",
+        "nl": "Detailpagina’s tonen waargenomen wachttrends en gegevenskwaliteit.",
+        "it": "Le schede mostrano le tendenze osservate delle attese e la qualità dei dati.",
+        "es": "Las fichas muestran las tendencias de espera observadas y la calidad de los datos.",
+        "pl": "Strony szczegółów pokazują zaobserwowane trendy oczekiwania i jakość danych.",
+        "pt": "As páginas de detalhe mostram tendências de espera observadas e a qualidade dos dados."
+      }
+    },
     {
       "version": "5.4.15",
       "releasedAt": "2026-09-29",

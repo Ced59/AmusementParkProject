@@ -18,6 +18,13 @@ public static class LiveDataApplicationErrors
             "Public live data is temporarily suspended.");
     }
 
+    public static ApplicationError InvalidHistoryPeriod(string? message = null)
+    {
+        return ApplicationError.Validation(
+            "live-data.history.period.invalid",
+            message ?? "The requested live history period is invalid.");
+    }
+
     public static ApplicationError InvalidMapping(string? message = null)
     {
         return ApplicationError.Validation(

@@ -74,9 +74,10 @@ opérationnels expirés. Le cache de 30 secondes et son ETag ne dépassent jamai
 fraîcheur métier. Le détail est consigné dans
 [`product-growth-live-08-latest-api-cache-2026-09-29.md`](../../architecture/product-growth-live-08-latest-api-cache-2026-09-29.md).
 
-Le prochain jalon est `LIVE-13` : produire des statistiques descriptives qui
-affichent explicitement leur volume, leur période et leurs lacunes, sans encore
-faire de prévision.
+Le prochain jalon est `LIVE-14` : étudier une prévision avec une baseline et un
+backtest reproductible. Cette étude doit pouvoir conclure à l'abandon si les
+données ne battent pas une référence simple ; aucune prévision publique n'est
+encore autorisée.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -800,7 +801,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-10`](../../architecture/product-growth-live-10-operational-controls-2026-09-29.md) | ✅ Kill switches/ops | Arrêt immédiat possible |
 | [`LIVE-11`](../../architecture/product-growth-live-11-temporary-alerts-2026-09-29.md) | ✅ Alertes temporaires | Hystérésis/expiration |
 | [`LIVE-12`](../../architecture/product-growth-live-12-authorized-history-2026-09-29.md) | ✅ Historique autorisé | Rétention et buckets |
-| `LIVE-13` | Statistiques descriptives | Volumes/lacunes visibles |
+| [`LIVE-13`](../../architecture/product-growth-live-13-descriptive-statistics-2026-09-29.md) | ✅ Statistiques descriptives | Volumes/lacunes visibles |
 | `LIVE-14` | Étude prévision/backtest | Peut conclure à l’abandon |
 | `LIVE-15` | Prévision publique conditionnelle | Intervalle et erreur publiés |
 
@@ -960,6 +961,22 @@ minimal conservé 400 jours. Les TTL sont indépendants, les lacunes ne sont pas
 comblées et aucune route publique n'expose encore ces données. La version
 contractuelle accompagne les buckets ; une suspension, un retrait du droit de
 stockage ou une version incohérente bloque automatiquement l'historisation.
+
+### Implémentation `LIVE-13` — 29 septembre 2026
+
+La version `5.4.16` publie sur chaque fiche d'attraction couverte une analyse
+horaire des attentes passées. La médiane, les quartiles et une plage robuste
+10–90 % sont accompagnés du nombre réel d'attentes, de jours comparables, de la
+couverture et des exclusions. Une heure trop peu documentée reste vide au lieu
+d'être reliée à ses voisines ; l'ensemble est présenté comme une observation et
+jamais comme une prédiction.
+
+La lecture est limitée à 90 jours et ne quitte jamais le serveur sous forme
+d'échantillons bruts. Source, version juridique, politique de rétention,
+mapping humain et kill switches sont revérifiés avant chaque réponse. Le calcul
+pur appartient à Core, MongoDB utilise un index dédié et Angular charge le bloc
+hors SSR via un port et une façade. La grille se replie jusqu'à 320 px sans
+déborder du viewport et conserve une description accessible de chaque tranche.
 
 ## 24. Gate finale `LIVE-G`
 

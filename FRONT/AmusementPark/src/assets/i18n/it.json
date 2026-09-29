@@ -6223,6 +6223,47 @@
     "methodology": {
       "title": "Come si leggono queste informazioni?",
       "description": "Il tempo mostrato proviene dalla fonte citata e ha l’età indicata. Zero minuti significa che è stata ricevuta un’attesa realmente nulla; un trattino indica che non è disponibile un tempo affidabile. I dati scaduti non vengono mai presentati come attuali."
+    },
+    "history": {
+      "loading": "Analisi dello storico delle attese…",
+      "errorTitle": "Lo storico non è temporaneamente disponibile",
+      "errorMessage": "Le informazioni attuali restano disponibili. Puoi riprovare soltanto l’analisi storica.",
+      "retry": "Riprova",
+      "kicker": "Tendenze osservate",
+      "title": "Attesa abituale per fascia oraria",
+      "subtitle": "Questi riferimenti descrivono solo osservazioni passate. Non prevedono la tua attesa durante una visita futura.",
+      "status": {
+        "unavailable": "Nessun dato per ora",
+        "insufficient": "Dati insufficienti",
+        "sparse": "Storico parziale",
+        "usable": "Storico utilizzabile"
+      },
+      "summary": {
+        "comparableDays": "giorni confrontabili",
+        "usableObservations": "attese utilizzabili",
+        "coverage": "copertura",
+        "excluded": "osservazioni escluse"
+      },
+      "chart": {
+        "label": "Attese osservate per ora locale",
+        "robustRange": "intervallo abituale",
+        "quartiles": "metà centrale",
+        "median": "mediana",
+        "medianValue": "Mediana: {{value}} min",
+        "evidence": "{{observations}} attese · {{days}} giorni",
+        "gap": "Dati insufficienti",
+        "gapAria": "Alle {{hour}} i dati sono insufficienti.",
+        "valueAria": "Alle {{hour}} l’attesa mediana è di {{median}} minuti, con la metà centrale tra {{firstQuartile}} e {{thirdQuartile}} minuti, sulla base di {{observations}} osservazioni in {{days}} giorni."
+      },
+      "method": {
+        "title": "Metodo e dati esclusi",
+        "description": "La mediana risente meno delle giornate eccezionali rispetto a una media. La metà centrale corrisponde all’intervallo interquartile; l’intervallo abituale esclude il 10% dei valori più bassi e più alti. Le ore senza prove sufficienti restano volutamente vuote.",
+        "nonOperating": "{{value}} osservazione esclusa perché l’attrazione non era in funzione",
+        "missingWait": "{{value}} osservazione senza attesa per la coda normale",
+        "duplicates": "{{value}} duplicato sostituito dalla ricezione più recente",
+        "outsideWindow": "{{value}} osservazione fuori dalla finestra di raccolta",
+        "truncated": "{{value}} osservazione proviene da una fascia che ha raggiunto il limite di archiviazione; lo stato resta quindi prudente."
+      }
     }
   },
   "aboutPage": {

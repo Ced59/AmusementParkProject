@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.LiveData;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.LiveData;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -43,6 +44,15 @@ public static class LiveHistoryMongoDefinitions
                 new CreateIndexOptions { Name = "idx_live_history_bucket_target_start" }),
             new(
                 Builders<LiveHistoryBucketDocument>.IndexKeys
+                    .Ascending(static document => document.SourceId)
+                    .Ascending("target.type")
+                    .Ascending("target.id")
+                    .Ascending(static document => document.UsagePolicyVersion)
+                    .Ascending(static document => document.RetentionPolicyKey)
+                    .Descending(static document => document.BucketStartUtc),
+                new CreateIndexOptions { Name = "idx_live_history_bucket_statistics_v1" }),
+            new(
+                Builders<LiveHistoryBucketDocument>.IndexKeys
                     .Ascending(static document => document.ExpiresAtUtc),
                 new CreateIndexOptions
                 {
@@ -50,6 +60,50 @@ public static class LiveHistoryMongoDefinitions
                     ExpireAfter = TimeSpan.Zero,
                 }),
         };
+    }
+
+    public static FilterDefinition<LiveHistoryBucketDocument> BuildStatisticsFilter(
+        LiveDataSourceId sourceId,
+        LiveTargetType targetType,
+        string targetId,
+        string usagePolicyVersion,
+        string retentionPolicyKey,
+        TimeSpan bucketDuration,
+        DateTime fromUtc,
+        DateTime toUtc)
+    {
+        if (bucketDuration <= TimeSpan.Zero)
+        {
+            throw new ArgumentOutOfRangeException(nameof(bucketDuration));
+        }
+
+        DateTime bucketLowerBoundUtc = fromUtc.Ticks > bucketDuration.Ticks
+            ? fromUtc.Subtract(bucketDuration)
+            : DateTime.SpecifyKind(DateTime.MinValue, DateTimeKind.Utc);
+        return Builders<LiveHistoryBucketDocument>.Filter.Eq(
+                static document => document.SourceId,
+                sourceId.Value)
+            & Builders<LiveHistoryBucketDocument>.Filter.Eq(
+                static document => document.Target.Type,
+                targetType)
+            & Builders<LiveHistoryBucketDocument>.Filter.Eq(
+                static document => document.Target.Id,
+                targetId)
+            & Builders<LiveHistoryBucketDocument>.Filter.Eq(
+                static document => document.UsagePolicyVersion,
+                usagePolicyVersion)
+            & Builders<LiveHistoryBucketDocument>.Filter.Eq(
+                static document => document.RetentionPolicyKey,
+                retentionPolicyKey)
+            & Builders<LiveHistoryBucketDocument>.Filter.Gte(
+                static document => document.BucketStartUtc,
+                bucketLowerBoundUtc)
+            & Builders<LiveHistoryBucketDocument>.Filter.Lt(
+                static document => document.BucketStartUtc,
+                toUtc)
+            & Builders<LiveHistoryBucketDocument>.Filter.Gt(
+                static document => document.BucketEndUtc,
+                fromUtc);
     }
 
     public static UpdateDefinition<LiveHistoryBucketDocument> BuildBucketUpdate(

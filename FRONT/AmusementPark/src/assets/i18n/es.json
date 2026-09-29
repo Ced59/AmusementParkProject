@@ -6223,6 +6223,47 @@
     "methodology": {
       "title": "¿Cómo se interpreta esta información?",
       "description": "El tiempo mostrado procede de la fuente citada y tiene la antigüedad indicada. Cero minutos significa que se recibió una espera realmente nula; un guion significa que no hay un tiempo fiable. Los datos caducados nunca se presentan como actuales."
+    },
+    "history": {
+      "loading": "Analizando el historial de esperas…",
+      "errorTitle": "El historial no está disponible temporalmente",
+      "errorMessage": "La información actual sigue disponible. Puedes reintentar solo el análisis histórico.",
+      "retry": "Reintentar",
+      "kicker": "Tendencias observadas",
+      "title": "Espera habitual según la hora",
+      "subtitle": "Estas referencias solo describen observaciones pasadas. No predicen tu espera en una próxima visita.",
+      "status": {
+        "unavailable": "Aún no hay datos",
+        "insufficient": "Datos insuficientes",
+        "sparse": "Historial parcial",
+        "usable": "Historial utilizable"
+      },
+      "summary": {
+        "comparableDays": "días comparables",
+        "usableObservations": "esperas utilizables",
+        "coverage": "cobertura",
+        "excluded": "observaciones descartadas"
+      },
+      "chart": {
+        "label": "Esperas observadas por hora local",
+        "robustRange": "intervalo habitual",
+        "quartiles": "mitad central",
+        "median": "mediana",
+        "medianValue": "Mediana: {{value}} min",
+        "evidence": "{{observations}} esperas · {{days}} días",
+        "gap": "Datos insuficientes",
+        "gapAria": "A las {{hour}} no hay datos suficientes.",
+        "valueAria": "A las {{hour}}, la espera mediana es de {{median}} minutos, con la mitad central entre {{firstQuartile}} y {{thirdQuartile}} minutos, según {{observations}} observaciones de {{days}} días."
+      },
+      "method": {
+        "title": "Método y datos descartados",
+        "description": "La mediana se ve menos afectada por días excepcionales que una media. La mitad central corresponde al rango intercuartílico; el intervalo habitual excluye el 10% de los valores más bajos y más altos. Las horas sin pruebas suficientes se dejan vacías de forma intencionada.",
+        "nonOperating": "{{value}} observación descartada porque la atracción no funcionaba",
+        "missingWait": "{{value}} observación sin espera para la cola normal",
+        "duplicates": "{{value}} duplicado sustituido por la recepción más reciente",
+        "outsideWindow": "{{value}} observación fuera de la ventana de recogida",
+        "truncated": "{{value}} observación procede de una franja que alcanzó su límite de almacenamiento; por eso el estado sigue siendo prudente."
+      }
     }
   },
   "aboutPage": {

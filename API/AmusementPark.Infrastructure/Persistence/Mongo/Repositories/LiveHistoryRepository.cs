@@ -7,7 +7,7 @@ using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
-public sealed class LiveHistoryRepository : ILiveHistoryRepository
+public sealed class LiveHistoryRepository : ILiveHistoryRepository, ILiveHistoryStatisticsRepository
 {
     private readonly IMongoCollection<LiveLatestObservationDocument> rawCollection;
     private readonly IMongoCollection<LiveHistoryBucketDocument> bucketCollection;
@@ -73,5 +73,51 @@ public sealed class LiveHistoryRepository : ILiveHistoryRepository
             bucketWrites,
             new BulkWriteOptions { IsOrdered = false },
             cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<LiveWaitHistoryObservation>> GetAsync(
+        LiveDataSourceId sourceId,
+        LiveTargetType targetType,
+        string targetId,
+        string usagePolicyVersion,
+        string retentionPolicyKey,
+        TimeSpan bucketDuration,
+        DateTime fromUtc,
+        DateTime toUtc,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<LiveHistoryBucketDocument> filter =
+            LiveHistoryMongoDefinitions.BuildStatisticsFilter(
+                sourceId,
+                targetType,
+                targetId,
+                usagePolicyVersion,
+                retentionPolicyKey,
+                bucketDuration,
+                fromUtc,
+                toUtc);
+        List<LiveHistoryBucketDocument> buckets = await this.bucketCollection
+            .Find(filter)
+            .SortBy(static document => document.BucketStartUtc)
+            .ToListAsync(cancellationToken);
+
+        return buckets
+            .SelectMany(bucket => bucket.Samples.Select(sample => new LiveWaitHistoryObservation(
+                sample.ExternalTargetId,
+                sample.MappingVersion,
+                RestoreExactUtc(sample.ObservedAtUtc, sample.ObservedAtUtcTicks),
+                RestoreExactUtc(sample.ReceivedAtUtc, sample.ReceivedAtUtcTicks),
+                sample.Status,
+                sample.Queues.Select(static queue => queue.ToDomain()).ToList().AsReadOnly(),
+                bucket.IsTruncated)))
+            .ToList()
+            .AsReadOnly();
+    }
+
+    private static DateTime RestoreExactUtc(DateTime fallback, long ticks)
+    {
+        return ticks > 0
+            ? new DateTime(ticks, DateTimeKind.Utc)
+            : DateTime.SpecifyKind(fallback, DateTimeKind.Utc);
     }
 }

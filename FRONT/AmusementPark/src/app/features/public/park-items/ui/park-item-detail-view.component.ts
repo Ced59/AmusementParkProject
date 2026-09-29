@@ -25,6 +25,7 @@ import { ParkItemPassportRidePanelComponent } from './park-item-passport-ride-pa
 import { UserCollectionActionsComponent } from '@features/collections/ui/user-collection-actions.component';
 import { WatchSubscriptionActionComponent } from '@features/watchlists/ui/watch-subscription-action.component';
 import { PublicLiveViewState } from '@features/public/live/models/public-live-view-state.model';
+import { PublicLiveHistoryViewState } from '@features/public/live/models/public-live-history-view-state.model';
 import { PublicLivePanelComponent } from '@features/public/live/ui/public-live-panel.component';
 
 @Component({
@@ -98,10 +99,12 @@ export class ParkItemDetailViewComponent {
   @Input() heroImageSrcWidth: number | null = 960;
   @Input() currentLang: string = 'en';
   @Input() liveState: PublicLiveViewState | null = null;
+  @Input() liveHistoryState: PublicLiveHistoryViewState | null = null;
   @Input() liveTimeZoneId: string | null = null;
 
   @Output() backToItemsClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() liveRefreshClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() liveHistoryRetryClicked: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private readonly mapDirectionsUrlService: MapDirectionsUrlService,

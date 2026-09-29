@@ -5,6 +5,52 @@ namespace AmusementPark.WebAPI.Mappers;
 
 public static class PublicLiveHttpMapper
 {
+    public static PublicLiveHistoryDto ToHttp(this PublicLiveHistoryResult result)
+    {
+        return new PublicLiveHistoryDto(
+            result.TargetId,
+            result.DisplayName,
+            result.ParkId,
+            result.ParkDisplayName,
+            result.FromUtc,
+            result.ToUtc,
+            result.TimeZoneId,
+            result.DataStatus.ToString(),
+            result.ExpectedObservationCount,
+            result.ObservationCount,
+            result.UsableWaitCount,
+            result.DaysCovered,
+            result.ComparableDays,
+            result.CoveragePercent,
+            result.TruncatedObservationCount,
+            new PublicLiveHistoryExclusionsDto(
+                result.Exclusions.DuplicateObservations,
+                result.Exclusions.OutsideActiveWindow,
+                result.Exclusions.NonOperatingStatus,
+                result.Exclusions.MissingStandbyWait,
+                result.Exclusions.Total),
+            result.Hours.Select(static hour => new PublicLiveHistoryHourDto(
+                hour.LocalHour,
+                hour.DataStatus.ToString(),
+                hour.ExpectedObservationCount,
+                hour.ObservationCount,
+                hour.UsableWaitCount,
+                hour.DaysCovered,
+                hour.ComparableDays,
+                hour.CoveragePercent,
+                hour.RobustMinimumMinutes,
+                hour.FirstQuartileMinutes,
+                hour.MedianMinutes,
+                hour.ThirdQuartileMinutes,
+                hour.RobustMaximumMinutes)).ToList().AsReadOnly(),
+            new PublicLiveSourceDto(
+                result.Source.Id,
+                result.Source.DisplayName,
+                result.Source.Type.ToString(),
+                result.Source.AttributionText,
+                result.Source.AttributionUrl));
+    }
+
     public static PublicLiveTargetDto ToHttp(this PublicLiveTargetResult result)
     {
         return new PublicLiveTargetDto(
