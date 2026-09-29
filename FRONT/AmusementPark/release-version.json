@@ -1,6 +1,20 @@
 {
-  "version": "5.4.23",
+  "version": "5.4.24",
   "history": [
+    {
+      "version": "5.4.24",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "La couverture des parcs français progresse.",
+        "en": "Coverage of French parks is expanding.",
+        "de": "Die Abdeckung französischer Parks wird erweitert.",
+        "nl": "De dekking van Franse parken wordt uitgebreid.",
+        "it": "La copertura dei parchi francesi si amplia.",
+        "es": "La cobertura de los parques franceses se amplía.",
+        "pt": "A cobertura dos parques franceses está a aumentar.",
+        "pl": "Rozszerzamy zakres francuskich parków."
+      }
+    },
     {
       "version": "5.4.23",
       "releasedAt": "2026-09-29",
