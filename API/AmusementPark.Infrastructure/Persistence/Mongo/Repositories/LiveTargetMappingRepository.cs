@@ -107,17 +107,41 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
             .ToArray();
     }
 
-    public async Task<IReadOnlyCollection<string>> GetEligibleInternalTargetIdsByParkAsync(
+    public async Task<IReadOnlyCollection<LivePublicTargetCoverage>> GetEligiblePublicTargetCoverageByParkAsync(
+        LiveDataSourceId sourceId,
+        string externalEntityId,
         string internalParkId,
         CancellationToken cancellationToken)
     {
+        _ = sourceId.Value;
+        string normalizedExternalEntityId = externalEntityId?.Trim() ?? string.Empty;
         string normalizedParkId = internalParkId?.Trim() ?? string.Empty;
-        if (normalizedParkId.Length == 0)
+        if (normalizedExternalEntityId.Length == 0 || normalizedParkId.Length == 0)
         {
-            return Array.Empty<string>();
+            return Array.Empty<LivePublicTargetCoverage>();
         }
 
-        List<BsonDocument> stages = new List<BsonDocument>
+        IReadOnlyCollection<BsonDocument> stages = BuildEligiblePublicTargetCoverageByParkPipeline(
+            sourceId,
+            normalizedExternalEntityId,
+            normalizedParkId);
+        PipelineDefinition<ExternalLiveTargetMappingDocument, BsonDocument> pipeline =
+            PipelineDefinition<ExternalLiveTargetMappingDocument, BsonDocument>.Create(stages);
+        List<BsonDocument> documents = await this.collection.Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        return documents
+            .Select(static document => new LivePublicTargetCoverage(
+                document["_id"]["internalTargetId"].AsString,
+                document["_id"]["externalTargetId"].AsString))
+            .ToArray();
+    }
+
+    internal static IReadOnlyCollection<BsonDocument> BuildEligiblePublicTargetCoverageByParkPipeline(
+        LiveDataSourceId sourceId,
+        string externalEntityId,
+        string internalParkId)
+    {
+        return new List<BsonDocument>
         {
             new BsonDocument("$sort", new BsonDocument
             {
@@ -132,24 +156,31 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
             new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$document")),
             new BsonDocument("$match", new BsonDocument
             {
+                ["sourceId"] = sourceId.Value,
                 ["status"] = LiveMappingStatus.Verified.ToString(),
                 ["validToUtc"] = BsonNull.Value,
-                ["target.parkId"] = normalizedParkId,
+                ["target.parkId"] = internalParkId,
                 ["target.id"] = new BsonDocument("$type", "string"),
+                ["$or"] = new BsonArray
+                {
+                    new BsonDocument("externalTarget.id", externalEntityId),
+                    new BsonDocument("externalTarget.parentId", externalEntityId),
+                },
             }),
             new BsonDocument("$group", new BsonDocument
             {
-                ["_id"] = "$target.id",
+                ["_id"] = new BsonDocument
+                {
+                    ["internalTargetId"] = "$target.id",
+                    ["externalTargetId"] = "$externalTarget.id",
+                },
             }),
-            new BsonDocument("$sort", new BsonDocument("_id", 1)),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["_id.internalTargetId"] = 1,
+                ["_id.externalTargetId"] = 1,
+            }),
         };
-        PipelineDefinition<ExternalLiveTargetMappingDocument, BsonDocument> pipeline =
-            PipelineDefinition<ExternalLiveTargetMappingDocument, BsonDocument>.Create(stages);
-        List<BsonDocument> documents = await this.collection.Aggregate(pipeline)
-            .ToListAsync(cancellationToken);
-        return documents
-            .Select(static document => document["_id"].AsString)
-            .ToArray();
     }
 
     public async Task<PagedResult<ExternalLiveTargetMapping>> SearchLatestAsync(
