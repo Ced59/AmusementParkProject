@@ -45,6 +45,7 @@ export interface LiveOperationsSummary {
   readonly candidateMappingCount: number;
   readonly suspendedMappingCount: number;
   readonly pendingIncidentCount: number;
+  readonly replayablePendingIncidentCount: number;
 }
 
 export interface LiveOperationsDashboard {

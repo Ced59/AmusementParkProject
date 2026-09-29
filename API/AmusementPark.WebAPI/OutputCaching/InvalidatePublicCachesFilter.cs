@@ -25,17 +25,20 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
     private readonly IOutputCacheStore outputCacheStore;
     private readonly ISsrPageCacheInvalidator ssrPageCacheInvalidator;
     private readonly ISsrPageCacheInvalidationRequestResolver ssrPageCacheInvalidationRequestResolver;
+    private readonly PublicLiveCacheGeneration publicLiveCacheGeneration;
     private readonly ILogger<InvalidatePublicCachesFilter> logger;
 
     public InvalidatePublicCachesFilter(
         IOutputCacheStore outputCacheStore,
         ISsrPageCacheInvalidator ssrPageCacheInvalidator,
         ISsrPageCacheInvalidationRequestResolver ssrPageCacheInvalidationRequestResolver,
+        PublicLiveCacheGeneration publicLiveCacheGeneration,
         ILogger<InvalidatePublicCachesFilter> logger)
     {
         this.outputCacheStore = outputCacheStore;
         this.ssrPageCacheInvalidator = ssrPageCacheInvalidator;
         this.ssrPageCacheInvalidationRequestResolver = ssrPageCacheInvalidationRequestResolver;
+        this.publicLiveCacheGeneration = publicLiveCacheGeneration;
         this.logger = logger;
     }
 
@@ -59,6 +62,11 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
         if (!IsSuccessfulResult(executedContext))
         {
             return;
+        }
+
+        if (scopes.Contains(PublicCacheScope.LiveData))
+        {
+            this.publicLiveCacheGeneration.Advance();
         }
 
         try

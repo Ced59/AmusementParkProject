@@ -63,6 +63,14 @@ motif, utilise une révision attendue contre les
 quarantaine reste borné à 100 incidents par action.
 Après une mutation réussie, le cache HTTP du direct est évincé par son tag dédié
 sans refroidir les autres données publiques ni les pages SSR.
+Une génération dédiée entre aussi dans la clé du cache du direct. Si une réponse
+publique avait commencé avant l’arrêt, elle reste liée à l’ancienne génération
+et la politique interdit son stockage lorsque la génération a changé pendant la
+requête. Une réponse tardive ne peut donc pas repeupler le cache évincé.
+Le nombre total d’incidents en attente reste visible, tandis qu’un compteur
+distinct pilote le bouton de rejeu avec les seuls incidents encore rejouables ;
+les diagnostics fournisseur et conflits de statut ne provoquent plus d’action à
+vide.
 
 ## Retour arrière
 

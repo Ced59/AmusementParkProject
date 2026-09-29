@@ -35,6 +35,19 @@ public sealed class LiveQualityIncidentRepository : ILiveQualityIncidentReposito
         return this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
     }
 
+    public Task<long> CountReplayablePendingAsync(
+        LiveDataSourceId sourceId,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<LiveQualityIncidentDocument> filter =
+            Builders<LiveQualityIncidentDocument>.Filter.Eq(
+                static document => document.SourceId,
+                sourceId.Value)
+            & LiveQualityIncidentMongoDefinitions.BuildReplayCandidatesFilter(nowUtc);
+        return this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+    }
+
     public async Task SaveAsync(
         IReadOnlyCollection<LiveQualityIncident> incidents,
         CancellationToken cancellationToken)

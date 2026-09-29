@@ -67,11 +67,21 @@ public sealed class LiveOperationsDashboardReader
             target.SourceId,
             nowUtc,
             cancellationToken);
+        Task<long> replayableIncidentsTask =
+            this.incidentRepository.CountReplayablePendingAsync(
+                target.SourceId,
+                nowUtc,
+                cancellationToken);
         Task<LiveOperationalGateSnapshot> gateTask = this.operationalGate.LoadAsync(
             target.SourceId,
             target.ExternalEntityId,
             cancellationToken);
-        await Task.WhenAll(mappingsTask, pollingTask, incidentsTask, gateTask);
+        await Task.WhenAll(
+            mappingsTask,
+            pollingTask,
+            incidentsTask,
+            replayableIncidentsTask,
+            gateTask);
 
         IReadOnlyCollection<ExternalLiveTargetMapping> mappings = await mappingsTask;
         LiveOperationalGateSnapshot gate = await gateTask;
@@ -109,7 +119,8 @@ public sealed class LiveOperationsDashboardReader
                 mappings.Count(static mapping => mapping.IsEligibleForLiveUse),
                 mappings.Count(static mapping => mapping.Status == LiveMappingStatus.Candidate),
                 mappings.Count(static mapping => mapping.Status == LiveMappingStatus.Suspended),
-                await incidentsTask),
+                await incidentsTask,
+                await replayableIncidentsTask),
             scopes,
             nowUtc);
         return ApplicationResult<LiveOperationsDashboardResult>.Success(result);

@@ -17,8 +17,11 @@ public static class OutputCacheServiceCollectionExtensions
 
         services.AddSingleton<PricingDateBoundaryOutputCachePolicy>();
         services.AddSingleton<RatingRankingGenerationOutputCachePolicy>();
+        services.AddSingleton<PublicLiveCacheGeneration>();
         services.AddSingleton<PublicLiveExpirationOutputCachePolicy>(
-            static _ => new PublicLiveExpirationOutputCachePolicy(TimeProvider.System));
+            static provider => new PublicLiveExpirationOutputCachePolicy(
+                TimeProvider.System,
+                provider.GetRequiredService<PublicLiveCacheGeneration>()));
 
         services.AddOutputCache(options =>
         {

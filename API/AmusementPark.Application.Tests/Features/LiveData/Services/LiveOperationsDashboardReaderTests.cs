@@ -71,6 +71,11 @@ public sealed class LiveOperationsDashboardReaderTests
             new Mock<ILiveQualityIncidentRepository>(MockBehavior.Strict);
         incidents.Setup(value => value.CountPendingAsync(sourceId, NowUtc, CancellationToken.None))
             .ReturnsAsync(3);
+        incidents.Setup(value => value.CountReplayablePendingAsync(
+                sourceId,
+                NowUtc,
+                CancellationToken.None))
+            .ReturnsAsync(1);
         Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
         gate.Setup(value => value.LoadAsync(sourceId, "external-park", CancellationToken.None))
             .ReturnsAsync(new LiveOperationalGateSnapshot(
@@ -96,6 +101,7 @@ public sealed class LiveOperationsDashboardReaderTests
         Assert.False(result.Value!.ConfiguredCollectionEnabled);
         Assert.True(result.Value.ConfiguredPublicReadEnabled);
         Assert.Equal(3, result.Value.Summary.PendingIncidentCount);
+        Assert.Equal(1, result.Value.Summary.ReplayablePendingIncidentCount);
         LiveOperationalScopeResult scope = Assert.Single(result.Value.Scopes);
         Assert.Equal(LiveOperationalScopeType.Source, scope.ScopeType);
         Assert.False(scope.EffectiveCollectionEnabled);

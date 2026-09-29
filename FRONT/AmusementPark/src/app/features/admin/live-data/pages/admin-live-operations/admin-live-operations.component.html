@@ -100,7 +100,7 @@
             appUiButton
             type="button"
             class="p-button-secondary"
-            [disabled]="replayPending() || data.summary.pendingIncidentCount === 0"
+            [disabled]="replayPending() || data.summary.replayablePendingIncidentCount === 0"
             (click)="facade.replayQuarantine()">
             <i class="pi pi-replay" aria-hidden="true"></i>
             {{ (replayPending() ? 'admin.liveOperations.actions.replaying' : 'admin.liveOperations.actions.replay') | translate }}

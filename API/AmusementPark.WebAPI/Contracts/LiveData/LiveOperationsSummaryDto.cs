@@ -11,4 +11,6 @@ public sealed class LiveOperationsSummaryDto
     public int SuspendedMappingCount { get; set; }
 
     public long PendingIncidentCount { get; set; }
+
+    public long ReplayablePendingIncidentCount { get; set; }
 }

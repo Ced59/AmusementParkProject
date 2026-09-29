@@ -9,6 +9,11 @@ public interface ILiveQualityIncidentRepository
         DateTime nowUtc,
         CancellationToken cancellationToken);
 
+    Task<long> CountReplayablePendingAsync(
+        LiveDataSourceId sourceId,
+        DateTime nowUtc,
+        CancellationToken cancellationToken);
+
     Task SaveAsync(
         IReadOnlyCollection<LiveQualityIncident> incidents,
         CancellationToken cancellationToken);

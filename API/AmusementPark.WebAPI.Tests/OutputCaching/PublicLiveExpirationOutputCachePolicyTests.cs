@@ -22,6 +22,7 @@ public sealed class PublicLiveExpirationOutputCachePolicyTests
         };
         PublicLiveExpirationOutputCachePolicy policy = CreatePolicy(now);
 
+        await policy.CacheRequestAsync(context, CancellationToken.None);
         await policy.ServeResponseAsync(context, CancellationToken.None);
 
         Assert.Equal(TimeSpan.FromSeconds(7), context.ResponseExpirationTimeSpan);
@@ -42,6 +43,7 @@ public sealed class PublicLiveExpirationOutputCachePolicyTests
         };
         PublicLiveExpirationOutputCachePolicy policy = CreatePolicy(now);
 
+        await policy.CacheRequestAsync(context, CancellationToken.None);
         await policy.ServeResponseAsync(context, CancellationToken.None);
 
         Assert.False(context.AllowCacheStorage);
@@ -60,16 +62,46 @@ public sealed class PublicLiveExpirationOutputCachePolicyTests
         };
         PublicLiveExpirationOutputCachePolicy policy = CreatePolicy(now);
 
+        await policy.CacheRequestAsync(context, CancellationToken.None);
         await policy.ServeResponseAsync(context, CancellationToken.None);
 
         Assert.Equal(TimeSpan.FromSeconds(30), context.ResponseExpirationTimeSpan);
         Assert.True(context.AllowCacheStorage);
     }
 
-    private static PublicLiveExpirationOutputCachePolicy CreatePolicy(DateTimeOffset now)
+    [Fact]
+    public async Task ServeResponseAsync_WhenGenerationChangedDuringRequest_ShouldDisableStorage()
+    {
+        DateTimeOffset now = new DateTimeOffset(2026, 9, 29, 12, 0, 0, TimeSpan.Zero);
+        PublicLiveCacheGeneration generation = new PublicLiveCacheGeneration();
+        DefaultHttpContext httpContext = new DefaultHttpContext();
+        httpContext.Items[PublicLiveExpirationOutputCachePolicy.FreshnessTransitionItemKey] = null;
+        OutputCacheContext context = new OutputCacheContext
+        {
+            HttpContext = httpContext,
+            AllowCacheStorage = true,
+        };
+        PublicLiveExpirationOutputCachePolicy policy = CreatePolicy(now, generation);
+        await policy.CacheRequestAsync(context, CancellationToken.None);
+        Assert.Equal(
+            "0",
+            context.CacheVaryByRules.VaryByValues[
+                PublicLiveExpirationOutputCachePolicy.GenerationItemKey]);
+
+        generation.Advance();
+        await policy.ServeResponseAsync(context, CancellationToken.None);
+
+        Assert.False(context.AllowCacheStorage);
+    }
+
+    private static PublicLiveExpirationOutputCachePolicy CreatePolicy(
+        DateTimeOffset now,
+        PublicLiveCacheGeneration? generation = null)
     {
         Mock<TimeProvider> timeProvider = new Mock<TimeProvider>(MockBehavior.Strict);
         timeProvider.Setup(provider => provider.GetUtcNow()).Returns(now);
-        return new PublicLiveExpirationOutputCachePolicy(timeProvider.Object);
+        return new PublicLiveExpirationOutputCachePolicy(
+            timeProvider.Object,
+            generation ?? new PublicLiveCacheGeneration());
     }
 }

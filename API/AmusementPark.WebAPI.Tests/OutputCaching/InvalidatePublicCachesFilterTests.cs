@@ -23,10 +23,12 @@ public sealed class InvalidatePublicCachesFilterTests
             new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
         Mock<ISsrPageCacheInvalidationRequestResolver> resolver =
             CreateResolver(CreateNoOpRequest());
+        PublicLiveCacheGeneration generation = new PublicLiveCacheGeneration();
         InvalidatePublicCachesFilter filter = CreateFilter(
             outputCacheStore,
             ssrPageCacheInvalidator,
-            resolver);
+            resolver,
+            generation);
         ActionExecutingContext context = CreateExecutingContext(
             HttpMethods.Put,
             new InvalidatesPublicCacheAttribute(PublicCacheScope.LiveData));
@@ -36,6 +38,7 @@ public sealed class InvalidatePublicCachesFilterTests
             () => Task.FromResult(CreateExecutedContext(context)));
 
         outputCacheStore.VerifyAll();
+        Assert.Equal(1, generation.Current);
         ssrPageCacheInvalidator.Verify(
             value => value.InvalidateAsync(
                 It.IsAny<SsrPageCacheInvalidationRequest>(),
@@ -339,12 +342,14 @@ public sealed class InvalidatePublicCachesFilterTests
     private static InvalidatePublicCachesFilter CreateFilter(
         Mock<IOutputCacheStore> outputCacheStore,
         Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator,
-        Mock<ISsrPageCacheInvalidationRequestResolver> resolver)
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver,
+        PublicLiveCacheGeneration? generation = null)
     {
         return new InvalidatePublicCachesFilter(
             outputCacheStore.Object,
             ssrPageCacheInvalidator.Object,
             resolver.Object,
+            generation ?? new PublicLiveCacheGeneration(),
             NullLogger<InvalidatePublicCachesFilter>.Instance);
     }
 
