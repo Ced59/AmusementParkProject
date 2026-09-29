@@ -12,7 +12,8 @@ public sealed class LiveDataSource
         SourceUsagePolicy usagePolicy,
         TimeSpan minimumPollingInterval,
         TimeSpan defaultTtl,
-        LiveDataSourceStatus status)
+        LiveDataSourceStatus status,
+        LiveHistoryRetentionPolicy? historyRetentionPolicy = null)
     {
         _ = id.Value;
         ValidateEnum(type, nameof(type));
@@ -28,6 +29,7 @@ public sealed class LiveDataSource
         this.MinimumPollingInterval = minimumPollingInterval;
         this.DefaultTtl = defaultTtl;
         this.Status = status;
+        this.HistoryRetentionPolicy = historyRetentionPolicy;
     }
 
     public LiveDataSourceId Id { get; }
@@ -43,6 +45,8 @@ public sealed class LiveDataSource
     public TimeSpan DefaultTtl { get; }
 
     public LiveDataSourceStatus Status { get; }
+
+    public LiveHistoryRetentionPolicy? HistoryRetentionPolicy { get; }
 
     public bool CanPoll => this.Status == LiveDataSourceStatus.Active;
 

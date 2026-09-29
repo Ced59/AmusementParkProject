@@ -33,12 +33,16 @@ public sealed class ThemeParksWikiLiveDataSourceCatalog : ILiveDataSourceCatalog
                     false,
                     true,
                     "live.source.themeparks-wiki.attribution",
-                    new DateTime(2026, 9, 28, 15, 47, 0, DateTimeKind.Utc)),
+                    new DateTime(2026, 9, 29, 12, 15, 0, DateTimeKind.Utc)),
                 TimeSpan.FromMinutes(5),
                 TimeSpan.FromMinutes(30),
                 this.IsCollectionEnabled || this.IsPublicReadEnabled
                     ? LiveDataSourceStatus.Active
-                    : LiveDataSourceStatus.Suspended),
+                    : LiveDataSourceStatus.Suspended,
+                new LiveHistoryRetentionPolicy(
+                    TimeSpan.FromDays(7),
+                    TimeSpan.FromDays(400),
+                    TimeSpan.FromHours(1))),
             100,
             "Powered by ThemeParks.wiki",
             "https://themeparks.wiki/");

@@ -89,6 +89,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<LiveTargetReferenceResolver>();
         services.AddScoped<ILiveLatestObservationIngestor, LiveLatestObservationIngestor>();
         services.AddScoped<LiveQualityIncidentReplayService>();
+        services.AddScoped<LiveHistoryCaptureService>();
         services.AddScoped<LivePollingOrchestrator>();
         services.AddSingleton<LiveOperationalControlPolicy>();
         services.AddSingleton<LiveOperationalWriteCoordinator>();

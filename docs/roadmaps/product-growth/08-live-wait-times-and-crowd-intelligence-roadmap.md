@@ -2,13 +2,11 @@
 
 > Code programme : `LIVE`
 >
-> Statut : `LIVE-01` à `LIVE-08` livrés au 29 septembre 2026. La
-> source pilote est autorisée pour un spike interne latest-only, le contrat de
-> provenance/fraîcheur est implémenté et les mappings humains sont versionnés et
-> pilotables. L'adaptateur pilote traduit strictement les statuts et files du
-> fournisseur, et son ordonnanceur est borné mais désactivé par défaut ; aucune
-> collecte active ni donnée publique n'est encore activée avant l'interface
-> first-party et l'ouverture explicite des deux interrupteurs d'exploitation.
+> Statut : `LIVE-01` à `LIVE-12` livrés au 29 septembre 2026. La source pilote,
+> sa provenance, ses mappings, son affichage first-party, ses contrôles
+> opérationnels, ses alertes temporaires et son historique borné sont
+> implémentés. La collecte et la lecture publique restent pilotées par deux
+> interrupteurs d'exploitation indépendants.
 >
 > Dépendances : `RANK`, `PASS`, `WATCH`, qualité/observabilité transverse et contrats de source validés.
 >
@@ -76,9 +74,9 @@ opérationnels expirés. Le cache de 30 secondes et son ETag ne dépassent jamai
 fraîcheur métier. Le détail est consigné dans
 [`product-growth-live-08-latest-api-cache-2026-09-29.md`](../../architecture/product-growth-live-08-latest-api-cache-2026-09-29.md).
 
-Le prochain jalon est `LIVE-09` : afficher ces états sur les fiches parc et
-attraction avec une UX responsive, une attribution visible et une actualisation
-respectueuse de la visibilité de l'onglet.
+Le prochain jalon est `LIVE-13` : produire des statistiques descriptives qui
+affichent explicitement leur volume, leur période et leurs lacunes, sans encore
+faire de prévision.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -801,7 +799,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-09`](../../architecture/product-growth-live-09-public-ui-2026-09-29.md) | ✅ UI pilote | 0/unknown/closed distincts |
 | [`LIVE-10`](../../architecture/product-growth-live-10-operational-controls-2026-09-29.md) | ✅ Kill switches/ops | Arrêt immédiat possible |
 | [`LIVE-11`](../../architecture/product-growth-live-11-temporary-alerts-2026-09-29.md) | ✅ Alertes temporaires | Hystérésis/expiration |
-| `LIVE-12` | Historique autorisé | Rétention et buckets |
+| [`LIVE-12`](../../architecture/product-growth-live-12-authorized-history-2026-09-29.md) | ✅ Historique autorisé | Rétention et buckets |
 | `LIVE-13` | Statistiques descriptives | Volumes/lacunes visibles |
 | `LIVE-14` | Étude prévision/backtest | Peut conclure à l’abandon |
 | `LIVE-15` | Prévision publique conditionnelle | Intervalle et erreur publiés |
@@ -948,6 +946,20 @@ fraîches, plus récentes et encore autorisées par les contrôles opérationnel
 peuvent déclencher. MongoDB applique l’unicité et les TTL ; la suppression de
 compte purge ces données. Le canal reste volontairement interne au site et
 aucun identifiant technique ne remplace un libellé public manquant.
+
+### Implémentation `LIVE-12` — 29 septembre 2026
+
+La version `5.4.15` ajoute une mémoire historique strictement conditionnée par
+la politique courante de chaque source. ThemeParks.wiki a été revu avant cette
+activation : le produit peut conserver son propre historique et en dériver des
+agrégats, mais ne peut republier ni miroir ni export massif du flux brut.
+
+Chaque observation réellement retenue par le latest est écrite de façon
+idempotente dans un brut normalisé conservé sept jours et dans un bucket horaire
+minimal conservé 400 jours. Les TTL sont indépendants, les lacunes ne sont pas
+comblées et aucune route publique n'expose encore ces données. La version
+contractuelle accompagne les buckets ; une suspension, un retrait du droit de
+stockage ou une version incohérente bloque automatiquement l'historisation.
 
 ## 24. Gate finale `LIVE-G`
 

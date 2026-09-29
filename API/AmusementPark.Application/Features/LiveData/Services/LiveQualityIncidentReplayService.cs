@@ -29,7 +29,8 @@ public sealed class LiveQualityIncidentReplayService
             operationalGate,
             sourceCatalog,
             new LiveOperationalWriteCoordinator(),
-            TimeProvider.System)
+            TimeProvider.System,
+            null)
     {
     }
 
@@ -47,7 +48,28 @@ public sealed class LiveQualityIncidentReplayService
             operationalGate,
             sourceCatalog,
             coordinator,
-            TimeProvider.System)
+            TimeProvider.System,
+            null)
+    {
+    }
+
+    public LiveQualityIncidentReplayService(
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveLatestObservationRepository latestRepository,
+        ILiveOperationalGate operationalGate,
+        ILiveDataSourceCatalog sourceCatalog,
+        LiveOperationalWriteCoordinator coordinator,
+        LiveHistoryCaptureService historyCaptureService)
+        : this(
+            incidentRepository,
+            mappingRepository,
+            latestRepository,
+            operationalGate,
+            sourceCatalog,
+            coordinator,
+            TimeProvider.System,
+            historyCaptureService)
     {
     }
 
@@ -65,7 +87,8 @@ public sealed class LiveQualityIncidentReplayService
             operationalGate,
             sourceCatalog,
             new LiveOperationalWriteCoordinator(),
-            timeProvider)
+            timeProvider,
+            null)
     {
     }
 
@@ -76,7 +99,8 @@ public sealed class LiveQualityIncidentReplayService
         ILiveOperationalGate operationalGate,
         ILiveDataSourceCatalog sourceCatalog,
         LiveOperationalWriteCoordinator coordinator,
-        TimeProvider timeProvider)
+        TimeProvider timeProvider,
+        LiveHistoryCaptureService? historyCaptureService)
     {
         this.incidentRepository = incidentRepository
             ?? throw new ArgumentNullException(nameof(incidentRepository));
@@ -91,7 +115,8 @@ public sealed class LiveQualityIncidentReplayService
         this.operationalWriter = new LiveOperationalObservationWriter(
             this.latestRepository,
             this.operationalGate,
-            coordinator);
+            coordinator,
+            historyCaptureService);
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 

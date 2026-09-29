@@ -66,6 +66,10 @@ public sealed class ThemeParksWikiLiveDataSourceCatalogTests
         Assert.Equal(LiveDataSourceStatus.Active, source?.Source.Status);
         Assert.Equal("Powered by ThemeParks.wiki", source?.AttributionText);
         Assert.False(source?.Source.UsagePolicy.RedistributionAllowed);
+        Assert.Equal(TimeSpan.FromDays(7), source?.Source.HistoryRetentionPolicy?.RawRetention);
+        Assert.Equal(
+            TimeSpan.FromDays(400),
+            source?.Source.HistoryRetentionPolicy?.AggregateRetention);
     }
 
     [Fact]

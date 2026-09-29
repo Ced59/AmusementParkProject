@@ -14,6 +14,7 @@ public sealed class LiveDataSourceTests
         Assert.Equal(LiveDataSourceType.AuthorizedAggregator, source.Type);
         Assert.Equal(TimeSpan.FromMinutes(5), source.MinimumPollingInterval);
         Assert.Equal(TimeSpan.FromMinutes(15), source.DefaultTtl);
+        Assert.NotNull(source.HistoryRetentionPolicy);
         Assert.True(source.CanPoll);
     }
 
@@ -64,7 +65,11 @@ public sealed class LiveDataSourceTests
             CreateUsagePolicy(),
             TimeSpan.FromMinutes(5),
             TimeSpan.FromMinutes(15),
-            status);
+            status,
+            new LiveHistoryRetentionPolicy(
+                TimeSpan.FromDays(7),
+                TimeSpan.FromDays(400),
+                TimeSpan.FromHours(1)));
     }
 
     private static SourceUsagePolicy CreateUsagePolicy()

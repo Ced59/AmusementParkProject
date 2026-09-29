@@ -28,6 +28,7 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             operationalGate,
             new LiveOperationalWriteCoordinator(),
             TimeProvider.System,
+            null,
             null)
     {
     }
@@ -45,6 +46,7 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             operationalGate,
             coordinator,
             TimeProvider.System,
+            null,
             null)
     {
     }
@@ -63,7 +65,28 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             operationalGate,
             coordinator,
             TimeProvider.System,
-            liveAlertEvaluationService)
+            liveAlertEvaluationService,
+            null)
+    {
+    }
+
+    public LiveLatestObservationIngestor(
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveLatestObservationRepository latestRepository,
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveOperationalGate operationalGate,
+        LiveOperationalWriteCoordinator coordinator,
+        LiveAlertEvaluationService liveAlertEvaluationService,
+        LiveHistoryCaptureService historyCaptureService)
+        : this(
+            mappingRepository,
+            latestRepository,
+            incidentRepository,
+            operationalGate,
+            coordinator,
+            TimeProvider.System,
+            liveAlertEvaluationService,
+            historyCaptureService)
     {
     }
 
@@ -80,6 +103,7 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             operationalGate,
             new LiveOperationalWriteCoordinator(),
             timeProvider,
+            null,
             null)
     {
     }
@@ -91,7 +115,8 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
         ILiveOperationalGate operationalGate,
         LiveOperationalWriteCoordinator coordinator,
         TimeProvider timeProvider,
-        LiveAlertEvaluationService? liveAlertEvaluationService)
+        LiveAlertEvaluationService? liveAlertEvaluationService,
+        LiveHistoryCaptureService? historyCaptureService)
     {
         this.mappingRepository = mappingRepository
             ?? throw new ArgumentNullException(nameof(mappingRepository));
@@ -104,7 +129,8 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
         this.operationalWriter = new LiveOperationalObservationWriter(
             this.latestRepository,
             this.operationalGate,
-            coordinator);
+            coordinator,
+            historyCaptureService);
         this.liveAlertEvaluationService = liveAlertEvaluationService;
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }

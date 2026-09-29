@@ -413,6 +413,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ILivePollingStateRepository, LivePollingStateRepository>();
         services.AddScoped<ILiveOperationalControlRepository, LiveOperationalControlRepository>();
         services.AddScoped<ILiveLatestObservationRepository, LiveLatestObservationRepository>();
+        services.AddScoped<ILiveHistoryRepository, LiveHistoryRepository>();
         services.AddScoped<ILiveQualityIncidentRepository, LiveQualityIncidentRepository>();
         services.AddSingleton<LivePollingMetrics>();
         services.AddHostedService<LivePollingBackgroundService>();
