@@ -2,13 +2,13 @@
 
 > Code programme : `LIVE`
 >
-> Statut : `LIVE-01` à `LIVE-05` livrés au 29 septembre 2026. La
+> Statut : `LIVE-01` à `LIVE-06` livrés au 29 septembre 2026. La
 > source pilote est autorisée pour un spike interne latest-only, le contrat de
 > provenance/fraîcheur est implémenté et les mappings humains sont versionnés et
 > pilotables. L'adaptateur pilote traduit strictement les statuts et files du
 > fournisseur, et son ordonnanceur est borné mais désactivé par défaut ; aucune
 > collecte active ni généralisation publique n'est encore autorisée avant les
-> gates de stockage latest, quarantaine et exploitation.
+> gates de quarantaine et d'exploitation.
 >
 > Dépendances : `RANK`, `PASS`, `WATCH`, qualité/observabilité transverse et contrats de source validés.
 >
@@ -56,9 +56,14 @@ circuit breaker. La configuration versionnée reste désactivée et sans cible :
 déploiement ne déclenche donc aucun appel externe. Le détail est consigné dans
 [`product-growth-live-05-bounded-scheduler-2026-09-29.md`](../../architecture/product-growth-live-05-bounded-scheduler-2026-09-29.md).
 
-Le prochain jalon est `LIVE-06` : conserver uniquement le dernier état normalisé
-sans permettre à une observation ancienne d'écraser une observation récente,
-toujours sans affichage public.
+`LIVE-06` a livré le stockage interne du dernier état normalisé relié aux seuls
+mappings vérifiés. Une écriture Mongo atomique compare d'abord l'heure de la
+source puis l'heure de réception : une réponse retardée ne peut donc jamais
+écraser une observation plus récente. Le détail est consigné dans
+[`product-growth-live-06-latest-store-2026-09-29.md`](../../architecture/product-growth-live-06-latest-store-2026-09-29.md).
+
+Le prochain jalon est `LIVE-07` : isoler les observations douteuses ou non
+reliées et permettre leur rejeu après correction, toujours sans affichage public.
 
 ## 0. Avenant technique FOUNDATION
 
@@ -775,7 +780,7 @@ Chaque gate peut arrêter définitivement la phase suivante.
 | [`LIVE-03`](../../architecture/product-growth-live-03-verified-target-mapping-2026-09-28.md) | ✅ Mapping et admin | Aucun mapping heuristique public |
 | [`LIVE-04`](../../architecture/product-growth-live-04-provider-adapter-2026-09-28.md) | ✅ Adaptateur pilote | Fixtures complètes |
 | [`LIVE-05`](../../architecture/product-growth-live-05-bounded-scheduler-2026-09-29.md) | ✅ Scheduler/circuit breaker/budgets | Charge bornée |
-| `LIVE-06` | Latest store | Pas d’écrasement ancien |
+| [`LIVE-06`](../../architecture/product-growth-live-06-latest-store-2026-09-29.md) | ✅ Latest store | Pas d’écrasement ancien |
 | `LIVE-07` | Quarantaine/anomalies | Données douteuses isolées |
 | `LIVE-08` | API latest/cache | Source et âge obligatoires |
 | `LIVE-09` | UI pilote | 0/unknown/closed distincts |
@@ -848,6 +853,23 @@ ETag sont réutilisés et les crashes libèrent implicitement la cible à l'expi
 du lease. Des métriques comptent les issues, durées et ouvertures de circuit sans
 journaliser les payloads. Aucun temps d'attente n'est encore stocké : cette
 responsabilité est réservée à `LIVE-06`.
+
+### Implémentation `LIVE-06` — 29 septembre 2026
+
+La version `5.4.6` conserve un seul état normalisé par source et cible interne,
+uniquement après résolution en lot d'un mapping humain encore vérifié. Chaque
+photographie garde la provenance complète, la version du mapping, la politique
+d'usage, le hash du payload, les files typées et la politique de fraîcheur qui
+permettra de calculer son âge sans ambiguïté.
+
+MongoDB applique la règle d'ancienneté dans l'écriture atomique elle-même :
+l'heure observée par la source prime, puis l'heure de réception départage deux
+versions du même instant. La concurrence ne peut donc pas faire régresser le
+dernier état. Un échec de stockage transforme la collecte en échec et ne mémorise
+pas son ETag, afin que le payload puisse être rejoué au passage suivant. La
+collection n'est ni historisée, ni exposée par une API ou une interface ; le
+polling reste désactivé. Les cibles inconnues et anomalies seront isolées par
+`LIVE-07` avant toute exploitation.
 
 ## 24. Gate finale `LIVE-G`
 

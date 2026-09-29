@@ -12,6 +12,7 @@ using AmusementPark.Application.Features.FactualEvents.Ports;
 using AmusementPark.Application.Features.FactualEvents.Services;
 using AmusementPark.Application.Features.History.Handlers;
 using AmusementPark.Application.Features.History.Services;
+using AmusementPark.Application.Features.LiveData.Ports;
 using AmusementPark.Application.Features.LiveData.Services;
 using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkItems.Services;
@@ -85,6 +86,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<PublicParkHistoricalDataLoader>();
         services.AddScoped<IHistoricalParkRolloutGateAccessService, HistoricalParkRolloutGateAccessService>();
         services.AddScoped<LiveTargetReferenceResolver>();
+        services.AddScoped<ILiveLatestObservationIngestor, LiveLatestObservationIngestor>();
         services.AddScoped<LivePollingOrchestrator>();
         services.AddDurableBackgroundJobHandler<FactualChangeMaterializationJobHandler>();
         services.AddScoped<ParkItemReferenceValidator>();

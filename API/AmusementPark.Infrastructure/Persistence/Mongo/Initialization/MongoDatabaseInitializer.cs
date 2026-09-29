@@ -1119,6 +1119,10 @@ private readonly IMongoDatabase database;
             this.settings.LivePollingStatesCollectionName,
             cancellationToken);
         await this.InitializeLivePollingStateIndexesAsync(cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.LiveLatestObservationsCollectionName,
+            cancellationToken);
+        await this.InitializeLiveLatestObservationIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkFoundersCollectionName, cancellationToken);
         await this.InitializeParkFoundersIndexesAsync(cancellationToken);
@@ -2304,6 +2308,17 @@ private async Task InitializeParkDataEditorAccessTokensIndexesAsync(Cancellation
                 this.settings.LivePollingStatesCollectionName);
         await states.Indexes.CreateManyAsync(
             LivePollingStateMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+    }
+
+    private async Task InitializeLiveLatestObservationIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<LiveLatestObservationDocument> observations =
+            this.database.GetCollection<LiveLatestObservationDocument>(
+                this.settings.LiveLatestObservationsCollectionName);
+        await observations.Indexes.CreateManyAsync(
+            LiveLatestObservationMongoDefinitions.BuildIndexes(),
             cancellationToken);
     }
 

@@ -15,6 +15,11 @@ public interface ILiveTargetMappingRepository
         string externalTargetId,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<ExternalLiveTargetMapping>> GetLatestByExternalTargetIdsAsync(
+        LiveDataSourceId sourceId,
+        IReadOnlyCollection<string> externalTargetIds,
+        CancellationToken cancellationToken);
+
     Task<PagedResult<ExternalLiveTargetMapping>> SearchLatestAsync(
         LiveTargetMappingSearchCriteria criteria,
         CancellationToken cancellationToken);

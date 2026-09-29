@@ -9,6 +9,14 @@ public interface ILiveDataProviderAdapter
 
     string AdapterVersion { get; }
 
+    string UsagePolicyVersion { get; }
+
+    string TransformationVersion { get; }
+
+    LiveDataConfidence Confidence { get; }
+
+    LiveFreshnessPolicy FreshnessPolicy { get; }
+
     Task<LiveProviderReadResult> FetchLatestAsync(
         LiveProviderReadRequest request,
         CancellationToken cancellationToken);

@@ -22,7 +22,15 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
     public static readonly TimeSpan RequestTimeout = TimeSpan.FromSeconds(10);
 
     private const string Version = "themeparks-wiki-rest-v1/1.14.0-adapter-1";
+    private const string ProviderUsagePolicyVersion = "themeparks-wiki-terms-2026-09-28";
+    private const string ProviderTransformationVersion = "themeparks-wiki-live-normalization-1";
     private static readonly LiveDataSourceId ProviderSourceId = LiveDataSourceId.Parse("themeparks-wiki");
+    private static readonly LiveFreshnessPolicy ProviderFreshnessPolicy = new LiveFreshnessPolicy(
+        "themeparks-wiki-live-freshness-1",
+        TimeSpan.FromMinutes(10),
+        TimeSpan.FromMinutes(20),
+        TimeSpan.FromMinutes(30),
+        TimeSpan.FromMinutes(1));
 
     private readonly IHttpClientFactory httpClientFactory;
     private readonly TimeSpan requestTimeout;
@@ -51,6 +59,14 @@ public sealed class ThemeParksWikiLiveDataAdapter : ILiveDataProviderAdapter
     public LiveDataSourceId SourceId => ProviderSourceId;
 
     public string AdapterVersion => Version;
+
+    public string UsagePolicyVersion => ProviderUsagePolicyVersion;
+
+    public string TransformationVersion => ProviderTransformationVersion;
+
+    public LiveDataConfidence Confidence => LiveDataConfidence.Medium;
+
+    public LiveFreshnessPolicy FreshnessPolicy => ProviderFreshnessPolicy;
 
     public async Task<LiveProviderReadResult> FetchLatestAsync(
         LiveProviderReadRequest request,

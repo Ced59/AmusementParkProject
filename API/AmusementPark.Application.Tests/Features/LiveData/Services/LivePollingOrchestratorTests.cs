@@ -73,6 +73,7 @@ public sealed class LivePollingOrchestratorTests
         LivePollingOrchestrator orchestrator = new LivePollingOrchestrator(
             new[] { adapter.Object },
             repository.Object,
+            CreateIngestor().Object,
             new FixedTimeProvider(nightUtc),
             static () => 0);
 
@@ -128,6 +129,7 @@ public sealed class LivePollingOrchestratorTests
         LivePollingOrchestrator orchestrator = new LivePollingOrchestrator(
             new[] { adapter.Object },
             repository.Object,
+            CreateIngestor().Object,
             timeProvider.Object,
             static () => 0);
 
@@ -185,6 +187,49 @@ public sealed class LivePollingOrchestratorTests
         Assert.Equal(NowUtc.AddMinutes(5), savedCompletion.NextAttemptAtUtc);
         Assert.True(savedCompletion.ReplaceEntityTag);
         Assert.Equal("\"new\"", savedCompletion.EntityTag);
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_WhenLatestPersistenceFails_ShouldFailWithoutReplacingEntityTag()
+    {
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease(
+            entityTag: "\"old\"");
+        LivePollingCompletion? savedCompletion = null;
+        repository
+            .Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingCompletion, CancellationToken>(
+                (completion, _) => savedCompletion = completion)
+            .ReturnsAsync(true);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        adapter
+            .Setup(value => value.FetchLatestAsync(
+                It.IsAny<LiveProviderReadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveProviderReadResult(
+                LiveProviderReadDisposition.Success,
+                NowUtc,
+                entityTag: "\"new\""));
+        Mock<ILiveLatestObservationIngestor> ingestor = CreateIngestor();
+        ingestor
+            .Setup(value => value.IngestAsync(
+                It.IsAny<LiveLatestObservationIngestionRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new InvalidOperationException("Mongo unavailable"));
+        LivePollingOrchestrator orchestrator = CreateOrchestrator(repository, adapter, ingestor);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.Failed, result.Disposition);
+        Assert.NotNull(savedCompletion);
+        Assert.False(savedCompletion.ReplaceEntityTag);
+        Assert.Null(savedCompletion.EntityTag);
+        Assert.Null(savedCompletion.LastSuccessfulPollAtUtc);
     }
 
     [Fact]
@@ -259,11 +304,13 @@ public sealed class LivePollingOrchestratorTests
 
     private static LivePollingOrchestrator CreateOrchestrator(
         Mock<ILivePollingStateRepository> repository,
-        Mock<ILiveDataProviderAdapter> adapter)
+        Mock<ILiveDataProviderAdapter> adapter,
+        Mock<ILiveLatestObservationIngestor>? ingestor = null)
     {
         return new LivePollingOrchestrator(
             new[] { adapter.Object },
             repository.Object,
+            (ingestor ?? CreateIngestor()).Object,
             new FixedTimeProvider(NowUtc),
             static () => 0);
     }
@@ -306,7 +353,30 @@ public sealed class LivePollingOrchestratorTests
         Mock<ILiveDataProviderAdapter> adapter =
             new Mock<ILiveDataProviderAdapter>(MockBehavior.Strict);
         adapter.SetupGet(static value => value.SourceId).Returns(SourceId);
+        adapter.SetupGet(static value => value.AdapterVersion).Returns("adapter-1");
+        adapter.SetupGet(static value => value.UsagePolicyVersion).Returns("policy-1");
+        adapter.SetupGet(static value => value.TransformationVersion).Returns("transform-1");
+        adapter.SetupGet(static value => value.Confidence).Returns(LiveDataConfidence.Medium);
+        adapter.SetupGet(static value => value.FreshnessPolicy).Returns(
+            new LiveFreshnessPolicy(
+                "freshness-1",
+                TimeSpan.FromMinutes(5),
+                TimeSpan.FromMinutes(10),
+                TimeSpan.FromMinutes(20),
+                TimeSpan.FromMinutes(1)));
         return adapter;
+    }
+
+    private static Mock<ILiveLatestObservationIngestor> CreateIngestor()
+    {
+        Mock<ILiveLatestObservationIngestor> ingestor =
+            new Mock<ILiveLatestObservationIngestor>(MockBehavior.Strict);
+        ingestor
+            .Setup(value => value.IngestAsync(
+                It.IsAny<LiveLatestObservationIngestionRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveLatestObservationIngestionResult(0, 0, 0, 0, 0));
+        return ingestor;
     }
 
     private static LivePollingTarget CreateTarget()

@@ -407,6 +407,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ILiveTargetMappingRepository, LiveTargetMappingRepository>();
         services.AddScoped<ILiveDataProviderAdapter, ThemeParksWikiLiveDataAdapter>();
         services.AddScoped<ILivePollingStateRepository, LivePollingStateRepository>();
+        services.AddScoped<ILiveLatestObservationRepository, LiveLatestObservationRepository>();
         services.AddSingleton<LivePollingMetrics>();
         services.AddHostedService<LivePollingBackgroundService>();
         services.AddScoped<IParkWeatherProviderStrategy, OpenMeteoWeatherProviderStrategy>();
