@@ -12,7 +12,10 @@ import { PUBLIC_LIVE_DATA_PORT, PublicLiveDataPort } from './public-live-data.po
 import { PublicLiveForecastFacade } from './public-live-forecast.facade';
 
 describe('PublicLiveForecastFacade', () => {
-  afterEach(() => TestBed.resetTestingModule());
+  afterEach(() => {
+    TestBed.resetTestingModule();
+    vi.useRealTimers();
+  });
 
   it('publishes a verified forecast returned by the port', () => {
     const forecast: PublicLiveForecast = createForecast();
@@ -42,6 +45,39 @@ describe('PublicLiveForecastFacade', () => {
 
     expect(port.getParkItemForecast).not.toHaveBeenCalled();
     expect(facade.state().kind).toBe('idle');
+  });
+
+  it('renews the forecast when its covered interval ends', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-09-29T13:59:00Z'));
+    const port: PublicLiveDataPort = createPort(() => of(createForecast()));
+    const facade: PublicLiveForecastFacade = configureFacade(port);
+
+    facade.load('item-1');
+    vi.advanceTimersByTime(60_000);
+
+    expect(port.getParkItemForecast).toHaveBeenCalledTimes(2);
+  });
+
+  it('retries an unavailable forecast after the server cache window', () => {
+    vi.useFakeTimers();
+    const port: PublicLiveDataPort = createPort(() => throwError(() => new Error('unavailable')));
+    const facade: PublicLiveForecastFacade = configureFacade(port);
+
+    facade.load('item-1');
+    vi.advanceTimersByTime(15 * 60 * 1000);
+
+    expect(port.getParkItemForecast).toHaveBeenCalledTimes(2);
+  });
+
+  it('refreshes the current item on demand', () => {
+    const port: PublicLiveDataPort = createPort(() => of(createForecast()));
+    const facade: PublicLiveForecastFacade = configureFacade(port);
+
+    facade.load('item-1');
+    facade.refresh();
+
+    expect(port.getParkItemForecast).toHaveBeenCalledTimes(2);
   });
 });
 

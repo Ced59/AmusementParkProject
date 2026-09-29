@@ -15,4 +15,5 @@ public sealed record PublicLiveForecastResult(
     DateTime EvaluationFromUtc,
     DateTime EvaluationToUtc,
     int EvaluationPointCount,
+    DateTime FreshnessExpiresAtUtc,
     PublicLiveSourceResult Source);

@@ -115,6 +115,10 @@ public sealed class PublicLiveControllerTests
             TimeSpan.FromMinutes(15),
             controller.HttpContext.Items[
                 PublicLiveExpirationOutputCachePolicy.MaximumLifetimeItemKey]);
+        Assert.Equal(
+            forecast.FreshnessExpiresAtUtc,
+            controller.HttpContext.Items[
+                PublicLiveExpirationOutputCachePolicy.FreshnessTransitionItemKey]);
     }
 
     private static PublicLiveController CreateController(
@@ -281,6 +285,7 @@ public sealed class PublicLiveControllerTests
             calculatedAtUtc.AddDays(-90),
             calculatedAtUtc,
             120,
+            calculatedAtUtc.AddMinutes(8),
             new PublicLiveSourceResult(
                 "themeparks-wiki",
                 "ThemeParks.wiki",

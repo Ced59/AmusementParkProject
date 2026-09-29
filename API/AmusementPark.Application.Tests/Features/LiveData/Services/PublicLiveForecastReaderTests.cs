@@ -49,6 +49,7 @@ public sealed class PublicLiveForecastReaderTests
         Assert.Equal(100d, forecast.IntervalCoveragePercent);
         Assert.True(forecast.EvaluationPointCount >= 100);
         Assert.Equal(30d, forecast.Forecast.ExpectedWaitMinutes);
+        Assert.Equal(NowUtc.AddMinutes(28), forecast.FreshnessExpiresAtUtc);
         Assert.Equal("Powered by ThemeParks.wiki", forecast.Source.AttributionText);
         history.VerifyAll();
     }

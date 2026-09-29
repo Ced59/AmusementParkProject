@@ -64,7 +64,9 @@ public sealed class PublicLiveController : ControllerBase
                 new GetPublicParkItemLiveForecastQuery(itemId),
                 cancellationToken);
         return result.IsSuccess && result.Value is not null
-            ? this.ToConditionalResponse(result.Value.ToHttp(), null)
+            ? this.ToConditionalResponse(
+                result.Value.ToHttp(),
+                result.Value.FreshnessExpiresAtUtc)
             : this.ToActionResult(result);
     }
 

@@ -147,10 +147,13 @@ public sealed class PublicLiveForecastReader
                 [publicTarget.SourceId] = presentation.Priority,
             },
             nowUtc);
+        LiveFreshnessAssessment? latestFreshness = latestObservation?.FreshnessPolicy.Assess(
+            latestObservation.Provenance.ObservedAtUtc,
+            nowUtc);
         if (latestObservation is null
-            || !latestObservation.FreshnessPolicy
-                .Assess(latestObservation.Provenance.ObservedAtUtc, nowUtc)
-                .CanBePresentedAsCurrent
+            || latestFreshness is null
+            || !latestFreshness.CanBePresentedAsCurrent
+            || !latestFreshness.ExpiresAtUtc.HasValue
             || latestObservation.Status is not (LiveOperationalStatus.Open
                 or LiveOperationalStatus.OperatingWithLimitations))
         {
@@ -208,6 +211,7 @@ public sealed class PublicLiveForecastReader
                 report.EvaluationFromUtc,
                 report.EvaluationToUtc,
                 report.EvaluationPointCount,
+                latestFreshness.ExpiresAtUtc.Value,
                 new PublicLiveSourceResult(
                     presentation.Source.Id.Value,
                     presentation.Source.DisplayName,

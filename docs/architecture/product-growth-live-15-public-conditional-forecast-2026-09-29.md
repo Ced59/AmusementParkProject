@@ -117,12 +117,15 @@ sequenceDiagram
   accès au port historique.
 - `Infrastructure` conserve les buckets existants ; aucun nouveau schéma ni
   aucune migration MongoDB n’est nécessaire.
-- `WebAPI` expose un endpoint anonyme borné, ETag et mis en cache quinze
-  minutes. Les invalidations LIVE existantes restent applicables.
+- `WebAPI` expose un endpoint anonyme borné, ETag et mis en cache au plus
+  quinze minutes, sans jamais dépasser l'expiration de l'observation live qui
+  autorise la prévision. Les invalidations LIVE existantes restent applicables.
 - `Angular` appelle l’endpoint derrière le port et la façade publics, hors SSR.
   Une réponse absente ou en erreur ne laisse ni squelette ni message trompeur.
   La carte est aussi masquée dès que le bloc live courant signale une fermeture
-  ou une information périmée.
+  ou une information périmée. La façade renouvelle la prévision à la fin du
+  créneau affiché, après quinze minutes d'indisponibilité et lors d'un
+  rafraîchissement manuel des données live.
 
 ## Performance, responsive et accessibilité
 

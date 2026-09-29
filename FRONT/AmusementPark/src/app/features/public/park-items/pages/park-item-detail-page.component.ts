@@ -142,6 +142,7 @@ export class ParkItemDetailPageComponent implements OnInit {
 
   refreshLiveData(): void {
     this.liveStateFacade.refresh();
+    this.liveForecastFacade.refresh();
   }
 
   retryLiveHistory(): void {
