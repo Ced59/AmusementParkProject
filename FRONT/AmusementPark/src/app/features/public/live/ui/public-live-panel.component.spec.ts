@@ -36,6 +36,20 @@ describe('PublicLivePanelComponent queue presentation', () => {
     expect(view.formatQueuePrice(queue)).toMatch(/12[,.]50/);
     expect(view.formatQueuePrice({ ...queue, currencyCode: null })).toBeNull();
   });
+
+  it('uses the ISO currency minor-unit exponent', () => {
+    const component: PublicLivePanelComponent = new PublicLivePanelComponent();
+    component.currentLanguage = 'en-US';
+    const view = component as unknown as {
+      formatQueuePrice(queueValue: PublicLiveQueue): string | null;
+    };
+    const queue: PublicLiveQueue = createQueue();
+
+    expect(view.formatQueuePrice({ ...queue, priceMinorUnits: 1_200, currencyCode: 'JPY' }))
+      .toContain('1,200');
+    expect(view.formatQueuePrice({ ...queue, priceMinorUnits: 1_250, currencyCode: 'KWD' }))
+      .toContain('1.250');
+  });
 });
 
 function createQueue(): PublicLiveQueue {

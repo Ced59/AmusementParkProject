@@ -112,10 +112,12 @@ export class PublicLivePanelComponent {
     }
 
     try {
-      return new Intl.NumberFormat(this.currentLanguage, {
+      const formatter: Intl.NumberFormat = new Intl.NumberFormat(this.currentLanguage, {
         style: 'currency',
         currency: queue.currencyCode
-      }).format(queue.priceMinorUnits / 100);
+      });
+      const minorUnitDigits: number = formatter.resolvedOptions().maximumFractionDigits ?? 2;
+      return formatter.format(queue.priceMinorUnits / (10 ** minorUnitDigits));
     } catch {
       return null;
     }

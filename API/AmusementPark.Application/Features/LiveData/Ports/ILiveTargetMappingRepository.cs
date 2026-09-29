@@ -20,6 +20,10 @@ public interface ILiveTargetMappingRepository
         IReadOnlyCollection<string> externalTargetIds,
         CancellationToken cancellationToken);
 
+    Task<IReadOnlyCollection<string>> GetEligibleInternalTargetIdsByParkAsync(
+        string internalParkId,
+        CancellationToken cancellationToken);
+
     Task<PagedResult<ExternalLiveTargetMapping>> SearchLatestAsync(
         LiveTargetMappingSearchCriteria criteria,
         CancellationToken cancellationToken);

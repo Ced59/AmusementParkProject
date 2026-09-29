@@ -117,6 +117,22 @@ describe('PublicLiveStateFacade', () => {
     expect(facade.state().refreshFailed).toBe(true);
   });
 
+  it('advances the displayed observation age locally while offline', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-09-29T10:00:00Z'));
+    const onlineSpy = vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(true);
+    const port: PublicLiveDataPort = createPort();
+    const facade: PublicLiveStateFacade = configureFacade(port, true);
+
+    facade.watchParkItem('item-1');
+    onlineSpy.mockReturnValue(false);
+    window.dispatchEvent(new Event('offline'));
+    vi.advanceTimersByTime(60_001);
+
+    expect(facade.state().target?.ageSeconds).toBe(120);
+    expect(facade.state().isOnline).toBe(false);
+  });
+
   it('does not poll during server-side rendering', () => {
     const port: PublicLiveDataPort = createPort();
     const facade: PublicLiveStateFacade = configureFacade(port, false);

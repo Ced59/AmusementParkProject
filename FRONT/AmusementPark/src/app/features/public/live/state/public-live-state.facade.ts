@@ -25,6 +25,7 @@ export class PublicLiveStateFacade {
   private currentTargetId: string | null = null;
   private refreshTimeoutId: number | null = null;
   private expirationTimeoutId: number | null = null;
+  private ageTimeoutId: number | null = null;
   private requestSubscription: Subscription | null = null;
 
   readonly state: Signal<PublicLiveViewState> = this.stateSignal.asReadonly();
@@ -63,6 +64,7 @@ export class PublicLiveStateFacade {
 
     this.cancelScheduledRefresh();
     this.cancelScheduledExpiration();
+    this.cancelScheduledAgeUpdate();
     this.requestSubscription?.unsubscribe();
     this.requestSubscription = null;
     this.currentMode = mode;
@@ -112,18 +114,24 @@ export class PublicLiveStateFacade {
     const subscription: Subscription = request.subscribe({
       next: (result: PublicLiveLoadResult) => {
         this.requestSubscription = null;
+        const now: number = Date.now();
+        const target: PublicLiveTarget = this.ageTarget(result.target, now);
+        const items: readonly PublicLiveTarget[] = result.items.map(
+          (item: PublicLiveTarget) => this.ageTarget(item, now)
+        );
         this.stateSignal.set({
           kind: 'ready',
           mode: this.currentMode,
-          target: result.target,
-          items: result.items,
+          target,
+          items,
           isRefreshing: false,
           isOnline: navigator.onLine,
           refreshFailed: false,
           lastSuccessfulRefreshUtc: new Date().toISOString()
         });
-        this.scheduleNextExpiration(result.target, result.items);
-        this.scheduleNextRefresh(result.target, result.items);
+        this.scheduleNextExpiration(target, items);
+        this.scheduleNextAgeUpdate(target, items);
+        this.scheduleNextRefresh(target, items);
       },
       error: (error: unknown) => {
         this.requestSubscription = null;
@@ -147,6 +155,7 @@ export class PublicLiveStateFacade {
           });
         if (endpointDisabled) {
           this.cancelScheduledExpiration();
+          this.cancelScheduledAgeUpdate();
           return;
         }
 
@@ -199,9 +208,12 @@ export class PublicLiveStateFacade {
   private expireCurrentObservations(): void {
     const now: number = Date.now();
     const state: PublicLiveViewState = this.stateSignal();
-    const target: PublicLiveTarget | null = this.expireTarget(state.target, now);
+    const target: PublicLiveTarget | null = this.expireTarget(
+      state.target ? this.ageTarget(state.target, now) : null,
+      now
+    );
     const items: readonly PublicLiveTarget[] = state.items.map(
-      (item: PublicLiveTarget) => this.expireTarget(item, now) ?? item
+      (item: PublicLiveTarget) => this.expireTarget(this.ageTarget(item, now), now) ?? item
     );
     this.stateSignal.set({ ...state, target, items });
     this.scheduleNextExpiration(target, items);
@@ -220,12 +232,76 @@ export class PublicLiveStateFacade {
     return { ...target, availability: 'Expired', freshness: 'Expired' };
   }
 
-  private readonly handleVisibilityChange = (): void => {
+  private scheduleNextAgeUpdate(
+    target: PublicLiveTarget | null,
+    items: readonly PublicLiveTarget[]
+  ): void {
+    this.cancelScheduledAgeUpdate();
     if (this.document.hidden) {
-      this.cancelScheduledRefresh();
       return;
     }
 
+    const now: number = Date.now();
+    const nextAgeBoundary: number | null = [target, ...items]
+      .map((candidate: PublicLiveTarget | null) => candidate?.observedAtUtc
+        ? Date.parse(candidate.observedAtUtc)
+        : Number.NaN)
+      .filter((observedAt: number) => Number.isFinite(observedAt))
+      .map((observedAt: number) => {
+        const elapsed: number = Math.max(0, now - observedAt);
+        return now + (60_000 - (elapsed % 60_000));
+      })
+      .reduce<number | null>((earliest: number | null, boundary: number) =>
+        earliest === null || boundary < earliest ? boundary : earliest, null);
+
+    if (nextAgeBoundary === null) {
+      return;
+    }
+
+    this.ageTimeoutId = window.setTimeout((): void => {
+      this.ageTimeoutId = null;
+      this.advanceObservationAges();
+    }, Math.max(1, nextAgeBoundary - now));
+  }
+
+  private advanceObservationAges(): void {
+    const now: number = Date.now();
+    const state: PublicLiveViewState = this.stateSignal();
+    const target: PublicLiveTarget | null = state.target
+      ? this.ageTarget(state.target, now)
+      : null;
+    const items: readonly PublicLiveTarget[] = state.items.map(
+      (item: PublicLiveTarget) => this.ageTarget(item, now)
+    );
+    this.stateSignal.set({ ...state, target, items });
+    this.scheduleNextAgeUpdate(target, items);
+  }
+
+  private ageTarget(target: PublicLiveTarget, now: number): PublicLiveTarget {
+    if (!target.observedAtUtc) {
+      return target;
+    }
+
+    const observedAt: number = Date.parse(target.observedAtUtc);
+    if (!Number.isFinite(observedAt)) {
+      return target;
+    }
+
+    const ageSeconds: number = Math.max(
+      target.ageSeconds ?? 0,
+      Math.floor(Math.max(0, now - observedAt) / 1000)
+    );
+    return ageSeconds === target.ageSeconds ? target : { ...target, ageSeconds };
+  }
+
+  private readonly handleVisibilityChange = (): void => {
+    if (this.document.hidden) {
+      this.cancelScheduledRefresh();
+      this.cancelScheduledAgeUpdate();
+      return;
+    }
+
+    this.advanceObservationAges();
     this.loadCurrentTarget();
   };
 
@@ -257,9 +333,17 @@ export class PublicLiveStateFacade {
     }
   }
 
+  private cancelScheduledAgeUpdate(): void {
+    if (this.ageTimeoutId !== null) {
+      window.clearTimeout(this.ageTimeoutId);
+      this.ageTimeoutId = null;
+    }
+  }
+
   private dispose(): void {
     this.cancelScheduledRefresh();
     this.cancelScheduledExpiration();
+    this.cancelScheduledAgeUpdate();
     this.requestSubscription?.unsubscribe();
     this.requestSubscription = null;
     if (this.ssrRuntimeService.isBrowserRuntime()) {

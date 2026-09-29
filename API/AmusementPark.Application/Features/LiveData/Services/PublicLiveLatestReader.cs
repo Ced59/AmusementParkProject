@@ -13,6 +13,7 @@ public sealed class PublicLiveLatestReader
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly ILiveLatestObservationRepository observationRepository;
+    private readonly ILiveTargetMappingRepository mappingRepository;
     private readonly ILiveDataSourceCatalog sourceCatalog;
     private readonly PublicLiveTargetResultFactory resultFactory;
     private readonly TimeProvider timeProvider;
@@ -21,6 +22,7 @@ public sealed class PublicLiveLatestReader
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         ILiveLatestObservationRepository observationRepository,
+        ILiveTargetMappingRepository mappingRepository,
         ILiveDataSourceCatalog sourceCatalog,
         PublicLiveTargetResultFactory resultFactory,
         TimeProvider? timeProvider = null)
@@ -28,6 +30,7 @@ public sealed class PublicLiveLatestReader
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.observationRepository = observationRepository;
+        this.mappingRepository = mappingRepository;
         this.sourceCatalog = sourceCatalog;
         this.resultFactory = resultFactory;
         this.timeProvider = timeProvider ?? TimeProvider.System;
@@ -161,7 +164,15 @@ public sealed class PublicLiveLatestReader
             normalizedParkId,
             false,
             cancellationToken);
-        IReadOnlyCollection<string> visibleTargetIds = items
+        IReadOnlyCollection<string> coveredTargetIds =
+            await this.mappingRepository.GetEligibleInternalTargetIdsByParkAsync(
+                normalizedParkId,
+                cancellationToken);
+        HashSet<string> coveredTargetIdSet = coveredTargetIds.ToHashSet(StringComparer.Ordinal);
+        ParkItem[] coveredItems = items
+            .Where(item => coveredTargetIdSet.Contains(item.Id))
+            .ToArray();
+        IReadOnlyCollection<string> visibleTargetIds = coveredItems
             .Select(static item => item.Id)
             .ToList()
             .AsReadOnly();
@@ -179,7 +190,7 @@ public sealed class PublicLiveLatestReader
                 StringComparer.Ordinal);
         DateTime asOfUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         string parkDisplayName = park.Name ?? string.Empty;
-        List<PublicLiveTargetResult> results = items
+        List<PublicLiveTargetResult> results = coveredItems
             .OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
             .ThenBy(static item => item.Id, StringComparer.Ordinal)
             .Select(item => this.resultFactory.Create(

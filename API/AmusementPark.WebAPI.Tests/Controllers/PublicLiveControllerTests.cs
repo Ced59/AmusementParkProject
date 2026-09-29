@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.LiveData.Queries;
 using AmusementPark.Application.Features.LiveData.Results;
 using AmusementPark.Core.Domain.LiveData;
 using AmusementPark.WebAPI.Controllers;
+using AmusementPark.WebAPI.Contracts.LiveData;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Http;
@@ -48,6 +49,25 @@ public sealed class PublicLiveControllerTests
 
         StatusCodeResult status = Assert.IsType<StatusCodeResult>(result);
         Assert.Equal(StatusCodes.Status304NotModified, status.StatusCode);
+    }
+
+    [Fact]
+    public void EntityTag_ShouldIgnoreResponseClockButChangeWithOperationalFacts()
+    {
+        PublicLiveTargetDto initial = CreateTarget().ToHttp();
+        PublicLiveTargetDto aged = initial with
+        {
+            AsOfUtc = initial.AsOfUtc.AddMinutes(4),
+            AgeSeconds = initial.AgeSeconds + 240,
+        };
+        PublicLiveTargetDto changed = aged with { Status = LiveOperationalStatus.Closed.ToString() };
+
+        Assert.Equal(
+            PublicLiveEntityTagFactory.Create(initial),
+            PublicLiveEntityTagFactory.Create(aged));
+        Assert.NotEqual(
+            PublicLiveEntityTagFactory.Create(initial),
+            PublicLiveEntityTagFactory.Create(changed));
     }
 
     private static PublicLiveController CreateController(PublicLiveTargetResult target)
