@@ -4615,6 +4615,86 @@
         "description": "Ten ekran otrzymuje wyłącznie sumy. Z agregacji nie wychodzą identyfikatory członka, wizyty ani parku, daty wizyt ani oceny."
       }
     },
+    "productQuality": {
+      "navTitle": "Obserwatorium jakości produktu",
+      "shortcut": "Łączy każde pytanie biznesowe z dowodami, ograniczeniami i narzędziami nadzoru.",
+      "kicker": "Jakość · decyzja",
+      "title": "Obserwatorium jakości produktu",
+      "subtitle": "Pokazuje pytanie biznesowe, źródło dowodów i ograniczenia każdego modułu bez mieszania danych objętych zgodą, wewnętrznych agregatów i metryk technicznych.",
+      "legend": "Poziomy dojrzałości dowodów",
+      "principle": {
+        "title": "Odczytuj sygnały bez ich przeceniania",
+        "description": "Surowy wolumen nigdy nie wystarcza. Przed rozbudową, poprawą lub wycofaniem funkcji zestaw lejek, niezawodność i jakościowe opinie.",
+        "privacy": "Ta strona nie łączy tożsamości ani surowych danych."
+      },
+      "states": {
+        "ready": "Decyzja wsparta danymi",
+        "split": "Oddzielne źródła",
+        "operational": "Monitoring operacyjny"
+      },
+      "channels": {
+        "firstParty": "Zminimalizowane agregaty wewnętrzne",
+        "mixed": "Analityka za zgodą i oddzielny monitoring wewnętrzny",
+        "technical": "Diagnostyka i metryki techniczne"
+      },
+      "labels": {
+        "question": "Pytanie biznesowe",
+        "evidence": "Dostępne dowody",
+        "limit": "Granica interpretacji",
+        "channel": "Kanał"
+      },
+      "openModule": "Otwórz moduł",
+      "modules": {
+        "rank": {
+          "title": "Wiarygodne rankingi",
+          "question": "Czy rankingi pozostają zrozumiałe i wiarygodne przy słabych dowodach?",
+          "evidence": "Diagnostyka dowodów, wykluczeń, wersji zasad i przebudów.",
+          "limit": "Otwarcia metodologii pozostają zarezerwowane: liczba wyświetleń nie mierzy zaufania."
+        },
+        "pass": {
+          "title": "Paszport wizyt",
+          "question": "Czy Paszport daje dość wartości, aby doprowadzić do zapisania drugiej wizyty?",
+          "evidence": "Zagregowana kohorta pierwszej i drugiej wizyty, ukończenia oraz trend dzienny.",
+          "limit": "Główna metryka nie zastępuje wywiadów ani kontroli jakości wprowadzonych danych."
+        },
+        "share": {
+          "title": "Kontrolowane udostępnianie",
+          "question": "Czy udostępnienia są świadomie publikowane, oglądane i cofane bez utraty kontroli?",
+          "evidence": "Lejek za zgodą w Matomo; moderacja i cofnięcia w module wewnętrznym.",
+          "limit": "Źródła pozostają oddzielne: żaden identyfikator udostępnienia nie może ich łączyć."
+        },
+        "fit": {
+          "title": "Rekomendacje Park Fit",
+          "question": "Czy rekomendacja kończy się pomimo brakujących danych?",
+          "evidence": "Rozpoczęcia, ukończenia, rezygnacje, brak wyników, niewiadome i zgłoszenia.",
+          "limit": "Wysoki poziom ukończeń sam w sobie nie potwierdza trafności wyników."
+        },
+        "watch": {
+          "title": "Alerty oparte na faktach",
+          "question": "Czy alerty docierają na czas, tylko raz i bez wprowadzania w błąd?",
+          "evidence": "Zagregowane dostarczenia, duplikaty, opóźnienia, błędy, kolejka i zgłoszenia.",
+          "limit": "Liczba alertów ani kliknięcia w e-maile nigdy nie są celem samym w sobie."
+        },
+        "trip": {
+          "title": "Wspólne podróże",
+          "question": "Czy grupy potrafią zapisać preferencje, a następnie podjąć użyteczną decyzję?",
+          "evidence": "Zagregowane wspólne plany, preferencje, decyzje i znaczniki audytu.",
+          "limit": "Metryki nie ujawniają uczestników, miejsc docelowych ani dokładnych wyborów."
+        },
+        "hist": {
+          "title": "Historie i osie czasu",
+          "question": "Czy zakres historyczny ma wystarczające źródła, aby był zrozumiały?",
+          "evidence": "Diagnostyka migawek, źródeł, niespójności i przetwarzania.",
+          "limit": "Otwarcie osi czasu nigdy nie stanowi dowodu historycznego."
+        },
+        "live": {
+          "title": "Dane na żywo",
+          "question": "Czy dane na żywo pozostają aktualne, dostępne i wystarczająco wiarygodne?",
+          "evidence": "Aktualność, dostawcy, obiegi, kwarantanny i dokładność prognoz.",
+          "limit": "Do analityki produktu nie trafia park, atrakcja, dokładny czas oczekiwania ani lokalizacja."
+        }
+      }
+    },
     "publicViewToolbar": {
       "ariaLabel": "Pasek admina dla widoku publicznego",
       "viewMode": "Widok publiczny",

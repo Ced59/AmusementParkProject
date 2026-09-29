@@ -1,0 +1,27 @@
+{
+  "admin": {
+    "productQuality": {
+      "navTitle": "Observatório da qualidade do produto",
+      "shortcut": "Liga cada questão de negócio às provas, limites e ferramentas de gestão.",
+      "kicker": "Qualidade · decisão",
+      "title": "Observatório da qualidade do produto",
+      "subtitle": "Consulta a questão de negócio, a fonte das provas e os limites de cada módulo sem misturar dados consentidos, agregados internos e métricas técnicas.",
+      "legend": "Níveis de maturidade das provas",
+      "principle": { "title": "Ler os sinais sem os sobrevalorizar", "description": "Um volume bruto nunca é suficiente. Cruza o funil, a fiabilidade e os comentários qualitativos antes de ampliar, corrigir ou abandonar uma funcionalidade.", "privacy": "Esta página não reúne identidades nem dados brutos." },
+      "states": { "ready": "Decisão fundamentada", "split": "Fontes separadas", "operational": "Acompanhamento operacional" },
+      "channels": { "firstParty": "Agregados internos minimizados", "mixed": "Analítica consentida e acompanhamento interno separado", "technical": "Diagnósticos e métricas técnicas" },
+      "labels": { "question": "Questão de negócio", "evidence": "Provas disponíveis", "limit": "Limite de interpretação", "channel": "Canal" },
+      "openModule": "Abrir o módulo",
+      "modules": {
+        "rank": { "title": "Classificações fiáveis", "question": "As classificações continuam compreensíveis e fiáveis quando as provas são fracas?", "evidence": "Diagnóstico de provas, exclusões, versões das regras e reconstruções.", "limit": "As aberturas da metodologia continuam reservadas: o volume de visualizações não mede a confiança." },
+        "pass": { "title": "Passaporte de visitas", "question": "O Passaporte oferece valor suficiente para levar a uma segunda visita registada?", "evidence": "Coorte agregada da primeira e segunda visita, conclusões e tendência diária.", "limit": "A métrica principal não substitui as entrevistas nem a verificação da qualidade dos dados introduzidos." },
+        "share": { "title": "Partilhas controladas", "question": "As partilhas são publicadas, consultadas e revogadas voluntariamente sem perda de controlo?", "evidence": "Funil consentido no Matomo; moderação e revogações no módulo interno.", "limit": "As fontes permanecem separadas: nenhum identificador de partilha pode ligá-las." },
+        "fit": { "title": "Recomendações Park Fit", "question": "A recomendação é concluída apesar dos dados desconhecidos?", "evidence": "Inícios, conclusões, abandonos, ausência de resultados, desconhecidos e denúncias.", "limit": "Uma taxa elevada de conclusão não valida, por si só, a relevância dos resultados." },
+        "watch": { "title": "Alertas factuais", "question": "Os alertas chegam a tempo, uma única vez e sem induzir em erro?", "evidence": "Entregas, duplicados, latência, falhas, fila e denúncias agregadas.", "limit": "O volume de alertas ou os cliques nos e-mails nunca são um objetivo isolado." },
+        "trip": { "title": "Viagens colaborativas", "question": "Os grupos conseguem registar preferências e depois tomar uma decisão útil?", "evidence": "Planos colaborativos, preferências, decisões e marcadores de auditoria agregados.", "limit": "As métricas não expõem participantes, destinos nem escolhas exatas." },
+        "hist": { "title": "Histórias e cronologias", "question": "A cobertura histórica tem fontes suficientes para ser compreendida?", "evidence": "Diagnóstico de snapshots, fontes, incoerências e processamento.", "limit": "Abrir uma cronologia nunca constitui uma prova histórica." },
+        "live": { "title": "Dados em direto", "question": "Os dados em direto mantêm-se atuais, disponíveis e suficientemente fiáveis?", "evidence": "Atualidade, fornecedores, circuitos, quarentenas e precisão das previsões.", "limit": "Nenhum parque, atração, espera exata ou localização entra na analítica do produto." }
+      }
+    }
+  }
+}

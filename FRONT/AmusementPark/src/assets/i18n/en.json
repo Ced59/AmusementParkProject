@@ -4615,6 +4615,86 @@
         "description": "This screen receives totals only. No member, visit or park identifier, visit date or rating leaves the aggregation."
       }
     },
+    "productQuality": {
+      "navTitle": "Product quality observatory",
+      "shortcut": "Connect each business question to its evidence, limits and operating tools.",
+      "kicker": "Quality · decision",
+      "title": "Product quality observatory",
+      "subtitle": "Find the business question, evidence source and limits of each module without mixing consented data, internal aggregates and technical metrics.",
+      "legend": "Evidence maturity levels",
+      "principle": {
+        "title": "Read signals without overstating them",
+        "description": "A raw volume is never enough. Combine funnel, reliability and qualitative feedback before expanding, fixing or stopping a feature.",
+        "privacy": "No identity or raw data is brought together on this page."
+      },
+      "states": {
+        "ready": "Decision supported",
+        "split": "Sources kept separate",
+        "operational": "Operational monitoring"
+      },
+      "channels": {
+        "firstParty": "Minimised internal aggregates",
+        "mixed": "Consented analytics and separate internal monitoring",
+        "technical": "Diagnostics and technical metrics"
+      },
+      "labels": {
+        "question": "Business question",
+        "evidence": "Available evidence",
+        "limit": "Interpretation limit",
+        "channel": "Channel"
+      },
+      "openModule": "Open module",
+      "modules": {
+        "rank": {
+          "title": "Trustworthy rankings",
+          "question": "Do rankings remain understandable and reliable when evidence is weak?",
+          "evidence": "Diagnostics for evidence, exclusions, policy versions and rebuilds.",
+          "limit": "Methodology opens remain reserved: view volume does not measure trust."
+        },
+        "pass": {
+          "title": "Visit passport",
+          "question": "Does the Passport provide enough value to lead to a second recorded visit?",
+          "evidence": "Aggregated first- and second-visit cohort, completions and daily trend.",
+          "limit": "The north star replaces neither interviews nor checks on entered data quality."
+        },
+        "share": {
+          "title": "Controlled sharing",
+          "question": "Are shares deliberately published, viewed and then revoked without loss of control?",
+          "evidence": "Consented funnel in Matomo; moderation and revocations in the internal module.",
+          "limit": "Sources remain separate: no share identifier may be used to connect them."
+        },
+        "fit": {
+          "title": "Park Fit recommendations",
+          "question": "Does the recommendation complete despite unknown data?",
+          "evidence": "Starts, completions, drop-offs, no-result cases, unknowns and reports.",
+          "limit": "A high completion rate alone does not validate the relevance of results."
+        },
+        "watch": {
+          "title": "Factual alerts",
+          "question": "Do alerts arrive on time, once only and without misleading people?",
+          "evidence": "Aggregated deliveries, duplicates, latency, failures, queue and reports.",
+          "limit": "Alert volume or email clicks are never a goal on their own."
+        },
+        "trip": {
+          "title": "Collaborative trips",
+          "question": "Can groups record preferences and then reach a usable decision?",
+          "evidence": "Aggregated collaborative plans, preferences, decisions and audit markers.",
+          "limit": "No participant, destination or exact choice is exposed in metrics."
+        },
+        "hist": {
+          "title": "Stories and timelines",
+          "question": "Is historical coverage sufficiently sourced to be understood?",
+          "evidence": "Diagnostics for snapshots, sources, inconsistencies and processing.",
+          "limit": "Opening a timeline never constitutes historical evidence."
+        },
+        "live": {
+          "title": "Live data",
+          "question": "Does live data remain fresh, available and reliable enough to display?",
+          "evidence": "Freshness, providers, circuits, quarantines and forecast accuracy.",
+          "limit": "No park, attraction, exact wait time or location enters product analytics."
+        }
+      }
+    },
     "publicViewToolbar": {
       "ariaLabel": "Admin public view toolbar",
       "viewMode": "Public view",

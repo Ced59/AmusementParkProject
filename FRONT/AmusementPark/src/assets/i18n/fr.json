@@ -4615,6 +4615,86 @@
         "description": "Cet écran ne reçoit que des totaux. Aucun identifiant de membre, de visite ou de parc, aucune date de visite et aucune note n'en sortent."
       }
     },
+    "productQuality": {
+      "navTitle": "Observatoire qualité produit",
+      "shortcut": "Relier chaque question métier à ses preuves, limites et outils de pilotage.",
+      "kicker": "Qualité · décision",
+      "title": "Observatoire qualité produit",
+      "subtitle": "Retrouve la question métier, la source de preuve et les limites de chaque module sans mélanger données consenties, agrégats internes et métriques techniques.",
+      "legend": "Niveaux de maturité des preuves",
+      "principle": {
+        "title": "Lire les signaux sans les surinterpréter",
+        "description": "Un volume brut ne suffit jamais. Croise le funnel, la fiabilité et les retours qualitatifs avant d’étendre, corriger ou arrêter une fonctionnalité.",
+        "privacy": "Aucune identité ni donnée brute n’est réunie sur cette page."
+      },
+      "states": {
+        "ready": "Décision outillée",
+        "split": "Sources séparées",
+        "operational": "Suivi opérationnel"
+      },
+      "channels": {
+        "firstParty": "Agrégats internes minimisés",
+        "mixed": "Analytics consenti et suivi interne séparés",
+        "technical": "Diagnostics et métriques techniques"
+      },
+      "labels": {
+        "question": "Question métier",
+        "evidence": "Preuves disponibles",
+        "limit": "Limite de lecture",
+        "channel": "Canal"
+      },
+      "openModule": "Ouvrir le module",
+      "modules": {
+        "rank": {
+          "title": "Classements de confiance",
+          "question": "Les classements restent-ils compréhensibles et fiables quand la preuve est faible ?",
+          "evidence": "Diagnostic des preuves, exclusions, versions de politique et reconstructions.",
+          "limit": "Les ouvertures de méthodologie restent réservées : un volume de vues ne mesure pas la confiance."
+        },
+        "pass": {
+          "title": "Passeport de visites",
+          "question": "Le Passeport apporte-t-il assez de valeur pour provoquer une deuxième visite enregistrée ?",
+          "evidence": "Cohorte agrégée de première et deuxième visite, complétions et tendance quotidienne.",
+          "limit": "La north star ne remplace ni les entretiens ni le contrôle de la qualité des données saisies."
+        },
+        "share": {
+          "title": "Partages contrôlés",
+          "question": "Les partages sont-ils volontairement publiés, consultés puis révoqués sans perte de contrôle ?",
+          "evidence": "Funnel consenti dans Matomo ; modération et révocations dans le module interne.",
+          "limit": "Les sources restent séparées : aucun identifiant de partage ne doit permettre de les relier."
+        },
+        "fit": {
+          "title": "Recommandations Park Fit",
+          "question": "La recommandation aboutit-elle malgré les données inconnues ?",
+          "evidence": "Démarrages, complétions, abandons, zéro résultat, inconnues et signalements.",
+          "limit": "Une complétion élevée ne valide pas à elle seule la pertinence des résultats."
+        },
+        "watch": {
+          "title": "Alertes factuelles",
+          "question": "Les alertes arrivent-elles à temps, une seule fois et sans induire en erreur ?",
+          "evidence": "Livraisons, doublons, latence, échecs, file et signalements agrégés.",
+          "limit": "Le volume d’alertes ou les clics e-mail ne sont jamais un objectif isolé."
+        },
+        "trip": {
+          "title": "Voyages collaboratifs",
+          "question": "Les groupes parviennent-ils à enregistrer des préférences puis une décision exploitable ?",
+          "evidence": "Plans collaboratifs, préférences, décisions et marqueurs d’audit agrégés.",
+          "limit": "Aucun participant, destination ou choix exact n’est exposé dans les métriques."
+        },
+        "hist": {
+          "title": "Histoires et chronologies",
+          "question": "La couverture historique est-elle suffisamment sourcée pour être comprise ?",
+          "evidence": "Diagnostic des snapshots, sources, incohérences et traitements.",
+          "limit": "L’ouverture d’une frise ne constitue jamais une preuve historique."
+        },
+        "live": {
+          "title": "Données en direct",
+          "question": "Le live reste-t-il frais, disponible et assez fiable pour être affiché ?",
+          "evidence": "Fraîcheur, fournisseurs, circuits, quarantaines et précision des prévisions.",
+          "limit": "Aucun parc, attraction, temps d’attente exact ou position n’entre dans l’analytics produit."
+        }
+      }
+    },
     "publicViewToolbar": {
       "ariaLabel": "Barre de vue admin",
       "viewMode": "Vue publique",

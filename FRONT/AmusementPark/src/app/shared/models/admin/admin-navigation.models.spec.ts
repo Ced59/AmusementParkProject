@@ -28,6 +28,7 @@ describe('ADMIN_NAVIGATION_ITEMS', () => {
       'park-weather',
       'contact-grievances',
       'social-share',
+      'product-quality',
       'passport-beta',
       'park-fit-data-quality',
       'park-fit-pilot',

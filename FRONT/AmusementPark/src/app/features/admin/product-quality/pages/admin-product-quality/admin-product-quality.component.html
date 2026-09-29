@@ -1,0 +1,78 @@
+<section class="admin-product-quality admin-surface">
+  <header class="admin-product-quality__header">
+    <span class="kicker kicker--sky">{{ 'admin.productQuality.kicker' | translate }}</span>
+    <div>
+      <h1 class="admin-page-title">{{ 'admin.productQuality.title' | translate }}</h1>
+      <p class="admin-muted">{{ 'admin.productQuality.subtitle' | translate }}</p>
+    </div>
+  </header>
+
+  <section class="admin-product-quality__principle" aria-labelledby="product-quality-principle-title">
+    <span class="admin-product-quality__principle-icon" aria-hidden="true">
+      <i class="pi pi-shield"></i>
+    </span>
+    <div>
+      <h2 id="product-quality-principle-title">
+        {{ 'admin.productQuality.principle.title' | translate }}
+      </h2>
+      <p>{{ 'admin.productQuality.principle.description' | translate }}</p>
+      <small>{{ 'admin.productQuality.principle.privacy' | translate }}</small>
+    </div>
+  </section>
+
+  <div class="admin-product-quality__legend" [attr.aria-label]="'admin.productQuality.legend' | translate">
+    <span class="quality-state quality-state--ready">
+      {{ 'admin.productQuality.states.ready' | translate }}
+    </span>
+    <span class="quality-state quality-state--split">
+      {{ 'admin.productQuality.states.split' | translate }}
+    </span>
+    <span class="quality-state quality-state--operational">
+      {{ 'admin.productQuality.states.operational' | translate }}
+    </span>
+  </div>
+
+  <div class="admin-product-quality__grid">
+    @for (dashboard of dashboards; track dashboard.id) {
+      <article class="admin-product-quality__module">
+        <header class="admin-product-quality__module-header">
+          <span class="admin-product-quality__module-icon" aria-hidden="true">
+            <i [class]="dashboard.iconClass"></i>
+          </span>
+          <div>
+            <span class="admin-product-quality__code">{{ dashboard.code }}</span>
+            <h2>{{ moduleKey(dashboard, 'title') | translate }}</h2>
+          </div>
+          <span class="quality-state" [class]="'quality-state quality-state--' + dashboard.state">
+            {{ stateKey(dashboard.state) | translate }}
+          </span>
+        </header>
+
+        <div class="admin-product-quality__question">
+          <span>{{ 'admin.productQuality.labels.question' | translate }}</span>
+          <p>{{ moduleKey(dashboard, 'question') | translate }}</p>
+        </div>
+
+        <dl class="admin-product-quality__details">
+          <div>
+            <dt>{{ 'admin.productQuality.labels.evidence' | translate }}</dt>
+            <dd>{{ moduleKey(dashboard, 'evidence') | translate }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'admin.productQuality.labels.limit' | translate }}</dt>
+            <dd>{{ moduleKey(dashboard, 'limit') | translate }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'admin.productQuality.labels.channel' | translate }}</dt>
+            <dd>{{ channelKey(dashboard.channel) | translate }}</dd>
+          </div>
+        </dl>
+
+        <a class="admin-product-quality__link" [routerLink]="buildAdminRoute(dashboard.routeSegments)">
+          <span>{{ 'admin.productQuality.openModule' | translate }}</span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </article>
+    }
+  </div>
+</section>

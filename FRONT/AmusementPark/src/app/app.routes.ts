@@ -144,6 +144,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/social-share/pages/admin-social-share-stats/admin-social-share-stats.component').then((m) => m.AdminSocialShareStatsComponent)
           },
           {
+            path: 'product-quality',
+            loadComponent: () => import('@features/admin/product-quality/pages/admin-product-quality/admin-product-quality.component').then((m) => m.AdminProductQualityComponent)
+          },
+          {
             path: 'passport-beta',
             loadComponent: () => import('@features/admin/passport-beta/pages/admin-passport-beta/admin-passport-beta.component').then((m) => m.AdminPassportBetaComponent)
           },

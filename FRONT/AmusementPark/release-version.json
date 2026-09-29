@@ -1,6 +1,20 @@
 {
-  "version": "5.4.27",
+  "version": "5.4.28",
   "history": [
+    {
+      "version": "5.4.28",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "L’ergonomie des outils d’administration a été améliorée.",
+        "en": "Administration tools are easier to use.",
+        "de": "Die Bedienung der Verwaltungswerkzeuge wurde verbessert.",
+        "nl": "De beheertools zijn gebruiksvriendelijker geworden.",
+        "it": "Gli strumenti di amministrazione sono più facili da usare.",
+        "es": "Las herramientas de administración son más fáciles de usar.",
+        "pt": "As ferramentas de administração estão mais fáceis de utilizar.",
+        "pl": "Narzędzia administracyjne są teraz łatwiejsze w obsłudze."
+      }
+    },
     {
       "version": "5.4.27",
       "releasedAt": "2026-09-29",
