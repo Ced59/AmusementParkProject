@@ -98,6 +98,68 @@ public sealed class LivePollingStateRepositoryTests
         database.VerifyAll();
     }
 
+    [Fact]
+    public async Task CompleteAsync_WhenSuspended_ShouldReleaseLeaseWithoutRecordingProviderPoll()
+    {
+        UpdateDefinition<LivePollingStateDocument>? savedUpdate = null;
+        Mock<IMongoCollection<LivePollingStateDocument>> collection =
+            new Mock<IMongoCollection<LivePollingStateDocument>>(MockBehavior.Strict);
+        collection.Setup(value => value.UpdateOneAsync(
+                It.IsAny<FilterDefinition<LivePollingStateDocument>>(),
+                It.IsAny<UpdateDefinition<LivePollingStateDocument>>(),
+                null,
+                CancellationToken.None))
+            .Callback((
+                FilterDefinition<LivePollingStateDocument> _,
+                UpdateDefinition<LivePollingStateDocument> update,
+                UpdateOptions? _,
+                CancellationToken _) => savedUpdate = update)
+            .ReturnsAsync(new UpdateResult.Acknowledged(1, 1, null));
+        Mock<IMongoDatabase> database = new Mock<IMongoDatabase>(MockBehavior.Strict);
+        database.Setup(value => value.GetCollection<LivePollingStateDocument>(
+                "live-polling-states",
+                null))
+            .Returns(collection.Object);
+        LivePollingStateRepository repository = new LivePollingStateRepository(
+            database.Object,
+            new MongoDbSettings { LivePollingStatesCollectionName = "live-polling-states" });
+        LivePollingLease lease = new LivePollingLease(
+            LiveDataSourceId.Parse("queue-times"),
+            "external-park",
+            "worker-1",
+            "lease-1",
+            "\"etag\"",
+            NowUtc.AddMinutes(-5),
+            2,
+            null);
+
+        bool completed = await repository.CompleteAsync(
+            new LivePollingCompletion(
+                lease,
+                LivePollingCompletionDisposition.Suspended,
+                NowUtc,
+                NowUtc,
+                2,
+                null,
+                null,
+                false,
+                null),
+            CancellationToken.None);
+
+        Assert.True(completed);
+        Assert.NotNull(savedUpdate);
+        BsonDocument update = Render(savedUpdate);
+        BsonDocument set = update["$set"].AsBsonDocument;
+        BsonDocument unset = update["$unset"].AsBsonDocument;
+        Assert.Equal("Suspended", set["lastDisposition"].AsString);
+        Assert.False(set.Contains("lastPolledAtUtc"));
+        Assert.True(unset.Contains("leaseOwner"));
+        Assert.True(unset.Contains("leaseToken"));
+        Assert.True(unset.Contains("leaseExpiresAtUtc"));
+        collection.VerifyAll();
+        database.VerifyAll();
+    }
+
     private static BsonDocument Render(FilterDefinition<LivePollingStateDocument> filter)
     {
         return filter.Render(new RenderArgs<LivePollingStateDocument>(

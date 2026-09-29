@@ -106,6 +106,7 @@ public static class InfrastructureServiceCollectionExtensions
 
         LiveDataPollingSettings liveDataPollingSettings = LiveDataPollingSettings.Bind(configuration);
         services.AddSingleton(liveDataPollingSettings);
+        services.AddSingleton<ILiveOperationalMutationAvailability>(liveDataPollingSettings);
 
         MinioImageStorageSettings minioSettings = configuration.GetSection(MinioImageStorageSettings.SectionName).Get<MinioImageStorageSettings>() ?? new MinioImageStorageSettings();
         services.AddSingleton(minioSettings);
@@ -408,6 +409,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ILiveDataProviderAdapter, ThemeParksWikiLiveDataAdapter>();
         services.AddSingleton<ILiveDataSourceCatalog, ThemeParksWikiLiveDataSourceCatalog>();
         services.AddScoped<ILivePollingStateRepository, LivePollingStateRepository>();
+        services.AddScoped<ILiveOperationalControlRepository, LiveOperationalControlRepository>();
         services.AddScoped<ILiveLatestObservationRepository, LiveLatestObservationRepository>();
         services.AddScoped<ILiveQualityIncidentRepository, LiveQualityIncidentRepository>();
         services.AddSingleton<LivePollingMetrics>();

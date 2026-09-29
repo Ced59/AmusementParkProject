@@ -107,6 +107,62 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
             .ToArray();
     }
 
+    public async Task<IReadOnlyCollection<ExternalLiveTargetMapping>> GetLatestByExternalEntityAsync(
+        LiveDataSourceId sourceId,
+        string externalEntityId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedExternalEntityId = externalEntityId?.Trim() ?? string.Empty;
+        if (normalizedExternalEntityId.Length == 0)
+        {
+            return Array.Empty<ExternalLiveTargetMapping>();
+        }
+
+        IReadOnlyCollection<BsonDocument> stages = BuildLatestByExternalEntityPipeline(
+            sourceId,
+            normalizedExternalEntityId);
+        PipelineDefinition<ExternalLiveTargetMappingDocument, BsonDocument> pipeline =
+            PipelineDefinition<ExternalLiveTargetMappingDocument, BsonDocument>.Create(stages);
+        List<BsonDocument> documents = await this.collection.Aggregate(pipeline)
+            .ToListAsync(cancellationToken);
+        return documents
+            .Select(static document => BsonSerializer.Deserialize<ExternalLiveTargetMappingDocument>(document))
+            .Select(static document => document.ToDomain())
+            .ToArray();
+    }
+
+    internal static IReadOnlyCollection<BsonDocument> BuildLatestByExternalEntityPipeline(
+        LiveDataSourceId sourceId,
+        string externalEntityId)
+    {
+        return new List<BsonDocument>
+        {
+            new BsonDocument("$match", new BsonDocument("sourceId", sourceId.Value)),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["mappingId"] = 1,
+                ["revision"] = -1,
+            }),
+            new BsonDocument("$group", new BsonDocument
+            {
+                ["_id"] = "$mappingId",
+                ["document"] = new BsonDocument("$first", "$$ROOT"),
+            }),
+            new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$document")),
+            new BsonDocument("$match", new BsonDocument("$or", new BsonArray
+            {
+                new BsonDocument("externalTarget.id", externalEntityId),
+                new BsonDocument("externalTarget.parentId", externalEntityId),
+            })),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                ["externalTarget.type"] = 1,
+                ["externalTarget.displayName"] = 1,
+                ["mappingId"] = 1,
+            }),
+        };
+    }
+
     public async Task<IReadOnlyCollection<LivePublicTargetCoverage>> GetEligiblePublicTargetCoverageByParkAsync(
         LiveDataSourceId sourceId,
         string externalEntityId,
@@ -143,6 +199,15 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
     {
         return new List<BsonDocument>
         {
+            new BsonDocument("$match", new BsonDocument
+            {
+                ["sourceId"] = sourceId.Value,
+                ["$or"] = new BsonArray
+                {
+                    new BsonDocument("externalTarget.id", externalEntityId),
+                    new BsonDocument("externalTarget.parentId", externalEntityId),
+                },
+            }),
             new BsonDocument("$sort", new BsonDocument
             {
                 ["mappingId"] = 1,
@@ -156,16 +221,10 @@ public sealed class LiveTargetMappingRepository : ILiveTargetMappingRepository
             new BsonDocument("$replaceRoot", new BsonDocument("newRoot", "$document")),
             new BsonDocument("$match", new BsonDocument
             {
-                ["sourceId"] = sourceId.Value,
                 ["status"] = LiveMappingStatus.Verified.ToString(),
                 ["validToUtc"] = BsonNull.Value,
                 ["target.parkId"] = internalParkId,
                 ["target.id"] = new BsonDocument("$type", "string"),
-                ["$or"] = new BsonArray
-                {
-                    new BsonDocument("externalTarget.id", externalEntityId),
-                    new BsonDocument("externalTarget.parentId", externalEntityId),
-                },
             }),
             new BsonDocument("$group", new BsonDocument
             {

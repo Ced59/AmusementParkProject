@@ -204,6 +204,8 @@ class DockerRuntime:
                 # but only the canonical API started after that writer stops may complete them.
                 arguments += ["-e", "DurableBackgroundJobs__Worker__Enabled=false", "-e",
                               "MongoDB__CompleteFactualEventMigrationsOnStartup=false", "-e",
+                              "LiveDataPolling__Enabled=false", "-e",
+                              "LiveDataPolling__OperationalMutationsEnabled=false", "-e",
                               f"AllowedHosts={self.environment['ALLOWED_HOSTS']};{name}"]
             else:
                 arguments += ["-e", f"SSR_API_INTERNAL_URL=http://{api_name}:8080"]
@@ -307,6 +309,10 @@ class DockerRuntime:
         if (api_env.get("DurableBackgroundJobs__Worker__Enabled", "true").lower() == "false") != candidate:
             raise DeploymentError("Unexpected durable-worker role for this deployment pair")
         if candidate:
+            if api_env.get("LiveDataPolling__Enabled", "true").lower() != "false":
+                raise DeploymentError("Candidate API must not poll live data while another API may still write")
+            if api_env.get("LiveDataPolling__OperationalMutationsEnabled", "true").lower() != "false":
+                raise DeploymentError("Candidate API must reject live mutations until it becomes canonical")
             for service, container in (("api", api), ("front", front)):
                 aliases = {alias for network in container["NetworkSettings"]["Networks"].values()
                            for alias in (network.get("Aliases") or [])}

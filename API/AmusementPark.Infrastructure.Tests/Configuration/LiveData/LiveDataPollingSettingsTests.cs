@@ -14,8 +14,26 @@ public sealed class LiveDataPollingSettingsTests
         LiveDataPollingSettings settings = LiveDataPollingSettings.Bind(configuration);
 
         Assert.False(settings.Enabled);
+        Assert.True(settings.OperationalMutationsEnabled);
+        Assert.True(settings.IsEnabled);
         Assert.Empty(settings.Targets);
         Assert.Empty(settings.BuildEnabledTargets());
+    }
+
+    [Fact]
+    public void Bind_WhenDeploymentDisablesMutations_ShouldExposeFailClosedAvailability()
+    {
+        IConfiguration configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["LiveDataPolling:OperationalMutationsEnabled"] = "false",
+            })
+            .Build();
+
+        LiveDataPollingSettings settings = LiveDataPollingSettings.Bind(configuration);
+
+        Assert.False(settings.OperationalMutationsEnabled);
+        Assert.False(settings.IsEnabled);
     }
 
     [Fact]

@@ -14,6 +14,69 @@ public sealed class LiveLatestObservationIngestorTests
     private static readonly LiveDataSourceId SourceId = LiveDataSourceId.Parse("source");
 
     [Fact]
+    public async Task IngestAsync_WhenTargetCollectionIsStopped_ShouldNotPersistObservation()
+    {
+        Mock<ILiveTargetMappingRepository> mappings = CreateMappingRepository(
+            new[] { CreateVerifiedMapping("external-1", "item-1") });
+        Mock<ILiveLatestObservationRepository> latest =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        latest.Setup(value => value.WriteLatestAsync(
+                It.Is<IReadOnlyCollection<LiveLatestObservation>>(observations => observations.Count == 0),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveLatestObservationWriteResult(0, 0, 0));
+        LiveLatestObservationIngestor ingestor = new LiveLatestObservationIngestor(
+            mappings.Object,
+            latest.Object,
+            CreateIncidentRepository().Object,
+            CreateOperationalGate(collectionEnabled: false).Object,
+            new FixedTimeProvider(ReceivedAtUtc));
+
+        LiveLatestObservationIngestionResult result = await ingestor.IngestAsync(
+            CreateRequest(CreateObservation("external-1", ReceivedAtUtc.AddMinutes(-1))),
+            CancellationToken.None);
+
+        Assert.Equal(1, result.SuppressedByOperationalControlCount);
+        Assert.Equal(0, result.PersistedCount);
+    }
+
+    [Fact]
+    public async Task IngestAsync_WhenCollectionStopsBeforeWriteBoundary_ShouldSuppressObservation()
+    {
+        Mock<ILiveTargetMappingRepository> mappings = CreateMappingRepository(
+            new[] { CreateVerifiedMapping("external-1", "item-1") });
+        Mock<ILiveLatestObservationRepository> latest =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        latest.Setup(value => value.WriteLatestAsync(
+                It.Is<IReadOnlyCollection<LiveLatestObservation>>(observations => observations.Count == 0),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveLatestObservationWriteResult(0, 0, 0));
+        Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.SetupSequence(value => value.LoadAsync(
+                SourceId,
+                "external-park",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(CreateGateSnapshot(collectionEnabled: true))
+            .ReturnsAsync(CreateGateSnapshot(collectionEnabled: false));
+        LiveLatestObservationIngestor ingestor = new LiveLatestObservationIngestor(
+            mappings.Object,
+            latest.Object,
+            CreateIncidentRepository().Object,
+            gate.Object,
+            new FixedTimeProvider(ReceivedAtUtc));
+
+        LiveLatestObservationIngestionResult result = await ingestor.IngestAsync(
+            CreateRequest(CreateObservation("external-1", ReceivedAtUtc.AddMinutes(-1))),
+            CancellationToken.None);
+
+        Assert.Equal(1, result.SuppressedByOperationalControlCount);
+        Assert.Equal(0, result.PersistedCount);
+        gate.Verify(value => value.LoadAsync(
+            SourceId,
+            "external-park",
+            It.IsAny<CancellationToken>()), Times.Exactly(2));
+    }
+
+    [Fact]
     public async Task IngestAsync_ShouldResolveMappingsInOneBatchAndPersistCompleteProvenance()
     {
         ExternalLiveTargetMapping mapping = CreateVerifiedMapping("external-1", "item-1");
@@ -33,6 +96,7 @@ public sealed class LiveLatestObservationIngestorTests
             mappings.Object,
             latest.Object,
             CreateIncidentRepository().Object,
+            CreateOperationalGate().Object,
             new FixedTimeProvider(ReceivedAtUtc.AddSeconds(1)));
 
         LiveLatestObservationIngestionResult result = await ingestor.IngestAsync(
@@ -79,6 +143,7 @@ public sealed class LiveLatestObservationIngestorTests
             mappings.Object,
             latest.Object,
             CreateIncidentRepository().Object,
+            CreateOperationalGate().Object,
             new FixedTimeProvider(ReceivedAtUtc));
 
         LiveLatestObservationIngestionResult result = await ingestor.IngestAsync(
@@ -111,6 +176,7 @@ public sealed class LiveLatestObservationIngestorTests
             mappings.Object,
             latest.Object,
             CreateIncidentRepository().Object,
+            CreateOperationalGate().Object,
             new FixedTimeProvider(ReceivedAtUtc));
 
         LiveLatestObservationIngestionResult result = await ingestor.IngestAsync(
@@ -148,6 +214,7 @@ public sealed class LiveLatestObservationIngestorTests
             mappings.Object,
             latest.Object,
             incidents.Object,
+            CreateOperationalGate().Object,
             new FixedTimeProvider(ReceivedAtUtc));
         ExternalLiveObservation conflict = new ExternalLiveObservation(
             "external-1",
@@ -203,6 +270,7 @@ public sealed class LiveLatestObservationIngestorTests
             mappings.Object,
             latest.Object,
             incidents.Object,
+            CreateOperationalGate().Object,
             new FixedTimeProvider(ReceivedAtUtc));
 
         await Assert.ThrowsAsync<InvalidOperationException>(() => ingestor.IngestAsync(
@@ -257,6 +325,30 @@ public sealed class LiveLatestObservationIngestorTests
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
         return repository;
+    }
+
+    private static Mock<ILiveOperationalGate> CreateOperationalGate(bool collectionEnabled = true)
+    {
+        Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.Setup(value => value.LoadAsync(
+                It.IsAny<LiveDataSourceId>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((LiveDataSourceId _, string externalEntityId, CancellationToken _) =>
+                CreateGateSnapshot(collectionEnabled, externalEntityId));
+        return gate;
+    }
+
+    private static LiveOperationalGateSnapshot CreateGateSnapshot(
+        bool collectionEnabled,
+        string externalEntityId = "external-park")
+    {
+        return new LiveOperationalGateSnapshot(
+            collectionEnabled,
+            true,
+            externalEntityId,
+            Array.Empty<LiveOperationalControl>(),
+            new LiveOperationalControlPolicy());
     }
 
     private static ExternalLiveObservation CreateObservation(

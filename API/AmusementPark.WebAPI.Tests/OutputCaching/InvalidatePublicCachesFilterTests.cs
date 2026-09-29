@@ -15,6 +15,38 @@ namespace AmusementPark.WebAPI.Tests.OutputCaching;
 public sealed class InvalidatePublicCachesFilterTests
 {
     [Fact]
+    public async Task OnActionExecutionAsync_WhenLiveMutationSucceeds_ShouldEvictOnlyLiveOutputCache()
+    {
+        Mock<IOutputCacheStore> outputCacheStore =
+            CreateOutputCacheStore(ApiOutputCachePolicyNames.PublicLiveDataTag);
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator =
+            new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver =
+            CreateResolver(CreateNoOpRequest());
+        PublicLiveCacheGeneration generation = new PublicLiveCacheGeneration();
+        InvalidatePublicCachesFilter filter = CreateFilter(
+            outputCacheStore,
+            ssrPageCacheInvalidator,
+            resolver,
+            generation);
+        ActionExecutingContext context = CreateExecutingContext(
+            HttpMethods.Put,
+            new InvalidatesPublicCacheAttribute(PublicCacheScope.LiveData));
+
+        await filter.OnActionExecutionAsync(
+            context,
+            () => Task.FromResult(CreateExecutedContext(context)));
+
+        outputCacheStore.VerifyAll();
+        Assert.Equal(1, generation.Current);
+        ssrPageCacheInvalidator.Verify(
+            value => value.InvalidateAsync(
+                It.IsAny<SsrPageCacheInvalidationRequest>(),
+                It.IsAny<CancellationToken>()),
+            Times.Never);
+    }
+
+    [Fact]
     public async Task OnActionExecutionAsync_WhenSuccessfulMutationWithScopes_ShouldEvictTagsAndInvalidateSsr()
     {
         Mock<IOutputCacheStore> outputCacheStore = new Mock<IOutputCacheStore>(MockBehavior.Strict);
@@ -310,12 +342,14 @@ public sealed class InvalidatePublicCachesFilterTests
     private static InvalidatePublicCachesFilter CreateFilter(
         Mock<IOutputCacheStore> outputCacheStore,
         Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator,
-        Mock<ISsrPageCacheInvalidationRequestResolver> resolver)
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver,
+        PublicLiveCacheGeneration? generation = null)
     {
         return new InvalidatePublicCachesFilter(
             outputCacheStore.Object,
             ssrPageCacheInvalidator.Object,
             resolver.Object,
+            generation ?? new PublicLiveCacheGeneration(),
             NullLogger<InvalidatePublicCachesFilter>.Instance);
     }
 

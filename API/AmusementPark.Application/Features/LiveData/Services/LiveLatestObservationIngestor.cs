@@ -10,13 +10,38 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
     private readonly ILiveTargetMappingRepository mappingRepository;
     private readonly ILiveLatestObservationRepository latestRepository;
     private readonly ILiveQualityIncidentRepository incidentRepository;
+    private readonly ILiveOperationalGate operationalGate;
+    private readonly LiveOperationalObservationWriter operationalWriter;
     private readonly TimeProvider timeProvider;
+
+    internal LiveLatestObservationIngestor(
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveLatestObservationRepository latestRepository,
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveOperationalGate operationalGate)
+        : this(
+            mappingRepository,
+            latestRepository,
+            incidentRepository,
+            operationalGate,
+            new LiveOperationalWriteCoordinator(),
+            TimeProvider.System)
+    {
+    }
 
     public LiveLatestObservationIngestor(
         ILiveTargetMappingRepository mappingRepository,
         ILiveLatestObservationRepository latestRepository,
-        ILiveQualityIncidentRepository incidentRepository)
-        : this(mappingRepository, latestRepository, incidentRepository, TimeProvider.System)
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveOperationalGate operationalGate,
+        LiveOperationalWriteCoordinator coordinator)
+        : this(
+            mappingRepository,
+            latestRepository,
+            incidentRepository,
+            operationalGate,
+            coordinator,
+            TimeProvider.System)
     {
     }
 
@@ -24,6 +49,24 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
         ILiveTargetMappingRepository mappingRepository,
         ILiveLatestObservationRepository latestRepository,
         ILiveQualityIncidentRepository incidentRepository,
+        ILiveOperationalGate operationalGate,
+        TimeProvider timeProvider)
+        : this(
+            mappingRepository,
+            latestRepository,
+            incidentRepository,
+            operationalGate,
+            new LiveOperationalWriteCoordinator(),
+            timeProvider)
+    {
+    }
+
+    internal LiveLatestObservationIngestor(
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveLatestObservationRepository latestRepository,
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveOperationalGate operationalGate,
+        LiveOperationalWriteCoordinator coordinator,
         TimeProvider timeProvider)
     {
         this.mappingRepository = mappingRepository
@@ -32,6 +75,12 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             ?? throw new ArgumentNullException(nameof(latestRepository));
         this.incidentRepository = incidentRepository
             ?? throw new ArgumentNullException(nameof(incidentRepository));
+        this.operationalGate = operationalGate
+            ?? throw new ArgumentNullException(nameof(operationalGate));
+        this.operationalWriter = new LiveOperationalObservationWriter(
+            this.latestRepository,
+            this.operationalGate,
+            coordinator);
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -58,11 +107,27 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             .ToDictionary(
                 static mapping => mapping.ExternalTarget.Id,
                 StringComparer.Ordinal);
+        string externalEntityId = mappings
+            .Select(static mapping => mapping.ExternalTarget.Type == LiveTargetType.Park
+                ? mapping.ExternalTarget.Id
+                : mapping.ExternalTarget.ParentId)
+            .FirstOrDefault(static value => !string.IsNullOrWhiteSpace(value))
+            ?? request.Observations
+                .FirstOrDefault(static observation => observation.TargetType == LiveTargetType.Park)
+                ?.ExternalTargetId
+            ?? string.Empty;
+        LiveOperationalGateSnapshot? operationalGate = externalEntityId.Length == 0
+            ? null
+            : await this.operationalGate.LoadAsync(
+                request.SourceId,
+                externalEntityId,
+                cancellationToken);
         Dictionary<string, LiveLatestObservation> latestByInternalTarget =
             new Dictionary<string, LiveLatestObservation>(StringComparer.Ordinal);
         List<LiveQualityIncident> incidents = new List<LiveQualityIncident>();
         int unmappedCount = 0;
         int ineligibleCount = 0;
+        int suppressedByOperationalControlCount = 0;
         int invalidFreshnessCount = 0;
         DateTime normalizedAtUtc = this.timeProvider.GetUtcNow().UtcDateTime;
         if (normalizedAtUtc < request.ReceivedAtUtc)
@@ -103,6 +168,16 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
                     null,
                     normalizedAtUtc,
                     correlationId));
+                continue;
+            }
+
+            if (operationalGate is null
+                || !operationalGate.AllowsCollection(
+                    mapping.Target.ParkId,
+                    mapping.Target.Type,
+                    mapping.Target.Id))
+            {
+                suppressedByOperationalControlCount++;
                 continue;
             }
 
@@ -180,15 +255,33 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
 
         await this.incidentRepository.SaveAsync(incidents, cancellationToken);
 
-        LiveLatestObservationWriteResult writeResult =
-            await this.latestRepository.WriteLatestAsync(
+        LiveLatestObservationWriteResult writeResult;
+        int suppressedAtWriteBoundary = 0;
+        if (externalEntityId.Length == 0)
+        {
+            writeResult = await this.latestRepository.WriteLatestAsync(
                 latestByInternalTarget.Values.ToArray(),
                 cancellationToken);
+        }
+        else
+        {
+            LiveOperationalObservationWriteResult operationalWrite =
+                await this.operationalWriter.WriteAsync(
+                    request.SourceId,
+                    externalEntityId,
+                    latestByInternalTarget.Values.ToArray(),
+                    cancellationToken);
+            writeResult = operationalWrite.WriteResult;
+            suppressedAtWriteBoundary = latestByInternalTarget.Count
+                - operationalWrite.AcceptedObservations.Count;
+        }
+
         return new LiveLatestObservationIngestionResult(
             writeResult.InsertedCount + writeResult.UpdatedCount,
             writeResult.IgnoredCount,
             unmappedCount,
             ineligibleCount,
+            suppressedByOperationalControlCount + suppressedAtWriteBoundary,
             invalidFreshnessCount,
             incidents.Count(static incident =>
                 incident.Reason != LiveQualityIncidentReason.ProviderDiagnostic),

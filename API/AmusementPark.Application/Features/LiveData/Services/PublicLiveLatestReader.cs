@@ -16,6 +16,7 @@ public sealed class PublicLiveLatestReader
     private readonly ILiveLatestObservationRepository observationRepository;
     private readonly ILiveTargetMappingRepository mappingRepository;
     private readonly ILiveDataSourceCatalog sourceCatalog;
+    private readonly ILiveOperationalGate operationalGate;
     private readonly PublicLiveTargetResultFactory resultFactory;
     private readonly TimeProvider timeProvider;
 
@@ -25,6 +26,7 @@ public sealed class PublicLiveLatestReader
         ILiveLatestObservationRepository observationRepository,
         ILiveTargetMappingRepository mappingRepository,
         ILiveDataSourceCatalog sourceCatalog,
+        ILiveOperationalGate operationalGate,
         PublicLiveTargetResultFactory resultFactory,
         TimeProvider? timeProvider = null)
     {
@@ -33,6 +35,7 @@ public sealed class PublicLiveLatestReader
         this.observationRepository = observationRepository;
         this.mappingRepository = mappingRepository;
         this.sourceCatalog = sourceCatalog;
+        this.operationalGate = operationalGate;
         this.resultFactory = resultFactory;
         this.timeProvider = timeProvider ?? TimeProvider.System;
     }
@@ -69,6 +72,16 @@ public sealed class PublicLiveLatestReader
         {
             return ApplicationResult<PublicLiveTargetResult>.Failure(
                 ApplicationErrors.EntityNotFound(nameof(Park), normalizedParkId));
+        }
+
+        LiveOperationalGateSnapshot gate = await this.operationalGate.LoadAsync(
+            publicTarget.SourceId,
+            publicTarget.ExternalEntityId,
+            cancellationToken);
+        if (!gate.AllowsPublicRead(normalizedParkId, LiveTargetType.Park, normalizedParkId))
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadTemporarilySuspended());
         }
 
         IReadOnlyCollection<LivePublicTargetCoverage> coverage =
@@ -146,6 +159,19 @@ public sealed class PublicLiveLatestReader
                 ApplicationErrors.EntityNotFound(nameof(ParkItem), normalizedParkItemId));
         }
 
+        LiveOperationalGateSnapshot gate = await this.operationalGate.LoadAsync(
+            publicTarget.SourceId,
+            publicTarget.ExternalEntityId,
+            cancellationToken);
+        if (!gate.AllowsPublicRead(
+            item.ParkId,
+            LiveTargetType.ParkItem,
+            normalizedParkItemId))
+        {
+            return ApplicationResult<PublicLiveTargetResult>.Failure(
+                LiveDataApplicationErrors.PublicReadTemporarilySuspended());
+        }
+
         IReadOnlyCollection<LivePublicTargetCoverage> coverage =
             await this.mappingRepository.GetEligiblePublicTargetCoverageByParkAsync(
                 publicTarget.SourceId,
@@ -216,6 +242,16 @@ public sealed class PublicLiveLatestReader
                 ApplicationErrors.EntityNotFound(nameof(Park), normalizedParkId));
         }
 
+        LiveOperationalGateSnapshot gate = await this.operationalGate.LoadAsync(
+            publicTarget.SourceId,
+            publicTarget.ExternalEntityId,
+            cancellationToken);
+        if (!gate.AllowsPublicRead(normalizedParkId, LiveTargetType.Park, normalizedParkId))
+        {
+            return ApplicationResult<PublicParkLiveItemsResult>.Failure(
+                LiveDataApplicationErrors.PublicReadTemporarilySuspended());
+        }
+
         IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetByParkIdAsync(
             normalizedParkId,
             false,
@@ -230,6 +266,10 @@ public sealed class PublicLiveLatestReader
             BuildCoverageByInternalTarget(coverage);
         ParkItem[] coveredItems = items
             .Where(item => coverageByInternalTarget.ContainsKey(item.Id))
+            .Where(item => gate.AllowsPublicRead(
+                normalizedParkId,
+                LiveTargetType.ParkItem,
+                item.Id))
             .ToArray();
         IReadOnlyCollection<string> visibleTargetIds = coveredItems
             .Select(static item => item.Id)

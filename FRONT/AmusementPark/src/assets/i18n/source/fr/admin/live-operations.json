@@ -1,0 +1,27 @@
+{
+  "admin": {
+    "liveOperations": {
+      "navTitle": "Pilotage des données live",
+      "shortcut": "Surveiller le direct et arrêter immédiatement une source, un parc ou une attraction.",
+      "kicker": "Sécurité opérationnelle",
+      "title": "Pilotage du direct",
+      "subtitle": "Surveille la collecte et coupe précisément ce qui ne doit plus être collecté ou affiché, sans redéploiement.",
+      "refresh": "Actualiser",
+      "loading": "Chargement de l’état opérationnel…",
+      "source": "Source active",
+      "never": "Jamais",
+      "generatedAt": "État calculé le {{date}}",
+      "configuration": { "title": "La configuration serveur impose un arrêt", "description": "Les commandes ci-dessous ne peuvent jamais réactiver ce que la configuration de production a désactivé." },
+      "metrics": { "aria": "Indicateurs des données live", "covered": "Correspondances utilisables", "candidates": "À vérifier", "quarantine": "En quarantaine", "failures": "Échecs consécutifs" },
+      "polling": { "kicker": "Collecte bornée", "title": "Santé du dernier passage", "lastSuccess": "Dernier succès", "lastStatus": "Dernier résultat", "nextAttempt": "Prochaine tentative", "circuit": "Circuit de protection", "closed": "Fermé, fonctionnement normal", "disposition": { "Suspended": "Suspendu par le pilotage", "OutsideActiveWindow": "Hors de la plage de collecte", "Success": "Réussi", "NotModified": "Aucun changement", "RateLimited": "Limité par la source", "Failed": "Échec" } },
+      "controls": { "kicker": "Arrêt d’urgence", "title": "Périmètres contrôlés", "description": "La source s’applique à tout le direct. Un parc ou une attraction peut ensuite être arrêté séparément." },
+      "scopeType": { "Source": "Toute la source", "Park": "Parc", "Target": "Attraction ou lieu" },
+      "state": { "running": "Collecte active", "stopped": "Collecte arrêtée", "visible": "Visible publiquement", "hidden": "Masqué du public" },
+      "actions": { "mappings": "Gérer les correspondances", "replay": "Rejouer la quarantaine", "replaying": "Rejeu en cours…", "stopCollection": "Arrêter la collecte", "resumeCollection": "Reprendre la collecte", "hidePublicly": "Masquer du public", "showPublicly": "Rendre visible" },
+      "confirm": { "stopCollection": "Confirmer l’arrêt de la collecte", "resumeCollection": "Confirmer la reprise de la collecte", "hidePublicly": "Confirmer le masquage public", "showPublicly": "Confirmer le retour public", "reason": "Motif obligatoire", "placeholder": "Explique brièvement la décision…", "apply": "Appliquer maintenant", "cancel": "Annuler" },
+      "technical": { "title": "Versions, licence et traçabilité", "adapter": "Adaptateur", "transformation": "Transformation", "policy": "Politique d’usage", "reviewed": "Licence revue le", "terms": "Consulter les conditions de la source" },
+      "messages": { "updated": "La commande est appliquée et conservée dans l’historique.", "replayed": "Le lot de quarantaine a été rejoué de façon bornée.", "replayPartial": "Une partie du lot a été rejouée ; certains incidents restent bloqués.", "replayBlocked": "Aucun incident n’a pu être rejoué : les contrôles actuels les bloquent encore.", "replayNoChange": "Aucun incident rejouable n’a été trouvé." },
+      "errors": { "load": "Impossible de charger le pilotage des données live.", "mutation": "La commande n’a pas été enregistrée. Recharge l’écran et réessaie.", "replay": "Le lot de quarantaine n’a pas pu être rejoué." }
+    }
+  }
+}

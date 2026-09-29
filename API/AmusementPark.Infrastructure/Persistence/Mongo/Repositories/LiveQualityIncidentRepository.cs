@@ -17,6 +17,37 @@ public sealed class LiveQualityIncidentRepository : ILiveQualityIncidentReposito
             settings.LiveQualityIncidentsCollectionName);
     }
 
+    public Task<long> CountPendingAsync(
+        LiveDataSourceId sourceId,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<LiveQualityIncidentDocument> filter =
+            Builders<LiveQualityIncidentDocument>.Filter.Eq(
+                static document => document.SourceId,
+                sourceId.Value)
+            & Builders<LiveQualityIncidentDocument>.Filter.Eq(
+                static document => document.Status,
+                LiveQualityIncidentStatus.Pending)
+            & Builders<LiveQualityIncidentDocument>.Filter.Gt(
+                static document => document.ExpiresAtUtc,
+                nowUtc);
+        return this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+    }
+
+    public Task<long> CountReplayablePendingAsync(
+        LiveDataSourceId sourceId,
+        IReadOnlyCollection<string> externalTargetIds,
+        DateTime nowUtc,
+        CancellationToken cancellationToken)
+    {
+        FilterDefinition<LiveQualityIncidentDocument> filter = BuildScopedReplayFilter(
+            sourceId,
+            externalTargetIds,
+            nowUtc);
+        return this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+    }
+
     public async Task SaveAsync(
         IReadOnlyCollection<LiveQualityIncident> incidents,
         CancellationToken cancellationToken)
@@ -48,16 +79,37 @@ public sealed class LiveQualityIncidentRepository : ILiveQualityIncidentReposito
     }
 
     public async Task<IReadOnlyCollection<LiveQualityIncident>> GetReplayCandidatesAsync(
+        LiveDataSourceId sourceId,
+        IReadOnlyCollection<string> externalTargetIds,
         int maximumCount,
         DateTime nowUtc,
         CancellationToken cancellationToken)
     {
         List<LiveQualityIncidentDocument> documents = await this.collection
-            .Find(LiveQualityIncidentMongoDefinitions.BuildReplayCandidatesFilter(nowUtc))
+            .Find(BuildScopedReplayFilter(sourceId, externalTargetIds, nowUtc))
             .Sort(LiveQualityIncidentMongoDefinitions.BuildReplayCandidatesSort())
             .Limit(maximumCount)
             .ToListAsync(cancellationToken);
         return documents.Select(static document => document.ToDomain()).ToArray();
+    }
+
+    internal static FilterDefinition<LiveQualityIncidentDocument> BuildScopedReplayFilter(
+        LiveDataSourceId sourceId,
+        IReadOnlyCollection<string> externalTargetIds,
+        DateTime nowUtc)
+    {
+        ArgumentNullException.ThrowIfNull(externalTargetIds);
+        string[] normalizedTargetIds = externalTargetIds
+            .Where(static value => !string.IsNullOrWhiteSpace(value))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        return Builders<LiveQualityIncidentDocument>.Filter.Eq(
+                static document => document.SourceId,
+                sourceId.Value)
+            & Builders<LiveQualityIncidentDocument>.Filter.In(
+                "observation.externalTargetId",
+                normalizedTargetIds)
+            & LiveQualityIncidentMongoDefinitions.BuildReplayCandidatesFilter(nowUtc);
     }
 
     public async Task<int> MarkResolvedAsync(

@@ -33,4 +33,6 @@ public static class LiveDataErrorCodes
     public const string InvalidQueue = "live-data.invalid-queue";
 
     public const string InvalidPollingPolicy = "live-data.invalid-polling-policy";
+
+    public const string InvalidOperationalControl = "live-data.invalid-operational-control";
 }

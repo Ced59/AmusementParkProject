@@ -14,6 +14,124 @@ public sealed class LivePollingOrchestratorTests
     private static readonly LiveDataSourceId SourceId = LiveDataSourceId.Parse("pilot");
 
     [Fact]
+    public async Task ExecuteAsync_WhenOperationalCollectionIsStopped_ShouldNotAcquireLeaseOrCallProvider()
+    {
+        Mock<ILivePollingStateRepository> repository =
+            new Mock<ILivePollingStateRepository>(MockBehavior.Strict);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        LivePollingOrchestrator orchestrator = new LivePollingOrchestrator(
+            new[] { adapter.Object },
+            repository.Object,
+            CreateIngestor().Object,
+            CreateOperationalGate(collectionEnabled: false).Object,
+            new FixedTimeProvider(NowUtc),
+            static () => 0);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.Suspended, result.Disposition);
+        repository.VerifyNoOtherCalls();
+        adapter.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_WhenSourceStopWinsAdmission_ShouldNotCallProvider()
+    {
+        LiveOperationalWriteCoordinator coordinator = new LiveOperationalWriteCoordinator();
+        TaskCompletionSource stopEntered = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        TaskCompletionSource releaseStop = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        Task<int> stop = coordinator.RunAsync(
+            SourceId,
+            "entity-1",
+            async _ =>
+            {
+                stopEntered.SetResult();
+                await releaseStop.Task;
+                return 1;
+            },
+            CancellationToken.None);
+        await stopEntered.Task;
+
+        TaskCompletionSource leaseAcquired = new TaskCompletionSource(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        LivePollingCompletion? savedCompletion = null;
+        Mock<ILivePollingStateRepository> repository =
+            new Mock<ILivePollingStateRepository>(MockBehavior.Strict);
+        repository.Setup(value => value.TryAcquireAsync(
+                It.IsAny<LivePollingLeaseRequest>(),
+                It.IsAny<CancellationToken>()))
+            .Callback(() => leaseAcquired.SetResult())
+            .ReturnsAsync(new LivePollingLease(
+                SourceId,
+                "entity-1",
+                "worker-1",
+                "lease-1",
+                "\"old\"",
+                NowUtc.AddMinutes(-5),
+                0,
+                null));
+        repository.Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingCompletion, CancellationToken>(
+                (completion, _) => savedCompletion = completion)
+            .ReturnsAsync(true);
+        Mock<ILiveOperationalGate> gate =
+            new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.SetupSequence(value => value.LoadAsync(
+                SourceId,
+                "entity-1",
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveOperationalGateSnapshot(
+                true,
+                true,
+                "entity-1",
+                Array.Empty<LiveOperationalControl>(),
+                new LiveOperationalControlPolicy()))
+            .ReturnsAsync(new LiveOperationalGateSnapshot(
+                false,
+                true,
+                "entity-1",
+                Array.Empty<LiveOperationalControl>(),
+                new LiveOperationalControlPolicy()));
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        LivePollingOrchestrator orchestrator = new LivePollingOrchestrator(
+            new[] { adapter.Object },
+            repository.Object,
+            CreateIngestor().Object,
+            gate.Object,
+            coordinator,
+            new FixedTimeProvider(NowUtc),
+            static () => 0);
+
+        Task<LivePollingExecutionResult> execution = orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+        await leaseAcquired.Task;
+        releaseStop.SetResult();
+
+        Assert.Equal(1, await stop);
+        LivePollingExecutionResult result = await execution;
+        Assert.Equal(LivePollingExecutionDisposition.Suspended, result.Disposition);
+        Assert.NotNull(savedCompletion);
+        Assert.Equal(
+            LivePollingCompletionDisposition.Suspended,
+            savedCompletion.Disposition);
+        Assert.Equal(NowUtc, savedCompletion.NextAttemptAtUtc);
+        adapter.Verify(value => value.FetchLatestAsync(
+            It.IsAny<LiveProviderReadRequest>(),
+            It.IsAny<CancellationToken>()), Times.Never);
+    }
+
+    [Fact]
     public async Task ExecuteAsync_WhenTargetIsNotDue_ShouldNotCallProvider()
     {
         Mock<ILivePollingStateRepository> repository = CreateRepositoryWithoutLease();
@@ -74,6 +192,7 @@ public sealed class LivePollingOrchestratorTests
             new[] { adapter.Object },
             repository.Object,
             CreateIngestor().Object,
+            CreateOperationalGate().Object,
             new FixedTimeProvider(nightUtc),
             static () => 0);
 
@@ -111,6 +230,7 @@ public sealed class LivePollingOrchestratorTests
                 "worker-1",
                 "lease-1",
                 null,
+                null,
                 0,
                 null));
         repository
@@ -130,6 +250,7 @@ public sealed class LivePollingOrchestratorTests
             new[] { adapter.Object },
             repository.Object,
             CreateIngestor().Object,
+            CreateOperationalGate().Object,
             timeProvider.Object,
             static () => 0);
 
@@ -187,6 +308,111 @@ public sealed class LivePollingOrchestratorTests
         Assert.Equal(NowUtc.AddMinutes(5), savedCompletion.NextAttemptAtUtc);
         Assert.True(savedCompletion.ReplaceEntityTag);
         Assert.Equal("\"new\"", savedCompletion.EntityTag);
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_WhenOperationalControlSuppressesData_ShouldPreserveConditionalPolling()
+    {
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease(
+            entityTag: "\"old\"");
+        LivePollingCompletion? savedCompletion = null;
+        repository
+            .Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<LivePollingCompletion, CancellationToken>(
+                (completion, _) => savedCompletion = completion)
+            .ReturnsAsync(true);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        adapter
+            .Setup(value => value.FetchLatestAsync(
+                It.IsAny<LiveProviderReadRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveProviderReadResult(
+                LiveProviderReadDisposition.Success,
+                NowUtc,
+                entityTag: "\"new\""));
+        Mock<ILiveLatestObservationIngestor> ingestor = CreateIngestor();
+        ingestor
+            .Setup(value => value.IngestAsync(
+                It.IsAny<LiveLatestObservationIngestionRequest>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveLatestObservationIngestionResult(
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0));
+        LivePollingOrchestrator orchestrator = CreateOrchestrator(
+            repository,
+            adapter,
+            ingestor);
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.Success, result.Disposition);
+        Assert.NotNull(savedCompletion);
+        Assert.True(savedCompletion.ReplaceEntityTag);
+        Assert.Equal("\"new\"", savedCompletion.EntityTag);
+    }
+
+    [Fact]
+    public async Task ExecuteAsync_AfterCollectionResume_ShouldFetchOnceWithoutEntityTag()
+    {
+        DateTime lastSuccessfulPollAtUtc = NowUtc.AddMinutes(-10);
+        Mock<ILivePollingStateRepository> repository = CreateRepositoryWithLease(
+            entityTag: "\"old\"",
+            lastSuccessfulPollAtUtc: lastSuccessfulPollAtUtc);
+        repository
+            .Setup(value => value.CompleteAsync(
+                It.IsAny<LivePollingCompletion>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(true);
+        Mock<ILiveDataProviderAdapter> adapter = CreateAdapter();
+        adapter
+            .Setup(value => value.FetchLatestAsync(
+                It.Is<LiveProviderReadRequest>(request => request.EntityTag == null),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveProviderReadResult(
+                LiveProviderReadDisposition.Success,
+                NowUtc,
+                entityTag: "\"new\""));
+        LiveOperationalControl resumed = new LiveOperationalControl(
+            Guid.NewGuid(),
+            new LiveOperationalControlScope(
+                LiveOperationalScopeType.Target,
+                SourceId,
+                "entity-1",
+                "park-1",
+                LiveTargetType.ParkItem,
+                "item-1"),
+            true,
+            true,
+            2,
+            1,
+            "admin-1",
+            "Réouverture du périmètre",
+            NowUtc.AddMinutes(-5));
+        LivePollingOrchestrator orchestrator = CreateOrchestrator(
+            repository,
+            adapter,
+            operationalGate: CreateOperationalGate(controls: new[] { resumed }));
+
+        LivePollingExecutionResult result = await orchestrator.ExecuteAsync(
+            CreateTarget(),
+            "worker-1",
+            TimeSpan.FromMinutes(1),
+            CancellationToken.None);
+
+        Assert.Equal(LivePollingExecutionDisposition.Success, result.Disposition);
+        adapter.VerifyAll();
     }
 
     [Fact]
@@ -305,12 +531,14 @@ public sealed class LivePollingOrchestratorTests
     private static LivePollingOrchestrator CreateOrchestrator(
         Mock<ILivePollingStateRepository> repository,
         Mock<ILiveDataProviderAdapter> adapter,
-        Mock<ILiveLatestObservationIngestor>? ingestor = null)
+        Mock<ILiveLatestObservationIngestor>? ingestor = null,
+        Mock<ILiveOperationalGate>? operationalGate = null)
     {
         return new LivePollingOrchestrator(
             new[] { adapter.Object },
             repository.Object,
             (ingestor ?? CreateIngestor()).Object,
+            (operationalGate ?? CreateOperationalGate()).Object,
             new FixedTimeProvider(NowUtc),
             static () => 0);
     }
@@ -329,6 +557,7 @@ public sealed class LivePollingOrchestratorTests
 
     private static Mock<ILivePollingStateRepository> CreateRepositoryWithLease(
         string? entityTag = null,
+        DateTime? lastSuccessfulPollAtUtc = null,
         int consecutiveFailures = 0)
     {
         Mock<ILivePollingStateRepository> repository =
@@ -343,6 +572,7 @@ public sealed class LivePollingOrchestratorTests
                 "worker-1",
                 "lease-1",
                 entityTag,
+                lastSuccessfulPollAtUtc,
                 consecutiveFailures,
                 null));
         return repository;
@@ -375,8 +605,27 @@ public sealed class LivePollingOrchestratorTests
             .Setup(value => value.IngestAsync(
                 It.IsAny<LiveLatestObservationIngestionRequest>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new LiveLatestObservationIngestionResult(0, 0, 0, 0, 0, 0, 0));
+            .ReturnsAsync(new LiveLatestObservationIngestionResult(0, 0, 0, 0, 0, 0, 0, 0));
         return ingestor;
+    }
+
+    private static Mock<ILiveOperationalGate> CreateOperationalGate(
+        bool collectionEnabled = true,
+        IReadOnlyCollection<LiveOperationalControl>? controls = null)
+    {
+        Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.Setup(value => value.LoadAsync(
+                It.IsAny<LiveDataSourceId>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((LiveDataSourceId _, string externalEntityId, CancellationToken _) =>
+                new LiveOperationalGateSnapshot(
+                    collectionEnabled,
+                    true,
+                    externalEntityId,
+                    controls ?? Array.Empty<LiveOperationalControl>(),
+                    new LiveOperationalControlPolicy()));
+        return gate;
     }
 
     private static LivePollingTarget CreateTarget()

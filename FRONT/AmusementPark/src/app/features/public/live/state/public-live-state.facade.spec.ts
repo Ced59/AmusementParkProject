@@ -61,6 +61,35 @@ describe('PublicLiveStateFacade', () => {
     expect(port.getParkItem).toHaveBeenCalledTimes(1);
   });
 
+  it('retries a temporary operational stop and restores live data without a page reload', () => {
+    vi.useFakeTimers();
+    let requestCount: number = 0;
+    const port: PublicLiveDataPort = createPort({
+      getParkItem: () => {
+        requestCount++;
+        return requestCount === 1
+          ? throwError(() => new HttpErrorResponse({
+            status: 404,
+            error: {
+              status: 404,
+              title: 'Not Found',
+              errorCode: 'live-data.public-read.temporarily-suspended'
+            }
+          }))
+          : of(createTarget());
+      }
+    });
+    const facade: PublicLiveStateFacade = configureFacade(port, true);
+
+    facade.watchParkItem('item-1');
+
+    expect(facade.state().kind).toBe('disabled');
+    vi.advanceTimersByTime(300_000);
+
+    expect(port.getParkItem).toHaveBeenCalledTimes(2);
+    expect(facade.state().kind).toBe('ready');
+  });
+
   it('keeps the offline warning when an in-flight request succeeds after disconnection', () => {
     const response: Subject<PublicLiveTarget> = new Subject<PublicLiveTarget>();
     const onlineSpy = vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(true);

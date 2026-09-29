@@ -3210,6 +3210,101 @@
         "mutation": "Não foi possível guardar a decisão. Atualiza a lista e tenta novamente."
       }
     },
+    "liveOperations": {
+      "navTitle": "Controlo dos dados em direto",
+      "shortcut": "Monitoriza os dados em direto e interrompe imediatamente uma fonte, parque ou atração.",
+      "kicker": "Segurança operacional",
+      "title": "Controlo do direto",
+      "subtitle": "Monitoriza a recolha e interrompe com precisão o que já não deve ser recolhido ou apresentado, sem nova implementação.",
+      "refresh": "Atualizar",
+      "loading": "A carregar o estado operacional…",
+      "source": "Fonte ativa",
+      "never": "Nunca",
+      "generatedAt": "Estado calculado em {{date}}",
+      "configuration": {
+        "title": "A configuração do servidor impõe uma paragem",
+        "description": "Os controlos abaixo nunca podem reativar algo desativado pela configuração de produção."
+      },
+      "metrics": {
+        "aria": "Indicadores dos dados em direto",
+        "covered": "Correspondências utilizáveis",
+        "candidates": "Por verificar",
+        "quarantine": "Em quarentena",
+        "failures": "Falhas consecutivas"
+      },
+      "polling": {
+        "kicker": "Recolha limitada",
+        "title": "Estado da última execução",
+        "lastSuccess": "Último sucesso",
+        "lastStatus": "Último resultado",
+        "nextAttempt": "Próxima tentativa",
+        "circuit": "Circuito de proteção",
+        "closed": "Fechado, funcionamento normal",
+        "disposition": {
+          "Suspended": "Suspenso pelo controlo operacional",
+          "OutsideActiveWindow": "Fora da janela de recolha",
+          "Success": "Com êxito",
+          "NotModified": "Sem alterações",
+          "RateLimited": "Limitado pela fonte",
+          "Failed": "Falhou"
+        }
+      },
+      "controls": {
+        "kicker": "Paragem de emergência",
+        "title": "Âmbitos controlados",
+        "description": "A fonte aplica-se a todos os dados em direto. Um parque ou atração pode depois ser interrompido separadamente."
+      },
+      "scopeType": {
+        "Source": "Fonte completa",
+        "Park": "Parque",
+        "Target": "Atração ou local"
+      },
+      "state": {
+        "running": "Recolha ativa",
+        "stopped": "Recolha interrompida",
+        "visible": "Visível publicamente",
+        "hidden": "Oculto do público"
+      },
+      "actions": {
+        "mappings": "Gerir correspondências",
+        "replay": "Reprocessar a quarentena",
+        "replaying": "A reprocessar…",
+        "stopCollection": "Interromper recolha",
+        "resumeCollection": "Retomar recolha",
+        "hidePublicly": "Ocultar do público",
+        "showPublicly": "Tornar visível"
+      },
+      "confirm": {
+        "stopCollection": "Confirmar a interrupção da recolha",
+        "resumeCollection": "Confirmar a retoma da recolha",
+        "hidePublicly": "Confirmar a ocultação pública",
+        "showPublicly": "Confirmar o regresso público",
+        "reason": "Motivo obrigatório",
+        "placeholder": "Explica brevemente a decisão…",
+        "apply": "Aplicar agora",
+        "cancel": "Cancelar"
+      },
+      "technical": {
+        "title": "Versões, licença e rastreabilidade",
+        "adapter": "Adaptador",
+        "transformation": "Transformação",
+        "policy": "Política de utilização",
+        "reviewed": "Licença revista em",
+        "terms": "Consultar as condições da fonte"
+      },
+      "messages": {
+        "updated": "O controlo foi aplicado e guardado no histórico.",
+        "replayed": "O lote em quarentena foi reprocessado com dimensão limitada.",
+        "replayPartial": "Parte do lote foi reprocessada; alguns incidentes continuam bloqueados.",
+        "replayBlocked": "Nenhum incidente pôde ser reprocessado porque os controlos atuais ainda o bloqueiam.",
+        "replayNoChange": "Não foi encontrado nenhum incidente que pudesse ser reprocessado."
+      },
+      "errors": {
+        "load": "Não foi possível carregar o controlo dos dados em direto.",
+        "mutation": "O controlo não foi guardado. Recarrega a página e tenta novamente.",
+        "replay": "Não foi possível reprocessar o lote em quarentena."
+      }
+    },
     "loading": "A carregar...",
     "m14": {
       "kicker": "Administração",

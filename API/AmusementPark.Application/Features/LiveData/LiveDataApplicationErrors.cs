@@ -11,6 +11,13 @@ public static class LiveDataApplicationErrors
             "Public live data is not enabled.");
     }
 
+    public static ApplicationError PublicReadTemporarilySuspended()
+    {
+        return ApplicationError.NotFound(
+            "live-data.public-read.temporarily-suspended",
+            "Public live data is temporarily suspended.");
+    }
+
     public static ApplicationError InvalidMapping(string? message = null)
     {
         return ApplicationError.Validation(
@@ -73,5 +80,27 @@ public static class LiveDataApplicationErrors
         return ApplicationError.Validation(
             "live-data.quality.replay.invalid",
             "The live quality replay request is invalid.");
+    }
+
+    public static ApplicationError InvalidOperationalControl(string? message = null)
+    {
+        return ApplicationError.Validation(
+            "live-data.operational-control.invalid",
+            message ?? "The live operational control is invalid.");
+    }
+
+    public static ApplicationError OperationalControlConflict(int currentRevision)
+    {
+        return ApplicationError.Conflict(
+            "live-data.operational-control.revision-conflict",
+            "The live operational control changed during this edit. Reload its latest revision.",
+            currentRevision);
+    }
+
+    public static ApplicationError OperationsUnavailable()
+    {
+        return ApplicationError.NotFound(
+            "live-data.operations.unavailable",
+            "No live data pilot is configured for operations.");
     }
 }

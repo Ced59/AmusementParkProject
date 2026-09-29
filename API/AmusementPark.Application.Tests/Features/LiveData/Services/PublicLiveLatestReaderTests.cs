@@ -39,6 +39,37 @@ public sealed class PublicLiveLatestReaderTests
         observations.VerifyNoOtherCalls();
     }
 
+    [Fact]
+    public async Task ReadParkItemAsync_WhenOperationalScopeIsHidden_ShouldReturnNotFoundBeforeObservations()
+    {
+        Mock<IParkRepository> parks = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> items = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<ILiveLatestObservationRepository> observations =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        Mock<ILiveTargetMappingRepository> mappings =
+            new Mock<ILiveTargetMappingRepository>(MockBehavior.Strict);
+        items.Setup(repository => repository.GetByIdAsync("item-1", false, CancellationToken.None))
+            .ReturnsAsync(CreateItem());
+        parks.Setup(repository => repository.GetByIdAsync("park-1", false, CancellationToken.None))
+            .ReturnsAsync(CreatePark());
+        PublicLiveLatestReader reader = CreateReader(
+            parks,
+            items,
+            observations,
+            mappings,
+            operationalGate: CreateOperationalGate(publicReadEnabled: false));
+
+        AmusementPark.Application.Errors.ApplicationResult<PublicLiveTargetResult> result =
+            await reader.ReadParkItemAsync("item-1", CancellationToken.None);
+
+        Assert.False(result.IsSuccess);
+        Assert.Equal(
+            "live-data.public-read.temporarily-suspended",
+            Assert.Single(result.Errors).Code);
+        mappings.VerifyNoOtherCalls();
+        observations.VerifyNoOtherCalls();
+    }
+
     [Theory]
     [InlineData(0)]
     [InlineData(null)]
@@ -292,7 +323,8 @@ public sealed class PublicLiveLatestReaderTests
         Mock<IParkItemRepository> items,
         Mock<ILiveLatestObservationRepository> observations,
         Mock<ILiveTargetMappingRepository>? mappings = null,
-        Mock<ILiveDataSourceCatalog>? sourceCatalog = null)
+        Mock<ILiveDataSourceCatalog>? sourceCatalog = null,
+        Mock<ILiveOperationalGate>? operationalGate = null)
     {
         Mock<ILiveDataSourceCatalog> catalog = sourceCatalog
             ?? new Mock<ILiveDataSourceCatalog>(MockBehavior.Strict);
@@ -326,10 +358,28 @@ public sealed class PublicLiveLatestReaderTests
             observations.Object,
             mappingRepository.Object,
             catalog.Object,
+            (operationalGate ?? CreateOperationalGate()).Object,
             new PublicLiveTargetResultFactory(
                 catalog.Object,
                 new LiveLatestObservationSelectionPolicy()),
             clock.Object);
+    }
+
+    private static Mock<ILiveOperationalGate> CreateOperationalGate(bool publicReadEnabled = true)
+    {
+        Mock<ILiveOperationalGate> gate = new Mock<ILiveOperationalGate>(MockBehavior.Strict);
+        gate.Setup(value => value.LoadAsync(
+                It.IsAny<LiveDataSourceId>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync((LiveDataSourceId _, string externalEntityId, CancellationToken _) =>
+                new LiveOperationalGateSnapshot(
+                    true,
+                    publicReadEnabled,
+                    externalEntityId,
+                    Array.Empty<LiveOperationalControl>(),
+                    new LiveOperationalControlPolicy()));
+        return gate;
     }
 
     private static LiveLatestObservation CreateObservation(

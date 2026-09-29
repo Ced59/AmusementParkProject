@@ -196,7 +196,11 @@ public sealed class ParkDataEditorImageCacheInvalidationTests
             this.images.Object,
             new Mock<IStandaloneAttractionRepository>(MockBehavior.Strict).Object);
         InvalidatePublicCachesFilter filter = new InvalidatePublicCachesFilter(
-            this.outputCache.Object, this.ssrCache.Object, resolver, NullLogger<InvalidatePublicCachesFilter>.Instance);
+            this.outputCache.Object,
+            this.ssrCache.Object,
+            resolver,
+            new PublicLiveCacheGeneration(),
+            NullLogger<InvalidatePublicCachesFilter>.Instance);
         DefaultHttpContext http = new DefaultHttpContext();
         http.Request.Method = method;
         RouteData routes = new RouteData();
