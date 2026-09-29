@@ -32,6 +32,7 @@ public sealed class LiveLatestObservationIngestorTests
         LiveLatestObservationIngestor ingestor = new LiveLatestObservationIngestor(
             mappings.Object,
             latest.Object,
+            CreateIncidentRepository().Object,
             new FixedTimeProvider(ReceivedAtUtc.AddSeconds(1)));
 
         LiveLatestObservationIngestionResult result = await ingestor.IngestAsync(
@@ -77,6 +78,7 @@ public sealed class LiveLatestObservationIngestorTests
         LiveLatestObservationIngestor ingestor = new LiveLatestObservationIngestor(
             mappings.Object,
             latest.Object,
+            CreateIncidentRepository().Object,
             new FixedTimeProvider(ReceivedAtUtc));
 
         LiveLatestObservationIngestionResult result = await ingestor.IngestAsync(
@@ -108,6 +110,7 @@ public sealed class LiveLatestObservationIngestorTests
         LiveLatestObservationIngestor ingestor = new LiveLatestObservationIngestor(
             mappings.Object,
             latest.Object,
+            CreateIncidentRepository().Object,
             new FixedTimeProvider(ReceivedAtUtc));
 
         LiveLatestObservationIngestionResult result = await ingestor.IngestAsync(
@@ -116,6 +119,97 @@ public sealed class LiveLatestObservationIngestorTests
 
         Assert.Equal(0, result.PersistedCount);
         Assert.Equal(1, result.InvalidFreshnessCount);
+    }
+
+    [Fact]
+    public async Task IngestAsync_ShouldQuarantineConflictAndProviderDiagnostic()
+    {
+        ExternalLiveTargetMapping mapping = CreateVerifiedMapping("external-1", "item-1");
+        Mock<ILiveTargetMappingRepository> mappings = CreateMappingRepository(new[] { mapping });
+        Mock<ILiveLatestObservationRepository> latest =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        latest
+            .Setup(value => value.WriteLatestAsync(
+                It.Is<IReadOnlyCollection<LiveLatestObservation>>(observations =>
+                    observations.Count == 0),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new LiveLatestObservationWriteResult(0, 0, 0));
+        IReadOnlyCollection<LiveQualityIncident>? saved = null;
+        Mock<ILiveQualityIncidentRepository> incidents =
+            new Mock<ILiveQualityIncidentRepository>(MockBehavior.Strict);
+        incidents
+            .Setup(value => value.SaveAsync(
+                It.IsAny<IReadOnlyCollection<LiveQualityIncident>>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<IReadOnlyCollection<LiveQualityIncident>, CancellationToken>(
+                (values, _) => saved = values)
+            .Returns(Task.CompletedTask);
+        LiveLatestObservationIngestor ingestor = new LiveLatestObservationIngestor(
+            mappings.Object,
+            latest.Object,
+            incidents.Object,
+            new FixedTimeProvider(ReceivedAtUtc));
+        ExternalLiveObservation conflict = new ExternalLiveObservation(
+            "external-1",
+            "Attraction",
+            LiveTargetType.ParkItem,
+            LiveOperationalStatus.Closed,
+            ReceivedAtUtc.AddMinutes(-1),
+            new[] { new LiveQueueObservation(LiveQueueKind.Standby, 20, false) });
+        LiveLatestObservationIngestionRequest request = CreateRequest(conflict) with
+        {
+            Diagnostics = new[]
+            {
+                new LiveProviderDiagnostic(
+                    LiveProviderDiagnosticCodes.UnknownStatus,
+                    "external-2",
+                    "status"),
+            },
+        };
+
+        LiveLatestObservationIngestionResult result = await ingestor.IngestAsync(
+            request,
+            CancellationToken.None);
+
+        Assert.Equal(1, result.QuarantinedCount);
+        Assert.Equal(1, result.DiagnosticIncidentCount);
+        Assert.Collection(
+            saved!.OrderBy(static incident => incident.Reason),
+            incident => Assert.Equal(
+                LiveQualityIncidentReason.StatusQueueConflict,
+                incident.Reason),
+            incident =>
+            {
+                Assert.Equal(LiveQualityIncidentReason.ProviderDiagnostic, incident.Reason);
+                Assert.Equal("external-2", incident.DiagnosticExternalTargetId);
+            });
+    }
+
+    [Fact]
+    public async Task IngestAsync_ShouldNotWriteLatestWhenQuarantinePersistenceFails()
+    {
+        Mock<ILiveTargetMappingRepository> mappings = CreateMappingRepository(
+            Array.Empty<ExternalLiveTargetMapping>());
+        Mock<ILiveQualityIncidentRepository> incidents =
+            new Mock<ILiveQualityIncidentRepository>(MockBehavior.Strict);
+        incidents
+            .Setup(value => value.SaveAsync(
+                It.IsAny<IReadOnlyCollection<LiveQualityIncident>>(),
+                It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new InvalidOperationException("quarantine unavailable"));
+        Mock<ILiveLatestObservationRepository> latest =
+            new Mock<ILiveLatestObservationRepository>(MockBehavior.Strict);
+        LiveLatestObservationIngestor ingestor = new LiveLatestObservationIngestor(
+            mappings.Object,
+            latest.Object,
+            incidents.Object,
+            new FixedTimeProvider(ReceivedAtUtc));
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() => ingestor.IngestAsync(
+            CreateRequest(CreateObservation("unmapped", ReceivedAtUtc.AddMinutes(-1))),
+            CancellationToken.None));
+
+        latest.VerifyNoOtherCalls();
     }
 
     private static Mock<ILiveTargetMappingRepository> CreateMappingRepository(
@@ -149,7 +243,20 @@ public sealed class LiveLatestObservationIngestorTests
                 TimeSpan.FromMinutes(1)),
             ReceivedAtUtc,
             observations,
+            Array.Empty<LiveProviderDiagnostic>(),
             new string('b', 64));
+    }
+
+    private static Mock<ILiveQualityIncidentRepository> CreateIncidentRepository()
+    {
+        Mock<ILiveQualityIncidentRepository> repository =
+            new Mock<ILiveQualityIncidentRepository>(MockBehavior.Strict);
+        repository
+            .Setup(value => value.SaveAsync(
+                It.IsAny<IReadOnlyCollection<LiveQualityIncident>>(),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        return repository;
     }
 
     private static ExternalLiveObservation CreateObservation(

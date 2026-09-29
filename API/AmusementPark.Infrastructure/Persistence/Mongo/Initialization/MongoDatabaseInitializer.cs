@@ -1123,6 +1123,10 @@ private readonly IMongoDatabase database;
             this.settings.LiveLatestObservationsCollectionName,
             cancellationToken);
         await this.InitializeLiveLatestObservationIndexesAsync(cancellationToken);
+        await this.EnsureCollectionExistsAsync(
+            this.settings.LiveQualityIncidentsCollectionName,
+            cancellationToken);
+        await this.InitializeLiveQualityIncidentIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.ParkFoundersCollectionName, cancellationToken);
         await this.InitializeParkFoundersIndexesAsync(cancellationToken);
@@ -2319,6 +2323,17 @@ private async Task InitializeParkDataEditorAccessTokensIndexesAsync(Cancellation
                 this.settings.LiveLatestObservationsCollectionName);
         await observations.Indexes.CreateManyAsync(
             LiveLatestObservationMongoDefinitions.BuildIndexes(),
+            cancellationToken);
+    }
+
+    private async Task InitializeLiveQualityIncidentIndexesAsync(
+        CancellationToken cancellationToken)
+    {
+        IMongoCollection<LiveQualityIncidentDocument> incidents =
+            this.database.GetCollection<LiveQualityIncidentDocument>(
+                this.settings.LiveQualityIncidentsCollectionName);
+        await incidents.Indexes.CreateManyAsync(
+            LiveQualityIncidentMongoDefinitions.BuildIndexes(),
             cancellationToken);
     }
 

@@ -11,4 +11,5 @@ public sealed record LiveLatestObservationIngestionRequest(
     LiveFreshnessPolicy FreshnessPolicy,
     DateTime ReceivedAtUtc,
     IReadOnlyCollection<ExternalLiveObservation> Observations,
+    IReadOnlyCollection<LiveProviderDiagnostic> Diagnostics,
     string? PayloadSha256);

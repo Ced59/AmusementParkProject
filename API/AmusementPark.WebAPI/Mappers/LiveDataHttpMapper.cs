@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.LiveData.Commands;
 using AmusementPark.Application.Features.LiveData.Results;
+using AmusementPark.Application.Features.LiveData.Models;
 using AmusementPark.Core.Domain.LiveData;
 using AmusementPark.WebAPI.Contracts.LiveData;
 
@@ -7,6 +8,19 @@ namespace AmusementPark.WebAPI.Mappers;
 
 public static class LiveDataHttpMapper
 {
+    public static LiveQualityReplayDto ToHttp(this LiveQualityReplayResult result)
+    {
+        ArgumentNullException.ThrowIfNull(result);
+        return new LiveQualityReplayDto
+        {
+            ExaminedCount = result.ExaminedCount,
+            ResolvedCount = result.ResolvedCount,
+            StillBlockedCount = result.StillBlockedCount,
+            PersistedCount = result.PersistedCount,
+            IgnoredAsOlderCount = result.IgnoredAsOlderCount,
+        };
+    }
+
     public static CreateLiveTargetMappingCandidateCommand ToCommand(
         this CreateLiveTargetMappingCandidateRequestDto request)
     {
