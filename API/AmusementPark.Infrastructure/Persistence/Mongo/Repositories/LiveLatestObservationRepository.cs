@@ -88,11 +88,17 @@ public sealed class LiveLatestObservationRepository : ILiveLatestObservationRepo
         ArgumentNullException.ThrowIfNull(observations);
         if (observations.Count == 0)
         {
-            return new LiveLatestObservationWriteResult(0, 0, 0);
+            return new LiveLatestObservationWriteResult(
+                0,
+                0,
+                0,
+                Array.Empty<LiveLatestObservation>());
         }
 
-        List<WriteModel<LiveLatestObservationDocument>> writes = observations
+        List<LiveLatestObservationDocument> incomingDocuments = observations
             .Select(static observation => observation.ToDocument())
+            .ToList();
+        List<WriteModel<LiveLatestObservationDocument>> writes = incomingDocuments
             .Select(static document => new UpdateOneModel<LiveLatestObservationDocument>(
                 LiveLatestObservationMongoDefinitions.BuildNaturalKeyFilter(document),
                 LiveLatestObservationMongoDefinitions.BuildMonotonicUpdate(document))
@@ -108,7 +114,23 @@ public sealed class LiveLatestObservationRepository : ILiveLatestObservationRepo
         int insertedCount = result.Upserts.Count;
         int updatedCount = checked((int)result.ModifiedCount);
         int ignoredCount = observations.Count - insertedCount - updatedCount;
-        return new LiveLatestObservationWriteResult(insertedCount, updatedCount, ignoredCount);
+        string[] naturalIds = incomingDocuments
+            .Select(static document => document.Id)
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        List<LiveLatestObservationDocument> committedDocuments = await this.collection.Find(
+            Builders<LiveLatestObservationDocument>.Filter.In(
+                static document => document.Id,
+                naturalIds))
+            .ToListAsync(cancellationToken);
+        LiveLatestObservation[] committedObservations = committedDocuments
+            .Select(static document => document.ToDomain())
+            .ToArray();
+        return new LiveLatestObservationWriteResult(
+            insertedCount,
+            updatedCount,
+            ignoredCount,
+            committedObservations);
     }
 
     private static string NormalizeIdentifier(string value, string parameterName)

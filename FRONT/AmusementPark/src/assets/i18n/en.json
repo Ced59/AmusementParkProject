@@ -62,6 +62,77 @@
     "languages": "Languages",
     "profile": "Profile"
   },
+  "liveAlerts": {
+    "action": {
+      "label": "Wait alerts",
+      "open": "Create a temporary alert",
+      "start": "Start this alert"
+    },
+    "activeUntil": "Active until {{ time }}",
+    "stop": "Stop alert",
+    "panel": {
+      "title": "What change do you want to follow?",
+      "description": "Pick a useful signal for this attraction. The alert stops automatically today.",
+      "typeLabel": "Alert type",
+      "threshold": "Wait threshold",
+      "minutes": "minutes",
+      "duration": "Maximum duration",
+      "proof": "The notification will keep the source and exact data age.",
+      "timing": "Checks are periodic: delivery is not guaranteed to the minute."
+    },
+    "types": {
+      "Reopened": {
+        "label": "When it reopens",
+        "active": "Watching for reopening",
+        "notification": "This attraction has reopened"
+      },
+      "WaitBelow": {
+        "label": "Wait below a threshold",
+        "active": "Wait below {{ threshold }} min",
+        "notification": "The wait dropped below {{ threshold }} min"
+      },
+      "WaitAbove": {
+        "label": "Wait above a threshold",
+        "active": "Wait above {{ threshold }} min",
+        "notification": "The wait rose above {{ threshold }} min"
+      },
+      "Degraded": {
+        "label": "Degraded service",
+        "active": "Watching for degradation",
+        "notification": "This attraction is operating in a degraded state"
+      }
+    },
+    "durations": {
+      "60": "1 hr",
+      "180": "3 hrs",
+      "360": "6 hrs",
+      "720": "Today"
+    },
+    "feedback": {
+      "loading": "Loading alerts…",
+      "error": "Live alerts could not be processed.",
+      "retry": "Try again",
+      "actionError": "The action did not complete. The alerts shown have not changed.",
+      "refresh": "Refresh"
+    },
+    "inbox": {
+      "kicker": "Live · WATCH",
+      "title": "Your temporary alerts",
+      "description": "The wait and operating changes you chose to follow.",
+      "unread": "{{ count }} new",
+      "activeTitle": "Active alerts",
+      "targetUnavailable": "Attraction unavailable",
+      "new": "New",
+      "read": "Read",
+      "source": "Source: {{ source }}",
+      "sourceUnavailable": "Verified live source",
+      "age": "Data was {{ seconds }}s old when triggered",
+      "view": "View attraction",
+      "markRead": "Mark as read",
+      "dismiss": "Dismiss",
+      "empty": "No active or received live alerts yet."
+    }
+  },
   "notifications": {
     "emailPreferences": {
       "kicker": "Email digests",

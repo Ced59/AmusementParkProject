@@ -36,6 +36,10 @@ public sealed class MongoDbSettings
 
     public string UserNotificationsCollectionName { get; set; } = "user-notifications";
 
+    public string LiveAlertSubscriptionsCollectionName { get; set; } = "live-alert-subscriptions";
+
+    public string LiveAlertNotificationsCollectionName { get; set; } = "live-alert-notifications";
+
     public string NotificationDigestsCollectionName { get; set; } = "notification-digests";
 
     public string NotificationPreferencesCollectionName { get; set; } = "notification-preferences";

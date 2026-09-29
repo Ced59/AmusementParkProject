@@ -1,6 +1,20 @@
 {
-  "version": "5.4.11",
+  "version": "5.4.12",
   "history": [
+    {
+      "version": "5.4.12",
+      "releasedAt": "2026-09-29",
+      "labels": {
+        "fr": "Les alertes temporaires suivent les attentes et la disponibilité des attractions.",
+        "en": "Temporary alerts track attraction waits and availability.",
+        "de": "Temporäre Alarme verfolgen Wartezeiten und Verfügbarkeit von Attraktionen.",
+        "nl": "Tijdelijke meldingen volgen wachttijden en beschikbaarheid van attracties.",
+        "it": "Gli avvisi temporanei seguono attese e disponibilità delle attrazioni.",
+        "es": "Las alertas temporales siguen las esperas y la disponibilidad de las atracciones.",
+        "pl": "Alerty tymczasowe śledzą czas oczekiwania i dostępność atrakcji.",
+        "pt": "Os alertas temporários acompanham esperas e disponibilidade das atrações."
+      }
+    },
     {
       "version": "5.4.11",
       "releasedAt": "2026-09-29",

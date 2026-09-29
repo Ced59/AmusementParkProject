@@ -1,0 +1,16 @@
+{
+  "liveAlerts": {
+    "action": { "label": "Wartezeit-Alarme", "open": "Temporären Alarm erstellen", "start": "Alarm aktivieren" },
+    "activeUntil": "Aktiv bis {{ time }}", "stop": "Alarm beenden",
+    "panel": { "title": "Welche Änderung möchtest du verfolgen?", "description": "Wähle ein Signal für diese Attraktion. Der Alarm endet heute automatisch.", "typeLabel": "Alarmtyp", "threshold": "Wartezeitschwelle", "minutes": "Minuten", "duration": "Maximale Dauer", "proof": "Die Benachrichtigung enthält Quelle und genaues Datenalter.", "timing": "Die Prüfung erfolgt regelmäßig, aber nicht minutengenau." },
+    "types": {
+      "Reopened": { "label": "Bei Wiedereröffnung", "active": "Wiedereröffnung wird beobachtet", "notification": "Diese Attraktion ist wieder geöffnet" },
+      "WaitBelow": { "label": "Wartezeit unter Schwelle", "active": "Wartezeit unter {{ threshold }} Min.", "notification": "Die Wartezeit liegt unter {{ threshold }} Min." },
+      "WaitAbove": { "label": "Wartezeit über Schwelle", "active": "Wartezeit über {{ threshold }} Min.", "notification": "Die Wartezeit liegt über {{ threshold }} Min." },
+      "Degraded": { "label": "Eingeschränkter Betrieb", "active": "Einschränkung wird beobachtet", "notification": "Diese Attraktion läuft eingeschränkt" }
+    },
+    "durations": { "60": "1 Std.", "180": "3 Std.", "360": "6 Std.", "720": "Heute" },
+    "feedback": { "loading": "Alarme werden geladen…", "error": "Live-Alarme konnten nicht verarbeitet werden.", "retry": "Erneut versuchen", "actionError": "Die Aktion konnte nicht abgeschlossen werden. Die angezeigten Alarme wurden nicht geändert.", "refresh": "Aktualisieren" },
+    "inbox": { "kicker": "Live · WATCH", "title": "Deine temporären Alarme", "description": "Von dir ausgewählte Änderungen bei Wartezeit und Betrieb.", "unread": "{{ count }} neu", "activeTitle": "Aktive Alarme", "targetUnavailable": "Attraktion nicht verfügbar", "new": "Neu", "read": "Gelesen", "source": "Quelle: {{ source }}", "sourceUnavailable": "Verifizierte Live-Quelle", "age": "Datenalter bei Auslösung: {{ seconds }} s", "view": "Attraktion ansehen", "markRead": "Als gelesen markieren", "dismiss": "Ausblenden", "empty": "Noch keine aktiven oder empfangenen Live-Alarme." }
+  }
+}

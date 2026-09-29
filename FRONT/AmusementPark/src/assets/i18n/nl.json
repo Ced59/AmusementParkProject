@@ -62,6 +62,77 @@
     "languages": "Talen",
     "profile": "Profiel"
   },
+  "liveAlerts": {
+    "action": {
+      "label": "Wachttijdmeldingen",
+      "open": "Tijdelijke melding maken",
+      "start": "Deze melding activeren"
+    },
+    "activeUntil": "Actief tot {{ time }}",
+    "stop": "Melding stoppen",
+    "panel": {
+      "title": "Welke wijziging wil je volgen?",
+      "description": "Kies een nuttig signaal voor deze attractie. De melding stopt vandaag automatisch.",
+      "typeLabel": "Type melding",
+      "threshold": "Wachttijdgrens",
+      "minutes": "minuten",
+      "duration": "Maximale duur",
+      "proof": "De melding bewaart de bron en de exacte ouderdom van de gegevens.",
+      "timing": "Er wordt periodiek gecontroleerd; levering per minuut is niet gegarandeerd."
+    },
+    "types": {
+      "Reopened": {
+        "label": "Bij heropening",
+        "active": "Heropening wordt gevolgd",
+        "notification": "Deze attractie is weer open"
+      },
+      "WaitBelow": {
+        "label": "Wachttijd onder grens",
+        "active": "Wachttijd onder {{ threshold }} min",
+        "notification": "De wachttijd is onder {{ threshold }} min gezakt"
+      },
+      "WaitAbove": {
+        "label": "Wachttijd boven grens",
+        "active": "Wachttijd boven {{ threshold }} min",
+        "notification": "De wachttijd is boven {{ threshold }} min gestegen"
+      },
+      "Degraded": {
+        "label": "Beperkte werking",
+        "active": "Beperking wordt gevolgd",
+        "notification": "Deze attractie werkt beperkt"
+      }
+    },
+    "durations": {
+      "60": "1 uur",
+      "180": "3 uur",
+      "360": "6 uur",
+      "720": "Vandaag"
+    },
+    "feedback": {
+      "loading": "Meldingen laden…",
+      "error": "Live-meldingen konden niet worden verwerkt.",
+      "retry": "Opnieuw proberen",
+      "actionError": "De actie is niet voltooid. De getoonde meldingen zijn niet gewijzigd.",
+      "refresh": "Vernieuwen"
+    },
+    "inbox": {
+      "kicker": "Live · WATCH",
+      "title": "Je tijdelijke meldingen",
+      "description": "Wijzigingen in wachttijd en werking die je volgt.",
+      "unread": "{{ count }} nieuw",
+      "activeTitle": "Actieve meldingen",
+      "targetUnavailable": "Attractie niet beschikbaar",
+      "new": "Nieuw",
+      "read": "Gelezen",
+      "source": "Bron: {{ source }}",
+      "sourceUnavailable": "Geverifieerde livebron",
+      "age": "Gegevens waren {{ seconds }} s oud bij activering",
+      "view": "Attractie bekijken",
+      "markRead": "Als gelezen markeren",
+      "dismiss": "Verbergen",
+      "empty": "Nog geen actieve of ontvangen live-meldingen."
+    }
+  },
   "notifications": {
     "emailPreferences": {
       "kicker": "E-mailoverzichten",

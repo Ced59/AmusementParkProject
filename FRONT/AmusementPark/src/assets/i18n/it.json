@@ -62,6 +62,77 @@
     "languages": "Lingue",
     "profile": "Profilo"
   },
+  "liveAlerts": {
+    "action": {
+      "label": "Avvisi di attesa",
+      "open": "Crea un avviso temporaneo",
+      "start": "Attiva questo avviso"
+    },
+    "activeUntil": "Attivo fino alle {{ time }}",
+    "stop": "Interrompi avviso",
+    "panel": {
+      "title": "Quale cambiamento vuoi seguire?",
+      "description": "Scegli un segnale utile per questa attrazione. L’avviso termina automaticamente oggi.",
+      "typeLabel": "Tipo di avviso",
+      "threshold": "Soglia di attesa",
+      "minutes": "minuti",
+      "duration": "Durata massima",
+      "proof": "La notifica conserverà la fonte e l’età esatta del dato.",
+      "timing": "Il controllo è periodico: la consegna non è garantita al minuto."
+    },
+    "types": {
+      "Reopened": {
+        "label": "Alla riapertura",
+        "active": "Riapertura monitorata",
+        "notification": "Questa attrazione ha riaperto"
+      },
+      "WaitBelow": {
+        "label": "Attesa sotto soglia",
+        "active": "Attesa sotto {{ threshold }} min",
+        "notification": "L’attesa è scesa sotto {{ threshold }} min"
+      },
+      "WaitAbove": {
+        "label": "Attesa sopra soglia",
+        "active": "Attesa sopra {{ threshold }} min",
+        "notification": "L’attesa ha superato {{ threshold }} min"
+      },
+      "Degraded": {
+        "label": "Servizio degradato",
+        "active": "Degrado monitorato",
+        "notification": "L’attrazione funziona in modalità degradata"
+      }
+    },
+    "durations": {
+      "60": "1 h",
+      "180": "3 h",
+      "360": "6 h",
+      "720": "Oggi"
+    },
+    "feedback": {
+      "loading": "Caricamento avvisi…",
+      "error": "Impossibile elaborare gli avvisi in tempo reale.",
+      "retry": "Riprova",
+      "actionError": "L’azione non è stata completata. Gli avvisi mostrati non sono cambiati.",
+      "refresh": "Aggiorna"
+    },
+    "inbox": {
+      "kicker": "In tempo reale · WATCH",
+      "title": "I tuoi avvisi temporanei",
+      "description": "I cambiamenti di attesa e funzionamento che hai scelto di seguire.",
+      "unread": "{{ count }} nuovi",
+      "activeTitle": "Avvisi attivi",
+      "targetUnavailable": "Attrazione non disponibile",
+      "new": "Nuovo",
+      "read": "Letto",
+      "source": "Fonte: {{ source }}",
+      "sourceUnavailable": "Fonte live verificata",
+      "age": "Il dato aveva {{ seconds }} s all’attivazione",
+      "view": "Vedi attrazione",
+      "markRead": "Segna come letto",
+      "dismiss": "Nascondi",
+      "empty": "Nessun avviso in tempo reale attivo o ricevuto."
+    }
+  },
   "notifications": {
     "emailPreferences": {
       "kicker": "Riepiloghi via e-mail",

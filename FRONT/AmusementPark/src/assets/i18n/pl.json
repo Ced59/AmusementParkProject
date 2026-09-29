@@ -62,6 +62,77 @@
     "languages": "Języki",
     "profile": "Profil"
   },
+  "liveAlerts": {
+    "action": {
+      "label": "Alerty oczekiwania",
+      "open": "Utwórz alert tymczasowy",
+      "start": "Włącz ten alert"
+    },
+    "activeUntil": "Aktywny do {{ time }}",
+    "stop": "Wyłącz alert",
+    "panel": {
+      "title": "Jaką zmianę chcesz śledzić?",
+      "description": "Wybierz przydatny sygnał dla tej atrakcji. Alert wyłączy się dziś automatycznie.",
+      "typeLabel": "Typ alertu",
+      "threshold": "Próg oczekiwania",
+      "minutes": "minut",
+      "duration": "Maksymalny czas",
+      "proof": "Powiadomienie zachowa źródło i dokładny wiek danych.",
+      "timing": "Sprawdzanie jest okresowe; dostarczenie co do minuty nie jest gwarantowane."
+    },
+    "types": {
+      "Reopened": {
+        "label": "Po ponownym otwarciu",
+        "active": "Śledzenie ponownego otwarcia",
+        "notification": "Ta atrakcja została ponownie otwarta"
+      },
+      "WaitBelow": {
+        "label": "Czas poniżej progu",
+        "active": "Czas poniżej {{ threshold }} min",
+        "notification": "Czas oczekiwania spadł poniżej {{ threshold }} min"
+      },
+      "WaitAbove": {
+        "label": "Czas powyżej progu",
+        "active": "Czas powyżej {{ threshold }} min",
+        "notification": "Czas oczekiwania przekroczył {{ threshold }} min"
+      },
+      "Degraded": {
+        "label": "Ograniczone działanie",
+        "active": "Śledzenie ograniczeń",
+        "notification": "Atrakcja działa w ograniczonym trybie"
+      }
+    },
+    "durations": {
+      "60": "1 godz.",
+      "180": "3 godz.",
+      "360": "6 godz.",
+      "720": "Dzisiaj"
+    },
+    "feedback": {
+      "loading": "Ładowanie alertów…",
+      "error": "Nie udało się przetworzyć alertów na żywo.",
+      "retry": "Spróbuj ponownie",
+      "actionError": "Nie udało się wykonać działania. Wyświetlane alerty nie zostały zmienione.",
+      "refresh": "Odśwież"
+    },
+    "inbox": {
+      "kicker": "Na żywo · WATCH",
+      "title": "Twoje alerty tymczasowe",
+      "description": "Wybrane przez ciebie zmiany czasu oczekiwania i działania.",
+      "unread": "{{ count }} nowych",
+      "activeTitle": "Aktywne alerty",
+      "targetUnavailable": "Atrakcja niedostępna",
+      "new": "Nowe",
+      "read": "Przeczytane",
+      "source": "Źródło: {{ source }}",
+      "sourceUnavailable": "Zweryfikowane źródło live",
+      "age": "W chwili wyzwolenia dane miały {{ seconds }} s",
+      "view": "Zobacz atrakcję",
+      "markRead": "Oznacz jako przeczytane",
+      "dismiss": "Ukryj",
+      "empty": "Brak aktywnych lub odebranych alertów na żywo."
+    }
+  },
   "notifications": {
     "emailPreferences": {
       "kicker": "Podsumowania e-mail",

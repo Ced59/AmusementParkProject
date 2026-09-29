@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.LiveData.Models;
 using AmusementPark.Application.Features.LiveData.Ports;
+using AmusementPark.Application.Features.Watchlists.Services;
 using AmusementPark.Core.Domain.LiveData;
 
 namespace AmusementPark.Application.Features.LiveData.Services;
@@ -12,6 +13,7 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
     private readonly ILiveQualityIncidentRepository incidentRepository;
     private readonly ILiveOperationalGate operationalGate;
     private readonly LiveOperationalObservationWriter operationalWriter;
+    private readonly LiveAlertEvaluationService? liveAlertEvaluationService;
     private readonly TimeProvider timeProvider;
 
     internal LiveLatestObservationIngestor(
@@ -25,7 +27,8 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             incidentRepository,
             operationalGate,
             new LiveOperationalWriteCoordinator(),
-            TimeProvider.System)
+            TimeProvider.System,
+            null)
     {
     }
 
@@ -41,7 +44,26 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             incidentRepository,
             operationalGate,
             coordinator,
-            TimeProvider.System)
+            TimeProvider.System,
+            null)
+    {
+    }
+
+    public LiveLatestObservationIngestor(
+        ILiveTargetMappingRepository mappingRepository,
+        ILiveLatestObservationRepository latestRepository,
+        ILiveQualityIncidentRepository incidentRepository,
+        ILiveOperationalGate operationalGate,
+        LiveOperationalWriteCoordinator coordinator,
+        LiveAlertEvaluationService liveAlertEvaluationService)
+        : this(
+            mappingRepository,
+            latestRepository,
+            incidentRepository,
+            operationalGate,
+            coordinator,
+            TimeProvider.System,
+            liveAlertEvaluationService)
     {
     }
 
@@ -57,7 +79,8 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             incidentRepository,
             operationalGate,
             new LiveOperationalWriteCoordinator(),
-            timeProvider)
+            timeProvider,
+            null)
     {
     }
 
@@ -67,7 +90,8 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
         ILiveQualityIncidentRepository incidentRepository,
         ILiveOperationalGate operationalGate,
         LiveOperationalWriteCoordinator coordinator,
-        TimeProvider timeProvider)
+        TimeProvider timeProvider,
+        LiveAlertEvaluationService? liveAlertEvaluationService)
     {
         this.mappingRepository = mappingRepository
             ?? throw new ArgumentNullException(nameof(mappingRepository));
@@ -81,6 +105,7 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
             this.latestRepository,
             this.operationalGate,
             coordinator);
+        this.liveAlertEvaluationService = liveAlertEvaluationService;
         this.timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
     }
 
@@ -257,6 +282,8 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
 
         LiveLatestObservationWriteResult writeResult;
         int suppressedAtWriteBoundary = 0;
+        IReadOnlyCollection<LiveLatestObservation> committedAlertObservations =
+            Array.Empty<LiveLatestObservation>();
         if (externalEntityId.Length == 0)
         {
             writeResult = await this.latestRepository.WriteLatestAsync(
@@ -272,8 +299,16 @@ public sealed class LiveLatestObservationIngestor : ILiveLatestObservationIngest
                     latestByInternalTarget.Values.ToArray(),
                     cancellationToken);
             writeResult = operationalWrite.WriteResult;
+            committedAlertObservations = writeResult.CommittedObservations;
             suppressedAtWriteBoundary = latestByInternalTarget.Count
                 - operationalWrite.AcceptedObservations.Count;
+        }
+
+        if (this.liveAlertEvaluationService is not null && committedAlertObservations.Count > 0)
+        {
+            await this.liveAlertEvaluationService.EvaluateAsync(
+                committedAlertObservations,
+                cancellationToken);
         }
 
         return new LiveLatestObservationIngestionResult(

@@ -1,0 +1,118 @@
+@if (facade.authenticated() && (canCreate() || facade.subscriptions().length > 0)) {
+  <section class="live-alert" [attr.aria-label]="'liveAlerts.action.label' | translate">
+    @if (facade.subscriptions().length > 0) {
+      <div class="live-alert__active" aria-live="polite">
+        @for (subscription of facade.subscriptions(); track subscription.subscriptionId) {
+          <div class="live-alert__active-item">
+            <app-ui-chip tone="lime" iconClass="pi pi-bell">
+              {{ subscriptionLabelKey(subscription) | translate:{ threshold: subscription.thresholdMinutes } }}
+            </app-ui-chip>
+            <time [attr.datetime]="subscription.expiresAtUtc">
+              {{ 'liveAlerts.activeUntil' | translate:{ time: (subscription.expiresAtUtc | date:'shortTime') } }}
+            </time>
+            <button
+              type="button"
+              class="live-alert__remove"
+              [disabled]="facade.mutating()"
+              [attr.aria-label]="'liveAlerts.stop' | translate"
+              (click)="facade.remove(subscription)">
+              <i class="pi pi-times" aria-hidden="true"></i>
+            </button>
+          </div>
+        }
+      </div>
+    }
+
+    @if (canCreate()) {
+      <button
+        appUiButton="soft"
+        type="button"
+        class="live-alert__trigger"
+        [attr.aria-expanded]="facade.expanded()"
+        [disabled]="facade.loading() || facade.mutating()"
+        (click)="facade.toggleExpanded()">
+        <i class="pi pi-bell" aria-hidden="true"></i>
+        <span>{{ 'liveAlerts.action.open' | translate }}</span>
+        <i [class]="facade.expanded() ? 'pi pi-chevron-up' : 'pi pi-chevron-down'" aria-hidden="true"></i>
+      </button>
+    }
+
+    @if (facade.expanded()) {
+      <div class="live-alert__panel" appUiSurface="panel" appUiSurfacePadding="compact">
+        <div class="live-alert__heading">
+          <span aria-hidden="true"><i class="pi pi-wave-pulse"></i></span>
+          <div>
+            <h3>{{ 'liveAlerts.panel.title' | translate }}</h3>
+            <p>{{ 'liveAlerts.panel.description' | translate }}</p>
+          </div>
+        </div>
+
+        <div class="live-alert__types" role="group" [attr.aria-label]="'liveAlerts.panel.typeLabel' | translate">
+          @for (type of types; track type) {
+            <button
+              type="button"
+              [class.live-alert__type--selected]="facade.selectedType() === type"
+              [attr.aria-pressed]="facade.selectedType() === type"
+              [disabled]="facade.mutating()"
+              (click)="facade.selectType(type)">
+              <i [class]="type === 'Reopened' ? 'pi pi-play-circle'
+                : type === 'Degraded' ? 'pi pi-exclamation-triangle'
+                : type === 'WaitBelow' ? 'pi pi-arrow-down' : 'pi pi-arrow-up'" aria-hidden="true"></i>
+              <span>{{ typeLabelKey(type) | translate }}</span>
+            </button>
+          }
+        </div>
+
+        @if (facade.selectedType() === 'WaitBelow' || facade.selectedType() === 'WaitAbove') {
+          <label class="live-alert__threshold">
+            <span>{{ 'liveAlerts.panel.threshold' | translate }}</span>
+            <span class="live-alert__threshold-control">
+              <input
+                type="number"
+                min="5"
+                max="300"
+                step="5"
+                [value]="facade.threshold()"
+                [disabled]="facade.mutating()"
+                (change)="onThresholdChanged($event)">
+              <small>{{ 'liveAlerts.panel.minutes' | translate }}</small>
+            </span>
+          </label>
+        }
+
+        <div class="live-alert__duration">
+          <span>{{ 'liveAlerts.panel.duration' | translate }}</span>
+          <div role="group" [attr.aria-label]="'liveAlerts.panel.duration' | translate">
+            @for (duration of durations; track duration) {
+              <button
+                type="button"
+                [class.live-alert__duration--selected]="facade.duration() === duration"
+                [attr.aria-pressed]="facade.duration() === duration"
+                (click)="facade.setDuration(duration)">
+                {{ 'liveAlerts.durations.' + duration | translate }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <p class="live-alert__proof">
+          <i class="pi pi-shield" aria-hidden="true"></i>
+          <span>{{ 'liveAlerts.panel.proof' | translate }}</span>
+        </p>
+        <p class="live-alert__timing">
+          <i class="pi pi-clock" aria-hidden="true"></i>
+          <span>{{ 'liveAlerts.panel.timing' | translate }}</span>
+        </p>
+
+        @if (facade.error()) {
+          <p class="live-alert__error" role="alert">{{ 'liveAlerts.feedback.error' | translate }}</p>
+        }
+
+        <button appUiButton="primary" type="button" [disabled]="facade.mutating()" (click)="facade.create()">
+          <i class="pi pi-bell" aria-hidden="true"></i>
+          <span>{{ 'liveAlerts.action.start' | translate }}</span>
+        </button>
+      </div>
+    }
+  </section>
+}
